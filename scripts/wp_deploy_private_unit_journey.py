@@ -87,6 +87,36 @@ MISSING_SNIPPET_MESSAGE = "The snippet could not be found."
 DEPLOY_PREFLIGHT_SCHEMA = "nadlan-private-release-deploy-preflight/v1"
 RECOVERY_REPORT_SCHEMA = "nadlan-private-release-retained-recovery/v1"
 RECOVERY_ADOPTION_SCHEMA = "nadlan-private-release-adopt-exact-rollback/v1"
+NORMAL_ROLLBACK_RECONCILIATION_SCHEMA = (
+    "nadlan-private-release-normal-rollback-reconciliation/v1"
+)
+NORMAL_ROLLBACK_CHECKPOINT_SCHEMA = (
+    "nadlan-private-release-normal-rollback-prefinalize/v1"
+)
+NORMAL_ROLLBACK_RECOVERY_CASE = "normal_rolled_back_storage_reconciliation/v1"
+NORMAL_ROLLBACK_EVIDENCE_SHA256 = (
+    "8817682a14f7871df283bbe3728f763ba02adb6bb7dbb2f4ec090c97d5368cb6"
+)
+NORMAL_ROLLBACK_RUN_ID = "einstein-flagship-20260814T081547Z-b1718b"
+NORMAL_ROLLBACK_HELPER_ID = 442
+NORMAL_ROLLBACK_HELPER_SHA256 = (
+    "81d86b29e2cdc8e4bb8912ac7150fa049844585c30c80d8d3b256c3a8fe7f853"
+)
+NORMAL_ROLLBACK_STAGE_REQUEST_SHA256 = (
+    "a067d14ade29f52325edb2591c931f91dc3171b661a5b3549f4b4d7be1e9dc18"
+)
+NORMAL_ROLLBACK_TARGET_SEMANTIC_SHA256 = (
+    "d7ce1f3b4aa4924d49be090486eddd18e1fcc3f95bd10575a41cd5c094169d60"
+)
+NORMAL_ROLLBACK_ARTIFACT_SEMANTIC_SHA256 = (
+    "1ccdae17848bab050a3bc5763d354a74369ff506666555f794ee8a84fee9280c"
+)
+NORMAL_ROLLBACK_HELPER_SEMANTIC_SHA256 = (
+    "69bf3167cb836f68ded4635125f4e319d2b11f8b135bc3f1dcd840dcd513050a"
+)
+NORMAL_ROLLBACK_CHECKS_SEMANTIC_SHA256 = (
+    "e071b6ceddcae720c9177956cd399116243f501cebf8e0cbaedae53d5e0dbf14"
+)
 DEPLOY_UNMEASURED_CAPACITY_BYTES = 96 * 1024 * 1024
 DEPLOY_FAILURE_CONTRACT = {
     "request_validation": ("artifact_identity_invalid",),
@@ -191,12 +221,27 @@ class RetainedRunRecoveryBlocked(RuntimeError):
     """Exact retained-run ownership or reconciliation could not be proved."""
 
 
+class RetainedNormalRollbackReconciliationBlocked(RuntimeError):
+    """One exact normal rollback cannot be safely finalized and cleaned up."""
+
+
 def sha256_bytes(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
 
 
 def exact_json_bytes(value: Any) -> bytes:
     return json.dumps(value, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+
+
+def semantic_json_sha256(value: Any) -> str:
+    return sha256_bytes(
+        json.dumps(
+            value,
+            ensure_ascii=False,
+            separators=(",", ":"),
+            sort_keys=True,
+        ).encode("utf-8")
+    )
 
 
 def canonical_post_storage_proof(
@@ -3020,6 +3065,156 @@ def validate_retained_recovery_evidence(
     }
 
 
+def retained_normal_rollback_evidence_payload_is_exact(payload: Any) -> bool:
+    root_keys = {
+        "schema_version",
+        "run_id",
+        "generated_at_utc",
+        "target",
+        "artifact",
+        "helper",
+        "checks",
+        "passed",
+        "error",
+    }
+    checks_keys = {
+        "local_artifact",
+        "auth_preflight",
+        "canonical_public_predeploy",
+        "einstein_create_only_preflight",
+        "public_health_preflight",
+        "inactive_helper",
+        "active_helper",
+        "live_before",
+        "deploy_preflight",
+        "artifact_upload",
+        "verified_upload_status",
+        "artifact_spool_access_guard",
+        "deploy",
+        "stabilization",
+        "failure_status",
+        "failure_rollback",
+        "failure_canonical_storage_reconciliation",
+        "failure_finalize",
+        "independent_helper_cleanup",
+    }
+    if not isinstance(payload, dict) or set(payload) != root_keys:
+        return False
+    target = payload.get("target")
+    artifact = payload.get("artifact")
+    helper = payload.get("helper")
+    checks = payload.get("checks")
+    if not all(isinstance(value, dict) for value in (target, artifact, helper, checks)):
+        return False
+    if set(checks) != checks_keys:
+        return False
+    semantic_contract = {
+        "target": (target, NORMAL_ROLLBACK_TARGET_SEMANTIC_SHA256),
+        "artifact": (artifact, NORMAL_ROLLBACK_ARTIFACT_SEMANTIC_SHA256),
+        "helper": (helper, NORMAL_ROLLBACK_HELPER_SEMANTIC_SHA256),
+        "checks": (checks, NORMAL_ROLLBACK_CHECKS_SEMANTIC_SHA256),
+    }
+    return (
+        all(
+            secrets.compare_digest(semantic_json_sha256(value), expected_hash)
+            for value, expected_hash in semantic_contract.values()
+        )
+        and payload.get("schema_version") == 1
+        and payload.get("run_id") == NORMAL_ROLLBACK_RUN_ID
+        and payload.get("generated_at_utc")
+        == "2026-08-14T08:15:47.869094+00:00"
+        and payload.get("passed") is False
+        and payload.get("error")
+        == "Canonical post storage comparison shape is not exact"
+    )
+
+
+def _strict_int_equals(value: Any, expected: int) -> bool:
+    return (
+        isinstance(value, int)
+        and not isinstance(value, bool)
+        and value == expected
+    )
+
+
+def validate_retained_normal_rollback_evidence(
+    path: Path,
+    *,
+    expected_run_id: str,
+    expected_helper_id: int,
+    expected_helper_sha256: str,
+) -> dict[str, Any]:
+    """Admit only the exact canonical-storage client-shape rollback report."""
+    resolved = path.expanduser().resolve(strict=True)
+    if path.is_symlink() or not resolved.is_file() or resolved.suffix.lower() != ".json":
+        raise ValueError("Normal-rollback evidence must be one regular JSON file")
+    size = resolved.stat().st_size
+    if size < 100 or size > 2 * 1024 * 1024:
+        raise ValueError("Normal-rollback evidence size is outside the bounded contract")
+    raw = resolved.read_bytes()
+    if not secrets.compare_digest(
+        sha256_bytes(raw), NORMAL_ROLLBACK_EVIDENCE_SHA256
+    ):
+        raise ValueError("Normal-rollback evidence bytes are not the frozen report")
+    payload = json.loads(raw.decode("utf-8"))
+    if not retained_normal_rollback_evidence_payload_is_exact(payload):
+        raise ValueError("Normal-rollback evidence payload is not exact")
+    target = payload.get("target")
+    artifact = payload.get("artifact")
+    helper = payload.get("helper")
+    checks = payload.get("checks")
+    if not (
+        expected_run_id == NORMAL_ROLLBACK_RUN_ID
+        and expected_helper_id == NORMAL_ROLLBACK_HELPER_ID
+        and expected_helper_sha256 == NORMAL_ROLLBACK_HELPER_SHA256
+    ):
+        raise ValueError("Normal-rollback recovery identity is not exact")
+
+    live_before = checks["live_before"]
+    before_plugin = live_before["plugin"]
+    before_inventory = before_plugin["inventory"]
+    deploy_plugin = checks["deploy"]["plugin"]
+    deploy_inventory = deploy_plugin["inventory"]
+    canonical = checks["canonical_public_predeploy"]
+    return {
+        "evidence_path": resolved,
+        "evidence_sha256": NORMAL_ROLLBACK_EVIDENCE_SHA256,
+        "recovery_case": NORMAL_ROLLBACK_RECOVERY_CASE,
+        "base_url": validate_site_url(str(target["site"])),
+        "run_id": NORMAL_ROLLBACK_RUN_ID,
+        "helper": {
+            "id": NORMAL_ROLLBACK_HELPER_ID,
+            "name": str(helper["name"]),
+            "route": str(helper["route"]),
+            "route_path": f"/deploy-{NORMAL_ROLLBACK_RUN_ID}",
+            "code_sha256": NORMAL_ROLLBACK_HELPER_SHA256,
+        },
+        "artifact": {
+            "mode": "upload",
+            "sha256": str(artifact["sha256"]),
+            "archive_bytes": int(artifact["archive_bytes"]),
+            "entry_count": int(artifact["entry_count"]),
+            "uncompressed_bytes": int(artifact["uncompressed_bytes"]),
+        },
+        "candidate_version": str(deploy_plugin["version"]),
+        "candidate_plugin": {
+            "inventory_file_count": int(deploy_inventory["file_count"]),
+            "inventory_bytes": int(deploy_inventory["bytes"]),
+            "inventory_digest": str(deploy_inventory["digest"]),
+        },
+        "before_plugin": {
+            "plugin_file": PLUGIN_FILE,
+            "version": str(before_plugin["version"]),
+            "active": True,
+            "inventory_file_count": int(before_inventory["file_count"]),
+            "inventory_bytes": int(before_inventory["bytes"]),
+            "inventory_digest": str(before_inventory["digest"]),
+        },
+        "canonical_public_sha256": str(canonical["snapshot_sha256"]),
+        "stage_request_sha256": NORMAL_ROLLBACK_STAGE_REQUEST_SHA256,
+    }
+
+
 def _php_assignment(code: str, variable: str, *, integer: bool = False) -> Any:
     if integer:
         matches = re.findall(
@@ -3085,6 +3280,116 @@ def extract_retained_helper_contract(
                 "Retained helper differs from the sanitized evidence contract"
             )
     return observed
+
+
+def _php_boolean_assignment(code: str, variable: str) -> bool:
+    matches = re.findall(
+        rf"\${re.escape(variable)}\s*=\s*(true|false)\s*;",
+        code,
+    )
+    if len(matches) != 1:
+        raise RetainedNormalRollbackReconciliationBlocked(
+            "Retained helper boolean contract is missing"
+        )
+    return matches[0] == "true"
+
+
+def extract_retained_normal_rollback_helper_contract(
+    code: str, evidence: dict[str, Any]
+) -> dict[str, Any]:
+    """Bind the unchanged normal-run helper, including its page-mode switches."""
+    observed = extract_retained_helper_contract(code, evidence)
+    observed.update(
+        {
+            "source_post_id": _php_assignment(
+                code, "source_post_id", integer=True
+            ),
+            "page_slug": _php_assignment(code, "page_slug"),
+            "project_contract_id": _php_assignment(code, "project_contract_id"),
+            "recovery_adoption_enabled": _php_boolean_assignment(
+                code, "recovery_adoption_enabled"
+            ),
+            "external_stage_commit_enabled": _php_boolean_assignment(
+                code, "external_stage_commit_enabled"
+            ),
+        }
+    )
+    if not (
+        observed["source_post_id"] == EINSTEIN_CANONICAL_POST_ID
+        and observed["page_slug"] == EINSTEIN_STAGE_SLUG
+        and observed["project_contract_id"] == EINSTEIN_PROJECT_CONTRACT_ID
+        and observed["recovery_adoption_enabled"] is False
+        and observed["external_stage_commit_enabled"] is True
+    ):
+        raise RetainedNormalRollbackReconciliationBlocked(
+            "Retained normal-run helper mode contract changed"
+        )
+    return observed
+
+
+def retained_normal_rollback_helper_row_is_exact(
+    row: dict[str, Any], evidence: dict[str, Any]
+) -> bool:
+    helper = evidence["helper"]
+    observed = observed_snippet(row)
+    return (
+        observed["id"] == helper["id"]
+        and observed["name"] == helper["name"]
+        and observed["scope"] == "global"
+        and observed["active"] is True
+        and observed["code_sha256"] == helper["code_sha256"]
+        and ("network" not in row or row.get("network") is False)
+        and row.get("trashed", False) is False
+        and str(row.get("status") or "").lower() not in {"trash", "trashed"}
+    )
+
+
+def rerender_retained_normal_rollback_helper(
+    token: str, evidence: dict[str, Any]
+) -> tuple[str, str]:
+    """Re-render the original helper locally; never update the retained row."""
+    stage_path = (
+        REPO_ROOT
+        / "docs"
+        / "wp-drafts"
+        / "einstein-tower-flagship-v3-private-stage.json"
+    )
+    normalized_stage = stage_path.read_text(encoding="utf-8")
+    if not secrets.compare_digest(
+        sha256_text(normalized_stage), evidence["stage_request_sha256"]
+    ):
+        raise RetainedNormalRollbackReconciliationBlocked(
+            "Governed Einstein stage request hash changed"
+        )
+    stage_request = validate_einstein_stage_request(stage_path)
+    helper = evidence["helper"]
+    artifact = evidence["artifact"]
+    rendered = render_helper(
+        route_path=helper["route_path"],
+        token=token,
+        run_id=evidence["run_id"],
+        helper_id=helper["id"],
+        helper_name=helper["name"],
+        artifact_mode="upload",
+        artifact_url="",
+        artifact_sha256=artifact["sha256"],
+        artifact_bytes=artifact["archive_bytes"],
+        artifact_entry_count=artifact["entry_count"],
+        artifact_uncompressed_bytes=artifact["uncompressed_bytes"],
+        expected_version=evidence["candidate_version"],
+        page_slug=EINSTEIN_STAGE_SLUG,
+        source_post_id=EINSTEIN_CANONICAL_POST_ID,
+        recovery_adoption_enabled=False,
+        external_stage_commit_enabled=True,
+        project_contract_id=EINSTEIN_PROJECT_CONTRACT_ID,
+        external_stage_body=stage_request["body"],
+    )
+    rendered_hash = sha256_text(rendered)
+    if not secrets.compare_digest(rendered_hash, helper["code_sha256"]):
+        raise RetainedNormalRollbackReconciliationBlocked(
+            "Locally rendered original helper differs from retained evidence"
+        )
+    return rendered, rendered_hash
 
 
 def classify_recovery_helper_row(
@@ -3156,6 +3461,984 @@ def adoption_response_is_exact(
         and backup.get("bytes") == before_plugin_contract.get("inventory_bytes")
         and rollback_response_is_exact(payload, before_plugin_contract)
     )
+
+
+def normal_rollback_plugin_payload_is_exact(
+    payload: Any, before_plugin_contract: dict[str, Any]
+) -> bool:
+    inventory = payload.get("inventory") if isinstance(payload, dict) else None
+    return isinstance(inventory, dict) and (
+        set(payload) == {"plugin_file", "version", "active", "inventory"}
+        and set(inventory) == {"file_count", "bytes", "digest"}
+        and payload.get("plugin_file") == PLUGIN_FILE
+        and payload.get("version") == before_plugin_contract.get("version")
+        and payload.get("active") is True
+        and inventory.get("file_count")
+        == before_plugin_contract.get("inventory_file_count")
+        and inventory.get("bytes") == before_plugin_contract.get("inventory_bytes")
+        and inventory.get("digest")
+        == before_plugin_contract.get("inventory_digest")
+    )
+
+
+def normal_rollback_inspect_is_exact(
+    payload: dict[str, Any], evidence: dict[str, Any], *, phase: str
+) -> bool:
+    helper = evidence["helper"]
+    artifact = evidence["artifact"]
+    expected_lock = phase == "rolled_back"
+    return (
+        isinstance(payload, dict)
+        and set(payload)
+        == {
+            "http_status",
+            "run_id",
+            "plugin",
+            "lock_free",
+            "lock_owned",
+            "state_phase",
+            "target_exact",
+            "artifact",
+            "upload_temp_absent",
+        }
+        and isinstance(payload.get("http_status"), int)
+        and not isinstance(payload.get("http_status"), bool)
+        and payload.get("http_status") == 200
+        and payload.get("run_id") == evidence["run_id"]
+        and payload.get("state_phase") == phase
+        and payload.get("lock_owned") is expected_lock
+        and payload.get("lock_free") is (not expected_lock)
+        and payload.get("target_exact") == PLUGIN_FILE
+        and payload.get("upload_temp_absent") is True
+        and normal_rollback_plugin_payload_is_exact(
+            payload.get("plugin"), evidence["before_plugin"]
+        )
+        and payload.get("artifact") == {
+            "mode": "upload",
+            "sha256": artifact["sha256"],
+            "archive_bytes": artifact["archive_bytes"],
+            "entry_count": artifact["entry_count"],
+            "uncompressed_bytes": artifact["uncompressed_bytes"],
+        }
+        and helper["id"] == NORMAL_ROLLBACK_HELPER_ID
+    )
+
+
+def normal_rollback_status_is_exact(
+    payload: dict[str, Any], evidence: dict[str, Any], *, phase: str
+) -> bool:
+    upload = payload.get("upload") if isinstance(payload.get("upload"), dict) else {}
+    return (
+        isinstance(payload, dict)
+        and set(payload)
+        == {
+            "http_status",
+            "plugin",
+            "state_phase",
+            "backup_ready",
+            "page_id",
+            "page_rollback_tracked",
+            "upload",
+        }
+        and set(upload)
+        == {
+            "mode",
+            "verified",
+            "next_index",
+            "total_chunks",
+            "received_bytes",
+            "temp_absent",
+            "temp_exists",
+            "temp_safe",
+            "temp_bytes",
+        }
+        and isinstance(payload.get("http_status"), int)
+        and not isinstance(payload.get("http_status"), bool)
+        and payload.get("http_status") == 200
+        and payload.get("state_phase") == phase
+        and payload.get("backup_ready") is (phase == "rolled_back")
+        and _strict_int_equals(payload.get("page_id"), 0)
+        and payload.get("page_rollback_tracked") is False
+        and normal_rollback_plugin_payload_is_exact(
+            payload.get("plugin"), evidence["before_plugin"]
+        )
+        and upload.get("mode") == "upload"
+        and upload.get("temp_absent") is True
+        and upload.get("temp_exists") is False
+        and upload.get("temp_safe") is True
+        and _strict_int_equals(upload.get("temp_bytes"), 0)
+        and all(
+            isinstance(upload.get(key), int)
+            and not isinstance(upload.get(key), bool)
+            and upload.get(key) >= 0
+            for key in ("next_index", "total_chunks", "received_bytes")
+        )
+        and isinstance(upload.get("verified"), bool)
+    )
+
+
+def normal_rollback_finalize_response_is_exact(
+    payload: dict[str, Any], helper_id: int, *, idempotent: bool
+) -> bool:
+    return (
+        isinstance(payload, dict)
+        and set(payload)
+        == {
+            "http_status",
+            "idempotent",
+            "resource_cleanup_complete",
+            "backup_deleted",
+            "storage_root_deleted",
+            "lock_released",
+            "state_deleted",
+            "upload_temp_absent",
+            "helper_retained",
+            "helper_cleanup_pending",
+            "helper_id",
+        }
+        and isinstance(payload.get("http_status"), int)
+        and not isinstance(payload.get("http_status"), bool)
+        and payload.get("http_status") == 200
+        and payload.get("idempotent") is idempotent
+        and all(
+            payload.get(key) is True
+            for key in (
+                "resource_cleanup_complete",
+                "backup_deleted",
+                "storage_root_deleted",
+                "lock_released",
+                "state_deleted",
+                "upload_temp_absent",
+                "helper_retained",
+                "helper_cleanup_pending",
+            )
+        )
+        and payload.get("helper_id") == helper_id
+    )
+
+
+def normal_rollback_checkpoint_payload(
+    evidence: dict[str, Any],
+    project_proof: dict[str, Any],
+    health_proof: dict[str, Any],
+    storage_comparison: dict[str, Any],
+) -> dict[str, Any]:
+    return {
+        "schema": NORMAL_ROLLBACK_CHECKPOINT_SCHEMA,
+        "recovery_case": NORMAL_ROLLBACK_RECOVERY_CASE,
+        "evidence_sha256": evidence["evidence_sha256"],
+        "run_id": evidence["run_id"],
+        "helper": {
+            "id": evidence["helper"]["id"],
+            "name": evidence["helper"]["name"],
+            "code_sha256": evidence["helper"]["code_sha256"],
+        },
+        "original_plugin": copy.deepcopy(evidence["before_plugin"]),
+        "canonical_snapshot_sha256": evidence["canonical_public_sha256"],
+        "project_public_proof": copy.deepcopy(project_proof),
+        "health_proof": copy.deepcopy(health_proof),
+        "canonical_storage_comparison": copy.deepcopy(storage_comparison),
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+def validate_normal_rollback_checkpoint(
+    payload: dict[str, Any], evidence: dict[str, Any]
+) -> dict[str, Any]:
+    if not isinstance(payload, dict) or set(payload) != {
+        "schema",
+        "recovery_case",
+        "evidence_sha256",
+        "run_id",
+        "helper",
+        "original_plugin",
+        "canonical_snapshot_sha256",
+        "project_public_proof",
+        "health_proof",
+        "canonical_storage_comparison",
+        "generated_at_utc",
+    }:
+        raise RetainedNormalRollbackReconciliationBlocked(
+            "Normal-rollback checkpoint shape is not exact"
+        )
+    expected_helper = {
+        "id": evidence["helper"]["id"],
+        "name": evidence["helper"]["name"],
+        "code_sha256": evidence["helper"]["code_sha256"],
+    }
+    project = payload.get("project_public_proof")
+    health = payload.get("health_proof")
+    if not (
+        payload.get("schema") == NORMAL_ROLLBACK_CHECKPOINT_SCHEMA
+        and payload.get("recovery_case") == NORMAL_ROLLBACK_RECOVERY_CASE
+        and payload.get("evidence_sha256") == evidence["evidence_sha256"]
+        and payload.get("run_id") == evidence["run_id"]
+        and payload.get("helper") == expected_helper
+        and payload.get("original_plugin") == evidence["before_plugin"]
+        and payload.get("canonical_snapshot_sha256")
+        == evidence["canonical_public_sha256"]
+        and isinstance(project, dict)
+        and set(project)
+        == {
+            "label",
+            "canonical_post_id",
+            "canonical_snapshot_sha256",
+            "stage_slug",
+            "stage_match_count",
+            "canonical_public_status",
+            "stage_public_status",
+            "stage_rest_status",
+            "stage_rest_match_count",
+            "governed_stage_match_count",
+        }
+        and _strict_int_equals(
+            project.get("canonical_post_id"), EINSTEIN_CANONICAL_POST_ID
+        )
+        and project.get("canonical_snapshot_sha256")
+        == evidence["canonical_public_sha256"]
+        and project.get("stage_slug") == EINSTEIN_STAGE_SLUG
+        and _strict_int_equals(project.get("stage_match_count"), 0)
+        and _strict_int_equals(project.get("canonical_public_status"), 200)
+        and _strict_int_equals(project.get("stage_public_status"), 404)
+        and _strict_int_equals(project.get("stage_rest_status"), 200)
+        and _strict_int_equals(project.get("stage_rest_match_count"), 0)
+        and _strict_int_equals(project.get("governed_stage_match_count"), 0)
+        and isinstance(health, dict)
+        and set(health) == {"label", "http_status", "version", "exact"}
+        and _strict_int_equals(health.get("http_status"), 200)
+        and health.get("version") == evidence["before_plugin"]["version"]
+        and health.get("exact") is True
+        and isinstance(payload.get("generated_at_utc"), str)
+        and bool(datetime.fromisoformat(payload["generated_at_utc"]))
+    ):
+        raise RetainedNormalRollbackReconciliationBlocked(
+            "Normal-rollback checkpoint identity or public proof changed"
+        )
+    normalized_storage = payload.get("canonical_storage_comparison")
+    if not isinstance(normalized_storage, dict):
+        raise RetainedNormalRollbackReconciliationBlocked(
+            "Normal-rollback checkpoint storage proof is missing"
+        )
+    raw_storage = copy.deepcopy(normalized_storage)
+    for proof_key in ("baseline", "current"):
+        proof = raw_storage.get(proof_key)
+        if not isinstance(proof, dict) or proof.pop("proof_scope", None) != (
+            "all_post_columns_all_raw_meta_all_term_relationships"
+        ):
+            raise RetainedNormalRollbackReconciliationBlocked(
+                "Normal-rollback checkpoint storage scope is not exact"
+            )
+    storage = canonical_post_storage_comparison(
+        raw_storage, EINSTEIN_CANONICAL_POST_ID
+    )
+    if not (
+        storage["unchanged"] is True
+        and storage["lock_owned"] is True
+        and storage["state_phase"] == "rolled_back"
+    ):
+        raise RetainedNormalRollbackReconciliationBlocked(
+            "Normal-rollback checkpoint storage proof is not exact"
+        )
+    normalized = copy.deepcopy(payload)
+    normalized["canonical_storage_comparison"] = storage
+    return normalized
+
+
+def atomic_write_normal_rollback_checkpoint(
+    path: Path, payload: dict[str, Any], redactor: Redactor
+) -> str:
+    validated_serialized = (
+        json.dumps(redactor.value(payload), ensure_ascii=False, indent=2) + "\n"
+    )
+    redactor.assert_absent(validated_serialized)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary_path: Path | None = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            newline="\n",
+            prefix=f".{path.name}.",
+            suffix=".tmp",
+            dir=path.parent,
+            delete=False,
+        ) as handle:
+            handle.write(validated_serialized)
+            handle.flush()
+            os.fsync(handle.fileno())
+            temporary_path = Path(handle.name)
+        os.replace(temporary_path, path)
+        temporary_path = None
+    finally:
+        if temporary_path is not None:
+            temporary_path.unlink(missing_ok=True)
+    return sha256_bytes(validated_serialized.encode("utf-8"))
+
+
+def normal_rollback_reconciliation_self_test() -> dict[str, Any]:
+    evidence_path = (
+        REPO_ROOT
+        / "reports"
+        / "private-unit-journey-release"
+        / "einstein-flagship-20260814T081547Z-b1718b.json"
+    )
+    evidence = validate_retained_normal_rollback_evidence(
+        evidence_path,
+        expected_run_id=NORMAL_ROLLBACK_RUN_ID,
+        expected_helper_id=NORMAL_ROLLBACK_HELPER_ID,
+        expected_helper_sha256=NORMAL_ROLLBACK_HELPER_SHA256,
+    )
+    frozen_payload = json.loads(evidence_path.read_text(encoding="utf-8"))
+    if not retained_normal_rollback_evidence_payload_is_exact(frozen_payload):
+        raise RuntimeError("Frozen normal-rollback evidence was not classified")
+
+    def replace_at_path(value: dict[str, Any], path: tuple[Any, ...], replacement: Any) -> None:
+        cursor: Any = value
+        for part in path[:-1]:
+            cursor = cursor[part]
+        cursor[path[-1]] = replacement
+
+    evidence_mutations = {
+        "root": (("unexpected",), True),
+        "checks": (("checks", "unexpected"), True),
+        "identity": (("target", "site"), "https://example.invalid"),
+        "artifact": (("artifact", "sha256"), "0" * 64),
+        "helper": (("helper", "id"), 443),
+        "inventory": (
+            ("checks", "live_before", "plugin", "inventory", "digest"),
+            "0" * 64,
+        ),
+        "canonical": (
+            ("checks", "canonical_public_predeploy", "snapshot_sha256"),
+            "0" * 64,
+        ),
+        "stage": (
+            ("checks", "einstein_create_only_preflight", "authenticated_match_count"),
+            1,
+        ),
+        "deploy": (
+            ("checks", "deploy", "plugin", "inventory", "digest"),
+            "0" * 64,
+        ),
+        "stabilization": (
+            ("checks", "stabilization", 0, "expected"),
+            False,
+        ),
+        "rollback": (
+            ("checks", "failure_rollback", "plugin_restored"),
+            False,
+        ),
+        "failure": (
+            ("checks", "failure_canonical_storage_reconciliation", "error"),
+            "different client error",
+        ),
+        "finalize": (
+            ("checks", "failure_finalize", "resource_cleanup_complete"),
+            True,
+        ),
+        "retained_helper": (
+            ("checks", "independent_helper_cleanup", "recovery_retained"),
+            False,
+        ),
+    }
+    mutation_rejections: dict[str, bool] = {}
+    for label, (path, replacement) in evidence_mutations.items():
+        forged = copy.deepcopy(frozen_payload)
+        replace_at_path(forged, path, replacement)
+        mutation_rejections[label] = not retained_normal_rollback_evidence_payload_is_exact(
+            forged
+        )
+    if not all(mutation_rejections.values()):
+        raise RuntimeError("Normal-rollback evidence mutation matrix drifted")
+
+    test_token = "4" * 64
+    stage_path = (
+        REPO_ROOT
+        / "docs"
+        / "wp-drafts"
+        / "einstein-tower-flagship-v3-private-stage.json"
+    )
+    stage_request = validate_einstein_stage_request(stage_path)
+    helper = evidence["helper"]
+    artifact = evidence["artifact"]
+    test_helper = render_helper(
+        route_path=helper["route_path"],
+        token=test_token,
+        run_id=evidence["run_id"],
+        helper_id=helper["id"],
+        helper_name=helper["name"],
+        artifact_mode="upload",
+        artifact_url="",
+        artifact_sha256=artifact["sha256"],
+        artifact_bytes=artifact["archive_bytes"],
+        artifact_entry_count=artifact["entry_count"],
+        artifact_uncompressed_bytes=artifact["uncompressed_bytes"],
+        expected_version=evidence["candidate_version"],
+        page_slug=EINSTEIN_STAGE_SLUG,
+        source_post_id=EINSTEIN_CANONICAL_POST_ID,
+        recovery_adoption_enabled=False,
+        external_stage_commit_enabled=True,
+        project_contract_id=EINSTEIN_PROJECT_CONTRACT_ID,
+        external_stage_body=stage_request["body"],
+    )
+    test_evidence = copy.deepcopy(evidence)
+    test_evidence["helper"]["code_sha256"] = sha256_text(test_helper)
+    helper_contract = extract_retained_normal_rollback_helper_contract(
+        test_helper, test_evidence
+    )
+    rerendered, rerendered_hash = rerender_retained_normal_rollback_helper(
+        test_token, test_evidence
+    )
+    helper_row = {
+        "id": helper["id"],
+        "name": helper["name"],
+        "active": True,
+        "scope": "global",
+        "network": False,
+        "code": test_helper,
+    }
+    if not (
+        rerendered == test_helper
+        and rerendered_hash == sha256_text(test_helper)
+        and helper_contract["recovery_adoption_enabled"] is False
+        and helper_contract["external_stage_commit_enabled"] is True
+        and retained_normal_rollback_helper_row_is_exact(helper_row, test_evidence)
+    ):
+        raise RuntimeError("Original retained normal-run helper contract drifted")
+    helper_row_rejections: dict[str, bool] = {}
+    for label, key, replacement in (
+        ("inactive", "active", False),
+        ("scope", "scope", "admin"),
+        ("network", "network", True),
+        ("trashed", "trashed", True),
+        ("code", "code", test_helper + "\n"),
+    ):
+        forged_row = copy.deepcopy(helper_row)
+        forged_row[key] = replacement
+        helper_row_rejections[label] = not retained_normal_rollback_helper_row_is_exact(
+            forged_row, test_evidence
+        )
+    if not all(helper_row_rejections.values()):
+        raise RuntimeError("Original retained helper mutation gate drifted")
+
+    def storage_proof(tag: str = "same") -> dict[str, Any]:
+        contract = {
+            "schema": CANONICAL_POST_STORAGE_PROOF_SCHEMA,
+            "post_id": EINSTEIN_CANONICAL_POST_ID,
+            "core_sha256": sha256_text(f"core-{tag}"),
+            "core_column_count": 23,
+            "raw_meta_sha256": sha256_text(f"meta-{tag}"),
+            "raw_meta_row_count": 17,
+            "term_relationships_sha256": sha256_text(f"terms-{tag}"),
+            "term_relationships_row_count": 3,
+        }
+        return {
+            **contract,
+            "contract_sha256": sha256_bytes(exact_json_bytes(contract)),
+        }
+
+    proof = storage_proof()
+    storage_comparison = canonical_post_storage_comparison(
+        {
+            "http_status": 200,
+            "schema": CANONICAL_POST_STORAGE_COMPARE_SCHEMA,
+            "post_id": EINSTEIN_CANONICAL_POST_ID,
+            "state_phase": "rolled_back",
+            "lock_owned": True,
+            "baseline": proof,
+            "current": copy.deepcopy(proof),
+            "unchanged": True,
+        },
+        EINSTEIN_CANONICAL_POST_ID,
+    )
+    project_proof = {
+        "label": "before",
+        "canonical_post_id": EINSTEIN_CANONICAL_POST_ID,
+        "canonical_snapshot_sha256": evidence["canonical_public_sha256"],
+        "stage_slug": EINSTEIN_STAGE_SLUG,
+        "stage_match_count": 0,
+        "canonical_public_status": 200,
+        "stage_public_status": 404,
+        "stage_rest_status": 200,
+        "stage_rest_match_count": 0,
+        "governed_stage_match_count": 0,
+    }
+    health_proof = {
+        "label": "before",
+        "http_status": 200,
+        "version": evidence["before_plugin"]["version"],
+        "exact": True,
+    }
+    checkpoint = normal_rollback_checkpoint_payload(
+        evidence, project_proof, health_proof, storage_comparison
+    )
+    validate_normal_rollback_checkpoint(checkpoint, evidence)
+    producer_shape_rejected = False
+    missing_governed = copy.deepcopy(checkpoint)
+    missing_governed["project_public_proof"].pop("governed_stage_match_count")
+    try:
+        validate_normal_rollback_checkpoint(missing_governed, evidence)
+    except RetainedNormalRollbackReconciliationBlocked:
+        producer_shape_rejected = True
+    no_checkpoint_rejected = not Path("missing-normal-rollback-checkpoint.json").is_file()
+    if not producer_shape_rejected or not no_checkpoint_rejected:
+        raise RuntimeError("Normal-rollback checkpoint restart gate drifted")
+
+    finalize_fixture = {
+        "http_status": 200,
+        "idempotent": False,
+        "resource_cleanup_complete": True,
+        "backup_deleted": True,
+        "storage_root_deleted": True,
+        "lock_released": True,
+        "state_deleted": True,
+        "upload_temp_absent": True,
+        "helper_retained": True,
+        "helper_cleanup_pending": True,
+        "helper_id": helper["id"],
+    }
+    first_finalize_exact = normal_rollback_finalize_response_is_exact(
+        finalize_fixture, helper["id"], idempotent=False
+    )
+    second_finalize = copy.deepcopy(finalize_fixture)
+    second_finalize["idempotent"] = True
+    second_finalize_exact = normal_rollback_finalize_response_is_exact(
+        second_finalize, helper["id"], idempotent=True
+    )
+    forged_finalize = copy.deepcopy(second_finalize)
+    forged_finalize["http_status"] = True
+    if not (
+        first_finalize_exact
+        and second_finalize_exact
+        and not normal_rollback_finalize_response_is_exact(
+            forged_finalize, helper["id"], idempotent=True
+        )
+    ):
+        raise RuntimeError("Normal-rollback finalize response contract drifted")
+
+    inspect_fixture = {
+        "http_status": 200,
+        "run_id": evidence["run_id"],
+        "plugin": {
+            "plugin_file": PLUGIN_FILE,
+            "version": evidence["before_plugin"]["version"],
+            "active": True,
+            "inventory": {
+                "file_count": evidence["before_plugin"]["inventory_file_count"],
+                "bytes": evidence["before_plugin"]["inventory_bytes"],
+                "digest": evidence["before_plugin"]["inventory_digest"],
+            },
+        },
+        "lock_free": False,
+        "lock_owned": True,
+        "state_phase": "rolled_back",
+        "target_exact": PLUGIN_FILE,
+        "artifact": copy.deepcopy(evidence["artifact"]),
+        "upload_temp_absent": True,
+    }
+    status_fixture = {
+        "http_status": 200,
+        "plugin": copy.deepcopy(inspect_fixture["plugin"]),
+        "state_phase": "rolled_back",
+        "backup_ready": True,
+        "page_id": 0,
+        "page_rollback_tracked": False,
+        "upload": {
+            "mode": "upload",
+            "verified": True,
+            "next_index": 97,
+            "total_chunks": 97,
+            "received_bytes": artifact["archive_bytes"],
+            "temp_absent": True,
+            "temp_exists": False,
+            "temp_safe": True,
+            "temp_bytes": 0,
+        },
+    }
+    if not (
+        normal_rollback_inspect_is_exact(
+            inspect_fixture, evidence, phase="rolled_back"
+        )
+        and normal_rollback_status_is_exact(
+            status_fixture, evidence, phase="rolled_back"
+        )
+    ):
+        raise RuntimeError("Normal-rollback live-state fixture was rejected")
+    live_gate_rejections: dict[str, bool] = {}
+    for label, fixture_name, path, replacement in (
+        (
+            "plugin",
+            "inspect",
+            ("plugin", "version"),
+            evidence["candidate_version"],
+        ),
+        ("state", "inspect", ("state_phase",), "deployed"),
+        ("lock", "inspect", ("lock_owned",), False),
+        ("page", "status", ("page_id",), 999),
+        ("page_boolean", "status", ("page_id",), False),
+        ("backup", "status", ("backup_ready",), False),
+        ("upload", "status", ("upload", "temp_absent"), False),
+        ("temp_bytes_boolean", "status", ("upload", "temp_bytes"), False),
+    ):
+        forged_fixture = copy.deepcopy(
+            inspect_fixture if fixture_name == "inspect" else status_fixture
+        )
+        replace_at_path(forged_fixture, path, replacement)
+        live_gate_rejections[label] = not (
+            normal_rollback_inspect_is_exact(
+                forged_fixture, evidence, phase="rolled_back"
+            )
+            if fixture_name == "inspect"
+            else normal_rollback_status_is_exact(
+                forged_fixture, evidence, phase="rolled_back"
+            )
+        )
+    forged_project = copy.deepcopy(checkpoint)
+    forged_project["project_public_proof"]["stage_match_count"] = 1
+    try:
+        validate_normal_rollback_checkpoint(forged_project, evidence)
+    except RetainedNormalRollbackReconciliationBlocked:
+        live_gate_rejections["stage"] = True
+    forged_canonical = copy.deepcopy(checkpoint)
+    forged_canonical["project_public_proof"]["canonical_snapshot_sha256"] = "0" * 64
+    try:
+        validate_normal_rollback_checkpoint(forged_canonical, evidence)
+    except RetainedNormalRollbackReconciliationBlocked:
+        live_gate_rejections["canonical"] = True
+    forged_health = copy.deepcopy(checkpoint)
+    forged_health["health_proof"]["version"] = evidence["candidate_version"]
+    try:
+        validate_normal_rollback_checkpoint(forged_health, evidence)
+    except RetainedNormalRollbackReconciliationBlocked:
+        live_gate_rejections["health"] = True
+    if len(live_gate_rejections) != 11 or not all(live_gate_rejections.values()):
+        raise RuntimeError("Normal-rollback live-state finalization gates drifted")
+
+    checkpoint_numeric_rejections: dict[str, bool] = {}
+    for label, path in (
+        ("canonical_post_id", ("project_public_proof", "canonical_post_id")),
+        ("stage_count", ("project_public_proof", "stage_match_count")),
+        (
+            "canonical_public_status",
+            ("project_public_proof", "canonical_public_status"),
+        ),
+        ("stage_public_status", ("project_public_proof", "stage_public_status")),
+        ("stage_rest_status", ("project_public_proof", "stage_rest_status")),
+        (
+            "stage_rest_count",
+            ("project_public_proof", "stage_rest_match_count"),
+        ),
+        (
+            "governed_stage_count",
+            ("project_public_proof", "governed_stage_match_count"),
+        ),
+        ("health_status", ("health_proof", "http_status")),
+    ):
+        forged_numeric = copy.deepcopy(checkpoint)
+        replace_at_path(forged_numeric, path, False)
+        try:
+            validate_normal_rollback_checkpoint(forged_numeric, evidence)
+        except RetainedNormalRollbackReconciliationBlocked:
+            checkpoint_numeric_rejections[label] = True
+    if len(checkpoint_numeric_rejections) != 8 or not all(
+        checkpoint_numeric_rejections.values()
+    ):
+        raise RuntimeError("Normal-rollback checkpoint integer gates drifted")
+
+    raw_storage_fixture = {
+        "http_status": 200,
+        "schema": CANONICAL_POST_STORAGE_COMPARE_SCHEMA,
+        "post_id": EINSTEIN_CANONICAL_POST_ID,
+        "state_phase": "rolled_back",
+        "lock_owned": True,
+        "baseline": proof,
+        "current": copy.deepcopy(proof),
+        "unchanged": True,
+    }
+    storage_gate_rejections: dict[str, bool] = {}
+    for label, path, replacement in (
+        ("missing_status", ("http_status",), None),
+        ("wrong_status", ("http_status",), 201),
+        ("boolean_status", ("http_status",), True),
+        ("wrong_phase", ("state_phase",), "deployed"),
+        ("unowned_lock", ("lock_owned",), False),
+        ("forged_unchanged", ("unchanged",), False),
+    ):
+        forged_storage = copy.deepcopy(raw_storage_fixture)
+        if label == "missing_status":
+            forged_storage.pop("http_status")
+        else:
+            replace_at_path(forged_storage, path, replacement)
+        try:
+            candidate = canonical_post_storage_comparison(
+                forged_storage, EINSTEIN_CANONICAL_POST_ID
+            )
+            storage_gate_rejections[label] = not (
+                candidate["unchanged"] is True
+                and candidate["state_phase"] == "rolled_back"
+                and candidate["lock_owned"] is True
+            )
+        except RuntimeError:
+            storage_gate_rejections[label] = True
+    extra_storage = copy.deepcopy(raw_storage_fixture)
+    extra_storage["unexpected"] = True
+    malformed_storage = copy.deepcopy(raw_storage_fixture)
+    malformed_storage["current"]["contract_sha256"] = "0" * 64
+    for label, forged_storage in (
+        ("extra_key", extra_storage),
+        ("malformed_proof", malformed_storage),
+    ):
+        try:
+            canonical_post_storage_comparison(
+                forged_storage, EINSTEIN_CANONICAL_POST_ID
+            )
+        except RuntimeError:
+            storage_gate_rejections[label] = True
+    for label, proof_key, replacement in (
+        ("core_drift", "core_sha256", sha256_text("core-drift")),
+        ("raw_meta_drift", "raw_meta_sha256", sha256_text("meta-drift")),
+        (
+            "term_relationship_drift",
+            "term_relationships_sha256",
+            sha256_text("term-drift"),
+        ),
+    ):
+        drift_storage = copy.deepcopy(raw_storage_fixture)
+        drift_contract = {
+            key: value
+            for key, value in drift_storage["current"].items()
+            if key != "contract_sha256"
+        }
+        drift_contract[proof_key] = replacement
+        drift_storage["current"] = {
+            **drift_contract,
+            "contract_sha256": sha256_bytes(exact_json_bytes(drift_contract)),
+        }
+        drift_storage["unchanged"] = False
+        drift_result = canonical_post_storage_comparison(
+            drift_storage, EINSTEIN_CANONICAL_POST_ID
+        )
+        storage_gate_rejections[label] = drift_result["unchanged"] is False
+    if len(storage_gate_rejections) != 11 or not all(
+        storage_gate_rejections.values()
+    ):
+        raise RuntimeError("Normal-rollback raw-storage finalization gates drifted")
+
+    def simulate_finalize_responses(
+        responses: list[dict[str, Any] | None], allowed: set[bool]
+    ) -> tuple[bool, int]:
+        for attempt, response in enumerate(responses[:3], start=1):
+            if response is None:
+                continue
+            if any(
+                normal_rollback_finalize_response_is_exact(
+                    response, helper["id"], idempotent=idempotent
+                )
+                for idempotent in allowed
+            ):
+                return True, attempt
+        return False, min(3, len(responses))
+
+    finalize_loss_reconciled = simulate_finalize_responses(
+        [None, second_finalize], {False, True}
+    ) == (True, 2)
+    finalize_exhausted_retains_helper = simulate_finalize_responses(
+        [None, None, None], {False, True}
+    ) == (False, 3)
+    def simulate_cleanup_loss_proof(
+        *,
+        main_item_missing: bool,
+        main_name_absent: bool,
+        main_route_status: int,
+        cleanup_item_missing: bool,
+        cleanup_name_absent: bool,
+        cleanup_route_status: int,
+    ) -> bool:
+        return (
+            main_item_missing
+            and main_name_absent
+            and main_route_status == 404
+            and cleanup_item_missing
+            and cleanup_name_absent
+            and cleanup_route_status == 404
+        )
+
+    cleanup_loss_reconciled = simulate_cleanup_loss_proof(
+        main_item_missing=True,
+        main_name_absent=True,
+        main_route_status=404,
+        cleanup_item_missing=True,
+        cleanup_name_absent=True,
+        cleanup_route_status=404,
+    ) and not simulate_cleanup_loss_proof(
+        main_item_missing=True,
+        main_name_absent=True,
+        main_route_status=404,
+        cleanup_item_missing=True,
+        cleanup_name_absent=True,
+        cleanup_route_status=200,
+    )
+    if not (
+        finalize_loss_reconciled
+        and finalize_exhausted_retains_helper
+        and cleanup_loss_reconciled
+    ):
+        raise RuntimeError("Normal-rollback response-loss simulations drifted")
+
+    source = Path(__file__).read_text(encoding="utf-8")
+    recovery_start = source.find("\ndef reconcile_retained_normal_rollback(")
+    recovery_end = source.find("\ndef _finish_self_test(", recovery_start)
+    recovery_section = source[recovery_start:recovery_end]
+    legacy_validator_start = source.find("\ndef validate_retained_recovery_evidence(")
+    legacy_validator_end = source.find(
+        "\ndef retained_normal_rollback_evidence_payload_is_exact(",
+        legacy_validator_start,
+    )
+    legacy_validator_section = source[legacy_validator_start:legacy_validator_end]
+    main_start = source.find("\ndef main(")
+    main_section = source[main_start:]
+    legacy_recovery_branch_preserved = all(
+        marker in legacy_validator_section
+        for marker in (
+            'deploy_failure.get("failure_stage") == "plugin_install"',
+            'deploy_failure.get("failure_reason_code") == "plugin_upgrade_failed"',
+            'deploy_failure.get("rollback_outcome") == "failed"',
+        )
+    ) and "return recover_retained_run(args)" in main_section
+    if not legacy_recovery_branch_preserved:
+        raise RuntimeError("Legacy retained-run recovery branch changed")
+    for forbidden in (
+        'client.request(\n                    "PUT"',
+        "render_helper(",
+        'call_helper("deploy"',
+        'call_helper("rollback"',
+        'call_helper("adopt_exact_rollback"',
+        'call_helper("commit_external_stage"',
+        "write_einstein_stage(",
+    ):
+        if forbidden in recovery_section:
+            raise RuntimeError(
+                "Normal-rollback reconciliation contains forbidden helper/page mutation: "
+                + forbidden
+            )
+    storage_position = recovery_section.find(
+        "storage_response, storage_payload = call_helper("
+    )
+    checkpoint_position = recovery_section.find(
+        "atomic_write_normal_rollback_checkpoint("
+    )
+    first_finalize_position = recovery_section.find(
+        "first_finalize, first_attempts = finalize_until_exact("
+    )
+    second_finalize_position = recovery_section.find(
+        "second_finalize, second_attempts = finalize_until_exact("
+    )
+    cleanup_position = recovery_section.find("independently_remove_snippet(")
+    cleanup_proof_start = recovery_section.find("def all_cleanup_rows_absent()")
+    cleanup_proof_end = recovery_section.find("\n    try:", cleanup_proof_start)
+    cleanup_proof_section = recovery_section[cleanup_proof_start:cleanup_proof_end]
+    cleanup_item_probe_position = cleanup_proof_section.find(
+        'item = client.request(\n                "GET"'
+    )
+    cleanup_route_probe_position = cleanup_proof_section.find(
+        'route_status = client.request(\n                "POST"'
+    )
+    cleanup_final_collection_position = cleanup_proof_section.find(
+        "final_rows = client.all_snippets()"
+    )
+    cleanup_main_absence_position = cleanup_proof_section.find(
+        "if not snippet_absence_is_proved(", cleanup_final_collection_position
+    )
+    cleanup_rows_absence_position = cleanup_proof_section.find(
+        "for row, item, route_status in cleanup_probes:",
+        cleanup_main_absence_position,
+    )
+    if not (
+        0
+        <= storage_position
+        < checkpoint_position
+        < first_finalize_position
+        < second_finalize_position
+        < cleanup_position
+        and "allowed_actions = {" in recovery_section
+        and "resources_known_absent=True" in recovery_section
+        and "all_cleanup_rows_absent()" in recovery_section
+        and "restart_from_checkpoint" in recovery_section
+        and 0
+        <= cleanup_item_probe_position
+        < cleanup_route_probe_position
+        < cleanup_final_collection_position
+        < cleanup_main_absence_position
+        < cleanup_rows_absence_position
+    ):
+        raise RuntimeError("Normal-rollback reconciliation ordering or bounds drifted")
+
+    with tempfile.TemporaryDirectory(
+        prefix="nadlan-normal-rollback-checkpoint-self-test-"
+    ) as temp_dir:
+        checkpoint_path = Path(temp_dir) / "checkpoint.json"
+        checkpoint_hash = atomic_write_normal_rollback_checkpoint(
+            checkpoint_path, checkpoint, Redactor((test_token,))
+        )
+        written = checkpoint_path.read_bytes()
+        validate_normal_rollback_checkpoint(
+            json.loads(written.decode("utf-8")), evidence
+        )
+        if checkpoint_hash != sha256_bytes(written):
+            raise RuntimeError("Atomic normal-rollback checkpoint hash drifted")
+        checkpoint_text = written.decode("utf-8")
+        if test_token in checkpoint_text or any(
+            forbidden in checkpoint_text
+            for forbidden in (
+                "meta_value",
+                "post_content",
+                "helper_code",
+                "authorization",
+            )
+        ):
+            raise RuntimeError("Normal-rollback checkpoint exposed secret/raw values")
+
+        helper_php_lint = "not_available"
+        php = shutil.which("php")
+        if php:
+            helper_path = Path(temp_dir) / "normal-rollback-helper.php"
+            helper_path.write_text("<?php\n" + test_helper + "\n", encoding="utf-8")
+            lint = subprocess.run(
+                [php, "-l", str(helper_path)],
+                capture_output=True,
+                text=True,
+                timeout=30,
+                check=False,
+            )
+            if lint.returncode != 0:
+                raise RuntimeError("Normal-rollback original helper failed php -l")
+            helper_php_lint = "passed"
+
+    return {
+        "schema": NORMAL_ROLLBACK_RECONCILIATION_SCHEMA,
+        "recovery_case": NORMAL_ROLLBACK_RECOVERY_CASE,
+        "exact_evidence_sha256": evidence["evidence_sha256"],
+        "exact_fixture_classified": True,
+        "legacy_recovery_branch_preserved": legacy_recovery_branch_preserved,
+        "evidence_mutations_rejected": mutation_rejections,
+        "original_helper_rerender_exact": True,
+        "original_helper_mutations_rejected": helper_row_rejections,
+        "original_helper_php_lint": helper_php_lint,
+        "storage_comparison_exact": storage_comparison["unchanged"] is True,
+        "live_finalization_gates": live_gate_rejections,
+        "storage_finalization_gates": storage_gate_rejections,
+        "producer_checkpoint_shape_exact": True,
+        "checkpoint_boolean_integers_rejected": checkpoint_numeric_rejections,
+        "missing_checkpoint_rejected": no_checkpoint_rejected,
+        "first_finalize_exact": first_finalize_exact,
+        "second_finalize_idempotent_exact": second_finalize_exact,
+        "finalize_response_loss_retry_bounded": finalize_loss_reconciled,
+        "finalize_exhaustion_retains_helper": finalize_exhausted_retains_helper,
+        "cleanup_response_loss_reconciliation_present": cleanup_loss_reconciled,
+        "cleanup_final_collection_authoritative_last": True,
+        "forbidden_helper_page_mutations_absent": True,
+        "checkpoint_atomic_and_sanitized": True,
+    }
 
 
 def self_test() -> dict[str, Any]:
@@ -4069,6 +5352,653 @@ def recover_retained_run(args: argparse.Namespace) -> int:
     return 0 if result.get("passed") is True else 5
 
 
+def reconcile_retained_normal_rollback(args: argparse.Namespace) -> int:
+    """Finalize and clean one exact normal rollback without changing its helper."""
+    required = {
+        "--recovery-run-id": args.recovery_run_id,
+        "--recovery-helper-id": args.recovery_helper_id,
+        "--recovery-helper-sha256": args.recovery_helper_sha256,
+    }
+    missing = [name for name, value in required.items() if value in {None, ""}]
+    if missing:
+        raise SystemExit(f"Missing recovery arguments: {', '.join(missing)}")
+    if any(
+        value is not None
+        for value in (
+            args.artifact_url,
+            args.artifact_path,
+            args.artifact_sha256,
+            args.expected_version,
+            args.post_password,
+            args.einstein_stage_request,
+            args.protected_main_commit,
+            args.acceptance_script,
+        )
+    ):
+        raise SystemExit(
+            "Normal-rollback reconciliation forbids artifact, deploy, page, and acceptance arguments"
+        )
+    helper_id = _strict_positive_int(args.recovery_helper_id)
+    helper_hash_arg = str(args.recovery_helper_sha256 or "").lower()
+    if helper_id is None or not re.fullmatch(r"[a-f0-9]{64}", helper_hash_arg):
+        raise SystemExit("Normal-rollback helper identity is invalid")
+    try:
+        evidence = validate_retained_normal_rollback_evidence(
+            args.reconcile_retained_normal_rollback,
+            expected_run_id=str(args.recovery_run_id or ""),
+            expected_helper_id=helper_id,
+            expected_helper_sha256=helper_hash_arg,
+        )
+    except (OSError, ValueError, json.JSONDecodeError) as error:
+        raise SystemExit(str(error)) from error
+
+    file_env = read_env(args.env)
+    merged_env = dict(file_env)
+    merged_env.update({key: value for key, value in os.environ.items() if value})
+    wp_user = merged_env.get("WP_USER", "")
+    wp_password = merged_env.get("WP_APP_PASSWORD", "")
+    base_url_input = merged_env.get("WP_BASE_URL", "").rstrip("/")
+    if not wp_user or not wp_password or not base_url_input:
+        raise SystemExit(
+            "Normal-rollback reconciliation requires WP_BASE_URL, WP_USER, and WP_APP_PASSWORD"
+        )
+    base_url = validate_site_url(base_url_input)
+    if base_url != evidence["base_url"]:
+        raise SystemExit("Recovery environment site differs from the frozen evidence")
+
+    client = WordpressClient(base_url, wp_user, wp_password)
+    public = requests.Session()
+    public.headers.update(
+        {
+            "User-Agent": "NadLan-Normal-Rollback-Reconciliation/1.0",
+            "Accept": "application/json",
+        }
+    )
+    helper = evidence["helper"]
+    artifact = evidence["artifact"]
+    route = str(helper["route"])
+    token = ""
+    created_cleanup_rows: list[dict[str, Any]] = []
+    resources_finalized = False
+    helper_cleanup_proved = False
+    redactor = Redactor((wp_user, wp_password))
+    checkpoint_path = args.output_dir / (
+        f"{evidence['run_id']}-normal-rollback-prefinalize-checkpoint.json"
+    )
+    result: dict[str, Any] = {
+        "schema": NORMAL_ROLLBACK_RECONCILIATION_SCHEMA,
+        "recovery_case": NORMAL_ROLLBACK_RECOVERY_CASE,
+        "passed": False,
+        "run_id": evidence["run_id"],
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "evidence": {
+            "sha256": evidence["evidence_sha256"],
+            "helper_id": helper_id,
+            "helper_sha256": helper_hash_arg,
+            "exact_frozen_report": True,
+        },
+        "target": {
+            "site": base_url,
+            "plugin_file": PLUGIN_FILE,
+            "canonical_public_post_id": EINSTEIN_CANONICAL_POST_ID,
+            "stage_slug": EINSTEIN_STAGE_SLUG,
+            "mode": "retained_normal_rollback_reconciliation",
+        },
+        "checks": {},
+    }
+
+    def governed_stage_matches() -> list[int]:
+        matches: list[int] = []
+        page = 1
+        total_pages = 1
+        while page <= total_pages:
+            query = urlencode(
+                {
+                    "context": "edit",
+                    "status": "any",
+                    "per_page": 100,
+                    "page": page,
+                }
+            )
+            response = client.request(
+                "GET", f"wp/v2/nadlan_project?{query}", timeout=60
+            )
+            if response.status_code < 200 or response.status_code >= 300:
+                require_response(response, "Governed Einstein private-stage lookup")
+            rows = response.json()
+            if not isinstance(rows, list):
+                raise RetainedNormalRollbackReconciliationBlocked(
+                    "Governed Einstein stage lookup was not a collection"
+                )
+            total_pages = int(response.headers.get("X-WP-TotalPages", "1"))
+            if total_pages < 1 or total_pages > 100:
+                raise RetainedNormalRollbackReconciliationBlocked(
+                    "Governed Einstein stage lookup exceeded its bound"
+                )
+            for row in rows:
+                if not isinstance(row, dict):
+                    raise RetainedNormalRollbackReconciliationBlocked(
+                        "Governed Einstein stage lookup contained a malformed row"
+                    )
+                meta = row.get("meta") if isinstance(row.get("meta"), dict) else {}
+                if (
+                    meta.get("_nadlan_private_unit_journey")
+                    == EINSTEIN_PRIVATE_MARKER
+                    or int(meta.get("_nadlan_flagship_source_post_id") or 0)
+                    == EINSTEIN_CANONICAL_POST_ID
+                ):
+                    matches.append(int(row.get("id") or 0))
+            page += 1
+        return matches
+
+    def current_project_proof(label: str) -> dict[str, Any]:
+        canonical_raw = get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
+        canonical_record = wordpress_post_snapshot(canonical_raw)
+        canonical_hash = sha256_bytes(exact_json_bytes(canonical_record))
+        exact_matches = exact_stage_matches(client, EINSTEIN_STAGE_SLUG)
+        owned_matches = governed_stage_matches()
+        if (
+            canonical_hash != evidence["canonical_public_sha256"]
+            or exact_matches
+            or owned_matches
+        ):
+            raise RetainedNormalRollbackReconciliationBlocked(
+                "Canonical post or governed private-stage absence changed"
+            )
+        canonical_url = str(canonical_raw.get("link") or "")
+        if canonical_url != f"{base_url}{EINSTEIN_CANONICAL_PATH}":
+            raise RetainedNormalRollbackReconciliationBlocked(
+                "Canonical authenticated record returned an unexpected public URL"
+            )
+        canonical_public = public.get(
+            canonical_url,
+            params={"cb": f"{evidence['run_id']}-{label}"},
+            timeout=30,
+            allow_redirects=False,
+        )
+        stage_public = public.get(
+            f"{base_url}/projects/{EINSTEIN_STAGE_SLUG}/",
+            params={"cb": f"{evidence['run_id']}-{label}"},
+            timeout=30,
+            allow_redirects=False,
+        )
+        stage_rest = public.get(
+            f"{base_url}/wp-json/wp/v2/nadlan_project",
+            params={"slug": EINSTEIN_STAGE_SLUG, "per_page": 100},
+            timeout=30,
+            allow_redirects=False,
+        )
+        try:
+            stage_rest_rows: Any = stage_rest.json()
+        except ValueError:
+            stage_rest_rows = None
+        if not (
+            canonical_public.status_code == 200
+            and stage_public.status_code == 404
+            and stage_rest.status_code == 200
+            and stage_rest_rows == []
+        ):
+            raise RetainedNormalRollbackReconciliationBlocked(
+                "Anonymous canonical or exact-stage surface proof failed"
+            )
+        return {
+            "label": label,
+            "canonical_post_id": EINSTEIN_CANONICAL_POST_ID,
+            "canonical_snapshot_sha256": canonical_hash,
+            "stage_slug": EINSTEIN_STAGE_SLUG,
+            "stage_match_count": 0,
+            "canonical_public_status": 200,
+            "stage_public_status": 404,
+            "stage_rest_status": 200,
+            "stage_rest_match_count": 0,
+            "governed_stage_match_count": 0,
+        }
+
+    def public_health_proof(label: str) -> dict[str, Any]:
+        response = public.get(
+            f"{base_url}/wp-json/nadlan/v1/healthcheck",
+            params={"cb": f"{evidence['run_id']}-{label}-{utc_slug()}"},
+            timeout=30,
+            allow_redirects=False,
+        )
+        try:
+            payload: Any = response.json() if response.status_code == 200 else {}
+        except ValueError:
+            payload = {}
+        version = find_health_version(payload)
+        if not (
+            response.status_code == 200
+            and version == evidence["before_plugin"]["version"]
+        ):
+            raise RetainedNormalRollbackReconciliationBlocked(
+                "Public health is not the exact pre-deployment plugin version"
+            )
+        return {
+            "label": label,
+            "http_status": 200,
+            "version": version,
+            "exact": True,
+        }
+
+    def read_helper_row() -> dict[str, Any]:
+        response = client.request(
+            "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
+        )
+        return require_response(response, "Retained normal-run helper read")
+
+    allowed_actions = {
+        "inspect",
+        "status",
+        CANONICAL_POST_STORAGE_VERIFY_ACTION,
+        "finalize",
+    }
+
+    def call_helper(
+        action: str, *, timeout: int = 120
+    ) -> tuple[requests.Response, dict[str, Any]]:
+        if action not in allowed_actions:
+            raise RetainedNormalRollbackReconciliationBlocked(
+                "Normal-rollback helper action is outside the read/finalize allowlist"
+            )
+        response = client.request(
+            "POST",
+            route,
+            json_body={
+                "token": token,
+                "helper_sha256": helper_hash_arg,
+                "action": action,
+            },
+            timeout=timeout,
+        )
+        return response, response_payload(response)
+
+    def finalized_helper_proof() -> tuple[dict[str, Any], dict[str, Any]]:
+        inspect_response, inspect = call_helper("inspect", timeout=120)
+        require_response(inspect_response, "Post-finalize helper inspection")
+        status_response, status = call_helper("status", timeout=120)
+        require_response(status_response, "Post-finalize helper status")
+        if not (
+            normal_rollback_inspect_is_exact(inspect, evidence, phase="none")
+            and normal_rollback_status_is_exact(status, evidence, phase="none")
+        ):
+            raise RetainedNormalRollbackReconciliationBlocked(
+                "Post-finalize state, lock, plugin, page, or upload proof is not exact"
+            )
+        return inspect, status
+
+    def finalize_until_exact(
+        *, allowed_idempotent: set[bool], attempts: int
+    ) -> tuple[dict[str, Any], int]:
+        for attempt in range(1, attempts + 1):
+            try:
+                response, payload = call_helper("finalize", timeout=180)
+            except requests.RequestException:
+                continue
+            if response.status_code != 200:
+                continue
+            for idempotent in allowed_idempotent:
+                if normal_rollback_finalize_response_is_exact(
+                    payload, helper_id, idempotent=idempotent
+                ):
+                    return payload, attempt
+        raise RetainedNormalRollbackReconciliationBlocked(
+            "Exact finalization response did not reconcile within its retry bound"
+        )
+
+    def all_cleanup_rows_absent() -> tuple[bool, dict[str, int]]:
+        statuses: dict[str, int] = {}
+        main_item = client.request(
+            "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
+        )
+        main_route_status = client.request(
+            "POST", route, json_body={}, timeout=60
+        ).status_code
+        statuses["main_route"] = main_route_status
+        cleanup_probes: list[tuple[dict[str, Any], requests.Response, int]] = []
+        for row in created_cleanup_rows:
+            row_id = int(row["id"])
+            item = client.request(
+                "GET", f"code-snippets/v1/snippets/{row_id}", timeout=60
+            )
+            route_status = client.request(
+                "POST", str(row["route"]), json_body={}, timeout=60
+            ).status_code
+            statuses[f"cleanup_{row_id}_route"] = route_status
+            cleanup_probes.append((row, item, route_status))
+        final_rows = client.all_snippets()
+        if not snippet_absence_is_proved(
+            main_item,
+            final_rows,
+            snippet_id=helper_id,
+            snippet_name=helper["name"],
+            route_status=main_route_status,
+        ):
+            return False, statuses
+        for row, item, route_status in cleanup_probes:
+            row_id = int(row["id"])
+            if not snippet_absence_is_proved(
+                item,
+                final_rows,
+                snippet_id=row_id,
+                snippet_name=str(row["name"]),
+                route_status=route_status,
+            ):
+                return False, statuses
+        return True, statuses
+
+    try:
+        auth = require_response(
+            client.request("GET", "wp/v2/users/me", timeout=60),
+            "Normal-rollback authentication preflight",
+        )
+        if _strict_positive_int(auth.get("id")) is None:
+            raise RetainedNormalRollbackReconciliationBlocked(
+                "Recovery authentication did not return one user"
+            )
+        rows_before = client.all_snippets()
+        identity_rows = [
+            row
+            for row in rows_before
+            if int(row.get("id") or 0) == helper_id
+            or str(row.get("name") or "") == helper["name"]
+        ]
+        if not (
+            len(identity_rows) == 1
+            and int(identity_rows[0].get("id") or 0) == helper_id
+            and str(identity_rows[0].get("name") or "") == helper["name"]
+        ):
+            raise RetainedNormalRollbackReconciliationBlocked(
+                "Original retained helper identity is absent, ambiguous, or changed"
+            )
+        old_row = read_helper_row()
+        if not retained_normal_rollback_helper_row_is_exact(old_row, evidence):
+            raise RetainedNormalRollbackReconciliationBlocked(
+                "Original retained helper item changed"
+            )
+        old_code = str(old_row.get("code") or "")
+        if not old_code or len(old_code.encode("utf-8")) > 512 * 1024:
+            raise RetainedNormalRollbackReconciliationBlocked(
+                "Original retained helper code size is invalid"
+            )
+        embedded = extract_retained_normal_rollback_helper_contract(
+            old_code, evidence
+        )
+        token = str(embedded["token"])
+        redactor = Redactor((wp_user, wp_password, token, old_code))
+        rendered_helper, rendered_hash = rerender_retained_normal_rollback_helper(
+            token, evidence
+        )
+        if not secrets.compare_digest(rendered_helper, old_code):
+            raise RetainedNormalRollbackReconciliationBlocked(
+                "Original helper bytes differ from the governed local rendering"
+            )
+        redactor = Redactor((wp_user, wp_password, token, old_code, rendered_helper))
+        result["checks"]["helper_identity"] = {
+            "id": helper_id,
+            "name_exact": True,
+            "active": True,
+            "scope": "global",
+            "non_network": True,
+            "non_trashed": True,
+            "code_sha256": rendered_hash,
+            "embedded_contract_exact": True,
+            "locally_rerendered_exact": True,
+            "recovery_adoption_enabled": False,
+            "external_stage_commit_enabled": True,
+            "mutated": False,
+        }
+        result["checks"]["auth_preflight"] = {
+            "authenticated": True,
+            "user_id": int(auth["id"]),
+            "helper_identity_unique": True,
+        }
+
+        project_before = current_project_proof("before")
+        health_before = public_health_proof("before")
+        result["checks"]["project_before"] = project_before
+        result["checks"]["health_before"] = health_before
+        inspect_response, inspect = call_helper("inspect", timeout=120)
+        require_response(inspect_response, "Retained normal-rollback inspection")
+        status_response, status = call_helper("status", timeout=120)
+        require_response(status_response, "Retained normal-rollback status")
+        phase_pair = (inspect.get("state_phase"), status.get("state_phase"))
+        restart_from_checkpoint = phase_pair == ("none", "none")
+        if phase_pair == ("rolled_back", "rolled_back"):
+            if not (
+                normal_rollback_inspect_is_exact(
+                    inspect, evidence, phase="rolled_back"
+                )
+                and normal_rollback_status_is_exact(
+                    status, evidence, phase="rolled_back"
+                )
+            ):
+                raise RetainedNormalRollbackReconciliationBlocked(
+                    "Retained rolled-back state, lock, plugin, page, or upload proof is not exact"
+                )
+            storage_comparison: dict[str, Any] = {}
+            storage_attempts = 0
+            while storage_attempts < 2:
+                storage_attempts += 1
+                try:
+                    storage_response, storage_payload = call_helper(
+                        CANONICAL_POST_STORAGE_VERIFY_ACTION, timeout=120
+                    )
+                    require_response(
+                        storage_response,
+                        "Retained normal-rollback canonical storage comparison",
+                    )
+                    candidate_comparison = canonical_post_storage_comparison(
+                        storage_payload, EINSTEIN_CANONICAL_POST_ID
+                    )
+                    if (
+                        candidate_comparison["unchanged"] is True
+                        and candidate_comparison["state_phase"] == "rolled_back"
+                        and candidate_comparison["lock_owned"] is True
+                    ):
+                        storage_comparison = candidate_comparison
+                        break
+                except requests.RequestException:
+                    continue
+            if not storage_comparison:
+                raise RetainedNormalRollbackReconciliationBlocked(
+                    "Canonical raw-storage comparison did not reconcile"
+                )
+            checkpoint_payload = normal_rollback_checkpoint_payload(
+                evidence,
+                project_before,
+                health_before,
+                storage_comparison,
+            )
+            validate_normal_rollback_checkpoint(checkpoint_payload, evidence)
+            checkpoint_sha256 = atomic_write_normal_rollback_checkpoint(
+                checkpoint_path, checkpoint_payload, redactor
+            )
+            result["checks"]["canonical_storage_before_finalize"] = (
+                storage_comparison
+            )
+            result["checks"]["checkpoint"] = {
+                "filename": checkpoint_path.name,
+                "sha256": checkpoint_sha256,
+                "atomic": True,
+                "sanitized": True,
+                "restart": False,
+            }
+        elif restart_from_checkpoint:
+            if not (
+                normal_rollback_inspect_is_exact(inspect, evidence, phase="none")
+                and normal_rollback_status_is_exact(status, evidence, phase="none")
+            ):
+                raise RetainedNormalRollbackReconciliationBlocked(
+                    "Finalized state is not exact enough for checkpoint recovery"
+                )
+            if (
+                not checkpoint_path.is_file()
+                or checkpoint_path.is_symlink()
+                or checkpoint_path.stat().st_size > 256 * 1024
+            ):
+                raise RetainedNormalRollbackReconciliationBlocked(
+                    "Finalized state has no exact pre-finalize checkpoint"
+                )
+            checkpoint_raw = checkpoint_path.read_bytes()
+            checkpoint_payload = json.loads(checkpoint_raw.decode("utf-8"))
+            validated_checkpoint = validate_normal_rollback_checkpoint(
+                checkpoint_payload, evidence
+            )
+            result["checks"]["canonical_storage_before_finalize"] = (
+                validated_checkpoint["canonical_storage_comparison"]
+            )
+            result["checks"]["checkpoint"] = {
+                "filename": checkpoint_path.name,
+                "sha256": sha256_bytes(checkpoint_raw),
+                "atomic": True,
+                "sanitized": True,
+                "restart": True,
+            }
+        else:
+            raise RetainedNormalRollbackReconciliationBlocked(
+                "Retained helper state phases are not a supported exact pair"
+            )
+
+        first_finalize, first_attempts = finalize_until_exact(
+            allowed_idempotent={True} if restart_from_checkpoint else {False, True},
+            attempts=3,
+        )
+        second_finalize, second_attempts = finalize_until_exact(
+            allowed_idempotent={True}, attempts=3
+        )
+        resources_finalized = True
+        result["checks"]["finalize"] = {
+            "first_idempotent": first_finalize["idempotent"],
+            "first_attempts": first_attempts,
+            "second_idempotent": second_finalize["idempotent"],
+            "second_attempts": second_attempts,
+            "resource_cleanup_complete": True,
+            "helper_retained": True,
+            "response_loss_reconciled": first_attempts > 1 or second_attempts > 1,
+        }
+
+        finalized_helper_proof()
+        if not retained_normal_rollback_helper_row_is_exact(
+            read_helper_row(), evidence
+        ):
+            raise RetainedNormalRollbackReconciliationBlocked(
+                "Original helper changed before independent cleanup"
+            )
+        result["checks"]["project_post_finalize"] = current_project_proof(
+            "post_finalize"
+        )
+        result["checks"]["health_post_finalize"] = public_health_proof(
+            "post_finalize"
+        )
+        result["checks"]["post_finalize_resources"] = {
+            "state_absent": True,
+            "lock_free": True,
+            "backup_absent": True,
+            "storage_absent": True,
+            "upload_absent": True,
+            "page_absent": True,
+            "plugin_exact": True,
+        }
+
+        cleanup_attempts = 0
+        cleanup_error: Exception | None = None
+        cleanup_response_loss_observed = False
+        while cleanup_attempts < 2:
+            cleanup_attempts += 1
+            cleanup_error = None
+            try:
+                independently_remove_snippet(
+                    client,
+                    target_id=helper_id,
+                    target_name=helper["name"],
+                    expected_hash=helper_hash_arg,
+                    release_run_id=evidence["run_id"],
+                    release_token=token,
+                    artifact_mode="upload",
+                    artifact_sha256=artifact["sha256"],
+                    artifact_bytes=artifact["archive_bytes"],
+                    artifact_entry_count=artifact["entry_count"],
+                    artifact_uncompressed_bytes=artifact["uncompressed_bytes"],
+                    resources_known_absent=True,
+                    created_cleanup_rows=created_cleanup_rows,
+                )
+            except Exception as error:
+                cleanup_error = error
+                cleanup_response_loss_observed = True
+            cleanup_absent, cleanup_statuses = all_cleanup_rows_absent()
+            if cleanup_absent:
+                helper_cleanup_proved = True
+                break
+            residual_rows = list(created_cleanup_rows)
+            for residual in residual_rows:
+                residual_id = int(residual["id"])
+                residual_response = client.request(
+                    "GET",
+                    f"code-snippets/v1/snippets/{residual_id}",
+                    timeout=60,
+                )
+                if is_exact_missing_snippet_response(residual_response):
+                    continue
+                independently_remove_snippet(
+                    client,
+                    target_id=residual_id,
+                    target_name=str(residual["name"]),
+                    expected_hash=str(residual["code_sha256"]),
+                    release_run_id=evidence["run_id"],
+                    release_token=token,
+                    artifact_mode="upload",
+                    artifact_sha256=artifact["sha256"],
+                    artifact_bytes=artifact["archive_bytes"],
+                    artifact_entry_count=artifact["entry_count"],
+                    artifact_uncompressed_bytes=artifact["uncompressed_bytes"],
+                    manage_release_resources=False,
+                    resources_known_absent=True,
+                    created_cleanup_rows=created_cleanup_rows,
+                )
+        if not helper_cleanup_proved:
+            if cleanup_error is not None:
+                raise RetainedNormalRollbackReconciliationBlocked(
+                    "Independent helper cleanup did not reconcile: "
+                    + redactor.text(cleanup_error)
+                )
+            raise RetainedNormalRollbackReconciliationBlocked(
+                "Independent helper cleanup did not prove full absence"
+            )
+        result["checks"]["helper_cleanup"] = {
+            "main_helper_absent": True,
+            "main_name_absent": True,
+            "main_route_status": cleanup_statuses["main_route"],
+            "cleanup_helpers_created": len(created_cleanup_rows),
+            "cleanup_items_names_routes_absent": True,
+            "response_loss_reconciled": cleanup_response_loss_observed,
+        }
+        result["checks"]["project_after"] = current_project_proof("after")
+        result["checks"]["health_after"] = public_health_proof("after")
+        result["passed"] = True
+    except Exception as error:
+        result["passed"] = False
+        result["error"] = redactor.text(error)
+        result["recovery_preserved"] = not resources_finalized
+        result["helper_cleanup_proved"] = helper_cleanup_proved
+
+    serialized = json.dumps(redactor.value(result), ensure_ascii=False, indent=2) + "\n"
+    redactor.assert_absent(serialized)
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    output = args.output_dir / (
+        f"{evidence['run_id']}-normal-rollback-reconciliation-{utc_slug()}.json"
+    )
+    output.write_text(serialized, encoding="utf-8")
+    summary = {
+        "output": str(output),
+        "passed": result.get("passed") is True,
+        "run_id": evidence["run_id"],
+        "resources_finalized": resources_finalized,
+        "helper_cleanup_proved": helper_cleanup_proved,
+    }
+    print(json.dumps(redactor.value(summary), ensure_ascii=False, indent=2))
+    return 0 if result.get("passed") is True else 5
+
+
 def _finish_self_test(
     helper: str,
     upload_helper: str,
@@ -4076,6 +6006,7 @@ def _finish_self_test(
     cleanup_helper: str,
     cleanup_contract: dict[str, Any],
 ) -> dict[str, Any]:
+    normal_rollback_reconciliation = normal_rollback_reconciliation_self_test()
     external_commit_start = external_stage_helper.find(
         "if ( 'commit_external_stage' === $action )"
     )
@@ -6474,6 +8405,7 @@ def _finish_self_test(
             "extra_response_key_rejected": comparison_http_status_rejections["extra"],
             "action_name_exact": True,
         },
+        "normal_rollback_reconciliation": normal_rollback_reconciliation,
         "rollback_activation_contract": True,
         "secure_local_upload": True,
         "noncanonical_path_rejected": noncanonical_path_rejected,
@@ -6608,6 +8540,11 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         help="Exact sanitized failed-run evidence JSON for recovery-only adoption.",
     )
+    parser.add_argument(
+        "--reconcile-retained-normal-rollback",
+        type=Path,
+        help="Exact frozen normal-rollback report for finalize-only reconciliation.",
+    )
     parser.add_argument("--recovery-run-id")
     parser.add_argument("--recovery-helper-id", type=int)
     parser.add_argument("--recovery-helper-sha256")
@@ -6620,6 +8557,13 @@ def main() -> int:
     if args.self_test:
         print(json.dumps(self_test(), ensure_ascii=False, indent=2))
         return 0
+    if (
+        args.recover_retained_run is not None
+        and args.reconcile_retained_normal_rollback is not None
+    ):
+        raise SystemExit("Select exactly one retained-run recovery mode")
+    if args.reconcile_retained_normal_rollback is not None:
+        return reconcile_retained_normal_rollback(args)
     if args.recover_retained_run is not None:
         return recover_retained_run(args)
     if any(
@@ -6631,7 +8575,7 @@ def main() -> int:
         )
     ):
         raise SystemExit(
-            "Recovery identity arguments require --recover-retained-run"
+            "Recovery identity arguments require one retained-run recovery mode"
         )
 
     einstein_request: dict[str, Any] | None = None
