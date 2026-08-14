@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Governed read/copy-only capture of the unknown live nadlan-config 1.72.207 tree.
+"""Governed Phase-A audit of the unknown live nadlan-config 1.72.207 tree.
 
-The live actions are deliberately split. ``audit`` creates one temporary,
-admin-gated Code Snippets helper and performs two stable read-only audits.
-``snapshot`` is a separately confirmed action that creates and downloads the
-run-owned plugin archive. ``cleanup`` re-verifies the local archive/extraction,
-removes only that snapshot, then hard-deletes the helper and proves absence.
+This reviewed phase permits only ``audit`` and ``cleanup-helper``. ``audit``
+creates one temporary, admin-gated Code Snippets helper and performs two stable
+read-only audits. It emits the complete observed baseline for independent
+review. Snapshot creation and download are structurally unavailable until a
+separate commit embeds that exact reviewed contract and explicitly enables the
+Phase-B commands. ``cleanup-helper`` removes only this vehicle's exact helper
+after reserving durable terminal evidence, then proves absence.
 
 This vehicle never adopts, resumes, changes, or deletes retained run 4527b2.
 Credentials and the generated route token are read only from memory and are
@@ -20,10 +22,13 @@ import base64
 import contextlib
 import datetime as dt
 import hashlib
+import hmac
+import importlib
 import json
 import os
 from pathlib import Path, PurePosixPath
 import re
+import secrets
 import shutil
 import stat
 import subprocess
@@ -33,8 +38,6 @@ import time
 from typing import Any, Iterable
 from urllib.parse import urlsplit
 import zipfile
-
-import requests
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -49,7 +52,10 @@ SOURCE_REPO_PATHS = tuple(
 RUN_ID = "einstein-flagship-20260814T124439Z-4527b2"
 ROUTE_NAMESPACE = "nadlan-live-recovery/v1"
 TOKEN_ENV = "NADLAN_EINSTEIN_RECOVERY_TOKEN"
-TEMPLATE_SHA256 = "59ab83d4064592fe4117e5f76a8cbaadfc7ddf7786a217fc61644d933e3528bf"
+SNAPSHOT_ACTIONS_ENABLED = False
+PINNED_EXPECTED_LIVE_CONTRACT: dict[str, Any] | None = None
+PINNED_EXPECTED_LIVE_CONTRACT_SHA256 = ""
+TEMPLATE_SHA256 = "c3fdf588027bb5be6bb9ddfde3ecc1e1e4618f2e599ababab6d6eb1b83c12e17"
 EXPECTED_RAW_META_MAP_SHA256 = (
     "cc0fd63af6f339e70115231f0bfacf62e3f37628ed0abd45a4b0d8fa76a1ee48"
 )
@@ -89,9 +95,27 @@ CHUNK_BYTES = 64 * 1024
 MISSING_SNIPPET_CODE = "rest_cannot_get"
 MISSING_SNIPPET_MESSAGE = "The snippet could not be found."
 
+_REQUESTS: Any | None = None
+
 
 class RecoveryHold(RuntimeError):
     """A fail-closed state that requires review but not a destructive retry."""
+
+
+class NetworkRequestFailed(RuntimeError):
+    """A sanitized requests transport failure."""
+
+
+def requests_module() -> Any:
+    global _REQUESTS
+    if _REQUESTS is None:
+        try:
+            _REQUESTS = importlib.import_module("requests")
+        except ModuleNotFoundError as error:
+            raise RuntimeError(
+                "Live actions require the optional 'requests' package"
+            ) from error
+    return _REQUESTS
 
 
 def sha256_bytes(value: bytes) -> str:
@@ -213,6 +237,55 @@ def run_git(*args: str, binary: bool = False) -> str | bytes:
     return completed.stdout
 
 
+def fresh_main_authority(
+    head: str, *, process_runner: Any = subprocess.run
+) -> str:
+    """Fetch and authorize only against the just-resolved FETCH_HEAD commit."""
+
+    fetch_command = [
+        "git",
+        "fetch",
+        "--no-tags",
+        "--no-recurse-submodules",
+        "origin",
+        "main",
+    ]
+    fetch = process_runner(
+        fetch_command,
+        cwd=REPO_ROOT,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.PIPE,
+        text=True,
+        check=False,
+    )
+    if fetch.returncode != 0:
+        raise RuntimeError("Fresh protected-main fetch failed")
+    resolved = process_runner(
+        ["git", "rev-parse", "--verify", "FETCH_HEAD^{commit}"],
+        cwd=REPO_ROOT,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        check=False,
+    )
+    fetched_main = str(resolved.stdout or "").strip().lower()
+    if resolved.returncode != 0 or not COMMIT_RE.fullmatch(fetched_main):
+        raise RuntimeError("Fresh FETCH_HEAD commit could not be resolved exactly")
+    ancestor = process_runner(
+        ["git", "merge-base", "--is-ancestor", head, fetched_main],
+        cwd=REPO_ROOT,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        text=False,
+        check=False,
+    )
+    if ancestor.returncode != 0:
+        raise RuntimeError(
+            "Recovery source commit is not contained in freshly fetched main"
+        )
+    return fetched_main
+
+
 def source_facts(expected_commit: str, *, require_main: bool = True) -> dict[str, Any]:
     if not COMMIT_RE.fullmatch(expected_commit):
         raise RuntimeError("Expected source commit must be a full lowercase SHA-1")
@@ -230,16 +303,6 @@ def source_facts(expected_commit: str, *, require_main: bool = True) -> dict[str
     )
     if status.strip():
         raise RuntimeError("Recovery source files are dirty or untracked")
-    if require_main:
-        ancestor = subprocess.run(
-            ["git", "merge-base", "--is-ancestor", head, "origin/main"],
-            cwd=REPO_ROOT,
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-            check=False,
-        )
-        if ancestor.returncode != 0:
-            raise RuntimeError("Recovery source commit is not contained in origin/main")
     files: dict[str, dict[str, Any]] = {}
     for disk_path, repo_path in zip(SOURCE_PATHS, SOURCE_REPO_PATHS):
         disk_bytes = read_lf_source_bytes(disk_path)
@@ -253,7 +316,13 @@ def source_facts(expected_commit: str, *, require_main: bool = True) -> dict[str
         }
     if files[SOURCE_REPO_PATHS[1]]["sha256"] != TEMPLATE_SHA256:
         raise RuntimeError("Recovery helper template source hash drifted")
-    return {"commit": head, "on_origin_main": require_main, "files": files}
+    fresh_main_commit = fresh_main_authority(head) if require_main else None
+    return {
+        "commit": head,
+        "contained_in_fresh_main": require_main,
+        "fresh_main_commit": fresh_main_commit,
+        "files": files,
+    }
 
 
 def session_identity(token: str) -> dict[str, str]:
@@ -282,6 +351,17 @@ def render_helper(
         "__HELPER_NAME_JSON__": json.dumps(identity["helper_name"]),
         "__SOURCE_COMMIT_JSON__": json.dumps(source_commit),
         "__STORAGE_SLUG_JSON__": json.dumps(identity["storage_slug"]),
+        "__SNAPSHOT_ACTIONS_ENABLED_BOOL__": (
+            "true" if SNAPSHOT_ACTIONS_ENABLED else "false"
+        ),
+        "__EXPECTED_LIVE_CONTRACT_JSON__": json.dumps(
+            PINNED_EXPECTED_LIVE_CONTRACT,
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ),
+        "__EXPECTED_LIVE_CONTRACT_SHA256_JSON__": json.dumps(
+            PINNED_EXPECTED_LIVE_CONTRACT_SHA256
+        ),
     }
     rendered = template_bytes.decode("utf-8")
     for marker, replacement in replacements.items():
@@ -314,10 +394,10 @@ class WordpressClient:
         user: str,
         password: str,
         *,
-        session: requests.Session | None = None,
+        session: Any | None = None,
     ):
         self.base_url = base_url.rstrip("/")
-        self.session = session or requests.Session()
+        self.session = session or requests_module().Session()
         self.session.auth = (user, password)
         self.session.headers.update(
             {
@@ -327,7 +407,7 @@ class WordpressClient:
         )
 
     @staticmethod
-    def is_host_html_403(response: requests.Response) -> bool:
+    def is_host_html_403(response: Any) -> bool:
         content_type = str(response.headers.get("Content-Type") or "").lower()
         prefix = response.content[:512].lower()
         return (
@@ -343,27 +423,46 @@ class WordpressClient:
         *,
         json_body: dict[str, Any] | None = None,
         params: dict[str, Any] | None = None,
+        headers: dict[str, str] | None = None,
         timeout: int = 60,
-    ) -> requests.Response:
+    ) -> Any:
         normalized = route.lstrip("/")
-        response = self.session.request(
-            method,
-            f"{self.base_url}/wp-json/{normalized}",
-            json=json_body,
-            params=params,
-            timeout=timeout,
-        )
+        try:
+            response = self.session.request(
+                method,
+                f"{self.base_url}/wp-json/{normalized}",
+                json=json_body,
+                params=params,
+                headers=headers,
+                timeout=timeout,
+            )
+        except Exception as error:
+            module = _REQUESTS
+            if module is not None and isinstance(error, module.RequestException):
+                raise NetworkRequestFailed(
+                    "Authenticated network request failed"
+                ) from error
+            raise
         if self.is_host_html_403(response):
             fallback_params = {"rest_route": f"/{normalized}"}
             if params:
                 fallback_params.update(params)
-            response = self.session.request(
-                method,
-                f"{self.base_url}/",
-                json=json_body,
-                params=fallback_params,
-                timeout=timeout,
-            )
+            try:
+                response = self.session.request(
+                    method,
+                    f"{self.base_url}/",
+                    json=json_body,
+                    params=fallback_params,
+                    headers=headers,
+                    timeout=timeout,
+                )
+            except Exception as error:
+                module = _REQUESTS
+                if module is not None and isinstance(error, module.RequestException):
+                    raise NetworkRequestFailed(
+                        "Authenticated fallback network request failed"
+                    ) from error
+                raise
         return response
 
     def all_snippets(self) -> list[dict[str, Any]]:
@@ -393,7 +492,7 @@ class WordpressClient:
         return rows
 
 
-def require_object(response: requests.Response, label: str) -> dict[str, Any]:
+def require_object(response: Any, label: str) -> dict[str, Any]:
     if not 200 <= response.status_code < 300:
         code = "unknown"
         try:
@@ -412,20 +511,31 @@ def require_object(response: requests.Response, label: str) -> dict[str, Any]:
     return payload
 
 
-def is_exact_missing_snippet(response: requests.Response) -> bool:
-    if response.status_code == 404:
-        return True
-    if response.status_code != 500:
+def is_exact_missing_snippet(response: Any) -> bool:
+    if response.status_code not in (404, 500):
         return False
     try:
         payload = response.json()
     except ValueError:
         return False
-    return (
-        isinstance(payload, dict)
-        and payload.get("code") == MISSING_SNIPPET_CODE
-        and payload.get("message") == MISSING_SNIPPET_MESSAGE
-    )
+    if not isinstance(payload, dict):
+        return False
+    if response.status_code == 500:
+        return (
+            payload.get("code") == MISSING_SNIPPET_CODE
+            and payload.get("message") == MISSING_SNIPPET_MESSAGE
+        )
+    return payload.get("code") in {MISSING_SNIPPET_CODE, "rest_post_invalid_id"}
+
+
+def is_exact_missing_route(response: Any) -> bool:
+    if response.status_code != 404:
+        return False
+    try:
+        payload = response.json()
+    except ValueError:
+        return False
+    return isinstance(payload, dict) and payload.get("code") == "rest_no_route"
 
 
 def helper_expected(
@@ -438,6 +548,89 @@ def helper_expected(
         "scope": "global",
         "code_sha256": sha256_bytes(helper_code.encode("utf-8")),
     }
+
+
+def inspect_owned_helper(
+    client: WordpressClient,
+    *,
+    identity: dict[str, str],
+    token: str,
+    helper_id: int,
+    helper_code: str,
+) -> dict[str, Any]:
+    rows = client.all_snippets()
+    matches = [
+        row
+        for row in rows
+        if str(row.get("name") or "") == identity["helper_name"]
+        or (helper_id > 0 and int(row.get("id") or 0) == helper_id)
+    ]
+    unique_ids = {int(row.get("id") or 0) for row in matches}
+    if len(unique_ids) > 1:
+        return {"state": "uncertain_multiple_rows", "safe_to_mutate": False}
+    if not matches:
+        item_absent = helper_id <= 0
+        if helper_id > 0:
+            item_response = client.request(
+                "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
+            )
+            item_absent = is_exact_missing_snippet(item_response)
+        route_response = call_helper(
+            client,
+            route=identity["route"],
+            token=token,
+            helper_sha256="0" * 64,
+            action="storage_status",
+        )
+        return {
+            "state": (
+                "absent"
+                if item_absent and is_exact_missing_route(route_response)
+                else "uncertain"
+            ),
+            "item_absent": item_absent,
+            "collection_absent": True,
+            "route_absent": is_exact_missing_route(route_response),
+            "safe_to_mutate": False,
+        }
+    observed_id = next(iter(unique_ids))
+    response = client.request(
+        "GET", f"code-snippets/v1/snippets/{observed_id}", timeout=60
+    )
+    payload = require_object(response, "Owned recovery helper inspection")
+    observed = observed_snippet(payload)
+    placeholder = f"/* inactive placeholder for {identity['helper_name']} */"
+    allowed = [
+        {
+            "label": "exact_inactive_placeholder",
+            "expected": {
+                "id": observed_id,
+                "name": identity["helper_name"],
+                "active": False,
+                "scope": "global",
+                "code_sha256": sha256_bytes(placeholder.encode("utf-8")),
+            },
+        }
+    ]
+    if helper_code:
+        allowed.extend(
+            {
+                "label": f"exact_{'active' if active else 'inactive'}_helper",
+                "expected": helper_expected(
+                    observed_id, helper_code, identity, active=active
+                ),
+            }
+            for active in (False, True)
+        )
+    for candidate in allowed:
+        if observed == candidate["expected"]:
+            return {
+                "state": candidate["label"],
+                "helper": observed,
+                "safe_to_delete": True,
+                "safe_to_self_delete": observed["active"] is True,
+            }
+    return {"state": "drifted", "helper": observed, "safe_to_mutate": False}
 
 
 def verify_helper_row(
@@ -464,15 +657,20 @@ def call_helper(
     action: str,
     extra: dict[str, Any] | None = None,
     timeout: int = 180,
-) -> requests.Response:
+) -> Any:
     body: dict[str, Any] = {
-        "token": token,
         "helper_sha256": helper_sha256,
         "action": action,
     }
     if extra:
         body.update(extra)
-    return client.request("POST", route, json_body=body, timeout=timeout)
+    return client.request(
+        "POST",
+        route,
+        json_body=body,
+        headers={"X-Nadlan-Recovery-Token": token},
+        timeout=timeout,
+    )
 
 
 def call_helper_object_retry(
@@ -502,7 +700,7 @@ def call_helper_object_retry(
                 ),
                 label,
             )
-        except requests.RequestException as error:
+        except NetworkRequestFailed as error:
             last_error = error
     if last_error is not None:
         raise last_error
@@ -530,97 +728,534 @@ def auth_preflight(client: WordpressClient) -> dict[str, Any]:
     }
 
 
-def validate_audit(payload: dict[str, Any]) -> dict[str, Any]:
+def validate_inventory_contract(value: Any) -> dict[str, Any]:
+    if not isinstance(value, dict) or set(value) != {
+        "file_count",
+        "directory_count",
+        "bytes",
+        "digest",
+        "tree_digest",
+        "rows",
+        "directories",
+    }:
+        raise RuntimeError("Full inventory shape is invalid")
+    rows = value.get("rows")
+    directories = value.get("directories")
+    if not isinstance(rows, list) or not isinstance(directories, list):
+        raise RuntimeError("Full inventory rows are unavailable")
+    normalized_rows: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for row in rows:
+        if not isinstance(row, dict) or set(row) != {"path", "bytes", "sha256"}:
+            raise RuntimeError("Full inventory file row is invalid")
+        path = validate_relative_path(str(row.get("path") or ""))
+        folded = path.casefold()
+        size = row.get("bytes")
+        digest = str(row.get("sha256") or "")
+        if (
+            folded in seen
+            or not isinstance(size, int)
+            or isinstance(size, bool)
+            or not 0 <= size <= MAX_FILE_BYTES
+            or not HASH_RE.fullmatch(digest)
+        ):
+            raise RuntimeError("Full inventory file identity is invalid")
+        seen.add(folded)
+        normalized_rows.append({"path": path, "bytes": size, "sha256": digest})
+    normalized_directories: list[str] = []
+    for raw_directory in directories:
+        directory = validate_relative_path(str(raw_directory or ""))
+        folded = directory.casefold()
+        if folded in seen:
+            raise RuntimeError("Full inventory directory collision detected")
+        seen.add(folded)
+        normalized_directories.append(directory)
     if (
-        payload.get("schema") != "nadlan-einstein-live-recovery-audit/v1"
-        or payload.get("run_id") != RUN_ID
-        or payload.get("integrity_passed") is not True
-        or payload.get("snapshot_eligible") is not True
-        or not HASH_RE.fullmatch(str(payload.get("audit_fingerprint") or ""))
-        or payload.get("retained_helpers") != EXPECTED_HELPERS
+        len(normalized_rows) > MAX_FILES
+        or len(normalized_directories) > 2048
+        or normalized_rows != sorted(normalized_rows, key=lambda row: row["path"])
+        or normalized_directories != sorted(normalized_directories)
     ):
-        raise RuntimeError("Retained live audit identity or integrity failed")
-    state = payload.get("state")
-    lock = payload.get("lock")
-    storage = payload.get("retained_storage")
-    stage = payload.get("stage_post")
-    canonical = payload.get("canonical_post")
-    plugin = payload.get("plugin")
-    if not all(
-        isinstance(row, dict)
-        for row in (state, lock, storage, stage, canonical, plugin)
+        raise RuntimeError("Full inventory ordering or bounds are invalid")
+    calculated = inventory_contract(normalized_rows, normalized_directories)
+    if calculated != value or calculated["bytes"] > MAX_TREE_BYTES:
+        raise RuntimeError("Full inventory digest is invalid")
+    return value
+
+
+def validate_storage_proof(value: Any, post_id: int) -> dict[str, Any]:
+    if not isinstance(value, dict) or set(value) != {
+        "schema",
+        "post_id",
+        "core_sha256",
+        "core_column_count",
+        "raw_meta_sha256",
+        "raw_meta_row_count",
+        "term_relationships_sha256",
+        "term_relationships_row_count",
+        "contract_sha256",
+    }:
+        raise RuntimeError("Post storage proof shape is invalid")
+    base = {key: child for key, child in value.items() if key != "contract_sha256"}
+    if (
+        value.get("schema") != "nadlan-canonical-post-storage-proof/v1"
+        or value.get("post_id") != post_id
+        or any(
+            not HASH_RE.fullmatch(str(value.get(key) or ""))
+            for key in (
+                "core_sha256",
+                "raw_meta_sha256",
+                "term_relationships_sha256",
+                "contract_sha256",
+            )
+        )
+        or value.get("contract_sha256") != sha256_bytes(exact_json_bytes(base))
     ):
-        raise RuntimeError("Retained live audit sections are incomplete")
+        raise RuntimeError("Post storage proof aggregate hash is invalid")
+    return value
+
+
+def validate_raw_snapshot(value: Any, post_id: int) -> dict[str, Any]:
+    """Recompute the byte-stable direct-DB JSON snapshot contract."""
+
+    if not isinstance(value, dict) or set(value) != {
+        "schema",
+        "post_id",
+        "core",
+        "meta",
+        "terms",
+        "contract_sha256",
+    }:
+        raise RuntimeError("Raw post snapshot shape is invalid")
+    core = value.get("core")
+    meta_rows = value.get("meta")
+    terms = value.get("terms")
+    if (
+        value.get("schema") != "nadlan-einstein-public-raw-snapshot/v1"
+        or value.get("post_id") != post_id
+        or not isinstance(core, dict)
+        or not isinstance(meta_rows, list)
+        or not isinstance(terms, list)
+        or len(core) > 128
+        or len(meta_rows) > 4096
+        or len(terms) > 1024
+        or int(core.get("ID") or 0) != post_id
+    ):
+        raise RuntimeError("Raw post snapshot core contract is invalid")
+    normalized_meta: list[dict[str, str]] = []
+    prior_meta_id = 0
+    for row in meta_rows:
+        if not isinstance(row, dict) or set(row) != {
+            "meta_id",
+            "post_id",
+            "meta_key",
+            "meta_value",
+        }:
+            raise RuntimeError("Raw post snapshot metadata row is invalid")
+        normalized = {
+            "meta_id": str(row.get("meta_id") or ""),
+            "post_id": str(row.get("post_id") or ""),
+            "meta_key": str(row.get("meta_key") or ""),
+            "meta_value": str(row.get("meta_value") or ""),
+        }
+        if (
+            not normalized["meta_id"].isdigit()
+            or int(normalized["meta_id"]) <= prior_meta_id
+            or normalized["post_id"] != str(post_id)
+            or not normalized["meta_key"]
+        ):
+            raise RuntimeError("Raw post snapshot metadata ordering is invalid")
+        prior_meta_id = int(normalized["meta_id"])
+        normalized_meta.append(normalized)
+    normalized_terms: list[dict[str, str]] = []
+    prior_term_id = -1
+    for row in terms:
+        if not isinstance(row, dict) or set(row) != {
+            "object_id",
+            "term_taxonomy_id",
+            "term_order",
+        }:
+            raise RuntimeError("Raw post snapshot term row is invalid")
+        normalized = {
+            "object_id": str(row.get("object_id") or ""),
+            "term_taxonomy_id": str(row.get("term_taxonomy_id") or ""),
+            "term_order": str(row.get("term_order") or ""),
+        }
+        if (
+            normalized["object_id"] != str(post_id)
+            or not normalized["term_taxonomy_id"].isdigit()
+            or int(normalized["term_taxonomy_id"]) < prior_term_id
+            or not normalized["term_order"].lstrip("-").isdigit()
+        ):
+            raise RuntimeError("Raw post snapshot term ordering is invalid")
+        prior_term_id = int(normalized["term_taxonomy_id"])
+        normalized_terms.append(normalized)
+    normalized_core = dict(core)
+    base = {
+        "schema": "nadlan-einstein-public-raw-snapshot/v1",
+        "post_id": post_id,
+        "core": normalized_core,
+        "meta": normalized_meta,
+        "terms": normalized_terms,
+    }
+    if (
+        not HASH_RE.fullmatch(str(value.get("contract_sha256") or ""))
+        or value.get("contract_sha256") != sha256_bytes(exact_json_bytes(base))
+    ):
+        raise RuntimeError("Raw post snapshot aggregate hash is invalid")
+    return value
+
+
+def raw_snapshot_meta_contract(
+    snapshot: dict[str, Any],
+) -> tuple[dict[str, str], list[str], list[str]]:
+    raw_map: dict[str, str] = {}
+    duplicates: list[str] = []
+    for row in snapshot["meta"]:
+        key = row["meta_key"]
+        if key in raw_map:
+            duplicates.append(key)
+        else:
+            raw_map[key] = row["meta_value"]
+    return (
+        {key: raw_map[key] for key in sorted(raw_map)},
+        sorted(raw_map),
+        sorted(set(duplicates)),
+    )
+
+
+def validate_option_baseline(
+    value: Any,
+    *,
+    option_name: str,
+    required_keys: set[str],
+) -> dict[str, Any]:
+    expected_fields = {
+        "option_name",
+        "autoload",
+        "raw_sha256",
+        "raw_bytes",
+        "keys",
+        "keys_sha256",
+        "decoded_sha256",
+        "run_id",
+    }
+    expected_fields.update(
+        ("phase", "page_id")
+        if option_name.startswith("nadlan_unit_journey_state_")
+        else ("created_at",)
+    )
+    if not isinstance(value, dict) or set(value) != expected_fields:
+        raise RuntimeError("Option baseline shape is invalid")
+    keys = value.get("keys")
+    if (
+        value.get("option_name") != option_name
+        or not isinstance(keys, list)
+        or keys != sorted(keys)
+        or len(keys) != len(set(keys))
+        or not required_keys.issubset(set(keys))
+        or value.get("keys_sha256") != sha256_bytes(exact_json_bytes(keys))
+        or not isinstance(value.get("raw_bytes"), int)
+        or not 0 < value["raw_bytes"] <= 2 * 1024 * 1024
+        or any(
+            not HASH_RE.fullmatch(str(value.get(key) or ""))
+            for key in ("raw_sha256", "keys_sha256", "decoded_sha256")
+        )
+        or value.get("run_id") != RUN_ID
+    ):
+        raise RuntimeError("Option baseline exact key/hash contract failed")
+    return value
+
+
+def validate_baseline_contract(value: Any) -> dict[str, Any]:
+    if not isinstance(value, dict) or set(value) != {
+        "schema",
+        "run_id",
+        "retained_helpers",
+        "state",
+        "lock",
+        "retained_storage",
+        "stage_post",
+        "canonical_post",
+        "plugin",
+        "marker_pre_registered",
+        "known_semantic_integrity",
+        "contract_sha256",
+    }:
+        raise RuntimeError("Observed live baseline shape is invalid")
+    base = {key: child for key, child in value.items() if key != "contract_sha256"}
+    if (
+        value.get("schema") != "nadlan-einstein-live-recovery-baseline/v1"
+        or value.get("run_id") != RUN_ID
+        or value.get("retained_helpers") != EXPECTED_HELPERS
+        or value.get("known_semantic_integrity") is not True
+        or value.get("marker_pre_registered") is not True
+        or value.get("contract_sha256") != sha256_bytes(exact_json_bytes(base))
+    ):
+        raise RuntimeError("Observed live baseline identity failed")
+    state_key = "nadlan_unit_journey_state_" + hashlib.sha256(RUN_ID.encode()).hexdigest()[:16]
+    state = validate_option_baseline(
+        value.get("state"),
+        option_name=state_key,
+        required_keys={"run_id", "phase", "page_id", "backup_root", "upload_path"},
+    )
+    lock = validate_option_baseline(
+        value.get("lock"),
+        option_name="nadlan_unit_journey_deploy_lock",
+        required_keys={"run_id", "created_at"},
+    )
+    if state.get("phase") != "page_creating" or state.get("page_id") != 6594:
+        raise RuntimeError("Observed retained phase/post identity changed")
+    if not isinstance(lock.get("created_at"), int) or lock["created_at"] <= 0:
+        raise RuntimeError("Observed retained lock ownership is invalid")
+    storage = value.get("retained_storage")
+    if not isinstance(storage, dict) or set(storage) != {
+        "storage_leaf",
+        "inventory",
+        "backup",
+        "upload_relative_path",
+        "upload_temp_absent",
+    }:
+        raise RuntimeError("Observed retained storage baseline is invalid")
+    storage_inventory = validate_inventory_contract(storage.get("inventory"))
     backup = storage.get("backup")
-    stage_storage = stage.get("storage")
-    canonical_storage = canonical.get("storage")
-    inventory = plugin.get("inventory")
-    if not all(
-        isinstance(row, dict)
-        for row in (backup, stage_storage, canonical_storage, inventory)
-    ):
-        raise RuntimeError("Retained live audit storage sections are incomplete")
-    if not (
-        state.get("option_row_count") == 1
-        and state.get("run_id") == RUN_ID
-        and state.get("phase") == "page_creating"
-        and state.get("page_id") == 6594
-        and state.get("fields_exact") is True
-        and lock.get("option_row_count") == 1
-        and lock.get("run_id") == RUN_ID
-        and lock.get("owned") is True
-        and storage.get("upload_temp_absent") is True
-        and isinstance(backup, dict)
-        and backup.get("exact") is True
-        and stage.get("post_id") == 6594
-        and stage.get("raw_map_sha256") == EXPECTED_RAW_META_MAP_SHA256
-        and stage.get("raw_meta_unique_keys") == 37
-        and stage.get("duplicate_key_count") == 0
-        and stage.get("core_exact") is True
-        and stage.get("meta_exact") is True
-        and isinstance(stage_storage, dict)
-        and stage_storage.get("core_column_count") == 23
-        and stage_storage.get("raw_meta_row_count") == 37
-        and canonical.get("post_id") == 4867
-        and canonical.get("exact") is True
-        and isinstance(canonical_storage, dict)
-        and canonical_storage.get("contract_sha256")
-        == EXPECTED_CANONICAL_STORAGE_SHA256
-        and plugin.get("plugin_file") == "nadlan-config/nadlan-config.php"
-        and plugin.get("version") == "1.72.207"
-        and plugin.get("active") is True
-        and plugin.get("provenance") == "unknown_live_1.72.207_capture"
-        and payload.get("marker_pre_registered") is True
-        and isinstance(inventory, dict)
-        and isinstance(inventory.get("file_count"), int)
-        and 0 < inventory["file_count"] <= MAX_FILES
-        and isinstance(inventory.get("bytes"), int)
-        and 0 < inventory["bytes"] <= MAX_TREE_BYTES
-        and HASH_RE.fullmatch(str(inventory.get("digest") or ""))
-    ):
-        raise RuntimeError("Retained live audit exact contract failed")
-    core = stage.get("core")
-    holds = payload.get("safety_holds")
     if (
-        not isinstance(core, dict)
+        not isinstance(backup, dict)
+        or set(backup) != {"version", "inventory"}
+        or backup.get("version") != "1.72.204"
+        or storage.get("upload_relative_path") != "artifact/nadlan-config.zip"
+        or storage.get("upload_temp_absent") is not True
+        or not re.fullmatch(r"\.nadlan-unit-journey-release-[a-f0-9]{32}", str(storage.get("storage_leaf") or ""))
+    ):
+        raise RuntimeError("Observed retained storage identity changed")
+    backup_inventory = validate_inventory_contract(backup.get("inventory"))
+    if (
+        backup_inventory["file_count"] != 469
+        or backup_inventory["bytes"] != 28047176
+        or backup_inventory["digest"]
+        != "f1d3a5729bca013a04cced06d54fbc3061733540a948b28eb68c73cefbee3470"
+    ):
+        raise RuntimeError("Observed retained backup identity changed")
+    retained_rows = {row["path"]: row for row in storage_inventory["rows"]}
+    for row in backup_inventory["rows"]:
+        retained = retained_rows.get(f"backup/nadlan-config/{row['path']}")
+        if retained != {
+            "path": f"backup/nadlan-config/{row['path']}",
+            "bytes": row["bytes"],
+            "sha256": row["sha256"],
+        }:
+            raise RuntimeError("Backup inventory is not embedded in retained storage")
+    stage = value.get("stage_post")
+    if not isinstance(stage, dict) or set(stage) != {
+        "post_id",
+        "core",
+        "core_columns",
+        "core_columns_sha256",
+        "storage",
+        "raw_snapshot",
+        "raw_map_sha256",
+        "raw_meta_keys",
+        "raw_meta_keys_sha256",
+        "duplicate_keys",
+    }:
+        raise RuntimeError("Stage baseline shape is invalid")
+    stage_proof = validate_storage_proof(stage.get("storage"), 6594)
+    stage_raw_snapshot = validate_raw_snapshot(stage.get("raw_snapshot"), 6594)
+    stage_raw_map, stage_derived_keys, stage_duplicates = raw_snapshot_meta_contract(
+        stage_raw_snapshot
+    )
+    stage_keys = stage.get("raw_meta_keys")
+    core_columns = stage.get("core_columns")
+    core = stage.get("core")
+    if (
+        stage.get("post_id") != 6594
+        or stage_proof.get("core_column_count") != 23
+        or stage_proof.get("raw_meta_row_count") != 37
+        or stage_proof.get("term_relationships_row_count") != 0
+        or len(stage_raw_snapshot["meta"])
+        != stage_proof.get("raw_meta_row_count")
+        or len(stage_raw_snapshot["terms"])
+        != stage_proof.get("term_relationships_row_count")
+        or stage.get("raw_map_sha256") != EXPECTED_RAW_META_MAP_SHA256
+        or stage.get("raw_map_sha256")
+        != sha256_bytes(exact_json_bytes(stage_raw_map))
+        or not isinstance(stage_keys, list)
+        or stage_keys != sorted(stage_keys)
+        or len(stage_keys) != 37
+        or stage.get("raw_meta_keys_sha256") != sha256_bytes(exact_json_bytes(stage_keys))
+        or stage.get("duplicate_keys") != []
+        or stage_duplicates != []
+        or stage_derived_keys != stage_keys
+        or not isinstance(core_columns, list)
+        or len(core_columns) != 23
+        or stage.get("core_columns_sha256") != sha256_bytes(exact_json_bytes(core_columns))
+        or not isinstance(core, dict)
         or core.get("post_status") != "publish"
         or core.get("password_length") != 0
+        or stage_raw_snapshot["core"].get("post_status") != "publish"
+        or stage_raw_snapshot["core"].get("post_type") != "nadlan_project"
+        or len(str(stage_raw_snapshot["core"].get("post_password") or "")) != 0
+        or sha256_bytes(
+            str(stage_raw_snapshot["core"].get("post_title") or "").encode("utf-8")
+        )
+        != core.get("title_sha256")
+        or sha256_bytes(
+            str(stage_raw_snapshot["core"].get("post_content") or "").encode("utf-8")
+        )
+        != core.get("content_sha256")
+        or sha256_bytes(
+            str(stage_raw_snapshot["core"].get("post_excerpt") or "").encode("utf-8")
+        )
+        != core.get("excerpt_sha256")
+    ):
+        raise RuntimeError("Independent stage hashes/keysets are incomplete")
+    canonical = value.get("canonical_post")
+    if not isinstance(canonical, dict) or set(canonical) != {
+        "post_id",
+        "core_columns",
+        "core_columns_sha256",
+        "storage",
+        "raw_snapshot",
+        "raw_map_sha256",
+        "raw_meta_keys",
+        "raw_meta_keys_sha256",
+    }:
+        raise RuntimeError("Canonical baseline shape is invalid")
+    canonical_proof = validate_storage_proof(canonical.get("storage"), 4867)
+    canonical_raw_snapshot = validate_raw_snapshot(
+        canonical.get("raw_snapshot"), 4867
+    )
+    canonical_raw_map, canonical_derived_keys, _canonical_duplicates = (
+        raw_snapshot_meta_contract(canonical_raw_snapshot)
+    )
+    if (
+        canonical_proof.get("contract_sha256")
+        != EXPECTED_CANONICAL_STORAGE_SHA256
+        or len(canonical_raw_snapshot["meta"])
+        != canonical_proof.get("raw_meta_row_count")
+        or len(canonical_raw_snapshot["terms"])
+        != canonical_proof.get("term_relationships_row_count")
+        or canonical.get("raw_map_sha256")
+        != sha256_bytes(exact_json_bytes(canonical_raw_map))
+        or canonical.get("raw_meta_keys") != canonical_derived_keys
+    ):
+        raise RuntimeError("Canonical storage proof changed")
+    plugin = value.get("plugin")
+    if not isinstance(plugin, dict) or set(plugin) != {
+        "plugin_file",
+        "version",
+        "active",
+        "provenance",
+        "main_file_sha256",
+        "inventory",
+    }:
+        raise RuntimeError("Current plugin baseline shape is invalid")
+    plugin_inventory = validate_inventory_contract(plugin.get("inventory"))
+    if (
+        plugin.get("plugin_file") != "nadlan-config/nadlan-config.php"
+        or plugin.get("version") != "1.72.207"
+        or plugin.get("active") is not True
+        or plugin.get("provenance") != "unknown_live_1.72.207_capture"
+        or not HASH_RE.fullmatch(str(plugin.get("main_file_sha256") or ""))
+        or plugin_inventory["file_count"] < 1
+        or plugin_inventory["bytes"] < 1
+    ):
+        raise RuntimeError("Current plugin exact baseline failed")
+    return value
+
+
+def validate_audit(payload: dict[str, Any]) -> dict[str, Any]:
+    baseline = validate_baseline_contract(payload.get("baseline_contract"))
+    baseline_sha256 = sha256_bytes(exact_json_bytes(baseline))
+    holds = payload.get("safety_holds")
+    if (
+        payload.get("schema") != "nadlan-einstein-live-recovery-audit/v2"
+        or payload.get("run_id") != RUN_ID
+        or payload.get("integrity_passed") is not True
+        or payload.get("snapshot_eligible") is not False
+        or payload.get("expected_contract_match") is not False
+        or payload.get("baseline_contract_sha256") != baseline_sha256
+        or not HASH_RE.fullmatch(str(payload.get("audit_fingerprint") or ""))
+        or payload.get("retained_helpers") != EXPECTED_HELPERS
         or not isinstance(holds, list)
+        or "phase_a_snapshot_actions_structurally_disabled" not in holds
+        or "independent_reviewed_baseline_not_embedded" not in holds
         or "stage_post_password_absent" not in holds
         or "live_plugin_provenance_unknown" not in holds
     ):
-        raise RuntimeError("Known exposed-stage safety hold is not explicit")
+        raise RuntimeError("Phase-A retained baseline audit failed closed")
     return payload
 
 
 def write_report(path: Path, payload: dict[str, Any], redactor: Redactor) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     serialized = (
-        json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+        json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=False) + "\n"
     )
     redactor.assert_absent(serialized)
     with path.open("x", encoding="utf-8", newline="\n") as handle:
         handle.write(serialized)
+
+
+def fsync_parent_directory(path: Path) -> bool:
+    if os.name == "nt":
+        return False
+    flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0)
+    descriptor = os.open(path.parent, flags)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
+    return True
+
+
+def reserve_terminal_report(
+    path: Path,
+    prepared: dict[str, Any],
+    redactor: Redactor,
+) -> dict[str, Any]:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    checkpoint = {
+        "schema": "nadlan-einstein-live-recovery-terminal-checkpoint/v1",
+        "status": "PREPARED_BEFORE_DESTRUCTIVE_CLEANUP",
+        "prepared_at_utc": utc_now(),
+        "directory_fsync_supported": os.name != "nt",
+        "planned": prepared,
+    }
+    serialized = json.dumps(
+        checkpoint, ensure_ascii=False, indent=2, sort_keys=False
+    ) + "\n"
+    redactor.assert_absent(serialized)
+    with path.open("x", encoding="utf-8", newline="\n") as handle:
+        handle.write(serialized)
+        handle.flush()
+        os.fsync(handle.fileno())
+    fsync_parent_directory(path)
+    return checkpoint
+
+
+def finalize_terminal_report(
+    path: Path,
+    payload: dict[str, Any],
+    redactor: Redactor,
+) -> None:
+    if not path.is_file() or path.is_symlink():
+        raise RuntimeError("Reserved terminal evidence checkpoint is unavailable")
+    temp_path = path.with_name(f".{path.name}.final-{secrets.token_hex(8)}")
+    serialized = json.dumps(
+        payload, ensure_ascii=False, indent=2, sort_keys=False
+    ) + "\n"
+    redactor.assert_absent(serialized)
+    try:
+        with temp_path.open("x", encoding="utf-8", newline="\n") as handle:
+            handle.write(serialized)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temp_path, path)
+        fsync_parent_directory(path)
+    finally:
+        with contextlib.suppress(FileNotFoundError):
+            temp_path.unlink()
 
 
 def read_json_object(path: Path) -> dict[str, Any]:
@@ -670,7 +1305,7 @@ def create_and_audit(args: argparse.Namespace) -> int:
                 "Inactive recovery helper creation",
             )
             helper_id = int(created.get("id") or 0)
-        except (requests.RequestException, RuntimeError) as create_error:
+        except (NetworkRequestFailed, RuntimeError) as create_error:
             matches = [
                 row
                 for row in client.all_snippets()
@@ -709,7 +1344,7 @@ def create_and_audit(args: argparse.Namespace) -> int:
         )
         inactive_verified = False
         for _attempt in range(2):
-            with contextlib.suppress(requests.RequestException):
+            with contextlib.suppress(NetworkRequestFailed):
                 client.request(
                     "PUT",
                     f"code-snippets/v1/snippets/{helper_id}",
@@ -731,7 +1366,7 @@ def create_and_audit(args: argparse.Namespace) -> int:
         active_expected = helper_expected(helper_id, helper_code, identity, active=True)
         active: dict[str, Any] | None = None
         for _attempt in range(2):
-            with contextlib.suppress(requests.RequestException):
+            with contextlib.suppress(NetworkRequestFailed):
                 client.request(
                     "PUT",
                     f"code-snippets/v1/snippets/{helper_id}/activate",
@@ -784,7 +1419,7 @@ def create_and_audit(args: argparse.Namespace) -> int:
             raise RecoveryHold("Recovery snapshot storage is not initially absent")
 
         report = {
-            "schema": "nadlan-einstein-live-recovery-client-audit/v1",
+            "schema": "nadlan-einstein-live-recovery-client-audit/v2",
             "generated_at_utc": utc_now(),
             "source": source,
             "target": {"base_url": base_url, "plugin_version": "1.72.207"},
@@ -799,7 +1434,7 @@ def create_and_audit(args: argparse.Namespace) -> int:
             "audit": second,
             "snapshot_storage_initially_absent": True,
             "passed": True,
-            "status": "SNAPSHOT_ELIGIBLE_WITH_EXPLICIT_SAFETY_HOLDS",
+            "status": "PHASE_A_BASELINE_CAPTURED_REVIEW_AND_HELPER_CLEANUP_REQUIRED",
         }
         write_report(args.report, report, redactor)
         print(
@@ -814,49 +1449,32 @@ def create_and_audit(args: argparse.Namespace) -> int:
             )
         )
         return 0
-    except Exception:
-        # If the final helper is active, remove only this run-owned helper. A
-        # failure to reconcile is surfaced as a HOLD by the original exception;
-        # no retained resource is ever used as a cleanup target.
-        if helper_id > 0 and helper_code and helper_hash:
-            with contextlib.suppress(Exception):
-                active_expected = helper_expected(
-                    helper_id, helper_code, identity, active=True
-                )
-                try:
-                    verify_helper_row(client, helper_id, active_expected)
-                except RuntimeError:
-                    client.request(
-                        "PUT",
-                        f"code-snippets/v1/snippets/{helper_id}",
-                        json_body={
-                            "name": identity["helper_name"],
-                            "code": helper_code,
-                            "scope": "global",
-                            "active": False,
-                        },
-                    )
-                    client.request(
-                        "PUT",
-                        f"code-snippets/v1/snippets/{helper_id}/activate",
-                        json_body={},
-                    )
-                    verify_helper_row(client, helper_id, active_expected)
-                call_helper(
-                    client,
-                    route=identity["route"],
-                    token=token,
-                    helper_sha256=helper_hash,
-                    action="delete_self",
-                    extra={"confirmation": "DELETE-OWN-RECOVERY-HELPER"},
-                )
-        raise
+    except Exception as original_error:
+        # Never overwrite, reactivate, or delete an uncertain/drifted row from
+        # an exception handler. Capture only exact ownership state and require
+        # the separately confirmed terminal cleanup workflow.
+        try:
+            ownership = inspect_owned_helper(
+                client,
+                identity=identity,
+                token=token,
+                helper_id=helper_id,
+                helper_code=helper_code,
+            )
+        except Exception as inspection_error:
+            raise RecoveryHold(
+                "Audit failed and recovery-helper ownership is uncertain; no cleanup mutation was attempted"
+            ) from inspection_error
+        raise RecoveryHold(
+            "Audit failed; no exception-path mutation was attempted; "
+            f"owned helper id {helper_id} state is {ownership['state']}"
+        ) from original_error
 
 
 def validate_control_report(
     report: dict[str, Any], token: str, expected_commit: str
 ) -> tuple[dict[str, str], int, str]:
-    if report.get("schema") != "nadlan-einstein-live-recovery-client-audit/v1":
+    if report.get("schema") != "nadlan-einstein-live-recovery-client-audit/v2":
         raise RuntimeError("Audit report schema is invalid")
     source = report.get("source")
     control = report.get("control")
@@ -884,19 +1502,262 @@ def validate_control_report(
     return identity, helper_id, helper_hash
 
 
+def prove_helper_absence(
+    client: WordpressClient,
+    *,
+    identity: dict[str, str],
+    token: str,
+    helper_id: int,
+    helper_hash: str,
+    public_session: Any | None = None,
+) -> dict[str, bool | int]:
+    item_response = client.request(
+        "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
+    )
+    item_absent = is_exact_missing_snippet(item_response)
+    rows = client.all_snippets()
+    collection_absent = not any(
+        int(row.get("id") or 0) == helper_id
+        or str(row.get("name") or "") == identity["helper_name"]
+        for row in rows
+    )
+    route_response = call_helper(
+        client,
+        route=identity["route"],
+        token=token,
+        helper_sha256=helper_hash,
+        action="storage_status",
+    )
+    route_absent = is_exact_missing_route(route_response)
+    session = public_session or requests_module().Session()
+    try:
+        public_response = session.request(
+            "POST",
+            f"{client.base_url}/wp-json/{identity['route'].lstrip('/')}",
+            json={"action": "storage_status", "helper_sha256": helper_hash},
+            headers={
+                "Accept": "application/json",
+                "User-Agent": "NadLan-Einstein-Recovery-Public-Absence/1.0",
+            },
+            timeout=60,
+            allow_redirects=False,
+        )
+    except Exception as error:
+        module = _REQUESTS
+        if module is not None and isinstance(error, module.RequestException):
+            raise NetworkRequestFailed(
+                "Unauthenticated helper-route absence request failed"
+            ) from error
+        raise
+    public_route_absent = is_exact_missing_route(public_response)
+    return {
+        "item_absent": item_absent,
+        "collection_absent": collection_absent,
+        "route_absent": route_absent,
+        "route_http_status": int(route_response.status_code),
+        "public_route_absent": public_route_absent,
+        "public_route_http_status": int(public_response.status_code),
+    }
+
+
+def cleanup_audit_helper(args: argparse.Namespace) -> int:
+    if args.confirm_cleanup != "CLEANUP-PHASE-A-AUDIT-HELPER":
+        raise RuntimeError("Exact Phase-A helper cleanup confirmation is required")
+    source = source_facts(args.expected_source_commit)
+    base_url, user, password, token, redactor = resolve_runtime(args.env)
+    identity = session_identity(token)
+    audit_report_sha256: str | None = None
+    if args.audit_report is not None:
+        audit_report = read_json_object(args.audit_report)
+        identity, helper_id, helper_hash = validate_control_report(
+            audit_report, token, source["commit"]
+        )
+        audit_report_sha256 = sha256_bytes(args.audit_report.read_bytes())
+        cleanup_authority = "validated_phase_a_audit_report"
+    else:
+        helper_id = int(args.helper_id or 0)
+        if helper_id < 1 or helper_id in (449, 450):
+            raise RuntimeError("Interrupted helper cleanup ID is outside scope")
+        provisional_code, provisional_identity = render_helper(
+            token=token, helper_id=helper_id, source_commit=source["commit"]
+        )
+        if provisional_identity != identity:
+            raise RuntimeError("Interrupted helper cleanup identity changed")
+        helper_hash = sha256_bytes(provisional_code.encode("utf-8"))
+        cleanup_authority = "exact_interrupted_owned_state"
+    client = WordpressClient(base_url, user, password)
+    auth = auth_preflight(client)
+    helper_code, _ = render_helper(
+        token=token, helper_id=helper_id, source_commit=source["commit"]
+    )
+    expected_helper = helper_expected(helper_id, helper_code, identity, active=True)
+    if expected_helper["code_sha256"] != helper_hash:
+        raise RuntimeError("Phase-A helper source hash differs from audit evidence")
+    ownership = inspect_owned_helper(
+        client,
+        identity=identity,
+        token=token,
+        helper_id=helper_id,
+        helper_code=helper_code,
+    )
+    checkpoint = reserve_terminal_report(
+        args.report,
+        {
+            "operation": "delete_exact_phase_a_audit_helper",
+            "source_commit": source["commit"],
+            "audit_report_sha256": audit_report_sha256,
+            "cleanup_authority": cleanup_authority,
+            "helper_id": helper_id,
+            "helper_name": identity["helper_name"],
+            "helper_sha256": helper_hash,
+            "observed_ownership_state": ownership["state"],
+        },
+        redactor,
+    )
+    direct_absence = False
+    delete_response_lost = False
+    deletion_method = "already_absent"
+    rest_delete_response_observed = False
+    if ownership["state"] == "exact_active_helper":
+        deletion_method = "active_helper_direct_wpdb_self_delete"
+        verify_helper_row(client, helper_id, expected_helper)
+        storage = call_helper_object_retry(
+            client,
+            route=identity["route"],
+            token=token,
+            helper_sha256=helper_hash,
+            action="storage_status",
+            label="Phase-A private storage absence",
+        )
+        storage_evidence = storage.get("storage")
+        if (
+            not isinstance(storage_evidence, dict)
+            or storage_evidence.get("absent") is not True
+            or storage_evidence.get("outside_webroot") is not True
+        ):
+            raise RecoveryHold(
+                "Reserved cleanup checkpoint, but private storage absence was not proved"
+            )
+        try:
+            delete_payload = require_object(
+                call_helper(
+                    client,
+                    route=identity["route"],
+                    token=token,
+                    helper_sha256=helper_hash,
+                    action="delete_self",
+                    extra={"confirmation": "DELETE-OWN-RECOVERY-HELPER"},
+                ),
+                "Phase-A recovery helper hard deletion",
+            )
+            direct_absence = (
+                delete_payload.get("schema")
+                == "nadlan-einstein-live-recovery-helper-delete/v1"
+                and delete_payload.get("helper_id") == helper_id
+                and delete_payload.get("direct_snippet_row_count") == 0
+                and delete_payload.get("storage_absent") is True
+                and delete_payload.get("retained_helpers_unchanged") is True
+                and delete_payload.get("mutation_mutex_held") is True
+            )
+        except NetworkRequestFailed:
+            delete_response_lost = True
+    elif ownership["state"] in {
+        "exact_inactive_placeholder",
+        "exact_inactive_helper",
+    }:
+        deletion_method = "exact_inactive_helper_code_snippets_rest_delete"
+        try:
+            delete_response = client.request(
+                "DELETE", f"code-snippets/v1/snippets/{helper_id}", timeout=60
+            )
+            rest_delete_response_observed = 200 <= delete_response.status_code < 300
+            if not rest_delete_response_observed:
+                raise RecoveryHold(
+                    "Reserved cleanup checkpoint; exact inactive helper REST deletion was rejected"
+                )
+        except NetworkRequestFailed:
+            delete_response_lost = True
+    elif ownership["state"] != "absent":
+        raise RecoveryHold(
+            "Reserved cleanup checkpoint; helper is not the exact active owned row; no mutation attempted"
+        )
+    absence = prove_helper_absence(
+        client,
+        identity=identity,
+        token=token,
+        helper_id=helper_id,
+        helper_hash=helper_hash,
+    )
+    if not all(
+        absence[key]
+        for key in (
+            "item_absent",
+            "collection_absent",
+            "route_absent",
+            "public_route_absent",
+        )
+    ):
+        raise RecoveryHold(
+            "Reserved cleanup checkpoint; item/collection/route absence is uncertain"
+        )
+    uncertainty = None
+    if not direct_absence:
+        if delete_response_lost:
+            uncertainty = "delete_response_lost_direct_database_absence_not_observed"
+        elif rest_delete_response_observed:
+            uncertainty = (
+                "exact_inactive_rest_delete_observed_direct_database_absence_unavailable"
+            )
+        else:
+            uncertainty = (
+                "helper_was_already_absent_direct_database_absence_not_observed"
+            )
+    report = {
+        "schema": "nadlan-einstein-live-recovery-client-helper-cleanup/v1",
+        "generated_at_utc": utc_now(),
+        "source": source,
+        "auth": auth,
+        "checkpoint": checkpoint,
+        "audit_report_sha256": audit_report_sha256,
+        "helper_id": helper_id,
+        "direct_database_absence_proved": direct_absence,
+        "cleanup_authority": cleanup_authority,
+        "deletion_method": deletion_method,
+        "rest_delete_response_observed": rest_delete_response_observed,
+        "delete_response_lost": delete_response_lost,
+        "absence": absence,
+        "uncertainty": uncertainty,
+        "passed": direct_absence,
+        "status": (
+            "PHASE_A_HELPER_CLEANUP_COMPLETE_DIRECTLY_PROVED"
+            if direct_absence
+            else "PHASE_A_HELPER_ABSENCE_RECONCILED_WITH_EXPLICIT_UNCERTAINTY"
+        ),
+    }
+    finalize_terminal_report(args.report, report, redactor)
+    print(
+        json.dumps(
+            {"status": report["status"], "report": str(args.report.resolve())},
+            separators=(",", ":"),
+        )
+    )
+    return 0 if direct_absence else 2
+
+
 def validate_manifest(
     manifest: dict[str, Any],
     *,
     source_commit: str,
     audit_fingerprint: str,
+    token: str,
     storage_slug: str | None = None,
 ) -> dict[str, Any]:
+    """Validate the dormant Phase-B manifest against independent primitives."""
+
     plugin = manifest.get("plugin")
     archive = manifest.get("archive")
     if not isinstance(plugin, dict) or not isinstance(archive, dict):
         raise RuntimeError("Snapshot manifest sections are incomplete")
-    inventory = plugin.get("inventory")
-    rows = inventory.get("rows") if isinstance(inventory, dict) else None
     if not (
         set(manifest)
         == {
@@ -908,8 +1769,8 @@ def validate_manifest(
             "audit_fingerprint",
             "plugin",
             "archive",
-            "public_probe_url",
             "contract_sha256",
+            "auth_hmac_sha256",
         }
         and manifest.get("schema") == "nadlan-einstein-live-plugin-snapshot/v1"
         and manifest.get("run_id") == RUN_ID
@@ -921,6 +1782,7 @@ def validate_manifest(
         )
         and manifest.get("audit_fingerprint") == audit_fingerprint
         and HASH_RE.fullmatch(str(manifest.get("contract_sha256") or ""))
+        and HASH_RE.fullmatch(str(manifest.get("auth_hmac_sha256") or ""))
         and plugin.get("plugin_file") == "nadlan-config/nadlan-config.php"
         and set(plugin)
         == {
@@ -935,19 +1797,16 @@ def validate_manifest(
         and plugin.get("active") is True
         and plugin.get("provenance") == "unknown_live_1.72.207_capture"
         and HASH_RE.fullmatch(str(plugin.get("main_file_sha256") or ""))
-        and isinstance(inventory, dict)
-        and set(inventory) == {"file_count", "bytes", "digest", "rows"}
-        and isinstance(rows, list)
-        and isinstance(inventory.get("file_count"), int)
-        and not isinstance(inventory.get("file_count"), bool)
-        and inventory.get("file_count") == len(rows)
-        and 0 < len(rows) <= MAX_FILES
-        and isinstance(inventory.get("bytes"), int)
-        and not isinstance(inventory.get("bytes"), bool)
-        and 0 < inventory["bytes"] <= MAX_TREE_BYTES
-        and HASH_RE.fullmatch(str(inventory.get("digest") or ""))
         and HASH_RE.fullmatch(str(archive.get("sha256") or ""))
-        and set(archive) == {"sha256", "bytes", "chunk_bytes", "chunks", "mtime"}
+        and set(archive)
+        == {
+            "sha256",
+            "bytes",
+            "chunk_bytes",
+            "chunks",
+            "chunk_sha256",
+            "mtime",
+        }
         and isinstance(archive.get("bytes"), int)
         and not isinstance(archive.get("bytes"), bool)
         and 0 < archive["bytes"] <= MAX_ARCHIVE_BYTES
@@ -955,10 +1814,15 @@ def validate_manifest(
         and isinstance(archive.get("chunks"), int)
         and not isinstance(archive.get("chunks"), bool)
         and archive.get("chunks") == (archive["bytes"] + CHUNK_BYTES - 1) // CHUNK_BYTES
+        and isinstance(archive.get("chunk_sha256"), list)
+        and len(archive["chunk_sha256"]) == archive["chunks"]
+        and all(
+            isinstance(digest, str) and HASH_RE.fullmatch(digest)
+            for digest in archive["chunk_sha256"]
+        )
         and isinstance(archive.get("mtime"), int)
         and not isinstance(archive.get("mtime"), bool)
         and archive["mtime"] > 0
-        and isinstance(manifest.get("public_probe_url"), str)
         and re.fullmatch(
             r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z",
             str(manifest.get("created_at_utc") or ""),
@@ -974,41 +1838,18 @@ def validate_manifest(
         "audit_fingerprint": manifest.get("audit_fingerprint"),
         "plugin": plugin,
         "archive": archive,
-        "public_probe_url": manifest.get("public_probe_url"),
     }
     if sha256_bytes(exact_json_bytes(manifest_base)) != manifest.get("contract_sha256"):
         raise RuntimeError("Snapshot manifest aggregate hash is invalid")
-    normalized_rows: list[dict[str, Any]] = []
-    seen: set[str] = set()
-    total = 0
-    for row in rows:
-        if not isinstance(row, dict) or set(row) != {"path", "bytes", "sha256"}:
-            raise RuntimeError("Snapshot manifest row shape is invalid")
-        relative = validate_relative_path(str(row.get("path") or ""))
-        folded = relative.casefold()
-        size = row.get("bytes")
-        digest = str(row.get("sha256") or "")
-        if (
-            folded in seen
-            or not isinstance(size, int)
-            or isinstance(size, bool)
-            or not 0 <= size <= MAX_FILE_BYTES
-            or not HASH_RE.fullmatch(digest)
-        ):
-            raise RuntimeError("Snapshot manifest row contract is invalid")
-        seen.add(folded)
-        total += size
-        normalized_rows.append({"path": relative, "bytes": size, "sha256": digest})
-    if normalized_rows != sorted(normalized_rows, key=lambda row: row["path"]):
-        raise RuntimeError("Snapshot manifest rows are not sorted")
-    calculated = inventory_contract(normalized_rows)
-    if calculated != {
-        "file_count": inventory["file_count"],
-        "bytes": inventory["bytes"],
-        "digest": inventory["digest"],
-        "rows": normalized_rows,
-    }:
-        raise RuntimeError("Snapshot manifest inventory digest is invalid")
+    signed = {**manifest_base, "contract_sha256": manifest["contract_sha256"]}
+    expected_hmac = hmac.new(
+        token.encode("utf-8"), exact_json_bytes(signed), hashlib.sha256
+    ).hexdigest()
+    if not hmac.compare_digest(expected_hmac, manifest["auth_hmac_sha256"]):
+        raise RuntimeError("Snapshot manifest authentication hash is invalid")
+    inventory = validate_inventory_contract(plugin.get("inventory"))
+    if inventory["file_count"] < 1 or inventory["bytes"] < 1:
+        raise RuntimeError("Snapshot manifest plugin inventory is empty")
     return manifest
 
 
@@ -1020,6 +1861,7 @@ def validate_relative_path(value: str) -> str:
         or "\x00" in value
         or value.startswith("/")
         or ":" in value
+        or not value.isascii()
     ):
         raise RuntimeError("Archive contains an unsafe path")
     pure = PurePosixPath(value)
@@ -1038,16 +1880,27 @@ def validate_relative_path(value: str) -> str:
     return pure.as_posix()
 
 
-def inventory_contract(rows: list[dict[str, Any]]) -> dict[str, Any]:
+def inventory_contract(
+    rows: list[dict[str, Any]], directories: Iterable[str] = ()
+) -> dict[str, Any]:
     ordered = sorted(rows, key=lambda row: row["path"])
+    ordered_directories = sorted(directories)
     digest_bytes = "\n".join(
         f"{row['path']}\t{row['bytes']}\t{row['sha256']}" for row in ordered
     ).encode("utf-8")
+    tree_lines = [f"D\t{directory}" for directory in ordered_directories]
+    tree_lines.extend(
+        f"F\t{row['path']}\t{row['bytes']}\t{row['sha256']}" for row in ordered
+    )
+    tree_lines.sort()
     return {
         "file_count": len(ordered),
+        "directory_count": len(ordered_directories),
         "bytes": sum(int(row["bytes"]) for row in ordered),
         "digest": sha256_bytes(digest_bytes),
+        "tree_digest": sha256_bytes("\n".join(tree_lines).encode("utf-8")),
         "rows": ordered,
+        "directories": ordered_directories,
     }
 
 
@@ -1055,6 +1908,8 @@ def local_tree_inventory(root: Path) -> dict[str, Any]:
     if not root.is_dir() or root.is_symlink():
         raise RuntimeError("Extracted snapshot root is unavailable or unsafe")
     rows: list[dict[str, Any]] = []
+    directories: list[str] = []
+    seen: set[str] = set()
     stack = [root]
     while stack:
         directory = stack.pop()
@@ -1065,7 +1920,14 @@ def local_tree_inventory(root: Path) -> dict[str, Any]:
             if entry.is_symlink():
                 raise RuntimeError("Extracted snapshot contains a symlink")
             relative = validate_relative_path(path.relative_to(root).as_posix())
+            folded = relative.casefold()
+            if folded in seen:
+                raise RuntimeError("Extracted snapshot has a case-colliding entry")
+            seen.add(folded)
             if entry.is_dir(follow_symlinks=False):
+                if len(directories) >= 2048:
+                    raise RuntimeError("Extracted snapshot directory limit exceeded")
+                directories.append(relative)
                 stack.append(path)
                 continue
             if not entry.is_file(follow_symlinks=False):
@@ -1085,7 +1947,7 @@ def local_tree_inventory(root: Path) -> dict[str, Any]:
             if observed != size:
                 raise RuntimeError("Extracted snapshot file changed during hashing")
             rows.append({"path": relative, "bytes": size, "sha256": digest.hexdigest()})
-    inventory = inventory_contract(rows)
+    inventory = inventory_contract(rows, directories)
     if inventory["bytes"] > MAX_TREE_BYTES:
         raise RuntimeError("Extracted snapshot tree exceeds its bound")
     return inventory
@@ -1103,7 +1965,8 @@ def verify_and_extract_archive(
     if archive_path.stat().st_size > MAX_ARCHIVE_BYTES:
         raise RuntimeError("Local snapshot archive exceeds its bound")
     expected_rows = expected_inventory.get("rows")
-    if not isinstance(expected_rows, list):
+    expected_directories = expected_inventory.get("directories")
+    if not isinstance(expected_rows, list) or not isinstance(expected_directories, list):
         raise RuntimeError("Expected snapshot inventory rows are unavailable")
     expected_by_path = {row["path"]: row for row in expected_rows}
     if len(expected_by_path) != len(expected_rows):
@@ -1114,20 +1977,36 @@ def verify_and_extract_archive(
         raise RuntimeError("Local extracted snapshot root is unavailable or unsafe")
 
     observed_rows: list[dict[str, Any]] = []
+    observed_directories: list[str] = []
     seen: set[str] = set()
+    root_seen = False
     with zipfile.ZipFile(archive_path, "r") as archive:
-        if len(archive.infolist()) > MAX_FILES * 4:
+        if len(archive.infolist()) > MAX_FILES + 2048 + 1:
             raise RuntimeError("Snapshot ZIP entry count exceeds its bound")
         for info in archive.infolist():
             name = info.filename
             if name == "nadlan-config/":
+                if root_seen:
+                    raise RuntimeError("Snapshot ZIP has a duplicate root directory")
+                root_seen = True
                 continue
             if not name.startswith("nadlan-config/"):
                 raise RuntimeError("Snapshot ZIP has an unexpected root")
             relative_raw = name[len("nadlan-config/") :]
             if info.is_dir():
-                if relative_raw:
-                    validate_relative_path(relative_raw.rstrip("/"))
+                if not relative_raw:
+                    raise RuntimeError("Snapshot ZIP has a duplicate root directory")
+                relative = validate_relative_path(relative_raw.rstrip("/"))
+                folded = relative.casefold()
+                if folded in seen or len(observed_directories) >= 2048:
+                    raise RuntimeError("Snapshot ZIP directory collision or limit")
+                seen.add(folded)
+                observed_directories.append(relative)
+                destination = extract_root.joinpath(*PurePosixPath(relative).parts)
+                if create:
+                    destination.mkdir(parents=True, exist_ok=True)
+                elif not destination.is_dir() or destination.is_symlink():
+                    raise RuntimeError("Extracted snapshot directory is unsafe")
                 continue
             relative = validate_relative_path(relative_raw)
             folded = relative.casefold()
@@ -1194,7 +2073,9 @@ def verify_and_extract_archive(
         bad_member = archive.testzip()
         if bad_member is not None:
             raise RuntimeError("Snapshot ZIP CRC validation failed")
-    observed = inventory_contract(observed_rows)
+    if not root_seen:
+        raise RuntimeError("Snapshot ZIP root directory is missing")
+    observed = inventory_contract(observed_rows, observed_directories)
     if observed != expected_inventory:
         raise RuntimeError("Extracted snapshot tree inventory differs from manifest")
     if local_tree_inventory(extract_root) != expected_inventory:
@@ -1203,6 +2084,11 @@ def verify_and_extract_archive(
 
 
 def snapshot(args: argparse.Namespace) -> int:
+    if not SNAPSHOT_ACTIONS_ENABLED or not PINNED_EXPECTED_LIVE_CONTRACT:
+        raise RecoveryHold(
+            "Phase-B snapshot is structurally disabled until the reviewed live "
+            "baseline is pinned in a separate commit"
+        )
     if args.confirm_snapshot != "SNAPSHOT-LIVE-NADLAN-CONFIG-1.72.207":
         raise RuntimeError("Exact snapshot confirmation is required")
     source = source_facts(args.expected_source_commit)
@@ -1247,7 +2133,7 @@ def snapshot(args: argparse.Namespace) -> int:
             ),
             "Live plugin snapshot creation",
         )
-    except (requests.RequestException, RuntimeError) as create_error:
+    except (NetworkRequestFailed, RuntimeError) as create_error:
         try:
             reconciled = call_helper_object_retry(
                 client,
@@ -1274,62 +2160,28 @@ def snapshot(args: argparse.Namespace) -> int:
         else {},
         source_commit=source["commit"],
         audit_fingerprint=expected_fingerprint,
+        token=token,
         storage_slug=identity["storage_slug"],
     )
 
-    probe_parts = urlsplit(manifest["public_probe_url"])
-    expected_probe_path = f"/wp-content/{identity['storage_slug']}/snapshot.zip"
-    if (
-        probe_parts.scheme != "https"
-        or probe_parts.hostname != "nad-lan.co.il"
-        or probe_parts.path != expected_probe_path
-        or probe_parts.query
-        or probe_parts.fragment
-        or probe_parts.username is not None
-        or probe_parts.password is not None
-    ):
-        raise RuntimeError("Snapshot public guard URL is outside the exact site scope")
-
-    public_probe = requests.Session()
-    public_probe.headers.update({"User-Agent": "NadLan-Einstein-Snapshot-Guard/1.0"})
-    probe_response = public_probe.get(
-        manifest["public_probe_url"],
-        timeout=30,
-        allow_redirects=False,
-        stream=True,
+    storage_guard_payload = call_helper_object_retry(
+        client,
+        route=identity["route"],
+        token=token,
+        helper_sha256=helper_hash,
+        action="storage_status",
+        label="Private snapshot storage guard",
     )
-    try:
-        first_bytes = next(probe_response.iter_content(chunk_size=4), b"")
-        archive_signature_absent = not first_bytes.startswith(b"PK")
-        probe = {
-            "http_status": probe_response.status_code,
-            "redirected": bool(probe_response.is_redirect),
-            "archive_signature_absent": archive_signature_absent,
-            "blocked": probe_response.status_code in (401, 403, 404)
-            and not probe_response.is_redirect
-            and archive_signature_absent,
-        }
-    finally:
-        probe_response.close()
-    if probe["blocked"] is not True:
-        # A public snapshot is worse than no snapshot. Remove only the exact
-        # just-created run-owned archive and keep the helper for a reviewed retry.
-        cleanup = call_helper(
-            client,
-            route=identity["route"],
-            token=token,
-            helper_sha256=helper_hash,
-            action="cleanup_snapshot",
-            extra={
-                "confirmation": "CLEANUP-VERIFIED-LIVE-SNAPSHOT",
-                "archive_sha256": manifest["archive"]["sha256"],
-                "allow_partial": False,
-            },
-        )
-        require_object(cleanup, "Publicly reachable snapshot emergency cleanup")
-        raise RecoveryHold(
-            "Snapshot direct-public-access guard failed; archive was removed"
-        )
+    storage_guard = storage_guard_payload.get("storage")
+    if not (
+        isinstance(storage_guard, dict)
+        and storage_guard.get("outside_webroot") is True
+        and storage_guard.get("root_mode") == "0700"
+        and storage_guard.get("exact_entries") == ["snapshot.json", "snapshot.zip"]
+        and storage_guard.get("entry_modes")
+        == {"snapshot.json": "0400", "snapshot.zip": "0400"}
+    ):
+        raise RecoveryHold("Snapshot storage is not the exact private contract")
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     archive_hash = manifest["archive"]["sha256"]
@@ -1367,8 +2219,11 @@ def snapshot(args: argparse.Namespace) -> int:
                 and chunk.get("chunks") == manifest["archive"]["chunks"]
                 and chunk.get("offset") == downloaded
                 and chunk.get("bytes") == len(data)
-                and 0 < len(data) <= CHUNK_BYTES
+                and len(data)
+                == min(CHUNK_BYTES, manifest["archive"]["bytes"] - downloaded)
                 and chunk.get("chunk_sha256") == sha256_bytes(data)
+                and chunk.get("chunk_sha256")
+                == manifest["archive"]["chunk_sha256"][index]
             ):
                 raise RuntimeError("Snapshot chunk contract changed")
             handle.write(data)
@@ -1399,6 +2254,7 @@ def snapshot(args: argparse.Namespace) -> int:
         else {},
         source_commit=source["commit"],
         audit_fingerprint=expected_fingerprint,
+        token=token,
         storage_slug=identity["storage_slug"],
     )
     if status_manifest != manifest:
@@ -1434,7 +2290,7 @@ def snapshot(args: argparse.Namespace) -> int:
         "control": audit_report["control"],
         "audit_fingerprint": expected_fingerprint,
         "manifest": manifest,
-        "public_access_guard": probe,
+        "private_storage_guard": storage_guard,
         "download": {
             "archive_path": str(archive_path.resolve()),
             "archive_sha256": archive_hash,
@@ -1465,7 +2321,7 @@ def snapshot(args: argparse.Namespace) -> int:
 
 
 def verify_local_snapshot(
-    snapshot_report: dict[str, Any],
+    snapshot_report: dict[str, Any], token: str,
 ) -> tuple[Path, Path, dict[str, Any]]:
     if (
         snapshot_report.get("schema")
@@ -1481,6 +2337,7 @@ def verify_local_snapshot(
         manifest,
         source_commit=str(source.get("commit") or ""),
         audit_fingerprint=str(snapshot_report.get("audit_fingerprint") or ""),
+        token=token,
     )
     archive_path = Path(str(download.get("archive_path") or ""))
     extract_root = Path(str(download.get("extract_root") or ""))
@@ -1511,12 +2368,17 @@ def verify_local_snapshot(
 
 
 def cleanup(args: argparse.Namespace) -> int:
+    if not SNAPSHOT_ACTIONS_ENABLED or not PINNED_EXPECTED_LIVE_CONTRACT:
+        raise RecoveryHold(
+            "Phase-B cleanup is structurally disabled until the reviewed live "
+            "baseline is pinned in a separate commit"
+        )
     if args.confirm_cleanup != "CLEANUP-VERIFIED-SNAPSHOT-AND-HELPER":
         raise RuntimeError("Exact cleanup confirmation is required")
     source = source_facts(args.expected_source_commit)
     base_url, user, password, token, redactor = resolve_runtime(args.env)
     snapshot_report = read_json_object(args.snapshot_report)
-    _, _, manifest = verify_local_snapshot(snapshot_report)
+    archive_path, extract_root, manifest = verify_local_snapshot(snapshot_report, token)
     if snapshot_report["source"].get("commit") != source["commit"]:
         raise RuntimeError("Snapshot report source commit differs")
     control = snapshot_report.get("control")
@@ -1555,6 +2417,20 @@ def cleanup(args: argparse.Namespace) -> int:
     storage_preflight_evidence = storage_preflight.get("storage")
     if not isinstance(storage_preflight_evidence, dict):
         raise RuntimeError("Pre-cleanup snapshot storage evidence is invalid")
+    checkpoint = reserve_terminal_report(
+        args.report,
+        {
+            "operation": "verified_snapshot_and_helper_cleanup",
+            "source_commit": source["commit"],
+            "helper_id": helper_id,
+            "helper_sha256": helper_hash,
+            "archive_sha256": manifest["archive"]["sha256"],
+            "archive_path": str(archive_path.resolve()),
+            "extract_root": str(extract_root.resolve()),
+            "storage_preflight": storage_preflight_evidence,
+        },
+        redactor,
+    )
     storage_initially_absent = storage_preflight_evidence.get("absent") is True
     if not storage_initially_absent:
         entries = storage_preflight_evidence.get("exact_entries")
@@ -1577,6 +2453,7 @@ def cleanup(args: argparse.Namespace) -> int:
                 else {},
                 source_commit=source["commit"],
                 audit_fingerprint=snapshot_report["audit_fingerprint"],
+                token=token,
                 storage_slug=identity["storage_slug"],
             )
             if server_manifest != manifest:
@@ -1643,7 +2520,7 @@ def cleanup(args: argparse.Namespace) -> int:
                 ),
                 "Run-owned snapshot cleanup",
             )
-    except (requests.RequestException, RuntimeError) as cleanup_error:
+    except (NetworkRequestFailed, RuntimeError) as cleanup_error:
         reconciled_storage = call_helper_object_retry(
             client,
             route=identity["route"],
@@ -1732,38 +2609,39 @@ def cleanup(args: argparse.Namespace) -> int:
             and delete_payload.get("helper_id") == helper_id
             and delete_payload.get("direct_snippet_row_count") == 0
             and delete_payload.get("storage_absent") is True
+            and delete_payload.get("retained_helpers_unchanged") is True
+            and delete_payload.get("mutation_mutex_held") is True
         )
-    except (requests.RequestException, RuntimeError):
+    except (NetworkRequestFailed, RuntimeError):
         delete_response_reconciled = True
 
-    helper_after = client.request(
-        "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
-    )
-    item_absent = is_exact_missing_snippet(helper_after)
-    rows_after = client.all_snippets()
-    collection_absent = not any(
-        int(row.get("id") or 0) == helper_id
-        or str(row.get("name") or "") == identity["helper_name"]
-        for row in rows_after
-    )
-    route_after = call_helper(
+    absence = prove_helper_absence(
         client,
-        route=identity["route"],
+        identity=identity,
         token=token,
-        helper_sha256=helper_hash,
-        action="storage_status",
+        helper_id=helper_id,
+        helper_hash=helper_hash,
     )
-    route_404 = route_after.status_code == 404
-    if not (item_absent and collection_absent and route_404):
+    if not all(
+        absence[key]
+        for key in (
+            "item_absent",
+            "collection_absent",
+            "route_absent",
+            "public_route_absent",
+        )
+    ):
         raise RecoveryHold("Recovery helper or route absence did not reconcile")
-    if not direct_absence and not delete_response_reconciled:
-        raise RecoveryHold("Recovery helper direct database absence proof failed")
+    uncertainty = None
+    if not direct_absence:
+        uncertainty = "delete_response_lost_direct_database_absence_not_observed"
 
     report = {
         "schema": "nadlan-einstein-live-recovery-client-cleanup/v1",
         "generated_at_utc": utc_now(),
         "source": source,
         "auth": auth,
+        "checkpoint": checkpoint,
         "helper_id": helper_id,
         "archive_sha256": manifest["archive"]["sha256"],
         "local_snapshot_reverified": True,
@@ -1772,32 +2650,39 @@ def cleanup(args: argparse.Namespace) -> int:
         "snapshot_storage_directly_absent": True,
         "helper_direct_database_row_count": 0 if direct_absence else None,
         "helper_delete_response_reconciled": delete_response_reconciled,
-        "helper_item_absent": item_absent,
-        "helper_collection_absent": collection_absent,
-        "route_http_status": route_after.status_code,
-        "route_404": route_404,
-        "passed": True,
+        "helper_absence": absence,
+        "uncertainty": uncertainty,
+        "passed": direct_absence,
         "status": (
-            "CLEANUP_COMPLETE"
-            if retained_unchanged
-            else "CLEANUP_COMPLETE_RETAINED_STATE_DRIFT_RECORDED"
+            (
+                "CLEANUP_COMPLETE"
+                if retained_unchanged
+                else "CLEANUP_COMPLETE_RETAINED_STATE_DRIFT_RECORDED"
+            )
+            if direct_absence
+            else "CLEANUP_RECONCILED_WITH_EXPLICIT_DIRECT_DB_UNCERTAINTY"
         ),
     }
-    write_report(args.report, report, redactor)
+    finalize_terminal_report(args.report, report, redactor)
     print(
         json.dumps(
             {"status": report["status"], "report": str(args.report.resolve())},
             separators=(",", ":"),
         )
     )
-    return 0
+    return 0 if direct_absence else 2
 
 
 def cleanup_partial(args: argparse.Namespace) -> int:
+    if not SNAPSHOT_ACTIONS_ENABLED or not PINNED_EXPECTED_LIVE_CONTRACT:
+        raise RecoveryHold(
+            "Phase-B partial cleanup is structurally disabled until the reviewed "
+            "live baseline is pinned in a separate commit"
+        )
     if args.confirm_partial_cleanup != "CLEANUP-OWN-PARTIAL-SNAPSHOT":
         raise RuntimeError("Exact partial cleanup confirmation is required")
     source = source_facts(args.expected_source_commit)
-    base_url, user, password, token, _redactor = resolve_runtime(args.env)
+    base_url, user, password, token, redactor = resolve_runtime(args.env)
     audit_report = read_json_object(args.audit_report)
     identity, helper_id, helper_hash = validate_control_report(
         audit_report, token, source["commit"]
@@ -1811,6 +2696,25 @@ def cleanup_partial(args: argparse.Namespace) -> int:
         client,
         helper_id,
         helper_expected(helper_id, helper_code, identity, active=True),
+    )
+    storage_before = call_helper_object_retry(
+        client,
+        route=identity["route"],
+        token=token,
+        helper_sha256=helper_hash,
+        action="storage_status",
+        label="Pre-partial-cleanup storage status",
+    )
+    checkpoint = reserve_terminal_report(
+        args.report,
+        {
+            "operation": "partial_snapshot_cleanup",
+            "source_commit": source["commit"],
+            "helper_id": helper_id,
+            "helper_sha256": helper_hash,
+            "storage_preflight": storage_before.get("storage"),
+        },
+        redactor,
     )
     payload = require_object(
         call_helper(
@@ -1829,7 +2733,37 @@ def cleanup_partial(args: argparse.Namespace) -> int:
     )
     if payload.get("absent") is not True:
         raise RecoveryHold("Partial run-owned snapshot cleanup absence proof failed")
-    print(json.dumps({"status": "PARTIAL_SNAPSHOT_CLEANED_HELPER_RETAINED"}))
+    storage_after = call_helper_object_retry(
+        client,
+        route=identity["route"],
+        token=token,
+        helper_sha256=helper_hash,
+        action="storage_status",
+        label="Post-partial-cleanup storage absence",
+    )
+    if not (
+        isinstance(storage_after.get("storage"), dict)
+        and storage_after["storage"].get("absent") is True
+    ):
+        raise RecoveryHold("Partial snapshot storage absence is uncertain")
+    report = {
+        "schema": "nadlan-einstein-live-recovery-client-partial-cleanup/v1",
+        "generated_at_utc": utc_now(),
+        "source": source,
+        "checkpoint": checkpoint,
+        "helper_id": helper_id,
+        "snapshot_storage_directly_absent": True,
+        "helper_retained": True,
+        "passed": True,
+        "status": "PARTIAL_SNAPSHOT_CLEANED_HELPER_RETAINED",
+    }
+    finalize_terminal_report(args.report, report, redactor)
+    print(
+        json.dumps(
+            {"status": report["status"], "report": str(args.report.resolve())},
+            separators=(",", ":"),
+        )
+    )
     return 0
 
 
@@ -1911,9 +2845,16 @@ def self_test() -> int:
         raise RuntimeError("Rendered helper marker/EOL gate failed")
     for required in (
         "current_user_can( 'update_plugins' )",
+        "get_header( 'x-nadlan-recovery-token' )",
+        "get_param( 'token' )",
         "SELECT id, name, code, scope, active",
         "SELECT option_id, option_name, option_value, autoload",
         "SELECT COUNT(*) FROM {$snippets_table} WHERE id = %d",
+        "SELECT GET_LOCK(%s, 0)",
+        "SELECT RELEASE_LOCK(%s)",
+        "sys_get_temp_dir()",
+        "auth_hmac_sha256",
+        "chunk_sha256",
         "snapshot_create",
         "download_chunk",
         "cleanup_snapshot",
@@ -1928,6 +2869,15 @@ def self_test() -> int:
         if not present:
             raise RuntimeError(
                 f"Rendered helper security marker gate failed: {required}"
+            )
+    for forbidden in (
+        ".htaccess",
+        "public_probe_url",
+        "wp_upload_dir",
+    ):
+        if forbidden in helper:
+            raise RuntimeError(
+                f"Rendered helper contains forbidden public-storage/auth marker: {forbidden}"
             )
     tests["rendered_helper_sha256"] = sha256_bytes(helper.encode("utf-8"))
     tests["session_identity"] = {
@@ -1972,7 +2922,7 @@ def self_test() -> int:
             {"path": "inc/a.php", "bytes": 4, "sha256": sha256_bytes(b"a\n\n\n")},
             {"path": "nadlan-config.php", "bytes": 4, "sha256": sha256_bytes(b"main")},
         ]
-        expected_inventory = inventory_contract(expected_rows)
+        expected_inventory = inventory_contract(expected_rows, ["inc"])
         with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_DEFLATED) as bundle:
             bundle.writestr("nadlan-config/", b"")
             bundle.writestr("nadlan-config/inc/", b"")
@@ -2064,22 +3014,43 @@ def self_test() -> int:
                 "bytes": 123,
                 "chunk_bytes": CHUNK_BYTES,
                 "chunks": 1,
+                "chunk_sha256": ["8" * 64],
                 "mtime": 1,
             },
-            "public_probe_url": (
-                "https://nad-lan.co.il/wp-content/" + manifest_storage + "/snapshot.zip"
-            ),
         }
-        valid_manifest = {
+        signed_manifest = {
             **manifest_base,
             "contract_sha256": sha256_bytes(exact_json_bytes(manifest_base)),
+        }
+        valid_manifest = {
+            **signed_manifest,
+            "auth_hmac_sha256": hmac.new(
+                fixture_token.encode("utf-8"),
+                exact_json_bytes(signed_manifest),
+                hashlib.sha256,
+            ).hexdigest(),
         }
         validate_manifest(
             valid_manifest,
             source_commit="a" * 40,
             audit_fingerprint="d" * 64,
+            token=fixture_token,
             storage_slug=manifest_storage,
         )
+        tampered_manifest = json.loads(json.dumps(valid_manifest))
+        tampered_manifest["archive"]["chunk_sha256"][0] = "7" * 64
+        try:
+            validate_manifest(
+                tampered_manifest,
+                source_commit="a" * 40,
+                audit_fingerprint="d" * 64,
+                token=fixture_token,
+                storage_slug=manifest_storage,
+            )
+        except RuntimeError:
+            tests["signed_chunk_index_tamper_rejected"] = True
+        else:
+            raise RuntimeError("Signed chunk index tamper fixture was accepted")
         oversize_manifest = json.loads(json.dumps(valid_manifest))
         oversize_rows = [
             {"path": "huge.bin", "bytes": MAX_FILE_BYTES + 1, "sha256": "9" * 64}
@@ -2096,17 +3067,26 @@ def self_test() -> int:
                 "audit_fingerprint",
                 "plugin",
                 "archive",
-                "public_probe_url",
             )
         }
         oversize_manifest["contract_sha256"] = sha256_bytes(
             exact_json_bytes(oversize_base)
         )
+        oversize_signed = {
+            **oversize_base,
+            "contract_sha256": oversize_manifest["contract_sha256"],
+        }
+        oversize_manifest["auth_hmac_sha256"] = hmac.new(
+            fixture_token.encode("utf-8"),
+            exact_json_bytes(oversize_signed),
+            hashlib.sha256,
+        ).hexdigest()
         try:
             validate_manifest(
                 oversize_manifest,
                 source_commit="a" * 40,
                 audit_fingerprint="d" * 64,
+                token=fixture_token,
                 storage_slug=manifest_storage,
             )
         except RuntimeError:
@@ -2114,14 +3094,80 @@ def self_test() -> int:
         else:
             raise RuntimeError("Oversize manifest fixture was not rejected")
 
-    # The transport tests inject all responses. Patching the real Session method
-    # makes any accidental network access an immediate test failure.
-    original_request = requests.sessions.Session.request
+        raw_snapshot_base = {
+            "schema": "nadlan-einstein-public-raw-snapshot/v1",
+            "post_id": 4867,
+            "core": {
+                "ID": "4867",
+                "post_author": "1",
+                "post_content": "fixture",
+                "post_status": "publish",
+            },
+            "meta": [
+                {
+                    "meta_id": "10",
+                    "post_id": "4867",
+                    "meta_key": "fixture_key",
+                    "meta_value": "fixture_value",
+                }
+            ],
+            "terms": [
+                {
+                    "object_id": "4867",
+                    "term_taxonomy_id": "2",
+                    "term_order": "0",
+                }
+            ],
+        }
+        raw_snapshot = {
+            **raw_snapshot_base,
+            "contract_sha256": sha256_bytes(exact_json_bytes(raw_snapshot_base)),
+        }
+        validate_raw_snapshot(raw_snapshot, 4867)
+        reordered_snapshot = json.loads(json.dumps(raw_snapshot))
+        reordered_snapshot["core"] = {
+            "post_author": "1",
+            "ID": "4867",
+            "post_content": "fixture",
+            "post_status": "publish",
+        }
+        try:
+            validate_raw_snapshot(reordered_snapshot, 4867)
+        except RuntimeError:
+            tests["raw_snapshot_key_order_drift_rejected"] = True
+        else:
+            raise RuntimeError("Raw snapshot key-order drift fixture was accepted")
 
-    def blocked(*_args: Any, **_kwargs: Any) -> Any:
-        raise AssertionError("Self-test attempted network access")
+        checkpoint_path = Path(temp) / "terminal-checkpoint.json"
+        checkpoint = reserve_terminal_report(
+            checkpoint_path,
+            {"operation": "offline_fixture", "identity_sha256": "1" * 64},
+            Redactor(("never-written-secret",)),
+        )
+        if (
+            read_json_object(checkpoint_path).get("status")
+            != "PREPARED_BEFORE_DESTRUCTIVE_CLEANUP"
+        ):
+            raise RuntimeError("Durable terminal checkpoint fixture failed")
+        finalize_terminal_report(
+            checkpoint_path,
+            {
+                "schema": "offline-terminal-fixture/v1",
+                "checkpoint": checkpoint,
+                "passed": True,
+            },
+            Redactor(("never-written-secret",)),
+        )
+        if read_json_object(checkpoint_path).get("passed") is not True:
+            raise RuntimeError("Atomic terminal report finalize fixture failed")
+        if list(Path(temp).glob(".terminal-checkpoint.json.final-*")):
+            raise RuntimeError("Atomic terminal report left a temporary file")
+        tests["durable_terminal_checkpoint_and_atomic_finalize"] = True
 
-    requests.sessions.Session.request = blocked
+    # Every transport response is injected. The optional HTTP dependency must
+    # remain unloaded, making the CI self-test genuinely stdlib-only.
+    if _REQUESTS is not None:
+        raise RuntimeError("Self-test started after the optional HTTP module loaded")
     try:
         success_session = FakeSession(
             [FakeResponse(200, b"{}", "application/json", payload={})]
@@ -2133,6 +3179,97 @@ def self_test() -> int:
             raise RuntimeError("Transport success fixture failed")
         if len(success_session.calls) != 1:
             raise RuntimeError("Transport success used a fallback")
+        helper_session = FakeSession(
+            [FakeResponse(200, b"{}", "application/json", payload={})]
+        )
+        helper_client = WordpressClient(
+            "https://nad-lan.co.il", "u", "p", session=helper_session
+        )  # type: ignore[arg-type]
+        call_helper(
+            helper_client,
+            route="nadlan-live-recovery/v1/fixture-route",
+            token=fixture_token,
+            helper_sha256="1" * 64,
+            action="audit",
+        )
+        helper_call = helper_session.calls[0]
+        if (
+            fixture_token in str(helper_call["url"])
+            or "token" in helper_call["json"]
+            or helper_call["headers"]
+            != {"X-Nadlan-Recovery-Token": fixture_token}
+        ):
+            raise RuntimeError("Helper token transport is not header-only")
+        tests["header_only_token_transport"] = True
+
+        missing_payload = {
+            "code": MISSING_SNIPPET_CODE,
+            "message": MISSING_SNIPPET_MESSAGE,
+        }
+        route_missing_payload = {"code": "rest_no_route"}
+        absence_session = FakeSession(
+            [
+                FakeResponse(
+                    500,
+                    exact_json_bytes(missing_payload),
+                    "application/json",
+                    payload=missing_payload,
+                ),
+                FakeResponse(
+                    200,
+                    b"[]",
+                    "application/json",
+                    payload=[],
+                    headers={"X-WP-TotalPages": "1"},
+                ),
+                FakeResponse(
+                    404,
+                    exact_json_bytes(route_missing_payload),
+                    "application/json",
+                    payload=route_missing_payload,
+                ),
+            ]
+        )
+        public_absence_session = FakeSession(
+            [
+                FakeResponse(
+                    404,
+                    exact_json_bytes(route_missing_payload),
+                    "application/json",
+                    payload=route_missing_payload,
+                )
+            ]
+        )
+        absence_client = WordpressClient(
+            "https://nad-lan.co.il", "u", "p", session=absence_session
+        )  # type: ignore[arg-type]
+        absence = prove_helper_absence(
+            absence_client,
+            identity=identity,
+            token=fixture_token,
+            helper_id=451,
+            helper_hash="1" * 64,
+            public_session=public_absence_session,
+        )
+        if not all(
+            absence[key]
+            for key in (
+                "item_absent",
+                "collection_absent",
+                "route_absent",
+                "public_route_absent",
+            )
+        ):
+            raise RuntimeError("Exact helper absence matrix fixture failed")
+        public_call = public_absence_session.calls[0]
+        if (
+            public_absence_session.auth is not None
+            or fixture_token in str(public_call)
+            or "X-Nadlan-Recovery-Token" in public_call.get("headers", {})
+            or public_call.get("allow_redirects") is not False
+        ):
+            raise RuntimeError("Public route absence request leaked authentication")
+        tests["authoritative_and_public_route_absence"] = True
 
         denial_session = FakeSession(
             [
@@ -2201,7 +3338,10 @@ def self_test() -> int:
         if len(fallback_failure_session.calls) != 2:
             raise RuntimeError("Fallback-failure request count changed")
 
-        timeout_session = FakeSession([requests.Timeout("offline timeout fixture")])
+        class OfflineTimeout(Exception):
+            pass
+
+        timeout_session = FakeSession([OfflineTimeout("offline timeout fixture")])
         client = WordpressClient(
             "https://nad-lan.co.il",
             "u",
@@ -2210,13 +3350,59 @@ def self_test() -> int:
         )
         try:
             client.request("POST", "example/v1/run", json_body={})
-        except requests.Timeout:
+        except OfflineTimeout:
             tests["timeout_fail_closed"] = True
         else:
             raise RuntimeError("Timeout fixture did not fail closed")
     finally:
-        requests.sessions.Session.request = original_request
+        if _REQUESTS is not None:
+            raise RuntimeError("Self-test lazy-loaded the optional HTTP module")
+    tests["stdlib_only_lazy_http_dependency"] = True
     tests["transport_matrix_blocked_network"] = True
+    authority_calls: list[list[str]] = []
+
+    def authority_runner(command: list[str], **_kwargs: Any) -> Any:
+        authority_calls.append(command)
+        if command[1:3] == ["fetch", "--no-tags"]:
+            return subprocess.CompletedProcess(command, 0, stdout="", stderr="")
+        if command[1:3] == ["rev-parse", "--verify"]:
+            return subprocess.CompletedProcess(
+                command, 0, stdout="2" * 40 + "\n", stderr=""
+            )
+        if command[1:3] == ["merge-base", "--is-ancestor"]:
+            return subprocess.CompletedProcess(command, 0, stdout=b"", stderr=b"")
+        raise AssertionError("Unexpected fresh-main fixture command")
+
+    if fresh_main_authority("1" * 40, process_runner=authority_runner) != "2" * 40:
+        raise RuntimeError("Fresh-main authority fixture returned the wrong commit")
+    if authority_calls != [
+        [
+            "git",
+            "fetch",
+            "--no-tags",
+            "--no-recurse-submodules",
+            "origin",
+            "main",
+        ],
+        ["git", "rev-parse", "--verify", "FETCH_HEAD^{commit}"],
+        ["git", "merge-base", "--is-ancestor", "1" * 40, "2" * 40],
+    ]:
+        raise RuntimeError("Fresh-main authority command sequence changed")
+
+    def failed_fetch_runner(command: list[str], **_kwargs: Any) -> Any:
+        return subprocess.CompletedProcess(command, 1, stdout="", stderr="offline")
+
+    try:
+        fresh_main_authority("1" * 40, process_runner=failed_fetch_runner)
+    except RuntimeError:
+        tests["fresh_fetch_failure_rejected"] = True
+    else:
+        raise RuntimeError("Fresh-main fetch failure fixture was accepted")
+    tests["fresh_fetch_head_authority_not_cached_origin"] = True
+    parser_choices = build_parser()._subparsers._group_actions[0].choices
+    if set(parser_choices) != {"self-test", "audit", "cleanup-helper"}:
+        raise RuntimeError("Phase-A parser exposes a Phase-B action")
+    tests["phase_b_commands_structurally_absent"] = True
     tests["secret_scan"] = secret_scan(SOURCE_PATHS)
     tests["passed"] = True
     print(json.dumps(tests, indent=2, sort_keys=True))
@@ -2239,28 +3425,45 @@ def build_parser() -> argparse.ArgumentParser:
     audit.add_argument("--report", type=Path, required=True)
     audit.add_argument("--confirm-create-helper", required=True)
 
-    snap = subparsers.add_parser(
-        "snapshot", help="Create/download verified live plugin snapshot"
+    helper_cleanup = subparsers.add_parser(
+        "cleanup-helper", help="Terminally remove the exact Phase-A audit helper"
     )
-    live_common(snap)
-    snap.add_argument("--audit-report", type=Path, required=True)
-    snap.add_argument("--output-dir", type=Path, required=True)
-    snap.add_argument("--confirm-snapshot", required=True)
+    live_common(helper_cleanup)
+    helper_authority = helper_cleanup.add_mutually_exclusive_group(required=True)
+    helper_authority.add_argument("--audit-report", type=Path)
+    helper_authority.add_argument(
+        "--helper-id",
+        type=int,
+        help="Exact interrupted helper ID reported by a failed audit attempt",
+    )
+    helper_cleanup.add_argument("--report", type=Path, required=True)
+    helper_cleanup.add_argument("--confirm-cleanup", required=True)
 
-    clean = subparsers.add_parser(
-        "cleanup", help="Remove verified snapshot and own helper"
-    )
-    live_common(clean)
-    clean.add_argument("--snapshot-report", type=Path, required=True)
-    clean.add_argument("--report", type=Path, required=True)
-    clean.add_argument("--confirm-cleanup", required=True)
+    if SNAPSHOT_ACTIONS_ENABLED:
+        snap = subparsers.add_parser(
+            "snapshot", help="Create/download verified live plugin snapshot"
+        )
+        live_common(snap)
+        snap.add_argument("--audit-report", type=Path, required=True)
+        snap.add_argument("--output-dir", type=Path, required=True)
+        snap.add_argument("--confirm-snapshot", required=True)
 
-    partial = subparsers.add_parser(
-        "cleanup-partial", help="Remove only an interrupted run-owned partial snapshot"
-    )
-    live_common(partial)
-    partial.add_argument("--audit-report", type=Path, required=True)
-    partial.add_argument("--confirm-partial-cleanup", required=True)
+        clean = subparsers.add_parser(
+            "cleanup", help="Remove verified snapshot and own helper"
+        )
+        live_common(clean)
+        clean.add_argument("--snapshot-report", type=Path, required=True)
+        clean.add_argument("--report", type=Path, required=True)
+        clean.add_argument("--confirm-cleanup", required=True)
+
+        partial = subparsers.add_parser(
+            "cleanup-partial",
+            help="Remove only an interrupted run-owned partial snapshot",
+        )
+        live_common(partial)
+        partial.add_argument("--audit-report", type=Path, required=True)
+        partial.add_argument("--report", type=Path, required=True)
+        partial.add_argument("--confirm-partial-cleanup", required=True)
     return parser
 
 
@@ -2273,6 +3476,8 @@ def main(argv: list[str] | None = None) -> int:
         return self_test()
     if args.command == "audit":
         return create_and_audit(args)
+    if args.command == "cleanup-helper":
+        return cleanup_audit_helper(args)
     if args.command == "snapshot":
         return snapshot(args)
     if args.command == "cleanup":
@@ -2288,7 +3493,7 @@ if __name__ == "__main__":
     except RecoveryHold as error:
         print(f"HOLD: {error}", file=sys.stderr)
         raise SystemExit(2)
-    except requests.RequestException:
+    except NetworkRequestFailed:
         print("ERROR: authenticated network request failed", file=sys.stderr)
         raise SystemExit(1)
     except (RuntimeError, OSError, ValueError) as error:
