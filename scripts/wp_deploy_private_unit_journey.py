@@ -52,6 +52,7 @@ UPLOAD_CHUNK_BYTES = 128 * 1024
 MAX_UPLOAD_CHUNKS = 256
 MARKER_RE = re.compile(r"__[A-Z0-9_]+__")
 EINSTEIN_STAGE_SCHEMA = "nadlan-wordpress-private-stage-request/v1"
+EINSTEIN_STAGE_OPERATION = "create_exact_private_sandbox"
 EINSTEIN_STAGE_SLUG = "sandbox-einstein-tower-flagship-v3-review"
 EINSTEIN_CANONICAL_POST_ID = 4867
 EINSTEIN_CANONICAL_PATH = "/projects/einstein-tower/"
@@ -206,7 +207,7 @@ def validate_einstein_stage_request(path: Path) -> dict[str, Any]:
         secret_contract.get("post_password") if isinstance(secret_contract, dict) else {}
     )
     if (
-        payload.get("operation") != "create_or_replace_exact_private_sandbox"
+        payload.get("operation") != EINSTEIN_STAGE_OPERATION
         or payload.get("endpoint") != "https://nad-lan.co.il/wp-json/wp/v2/nadlan_project"
         or
         lookup.get("post_type") != "nadlan_project"
@@ -5858,6 +5859,7 @@ def _finish_self_test(
         "canonical_sha_mismatch_rejected": canonical_sha_mismatch_rejected,
         "einstein_private_stage": {
             "request_validated": True,
+            "operation": EINSTEIN_STAGE_OPERATION,
             "exact_slug": EINSTEIN_STAGE_SLUG,
             "canonical_public_post_id": EINSTEIN_CANONICAL_POST_ID,
             "project_contract_id": EINSTEIN_PROJECT_CONTRACT_ID,

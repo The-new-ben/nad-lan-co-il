@@ -122,9 +122,9 @@ installed, or that authenticated/live browser acceptance passed.
 8. An exact already-original state may use the documented zero-copy adoption path only after the
    live plugin, activation, inventory, stage/spool absence and retained-backup contract reconcile.
 
-The current Einstein stage path is stricter: despite the legacy payload label
-`create_or_replace_exact_private_sandbox`, its guarded driver implements create-only and aborts if
-the exact slug exists. That label does not authorize replacement or update.
+The current Einstein stage path declares `create_exact_private_sandbox`; its guarded driver
+implements create-only and aborts if the exact slug exists. The operation does not authorize
+replacement or update.
 
 ## Minimum proof
 

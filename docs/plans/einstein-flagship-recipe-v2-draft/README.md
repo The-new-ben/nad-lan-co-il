@@ -84,11 +84,11 @@ publication manifest still requires a distinct protected stage, authenticated re
 browser gates, a before snapshot and rollback artifact. None of those open gates is converted into
 a live success claim here.
 
-Two current metadata labels are not capability proof: the publication manifest's
+One current metadata label is not capability proof: the publication manifest's
 `private_stage_payload_pending_final_build` detail is stale because the payload exists and passes
-its local validator, and the payload operation name `create_or_replace_exact_private_sandbox` is
-legacy wording. The guarded Einstein driver is create-only and aborts on an existing exact slug;
-neither label proves a WordPress run or authorizes replacement.
+its local validator. The payload operation `create_exact_private_sandbox` and guarded Einstein
+driver are create-only and abort on an existing exact slug; neither proves a WordPress run or
+authorizes replacement.
 
 ## Privacy and recovery baseline
 

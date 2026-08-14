@@ -60,6 +60,7 @@ const hotspotCrosswalkPath = "assets/projects/einstein-tower/evidence/hotspot-pl
 const hotspotSummaryPath = "assets/projects/einstein-tower/evidence/hotspot-anchor-summary.csv";
 const packagePath = "assets/projects/einstein-tower/contracts/flagship-project.json";
 const stagePath = "docs/wp-drafts/einstein-tower-flagship-v3-private-stage.json";
+const stageOperation = "create_exact_private_sandbox";
 
 const data = readJson(dataPath);
 const modelSpec = readJson(modelSpecPath);
@@ -409,7 +410,7 @@ const meta = {
 const stage = {
   schema: "nadlan-wordpress-private-stage-request/v1",
   generated_at: "2026-08-14",
-  operation: "create_or_replace_exact_private_sandbox",
+  operation: stageOperation,
   endpoint: "https://nad-lan.co.il/wp-json/wp/v2/nadlan_project",
   lookup: {
     post_type: "nadlan_project",
