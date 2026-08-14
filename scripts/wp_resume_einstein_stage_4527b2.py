@@ -359,8 +359,24 @@ def source_patch_contract(*, require_merged: bool) -> dict[str, str]:
     protected_main_commit = ""
     resume_source_exact = "false"
     if require_merged:
+        fetch_main = subprocess.run(
+            [
+                "git",
+                "fetch",
+                "--no-tags",
+                "--no-recurse-submodules",
+                "origin",
+                "main",
+            ],
+            cwd=REPO_ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if fetch_main.returncode != 0:
+            raise RuntimeError("Protected main could not be fetched freshly")
         origin_main = subprocess.run(
-            ["git", "rev-parse", "origin/main"],
+            ["git", "rev-parse", "--verify", "FETCH_HEAD^{commit}"],
             cwd=REPO_ROOT,
             capture_output=True,
             text=True,
@@ -2488,6 +2504,21 @@ def self_test() -> dict[str, Any]:
     if core_test.get("passed") is not True or core_test.get("php_lint") != "passed":
         raise RuntimeError("Release engine self-test or rendered PHP lint failed")
     source = Path(__file__).read_text(encoding="utf-8")
+    fetch_marker = (
+        '"fetch",\n'
+        '                "--no-tags",\n'
+        '                "--no-recurse-submodules",\n'
+        '                "origin",\n'
+        '                "main",'
+    )
+    fetch_position = source.find(fetch_marker)
+    fetched_commit_position = source.find('"FETCH_HEAD^{commit}"')
+    if not (
+        fetch_position >= 0
+        and fetched_commit_position > fetch_position
+        and '"origin/main"' not in source[fetch_position:fetched_commit_position]
+    ):
+        raise RuntimeError("Fresh protected-main authorization gate self-test failed")
     main_start = source.find("\ndef main() -> int:")
     if main_start < 0:
         raise RuntimeError("One-shot resume main entry point is missing")
