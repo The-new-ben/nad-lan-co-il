@@ -12,11 +12,11 @@ The model statistics below come from the exact GLB URL referenced by each render
 | Ashira | 488,188 | 10,988 | 897 / 898 / 14 | 5 visible markers, all 22.8 px | Rich component/node structure and compact byte size | Low interaction coverage; markers remain illustrative and below 44 px |
 | ToHa2 | 940,000 | 31,232 | 1 / 1 / 3 | 75 visible floor markers, all 38 px | Highest live triangle count and complete commercial floor sweep | Dense floor layer, generic illustrative direction and sub-44 px targets |
 | The Park | 1,173,216 | 19,488 | 1 / 1 / 3 | 44 visible floor markers, all 38 px | Complete commercial floor sweep with live context map | Dense layer, generic illustrative direction, sub-44 px targets and model above the old `<1 MB` recipe rule |
-| Einstein HD | 2,419,992 | 39,912 | 13 / 13 / 10 | 3 governed concept anchors in the package | Highest geometric detail in this set, separate named components, reviewed asset hash and low-density interaction layer | Local/private only; heavier than the fleet; flat-color viewer; anchor points are model-local illustrations, not real-world positions |
-| Einstein LOD | 31,740 | 156 | 9 / 9 / 10 | Same 3 concept contracts | Distinct, extremely small constrained-data fallback | Visual sufficiency at real WordPress scale is not yet proven; 156 triangles can preserve only a coarse silhouette |
+| Einstein HD | 2,420,492 | 39,912 | 13 / 13 / 10 | 3 governed concept anchors serving 4 scenes | Highest geometric detail in this set, separate named components, reviewed asset hash and low-density interaction layer | Local/private only; heavier than the fleet; flat-color viewer; anchor points are model-local illustrations, not real-world positions |
+| Einstein LOD | 32,244 | 156 | 9 / 9 / 10 | Same 3 concept contracts serving 4 scenes | Distinct, extremely small constrained-data fallback | Visual sufficiency at real WordPress scale is not yet proven; 156 triangles can preserve only a coarse silhouette |
 
-Exact Einstein HD SHA-256: `39a1520e0320334595b00671f823afbbcfa567c92ba7fc16d44e6c471874d326`.
-Exact Einstein LOD SHA-256: `6e53a6693810d97a4826fde8d73b91a902477d48077d4b3ccf930c57ea96491c`.
+Exact Einstein HD SHA-256: `71fcca8a0f58743b5f2257684c79957fbbff8e0169f5438bdc78231f27968a53`; 79,824 vertices.
+Exact Einstein LOD SHA-256: `485161974b6d343956d249d821c893b72a59678e8e8ee2810c90cee5f23079ce`; 312 vertices.
 
 ### Hotspot copy observed
 

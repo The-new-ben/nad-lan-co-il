@@ -1,0 +1,130 @@
+{
+  "schema": "nadlan-independent-glb-inspection/v1",
+  "checked_on": "2026-08-14",
+  "project_contract_id": "einstein-tower-6885-32",
+  "method": {
+    "binary": "Parsed each GLB v2 header and JSON/BIN chunk table; required declared length to equal actual length.",
+    "geometry": "Required triangle primitive mode, summed index accessor counts divided by three, and summed POSITION accessor counts.",
+    "parity": "Compared embedded asset/scene/mesh extras with model-spec.json, experience/manifest.json and the contract asset registry.",
+    "repository_validator": "node assets/projects/einstein-tower/validate-model.mjs",
+    "repository_validator_result": "pass"
+  },
+  "assets": {
+    "hd": {
+      "path": "assets/projects/einstein-tower/model-hd.glb",
+      "git_blob": "5967164b725d2ed5bf661a1be192a0124d42190e",
+      "glb_version": 2,
+      "actual_bytes": 2420492,
+      "declared_bytes": 2420492,
+      "sha256": "71fcca8a0f58743b5f2257684c79957fbbff8e0169f5438bdc78231f27968a53",
+      "json_chunk_bytes": 25744,
+      "bin_chunk_bytes": 2394720,
+      "triangles": 39912,
+      "vertices": 79824,
+      "primitives": 13,
+      "meshes": 13,
+      "nodes": 13,
+      "materials": 10,
+      "accessor_bounds_including_north_reference": {
+        "min": [-36, -0.050000000000000044, -23.15],
+        "max": [35.15, 93.17, 38.55],
+        "dimensions": [71.15, 93.22, 61.699999999999996]
+      }
+    },
+    "lod": {
+      "path": "assets/projects/einstein-tower/model-lod.glb",
+      "git_blob": "7e471494e8488f0c78c3ecf3409f6abea800fc1e",
+      "glb_version": 2,
+      "actual_bytes": 32244,
+      "declared_bytes": 32244,
+      "sha256": "485161974b6d343956d249d821c893b72a59678e8e8ee2810c90cee5f23079ce",
+      "json_chunk_bytes": 22856,
+      "bin_chunk_bytes": 9360,
+      "triangles": 156,
+      "vertices": 312,
+      "primitives": 9,
+      "meshes": 9,
+      "nodes": 9,
+      "materials": 10,
+      "accessor_bounds_including_north_reference": {
+        "min": [-35, 0, -23],
+        "max": [35, 91, 40],
+        "dimensions": [70, 91, 63]
+      }
+    }
+  },
+  "shared_asset_metadata": {
+    "project_contract_id": "einstein-tower-6885-32",
+    "representation_kind": "owner_approved_illustration",
+    "decision_grade": false,
+    "owner_publication_permission": true,
+    "release_gate_state": "private_stage",
+    "owner_decision_id": "OWNER-2026-08-14-EINSTEIN-ILLUSTRATIVE-MASSING",
+    "effective_at": "2026-08-14T00:00:00+03:00",
+    "expires_at": "2027-08-14T00:00:00+03:00"
+  },
+  "shared_scene_calibration": {
+    "north_degrees": 0,
+    "north_axis": "+Z",
+    "up_axis": "+Y",
+    "units": "metres",
+    "calibration_id": "einstein-33a-illustrative-massing-v1",
+    "placement_calibration_state": "not_municipally_crosswalked"
+  },
+  "hotspots": [
+    {
+      "evidence_anchor_id": "representative-interior-concept",
+      "hotspot_id": "representative-interior-concept",
+      "tool_id": "interior",
+      "open_surface_tool_id": "interior",
+      "scene_ids": ["living", "bedroom"],
+      "position": [16, 34.7, 5.8],
+      "surface_normal": [0, 0, 1],
+      "placement_confidence": {"zone": 0.68, "exact_point": 0.18},
+      "mapping_state": "owner_approved_illustrative_mapping",
+      "source_cited": false,
+      "decision_grade": false,
+      "real_world_orientation_calibrated": false
+    },
+    {
+      "evidence_anchor_id": "arrival-shared-podium-concept",
+      "hotspot_id": "facility-arrival-concept",
+      "tool_id": "facilities",
+      "open_surface_tool_id": "interior",
+      "scene_ids": ["arrival"],
+      "position": [12, 9.5, -13.25],
+      "surface_normal": [0, 0, -1],
+      "placement_confidence": {"zone": 0.63, "exact_point": 0.2},
+      "mapping_state": "owner_approved_illustrative_mapping",
+      "source_cited": false,
+      "decision_grade": false,
+      "real_world_orientation_calibrated": false
+    },
+    {
+      "evidence_anchor_id": "landscaped-public-roof-concept",
+      "hotspot_id": "facility-landscaped-open-space-concept",
+      "tool_id": "facilities",
+      "open_surface_tool_id": "interior",
+      "scene_ids": ["open-frame"],
+      "position": [27, 10, 14],
+      "surface_normal": [0, 1, 0],
+      "placement_confidence": {"zone": 0.86, "exact_point": 0.24},
+      "mapping_state": "owner_approved_illustrative_mapping",
+      "source_cited": false,
+      "decision_grade": false,
+      "real_world_orientation_calibrated": false
+    }
+  ],
+  "parity": {
+    "header_declared_length_equals_actual_length": true,
+    "contract_registry_bytes_and_sha256_match": true,
+    "hd_lod_asset_metadata_equal": true,
+    "hd_lod_scene_calibration_equal": true,
+    "model_spec_hd_lod_experience_manifest_hotspot_core_equal": true,
+    "hd_scene_and_hotspot_mesh_core_equal": true,
+    "lod_scene_and_hotspot_mesh_core_equal": true,
+    "exact_hotspot_count_each_model": 3,
+    "exact_selectable_scene_count": 4,
+    "all_hotspots_owner_approved_illustration_non_decision_grade": true
+  }
+}
