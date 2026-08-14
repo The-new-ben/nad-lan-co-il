@@ -2133,6 +2133,25 @@ def render_helper(
     )
     external_meta_bytes = exact_json_bytes(external_meta)
     supplemental_meta_bytes = exact_json_bytes(EINSTEIN_STAGE_SUPPLEMENTAL_META)
+    external_raw_meta: dict[str, str] = {}
+    for key, value in external_meta.items():
+        if isinstance(value, bool):
+            raw_value = "1" if value else ""
+        elif isinstance(value, int):
+            raw_value = str(value)
+        elif isinstance(value, float):
+            raw_value = repr(value)
+        elif isinstance(value, str):
+            raw_value = value
+        else:
+            raise RuntimeError("External stage meta contains a non-scalar raw value")
+        external_raw_meta[str(key)] = raw_value
+    for key, value in EINSTEIN_STAGE_SUPPLEMENTAL_META.items():
+        if not isinstance(value, str) or key in external_raw_meta:
+            raise RuntimeError("External stage supplemental raw meta is invalid")
+        external_raw_meta[str(key)] = value
+    external_raw_meta = dict(sorted(external_raw_meta.items()))
+    external_raw_meta_bytes = exact_json_bytes(external_raw_meta)
     replacements = {
         "__ROUTE_PATH__": json.dumps(route_path),
         "__TOKEN__": json.dumps(token),
@@ -2168,6 +2187,12 @@ def render_helper(
         ),
         "__EXTERNAL_STAGE_SUPPLEMENTAL_META_SHA256__": json.dumps(
             sha256_bytes(supplemental_meta_bytes)
+        ),
+        "__EXTERNAL_STAGE_RAW_META_B64__": json.dumps(
+            base64.b64encode(external_raw_meta_bytes).decode("ascii")
+        ),
+        "__EXTERNAL_STAGE_RAW_META_SHA256__": json.dumps(
+            sha256_bytes(external_raw_meta_bytes)
         ),
         "__EXTERNAL_STAGE_TITLE_SHA256__": json.dumps(
             sha256_text(str(external_body.get("title") or ""))
@@ -2619,7 +2644,7 @@ def independently_remove_snippet(
     # inactive-main-helper gap if the second phase is interrupted.
 
     cleanup_suffix = f"{utc_slug()}-{secrets.token_hex(3)}"
-    cleanup_name = f"tmp-unit-journey-cleanup-{cleanup_suffix}"
+    cleanup_name = f"x-unit-journey-cleanup-{cleanup_suffix}"
     cleanup_path = f"/cleanup-{cleanup_suffix}"
     cleanup_route = f"{ROUTE_NAMESPACE}{cleanup_path}"
     cleanup_token = secrets.token_hex(32)
@@ -2965,13 +2990,13 @@ def validate_retained_recovery_evidence(
     helper_hash = str(helper.get("code_sha256") or "")
     helper_name = str(helper.get("name") or "")
     helper_route = str(helper.get("route") or "")
-    expected_name = f"tmp-{run_id}"
+    expected_names = {f"x-{run_id}", f"tmp-{run_id}"}
     expected_route = f"{ROUTE_NAMESPACE}/deploy-{run_id}"
     if not (
         helper_id == expected_helper_id
         and helper_hash == expected_helper_sha256
         and re.fullmatch(r"[a-f0-9]{64}", helper_hash)
-        and helper_name == expected_name
+        and helper_name in expected_names
         and helper_route == expected_route
         and retained.get("recovery_retained") is True
         and retained.get("helper_active") is True
@@ -6027,19 +6052,42 @@ def _finish_self_test(
     external_commit_section = external_stage_helper[
         external_commit_start:external_commit_end
     ]
-    for forbidden_mutation in (
-        "delete_post_meta(",
-        "add_post_meta(",
-        "update_post_meta(",
-        "wp_update_post(",
+    for required_server_create_marker in (
+        "$state['phase'] = 'page_creating';",
+        "'post_status' => 'draft'",
         "wp_insert_post(",
-        "wp_delete_post(",
-        "clean_post_cache(",
+        "START TRANSACTION",
+        "$external_stage_raw_meta as $raw_key => $raw_value",
+        "$wpdb->insert( $wpdb->postmeta",
+        "'post_status' => 'publish'",
+        "wp_update_post(",
+        "External raw meta differs from the frozen contract.",
+        "$raw_rows_after_publish = $wpdb->get_results(",
+        "$external_stage_raw_meta !== $raw_after_publish",
+        "SELECT COUNT(*) FROM {$wpdb->term_relationships} WHERE object_id = %d",
+        "External post-publish raw meta or taxonomy differs from the frozen contract.",
+        "$wpdb->term_taxonomy",
+        "External draft automatic-meta read failed.",
+        "External pre-publish raw-meta read failed.",
+        "External post-publish raw-meta read failed.",
+        "External post-publish taxonomy read failed.",
     ):
-        if forbidden_mutation in external_commit_section:
+        if required_server_create_marker not in external_commit_section:
             raise RuntimeError(
-                "External-stage commit must be page read-only: "
-                + forbidden_mutation
+                "External-stage server-side create is incomplete: "
+                + required_server_create_marker
+            )
+    for required_registration_marker in (
+        "registered_meta_key_exists( 'post', '_nadlan_private_unit_journey', 'nadlan_project' )",
+        "get_registered_meta_keys( 'post', 'nadlan_project' )",
+        "nadlan_release_stage_marker_registration_conflict",
+        "$external_marker_sanitize === $external_marker_args['sanitize_callback']",
+        "$external_marker_auth === $external_marker_args['auth_callback']",
+    ):
+        if required_registration_marker not in external_stage_helper:
+            raise RuntimeError(
+                "External-stage marker registration gate is incomplete: "
+                + required_registration_marker
             )
     supplemental_bytes = exact_json_bytes(EINSTEIN_STAGE_SUPPLEMENTAL_META)
     for required_external_stage_marker in (
@@ -7178,8 +7226,24 @@ def _finish_self_test(
     stabilization_gate_position = driver_source.find(
         "if not stable:", deploy_driver_position
     )
+    same_schema_baseline_position = driver_source.find(
+        "canonical_rest_before_stage = wordpress_post_snapshot(",
+        postdeploy_storage_position,
+    )
+    same_schema_baseline_hash_position = driver_source.find(
+        "einstein_public_stage_baseline_sha256 = sha256_bytes(",
+        same_schema_baseline_position,
+    )
     stage_write_position = driver_source.find(
-        "einstein_transaction = write_einstein_stage(", postdeploy_storage_position
+        '"commit_external_stage",', postdeploy_storage_position
+    )
+    same_schema_stage_compare_position = driver_source.find(
+        "canonical_after_stage_sha256, einstein_public_stage_baseline_sha256",
+        stage_write_position,
+    )
+    same_schema_transaction_position = driver_source.find(
+        '"canonical_public_snapshot": canonical_rest_before_stage',
+        same_schema_stage_compare_position,
     )
     browser_acceptance_position = driver_source.find(
         "acceptance = subprocess.run(", stage_write_position
@@ -7208,7 +7272,11 @@ def _finish_self_test(
         < deploy_driver_position
         < stabilization_gate_position
         < postdeploy_storage_position
+        < same_schema_baseline_position
+        < same_schema_baseline_hash_position
         < stage_write_position
+        < same_schema_stage_compare_position
+        < same_schema_transaction_position
         < browser_acceptance_position
         < final_stage_readback_position
         < final_storage_position
@@ -7225,6 +7293,8 @@ def _finish_self_test(
         <= rollback_storage_position
         < safe_finalize_position
         < finally_position
+        and "einstein_public_predeploy_sha256"
+        not in driver_source[postdeploy_storage_position:phase_one_position]
     ):
         raise RuntimeError("Driver must defer independent helper deletion to finally after phase one")
     with tempfile.TemporaryDirectory(prefix="nadlan-release-self-test-") as temp_dir:
@@ -8156,7 +8226,7 @@ def _finish_self_test(
         raise RuntimeError("Legacy browser acceptance summary handling changed")
 
     stage_write_position = driver_source.find(
-        "einstein_transaction = write_einstein_stage(", main_position
+        '"commit_external_stage",', main_position
     )
     stage_absence_preflight_position = driver_source.find(
         "stage_matches_before_deploy = exact_stage_matches(", main_position
@@ -8165,7 +8235,7 @@ def _finish_self_test(
         "helper_creation_attempted = True", stage_absence_preflight_position
     )
     stage_commit_attempt_position = driver_source.find(
-        "einstein_stage_commit_attempted = True", stage_write_position
+        "einstein_stage_commit_attempted = True", postdeploy_storage_position
     )
     stage_commit_success_position = driver_source.find(
         "einstein_stage_committed = True", stage_commit_attempt_position
@@ -8219,8 +8289,8 @@ def _finish_self_test(
         <= stage_absence_preflight_position
         < helper_create_position
         < deploy_driver_position
-        < stage_write_position
         < stage_commit_attempt_position
+        < stage_write_position
         < stage_commit_success_position
         < anonymous_stage_position
         < browser_position
@@ -8446,7 +8516,9 @@ def _finish_self_test(
             "nonneutral_rest_extra_rejected": nonneutral_extra_rejected,
             "supplemental_claim_status_required": missing_supplemental_rejected,
             "external_stage_helper_rendered_and_linted": php_lint,
-            "external_stage_commit_page_read_only": True,
+            "external_stage_server_side_create": True,
+            "external_stage_durable_intent_before_insert": True,
+            "external_stage_draft_raw_publish_order": True,
             "external_stage_commit_before_fallible_gates": True,
             "post_commit_raw_drift_zero_delete": post_commit_raw_drift_zero_delete,
             "duplicate_raw_meta_rejected": True,
@@ -8683,7 +8755,7 @@ def main() -> int:
 
     run_prefix = "einstein-flagship" if einstein_request is not None else "unit-journey"
     run_id = f"{run_prefix}-{utc_slug()}-{secrets.token_hex(3)}"
-    helper_name = f"tmp-{run_id}"
+    helper_name = f"x-{run_id}"
     route_path = f"/deploy-{run_id}"
     route = f"{ROUTE_NAMESPACE}{route_path}"
     token = secrets.token_hex(32)
@@ -8716,6 +8788,7 @@ def main() -> int:
     stage_rollback_blocked = False
     deploy_failure_recovery_blocked = False
     einstein_public_predeploy_sha256 = ""
+    einstein_public_stage_baseline_sha256 = ""
     before_plugin_contract: dict[str, Any] = {}
     created_cleanup_rows: list[dict[str, Any]] = []
     artifact_evidence: dict[str, Any] = {
@@ -9374,18 +9447,17 @@ def main() -> int:
             ):
                 raise RuntimeError("Plugin deployment changed canonical public post 4867")
             result["checks"]["canonical_public_postdeploy"] = canonical_after_deploy
-            einstein_transaction = write_einstein_stage(client, einstein_request, post_password)
-            einstein_stage_commit_attempted = True
-            page_url = str(einstein_transaction["page_url"])
-            result["checks"]["private_page"] = {
-                "post_id": int(einstein_transaction["post_id"]),
-                "page_url": page_url,
-                "created_new": einstein_transaction["created_new"] is True,
-                "readback": einstein_transaction["readback"],
-                "canonical_public_4867_unchanged": True,
-                "canonical_public_sha256": einstein_transaction[
-                    "canonical_public_sha256"
-                ],
+            canonical_rest_before_stage = wordpress_post_snapshot(
+                get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
+            )
+            einstein_public_stage_baseline_sha256 = sha256_bytes(
+                exact_json_bytes(canonical_rest_before_stage)
+            )
+            result["checks"]["canonical_public_same_schema_stage_baseline"] = {
+                "post_id": EINSTEIN_CANONICAL_POST_ID,
+                "snapshot_sha256": einstein_public_stage_baseline_sha256,
+                "captured_after_helper_activation_and_stabilization": True,
+                "purpose": "same_rest_schema_stage_immutability",
             }
             stage_meta_keys = sorted(str(key) for key in einstein_request["body"]["meta"])
             stage_commit: dict[str, Any] = {}
@@ -9396,9 +9468,12 @@ def main() -> int:
                     stage_commit_response, stage_commit_payload = call_helper(
                         "commit_external_stage",
                         extra={
-                            "page_id": int(einstein_transaction["post_id"]),
-                            "created_new": einstein_transaction["created_new"] is True,
+                            "page_id": 0,
+                            "created_new": True,
                             "post_password": post_password,
+                            "stage_title": str(einstein_request["body"]["title"]),
+                            "stage_content": str(einstein_request["body"]["content"]),
+                            "stage_excerpt": str(einstein_request["body"]["excerpt"]),
                         },
                         timeout=180,
                     )
@@ -9409,9 +9484,8 @@ def main() -> int:
                         and isinstance(stage_commit_payload.get("idempotent"), bool)
                         and stage_commit_payload.get("state_phase") == "page_ready"
                         and _strict_positive_int(stage_commit_payload.get("page_id"))
-                        == int(einstein_transaction["post_id"])
-                        and stage_commit_payload.get("created_new")
-                        is (einstein_transaction["created_new"] is True)
+                        is not None
+                        and stage_commit_payload.get("created_new") is True
                         and stage_commit_payload.get("page_contract_kind")
                         == "external_committed"
                         and re.fullmatch(
@@ -9432,6 +9506,56 @@ def main() -> int:
                 raise RuntimeError(
                     "External Einstein stage commit did not reconcile within its retry bound"
                 )
+            stage_post_id = int(stage_commit["page_id"])
+            stage_record = get_authenticated_post(client, stage_post_id)
+            stage_readback = assert_einstein_stage_readback(
+                stage_record, einstein_request, post_password
+            )
+            page_url = str(stage_record.get("link") or "")
+            parsed_stage_url = urlparse(page_url)
+            if (
+                parsed_stage_url.scheme != "https"
+                or parsed_stage_url.hostname != "nad-lan.co.il"
+                or parsed_stage_url.username
+                or parsed_stage_url.password
+                or parsed_stage_url.fragment
+                or EINSTEIN_STAGE_SLUG not in parsed_stage_url.path
+            ):
+                raise RuntimeError("Server-created Einstein stage returned an unsafe URL")
+            canonical_after_stage = wordpress_post_snapshot(
+                get_authenticated_post(client, EINSTEIN_CANONICAL_POST_ID)
+            )
+            canonical_after_stage_sha256 = sha256_bytes(
+                exact_json_bytes(canonical_after_stage)
+            )
+            if not secrets.compare_digest(
+                canonical_after_stage_sha256, einstein_public_stage_baseline_sha256
+            ):
+                raise RuntimeError("Canonical public post changed during server-side stage creation")
+            created_snapshot = wordpress_post_snapshot(stage_record)
+            einstein_transaction = {
+                "post_id": stage_post_id,
+                "created_new": True,
+                "prior_snapshot": None,
+                "applied_meta_keys": stage_meta_keys,
+                "canonical_public_snapshot": canonical_rest_before_stage,
+                "canonical_public_sha256": canonical_after_stage_sha256,
+                "page_url": page_url,
+                "readback": stage_readback,
+                "created_authenticated_snapshot": created_snapshot,
+                "created_authenticated_snapshot_sha256": sha256_bytes(
+                    exact_json_bytes(created_snapshot)
+                ),
+            }
+            result["checks"]["private_page"] = {
+                "post_id": stage_post_id,
+                "page_url": page_url,
+                "created_new": True,
+                "readback": stage_readback,
+                "canonical_public_4867_unchanged": True,
+                "canonical_public_sha256": canonical_after_stage_sha256,
+                "creation_transport": "server_side_php",
+            }
             result["checks"]["external_stage_commit"] = {
                 "schema": stage_commit["schema"],
                 "idempotent": stage_commit["idempotent"],
@@ -9696,7 +9820,9 @@ def main() -> int:
                 "recovery_preserved": True,
                 "reason": "indeterminate_stage_write",
             }
-        if einstein_transaction is not None:
+        if einstein_request is not None and (
+            einstein_transaction is not None or einstein_stage_commit_attempted
+        ):
             stage_rollback_deferred_to_helper = True
             result["checks"]["failure_stage_rollback"] = {
                 "confirmed": False,

@@ -22,9 +22,70 @@ add_action( 'rest_api_init', function () {
 	$external_stage_meta_sha256 = __EXTERNAL_STAGE_META_SHA256__;
 	$external_stage_supplemental_meta_b64 = __EXTERNAL_STAGE_SUPPLEMENTAL_META_B64__;
 	$external_stage_supplemental_meta_sha256 = __EXTERNAL_STAGE_SUPPLEMENTAL_META_SHA256__;
+	$external_stage_raw_meta_b64 = __EXTERNAL_STAGE_RAW_META_B64__;
+	$external_stage_raw_meta_sha256 = __EXTERNAL_STAGE_RAW_META_SHA256__;
 	$external_stage_title_sha256 = __EXTERNAL_STAGE_TITLE_SHA256__;
 	$external_stage_content_sha256 = __EXTERNAL_STAGE_CONTENT_SHA256__;
 	$external_stage_excerpt_sha256 = __EXTERNAL_STAGE_EXCERPT_SHA256__;
+
+	/* The run-owned bootstrap temporarily exposes only the exact privacy marker
+	 * needed by authenticated edit-context readback. Storage writes still happen
+	 * server-side below and the registration disappears with this snippet. */
+	$external_stage_marker_preexisting = $external_stage_commit_enabled
+		&& registered_meta_key_exists( 'post', '_nadlan_private_unit_journey', 'nadlan_project' );
+	$external_stage_marker_registration_exact = ! $external_stage_commit_enabled;
+	if ( $external_stage_commit_enabled && ! $external_stage_marker_preexisting ) {
+		$external_marker_sanitize = function ( $value ) {
+			return 'private-unit-journey-v2' === $value ? $value : '';
+		};
+		$external_marker_auth = function ( $allowed, $meta_key, $object_id ) use ( $page_slug ) {
+			unset( $allowed, $meta_key );
+			$post = get_post( (int) $object_id );
+			return $post instanceof WP_Post
+				&& 'nadlan_project' === (string) $post->post_type
+				&& $page_slug === (string) $post->post_name
+				&& current_user_can( 'edit_post', (int) $object_id );
+		};
+		$external_marker_registered = register_post_meta( 'nadlan_project', '_nadlan_private_unit_journey', array(
+			'single'            => true,
+			'type'              => 'string',
+			'show_in_rest'      => true,
+			'sanitize_callback' => $external_marker_sanitize,
+			'auth_callback'     => $external_marker_auth,
+		) );
+		$external_marker_registry = get_registered_meta_keys( 'post', 'nadlan_project' );
+		$external_marker_args = isset( $external_marker_registry['_nadlan_private_unit_journey'] ) && is_array( $external_marker_registry['_nadlan_private_unit_journey'] )
+			? $external_marker_registry['_nadlan_private_unit_journey']
+			: array();
+		$external_stage_marker_registration_exact = true === $external_marker_registered
+			&& 'string' === (string) ( isset( $external_marker_args['type'] ) ? $external_marker_args['type'] : '' )
+			&& true === ( isset( $external_marker_args['single'] ) ? $external_marker_args['single'] : false )
+			&& true === ( isset( $external_marker_args['show_in_rest'] ) ? $external_marker_args['show_in_rest'] : false )
+			&& isset( $external_marker_args['sanitize_callback'], $external_marker_args['auth_callback'] )
+			&& $external_marker_sanitize === $external_marker_args['sanitize_callback']
+			&& $external_marker_auth === $external_marker_args['auth_callback'];
+	}
+	if ( $external_stage_commit_enabled ) {
+		$bootstrap_meta_json = base64_decode( $external_stage_meta_b64, true );
+		$bootstrap_meta = is_string( $bootstrap_meta_json ) ? json_decode( $bootstrap_meta_json, true ) : null;
+		if ( is_array( $bootstrap_meta ) && isset( $bootstrap_meta['website'] ) && is_string( $bootstrap_meta['website'] ) ) {
+			$bootstrap_website = $bootstrap_meta['website'];
+			add_filter( 'rest_prepare_nadlan_project', function ( $response, $post, $request ) use ( $page_slug, $bootstrap_website ) {
+				if ( ! $response instanceof WP_REST_Response || ! $post instanceof WP_Post
+					|| $page_slug !== (string) $post->post_name || 'edit' !== (string) $request->get_param( 'context' )
+					|| ! current_user_can( 'edit_post', (int) $post->ID )
+					|| array( $bootstrap_website ) !== get_post_meta( (int) $post->ID, 'website', false ) ) {
+					return $response;
+				}
+				$data = $response->get_data();
+				if ( is_array( $data ) && isset( $data['meta'] ) && is_array( $data['meta'] ) ) {
+					$data['meta']['website'] = $bootstrap_website;
+					$response->set_data( $data );
+				}
+				return $response;
+			}, PHP_INT_MAX, 3 );
+		}
+	}
 
 	register_rest_route( 'nadlan-private-release/v1', $route_path, array(
 		'methods'             => 'POST',
@@ -55,6 +116,10 @@ add_action( 'rest_api_init', function () {
 			$external_stage_meta_sha256,
 			$external_stage_supplemental_meta_b64,
 			$external_stage_supplemental_meta_sha256,
+			$external_stage_raw_meta_b64,
+			$external_stage_raw_meta_sha256,
+			$external_stage_marker_preexisting,
+			$external_stage_marker_registration_exact,
 			$external_stage_title_sha256,
 			$external_stage_content_sha256,
 			$external_stage_excerpt_sha256
@@ -123,14 +188,22 @@ add_action( 'rest_api_init', function () {
 			}
 			$external_stage_expected_meta = array();
 			$external_stage_supplemental_meta = array();
+			$external_stage_raw_meta = array();
 			if ( $external_stage_commit_enabled ) {
+				if ( $external_stage_marker_preexisting || ! $external_stage_marker_registration_exact ) {
+					return new WP_Error( 'nadlan_release_stage_marker_registration_conflict', 'Protected marker was already registered by another owner.', array( 'status' => 409 ) );
+				}
 				$external_meta_json = base64_decode( $external_stage_meta_b64, true );
 				$external_supplemental_meta_json = base64_decode( $external_stage_supplemental_meta_b64, true );
+				$external_raw_meta_json = base64_decode( $external_stage_raw_meta_b64, true );
 				$external_stage_expected_meta = is_string( $external_meta_json )
 					? json_decode( $external_meta_json, true )
 					: null;
 				$external_stage_supplemental_meta = is_string( $external_supplemental_meta_json )
 					? json_decode( $external_supplemental_meta_json, true )
+					: null;
+				$external_stage_raw_meta = is_string( $external_raw_meta_json )
+					? json_decode( $external_raw_meta_json, true )
 					: null;
 				if (
 					! is_string( $external_meta_json )
@@ -140,6 +213,9 @@ add_action( 'rest_api_init', function () {
 					|| ! is_string( $external_supplemental_meta_json )
 					|| ! hash_equals( $external_stage_supplemental_meta_sha256, hash( 'sha256', $external_supplemental_meta_json ) )
 					|| array( 'claim_status' => 'unclaimed' ) !== $external_stage_supplemental_meta
+					|| ! is_string( $external_raw_meta_json )
+					|| ! hash_equals( $external_stage_raw_meta_sha256, hash( 'sha256', $external_raw_meta_json ) )
+					|| ! is_array( $external_stage_raw_meta )
 					|| 1 !== preg_match( '/^[a-f0-9]{64}$/', $external_stage_title_sha256 )
 					|| 1 !== preg_match( '/^[a-f0-9]{64}$/', $external_stage_content_sha256 )
 					|| 1 !== preg_match( '/^[a-f0-9]{64}$/', $external_stage_excerpt_sha256 )
@@ -150,6 +226,17 @@ add_action( 'rest_api_init', function () {
 				}
 				ksort( $external_stage_expected_meta, SORT_STRING );
 				ksort( $external_stage_supplemental_meta, SORT_STRING );
+				ksort( $external_stage_raw_meta, SORT_STRING );
+				$expected_raw_keys = array_keys( array_merge( $external_stage_expected_meta, $external_stage_supplemental_meta ) );
+				sort( $expected_raw_keys, SORT_STRING );
+				if ( $expected_raw_keys !== array_keys( $external_stage_raw_meta ) ) {
+					return new WP_Error( 'nadlan_release_stage_raw_contract_invalid', 'Embedded raw stage keys are invalid.', array( 'status' => 500 ) );
+				}
+				foreach ( $external_stage_raw_meta as $raw_value ) {
+					if ( ! is_string( $raw_value ) ) {
+						return new WP_Error( 'nadlan_release_stage_raw_contract_invalid', 'Embedded raw stage value is invalid.', array( 'status' => 500 ) );
+					}
+				}
 			}
 
 			$inventory = function ( $root ) {
@@ -2142,15 +2229,26 @@ add_action( 'rest_api_init', function () {
 				$stage_commit_failure_stage = 'contract_validation';
 				$stage_commit_failure_reason_code = 'stage_commit_disabled';
 				try {
+					global $wpdb;
 					if ( true !== $external_stage_commit_enabled || '' === $project_contract_id ) {
 						throw new RuntimeException( 'External stage commit is disabled for this helper.' );
+					}
+					if ( ! current_user_can( 'publish_posts' ) ) {
+						$stage_commit_failure_reason_code = 'stage_publish_forbidden';
+						throw new RuntimeException( 'Current user cannot create the protected stage.' );
 					}
 					$page_id = $request->get_param( 'page_id' );
 					$created_new = $request->get_param( 'created_new' );
 					$post_password = (string) $request->get_param( 'post_password' );
+					$stage_title = (string) $request->get_param( 'stage_title' );
+					$stage_content = (string) $request->get_param( 'stage_content' );
+					$stage_excerpt = (string) $request->get_param( 'stage_excerpt' );
 					$meta_keys = array_keys( $external_stage_expected_meta );
 					sort( $meta_keys, SORT_STRING );
-					if ( ! is_int( $page_id ) || $page_id < 1 || $page_id === $source_post_id || true !== $created_new || '' === $post_password || strlen( $post_password ) > 255 ) {
+					if ( ! is_int( $page_id ) || $page_id < 0 || $page_id === $source_post_id || true !== $created_new || '' === $post_password || strlen( $post_password ) > 255
+						|| ! hash_equals( $external_stage_title_sha256, hash( 'sha256', $stage_title ) )
+						|| ! hash_equals( $external_stage_content_sha256, hash( 'sha256', $stage_content ) )
+						|| ! hash_equals( $external_stage_excerpt_sha256, hash( 'sha256', $stage_excerpt ) ) ) {
 						$stage_commit_failure_reason_code = 'stage_commit_request_invalid';
 						throw new RuntimeException( 'External stage commit request is invalid.' );
 					}
@@ -2176,6 +2274,161 @@ add_action( 'rest_api_init', function () {
 						|| ! hash_equals( (string) $state['after_digest'], (string) $stage_live['inventory']['digest'] )
 					) {
 						throw new RuntimeException( 'External stage commit plugin state is not exact.' );
+					}
+					$stage_commit_failure_stage = 'canonical_post_validation';
+					$stage_commit_failure_reason_code = 'canonical_post_storage_changed';
+					if (
+						! isset( $state['canonical_post_storage_baseline'] )
+						|| ! $canonical_post_storage_proof_valid( $state['canonical_post_storage_baseline'] )
+						|| ! $canonical_post_storage_unchanged( $state['canonical_post_storage_baseline'], $canonical_post_storage_proof() )
+					) {
+						throw new RuntimeException( 'Canonical post storage changed before external stage creation.' );
+					}
+
+					/* Create the protected stage inside the run-owned bootstrap.  Persist
+					 * intent before insertion, create as draft, write exact raw values,
+					 * then publish only after the raw contract is complete. */
+					if ( 0 === $page_id ) {
+						if ( in_array( $stage_phase, array( 'page_creating', 'page_ready' ), true ) ) {
+							$page_id = isset( $state['page_id'] ) && is_int( $state['page_id'] ) ? $state['page_id'] : 0;
+						}
+						if ( 0 === $page_id ) {
+							$stage_commit_failure_stage = 'stage_intent';
+							$stage_commit_failure_reason_code = 'stage_intent_invalid';
+							if ( ! $stage_scope_absent() ) {
+								throw new RuntimeException( 'External stage create-only scope is not absent.' );
+							}
+							foreach ( array( $wpdb->posts, $wpdb->postmeta, $wpdb->terms, $wpdb->term_taxonomy, $wpdb->term_relationships, $wpdb->options ) as $table ) {
+								$engine = $wpdb->get_var( $wpdb->prepare( 'SELECT ENGINE FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = %s', $table ) );
+								if ( 'InnoDB' !== (string) $engine ) {
+									throw new RuntimeException( 'External stage storage is not transaction-safe.' );
+								}
+							}
+							$password_fingerprint = hash_hmac( 'sha256', $post_password, $expected_token );
+							if ( 'deployed' === $stage_phase ) {
+								$state['phase'] = 'page_creating';
+								$state['page_id'] = 0;
+								$state['page_created_new'] = true;
+								$state['page_contract_kind'] = 'external_committed';
+								$state['page_meta_keys'] = $meta_keys;
+								$state['page_title_sha256'] = $external_stage_title_sha256;
+								$state['page_content_sha256'] = $external_stage_content_sha256;
+								$state['page_excerpt_sha256'] = $external_stage_excerpt_sha256;
+								$state['page_password_fingerprint'] = $password_fingerprint;
+								$state['page_raw_meta_sha256'] = $external_stage_raw_meta_sha256;
+								$state = $save_state( $state );
+								$stage_phase = 'page_creating';
+							} elseif (
+								'page_creating' !== $stage_phase
+								|| 0 !== ( isset( $state['page_id'] ) && is_int( $state['page_id'] ) ? $state['page_id'] : -1 )
+								|| true !== ( isset( $state['page_created_new'] ) ? $state['page_created_new'] : false )
+								|| 'external_committed' !== (string) ( isset( $state['page_contract_kind'] ) ? $state['page_contract_kind'] : '' )
+								|| $meta_keys !== ( isset( $state['page_meta_keys'] ) && is_array( $state['page_meta_keys'] ) ? $state['page_meta_keys'] : array() )
+								|| ! hash_equals( $external_stage_title_sha256, (string) ( isset( $state['page_title_sha256'] ) ? $state['page_title_sha256'] : '' ) )
+								|| ! hash_equals( $external_stage_content_sha256, (string) ( isset( $state['page_content_sha256'] ) ? $state['page_content_sha256'] : '' ) )
+								|| ! hash_equals( $external_stage_excerpt_sha256, (string) ( isset( $state['page_excerpt_sha256'] ) ? $state['page_excerpt_sha256'] : '' ) )
+								|| ! hash_equals( $password_fingerprint, (string) ( isset( $state['page_password_fingerprint'] ) ? $state['page_password_fingerprint'] : '' ) )
+								|| ! hash_equals( $external_stage_raw_meta_sha256, (string) ( isset( $state['page_raw_meta_sha256'] ) ? $state['page_raw_meta_sha256'] : '' ) )
+							) {
+								throw new RuntimeException( 'External stage durable intent differs on retry.' );
+							}
+
+							if ( false === $wpdb->query( 'START TRANSACTION' ) ) {
+								throw new RuntimeException( 'External draft transaction could not start.' );
+							}
+							try {
+								$page_id = wp_insert_post( wp_slash( array(
+									'post_type' => 'nadlan_project', 'post_status' => 'draft', 'post_name' => $page_slug,
+									'post_title' => $stage_title, 'post_content' => $stage_content, 'post_excerpt' => $stage_excerpt,
+									'post_author' => (int) get_current_user_id(), 'post_parent' => 0,
+									'comment_status' => 'closed', 'ping_status' => 'closed', 'post_password' => $post_password,
+								) ), true );
+								if ( is_wp_error( $page_id ) || (int) $page_id < 1 || (int) $page_id === $source_post_id ) {
+									throw new RuntimeException( 'External draft insertion failed.' );
+								}
+								$page_id = (int) $page_id;
+								$initial_rows = $wpdb->get_results( $wpdb->prepare( "SELECT meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id = %d ORDER BY meta_id ASC", $page_id ), ARRAY_A );
+								if ( ! is_array( $initial_rows ) || '' !== (string) $wpdb->last_error ) {
+									throw new RuntimeException( 'External draft automatic-meta read failed.' );
+								}
+								$claim_present = false;
+								foreach ( is_array( $initial_rows ) ? $initial_rows : array() as $row ) {
+									if ( 'claim_status' !== (string) $row['meta_key'] || 'unclaimed' !== (string) $row['meta_value'] || $claim_present ) {
+										throw new RuntimeException( 'External draft acquired unexpected automatic meta.' );
+									}
+									$claim_present = true;
+								}
+								foreach ( $external_stage_raw_meta as $raw_key => $raw_value ) {
+									if ( 'claim_status' === $raw_key && $claim_present ) {
+										continue;
+									}
+									if ( false === $wpdb->insert( $wpdb->postmeta, array( 'post_id' => $page_id, 'meta_key' => $raw_key, 'meta_value' => $raw_value ), array( '%d', '%s', '%s' ) ) || 1 !== (int) $wpdb->rows_affected ) {
+										throw new RuntimeException( 'External exact raw meta insertion failed.' );
+									}
+								}
+								$state['page_id'] = $page_id;
+								$state = $save_state( $state );
+								if ( false === $wpdb->query( 'COMMIT' ) ) {
+									throw new RuntimeException( 'External draft transaction commit failed.' );
+								}
+							} catch ( Throwable $create_error ) {
+								$wpdb->query( 'ROLLBACK' );
+								clean_post_cache( (int) $page_id );
+								wp_cache_delete( $state_key, 'options' );
+								throw $create_error;
+							}
+							clean_post_cache( $page_id );
+							wp_cache_delete( $state_key, 'options' );
+							$state = get_option( $state_key, array() );
+						}
+					}
+					if ( $page_id < 1 || $page_id === $source_post_id ) {
+						throw new RuntimeException( 'External tracked page identity is invalid.' );
+					}
+					$raw_rows = $wpdb->get_results( $wpdb->prepare( "SELECT meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id = %d ORDER BY meta_key ASC, meta_id ASC", $page_id ), ARRAY_A );
+					if ( ! is_array( $raw_rows ) || '' !== (string) $wpdb->last_error ) {
+						throw new RuntimeException( 'External pre-publish raw-meta read failed.' );
+					}
+					$raw_observed = array();
+					foreach ( is_array( $raw_rows ) ? $raw_rows : array() as $row ) {
+						$raw_key = (string) $row['meta_key'];
+						if ( isset( $raw_observed[ $raw_key ] ) ) {
+							throw new RuntimeException( 'External raw meta contains a duplicate key.' );
+						}
+						$raw_observed[ $raw_key ] = (string) $row['meta_value'];
+					}
+					ksort( $raw_observed, SORT_STRING );
+					if ( $external_stage_raw_meta !== $raw_observed ) {
+						throw new RuntimeException( 'External raw meta differs from the frozen contract.' );
+					}
+					$stage_candidate = get_post( $page_id );
+					if ( $stage_candidate instanceof WP_Post && 'draft' === (string) $stage_candidate->post_status ) {
+						$published = wp_update_post( array( 'ID' => $page_id, 'post_status' => 'publish' ), true );
+						if ( is_wp_error( $published ) || $page_id !== (int) $published ) {
+							throw new RuntimeException( 'External protected draft could not be published.' );
+						}
+						clean_post_cache( $page_id );
+					}
+					$raw_rows_after_publish = $wpdb->get_results( $wpdb->prepare( "SELECT meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id = %d ORDER BY meta_key ASC, meta_id ASC", $page_id ), ARRAY_A );
+					if ( ! is_array( $raw_rows_after_publish ) || '' !== (string) $wpdb->last_error ) {
+						throw new RuntimeException( 'External post-publish raw-meta read failed.' );
+					}
+					$raw_after_publish = array();
+					foreach ( is_array( $raw_rows_after_publish ) ? $raw_rows_after_publish : array() as $row ) {
+						$raw_key = (string) $row['meta_key'];
+						if ( isset( $raw_after_publish[ $raw_key ] ) ) {
+							throw new RuntimeException( 'External post-publish raw meta contains a duplicate key.' );
+						}
+						$raw_after_publish[ $raw_key ] = (string) $row['meta_value'];
+					}
+					ksort( $raw_after_publish, SORT_STRING );
+					$term_relationship_count_raw = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->term_relationships} WHERE object_id = %d", $page_id ) );
+					if ( null === $term_relationship_count_raw || '' !== (string) $wpdb->last_error || ! ctype_digit( (string) $term_relationship_count_raw ) ) {
+						throw new RuntimeException( 'External post-publish taxonomy read failed.' );
+					}
+					$term_relationship_count = (int) $term_relationship_count_raw;
+					if ( $external_stage_raw_meta !== $raw_after_publish || 0 !== $term_relationship_count ) {
+						throw new RuntimeException( 'External post-publish raw meta or taxonomy differs from the frozen contract.' );
 					}
 					$stage_commit_failure_stage = 'stage_identity';
 					$stage_commit_failure_reason_code = 'stage_identity_mismatch';
@@ -2222,7 +2475,8 @@ add_action( 'rest_api_init', function () {
 						throw new RuntimeException( 'External stage password is not exact.' );
 					}
 					$idempotent = 'page_ready' === $stage_phase;
-					$stage_tracked = in_array( $stage_phase, array( 'page_creating', 'page_ready' ), true );
+					$stage_tracked = 'page_ready' === $stage_phase
+						|| ( 'page_creating' === $stage_phase && isset( $state['page_contract_sha256'] ) && is_string( $state['page_contract_sha256'] ) );
 					if ( $stage_tracked ) {
 						if (
 							'external_committed' !== (string) ( isset( $state['page_contract_kind'] ) ? $state['page_contract_kind'] : '' )
