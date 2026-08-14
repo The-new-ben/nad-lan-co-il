@@ -90,6 +90,10 @@ jobs:
               Path("scripts"),
           )
           governed = []
+          text_suffixes = {
+              ".css", ".html", ".js", ".json", ".md", ".mjs", ".php",
+              ".py", ".txt", ".yaml", ".yml",
+          }
           for root in roots:
               if not root.exists():
                   continue
@@ -97,7 +101,11 @@ jobs:
                   if not path.is_file():
                       continue
                   name = path.as_posix().lower()
-                  if "einstein" in name or name.endswith("nadlan-unit-journey-deploy-helper.php.tpl"):
+                  is_text = path.suffix.lower() in text_suffixes or name.endswith(".php.tpl")
+                  if is_text and (
+                      "einstein" in name
+                      or name.endswith("nadlan-unit-journey-deploy-helper.php.tpl")
+                  ):
                       governed.append(path)
           bad = [path.as_posix() for path in governed if b"\r" in path.read_bytes()]
           if bad:
