@@ -30,6 +30,17 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/
+            /assets/projects/einstein-tower/
+            /docs/qa/einstein-tower-flagship-stage-validation.json
+            /docs/wp-drafts/einstein-tower-flagship-v3-private-stage.json
+            /docs/wp-drafts/einstein-tower-flagship-v3-public-release.json
+            /plugin-dist/nadlan-config-1.72.206.zip
+            /plugin-dist/nadlan-config.json
+            /scripts/
 
       - name: Fetch exact comparison commit
         shell: bash
