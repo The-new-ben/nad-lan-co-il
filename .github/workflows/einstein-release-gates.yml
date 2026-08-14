@@ -1,0 +1,224 @@
+name: Einstein release gates
+
+on:
+  pull_request:
+    paths:
+      - ".gitattributes"
+      - ".github/workflows/einstein-release-gates.yml"
+      - "assets/projects/einstein-tower/**"
+      - "docs/qa/einstein-tower-*"
+      - "docs/wp-drafts/einstein-tower-*"
+      - "plugin-dist/nadlan-config.json"
+      - "plugin-dist/nadlan-config-1.72.20*.zip"
+      - "plugins/nadlan-config/nadlan-config.php"
+      - "plugins/nadlan-config/inc/flagship-surface.php"
+      - "plugins/nadlan-config/assets/flagship-v3/**"
+      - "scripts/**einstein**"
+      - "scripts/ci/einstein_release_diff_gate.py"
+      - "scripts/templates/nadlan-*einstein*"
+      - "scripts/templates/nadlan-unit-journey-deploy-helper.php.tpl"
+      - "scripts/wp_deploy_private_unit_journey.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: einstein-release-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  governed-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Check out exact source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+          filter: blob:none
+          persist-credentials: true
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.gitattributes
+            /.github/
+            /assets/projects/einstein-tower/
+            /docs/qa/
+            /docs/wp-drafts/
+            /plugin-dist/nadlan-config.json
+            /plugin-dist/nadlan-config-1.72.20*.zip
+            /plugins/nadlan-config/nadlan-config.php
+            /plugins/nadlan-config/inc/flagship-surface.php
+            /plugins/nadlan-config/assets/flagship-v3/
+            /scripts/
+
+      - name: Fetch and hydrate exact comparison objects, then drop Git credentials
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            base="$PR_BASE_SHA"
+          else
+            git fetch --no-tags --depth=1 origin "refs/heads/$DEFAULT_BRANCH"
+            base="$(git rev-parse FETCH_HEAD)"
+            if [[ "$base" == "$(git rev-parse HEAD)" ]]; then
+              base="$(git rev-parse HEAD^ 2>/dev/null || git hash-object -t tree /dev/null)"
+            fi
+          fi
+          if [[ ! "$base" =~ ^[a-f0-9]{40}$ ]]; then
+            echo "Exact comparison object is unavailable." >&2
+            exit 1
+          fi
+          git fetch --no-tags --depth=1 origin "$base"
+
+          pinned=(
+            a0e5033c4a97033c0209c13c68c15bef90670789
+            b9482f76d874945900da9cc507baff291292721a
+            9c9801af018d948d721bdc79697eb8a9f93aa0bc
+          )
+          for commit in "${pinned[@]}"; do
+            git fetch --no-tags --depth=1 origin "$commit"
+          done
+
+          while IFS= read -r -d '' path; do
+            for revision in "$base" HEAD; do
+              if git cat-file -e "$revision:$path" 2>/dev/null; then
+                git show "$revision:$path" >/dev/null
+              fi
+            done
+          done < <(git diff --name-only -z "$base" HEAD --)
+
+          pinned_blobs=(
+            "a0e5033c4a97033c0209c13c68c15bef90670789:scripts/templates/nadlan-unit-journey-deploy-helper.php.tpl"
+            "b9482f76d874945900da9cc507baff291292721a:scripts/wp_deploy_private_unit_journey.py"
+            "b9482f76d874945900da9cc507baff291292721a:scripts/templates/nadlan-unit-journey-deploy-helper.php.tpl"
+            "9c9801af018d948d721bdc79697eb8a9f93aa0bc:scripts/templates/nadlan-unit-journey-deploy-helper.php.tpl"
+          )
+          for object in "${pinned_blobs[@]}"; do
+            git show "$object" >/dev/null
+          done
+          echo "EINSTEIN_BASE_SHA=$base" >> "$GITHUB_ENV"
+
+          mapfile -t credential_keys < <(
+            git config --local --name-only --get-regexp '^http\..*\.extraheader$' || true
+          )
+          for key in "${credential_keys[@]}"; do
+            git config --local --unset-all "$key" || true
+          done
+          if git config --local --name-only --get-regexp '^http\..*\.extraheader$' >/dev/null; then
+            echo "Checkout credential persisted beyond the hydration boundary." >&2
+            exit 1
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.10.0"
+
+      - name: Install pinned static-analysis tools
+        run: python -m pip install --disable-pip-version-check ruff==0.12.8
+
+      - name: Validate governed Git diff
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          python -m ruff check scripts/ci/einstein_release_diff_gate.py
+          python -m py_compile scripts/ci/einstein_release_diff_gate.py
+          python scripts/ci/einstein_release_diff_gate.py --self-test
+          python scripts/ci/einstein_release_diff_gate.py --base "$EINSTEIN_BASE_SHA"
+          git diff --check "$EINSTEIN_BASE_SHA" HEAD
+
+      - name: Validate retained-transaction resume vehicle when changed
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          set -euo pipefail
+          paths=(
+            scripts/wp_resume_einstein_stage_4527b2.py
+            scripts/templates/nadlan-unit-journey-deploy-helper.php.tpl
+          )
+          if git diff --quiet "$EINSTEIN_BASE_SHA" HEAD -- "${paths[@]}"; then
+            exit 0
+          fi
+          for path in "${paths[@]}"; do
+            test -f "$path" || { echo "Missing resume vehicle file: $path" >&2; exit 1; }
+          done
+          python -m ruff check scripts/wp_resume_einstein_stage_4527b2.py
+          python -m py_compile scripts/wp_resume_einstein_stage_4527b2.py
+          python scripts/wp_resume_einstein_stage_4527b2.py --self-test
+
+      - name: Validate independent live-recovery vehicle when changed
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          set -euo pipefail
+          paths=(
+            .gitattributes
+            scripts/wp_audit_einstein_live_172207.py
+            scripts/templates/nadlan-einstein-live-recovery-helper.php.tpl
+          )
+          if git diff --quiet "$EINSTEIN_BASE_SHA" HEAD -- "${paths[@]}"; then
+            exit 0
+          fi
+          for path in "${paths[@]}"; do
+            test -f "$path" || { echo "Missing live-recovery vehicle file: $path" >&2; exit 1; }
+          done
+          python -m ruff check scripts/wp_audit_einstein_live_172207.py
+          python -m py_compile scripts/wp_audit_einstein_live_172207.py
+          python scripts/wp_audit_einstein_live_172207.py --self-test
+
+      - name: Validate public 1.72.208 pipeline when changed
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          set -euo pipefail
+          public_pattern='^(assets/projects/einstein-tower/|docs/qa/einstein-tower-|docs/wp-drafts/einstein-tower-|plugin-dist/nadlan-config|plugins/nadlan-config/(nadlan-config\.php|inc/flagship-surface\.php|assets/flagship-v3/)|scripts/(build-einstein-flagship-public-release\.mjs|inspect-einstein-public-release-artifact\.py|qa-einstein-flagship-public-live\.mjs|validate-einstein-flagship-stage\.mjs|templates/nadlan-einstein-public-release-helper\.php\.tpl))'
+          if ! git diff --name-only "$EINSTEIN_BASE_SHA" HEAD -- | grep -Eq "$public_pattern"; then
+            exit 0
+          fi
+          required=(
+            .gitattributes
+            assets/projects/einstein-tower/contracts/flagship-project.json
+            docs/qa/einstein-tower-flagship-stage-validation.json
+            docs/wp-drafts/einstein-tower-flagship-v3-private-stage.json
+            docs/wp-drafts/einstein-tower-flagship-v3-public-release.json
+            plugin-dist/nadlan-config.json
+            plugins/nadlan-config/assets/flagship-v3/contracts/registry.json
+            plugins/nadlan-config/inc/flagship-surface.php
+            plugins/nadlan-config/nadlan-config.php
+            scripts/build-einstein-flagship-public-release.mjs
+            scripts/inspect-einstein-public-release-artifact.py
+            scripts/qa-einstein-flagship-public-live.mjs
+            scripts/templates/nadlan-einstein-public-release-helper.php.tpl
+            scripts/validate-einstein-flagship-stage.mjs
+          )
+          for path in "${required[@]}"; do
+            test -f "$path" || { echo "Missing public-release source: $path" >&2; exit 1; }
+          done
+          node --check scripts/build-einstein-flagship-public-release.mjs
+          node --check scripts/qa-einstein-flagship-public-live.mjs
+          python -m ruff check scripts/inspect-einstein-public-release-artifact.py
+          python -m py_compile scripts/inspect-einstein-public-release-artifact.py
+          php -l plugins/nadlan-config/nadlan-config.php
+          php -l plugins/nadlan-config/inc/flagship-surface.php
+          node scripts/build-einstein-flagship-public-release.mjs --self-test
+          python scripts/inspect-einstein-public-release-artifact.py --self-test
+          node scripts/qa-einstein-flagship-public-live.mjs --self-test
+          node scripts/validate-einstein-flagship-stage.mjs
+
+      - name: Prove gates did not rewrite tracked source
+        run: git diff --exit-code
