@@ -229,6 +229,10 @@ def sha256_bytes(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
 
 
+def constant_time_utf8_equal(left: str, right: str) -> bool:
+    return secrets.compare_digest(left.encode("utf-8"), right.encode("utf-8"))
+
+
 def exact_json_bytes(value: Any) -> bytes:
     return json.dumps(value, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
 
@@ -3898,7 +3902,11 @@ def normal_rollback_reconciliation_self_test() -> dict[str, Any]:
         "code": test_helper,
     }
     if not (
-        rerendered == test_helper
+        any(ord(character) > 127 for character in test_helper)
+        and constant_time_utf8_equal(rerendered, test_helper)
+        and not constant_time_utf8_equal(
+            rerendered, test_helper + "\n/* שינוי */"
+        )
         and rerendered_hash == sha256_text(test_helper)
         and helper_contract["recovery_adoption_enabled"] is False
         and helper_contract["external_stage_commit_enabled"] is True
@@ -4422,6 +4430,7 @@ def normal_rollback_reconciliation_self_test() -> dict[str, Any]:
         "legacy_recovery_branch_preserved": legacy_recovery_branch_preserved,
         "evidence_mutations_rejected": mutation_rejections,
         "original_helper_rerender_exact": True,
+        "original_helper_non_ascii_utf8_digest_exact": True,
         "original_helper_mutations_rejected": helper_row_rejections,
         "original_helper_php_lint": helper_php_lint,
         "storage_comparison_exact": storage_comparison["unchanged"] is True,
@@ -5728,7 +5737,7 @@ def reconcile_retained_normal_rollback(args: argparse.Namespace) -> int:
         rendered_helper, rendered_hash = rerender_retained_normal_rollback_helper(
             token, evidence
         )
-        if not secrets.compare_digest(rendered_helper, old_code):
+        if not constant_time_utf8_equal(rendered_helper, old_code):
             raise RetainedNormalRollbackReconciliationBlocked(
                 "Original helper bytes differ from the governed local rendering"
             )
