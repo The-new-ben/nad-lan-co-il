@@ -55,7 +55,7 @@ RUNTIME_ENV_KEY = "NADLAN_EINSTEIN_RECOVERY_TOKEN"
 SNAPSHOT_ACTIONS_ENABLED = False
 PINNED_EXPECTED_LIVE_CONTRACT: dict[str, Any] | None = None
 PINNED_EXPECTED_LIVE_CONTRACT_SHA256 = ""
-TEMPLATE_SHA256 = "c3fdf588027bb5be6bb9ddfde3ecc1e1e4618f2e599ababab6d6eb1b83c12e17"
+TEMPLATE_SHA256 = "26c112294c178de7c424c8694643c76ebe81f61aafedf48b9330a4c771c0fef9"
 EXPECTED_RAW_META_MAP_SHA256 = (
     "cc0fd63af6f339e70115231f0bfacf62e3f37628ed0abd45a4b0d8fa76a1ee48"
 )
@@ -94,6 +94,17 @@ MAX_FILES = 1024
 CHUNK_BYTES = 64 * 1024
 MISSING_SNIPPET_CODE = "rest_cannot_get"
 MISSING_SNIPPET_MESSAGE = "The snippet could not be found."
+OWNERSHIP_CHECKPOINT_SCHEMA = (
+    "nadlan-einstein-live-recovery-ownership-checkpoint/v1"
+)
+OWNERSHIP_STATE_GENERATIONS = {
+    "RESERVED_BEFORE_HELPER_POST": 0,
+    "EXACT_INACTIVE_PLACEHOLDER_OBSERVED": 1,
+    "INACTIVE_RENDERED_UPDATE_INTENT": 2,
+    "EXACT_INACTIVE_RENDERED_OBSERVED": 3,
+    "ACTIVE_RENDERED_ACTIVATION_INTENT": 4,
+    "EXACT_ACTIVE_RENDERED_OBSERVED": 5,
+}
 
 _REQUESTS: Any | None = None
 
@@ -631,6 +642,123 @@ def inspect_owned_helper(
                 "safe_to_self_delete": observed["active"] is True,
             }
     return {"state": "drifted", "helper": observed, "safe_to_mutate": False}
+
+
+def classify_exact_owned_helper(
+    observed: dict[str, Any],
+    *,
+    identity: dict[str, str],
+    token: str,
+    source_commit: str,
+) -> dict[str, Any]:
+    helper_id = int(observed.get("id") or 0)
+    if helper_id < 1 or helper_id in (449, 450):
+        return {"state": "drifted", "observed": observed}
+    helper_code, rendered_identity = render_helper(
+        token=token, helper_id=helper_id, source_commit=source_commit
+    )
+    if rendered_identity != identity:
+        raise RuntimeError("Discovered helper identity derivation changed")
+    helper_hash = sha256_bytes(helper_code.encode("utf-8"))
+    placeholder = f"/* inactive placeholder for {identity['helper_name']} */"
+    expected_states = {
+        "exact_inactive_placeholder": {
+            "id": helper_id,
+            "name": identity["helper_name"],
+            "active": False,
+            "scope": "global",
+            "code_sha256": sha256_bytes(placeholder.encode("utf-8")),
+        },
+        "exact_inactive_helper": helper_expected(
+            helper_id, helper_code, identity, active=False
+        ),
+        "exact_active_helper": helper_expected(
+            helper_id, helper_code, identity, active=True
+        ),
+    }
+    for state, expected in expected_states.items():
+        if observed == expected:
+            return {
+                "state": state,
+                "helper_id": helper_id,
+                "helper_code": helper_code,
+                "helper_sha256": helper_hash,
+                "observed": observed,
+                "expected": expected,
+            }
+    return {"state": "drifted", "observed": observed}
+
+
+def discover_checkpoint_helper(
+    client: WordpressClient,
+    checkpoint: dict[str, Any],
+    *,
+    token: str,
+    source_commit: str,
+    base_url: str,
+    recovery_helper_id: int | None = None,
+) -> dict[str, Any]:
+    validate_ownership_checkpoint(
+        checkpoint,
+        token=token,
+        source_commit=source_commit,
+        base_url=base_url,
+    )
+    identity = session_identity(token)
+    checkpoint_id = checkpoint.get("helper_id")
+    if checkpoint_id is None:
+        checkpoint_id = recovery_helper_id
+    elif recovery_helper_id is not None and checkpoint_id != recovery_helper_id:
+        return {"state": "drifted", "reason": "recovery_helper_id_changed"}
+    matches = [
+        row
+        for row in client.all_snippets()
+        if str(row.get("name") or "") == identity["helper_name"]
+        or (
+            isinstance(checkpoint_id, int)
+            and int(row.get("id") or 0) == checkpoint_id
+        )
+    ]
+    unique_ids = {int(row.get("id") or 0) for row in matches}
+    if len(matches) > 1 or len(unique_ids) > 1:
+        return {"state": "uncertain_multiple_rows", "matches": len(matches)}
+    if not matches:
+        rendered_hash = checkpoint.get("rendered_helper_sha256")
+        if isinstance(checkpoint_id, int) and rendered_hash is None:
+            helper_code, _rendered_identity = render_helper(
+                token=token,
+                helper_id=checkpoint_id,
+                source_commit=source_commit,
+            )
+            rendered_hash = sha256_bytes(helper_code.encode("utf-8"))
+        return {
+            "state": "absent",
+            "helper_id": checkpoint_id,
+            "helper_sha256": rendered_hash,
+        }
+    observed_id = next(iter(unique_ids))
+    if (
+        observed_id < 1
+        or observed_id in (449, 450)
+        or (isinstance(checkpoint_id, int) and observed_id != checkpoint_id)
+    ):
+        return {"state": "drifted", "matches": len(matches)}
+    response = client.request(
+        "GET", f"code-snippets/v1/snippets/{observed_id}", timeout=60
+    )
+    payload = require_object(response, "Checkpoint-owned recovery helper read")
+    classified = classify_exact_owned_helper(
+        observed_snippet(payload),
+        identity=identity,
+        token=token,
+        source_commit=source_commit,
+    )
+    if classified["state"] == "drifted":
+        return classified
+    checkpoint_hash = checkpoint.get("rendered_helper_sha256")
+    if checkpoint_hash is not None and checkpoint_hash != classified["helper_sha256"]:
+        return {"state": "drifted", "observed": classified["observed"]}
+    return classified
 
 
 def verify_helper_row(
@@ -1197,6 +1325,326 @@ def write_report(path: Path, payload: dict[str, Any], redactor: Redactor) -> Non
         handle.write(serialized)
 
 
+def checkpoint_timestamp_valid(value: Any) -> bool:
+    if not isinstance(value, str):
+        return False
+    try:
+        parsed = dt.datetime.fromisoformat(value)
+    except ValueError:
+        return False
+    return parsed.tzinfo is not None and parsed.utcoffset() == dt.timedelta(0)
+
+
+def ownership_checkpoint_base(
+    *,
+    checkpoint_id: str,
+    created_at_utc: str,
+    updated_at_utc: str,
+    source_commit: str,
+    base_url: str,
+    identity: dict[str, str],
+    lifecycle_state: str,
+    helper_id: int | None,
+    rendered_helper_sha256: str | None,
+    observed_helper: dict[str, Any] | None,
+) -> dict[str, Any]:
+    return {
+        "schema": OWNERSHIP_CHECKPOINT_SCHEMA,
+        "run_id": RUN_ID,
+        "checkpoint_id": checkpoint_id,
+        "created_at_utc": created_at_utc,
+        "updated_at_utc": updated_at_utc,
+        "source_commit": source_commit,
+        "target_base_url": base_url,
+        "identity": {
+            "helper_name": identity["helper_name"],
+            "route": identity["route"],
+            "storage_slug": identity["storage_slug"],
+        },
+        "generation": OWNERSHIP_STATE_GENERATIONS[lifecycle_state],
+        "lifecycle_state": lifecycle_state,
+        "helper_id": helper_id,
+        "placeholder_sha256": sha256_bytes(
+            f"/* inactive placeholder for {identity['helper_name']} */".encode(
+                "utf-8"
+            )
+        ),
+        "rendered_helper_sha256": rendered_helper_sha256,
+        "observed_helper": observed_helper,
+    }
+
+
+def sign_ownership_checkpoint(base: dict[str, Any], token: str) -> dict[str, Any]:
+    signed = {**base, "contract_sha256": sha256_bytes(exact_json_bytes(base))}
+    return {
+        **signed,
+        "auth_hmac_sha256": hmac.new(
+            token.encode("utf-8"), exact_json_bytes(signed), hashlib.sha256
+        ).hexdigest(),
+    }
+
+
+def validate_ownership_checkpoint(
+    value: Any,
+    *,
+    token: str,
+    source_commit: str,
+    base_url: str,
+) -> dict[str, Any]:
+    if not isinstance(value, dict) or set(value) != {
+        "schema",
+        "run_id",
+        "checkpoint_id",
+        "created_at_utc",
+        "updated_at_utc",
+        "source_commit",
+        "target_base_url",
+        "identity",
+        "generation",
+        "lifecycle_state",
+        "helper_id",
+        "placeholder_sha256",
+        "rendered_helper_sha256",
+        "observed_helper",
+        "contract_sha256",
+        "auth_hmac_sha256",
+    }:
+        raise RuntimeError("Phase-A ownership checkpoint shape is invalid")
+    identity = session_identity(token)
+    embedded_identity = value.get("identity")
+    lifecycle_state = str(value.get("lifecycle_state") or "")
+    helper_id = value.get("helper_id")
+    observed = value.get("observed_helper")
+    rendered_hash = value.get("rendered_helper_sha256")
+    if (
+        value.get("schema") != OWNERSHIP_CHECKPOINT_SCHEMA
+        or value.get("run_id") != RUN_ID
+        or not re.fullmatch(r"[a-f0-9]{32}", str(value.get("checkpoint_id") or ""))
+        or not checkpoint_timestamp_valid(value.get("created_at_utc"))
+        or not checkpoint_timestamp_valid(value.get("updated_at_utc"))
+        or value.get("source_commit") != source_commit
+        or value.get("target_base_url") != base_url
+        or embedded_identity
+        != {
+            "helper_name": identity["helper_name"],
+            "route": identity["route"],
+            "storage_slug": identity["storage_slug"],
+        }
+        or lifecycle_state not in OWNERSHIP_STATE_GENERATIONS
+        or value.get("generation")
+        != OWNERSHIP_STATE_GENERATIONS[lifecycle_state]
+        or value.get("placeholder_sha256")
+        != sha256_bytes(
+            f"/* inactive placeholder for {identity['helper_name']} */".encode(
+                "utf-8"
+            )
+        )
+        or not HASH_RE.fullmatch(str(value.get("contract_sha256") or ""))
+        or not HASH_RE.fullmatch(str(value.get("auth_hmac_sha256") or ""))
+    ):
+        raise RuntimeError("Phase-A ownership checkpoint identity is invalid")
+    if lifecycle_state == "RESERVED_BEFORE_HELPER_POST":
+        if helper_id is not None or rendered_hash is not None or observed is not None:
+            raise RuntimeError("Reserved ownership checkpoint contains helper state")
+    else:
+        if (
+            not isinstance(helper_id, int)
+            or isinstance(helper_id, bool)
+            or helper_id < 1
+            or helper_id in (449, 450)
+            or not HASH_RE.fullmatch(str(rendered_hash or ""))
+            or not isinstance(observed, dict)
+        ):
+            raise RuntimeError("Observed ownership checkpoint helper is invalid")
+        helper_code, rendered_identity = render_helper(
+            token=token, helper_id=helper_id, source_commit=source_commit
+        )
+        if (
+            rendered_identity != identity
+            or rendered_hash != sha256_bytes(helper_code.encode("utf-8"))
+        ):
+            raise RuntimeError("Ownership checkpoint rendered helper hash is invalid")
+        placeholder = f"/* inactive placeholder for {identity['helper_name']} */"
+        expected_by_state = {
+            "EXACT_INACTIVE_PLACEHOLDER_OBSERVED": {
+                "id": helper_id,
+                "name": identity["helper_name"],
+                "active": False,
+                "scope": "global",
+                "code_sha256": sha256_bytes(placeholder.encode("utf-8")),
+            },
+            "INACTIVE_RENDERED_UPDATE_INTENT": {
+                "id": helper_id,
+                "name": identity["helper_name"],
+                "active": False,
+                "scope": "global",
+                "code_sha256": sha256_bytes(placeholder.encode("utf-8")),
+            },
+            "EXACT_INACTIVE_RENDERED_OBSERVED": helper_expected(
+                helper_id, helper_code, identity, active=False
+            ),
+            "ACTIVE_RENDERED_ACTIVATION_INTENT": helper_expected(
+                helper_id, helper_code, identity, active=False
+            ),
+            "EXACT_ACTIVE_RENDERED_OBSERVED": helper_expected(
+                helper_id, helper_code, identity, active=True
+            ),
+        }
+        if observed != expected_by_state[lifecycle_state]:
+            raise RuntimeError("Ownership checkpoint observed helper state is invalid")
+    base = {key: child for key, child in value.items() if key not in {
+        "contract_sha256",
+        "auth_hmac_sha256",
+    }}
+    if value["contract_sha256"] != sha256_bytes(exact_json_bytes(base)):
+        raise RuntimeError("Ownership checkpoint aggregate hash is invalid")
+    signed = {**base, "contract_sha256": value["contract_sha256"]}
+    expected_hmac = hmac.new(
+        token.encode("utf-8"), exact_json_bytes(signed), hashlib.sha256
+    ).hexdigest()
+    if not hmac.compare_digest(expected_hmac, value["auth_hmac_sha256"]):
+        raise RuntimeError("Ownership checkpoint token binding is invalid")
+    return value
+
+
+def durable_create_json(
+    path: Path, payload: dict[str, Any], redactor: Redactor
+) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    serialized = json.dumps(
+        payload, ensure_ascii=False, indent=2, sort_keys=False
+    ) + "\n"
+    redactor.assert_absent(serialized)
+    with path.open("x", encoding="utf-8", newline="\n") as handle:
+        handle.write(serialized)
+        handle.flush()
+        os.fsync(handle.fileno())
+    fsync_parent_directory(path)
+
+
+def atomic_replace_exact_json(
+    path: Path,
+    *,
+    expected_current_bytes: bytes,
+    payload: dict[str, Any],
+    redactor: Redactor,
+) -> None:
+    if (
+        not path.is_file()
+        or path.is_symlink()
+        or path.read_bytes() != expected_current_bytes
+    ):
+        raise RecoveryHold("Ownership evidence changed before atomic update")
+    temp_path = path.with_name(f".{path.name}.next-{secrets.token_hex(8)}")
+    serialized = json.dumps(
+        payload, ensure_ascii=False, indent=2, sort_keys=False
+    ) + "\n"
+    redactor.assert_absent(serialized)
+    try:
+        with temp_path.open("x", encoding="utf-8", newline="\n") as handle:
+            handle.write(serialized)
+            handle.flush()
+            os.fsync(handle.fileno())
+        if path.read_bytes() != expected_current_bytes:
+            raise RecoveryHold("Ownership evidence changed during atomic update")
+        os.replace(temp_path, path)
+        fsync_parent_directory(path)
+    finally:
+        with contextlib.suppress(FileNotFoundError):
+            temp_path.unlink()
+
+
+def reserve_ownership_checkpoint(
+    path: Path,
+    *,
+    source_commit: str,
+    base_url: str,
+    identity: dict[str, str],
+    token: str,
+    redactor: Redactor,
+) -> dict[str, Any]:
+    timestamp = utc_now()
+    checkpoint = sign_ownership_checkpoint(
+        ownership_checkpoint_base(
+            checkpoint_id=secrets.token_hex(16),
+            created_at_utc=timestamp,
+            updated_at_utc=timestamp,
+            source_commit=source_commit,
+            base_url=base_url,
+            identity=identity,
+            lifecycle_state="RESERVED_BEFORE_HELPER_POST",
+            helper_id=None,
+            rendered_helper_sha256=None,
+            observed_helper=None,
+        ),
+        token,
+    )
+    validate_ownership_checkpoint(
+        checkpoint,
+        token=token,
+        source_commit=source_commit,
+        base_url=base_url,
+    )
+    durable_create_json(path, checkpoint, redactor)
+    return checkpoint
+
+
+def update_ownership_checkpoint(
+    path: Path,
+    current: dict[str, Any],
+    *,
+    lifecycle_state: str,
+    observed_helper: dict[str, Any],
+    rendered_helper_sha256: str,
+    token: str,
+    source_commit: str,
+    base_url: str,
+    identity: dict[str, str],
+    redactor: Redactor,
+) -> dict[str, Any]:
+    if not path.is_file() or path.is_symlink():
+        raise RecoveryHold("Ownership checkpoint path is unavailable or unsafe")
+    current_bytes = path.read_bytes()
+    if read_json_object(path) != current:
+        raise RecoveryHold("Ownership checkpoint changed before transition")
+    validate_ownership_checkpoint(
+        current,
+        token=token,
+        source_commit=source_commit,
+        base_url=base_url,
+    )
+    if OWNERSHIP_STATE_GENERATIONS[lifecycle_state] <= int(current["generation"]):
+        raise RuntimeError("Ownership checkpoint transition is not forward-only")
+    updated = sign_ownership_checkpoint(
+        ownership_checkpoint_base(
+            checkpoint_id=current["checkpoint_id"],
+            created_at_utc=current["created_at_utc"],
+            updated_at_utc=utc_now(),
+            source_commit=source_commit,
+            base_url=base_url,
+            identity=identity,
+            lifecycle_state=lifecycle_state,
+            helper_id=int(observed_helper["id"]),
+            rendered_helper_sha256=rendered_helper_sha256,
+            observed_helper=observed_helper,
+        ),
+        token,
+    )
+    validate_ownership_checkpoint(
+        updated,
+        token=token,
+        source_commit=source_commit,
+        base_url=base_url,
+    )
+    atomic_replace_exact_json(
+        path,
+        expected_current_bytes=current_bytes,
+        payload=updated,
+        redactor=redactor,
+    )
+    return updated
+
+
 def fsync_parent_directory(path: Path) -> bool:
     if os.name == "nt":
         return False
@@ -1234,6 +1682,44 @@ def reserve_terminal_report(
     return checkpoint
 
 
+def reserve_or_resume_terminal_report(
+    path: Path,
+    prepared: dict[str, Any],
+    redactor: Redactor,
+) -> dict[str, Any]:
+    try:
+        return reserve_terminal_report(path, prepared, redactor)
+    except FileExistsError:
+        if not path.is_file() or path.is_symlink():
+            raise RecoveryHold("Existing terminal cleanup checkpoint is unsafe")
+        existing_bytes = path.read_bytes()
+        if len(existing_bytes) > 1024 * 1024:
+            raise RecoveryHold("Existing terminal cleanup checkpoint is oversized")
+        existing_text = existing_bytes.decode("utf-8")
+        redactor.assert_absent(existing_text)
+        existing = read_json_object(path)
+        if (
+            set(existing)
+            != {
+                "schema",
+                "status",
+                "prepared_at_utc",
+                "directory_fsync_supported",
+                "planned",
+            }
+            or existing.get("schema")
+            != "nadlan-einstein-live-recovery-terminal-checkpoint/v1"
+            or existing.get("status") != "PREPARED_BEFORE_DESTRUCTIVE_CLEANUP"
+            or not checkpoint_timestamp_valid(existing.get("prepared_at_utc"))
+            or existing.get("directory_fsync_supported") != (os.name != "nt")
+            or existing.get("planned") != prepared
+        ):
+            raise RecoveryHold(
+                "Existing cleanup report is not the exact resumable checkpoint"
+            )
+        return existing
+
+
 def finalize_terminal_report(
     path: Path,
     payload: dict[str, Any],
@@ -1241,6 +1727,13 @@ def finalize_terminal_report(
 ) -> None:
     if not path.is_file() or path.is_symlink():
         raise RuntimeError("Reserved terminal evidence checkpoint is unavailable")
+    expected_checkpoint = payload.get("checkpoint")
+    current_bytes = path.read_bytes()
+    if (
+        not isinstance(expected_checkpoint, dict)
+        or read_json_object(path) != expected_checkpoint
+    ):
+        raise RecoveryHold("Terminal evidence checkpoint changed before finalization")
     temp_path = path.with_name(f".{path.name}.final-{secrets.token_hex(8)}")
     serialized = json.dumps(
         payload, ensure_ascii=False, indent=2, sort_keys=False
@@ -1251,6 +1744,8 @@ def finalize_terminal_report(
             handle.write(serialized)
             handle.flush()
             os.fsync(handle.fileno())
+        if path.read_bytes() != current_bytes:
+            raise RecoveryHold("Terminal evidence changed during finalization")
         os.replace(temp_path, path)
         fsync_parent_directory(path)
     finally:
@@ -1285,11 +1780,21 @@ def create_and_audit(args: argparse.Namespace) -> int:
             "Exact recovery helper name already exists; reconcile it first"
         )
 
+    ownership_checkpoint = reserve_ownership_checkpoint(
+        args.report,
+        source_commit=source["commit"],
+        base_url=base_url,
+        identity=identity,
+        token=token,
+        redactor=redactor,
+    )
+
     helper_id = 0
     helper_code = ""
     helper_hash = ""
     try:
         placeholder = f"/* inactive placeholder for {identity['helper_name']} */"
+        reported_helper_id = 0
         try:
             created = require_object(
                 client.request(
@@ -1304,33 +1809,21 @@ def create_and_audit(args: argparse.Namespace) -> int:
                 ),
                 "Inactive recovery helper creation",
             )
-            helper_id = int(created.get("id") or 0)
-        except (NetworkRequestFailed, RuntimeError) as create_error:
-            matches = [
-                row
-                for row in client.all_snippets()
-                if str(row.get("name") or "") == identity["helper_name"]
-            ]
-            if len(matches) != 1:
-                raise RecoveryHold(
-                    "Response-lost helper creation did not reconcile to one exact row"
-                ) from create_error
-            helper_id = int(matches[0].get("id") or 0)
-            placeholder_payload = require_object(
-                client.request(
-                    "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
-                ),
-                "Response-lost placeholder read",
+            reported_helper_id = int(created.get("id") or 0)
+        except (NetworkRequestFailed, RuntimeError):
+            pass
+        matches = [
+            row
+            for row in client.all_snippets()
+            if str(row.get("name") or "") == identity["helper_name"]
+        ]
+        if len(matches) != 1:
+            raise RecoveryHold(
+                "Helper creation did not reconcile to one deterministic-name row"
             )
-            placeholder_observed = observed_snippet(placeholder_payload)
-            if placeholder_observed != {
-                "id": helper_id,
-                "name": identity["helper_name"],
-                "active": False,
-                "scope": "global",
-                "code_sha256": sha256_bytes(placeholder.encode("utf-8")),
-            }:
-                raise RecoveryHold("Response-lost helper creation row is not exact")
+        helper_id = int(matches[0].get("id") or 0)
+        if reported_helper_id > 0 and reported_helper_id != helper_id:
+            raise RecoveryHold("Helper creation response ID differs from collection")
         if helper_id < 1 or helper_id in (449, 450):
             raise RuntimeError("Inactive recovery helper returned an invalid ID")
         helper_code, rendered_identity = render_helper(
@@ -1339,11 +1832,65 @@ def create_and_audit(args: argparse.Namespace) -> int:
         if rendered_identity != identity:
             raise RuntimeError("Rendered recovery identity drifted")
         helper_hash = sha256_bytes(helper_code.encode("utf-8"))
+        placeholder_expected = {
+            "id": helper_id,
+            "name": identity["helper_name"],
+            "active": False,
+            "scope": "global",
+            "code_sha256": sha256_bytes(placeholder.encode("utf-8")),
+        }
+        placeholder_payload = require_object(
+            client.request(
+                "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
+            ),
+            "Created placeholder independent read",
+        )
+        placeholder_observed = observed_snippet(placeholder_payload)
+        if placeholder_observed != placeholder_expected:
+            raise RecoveryHold("Created recovery placeholder row is not exact")
+        ownership_checkpoint = update_ownership_checkpoint(
+            args.report,
+            ownership_checkpoint,
+            lifecycle_state="EXACT_INACTIVE_PLACEHOLDER_OBSERVED",
+            observed_helper=placeholder_observed,
+            rendered_helper_sha256=helper_hash,
+            token=token,
+            source_commit=source["commit"],
+            base_url=base_url,
+            identity=identity,
+            redactor=redactor,
+        )
         inactive_expected = helper_expected(
             helper_id, helper_code, identity, active=False
         )
+        ownership_checkpoint = update_ownership_checkpoint(
+            args.report,
+            ownership_checkpoint,
+            lifecycle_state="INACTIVE_RENDERED_UPDATE_INTENT",
+            observed_helper=placeholder_observed,
+            rendered_helper_sha256=helper_hash,
+            token=token,
+            source_commit=source["commit"],
+            base_url=base_url,
+            identity=identity,
+            redactor=redactor,
+        )
         inactive_verified = False
         for _attempt in range(2):
+            pre_update_payload = require_object(
+                client.request(
+                    "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
+                ),
+                "Pre-update recovery helper read",
+            )
+            pre_update = observed_snippet(pre_update_payload)
+            if pre_update == inactive_expected:
+                inactive_verified = True
+                break
+            if pre_update != placeholder_expected:
+                raise RecoveryHold(
+                    "Recovery placeholder drifted before inactive source update"
+                )
             with contextlib.suppress(NetworkRequestFailed):
                 client.request(
                     "PUT",
@@ -1355,30 +1902,95 @@ def create_and_audit(args: argparse.Namespace) -> int:
                         "active": False,
                     },
                 )
-            try:
-                verify_helper_row(client, helper_id, inactive_expected)
-                inactive_verified = True
-                break
-            except RuntimeError:
-                continue
+            with contextlib.suppress(NetworkRequestFailed):
+                post_update_payload = require_object(
+                    client.request(
+                        "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
+                    ),
+                    "Post-update recovery helper read",
+                )
+                post_update = observed_snippet(post_update_payload)
+                if post_update == inactive_expected:
+                    inactive_verified = True
+                    break
+                if post_update != placeholder_expected:
+                    raise RecoveryHold(
+                        "Recovery helper drifted during inactive source update"
+                    )
         if not inactive_verified:
             raise RecoveryHold("Inactive helper update did not reconcile")
+        ownership_checkpoint = update_ownership_checkpoint(
+            args.report,
+            ownership_checkpoint,
+            lifecycle_state="EXACT_INACTIVE_RENDERED_OBSERVED",
+            observed_helper=inactive_expected,
+            rendered_helper_sha256=helper_hash,
+            token=token,
+            source_commit=source["commit"],
+            base_url=base_url,
+            identity=identity,
+            redactor=redactor,
+        )
         active_expected = helper_expected(helper_id, helper_code, identity, active=True)
+        ownership_checkpoint = update_ownership_checkpoint(
+            args.report,
+            ownership_checkpoint,
+            lifecycle_state="ACTIVE_RENDERED_ACTIVATION_INTENT",
+            observed_helper=inactive_expected,
+            rendered_helper_sha256=helper_hash,
+            token=token,
+            source_commit=source["commit"],
+            base_url=base_url,
+            identity=identity,
+            redactor=redactor,
+        )
         active: dict[str, Any] | None = None
         for _attempt in range(2):
+            pre_activation_payload = require_object(
+                client.request(
+                    "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
+                ),
+                "Pre-activation recovery helper read",
+            )
+            pre_activation = observed_snippet(pre_activation_payload)
+            if pre_activation == active_expected:
+                active = pre_activation
+                break
+            if pre_activation != inactive_expected:
+                raise RecoveryHold("Recovery helper drifted before activation")
             with contextlib.suppress(NetworkRequestFailed):
                 client.request(
                     "PUT",
                     f"code-snippets/v1/snippets/{helper_id}/activate",
                     json_body={},
                 )
-            try:
-                active = verify_helper_row(client, helper_id, active_expected)
-                break
-            except RuntimeError:
-                continue
+            with contextlib.suppress(NetworkRequestFailed):
+                post_activation_payload = require_object(
+                    client.request(
+                        "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
+                    ),
+                    "Post-activation recovery helper read",
+                )
+                post_activation = observed_snippet(post_activation_payload)
+                if post_activation == active_expected:
+                    active = post_activation
+                    break
+                if post_activation != inactive_expected:
+                    raise RecoveryHold("Recovery helper drifted during activation")
         if active is None:
             raise RecoveryHold("Recovery helper activation did not reconcile")
+        ownership_checkpoint = update_ownership_checkpoint(
+            args.report,
+            ownership_checkpoint,
+            lifecycle_state="EXACT_ACTIVE_RENDERED_OBSERVED",
+            observed_helper=active,
+            rendered_helper_sha256=helper_hash,
+            token=token,
+            source_commit=source["commit"],
+            base_url=base_url,
+            identity=identity,
+            redactor=redactor,
+        )
 
         first = validate_audit(
             call_helper_object_retry(
@@ -1431,12 +2043,24 @@ def create_and_audit(args: argparse.Namespace) -> int:
                 "helper_name": identity["helper_name"],
                 "helper_sha256": helper_hash,
             },
+            "ownership_checkpoint": ownership_checkpoint,
+            "ownership_checkpoint_sha256": sha256_bytes(
+                exact_json_bytes(ownership_checkpoint)
+            ),
             "audit": second,
             "snapshot_storage_initially_absent": True,
             "passed": True,
             "status": "PHASE_A_BASELINE_CAPTURED_REVIEW_AND_HELPER_CLEANUP_REQUIRED",
         }
-        write_report(args.report, report, redactor)
+        checkpoint_bytes = args.report.read_bytes()
+        if read_json_object(args.report) != ownership_checkpoint:
+            raise RecoveryHold("Ownership checkpoint changed before final audit report")
+        atomic_replace_exact_json(
+            args.report,
+            expected_current_bytes=checkpoint_bytes,
+            payload=report,
+            redactor=redactor,
+        )
         print(
             json.dumps(
                 {
@@ -1472,22 +2096,32 @@ def create_and_audit(args: argparse.Namespace) -> int:
 
 
 def validate_control_report(
-    report: dict[str, Any], token: str, expected_commit: str
-) -> tuple[dict[str, str], int, str]:
+    report: dict[str, Any], token: str, expected_commit: str, expected_base_url: str
+) -> tuple[dict[str, str], int, str, dict[str, Any]]:
     if report.get("schema") != "nadlan-einstein-live-recovery-client-audit/v2":
         raise RuntimeError("Audit report schema is invalid")
     source = report.get("source")
     control = report.get("control")
     audit = report.get("audit")
+    target = report.get("target")
+    checkpoint = report.get("ownership_checkpoint")
     if (
         not isinstance(source, dict)
         or not isinstance(control, dict)
         or not isinstance(audit, dict)
+        or not isinstance(target, dict)
+        or not isinstance(checkpoint, dict)
     ):
         raise RuntimeError("Audit report is structurally incomplete")
     if source.get("commit") != expected_commit:
         raise RuntimeError("Audit report source commit differs")
     validate_audit(audit)
+    checkpoint = validate_ownership_checkpoint(
+        checkpoint,
+        token=token,
+        source_commit=expected_commit,
+        base_url=expected_base_url,
+    )
     identity = session_identity(token)
     helper_id = int(control.get("helper_id") or 0)
     helper_hash = str(control.get("helper_sha256") or "")
@@ -1497,30 +2131,34 @@ def validate_control_report(
         or control.get("route") != identity["route"]
         or control.get("helper_name") != identity["helper_name"]
         or not HASH_RE.fullmatch(helper_hash)
+        or target.get("base_url") != expected_base_url
+        or report.get("ownership_checkpoint_sha256")
+        != sha256_bytes(exact_json_bytes(checkpoint))
+        or checkpoint.get("lifecycle_state")
+        != "EXACT_ACTIVE_RENDERED_OBSERVED"
+        or checkpoint.get("helper_id") != helper_id
+        or checkpoint.get("rendered_helper_sha256") != helper_hash
+        or checkpoint.get("observed_helper")
+        != {
+            "id": helper_id,
+            "name": identity["helper_name"],
+            "active": True,
+            "scope": "global",
+            "code_sha256": helper_hash,
+        }
     ):
         raise RuntimeError("Audit report recovery control identity changed")
-    return identity, helper_id, helper_hash
+    return identity, helper_id, helper_hash, checkpoint
 
 
-def prove_helper_absence(
+def prove_route_absence(
     client: WordpressClient,
     *,
     identity: dict[str, str],
     token: str,
-    helper_id: int,
     helper_hash: str,
     public_session: Any | None = None,
 ) -> dict[str, bool | int]:
-    item_response = client.request(
-        "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
-    )
-    item_absent = is_exact_missing_snippet(item_response)
-    rows = client.all_snippets()
-    collection_absent = not any(
-        int(row.get("id") or 0) == helper_id
-        or str(row.get("name") or "") == identity["helper_name"]
-        for row in rows
-    )
     route_response = call_helper(
         client,
         route=identity["route"],
@@ -1551,12 +2189,67 @@ def prove_helper_absence(
         raise
     public_route_absent = is_exact_missing_route(public_response)
     return {
-        "item_absent": item_absent,
-        "collection_absent": collection_absent,
         "route_absent": route_absent,
         "route_http_status": int(route_response.status_code),
         "public_route_absent": public_route_absent,
         "public_route_http_status": int(public_response.status_code),
+    }
+
+
+def prove_helper_absence(
+    client: WordpressClient,
+    *,
+    identity: dict[str, str],
+    token: str,
+    helper_id: int,
+    helper_hash: str,
+    public_session: Any | None = None,
+) -> dict[str, bool | int]:
+    item_response = client.request(
+        "GET", f"code-snippets/v1/snippets/{helper_id}", timeout=60
+    )
+    item_absent = is_exact_missing_snippet(item_response)
+    rows = client.all_snippets()
+    collection_absent = not any(
+        int(row.get("id") or 0) == helper_id
+        or str(row.get("name") or "") == identity["helper_name"]
+        for row in rows
+    )
+    return {
+        "item_absent": item_absent,
+        "collection_absent": collection_absent,
+        **prove_route_absence(
+            client,
+            identity=identity,
+            token=token,
+            helper_hash=helper_hash,
+            public_session=public_session,
+        ),
+    }
+
+
+def prove_unidentified_helper_absence(
+    client: WordpressClient,
+    *,
+    identity: dict[str, str],
+    token: str,
+    public_session: Any | None = None,
+) -> dict[str, bool | int | None]:
+    rows = client.all_snippets()
+    collection_absent = not any(
+        str(row.get("name") or "") == identity["helper_name"] for row in rows
+    )
+    return {
+        "item_absent": None,
+        "item_absence_not_applicable": True,
+        "collection_absent": collection_absent,
+        **prove_route_absence(
+            client,
+            identity=identity,
+            token=token,
+            helper_hash="0" * 64,
+            public_session=public_session,
+        ),
     }
 
 
@@ -1566,52 +2259,137 @@ def cleanup_audit_helper(args: argparse.Namespace) -> int:
     source = source_facts(args.expected_source_commit)
     base_url, user, password, token, redactor = resolve_runtime(args.env)
     identity = session_identity(token)
-    audit_report_sha256: str | None = None
-    if args.audit_report is not None:
-        audit_report = read_json_object(args.audit_report)
-        identity, helper_id, helper_hash = validate_control_report(
-            audit_report, token, source["commit"]
+    ownership_document = read_json_object(args.audit_report)
+    ownership_document_sha256 = sha256_bytes(args.audit_report.read_bytes())
+    if (
+        ownership_document.get("schema")
+        == "nadlan-einstein-live-recovery-client-audit/v2"
+    ):
+        identity, _reported_helper_id, _reported_helper_hash, ownership_checkpoint = (
+            validate_control_report(
+                ownership_document, token, source["commit"], base_url
+            )
         )
-        audit_report_sha256 = sha256_bytes(args.audit_report.read_bytes())
         cleanup_authority = "validated_phase_a_audit_report"
-    else:
-        helper_id = int(args.helper_id or 0)
-        if helper_id < 1 or helper_id in (449, 450):
-            raise RuntimeError("Interrupted helper cleanup ID is outside scope")
-        provisional_code, provisional_identity = render_helper(
-            token=token, helper_id=helper_id, source_commit=source["commit"]
+    elif ownership_document.get("schema") == OWNERSHIP_CHECKPOINT_SCHEMA:
+        ownership_checkpoint = validate_ownership_checkpoint(
+            ownership_document,
+            token=token,
+            source_commit=source["commit"],
+            base_url=base_url,
         )
-        if provisional_identity != identity:
-            raise RuntimeError("Interrupted helper cleanup identity changed")
-        helper_hash = sha256_bytes(provisional_code.encode("utf-8"))
-        cleanup_authority = "exact_interrupted_owned_state"
+        cleanup_authority = "validated_phase_a_crash_checkpoint"
+    else:
+        raise RuntimeError("Phase-A ownership document schema is invalid")
+    if args.audit_report.resolve() == args.report.resolve():
+        raise RuntimeError("Ownership input and cleanup report paths must differ")
+    resumable_cleanup_plan: dict[str, Any] | None = None
+    if args.report.exists():
+        existing_terminal = read_json_object(args.report)
+        planned = existing_terminal.get("planned")
+        if (
+            existing_terminal.get("schema")
+            != "nadlan-einstein-live-recovery-terminal-checkpoint/v1"
+            or existing_terminal.get("status")
+            != "PREPARED_BEFORE_DESTRUCTIVE_CLEANUP"
+            or not isinstance(planned, dict)
+            or set(planned)
+            != {
+                "operation",
+                "source_commit",
+                "ownership_document_sha256",
+                "ownership_checkpoint_sha256",
+                "cleanup_authority",
+                "helper_id",
+                "helper_name",
+                "helper_sha256",
+                "observed_ownership_state",
+            }
+            or planned.get("operation")
+            != "delete_exact_phase_a_audit_helper"
+            or planned.get("source_commit") != source["commit"]
+            or planned.get("ownership_document_sha256")
+            != ownership_document_sha256
+            or planned.get("ownership_checkpoint_sha256")
+            != sha256_bytes(exact_json_bytes(ownership_checkpoint))
+            or planned.get("cleanup_authority") != cleanup_authority
+            or planned.get("helper_name") != identity["helper_name"]
+            or planned.get("observed_ownership_state")
+            not in {
+                "absent",
+                "exact_inactive_placeholder",
+                "exact_inactive_helper",
+                "exact_active_helper",
+            }
+        ):
+            raise RecoveryHold("Existing cleanup checkpoint is outside ownership scope")
+        planned_id = planned.get("helper_id")
+        planned_hash = planned.get("helper_sha256")
+        if planned_id is None:
+            if planned_hash is not None:
+                raise RecoveryHold("Existing cleanup checkpoint helper pair is invalid")
+        elif (
+            not isinstance(planned_id, int)
+            or isinstance(planned_id, bool)
+            or planned_id < 1
+            or planned_id in (449, 450)
+            or not HASH_RE.fullmatch(str(planned_hash or ""))
+        ):
+            raise RecoveryHold("Existing cleanup checkpoint helper pair is invalid")
+        resumable_cleanup_plan = planned
     client = WordpressClient(base_url, user, password)
     auth = auth_preflight(client)
-    helper_code, _ = render_helper(
-        token=token, helper_id=helper_id, source_commit=source["commit"]
-    )
-    expected_helper = helper_expected(helper_id, helper_code, identity, active=True)
-    if expected_helper["code_sha256"] != helper_hash:
-        raise RuntimeError("Phase-A helper source hash differs from audit evidence")
-    ownership = inspect_owned_helper(
+    ownership = discover_checkpoint_helper(
         client,
-        identity=identity,
+        ownership_checkpoint,
         token=token,
-        helper_id=helper_id,
-        helper_code=helper_code,
+        source_commit=source["commit"],
+        base_url=base_url,
+        recovery_helper_id=(
+            resumable_cleanup_plan.get("helper_id")
+            if resumable_cleanup_plan is not None
+            else None
+        ),
     )
-    checkpoint = reserve_terminal_report(
+    if ownership["state"] not in {
+        "absent",
+        "exact_inactive_placeholder",
+        "exact_inactive_helper",
+        "exact_active_helper",
+    }:
+        raise RecoveryHold(
+            "Checkpoint discovery found multiplicity or drift; no cleanup mutation attempted"
+        )
+    helper_id = ownership.get("helper_id")
+    helper_hash = ownership.get("helper_sha256")
+    if helper_id is not None and (
+        not isinstance(helper_id, int)
+        or helper_id < 1
+        or helper_id in (449, 450)
+        or not HASH_RE.fullmatch(str(helper_hash or ""))
+    ):
+        raise RecoveryHold("Checkpoint helper identity is incomplete; no mutation attempted")
+    if resumable_cleanup_plan is not None and (
+        resumable_cleanup_plan.get("helper_id") != helper_id
+        or resumable_cleanup_plan.get("helper_sha256") != helper_hash
+    ):
+        raise RecoveryHold("Resumed cleanup helper identity changed; no mutation attempted")
+    cleanup_plan = resumable_cleanup_plan or {
+        "operation": "delete_exact_phase_a_audit_helper",
+        "source_commit": source["commit"],
+        "ownership_document_sha256": ownership_document_sha256,
+        "ownership_checkpoint_sha256": sha256_bytes(
+            exact_json_bytes(ownership_checkpoint)
+        ),
+        "cleanup_authority": cleanup_authority,
+        "helper_id": helper_id,
+        "helper_name": identity["helper_name"],
+        "helper_sha256": helper_hash,
+        "observed_ownership_state": ownership["state"],
+    }
+    checkpoint = reserve_or_resume_terminal_report(
         args.report,
-        {
-            "operation": "delete_exact_phase_a_audit_helper",
-            "source_commit": source["commit"],
-            "audit_report_sha256": audit_report_sha256,
-            "cleanup_authority": cleanup_authority,
-            "helper_id": helper_id,
-            "helper_name": identity["helper_name"],
-            "helper_sha256": helper_hash,
-            "observed_ownership_state": ownership["state"],
-        },
+        cleanup_plan,
         redactor,
     )
     direct_absence = False
@@ -1620,7 +2398,7 @@ def cleanup_audit_helper(args: argparse.Namespace) -> int:
     rest_delete_response_observed = False
     if ownership["state"] == "exact_active_helper":
         deletion_method = "active_helper_direct_wpdb_self_delete"
-        verify_helper_row(client, helper_id, expected_helper)
+        verify_helper_row(client, helper_id, ownership["expected"])
         storage = call_helper_object_retry(
             client,
             route=identity["route"],
@@ -1658,45 +2436,56 @@ def cleanup_audit_helper(args: argparse.Namespace) -> int:
                 and delete_payload.get("storage_absent") is True
                 and delete_payload.get("retained_helpers_unchanged") is True
                 and delete_payload.get("mutation_mutex_held") is True
+                and delete_payload.get("immediate_identity_reread_exact") is True
             )
-        except NetworkRequestFailed:
+        except (NetworkRequestFailed, RuntimeError):
             delete_response_lost = True
     elif ownership["state"] in {
         "exact_inactive_placeholder",
         "exact_inactive_helper",
     }:
         deletion_method = "exact_inactive_helper_code_snippets_rest_delete"
+        verify_helper_row(client, helper_id, ownership["expected"])
         try:
             delete_response = client.request(
                 "DELETE", f"code-snippets/v1/snippets/{helper_id}", timeout=60
             )
             rest_delete_response_observed = 200 <= delete_response.status_code < 300
-            if not rest_delete_response_observed:
-                raise RecoveryHold(
-                    "Reserved cleanup checkpoint; exact inactive helper REST deletion was rejected"
-                )
-        except NetworkRequestFailed:
+        except (NetworkRequestFailed, RuntimeError):
             delete_response_lost = True
-    elif ownership["state"] != "absent":
-        raise RecoveryHold(
-            "Reserved cleanup checkpoint; helper is not the exact active owned row; no mutation attempted"
+    if helper_id is None:
+        absence = prove_unidentified_helper_absence(
+            client,
+            identity=identity,
+            token=token,
         )
-    absence = prove_helper_absence(
-        client,
-        identity=identity,
-        token=token,
-        helper_id=helper_id,
-        helper_hash=helper_hash,
-    )
-    if not all(
-        absence[key]
-        for key in (
-            "item_absent",
-            "collection_absent",
-            "route_absent",
-            "public_route_absent",
+        absence_complete = all(
+            absence[key]
+            for key in (
+                "item_absence_not_applicable",
+                "collection_absent",
+                "route_absent",
+                "public_route_absent",
+            )
         )
-    ):
+    else:
+        absence = prove_helper_absence(
+            client,
+            identity=identity,
+            token=token,
+            helper_id=helper_id,
+            helper_hash=helper_hash,
+        )
+        absence_complete = all(
+            absence[key]
+            for key in (
+                "item_absent",
+                "collection_absent",
+                "route_absent",
+                "public_route_absent",
+            )
+        )
+    if not absence_complete:
         raise RecoveryHold(
             "Reserved cleanup checkpoint; item/collection/route absence is uncertain"
         )
@@ -1718,7 +2507,10 @@ def cleanup_audit_helper(args: argparse.Namespace) -> int:
         "source": source,
         "auth": auth,
         "checkpoint": checkpoint,
-        "audit_report_sha256": audit_report_sha256,
+        "ownership_document_sha256": ownership_document_sha256,
+        "ownership_checkpoint_sha256": sha256_bytes(
+            exact_json_bytes(ownership_checkpoint)
+        ),
         "helper_id": helper_id,
         "direct_database_absence_proved": direct_absence,
         "cleanup_authority": cleanup_authority,
@@ -2094,8 +2886,8 @@ def snapshot(args: argparse.Namespace) -> int:
     source = source_facts(args.expected_source_commit)
     base_url, user, password, token, redactor = resolve_runtime(args.env)
     audit_report = read_json_object(args.audit_report)
-    identity, helper_id, helper_hash = validate_control_report(
-        audit_report, token, source["commit"]
+    identity, helper_id, helper_hash, _ownership_checkpoint = validate_control_report(
+        audit_report, token, source["commit"], base_url
     )
     client = WordpressClient(base_url, user, password)
     auth = auth_preflight(client)
@@ -2611,6 +3403,7 @@ def cleanup(args: argparse.Namespace) -> int:
             and delete_payload.get("storage_absent") is True
             and delete_payload.get("retained_helpers_unchanged") is True
             and delete_payload.get("mutation_mutex_held") is True
+            and delete_payload.get("immediate_identity_reread_exact") is True
         )
     except (NetworkRequestFailed, RuntimeError):
         delete_response_reconciled = True
@@ -2684,8 +3477,8 @@ def cleanup_partial(args: argparse.Namespace) -> int:
     source = source_facts(args.expected_source_commit)
     base_url, user, password, token, redactor = resolve_runtime(args.env)
     audit_report = read_json_object(args.audit_report)
-    identity, helper_id, helper_hash = validate_control_report(
-        audit_report, token, source["commit"]
+    identity, helper_id, helper_hash, _ownership_checkpoint = validate_control_report(
+        audit_report, token, source["commit"], base_url
     )
     client = WordpressClient(base_url, user, password)
     auth_preflight(client)
@@ -2850,6 +3643,8 @@ def self_test() -> int:
         "SELECT id, name, code, scope, active",
         "SELECT option_id, option_name, option_value, autoload",
         "SELECT COUNT(*) FROM {$snippets_table} WHERE id = %d",
+        "self_delete_immediate_identity_reread",
+        "immediate_identity_reread_exact",
         "SELECT GET_LOCK(%s, 0)",
         "SELECT RELEASE_LOCK(%s)",
         "sys_get_temp_dir()",
@@ -3164,6 +3959,235 @@ def self_test() -> int:
             raise RuntimeError("Atomic terminal report left a temporary file")
         tests["durable_terminal_checkpoint_and_atomic_finalize"] = True
 
+        ownership_path = Path(temp) / "phase-a-ownership.json"
+        checkpoint_redactor = Redactor((fixture_token, "fixture-password"))
+        reserved_ownership = reserve_ownership_checkpoint(
+            ownership_path,
+            source_commit="a" * 40,
+            base_url="https://nad-lan.co.il",
+            identity=identity,
+            token=fixture_token,
+            redactor=checkpoint_redactor,
+        )
+        if (
+            reserved_ownership["lifecycle_state"]
+            != "RESERVED_BEFORE_HELPER_POST"
+            or fixture_token in ownership_path.read_text(encoding="utf-8")
+        ):
+            raise RuntimeError("Pre-POST ownership checkpoint fixture failed")
+        sentinel_path = Path(temp) / "ownership-sentinel.json"
+        sentinel_bytes = b"do-not-clobber\n"
+        sentinel_path.write_bytes(sentinel_bytes)
+        try:
+            reserve_ownership_checkpoint(
+                sentinel_path,
+                source_commit="a" * 40,
+                base_url="https://nad-lan.co.il",
+                identity=identity,
+                token=fixture_token,
+                redactor=checkpoint_redactor,
+            )
+        except FileExistsError:
+            pass
+        else:
+            raise RuntimeError("Existing ownership report sentinel was overwritten")
+        if sentinel_path.read_bytes() != sentinel_bytes:
+            raise RuntimeError("Existing ownership report sentinel bytes changed")
+        placeholder = f"/* inactive placeholder for {identity['helper_name']} */"
+        placeholder_payload = {
+            "id": 451,
+            "name": identity["helper_name"],
+            "active": False,
+            "scope": "global",
+            "code": placeholder,
+        }
+        response_lost_session = FakeSession(
+            [
+                FakeResponse(
+                    200,
+                    b"[]",
+                    "application/json",
+                    payload=[{"id": 451, "name": identity["helper_name"]}],
+                    headers={"X-WP-TotalPages": "1"},
+                ),
+                FakeResponse(
+                    200,
+                    b"{}",
+                    "application/json",
+                    payload=placeholder_payload,
+                ),
+            ]
+        )
+        response_lost_client = WordpressClient(
+            "https://nad-lan.co.il", "u", "p", session=response_lost_session
+        )  # type: ignore[arg-type]
+        discovered_placeholder = discover_checkpoint_helper(
+            response_lost_client,
+            reserved_ownership,
+            token=fixture_token,
+            source_commit="a" * 40,
+            base_url="https://nad-lan.co.il",
+        )
+        if (
+            discovered_placeholder.get("state")
+            != "exact_inactive_placeholder"
+            or discovered_placeholder.get("helper_id") != 451
+        ):
+            raise RuntimeError("Response-lost creation discovery fixture failed")
+        tests["crash_response_lost_creation_discovered"] = True
+        duplicate_session = FakeSession(
+            [
+                FakeResponse(
+                    200,
+                    b"[]",
+                    "application/json",
+                    payload=[
+                        {"id": 451, "name": identity["helper_name"]},
+                        {"id": 452, "name": identity["helper_name"]},
+                    ],
+                    headers={"X-WP-TotalPages": "1"},
+                )
+            ]
+        )
+        duplicate_client = WordpressClient(
+            "https://nad-lan.co.il", "u", "p", session=duplicate_session
+        )  # type: ignore[arg-type]
+        duplicate_discovery = discover_checkpoint_helper(
+            duplicate_client,
+            reserved_ownership,
+            token=fixture_token,
+            source_commit="a" * 40,
+            base_url="https://nad-lan.co.il",
+        )
+        if (
+            duplicate_discovery.get("state") != "uncertain_multiple_rows"
+            or len(duplicate_session.calls) != 1
+        ):
+            raise RuntimeError("Duplicate-name ownership discovery did not fail closed")
+        tests["ownership_duplicate_name_no_mutation"] = True
+
+        placeholder_checkpoint = update_ownership_checkpoint(
+            ownership_path,
+            reserved_ownership,
+            lifecycle_state="EXACT_INACTIVE_PLACEHOLDER_OBSERVED",
+            observed_helper=discovered_placeholder["observed"],
+            rendered_helper_sha256=discovered_placeholder["helper_sha256"],
+            token=fixture_token,
+            source_commit="a" * 40,
+            base_url="https://nad-lan.co.il",
+            identity=identity,
+            redactor=checkpoint_redactor,
+        )
+        update_intent_checkpoint = update_ownership_checkpoint(
+            ownership_path,
+            placeholder_checkpoint,
+            lifecycle_state="INACTIVE_RENDERED_UPDATE_INTENT",
+            observed_helper=discovered_placeholder["observed"],
+            rendered_helper_sha256=discovered_placeholder["helper_sha256"],
+            token=fixture_token,
+            source_commit="a" * 40,
+            base_url="https://nad-lan.co.il",
+            identity=identity,
+            redactor=checkpoint_redactor,
+        )
+        inactive_expected = helper_expected(
+            451,
+            discovered_placeholder["helper_code"],
+            identity,
+            active=False,
+        )
+        inactive_checkpoint = update_ownership_checkpoint(
+            ownership_path,
+            update_intent_checkpoint,
+            lifecycle_state="EXACT_INACTIVE_RENDERED_OBSERVED",
+            observed_helper=inactive_expected,
+            rendered_helper_sha256=discovered_placeholder["helper_sha256"],
+            token=fixture_token,
+            source_commit="a" * 40,
+            base_url="https://nad-lan.co.il",
+            identity=identity,
+            redactor=checkpoint_redactor,
+        )
+        activation_intent = update_ownership_checkpoint(
+            ownership_path,
+            inactive_checkpoint,
+            lifecycle_state="ACTIVE_RENDERED_ACTIVATION_INTENT",
+            observed_helper=inactive_expected,
+            rendered_helper_sha256=discovered_placeholder["helper_sha256"],
+            token=fixture_token,
+            source_commit="a" * 40,
+            base_url="https://nad-lan.co.il",
+            identity=identity,
+            redactor=checkpoint_redactor,
+        )
+        active_payload = {
+            "id": 451,
+            "name": identity["helper_name"],
+            "active": True,
+            "scope": "global",
+            "code": discovered_placeholder["helper_code"],
+        }
+        post_activation_session = FakeSession(
+            [
+                FakeResponse(
+                    200,
+                    b"[]",
+                    "application/json",
+                    payload=[{"id": 451, "name": identity["helper_name"]}],
+                    headers={"X-WP-TotalPages": "1"},
+                ),
+                FakeResponse(
+                    200,
+                    b"{}",
+                    "application/json",
+                    payload=active_payload,
+                ),
+            ]
+        )
+        post_activation_client = WordpressClient(
+            "https://nad-lan.co.il", "u", "p", session=post_activation_session
+        )  # type: ignore[arg-type]
+        discovered_active = discover_checkpoint_helper(
+            post_activation_client,
+            activation_intent,
+            token=fixture_token,
+            source_commit="a" * 40,
+            base_url="https://nad-lan.co.il",
+        )
+        if (
+            discovered_active.get("state") != "exact_active_helper"
+            or read_json_object(ownership_path).get("lifecycle_state")
+            != "ACTIVE_RENDERED_ACTIVATION_INTENT"
+        ):
+            raise RuntimeError("Post-activation crash discovery fixture failed")
+        tests["crash_post_activation_before_final_report_discovered"] = True
+        try:
+            validate_ownership_checkpoint(
+                activation_intent,
+                token="c" * 64,
+                source_commit="a" * 40,
+                base_url="https://nad-lan.co.il",
+            )
+        except RuntimeError:
+            tests["ownership_checkpoint_wrong_token_rejected"] = True
+        else:
+            raise RuntimeError("Wrong-token ownership checkpoint fixture was accepted")
+
+        resumed_terminal_path = Path(temp) / "resumable-cleanup.json"
+        resumed_plan = {
+            "operation": "offline_resumable_cleanup_fixture",
+            "helper_id": 451,
+        }
+        initial_terminal = reserve_or_resume_terminal_report(
+            resumed_terminal_path, resumed_plan, checkpoint_redactor
+        )
+        resumed_terminal = reserve_or_resume_terminal_report(
+            resumed_terminal_path, resumed_plan, checkpoint_redactor
+        )
+        if resumed_terminal != initial_terminal:
+            raise RuntimeError("Prepared cleanup checkpoint did not resume exactly")
+        tests["cleanup_checkpoint_process_death_resumable"] = True
+
     # Every transport response is injected. The optional HTTP dependency must
     # remain unloaded, making the CI self-test genuinely stdlib-only.
     if _REQUESTS is not None:
@@ -3429,12 +4453,11 @@ def build_parser() -> argparse.ArgumentParser:
         "cleanup-helper", help="Terminally remove the exact Phase-A audit helper"
     )
     live_common(helper_cleanup)
-    helper_authority = helper_cleanup.add_mutually_exclusive_group(required=True)
-    helper_authority.add_argument("--audit-report", type=Path)
-    helper_authority.add_argument(
-        "--helper-id",
-        type=int,
-        help="Exact interrupted helper ID reported by a failed audit attempt",
+    helper_cleanup.add_argument(
+        "--audit-report",
+        type=Path,
+        required=True,
+        help="The audit --report path (ownership checkpoint or final audit report)",
     )
     helper_cleanup.add_argument("--report", type=Path, required=True)
     helper_cleanup.add_argument("--confirm-cleanup", required=True)

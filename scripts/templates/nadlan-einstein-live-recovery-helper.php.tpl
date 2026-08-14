@@ -1523,6 +1523,29 @@ add_action( 'rest_api_init', function () {
 					if ( ! function_exists( 'Code_Snippets\\delete_snippet' ) ) {
 						throw new RuntimeException( 'snippet_delete_api_missing' );
 					}
+					$failure_stage = 'self_delete_immediate_identity_reread';
+					$wpdb->last_error = '';
+					$immediate_rows = $wpdb->get_results(
+						$wpdb->prepare(
+							"SELECT id, name, code, scope, active FROM {$snippets_table} WHERE id = %d OR name = %s ORDER BY id ASC LIMIT 2",
+							$helper_id,
+							$helper_name
+						),
+						ARRAY_A
+					);
+					if (
+						! is_array( $immediate_rows )
+						|| '' !== (string) $wpdb->last_error
+						|| 1 !== count( $immediate_rows )
+						|| $helper_id !== (int) $immediate_rows[0]['id']
+						|| $helper_name !== (string) $immediate_rows[0]['name']
+						|| 'global' !== (string) $immediate_rows[0]['scope']
+						|| 1 !== (int) $immediate_rows[0]['active']
+						|| ! hash_equals( $helper_sha256, hash( 'sha256', (string) $immediate_rows[0]['code'] ) )
+						|| false === strpos( (string) $immediate_rows[0]['code'], $route_path )
+					) {
+						throw new RuntimeException( 'self_delete_immediate_identity_changed' );
+					}
 					$failure_stage = 'self_delete';
 					\Code_Snippets\delete_snippet( $helper_id, false );
 					$wpdb->last_error = '';
@@ -1549,6 +1572,7 @@ add_action( 'rest_api_init', function () {
 						'storage_absent'            => true,
 						'retained_helpers_unchanged' => true,
 						'mutation_mutex_held'        => $mutation_mutex_held,
+						'immediate_identity_reread_exact' => true,
 					);
 				}
 			} catch ( Throwable $error ) {
