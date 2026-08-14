@@ -11,10 +11,15 @@ const LEGACY_PLUGIN_ROOT = "plugins/nadlan-config/assets/flagship-v3/projects/ei
 const STORAGE_PREFIX = "assets/flagship-v3/private-assets/einstein-tower/";
 const WRAPPER_PREFIX = Buffer.from(
   "<?php\n" +
+  "while ( ob_get_level() > 0 ) {\n" +
+  "\tob_end_clean();\n" +
+  "}\n" +
   "http_response_code( 404 );\n" +
   "header( 'Cache-Control: private, no-store, no-cache, max-age=0, must-revalidate' );\n" +
   "header( 'X-Robots-Tag: noindex, nofollow, noarchive' );\n" +
   "header( 'X-Content-Type-Options: nosniff' );\n" +
+  "header( 'Referrer-Policy: no-referrer' );\n" +
+  "header( 'Content-Length: 0' );\n" +
   "__halt_compiler();\n",
   "utf8",
 );

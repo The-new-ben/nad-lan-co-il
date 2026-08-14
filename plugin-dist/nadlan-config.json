@@ -1,15 +1,15 @@
 {
   "name": "NadLan Config",
   "slug": "nadlan-config",
-  "version": "1.72.205",
+  "version": "1.72.206",
   "author": "nad-lan.co.il",
   "homepage": "https://nad-lan.co.il",
   "requires": "6.7",
   "tested": "7.0",
   "requires_php": "7.4",
-  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.205.zip",
+  "download_url": "https://raw.githubusercontent.com/The-new-ben/nad-lan-co-il/main/plugin-dist/nadlan-config-1.72.206.zip",
   "last_updated": "2026-08-14",
   "sections": {
-    "changelog": "<h4>1.72.205</h4><ul><li>Adds the governed flagship-v3 private showroom for Einstein Tower, including a high-detail local 3D model, protected mobile stage, visual experience tools, sourced buyer-decision dossier, zero-inventory gate, and non-enumerable staging privacy.</li><li>Preserves the live 1.72.204 showroom runtime and the main-branch project image batch corrections.</li></ul>"
+    "changelog": "<h4>1.72.206</h4><ul><li>Supersedes the invalid 1.72.205 package with terminal zero-body 404 responses for rejected Einstein private assets, including buffer cleanup, no-store/no-cache, noindex/nofollow/noarchive, nosniff, and no-referrer protections.</li><li>Leaves ordinary flagship page validation errors unchanged.</li></ul><h4>1.72.205</h4><ul><li>Adds the governed flagship-v3 private showroom for Einstein Tower, including a high-detail local 3D model, protected mobile stage, visual experience tools, sourced buyer-decision dossier, zero-inventory gate, and non-enumerable staging privacy.</li><li>Preserves the live 1.72.204 showroom runtime and the main-branch project image batch corrections.</li></ul>"
   }
 }

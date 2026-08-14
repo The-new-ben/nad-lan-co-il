@@ -80,8 +80,12 @@ function cacheIsPrivate(headers) {
   return value.includes("no-store") || value.includes("no-cache") || value.includes("max-age=0");
 }
 function privateAssetAnonymousContract(status, headers, bodyBytes) {
-  return status === 404 && bodyBytes === 0 && cacheIsPrivate(headers) &&
-    String(headers["x-robots-tag"] || "").toLowerCase().includes("noindex");
+  return status === 404 && bodyBytes === 0 &&
+    String(headers["cache-control"] || "").trim().toLowerCase() === "private, no-store, no-cache, max-age=0, must-revalidate" &&
+    String(headers["x-robots-tag"] || "").trim().toLowerCase() === "noindex, nofollow, noarchive" &&
+    String(headers["x-content-type-options"] || "").trim().toLowerCase() === "nosniff" &&
+    String(headers["referrer-policy"] || "").trim().toLowerCase() === "no-referrer" &&
+    String(headers["content-length"] || "").trim() === "0";
 }
 function findHealthVersion(payload) {
   if (Array.isArray(payload)) {
@@ -115,9 +119,18 @@ if (process.argv.includes("--self-test")) {
   assert.equal(redact("?password=swordfish", "swordfish"), "?password=[REDACTED]");
   assert.equal(publicUrl("https://example.test/private/?token=secret#x"), "https://example.test/private/");
   assert.equal(cacheIsPrivate({ "cache-control": "private, no-store" }), true);
-  assert.equal(privateAssetAnonymousContract(404, { "cache-control": "private, no-store", "x-robots-tag": "noindex, nofollow" }, 0), true);
-  assert.equal(privateAssetAnonymousContract(404, { "cache-control": "private, no-store", "x-robots-tag": "noindex, nofollow" }, 1), false);
-  assert.equal(findHealthVersion({ data: { nadlan_config_version: "1.72.205" } }), "1.72.205");
+  const exactDenialHeaders = {
+    "cache-control": "private, no-store, no-cache, max-age=0, must-revalidate",
+    "x-robots-tag": "noindex, nofollow, noarchive",
+    "x-content-type-options": "nosniff",
+    "referrer-policy": "no-referrer",
+    "content-length": "0"
+  };
+  assert.equal(privateAssetAnonymousContract(404, exactDenialHeaders, 0), true);
+  assert.equal(privateAssetAnonymousContract(404, exactDenialHeaders, 1), false);
+  assert.equal(privateAssetAnonymousContract(404, { ...exactDenialHeaders, "referrer-policy": "same-origin" }, 0), false);
+  assert.equal(privateAssetAnonymousContract(404, { ...exactDenialHeaders, "x-content-type-options": "" }, 0), false);
+  assert.equal(findHealthVersion({ data: { nadlan_config_version: "1.72.206" } }), "1.72.206");
   assert.deepEqual(EXPECTED_TOOLS, ["view", "interior", "design", "comments"]);
   assert.equal(REPORT_SCHEMA, "nadlan-einstein-flagship-live-acceptance/v2");
   assert.deepEqual(EXPECTED_EVIDENCE_COUNTS, { keyboardViewports: 2, keyboardToolChecks: 8, keyboardEscapeRestores: 8, browserHistoryTransitions: 2, textResizeViewports: 2, textResizeDialogChecks: 8 });

@@ -312,10 +312,15 @@ if ( ! function_exists( 'nadlan_flagship_v3_private_asset_wrapper_prefix' ) ) {
 	/** Exact deterministic prefix emitted by scripts/build-flagship-private-assets.mjs. */
 	function nadlan_flagship_v3_private_asset_wrapper_prefix() {
 		return "<?php\n"
+			. "while ( ob_get_level() > 0 ) {\n"
+			. "\tob_end_clean();\n"
+			. "}\n"
 			. "http_response_code( 404 );\n"
 			. "header( 'Cache-Control: private, no-store, no-cache, max-age=0, must-revalidate' );\n"
 			. "header( 'X-Robots-Tag: noindex, nofollow, noarchive' );\n"
 			. "header( 'X-Content-Type-Options: nosniff' );\n"
+			. "header( 'Referrer-Policy: no-referrer' );\n"
+			. "header( 'Content-Length: 0' );\n"
 			. "__halt_compiler();\n";
 	}
 }
@@ -495,13 +500,14 @@ if ( ! function_exists( 'nadlan_flagship_v3_private_asset_request' ) ) {
 		$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? (string) wp_unslash( $_SERVER['REQUEST_URI'] ) : '';
 		$parts       = wp_parse_url( $request_uri );
 		$path        = is_array( $parts ) && isset( $parts['path'] ) ? (string) $parts['path'] : '';
-		$marker      = '/flagship-private-asset/';
-		if ( 0 !== strpos( $path, $marker ) ) {
+		$route_root  = '/flagship-private-asset';
+		$marker      = $route_root . '/';
+		if ( $route_root !== $path && 0 !== strpos( $path, $marker ) ) {
 			return array();
 		}
 		$query_string = isset( $_SERVER['QUERY_STRING'] ) ? (string) $_SERVER['QUERY_STRING'] : '';
 		$method       = isset( $_SERVER['REQUEST_METHOD'] ) ? strtoupper( (string) $_SERVER['REQUEST_METHOD'] ) : 'GET';
-		if ( '' !== $query_string || isset( $parts['query'] ) || ! in_array( $method, array( 'GET', 'HEAD' ), true )
+		if ( $route_root === $path || '' !== $query_string || isset( $parts['query'] ) || ! in_array( $method, array( 'GET', 'HEAD' ), true )
 			|| false !== strpos( $path, '%' ) || false !== strpos( $path, '\\' ) ) {
 			return nadlan_flagship_v3_error( 'private_asset_invalid_request' );
 		}
@@ -516,6 +522,27 @@ if ( ! function_exists( 'nadlan_flagship_v3_private_asset_request' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_flagship_v3_private_asset_deny' ) ) {
+	/** Exact terminal denial for this binary route only; ordinary page errors keep wp_die(). */
+	function nadlan_flagship_v3_private_asset_deny() {
+		while ( ob_get_level() > 0 ) {
+			ob_end_clean();
+		}
+		if ( function_exists( 'status_header' ) ) {
+			status_header( 404 );
+		} else {
+			http_response_code( 404 );
+		}
+		nocache_headers();
+		header( 'Cache-Control: private, no-store, no-cache, max-age=0, must-revalidate', true );
+		header( 'X-Robots-Tag: noindex, nofollow, noarchive', true );
+		header( 'X-Content-Type-Options: nosniff', true );
+		header( 'Referrer-Policy: no-referrer', true );
+		header( 'Content-Length: 0', true );
+		exit;
+	}
+}
+
 if ( ! function_exists( 'nadlan_flagship_v3_private_asset_template' ) ) {
 	/** Terminal binary response; every rejected request receives the same 404. */
 	function nadlan_flagship_v3_private_asset_template() {
@@ -524,11 +551,11 @@ if ( ! function_exists( 'nadlan_flagship_v3_private_asset_template' ) ) {
 			return;
 		}
 		if ( is_wp_error( $request ) ) {
-			nadlan_flagship_v3_fail_closed();
+			nadlan_flagship_v3_private_asset_deny();
 		}
 		$asset = nadlan_flagship_v3_private_asset_descriptor( $request['project_contract_id'], $request['requested_name'] );
 		if ( is_wp_error( $asset ) ) {
-			nadlan_flagship_v3_fail_closed();
+			nadlan_flagship_v3_private_asset_deny();
 		}
 		while ( ob_get_level() > 0 ) {
 			ob_end_clean();
