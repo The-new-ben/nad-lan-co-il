@@ -11,7 +11,7 @@ It improves the parts that make a flagship safe to scale:
 
 - one canonical identity (`einstein-tower-6885-32`, parcel `6885/32`, WordPress post `4867`);
 - source-linked facts, explicit effective dates and separate current/future states;
-- an original 39,912-triangle HD model, distinct LOD, reviewed hashes and three governed concept anchors;
+- an original 39,912-triangle / 79,824-vertex HD model, a distinct 156-triangle / 312-vertex LOD, independently re-read hashes and three governed concept anchors serving four scenes;
 - a protected mobile model stage with no overlay over the building;
 - four visual invitations below the model: View, Interior, Design and Comments;
 - zero-inventory fail-closed behavior instead of invented apartments;
@@ -58,6 +58,8 @@ The comparison combines four evidence types and keeps their states separate:
 2. Read-only inspection of the exact GLB bytes served by those pages.
 3. Repository inspection of Einstein contracts and named renderer/runtime symbols.
 4. Local automated checks run on 2026-08-14:
+   - direct GLB v2 JSON/BIN inspection and accessor recount - PASS for exact bytes, SHA-256, triangles, vertices, mesh/node/material counts, metadata and HD/LOD hotspot parity;
+   - `node assets/projects/einstein-tower/validate-model.mjs` - PASS;
    - `php scripts/qa-flagship-v3-php.php` - PASS;
    - `node scripts/qa-einstein-project-identity.mjs` - PASS;
    - `node scripts/qa-project-showroom-inventory-contract.mjs` - PASS;

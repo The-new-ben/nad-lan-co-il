@@ -92,11 +92,11 @@ Legend: PASS = evidenced now; FAIL = current implementation contradicts the gate
 
 | ID | Gate | Current |
 | --- | --- | --- |
-| C1 | HD contains at least 30,000 real rendered triangles, no hidden/filler geometry used to reach the count | PASS on count; filler/visual review PASS only in offline preview |
-| C2 | HD/LOD/poster bytes and SHA-256 values exactly match the contract registry | PASS locally |
+| C1 | HD contains at least 30,000 real rendered triangles, no hidden/filler geometry used to reach the count | PASS on count: independent GLB accessor recount = 39,912 triangles / 79,824 vertices; filler/visual review PASS only in offline preview |
+| C2 | HD/LOD/poster bytes and SHA-256 values exactly match the contract registry | PASS locally; HD = 2,420,492 bytes / `71fcca8…68a53`, LOD = 32,244 bytes / `4851619…079ce` |
 | C3 | HD and LOD are distinct; LOD preserves a readable project silhouette at constrained-data/mobile scale | Distinct PASS; visual sufficiency OPEN in WordPress |
 | C4 | Model center remains directly hit-testable; no CTA, teaser, label or hotspot layer covers the building | PASS offline; OPEN in WordPress |
-| C5 | Every hotspot has asset/scene binding, model component, model coordinate, confidence, evidence basis, ambiguity and prohibited inferences | PASS |
+| C5 | Every hotspot has asset/scene binding, model component, model coordinate, confidence, evidence basis, ambiguity and prohibited inferences | PASS; three HD and three LOD hotspot contracts/meshes have exact core parity with the model spec and experience manifest; four scenes intentionally share three anchors |
 | C6 | Projected hotspots remain at least 47.5 px apart at required camera/viewports or collapse into an accessible list/cluster | PASS offline for three anchors; OPEN in WordPress |
 | C7 | Every model/scene asset is same-origin, immutable/reviewed and route-scoped | PASS locally; OPEN in deployed headers/network |
 | C8 | Material rendering meets the intended visual standard, including textures when required | FAIL for texture support in current first-party viewer |

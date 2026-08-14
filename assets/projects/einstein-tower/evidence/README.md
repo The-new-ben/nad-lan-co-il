@@ -4,7 +4,18 @@ Checked 2026-08-14. This folder is an independent, text-only cross-check. It doe
 
 ## Bottom line
 
-The current model gets the most important high-level silhouette right: one 28-level tower, two 13-level lower buildings, a shared double commercial base, a light mineral/glass material family, and a real indexed triangle count above the owner's 30,000-triangle target. The inspected HD GLB passed its validator at 39,840 triangles / 79,680 vertices / 2,400,052 bytes (`cb1f4b1d9603196dd46f7807b0475dfce0357827ae02d76d37fb861fba4ff4e5`).
+The current model gets the most important high-level silhouette right: one 28-level tower, two 13-level lower buildings, a shared double commercial base, a light mineral/glass material family, and a real indexed triangle count above the owner's 30,000-triangle target. Direct GLB v2 inspection of the current repository bytes—not a copied report—measured the HD asset at 39,912 indexed triangles / 79,824 vertices / 2,420,492 bytes (`71fcca8a0f58743b5f2257684c79957fbbff8e0169f5438bdc78231f27968a53`).
+
+### Current binary lock
+
+| Asset | Bytes | SHA-256 | Triangles | Vertices | Primitives / meshes / nodes / materials |
+| --- | ---: | --- | ---: | ---: | --- |
+| `model-hd.glb` | 2,420,492 | `71fcca8a0f58743b5f2257684c79957fbbff8e0169f5438bdc78231f27968a53` | 39,912 | 79,824 | 13 / 13 / 13 / 10 |
+| `model-lod.glb` | 32,244 | `485161974b6d343956d249d821c893b72a59678e8e8ee2810c90cee5f23079ce` | 156 | 312 | 9 / 9 / 9 / 10 |
+
+Both files have valid GLB v2 headers whose declared lengths equal the actual file lengths. The independent inspection parsed the JSON and BIN chunks, summed triangle-mode index accessors and POSITION accessor counts, and then compared the embedded metadata to `model-spec.json`, `experience/manifest.json` and the immutable contract registry. The repository validator also passed independently.
+
+HD and LOD carry the same asset truth metadata (`einstein-tower-6885-32`, `owner_approved_illustration`, `decision_grade=false`, private-stage owner decision and dates) and the same scene calibration (`North=0`, `+Z` north, `+Y` up, metres, `not_municipally_crosswalked`). Both carry exactly three scene hotspot contracts and exactly three visible hotspot meshes. The core binding fields—hotspot ID, tool, Interior opening surface, scene IDs, component IDs, zone, position, normal, visible offset, mapping lane and both confidence values—match the model spec and experience manifest exactly. Four selectable scenes map to those three anchors because `living` and `bedroom` intentionally share the representative-interior anchor. All three remain `source_cited=false`, `decision_grade=false` and `real_world_orientation_calibrated=false`.
 
 It is still an illustrative showroom massing, not a source-calibrated site model. Its biggest shortcomings are not triangle count; they are footprint calibration, over-symmetrical facades, a weak crown, an oversized generic rectangular podium, and a public realm that is far less specific than the approved municipal design protocol.
 
@@ -57,7 +68,13 @@ The model should keep two different semantic layers:
 1. **Source-backed site layers** — commercial base, public landscaped roof/open spaces, circulation/easements, vehicle access, parking concept and separate public building.
 2. **Owner-approved demonstration scenes** — living, bedroom, shared arrival/gallery and landscaped terrace concepts. These may be clickable and approximately positioned, but they do not prove a unit, floor, view, facility existence, contractor specification or delivered amenity.
 
-The machine-readable proposed positions are in `hotspot-placement-crosswalk.csv`. They are deliberately replaceable when a signed site, architectural or sales-plan crosswalk arrives.
+The machine-readable evidence positions are in `hotspot-placement-crosswalk.csv`. They are deliberately replaceable when a signed site, architectural or sales-plan crosswalk arrives. Its descriptive evidence `anchor_id` values crosswalk to the runtime hotspot IDs as follows:
+
+| Evidence `anchor_id` | Runtime `hotspot_id` | Bound scenes |
+| --- | --- | --- |
+| `representative-interior-concept` | `representative-interior-concept` | `living`, `bedroom` |
+| `arrival-shared-podium-concept` | `facility-arrival-concept` | `arrival` |
+| `landscaped-public-roof-concept` | `facility-landscaped-open-space-concept` | `open-frame` |
 
 ## Coordinate convention for the hotspot file
 
@@ -71,6 +88,7 @@ The machine-readable proposed positions are in `hotspot-placement-crosswalk.csv`
 - `model-geometry-crosswalk.csv` — evidence-to-current-model comparison.
 - `independent-model-gap-list.csv` — prioritized exact fixes and acceptance tests.
 - `hotspot-placement-crosswalk.csv` — four exact local asset IDs with current-model positions, normals and claim limits.
+- `model-asset-inspection.json` — current binary metrics, immutable hashes, embedded truth/calibration metadata and HD/LOD hotspot-parity result.
 
 ## Principal primary sources
 
