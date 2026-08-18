@@ -113,6 +113,11 @@ add_filter( 'rest_prepare_nadlan_project', 'nadlan_tier_filter_rest', 10, 2 );
 add_filter( 'rest_prepare_nadlan_professional', 'nadlan_tier_filter_rest', 10, 2 );
 if ( ! function_exists( 'nadlan_tier_filter_rest' ) ) {
 	function nadlan_tier_filter_rest( $response, $post ) {
+		/* Tier gating is a public presentation rule. Editors need truthful REST
+		 * readback for guarded staging, rollback and catalog administration. */
+		if ( $post instanceof WP_Post && current_user_can( 'edit_post', (int) $post->ID ) ) {
+			return $response;
+		}
 		$data = $response->get_data();
 		if ( empty( $data['meta'] ) || ! is_array( $data['meta'] ) ) { return $response; }
 		if ( ! nadlan_tier_can_show( $post->ID, 'phone' ) ) {

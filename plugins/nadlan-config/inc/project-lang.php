@@ -126,6 +126,7 @@ if ( ! function_exists( 'nadlan_plang_chrome_map' ) ) {
 				'נדל״ן לפני שפונים ליזם' => 'Check everything before the developer',
 				'דלג לתוכן'             => 'Skip to content',
 				'צור קשר'               => 'Contact',
+				'בחרו פרויקט'           => 'Choose a project',
 			),
 			'fr' => array(
 				'פרויקטים'              => 'Projets',
@@ -139,6 +140,7 @@ if ( ! function_exists( 'nadlan_plang_chrome_map' ) ) {
 				'נדל״ן לפני שפונים ליזם' => 'Tout vérifier avant le promoteur',
 				'דלג לתוכן'             => 'Aller au contenu',
 				'צור קשר'               => 'Contact',
+				'בחרו פרויקט'           => 'Choisir un projet',
 			),
 			'ru' => array(
 				'פרויקטים'              => 'Проекты',
@@ -152,6 +154,7 @@ if ( ! function_exists( 'nadlan_plang_chrome_map' ) ) {
 				'נדל״ן לפני שפונים ליזם' => 'Проверьте всё до застройщика',
 				'דלג לתוכן'             => 'К содержимому',
 				'צור קשר'               => 'Контакты',
+				'בחרו פרויקט'           => 'Выбрать проект',
 			),
 			'ar' => array(
 				'פרויקטים'              => 'مشاريع',
@@ -165,6 +168,7 @@ if ( ! function_exists( 'nadlan_plang_chrome_map' ) ) {
 				'נדל״ן לפני שפונים ליזם' => 'تحقق من كل شيء قبل المطور',
 				'דלג לתוכן'             => 'تخطي إلى المحتوى',
 				'צור קשר'               => 'اتصل بنا',
+				'בחרו פרויקט'           => 'اختر مشروعاً',
 			),
 		);
 		return isset( $map[ $lang ] ) ? $map[ $lang ] : array();

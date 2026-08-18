@@ -576,8 +576,8 @@ if ( ! function_exists( 'nadlan_premium_css' ) ) {
 .nldir-crumbs,.nldir-crumbs a{color:var(--nl-warm)!important}
 
 /* Duplicate H1 on single project/professional profiles:
-   the theme prints <h1 class="wp-block-post-title"> AND the plugin prints
-   <h1 class="nlpf-name"> with the same title. Demote the theme block-title
+   the theme prints an H1 block-title AND the plugin prints the nlpf-name H1
+   with the same title. Demote the theme block-title
    visually + semantically so there's one visible H1. */
 body.single-nadlan_project .wp-block-post-title,
 body.single-nadlan_professional .wp-block-post-title,
@@ -677,7 +677,7 @@ body.single-nadlan_property .wp-block-post-date{display:none!important}
 }
 
 /* #9 - On nadlan CPT archive pages (/projects/, /professionals/, /properties/)
-   the theme header prints <h1><a>נדלן</a></h1>, creating a 2nd H1 alongside
+   the theme header prints the linked site-title as an H1, creating a 2nd H1 alongside
    the archive hero H1. Visually hide the theme's site-title H1 on THESE archives
    only - every other page keeps its header H1 as-is. */
 body.post-type-archive-nadlan_project #header h1,

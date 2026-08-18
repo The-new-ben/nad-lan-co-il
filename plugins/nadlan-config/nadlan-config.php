@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.72.204
+ * Version: 1.72.212
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
    above (the release script bumps all three). A frozen ver= string once kept
    browsers on a June engine.js for weeks - never hardcode versions in enqueues. */
 if ( ! defined( 'NADLAN_CONFIG_VERSION' ) ) {
-	define( 'NADLAN_CONFIG_VERSION', '1.72.204' );
+	define( 'NADLAN_CONFIG_VERSION', '1.72.212' );
 }
 
 /* ---------- v1.5.0: directory cards, claim funnel, auction engine ----------
@@ -30,7 +30,7 @@ if ( ! defined( 'NADLAN_CONFIG_VERSION' ) ) {
  * project-page-assembly and project-3d removed; the pieces the live engine
  * still needs moved to showroom-support.php.
  */
-foreach ( array( 'catalog-meta', 'claim', 'alerts', 'mailer', 'lead-board', 'import', 'schema', 'cards-render', 'listings-ux', 'avm-deals', 'saved-search', 'ai-provider', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary', 'glossary-autolink', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'whatsapp-lead-ingestion', 'lead-routing', 'feature-flags', 'compounds', 'compound-map', 'showroom-support', 'offers', 'lead-e2e', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras', 'advertiser-center', 'advertiser-orders', 'premium-ui', 'geo-search', 'roles', 'greeninvoice-recurring', 'placement-auction', 'admin-control', 'contextual-help', 'business-metrics', 'health', 'final-hardening', 'lead-ai-qualify', 'lead-nurture', 'showroom-engine', 'bulk-project-seo', 'loi-form', 'showroom-metabox', 'property-showroom', 'property-wizard', 'project-experience', 'professional-profile', 'interior-fp', 'buy-rent-calc', 'premium-catalog', 'facility-chips', 'rfp', 'guide-schema', 'drone-map', 'i18n', 'home-v2', 'keys-hub', 'en-hub', 'project-preview', 'funnel', 'renewals', 'glossary-intake', 'glossary-writer', 'accessibility', 'pro-cards', 'brochure', 'cotour', 'pro-stats-email', 'milestones', 'milestone-notify', 'ai-brain', 'related-content', 'urban-hub', 'urban-tools', 'urban-wizard', 'urban-space', 'urban-map', 'wa-source', 'rentals-manager', 'scheduler', 'site-map', 'global-worlds', 'smart-form', 'auction', 'auth', 'cta-start', 'sdedov-teaser', 'legal-notice', 'tour-routes', 'developers-page', 'earth-experience', 'utopia-sde-dov', 'feature-bar', 'mobile-nav-repair', 'project-lang', 'schema-meta', 'area-price-line', 'auction-upsell', 'developer-redirect', 'page-lang', 'project-strip', 'project-topbar', 'matcher', 'guides-index' ) as $nadlan_mod ) {
+foreach ( array( 'catalog-meta', 'claim', 'alerts', 'mailer', 'lead-board', 'import', 'schema', 'cards-render', 'listings-ux', 'avm-deals', 'saved-search', 'ai-provider', 'ai-features', 'city-hubs', 'media', 'compare', 'nearby-poi', 'map', 'lead-drip', 'ops-dashboard', 'facets', 'breadcrumbs', 'autocomplete', 'tiers', 'glossary', 'glossary-autolink', 'directory', 'reviews', 'lead-ledger', 'ai-concierge', 'archive-grid', 'calculators', 'catalog-shine', 'conversion-cta', 'whatsapp-lead-ingestion', 'lead-routing', 'feature-flags', 'compounds', 'compound-map', 'showroom-support', 'offers', 'lead-e2e', 'lead-inbox', 'preferred-partners', 'featured-upsell', 'sponsored-spot', 'pricing-schema', 'claim-prompt', 'ga4-events', 'sitemap-ping', 'social-proof', 'term-faq-schema', 'og-image', 'owner-config-rest', 'studio', 'studio-rest', 'profile-extras', 'advertiser-center', 'advertiser-orders', 'premium-ui', 'geo-search', 'roles', 'greeninvoice-recurring', 'placement-auction', 'admin-control', 'contextual-help', 'business-metrics', 'health', 'final-hardening', 'lead-ai-qualify', 'lead-nurture', 'flagship-surface', 'flagship-cotour', 'showroom-engine', 'bulk-project-seo', 'loi-form', 'showroom-metabox', 'property-showroom', 'property-wizard', 'project-experience', 'project-image-batch', 'professional-profile', 'interior-fp', 'buy-rent-calc', 'premium-catalog', 'facility-chips', 'rfp', 'guide-schema', 'drone-map', 'i18n', 'home-v2', 'keys-hub', 'en-hub', 'project-preview', 'funnel', 'renewals', 'glossary-intake', 'glossary-writer', 'accessibility', 'pro-cards', 'brochure', 'cotour', 'pro-stats-email', 'milestones', 'milestone-notify', 'ai-brain', 'related-content', 'urban-hub', 'urban-tools', 'urban-wizard', 'urban-space', 'urban-map', 'wa-source', 'rentals-manager', 'scheduler', 'site-map', 'global-worlds', 'smart-form', 'auction', 'auth', 'cta-start', 'sdedov-teaser', 'legal-notice', 'tour-routes', 'developers-page', 'earth-experience', 'utopia-sde-dov', 'feature-bar', 'mobile-nav-repair', 'project-lang', 'schema-meta', 'area-price-line', 'auction-upsell', 'developer-redirect', 'page-lang', 'project-strip', 'project-topbar', 'matcher', 'guides-index', 'einstein-lab' ) as $nadlan_mod ) {
 	$nadlan_mod_file = __DIR__ . '/inc/' . $nadlan_mod . '.php';
 	if ( file_exists( $nadlan_mod_file ) ) {
 		require_once $nadlan_mod_file;
@@ -61,6 +61,9 @@ add_action( 'init', 'nadlan_config_register_cpt' );
 
 if ( ! function_exists( 'nadlan_config_healthcheck' ) ) {
 	function nadlan_config_healthcheck() {
+		/* /health is owned by inc/health.php and carries dependency/SLO data.
+		 * Registering it here too can shadow that mature route; flagship-surface
+		 * augments its response without replacing the owner callback. */
 		register_rest_route(
 			'nadlan/v1',
 			'/healthcheck',
@@ -79,6 +82,7 @@ if ( ! function_exists( 'nadlan_config_healthcheck_response' ) ) {
 		$out = array(
 			'plugin'              => 'nadlan-config',
 			'version'             => NADLAN_CONFIG_VERSION,
+			'plugin_version'      => NADLAN_CONFIG_VERSION,
 			'cpt_present'         => post_type_exists( 'nadlan_lead' ),
 			'lead_handler_loaded' => (bool) has_action( 'admin_post_nadlan_lead' ),
 			'php_version'         => PHP_VERSION,
@@ -377,7 +381,7 @@ add_action( 'save_post', 'nadlan_config_indexnow_on_save', 20, 2 );
 
 /* Surface key + recent pings in the healthcheck (admin context only) */
 add_filter( 'rest_pre_dispatch', function( $r, $server, $request ) {
-    if ( $request->get_route() === '/nadlan/v1/healthcheck' ) {
+    if ( in_array( $request->get_route(), array( '/nadlan/v1/healthcheck', '/nadlan/v1/health' ), true ) ) {
         add_filter( 'nadlan_config_healthcheck_extra', function( $arr ) {
             $arr['indexnow'] = array(
                 'key_set'    => (bool) get_option( 'nadlan_indexnow_key' ),
@@ -710,4 +714,3 @@ if ( ! function_exists( 'nadlan_config_svg_favicon' ) ) {
 	}
 }
 add_action( 'wp_head', 'nadlan_config_svg_favicon', 1 );
-

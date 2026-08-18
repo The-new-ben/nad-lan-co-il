@@ -69,7 +69,10 @@ if ( ! function_exists( 'nadlan_unit_journey_is_private_lab' ) ) {
 		}
 		return $post_id > 0
 			&& 'nadlan_project' === get_post_type( $post_id )
-			&& 'private-unit-journey-v2' === (string) get_post_meta( $post_id, '_nadlan_private_unit_journey', true );
+			&& (
+				'private-unit-journey-v2' === (string) get_post_meta( $post_id, '_nadlan_private_unit_journey', true )
+				|| ( function_exists( 'nadlan_flagship_v3_is_private_candidate' ) && nadlan_flagship_v3_is_private_candidate( $post_id ) )
+			);
 	}
 }
 
@@ -101,6 +104,20 @@ if ( ! function_exists( 'nadlan_unit_journey_private_project_ids' ) ) {
 			'no_found_rows'                     => true,
 			'nadlan_include_private_unit_journey' => true,
 		) );
+		if ( function_exists( 'nadlan_flagship_v3_registry' ) ) {
+			foreach ( (array) nadlan_flagship_v3_registry()['contracts'] as $contract ) {
+				$sandbox = is_array( $contract ) && isset( $contract['sandbox'] ) && is_array( $contract['sandbox'] )
+					? $contract['sandbox']
+					: array();
+				$slug = empty( $contract['public_release_enabled'] ) && isset( $sandbox['exact_slug'] )
+					? (string) $sandbox['exact_slug']
+					: '';
+				$post = '' !== $slug ? get_page_by_path( $slug, OBJECT, 'nadlan_project' ) : null;
+				if ( $post instanceof WP_Post && 'publish' === (string) $post->post_status && '' !== (string) $post->post_password ) {
+					$ids[] = (int) $post->ID;
+				}
+			}
+		}
 		$ids = array_values( array_unique( array_map( 'intval', (array) $ids ) ) );
 		return $ids;
 	}
@@ -736,6 +753,15 @@ add_filter( 'the_content', function ( $content ) {
 	if ( post_password_required( $pid ) ) {
 		return $content;
 	}
+	/* Flagship v3 owns the complete selected surface. Read the reviewed raw
+	 * dossier from this exact post; never feed it content already decorated by
+	 * earlier project filters and never recurse through the_content here. */
+	if ( function_exists( 'nadlan_flagship_v3_is_selected' ) && nadlan_flagship_v3_is_selected( $pid ) ) {
+		$nl_flagship_v3_article = (string) get_post_field( 'post_content', $pid, 'raw' );
+		return function_exists( 'nadlan_flagship_v3_dispatch' )
+			? nadlan_flagship_v3_dispatch( $pid, $nl_flagship_v3_article )
+			: '';
+	}
 	// DE-STACK (content-safe). The post body is ONE <main class="nlv2-showroom">
 	// wrapper that contains BOTH the legacy visual showroom (hero/3D/picker) AND the
 	// SEO article (<section class="nlv2-section"> ... headings, sources, disclaimer).
@@ -843,6 +869,15 @@ add_action( 'wp', function () {
 			/* Do not trust content assembled by any earlier project module: a
 			 * fresh core form is the complete locked body, every time. */
 			return get_the_password_form( get_post( $pid ) );
+		}
+		if ( function_exists( 'nadlan_flagship_v3_is_selected' ) && nadlan_flagship_v3_is_selected( $pid ) ) {
+			if ( false !== strpos( (string) $content, 'data-nl-flagship="v3"' ) ) {
+				return $content;
+			}
+			$nl_flagship_v3_article = (string) get_post_field( 'post_content', $pid, 'raw' );
+			return function_exists( 'nadlan_flagship_v3_dispatch' )
+				? nadlan_flagship_v3_dispatch( $pid, $nl_flagship_v3_article )
+				: '';
 		}
 		return '<h1 id="nl-unit-v2-page-title" class="screen-reader-text">' . esc_html( get_the_title( $pid ) )
 			. '</h1><div id="nl-root" data-page="project"></div>';
@@ -955,6 +990,10 @@ add_action( 'pre_get_posts', function ( $query ) {
 		return;
 	}
 	$query->set( 'meta_query', nadlan_unit_journey_public_meta_query( $query->get( 'meta_query' ) ) );
+	$query->set( 'post__not_in', array_values( array_unique( array_merge(
+		(array) $query->get( 'post__not_in' ),
+		nadlan_unit_journey_private_project_ids()
+	) ) ) );
 	$query->set( 'nadlan_private_visibility_applied', true );
 }, 20 );
 
@@ -964,6 +1003,10 @@ add_filter( 'rest_nadlan_project_query', function ( $args, $request ) {
 			isset( $args['meta_query'] ) ? $args['meta_query'] : array()
 		);
 		$args['nadlan_private_visibility_applied'] = true;
+		$args['post__not_in'] = array_values( array_unique( array_merge(
+			isset( $args['post__not_in'] ) ? (array) $args['post__not_in'] : array(),
+			nadlan_unit_journey_private_project_ids()
+		) ) );
 	}
 	return $args;
 }, 20, 2 );
@@ -976,6 +1019,10 @@ add_filter( 'rest_post_search_query', function ( $args, $request ) {
 			isset( $args['meta_query'] ) ? $args['meta_query'] : array()
 		);
 		$args['nadlan_private_visibility_applied'] = true;
+		$args['post__not_in'] = array_values( array_unique( array_merge(
+			isset( $args['post__not_in'] ) ? (array) $args['post__not_in'] : array(),
+			nadlan_unit_journey_private_project_ids()
+		) ) );
 	}
 	return $args;
 }, 20, 2 );
@@ -999,6 +1046,10 @@ add_filter( 'wp_sitemaps_posts_query_args', function ( $args, $post_type ) {
 			isset( $args['meta_query'] ) ? $args['meta_query'] : array()
 		);
 		$args['nadlan_private_visibility_applied'] = true;
+		$args['post__not_in'] = array_values( array_unique( array_merge(
+			isset( $args['post__not_in'] ) ? (array) $args['post__not_in'] : array(),
+			nadlan_unit_journey_private_project_ids()
+		) ) );
 	}
 	return $args;
 }, 20, 2 );

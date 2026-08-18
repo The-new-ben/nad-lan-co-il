@@ -1,0 +1,110 @@
+/* Einstein showroom lab - the new 3D-page standard, scoped to one page.
+ * Everything here rides on body.nlx-einstein-lab so no other project can be
+ * touched. The shared engine is frozen; these are outside-in overrides only. */
+
+/* ---- 1. Full-presence theater + boot-time height reserve -----------------
+ * The reserve doubles as the mid-page-footer fix: the block claims its space
+ * in the very first paint, so the footer can never sit mid-viewport while
+ * the model boots. */
+body.nlx-einstein-lab .nl-theater {
+	min-height: 100svh !important;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+body.nlx-einstein-lab .nl-theater model-viewer#nl-mv,
+body.nlx-einstein-lab .nl-theater .nl-stage {
+	min-height: 64svh;
+	flex: 1 1 auto;
+}
+@media (min-width: 821px) {
+	body.nlx-einstein-lab .nl-theater model-viewer#nl-mv,
+	body.nlx-einstein-lab .nl-theater .nl-stage {
+		min-height: 68svh;
+	}
+}
+
+/* ---- 2. The floor tap answers in place (mobile: pinned model band) ------
+ * The v2 unit screen is a display:contents wrapper and the theater chain
+ * clips overflow, so sticky cannot hold. The model becomes a FIXED band at
+ * the viewport top while the unit journey scrolls beneath it: one native
+ * page scroll, no inner scroller, the building always in sight, pills live
+ * for switching floors mid-journey. The theater pads itself so no content
+ * hides under the band; everything reverts when the journey closes. */
+@media (max-width: 820px) {
+	body.nlx-einstein-lab.nl-unit-v2-active .nl-theater model-viewer#nl-mv {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		z-index: 60;
+		display: block !important;
+		height: 34svh !important;
+		min-height: 0 !important;
+		max-height: 34svh !important;
+		background: #0d1411;
+		box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+	}
+	body.nlx-einstein-lab.nl-unit-v2-active .nl-theater {
+		padding-top: 35svh;
+	}
+}
+
+/* ---- 3. Tool doors as image tiles ---------------------------------------
+ * lab.js paints each door's background from the approved renders; the CSS
+ * turns the text buttons into cards either way (graceful without images). */
+body.nlx-einstein-lab .nl-unit-doors {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 10px;
+}
+body.nlx-einstein-lab .nl-unit-door {
+	position: relative;
+	min-height: 108px;
+	border-radius: 14px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-start;
+	text-align: start;
+	padding: 12px;
+	background-size: cover;
+	background-position: center;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	isolation: isolate;
+}
+body.nlx-einstein-lab .nl-unit-door::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(10, 14, 12, 0.05) 30%, rgba(10, 14, 12, 0.82) 100%);
+	z-index: -1;
+}
+body.nlx-einstein-lab .nl-unit-door.nlx-tile .nl-unit-door__copy {
+	color: #fff;
+	font-weight: 700;
+	text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+}
+body.nlx-einstein-lab .nl-unit-door.nlx-tile .nl-unit-door__icon {
+	color: #ffd98a;
+	filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.6));
+}
+@media (min-width: 821px) {
+	body.nlx-einstein-lab .nl-unit-doors {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+	body.nlx-einstein-lab .nl-unit-door {
+		min-height: 128px;
+	}
+}
+
+/* ---- 4. Boot reserve for the big area map so late boots never reflow the
+ * footer through the viewport. Harmless when the container is absent. */
+body.nlx-einstein-lab .nlpjx,
+body.nlx-einstein-lab [id^="nlpjx"],
+body.nlx-einstein-lab .nl-unit-beam__map {
+	min-height: 300px;
+}
