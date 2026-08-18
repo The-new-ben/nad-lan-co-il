@@ -1,0 +1,21 @@
+﻿slug,png_path,svg_path,description,accuracy_class
+index,assets/img/index.png,assets/img/index.svg,"עיר אחת, תהליכי תכנון בקצבים שונים",conceptual-original-not-statutory
+ayalon-roof,assets/img/ayalon-roof.png,assets/img/ayalon-roof.svg,"חיבור עירוני מעל כביש, רכבת ונחל",conceptual-original-not-statutory
+sde-dov,assets/img/sde-dov.png,assets/img/sde-dov.svg,רובע מעורב שימושים המחבר בין העיר לחוף,conceptual-original-not-statutory
+sde-dov-participation,assets/img/sde-dov-participation.png,assets/img/sde-dov-participation.svg,מן הידע המקומי אל מסמך התכנון,conceptual-original-not-statutory
+northwest-3700,assets/img/northwest-3700.png,assets/img/northwest-3700.svg,חמישה מתחמים סביב שלד חופי משותף,conceptual-original-not-statutory
+kikar-atarim,assets/img/kikar-atarim.png,assets/img/kikar-atarim.svg,"חיבור מחודש בין השדרה, הכיכר והים",conceptual-original-not-statutory
+kfir-renewal,assets/img/kfir-renewal.png,assets/img/kfir-renewal.svg,התחדשות סביב מרחב משותף קיים,conceptual-original-not-statutory
+hatikva-reparcelation,assets/img/hatikva-reparcelation.png,assets/img/hatikva-reparcelation.svg,מזכויות משותפות למגרשים ניתנים לרישום,conceptual-original-not-statutory
+southeast-renewal,assets/img/southeast-renewal.png,assets/img/southeast-renewal.svg,מסלולים שונים בתוך מרחב שכונתי אחד,conceptual-original-not-statutory
+levana-renewal,assets/img/levana-renewal.png,assets/img/levana-renewal.svg,שכונה ותיקה לאורך מרחב פתוח גדול,conceptual-original-not-statutory
+ramat-hatayasim,assets/img/ramat-hatayasim.png,assets/img/ramat-hatayasim.svg,שני מעגלי מגורים סביב שלד ציבורי,conceptual-original-not-statutory
+florentin,assets/img/florentin.png,assets/img/florentin.svg,כמה תהליכים נפגשים באותה רשת רחובות,conceptual-original-not-statutory
+neot-afeka-b,assets/img/neot-afeka-b.png,assets/img/neot-afeka-b.svg,"מרקם נמוך, מוקד שכונתי ומגדלים קיימים",conceptual-original-not-statutory
+neve-avivim,assets/img/neve-avivim.png,assets/img/neve-avivim.svg,"התחדשות סביב עצים, שבילים ומרחבים קיימים",conceptual-original-not-statutory
+yad-eliyahu,assets/img/yad-eliyahu.png,assets/img/yad-eliyahu.svg,מרקם שיכונים פתוח שמתחדש סביב רחוב פעיל,conceptual-original-not-statutory
+carmel-market,assets/img/carmel-market.png,assets/img/carmel-market.svg,"שוק פעיל שמתחדש סביב דוכנים, תשתיות ומעברים",conceptual-original-not-statutory
+central-station,assets/img/central-station.png,assets/img/central-station.svg,"פתיחת מתחם סגור לרחובות, ירק ושימושים חדשים",conceptual-original-not-statutory
+how-planning-works,assets/img/how-planning-works.png,assets/img/how-planning-works.svg,שכבות החלטה מן החזון ועד לעבודות בשטח,conceptual-original-not-statutory
+infrastructure-2026,assets/img/infrastructure-2026.png,assets/img/infrastructure-2026.svg,"רחוב פעיל, תשתיות תת קרקעיות והסדרי תנועה משתנים",conceptual-original-not-statutory
+public-buildings,assets/img/public-buildings.png,assets/img/public-buildings.svg,"בתי ספר, קהילה וספורט כרשת אחת בתוך השכונה",conceptual-original-not-statutory
