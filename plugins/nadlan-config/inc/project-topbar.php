@@ -70,10 +70,12 @@ if ( ! function_exists( 'nadlan_ptop_render' ) ) {
 			}
 		}
 
-		static $css_done = false;
+		/* CSS keyed to the content, not a request-static: utopia's wholesale
+		   rebuild wipes the pass-32 output, and the PHP_INT_MAX repair pass then
+		   re-adds the nav - a static flag skipped the CSS there (live bug 19.8,
+		   utopia pills rendered unstyled). Presence-check keeps it emitted once. */
 		$css = '';
-		if ( ! $css_done ) {
-			$css_done = true;
+		if ( false === strpos( $content, '.nlptop{' ) ) {
 			$css = '<style>.nlptop{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;'
 				. 'margin:0 0 14px;padding:9px 12px;background:#FBF7EC;border:1px solid #E2DCD0;border-radius:12px;'
 				. 'font:500 13px/1.5 Heebo,system-ui,sans-serif}'
