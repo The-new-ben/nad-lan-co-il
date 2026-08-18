@@ -18,6 +18,25 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
+/* get_header() on this block theme falls back to WP's theme-compat header,
+ * which prints the site name as an <h1> - a second h1 on archive templates
+ * that already print their own. Demote the compat h1 to a <p> (same markup
+ * position, no visual change). Fails open: pattern absent => output as-is. */
+if ( ! function_exists( 'nadlan_dir_header_single_h1' ) ) {
+	function nadlan_dir_header_single_h1() {
+		ob_start();
+		get_header();
+		$html  = ob_get_clean();
+		$fixed = preg_replace( '#(<div id="headerimg">\s*)<h1>(<a[^>]*>.*?</a>)</h1>#su', '$1<p class="nl-compat-brand">$2</p>', $html, 1 );
+		if ( null !== $fixed ) {
+			/* the compat header is plain unstyled text above the real block header - hide it */
+			$fixed = str_replace( '<div id="header" ', '<div id="header" style="display:none" ', $fixed );
+			$fixed = str_replace( '<div id="header">', '<div id="header" style="display:none">', $fixed );
+		}
+		echo null !== $fixed ? $fixed : $html;
+	}
+}
+
 /* ---------------------------------------------------------------------------
  * Profession taxonomy: label + colour + icon (the "colourful" the owner wanted)
  * ------------------------------------------------------------------------- */
@@ -311,7 +330,7 @@ if ( ! function_exists( 'nadlan_dir_render_page' ) ) {
 		$cards = nadlan_dir_cards_html( $wq );
 		wp_reset_postdata();
 
-		get_header();
+		nadlan_dir_header_single_h1();
 		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
 		echo nadlan_dir_css();
 		?>
@@ -725,11 +744,15 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 			// rather than 2 dark concept SVGs so the catalog grid never reads as
 			// identical empty blocks. Falls back to the bundled concept SVG if the
 			// theme is not present (defensive).
+			// SKETCH-ONLY (2026-07-31): the three photo-realistic files that used
+			// to rotate here are place-specific, so a Haifa or Be'er Sheva project
+			// was illustrated with a Tel Aviv coastline or a sea-view interior
+			// (77 of the first 144 archive cards audited). Only the neutral
+			// blueprint/sketch files remain: they never claim a place that is not
+			// the project's, and they match the house rule of sketches over
+			// AI photo-realism.
 			$theme_fallbacks = array(
-				'tel-aviv-coast-skyline.jpg',
-				'sea-view-interior.jpg',
 				'tel-aviv-skyline-blueprint.jpg',
-				'architectural-model.jpg',
 				'blueprint-desk.jpg',
 			);
 			$pick = $theme_fallbacks[ absint( $id ) % count( $theme_fallbacks ) ];
@@ -853,7 +876,7 @@ add_filter( 'pre_get_document_title', function ( $t ) {
 /* The catalog had NO meta description (SERP showed scraped card fragments). */
 add_filter( 'wpseo_metadesc', function ( $desc ) {
 	if ( ! is_post_type_archive( 'nadlan_project' ) || $desc ) { return $desc; }
-	return 'כל הפרויקטים החדשים ודירות מקבלן בישראל מהמאגר הרשמי. חיפוש לפי עיר, יזם וסטטוס, נתונים מאומתים ובחירת דירה בתלת ממד.';
+	return 'כל הפרויקטים החדשים ודירות מקבלן בישראל בקטלוג אחד. חיפוש לפי עיר, יזם וסטטוס, מידע מסודר ובחירת דירה בתלת ממד.';
 }, 25 );
 
 if ( ! function_exists( 'nadlan_dir_archive_viewport_meta' ) ) {
@@ -891,7 +914,7 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 		$cards = nadlan_dir_project_cards_html( $wq );
 		wp_reset_postdata();
 
-		get_header();
+		nadlan_dir_header_single_h1();
 		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
 		echo nadlan_dir_css();
 		?>
@@ -901,7 +924,9 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 	<header class="nldir-hero">
 		<nav class="nldir-crumbs"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">בית</a> › <span>פרויקטים</span></nav>
 		<h1>פרויקטים חדשים בישראל</h1>
-		<p class="nldir-lead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים מהמאגר הרשמי, לפי עיר, יזם וסטטוס. בעלי דירות בבניין ישן? <a href="<?php echo esc_url( home_url( '/urban-renewal/' ) ); ?>">המדריך המלא להתחדשות עירונית</a>.</p>
+		<p class="nldir-lead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים חדשים ודירות מקבלן בקטלוג, לפי עיר, יזם וסטטוס. בעלי דירות בבניין ישן? <a href="<?php echo esc_url( home_url( '/urban-renewal/' ) ); ?>">המדריך המלא להתחדשות עירונית</a>.</p>
+		<p class="nldir-lead nldir-intro">מחפשים דירה חדשה מקבלן? כאן בודקים כל פרויקט לפני הפגישה עם היזם: סטטוס בנייה, יחידות, מיקום ובחירת דירה בתלת־ממד. לפי עיר:
+			<a href="/city/תל-אביב-יפו/projects/">תל אביב</a> · <a href="/city/רמת-גן/projects/">רמת גן</a> · <a href="/city/ראשון-לציון/projects/">ראשון לציון</a> · <a href="/city/חיפה/projects/">חיפה</a> · <a href="/city/נתניה/projects/">נתניה</a> · <a href="/city/הרצליה/projects/">הרצליה</a> · <a href="/city/כפר-סבא/projects/">כפר סבא</a> · <a href="/city/בת-ים/projects/">בת ים</a> · <a href="/city/באר-שבע/projects/">באר שבע</a> · <a href="/city/אשקלון/projects/">אשקלון</a> · <a href="/city/פתח-תקוה/projects/">פתח תקווה</a> · <a href="/city/קרית-אונו/projects/">קריית אונו</a></p>
 		<form class="nldir-search" role="search">
 			<input type="search" name="q" value="<?php echo esc_attr( $state['q'] ); ?>" placeholder="חיפוש לפי שם פרויקט או יזם" autocomplete="off">
 			<input type="text" name="city" value="<?php echo esc_attr( $state['city'] ); ?>" placeholder="עיר" autocomplete="off">

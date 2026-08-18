@@ -23,19 +23,22 @@ const NADLAN_HUB_CARD_FLOOR = 5;
 
 /* ---- query helper: count + sample cards for a (city, kind) ---- */
 if ( ! function_exists( 'nadlan_hub_query' ) ) {
-	function nadlan_hub_query( $city, $kind, $limit = 24 ) {
+	function nadlan_hub_query( $city, $kind, $limit = 250 ) {
 		$pt = array( 'contractors' => 'nadlan_professional', 'projects' => 'nadlan_project', 'properties' => 'nadlan_property' )[ $kind ] ?? null;
 		if ( ! $pt ) { return null; }
 		$mq = array( array( 'key' => 'city', 'value' => $city ) );
 		if ( $kind === 'contractors' ) { $mq[] = array( 'key' => 'profession', 'value' => 'kablan' ); }
-		$count = (int) ( new WP_Query( array(
-			'post_type' => $pt, 'posts_per_page' => 1, 'fields' => 'ids',
-			'meta_query' => $mq, 'no_found_rows' => false,
-		) ) )->found_posts;
-		$items = get_posts( array(
-			'post_type' => $pt, 'posts_per_page' => $limit, 'meta_query' => $mq,
+		$all = get_posts( array(
+			'post_type' => $pt, 'posts_per_page' => -1, 'meta_query' => $mq,
 			'orderby' => 'modified', 'order' => 'DESC',
 		) );
+		/* language siblings (slug suffix -en/-fr/-ru/-ar) are hreflang alternates,
+		 * never catalog rows - one card per project, honest count. */
+		$items = array_values( array_filter( $all, function ( $p ) {
+			return ! preg_match( '/-(en|fr|ru|ar)$/', $p->post_name );
+		} ) );
+		$count = count( $items );
+		if ( $count > $limit ) { $items = array_slice( $items, 0, $limit ); }
 		return array( 'pt' => $pt, 'count' => $count, 'items' => $items );
 	}
 }
@@ -111,11 +114,11 @@ if ( ! function_exists( 'nadlan_hub_blocks_html' ) ) {
 
 /* ---- the shortcode real pages embed ---- */
 add_shortcode( 'nadlan_city_hub', function ( $atts ) {
-	$a    = shortcode_atts( array( 'city' => '', 'kind' => 'projects' ), $atts );
+	$a    = shortcode_atts( array( 'city' => '', 'kind' => 'projects', 'limit' => 250 ), $atts );
 	$city = sanitize_text_field( $a['city'] );
 	$kind = sanitize_key( $a['kind'] );
 	if ( '' === $city || ! in_array( $kind, array( 'contractors', 'projects', 'properties' ), true ) ) { return ''; }
-	$data = nadlan_hub_query( $city, $kind );
+	$data = nadlan_hub_query( $city, $kind, max( 1, min( 500, (int) $a['limit'] ) ) );
 	if ( ! $data || $data['count'] < 1 ) {
 		return '<p dir="rtl">אין כרגע רשומות פעילות בעיר זו. הקטלוג מתעדכן שוטף.</p>';
 	}
