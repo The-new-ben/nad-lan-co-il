@@ -876,7 +876,7 @@ add_filter( 'pre_get_document_title', function ( $t ) {
 /* The catalog had NO meta description (SERP showed scraped card fragments). */
 add_filter( 'wpseo_metadesc', function ( $desc ) {
 	if ( ! is_post_type_archive( 'nadlan_project' ) || $desc ) { return $desc; }
-	return 'כל הפרויקטים החדשים ודירות מקבלן בישראל בקטלוג אחד. חיפוש לפי עיר, יזם וסטטוס, מידע מסודר ובחירת דירה בתלת ממד.';
+	return 'כל הפרויקטים החדשים ודירות מקבלן בישראל בקטלוג אחד. חיפוש לפי עיר, יזם וסטטוס, ומידע מסודר על כל פרויקט לפני הפגישה עם היזם.';
 }, 25 );
 
 if ( ! function_exists( 'nadlan_dir_archive_viewport_meta' ) ) {
@@ -925,7 +925,7 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 		<nav class="nldir-crumbs"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">בית</a> › <span>פרויקטים</span></nav>
 		<h1>פרויקטים חדשים בישראל</h1>
 		<p class="nldir-lead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים חדשים ודירות מקבלן בקטלוג, לפי עיר, יזם וסטטוס. בעלי דירות בבניין ישן? <a href="<?php echo esc_url( home_url( '/urban-renewal/' ) ); ?>">המדריך המלא להתחדשות עירונית</a>.</p>
-		<p class="nldir-lead nldir-intro">מחפשים דירה חדשה מקבלן? כאן בודקים כל פרויקט לפני הפגישה עם היזם: סטטוס בנייה, יחידות, מיקום ובחירת דירה בתלת־ממד. לפי עיר:
+		<p class="nldir-lead nldir-intro">מחפשים דירה חדשה מקבלן? כאן בודקים כל פרויקט לפני הפגישה עם היזם: סטטוס בנייה, יחידות, מיקום מדויק וכל מה שחשוב לדעת לפני שמתקדמים. לפי עיר:
 			<a href="/city/תל-אביב-יפו/projects/">תל אביב</a> · <a href="/city/רמת-גן/projects/">רמת גן</a> · <a href="/city/ראשון-לציון/projects/">ראשון לציון</a> · <a href="/city/חיפה/projects/">חיפה</a> · <a href="/city/נתניה/projects/">נתניה</a> · <a href="/city/הרצליה/projects/">הרצליה</a> · <a href="/city/כפר-סבא/projects/">כפר סבא</a> · <a href="/city/בת-ים/projects/">בת ים</a> · <a href="/city/באר-שבע/projects/">באר שבע</a> · <a href="/city/אשקלון/projects/">אשקלון</a> · <a href="/city/פתח-תקוה/projects/">פתח תקווה</a> · <a href="/city/קרית-אונו/projects/">קריית אונו</a></p>
 		<form class="nldir-search" role="search">
 			<input type="search" name="q" value="<?php echo esc_attr( $state['q'] ); ?>" placeholder="חיפוש לפי שם פרויקט או יזם" autocomplete="off">
