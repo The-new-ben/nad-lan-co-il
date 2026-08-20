@@ -1,0 +1,597 @@
+[
+ {
+  "section": "א",
+  "fact": "official_design_addresses",
+  "value": "Daniel 2,4; Herbert Samuel 6-8, Tel Aviv",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "permit_anchor_address",
+  "value": "Daniel 2, Tel Aviv",
+  "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%201-24-0085.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "block_parcel",
+  "value": "Block 7229, parcel 120",
+  "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%201-24-0085.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "design_plan_parcels",
+  "value": "Parcel 120 in full plus parts of parcels 116, 91 and 121",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "permit_lot_area",
+  "value": "1,956 sqm",
+  "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%201-24-0085.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "design_plan_area",
+  "value": "7.651 dunams; not the same as the private development parcel",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "statutory_plan",
+  "value": "TA/4055 Carmelit-Hayarkon Space, plan no. 507-0147686",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%A8%D7%97%D7%91%20%D7%9B%D7%A8%D7%9E%D7%9C%D7%99%D7%AA%20%D7%94%D7%99%D7%A8%D7%A7%D7%95%D7%9F%20%D7%91%D7%A7%D7%A9%D7%94%20%D7%9C%D7%94%D7%90%D7%A8%D7%9B%D7%AA%20%D7%AA%D7%95%D7%A7%D7%A3%20%D7%9C%D7%AA%D7%9B%D7%A0%D7%99%D7%AA%20%D7%9E%D7%90%D7%95%D7%A9%D7%A8%D7%AA.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "plan_effective_date",
+  "value": "2015-08-24",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%A8%D7%97%D7%91%20%D7%9B%D7%A8%D7%9E%D7%9C%D7%99%D7%AA%20%D7%94%D7%99%D7%A8%D7%A7%D7%95%D7%9F%20%D7%91%D7%A7%D7%A9%D7%94%20%D7%9C%D7%94%D7%90%D7%A8%D7%9B%D7%AA%20%D7%AA%D7%95%D7%A7%D7%A3%20%D7%9C%D7%AA%D7%9B%D7%A0%D7%99%D7%AA%20%D7%9E%D7%90%D7%95%D7%A9%D7%A8%D7%AA.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "architectural_design_effective",
+  "value": "2021-12-08 according to the municipality's 2023 extension document",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%A8%D7%97%D7%91%20%D7%9B%D7%A8%D7%9E%D7%9C%D7%99%D7%AA%20%D7%94%D7%99%D7%A8%D7%A7%D7%95%D7%9F%20%D7%91%D7%A7%D7%A9%D7%94%20%D7%9C%D7%94%D7%90%D7%A8%D7%9B%D7%AA%20%D7%AA%D7%95%D7%A7%D7%A3%20%D7%9C%D7%AA%D7%9B%D7%A0%D7%99%D7%AA%20%D7%9E%D7%90%D7%95%D7%A9%D7%A8%D7%AA.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "residential_rights",
+  "value": "5,600 sqm: 4,000 main + 1,600 service",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "tourism_rights",
+  "value": "5,600 sqm: 4,000 main + 1,600 service",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "commercial_rights",
+  "value": "550 sqm: 500 main + 50 service",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "statutory_private_above_ground_total",
+  "value": "11,750 sqm",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%A8%D7%97%D7%91%20%D7%9B%D7%A8%D7%9E%D7%9C%D7%99%D7%AA%20%D7%94%D7%99%D7%A8%D7%A7%D7%95%D7%9F%20%D7%91%D7%A7%D7%A9%D7%94%20%D7%9C%D7%94%D7%90%D7%A8%D7%9B%D7%AA%20%D7%AA%D7%95%D7%A7%D7%A3%20%D7%9C%D7%AA%D7%9B%D7%A0%D7%99%D7%AA%20%D7%9E%D7%90%D7%95%D7%A9%D7%A8%D7%AA.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "public_area",
+  "value": "200 sqm additional public use in the 2020 design plan; potentially transferable to southern lot under agreement",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "building_file",
+  "value": "0118-002",
+  "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%201-24-0085.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "licensing_request",
+  "value": "24-0334, filed 2024-03-04",
+  "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%201-24-0085.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "full_online_application_reference",
+  "value": "23401",
+  "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%201-24-0085.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "א",
+  "fact": "full_building_permit_number",
+  "value": "unknown; full permit publicly announced in July 2025 but number not located",
+  "source_url": "https://www.ynet.co.il/economy/article/s152kowpel",
+  "confidence": "press"
+ },
+ {
+  "section": "ב",
+  "fact": "maximum_statutory_height",
+  "value": "80 m above determining entrance level",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "ב",
+  "fact": "current_developer_floor_count",
+  "value": "18 stories",
+  "source_url": "https://avivcomp.co.il/פרויקט/בשיווק-he/הרברט-סמואל-six-8-תל-אביב/",
+  "confidence": "developer"
+ },
+ {
+  "section": "ב",
+  "fact": "2025_press_floor_count",
+  "value": "19 stories",
+  "source_url": "https://www.ynet.co.il/economy/article/s152kowpel",
+  "confidence": "press"
+ },
+ {
+  "section": "ב",
+  "fact": "2024_permit_stage_geometry",
+  "value": "10 residential floors over 8 hotel podium floors over 4 basement floors",
+  "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%201-24-0085.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "ב",
+  "fact": "current_residential_unit_count",
+  "value": "50",
+  "source_url": "https://avivcomp.co.il/פרויקט/בשיווק-he/הרברט-סמואל-six-8-תל-אביב/",
+  "confidence": "developer"
+ },
+ {
+  "section": "ב",
+  "fact": "2020_residential_unit_count",
+  "value": "58",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "ב",
+  "fact": "hotel_rooms_2020",
+  "value": "140",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "ב",
+  "fact": "hotel_rooms_2026",
+  "value": "120",
+  "source_url": "https://passportnews.co.il/article/205949",
+  "confidence": "press"
+ },
+ {
+  "section": "ב",
+  "fact": "marketed_built_area",
+  "value": "approximately 18,000 sqm",
+  "source_url": "https://passportnews.co.il/article/205949",
+  "confidence": "press"
+ },
+ {
+  "section": "ב",
+  "fact": "distance_to_waterline",
+  "value": "unknown; project is officially marketed/reported as first line to sea but exact GIS meter measurement was not published",
+  "source_url": "https://six-8.avivcomp.co.il/",
+  "confidence": "developer"
+ },
+ {
+  "section": "ג",
+  "fact": "penthouse",
+  "value": "Duplex, 339 sqm internal area plus 206 sqm terrace",
+  "source_url": "https://www.ynet.co.il/economy/article/s152kowpel",
+  "confidence": "press"
+ },
+ {
+  "section": "ג",
+  "fact": "seven_room_unit",
+  "value": "Approximately 232 sqm plus 44 sqm balconies; approximately NIS 44m; floor 11",
+  "source_url": "https://www.ynet.co.il/economy/article/s152kowpel",
+  "confidence": "press"
+ },
+ {
+  "section": "ג",
+  "fact": "floor_10_transaction_unit",
+  "value": "275 sqm, NIS 58m, approximately NIS 210k-211k per sqm",
+  "source_url": "https://www.globes.co.il/news/article.aspx?did=1001526759",
+  "confidence": "press"
+ },
+ {
+  "section": "ג",
+  "fact": "floor_13_bundle",
+  "value": "Five units, 2-5 rooms, approximately NIS 42m total, approximately NIS 126k/sqm average",
+  "source_url": "https://www.globes.co.il/news/article.aspx?did=1001526759",
+  "confidence": "press"
+ },
+ {
+  "section": "ג",
+  "fact": "floor_9_bundle",
+  "value": "Three 2-room units, approximately NIS 15m total, July 2024",
+  "source_url": "https://www.globes.co.il/news/article.aspx?did=1001526759",
+  "confidence": "press"
+ },
+ {
+  "section": "ג",
+  "fact": "net_ceiling_height",
+  "value": "unknown; 2020 plan permits up to 3.60 m gross floor height for residential/hotel typical floors",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "ד",
+  "fact": "basement_count",
+  "value": "4 in the 2024 licensing decision; older 2020 text contains both 3- and 4-basement references",
+  "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%201-24-0085.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "ד",
+  "fact": "ground_floor_program",
+  "value": "Retail, separate residential and hotel lobbies, public-use lobby, service/support spaces",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "ד",
+  "fact": "vehicle_access",
+  "value": "From Daniel Street",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "ד",
+  "fact": "public_parking_2020_plan",
+  "value": "50 public parking spaces contemplated, including possible area under Daniel Street subject to municipal agreement",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "ד",
+  "fact": "rooftop_pool_location",
+  "value": "Developer states a shared resident/hotel roof area on the sixth floor centered on a swimming pool",
+  "source_url": "https://avivcomp.co.il/magazin/%D7%94%D7%A8%D7%91%D7%A8%D7%98-%D7%A1%D7%9E%D7%95%D7%90%D7%9C-six-8-%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98-%D7%9E%D7%92%D7%95%D7%A8%D7%99%D7%9D-%D7%91%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/",
+  "confidence": "developer"
+ },
+ {
+  "section": "ד",
+  "fact": "hotel_brand",
+  "value": "unknown",
+  "source_url": "https://six-8.avivcomp.co.il/",
+  "confidence": "developer"
+ },
+ {
+  "section": "ד",
+  "fact": "hotel_operator",
+  "value": "unknown; David Fattal attended the 2026 cornerstone ceremony but no operating agreement was publicly identified",
+  "source_url": "https://passportnews.co.il/article/205949",
+  "confidence": "press"
+ },
+ {
+  "section": "ה",
+  "fact": "amenities",
+  "value": "Concierge services, rooftop pool, gym and spa",
+  "source_url": "https://six-8.avivcomp.co.il/",
+  "confidence": "developer"
+ },
+ {
+  "section": "ה",
+  "fact": "rooftop_bar",
+  "value": "Published in May 2026",
+  "source_url": "https://passportnews.co.il/article/205949",
+  "confidence": "press"
+ },
+ {
+  "section": "ה",
+  "fact": "hotel_services_to_residents",
+  "value": "Boutique hotel is stated to provide services to building residents",
+  "source_url": "https://www.ynet.co.il/economy/article/s152kowpel",
+  "confidence": "press"
+ },
+ {
+  "section": "ה",
+  "fact": "concierge_24_7",
+  "value": "unknown; concierge is confirmed but 24/7 operation is not publicly specified",
+  "source_url": "https://six-8.avivcomp.co.il/",
+  "confidence": "developer"
+ },
+ {
+  "section": "ו",
+  "fact": "architect",
+  "value": "Moshe Tzur Architects & Town Planners / Moshe Tzur",
+  "source_url": "https://six-8.avivcomp.co.il/",
+  "confidence": "developer"
+ },
+ {
+  "section": "ו",
+  "fact": "hotel_public_interior_designer",
+  "value": "Patricia Urquiola",
+  "source_url": "https://six-8.avivcomp.co.il/",
+  "confidence": "developer"
+ },
+ {
+  "section": "ו",
+  "fact": "residential_interior_designer",
+  "value": "Irma Orenstein",
+  "source_url": "https://six-8.avivcomp.co.il/",
+  "confidence": "developer"
+ },
+ {
+  "section": "ו",
+  "fact": "landscape_architect_2020",
+  "value": "Tzur Wolf Ltd.",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "ו",
+  "fact": "traffic_consultant_2020",
+  "value": "Dagesh Engineering Ltd.",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "ו",
+  "fact": "green_building_consultant_2020",
+  "value": "WAWA",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "ו",
+  "fact": "executing_contractor",
+  "value": "Aviv Group",
+  "source_url": "https://avivcomp.co.il/פרויקט/בשיווק-he/הרברט-סמואל-six-8-תל-אביב/",
+  "confidence": "developer"
+ },
+ {
+  "section": "ו",
+  "fact": "structural_engineer",
+  "value": "unknown",
+  "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%201-24-0085.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "ז",
+  "fact": "land_purchase",
+  "value": "2019, approximately NIS 250m",
+  "source_url": "https://www.ynet.co.il/economy/article/s152kowpel",
+  "confidence": "press"
+ },
+ {
+  "section": "ז",
+  "fact": "full_permit_public_announcement",
+  "value": "July 2025",
+  "source_url": "https://www.ynet.co.il/economy/article/s152kowpel",
+  "confidence": "press"
+ },
+ {
+  "section": "ז",
+  "fact": "construction_start",
+  "value": "Construction reported underway by November 2025",
+  "source_url": "https://www.globes.co.il/news/article.aspx?did=1001526759",
+  "confidence": "press"
+ },
+ {
+  "section": "ז",
+  "fact": "cornerstone",
+  "value": "Reported 2026-05-18; another source reported ceremony during week of 2026-05-21",
+  "source_url": "https://passportnews.co.il/article/205949",
+  "confidence": "press"
+ },
+ {
+  "section": "ז",
+  "fact": "completion_guidance",
+  "value": "Approximately four years from July 2025, implying around 2029; not a contractual occupancy date",
+  "source_url": "https://www.ynet.co.il/economy/article/s152kowpel",
+  "confidence": "press"
+ },
+ {
+  "section": "ח",
+  "fact": "ownership",
+  "value": "Aviv 51%; Leny Group 49%",
+  "source_url": "https://www.ynet.co.il/economy/article/s152kowpel",
+  "confidence": "press"
+ },
+ {
+  "section": "ח",
+  "fact": "reported_revenue",
+  "value": "Approximately NIS 800m",
+  "source_url": "https://www.ynet.co.il/economy/article/s152kowpel",
+  "confidence": "press"
+ },
+ {
+  "section": "ח",
+  "fact": "reported_cost",
+  "value": "Approximately NIS 680m; public sources inconsistently describe this as construction cost or total investment",
+  "source_url": "https://www.ynet.co.il/economy/article/s152kowpel",
+  "confidence": "press"
+ },
+ {
+  "section": "ח",
+  "fact": "lending_bank",
+  "value": "Bank Leumi",
+  "source_url": "https://passportnews.co.il/article/205949",
+  "confidence": "press"
+ },
+ {
+  "section": "ח",
+  "fact": "presale_share_2025",
+  "value": "Approximately 50% reported marketed in July-August 2025",
+  "source_url": "https://en.globes.co.il/en/article-work-to-begin-on-two-tel-aviv-seafront-towers-1001517976",
+  "confidence": "press"
+ },
+ {
+  "section": "ח",
+  "fact": "presale_share_2026",
+  "value": "Approximately 40% reported marketed in May 2026; conflicts with 2025 figure",
+  "source_url": "https://passportnews.co.il/article/205949",
+  "confidence": "press"
+ },
+ {
+  "section": "ח",
+  "fact": "foreign_buyers_six8_2025",
+  "value": "At the July 2025 snapshot, ynet reported all sold units had been acquired by foreign Jewish residents from France, Russia and Australia",
+  "source_url": "https://www.ynet.co.il/economy/article/s152kowpel",
+  "confidence": "press"
+ },
+ {
+  "section": "ח",
+  "fact": "nis58m_transaction",
+  "value": "Transaction is inside SIX-8, not a neighboring project: floor 10, approximately 275 sqm, NIS 58m",
+  "source_url": "https://www.globes.co.il/news/article.aspx?did=1001526759",
+  "confidence": "press"
+ },
+ {
+  "section": "ט",
+  "fact": "nearest_beach_public_description",
+  "value": "Dolphinarium Beach / מול חוף הדולפינריום in project and press descriptions; exact current municipal bathing-beach nomenclature not independently resolved",
+  "source_url": "https://www.ynet.co.il/economy/article/s152kowpel",
+  "confidence": "press"
+ },
+ {
+  "section": "ט",
+  "fact": "neighborhood",
+  "value": "Kerem HaTeimanim according to municipal licensing record",
+  "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%201-24-0085.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "ט",
+  "fact": "nearby_places_developer",
+  "value": "Neve Tzedek, Kerem and Carmel Market are described as nearby; Jaffa, Rothschild Boulevard and Habima are described as about five minutes by car",
+  "source_url": "https://six-8.avivcomp.co.il/",
+  "confidence": "developer"
+ },
+ {
+  "section": "ט",
+  "fact": "exact_landmark_distances_meters",
+  "value": "unknown; must be measured from parcel 120/project corner using municipal GIS",
+  "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%201-24-0085.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "י",
+  "fact": "daniel_tower_developer",
+  "value": "Public sources reviewed identify Yossi Avrahami / H.S. Nof Mul Yam; no verified ICR linkage found",
+  "source_url": "https://project-tlv.info/buildings/hayarkon/%D7%94%D7%99%D7%A8%D7%A7%D7%95%D7%9F-7/",
+  "confidence": "aggregator"
+ },
+ {
+  "section": "י",
+  "fact": "daniel_tower_program",
+  "value": "Older developer source: 24-floor residential tower, 56 apartments, boutique hotel; rooftop pool/bar, spa/treatment, wine room and concierge",
+  "source_url": "https://yav.co.il/%D7%91%D7%A7%D7%A8%D7%95%D7%91-daniel-towers-tlv/",
+  "confidence": "developer"
+ },
+ {
+  "section": "י",
+  "fact": "assembly_tel_aviv",
+  "value": "Orc Land; 20 floors, 67 apartments, 230 hotel suites; 2025 target NIS 140k/sqm, penthouse NIS 110m, Bank Hapoalim financing",
+  "source_url": "https://en.globes.co.il/en/article-work-to-begin-on-two-tel-aviv-seafront-towers-1001517976",
+  "confidence": "press"
+ },
+ {
+  "section": "י",
+  "fact": "mandarin_oriental_nearby_prices",
+  "value": "Nearby project transactions reported above NIS 120k/sqm, with some above NIS 150k/sqm",
+  "source_url": "https://www.globes.co.il/news/article.aspx?did=1001526759",
+  "confidence": "press"
+ },
+ {
+  "section": "י",
+  "fact": "ultra_luxury_market_2025",
+  "value": "67 transactions above NIS 20m, total approximately NIS 2.03bn, approximately 5% increase versus 2024 in Calcalist's market review",
+  "source_url": "https://www.calcalist.co.il/real-estate/article/sjrqmo7lmx",
+  "confidence": "press"
+ },
+ {
+  "section": "י",
+  "fact": "tel_aviv_over_20m_2024",
+  "value": "31 transactions versus 36 in 2023",
+  "source_url": "https://www.calcalist.co.il/real-estate/article/rylqeysujl",
+  "confidence": "press"
+ },
+ {
+  "section": "י",
+  "fact": "premium_rent_closed_transactions",
+  "value": "unknown; no sufficiently reliable closed-rent dataset was located, and listing asking rents should not be presented as achieved rents",
+  "source_url": "https://www.israelsir.co.il/property_city/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/",
+  "confidence": "aggregator"
+ },
+ {
+  "section": "יא",
+  "fact": "major_data_risk_floor_count",
+  "value": "Public sources contain 18, 19, 20 and 16-floor descriptions under different conventions/dates",
+  "source_url": "https://avivcomp.co.il/פרויקט/בשיווק-he/הרברט-סמואל-six-8-תל-אביב/",
+  "confidence": "developer"
+ },
+ {
+  "section": "יא",
+  "fact": "major_data_risk_hotel_rooms",
+  "value": "Publicly verified versions include 140, 128 and 120 rooms",
+  "source_url": "https://passportnews.co.il/article/205949",
+  "confidence": "press"
+ },
+ {
+  "section": "יא",
+  "fact": "marine_environment_design",
+  "value": "Municipal design requirements call for materials durable in the marine environment; developer also highlights long-term durability due to proximity to the sea",
+  "source_url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%20%2020-0018%20%D7%9E%D7%99%D7%95%D7%9D%2030-9-2020.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "יב",
+  "fact": "required_primary_document_for_3d",
+  "value": "Final full-permit drawing set / area schedule for building file 0118-002 and online application 23401",
+  "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%201-24-0085.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "יב",
+  "fact": "unit_mix_full",
+  "value": "unknown; requires current sales inventory and sale plans",
+  "source_url": "https://six-8.avivcomp.co.il/",
+  "confidence": "developer"
+ },
+ {
+  "section": "יב",
+  "fact": "parking_count_final",
+  "value": "unknown; requires final traffic/parking appendix",
+  "source_url": "https://www.tel-aviv.gov.il/Transparency/DocLib3/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A8%D7%99%D7%A9%D7%95%D7%99%20%201-24-0085.pdf",
+  "confidence": "official"
+ },
+ {
+  "section": "יב",
+  "fact": "occupancy_contract_date",
+  "value": "unknown; only approximate four-year completion guidance from July 2025 is public",
+  "source_url": "https://www.ynet.co.il/economy/article/s152kowpel",
+  "confidence": "press"
+ },
+ {
+  "section": "יב",
+  "fact": "current_construction_stage_2026_08_20",
+  "value": "Construction is underway; exact physical stage/percentage complete is unknown from the latest public sources reviewed",
+  "source_url": "https://passportnews.co.il/article/205949",
+  "confidence": "press"
+ }
+]
