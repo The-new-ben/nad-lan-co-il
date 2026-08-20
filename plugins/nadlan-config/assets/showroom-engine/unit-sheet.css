@@ -1,0 +1,102 @@
+/* --------------------------------------------------------------------------
+ * Unit-scene bottom sheet (owner UX order 20.8.2026, portrait mobile only).
+ * Around-engine layer: overrides the v2 portrait grid AFTER unit-journey.css.
+ * The building keeps ~60dvh with true proportions and stays tappable, the
+ * scene becomes a two-detent sheet (peek / full) like Maps and Airbnb.
+ * Desktop and landscape are untouched. engine.js is untouched.
+ * ----------------------------------------------------------------------- */
+
+@media (max-width: 900px) and (orientation: portrait) {
+
+  .nl-theater.nl-theater--unit-v2.nl-theater--unit-v2-mobile.nl-usheet-on {
+    --nl-usheet-peek: 42dvh;
+    --nl-usheet-full: 86dvh;
+    position: relative;
+    grid-template-rows: minmax(0, 1fr) !important;
+    grid-template-areas: "model" !important;
+    gap: 0 !important;
+  }
+
+  /* the building gets the stage back: full width, ~58dvh, real proportions */
+  .nl-theater--unit-v2-mobile.nl-usheet-on > .nl-stagewrap {
+    grid-area: model;
+    block-size: calc(100% - var(--nl-usheet-peek)) !important;
+    height: calc(100% - var(--nl-usheet-peek)) !important;
+    min-block-size: 0 !important;
+    max-block-size: none !important;
+    aspect-ratio: auto !important;
+  }
+
+  /* the scene becomes the sheet */
+  .nl-theater--unit-v2-mobile.nl-usheet-on > .nl-unit-screen--v2 {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    block-size: var(--nl-usheet-peek);
+    background: rgba(10, 15, 12, 0.95);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-start-start-radius: 18px;
+    border-start-end-radius: 18px;
+    border-block-start: 1px solid rgba(243, 217, 140, 0.4);
+    box-shadow: 0 -12px 34px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    z-index: 6;
+    padding-block-start: 24px;
+    padding-inline: 12px;
+    padding-block-end: max(8px, env(safe-area-inset-bottom));
+    transition: block-size 0.28s ease;
+  }
+
+  .nl-theater--unit-v2-mobile.nl-usheet-on.nl-usheet-full > .nl-unit-screen--v2 {
+    block-size: min(var(--nl-usheet-full), calc(100% - 8px));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  /* grabber (injected by unit-sheet.js, survives engine re-renders) */
+  .nl-usheet-grab {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    block-size: 24px;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    border: 0;
+    cursor: grab;
+    z-index: 7;
+    touch-action: none;
+  }
+  .nl-usheet-grab i {
+    inline-size: 44px;
+    block-size: 5px;
+    border-radius: 999px;
+    background: rgba(243, 217, 140, 0.55);
+  }
+  .nl-usheet-grab:focus-visible i {
+    outline: 2px solid #f3d98c;
+    outline-offset: 3px;
+  }
+
+  /* peek = the critical facts only: compact head, no long instruction */
+  .nl-usheet-on:not(.nl-usheet-full) .nl-unit-journey__head p span {
+    display: none;
+  }
+  .nl-usheet-on:not(.nl-usheet-full) .nl-unit-journey__head {
+    min-block-size: 0;
+  }
+
+  /* the scene children flow inside the sheet instead of the retired grid */
+  .nl-usheet-on > .nl-unit-screen--v2 > * {
+    flex: 0 0 auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nl-theater--unit-v2-mobile.nl-usheet-on > .nl-unit-screen--v2 {
+      transition: none;
+    }
+  }
+}

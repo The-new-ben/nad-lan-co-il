@@ -533,6 +533,10 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 			if ( is_string( $nl_unit_css ) && '' !== $nl_unit_css ) {
 				wp_add_inline_style( 'nadlan-engine-css', $nl_unit_css );
 			}
+			/* Bottom-sheet layer (owner UX order 20.8.2026): portrait-mobile
+			 * unit scene becomes a two-detent sheet so the building keeps the
+			 * viewport. Separate around-engine assets - engine.js untouched. */
+			wp_enqueue_style( 'nadlan-engine-unit-sheet', $base . 'unit-sheet.css', array( 'nadlan-engine-css' ), NADLAN_CONFIG_VERSION );
 		} elseif ( ( 'on' === (string) get_post_meta( $post_id, 'nl_unit_scene', true ) )
 			|| ( 'on' === (string) get_option( 'nadlan_selected_unit_surface', '' ) ) ) {
 			$nl_unit_css = @file_get_contents( __DIR__ . '/../assets/showroom-engine/unit-surface.css' );
@@ -559,6 +563,9 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 		wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
 		wp_enqueue_script( 'nadlan-engine-i18n', $base . 'i18n.js', array(), NADLAN_CONFIG_VERSION, true );
 		wp_enqueue_script( 'nadlan-engine-core', $base . 'engine.js', array( 'nadlan-engine-i18n' ), NADLAN_CONFIG_VERSION, true );
+		if ( $is_unit_journey_v2 ) {
+			wp_enqueue_script( 'nadlan-engine-unit-sheet', $base . 'unit-sheet.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
+		}
 		if ( ! $is_private_lab ) {
 			// buy-flow v1: "build me an offer" overlay (configure > capture > dispatch)
 			wp_enqueue_script( 'nadlan-engine-buyflow', $base . 'buyflow.js', array( 'nadlan-engine-core' ), NADLAN_CONFIG_VERSION, true );
