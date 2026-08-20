@@ -287,6 +287,10 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 			// unit is actually marked available.
 			'hero_eyebrow'   => ( (string) get_post_meta( $id, 'project_hero_eyebrow', true ) )
 				?: (string) get_post_meta( $id, 'city', true ),
+			// boot camera (SIX-8 v2): the stage markup honors default_orbit /
+			// default_target when present; empty meta keeps engine defaults.
+			'default_orbit'  => (string) get_post_meta( $id, 'project_3d_default_orbit', true ),
+			'default_target' => (string) get_post_meta( $id, 'project_3d_default_target', true ),
 			'units_total'    => (int) get_post_meta( $id, 'num_units', true ),
 			// Beam v2: named public landmarks (sea, rail, park...) with real
 			// coordinates from meta project_env_landmarks. The engine computes
@@ -309,6 +313,18 @@ if ( ! function_exists( 'nadlan_showroom_engine_build_project' ) ) {
 				'date'     => (string) get_post_meta( $id, 'project_price_updated', true ),
 				'comps'    => array_values( (array) nadlan_showroom_engine_json_meta( $id, 'project_comps_json' ) ),
 			),
+			// Gallery (engine media block reads p.gallery as plain URLs). Meta
+			// project_gallery_json: ["url", ...] or [{"src":"url"}, ...]. Real
+			// media only - empty meta renders nothing.
+			'gallery'        => ( function () use ( $id ) {
+				$out = array();
+				foreach ( array_slice( (array) nadlan_showroom_engine_json_meta( $id, 'project_gallery_json' ), 0, 24 ) as $g ) {
+					$u = is_array( $g ) ? (string) ( $g['src'] ?? '' ) : (string) $g;
+					$u = esc_url_raw( $u );
+					if ( $u !== '' ) { $out[] = $u; }
+				}
+				return $out;
+			} )(),
 			// FAQ (visible accordion). Same meta the FAQPage JSON-LD uses (schema.php) - we
 			// only render the visible Q&A here, no duplicate structured data.
 			'faq'            => array_values( (array) nadlan_showroom_engine_json_meta( $id, 'project_faq_json' ) ),
@@ -573,11 +589,15 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 				}
 			}
 			if ( ! empty( $order ) ) {
-				// minimal area per project so block 8 (map + spokes) always renders;
-				// map.center feeds the real Mapbox mount. Empty spokes/stats collapse cleanly.
+				// area per project: CMS surroundings (project_area_json) when authored,
+				// else the minimal default so block 8 always renders; map.center feeds
+				// the real Mapbox mount. Empty spokes/stats collapse cleanly.
 				$areas = array();
+				$i18n_add = array();
+				$spokes_reg = array();
 				foreach ( $projects as $slug => $proj ) {
-					$areas[ 'area_' . $slug ] = array(
+					$custom = nadlan_showroom_area_from_meta( $proj['wp_id'], $proj, $i18n_add, $spokes_reg );
+					$areas[ 'area_' . $slug ] = $custom ?: array(
 						'label_key'    => 'area_sde_dov',
 						'blurb_key'    => 'area_sde_dov_blurb',
 						'map'          => array(
@@ -589,6 +609,14 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 						'spoke_groups' => array(),
 						'stats'        => array(),
 					);
+					// honest per-project comps attribution: the global i18n footer says
+					// Madlan/Tax-Authority, which is FALSE for press-sourced deals.
+					$csrc = (string) get_post_meta( $proj['wp_id'], 'project_comps_source_note', true );
+					if ( $csrc !== '' && $page === 'project' ) {
+						foreach ( array( 'he', 'en', 'fr', 'ru', 'ar' ) as $clg ) {
+							$i18n_add[ $clg ]['comps_source'] = sanitize_text_field( $csrc );
+						}
+					}
 				}
 				// On a single project page, the engine opens in THAT page's own language
 				// (the EN post loads in English, the HE post in Hebrew), so the article
@@ -602,10 +630,20 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 					'projects' => $projects,
 					'order'    => $order,
 					'areas'    => $areas,
-					'spokes'   => array(),
+					'spokes'   => $spokes_reg,
 				);
 				$js = 'window.NADLAN_SHOWROOM=' . wp_json_encode( $payload ) . ';';
 				wp_add_inline_script( 'nadlan-engine-core', $js, 'before' );
+				// page-scoped i18n extension (area content + comps attribution) - the
+				// engine reads keys through NADLAN_I18N, so extend it after i18n.js.
+				if ( ! empty( $i18n_add ) ) {
+					wp_add_inline_script( 'nadlan-engine-i18n',
+						'(function(){var W=window.NADLAN_I18N;if(!W||!W.langs)return;var A=' . wp_json_encode( $i18n_add ) .
+						';for(var l in A){W.langs[l]=W.langs[l]||{};for(var k in A[l]){W.langs[l][k]=A[l][k];}}})();' );
+				}
+				// an empty nearby-projects strip must collapse with its heading (DNA law)
+				wp_add_inline_style( 'nadlan-engine-css',
+					'#nl-root .nl-cards:empty{display:none}#nl-root h3:has(+ .nl-cards:empty){display:none}' );
 				return '<div id="nl-root" data-page="' . esc_attr( $page ) . '"></div>';
 			}
 		}
@@ -619,6 +657,72 @@ if ( ! function_exists( 'nadlan_showroom_engine_shortcode' ) ) {
 	}
 }
 add_shortcode( 'nadlan_showroom_engine', 'nadlan_showroom_engine_shortcode' );
+
+if ( ! function_exists( 'nadlan_showroom_area_from_meta' ) ) {
+	/* CMS surroundings (owner 20.8.2026, SIX-8 build): meta project_area_json
+	 * fills engine block 8 (world spokes + stats) with per-language RESEARCHED
+	 * content instead of bare headings. Shape:
+	 *   { "label":{"he":..}, "blurb":{"he":..}, "coast_x":16,
+	 *     "stats":[{"value":"2025","label":{"he":..,"en":..}}],
+	 *     "groups":[{"icon":"train","label":{"he":..},"items":[{"he":..,"en":..}]}] }
+	 * The engine consumes i18n KEYS only, so this synthesizes page-scoped keys
+	 * (pa<ID>_*) and pours their per-language strings into $i18n_add for the
+	 * i18n layer extension script. Missing/invalid meta returns null and the
+	 * caller keeps the minimal default area. Never invented: only meta content. */
+	function nadlan_showroom_area_from_meta( $pid, $proj, &$i18n_add, &$spokes_reg ) {
+		$raw = nadlan_showroom_engine_json_meta( $pid, 'project_area_json' );
+		if ( ! is_array( $raw ) || ( empty( $raw['stats'] ) && empty( $raw['groups'] ) ) ) { return null; }
+		$langs = array( 'he', 'en', 'fr', 'ru', 'ar' );
+		$put = function ( $key, $labels ) use ( &$i18n_add, $langs ) {
+			$labels = is_array( $labels ) ? $labels : array( 'he' => (string) $labels );
+			foreach ( $langs as $lg ) {
+				if ( ! empty( $labels[ $lg ] ) ) {
+					$i18n_add[ $lg ][ $key ] = sanitize_text_field( (string) $labels[ $lg ] );
+				}
+			}
+		};
+		$pfx = 'pa' . (int) $pid . '_';
+		$put( $pfx . 'label', isset( $raw['label'] ) ? $raw['label'] : '' );
+		$put( $pfx . 'blurb', isset( $raw['blurb'] ) ? $raw['blurb'] : '' );
+		$icons = array( 'train', 'school', 'store', 'landmark', 'pin', 'cube' );
+		$stats = array();
+		foreach ( array_slice( (array) ( $raw['stats'] ?? array() ), 0, 6 ) as $i => $st ) {
+			if ( ! is_array( $st ) || ! isset( $st['value'], $st['label'] ) ) { continue; }
+			$k = $pfx . 'st' . $i;
+			$put( $k, $st['label'] );
+			$stats[] = array( 'id' => $k, 'value' => sanitize_text_field( (string) $st['value'] ), 'label_key' => $k );
+		}
+		$groups = array();
+		foreach ( array_slice( (array) ( $raw['groups'] ?? array() ), 0, 5 ) as $gi => $g ) {
+			if ( ! is_array( $g ) || empty( $g['items'] ) ) { continue; }
+			$gk = $pfx . 'g' . $gi;
+			$put( $gk, isset( $g['label'] ) ? $g['label'] : '' );
+			$icon = in_array( (string) ( $g['icon'] ?? '' ), $icons, true ) ? (string) $g['icon'] : 'landmark';
+			$items = array();
+			foreach ( array_slice( (array) $g['items'], 0, 8 ) as $ii => $it ) {
+				$ik = $gk . 'i' . $ii;
+				$put( $ik, $it );
+				$spokes_reg[ $ik ] = array( 'icon' => $icon, 'label_key' => $ik );
+				$items[] = $ik;
+			}
+			if ( $items ) {
+				$groups[] = array( 'id' => $gk, 'icon' => $icon, 'label_key' => $gk, 'items' => $items );
+			}
+		}
+		return array(
+			'label_key'    => $pfx . 'label',
+			'blurb_key'    => $pfx . 'blurb',
+			'map'          => array(
+				'center'      => array( 'lat' => $proj['geo']['lat'], 'lng' => $proj['geo']['lng'] ),
+				'project_pin' => array( 'x' => 50, 'y' => 50 ),
+				'pins'        => array(),
+				'coast_x'     => (int) ( $raw['coast_x'] ?? 16 ),
+			),
+			'spoke_groups' => $groups,
+			'stats'        => $stats,
+		);
+	}
+}
 
 /* -------------------------------------------------------------------------
  * One-time data seed (NOT a render fallback): write the grounded Ashira model

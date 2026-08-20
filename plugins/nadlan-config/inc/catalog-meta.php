@@ -69,6 +69,21 @@ if ( ! function_exists( 'nadlan_cards_register_meta' ) ) {
 			'source_url'      => 'string',
 		) );
 
+		/* ---- PROJECT showroom data (SIX-8 build 20.8.2026): JSON blobs and
+		 * strings the engine mount consumes. Registered so data seeds flow
+		 * through plain authenticated REST instead of one-shot snippets. ---- */
+		nadlan_cards_register_meta_set( 'nadlan_project', array(
+			'project_gallery_json'       => 'string',
+			'project_area_json'          => 'string',
+			'project_comps_json'         => 'string',
+			'project_faq_json'           => 'string',
+			'project_comps_source_note'  => 'string',
+			'project_price_updated'      => 'string',
+			'project_3d_default_orbit'   => 'string',
+			'project_3d_default_target'  => 'string',
+			'project_interior_panoramas' => 'string',
+		) );
+
 		/* ---- PROFESSIONAL (contractor + service givers) fields ---- */
 		nadlan_cards_register_meta_set( 'nadlan_professional', array(
 			'profession'      => 'string',  // kablan|shamai|bedek_bait|mashkanta|architect|lawyer|inspector|other

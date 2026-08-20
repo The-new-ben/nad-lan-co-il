@@ -150,7 +150,11 @@ print(json.dumps(units, ensure_ascii=False))
 ```
 
 When real unit data exists (ToHa2 pattern), fill `rooms`, `sqm`, `dir`
-(one of `n ne e se s sw w nw` keys), real `status`, optional `balcony`,
+(FULL word keys only: `north northeast east southeast south southwest west
+northwest` as `north / north-east / east / south-east / south / south-west /
+west / north-west` - the engine KNOWN_DIRS accepts these full forms or the
+Hebrew labels, NEVER single letters; a `dir:"w"` seed left the SIX-8 beam
+dead until 20.8.2026), real `status`, optional `balcony`,
 `plan` (floorplan URL), `tour_url`. NEVER pad missing fields with guesses.
 
 ## 6. Phase D — Landmarks (`project_env_landmarks`)
