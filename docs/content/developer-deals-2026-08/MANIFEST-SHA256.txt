@@ -1,0 +1,7 @@
+74b7c974ffcd50a61bfd02f5294323827729069db366ee5fbc8e5bdc4350634e  01-israel-developer-deals-2026-hebrew.md
+986071f9678252d4ef0f4ed757ff6cae42bcf0705bb3e375903bc6ae7fee42f1  01-israel-developer-deals-2026-hebrew-wordpress.html
+6348145cb2733294182b17ba23fb4b9465a74f09715818e9843e5f2a9850c1c4  02-israel-developer-deals-2026-english.md
+900ae78c62446b20d14cc267e959f8281efb5c0d92fe8072b16b395d86c46761  02-israel-developer-deals-2026-english-wordpress.html
+e90b57184e239126ec00b2d446558e4cd3f8efd3300c83748dac354c18594039  03-mevzaei-kablanim-israel-2026-he.webp
+210ac7cb0d4c83fce3b58bf17322da9c40b100f8bd4c6859a6b7c4e1918530af  04-israel-developer-deals-2026-en.webp
+c332141d7779bf0263f030dd85ad8c43e7d29bdfcf2121cf0e2568cadfc48fd3  README-HE.txt
