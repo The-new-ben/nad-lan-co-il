@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>דמו חי: בחירת דירה במובייל - SIX-8</title>
+<style>
+  :root { --cream:#FAF7F1; --ink:#1B1A17; --gold:#9C7A3C; --hair:#E2DCD0; --terra:#C2563A; }
+  * { box-sizing: border-box; margin: 0; }
+  body { background:#14130F; color:var(--cream); font-family:Heebo,system-ui,sans-serif; min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:28px 16px 40px; }
+  h1 { font-family:"Frank Ruhl Libre",serif; font-size:clamp(1.3rem,3vw,1.9rem); font-weight:700; margin-bottom:6px; text-align:center; }
+  .sub { color:#CBBFA5; font-size:14px; margin-bottom:18px; text-align:center; max-width:560px; line-height:1.6; }
+  .steps { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:22px; }
+  .steps span { border:1px solid rgba(243,217,140,.45); background:rgba(10,15,12,.82); color:#F4DF9D; border-radius:999px; padding:8px 14px; font-size:13px; font-weight:600; }
+  .phone { position:relative; width:407px; max-width:96vw; border-radius:44px; padding:14px; background:#0d0c0a; border:1px solid #3a352c; box-shadow:0 24px 70px rgba(0,0,0,.65), inset 0 0 0 2px #23201b; }
+  .phone::before { content:none; }
+  .screen { position:relative; width:100%; aspect-ratio:375/812; border-radius:32px; overflow:hidden; background:#000; }
+  .screen iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .note { margin-top:18px; color:#8f8674; font-size:12.5px; text-align:center; max-width:460px; line-height:1.7; }
+  .note a { color:#F4DF9D; }
+</style>
+</head>
+<body>
+  <h1>דמו חי: כך מרגישה בחירת דירה בטלפון</h1>
+  <p class="sub">זה לא סרטון ולא הדמיה - זה עמוד SIX-8 האמיתי, חי מהאתר, בגודל מסך של אייפון. אפשר ללחוץ, לגרור ולנסות הכל עם העכבר.</p>
+  <div class="steps">
+    <span>1 · הקישו על ספרת קומה על הבניין</span>
+    <span>2 · גררו את ידית הזהב למעלה לפרטים</span>
+    <span>3 · החליפו קומה - הכרטיס לא נסגר</span>
+  </div>
+  <div class="phone">
+    <div class="screen">
+      <iframe src="https://nad-lan.co.il/projects/six-8-herbert-samuel-tel-aviv/?unit=floor-13&nlcb=demoframe#nl-root" title="SIX-8 mobile live demo"></iframe>
+    </div>
+  </div>
+  <p class="note">הבניין נשאר על המסך בפרופורציות מלאות, הכרטיס עולה כמו ב-Google Maps ו-Airbnb, והחלפת קומות לא סוגרת אותו. אותו דבר בדיוק קורה בטלפון אמיתי: <a href="https://nad-lan.co.il/projects/six-8-herbert-samuel-tel-aviv/?unit=floor-13">לפתוח את העמוד עצמו</a>.</p>
+  <script>
+  (function () {
+    var f = document.querySelector('iframe');
+    if (!f) { return; }
+    f.addEventListener('load', function () {
+      var tries = 0, extra = 0;
+      var t = setInterval(function () {
+        tries++;
+        try {
+          var w = f.contentWindow, d = w.document;
+          var th = d.querySelector('.nl-theater');
+          if (th) {
+            th.scrollIntoView({ block: 'end' });
+            if (d.querySelector('.nl-usheet-on')) { extra++; }
+          }
+        } catch (e) { clearInterval(t); return; }
+        if (extra >= 3 || tries > 40) { clearInterval(t); }
+      }, 500);
+    });
+  })();
+  </script>
+</body>
+</html>
