@@ -38,7 +38,12 @@ add_action( 'wp_enqueue_scripts', function () {
 .nlpc-site-header.is-nav-open-injected .nlpc-nav-toggle span:nth-child(2){opacity:0}
 .nlpc-site-header.is-nav-open-injected .nlpc-nav-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 @media(max-width:760px){
- .nlpc-nav-toggle{display:inline-flex}
+ /* V7 (owner order 22.8): the hamburger duplicated the swipeable pill row
+    1:1 — "צריך לעשות סדר". The owner loves the horizontal row, so the row is
+    now THE mobile nav (it scrolls to every item, incl. the injected 3D-tours
+    link) and the duplicate hamburger retires. The open-panel machinery below
+    stays intact in case a future theme drops the row. */
+ .nlpc-nav-toggle{display:none!important}
  /* The owner wants the menu text VISIBLE on mobile, not only behind a tap.
     platform.css already designed the closed state as a swipeable pill row
     (order:3, overflow-x:auto, hidden scrollbar); the parent override sheet
@@ -72,6 +77,15 @@ add_action( 'wp_footer', function () {
 	var toggle = header.querySelector('.nlpc-nav-toggle');
 	var nav = header.querySelector('.nlpc-primary-nav');
 	if (!toggle || !nav) { return; }
+	/* V7 (owner order 22.8): the 3D tours hub joins the sitewide nav. The theme
+	   is static chrome with no deploy pipeline, so the item rides in from here;
+	   the label follows the page language. */
+	if (!nav.querySelector('a[href*="/tours/"]')) {
+		var tl = document.createElement('a');
+		tl.href = <?php echo wp_json_encode( home_url( '/tours/' ) ); ?>;
+		tl.textContent = <?php echo wp_json_encode( function_exists( 'nadlan_i18n' ) ? nadlan_i18n( 'm_tours' ) : 'סיורים תלת־ממד' ); ?>;
+		nav.appendChild(tl);
+	}
 	function isOpen() { return header.classList.contains('is-nav-open-injected'); }
 	function setOpen(open) {
 		header.classList.toggle('is-nav-open-injected', open);

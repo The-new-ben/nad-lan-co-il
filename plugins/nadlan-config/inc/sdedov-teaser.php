@@ -12,7 +12,9 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 function nadlan_sdedov_tour_url() {
-	return apply_filters( 'nadlan_sdedov_tour_url', 'https://nad-lan.co.il/wp-content/uploads/2026/07/sde-dov-tour.html' );
+	/* V7: the pretty route streams the same file — a share-worthy URL instead
+	   of wp-content internals (the whole reason /tour/ exists). */
+	return apply_filters( 'nadlan_sdedov_tour_url', 'https://nad-lan.co.il/tour/sde-dov/' );
 }
 
 function nadlan_sdedov_tour_poster() {

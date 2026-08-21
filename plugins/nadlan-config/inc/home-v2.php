@@ -276,14 +276,12 @@ if ( ! function_exists( 'nadlan_hv2_band_browse' ) ) {
 		$profs  = function_exists( 'nadlan_dir_professions_all' ) ? nadlan_dir_professions_all() : array();
 		?>
 <nav class="nlhv2-browse" dir="<?php echo nadlan_lang_is_rtl( nadlan_current_lang() ) ? 'rtl' : 'ltr'; ?>" aria-label="<?php echo esc_attr( nadlan_i18n( 'nav_label' ) ); ?>">
-	<details><summary><?php nadlan_e( 'm_apts' ); ?></summary><div class="nlhv2-mega">
-		<a href="<?php echo esc_url( home_url( '/properties/?listing_type=sale' ) ); ?>"><b><?php nadlan_e( 'apts_sale' ); ?></b></a>
-		<a href="<?php echo esc_url( home_url( '/properties/?listing_type=rent' ) ); ?>"><b><?php nadlan_e( 'apts_rent' ); ?></b></a>
-		<?php foreach ( $cities as $c ) : ?>
-		<a href="<?php echo esc_url( home_url( '/properties/?city=' . rawurlencode( $c['name'] ) ) ); ?>"><?php nadlan_e( 'apts_in' ); ?><?php echo esc_html( $c['name'] ); ?></a>
-		<?php endforeach; ?>
-		<a href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>" class="nlhv2-mega-cta"><?php nadlan_e( 'post_free' ); ?></a>
-	</div></details>
+	<?php /* V7 (owner order 22.8): ONE horizontal mega nav, SEO-first order —
+	   the head-term hubs (projects, prices) sit first so every crawl of the
+	   homepage meets them earliest; the prices panel now links the REAL city
+	   price pages (they convert in GSC) instead of catalog facets; a 3D-tours
+	   group joins (the tours hub is the canonical share URL). Panels stay
+	   tight on purpose — nav-wide link dumps dilute PageRank. */ ?>
 	<details><summary><?php nadlan_e( 'm_projects' ); ?></summary><div class="nlhv2-mega">
 		<a href="<?php echo esc_url( home_url( '/projects/' ) ); ?>"><b><?php nadlan_e( 'all_projects' ); ?></b></a>
 		<?php foreach ( array_slice( $cities, 0, 6 ) as $c ) : if ( ! $c['projects'] ) { continue; } ?>
@@ -293,12 +291,33 @@ if ( ! function_exists( 'nadlan_hv2_band_browse' ) ) {
 		<a href="<?php echo esc_url( home_url( '/projects/?project_type=tama38' ) ); ?>"><?php nadlan_e( 'tama' ); ?></a>
 	</div></details>
 	<details><summary><?php nadlan_e( 'm_prices' ); ?></summary><div class="nlhv2-mega">
+		<a href="<?php echo esc_url( home_url( '/apartment-prices/' ) ); ?>"><b><?php nadlan_e( 'prices_index' ); ?></b></a>
 		<a href="<?php echo esc_url( home_url( '/property-value-estimator/' ) ); ?>"><b><?php nadlan_e( 'my_value' ); ?></b></a>
-		<?php foreach ( array_slice( $cities, 0, 5 ) as $c ) : ?>
-		<a href="<?php echo esc_url( home_url( '/projects/?city=' . rawurlencode( $c['name'] ) ) ); ?>"><?php nadlan_e( 'prices_in' ); ?><?php echo esc_html( $c['name'] ); ?></a>
+		<a href="<?php echo esc_url( home_url( '/tel-aviv-apartment-prices/' ) ); ?>"><?php nadlan_e( 'prices_in' ); ?>תל אביב</a>
+		<a href="<?php echo esc_url( home_url( '/jerusalem-apartment-prices/' ) ); ?>"><?php nadlan_e( 'prices_in' ); ?>ירושלים</a>
+		<a href="<?php echo esc_url( home_url( '/herzliya-apartment-prices/' ) ); ?>"><?php nadlan_e( 'prices_in' ); ?>הרצליה</a>
+		<a href="<?php echo esc_url( home_url( '/ramat-gan-apartment-prices/' ) ); ?>"><?php nadlan_e( 'prices_in' ); ?>רמת גן</a>
+		<a href="<?php echo esc_url( home_url( '/netanya-apartment-prices/' ) ); ?>"><?php nadlan_e( 'prices_in' ); ?>נתניה</a>
+	</div></details>
+	<details><summary><?php nadlan_e( 'm_apts' ); ?></summary><div class="nlhv2-mega">
+		<a href="<?php echo esc_url( home_url( '/properties/?listing_type=sale' ) ); ?>"><b><?php nadlan_e( 'apts_sale' ); ?></b></a>
+		<a href="<?php echo esc_url( home_url( '/properties/?listing_type=rent' ) ); ?>"><b><?php nadlan_e( 'apts_rent' ); ?></b></a>
+		<?php foreach ( $cities as $c ) : ?>
+		<a href="<?php echo esc_url( home_url( '/properties/?city=' . rawurlencode( $c['name'] ) ) ); ?>"><?php nadlan_e( 'apts_in' ); ?><?php echo esc_html( $c['name'] ); ?></a>
 		<?php endforeach; ?>
+		<a href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>" class="nlhv2-mega-cta"><?php nadlan_e( 'post_free' ); ?></a>
+	</div></details>
+	<details><summary><?php nadlan_e( 'm_tours' ); ?></summary><div class="nlhv2-mega">
+		<a href="<?php echo esc_url( home_url( '/tours/' ) ); ?>"><b><?php nadlan_e( 'tours_all' ); ?></b></a>
+		<a href="<?php echo esc_url( home_url( '/tour/sde-dov/' ) ); ?>"><?php nadlan_e( 'tour_sd' ); ?></a>
+		<a href="<?php echo esc_url( home_url( '/tour/somail/' ) ); ?>"><?php nadlan_e( 'tour_so' ); ?></a>
+		<a href="<?php echo esc_url( home_url( '/earth/sde-dov/' ) ); ?>"><?php nadlan_e( 'tour_esd' ); ?></a>
+		<a href="<?php echo esc_url( home_url( '/earth/somail/' ) ); ?>"><?php nadlan_e( 'tour_eso' ); ?></a>
+		<a href="<?php echo esc_url( home_url( '/tour/designer/' ) ); ?>"><?php nadlan_e( 'tour_des' ); ?></a>
+		<a href="<?php echo esc_url( home_url( '/premium/' ) ); ?>"><?php nadlan_e( 'tour_catalog' ); ?></a>
 	</div></details>
 	<details><summary><?php nadlan_e( 'm_guides' ); ?></summary><div class="nlhv2-mega">
+		<a href="<?php echo esc_url( home_url( '/guides/' ) ); ?>"><b><?php nadlan_e( 'guides_all' ); ?></b></a>
 		<a href="<?php echo esc_url( home_url( '/mortgage-calculator/' ) ); ?>"><?php nadlan_e( 'calc_mortgage' ); ?></a>
 		<a href="<?php echo esc_url( home_url( '/purchase-tax-calculator/' ) ); ?>"><?php nadlan_e( 'calc_tax' ); ?></a>
 		<a href="<?php echo esc_url( home_url( '/apartment-purchase-cost-calculator/' ) ); ?>"><?php nadlan_e( 'calc_full' ); ?></a>
@@ -315,6 +334,10 @@ if ( ! function_exists( 'nadlan_hv2_band_browse' ) ) {
 		<?php endforeach; ?>
 		<a href="<?php echo esc_url( home_url( '/advertise/' ) ); ?>" class="nlhv2-mega-cta"><?php nadlan_e( 'join_dir' ); ?></a>
 	</div></details>
+	<?php /* V7: the two theme-nav destinations without a group of their own —
+	   plain links so nothing the old row offered disappears from the homepage */ ?>
+	<a class="nlhv2-plain" href="<?php echo esc_url( home_url( '/sde-dov/' ) ); ?>"><?php nadlan_e( 'nav_areas' ); ?></a>
+	<a class="nlhv2-plain" href="<?php echo esc_url( home_url( '/global/' ) ); ?>"><?php nadlan_e( 'nav_global' ); ?></a>
 </nav>
 		<?php
 	}
@@ -972,12 +995,21 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-ticker a b{color:#F4EEDE;font-size:13px}
 .nlhv2-ticker a:hover b{color:#E6D4AE}
 .nlhv2-ticker-date{color:#8D8676;flex-shrink:0}
+/* V7 (owner order 22.8): the homepage carries ONE horizontal nav — this mega
+   nav. The static theme row duplicated it 1:1, so it steps aside here only;
+   every destination it offered lives inside the mega groups, and the
+   sitewide nav keeps serving every other page unchanged. NO apostrophes in
+   this comment — it lives inside a single-quoted PHP string (the 2026-07-12
+   outage class; the server lint gate caught this once already). */
+.home .nlpc-site-header .nlpc-primary-nav.nlpc-primary-nav{display:none!important}
 .nlhv2-browse{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:6px 0 10px;margin-bottom:8px;position:relative;z-index:40}
 .nlhv2-browse details{position:relative}
 .nlhv2-browse summary{list-style:none;cursor:pointer;font-size:13.5px;font-weight:600;padding:9px 14px;border-radius:8px;user-select:none}
 .nlhv2-browse summary::-webkit-details-marker{display:none}
 .nlhv2-browse summary::after{content:" ▾";font-size:10px;color:var(--warm)}
 .nlhv2-browse details[open] summary{background:var(--band)}
+.nlhv2-plain{font-size:13.5px;font-weight:600;padding:9px 14px;border-radius:8px;color:var(--ink);text-decoration:none}
+.nlhv2-plain:hover{background:var(--band)}
 .nlhv2-mega{position:absolute;top:100%;inset-inline-start:0;min-width:230px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 44px rgba(27,26,23,.14);padding:10px;display:grid;gap:2px;z-index:50}
 .nlhv2-mega a{display:block;font-size:13.5px;color:var(--ink);text-decoration:none;padding:8px 10px;border-radius:7px}
 .nlhv2-mega a:hover{background:var(--band)}

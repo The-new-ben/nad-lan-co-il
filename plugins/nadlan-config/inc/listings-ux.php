@@ -132,6 +132,12 @@ if ( ! function_exists( 'nadlan_listing_append' ) ) {
 		<span class="nlx-msg"></span>
 	</form>
 
+	<?php /* V7 (owner order 22.8): the 3D tours reach the sale/rent pages too */ ?>
+	<a class="nlx-tours" href="<?php echo esc_url( home_url( '/tours/' ) ); ?>">
+		<b>🏙️ רוצים להרגיש את השכונה לפני שמתקשרים?</b>
+		<span>סיורים תלת־ממדיים חיים — טיסה, הליכה ברחוב וקריינות · כל הסיורים במקום אחד ←</span>
+	</a>
+
 	<?php $sim = nadlan_listing_similar( $id ); if ( $sim ) : ?>
 	<h3 class="nlx-h">נכסים דומים</h3>
 	<div class="nlx-similar">
@@ -193,6 +199,10 @@ if ( ! function_exists( 'nadlan_listing_assets' ) ) {
 .nlx-wa{background:#25D366;color:#fff}
 .nlx-visit{display:none;grid-template-columns:1fr 1fr;gap:8px;max-width:480px;margin:8px 0 18px}
 .nlx-visit.on{display:grid}
+.nlx-tours{display:block;background:#FBF7EC;border:1px solid #E2DCD0;border-radius:12px;padding:14px 16px;margin:14px 0 18px;text-decoration:none;color:#1B1A17}
+.nlx-tours b{display:block;font-weight:700;font-size:14.5px;margin-bottom:3px}
+.nlx-tours span{display:block;font-size:13px;color:#6B6353;line-height:1.55}
+.nlx-tours:hover{border-color:#B85410;background:#FFFDF8}
 .nlx-visit input{padding:10px;border:1px solid rgba(27,26,23,.2);border-radius:4px;font:inherit}
 .nlx-visit button{grid-column:1/-1;padding:11px;background:#1B1A17;color:#FAF7F1;border:0;border-radius:4px;cursor:pointer}
 .nlx-hp{position:absolute;left:-9999px}

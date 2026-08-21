@@ -140,3 +140,61 @@ maximum pronunciation accuracy (more web research on niqqud).
 - Hidden pane tabs freeze rAF: UI reveals must use setTimeout, not
   double-rAF, or panels/captions never appear for background loads.
 - SAC now also blocks whisper/tiktoken native DLLs (voice QA path gone).
+
+---
+
+# V7 ADDENDUM — 2026-08-22 (owner orders: tours hub + distribution + SEO mega-nav)
+
+Owner: centralize the tours + connect to the menu + spread across projects
+and sale/rent pages + find the FR/RU tours and spread on language pages +
+ONE horizontal opening mega menu on the homepage, topics in logical order,
+SEO-first (projects/prices near the crawl), with web research.
+
+## Shipped live (all peek-gated, server-linted, .bakV7, verified eyes+code)
+
+1. **/tours/ hub (page 7263)** — DNA-styled cards for every live experience
+   (Sde Dov, Somail, both helicopters, designer, EcoCity), keyword lead with
+   internal links, h1=1, Yoast title+desc set. The canonical share URL.
+2. **Homepage mega-nav consolidated (home-v2.php)** — ONE horizontal opening
+   nav, SEO order: פרויקטים חדשים → מחירים ונתונים → דירות → סיורים תלת־ממד →
+   מדריכים וכלים → אנשי מקצוע → אזורי ביקוש/נדל"ן בחו"ל (plain). Prices
+   panel now links the REAL converting city price pages
+   (/tel-aviv|jerusalem|herzliya|ramat-gan|netanya-apartment-prices/) instead
+   of catalog facets. Every destination of the old theme row preserved
+   (/premium/ moved into the tours group, /guides/ bolded). Theme's duplicate
+   row hidden on the homepage only.
+3. **Sitewide menu item** — "סיורים תלת־ממד" injected into the static theme
+   nav from mobile-nav-repair.php (language-aware label, dupe-guarded).
+4. **Mobile order** — the duplicate hamburger retired; the swipeable
+   horizontal row (owner's stated preference) is THE mobile nav.
+5. **Distribution** — feature-bar membership now on BASE slug (language
+   siblings -en/-fr/-ru/-ar inherit their district tour with ?lang=en);
+   DUO-tel-aviv explicitly in the Somail family (was the missing hero);
+   pretty /tour/ URLs everywhere (teaser + bar); property singles
+   (sale/rent) got a tours strip via listings-ux.php.
+6. **i18n** — tours/nav keys added in all 5 languages.
+
+## FR/RU tours — the truth
+
+Searched the entire uploads library server-side (glob 2026/*/*.html): NO
+French or Russian tour files exist. What exists is he/en INSIDE the two
+quarter tours. Distribution therefore deep-links `?lang=en` on foreign
+pages; building real FR/RU tour UI+narration is a priced follow-up.
+
+## SEO research applied (owner-ordered search)
+
+Nav = links from every page → only the strongest hubs with keyword anchors;
+tight panels (link dumps dilute PageRank); money pages ≤3 clicks; real HTML
+<a> links (the mega uses native details/summary + plain anchors); hierarchy
+kept (nav → hubs → children). Sources in the war-room issue.
+
+## The save of the day
+
+The server-side token lint gate REJECTED my first home-v2 swap — an
+apostrophe ("theme's") inside the single-quoted PHP CSS string, the exact
+2026-07-12 outage class. Site never flinched; fixed and redeployed. The
+pipeline's lint chain has now paid for itself in production.
+
+Verified: home mega order/tours group/hide-rule/price links (code) + desktop
+and 375px screenshots (eyes); /tours/ h1=1 + cards; DUO tour chip live;
+rainbow pretty links + old uploads URL absent; health 1.72.218 ok.

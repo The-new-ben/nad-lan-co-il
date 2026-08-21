@@ -50,24 +50,31 @@ if ( ! function_exists( 'nadlan_fbar_items' ) ) {
 		$draw  = trim( (string) get_post_meta( $id, 'project_3d_drawings_json', true ) );
 		$slug  = get_post_field( 'post_name', $id );
 
+		/* V7 (owner order 22.8): membership is decided on the BASE slug so the
+		   language siblings (-en/-fr/-ru/-ar) inherit their district tour, and
+		   DUO — the Somail tour's own hero, whose slug never says "somail" —
+		   is named explicitly. Foreign-language pages deep-link the tour's
+		   built-in English UI (the tours speak he/en). */
+		$base_slug = preg_replace( '/-(en|fr|ru|ar)$/', '', $slug );
+		$is_foreign = ( $base_slug !== $slug );
+		$lang_q     = $is_foreign ? '?lang=en' : '';
+
 		$tour     = function_exists( 'nadlan_sdedov_tour_slugs' )
-			&& in_array( $slug, (array) nadlan_sdedov_tour_slugs(), true );
-		$tour_url = home_url( '/tour/sde-dov/' );
-		// The Somail district tour (generated 2026-07, shown to Africa Israel)
-		// sat orphaned in uploads until 2026-08-13. Never again: every district
-		// tour that exists gets linked from its projects' bar.
-		if ( false !== strpos( $slug, 'somail' ) ) {
+			&& in_array( $base_slug, (array) nadlan_sdedov_tour_slugs(), true );
+		$tour_url = home_url( '/tour/sde-dov/' . $lang_q );
+		$somail_family = ( false !== strpos( $base_slug, 'somail' ) || 'duo-tel-aviv' === $base_slug );
+		if ( $somail_family ) {
 			$tour     = true;
-			$tour_url = content_url( 'uploads/2026/07/somail-tour.html' );
+			$tour_url = home_url( '/tour/somail/' . $lang_q );
 		}
 
 		// Earth flyover: link the scene that covers this project's district.
 		// The /earth/ pages are quota-guarded server-side (75/day), so a public
 		// link degrades politely instead of burning the Google budget.
 		$earth_scene = '';
-		if ( false !== strpos( $slug, 'somail' ) ) {
+		if ( $somail_family ) {
 			$earth_scene = 'somail';
-		} elseif ( false !== strpos( $slug, 'sde-dov' ) || 'rainbow-tel-aviv' === $slug ) {
+		} elseif ( false !== strpos( $base_slug, 'sde-dov' ) || 'rainbow-tel-aviv' === $base_slug ) {
 			$earth_scene = 'sde-dov';
 		}
 
