@@ -307,6 +307,12 @@ html,body{margin:0;height:100%;overflow:hidden;background:#14130F;font-family:He
 #boot{position:fixed;inset:0;z-index:30;background:#14130F;color:#F4EEDE;display:flex;
  align-items:center;justify-content:center;text-align:center;font-size:14.5px;padding:24px}
 #boot small{display:block;color:#9B948A;margin-top:8px;font-size:12.5px}
+/* V6: the earth<->street bridge — one tap drops from the helicopter to the walkable tour */
+#walkFab{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom));inset-inline-start:14px;z-index:22;
+ background:#B85410;color:#fff;text-decoration:none;font:800 13.5px/1 Heebo,system-ui,sans-serif;
+ border-radius:999px;padding:12px 18px;box-shadow:0 4px 14px rgba(0,0,0,.45);white-space:nowrap}
+#walkFab:hover{filter:brightness(1.08)}
+@media(max-width:640px){#walkFab{font-size:12.5px;padding:11px 14px}}
 @media(max-width:640px){#hud{max-width:70vw;padding:10px 13px}#hud b{font-size:14px}
  #card{bottom:calc(64px + env(safe-area-inset-bottom))}}
 </style>
@@ -319,6 +325,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:#14130F;font-family:He
 </div>
 <div id="card"><button id="cardX" aria-label="סגירה">×</button><div id="cardBody"></div></div>
 <div id="tourbar"><b id="tourNum"></b><span id="tourName"></span><button id="tourSkip">לשליטה ידנית</button></div>
+<a id="walkFab" href="<?php echo esc_url( home_url( '/tour/' . $slug . '/?mode=explore' ) ); ?>">🚶 לרדת לרחוב — הסיור המלא</a>
 <div id="boot">טוען את העולם התלת ממדי…<small>הנתונים מוזרמים מגוגל, זה עשוי לקחת רגע</small></div>
 
 <script src="https://cdn.jsdelivr.net/npm/cesium@1.143.0/Build/Cesium/Cesium.js"></script>

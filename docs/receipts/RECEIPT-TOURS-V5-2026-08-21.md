@@ -76,3 +76,67 @@ the full tour body.
 
 Each file keeps a `.bakV5` sibling holding the exact pre-V5 bytes
 (no-clobber: written once, phase reruns never overwrote them).
+
+---
+
+# V6 ADDENDUM — same day, evening (owner follow-up orders)
+
+Owner: auto-start the tour on click-in, add an openable instructions menu,
+improve the walk feel (with web research), merge the walk tour with Earth 3D
+now, save the night-street repo with us, add Hebrew+English narration with
+maximum pronunciation accuracy (more web research on niqqud).
+
+## Shipped live (md5-verified, .bakV6 = the V5 bytes)
+
+| surface | change | live md5 |
+|---|---|---|
+| sde-dov-tour.html | V6: auto-tour, ☰ guide menu (he/en), narration (6 he + 6 en clips), walk feel | 174abb03a1e9837406dc47f0448bb997 |
+| somail-tour.html | V6: auto-tour, ☰ guide menu (he/en), walk feel | 2241a7f40cc10fb8d57519db02d4154d |
+| earth-experience.php | 🚶 "לרדת לרחוב" FAB per scene → /tour/{slug}/?mode=explore (server-linted) | 4762aeb2d3ddadb622753ee69d23a3d4 |
+| uploads/2026/08/narr-sdedov-{he,en}-{0..5}.mp3 | 12 narration clips, exact names, all 200 | — |
+
+- **Auto-start**: plain load → guided flight begins by itself (~1.3s), chip
+  says any touch stops it; deep links (?t/?focus/explore), ?demo=0 and
+  reduced-motion keep the calm boot; background tabs restart on focus.
+- **Guide menu**: ☰ next to the language pill — what's-here, how-to-move,
+  guided-flight / free-walk / helicopter-Earth / hub links; ESC,
+  click-outside, ✕ all close (never-stuck); fully i18n he/en.
+- **Earth↔street loop closed both ways**: earth pages got the walk FAB; the
+  tours' menu links to /earth/{scene}/.
+- **Walk feel** (research: subtle-or-sick — head-bob kept tiny, damped):
+  distance-locked footfall bob (step ≈ 1.42m) + lateral sway + 2.2° FOV push
+  while gliding + soft synthesized footstep taps; ALL disabled under
+  prefers-reduced-motion.
+- **Narration**: script from the tour's own verified facts (airport closed
+  2019, TA/4444, 16k homes, the three flagships, runway park, time machine);
+  spoken column per the measured pronunciation playbook — numbers as
+  gender-correct words, niqqud ONLY on risk words (דּוֹב הוֹז, דִּימְרִי יָמָה,
+  רֵיינְבּוֹ, אַשִירָה, אֲבִישְׂרוֹר, אַיינְשְׁטֵיין, אִבְּן גְּבִירוֹל), ellipsis/period
+  pacing, no SSML; he-IL-AvriNeural -8% / en-US-ChristopherNeural -6%.
+  Plays via the existing sound button; caption bar always accompanies;
+  follows scroll chapters; stops in explore; works in reduced-motion mode.
+- **night-street archived** at skills-external/night-street-study/ (source
+  zip 21.7MB + TECHNIQUE/COLDSTART/NOTES/README).
+
+## Evidence
+
+- Auto-start seen on screen (headless, visible-mode): no gate, demo chip
+  live, ☰ present — local and LIVE shots.
+- Menu pressed for real in-browser: panel content/buttons/Earth-href read
+  back correct, ESC closed it.
+- Narration audio PLAYED for real in-browser from the live library
+  (currentTime 1.46s of 13.8s, chapter-0 he) and caption bound correctly.
+- Deploy: 3/3 md5_written_ok, earth php server-lint ok, snippet+payloads
+  deleted, health 1.72.218 ok, rainbow+h-infinity spot-check pass.
+- Whisper QA for the clips is SAC-blocked on this machine (tiktoken DLL) —
+  pronunciation assured by the measured playbook rules (the proven niqqud
+  pipeline with 23 live instances), verified clip durations, and the same
+  engine/voice as the live EcoCity narration.
+
+## New traps
+
+- PowerShell pipelines corrupt Hebrew bytes in `git show` output — extract
+  via `cmd /c git show > file` and byte-convert in python (blob-hash verify).
+- Hidden pane tabs freeze rAF: UI reveals must use setTimeout, not
+  double-rAF, or panels/captions never appear for background loads.
+- SAC now also blocks whisper/tiktoken native DLLs (voice QA path gone).

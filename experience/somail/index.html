@@ -26,6 +26,13 @@
     Technique study: github.com/StarKnightt/night-street (MIT) — approaches
     adapted to this engine's <2s/mobile budget; no code copied, everything
     remains generated in-file.
+  V6 (2026-08-21 evening) — AUTO-TOUR + GUIDE MENU + WALK FEEL (owner orders):
+    · the tour STARTS ITSELF on a plain load (no gate click) — any touch
+      stops it instantly; deep links and reduced-motion keep the calm boot
+    · ☰ guide menu (he/en): what's here, how to move, guided flight / free
+      walk / real-helicopter Earth view (/earth/somail/) / the DUO page
+    · walk feel: distance-locked footfall bob + lateral sway + gentle FOV
+      push + soft footstep taps (all off under reduced-motion)
   V1.1 (2026-07-29) — OWNER POLISH PASS (matches Sde Dov V4):
     · NEVER-STUCK law: every card closes 4 ways (X >=48px hit, tap/click
       outside, ESC, swipe-down on the mobile sheet) in EVERY mode, and closing
@@ -522,6 +529,29 @@
   #onbDemo{flex-basis:100%;border:1px dashed rgba(216,180,106,.45);background:transparent;color:var(--gold-hi);font-size:14.5px;min-height:48px}
   #onbDemo:hover{background:rgba(216,180,106,.1)}
   #demoChip{position:fixed;bottom:18px;inset-inline-start:50%;transform:translateX(50%);z-index:60;background:rgba(12,16,28,.78);border:1px solid rgba(216,180,106,.5);color:var(--gold-hi);font:600 13px/1 Heebo,sans-serif;padding:10px 16px;border-radius:999px;pointer-events:none;backdrop-filter:blur(4px);white-space:nowrap}
+  /* V6: menu button + guide panel */
+  #menuBtn{width:42px;height:38px;border-radius:11px;background:rgba(12,16,28,.66);border:1px solid rgba(216,180,106,.5);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
+  #menuBtn svg{width:19px;height:19px;fill:none;stroke:var(--gold-hi);stroke-width:2;stroke-linecap:round}
+  #menuBtn:hover{background:rgba(24,30,48,.8)}
+  #guide{position:fixed;inset:0;z-index:64;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(8,10,18,.45);opacity:0;transition:opacity .25s}
+  #guide.show{opacity:1}
+  #guide:not(.show){pointer-events:none}
+  #guide[hidden]{display:none}
+  #guide .gCard{position:relative;background:linear-gradient(160deg,#171c30,#10131f);border:1px solid rgba(216,180,106,.5);border-radius:20px;padding:24px 26px;max-width:min(92vw,520px);max-height:min(86vh,640px);overflow:auto;color:#F2EDE0;box-shadow:0 18px 50px rgba(0,0,0,.5);transform:translateY(0);transition:transform .25s}
+  #guide:not(.show) .gCard{transform:translateY(12px)}
+  #guide .kick{font:700 10.5px/1 Heebo,sans-serif;letter-spacing:.22em;color:#9aa3b8;margin-bottom:8px}
+  #guide h2{margin:0 0 12px;font:800 21px/1.3 'Frank Ruhl Libre',Heebo,serif;color:var(--gold-hi)}
+  #guide .gSec{margin-bottom:12px}
+  #guide .gSec b{display:block;font:700 14px/1 Heebo,sans-serif;color:#E8C572;margin-bottom:7px}
+  #guide .gSec ul{margin:0;padding-inline-start:18px;display:flex;flex-direction:column;gap:5px}
+  #guide .gSec li{font:400 13.5px/1.55 Heebo,sans-serif;color:#CBD2DF}
+  #guide .gBtns{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+  #guide .gBtns button,#guide .gBtns a{flex:1 1 46%;min-height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;font:700 13.5px/1.2 Heebo,sans-serif;cursor:pointer;text-decoration:none;text-align:center;padding:10px 12px}
+  #gFly{background:linear-gradient(135deg,#E8C572,#c89a4a);border:0;color:#191405}
+  #gWalk{background:transparent;border:1px solid rgba(216,180,106,.55);color:var(--gold-hi)}
+  #gEarth,#gHub{background:rgba(255,255,255,.05);border:1px solid rgba(216,180,106,.35);color:#E9E2D2}
+  #guideX{position:absolute;top:10px;inset-inline-start:12px;width:48px;height:48px;background:none;border:0;color:#9aa3b8;font-size:24px;cursor:pointer;line-height:1}
+  body.en #guide .gCard{direction:ltr}
   .onbBtns button{flex:1;cursor:pointer;font-family:inherit;font-weight:800;font-size:16.5px;min-height:58px;
     border-radius:15px;transition:transform .2s, box-shadow .2s, background .2s;-webkit-tap-highlight-color:transparent}
   #onbFly{border:none;background:linear-gradient(115deg,var(--gold) 0%,#b98f45 100%);color:#241a08;
@@ -625,6 +655,7 @@ if(l==='en'){document.body.classList.add('en');document.documentElement.lang='en
         <button id="langHe" aria-pressed="true">עב</button>
         <button id="langEn" aria-pressed="false">EN</button>
       </div>
+      <button id="menuBtn" aria-label="מדריך הסיור" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
     <div id="yearSw" role="group" aria-label="מכונת הזמן של הרובע">
       <div class="thumb"></div>
@@ -810,7 +841,34 @@ if(l==='en'){document.body.classList.add('en');document.documentElement.lang='en
   </div>
 </div>
 
-<div id="demoChip" hidden dir="rtl">▶ הדגמה אוטומטית · כל נגיעה עוצרת ומחזירה שליטה</div>
+<div id="demoChip" hidden dir="rtl">▶ הסיור רץ אוטומטית · כל נגיעה עוצרת · 🔊 צלילים בכפתור הרמקול</div>
+
+<div id="guide" hidden>
+  <div class="gCard" role="dialog" aria-label="מדריך הסיור">
+    <button id="guideX" aria-label="סגירת המדריך">×</button>
+    <div class="kick">NAD-LAN.CO.IL</div>
+    <h2 id="gT">מדריך הסיור</h2>
+    <div class="gSec"><b id="gWhatT">מה יש כאן</b><ul>
+      <li id="gw1">טיסה מודרכת פרק אחר פרק — רצה אוטומטית, כל נגיעה עוצרת</li>
+      <li id="gw2">סיור חופשי ברחובות — הליכה בגובה עיניים, כל בניין לחיץ</li>
+      <li id="gw3">מכונת זמן: היום ↔ המתחם הבנוי · תאורת יום ↔ שקיעה</li>
+      <li id="gw4">🔊 כפתור הרמקול מדליק את צלילי הרקע</li>
+      <li id="gw5">ממגדלי DUO אפשר להמשיך לעמוד הפרויקט המלא</li>
+    </ul></div>
+    <div class="gSec"><b id="gHowT">איך זזים</b><ul>
+      <li id="gh1">גלילה = טיסה בין הפרקים</li>
+      <li id="gh2">בסיור חופשי: חיצי המסך או WASD · גרירה = מבט סביב</li>
+      <li id="gh3">לחיצה כפולה על הקרקע = ללכת לשם · המפה הקטנה מקפיצה לכל נקודה</li>
+      <li id="gh4">ESC או ✕ סוגרים כל חלון — אף פעם לא נתקעים</li>
+    </ul></div>
+    <div class="gBtns">
+      <button id="gFly">▶ הטיסה המודרכת</button>
+      <button id="gWalk">🚶 סיור חופשי</button>
+      <a id="gEarth" href="https://nad-lan.co.il/earth/somail/">🚁 מבט הליקופטר אמיתי</a>
+      <a id="gHub" href="https://nad-lan.co.il/projects/duo-tel-aviv/">📖 עמוד DUO המלא</a>
+    </div>
+  </div>
+</div>
 
 <div id="veil">
   <div class="logo">NAD-LAN.CO.IL</div>
@@ -931,11 +989,24 @@ const I18N = {
     onbLineRm: 'עברו בין התחנות עם הכפתורים · או צאו לסיור חופשי והסתובבו עם החצים',
     onbFly: 'טיסה', onbWalk: 'סיור חופשי', onbDemo: '▶ צפייה אוטומטית · 20 שניות ללא ידיים',
     onbSub2: 'אפשר להחליף מצב בכל שלב · גלילה או הקשה סוגרות את החלון',
-    demoChip: '▶ הדגמה אוטומטית · כל נגיעה עוצרת ומחזירה שליטה',
+    demoChip: '▶ הסיור רץ אוטומטית · כל נגיעה עוצרת · 🔊 צלילים בכפתור הרמקול',
     veilCapLoad: 'טוענים את הדמיית המתחם…', veilPrep: 'מכינים את המתחם…',
     fatalP: 'לא הצלחנו להפעיל את ההדמיה התלת־ממדית בדפדפן הזה, אבל DUO מחכה לכם:',
     closeCard: 'סגירת הכרטיס', zoneHint: 'לחצו על בניין למידע',
     waPrefill: 'היי, ראיתי את "{t}" בסיור סומייל ואשמח לפרטים',
+    /* V6: guide menu */
+    menuAria: 'מדריך הסיור', guideXAria: 'סגירת המדריך',
+    gT: 'מדריך הסיור', gWhatT: 'מה יש כאן', gHowT: 'איך זזים',
+    gw1: 'טיסה מודרכת פרק אחר פרק — רצה אוטומטית, כל נגיעה עוצרת',
+    gw2: 'סיור חופשי ברחובות — הליכה בגובה עיניים, כל בניין לחיץ',
+    gw3: 'מכונת זמן: היום ↔ המתחם הבנוי · תאורת יום ↔ שקיעה',
+    gw4: '🔊 כפתור הרמקול מדליק את צלילי הרקע',
+    gw5: 'ממגדלי DUO אפשר להמשיך לעמוד הפרויקט המלא',
+    gh1: 'גלילה = טיסה בין הפרקים',
+    gh2: 'בסיור חופשי: חיצי המסך או WASD · גרירה = מבט סביב',
+    gh3: 'לחיצה כפולה על הקרקע = ללכת לשם · המפה הקטנה מקפיצה לכל נקודה',
+    gh4: 'ESC או ✕ סוגרים כל חלון — אף פעם לא נתקעים',
+    gFly: '▶ הטיסה המודרכת', gWalk: '🚶 סיור חופשי', gEarth: '🚁 מבט הליקופטר אמיתי', gHub: '📖 עמוד DUO המלא',
   },
   en: {
     docTitle: 'Somail Compound — The 3D Tour | nad-lan.co.il',
@@ -996,11 +1067,24 @@ const I18N = {
     onbLineRm: 'Step between chapters with the buttons · or take the free walk and move with the arrows',
     onbFly: 'Flight', onbWalk: 'Free walk', onbDemo: '▶ Auto-play · 20 hands-free seconds',
     onbSub2: 'Switch modes anytime · scrolling or tapping closes this window',
-    demoChip: '▶ Auto demo · any touch stops it and hands control back',
+    demoChip: '▶ Auto tour running · any touch stops it · 🔊 sound via the speaker',
     veilCapLoad: 'Loading the compound…', veilPrep: 'Preparing the compound…',
     fatalP: 'We couldn’t start the 3D tour in this browser — but DUO is one tap away:',
     closeCard: 'Close card', zoneHint: 'Tap a building for info',
     waPrefill: 'Hi, I saw "{t}" on the Somail 3D tour and would like details',
+    /* V6: guide menu */
+    menuAria: 'Tour guide', guideXAria: 'Close the guide',
+    gT: 'Tour Guide', gWhatT: 'What’s here', gHowT: 'How to move',
+    gw1: 'A guided flight, chapter by chapter — runs by itself, any touch stops it',
+    gw2: 'A free street walk at eye level — every building is clickable',
+    gw3: 'Time machine: today ↔ the built compound · day ↔ dusk lighting',
+    gw4: '🔊 The speaker button turns on the ambience',
+    gw5: 'From the DUO towers you can continue to the full project page',
+    gh1: 'Scroll = fly between chapters',
+    gh2: 'Free walk: on-screen arrows or WASD · drag = look around',
+    gh3: 'Double-tap the ground = walk there · the minimap jumps anywhere',
+    gh4: 'ESC or ✕ closes any window — you can never get stuck',
+    gFly: '▶ Guided flight', gWalk: '🚶 Free walk', gEarth: '🚁 Real helicopter view', gHub: '📖 The full DUO page',
   },
 };
 const t = k => (LANG === 'en' && I18N.en[k] != null) ? I18N.en[k] : I18N.he[k];
@@ -1052,6 +1136,11 @@ const I18N_TXT = [
   ['#mmSky', 'mmSky'], ['#mmEast', 'mmEast'], ['#mmEnd', 'mmEnd'],
   ['#onb h2', 'onbH2'], ['#onbLine', 'onbLine'], ['#onbFly', 'onbFly'], ['#onbWalk', 'onbWalk'], ['#onbDemo', 'onbDemo'], ['#onb .sub2', 'onbSub2'],
   ['#demoChip', 'demoChip'], ['#veil .cap', 'veilCapLoad'], ['#fatal p', 'fatalP'],
+  /* V6 guide menu */
+  ['#gT', 'gT'], ['#gWhatT', 'gWhatT'], ['#gHowT', 'gHowT'],
+  ['#gw1', 'gw1'], ['#gw2', 'gw2'], ['#gw3', 'gw3'], ['#gw4', 'gw4'], ['#gw5', 'gw5'],
+  ['#gh1', 'gh1'], ['#gh2', 'gh2'], ['#gh3', 'gh3'], ['#gh4', 'gh4'],
+  ['#gFly', 'gFly'], ['#gWalk', 'gWalk'], ['#gEarth', 'gEarth'], ['#gHub', 'gHub'],
 ];
 const I18N_HTML = [
   ['#card-ganhair li:nth-child(1)', 'liGh1'], ['#card-ganhair li:nth-child(2)', 'liGh2'], ['#card-ganhair li:nth-child(3)', 'liGh3'],
@@ -1071,6 +1160,7 @@ const I18N_ATTR = [
   ['#padL', 'aria-label', 'padL'], ['#padF', 'aria-label', 'padF'], ['#padR', 'aria-label', 'padR'], ['#padB', 'aria-label', 'padB'],
   ['#exHow', 'aria-label', 'howAria'], ['#mm', 'aria-label', 'mmAria'], ['#waFab', 'aria-label', 'waFab'],
   ['#onb .onbCard', 'aria-label', 'onbAria'],
+  ['#menuBtn', 'aria-label', 'menuAria'], ['#guide .gCard', 'aria-label', 'gT'], ['#guideX', 'aria-label', 'guideXAria'],
 ];
 /* the six rail labels + stop arias share the stations list — filled in by boot */
 const RAIL_SHORT = { he: ['העיר', 'גן העיר', 'הציר', 'DUO', 'סומייל', 'סיום'],
@@ -3316,7 +3406,7 @@ async function boot() {
   }
   /* film-mode click: flagship towers enter explore there; any other building
      opens its card (works with touch taps too) */
-  const FILM_UI_GUARD = 'a,button,.pcard,#finale,#hud,#rail,#chapNav,#rmnav,#modePill,#mmWrap,#pad,#sunSw,#yearSw,#loadChip,#onb,#exSide';
+  const FILM_UI_GUARD = 'a,button,.pcard,#finale,#hud,#rail,#chapNav,#rmnav,#modePill,#mmWrap,#pad,#sunSw,#yearSw,#loadChip,#onb,#exSide,#guide,#menuBtn';
   addEventListener('click', ev => {
     if (MODE.m !== 'film') return;
     if (ev.target.closest(FILM_UI_GUARD)) return;
@@ -3503,7 +3593,7 @@ async function boot() {
   /* hidden tabs freeze rAF, so a demo that "ran" in the background never moved.
      When the tab becomes visible again, restart - unless a human already took over. */
   document.addEventListener('visibilitychange', function () {
-    if (!document.hidden && Q.get('demo') === '1' && !demoUserStopped && !demoRun && sEl.scrollTop < 120) {
+    if (!document.hidden && (Q.get('demo') === '1' || autoWanted) && !demoUserStopped && !demoRun && sEl.scrollTop < 120) {
       setTimeout(demoPlay, 400);
     }
   });
@@ -3513,10 +3603,60 @@ async function boot() {
     setTimeout(demoPlay, 30); /* let this click's own capture-stop pass first */
   });
 
+  /* ---- V6: guide menu (the openable instructions panel) ---- */
+  const guideEl = $('#guide'), menuBtn = $('#menuBtn');
+  function openGuide() {
+    demoStop();
+    guideEl.hidden = false;
+    setTimeout(() => guideEl.classList.add('show'), 20); /* timeout, not rAF — opens even in throttled tabs */
+    menuBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closeGuide() {
+    if (guideEl.hidden) return;
+    guideEl.classList.remove('show');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    setTimeout(() => { guideEl.hidden = true; }, 260);
+  }
+  menuBtn.addEventListener('click', ev => { ev.stopPropagation(); if (guideEl.hidden) openGuide(); else closeGuide(); });
+  $('#guideX').addEventListener('click', ev => { ev.stopPropagation(); closeGuide(); });
+  guideEl.addEventListener('pointerdown', ev => { if (!ev.target.closest('.gCard')) closeGuide(); });
+  addEventListener('keydown', ev => { if (ev.key === 'Escape') closeGuide(); });
+  $('#gFly').addEventListener('click', ev => { ev.stopPropagation(); closeGuide(); demoUserStopped = false; setTimeout(demoPlay, 80); });
+  $('#gWalk').addEventListener('click', ev => { ev.stopPropagation(); closeGuide(); if (MODE.m !== 'explore') setTimeout(() => enterExplore(), 80); });
+
+  /* ---- V6: the tour starts itself — no gate click (owner order 21.8) ---- */
+  let autoWanted = false;
+  function autoOpen() {
+    if (MODE.m === 'film' && START_T === null && !REDUCED && Q.get('demo') !== '0' && !FOCUS) {
+      autoWanted = true;
+      setTimeout(() => { if (!demoUserStopped && !demoRun) demoPlay(); }, 900);
+    } else {
+      maybeShowOnb();
+    }
+  }
+
   /* ---- ambient city-hum audio (OFF by default; generated, no assets):
      low traffic wash + soft swells — the sound of Ibn Gvirol from a balcony ---- */
   const sndBtn = $('#sndBtn');
   let AC = null, sndMaster = null, sndOn = false;
+
+  /* V6: soft footstep taps while walking (audio on only) */
+  let stepFlip = false;
+  function nlFootstep() {
+    if (!sndOn || !AC) return;
+    stepFlip = !stepFlip;
+    const t0 = AC.currentTime;
+    const o = AC.createOscillator(), g = AC.createGain(), f = AC.createBiquadFilter();
+    o.type = 'triangle'; o.frequency.setValueAtTime(stepFlip ? 88 : 74, t0);
+    o.frequency.exponentialRampToValueAtTime(46, t0 + 0.09);
+    f.type = 'lowpass'; f.frequency.value = 240;
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(0.055, t0 + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.11);
+    o.connect(f); f.connect(g); g.connect(sndMaster);
+    o.start(t0); o.stop(t0 + 0.13);
+    setTimeout(() => { try { o.disconnect(); g.disconnect(); f.disconnect(); } catch (e) {} }, 400);
+  }
   function buildAudio() {
     AC = new (window.AudioContext || window.webkitAudioContext)();
     sndMaster = AC.createGain(); sndMaster.gain.value = 0; sndMaster.connect(AC.destination);
@@ -3584,13 +3724,26 @@ async function boot() {
       const s = ex.t * ex.t * ex.t * (ex.t * (ex.t * 6 - 15) + 10);
       ex.pos.lerpVectors(ex.from, ex.to, s);
       ex.pos.y += Math.sin(Math.PI * s) * ex.arc;
-      if (ex.t >= 1) { ex.gliding = false; ex.pos.copy(ex.to); onArrive(); }
+      /* V6: walk feel — footfall bob + lateral sway, phase locked to distance
+         (a step ≈ 1.42m), eased in and out with the glide. Off under
+         reduced-motion; amplitudes kept tiny (motion-sickness safe). */
+      if (!REDUCED) {
+        const wd = ex.from.distanceTo(ex.to);
+        const ph = s * wd / 1.42 * Math.PI * 2;
+        const gait = Math.sin(Math.PI * Math.min(1, ex.t));
+        ex.pos.y += Math.sin(ph) * 0.040 * gait;
+        const sw = Math.cos(ph * 0.5) * 0.026 * gait;
+        ex.pos.x += Math.cos(ex.yaw) * sw; ex.pos.z -= Math.sin(ex.yaw) * sw;
+        const stepN = Math.floor(ph / Math.PI);
+        if (stepN !== ex._stepN) { ex._stepN = stepN; if (stepN > 0) nlFootstep(); }
+      }
+      if (ex.t >= 1) { ex.gliding = false; ex.pos.copy(ex.to); ex._stepN = -1; onArrive(); }
     } else if (!REDUCED) {
       ex.pos.y = ex.node.y + Math.sin(T * 1.05) * 0.05; /* breathing */
     }
     ex.yaw += shortAngle(ex.tYaw - ex.yaw) * Math.min(1, dt * K);
     ex.pitch += (ex.tPitch - ex.pitch) * Math.min(1, dt * K);
-    ex.fov += (ex.fovT - ex.fov) * Math.min(1, dt * 6);
+    ex.fov += ((ex.fovT + (ex.gliding && !REDUCED ? 2.2 : 0)) - ex.fov) * Math.min(1, dt * 6); /* V6: gentle FOV push while walking */
     cam.position.copy(ex.pos);
     dirFromYawPitch(ex.yaw, ex.pitch, TMPDIR);
     TMPV.copy(ex.pos).addScaledVector(TMPDIR, 60);
@@ -3804,7 +3957,7 @@ async function boot() {
   /* go — the shell is fully procedural, so this line is reached fast;
      the GLB towers keep streaming behind the chip (V3 smart loading) */
   veilBar.style.width = '100%';
-  setTimeout(() => { $('#veil').classList.add('off'); document.body.classList.add('ready'); maybeShowOnb(); }, 380);
+  setTimeout(() => { $('#veil').classList.add('off'); document.body.classList.add('ready'); autoOpen(); }, 380);
   if (document.hidden) { /* start exactly one loop (V1 started two when opened hidden) */
     const onVis = () => { if (!document.hidden) { removeEventListener('visibilitychange', onVis); frame(); } };
     addEventListener('visibilitychange', onVis);
