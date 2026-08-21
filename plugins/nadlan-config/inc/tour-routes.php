@@ -48,8 +48,32 @@ add_filter( 'query_vars', function ( $vars ) {
 	return $vars;
 } );
 
+add_filter( 'request', function ( $qv ) {
+	if ( ! empty( $qv['nadlan_tour'] ) ) {
+		/* Tour URLs stream a static file, but the tours' own deep links carry
+		   ?year=2026|2035 (the time machine) — a WP-reserved query var that
+		   turns the main query into a date archive: 301-canonical to /2026/
+		   or a hard 404 before the stream ever runs. Keep ONLY our var so the
+		   main query stays clean; the file itself still reads the full query
+		   string client-side. */
+		return array( 'nadlan_tour' => $qv['nadlan_tour'] );
+	}
+	return $qv;
+} );
+
 add_action( 'template_redirect', function () {
 	$slug = (string) get_query_var( 'nadlan_tour' );
+	if ( '' === $slug ) {
+		/* WP-reserved query vars (year=, m=, day=…) hijack the main query into
+		   a date archive and 404 the request before our query var survives the
+		   parse. The tours' own deep links carry ?year=2026|2035 (the time
+		   machine), so recover the slug from the raw path — the allowlist
+		   below still gates what is served. */
+		$path = (string) wp_parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH );
+		if ( preg_match( '#^/tour/([a-z0-9-]+)/?$#', $path, $m ) ) {
+			$slug = $m[1];
+		}
+	}
 	if ( '' === $slug ) {
 		return;
 	}
@@ -64,6 +88,8 @@ add_action( 'template_redirect', function () {
 		status_header( 404 );
 		exit;
 	}
+	status_header( 200 ); /* WP may already have stamped this request 404 (date query) — override before streaming */
+	header( 'X-NL-Tour: v5c' ); /* deploy proof: confirms this code (not stale opcache) serves the stream */
 	header( 'Content-Type: text/html; charset=utf-8' );
 	header( 'Cache-Control: public, max-age=300' );
 	readfile( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions
