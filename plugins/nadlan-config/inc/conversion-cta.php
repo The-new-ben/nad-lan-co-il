@@ -41,17 +41,38 @@ add_action( 'wp_footer', function () {
 		echo "<script>window.dataLayer=window.dataLayer||[];window.nadlanGA=window.nadlanGA||function(n,p){try{window.dataLayer.push(Object.assign({event:n},p||{}));}catch(e){}};</script>\n";
 		return;
 	}
+	/* V8 (owner order 22.8): the circle grows into a WIDE pill — WhatsApp glyph
+	   + "לפרטים נוספים" + the NadLan brand chip — localized via the i18n tables
+	   so English (and fr/ru/ar) pages speak their language. The page-context
+	   pull stays in wa-source.php, which stamps this link on click. */
+	$cta_b    = function_exists( 'nadlan_i18n' ) ? nadlan_i18n( 'cta_wa_b' ) : 'לפרטים נוספים';
+	$cta_s    = function_exists( 'nadlan_i18n' ) ? nadlan_i18n( 'cta_wa_s' ) : 'מענה מהיר בוואטסאפ';
+	$cta_aria = function_exists( 'nadlan_i18n' ) ? nadlan_i18n( 'cta_wa_aria' ) : 'וואטסאפ — לפרטים נוספים';
+	$cta_msg  = function_exists( 'nadlan_i18n' ) ? nadlan_i18n( 'cta_wa_msg' ) : 'שלום, אשמח לפרטים נוספים.';
+	$cta_rtl  = true;
+	if ( function_exists( 'nadlan_lang_is_rtl' ) && function_exists( 'nadlan_current_lang' ) ) {
+		$cta_rtl = nadlan_lang_is_rtl( nadlan_current_lang() );
+	}
 	?>
-<div id="nlcta" dir="rtl">
-	<a class="nlcta-wa" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo rawurlencode( 'שלום, ראיתי את האתר נדלן ואשמח להתייעצות.' ); ?>" target="_blank" rel="noopener" aria-label="WhatsApp">
-		<svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.85 9.85 0 0 0 12.04 2zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.25 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.22-.08-.39-.12-.55.13-.16.25-.62.81-.76.97-.14.17-.28.19-.53.06-.25-.13-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.38-1.72c-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.83-.2-.48-.4-.41-.55-.42l-.47-.01c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2.01s.86 2.33.98 2.49c.12.16 1.7 2.6 4.13 3.65.58.25 1.02.4 1.37.51.58.18 1.1.16 1.52.1.46-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
+<div id="nlcta" dir="<?php echo $cta_rtl ? 'rtl' : 'ltr'; ?>">
+	<a class="nlcta-wa" data-nl-whatsapp href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo rawurlencode( $cta_msg ); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr( $cta_aria ); ?>">
+		<span class="nlcta-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="#fff"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.85 9.85 0 0 0 12.04 2zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.25 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.22-.08-.39-.12-.55.13-.16.25-.62.81-.76.97-.14.17-.28.19-.53.06-.25-.13-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.38-1.72c-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.83-.2-.48-.4-.41-.55-.42l-.47-.01c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2.01s.86 2.33.98 2.49c.12.16 1.7 2.6 4.13 3.65.58.25 1.02.4 1.37.51.58.18 1.1.16 1.52.1.46-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29z"/></svg></span>
+		<span class="nlcta-txt"><b><?php echo esc_html( $cta_b ); ?></b><small><?php echo esc_html( $cta_s ); ?></small></span>
+		<span class="nlcta-brand" aria-hidden="true"><svg viewBox="0 0 64 64" width="30" height="30"><rect x="0" y="0" width="64" height="64" rx="13" fill="#14130F"/><rect x="13" y="37" width="10" height="14" rx="2" fill="#9C7A3C"/><rect x="27" y="27" width="10" height="24" rx="2" fill="#C8A45C"/><rect x="41" y="17" width="10" height="34" rx="2" fill="#E9D9A8"/></svg></span>
 	</a>
 </div>
 <style>
-#nlcta{position:fixed;bottom:20px;inset-inline-end:20px;z-index:99989;font-family:var(--font-sans,Heebo,system-ui,sans-serif);direction:rtl}
-.nlcta-wa{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#25D366;box-shadow:0 10px 28px rgba(37,211,102,.5);transition:transform .2s,box-shadow .2s}
-.nlcta-wa:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(37,211,102,.6)}
-@media(max-width:520px){#nlcta{bottom:14px;inset-inline-end:14px}.nlcta-wa{width:50px;height:50px}}
+#nlcta{position:fixed;bottom:20px;inset-inline-end:20px;z-index:99989;font-family:var(--font-sans,Heebo,system-ui,sans-serif)}
+.nlcta-wa{display:flex;align-items:center;gap:10px;min-height:54px;padding:8px 14px;border-radius:999px;background:#25D366;box-shadow:0 10px 28px rgba(37,211,102,.5);text-decoration:none;transition:transform .2s,box-shadow .2s,filter .2s}
+.nlcta-wa:hover{transform:translateY(-3px);filter:brightness(1.06);box-shadow:0 14px 36px rgba(37,211,102,.6)}
+.nlcta-glyph{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.18);flex:0 0 auto}
+.nlcta-txt{display:flex;flex-direction:column;line-height:1.15;color:#fff;white-space:nowrap}
+.nlcta-txt b{font:800 15px/1.2 var(--font-sans,Heebo,system-ui,sans-serif);color:#fff}
+.nlcta-txt small{font:500 11px/1.2 var(--font-sans,Heebo,system-ui,sans-serif);color:rgba(255,255,255,.85);margin-top:2px}
+.nlcta-brand{display:grid;place-items:center;flex:0 0 auto;border-radius:9px;overflow:hidden;border:1px solid rgba(250,247,241,.65);line-height:0}
+@media(max-width:520px){#nlcta{bottom:14px;inset-inline-end:14px}.nlcta-wa{min-height:50px;max-width:min(62vw,250px);padding:7px 12px;gap:8px}}
+@media(max-width:380px){.nlcta-txt small{display:none}}
+@media(prefers-reduced-motion:reduce){.nlcta-wa{transition:none}.nlcta-wa:hover{transform:none}}
 @media(max-width:760px){body.nadlan-p3d-stage-active #nlcta{display:none}}
 </style>
 <script>

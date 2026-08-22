@@ -599,11 +599,9 @@ body.single-nadlan_property .wp-block-post-title{
 #nlai,#nlcta{
 	z-index:99980!important;
 }
-#nlai .nlai-fab{
+#nlai .nlai-fab,.nlcta-wa{
 	min-width:54px!important;
 	min-height:54px!important;
-}
-#nlai .nlai-fab,.nlcta-wa{
 	border:1px solid rgba(221,214,200,.45)!important;
 	box-shadow:0 18px 42px rgba(27,26,23,.22)!important;
 }
@@ -625,12 +623,10 @@ body.single-nadlan_property .wp-block-post-title{
 		inset-inline-end:max(12px,env(safe-area-inset-right,12px))!important;
 		bottom:calc(env(safe-area-inset-bottom,0px) + 78px)!important;
 	}
-	#nlai .nlai-fab{
+	#nlai .nlai-fab,.nlcta-wa{
 		width:52px!important;
 		height:52px!important;
 	}
-	/* V8: the WhatsApp control is a WIDE pill now - cap height only */
-	.nlcta-wa{min-height:50px!important}
 	#nlai .nlai-panel{
 		position:fixed!important;
 		inset:auto 10px calc(env(safe-area-inset-bottom,0px) + 12px) 10px!important;

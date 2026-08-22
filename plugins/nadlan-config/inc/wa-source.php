@@ -30,9 +30,15 @@ add_action( 'wp_footer', function () {
 		// only messages TO a number (the business); leave share links alone
 		var toNumber=/wa\.me\/\d{6,}/.test(href)||/api\.whatsapp\.com\/send.*phone=\d{6,}/.test(href);
 		if(!toNumber)return;
-		if(href.indexOf("%D7%9E%D7%A7%D7%95%D7%A8%3A")>-1||href.indexOf("מקור:")>-1)return; // already stamped
+		/* V8: the source label follows the page language, and idempotence
+		   recognises every variant (raw + URL-encoded) */
+		var labels=["מקור","Source","Источник","المصدر"];
+		var stamped=labels.some(function(s){return href.indexOf(s+":")>-1||href.indexOf(encodeURIComponent(s+":"))>-1});
+		if(stamped)return;
+		var L=(document.documentElement.lang||"he").slice(0,2);
+		var SRC=({he:"מקור",en:"Source",fr:"Source",ru:"Источник",ar:"المصدر"})[L]||"מקור";
 		var title=(document.title||"").split("|")[0].trim().slice(0,70);
-		var stamp="\n\nמקור: "+title+"\n"+location.origin+location.pathname+location.search;
+		var stamp="\n\n"+SRC+": "+title+"\n"+location.origin+location.pathname+location.search;
 		try{
 			var u=new URL(href,location.origin);
 			var t=u.searchParams.get("text")||"";

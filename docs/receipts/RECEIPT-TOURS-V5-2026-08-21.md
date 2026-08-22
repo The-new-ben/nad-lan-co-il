@@ -198,3 +198,59 @@ pipeline's lint chain has now paid for itself in production.
 Verified: home mega order/tours group/hide-rule/price links (code) + desktop
 and 375px screenshots (eyes); /tours/ h1=1 + cards; DUO tour chip live;
 rainbow pretty links + old uploads URL absent; health 1.72.218 ok.
+
+---
+
+# V8 ADDENDUM — 2026-08-22 (owner order: wide WhatsApp button, plan approved)
+
+Owner: a WIDE WhatsApp button for mobile+desktop, design-DNA, must not hide
+important elements, WhatsApp logo + SITE logo on it, text "לפרטים נוספים"
+(his pick), also English (his follow-up), click pulls page context (improve
+the existing), REPLACES the green circle sitewide (his pick).
+
+## Shipped live (.bakV8, peek-gated, server-linted)
+
+- **inc/conversion-cta.php** — the 56px circle became a 54px-tall PILL:
+  WhatsApp glyph in a translucent round chip (inline SVG kept), label
+  `cta_wa_b` + micro-line `cta_wa_s`, and the NadLan brand chip — the
+  favicon's dark-square-three-gold-bars drawn as inline SVG (no image file
+  exists; the header logo is pure CSS). `dir` follows the page language so
+  the pill mirrors correctly on LTR pages. Carries `data-nl-whatsapp`,
+  which FIXES the flagship-v3 adopt-existing contract (its selector matched
+  nothing before). Opener message localized (`cta_wa_msg`).
+- **inc/i18n.php** — 4 keys × 5 languages (he/en/fr/ru/ar).
+- **inc/wa-source.php** — the click-time context stamp now writes a
+  localized label (מקור/Source/Источник/المصدر) chosen by
+  `document.documentElement.lang`; idempotence recognises all variants,
+  raw + URL-encoded.
+- **inc/premium-ui.php** — the mobile `width:52px!important` square rule
+  (which would have CRUSHED the pill) split to the AI fab only; pill gets
+  `min-height:50px`. NOTE: live premium-ui had DRIFTED from repo HEAD
+  (never-mirrored past swap) — the peek gate skipped it, the live bytes
+  were pulled via a b64 route, patched by line-surgery with content
+  assertions, and redeployed against the LIVE base md5. The repo copy now
+  equals the live+patch state; the pre-patch live bytes are archived at
+  docs/wp-state/premium-ui.live-1.72.218.php.
+
+## Evidence
+
+- Eyes: desktop crop — pill bottom-left (RTL) over the hero, all three
+  elements; mobile 375 crop on /tours/; EN crop — pill bottom-RIGHT (LTR
+  mirror), "For more details" / "Fast reply on WhatsApp".
+- Real clicks through the interceptor (browser, both languages):
+  he → `שלום, אשמח לפרטים נוספים.\n\nמקור: {title}\n{url}`
+  en → `Hi, I’d like more details.\n\nSource: {title}\n{url}`
+- Old circle CSS absent from the rendered page; engine project pages keep
+  their designed behavior (floating CTA hidden there — the showroom's own
+  WhatsApp pill serves, and it gets the same stamp).
+- Health 1.72.218 ok; rainbow + h-infinity spot-check pass.
+
+## New traps
+
+- premium-ui.php live ≠ repo HEAD (undocumented drift) — ALWAYS peek; for
+  drifted files: pull live b64 → patch on live bytes → swap vs live md5.
+- Exact-string patches over pulled live files can miss on invisible chars —
+  line-surgery with whitespace-stripped content assertions is the robust
+  form.
+- PowerShell here-string "tabs" are not the file's tabs — never build
+  byte-exact anchors in PS; use python against the actual bytes.
