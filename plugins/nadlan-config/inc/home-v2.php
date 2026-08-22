@@ -972,6 +972,18 @@ add_filter( 'the_content', function ( $content ) {
 
 /* ============================ assets ============================ */
 
+/* V9: stamp every page that renders the home-v2 mega nav (the Hebrew front
+   page AND the /en /ru /fr /ar homepages) so the duplicate theme row can be
+   hidden by class — same detection the asset gate below already uses. */
+add_filter( 'body_class', function ( $classes ) {
+	$oid          = get_queried_object_id();
+	$is_home_page = is_front_page() && get_option( 'show_on_front' ) === 'page';
+	if ( $is_home_page || ( is_singular() && has_shortcode( (string) get_post_field( 'post_content', $oid ), 'nadlan_home_v2' ) ) ) {
+		$classes[] = 'nlhv2-on';
+	}
+	return $classes;
+} );
+
 if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 	function nadlan_hv2_assets() {
 		$oid = get_queried_object_id();
@@ -1000,8 +1012,13 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
    every destination it offered lives inside the mega groups, and the
    sitewide nav keeps serving every other page unchanged. NO apostrophes in
    this comment — it lives inside a single-quoted PHP string (the 2026-07-12
-   outage class; the server lint gate caught this once already). */
-.home .nlpc-site-header .nlpc-primary-nav.nlpc-primary-nav{display:none!important}
+   outage class; the server lint gate caught this once already).
+   V9: the LANGUAGE homepages (/en/ /ru/ /fr/ /ar/) render this same mega nav
+   as regular pages without the .home body class — the owner caught the
+   double menu there. The body_class filter below stamps .nlhv2-on on every
+   page that renders the mega, and the hide rule follows that class. */
+.home .nlpc-site-header .nlpc-primary-nav.nlpc-primary-nav,
+.nlhv2-on .nlpc-site-header .nlpc-primary-nav.nlpc-primary-nav{display:none!important}
 .nlhv2-browse{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:6px 0 10px;margin-bottom:8px;position:relative;z-index:40}
 .nlhv2-browse details{position:relative}
 .nlhv2-browse summary{list-style:none;cursor:pointer;font-size:13.5px;font-weight:600;padding:9px 14px;border-radius:8px;user-select:none}

@@ -73,6 +73,11 @@ add_action( 'wp_footer', function () {
 @media(max-width:520px){#nlcta{bottom:14px;inset-inline-end:14px}.nlcta-wa{min-height:50px;max-width:min(62vw,250px);padding:7px 12px;gap:8px}}
 @media(max-width:380px){.nlcta-txt small{display:none}}
 @media(prefers-reduced-motion:reduce){.nlcta-wa{transition:none}.nlcta-wa:hover{transform:none}}
+/* V9 (owner order 22.8): the pill shows on engine project pages too — it
+   rides ABOVE the showroom sticky cluster instead of hiding behind it
+   (overrides showroom.css body.nl-has-engine #nlcta{display:none}) */
+body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
+@media(max-width:760px){body.nl-has-engine #nlcta{bottom:calc(env(safe-area-inset-bottom,0px) + 148px)!important}}
 @media(max-width:760px){body.nadlan-p3d-stage-active #nlcta{display:none}}
 </style>
 <script>
