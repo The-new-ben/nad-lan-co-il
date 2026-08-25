@@ -112,7 +112,22 @@ Live-sitemap scan, 4,372 URLs [code]:
 - Standing law recorded as CLAUDE.md iron law 9: one word = one owner URL; no
   double words in a URL; audit before minting any slug; no retroactive renames.
 
-## G. Per-page verdicts (owner asked "specify — I want to delete"; data = 90-day inventory)
+## G. Per-page verdicts — **REVISED after owner review + eyes (late 25.8): NO deletions for now**
+
+The owner caught two real errors in the first draft below, verified with eyes:
+1. **Demo pages are the SEED of the listings sections** — 7 of the 8 catalog
+   properties are demo; deleting them empties /properties/. They stay until real
+   listings replace them (0 impressions = zero SEO harm meanwhile).
+2. **/sitemap/ + /site-map/ are NOT junk** — eyes show a DESIGNED human hub
+   ("כל מה שיש בנדלן במקום אחד", stat tiles + section cards; the footer links it).
+   The inventory's word_count=33 misread a dynamic page. Real issue is only that
+   the SAME hub answers on TWO URLs → dedup to one canonical URL, no deletion.
+Also eyes-verified: the /investment/ city pages are QUALITY long-form articles
+(market data, advice boxes, internal links) with no parameters — their zero
+impressions is a discovery problem, not a content problem. Deleting quality
+pages was premature; the work is internal links + the root↔apartments-for-investment
+merge (content op, owner GO). Guides stay unless they actively harm. The
+original draft verdicts below are kept for the record only.
 
 **DELETE-LIST (45 pages, awaiting the owner's GO):**
 - 22 `demo` pages (15 fabricated professionals + 7 fabricated property listings,
