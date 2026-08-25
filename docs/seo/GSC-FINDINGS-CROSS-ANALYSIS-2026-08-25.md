@@ -162,6 +162,37 @@ original draft verdicts below are kept for the record only.
   protected) — kept; its near-empty section root is a phase-2 fold (child URL
   depends on the parent path — cannot trash the parent alone).
 
+## I. Round 2 EXECUTED (owner GO, 25.8 night) — evidence classes inline
+
+1. **robots.txt pms-block LIVE** [code+eyes]: the site serves a PHYSICAL
+   robots.txt (nginx static, Last-Modified 2.6.2026) — the WP `robots_txt`
+   filter never fires (the one added to smart-404.php in 1.72.220 stays as
+   dormant fallback). The physical file was patched via snippet (ABSPATH jail,
+   `.bakC2` sibling, md5 in/out): `Disallow: /*?pms_action=` +
+   `Disallow: /*?pms_user=` inside the UA group; HTTP-verified.
+2. **Duplicate forensic — the evidence gate did its job** [code]:
+   trashed (backup dupes-export-2026-08-25.json, both verified 404):
+   `professionals/אגבאריה-מוחמד-2` (id 2769; identical name to the stronger -3)
+   and `projects/רוטשילד` (id 1070; same city בת ים as the stronger
+   מגדל-הים-רוטשילד-2). **NOT touched — different real projects sharing street
+   names**: שפירא (קרית ים) vs שפירא-3 (גדרה); הגפן (ירושלים) vs מתחם-הגפן-1-4
+   (כפר סבא); העצמאות (אור יהודה), אילת (רמת השרון), צה"ל (קרית ים) all have
+   distinct bases. Lesson: the -N suffixes are mostly WP slug collisions of
+   street-named projects across cities, NOT import corruption.
+3. **GSC deep sweep** [code+eyes]: coverage (UI, data to 21.8): 3.11K indexed /
+   2.92K not — 914 404s, 557 noindex, 218 canonical-alternate, 55 redirect,
+   **1,115 Discovered-not-indexed**, 53 Crawled-not-indexed. URL Inspection API
+   over 26 money pages: **25 PASS** (all fleet+tools+investment pages indexed;
+   several investment pages re-crawled 25.8 after the sitemap resubmit). The ONE
+   failure: `/construction-engineering-guide/` (the owner's 10.9K-word article,
+   live 22.8) — never crawled. It IS in page-sitemap.xml (verified) →
+   **Request Indexing pressed via the owner's Chrome; "Indexing requested —
+   priority crawl queue" confirmed on screen.**
+4. **Standing WATCH list** (owner: "check all the time"): investment cluster +
+   TLV pages consolidation decision (owner undecided — re-judge 1.10);
+   the 1,115 discovered-not-indexed pool; removals still "Processing";
+   engineering-article indexing; sitemap/site-map dedup pending owner ok.
+
 ## H. GSC access made GLOBAL (owner order: every session, every project)
 - Global user-level `C:\Users\777\.claude\CLAUDE.md` created — loads in EVERY
   project on this machine: full-access declaration law, secrets paths, tool
