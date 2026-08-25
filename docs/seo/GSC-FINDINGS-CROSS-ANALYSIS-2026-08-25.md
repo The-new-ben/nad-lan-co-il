@@ -111,3 +111,45 @@ Live-sitemap scan, 4,372 URLs [code]:
   22 sitemap URLs — hygiene review item.
 - Standing law recorded as CLAUDE.md iron law 9: one word = one owner URL; no
   double words in a URL; audit before minting any slug; no retroactive renames.
+
+## G. Per-page verdicts (owner asked "specify — I want to delete"; data = 90-day inventory)
+
+**DELETE-LIST (45 pages, awaiting the owner's GO):**
+- 22 `demo` pages (15 fabricated professionals + 7 fabricated property listings,
+  ~20 words each, 0 impressions — honesty-law violations sitting in the sitemap).
+- 16 `/investment/{city}-investment-apartment/` pages with **0 impressions AND
+  0 clicks** (ashdod, bat-yam, beer-sheva, haifa, hod-hasharon, holon, jerusalem,
+  kfar-saba, kiryat-ono, modiin, petah-tikva, raanana, rehovot, rishon-lezion,
+  where-to-buy, investment-via-company) — 3-5K words each, Google ignored them.
+- 5 zero/zero guides: mortgage-calculator/bridge-loan-apartment,
+  real-estate-lawyer/when-real-estate-lawyer-required,
+  real-estate-tax-advisor/capital-gains-tax-guide + purchase-tax-investor.
+- `/sitemap/` (33 words, 93 impr) + `/site-map/` (120 impr, pos 78) — junk HTML
+  sitemaps outranking real pages on stray queries.
+- PLUS one merge-delete: `/investment/apartments-for-investment/` (522 impr,
+  pos 43) folds INTO `/investment/` root (2,644 impr) → one owner for
+  "דירות להשקעה", then the child is trashed.
+
+**KEEP (owner invited push-back; the evidence):**
+- `/commercial-real-estate/` shelf: **37 clicks** (management-fees 11,
+  brokerage-fee 6, port/office/shop price pages 1-4 each at pos 5-8) — the only
+  guide shelf that already EARNS; deleting it burns real traffic.
+- 6 investment-city pages WITH impressions at pos 4.7-8 (ashkelon 88, netanya 18,
+  ramat-gan 15, givatayim 13, ramat-hasharon 9, herzliya 7) — ranking well on
+  tiny-volume niches; re-judge at the 1.10 checkpoint, cut then if still 0 clicks.
+- `/new-projects/new-projects-tel-aviv/` (178 impr, **pos 10.8**, P1_PROTECT) —
+  the best-positioned TLV city asset left; hold for the phase-2 intent map
+  (candidate to become the future TLV page). north-tel-aviv-new-projects
+  (262 impr, pos 53) decided in the same review.
+- `/short-term-rentals-abroad/` (8 pages, pos 4-7) — the international shelf
+  backing the developer-recruitment pitch; unique tokens, no collision.
+- `/investment-apartment/tel-aviv-investment-neighborhoods/` (159 impr, pos 10,
+  protected) — kept; its near-empty section root is a phase-2 fold (child URL
+  depends on the parent path — cannot trash the parent alone).
+
+## H. GSC access made GLOBAL (owner order: every session, every project)
+- Global user-level `C:\Users\777\.claude\CLAUDE.md` created — loads in EVERY
+  project on this machine: full-access declaration law, secrets paths, tool
+  usage, the full property list the token covers (10 properties, siteOwner).
+- Tools copied to the repo-independent home:
+  `C:\Users\777\Documents\GSC-Data\tools\{gsc_api.py, url_word_audit.py}`.
