@@ -146,6 +146,8 @@
 
 ## Shipped log (history — do not delete)
 
+- 🟢 2026-08-25 — Aurelia master project-page recipe packaged for repository review under `handoff/codex/2026-08-25-aurelia-master-recipe/`: isolated buyer lab, WordPress preview plugin, non-blocking checklist lights, SEO/intent map, BOM, code evidence, public-source fingerprints, responsive proof, operations manual and downloadable ZIPs. Repository delivery only; nothing was installed or published live.
+
 - 🟢 2026-06-23 - adopted Codex and WordPress skill pack added after external research: 12 new small skills, research report, master skill links, MAP, README, and SKILLS-TREE integration.
 - 🟢 2026-06-23 — master autonomous execution skill added: no CSS/element stacking, screenshot-first proof, release gates, Lovable sync, public-language hygiene, and cross-site replication process.
 - 🟢 1.33.0 — projects premium directory + real reviews engine (moderation + schema.org).

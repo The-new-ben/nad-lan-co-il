@@ -1,0 +1,98 @@
+[
+  {
+    "id": "beach",
+    "category": "leisure",
+    "label": "חוף הים",
+    "lat": 32.1057,
+    "lng": 34.7727,
+    "walkMin": 3
+  },
+  {
+    "id": "dune-park",
+    "category": "parks",
+    "label": "פארק הדיונות",
+    "lat": 32.1071,
+    "lng": 34.7752,
+    "walkMin": 2
+  },
+  {
+    "id": "promenade",
+    "category": "mobility",
+    "label": "טיילת ושביל אופניים",
+    "lat": 32.1048,
+    "lng": 34.7742,
+    "walkMin": 2
+  },
+  {
+    "id": "light-rail",
+    "category": "transit",
+    "label": "תחנת רכבת קלה",
+    "lat": 32.1064,
+    "lng": 34.7821,
+    "walkMin": 8
+  },
+  {
+    "id": "school",
+    "category": "education",
+    "label": "בית ספר קהילתי",
+    "lat": 32.1082,
+    "lng": 34.7809,
+    "walkMin": 7
+  },
+  {
+    "id": "market",
+    "category": "shopping",
+    "label": "שוק האוכל",
+    "lat": 32.1039,
+    "lng": 34.7802,
+    "walkMin": 6
+  },
+  {
+    "id": "clinic",
+    "category": "health",
+    "label": "מרפאת משפחה",
+    "lat": 32.109,
+    "lng": 34.7832,
+    "walkMin": 10
+  },
+  {
+    "id": "culture",
+    "category": "culture",
+    "label": "ביתן תרבות",
+    "lat": 32.1029,
+    "lng": 34.7794,
+    "walkMin": 7
+  },
+  {
+    "id": "marina",
+    "category": "leisure",
+    "label": "מרינה קהילתית",
+    "lat": 32.1008,
+    "lng": 34.7719,
+    "walkMin": 14
+  },
+  {
+    "id": "groceries",
+    "category": "shopping",
+    "label": "סופרמרקט",
+    "lat": 32.1069,
+    "lng": 34.7798,
+    "walkMin": 5
+  },
+  {
+    "id": "restaurant",
+    "category": "food",
+    "label": "מסעדות ובתי קפה",
+    "lat": 32.1041,
+    "lng": 34.7777,
+    "walkMin": 4
+  },
+  {
+    "id": "yarkon",
+    "category": "parks",
+    "label": "פארק הירקון",
+    "lat": 32.0952,
+    "lng": 34.784,
+    "bikeMin": 7
+  }
+]

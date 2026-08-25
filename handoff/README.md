@@ -12,6 +12,7 @@ Agent folders:
 
 - `handoff/lovable/` - Lovable research, design, SEO, screenshots, exports, and war-room material.
 - `handoff/codex/` - Codex execution notes and implementation handoffs.
+- `handoff/codex/2026-08-25-aurelia-master-recipe/` - complete Aurelia project-page recipe, demo lab, WordPress preview plugin, BOM, checklist, source fingerprints, evidence and downloadable delivery ZIPs.
 - `handoff/claude/` - Claude research or review handoffs.
 - `handoff/antigravity/` - Antigravity (Gemini) holistic platform directives. Start with
   `2026-07-01-mega-master-handoff/MEGA_MASTER_HANDOFF.md` — brand/vibe, buyer journey,

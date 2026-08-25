@@ -1,0 +1,44 @@
+[
+  {
+    "id": "plan-2br",
+    "label": "תוכנית 2 חדרים",
+    "type": "floor_plan",
+    "asset": "aurelia-plan-2br-v1.svg",
+    "source": "הדמיה להמחשה"
+  },
+  {
+    "id": "plan-3br",
+    "label": "תוכנית 3 חדרים",
+    "type": "floor_plan",
+    "asset": "aurelia-plan-3br-v1.svg",
+    "source": "הדמיה להמחשה"
+  },
+  {
+    "id": "plan-4br",
+    "label": "תוכנית 4 חדרים",
+    "type": "floor_plan",
+    "asset": "aurelia-plan-4br-v1.svg",
+    "source": "הדמיה להמחשה"
+  },
+  {
+    "id": "plan-5br",
+    "label": "תוכנית 5 חדרים",
+    "type": "floor_plan",
+    "asset": "aurelia-plan-5br-v1.svg",
+    "source": "הדמיה להמחשה"
+  },
+  {
+    "id": "plan-penthouse",
+    "label": "תוכנית פנטהאוז",
+    "type": "floor_plan",
+    "asset": "aurelia-plan-penthouse-v1.svg",
+    "source": "הדמיה להמחשה"
+  },
+  {
+    "id": "site-plan",
+    "label": "תוכנית המתחם",
+    "type": "site_orientation",
+    "asset": "aurelia-site-plan-v1.svg",
+    "source": "הדמיה להמחשה"
+  }
+]

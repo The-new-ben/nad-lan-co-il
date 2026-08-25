@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "rule": "Each feature has one recommended production path and a documented fallback that preserves the buyer journey.",
+  "features": [
+    {"id":"model","recommended":"Existing model-viewer/GLB showroom engine with project-specific camera and hotspots.","fallback":"Matched poster plus HTML hotspot layer using the same unit IDs.","avoid":"A black loading canvas or a decorative model without selectable units."},
+    {"id":"inventory","recommended":"One unit collection in window.NADLAN_SHOWROOM and WordPress project_3d_units_json.","fallback":"Server-rendered unit cards populated from the same JSON.","avoid":"Separate manual hotspot and card datasets."},
+    {"id":"plan","recommended":"Inline stage panel linked by plan_id, with zoom, share and studio handoff.","fallback":"Accessible modal using CSS target or dialog with focus return.","avoid":"Opening an unrelated image or losing the selected unit."},
+    {"id":"view","recommended":"Mapbox map, project marker and direction beam driven by unit azimuth plus floor-aware panorama.","fallback":"Static georeferenced map image and calculated beam overlay.","avoid":"A generic scenic image that does not change with direction."},
+    {"id":"interior","recommended":"Project-owned 2:1 panorama endpoint with room hotspots and unit context.","fallback":"Interactive room gallery preserving unit ID.","avoid":"A single PNG presented as a tour."},
+    {"id":"facilities","recommended":"Selectable facility hotspots with image, level, description, operation and accessibility.","fallback":"Horizontal facility cards using the same facility collection.","avoid":"Icons that cannot be opened."},
+    {"id":"environment","recommended":"Shared project coordinates across every Mapbox/Cesium view and categorized POIs.","fallback":"Static map with explicit point coordinates and walking times.","avoid":"Different project markers in different modules."},
+    {"id":"studio","recommended":"Existing studio.js fed by selected unit, plan and BOM option groups.","fallback":"Step wizard producing the same RFP payload.","avoid":"Selections without quantities, codes or unit context."},
+    {"id":"lead","recommended":"Existing /wp-json/nadlan/v1/lead and /brochure endpoints with project and unit context.","fallback":"WordPress form handler using the same payload contract.","avoid":"A generic contact form that discards the apartment choice."},
+    {"id":"cotour","recommended":"Existing ?cotour=host|join&room= contract with synchronized unit and scene state.","fallback":"Share link preserving project, unit and scene.","avoid":"Conference launch without project context."},
+    {"id":"admin-checklist","recommended":"Nonblocking meta box fed by machine results and manual evidence.","fallback":"Standalone Recipe Lab report imported as JSON.","avoid":"A publish blocker or one opaque score."},
+    {"id":"source-audit","recommended":"Server-side fetch of the public URL, immutable snapshot and diff.","fallback":"Manual saved View Source HTML attached to the project record.","avoid":"Treating the WordPress editor DOM as public source evidence."}
+  ]
+}

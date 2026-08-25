@@ -1,0 +1,30 @@
+[
+  {
+    "id": "living",
+    "label": "סלון, מטבח ומרפסת",
+    "asset": "aurelia-interior-panorama-v1.png",
+    "initialYaw": -18,
+    "initialPitch": 1,
+    "hfov": 102,
+    "specs": [
+      { "type": "info", "pitch": -13, "yaw": -34, "label": "מטבח", "text": "אי באורך 3.4 מ׳, משטח אבן, אחסון מלא ותשתית למכשירי אינטגרל." },
+      { "type": "info", "pitch": -18, "yaw": 18, "label": "סלון", "text": "מפתח אירוח של 6.8 מ׳ וקו ישיבה הצופה מערבה." },
+      { "type": "info", "pitch": 2, "yaw": 74, "label": "מרפסת", "text": "מרפסת עמוקה עם חזית זכוכית וקו מבט אל הים." },
+      { "type": "scene", "pitch": -4, "yaw": 152, "label": "לחדר ההורים", "target": "master", "targetYaw": 8 }
+    ]
+  },
+  {
+    "id": "master",
+    "label": "סוויטת הורים",
+    "asset": "aurelia-master-bedroom-panorama-v1.png",
+    "initialYaw": 12,
+    "initialPitch": 0,
+    "hfov": 96,
+    "specs": [
+      { "type": "info", "pitch": -18, "yaw": -28, "label": "מיטה", "text": "קיר גב באורך 3.6 מ׳ ומעברים מלאים משני הצדדים." },
+      { "type": "info", "pitch": -5, "yaw": 68, "label": "חזית", "text": "ויטרינה בגובה מלא עם הצללה פנימית וקו מבט מערבי." },
+      { "type": "info", "pitch": -8, "yaw": -112, "label": "ארונות", "text": "נגרות רציפה ותאורת פנים משולבת." },
+      { "type": "scene", "pitch": -3, "yaw": 176, "label": "חזרה לסלון", "target": "living", "targetYaw": -18 }
+    ]
+  }
+]

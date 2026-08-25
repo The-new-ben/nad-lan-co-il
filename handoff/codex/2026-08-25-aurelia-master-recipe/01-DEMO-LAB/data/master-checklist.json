@@ -1,0 +1,3153 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": "aurelia-sde-dov",
+  "purpose": "Executable specification for the buyer page, WordPress implementation, admin lights and forensic evidence.",
+  "statusModel": {
+    "red": "חסר רכיב מהותי או שהפעולה הראשית אינה עובדת",
+    "orange": "קיים אך קיימת סתירה, חוסר התאמה או תלות לא פתורה",
+    "yellow": "עובד אך דורש ליטוש, השלמה או הוכחת ביצועים",
+    "green": "קיים, עובד, מסונכרן ומתועד"
+  },
+  "counts": {
+    "domains": 17,
+    "baseDefinitions": 138,
+    "expandedCases": 9098,
+    "devices": 6,
+    "languages": 5,
+    "networks": 3
+  },
+  "profiles": {
+    "devices": [
+      {
+        "id": "m320",
+        "width": 320,
+        "height": 720,
+        "pointer": "touch"
+      },
+      {
+        "id": "m360",
+        "width": 360,
+        "height": 800,
+        "pointer": "touch"
+      },
+      {
+        "id": "m390",
+        "width": 390,
+        "height": 844,
+        "pointer": "touch"
+      },
+      {
+        "id": "m430",
+        "width": 430,
+        "height": 932,
+        "pointer": "touch"
+      },
+      {
+        "id": "tablet768",
+        "width": 768,
+        "height": 1024,
+        "pointer": "touch"
+      },
+      {
+        "id": "desktop1440",
+        "width": 1440,
+        "height": 1000,
+        "pointer": "mouse"
+      }
+    ],
+    "languages": [
+      {
+        "id": "he",
+        "dir": "rtl"
+      },
+      {
+        "id": "en",
+        "dir": "ltr"
+      },
+      {
+        "id": "fr",
+        "dir": "ltr"
+      },
+      {
+        "id": "ru",
+        "dir": "ltr"
+      },
+      {
+        "id": "ar",
+        "dir": "rtl"
+      }
+    ],
+    "networks": [
+      {
+        "id": "wifi",
+        "latencyMs": 20,
+        "downMbps": 100
+      },
+      {
+        "id": "4g",
+        "latencyMs": 80,
+        "downMbps": 12
+      },
+      {
+        "id": "slow4g",
+        "latencyMs": 160,
+        "downMbps": 1.6
+      }
+    ]
+  },
+  "domains": [
+    {
+      "id": "R01",
+      "name": "זהות, מיקום ואינטנט"
+    },
+    {
+      "id": "R02",
+      "name": "SERP ו-HTML ציבורי"
+    },
+    {
+      "id": "R03",
+      "name": "פירורים, progress bar וניווט"
+    },
+    {
+      "id": "R04",
+      "name": "Hero והחלטה ראשונה"
+    },
+    {
+      "id": "R05",
+      "name": "מודל תלת-ממד"
+    },
+    {
+      "id": "R06",
+      "name": "בחירת יחידה וכרטיס"
+    },
+    {
+      "id": "R07",
+      "name": "תוכנית דירה"
+    },
+    {
+      "id": "R08",
+      "name": "נוף, אלומה ומפה"
+    },
+    {
+      "id": "R09",
+      "name": "פנים, 360 וסטודיו"
+    },
+    {
+      "id": "R10",
+      "name": "מתקנים ו-facilities hotspots"
+    },
+    {
+      "id": "R11",
+      "name": "סביבה ושדה דב"
+    },
+    {
+      "id": "R12",
+      "name": "BOM והנדסת בניין"
+    },
+    {
+      "id": "R13",
+      "name": "תוכן ומבנה מאמר"
+    },
+    {
+      "id": "R14",
+      "name": "ליד, פגישה, מכירה ו-Co-tour"
+    },
+    {
+      "id": "R15",
+      "name": "חמש שפות"
+    },
+    {
+      "id": "R16",
+      "name": "מובייל, נגישות וביצועים"
+    },
+    {
+      "id": "R17",
+      "name": "נורות אדמין ותיעוד"
+    }
+  ],
+  "definitions": [
+    {
+      "id": "R01-001",
+      "domainId": "R01",
+      "domain": "זהות, מיקום ואינטנט",
+      "title": "שם עברי ואנגלי אחד עקבי",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "post_title",
+        "post_name",
+        "project_address",
+        "nadlan_city",
+        "nadlan_compound"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R01-002",
+      "domainId": "R01",
+      "domain": "זהות, מיקום ואינטנט",
+      "title": "שדה דב מופיע בכותרת, H1, פתיח, פירורים ומפה",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "post_title",
+        "post_name",
+        "project_address",
+        "nadlan_city",
+        "nadlan_compound"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R01-003",
+      "domainId": "R01",
+      "domain": "זהות, מיקום ואינטנט",
+      "title": "כתובת, נקודת מפה ואזור תוכן מצביעים לאותו מקום",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "post_title",
+        "post_name",
+        "project_address",
+        "nadlan_city",
+        "nadlan_compound"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R01-004",
+      "domainId": "R01",
+      "domain": "זהות, מיקום ואינטנט",
+      "title": "עמוד אחד הוא בעל הבית של ביטוי הפרויקט",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "post_title",
+        "post_name",
+        "project_address",
+        "nadlan_city",
+        "nadlan_compound"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R01-005",
+      "domainId": "R01",
+      "domain": "זהות, מיקום ואינטנט",
+      "title": "אין כותרת פנימית שמתחרה בעמוד עיר או שכונה",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "red",
+      "passLight": "green",
+      "wordpressHooks": [
+        "post_title",
+        "post_name",
+        "project_address",
+        "nadlan_city",
+        "nadlan_compound"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R02-001",
+      "domainId": "R02",
+      "domain": "SERP ו-HTML ציבורי",
+      "title": "title ייחודי ומתאים לאורך תצוגה",
+      "mode": "source",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "_yoast_wpseo_title",
+        "_yoast_wpseo_metadesc",
+        "wp_head",
+        "public View Source"
+      ],
+      "evidenceRequired": [
+        "saved public HTML",
+        "line reference",
+        "parsed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R02-002",
+      "domainId": "R02",
+      "domain": "SERP ו-HTML ציבורי",
+      "title": "meta description מציג בחירת דירה, תוכנית, נוף ומחיר",
+      "mode": "source",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "_yoast_wpseo_title",
+        "_yoast_wpseo_metadesc",
+        "wp_head",
+        "public View Source"
+      ],
+      "evidenceRequired": [
+        "saved public HTML",
+        "line reference",
+        "parsed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R02-003",
+      "domainId": "R02",
+      "domain": "SERP ו-HTML ציבורי",
+      "title": "favicon נטען ב-200 ומופיע כ-square crawlable asset",
+      "mode": "source",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "_yoast_wpseo_title",
+        "_yoast_wpseo_metadesc",
+        "wp_head",
+        "public View Source"
+      ],
+      "evidenceRequired": [
+        "saved public HTML",
+        "line reference",
+        "parsed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R02-004",
+      "domainId": "R02",
+      "domain": "SERP ו-HTML ציבורי",
+      "title": "canonical עצמי יחיד",
+      "mode": "source",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "_yoast_wpseo_title",
+        "_yoast_wpseo_metadesc",
+        "wp_head",
+        "public View Source"
+      ],
+      "evidenceRequired": [
+        "saved public HTML",
+        "line reference",
+        "parsed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R02-005",
+      "domainId": "R02",
+      "domain": "SERP ו-HTML ציבורי",
+      "title": "H1 יחיד",
+      "mode": "source",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "_yoast_wpseo_title",
+        "_yoast_wpseo_metadesc",
+        "wp_head",
+        "public View Source"
+      ],
+      "evidenceRequired": [
+        "saved public HTML",
+        "line reference",
+        "parsed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R02-006",
+      "domainId": "R02",
+      "domain": "SERP ו-HTML ציבורי",
+      "title": "נתוני Open Graph מלאים",
+      "mode": "source",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "_yoast_wpseo_title",
+        "_yoast_wpseo_metadesc",
+        "wp_head",
+        "public View Source"
+      ],
+      "evidenceRequired": [
+        "saved public HTML",
+        "line reference",
+        "parsed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R02-007",
+      "domainId": "R02",
+      "domain": "SERP ו-HTML ציבורי",
+      "title": "JSON-LD ללא סתירה לטקסט הנראה",
+      "mode": "source",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "_yoast_wpseo_title",
+        "_yoast_wpseo_metadesc",
+        "wp_head",
+        "public View Source"
+      ],
+      "evidenceRequired": [
+        "saved public HTML",
+        "line reference",
+        "parsed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R02-008",
+      "domainId": "R02",
+      "domain": "SERP ו-HTML ציבורי",
+      "title": "View Source אינו מכיל Ashira, placeholders או טקסטי המתנה",
+      "mode": "source",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "_yoast_wpseo_title",
+        "_yoast_wpseo_metadesc",
+        "wp_head",
+        "public View Source"
+      ],
+      "evidenceRequired": [
+        "saved public HTML",
+        "line reference",
+        "parsed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R03-001",
+      "domainId": "R03",
+      "domain": "פירורים, progress bar וניווט",
+      "title": "כל פירור לחיץ",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "theme breadcrumbs",
+        "project status meta",
+        "scroll state"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R03-002",
+      "domainId": "R03",
+      "domain": "פירורים, progress bar וניווט",
+      "title": "מצב נוכחי מסומן",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "theme breadcrumbs",
+        "project status meta",
+        "scroll state"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R03-003",
+      "domainId": "R03",
+      "domain": "פירורים, progress bar וניווט",
+      "title": "progress bar נמצא לפני אזור ההחלטה",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "theme breadcrumbs",
+        "project status meta",
+        "scroll state"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R03-004",
+      "domainId": "R03",
+      "domain": "פירורים, progress bar וניווט",
+      "title": "כל שלב מעביר לעוגן קיים",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "theme breadcrumbs",
+        "project status meta",
+        "scroll state"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R03-005",
+      "domainId": "R03",
+      "domain": "פירורים, progress bar וניווט",
+      "title": "גלילה מעדכנת שלב פעיל",
+      "mode": "viewport+accessibility",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "theme breadcrumbs",
+        "project status meta",
+        "scroll state"
+      ],
+      "evidenceRequired": [
+        "viewport",
+        "DOMRect",
+        "focus/keyboard result",
+        "screenshot"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R03-006",
+      "domainId": "R03",
+      "domain": "פירורים, progress bar וניווט",
+      "title": "בחירה נשמרת במעבר בין שלבים",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "theme breadcrumbs",
+        "project status meta",
+        "scroll state"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R03-007",
+      "domainId": "R03",
+      "domain": "פירורים, progress bar וניווט",
+      "title": "במובייל הבר אינו מכסה H1, בניין או כרטיס",
+      "mode": "viewport+accessibility",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "theme breadcrumbs",
+        "project status meta",
+        "scroll state"
+      ],
+      "evidenceRequired": [
+        "viewport",
+        "DOMRect",
+        "focus/keyboard result",
+        "screenshot"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R04-001",
+      "domainId": "R04",
+      "domain": "Hero והחלטה ראשונה",
+      "title": "תמונת בניין מזוהה וברורה בפולד הראשון",
+      "mode": "viewport+accessibility",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "hero_image",
+        "project_3d_poster",
+        "project_eyebrow_*"
+      ],
+      "evidenceRequired": [
+        "viewport",
+        "DOMRect",
+        "focus/keyboard result",
+        "screenshot"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R04-002",
+      "domainId": "R04",
+      "domain": "Hero והחלטה ראשונה",
+      "title": "שם, שדה דב, סטטוס ושני נתוני מפתח נראים ללא גלילה",
+      "mode": "viewport+accessibility",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "hero_image",
+        "project_3d_poster",
+        "project_eyebrow_*"
+      ],
+      "evidenceRequired": [
+        "viewport",
+        "DOMRect",
+        "focus/keyboard result",
+        "screenshot"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R04-003",
+      "domainId": "R04",
+      "domain": "Hero והחלטה ראשונה",
+      "title": "CTA לבחירת דירה מוביל לבורר",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "hero_image",
+        "project_3d_poster",
+        "project_eyebrow_*"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R04-004",
+      "domainId": "R04",
+      "domain": "Hero והחלטה ראשונה",
+      "title": "CTA משני פותח חומרים או פגישה",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "hero_image",
+        "project_3d_poster",
+        "project_eyebrow_*"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R04-005",
+      "domainId": "R04",
+      "domain": "Hero והחלטה ראשונה",
+      "title": "אין כרטיס שמסתיר את גוף הבניין במובייל",
+      "mode": "viewport+accessibility",
+      "nonBlocking": true,
+      "failLight": "red",
+      "passLight": "green",
+      "wordpressHooks": [
+        "hero_image",
+        "project_3d_poster",
+        "project_eyebrow_*"
+      ],
+      "evidenceRequired": [
+        "viewport",
+        "DOMRect",
+        "focus/keyboard result",
+        "screenshot"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R04-006",
+      "domainId": "R04",
+      "domain": "Hero והחלטה ראשונה",
+      "title": "התמונה נטענת ללא הבהוב שחור",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "hero_image",
+        "project_3d_poster",
+        "project_eyebrow_*"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R05-001",
+      "domainId": "R05",
+      "domain": "מודל תלת-ממד",
+      "title": "GLB נטען",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_model_url",
+        "project_3d_units_json",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R05-002",
+      "domainId": "R05",
+      "domain": "מודל תלת-ממד",
+      "title": "poster תואם למודל",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_model_url",
+        "project_3d_units_json",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R05-003",
+      "domainId": "R05",
+      "domain": "מודל תלת-ממד",
+      "title": "זווית פתיחה מוגדרת לפרויקט",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_model_url",
+        "project_3d_units_json",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R05-004",
+      "domainId": "R05",
+      "domain": "מודל תלת-ממד",
+      "title": "הבניין נשאר במרכז בעת פתיחת כרטיס",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_model_url",
+        "project_3d_units_json",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R05-005",
+      "domainId": "R05",
+      "domain": "מודל תלת-ממד",
+      "title": "סיבוב, זום ואיפוס עובדים בעכבר ובמגע",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_model_url",
+        "project_3d_units_json",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R05-006",
+      "domainId": "R05",
+      "domain": "מודל תלת-ממד",
+      "title": "מגבלות מצלמה מונעות כניסה לתוך מודל",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_model_url",
+        "project_3d_units_json",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R05-007",
+      "domainId": "R05",
+      "domain": "מודל תלת-ממד",
+      "title": "fallback חזית עובד",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_model_url",
+        "project_3d_units_json",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R05-008",
+      "domainId": "R05",
+      "domain": "מודל תלת-ממד",
+      "title": "משקל, LOD ומרקמים מתאימים למובייל",
+      "mode": "viewport+accessibility",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_model_url",
+        "project_3d_units_json",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "viewport",
+        "DOMRect",
+        "focus/keyboard result",
+        "screenshot"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R05-009",
+      "domainId": "R05",
+      "domain": "מודל תלת-ממד",
+      "title": "כל hotspot משויך ליחידה קיימת",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_model_url",
+        "project_3d_units_json",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R05-010",
+      "domainId": "R05",
+      "domain": "מודל תלת-ממד",
+      "title": "אין hotspot מחוץ לחזית",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "red",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_model_url",
+        "project_3d_units_json",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R05-011",
+      "domainId": "R05",
+      "domain": "מודל תלת-ממד",
+      "title": "target מונגש 44px לפחות",
+      "mode": "viewport+accessibility",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_model_url",
+        "project_3d_units_json",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "viewport",
+        "DOMRect",
+        "focus/keyboard result",
+        "screenshot"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R05-012",
+      "domainId": "R05",
+      "domain": "מודל תלת-ממד",
+      "title": "focus מקלדת נראה",
+      "mode": "viewport+accessibility",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_model_url",
+        "project_3d_units_json",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "viewport",
+        "DOMRect",
+        "focus/keyboard result",
+        "screenshot"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R06-001",
+      "domainId": "R06",
+      "domain": "בחירת יחידה וכרטיס",
+      "title": "סינון קומה, חדרים, כיוון, מחיר וסטטוס עובד",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_units_json",
+        "engine.js",
+        "mv-ux.js"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R06-002",
+      "domainId": "R06",
+      "domain": "בחירת יחידה וכרטיס",
+      "title": "מונה תוצאות מתעדכן",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_units_json",
+        "engine.js",
+        "mv-ux.js"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R06-003",
+      "domainId": "R06",
+      "domain": "בחירת יחידה וכרטיס",
+      "title": "אין שורת אפסים חסרת משמעות",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "red",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_units_json",
+        "engine.js",
+        "mv-ux.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R06-004",
+      "domainId": "R06",
+      "domain": "בחירת יחידה וכרטיס",
+      "title": "בחירת hotspot ובחירת רשימה מסונכרנות",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_units_json",
+        "engine.js",
+        "mv-ux.js"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R06-005",
+      "domainId": "R06",
+      "domain": "בחירת יחידה וכרטיס",
+      "title": "כרטיס מציג קומה, כיוון, שטח, מרפסת ומחיר",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_units_json",
+        "engine.js",
+        "mv-ux.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R06-006",
+      "domainId": "R06",
+      "domain": "בחירת יחידה וכרטיס",
+      "title": "כרטיס מציג תוכנית, נוף, פנים ופנייה",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_units_json",
+        "engine.js",
+        "mv-ux.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R06-007",
+      "domainId": "R06",
+      "domain": "בחירת יחידה וכרטיס",
+      "title": "כרטיס מובייל קומפקטי ואינו מזיז את הבניין",
+      "mode": "viewport+accessibility",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_units_json",
+        "engine.js",
+        "mv-ux.js"
+      ],
+      "evidenceRequired": [
+        "viewport",
+        "DOMRect",
+        "focus/keyboard result",
+        "screenshot"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R06-008",
+      "domainId": "R06",
+      "domain": "בחירת יחידה וכרטיס",
+      "title": "סגירה מחזירה focus לטריגר",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_units_json",
+        "engine.js",
+        "mv-ux.js"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R06-009",
+      "domainId": "R06",
+      "domain": "בחירת יחידה וכרטיס",
+      "title": "שמירה או שיתוף משמרים unit id",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_units_json",
+        "engine.js",
+        "mv-ux.js"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R07-001",
+      "domainId": "R07",
+      "domain": "תוכנית דירה",
+      "title": "לכל טיפוס יש תוכנית",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_drawings_json",
+        "unit.plan_id",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R07-002",
+      "domainId": "R07",
+      "domain": "תוכנית דירה",
+      "title": "התוכנית מתאימה למספר חדרים ולשטח",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_drawings_json",
+        "unit.plan_id",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R07-003",
+      "domainId": "R07",
+      "domain": "תוכנית דירה",
+      "title": "כיוון צפון ופתחים מסומנים",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_drawings_json",
+        "unit.plan_id",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R07-004",
+      "domainId": "R07",
+      "domain": "תוכנית דירה",
+      "title": "מידות קריאות בזום מובייל",
+      "mode": "viewport+accessibility",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_drawings_json",
+        "unit.plan_id",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "viewport",
+        "DOMRect",
+        "focus/keyboard result",
+        "screenshot"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R07-005",
+      "domainId": "R07",
+      "domain": "תוכנית דירה",
+      "title": "שטח פנים ומרפסת עקביים לכרטיס",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_drawings_json",
+        "unit.plan_id",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R07-006",
+      "domainId": "R07",
+      "domain": "תוכנית דירה",
+      "title": "מעבר בין קומות אינו מחליף תוכנית בטעות",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_drawings_json",
+        "unit.plan_id",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R07-007",
+      "domainId": "R07",
+      "domain": "תוכנית דירה",
+      "title": "הורדה ושיתוף עובדים",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_drawings_json",
+        "unit.plan_id",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R07-008",
+      "domainId": "R07",
+      "domain": "תוכנית דירה",
+      "title": "תוכנית נגישה בטקסט חלופי",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_drawings_json",
+        "unit.plan_id",
+        "engine.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R08-001",
+      "domainId": "R08",
+      "domain": "נוף, אלומה ומפה",
+      "title": "כיוון היחידה מניע אלומה תואמת",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "lat",
+        "lng",
+        "unit.directionAzimuth",
+        "mapbox-init.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R08-002",
+      "domainId": "R08",
+      "domain": "נוף, אלומה ומפה",
+      "title": "האלומה יוצאת מנקודת היחידה",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "lat",
+        "lng",
+        "unit.directionAzimuth",
+        "mapbox-init.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R08-003",
+      "domainId": "R08",
+      "domain": "נוף, אלומה ומפה",
+      "title": "מפת שדה דב מסתובבת או מתעדכנת לפי הכיוון",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "lat",
+        "lng",
+        "unit.directionAzimuth",
+        "mapbox-init.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R08-004",
+      "domainId": "R08",
+      "domain": "נוף, אלומה ומפה",
+      "title": "יעדי נוף משתנים לפי קומה וכיוון",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "lat",
+        "lng",
+        "unit.directionAzimuth",
+        "mapbox-init.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R08-005",
+      "domainId": "R08",
+      "domain": "נוף, אלומה ומפה",
+      "title": "נוף מערב מציג ים וחוף",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "lat",
+        "lng",
+        "unit.directionAzimuth",
+        "mapbox-init.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R08-006",
+      "domainId": "R08",
+      "domain": "נוף, אלומה ומפה",
+      "title": "נוף מזרח מציג רובע ועיר",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "lat",
+        "lng",
+        "unit.directionAzimuth",
+        "mapbox-init.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R08-007",
+      "domainId": "R08",
+      "domain": "נוף, אלומה ומפה",
+      "title": "אין כיסוי של המפה בכרטיס במובייל",
+      "mode": "viewport+accessibility",
+      "nonBlocking": true,
+      "failLight": "red",
+      "passLight": "green",
+      "wordpressHooks": [
+        "lat",
+        "lng",
+        "unit.directionAzimuth",
+        "mapbox-init.js"
+      ],
+      "evidenceRequired": [
+        "viewport",
+        "DOMRect",
+        "focus/keyboard result",
+        "screenshot"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R08-008",
+      "domainId": "R08",
+      "domain": "נוף, אלומה ומפה",
+      "title": "החלפת יחידה מעדכנת אלומה, תווית ומרחקים יחד",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "lat",
+        "lng",
+        "unit.directionAzimuth",
+        "mapbox-init.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R09-001",
+      "domainId": "R09",
+      "domain": "פנים, 360 וסטודיו",
+      "title": "כניסה לפנים שומרת את היחידה הנבחרת",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "unit.tour_url",
+        "studio.js",
+        "project_3d_drawings_json"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R09-002",
+      "domainId": "R09",
+      "domain": "פנים, 360 וסטודיו",
+      "title": "סיור פנימי עובד במגע",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "unit.tour_url",
+        "studio.js",
+        "project_3d_drawings_json"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R09-003",
+      "domainId": "R09",
+      "domain": "פנים, 360 וסטודיו",
+      "title": "מעבר חדרים ברור",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "unit.tour_url",
+        "studio.js",
+        "project_3d_drawings_json"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R09-004",
+      "domainId": "R09",
+      "domain": "פנים, 360 וסטודיו",
+      "title": "סטודיו מציג רק אפשרויות תואמות לטיפוס",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "unit.tour_url",
+        "studio.js",
+        "project_3d_drawings_json"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R09-005",
+      "domainId": "R09",
+      "domain": "פנים, 360 וסטודיו",
+      "title": "בחירת גמר משנה תצוגה ומפרט",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "unit.tour_url",
+        "studio.js",
+        "project_3d_drawings_json"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R09-006",
+      "domainId": "R09",
+      "domain": "פנים, 360 וסטודיו",
+      "title": "התאמות נגישות כוללות מידות וחיזוקים",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "unit.tour_url",
+        "studio.js",
+        "project_3d_drawings_json"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R09-007",
+      "domainId": "R09",
+      "domain": "פנים, 360 וסטודיו",
+      "title": "סיכום מפרט כולל קודים, כמויות ואפשרויות",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "unit.tour_url",
+        "studio.js",
+        "project_3d_drawings_json"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R09-008",
+      "domainId": "R09",
+      "domain": "פנים, 360 וסטודיו",
+      "title": "שליחה לקבלן/פגישה עובדת",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "unit.tour_url",
+        "studio.js",
+        "project_3d_drawings_json"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R09-009",
+      "domainId": "R09",
+      "domain": "פנים, 360 וסטודיו",
+      "title": "חזרה לשורום אינה מאפסת בחירה",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "unit.tour_url",
+        "studio.js",
+        "project_3d_drawings_json"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R10-001",
+      "domainId": "R10",
+      "domain": "מתקנים ו-facilities hotspots",
+      "title": "כל מתקן מופיע במפת המתקנים",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_facilities_json",
+        "facility.id",
+        "facility.hotspot"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R10-002",
+      "domainId": "R10",
+      "domain": "מתקנים ו-facilities hotspots",
+      "title": "hotspot פותח תמונה, תיאור, מיקום ושעות",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_facilities_json",
+        "facility.id",
+        "facility.hotspot"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R10-003",
+      "domainId": "R10",
+      "domain": "מתקנים ו-facilities hotspots",
+      "title": "המתקן מקושר לקומה או אזור אמיתי במודל",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_facilities_json",
+        "facility.id",
+        "facility.hotspot"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R10-004",
+      "domainId": "R10",
+      "domain": "מתקנים ו-facilities hotspots",
+      "title": "בריכה, wellness, כושר, עבודה, אירוח וילדים ממופים",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_facilities_json",
+        "facility.id",
+        "facility.hotspot"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R10-005",
+      "domainId": "R10",
+      "domain": "מתקנים ו-facilities hotspots",
+      "title": "נגישות ותפעול מוצגים במקום הנכון",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_facilities_json",
+        "facility.id",
+        "facility.hotspot"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R10-006",
+      "domainId": "R10",
+      "domain": "מתקנים ו-facilities hotspots",
+      "title": "סינון מתקנים עובד במובייל",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_facilities_json",
+        "facility.id",
+        "facility.hotspot"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R10-007",
+      "domainId": "R10",
+      "domain": "מתקנים ו-facilities hotspots",
+      "title": "אין מתקן שמופיע באייקון אך אינו נפתח",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "red",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_facilities_json",
+        "facility.id",
+        "facility.hotspot"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R11-001",
+      "domainId": "R11",
+      "domain": "סביבה ושדה דב",
+      "title": "נקודת הפרויקט משותפת לכל המפות",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_environment_json",
+        "lat",
+        "lng",
+        "Cesium/Mapbox module"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R11-002",
+      "domainId": "R11",
+      "domain": "סביבה ושדה דב",
+      "title": "חוף, פארק, מסחר, חינוך ותחבורה מסווגים",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_environment_json",
+        "lat",
+        "lng",
+        "Cesium/Mapbox module"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R11-003",
+      "domainId": "R11",
+      "domain": "סביבה ושדה דב",
+      "title": "מרחק הליכה ומסלול מוצגים",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_environment_json",
+        "lat",
+        "lng",
+        "Cesium/Mapbox module"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R11-004",
+      "domainId": "R11",
+      "domain": "סביבה ושדה דב",
+      "title": "סיור אווירי שומר נקודת מוצא",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_environment_json",
+        "lat",
+        "lng",
+        "Cesium/Mapbox module"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R11-005",
+      "domainId": "R11",
+      "domain": "סביבה ושדה דב",
+      "title": "לחיצה על יעד מעדכנת מפה ותוכן",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_environment_json",
+        "lat",
+        "lng",
+        "Cesium/Mapbox module"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R11-006",
+      "domainId": "R11",
+      "domain": "סביבה ושדה דב",
+      "title": "הקשר תא/4444 מופיע בתוכן השכונה",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_environment_json",
+        "lat",
+        "lng",
+        "Cesium/Mapbox module"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R11-007",
+      "domainId": "R11",
+      "domain": "סביבה ושדה דב",
+      "title": "קישורי עומק למדריכי שכונה אינם מתחרים בביטוי הפרויקט",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "project_3d_environment_json",
+        "lat",
+        "lng",
+        "Cesium/Mapbox module"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R12-001",
+      "domainId": "R12",
+      "domain": "BOM והנדסת בניין",
+      "title": "כל מערכת כוללת מכלולים ורכיבים",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "engineering-bom.json",
+        "studio option codes",
+        "admin BOM panel"
+      ],
+      "evidenceRequired": [
+        "BOM component code",
+        "assembly",
+        "performance",
+        "inspection",
+        "maintenance"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R12-002",
+      "domainId": "R12",
+      "domain": "BOM והנדסת בניין",
+      "title": "לכל רכיב חומר, דרגה, עובי או ערך תכן",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "engineering-bom.json",
+        "studio option codes",
+        "admin BOM panel"
+      ],
+      "evidenceRequired": [
+        "BOM component code",
+        "assembly",
+        "performance",
+        "inspection",
+        "maintenance"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R12-003",
+      "domainId": "R12",
+      "domain": "BOM והנדסת בניין",
+      "title": "לכל רכיב יחידת מידה ובסיס כמות",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "engineering-bom.json",
+        "studio option codes",
+        "admin BOM panel"
+      ],
+      "evidenceRequired": [
+        "BOM component code",
+        "assembly",
+        "performance",
+        "inspection",
+        "maintenance"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R12-004",
+      "domainId": "R12",
+      "domain": "BOM והנדסת בניין",
+      "title": "לכל מכלול ביצוע נדרש",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "engineering-bom.json",
+        "studio option codes",
+        "admin BOM panel"
+      ],
+      "evidenceRequired": [
+        "BOM component code",
+        "assembly",
+        "performance",
+        "inspection",
+        "maintenance"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R12-005",
+      "domainId": "R12",
+      "domain": "BOM והנדסת בניין",
+      "title": "כל חדירה ומפגש משויך לפרט",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "engineering-bom.json",
+        "studio option codes",
+        "admin BOM panel"
+      ],
+      "evidenceRequired": [
+        "BOM component code",
+        "assembly",
+        "performance",
+        "inspection",
+        "maintenance"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R12-006",
+      "domainId": "R12",
+      "domain": "BOM והנדסת בניין",
+      "title": "לכל מערכת בדיקת קבלה",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "engineering-bom.json",
+        "studio option codes",
+        "admin BOM panel"
+      ],
+      "evidenceRequired": [
+        "BOM component code",
+        "assembly",
+        "performance",
+        "inspection",
+        "maintenance"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R12-007",
+      "domainId": "R12",
+      "domain": "BOM והנדסת בניין",
+      "title": "לכל ציוד בר-תחזוקה גישה ותדירות",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "engineering-bom.json",
+        "studio option codes",
+        "admin BOM panel"
+      ],
+      "evidenceRequired": [
+        "BOM component code",
+        "assembly",
+        "performance",
+        "inspection",
+        "maintenance"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R12-008",
+      "domainId": "R12",
+      "domain": "BOM והנדסת בניין",
+      "title": "מפרט ציבורי נגזר מה-BOM ולא נכתב ידנית בנפרד",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "engineering-bom.json",
+        "studio option codes",
+        "admin BOM panel"
+      ],
+      "evidenceRequired": [
+        "BOM component code",
+        "assembly",
+        "performance",
+        "inspection",
+        "maintenance"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R12-009",
+      "domainId": "R12",
+      "domain": "BOM והנדסת בניין",
+      "title": "סטודיו שינויים מפיק BOM דירה",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "engineering-bom.json",
+        "studio option codes",
+        "admin BOM panel"
+      ],
+      "evidenceRequired": [
+        "BOM component code",
+        "assembly",
+        "performance",
+        "inspection",
+        "maintenance"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R12-010",
+      "domainId": "R12",
+      "domain": "BOM והנדסת בניין",
+      "title": "שינוי רכיב מסמן השפעה על אש, מים, אקוסטיקה, תרמי ונגישות",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "engineering-bom.json",
+        "studio option codes",
+        "admin BOM panel"
+      ],
+      "evidenceRequired": [
+        "BOM component code",
+        "assembly",
+        "performance",
+        "inspection",
+        "maintenance"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R13-001",
+      "domainId": "R13",
+      "domain": "תוכן ומבנה מאמר",
+      "title": "פתיח עונה מיד מי, איפה, מה ומחיר",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "post_content",
+        "entity links",
+        "FAQ fields"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R13-002",
+      "domainId": "R13",
+      "domain": "תוכן ומבנה מאמר",
+      "title": "תוכן הפרויקט מגיע אחרי כלי ההחלטה המרכזיים",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "post_content",
+        "entity links",
+        "FAQ fields"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R13-003",
+      "domainId": "R13",
+      "domain": "תוכן ומבנה מאמר",
+      "title": "5,000 מילים מחולקות לפי שאלות משתמש",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "post_content",
+        "entity links",
+        "FAQ fields"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R13-004",
+      "domainId": "R13",
+      "domain": "תוכן ומבנה מאמר",
+      "title": "יזם, אדריכל, קבלן ויועצים מקושרים לישויות",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "post_content",
+        "entity links",
+        "FAQ fields"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R13-005",
+      "domainId": "R13",
+      "domain": "תוכן ומבנה מאמר",
+      "title": "מחירים, עסקאות ורחוב מקבלים מקור נתונים",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "post_content",
+        "entity links",
+        "FAQ fields"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R13-006",
+      "domainId": "R13",
+      "domain": "תוכן ומבנה מאמר",
+      "title": "שדה דב, מתקנים, מפרט, תחבורה, השקעה ומגורים מקבלים פרקים",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "post_content",
+        "entity links",
+        "FAQ fields"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R13-007",
+      "domainId": "R13",
+      "domain": "תוכן ומבנה מאמר",
+      "title": "FAQ נשען על שאלות אמיתיות",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "post_content",
+        "entity links",
+        "FAQ fields"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R13-008",
+      "domainId": "R13",
+      "domain": "תוכן ומבנה מאמר",
+      "title": "אין חזרת keyword מלאכותית",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "red",
+      "passLight": "green",
+      "wordpressHooks": [
+        "post_content",
+        "entity links",
+        "FAQ fields"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R14-001",
+      "domainId": "R14",
+      "domain": "ליד, פגישה, מכירה ו-Co-tour",
+      "title": "CTA שומר פרויקט ויחידה",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "/wp-json/nadlan/v1/lead",
+        "/brochure",
+        "/cotour",
+        "buyflow.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R14-002",
+      "domainId": "R14",
+      "domain": "ליד, פגישה, מכירה ו-Co-tour",
+      "title": "טופס קצר לפני טופס מורחב",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "/wp-json/nadlan/v1/lead",
+        "/brochure",
+        "/cotour",
+        "buyflow.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R14-003",
+      "domainId": "R14",
+      "domain": "ליד, פגישה, מכירה ו-Co-tour",
+      "title": "בקשת תוכניות ומחירים עובדת",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "/wp-json/nadlan/v1/lead",
+        "/brochure",
+        "/cotour",
+        "buyflow.js"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R14-004",
+      "domainId": "R14",
+      "domain": "ליד, פגישה, מכירה ו-Co-tour",
+      "title": "בחירת זמן פגישה עובדת",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "/wp-json/nadlan/v1/lead",
+        "/brochure",
+        "/cotour",
+        "buyflow.js"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R14-005",
+      "domainId": "R14",
+      "domain": "ליד, פגישה, מכירה ו-Co-tour",
+      "title": "Co-tour host/join שומר חדר ויחידה",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "/wp-json/nadlan/v1/lead",
+        "/brochure",
+        "/cotour",
+        "buyflow.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R14-006",
+      "domainId": "R14",
+      "domain": "ליד, פגישה, מכירה ו-Co-tour",
+      "title": "שיחה עם יזם או צוות כוללת הקשר",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "/wp-json/nadlan/v1/lead",
+        "/brochure",
+        "/cotour",
+        "buyflow.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R14-007",
+      "domainId": "R14",
+      "domain": "ליד, פגישה, מכירה ו-Co-tour",
+      "title": "סיכום סטודיו מצורף לליד",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "/wp-json/nadlan/v1/lead",
+        "/brochure",
+        "/cotour",
+        "buyflow.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R14-008",
+      "domainId": "R14",
+      "domain": "ליד, פגישה, מכירה ו-Co-tour",
+      "title": "אירועי הצלחה וכשל נמדדים",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "/wp-json/nadlan/v1/lead",
+        "/brochure",
+        "/cotour",
+        "buyflow.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R14-009",
+      "domainId": "R14",
+      "domain": "ליד, פגישה, מכירה ו-Co-tour",
+      "title": "אין שליחת דמו לאיש קשר חי",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "red",
+      "passLight": "green",
+      "wordpressHooks": [
+        "/wp-json/nadlan/v1/lead",
+        "/brochure",
+        "/cotour",
+        "buyflow.js"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R15-001",
+      "domainId": "R15",
+      "domain": "חמש שפות",
+      "title": "he/en/fr/ru/ar קיימות",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "translations.json",
+        "i18n.js",
+        "hreflang/canonical"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R15-002",
+      "domainId": "R15",
+      "domain": "חמש שפות",
+      "title": "שם הפרויקט נשמר עקבי",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "translations.json",
+        "i18n.js",
+        "hreflang/canonical"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R15-003",
+      "domainId": "R15",
+      "domain": "חמש שפות",
+      "title": "RTL/LTR משתנה בלי שבירת מודל",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "translations.json",
+        "i18n.js",
+        "hreflang/canonical"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R15-004",
+      "domainId": "R15",
+      "domain": "חמש שפות",
+      "title": "מחיר, שטח ותאריך מותאמים לשפה",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "translations.json",
+        "i18n.js",
+        "hreflang/canonical"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R15-005",
+      "domainId": "R15",
+      "domain": "חמש שפות",
+      "title": "תוכנית ומפה אינן נחתכות",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "translations.json",
+        "i18n.js",
+        "hreflang/canonical"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R15-006",
+      "domainId": "R15",
+      "domain": "חמש שפות",
+      "title": "canonical/hreflang תואמים לארכיטקטורת האתר",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "translations.json",
+        "i18n.js",
+        "hreflang/canonical"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R15-007",
+      "domainId": "R15",
+      "domain": "חמש שפות",
+      "title": "אין fallback לשפה אחרת בכפתור או הודעת שגיאה",
+      "mode": "data+DOM",
+      "nonBlocking": true,
+      "failLight": "red",
+      "passLight": "green",
+      "wordpressHooks": [
+        "translations.json",
+        "i18n.js",
+        "hreflang/canonical"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R16-001",
+      "domainId": "R16",
+      "domain": "מובייל, נגישות וביצועים",
+      "title": "בדיקת 320, 360, 390 ו-430 פיקסל",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "mv-ux.js",
+        "responsive CSS",
+        "performance evidence"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R16-002",
+      "domainId": "R16",
+      "domain": "מובייל, נגישות וביצועים",
+      "title": "אין גלילה אופקית",
+      "mode": "viewport+accessibility",
+      "nonBlocking": true,
+      "failLight": "red",
+      "passLight": "green",
+      "wordpressHooks": [
+        "mv-ux.js",
+        "responsive CSS",
+        "performance evidence"
+      ],
+      "evidenceRequired": [
+        "viewport",
+        "DOMRect",
+        "focus/keyboard result",
+        "screenshot"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R16-003",
+      "domainId": "R16",
+      "domain": "מובייל, נגישות וביצועים",
+      "title": "יעדי מגע 44px",
+      "mode": "viewport+accessibility",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "mv-ux.js",
+        "responsive CSS",
+        "performance evidence"
+      ],
+      "evidenceRequired": [
+        "viewport",
+        "DOMRect",
+        "focus/keyboard result",
+        "screenshot"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R16-004",
+      "domainId": "R16",
+      "domain": "מובייל, נגישות וביצועים",
+      "title": "כרטיס תחתון נשאר נמוך",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "mv-ux.js",
+        "responsive CSS",
+        "performance evidence"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R16-005",
+      "domainId": "R16",
+      "domain": "מובייל, נגישות וביצועים",
+      "title": "הבניין נראה בכל מצב בחירה",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "mv-ux.js",
+        "responsive CSS",
+        "performance evidence"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R16-006",
+      "domainId": "R16",
+      "domain": "מובייל, נגישות וביצועים",
+      "title": "תפריט ו-progress אינם מתנגשים",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "mv-ux.js",
+        "responsive CSS",
+        "performance evidence"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R16-007",
+      "domainId": "R16",
+      "domain": "מובייל, נגישות וביצועים",
+      "title": "focus, ESC ו-reader labels עובדים",
+      "mode": "interaction",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "mv-ux.js",
+        "responsive CSS",
+        "performance evidence"
+      ],
+      "evidenceRequired": [
+        "replay step",
+        "before/after state",
+        "selected IDs"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R16-008",
+      "domainId": "R16",
+      "domain": "מובייל, נגישות וביצועים",
+      "title": "תמונה ומודל נטענים בהדרגה",
+      "mode": "manual-evidence",
+      "nonBlocking": true,
+      "failLight": "yellow",
+      "passLight": "green",
+      "wordpressHooks": [
+        "mv-ux.js",
+        "responsive CSS",
+        "performance evidence"
+      ],
+      "evidenceRequired": [
+        "field or data path",
+        "expected value",
+        "observed value"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R16-009",
+      "domainId": "R16",
+      "domain": "מובייל, נגישות וביצועים",
+      "title": "אין layout shift מהותי",
+      "mode": "viewport+accessibility",
+      "nonBlocking": true,
+      "failLight": "red",
+      "passLight": "green",
+      "wordpressHooks": [
+        "mv-ux.js",
+        "responsive CSS",
+        "performance evidence"
+      ],
+      "evidenceRequired": [
+        "viewport",
+        "DOMRect",
+        "focus/keyboard result",
+        "screenshot"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R16-010",
+      "domainId": "R16",
+      "domain": "מובייל, נגישות וביצועים",
+      "title": "הפעולה הראשית זמינה גם ברשת איטית",
+      "mode": "viewport+accessibility",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "mv-ux.js",
+        "responsive CSS",
+        "performance evidence"
+      ],
+      "evidenceRequired": [
+        "viewport",
+        "DOMRect",
+        "focus/keyboard result",
+        "screenshot"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R17-001",
+      "domainId": "R17",
+      "domain": "נורות אדמין ותיעוד",
+      "title": "כל נורה מציגה עובדה ולא ציון סתמי",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "admin checklist meta box",
+        "source snapshots",
+        "recipe version"
+      ],
+      "evidenceRequired": [
+        "admin field",
+        "evidence link",
+        "owner",
+        "timestamp"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R17-002",
+      "domainId": "R17",
+      "domain": "נורות אדמין ותיעוד",
+      "title": "כל נורה מקשרת לשדה או רכיב לתיקון",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "admin checklist meta box",
+        "source snapshots",
+        "recipe version"
+      ],
+      "evidenceRequired": [
+        "admin field",
+        "evidence link",
+        "owner",
+        "timestamp"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R17-003",
+      "domainId": "R17",
+      "domain": "נורות אדמין ותיעוד",
+      "title": "נורה אדומה אינה חוסמת שמירה",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "admin checklist meta box",
+        "source snapshots",
+        "recipe version"
+      ],
+      "evidenceRequired": [
+        "admin field",
+        "evidence link",
+        "owner",
+        "timestamp"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R17-004",
+      "domainId": "R17",
+      "domain": "נורות אדמין ותיעוד",
+      "title": "סטטוס ציבורי מופרד מסטטוס מקור פנימי",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "admin checklist meta box",
+        "source snapshots",
+        "recipe version"
+      ],
+      "evidenceRequired": [
+        "admin field",
+        "evidence link",
+        "owner",
+        "timestamp"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R17-005",
+      "domainId": "R17",
+      "domain": "נורות אדמין ותיעוד",
+      "title": "snapshot של View Source נשמר עם תאריך",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "admin checklist meta box",
+        "source snapshots",
+        "recipe version"
+      ],
+      "evidenceRequired": [
+        "admin field",
+        "evidence link",
+        "owner",
+        "timestamp"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R17-006",
+      "domainId": "R17",
+      "domain": "נורות אדמין ותיעוד",
+      "title": "השוואה בין פרויקטים משתמשת באותו מתכון",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "admin checklist meta box",
+        "source snapshots",
+        "recipe version"
+      ],
+      "evidenceRequired": [
+        "admin field",
+        "evidence link",
+        "owner",
+        "timestamp"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R17-007",
+      "domainId": "R17",
+      "domain": "נורות אדמין ותיעוד",
+      "title": "שינוי ידני מתועד עם בעלים ותאריך",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "admin checklist meta box",
+        "source snapshots",
+        "recipe version"
+      ],
+      "evidenceRequired": [
+        "admin field",
+        "evidence link",
+        "owner",
+        "timestamp"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    },
+    {
+      "id": "R17-008",
+      "domainId": "R17",
+      "domain": "נורות אדמין ותיעוד",
+      "title": "גרסת מתכון מוצגת בעמוד",
+      "mode": "data+admin",
+      "nonBlocking": true,
+      "failLight": "orange",
+      "passLight": "green",
+      "wordpressHooks": [
+        "admin checklist meta box",
+        "source snapshots",
+        "recipe version"
+      ],
+      "evidenceRequired": [
+        "admin field",
+        "evidence link",
+        "owner",
+        "timestamp"
+      ],
+      "remediationRule": "The light links to the owning field or component; saving and publishing are never blocked by this mechanism."
+    }
+  ]
+}

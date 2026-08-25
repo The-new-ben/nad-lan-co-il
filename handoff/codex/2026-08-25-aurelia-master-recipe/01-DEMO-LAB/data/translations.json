@@ -1,0 +1,37 @@
+{
+  "he": {
+    "title": "Aurelia Sde Dov - אורליה שדה דב",
+    "eyebrow": "שדה דב · 3 דקות מהים",
+    "intro": "אורליה שדה דב מחברת בחירת דירה, תוכנית, נוף, מתקנים וסביבה למסע אחד שממשיך לפגישה או לסיור משותף.",
+    "selectUnit": "לבחירת דירה",
+    "getPlans": "קבלו את תוכניות הדירה"
+  },
+  "en": {
+    "title": "Aurelia Sde Dov",
+    "eyebrow": "Sde Dov · 3 minutes from the sea",
+    "intro": "Aurelia Sde Dov connects residence selection, plans, outlooks, amenities and neighborhood exploration in one journey that continues to a meeting or shared tour.",
+    "selectUnit": "Choose a residence",
+    "getPlans": "Get the residence plans"
+  },
+  "fr": {
+    "title": "Aurelia Sde Dov",
+    "eyebrow": "Sde Dov · à 3 minutes de la mer",
+    "intro": "Aurelia Sde Dov réunit le choix d’un appartement, son plan, sa vue, les services et le quartier dans un parcours qui mène à une réunion ou une visite partagée.",
+    "selectUnit": "Choisir un appartement",
+    "getPlans": "Recevoir les plans"
+  },
+  "ru": {
+    "title": "Aurelia Sde Dov",
+    "eyebrow": "Сде-Дов · 3 минуты до моря",
+    "intro": "Aurelia Sde Dov объединяет выбор квартиры, планировку, вид, инфраструктуру и район в единый путь к встрече или совместному туру.",
+    "selectUnit": "Выбрать квартиру",
+    "getPlans": "Получить планировки"
+  },
+  "ar": {
+    "title": "أوريليا سديه دوف — Aurelia Sde Dov",
+    "eyebrow": "سديه دوف · 3 دقائق من البحر",
+    "intro": "تجمع أوريليا سديه دوف اختيار الشقة والمخطط والإطلالة والمرافق والحي في رحلة واحدة تستمر إلى اجتماع أو جولة مشتركة.",
+    "selectUnit": "اختيار شقة",
+    "getPlans": "الحصول على المخططات"
+  }
+}

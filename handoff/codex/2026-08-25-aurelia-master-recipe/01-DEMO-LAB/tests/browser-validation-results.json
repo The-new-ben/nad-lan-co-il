@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "2.0.0",
+  "checkedAt": "2026-08-25T22:20:00+03:00",
+  "target": "http://127.0.0.1:3000/",
+  "method": "in-app browser physical pointer replay plus exact-size iframe harness",
+  "summary": {
+    "automatedData": "22/22 green",
+    "localDomAfterReplay": "24/24 green",
+    "selectionAtomicChecks": 67,
+    "selectionReplayMatrix": 536000,
+    "consoleErrors": 0,
+    "productionReadiness": "orange until WordPress preview"
+  },
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900,
+      "evidence": "evidence/viewport-1440x900.jpg",
+      "horizontalOverflow": false,
+      "cardPosition": "side-panel",
+      "modelCovered": false,
+      "modelVisible": true,
+      "notes": "exact CSS viewport rendered in an isolated harness"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "evidence": "evidence/viewport-390x844.jpg",
+      "horizontalOverflow": false,
+      "cardPosition": "below-stage",
+      "modelCovered": false,
+      "hotspotTarget": "44x44 minimum",
+      "surfaceTap": "selected floor 24 during replay"
+    },
+    {
+      "width": 320,
+      "height": 720,
+      "evidence": ["evidence/viewport-320x720-selection.jpg", "evidence/viewport-320x720-map.jpg"],
+      "horizontalOverflow": false,
+      "cardPosition": "below-stage",
+      "modelCovered": false,
+      "surfaceTap": "aur-t-29-b",
+      "mapContinuity": "B line, floor 29, 4 rooms remained selected"
+    }
+  ],
+  "interactionReplay": [
+    {"step":"desktop-surface-tap","result":"green","evidence":"aur-t-24-a written to state and URL"},
+    {"step":"projected-hotspot","result":"green","evidence":"aur-g1-02 written to state and URL"},
+    {"step":"mobile-surface-tap","result":"green","evidence":"aur-t-29-b selected at 320 CSS px"},
+    {"step":"map-continuity","result":"green","evidence":"same B floor 29 / 4-room context visible above live Mapbox and cone"},
+    {"step":"open-plan","result":"green","evidence":"plan_id and selected unit stayed synchronized"},
+    {"step":"open-interior","result":"green","evidence":"Pannellum scene retained the selected unit"},
+    {"step":"open-facility","result":"green","evidence":"facility detail and panorama use the same facility id"},
+    {"step":"open-lead-dialog","result":"green","evidence":"project, unit, scene, sqm, balcony, direction and price attached; no external submit"}
+  ],
+  "sourceEvidence": {
+    "rainbowSnapshot": "evidence/rainbow-public-source-2026-08-24.html",
+    "sha256": "F40C4188C0A6AD9E4A9250022CBE0D79372C49E7A22D087B4C99FBC3152F7B9B",
+    "repositorySanitizedSha256": "BE1F08AE1EB7B2F9025381DF9853B926052F883390B2365C30E77F2FE05691EA",
+    "detectors": 20
+  },
+  "yellow": [
+    "semantic UNIT_PICK proxy meshes are not present in the current GLB",
+    "full five-language public copy is not complete"
+  ],
+  "orangeUntilWordPress": [
+    "plugin 0.5.0 install and replay on draft 7304",
+    "lead, brochure and cotour endpoint replay",
+    "public Aurelia View Source snapshot",
+    "favicon SERP confirmation"
+  ]
+}

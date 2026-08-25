@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+<title id="title">תוכנית מתחם Aurelia</title><desc id="desc">תוכנית מקורית של המגדל, אגפי הגן, הפארק והים</desc>
+<style>text{font-family:Arial,sans-serif;fill:#2d2a25}.label{font-size:28px;font-weight:700}.sub{font-size:20px}.plot{stroke:#9b8a6e;stroke-width:5}.path{fill:none;stroke:#d8c8aa;stroke-width:28}.beam{fill:#e7b650;opacity:.28}</style>
+<rect width="1400" height="900" fill="#f6f0e6"/><path d="M0 0h300v900H0z" fill="#86b5c5"/><path d="M290 0q110 150 10 300t20 300q80 130-30 300" fill="none" stroke="#eee2c9" stroke-width="70"/>
+<path class="path" d="M350 120h960M350 760h960M430 80v740M1180 80v740"/>
+<rect class="plot" x="520" y="210" width="540" height="470" rx="70" fill="#d9e2d2"/>
+<ellipse class="plot" cx="790" cy="430" rx="120" ry="160" fill="#a8b9b8"/><rect class="plot" x="560" y="360" width="150" height="190" rx="35" fill="#d4bf9c"/><rect class="plot" x="870" y="360" width="150" height="190" rx="35" fill="#d4bf9c"/>
+<path class="beam" d="M790 430L250 120L190 510Z" data-beam="west"/>
+<text class="label" x="720" y="440">המגדל</text><text class="sub" x="568" y="460">אגף גן מערב</text><text class="sub" x="885" y="460">אגף גן מזרח</text><text class="label" x="75" y="450" transform="rotate(-90 75 450)">הים</text><text class="sub" x="530" y="720">פארק הדיונות והטיילת</text><text class="sub" x="1080" y="100">רכבת קלה</text><text class="sub" x="1130" y="820">מסחר וקהילה</text><text class="sub" x="1120" y="875">הדמיה להמחשה</text>
+</svg>

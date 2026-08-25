@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-25T14:57:23.285Z",
+  "scope": "data, recipe, SEO, BOM and WordPress-contract validation; browser replay is recorded separately",
+  "summary": {
+    "green": 22
+  },
+  "results": [
+    {
+      "id": "DATA-PROJECT-001",
+      "title": "Project identity is owned by Aurelia Sde Dov",
+      "status": "green",
+      "pass": true,
+      "evidence": "aurelia-sde-dov · רובע שדה דב, תל אביב-יפו"
+    },
+    {
+      "id": "DATA-UNITS-002",
+      "title": "Exactly 320 unit records are present",
+      "status": "green",
+      "pass": true,
+      "evidence": "320 units"
+    },
+    {
+      "id": "DATA-UNITS-003",
+      "title": "Every unit ID is unique",
+      "status": "green",
+      "pass": true,
+      "evidence": "320/320 unique"
+    },
+    {
+      "id": "DATA-UNITS-004",
+      "title": "Every unit has a positive price, area and floor",
+      "status": "green",
+      "pass": true,
+      "evidence": "price/sqm/floor scan"
+    },
+    {
+      "id": "DATA-PLAN-005",
+      "title": "Every unit plan_id resolves to a drawing",
+      "status": "green",
+      "pass": true,
+      "evidence": "6 drawing IDs checked against 320 units"
+    },
+    {
+      "id": "DATA-FAC-006",
+      "title": "Twelve facilities have valid hotspot coordinates",
+      "status": "green",
+      "pass": true,
+      "evidence": "12 facilities"
+    },
+    {
+      "id": "DATA-ENV-007",
+      "title": "Twelve environment points have valid coordinates",
+      "status": "green",
+      "pass": true,
+      "evidence": "12 environment points"
+    },
+    {
+      "id": "DATA-LANG-008",
+      "title": "Five language dictionaries exist",
+      "status": "green",
+      "pass": true,
+      "evidence": "he, en, fr, ru, ar"
+    },
+    {
+      "id": "DATA-LANG-009",
+      "title": "Every language includes the primary CTA",
+      "status": "green",
+      "pass": true,
+      "evidence": "selectUnit + getPlans"
+    },
+    {
+      "id": "BOM-SYS-010",
+      "title": "Seventeen engineering systems exist",
+      "status": "green",
+      "pass": true,
+      "evidence": "17 systems"
+    },
+    {
+      "id": "BOM-ASM-011",
+      "title": "Thirty-three assemblies exist",
+      "status": "green",
+      "pass": true,
+      "evidence": "33 assemblies"
+    },
+    {
+      "id": "BOM-CMP-012",
+      "title": "Eighty BOM components exist",
+      "status": "green",
+      "pass": true,
+      "evidence": "80 components"
+    },
+    {
+      "id": "BOM-CMP-013",
+      "title": "Every component has code, specification, unit, quantity basis, performance, inspection and maintenance",
+      "status": "green",
+      "pass": true,
+      "evidence": "80 component records scanned"
+    },
+    {
+      "id": "RECIPE-SEQ-014",
+      "title": "The page recipe has twenty ordered sections",
+      "status": "green",
+      "pass": true,
+      "evidence": "20 ordered sections"
+    },
+    {
+      "id": "RECIPE-SEQ-015",
+      "title": "Every page section explains desktop, mobile, placement and SEO role",
+      "status": "green",
+      "pass": true,
+      "evidence": "placement fields scan"
+    },
+    {
+      "id": "SEO-TITLE-016",
+      "title": "SEO title is within the target display range",
+      "status": "green",
+      "pass": true,
+      "evidence": "60 characters"
+    },
+    {
+      "id": "SEO-META-017",
+      "title": "Meta description is within the target display range",
+      "status": "green",
+      "pass": true,
+      "evidence": "147 characters"
+    },
+    {
+      "id": "SEO-H1-018",
+      "title": "H1 contains both project identities and Sde Dov",
+      "status": "green",
+      "pass": true,
+      "evidence": "Aurelia Sde Dov — אורליה שדה דב"
+    },
+    {
+      "id": "WP-TYPE-019",
+      "title": "WordPress contract targets nadlan_project",
+      "status": "green",
+      "pass": true,
+      "evidence": "wordpress-contract.json"
+    },
+    {
+      "id": "WP-RUNTIME-020",
+      "title": "WordPress contract references NADLAN_SHOWROOM",
+      "status": "green",
+      "pass": true,
+      "evidence": "wordpress-contract.json"
+    },
+    {
+      "id": "CHECK-DEF-021",
+      "title": "Every base check has evidence and WordPress hooks",
+      "status": "green",
+      "pass": true,
+      "evidence": "138 definitions"
+    },
+    {
+      "id": "CHECK-MATRIX-022",
+      "title": "The checklist expands into thousands of explicit cases",
+      "status": "green",
+      "pass": true,
+      "evidence": "9098 matrix cases"
+    }
+  ]
+}

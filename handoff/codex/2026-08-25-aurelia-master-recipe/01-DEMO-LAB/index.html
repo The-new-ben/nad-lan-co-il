@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Aurelia Sde Dov — Master Recipe Lab</title>
+  <meta name="description" content="מעבדת אישור נפרדת לעמוד הפרויקט הקאנוני של אורליה שדה דב ולמימוש התואם לוורדפרס.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23151310'/%3E%3Cpath d='M14 48V16h9l18 21V16h9v32h-9L23 27v21z' fill='%23e3b96d'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.16.0/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="lab-header" aria-label="בקרת מעבדת המתכון">
+    <a class="lab-brand" href="#top"><span>N</span><b>NadLan Project Recipe</b><small>Aurelia Sde Dov · שתי גרסאות, חוזה אחד</small></a>
+    <nav class="mode-nav" aria-label="מצבי המעבדה">
+      <button class="active" data-mode="buyer">עמוד הרוכש</button>
+      <button data-mode="recipe">סדר ומתכון</button>
+      <button data-mode="checklist">צ׳ק־ליסט</button>
+      <button data-mode="selection">בחירת דירה</button>
+      <button data-mode="bom">BOM</button>
+      <button data-mode="seo">SEO</button>
+      <button data-mode="source">HTML Source</button>
+      <button data-mode="wordpress">WordPress</button>
+    </nav>
+    <div class="lab-state"><i></i><span>מעבדה נפרדת</span><small>וורדפרס לא משתנה</small></div>
+  </header>
+
+  <main id="app" tabindex="-1">
+    <section class="view active" data-view="buyer" id="top">
+      <header class="portal-header">
+        <a class="portal-logo" href="#top">NadLan <span>▥</span></a>
+        <nav aria-label="ניווט הפורטל"><a href="#inventory">פרויקטים חדשים</a><a href="#environment-section">שכונות</a><a href="#article">מדריכים</a><a href="#team">אנשי מקצוע</a></nav>
+        <div><button class="icon-button" aria-label="פריטים שמורים">♡</button><select id="language" aria-label="שפה"><option value="he">עברית</option><option value="en">English</option><option value="fr">Français</option><option value="ru">Русский</option><option value="ar">العربية</option></select></div>
+      </header>
+
+      <nav class="breadcrumbs" id="breadcrumbs" aria-label="פירורי לחם"><a href="#top">בית</a><span>›</span><a href="#inventory">פרויקטים חדשים</a><span>›</span><a href="#environment-section">שדה דב</a><span>›</span><b aria-current="page">אורליה</b></nav>
+
+      <section class="hero" id="hero">
+        <div class="hero-copy">
+          <p class="eyebrow" id="hero-eyebrow">שדה דב · 3 דקות מהים</p>
+          <h1 id="hero-title">Aurelia Sde Dov — אורליה שדה דב</h1>
+          <p class="hero-intro" id="hero-intro">אורליה שדה דב מחברת בחירת דירה, תוכנית, נוף, מתקנים וסביבה למסע אחד שממשיך לפגישה או לסיור משותף.</p>
+          <div class="hero-facts"><span><b>47</b> קומות</span><span><b>320</b> דירות</span><span><b>12</b> מתקנים</span></div>
+          <div class="hero-actions"><button class="primary" data-scroll="inventory" id="hero-select">לבחירת דירה</button><button class="secondary" data-dialog="meeting">לתיאום שיחה</button></div>
+        </div>
+        <figure class="hero-visual"><img src="assets/aurelia-exterior-hero-v1.png" alt="מגדל אורליה ושני אגפי הגן ברובע שדה דב"><figcaption><span>WEST / SEA</span><b>AURELIA</b><small>47F · SDE DOV</small></figcaption></figure>
+      </section>
+
+      <section class="opening-answer" id="opening">
+        <p>אורליה שדה דב הוא מתחם מגורים חדש ברובע שדה דב בתל אביב־יפו, הכולל מגדל בן 47 קומות ושני אגפי גן בני שמונה קומות. בפרויקט 320 דירות בתמהיל של 2–6 חדרים ופנטהאוזים, עם מחירים המוצגים לפי הדירה שנבחרה. מערכת הבחירה מחברת כל יחידה לתוכנית, לכיוון, לנוף, לסיור הפנים ולבקשת החומרים שלה.</p>
+      </section>
+
+      <nav class="progress" id="progress" aria-label="התקדמות הפרויקט והמסע">
+        <a class="done" href="#hero"><i></i><span>תכנון</span></a><a class="done" href="#opening"><i></i><span>היתר</span></a><a class="current" href="#inventory"><i></i><span>בבנייה</span></a><a href="#appointment"><i></i><span>אכלוס</span></a><b>עכשיו: בוחרים דירה וממשיכים לתוכנית, לנוף ולפגישה</b>
+      </nav>
+
+      <section class="quick-facts" id="facts" aria-label="עובדות מרכזיות">
+        <article><small>מיקום</small><b>רובע שדה דב</b><span>תל אביב־יפו</span></article><article><small>אדריכלות</small><b>47 קומות</b><span>מגדל + 2 אגפי גן</span></article><article><small>מלאי</small><b>320 דירות</b><span>2–6 חדרים</span></article><article><small>מחירים</small><b>לפי יחידה</b><span>מופיעים בכרטיס</span></article><article><small>מסירה</small><b>2030</b><span>בבנייה</span></article><article><small>חוויה</small><b>בחירה מלאה</b><span>תוכנית · נוף · פנים</span></article>
+      </section>
+
+      <section class="showroom-section" id="inventory">
+        <header class="section-heading"><div><p>מערכת קבלת החלטות</p><h2>בחרו את הדירה בתוך הבניין</h2><span>כל בחירה מעדכנת את הכרטיס, התוכנית, הנוף, הסיור והפנייה.</span></div><div class="availability"><i></i><b id="available-count">—</b><span>יחידות מוצגות</span></div></header>
+        <div class="showroom-shell">
+          <nav class="scene-tabs" aria-label="כלי הדירה"><button class="active" data-scene="building">בניין</button><button data-scene="plan">תוכנית</button><button data-scene="view">נוף ואלומה</button><button data-scene="interior">סיור פנים</button><button data-scene="facilities">מתקנים</button><button data-scene="environment">סביבה</button><button class="cotour" data-dialog="cotour">Co-tour</button></nav>
+          <div class="showroom-grid">
+            <aside class="inventory-panel">
+              <div class="filters"><button class="active" data-room="all">הכול</button><button data-room="2">2</button><button data-room="3">3</button><button data-room="4">4</button><button data-room="5">5</button><button data-room="6">6</button></div>
+              <div class="unit-list" id="unit-list"></div>
+            </aside>
+            <div class="stage" id="stage" aria-live="polite">
+              <div class="scene active" data-scene-panel="building">
+                <model-viewer id="building-model" src="assets/aurelia-tower-semantic-v2.glb" poster="assets/aurelia-exterior-hero-v1.png" alt="מודל תלת־ממד אינטראקטיבי של Aurelia" camera-controls touch-action="pan-y" camera-orbit="-28deg 66deg 105%" camera-target="0m 52m 0m" min-camera-orbit="auto 48deg 75%" max-camera-orbit="auto 82deg 150%" shadow-intensity="1" environment-image="neutral" interaction-prompt="none" loading="eager"></model-viewer>
+                <div id="hotspot-overlay" class="hotspot-overlay" aria-label="דירות לבחירה על המודל"></div>
+                <div class="stage-scrim"></div><div class="stage-instruction"><small>SELECT A HOME</small><b>סובבו את הבניין ובחרו דירה</b><span>לחצו על נקודה בבניין כדי לפתוח את הדירה, התוכנית והנוף שלה</span></div>
+              </div>
+              <div class="scene" data-scene-panel="plan"><div class="plan-workbench"><img class="contain" id="plan-image" src="assets/aurelia-plan-3br-v1.svg" alt="תוכנית הדירה שנבחרה"><div class="plan-tools"><button data-plan-zoom="in">＋</button><button data-plan-zoom="out">−</button><button data-plan-zoom="reset">איפוס</button></div></div><div class="scene-caption"><small>PLAN</small><b>תוכנית הדירה</b><span id="plan-copy"></span></div></div>
+              <div class="scene" data-scene-panel="view"><div class="window-pov"><img src="assets/aurelia-environment-aerial-v1.png" alt="מראה הכיוון שנבחר מחלון הדירה"><span id="window-proof-caption">מראה הכיוון שנבחר</span></div><div class="scene-caption"><small>VIEW FROM THE WINDOW</small><b id="view-title">הנוף מהחלון</b><span id="view-copy"></span><div class="look-controls"><button data-look="-15">שמאלה</button><button data-look="0">לכיוון הדירה</button><button data-look="15">ימינה</button></div></div></div>
+              <div class="scene" data-scene-panel="interior"><div id="interior-viewer" class="pano-viewer" aria-label="סיור 360 בדירה"></div><nav class="pano-scenes" id="interior-scenes" aria-label="חללי הדירה"></nav><div class="scene-caption compact"><small>360° APARTMENT TOUR</small><b id="interior-room">סלון, מטבח ומרפסת</b><span id="interior-copy">גררו לכל כיוון; נקודות בתוך הסיור מציגות מידה, מפרט ומעבר לחלל הבא.</span><button class="inline-action" data-scroll="studio">לעיצוב הדירה</button></div></div>
+              <div class="scene" data-scene-panel="facilities"><div class="facility-stage"><div class="facility-plan"><img src="assets/aurelia-site-plan-v1.svg" alt="תוכנית המתחם עם מיקום המתקנים"><div class="facility-pins" id="facility-pins"></div></div><div id="facility-viewer" class="pano-viewer" aria-label="סיור 360 במתקן הנבחר"></div></div><div class="facility-card" id="facility-card"></div></div>
+              <div class="scene" data-scene-panel="environment"><img src="assets/aurelia-environment-aerial-v1.png" alt="סיור אווירי בסביבת Aurelia בשדה דב"><div class="environment-card" id="environment-card"></div></div>
+            </div>
+            <aside class="unit-card" id="unit-card" aria-label="הדירה שנבחרה"></aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="project-map-section" id="project-map-section">
+        <header class="section-heading"><div><p>הדירה בתוך שדה דב</p><h2>הכיוון, הנוף והסביבה של הדירה שבחרתם</h2><span>האלומה יוצאת מהבניין ופונה אל כיוון המבט של הדירה. סננו את המפה כדי לראות את הים, הפארק, התחבורה והשירותים הקרובים.</span></div><div class="map-unit-context"><small>הדירה שבחרתם</small><b id="map-unit-label">—</b><span id="map-unit-direction">—</span></div></header>
+        <div class="project-map-shell"><nav class="map-filters" id="environment-filters" aria-label="קטגוריות בסביבה"></nav><div id="unit-map" class="live-map" aria-label="מפת הפרויקט, הסביבה ואלומת כיוון הדירה"></div></div>
+      </section>
+
+      <section class="feature-section facilities-overview" id="facilities-section"><div class="section-copy"><p>החיים בתוך הבניין</p><h2>12 מתקנים עם כל הפרטים שחשוב לדעת</h2><span>בחרו מתקן כדי לראות היכן הוא נמצא, מה גודלו, מתי הוא פתוח, מה מחכה בו וכיצד מגיעים אליו מהלובי.</span><button class="secondary" data-scene-jump="facilities">למפת המתקנים</button></div><img src="assets/aurelia-amenities-wellness-v1.png" alt="מתחם הבריאות והבריכה באורליה"></section>
+
+      <section class="feature-section reverse" id="environment-section"><div class="section-copy"><p>שדה דב בקבלת החלטה</p><h2>הים, הפארק, התחבורה והחיים היומיומיים סביב הדירה</h2><span>נקודת הפרויקט נשארת זהה בכל המפות. כל יעד מציג קטגוריה, זמן הליכה והקשר לדירה שנבחרה.</span><button class="secondary" data-scene-jump="environment">פתחו את הסביבה</button></div><img src="assets/aurelia-environment-aerial-v1.png" alt="אורליה בתוך רובע שדה דב והים"></section>
+
+      <section class="studio" id="studio"><header><p>APARTMENT STUDIO</p><h2>התאימו את הדירה לחיים שלכם</h2><span>בחרו גמרים, פתחים, נקודות חשמל והתאמות נגישות, מקמו אותם על התוכנית וצרפו את הבחירות לבקשת ההצעה.</span></header><div class="studio-grid"><div><div class="studio-options"><button class="selected" data-option="finish">חבילת גמר</button><button data-option="doors">פתחים ודלתות</button><button data-option="electric">חשמל ובית חכם</button><button data-option="plumbing">מטבח ורחצה</button><button data-option="accessibility">התאמות נגישות</button></div><div class="studio-catalog" id="studio-catalog"></div></div><div class="studio-plan" id="studio-canvas"><img id="studio-plan" src="assets/aurelia-plan-3br-v1.svg" alt="תוכנית הדירה לסטודיו"><div id="studio-annotations" aria-live="polite"></div><span id="studio-selection">בחרו פריט ואז לחצו על התוכנית כדי למקם אותו</span></div><aside><small>הדירה שבחרתם</small><b id="studio-unit">—</b><dl><div><dt>פריטים</dt><dd id="studio-count">0</dd></div><div><dt>תחומים</dt><dd id="studio-impact-count">0</dd></div><div><dt>גרסה</dt><dd id="studio-version">1</dd></div></dl><ol id="studio-summary"></ol><textarea id="studio-notes" placeholder="הערה כללית לבחירות שלכם"></textarea><div class="studio-actions"><button class="secondary" id="studio-undo">ביטול אחרון</button><button class="secondary" id="studio-clear">ניקוי</button></div><button class="primary" data-dialog="lead">צרפו את הבחירות לבקשת הצעה</button></aside></div></section>
+
+      <section class="article-shell" id="article"><aside><b>במדריך</b><a href="#article-overview">הפרויקט</a><a href="#article-apartments">הדירות</a><a href="#article-spec">המפרט</a><a href="#article-sde-dov">שדה דב</a><a href="#article-price">מחירים ועסקאות</a><a href="#team">צוות הפרויקט</a></aside><article><p class="eyebrow">מדריך הפרויקט</p><h2 id="article-overview">אורליה שדה דב: המדריך לקבלת החלטה</h2><p>עמוד הפרויקט נבנה בשתי שכבות שעובדות יחד: כלי בחירה שמאפשר להגיע לדירה מסוימת, ותוכן עומק שמסביר את הבניין, המיקום והעסקה. התוכן אינו משכפל את עמוד השכונה או את עמוד היזם; הוא משתמש בהם כישויות מקושרות ומחזיק רק את אינטנט הפרויקט.</p><h3 id="article-apartments">הדירות והתמהיל</h3><p>המלאי מחולק למגדל ולשני אגפי גן. כל יחידה מחזיקה מזהה קבוע, קומה, קו, כיוון, שטח פנים, מרפסת, מחיר, תוכנית, נקודת hotspot, זווית מצלמה ויעד נוף. החיבור הזה מונע מצב שבו הכרטיס מציג דירה אחת והתוכנית או הפנייה שומרות דירה אחרת.</p><h3 id="article-spec">המפרט והנדסת הבניין</h3><p>מאחורי הטקסט הציבורי נמצא BOM הנדסי בן 17 מערכות. הוא מכסה קרקע ויסודות, שלד ורוח, מעטפת חוף, אקוסטיקה, מחיצות וגמרים, מים וניקוז, מיזוג, חשמל, אש, מעליות, נגישות, בקרת בניין, פיתוח, מתקנים, אנרגיה ותחזוקה. הציבור רואה את תוצאת הביצועים; צוות הפרויקט רואה קוד, חומר, כמות, בדיקה ותחזוקה.</p><h3 id="article-sde-dov">אורליה בתוך שדה דב</h3><p>מקטע הסביבה מחבר את הפרויקט לחוף, לפארק, לטיילת, לתחבורה, לחינוך, למסחר ולשירותים. עמוד שכונת שדה דב נשאר בעל הבית של הביטוי הרחב; עמוד אורליה מסביר כיצד המיקום משפיע על הדירה שנבחרה.</p><h3 id="article-price">מחירים, עסקאות והחלטה</h3><p>המחיר מופיע בכרטיס היחידה ולא כטווח מנותק. שכבת הנתונים יכולה להתחבר למקורות עסקאות רחוב ושכונה, להשוות שטח, קומה וכיוון, ולהציג למשתמש רצף ברור מהדירה אל התוכנית, הנוף והפנייה.</p><section id="team"><h3>היזם, האדריכל וצוות הפרויקט</h3><div class="entity-cards"><a href="#team"><b>Aurelia Development Group</b><span>יזם</span></a><a href="#team"><b>Aurelia Design Lab</b><span>אדריכלות</span></a><a href="#team"><b>NadLan Professionals</b><span>יועצים ומומחים</span></a></div></section></article></section>
+
+      <section class="faq" id="faq"><p>שאלות מרכזיות</p><h2>כל מה שצריך לפני הפגישה</h2><details open><summary>איך בוחרים דירה?</summary><span>לוחצים על נקודה בבניין או על שורה במלאי. כל הכלים ממשיכים עם אותו מזהה יחידה.</span></details><details><summary>איך רואים את המחיר?</summary><span>המחיר נמצא בכרטיס היחידה לצד הקומה, הכיוון, השטח והמרפסת.</span></details><details><summary>אפשר לקבל תוכנית ולראות את הנוף?</summary><span>כן. התוכנית, הנוף, האלומה וסיור הפנים נפתחים מתוך הכרטיס ושומרים את הבחירה.</span></details></section>
+
+      <section class="appointment" id="appointment"><div><p>השלב הבא</p><h2>קבלו את תוכניות הדירה וקבעו שיחה עם כל ההקשר שכבר בחרתם</h2><span id="appointment-unit">הדירה, התוכנית, הנוף והמפרט יצורפו לבקשה.</span></div><button class="primary" data-dialog="lead">קבלת תוכניות ומחירים</button><button class="secondary" data-dialog="meeting">בחירת מועד</button></section>
+    </section>
+
+    <section class="view lab-view" data-view="recipe"><header class="lab-page-title"><p>PAGE SEQUENCE</p><h1>המתכון: מה נמצא איפה ולמה</h1><span>20 מקטעים בסדר החלטה אחד. לכל מקטע מיקום בדסקטופ, מיקום במובייל, תפקיד SEO, תפקיד המרה ותלויות.</span></header><div class="recipe-summary" id="recipe-summary"></div><div class="recipe-list" id="recipe-list"></div></section>
+    <section class="view lab-view" data-view="checklist"><header class="lab-page-title"><p>EXECUTABLE CHECKLIST</p><h1>נורות עם עובדה, ראיה וקישור לתיקון</h1><span>המערכת אינה חוסמת שמירה או פרסום. היא מראה בדיוק מה נבדק, היכן הראיה ומי הבעלים של הרכיב.</span></header><div class="check-dashboard" id="check-dashboard"></div><div class="check-controls"><input id="check-search" type="search" placeholder="חיפוש לפי דרישה, ID או תחום"><select id="check-domain"><option value="all">כל התחומים</option></select><select id="check-mode"><option value="all">כל שיטות הבדיקה</option></select><button id="run-local-checks">הרץ בדיקות מקומיות</button></div><div class="check-layout"><div class="check-list" id="check-list"></div><aside class="check-detail" id="check-detail"></aside></div></section>
+    <section class="view lab-view" data-view="selection"><header class="lab-page-title"><p>UNIT SELECTION FORENSICS</p><h1>מהלחיצה על הבניין ועד אותה דירה בכל הכלים</h1><span>עוגן תלת־ממדי, פגיעה במשטח, מחוות מגע, הקרנה, occlusion וסנכרון unit_id — עם קוד וראיה לכל שלב.</span></header><div id="selection-panel"></div></section>
+    <section class="view lab-view" data-view="bom"><header class="lab-page-title"><p>ENGINEERING BILL OF MATERIALS</p><h1>מהבניין הציבורי אל מפרט הנדסי פנימי</h1><span>17 מערכות, 33 מכלולים ו־80 רכיבים. כל רכיב כולל מפרט, יחידה, בסיס כמות, ביצועים, בדיקת קבלה ותחזוקה.</span></header><div class="bom-layout"><nav id="bom-systems"></nav><main id="bom-detail"></main></div></section>
+    <section class="view lab-view" data-view="seo"><header class="lab-page-title"><p>SEARCH INTENT & CONTENT</p><h1>עמוד אחד הוא בעל הבית של ביטוי הפרויקט</h1><span>מפת ביטויים, SERP, כותרות, ישויות, 5,000 מילים וחמש שפות—ללא התנגשות עם עמוד השכונה, היזם או אנשי המקצוע.</span></header><div id="seo-panel"></div></section>
+    <section class="view lab-view" data-view="source"><header class="lab-page-title"><p>PUBLIC HTML FORENSICS</p><h1>View Source, DOM מרונדר ו־fingerprints של כל העמוד</h1><span>הבדיקה אינה נעצרת במודול הפרויקט: head, favicon, תפריט, schema, סקריפטים, footer וכל שאריות האתר צפות עם בעלים וראיה.</span></header><div id="source-panel"></div></section>
+    <section class="view lab-view" data-view="wordpress"><header class="lab-page-title"><p>WORDPRESS COMPATIBILITY</p><h1>שתי גרסאות, חוזה נתונים אחד</h1><span>המעבדה אינה נוגעת באתר. גרסת הייצור מתחברת ל־nadlan_project, לשדות הקיימים, ל־NADLAN_SHOWROOM, למנועים ול־endpoints שכבר קיימים.</span></header><div id="wordpress-panel"></div></section>
+  </main>
+
+  <div class="dialog-backdrop" id="dialog" hidden>
+    <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="סגירה">×</button><p id="dialog-kicker">AURELIA</p><h2 id="dialog-title">קבלת תוכניות ומחירים</h2><div class="dialog-context" id="dialog-context"></div><form id="decision-form"><label>שם מלא<input required name="name" autocomplete="name"></label><label>טלפון<input required name="phone" autocomplete="tel" inputmode="tel"></label><label>שפה<select name="language"><option>עברית</option><option>English</option><option>Français</option><option>Русский</option><option>العربية</option></select></label><label>מועד מועדף<input name="date" type="date"></label><button class="primary" type="submit">שליחת הבקשה</button></form><div class="dialog-success" hidden><i>✓</i><h3>הבקשה נבנתה עם כל ההקשר</h3><p id="payload-preview"></p><button class="secondary dialog-done">חזרה לפרויקט</button></div></section>
+  </div>
+
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>
+  <script src="https://unpkg.com/maplibre-gl@5.16.0/dist/maplibre-gl.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

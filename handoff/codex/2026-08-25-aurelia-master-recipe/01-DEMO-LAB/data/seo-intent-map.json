@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1.0.0",
+  "pageOwner": "aurelia-sde-dov",
+  "primaryIntent": "A buyer researching Aurelia in Sde Dov and wanting apartments, plans, prices, views and project information.",
+  "primaryKeyword": "אורליה שדה דב",
+  "supportingKeywords": [
+    "Aurelia Sde Dov",
+    "אורליה תל אביב",
+    "דירות חדשות בשדה דב",
+    "מחירי דירות באורליה",
+    "תוכניות דירה אורליה",
+    "פרויקט יוקרה שדה דב",
+    "דירות עם נוף לים שדה דב"
+  ],
+  "serp": {
+    "title": "אורליה שדה דב Aurelia | דירות, תוכניות, נוף ומחירים | NadLan",
+    "titleTargetChars": "50-60",
+    "metaDescription": "בחרו דירה באורליה שדה דב לפי קומה וכיוון, צפו בתוכנית, בנוף ובסיור הפנים, בדקו את מתקני הפרויקט והסביבה וקבלו תוכניות ומחירים מותאמים לדירה שבחרתם.",
+    "metaTargetChars": "130-160",
+    "h1": "Aurelia Sde Dov — אורליה שדה דב",
+    "canonicalPattern": "https://nad-lan.co.il/projects/aurelia-sde-dov/",
+    "favicon": "one crawlable square site icon owned by the portal"
+  },
+  "openingParagraphMustAnswer": ["all project names", "developer", "Sde Dov", "project type", "status", "apartment range", "price range", "selection capability"],
+  "headingPlan": [
+    {"level":"H2","text":"בחירת דירה באורליה שדה דב","intent":"inventory and conversion"},
+    {"level":"H2","text":"תוכניות הדירות, הכיוונים והנוף","intent":"plans and views"},
+    {"level":"H2","text":"המתקנים וחוויית המגורים","intent":"facilities"},
+    {"level":"H2","text":"אורליה בתוך רובע שדה דב","intent":"location"},
+    {"level":"H2","text":"המפרט הטכני והנדסת הבניין","intent":"specification"},
+    {"level":"H2","text":"מחירים, תמהיל דירות ועסקאות בסביבה","intent":"pricing and transactions"},
+    {"level":"H2","text":"היזם, האדריכל וצוות הפרויקט","intent":"entities and trust"},
+    {"level":"H2","text":"שאלות ותשובות על אורליה שדה דב","intent":"FAQ"}
+  ],
+  "contentPlacement": {
+    "aboveShowroom": "120-180 words that answer the exact project query.",
+    "insideTools": "Accessible unit, plan, view, facility and environment facts generated from one data owner.",
+    "afterDecisionTools": "Approximately 5,000 words organized by buyer questions, not a keyword quota.",
+    "footer": "Sources, update date and portal-wide legal language; never the opening answer."
+  },
+  "entityOwnership": [
+    {"entity":"Aurelia","owner":"project page","linksTo":["Sde Dov guide","developer page","architect page"]},
+    {"entity":"Sde Dov","owner":"neighborhood guide","linksTo":["Aurelia","other projects","transactions","planning"]},
+    {"entity":"developer","owner":"developer page","linksTo":["Aurelia","other projects","professionals"]},
+    {"entity":"transactions","owner":"transaction/street data module","linksTo":["project","neighborhood"]}
+  ],
+  "structuredData": ["WebPage", "BreadcrumbList", "ImageObject", "VideoObject when present", "FAQPage only for visible FAQ", "Organization portal identity"],
+  "languages": [
+    {"code":"he","dir":"rtl","projectName":"אורליה שדה דב","keyword":"אורליה שדה דב"},
+    {"code":"en","dir":"ltr","projectName":"Aurelia Sde Dov","keyword":"Aurelia Sde Dov apartments"},
+    {"code":"fr","dir":"ltr","projectName":"Aurelia Sde Dov","keyword":"appartements Aurelia Sde Dov"},
+    {"code":"ru","dir":"ltr","projectName":"Aurelia Sde Dov","keyword":"квартиры Aurelia Sde Dov"},
+    {"code":"ar","dir":"rtl","projectName":"أوريليا سديه دوف","keyword":"شقق أوريليا سديه دوف"}
+  ],
+  "cannibalizationRules": [
+    "Only the project page targets the exact project name plus price, plan and apartment modifiers.",
+    "The Sde Dov guide owns broad neighborhood queries and links to every project.",
+    "Developer and professional pages own entity-name queries and summarize projects without duplicating the project article.",
+    "No filter, unit, plan or language fallback URL is indexable unless it has a deliberate canonical and unique search intent."
+  ]
+}

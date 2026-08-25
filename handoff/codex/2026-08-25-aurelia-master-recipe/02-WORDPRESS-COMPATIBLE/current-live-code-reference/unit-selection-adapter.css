@@ -1,0 +1,39 @@
+/* Public projected controls. The 3D anchors stay inside model-viewer and never own screen coordinates. */
+.nadlan-hotspot-overlay {
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.nadlan-projected-hotspot {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgb(202 164 94 / 72%);
+  border-radius: 50%;
+  background: rgb(20 21 18 / 92%);
+  color: #fff;
+  font: 700 12px/1 system-ui, sans-serif;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.nadlan-projected-hotspot:focus-visible {
+  outline: 3px solid #f1c879;
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .nadlan-projected-hotspot {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nadlan-projected-hotspot { transition: none; }
+}

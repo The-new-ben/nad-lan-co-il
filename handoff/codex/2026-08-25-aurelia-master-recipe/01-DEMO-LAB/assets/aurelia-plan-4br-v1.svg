@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="t d">
+  <title id="t">תוכנית 4 חדרים</title><desc id="d">תוכנית מקורית להמחשת דירה בפרויקט Aurelia</desc>
+  <style>text{font:22px Arial,sans-serif;fill:#24211d} rect,path{fill:#f7f2e9;stroke:#b8aa94;stroke-width:4}.furniture{fill:none;stroke-width:2}.terrace{fill:#dceaf0}.wet{fill:#eadfce}.north{font-weight:700}.disclaimer{font-size:18px;fill:#6d6255}</style>
+  <rect x="20" y="20" width="1160" height="780" rx="10"/>
+  <g data-room="bedroom-1"><rect x="60" y="80" width="288" height="195" rx="4"/><text x="78" y="116">חדר 1</text><path d="M80 162h90v70h-90z" class="furniture"/></g><g data-room="bedroom-2"><rect x="360" y="80" width="288" height="195" rx="4"/><text x="378" y="116">חדר 2</text><path d="M380 162h90v70h-90z" class="furniture"/></g><g data-room="bedroom-3"><rect x="660" y="80" width="288" height="195" rx="4"/><text x="678" y="116">חדר 3</text><path d="M680 162h90v70h-90z" class="furniture"/></g>
+  <g data-room="living"><rect x="60" y="310" width="880" height="430"/><text x="88" y="352">סלון · מטבח · אוכל</text><path d="M110 405h230v105h-230zM390 405h170v90h-170z" class="furniture"/></g>
+  <g data-room="bath"><rect class="wet" x="750" y="80" width="210" height="180"/><text x="775" y="120">רחצה</text></g>
+  <g data-room="terrace"><path class="terrace" d="M1020 40h140v740h-140q60-370 0-740z"/><text transform="translate(1072 482) rotate(-90)">מרפסת · ים</text></g>
+  <text class="north" x="70" y="788">N ↑</text><text class="disclaimer" x="500" y="788">הדמיה להמחשה</text>
+</svg>
