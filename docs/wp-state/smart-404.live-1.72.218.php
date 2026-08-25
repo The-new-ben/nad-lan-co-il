@@ -42,28 +42,6 @@ if ( ! function_exists( 'nadlan_smart404_city_map' ) ) {
 	}
 }
 
-/* City-layer teardown (owner order 2026-08-25): the whole /city/ page tree and
- * the /cities/ taxonomy archives are permanently retired. The prefix answers
- * 410 Gone so engines drop it fast (NO redirects - owner law). Taxonomy DATA
- * stays (bulk-project-seo reads city terms); only the public URLs die.
- * Priority 5: the helpful body below still renders, the 410 status is kept. */
-add_action( 'template_redirect', function () {
-	if ( is_admin() ) { return; }
-	$req  = isset( $_SERVER['REQUEST_URI'] ) ? (string) $_SERVER['REQUEST_URI'] : '';
-	$path = urldecode( (string) parse_url( $req, PHP_URL_PATH ) );
-	if ( ! preg_match( '#^/(city|cities)(/|$)#u', $path ) ) { return; }
-	global $wp_query;
-	if ( $wp_query ) { $wp_query->set_404(); }
-	status_header( 410 );
-	nocache_headers();
-}, 5 );
-
-/* The retired nadlan_city taxonomy stops advertising itself in the Yoast
- * sitemap index (its term archives answer 410 now). */
-add_filter( 'wpseo_sitemap_exclude_taxonomy', function ( $excluded, $tax ) {
-	return ( 'nadlan_city' === $tax ) ? true : $excluded;
-}, 10, 2 );
-
 add_action( 'template_redirect', function () {
 	if ( is_admin() || ! is_404() ) { return; }
 
@@ -107,7 +85,7 @@ add_action( 'template_redirect', function () {
 	<p class="nlsf-sub">אבל מה שחיפשתם כנראה כן. הקטלוג סודר מחדש - הנה הדרכים המהירות להגיע למקום הנכון.</p>
 	<?php if ( $city_slug ) : ?>
 	<div class="nlsf-city">חיפשתם משהו ב<strong><?php echo esc_html( $city_label ); ?></strong>?
-		<a href="<?php echo esc_url( home_url( '/projects/' ) ); ?>">כל הפרויקטים החדשים ←</a>
+		<a href="<?php echo esc_url( home_url( '/city/' . $city_slug . '/projects/' ) ); ?>">כל הפרויקטים ב<?php echo esc_html( $city_label ); ?> ←</a>
 	</div>
 	<?php endif; ?>
 	<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">

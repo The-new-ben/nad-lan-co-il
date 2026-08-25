@@ -19,10 +19,12 @@ if ( ! function_exists( 'nadlan_breadcrumbs_items' ) ) {
 		if ( is_singular( 'nadlan_property' ) ) {
 			$items[] = array( 'name' => 'דירות', 'url' => home_url( '/properties/' ) );
 			$city = (string) get_post_meta( get_the_ID(), 'city', true );
+			if ( $city ) { $items[] = array( 'name' => $city, 'url' => home_url( '/city/' . rawurlencode( $city ) . '/properties/' ) ); }
 			$items[] = array( 'name' => get_the_title(), 'url' => get_permalink() );
 		} elseif ( is_singular( 'nadlan_project' ) ) {
 			$items[] = array( 'name' => 'פרויקטים', 'url' => home_url( '/projects/' ) );
 			$city = (string) get_post_meta( get_the_ID(), 'city', true );
+			if ( $city ) { $items[] = array( 'name' => $city, 'url' => home_url( '/city/' . rawurlencode( $city ) . '/projects/' ) ); }
 			$items[] = array( 'name' => get_the_title(), 'url' => get_permalink() );
 		} elseif ( is_singular( 'nadlan_professional' ) ) {
 			$items[] = array( 'name' => 'אנשי מקצוע', 'url' => home_url( '/professionals/' ) );
