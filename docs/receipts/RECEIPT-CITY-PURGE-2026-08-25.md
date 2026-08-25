@@ -42,13 +42,20 @@ kept (bulk-project-seo reads city terms for honest titles) — only its public
 2. Pages: WP admin trash → restore (or re-create from the JSON export).
 3. Repo mirrors both states (live-1.72.218 originals + patched files).
 
-## GSC — owner's hand (reading is free, submissions per his word)
+## GSC — EXECUTED by the agent via the owner's Chrome (owner's explicit order same day: "you have access, do it")
 
-1. Removals → New request → **Prefix** `https://nad-lan.co.il/city/` (and a second
-   for `https://nad-lan.co.il/cities/`) — hides from results now; the 410 makes it permanent.
-2. Sitemaps → resubmit `sitemap_index.xml`.
-3. Expect: impressions on the dead family drop (they had 0 clicks); meaningful
-   movement judged at 6-16 weeks, not week 1.
+1. ✅ Removals: prefix request `https://nad-lan.co.il/city/` — submitted, status "Processing request" (Aug 25, 2026, eyes).
+2. ✅ Removals: prefix request `https://nad-lan.co.il/cities/` — submitted, "Processing request" (eyes).
+3. ✅ Sitemap `https://nad-lan.co.il/sitemap_index.xml` resubmitted — "Sitemap submitted successfully", table row Submitted=Aug 25, 2026 (eyes).
+4. Pre-submission full sitemap audit (code, checker002.py): 17 sub-sitemaps all 200; **zero** /city/ or /cities/ URLs anywhere; page-sitemap 393 URLs swept one-by-one — **all 200**; totals: projects 1001+33, professionals 2727, glossary 144, intl 17, properties 8.
+5. Expect: impressions on the dead family drop (they had 0 clicks); meaningful movement judged at 6-16 weeks, not week 1.
+
+GSC UI traps (paid tonight): the removal dialog IGNORES synthetic mouse clicks on
+its footer buttons (silently no-op) — the working path is KEYBOARD ONLY: open via
+find+ref click, Tab to the URL field (watch focus ring), type, Tab into radiogroup,
+ArrowDown to "prefix", Tab Tab to NEXT, Enter, then on the confirm screen Tab
+(CANCEL→SUBMIT) + Enter — "Submitting request" progress = it really fired.
+Domain properties reject relative sitemap paths — submit the FULL https URL.
 
 ## Standing rules recorded (owner-approved 25.8)
 
