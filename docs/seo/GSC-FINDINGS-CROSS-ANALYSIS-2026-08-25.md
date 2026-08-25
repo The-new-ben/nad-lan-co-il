@@ -84,3 +84,30 @@ Plus 65 P2_REVIEW_DUPLICATE_PATTERN URLs with no GSC signal — sweep later.
 - **Scope limit**: token is READ-ONLY. API sitemap-submit would need a one-time
   interactive full-scope consent by the owner; the UI path (done today) covers it.
 - CLAUDE.md now carries the access block; memory: nadlan-gsc-api-access.
+- **Same evening, owner order "full access": FULL webmasters scope obtained**
+  via loopback OAuth consent driven through the owner's Chrome
+  (gsc-token-full.json; the readonly token untouched). Proven by an API
+  sitemap submit: lastSubmitted 2026-08-25T18:03Z, errors=0. gsc_api.py now
+  prefers the full token and gained `submit-sitemap`.
+
+## F. URL word-duplication audit (owner law 25.8; tool: tools/gsc/url_word_audit.py)
+
+Live-sitemap scan, 4,372 URLs [code]:
+
+- **93 URLs repeat a word inside their own path.** Clusters: 22× `/investment/{city}-investment-apartment/`,
+  20× `/commercial-real-estate/commercial-*`, 7× `/mortgage-calculator/mortgage-*`,
+  7× `/short-term-rentals-abroad/short-term-rentals-*`, guide children repeating
+  parent names (buying-apartment, real-estate-lawyer), ~15 benign Hebrew
+  person/project names (בן-משה-משה style).
+- **Discovery:** `/new-projects/new-projects-tel-aviv/` and
+  `/new-projects/north-tel-aviv-new-projects/` are surviving city-project-intent
+  pages OUTSIDE the purged /city/ layer — they compete with /projects/ on the
+  exact head queries (the 163-impr "צפון הישן" group's extra URLs). Added to the
+  phase-2 intent-map review: guide keeps guide-intent wording, /projects/ owns
+  the category phrase.
+- Cross-URL token pressure (awareness, not deletion): real/estate 105 URLs,
+  apartment 100, tel/aviv ~75, commercial 74, prices 67, new 57 — mostly the
+  guide clusters + the professionals name directory (natural). `demo` appears in
+  22 sitemap URLs — hygiene review item.
+- Standing law recorded as CLAUDE.md iron law 9: one word = one owner URL; no
+  double words in a URL; audit before minting any slug; no retroactive renames.

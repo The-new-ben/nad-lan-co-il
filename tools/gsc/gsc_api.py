@@ -21,10 +21,11 @@ scope = a one-time interactive re-consent by the owner.
 """
 import argparse, csv, datetime as dt, json, os, sys, urllib.parse, urllib.request
 
-CLIENT = os.environ.get('GSC_OAUTH_CLIENT_PATH',
-    os.path.join(os.path.expanduser('~'), 'Documents', 'jus-tice-secrets', 'gsc', 'gsc-oauth-client.json'))
+_SECRETS = os.path.join(os.path.expanduser('~'), 'Documents', 'jus-tice-secrets', 'gsc')
+CLIENT = os.environ.get('GSC_OAUTH_CLIENT_PATH', os.path.join(_SECRETS, 'gsc-oauth-client.json'))
+_FULL = os.path.join(_SECRETS, 'gsc-token-full.json')   # full webmasters scope (owner consent 25.8.2026)
 TOKEN = os.environ.get('GSC_TOKEN_PATH',
-    os.path.join(os.path.expanduser('~'), 'Documents', 'jus-tice-secrets', 'gsc', 'gsc-token.json'))
+    _FULL if os.path.exists(_FULL) else os.path.join(_SECRETS, 'gsc-token.json'))
 DEFAULT_SITE = 'sc-domain:nad-lan.co.il'
 API = 'https://www.googleapis.com/webmasters/v3'
 
@@ -72,6 +73,13 @@ def cmd_sitemaps(tok, site):
             s.get('path'), s.get('lastSubmitted'), s.get('lastDownloaded'), s.get('errors')))
 
 
+def cmd_submit(tok, site, feedpath):
+    """Submit (or resubmit) a sitemap - needs the FULL webmasters scope."""
+    call(tok, '/sites/%s/sitemaps/%s' % (
+        urllib.parse.quote(site, safe=''), urllib.parse.quote(feedpath, safe='')), method='PUT')
+    print('submitted: %s' % feedpath)
+
+
 def cmd_query(tok, site, start, end, dimensions, limit, out, filter_page):
     body = {'startDate': start, 'endDate': end, 'rowLimit': min(limit, 25000), 'startRow': 0,
             'dataState': 'final'}
@@ -113,8 +121,9 @@ def cmd_totals(tok, site, days):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('cmd', choices=['sites', 'sitemaps', 'query', 'totals'])
+    p.add_argument('cmd', choices=['sites', 'sitemaps', 'query', 'totals', 'submit-sitemap'])
     p.add_argument('--site', default=DEFAULT_SITE)
+    p.add_argument('--feedpath', default='https://nad-lan.co.il/sitemap_index.xml')
     p.add_argument('--start'); p.add_argument('--end')
     p.add_argument('--dimensions', default='query,page')
     p.add_argument('--limit', type=int, default=25000)
@@ -125,6 +134,7 @@ def main():
     print('# auth ok, scope=%s, ttl=%ss' % (scope, ttl), file=sys.stderr)
     if a.cmd == 'sites': cmd_sites(tok)
     elif a.cmd == 'sitemaps': cmd_sitemaps(tok, a.site)
+    elif a.cmd == 'submit-sitemap': cmd_submit(tok, a.site, a.feedpath)
     elif a.cmd == 'totals': cmd_totals(tok, a.site, a.days)
     else:
         if not (a.start and a.end): sys.exit('query needs --start and --end (YYYY-MM-DD)')
