@@ -1,0 +1,372 @@
+{
+  "verifiedAt": "2026-08-25T23:55:47.311Z",
+  "root": "C:\\Users\\777\\Documents\\ChatGPT-Work\\nad-lan-co-il\\handoff\\codex\\2026-08-26-aurelia-live-qa-remediation",
+  "summary": {
+    "assertions": 90,
+    "passed": 90,
+    "failed": 0
+  },
+  "failures": [],
+  "assertions": [
+    {
+      "pass": true,
+      "message": "Checklist is explicitly non-blocking."
+    },
+    {
+      "pass": true,
+      "message": "At least 700 atomic checks exist."
+    },
+    {
+      "pass": true,
+      "message": "Every checklist ID is unique."
+    },
+    {
+      "pass": true,
+      "message": "Exactly 12 detailed facilities exist."
+    },
+    {
+      "pass": true,
+      "message": "Asset manifest contains 12 panorama assets."
+    },
+    {
+      "pass": true,
+      "message": "Canonical code map contains at least 11 exact repository excerpts."
+    },
+    {
+      "pass": true,
+      "message": "facility-lobby-concierge: panorama file exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-lobby-concierge: asset is PNG."
+    },
+    {
+      "pass": true,
+      "message": "facility-lobby-concierge: panorama is 2:1 (1774x887)."
+    },
+    {
+      "pass": true,
+      "message": "facility-lobby-concierge: at least six functional scene hotspots are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-lobby-concierge: at least seven equipment/features are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-lobby-concierge: semantic GLB node contract exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-lobby-concierge: asset SHA-256 matches manifest."
+    },
+    {
+      "pass": true,
+      "message": "facility-infinity-pool: panorama file exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-infinity-pool: asset is PNG."
+    },
+    {
+      "pass": true,
+      "message": "facility-infinity-pool: panorama is 2:1 (1774x887)."
+    },
+    {
+      "pass": true,
+      "message": "facility-infinity-pool: at least six functional scene hotspots are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-infinity-pool: at least seven equipment/features are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-infinity-pool: semantic GLB node contract exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-infinity-pool: asset SHA-256 matches manifest."
+    },
+    {
+      "pass": true,
+      "message": "facility-gym: panorama file exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-gym: asset is PNG."
+    },
+    {
+      "pass": true,
+      "message": "facility-gym: panorama is 2:1 (1774x887)."
+    },
+    {
+      "pass": true,
+      "message": "facility-gym: at least six functional scene hotspots are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-gym: at least seven equipment/features are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-gym: semantic GLB node contract exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-gym: asset SHA-256 matches manifest."
+    },
+    {
+      "pass": true,
+      "message": "facility-spa-recovery: panorama file exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-spa-recovery: asset is PNG."
+    },
+    {
+      "pass": true,
+      "message": "facility-spa-recovery: panorama is 2:1 (1774x887)."
+    },
+    {
+      "pass": true,
+      "message": "facility-spa-recovery: at least six functional scene hotspots are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-spa-recovery: at least seven equipment/features are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-spa-recovery: semantic GLB node contract exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-spa-recovery: asset SHA-256 matches manifest."
+    },
+    {
+      "pass": true,
+      "message": "facility-lounge-library: panorama file exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-lounge-library: asset is PNG."
+    },
+    {
+      "pass": true,
+      "message": "facility-lounge-library: panorama is 2:1 (1774x887)."
+    },
+    {
+      "pass": true,
+      "message": "facility-lounge-library: at least six functional scene hotspots are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-lounge-library: at least seven equipment/features are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-lounge-library: semantic GLB node contract exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-lounge-library: asset SHA-256 matches manifest."
+    },
+    {
+      "pass": true,
+      "message": "facility-coworking: panorama file exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-coworking: asset is PNG."
+    },
+    {
+      "pass": true,
+      "message": "facility-coworking: panorama is 2:1 (1774x887)."
+    },
+    {
+      "pass": true,
+      "message": "facility-coworking: at least six functional scene hotspots are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-coworking: at least seven equipment/features are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-coworking: semantic GLB node contract exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-coworking: asset SHA-256 matches manifest."
+    },
+    {
+      "pass": true,
+      "message": "facility-childrens-club: panorama file exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-childrens-club: asset is PNG."
+    },
+    {
+      "pass": true,
+      "message": "facility-childrens-club: panorama is 2:1 (1774x887)."
+    },
+    {
+      "pass": true,
+      "message": "facility-childrens-club: at least six functional scene hotspots are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-childrens-club: at least seven equipment/features are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-childrens-club: semantic GLB node contract exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-childrens-club: asset SHA-256 matches manifest."
+    },
+    {
+      "pass": true,
+      "message": "facility-private-dining: panorama file exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-private-dining: asset is PNG."
+    },
+    {
+      "pass": true,
+      "message": "facility-private-dining: panorama is 2:1 (1774x887)."
+    },
+    {
+      "pass": true,
+      "message": "facility-private-dining: at least six functional scene hotspots are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-private-dining: at least seven equipment/features are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-private-dining: semantic GLB node contract exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-private-dining: asset SHA-256 matches manifest."
+    },
+    {
+      "pass": true,
+      "message": "facility-sky-garden: panorama file exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-sky-garden: asset is PNG."
+    },
+    {
+      "pass": true,
+      "message": "facility-sky-garden: panorama is 2:1 (1774x887)."
+    },
+    {
+      "pass": true,
+      "message": "facility-sky-garden: at least six functional scene hotspots are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-sky-garden: at least seven equipment/features are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-sky-garden: semantic GLB node contract exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-sky-garden: asset SHA-256 matches manifest."
+    },
+    {
+      "pass": true,
+      "message": "facility-cinema: panorama file exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-cinema: asset is PNG."
+    },
+    {
+      "pass": true,
+      "message": "facility-cinema: panorama is 2:1 (1774x887)."
+    },
+    {
+      "pass": true,
+      "message": "facility-cinema: at least six functional scene hotspots are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-cinema: at least seven equipment/features are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-cinema: semantic GLB node contract exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-cinema: asset SHA-256 matches manifest."
+    },
+    {
+      "pass": true,
+      "message": "facility-movement-studio: panorama file exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-movement-studio: asset is PNG."
+    },
+    {
+      "pass": true,
+      "message": "facility-movement-studio: panorama is 2:1 (1774x887)."
+    },
+    {
+      "pass": true,
+      "message": "facility-movement-studio: at least six functional scene hotspots are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-movement-studio: at least seven equipment/features are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-movement-studio: semantic GLB node contract exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-movement-studio: asset SHA-256 matches manifest."
+    },
+    {
+      "pass": true,
+      "message": "facility-mobility-room: panorama file exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-mobility-room: asset is PNG."
+    },
+    {
+      "pass": true,
+      "message": "facility-mobility-room: panorama is 2:1 (1774x887)."
+    },
+    {
+      "pass": true,
+      "message": "facility-mobility-room: at least six functional scene hotspots are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-mobility-room: at least seven equipment/features are specified."
+    },
+    {
+      "pass": true,
+      "message": "facility-mobility-room: semantic GLB node contract exists."
+    },
+    {
+      "pass": true,
+      "message": "facility-mobility-room: asset SHA-256 matches manifest."
+    }
+  ]
+}

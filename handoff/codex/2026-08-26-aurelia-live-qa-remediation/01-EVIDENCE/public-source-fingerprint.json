@@ -1,0 +1,91 @@
+{
+  "capturedAt": "2026-08-26T00:00:00+03:00",
+  "url": "https://nad-lan.co.il/projects/aurelia/?project=aurelia&lang=he&unit=aur-t-13-e",
+  "captureMode": "public-server-response-view-source",
+  "http": {
+    "status": 200,
+    "server": "nginx",
+    "charset": "UTF-8",
+    "bytes": 496379
+  },
+  "rawSha256": "004a1559cfe928c732f00a551e420fde75bd5191c262c7088a5331eaff7b40bc",
+  "rawHashUse": "Evidence for this single response only; repeated raw responses vary because of contact/email obfuscation.",
+  "canonicalizedSnapshot": {
+    "chars": 490124,
+    "sha256": "7dc8375e5408535eab85d8f92d97cc3b23e30d27b98c53efbe5533d087bcb0de",
+    "stableAcrossTwoRequests": true
+  },
+  "redactedSnapshot": {
+    "chars": 232714,
+    "sha256": "a70f6a9a5cf56ef43c6e1256a7c7b6af04ca5f8056af0e66924eedf6998f9340",
+    "stableAcrossTwoRequests": true,
+    "stored": false,
+    "reason": "Do not place public tokens/endpoints/contact payload under public uploads or in the handoff."
+  },
+  "seo": {
+    "title": "אורליה שדה דב Aurelia | דירות, תוכניות, נוף ומחירים | נדלן",
+    "canonical": "https://nad-lan.co.il/projects/aurelia/",
+    "h1Count": 1,
+    "robots": "index, follow",
+    "hreflang": [
+      "he",
+      "x-default"
+    ],
+    "runtimeLanguagesDeclared": [
+      "he",
+      "en",
+      "fr",
+      "ru",
+      "ar"
+    ],
+    "structuredDataBlocks": 5,
+    "structuredDataTypes": [
+      "Yoast graph",
+      "FAQPage",
+      "ApartmentComplex",
+      "BreadcrumbList",
+      "FAQPage"
+    ],
+    "schemaContradictions": [
+      "Two non-identical BreadcrumbList objects",
+      "Two FAQPage objects",
+      "Facilities claimed in FAQ/meta but facilities data and UI are absent",
+      "ApartmentComplex lacks image, offers and amenityFeature"
+    ]
+  },
+  "favicon": {
+    "sourceHasIcons": true,
+    "urlsRespond200": true,
+    "mimeValid": true,
+    "conclusion": "Not broken in public source. SERP absence must be checked with live SERP/GSC recrawl evidence."
+  },
+  "missingSecurityHeadersObserved": [
+    "Content-Security-Policy",
+    "Strict-Transport-Security",
+    "X-Content-Type-Options",
+    "Referrer-Policy",
+    "Permissions-Policy",
+    "X-Frame-Options"
+  ],
+  "runtime": {
+    "pluginHealthLive": "1.72.220",
+    "pluginRepoObserved": "1.72.206",
+    "coreAssetsByteEqualOrLineEndingOnly": [
+      "engine.js",
+      "mv-ux.js",
+      "showroom.css",
+      "mapbox-init.js",
+      "studio.js",
+      "buyflow.js",
+      "i18n.js",
+      "tokens.css",
+      "editorial.css"
+    ],
+    "liveOnlyInlineAdapter": {
+      "sha256": "fa8249a43bdceefe07cfefbe9fd3ad278eab15e9594de3776799743e6b4bdd31",
+      "chars": 8104,
+      "repositoryMatch": false,
+      "behavior": "Hides 320 canonical hotspots and creates six overlay dots."
+    }
+  }
+}

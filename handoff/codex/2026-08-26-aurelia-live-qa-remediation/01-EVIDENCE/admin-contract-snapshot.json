@@ -1,0 +1,60 @@
+{
+  "capturedAt": "2026-08-26T00:00:00+03:00",
+  "postId": 7514,
+  "slug": "aurelia",
+  "postType": "nadlan_project",
+  "title": "Aurelia Sde Dov - אורליה שדה דב",
+  "contentChars": 1408,
+  "excerptChars": 87,
+  "recipeBox": {
+    "renderedChecks": 0,
+    "renderedMessage": "המתכון מופעל כעת רק על פרויקט האב אורליה.",
+    "problem": "Prototype hard-scoping does not match live post 7514/slug aurelia."
+  },
+  "bomBox": {
+    "renderedAssemblies": 0,
+    "renderedMessage": "ה-BOM מופעל כעת רק על פרויקט האב אורליה.",
+    "problem": "Prototype hard-scoping does not match live post 7514/slug aurelia."
+  },
+  "showroomMeta": {
+    "enabled": true,
+    "latitude": 32.1057,
+    "longitude": 34.7779,
+    "posterPresent": true,
+    "glbPresent": true
+  },
+  "p3dMeta": {
+    "modelType": "procedural",
+    "glbPresent": true,
+    "usdzPresent": false,
+    "projectVideoPresent": false,
+    "projectTourPresent": false,
+    "cesiumTilesPresent": false,
+    "cameraLock": "horizontal",
+    "autoRotate": false,
+    "floorHeightM": 3.05,
+    "groundElevationM": null,
+    "averageEstimatedPricePerSqm": 99000,
+    "units": 320,
+    "status": {
+      "available": 302,
+      "reserved": 18
+    },
+    "unitFieldCoverage": {
+      "plan": 320,
+      "hotspotPosition": 320,
+      "hotspotNormal": 320,
+      "price": 320,
+      "azimuth": 0,
+      "interiorUrl": 0,
+      "viewAsset": 0
+    },
+    "uniquePlans": 5
+  },
+  "yoast": {
+    "title": "אורליה שדה דב Aurelia | דירות, תוכניות, נוף ומחירים | נדלן",
+    "description": "בחרו דירה באורליה שדה דב לפי קומה וכיוון, צפו בתוכנית, בנוף ובסיור הפנים, בדקו את מתקני הפרויקט והסביבה וקבלו תוכניות ומחירים מותאמים לדירה שבחרתם.",
+    "focusKeyphrase": "אורליה שדה דב",
+    "contradiction": "The description claims facilities although no facilities contract or UI exists."
+  }
+}

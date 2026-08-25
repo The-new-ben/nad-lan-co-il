@@ -1,0 +1,109 @@
+{
+  "generatedAt": "2026-08-26",
+  "files": [
+    {
+      "id": "payload-builder",
+      "file": "plugins/nadlan-config/inc/showroom-engine.php",
+      "startLine": 155,
+      "endLine": 260,
+      "fileSha256": "0c6208c52e2a04fc6b5f23cbf82982a000d427d50dd845c678ad5f5314825433",
+      "excerptSha256": "8f68508bfa6e533550a06ac449b4fc08576e7d5f818f282a7f6926583361e200"
+    },
+    {
+      "id": "runtime-title-writer",
+      "file": "plugins/nadlan-config/assets/showroom-engine/engine.js",
+      "startLine": 218,
+      "endLine": 232,
+      "fileSha256": "5d8f53a4ce7977233a1e280f903fc43884117070f276bdbc59d2d345ce41107e",
+      "excerptSha256": "e53809a296c4b1ae99e4f78c14e0292236249d252696ff05b886c08790246a8e"
+    },
+    {
+      "id": "unit-position",
+      "file": "plugins/nadlan-config/assets/showroom-engine/engine.js",
+      "startLine": 171,
+      "endLine": 197,
+      "fileSha256": "5d8f53a4ce7977233a1e280f903fc43884117070f276bdbc59d2d345ce41107e",
+      "excerptSha256": "28b4d729560e32c9d3f3186e738b8160e21f8d610b94a5452adf57b959326311"
+    },
+    {
+      "id": "theater-and-hotspots",
+      "file": "plugins/nadlan-config/assets/showroom-engine/engine.js",
+      "startLine": 370,
+      "endLine": 395,
+      "fileSha256": "5d8f53a4ce7977233a1e280f903fc43884117070f276bdbc59d2d345ce41107e",
+      "excerptSha256": "4ed0c904b1f5983d01cfd6db3c88f947f06e18ef497fa93f738d75da96ddffa7"
+    },
+    {
+      "id": "unit-tabs",
+      "file": "plugins/nadlan-config/assets/showroom-engine/engine.js",
+      "startLine": 520,
+      "endLine": 560,
+      "fileSha256": "5d8f53a4ce7977233a1e280f903fc43884117070f276bdbc59d2d345ce41107e",
+      "excerptSha256": "3a57e2a3aa1ca023360024b8fe8fdff42a2dca2e603313db127b816879337efc"
+    },
+    {
+      "id": "interior-tour",
+      "file": "plugins/nadlan-config/assets/showroom-engine/engine.js",
+      "startLine": 953,
+      "endLine": 1090,
+      "fileSha256": "5d8f53a4ce7977233a1e280f903fc43884117070f276bdbc59d2d345ce41107e",
+      "excerptSha256": "470f2177bd7694dd6259bff46fb1d90965880167d13ceba2c8f0f233a6b0ac8c"
+    },
+    {
+      "id": "map-adoption-and-sync",
+      "file": "plugins/nadlan-config/assets/showroom-engine/engine.js",
+      "startLine": 1267,
+      "endLine": 1296,
+      "fileSha256": "5d8f53a4ce7977233a1e280f903fc43884117070f276bdbc59d2d345ce41107e",
+      "excerptSha256": "985b74fa76444f0435d6109529b662d2f27b8425ccbe1a8f67f09fafe94cb0aa"
+    },
+    {
+      "id": "view-cone-and-map-ease",
+      "file": "plugins/nadlan-config/assets/showroom-engine/engine.js",
+      "startLine": 1315,
+      "endLine": 1357,
+      "fileSha256": "5d8f53a4ce7977233a1e280f903fc43884117070f276bdbc59d2d345ce41107e",
+      "excerptSha256": "ec7a586c8b37b4a546a38738244d3bb2a5b0daa3546994856fdb84835cfd2ab5"
+    },
+    {
+      "id": "legacy-unit-selection",
+      "file": "plugins/nadlan-config/assets/showroom-engine/engine.js",
+      "startLine": 4106,
+      "endLine": 4140,
+      "fileSha256": "5d8f53a4ce7977233a1e280f903fc43884117070f276bdbc59d2d345ce41107e",
+      "excerptSha256": "a603aa69748d42dd128692df4a75daadc2548f576e35fc1672097d7a371eb881"
+    },
+    {
+      "id": "selected-unit-summary",
+      "file": "plugins/nadlan-config/assets/showroom-engine/engine.js",
+      "startLine": 2162,
+      "endLine": 2285,
+      "fileSha256": "5d8f53a4ce7977233a1e280f903fc43884117070f276bdbc59d2d345ce41107e",
+      "excerptSha256": "780c3f356143c0b96fe9135df61fc7c89fd67b1ed382b451fb7251e7b87b3ecd"
+    },
+    {
+      "id": "project-map",
+      "file": "plugins/nadlan-config/inc/project-experience.php",
+      "startLine": 447,
+      "endLine": 535,
+      "fileSha256": "1ab7e7ee58238726b96da374f91e77c188d2f947ac15e72bc12ec682e27c809d",
+      "excerptSha256": "ad6d654d4c27a4ea3321745e5a5bc5b901f836bcd7cca277f10df69f3421f9ed"
+    },
+    {
+      "id": "rfp-schema",
+      "file": "plugins/nadlan-config/inc/rfp.php",
+      "startLine": 105,
+      "endLine": 117,
+      "fileSha256": "50b4adee0cfc5e9d669ea4889e5fa8aa63aee773a92b07c839c4059b015498fe",
+      "excerptSha256": "db2c520fad52fee0a9aca06617aef0faabf7815149161bb39fbd50f26a9dc4fb"
+    },
+    {
+      "id": "co-tour",
+      "file": "plugins/nadlan-config/assets/showroom-engine/engine.js",
+      "startLine": 684,
+      "endLine": 733,
+      "fileSha256": "5d8f53a4ce7977233a1e280f903fc43884117070f276bdbc59d2d345ce41107e",
+      "excerptSha256": "493dd6a692f9d1de583f8a8a11cc17e654c29ed78ec3b5230f59708219372c7d"
+    }
+  ]
+}

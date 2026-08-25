@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-26",
+  "usage": "Aurelia prototype/remediation lab and later WordPress media import",
+  "publicCopyRule": "Generated facilities are presented to buyers as the project experience. Provenance and approval state remain internal.",
+  "panoramaContract": {
+    "projection": "equirectangular",
+    "expectedAspectRatio": 2,
+    "intendedRenderer": "Pannellum 2.5.6 via the existing engine loader",
+    "textAllowed": false,
+    "peopleAllowed": false
+  },
+  "assets": [
+    {
+      "facilityId": "facility-lobby-concierge",
+      "path": "04-ASSETS/facilities/facility-01-lobby-concierge-360.png",
+      "bytes": 2214989,
+      "sha256": "faf4d7b647bb0d3e223c3ef34c37dd569b23c601087ae6511b30405f0e323d6d"
+    },
+    {
+      "facilityId": "facility-infinity-pool",
+      "path": "04-ASSETS/facilities/facility-02-infinity-pool-360.png",
+      "bytes": 2136342,
+      "sha256": "6de147701a3004835df313c54c0f21547ab78972e7a8e75f91a0f344d297a941"
+    },
+    {
+      "facilityId": "facility-gym",
+      "path": "04-ASSETS/facilities/facility-03-gym-360.png",
+      "bytes": 2361590,
+      "sha256": "353a63f9572a495e37dc6621a7065f245e3b9f1e1651621268a335ff751bb499"
+    },
+    {
+      "facilityId": "facility-spa-recovery",
+      "path": "04-ASSETS/facilities/facility-04-spa-recovery-360.png",
+      "bytes": 1848815,
+      "sha256": "6f20a9b4f29e1aaa55eef531c1f84bbcd55fcef74136f175da178c5a274ccc64"
+    },
+    {
+      "facilityId": "facility-lounge-library",
+      "path": "04-ASSETS/facilities/facility-05-residents-lounge-library-360.png",
+      "bytes": 2049850,
+      "sha256": "795e396f379f474ca128bcad738673fc25764a1377d4d68f6509792928b80bdb"
+    },
+    {
+      "facilityId": "facility-coworking",
+      "path": "04-ASSETS/facilities/facility-06-coworking-business-club-360.png",
+      "bytes": 1938584,
+      "sha256": "3db1056a2250c63aa764407a738f64495736e71fe70569936cde386af2a5e61e"
+    },
+    {
+      "facilityId": "facility-childrens-club",
+      "path": "04-ASSETS/facilities/facility-07-childrens-club-360.png",
+      "bytes": 1973437,
+      "sha256": "79b86c7462f2c2c147d4236e0d1bfe428db3f4e422b8d9d12c9d14b3fe1e2184"
+    },
+    {
+      "facilityId": "facility-private-dining",
+      "path": "04-ASSETS/facilities/facility-08-private-dining-event-360.png",
+      "bytes": 1851131,
+      "sha256": "16ace65f86c4a736c344a3656efef2d574c42aaf418382eb2b6599a6a8812597"
+    },
+    {
+      "facilityId": "facility-sky-garden",
+      "path": "04-ASSETS/facilities/facility-09-rooftop-sky-garden-360.png",
+      "bytes": 2267973,
+      "sha256": "70d7cc51b3d3c0c4a0fba8ce16eaf48e0d743fbd7291635e2934a506f044f94c"
+    },
+    {
+      "facilityId": "facility-cinema",
+      "path": "04-ASSETS/facilities/facility-10-private-cinema-360.png",
+      "bytes": 1970222,
+      "sha256": "562a5ef75925ce51adb178dc363cedbdee41b22e1d087ac6d5efc32c85c19147"
+    },
+    {
+      "facilityId": "facility-movement-studio",
+      "path": "04-ASSETS/facilities/facility-11-yoga-pilates-360.png",
+      "bytes": 1885862,
+      "sha256": "cad30207be41a7effdada135888e573bca03dabf33addfb6303d9b5e4605db70"
+    },
+    {
+      "facilityId": "facility-mobility-room",
+      "path": "04-ASSETS/facilities/facility-12-bicycle-mobility-room-360.png",
+      "bytes": 1968829,
+      "sha256": "6b1884161dc86bbb05f7f2580be11a4ee9c3483bb3e7683f0822602537de8b0a"
+    }
+  ]
+}

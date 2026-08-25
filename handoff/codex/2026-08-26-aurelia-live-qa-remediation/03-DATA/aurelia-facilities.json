@@ -1,0 +1,690 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectId": "aurelia",
+  "facilities": [
+    {
+      "id": "facility-lobby-concierge",
+      "order": 1,
+      "nameHe": "לובי וקונסיירז׳",
+      "nameEn": "Lobby & concierge",
+      "level": "G",
+      "zone": "arrival",
+      "areaSqm": 420,
+      "capacity": 70,
+      "asset": "04-ASSETS/facilities/facility-01-lobby-concierge-360.png",
+      "summaryHe": "חלל הכניסה המרכזי מחבר בין הרחוב, הקונסיירז׳, אזור ההמתנה, חדר החבילות ומעליות המגורים.",
+      "equipment": [
+        "2 עמדות קונסיירז׳",
+        "שערי כניסה מאובטחים",
+        "טרקלין המתנה",
+        "חדר חבילות",
+        "אזור דואר",
+        "לובי מעליות",
+        "לולאת השראה לכבדי שמיעה"
+      ],
+      "sceneHotspots": [
+        "עמדת קונסיירז׳",
+        "שערי דיירים",
+        "חדר חבילות",
+        "לובי מעליות",
+        "טרקלין אורחים",
+        "מסלול נגיש"
+      ],
+      "valueMode": "prototype-generated-estimate",
+      "modelAnchor": {
+        "type": "gltf-node",
+        "nodeName": "FACILITY__LOBBY_CONCIERGE",
+        "requiredInSemanticGlb": true
+      },
+      "planAnchor": {
+        "type": "facility-zone-feature",
+        "featureId": "facility-lobby-concierge",
+        "source": "facility-zones.geojson"
+      },
+      "buyerActions": [
+        "פתיחת סיור 360",
+        "הצגה במפת המתחם",
+        "הצגת נתוני המתקן",
+        "שמירה למועדפים",
+        "שיחה עם נציג על המתקן"
+      ],
+      "accessibility": [
+        "מסלול ללא מדרגה",
+        "רוחב מעבר נגיש",
+        "נקודת סיבוב לכיסא גלגלים",
+        "תיאור טקסטואלי מקביל לסיור"
+      ],
+      "hoursModel": "managed-in-cms",
+      "publicMissingCopyAllowed": false,
+      "assetSha256": "faf4d7b647bb0d3e223c3ef34c37dd569b23c601087ae6511b30405f0e323d6d",
+      "assetBytes": 2214989
+    },
+    {
+      "id": "facility-infinity-pool",
+      "order": 2,
+      "nameHe": "בריכת אינפיניטי ומרפסת Wellness",
+      "nameEn": "Infinity pool & wellness terrace",
+      "level": "L05",
+      "zone": "west-podium",
+      "areaSqm": 780,
+      "capacity": 96,
+      "asset": "04-ASSETS/facilities/facility-02-infinity-pool-360.png",
+      "summaryHe": "בריכת שחייה מלאה עם אזור שיזוף, מקלחות, מלתחות, תחנת מגבות וגישה נגישה למים.",
+      "equipment": [
+        "בריכת מסלולים",
+        "מעלון בריכה",
+        "מקלחות",
+        "מלתחות",
+        "תחנת מגבות",
+        "מיטות שיזוף",
+        "עמדת בטיחות"
+      ],
+      "sceneHotspots": [
+        "מסלול שחייה",
+        "מעלון נגיש",
+        "מלתחות",
+        "מקלחות",
+        "תחנת מגבות",
+        "מרפסת הים"
+      ],
+      "valueMode": "prototype-generated-estimate",
+      "modelAnchor": {
+        "type": "gltf-node",
+        "nodeName": "FACILITY__INFINITY_POOL",
+        "requiredInSemanticGlb": true
+      },
+      "planAnchor": {
+        "type": "facility-zone-feature",
+        "featureId": "facility-infinity-pool",
+        "source": "facility-zones.geojson"
+      },
+      "buyerActions": [
+        "פתיחת סיור 360",
+        "הצגה במפת המתחם",
+        "הצגת נתוני המתקן",
+        "שמירה למועדפים",
+        "שיחה עם נציג על המתקן"
+      ],
+      "accessibility": [
+        "מסלול ללא מדרגה",
+        "רוחב מעבר נגיש",
+        "נקודת סיבוב לכיסא גלגלים",
+        "תיאור טקסטואלי מקביל לסיור"
+      ],
+      "hoursModel": "managed-in-cms",
+      "publicMissingCopyAllowed": false,
+      "assetSha256": "6de147701a3004835df313c54c0f21547ab78972e7a8e75f91a0f344d297a941",
+      "assetBytes": 2136342
+    },
+    {
+      "id": "facility-gym",
+      "order": 3,
+      "nameHe": "מועדון כושר",
+      "nameEn": "Residents gym",
+      "level": "L04",
+      "zone": "west-podium",
+      "areaSqm": 610,
+      "capacity": 58,
+      "asset": "04-ASSETS/facilities/facility-03-gym-360.png",
+      "summaryHe": "חדר כושר מחולק לקרדיו, כוח, משקולות חופשיות, אימון פונקציונלי, מתיחות והתאוששות.",
+      "equipment": [
+        "12 עמדות קרדיו",
+        "8 מכשירי כוח",
+        "2 ספסלי משקולות",
+        "כלוב פונקציונלי",
+        "משקולות חופשיות",
+        "אזור מתיחות",
+        "תחנת מים"
+      ],
+      "sceneHotspots": [
+        "קרדיו",
+        "מכשירי כוח",
+        "משקולות חופשיות",
+        "אימון פונקציונלי",
+        "מתיחות",
+        "לוקרים ומים"
+      ],
+      "valueMode": "prototype-generated-estimate",
+      "modelAnchor": {
+        "type": "gltf-node",
+        "nodeName": "FACILITY__GYM",
+        "requiredInSemanticGlb": true
+      },
+      "planAnchor": {
+        "type": "facility-zone-feature",
+        "featureId": "facility-gym",
+        "source": "facility-zones.geojson"
+      },
+      "buyerActions": [
+        "פתיחת סיור 360",
+        "הצגה במפת המתחם",
+        "הצגת נתוני המתקן",
+        "שמירה למועדפים",
+        "שיחה עם נציג על המתקן"
+      ],
+      "accessibility": [
+        "מסלול ללא מדרגה",
+        "רוחב מעבר נגיש",
+        "נקודת סיבוב לכיסא גלגלים",
+        "תיאור טקסטואלי מקביל לסיור"
+      ],
+      "hoursModel": "managed-in-cms",
+      "publicMissingCopyAllowed": false,
+      "assetSha256": "353a63f9572a495e37dc6621a7065f245e3b9f1e1651621268a335ff751bb499",
+      "assetBytes": 2361590
+    },
+    {
+      "id": "facility-spa-recovery",
+      "order": 4,
+      "nameHe": "ספא והתאוששות",
+      "nameEn": "Spa & recovery suite",
+      "level": "L04",
+      "zone": "east-podium",
+      "areaSqm": 460,
+      "capacity": 42,
+      "asset": "04-ASSETS/facilities/facility-04-spa-recovery-360.png",
+      "summaryHe": "מתחם טיפולים והתאוששות עם סאונה, חדר אדים, חדרי טיפול, אזור מנוחה ומלתחות נגישות.",
+      "equipment": [
+        "סאונה",
+        "חדר אדים",
+        "2 חדרי טיפול",
+        "12 מיטות מנוחה",
+        "תחנת שתייה",
+        "מקלחות",
+        "אחסון מגבות"
+      ],
+      "sceneHotspots": [
+        "קבלה",
+        "סאונה",
+        "חדר אדים",
+        "חדר טיפולים",
+        "מנוחה",
+        "מלתחות נגישות"
+      ],
+      "valueMode": "prototype-generated-estimate",
+      "modelAnchor": {
+        "type": "gltf-node",
+        "nodeName": "FACILITY__SPA_RECOVERY",
+        "requiredInSemanticGlb": true
+      },
+      "planAnchor": {
+        "type": "facility-zone-feature",
+        "featureId": "facility-spa-recovery",
+        "source": "facility-zones.geojson"
+      },
+      "buyerActions": [
+        "פתיחת סיור 360",
+        "הצגה במפת המתחם",
+        "הצגת נתוני המתקן",
+        "שמירה למועדפים",
+        "שיחה עם נציג על המתקן"
+      ],
+      "accessibility": [
+        "מסלול ללא מדרגה",
+        "רוחב מעבר נגיש",
+        "נקודת סיבוב לכיסא גלגלים",
+        "תיאור טקסטואלי מקביל לסיור"
+      ],
+      "hoursModel": "managed-in-cms",
+      "publicMissingCopyAllowed": false,
+      "assetSha256": "6f20a9b4f29e1aaa55eef531c1f84bbcd55fcef74136f175da178c5a274ccc64",
+      "assetBytes": 1848815
+    },
+    {
+      "id": "facility-lounge-library",
+      "order": 5,
+      "nameHe": "טרקלין דיירים וספרייה",
+      "nameEn": "Residents lounge & library",
+      "level": "L03",
+      "zone": "central-podium",
+      "areaSqm": 530,
+      "capacity": 82,
+      "asset": "04-ASSETS/facilities/facility-05-residents-lounge-library-360.png",
+      "summaryHe": "טרקלין גמיש לפגישות, קריאה ואירוח, עם ספרייה, חדרים שקטים, עמדת קפה ויציאה למרפסת.",
+      "equipment": [
+        "ספרייה",
+        "4 קבוצות ישיבה",
+        "2 חדרים שקטים",
+        "עמדת קפה",
+        "שקעי טעינה",
+        "אח דקורטיבי",
+        "מרפסת"
+      ],
+      "sceneHotspots": [
+        "ספרייה",
+        "טרקלין",
+        "חדר שקט",
+        "קפה",
+        "טעינה",
+        "מרפסת"
+      ],
+      "valueMode": "prototype-generated-estimate",
+      "modelAnchor": {
+        "type": "gltf-node",
+        "nodeName": "FACILITY__LOUNGE_LIBRARY",
+        "requiredInSemanticGlb": true
+      },
+      "planAnchor": {
+        "type": "facility-zone-feature",
+        "featureId": "facility-lounge-library",
+        "source": "facility-zones.geojson"
+      },
+      "buyerActions": [
+        "פתיחת סיור 360",
+        "הצגה במפת המתחם",
+        "הצגת נתוני המתקן",
+        "שמירה למועדפים",
+        "שיחה עם נציג על המתקן"
+      ],
+      "accessibility": [
+        "מסלול ללא מדרגה",
+        "רוחב מעבר נגיש",
+        "נקודת סיבוב לכיסא גלגלים",
+        "תיאור טקסטואלי מקביל לסיור"
+      ],
+      "hoursModel": "managed-in-cms",
+      "publicMissingCopyAllowed": false,
+      "assetSha256": "795e396f379f474ca128bcad738673fc25764a1377d4d68f6509792928b80bdb",
+      "assetBytes": 2049850
+    },
+    {
+      "id": "facility-coworking",
+      "order": 6,
+      "nameHe": "מועדון עסקים ועבודה",
+      "nameEn": "Coworking & business club",
+      "level": "L03",
+      "zone": "east-podium",
+      "areaSqm": 490,
+      "capacity": 64,
+      "asset": "04-ASSETS/facilities/facility-06-coworking-business-club-360.png",
+      "summaryHe": "סביבת עבודה מלאה הכוללת עמדות אישיות, חדרי ישיבות, תאי שיחה, הדפסה ומטבחון.",
+      "equipment": [
+        "24 עמדות עבודה",
+        "4 חדרי ישיבות",
+        "5 תאי שיחה",
+        "עמדת הדפסה",
+        "מסך מצגות",
+        "מטבחון",
+        "עמדות נגישות"
+      ],
+      "sceneHotspots": [
+        "עמדות עבודה",
+        "חדר ישיבות",
+        "תא שיחה",
+        "הדפסה",
+        "מצגות",
+        "מטבחון"
+      ],
+      "valueMode": "prototype-generated-estimate",
+      "modelAnchor": {
+        "type": "gltf-node",
+        "nodeName": "FACILITY__COWORKING",
+        "requiredInSemanticGlb": true
+      },
+      "planAnchor": {
+        "type": "facility-zone-feature",
+        "featureId": "facility-coworking",
+        "source": "facility-zones.geojson"
+      },
+      "buyerActions": [
+        "פתיחת סיור 360",
+        "הצגה במפת המתחם",
+        "הצגת נתוני המתקן",
+        "שמירה למועדפים",
+        "שיחה עם נציג על המתקן"
+      ],
+      "accessibility": [
+        "מסלול ללא מדרגה",
+        "רוחב מעבר נגיש",
+        "נקודת סיבוב לכיסא גלגלים",
+        "תיאור טקסטואלי מקביל לסיור"
+      ],
+      "hoursModel": "managed-in-cms",
+      "publicMissingCopyAllowed": false,
+      "assetSha256": "3db1056a2250c63aa764407a738f64495736e71fe70569936cde386af2a5e61e",
+      "assetBytes": 1938584
+    },
+    {
+      "id": "facility-childrens-club",
+      "order": 7,
+      "nameHe": "מועדון ילדים ומשפחה",
+      "nameEn": "Children’s club & family room",
+      "level": "L02",
+      "zone": "garden-podium",
+      "areaSqm": 440,
+      "capacity": 55,
+      "asset": "04-ASSETS/facilities/facility-07-childrens-club-360.png",
+      "summaryHe": "מועדון משפחתי בטוח עם אזורי פעוטות, יצירה, קריאה, משחק רך, ישיבת הורים ואחסון עגלות.",
+      "equipment": [
+        "אזור פעוטות",
+        "משחק רך",
+        "שולחנות יצירה",
+        "פינת קריאה",
+        "ישיבת הורים",
+        "שטיפת ידיים",
+        "חניית עגלות"
+      ],
+      "sceneHotspots": [
+        "פעוטות",
+        "משחק רך",
+        "יצירה",
+        "קריאה",
+        "הורים",
+        "אחסון עגלות"
+      ],
+      "valueMode": "prototype-generated-estimate",
+      "modelAnchor": {
+        "type": "gltf-node",
+        "nodeName": "FACILITY__CHILDRENS_CLUB",
+        "requiredInSemanticGlb": true
+      },
+      "planAnchor": {
+        "type": "facility-zone-feature",
+        "featureId": "facility-childrens-club",
+        "source": "facility-zones.geojson"
+      },
+      "buyerActions": [
+        "פתיחת סיור 360",
+        "הצגה במפת המתחם",
+        "הצגת נתוני המתקן",
+        "שמירה למועדפים",
+        "שיחה עם נציג על המתקן"
+      ],
+      "accessibility": [
+        "מסלול ללא מדרגה",
+        "רוחב מעבר נגיש",
+        "נקודת סיבוב לכיסא גלגלים",
+        "תיאור טקסטואלי מקביל לסיור"
+      ],
+      "hoursModel": "managed-in-cms",
+      "publicMissingCopyAllowed": false,
+      "assetSha256": "79b86c7462f2c2c147d4236e0d1bfe428db3f4e422b8d9d12c9d14b3fe1e2184",
+      "assetBytes": 1973437
+    },
+    {
+      "id": "facility-private-dining",
+      "order": 8,
+      "nameHe": "חדר אוכל ואירוח פרטי",
+      "nameEn": "Private dining & events",
+      "level": "L03",
+      "zone": "west-podium",
+      "areaSqm": 370,
+      "capacity": 44,
+      "asset": "04-ASSETS/facilities/facility-08-private-dining-event-360.png",
+      "summaryHe": "חלל אירוח שניתן להזמנה עם שולחן מרכזי, מטבח תצוגה, הכנת קייטרינג, בר ומרפסת.",
+      "equipment": [
+        "שולחן ל-24",
+        "מטבח תצוגה",
+        "הכנת קייטרינג",
+        "בר",
+        "מסך מצגות",
+        "טרקלין גמיש",
+        "מרפסת"
+      ],
+      "sceneHotspots": [
+        "שולחן אירוח",
+        "מטבח",
+        "קייטרינג",
+        "בר",
+        "מסך",
+        "מרפסת"
+      ],
+      "valueMode": "prototype-generated-estimate",
+      "modelAnchor": {
+        "type": "gltf-node",
+        "nodeName": "FACILITY__PRIVATE_DINING",
+        "requiredInSemanticGlb": true
+      },
+      "planAnchor": {
+        "type": "facility-zone-feature",
+        "featureId": "facility-private-dining",
+        "source": "facility-zones.geojson"
+      },
+      "buyerActions": [
+        "פתיחת סיור 360",
+        "הצגה במפת המתחם",
+        "הצגת נתוני המתקן",
+        "שמירה למועדפים",
+        "שיחה עם נציג על המתקן"
+      ],
+      "accessibility": [
+        "מסלול ללא מדרגה",
+        "רוחב מעבר נגיש",
+        "נקודת סיבוב לכיסא גלגלים",
+        "תיאור טקסטואלי מקביל לסיור"
+      ],
+      "hoursModel": "managed-in-cms",
+      "publicMissingCopyAllowed": false,
+      "assetSha256": "16ace65f86c4a736c344a3656efef2d574c42aaf418382eb2b6599a6a8812597",
+      "assetBytes": 1851131
+    },
+    {
+      "id": "facility-sky-garden",
+      "order": 9,
+      "nameHe": "גן שמיים וטרקלין שקיעה",
+      "nameEn": "Sky garden & sunset lounge",
+      "level": "L47",
+      "zone": "roof",
+      "areaSqm": 690,
+      "capacity": 88,
+      "asset": "04-ASSETS/facilities/facility-09-rooftop-sky-garden-360.png",
+      "summaryHe": "גן גג מוגן רוח עם אזורי ישיבה, מטבח חוץ, שולחנות, שבילים נגישים ותצפית לים ולפארק.",
+      "equipment": [
+        "צמחייה מוגנת רוח",
+        "5 קבוצות ישיבה",
+        "מטבח חוץ",
+        "4 שולחנות",
+        "תאורת לילה",
+        "שביל נגיש",
+        "לובי מעליות"
+      ],
+      "sceneHotspots": [
+        "מבט לים",
+        "מבט לפארק",
+        "מטבח חוץ",
+        "ישיבה",
+        "שביל נגיש",
+        "לובי הגג"
+      ],
+      "valueMode": "prototype-generated-estimate",
+      "modelAnchor": {
+        "type": "gltf-node",
+        "nodeName": "FACILITY__SKY_GARDEN",
+        "requiredInSemanticGlb": true
+      },
+      "planAnchor": {
+        "type": "facility-zone-feature",
+        "featureId": "facility-sky-garden",
+        "source": "facility-zones.geojson"
+      },
+      "buyerActions": [
+        "פתיחת סיור 360",
+        "הצגה במפת המתחם",
+        "הצגת נתוני המתקן",
+        "שמירה למועדפים",
+        "שיחה עם נציג על המתקן"
+      ],
+      "accessibility": [
+        "מסלול ללא מדרגה",
+        "רוחב מעבר נגיש",
+        "נקודת סיבוב לכיסא גלגלים",
+        "תיאור טקסטואלי מקביל לסיור"
+      ],
+      "hoursModel": "managed-in-cms",
+      "publicMissingCopyAllowed": false,
+      "assetSha256": "70d7cc51b3d3c0c4a0fba8ce16eaf48e0d743fbd7291635e2934a506f044f94c",
+      "assetBytes": 2267973
+    },
+    {
+      "id": "facility-cinema",
+      "order": 10,
+      "nameHe": "חדר קולנוע פרטי",
+      "nameEn": "Private cinema",
+      "level": "L02",
+      "zone": "east-podium",
+      "areaSqm": 230,
+      "capacity": 32,
+      "asset": "04-ASSETS/facilities/facility-10-private-cinema-360.png",
+      "summaryHe": "חדר הקרנה אקוסטי עם ישיבה מדורגת, מקומות נגישים, מערכת AV, מזנון קטן ולובי אקוסטי.",
+      "equipment": [
+        "מסך הקרנה",
+        "28 מושבים",
+        "2 מקומות כיסא גלגלים",
+        "מערכת AV",
+        "תאורת מעברים",
+        "מזנון",
+        "לובי אקוסטי"
+      ],
+      "sceneHotspots": [
+        "מסך",
+        "ישיבה",
+        "מקומות נגישים",
+        "מערכת AV",
+        "מזנון",
+        "יציאות"
+      ],
+      "valueMode": "prototype-generated-estimate",
+      "modelAnchor": {
+        "type": "gltf-node",
+        "nodeName": "FACILITY__CINEMA",
+        "requiredInSemanticGlb": true
+      },
+      "planAnchor": {
+        "type": "facility-zone-feature",
+        "featureId": "facility-cinema",
+        "source": "facility-zones.geojson"
+      },
+      "buyerActions": [
+        "פתיחת סיור 360",
+        "הצגה במפת המתחם",
+        "הצגת נתוני המתקן",
+        "שמירה למועדפים",
+        "שיחה עם נציג על המתקן"
+      ],
+      "accessibility": [
+        "מסלול ללא מדרגה",
+        "רוחב מעבר נגיש",
+        "נקודת סיבוב לכיסא גלגלים",
+        "תיאור טקסטואלי מקביל לסיור"
+      ],
+      "hoursModel": "managed-in-cms",
+      "publicMissingCopyAllowed": false,
+      "assetSha256": "562a5ef75925ce51adb178dc363cedbdee41b22e1d087ac6d5efc32c85c19147",
+      "assetBytes": 1970222
+    },
+    {
+      "id": "facility-movement-studio",
+      "order": 11,
+      "nameHe": "סטודיו יוגה ופילאטיס",
+      "nameEn": "Yoga & Pilates studio",
+      "level": "L04",
+      "zone": "south-podium",
+      "areaSqm": 310,
+      "capacity": 36,
+      "asset": "04-ASSETS/facilities/facility-11-yoga-pilates-360.png",
+      "summaryHe": "סטודיו תנועה עם מכשירי רפורמר, אזור מזרנים, באר, אחסון, מראות ומרווחי עבודה נגישים.",
+      "equipment": [
+        "10 מכשירי רפורמר",
+        "אזור 20 מזרנים",
+        "באר",
+        "קיר מראות",
+        "אחסון ציוד",
+        "עמדת מדריך",
+        "תחנת מים"
+      ],
+      "sceneHotspots": [
+        "רפורמר",
+        "מזרנים",
+        "באר",
+        "מראות",
+        "אחסון",
+        "עמדת מדריך"
+      ],
+      "valueMode": "prototype-generated-estimate",
+      "modelAnchor": {
+        "type": "gltf-node",
+        "nodeName": "FACILITY__MOVEMENT_STUDIO",
+        "requiredInSemanticGlb": true
+      },
+      "planAnchor": {
+        "type": "facility-zone-feature",
+        "featureId": "facility-movement-studio",
+        "source": "facility-zones.geojson"
+      },
+      "buyerActions": [
+        "פתיחת סיור 360",
+        "הצגה במפת המתחם",
+        "הצגת נתוני המתקן",
+        "שמירה למועדפים",
+        "שיחה עם נציג על המתקן"
+      ],
+      "accessibility": [
+        "מסלול ללא מדרגה",
+        "רוחב מעבר נגיש",
+        "נקודת סיבוב לכיסא גלגלים",
+        "תיאור טקסטואלי מקביל לסיור"
+      ],
+      "hoursModel": "managed-in-cms",
+      "publicMissingCopyAllowed": false,
+      "assetSha256": "cad30207be41a7effdada135888e573bca03dabf33addfb6303d9b5e4605db70",
+      "assetBytes": 1885862
+    },
+    {
+      "id": "facility-mobility-room",
+      "order": 12,
+      "nameHe": "חדר אופניים, ניידות ושירות",
+      "nameEn": "Bicycle, mobility & service room",
+      "level": "B1",
+      "zone": "service-core",
+      "areaSqm": 360,
+      "capacity": 150,
+      "asset": "04-ASSETS/facilities/facility-12-bicycle-mobility-room-360.png",
+      "summaryHe": "חדר שירות מאובטח לאופניים, מטען, עגלות וכיסאות גלגלים, עם תיקון, טעינה, רחצה וחבילות.",
+      "equipment": [
+        "110 מתקני אופניים",
+        "12 מקומות אופני מטען",
+        "16 לוקרי טעינה",
+        "עמדת תיקון",
+        "שטיפת אופניים",
+        "אחסון עגלות",
+        "לוקרי חבילות"
+      ],
+      "sceneHotspots": [
+        "חניית אופניים",
+        "אופני מטען",
+        "טעינה",
+        "תיקון",
+        "רחצה",
+        "חבילות"
+      ],
+      "valueMode": "prototype-generated-estimate",
+      "modelAnchor": {
+        "type": "gltf-node",
+        "nodeName": "FACILITY__MOBILITY_ROOM",
+        "requiredInSemanticGlb": true
+      },
+      "planAnchor": {
+        "type": "facility-zone-feature",
+        "featureId": "facility-mobility-room",
+        "source": "facility-zones.geojson"
+      },
+      "buyerActions": [
+        "פתיחת סיור 360",
+        "הצגה במפת המתחם",
+        "הצגת נתוני המתקן",
+        "שמירה למועדפים",
+        "שיחה עם נציג על המתקן"
+      ],
+      "accessibility": [
+        "מסלול ללא מדרגה",
+        "רוחב מעבר נגיש",
+        "נקודת סיבוב לכיסא גלגלים",
+        "תיאור טקסטואלי מקביל לסיור"
+      ],
+      "hoursModel": "managed-in-cms",
+      "publicMissingCopyAllowed": false,
+      "assetSha256": "6b1884161dc86bbb05f7f2580be11a4ee9c3483bb3e7683f0822602537de8b0a",
+      "assetBytes": 1968829
+    }
+  ]
+}
