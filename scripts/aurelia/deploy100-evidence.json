@@ -1,0 +1,209 @@
+{
+ "post_id": 7514,
+ "link": "https://nad-lan.co.il/projects/aurelia/",
+ "media": {
+  "aurelia-bedroom-panorama-360.jpg": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-bedroom-panorama-360.jpg",
+  "aurelia-gym-panorama-360.jpg": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-gym-panorama-360.jpg",
+  "aurelia-living-panorama-360.jpg": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-living-panorama-360.jpg",
+  "aurelia-living-room-interior.jpg": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-living-room-interior.jpg",
+  "aurelia-plan-2br.png": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-plan-2br.png",
+  "aurelia-plan-3br.png": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-plan-3br.png",
+  "aurelia-plan-4br.png": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-plan-4br.png",
+  "aurelia-plan-5br.png": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-plan-5br.png",
+  "aurelia-plan-penthouse.png": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-plan-penthouse.png",
+  "aurelia-pool-panorama-360.jpg": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-pool-panorama-360.jpg",
+  "aurelia-quarter-aerial-view.jpg": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-quarter-aerial-view.jpg",
+  "aurelia-site-plan.png": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-site-plan.png",
+  "aurelia-tower-sde-dov-hero.jpg": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-tower-sde-dov-hero.jpg",
+  "aurelia-wellness-amenities.jpg": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-wellness-amenities.jpg",
+  "aurelia-tower-semantic-v2.glb": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-tower-semantic-v2.glb"
+ },
+ "experience_snippet_id": 601,
+ "checks": {
+  "http": 200,
+  "bytes": 496385,
+  "h1_count": 1,
+  "payload": true,
+  "glb": true,
+  "units_in_payload": 320,
+  "adapter": true,
+  "title": "אורליה שדה דב Aurelia | דירות, תוכניות, נוף ומחירים | נדלן",
+  "yoast_desc": true,
+  "notice_removed": false,
+  "aurelia_name": true
+ },
+ "steps": [
+  {
+   "step": "health",
+   "version": "1.72.220",
+   "status": "ok"
+  },
+  {
+   "step": "media",
+   "name": "aurelia-bedroom-panorama-360.jpg",
+   "id": 7500,
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-bedroom-panorama-360.jpg"
+  },
+  {
+   "step": "media",
+   "name": "aurelia-gym-panorama-360.jpg",
+   "id": 7501,
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-gym-panorama-360.jpg"
+  },
+  {
+   "step": "media",
+   "name": "aurelia-living-panorama-360.jpg",
+   "id": 7502,
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-living-panorama-360.jpg"
+  },
+  {
+   "step": "media",
+   "name": "aurelia-living-room-interior.jpg",
+   "id": 7503,
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-living-room-interior.jpg"
+  },
+  {
+   "step": "media",
+   "name": "aurelia-plan-2br.png",
+   "id": 7504,
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-plan-2br.png"
+  },
+  {
+   "step": "media",
+   "name": "aurelia-plan-3br.png",
+   "id": 7505,
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-plan-3br.png"
+  },
+  {
+   "step": "media",
+   "name": "aurelia-plan-4br.png",
+   "id": 7506,
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-plan-4br.png"
+  },
+  {
+   "step": "media",
+   "name": "aurelia-plan-5br.png",
+   "id": 7507,
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-plan-5br.png"
+  },
+  {
+   "step": "media",
+   "name": "aurelia-plan-penthouse.png",
+   "id": 7508,
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-plan-penthouse.png"
+  },
+  {
+   "step": "media",
+   "name": "aurelia-pool-panorama-360.jpg",
+   "id": 7509,
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-pool-panorama-360.jpg"
+  },
+  {
+   "step": "media",
+   "name": "aurelia-quarter-aerial-view.jpg",
+   "id": 7510,
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-quarter-aerial-view.jpg"
+  },
+  {
+   "step": "media",
+   "name": "aurelia-site-plan.png",
+   "id": 7511,
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-site-plan.png"
+  },
+  {
+   "step": "media",
+   "name": "aurelia-tower-sde-dov-hero.jpg",
+   "id": 7512,
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-tower-sde-dov-hero.jpg"
+  },
+  {
+   "step": "media-glb-deferred",
+   "name": "aurelia-tower-semantic-v2.glb",
+   "http": 500,
+   "note": "will write via bridge"
+  },
+  {
+   "step": "media",
+   "name": "aurelia-wellness-amenities.jpg",
+   "id": 7513,
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-wellness-amenities.jpg"
+  },
+  {
+   "step": "units",
+   "count": 320,
+   "bytes": 169674,
+   "price_min": 5610000,
+   "price_max": 48980000
+  },
+  {
+   "step": "post",
+   "id": 7514,
+   "link": "https://nad-lan.co.il/projects/aurelia/",
+   "slug": "aurelia"
+  },
+  {
+   "step": "bridge",
+   "id": 600
+  },
+  {
+   "step": "glb",
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/08/aurelia-tower-semantic-v2.glb",
+   "md5": "5ed6eeff08d65d561fa13f527a1057f7"
+  },
+  {
+   "step": "meta-seed",
+   "keys": 19,
+   "tax": 1
+  },
+  {
+   "step": "lint",
+   "result": "ok"
+  },
+  {
+   "step": "experience-snippet",
+   "id": 601,
+   "sha256": "c8f08ce8a65f3c9a"
+  },
+  {
+   "step": "bridge-delete",
+   "http": 204
+  },
+  {
+   "step": "verify-page",
+   "http": 200,
+   "bytes": 496385,
+   "h1_count": 1,
+   "payload": true,
+   "glb": true,
+   "units_in_payload": 320,
+   "adapter": true,
+   "title": "אורליה שדה דב Aurelia | דירות, תוכניות, נוף ומחירים | נדלן",
+   "yoast_desc": true,
+   "notice_removed": false,
+   "aurelia_name": true
+  },
+  {
+   "step": "spot",
+   "path": "/projects/rainbow-tel-aviv/",
+   "http": 200,
+   "bytes": 281147
+  },
+  {
+   "step": "spot",
+   "path": "/projects/h-infinity-somail-tel-aviv/",
+   "http": 200,
+   "bytes": 307729
+  },
+  {
+   "step": "spot",
+   "path": "/",
+   "http": 200,
+   "bytes": 236900
+  },
+  {
+   "step": "health-after",
+   "version": "1.72.220",
+   "status": "ok"
+  }
+ ]
+}
