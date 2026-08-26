@@ -49,6 +49,9 @@ see docs/research/ on WP Pusher.)
 - handoff/codex/2026-08-25-aurelia-master-recipe/
                  Canonical Aurelia project-page recipe: buyer lab, WordPress preview path,
                  checklist lights, SEO, BOM, public-source fingerprints, evidence and downloads.
+- handoff/codex/2026-08-27-product-design-handoff/
+                 Broad Nadlan journey handoff: production-reference screens, tokens, WordPress
+                 template map, seeded-content rules, SEO ownership, QA and measurement.
 - skills/        68 skill files: copywriting, design system, RTL/Hebrew, EEAT program, SEO,
                  agent coordination protocol, plugin deploy process, monetization specs.
                  REUSABLE ON OTHER SITES (e.g., the Justice legal portal).

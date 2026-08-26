@@ -146,6 +146,8 @@
 
 ## Shipped log (history — do not delete)
 
+- 🟢 2026-08-27 — Nadlan product-design handoff added under `handoff/codex/2026-08-27-product-design-handoff/`: seven-screen journey, repository-readable screenshots, portable tokens, WordPress implementation map, SEO/seeded rules, QA and measurement. Lovable remains reference-only; no live change and no new ZIP.
+
 - 🟢 2026-08-25 — Aurelia master project-page recipe packaged for repository review under `handoff/codex/2026-08-25-aurelia-master-recipe/`: isolated buyer lab, WordPress preview plugin, non-blocking checklist lights, SEO/intent map, BOM, code evidence, public-source fingerprints, responsive proof, operations manual and downloadable ZIPs. Repository delivery only; nothing was installed or published live.
 
 - 🟢 2026-06-23 - adopted Codex and WordPress skill pack added after external research: 12 new small skills, research report, master skill links, MAP, README, and SKILLS-TREE integration.
