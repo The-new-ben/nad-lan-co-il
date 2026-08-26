@@ -1,0 +1,506 @@
+[
+  {
+    "id": "LIVE-001",
+    "status": "red",
+    "domain": "מובייל",
+    "actual": "320 hotspots קאנוניים מוסתרים: opacity 0 ו-pointer-events none; ה-adapter החי יוצר שש נקודות שגם הן hidden/0×0 בבדיקה.",
+    "evidence": "Browser DOM + computed styles + live-only inline adapter hash",
+    "codeRef": "plugins/nadlan-config/assets/showroom-engine/engine.js:370-395",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-002",
+    "status": "red",
+    "domain": "מובייל",
+    "actual": "320 hotspots מוסתרים נשארים tabindex=0 ויוצרים מאות תחנות focus בלתי נראות.",
+    "evidence": "Browser keyboard/DOM audit",
+    "codeRef": "plugins/nadlan-config/assets/showroom-engine/engine.js:370-395",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-003",
+    "status": "red",
+    "domain": "בחירת דירה",
+    "actual": "בחירת דירה מהמלאי מעדכנת unit אך משאירה את כרטיס היחידה אלפי פיקסלים מעל המשתמש.",
+    "evidence": "Click replay 390/400 CSS px",
+    "codeRef": "plugins/nadlan-config/assets/showroom-engine/engine.js:4106-4140",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-004",
+    "status": "red",
+    "domain": "כרטיס יחידה",
+    "actual": "סגירת הכרטיס מסירה state/URL אך הכרטיס נשאר מוצג עם תוכן ישן.",
+    "evidence": "Click replay + computed display/opacity",
+    "codeRef": "plugins/nadlan-config/assets/showroom-engine/engine.js:4106-4140",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-005",
+    "status": "red",
+    "domain": "ניווט",
+    "actual": "קישורי היכולת העליונים href=# אינם מביאים למודל, בחירת דירה או מראה מהחלון.",
+    "evidence": "Click replay 390",
+    "codeRef": "public inline renderer",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-006",
+    "status": "red",
+    "domain": "ניווט",
+    "actual": "כפתור בניין ב-progress/section nav נלכד בידי ווידג׳ט הנגישות החופף.",
+    "evidence": "Hit testing 390",
+    "codeRef": "theme/project sticky navigation",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-007",
+    "status": "red",
+    "domain": "ניווט",
+    "actual": "CTA מעניין אותי אינו מביא לטופס ההתעניינות.",
+    "evidence": "Click replay 390",
+    "codeRef": "project CTA wiring",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-008",
+    "status": "red",
+    "domain": "מתקנים",
+    "actual": "אין facilities/amenities בחוזה, ב-DOM או בחוויית הבחירה.",
+    "evidence": "Payload + DOM + admin audit",
+    "codeRef": "plugins/nadlan-config/inc/facility-chips.php:75-90",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-009",
+    "status": "red",
+    "domain": "סיור פנים",
+    "actual": "ארבע סצנות panorama קיימות ב-data אך הממשק חושף רק את הראשונה, ללא קישורי מעבר.",
+    "evidence": "Pannellum runtime + DOM",
+    "codeRef": "plugins/nadlan-config/assets/showroom-engine/engine.js:1069-1090",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-010",
+    "status": "red",
+    "domain": "סיור דירה",
+    "actual": "מסלול aurelia_tour הוא background-position על תמונה אחת; אינו סיור 360/POV.",
+    "evidence": "Live route source + click replay",
+    "codeRef": "live-only route; no repository match",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-011",
+    "status": "red",
+    "domain": "סטודיו",
+    "actual": "התכנון אינו משתמש בגאומטריית התוכנית האמיתית, חלונות, דלתות, אזורים רטובים או קירות.",
+    "evidence": "Studio DOM + source audit",
+    "codeRef": "plugins/nadlan-config/assets/showroom-engine/studio.js",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-012",
+    "status": "red",
+    "domain": "סטודיו",
+    "actual": "Auto arrange הציב רוב פריטי הדוגמה מחוץ לגבולות התוכנית הסינתטית.",
+    "evidence": "Studio click replay 390",
+    "codeRef": "plugins/nadlan-config/assets/showroom-engine/studio.js",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-013",
+    "status": "red",
+    "domain": "BOM",
+    "actual": "אין SKU, כמויות, מחיר, BOM מוצג או snapshot שרת לתכנון.",
+    "evidence": "DOM + source + endpoint schema",
+    "codeRef": "plugins/nadlan-config/inc/rfp.php:105-117",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-014",
+    "status": "red",
+    "domain": "RFP",
+    "actual": "סיכום הסטודיו נמצא בהודעת lead בלבד ונשמט מ-POST של RFP.",
+    "evidence": "Static code trace",
+    "codeRef": "plugins/nadlan-config/assets/showroom-engine/buyflow.js:240-264",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-015",
+    "status": "red",
+    "domain": "ועידה",
+    "actual": "כפתור וידאו פותח lead/WhatsApp; אין ועידת וידאו, room או media API.",
+    "evidence": "Static code + public source",
+    "codeRef": "plugins/nadlan-config/assets/showroom-engine/studio.js:311-317",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-016",
+    "status": "orange",
+    "domain": "מפה ואלומה",
+    "actual": "קוד Mapbox והאלומה אמיתי ועובד, אך 0/320 יחידות מכילות azimuth מדויק; הכיוון נגזר משמונה תוויות.",
+    "evidence": "Admin contract + code trace",
+    "codeRef": "plugins/nadlan-config/assets/showroom-engine/engine.js:1315-1357",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-017",
+    "status": "orange",
+    "domain": "מפה ואלומה",
+    "actual": "מפת Mapbox אינה מאותחלת עד אינטראקציה עם מסנן מפה; לפני כן אזור המפה ריק.",
+    "evidence": "Click replay + DOM",
+    "codeRef": "plugins/nadlan-config/inc/project-experience.php:447-535",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-018",
+    "status": "red",
+    "domain": "מובייל",
+    "actual": "במת המדיה ברוחב כ-498px בתוך viewport 390px וחתוכה בכ-133px.",
+    "evidence": "Bounding boxes 390",
+    "codeRef": "showroom responsive CSS",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-019",
+    "status": "red",
+    "domain": "מובייל",
+    "actual": "בקרי Pannellum נמצאים מחוץ למסך וחלקם 26×26 ללא שם נגיש.",
+    "evidence": "Bounding boxes + accessibility tree",
+    "codeRef": "Pannellum runtime CSS",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-020",
+    "status": "red",
+    "domain": "מובייל",
+    "actual": "הכרטיס מכסה כ-62% מגובה המודל ויש לו גלילה פנימית ארוכה; הבניין אינו נשאר גלוי.",
+    "evidence": "Bounding boxes 390/400",
+    "codeRef": "showroom panel CSS",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-021",
+    "status": "red",
+    "domain": "מובייל",
+    "actual": "ווידג׳טים קבועים של header, project nav, accessibility, lead ו-WhatsApp נערמים ומסתירים פעולות.",
+    "evidence": "Fixed/sticky inventory + screenshots",
+    "codeRef": "theme + project CSS",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-022",
+    "status": "red",
+    "domain": "מובייל",
+    "actual": "קישורי ניווט גלובלי יוצאים שמאלה מה-viewport.",
+    "evidence": "Bounding boxes 390",
+    "codeRef": "theme header",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-023",
+    "status": "red",
+    "domain": "מובייל",
+    "actual": "תאריכי תיאום פגישה מאוחרים יוצאים מחוץ ל-viewport.",
+    "evidence": "Bounding boxes 390",
+    "codeRef": "scheduler CSS",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-024",
+    "status": "yellow",
+    "domain": "מלאי",
+    "actual": "320 יחידות קיימות, אך 60 כרטיסים מרונדרים כברירת מחדל והמקטע ארוך מאוד.",
+    "evidence": "DOM count + section height",
+    "codeRef": "plugins/nadlan-config/assets/showroom-engine/engine.js",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-025",
+    "status": "orange",
+    "domain": "מלאי",
+    "actual": "WordPress שומר 302 available ו-18 reserved, אך availability הציבורי אינו עקבי.",
+    "evidence": "Admin JSON vs public payload",
+    "codeRef": "plugins/nadlan-config/inc/showroom-engine.php:155-260",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-026",
+    "status": "orange",
+    "domain": "תוכניות",
+    "actual": "לכל 320 היחידות plan, אך יש רק חמש תמונות תוכנית ייחודיות.",
+    "evidence": "Admin JSON aggregate",
+    "codeRef": "project_3d_units",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-027",
+    "status": "red",
+    "domain": "נוף",
+    "actual": "0/320 יחידות מכילות asset למראה מהחלון.",
+    "evidence": "Admin JSON aggregate",
+    "codeRef": "project_3d_units",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-028",
+    "status": "red",
+    "domain": "פנים",
+    "actual": "0/320 יחידות מכילות interior_url.",
+    "evidence": "Admin JSON aggregate",
+    "codeRef": "project_3d_units",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-029",
+    "status": "red",
+    "domain": "חזית",
+    "actual": "ה-UI מציג לקונה טקסט פיתוח על חזית חסרה וחומר עתידי.",
+    "evidence": "Public buyer copy",
+    "codeRef": "project facade renderer",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-030",
+    "status": "orange",
+    "domain": "מודל",
+    "actual": "modelType באדמין הוא procedural למרות שקישור GLB קיים.",
+    "evidence": "Admin field audit",
+    "codeRef": "project_3d_model_type",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-031",
+    "status": "orange",
+    "domain": "מודל",
+    "actual": "אין USDZ, project video, project tour או Cesium URL בשדות הפרויקט.",
+    "evidence": "Admin field audit",
+    "codeRef": "nadlan-p3d metabox",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-032",
+    "status": "red",
+    "domain": "אדמין",
+    "actual": "תיבת המתכון מציגה 0 נורות בפוסט החי בגלל hard-scope לאב-טיפוס אחר.",
+    "evidence": "Admin DOM",
+    "codeRef": "prototype plugin scope",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-033",
+    "status": "red",
+    "domain": "אדמין",
+    "actual": "תיבת BOM מציגה 0 מערכות בפוסט החי בגלל hard-scope לאב-טיפוס אחר.",
+    "evidence": "Admin DOM",
+    "codeRef": "prototype plugin scope",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-034",
+    "status": "red",
+    "domain": "WordPress",
+    "actual": "תוסף האב-טיפוס קשיח ל-post 7304 ול-slug aurelia-sde-dov, בעוד החי הוא 7514/aurelia.",
+    "evidence": "Repository vs admin",
+    "codeRef": "handoff prototype PHP",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-035",
+    "status": "red",
+    "domain": "WordPress",
+    "actual": "חבילת WordPress אינה כוללת assets או importer; אינה פרויקט מלא להתקנה.",
+    "evidence": "ZIP inventory",
+    "codeRef": "handoff WordPress package",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-036",
+    "status": "red",
+    "domain": "WordPress",
+    "actual": "project_facilities משמש CSV ב-core אך adapter מנסה JSON decode; התוצאה מערך ריק.",
+    "evidence": "Static code trace",
+    "codeRef": "plugins/nadlan-config/inc/facility-chips.php",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-037",
+    "status": "red",
+    "domain": "WordPress",
+    "actual": "adapter נוסף יוצר מערכת בחירה שנייה ואינו מפעיל את ה-semantic mesh adapter שכבר נכתב.",
+    "evidence": "Static code trace",
+    "codeRef": "handoff unit-selection-adapter.js",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-038",
+    "status": "red",
+    "domain": "WordPress",
+    "actual": "adapter משתמש unit_id והמנוע החי משתמש unit; ניתן ליצור שתי בחירות שונות.",
+    "evidence": "Static code trace",
+    "codeRef": "handoff adapter + core engine",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-039",
+    "status": "red",
+    "domain": "Source",
+    "actual": "adapter inline חי של 8,104 תווים אינו קיים בריפו ולכן אינו ניתן לשחזור או review.",
+    "evidence": "Source/repo fingerprint diff",
+    "codeRef": "live inline nadlan-engine-core-js-after",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-040",
+    "status": "orange",
+    "domain": "Source",
+    "actual": "plugin health חי 1.72.220 מול repo 1.72.206.",
+    "evidence": "Version fingerprint",
+    "codeRef": "plugin health vs repository",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-041",
+    "status": "orange",
+    "domain": "SEO",
+    "actual": "hreflang כולל רק he ו-x-default למרות שה-runtime מצהיר חמש שפות.",
+    "evidence": "View Source",
+    "codeRef": "public head",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-042",
+    "status": "orange",
+    "domain": "SEO",
+    "actual": "שני BreadcrumbList ושני FAQPage שאינם זהים.",
+    "evidence": "JSON-LD parse",
+    "codeRef": "public source",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-043",
+    "status": "red",
+    "domain": "SEO",
+    "actual": "meta/FAQ מבטיחים מתקנים שאינם קיימים בחוויה.",
+    "evidence": "Source vs feature contract",
+    "codeRef": "Yoast meta + JSON-LD",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-044",
+    "status": "yellow",
+    "domain": "SEO",
+    "actual": "favicon קיים, תקין ומחזיר 200; היעדר SERP אינו מוכח ככשל קוד.",
+    "evidence": "Source + HTTP/MIME",
+    "codeRef": "public head icons",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-045",
+    "status": "orange",
+    "domain": "Security",
+    "actual": "נמצאה היעדרות של שישה headers רוחביים בתגובה שנבדקה.",
+    "evidence": "HTTP response headers",
+    "codeRef": "server configuration",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-046",
+    "status": "red",
+    "domain": "נגישות",
+    "actual": "בקרי close/tabs/actions רבים קטנים מיעד המוצר 44×44.",
+    "evidence": "Bounding boxes",
+    "codeRef": "showroom + studio CSS",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-047",
+    "status": "red",
+    "domain": "נגישות",
+    "actual": "פריטי סטודיו הם div ללא role/tabindex/aria.",
+    "evidence": "DOM audit",
+    "codeRef": "studio.js",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-048",
+    "status": "red",
+    "domain": "תוכן",
+    "actual": "תוכן הפוסט באדמין 1,408 תווים בלבד, רחוק ממאמר הפרויקט המלא שהוגדר.",
+    "evidence": "Admin field length",
+    "codeRef": "post_content",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-049",
+    "status": "orange",
+    "domain": "SEO",
+    "actual": "Yoast title תקין ב-source אך DOM runtime נצפה עם title אחר; יש לבדוק מי כותב document.title.",
+    "evidence": "Source vs rendered DOM",
+    "codeRef": "runtime title writer",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-050",
+    "status": "yellow",
+    "domain": "מפה ואלומה",
+    "actual": "בחירת inventory כן החליפה unit, URL, active card ומרקר כיוון—זה הקוד הקאנוני שיש לשמר.",
+    "evidence": "Positive click proof",
+    "codeRef": "engine.js:1315-1357,4106-4140",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-051",
+    "status": "red",
+    "domain": "Cache/runtime",
+    "actual": "engine.js מוגש לשנה עם אותו ver=1.72.220 ללא fingerprint בשם; דפדפנים יכולים להריץ JS ישן מול payload/CSS חדשים.",
+    "evidence": "Response cache headers + source/runtime comparison",
+    "codeRef": "asset versioning and cache policy",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-052",
+    "status": "red",
+    "domain": "Cache/runtime",
+    "actual": "באותו סשן payload מכבה selected-unit surface, אך DOM נבנה במסלול החדש בלי ה-CSS שלו—split-brain גרסאות, לא רק תקלה עיצובית.",
+    "evidence": "Payload flags + DOM class + missing CSS rules",
+    "codeRef": "engine.js:218-232,2162-2285; showroom-engine.php:493-509",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-053",
+    "status": "red",
+    "domain": "SEO",
+    "actual": "engine.js דורס document.title התקין מהשרת בכל render ומחליף אותו בכותרת חלשה יותר.",
+    "evidence": "Exact source trace + rendered DOM",
+    "codeRef": "plugins/nadlan-config/assets/showroom-engine/engine.js:218-232",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-054",
+    "status": "orange",
+    "domain": "RFP",
+    "actual": "ה-summary הגלוי אינו מציג RFP; חיבור הסטודיו תלוי בכפתור legacy מוסתר שנשאר ב-DOM במקום API/event ישיר.",
+    "evidence": "DOM + source trace + click proof",
+    "codeRef": "studio.js:310; engine.js:482,2260-2285",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-055",
+    "status": "red",
+    "domain": "סיור דירה",
+    "actual": "ה-tour בתוך dialog במובייל נמדד בכ-303×153px—קטן מדי למסע POV או החלטה.",
+    "evidence": "Browser bounding box",
+    "codeRef": "tour dialog CSS",
+    "nonBlocking": true
+  },
+  {
+    "id": "LIVE-056",
+    "status": "yellow",
+    "domain": "Reliability",
+    "actual": "נצפתה תגובת 502 חולפת בפתיחת לשונית חדשה ואזהרת rAF timed out in updateSource; reload הצליח.",
+    "evidence": "Network/console observation",
+    "codeRef": "server/runtime monitoring",
+    "nonBlocking": true
+  }
+]

@@ -184,6 +184,14 @@ REASONING
 
 ## 6. DONE (proof-backed log — append-only)
 
+- 2026-08-25 · Codex · complete Aurelia master recipe packaged for repository review; no WordPress or live-site change · branch `codex/aurelia-master-recipe-2026-08-25` · proof: `handoff/codex/2026-08-25-aurelia-master-recipe/README.md`, `downloads/SHA256SUMS.txt`, and `05-EVIDENCE/repository-public-safe-browser-validation.json`
+
+  REASONING
+  - SAW: the prior deliverables were complete locally but absent from the canonical NadLan repository, and the public HTML evidence contained browser-visible runtime values that cannot be committed to this public repo.
+  - THOUGHT: the durable handoff needs both an exploded, readable tree and downloadable artifacts, while retaining DOM/code evidence and removing only sensitive values.
+  - DID: copied the complete rc3 delivery, added a repository entry point and implementation log, redacted runtime values, added a token-free MapLibre/OpenStreetMap lab path, rebuilt the plugin and master ZIPs, and kept the active WordPress plugin untouched.
+  - CHECKED: manifest hashes, ZIP roots and entries, JSON parsing, JS syntax, PHP lint, secret scans, and a fresh browser click from `aur-t-14-c` to `aur-t-29-b` with synchronized map label/cone and zero console errors.
+
 - 2026-06-20 · Codex · 1.68.1 fake-facade guard + mobile facade containment prepared for Claude gate · `f65cf4f` · proof: `docs/qa/screenshots/v1681-facade-truth-live-before/` shows live fake-grid failure; ZIP guard/version audit clean locally
 - 2026-06-20 · Codex · 1.68.2 Dimri premium concept facade PR opened ready-for-review · `330738a` · proof: PR #207 https://github.com/The-new-ben/nad-lan-co-il/pull/207 and `docs/qa/2026-06-20-dimri-yama-facade-1682.md`
 

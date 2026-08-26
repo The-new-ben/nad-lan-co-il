@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aurelia responsive evidence harness</title>
+  <style>
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#090908;color:#f8f2e7;font:14px/1.5 Arial,sans-serif}
+    header{position:sticky;top:0;z-index:2;display:flex;gap:14px;align-items:center;justify-content:space-between;padding:12px 18px;background:#121210;border-bottom:1px solid #3b352b}
+    header strong{font-size:18px}header span{color:#c8bca8}
+    main{position:relative;width:100%;min-height:calc(100vh - 54px);padding:22px;overflow:hidden}
+    .viewport-wrap{position:relative;margin:0 auto}
+    .device{position:absolute;inset:0 auto auto 0;background:#000;border:10px solid #25231f;border-radius:24px;box-shadow:0 24px 70px #000;width:max-content;overflow:hidden;transform-origin:top left}
+    .device:before{content:attr(data-size);position:absolute;z-index:3;top:8px;left:50%;transform:translateX(-50%);padding:4px 10px;border-radius:999px;background:#090908;color:#e8c987;font-weight:700;pointer-events:none}
+    iframe{display:block;border:0;background:#fff}
+  </style>
+</head>
+<body>
+  <header><strong>Responsive evidence harness</strong><span id="explain"></span></header>
+  <main><div class="viewport-wrap" id="viewport-wrap"><div class="device" id="device"><iframe id="lab" title="Aurelia exact responsive viewport"></iframe></div></div></main>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const width = Math.max(280, Number(params.get('w')) || 390);
+    const height = Math.max(568, Number(params.get('h')) || 844);
+    const device = document.getElementById('device');
+    const wrap = document.getElementById('viewport-wrap');
+    const frame = document.getElementById('lab');
+    const framedWidth = width + 20;
+    const framedHeight = height + 20;
+    const scale = Math.min(1, 1120 / framedWidth, 640 / framedHeight);
+    wrap.style.width = `${framedWidth * scale}px`;
+    wrap.style.height = `${framedHeight * scale}px`;
+    device.style.transform = `scale(${scale})`;
+    device.dataset.size = `${width} × ${height} CSS px`;
+    frame.width = String(width);
+    frame.height = String(height);
+    frame.src = `/?unit_id=aur-t-14-c&harness=${width}x${height}&v=${Date.now()}#inventory`;
+    document.getElementById('explain').textContent = `העמוד המקורי, ללא שינוי, בתוך viewport מדויק של ${width}×${height}`;
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "package": "aurelia-master-recipe",
+  "version": "1.0.0-rc3",
+  "date": "2026-08-25",
+  "tracks": ["isolated-recipe-lab", "wordpress-compatible-adapter-0.5.0"],
+  "wordpressChanged": false,
+  "publicSiteChanged": false,
+  "publicRepositoryCopy": true,
+  "publicSourceSensitiveValuesRedacted": true,
+  "counts": {
+    "units": 320,
+    "semanticAnchors": 320,
+    "semanticPickMeshes": 0,
+    "plans": 6,
+    "facilities": 12,
+    "environmentPoints": 12,
+    "pageSections": 20,
+    "bomSystems": 17,
+    "bomAssemblies": 33,
+    "bomComponents": 80,
+    "checklistDomains": 17,
+    "baseChecks": 138,
+    "matrixCases": 9098,
+    "selectionAtomicChecks": 67,
+    "selectionReplayMatrix": 536000,
+    "sourceDetectors": 20
+  },
+  "evidence": {
+    "dataTests": "22/22 green",
+    "localDomTests": "24/24 green after replay",
+    "codeFingerprints": "20/20 green",
+    "browserViewports": ["1440x900 exact", "390x844 exact", "320x720 exact"],
+    "glbSha256": "4D7018B13F3978D14D27ECC0DC7CCE69526D9DC4E2AAB7CB257DA52E950F5EDD",
+    "rainbowOriginalCapturedSourceSha256": "F40C4188C0A6AD9E4A9250022CBE0D79372C49E7A22D087B4C99FBC3152F7B9B",
+    "rainbowSourceSha256": "BE1F08AE1EB7B2F9025381DF9853B926052F883390B2365C30E77F2FE05691EA",
+    "phpStaticParse": "green",
+    "productionReadiness": "orange"
+  },
+  "lights": {
+    "anchorContract": "green",
+    "surfaceAdapter": "green",
+    "semanticMeshAdapter": "yellow",
+    "wordpressPreview": "orange"
+  },
+  "next": "Install only on WordPress preview post 7304, capture public source, and replay the same unit_id chain before extending to the project fleet."
+}

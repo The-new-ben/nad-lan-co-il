@@ -1,0 +1,91 @@
+{
+  "version": "1.0.0",
+  "purpose": "מפרט מדעי לבחירת קומה ודירה מתוך מודל תלת־ממד, ללא קואורדינטות CSS ידניות.",
+  "authoritativeChain": ["GLB mesh/anchor", "surface or ray hit", "unit_id", "inventory", "card", "plan", "Mapbox cone", "window view", "tour", "studio", "lead"],
+  "runtimeAdapters": [
+    {"id":"surface","name":"ModelViewerSurfaceAdapter","use":"פרויקטים קיימים עם shell אחד ו-anchor/hitRegion","file":"wordpress/unit-selection-adapter.js"},
+    {"id":"semantic","name":"ThreeSemanticMeshAdapter","use":"יעד קאנוני עם UNIT_PICK__{unit_id} מתוך BIM/GLB","file":"wordpress/unit-selection-adapter.js"}
+  ],
+  "deviceMatrix": [
+    {"width":1440,"input":"mouse+keyboard","orientations":["landscape"]},
+    {"width":390,"input":"touch+keyboard","orientations":["portrait","landscape"]},
+    {"width":320,"input":"touch+keyboard","orientations":["portrait","landscape"]}
+  ],
+  "checks": [
+    {"id":"SEL-DATA-001","group":"זהות וחוזה","title":"unit_id ייחודי ויציב לכל יחידה","method":"schema+duplicate scan","evidence":"320 IDs / 320 unique","code":["data/units.json","scripts/compile-unit-selection.mjs"],"failLight":"red"},
+    {"id":"SEL-DATA-002","group":"זהות וחוזה","title":"כל יחידה מצביעה ל-project_id אחד","method":"schema relation","evidence":"project.id === event.project_id","code":["data/project.json","app.js#selectUnit"],"failLight":"red"},
+    {"id":"SEL-DATA-003","group":"זהות וחוזה","title":"קומה, קו, כיוון ו-azimuth קיימים","method":"field scan","evidence":"floor+line+dir+directionAzimuth","code":["data/units.json"],"failLight":"orange"},
+    {"id":"SEL-DATA-004","group":"זהות וחוזה","title":"plan_id קיים בטבלת התוכניות","method":"foreign-key scan","evidence":"units.plan_id → drawings.id","code":["data/units.json","data/drawings.json"],"failLight":"red"},
+    {"id":"SEL-DATA-005","group":"זהות וחוזה","title":"מחיר וסטטוס ציבורי נישאים עם היחידה","method":"payload inspection","evidence":"price+availability in card and inventory","code":["data/units.json","app.js#renderUnitCard"],"failLight":"orange"},
+    {"id":"SEL-DATA-006","group":"זהות וחוזה","title":"stage_x/y נשמרים למיגרציה בלבד","method":"runtime read scan","evidence":"legacyStageRectangle.runtimeAllowed=false","code":["data/units.json","scripts/compile-unit-selection.mjs"],"failLight":"orange"},
+
+    {"id":"SEL-GLB-001","group":"GLB וקואורדינטות","title":"ה-GLB נטען וקובץ ה-SHA תואם","method":"network+SHA-256","evidence":"semantic GLB hash stored","code":["assets/aurelia-tower-semantic-v2.glb"],"failLight":"red"},
+    {"id":"SEL-GLB-002","group":"GLB וקואורדינטות","title":"מערכת צירים אחת: meters, Y-up, X-east, -Z-north","method":"contract compare","evidence":"project.modelCoordinateContract","code":["data/project.json"],"failLight":"red"},
+    {"id":"SEL-GLB-003","group":"GLB וקואורדינטות","title":"פסיעת קומות נגזרת מהמודל ולא מהטקסט האדריכלי","method":"primitive bounds analysis","evidence":"modelFloorPitchM=3.05","code":["scripts/compile-unit-selection.mjs"],"failLight":"red"},
+    {"id":"SEL-GLB-004","group":"GLB וקואורדינטות","title":"320 UNIT_ANCHOR nodes קיימים ב-GLB","method":"GLB JSON chunk parse","evidence":"anchor_count=320","code":["scripts/enrich-glb-selection.mjs"],"failLight":"orange"},
+    {"id":"SEL-GLB-005","group":"GLB וקואורדינטות","title":"כל node נושא extras.unit_id תואם","method":"GLB extras relation","evidence":"UNIT_ANCHOR name ↔ extras.unit_id","code":["assets/aurelia-tower-semantic-v2.glb"],"failLight":"red"},
+    {"id":"SEL-GLB-006","group":"GLB וקואורדינטות","title":"anchor נמצא בתוך bounds מאושר של המודל","method":"3D bounds test","evidence":"x/y/z within model bounds+tolerance","code":["scripts/validate-selection-model.mjs"],"failLight":"orange"},
+    {"id":"SEL-GLB-007","group":"GLB וקואורדינטות","title":"normal הוא וקטור יחידה ופונה מהחזית","method":"length+surface dot","evidence":"|normal|≈1 and dot above threshold","code":["data/units.json"],"failLight":"orange"},
+    {"id":"SEL-GLB-008","group":"GLB וקואורדינטות","title":"UNIT_PICK proxy מיוצא מן BIM כאשר קיים","method":"semantic node scan","evidence":"UNIT_PICK__unit_id + extras","code":["wordpress/unit-selection-adapter.js#ThreeSemanticMeshAdapter"],"failLight":"yellow"},
+
+    {"id":"SEL-HIT-001","group":"פגיעה ופתרון יחידה","title":"tap מחזיר position ו-normal ממשטח המודל","method":"physical browser tap","evidence":"positionAndNormalFromPoint result","code":["app.js#selectUnitFromModelSurface"],"failLight":"red"},
+    {"id":"SEL-HIT-002","group":"פגיעה ופתרון יחידה","title":"Y של הפגיעה נכנס ל-floor band אחד","method":"floor range resolution","evidence":"floorMinY ≤ hit.y ≤ floorMaxY","code":["app.js#resolveUnitFromSurfaceHit"],"failLight":"orange"},
+    {"id":"SEL-HIT-003","group":"פגיעה ופתרון יחידה","title":"נורמל המשטח תואם לחזית היחידה","method":"dot product","evidence":"normalDot ≥ minNormalDot","code":["app.js#resolveUnitFromSurfaceHit"],"failLight":"orange"},
+    {"id":"SEL-HIT-004","group":"פגיעה ופתרון יחידה","title":"מרחק הפגיעה לעוגן בתוך tolerance","method":"3D Euclidean distance","evidence":"distance ≤ maxSurfaceDistanceM","code":["app.js#resolveUnitFromSurfaceHit"],"failLight":"orange"},
+    {"id":"SEL-HIT-005","group":"פגיעה ופתרון יחידה","title":"ה-resolver מחזיר יחידה יחידה או ambiguity מפורש","method":"candidate count","evidence":"one result or choice rail","code":["wordpress/unit-selection-adapter.js"],"failLight":"orange"},
+    {"id":"SEL-HIT-006","group":"פגיעה ופתרון יחידה","title":"tap בקומה ללא hotspot גלוי עדיין בוחר","method":"physical unmarked-floor replay","evidence":"aur-t-21-c browser proof","code":["app.js#surfacePickProof"],"failLight":"red"},
+    {"id":"SEL-HIT-007","group":"פגיעה ופתרון יחידה","title":"raycast סמנטי בוחר intersection קרוב ראשון","method":"Three Raycaster replay","evidence":"object.userData.unit_id","code":["wordpress/unit-selection-adapter.js#ThreeSemanticMeshAdapter"],"failLight":"orange"},
+    {"id":"SEL-HIT-008","group":"פגיעה ופתרון יחידה","title":"עצים, קרקע ולוגו אינם בשכבת הבחירה","method":"layer/object filter","evidence":"pickRoot contains unit proxies only","code":["wordpress/unit-selection-adapter.js"],"failLight":"orange"},
+
+    {"id":"SEL-GEST-001","group":"מחוות ומגע","title":"pointerdown שומר pointerId, נקודה וזמן","method":"event trace","evidence":"modelPointerStart","code":["app.js#bindGlobalControls"],"failLight":"red"},
+    {"id":"SEL-GEST-002","group":"מחוות ומגע","title":"תנועה עד 6px מוגדרת tap","method":"movement threshold","evidence":"Math.hypot ≤ 6","code":["app.js#bindGlobalControls"],"failLight":"orange"},
+    {"id":"SEL-GEST-003","group":"מחוות ומגע","title":"תנועה מעל 6px מסובבת ואינה בוחרת","method":"drag replay","evidence":"unit_id unchanged after orbit","code":["wordpress/unit-selection-adapter.js#pointerUp"],"failLight":"red"},
+    {"id":"SEL-GEST-004","group":"מחוות ומגע","title":"לחיצה ארוכה מעל 900ms אינה בוחרת בטעות","method":"long-press replay","evidence":"unit_id unchanged","code":["wordpress/unit-selection-adapter.js#pointerUp"],"failLight":"orange"},
+    {"id":"SEL-GEST-005","group":"מחוות ומגע","title":"touch-action מאפשר גלילה אנכית","method":"computed style+swipe","evidence":"touch-action: pan-y","code":["index.html#building-model"],"failLight":"red"},
+    {"id":"SEL-GEST-006","group":"מחוות ומגע","title":"multi-touch אינו יוצר שתי בחירות","method":"two-pointer replay","evidence":"isPrimary guard+single event","code":["wordpress/unit-selection-adapter.js#pointerDown"],"failLight":"orange"},
+
+    {"id":"SEL-PROJ-001","group":"הקרנה ו-occlusion","title":"כפתור ציבורי נגזר מ-queryHotspot","method":"projection delta","evidence":"≤1 CSS px","code":["app.js#updateProjectedHotspotPositions"],"failLight":"red"},
+    {"id":"SEL-PROJ-002","group":"הקרנה ו-occlusion","title":"אין top/left קאנוני בנתונים","method":"runtime source scan","evidence":"CSS receives only projected canvasPosition","code":["app.js#updateProjectedHotspotPositions"],"failLight":"orange"},
+    {"id":"SEL-PROJ-003","group":"הקרנה ו-occlusion","title":"נקודה מאחורי המצלמה מוסתרת","method":"facingCamera check","evidence":"hidden when false","code":["app.js#updateProjectedHotspotPositions"],"failLight":"orange"},
+    {"id":"SEL-PROJ-004","group":"הקרנה ו-occlusion","title":"נקודה מחוץ למסגרת מוסתרת","method":"canvas bounds check","evidence":"0≤x≤width, 0≤y≤height","code":["app.js#updateProjectedHotspotPositions"],"failLight":"orange"},
+    {"id":"SEL-PROJ-005","group":"הקרנה ו-occlusion","title":"נקודה שמאחורי מעטפת קדמית מוסתרת","method":"surface delta probe","evidence":"surface delta ≤4m","code":["app.js#updateProjectedHotspotPositions"],"failLight":"orange"},
+    {"id":"SEL-PROJ-006","group":"הקרנה ו-occlusion","title":"ההקרנה מתעדכנת בכל camera-change","method":"rotate replay","evidence":"button follows anchor through orbit","code":["app.js#wireProjectedHotspots"],"failLight":"red"},
+    {"id":"SEL-PROJ-007","group":"הקרנה ו-occlusion","title":"resize מחשב מחדש את המיקום","method":"viewport replay","evidence":"anchor delta≤1px after resize","code":["app.js#wireProjectedHotspots"],"failLight":"orange"},
+    {"id":"SEL-PROJ-008","group":"הקרנה ו-occlusion","title":"selected קודם לנקודות נציגות","method":"representative list inspection","evidence":"selected always rendered","code":["app.js#representativeUnits"],"failLight":"yellow"},
+    {"id":"SEL-PROJ-009","group":"הקרנה ו-occlusion","title":"לא מוצגות מאות נקודות בו-זמנית","method":"visible hotspot count","evidence":"desktop≤8, mobile≤5","code":["wordpress/unit-selection-adapter.js#representatives"],"failLight":"orange"},
+    {"id":"SEL-PROJ-010","group":"הקרנה ו-occlusion","title":"יעד מגע 44px לפחות ו-48px במובייל","method":"rendered bounding box","evidence":"44×44 / 48×48","code":["wordpress/unit-selection-adapter.css"],"failLight":"red"},
+
+    {"id":"SEL-SYNC-001","group":"סנכרון unit_id","title":"בחירה פולטת אירוע אחד בלבד","method":"event counter","evidence":"one nadlan:unit-selected","code":["app.js#selectUnit"],"failLight":"red"},
+    {"id":"SEL-SYNC-002","group":"סנכרון unit_id","title":"URL query שומר את unit_id","method":"location assertion","evidence":"?unit_id=selected","code":["app.js#selectUnit"],"failLight":"red"},
+    {"id":"SEL-SYNC-003","group":"סנכרון unit_id","title":"שורת המלאי הפעילה היא אותה יחידה","method":"DOM relation","evidence":"one .unit-row.active","code":["app.js#renderInventory"],"failLight":"red"},
+    {"id":"SEL-SYNC-004","group":"סנכרון unit_id","title":"כרטיס הדירה מציג אותה יחידה","method":"card dataset/text assertion","evidence":"card unit_id=selected","code":["app.js#renderUnitCard"],"failLight":"red"},
+    {"id":"SEL-SYNC-005","group":"סנכרון unit_id","title":"התוכנית נטענת מ-plan_id של אותה יחידה","method":"asset relation","evidence":"img.src=drawings[unit.plan_id]","code":["app.js#updateScenes"],"failLight":"red"},
+    {"id":"SEL-SYNC-006","group":"סנכרון unit_id","title":"Mapbox מקבל azimuth של אותה יחידה","method":"map layer assertion","evidence":"cone bearing=directionAzimuth","code":["app.js#updateUnitMap","wordpress/mapbox-init-current.js"],"failLight":"red"},
+    {"id":"SEL-SYNC-007","group":"סנכרון unit_id","title":"מראה מהחלון שומר יחידה וכיוון","method":"view caption+state assertion","evidence":"unit_id+view unchanged","code":["app.js#updateScenes"],"failLight":"orange"},
+    {"id":"SEL-SYNC-008","group":"סנכרון unit_id","title":"סיור הפנים נפתח עם אותה יחידה","method":"scene state assertion","evidence":"selectedUnitId persists","code":["app.js#ensureInteriorViewer"],"failLight":"orange"},
+    {"id":"SEL-SYNC-009","group":"סנכרון unit_id","title":"הסטודיו מציג plan_id של אותה יחידה","method":"studio binding assertion","evidence":"studio unit+plan selected","code":["app.js#renderStudio"],"failLight":"red"},
+    {"id":"SEL-SYNC-010","group":"סנכרון unit_id","title":"טופס הליד נושא את אותה יחידה","method":"payload inspection","evidence":"payload.unit_id=selected","code":["app.js#submitDecision","wordpress/buyflow-current.js"],"failLight":"red"},
+    {"id":"SEL-SYNC-011","group":"סנכרון unit_id","title":"חזרה ממפה/תוכנית/סיור אינה מאפסת","method":"round-trip replay","evidence":"same unit before/after","code":["app.js#setScene"],"failLight":"red"},
+    {"id":"SEL-SYNC-012","group":"סנכרון unit_id","title":"deep link משחזר יחידה קיימת בלבד","method":"reload URL replay","evidence":"valid restored; invalid rejected","code":["app.js#loadData"],"failLight":"orange"},
+
+    {"id":"SEL-UX-001","group":"ממשק וקבלת החלטה","title":"הבניין אינו זז עם פתיחת הכרטיס","method":"before/after screenshot diff","evidence":"model rect delta≤1px","code":["styles.css#showroom-grid"],"failLight":"red"},
+    {"id":"SEL-UX-002","group":"ממשק וקבלת החלטה","title":"בחירה אינה מסובבת אוטומטית את המצלמה","method":"camera orbit assertion","evidence":"orbit unchanged on select","code":["app.js#selectUnit"],"failLight":"orange"},
+    {"id":"SEL-UX-003","group":"ממשק וקבלת החלטה","title":"סיבוב לחזית הוא פעולה מפורשת","method":"button click replay","evidence":"camera changes only after CTA","code":["app.js#renderUnitCard"],"failLight":"yellow"},
+    {"id":"SEL-UX-004","group":"ממשק וקבלת החלטה","title":"כרטיס מובייל אינו מכסה את הבניין","method":"320/390 screenshot geometry","evidence":"no card/model overlap","code":["styles.css"],"failLight":"red"},
+    {"id":"SEL-UX-005","group":"ממשק וקבלת החלטה","title":"לאחר בחירה מוצגים המחיר והפעולות בלי הסבר פיתוחי","method":"visible copy scan","evidence":"buyer language only","code":["app.js#renderUnitCard"],"failLight":"orange"},
+    {"id":"SEL-UX-006","group":"ממשק וקבלת החלטה","title":"יחידה שנבחרה מחוץ ל-70 הראשונות נשארת ברשימה","method":"selection visibility replay","evidence":"active row count=1","code":["app.js#renderInventory"],"failLight":"red"},
+
+    {"id":"SEL-A11Y-001","group":"נגישות","title":"לכל hotspot שם נגיש הכולל דירה, קומה וחדרים","method":"accessible name snapshot","evidence":"aria-label complete","code":["app.js#renderProjectedHotspots"],"failLight":"orange"},
+    {"id":"SEL-A11Y-002","group":"נגישות","title":"focus-visible ברור על hotspot","method":"keyboard screenshot","evidence":"3px visible outline","code":["wordpress/unit-selection-adapter.css"],"failLight":"orange"},
+    {"id":"SEL-A11Y-003","group":"נגישות","title":"Enter ו-Space בוחרים אותה יחידה","method":"keyboard replay","evidence":"event+URL+card sync","code":["wordpress/unit-selection-adapter.js"],"failLight":"red"},
+    {"id":"SEL-A11Y-004","group":"נגישות","title":"הודעות שינוי אינן מציפות קורא מסך","method":"live-region audit","evidence":"one concise polite update","code":["index.html#stage"],"failLight":"yellow"},
+    {"id":"SEL-A11Y-005","group":"נגישות","title":"reduced-motion מכבה מעבר לא חיוני","method":"media emulation","evidence":"no transition","code":["wordpress/unit-selection-adapter.css"],"failLight":"yellow"},
+
+    {"id":"SEL-PERF-001","group":"ביצועים וראיות","title":"GLB סמנטי נשאר בתקציב המודל","method":"byte count","evidence":"330,508 bytes in lab","code":["assets/aurelia-tower-semantic-v2.glb"],"failLight":"yellow"},
+    {"id":"SEL-PERF-002","group":"ביצועים וראיות","title":"עדכון hotspot מתוזמן ב-requestAnimationFrame","method":"source inspection","evidence":"one projection frame","code":["app.js#updateProjectedHotspotPositions"],"failLight":"yellow"},
+    {"id":"SEL-PERF-003","group":"ביצועים וראיות","title":"Raycaster מוגבל ל-pickRoot","method":"source inspection","evidence":"no whole-scene traversal","code":["wordpress/unit-selection-adapter.js#ThreeSemanticMeshAdapter"],"failLight":"yellow"},
+    {"id":"SEL-PERF-004","group":"ביצועים וראיות","title":"fingerprint מכסה GLB, units, adapter ו-CSS","method":"SHA-256 manifest","evidence":"four hashes stored","code":["data/code-evidence.json"],"failLight":"orange"},
+    {"id":"SEL-PERF-005","group":"ביצועים וראיות","title":"שינוי fingerprint מדליק נורה ואינו חוסם פרסום","method":"admin diff simulation","evidence":"yellow/orange finding","code":["wordpress/nadlan-aurelia-prototype.php"],"failLight":"yellow"},
+    {"id":"SEL-PERF-006","group":"ביצועים וראיות","title":"בדיקת 1440, 390 ו-320 שומרת unit_id ומיקום","method":"device replay matrix","evidence":"three signed result rows","code":["data/test-results.json"],"failLight":"orange"}
+  ]
+}

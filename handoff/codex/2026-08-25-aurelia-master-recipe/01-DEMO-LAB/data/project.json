@@ -1,0 +1,123 @@
+{
+  "id": "aurelia-sde-dov",
+  "wpPostType": "nadlan_project",
+  "status": "draft",
+  "languageOwner": "he",
+  "identity": {
+    "title": "Aurelia Sde Dov - אורליה שדה דב",
+    "slug": "aurelia-sde-dov",
+    "brand": "Aurelia",
+    "hebrewName": "אורליה שדה דב",
+    "projectType": "new_build",
+    "developer": "Aurelia Development Group",
+    "architect": "Aurelia Design Lab",
+    "city": "תל אביב יפו",
+    "address": "רובע שדה דב, תל אביב-יפו",
+    "neighborhood": "שדה דב",
+    "statusLabel": "בבנייה",
+    "completionEstimate": "2030"
+  },
+  "architecture": {
+    "towerFloors": 47,
+    "wingFloors": 8,
+    "units": 320,
+    "floorHeightM": 3.35,
+    "groundElevationM": 7.5,
+    "towers": 1,
+    "gardenWings": 2,
+    "parkingLevels": 4,
+    "modelFloorPitchM": 3.05,
+    "modelCoordinateContract": "glTF meters; Y up; X east; -Z north"
+  },
+  "position": {
+    "lat": 32.1057,
+    "lng": 34.7779
+  },
+  "map": {
+    "engine": "mapbox-gl-js-v3.7.0",
+    "mapboxToken": "",
+    "contract": "window.NLPJX_MAP + nlpjx:map",
+    "selectionBinding": "unit_id -> directionAzimuth -> showViewCone -> map.easeTo"
+  },
+  "pricing": {
+    "kind": "estimate",
+    "currency": "ILS",
+    "averagePerSqm": 88500,
+    "displayRangePerSqm": [
+      78000,
+      112000
+    ],
+    "note": "טווח המחירים בפרויקט"
+  },
+  "assets": {
+    "hero": "aurelia-exterior-hero-v1.png",
+    "modelPoster": "aurelia-exterior-hero-v1.png",
+    "modelGlb": "aurelia-tower-semantic-v2.glb",
+    "interior": "aurelia-interior-living-v1.png",
+    "interiorPanorama": "aurelia-interior-panorama-v1.png",
+    "amenities": "aurelia-amenities-wellness-v1.png",
+    "environment": "aurelia-environment-aerial-v1.png",
+    "facade": "aurelia-facade-v1.svg",
+    "sitePlan": "aurelia-site-plan-v1.svg"
+  },
+  "seo": {
+    "primaryKeyword": "אורליה שדה דב",
+    "searchIntent": "commercial-investigation",
+    "title": "אורליה שדה דב Aurelia | דירות, תוכניות ומחירים",
+    "metaDescription": "בחרו דירה באורליה שדה דב לפי קומה וכיוון, צפו בתוכנית, בנוף, במתקנים ובמחיר והמשיכו לפגישה או לסיור משותף.",
+    "canonicalOwner": "/projects/aurelia-sde-dov/"
+  },
+  "productionMode": "complete_generated_project",
+  "referenceDna": [
+    {
+      "source": "Bentley Residences Miami",
+      "use": "עומק חבילת תוכניות, מתקנים ומסלול פנייה",
+      "url": "https://bentleyresidencesmiami.com/downloads/"
+    },
+    {
+      "source": "Mercedes-Benz Places Miami",
+      "use": "wellness, שכונה וצוות הפרויקט",
+      "url": "https://miami.mercedesbenzplaces.com/"
+    },
+    {
+      "source": "The Ellinikon Riviera Tower",
+      "use": "סביבה, נוף והתקדמות בנייה",
+      "url": "https://theellinikon.com.gr/en/residences/the-ellinikon-riviera"
+    },
+    {
+      "source": "NadLan premium showroom",
+      "use": "בחירת יחידה, אלומת כיוון, סטודיו, ליד ו-Co-tour",
+      "url": "https://nad-lan.co.il/premium/"
+    }
+  ],
+  "selection": {
+    "version": "1.0.0",
+    "stateOwner": "selectedUnitId",
+    "runtimeOrder": [
+      "semantic mesh pick",
+      "surface hit region",
+      "3D anchor hotspot",
+      "inventory row"
+    ],
+    "forbiddenRuntimeInputs": [
+      "stage_x",
+      "stage_y",
+      "stage_w",
+      "stage_h"
+    ],
+    "modelFingerprintInputs": [
+      "GLB SHA-256",
+      "node names",
+      "mesh names",
+      "primitive count",
+      "bounds",
+      "unit anchor count"
+    ],
+    "mobile": {
+      "touchTargetCssPx": 44,
+      "preserveVerticalPagePan": true,
+      "cardMayCoverModel": false,
+      "selectionPersistsAcrossScenes": true
+    }
+  }
+}

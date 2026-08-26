@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "1.0.0",
+  "purpose": "קישור נורות הצ׳ק־ליסט לקוד הקאנוני והתרעה כאשר המקור משתנה",
+  "statusRules": {
+    "green": "הקובץ והקטע הקריטי תואמים ל-baseline שאושר",
+    "yellow": "הקובץ השתנה אך הקטע הקריטי עדיין קיים; יש לעבור על ה-diff",
+    "orange": "הסמל או הקטע הקריטי נעלם; היכולת דורשת בדיקה מחדש",
+    "red": "הקובץ אינו נגיש או שהקליק נכשל בדפדפן"
+  },
+  "sources": [
+    { "id":"live-engine", "file":"wordpress/engine-current.js", "origin":"NadLan public live asset", "version":"1.72.219", "expectedFileSha256":"5D8F53A4CE7977233A1E280F903FC43884117070F276BDBC59D2D345CE41107E" },
+    { "id":"live-mapbox", "file":"wordpress/mapbox-init-current.js", "origin":"NadLan public live asset", "version":"1.72.219", "expectedFileSha256":"F470538FD2F5FA02C415018A5A4898D0B08631EEAD40839752A5C4C52302C0F8" },
+    { "id":"live-studio", "file":"wordpress/studio-current.js", "origin":"NadLan public live asset", "version":"1.72.219", "expectedFileSha256":"89006F4473D31B38D235A1D3F9C2AC0FBEEA6EF2BF39BACF2234B57515F9F21A" },
+    { "id":"live-buyflow", "file":"wordpress/buyflow-current.js", "origin":"NadLan public live asset", "version":"1.72.219", "expectedFileSha256":"F5B22D6CEF5C132811D2D9CEAB19C818D8DA01CEDF716DD8617783E3F6BC060A" },
+    { "id":"live-i18n", "file":"wordpress/i18n-current.js", "origin":"NadLan public live asset", "version":"1.72.219", "expectedFileSha256":"6565D1E9A6A34231489955F20A793DB735222A7908DCDFC8B36D54195B164167" },
+    { "id":"live-mv-ux", "file":"wordpress/mv-ux-current.js", "origin":"NadLan public live asset", "version":"1.72.219", "expectedFileSha256":"645721814809BD3BBD7238D33EF6D6F3D49955A66AE8831A7434CDD8848ABE4B" },
+    { "id":"wp-adapter", "file":"wordpress/nadlan-aurelia-prototype.php", "origin":"Aurelia WordPress adapter", "version":"0.5.0", "expectedFileSha256":"D04E439ED4EC452EDFDEA64A9052084BCD206095B27D340D6AADD0360C934F6D" },
+    { "id":"recipe-runtime", "file":"app.js", "origin":"Aurelia Recipe Lab", "version":"1.0.0", "expectedFileSha256":"C928BC87F1E4114FA34C7F5771F8E1EED0522272EDC4127C9633ED2F5D49D0D3" },
+    { "id":"selection-adapter", "file":"wordpress/unit-selection-adapter.js", "origin":"Aurelia WordPress-compatible selection layer", "version":"1.0.0", "expectedFileSha256":"030AC93D6C5BBC2225A6D017C151024A86D44B86C51CE38BD76B96A5E935EB75" }
+  ],
+  "architecture": {
+    "selectionFlow": {
+      "producer": "semantic mesh, model surface hit, projected 3D hotspot או inventory row",
+      "controller": "engine.js::selectUnit(id, instant, source) / Recipe Lab::selectUnit(id, origin)",
+      "state": "state.unitId",
+      "consumers": ["selected-unit card", "plan tab", "window view", "NLPJX_MAP + viewCone", "interior tour", "NLStudio", "lead/brochure/cotour payload", "URL deep link"],
+      "event": "document::nadlan:unit-selected",
+      "invariant": "כל הצרכנים קוראים את אותו unit_id; אין מזהה מקומי נפרד למפה, לתוכנית או לטופס"
+    },
+    "mapFlow": {
+      "producer": "selectUnit -> easeMapToUnitView(unit)",
+      "data": "project.geo + unit.dir/directionAzimuth + floor",
+      "mount": "#nlpjx-map מיד אחרי #building",
+      "runtime": "window.NLPJX_MAP",
+      "readyEvent": "document::nlpjx:map",
+      "renderer": "Mapbox GL JS + mapboxgl.Marker rotationAlignment=map",
+      "invariant": "המפה נשארת גלויה מתחת ל-showroom והאלומה יוצאת מ-project.geo לפי כיוון היחידה"
+    },
+    "modelFlow": {
+      "producer": "semantic mesh pick → surface resolver → projected anchor",
+      "data": "selection.anchor.position/normal + hitRegion + semanticPickMesh",
+      "mount": "button[slot=hotspot-{unit_id}] child of model-viewer#nl-mv",
+      "interaction": "positionAndNormalFromPoint/queryHotspot או data-act=select -> selectUnit",
+      "invariant": "ה-hotspot מוקרן מהמודל ונבדק מול המשטח; stage_x/stage_y אסורים בזמן ריצה ונשמרים רק כראיית מיגרציה"
+    },
+    "studioFlow": {
+      "producer": "openStudio(state.unitId)",
+      "bridge": "window.NLStudio.open(context)",
+      "data": "project, unit, plan, BOM items, positions, notes, language, endpoints",
+      "consumers": ["local persistence", "quote summary", "lead endpoint", "WhatsApp", "video conference"],
+      "invariant": "היצוא מחזיק unit_id, קוד BOM, כמות ומיקום על התוכנית"
+    },
+    "changeDetection": {
+      "baseline": "SHA-256 מלא לכל asset קאנוני + criticalNeedle לכל symbol",
+      "yellow": "hash הקובץ השתנה אך criticalNeedle קיים",
+      "orange": "criticalNeedle או symbol נעלם",
+      "red": "הקובץ לא נטען או בדיקת הקליק נכשלה",
+      "response": "להציג diff, לעדכן את wiring note ולהריץ מחדש את מקרי הדפדפן לפני החזרת ירוק"
+    },
+    "sourceFlow": {
+      "producer": "WordPress admin action -> wp_remote_get(permalink)",
+      "state": "immutable raw HTML file + _nadlan_source_snapshot_latest",
+      "consumers": ["title/canonical/H1/favicon detectors", "schema ownership", "script/style inventory", "snapshot diff"],
+      "invariant": "הראיה היא תגובת ה-HTML הציבורית המלאה ולא DOM של העורך"
+    },
+    "conversionFlow": {
+      "producer": "selected unit + buyer choices + studio export",
+      "transport": "SR.config.lead_endpoint -> lead and rfp",
+      "data": "project, unit_id, floor, rooms, sqm, finish, extras, language, URL, studio BOM",
+      "invariant": "לא נשלח טופס כללי ללא project_id ו-unit_id"
+    },
+    "languageFlow": {
+      "producer": "document language / language selector",
+      "state": "window.NADLAN_I18N.langs[he|en|fr|ru|ar]",
+      "consumers": ["engine labels", "model guidance", "forms", "studio", "cotour"],
+      "invariant": "שינוי שפה אינו משנה unit_id ואינו שובר RTL/LTR"
+    }
+  },
+  "bindings": [
+    {
+      "id":"CODE-3D-001", "checkIds":["R05-009","R05-010"], "title":"Hotspot הוא קואורדינטת מודל ולא נקודת CSS", "sourceId":"live-engine", "symbol":"unitPos", "lineStart":171, "lineEnd":198,
+      "criticalNeedle":"var hp = String(u.hotspot_position || \"\").trim().split(/\\s+/);",
+      "excerpt":"unitPos(u) קוראת hotspot_position ו-hotspot_normal; רק אם שלושת הערכים מספריים היא מחזירה data-position/data-normal ל-model-viewer.",
+      "userProof":"סיבוב הבניין מזיז את הנקודה יחד עם החזית; בחירה שומרת את מזהה היחידה."
+    },
+    {
+      "id":"CODE-3D-002", "checkIds":["R05-009","R06-004"], "title":"אותו unit_id מודפס על hotspot ועל טריגר הבחירה", "sourceId":"live-engine", "symbol":"theater", "lineStart":371, "lineEnd":388,
+      "criticalNeedle":"data-position=\"' + pos.pos + '\" data-normal=\"' + pos.nrm + '\"",
+      "excerpt":"כפתור ה-hotspot מקבל slot, data-position, data-normal, data-act=select ו-data-id של אותה יחידה.",
+      "userProof":"לחיצה על הנקודה ועל שורת המלאי מביאה לאותו כרטיס ולאותה כתובת."
+    },
+    {
+      "id":"CODE-SELECT-001", "checkIds":["R06-004","R08-008","R09-001","R14-001"], "title":"פונקציית הבחירה היא מקור יחיד לכל הצרכנים", "sourceId":"live-engine", "symbol":"selectUnit", "lineStart":4023, "lineEnd":4074,
+      "criticalNeedle":"state.unitId = id; state.tab = \"plan\";",
+      "excerpt":"selectUnit(id) מעדכנת state.unitId, מסמנת hotspot/card פעילים, מרנדרת את מסך היחידה, קוראת easeMapToUnitView, מזיזה מצלמה ומעדכנת טופס ו-deep link.",
+      "userProof":"כרטיס, תוכנית, מפה, סיור וטופס מציגים תמיד את אותה יחידה."
+    },
+    {
+      "id":"CODE-MAP-001", "checkIds":["R01-003","R08-001","R08-002","R08-008"], "title":"המפה הקאנונית מאומצת מיד מתחת לבניין", "sourceId":"live-engine", "symbol":"adoptUnifiedMap", "lineStart":1267, "lineEnd":1280,
+      "criticalNeedle":"building.insertAdjacentElement(\"afterend\", uni);",
+      "excerpt":"#nlpjx-map מועבר אחרי #building ומקבל nl-adopted-map; המפה הכפולה הישנה מוסתרת.",
+      "userProof":"המפה נמצאת מתחת ל-showroom ולא בתוך לשונית חלופית."
+    },
+    {
+      "id":"CODE-MAP-002", "checkIds":["R08-001","R08-002","R08-008"], "title":"בחירת יחידה מסובבת את האלומה והמפה", "sourceId":"live-engine", "symbol":"showViewCone + easeMapToUnitView", "lineStart":1317, "lineEnd":1355,
+      "criticalNeedle":"viewCone.setRotation(bearing).addTo(map);",
+      "excerpt":"showViewCone מציבה SVG אלומה בנקודת project.geo; easeMapToUnitView ממירה dir ל-bearing, מסובבת את האלומה וקוראת map.easeTo.",
+      "userProof":"מעבר מדירה מערבית לדרומית משנה מיד את כיוון האלומה על אותה מפה."
+    },
+    {
+      "id":"CODE-MAP-003", "checkIds":["R08-001","R11-005"], "title":"סיבוב ידני של המודל מסנכרן את bearing המפה", "sourceId":"live-engine", "symbol":"wireMapSync", "lineStart":1281, "lineEnd":1298,
+      "criticalNeedle":"map.setBearing(-(mv.getCameraOrbit().theta * 180 / Math.PI) % 360);",
+      "excerpt":"camera-change ממקור user-interaction בלבד קורא את theta של model-viewer ומעדכן את bearing של window.NLPJX_MAP.",
+      "userProof":"סיבוב ידני של הבניין משנה את אוריינטציית המפה; auto-rotate אינו מסובב אותה."
+    },
+    {
+      "id":"CODE-MAP-004", "checkIds":["R01-003","R08-007","R11-005","R15-005"], "title":"Mapbox עולה רק עם token וקואורדינטות הפרויקט", "sourceId":"live-mapbox", "symbol":"activeProject + center + mount", "lineStart":26, "lineEnd":98,
+      "criticalNeedle":"var map = new mapboxgl.Map({",
+      "excerpt":"mapbox-init קוראת את הפרויקט הפעיל מ-NADLAN_SHOWROOM, מפיקה [lng,lat], בודקת token ומרכיבה Mapbox עם center, zoom, pitch ו-bearing.",
+      "userProof":"ה-pin מופיע בכתובת הפרויקט והמפה אינה קנבס ריק או תמונה."
+    },
+    {
+      "id":"CODE-STUDIO-001", "checkIds":["R14-001"], "title":"הסטודיו מקבל את אותה יחידה ואת endpoints החיים", "sourceId":"live-engine", "symbol":"openStudio", "lineStart":4143, "lineEnd":4163,
+      "criticalNeedle":"window.NLStudio.open({",
+      "excerpt":"openStudio מעביר ל-NLStudio את project, unit, plan, endpoint, WhatsApp ושפת הממשק.",
+      "userProof":"המפרט נפתח על תוכנית הדירה שנבחרה וחוזר לפנייה עם אותו unit_id."
+    },
+    {
+      "id":"CODE-STUDIO-002", "checkIds":["R14-001","R14-005"], "title":"פריטי הסטודיו, הערות ושיחת הווידאו נשמרים", "sourceId":"live-studio", "symbol":"open + addItem + save + video", "lineStart":41, "lineEnd":386,
+      "criticalNeedle":"window.NLStudio = { open: open, exportFor: exportFor };",
+      "excerpt":"studio.js שומר items ו-notes לפי מפתח יחידה, מייצא מפרט ומעביר סיכום ל-lead endpoint ולשיחת וידאו.",
+      "userProof":"סגירה ופתיחה חוזרת משחזרות את המפרט; ההצעה והשיחה כוללות את הבחירות."
+    },
+    {
+      "id":"CODE-PICK-001", "checkIds":["R05-009","R05-010","R06-004"], "title":"העוגן הציבורי נגזר מחוזה תלת־ממד ולא ממלבן מסך", "sourceId":"recipe-runtime", "symbol":"installModelHotspots", "lineStart":249, "lineEnd":271,
+      "criticalNeedle":"const anchor = unit.selection?.anchor;",
+      "excerpt":"ה-runtime קורא selection.anchor.position/normal, יוצר hotspot כילד ישיר של model-viewer ומשמר unit_id. שדות stage_x/y אינם נקראים.",
+      "userProof":"סיבוב המצלמה מזיז את הכפתור עם נקודת המודל; אותו כפתור בוחר את היחידה הרשומה עליו."
+    },
+    {
+      "id":"CODE-PICK-002", "checkIds":["R05-010","R05-011","R06-004"], "title":"כפתור 44px מוקרן מהמודל ונעלם כאשר משטח אחר מסתיר אותו", "sourceId":"recipe-runtime", "symbol":"updateProjectedHotspotPositions", "lineStart":295, "lineEnd":323,
+      "criticalNeedle":"const projection = model.queryHotspot(button.dataset.slot);",
+      "excerpt":"queryHotspot מספק את קואורדינטת המסך; surface probe באותו פיקסל משווה עומק ומונע נקודה צפה מעל גוף אחר.",
+      "userProof":"הנקודה נשארת על החזית בזמן סיבוב ואינה מופיעה דרך גב הבניין או מעל הפודיום."
+    },
+    {
+      "id":"CODE-PICK-003", "checkIds":["R05-009","R06-004"], "title":"קליק על גוף הבניין נפתר לפי קומה, normal ומרחק במרחב המודל", "sourceId":"recipe-runtime", "symbol":"resolveUnitFromSurfaceHit + selectUnitFromModelSurface", "lineStart":329, "lineEnd":379,
+      "criticalNeedle":"const match = resolveUnitFromSurfaceHit(hit);",
+      "excerpt":"positionAndNormalFromPoint מחזיר פגיעה אמיתית במעטפת; resolver אינו מנחש לפי CSS אלא מסנן floor band, normal ומרחק anchor.",
+      "userProof":"tap בין נקודות יכול לבחור יחידה על הקומה והחזית שנפגעו, בלי תלות ברוחב המסך."
+    },
+    {
+      "id":"CODE-SELECT-002", "checkIds":["R03-006","R06-004","R08-008","R14-001"], "title":"בחירה אחת מפיצה unit_id אחד לכל המערכת", "sourceId":"recipe-runtime", "symbol":"selectUnit + nadlan:unit-selected", "lineStart":382, "lineEnd":397,
+      "criticalNeedle":"document.dispatchEvent(new CustomEvent('nadlan:unit-selected', { detail }));",
+      "excerpt":"selectUnit מאמתת שהיחידה קיימת, מעדכנת URL, מלאי, כרטיס וכל הסצנות, ואז מפיצה אירוע אחד עם project_id, unit_id, origin, floor, line ו-azimuth.",
+      "userProof":"נקודה, כרטיס, תוכנית, מפה, נוף והפנייה נשארים על אותו מזהה."
+    },
+    {
+      "id":"CODE-RECIPE-001", "checkIds":["R10-002"], "title":"Facility hotspot פותח מפרט וסיור של אותו מתקן", "sourceId":"recipe-runtime", "symbol":"renderFacilities + ensureFacilityViewer", "lineStart":430, "lineEnd":568,
+      "criticalNeedle":"state.selectedFacilityId = button.dataset.facilityId;",
+      "excerpt":"המעבדה שומרת selectedFacilityId, מרנדרת שטח/קיבולת/שעות/ציוד ונגישות, וטוענת panorama רק כאשר אותו מתקן מחזיק נכס 360 אמיתי.",
+      "userProof":"לחיצה על הבריכה או חדר הכושר פותחת את הסיור והנתונים שלהם; יתר המתקנים אינם מתחזים לכלי 360."
+    },
+    {
+      "id":"CODE-SELECT-ADAPTER-001", "checkIds":["R05-005","R05-009","R05-010","R06-004","R16-005"], "title":"שכבת התאמה שומרת את המנוע הקיים ומוסיפה surface/semantic picking", "sourceId":"selection-adapter", "symbol":"SelectionStore + ModelViewerSurfaceAdapter + ThreeSemanticMeshAdapter", "lineStart":13, "lineEnd":204,
+      "criticalNeedle":"window.NadlanUnitSelection = { VERSION, SelectionStore, ModelViewerSurfaceAdapter, ThreeSemanticMeshAdapter };",
+      "excerpt":"שני מסלולי בחירה חולקים SelectionStore ואירוע nadlan:unit-selected אחד: surface resolver לפרויקטים קיימים ו-Raycaster ל-UNIT_PICK semantics בפרויקטים חדשים.",
+      "userProof":"tap על חזית, hotspot, רשימה או mesh מובילים לאותה דירה, בלי לשנות את חוזה NADLAN_SHOWROOM ובלי להסיר Mapbox, studio או buy flow."
+    },
+    {
+      "id":"CODE-BUY-001", "checkIds":["R09-007","R14-001","R14-003","R14-007"], "title":"בקשת המידע נושאת את הדירה ואת מפרט הסטודיו", "sourceId":"live-buyflow", "symbol":"send", "lineStart":228, "lineEnd":269,
+      "criticalNeedle":"studio: (window.NLStudio && p ? window.NLStudio.exportFor(p.slug, u.id || \"\") : null)",
+      "excerpt":"buyflow בונה payload עם project, unit, floor, rooms, sqm, finish, extras, language, URL ויצוא studio, ושולח ל-lead ולאחר הצלחה ל-rfp.",
+      "userProof":"בקשת תוכניות ומחירים והצעת המפרט מגיעות עם הדירה שנבחרה ולא כליד כללי."
+    },
+    {
+      "id":"CODE-I18N-001", "checkIds":["R15-001","R15-003","R15-007"], "title":"חמש השפות שייכות לאותו runtime", "sourceId":"live-i18n", "symbol":"NADLAN_I18N", "lineStart":1126, "lineEnd":1142,
+      "criticalNeedle":"langs: { he: HE, en: EN, fr: FR, ru: RU, ar: AR },",
+      "excerpt":"i18n מצהיר he/en/fr/ru/ar תחת window.NADLAN_I18N ומאפשר למנוע, לסטודיו ולטפסים לקרוא את אותו מילון פונקציונלי.",
+      "userProof":"החלפת שפה משנה תוויות וכיוון מסמך אך אינה מאפסת את הדירה."
+    },
+    {
+      "id":"CODE-MVUX-001", "checkIds":["R05-003","R05-005","R05-006","R16-005"], "title":"שכבת המצלמה מבטלת סיבוב עצמי ונועלת זוויות", "sourceId":"live-mv-ux", "symbol":"enhance", "lineStart":52, "lineEnd":110,
+      "criticalNeedle":"mv.removeAttribute(\"auto-rotate\");",
+      "excerpt":"mv-ux מסירה auto-rotate, מגבילה tilt, מציגה מצפן ומבצעת detent של 22.5° רק אחרי גרירת משתמש.",
+      "userProof":"הבניין אינו מסתובב מעצמו; גרירה מרגישה נשלטת ואינה מפעילה בחירת דירה."
+    },
+    {
+      "id":"CODE-WP-BRIDGE-001", "checkIds":["R06-004","R08-008","R17-002","R17-006"], "title":"WordPress מגשר בחירה חדשה אל data-act=select הקיים", "sourceId":"wp-adapter", "symbol":"nadlan_aurelia_attach_selection_adapter", "lineStart":462, "lineEnd":523,
+      "criticalNeedle":"new window.NadlanUnitSelection.ModelViewerSurfaceAdapter({model:model,overlay:overlay,units:units,store:store,maxVisibleHotspots:5})",
+      "excerpt":"ה-plugin מעלה את selection adapter רק בפרויקט האב, וב-onSelect לוחץ על טריגר היחידה הקיים כדי לשמר Mapbox, plan, studio, buyflow ו-Co-tour.",
+      "userProof":"היכולת החדשה אינה עוקפת או מוחקת את הקוד החי; היא נכנסת דרך אותו נתיב בחירה."
+    },
+    {
+      "id":"CODE-SOURCE-001", "checkIds":["R02-001","R02-003","R02-004","R02-005","R02-007","R17-005"], "title":"צילום Source שומר את תגובת ה-HTML הציבורית המלאה", "sourceId":"wp-adapter", "symbol":"nadlan_aurelia_capture_public_source", "lineStart":772, "lineEnd":836,
+      "criticalNeedle":"$response = wp_remote_get(",
+      "excerpt":"admin action מאמת הרשאה ו-nonce, קורא permalink ציבורי, שומר גוף מלא, SHA-256 וניתוח head/DOM תחת uploads ומטא פנימי.",
+      "userProof":"אפשר לפתוח snapshot אמיתי ולזהות favicon, menu, schema או script כפול גם כאשר צילום המסך נראה תקין."
+    }
+  ]
+}

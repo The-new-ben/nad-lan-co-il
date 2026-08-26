@@ -1,0 +1,2 @@
+5cb87b0bc40c8784e79fd83a95c2e2711d747c620ef99a8ba235186e7035c339  previous-aurelia-master-recipe-1.0.0-rc3-public-safe.zip
+9f3c6bdbafe77f8a750eef5cbc299632ce0983a8ed08abc089b7a35431c13ff6  previous-nadlan-aurelia-prototype-0.5.0.zip

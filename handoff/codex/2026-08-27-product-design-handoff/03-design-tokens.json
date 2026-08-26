@@ -1,0 +1,44 @@
+{
+  "status": "reference",
+  "source": "2026-08-27 product design handoff",
+  "note": "Portable tokens for implementation review. They do not replace the active theme automatically.",
+  "color": {
+    "ink900": "#0B1722",
+    "ink800": "#142533",
+    "mineral050": "#F6F2EA",
+    "mineral100": "#EDE5D9",
+    "paper": "#FFFFFF",
+    "teal600": "#0F766E",
+    "teal100": "#DDF2EF",
+    "copper600": "#A65F32",
+    "copper100": "#F3E2D6",
+    "textPrimary": "#12202C",
+    "textSecondary": "#5A6874",
+    "border": "#D8DFE4",
+    "success": "#197257",
+    "warning": "#A76513",
+    "danger": "#A13D4F"
+  },
+  "type": {
+    "display": "Heebo, Assistant, Arial, sans-serif",
+    "body": "Heebo, Assistant, Arial, sans-serif",
+    "displayWeight": 800,
+    "bodyWeight": 400,
+    "lineHeightBody": 1.65
+  },
+  "radius": {
+    "small": "8px",
+    "medium": "14px",
+    "large": "22px"
+  },
+  "shadow": {
+    "card": "0 12px 32px rgba(11, 23, 34, 0.08)",
+    "elevated": "0 24px 62px rgba(11, 23, 34, 0.16)"
+  },
+  "layout": {
+    "contentMax": "1240px",
+    "textMax": "720px",
+    "mobileGutter": "16px",
+    "desktopGutter": "32px"
+  }
+}

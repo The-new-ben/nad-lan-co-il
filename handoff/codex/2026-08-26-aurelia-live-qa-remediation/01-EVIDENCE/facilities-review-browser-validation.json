@@ -1,0 +1,34 @@
+{
+  "validatedAt": "2026-08-26",
+  "url": "http://127.0.0.1:4317/",
+  "scope": "isolated facilities review lab; not WordPress and not the building hotspot integration",
+  "results": [
+    {
+      "viewport": "390x844",
+      "facilityClicked": "facility-gym",
+      "selectedHeading": "מועדון כושר",
+      "facilityButtons": 12,
+      "equipmentItems": 7,
+      "pannellumCanvasCount": 1,
+      "pageHorizontalOverflow": false,
+      "minimumObservedButtonHeightPx": 48,
+      "status": "green"
+    },
+    {
+      "viewport": "320x720",
+      "facilityClicked": "facility-sky-garden",
+      "selectedHeading": "גן שמיים וטרקלין שקיעה",
+      "equipmentItems": 7,
+      "pannellumCanvasCount": 1,
+      "pageHorizontalOverflow": false,
+      "minimumObservedButtonHeightPx": 48,
+      "status": "green"
+    }
+  ],
+  "stillRed": [
+    "Semantic facility nodes are not yet authored in the live Aurelia GLB.",
+    "Facility polygons are not yet authored in the project plan/masterplan.",
+    "Equipment hotspot yaw/pitch values are not yet authored and click-tested.",
+    "The module is not imported into WordPress or production."
+  ]
+}

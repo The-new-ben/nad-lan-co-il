@@ -1,0 +1,8 @@
+route,mobile_390x844,desktop_1440x900,h1,rtl,no_horizontal_overflow,mobile_menu,title_meta,no_debug,console_errors,preview_canonical,production_action
+/production/nadlan,pass,pass,1,pass,pass,pass,pass,pass,0,missing,add self canonical in WordPress
+/production/nadlan/projects,pass,pass,1,pass,pass,pass,pass,pass,0,missing,add self canonical in WordPress
+/production/nadlan/projects/rainbow-tel-aviv,pass,pass,1,pass,pass,pass,pass,pass,0,missing,use real project engine and add self canonical
+/production/nadlan/properties,pass,pass,1,pass,pass,pass,pass,pass,0,missing,add self canonical and facet policy
+/production/nadlan/properties/baka-demo,pass,pass,1,pass,pass,pass,pass,pass,0,missing,retain demo label until verified
+/production/nadlan/post-listing,pass,pass,1,pass,pass,pass,pass,pass,0,missing,wire real submission and self canonical
+/production/nadlan/meeting,pass,pass,1,pass,pass,pass,pass,pass,0,missing,keep noindex if internal

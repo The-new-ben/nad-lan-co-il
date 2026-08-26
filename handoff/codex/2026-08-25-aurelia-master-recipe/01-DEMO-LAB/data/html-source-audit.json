@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "1.0.0",
+  "purpose": "Snapshot and compare the public response source and the rendered DOM, including page, template and site-wide findings.",
+  "policy": {
+    "nonBlocking": true,
+    "rawSource": "The exact HTTP response body saved before JavaScript executes.",
+    "renderedDom": "document.documentElement.outerHTML after the interactive page reaches ready state.",
+    "fingerprints": ["fullSource", "renderedDom", "head", "globalNavigation", "projectTemplate", "scripts", "structuredData"],
+    "scopeOrder": ["component", "page", "template", "site"],
+    "driftLights": {
+      "green": "Fingerprint and critical detectors match the approved baseline.",
+      "yellow": "The fingerprint changed but the required selector or value still exists; inspect the diff.",
+      "orange": "A critical owner, selector or semantic value changed or conflicts with another owner.",
+      "red": "The public source cannot be captured or the page is not reachable. Saving in WordPress remains possible."
+    }
+  },
+  "snapshots": [
+    {
+      "id": "RAINBOW-LIVE-20260824",
+      "project": "Rainbow Tel Aviv",
+      "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+      "capturedAt": "2026-08-24T21:58:32+03:00",
+      "sourceFile": "evidence/rainbow-public-source-2026-08-24.html",
+      "httpStatus": 200,
+      "bytes": 280817,
+      "lines": 2107,
+      "fingerprints": {
+        "fullSourceSha256": "F40C4188C0A6AD9E4A9250022CBE0D79372C49E7A22D087B4C99FBC3152F7B9B",
+        "repositorySanitizedFullSourceSha256": "BE1F08AE1EB7B2F9025381DF9853B926052F883390B2365C30E77F2FE05691EA",
+        "headSha256": "F6BF97A541916A3FBDCDB8E00DD9E5FB37F57569A7C8CF1913B5EB1425A6D801",
+        "globalNavigationSha256": "79C9B55F00A3F789BABA31A46CEF93F91A8C7CEB29B22ACD4006508B6CAD7224"
+      },
+      "parsed": {
+        "title": "ריינבו תל אביב Rainbow - ישראל קנדה, שדה דב | מחירים ודירות | נדלן",
+        "titleLength": 72,
+        "canonicalCount": 1,
+        "h1Count": 1,
+        "faviconDeclarations": 4,
+        "hreflangAttributes": 10,
+        "jsonLdBlocks": 5,
+        "scriptTags": 58,
+        "styleTags": 34,
+        "duplicateIds": 0
+      }
+    }
+  ],
+  "detectors": [
+    {"id":"SRC-HTTP","label":"HTTP response and final URL","layer":"raw","scope":"page","checkIds":["R17-005"],"rule":"200 response; record redirects and the final URL."},
+    {"id":"SRC-TITLE","label":"title ownership and length","layer":"raw","scope":"page","checkIds":["R02-001"],"rule":"Exactly one non-empty title whose project, location and intent match the keyword owner."},
+    {"id":"SRC-META","label":"meta description","layer":"raw","scope":"page","checkIds":["R02-002"],"rule":"One buyer-facing answer that exposes apartment selection, plans, view and price intent."},
+    {"id":"SRC-CANONICAL","label":"canonical","layer":"raw","scope":"page","checkIds":["R02-004"],"rule":"Exactly one self-referencing canonical after redirects."},
+    {"id":"SRC-ROBOTS","label":"robots directives","layer":"raw","scope":"page","checkIds":["R02-004"],"rule":"No conflicting meta or HTTP X-Robots-Tag directives."},
+    {"id":"SRC-HREFLANG","label":"hreflang cluster","layer":"raw","scope":"template","checkIds":["R02-004","R17-006"],"rule":"Reciprocal he/en/fr/ru/ar plus x-default; every target is reachable and canonical."},
+    {"id":"SRC-FAVICON","label":"favicon owners and assets","layer":"raw","scope":"site","checkIds":["R02-003","R17-002"],"rule":"One canonical owner emits the icon family; assets are square, crawlable, stable and return 200."},
+    {"id":"SRC-OG","label":"Open Graph and social image","layer":"raw","scope":"page","checkIds":["R02-006"],"rule":"URL, title, description and image resolve and describe the same project."},
+    {"id":"SRC-JSONLD","label":"structured-data graph","layer":"raw","scope":"template","checkIds":["R02-007"],"rule":"One owner per entity type; visible facts and IDs agree across WebPage, ApartmentComplex, FAQ and BreadcrumbList."},
+    {"id":"SRC-H1","label":"H1 count, text and location","layer":"both","scope":"page","checkIds":["R02-005"],"rule":"One H1; project owner text is present in both raw source and rendered DOM."},
+    {"id":"SRC-BREADCRUMBS","label":"breadcrumbs source and schema","layer":"both","scope":"template","checkIds":["R02-007"],"rule":"Visible links, BreadcrumbList entities and current page name agree."},
+    {"id":"SRC-DUPLICATE-ID","label":"duplicate DOM IDs","layer":"both","scope":"template","checkIds":["R17-006"],"rule":"No duplicate IDs in raw markup or after modules mount."},
+    {"id":"SRC-ORPHAN-COPY","label":"cross-project residue and placeholders","layer":"both","scope":"page","checkIds":["R02-008"],"rule":"No Ashira, Rainbow, DO or another project identity inside the wrong project; no waiting-copy blacklist."},
+    {"id":"SRC-DISCLAIMER-POSITION","label":"buyer answer before notices","layer":"both","scope":"template","checkIds":["R02-008"],"rule":"The project H1 and opening answer precede internal/legal notices; notices do not become the search-facing lead."},
+    {"id":"SRC-SCRIPT-INVENTORY","label":"script inventory and order","layer":"raw","scope":"template","checkIds":["R17-005","R17-006"],"rule":"Record every src, version, owner and execution mode; detect duplicates, legacy engines and order drift."},
+    {"id":"SRC-INLINE-CONFIG","label":"window.NADLAN_SHOWROOM contract","layer":"both","scope":"component","checkIds":["R17-005","R17-008"],"rule":"Capture the serialized project contract, version and active project before engine boot."},
+    {"id":"SRC-MENU","label":"global menu and navigation destinations","layer":"both","scope":"site","checkIds":["R17-006"],"rule":"Compare labels, destinations, active state, keyboard order and mobile menu after render."},
+    {"id":"SRC-FOOTER","label":"footer ownership and global calls to action","layer":"both","scope":"site","checkIds":["R17-006"],"rule":"Detect stale project names, duplicated CTA handlers, broken destinations and template drift."},
+    {"id":"SRC-BROKEN-URL","label":"assets, links and endpoints","layer":"both","scope":"site","checkIds":["R17-002","R17-005"],"rule":"Collect href/src/action URLs and attach status, redirect chain, mixed-content and owner."},
+    {"id":"SRC-RENDERED-DRIFT","label":"raw source versus rendered DOM","layer":"both","scope":"component","checkIds":["R17-005","R17-007"],"rule":"Fingerprint the DOM after engine, map, studio and buy flow mount; diff added, removed and moved selectors."}
+  ],
+  "floatingFindings": [
+    {
+      "id": "SITE-FAVICON-OWNERSHIP-001",
+      "light": "orange",
+      "scope": "site",
+      "owner": "global wp_head / nadlan-config branding",
+      "title": "ארבע הצהרות favicon משני בעלים מתחרות באותו head",
+      "effect": "Google can choose a different asset or keep a stale icon even though each file itself is reachable.",
+      "evidence": [
+        "View Source L7: nadlan-config/assets/branding/favicon.svg",
+        "View Source L403-L406: WordPress site icon 32x32, 192x192, apple-touch and msapplication tile"
+      ],
+      "nextAction": "Choose one global owner and one stable icon family, preserve the chosen URLs, then request recrawl. Do not patch per project."
+    },
+    {
+      "id": "TEMPLATE-LEAD-ORDER-002",
+      "light": "orange",
+      "scope": "template",
+      "owner": "project content template",
+      "title": "הודעת האתר העצמאי נמצאת לפני ה-H1 ולפני כלי הפרויקט",
+      "effect": "The first semantic block is a notice rather than the project's buyer answer and can dominate extraction or snippets.",
+      "evidence": [
+        "View Source L1064: .nl-lead → .nl-projnotice → .nl-devlink → progress → feature bar → hidden H1"
+      ],
+      "nextAction": "Keep any required notice internal or later in the decision flow; lead with H1 and the concrete project answer."
+    },
+    {
+      "id": "TEMPLATE-SCHEMA-OWNERSHIP-003",
+      "light": "yellow",
+      "scope": "template",
+      "owner": "Yoast plus project schema emitters",
+      "title": "חמישה בלוקי JSON-LD כוללים שני FAQPage ושני BreadcrumbList owners",
+      "effect": "Facts can drift between graph emitters even when every JSON block parses independently.",
+      "evidence": [
+        "View Source L27: Yoast graph",
+        "View Source L396 and L401: two FAQPage blocks",
+        "View Source L400 plus Yoast graph: BreadcrumbList emitted twice"
+      ],
+      "nextAction": "Build one merged entity graph contract and compare every structured fact with visible content."
+    },
+    {
+      "id": "TEMPLATE-PAYLOAD-004",
+      "light": "yellow",
+      "scope": "template",
+      "owner": "global theme plus project modules",
+      "title": "העמוד טוען 58 script tags ו-34 style tags",
+      "effect": "A large, mixed template surface raises collision, ordering, performance and stale-module risk.",
+      "evidence": ["Full raw source parse: 58 script tags; 34 style tags; 280,817 UTF-8 bytes"],
+      "nextAction": "Fingerprint src/order/versions and attribute every payload to global, template or component scope before removing anything."
+    },
+    {
+      "id": "CATALOG-ROUTE-005",
+      "light": "orange",
+      "scope": "site",
+      "owner": "premium project catalog",
+      "title": "כתובת H-Infinity הישנה מחזירה 404",
+      "effect": "Internal cards, menus, schema or search results can send buyers to a dead project route.",
+      "evidence": ["Forensic premium-project route census: /projects/h-infinity/ returned 404"],
+      "nextAction": "Find every source link and choose canonical replacement or redirect at site scope."
+    }
+  ],
+  "rawExcerpts": [
+    {"id":"HEAD-FAVICON","lines":"7, 403-406","text":"<link rel=\"icon\" type=\"image/svg+xml\" href=\".../nadlan-config/assets/branding/favicon.svg\">\n<link rel=\"icon\" href=\".../nadlan-favicon-towers-512-100x100.png\" sizes=\"32x32\" />\n<link rel=\"icon\" href=\".../nadlan-favicon-towers-512-300x300.png\" sizes=\"192x192\" />"},
+    {"id":"HEAD-CANONICAL","lines":"11, 40-45","text":"<link rel=\"canonical\" href=\"https://nad-lan.co.il/projects/rainbow-tel-aviv/\" />\n<link rel=\"alternate\" hreflang=\"he|en|fr|ru|ar|x-default\" ...>"},
+    {"id":"BODY-ORDER","lines":"1064","text":".nl-lead → .nl-projnotice → .nl-devlink → .nlms → .nlfb → h1#nl-project-page-title → #nl-root"}
+  ]
+}

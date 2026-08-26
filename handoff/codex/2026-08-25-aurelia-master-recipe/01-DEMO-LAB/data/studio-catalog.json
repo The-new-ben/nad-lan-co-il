@@ -1,0 +1,15 @@
+[
+  { "id": "fin-stone-120", "category": "finish", "code": "FIN-012", "label": "ריצוף אבן 120×120", "spec": "אבן בגוון חם, חיתוך רציף ורובה 2 מ״מ", "impact": "גמר", "unit": "מ״ר", "defaultQuantity": 1 },
+  { "id": "fin-wood", "category": "finish", "code": "FIN-021", "label": "פרקט עץ תלת־שכבתי", "spec": "לוחות אלון 220 מ״מ בגמר מט", "impact": "גמר", "unit": "מ״ר", "defaultQuantity": 1 },
+  { "id": "fin-wall", "category": "finish", "code": "FIN-035", "label": "חיפוי קיר נגרות", "spec": "פנל פורניר עם דלתות נסתרות", "impact": "נגרות", "unit": "מ׳", "defaultQuantity": 1 },
+  { "id": "dor-pocket", "category": "doors", "code": "DOR-080", "label": "דלת כיס בקו אפס", "spec": "פתח נטו 90 ס״מ, מסילה שקטה", "impact": "מחיצה", "unit": "יח׳", "defaultQuantity": 1 },
+  { "id": "dor-wide", "category": "doors", "code": "DOR-095", "label": "פתח נגיש מורחב", "spec": "פתח נטו 95 ס״מ וידית מנוף", "impact": "נגישות", "unit": "יח׳", "defaultQuantity": 1 },
+  { "id": "ele-smart", "category": "electric", "code": "ELE-002", "label": "בקר תרחישים", "spec": "תאורה, הצללה ומיזוג בארבעה תרחישים", "impact": "חשמל", "unit": "אזור", "defaultQuantity": 1 },
+  { "id": "ele-usbc", "category": "electric", "code": "ELE-USB-C", "label": "נקודת USB-C 65W", "spec": "שקע כוח וטעינה מהירה בקופסה שקועה", "impact": "חשמל", "unit": "נק׳", "defaultQuantity": 1 },
+  { "id": "ele-floor", "category": "electric", "code": "ELE-FLR", "label": "קופסת רצפה לסלון", "spec": "כוח, רשת ו-USB מתחת לשולחן", "impact": "חשמל", "unit": "נק׳", "defaultQuantity": 1 },
+  { "id": "plb-island", "category": "plumbing", "code": "PLB-014", "label": "הכנת מים לאי", "spec": "מים, ניקוז וחשמל למדיח או כיור", "impact": "אינסטלציה", "unit": "נק׳", "defaultQuantity": 1 },
+  { "id": "plb-rain", "category": "plumbing", "code": "PLB-028", "label": "מערכת רחצה כפולה", "spec": "ראש גשם, מזלף ותרמוסטט סמוי", "impact": "אינסטלציה", "unit": "סט", "defaultQuantity": 1 },
+  { "id": "acc-turn", "category": "accessibility", "code": "ACC-150", "label": "מעגל תמרון 150 ס״מ", "spec": "בדיקת שטח פנוי מלאה ללא חפיפה לריהוט", "impact": "נגישות", "unit": "אזור", "defaultQuantity": 1 },
+  { "id": "acc-grab", "category": "accessibility", "code": "ACC-011", "label": "חיזוק נסתר למאחז", "spec": "חיזוק בקיר לפני חיפוי, גובה לפי תוכנית", "impact": "נגישות", "unit": "יח׳", "defaultQuantity": 1 },
+  { "id": "acc-threshold", "category": "accessibility", "code": "ACC-004", "label": "יציאה שטוחה למרפסת", "spec": "סף רציף עם ניקוז קווי", "impact": "מעטפת", "unit": "מ׳", "defaultQuantity": 1 }
+]

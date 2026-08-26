@@ -1,0 +1,32 @@
+{
+  "date": "2026-08-25",
+  "target": "repository public-safe copy served from localhost",
+  "result": "green",
+  "purpose": "Prove that redacting the committed Mapbox token did not remove the real map or break the unit_id selection chain.",
+  "before": {
+    "unit_id": "aur-t-14-c",
+    "h1": "Aurelia Sde Dov — אורליה שדה דב",
+    "mapAttribution": "© OpenStreetMap contributors | MapLibre",
+    "mapCanvasPresent": true,
+    "mapMarkerCount": 14,
+    "mapLabel": "קו C · קומה 14 · 4 חד׳",
+    "mapDirection": "דרום · העיר והים · קומה 14",
+    "horizontalOverflowPx": 0
+  },
+  "action": {
+    "surface": "projected model hotspot",
+    "requested_unit_id": "aur-t-29-b"
+  },
+  "after": {
+    "url_unit_id": "aur-t-29-b",
+    "activeModelHotspotUnitId": "aur-t-29-b",
+    "activeProjectedHotspotUnitId": "aur-t-29-b",
+    "mapLabel": "קו B · קומה 29 · 4 חד׳",
+    "mapDirection": "דרום-מערב · קו חוף ופארק הדיונות · קומה 29",
+    "viewConeVisible": true,
+    "viewConeRotation": "360deg",
+    "horizontalOverflowPx": 0
+  },
+  "browserConsoleErrors": [],
+  "repositoryMapBehavior": "The standalone public-repository lab uses MapLibre with real OpenStreetMap raster tiles. The WordPress-compatible track continues to consume the existing localized Mapbox runtime token."
+}
