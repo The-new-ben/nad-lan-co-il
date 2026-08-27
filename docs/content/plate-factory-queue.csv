@@ -1,0 +1,42 @@
+﻿priority,tier,slug,url,has_series_plate,clicks_28d,impressions_28d,note
+1,A,aurelia,https://nad-lan.co.il/projects/aurelia/,no,,,"דגל הסדרה; קפסולות מעובדות העמוד עצמו (47F, 320 יח', קו ים)"
+2,A,einstein-tower,https://nad-lan.co.il/projects/einstein-tower/,no,2.0,226.0,צי תלת-ממד
+3,A,h-infinity-somail-tel-aviv,https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/,no,4.0,353.0,צי תלת-ממד
+4,A,six-8-herbert-samuel-tel-aviv,https://nad-lan.co.il/projects/six-8-herbert-samuel-tel-aviv/,no,0.0,2.0,צי תלת-ממד
+5,A,utopia-tel-aviv,https://nad-lan.co.il/projects/utopia-tel-aviv/,no,,,צי תלת-ממד
+6,A,toha2-tel-aviv,https://nad-lan.co.il/projects/toha2-tel-aviv/,no,1.0,45.0,צי תלת-ממד
+7,A,the-park-bnei-brak,https://nad-lan.co.il/projects/the-park-bnei-brak/,no,1.0,48.0,צי תלת-ממד
+8,B,%D7%A9%D7%A2%D7%A8-%D7%A6%D7%A4%D7%95%D7%9F-%D7%9E%D7%A2%D7%A8-%D7%A8%D7%9E%D7%9C%D7%94,https://nad-lan.co.il/projects/%D7%A9%D7%A2%D7%A8-%D7%A6%D7%A4%D7%95%D7%9F-%D7%9E%D7%A2%D7%A8-%D7%A8%D7%9E%D7%9C%D7%94/,no,9.0,107.0,טראפיק GSC
+9,B,%D7%94%D7%92%D7%A4%D7%9F-8-10-%D7%A8%D7%92,https://nad-lan.co.il/projects/%D7%94%D7%92%D7%A4%D7%9F-8-10-%D7%A8%D7%92/,no,3.0,74.0,טראפיק GSC
+10,B,%D7%94%D7%A0%D7%A8%D7%A7%D7%99%D7%A1-%D7%94%D7%A8%D7%A7%D7%A4%D7%AA,https://nad-lan.co.il/projects/%D7%94%D7%A0%D7%A8%D7%A7%D7%99%D7%A1-%D7%94%D7%A8%D7%A7%D7%A4%D7%AA/,no,3.0,6.0,טראפיק GSC
+11,B,park-bavli,https://nad-lan.co.il/projects/park-bavli/,no,2.0,108.0,טראפיק GSC
+12,B,recanati-residence,https://nad-lan.co.il/projects/recanati-residence/,no,2.0,37.0,טראפיק GSC
+13,B,%D7%9E%D7%92%D7%93%D7%9C-%D7%94%D7%99%D7%9D-%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93-2,https://nad-lan.co.il/projects/%D7%9E%D7%92%D7%93%D7%9C-%D7%94%D7%99%D7%9D-%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93-2/,no,2.0,29.0,טראפיק GSC
+14,B,%D7%A7%D7%93%D7%A9-%D7%94%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%99%D7%9D,https://nad-lan.co.il/projects/%D7%A7%D7%93%D7%A9-%D7%94%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%99%D7%9D/,no,2.0,25.0,טראפיק GSC
+15,B,%D7%A8%D7%92-1851-%D7%A4%D7%A0%D7%97%D7%A1-%D7%A8%D7%95%D7%98%D7%A0%D7%91%D7%A8%D7%92-79-81-83-85-%D7%94%D7%AA%D7%97%D7%93%D7%A9%D7%95%D7%AA-%D7%A2%D7%99%D7%A8%D7%95%D7%A0%D7%99%D7%AA,https://nad-lan.co.il/projects/%D7%A8%D7%92-1851-%D7%A4%D7%A0%D7%97%D7%A1-%D7%A8%D7%95%D7%98%D7%A0%D7%91%D7%A8%D7%92-79-81-83-85-%D7%94%D7%AA%D7%97%D7%93%D7%A9%D7%95%D7%AA-%D7%A2%D7%99%D7%A8%D7%95%D7%A0%D7%99%D7%AA/,no,2.0,22.0,טראפיק GSC
+16,B,%D7%94%D7%A8%D7%95%D7%AA%D7%9D-%D7%A4%D7%9C%D7%93%D7%95%D7%AA,https://nad-lan.co.il/projects/%D7%94%D7%A8%D7%95%D7%AA%D7%9D-%D7%A4%D7%9C%D7%93%D7%95%D7%AA/,no,2.0,17.0,טראפיק GSC
+17,B,%D7%94%D7%A6%D7%93%D7%99%D7%A7-%D7%9E%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D,https://nad-lan.co.il/projects/%D7%94%D7%A6%D7%93%D7%99%D7%A7-%D7%9E%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D/,no,2.0,10.0,טראפיק GSC
+18,B,%D7%A6%D7%95%D7%A0%D7%93%D7%A7-51133130,https://nad-lan.co.il/projects/%D7%A6%D7%95%D7%A0%D7%93%D7%A7-51133130/,no,2.0,6.0,טראפיק GSC
+19,B,%D7%9E%D7%98%D7%A8%D7%95-%D7%94%D7%91%D7%A0%D7%99%D7%9D-%D7%95%D7%99%D7%99%D7%A6%D7%9E%D7%9F,https://nad-lan.co.il/projects/%D7%9E%D7%98%D7%A8%D7%95-%D7%94%D7%91%D7%A0%D7%99%D7%9D-%D7%95%D7%99%D7%99%D7%A6%D7%9E%D7%9F/,no,2.0,5.0,טראפיק GSC
+20,B,%D7%9E%D7%AA%D7%97%D7%9D-%D7%A8%D7%91%D7%99%D7%9F,https://nad-lan.co.il/projects/%D7%9E%D7%AA%D7%97%D7%9D-%D7%A8%D7%91%D7%99%D7%9F/,no,2.0,4.0,טראפיק GSC
+21,B,%D7%9C%D7%95%D7%97%D7%9E%D7%99-%D7%94%D7%92%D7%98%D7%90%D7%95%D7%AA,https://nad-lan.co.il/projects/%D7%9C%D7%95%D7%97%D7%9E%D7%99-%D7%94%D7%92%D7%98%D7%90%D7%95%D7%AA/,no,2.0,3.0,טראפיק GSC
+22,B,%D7%9E%D7%A2%D7%A8,https://nad-lan.co.il/projects/%D7%9E%D7%A2%D7%A8/,no,2.0,3.0,טראפיק GSC
+23,B,%D7%94%D7%92%D7%A4%D7%9F-2,https://nad-lan.co.il/projects/%D7%94%D7%92%D7%A4%D7%9F-2/,no,2.0,2.0,טראפיק GSC
+24,B,first-sde-dov,https://nad-lan.co.il/projects/first-sde-dov/,no,1.0,210.0,טראפיק GSC
+25,B,gindi-vogue-sde-dov,https://nad-lan.co.il/projects/gindi-vogue-sde-dov/,no,1.0,104.0,טראפיק GSC
+26,B,ashdar-einstein,https://nad-lan.co.il/projects/ashdar-einstein/,no,1.0,63.0,טראפיק GSC
+27,B,%D7%9E%D7%AA%D7%97%D7%9D-%D7%98%D7%95%D7%91%D7%99%D7%94%D7%95-%D7%94%D7%A6%D7%91%D7%99,https://nad-lan.co.il/projects/%D7%9E%D7%AA%D7%97%D7%9D-%D7%98%D7%95%D7%91%D7%99%D7%94%D7%95-%D7%94%D7%A6%D7%91%D7%99/,no,1.0,58.0,טראפיק GSC
+28,B,aura-pivko-bat-yam,https://nad-lan.co.il/projects/aura-pivko-bat-yam/,no,1.0,54.0,טראפיק GSC
+29,B,shikun-binui-sde-dov,https://nad-lan.co.il/projects/shikun-binui-sde-dov/,no,1.0,31.0,טראפיק GSC
+30,B,%D7%91%D7%9F-%D7%92%D7%95%D7%A8%D7%99%D7%95%D7%9F-5,https://nad-lan.co.il/projects/%D7%91%D7%9F-%D7%92%D7%95%D7%A8%D7%99%D7%95%D7%9F-5/,no,1.0,24.0,טראפיק GSC
+31,B,%D7%91%D7%9F-%D7%96%D7%9B%D7%90%D7%99-31,https://nad-lan.co.il/projects/%D7%91%D7%9F-%D7%96%D7%9B%D7%90%D7%99-31/,no,1.0,23.0,טראפיק GSC
+32,B,%D7%A8%D7%92-1854-%D7%9E%D7%AA%D7%97%D7%9D-%D7%94%D7%A4%D7%95%D7%93%D7%99%D7%9D-11-13-%D7%A8%D7%A9%D7%99-21-23,https://nad-lan.co.il/projects/%D7%A8%D7%92-1854-%D7%9E%D7%AA%D7%97%D7%9D-%D7%94%D7%A4%D7%95%D7%93%D7%99%D7%9D-11-13-%D7%A8%D7%A9%D7%99-21-23/,no,1.0,17.0,טראפיק GSC
+,covered,ashira-sde-dov,https://nad-lan.co.il/projects/ashira-sde-dov/,yes,1.0,343.0,יש פלטה — לוודא featured + לשקול גרסת קפסולות
+,covered,bnei-dan-54-56,https://nad-lan.co.il/projects/bnei-dan-54-56/,yes,,,יש פלטה — לוודא featured + לשקול גרסת קפסולות
+,covered,dimri-yama-sde-dov,https://nad-lan.co.il/projects/dimri-yama-sde-dov/,yes,1.0,507.0,יש פלטה — לוודא featured + לשקול גרסת קפסולות
+,covered,duo-tel-aviv,https://nad-lan.co.il/projects/duo-tel-aviv/,yes,16.0,1032.0,יש פלטה — לוודא featured + לשקול גרסת קפסולות
+,covered,marina-towers-herzliya,https://nad-lan.co.il/projects/marina-towers-herzliya/,yes,,,יש פלטה — לוודא featured + לשקול גרסת קפסולות
+,covered,meier-on-rothschild,https://nad-lan.co.il/projects/meier-on-rothschild/,yes,1.0,72.0,יש פלטה — לוודא featured + לשקול גרסת קפסולות
+,covered,rainbow-tel-aviv,https://nad-lan.co.il/projects/rainbow-tel-aviv/,yes,6.0,809.0,יש פלטה — לוודא featured + לשקול גרסת קפסולות
+,covered,stricker-13-brandeis-14,https://nad-lan.co.il/projects/stricker-13-brandeis-14/,yes,0.0,35.0,יש פלטה — לוודא featured + לשקול גרסת קפסולות
+,covered,yoo-tel-aviv,https://nad-lan.co.il/projects/yoo-tel-aviv/,yes,0.0,137.0,יש פלטה — לוודא featured + לשקול גרסת קפסולות
