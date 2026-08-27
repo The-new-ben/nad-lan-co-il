@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nadlan3D - בדיקת שפה וצילומי מסך</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f2e9;
+      --paper: #fffaf1;
+      --ink: #201914;
+      --muted: #70665c;
+      --line: #ded2c1;
+      --accent: #b65b3d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Heebo", "Assistant", Arial, sans-serif;
+      line-height: 1.65;
+    }
+    header, main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+    header {
+      padding: 48px 0 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    h1, h2, h3 { line-height: 1.2; margin: 0; }
+    h1 { font-size: clamp(32px, 5vw, 56px); }
+    h2 { font-size: 26px; margin-top: 40px; }
+    h3 { font-size: 18px; margin-bottom: 10px; }
+    p { margin: 12px 0 0; color: var(--muted); }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .metric {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 16px;
+      min-height: 94px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 28px;
+      color: var(--ink);
+    }
+    .metric span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .note {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 18px 20px;
+      margin-top: 20px;
+    }
+    ul { margin: 14px 0 0; padding-inline-start: 22px; }
+    li { margin: 8px 0; color: var(--muted); }
+    li strong { color: var(--ink); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+    figure {
+      margin: 0;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 12px;
+    }
+    figcaption {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .mobile img {
+      width: min(390px, 100%);
+      margin-inline: auto;
+    }
+    .status-ok {
+      color: #1e6b45;
+      font-weight: 700;
+    }
+    .status-risk {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    footer {
+      width: min(1120px, calc(100% - 32px));
+      margin: 48px auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (max-width: 820px) {
+      .summary, .grid { grid-template-columns: 1fr; }
+      header, main, footer { width: min(100% - 20px, 1120px); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>בדיקת שפה וצילומי מסך - Nadlan3D</h1>
+    <p>תאריך: 23 ביוני 2026. המטרה: לנקות שפה ציבורית, להסיר מילים פנימיות, ולבדוק בעיניים את המסכים שנוצרו.</p>
+    <div class="summary">
+      <div class="metric"><strong>18</strong><span>צילומי מסך נשמרו</span></div>
+      <div class="metric"><strong>0</strong><span>פגיעות בסריקת מילים אסורות</span></div>
+      <div class="metric"><strong>0</strong><span>כשלי גלילה אופקית במדידה</span></div>
+      <div class="metric"><strong>390px</strong><span>בדיקת מובייל עיקרית</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="note">
+      <h2>שורה תחתונה</h2>
+      <p><span class="status-ok">עבר:</span> השפה הציבורית נקייה יותר. לא מופיעים בגלוי מונחי קבצים, שמות דירוג פנימיים, שמות פונטים, או ניסוח שנראה כמו הוראות פנימיות.</p>
+      <p><span class="status-risk">עדיין לא מוכן לקבלן:</span> התמונות עדיין גנריות והחזית בשוורום היא המחשה פשוטה כי אין כאן מודל תלת-ממד אמיתי. זה נכון לדוח, אבל לא מספיק להצגה מסחרית סופית.</p>
+    </section>
+
+    <section>
+      <h2>מה תוקן</h2>
+      <ul>
+        <li>הכפתור בעברית עבר לשפה נקייה: <strong>סיור בפרויקט</strong>.</li>
+        <li>הכותרת בעברית שונתה ל-<strong>שלוש דקות בפנים, החלטה בלי ניחושים</strong>.</li>
+        <li>הקלפים כבר לא מציגים מונחי קבצים או שמות דירוג פנימיים.</li>
+        <li>מצב המודל החסר מציג עכשיו: <strong>המודל ממתין להעלאה</strong>.</li>
+        <li>הדרואר של הדירה במובייל עבר לשפה עברית נקייה יותר.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>עברית - דסקטופ</h2>
+      <div class="grid">
+        <figure>
+          <figcaption>דף הבית בעברית, 1440px</figcaption>
+          <img src="../screenshots/home--he--desktop-1440.png" alt="דף הבית בעברית בדסקטופ">
+        </figure>
+        <figure>
+          <figcaption>רשימת פרויקטים בעברית, 1440px</figcaption>
+          <img src="../screenshots/listings--he--desktop-1440.png" alt="רשימת פרויקטים בעברית בדסקטופ">
+        </figure>
+        <figure>
+          <figcaption>סיור בפרויקט בעברית, 1440px</figcaption>
+          <img src="../screenshots/showroom-rainbow--he--desktop-1440.png" alt="סיור בפרויקט בעברית בדסקטופ">
+        </figure>
+        <figure>
+          <figcaption>עמוד עיר תל אביב בעברית, 1440px</figcaption>
+          <img src="../screenshots/city-tel-aviv--he--desktop-1440.png" alt="עמוד עיר בעברית בדסקטופ">
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>עברית - מובייל</h2>
+      <div class="grid">
+        <figure class="mobile">
+          <figcaption>דף הבית בעברית, 390px</figcaption>
+          <img src="../screenshots/home--he--mobile-390.png" alt="דף הבית בעברית במובייל">
+        </figure>
+        <figure class="mobile">
+          <figcaption>רשימת פרויקטים בעברית, 390px</figcaption>
+          <img src="../screenshots/listings--he--mobile-390.png" alt="רשימת פרויקטים בעברית במובייל">
+        </figure>
+        <figure class="mobile">
+          <figcaption>סיור בפרויקט בעברית, 390px</figcaption>
+          <img src="../screenshots/showroom-rainbow--he--mobile-390.png" alt="סיור בפרויקט בעברית במובייל">
+        </figure>
+        <figure class="mobile">
+          <figcaption>דרואר דירה פתוח בעברית, 390px</figcaption>
+          <img src="../screenshots/showroom-rainbow--he--unit-drawer--mobile-390.png" alt="דרואר דירה פתוח בעברית במובייל">
+        </figure>
+        <figure class="mobile">
+          <figcaption>תפריט מובייל פתוח בעברית, 390px</figcaption>
+          <img src="../screenshots/home--he--mobile-menu-open--mobile-390.png" alt="תפריט מובייל בעברית פתוח">
+        </figure>
+        <figure class="mobile">
+          <figcaption>עמוד עיר תל אביב בעברית, 390px</figcaption>
+          <img src="../screenshots/city-tel-aviv--he--mobile-390.png" alt="עמוד עיר בעברית במובייל">
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>English - Desktop And Mobile</h2>
+      <div class="grid" dir="ltr">
+        <figure>
+          <figcaption>Home, English, 1440px</figcaption>
+          <img src="../screenshots/home--en--desktop-1440.png" alt="English home desktop">
+        </figure>
+        <figure class="mobile">
+          <figcaption>Home, English, 390px</figcaption>
+          <img src="../screenshots/home--en--mobile-390.png" alt="English home mobile">
+        </figure>
+        <figure>
+          <figcaption>Listings, English, 1440px</figcaption>
+          <img src="../screenshots/listings--en--desktop-1440.png" alt="English listings desktop">
+        </figure>
+        <figure class="mobile">
+          <figcaption>Listings, English, 390px</figcaption>
+          <img src="../screenshots/listings--en--mobile-390.png" alt="English listings mobile">
+        </figure>
+        <figure>
+          <figcaption>Project tour, English, 1440px</figcaption>
+          <img src="../screenshots/showroom-rainbow--en--desktop-1440.png" alt="English project tour desktop">
+        </figure>
+        <figure class="mobile">
+          <figcaption>Project tour, English, 390px</figcaption>
+          <img src="../screenshots/showroom-rainbow--en--mobile-390.png" alt="English project tour mobile">
+        </figure>
+        <figure>
+          <figcaption>Tel Aviv city page, English, 1440px</figcaption>
+          <img src="../screenshots/city-tel-aviv--en--desktop-1440.png" alt="English city desktop">
+        </figure>
+        <figure class="mobile">
+          <figcaption>Tel Aviv city page, English, 390px</figcaption>
+          <img src="../screenshots/city-tel-aviv--en--mobile-390.png" alt="English city mobile">
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    נשמר תחת handoff/codex/2026-06-23-public-language-cleanup. קובץ הסריקה: data/rendered-text-and-overflow-scan.json.
+  </footer>
+</body>
+</html>
+

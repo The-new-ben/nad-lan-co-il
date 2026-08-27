@@ -1,0 +1,414 @@
+{
+  "project_id": "627f6877-57f3-4821-9e77-2b2011c56292",
+  "ref": "5191562ae49cff8079a4a8bfb0ed1249e789532b",
+  "pages": 2,
+  "count": 101,
+  "binary_count": 1,
+  "files": [
+    {
+      "path": ".gitignore",
+      "binary": false
+    },
+    {
+      "path": ".lovable/project.json",
+      "binary": false
+    },
+    {
+      "path": ".prettierignore",
+      "binary": false
+    },
+    {
+      "path": ".prettierrc",
+      "binary": false
+    },
+    {
+      "path": "AGENTS.md",
+      "binary": false
+    },
+    {
+      "path": "README.md",
+      "binary": false
+    },
+    {
+      "path": "bun.lock",
+      "binary": false
+    },
+    {
+      "path": "bunfig.toml",
+      "binary": false
+    },
+    {
+      "path": "components.json",
+      "binary": false
+    },
+    {
+      "path": "eslint.config.js",
+      "binary": false
+    },
+    {
+      "path": "package.json",
+      "binary": false
+    },
+    {
+      "path": "public/favicon.ico",
+      "binary": true
+    },
+    {
+      "path": "public/robots.txt",
+      "binary": false
+    },
+    {
+      "path": "src/components/lab/AnnotationDrawer.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/lab/ConceptFrame.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/lab/ConceptSwitcher.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/lab/HandoffPanel.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/lab/primitives.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/production/JusticeShell.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/production/ProductionShell.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/production/ui.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/accordion.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/alert-dialog.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/alert.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/aspect-ratio.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/avatar.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/badge.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/breadcrumb.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/calendar.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/card.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/carousel.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/chart.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/checkbox.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/collapsible.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/command.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/context-menu.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/dialog.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/drawer.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/dropdown-menu.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/form.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/hover-card.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/input-otp.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/input.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/label.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/menubar.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/navigation-menu.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/pagination.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/popover.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/progress.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/radio-group.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/resizable.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/scroll-area.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/select.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/separator.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/sheet.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/sidebar.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/skeleton.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/slider.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/sonner.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/switch.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/table.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/tabs.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/textarea.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/toggle-group.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/toggle.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/components/ui/tooltip.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/hooks/use-mobile.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/lib/error-capture.ts",
+      "binary": false
+    },
+    {
+      "path": "src/lib/error-page.ts",
+      "binary": false
+    },
+    {
+      "path": "src/lib/lab-data.ts",
+      "binary": false
+    },
+    {
+      "path": "src/lib/lovable-error-reporting.ts",
+      "binary": false
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "binary": false
+    },
+    {
+      "path": "src/routeTree.gen.ts",
+      "binary": false
+    },
+    {
+      "path": "src/router.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/README.md",
+      "binary": false
+    },
+    {
+      "path": "src/routes/__root.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/final.justice.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/final.nadlan.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/index.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/justice.authority-first.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/justice.dual-audience.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/justice.product-first.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/nadlan.authority-first.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/nadlan.map-first.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/nadlan.tools-first.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/production.justice.index.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/production.justice.legal-ai-desk.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/production.justice.legal-simulation.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/production.nadlan.index.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/production.nadlan.meeting.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/production.nadlan.post-listing.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/production.nadlan.projects.index.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/production.nadlan.projects.rainbow-tel-aviv.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/production.nadlan.properties.baka-demo.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/routes/production.nadlan.properties.index.tsx",
+      "binary": false
+    },
+    {
+      "path": "src/server.ts",
+      "binary": false
+    },
+    {
+      "path": "src/start.ts",
+      "binary": false
+    },
+    {
+      "path": "src/styles.css",
+      "binary": false
+    },
+    {
+      "path": "tsconfig.json",
+      "binary": false
+    },
+    {
+      "path": "vite.config.ts",
+      "binary": false
+    }
+  ]
+}
+

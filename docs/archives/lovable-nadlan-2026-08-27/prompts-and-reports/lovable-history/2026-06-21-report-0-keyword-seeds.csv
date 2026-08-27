@@ -1,0 +1,44 @@
+keyword,language,audience,country_market,funnel_stage,page_type,hub_or_spoke,search_intent,commercial_value,verification_flag,legal_flag,asset_flag,notes
+דירות למכירה בתל אביב,he,buyer_local,IL-TLV,decision,city_hub,hub,transactional,5,NEEDS_VERIFICATION,none,none,Yad2/Madlan dominate; depth + comps
+דירות להשכרה בתל אביב,he,renter_local,IL-TLV,decision,city_hub,hub,transactional,5,NEEDS_VERIFICATION,none,none,Yad2 dominant
+דירות למכירה ברמת גן,he,buyer_local,IL,decision,city_hub,hub,transactional,5,NEEDS_VERIFICATION,none,none,
+דירות למכירה בירושלים,he,buyer_local,IL-JLM,decision,city_hub,hub,transactional,5,NEEDS_VERIFICATION,none,none,
+דירות למכירה בחיפה,he,buyer_local,IL-HFA,decision,city_hub,hub,transactional,4,NEEDS_VERIFICATION,none,none,
+דירות גן בתל אביב,he,buyer_local,IL-TLV,decision,city_hub,spoke,transactional,4,NEEDS_VERIFICATION,none,none,
+פנטהאוז למכירה תל אביב,he,investor_local,IL-TLV,decision,city_hub,spoke,transactional,5,NEEDS_VERIFICATION,none,none,high CPC
+פרויקטים חדשים בתל אביב,he,buyer_local,IL-TLV,research,project_hub,hub,commercial,5,NEEDS_VERIFICATION,none,REQUIRES_OFFICIAL_ASSET,
+פרויקטים חדשים בישראל,he,investor_local,IL,research,project_hub,hub,commercial,5,NEEDS_VERIFICATION,none,REQUIRES_OFFICIAL_ASSET,
+שדה דב פרויקטים,he,investor_local,IL-TLV,research,project_hub,hub,commercial,5,NEEDS_VERIFICATION,none,REQUIRES_OFFICIAL_ASSET,flagship
+מחירון פרויקטים חדשים תל אביב,he,buyer_local,IL-TLV,comparison,project_hub,spoke,commercial,5,NEEDS_VERIFICATION,none,REQUIRES_OFFICIAL_ASSET,
+תמא 38,he,buyer_local,IL,research,legal_explainer,hub,informational,4,NEEDS_VERIFICATION,LEGAL_REVIEW,none,
+תמא 38/1 לעומת 38/2,he,buyer_local,IL,research,legal_explainer,spoke,informational,3,NEEDS_VERIFICATION,LEGAL_REVIEW,none,
+פינוי בינוי,he,buyer_local,IL,research,legal_explainer,hub,informational,4,NEEDS_VERIFICATION,LEGAL_REVIEW,none,
+פינוי בינוי תל אביב,he,buyer_local,IL-TLV,research,legal_explainer,spoke,commercial,4,NEEDS_VERIFICATION,LEGAL_REVIEW,none,
+התחדשות עירונית,he,buyer_local,IL,research,legal_explainer,hub,informational,3,NEEDS_VERIFICATION,LEGAL_REVIEW,none,
+זכויות דיירים פינוי בינוי,he,buyer_local,IL,research,legal_explainer,spoke,informational,4,NEEDS_VERIFICATION,LEGAL_REVIEW,none,
+מחשבון משכנתא,he,buyer_local,IL,research,calculator,hub,commercial,5,NEEDS_VERIFICATION,LEGAL_REVIEW,none,link magnet
+מחשבון מס רכישה,he,buyer_local,IL,research,calculator,hub,commercial,5,NEEDS_VERIFICATION,LEGAL_REVIEW,none,
+מחשבון מס שבח,he,seller,IL,research,calculator,hub,commercial,5,NEEDS_VERIFICATION,LEGAL_REVIEW,none,
+מס רכישה דירה שניה,he,investor_local,IL,research,legal_explainer,spoke,commercial,5,NEEDS_VERIFICATION,LEGAL_REVIEW,none,
+מס רכישה תושב חוץ,he,investor_intl,IL,research,legal_explainer,spoke,commercial,5,NEEDS_VERIFICATION,LEGAL_REVIEW,none,intl bridge
+היטל השבחה,he,seller,IL,research,legal_explainer,spoke,informational,4,NEEDS_VERIFICATION,LEGAL_REVIEW,none,
+בדיקת נכס לפני קניה,he,buyer_local,IL,research,guide,hub,commercial,4,NEEDS_VERIFICATION,none,none,
+שמאי מקרקעין,he,buyer_local,IL,decision,professional_category,hub,commercial,5,NEEDS_VERIFICATION,none,REQUIRES_OFFICIAL_ASSET,license verify
+עורך דין מקרקעין,he,buyer_local,IL,decision,professional_category,hub,commercial,5,NEEDS_VERIFICATION,LEGAL_REVIEW,REQUIRES_OFFICIAL_ASSET,
+עורך דין מקרקעין תל אביב,he,buyer_local,IL-TLV,decision,professional_category,spoke,commercial,5,NEEDS_VERIFICATION,LEGAL_REVIEW,REQUIRES_OFFICIAL_ASSET,
+בודק דירות,he,buyer_local,IL,decision,professional_category,hub,commercial,4,NEEDS_VERIFICATION,none,REQUIRES_OFFICIAL_ASSET,
+יועץ משכנתאות,he,buyer_local,IL,decision,professional_category,hub,commercial,5,NEEDS_VERIFICATION,LEGAL_REVIEW,REQUIRES_OFFICIAL_ASSET,
+מתווך תל אביב,he,buyer_local,IL-TLV,decision,professional_category,spoke,commercial,4,NEEDS_VERIFICATION,none,REQUIRES_OFFICIAL_ASSET,
+buying property in Israel,en,investor_intl,intl,research,guide,hub,commercial,5,NEEDS_VERIFICATION,LEGAL_REVIEW,none,differentiator
+Tel Aviv apartments for sale,en,investor_intl,intl,decision,city_hub,hub,transactional,5,NEEDS_VERIFICATION,none,none,
+Jerusalem apartments for sale,en,investor_intl,intl,decision,city_hub,hub,transactional,4,NEEDS_VERIFICATION,none,none,
+investment property Israel,en,investor_intl,intl,research,guide,hub,commercial,5,NEEDS_VERIFICATION,LEGAL_REVIEW,none,
+new developments Tel Aviv,en,investor_intl,intl,research,project_hub,hub,commercial,5,NEEDS_VERIFICATION,none,REQUIRES_OFFICIAL_ASSET,
+Sde Dov apartments,en,investor_intl,intl,decision,project_hub,spoke,transactional,5,NEEDS_VERIFICATION,none,REQUIRES_OFFICIAL_ASSET,flagship
+Israel real estate tax for foreigners,en,investor_intl,intl,research,legal_explainer,hub,commercial,5,NEEDS_VERIFICATION,LEGAL_REVIEW,none,
+purchase tax Israel non-resident,en,investor_intl,intl,research,legal_explainer,spoke,commercial,5,NEEDS_VERIFICATION,LEGAL_REVIEW,none,
+mortgage Israel foreign buyer,en,investor_intl,intl,research,guide,hub,commercial,5,NEEDS_VERIFICATION,LEGAL_REVIEW,none,
+Israeli real estate lawyer English,en,investor_intl,intl,decision,professional_category,hub,commercial,5,NEEDS_VERIFICATION,LEGAL_REVIEW,REQUIRES_OFFICIAL_ASSET,
+Aliyah property purchase,en,investor_intl,intl,research,guide,spoke,commercial,4,NEEDS_VERIFICATION,LEGAL_REVIEW,none,
+Tama 38 explained,mixed,investor_intl,intl,research,legal_explainer,spoke,informational,3,NEEDS_VERIFICATION,LEGAL_REVIEW,none,bridge term
+pinui binui meaning,mixed,investor_intl,intl,research,glossary,spoke,informational,2,NEEDS_VERIFICATION,LEGAL_REVIEW,none,

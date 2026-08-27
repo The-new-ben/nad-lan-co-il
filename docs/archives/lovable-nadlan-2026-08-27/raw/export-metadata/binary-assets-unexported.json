@@ -1,0 +1,329 @@
+{
+  "generated_at": "2026-08-27T15:35:35.670Z",
+  "design_lab": [
+    {
+      "path": "public/favicon.ico",
+      "binary": true
+    }
+  ],
+  "strategy_hub": [
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/exports/public-language-cleanup-gallery-preview.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/city-tel-aviv--en--desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/city-tel-aviv--en--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/city-tel-aviv--he--desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/city-tel-aviv--he--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/home--en--desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/home--en--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/home--he--desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/home--he--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/home--he--mobile-menu-open--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/listings--en--desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/listings--en--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/listings--he--desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/listings--he--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/showroom-rainbow--en--desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/showroom-rainbow--en--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/showroom-rainbow--he--desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/showroom-rainbow--he--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/codex/2026-06-23-public-language-cleanup/screenshots/showroom-rainbow--he--unit-drawer--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/city-tel-aviv--en--default--desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/city-tel-aviv--en--default--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/city-tel-aviv--he--default--desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/city-tel-aviv--he--default--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/home--en--default--desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/home--en--default--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/home--en--mobile-menu-open--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/home--he--mobile-menu-open--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/home-desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/home-mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/listings--en--default--desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/listings--en--default--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/listings-desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/listings-mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/owner-lovable-credit-decision-2026-06-23.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/owner-lovable-preview-homepage-2026-06-23.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/owner-lovable-sync-dialog-2026-06-23.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/showroom-dimri-desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/showroom-dimri-mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/showroom-empty-desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/showroom-empty-mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/showroom-rainbow--en--glb-state--desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/showroom-rainbow--en--glb-state--mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/showroom-rainbow-desktop-1440.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-23-war-room-sync/screenshots/showroom-rainbow-mobile-390.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-premium-pattern/screenshots/apple-touch-icon-180.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-premium-pattern/screenshots/favicon-192.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-premium-pattern/screenshots/favicon-32.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-premium-pattern/screenshots/homepage-desktop-he.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-premium-pattern/screenshots/homepage-mobile-he.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-premium-pattern/screenshots/og-card.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-premium-pattern/screenshots/pattern-diagram.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-premium-pattern/screenshots/projects-desktop-he.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-premium-pattern/screenshots/projects-mobile-he.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-premium-pattern/screenshots/selection-states.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-premium-pattern/screenshots/showroom-desktop-en.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-premium-pattern/screenshots/showroom-desktop-he.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-premium-pattern/screenshots/showroom-mobile-en.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-premium-pattern/screenshots/showroom-mobile-he.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-premium-pattern/screenshots/wordmark.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-wp-pr-review/qa/showroom-live-selection-16932-2026-06-24/desktop-1440-after-all-marker-taps.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-wp-pr-review/qa/showroom-live-selection-16932-2026-06-24/desktop-1440-after-raw-unit-16-w.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-wp-pr-review/qa/showroom-live-selection-16932-2026-06-24/desktop-1440-before-raw-unit-16-w.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-wp-pr-review/qa/showroom-live-selection-16932-2026-06-24/desktop-1440-before.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-wp-pr-review/qa/showroom-live-selection-16932-2026-06-24/mobile-390-after-all-marker-taps.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-wp-pr-review/qa/showroom-live-selection-16932-2026-06-24/mobile-390-after-raw-unit-16-w.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-wp-pr-review/qa/showroom-live-selection-16932-2026-06-24/mobile-390-before-raw-unit-16-w.png",
+      "binary": true
+    },
+    {
+      "path": "handoff/lovable/2026-06-24-wp-pr-review/qa/showroom-live-selection-16932-2026-06-24/mobile-390-before.png",
+      "binary": true
+    },
+    {
+      "path": "src/assets/hero-tel-aviv-shoreline.jpg",
+      "binary": true
+    },
+    {
+      "path": "src/assets/sketch-building-holon.jpg",
+      "binary": true
+    },
+    {
+      "path": "src/assets/sketch-duo-ramat-gan.jpg",
+      "binary": true
+    },
+    {
+      "path": "src/assets/sketch-listing-haifa.jpg",
+      "binary": true
+    },
+    {
+      "path": "src/assets/sketch-listing-jlm.jpg",
+      "binary": true
+    },
+    {
+      "path": "src/assets/sketch-listing-rg.jpg",
+      "binary": true
+    },
+    {
+      "path": "src/assets/sketch-listing-tlv-bauhaus.jpg",
+      "binary": true
+    },
+    {
+      "path": "src/assets/sketch-rainbow-beer-yaakov.jpg",
+      "binary": true
+    },
+    {
+      "path": "src/assets/sketch-rentals-dashboard.jpg",
+      "binary": true
+    },
+    {
+      "path": "src/assets/sketch-sde-dov.jpg",
+      "binary": true
+    },
+    {
+      "path": "src/assets/sketch-urban-renewal.jpg",
+      "binary": true
+    },
+    {
+      "path": "src/assets/theater-3d-stage.jpg",
+      "binary": true
+    }
+  ],
+  "reason": "Lovable read_file returns binary payload as lossy text; no safe byte-faithful ZIP/download route was available without connecting GitHub/Connectors. Files are listed but not written to avoid corruption."
+}
+

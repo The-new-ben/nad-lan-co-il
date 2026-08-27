@@ -1,0 +1,137 @@
+{
+  "generated_at": "2026-08-27T15:35:23.346Z",
+  "screenshot_policy": "Full-page capture timed out on the first long route. Per task fallback, saved 1440x900 viewport captures for Design Lab routes completed before stop. Mobile and Strategy Hub captures were not continued after the user said current material is enough.",
+  "routes": [
+    {
+      "project": "Design Lab",
+      "route": "/nadlan/tools-first",
+      "url": "https://id-preview--627f6877-57f3-4821-9e77-2b2011c56292.lovable.app/nadlan/tools-first",
+      "title": "N1 · כלים תחילה — קונספט עמוד בית לאתר נדל״ן",
+      "h1": "מחשבונים וכלי בדיקה לנדל״ן — תשובה מדויקת לפני ההחלטה",
+      "data_state": "prototype/demo",
+      "desktop_screenshot": "screenshots/design-lab/nadlan-tools-first--desktop-1440-viewport.png",
+      "mobile_screenshot": null
+    },
+    {
+      "project": "Design Lab",
+      "route": "/nadlan/map-first",
+      "url": "https://id-preview--627f6877-57f3-4821-9e77-2b2011c56292.lovable.app/nadlan/map-first",
+      "title": "N2 · מפה והחלטה — קונספט עמוד בית לאתר נדל״ן",
+      "h1": "איפה אתם בתהליך? — כל שלב עם הבדיקות והכלים שלו",
+      "data_state": "prototype/demo; map schematic",
+      "desktop_screenshot": "screenshots/design-lab/nadlan-map-first--desktop-1440-viewport.png",
+      "mobile_screenshot": null
+    },
+    {
+      "project": "Design Lab",
+      "route": "/nadlan/authority-first",
+      "url": "https://id-preview--627f6877-57f3-4821-9e77-2b2011c56292.lovable.app/nadlan/authority-first",
+      "title": "N3 · סמכות תוכן — קונספט עמוד בית לאתר נדל״ן",
+      "h1": "מדריכי נדל״ן ומיסוי מקרקעין — הסבר מסודר לפני כל החלטה",
+      "data_state": "prototype/demo",
+      "desktop_screenshot": "screenshots/design-lab/nadlan-authority-first--desktop-1440-viewport.png",
+      "mobile_screenshot": null
+    },
+    {
+      "project": "Design Lab",
+      "route": "/final/nadlan",
+      "url": "https://id-preview--627f6877-57f3-4821-9e77-2b2011c56292.lovable.app/final/nadlan",
+      "title": "כיוון סופי · נדל״ן — כלים תחילה עם מנוע קישור פנימי",
+      "h1": "מחשבונים וכלי בדיקה לנדל״ן — תשובה מדויקת לפני ההחלטה",
+      "data_state": "final prototype; demo values",
+      "desktop_screenshot": "screenshots/design-lab/final-nadlan--desktop-1440-viewport.png",
+      "mobile_screenshot": null
+    },
+    {
+      "project": "Design Lab",
+      "route": "/production/nadlan",
+      "url": "https://id-preview--627f6877-57f3-4821-9e77-2b2011c56292.lovable.app/production/nadlan",
+      "title": "נדל״ן — פרויקטים, נכסים ובדיקת מחיר לפני חתימה",
+      "h1": "מוצאים פרויקט או נכס, בודקים מחיר והקשר, ומבינים את האזור לפני שחותמים",
+      "data_state": "product prototype; mixed demo/empty/public-fact states",
+      "desktop_screenshot": "screenshots/design-lab/production-nadlan--desktop-1440-viewport.png",
+      "mobile_screenshot": null
+    },
+    {
+      "project": "Design Lab",
+      "route": "/production/nadlan/projects",
+      "url": "https://id-preview--627f6877-57f3-4821-9e77-2b2011c56292.lovable.app/production/nadlan/projects",
+      "title": "פרויקטים חדשים בישראל — ארכיון פרויקטים",
+      "h1": "פרויקטים חדשים — ארכיון לפי עיר ושלב בנייה",
+      "data_state": "one public-fact project + three demo records; source/date placeholders",
+      "desktop_screenshot": "screenshots/design-lab/production-nadlan-projects--desktop-1440-viewport.png",
+      "mobile_screenshot": null
+    },
+    {
+      "project": "Design Lab",
+      "route": "/production/nadlan/projects/rainbow-tel-aviv",
+      "url": "https://id-preview--627f6877-57f3-4821-9e77-2b2011c56292.lovable.app/production/nadlan/projects/rainbow-tel-aviv",
+      "title": "Rainbow תל אביב — פרויקט שדה דב, 480 יחידות דיור",
+      "h1": "Rainbow תל אביב — מתחם שדה דב, 480 יחידות דיור",
+      "data_state": "public facts claimed; source URL/date still placeholders; verify before publication",
+      "desktop_screenshot": "screenshots/design-lab/production-nadlan-projects-rainbow-tel-aviv--desktop-1440-viewport.png",
+      "mobile_screenshot": null
+    },
+    {
+      "project": "Design Lab",
+      "route": "/production/nadlan/properties",
+      "url": "https://id-preview--627f6877-57f3-4821-9e77-2b2011c56292.lovable.app/production/nadlan/properties",
+      "title": "נכסים למכירה ולהשכרה — ארכיון מודעות",
+      "h1": "נכסים למכירה ולהשכרה — ארכיון מודעות",
+      "data_state": "seven explicit demo listings; no real prices/contacts",
+      "desktop_screenshot": "screenshots/design-lab/production-nadlan-properties--desktop-1440-viewport.png",
+      "mobile_screenshot": null
+    },
+    {
+      "project": "Design Lab",
+      "route": "/production/nadlan/properties/baka-demo",
+      "url": "https://id-preview--627f6877-57f3-4821-9e77-2b2011c56292.lovable.app/production/nadlan/properties/baka-demo",
+      "title": "נכס לדוגמה — דירת 4 חדרים בבקעה, ירושלים",
+      "h1": "דירת 4 חדרים בבקעה, ירושלים — מודעה לדוגמה",
+      "data_state": "explicit demo_seed; no active transaction",
+      "desktop_screenshot": "screenshots/design-lab/production-nadlan-properties-baka-demo--desktop-1440-viewport.png",
+      "mobile_screenshot": null
+    },
+    {
+      "project": "Design Lab",
+      "route": "/production/nadlan/post-listing",
+      "url": "https://id-preview--627f6877-57f3-4821-9e77-2b2011c56292.lovable.app/production/nadlan/post-listing",
+      "title": "פרסום נכס — אב טיפוס של מסלול ההיצע",
+      "h1": "מסלול פרסום נכס אמיתי — שלד לאימות",
+      "data_state": "prototype only; no active form",
+      "desktop_screenshot": "screenshots/design-lab/production-nadlan-post-listing--desktop-1440-viewport.png",
+      "mobile_screenshot": null
+    },
+    {
+      "project": "Design Lab",
+      "route": "/production/nadlan/meeting",
+      "url": "https://id-preview--627f6877-57f3-4821-9e77-2b2011c56292.lovable.app/production/nadlan/meeting",
+      "title": "נרטיב פגישה — חמש דקות על מוצר נדל״ן",
+      "h1": "נרטיב הפגישה — מחקר, גילוי, מודעה, היצע",
+      "data_state": "internal meeting prototype",
+      "desktop_screenshot": "screenshots/design-lab/production-nadlan-meeting--desktop-1440-viewport.png",
+      "mobile_screenshot": null
+    },
+    {
+      "project": "NadLan Strategy Hub",
+      "route": "/",
+      "url": "https://nadlan-vision-quest.lovable.app/",
+      "title": "Nadlan3D - נדל״ן שרואים לפני שקונים",
+      "h1": "שלוש דקות בפנים, החלטה בלי ניחושים.",
+      "data_state": "public old prototype; generic stock imagery and unverified claims",
+      "desktop_screenshot": null,
+      "mobile_screenshot": null
+    },
+    {
+      "project": "NadLan Strategy Hub",
+      "route": "/showroom/rainbow-tlv",
+      "url": "https://nadlan-vision-quest.lovable.app/showroom/rainbow-tlv",
+      "title": "Rainbow Tower - Project tour - Nadlan3D",
+      "h1": "מגדל הקשת",
+      "data_state": "public old prototype; hard-coded units/prices not clearly labeled demo; do not treat as source of truth",
+      "desktop_screenshot": null,
+      "mobile_screenshot": null
+    }
+  ]
+}
+

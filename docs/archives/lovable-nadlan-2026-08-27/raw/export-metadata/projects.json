@@ -1,0 +1,42 @@
+{
+  "exported_at": "2026-08-27T15:16:59.174Z",
+  "source": "Lovable official connector",
+  "projects": [
+    {
+      "id": "627f6877-57f3-4821-9e77-2b2011c56292",
+      "display_name": "Design Lab",
+      "name": null,
+      "status": "completed",
+      "visibility": "private",
+      "is_published": false,
+      "publish_visibility": null,
+      "tech_stack": "tanstack_start_ts_current",
+      "created_at": "2026-08-26T20:01:12.991Z",
+      "updated_at": "2026-08-26T21:21:08.553Z",
+      "last_edited_at": "2026-08-26T21:20:43.209Z",
+      "latest_commit_sha": "5191562ae49cff8079a4a8bfb0ed1249e789532b",
+      "editor_url": "https://lovable.dev/projects/627f6877-57f3-4821-9e77-2b2011c56292",
+      "preview_url": "https://id-preview--627f6877-57f3-4821-9e77-2b2011c56292.lovable.app",
+      "public_url": null
+    },
+    {
+      "id": "a7493b94-2e46-4d38-9c6a-80dcf0905f45",
+      "display_name": "NadLan Strategy Hub",
+      "name": "nadlan-vision-quest",
+      "status": "completed",
+      "visibility": "private",
+      "is_published": true,
+      "publish_visibility": "public",
+      "tech_stack": "tanstack_start_ts_2026-06-17",
+      "created_at": "2026-06-21T09:05:19.309Z",
+      "updated_at": "2026-07-12T18:56:42.858Z",
+      "last_edited_at": "2026-07-12T12:42:23.938Z",
+      "latest_commit_sha": "5219d3eac8707c88fe070759dd7d5fa260d119c0",
+      "editor_url": "https://lovable.dev/projects/a7493b94-2e46-4d38-9c6a-80dcf0905f45",
+      "preview_url": "https://id-preview--a7493b94-2e46-4d38-9c6a-80dcf0905f45.lovable.app",
+      "public_url": "https://nadlan-vision-quest.lovable.app"
+    }
+  ],
+  "privacy_note": "No cookies, tokens, environment variables, user IDs, or unrelated project metadata included."
+}
+

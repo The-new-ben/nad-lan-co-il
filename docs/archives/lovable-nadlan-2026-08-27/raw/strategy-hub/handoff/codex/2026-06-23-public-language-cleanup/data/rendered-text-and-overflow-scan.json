@@ -1,0 +1,278 @@
+{
+  "base": "http://127.0.0.1:5187",
+  "capturedAt": "2026-06-23T11:16:45.346Z",
+  "banned": [
+    "שיווץ",
+    "GLB",
+    "SVG",
+    "Featured",
+    "Sponsored",
+    "Promoted",
+    "Showroom",
+    "Frank Ruhl",
+    "Heebo",
+    "Fraunces",
+    "Inter Tight",
+    "AI generated",
+    "asset truth",
+    "loading GLB",
+    "schematic",
+    "placeholder",
+    "mock"
+  ],
+  "results": [
+    {
+      "slug": "home",
+      "lang": "he",
+      "viewport": "desktop-1440",
+      "url": "http://127.0.0.1:5187/",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\home--he--desktop-1440.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "bodyClientWidth": 1440
+      }
+    },
+    {
+      "slug": "home",
+      "lang": "he",
+      "viewport": "mobile-390",
+      "url": "http://127.0.0.1:5187/",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\home--he--mobile-390.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390,
+        "bodyClientWidth": 390
+      }
+    },
+    {
+      "slug": "listings",
+      "lang": "he",
+      "viewport": "desktop-1440",
+      "url": "http://127.0.0.1:5187/listings",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\listings--he--desktop-1440.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "bodyClientWidth": 1440
+      }
+    },
+    {
+      "slug": "listings",
+      "lang": "he",
+      "viewport": "mobile-390",
+      "url": "http://127.0.0.1:5187/listings",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\listings--he--mobile-390.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390,
+        "bodyClientWidth": 390
+      }
+    },
+    {
+      "slug": "showroom-rainbow",
+      "lang": "he",
+      "viewport": "desktop-1440",
+      "url": "http://127.0.0.1:5187/showroom/rainbow-tlv",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\showroom-rainbow--he--desktop-1440.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "bodyClientWidth": 1440
+      }
+    },
+    {
+      "slug": "showroom-rainbow",
+      "lang": "he",
+      "viewport": "mobile-390",
+      "url": "http://127.0.0.1:5187/showroom/rainbow-tlv",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\showroom-rainbow--he--mobile-390.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390,
+        "bodyClientWidth": 390
+      }
+    },
+    {
+      "slug": "city-tel-aviv",
+      "lang": "he",
+      "viewport": "desktop-1440",
+      "url": "http://127.0.0.1:5187/cities/tel-aviv",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\city-tel-aviv--he--desktop-1440.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "bodyClientWidth": 1440
+      }
+    },
+    {
+      "slug": "city-tel-aviv",
+      "lang": "he",
+      "viewport": "mobile-390",
+      "url": "http://127.0.0.1:5187/cities/tel-aviv",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\city-tel-aviv--he--mobile-390.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390,
+        "bodyClientWidth": 390
+      }
+    },
+    {
+      "slug": "home",
+      "lang": "en",
+      "viewport": "desktop-1440",
+      "url": "http://127.0.0.1:5187/",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\home--en--desktop-1440.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "bodyClientWidth": 1440
+      }
+    },
+    {
+      "slug": "home",
+      "lang": "en",
+      "viewport": "mobile-390",
+      "url": "http://127.0.0.1:5187/",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\home--en--mobile-390.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390,
+        "bodyClientWidth": 390
+      }
+    },
+    {
+      "slug": "listings",
+      "lang": "en",
+      "viewport": "desktop-1440",
+      "url": "http://127.0.0.1:5187/listings",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\listings--en--desktop-1440.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "bodyClientWidth": 1440
+      }
+    },
+    {
+      "slug": "listings",
+      "lang": "en",
+      "viewport": "mobile-390",
+      "url": "http://127.0.0.1:5187/listings",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\listings--en--mobile-390.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390,
+        "bodyClientWidth": 390
+      }
+    },
+    {
+      "slug": "showroom-rainbow",
+      "lang": "en",
+      "viewport": "desktop-1440",
+      "url": "http://127.0.0.1:5187/showroom/rainbow-tlv",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\showroom-rainbow--en--desktop-1440.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "bodyClientWidth": 1440
+      }
+    },
+    {
+      "slug": "showroom-rainbow",
+      "lang": "en",
+      "viewport": "mobile-390",
+      "url": "http://127.0.0.1:5187/showroom/rainbow-tlv",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\showroom-rainbow--en--mobile-390.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390,
+        "bodyClientWidth": 390
+      }
+    },
+    {
+      "slug": "city-tel-aviv",
+      "lang": "en",
+      "viewport": "desktop-1440",
+      "url": "http://127.0.0.1:5187/cities/tel-aviv",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\city-tel-aviv--en--desktop-1440.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "bodyClientWidth": 1440
+      }
+    },
+    {
+      "slug": "city-tel-aviv",
+      "lang": "en",
+      "viewport": "mobile-390",
+      "url": "http://127.0.0.1:5187/cities/tel-aviv",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\city-tel-aviv--en--mobile-390.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390,
+        "bodyClientWidth": 390
+      }
+    },
+    {
+      "slug": "home-menu-open",
+      "lang": "he",
+      "viewport": "mobile-390",
+      "url": "http://127.0.0.1:5187/",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\home--he--mobile-menu-open--mobile-390.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390,
+        "bodyClientWidth": 390
+      }
+    },
+    {
+      "slug": "showroom-unit-drawer",
+      "lang": "he",
+      "viewport": "mobile-390",
+      "url": "http://127.0.0.1:5187/showroom/rainbow-tlv",
+      "screenshot": "C:\\Users\\janana\\Documents\\Codex\\2026-06-21\\i-created-a-safe-codex-transfer\\work\\_external\\nadlan-strategy-hub-2026-06-23\\handoff\\codex\\2026-06-23-public-language-cleanup\\screenshots\\showroom-rainbow--he--unit-drawer--mobile-390.png",
+      "bannedHits": [],
+      "overflow": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "bodyScrollWidth": 390,
+        "bodyClientWidth": 390
+      }
+    }
+  ]
+}
+

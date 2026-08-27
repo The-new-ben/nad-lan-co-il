@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nadlan3D - Visual QA</title>
+  <style>
+    body {
+      margin: 0;
+      background: #faf7f1;
+      color: #1b1a17;
+      font-family: Arial, sans-serif;
+      line-height: 1.65;
+    }
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 72px;
+    }
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.18;
+    }
+    h1 {
+      font-size: clamp(32px, 5vw, 60px);
+    }
+    h2 {
+      margin-top: 36px;
+      font-size: 30px;
+    }
+    h3 {
+      font-size: 20px;
+    }
+    p {
+      color: #625b52;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 28px;
+    }
+    .chip, .card, figure {
+      border: 1px solid #d9cfc1;
+      background: #fffdf8;
+      border-radius: 4px;
+    }
+    .chip {
+      padding: 6px 10px;
+      font-size: 13px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .card {
+      padding: 18px;
+    }
+    .pass {
+      color: #2f6846;
+      font-weight: 700;
+    }
+    .fail {
+      color: #c2563a;
+      font-weight: 700;
+    }
+    ul {
+      margin: 10px 0 0;
+      padding: 0 22px 0 0;
+    }
+    li {
+      margin: 7px 0;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    figure {
+      margin: 0;
+      overflow: hidden;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #eee7dc;
+    }
+    figcaption {
+      border-top: 1px solid #d9cfc1;
+      padding: 10px 12px;
+      color: #625b52;
+      font-size: 13px;
+    }
+    code {
+      direction: ltr;
+      unicode-bidi: embed;
+      background: #eee7dc;
+      border-radius: 3px;
+      padding: 1px 5px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Nadlan3D - בדיקת מסכים ויזואלית</h1>
+    <p>הבדיקה הזאת מבוססת על צילומי מסך אמיתיים שנשמרו לריפו. המסקנה: יש אבטיפוס עובד, אבל הוא עדיין לא מוכן להצגה לקבלנים.</p>
+
+    <div class="chips">
+      <span class="chip">Source commit: <code>b275f7a</code></span>
+      <span class="chip">Verification commit: <code>eaaba35</code></span>
+      <span class="chip pass">Build passed</span>
+      <span class="chip fail">Not contractor-ready</span>
+    </div>
+
+    <section class="grid">
+      <div class="card">
+        <h3 class="pass">עבר</h3>
+        <ul>
+          <li>האפליקציה קיימת ב-GitHub.</li>
+          <li>ה-build המקומי עבר.</li>
+          <li>HE ו-EN עובדים.</li>
+          <li>יש mobile 390px ו-desktop 1440px.</li>
+          <li>יש סימון שקוף ל-Featured, Sponsored, Promoted.</li>
+          <li>יש מצב empty עם בקשת העלאת נכסים מהקבלן.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="fail">נכשל או לא מספיק טוב</h3>
+        <ul>
+          <li>Rainbow מסומן GLB/live בלי קובץ GLB אמיתי בריפו Lovable.</li>
+          <li>תמונות הפרויקטים גנריות או ריקות בחלק מהמסכים.</li>
+          <li>חזית Dimri היא סכימה פשוטה מדי, לא חומר מכירתי.</li>
+          <li>ה-CTA הדביק חופף לפוטר בעמודי showroom.</li>
+          <li>מותג Nadlan3D חלש מדי במסך הראשון.</li>
+          <li>צריך להסיר מקפים ארוכים וסגנון טקסט גנרי.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>החלטה</h3>
+        <p>להשתמש באבטיפוס כמבנה וככיוון, לא כעיצוב סופי. לפני פורטינג ל-WordPress צריך לתקן תמונות אמיתיות, GLB אמיתי או fallback כן, חזית רצינית, ופוטר שאינו נחסם.</p>
+      </div>
+    </section>
+
+    <h2>צילומי מסך מרכזיים</h2>
+    <div class="gallery">
+      <figure>
+        <img src="../screenshots/home-mobile-390.png" alt="Home Hebrew mobile">
+        <figcaption>Home HE mobile</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/home--en--default--desktop-1440.png" alt="Home English desktop">
+        <figcaption>Home EN desktop</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/home--he--mobile-menu-open--mobile-390.png" alt="Home Hebrew menu open">
+        <figcaption>Mobile menu HE</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/listings-mobile-390.png" alt="Listings Hebrew mobile">
+        <figcaption>Listings HE mobile: image blocks fail</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/listings--en--default--mobile-390.png" alt="Listings English mobile">
+        <figcaption>Listings EN mobile: generic imagery</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/showroom-rainbow-mobile-390.png" alt="Rainbow showroom Hebrew mobile">
+        <figcaption>Rainbow HE mobile: GLB label without real GLB</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/showroom-dimri-desktop-1440.png" alt="Dimri showroom Hebrew desktop">
+        <figcaption>Dimri HE desktop: fallback exists but too generic</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/showroom-empty-mobile-390.png" alt="Empty showroom Hebrew mobile">
+        <figcaption>Empty asset state HE mobile</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/city-tel-aviv--he--default--mobile-390.png" alt="City Hebrew mobile">
+        <figcaption>City page HE mobile</figcaption>
+      </figure>
+      <figure>
+        <img src="../screenshots/city-tel-aviv--en--default--desktop-1440.png" alt="City English desktop">
+        <figcaption>City page EN desktop</figcaption>
+      </figure>
+    </div>
+  </main>
+</body>
+</html>
+

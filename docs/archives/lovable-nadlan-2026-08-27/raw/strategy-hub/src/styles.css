@@ -1,0 +1,212 @@
+@import "tailwindcss" source(none);
+@source "../src";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * NadLan design system — exact tokens from the founding brief.
+ * paper #FAF7F1, ink #1B1A17, gold #9C7A3C, terracotta #C2563A,
+ * hairline #E2DCD0, band #F3EEE3, theater #14130F.
+ * Hebrew-first RTL. Fonts loaded via <link> in __root.tsx head.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* NadLan brand tokens — exposed as utilities */
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-gold: var(--gold);
+  --color-terracotta: var(--terracotta);
+  --color-hairline: var(--hairline);
+  --color-band: var(--band);
+  --color-theater: var(--theater);
+  --color-cream: var(--paper);
+  --color-sage: var(--success);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-muted-ink: var(--muted-ink);
+
+  --font-serif-he: "Frank Ruhl Libre", "Frank Ruehl CLM", Georgia, serif;
+  --font-sans-he: "Heebo", "Assistant", system-ui, sans-serif;
+  --font-serif-en: "Frank Ruhl Libre", Georgia, serif;
+  --font-sans-en: "Heebo", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Brand tokens — exact hex per spec */
+  --paper: #FAF7F1;
+  --ink: #1B1A17;
+  --gold: #9C7A3C;
+  --terracotta: #C2563A;
+  --hairline: #E2DCD0;
+  --band: #F3EEE3;
+  --theater: #14130F;
+  --muted-ink: #A79E8D;
+
+  --success: #517048;
+  --warning: #9C7A3C;
+  --danger: #C2563A;
+
+  /* Semantic mapping */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: #FFFFFF;
+  --card-foreground: var(--ink);
+  --popover: #FFFFFF;
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: #FFFFFF;
+  --secondary: var(--band);
+  --secondary-foreground: var(--ink);
+  --muted: var(--band);
+  --muted-foreground: var(--muted-ink);
+  --accent: var(--terracotta);
+  --accent-foreground: #FFFFFF;
+  --destructive: var(--danger);
+  --destructive-foreground: #FFFFFF;
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--gold);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans-he);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-feature-settings: "kern";
+    -webkit-font-smoothing: antialiased;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif-he);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--color-ink);
+  }
+
+  h1 {
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    line-height: 1.15;
+  }
+
+  h2 {
+    font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+  }
+
+  h3 {
+    font-size: 1.15rem;
+  }
+
+  [dir="rtl"] {
+    text-align: right;
+  }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: var(--color-paper);
+  }
+}
+
+@utility hairline {
+  border: 1px solid var(--color-hairline);
+}
+@utility hairline-b {
+  border-bottom: 1px solid var(--color-hairline);
+}
+@utility hairline-t {
+  border-top: 1px solid var(--color-hairline);
+}
+
+@utility kicker {
+  font-family: var(--font-sans-he);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+}
+
+@utility stage-shadow {
+  box-shadow: 0 24px 60px -28px rgba(27, 26, 23, 0.35);
+}
+
+@utility btn-terracotta {
+  background-color: var(--color-terracotta);
+  color: #FFFFFF;
+  border-radius: 12px;
+  padding-block: 0.7rem;
+  padding-inline: 1.4rem;
+  font-weight: 500;
+  box-shadow: 0 6px 16px -8px rgba(194, 86, 58, 0.55);
+  transition: filter 160ms ease;
+}
+@utility btn-terracotta-hover {
+  filter: brightness(1.06);
+}
+
+@utility btn-gold-outline {
+  background: #FFFFFF;
+  color: var(--color-ink);
+  border: 1.5px solid var(--color-gold);
+  border-radius: 12px;
+  padding-block: 0.6rem;
+  padding-inline: 1.3rem;
+  font-weight: 500;
+}
+
+@utility chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background-color: var(--color-band);
+  border: 1px solid var(--color-hairline);
+  border-radius: 999px;
+  padding-block: 0.25rem;
+  padding-inline: 0.75rem;
+  font-family: var(--font-sans-he);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--color-ink);
+}
+

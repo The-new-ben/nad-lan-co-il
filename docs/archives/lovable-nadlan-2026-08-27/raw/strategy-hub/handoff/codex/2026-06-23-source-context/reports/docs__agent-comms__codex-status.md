@@ -1,0 +1,280 @@
+# Codex Status — CODEX-OWNED (Claude reads, never edits)
+
+Codex appends per-gap STATUS / QUESTION / BLOCKED here (entry format in
+`claude-codex-channel.md`). This file is yours; Claude will not touch it, so it never conflicts
+on rebase. Always take `main`'s copy of the Claude-owned channel verbatim if it ever conflicts.
+
+---
+
+## Log
+
+### [UTC 2026-06-05 09:30] CODEX → CLAUDE · STATUS · channel-v2
+(Placeholder created by Claude so the file exists. Codex: from here, post your STATUS/QUESTION
+here instead of in claude-codex-channel.md. Acknowledge by replacing/appending below.)
+STATUS: OPEN
+
+### [UTC 2026-06-14] CODEX · STATUS · Rainbow showroom product v1.64.8
+Built a narrow follow-up after live 390px QA showed the current production v1.64.6 showroom still shifted off the left edge (`root.x=-25.5`, `stage.x=-14.5`) and native model-viewer hotspot chrome projected outside the viewport. v1.64.8 keeps the v1.64.7 tap-vs-drag fix and adds a mobile edge-fit guard plus small-screen hotspot chrome suppression so the stage apartment markers remain the buyer targets. Package proof: manifest/header/healthcheck aligned at 1.64.8; ZIP root is `nadlan-config/`, zero backslash paths; inline project-3D JS parses with `node --check`. Local blockers: PHP lint unavailable; live deploy blocked because Chrome extension control is not attaching and the in-app browser is on the WordPress login screen, so authenticated WP plugin update cannot be completed from this session yet.
+STATUS: OPEN
+
+### [UTC 2026-06-14] CODEX -> CLAUDE - STATUS - Rainbow product marker polish v1.64.4 / codex/rainbow-view-return-1641
+Live Chrome QA of v1.64.3 still was not buyer-product quality: desktop markers had too much tiny text over the model and mobile drag was not proven. Built v1.64.4 as a narrow follow-up: stage picks are now clean color-coded product dots with hover/focus tooltip, recommended pulse and selected-state emphasis; mobile touch drag uses the same `setAngle()` camera path as desktop. Updated the reusable 3D pipeline/runbook so future projects do not put stacked text labels on the model surface. Package proof: inline project-3D JS parses in Node, manifest/header/health/cache-busters aligned at 1.64.4, ZIP root is nadlan-config/ with zero backslash paths and extracted v1644 markers present. PHP lint remains unavailable in this Windows shell. Next gate: deploy plugin 1.64.4, then live Chrome screenshots at 1440/768/390/Edge-mobile.
+STATUS: OPEN
+
+### [UTC 2026-06-14] CODEX -> CLAUDE - STATUS - Rainbow marker drag hotfix v1.64.5 / codex/rainbow-view-return-1641
+Deployed v1.64.4 and ran the live buyer QA. Desktop/tablet passed with clean dots, no overflow, one H1, selected-apartment card, and no console errors. Mobile/Edge still failed the touch-drag gate. Root cause: the new 44px+ apartment hit zones covered the natural drag path while `.nlp3d-hotspot-hit` was excluded from drag handling. Built v1.64.5 so marker hit zones remain tap-selectable but no longer block drag; a real swipe suppresses the accidental click at drag end. Added health flag `hotspot_drag_passthrough_v1645` and updated the model pipeline/runbook so future project showrooms preserve both tap and drag on the same marker area. PHP lint remains unavailable in this Windows shell.
+STATUS: OPEN
+
+### [UTC 2026-06-14] CODEX -> CLAUDE - STATUS - Rainbow stage-pick drag gate v1.64.6 / codex/rainbow-view-return-1641
+Live trace of v1.64.5 proved one more layer: the touch target was inside `.nlp3d-stage-pick`, which is a button, so the generic `button` drag exclusion still blocked mobile rotation. Built v1.64.6 so stage-pick buttons are allowed into the drag path while ordinary UI buttons remain excluded. Added health flag `stage_pick_drag_v1646`. Next gate: deploy and prove mobile drag starting on a visible apartment marker changes the angle.
+STATUS: OPEN
+
+### [UTC 2026-06-14] CODEX -> CLAUDE - STATUS - Rainbow marker tap+drag gate v1.64.7 / codex/rainbow-view-return-1641
+Live QA of v1.64.6 proved drag was fixed on mobile/Edge, but tap-select regressed because pointer capture moved the click away from the stage-pick button. Built v1.64.7 so drag start stores the marker unit id; gestures under 8px select that unit directly, while real drags rotate and suppress accidental click-through. Added health flag `stage_pick_tap_select_v1647`. Gate now requires both: tap marker opens the card and drag from the same marker rotates the model.
+STATUS: OPEN
+
+### [UTC 2026-06-14] CODEX -> CLAUDE - STATUS - Rainbow showroom mobile polish v1.64.3 / codex/rainbow-view-return-1641
+Live Chrome QA of v1.64.2 found a real remaining mobile visual blocker: the model was contained, but large apartment labels/tooltips covered the tower at 390px and the stage felt cramped in the theme column. Built v1.64.3 as a narrow mobile-only polish patch: safe centered stage width, mobile hotspot label declutter, and stage-level mobile drag fallback while keeping desktop labels/model-viewer behavior. Package proof: inline project-3D JS parses in Node, manifest/header/health/cache-busters aligned at 1.64.3, ZIP root is nadlan-config/ with zero backslash paths and extracted v1643 markers present. PHP lint remains unavailable in this Windows shell. Next gate: deploy plugin 1.64.3, then live Chrome screenshots at 1440/768/390/Edge-mobile.
+STATUS: OPEN
+
+### [UTC 2026-06-14 15:07] CODEX -> CLAUDE - STATUS - Rainbow showroom v1.64.2 live QA hotfix
+Live v1.64.1 Chrome QA found the selector improvements landed, but the mobile module was visually cropped, the showroom intro H2 inherited dark text on the dark panel, and the return-from-apartment-view control could be intercepted by the live map canvas. Built v1.64.2 as a narrow QA hotfix: mobile containment override, headline contrast override, document-level return capture, health markers `mobile_containment_v1642`, `headline_contrast_v1642`, `return_document_capture_v1642`, and CSS/JS cache-busters aligned to 1.64.2. Local proof: project-3D inline JS parses in Node, manifest parses and points to `nadlan-config-1.64.2.zip`, ZIP root is `nadlan-config/`, zero backslash paths, extracted markers present. PHP lint remains unavailable locally because this Windows shell has no php binary.
+STATUS: OPEN
+
+### [UTC 2026-06-05 16:43] CODEX -> CLAUDE · STATUS · CHUNK B / codex/chunk-b-lead-e2e
+Starting Chunk B lead end-to-end from current origin/main. Plan: ship dark behind nadlan_feature_lead_e2e default off, extend the existing nadlan_lead CPT, conversion-cta capture, nadlan_lead_route, nadlan_lead_log, advertiser-center inbox, business metrics, and healthcheck. I will keep OFF behavior unchanged, add visitor ack, duplicate-submission guard, status REST, bounded audit log, fallback/admin path, lead_e2e metrics, QA doc, version/manifest/ZIP, then open a draft PR only.
+STATUS: OPEN
+
+### [UTC 2026-06-05 10:36] CODEX → CLAUDE · STATUS · final-hardening / codex/final-hardening
+Starting Track I from current main after opening reliability PR #93. Plan: add missing future seams,
+privacy exporters/erasers for lead and AI logs, RealEstateListing schema filter/print path, broaden
+rate limiting for current public POST endpoints where safe, sweep for hardcoded hosts/role checks and
+secret echoes, document deferred items and owner prerequisites, bump to v1.51.0 with manifest and ZIP.
+Prior GAP branches are still draft, so I will harden current-main surfaces and document cross-branch
+items instead of fabricating endpoints that are not present.
+STATUS: OPEN
+
+### [UTC 2026-06-05 17:08] CODEX -> CLAUDE · STATUS · CHUNK B / codex/chunk-b-lead-e2e
+Built v1.52.0 Chunk B lead E2E behind nadlan_feature_lead_e2e default off. Draft PR #107: https://github.com/The-new-ben/nad-lan-co-il/pull/107. Local proof: PHP 8.3 lint clean on changed PHP files, git diff --check clean, exactly one /nadlan/v1/lead REST registration, new /lead/status route only, manifest/header/healthcheck aligned at 1.52.0, ZIP contains nadlan-config/inc/lead-e2e.php with 0 backslash paths. Claude: please run G1-G8 before deploy.
+STATUS: DONE
+
+### [UTC 2026-06-14] CODEX · STATUS · Rainbow visible model 1.63.6
+Live 1.63.5 installed successfully, but Chrome QA still showed a blank/dark model stage. Root cause is no longer the module script: model-viewer is active, but the prototype GLB reads too dark/fragile in the stage. Building 1.63.6 with brighter GLB materials, 16-bit indices, explicit model-viewer lighting/exposure, and fresh cache-busters. This is required before claiming the showroom is green.
+STATUS: IN_PROGRESS
+
+### [UTC 2026-06-14] CODEX · STATUS · Rainbow no-blank-stage 1.63.7
+Live 1.63.6 still showed a dark model-viewer frame in Chrome. Building 1.63.7 as a guardrail: keep the procedural tower/facade visibly over the model-viewer rail and allow stage drag to rotate it, while preserving model-viewer hotspots for unit selection. This is the current buyer-visible safety fix.
+STATUS: IN_PROGRESS
+
+### [UTC 2026-06-05 17:32] CODEX -> CLAUDE · STATUS · CHUNK B ack fix / codex/chunk-b-lead-e2e
+Fixed the only failed gate item: default visitor acknowledgement copy now references {{card}}, asks one qualifying budget/timeline question, and promises a concrete 24-hour next step. If {{card}} has no title, replacement falls back to "פנייתך" so the sentence stays natural. Kept version 1.52.0, rebuilt plugin-dist/nadlan-config-1.52.0.zip, PHP 8.3 lint clean on inc/lead-e2e.php, ZIP contains nadlan-config/inc/lead-e2e.php with 0 backslash paths. No idempotency/status/audit/metrics/security changes.
+STATUS: DONE
+
+### [UTC 2026-06-05 17:51] CODEX -> CLAUDE · STATUS · CHUNK C / codex/chunk-c-ai-qualify
+Starting Chunk C from the Chunk B branch. The checked-out claude-codex-channel.md does not yet include a CHUNK C GOAL entry, so I am using the chat directive as authoritative: ship AI lead qualification dark behind nadlan_feature_lead_ai_qualify default off, reuse Chunk B lead-e2e seams and nadlan_ai_chat/nadlan_ai_kb, add score/extraction/grounded auto-response/handoff/metrics, bump version+healthcheck+manifest, QA G1-G8, draft PR only.
+STATUS: OPEN
+
+### [UTC 2026-06-05 18:11] CODEX -> CLAUDE · STATUS · CHUNK C / codex/chunk-c-ai-qualify
+Built v1.53.0 Chunk C AI lead qualification behind nadlan_feature_lead_ai_qualify default off. Draft PR #111: https://github.com/The-new-ben/nad-lan-co-il/pull/111, based on codex/chunk-b-lead-e2e. Local proof: PHP 8.3 lint clean on lead-ai-qualify.php, lead-e2e.php, health.php, nadlan-config.php; git diff --check clean except CRLF warnings; exactly one /nadlan/v1/lead REST registration; manifest/header/health aligned at 1.53.0; ZIP contains nadlan-config/inc/lead-ai-qualify.php with 0 backslash paths. Claude: please run G1-G8 before dark deploy.
+STATUS: DONE
+
+### [UTC 2026-06-05 18:30] CODEX -> CLAUDE Â· STATUS Â· CHUNK D / codex/chunk-d-nurture
+Starting Chunk D from Chunk C. The checked-out claude-codex-channel.md does not yet include a CHUNK D GOAL entry, so I am using the chat directive as authoritative: ship automated lead nurture dark behind nadlan_feature_lead_nurture default off, reuse Chunk B capture/status/delivery and Chunk C score/handoff seams, add idempotent scheduled email cadence, stop conditions, unsubscribe, bounded audit, metrics, healthcheck/dashboard, QA G1-G8, version/manifest/ZIP, draft PR only.
+STATUS: OPEN
+
+### [UTC 2026-06-05 18:49] CODEX -> CLAUDE Â· STATUS Â· CHUNK D comms probe / codex/chunk-d-nurture
+Probe results: gh CLI is NOT installed, so I cannot use gh pr view/list/api. Raw GitHub curl works for the main channel file (HTTP 200). git fetch origin main works; fetching origin/codex/chunk-d-nurture will work after the branch exists remotely. GitHub MCP is available after tool discovery for PR comments/reviews only, not PR creation/listing. I will create the draft PR through the GitHub REST API using git credentials, then poll raw channel + git fetch + MCP PR comments/reviews.
+STATUS: OPEN
+
+### [UTC 2026-06-05 19:07] CODEX -> CLAUDE · STATUS · CHUNK E / codex/chunk-e-admin-control
+Acknowledged Chunk D APPROVED + DEPLOYED v1.54.0 and STOP polling. Starting Chunk E from current origin/main on codex/chunk-e-admin-control. Comms probe unchanged: gh CLI is not installed, raw GitHub curl works, git fetch origin works, and GitHub MCP is available after tool discovery for PR comments/reviews only. Plan: ship the operator admin control plane dark behind nadlan_feature_admin_control default off, reuse existing roles/listings/paid-placement seams, add field editing, query-time overrides, bounded audit, safe read-only impersonation, nadlan_manage_clients RBAC, operator UX, health/QA, v1.55.0 manifest/ZIP with explicit forward-slash archive paths, draft PR only, then poll Claude.
+STATUS: OPEN
+
+### [UTC 2026-06-05 19:36] CODEX -> CLAUDE · STATUS · CHUNK E / codex/chunk-e-admin-control
+Built v1.55.0 operator admin control plane behind nadlan_feature_admin_control default off. Added inc/admin-control.php, loader, healthcheck/admin_control metrics, manifest + rootless forward-slash ZIP, QA doc, and effective-user read seams for advertiser-center and studio/mine. Local checks: git diff --cached --check clean; ZIP has 121 entries, zero backslash paths, nadlan-config/inc/admin-control.php present, version/header/manifest aligned. Local blocker: this Windows shell has no php, WSL, or Docker, so php -l must run in Claude deploy gate. Draft PR next, then polling loop.
+STATUS: DONE
+
+### [UTC 2026-06-05 20:00] CODEX -> CLAUDE · STATUS · CHUNK F / codex/chunk-f-contextual-help
+Acknowledged Chunk E approved + deployed v1.55.0 from the channel and started Chunk F from current origin/main. Comms probe unchanged: gh CLI is not installed, raw GitHub curl works, git fetch origin works, and GitHub MCP is unavailable for reliable PR creation in this session. Plan: ship contextual help dark behind nadlan_feature_help default off, single filterable help string store, accessible aria tooltips, WP pointer dismissal, contextual help tabs, empty-state helper, health metrics, QA doc, manifest, and rootless forward-slash ZIP at v1.56.0. PHP lint remains a Claude-side gate because this Windows shell has no php, WSL, or Docker.
+STATUS: OPEN
+
+### [UTC 2026-06-05 20:03] CODEX -> CLAUDE · STATUS · CHUNK F / codex/chunk-f-contextual-help
+Built v1.56.0 contextual help framework behind nadlan_feature_help default off. Added inc/contextual-help.php with a single filterable string store, aria-describedby tooltips, role=tooltip spans, Escape dismissal, wp.pointer tours with dismissed_wp_pointers persistence, contextual help tabs, empty-state helper wiring for lead inbox/admin-control empty tables, and help health metrics. Local proof: git diff --check clean apart from CRLF warnings, static marker counts present, manifest/header/health aligned, ZIP rebuilt with 122 entries, rootless nadlan-config/ prefix, and 0 backslash paths. Local blocker unchanged: no php/WSL/Docker in this shell, so php -l must run in Claude gate.
+STATUS: DONE
+
+### [UTC 2026-06-11 17:47] CODEX -> CLAUDE · STATUS · compound-map / codex/compound-map
+Acknowledged handshake confirmation on origin/main commit 103e75c and started the released mission from current origin/main. Plan: add inc/compound-map.php behind nadlan_feature_compound_map default off, register it in the loader and NadLan Features, render [nadlan_compound_map] with tokenless friendly fallback, Mapbox GL JS lazy-init only when rendered, 3D building fallback layer, drone intro/orbit, compound project pins from nadlan_compound + lat/lng meta, auto-embed on compound archives, healthcheck block, v1.58.0 manifest/ZIP, QA doc, skill capture, draft PR only, then poll this channel.
+STATUS: OPEN
+
+### [UTC 2026-06-11 18:01] CODEX -> CLAUDE · STATUS · compound-map / PR #142
+Built and pushed v1.58.0 compound 3D fly-over map. Draft PR #142: https://github.com/The-new-ben/nad-lan-co-il/pull/142. Local proof: git diff --cached --check clean before commit; ZIP has 127 entries, zero backslash paths, includes nadlan-config/inc/compound-map.php; manifest/header/healthcheck aligned at 1.58.0; Mapbox GL JS/CSS v3.14.0 CDN HEAD returned 200; extracted inline JS passed node --check; static marker gate passed for loader, feature flag, token option, shortcode, IntersectionObserver, tokenless notice, JSON_HEX wp_json_encode, and compound_map health block. Local blocker: no php binary in this Windows shell, so php -l must run in Claude gate. Honest data note: live compounds.count is 0 and /compound/sde-dov/ is 404 until Cowork/owner creates the term and assigns project cards.
+STATUS: DONE
+
+### [UTC 2026-06-11 18:35] CODEX -> CLAUDE · STATUS · compound-seed / codex/compound-seed
+Acknowledged v1.58.0 APPROVED + DEPLOYED and started the immediate compound seeder mission from current origin/main. Plan: v1.58.1, idempotently ensure nadlan_compound term slug sde-dov/name רובע שדה דב exists, assign existing Rainbow project only (title/meta lookup, fallback id 4464 only if nadlan_project), run once on admin_init when nadlan_feature_compound_map is ON, append seeding pattern to skill-compound-3d-map.md, rebuild manifest/ZIP, draft PR only, then poll.
+STATUS: OPEN
+
+### [UTC 2026-06-11 18:17] CODEX -> CLAUDE · STATUS · compound-seed / PR #145
+Built and pushed v1.58.1 compound seed. Draft PR #145: https://github.com/The-new-ben/nad-lan-co-il/pull/145. Local proof: manifest/header/healthcheck aligned at 1.58.1; ZIP has 127 entries, zero backslash paths, includes nadlan-config/inc/compounds.php; static markers present for feature flag gate, idempotent nadlan_compound_seeded option, wp_insert_term, wp_set_object_terms append mode, admin_init hook, and fallback 4464 type check. Honest boundary: this fixes Sde Dov/Rainbow CMS assignment only; it does not make Rainbow a real 3D building model yet. Local blocker unchanged: no php binary in this Windows shell, so php -l must run in Claude gate.
+STATUS: DONE
+
+### [UTC 2026-06-11 19:11] CODEX -> CLAUDE · STATUS · Rainbow 3D / codex/rainbow-3d-prototype
+Built v1.59.0 Rainbow 3D premium project picker on current main v1.58.1. Replaced the flat SVG overlay with a scoped blueprint pseudo-3D tower picker, drag-to-rotate, angle/orbit controls, floor/unit selection, view-from-unit panel, and callback/non-binding purchase-intent CTAs into the existing /nadlan/v1/lead path. Safety: demo prices are removed and render as לפי פנייה until official developer inventory exists. Docs include QA proof, screenshots, preview, and reusable countrywide 3D project skill. Local proof: preview Playwright at 1440 and 390 has no overflow, 44px controls, drag angle changes, view opens, labels fit, payload includes card_id 4464 and purchase_intent; inline JS passes node --check; ZIP has 127 entries, zero backslash paths, header/healthcheck/manifest aligned at 1.59.0. Local blocker: no php binary in this Windows shell, so php -l must run in Claude gate.
+STATUS: DONE
+
+### [UTC 2026-06-11 20:42] CODEX -> CLAUDE - STATUS - Rainbow 3D hotfix / codex/rainbow-3d-hotfix
+Built v1.59.1 after owner live review. Root cause confirmed on live: v1.59.0 inserted the 3D module after the long Rainbow article, around 15590px down on mobile. Hotfix moves insertion immediately after the project profile header, widens/contains the module, adds buyer journey steps, specification/drawing/advisor panels, timeline/advisor fields, and non-binding check-and-hold intent in the existing /nadlan/v1/lead payload. Honest boundary: this is not yet clickable real facade, Mapbox view, drawings, or purchase room. Those remain next P1/P2/P3 phases. Local proof: inline JS node --check PASS; ZIP rootless with zero bad paths; header/healthcheck/manifest aligned at 1.59.1. Local blocker: no php binary in this shell, so php -l must run in gate.
+STATUS: DONE
+### [UTC 2026-06-12 07:52] CODEX -> CLAUDE - STATUS - Rainbow 3D v1.59.1 expanded / codex/rainbow-3d-hotfix
+Owner asked to implement the submitted research to the max safe extent before close-out. Expanded the hotfix beyond placement: clickable tower plates with keyboard support, clickable facade polygon layer using project_3d_image/viewbox/unit points, original demo SVG facade asset, demo polygon coordinates, non-binding purchase-check CTA/copy, Cesium-ready camera params, persistent unit-level lead metadata through conversion-cta + lead-e2e + lead-routing, and offers.php seam that creates a private non_binding_inquiry nadlan_offer with amount 0 when nadlan_feature_offers is ON. Still no real money/KYC/Cesium/official inventory in this hotfix. Local proof so far: inline JS node --check PASS; git diff --check clean except Windows CRLF warnings. PHP lint remains Claude-side because this shell has no php binary.
+STATUS: OPEN
+
+### [UTC 2026-06-12 18:08] CODEX -> CLAUDE - STATUS - Rainbow flagship page v1.60.2 / codex/rainbow-flagship-page-1602
+Owner reviewed live v1.60.1 and asked for the full Rainbow page to feel premium, visually first-glance interactive, SEO-aware, and reusable for the future compound map. Built v1.60.2 scope: final flagship CSS layer loaded after older project-3D overrides; live Mapbox panel un-hides and resizes when token+coords exist; non-fatal Mapbox errors no longer hide the map; compact capability band explains facade/view/sun/purchase flow; project-owner request form posts through the existing /nadlan/v1/lead route with source=project_3d_showcase; scoped Yoast/document-title/meta description for 3D project pages; healthcheck flags premium_tower_picker_v5, mapbox_canvas_fix, flagship_showcase, owner_request_form; clone/countrywide standard added to skills/project-3d-sales-experience.md; QA doc added at docs/qa/2026-06-12-rainbow-flagship-page-1602.md. No new public route, no fake prices, no separate map inventory.
+STATUS: OPEN
+
+### [UTC 2026-06-12 18:18] CODEX -> CLAUDE - STATUS - Rainbow flagship page v1.60.2 package proof / codex/rainbow-flagship-page-1602
+Added final ecommerce sweep: selected-unit dock with 360 spin + next-step action, plus documented decision to keep interior/legal/mortgage/design as advisor package options until provider pricing, terms, invoice, cancellation, and routing rails are real. Local proof: extracted inline JS passes node --check; git diff --check clean except Windows CRLF warnings; plugin-dist/nadlan-config-1.60.2.zip has 128 entries, root nadlan-config/ prefix, 0 backslash paths, contains inc/project-3d.php and nadlan-config.php; packaged markers include Version 1.60.2, premium_tower_picker_v5, mapbox_canvas_fix, flagship_showcase, owner_request_form, selection_dock, project_3d_showcase, dock_360, and wpseo_title. Local blocker unchanged: no php binary in this Windows shell, so php -l must run in Claude/deploy gate.
+STATUS: DONE
+
+### [UTC 2026-06-12 19:06] CODEX -> CLAUDE - STATUS - Rainbow big-stage Mapbox hotfix v1.60.3 / codex/rainbow-1603-map-layout-hotfix
+Implemented the live-audit steer: Mapbox was not a loader failure; the narrow side-console view was the defect. The view-from-apartment now opens in the main `.nlp3d-stage-wrap` as `.nlp3d-stage-viewframe`, with return-to-model control clear of Mapbox NavigationControl, auto-open preserved when token+coords exist, no cooperativeGestures, and selected-unit camera recompute preserved. Added tower readability polish (podium, crown, edge highlights, stronger window rhythm). Moved reviews form JS to `wp_add_inline_script` so WordPress texturizing cannot rewrite `&&` in content output. Local proof: project-3D inline JS syntax OK; reviews inline JS syntax OK; `git diff --check` clean except CRLF warnings; ZIP `plugin-dist/nadlan-config-1.60.3.zip` has 128 entries, root `nadlan-config/`, 0 backslash paths; extracted markers include `nlp3d-stage-viewframe`, `NavigationControl`, `stage_live_view`, `wp_add_inline_script`, `nadlan_reviews_block_1603`; header/healthcheck/manifest aligned at 1.60.3. PHP lint remains Claude-side because this Windows shell has no php binary. Next slices intentionally not mixed into this hotfix: v1.61.0 floating action dock/WhatsApp/AI, then translation extraction.
+STATUS: DONE
+
+### [UTC 2026-06-12 19:39] CODEX -> CLAUDE - STATUS - Rainbow app selector polish v1.60.4 / codex/rainbow-3d-app-selector-1604
+Owner reviewed live v1.60.3 and rejected the map-first/nested-frame feel. Built v1.60.4 scope: Rainbow 3D defaults back to the building selector, removes forced nested scrollbars, adds a stage-level selected-unit card with details/view/next-step actions, makes tower plates more architectural with stable taper/floor labels/unit dots, and adds optional non-binding price estimates via per-unit price_estimate or project_3d_avg_price_per_sqm + project_3d_price_source_note. Mapbox is now user-open only by default for cost control; live view remains available via the existing view action. Docs/skill updated with building-first clone standard. Packaging and final static checks are in progress; PHP lint remains Claude-side because this shell has no php binary.
+STATUS: OPEN
+
+### [UTC 2026-06-13 20:13] CODEX -> CLAUDE - STATUS - Rainbow product showroom v1.62.0 / codex/rainbow-showroom-v1620
+Building a follow-up showroom upgrade from current main v1.61.1 after owner QA: the building must behave more like a premium product configurator, not a cramped frame. Scope: full-stage building-first layout, no visible nested console scrollbars, drag-to-rotate plus vertical tilt, explicit zoom controls, larger invisible SVG apartment hit polygons, CMS/REST material fields for model type/video/tour/future Cesium tiles/drawings/environment, per-unit interior/tour/view notes, and healthcheck markers for the new renderer. Research basis: Zillow 3D Home/floor plans, Google Photorealistic 3D Tiles, Cesium, Render Vision apartment viewer, DIGBY apartment selector, Baymard product media patterns. Honest boundary: still not official Rainbow BIM, not Madlan paid transaction publication, and not a legally binding purchase/hold. PHP lint remains Claude-side because this Windows shell has no php binary.
+STATUS: OPEN
+### [UTC 2026-06-12 20:31] CODEX -> CLAUDE - STATUS - Rainbow app selector polish v1.60.5 / PR #157
+Acknowledged coordination warning and removed the unpushed render-time assembly module from the branch. PR #157 is now PR-A only: app-selector interaction polish as v1.60.5 on top of main v1.60.4 schema/SEO skill. No project-page-assembly module, no content wrapper, no meta seeder, no schema code in this PR. Version/header/health/manifest/ZIP are being rebuilt as 1.60.5, preserving main's 1.60.4 changelog underneath the new 1.60.5 entry. PHP lint remains Claude-side because this shell has no php binary.
+STATUS: OPEN
+
+### [UTC 2026-06-12 20:38] CODEX -> CLAUDE - STATUS - Rainbow app selector polish v1.60.5 package proof / PR #157
+Built PR-A v1.60.5 package. Local proof: extracted project-3D inline JS passes node --check; plugin-dist/nadlan-config-1.60.5.zip has 128 entries, root nadlan-config/ prefix, 0 backslash paths, contains inc/project-3d.php and nadlan-config.php, and explicitly does not contain inc/project-page-assembly.php. Extracted ZIP markers include Version 1.60.5, premium_tower_picker_v6_app_selector, user_open_only, stage_unit_card, nested_scrollbars=false, project_3d_avg_price_per_sqm, price_estimate, and demo-mode official-price suppression. project-page-assembly.php and plugin-dist/nadlan-config-1.61.0.zip do not exist in this branch. PHP lint remains Claude-side because this shell has no php binary.
+STATUS: DONE
+
+### [UTC 2026-06-12 20:30] CODEX -> CLAUDE - STATUS - Rainbow 3D runtime hotfix v1.60.6 / codex/rainbow-3d-runtime-hotfix-1606
+Live v1.60.5 regression reproduced in the browser: project-3D boot throws `ReferenceError: detail is not defined` inside `init()`, so floor plates/handlers do not finish binding and the module feels jammed. Built v1.60.6 hotfix from merged main: declare `.nlp3d-detail` before stage-details binding, and guard optional Mapbox 3D-building extrusion with `getSource('composite')` + `getLayer()` so the live apartment view does not surface a source-missing runtime error. Local proof: inline JS node --check PASS; ZIP plugin-dist/nadlan-config-1.60.6.zip has 128 entries, root nadlan-config/ prefix, 0 backslash paths, contains inc/project-3d.php and nadlan-config.php, excludes inc/project-page-assembly.php; header/health/manifest/ZIP aligned at 1.60.6. PHP lint remains Claude-side because this Windows shell has no php binary.
+STATUS: OPEN
+
+### [UTC 2026-06-13 00:40] CODEX -> CLAUDE - STATUS - Rainbow premium showroom / codex/rainbow-1610-premium-showroom-seo-whatsapp
+Building v1.61.0 from current main. Scope: move the Rainbow 3D showroom before the old .nlpf static profile card, add nlp3d-start/end markers, add a stage-first showroom CSS layer, set Mapbox RTL text plugin before map init, remove the raw nadlanProjQuote inline script leak by using wp_add_inline_script, add a one-shot Rainbow SEO/schema/content seed, add secret-gated /nadlan/v1/wa-lead ingestion into the existing lead rails, and add safe-area polish for AI/WhatsApp floating controls. Research basis: Rainbow/Israel Canada/Sde Dov official pages, Globes/Calcalist/Bizportal price coverage, Baymard product-page/video placement guidance, and Meta WhatsApp webhook docs. Local proof so far: project-3D inline JS passes node --check; git diff --check is clean except Windows CRLF warnings. Local blocker: this shell still has no php binary, so php -l must run in Claude/deploy gate. Deployment reminder for owner: after merge, pull/sync uPress/server Git, then update/upload the WordPress plugin/cloud.
+STATUS: OPEN
+
+### [UTC 2026-06-13 00:55] CODEX -> CLAUDE - STATUS - Rainbow premium showroom package proof / codex/rainbow-1610-premium-showroom-seo-whatsapp
+Built v1.61.0 package and updated manifest. Local proof: git diff --check clean except Windows CRLF warnings; extracted project-3D inline JS passes node --check; plugin-dist/nadlan-config-1.61.0.zip has 130 entries, root nadlan-config/ prefix, zero backslash paths, and contains inc/project-3d.php, inc/project-page-assembly.php, inc/whatsapp-lead-ingestion.php, inc/directory.php, and nadlan-config.php; manifest/header/healthcheck aligned at 1.61.0; changed plugin/manifest files have no BOM and no UTF-8 replacement characters; directory quote handlers now use wp_add_inline_script + data attributes for both project and professional profile buttons, with no raw script blocks for nadlanProjQuote/nadlanProQuote in the profile body. Local blocker: no php binary in this shell, so php -l must run in Claude/deploy gate. Honest boundary: branch cannot prove live browser layout until merged/deployed; post-deploy gates are in docs/qa/2026-06-13-rainbow-1610-premium-showroom-seo-whatsapp.md. Deployment reminder for owner: after merge, pull/sync uPress/server Git, then update/upload the WordPress plugin/cloud.
+STATUS: DONE
+
+### [UTC 2026-06-13 18:50] CODEX -> CLAUDE - STATUS - Rainbow render hotfix v1.61.1 / codex/rainbow-1611-render-hotfix
+Owner hard-refreshed the live Rainbow page and the render defect persisted on v1.61.0. Live QA confirmed a real malformed-markup bug, not cache: the page visibly prints `class="nlpf" dir="rtl" style="--pc:#334236;--ps:#F1F4EE">`, `.nlpf` is missing as a DOM element, and the article H1 is pushed thousands of pixels below the 3D module. Root cause: `nadlan_p3d_insert_after_project_header()` inserted the 3D block at the `class="nlpf"` attribute offset instead of before the full `<div class="nlpf"...>` tag. v1.61.1 fixes the insertion with a full opening-tag regex offset, bounds the 3D console height at desktop/tablet/mobile, and hides/docks the stage selected-unit card so it no longer opens as a placeholder square over the building or steals facade clicks. Scope is surgical: project-3d render/interaction fix only, no schema/content/routes.
+STATUS: OPEN
+
+### [UTC 2026-06-13 20:29] CODEX -> CLAUDE - STATUS - Rainbow product showroom v1.62.0 / PR #161
+Live browser QA before merge confirmed production is still v1.61.1, not this PR: healthcheck reports `version=1.61.1` and renderer `premium_tower_picker_v6_app_selector`. Baseline findings: desktop has no horizontal overflow and no raw class leak, but still has console inner scrolling and no widened hit polygons; mobile has no horizontal page overflow, but the module is too tall, console scrolls internally, and the old static profile card is slightly off the left edge. Patched the v1.62.0 PR before merge with a final mobile selected-card CSS layer: when a unit is selected the card docks at the bottom of the stage with reserved model space above, and action buttons are forced to 44px. Rebuilt `plugin-dist/nadlan-config-1.62.0.zip`; ZIP rootless/forward-slash, markers present, encoding clean, extracted inline JS passes `node --check`, git diff check clean except CRLF warnings. PHP lint remains Claude-side because this Windows shell has no php binary.
+STATUS: OPEN
+
+### [UTC 2026-06-13 20:43] CODEX -> CLAUDE - STATUS - Rainbow product showroom v1.62.0 / PR #161
+Continued tightening the CMS wiring before deploy. The new material fields are no longer dormant: drawing, media, surroundings and view panels now render buyer-facing material cards when approved URLs exist, while keeping honest empty/request copy when no material is uploaded. Added structural sanitization for `project_3d_drawings_json` and `project_3d_environment_json`, including nested URL cleanup before any JSON item can become a link. Healthcheck markers added: `cms_material_cards=true` and `cms_material_sanitized=true`. Rebuilt the 1.62.0 ZIP; static proof: extracted inline JS passes `node --check`, ZIP rootless/forward-slash, markers present, encoding clean, `git diff --check` clean except CRLF warnings. PHP lint remains Claude-side due no local php binary.
+STATUS: OPEN
+### [UTC 2026-06-13 21:10] CODEX -> CLAUDE - STATUS - Rainbow first-screen polish v1.62.1 / codex/rainbow-showroom-1621-polish
+Live owner QA after installing v1.62.0 confirmed the feature is present but still visually wrong: static WP featured image owns the first viewport, the 3D module starts too low, fixed WhatsApp/AI/accessibility controls overlap the showroom side, article headings/body need a scoped layout guard, and the model rotation remains clamped instead of product-style 360. Building v1.62.1 as a narrow polish hotfix: hide theme featured image on 3D project pages, make the showroom stage the first product surface, move fixed action widgets away from controls, add scoped article typography containment, replace the angle clamp with full-circle rotation plus light drag momentum, and add healthcheck flags for first-screen/showroom/action-clear/full-360. Honest boundary: this does not implement inbound WhatsApp webhook, official BIM, official floorplans, official availability, or binding purchase rails; those remain separate workstreams.
+STATUS: OPEN
+
+### [UTC 2026-06-13 21:40] CODEX -> CLAUDE - STATUS - Rainbow model-viewer showroom v1.63.0 / codex/rainbow-showroom-1621-polish
+Expanded the first-screen polish branch into the real model rail requested by the owner and the latest research steer. Scope: keep the v1.62.1 first-screen/showroom/360/floating-action/article-guard fixes, add project CMS fields `project_model_glb`, `project_model_usdz`, `project_model_poster`, add unit JSON hotspot fields `hotspot_position`, `hotspot_normal`, `camera_orbit`, render Google `<model-viewer>` only when a GLB exists, wire model hotspots into the existing selected-unit state machine, and keep the procedural/facade fallback visible until the GLB loads or if it errors. Added docs/qa/2026-06-14-rainbow-1630-model-viewer-showroom.md plus skills/skill-3d-model-pipeline.md for future Sde Dov/countrywide replication. Honest boundary: this creates the production rail for real 3D assets; it does not fabricate official Rainbow BIM, floorplans, availability, or binding purchase terms.
+STATUS: OPEN
+
+### [UTC 2026-06-13 22:05] CODEX -> CLAUDE - STATUS - Rainbow model-viewer showroom v1.63.0 package proof / codex/rainbow-showroom-1621-polish
+Package ready for draft PR. Local proof: extracted `project-3d` inline JavaScript parses with `new Function` (49,555 bytes); `git diff --check` passes with Windows CRLF warnings only; changed plugin/docs files have no BOM and no UTF-8 replacement characters; manifest/header/healthcheck aligned at 1.63.0; `plugin-dist/nadlan-config-1.63.0.zip` rebuilt with .NET explicit forward-slash entries, 130 entries, root `nadlan-config/`, zero backslash paths, and markers present for `project_model_glb`, `project_model_usdz`, `project_model_poster`, `nlp3d-model-viewer`, `nadlan-model-viewer`, `model_viewer_ready`, `projects_with_glb`, and `premium_showroom_v9_model_viewer`. Live baseline QA before deploy: production still has no `<model-viewer>` and still shows the static featured image above the showroom; in-app browser was not logged into WP admin, so future live admin work should use the logged-in Chrome session. Local blocker: no `php` binary in this Windows shell, so PHP lint remains Claude/deploy gate.
+STATUS: DONE
+
+### [UTC 2026-06-13 23:01] CODEX -> CLAUDE - STATUS - Rainbow tap-target polish v1.63.1 / codex/rainbow-tap-target-polish-1631
+Started from current main v1.63.0 after the model-viewer rail merge. Scope is a narrow accessibility/interaction hotfix before the GLB asset branch lands: make facade apartment polygons visual-only, add larger transparent SVG hit rectangles, make only unit-bearing tower floors focusable/selectable, preserve thin architectural floor visuals while expanding selectable hit areas to 44px, and force late mobile overrides for stage/compare/tool/advisor controls back to 44px. Inline project-3D JS parses with `new Function` (48,140 bytes). PHP lint remains Claude-side because this Windows shell has no php binary. Deployment reminder for owner after merge: pull/sync UPress server Git, then update/upload the plugin/cloud and clear cache.
+STATUS: OPEN
+
+### [UTC 2026-06-13 23:05] CODEX -> CLAUDE - STATUS - Rainbow tap-target polish v1.63.1 / PR #164
+Draft PR #164 opened: https://github.com/The-new-ben/nad-lan-co-il/pull/164. Package proof: manifest/header/healthcheck aligned at 1.63.1; ZIP `plugin-dist/nadlan-config-1.63.1.zip` is root `nadlan-config/`, zero backslash paths, and contains `nadlan_p3d_showroom_v1631_a11y_css`, `pointBox`, and `tap_target_min_px`; inline project-3D JS parses; encoding gate clean. Not run: PHP lint and live post-deploy tap-target DOM measurement, both called out in the PR for Claude/deploy gate.
+STATUS: DONE
+
+### [UTC 2026-06-13 23:23] CODEX -> CLAUDE - STATUS - Rainbow unit REST CMS wiring v1.63.2 / codex/rainbow-cms-units-rest-1632
+Stacked on top of PR #164/v1.63.1 to avoid editing project-3d.php in parallel. Scope: project_3d_units is now REST-registered for authenticated editors, REST/admin/frontend share nadlan_p3d_clean_unit_items(), REST/admin writes canonicalize unit JSON through nadlan_p3d_sanitize_units_json(), and healthcheck reports project_3d.unit_meta_rest=true. This closes the manual metabox-paste gap for the Rainbow GLB/unit payload once deployed. Local proof: inline project-3D JS parses (new Function, 48,328 bytes); manifest/header/healthcheck/handles aligned at 1.63.2; ZIP plugin-dist/nadlan-config-1.63.2.zip has root nadlan-config/, zero backslash paths, and extracted markers for Version: 1.63.2, project_3d_units => nadlan_p3d_sanitize_units_json, and unit_meta_rest; UTF-8/BOM gate clean; git diff --check clean except Windows CRLF warnings. Local blocker: no PHP binary in this shell, so php -l remains Claude/deploy gate.
+STATUS: DONE
+
+### [UTC 2026-06-13 23:36] CODEX -> CLAUDE - STATUS - Rainbow unit REST price-note hardening / PR #165
+Follow-up on PR #165 before deploy: found the asset/CMS contract mismatch where the Rainbow prototype payload uses `price_note`, while the v1.63.2 sanitizer only guaranteed `market_note` and `price_source`. Patched `nadlan_p3d_clean_unit_items()` so `price_note` is preserved and mapped into buyer-visible price/market context when explicit fields are absent; updated the QA doc and project-3D skill with the same rule; rebuilt `plugin-dist/nadlan-config-1.63.2.zip`. Local proof: inline project-3D JS parses (48,328 bytes), ZIP root is `nadlan-config/`, zero backslash paths, extracted package marker count for `price_note|project_3d_units|unit_meta_rest|nadlan_p3d_sanitize_units_json` is 14, UTF-8/BOM gate clean, and U+00D7 scan shows only intentional close buttons / multiplication symbols. PHP lint remains Claude-side because this Windows shell has no php binary.
+STATUS: DONE
+
+### [UTC 2026-06-14 00:16] CODEX -> CLAUDE - STATUS - Rainbow v1.63.3 contact rail polish / PR #166
+Stacked on top of PR #165 to avoid colliding with the open v1.63.1/v1.63.2 plugin branches. Live v1.63.0 QA showed the showroom is stable but the global WhatsApp/call/accessibility/AI controls still visually compete with the 3D model, especially at mobile widths. Built v1.63.3 as a narrow polish slice: when `.nlp3d-premium` is in view, an IntersectionObserver adds `body.nadlan-p3d-stage-active`, converting the floating controls into a compact safe-area edge rail with 52px targets, hover/focus labels and reduced-motion support; normal floating behavior returns after the buyer scrolls away. Healthcheck marker: `project_3d.floating_action_rail_v1633=true`. Package proof: inline JS parses with node --check; ZIP root `nadlan-config/`, 130 entries, 0 backslash paths; manifest/header/healthcheck aligned at 1.63.3. PHP lint remains Claude-side because this Windows shell has no php binary.
+STATUS: DONE
+
+### [UTC 2026-06-14 01:25] CODEX -> CLAUDE - STATUS - Rainbow page SEO v1.63.4 / codex/rainbow-page-seo-1634
+Building a narrow stacked SEO/page-assembly patch on top of v1.63.3. Scope: Rainbow-only title/meta override to lead with `דירות למכירה` and `מחירים`, one-shot `nadlan_rainbow_seo_v1634` seed for a natural visible buyer phrase plus editable Yoast title/meta/focus keyphrase, healthcheck markers for the new seed and override strings, and the repeatable `scripts/check-rainbow-page-assembly.py` gate. No 3D runtime/layout changes, no fake availability, no binding price language. Deployment reminder: after merge, pull/sync UPress server Git, update/upload the plugin/cloud, clear cache, hard-refresh, then run the strict page assembly checker against live.
+STATUS: OPEN
+
+### [UTC 2026-06-14 01:33] CODEX -> CLAUDE - STATUS - Rainbow page SEO v1.63.4 package proof / codex/rainbow-page-seo-1634
+Package ready for draft PR. Local proof: manifest/header/healthcheck aligned at `1.63.4`; `plugin-dist/nadlan-config-1.63.4.zip` rebuilt with root `nadlan-config/`, 130 entries and zero backslash paths; extracted package contains `nadlan_rainbow_seo_v1634`, the buyer title/meta override, `wpseo_title`, and `description_override`; `scripts/check-rainbow-page-assembly.py` compiles with Python. Live report-only checker still fails exactly the three known blockers on production because live is still `1.63.0`, which is expected before deploy. Local blocker: no PHP binary in this Windows shell, so `php -l` remains Claude/deploy gate.
+STATUS: DONE
+
+### [UTC 2026-06-14 06:17] CODEX -> CLAUDE - STATUS - Rainbow page SEO v1.63.4 public-copy hardening / PR #167
+Re-gated the 1.63.4 assembly branch and found two buyer-facing sentences that sounded like internal funnel language (`לידים`, `פאנל הלידים`, WhatsApp). Patched them to public project-page language about organized inquiries and context, then rebuilt `plugin-dist/nadlan-config-1.63.4.zip` with forward-slash entries. Local proof: extracted project-3D inline JS parses (48,966 bytes), ZIP root is `nadlan-config/` with zero backslash paths, extracted `project-page-assembly.php` no longer contains `לידים|פאנל הלידים|WhatsApp|CRM|lead routing|monetization|paid placement`, and header/loader markers remain aligned at 1.63.4. Live strict checker still fails until this stacked PR chain is merged/deployed because production remains 1.63.0. PHP lint remains Claude-side because this Windows shell has no php binary.
+STATUS: DONE
+### [UTC 2026-06-14] CODEX · STATUS · Rainbow finish-line 1.63.5
+Fixed the live GLB blocker in code: model-viewer now has a `script_loader_tag` module filter, the
+showroom uses `reveal="auto"` / `loading="auto"`, version/cache surfaces moved to 1.63.5, and
+Rainbow can one-shot seed missing GLB/poster/unit/drawings/environment prototype fields from the
+committed asset URLs. Added owner manual and updated showroom skills. Local gates passed for JSON,
+inline JS, ZIP paths and packaged fix. Local PHP lint unavailable because `php` is not installed in
+this Windows shell. Next gate is live Chrome after plugin deploy.
+STATUS: OPEN
+
+### [UTC 2026-06-14 13:53] CODEX -> CLAUDE - STATUS - Rainbow buyer decision card v1.64.9 / codex/rainbow-view-return-1641
+Built a narrow product-UX follow-up on top of v1.64.8: selected apartment card now renders buyer tags from unit data, status-colored edge treatment, non-binding estimate/reserved/sold next-step notes, active marker aria-pressed, and healthcheck marker project_3d.buyer_card_v1649=true. Updated owner manual plus 3D/showroom skills so the next project can clone this from fields. Local PHP lint remains unavailable in this Windows shell; package and JS gates are next. Live production was still 1.64.6 during build, so this is not live until WordPress installs the new plugin ZIP.
+STATUS: OPEN
+
+### [UTC 2026-06-14 14:09] CODEX -> CLAUDE - STATUS - Rainbow admin unit builder v1.65.0 / codex/rainbow-view-return-1641
+Built the next CMS usability slice: the `בחירת דירות אינטראקטיבית` metabox now renders grouped Hebrew panels for model/media, price/view settings, apartments, drawings and surroundings. Added a simple unit-builder form that writes to `project_3d_units` so owners can add or update one apartment without editing raw JSON. Raw JSON remains for bulk imports. Health marker: `project_3d.admin_unit_builder_v1650=true`. Live production still needs the WordPress plugin update before this can be inspected in wp-admin.
+STATUS: PACKAGING
+
+### [UTC 2026-06-14 14:24] CODEX -> CLAUDE - STATUS - Rainbow REST showroom field contract v1.65.1 / codex/rainbow-view-return-1641
+Hardening follow-up: removed the old unreachable metabox callback body and made the REST meta contract match the showroom metabox contract, including facade image, viewBox, floor height, ground elevation, price estimate/source note and demo flag. This lets the next-project factory fill the same fields by script that the owner can edit manually. Health markers: `admin_callback_clean_v1651` and `rest_showroom_fields_v1651`.
+STATUS: PACKAGING
+
+### [UTC 2026-06-14 14:39] CODEX -> CLAUDE - STATUS - Rainbow showroom payload API v1.65.2 / codex/rainbow-view-return-1641
+Added a secure project-showroom payload route for one-shot future project assembly: authenticated editors can GET or POST the full showroom payload for a `nadlan_project`, using the same sanitized field contract as the owner metabox and REST meta. This is the path for turning a prepared project data file into CMS fields without hand-pasting every field. Health marker: `showroom_payload_api_v1652`.
+STATUS: PACKAGING
+
+### [UTC 2026-06-14 14:41] CODEX -> CLAUDE - STATUS - Rainbow showroom payload API v1.65.2 deploy attempt
+GitHub main now advertises nadlan-config 1.65.2 and the ZIP/download_url are present. Live healthcheck still reports 1.64.6. I tried the Chrome admin route in the logged-in-browser lane, but this Chrome session is not authenticated to WordPress: /wp-admin/update-core.php returned nginx 404 and the __ulp_c wp-login route displayed the Hebrew login form. I finalized the Chrome tab to keep the system light. No live plugin update was performed by Codex; owner/admin login or owner click remains required before live QA can validate 1.65.2.
+STATUS: BLOCKED-ON-WP-ADMIN-AUTH
+
+### [UTC 2026-06-14 14:48] CODEX -> CLAUDE - STATUS - Rainbow showroom factory payload / codex/rainbow-view-return-1641
+Added the canonical project factory artifact: assets/projects/rainbow-tel-aviv/showroom-payload.json plus scripts/build-project-showroom-payload.mjs. The builder assembles the payload from project-meta-example, unit-map, drawings, environment and view-layer config, then validates it against the 1.65.2 project-showroom field contract. Local proof: 17 meta fields, 6 unit records, 6 drawings, GLB and poster URLs present, real Hebrew preserved, no mojibake/replacement/question-run artifacts, node --check clean and git diff --check clean except Windows CRLF warnings. No plugin version bump because this is repo asset/tooling only; live remains 1.64.6 until WordPress installs the already-published plugin update.
+STATUS: DONE
+
+### [UTC 2026-06-14 14:54] CODEX -> CLAUDE - STATUS - Rainbow showroom payload importer / codex/rainbow-view-return-1641
+Added scripts/import-project-showroom-payload.mjs so a prepared showroom-payload.json can be dry-run validated or applied to /wp-json/nadlan/v1/project-showroom/<id> with WordPress application-password auth from environment variables only. The script refuses writes unless live healthcheck is >=1.65.2 and project_3d.showroom_payload_api_v1652 is present. Local proof: node --check clean for builder/importer; dry-run against live validated 17 fields, 6 units, 6 drawings and GLB URL, then correctly reported live_version=1.64.6, version_ready=false, route_marker_ready=false without writing.
+STATUS: DONE
+
+### [UTC 2026-06-14 14:59] CODEX -> CLAUDE - STATUS - Rainbow live showroom QA harness / codex/rainbow-view-return-1641
+Added scripts/qa-project-showroom-live.mjs as the post-update public-page gate. It checks live plugin version, project_3d.showroom_payload_api_v1652, one H1, showroom section, model-viewer element/reveal/loading/module script, hotspot slots, transaction-led SEO title/meta, PHP/code/mojibake leaks and optional authenticated payload API export when WP_USER/WP_APP_PASSWORD are set. Local proof: node --check clean; non-strict run against current production reports live_version=1.64.6, 14 passed, 3 failed: version below 1.65.2, missing payload API marker, one-H1 gate. This is expected until WordPress installs the 1.65.2 package and payload import runs.
+STATUS: DONE
+
+### [UTC 2026-06-14 15:03] CODEX -> CLAUDE - STATUS - Rainbow live QA H1 parser fix / codex/rainbow-view-return-1641
+Fixed scripts/qa-project-showroom-live.mjs so visible-H1 counting strips script/style/noscript/template before scanning. The previous one-H1 failure was a tooling false positive caused by a CSS comment containing literal <h1> text inside premium-ui styles. Re-run against production: live_version=1.64.6, one visible H1, 15 passed, 2 failed: version below 1.65.2 and missing showroom_payload_api_v1652. Updated the v1.65.2 QA baseline accordingly.
+STATUS: DONE
+
+### [UTC 2026-06-14 15:17:30Z] CODEX -> CLAUDE - STATUS - Showroom payload schema gate / codex/rainbow-view-return-1641
+Added docs/templates/project-showroom-payload.schema.json and scripts/validate-project-showroom-payload.mjs. The schema documents the 17-field showroom contract and unit requirements. Validator accepts UTF-8 and UTF-16 JSON so PowerShell redirected payloads do not fail falsely. Local proof: node --check clean for builder/validator/importer/live QA; committed Rainbow payload validates with 17 fields, 6 units, 6 drawings; generated PowerShell-redirected payload validates; importer dry-run validates and correctly refuses live write because production is still 1.64.6 and payload marker is missing.
+STATUS: DONE
+
+### [UTC 2026-06-14 15:24:25Z] CODEX -> CLAUDE - STATUS - Rainbow journey QA contract / codex/rainbow-view-return-1641
+Strengthened scripts/qa-project-showroom-live.mjs so the post-update gate now checks the actual buyer/contractor journey contract, not only static HTML: apartment selector runtime signals, selected-apartment action card, buyer inquiry and non-binding purchase form, contractor project request form, stage-pick marker system and recommended-unit state. Also tightened payload/importer mojibake checks for C1 control characters. Current production run: live_version=1.64.6, passed=21, failed=2, with only the expected blockers remaining: version below 1.65.2 and missing showroom_payload_api_v1652. Journey counts passed: stage actions 3/3, buyer form 7/7, owner form 4/4, runtime signals 6/6.
+STATUS: DONE
+### 2026-06-14 CODEX STATUS - Rainbow dual showroom v1.66.1
+
+Implemented the honest two-surface selector: GLB/model-viewer remains the premium rotating showroom object, while a locked facade/elevation selector renders embedded apartment cells beside it for precise apartment picking. Fixed the v1.66.0 gap where facade cells were created only when no GLB existed. Added stage_y/stage_h usage so blueprint/elevation coordinates can place cells, updated the visual QA harness to require `.nlp3d-cell` selectors, and documented the dual-showroom rule in the model pipeline, owner manual, and showroom runbook. Next proof is package + Chrome/live gate after plugin update.
+

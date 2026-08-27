@@ -1,0 +1,41 @@
+{
+  "showroom": {
+    "wordpressSource": "plugins/nadlan-config/inc/project-3d.php plus its enqueued showroom stylesheet and script",
+    "replaceNotLayer": [
+      "Stop loading the old dark teal showroom skin on project pages before loading the premium stylesheet.",
+      "Remove inline duplicate card styling from the PHP renderer once the new classes are emitted.",
+      "Keep the existing 1.69.32 selection input handler, but replace the visual structure around it."
+    ],
+    "classes": [
+      "nl3d-shell",
+      "nl3d-header",
+      "nl3d-stage",
+      "nl3d-building",
+      "nl3d-unit-pin",
+      "nl3d-unit-rail",
+      "nl3d-selected-panel",
+      "nl3d-contact-strip"
+    ]
+  },
+  "projectsArchive": {
+    "wordpressSource": "plugins/nadlan-config/inc/directory.php and plugins/nadlan-config/inc/directory-assets.php",
+    "classes": [
+      "nl3d-projects",
+      "nl3d-project-card",
+      "nl3d-project-media",
+      "nl3d-project-facts",
+      "nl3d-project-cta"
+    ]
+  },
+  "homepage": {
+    "wordpressSource": "theme front page template or plugin shortcode if the current home is plugin-driven",
+    "classes": [
+      "nl3d-home",
+      "nl3d-home-hero",
+      "nl3d-proof-row",
+      "nl3d-home-projects",
+      "nl3d-owner-path"
+    ]
+  }
+}
+

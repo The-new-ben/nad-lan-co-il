@@ -1,0 +1,197 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/* Self-hosted fonts (Hebrew + English) */
+@import "@fontsource/frank-ruhl-libre/400.css";
+@import "@fontsource/frank-ruhl-libre/500.css";
+@import "@fontsource/frank-ruhl-libre/700.css";
+@import "@fontsource/heebo/400.css";
+@import "@fontsource/heebo/500.css";
+@import "@fontsource/heebo/700.css";
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/500.css";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/inter-tight/400.css";
+@import "@fontsource/inter-tight/500.css";
+@import "@fontsource/inter-tight/600.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Nadlan3D Cream Luxury design system.
+ *
+ * Base: cream #FAF7F1, ink #1B1A17, muted gold #9C7A3C, terracotta #C2563A.
+ * Hairlines (1px), generous whitespace, editorial serif headings.
+ * Mobile-first, RTL-first. HE default uses Frank Ruhl Libre + Heebo;
+ * EN LTR brand surfaces use Fraunces + Inter Tight.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-gold: var(--gold);
+  --color-terracotta: var(--terracotta);
+  --color-sage: var(--sage);
+
+  --font-serif-he: "Frank Ruhl Libre", "Frank Ruehl CLM", Georgia, serif;
+  --font-sans-he: "Heebo", "Assistant", system-ui, sans-serif;
+  --font-serif-en: "Fraunces", "Frank Ruhl Libre", Georgia, serif;
+  --font-sans-en: "Inter Tight", "Heebo", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Brand tokens — Cream Luxury */
+  --cream: oklch(0.972 0.012 85);
+  --ink: oklch(0.215 0.012 60);
+  --gold: oklch(0.595 0.085 75);
+  --terracotta: oklch(0.585 0.145 35);
+  --sage: oklch(0.625 0.045 130);
+
+  /* Semantic */
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card: oklch(0.985 0.008 85);
+  --card-foreground: var(--ink);
+  --popover: oklch(0.985 0.008 85);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--cream);
+  --secondary: oklch(0.935 0.018 80);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.935 0.018 80);
+  --muted-foreground: oklch(0.455 0.018 60);
+  --accent: var(--terracotta);
+  --accent-foreground: oklch(0.985 0.008 85);
+  --destructive: oklch(0.55 0.21 28);
+  --destructive-foreground: oklch(0.985 0.008 85);
+  --border: oklch(0.875 0.018 75);
+  --input: oklch(0.875 0.018 75);
+  --ring: var(--gold);
+}
+
+.dark {
+  --background: oklch(0.18 0.008 60);
+  --foreground: var(--cream);
+  --card: oklch(0.225 0.012 60);
+  --card-foreground: var(--cream);
+  --popover: oklch(0.225 0.012 60);
+  --popover-foreground: var(--cream);
+  --primary: var(--cream);
+  --primary-foreground: var(--ink);
+  --secondary: oklch(0.285 0.012 60);
+  --secondary-foreground: var(--cream);
+  --muted: oklch(0.285 0.012 60);
+  --muted-foreground: oklch(0.72 0.018 70);
+  --accent: var(--terracotta);
+  --accent-foreground: var(--cream);
+  --destructive: oklch(0.65 0.21 28);
+  --destructive-foreground: var(--cream);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: var(--gold);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans-he);
+  }
+
+  html[lang="en"] {
+    font-family: var(--font-sans-en);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "ss01", "kern";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif-he);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  html[lang="en"] h1,
+  html[lang="en"] h2,
+  html[lang="en"] h3,
+  html[lang="en"] h4 {
+    font-family: var(--font-serif-en);
+  }
+
+  [dir="rtl"] {
+    text-align: right;
+  }
+}
+
+@utility hairline {
+  border: 1px solid var(--color-border);
+}
+
+@utility hairline-b {
+  border-bottom: 1px solid var(--color-border);
+}
+
+@utility hairline-t {
+  border-top: 1px solid var(--color-border);
+}
+
+@utility watermark-ai {
+  position: relative;
+}
+@utility watermark-ai-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  font-family: var(--font-sans-he);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: oklch(0.4 0.05 60 / 0.55);
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0,
+    transparent 80px,
+    oklch(0.55 0.08 60 / 0.04) 80px,
+    oklch(0.55 0.08 60 / 0.04) 160px
+  );
+}
+

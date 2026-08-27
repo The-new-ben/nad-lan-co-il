@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "nadlan3d-mcp",
+      "version": "0.1.0",
+      "title": "NadLan3D Real Estate MCP"
+    },
+    "tools": [
+      {
+        "name": "list_projects",
+        "title": "List real-estate projects",
+        "description": "List NadLan3D real-estate projects, ranked by paid tier, completeness, engagement, freshness, and city affinity. Optionally filter by city (Hebrew or English) or status.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "Filter by city name (Hebrew or English), case-insensitive substring match."
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "pre-sale",
+                "selling",
+                "sold-out",
+                "planning"
+              ],
+              "description": "Filter by project status."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "description": "Max results (default 20)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_project",
+        "title": "Get real-estate project by slug",
+        "description": "Return the full NadLan3D project record for a given slug, including units, pricing, and asset state.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Project slug, e.g. 'rainbow-tlv'."
+            }
+          },
+          "required": [
+            "slug"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "search_units",
+        "title": "Search apartment units",
+        "description": "Search available apartment units across all NadLan3D projects, with optional filters for rooms, price, and city.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "rooms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "description": "Exact room count."
+            },
+            "maxPriceILS": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Maximum price in ILS."
+            },
+            "minPriceILS": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Minimum price in ILS."
+            },
+            "city": {
+              "type": "string",
+              "description": "City name (Hebrew or English), substring match."
+            },
+            "onlyAvailable": {
+              "type": "boolean",
+              "description": "If true, return only units with status 'available' (default true)."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "description": "Max results (default 30)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
+
