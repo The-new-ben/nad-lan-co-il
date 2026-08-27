@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "archive_id": "lovable-nadlan-2026-08-27",
-  "generated_at": "2026-08-27T18:42:49.9205543+03:00",
+  "generated_at": "2026-08-27T18:44:05.9849867+03:00",
   "repository": {
     "slug": "The-new-ben/nad-lan-co-il",
     "visibility": "private"
@@ -14488,9 +14488,9 @@
       "source_url": null,
       "artifact_type": "document_or_data",
       "mime_type": "text/markdown",
-      "sha256": "9dece0952e37698a4a88add1dfa81f823915cd70fa235812333b889a4cb577f1",
-      "size_bytes": 12080,
-      "captured_at": "2026-08-27T18:38:08.4379888+03:00",
+      "sha256": "3954bea35bf6ea793910ae27993e111694b5eecd7127ca8c7d68c155d48b75e8",
+      "size_bytes": 12078,
+      "captured_at": "2026-08-27T18:43:53.2466385+03:00",
       "capture_method": "archive_authoring",
       "visibility": "private_repository",
       "publication_status": "not_applicable",
