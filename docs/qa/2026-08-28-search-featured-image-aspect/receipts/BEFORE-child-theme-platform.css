@@ -443,16 +443,3 @@ body.admin-bar .nlpc-site-header{top:32px;}
 /* Homepage Showcase Fixes */
 .nlpc-home .nlux-showcase img { aspect-ratio: 4/3; object-fit: cover; width: 100%; height: auto; display: block; }
 .nlpc-home .nlux-showcase { overflow-x: auto; padding-bottom: 16px; scroll-padding-inline: 16px; }
-
-/* Search results: keep project plates whole (QA 2026-08-28)
-   Project cards carry li.wp-block-post.type-nadlan_project. Their featured image is a 4:3
-   plate whose title and capsule row were clipped by the query loop's inline
-   aspect-ratio:3/2 + object-fit:cover. Scope is limited to search-result project cards so
-   16:9 and 3:2 article images keep their original full-bleed fill.
-   The inline style is not !important, so a stylesheet !important wins the cascade.
-   Measured: the .wp-block-post-featured-image figure has aspect-ratio:auto, overflow:visible
-   and no independent height, so no wrapper rule is needed. */
-body.search-results li.wp-block-post.type-nadlan_project .wp-block-post-featured-image img {
-	aspect-ratio: 4 / 3 !important;
-	object-fit: contain !important;
-}
