@@ -1,0 +1,30 @@
+{
+  "applied_at_server_time": "2026-08-28T07:43:12",
+  "template_id": "nadlan-platform-child//search",
+  "wp_id": 7527,
+  "source_before": "theme",
+  "source_after": "custom",
+  "content_raw_length_before": 4885,
+  "content_raw_length_after": 4903,
+  "content_raw_sha256_before": "bfbca07967dd0cd6d447aa4e7cb80f116f07898c39daff08d335c12b0bce81f0",
+  "content_raw_sha256_after":  "ce1eda4f969a41ec9328397208ff7e27c788d5fbf9e29999ee1cbea0b2628d1f",
+  "guard": "replacement executed only after asserting exactly 1 occurrence of the old block string; observed matches = 1",
+  "block_before": "<!-- wp:post-featured-image {\"isLink\":true,\"aspectRatio\":\"3/2\"} /-->",
+  "block_after":  "<!-- wp:post-featured-image {\"isLink\":true,\"aspectRatio\":\"4/3\",\"scale\":\"contain\"} /-->",
+  "rendered_inline_style_before": "aspect-ratio:3/2;width:100%;object-fit:cover;",
+  "rendered_inline_style_after":  "aspect-ratio:4/3;width:100%;object-fit:contain;",
+  "scope_check": {
+    "custom_templates_site_wide_after_change": ["nadlan-platform-child//search"],
+    "archive": "source=theme, aspectRatio 3/2, untouched",
+    "index":   "source=theme, aspectRatio 3/2, untouched",
+    "single":  "source=theme, aspectRatio 3/2, untouched",
+    "home_404_catalog_projectpages": "no featured-image block involved, untouched"
+  },
+  "rollback": {
+    "method": "delete the wp_template override; WordPress falls back to the theme file",
+    "one_liner_in_site_editor_console": "await wp.apiFetch({path:'/wp/v2/templates/'+encodeURIComponent('nadlan-platform-child//search'),method:'DELETE',data:{force:true}})",
+    "ui_path": "Appearance > Editor > Templates > Search Results > three dots > Reset / Clear customizations",
+    "verify_after_rollback": "GET the template and confirm source==='theme' and content contains \"aspectRatio\":\"3/2\" with no \"scale\"",
+    "restores_to": "templates/search.html + patterns/template-query-loop.php at repo HEAD 623d5ba0eaebf5be8efbcce9a1fcb0d71c5c4ab1"
+  }
+}

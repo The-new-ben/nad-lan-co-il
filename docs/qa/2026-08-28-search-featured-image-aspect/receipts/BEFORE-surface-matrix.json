@@ -1,0 +1,27 @@
+{
+  "plate_geometry": {"file": "1448x1086", "aspect_ratio": 1.3333, "generated_sizes": ["300x225","600x450","768x576","1024x768"], "wordpress_hard_crop": false},
+  "surfaces": [
+    {"surface": "home /", "template": "block home.html", "plates_present": false, "object_fit": null, "crop": "none"},
+    {"surface": "catalog /projects/", "template": "custom nldc directory", "served": "-1024x768", "container": ".nldc-media aspect-ratio 4/3, overflow hidden", "object_fit": "contain", "crop": "0%"},
+    {"surface": "site search /?s=", "template": "nadlan-platform-child//search (block query loop)", "served": "full 1448x1086", "container": "inline aspect-ratio 3/2, width 100%", "object_fit": "cover", "object_position": "50% 50%", "crop": "11.1% vertical, 60px top + 60px bottom"},
+    {"surface": "404", "template": "block 404.html", "plates_present": false, "crop": "none"},
+    {"surface": "project page /projects/<slug>/", "template": "child theme single-nadlan_project.html", "plates_in_body": false, "crop": "none in body"},
+    {"surface": "social og:image", "value": "full plate 1448x1086", "platform_box": "1.91:1 and 2:1", "crop": "30-33% vertical, title and capsule row both removed entirely", "in_scope_now": false}
+  ],
+  "per_plate_loss_on_search": [
+    {"plate": "aurelia", "title_rows": "41-67", "title_lost_px": 19, "title_lost_pct": 70, "pill_rows": "997-1085", "pill_lost_px": 60, "pill_lost_pct": 67},
+    {"plate": "einstein-tower", "title_rows": "42-70", "title_lost_px": 18, "title_lost_pct": 62, "pill_rows": "956-1051", "pill_lost_px": 26, "pill_lost_pct": 27},
+    {"plate": "h-infinity-somail-tel-aviv", "title_rows": "44-72", "title_lost_px": 16, "title_lost_pct": 55, "pill_rows": "955-1085", "pill_lost_px": 60, "pill_lost_pct": 46},
+    {"plate": "six-8-herbert-samuel-tel-aviv", "title_rows": "40-65", "title_lost_px": 20, "title_lost_pct": 77, "pill_rows": "955-1085", "pill_lost_px": 60, "pill_lost_pct": 46},
+    {"plate": "utopia-sde-dov", "title_rows": "44-73", "title_lost_px": 16, "title_lost_pct": 53, "pill_rows": "955-1085", "pill_lost_px": 60, "pill_lost_pct": 46}
+  ],
+  "legacy_non_project_results_before": {
+    "query": "משכנתא",
+    "results": 14,
+    "with_featured_image": 4,
+    "native": "1600x900 (16:9, AR 1.778)",
+    "container": "3/2 cover",
+    "effect_today": "horizontal crop 15.6% (7.8% each side), image is full bleed",
+    "predicted_after_4_3_contain": "no pixel lost, letterboxed: visible image occupies 75% of box height, 25% empty bars (12.5% top + 12.5% bottom), card grows taller"
+  }
+}
