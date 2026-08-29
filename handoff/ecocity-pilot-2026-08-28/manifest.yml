@@ -1,0 +1,35 @@
+package: ecocity-pilot
+version: 1.0.0-draft
+research_cutoff: 2026-08-28
+timezone: UTC
+projects:
+  - id: ecocity-stricker-13-brandeis-14
+    canonical_he_path: /projects/stricker-13-brandeis-14/
+    truth_source: content/stricker-13-brandeis-14/source-of-truth.he.md
+    content_record: content/stricker-13-brandeis-14/content.he.json
+  - id: ecocity-bnei-dan-54-56
+    canonical_he_path: /projects/bnei-dan-54-56/
+    truth_source: content/bnei-dan-54-56/source-of-truth.he.md
+    content_record: content/bnei-dan-54-56/content.he.json
+locales:
+  - code: he-IL
+    direction: rtl
+    canonical_source: true
+  - code: en
+    direction: ltr
+  - code: fr
+    direction: ltr
+  - code: ru
+    direction: ltr
+  - code: ar
+    direction: rtl
+publication_authorized: false
+live_site_mutation_authorized: false
+redirects_authorized: false
+deletions_authorized: false
+media_reuse_authorized: false
+inventory_feed_verified: false
+permit_record_verified: false
+aurelia_checklist_present_in_package: false
+aurelia_rule: load_exact_local_checklist_before_implementation
+

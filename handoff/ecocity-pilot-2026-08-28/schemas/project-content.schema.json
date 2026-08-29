@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nad-lan.co.il/schemas/ecocity-project-content.schema.json",
+  "title": "EcoCity pilot project content",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project_id",
+    "locale",
+    "direction",
+    "publication_state",
+    "research_cutoff",
+    "identity",
+    "seo",
+    "hero",
+    "facts",
+    "sections",
+    "faq",
+    "cta",
+    "disclosure",
+    "fact_register_ids"
+  ],
+  "properties": {
+    "project_id": {"type": "string", "pattern": "^ecocity-"},
+    "locale": {"enum": ["he-IL", "en", "fr", "ru", "ar"]},
+    "direction": {"enum": ["rtl", "ltr"]},
+    "publication_state": {"enum": ["draft", "review", "approved", "published"]},
+    "research_cutoff": {"type": "string", "format": "date"},
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "city", "developer", "address_label"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "city": {"type": "string", "minLength": 1},
+        "developer": {"type": "string", "minLength": 1},
+        "address_label": {"type": "string", "minLength": 1},
+        "formal_neighborhood": {"type": ["string", "null"]}
+      }
+    },
+    "seo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["h1", "title", "meta_description", "og_title", "og_description"],
+      "properties": {
+        "h1": {"type": "string", "minLength": 1},
+        "title": {"type": "string", "minLength": 1},
+        "meta_description": {"type": "string", "minLength": 1},
+        "og_title": {"type": "string", "minLength": 1},
+        "og_description": {"type": "string", "minLength": 1}
+      }
+    },
+    "hero": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "headline", "summary", "primary_cta", "secondary_cta"],
+      "properties": {
+        "eyebrow": {"type": "string"},
+        "headline": {"type": "string"},
+        "summary": {"type": "string"},
+        "primary_cta": {"type": "string"},
+        "secondary_cta": {"type": "string"}
+      }
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "value", "fact_id"],
+        "properties": {
+          "label": {"type": "string"},
+          "value": {"type": "string"},
+          "fact_id": {"type": "string"}
+        }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "heading", "body"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+          "heading": {"type": "string"},
+          "body": {"type": "array", "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    },
+    "faq": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["question", "answer", "fact_ids"],
+        "properties": {
+          "question": {"type": "string"},
+          "answer": {"type": "string"},
+          "fact_ids": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "cta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pre_inventory", "post_inventory", "secondary"],
+      "properties": {
+        "pre_inventory": {"type": "string"},
+        "post_inventory": {"type": "string"},
+        "secondary": {"type": "string"}
+      }
+    },
+    "disclosure": {"type": "string", "minLength": 1},
+    "fact_register_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+    "inventory": {"type": "null"},
+    "price": {"type": "null"},
+    "geo": {"type": "null"},
+    "media": {"type": "array", "maxItems": 0}
+  }
+}
