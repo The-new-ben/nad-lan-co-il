@@ -139,7 +139,15 @@ if ( ! function_exists( 'nadlan_project_notice_render' ) ) {
 		$rtl  = in_array( $lang, array( 'he', 'ar' ), true );
 		$html = '<aside class="nl-projnotice" dir="' . ( $rtl ? 'rtl' : 'ltr' ) . '" role="note">'
 			. '<b>' . esc_html( $str[0] ) . '</b><span>' . esc_html( $text ) . '</span></aside>';
-		return $html . $content;
+		/* Owner order 29.8.2026: the notice moves DOWN, out of the snippet zone.
+		 * It now opens the article section (still in-body, still next to the
+		 * developer-named content, per the active-disclosure duty); on pages
+		 * without the article wrapper it closes the content instead. */
+		$nl_article_at = strpos( $content, '<div class="nadlan-project-article' );
+		if ( false !== $nl_article_at ) {
+			return substr( $content, 0, $nl_article_at ) . $html . substr( $content, $nl_article_at );
+		}
+		return $content . $html;
 	}
 }
 /* Priority 20, deliberately: the showroom prepends at 10, the project profile at 5
