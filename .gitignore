@@ -25,3 +25,7 @@ scripts/__pycache__/
 .env.local
 .env
 wp-api.ps1
+
+# Codex desktop local runtime state. This may contain auth, browser sessions,
+# logs, SQLite state, generated caches, and private conversation artifacts.
+.codex/
