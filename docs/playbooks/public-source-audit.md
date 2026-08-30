@@ -16,6 +16,10 @@ python tools/source_audit.py
   (שדות ראש, ספירות, סקריפטים שנוספו/הוסרו, דלתא בייטים).
 - ‏Snapshots: ‏docs/source-snapshots/<slug>/<UTC>-<sha12>.html — לעולם לא נמחקים ולא
   נדרסים (שרשרת הראיות). רישום: ‏registry.json (עד 40 רשומות לעמוד).
+- ‏**רדקציית טוקנים:** טוקן ה-Mapbox הציבורי (pk.) לגיטימי ב-HTML חי אבל מפעיל את
+  ‏push-protection של GitHub — הכלי שומר אותו בסנאפשוט כ-`pk.[REDACTED-…]`; ה-sha בשם
+  הקובץ נשאר ה-sha של הבייטים הגולמיים מהרשת. טוקן **sk.** ב-HTML ציבורי = דליפה
+  אמיתית — הכלי מדליק RED ‏(secret-token-leak).
 
 ## מה נבדק בכל עמוד
 
