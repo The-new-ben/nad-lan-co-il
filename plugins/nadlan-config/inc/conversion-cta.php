@@ -47,7 +47,7 @@ add_action( 'wp_footer', function () {
 	   pull stays in wa-source.php, which stamps this link on click. */
 	$cta_b    = function_exists( 'nadlan_i18n' ) ? nadlan_i18n( 'cta_wa_b' ) : 'לפרטים נוספים';
 	$cta_s    = function_exists( 'nadlan_i18n' ) ? nadlan_i18n( 'cta_wa_s' ) : 'מענה מהיר בוואטסאפ';
-	$cta_aria = function_exists( 'nadlan_i18n' ) ? nadlan_i18n( 'cta_wa_aria' ) : 'וואטסאפ — לפרטים נוספים';
+	$cta_aria = function_exists( 'nadlan_i18n' ) ? nadlan_i18n( 'cta_wa_aria' ) : 'וואטסאפ · לפרטים נוספים';
 	$cta_msg  = function_exists( 'nadlan_i18n' ) ? nadlan_i18n( 'cta_wa_msg' ) : 'שלום, אשמח לפרטים נוספים.';
 	$cta_rtl  = true;
 	if ( function_exists( 'nadlan_lang_is_rtl' ) && function_exists( 'nadlan_current_lang' ) ) {

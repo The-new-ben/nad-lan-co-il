@@ -568,6 +568,10 @@ add_action( 'wp_enqueue_scripts', 'nadlan_pjx_assets' );
 /* ---------------- SEO: FAQPage JSON-LD + meta description for projects ---------------- */
 if ( ! function_exists( 'nadlan_pjx_faq_jsonld' ) ) {
 	function nadlan_pjx_faq_jsonld() {
+		/* Source-audit 30.8.2026: retired. schema.php emits FAQPage from the real,
+		 * visible project_faq_json; this synthetic invisible block doubled the
+		 * schema on pages with a real FAQ and risks the rich-results policy. */
+		return;
 		if ( ! is_singular( 'nadlan_project' ) ) { return; }
 		if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab() ) { return; }
 		$id = get_queried_object_id();

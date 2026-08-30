@@ -731,7 +731,7 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 		// for visual variety across the grid.
 		$photo_url = '';
 		if ( has_post_thumbnail( $id ) ) {
-			$photo_url = get_the_post_thumbnail_url( $id, 'medium_large' );
+			$photo_url = get_the_post_thumbnail_url( $id, 'large' );
 		} else {
 			$photos = array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $id, 'photos_csv', true ) ) ) );
 			foreach ( $photos as $p ) {

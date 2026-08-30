@@ -75,11 +75,16 @@ add_filter( 'the_content', function ( $content ) {
 add_action( 'wp_head', function () {
 	$items = nadlan_breadcrumbs_items();
 	if ( count( $items ) < 2 ) { return; }
-	// Skip if Yoast is emitting its own BreadcrumbList (avoid duplicate schema)
-	if ( function_exists( 'yoast_breadcrumb' ) && (int) get_option( 'wpseo_titles_breadcrumbs-enable', 0 ) === 1 ) { return; }
+	/* Source-audit 30.8.2026: modern Yoast ships a breadcrumb piece in its schema
+	 * graph regardless of the breadcrumbs feature toggle, so the old option check
+	 * let BOTH graphs print. This emitter mirrors the visible trail and is the
+	 * single owner; Yoast's piece is suppressed via the filter below. */
 	$ld = array( '@context' => 'https://schema.org', '@type' => 'BreadcrumbList',
 		'itemListElement' => array_map( function ( $it, $i ) {
 			return array( '@type' => 'ListItem', 'position' => $i + 1, 'name' => $it['name'], 'item' => $it['url'] );
 		}, array_values( $items ), array_keys( $items ) ) );
 	echo "\n<script type=\"application/ld+json\">" . wp_json_encode( $ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . "</script>\n";
 }, 22 );
+
+/* Single BreadcrumbList owner (source-audit 30.8.2026): drop Yoast's graph piece. */
+add_filter( 'wpseo_schema_needs_breadcrumb', '__return_false' );

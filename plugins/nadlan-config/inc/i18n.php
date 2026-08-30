@@ -68,9 +68,9 @@ if ( ! function_exists( 'nadlan_i18n_table' ) ) {
 			// browse nav
 			'nav_label' => 'ניווט ראשי באתר',
 			'm_apts' => 'דירות', 'apts_sale' => 'דירות למכירה', 'apts_rent' => 'דירות להשכרה', 'apts_in' => 'דירות ב', 'post_free' => 'פרסום דירה חינם',
-			'm_tours' => 'סיורים תלת־ממד', 'tours_all' => 'כל הסיורים — במקום אחד', 'tour_sd' => 'סיור רובע שדה דב', 'tour_so' => 'סיור מתחם סומייל', 'tour_esd' => 'הליקופטר שדה דב — צילום אמיתי', 'tour_eso' => 'הליקופטר סומייל', 'tour_des' => 'מעצב הדירות', 'prices_index' => 'מחירון הדירות — כל הערים',
+			'm_tours' => 'סיורים תלת־ממד', 'tours_all' => 'כל הסיורים · במקום אחד', 'tour_sd' => 'סיור רובע שדה דב', 'tour_so' => 'סיור מתחם סומייל', 'tour_esd' => 'הליקופטר שדה דב · צילום אמיתי', 'tour_eso' => 'הליקופטר סומייל', 'tour_des' => 'מעצב הדירות', 'prices_index' => 'מחירון הדירות · כל הערים',
 			'tour_catalog' => 'קטלוג התלת ממד', 'guides_all' => 'כל המדריכים', 'nav_areas' => 'אזורי ביקוש', 'nav_global' => 'נדל"ן בחו"ל',
-			'cta_wa_b' => 'לפרטים נוספים', 'cta_wa_s' => 'מענה מהיר בוואטסאפ', 'cta_wa_aria' => 'וואטסאפ — לפרטים נוספים', 'cta_wa_msg' => 'שלום, אשמח לפרטים נוספים.',
+			'cta_wa_b' => 'לפרטים נוספים', 'cta_wa_s' => 'מענה מהיר בוואטסאפ', 'cta_wa_aria' => 'וואטסאפ · לפרטים נוספים', 'cta_wa_msg' => 'שלום, אשמח לפרטים נוספים.',
 			'm_projects' => 'פרויקטים חדשים', 'all_projects' => 'כל הפרויקטים', 'projects_in' => 'פרויקטים ב', 'pinui' => 'פינוי-בינוי', 'tama' => 'תמ״א 38',
 			'm_prices' => 'מחירים ונתונים', 'my_value' => 'כמה שווה הדירה שלי', 'prices_in' => 'מחירים ב',
 			'm_guides' => 'מדריכים וכלים', 'calc_mortgage' => 'מחשבון משכנתא', 'calc_tax' => 'מחשבון מס רכישה', 'calc_full' => 'עלות עסקה מלאה',
@@ -364,7 +364,8 @@ add_action( 'wp_head', function () {
 	if ( ! is_front_page() && ! nadlan_is_language_home() ) { return; }
 	$urls = nadlan_home_urls();
 	$cur  = nadlan_current_lang();
-	echo "\n<link rel=\"canonical\" href=\"" . esc_url( $urls[ $cur ] ) . "\">\n";
+	/* Source-audit 30.8.2026: Yoast owns the canonical tag (this echo doubled it
+	 * on the front page); the block keeps only the hreflang cluster. */
 	foreach ( nadlan_langs() as $l ) {
 		printf( "<link rel=\"alternate\" hreflang=\"%s\" href=\"%s\">\n", esc_attr( $l ), esc_url( $urls[ $l ] ) );
 	}

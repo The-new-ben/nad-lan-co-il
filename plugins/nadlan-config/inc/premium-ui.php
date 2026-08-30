@@ -660,7 +660,7 @@ body.single-nadlan_professional .wp-block-post-date,
 body.single-nadlan_property .wp-block-post-author,
 body.single-nadlan_property .wp-block-post-date{display:none!important}
 
-/* ===== 1.42.4 - Codex PR #47 follow-up fixes ===== */
+/* ===== 1.42.4 - follow-up fixes ===== */
 
 /* #5 - honeypot inputs (.nlcard-hp, .nlrev-hp) used position:left:-9999px which
    gave desktop pages a 11,439px scrollWidth (visible horizontal scrollbar +
@@ -718,7 +718,7 @@ add_action( 'wp_footer', function () {
 	echo nadlan_premium_sprite(); // static SVG defs, no user data
 }, 1 );
 
-/* ---------- 4. Block-level cleanups (1.42.4 - proper fix for Codex #2 + #7) ------ */
+/* ---------- 4. Block-level cleanups (1.42.4) ------ */
 /* These render_block filters are the PROPER fix for the duplicate H1 (#2) and the
    "Written by / in" pattern (#7) that 1.42.3 only hid visually via CSS. By skipping
    the offending blocks at render time we remove the duplicate H1 from the DOM

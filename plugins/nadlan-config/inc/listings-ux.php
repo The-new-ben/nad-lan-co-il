@@ -135,7 +135,7 @@ if ( ! function_exists( 'nadlan_listing_append' ) ) {
 	<?php /* V7 (owner order 22.8): the 3D tours reach the sale/rent pages too */ ?>
 	<a class="nlx-tours" href="<?php echo esc_url( home_url( '/tours/' ) ); ?>">
 		<b>🏙️ רוצים להרגיש את השכונה לפני שמתקשרים?</b>
-		<span>סיורים תלת־ממדיים חיים — טיסה, הליכה ברחוב וקריינות · כל הסיורים במקום אחד ←</span>
+		<span>סיורים תלת־ממדיים חיים: טיסה, הליכה ברחוב וקריינות · כל הסיורים במקום אחד ←</span>
 	</a>
 
 	<?php $sim = nadlan_listing_similar( $id ); if ( $sim ) : ?>

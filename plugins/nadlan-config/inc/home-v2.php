@@ -1149,6 +1149,10 @@ if ( ! function_exists( 'nadlan_hv2_assets' ) ) {
 .nlhv2-shcard.is-on{border-color:var(--gold,#9C7A3C);box-shadow:0 0 0 2px rgba(156,122,60,.25)}
 .nlhv2-shcard-media{position:relative;display:block;aspect-ratio:16/10;background:var(--band);overflow:hidden}
 .nlhv2-shcard-media img{width:100%;height:100%;object-fit:cover;display:block}
+/* T1 27.8.2026 (owner order): flagship plates full-frame 4:3, no crop */
+.nlhv2-shcard-media.nlhv2-shcard-media{aspect-ratio:4/3;background:#EFEAE0}
+.nlhv2-shcard-media.nlhv2-shcard-media img{object-fit:contain}
+
 .nlhv2-tag{position:absolute;top:8px;inset-inline-start:8px;font-style:normal;font:700 10.5px/1 Heebo,sans-serif;background:rgba(20,19,15,.85);color:#E9D9A8;border-radius:6px;padding:5px 9px}
 .nlhv2-tag--3d{inset-inline-start:auto;inset-inline-end:8px;background:var(--gold,#9C7A3C);color:#14130F}
 .nlhv2-shcard-body{display:flex;flex-direction:column;gap:6px;padding:10px 12px 12px}
