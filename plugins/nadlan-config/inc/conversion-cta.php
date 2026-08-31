@@ -49,6 +49,21 @@ add_action( 'wp_footer', function () {
 	$cta_s    = function_exists( 'nadlan_i18n' ) ? nadlan_i18n( 'cta_wa_s' ) : 'מענה מהיר בוואטסאפ';
 	$cta_aria = function_exists( 'nadlan_i18n' ) ? nadlan_i18n( 'cta_wa_aria' ) : 'וואטסאפ · לפרטים נוספים';
 	$cta_msg  = function_exists( 'nadlan_i18n' ) ? nadlan_i18n( 'cta_wa_msg' ) : 'שלום, אשמח לפרטים נוספים.';
+	/* Review voice on independent project pages (owner order 31.8.2026): the
+	 * floating pill must never read like the developer's sales channel. */
+	if ( is_singular( 'nadlan_project' ) && function_exists( 'nadlan_project_mode' ) && 'showroom' !== nadlan_project_mode( get_queried_object_id() ) ) {
+		$rv_lang = function_exists( 'nadlan_project_self_lang' ) ? nadlan_project_self_lang() : '';
+		if ( '' === $rv_lang ) { $rv_lang = 'he'; }
+		$rv = array(
+			'he' => array( "שאלות על הסקירה הזו?", "עונים עצמאית, לא מטעם היזם", "וואטסאפ · שאלה על הסקירה", "שלום, יש לי שאלה על סקירת הפרויקט באתר." ),
+			'en' => array( "Questions about this review?", "Independent answers, not the developer", "WhatsApp: ask about this review", "Hi, I have a question about this project review." ),
+			'fr' => array( "Des questions sur cette revue ?", "Réponses indépendantes, pas le promoteur", "WhatsApp : question sur la revue", "Bonjour, j'ai une question sur cette revue de projet." ),
+			'ru' => array( "Вопросы по обзору?", "Независимые ответы, не от застройщика", "WhatsApp: вопрос об обзоре", "Здравствуйте, у меня вопрос по обзору проекта." ),
+			'ar' => array( "أسئلة حول هذه المراجعة؟", "إجابات مستقلة، ليست من المطور", "واتساب · سؤال عن المراجعة", "مرحبا، لدي سؤال حول مراجعة المشروع." ),
+		);
+		$rv_v = isset( $rv[ $rv_lang ] ) ? $rv[ $rv_lang ] : $rv['he'];
+		$cta_b = $rv_v[0]; $cta_s = $rv_v[1]; $cta_aria = $rv_v[2]; $cta_msg = $rv_v[3];
+	}
 	$cta_rtl  = true;
 	if ( function_exists( 'nadlan_lang_is_rtl' ) && function_exists( 'nadlan_current_lang' ) ) {
 		$cta_rtl = nadlan_lang_is_rtl( nadlan_current_lang() );

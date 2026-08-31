@@ -181,14 +181,51 @@ if ( ! function_exists( 'nadlan_fbar_render' ) ) {
 		}
 
 		$items = nadlan_fbar_items( get_the_ID() );
+		$nlfb_head = "מה אפשר לעשות כאן";
+		$nlfb_aria = "מה אפשר לעשות בעמוד הזה";
 		/* Review mode (owner order 31.8.2026): chips that scroll to engine
-		 * elements are dead on review pages - keep only real destinations. */
+		 * elements are dead on review pages - keep only real destinations,
+		 * and speak as the independent reviewer, in the page's own language.
+		 * The tools are OUR technology offering, never the developer's. */
 		if ( function_exists( 'nadlan_project_mode' ) && 'showroom' !== nadlan_project_mode( get_the_ID() ) ) {
 			$items = array_values( array_filter( $items, function ( $it ) { return ! empty( $it['href'] ); } ) );
 			if ( ! $items ) { return $content; }
+			$nlfb_lang = function_exists( 'nadlan_project_self_lang' ) ? nadlan_project_self_lang() : '';
+			if ( '' === $nlfb_lang ) { $nlfb_lang = 'he'; }
+			$nlfb_t = array(
+				'he' => array( 'head' => "הכלים שלנו לבדיקת הפרויקט", 'aria' => "כלי הבדיקה של נדלן",
+					'studio' => array( "מעצב הדירות שלנו", "בודקים ריהוט, מידות ומרחקים" ),
+					'tour'   => array( "סיור תלת ממדי ברובע", "הסביבה של הפרויקט, בהפקת נדלן" ),
+					'earth'  => array( "טיסה מעל האזור", "הדמיית כדור הארץ שלנו" ) ),
+				'en' => array( 'head' => "Our project research tools", 'aria' => "NadLan research tools",
+					'studio' => array( "Our apartment designer", "Test furniture, sizes and distances" ),
+					'tour'   => array( "3D district tour", "The project area, produced by NadLan" ),
+					'earth'  => array( "Flight over the area", "Our 3D Earth experience" ) ),
+				'fr' => array( 'head' => "Nos outils d'étude du projet", 'aria' => "Outils NadLan",
+					'studio' => array( "Notre studio d'aménagement", "Meubles, dimensions et distances" ),
+					'tour'   => array( "Visite 3D du quartier", "Le secteur du projet, par NadLan" ),
+					'earth'  => array( "Survol du secteur", "Notre expérience Terre 3D" ) ),
+				'ru' => array( 'head' => "Наши инструменты проверки проекта", 'aria' => "Инструменты NadLan",
+					'studio' => array( "Наш дизайнер квартир", "Мебель, размеры и расстояния" ),
+					'tour'   => array( "3D-тур по району", "Окружение проекта от NadLan" ),
+					'earth'  => array( "Полёт над районом", "Наш 3D-глобус" ) ),
+				'ar' => array( 'head' => "أدواتنا لفحص المشروع", 'aria' => "أدوات نادلان",
+					'studio' => array( "مصمم الشقق لدينا", "أثاث ومقاسات ومسافات" ),
+					'tour'   => array( "جولة ثلاثية الأبعاد في الحي", "محيط المشروع من إنتاج نادلان" ),
+					'earth'  => array( "تحليق فوق المنطقة", "تجربة الأرض ثلاثية الأبعاد لدينا" ) ),
+			);
+			$nlfb_v = isset( $nlfb_t[ $nlfb_lang ] ) ? $nlfb_t[ $nlfb_lang ] : $nlfb_t['he'];
+			$nlfb_head = $nlfb_v['head'];
+			$nlfb_aria = $nlfb_v['aria'];
+			foreach ( $items as $nlfb_i => $nlfb_it ) {
+				if ( isset( $nlfb_v[ $nlfb_it['k'] ] ) ) {
+					$items[ $nlfb_i ]['lbl'] = $nlfb_v[ $nlfb_it['k'] ][0];
+					$items[ $nlfb_i ]['sub'] = $nlfb_v[ $nlfb_it['k'] ][1];
+				}
+			}
 		}
-		$html  = '<nav class="nlfb" aria-label="מה אפשר לעשות בעמוד הזה">'
-			. '<b class="nlfb-h">מה אפשר לעשות כאן</b><div class="nlfb-row">';
+		$html  = '<nav class="nlfb" aria-label="' . esc_attr( $nlfb_aria ) . '">'
+			. '<b class="nlfb-h">' . esc_html( $nlfb_head ) . '</b><div class="nlfb-row">';
 
 		foreach ( $items as $it ) {
 			$inner = '<em aria-hidden="true">' . $it['icon'] . '</em><span><b>' . esc_html( $it['lbl'] )
