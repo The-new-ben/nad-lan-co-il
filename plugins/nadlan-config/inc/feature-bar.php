@@ -181,6 +181,12 @@ if ( ! function_exists( 'nadlan_fbar_render' ) ) {
 		}
 
 		$items = nadlan_fbar_items( get_the_ID() );
+		/* Review mode (owner order 31.8.2026): chips that scroll to engine
+		 * elements are dead on review pages - keep only real destinations. */
+		if ( function_exists( 'nadlan_project_mode' ) && 'showroom' !== nadlan_project_mode( get_the_ID() ) ) {
+			$items = array_values( array_filter( $items, function ( $it ) { return ! empty( $it['href'] ); } ) );
+			if ( ! $items ) { return $content; }
+		}
 		$html  = '<nav class="nlfb" aria-label="מה אפשר לעשות בעמוד הזה">'
 			. '<b class="nlfb-h">מה אפשר לעשות כאן</b><div class="nlfb-row">';
 

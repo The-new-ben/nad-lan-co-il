@@ -680,6 +680,9 @@ add_filter( 'the_content', function ( $content ) {
 	if ( $done ) { return $content; }
 	$card = get_the_ID();
 	if ( get_post_meta( $card, 'nadlan_sched_off', true ) === '1' ) { return $content; }
+	/* Review mode (owner order 31.8.2026): no choose-a-date block on review
+	 * project pages - it reads like the developer's own sales surface. */
+	if ( 'nadlan_project' === get_post_type( $card ) && function_exists( 'nadlan_project_mode' ) && 'showroom' !== nadlan_project_mode( $card ) ) { return $content; }
 	$done = true;
 	$wlang = nadlan_sched_page_lang( $card );
 	$s = nadlan_sched_strings( $wlang );

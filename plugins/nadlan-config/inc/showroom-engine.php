@@ -1316,6 +1316,10 @@ if ( ! function_exists( 'nadlan_showroom_engine_weave' ) ) {
 	 * verbatim inside its chapter frame. Under 3 chapters -> returned untouched.
 	 */
 	function nadlan_showroom_engine_weave( $article, $pid ) {
+		/* Review pages skip the chapter weave (owner order 31.8.2026): its TOC
+		 * and chapter chrome are styled by the engine's editorial.css, which
+		 * review mode does not load - unstyled it rendered as a broken index. */
+		if ( function_exists( 'nadlan_project_mode' ) && 'showroom' !== nadlan_project_mode( $pid ) ) { return $article; }
 		$by_section = preg_match_all( '#<section\b[^>]*class="[^"]*nlv2-section[^"]*"#i', $article ) >= 3;
 		// Articles authored with their own <section> wrappers must split at the
 		// section boundary - splitting at <h2> orphans the wrapper tags and the
