@@ -1,0 +1,260 @@
+{
+ "date": "2026-08-30",
+ "order": "owner: nothing of EcoCity remains served on the site",
+ "orphan_records_deleted": [],
+ "their_imagery_deleted": [
+  {
+   "id": 6799,
+   "file": "ecocity-front-20-borochov-34.jpg",
+   "http": 200
+  },
+  {
+   "id": 6798,
+   "file": "ecocity-front-19-mintz-16.jpg",
+   "http": 200
+  },
+  {
+   "id": 6797,
+   "file": "ecocity-front-18-zeitlin-5-7-9.jpg",
+   "http": 200
+  },
+  {
+   "id": 6796,
+   "file": "ecocity-front-17-modigliani-15.jpg",
+   "http": 200
+  },
+  {
+   "id": 6795,
+   "file": "ecocity-front-16-bezalel-5.jpg",
+   "http": 200
+  },
+  {
+   "id": 6794,
+   "file": "ecocity-front-15-bezalel-3.jpg",
+   "http": 200
+  },
+  {
+   "id": 6793,
+   "file": "ecocity-front-14-struck-8.jpg",
+   "http": 200
+  },
+  {
+   "id": 6792,
+   "file": "ecocity-front-13-shilo-7.jpg",
+   "http": 200
+  },
+  {
+   "id": 6791,
+   "file": "ecocity-front-10-remez-31.jpg",
+   "http": 200
+  },
+  {
+   "id": 6790,
+   "file": "ecocity-front-09-paibel-3.jpg",
+   "http": 200
+  },
+  {
+   "id": 6789,
+   "file": "ecocity-front-08-zikhron-yaakov-5.jpg",
+   "http": 200
+  },
+  {
+   "id": 6788,
+   "file": "ecocity-front-07-brandeis-8.jpg",
+   "http": 200
+  },
+  {
+   "id": 6787,
+   "file": "ecocity-front-06-stricker-13-brandeis-14.jpg",
+   "http": 200
+  },
+  {
+   "id": 6786,
+   "file": "ecocity-front-04-alexander-yanai-12-14.jpg",
+   "http": 200
+  },
+  {
+   "id": 6785,
+   "file": "ecocity-front-03-pineles-12.jpg",
+   "http": 200
+  },
+  {
+   "id": 6784,
+   "file": "ecocity-front-02-bnei-dan-20-22.jpg",
+   "http": 200
+  },
+  {
+   "id": 6783,
+   "file": "ecocity-front-01-bnei-dan-54-56.jpg",
+   "http": 200
+  },
+  {
+   "id": 6770,
+   "file": "ecocity-photo-20-borochov-34.jpg",
+   "http": 200
+  },
+  {
+   "id": 6769,
+   "file": "ecocity-photo-19-mintz-16.jpg",
+   "http": 200
+  },
+  {
+   "id": 6768,
+   "file": "ecocity-photo-18-zeitlin-5-7-9.jpg",
+   "http": 200
+  },
+  {
+   "id": 6767,
+   "file": "ecocity-photo-17-modigliani-15.jpg",
+   "http": 200
+  },
+  {
+   "id": 6766,
+   "file": "ecocity-photo-16-bezalel-5.jpg",
+   "http": 200
+  },
+  {
+   "id": 6765,
+   "file": "ecocity-photo-15-bezalel-3.jpg",
+   "http": 200
+  },
+  {
+   "id": 6764,
+   "file": "ecocity-photo-14-struck-8.jpg",
+   "http": 200
+  },
+  {
+   "id": 6763,
+   "file": "ecocity-photo-13-shilo-7.jpg",
+   "http": 200
+  },
+  {
+   "id": 6762,
+   "file": "ecocity-photo-12-mossinson-10-12.jpg",
+   "http": 200
+  },
+  {
+   "id": 6761,
+   "file": "ecocity-photo-11-mossinson-14-16.jpg",
+   "http": 200
+  },
+  {
+   "id": 6760,
+   "file": "ecocity-photo-10-remez-31.jpg",
+   "http": 200
+  },
+  {
+   "id": 6759,
+   "file": "ecocity-photo-09-paibel-3.jpg",
+   "http": 200
+  },
+  {
+   "id": 6758,
+   "file": "ecocity-photo-08-zikhron-yaakov-5.jpg",
+   "http": 200
+  },
+  {
+   "id": 6757,
+   "file": "ecocity-photo-07-brandeis-8.jpg",
+   "http": 200
+  },
+  {
+   "id": 6756,
+   "file": "ecocity-photo-06-stricker-13-brandeis-14.jpg",
+   "http": 200
+  },
+  {
+   "id": 6755,
+   "file": "ecocity-photo-05-alexander-yanai-4-6.jpg",
+   "http": 200
+  },
+  {
+   "id": 6754,
+   "file": "ecocity-photo-04-alexander-yanai-12-14.jpg",
+   "http": 200
+  },
+  {
+   "id": 6753,
+   "file": "ecocity-photo-03-pineles-12.jpg",
+   "http": 200
+  },
+  {
+   "id": 6752,
+   "file": "ecocity-photo-02-bnei-dan-20-22.jpg",
+   "http": 200
+  },
+  {
+   "id": 6751,
+   "file": "ecocity-photo-01-bnei-dan-54-56.jpg",
+   "http": 200
+  }
+ ],
+ "kept_our_productions": [
+  "ecocity-bnei-dan-poster",
+  "ecocity-en-00-opening",
+  "ecocity-en-01-bnei-dan-54-56",
+  "ecocity-en-02-bnei-dan-20-22",
+  "ecocity-en-03-pineles-12",
+  "ecocity-en-04-alexander-yanai-12-14",
+  "ecocity-en-05-alexander-yanai-4-6",
+  "ecocity-en-06-stricker-13-brandeis-14",
+  "ecocity-en-07-brandeis-8",
+  "ecocity-en-08-zikhron-yaakov-5",
+  "ecocity-en-09-paibel-3",
+  "ecocity-en-10-remez-31",
+  "ecocity-en-11-mossinson-14-16",
+  "ecocity-en-12-mossinson-10-12",
+  "ecocity-en-13-shilo-7",
+  "ecocity-en-14-struck-8",
+  "ecocity-en-15-bezalel-3",
+  "ecocity-en-16-bezalel-5",
+  "ecocity-en-17-modigliani-15",
+  "ecocity-en-18-zeitlin-5-7-9",
+  "ecocity-en-19-mintz-16",
+  "ecocity-en-20-borochov-34",
+  "ecocity-en-21-closing",
+  "ecocity-he-00-opening",
+  "ecocity-he-01-bnei-dan-54-56",
+  "ecocity-he-02-bnei-dan-20-22",
+  "ecocity-he-03-pineles-12",
+  "ecocity-he-04-alexander-yanai-12-14",
+  "ecocity-he-05-alexander-yanai-4-6",
+  "ecocity-he-06-stricker-13-brandeis-14",
+  "ecocity-he-07-brandeis-8",
+  "ecocity-he-08-zikhron-yaakov-5",
+  "ecocity-he-09-paibel-3",
+  "ecocity-he-10-remez-31",
+  "ecocity-he-11-mossinson-14-16",
+  "ecocity-he-12-mossinson-10-12",
+  "ecocity-he-13-shilo-7",
+  "ecocity-he-14-struck-8",
+  "ecocity-he-15-bezalel-3",
+  "ecocity-he-16-bezalel-5",
+  "ecocity-he-17-modigliani-15",
+  "ecocity-he-18-zeitlin-5-7-9",
+  "ecocity-he-19-mintz-16",
+  "ecocity-he-20-borochov-34",
+  "ecocity-he-21-closing",
+  "ecocity-qr-bneidan",
+  "ecocity-qr-hub",
+  "ecocity-qr-stricker",
+  "ecocity-qr-tour",
+  "ecocity-stricker-poster",
+  "ecocity-tile-plan",
+  "ecocity-tile-plan-1",
+  "ecocity-tile-plan-2",
+  "ecocity-tile-plan-3",
+  "ecocity-tile-studio",
+  "ecocity-tile-studio-1",
+  "ecocity-tile-studio-2",
+  "ecocity-tile-studio-3",
+  "ecocity-tile-tour",
+  "ecocity-tile-tour-1",
+  "ecocity-tile-tour-2",
+  "ecocity-tile-tour-3",
+  "ecocity-tile-view",
+  "ecocity-tile-view-1",
+  "ecocity-tile-view-2",
+  "ecocity-tile-view-3"
+ ]
+}

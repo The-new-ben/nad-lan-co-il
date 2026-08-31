@@ -125,7 +125,7 @@ if ( ! function_exists( 'nadlan_card_jsonld' ) ) {
 				);
 				$data['offers'] = array_filter( $data['offers'] );
 			}
-			$faq_raw = (string) $g( 'project_faq_json' );
+			$faq_raw = ( function_exists( 'nadlan_project_mode' ) && 'showroom' !== nadlan_project_mode( $id ) ) ? '' : (string) $g( 'project_faq_json' ); /* review mode: the visible FAQ block is engine-layer */
 			if ( $faq_raw !== '' ) {
 				$faq = json_decode( $faq_raw, true );
 				if ( is_array( $faq ) && $faq ) {

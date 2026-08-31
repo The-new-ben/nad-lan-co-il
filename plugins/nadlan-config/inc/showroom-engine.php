@@ -917,7 +917,14 @@ add_filter( 'the_content', function ( $content ) {
 			}
 		}
 	}
-	$engine = nadlan_showroom_engine_shortcode( array( 'page' => 'project', 'project' => '', 'id' => '' ) );
+	/* Review mode (owner order 30.8.2026): the interactive engine layer renders
+	 * only for 'showroom' projects (conceptual flagship / signed developer).
+	 * Review pages keep the de-stacked article, chips and machine h1 - no
+	 * engine, no payload, no demo inventory, no unit form. Private labs keep
+	 * the engine in every mode (gated, noindex tools). */
+	$engine = ( function_exists( 'nadlan_project_mode' ) && 'showroom' !== nadlan_project_mode( $pid ) && ! nadlan_unit_journey_is_private_lab( $pid ) )
+		? ''
+		: nadlan_showroom_engine_shortcode( array( 'page' => 'project', 'project' => '', 'id' => '' ) );
 	/* The private v2 page is a focused product lab, not a second SEO article.
 	 * Keep the normal theme chrome, then lead directly with the real engine. */
 	if ( nadlan_unit_journey_is_private_lab( $pid ) ) {
