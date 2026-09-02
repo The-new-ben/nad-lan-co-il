@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1800" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+  <title id="title">לוח שפה חזותי V2 לפורטל Nad-Lan</title>
+  <desc id="desc">לוח עריכה פנימי עם תמונת מקור של SIX8, שלושה קרופים, טיפוגרפיה עברית, רכיבי חיפוש ופרויקט, פלטת צבעים וצילומי מחקר מסומנים.</desc>
+  <defs>
+    <style>
+      .he{font-family:Arial,"Noto Sans Hebrew",sans-serif;direction:rtl;unicode-bidi:isolate}
+      .en{font-family:Arial,sans-serif;direction:ltr;unicode-bidi:isolate}
+      .ink{fill:#171712}
+      .muted{fill:#6F6A60}
+      .small{font-size:13px}
+      .caption{font-size:14px}
+      .label{font-size:15px;font-weight:700;letter-spacing:.03em}
+      .body{font-size:20px}
+      .section{font-size:30px;font-weight:700}
+      .h1{font-size:64px;font-weight:700;letter-spacing:-.035em}
+      .hair{stroke:#CFC6B7;stroke-width:1}
+      .frame{fill:#FBF9F4;stroke:#D8CFC0;stroke-width:1}
+    </style>
+    <clipPath id="heroCrop"><rect x="655" y="104" width="705" height="570" rx="2"/></clipPath>
+    <clipPath id="cardCrop"><rect x="824" y="712" width="362" height="244" rx="2"/></clipPath>
+    <clipPath id="mobileCrop"><rect x="1204" y="712" width="156" height="244" rx="2"/></clipPath>
+    <clipPath id="plateCrop"><rect x="70" y="1006" width="570" height="292" rx="2"/></clipPath>
+    <clipPath id="rainbowCrop"><rect x="70" y="1355" width="352" height="280" rx="2"/></clipPath>
+    <clipPath id="planCrop"><rect x="448" y="1355" width="390" height="238" rx="2"/></clipPath>
+    <clipPath id="buildingCrop"><rect x="864" y="1322" width="506" height="271" rx="2"/></clipPath>
+  </defs>
+
+  <rect width="1440" height="1800" fill="#F3EEE4"/>
+  <rect x="0" y="0" width="18" height="1800" fill="#B54B35"/>
+
+  <g class="he ink">
+    <text x="608" y="114" text-anchor="end" class="label" fill="#B54B35">כיוון פנימי V2</text>
+    <text x="608" y="174" text-anchor="end" class="h1">אדריכלות חיה</text>
+    <text x="608" y="214" text-anchor="end" class="body">תמונה, מקום ופעולה. בלי להסביר את המערכת.</text>
+  </g>
+  <line x1="70" y1="248" x2="608" y2="248" class="hair"/>
+
+  <g class="he ink">
+    <text x="608" y="302" text-anchor="end" class="label">טיפוגרפיה עברית</text>
+    <text x="608" y="378" text-anchor="end" font-size="48" font-weight="700" letter-spacing="-1.2">SIX8 תל אביב</text>
+    <text x="608" y="424" text-anchor="end" class="section">הרברט סמואל, תל אביב</text>
+    <text x="608" y="466" text-anchor="end" class="body">פרויקטים חדשים, דירות ונתוני שוק במקום אחד</text>
+    <text x="608" y="502" text-anchor="end" font-size="17" fill="#6F6A60">כיתוב תמונה: מקור רשמי. רפרנס פנימי בלבד.</text>
+    <text x="608" y="550" text-anchor="end" font-size="34" font-weight="700">1282 × 607</text>
+    <text x="608" y="576" text-anchor="end" class="small" fill="#6F6A60">נתון מבודד, מספרים נשארים בכיוון הנכון</text>
+  </g>
+
+  <g>
+    <rect x="70" y="618" width="538" height="64" rx="2" fill="#FBF9F4" stroke="#171712"/>
+    <text x="558" y="658" text-anchor="end" class="he body muted">עיר, שכונה, רחוב או פרויקט</text>
+    <rect x="70" y="618" width="112" height="64" fill="#B54B35"/>
+    <text x="126" y="658" text-anchor="middle" class="he body" fill="#FFFFFF" font-weight="700">חיפוש</text>
+  </g>
+  <g>
+    <rect x="430" y="716" width="178" height="54" rx="2" fill="#171712"/>
+    <text x="519" y="750" text-anchor="middle" class="he body" fill="#FFFFFF" font-weight="700">לעמוד הפרויקט</text>
+    <text x="70" y="750" class="en label ink">SIX8  TEL AVIV</text>
+    <text x="70" y="776" class="en small muted">One official LTR name only</text>
+  </g>
+
+  <g clip-path="url(#heroCrop)">
+    <image href="file:///C:/Users/777/Documents/Codex/2026-08-30/plate-factory-manager/work/six8-official-source-view.png" x="655" y="104" width="705" height="570" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <rect x="655" y="104" width="705" height="570" fill="none" stroke="#171712" stroke-width="1"/>
+  <rect x="680" y="128" width="168" height="34" fill="#F3EEE4"/>
+  <text x="764" y="151" text-anchor="middle" class="he label ink">תמונת שער</text>
+  <text x="1360" y="698" text-anchor="end" class="he caption muted">V2-A01 · מקור רשמי של SIX8 · רפרנס פנימי בלבד</text>
+
+  <g class="he">
+    <text x="1360" y="748" text-anchor="end" class="section ink">שלושה קרופים, נכס אחד</text>
+  </g>
+
+  <g clip-path="url(#cardCrop)">
+    <image href="file:///C:/Users/777/Documents/Codex/2026-08-30/plate-factory-manager/work/six8-official-source-view.png" x="824" y="712" width="362" height="244" preserveAspectRatio="xMaxYMid slice"/>
+  </g>
+  <rect x="824" y="712" width="362" height="244" fill="none" stroke="#171712"/>
+  <rect x="842" y="730" width="145" height="32" fill="#F3EEE4"/>
+  <text x="914" y="752" text-anchor="middle" class="he label ink">כרטיס פרויקט</text>
+
+  <g clip-path="url(#mobileCrop)">
+    <image href="file:///C:/Users/777/Documents/Codex/2026-08-30/plate-factory-manager/work/six8-official-source-view.png" x="1204" y="712" width="156" height="244" preserveAspectRatio="xMaxYMid slice"/>
+  </g>
+  <rect x="1204" y="712" width="156" height="244" fill="none" stroke="#171712"/>
+  <rect x="1218" y="730" width="90" height="32" fill="#F3EEE4"/>
+  <text x="1263" y="752" text-anchor="middle" class="he label ink">מובייל</text>
+
+  <g>
+    <rect x="656" y="806" width="140" height="88" fill="#171712"/>
+    <text x="726" y="838" text-anchor="middle" class="he small" fill="#D5B772">תצוגת תלת ממד</text>
+    <text x="726" y="870" text-anchor="middle" class="he label" fill="#FFFFFF">לסיור בפרויקט</text>
+  </g>
+
+  <g class="he">
+    <text x="640" y="980" text-anchor="end" class="section ink">מרקם, לא הוכחה אדריכלית</text>
+  </g>
+  <g clip-path="url(#plateCrop)">
+    <image href="file:///C:/Users/777/Documents/Codex/2026-08-30/plate-factory-manager/outputs/six8-herbert-samuel-plate-capsules.jpg" x="70" y="1006" width="570" height="292" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <rect x="70" y="1006" width="570" height="292" fill="none" stroke="#171712"/>
+  <rect x="88" y="1024" width="160" height="32" fill="#F3EEE4"/>
+  <text x="168" y="1046" text-anchor="middle" class="he label ink">המחשה פנימית</text>
+  <text x="640" y="1322" text-anchor="end" class="he caption muted">V2-A02 · פלטה נגזרת · מרקם וכרטיס בלבד</text>
+
+  <g class="he ink">
+    <text x="1358" y="1014" text-anchor="end" class="section">צבע עם תפקיד</text>
+    <text x="1358" y="1052" text-anchor="end" class="body">עד שישה צבעים. צבע הפעולה נשאר אחד.</text>
+  </g>
+  <g transform="translate(786 1092)">
+    <rect x="0" y="0" width="92" height="92" fill="#F3EEE4" stroke="#CFC6B7"/>
+    <rect x="112" y="0" width="92" height="92" fill="#FBF9F4" stroke="#CFC6B7"/>
+    <rect x="224" y="0" width="92" height="92" fill="#171712"/>
+    <rect x="336" y="0" width="92" height="92" fill="#B54B35"/>
+    <rect x="448" y="0" width="92" height="92" fill="#1F6462"/>
+    <rect x="560" y="0" width="92" height="92" fill="#A47A3D"/>
+    <text x="46" y="118" text-anchor="middle" class="he small muted">רקע</text>
+    <text x="158" y="118" text-anchor="middle" class="he small muted">משטח</text>
+    <text x="270" y="118" text-anchor="middle" class="he small muted">דיו</text>
+    <text x="382" y="118" text-anchor="middle" class="he small muted">פעולה</text>
+    <text x="494" y="118" text-anchor="middle" class="he small muted">מידע</text>
+    <text x="606" y="118" text-anchor="middle" class="he small muted">פרט</text>
+  </g>
+
+  <line x1="70" y1="1340" x2="1370" y2="1340" class="hair"/>
+  <text x="1370" y="1380" text-anchor="end" class="he section ink">חומר מחקר מסומן נשאר בלוח בלבד</text>
+
+  <g clip-path="url(#rainbowCrop)">
+    <image href="file:///C:/Users/777/Documents/Codex/2026-08-24/referenced-chatgpt-conversation-this-is-an/work/zip-check-master-1.0.0-rc3/aurelia-master-recipe-1.0.0-rc3/06-INPUT-BASELINE/rainbow-fullpage-1.png" x="70" y="1355" width="352" height="280" preserveAspectRatio="xMidYMin slice"/>
+  </g>
+  <rect x="70" y="1355" width="352" height="280" fill="none" stroke="#171712"/>
+  <text x="70" y="1662" class="he caption muted">V2-A03 · היררכיה וקרופ · רפרנס פנימי</text>
+
+  <g clip-path="url(#planCrop)">
+    <image href="file:///C:/Users/777/Documents/Codex/2026-09-01/nad-lan-redesign-directions/outputs/research-screenshots/12-ire-floor-plan.png" x="448" y="1355" width="390" height="238" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <rect x="448" y="1355" width="390" height="238" fill="none" stroke="#171712"/>
+  <text x="448" y="1620" class="he caption muted">V2-A04 · ממשק תוכנית · צילום מחקר</text>
+
+  <g clip-path="url(#buildingCrop)">
+    <image href="file:///C:/Users/777/Documents/Codex/2026-09-01/nad-lan-redesign-directions/outputs/research-screenshots/08-rendexio-building.png" x="864" y="1322" width="506" height="271" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <rect x="864" y="1322" width="506" height="271" fill="none" stroke="#171712"/>
+  <text x="1370" y="1620" text-anchor="end" class="he caption muted">V2-A05 · בחירת בניין וקומה · צילום מחקר</text>
+
+  <g transform="translate(70 1706)">
+    <text x="0" y="0" class="he label" fill="#B54B35">לא נכנס למוצר</text>
+    <text x="192" y="0" class="he caption muted">placeholder גאומטרי</text>
+    <line x1="184" y1="-8" x2="316" y2="-8" stroke="#B54B35" stroke-width="2"/>
+    <text x="354" y="0" class="he caption muted">כפתור כללי</text>
+    <line x1="346" y1="-8" x2="425" y2="-8" stroke="#B54B35" stroke-width="2"/>
+    <text x="464" y="0" class="he caption muted">קופי מצגתי</text>
+    <line x1="456" y1="-8" x2="538" y2="-8" stroke="#B54B35" stroke-width="2"/>
+    <text x="578" y="0" class="he caption muted">UI כהה של SaaS</text>
+    <line x1="570" y1="-8" x2="684" y2="-8" stroke="#B54B35" stroke-width="2"/>
+  </g>
+  <text x="1370" y="1748" text-anchor="end" class="he small muted">לשימוש פנימי בלבד · כל מקור והרשאה רשומים ב־asset-manifest-v2.md</text>
+</svg>

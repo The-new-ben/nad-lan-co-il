@@ -1048,3 +1048,24 @@ Evidence:
 - `docs/qa/screenshots/showroom-model-free-tap-grid-live-user-rerun-2026-06-24/`
 
 Honest limitation remains unchanged: the current live showroom supports six authored unit targets and nearest authored-unit selection from real model-viewer surface hits. It does not support exact click-any-window BIM selection until we receive apartment-level geometry, BIM or IFC mapping, or a GLB with per-unit pickable mesh IDs.
+
+### 2026-09-02 - Codex - Nad-Lan V2.1 design-review package staged
+
+The owner identified this repository as the correct destination for the completed
+Nad-Lan V2.1 design-review work. The 44-file package was imported without
+touching the existing site code under:
+
+- `docs/design/nad-lan-redesign-directions/2026-09-01-v2.1/`
+
+The package includes the language board, desktop and mobile SVG source files,
+rendered PNG proofs, research screenshots, the user-visible chat record, and
+the design handoff. It was added on branch
+`codex/nad-lan-redesign-v2-1-2026-09-02` for PR review instead of being pushed
+directly to `main`.
+
+Security checks found no credentials, personal contact details, secrets, or
+files near GitHub's size limit. No WordPress, live-site, Figma, DNS, plugin, or
+theme change was made in this task.
+
+Honest limitation: this commit stores review artifacts and design evidence only.
+It does not deploy or activate the proposed homepage design.
