@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="3800" viewBox="0 0 390 3800" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">דף הבית למובייל — פורטל נדל״ן פרימיום</title>
+  <desc id="svg-desc">קונספט עצמאי בעברית למובייל, הכולל חיפוש, מסלול למשקיעי חוץ, הקשר מקומי לשדה דב, פרויקט נבחר כהמחשה, אינדקס ערים, עדכונים, מחקר ושכבת אמון.</desc>
+
+  <defs>
+    <style>
+      .he { font-family: Arial; direction: rtl; }
+      .en { font-family: Georgia; direction: ltr; }
+      .ink { fill: #18211C; }
+      .muted { fill: #667068; }
+      .rust { fill: #A64E32; }
+      .cream { fill: #F4F0E7; }
+      .paper { fill: #FFFDF8; }
+      .sage { fill: #DDE2D8; }
+      .sand { fill: #DED6C8; }
+      .line { stroke: #C7C0B3; stroke-width: 1; }
+      .line-dark { stroke: #18211C; stroke-width: 1.2; }
+      .hair { stroke: #DDD6CA; stroke-width: 1; }
+      .h1 { font-family: Arial; font-weight: 700; font-size: 42px; letter-spacing: -1.2px; }
+      .h2 { font-family: Arial; font-weight: 700; font-size: 27px; letter-spacing: -0.5px; }
+      .h3 { font-family: Arial; font-weight: 700; font-size: 19px; }
+      .body { font-family: Arial; font-size: 16px; }
+      .body-bold { font-family: Arial; font-weight: 700; font-size: 16px; }
+      .small { font-family: Arial; font-size: 13px; }
+      .small-bold { font-family: Arial; font-weight: 700; font-size: 13px; }
+      .tiny { font-family: Arial; font-size: 11px; }
+      .kicker { font-family: Georgia; font-size: 11px; letter-spacing: 1.6px; }
+      .button { fill: #18211C; }
+      .button-text { font-family: Arial; font-size: 14px; font-weight: 700; fill: #FFFDF8; }
+    </style>
+    <clipPath id="project-photo-clip">
+      <rect x="20" y="1450" width="350" height="220" rx="2"/>
+    </clipPath>
+  </defs>
+
+  <rect width="390" height="3800" class="cream"/>
+  <path d="M20 0V3800 M370 0V3800" stroke="#E1DBCF" stroke-width="1" opacity="0.72"/>
+
+  <!-- Compact header -->
+  <rect x="0" y="0" width="390" height="76" class="paper"/>
+  <line x1="0" y1="76" x2="390" y2="76" class="line"/>
+  <text x="370" y="31" text-anchor="start" class="he ink" font-size="22" font-weight="700">נדל״ן</text>
+  <text x="370" y="50" text-anchor="start" class="he muted tiny">פורטל ישראלי לנכסים ולמקומות</text>
+
+  <rect x="20" y="14" width="48" height="48" rx="24" fill="#F4F0E7" stroke="#C7C0B3"/>
+  <path d="M34 30H54 M34 38H54 M34 46H48" class="line-dark" stroke-linecap="round"/>
+  <rect x="78" y="14" width="92" height="48" rx="24" fill="#FFFDF8" stroke="#C7C0B3"/>
+  <text x="124" y="43" text-anchor="middle" class="en ink" font-size="12">HE · EN</text>
+
+  <!-- Search and foreign-investor route -->
+  <rect x="20" y="94" width="350" height="56" rx="28" class="paper" stroke="#18211C" stroke-width="1.2"/>
+  <circle cx="342" cy="121" r="8" fill="none" stroke="#18211C" stroke-width="1.5"/>
+  <path d="M336 127L330 133" stroke="#18211C" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="319" y="127" text-anchor="start" class="he muted" font-family="Arial" font-size="14">חיפוש עיר, שכונה, כתובת או פרויקט</text>
+  <rect x="28" y="100" width="44" height="44" rx="22" fill="#DDE2D8"/>
+  <path d="M41 115H59 M44 122H56 M47 129H53" stroke="#18211C" stroke-width="1.3" stroke-linecap="round"/>
+
+  <rect x="20" y="166" width="350" height="102" rx="2" class="sage"/>
+  <path d="M350 182V252" stroke="#879386" stroke-width="1"/>
+  <text x="336" y="194" text-anchor="start" class="he ink small-bold">מסלול מידע למשקיעי חוץ</text>
+  <text x="336" y="217" text-anchor="start" class="he ink small">מקום, פרויקט ותהליך רכישה בשפה שלך</text>
+  <text x="336" y="241" text-anchor="end" class="en muted" font-size="12">EN · FR · RU · AR</text>
+  <rect x="32" y="188" width="92" height="48" rx="24" class="button"/>
+  <text x="78" y="218" text-anchor="middle" class="button-text he">למסלול</text>
+
+  <line x1="20" y1="288" x2="370" y2="288" class="line-dark"/>
+
+  <!-- Hero -->
+  <text x="20" y="320" text-anchor="start" class="kicker rust">NAD-LAN / PLACE INTELLIGENCE</text>
+  <text x="370" y="375" text-anchor="start" class="h1 he ink">לראות את הנכס</text>
+  <text x="370" y="421" text-anchor="start" class="h1 he ink">בתוך המקום.</text>
+  <text x="370" y="461" text-anchor="start" class="body he ink">חיפוש, הקשר, תוכניות ומחקר —</text>
+  <text x="370" y="485" text-anchor="start" class="body he ink">במסע אחד, מן העיר ועד היחידה.</text>
+
+  <!-- Local context enrichment embedded in the homepage narrative -->
+  <g aria-label="סכמת הקשר מקומי לשדה דב">
+    <rect x="20" y="520" width="350" height="230" rx="2" fill="#E7E2D7" stroke="#BEB6A8"/>
+    <text x="348" y="547" text-anchor="start" class="he ink small-bold">שדה דב · הקשר מקומי</text>
+    <text x="42" y="547" text-anchor="start" class="kicker muted">PLACE CONTEXT</text>
+    <path d="M44 704C96 671 126 673 175 633C217 598 263 599 344 557" fill="none" stroke="#6F7C72" stroke-width="11" opacity="0.28"/>
+    <path d="M39 672L121 591L204 687L337 592 M75 723L149 651L235 717L347 624" fill="none" stroke="#AFA797" stroke-width="1.2"/>
+    <path d="M111 563V721 M196 560V731 M285 555V705" stroke="#C4BCAE" stroke-width="1" stroke-dasharray="4 5"/>
+    <circle cx="197" cy="634" r="12" fill="#A64E32"/>
+    <circle cx="197" cy="634" r="4" fill="#FFFDF8"/>
+    <text x="218" y="629" text-anchor="start" class="he ink small-bold">שדה דב</text>
+    <text x="218" y="648" text-anchor="start" class="he muted tiny">הקשר עירוני וחופי</text>
+    <rect x="42" y="683" width="142" height="48" rx="24" class="button"/>
+    <text x="113" y="713" text-anchor="middle" class="button-text he">למדריך המקום</text>
+    <text x="348" y="730" text-anchor="start" class="he muted tiny">סכמת הקשר — המחשה</text>
+  </g>
+  <circle cx="360" cy="778" r="5" fill="#A64E32"/>
+  <text x="348" y="782" text-anchor="start" class="he muted tiny">הקשר מקומי המחובר לעמוד המקום</text>
+
+  <!-- Sde Dov place facts -->
+  <line x1="20" y1="806" x2="370" y2="806" class="line-dark"/>
+  <text x="20" y="839" text-anchor="start" class="kicker rust">PLACE FILE / SDE DOV</text>
+  <text x="370" y="878" text-anchor="start" class="h2 he ink">שדה דב, בקנה מידה שימושי</text>
+  <text x="370" y="910" text-anchor="start" class="body he ink">לא רק נקודה על מפה: מקום, תוכניות,</text>
+  <text x="370" y="934" text-anchor="start" class="body he ink">פרויקטים ומקורות שנפגשים באותה ישות.</text>
+
+  <rect x="201" y="970" width="169" height="92" fill="none" stroke="#C7C0B3"/>
+  <text x="350" y="995" text-anchor="start" class="he rust tiny">רחובות</text>
+  <text x="350" y="1026" text-anchor="start" class="he ink body-bold">597</text>
+  <text x="350" y="1047" text-anchor="start" class="he muted tiny">שדה דב</text>
+
+  <rect x="20" y="970" width="169" height="92" fill="none" stroke="#C7C0B3"/>
+  <text x="169" y="995" text-anchor="start" class="he rust tiny">כתובות</text>
+  <text x="169" y="1026" text-anchor="start" class="he ink body-bold">10,999</text>
+  <text x="169" y="1047" text-anchor="start" class="he muted tiny">שדה דב</text>
+
+  <rect x="201" y="1074" width="169" height="92" fill="none" stroke="#C7C0B3"/>
+  <text x="350" y="1099" text-anchor="start" class="he rust tiny">מקומות</text>
+  <text x="350" y="1130" text-anchor="start" class="he ink body-bold">4,495</text>
+  <text x="350" y="1151" text-anchor="start" class="he muted tiny">שדה דב</text>
+
+  <rect x="20" y="1074" width="169" height="92" fill="none" stroke="#C7C0B3"/>
+  <text x="169" y="1099" text-anchor="start" class="he rust tiny">עסקאות מקושרות</text>
+  <text x="169" y="1130" text-anchor="start" class="he ink body-bold">7,857</text>
+  <text x="169" y="1151" text-anchor="start" class="he muted tiny">מאז 2019</text>
+  <text x="195" y="1181" text-anchor="middle" class="he muted tiny">574 אזורי טבע · 1,271 רכיבי ניידות</text>
+
+  <rect x="20" y="1190" width="350" height="70" rx="2" class="paper" stroke="#C7C0B3"/>
+  <text x="350" y="1214" text-anchor="start" class="he muted tiny">נתיב SEO יציב לדוגמה</text>
+  <text x="38" y="1242" text-anchor="start" font-family="Arial" font-size="13" fill="#18211C" direction="ltr">/he/israel/tel-aviv/sde-dov/</text>
+
+  <rect x="20" y="1277" width="350" height="50" rx="25" class="button"/>
+  <text x="195" y="1308" text-anchor="middle" class="button-text he">למדריך המלא של שדה דב</text>
+
+  <!-- Selected project, explicitly illustrative -->
+  <line x1="20" y1="1348" x2="370" y2="1348" class="line-dark"/>
+  <text x="20" y="1380" text-anchor="start" class="kicker rust">SELECTED PROJECT / EDITORIAL</text>
+  <text x="370" y="1419" text-anchor="start" class="h2 he ink">פרויקט נבחר, בתוך ההקשר</text>
+
+  <g id="photo-placeholder" aria-label="מיקום לצילום אדריכלי אותנטי, מוצג כהמחשה" clip-path="url(#project-photo-clip)">
+    <rect x="20" y="1450" width="350" height="220" fill="#D7D0C3"/>
+    <rect x="42" y="1492" width="116" height="164" fill="#B9B4AA"/>
+    <rect x="148" y="1469" width="112" height="187" fill="#C6C0B5"/>
+    <rect x="250" y="1520" width="98" height="136" fill="#ACA99F"/>
+    <path d="M57 1518H143 M57 1548H143 M57 1578H143 M57 1608H143 M165 1500H245 M165 1532H245 M165 1564H245 M165 1596H245 M266 1544H333 M266 1576H333 M266 1608H333" stroke="#F4F0E7" stroke-width="3" opacity="0.88"/>
+    <path d="M20 1646C88 1613 131 1622 179 1601C231 1578 281 1590 370 1549V1670H20Z" fill="#7D8B7D" opacity="0.45"/>
+    <rect x="280" y="1466" width="74" height="34" rx="17" fill="#FFFDF8"/>
+    <text x="317" y="1488" text-anchor="middle" class="he rust small-bold">המחשה</text>
+    <rect x="36" y="1618" width="208" height="34" fill="#FFFDF8"/>
+    <text x="140" y="1640" text-anchor="middle" class="he ink tiny">מיקום לצילום אדריכלי אותנטי</text>
+  </g>
+
+  <text x="370" y="1715" text-anchor="start" class="h3 he ink">פרויקט מגורים נבחר לדוגמה</text>
+  <text x="370" y="1746" text-anchor="start" class="he ink small">העמוד מחבר מיקום, יחידות, תוכניות ומקור.</text>
+  <text x="370" y="1770" text-anchor="start" class="he muted tiny">השם, המלאי והנתונים יגיעו מן הרשומה המאומתת.</text>
+
+  <rect x="20" y="1795" width="350" height="82" rx="2" fill="#E4E6DF" stroke="#ABB3AA"/>
+  <g transform="translate(38 1812)" aria-hidden="true">
+    <path d="M0 47L25 36L50 47L25 58Z M0 32L25 21L50 32 M0 17L25 6L50 17" fill="none" stroke="#18211C" stroke-width="1.2"/>
+  </g>
+  <text x="350" y="1823" text-anchor="start" class="he rust tiny">תצוגת 3D זמינה</text>
+  <text x="350" y="1847" text-anchor="start" class="he ink small-bold">בניין ← קומה ← יחידה</text>
+  <text x="350" y="1866" text-anchor="start" class="he muted tiny">כלי החלטה שנפתח לפי דרישה</text>
+
+  <rect x="20" y="1895" width="350" height="52" rx="26" class="button"/>
+  <text x="195" y="1927" text-anchor="middle" class="button-text he">לפתיחת עמוד הפרויקט</text>
+
+  <!-- Place entry -->
+  <line x1="20" y1="1970" x2="370" y2="1970" class="line-dark"/>
+  <text x="20" y="2002" text-anchor="start" class="kicker rust">EXPLORE BY PLACE</text>
+  <text x="370" y="2041" text-anchor="start" class="h2 he ink">לגלות נכסים לפי מקום</text>
+  <text x="370" y="2072" text-anchor="start" class="body he ink">מתחילים בעיר, ממשיכים לשכונה,</text>
+  <text x="370" y="2096" text-anchor="start" class="body he ink">ומגיעים לפרויקט וליחידה.</text>
+
+  <rect x="201" y="2120" width="169" height="44" rx="22" class="paper" stroke="#C7C0B3"/>
+  <text x="285" y="2148" text-anchor="middle" class="he ink small-bold">תל אביב־יפו</text>
+  <rect x="20" y="2120" width="169" height="44" rx="22" class="paper" stroke="#C7C0B3"/>
+  <text x="104" y="2148" text-anchor="middle" class="he ink small-bold">ירושלים</text>
+
+  <rect x="201" y="2172" width="169" height="44" rx="22" class="paper" stroke="#C7C0B3"/>
+  <text x="285" y="2200" text-anchor="middle" class="he ink small-bold">חיפה</text>
+  <rect x="20" y="2172" width="169" height="44" rx="22" class="paper" stroke="#C7C0B3"/>
+  <text x="104" y="2200" text-anchor="middle" class="he ink small-bold">באר שבע</text>
+
+  <rect x="201" y="2224" width="169" height="44" rx="22" class="paper" stroke="#C7C0B3"/>
+  <text x="285" y="2252" text-anchor="middle" class="he ink small-bold">הרצליה</text>
+  <rect x="20" y="2224" width="169" height="44" rx="22" class="paper" stroke="#C7C0B3"/>
+  <text x="104" y="2252" text-anchor="middle" class="he ink small-bold">רמת גן</text>
+
+  <rect x="20" y="2290" width="350" height="52" rx="26" fill="none" stroke="#18211C" stroke-width="1.2"/>
+  <text x="195" y="2322" text-anchor="middle" class="he ink small-bold">לכל 20 הערים באינדקס</text>
+  <text x="370" y="2375" text-anchor="start" class="he muted tiny">הקישורים נשארים קריאים וסריקים גם ללא מפה.</text>
+
+  <!-- Entity-linked updates -->
+  <line x1="20" y1="2400" x2="370" y2="2400" class="line-dark"/>
+  <text x="20" y="2432" text-anchor="start" class="kicker rust">ENTITY-LINKED UPDATES</text>
+  <text x="370" y="2471" text-anchor="start" class="h2 he ink">מה השתנה, ובאיזו ישות?</text>
+  <text x="370" y="2502" text-anchor="start" class="body he ink">עדכונים מקושרים למקום, לפרויקט ולמקור —</text>
+  <text x="370" y="2525" text-anchor="start" class="he muted tiny">המבנה מוצג ללא מספרי שוק או דחיפות מומצאת.</text>
+
+  <g aria-label="דוגמאות מבניות לעדכונים מקושרי ישות">
+    <rect x="20" y="2550" width="350" height="94" fill="#FFFDF8"/>
+    <rect x="294" y="2564" width="56" height="24" rx="12" fill="#DDE2D8"/>
+    <text x="322" y="2581" text-anchor="middle" class="he ink tiny">רשמי</text>
+    <text x="350" y="2611" text-anchor="start" class="he ink small-bold">שדה דב · מסמך תכנון</text>
+    <text x="350" y="2631" text-anchor="start" class="he muted tiny">קישור לישות, למקור ולמועד העדכון</text>
+    <path d="M40 2580H69 M56 2566L70 2580L56 2594" fill="none" stroke="#A64E32" stroke-width="1.3"/>
+
+    <rect x="20" y="2654" width="350" height="94" fill="#FFFDF8"/>
+    <rect x="288" y="2668" width="62" height="24" rx="12" fill="#DED6C8"/>
+    <text x="319" y="2685" text-anchor="middle" class="he ink tiny">מחקר</text>
+    <text x="350" y="2715" text-anchor="start" class="he ink small-bold">עיר · מדריך אזורי</text>
+    <text x="350" y="2735" text-anchor="start" class="he muted tiny">הקשר מקומי שמוביל לפרויקטים הרלוונטיים</text>
+    <path d="M40 2684H69 M56 2670L70 2684L56 2698" fill="none" stroke="#A64E32" stroke-width="1.3"/>
+
+    <rect x="20" y="2758" width="350" height="94" fill="#FFFDF8"/>
+    <rect x="278" y="2772" width="72" height="24" rx="12" fill="#E8D8CF"/>
+    <text x="314" y="2789" text-anchor="middle" class="he ink tiny">רשומה</text>
+    <text x="350" y="2819" text-anchor="start" class="he ink small-bold">פרויקט · זמינות יחידות</text>
+    <text x="350" y="2839" text-anchor="start" class="he muted tiny">המידע המלא נשאר בעמוד הפרויקט</text>
+    <path d="M40 2788H69 M56 2774L70 2788L56 2802" fill="none" stroke="#A64E32" stroke-width="1.3"/>
+  </g>
+
+  <rect x="20" y="2870" width="350" height="48" rx="24" fill="none" stroke="#18211C"/>
+  <text x="195" y="2900" text-anchor="middle" class="he ink small-bold">לכל העדכונים</text>
+
+  <!-- Research -->
+  <line x1="20" y1="2940" x2="370" y2="2940" class="line-dark"/>
+  <text x="20" y="2972" text-anchor="start" class="kicker rust">RESEARCH FOR DECISIONS</text>
+  <text x="370" y="3011" text-anchor="start" class="h2 he ink">מחקר שמשרת החלטה</text>
+  <text x="370" y="3042" text-anchor="start" class="body he ink">מדריכים קצרים המחוברים למקומות ולפרויקטים.</text>
+
+  <g aria-label="רשימת מדריכי מחקר">
+    <rect x="20" y="3070" width="350" height="90" fill="none"/>
+    <text x="350" y="3095" text-anchor="start" class="he rust tiny">מדריך קנייה</text>
+    <text x="350" y="3124" text-anchor="start" class="he ink small-bold">איך לקרוא תוכנית ולהבין מה מוצע</text>
+    <text x="350" y="3147" text-anchor="start" class="he muted tiny">שאלות, סימונים ומקור לכל מסמך</text>
+    <circle cx="44" cy="3115" r="18" fill="#DDE2D8"/>
+    <path d="M38 3115H50 M46 3110L51 3115L46 3120" fill="none" stroke="#18211C" stroke-width="1.2"/>
+    <line x1="20" y1="3160" x2="370" y2="3160" class="hair"/>
+
+    <rect x="20" y="3168" width="350" height="90" fill="none"/>
+    <text x="350" y="3193" text-anchor="start" class="he rust tiny">השוואה</text>
+    <text x="350" y="3222" text-anchor="start" class="he ink small-bold">מה לבדוק לפני שמשווים פרויקטים</text>
+    <text x="350" y="3245" text-anchor="start" class="he muted tiny">אותם שדות, וחוסרים שמוצגים בגלוי</text>
+    <circle cx="44" cy="3213" r="18" fill="#DED6C8"/>
+    <path d="M36 3208H52 M36 3218H52" fill="none" stroke="#18211C" stroke-width="1.2"/>
+    <line x1="20" y1="3258" x2="370" y2="3258" class="hair"/>
+
+    <rect x="20" y="3266" width="350" height="90" fill="none"/>
+    <text x="350" y="3291" text-anchor="start" class="he rust tiny">לרוכשים מחו״ל</text>
+    <text x="350" y="3320" text-anchor="start" class="he ink small-bold">מסלול ברור מן המקום ועד הפנייה</text>
+    <text x="350" y="3343" text-anchor="start" class="he muted tiny">מושגים, שלבים ובעלי מקצוע בשפה נגישה</text>
+    <circle cx="44" cy="3311" r="18" fill="#E8D8CF"/>
+    <circle cx="44" cy="3311" r="8" fill="none" stroke="#18211C"/>
+    <path d="M36 3311H52 M44 3303C47 3307 47 3315 44 3319 M44 3303C41 3307 41 3315 44 3319" fill="none" stroke="#18211C" stroke-width="1"/>
+  </g>
+
+  <rect x="20" y="3375" width="350" height="52" rx="26" class="button"/>
+  <text x="195" y="3407" text-anchor="middle" class="button-text he">למרכז המחקר והמדריכים</text>
+
+  <!-- Trust layer -->
+  <line x1="20" y1="3448" x2="370" y2="3448" class="line-dark"/>
+  <text x="20" y="3480" text-anchor="start" class="kicker rust">SOURCE / DATE / CLASSIFICATION</text>
+  <text x="370" y="3519" text-anchor="start" class="h2 he ink">איך יודעים על מה לסמוך?</text>
+  <text x="370" y="3550" text-anchor="start" class="he ink small">לכל פריט מוצגים מקור, מועד עדכון וסוג המידע.</text>
+
+  <rect x="266" y="3572" width="104" height="44" rx="22" fill="#DDE2D8"/>
+  <text x="318" y="3600" text-anchor="middle" class="he ink small-bold">רשמי</text>
+  <rect x="143" y="3572" width="104" height="44" rx="22" fill="#DED6C8"/>
+  <text x="195" y="3600" text-anchor="middle" class="he ink small-bold">מחקר</text>
+  <rect x="20" y="3572" width="104" height="44" rx="22" fill="#E8D8CF"/>
+  <text x="72" y="3600" text-anchor="middle" class="he ink small-bold">המחשה</text>
+
+  <text x="370" y="3648" text-anchor="start" class="he muted tiny">חוסר מידע נשאר גלוי; האתר אינו משלים נתונים בניחוש.</text>
+
+  <!-- Footer -->
+  <rect x="0" y="3690" width="390" height="110" fill="#18211C"/>
+  <text x="370" y="3727" text-anchor="start" class="he" fill="#FFFDF8" font-size="21" font-weight="700">נדל״ן</text>
+  <text x="20" y="3726" text-anchor="start" class="en" fill="#C9D0C8" font-size="11">HE · EN · FR · RU · AR</text>
+  <text x="370" y="3760" text-anchor="start" class="he" fill="#FFFDF8" font-size="12">ערים · פרויקטים · מחקר · שמורים · אודות</text>
+  <text x="370" y="3785" text-anchor="start" class="he" fill="#AEB7AE" font-size="10">קונספט חזותי — תוכן ונתונים יאומתו לפני פרסום</text>
+  <text x="20" y="3785" text-anchor="start" class="en" fill="#AEB7AE" font-size="9">NAD-LAN PORTAL</text>
+</svg>
+

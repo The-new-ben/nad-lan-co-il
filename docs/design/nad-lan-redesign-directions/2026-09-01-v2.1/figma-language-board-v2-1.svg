@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1800" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+  <title id="title">Nad-Lan שפה חזותית V2.1</title>
+  <desc id="desc">לוח שפה עריכתי לפורטל נדל״ן ישראלי עם צילום SIX8, טיפוגרפיה עברית, חיפוש, כרטיס פרויקט, תוכנית קומה וכניסה לסיור.</desc>
+  <defs>
+    <style>
+      .he{font-family:Arial,"Noto Sans Hebrew",sans-serif;direction:rtl;unicode-bidi:isolate}
+      .en{font-family:Arial,sans-serif;direction:ltr;unicode-bidi:isolate}
+      .ink{fill:#172429}
+      .muted{fill:#667277}
+      .accent{fill:#C8523C}
+      .small{font-size:13px}
+      .caption{font-size:15px}
+      .body{font-size:20px}
+      .label{font-size:15px;font-weight:700}
+      .section{font-size:31px;font-weight:700;letter-spacing:-.02em}
+      .h1{font-size:68px;font-weight:700;letter-spacing:-.04em}
+      .hair{stroke:#C9CEC9;stroke-width:1}
+    </style>
+    <clipPath id="lead"><rect x="622" y="78" width="750" height="576" rx="2"/></clipPath>
+    <clipPath id="wide"><rect x="72" y="810" width="440" height="275" rx="2"/></clipPath>
+    <clipPath id="card"><rect x="536" y="810" width="282" height="275" rx="2"/></clipPath>
+    <clipPath id="phone"><rect x="842" y="748" width="188" height="337" rx="2"/></clipPath>
+    <clipPath id="plate"><rect x="1054" y="748" width="318" height="337" rx="2"/></clipPath>
+    <clipPath id="plan"><rect x="72" y="1320" width="430" height="267" rx="2"/></clipPath>
+    <clipPath id="building"><rect x="526" y="1265" width="492" height="322" rx="2"/></clipPath>
+    <clipPath id="tour"><rect x="1042" y="1265" width="330" height="322" rx="2"/></clipPath>
+  </defs>
+
+  <rect width="1440" height="1800" fill="#F3F0E8"/>
+  <rect x="0" y="0" width="20" height="1800" fill="#5B8E9A"/>
+
+  <g class="he ink">
+    <text x="566" y="102" text-anchor="end" class="en label" fill="#C8523C">nad-lan</text>
+    <text x="566" y="174" text-anchor="start" class="h1">שפה חזותית</text>
+    <text x="566" y="216" text-anchor="start" class="body">צילום אדריכלי, עברית מדויקת ופעולה ברורה.</text>
+  </g>
+  <line x1="72" y1="254" x2="566" y2="254" class="hair"/>
+
+  <g class="he ink">
+    <text x="566" y="310" text-anchor="start" class="label">טיפוגרפיה</text>
+    <text x="566" y="382" text-anchor="start" font-size="48" font-weight="700" letter-spacing="-1.5">SIX8 תל אביב</text>
+    <text x="566" y="428" text-anchor="start" class="section">הרברט סמואל, תל אביב</text>
+    <text x="566" y="472" text-anchor="start" class="body">מקום, דירה והמידע שצריך לפני שפונים</text>
+    <text x="566" y="510" text-anchor="start" class="caption muted">מקור תמונה: SIX8</text>
+    <text x="566" y="568" text-anchor="start" font-size="38" font-weight="700">1282 × 607</text>
+    <text x="566" y="598" text-anchor="start" class="small muted">נתון קצר נשאר קריא בתוך הקצב העריכתי</text>
+  </g>
+
+  <g>
+    <rect x="72" y="646" width="494" height="62" rx="3" fill="#FFFFFF" stroke="#172429"/>
+    <text x="520" y="685" text-anchor="start" class="he body muted">עיר, שכונה, רחוב או שם</text>
+    <rect x="72" y="646" width="106" height="62" rx="3" fill="#C8523C"/>
+    <text x="125" y="685" text-anchor="middle" class="he body" fill="#FFFFFF" font-weight="700">חיפוש</text>
+  </g>
+
+  <g clip-path="url(#lead)">
+    <image href="file:///C:/Users/777/Documents/Codex/2026-09-01/nad-lan-redesign-directions/assets-v2-1/six8-official-source-view.jpg" x="622" y="78" width="750" height="576" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <rect x="622" y="78" width="750" height="576" fill="none" stroke="#172429"/>
+  <rect x="650" y="106" width="168" height="35" fill="#F3F0E8"/>
+  <text x="734" y="130" text-anchor="middle" class="he label ink">קרופ שער</text>
+  <text x="1372" y="680" text-anchor="start" class="he caption muted">SIX8, הרברט סמואל · מקור הפרויקט</text>
+
+  <text x="1372" y="744" text-anchor="start" class="he section ink">אותו נכס, שלושה קני מידה</text>
+
+  <g clip-path="url(#wide)">
+    <image href="file:///C:/Users/777/Documents/Codex/2026-09-01/nad-lan-redesign-directions/assets-v2-1/six8-official-source-view.jpg" x="72" y="810" width="440" height="275" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <rect x="72" y="810" width="440" height="275" fill="none" stroke="#172429"/>
+  <text x="72" y="1112" text-anchor="end" class="he caption muted">מחשב · אופק ים והבניין במתח מאוזן</text>
+
+  <g clip-path="url(#card)">
+    <image href="file:///C:/Users/777/Documents/Codex/2026-09-01/nad-lan-redesign-directions/assets-v2-1/six8-official-source-view.jpg" x="536" y="810" width="282" height="275" preserveAspectRatio="xMaxYMid slice"/>
+  </g>
+  <rect x="536" y="810" width="282" height="275" fill="none" stroke="#172429"/>
+  <text x="536" y="1112" text-anchor="end" class="he caption muted">כרטיס · הבניין והבריכה</text>
+
+  <g clip-path="url(#phone)">
+    <image href="file:///C:/Users/777/Documents/Codex/2026-09-01/nad-lan-redesign-directions/assets-v2-1/six8-official-source-view.jpg" x="842" y="748" width="188" height="337" preserveAspectRatio="xMaxYMid slice"/>
+  </g>
+  <rect x="842" y="748" width="188" height="337" fill="none" stroke="#172429"/>
+  <text x="842" y="1112" text-anchor="end" class="he caption muted">מובייל · קרופ אנכי</text>
+
+  <g clip-path="url(#plate)">
+    <image href="file:///C:/Users/777/Documents/Codex/2026-09-01/nad-lan-redesign-directions/assets-v2-1/six8-herbert-samuel-plate-capsules.jpg" x="1054" y="748" width="318" height="337" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <rect x="1054" y="748" width="318" height="337" fill="none" stroke="#172429"/>
+  <text x="1372" y="1112" text-anchor="start" class="he caption muted">מרקם וקפסולה · SIX8</text>
+
+  <g transform="translate(72 1170)">
+    <text x="0" y="0" class="en label ink">SIX8 TEL AVIV</text>
+    <text x="0" y="26" class="en small muted">One LTR specimen</text>
+    <text x="440" y="0" text-anchor="start" class="he label ink">RTL נשאר ברירת המחדל</text>
+    <text x="440" y="26" text-anchor="start" class="he small muted">עברית קצרה, מספרים ושם רשמי באנגלית</text>
+  </g>
+
+  <g transform="translate(572 1150)">
+    <rect x="0" y="0" width="90" height="78" fill="#F3F0E8" stroke="#C9CEC9"/>
+    <rect x="106" y="0" width="90" height="78" fill="#FFFFFF" stroke="#C9CEC9"/>
+    <rect x="212" y="0" width="90" height="78" fill="#172429"/>
+    <rect x="318" y="0" width="90" height="78" fill="#5B8E9A"/>
+    <rect x="424" y="0" width="90" height="78" fill="#C8523C"/>
+    <rect x="530" y="0" width="90" height="78" fill="#C5AD7F"/>
+    <text x="45" y="102" text-anchor="middle" class="he small muted">רקע</text>
+    <text x="151" y="102" text-anchor="middle" class="he small muted">משטח</text>
+    <text x="257" y="102" text-anchor="middle" class="he small muted">דיו</text>
+    <text x="363" y="102" text-anchor="middle" class="he small muted">ים</text>
+    <text x="469" y="102" text-anchor="middle" class="he small muted">פעולה</text>
+    <text x="575" y="102" text-anchor="middle" class="he small muted">חומר</text>
+  </g>
+
+  <line x1="72" y1="1244" x2="1372" y2="1244" class="hair"/>
+
+  <g clip-path="url(#plan)">
+    <image href="file:///C:/Users/777/Documents/Codex/2026-09-01/nad-lan-redesign-directions/outputs/research-screenshots/12-ire-floor-plan.png" x="72" y="1320" width="430" height="267" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <rect x="72" y="1320" width="430" height="267" fill="none" stroke="#172429"/>
+  <text x="72" y="1615" text-anchor="end" class="he label ink">תוכנית קומה</text>
+  <text x="72" y="1640" text-anchor="end" class="he caption muted">קריאות לפני עומס, תוכנית לפני טופס</text>
+
+  <g clip-path="url(#building)">
+    <image href="file:///C:/Users/777/Documents/Codex/2026-09-01/nad-lan-redesign-directions/outputs/research-screenshots/08-rendexio-building.png" x="526" y="1265" width="492" height="322" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <rect x="526" y="1265" width="492" height="322" fill="none" stroke="#172429"/>
+  <text x="526" y="1615" text-anchor="end" class="he label ink">בחירת בניין וקומה</text>
+  <text x="526" y="1640" text-anchor="end" class="he caption muted">פעולה אחת בכל שלב</text>
+
+  <g clip-path="url(#tour)">
+    <image href="file:///C:/Users/777/Documents/Codex/2026-09-01/nad-lan-redesign-directions/assets-v2-1/six8-3d-tour-still.png" x="1042" y="1265" width="330" height="322" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <rect x="1042" y="1265" width="330" height="322" fill="none" stroke="#172429"/>
+  <rect x="1066" y="1515" width="282" height="48" fill="#172429"/>
+  <text x="1207" y="1546" text-anchor="middle" class="he body" fill="#FFFFFF" font-weight="700">לראות בתלת ממד</text>
+  <text x="1372" y="1615" text-anchor="start" class="he label ink">כניסה לתלת ממד</text>
+  <text x="1372" y="1640" text-anchor="start" class="he caption muted">תמונה נשארת זמינה לפני פתיחת הכלי</text>
+
+  <g class="he ink">
+    <text x="1372" y="1722" text-anchor="start" class="section">הצילום מוביל. הממשק מסביר מה אפשר לעשות.</text>
+    <text x="1372" y="1760" text-anchor="start" class="body muted">חיפוש, פרויקט ותוכן מקבלים קצב שונה בלי לחזור על אותה כותרת.</text>
+  </g>
+</svg>

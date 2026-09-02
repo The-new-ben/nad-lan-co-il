@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="2200" viewBox="0 0 1440 2200" role="img" aria-labelledby="title desc">
+  <title id="title">Nad-Lan Premium Portal Direction — language board</title>
+  <desc id="desc">A bilingual Hebrew and English architectural language board for a premium real-estate portal, with a cream and ink palette, typography, trust labels, five-language proof, local-context facts, and a comparison of full palette systems against a recommended controlled palette touch.</desc>
+
+  <defs>
+    <style>
+      .sans { font-family: Arial, sans-serif; }
+      .serif { font-family: Georgia, serif; }
+      .ink { fill: #171A18; }
+      .muted { fill: #5E625E; }
+      .line { stroke: #B9B4A9; stroke-width: 1; fill: none; }
+      .hairline { stroke: #B9B4A9; stroke-width: 0.5; fill: none; }
+      .rule { stroke: #D9D4C9; stroke-width: 1; fill: none; }
+      .rtl { direction: rtl; unicode-bidi: plaintext; }
+      .ltr { direction: ltr; unicode-bidi: plaintext; }
+      .caps { letter-spacing: 1.6px; }
+    </style>
+  </defs>
+
+  <!-- Canvas + architectural grid -->
+  <rect width="1440" height="2200" fill="#F2EEE3"/>
+  <g opacity="0.28" class="hairline">
+    <path d="M80 0V2200 M184 0V2200 M288 0V2200 M392 0V2200 M496 0V2200 M600 0V2200 M704 0V2200 M808 0V2200 M912 0V2200 M1016 0V2200 M1120 0V2200 M1224 0V2200 M1328 0V2200"/>
+    <path d="M0 220H1440 M0 820H1440 M0 1210H1440 M0 1560H1440 M0 1850H1440 M0 2168H1440"/>
+  </g>
+
+  <!-- Header -->
+  <text x="80" y="72" class="sans ink caps ltr" font-size="13" font-weight="700">NAD-LAN.CO.IL / CONCEPT 01</text>
+  <text x="80" y="111" class="serif muted ltr" font-size="18" font-style="italic">Nad-Lan Premium Portal Direction</text>
+  <text x="1360" y="82" text-anchor="start" class="sans ink rtl" font-size="46" font-weight="700">כיוון לפורטל נדל״ן פרימיום</text>
+  <text x="1360" y="126" text-anchor="start" class="sans muted rtl" font-size="18">לוח שפה · דיו, אבן ומפה</text>
+  <line x1="80" y1="172" x2="1360" y2="172" stroke="#171A18" stroke-width="2"/>
+  <text x="80" y="203" class="sans muted caps ltr" font-size="11">CREAM / INK / ARCHITECTURAL LINE / CONTROLLED COLOUR</text>
+  <text x="1360" y="203" text-anchor="start" class="sans muted rtl" font-size="13">פורטל מקומי עשיר · חמש שפות · מידע לפני אפקט</text>
+
+  <!-- Section 01: real-photo slot -->
+  <text x="80" y="266" class="sans muted caps ltr" font-size="12" font-weight="700">01 / IMAGE PRINCIPLE</text>
+  <text x="1360" y="266" text-anchor="start" class="sans ink rtl" font-size="22" font-weight="700">צילום אמיתי הוא חומר מידע</text>
+
+  <rect id="photo-placeholder" x="80" y="300" width="800" height="468" fill="#DDD9D0" stroke="#171A18" stroke-width="1.5"/>
+  <g stroke="#A9A59C" fill="none">
+    <line x1="80" y1="300" x2="880" y2="768" stroke-width="0.75"/>
+    <line x1="880" y1="300" x2="80" y2="768" stroke-width="0.75"/>
+    <rect x="112" y="332" width="736" height="404" stroke-width="0.75" stroke-dasharray="6 5"/>
+    <path d="M80 330h28 M94 300v28 M852 300v28 M880 330h-28 M80 738h28 M94 768v-28 M852 768v-28 M880 738h-28" stroke="#171A18"/>
+  </g>
+  <text x="480" y="504" text-anchor="middle" class="sans ink rtl" font-size="25" font-weight="700">מקום לצילום אדריכלות אמיתי</text>
+  <text x="480" y="540" text-anchor="middle" class="sans muted rtl" font-size="16">יש לשבץ צילום מאומת ומזוכה מן האתר או מן הפרויקט</text>
+  <text x="480" y="568" text-anchor="middle" class="sans muted ltr" font-size="13">REAL PHOTO SLOT — NO STOCK IMAGE OR UNLABELLED RENDER</text>
+  <rect x="104" y="704" width="305" height="38" rx="19" fill="#171A18"/>
+  <text x="256.5" y="729" text-anchor="middle" class="sans ltr" font-size="12" fill="#F7F4EB" font-weight="700">CREDIT + SOURCE + CAPTURE DATE</text>
+
+  <rect x="920" y="300" width="440" height="468" fill="#FBF9F3" stroke="#D9D4C9"/>
+  <text x="1320" y="355" text-anchor="end" class="sans muted caps ltr" font-size="11">VISUAL PREMISE</text>
+  <text x="1320" y="407" text-anchor="start" class="sans ink rtl" font-size="36" font-weight="700">דיו · אבן · מפה</text>
+  <line x1="960" y1="440" x2="1320" y2="440" stroke="#171A18"/>
+  <text x="1320" y="484" text-anchor="start" class="sans ink rtl" font-size="18">דיוק קרטוגרפי</text>
+  <text x="1320" y="512" text-anchor="start" class="sans muted rtl" font-size="15">גבולות, קשרים וקנה מידה אמיתיים</text>
+  <text x="1320" y="563" text-anchor="start" class="sans ink rtl" font-size="18">עריכה אדריכלית</text>
+  <text x="1320" y="591" text-anchor="start" class="sans muted rtl" font-size="15">צילום מקומי, תוכניות, כיתובים וקרדיט</text>
+  <text x="1320" y="642" text-anchor="start" class="sans ink rtl" font-size="18">מערכת החלטה</text>
+  <text x="1320" y="670" text-anchor="start" class="sans muted rtl" font-size="15">חיפוש, השוואה, שמירה ופנייה בהקשר</text>
+  <rect x="960" y="704" width="360" height="1" fill="#D9D4C9"/>
+  <text x="1320" y="738" text-anchor="end" class="serif muted ltr" font-size="14" font-style="italic">Premium through evidence, restraint and place.</text>
+
+  <!-- Section 02: palette + trust -->
+  <text x="80" y="864" class="sans muted caps ltr" font-size="12" font-weight="700">02 / COLOUR &amp; TRUST</text>
+  <text x="1360" y="864" text-anchor="start" class="sans ink rtl" font-size="22" font-weight="700">בסיס מונוכרומטי, צבע רק כשיש לו תפקיד</text>
+
+  <g>
+    <rect x="80" y="906" width="126" height="108" fill="#F2EEE3" stroke="#B9B4A9"/>
+    <rect x="222" y="906" width="126" height="108" fill="#FBF9F3" stroke="#B9B4A9"/>
+    <rect x="364" y="906" width="126" height="108" fill="#171A18"/>
+    <rect x="506" y="906" width="126" height="108" fill="#5E625E"/>
+    <rect x="648" y="906" width="126" height="108" fill="#A44334"/>
+    <rect x="790" y="906" width="126" height="108" fill="#457986"/>
+    <text x="80" y="1040" class="sans ink ltr" font-size="12" font-weight="700">CREAM</text>
+    <text x="80" y="1059" class="sans muted ltr" font-size="11">#F2EEE3</text>
+    <text x="222" y="1040" class="sans ink ltr" font-size="12" font-weight="700">PAPER</text>
+    <text x="222" y="1059" class="sans muted ltr" font-size="11">#FBF9F3</text>
+    <text x="364" y="1040" class="sans ink ltr" font-size="12" font-weight="700">INK</text>
+    <text x="364" y="1059" class="sans muted ltr" font-size="11">#171A18</text>
+    <text x="506" y="1040" class="sans ink ltr" font-size="12" font-weight="700">MUTED</text>
+    <text x="506" y="1059" class="sans muted ltr" font-size="11">#5E625E</text>
+    <text x="648" y="1040" class="sans ink ltr" font-size="12" font-weight="700">SURVEY RED</text>
+    <text x="648" y="1059" class="sans muted ltr" font-size="11">#A44334</text>
+    <text x="790" y="1040" class="sans ink ltr" font-size="12" font-weight="700">MAP BLUE</text>
+    <text x="790" y="1059" class="sans muted ltr" font-size="11">#457986</text>
+  </g>
+
+  <text x="80" y="1110" class="sans muted ltr" font-size="13">85–90% cream, paper, ink and monochrome photography</text>
+  <text x="80" y="1135" class="sans ink ltr" font-size="13" font-weight="700">10–15% controlled colour: capsules, selected state, map point</text>
+
+  <rect x="960" y="906" width="400" height="260" fill="#FBF9F3" stroke="#D9D4C9"/>
+  <text x="1320" y="946" text-anchor="start" class="sans ink rtl" font-size="18" font-weight="700">תוויות אמון</text>
+  <text x="1320" y="972" text-anchor="start" class="sans muted rtl" font-size="13">צבע + סמל + טקסט; לעולם לא צבע בלבד</text>
+  <rect x="1030" y="998" width="290" height="36" rx="18" fill="#D5E4E5" stroke="#234D55" stroke-opacity="0.3"/>
+  <circle cx="1052" cy="1016" r="4" fill="#234D55"/>
+  <text x="1300" y="1021" text-anchor="start" class="sans rtl" font-size="13" fill="#234D55" font-weight="700">רשמי · מקור מזוהה</text>
+  <rect x="1030" y="1048" width="290" height="36" rx="18" fill="#E9DFC1" stroke="#5D4819" stroke-opacity="0.3"/>
+  <rect x="1048" y="1062" width="9" height="11" fill="none" stroke="#5D4819"/>
+  <text x="1300" y="1071" text-anchor="start" class="sans rtl" font-size="13" fill="#5D4819" font-weight="700">מחקר · תאריך בעמוד</text>
+  <rect x="1030" y="1098" width="290" height="36" rx="18" fill="#E9D4CB" stroke="#703328" stroke-opacity="0.3"/>
+  <path d="M1052 1110l7 6-7 6-7-6z" fill="none" stroke="#703328"/>
+  <text x="1300" y="1121" text-anchor="start" class="sans rtl" font-size="13" fill="#703328" font-weight="700">המחשה · אינה מחייבת</text>
+
+  <!-- Section 03: type + language proof -->
+  <text x="80" y="1252" class="sans muted caps ltr" font-size="12" font-weight="700">03 / TYPE &amp; LANGUAGE</text>
+  <text x="1360" y="1252" text-anchor="start" class="sans ink rtl" font-size="22" font-weight="700">מערכת אחת, חמש שפות ושני כיווני קריאה</text>
+
+  <rect x="80" y="1292" width="590" height="224" fill="#FBF9F3" stroke="#D9D4C9"/>
+  <text x="630" y="1342" text-anchor="start" class="sans ink rtl" font-size="42" font-weight="700">מקום לפני אפקט</text>
+  <text x="630" y="1384" text-anchor="start" class="sans ink rtl" font-size="22">חפשו עיר, שכונה, רחוב או פרויקט</text>
+  <text x="630" y="1424" text-anchor="start" class="sans muted rtl" font-size="16">צילום, תוכנית, מקור ותאריך באותה היררכיה</text>
+  <text x="120" y="1474" class="serif muted ltr" font-size="16" font-style="italic">Place before effect. Evidence before spectacle.</text>
+
+  <rect x="700" y="1292" width="660" height="224" fill="#171A18"/>
+  <text x="1320" y="1331" text-anchor="start" class="sans rtl" font-size="15" fill="#F7F4EB">עברית · חיפוש לפי עיר, שכונה, רחוב או פרויקט</text>
+  <text x="740" y="1368" class="sans ltr" font-size="15" fill="#F7F4EB">English · Search by city, neighbourhood, street or project</text>
+  <text x="740" y="1405" class="sans ltr" font-size="15" fill="#F7F4EB">Français · Rechercher par ville, quartier, rue ou projet</text>
+  <text x="740" y="1442" class="sans ltr" font-size="15" fill="#F7F4EB">Русский · Поиск по городу, району, улице или проекту</text>
+  <text x="1320" y="1479" text-anchor="start" class="sans rtl" font-size="15" fill="#F7F4EB">العربية · البحث حسب المدينة أو الحي أو الشارع أو المشروع</text>
+
+  <!-- Section 04: local context and verified facts -->
+  <text x="80" y="1602" class="sans muted caps ltr" font-size="12" font-weight="700">04 / LOCAL CONTEXT</text>
+  <text x="1360" y="1602" text-anchor="start" class="sans ink rtl" font-size="22" font-weight="700">הפורטל נע בין קני מידה בלי לאבד הקשר</text>
+
+  <line x1="142" y1="1664" x2="1298" y2="1664" stroke="#171A18" stroke-width="1.5"/>
+  <g class="sans ink" font-size="14" font-weight="700" text-anchor="middle">
+    <circle cx="142" cy="1664" r="8" fill="#A44334"/><text x="142" y="1700">עיר</text>
+    <circle cx="373" cy="1664" r="6" fill="#F2EEE3" stroke="#171A18"/><text x="373" y="1700">שכונה</text>
+    <circle cx="604" cy="1664" r="6" fill="#F2EEE3" stroke="#171A18"/><text x="604" y="1700">פרויקט</text>
+    <circle cx="836" cy="1664" r="6" fill="#F2EEE3" stroke="#171A18"/><text x="836" y="1700">בניין</text>
+    <circle cx="1067" cy="1664" r="6" fill="#F2EEE3" stroke="#171A18"/><text x="1067" y="1700">קומה</text>
+    <circle cx="1298" cy="1664" r="8" fill="#457986"/><text x="1298" y="1700">דירה</text>
+  </g>
+
+  <g>
+    <rect x="80" y="1734" width="232" height="78" fill="#FBF9F3" stroke="#D9D4C9"/>
+    <rect x="324" y="1734" width="232" height="78" fill="#FBF9F3" stroke="#D9D4C9"/>
+    <rect x="568" y="1734" width="232" height="78" fill="#FBF9F3" stroke="#D9D4C9"/>
+    <rect x="812" y="1734" width="232" height="78" fill="#FBF9F3" stroke="#D9D4C9"/>
+    <rect x="1056" y="1734" width="304" height="78" fill="#FBF9F3" stroke="#D9D4C9"/>
+    <text x="196" y="1768" text-anchor="middle" class="sans ink" font-size="23" font-weight="700">20</text>
+    <text x="196" y="1793" text-anchor="middle" class="sans muted rtl" font-size="12">ערים במקורות</text>
+    <text x="440" y="1768" text-anchor="middle" class="sans ink" font-size="23" font-weight="700">597</text>
+    <text x="440" y="1793" text-anchor="middle" class="sans muted rtl" font-size="12">רחובות · שדה דב</text>
+    <text x="684" y="1768" text-anchor="middle" class="sans ink" font-size="23" font-weight="700">10,999</text>
+    <text x="684" y="1793" text-anchor="middle" class="sans muted rtl" font-size="12">כתובות · שדה דב</text>
+    <text x="928" y="1768" text-anchor="middle" class="sans ink" font-size="23" font-weight="700">4,495</text>
+    <text x="928" y="1793" text-anchor="middle" class="sans muted rtl" font-size="12">מקומות · שדה דב</text>
+    <text x="1208" y="1768" text-anchor="middle" class="sans ink" font-size="23" font-weight="700">7,857</text>
+    <text x="1208" y="1793" text-anchor="middle" class="sans muted rtl" font-size="12">עסקאות מקושרות מאז 2019</text>
+  </g>
+  <text x="1360" y="1843" text-anchor="start" class="sans muted rtl" font-size="12">שדה דב · 574 אזורי טבע · 1,271 רכיבי ניידות</text>
+
+  <!-- Section 05: objective palette comparison -->
+  <text x="80" y="1892" class="sans muted caps ltr" font-size="12" font-weight="700">05 / PALETTE STRATEGY</text>
+  <text x="1360" y="1892" text-anchor="start" class="sans ink rtl" font-size="22" font-weight="700">בחירה מערכתית ל־20 ערים</text>
+
+  <rect x="80" y="1926" width="600" height="200" fill="#FBF9F3" stroke="#D9D4C9"/>
+  <text x="640" y="1965" text-anchor="start" class="sans ink rtl" font-size="20" font-weight="700">מערכת פלטות מלאה</text>
+  <text x="640" y="1997" text-anchor="start" class="sans muted rtl" font-size="14">בידול מהיר בין ערים, אך יותר כללים ותחזוקה</text>
+  <text x="640" y="2024" text-anchor="start" class="sans muted rtl" font-size="14">מתחרה בצילום ועלולה לערבב אווירה עם משמעות</text>
+  <text x="640" y="2051" text-anchor="start" class="sans muted rtl" font-size="14">דורשת בדיקות ניגודיות ו־QA נפרד לכל פלטה</text>
+  <text x="120" y="2093" class="serif muted ltr" font-size="13" font-style="italic">Better suited to city campaigns or editorial microsites.</text>
+
+  <rect x="720" y="1926" width="640" height="200" fill="#171A18" stroke="#A44334" stroke-width="3"/>
+  <rect x="1167" y="1946" width="153" height="30" rx="15" fill="#E9D4CB"/>
+  <text x="1243.5" y="1966" text-anchor="middle" class="sans rtl" font-size="12" fill="#703328" font-weight="700">מומלץ לפורטל</text>
+  <text x="1320" y="2007" text-anchor="start" class="sans rtl" font-size="20" fill="#F7F4EB" font-weight="700">טאץ׳ פלטות מבוקר</text>
+  <text x="1320" y="2038" text-anchor="start" class="sans rtl" font-size="14" fill="#D9D4C9">ממשק עקבי לחיפוש, השוואה ומובייל</text>
+  <text x="1320" y="2065" text-anchor="start" class="sans rtl" font-size="14" fill="#D9D4C9">צבע קבוע לפי תפקיד; אופי העיר מגיע מן המציאות</text>
+  <text x="1320" y="2092" text-anchor="start" class="sans rtl" font-size="14" fill="#D9D4C9">מערכת אחת ניתנת להרחבה ל־20 ערים ולחמש שפות</text>
+
+  <!-- Footer -->
+  <line x1="80" y1="2160" x2="1360" y2="2160" stroke="#171A18"/>
+  <text x="80" y="2187" class="sans muted caps ltr" font-size="10">FIGMA-READY SVG / 1440 × 2200 / ARIAL + GEORGIA ONLY</text>
+  <text x="1360" y="2187" text-anchor="start" class="sans muted rtl" font-size="11">ללא גרדיאנטים · ללא זכוכית · ללא נתונים מומצאים</text>
+</svg>
+
