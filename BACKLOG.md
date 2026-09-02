@@ -146,6 +146,11 @@
 
 ## Shipped log (history — do not delete)
 
+- 🟡 2026-09-02 — Nad-Lan homepage V2.1 design-review package imported under
+  `docs/design/nad-lan-redesign-directions/2026-09-01-v2.1/` on branch
+  `codex/nad-lan-redesign-v2-1-2026-09-02`. Includes source SVGs, rendered
+  proofs, research screenshots, the user-visible chat record, and handoff
+  notes. Pending owner review through PR; no live-site or WordPress change.
 - 🟢 2026-06-23 - adopted Codex and WordPress skill pack added after external research: 12 new small skills, research report, master skill links, MAP, README, and SKILLS-TREE integration.
 - 🟢 2026-06-23 — master autonomous execution skill added: no CSS/element stacking, screenshot-first proof, release gates, Lovable sync, public-language hygiene, and cross-site replication process.
 - 🟢 1.33.0 — projects premium directory + real reviews engine (moderation + schema.org).
