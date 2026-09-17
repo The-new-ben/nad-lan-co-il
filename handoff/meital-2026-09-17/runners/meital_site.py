@@ -99,10 +99,10 @@ LANGS = {
                "הדרך הכי מהירה להגיע אליי היא וואטסאפ. אני עונה."],
         areas_h2="האזורים שלי", areas_p="קו החוף הצפוני של תל אביב, ומשם פנימה אל שרונה וצפונה אל הרצליה פיתוח.",
         one="נכס אחד", many="{n} נכסים", nav_aria="ניווט באתר של מיטל קציר",
-        photos_eyebrow="תמונות", photos_h2="הנכס בתמונות",
+        photos_eyebrow="תמונות", photos_h2="הנכס בתמונות", home_label="האתר של מיטל קציר",
         agent_line_re=r'נדל״ן על הים · רישיון תיווך <span class="nlx-num">3131540</span>[^<]*', agent_line="נדל״ן על הים · " + TEL,
-        text_fixes=[(r" לפי מודעת השכרה במדלן באותה כתובת", ""), (r" ?\(לפי נתוני המרחק במדלן\)", ""), (r" בעמוד [֐-׿ ]+? במדלן", ""),
-                    (r" במדלן מופיע כ", " מופיע כ"), (r", במדלן תחת [֐-׿ ]+?(?=\s\d)", ""), (r" \(מספר הבית לא ברור\)", ""), (r"\s*במדלן\s+מופיע", " מופיע"), (r"(\d{4}) ובמדלן\)", r")"),
+        text_fixes=[(r"(למכירה|להשכרה) · בלעדיות · ", r"\1 · "), (r" לפי מודעת השכרה במדלן באותה כתובת", ""), (r" ?\(לפי נתוני המרחק במדלן\)", ""), (r" בעמוד [֐-׿ ]+? במדלן", ""),
+                    (r" במדלן מופיע כ", " מופיע כ"), (r", במדלן תחת [֐-׿ ]+?(?=\s\d)", ""), (r" \(מספר הבית לא ברור\)", ""), (r"\s*במדלן\s+מופיע", " מופיע"), (r"(\d{4}) ובמדלן\)", r"\1)"),
                     (r"5 דקות הליכה \(לפי המתווכת, [^)]*\) או 7 דקות הליכה \(לפי המתווכת, [^)]*\)", "5 עד 7 דקות הליכה"),
                     (r"\s*\(לפי המתווכת[^)]*\)", ""), (r" במדלן", "")],
         switch_listing="עברית",
@@ -134,9 +134,9 @@ LANGS = {
                "The fastest way to reach me is WhatsApp. I answer."],
         areas_h2="My areas", areas_p="North Tel Aviv’s coastline, inland to Sarona and north to Herzliya Pituach.",
         one="1 listing", many="{n} listings", nav_aria="Meital Katzir site navigation",
-        photos_eyebrow="Photographs", photos_h2="The home in pictures",
+        photos_eyebrow="Photographs", photos_h2="The home in pictures", home_label="Meital Katzir’s site",
         agent_line_re=r'Real Estate by the Sea · Israeli brokerage license <span class="nlx-num">3131540</span>[^<]*', agent_line="Real Estate by the Sea · " + TEL_INTL,
-        text_fixes=[(r"\s*per the listing fields", ""), (r",? according to the broker", ""), (r"\bnot verified\b", "to be confirmed"),
+        text_fixes=[(r"(For sale|For rent) · Exclusive · ", r"\1 · "), (r"\s*per the listing fields", ""), (r",? according to the broker", ""), (r"\bnot verified\b", "to be confirmed"),
                     (r"\bunverified\b", "to be confirmed"), (r" per Madlan", ""), (r" by Madlan", ""), (r"\bthe listing broker\b", "Meital Katzir")],
         switch_listing="English",
         ban=["Madlan", "Yad2", "not verified", "unverified", "according to the broker", "per the listing", "not published", "not confirmed", "the marketer", "—"],
@@ -171,6 +171,12 @@ def clean_sales_surface(s, lang):
     return s
 
 EXTRA_LISTING = """
+/* the theme's own showroom layers (generic 3D, price, facts, facade, costs, claim card, similar listings) stay off her pages; the theme H1 stays for search, unseen */
+.single-nadlan_property .nlps-price,.single-nadlan_property .nlps-facts,.single-nadlan_property .nlps-chips,.single-nadlan_property .nlps-trust,.single-nadlan_property .nlps-hl,.single-nadlan_property .nlps-3d,.single-nadlan_property .nlps-facade,.single-nadlan_property .nlps-costs,.single-nadlan_property .nlps-map-sec,.single-nadlan_property .nlps-share,.single-nadlan_property .nlps-report,.single-nadlan_property .nlcard{display:none!important}
+.single-nadlan_property .nlps{margin:0!important;padding:0!important}
+.single-nadlan_property .nlps-title{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
+.single-nadlan_property .entry-content>article.nlx~*{display:none!important}
+.nlx .nlx-toc .nlx-home{font-weight:600;color:var(--nlx-sea,#2F6F86)}
 .single-nadlan_property .yoast-breadcrumbs,.single-nadlan_property .nlcta-start,.single-nadlan_property .nlcta-wa{display:none!important}
 .single-nadlan_property .wp-block-post-featured-image{display:none!important}
 .single-nadlan_property .entry-content.is-layout-constrained>*{max-width:none!important;margin-left:auto!important;margin-right:auto!important}
@@ -216,6 +222,12 @@ def build_listing(it, lang, page_id=None):
         return mm.group(1) + json.dumps(d, ensure_ascii=False) + mm.group(3)
     s = re.sub(r'(<script type="application/ld\+json">)(.*?)(</script>)', add_img, s, count=1, flags=re.S)
     s = clean_sales_surface(s, lang)
+    # every listing leads to her site: her name links to it, and the page's own table of contents opens with it
+    site = T["site_url"]
+    s = re.sub(r'>((?:בבלעדיות: |Exclusive: )?)(מיטל קציר|Meital Katzir)((?:, נדל״ן על הים|, Real Estate by the Sea)?)<',
+               lambda m: '>' + m.group(1) + '<a href="' + esc(site) + '">' + m.group(2) + m.group(3) + '</a><', s)
+    s = s.replace('<p class="nlx-eyebrow">המתווכת בבלעדיות</p>', '<p class="nlx-eyebrow">המתווכת</p>').replace('<p class="nlx-eyebrow">Exclusive listing broker</p>', '<p class="nlx-eyebrow">The broker</p>')
+    s = re.sub(r'(<nav class="nlx-toc"[^>]*>)', lambda m: m.group(1) + '<a class="nlx-home" href="' + esc(site) + '">' + T["home_label"] + '</a>', s, count=1)
     # the language switch sits at the end of the page's own table of contents
     alts = [(l, LANGS[l]["listing_url"](it)) for l in other_langs(lang) if (L + "-" + l) in imap]
     if alts:
@@ -595,6 +607,35 @@ if "--hreflang" in ARGS:
             print("hreflang", typ, pid, st, list(m))
         else:
             print("hreflang dry", typ, pid, list(m))
+
+if "--journey" in ARGS:
+    # The user journey as a link graph, checked on the live HTML. Real clicks in the owner's Chrome come on top of this, never instead of it.
+    def fetch(u):
+        return urllib.request.urlopen(urllib.request.Request(u + ("&" if "?" in u else "?") + "nlv=" + str(int(time.time())), headers={"User-Agent": "Mozilla/5.0"}), timeout=90).read().decode("utf-8", "replace")
+    checks = []
+    def expect(name, page, needles):
+        try:
+            s = fetch(page)
+        except Exception as e:
+            checks.append((name, page, "ERR " + str(getattr(e, "code", e)))); return
+        missing = [n for n in needles if n not in s]
+        checks.append((name, page, "ok" if not missing else "missing: " + ", ".join(missing)))
+    he, en = LANGS["he"], LANGS["en"]
+    expect("menu -> professionals", WP + "/professionals/", ["/professionals/meital-katzir/"])
+    expect("professionals -> profile -> her site", WP + "/professionals/meital-katzir/", [he["site_url"]])
+    expect("site he -> 11 listings + english", he["site_url"], [he["listing_url"](it) for it in idx] + ([en["site_url"]] if "broker-en" in imap else []))
+    if "broker-en" in imap:
+        expect("site en -> 11 listings + hebrew", en["site_url"], [en["listing_url"](it) for it in idx] + [he["site_url"]])
+    for it in idx:
+        expect(it["id"] + " he -> her site" + (" + english" if (it["id"] + "-en") in imap else ""), he["listing_url"](it),
+               ['class="nlx-home" href="' + he["site_url"]] + ([en["listing_url"](it)] if (it["id"] + "-en") in imap else []))
+        if (it["id"] + "-en") in imap:
+            expect(it["id"] + " en -> her site + hebrew", en["listing_url"](it), ['class="nlx-home" href="' + en["site_url"], he["listing_url"](it)])
+    bad = 0
+    for name, page, res in checks:
+        print(f"{'PASS' if res == 'ok' else 'FAIL'}  {name:42s} {res if res != 'ok' else ''}")
+        bad += res != "ok"
+    print("journey:", "all links in place" if not bad else f"{bad} broken step(s)")
 
 if "--verify" in ARGS:
     urls = []
