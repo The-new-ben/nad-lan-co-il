@@ -1,0 +1,165 @@
+<article class="nlx" lang="{{ L.lang }}" dir="{{ L.dir }}" id="nlx-{{ L.id }}-{{ L.lang }}" data-listing="{{ L.id }}">
+<div class="nlx-wrap">
+<header class="nlx-mast">
+<div class="nlx-mast-copy">
+<p class="nlx-kicker">{{ L.kicker }}</p>
+<h2 class="nlx-title">{{ L.title }}</h2>
+<p class="nlx-dek">{{ L.dek }}</p>
+<div class="nlx-chips">{% for c in L.chips %}<span class="nlx-chip{% if c.sea %} nlx-chip--sea{% endif %}">{{ c.text }}</span>{% endfor %}</div>
+</div>
+<figure class="nlx-plate{% if L.deal == 'rent' %} nlx-plate--rent{% endif %}" aria-label="{{ L.plate.aria }}">
+<svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+<rect x="0" y="0" width="800" height="600" fill="{{ L.plate.sky }}"/>
+<circle cx="{{ L.plate.sun_x }}" cy="292" r="46" fill="none" stroke="#2F6F86" stroke-opacity=".35" stroke-width="2"/>
+<rect x="0" y="330" width="800" height="270" fill="{{ L.plate.sea }}"/>
+<path d="M0 330 H800" stroke="#1F4B5C" stroke-opacity=".45" stroke-width="2"/>
+<path d="M0 372 C 120 362, 240 382, 360 372 S 600 362, 800 372" fill="none" stroke="#F7F6F2" stroke-opacity=".55" stroke-width="2"/>
+<path d="M0 414 C 140 404, 260 424, 400 414 S 640 404, 800 414" fill="none" stroke="#F7F6F2" stroke-opacity=".35" stroke-width="2"/>
+<g{% if L.dir == 'rtl' %} transform="translate(800 0) scale(-1 1)"{% endif %}>{{ L.plate.silhouette|safe }}</g>
+</svg>
+<span class="nlx-plate-name">{{ L.plate.name }}</span>
+<figcaption>{{ L.plate.caption }}</figcaption>
+</figure>
+</header>
+
+<dl class="nlx-facts">
+{% for f in L.facts %}<div class="nlx-fact"><dt>{{ f.label }}</dt><dd>{{ f.value|safe }}</dd>{% if f.tag %}{{ f.tag|safe }}{% endif %}</div>
+{% endfor %}</dl>
+{% if L.facts_note %}<p class="nlx-facts-note">{{ L.facts_note|safe }}</p>{% endif %}
+
+<nav class="nlx-toc" aria-label="{{ L.t.toc }}">{% for a in L.toc %}<a href="#{{ a.href }}">{{ a.label }}</a>{% endfor %}</nav>
+
+<div class="nlx-layout">
+<div class="nlx-main">
+
+<section class="nlx-sec" id="{{ L.anchor('home') }}">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">{{ L.t.sec_home }}</p><h2 class="nlx-h2">{{ L.story.h2 }}</h2></div>
+<div class="nlx-prose">{% for p in L.story.paras %}<p>{{ p|safe }}</p>{% endfor %}</div>
+<ul class="nlx-features">{% for f in L.story.features %}<li><b>{{ f.b|safe }}</b><span>{{ f.s|safe }}</span></li>{% endfor %}</ul>
+<div class="nlx-spec">
+{% for g in L.spec %}<div class="nlx-spec-group"><h3 class="nlx-h3">{{ g.title }} {{ g.tag|safe }}</h3><dl class="nlx-rows">
+{% for r in g.rows %}<div class="nlx-row"><dt>{{ r.dt }}</dt><dd>{{ r.dd|safe }}</dd><span class="nlx-row-tag">{{ r.tag|safe }}</span></div>
+{% endfor %}</dl></div>
+{% endfor %}</div>
+</section>
+
+<section class="nlx-sec" id="{{ L.anchor('building') }}">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">{{ L.t.sec_building }}</p><h2 class="nlx-h2">{{ L.building.h2 }}</h2>{% if L.building.lead %}<p class="nlx-lead">{{ L.building.lead|safe }}</p>{% endif %}</div>
+<dl class="nlx-rows">
+{% for r in L.building.rows %}<div class="nlx-row"><dt>{{ r.dt }}</dt><dd>{{ r.dd|safe }}</dd><span class="nlx-row-tag">{{ r.tag|safe }}</span></div>
+{% endfor %}</dl>
+</section>
+
+<section class="nlx-sec" id="{{ L.anchor('location') }}">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">{{ L.t.sec_location }}</p><h2 class="nlx-h2">{{ L.location.h2 }}</h2></div>
+<div class="nlx-prose">{% for p in L.location.paras %}<p>{{ p|safe }}</p>{% endfor %}</div>
+{% if L.location.dist %}<div><h3 class="nlx-subhead">{{ L.t.distances }}</h3><ul class="nlx-dist">
+{% for d in L.location.dist %}<li><span class="nlx-dist-name">{{ d.name }}</span><span class="nlx-dist-val">{{ d.val|safe }}</span>{% if d.pct is not none %}<span class="nlx-meter" aria-hidden="true"><i style="width:{{ d.pct }}%"></i></span>{% endif %}{% if d.note %}<span class="nlx-dist-note">{{ d.note|safe }}</span>{% endif %}</li>
+{% endfor %}</ul></div>{% endif %}
+<div class="nlx-two">
+<div><h3 class="nlx-subhead">{{ L.t.schools }}</h3><ul class="nlx-items">
+{% for s in L.location.schools %}<li class="nlx-item"><div class="nlx-item-top"><span class="nlx-item-title">{{ s.title }}</span><span class="nlx-tag">{{ s.level }}</span></div>{% if s.note %}<p>{{ s.note|safe }}</p>{% endif %}</li>
+{% endfor %}</ul></div>
+<div><h3 class="nlx-subhead">{{ L.t.transport }}</h3><ul class="nlx-items">
+{% for s in L.location.transport %}<li class="nlx-item"><div class="nlx-item-top"><span class="nlx-item-title">{{ s.title }}</span></div><p>{{ s.status|safe }}</p></li>
+{% endfor %}</ul></div>
+</div>
+</section>
+
+{% if L.future %}<section class="nlx-sec" id="{{ L.anchor('future') }}">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">{{ L.t.sec_future }}</p><h2 class="nlx-h2">{{ L.t.future_h2 }}</h2><p class="nlx-lead">{{ L.t.future_lead }}</p></div>
+<ul class="nlx-items">
+{% for f in L.future %}<li class="nlx-item"><span class="nlx-item-title">{{ f.title|safe }}</span><p>{{ f.impact|safe }}</p></li>
+{% endfor %}</ul>
+</section>{% endif %}
+
+<section class="nlx-sec" id="{{ L.anchor('numbers') }}">
+<div class="nlx-band">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">{{ L.t.sec_numbers }}</p><h2 class="nlx-h2">{{ L.numbers.h2 }}</h2><p class="nlx-small">{{ L.numbers.lead|safe }}</p></div>
+<dl class="nlx-kpis nlx-kpis--{{ L.numbers.kpis|length }}{% if L.numbers.kpi_cols == 2 %} nlx-kpis--wide{% endif %}">
+{% for k in L.numbers.kpis %}<div class="nlx-kpi"><dt>{{ k.dt }}</dt><dd>{{ k.dd|safe }}</dd>{% if k.small %}<span class="nlx-small">{{ k.small|safe }}</span>{% endif %}</div>
+{% endfor %}</dl>
+<div class="nlx-band-grid">
+<div class="nlx-seg">
+<h3 class="nlx-h3">{{ L.numbers.seg.title }}</h3>
+{% for tab in L.numbers.seg.tabs %}<input type="radio" name="{{ L.numbers.seg.name }}" id="{{ L.numbers.seg.name }}-{{ loop.index }}"{% if loop.first %} checked{% endif %}>
+{% endfor %}<div class="nlx-seg-labels" role="presentation">{% for tab in L.numbers.seg.tabs %}<label for="{{ L.numbers.seg.name }}-{{ loop.index }}">{{ tab.label }}</label>{% endfor %}</div>
+<div class="nlx-seg-panels">{% for tab in L.numbers.seg.tabs %}<dl class="nlx-seg-panel nlx-ledger">
+{% for r in tab.rows %}<div><dt>{{ r.dt|safe }}</dt><dd>{{ r.dd|safe }}</dd>{% if r.note %}<span class="nlx-ledger-note">{{ r.note|safe }}</span>{% endif %}</div>
+{% endfor %}</dl>{% endfor %}</div>
+{% if L.numbers.seg.note %}<p class="nlx-small">{{ L.numbers.seg.note|safe }}</p>{% endif %}
+</div>
+<div class="nlx-bars">
+<h3 class="nlx-h3">{{ L.numbers.bars.title }}</h3>
+{% for b in L.numbers.bars['items'] %}<div class="nlx-bar{% if b.this %} nlx-bar--this{% endif %}"><div class="nlx-bar-top"><span>{{ b.label|safe }}</span><span>{{ b.value|safe }}</span></div><div class="nlx-bar-track"><i style="width:{{ b.pct }}%"></i></div></div>
+{% endfor %}{% if L.numbers.bars.note %}<p class="nlx-small">{{ L.numbers.bars.note|safe }}</p>{% endif %}
+</div>
+</div>
+<div>
+<h3 class="nlx-h3">{{ L.numbers.ledger_title }}</h3>
+<dl class="nlx-ledger">
+{% for r in L.numbers.ledger %}<div><dt>{{ r.dt|safe }}</dt><dd>{{ r.dd|safe }}</dd>{% if r.note %}<span class="nlx-ledger-note">{{ r.note|safe }}</span>{% endif %}</div>
+{% endfor %}</dl>
+</div>
+<p class="nlx-small">{{ L.numbers.foot|safe }}</p>
+</div>
+</section>
+
+<section class="nlx-sec" id="{{ L.anchor('market') }}">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">{{ L.t.sec_market }}</p><h2 class="nlx-h2">{{ L.market.h2 }}</h2><p class="nlx-lead">{{ L.market.lead|safe }}</p></div>
+<dl class="nlx-stats">
+{% for s in L.market.stats %}<div><dt>{{ s.dt|safe }}</dt><dd>{{ s.dd|safe }}</dd></div>
+{% endfor %}</dl>
+{% for tbl in L.market.tables %}<div><h3 class="nlx-subhead">{{ tbl.title }}</h3><div class="nlx-scroll" role="region" aria-label="{{ tbl.title }}" tabindex="0"><table class="nlx-table">
+<thead><tr>{% for h in tbl.head %}<th scope="col">{{ h }}</th>{% endfor %}</tr></thead>
+<tbody>{% for row in tbl.rows %}<tr>{% for cell in row %}<td{% if cell.r %} class="nlx-r"{% endif %}>{{ cell.v|safe }}</td>{% endfor %}</tr>
+{% endfor %}</tbody>
+<caption>{{ tbl.caption|safe }}</caption>
+</table></div></div>
+{% endfor %}
+</section>
+
+<section class="nlx-sec" id="{{ L.anchor('checks') }}">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">{{ L.t.sec_checks }}</p><h2 class="nlx-h2">{{ L.checks.h2 }}</h2><p class="nlx-lead">{{ L.checks.lead }}</p></div>
+<ul class="nlx-checks">{% for q in L.checks['items'] %}<li><span>{{ q|safe }}</span></li>{% endfor %}</ul>
+</section>
+
+{% if L.faq %}<section class="nlx-sec" id="{{ L.anchor('faq') }}">
+<div class="nlx-sec-head"><p class="nlx-eyebrow">{{ L.t.sec_faq }}</p><h2 class="nlx-h2">{{ L.t.faq_h2 }}</h2></div>
+<div class="nlx-faq">{% for f in L.faq %}<details><summary>{{ f.q }}</summary><div class="nlx-faq-a">{{ f.a|safe }}</div></details>{% endfor %}</div>
+</section>{% endif %}
+
+<section class="nlx-sec" id="{{ L.anchor('broker') }}">
+<div class="nlx-agent">
+<span class="nlx-monogram" aria-hidden="true">{{ L.agent.mono }}</span>
+<div><p class="nlx-eyebrow">{{ L.t.sec_broker }}</p><p class="nlx-agent-name">{{ L.agent.name }}</p><p class="nlx-small">{{ L.agent.line|safe }}</p></div>
+<div class="nlx-cta">{% for c in L.cta %}<a class="nlx-btn{% if c.ghost %} nlx-btn--ghost{% endif %}" href="{{ c.href }}"{% if c.ext %} rel="noopener" target="_blank"{% endif %}>{{ c.icon|safe }}<span>{{ c.label }}</span></a>{% endfor %}</div>
+</div>
+</section>
+
+<section class="nlx-sec" id="{{ L.anchor('sources') }}">
+<div class="nlx-sources">
+<h2 class="nlx-h3">{{ L.t.sec_sources }}</h2>
+<div class="nlx-legend">{% for g in L.legend %}<span>{{ g|safe }}</span>{% endfor %}</div>
+<ol>{% for s in L.sources %}<li id="{{ s.anchor }}">{{ s.title }}{% if s.published %}, <span class="nlx-num">{{ s.published }}</span>{% endif %}. <a href="{{ s.url }}" rel="nofollow noopener" target="_blank">{{ s.host }}</a></li>{% endfor %}</ol>
+<p class="nlx-disclaimer">{{ L.disclaimer|safe }}</p>
+<p class="nlx-small nlx-muted">{{ L.updated|safe }}</p>
+</div>
+</section>
+
+</div>
+<aside class="nlx-rail" aria-label="{{ L.t.rail }}">
+<div class="nlx-card nlx-price-card">
+<span class="nlx-price-lbl">{{ L.price_card.label }}</span>
+<span class="nlx-price">{{ L.price_card.price|safe }}</span>
+<div class="nlx-price-sub">{% for s in L.price_card.sub %}<span>{{ s|safe }}</span>{% endfor %}</div>
+<dl class="nlx-price-rows">{% for r in L.price_card.rows %}<div><dt>{{ r.dt }}</dt><dd>{{ r.dd|safe }}</dd></div>{% endfor %}</dl>
+<div class="nlx-cta">{% for c in L.cta %}<a class="nlx-btn{% if c.ghost %} nlx-btn--ghost{% endif %}" href="{{ c.href }}"{% if c.ext %} rel="noopener" target="_blank"{% endif %}>{{ c.icon|safe }}<span>{{ c.label }}</span></a>{% endfor %}</div>
+</div>
+<div class="nlx-card nlx-agent-mini"><span class="nlx-monogram" aria-hidden="true">{{ L.agent.mono }}</span><div><b>{{ L.agent.name }}</b><br><span class="nlx-muted">{{ L.agent.mini|safe }}</span></div></div>
+</aside>
+</div>
+<div class="nlx-mbar">{% for c in L.cta[:2] %}<a class="nlx-btn{% if c.ghost %} nlx-btn--ghost{% endif %}" href="{{ c.href }}"{% if c.ext %} rel="noopener" target="_blank"{% endif %}>{{ c.icon|safe }}<span>{{ c.short }}</span></a>{% endfor %}</div>
+</div>
+<script type="application/ld+json">{{ L.jsonld|safe }}</script>
+</article>

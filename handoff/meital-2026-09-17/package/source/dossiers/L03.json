@@ -1,0 +1,2305 @@
+{
+  "id": "L03",
+  "identification": {
+    "summary_en": "High-floor 5-room rental in the B.S.R Sarona towers (the former United Sarona purchase group project) on Arania Osvaldo Street, Sarona, Tel Aviv. The broker describes 117 sqm built plus a 14 sqm south-west balcony, an open view to the sea and over Tel Aviv (floor 20 in a January 2026 post), electrical appliances, attached parking and storage, and immediate entry. A Madlan card by the same broker, whose wording matches the latest posts, asks NIS 15,500 a month.",
+    "summary_he": "דירת 5 חדרים להשכרה בקומה גבוהה במגדלי ב.ס.ר שרונה (לשעבר קבוצת הרכישה יונייטד שרונה) ברחוב ארניה אוסוולדו, מתחם שרונה, תל אביב. לפי המתווכת: 117 מ״ר בנוי ומרפסת 14 מ״ר לכיוון דרום-מערב, נוף פתוח לים ולכל תל אביב (קומה 20 לפי פרסום מינואר 2026), מוצרי חשמל, חניה ומחסן צמודים וכניסה מיידית. מודעה של אותה מתווכת במדלן, שנוסחה תואם את הפרסומים האחרונים, מבקשת 15,500 ש״ח לחודש.",
+    "address_or_project_en": "B.S.R Sarona towers (formerly United Sarona), Arania Osvaldo St 6-18, Sarona (South Kirya), Tel Aviv-Yafo; the broker's Madlan card gives no. 16; tower not stated",
+    "address_or_project_he": "מגדלי ב.ס.ר שרונה (לשעבר יונייטד שרונה), רחוב ארניה אוסוולדו 6-18, מתחם שרונה (דרום הקריה), תל אביב-יפו; במודעת המתווכת במדלן מופיע מספר 16; המגדל לא צוין",
+    "confidence": "verified",
+    "evidence": [
+      "Broker posts from 2026-01-18 to 2026-09-01 name the B.S.R Sarona towers and describe 5 rooms, 117 sqm built, a 14 sqm south-west balcony, a high floor (floor 20 in January) and an open sea view. The unit was offered for rent, then for sale (April to June 2026), then for rent again.",
+      "Press and developer sources confirm that B.S.R Sarona is the former United Sarona purchase group: 3 towers and 420 apartments on Arania Osvaldo Street, with occupancy approval (Tofes 4) received on 2026-03-29.",
+      "A Madlan card by the same broker (license 3131540) repeats the August and September wording (5 rooms, high floor, open sea view, kitchen appliances, immediate entry) at NIS 15,500.",
+      "The confidence rating covers the project identification. The house number is not treated as verified because Madlan house numbers are unreliable in this project."
+    ],
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13"
+    ]
+  },
+  "cross_listings": [
+    {
+      "what_en": "Likely the same unit: Madlan rental card by the same broker (Meital Katzir, license 3131540), exclusive, B.S.R Sarona towers",
+      "url": "https://www.madlan.co.il/listings/sF6UVfK4yZx",
+      "date": "2026-09-16",
+      "price_nis": 15500,
+      "details_en": "Asking NIS 15,500 a month. Text: 'for rent exclusively, 5 rooms in the B.S.R Sarona towers, high floor, open sea view, electrical appliances in the kitchen, immediate entry'. 14 sqm balcony, unfurnished, address field Arania Osvaldo 16, 42 floors entered. The area field reads 25 sqm, an apparent data-entry error (Madlan computes NIS 620 per sqm). Accessed 2026-09-16; no listing date shown.",
+      "same_unit_evidence_en": "Same broker and license; the text repeats the broker's 2026-08-17 and 2026-09-01 posts for this unit (5 rooms, high floor, open sea view, appliances, immediate entry). Not certain, because the card gives no floor or built area and the broker has other 5-room cards in the project.",
+      "confidence": "likely"
+    },
+    {
+      "what_en": "Likely the same unit at an earlier asking rent: Madlan rental card by the same broker, exclusive, B.S.R Sarona",
+      "url": "https://www.madlan.co.il/listings/K0ppzYS4KTo",
+      "date": "2026-09-16",
+      "price_nis": 19000,
+      "details_en": "Asking NIS 19,000 a month. Text: exclusive in the project, new 5 rooms on a high floor, built area 118 sqm, south-west balcony 14 sqm, open sea view with natural light all day, upgraded luxury kitchen with island. Entry 05/2026; address field Arania Osvaldo 6; area field 125 sqm. Accessed 2026-09-16; no listing date shown.",
+      "same_unit_evidence_en": "For: same broker; the balcony size and direction and the view match the broker's 2026-04-06 specs for this unit (117 sqm built, 14 sqm south-west balcony, high floor, open sea view), with the built area 1 sqm apart. Against: the May 2026 entry date suggests an older card; the built area differs by 1 sqm; and the broker may hold other 5-room units in the project. If both broker cards describe L03, the asking rent fell from NIS 19,000 to NIS 15,500, but Madlan shows no dates.",
+      "confidence": "likely"
+    },
+    {
+      "what_en": "Possible match: two Madlan cards by the same broker for a fully furnished 5-room unit in B.S.R Sarona",
+      "url": "https://www.madlan.co.il/listings/DCTYy8X8e72",
+      "date": "2026-09-16",
+      "price_nis": 20000,
+      "details_en": "Both ask NIS 20,000 a month. Card DCTYy8X8e72: exclusive in B.S.R Sarona, new luxury 5 rooms, fully furnished, overlooking the sea and all of Tel Aviv, luxury kitchen, carpentry and furniture throughout. Card XRe79RItv0f (https://www.madlan.co.il/listings/XRe79RItv0f): fully furnished, new 'from nylon', west-facing with sea view, high floor, custom carpentry, appliances, gym and guard. Accessed 2026-09-16.",
+      "same_unit_evidence_en": "For: same broker, 5 rooms, and wording that echoes this unit's posts ('view over all of Tel Aviv and the sea' in January, 'new from nylon, west balcony to the sea' in June). Against: the cards are fully furnished while the latest posts mention only appliances; no floor, area or balcony direction is given; and a broker post of 2026-07-19 advertised furnished 4.5 to 5 room units, which may refer to L02 or another unit. Not identified.",
+      "confidence": "unverified"
+    },
+    {
+      "what_en": "Similar unit, probably not the same: Madlan rental card by another agency, 5 rooms, 117 sqm, Building B",
+      "url": "https://www.madlan.co.il/listings/FvcQrNEbq09",
+      "date": "2026-09-16",
+      "price_nis": 17200,
+      "details_en": "Asking NIS 17,200 a month, exclusive (another agency). Text: 5 rooms, bright and designed, 117 sqm built + 14 sqm sun balcony, 'floor 2', Building B (the middle tower), open view to the north-west; kitchen with a 3 m island and granite, master suite, mamad, parquet in the rooms, central air conditioning, underground parking; building with 24/7 guard, lobby, gym in Building C for complex residents only. 40 floors entered. Accessed 2026-09-16.",
+      "same_unit_evidence_en": "For: the same 117 + 14 sqm size; the identical Janglo text gives floor 20 of 40, the floor this broker gave in January 2026. Against: north-west rather than the broker's south-west balcony; a different agency that also claims exclusivity; and the 117 + 14 sqm model recurs, so a mirror unit on the same floor or another tower is plausible. Treat as a similar unit unless the broker confirms otherwise.",
+      "confidence": "unverified"
+    },
+    {
+      "what_en": "Same unit as the NIS 17,200 Madlan card above, offered for sale on Janglo by another agent",
+      "url": "https://www.janglo.net/item/5dACmuQdUpL",
+      "date": "2026-04-29",
+      "price_nis": 8500000,
+      "details_en": "For sale at NIS 8,500,000: 5 rooms, 117 sqm built + 14 sqm sun balcony, floor 20 of 40, Building B (middle tower), north-west with open sea views, private underground parking, parquet in bedrooms, kitchen with 3 m island and granite countertop, central air conditioning, master suite, safe room, 24/7 guard, gym in Building C for complex residents only.",
+      "same_unit_evidence_en": "The Janglo text matches the NIS 17,200 Madlan rental card word for word, so those two are one unit. Whether it is L03 is unverified for the reasons given above: north-west against south-west, and competing exclusivity claims.",
+      "confidence": "unverified"
+    }
+  ],
+  "building_facts": [
+    {
+      "label_en": "Rooms",
+      "label_he": "חדרים",
+      "value_en": "5 rooms",
+      "value_he": "5 חדרים",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S4",
+        "S8",
+        "S13"
+      ],
+      "note_en": "Broker-stated in posts and on the broker's Madlan card."
+    },
+    {
+      "label_en": "Area",
+      "label_he": "שטח",
+      "value_en": "117 sqm built + 14 sqm south-west balcony",
+      "value_he": "117 מ״ר בנוי + מרפסת 14 מ״ר לכיוון דרום-מערב",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S14"
+      ],
+      "note_en": "Broker-stated on Instagram; the broker's probable Madlan card for this unit gives 118 sqm built. The 117 + 14 sqm 5-room size recurs in the project."
+    },
+    {
+      "label_en": "Floor",
+      "label_he": "קומה",
+      "value_en": "High floor; floor 20 per the 2026-01-18 post",
+      "value_he": "קומה גבוהה; קומה 20 לפי הפרסום מ-18.1.2026",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S1",
+        "S7"
+      ],
+      "note_en": "Later posts say only 'high floor'. Another agency lists a floor 20 unit of the same size facing north-west, so confirm the floor and tower."
+    },
+    {
+      "label_en": "View",
+      "label_he": "נוף",
+      "value_en": "Open sea view and views over all of Tel Aviv",
+      "value_he": "נוף פתוח לים ולכל תל אביב",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S1",
+        "S7"
+      ],
+      "note_en": "Broker-stated. West-facing units from floor 15 up are described with sea views in other listings."
+    },
+    {
+      "label_en": "Equipment",
+      "label_he": "ציוד",
+      "value_en": "Electrical appliances included; new 'from nylon'",
+      "value_he": "כולל מוצרי חשמל; חדשה מהניילונים",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S6",
+        "S7",
+        "S13"
+      ],
+      "note_en": "The broker's NIS 15,500 Madlan card lists the unit as unfurnished, with appliances in the kitchen."
+    },
+    {
+      "label_en": "Parking and storage",
+      "label_he": "חניה ומחסן",
+      "value_en": "Attached parking and a (large) storage room",
+      "value_he": "חניה ומחסן (גדול) צמודים",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S5",
+        "S7"
+      ],
+      "note_en": "Broker-stated; confirm the space is attached to the unit."
+    },
+    {
+      "label_en": "Entry",
+      "label_he": "כניסה",
+      "value_en": "Immediate",
+      "value_he": "מיידית",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S7",
+        "S8"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Unit size in the project",
+      "label_he": "גודל הדירה בפרויקט",
+      "value_en": "The 5-room, 117 + 14 sqm size recurs: a floor 20 unit in Building B facing north-west (Janglo and a Madlan card), a 116 sqm floor 20 unit sold in March 2024, and a 115 + 14 sqm high-floor unit listed by another agency",
+      "value_he": "דירות 5 חדרים בשטח 117 + 14 מ״ר חוזרות בפרויקט: דירה בקומה 20 בבניין B לכיוון צפון-מערב (ג׳אנגלו ומודעה במדלן), דירת 116 מ״ר בקומה 20 שנמכרה במרץ 2024, ודירת 115 + 14 מ״ר בקומה גבוהה במשרד אחר",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S15",
+        "S16",
+        "S17",
+        "S18"
+      ],
+      "note_en": "These are similar units; none is confirmed as this apartment."
+    },
+    {
+      "label_en": "Project name",
+      "label_he": "שם הפרויקט",
+      "value_en": "B.S.R Sarona (ב.ס.ר שרונה), the former United Sarona purchase group project",
+      "value_he": "ב.ס.ר שרונה, לשעבר פרויקט קבוצת הרכישה יונייטד שרונה",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S9",
+        "S10",
+        "S12"
+      ],
+      "note_en": "Globes describes the United Sarona purchase group as having passed to B.S.R's responsibility and now being called B.S.R Sarona."
+    },
+    {
+      "label_en": "Developer and project manager",
+      "label_he": "יזם ומנהל הפרויקט",
+      "value_en": "B.S.R Group; the apartments belong to purchase group members, so a rental is usually offered by an individual owner",
+      "value_he": "קבוצת ב.ס.ר; הדירות בבעלות חברי קבוצת הרכישה, ולכן דירה להשכרה מוצעת בדרך כלל על ידי בעלים פרטיים",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S10",
+        "S17",
+        "S19"
+      ],
+      "note_en": "That the landlord is an individual member is an inference from the purchase group structure; confirm the landlord's rights to the unit."
+    },
+    {
+      "label_en": "General contractor",
+      "label_he": "קבלן מבצע",
+      "value_en": "Electra",
+      "value_he": "אלקטרה",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S11",
+        "S20"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Architects",
+      "label_he": "אדריכלים",
+      "value_en": "Moshe Tzur Architects and Town Planners with CityBee Architects",
+      "value_he": "משה צור אדריכלים ובוני ערים יחד עם CityBee אדריכלים",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S10",
+        "S17"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Scale",
+      "label_he": "היקף הפרויקט",
+      "value_en": "3 residential towers with 420 apartments, plus offices, retail, public spaces and 3 preserved Templer buildings",
+      "value_he": "3 מגדלי מגורים עם 420 דירות, לצד משרדים, מסחר, שטחי ציבור ו-3 מבני טמפלרים לשימור",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S11",
+        "S17",
+        "S12",
+        "S19"
+      ],
+      "note_en": "ynet (2025-12-14) gives 8,000 sqm of offices, 4,000 sqm of retail and 4,000 sqm of public areas including classrooms, kindergartens and daycare; other sources give different commercial totals."
+    },
+    {
+      "label_en": "Height",
+      "label_he": "גובה המגדלים",
+      "value_en": "About 38 to 40 floors; B.S.R describes 39 residential floors above 5 floors of offices and retail",
+      "value_he": "כ-38 עד 40 קומות; לפי ב.ס.ר, 39 קומות מגורים מעל 5 קומות משרדים ומסחר",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S10",
+        "S11",
+        "S21",
+        "S22"
+      ],
+      "note_en": "Conflict: Electra and ynet say 40 floors, B.S.R says 39 residential floors over a 5-floor podium, Madlan and Project TLV say 38. Listings enter 38 to 46 total floors."
+    },
+    {
+      "label_en": "Occupancy approval (Tofes 4)",
+      "label_he": "טופס 4 (אישור אכלוס)",
+      "value_en": "Received on Sunday 2026-03-29 for all three towers",
+      "value_he": "התקבל ביום ראשון, 29.3.2026, לשלושת המגדלים",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S12",
+        "S23",
+        "S17"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Tower order",
+      "label_he": "סדר המגדלים",
+      "value_en": "Building C is the northern tower, Building B the middle tower and Tower A the southern tower, next to the Landmark towers",
+      "value_he": "בניין C הוא המגדל הצפוני, בניין B האמצעי ומגדל A הדרומי, הסמוך למגדלי לנדמרק",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S24",
+        "S15",
+        "S16",
+        "S25",
+        "S26",
+        "S27"
+      ],
+      "note_en": "ImmoIsrael calls Building C the northern building; Janglo and two Madlan cards call Building B the middle tower; Project TLV lists Tower C with no. 8, Tower B with no. 14 and Tower A with no. 18, and Landmark at no. 20. Tower A as southern follows by elimination."
+    },
+    {
+      "label_en": "Views by orientation",
+      "label_he": "נוף לפי כיוון",
+      "value_en": "Each tower has east-facing units (Sarona Park and Kirya views) and west-facing units (sea views). Listings describe sea views on floors 15, 18, 20, 29 and 30",
+      "value_he": "בכל מגדל יש דירות לכיוון מזרח (נוף לפארק שרונה ולקריה) ודירות לכיוון מערב (נוף לים). במודעות מתוארים נוף לים בקומות 15, 18, 20, 29 ו-30",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S28",
+        "S24",
+        "S15",
+        "S29",
+        "S30",
+        "S31",
+        "S32",
+        "S33"
+      ],
+      "note_en": "Examples: Tower A floor 12 south-east and Building C floor 16 south-east (park views); floor 15 west and south, floor 18 south-west and floor 20 north-west (sea views). No source states from which floor the sea view is unobstructed."
+    },
+    {
+      "label_en": "Security and management",
+      "label_he": "שמירה וניהול",
+      "value_en": "24/7 guarding and maintenance by a management company; double-height lobby with a guard",
+      "value_he": "חברת ניהול, שמירה ואחזקה 24/7; לובי מפואר בגובה כפול עם שומר",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S33",
+        "S34",
+        "S15"
+      ],
+      "note_en": "The management company is not named in any source found."
+    },
+    {
+      "label_en": "Residents' gym",
+      "label_he": "חדר כושר לדיירים",
+      "value_en": "Yes; one listing places the gym in Building C, for residents of the complex only. Hours and fees not published",
+      "value_he": "יש; לפי מודעה אחת חדר הכושר נמצא בבניין C ומיועד לדיירי המתחם בלבד. שעות ועלויות לא פורסמו",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S34",
+        "S35",
+        "S24",
+        "S15",
+        "S16"
+      ],
+      "note_en": "Gym existence is confirmed by several independent listings. The Building C location comes from one listing text (repeated word for word on Janglo and Madlan), so treat it as likely."
+    },
+    {
+      "label_en": "Pool or spa",
+      "label_he": "בריכה או ספא",
+      "value_en": "No communal pool or spa found in developer, contractor or press sources",
+      "value_he": "לא נמצאה בריכה או ספא משותפים במקורות היזם, הקבלן או העיתונות",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S10",
+        "S11",
+        "S33",
+        "S19"
+      ],
+      "note_en": "Absence of evidence. Madlan shows a 'pool' icon on every card, including cards for this project, so that icon is not evidence. Do not advertise a pool."
+    },
+    {
+      "label_en": "Parking",
+      "label_he": "חניון",
+      "value_en": "Underground parking over 5 levels with license plate recognition (LPR)",
+      "value_he": "חניון תת-קרקעי ב-5 מפלסים עם מערכת זיהוי לוחיות רישוי (LPR)",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S11",
+        "S33"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Parking allocation",
+      "label_he": "הקצאת חניות",
+      "value_en": "In 2021, 180 apartments were not to receive an attached parking space, with allocation by lottery; one 2026 card states a space registered in the Land Registry (Tabu)",
+      "value_he": "ב-2021 דווח כי 180 דירות לא יקבלו חניה צמודה והחניות יוקצו בהגרלה; במודעה אחת מ-2026 צוינה חניה רשומה בטאבו",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S36",
+        "S37"
+      ],
+      "note_en": "One reputable but dated source. Confirm that the space offered with this unit is attached to it."
+    },
+    {
+      "label_en": "Elevators",
+      "label_he": "מעליות",
+      "value_en": "4 high-speed elevators per tower",
+      "value_he": "4 מעליות מהירות בכל מגדל",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S33",
+        "S11"
+      ],
+      "note_en": "Electra lists 25 elevators in the project, 12 of them at 4 m/s serving 43 stops."
+    },
+    {
+      "label_en": "Building specification",
+      "label_he": "מפרט הבניין",
+      "value_en": "Per-apartment VRF air conditioning, parquet in bedrooms, designed kitchen, double glazing with internal electric venetian blinds, closed-circuit intercom",
+      "value_he": "מיזוג VRF דירתי, פרקט בחדרי השינה, מטבח מעוצב, בידוד כפול עם תריס ונציאני פנימי חשמלי, אינטרקום במעגל סגור",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S33"
+      ],
+      "note_en": "Marketing site only; it writes 'VRP', probably a typo for VRF. Individual units may differ."
+    },
+    {
+      "label_en": "Kindergarten cluster",
+      "label_he": "אשכול גנים",
+      "value_en": "A 4-floor kindergarten cluster at Arania 14A in Tower B, planned to open in September 2025; operating status not confirmed",
+      "value_he": "אשכול גנים בן 4 קומות ברחוב ארניה 14א במגדל B, שתוכנן להיפתח בספטמבר 2025; לא אומת אם הוא פועל",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S38"
+      ],
+      "note_en": "Project TLV updated the page with July 2026 photos but does not say whether it has opened."
+    }
+  ],
+  "neighborhood_facts": [
+    {
+      "label_en": "Location",
+      "label_he": "מיקום",
+      "value_en": "South part of the Sarona complex in the South Kirya; the towers form Sarona's western edge, between the Ayalon business district and the residential streets to the west",
+      "value_he": "בחלק הדרומי של מתחם שרונה בדרום הקריה; המגדלים יוצרים את הדופן המערבית של שרונה, בין אזור העסקים של איילון לשכונות המגורים ממערב",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S17",
+        "S39"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Immediate surroundings",
+      "label_he": "סביבה מיידית",
+      "value_en": "Landmark mall about 20 m and Sarona Market about 40 m from Arania Osvaldo Street",
+      "value_he": "קניון לנדמרק כ-20 מ׳ ושרונה מרקט כ-40 מ׳ מרחוב ארניה אוסוולדו",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S40"
+      ],
+      "note_en": "Zips measures from the street; its reference point is not stated."
+    },
+    {
+      "label_en": "Sarona Market",
+      "label_he": "שרונה מרקט",
+      "value_en": "Indoor food market opened in 2015, 8,700 sqm",
+      "value_he": "שוק אוכל מקורה שנפתח ב-2015, 8,700 מ״ר",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S41"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Landmark towers next door",
+      "label_he": "מגדלי לנדמרק הסמוכים",
+      "value_en": "Immediately south: Tower A with 39 office floors and a performing arts center; Tower B with 30 office floors and 11 residential floors (116 apartments per the 2021 approval)",
+      "value_he": "מדרום, צמוד לפרויקט: מגדל A עם 39 קומות משרדים ומרכז לאמנויות הבמה; מגדל B עם 30 קומות משרדים ו-11 קומות מגורים (116 דירות לפי אישור 2021)",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S27",
+        "S42",
+        "S43"
+      ],
+      "note_en": "Madlan's deal table lists 2026 Landmark apartment deals with year built 2027, so delivery of the residential floors is not verified."
+    },
+    {
+      "label_en": "Culture cluster",
+      "label_he": "מוקדי תרבות",
+      "value_en": "Habima Square (Habima Theatre, Culture Palace, Helena Rubinstein Pavilion) and the Tel Aviv Museum of Art on Shaul HaMelech Blvd",
+      "value_he": "כיכר הבימה (תיאטרון הבימה, היכל התרבות, ביתן הלנה רובינשטיין) ומוזיאון תל אביב לאמנות בשדרות שאול המלך",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S44",
+        "S45"
+      ],
+      "note_en": "Straight-line distances are in 'distances'."
+    },
+    {
+      "label_en": "HaKirya",
+      "label_he": "הקריה",
+      "value_en": "Kaplan Street separates the IDF Kirya base to the north from the South Kirya business district, where Sarona is",
+      "value_he": "רחוב קפלן מפריד בין בסיס הקריה של צה״ל מצפון לבין אזור העסקים דרום הקריה, שבו נמצאת שרונה",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S46"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Nearby residential towers",
+      "label_he": "מגדלי מגורים סמוכים",
+      "value_en": "Madlan tags nearby cards as Gindi TLV towers and the Leonardo da Vinci Tower (Leonardo da Vinci 12). Street numbers on Madlan are unreliable: cards whose text says B.S.R Sarona appear under Leonardo da Vinci and Aluf Kalman Magen addresses",
+      "value_he": "במדלן מתויגות מודעות סמוכות כמגדלי גינדי TLV וכמגדל לאונרדו דה וינצ׳י (לאונרדו דה וינצ׳י 12). מספרי הבתים במדלן אינם אמינים: מודעות שבטקסט שלהן כתוב ב.ס.ר שרונה מופיעות בכתובות לאונרדו דה וינצ׳י ואלוף קלמן מגן",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S47",
+        "S48",
+        "S49",
+        "S30",
+        "S50"
+      ],
+      "note_en": "Project TLV lists the Gindi Sarona towers at Aluf Kalman Magen 3-7."
+    },
+    {
+      "label_en": "Midtown Tel Aviv (location check)",
+      "label_he": "מידטאון תל אביב (בדיקת מיקום)",
+      "value_en": "Not in Sarona: Menachem Begin Road 144 in Nahalat Yitzhak, two 50-floor towers (offices and residential) by Canada-Israel, completed 2018",
+      "value_he": "לא בשרונה: דרך מנחם בגין 144 בנחלת יצחק, שני מגדלים בני 50 קומות (משרדים ומגורים) של קנדה-ישראל, הושלם ב-2018",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S51"
+      ],
+      "note_en": ""
+    }
+  ],
+  "distances": [
+    {
+      "to_en": "Landmark mall",
+      "to_he": "קניון לנדמרק",
+      "value_en": "about 20 m from Arania Osvaldo Street",
+      "value_he": "כ-20 מ׳ מרחוב ארניה אוסוולדו",
+      "basis": "source",
+      "source_ids": [
+        "S40"
+      ],
+      "note_en": "Zips, reference point on the street not stated."
+    },
+    {
+      "to_en": "Sarona Market",
+      "to_he": "שרונה מרקט",
+      "value_en": "about 40 m from Arania Osvaldo Street",
+      "value_he": "כ-40 מ׳ מרחוב ארניה אוסוולדו",
+      "basis": "source",
+      "source_ids": [
+        "S40"
+      ],
+      "note_en": "Zips, reference point on the street not stated."
+    },
+    {
+      "to_en": "Light rail platforms (station not named)",
+      "to_he": "רציפי רכבת קלה (התחנה לא צוינה)",
+      "value_en": "about 252 m from Arania Osvaldo Street",
+      "value_he": "כ-252 מ׳ מרחוב ארניה אוסוולדו",
+      "basis": "source",
+      "source_ids": [
+        "S40"
+      ],
+      "note_en": "Zips lists 'light rail - platforms' without naming the station; Yehudit and Carlebach are the nearest Red Line stations."
+    },
+    {
+      "to_en": "Yehudit LRT / Begin Road bus stop",
+      "to_he": "תחנת אוטובוס ת. רק״ל יהודית / דרך מנחם בגין",
+      "value_en": "about 5 minutes' walk",
+      "value_he": "כ-5 דקות הליכה",
+      "basis": "source",
+      "source_ids": [
+        "S52"
+      ],
+      "note_en": "Moovit, from its Sarona complex reference point at Aluf Albert Mendler 3, not from the towers."
+    },
+    {
+      "to_en": "Habima Square",
+      "to_he": "כיכר הבימה",
+      "value_en": "about 600 m, straight line",
+      "value_he": "כ-600 מ׳ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S41",
+        "S44"
+      ],
+      "note_en": "Computed with the haversine formula from Wikipedia coordinates: origin Sarona Market (32.06806N 34.78194E), which Globes places north of the project and Zips puts about 40 m from Arania Osvaldo Street. The towers' own coordinates were not available, so treat the figure as approximate. Result 604 m."
+    },
+    {
+      "to_en": "Azrieli Sarona Tower, Begin Road",
+      "to_he": "מגדל עזריאלי שרונה, דרך בגין",
+      "value_en": "about 760 m, straight line",
+      "value_he": "כ-760 מ׳ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S41",
+        "S53"
+      ],
+      "note_en": "Computed with the haversine formula from Wikipedia coordinates: origin Sarona Market (32.06806N 34.78194E), which Globes places north of the project and Zips puts about 40 m from Arania Osvaldo Street. The towers' own coordinates were not available, so treat the figure as approximate. Result 762 m."
+    },
+    {
+      "to_en": "Tel Aviv Museum of Art",
+      "to_he": "מוזיאון תל אביב לאמנות",
+      "value_en": "about 1.1 km, straight line",
+      "value_he": "כ-1.1 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S41",
+        "S45"
+      ],
+      "note_en": "Computed with the haversine formula from Wikipedia coordinates: origin Sarona Market (32.06806N 34.78194E), which Globes places north of the project and Zips puts about 40 m from Arania Osvaldo Street. The towers' own coordinates were not available, so treat the figure as approximate. Result 1,140 m."
+    },
+    {
+      "to_en": "Azrieli Center (footbridge to Tel Aviv HaShalom station)",
+      "to_he": "מרכז עזריאלי (גשר הולכי רגל לתחנת רכבת תל אביב השלום)",
+      "value_en": "about 1.2 km, straight line",
+      "value_he": "כ-1.2 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S41",
+        "S54"
+      ],
+      "note_en": "Computed with the haversine formula from Wikipedia coordinates: origin Sarona Market (32.06806N 34.78194E), which Globes places north of the project and Zips puts about 40 m from Arania Osvaldo Street. The towers' own coordinates were not available, so treat the figure as approximate. Result 1,159 m."
+    },
+    {
+      "to_en": "Azrieli mall / Begin Road bus stop",
+      "to_he": "תחנת אוטובוס קניון עזריאלי / דרך מנחם בגין",
+      "value_en": "about 7 minutes' walk",
+      "value_he": "כ-7 דקות הליכה",
+      "basis": "source",
+      "source_ids": [
+        "S52"
+      ],
+      "note_en": "Moovit, from its Sarona complex reference point, not from the towers."
+    },
+    {
+      "to_en": "Opera / Shaul HaMelech Blvd bus stop",
+      "to_he": "תחנת אוטובוס האופרה / שד׳ שאול המלך",
+      "value_en": "about 7 minutes' walk",
+      "value_he": "כ-7 דקות הליכה",
+      "basis": "source",
+      "source_ids": [
+        "S52"
+      ],
+      "note_en": "Moovit, from its Sarona complex reference point, not from the towers."
+    },
+    {
+      "to_en": "Midtown Tel Aviv",
+      "to_he": "מידטאון תל אביב",
+      "value_en": "about 1.5 km, straight line",
+      "value_he": "כ-1.5 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S41",
+        "S51"
+      ],
+      "note_en": "Computed with the haversine formula from Wikipedia coordinates: origin Sarona Market (32.06806N 34.78194E), which Globes places north of the project and Zips puts about 40 m from Arania Osvaldo Street. The towers' own coordinates were not available, so treat the figure as approximate. Result 1,487 m."
+    },
+    {
+      "to_en": "Ichilov (Tel Aviv Sourasky Medical Center)",
+      "to_he": "איכילוב (המרכז הרפואי תל אביב)",
+      "value_en": "about 1.6 km, straight line",
+      "value_he": "כ-1.6 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S41",
+        "S55"
+      ],
+      "note_en": "Computed with the haversine formula from Wikipedia coordinates: origin Sarona Market (32.06806N 34.78194E), which Globes places north of the project and Zips puts about 40 m from Arania Osvaldo Street. The towers' own coordinates were not available, so treat the figure as approximate. Result 1,584 m."
+    },
+    {
+      "to_en": "Tel Aviv HaShalom railway station",
+      "to_he": "תחנת רכבת תל אביב השלום",
+      "value_en": "1,702 m, about 23 minutes' walk",
+      "value_he": "1,702 מ׳, כ-23 דקות הליכה",
+      "basis": "source",
+      "source_ids": [
+        "S52"
+      ],
+      "note_en": "Moovit, from its Sarona complex reference point, not from the towers. The same page lists Arlozorov as the nearest light rail station, which looks outdated."
+    },
+    {
+      "to_en": "Charles Clore Park (beachfront park)",
+      "to_he": "פארק צ׳ארלס קלור (פארק על קו החוף)",
+      "value_en": "about 2.0 km, straight line",
+      "value_he": "כ-2 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S41",
+        "S56"
+      ],
+      "note_en": "Computed with the haversine formula from Wikipedia coordinates: origin Sarona Market (32.06806N 34.78194E), which Globes places north of the project and Zips puts about 40 m from Arania Osvaldo Street. The towers' own coordinates were not available, so treat the figure as approximate. Result 1,987 m. No coordinates for Gordon or Frishman beach could be fetched; beaches due west may be somewhat closer."
+    }
+  ],
+  "schools": [
+    {
+      "name_en": "Givon school",
+      "name_he": "בית ספר גבעון",
+      "level_en": "Elementary (1-6), state",
+      "level_he": "יסודי (א-ו), ממלכתי",
+      "note_en": "Listed nearby by Madlan (about 80 students per grade); Zips puts it about 313 m from Arania Osvaldo Street. Registration zone not verified.",
+      "note_he": "מופיע בסביבה לפי מדלן (כ-80 תלמידים בשכבה); לפי Zips כ-313 מ׳ מרחוב ארניה אוסוולדו. אזור הרישום לא אומת.",
+      "source_ids": [
+        "S43",
+        "S40"
+      ]
+    },
+    {
+      "name_en": "Bikurim - HaMechil school",
+      "name_he": "בית ספר ביכורים - המכיל",
+      "level_en": "Elementary (1-6), state",
+      "level_he": "יסודי (א-ו), ממלכתי",
+      "note_en": "Listed nearby by Madlan (about 72 students per grade); Zips puts it about 266 m from the street. Registration zone not verified.",
+      "note_he": "מופיע בסביבה לפי מדלן (כ-72 תלמידים בשכבה); לפי Zips כ-266 מ׳ מהרחוב. אזור הרישום לא אומת.",
+      "source_ids": [
+        "S43",
+        "S40"
+      ]
+    },
+    {
+      "name_en": "Ironi Alef High School for the Arts",
+      "name_he": "עירוני א׳ לאמנויות",
+      "level_en": "Secondary (7-12), state",
+      "level_he": "על-יסודי (ז-יב), ממלכתי",
+      "note_en": "Listed nearby by Madlan; Zips puts it about 280 m from the street. Admission terms not verified.",
+      "note_he": "מופיע בסביבה לפי מדלן; לפי Zips כ-280 מ׳ מהרחוב. תנאי הקבלה לא אומתו.",
+      "source_ids": [
+        "S43",
+        "S40"
+      ]
+    },
+    {
+      "name_en": "Pelech school",
+      "name_he": "בית ספר פלך",
+      "level_en": "Secondary (7-12), state religious",
+      "level_he": "על-יסודי (ז-יב), ממלכתי-דתי",
+      "note_en": "Listed nearby by Madlan. Distance and admission terms not verified.",
+      "note_he": "מופיע בסביבה לפי מדלן. מרחק ותנאי קבלה לא אומתו.",
+      "source_ids": [
+        "S43"
+      ]
+    },
+    {
+      "name_en": "Kindergarten cluster, Arania 14A (inside the project)",
+      "name_he": "אשכול גנים, ארניה 14א (בתוך הפרויקט)",
+      "level_en": "Kindergartens",
+      "level_he": "גני ילדים",
+      "note_en": "4-floor cluster in Tower B planned for September 2025; operating status not confirmed.",
+      "note_he": "אשכול בן 4 קומות במגדל B שתוכנן לספטמבר 2025; לא אומת אם הוא פועל.",
+      "source_ids": [
+        "S38"
+      ]
+    }
+  ],
+  "transport": [
+    {
+      "item_en": "Red Line light rail, Yehudit station (underground, Begin Road): exit A (accessible) serves HaArba'a St, the Sarona complex and Kiryat HaMemshala; other entrances at Begin 112, Begin 98 and Albert Mendler 38; lines R1 to R3; fare NIS 8",
+      "item_he": "הקו האדום, תחנת יהודית (תת-קרקעית, דרך מנחם בגין): יציאה A (נגישה) לרחוב הארבעה, מתחם שרונה וקריית הממשלה; כניסות נוספות בבגין 112, בגין 98 ואלברט מנדלר 38; קווים R1 עד R3; תעריף 8 ש״ח",
+      "status_en": "operating (line opened 2023-08-18)",
+      "status_he": "פועל (הקו נפתח ב-18.8.2023)",
+      "source_ids": [
+        "S57",
+        "S58",
+        "S59"
+      ]
+    },
+    {
+      "item_en": "Red Line light rail, Carlebach station: entrances at Carlebach/Lincoln (TLV Mall) and Carlebach/Begin; next stops Yehudit (north) and Allenby (south); planned interchange with the Green Line",
+      "item_he": "הקו האדום, תחנת קרליבך: כניסות בקרליבך/לינקולן (קניון TLV) ובקרליבך/בגין; התחנות הסמוכות יהודית (צפון) ואלנבי (דרום); מתוכננת תחנת מעבר לקו הירוק",
+      "status_en": "operating",
+      "status_he": "פועל",
+      "source_ids": [
+        "S60",
+        "S61"
+      ]
+    },
+    {
+      "item_en": "Red Line service: 34 stations; waiting times of about 3 minutes at peak and 6 minutes off-peak per Wikipedia",
+      "item_he": "שירות הקו האדום: 34 תחנות; רכבת כל כ-3 דקות בשעות השיא וכל 6 דקות בשאר השעות",
+      "status_en": "operating",
+      "status_he": "פועל",
+      "source_ids": [
+        "S57"
+      ]
+    },
+    {
+      "item_en": "Green Line light rail: underground stations at Carlebach (shared with the Red Line) and Kaplan",
+      "item_he": "הקו הירוק: תחנות תת-קרקעיות בקרליבך (משותפת עם הקו האדום) ובקפלן",
+      "status_en": "under construction, expected 2028 (Project TLV); Wikipedia: southern section 2028, full line 2030",
+      "status_he": "בבנייה, פתיחה צפויה ב-2028 (פרויקט TLV); לפי ויקיפדיה: הקטע הדרומי ב-2028 והקו כולו ב-2030",
+      "source_ids": [
+        "S61",
+        "S62"
+      ]
+    },
+    {
+      "item_en": "Purple Line light rail: central route along Arlozorov, Ben Yehuda, Allenby, Aliya and Levinsky, with Red Line interchanges at Arlozorov and Yehuda HaLevi; no station at Sarona",
+      "item_he": "הקו הסגול: תוואי מרכזי ברחובות ארלוזורוב, בן יהודה, אלנבי, העלייה ולוינסקי, עם מעבר לקו האדום בארלוזורוב וביהודה הלוי; אין תחנה בשרונה",
+      "status_en": "under construction, expected 2028; first vehicle delivered June 2026",
+      "status_he": "בבנייה, פתיחה צפויה ב-2028; הקרון הראשון סופק ביוני 2026",
+      "source_ids": [
+        "S63",
+        "S64"
+      ]
+    },
+    {
+      "item_en": "Tel Aviv Metro",
+      "item_he": "המטרו בגוש דן",
+      "status_en": "cornerstone laid 2025-12-18; tender launched 2026-08-24; stations near Sarona not verified",
+      "status_he": "אבן הפינה הונחה ב-18.12.2025; המכרז יצא ב-24.8.2026; תחנות ליד שרונה לא אומתו",
+      "source_ids": [
+        "S65"
+      ]
+    },
+    {
+      "item_en": "Israel Railways, Tel Aviv HaShalom station: in the Ayalon median at the HaShalom interchange, linked by footbridge to Azrieli Center",
+      "item_he": "רכבת ישראל, תחנת תל אביב השלום: בגדה התיכונה של נתיבי איילון במחלף השלום, עם גשר הולכי רגל למרכז עזריאלי",
+      "status_en": "operating",
+      "status_he": "פועלת",
+      "source_ids": [
+        "S66",
+        "S54"
+      ]
+    },
+    {
+      "item_en": "Ayalon Highway: nearest interchange HaShalom",
+      "item_he": "נתיבי איילון: המחלף הקרוב הוא מחלף השלום",
+      "status_en": "operating",
+      "status_he": "פועל",
+      "source_ids": [
+        "S67"
+      ]
+    }
+  ],
+  "planning_future": [
+    {
+      "item_en": "Sarona Hotel (Nitsba) at HaArba'a Street and Begin Road: 47 floors and 880 rooms planned per Wikipedia (Project TLV: 45 floors, 800 rooms); an undated report by parent company Airport City, cited after the October 2023 war, said floors up to the 36th had been cast; no completion date; adding 12 floors has been urged, which would need Civil Aviation Authority approval because the site is under the Ben Gurion Airport flight path",
+      "item_he": "מלון שרונה (ניצבא) בפינת רחוב הארבעה ודרך בגין: לפי ויקיפדיה מתוכננים 47 קומות ו-880 חדרים (לפי פרויקט TLV: 45 קומות ו-800 חדרים); לפי דוח לא מתוארך של חברת האם איירפורט סיטי, המצוטט לאחר מלחמת אוקטובר 2023, נוצקו הקומות עד קומה 36; אין מועד סיום; הועלתה דרישה להוסיף 12 קומות, שתחייב אישור של רשות התעופה האזרחית משום שהאתר נמצא בנתיב הטיסה לנתב״ג",
+      "impact_en": "Construction activity is expected to continue on the east side of Sarona. It sits east of the project, so it is unlikely to block west-facing sea views (inference).",
+      "impact_he": "צפויה המשך פעילות בנייה בצד המזרחי של שרונה. המלון ממוקם ממזרח לפרויקט, ולכן סביר שלא יחסום נוף לים ממערב (הסקה).",
+      "source_ids": [
+        "S68",
+        "S69"
+      ]
+    },
+    {
+      "item_en": "Spiral Tower at Azrieli Center: 91 floors, 350 m",
+      "item_he": "מגדל הספירלה במרכז עזריאלי: 91 קומות, 350 מ׳",
+      "impact_en": "Under construction with completion expected in 2027. It changes the eastern skyline and adds construction traffic near Begin Road; it is not on the sea side.",
+      "impact_he": "בבנייה, סיום צפוי ב-2027. ישנה את קו הרקיע במזרח ויוסיף תנועת בנייה סמוך לדרך בגין; אינו בצד הים.",
+      "source_ids": [
+        "S54"
+      ]
+    },
+    {
+      "item_en": "Landmark residential floors immediately south of the project",
+      "item_he": "קומות המגורים במגדלי לנדמרק, מדרום לפרויקט",
+      "impact_en": "Madlan lists 2026 Landmark apartment deals with year built 2027. If the residential floors are still being completed, expect works next door (not verified).",
+      "impact_he": "במדלן רשומות עסקאות דירות בלנדמרק מ-2026 עם שנת בנייה 2027. אם קומות המגורים עדיין בבנייה, צפויות עבודות בסמוך (לא אומת).",
+      "source_ids": [
+        "S43",
+        "S27"
+      ]
+    },
+    {
+      "item_en": "Green Line underground stations at Kaplan and Carlebach",
+      "item_he": "תחנות תת-קרקעיות של הקו הירוק בקפלן ובקרליבך",
+      "impact_en": "Street works in the area until the expected 2028 opening; afterwards a second light rail line within reach.",
+      "impact_he": "עבודות ברחובות האזור עד הפתיחה הצפויה ב-2028; לאחר מכן קו רכבת קלה נוסף בהישג יד.",
+      "source_ids": [
+        "S61",
+        "S62"
+      ]
+    },
+    {
+      "item_en": "Tel Aviv Metro (tender launched 2026-08-24)",
+      "item_he": "מטרו גוש דן (המכרז יצא ב-24.8.2026)",
+      "impact_en": "Long-term; no effect expected during a typical lease.",
+      "impact_he": "טווח ארוך; לא צפויה השפעה במהלך חוזה שכירות רגיל.",
+      "source_ids": [
+        "S65"
+      ]
+    },
+    {
+      "item_en": "Kindergarten cluster at Arania 14A in Tower B",
+      "item_he": "אשכול גנים בארניה 14א במגדל B",
+      "impact_en": "A family amenity inside the project that may also bring drop-off traffic; opening status not confirmed.",
+      "impact_he": "שירות למשפחות בתוך הפרויקט, שעשוי גם להוסיף תנועת הורים; מועד הפתיחה לא אומת.",
+      "source_ids": [
+        "S38"
+      ]
+    },
+    {
+      "item_en": "Keren HaKirya: in 2013 the local committee approved a mixed-use complex with office and residential towers at Begin Road and Shaul HaMelech Blvd",
+      "item_he": "קרן הקריה: ב-2013 אישרה הוועדה המקומית מתחם מעורב שימושים עם מגדלי משרדים ומגורים בפינת דרך בגין ושדרות שאול המלך",
+      "impact_en": "Current status not verified. It lies on the Begin Road side, not between the project and the sea.",
+      "impact_he": "הסטטוס הנוכחי לא אומת. המתחם בצד דרך בגין, לא בין הפרויקט לים.",
+      "source_ids": [
+        "S46"
+      ]
+    }
+  ],
+  "market_stats": [
+    {
+      "metric_en": "Asking rent, B.S.R Sarona 5-room units with sea or west views (11 Madlan cards, 115 to 122 sqm built)",
+      "metric_he": "שכר דירה מבוקש, דירות 5 חדרים עם נוף לים או למערב בב.ס.ר שרונה (11 מודעות במדלן, 115 עד 122 מ״ר בנוי)",
+      "value_en": "NIS 15,000 to 18,500 a month, median NIS 16,500 (computed from asking rents)",
+      "value_he": "15,000 עד 18,500 ש״ח לחודש, חציון 16,500 ש״ח (חישוב על בסיס מחירים מבוקשים)",
+      "as_of": "2026-09-16",
+      "source_ids": [
+        "S18",
+        "S16",
+        "S31",
+        "S70",
+        "S71",
+        "S30",
+        "S72",
+        "S73",
+        "S37",
+        "S74",
+        "S75"
+      ]
+    },
+    {
+      "metric_en": "Asking rent per built sqm, same 11 cards (computed)",
+      "metric_he": "שכר דירה מבוקש למ״ר בנוי, אותן 11 מודעות (חישוב)",
+      "value_en": "NIS 125 to 161; median NIS 136; interquartile range about NIS 130 to 148",
+      "value_he": "125 עד 161 ש״ח; חציון 136 ש״ח; טווח בין-רבעוני כ-130 עד 148 ש״ח",
+      "as_of": "2026-09-16",
+      "source_ids": [
+        "S18",
+        "S16",
+        "S31",
+        "S70",
+        "S71",
+        "S30",
+        "S72",
+        "S73",
+        "S37",
+        "S74",
+        "S75"
+      ]
+    },
+    {
+      "metric_en": "Madlan average rent, Sarona neighborhood (all sizes, period not stated)",
+      "metric_he": "שכר דירה ממוצע במדלן, שכונת שרונה (כל הגדלים, התקופה לא צוינה)",
+      "value_en": "NIS 13,000 a month",
+      "value_he": "13,000 ש״ח לחודש",
+      "as_of": "2026-09-16",
+      "source_ids": [
+        "S43"
+      ]
+    },
+    {
+      "metric_en": "Rental supply on Arania Osvaldo Street (Madlan)",
+      "metric_he": "היצע להשכרה ברחוב ארניה אוסוולדו (מדלן)",
+      "value_en": "159 apartments for rent, 26 of them with 5 rooms (not all house numbers are B.S.R)",
+      "value_he": "159 דירות להשכרה, מתוכן 26 בנות 5 חדרים (לא כל מספרי הבתים שייכים לב.ס.ר)",
+      "as_of": "2026-09-16",
+      "source_ids": [
+        "S76"
+      ]
+    },
+    {
+      "metric_en": "Furnishing in current B.S.R cards",
+      "metric_he": "ריהוט במודעות הנוכחיות בב.ס.ר",
+      "value_en": "Most cards are unfurnished with kitchen appliances; furnished cards ask NIS 16,000 (4 rooms, 120 sqm, floor 30) and NIS 20,000 (5 rooms)",
+      "value_he": "רוב המודעות ללא ריהוט, עם מוצרי חשמל במטבח; מודעות מרוהטות מבקשות 16,000 ש״ח (4 חדרים, 120 מ״ר, קומה 30) ו-20,000 ש״ח (5 חדרים)",
+      "as_of": "2026-09-16",
+      "source_ids": [
+        "S32",
+        "S77",
+        "S78"
+      ]
+    },
+    {
+      "metric_en": "CBS rent change, year on year (August 2026 CPI)",
+      "metric_he": "שינוי שכר הדירה בלמ״ס, שנה על שנה (מדד אוגוסט 2026)",
+      "value_en": "+4.4% for new tenants; +2.6% for renewing tenants",
+      "value_he": "4.4%+ לשוכרים חדשים; 2.6%+ לשוכרים ממשיכים",
+      "as_of": "2026-08",
+      "source_ids": [
+        "S79"
+      ]
+    },
+    {
+      "metric_en": "Madlan area price level and gross rental yield (shown with B.S.R listings, period not stated)",
+      "metric_he": "רמת מחירים ותשואת שכירות ברוטו לפי מדלן (מוצג במודעות ב.ס.ר, התקופה לא צוינה)",
+      "value_en": "about NIS 57,000 per sqm; yield 2.97%",
+      "value_he": "כ-57,000 ש״ח למ״ר; תשואה 2.97%",
+      "as_of": "2026-09-16",
+      "source_ids": [
+        "S21",
+        "S80"
+      ]
+    },
+    {
+      "metric_en": "Developer asking prices, December 2025",
+      "metric_he": "מחירים מבוקשים מהיזם, דצמבר 2025",
+      "value_en": "NIS 52,000 to 54,000 per sqm for 4 to 5 rooms; NIS 70,000 per sqm for penthouses",
+      "value_he": "52,000 עד 54,000 ש״ח למ״ר לדירות 4 עד 5 חדרים; 70,000 ש״ח למ״ר לפנטהאוזים",
+      "as_of": "2025-12",
+      "source_ids": [
+        "S19"
+      ]
+    },
+    {
+      "metric_en": "Exchange rates (Bank of Israel representative rates)",
+      "metric_he": "שערי חליפין (שער יציג, בנק ישראל)",
+      "value_en": "USD 1 = NIS 3.0490; EUR 1 = NIS 3.5169",
+      "value_he": "1 דולר = 3.0490 ש״ח; 1 אירו = 3.5169 ש״ח",
+      "as_of": "2026-09-15",
+      "source_ids": [
+        "S81"
+      ]
+    }
+  ],
+  "sale_comps": [
+    {
+      "date": "2026-07-09",
+      "where_en": "Gindi TLV, Sarona",
+      "where_he": "גינדי TLV, שרונה",
+      "rooms": "4",
+      "sqm": 91,
+      "floor": 40,
+      "price_nis": 5250000,
+      "price_per_sqm_nis": 57692,
+      "kind": "transaction",
+      "source_ids": [
+        "S43"
+      ],
+      "note_en": "Madlan deal table (dates shown month/day/year)."
+    },
+    {
+      "date": "2026-06-04",
+      "where_en": "Gindi TLV, Sarona",
+      "where_he": "גינדי TLV, שרונה",
+      "rooms": "6",
+      "sqm": 200,
+      "floor": 42,
+      "price_nis": 11650000,
+      "price_per_sqm_nis": 58250,
+      "kind": "transaction",
+      "source_ids": [
+        "S43"
+      ],
+      "note_en": "Madlan deal table."
+    },
+    {
+      "date": "2026-04-29",
+      "where_en": "B.S.R Sarona, Building B",
+      "where_he": "ב.ס.ר שרונה, בניין B",
+      "rooms": "5",
+      "sqm": 117,
+      "floor": 20,
+      "price_nis": 8500000,
+      "price_per_sqm_nis": 72650,
+      "kind": "asking",
+      "source_ids": [
+        "S15"
+      ],
+      "note_en": "117 sqm + 14 sqm balcony, north-west open sea views; price per sqm computed: 8,500,000 / 117. Same text as a Madlan rental card at NIS 17,200."
+    },
+    {
+      "date": "2024-09",
+      "where_en": "B.S.R Sarona",
+      "where_he": "ב.ס.ר שרונה",
+      "rooms": "4",
+      "sqm": 106,
+      "floor": 25,
+      "price_nis": 5900000,
+      "price_per_sqm_nis": 55660,
+      "kind": "transaction",
+      "source_ids": [
+        "S17"
+      ],
+      "note_en": "Sale of rights before completion, Globes citing Madlan; per sqm computed: 5,900,000 / 106."
+    },
+    {
+      "date": "2024-03",
+      "where_en": "B.S.R Sarona",
+      "where_he": "ב.ס.ר שרונה",
+      "rooms": "5",
+      "sqm": 116,
+      "floor": 20,
+      "price_nis": 7220000,
+      "price_per_sqm_nis": 62241,
+      "kind": "transaction",
+      "source_ids": [
+        "S17"
+      ],
+      "note_en": "Sale of rights before completion, Globes citing Madlan, then the project's highest price; per sqm computed: 7,220,000 / 116."
+    },
+    {
+      "date": "2024-02",
+      "where_en": "B.S.R Sarona",
+      "where_he": "ב.ס.ר שרונה",
+      "rooms": "4",
+      "sqm": 104,
+      "floor": 30,
+      "price_nis": 5640000,
+      "price_per_sqm_nis": 54231,
+      "kind": "transaction",
+      "source_ids": [
+        "S17"
+      ],
+      "note_en": "Sale of rights before completion, Globes citing Madlan; per sqm computed: 5,640,000 / 104."
+    }
+  ],
+  "rent_comps": [
+    {
+      "date": "2026-09-16",
+      "where_en": "B.S.R Sarona tower (card text)",
+      "where_he": "מגדל ב.ס.ר שרונה (לפי טקסט המודעה)",
+      "rooms": "5",
+      "sqm": 115,
+      "rent_nis": 18500,
+      "rent_per_sqm_nis": 161,
+      "kind": "asking",
+      "source_ids": [
+        "S18"
+      ],
+      "note_en": "115 sqm built + 14 sqm sun balcony, high floor, panoramic view to the sea and the city, parking and storage, exclusive (another agency), immediate entry. Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "B.S.R Sarona, Building B (middle tower)",
+      "where_he": "ב.ס.ר שרונה, בניין B (האמצעי)",
+      "rooms": "5",
+      "sqm": 117,
+      "rent_nis": 17200,
+      "rent_per_sqm_nis": 147,
+      "kind": "asking",
+      "source_ids": [
+        "S16",
+        "S15"
+      ],
+      "note_en": "117 sqm built + 14 sqm sun balcony, open view to the north-west; text says 'floor 2' while the identical Janglo text says floor 20 of 40; kitchen island 3 m; exclusive (another agency). Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "B.S.R Sarona",
+      "where_he": "ב.ס.ר שרונה",
+      "rooms": "5",
+      "sqm": 121,
+      "rent_nis": 17500,
+      "rent_per_sqm_nis": 145,
+      "kind": "asking",
+      "source_ids": [
+        "S31"
+      ],
+      "note_en": "Floor 29, 121 sqm + 14 sqm sun balcony with a sea viewpoint, quality parquet, upgraded kitchen, private storage, flexible entry. Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "BSR Sarona",
+      "where_he": "בסר שרונה",
+      "rooms": "5",
+      "sqm": 121,
+      "rent_nis": 17900,
+      "rent_per_sqm_nis": 148,
+      "kind": "asking",
+      "source_ids": [
+        "S70"
+      ],
+      "note_en": "121 sqm + 14 sqm west balcony, high floor, open view to the city and the sea, herringbone parquet, flexible entry. Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "BSR Sarona (south-west model)",
+      "where_he": "בסר שרונה (דגם דרום-מערב)",
+      "rooms": "5",
+      "sqm": 122,
+      "rent_nis": 18100,
+      "rent_per_sqm_nis": 148,
+      "kind": "asking",
+      "source_ids": [
+        "S71"
+      ],
+      "note_en": "122 sqm built + 14 sqm west balcony with a full open view, upgraded kitchen, planned lighting; described as differently planned from the regular models. Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "BSR Sarona (address field: Aluf Kalman Magen 8)",
+      "where_he": "בסר שרונה (שדה הכתובת: אלוף קלמן מגן 8)",
+      "rooms": "5",
+      "sqm": 121,
+      "rent_nis": 15800,
+      "rent_per_sqm_nis": 131,
+      "kind": "asking",
+      "source_ids": [
+        "S30",
+        "S82"
+      ],
+      "note_en": "Floor 18, 121 sqm + 14 sqm, south-west facing the sea; text states management fee NIS 15.4 per sqm and arnona about NIS 650 (periods not stated); listed on two cards. Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "B.S.R Sarona (Arania Osvaldo 10)",
+      "where_he": "ב.ס.ר שרונה (ארניה אוסוולדו 10)",
+      "rooms": "5",
+      "sqm": 120,
+      "rent_nis": 15500,
+      "rent_per_sqm_nis": 129,
+      "kind": "asking",
+      "source_ids": [
+        "S72"
+      ],
+      "note_en": "120 sqm + 15 sqm, sea view from the living room and bedrooms, gym and 24/7 guard; fields: arnona NIS 1,750, building fee NIS 2,550 (periods not stated). Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "B.S.R Sarona luxury towers",
+      "where_he": "מגדלי היוקרה ב.ס.ר שרונה",
+      "rooms": "5",
+      "sqm": 121,
+      "rent_nis": 16500,
+      "rent_per_sqm_nis": 136,
+      "kind": "asking",
+      "source_ids": [
+        "S73"
+      ],
+      "note_en": "New, 121 sqm + 14 sqm, view toward the sea, parking and storage; fields: arnona NIS 2,500, building fee NIS 1,250 (periods not stated). Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "B.S.R Sarona",
+      "where_he": "ב.ס.ר שרונה",
+      "rooms": "5",
+      "sqm": 120,
+      "rent_nis": 16000,
+      "rent_per_sqm_nis": 133,
+      "kind": "asking",
+      "source_ids": [
+        "S37"
+      ],
+      "note_en": "120 sqm + 14 sqm sun balcony, sea view, 1 parking space registered in the Land Registry, lobby with 24/7 guard, gym. Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "BSR Sarona",
+      "where_he": "בסר שרונה",
+      "rooms": "5",
+      "sqm": 120,
+      "rent_nis": 15000,
+      "rent_per_sqm_nis": 125,
+      "kind": "asking",
+      "source_ids": [
+        "S74"
+      ],
+      "note_en": "120 sqm + 14 sqm sun balcony, view to the west, 1 parking space, 24/7 guard, gym, residents' club. Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "BSR Sarona",
+      "where_he": "בסר שרונה",
+      "rooms": "5",
+      "sqm": 122,
+      "rent_nis": 15800,
+      "rent_per_sqm_nis": 130,
+      "kind": "asking",
+      "source_ids": [
+        "S75"
+      ],
+      "note_en": "High floor, sea view, south and west, 18 sqm balcony, mamad, parking and storage; area from the listing field. Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Arania Osvaldo 10 (building not named)",
+      "where_he": "ארניה אוסוולדו 10 (הבניין לא צוין)",
+      "rooms": "5",
+      "sqm": 120,
+      "rent_nis": 15500,
+      "rent_per_sqm_nis": 129,
+      "kind": "asking",
+      "source_ids": [
+        "S83"
+      ],
+      "note_en": "Floor 18, 120 sqm + 14 sqm sun balcony, open panoramic sea view, west and south, 2 showers and 3 toilets, private parking and storage; left out of the 11-card set because the building is not named and it may duplicate the floor 18 unit. Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "B.S.R Sarona, Building B (address field: Arania Osvaldo 20)",
+      "where_he": "ב.ס.ר שרונה, בניין B (שדה הכתובת: ארניה אוסוולדו 20)",
+      "rooms": "5",
+      "sqm": 120,
+      "rent_nis": 17000,
+      "rent_per_sqm_nis": 142,
+      "kind": "asking",
+      "source_ids": [
+        "S25"
+      ],
+      "note_en": "New, 14 sqm balcony, 'breathtaking view' (sea not stated), 24/7 lobby guard and gym; area is the listing field. Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "B.S.R Sarona, Building C (Arania Osvaldo 10)",
+      "where_he": "ב.ס.ר שרונה, בניין C (ארניה אוסוולדו 10)",
+      "rooms": "5",
+      "sqm": 125,
+      "rent_nis": 18700,
+      "rent_per_sqm_nis": 150,
+      "kind": "asking",
+      "source_ids": [
+        "S80"
+      ],
+      "note_en": "125 sqm + 15 sqm, no view stated, underground parking and storage, immediate entry; fields: arnona NIS 2,300 and building fee NIS 2,000 (periods not stated). Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "B.S.R Sarona project (Arania Osvaldo 16)",
+      "where_he": "פרויקט בסר שרונה (ארניה אוסוולדו 16)",
+      "rooms": "5",
+      "sqm": 114,
+      "rent_nis": 18000,
+      "rent_per_sqm_nis": 158,
+      "kind": "asking",
+      "source_ids": [
+        "S84"
+      ],
+      "note_en": "Faces the park, not the sea: 114 sqm + 18 sqm balcony, kitchen with island, gym, residents' room, lobby guard, parking; fields: arnona NIS 1,300 and building fee NIS 2,300 (periods not stated); entry 07/2026. Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "B.S.R towers in Sarona",
+      "where_he": "מגדלי בסר בשרונה",
+      "rooms": "4",
+      "sqm": 117,
+      "rent_nis": 13500,
+      "rent_per_sqm_nis": 115,
+      "kind": "asking",
+      "source_ids": [
+        "S85"
+      ],
+      "note_en": "Same 117 sqm + about 14 sqm size as L03 but listed as 4 rooms; floor 12, south-west, upgraded kitchen, parking; no sea view stated. Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Arania Osvaldo 20 (building not named)",
+      "where_he": "ארניה אוסוולדו 20 (הבניין לא צוין)",
+      "rooms": "5",
+      "sqm": 118,
+      "rent_nis": 14900,
+      "rent_per_sqm_nis": 126,
+      "kind": "asking",
+      "source_ids": [
+        "S86"
+      ],
+      "note_en": "118 sqm + 12 sqm, open western view to the sea, new, immediate entry; building fee field NIS 2,000. No. 20 is a Landmark address, but Madlan house numbers are unreliable. Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Arania Osvaldo St (Madlan tags Gindi TLV; building not named in text)",
+      "where_he": "רחוב ארניה אוסוולדו (מדלן מתייג גינדי TLV; הבניין לא צוין בטקסט)",
+      "rooms": "5",
+      "sqm": 128,
+      "rent_nis": 19000,
+      "rent_per_sqm_nis": 148,
+      "kind": "asking",
+      "source_ids": [
+        "S87"
+      ],
+      "note_en": "Floor 22, 128 sqm + 14 sqm, south-west, sea view, integrated refrigerator and dishwasher, induction cooktop, private parking and storage, immediate entry. Madlan card accessed 2026-09-16; Madlan shows no listing date. Rent per sqm computed on the built area in the listing text."
+    },
+    {
+      "date": "2026-05-19",
+      "where_en": "B.S.R Sarona, Building C (northern), floor 16",
+      "where_he": "ב.ס.ר שרונה, בניין C (הצפוני), קומה 16",
+      "rooms": "4",
+      "sqm": 103,
+      "rent_nis": 14000,
+      "rent_per_sqm_nis": 136,
+      "kind": "asking",
+      "source_ids": [
+        "S24"
+      ],
+      "note_en": "103 sqm + 9 sqm balcony, south-east view over Sarona, gym, 24/7 security, 1 underground parking space, storage, entry June; included for scale against smaller units. Rent per sqm computed."
+    }
+  ],
+  "costs": [
+    {
+      "item_en": "Asking rent (same broker, Madlan)",
+      "item_he": "שכר דירה מבוקש (אותה מתווכת, מדלן)",
+      "value_en": "NIS 15,500 a month on the card that matches the latest posts; an older card by the same broker for a 118 sqm south-west unit asks NIS 19,000",
+      "value_he": "15,500 ש״ח לחודש במודעה התואמת את הפרסומים האחרונים; במודעה ישנה יותר של אותה מתווכת לדירת 118 מ״ר לדרום-מערב מבוקשים 19,000 ש״ח",
+      "basis": "source",
+      "source_ids": [
+        "S13",
+        "S14",
+        "S7"
+      ],
+      "note_en": "The Instagram posts state no rent. Madlan shows no dates, so which figure is current is not confirmed; see cross_listings."
+    },
+    {
+      "item_en": "Computed market band (not a valuation)",
+      "item_he": "טווח שוק מחושב (אינו שומה)",
+      "value_en": "About NIS 15,200 to 17,300 a month; midpoint about NIS 15,900",
+      "value_he": "כ-15,200 עד 17,300 ש״ח לחודש; נקודת אמצע כ-15,900 ש״ח",
+      "basis": "computed",
+      "source_ids": [
+        "S18",
+        "S16",
+        "S31",
+        "S70",
+        "S71",
+        "S30",
+        "S72",
+        "S73",
+        "S37",
+        "S74",
+        "S75"
+      ],
+      "note_en": "117 sqm x NIS 130 to 148, the interquartile asking rent per built sqm of 11 B.S.R Sarona 5-room cards with sea or west views (115 to 122 sqm, Madlan, accessed 2026-09-16) = NIS 15,210 to 17,316; midpoint 117 x 136 = NIS 15,912. These are asking rents, not transactions. The broker's NIS 15,500 card sits in the lower half of the band; the NIS 19,000 card is above it."
+    },
+    {
+      "item_en": "Annual rent",
+      "item_he": "שכר דירה שנתי",
+      "value_en": "NIS 186,000 a year at NIS 15,500; about NIS 182,500 to 207,800 at the computed band",
+      "value_he": "186,000 ש״ח לשנה לפי 15,500 ש״ח; כ-182,500 עד 207,800 ש״ח לפי הטווח המחושב",
+      "basis": "computed",
+      "source_ids": [
+        "S13",
+        "S18",
+        "S16",
+        "S31",
+        "S70",
+        "S71",
+        "S30",
+        "S72",
+        "S73",
+        "S37",
+        "S74",
+        "S75"
+      ],
+      "note_en": "15,500 x 12 = 186,000; 15,210 x 12 = 182,520; 17,316 x 12 = 207,792."
+    },
+    {
+      "item_en": "Rent in USD and EUR",
+      "item_he": "שכר הדירה בדולרים ובאירו",
+      "value_en": "NIS 15,500 is about USD 5,080 or EUR 4,410 a month; the computed band is about USD 4,990 to 5,680",
+      "value_he": "15,500 ש״ח הם כ-5,080 דולר או כ-4,410 אירו לחודש; הטווח המחושב הוא כ-4,990 עד 5,680 דולר",
+      "basis": "computed",
+      "source_ids": [
+        "S81"
+      ],
+      "note_en": "15,500 / 3.0490 = 5,084; 15,500 / 3.5169 = 4,407; 15,210 / 3.0490 = 4,989; 17,316 / 3.0490 = 5,679. Bank of Israel representative rates of 2026-09-15."
+    },
+    {
+      "item_en": "Building management fee (va'ad bayit)",
+      "item_he": "דמי ניהול (ועד בית)",
+      "value_en": "Not published for this unit. One B.S.R card states NIS 15.4 per sqm; at 117 to 131 sqm that is about NIS 1,800 to 2,020 a month if the rate is monthly",
+      "value_he": "לא פורסמו לדירה. במודעה אחת בב.ס.ר צוינו 15.4 ש״ח למ״ר; ב-117 עד 131 מ״ר מדובר בכ-1,800 עד 2,020 ש״ח לחודש, אם התעריף חודשי",
+      "basis": "computed",
+      "source_ids": [
+        "S30",
+        "S73",
+        "S80",
+        "S84",
+        "S72"
+      ],
+      "note_en": "15.4 x 117 = 1,802; 15.4 x 131 (117 + 14 balcony) = 2,017. The listing does not state the period or the area basis. Other B.S.R cards enter fee figures of NIS 1,250, 2,000, 2,300 and 2,550 with no period. Ask for the latest management invoice."
+    },
+    {
+      "item_en": "Arnona (municipal property tax): 2026 rates",
+      "item_he": "ארנונה: תעריפי 2026",
+      "value_en": "Zone for Arania Osvaldo not verified. Tel Aviv 2026 residential rates for the newest building code (אא): NIS 90.71 per sqm a year in zone 2 and NIS 112.99 in zone 1 for units up to 140 sqm; NIS 108.98 and NIS 139.60 above 140 sqm",
+      "value_he": "אזור הארנונה של ארניה אוסוולדו לא אומת. תעריפי מגורים בתל אביב ל-2026 לסיווג הבניין החדש ביותר (אא): 90.71 ש״ח למ״ר לשנה באזור 2 ו-112.99 ש״ח באזור 1 לדירה עד 140 מ״ר; 108.98 ו-139.60 ש״ח מעל 140 מ״ר",
+      "basis": "source",
+      "source_ids": [
+        "S88",
+        "S89"
+      ],
+      "note_en": "Rates from a secondary source based on the 2026 order; the zone-1 figures match the Interior Ministry approval reported by Nadlancenter. Balconies count in full; walls are excluded."
+    },
+    {
+      "item_en": "Arnona: illustration",
+      "item_he": "ארנונה: המחשה",
+      "value_en": "About NIS 990 to 1,230 a month at 131 sqm (zone 2 to zone 1, newest building code)",
+      "value_he": "כ-990 עד 1,230 ש״ח לחודש לפי 131 מ״ר (אזור 2 עד אזור 1, סיווג בניין חדש)",
+      "basis": "computed",
+      "source_ids": [
+        "S88",
+        "S30",
+        "S73"
+      ],
+      "note_en": "131 sqm = 117 built + 14 balcony, an upper bound because arnona area excludes walls. 131 x 90.71 = NIS 11,883 a year (990 a month); 131 x 112.99 = NIS 14,802 a year (1,233 a month). Listing-entered arnona figures for other B.S.R 5-room cards range from about NIS 650 to 2,500 with no period stated. Use the actual bill."
+    },
+    {
+      "item_en": "Who pays running costs",
+      "item_he": "מי משלם הוצאות שוטפות",
+      "value_en": "Tenants typically pay arnona, utilities, internet and phone; confirm in the lease who pays the building fee",
+      "value_he": "בדרך כלל השוכר משלם ארנונה, חשבונות, אינטרנט וטלפון; יש לקבוע בחוזה מי משלם את דמי הוועד",
+      "basis": "source",
+      "source_ids": [
+        "S90"
+      ],
+      "note_en": ""
+    },
+    {
+      "item_en": "Security (guarantees)",
+      "item_he": "בטוחות",
+      "value_en": "If the Fair Rental chapter applies: capped at the lower of 3 months' rent or one third of the total rent for the lease; for a 12-month lease at NIS 15,500 that is NIS 46,500",
+      "value_he": "אם פרק השכירות ההוגנת חל: עד הנמוך מבין 3 חודשי שכירות לבין שליש משכר הדירה לכל תקופת החוזה; בחוזה ל-12 חודשים ב-15,500 ש״ח: 46,500 ש״ח",
+      "basis": "computed",
+      "source_ids": [
+        "S90",
+        "S91"
+      ],
+      "note_en": "3 x 15,500 = 46,500 (one third of 12 months' rent would be 62,000, so the 3-month cap is lower). At the band: 45,630 to 51,948. Securities are returned within 60 days after the lease ends, per NBN. The NIS 20,000 scope threshold was not verified; NIS 15,500 is below it."
+    },
+    {
+      "item_en": "Brokerage fee",
+      "item_he": "דמי תיווך",
+      "value_en": "Paid by the party who engaged the broker, usually one month's rent plus 18% VAT: about NIS 18,290 at NIS 15,500. A landlord may not pass its own broker's fee to the tenant",
+      "value_he": "משולמים על ידי מי שהזמין את שירותי המתווך, בדרך כלל שכר חודש אחד בתוספת מע״מ 18%: כ-18,290 ש״ח לפי 15,500 ש״ח. משכיר אינו רשאי לגלגל לשוכר את דמי התיווך של מתווך שפעל מטעמו",
+      "basis": "computed",
+      "source_ids": [
+        "S90",
+        "S91"
+      ],
+      "note_en": "15,500 x 1.18 = 18,290."
+    },
+    {
+      "item_en": "Charges a landlord may not pass to the tenant",
+      "item_he": "תשלומים שאסור לגלגל לשוכר",
+      "value_en": "Payments for buying or upgrading building systems or installations, building structure insurance, and the fee of a broker who acted for the landlord",
+      "value_he": "תשלום לרכישה או להשבחה של מערכות או מתקנים, ביטוח מבנה, ודמי תיווך של מתווך שפעל מטעם המשכיר",
+      "basis": "source",
+      "source_ids": [
+        "S91"
+      ],
+      "note_en": "Under the 2017 residential lease amendment (in force from 2017-09-17), subject to the chapter's scope."
+    }
+  ],
+  "risks": [
+    {
+      "en": "Unit identity: the broker's January 2026 post gave floor 20, and another agency lists a 117 + 14 sqm unit on floor 20 of Building B facing north-west (for rent at NIS 17,200, and for sale at NIS 8.5 million in April 2026), while this unit's balcony is described as south-west. The broker also has Madlan cards in the project at NIS 15,500, 19,000 and 20,000. Confirm the tower, floor, orientation and rent in writing.",
+      "he": "זיהוי הדירה: בפרסום של המתווכת מינואר 2026 צוינה קומה 20, ומשרד אחר מפרסם דירת 117 + 14 מ״ר בקומה 20 בבניין B לכיוון צפון-מערב (להשכרה ב-17,200 ש״ח, ולמכירה ב-8.5 מיליון ש״ח באפריל 2026), בעוד שמרפסת הדירה הזו מתוארת כדרום-מערבית. למתווכת יש גם מודעות בפרויקט במדלן ב-15,500, 19,000 ו-20,000 ש״ח. יש לקבל אישור בכתב למגדל, לקומה, לכיוון ולמחיר.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S16",
+        "S15",
+        "S13",
+        "S14",
+        "S78"
+      ]
+    },
+    {
+      "en": "Sale in parallel: the unit was advertised for sale from April to June 2026. Ask whether it is still for sale, and agree lease terms on viewings and on continuity of the tenancy if it is sold.",
+      "he": "מכירה במקביל: הדירה פורסמה למכירה מאפריל עד יוני 2026. כדאי לברר אם היא עדיין מוצעת למכירה ולסכם בחוזה הסדרים לגבי ביקורי קונים ולגבי המשך השכירות אם תימכר.",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S5"
+      ]
+    },
+    {
+      "en": "New building: occupancy approval (Tofes 4) came on 2026-03-29. No source confirms the state of common areas, the kindergarten cluster or open defect lists, so ask about outstanding works and who handles contractor repairs during the lease.",
+      "he": "בניין חדש: טופס 4 התקבל ב-29.3.2026. אין מקור שמאשר את מצב השטחים המשותפים, אשכול הגנים או רשימות ליקויים פתוחות, ולכן כדאי לברר אילו עבודות נותרו ומי מטפל בתיקוני הקבלן במהלך השכירות.",
+      "source_ids": [
+        "S12",
+        "S38"
+      ]
+    },
+    {
+      "en": "Parking: in 2021, 180 apartments were not to receive an attached space, with allocation by lottery. Make sure the space offered is attached or registered to this unit and written into the lease.",
+      "he": "חניה: ב-2021 דווח כי 180 דירות לא יקבלו חניה צמודה והחניות יוקצו בהגרלה. יש לוודא שהחניה המוצעת צמודה או רשומה לדירה ומפורטת בחוזה.",
+      "source_ids": [
+        "S36"
+      ]
+    },
+    {
+      "en": "Running costs are not published: listing fields for the building fee range from NIS 1,250 to 2,550 with no period stated, and one listing gives NIS 15.4 per sqm. Budget from the owner's actual invoices, not from listings.",
+      "he": "עלויות שוטפות לא פורסמו: בשדות המודעות דמי הוועד נעים בין 1,250 ל-2,550 ש״ח ללא ציון תקופה, ובמודעה אחת צוינו 15.4 ש״ח למ״ר. יש לתכנן לפי חשבוניות בפועל מהבעלים ולא לפי מודעות.",
+      "source_ids": [
+        "S72",
+        "S73",
+        "S80",
+        "S84",
+        "S30"
+      ]
+    },
+    {
+      "en": "Legal scope: the 2017 Fair Rental chapter caps securities and sets repair and habitability duties, but it is commonly described as not applying to rents above NIS 20,000 a month. That threshold was not verified against the statute here. At rents near that level, have a lawyer confirm whether the chapter applies and write key protections into the lease.",
+      "he": "תחולה משפטית: פרק השכירות ההוגנת משנת 2017 מגביל בטוחות וקובע חובות תיקון והתאמה למגורים, אך נהוג לציין שאינו חל על שכר דירה מעל 20,000 ש״ח לחודש. הסף לא אומת מול נוסח החוק. בשכר דירה קרוב לסף מומלץ לבדוק עם עורך דין אם הפרק חל ולעגן את ההגנות המרכזיות בחוזה.",
+      "source_ids": [
+        "S91",
+        "S90"
+      ]
+    },
+    {
+      "en": "Construction nearby: the Sarona Hotel tower (no completion date), the Spiral Tower at Azrieli Center (completion expected 2027) and Green Line underground stations at Kaplan and Carlebach (opening expected 2028) mean ongoing works and traffic in the area.",
+      "he": "בנייה בסביבה: מגדל מלון שרונה (ללא מועד סיום), מגדל הספירלה במרכז עזריאלי (סיום צפוי ב-2027) ותחנות הקו הירוק בקפלן ובקרליבך (פתיחה צפויה ב-2028) משמעם עבודות ותנועה באזור.",
+      "source_ids": [
+        "S68",
+        "S54",
+        "S61"
+      ]
+    },
+    {
+      "en": "Traffic and noise: the project is in the South Kirya business district, between the Ayalon business towers and residential streets, with light rail exits on Begin Road. No noise measurements were found, so view the unit at rush hour with the windows open.",
+      "he": "תנועה ורעש: הפרויקט נמצא באזור העסקים דרום הקריה, בין מגדלי העסקים של איילון לרחובות המגורים, עם יציאות רכבת קלה בדרך בגין. לא נמצאו מדידות רעש, ולכן כדאי לבקר בדירה בשעות העומס עם חלונות פתוחים.",
+      "source_ids": [
+        "S39",
+        "S58"
+      ]
+    },
+    {
+      "en": "South-west outlook: the Landmark towers stand immediately south of the project. For a south-west balcony, especially in Tower A, check how much of the southern view Landmark blocks.",
+      "he": "נוף לדרום-מערב: מגדלי לנדמרק ממוקמים מדרום לפרויקט, צמוד אליו. במרפסת דרום-מערבית, בעיקר במגדל A, כדאי לבדוק כמה מהנוף לדרום נחסם.",
+      "source_ids": [
+        "S27",
+        "S26"
+      ]
+    },
+    {
+      "en": "Future sea view: no approved tower plan between the project and the sea was identified, but the municipal planning map was not checked, so the view is not guaranteed for the long term.",
+      "he": "נוף לים בעתיד: לא אותרה תוכנית מאושרת למגדל בין הפרויקט לים, אך מפת התכנון העירונית לא נבדקה, ולכן אין הבטחה לנוף לטווח ארוך.",
+      "source_ids": []
+    }
+  ],
+  "buyer_or_renter_questions": [
+    {
+      "en": "Is the Madlan card at NIS 15,500 (5 rooms, high floor, open sea view, appliances, immediate entry) this unit, and was the NIS 19,000 card for a 118 sqm south-west unit the same apartment at an earlier price?",
+      "he": "האם המודעה במדלן ב-15,500 ש״ח (5 חדרים, קומה גבוהה, נוף פתוח לים, מוצרי חשמל, כניסה מיידית) היא הדירה הזו, והאם המודעה ב-19,000 ש״ח לדירת 118 מ״ר לדרום-מערב היא אותה דירה במחיר קודם?"
+    },
+    {
+      "en": "Which tower is the unit in, is it on floor 20, and does the balcony face south-west or north-west?",
+      "he": "באיזה מגדל הדירה, האם היא בקומה 20, והאם המרפסת פונה לדרום-מערב או לצפון-מערב?"
+    },
+    {
+      "en": "Is the unit offered furnished or unfurnished, and which electrical appliances are included?",
+      "he": "האם הדירה מוצעת מרוהטת או לא, ואילו מוצרי חשמל כלולים?"
+    },
+    {
+      "en": "Is the owner still trying to sell the unit (it was advertised for sale in April to June 2026), and how will the tenancy be protected if it is sold?",
+      "he": "האם הבעלים עדיין מנסים למכור את הדירה (היא פורסמה למכירה באפריל עד יוני 2026), וכיצד תובטח השכירות אם תימכר?"
+    },
+    {
+      "en": "The unit has been marketed since January 2026: is there flexibility on the rent or the lease terms?",
+      "he": "הדירה משווקת מאז ינואר 2026: האם יש גמישות בשכר הדירה או בתנאי החוזה?"
+    },
+    {
+      "en": "What is the monthly building management fee, what does it cover (guard, cleaning, gym), who pays it, and which company manages the building?",
+      "he": "מה גובה דמי הניהול החודשיים, מה הם כוללים (שמירה, ניקיון, חדר כושר), מי משלם אותם ואיזו חברה מנהלת את הבניין?"
+    },
+    {
+      "en": "Can you share the latest arnona bill showing the measured area and the zone?",
+      "he": "אפשר לקבל את חשבון הארנונה האחרון, עם השטח לחיוב והאזור?"
+    },
+    {
+      "en": "Is the parking space attached or registered to the unit? Which level is it on, is there EV charging, and where is the storage room and how big is it?",
+      "he": "האם החניה צמודה או רשומה לדירה? באיזה מפלס, האם יש הכנה לעמדת טעינה, והיכן המחסן ומה גודלו?"
+    },
+    {
+      "en": "What securities are required (bank guarantee, deposit, guarantors), in what amount, and when are they returned?",
+      "he": "אילו בטוחות נדרשות (ערבות בנקאית, פיקדון, ערבים), באיזה סכום ומתי הן מוחזרות?"
+    },
+    {
+      "en": "Who pays the brokerage fee and how much is it? Please confirm in a signed order form.",
+      "he": "מי משלם את דמי התיווך ומה גובהם? נבקש אישור בהזמנת שירותי תיווך חתומה."
+    },
+    {
+      "en": "Are there open defects in the unit or the common areas since occupancy, and who arranges contractor repairs during the lease, within what time?",
+      "he": "האם יש ליקויים פתוחים בדירה או בשטחים המשותפים מאז האכלוס, ומי מתאם תיקוני קבלן במהלך השכירות ובתוך כמה זמן?"
+    },
+    {
+      "en": "Where is the gym, what are its hours, and is there a fee or registration?",
+      "he": "היכן חדר הכושר, מה שעות הפעילות והאם יש תשלום או רישום?"
+    },
+    {
+      "en": "Is the landlord the purchase group member who holds the rights to the unit, and can they show documents proving it?",
+      "he": "האם המשכיר הוא חבר קבוצת הרכישה שמחזיק בזכויות בדירה, והאם יוכל להציג מסמכים המעידים על כך?"
+    },
+    {
+      "en": "For families: is the kindergarten cluster at Arania 14A open, and which schools are zoned for this address?",
+      "he": "למשפחות: האם אשכול הגנים בארניה 14א פועל, ולאילו בתי ספר משויכת הכתובת?"
+    },
+    {
+      "en": "What is the lease length, is there an option to extend, and is the rent linked to the consumer price index?",
+      "he": "מה תקופת השכירות, האם יש אופציה להארכה והאם שכר הדירה צמוד למדד?"
+    }
+  ],
+  "gaps": [
+    {
+      "en": "Tower and orientation (south-west per the broker, while a similar floor 20 unit faces north-west): not confirmed.",
+      "he": "המגדל והכיוון (דרום-מערב לפי המתווכת, בעוד שדירה דומה בקומה 20 פונה לצפון-מערב): לא אומתו."
+    },
+    {
+      "en": "Current asking rent: the broker's Madlan cards show NIS 15,500 and NIS 19,000 without dates; not confirmed.",
+      "he": "שכר הדירה המבוקש כיום: במודעות המתווכת במדלן מופיעים 15,500 ו-19,000 ש״ח ללא תאריכים; לא אומת."
+    },
+    {
+      "en": "Area: 117 sqm built on Instagram, 118 sqm on the broker's older Madlan card, and an area field of 25 sqm (apparent error) on the NIS 15,500 card.",
+      "he": "שטח: 117 מ״ר בנוי באינסטגרם, 118 מ״ר במודעה הישנה של המתווכת במדלן, ושדה שטח של 25 מ״ר (טעות ככל הנראה) במודעה של 15,500 ש״ח."
+    },
+    {
+      "en": "Whether the unit is offered furnished, and the full appliance list: not stated.",
+      "he": "האם הדירה מוצעת מרוהטת, ורשימת מוצרי החשמל המלאה: לא צוינו."
+    },
+    {
+      "en": "Monthly building management fee and the management company's name: not verified (only listing fields with no period).",
+      "he": "דמי הניהול החודשיים ושם חברת הניהול: לא אומתו (רק שדות במודעות ללא ציון תקופה)."
+    },
+    {
+      "en": "Arnona zone for Arania Osvaldo Street: not verified.",
+      "he": "אזור הארנונה של רחוב ארניה אוסוולדו: לא אומת."
+    },
+    {
+      "en": "Fair Rental chapter threshold (commonly NIS 20,000 a month) and any indexation: not verified against the statute text.",
+      "he": "סף התחולה של פרק השכירות ההוגנת (לרוב 20,000 ש״ח לחודש) והצמדתו: לא אומתו מול נוסח החוק."
+    },
+    {
+      "en": "Tower coordinates are not published; distances are measured from Sarona Market's coordinates, and no walking times were measured from the towers.",
+      "he": "קואורדינטות המגדלים לא פורסמו; המרחקים חושבו מהקואורדינטות של שרונה מרקט, וזמני הליכה מהמגדלים עצמם לא נמדדו."
+    },
+    {
+      "en": "No sourced coordinates for Gordon or Frishman beach; Charles Clore Park was used as the coastal reference.",
+      "he": "לא נמצאו קואורדינטות ממקור לחוף גורדון או לחוף פרישמן; פארק צ׳ארלס קלור שימש נקודת ייחוס לחוף."
+    },
+    {
+      "en": "The floor from which the sea view is unobstructed is not established.",
+      "he": "לא נקבע מאיזו קומה נפתח נוף לים ללא הסתרה."
+    },
+    {
+      "en": "Kindergarten cluster operating status, gym hours and fees: not found.",
+      "he": "מצב הפעילות של אשכול הגנים, שעות ועלויות חדר הכושר: לא נמצאו."
+    },
+    {
+      "en": "Only asking rents were found; no 2026 rental transactions for the project. Rent comps for Landmark residential floors and Midtown were not found.",
+      "he": "נמצאו רק מחירים מבוקשים; אין עסקאות שכירות מ-2026 בפרויקט. לא נמצאו השוואות שכירות לקומות המגורים בלנדמרק ולמידטאון."
+    },
+    {
+      "en": "What luxury corporate lets in Tel Aviv typically include (furniture, utilities, cleaning): no source found.",
+      "he": "מה כוללות בדרך כלל השכרות יוקרה לחברות בתל אביב (ריהוט, חשבונות, ניקיון): לא נמצא מקור."
+    },
+    {
+      "en": "Noise levels from Begin Road, the Ayalon and nearby construction: not measured in any source found.",
+      "he": "רמות רעש מדרך בגין, מאיילון ומבנייה סמוכה: לא נמצאו מדידות."
+    }
+  ],
+  "access_notes": [
+    "The session's web search quota was exhausted before this dossier was built, so no new web searches were run. Findings come from direct fetches of known or predictable URLs and from the earlier project research file.",
+    "Madlan pages were read through an automated page reader. A direct download of a Madlan listing returned a bot-check page (HTTP 403) and was not retried. Structured floor and total-floor fields were inconsistent between reads, so floors are used only when written in the listing text. Madlan's feature icon row shows the same full list (including pool) on every card and is not used as evidence. Madlan shows no listing dates.",
+    "Kol Zchut: guessed Hebrew page names returned HTTP 404, its site search is blocked by robots.txt, and its English pages were removed in 2023. The Fair Rental threshold therefore remains unverified.",
+    "he.wikisource.org and some English Wikipedia pages (Gordon Beach, Frishman Beach, Tel Aviv Marina) are cache-only for the fetch tool and could not be read.",
+    "ImmoIsrael's guessed Tel Aviv rentals URL returned HTTP 404. Komo's first page of Tel Aviv rentals (896 ads) and Homeless's rentals page showed no B.S.R Sarona ads matching this unit. Yad2 was not attempted.",
+    "Instagram posts were not re-fetched; broker facts come from the listing registry compiled on 2026-09-16.",
+    "Carried over from the project research: TheMarker (headline only), nadlan.gov.il, tel-aviv.gov.il (HTTP 472), the NTA site (HTTP 403), SkyscraperCity (HTTP 402) and towers-tlv.com could not be fetched."
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Meital Katzir Instagram post: rent, B.S.R Sarona 5 rooms, floor 20, view over Tel Aviv and the sea, entry March",
+      "url": "https://www.instagram.com/p/DTpmFR4DInD/",
+      "published": "2026-01-18"
+    },
+    {
+      "id": "S2",
+      "title": "Meital Katzir Instagram post: sale, 5 rooms, 117 sqm built, 14 sqm south-west balcony, high floor, open sea view",
+      "url": "https://www.instagram.com/p/DWyzOlzCAPV/",
+      "published": "2026-04-06"
+    },
+    {
+      "id": "S3",
+      "title": "Meital Katzir Instagram reel: same unit, sale",
+      "url": "https://www.instagram.com/reel/DXga6EujQAN/",
+      "published": "2026-04-24"
+    },
+    {
+      "id": "S4",
+      "title": "Meital Katzir Instagram post: sale, 5 rooms, B.S.R Sarona",
+      "url": "https://www.instagram.com/p/DYWdCvrjZha/",
+      "published": "2026-05-15"
+    },
+    {
+      "id": "S5",
+      "title": "Meital Katzir Instagram reel: sale or rent, parking and large storage",
+      "url": "https://www.instagram.com/reel/DZpEAFUIOLw/",
+      "published": "2026-06-16"
+    },
+    {
+      "id": "S6",
+      "title": "Meital Katzir Instagram post: rent, new from nylon, west balcony facing the sea",
+      "url": "https://www.instagram.com/p/DZudqxmjKyR/",
+      "published": "2026-06-18"
+    },
+    {
+      "id": "S7",
+      "title": "Meital Katzir Instagram post: rent, high floor, open sea view, electrical appliances, parking and storage, immediate entry",
+      "url": "https://www.instagram.com/p/DcK4k9ZiPW9/",
+      "published": "2026-08-17"
+    },
+    {
+      "id": "S8",
+      "title": "Meital Katzir Instagram reel: exclusive rental, 5 rooms, B.S.R Sarona towers, high floor, open sea view, immediate entry",
+      "url": "https://www.instagram.com/reel/DcvZdVHDITS/",
+      "published": "2026-09-01"
+    },
+    {
+      "id": "S9",
+      "title": "Globes: betterment levy in B.S.R Sarona (former United Sarona)",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001532418",
+      "published": "undated on page, accessed 2026-09-16"
+    },
+    {
+      "id": "S10",
+      "title": "B.S.R Group project page: B.S.R in Sarona, Tel Aviv",
+      "url": "https://bsr.co.il/en/project/b-s-r-in-sarona-tel-aviv/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S11",
+      "title": "Electra Building project page: B.S.R Sarona",
+      "url": "https://www.electra.co.il/en/electra_building/projects/bsr_sarona",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S12",
+      "title": "Nadlancenter: a decade after the disputed tender, the Sarona purchase group received an occupancy permit",
+      "url": "https://www.nadlancenter.co.il/article/14233",
+      "published": "2026-03-30"
+    },
+    {
+      "id": "S13",
+      "title": "Madlan rental listing sF6UVfK4yZx: 5 rooms, B.S.R Sarona towers, exclusive, Meital Katzir, NIS 15,500",
+      "url": "https://www.madlan.co.il/listings/sF6UVfK4yZx",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S14",
+      "title": "Madlan rental listing K0ppzYS4KTo: 5 rooms, 118 sqm + 14 sqm south-west balcony, B.S.R Sarona, exclusive, Meital Katzir, NIS 19,000",
+      "url": "https://www.madlan.co.il/listings/K0ppzYS4KTo",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S15",
+      "title": "Janglo listing: Osvaldo Aranha Street, 5 rooms, 117 sqm, floor 20 of 40, Building B, for sale",
+      "url": "https://www.janglo.net/item/5dACmuQdUpL",
+      "published": "2026-04-29"
+    },
+    {
+      "id": "S16",
+      "title": "Madlan rental listing FvcQrNEbq09: 5 rooms, 117 sqm + 14 sqm, Building B, north-west view, exclusive, NIS 17,200",
+      "url": "https://www.madlan.co.il/listings/FvcQrNEbq09",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S17",
+      "title": "Globes: the Tel Aviv project receiving Tofes 4 after more than a decade (B.S.R Sarona; includes Madlan deal data)",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001539540",
+      "published": "2026 (page undated), accessed 2026-09-16"
+    },
+    {
+      "id": "S18",
+      "title": "Madlan rental listing cYZ4XRFiGoY: 5 rooms, 115 sqm + 14 sqm, B.S.R Sarona tower, exclusive, NIS 18,500",
+      "url": "https://www.madlan.co.il/listings/cYZ4XRFiGoY",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S19",
+      "title": "ynet: the most expensive purchase group in Israel will receive its apartments",
+      "url": "https://www.ynet.co.il/economy/article/yokra14612226",
+      "published": "2025-12-14"
+    },
+    {
+      "id": "S20",
+      "title": "ynet: Electra to build the United Sarona towers in Tel Aviv",
+      "url": "https://www.ynet.co.il/articles/0,7340,L-4909274,00.html",
+      "published": "2017-01-18"
+    },
+    {
+      "id": "S21",
+      "title": "Madlan project page: BSR SARONA",
+      "url": "https://www.madlan.co.il/projects/UNITED%20SARONA",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S22",
+      "title": "Project TLV: B.S.R Sarona (Broadcasting Authority compound, South Kirya), with update log",
+      "url": "https://project-tlv.info/places/sarona/rashut/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S23",
+      "title": "TheMarker headline: all three United Sarona towers received an occupancy permit (headline only)",
+      "url": "https://www.themarker.com/realestate/2026-03-29/ty-article/.highlight/0000019d-3a23-d143-a1fd-3e37463a0000",
+      "published": "2026-03-29"
+    },
+    {
+      "id": "S24",
+      "title": "ImmoIsrael listing: 4-room apartment for rent, Arania Osvaldo Street (Building C, BSR Sarona)",
+      "url": "https://www.immoisrael.com/listings/4-room-apartment-rent-arania-osvaldo-street-tel-aviv",
+      "published": "2026-05-19"
+    },
+    {
+      "id": "S25",
+      "title": "Madlan rental listing S2w0dnU9LpD: 5 rooms, B.S.R Sarona Building B, NIS 17,000",
+      "url": "https://www.madlan.co.il/listings/S2w0dnU9LpD",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S26",
+      "title": "Project TLV: Arania Osvaldo Street building list",
+      "url": "https://project-tlv.info/buildings/%D7%A8%D7%97%D7%95%D7%91-%D7%90%D7%A8%D7%A0%D7%99%D7%94-%D7%90%D7%95%D7%A1%D7%95%D7%95%D7%9C%D7%93%D7%95/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S27",
+      "title": "Project TLV: Landmark towers, Sarona",
+      "url": "https://project-tlv.info/places/sarona/7-2/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S28",
+      "title": "Owner listing page: 4 rooms, Tower A, floor 12, Sarona",
+      "url": "https://sharona-skyline-living.lovable.app/",
+      "published": "undated, accessed 2026-09-16"
+    },
+    {
+      "id": "S29",
+      "title": "Society4U listing: 5 rooms, 121 sqm, floor 15, west and south (marked sold)",
+      "url": "https://society4u.co.il/RealEstate/PropertyDisplay.aspx?PropertyId=14961",
+      "published": "undated, accessed 2026-09-16"
+    },
+    {
+      "id": "S30",
+      "title": "Madlan rental listing i62N8cDBwxl: 5 rooms, 121 sqm + 14 sqm, floor 18, BSR Sarona, management fee NIS 15.4 per sqm, NIS 15,800",
+      "url": "https://www.madlan.co.il/listings/i62N8cDBwxl",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S31",
+      "title": "Madlan rental listing QNDuhUy09oi: 5 rooms, 121 sqm + 14 sqm, floor 29, B.S.R Sarona, NIS 17,500",
+      "url": "https://www.madlan.co.il/listings/QNDuhUy09oi",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S32",
+      "title": "Madlan rental listing J1L1nFmc3mD: 4 rooms, 120 sqm + 15 sqm, floor 30, furnished, NIS 16,000",
+      "url": "https://www.madlan.co.il/listings/J1L1nFmc3mD",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S33",
+      "title": "B.S.R Sarona marketing site",
+      "url": "https://sarona.brickmancamp.co.il/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S34",
+      "title": "Concord listing: Arania Osvaldo Street, Sarona (gym and tenants' club, 24/7 guarding)",
+      "url": "https://www.concord-tlv.co.il/property/arania-osvaldo-street-sarona-neighborhood/?lang=en",
+      "published": "modified 2025-02-05"
+    },
+    {
+      "id": "S35",
+      "title": "MyPlace listing: Sarona 4 rooms with storage and parking (gym and residents' club)",
+      "url": "https://www.myplace.co.il/en/apartment-for-sale/%D7%91%D7%A9%D7%A8%D7%95%D7%A0%D7%94-4-%D7%97%D7%93%D7%A8%D7%99%D7%9D-%D7%A2%D7%9D-%D7%9E%D7%97%D7%A1%D7%9F-%D7%95%D7%97%D7%A0%D7%99%D7%94/",
+      "published": "modified 2025-11-11"
+    },
+    {
+      "id": "S36",
+      "title": "ynet: the most expensive purchase group in Israel gets under way (parking allocation)",
+      "url": "https://www.ynet.co.il/economy/article/SJLmclHid",
+      "published": "2021-06-15"
+    },
+    {
+      "id": "S37",
+      "title": "Madlan rental listing oOl01k6rk5z: 5 rooms, 120 sqm + 14 sqm, B.S.R Sarona, 1 parking space in Tabu, NIS 16,000",
+      "url": "https://www.madlan.co.il/listings/oOl01k6rk5z",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S38",
+      "title": "Project TLV: kindergarten cluster at Arania 14A in the B.S.R towers",
+      "url": "https://project-tlv.info/places/sarona/%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%92%D7%A0%D7%99%D7%9D-%D7%92%D7%A0%D7%99-%D7%A9%D7%A8%D7%95%D7%A0%D7%94-%D7%9E%D7%92%D7%93%D7%9C%D7%99-%D7%91%D7%A1%D7%A8/",
+      "published": "page modified 2026-07-06, accessed 2026-09-16"
+    },
+    {
+      "id": "S39",
+      "title": "CityBee Architects: United Sarona",
+      "url": "https://www.citybee-arch.com/projects/all-en/united-sarona/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S40",
+      "title": "Zips: Arania Osvaldo Street, Tel Aviv-Yafo (nearby places with distances)",
+      "url": "https://zips.co.il/street/%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95/%D7%90%D7%A8%D7%A0%D7%99%D7%94-%D7%90%D7%A1%D7%95%D7%95%D7%9C%D7%93%D7%95",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S41",
+      "title": "Wikipedia: Sarona Market (coordinates 32.06806N 34.78194E)",
+      "url": "https://en.wikipedia.org/wiki/Sarona_Market",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S42",
+      "title": "Globes English: Tel Aviv Sarona Landmark project expansion approved",
+      "url": "https://en.globes.co.il/en/article-tel-aviv-sarona-landmark-project-expansion-approved-1001366461",
+      "published": "2021-04-06"
+    },
+    {
+      "id": "S43",
+      "title": "Madlan neighborhood page: Sarona, Tel Aviv-Yafo (average rent, deals, schools)",
+      "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A9%D7%A8%D7%95%D7%A0%D7%94-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S44",
+      "title": "Wikipedia: Habima Square (coordinates 32.07306N 34.77944E)",
+      "url": "https://en.wikipedia.org/wiki/Habima_Square",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S45",
+      "title": "Wikipedia: Tel Aviv Museum of Art (coordinates 32.07750N 34.78667E)",
+      "url": "https://en.wikipedia.org/wiki/Tel_Aviv_Museum_of_Art",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S46",
+      "title": "Wikipedia: HaKirya",
+      "url": "https://en.wikipedia.org/wiki/HaKirya",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S47",
+      "title": "Madlan rental listing g4Hy8wLQkgM: Leonardo da Vinci Tower, 4 rooms (originally 5), 120 sqm + 13 sqm, NIS 17,500",
+      "url": "https://www.madlan.co.il/listings/g4Hy8wLQkgM",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S48",
+      "title": "Madlan rental listing f0MWq1BfzLj: Gindi TLV towers, 4 rooms (originally 5), 120 sqm + 16 sqm, NIS 20,000",
+      "url": "https://www.madlan.co.il/listings/f0MWq1BfzLj",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S49",
+      "title": "Madlan rental listing ubIt9E0SjrT: 5 rooms, sought-after model, 19 sqm west balcony, BSR Sarona, NIS 16,850",
+      "url": "https://www.madlan.co.il/listings/ubIt9E0SjrT",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S50",
+      "title": "Project TLV: Gindi Sarona towers",
+      "url": "https://project-tlv.info/places/sarona/gindi-sarona/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S51",
+      "title": "Wikipedia: Midtown Tel Aviv (coordinates 32.07714N 34.79352E)",
+      "url": "https://en.wikipedia.org/wiki/Midtown_Tel_Aviv",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S52",
+      "title": "Moovit: public transit to Sarona complex (reference point Aluf Albert Mendler 3)",
+      "url": "https://moovitapp.com/index/en/public_transit-%D7%9E%D7%AA%D7%97%D7%9D_%D7%A9%D7%A8%D7%95%D7%A0%D7%94-Israel-site_33024977-1",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S53",
+      "title": "Wikipedia: Azrieli Sarona Tower (coordinates 32.07194N 34.78861E)",
+      "url": "https://en.wikipedia.org/wiki/Azrieli_Sarona_Tower",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S54",
+      "title": "Wikipedia: Azrieli Center (coordinates 32.07444N 34.79167E; Spiral Tower)",
+      "url": "https://en.wikipedia.org/wiki/Azrieli_Center",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S55",
+      "title": "Wikipedia: Tel Aviv Sourasky Medical Center (coordinates 32.08056N 34.79000E)",
+      "url": "https://en.wikipedia.org/wiki/Tel_Aviv_Sourasky_Medical_Center",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S56",
+      "title": "Wikipedia: Charles Clore Park, beachfront park (coordinates 32.06528N 34.76111E)",
+      "url": "https://en.wikipedia.org/wiki/Charles_Clore_Park",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S57",
+      "title": "Wikipedia: Red Line (Tel Aviv Light Rail)",
+      "url": "https://en.wikipedia.org/wiki/Red_Line_(Tel_Aviv_Light_Rail)",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S58",
+      "title": "Tevel Metro: Yehudit station",
+      "url": "https://www.tevelmetro.co.il/stations/%D7%99%D7%94%D7%95%D7%93%D7%99%D7%AA/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S59",
+      "title": "Project TLV: Yehudit light rail station",
+      "url": "https://project-tlv.info/places/transportation/train/yehudit/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S60",
+      "title": "Tevel Metro: Carlebach station",
+      "url": "https://www.tevelmetro.co.il/stations/%D7%A7%D7%A8%D7%9C%D7%99%D7%91%D7%9A/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S61",
+      "title": "Project TLV: Green Line",
+      "url": "https://project-tlv.info/places/transportation/train/green/",
+      "published": "latest update entry 2026-05-28, accessed 2026-09-16"
+    },
+    {
+      "id": "S62",
+      "title": "Wikipedia: Green Line (Tel Aviv Light Rail)",
+      "url": "https://en.wikipedia.org/wiki/Green_Line_(Tel_Aviv_Light_Rail)",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S63",
+      "title": "Wikipedia: Purple Line (Tel Aviv Light Rail)",
+      "url": "https://en.wikipedia.org/wiki/Purple_Line_(Tel_Aviv_Light_Rail)",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S64",
+      "title": "Project TLV: Purple Line",
+      "url": "https://project-tlv.info/places/transportation/train/purple/",
+      "published": "modified 2026-09-02, accessed 2026-09-16"
+    },
+    {
+      "id": "S65",
+      "title": "Project TLV: Tel Aviv Metro",
+      "url": "https://project-tlv.info/places/transportation/metro/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S66",
+      "title": "Wikipedia: Tel Aviv HaShalom railway station",
+      "url": "https://en.wikipedia.org/wiki/Tel_Aviv_HaShalom_railway_station",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S67",
+      "title": "Wikipedia: Ayalon Highway",
+      "url": "https://en.wikipedia.org/wiki/Ayalon_Highway",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S68",
+      "title": "Wikipedia: Sarona Hotel",
+      "url": "https://en.wikipedia.org/wiki/Sarona_Hotel",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S69",
+      "title": "Project TLV: Sarona hotel tower",
+      "url": "https://project-tlv.info/new-projects/all/sarona/hotel/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S70",
+      "title": "Madlan rental listing Gqeywt9JmB6: 5 rooms, 121 sqm + 14 sqm west balcony, BSR Sarona, NIS 17,900",
+      "url": "https://www.madlan.co.il/listings/Gqeywt9JmB6",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S71",
+      "title": "Madlan rental listing 53v6kf9hSxw: 5 rooms, south-west model, 122 sqm + 14 sqm, BSR Sarona, NIS 18,100",
+      "url": "https://www.madlan.co.il/listings/53v6kf9hSxw",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S72",
+      "title": "Madlan rental listing QDwHZrCWngC: 5 rooms, 120 sqm + 15 sqm, B.S.R Sarona, arnona and fee fields, NIS 15,500",
+      "url": "https://www.madlan.co.il/listings/QDwHZrCWngC",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S73",
+      "title": "Madlan rental listing UrN0LvxcQrD: 5 rooms, 121 sqm + 14 sqm, B.S.R Sarona luxury towers, arnona and fee fields, NIS 16,500",
+      "url": "https://www.madlan.co.il/listings/UrN0LvxcQrD",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S74",
+      "title": "Madlan rental listing K230Vcj9vJs: 5 rooms, 120 sqm + 14 sqm, B.S.R Sarona, west view, NIS 15,000",
+      "url": "https://www.madlan.co.il/listings/K230Vcj9vJs",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S75",
+      "title": "Madlan rental listing TxjpQHH6woy: 5 rooms, 122 sqm + 18 sqm, B.S.R Sarona, high floor, sea view, NIS 15,800",
+      "url": "https://www.madlan.co.il/listings/TxjpQHH6woy",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S76",
+      "title": "Madlan: apartments for rent on Arania Osvaldo Street",
+      "url": "https://www.madlan.co.il/for-rent/%D7%90%D7%A8%D7%A0%D7%99%D7%94-%D7%90%D7%A1%D7%95%D7%95%D7%9C%D7%93%D7%95-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S77",
+      "title": "Madlan rental listing XRe79RItv0f: 5 rooms, fully furnished, west sea view, Meital Katzir, NIS 20,000",
+      "url": "https://www.madlan.co.il/listings/XRe79RItv0f",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S78",
+      "title": "Madlan rental listing DCTYy8X8e72: 5 rooms, fully furnished, B.S.R Sarona, exclusive, Meital Katzir, NIS 20,000",
+      "url": "https://www.madlan.co.il/listings/DCTYy8X8e72",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S79",
+      "title": "Walla Finance: CBS housing price and rent data (August 2026 CPI)",
+      "url": "https://finance.walla.co.il/item/3868023",
+      "published": "2026-09-15"
+    },
+    {
+      "id": "S80",
+      "title": "Madlan rental listing NX5StPNv1ZN: 5 rooms, 125 sqm + 15 sqm, Building C, arnona and fee fields, NIS 18,700",
+      "url": "https://www.madlan.co.il/listings/NX5StPNv1ZN",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S81",
+      "title": "Bank of Israel: representative exchange rates",
+      "url": "https://www.boi.org.il/en/economic-roles/financial-markets/exchange-rates/",
+      "published": "2026-09-15"
+    },
+    {
+      "id": "S82",
+      "title": "Madlan rental listing OQH5K5ejXVC: duplicate card of the floor 18 BSR Sarona unit, NIS 15,800",
+      "url": "https://www.madlan.co.il/listings/OQH5K5ejXVC",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S83",
+      "title": "Madlan rental listing rKMsChMJY7O: 5 rooms, 120 sqm + 14 sqm, floor 18, west and south, NIS 15,500",
+      "url": "https://www.madlan.co.il/listings/rKMsChMJY7O",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S84",
+      "title": "Madlan rental listing L75t8vyMnD1: 5 rooms, 114 sqm + 18 sqm facing the park, B.S.R Sarona, arnona and fee fields, NIS 18,000",
+      "url": "https://www.madlan.co.il/listings/L75t8vyMnD1",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S85",
+      "title": "Madlan rental listing xiWOuQbVA9f: 4 rooms, 117 sqm + 14 sqm, floor 12, south-west, BSR towers, NIS 13,500",
+      "url": "https://www.madlan.co.il/listings/xiWOuQbVA9f",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S86",
+      "title": "Madlan rental listing eum2dKnsRWs: Arania 20, 5 rooms, 118 sqm + 12 sqm, western sea view, NIS 14,900",
+      "url": "https://www.madlan.co.il/listings/eum2dKnsRWs",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S87",
+      "title": "Madlan rental listing QYHnjYzIzMA: 5 rooms, 128 sqm + 14 sqm, floor 22, south-west, NIS 19,000",
+      "url": "https://www.madlan.co.il/listings/QYHnjYzIzMA",
+      "published": "accessed 2026-09-16 (Madlan shows no listing date)"
+    },
+    {
+      "id": "S88",
+      "title": "Kol HaBayit: Tel Aviv arnona calculator and 2026 rates (secondary source based on the 2026 order)",
+      "url": "https://kolhabait.com/arnona/tel-aviv",
+      "published": "updated Aug 2026, accessed 2026-09-16"
+    },
+    {
+      "id": "S89",
+      "title": "Nadlancenter: Interior Ministry approves higher 2026 zone-1 arnona for new Tel Aviv units west of HaYarkon St",
+      "url": "https://www.nadlancenter.co.il/article/13556",
+      "published": "2025-12-28"
+    },
+    {
+      "id": "S90",
+      "title": "Nefesh B'Nefesh: Renting an apartment in Israel (Adv. Russell D. Mayer)",
+      "url": "https://www.nbn.org.il/life-in-israel/community-and-housing/buying-and-renting/renting-in-israel/",
+      "published": "2025-05-07"
+    },
+    {
+      "id": "S91",
+      "title": "Hebrew Wikipedia: Rental and Borrowing Law (2017 residential lease amendment)",
+      "url": "https://he.wikipedia.org/wiki/%D7%97%D7%95%D7%A7_%D7%94%D7%A9%D7%9B%D7%99%D7%A8%D7%95%D7%AA_%D7%95%D7%94%D7%A9%D7%90%D7%99%D7%9C%D7%94",
+      "published": "accessed 2026-09-16"
+    }
+  ]
+}

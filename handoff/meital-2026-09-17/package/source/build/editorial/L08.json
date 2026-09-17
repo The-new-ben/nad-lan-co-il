@@ -1,0 +1,898 @@
+{
+ "id": "L08",
+ "deal": "sale",
+ "ptype": "apartment",
+ "plate": "tower",
+ "status": "active",
+ "last_post": "2026-08-28",
+ "rooms": 4.5,
+ "price": 5900000,
+ "price_src": [
+  "S1"
+ ],
+ "built": 130,
+ "city": {
+  "he": "תל אביב-יפו",
+  "en": "Tel Aviv-Yafo"
+ },
+ "area": {
+  "he": "צוקי אביב, מגדלי נאמן",
+  "en": "Tzukei Aviv, Migdalei Ne'eman"
+ },
+ "plate_name": {
+  "he": "מגדלי נאמן, חוף הצוק",
+  "en": "Migdalei Ne'eman, Tzuk beach"
+ },
+ "kicker": {
+  "he": "למכירה · מגדלי נאמן, צפון תל אביב",
+  "en": "For sale · Migdalei Ne'eman, north Tel Aviv"
+ },
+ "title": {
+  "he": "4.5 חדרים במתחם עם בריכה וספא, מגדלי נאמן",
+  "en": "4.5 Rooms in a Pool and Spa Complex, Migdalei Ne'eman"
+ },
+ "dek": {
+  "he": "כ-130 מ״ר עם ממ״ד נפרד, 2 חניות ומחסן, מול הגינות המטופחות של המתחם, כשתי דקות הליכה מחוף הצוק לפי המשווקת. מחיר מבוקש 5,900,000 ש״ח.",
+  "en": "About 130 sqm with a separate safe room, two parking spaces and storage, facing the complex's landscaped gardens, about two minutes on foot from Tzuk beach according to the broker. Asking NIS 5,900,000."
+ },
+ "chips": [
+  {
+   "he": "בלעדיות: מיטל קציר, נדל״ן על הים",
+   "en": "Exclusive: Meital Katzir, Real Estate by the Sea",
+   "sea": true
+  },
+  {
+   "he": "כניסה מיידית",
+   "en": "Immediate entry"
+  },
+  {
+   "he": "בריכה, ספא ומאבטח 24/7",
+   "en": "Pool, spa and 24/7 guard"
+  }
+ ],
+ "facts": [
+  {
+   "label": {
+    "he": "חדרים",
+    "en": "Rooms"
+   },
+   "value": {
+    "he": "4.5 וממ״ד",
+    "en": "4.5 plus safe room"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "שטח",
+    "en": "Area"
+   },
+   "value": {
+    "he": "כ-130 מ״ר",
+    "en": "about 130 sqm"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "קומה",
+    "en": "Floor"
+   },
+   "value": {
+    "he": "1 מתוך 8",
+    "en": "1 of 8"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "כיווני אוויר",
+    "en": "Exposures"
+   },
+   "value": {
+    "he": "3",
+    "en": "3"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "חניות",
+    "en": "Parking"
+   },
+   "value": {
+    "he": "2",
+    "en": "2"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "מחסן",
+    "en": "Storage"
+   },
+   "value": {
+    "he": "יש",
+    "en": "Yes"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "מצב",
+    "en": "Condition"
+   },
+   "value": {
+    "he": "שמורה",
+    "en": "Well kept"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "כניסה",
+    "en": "Entry"
+   },
+   "value": {
+    "he": "מיידית",
+    "en": "Immediate"
+   },
+   "basis": "broker"
+  }
+ ],
+ "price_rows": [
+  {
+   "dt": {
+    "he": "דמי ניהול במתחם (2024)",
+    "en": "Complex fee (2024)"
+   },
+   "dd": {
+    "he": "כ-2,300 ₪ ל-138 מ״ר",
+    "en": "About NIS 2,300 for 138 sqm"
+   }
+  }
+ ],
+ "story_h2": {
+  "he": "מגורים של מתחם נופש, שתי דקות מהצוק",
+  "en": "Resort living, two minutes from the cliff"
+ },
+ "story": {
+  "he": [
+   "מגדלי נאמן הם מתחם של 330 דירות בשבעה בניינים ברחוב מיכאל נאמן, סמוך לחוף הצוק, שאוכלס בשלבים בין 2000 ל-2015.[[S3,S10,S11]] לדיירים בריכה מקורה הפתוחה כל השנה, ספא עם סאונה וג׳קוזי, חדר כושר, מדשאות ומאבטח בלובי 24 שעות ביממה.[[S3,S8,S10]] חזיתות הבניינים מעוטרות בפסיפסים של האמן יעקב אגם.[[S10]]",
+   "הדירה המוצעת כוללת 4.5 חדרים וממ״ד נפרד על כ-130 מ״ר, בקומה 1 מתוך 8, עם 3 כיווני אוויר, 2 חניות ומחסן.[[S1,S43]] היא פונה לגינות המטופחות של המתחם, במצב שמור ועם כניסה מיידית, במחיר מבוקש של 5,900,000 ש״ח.[[S1]]",
+   "דמי הניהול במתחם כוללים תחזוקה ושימוש בכל המתקנים, ודווחו ב-2024 כ-2,300 ש״ח לחודש לדירה של 138 מ״ר.[[S3]] לפי המשווקת, הים וחוף הצוק במרחק של כשתי דקות הליכה.[[S43]]"
+  ],
+  "en": [
+   "Migdalei Ne'eman is a complex of 330 apartments in seven buildings on Michael Ne'eman Street, next to Tzuk beach, occupied in stages between 2000 and 2015.[[S3,S10,S11]] Residents have a covered pool open all year, a spa with sauna and jacuzzi, a gym, lawns and a lobby guard around the clock.[[S3,S8,S10]] The facades carry mosaics by the artist Yaacov Agam.[[S10]]",
+   "The apartment offers 4.5 rooms plus a separate safe room on about 130 sqm, on floor 1 of 8, with three exposures, two parking spaces and a storage room.[[S1,S43]] It faces the complex's landscaped gardens, is well kept and available immediately, at an asking price of NIS 5,900,000.[[S1]]",
+   "The complex fee covers maintenance and use of all facilities, and was reported in 2024 at about NIS 2,300 a month for a 138 sqm apartment.[[S3]] According to the broker, the sea and Tzuk beach are about two minutes away on foot.[[S43]]"
+  ]
+ },
+ "features": {
+  "he": [
+   [
+    "130 מ״ר וממ״ד נפרד",
+    "4.5 חדרים ו-3 כיווני אוויר"
+   ],
+   [
+    "בריכה מקורה",
+    "פתוחה כל השנה, 06:00 עד חצות לפי גלובס[[S3]]"
+   ],
+   [
+    "ספא, סאונה וג׳קוזי",
+    "וחדר כושר מאובזר"
+   ],
+   [
+    "מאבטח 24/7 בלובי",
+    "וקונסיירז׳ לפי המשווקת"
+   ],
+   [
+    "2 חניות ומחסן",
+    "כניסה מיידית"
+   ],
+   [
+    "45,385 ש״ח למ״ר",
+    "טווח שמאי של 45,000 עד 50,000 ש״ח דווח ב-2024[[S3]]"
+   ]
+  ],
+  "en": [
+   [
+    "130 sqm and a separate safe room",
+    "4.5 rooms and three exposures"
+   ],
+   [
+    "Covered pool",
+    "Open all year, 06:00 to midnight per Globes[[S3]]"
+   ],
+   [
+    "Spa, sauna and jacuzzi",
+    "And an equipped gym"
+   ],
+   [
+    "24/7 lobby guard",
+    "And a concierge, per the broker"
+   ],
+   [
+    "Two parking spaces and storage",
+    "Immediate entry"
+   ],
+   [
+    "NIS 45,385 per sqm",
+    "An appraisal range of NIS 45,000 to 50,000 was reported in 2024[[S3]]"
+   ]
+  ]
+ },
+ "spec": [
+  {
+   "title": {
+    "he": "הדירה",
+    "en": "The apartment"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "חדרים",
+      "en": "Rooms"
+     },
+     "dd": {
+      "he": "4.5 וממ״ד נפרד בתוך הדירה",
+      "en": "4.5 plus a separate safe room inside the unit"
+     },
+     "basis": "broker",
+     "src": [
+      "S43",
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "שטח",
+      "en": "Area"
+     },
+     "dd": {
+      "he": "כ-130 מ״ר",
+      "en": "About 130 sqm"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "קומה",
+      "en": "Floor"
+     },
+     "dd": {
+      "he": "1 מתוך 8",
+      "en": "1 of 8"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "כיווני אוויר ונוף",
+      "en": "Exposures and outlook"
+     },
+     "dd": {
+      "he": "3 כיווני אוויר; פונה לגינות המתחם",
+      "en": "Three exposures; faces the complex gardens"
+     },
+     "basis": "broker",
+     "src": [
+      "S1",
+      "S43"
+     ]
+    },
+    {
+     "dt": {
+      "he": "חדרי רחצה",
+      "en": "Bathrooms"
+     },
+     "dd": {
+      "he": "2 חדרי רחצה ו-3 שירותים לפי שדות המודעה",
+      "en": "2 bathrooms and 3 toilets per the listing fields"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מצב וכניסה",
+      "en": "Condition and entry"
+     },
+     "dd": {
+      "he": "שמורה; כניסה מיידית",
+      "en": "Well kept; immediate entry"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    }
+   ]
+  },
+  {
+   "title": {
+    "he": "חניה ואחסון",
+    "en": "Parking and storage"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "חניה",
+      "en": "Parking"
+     },
+     "dd": {
+      "he": "2 חניות",
+      "en": "2 spaces"
+     },
+     "basis": "broker",
+     "src": [
+      "S43"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מחסן",
+      "en": "Storage"
+     },
+     "dd": {
+      "he": "יש",
+      "en": "Yes"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מעלית",
+      "en": "Lift"
+     },
+     "dd": {
+      "he": "יש",
+      "en": "Yes"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    }
+   ]
+  }
+ ],
+ "building_h2": {
+  "he": "מתחם של 330 דירות, בריכה, ספא ופסיפסים של אגם",
+  "en": "A 330-home complex with pool, spa and Agam mosaics"
+ },
+ "building_lead": {
+  "he": "באיזה שלב של המתחם נבנה הבניין של הדירה, ובאיזו שנה, לא אומת במקורות פתוחים.",
+  "en": "Which phase of the complex built the unit's building, and when, was not verified in open sources."
+ },
+ "building": [
+  {
+   "dt": {
+    "he": "היקף",
+    "en": "Scale"
+   },
+   "dd": {
+    "he": "330 דירות בשבעה בניינים, אוכלסו בשלבים בין 2000 ל-2015",
+    "en": "330 apartments in seven buildings, occupied in stages between 2000 and 2015"
+   },
+   "src": [
+    "S3",
+    "S11"
+   ]
+  },
+  {
+   "dt": {
+    "he": "יזמים",
+    "en": "Developers"
+   },
+   "dd": {
+    "he": "נבנה בשלבים על ידי כמה יזמים, בהם אזורים, יוסי אברהמי, קבוצת חג׳ג׳ ואקרו",
+    "en": "Built in phases by several developers, including Azorim, Yossi Avrahami, Hagag Group and Acro"
+   },
+   "src": [
+    "S11",
+    "S6",
+    "S7",
+    "S8"
+   ]
+  },
+  {
+   "dt": {
+    "he": "אדריכלות",
+    "en": "Architecture"
+   },
+   "dd": {
+    "he": "כנען שנהב אדריכלים",
+    "en": "Canaan Shenhav Architects"
+   },
+   "src": [
+    "S6",
+    "S8"
+   ]
+  },
+  {
+   "dt": {
+    "he": "אמנות",
+    "en": "Art"
+   },
+   "dd": {
+    "he": "פסיפסים צבעוניים של יעקב אגם על החזיתות",
+    "en": "Colorful mosaics by Yaacov Agam on the facades"
+   },
+   "src": [
+    "S10"
+   ]
+  },
+  {
+   "dt": {
+    "he": "מתקנים",
+    "en": "Facilities"
+   },
+   "dd": {
+    "he": "בריכה מקורה פתוחה כל השנה, ספא עם בריכה פנימית, סאונה וג׳קוזי, חדר כושר, בית כנסת ועמדת שטיפת רכב",
+    "en": "Year-round covered pool, spa with indoor pool, sauna and jacuzzi, gym, synagogue and car-wash station"
+   },
+   "src": [
+    "S3",
+    "S8"
+   ]
+  },
+  {
+   "dt": {
+    "he": "אבטחה",
+    "en": "Security"
+   },
+   "dd": {
+    "he": "מאבטח בלובי 24 שעות ביממה",
+    "en": "Lobby guard around the clock"
+   },
+   "src": [
+    "S3"
+   ]
+  },
+  {
+   "dt": {
+    "he": "חברת ניהול",
+    "en": "Management company"
+   },
+   "dd": {
+    "he": "הייטאואר: ניהול המתחם, הבריכה והספא, חדר הכושר והלובי",
+    "en": "Hightower: complex, pool and spa, gym and lobby"
+   },
+   "src": [
+    "S10"
+   ]
+  },
+  {
+   "dt": {
+    "he": "דמי ניהול",
+    "en": "Management fee"
+   },
+   "dd": {
+    "he": "כ-2,300 ש״ח לחודש לדירה של 138 מ״ר (2024); 1,900 ש״ח ל-125 מ״ר (2018)",
+    "en": "About NIS 2,300 a month for 138 sqm (2024); NIS 1,900 for 125 sqm (2018)"
+   },
+   "src": [
+    "S3",
+    "S4"
+   ]
+  }
+ ],
+ "location_h2": {
+  "he": "הקצה הצפוני של צוקי אביב, מול חוף הצוק",
+  "en": "The northern edge of Tzukei Aviv, by Tzuk beach"
+ },
+ "location": {
+  "he": [
+   "המתחם נמצא בצפון צוקי אביב, השכונה שבין רחוב יוניצמן, דרך נמיר, רחוב פרופס והים.[[S45]] חברת הניהול ממקמת אותו בסמוך לחוף הצוק, ומדלן משייך את הרחוב לאזור גלילות.[[S10,S19]]",
+   "טיילת פארק החוף, כ-2 ק״מ לאורך המצוק, מחברת בין חוף הצוק לחוף תל ברוך ונפתחה ב-2023.[[S31]] תיכון נתן אלתרמן, שבניינו זכה בפרס רוקח לאדריכלות, נמצא בשכונה.[[S30]]",
+   "סביב המתחם חלה תכנית תא/3700 לרובע צפון-מערבי, וממזרח לו נסלל המשך ציר אבן גבירול, שלאורכו מתוכנן גם הקו הירוק של הרכבת הקלה.[[S3,S14,S34]]"
+  ],
+  "en": [
+   "The complex sits in northern Tzukei Aviv, the neighborhood between Unitzman Street, Namir Road, Propes Street and the sea.[[S45]] The management company places it next to Tzuk beach, and Madlan files the street under Glilot.[[S10,S19]]",
+   "The coastal park promenade, about 2 km along the cliff, links Tzuk beach with Tel Baruch beach and opened in 2023.[[S31]] Nathan Alterman High School, whose building won the Rokach architecture prize, is in the neighborhood.[[S30]]",
+   "Plan TA/3700 for a new north-west quarter covers the land around the complex, and the Ibn Gabirol extension has been paved to its east, where the Green Line light rail is also planned.[[S3,S14,S34]]"
+  ]
+ },
+ "future_override": {
+  "0": {
+   "title": {
+    "he": "המשך אבן גבירול והרכבת הקלה ממזרח למתחם",
+    "en": "The Ibn Gabirol extension and light rail east of the complex"
+   },
+   "impact": {
+    "he": "לפי גלובס (2024), הרחוב החדש שנסלל בצד המזרחי של המתחם צפוי לחסום את הנוף הפתוח לכיוון זה ולהפוך לציר תנועה ראשי, לצד עבודות הרכבת הקלה. את כיווני הדירה המדויקים כדאי לבדוק בסיור.",
+    "en": "According to Globes (2024), the new street paved on the complex's east side is expected to block the open view in that direction and become a main traffic artery, alongside light rail works. Check the unit's exact orientation during a viewing."
+   }
+  },
+  "1": {
+   "title": {
+    "he": "תכנית תא/3700, הרובע הצפון-מערבי",
+    "en": "Plan TA/3700, the north-west quarter"
+   },
+   "impact": {
+    "he": "11,000 עד 13,000 יחידות דיור, 1,500 חדרי מלון וכ-215,000 מ״ר תעסוקה ומסחר על כ-1,900 דונם בין שדה דב לגבול הרצליה. התכנית אושרה ב-2015 ונתקעה ב-2024 בשל תיקון טבלאות האיזון; כ-70% מהקרקע בבעלות פרטית.",
+    "en": "11,000 to 13,000 homes, 1,500 hotel rooms and about 215,000 sqm of employment and retail on about 1,900 dunams between Sde Dov and the Herzliya boundary. Approved in 2015, it stalled in 2024 over reallocation tables; about 70% of the land is privately owned."
+   }
+  },
+  "2": {
+   "title": {
+    "he": "ערר הדיירים בגין תכנית 3700",
+    "en": "Residents' appeal over plan 3700"
+   },
+   "impact": {
+    "he": "דיירי המתחם דרשו כ-71 מיליון ש״ח בגין ירידת ערך, וועדת הערר המחוזית קבעה בינואר 2026 שלא הוכח נזק.",
+    "en": "Residents of the complex claimed about NIS 71 million for loss of value, and the district appeals committee ruled in January 2026 that no damage was proven."
+   }
+  },
+  "3": {
+   "title": {
+    "he": "מלון ומגדל מגורים בחוף הצוק",
+    "en": "Hotel and residential tower at Tzuk beach"
+   },
+   "impact": {
+    "he": "מגדל בן 14 קומות עם 116 דירות ומלון של 198 חדרים לפחות, על כ-16 עד 20 דונם פחות מ-100 מ׳ מהים; תכנית העיצוב אושרה במאי 2025.",
+    "en": "A 14-floor tower with 116 apartments and a hotel of at least 198 rooms on about 16 to 20 dunams less than 100 m from the sea; the design plan was approved in May 2025."
+   }
+  }
+ },
+ "numbers": {
+  "h2": {
+   "he": "5,900,000 ש״ח, כולל מה שהמתחם עולה",
+   "en": "NIS 5,900,000, including what the complex costs"
+  },
+  "lead": {
+   "he": "המחיר המבוקש במודעת המשווקת במדלן, מחושב לפי כללי המס והמימון שפורסמו עד 16.9.2026.",
+   "en": "The asking price in the broker's Madlan listing, computed against tax and lending rules published up to 16 September 2026."
+  },
+  "median_psqm": {
+   "value": 50000,
+   "value_text": {
+    "he": "45,000-50,000 ₪",
+    "en": "NIS 45,000-50,000"
+   },
+   "label": {
+    "he": "טווח שמאי למ״ר במתחם",
+    "en": "Appraisal range per sqm"
+   },
+   "small": {
+    "he": "גלובס, 2024",
+    "en": "Globes, 2024"
+   },
+   "src": [
+    "S3"
+   ]
+  },
+  "bars": {
+   "title": {
+    "he": "מחיר למ״ר: הדירה מול המתחם",
+    "en": "Price per sqm against the complex"
+   },
+   "items": [
+    {
+     "label": {
+      "he": "הדירה, על 130 מ״ר",
+      "en": "This apartment, on 130 sqm"
+     },
+     "value": 45385,
+     "this": true
+    },
+    {
+     "label": {
+      "he": "עסקה, 130 מ״ר, פברואר 2026",
+      "en": "Sale, 130 sqm, February 2026"
+     },
+     "value": 54615,
+     "src": [
+      "S18"
+     ]
+    },
+    {
+     "label": {
+      "he": "עסקה, 130 מ״ר, מרץ 2026",
+      "en": "Sale, 130 sqm, March 2026"
+     },
+     "value": 43846,
+     "src": [
+      "S18"
+     ]
+    },
+    {
+     "label": {
+      "he": "טווח שמאי במתחם, 2024",
+      "en": "Appraisal range in the complex, 2024"
+     },
+     "value": 50000,
+     "value_text": {
+      "he": "45,000 עד 50,000 ₪",
+      "en": "NIS 45,000 to 50,000"
+     },
+     "src": [
+      "S3"
+     ]
+    },
+    {
+     "label": {
+      "he": "מודעות במתחם, עד",
+      "en": "Listings in the complex, up to"
+     },
+     "value": 58333,
+     "src": [
+      "S23"
+     ]
+    }
+   ],
+   "note": {
+    "he": "כל הפסים באותו קנה מידה. מספרי החדרים והקומות בעסקאות מדלן נקראו באופן ממוכן ויש לאמתם באתר רשות המסים.",
+    "en": "All bars share one scale. Rooms and floors in the Madlan sales were read automatically and should be checked on the Tax Authority site."
+   }
+  },
+  "ledger_title": {
+   "he": "דמי ניהול, ארנונה ותשואה",
+   "en": "Complex fee, arnona and yield"
+  },
+  "ledger": [
+   {
+    "dt": {
+     "he": "דמי ניהול, הערכה לדירה[[S3]]",
+     "en": "Complex fee, estimate for this size[[S3]]"
+    },
+    "dd": {
+     "he": "כ-2,170 ₪ לחודש",
+     "en": "About NIS 2,170 a month"
+    },
+    "note": {
+     "he": "2,300 ₪ ל-138 מ״ר ב-2024, יחסית ל-130 מ״ר; כ-26,000 ₪ בשנה. לא הצעת מחיר",
+     "en": "NIS 2,300 for 138 sqm in 2024, scaled to 130 sqm; about NIS 26,000 a year. Not a quote"
+    }
+   },
+   {
+    "dt": {
+     "he": "ארנונה, הערכה שנתית[[G_KH_TLV]]",
+     "en": "Arnona, annual estimate[[G_KH_TLV]]"
+    },
+    "dd": {
+     "he": "11,792-14,689 ₪",
+     "en": "NIS 11,792-14,689"
+    },
+    "note": {
+     "he": "130 מ״ר בתעריף אא, אזור 2 עד אזור 1; לבניינים ותיקים יותר עשוי לחול תעריף נמוך יותר",
+     "en": "130 sqm at the newest-code rates, zone 2 to zone 1; older buildings may carry a lower code"
+    }
+   },
+   {
+    "dt": {
+     "he": "תשואה ברוטו בשכירות 12,500-13,500 ₪[[S26,S27]]",
+     "en": "Gross yield at NIS 12,500-13,500 rent[[S26,S27]]"
+    },
+    "dd": {
+     "he": "2.54%-2.75%",
+     "en": "2.54%-2.75%"
+    },
+    "note": {
+     "he": "מודעות שכירות של דירות דומות במתחם ובסמוך",
+     "en": "Rental listings for similar units in and near the complex"
+    }
+   },
+   {
+    "dt": {
+     "he": "תשואה אופיינית בצוקי אביב[[S28]]",
+     "en": "Typical Tzukei Aviv yield[[S28]]"
+    },
+    "dd": {
+     "he": "2.4%-2.7%",
+     "en": "2.4%-2.7%"
+    }
+   }
+  ]
+ },
+ "market": {
+  "h2": {
+   "he": "העסקאות והמודעות במתחם",
+   "en": "Sales and listings in the complex"
+  },
+  "lead": {
+   "he": "עסקאות ומודעות ברחוב מיכאל נאמן ובמתחמים סמוכים, ונתוני שוק. עסקאות מדלן נקראו באופן ממוכן, ויש לאמת אותן לפני משא ומתן.",
+   "en": "Sales and listings on Michael Ne'eman Street and nearby complexes, plus market data. Madlan sales were read automatically and should be verified before negotiating."
+  }
+ },
+ "checks_h2": {
+  "he": "מה לבדוק לפני הצעה",
+  "en": "What to check before an offer"
+ },
+ "checks_lead": {
+  "he": "השאלות שרוכש זהיר שואל על דירה במתחם כזה, והמסמכים שכדאי לקבל.",
+  "en": "The questions a careful buyer asks about a unit in a complex like this, and the documents to obtain."
+ },
+ "checks_extra": {
+  "he": [
+   "נסח טאבו ותשריט הבית המשותף, כולל הצמדת החניות והמחסן",
+   "תקציב חברת הניהול ופירוט השירותים",
+   "פרוטוקולים של אסיפות הדיירים מהשנתיים האחרונות",
+   "אישור על היעדר חובות ארנונה ודמי ניהול"
+  ],
+  "en": [
+   "A land registry extract and condominium plan, including the attached parking and storage",
+   "The management company budget and service list",
+   "Residents' meeting minutes from the last two years",
+   "Confirmations of no arrears on arnona and complex fees"
+  ]
+ },
+ "faq": [
+  {
+   "q": {
+    "he": "מה המחיר למ״ר במתחם?",
+    "en": "What is the price per sqm in the complex?"
+   },
+   "a": {
+    "he": "המחיר המבוקש הוא כ-45,385 ש״ח למ״ר. שמאים העריכו ב-2024 דירות טיפוסיות במתחם ב-45,000 עד 50,000 ש״ח למ״ר,[[S3]] ושתי עסקאות של דירות 130 מ״ר ברחוב נרשמו ב-2026 ב-43,846 וב-54,615 ש״ח למ״ר.[[S18]]",
+    "en": "The asking price is about NIS 45,385 per sqm. Appraisers valued typical units in the complex at NIS 45,000 to 50,000 per sqm in 2024,[[S3]] and two 2026 sales of 130 sqm units on the street were recorded at NIS 43,846 and 54,615 per sqm.[[S18]]"
+   }
+  },
+  {
+   "q": {
+    "he": "כמה עולים דמי הניהול?",
+    "en": "How much is the complex fee?"
+   },
+   "a": {
+    "he": "גלובס דיווח ב-2024 על כ-2,300 ש״ח לחודש לדירה של 138 מ״ר, כולל תחזוקה ושימוש בכל המתקנים.[[S3]] לדירה של 130 מ״ר זה כ-2,170 ש״ח לחודש בהנחה שהתעריף יחסי לשטח; יש לקבל את הסכום העדכני.",
+    "en": "Globes reported about NIS 2,300 a month for a 138 sqm apartment in 2024, including maintenance and use of all facilities.[[S3]] For 130 sqm that is about NIS 2,170 a month if the fee scales with area; ask for the current amount."
+   }
+  },
+  {
+   "q": {
+    "he": "כמה רחוק הים?",
+    "en": "How far is the sea?"
+   },
+   "a": {
+    "he": "לפי המשווקת כשתי דקות הליכה לים ולחוף הצוק.[[S43]] מודעת שכירות של מפרסם אחר במתחם מציינת חמש דקות הליכה.[[S26]]",
+    "en": "According to the broker, about two minutes on foot to the sea and Tzuk beach.[[S43]] A rental listing by another advertiser in the complex says five minutes.[[S26]]"
+   }
+  },
+  {
+   "q": {
+    "he": "כמה מס רכישה ישלם רוכש?",
+    "en": "How much purchase tax would a buyer pay?"
+   },
+   "a": {
+    "he": "לפי מדרגות 2026: כ-190,538 ש״ח לרוכש דירה יחידה, 472,000 ש״ח לדירה נוספת או לתושב חוץ, וכ-19,606 ש״ח לעולה חדש זכאי.[[G_TAX_DIR,G_KZ_OLEH]]",
+    "en": "Under the 2026 brackets: about NIS 190,538 for a single-home buyer, NIS 472,000 for an additional home or a foreign resident, and about NIS 19,606 for an eligible new immigrant.[[G_TAX_DIR,G_KZ_OLEH]]"
+   }
+  },
+  {
+   "q": {
+    "he": "מה ישתנה סביב המתחם?",
+    "en": "What will change around the complex?"
+   },
+   "a": {
+    "he": "ממזרח נסלל המשך אבן גבירול, שלאורכו מתוכנן הקו הירוק; בחוף הצוק אושרה תכנית עיצוב למלון ולמגדל מגורים; והשטחים הפנויים סביב המתחם כלולים בתכנית תא/3700.[[S3,S17,S14]]",
+    "en": "The Ibn Gabirol extension has been paved to the east, with the Green Line planned along it; a design plan for a hotel and residential tower was approved at Tzuk beach; and the open land around the complex is part of plan TA/3700.[[S3,S17,S14]]"
+   }
+  }
+ ],
+ "amenities": [
+  {
+   "he": "בריכה מקורה",
+   "en": "Covered pool"
+  },
+  {
+   "he": "ספא",
+   "en": "Spa"
+  },
+  {
+   "he": "חדר כושר",
+   "en": "Gym"
+  },
+  {
+   "he": "מאבטח 24/7",
+   "en": "24/7 guard"
+  },
+  {
+   "he": "ממ״ד",
+   "en": "Safe room"
+  },
+  {
+   "he": "2 חניות",
+   "en": "2 parking spaces"
+  }
+ ],
+ "seo": {
+  "he": {
+   "title": "דירת 4.5 חדרים למכירה במגדלי נאמן, בריכה וספא",
+   "desc": "4.5 חדרים וממ״ד, כ-130 מ״ר, 2 חניות ומחסן במתחם מגדלי נאמן עם בריכה מקורה, ספא ומאבטח 24/7. 5,900,000 ש״ח, עם דמי ניהול, מס ועסקאות.",
+   "kw": "דירה למכירה במגדלי נאמן",
+   "slug": "migdalei-neeman-4-5-rooms-for-sale"
+  },
+  "en": {
+   "title": "4.5-Room Apartment for Sale, Migdalei Ne'eman, Tel Aviv",
+   "desc": "4.5 rooms plus a safe room, about 130 sqm, two parking spaces and storage in a complex with a covered pool, spa and 24/7 guard. NIS 5,900,000.",
+   "kw": "apartment for sale Migdalei Neeman Tel Aviv",
+   "slug": "en-migdalei-neeman-4-5-room-apartment-for-sale"
+  }
+ },
+ "shots": [
+  {
+   "he": "הבריכה המקורה",
+   "en": "Covered pool"
+  },
+  {
+   "he": "הספא",
+   "en": "Spa"
+  },
+  {
+   "he": "הגינות והמדשאות מהדירה",
+   "en": "Gardens and lawns seen from the apartment"
+  },
+  {
+   "he": "הסלון",
+   "en": "Living room"
+  },
+  {
+   "he": "המטבח",
+   "en": "Kitchen"
+  },
+  {
+   "he": "יחידת ההורים",
+   "en": "Master suite"
+  },
+  {
+   "he": "הממ״ד",
+   "en": "Safe room"
+  },
+  {
+   "he": "חזית עם פסיפס אגם",
+   "en": "Facade with the Agam mosaic"
+  },
+  {
+   "he": "ההליכה לחוף הצוק",
+   "en": "The walk to Tzuk beach"
+  }
+ ],
+ "internal": {
+  "assessment": [
+   "45,385 ₪ למ״ר: בתחתית טווח השמאים (45,000-50,000) ובתחתית המודעות במתחם (עד 58,333). מחיר תחרותי.",
+   "אבל: קומה 1 מול גינות (לא נוף ים), ודמי ניהול של כ-2,200 ₪ לחודש (כ-26,000 ₪ בשנה) שוחקים תשואה ברוטו של 2.5% עד 2.7%. מתאים למשפחה שגרה, פחות למשקיע.",
+   "ציר אבן גבירול נסלל ממזרח, עם רכבת קלה בעתיד. לבדוק רעש וכיוון הבניין."
+  ],
+  "confirm": [
+   "באיזה בניין ושלב נמצא מספר 22, ושנת בנייה. ייתכן שיש הבדלי מפרט בין השלבים.",
+   "קומה 1 מעל קומת עמודים או בגובה הגינה? יש גינה או מרפסת?",
+   "דמי ניהול עדכניים וארנונה.",
+   "אישור לפרסם את מספר הבית; כרגע מוצג רק שם המתחם.",
+   "תמונות, והאם הקונסיירז׳ פעיל כיום."
+  ]
+ },
+ "wp": {
+  "listing_type": "sale",
+  "property_type": "apartment",
+  "price": 5900000,
+  "rooms": 4.5,
+  "floor": 1,
+  "total_floors": 8,
+  "size_sqm": 130,
+  "balcony_sqm": null,
+  "parking": true,
+  "elevator": true,
+  "ac": null,
+  "protected_room": true,
+  "street": "מיכאל נאמן",
+  "building_number": "",
+  "city": "תל אביב-יפו",
+  "neighborhood": "צוקי אביב",
+  "arnona_monthly": 0,
+  "vaad_bayit_monthly": 0,
+  "storage": true,
+  "condition": "good"
+ }
+}

@@ -1,0 +1,118 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "Five Rooms on a High Floor with a Sea View, B.S.R Sarona",
+   "description": "Five rooms, 117 sqm plus a 14 sqm balcony on a high floor with open sea views, parking and storage, immediate entry. NIS 15,500 a month with costs and comps.",
+   "inLanguage": "en",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/en/properties/en-bsr-sarona-5-room-sea-view-apartment-for-rent/",
+   "about": {
+    "@type": "Apartment",
+    "name": "Five Rooms on a High Floor with a Sea View, B.S.R Sarona",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Tel Aviv-Yafo",
+     "addressRegion": "Sarona",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 5,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 117,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "24/7 security",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Gym",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Parking",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Storage",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "High-speed lifts",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "Meital Katzir, Real Estate by the Sea",
+     "telephone": "+972523631582"
+    },
+    "priceSpecification": {
+     "@type": "UnitPriceSpecification",
+     "price": 15500,
+     "priceCurrency": "ILS",
+     "unitCode": "MON"
+    }
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What does the apartment cost per month?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "NIS 15,500 per the broker's Madlan listing, and with the management fee and arnona an estimated NIS 18,292 to 18,751 a month."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which floor, and where does it look?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The broker describes a high floor with open views to the sea and across Tel Aviv, and a January 2026 post gave floor 20. The balcony faces south-west."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is there a pool?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No communal pool or spa appears in developer or contractor sources. The project has a residents' gym, 24/7 security and a double-height lobby."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How close is the light rail?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Exit A of Yehudit station on the Red Line serves the Sarona complex, and the line has run since August 2023."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does the law say about guarantees?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "At rents up to NIS 20,000 the Fair Rental Law applies, and guarantees are capped at the lower of 3 months' rent or a third of the total rent: up to NIS 46,500 on a 12-month lease."
+     }
+    }
+   ]
+  }
+ ]
+}

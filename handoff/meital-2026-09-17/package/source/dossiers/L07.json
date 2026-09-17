@@ -1,0 +1,1417 @@
+{
+  "id": "L07",
+  "identification": {
+    "summary_en": "The building is not identified. Meital Katzir's own two Madlan listings for this unit add what the Instagram posts leave out: an asking price of NIS 18,000,000 and floor 11 in a 12-floor building, with the building year entered as 2022 on one listing and 2023 on the other. Both listings hide the street. No source reviewed ties a new 12-floor boutique building with a residents' gym in Kochav HaTzafon to a specific address.",
+    "summary_he": "הבניין לא זוהה. שתי מודעות של מיטל קציר עצמה באתר מדלן לנכס זה מוסיפות פרטים שאינם מופיעים באינסטגרם: מחיר מבוקש של 18,000,000 ש״ח וקומה 11 בבניין בן 12 קומות, כאשר שנת הבנייה מופיעה כ-2022 במודעה אחת וכ-2023 בשנייה. בשתי המודעות הרחוב מוסתר. אף מקור שנבדק אינו מקשר בניין בוטיק חדש בן 12 קומות עם חדר כושר לדיירים בכוכב הצפון לכתובת מסוימת.",
+    "address_or_project_en": "Kochav HaTzafon, north Tel Aviv: new boutique building, street not disclosed",
+    "address_or_project_he": "כוכב הצפון, צפון תל אביב: בניין בוטיק חדש, הרחוב לא פורסם",
+    "confidence": "unverified",
+    "evidence": [
+      "Madlan listing HyD7KTqQUAu (agent Meital Katzir, license 3131540): mini penthouse, 5 rooms, floor 11 of 12, 190 sqm built, NIS 18,000,000, building year field 2022, location shown only as Kochav HaTzafon.",
+      "Madlan listing Bmt22LuUKmD (same agent and license): 5 rooms, floor 11 of 12, 197 sqm built, NIS 18,000,000, 4 exposures, 14 sqm storage, building year field 2023, location shown only as Kochav HaTzafon.",
+      "Madlan's building-year field looked unreliable on other listings read the same way (resale and renovated units showing future years such as 2029 and 2030), so 2022-2023 is not treated as verified.",
+      "The suggested streets are in the neighborhood: Bizportal's July 2026 report lists Kochav HaTzafon deals on Meir Yaari, Biluya Maoz, Maurizio Vitale, Shai Agnon and Levi Eshkol, and Madlan labels listings on them as Kochav HaTzafon. No source links any of them to a 12-floor boutique building completed in 2022-2023.",
+      "Checked and not matched on the data available: the Philharmonic project at Shai Agnon 28 (a Madlan rental listing shows 10 floors, a pool and a spa); the Sportek TLV towers by Hagag on Levi Eshkol (25 floors per a Madlan listing); Seminar HaKibbutzim (28-floor towers, first phase about 5 years away); off-plan Sde Dov Eshkol deals at Shai Agnon 6 and 40 (Madlan building years 2029-2030); AURA NEO at Meir Yaari 13 and the Meir Yaari 16 project (project-tlv entries dated 2012-2015).",
+      "Yehuda HaMaccabi St was not checked against a source. project-tlv puts the neighborhood's southern edge at Rokach Blvd and Yarkon Park, so any street south of the park would fall outside Kochav HaTzafon."
+    ],
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S6",
+      "S11",
+      "S19",
+      "S22",
+      "S5",
+      "S42"
+    ]
+  },
+  "cross_listings": [
+    {
+      "what_en": "Madlan listing posted by Meital Katzir (license 3131540): exclusive mini penthouse for sale in Kochav HaTzafon",
+      "url": "https://www.madlan.co.il/listings/HyD7KTqQUAu",
+      "date": "2026-09-16 (accessed; posting date not shown)",
+      "price_nis": 18000000,
+      "details_en": "5 rooms; floor 11 of 12; 190 sqm built; two balcony entries that the automated read could not split reliably; description says 3 exposures, while the feature list shows 4; 2 parking spaces, storage, elevator and mamad in the feature list; building year field 2022; condition new; flexible entry; Madlan price per sqm NIS 94,737; street hidden.",
+      "same_unit_evidence_en": "Same agent and license as the Instagram posts. The description repeats the captions almost word for word: new luxury mini penthouse in a new boutique building in Kochav HaTzafon, hidden refrigerator, very large living room, custom carpentry, children's unit with a sea-view balcony, VRF units, open view over all of Tel Aviv, gym in the building. 5 rooms and 190 sqm match the posts of 2026-03-15 and 2026-05-04.",
+      "confidence": "likely"
+    },
+    {
+      "what_en": "Second Madlan listing posted by Meital Katzir (license 3131540): exclusive penthouse / mini penthouse for sale in Kochav HaTzafon",
+      "url": "https://www.madlan.co.il/listings/Bmt22LuUKmD",
+      "date": "2026-09-16 (accessed; posting date not shown)",
+      "price_nis": 18000000,
+      "details_en": "5 rooms; floor 11 of 12; 197 sqm built; three balcony entries (the only reading consistent with the broker's 80 sqm total is about 74 + 4 + 2 sqm, not verified); 4 exposures; storage 14 sqm; 2 parking spaces; elevator and mamad; building year field 2023; Madlan price per sqm NIS 91,371; street hidden.",
+      "same_unit_evidence_en": "Same agent, price, floor, room count and description text as the first Madlan listing and the Instagram captions; 4 exposures matches the posts of 2026-03-15 and 2026-06-16, and 197 sqm is close to the about 200 sqm in the 2026-05-12 post. The differences from the first listing (197 vs 190 sqm, 3 vs 2 balconies, 4 vs 3 exposures, 2023 vs 2022) mean this is either a duplicate with inconsistent data or a second unit on the same floor. The broker should confirm.",
+      "confidence": "likely"
+    }
+  ],
+  "building_facts": [
+    {
+      "label_en": "Asking price",
+      "label_he": "מחיר מבוקש",
+      "value_en": "NIS 18,000,000",
+      "value_he": "18,000,000 ש״ח",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "note_en": "Likely: the broker's own two Madlan listings, not independent. The Instagram posts give no price. An asking price, not a transaction."
+    },
+    {
+      "label_en": "Price per built sqm",
+      "label_he": "מחיר למ״ר בנוי",
+      "value_en": "NIS 91,371 to 94,737",
+      "value_he": "91,371 עד 94,737 ש״ח",
+      "basis": "computed",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "note_en": "18,000,000 / 197 sqm = 91,371 and 18,000,000 / 190 sqm = 94,737; the same figures Madlan shows. Likely because it rests on broker figures."
+    },
+    {
+      "label_en": "Price per weighted sqm",
+      "label_he": "מחיר למ״ר משוקלל",
+      "value_en": "About NIS 80,500 to 83,600 with terraces counted at one third; about NIS 75,900 to 78,900 with terraces counted at one half",
+      "value_he": "כ-80,500 עד 83,600 ש״ח בשקלול שליש משטח המרפסות; כ-75,900 עד 78,900 ש״ח בשקלול מחצית",
+      "basis": "computed",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S43",
+        "S44",
+        "S12"
+      ],
+      "note_en": "Formula: 18,000,000 / (built area + terrace area x weight), using the broker's 190-197 sqm built and 76-80 sqm of terraces. The one-third and one-half weights are the two methods Globes applied to a 2025 penthouse deal (S12). A bank appraiser may use a different weighting. Likely because it rests on broker areas and one press method."
+    },
+    {
+      "label_en": "Unit type and rooms",
+      "label_he": "סוג הנכס וחדרים",
+      "value_en": "Mini penthouse, 5 rooms",
+      "value_he": "מיני פנטהאוז, 5 חדרים",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S43",
+        "S45",
+        "S1",
+        "S2"
+      ],
+      "note_en": "Likely: consistent across all broker posts and listings, but broker-stated only."
+    },
+    {
+      "label_en": "Floor",
+      "label_he": "קומה",
+      "value_en": "Floor 11 of 12",
+      "value_he": "קומה 11 מתוך 12",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "note_en": "Likely: stated on both of the broker's Madlan listings, not independently confirmed; not stated on Instagram."
+    },
+    {
+      "label_en": "Built area",
+      "label_he": "שטח בנוי",
+      "value_en": "190 to 200 sqm on Instagram; 190 sqm and 197 sqm on the two Madlan listings",
+      "value_he": "190 עד 200 מ״ר באינסטגרם; 190 מ״ר ו-197 מ״ר בשתי מודעות מדלן",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S43",
+        "S50",
+        "S44",
+        "S1",
+        "S2"
+      ],
+      "note_en": "Conflicting broker figures. No arnona, permit or contract area was seen."
+    },
+    {
+      "label_en": "Balconies",
+      "label_he": "מרפסות",
+      "value_en": "76 to 80 sqm in total per Instagram; Madlan shows 2 or 3 balcony entries whose sizes the automated read could not split reliably",
+      "value_he": "76 עד 80 מ״ר בסך הכול לפי האינסטגרם; במדלן מופיעות 2 או 3 מרפסות שגודלן לא נקרא באופן אמין",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S43",
+        "S50",
+        "S44",
+        "S1",
+        "S2"
+      ],
+      "note_en": "The reading of the Madlan entries that fits the broker's 80 sqm is a main terrace of about 74 sqm plus balconies of about 4 and 2 sqm. Confirm on the plan."
+    },
+    {
+      "label_en": "Exposures",
+      "label_he": "כיווני אוויר",
+      "value_en": "3 or 4 (posts and listings disagree)",
+      "value_he": "3 או 4 (הפרסומים סותרים)",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S43",
+        "S50",
+        "S44",
+        "S49",
+        "S1",
+        "S2"
+      ],
+      "note_en": "Unverified: the 2026-03-15 and 2026-06-16 posts and the 197 sqm listing say 4; the May posts and the 190 sqm listing's description say 3, though that listing's feature list shows 4."
+    },
+    {
+      "label_en": "Parking and storage",
+      "label_he": "חניה ומחסן",
+      "value_en": "2 parking spaces; storage room (14 sqm on one listing)",
+      "value_he": "2 חניות; מחסן (14 מ״ר באחת המודעות)",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "note_en": "Likely: broker listing fields only; the parking count comes from Madlan's feature list, not from the Instagram captions."
+    },
+    {
+      "label_en": "Mamad and elevator",
+      "label_he": "ממ״ד ומעלית",
+      "value_en": "Mamad and elevator marked on both Madlan listings",
+      "value_he": "ממ״ד ומעלית מסומנים בשתי מודעות מדלן",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "note_en": "Likely: broker listing fields only."
+    },
+    {
+      "label_en": "Building",
+      "label_he": "הבניין",
+      "value_en": "New boutique building with a residents' gym; building year entered as 2022 or 2023",
+      "value_he": "בניין בוטיק חדש עם חדר כושר לדיירים; שנת בנייה שהוזנה: 2022 או 2023",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S43",
+        "S1",
+        "S2"
+      ],
+      "note_en": "Developer, completion certificate (Form 4), condominium registration and management fee not found."
+    },
+    {
+      "label_en": "Specification",
+      "label_he": "מפרט",
+      "value_en": "Kitchen with premium appliances and a hidden refrigerator; master suite; very large living room; custom carpentry; children's wing with a sea-view balcony; VRF air conditioning; open views over Tel Aviv",
+      "value_he": "מטבח מאובזר במוצרי חשמל יוקרתיים ומקרר אינטגרלי מוסתר; סוויטת הורים; סלון גדול במיוחד; נגרות בהתאמה אישית; אגף ילדים עם מרפסת צופה לים; מיזוג VRF; נוף פתוח לכל תל אביב",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S43",
+        "S44",
+        "S1"
+      ],
+      "note_en": "Unverified: broker marketing description only; no specification sheet or inspection seen."
+    },
+    {
+      "label_en": "Asking price in US dollars",
+      "label_he": "המחיר המבוקש בדולרים",
+      "value_en": "About USD 5.9 million",
+      "value_he": "כ-5.9 מיליון דולר",
+      "basis": "computed",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S37"
+      ],
+      "note_en": "18,000,000 / 3.0490 (Bank of Israel representative rate, 2026-09-15) = USD 5,903,575. Likely because it rests on the broker's price."
+    }
+  ],
+  "neighborhood_facts": [
+    {
+      "label_en": "Boundaries",
+      "label_he": "גבולות השכונה",
+      "value_en": "Rokach Blvd and Yarkon Park (south), Namir Rd (east), Shai Agnon St and the Sde Dov district (north), Ibn Gabirol (west)",
+      "value_he": "שדרות רוקח ופארק הירקון (דרום), דרך נמיר (מזרח), רחוב ש״י עגנון ורובע שדה דב (צפון), אבן גבירול (מערב)",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S6"
+      ],
+      "note_en": "Likely: one source, an independent planning tracker."
+    },
+    {
+      "label_en": "Character",
+      "label_he": "אופי השכונה",
+      "value_en": "Developed from the late 1980s, mostly in the 1990s and 2000s: 8-12 floor perimeter blocks around a central park, residential towers and boutique buildings, between Yarkon Park and Ramat Aviv",
+      "value_he": "שכונה שנבנתה מסוף שנות ה-80, בעיקר בשנות ה-90 וה-2000: בנייה היקפית בת 8 עד 12 קומות סביב פארק מרכזי, מגדלי מגורים ובנייני בוטיק, בין פארק הירקון לרמת אביב",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S4",
+        "S46"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Streets checked",
+      "label_he": "רחובות שנבדקו",
+      "value_en": "Meir Yaari, Biluya Maoz, Maurizio Vitale, Shai Agnon and Levi Eshkol all carry 2026 Kochav HaTzafon deals or listings",
+      "value_he": "ברחובות מאיר יערי, בילויה מעוז, מאוריציו ויטלה, ש״י עגנון ולוי אשכול נרשמו עסקאות או מודעות של כוכב הצפון ב-2026",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S4",
+        "S3"
+      ],
+      "note_en": "Shai Agnon is the northern boundary; some Shai Agnon addresses are labeled Sde Dov Eshkol on Madlan."
+    },
+    {
+      "label_en": "Yarkon Park",
+      "label_he": "פארק הירקון",
+      "value_en": "About 3,750 dunams including the Sportek sports complex; the neighborhood borders it along Rokach Blvd",
+      "value_he": "כ-3,750 דונם, כולל מתחם הספורטק; השכונה גובלת בו לאורך שדרות רוקח",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S26",
+        "S6"
+      ],
+      "note_en": "Likely: one source for the park area."
+    },
+    {
+      "label_en": "Tel Aviv Port",
+      "label_he": "נמל תל אביב",
+      "value_en": "220-dunam leisure complex beside the promenade and Yarkon Park, near the Reading terminal",
+      "value_he": "מתחם בילוי של 220 דונם לצד הטיילת ופארק הירקון, סמוך למסוף רדינג",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S27"
+      ],
+      "note_en": "Likely: one source. Distance from the building not computed: address unknown."
+    },
+    {
+      "label_en": "Shopping",
+      "label_he": "מסחר",
+      "value_en": "Two neighborhood shopping centers from the 1990s",
+      "value_he": "שני מרכזים מסחריים שכונתיים משנות ה-90",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S32"
+      ],
+      "note_en": "Likely: one local news source."
+    },
+    {
+      "label_en": "Reading power station",
+      "label_he": "תחנת הכוח רדינג",
+      "value_en": "The energy minister decided on 2024-01-30 to end electricity generation there; Reading D was shut in 2022 for about four years to remove asbestos. Operating status in 2026 not verified.",
+      "value_he": "שר האנרגיה החליט ב-30.1.2024 להפסיק את ייצור החשמל בתחנה; רדינג ד׳ הושבתה ב-2022 לכ-4 שנים לפינוי אסבסט. מצב הפעילות ב-2026 לא אומת.",
+      "basis": "source",
+      "confidence": "unverified",
+      "source_ids": [
+        "S28",
+        "S29",
+        "S30"
+      ],
+      "note_en": "project-tlv's news log for the station has no item after 2024-01-30."
+    },
+    {
+      "label_en": "Socioeconomic rating",
+      "label_he": "דירוג חברתי-כלכלי",
+      "value_en": "9 out of 10 on Madlan's index",
+      "value_he": "9 מתוך 10 במדד של מדלן",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S5"
+      ],
+      "note_en": "Likely: Madlan only."
+    },
+    {
+      "label_en": "Madlan planning notes",
+      "label_he": "הערות תכנון במדלן",
+      "value_en": "Light rail expected in the area around 2028; open views, including to the east, will be blocked",
+      "value_he": "רכבת קלה צפויה לפעול באזור בסביבות 2028; הנוף הפתוח, כולל למזרח, ייחסם",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S5"
+      ],
+      "note_en": "Likely: Madlan only; generic neighborhood notes, not specific to this building."
+    }
+  ],
+  "distances": [],
+  "schools": [
+    {
+      "name_en": "Kochav HaTzafon Elementary School",
+      "name_he": "בית הספר היסודי כוכב הצפון",
+      "level_en": "Elementary (1-6)",
+      "level_he": "יסודי (א-ו)",
+      "note_en": "State school in the neighborhood per Madlan, about 82 pupils per grade; registration zone for the building not verified",
+      "note_he": "בית ספר ממלכתי בשכונה לפי מדלן, כ-82 תלמידים בשכבה; אזור הרישום של הבניין לא אומת",
+      "source_ids": [
+        "S5"
+      ]
+    },
+    {
+      "name_en": "Ironi Kaf-Dalet (24), Amos Oz",
+      "name_he": "עירוני כ״ד, עמוס עוז",
+      "level_en": "Secondary (7-12)",
+      "level_he": "חטיבת ביניים ותיכון (ז-יב)",
+      "note_en": "Listed in the neighborhood by Madlan, about 47 pupils per grade; registration zone not verified",
+      "note_he": "מופיע בשכונה לפי מדלן, כ-47 תלמידים בשכבה; אזור הרישום לא אומת",
+      "source_ids": [
+        "S5"
+      ]
+    }
+  ],
+  "transport": [
+    {
+      "item_en": "Green Line light rail, Reading station",
+      "item_he": "הקו הירוק של הרכבת הקלה, תחנת רדינג",
+      "status_en": "under construction; southern section expected 2028 and full line 2030; Reading station to sit north of Rokach Blvd on the new Green Line bridge (covered station, 12 m high)",
+      "status_he": "בביצוע; הקטע הדרומי צפוי ב-2028 והקו המלא ב-2030; תחנת רדינג תוקם מצפון לשדרות רוקח על גשר הקו הירוק (תחנה מקורה בגובה 12 מ׳)",
+      "source_ids": [
+        "S10",
+        "S5"
+      ]
+    },
+    {
+      "item_en": "Rokach - Levi Eshkol pedestrian and cycle bridge into Yarkon Park",
+      "item_he": "גשר הולכי רגל ואופניים רוקח - לוי אשכול לפארק הירקון",
+      "status_en": "under construction since summer 2026, opening expected 2027; about 170 m long and 6 m wide, accessible without elevators",
+      "status_he": "בביצוע מקיץ 2026, פתיחה צפויה ב-2027; אורך כ-170 מ׳ ורוחב 6 מ׳, נגיש ללא מעליות",
+      "source_ids": [
+        "S7",
+        "S8",
+        "S9"
+      ]
+    },
+    {
+      "item_en": "Yarkon pedestrian and cycle bridge (Yarkon Park to Ibn Gabirol)",
+      "item_he": "גשר הולכי רגל ואופניים מעל הירקון (פארק הירקון לאבן גבירול)",
+      "status_en": "operating, opened May 2026; 180 m by 6 m",
+      "status_he": "פעיל, נפתח במאי 2026; 180 מ׳ על 6 מ׳",
+      "source_ids": [
+        "S10"
+      ]
+    }
+  ],
+  "planning_future": [
+    {
+      "item_en": "Rokach - Levi Eshkol bridge (plan TA/MK/4728)",
+      "item_he": "גשר רוקח - לוי אשכול (תכנית תא/מק/4728)",
+      "impact_en": "Direct walking and cycling link from Levi Eshkol St into Yarkon Park from 2027; works on Rokach Blvd until then. Approved in January 2022 with NIS 35 million allocated; the 2025 report gave 42 m (likely the main span) against about 170 m in 2026. A second section over the Yarkon is planned.",
+      "impact_he": "חיבור ישיר להולכי רגל ולרוכבי אופניים מרחוב לוי אשכול לפארק הירקון החל מ-2027; עבודות בשדרות רוקח עד אז. אושר בינואר 2022 עם הקצאה של 35 מיליון ש״ח; דיווח מ-2025 ציין 42 מ׳ (כנראה המפתח הראשי) לעומת כ-170 מ׳ בדיווח מ-2026. מתוכנן גם מקטע שני מעל הירקון.",
+      "source_ids": [
+        "S7",
+        "S8",
+        "S9"
+      ]
+    },
+    {
+      "item_en": "Seminar HaKibbutzim project, Rokach Blvd corner Namir Rd",
+      "item_he": "פרויקט סמינר הקיבוצים, פינת שדרות רוקח ודרך נמיר",
+      "impact_en": "About 55 dunams: three 28-floor towers with 450 units and three 6-floor buildings along Maurizio Vitale St, up to 1,550 sqm of commerce and 4,600 sqm of public buildings. First phase (134 units and a new college building) about 5 years; financing of about NIS 1.7 billion. Years of works and new high-rise massing at the neighborhood's south-east corner.",
+      "impact_he": "כ-55 דונם: שלושה מגדלים בני 28 קומות עם 450 יחידות דיור ושלושה מבנים בני 6 קומות לאורך רחוב מאוריציו ויטלה, עד 1,550 מ״ר מסחר ו-4,600 מ״ר מבני ציבור. שלב ראשון (134 יחידות ובניין מכללה חדש) כ-5 שנים; מימון של כ-1.7 מיליארד ש״ח. צפויות שנים של עבודות ובינוי רב קומות בפינה הדרום מזרחית של השכונה.",
+      "source_ids": [
+        "S11"
+      ]
+    },
+    {
+      "item_en": "Sde Dov district towers",
+      "item_he": "מגדלי רובע שדה דב",
+      "impact_en": "The center plan (objections rejected 2025-02-03) has 7,128 units in towers of 20 and 45 floors; most district apartments are expected in about 3-6 years. Depending on the unit's orientation, towers to the north and north-west could affect the sea view from the children's wing.",
+      "impact_he": "בתכנית המרכז (ההתנגדויות נדחו ב-3.2.2025) 7,128 יחידות דיור במגדלים בני 20 ו-45 קומות; רוב הדירות ברובע צפויות להיות מוכנות בתוך כ-3 עד 6 שנים. בהתאם לכיווני הדירה, מגדלים מצפון ומצפון מערב עשויים להשפיע על הנוף לים מאגף הילדים.",
+      "source_ids": [
+        "S15",
+        "S13"
+      ]
+    },
+    {
+      "item_en": "Green Line light rail",
+      "item_he": "הקו הירוק",
+      "impact_en": "Better rail access from the Reading station north of Rokach Blvd once open (southern section 2028, full line 2030); construction around Rokach and the Yarkon until then.",
+      "impact_he": "שיפור בנגישות לרכבת מתחנת רדינג שמצפון לשדרות רוקח לאחר הפתיחה (הקטע הדרומי 2028, הקו המלא 2030); עבודות באזור רוקח והירקון עד אז.",
+      "source_ids": [
+        "S10"
+      ]
+    },
+    {
+      "item_en": "Reading power station site",
+      "item_he": "אתר תחנת הכוח רדינג",
+      "impact_en": "Generation to end under the 2024 decision, with part of the site going to civilian use and beach and the rest kept for storage and an undersea cable link; a conservation plan converts Reading A into a museum, visitor center and event space. Timing not verified.",
+      "impact_he": "ייצור החשמל אמור להיפסק לפי החלטת 2024, חלק מהשטח יועבר לשימוש אזרחי ולחוף והיתר ישמש לאגירה ולחיבור כבל תת ימי; תכנית שימור מסבה את רדינג א׳ למוזיאון, מרכז מבקרים וחלל אירועים. לוחות הזמנים לא אומתו.",
+      "source_ids": [
+        "S28",
+        "S30"
+      ]
+    }
+  ],
+  "market_stats": [
+    {
+      "metric_en": "Average price per sqm, Kochav HaTzafon",
+      "metric_he": "מחיר ממוצע למ״ר, כוכב הצפון",
+      "value_en": "About NIS 49,000-51,000; new projects along and around Shai Agnon reach NIS 90,000 and more",
+      "value_he": "כ-49,000 עד 51,000 ש״ח; בפרויקטים חדשים לאורך ש״י עגנון ובסביבתו עד 90,000 ש״ח ויותר",
+      "as_of": "2026-07",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "metric_en": "Typical prices",
+      "metric_he": "מחירים אופייניים",
+      "value_en": "4-room apartment about NIS 4.9 million; new 4-5 room units offered from about NIS 5.39 million",
+      "value_he": "דירת 4 חדרים כ-4.9 מיליון ש״ח; דירות 4 ו-5 חדרים חדשות מוצעות החל מכ-5.39 מיליון ש״ח",
+      "as_of": "2026-07",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "metric_en": "Average rent and gross yield",
+      "metric_he": "שכר דירה ממוצע ותשואה",
+      "value_en": "About NIS 13,900 per month; gross yield about 3%",
+      "value_he": "כ-13,900 ש״ח לחודש; תשואה ברוטו של כ-3%",
+      "as_of": "2026-07",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "metric_en": "Madlan neighborhood averages",
+      "metric_he": "ממוצעים שכונתיים במדלן",
+      "value_en": "Purchase NIS 5,050,000; rent NIS 14,700 per month",
+      "value_he": "רכישה 5,050,000 ש״ח; שכירות 14,700 ש״ח לחודש",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S5"
+      ]
+    },
+    {
+      "metric_en": "Median deal price, early 2023 to October 2025",
+      "metric_he": "מחיר עסקה חציוני, תחילת 2023 עד אוקטובר 2025",
+      "value_en": "NIS 6.1 million, 4th highest neighborhood in Israel (Eshkol, most likely the Sde Dov Eshkol compound, first at NIS 7.2 million)",
+      "value_he": "6.1 מיליון ש״ח, המקום הרביעי בארץ (אשכול, ככל הנראה מתחם אשכול בשדה דב, ראשונה עם 7.2 מיליון ש״ח)",
+      "as_of": "2025-10",
+      "source_ids": [
+        "S31"
+      ]
+    },
+    {
+      "metric_en": "Sde Dov new-build benchmark",
+      "metric_he": "רף מחירים בבנייה חדשה בשדה דב",
+      "value_en": "Average NIS 79,000-85,000 per sqm; a floor-15 penthouse above NIS 103,000 per sqm; penthouses about 30% above standard units (collaboration content)",
+      "value_he": "ממוצע 79,000 עד 85,000 ש״ח למ״ר; פנטהאוז בקומה 15 מעל 103,000 ש״ח למ״ר; פנטהאוזים יקרים בכ-30% מדירות רגילות (תוכן בשיתוף מסחרי)",
+      "as_of": "2026-02",
+      "source_ids": [
+        "S13"
+      ]
+    },
+    {
+      "metric_en": "This unit against the neighborhood average",
+      "metric_he": "הנכס ביחס לממוצע השכונתי",
+      "value_en": "NIS 91,371-94,737 per built sqm is about 1.8 to 1.9 times the NIS 49,000-51,000 average (computed: 91,371 / 51,000 and 94,737 / 49,000)",
+      "value_he": "91,371 עד 94,737 ש״ח למ״ר בנוי, פי 1.8 עד 1.9 מהממוצע של 49,000 עד 51,000 ש״ח (חישוב)",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4"
+      ]
+    },
+    {
+      "metric_en": "How terraces are weighted",
+      "metric_he": "שקלול שטחי מרפסות",
+      "value_en": "Globes valued a 2025 Levi Eshkol penthouse at NIS 35,300 per sqm counting half the terrace area and NIS 38,800 counting one third, which it said is done in other methods",
+      "value_he": "גלובס חישב לפנטהאוז בשדרות לוי אשכול (2025) כ-35,300 ש״ח למ״ר בשקלול מחצית משטח המרפסות וכ-38,800 ש״ח בשקלול שליש, כפי שנעשה לדבריו בשיטות אחרות",
+      "as_of": "2025-07",
+      "source_ids": [
+        "S12"
+      ]
+    },
+    {
+      "metric_en": "Deals of NIS 10 million and more",
+      "metric_he": "עסקאות של 10 מיליון ש״ח ומעלה",
+      "value_en": "635 in Israel in 2025, 60% of them in Tel Aviv",
+      "value_he": "635 עסקאות בארץ ב-2025, 60% מהן בתל אביב",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S40"
+      ]
+    },
+    {
+      "metric_en": "Unsold new apartments, Tel Aviv",
+      "metric_he": "מלאי דירות חדשות לא מכורות, תל אביב",
+      "value_en": "9,725",
+      "value_he": "9,725",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S39"
+      ]
+    },
+    {
+      "metric_en": "CBS price index, Tel Aviv district",
+      "metric_he": "מדד מחירי הדירות של הלמ״ס, מחוז תל אביב",
+      "value_en": "+0.7% in June-July 2026; -0.9% year on year",
+      "value_he": "עלייה של 0.7% ביוני-יולי 2026; ירידה של 0.9% בשנה",
+      "as_of": "2026-07",
+      "source_ids": [
+        "S38"
+      ]
+    },
+    {
+      "metric_en": "CBS resale price index, Tel Aviv",
+      "metric_he": "מדד מחירי דירות יד שנייה של הלמ״ס, תל אביב",
+      "value_en": "-2.0% in Q2 2026 against Q1",
+      "value_he": "ירידה של 2.0% ברבעון השני של 2026 לעומת הרבעון הראשון",
+      "as_of": "2026-06",
+      "source_ids": [
+        "S41"
+      ]
+    }
+  ],
+  "sale_comps": [
+    {
+      "date": "2026-07 (reported 2026-07-29, deal date not given)",
+      "where_en": "Shai Agnon 40, Kochav HaTzafon",
+      "where_he": "ש״י עגנון 40, כוכב הצפון",
+      "rooms": "5",
+      "sqm": 133.5,
+      "floor": 5,
+      "price_nis": 10050000,
+      "price_per_sqm_nis": 75281,
+      "kind": "transaction",
+      "source_ids": [
+        "S4",
+        "S1"
+      ],
+      "note_en": "Floor 5 of 15. Price per sqm computed. Madlan shows building years 2029-2030 for other 2026 deals at this address, which suggests an off-plan project (inference)."
+    },
+    {
+      "date": "2026-07 (reported 2026-07-29, deal date not given)",
+      "where_en": "Levi Eshkol 16, Kochav HaTzafon",
+      "where_he": "לוי אשכול 16, כוכב הצפון",
+      "rooms": "7",
+      "sqm": 135,
+      "floor": 16,
+      "price_nis": 10000000,
+      "price_per_sqm_nis": 74074,
+      "kind": "transaction",
+      "source_ids": [
+        "S4"
+      ],
+      "note_en": "Floor 16 of 23; room count as published. Price per sqm computed."
+    },
+    {
+      "date": "2026-07 (reported 2026-07-29, deal date not given)",
+      "where_en": "Maurizio Vitale 3, Kochav HaTzafon",
+      "where_he": "מאוריציו ויטלה 3, כוכב הצפון",
+      "rooms": "4",
+      "sqm": 121,
+      "floor": 1,
+      "price_nis": 7100000,
+      "price_per_sqm_nis": 58678,
+      "kind": "transaction",
+      "source_ids": [
+        "S4"
+      ],
+      "note_en": "Floor 1 of 7. Price per sqm computed."
+    },
+    {
+      "date": "2026-07-12",
+      "where_en": "Seminar HaKibbutzim project, Kochav HaTzafon",
+      "where_he": "פרויקט סמינר הקיבוצים, כוכב הצפון",
+      "rooms": "4",
+      "sqm": 126,
+      "floor": null,
+      "price_nis": 9550000,
+      "price_per_sqm_nis": 75793,
+      "kind": "transaction",
+      "source_ids": [
+        "S5",
+        "S1"
+      ],
+      "note_en": "Off-plan (Madlan building year 2032). Madlan row read by an automated extractor; verify on nadlan.gov.il."
+    },
+    {
+      "date": "2026-07-09",
+      "where_en": "Levi Eshkol St (house number unclear), listed by Madlan under Kochav HaTzafon",
+      "where_he": "רחוב לוי אשכול (מספר הבית לא ברור), במדלן תחת כוכב הצפון",
+      "rooms": "4.5",
+      "sqm": 125,
+      "floor": 13,
+      "price_nis": 10000000,
+      "price_per_sqm_nis": 80000,
+      "kind": "transaction",
+      "source_ids": [
+        "S5",
+        "S1"
+      ],
+      "note_en": "Madlan building year 2032, so likely off-plan. House number read as 1 or 149; floor read as 13. Verify on nadlan.gov.il."
+    },
+    {
+      "date": "2026-07-14",
+      "where_en": "Isaac Stern 18, Lamed HaHadasha",
+      "where_he": "יצחק שטרן 18, ל׳ החדשה",
+      "rooms": "5",
+      "sqm": 123,
+      "floor": 6,
+      "price_nis": 7550000,
+      "price_per_sqm_nis": 61382,
+      "kind": "transaction",
+      "source_ids": [
+        "S24"
+      ],
+      "note_en": "Off-plan (Madlan building year 2029). A second deal there on 2026-07-09: 5 rooms, 126 sqm, floor 3, NIS 7,280,000 (NIS 57,778 per sqm). Verify on nadlan.gov.il."
+    },
+    {
+      "date": "2025-07 (reported 2025-07-13)",
+      "where_en": "Levi Eshkol Blvd, Plan Lamed: penthouse in a building about 40 years old",
+      "where_he": "שדרות לוי אשכול, תכנית ל׳: פנטהאוז בבניין כבן 40",
+      "rooms": null,
+      "sqm": 165,
+      "floor": 7,
+      "price_nis": 7950000,
+      "price_per_sqm_nis": 48182,
+      "kind": "transaction",
+      "source_ids": [
+        "S12"
+      ],
+      "note_en": "Top floor (7 of 7), 120 sqm of terraces, no mamad; first asked NIS 10.5 million. NIS 48,182 per built sqm computed; Globes gives NIS 35,300 with half the terraces and NIS 38,800 with one third."
+    },
+    {
+      "date": "2025-12 (reported 2025-12-18)",
+      "where_en": "Hagag FIRST tower, Sde Dov",
+      "where_he": "מגדל FIRST של חגג, שדה דב",
+      "rooms": null,
+      "sqm": 260,
+      "floor": 39,
+      "price_nis": 31041000,
+      "price_per_sqm_nis": 119388,
+      "kind": "transaction",
+      "source_ids": [
+        "S14"
+      ],
+      "note_en": "Developer sale of a large upper-floor unit (about 260 sqm). Other deals in the same report: floor 43, about 250 sqm, NIS 27,560,000 (NIS 110,240 per sqm); floor 38, about 390 sqm, NIS 42,010,000 (NIS 107,718 per sqm). Price per sqm computed."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Sportek TLV towers (Hagag Group), Levi Eshkol St, Kochav HaTzafon",
+      "where_he": "מגדלי ספורטק TLV (קבוצת חגג), רחוב לוי אשכול, כוכב הצפון",
+      "rooms": "6",
+      "sqm": 192,
+      "floor": 20,
+      "price_nis": 20000000,
+      "price_per_sqm_nis": 104167,
+      "kind": "asking",
+      "source_ids": [
+        "S22"
+      ],
+      "note_en": "New duplex-loft, floor 20 of 25, views to Yarkon Park and the sea."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Levi Eshkol St, Kochav HaTzafon: new duplex",
+      "where_he": "רחוב לוי אשכול, כוכב הצפון: דופלקס חדש",
+      "rooms": "6.5",
+      "sqm": 200,
+      "floor": 2,
+      "price_nis": 15500000,
+      "price_per_sqm_nis": 77500,
+      "kind": "asking",
+      "source_ids": [
+        "S21"
+      ],
+      "note_en": "New from the developer, 55 sqm balcony, reduced from NIS 16,500,000. Floor read as 2 of 25; verify."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Kochav HaTzafon: penthouse duplex (Boney HaIr St)",
+      "where_he": "כוכב הצפון: פנטהאוז דופלקס (רחוב בוני העיר)",
+      "rooms": "5",
+      "sqm": 157,
+      "floor": null,
+      "price_nis": 12500000,
+      "price_per_sqm_nis": 79618,
+      "kind": "asking",
+      "source_ids": [
+        "S48",
+        "S3"
+      ],
+      "note_en": "Renovated, full sea view, extra building rights on the roof per the listing; floor and terrace size not read reliably."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Shai Agnon 28, Kochav HaTzafon (the Philharmonic project per a Madlan rental listing at this address)",
+      "where_he": "ש״י עגנון 28, כוכב הצפון (פרויקט הפילהרמונית לפי מודעת השכרה במדלן באותה כתובת)",
+      "rooms": "4",
+      "sqm": 130,
+      "floor": 3,
+      "price_nis": 11900000,
+      "price_per_sqm_nis": 91538,
+      "kind": "asking",
+      "source_ids": [
+        "S3",
+        "S19"
+      ],
+      "note_en": "Listing card only; the listing page did not open. New project with pool, spa and gym per the rental listing. Treat as indicative."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Meir Yaari St, Kochav HaTzafon: penthouse duplex",
+      "where_he": "רחוב מאיר יערי, כוכב הצפון: פנטהאוז דופלקס",
+      "rooms": "5",
+      "sqm": 207,
+      "floor": 7,
+      "price_nis": 10450000,
+      "price_per_sqm_nis": 50483,
+      "kind": "asking",
+      "source_ids": [
+        "S20"
+      ],
+      "note_en": "Floors 7-8 of 8, 37 sqm terrace, 3 parking spaces, renovated, mamad still in the permit process; view to Yarkon Park. Older building."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Savyonei Ramat Aviv, Kochav HaTzafon: mini penthouse",
+      "where_he": "סביוני רמת אביב, כוכב הצפון: מיני פנטהאוז",
+      "rooms": "5.5",
+      "sqm": 135,
+      "floor": 11,
+      "price_nis": 10500000,
+      "price_per_sqm_nis": 77778,
+      "kind": "asking",
+      "source_ids": [
+        "S47"
+      ],
+      "note_en": "Converted to 3.5 rooms, 15 sqm balcony, floor 11 of 21, sea view. Per sqm computed on the 135 sqm in the description; Madlan shows NIS 70,000 on 150 sqm."
+    },
+    {
+      "date": "2025-04 (reported 2025-04-22)",
+      "where_en": "25-floor tower, Kochav HaTzafon: full-floor penthouse",
+      "where_he": "מגדל בן 25 קומות, כוכב הצפון: פנטהאוז בקומה שלמה",
+      "rooms": "4 bedrooms",
+      "sqm": 180,
+      "floor": null,
+      "price_nis": 37000000,
+      "price_per_sqm_nis": 205556,
+      "kind": "asking",
+      "source_ids": [
+        "S23"
+      ],
+      "note_en": "About 180 sqm built plus about 180 sqm of terraces with a pool; asking about USD 10 million. Per sqm computed on built area only."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Sde Dov Eshkol: 5-room apartment",
+      "where_he": "שדה דב אשכול: דירת 5 חדרים",
+      "rooms": "5",
+      "sqm": 146,
+      "floor": 10,
+      "price_nis": 9200000,
+      "price_per_sqm_nis": 63014,
+      "kind": "asking",
+      "source_ids": [
+        "S25"
+      ],
+      "note_en": "Listing card only (not opened). Other 5-room cards: floor 28, 132 sqm, NIS 9,000,000 (NIS 68,182); floor 2, 150 sqm, NIS 9,500,000 (NIS 63,333)."
+    }
+  ],
+  "rent_comps": [
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Savyonei Ramat Aviv, Kochav HaTzafon: mini penthouse",
+      "where_he": "סביוני רמת אביב, כוכב הצפון: מיני פנטהאוז",
+      "rooms": "5.5",
+      "sqm": 280,
+      "rent_nis": 37500,
+      "rent_per_sqm_nis": 133.9,
+      "kind": "asking",
+      "source_ids": [
+        "S17",
+        "S16"
+      ],
+      "note_en": "Floor 5 of 6, high-end finish, 2 parking. The 280 sqm appears to include terraces (read as 220 + 60 sqm); per sqm computed on 280."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Meir Yaari St, Kochav HaTzafon: penthouse",
+      "where_he": "רחוב מאיר יערי, כוכב הצפון: פנטהאוז",
+      "rooms": "4",
+      "sqm": 165,
+      "rent_nis": 25000,
+      "rent_per_sqm_nis": 151.5,
+      "kind": "asking",
+      "source_ids": [
+        "S18",
+        "S16"
+      ],
+      "note_en": "Floor 9 of 9, plus 35 sqm balcony, renovated, 3 parking, 2 storage rooms. Per sqm on built area."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Kochav HaTzafon: 5.5-room apartment",
+      "where_he": "כוכב הצפון: דירת 5.5 חדרים",
+      "rooms": "5.5",
+      "sqm": 230,
+      "rent_nis": 27000,
+      "rent_per_sqm_nis": 117.4,
+      "kind": "asking",
+      "source_ids": [
+        "S16"
+      ],
+      "note_en": "Floor 3; listing card only."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Kochav HaTzafon: penthouse",
+      "where_he": "כוכב הצפון: פנטהאוז",
+      "rooms": "5",
+      "sqm": 130,
+      "rent_nis": 18000,
+      "rent_per_sqm_nis": 138.5,
+      "kind": "asking",
+      "source_ids": [
+        "S16"
+      ],
+      "note_en": "Floor 6; listing card only."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Abba Kovner 13, Kochav HaTzafon: penthouse",
+      "where_he": "אבא קובנר 13, כוכב הצפון: פנטהאוז",
+      "rooms": "5.5",
+      "sqm": 160,
+      "rent_nis": 15000,
+      "rent_per_sqm_nis": 93.8,
+      "kind": "asking",
+      "source_ids": [
+        "S16"
+      ],
+      "note_en": "Floor 6; listing card only."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Philharmonic project, Shai Agnon 28, Kochav HaTzafon",
+      "where_he": "פרויקט הפילהרמונית, ש״י עגנון 28, כוכב הצפון",
+      "rooms": "4",
+      "sqm": 103,
+      "rent_nis": 21300,
+      "rent_per_sqm_nis": 206.8,
+      "kind": "asking",
+      "source_ids": [
+        "S19"
+      ],
+      "note_en": "New project with pool, spa, gym and 24/7 guard; fully furnished; 16 sqm balcony; floor 6 of 10."
+    }
+  ],
+  "costs": [
+    {
+      "item_en": "Asking price",
+      "item_he": "מחיר מבוקש",
+      "value_en": "NIS 18,000,000",
+      "value_he": "18,000,000 ש״ח",
+      "basis": "broker",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "note_en": "From the broker's Madlan listings."
+    },
+    {
+      "item_en": "Purchase tax, single apartment of an Israeli resident",
+      "item_he": "מס רכישה, דירה יחידה לתושב ישראל",
+      "value_en": "About NIS 1,153,886 (6.41%)",
+      "value_he": "כ-1,153,886 ש״ח (6.41%)",
+      "basis": "computed",
+      "source_ids": [
+        "S34",
+        "S1"
+      ],
+      "note_en": "0% to NIS 1,978,745; 3.5% to 2,347,040; 5% to 6,055,070; 8% to 20,183,565; brackets frozen until 2028-01-15. Computed on NIS 18,000,000. Not tax advice."
+    },
+    {
+      "item_en": "Purchase tax, additional apartment or foreign resident",
+      "item_he": "מס רכישה, דירה נוספת או תושב חוץ",
+      "value_en": "About NIS 1,678,899 (9.33%)",
+      "value_he": "כ-1,678,899 ש״ח (9.33%)",
+      "basis": "computed",
+      "source_ids": [
+        "S34",
+        "S35",
+        "S1"
+      ],
+      "note_en": "8% up to NIS 6,055,070 and 10% above. The temporary order runs to the end of 2026, with an automatic extension into February 2027 because of the election period (Globes)."
+    },
+    {
+      "item_en": "Arnona, illustration",
+      "item_he": "ארנונה, המחשה",
+      "value_en": "About NIS 20,700-27,500 per year on 190-197 sqm, before balconies",
+      "value_he": "כ-20,700 עד 27,500 ש״ח בשנה על 190 עד 197 מ״ר, ללא מרפסות",
+      "basis": "computed",
+      "source_ids": [
+        "S33"
+      ],
+      "note_en": "2026 residential rates for units over 140 sqm, building code אא: zone 1 NIS 139.60 and zone 2 NIS 108.98 per sqm per year (secondary source). The zone for the address, the building code and whether balconies are charged are not verified; adding 80 sqm of balconies at the zone 1 rate gives about NIS 38,700."
+    }
+  ],
+  "risks": [
+    {
+      "en": "Price: the NIS 18 million asking price equals NIS 91,371-94,737 per built sqm, at or above the NIS 90,000-plus level Bizportal reports for new projects in the neighborhood and about 1.8 to 1.9 times the neighborhood average. No 2025-2026 mini-penthouse transaction in Kochav HaTzafon was found to test it.",
+      "he": "מחיר: המחיר המבוקש של 18 מיליון ש״ח משקף 91,371 עד 94,737 ש״ח למ״ר בנוי, ברמה שביזפורטל מדווח לפרויקטים חדשים בשכונה (90,000 ש״ח ויותר) או מעליה ופי 1.8 עד 1.9 מהממוצע השכונתי. לא נמצאה עסקת מיני פנטהאוז בכוכב הצפון מ-2025 עד 2026 שמאפשרת לבחון אותו.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4"
+      ]
+    },
+    {
+      "en": "Financing: appraisers may count the 76-80 sqm of terraces at one half or one third of their area, so a bank appraisal can come in below the asking price. Mortgage caps are 75% of value for a single apartment, 70% for a replacement apartment and 50% for an investment property, the category that covers buyers who are not Israeli citizens under the directive's definitions.",
+      "he": "מימון: שמאים עשויים לשקלל את 76 עד 80 מ״ר המרפסות במחצית או בשליש משטחן, ולכן שומת הבנק עלולה להיות נמוכה מהמחיר המבוקש. שיעור המימון המרבי הוא 75% לדירה יחידה, 70% לדירה חלופית ו-50% לדירה להשקעה, הקטגוריה שחלה לפי הגדרות ההוראה גם על רוכש שאינו אזרח ישראלי.",
+      "source_ids": [
+        "S12",
+        "S36"
+      ]
+    },
+    {
+      "en": "Views: Sde Dov towers of up to 45 floors to the north and north-west, three 28-floor Seminar HaKibbutzim towers at Rokach and Namir, and Madlan's note that open views to the east will be blocked all bear on the promised sea view and open views over the city. The effect depends on the unit's exposures, which are not verified.",
+      "he": "נוף: מגדלי שדה דב בני עד 45 קומות מצפון ומצפון מערב, שלושת מגדלי סמינר הקיבוצים בני 28 קומות בפינת רוקח ונמיר, והערת מדלן שהנוף הפתוח למזרח ייחסם, כולם רלוונטיים לנוף לים ולנוף הפתוח לעיר שמובטחים בפרסום. ההשפעה תלויה בכיווני הדירה, שלא אומתו.",
+      "source_ids": [
+        "S15",
+        "S11",
+        "S5"
+      ]
+    },
+    {
+      "en": "Construction nearby for years: the Rokach bridge until 2027, Green Line works until 2028 (southern section) and 2030 (full line), Seminar HaKibbutzim's first phase over about 5 years and Sde Dov deliveries over about 3-6 years.",
+      "he": "עבודות בנייה בסביבה לאורך שנים: גשר רוקח עד 2027, עבודות הקו הירוק עד 2028 (הקטע הדרומי) ו-2030 (הקו המלא), השלב הראשון בסמינר הקיבוצים כ-5 שנים ומסירות בשדה דב בתוך כ-3 עד 6 שנים.",
+      "source_ids": [
+        "S7",
+        "S10",
+        "S11",
+        "S13"
+      ]
+    },
+    {
+      "en": "Conflicting unit data: 190 vs 197 vs about 200 sqm built, 76 vs 80 sqm of terraces, 3 vs 4 exposures, building year 2022 vs 2023, and two Madlan listings that may describe one unit or two.",
+      "he": "נתונים סותרים על הדירה: 190, 197 או כ-200 מ״ר בנוי, 76 או 80 מ״ר מרפסות, 3 או 4 כיווני אוויר, שנת בנייה 2022 או 2023, ושתי מודעות במדלן שעשויות לתאר דירה אחת או שתיים.",
+      "source_ids": [
+        "S43",
+        "S44",
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "en": "Market softness: the CBS resale index for Tel Aviv fell 2.0% in Q2 2026, the district index is down 0.9% year on year, and Tel Aviv holds 9,725 unsold new apartments.",
+      "he": "חולשה בשוק: מדד דירות יד שנייה של הלמ״ס בתל אביב ירד ב-2.0% ברבעון השני של 2026, מדד המחוז ירד ב-0.9% בשנה, ובתל אביב 9,725 דירות חדשות שלא נמכרו.",
+      "source_ids": [
+        "S41",
+        "S38",
+        "S39"
+      ]
+    },
+    {
+      "en": "Tax: a buyer who already owns a home, or a foreign resident, pays about NIS 1.68 million in purchase tax at the asking price, against about NIS 1.15 million for a single-apartment resident, and the investor rates are under a temporary order due for a decision by early 2027.",
+      "he": "מס: רוכש שכבר מחזיק בדירה, או תושב חוץ, ישלם כ-1.68 מיליון ש״ח מס רכישה לפי המחיר המבוקש, לעומת כ-1.15 מיליון ש״ח לתושב בדירה יחידה, ושיעורי המס למשקיעים נקבעים בהוראת שעה שעתידה להיבחן עד תחילת 2027.",
+      "source_ids": [
+        "S34",
+        "S35"
+      ]
+    }
+  ],
+  "buyer_or_renter_questions": [
+    {
+      "en": "What is the exact address, block and parcel, and which developer built the building? Can we see the completion certificate (Form 4) and check condominium registration in the Land Registry?",
+      "he": "מהי הכתובת המדויקת, הגוש והחלקה, ומי היזם שבנה את הבניין? האם ניתן לראות טופס 4 ולבדוק את רישום הבית המשותף בטאבו?"
+    },
+    {
+      "en": "Do the two Madlan listings (190 sqm and 197 sqm, both NIS 18,000,000) describe the same unit? If there are two mini penthouses on floor 11, which one is this?",
+      "he": "האם שתי המודעות במדלן (190 מ״ר ו-197 מ״ר, שתיהן ב-18,000,000 ש״ח) מתארות את אותה דירה? אם יש שתי דירות מיני פנטהאוז בקומה 11, באיזו מהן מדובר?"
+    },
+    {
+      "en": "What are the built area, terrace areas (open and covered) and exposures in the permit plans, the sale contract appendix and the arnona bill?",
+      "he": "מהו השטח הבנוי, מהם שטחי המרפסות (פתוחות ומקורות) ומהם כיווני האוויר לפי תכניות ההיתר, נספח חוזה המכר וחשבון הארנונה?"
+    },
+    {
+      "en": "What is on floor 12 above the unit, and does anyone hold remaining building rights on the roof?",
+      "he": "מה נמצא בקומה 12 מעל הדירה, והאם למישהו יש זכויות בנייה נוספות על הגג?"
+    },
+    {
+      "en": "What are the monthly management fee (including the gym) and the annual arnona, and in which arnona zone and building code is the property?",
+      "he": "מהם דמי הניהול החודשיים (כולל חדר הכושר) והארנונה השנתית, ובאיזה אזור ארנונה וסיווג מבנה נמצא הנכס?"
+    },
+    {
+      "en": "Are the 2 parking spaces and the storage room registered or attached to the unit, and where are they?",
+      "he": "האם 2 החניות והמחסן רשומים או צמודים לדירה, והיכן הם ממוקמים?"
+    },
+    {
+      "en": "Which Sale (Apartments) Law inspection and warranty periods are still open, and have defects been reported to the developer?",
+      "he": "אילו תקופות בדק ואחריות לפי חוק המכר (דירות) עדיין בתוקף, והאם דווחו ליזם ליקויים?"
+    },
+    {
+      "en": "What can be built facing the children's wing sea-view balcony and the living room views (Sde Dov towers, Seminar HaKibbutzim)? Can the seller provide a planning check?",
+      "he": "מה עשוי להיבנות מול המרפסת הצופה לים באגף הילדים ומול הנוף מהסלון (מגדלי שדה דב, סמינר הקיבוצים)? האם המוכר יכול להציג בדיקה תכנונית?"
+    },
+    {
+      "en": "How did the seller's or buyer's appraiser weight the terraces, and is there a recent appraisal?",
+      "he": "כיצד שקלל השמאי של המוכר או של הקונה את שטחי המרפסות, והאם קיימת שומה עדכנית?"
+    },
+    {
+      "en": "Which elementary and secondary schools serve this address under the municipal registration zones?",
+      "he": "לאילו בתי ספר יסודיים ועל יסודיים משויכת הכתובת לפי אזורי הרישום של העירייה?"
+    }
+  ],
+  "gaps": [
+    {
+      "en": "Building address, developer and completion year not verified; the building-year field on Madlan is broker-entered and inconsistent (2022 vs 2023).",
+      "he": "כתובת הבניין, היזם ושנת הסיום לא אומתו; שנת הבנייה במדלן הוזנה על ידי המתווכת ואינה עקבית (2022 או 2023)."
+    },
+    {
+      "en": "Unclear whether the two Madlan listings are one unit or two; terrace split not read reliably.",
+      "he": "לא ברור אם שתי המודעות במדלן מתייחסות לדירה אחת או לשתיים; פירוט שטחי המרפסות לא נקרא באופן אמין."
+    },
+    {
+      "en": "No 2025-2026 recorded sale of a mini penthouse or penthouse in Kochav HaTzafon was found; nadlan.gov.il could not be used and Madlan tables were read by an automated extractor.",
+      "he": "לא נמצאה עסקה רשומה של מיני פנטהאוז או פנטהאוז בכוכב הצפון בשנים 2025 עד 2026; לא ניתן היה להשתמש באתר nadlan.gov.il וטבלאות מדלן נקראו באמצעות כלי אוטומטי."
+    },
+    {
+      "en": "No distances computed: the address is unknown and no coordinate source could be reached.",
+      "he": "לא חושבו מרחקים: הכתובת אינה ידועה ולא נמצא מקור קואורדינטות נגיש."
+    },
+    {
+      "en": "Management fee, arnona zone and building code, and school registration zones not found.",
+      "he": "דמי הניהול, אזור הארנונה וסיווג המבנה, ואזורי הרישום לבתי הספר לא נמצאו."
+    },
+    {
+      "en": "Reading power station operating status in 2026 not verified.",
+      "he": "מצב הפעילות של תחנת הכוח רדינג ב-2026 לא אומת."
+    },
+    {
+      "en": "Rent comps are asking prices from listings, several read from listing cards only; no reported mini-penthouse lease in the neighborhood was found.",
+      "he": "נתוני השכירות הם מחירים מבוקשים ממודעות, חלקם מכרטיסי מודעה בלבד; לא נמצאה עסקת שכירות מדווחת של מיני פנטהאוז בשכונה."
+    }
+  ],
+  "access_notes": [
+    "The session's web search quota was already used up (200 of 200), so no new web searches were run. Research relied on known URLs, links followed from them and portal listing pages.",
+    "Madlan pages were read through an automated text extractor. Listing cards and single listings read consistently, but transaction tables mixed columns (rooms, floor, house number); only figures that were internally consistent (price = sqm x price per sqm) are used, and they are flagged for checking on nadlan.gov.il.",
+    "One attempt to download a Madlan listing directly (to read exact balcony figures) returned HTTP 403; no other method was tried.",
+    "nominatim.openstreetmap.org and overpass-api.de were disallowed by robots rules and wikidata.org was cache-only, so no sourced coordinates were available and no straight-line distances were computed.",
+    "Yad2 pages did not expose neighborhood IDs, so Yad2 was not used to look for this unit.",
+    "Carried over from the existing research: nadlan.gov.il returned no data (JavaScript only), tel-aviv.gov.il returned HTTP 472, mavat.iplan.gov.il was not reached, Wikipedia was blocked and TheMarker was blocked by robots rules."
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Madlan listing: mini penthouse for sale, Kochav HaTzafon (agent Meital Katzir, license 3131540), 190 sqm",
+      "url": "https://www.madlan.co.il/listings/HyD7KTqQUAu",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S2",
+      "title": "Madlan listing: penthouse / mini penthouse for sale, Kochav HaTzafon (agent Meital Katzir, license 3131540), 197 sqm",
+      "url": "https://www.madlan.co.il/listings/Bmt22LuUKmD",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S3",
+      "title": "Madlan: apartments for sale in Kochav HaTzafon (listing cards, pages 1-3)",
+      "url": "https://www.madlan.co.il/for-sale/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%9B%D7%95%D7%9B%D7%91-%D7%94%D7%A6%D7%A4%D7%95%D7%9F-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S4",
+      "title": "Bizportal: Kochav HaTzafon neighborhood prices and recent deals (Tzali Aharon)",
+      "url": "https://www.bizportal.co.il/realestates/news/article/20036084",
+      "published": "2026-07-29"
+    },
+    {
+      "id": "S5",
+      "title": "Madlan: Kochav HaTzafon neighborhood data (averages, transactions, schools, notes)",
+      "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%9B%D7%95%D7%9B%D7%91-%D7%94%D7%A6%D7%A4%D7%95%D7%9F-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S6",
+      "title": "project-tlv: Kochav HaTzafon neighborhood page (boundaries, projects, news)",
+      "url": "https://project-tlv.info/places/kochav-hatzafon/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S7",
+      "title": "ice: construction began on the Rokach - Levi Eshkol pedestrian and cycle bridge",
+      "url": "https://www.ice.co.il/realestate/news/article/1123845",
+      "published": "2026-08-03"
+    },
+    {
+      "id": "S8",
+      "title": "tlvonline: Rokach pedestrian bridge (approval, budget, dimensions)",
+      "url": "https://tlvonline.co.il/%D7%92%D7%A9%D7%A8-%D7%A8%D7%95%D7%A7%D7%97-%D7%9C%D7%94%D7%95%D7%9C%D7%9B%D7%99-%D7%A8%D7%92%D7%9C",
+      "published": "2025-01-28"
+    },
+    {
+      "id": "S9",
+      "title": "project-tlv: Levi Eshkol bridge project page (plan TA/MK/4728, design team)",
+      "url": "https://project-tlv.info/places/bridges/%d7%a4%d7%a8%d7%95%d7%99%d7%a7%d7%98-%d7%92%d7%a9%d7%a8-%d7%9c%d7%95%d7%99-%d7%90%d7%a9%d7%9b%d7%95%d7%9c/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S10",
+      "title": "ice: Green Line progress, new Yarkon pedestrian bridge and Reading station",
+      "url": "https://www.ice.co.il/realestate/news/article/1114193",
+      "published": "2026-05-25"
+    },
+    {
+      "id": "S11",
+      "title": "Calcalist: Seminar HaKibbutzim project financing and phasing (Giya Nardi)",
+      "url": "https://www.calcalist.co.il/real-estate/article/bkchfak4bx",
+      "published": "2025-12-29"
+    },
+    {
+      "id": "S12",
+      "title": "Globes: Levi Eshkol Blvd penthouse sold for NIS 7.95 million (Yuval Nisani)",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001515218",
+      "published": "2025-07-13"
+    },
+    {
+      "id": "S13",
+      "title": "Calcalist: Sde Dov prices and penthouses (collaboration content with Channel22)",
+      "url": "https://www.calcalist.co.il/article/r12n2qiowx",
+      "published": "2026-02-24"
+    },
+    {
+      "id": "S14",
+      "title": "Ynet: Hagag FIRST Sde Dov penthouse-level sales",
+      "url": "https://www.ynet.co.il/economy/article/sj7l5vzmwe",
+      "published": "2025-12-18"
+    },
+    {
+      "id": "S15",
+      "title": "nadlancenter: Sde Dov center plan objections rejected",
+      "url": "https://www.nadlancenter.co.il/article/11492",
+      "published": "2025-02-03"
+    },
+    {
+      "id": "S16",
+      "title": "Madlan: apartments for rent in Kochav HaTzafon (listing cards)",
+      "url": "https://www.madlan.co.il/for-rent/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%9B%D7%95%D7%9B%D7%91-%D7%94%D7%A6%D7%A4%D7%95%D7%9F-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S17",
+      "title": "Madlan listing: mini penthouse for rent, Savyonei Ramat Aviv, Kochav HaTzafon",
+      "url": "https://www.madlan.co.il/listings/g9vHR4E6PVv",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S18",
+      "title": "Madlan listing: penthouse for rent, Meir Yaari St, Kochav HaTzafon",
+      "url": "https://www.madlan.co.il/listings/8cnDyBl7aoU",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S19",
+      "title": "Madlan listing: 4-room apartment for rent in the Philharmonic project, Shai Agnon 28",
+      "url": "https://www.madlan.co.il/listings/mY6erL5LSBK",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S20",
+      "title": "Madlan listing: penthouse duplex for sale, Meir Yaari St, Kochav HaTzafon",
+      "url": "https://www.madlan.co.il/listings/epHrtMe8BdX",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S21",
+      "title": "Madlan listing: new duplex for sale, Levi Eshkol St, Kochav HaTzafon",
+      "url": "https://www.madlan.co.il/listings/bCwy7xYYpcM",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S22",
+      "title": "Madlan listing: duplex-loft for sale in Sportek TLV towers (Hagag), Levi Eshkol St",
+      "url": "https://www.madlan.co.il/listings/E7SfFF3aRBd",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S23",
+      "title": "tlvonline: penthouse in a 25-floor Kochav HaTzafon tower offered for about USD 10 million",
+      "url": "https://tlvonline.co.il/%D7%A4%D7%A0%D7%98%D7%94%D7%90%D7%95%D7%96-%D7%9B%D7%95%D7%9B%D7%91-%D7%94%D7%A6%D7%A4%D7%95%D7%9F/",
+      "published": "2025-04-22"
+    },
+    {
+      "id": "S24",
+      "title": "Madlan: street page for Michael Ne'eman St, which displays nearby Lamed HaHadasha off-plan deals (Isaac Stern 18, Einstein 2-8)",
+      "url": "https://www.madlan.co.il/street-info/%D7%9E%D7%99%D7%9B%D7%90%D7%9C-%D7%A0%D7%90%D7%9E%D7%9F-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S25",
+      "title": "Madlan: apartments for sale in Sde Dov Eshkol (listing cards)",
+      "url": "https://www.madlan.co.il/for-sale/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%90%D7%A9%D7%9B%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S26",
+      "title": "project-tlv: Yarkon Park page",
+      "url": "https://project-tlv.info/places/park-hayarkon/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S27",
+      "title": "project-tlv: Tel Aviv Port (Namal) page",
+      "url": "https://project-tlv.info/places/namal-tel-aviv/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S28",
+      "title": "ice: electricity generation at Reading power station to end",
+      "url": "https://www.ice.co.il/realestate/news/article/998314",
+      "published": "2024-01-30"
+    },
+    {
+      "id": "S29",
+      "title": "ice: Reading power station shut for about four years",
+      "url": "https://www.ice.co.il/realestate/news/article/897985",
+      "published": "2022-10-03"
+    },
+    {
+      "id": "S30",
+      "title": "project-tlv: Reading power station page (news log, conservation project)",
+      "url": "https://project-tlv.info/places/reading/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S31",
+      "title": "Mako: most expensive neighborhoods in Israel by median deal price (Madlan data)",
+      "url": "https://www.mako.co.il/finances-real-estate/Article-8533ddd4469c991027.htm",
+      "published": "2025-10-10"
+    },
+    {
+      "id": "S32",
+      "title": "tlvonline: comparison of north-west Tel Aviv neighborhoods",
+      "url": "https://tlvonline.co.il/%D7%94%D7%A9%D7%95%D7%95%D7%90%D7%AA-%D7%A9%D7%9B%D7%95%D7%A0%D7%95%D7%AA-%D7%A6%D7%A4%D7%95%D7%9F-%D7%9E%D7%A2%D7%A8%D7%91-%D7%94%D7%A2%D7%99%D7%A8/",
+      "published": "2025-05-28"
+    },
+    {
+      "id": "S33",
+      "title": "Kol HaBayit: Tel Aviv arnona calculator 2026 (secondary source based on the 2026 order)",
+      "url": "https://kolhabait.com/arnona/tel-aviv",
+      "published": "updated 2026-08"
+    },
+    {
+      "id": "S34",
+      "title": "Kol Zchut: purchase tax calculation (brackets)",
+      "url": "https://www.kolzchut.org.il/he/%D7%97%D7%99%D7%A9%D7%95%D7%91_%D7%9E%D7%A1_%D7%A8%D7%9B%D7%99%D7%A9%D7%94",
+      "published": "updated 2026-08-03"
+    },
+    {
+      "id": "S35",
+      "title": "Globes: what will happen to purchase tax (investor rates temporary order)",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001554581",
+      "published": "2026-09-07"
+    },
+    {
+      "id": "S36",
+      "title": "Bank of Israel: Proper Conduct of Banking Business Directive 329 (housing loans), version 12",
+      "url": "https://www.boi.org.il/media/brep4lzt/329_12.pdf",
+      "published": "2026-02-08"
+    },
+    {
+      "id": "S37",
+      "title": "Bank of Israel: representative exchange rates",
+      "url": "https://www.boi.org.il/en/economic-roles/financial-markets/exchange-rates/",
+      "published": "2026-09-15"
+    },
+    {
+      "id": "S38",
+      "title": "Walla Finance: CBS housing price index June-July 2026",
+      "url": "https://finance.walla.co.il/item/3868023",
+      "published": "2026-09-15"
+    },
+    {
+      "id": "S39",
+      "title": "Globes English: Tel Aviv leads in home sales (unsold inventory)",
+      "url": "https://en.globes.co.il/en/article-tel-aviv-leads-in-home-sales-1001555216",
+      "published": "2026-09-10"
+    },
+    {
+      "id": "S40",
+      "title": "Globes: the mega-luxury market, deals of NIS 10 million and more",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001554920",
+      "published": "2026-09-12"
+    },
+    {
+      "id": "S41",
+      "title": "Globes: new CBS resale price index",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001555377",
+      "published": "2026-09-14"
+    },
+    {
+      "id": "S42",
+      "title": "project-tlv: Meir Yaari St building pages (AURA NEO at No. 13, project at No. 16)",
+      "url": "https://project-tlv.info/buildings/yaary/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S43",
+      "title": "Instagram, Meital Katzir: mini penthouse Kochav HaTzafon (190 sqm, 80 sqm balconies, 4 exposures)",
+      "url": "https://www.instagram.com/p/DV6aYANjLBm/",
+      "published": "2026-03-15"
+    },
+    {
+      "id": "S44",
+      "title": "Instagram, Meital Katzir: mini penthouse Kochav HaTzafon (about 200 sqm + about 76 sqm balcony, 3 exposures)",
+      "url": "https://www.instagram.com/reel/DYRLyC6NVyS/",
+      "published": "2026-05-12"
+    },
+    {
+      "id": "S45",
+      "title": "Instagram, Meital Katzir: mini penthouse Kochav HaTzafon (Yarkon Park bridge coming)",
+      "url": "https://www.instagram.com/reel/DcbomCFoxSF/",
+      "published": "2026-08-24"
+    },
+    {
+      "id": "S46",
+      "title": "tlvonline: prices in north-west Tel Aviv neighborhoods",
+      "url": "https://tlvonline.co.il/%D7%9E%D7%97%D7%99%D7%A8%D7%99%D7%9D-%D7%A6%D7%A4%D7%95%D7%9F-%D7%9E%D7%A2%D7%A8%D7%91-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/",
+      "published": "2025-05-25"
+    },
+    {
+      "id": "S47",
+      "title": "Madlan listing: mini penthouse for sale in Savyonei Ramat Aviv, Kochav HaTzafon",
+      "url": "https://www.madlan.co.il/listings/miWI2HNlaCo",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S48",
+      "title": "Madlan listing: penthouse duplex for sale, Boney HaIr St, Kochav HaTzafon",
+      "url": "https://www.madlan.co.il/listings/XlkWVsJsWPU",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S49",
+      "title": "Instagram, Meital Katzir: mini penthouse Kochav HaTzafon (4 exposures)",
+      "url": "https://www.instagram.com/p/DZp43r5DIou/",
+      "published": "2026-06-16"
+    },
+    {
+      "id": "S50",
+      "title": "Instagram, Meital Katzir: mini penthouse Kochav HaTzafon (190 sqm, 80 sqm balconies, 3 exposures, VRF)",
+      "url": "https://www.instagram.com/reel/DX6qd1ro1NG/",
+      "published": "2026-05-04"
+    }
+  ]
+}

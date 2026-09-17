@@ -1,0 +1,118 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "מיני פנטהאוז בחלל כפול מול הים, צוקי אביב",
+   "description": "5 חדרים וממ״ד, כ-184 מ״ר, חלל כפול וקירות מסך לים, מרפסת של 20 מ״ר. 27,000 ש״ח לחודש בתשלום שנתי, עם עלויות, חוק ושכירויות להשוואה.",
+   "inLanguage": "he-IL",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/properties/tzukei-aviv-double-height-mini-penthouse-for-rent/",
+   "about": {
+    "@type": "Apartment",
+    "name": "מיני פנטהאוז בחלל כפול מול הים, צוקי אביב",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "תל אביב-יפו",
+     "addressRegion": "צוקי אביב",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 5,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 184,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חלל כפול",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "קירות מסך",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חימום תת-רצפתי",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "ממ״ד",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חדר כושר",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "מיטל קציר, נדל״ן על הים",
+     "telephone": "+972523631582"
+    },
+    "priceSpecification": {
+     "@type": "UnitPriceSpecification",
+     "price": 27000,
+     "priceCurrency": "ILS",
+     "unitCode": "MON"
+    }
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "האם אפשר לשלם חודשית?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "המשווקת פרסמה 27,000 ש״ח בכפוף לתשלום שנה מראש, ובמודעת יד2 שדה התשלומים מסומן כגמיש. את שכר הדירה בתשלומים חודשיים יש לברר מול המשווקת."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "כמה עולה הדירה בחודש בפועל?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "27,000 ש״ח שכר דירה, 1,400 ש״ח ועד בית וארנונה מוערכת של 1,671 עד 2,141 ש״ח: כ-30,071 עד 30,541 ש״ח לחודש."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "האם חוק השכירות ההוגנת חל?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "החוק חל על שכירות של עד כ-20,000 ש״ח לחודש, ולכן בשכר דירה של 27,000 ש״ח הערבויות, מועדי התיקונים ותנאי הביטול נקבעים בחוזה."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "האם ייגבו דמי תיווך?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "הטבת ״ללא דמי תיווך״ של המשווקת חלה על עסקאות שנסגרו באוגוסט 2026. דמי תיווך מקובלים הם שכר חודש ומע״מ, כ-31,860 ש״ח בדירה זו."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "כמה רחוק הים?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לפי המשווקת, כחמש עד שבע דקות הליכה לחוף תל ברוך ולטיילת פארק החוף."
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,112 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "4.5 חדרים בעיצוב מעצבת עם מרפסת לים, ב.ס.ר שרונה",
+   "description": "4.5 חדרים (במקור 5), 128 מ״ר ומרפסת מערבית של 14 מ״ר לים, מקררים מוסתרים, חניה מקורה ומחסן. טווח שכירות מחושב, עלויות וחוק.",
+   "inLanguage": "he-IL",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/properties/bsr-sarona-designer-4-5-rooms-for-rent/",
+   "about": {
+    "@type": "Apartment",
+    "name": "4.5 חדרים בעיצוב מעצבת עם מרפסת לים, ב.ס.ר שרונה",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "תל אביב-יפו",
+     "addressRegion": "שרונה",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 4.5,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 128,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "שמירה 24/7",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חדר כושר",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חניה",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מחסן",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מעליות מהירות",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "מיטל קציר, נדל״ן על הים",
+     "telephone": "+972523631582"
+    }
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "מה שכר הדירה?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "שכר הדירה לא פורסם. לפי 11 מודעות של דירות 5 חדרים עם נוף לים או למערב בפרויקט, שכר הדירה המבוקש הוא 130 עד 148 ש״ח למ״ר בנוי, כלומר כ-16,640 עד 18,944 ש״ח לחודש לדירה של 128 מ״ר. זה חישוב ולא הצעת מחיר."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "מה השתנה כשהדירה הוסבה ל-4.5 חדרים?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "המשווקת מציינת שהדירה תוכננה במקור כ-5 חדרים והוסבה ל-4.5. את תכנית השינוי ואת שלמות הממ״ד כדאי לבדוק בתשריט."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "האם יש בריכה בבניין?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לא נמצאו בריכה או ספא משותפים במקורות היזם והקבלן. בפרויקט חדר כושר לדיירים ושמירה 24/7."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "כמה קרובה הרכבת הקלה?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "יציאה A של תחנת יהודית בקו האדום משרתת את מתחם שרונה, והקו פועל מאוגוסט 2023."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "האם חוק השכירות ההוגנת יחול?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "אם שכר הדירה יהיה עד 20,000 ש״ח לחודש, החוק חל, והערבויות מוגבלות לנמוך מבין 3 חודשי שכירות לשליש משכר הדירה לכל התקופה."
+     }
+    }
+   ]
+  }
+ ]
+}

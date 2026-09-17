@@ -1,0 +1,1207 @@
+{
+ "id": "L11",
+ "deal": "rent",
+ "ptype": "apartment",
+ "plate": "tower",
+ "status": "confirm",
+ "last_post": "2026-08-18",
+ "rooms": 5,
+ "rent": null,
+ "rent_band": [
+  12800,
+  18000
+ ],
+ "rent_band_src": [
+  "MAD_V6WX",
+  "MAD_KSOP"
+ ],
+ "rent_area": null,
+ "built": null,
+ "balcony": null,
+ "city": {
+  "he": "תל אביב-יפו",
+  "en": "Tel Aviv-Yafo"
+ },
+ "area": {
+  "he": "רמת אביב",
+  "en": "Ramat Aviv"
+ },
+ "plate_name": {
+  "he": "רמת אביב",
+  "en": "Ramat Aviv"
+ },
+ "kicker": {
+  "he": "להשכרה · רמת אביב, צפון תל אביב",
+  "en": "For rent · Ramat Aviv, north Tel Aviv"
+ },
+ "title": {
+  "he": "5 חדרים בקומה גבוהה במתחם עם בריכה, רמת אביב",
+  "en": "Five Rooms on a High Floor in a Complex with a Pool, Ramat Aviv"
+ },
+ "dek": {
+  "he": "דירה מרווחת ומוארת עם 2 חניות ומחסן, במתחם עם בריכת שחייה, חדר כושר ושומר, לפי המשווקת. שכר הדירה ושם המתחם נמסרים בפנייה.",
+  "en": "A spacious, bright apartment with two parking spaces and storage, in a complex with a swimming pool, a gym and a guard, according to the broker. Rent and the complex name are given on request."
+ },
+ "chips": [
+  {
+   "he": "בלעדיות: מיטל קציר, נדל״ן על הים",
+   "en": "Exclusive: Meital Katzir, Real Estate by the Sea",
+   "sea": true
+  },
+  {
+   "he": "בריכה וחדר כושר",
+   "en": "Pool and gym"
+  },
+  {
+   "he": "2 חניות ומחסן",
+   "en": "Two parking spaces and storage"
+  }
+ ],
+ "facts": [
+  {
+   "label": {
+    "he": "חדרים",
+    "en": "Rooms"
+   },
+   "value": {
+    "he": "5",
+    "en": "5"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "קומה",
+    "en": "Floor"
+   },
+   "value": {
+    "he": "גבוהה",
+    "en": "High"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "בריכה",
+    "en": "Pool"
+   },
+   "value": {
+    "he": "במתחם",
+    "en": "In the complex"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "חדר כושר",
+    "en": "Gym"
+   },
+   "value": {
+    "he": "במתחם",
+    "en": "In the complex"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "שמירה",
+    "en": "Guard"
+   },
+   "value": {
+    "he": "יש",
+    "en": "Yes"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "חניה",
+    "en": "Parking"
+   },
+   "value": {
+    "he": "2",
+    "en": "2"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "מחסן",
+    "en": "Storage"
+   },
+   "value": {
+    "he": "יש",
+    "en": "Yes"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "אופי",
+    "en": "Character"
+   },
+   "value": {
+    "he": "מרווחת ומוארת",
+    "en": "Spacious, bright"
+   },
+   "basis": "broker"
+  }
+ ],
+ "price_rows": [],
+ "story_h2": {
+  "he": "חמישה חדרים במתחם עם שירותים מלאים",
+  "en": "Five rooms in a full-service complex"
+ },
+ "story": {
+  "he": [
+   "לפי המשווקת, דירת 5 חדרים מרווחת ומוארת בקומה גבוהה, במתחם איכותי ברמת אביב עם בריכת שחייה, חדר כושר, שומר ושירותים נוספים. לדירה 2 חניות ומחסן.[[IG_L11]]",
+   "שכר הדירה, השטח, מספר הקומה ושם המתחם לא פורסמו. במודעות של דירות 5 חדרים שאינן פנטהאוז, בשטח 119 עד 137 מ״ר ברמת אביב החדשה וברמת אביב ג׳, שכר הדירה המבוקש הוא 12,800 עד 17,000 ש״ח לחודש, ודירת קומה עליונה של 130 מ״ר בבניין עם בריכה וחדר כושר מבוקשת ב-18,000 ש״ח.[[MAD_V6WX,MAD_KSOP]]",
+   "שירותי מתחם כמו בריכה ושמירה מתומחרים בוועד הבית: בדוגמאות שנבדקו באזור, 1,700 ש״ח לחודש ל-110 מ״ר בבניין עם בריכה, חדר כושר ושמירה 24/7, וכ-2,300 ש״ח ל-138 מ״ר במתחם עם בריכה בצפון העיר.[[MAD_QYSY,GLOBES_NEEMAN_2024]]"
+  ],
+  "en": [
+   "According to the broker, this is a spacious, bright five-room apartment on a high floor, in a quality Ramat Aviv complex with a swimming pool, a gym, a guard and other services. It comes with two parking spaces and a storage room.[[IG_L11]]",
+   "The rent, size, floor number and complex name were not published. Listings for five-room units other than penthouses, of 119 to 137 sqm in Ramat Aviv HaHadasha and Ramat Aviv Gimel, ask NIS 12,800 to 17,000 a month, and a 130 sqm top-floor unit in a building with a pool and gym asks NIS 18,000.[[MAD_V6WX,MAD_KSOP]]",
+   "Complex services such as a pool and a guard are priced into the building fee: in examples checked nearby, NIS 1,700 a month for 110 sqm in a building with a pool, gym and 24/7 security, and about NIS 2,300 for 138 sqm in a complex with a pool in north Tel Aviv.[[MAD_QYSY,GLOBES_NEEMAN_2024]]"
+  ]
+ },
+ "features": {
+  "he": [
+   [
+    "5 חדרים",
+    "מרווחת ומוארת, לפי המשווקת"
+   ],
+   [
+    "קומה גבוהה",
+    "מספר הקומה יימסר בפנייה"
+   ],
+   [
+    "בריכת שחייה",
+    "במתחם, לצד חדר כושר"
+   ],
+   [
+    "שומר ושירותים נוספים",
+    "לפי המשווקת"
+   ],
+   [
+    "2 חניות ומחסן",
+    "לפי המשווקת"
+   ],
+   [
+    "12,800-18,000 ש״ח",
+    "טווח המודעות לדירות 5 חדרים באזור[[MAD_V6WX,MAD_KSOP]]"
+   ]
+  ],
+  "en": [
+   [
+    "Five rooms",
+    "Spacious and bright, per the broker"
+   ],
+   [
+    "High floor",
+    "Floor number given on request"
+   ],
+   [
+    "Swimming pool",
+    "In the complex, with a gym"
+   ],
+   [
+    "Guard and other services",
+    "Per the broker"
+   ],
+   [
+    "Two parking spaces and storage",
+    "Per the broker"
+   ],
+   [
+    "NIS 12,800-18,000",
+    "Asking range for five-room units nearby[[MAD_V6WX,MAD_KSOP]]"
+   ]
+  ]
+ },
+ "spec": [
+  {
+   "title": {
+    "he": "הדירה",
+    "en": "The apartment"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "חדרים",
+      "en": "Rooms"
+     },
+     "dd": {
+      "he": "5",
+      "en": "5 (Israeli count)"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L11"
+     ]
+    },
+    {
+     "dt": {
+      "he": "קומה",
+      "en": "Floor"
+     },
+     "dd": {
+      "he": "גבוהה",
+      "en": "High"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L11"
+     ]
+    },
+    {
+     "dt": {
+      "he": "אופי",
+      "en": "Character"
+     },
+     "dd": {
+      "he": "מרווחת ומוארת",
+      "en": "Spacious and bright"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L11"
+     ]
+    },
+    {
+     "dt": {
+      "he": "חניה ואחסון",
+      "en": "Parking and storage"
+     },
+     "dd": {
+      "he": "2 חניות ומחסן",
+      "en": "Two parking spaces and a storage room"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L11"
+     ]
+    }
+   ]
+  },
+  {
+   "title": {
+    "he": "המתחם",
+    "en": "The complex"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "בריכה",
+      "en": "Pool"
+     },
+     "dd": {
+      "he": "בריכת שחייה",
+      "en": "Swimming pool"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L11"
+     ]
+    },
+    {
+     "dt": {
+      "he": "כושר",
+      "en": "Fitness"
+     },
+     "dd": {
+      "he": "חדר כושר",
+      "en": "Gym"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L11"
+     ]
+    },
+    {
+     "dt": {
+      "he": "אבטחה",
+      "en": "Security"
+     },
+     "dd": {
+      "he": "שומר",
+      "en": "Guard"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L11"
+     ]
+    },
+    {
+     "dt": {
+      "he": "עוד",
+      "en": "Other"
+     },
+     "dd": {
+      "he": "שירותים נוספים",
+      "en": "Further services"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L11"
+     ]
+    }
+   ]
+  },
+  {
+   "title": {
+    "he": "טרם פורסם",
+    "en": "Not yet published"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "שכר דירה",
+      "en": "Rent"
+     },
+     "dd": {
+      "he": "לפי פנייה",
+      "en": "On request"
+     }
+    },
+    {
+     "dt": {
+      "he": "שטח",
+      "en": "Size"
+     },
+     "dd": {
+      "he": "לא צוין",
+      "en": "Not stated"
+     }
+    },
+    {
+     "dt": {
+      "he": "מספר הקומה",
+      "en": "Floor number"
+     },
+     "dd": {
+      "he": "לא צוין; קומה גבוהה",
+      "en": "Not stated; a high floor"
+     }
+    },
+    {
+     "dt": {
+      "he": "כניסה",
+      "en": "Entry"
+     },
+     "dd": {
+      "he": "לא צוינה",
+      "en": "Not stated"
+     }
+    },
+    {
+     "dt": {
+      "he": "ממ״ד, ריהוט ומיזוג",
+      "en": "Safe room, furnishing and air conditioning"
+     },
+     "dd": {
+      "he": "לא צוינו",
+      "en": "Not stated"
+     }
+    },
+    {
+     "dt": {
+      "he": "שם המתחם וכתובת",
+      "en": "Complex name and address"
+     },
+     "dd": {
+      "he": "יימסרו בתיאום עם המשווקת",
+      "en": "Given on contact with the broker"
+     }
+    }
+   ]
+  }
+ ],
+ "building_h2": {
+  "he": "מתחם עם בריכה, חדר כושר ושומר",
+  "en": "A complex with a pool, a gym and a guard"
+ },
+ "building_lead": {
+  "he": "שם המתחם והכתובת לא פורסמו. השירותים נמסרו על ידי המשווקת, ולצדם דוגמאות לעלויות בבניינים עם שירותים דומים באזור.[[IG_L11]]",
+  "en": "The complex name and address were not published. The services are as stated by the broker, shown with cost examples from buildings with similar services nearby.[[IG_L11]]"
+ },
+ "building": [
+  {
+   "dt": {
+    "he": "שירותים",
+    "en": "Services"
+   },
+   "dd": {
+    "he": "בריכת שחייה, חדר כושר, שומר ושירותים נוספים",
+    "en": "Swimming pool, gym, guard and further services"
+   },
+   "basis": "broker",
+   "src": [
+    "IG_L11"
+   ]
+  },
+  {
+   "dt": {
+    "he": "ועד בית, דוגמאות באזור",
+    "en": "Building fee, examples nearby"
+   },
+   "dd": {
+    "he": "1,700 ש״ח לחודש ל-110 מ״ר בבניין עם בריכה, חדר כושר ושמירה 24/7 ברמת אביב החדשה; כ-2,300 ש״ח ל-138 מ״ר במתחם עם בריכה בצפון העיר (2024)",
+    "en": "NIS 1,700 a month for 110 sqm in a Ramat Aviv HaHadasha building with a pool, gym and 24/7 security; about NIS 2,300 for 138 sqm in a north Tel Aviv complex with a pool (2024)"
+   },
+   "src": [
+    "MAD_QYSY",
+    "GLOBES_NEEMAN_2024"
+   ]
+  },
+  {
+   "dt": {
+    "he": "ועד בית למ״ר, בדוגמאות",
+    "en": "Building fee per sqm, in the examples"
+   },
+   "dd": {
+    "he": "כ-15 עד 17 ש״ח למ״ר לחודש",
+    "en": "About NIS 15 to 17 per sqm a month"
+   },
+   "basis": "calc",
+   "src": [
+    "MAD_QYSY",
+    "GLOBES_NEEMAN_2018"
+   ]
+  },
+  {
+   "dt": {
+    "he": "אופי הבנייה באזור",
+    "en": "Building stock nearby"
+   },
+   "dd": {
+    "he": "ברמת אביב החדשה, שנבנתה בעיקר בשנים 1996 עד 2016, רוב הבניינים בני 5 עד 7 קומות ובחלק מהרחובות 11 עד 13 קומות; ברמת אביב ג׳ מגדלי מגורים לצד בניינים נמוכים",
+    "en": "Ramat Aviv HaHadasha, built mainly from 1996 to 2016, is mostly 5 to 7-floor buildings, with 11 to 13 floors on some streets; Ramat Aviv Gimel mixes residential towers with lower buildings"
+   },
+   "src": [
+    "HON_RAH",
+    "GLOBES_RAG_2023"
+   ]
+  }
+ ],
+ "location_h2": {
+  "he": "רמת אביב: אוניברסיטה, קניון ומוזיאונים",
+  "en": "Ramat Aviv: university, mall and museums"
+ },
+ "location": {
+  "he": [
+   "רמת אביב (א׳) תחומה ברחוב איינשטיין בצפון, ברחוב חיים לבנון במזרח ובדרום ובדרך נמיר במערב, ונווה אביבים, רמת אביב ג׳ ורמת אביב החדשה נחשבות לחלקיה האחרים.[[WIKI_RA]] רמת אביב החדשה, בין רחוב פרופס לרחוב איינשטיין ובין שדרות לוי אשכול לדרך נמיר, נבנתה בעיקר בשנים 1996 עד 2016.[[HON_RAH,TLV_PRICES]]",
+   "באזור נמצאים הקמפוס הראשי של אוניברסיטת תל אביב, המשתרע על כ-89 הקטרים, מוזיאון ארץ ישראל, מוזיאון הפלמ״ח ומוזיאון אנו.[[WIKI_TAU,WIKI_RA]] קניון רמת אביב ברחוב איינשטיין 40 נפתח ב-1997 וכולל כ-140 חנויות, וברמת אביב ג׳ פועלים שני מרכזים מסחריים, שוסטר ואלרם.[[WIKI_MALL,GLOBES_RAG_2023]]",
+   "טיילת פארק החוף, מחוף תל ברוך עד חוף הצוק, נפתחה ב-2023.[[WALLA_PROM]] הגישה ברכב נשענת בעיקר על שדרות לוי אשכול ועל רחוב איינשטיין, וצומת איינשטיין-נמיר עמוס בשעות השיא; הקו הירוק של הרכבת הקלה מתוכנן לעבור לאורך דרך נמיר, רחוב איינשטיין ורחוב חיים לבנון.[[TLV_COMPARE,GLOBES_GREEN_2017]]"
+  ],
+  "en": [
+   "Ramat Aviv (Aleph) is bounded by Einstein Street to the north, Haim Levanon Street to the east and south and Namir Road to the west, while Neve Avivim, Ramat Aviv Gimel and Ramat Aviv HaHadasha count as its other parts.[[WIKI_RA]] Ramat Aviv HaHadasha, between Propes and Einstein streets and between Levi Eshkol Boulevard and Namir Road, was built mainly from 1996 to 2016.[[HON_RAH,TLV_PRICES]]",
+   "The area holds Tel Aviv University's main campus of about 89 hectares, the Eretz Israel Museum, the Palmach Museum and ANU Museum of the Jewish People.[[WIKI_TAU,WIKI_RA]] Ramat Aviv Mall at 40 Einstein Street opened in 1997 with about 140 stores, and Ramat Aviv Gimel has two shopping centers, Shuster and Elram.[[WIKI_MALL,GLOBES_RAG_2023]]",
+   "The coastal park promenade, from Tel Baruch beach to Tzuk beach, opened in 2023.[[WALLA_PROM]] Car access relies mainly on Levi Eshkol Boulevard and Einstein Street, and the Einstein and Namir junction is congested at peak hours; the Green Line light rail is planned along Namir Road, Einstein Street and Haim Levanon Street.[[TLV_COMPARE,GLOBES_GREEN_2017]]"
+  ]
+ },
+ "schools_override": {
+  "4": {
+   "note": {
+    "he": "מבנה חדש בהמשך הצפוני של רחוב אבן גבירול, במפגש עם רחוב מרק שאגאל; שבע כיתות וכיתת חינוך מיוחד בכל שכבה. אזור הרישום לא אומת.",
+    "en": "A new building on the northern extension of Ibn Gabirol Street at Marc Chagall Street; seven classes plus a special education class per grade. Registration zone not verified."
+   }
+  }
+ },
+ "transport_override": {
+  "0": {
+   "title": {
+    "he": "הקו הירוק של הרכבת הקלה",
+    "en": "Green Line light rail"
+   },
+   "status": {
+    "he": "בבנייה, מראשון לציון וחולון להרצליה. הקטע הדרומי צפוי ב-2028 והקו כולו ב-2030.",
+    "en": "Under construction, from Rishon LeZion and Holon to Herzliya. The southern section is expected in 2028 and the full line in 2030."
+   }
+  },
+  "1": {
+   "title": {
+    "he": "תוואי הקו הירוק ברמת אביב",
+    "en": "Green Line route in Ramat Aviv"
+   },
+   "status": {
+    "he": "מתוכנן לאורך דרך נמיר, רחוב איינשטיין ורחוב חיים לבנון, עם תחנה שקועה בצומת נמיר-איינשטיין. לוח הזמנים של העבודות לא אומת.",
+    "en": "Planned along Namir Road, Einstein Street and Haim Levanon Street, with a sunken station at the Namir and Einstein junction. The works schedule was not verified."
+   }
+  },
+  "2": {
+   "title": {
+    "he": "תחנות מתוכננות באזור",
+    "en": "Planned stations nearby"
+   },
+   "status": {
+    "he": "בין שמות התחנות: אוניברסיטת תל אביב, ברודצקי ונמיר. הסדר והמיקום המדויק לא אומתו.",
+    "en": "Station names include Tel Aviv University, Brodetsky and Namir. Order and exact locations not verified."
+   }
+  },
+  "3": {
+   "title": {
+    "he": "רכבת ישראל, תחנת אוניברסיטה",
+    "en": "Israel Railways, University station"
+   },
+   "status": {
+    "he": "פעילה. מרחק ההליכה תלוי בכתובת.",
+    "en": "Operating. Walking distance depends on the address."
+   }
+  },
+  "4": {
+   "title": {
+    "he": "גישה ברכב",
+    "en": "Car access"
+   },
+   "status": {
+    "he": "דרך שדרות לוי אשכול ורחוב איינשטיין; צומת איינשטיין-נמיר עמוס בשעות השיא, לפי דיווח מ-2025.",
+    "en": "Via Levi Eshkol Boulevard and Einstein Street; the Einstein and Namir junction is congested at peak hours, per a 2025 report."
+   }
+  },
+  "5": {
+   "title": {
+    "he": "תחבורה ציבורית למרכז העיר",
+    "en": "Public transport to the city center"
+   },
+   "status": {
+    "he": "כ-25 עד 30 דקות מרמת אביב החדשה ומתוכנית ל׳, לפי הערכת שמאי מ-2025.",
+    "en": "About 25 to 30 minutes from Ramat Aviv HaHadasha and Plan Lamed, per a 2025 appraiser's estimate."
+   }
+  }
+ },
+ "future": [
+  0,
+  1,
+  2,
+  5
+ ],
+ "future_override": {
+  "0": {
+   "title": {
+    "he": "עבודות הקו הירוק ברמת אביב",
+    "en": "Green Line works in Ramat Aviv"
+   },
+   "impact": {
+    "he": "הקטע הדרומי צפוי ב-2028 והקו כולו ב-2030; עד אז העבודות לאורך דרך נמיר, רחוב איינשטיין ורחוב חיים לבנון עשויות להשפיע על התנועה.",
+    "en": "The southern section is expected in 2028 and the full line in 2030; until then, works along Namir Road, Einstein Street and Haim Levanon Street may affect traffic."
+   }
+  },
+  "1": {
+   "title": {
+    "he": "נופי ים צפון",
+    "en": "Nofei Yam North"
+   },
+   "impact": {
+    "he": "191 דונם פנויים בין נופי ים לרחוב פרופס. במרץ 2025 הוארכה הקפאת ההיתרים בשלוש שנים לתכנון מחדש, והגובה עשוי לעלות מ-15 ל-45 קומות. הנוף מקומות גבוהות לכיוון הים עשוי להשתנות בטווח הארוך.",
+    "en": "191 vacant dunams between Nofei Yam and Propes Street. In March 2025 the permit freeze was extended by three years for re-planning, and heights could rise from 15 to 45 floors. Views toward the sea from high floors may change in the long term."
+   }
+  },
+  "2": {
+   "title": {
+    "he": "תוכנית מרכז שדה דב",
+    "en": "Sde Dov center plan"
+   },
+   "impact": {
+    "he": "7,128 יחידות דיור במגדלים של 20 ו-45 קומות. ההתנגדויות נדחו בפברואר 2025; קו הרקיע ממערב ישתנה, והעבודות יימשכו שנים.",
+    "en": "7,128 homes in towers of 20 and 45 floors. Objections were rejected in February 2025; the skyline to the west will change, and works will continue for years."
+   }
+  },
+  "5": {
+   "title": {
+    "he": "מתחם ההתחדשות ברקאי, רמת אביב ג׳",
+    "en": "Barkai renewal compound, Ramat Aviv Gimel"
+   },
+   "impact": {
+    "he": "370 יחידות דיור. תוכנית העיצוב אושרה ב-29 באוקטובר 2025; צפויה בנייה בתוך רמת אביב ג׳.",
+    "en": "370 homes. The design plan was approved on 29 October 2025; construction is expected inside Ramat Aviv Gimel."
+   }
+  }
+ },
+ "numbers": {
+  "h2": {
+   "he": "שכר הדירה לפי פנייה, והעלויות סביב",
+   "en": "Rent on request, and the costs around it"
+  },
+  "lead": {
+   "he": "המשווקת לא פרסמה שכר דירה או שטח. החישובים כאן מבוססים על מודעות לדירות 5 חדרים ברמת אביב החדשה וברמת אביב ג׳, על דוגמאות לוועד בית בבניינים עם בריכה ועל תעריפי הארנונה של 2026.",
+   "en": "The broker has not published a rent or size. These figures come from five-room listings in Ramat Aviv HaHadasha and Ramat Aviv Gimel, building fee examples from complexes with a pool, and 2026 arnona rates."
+  },
+  "extra_kpis": [
+   {
+    "dt": {
+     "he": "טווח מודעות, 5 חדרים",
+     "en": "Asking range, five rooms"
+    },
+    "dd": {
+     "he": "12,800-18,000 ₪",
+     "en": "NIS 12,800-18,000"
+    },
+    "small": {
+     "he": "לחודש, 7 מודעות של 119 עד 137 מ״ר",
+     "en": "A month, 7 listings of 119 to 137 sqm"
+    }
+   },
+   {
+    "dt": {
+     "he": "שכר דירה למ״ר במודעות",
+     "en": "Rent per sqm in those listings"
+    },
+    "dd": {
+     "he": "93-138 ₪",
+     "en": "NIS 93-138"
+    },
+    "small": {
+     "he": "חישוב על השטח שפורסם",
+     "en": "Computed on the published area"
+    }
+   },
+   {
+    "dt": {
+     "he": "ועד בית בבניינים עם בריכה",
+     "en": "Building fee with a pool"
+    },
+    "dd": {
+     "he": "1,700-2,300 ₪[[MAD_QYSY,GLOBES_NEEMAN_2024]]",
+     "en": "NIS 1,700-2,300[[MAD_QYSY,GLOBES_NEEMAN_2024]]"
+    },
+    "small": {
+     "he": "לחודש, בדוגמאות של 110 עד 138 מ״ר",
+     "en": "A month, in examples of 110 to 138 sqm"
+    }
+   },
+   {
+    "dt": {
+     "he": "סף חוק השכירות ההוגנת",
+     "en": "Fair Rental Law threshold"
+    },
+    "dd": {
+     "he": "20,000 ₪[[G_KZ_FAIR]]",
+     "en": "NIS 20,000[[G_KZ_FAIR]]"
+    },
+    "small": {
+     "he": "לחודש; כל טווח המודעות נמוך ממנו",
+     "en": "A month; the whole asking range is below it"
+    }
+   }
+  ],
+  "tabs_title": {
+   "he": "העלות לשוכר, לפי טווח המודעות",
+   "en": "What the tenant pays, on the asking range"
+  },
+  "tabs": [
+   {
+    "label": {
+     "he": "חודשי",
+     "en": "Monthly"
+    },
+    "rows": [
+     {
+      "dt": {
+       "he": "שכר דירה, טווח מודעות[[MAD_V6WX,MAD_KSOP]]",
+       "en": "Rent, asking range[[MAD_V6WX,MAD_KSOP]]"
+      },
+      "dd": {
+       "he": "12,800-18,000 ₪",
+       "en": "NIS 12,800-18,000"
+      }
+     },
+     {
+      "dt": {
+       "he": "ועד בית, הערכה[[MAD_QYSY,GLOBES_NEEMAN_2024]]",
+       "en": "Building fee, estimate[[MAD_QYSY,GLOBES_NEEMAN_2024]]"
+      },
+      "dd": {
+       "he": "2,000-2,300 ₪",
+       "en": "NIS 2,000-2,300"
+      },
+      "note": {
+       "he": "15 עד 17 ₪ למ״ר בדוגמאות של בניינים עם בריכה, בהנחה של 130 עד 140 מ״ר; שטח הדירה לא פורסם",
+       "en": "NIS 15 to 17 per sqm in examples from buildings with a pool, assuming 130 to 140 sqm; the unit's size was not published"
+      }
+     },
+     {
+      "dt": {
+       "he": "ארנונה, הערכה[[G_KH_TLV,G_NC_ARNONA]]",
+       "en": "Arnona, estimate[[G_KH_TLV,G_NC_ARNONA]]"
+      },
+      "dd": {
+       "he": "1,058-1,318 ₪",
+       "en": "NIS 1,058-1,318"
+      },
+      "note": {
+       "he": "בהנחה של 140 מ״ר כולל מרפסות, בתעריף אא של אזור 2 עד אזור 1; השטח, האזור והסיווג לא אומתו",
+       "en": "Assuming 140 sqm including balconies, at newest-code rates for zone 2 to zone 1; area, zone and code unverified"
+      }
+     },
+     {
+      "dt": {
+       "he": "סך הכול בחודש, הערכה",
+       "en": "Total per month, estimate"
+      },
+      "dd": {
+       "he": "15,858-21,618 ₪",
+       "en": "NIS 15,858-21,618"
+      }
+     }
+    ]
+   },
+   {
+    "label": {
+     "he": "בכניסה",
+     "en": "At signing"
+    },
+    "rows": [
+     {
+      "dt": {
+       "he": "תקרת ערבויות לפי החוק[[G_KZ_GUAR]]",
+       "en": "Legal cap on guarantees[[G_KZ_GUAR]]"
+      },
+      "dd": {
+       "he": "38,400-54,000 ₪",
+       "en": "NIS 38,400-54,000"
+      },
+      "note": {
+       "he": "3 חודשי שכירות לפי טווח המודעות, בחוזה של 9 חודשים ומעלה",
+       "en": "3 months' rent on the asking range, on a lease of 9 months or more"
+      }
+     },
+     {
+      "dt": {
+       "he": "דמי תיווך, אם השוכר הזמין מתווך[[G_NBN_RENT]]",
+       "en": "Brokerage, if the tenant engaged a broker[[G_NBN_RENT]]"
+      },
+      "dd": {
+       "he": "15,104-21,240 ₪",
+       "en": "NIS 15,104-21,240"
+      },
+      "note": {
+       "he": "שכר חודש ומע״מ של 18%",
+       "en": "One month plus 18% VAT"
+      }
+     }
+    ]
+   },
+   {
+    "label": {
+     "he": "מה החוק קובע",
+     "en": "What the law says"
+    },
+    "rows": [
+     {
+      "dt": {
+       "he": "חוק השכירות ההוגנת[[G_KZ_FAIR,G_NC_FAIR]]",
+       "en": "Fair Rental Law[[G_KZ_FAIR,G_NC_FAIR]]"
+      },
+      "dd": {
+       "he": "צפוי לחול",
+       "en": "Likely to apply"
+      },
+      "note": {
+       "he": "חל כששכר הדירה אינו עולה על כ-20,000 ₪ לחודש",
+       "en": "Applies where the rent does not exceed about NIS 20,000 a month"
+      }
+     },
+     {
+      "dt": {
+       "he": "תיקון ליקויים[[G_NC_FAIR]]",
+       "en": "Repairs[[G_NC_FAIR]]"
+      },
+      "dd": {
+       "he": "3 ימים או 30 יום",
+       "en": "3 days or 30 days"
+      },
+      "note": {
+       "he": "ליקוי דחוף תוך 3 ימים, ליקוי אחר תוך 30 יום",
+       "en": "Urgent defects within 3 days, others within 30 days"
+      }
+     },
+     {
+      "dt": {
+       "he": "הודעה מוקדמת[[G_NC_FAIR]]",
+       "en": "Notice periods[[G_NC_FAIR]]"
+      },
+      "dd": {
+       "he": "90 או 60 יום",
+       "en": "90 or 60 days"
+      },
+      "note": {
+       "he": "90 יום מצד המשכיר, 60 יום מצד השוכר",
+       "en": "90 days from the landlord, 60 days from the tenant"
+      }
+     },
+     {
+      "dt": {
+       "he": "דמי תיווך של המשכיר[[G_NC_FAIR]]",
+       "en": "The landlord's brokerage[[G_NC_FAIR]]"
+      },
+      "dd": {
+       "he": "לא על השוכר",
+       "en": "Not charged to the tenant"
+      }
+     },
+     {
+      "dt": {
+       "he": "ארנונה וועד בית[[G_NC_FAIR]]",
+       "en": "Arnona and building fee[[G_NC_FAIR]]"
+      },
+      "dd": {
+       "he": "על השוכר",
+       "en": "Paid by the tenant"
+      },
+      "note": {
+       "he": "ביטוח המבנה על המשכיר",
+       "en": "Building insurance is the landlord's"
+      }
+     }
+    ]
+   }
+  ],
+  "bars": {
+   "title": {
+    "he": "שכר דירה למ״ר, דירות 5 חדרים ברמת אביב",
+    "en": "Rent per sqm, five-room units in Ramat Aviv"
+   },
+   "items": [
+    {
+     "label": {
+      "he": "קומה עליונה, בניין עם בריכה וחדר כושר, 130 מ״ר",
+      "en": "Top floor, building with pool and gym, 130 sqm"
+     },
+     "value": 138,
+     "src": [
+      "MAD_KSOP"
+     ]
+    },
+    {
+     "label": {
+      "he": "רמת אביב ג׳, בניין עם חדר כושר, 130 מ״ר",
+      "en": "Ramat Aviv Gimel, building with a gym, 130 sqm"
+     },
+     "value": 131,
+     "src": [
+      "MAD_CFMG"
+     ]
+    },
+    {
+     "label": {
+      "he": "רמת אביב ג׳, קומה 8, נוף לים, 135 מ״ר",
+      "en": "Ramat Aviv Gimel, floor 8, sea view, 135 sqm"
+     },
+     "value": 126,
+     "src": [
+      "MAD_AMTO"
+     ]
+    },
+    {
+     "label": {
+      "he": "רמת אביב ג׳, משופצת, 119 מ״ר",
+      "en": "Ramat Aviv Gimel, renovated, 119 sqm"
+     },
+     "value": 113,
+     "src": [
+      "MAD_QN6N"
+     ]
+    },
+    {
+     "label": {
+      "he": "רמת אביב ג׳, מול פארק, 128 מ״ר",
+      "en": "Ramat Aviv Gimel, facing a park, 128 sqm"
+     },
+     "value": 109,
+     "src": [
+      "MAD_LLOZ"
+     ]
+    },
+    {
+     "label": {
+      "he": "רמת אביב החדשה, בניין עם שומר, 132 מ״ר",
+      "en": "Ramat Aviv HaHadasha, building with a guard, 132 sqm"
+     },
+     "value": 106,
+     "src": [
+      "MAD_WWFD"
+     ]
+    },
+    {
+     "label": {
+      "he": "רמת אביב החדשה, קומה 7 מתוך 8, 137 מ״ר",
+      "en": "Ramat Aviv HaHadasha, floor 7 of 8, 137 sqm"
+     },
+     "value": 93,
+     "src": [
+      "MAD_V6WX"
+     ]
+    }
+   ],
+   "note": {
+    "he": "₪ למ״ר בנוי לחודש, מחושב ממודעות שכירות מבוקשות מ-16.9.2026 על השטח שפורסם. כל הפסים באותו קנה מידה.",
+    "en": "NIS per built sqm per month, computed from asking rents listed on 16 Sep 2026, on the published area. All bars share one scale."
+   }
+  },
+  "ledger_title": {
+   "he": "שוק ומגמה",
+   "en": "Market and trend"
+  },
+  "ledger": [
+   {
+    "dt": {
+     "he": "שכר דירה ממוצע, רמת אביב החדשה[[MAD_RAH_AREA]]",
+     "en": "Average rent, Ramat Aviv HaHadasha[[MAD_RAH_AREA]]"
+    },
+    "dd": {
+     "he": "13,400 ₪",
+     "en": "NIS 13,400"
+    },
+    "note": {
+     "he": "כל הגדלים, לפי מדלן",
+     "en": "All sizes, per Madlan"
+    }
+   },
+   {
+    "dt": {
+     "he": "שכר דירה ממוצע, רמת אביב ג׳[[MAD_RAG_AREA]]",
+     "en": "Average rent, Ramat Aviv Gimel[[MAD_RAG_AREA]]"
+    },
+    "dd": {
+     "he": "12,300 ₪",
+     "en": "NIS 12,300"
+    },
+    "note": {
+     "he": "כל הגדלים, לפי מדלן",
+     "en": "All sizes, per Madlan"
+    }
+   },
+   {
+    "dt": {
+     "he": "שכר דירה לשוכרים חדשים בישראל[[G_CBS_WALLA]]",
+     "en": "Rents for new tenants in Israel[[G_CBS_WALLA]]"
+    },
+    "dd": {
+     "he": "4.4%+ בשנה",
+     "en": "+4.4% a year"
+    },
+    "note": {
+     "he": "מדד אוגוסט 2026 של הלמ״ס; 2.6%+ לשוכרים שחידשו חוזה",
+     "en": "CBS, August 2026 index; +2.6% for renewing tenants"
+    }
+   }
+  ]
+ },
+ "market": {
+  "h2": {
+   "he": "שכירות ומכירות ברמת אביב החדשה וברמת אביב ג׳",
+   "en": "Rents and sales in Ramat Aviv HaHadasha and Ramat Aviv Gimel"
+  },
+  "lead": {
+   "he": "מודעות שכירות ומכירה של דירות 4 עד 6 חדרים, כולל בניינים עם בריכה, חדר כושר ושמירה, ונתוני שכונה. מחירי השכירות הם מבוקשים ולא חוזים חתומים.",
+   "en": "Rental and sale listings for four- to six-room units, including buildings with a pool, gym and security, and neighborhood data. Rents are asking figures, not signed leases."
+  },
+  "stats": [
+   0,
+   1,
+   2
+  ],
+  "sale_exclude": [
+   4
+  ],
+  "rent_exclude": [
+   13,
+   14,
+   15
+  ]
+ },
+ "questions": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9
+ ],
+ "checks_h2": {
+  "he": "מה לבדוק לפני חתימה",
+  "en": "What to check before signing"
+ },
+ "checks_lead": {
+  "he": "השאלות ששוכר זהיר שואל על הדירה והמתחם, והמסמכים שכדאי לקבל.",
+  "en": "The questions a careful tenant asks about the unit and the complex, and the documents to obtain."
+ },
+ "checks_extra": {
+  "he": [
+   "טיוטת חוזה השכירות, כולל ערבויות, הצמדה ואופציה",
+   "פירוט ועד הבית ומה הוא כולל, ותקנון הבריכה וחדר הכושר",
+   "חשבון ארנונה אחרון של הדירה",
+   "אישור זכויות המשכיר בדירה ובשתי החניות",
+   "פרוטוקול מסירה ורשימת ציוד"
+  ],
+  "en": [
+   "The draft lease, including guarantees, indexation and option",
+   "A breakdown of the building fee and what it covers, and the pool and gym rules",
+   "The unit's latest arnona bill",
+   "Confirmation of the landlord's rights in the unit and both parking spaces",
+   "A handover record and equipment list"
+  ]
+ },
+ "faq": [
+  {
+   "q": {
+    "he": "כמה עולה הדירה בחודש?",
+    "en": "What does the apartment cost per month?"
+   },
+   "a": {
+    "he": "המשווקת לא פרסמה שכר דירה. דירות 5 חדרים ברמת אביב החדשה וברמת אביב ג׳ מוצעות ב-12,800 עד 18,000 ש״ח לחודש, ובבניין עם בריכה יש להוסיף ועד בית של כ-1,700 עד 2,300 ש״ח לפי הדוגמאות באזור.[[MAD_V6WX,MAD_KSOP,MAD_QYSY]]",
+    "en": "The broker has not published a rent. Five-room units in Ramat Aviv HaHadasha and Ramat Aviv Gimel are offered at NIS 12,800 to 18,000 a month, and a building with a pool adds a building fee of about NIS 1,700 to 2,300, based on examples nearby.[[MAD_V6WX,MAD_KSOP,MAD_QYSY]]"
+   }
+  },
+  {
+   "q": {
+    "he": "באיזה מתחם מדובר?",
+    "en": "Which complex is it?"
+   },
+   "a": {
+    "he": "שם המתחם והכתובת לא פורסמו, ומיטל קציר מוסרת אותם בפנייה ישירה. לפי המשווקת במתחם בריכת שחייה, חדר כושר, שומר ושירותים נוספים.[[IG_L11]]",
+    "en": "The complex name and address were not published; Meital Katzir gives them on direct contact. Per the broker, the complex has a swimming pool, a gym, a guard and further services.[[IG_L11]]"
+   }
+  },
+  {
+   "q": {
+    "he": "האם חוק השכירות ההוגנת חל?",
+    "en": "Does the Fair Rental Law apply?"
+   },
+   "a": {
+    "he": "אם שכר הדירה אינו עולה על כ-20,000 ש״ח לחודש, כמו בכל טווח המודעות לדירות דומות באזור. אז הערבויות מוגבלות לנמוך מבין 3 חודשי שכירות לשליש משכר הדירה לכל התקופה.[[G_KZ_FAIR,G_KZ_GUAR]]",
+    "en": "It does if the rent does not exceed about NIS 20,000 a month, as across the whole asking range for similar units nearby. Guarantees are then capped at the lower of 3 months' rent or a third of the total rent.[[G_KZ_FAIR,G_KZ_GUAR]]"
+   }
+  },
+  {
+   "q": {
+    "he": "מה נמצא בסביבה?",
+    "en": "What is nearby?"
+   },
+   "a": {
+    "he": "ברמת אביב נמצאים אוניברסיטת תל אביב, קניון רמת אביב עם כ-140 חנויות, מוזיאון ארץ ישראל ומוזיאון הפלמ״ח. המרחקים המדויקים תלויים בכתובת.[[WIKI_RA,WIKI_MALL]]",
+    "en": "Ramat Aviv has Tel Aviv University, Ramat Aviv Mall with about 140 stores, the Eretz Israel Museum and the Palmach Museum. Exact distances depend on the address.[[WIKI_RA,WIKI_MALL]]"
+   }
+  }
+ ],
+ "amenities": [
+  {
+   "he": "בריכת שחייה",
+   "en": "Swimming pool"
+  },
+  {
+   "he": "חדר כושר",
+   "en": "Gym"
+  },
+  {
+   "he": "שומר",
+   "en": "Guard"
+  },
+  {
+   "he": "חניה",
+   "en": "Parking"
+  },
+  {
+   "he": "מחסן",
+   "en": "Storage"
+  }
+ ],
+ "seo": {
+  "he": {
+   "title": "דירת 5 חדרים להשכרה ברמת אביב, מתחם עם בריכה",
+   "desc": "5 חדרים בקומה גבוהה, מרווחת ומוארת, 2 חניות ומחסן, במתחם עם בריכה, חדר כושר ושומר. טווח שכירות באזור, ועד בית, ארנונה וחוק.",
+   "kw": "דירת 5 חדרים להשכרה ברמת אביב",
+   "slug": "ramat-aviv-5-rooms-pool-complex-for-rent"
+  },
+  "en": {
+   "title": "5-Room Apartment for Rent in Ramat Aviv, Complex with Pool",
+   "desc": "Five rooms on a high floor, spacious and bright, two parking spaces and storage, in a complex with a pool, gym and guard. Local rent range, fees and law.",
+   "kw": "5 room apartment for rent Ramat Aviv pool",
+   "slug": "en-ramat-aviv-5-room-apartment-pool-complex-for-rent"
+  }
+ },
+ "shots": [
+  {
+   "he": "הבריכה במתחם",
+   "en": "The complex pool"
+  },
+  {
+   "he": "חדר הכושר",
+   "en": "Gym"
+  },
+  {
+   "he": "הלובי ועמדת השומר",
+   "en": "Lobby and guard post"
+  },
+  {
+   "he": "הסלון",
+   "en": "Living room"
+  },
+  {
+   "he": "הנוף מהקומה",
+   "en": "The view from the floor"
+  },
+  {
+   "he": "המטבח",
+   "en": "Kitchen"
+  },
+  {
+   "he": "יחידת ההורים",
+   "en": "Master suite"
+  },
+  {
+   "he": "החניות והמחסן",
+   "en": "Parking spaces and storage"
+  },
+  {
+   "he": "תשריט הדירה",
+   "en": "Floor plan"
+  }
+ ],
+ "internal": {
+  "assessment": [
+   "הנתונים הדלים ביותר מכל הנכסים: פוסט אחד (18.8.2026), בלי מחיר, שטח, קומה או שם מתחם, והדירה לא נמצאה במדלן. ייתכן שכבר הושכרה.",
+   "המועמד הסביר: בנייני רחוב סטימצקי ברמת אביב החדשה (6, 8 ו-18א), שבהם מתווכים מתארים בריכה, חדר כושר ושומר. חלופה: מגדלי נאמן (המתחם של L08, שמשווקת אותה מתווכת), אם השם רמת אביב שימש בהשאלה. זו השערה ולא זיהוי.",
+   "טווח המודעות 12,800-18,000 ₪. בבניין עם בריכה וועד בית של כ-2,000 ₪ העלות החודשית הכוללת עשויה לעבור 20,000 ₪, ולכן חשוב להציג ועד בית מפורש.",
+   "הושמטו מהעמוד, כי הם רלוונטיים רק אם המתחם בצוקי אביב או בגלילות: תוכנית 3700, חוף התכלת, עסקת מגדלי נאמן ומודעות גלילות ואזורי חן."
+  ],
+  "confirm": [
+   "שם המתחם והכתובת, והאם מותר לפרסם אותם.",
+   "שכר הדירה, השטח, מספר הקומה ומועד הכניסה.",
+   "ועד הבית ומה הוא כולל; שעות השמירה והבריכה.",
+   "ממ״ד, ריהוט ומיזוג.",
+   "האם הדירה עדיין פנויה.",
+   "אישור בכתב לשימוש בתמונות ובטקסט באתר."
+  ]
+ },
+ "wp": {
+  "listing_type": "rent",
+  "property_type": "apartment",
+  "price": null,
+  "rooms": 5,
+  "floor": null,
+  "total_floors": null,
+  "size_sqm": null,
+  "balcony_sqm": null,
+  "parking": true,
+  "elevator": null,
+  "ac": null,
+  "protected_room": null,
+  "street": "",
+  "building_number": "",
+  "city": "תל אביב-יפו",
+  "neighborhood": "רמת אביב",
+  "arnona_monthly": 0,
+  "vaad_bayit_monthly": 0,
+  "storage": true,
+  "condition": null
+ },
+ "rent_band_label": {
+  "he": "טווח מודעות לדירות 5 חדרים באזור",
+  "en": "Asking range for five-room units nearby"
+ }
+}

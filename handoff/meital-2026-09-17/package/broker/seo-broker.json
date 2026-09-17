@@ -1,0 +1,24 @@
+{
+ "he": {
+  "title": "מיטל קציר, נדל״ן על הים | נכסי יוקרה בצפון תל אביב",
+  "desc": "11 נכסים בבלעדיות של המתווכת מיטל קציר: אחוזה בהרצליה פיתוח, מיני פנטהאוזים ודירות בצוקי אביב, בנופי ים ובשרונה, עם כל הפרטים וקשר ישיר.",
+  "kw": "מיטל קציר נדל״ן",
+  "slug": "meital-katzir",
+  "parent_slug": "brokers",
+  "url": "https://nad-lan.co.il/brokers/meital-katzir/",
+  "title_chars": 50,
+  "desc_chars": 136,
+  "slug_status": "proposed, needs owner approval"
+ },
+ "en": {
+  "title": "Meital Katzir, Real Estate by the Sea | Tel Aviv Homes",
+  "desc": "11 exclusive listings from broker Meital Katzir: a Herzliya Pituach estate, mini penthouses and apartments in Tzukei Aviv, Nofei Yam and Sarona.",
+  "kw": "Meital Katzir real estate",
+  "slug": "meital-katzir",
+  "parent_slug": "brokers",
+  "url": "https://nad-lan.co.il/en/brokers/meital-katzir/",
+  "title_chars": 54,
+  "desc_chars": 144,
+  "slug_status": "proposed, needs owner approval"
+ }
+}

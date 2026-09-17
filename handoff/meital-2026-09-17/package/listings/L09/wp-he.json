@@ -1,0 +1,47 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/nadlan_property. Status stays draft. Verify meta keys and term names first (see HANDOFF).",
+ "status": "draft",
+ "title": "מיני פנטהאוז של 5 חדרים עם נוף לים, נופי ים",
+ "slug": "nofei-yam-mini-penthouse-5-rooms-for-rent",
+ "content_file": "content-he.html",
+ "excerpt": "5 חדרים ו-3 יחידות הורים, 135 מ״ר ומרפסת 20 מ״ר בקומה גבוהה עם נוף לים, 2 חניות עם הכנה לטעינה, חדר כושר ושומר. טווח שכירות, עלויות וחוק.",
+ "meta": {
+  "listing_type": "rent",
+  "property_type": "penthouse",
+  "price": null,
+  "price_per_sqm": null,
+  "rooms": 5,
+  "floor": null,
+  "total_floors": null,
+  "size_sqm": 135,
+  "balcony_sqm": 20,
+  "parking": true,
+  "elevator": null,
+  "ac": null,
+  "protected_room": null,
+  "storage": true,
+  "condition": null,
+  "street": "",
+  "building_number": "",
+  "lat": null,
+  "lng": null,
+  "city": "תל אביב-יפו",
+  "neighborhood": "נופי ים",
+  "arnona_monthly": null,
+  "vaad_bayit_monthly": null,
+  "status": "active",
+  "photos_csv": ""
+ },
+ "terms": {
+  "nadlan_city": [
+   "תל אביב-יפו"
+  ]
+ },
+ "yoast_meta": {
+  "_yoast_wpseo_title": "מיני פנטהאוז 5 חדרים להשכרה בנופי ים, נוף לים",
+  "_yoast_wpseo_metadesc": "5 חדרים ו-3 יחידות הורים, 135 מ״ר ומרפסת 20 מ״ר בקומה גבוהה עם נוף לים, 2 חניות עם הכנה לטעינה, חדר כושר ושומר. טווח שכירות, עלויות וחוק.",
+  "_yoast_wpseo_focuskw": "מיני פנטהאוז להשכרה בנופי ים"
+ },
+ "language": "he",
+ "translation_group": "L09"
+}

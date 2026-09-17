@@ -1,0 +1,47 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/nadlan_property. Status stays draft. Verify meta keys and term names first (see HANDOFF).",
+ "status": "draft",
+ "title": "3.5 חדרים מרוהטת עם שוכר, רחוב אליהו ברלין",
+ "slug": "tzukei-aviv-3-5-rooms-furnished-tenanted-for-sale",
+ "content_file": "content-he.html",
+ "excerpt": "3.5 חדרים מרוהטים בבניין בוטיק ברחוב אליהו ברלין, מושכרת ב-15,000 ש״ח לפי המשווקת. 5,000,000 ש״ח, תשואה של 3.6%, מס רכישה ועסקאות.",
+ "meta": {
+  "listing_type": "sale",
+  "property_type": "apartment",
+  "price": 5000000,
+  "price_per_sqm": 55556,
+  "rooms": 3.5,
+  "floor": 3,
+  "total_floors": 9,
+  "size_sqm": 90,
+  "balcony_sqm": 12,
+  "parking": true,
+  "elevator": null,
+  "ac": null,
+  "protected_room": null,
+  "storage": true,
+  "condition": "new",
+  "street": "אליהו ברלין",
+  "building_number": "",
+  "lat": null,
+  "lng": null,
+  "city": "תל אביב-יפו",
+  "neighborhood": "צוקי אביב",
+  "arnona_monthly": null,
+  "vaad_bayit_monthly": 600,
+  "status": "active",
+  "photos_csv": ""
+ },
+ "terms": {
+  "nadlan_city": [
+   "תל אביב-יפו"
+  ]
+ },
+ "yoast_meta": {
+  "_yoast_wpseo_title": "דירת 3.5 חדרים מרוהטת למכירה עם שוכר, צוקי אביב",
+  "_yoast_wpseo_metadesc": "3.5 חדרים מרוהטים בבניין בוטיק ברחוב אליהו ברלין, מושכרת ב-15,000 ש״ח לפי המשווקת. 5,000,000 ש״ח, תשואה של 3.6%, מס רכישה ועסקאות.",
+  "_yoast_wpseo_focuskw": "דירה מושכרת למכירה בצוקי אביב"
+ },
+ "language": "he",
+ "translation_group": "L05"
+}

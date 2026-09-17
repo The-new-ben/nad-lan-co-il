@@ -1,0 +1,47 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/nadlan_property. Status stays draft. Verify meta keys and term names first (see HANDOFF).",
+ "status": "draft",
+ "title": "מיני פנטהאוז בחלל כפול מול הים, צוקי אביב",
+ "slug": "tzukei-aviv-double-height-mini-penthouse-for-rent",
+ "content_file": "content-he.html",
+ "excerpt": "5 חדרים וממ״ד, כ-184 מ״ר, חלל כפול וקירות מסך לים, מרפסת של 20 מ״ר. 27,000 ש״ח לחודש בתשלום שנתי, עם עלויות, חוק ושכירויות להשוואה.",
+ "meta": {
+  "listing_type": "rent",
+  "property_type": "penthouse",
+  "price": 27000,
+  "price_per_sqm": null,
+  "rooms": 5,
+  "floor": 8,
+  "total_floors": 9,
+  "size_sqm": 184,
+  "balcony_sqm": 20,
+  "parking": null,
+  "elevator": null,
+  "ac": null,
+  "protected_room": true,
+  "storage": null,
+  "condition": "new",
+  "street": "אליהו ברלין",
+  "building_number": "",
+  "lat": null,
+  "lng": null,
+  "city": "תל אביב-יפו",
+  "neighborhood": "צוקי אביב",
+  "arnona_monthly": null,
+  "vaad_bayit_monthly": 1400,
+  "status": "active",
+  "photos_csv": ""
+ },
+ "terms": {
+  "nadlan_city": [
+   "תל אביב-יפו"
+  ]
+ },
+ "yoast_meta": {
+  "_yoast_wpseo_title": "מיני פנטהאוז להשכרה בצוקי אביב, חלל כפול מול הים",
+  "_yoast_wpseo_metadesc": "5 חדרים וממ״ד, כ-184 מ״ר, חלל כפול וקירות מסך לים, מרפסת של 20 מ״ר. 27,000 ש״ח לחודש בתשלום שנתי, עם עלויות, חוק ושכירויות להשוואה.",
+  "_yoast_wpseo_focuskw": "מיני פנטהאוז להשכרה בצוקי אביב"
+ },
+ "language": "he",
+ "translation_group": "L06"
+}

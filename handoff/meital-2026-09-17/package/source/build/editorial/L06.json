@@ -1,0 +1,967 @@
+{
+ "id": "L06",
+ "extends": "L04",
+ "inherit": [
+  "city",
+  "area",
+  "building_h2",
+  "building_lead",
+  "building",
+  "location_h2",
+  "location",
+  "schools_override",
+  "transport",
+  "transport_override",
+  "future",
+  "future_override"
+ ],
+ "deal": "rent",
+ "ptype": "mini_penthouse",
+ "plate": "mini_penthouse",
+ "status": "active",
+ "last_post": "2026-08-06",
+ "rooms": 5,
+ "rent": 27000,
+ "rent_src": [
+  "S92",
+  "S7"
+ ],
+ "rent_area": 184,
+ "built": 184,
+ "balcony": 20,
+ "plate_name": {
+  "he": "צוקי אביב, קו ראשון לים",
+  "en": "Tzukei Aviv, first line to the sea"
+ },
+ "kicker": {
+  "he": "להשכרה · צוקי אביב, צפון תל אביב",
+  "en": "For rent · Tzukei Aviv, north Tel Aviv"
+ },
+ "title": {
+  "he": "מיני פנטהאוז בחלל כפול מול הים, צוקי אביב",
+  "en": "Double-Height Mini Penthouse Facing the Sea, Tzukei Aviv"
+ },
+ "dek": {
+  "he": "5 חדרים וממ״ד על כ-184 מ״ר, קירות מסך לים ומרפסת של כ-20 מ״ר בבניין בוטיק חדש, להשכרה ב-27,000 ש״ח לחודש בתשלום של שנה מראש.",
+  "en": "Five rooms plus a safe room on about 184 sqm, glass walls to the sea and a balcony of about 20 sqm in a new boutique building, for rent at NIS 27,000 a month with a year paid upfront."
+ },
+ "chips": [
+  {
+   "he": "בלעדיות: מיטל קציר, נדל״ן על הים",
+   "en": "Exclusive: Meital Katzir, Real Estate by the Sea",
+   "sea": true
+  },
+  {
+   "he": "חדשה, לא גרו בה",
+   "en": "New, never occupied"
+  },
+  {
+   "he": "כניסה מיידית",
+   "en": "Immediate entry"
+  }
+ ],
+ "facts": [
+  {
+   "label": {
+    "he": "חדרים",
+    "en": "Rooms"
+   },
+   "value": {
+    "he": "5 וממ״ד",
+    "en": "5 plus safe room"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "שטח לפי ארנונה",
+    "en": "Arnona area"
+   },
+   "value": {
+    "he": "כ-184 מ״ר",
+    "en": "about 184 sqm"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "מרפסת לים",
+    "en": "Sea balcony"
+   },
+   "value": {
+    "he": "כ-20 מ״ר",
+    "en": "about 20 sqm"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "קומה",
+    "en": "Floor"
+   },
+   "value": {
+    "he": "8 מתוך 9",
+    "en": "8 of 9"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "גובה החלל",
+    "en": "Ceiling height"
+   },
+   "value": {
+    "he": "6 עד 7 מ׳",
+    "en": "6 to 7 m"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "חזית",
+    "en": "Facade"
+   },
+   "value": {
+    "he": "קירות מסך",
+    "en": "Glass walls"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "מצב",
+    "en": "Condition"
+   },
+   "value": {
+    "he": "חדשה מקבלן",
+    "en": "New from developer"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "ועד בית",
+    "en": "Building fee"
+   },
+   "value": {
+    "he": "1,400 ₪",
+    "en": "NIS 1,400"
+   },
+   "basis": "broker"
+  }
+ ],
+ "price_rows": [
+  {
+   "dt": {
+    "he": "תנאי תשלום",
+    "en": "Payment terms"
+   },
+   "dd": {
+    "he": "12 חודשים מראש",
+    "en": "12 months upfront"
+   }
+  },
+  {
+   "dt": {
+    "he": "ועד בית",
+    "en": "Building fee"
+   },
+   "dd": {
+    "he": "1,400 ₪ לחודש",
+    "en": "NIS 1,400 a month"
+   }
+  }
+ ],
+ "story_h2": {
+  "he": "גובה כפול, קיר זכוכית, והים בתוך החלל",
+  "en": "Double height, a glass wall, and the sea inside the room"
+ },
+ "story": {
+  "he": [
+   "בדירה הזאת הים הוא חלק מהאדריכלות: חלל מגורים בגובה כפול וקירות מסך הפונים לים, בקומה 8 מתוך 9 בבניין בוטיק חדש ברחוב אליהו ברלין.[[S92,S7]] במודעת המשווקת ביד2 הדירה מוגדרת חדשה מקבלן, ולא גרו בה.[[S7]]",
+   "5 חדרים וממ״ד על כ-184 מ״ר לפי שטח הארנונה, או כ-200 מ״ר בנוי לפי המודעות, ומרפסת שמש של כ-20 מ״ר הפונה לים. המפרט כולל חימום תת-רצפתי, מוצרי חשמל נסתרים, גופי תאורה של אקסלוסיב, מטבח האקר ועבודות נגרות מדוקדקות.[[S90,S92]] גובה החלל הכפול מופיע כ-7 מ׳ באינסטגרם וכ-6 מ׳ ביד2.[[S92,S7]]",
+   "שכר הדירה ירד מ-35,000 ש״ח באפריל ל-27,000 ש״ח באוגוסט, בתנאי של תשלום שנה מראש, וועד הבית 1,400 ש״ח לחודש.[[S89,S92,S7]] בבניין לובי מפואר וחדר כושר חדש, והחוף במרחק של כחמש עד שבע דקות הליכה לפי המשווקת.[[S90]]"
+  ],
+  "en": [
+   "Here the sea is part of the architecture: a double-height living space and glass walls facing the water, on floor 8 of 9 in a new boutique building on Eliyahu Berlin Street.[[S92,S7]] The broker's Yad2 listing describes it as new from the developer and never occupied.[[S7]]",
+   "Five rooms plus a safe room on about 184 sqm by arnona area, or about 200 sqm built per the listings, with a sun balcony of about 20 sqm facing the sea. The specification includes underfloor heating, concealed appliances, Exclusive light fittings, a Häcker kitchen and precise joinery.[[S90,S92]] The double height is given as 7 m on Instagram and 6 m on Yad2.[[S92,S7]]",
+   "The rent came down from NIS 35,000 in April to NIS 27,000 in August, subject to a year paid upfront, and the building fee is NIS 1,400 a month.[[S89,S92,S7]] The building has a formal lobby and a new gym, and the beach is five to seven minutes on foot according to the broker.[[S90]]"
+  ]
+ },
+ "features": {
+  "he": [
+   [
+    "חלל כפול של 6 עד 7 מ׳",
+    "עם קירות מסך הפונים לים"
+   ],
+   [
+    "כ-184 מ״ר בארנונה",
+    "5 חדרים וממ״ד; כ-200 מ״ר בנוי במודעות"
+   ],
+   [
+    "מרפסת של כ-20 מ״ר",
+    "מרפסת שמש הפונה לים"
+   ],
+   [
+    "חימום תת-רצפתי",
+    "ומוצרי חשמל נסתרים"
+   ],
+   [
+    "מטבח האקר",
+    "וגופי תאורה של אקסלוסיב"
+   ],
+   [
+    "קומה 8 מתוך 9",
+    "בבניין בוטיק חדש עם חדר כושר"
+   ]
+  ],
+  "en": [
+   [
+    "Double height of 6 to 7 m",
+    "With glass walls facing the sea"
+   ],
+   [
+    "About 184 sqm by arnona",
+    "Five rooms plus a safe room; about 200 sqm built per listings"
+   ],
+   [
+    "A balcony of about 20 sqm",
+    "Sun balcony facing the sea"
+   ],
+   [
+    "Underfloor heating",
+    "And concealed appliances"
+   ],
+   [
+    "Häcker kitchen",
+    "And Exclusive light fittings"
+   ],
+   [
+    "Floor 8 of 9",
+    "In a new boutique building with a gym"
+   ]
+  ]
+ },
+ "spec": [
+  {
+   "title": {
+    "he": "הדירה",
+    "en": "The residence"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "חדרים",
+      "en": "Rooms"
+     },
+     "dd": {
+      "he": "5 וממ״ד (במודעות: 6 חדרים)",
+      "en": "5 plus a safe room (listed as 6 rooms)"
+     },
+     "basis": "broker",
+     "src": [
+      "S90",
+      "S7"
+     ]
+    },
+    {
+     "dt": {
+      "he": "שטח",
+      "en": "Area"
+     },
+     "dd": {
+      "he": "כ-184 מ״ר לפי ארנונה; כ-200 מ״ר בנוי במודעות",
+      "en": "About 184 sqm by arnona; about 200 sqm built in listings"
+     },
+     "basis": "broker",
+     "src": [
+      "S90",
+      "S7"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מרפסת",
+      "en": "Balcony"
+     },
+     "dd": {
+      "he": "כ-20 מ״ר, פונה לים",
+      "en": "About 20 sqm, facing the sea"
+     },
+     "basis": "broker",
+     "src": [
+      "S90"
+     ]
+    },
+    {
+     "dt": {
+      "he": "קומה",
+      "en": "Floor"
+     },
+     "dd": {
+      "he": "8 מתוך 9 (בכרטיס מדלן מופיעה גם קומה 2)",
+      "en": "8 of 9 (one Madlan card also shows floor 2)"
+     },
+     "basis": "broker",
+     "src": [
+      "S7",
+      "S6"
+     ]
+    },
+    {
+     "dt": {
+      "he": "גובה החלל",
+      "en": "Ceiling height"
+     },
+     "dd": {
+      "he": "חלל כפול: 7 מ׳ באינסטגרם, 6 מ׳ ביד2",
+      "en": "Double height: 7 m on Instagram, 6 m on Yad2"
+     },
+     "basis": "broker",
+     "src": [
+      "S92",
+      "S7"
+     ]
+    },
+    {
+     "dt": {
+      "he": "חזית",
+      "en": "Facade"
+     },
+     "dd": {
+      "he": "קירות מסך הפונים לים",
+      "en": "Glass curtain walls facing the sea"
+     },
+     "basis": "broker",
+     "src": [
+      "S92"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מצב",
+      "en": "Condition"
+     },
+     "dd": {
+      "he": "חדשה מקבלן, לא גרו בה",
+      "en": "New from the developer, never occupied"
+     },
+     "basis": "broker",
+     "src": [
+      "S7"
+     ]
+    }
+   ]
+  },
+  {
+   "title": {
+    "he": "מפרט",
+    "en": "Specification"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "חימום",
+      "en": "Heating"
+     },
+     "dd": {
+      "he": "חימום תת-רצפתי",
+      "en": "Underfloor heating"
+     },
+     "basis": "broker",
+     "src": [
+      "S90"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מטבח",
+      "en": "Kitchen"
+     },
+     "dd": {
+      "he": "מטבח האקר ומוצרי חשמל נסתרים",
+      "en": "Häcker kitchen with concealed appliances"
+     },
+     "basis": "broker",
+     "src": [
+      "S92"
+     ]
+    },
+    {
+     "dt": {
+      "he": "תאורה",
+      "en": "Lighting"
+     },
+     "dd": {
+      "he": "גופי תאורה של אקסלוסיב",
+      "en": "Exclusive light fittings"
+     },
+     "basis": "broker",
+     "src": [
+      "S90"
+     ]
+    },
+    {
+     "dt": {
+      "he": "נגרות",
+      "en": "Joinery"
+     },
+     "dd": {
+      "he": "עבודות נגרות מדוקדקות וגמרים ברמה גבוהה",
+      "en": "Precise joinery and high-end finishes"
+     },
+     "basis": "broker",
+     "src": [
+      "S90"
+     ]
+    }
+   ]
+  },
+  {
+   "title": {
+    "he": "תנאים",
+    "en": "Terms"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "שכר דירה",
+      "en": "Rent"
+     },
+     "dd": {
+      "he": "27,000 ש״ח לחודש בתשלום של 12 חודשים מראש",
+      "en": "NIS 27,000 a month with 12 months paid upfront"
+     },
+     "basis": "broker",
+     "src": [
+      "S92"
+     ]
+    },
+    {
+     "dt": {
+      "he": "ועד בית",
+      "en": "Building fee"
+     },
+     "dd": {
+      "he": "1,400 ש״ח לחודש",
+      "en": "NIS 1,400 a month"
+     },
+     "basis": "broker",
+     "src": [
+      "S7"
+     ]
+    },
+    {
+     "dt": {
+      "he": "כניסה",
+      "en": "Entry"
+     },
+     "dd": {
+      "he": "מיידית",
+      "en": "Immediate"
+     },
+     "basis": "broker",
+     "src": [
+      "S7"
+     ]
+    },
+    {
+     "dt": {
+      "he": "דמי תיווך",
+      "en": "Brokerage"
+     },
+     "dd": {
+      "he": "הטבת ״ללא דמי תיווך״ חלה על סגירות באוגוסט 2026",
+      "en": "The no-brokerage offer applied to leases closed in August 2026"
+     },
+     "basis": "broker",
+     "src": [
+      "S92"
+     ]
+    }
+   ]
+  }
+ ],
+ "numbers": {
+  "h2": {
+   "he": "27,000 ש״ח לחודש, ומה מסביב",
+   "en": "NIS 27,000 a month, and everything around it"
+  },
+  "lead": {
+   "he": "שכר הדירה שפרסמה המשווקת ב-6.8.2026, מחושב לפי תעריפי 2026 וכללי השכירות שפורסמו.",
+   "en": "The rent the broker published on 6 August 2026, computed against 2026 rates and published lease rules."
+  },
+  "extra_kpis": [
+   {
+    "dt": {
+     "he": "תשלום מראש",
+     "en": "Upfront payment"
+    },
+    "dd": {
+     "he": "324,000 ₪",
+     "en": "NIS 324,000"
+    },
+    "small": {
+     "he": "12 חודשי שכירות",
+     "en": "12 months of rent"
+    }
+   }
+  ],
+  "tabs_title": {
+   "he": "העלות לשוכר",
+   "en": "What the tenant pays"
+  },
+  "tabs": [
+   {
+    "label": {
+     "he": "חודשי",
+     "en": "Monthly"
+    },
+    "rows": [
+     {
+      "dt": {
+       "he": "שכר דירה",
+       "en": "Rent"
+      },
+      "dd": {
+       "he": "27,000 ₪",
+       "en": "NIS 27,000"
+      }
+     },
+     {
+      "dt": {
+       "he": "ועד בית[[S7]]",
+       "en": "Building fee[[S7]]"
+      },
+      "dd": {
+       "he": "1,400 ₪",
+       "en": "NIS 1,400"
+      }
+     },
+     {
+      "dt": {
+       "he": "ארנונה, הערכה[[G_KH_TLV,G_NC_ARNONA]]",
+       "en": "Arnona, estimate[[G_KH_TLV,G_NC_ARNONA]]"
+      },
+      "dd": {
+       "he": "1,671-2,141 ₪",
+       "en": "NIS 1,671-2,141"
+      },
+      "note": {
+       "he": "184 מ״ר בתעריף מעל 140 מ״ר, אזור 2 עד אזור 1; האזור לא אומת",
+       "en": "184 sqm at the over-140 sqm rate, zone 2 to zone 1; zone unverified"
+      }
+     },
+     {
+      "dt": {
+       "he": "סך הכול בחודש",
+       "en": "Total per month"
+      },
+      "dd": {
+       "he": "30,071-30,541 ₪",
+       "en": "NIS 30,071-30,541"
+      },
+      "note": {
+       "he": "בהנחה שהשוכר משלם ועד בית וארנונה",
+       "en": "Assuming the tenant pays the building fee and arnona"
+      }
+     }
+    ]
+   },
+   {
+    "label": {
+     "he": "בכניסה",
+     "en": "At signing"
+    },
+    "rows": [
+     {
+      "dt": {
+       "he": "שכר דירה ל-12 חודשים",
+       "en": "Twelve months of rent"
+      },
+      "dd": {
+       "he": "324,000 ₪",
+       "en": "NIS 324,000"
+      }
+     },
+     {
+      "dt": {
+       "he": "דמי תיווך, אם ייגבו[[G_NBN_RENT]]",
+       "en": "Brokerage, if charged[[G_NBN_RENT]]"
+      },
+      "dd": {
+       "he": "31,860 ₪",
+       "en": "NIS 31,860"
+      },
+      "note": {
+       "he": "שכר חודש ומע״מ של 18%",
+       "en": "One month plus 18% VAT"
+      }
+     },
+     {
+      "dt": {
+       "he": "סך הכול לפני ערבויות",
+       "en": "Total before guarantees"
+      },
+      "dd": {
+       "he": "324,000-355,860 ₪",
+       "en": "NIS 324,000-355,860"
+      },
+      "note": {
+       "he": "ערבויות ובטחונות ייקבעו בחוזה",
+       "en": "Guarantees are set by the lease"
+      }
+     }
+    ]
+   },
+   {
+    "label": {
+     "he": "מה החוק קובע",
+     "en": "What the law says"
+    },
+    "rows": [
+     {
+      "dt": {
+       "he": "היקף חוק השכירות ההוגנת[[G_KZ_FAIR,G_NC_FAIR]]",
+       "en": "Scope of the Fair Rental Law[[G_KZ_FAIR,G_NC_FAIR]]"
+      },
+      "dd": {
+       "he": "עד כ-20,000 ₪ לחודש",
+       "en": "Up to about NIS 20,000 a month"
+      },
+      "note": {
+       "he": "בשכר דירה של 27,000 ש״ח, תקרת הערבויות ומועדי התיקונים נקבעים בחוזה",
+       "en": "At NIS 27,000 a month, guarantee caps and repair deadlines are set by the contract"
+      }
+     },
+     {
+      "dt": {
+       "he": "מי משלם דמי תיווך[[G_NBN_RENT]]",
+       "en": "Who pays brokerage[[G_NBN_RENT]]"
+      },
+      "dd": {
+       "he": "מי שהזמין את המתווך",
+       "en": "Whoever engaged the broker"
+      },
+      "note": {
+       "he": "לרוב שכר חודש ומע״מ",
+       "en": "Usually one month plus VAT"
+      }
+     }
+    ]
+   }
+  ],
+  "bars": {
+   "title": {
+    "he": "שכר דירה למ״ר מול דירות דומות",
+    "en": "Rent per sqm against similar homes"
+   },
+   "items": [
+    {
+     "label": {
+      "he": "הדירה, על 184 מ״ר",
+      "en": "This home, on 184 sqm"
+     },
+     "value": 147,
+     "this": true
+    },
+    {
+     "label": {
+      "he": "דופלקס בגובה כפול, ג׳ החדשה, 160 מ״ר",
+      "en": "Double-height duplex, Gimel HaHadasha, 160 sqm"
+     },
+     "value": 138,
+     "src": [
+      "S55"
+     ]
+    },
+    {
+     "label": {
+      "he": "דופלקס, ג׳ החדשה, 200 מ״ר",
+      "en": "Duplex, Gimel HaHadasha, 200 sqm"
+     },
+     "value": 135,
+     "src": [
+      "S50"
+     ]
+    },
+    {
+     "label": {
+      "he": "פנטהאוז, קדושי השואה, 220 מ״ר",
+      "en": "Penthouse, Kedoshei HaShoah, 220 sqm"
+     },
+     "value": 123,
+     "src": [
+      "S54"
+     ]
+    },
+    {
+     "label": {
+      "he": "אליהו ברלין 13, 170 מ״ר",
+      "en": "Eliyahu Berlin 13, 170 sqm"
+     },
+     "value": 118,
+     "src": [
+      "S48"
+     ]
+    }
+   ],
+   "note": {
+    "he": "ש״ח למ״ר לחודש, מחושב על השטח שפורסם במודעות. כל הפסים באותו קנה מידה.",
+    "en": "NIS per sqm per month, computed on the advertised area. All bars share one scale."
+   }
+  },
+  "ledger_title": {
+   "he": "מגמה, שנה ומטבע",
+   "en": "Trend, year and currency"
+  },
+  "ledger": [
+   {
+    "dt": {
+     "he": "מהלך שכר הדירה[[S89,S90,S92]]",
+     "en": "Rent history[[S89,S90,S92]]"
+    },
+    "dd": {
+     "he": "35,000 ← 32,000 ← 27,000 ₪",
+     "en": "NIS 35,000 to 32,000 to 27,000"
+    },
+    "note": {
+     "he": "19.4.2026, 28.5.2026, 6.8.2026: ירידה של 22.9%",
+     "en": "19 Apr, 28 May and 6 Aug 2026: down 22.9%"
+    }
+   },
+   {
+    "dt": {
+     "he": "שכר דירה שנתי",
+     "en": "Annual rent"
+    },
+    "dd": {
+     "he": "324,000 ₪",
+     "en": "NIS 324,000"
+    }
+   },
+   {
+    "dt": {
+     "he": "ועד בית שנתי",
+     "en": "Annual building fee"
+    },
+    "dd": {
+     "he": "16,800 ₪",
+     "en": "NIS 16,800"
+    }
+   },
+   {
+    "dt": {
+     "he": "שכר דירה לשוכרים חדשים בישראל[[G_CBS_WALLA]]",
+     "en": "Rents for new tenants in Israel[[G_CBS_WALLA]]"
+    },
+    "dd": {
+     "he": "4.4%+ בשנה",
+     "en": "+4.4% a year"
+    },
+    "note": {
+     "he": "מדד אוגוסט 2026 של הלמ״ס",
+     "en": "CBS, August 2026 index"
+    }
+   }
+  ]
+ },
+ "market": {
+  "h2": {
+   "he": "שכירות יוקרה בצוקי אביב ובסביבה",
+   "en": "Luxury rents in Tzukei Aviv and nearby"
+  },
+  "lead": {
+   "he": "מודעות שכירות לדופלקסים, פנטהאוזים ומיני פנטהאוזים באזור, ונתוני שכונה. אלה מחירים מבוקשים ולא חוזים חתומים.",
+   "en": "Rental listings for duplexes, penthouses and mini penthouses nearby, and neighborhood data. These are asking rents, not signed leases."
+  },
+  "stats": [
+   1,
+   2,
+   5,
+   7
+  ],
+  "sale": []
+ },
+ "checks_h2": {
+  "he": "מה לבדוק לפני שחותמים על שנה מראש",
+  "en": "What to check before paying a year upfront"
+ },
+ "checks_lead": {
+  "he": "השאלות ששוכר זהיר שואל על הדירה הזאת, והמסמכים שכדאי לקבל לפני חתימה.",
+  "en": "The questions a careful tenant asks about this home, and the documents to obtain before signing."
+ },
+ "checks_extra": {
+  "he": [
+   "טיוטת חוזה עם מנגנון מוסכם להבטחת התשלום מראש",
+   "אישור זכויות המשכיר בדירה",
+   "טופס 4 לבניין",
+   "פרוטוקול מסירה ורשימת ציוד"
+  ],
+  "en": [
+   "A draft lease with an agreed mechanism protecting the prepayment",
+   "Confirmation of the landlord's rights in the unit",
+   "The building's occupancy certificate (Tofes 4)",
+   "A handover record and equipment list"
+  ]
+ },
+ "faq": [
+  {
+   "q": {
+    "he": "האם אפשר לשלם חודשית?",
+    "en": "Can the rent be paid monthly?"
+   },
+   "a": {
+    "he": "המשווקת פרסמה 27,000 ש״ח בכפוף לתשלום שנה מראש, ובמודעת יד2 שדה התשלומים מסומן כגמיש.[[S92,S7]] את שכר הדירה בתשלומים חודשיים יש לברר מול המשווקת.",
+    "en": "The broker published NIS 27,000 subject to a year paid upfront, and the payments field on Yad2 is marked flexible.[[S92,S7]] Ask the broker for the monthly-payment rent."
+   }
+  },
+  {
+   "q": {
+    "he": "כמה עולה הדירה בחודש בפועל?",
+    "en": "What does the home cost per month in practice?"
+   },
+   "a": {
+    "he": "27,000 ש״ח שכר דירה, 1,400 ש״ח ועד בית וארנונה מוערכת של 1,671 עד 2,141 ש״ח: כ-30,071 עד 30,541 ש״ח לחודש.[[S7,G_KH_TLV]]",
+    "en": "NIS 27,000 rent, NIS 1,400 building fee and estimated arnona of NIS 1,671 to 2,141: about NIS 30,071 to 30,541 a month.[[S7,G_KH_TLV]]"
+   }
+  },
+  {
+   "q": {
+    "he": "האם חוק השכירות ההוגנת חל?",
+    "en": "Does the Fair Rental Law apply?"
+   },
+   "a": {
+    "he": "החוק חל על שכירות של עד כ-20,000 ש״ח לחודש, ולכן בשכר דירה של 27,000 ש״ח הערבויות, מועדי התיקונים ותנאי הביטול נקבעים בחוזה.[[G_KZ_FAIR,G_NC_FAIR]]",
+    "en": "The law covers leases of up to about NIS 20,000 a month, so at NIS 27,000 guarantees, repair deadlines and termination terms are set by the contract.[[G_KZ_FAIR,G_NC_FAIR]]"
+   }
+  },
+  {
+   "q": {
+    "he": "האם ייגבו דמי תיווך?",
+    "en": "Will brokerage be charged?"
+   },
+   "a": {
+    "he": "הטבת ״ללא דמי תיווך״ של המשווקת חלה על עסקאות שנסגרו באוגוסט 2026.[[S92]] דמי תיווך מקובלים הם שכר חודש ומע״מ, כ-31,860 ש״ח בדירה זו.[[G_NBN_RENT]]",
+    "en": "The broker's no-brokerage offer applied to leases closed in August 2026.[[S92]] Customary brokerage is one month plus VAT, about NIS 31,860 here.[[G_NBN_RENT]]"
+   }
+  },
+  {
+   "q": {
+    "he": "כמה רחוק הים?",
+    "en": "How far is the beach?"
+   },
+   "a": {
+    "he": "לפי המשווקת, כחמש עד שבע דקות הליכה לחוף תל ברוך ולטיילת פארק החוף.[[S89,S90]]",
+    "en": "According to the broker, five to seven minutes on foot to Tel Baruch beach and the coastal park promenade.[[S89,S90]]"
+   }
+  }
+ ],
+ "amenities": [
+  {
+   "he": "חלל כפול",
+   "en": "Double-height space"
+  },
+  {
+   "he": "קירות מסך",
+   "en": "Glass walls"
+  },
+  {
+   "he": "חימום תת-רצפתי",
+   "en": "Underfloor heating"
+  },
+  {
+   "he": "ממ״ד",
+   "en": "Safe room"
+  },
+  {
+   "he": "חדר כושר",
+   "en": "Gym"
+  }
+ ],
+ "seo": {
+  "he": {
+   "title": "מיני פנטהאוז להשכרה בצוקי אביב, חלל כפול מול הים",
+   "desc": "5 חדרים וממ״ד, כ-184 מ״ר, חלל כפול וקירות מסך לים, מרפסת של 20 מ״ר. 27,000 ש״ח לחודש בתשלום שנתי, עם עלויות, חוק ושכירויות להשוואה.",
+   "kw": "מיני פנטהאוז להשכרה בצוקי אביב",
+   "slug": "tzukei-aviv-double-height-mini-penthouse-for-rent"
+  },
+  "en": {
+   "title": "Double-Height Mini Penthouse for Rent, Tzukei Aviv",
+   "desc": "Five rooms plus a safe room, about 184 sqm, sea-facing glass walls and a 20 sqm balcony. NIS 27,000 a month paid yearly, with costs and comparable rents.",
+   "kw": "mini penthouse for rent Tzukei Aviv",
+   "slug": "en-tzukei-aviv-double-height-mini-penthouse-for-rent"
+  }
+ },
+ "shots": [
+  {
+   "he": "החלל הכפול וקיר הזכוכית לים",
+   "en": "The double-height space and the glass wall to the sea"
+  },
+  {
+   "he": "הנוף מהמרפסת",
+   "en": "The view from the balcony"
+  },
+  {
+   "he": "מטבח האקר",
+   "en": "The Häcker kitchen"
+  },
+  {
+   "he": "יחידת ההורים",
+   "en": "Master suite"
+  },
+  {
+   "he": "גלריה או קומה עליונה בחלל",
+   "en": "Gallery or upper level"
+  },
+  {
+   "he": "הלובי וחדר הכושר",
+   "en": "Lobby and gym"
+  },
+  {
+   "he": "החזית משעת שקיעה",
+   "en": "Facade at sunset"
+  },
+  {
+   "he": "תשריט הדירה",
+   "en": "Floor plan"
+  }
+ ],
+ "internal": {
+  "assessment": [
+   "27,000 ₪ הם 147 ₪ למ״ר על 184 מ״ר, מעל דופלקסים דומים בג׳ החדשה (118 עד 138 ₪ למ״ר). הירידה של 22.9% מאז אפריל מראה שהמחיר המקורי לא החזיק.",
+   "דרישת תשלום של שנה מראש (324,000 ₪) מצמצמת את קהל היעד לשוכרים תאגידיים ולמשפחות מחו״ל. לדף באנגלית יש כאן משקל גבוה.",
+   "מעל 20,000 ₪ לחודש חוק השכירות ההוגנת לא חל; השוכר צריך הגנה חוזית על התשלום מראש.",
+   "הפרסום האחרון מ-6.8.2026. ייתכן שהדירה כבר הושכרה."
+  ],
+  "confirm": [
+   "האם הדירה עדיין פנויה?",
+   "קומה 8 או 2, גובה 6 או 7 מ׳, שטח 184 או 200 מ״ר.",
+   "מחיר ללא תשלום מראש, והאם ייגבו דמי תיווך.",
+   "מי המשכיר (יזם או פרטי), חניות ומחסן.",
+   "האם מודעת Berlin Eliyahu 7 של מפרסם אחר ב-35,000 ₪ היא אותה דירה."
+  ]
+ },
+ "wp": {
+  "listing_type": "rent",
+  "property_type": "penthouse",
+  "price": 27000,
+  "rooms": 5,
+  "floor": 8,
+  "total_floors": 9,
+  "size_sqm": 184,
+  "balcony_sqm": 20,
+  "parking": null,
+  "elevator": null,
+  "ac": null,
+  "protected_room": true,
+  "street": "אליהו ברלין",
+  "building_number": "",
+  "city": "תל אביב-יפו",
+  "neighborhood": "צוקי אביב",
+  "arnona_monthly": 0,
+  "vaad_bayit_monthly": 1400,
+  "storage": null,
+  "condition": "new"
+ }
+}

@@ -1,0 +1,1110 @@
+{
+ "id": "L09",
+ "extends": "L10",
+ "inherit": [
+  "city",
+  "area",
+  "location_h2",
+  "schools_override",
+  "transport_override",
+  "future",
+  "future_override",
+  "checks_h2",
+  "checks_lead"
+ ],
+ "deal": "rent",
+ "ptype": "mini_penthouse",
+ "plate": "mini_penthouse",
+ "status": "confirm",
+ "last_post": "2026-06-17",
+ "rooms": 5,
+ "rent": null,
+ "rent_band": [
+  15500,
+  20250
+ ],
+ "rent_band_src": [
+  "MAD_TXCK",
+  "MAD_SDOT"
+ ],
+ "rent_area": 135,
+ "built": 135,
+ "balcony": 20,
+ "plate_name": {
+  "he": "נופי ים, הגוש הגדול",
+  "en": "Nofei Yam, HaGush HaGadol"
+ },
+ "kicker": {
+  "he": "להשכרה · נופי ים, צפון תל אביב",
+  "en": "For rent · Nofei Yam, north Tel Aviv"
+ },
+ "title": {
+  "he": "מיני פנטהאוז של 5 חדרים עם נוף לים, נופי ים",
+  "en": "Five-Room Mini Penthouse with a Sea View, Nofei Yam"
+ },
+ "dek": {
+  "he": "135 מ״ר בנוי ומרפסת של 20 מ״ר בקומה גבוהה, 3 יחידות הורים, 2 חניות עם הכנה לטעינת רכב חשמלי ומחסן, בבניין עם חדר כושר ושומר, לפי המשווקת. שכר הדירה לפי פנייה.",
+  "en": "135 sqm built and a 20 sqm balcony on a high floor, three master suites, two parking spaces prepared for EV charging and a storage room, in a building with a gym and a guard, according to the broker. Rent on request."
+ },
+ "chips": [
+  {
+   "he": "בלעדיות: מיטל קציר, נדל״ן על הים",
+   "en": "Exclusive: Meital Katzir, Real Estate by the Sea",
+   "sea": true
+  },
+  {
+   "he": "3 יחידות הורים",
+   "en": "Three master suites"
+  },
+  {
+   "he": "חדר כושר ושומר",
+   "en": "Gym and guard"
+  }
+ ],
+ "facts": [
+  {
+   "label": {
+    "he": "חדרים",
+    "en": "Rooms"
+   },
+   "value": {
+    "he": "5",
+    "en": "5"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "שטח בנוי",
+    "en": "Built area"
+   },
+   "value": {
+    "he": "135 מ״ר",
+    "en": "135 sqm"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "מרפסת",
+    "en": "Balcony"
+   },
+   "value": {
+    "he": "20 מ״ר",
+    "en": "20 sqm"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "יחידות הורים",
+    "en": "Master suites"
+   },
+   "value": {
+    "he": "3",
+    "en": "3"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "קומה",
+    "en": "Floor"
+   },
+   "value": {
+    "he": "גבוהה",
+    "en": "High"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "נוף",
+    "en": "View"
+   },
+   "value": {
+    "he": "ים",
+    "en": "Sea"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "חניה",
+    "en": "Parking"
+   },
+   "value": {
+    "he": "2 נפרדות",
+    "en": "2 separate"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "כניסה",
+    "en": "Entry"
+   },
+   "value": {
+    "he": "גמישה",
+    "en": "Flexible"
+   },
+   "basis": "broker"
+  }
+ ],
+ "price_rows": [
+  {
+   "dt": {
+    "he": "כניסה",
+    "en": "Entry"
+   },
+   "dd": {
+    "he": "גמישה",
+    "en": "Flexible"
+   }
+  }
+ ],
+ "story_h2": {
+  "he": "חמישה חדרים, שלוש יחידות הורים ומרפסת לים",
+  "en": "Five rooms, three master suites and a balcony to the sea"
+ },
+ "story": {
+  "he": [
+   "לפי המשווקת, מיני פנטהאוז של 5 חדרים, מהם 3 יחידות הורים, על 135 מ״ר בנוי ומרפסת של 20 מ״ר, בקומה גבוהה בבניין יוקרה בנופי ים.[[IG_L09A,IG_L09B]] לדירה 2 מרפסות, אחת מהן פונה לים, והמשווקת מדגישה את הפרטיות ואת הנוף לים.[[IG_L09A,IG_L09D]]",
+   "הדירה תוכננה על ידי אדריכל, עם פרקט איכותי לכל אורכה, מטבח יוקרתי ונגרות בהתאמה אישית.[[IG_L09E]] לה 2 חניות נפרדות עם הכנה לטעינת רכב חשמלי ומחסן, ובבניין חדר כושר ושומר.[[IG_L09D,IG_L09C]]",
+   "שכר הדירה לא פורסם. במודעות של דירות 5 חדרים ומיני פנטהאוז בשטח 110 עד 140 מ״ר בבניינים חדשים ובבנייני בוטיק בנופי ים ובל׳ החדשה, שכר הדירה המבוקש הוא 115 עד 150 ש״ח למ״ר, כלומר כ-15,500 עד 20,250 ש״ח לחודש ל-135 מ״ר. זה טווח שוק מחושב ולא הערכת שווי.[[MAD_TXCK,MAD_SDOT]]"
+  ],
+  "en": [
+   "According to the broker, this is a five-room mini penthouse, three of the rooms master suites, on 135 sqm built with a 20 sqm balcony, on a high floor of a luxury building in Nofei Yam.[[IG_L09A,IG_L09B]] It has two balconies, one facing the sea, and the broker highlights its privacy and sea view.[[IG_L09A,IG_L09D]]",
+   "The apartment was designed by an architect, with quality parquet throughout, a luxury kitchen and custom carpentry.[[IG_L09E]] It comes with two separate parking spaces prepared for EV charging and a storage room, and the building has a gym and a guard.[[IG_L09D,IG_L09C]]",
+   "The rent was not published. Listings for five-room units and mini penthouses of 110 to 140 sqm in new and boutique buildings in Nofei Yam and Lamed HaHadasha ask NIS 115 to 150 per sqm, or about NIS 15,500 to 20,250 a month for 135 sqm. That is a computed market range, not a valuation.[[MAD_TXCK,MAD_SDOT]]"
+  ]
+ },
+ "features": {
+  "he": [
+   [
+    "135 מ״ר ומרפסת של 20 מ״ר",
+    "5 חדרים, לפי המשווקת"
+   ],
+   [
+    "3 יחידות הורים",
+    "ו-2 מרפסות, אחת מהן לים"
+   ],
+   [
+    "קומה גבוהה עם נוף לים",
+    "ופרטיות, לפי המשווקת"
+   ],
+   [
+    "2 חניות נפרדות",
+    "עם הכנה לטעינת רכב חשמלי, ומחסן"
+   ],
+   [
+    "חדר כושר ושומר",
+    "בבניין, לפי המשווקת"
+   ],
+   [
+    "תכנון אדריכלי",
+    "פרקט, מטבח יוקרתי ונגרות בהתאמה אישית"
+   ]
+  ],
+  "en": [
+   [
+    "135 sqm plus a 20 sqm balcony",
+    "Five rooms, broker-stated"
+   ],
+   [
+    "Three master suites",
+    "And two balconies, one facing the sea"
+   ],
+   [
+    "High floor with a sea view",
+    "And privacy, per the broker"
+   ],
+   [
+    "Two separate parking spaces",
+    "Prepared for EV charging, plus storage"
+   ],
+   [
+    "Gym and guard",
+    "In the building, per the broker"
+   ],
+   [
+    "Architect-designed",
+    "Parquet, a luxury kitchen and custom carpentry"
+   ]
+  ]
+ },
+ "spec": [
+  {
+   "title": {
+    "he": "הדירה",
+    "en": "The apartment"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "סוג",
+      "en": "Type"
+     },
+     "dd": {
+      "he": "מיני פנטהאוז",
+      "en": "Mini penthouse"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L09F"
+     ]
+    },
+    {
+     "dt": {
+      "he": "חדרים",
+      "en": "Rooms"
+     },
+     "dd": {
+      "he": "5, מהם 3 יחידות הורים",
+      "en": "5 (Israeli count), including 3 master suites"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L09A"
+     ]
+    },
+    {
+     "dt": {
+      "he": "שטח בנוי",
+      "en": "Built area"
+     },
+     "dd": {
+      "he": "135 מ״ר",
+      "en": "135 sqm"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L09B"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מרפסות",
+      "en": "Balconies"
+     },
+     "dd": {
+      "he": "2, אחת פונה לים; מרפסת של 20 מ״ר",
+      "en": "2, one facing the sea; a 20 sqm balcony"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L09A",
+      "IG_L09B"
+     ]
+    },
+    {
+     "dt": {
+      "he": "קומה ונוף",
+      "en": "Floor and view"
+     },
+     "dd": {
+      "he": "קומה גבוהה, נוף לים",
+      "en": "High floor, sea view"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L09B",
+      "IG_L09D"
+     ]
+    },
+    {
+     "dt": {
+      "he": "גימור",
+      "en": "Finish"
+     },
+     "dd": {
+      "he": "תכנון אדריכלי, פרקט איכותי, מטבח יוקרתי, נגרות בהתאמה אישית",
+      "en": "Architect-designed, quality parquet, luxury kitchen, custom carpentry"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L09E"
+     ]
+    }
+   ]
+  },
+  {
+   "title": {
+    "he": "חניה, אחסון וכניסה",
+    "en": "Parking, storage and entry"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "חניה",
+      "en": "Parking"
+     },
+     "dd": {
+      "he": "2 חניות נפרדות עם הכנה לטעינת רכב חשמלי",
+      "en": "Two separate parking spaces prepared for EV charging"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L09D"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מחסן",
+      "en": "Storage"
+     },
+     "dd": {
+      "he": "יש",
+      "en": "Yes"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L09D",
+      "IG_L09E"
+     ]
+    },
+    {
+     "dt": {
+      "he": "כניסה",
+      "en": "Entry"
+     },
+     "dd": {
+      "he": "גמישה",
+      "en": "Flexible"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L09D",
+      "IG_L09E"
+     ]
+    }
+   ]
+  },
+  {
+   "title": {
+    "he": "טרם פורסם",
+    "en": "Not yet published"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "שכר דירה",
+      "en": "Rent"
+     },
+     "dd": {
+      "he": "לפי פנייה",
+      "en": "On request"
+     }
+    },
+    {
+     "dt": {
+      "he": "מספר הקומה",
+      "en": "Floor number"
+     },
+     "dd": {
+      "he": "לא צוין; קומה גבוהה",
+      "en": "Not stated; a high floor"
+     }
+    },
+    {
+     "dt": {
+      "he": "ממ״ד",
+      "en": "Safe room"
+     },
+     "dd": {
+      "he": "לא צוין במודעות",
+      "en": "Not mentioned in the listings"
+     }
+    },
+    {
+     "dt": {
+      "he": "ריהוט",
+      "en": "Furnishing"
+     },
+     "dd": {
+      "he": "לא צוין",
+      "en": "Not stated"
+     }
+    },
+    {
+     "dt": {
+      "he": "כתובת",
+      "en": "Address"
+     },
+     "dd": {
+      "he": "תימסר בתיאום עם המשווקת",
+      "en": "Given on contact with the broker"
+     }
+    }
+   ]
+  }
+ ],
+ "building_h2": {
+  "he": "בניין יוקרה עם חדר כושר ושומר",
+  "en": "A luxury building with a gym and a guard"
+ },
+ "building_lead": {
+  "he": "הבניין לא זוהה במקורות פתוחים, ולכן שנת הבנייה, מספר הקומות, שעות השמירה וועד הבית לא אומתו. הנתונים בפרק זה נמסרו על ידי המשווקת או מתארים את השכונה.[[IG_L09C]]",
+  "en": "The building could not be identified in open sources, so its year built, floor count, guard hours and building fee are unverified. The figures in this section come from the broker or describe the neighborhood.[[IG_L09C]]"
+ },
+ "building": [
+  {
+   "dt": {
+    "he": "שירותים",
+    "en": "Services"
+   },
+   "dd": {
+    "he": "חדר כושר לדיירים ושומר",
+    "en": "Residents' gym and a guard"
+   },
+   "basis": "broker",
+   "src": [
+    "IG_L09C"
+   ]
+  },
+  {
+   "dt": {
+    "he": "טעינת רכב חשמלי",
+    "en": "EV charging"
+   },
+   "dd": {
+    "he": "הכנה בחניות; המטען, עלות ההתקנה והסדר החשמל לא צוינו",
+    "en": "Prepared in the parking spaces; charger, installation cost and electricity arrangement not stated"
+   },
+   "basis": "broker",
+   "src": [
+    "IG_L09D"
+   ]
+  },
+  {
+   "dt": {
+    "he": "גובה הבנייה בשכונה",
+    "en": "Building heights nearby"
+   },
+   "dd": {
+    "he": "6 עד 11 קומות בבניינים שבמודעות נופי ים שנבדקו במדלן; מגדל בן 30 קומות נבנה ברחוב איינשטיין",
+    "en": "6 to 11 floors in the Nofei Yam listings reviewed on Madlan; a 30-floor tower is under construction on Einstein Street"
+   },
+   "src": [
+    "MAD_NY_RENT",
+    "MAD_E15"
+   ]
+  },
+  {
+   "dt": {
+    "he": "ועד בית",
+    "en": "Building fee (va'ad bayit)"
+   },
+   "dd": {
+    "he": "לא פורסם. במודעות אחרות באזור: 550 ש״ח לחודש בבניין חדש בן 7 קומות בגוש הגדול, ו-1,700 ש״ח ל-110 מ״ר בבניין עם בריכה, חדר כושר ושמירה 24/7 ברמת אביב החדשה",
+    "en": "Not published. Other listings nearby state NIS 550 a month in a new seven-floor HaGush HaGadol building and NIS 1,700 for 110 sqm in a Ramat Aviv HaHadasha building with a pool, gym and 24/7 security"
+   },
+   "src": [
+    "MAD_FPDK",
+    "MAD_QYSY"
+   ]
+  }
+ ],
+ "location": {
+  "he": [
+   "טיילת פארק החוף נפתחה בספטמבר 2023 ומשתרעת לאורך כ-2 ק״מ על המצוק, מחוף תל ברוך בדרום עד חוף הצוק בצפון, בתוך פארק טבע של 500 דונם ולצד שביל אופניים.[[WALLA_PROM,TIMEOUT_PROM]] תוכן של מדלן שפורסם בגלובס מתאר את נופי ים כמרחק הליכה קצר מהחוף.[[GLOBES_NY_2024]]",
+   "בין המתחמים בשכונה פועלים לפחות שני מרכזים מסחריים קטנים, אך אין בה רחוב מסחרי תוסס; בגוש הגדול פועלים כמה גני ילדים ובית ספר.[[TLV_COMPARE,GLOBES_NY_2024]] מנובמבר 2023 מחבר גשר להולכי רגל ולאופניים, עם מעליות, מעל רחוב איינשטיין בין נופי ים לל׳ החדשה, ומדרום לרחוב פועל הקאנטרי העירוני של תוכנית ל׳.[[TLV_BRIDGE23,TLV_COMPARE]]",
+   "ממערב לשכונה נבנה רובע שדה דב, על שטח שדה התעופה שנסגר ב-2019, עם כ-16,000 דירות. עד פברואר 2026 מכרו היזמים יותר מ-1,500 דירות, ורובן צפויות להיות מוכנות בתוך 3 עד 6 שנים.[[WIKI_SDEDOV,CALC_SDEDOV]] הגישה ברכב נשענת בעיקר על שדרות לוי אשכול ועל רחוב איינשטיין, וצומת איינשטיין-נמיר עמוס בשעות השיא.[[TLV_COMPARE]]"
+  ],
+  "en": [
+   "The coastal park promenade opened in September 2023 and runs about 2 km along the cliff, from Tel Baruch beach in the south to Tzuk beach in the north, inside a 500-dunam nature park and alongside a bike path.[[WALLA_PROM,TIMEOUT_PROM]] Madlan content published by Globes describes Nofei Yam as a short walk from the beach.[[GLOBES_NY_2024]]",
+   "At least two small shopping centers operate among the neighborhood's complexes, though there is no lively shopping street; several kindergartens and a school operate within HaGush HaGadol.[[TLV_COMPARE,GLOBES_NY_2024]] Since November 2023 a pedestrian and cycle bridge with lifts has crossed Einstein Street between Nofei Yam and Lamed HaHadasha, and the municipal country club of Plan Lamed lies south of the street.[[TLV_BRIDGE23,TLV_COMPARE]]",
+   "West of the neighborhood, the Sde Dov district is being built on the airport that closed in 2019, with about 16,000 apartments. By February 2026 developers had sold more than 1,500 of them, and most are expected to be ready within 3 to 6 years.[[WIKI_SDEDOV,CALC_SDEDOV]] Car access relies mainly on Levi Eshkol Boulevard and Einstein Street, and the Einstein and Namir junction is congested at peak hours.[[TLV_COMPARE]]"
+  ]
+ },
+ "numbers": {
+  "h2": {
+   "he": "שכר הדירה לפי פנייה, והטווח בשוק",
+   "en": "Rent on request, and the market range"
+  },
+  "lead": {
+   "he": "המשווקת לא פרסמה שכר דירה. החישובים כאן מבוססים על מודעות דומות בנופי ים ובל׳ החדשה, על תעריפי הארנונה של 2026 ועל כללי חוק השכירות ההוגנת.",
+   "en": "The broker has not published a rent. These figures are computed from similar listings in Nofei Yam and Lamed HaHadasha, 2026 arnona rates and the Fair Rental Law rules."
+  },
+  "extra_kpis": [
+   {
+    "dt": {
+     "he": "טווח שוק מחושב",
+     "en": "Computed market range"
+    },
+    "dd": {
+     "he": "15,500-20,250 ₪",
+     "en": "NIS 15,500-20,250"
+    },
+    "small": {
+     "he": "לחודש: 135 מ״ר כפול 115 עד 150 ₪ למ״ר; אינו הערכת שווי",
+     "en": "A month: 135 sqm at NIS 115 to 150 per sqm; not a valuation"
+    }
+   },
+   {
+    "dt": {
+     "he": "שכר דירה למ״ר, מודעות דומות",
+     "en": "Rent per sqm, similar listings"
+    },
+    "dd": {
+     "he": "115-150 ₪[[MAD_TXCK,MAD_SDOT]]",
+     "en": "NIS 115-150[[MAD_TXCK,MAD_SDOT]]"
+    },
+    "small": {
+     "he": "7 מודעות, 110 עד 140 מ״ר",
+     "en": "7 listings, 110 to 140 sqm"
+    }
+   },
+   {
+    "dt": {
+     "he": "בשנה, לפי הטווח",
+     "en": "Per year, on that range"
+    },
+    "dd": {
+     "he": "186,000-243,000 ₪",
+     "en": "NIS 186,000-243,000"
+    },
+    "small": {
+     "he": "חישוב",
+     "en": "Computed"
+    }
+   },
+   {
+    "dt": {
+     "he": "סף חוק השכירות ההוגנת",
+     "en": "Fair Rental Law threshold"
+    },
+    "dd": {
+     "he": "20,000 ₪[[G_KZ_FAIR]]",
+     "en": "NIS 20,000[[G_KZ_FAIR]]"
+    },
+    "small": {
+     "he": "לחודש; הטווח המחושב חוצה אותו",
+     "en": "A month; the computed range crosses it"
+    }
+   }
+  ],
+  "tabs_title": {
+   "he": "העלות לשוכר, לפי הטווח",
+   "en": "What the tenant pays, on that range"
+  },
+  "tabs": [
+   {
+    "label": {
+     "he": "חודשי",
+     "en": "Monthly"
+    },
+    "rows": [
+     {
+      "dt": {
+       "he": "שכר דירה, טווח מחושב[[MAD_TXCK,MAD_SDOT]]",
+       "en": "Rent, computed range[[MAD_TXCK,MAD_SDOT]]"
+      },
+      "dd": {
+       "he": "15,500-20,250 ₪",
+       "en": "NIS 15,500-20,250"
+      }
+     },
+     {
+      "dt": {
+       "he": "ארנונה, הערכה[[G_KH_TLV,G_NC_ARNONA]]",
+       "en": "Arnona, estimate[[G_KH_TLV,G_NC_ARNONA]]"
+      },
+      "dd": {
+       "he": "1,020-1,803 ₪",
+       "en": "NIS 1,020-1,803"
+      },
+      "note": {
+       "he": "מ-135 מ״ר ללא המרפסת בתעריף אא של אזור 2, עד 155 מ״ר כולל המרפסת בתעריף מעל 140 מ״ר של אזור 1. האזור, הסיווג והשטח לחיוב לא אומתו",
+       "en": "From 135 sqm without the balcony at the zone 2 newest-code rate, to 155 sqm including the balcony at the zone 1 over-140 sqm rate. Zone, code and charged area unverified"
+      }
+     },
+     {
+      "dt": {
+       "he": "ועד בית[[MAD_FPDK,MAD_QYSY]]",
+       "en": "Building fee[[MAD_FPDK,MAD_QYSY]]"
+      },
+      "dd": {
+       "he": "לא פורסם",
+       "en": "Not published"
+      },
+      "note": {
+       "he": "במודעות אחרות באזור: 550 עד 1,700 ₪ לחודש",
+       "en": "Other listings nearby: NIS 550 to 1,700 a month"
+      }
+     },
+     {
+      "dt": {
+       "he": "סך הכול בחודש, לפני ועד בית",
+       "en": "Total per month, before the building fee"
+      },
+      "dd": {
+       "he": "16,520-22,053 ₪",
+       "en": "NIS 16,520-22,053"
+      }
+     }
+    ]
+   },
+   {
+    "label": {
+     "he": "בכניסה",
+     "en": "At signing"
+    },
+    "rows": [
+     {
+      "dt": {
+       "he": "שכר דירה עד 20,000 ₪: תקרת ערבויות[[G_KZ_GUAR]]",
+       "en": "Rent up to NIS 20,000: guarantee cap[[G_KZ_GUAR]]"
+      },
+      "dd": {
+       "he": "46,500-60,000 ₪",
+       "en": "NIS 46,500-60,000"
+      },
+      "note": {
+       "he": "3 חודשי שכירות, בחוזה של 9 חודשים ומעלה",
+       "en": "3 months' rent, on a lease of 9 months or more"
+      }
+     },
+     {
+      "dt": {
+       "he": "שכר דירה מעל 20,000 ₪[[G_KZ_FAIR]]",
+       "en": "Rent above NIS 20,000[[G_KZ_FAIR]]"
+      },
+      "dd": {
+       "he": "אין תקרה בחוק",
+       "en": "No statutory cap"
+      },
+      "note": {
+       "he": "פרק השכירות ההוגנת, כולל תקרת הערבויות, אינו חל; הערבויות נקבעות בחוזה",
+       "en": "The Fair Rental chapter, including the guarantee cap, does not apply; guarantees are set by the lease"
+      }
+     },
+     {
+      "dt": {
+       "he": "דמי תיווך, אם השוכר הזמין מתווך[[G_NBN_RENT]]",
+       "en": "Brokerage, if the tenant engaged a broker[[G_NBN_RENT]]"
+      },
+      "dd": {
+       "he": "18,290-23,895 ₪",
+       "en": "NIS 18,290-23,895"
+      },
+      "note": {
+       "he": "שכר חודש ומע״מ של 18%",
+       "en": "One month plus 18% VAT"
+      }
+     }
+    ]
+   },
+   {
+    "label": {
+     "he": "מה החוק קובע",
+     "en": "What the law says"
+    },
+    "rows": [
+     {
+      "dt": {
+       "he": "חוק השכירות ההוגנת[[G_KZ_FAIR,G_NC_FAIR]]",
+       "en": "Fair Rental Law[[G_KZ_FAIR,G_NC_FAIR]]"
+      },
+      "dd": {
+       "he": "תלוי בשכר הדירה",
+       "en": "Depends on the rent"
+      },
+      "note": {
+       "he": "חל כששכר הדירה אינו עולה על כ-20,000 ₪ לחודש",
+       "en": "Applies where the rent does not exceed about NIS 20,000 a month"
+      }
+     },
+     {
+      "dt": {
+       "he": "תיקון ליקויים[[G_NC_FAIR]]",
+       "en": "Repairs[[G_NC_FAIR]]"
+      },
+      "dd": {
+       "he": "3 ימים או 30 יום",
+       "en": "3 days or 30 days"
+      },
+      "note": {
+       "he": "כשהחוק חל: ליקוי דחוף תוך 3 ימים, ליקוי אחר תוך 30 יום",
+       "en": "Where the law applies: urgent defects within 3 days, others within 30 days"
+      }
+     },
+     {
+      "dt": {
+       "he": "הודעה מוקדמת[[G_NC_FAIR]]",
+       "en": "Notice periods[[G_NC_FAIR]]"
+      },
+      "dd": {
+       "he": "90 או 60 יום",
+       "en": "90 or 60 days"
+      },
+      "note": {
+       "he": "90 יום מצד המשכיר, 60 יום מצד השוכר",
+       "en": "90 days from the landlord, 60 days from the tenant"
+      }
+     },
+     {
+      "dt": {
+       "he": "ארנונה וועד בית[[G_NC_FAIR]]",
+       "en": "Arnona and building fee[[G_NC_FAIR]]"
+      },
+      "dd": {
+       "he": "על השוכר",
+       "en": "Paid by the tenant"
+      },
+      "note": {
+       "he": "ביטוח המבנה על המשכיר",
+       "en": "Building insurance is the landlord's"
+      }
+     }
+    ]
+   }
+  ],
+  "bars": {
+   "title": {
+    "he": "שכר דירה למ״ר ב-7 המודעות שמהן חושב הטווח",
+    "en": "Rent per sqm in the 7 listings behind the range"
+   },
+   "items": [
+    {
+     "label": {
+      "he": "מיני פנטהאוז, קומה 8, ל׳ החדשה, 140 מ״ר",
+      "en": "Mini penthouse, floor 8, Lamed HaHadasha, 140 sqm"
+     },
+     "value": 150,
+     "src": [
+      "MAD_SDOT"
+     ]
+    },
+    {
+     "label": {
+      "he": "מיני פנטהאוז, קומה 6, הגוש הגדול, 110 מ״ר",
+      "en": "Mini penthouse, floor 6, HaGush HaGadol, 110 sqm"
+     },
+     "value": 150,
+     "src": [
+      "MAD_FPDK"
+     ]
+    },
+    {
+     "label": {
+      "he": "5 חדרים, רחוב אייזק שטרן, ל׳ החדשה, 120 מ״ר",
+      "en": "5 rooms, Isaac Stern Street, Lamed HaHadasha, 120 sqm"
+     },
+     "value": 133,
+     "src": [
+      "MAD_VJWD"
+     ]
+    },
+    {
+     "label": {
+      "he": "מיני פנטהאוז, קומה 6, ל׳ החדשה, 136 מ״ר",
+      "en": "Mini penthouse, floor 6, Lamed HaHadasha, 136 sqm"
+     },
+     "value": 132,
+     "src": [
+      "MAD_QON7"
+     ]
+    },
+    {
+     "label": {
+      "he": "פנטהאוז, קומה 7, נופי ים, 130 מ״ר",
+      "en": "Penthouse, floor 7, Nofei Yam, 130 sqm"
+     },
+     "value": 131,
+     "src": [
+      "MAD_B9MY"
+     ]
+    },
+    {
+     "label": {
+      "he": "5 חדרים, רחוב אמיר גלבוע, נופי ים, 128 מ״ר",
+      "en": "5 rooms, Amir Gilboa Street, Nofei Yam, 128 sqm"
+     },
+     "value": 117,
+     "src": [
+      "MAD_TXCK"
+     ]
+    },
+    {
+     "label": {
+      "he": "5 חדרים, קומה 5, ל׳ החדשה, 130 מ״ר",
+      "en": "5 rooms, floor 5, Lamed HaHadasha, 130 sqm"
+     },
+     "value": 115,
+     "src": [
+      "MAD_HMWH"
+     ]
+    }
+   ],
+   "note": {
+    "he": "₪ למ״ר בנוי לחודש, מחושב ממודעות שכירות מבוקשות מ-16.9.2026 על השטח שפורסם. כל הפסים באותו קנה מידה.",
+    "en": "NIS per built sqm per month, computed from asking rents listed on 16 Sep 2026, on the published area. All bars share one scale."
+   }
+  },
+  "ledger_title": {
+   "he": "שוק ומגמה",
+   "en": "Market and trend"
+  },
+  "ledger": [
+   {
+    "dt": {
+     "he": "שכר דירה ממוצע, נופי ים[[MAD_NY_AREA]]",
+     "en": "Average rent, Nofei Yam[[MAD_NY_AREA]]"
+    },
+    "dd": {
+     "he": "12,300 ₪",
+     "en": "NIS 12,300"
+    },
+    "note": {
+     "he": "כל הגדלים, לפי מדלן",
+     "en": "All sizes, per Madlan"
+    }
+   },
+   {
+    "dt": {
+     "he": "מודעות 5 חדרים ופנטהאוזים באזור[[MAD_ZIS2,MAD_AGV2]]",
+     "en": "Five-room and penthouse listings nearby[[MAD_ZIS2,MAD_AGV2]]"
+    },
+    "dd": {
+     "he": "13,500-30,000 ₪",
+     "en": "NIS 13,500-30,000"
+    },
+    "note": {
+     "he": "הטווח המלא של המחירים המבוקשים, 125 עד 210 מ״ר",
+     "en": "The full range of asking rents, 125 to 210 sqm"
+    }
+   },
+   {
+    "dt": {
+     "he": "שכר דירה לשוכרים חדשים בישראל[[G_CBS_WALLA]]",
+     "en": "Rents for new tenants in Israel[[G_CBS_WALLA]]"
+    },
+    "dd": {
+     "he": "4.4%+ בשנה",
+     "en": "+4.4% a year"
+    },
+    "note": {
+     "he": "מדד אוגוסט 2026 של הלמ״ס; 2.6%+ לשוכרים שחידשו חוזה",
+     "en": "CBS, August 2026 index; +2.6% for renewing tenants"
+    }
+   }
+  ]
+ },
+ "market": {
+  "h2": {
+   "he": "דירות גדולות להשכרה ולמכירה בנופי ים ובל׳ החדשה",
+   "en": "Large homes for rent and sale in Nofei Yam and Lamed HaHadasha"
+  },
+  "lead": {
+   "he": "מודעות שכירות לדירות 4 ו-5 חדרים, מיני פנטהאוזים ופנטהאוזים בנופי ים, בל׳ החדשה וברמת אביב החדשה, ועסקאות מכירה של דירות גדולות בשכונה. מחירי השכירות הם מבוקשים ולא חוזים חתומים.",
+   "en": "Rental listings for four- and five-room units, mini penthouses and penthouses in Nofei Yam, Lamed HaHadasha and Ramat Aviv HaHadasha, and sales of large apartments in the neighborhood. Rents are asking figures, not signed leases."
+  },
+  "stats": [
+   0,
+   1,
+   2
+  ]
+ },
+ "questions": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11
+ ],
+ "checks_extra": {
+  "he": [
+   "טיוטת חוזה השכירות, כולל ערבויות, הצמדה, אופציה ותשלומים מראש",
+   "חשבון ארנונה אחרון של הדירה",
+   "אישור זכויות המשכיר בדירה ובשתי החניות, ואישור הנציגות לטעינת רכב חשמלי",
+   "פרוטוקול מסירה ורשימת ציוד"
+  ],
+  "en": [
+   "The draft lease, including guarantees, indexation, option and any upfront payments",
+   "The unit's latest arnona bill",
+   "Confirmation of the landlord's rights in the unit and both parking spaces, and the house committee's approval for EV charging",
+   "A handover record and equipment list"
+  ]
+ },
+ "faq": [
+  {
+   "q": {
+    "he": "כמה עולה הדירה בחודש?",
+    "en": "What does the apartment cost per month?"
+   },
+   "a": {
+    "he": "המשווקת לא פרסמה שכר דירה. לפי מודעות דומות בנופי ים ובל׳ החדשה, טווח השוק לדירה של 135 מ״ר הוא כ-15,500 עד 20,250 ש״ח לחודש, לפני ארנונה וועד בית. זה חישוב ולא הצעת מחיר.[[MAD_TXCK,MAD_SDOT]]",
+    "en": "The broker has not published a rent. Based on similar listings in Nofei Yam and Lamed HaHadasha, the market range for 135 sqm is about NIS 15,500 to 20,250 a month, before arnona and the building fee. This is a computation, not a quote.[[MAD_TXCK,MAD_SDOT]]"
+   }
+  },
+  {
+   "q": {
+    "he": "מתי אפשר להיכנס?",
+    "en": "When can a tenant move in?"
+   },
+   "a": {
+    "he": "לפי המשווקת הכניסה גמישה. יש לתאם מועד ישירות מולה.[[IG_L09D]]",
+    "en": "The broker gives a flexible entry date; agree the date with her directly.[[IG_L09D]]"
+   }
+  },
+  {
+   "q": {
+    "he": "אילו שירותים יש בבניין?",
+    "en": "What does the building offer?"
+   },
+   "a": {
+    "he": "לפי המשווקת חדר כושר ושומר. שעות השמירה ומה כולל ועד הבית לא פורסמו.[[IG_L09C]]",
+    "en": "Per the broker, a gym and a guard. The guard's hours and what the building fee covers were not published.[[IG_L09C]]"
+   }
+  },
+  {
+   "q": {
+    "he": "האם חוק השכירות ההוגנת חל?",
+    "en": "Does the Fair Rental Law apply?"
+   },
+   "a": {
+    "he": "רק אם שכר הדירה אינו עולה על כ-20,000 ש״ח לחודש. אז הערבויות מוגבלות ל-3 חודשי שכירות לכל היותר, וחלות חובות התיקון של המשכיר. הטווח המחושב לדירה חוצה את הסף.[[G_KZ_FAIR,G_KZ_GUAR]]",
+    "en": "Only if the rent does not exceed about NIS 20,000 a month. Then guarantees are capped at 3 months' rent at most, and the landlord's repair duties apply. The computed range for this unit crosses that threshold.[[G_KZ_FAIR,G_KZ_GUAR]]"
+   }
+  },
+  {
+   "q": {
+    "he": "יש הכנה לרכב חשמלי?",
+    "en": "Is the parking EV-ready?"
+   },
+   "a": {
+    "he": "לפי המשווקת החניות מוכנות לטעינה. אם מותקן מטען, ומי משלם על ההתקנה ועל החשמל, לא צוין.[[IG_L09D]]",
+    "en": "Per the broker, the parking spaces are prepared for charging. Whether a charger is installed, and who pays for installation and electricity, was not stated.[[IG_L09D]]"
+   }
+  }
+ ],
+ "amenities": [
+  {
+   "he": "חדר כושר",
+   "en": "Gym"
+  },
+  {
+   "he": "שומר",
+   "en": "Guard"
+  },
+  {
+   "he": "חניה",
+   "en": "Parking"
+  },
+  {
+   "he": "הכנה לטעינת רכב חשמלי",
+   "en": "EV charging preparation"
+  },
+  {
+   "he": "מחסן",
+   "en": "Storage"
+  },
+  {
+   "he": "מרפסת",
+   "en": "Balcony"
+  }
+ ],
+ "seo": {
+  "he": {
+   "title": "מיני פנטהאוז 5 חדרים להשכרה בנופי ים, נוף לים",
+   "desc": "5 חדרים ו-3 יחידות הורים, 135 מ״ר ומרפסת 20 מ״ר בקומה גבוהה עם נוף לים, 2 חניות עם הכנה לטעינה, חדר כושר ושומר. טווח שכירות, עלויות וחוק.",
+   "kw": "מיני פנטהאוז להשכרה בנופי ים",
+   "slug": "nofei-yam-mini-penthouse-5-rooms-for-rent"
+  },
+  "en": {
+   "title": "5-Room Mini Penthouse for Rent in Nofei Yam, Tel Aviv",
+   "desc": "Five rooms with three master suites, 135 sqm plus a 20 sqm balcony on a high floor with a sea view, two EV-ready parking spaces, gym and guard.",
+   "kw": "mini penthouse for rent Nofei Yam Tel Aviv",
+   "slug": "en-nofei-yam-5-room-mini-penthouse-for-rent"
+  }
+ },
+ "shots": [
+  {
+   "he": "המרפסת הפונה לים והנוף",
+   "en": "The sea-facing balcony and the view"
+  },
+  {
+   "he": "הסלון",
+   "en": "Living room"
+  },
+  {
+   "he": "המטבח",
+   "en": "Kitchen"
+  },
+  {
+   "he": "יחידות ההורים",
+   "en": "Master suites"
+  },
+  {
+   "he": "המרפסת השנייה",
+   "en": "The second balcony"
+  },
+  {
+   "he": "פרקט ונגרות",
+   "en": "Parquet and carpentry"
+  },
+  {
+   "he": "חדר הכושר והלובי",
+   "en": "Gym and lobby"
+  },
+  {
+   "he": "החניות עם הכנה לטעינה, והמחסן",
+   "en": "EV-ready parking spaces and storage"
+  },
+  {
+   "he": "חזית הבניין",
+   "en": "Building facade"
+  },
+  {
+   "he": "תשריט הדירה",
+   "en": "Floor plan"
+  }
+ ],
+ "internal": {
+  "assessment": [
+   "הפוסט האחרון מ-17.6.2026, ולא נמצאה מודעה במדלן, גם לא בין מודעות המשווקת. סביר שהדירה הושכרה. לא להעלות לפני אישור זמינות.",
+   "הבניין לא זוהה, ולכן חדר הכושר, השומר, הנוף וההכנה לטעינה הם טענות המשווקת בלבד.",
+   "טווח השוק 15,500-20,250 ₪ חוצה את סף חוק השכירות ההוגנת. מעל 20,000 ₪ אין תקרת ערבויות בחוק, והמשווקת כבר שיווקה דירה אחרת (L06) בתנאי של 12 חודשים מראש.",
+   "הערך המבדל מול המודעות: 3 יחידות הורים ו-2 חניות עם הכנה לטעינה. בנופי ים מעט בניינים עם שירותים, ולכן שומר וחדר כושר הם יתרון אמיתי אם יאומתו.",
+   "ייתכן קשר לפוסט A9 מ-5.5.2026 (5 חדרים בגוש הגדול ליד חוף תל ברוך)."
+  ],
+  "confirm": [
+   "האם הדירה פנויה, ומהו שכר הדירה המבוקש?",
+   "כתובת הבניין, מספר הקומה ומספר הקומות.",
+   "ממ״ד, ריהוט וכיווני המרפסות.",
+   "שעות השמירה, ועד הבית ומה הוא כולל.",
+   "מטען לרכב חשמלי מותקן או הכנה בלבד.",
+   "אישור בכתב לשימוש בתמונות ובטקסט באתר."
+  ]
+ },
+ "wp": {
+  "listing_type": "rent",
+  "property_type": "penthouse",
+  "price": null,
+  "rooms": 5,
+  "floor": null,
+  "total_floors": null,
+  "size_sqm": 135,
+  "balcony_sqm": 20,
+  "parking": true,
+  "elevator": null,
+  "ac": null,
+  "protected_room": null,
+  "street": "",
+  "building_number": "",
+  "city": "תל אביב-יפו",
+  "neighborhood": "נופי ים",
+  "arnona_monthly": 0,
+  "vaad_bayit_monthly": 0,
+  "storage": true,
+  "condition": null
+ }
+}

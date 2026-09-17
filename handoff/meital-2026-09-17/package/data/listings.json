@@ -1,0 +1,497 @@
+{
+ "generated": "2026-09-16",
+ "broker": {
+  "name_he": "מיטל קציר",
+  "brand_he": "נדל״ן על הים",
+  "license": "3131540",
+  "phone": "052-3631582"
+ },
+ "url_pattern": {
+  "he": "https://nad-lan.co.il/properties/{slug}/",
+  "en": "https://nad-lan.co.il/en/properties/{slug}/"
+ },
+ "listings": [
+  {
+   "id": "L01",
+   "deal": "sale",
+   "status": "active",
+   "last_instagram_post": "2026-09-15",
+   "title": {
+    "he": "אחוזה פרטית של 700 מ״ר על מגרש של 1.1 דונם, הרצליה פיתוח",
+    "en": "A Private Estate of 700 sqm on a 1.1-Dunam Plot, Herzliya Pituach"
+   },
+   "city": {
+    "he": "הרצליה",
+    "en": "Herzliya"
+   },
+   "area": {
+    "he": "הרצליה פיתוח",
+    "en": "Herzliya Pituach"
+   },
+   "price_nis": null,
+   "rent_nis_month": null,
+   "rent_band_nis": null,
+   "rooms": null,
+   "size_sqm": 700,
+   "balcony_sqm": null,
+   "slug": {
+    "he": "herzliya-pituach-private-estate-for-sale",
+    "en": "en-herzliya-pituach-private-estate-for-sale"
+   },
+   "files": {
+    "block-he.html": "listings/L01/block-he.html",
+    "block-en.html": "listings/L01/block-en.html",
+    "content-he.html": "listings/L01/content-he.html",
+    "content-en.html": "listings/L01/content-en.html",
+    "wp-he.json": "listings/L01/wp-he.json",
+    "wp-en.json": "listings/L01/wp-en.json",
+    "schema-he.jsonld": "listings/L01/schema-he.jsonld",
+    "schema-en.jsonld": "listings/L01/schema-en.jsonld",
+    "seo.json": "listings/L01/seo.json",
+    "shotlist.md": "listings/L01/shotlist.md",
+    "brief-he.md": "listings/L01/brief-he.md"
+   },
+   "sources_on_page": 82,
+   "photos_needed": 12
+  },
+  {
+   "id": "L07",
+   "deal": "sale",
+   "status": "active",
+   "last_instagram_post": "2026-08-24",
+   "title": {
+    "he": "מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון",
+    "en": "New Mini Penthouse with 80 sqm of Terraces, Kochav HaTzafon"
+   },
+   "city": {
+    "he": "תל אביב-יפו",
+    "en": "Tel Aviv-Yafo"
+   },
+   "area": {
+    "he": "כוכב הצפון",
+    "en": "Kochav HaTzafon"
+   },
+   "price_nis": 18000000,
+   "rent_nis_month": null,
+   "rent_band_nis": null,
+   "rooms": 5,
+   "size_sqm": 190,
+   "balcony_sqm": 80,
+   "slug": {
+    "he": "kochav-hatzafon-new-mini-penthouse-for-sale",
+    "en": "en-kochav-hatzafon-new-mini-penthouse-for-sale"
+   },
+   "files": {
+    "block-he.html": "listings/L07/block-he.html",
+    "block-en.html": "listings/L07/block-en.html",
+    "content-he.html": "listings/L07/content-he.html",
+    "content-en.html": "listings/L07/content-en.html",
+    "wp-he.json": "listings/L07/wp-he.json",
+    "wp-en.json": "listings/L07/wp-en.json",
+    "schema-he.jsonld": "listings/L07/schema-he.jsonld",
+    "schema-en.jsonld": "listings/L07/schema-en.jsonld",
+    "seo.json": "listings/L07/seo.json",
+    "shotlist.md": "listings/L07/shotlist.md",
+    "brief-he.md": "listings/L07/brief-he.md"
+   },
+   "sources_on_page": 51,
+   "photos_needed": 9
+  },
+  {
+   "id": "L08",
+   "deal": "sale",
+   "status": "active",
+   "last_instagram_post": "2026-08-28",
+   "title": {
+    "he": "4.5 חדרים במתחם עם בריכה וספא, מגדלי נאמן",
+    "en": "4.5 Rooms in a Pool and Spa Complex, Migdalei Ne'eman"
+   },
+   "city": {
+    "he": "תל אביב-יפו",
+    "en": "Tel Aviv-Yafo"
+   },
+   "area": {
+    "he": "צוקי אביב, מגדלי נאמן",
+    "en": "Tzukei Aviv, Migdalei Ne'eman"
+   },
+   "price_nis": 5900000,
+   "rent_nis_month": null,
+   "rent_band_nis": null,
+   "rooms": 4.5,
+   "size_sqm": 130,
+   "balcony_sqm": null,
+   "slug": {
+    "he": "migdalei-neeman-4-5-rooms-for-sale",
+    "en": "en-migdalei-neeman-4-5-room-apartment-for-sale"
+   },
+   "files": {
+    "block-he.html": "listings/L08/block-he.html",
+    "block-en.html": "listings/L08/block-en.html",
+    "content-he.html": "listings/L08/content-he.html",
+    "content-en.html": "listings/L08/content-en.html",
+    "wp-he.json": "listings/L08/wp-he.json",
+    "wp-en.json": "listings/L08/wp-en.json",
+    "schema-he.jsonld": "listings/L08/schema-he.jsonld",
+    "schema-en.jsonld": "listings/L08/schema-en.jsonld",
+    "seo.json": "listings/L08/seo.json",
+    "shotlist.md": "listings/L08/shotlist.md",
+    "brief-he.md": "listings/L08/brief-he.md"
+   },
+   "sources_on_page": 47,
+   "photos_needed": 9
+  },
+  {
+   "id": "L05",
+   "deal": "sale",
+   "status": "active",
+   "last_instagram_post": "2026-08-31",
+   "title": {
+    "he": "3.5 חדרים מרוהטת עם שוכר, רחוב אליהו ברלין",
+    "en": "Furnished 3.5 Rooms with a Tenant in Place, Eliyahu Berlin Street"
+   },
+   "city": {
+    "he": "תל אביב-יפו",
+    "en": "Tel Aviv-Yafo"
+   },
+   "area": {
+    "he": "צוקי אביב",
+    "en": "Tzukei Aviv"
+   },
+   "price_nis": 5000000,
+   "rent_nis_month": null,
+   "rent_band_nis": null,
+   "rooms": 3.5,
+   "size_sqm": 90,
+   "balcony_sqm": 12,
+   "slug": {
+    "he": "tzukei-aviv-3-5-rooms-furnished-tenanted-for-sale",
+    "en": "en-tzukei-aviv-furnished-3-5-rooms-tenanted-for-sale"
+   },
+   "files": {
+    "block-he.html": "listings/L05/block-he.html",
+    "block-en.html": "listings/L05/block-en.html",
+    "content-he.html": "listings/L05/content-he.html",
+    "content-en.html": "listings/L05/content-en.html",
+    "wp-he.json": "listings/L05/wp-he.json",
+    "wp-en.json": "listings/L05/wp-en.json",
+    "schema-he.jsonld": "listings/L05/schema-he.jsonld",
+    "schema-en.jsonld": "listings/L05/schema-en.jsonld",
+    "seo.json": "listings/L05/seo.json",
+    "shotlist.md": "listings/L05/shotlist.md",
+    "brief-he.md": "listings/L05/brief-he.md"
+   },
+   "sources_on_page": 60,
+   "photos_needed": 8
+  },
+  {
+   "id": "L04",
+   "deal": "sale",
+   "status": "active",
+   "last_instagram_post": "2026-08-26",
+   "title": {
+    "he": "3 חדרים עם 2 חניות ומחסן, רחוב אליהו ברלין",
+    "en": "Three Rooms with Two Parking Spaces, Eliyahu Berlin Street"
+   },
+   "city": {
+    "he": "תל אביב-יפו",
+    "en": "Tel Aviv-Yafo"
+   },
+   "area": {
+    "he": "צוקי אביב",
+    "en": "Tzukei Aviv"
+   },
+   "price_nis": 4650000,
+   "rent_nis_month": null,
+   "rent_band_nis": null,
+   "rooms": 3,
+   "size_sqm": 90,
+   "balcony_sqm": 12,
+   "slug": {
+    "he": "tzukei-aviv-3-rooms-berlin-for-sale",
+    "en": "en-tzukei-aviv-3-room-apartment-for-sale"
+   },
+   "files": {
+    "block-he.html": "listings/L04/block-he.html",
+    "block-en.html": "listings/L04/block-en.html",
+    "content-he.html": "listings/L04/content-he.html",
+    "content-en.html": "listings/L04/content-en.html",
+    "wp-he.json": "listings/L04/wp-he.json",
+    "wp-en.json": "listings/L04/wp-en.json",
+    "schema-he.jsonld": "listings/L04/schema-he.jsonld",
+    "schema-en.jsonld": "listings/L04/schema-en.jsonld",
+    "seo.json": "listings/L04/seo.json",
+    "shotlist.md": "listings/L04/shotlist.md",
+    "brief-he.md": "listings/L04/brief-he.md"
+   },
+   "sources_on_page": 59,
+   "photos_needed": 10
+  },
+  {
+   "id": "L06",
+   "deal": "rent",
+   "status": "active",
+   "last_instagram_post": "2026-08-06",
+   "title": {
+    "he": "מיני פנטהאוז בחלל כפול מול הים, צוקי אביב",
+    "en": "Double-Height Mini Penthouse Facing the Sea, Tzukei Aviv"
+   },
+   "city": {
+    "he": "תל אביב-יפו",
+    "en": "Tel Aviv-Yafo"
+   },
+   "area": {
+    "he": "צוקי אביב",
+    "en": "Tzukei Aviv"
+   },
+   "price_nis": null,
+   "rent_nis_month": 27000,
+   "rent_band_nis": null,
+   "rooms": 5,
+   "size_sqm": 184,
+   "balcony_sqm": 20,
+   "slug": {
+    "he": "tzukei-aviv-double-height-mini-penthouse-for-rent",
+    "en": "en-tzukei-aviv-double-height-mini-penthouse-for-rent"
+   },
+   "files": {
+    "block-he.html": "listings/L06/block-he.html",
+    "block-en.html": "listings/L06/block-en.html",
+    "content-he.html": "listings/L06/content-he.html",
+    "content-en.html": "listings/L06/content-en.html",
+    "wp-he.json": "listings/L06/wp-he.json",
+    "wp-en.json": "listings/L06/wp-en.json",
+    "schema-he.jsonld": "listings/L06/schema-he.jsonld",
+    "schema-en.jsonld": "listings/L06/schema-en.jsonld",
+    "seo.json": "listings/L06/seo.json",
+    "shotlist.md": "listings/L06/shotlist.md",
+    "brief-he.md": "listings/L06/brief-he.md"
+   },
+   "sources_on_page": 52,
+   "photos_needed": 8
+  },
+  {
+   "id": "L02",
+   "deal": "rent",
+   "status": "active",
+   "last_instagram_post": "2026-09-03",
+   "title": {
+    "he": "4.5 חדרים בעיצוב מעצבת עם מרפסת לים, ב.ס.ר שרונה",
+    "en": "Designer-Finished 4.5 Rooms with a Sea-View Balcony, B.S.R Sarona"
+   },
+   "city": {
+    "he": "תל אביב-יפו",
+    "en": "Tel Aviv-Yafo"
+   },
+   "area": {
+    "he": "שרונה",
+    "en": "Sarona"
+   },
+   "price_nis": null,
+   "rent_nis_month": null,
+   "rent_band_nis": [
+    16640,
+    18944
+   ],
+   "rooms": 4.5,
+   "size_sqm": 128,
+   "balcony_sqm": 14,
+   "slug": {
+    "he": "bsr-sarona-designer-4-5-rooms-for-rent",
+    "en": "en-bsr-sarona-designer-4-5-room-apartment-for-rent"
+   },
+   "files": {
+    "block-he.html": "listings/L02/block-he.html",
+    "block-en.html": "listings/L02/block-en.html",
+    "content-he.html": "listings/L02/content-he.html",
+    "content-en.html": "listings/L02/content-en.html",
+    "wp-he.json": "listings/L02/wp-he.json",
+    "wp-en.json": "listings/L02/wp-en.json",
+    "schema-he.jsonld": "listings/L02/schema-he.jsonld",
+    "schema-en.jsonld": "listings/L02/schema-en.jsonld",
+    "seo.json": "listings/L02/seo.json",
+    "shotlist.md": "listings/L02/shotlist.md",
+    "brief-he.md": "listings/L02/brief-he.md"
+   },
+   "sources_on_page": 75,
+   "photos_needed": 7
+  },
+  {
+   "id": "L03",
+   "deal": "rent",
+   "status": "active",
+   "last_instagram_post": "2026-09-01",
+   "title": {
+    "he": "5 חדרים בקומה גבוהה עם נוף לים, ב.ס.ר שרונה",
+    "en": "Five Rooms on a High Floor with a Sea View, B.S.R Sarona"
+   },
+   "city": {
+    "he": "תל אביב-יפו",
+    "en": "Tel Aviv-Yafo"
+   },
+   "area": {
+    "he": "שרונה",
+    "en": "Sarona"
+   },
+   "price_nis": null,
+   "rent_nis_month": 15500,
+   "rent_band_nis": null,
+   "rooms": 5,
+   "size_sqm": 117,
+   "balcony_sqm": 14,
+   "slug": {
+    "he": "bsr-sarona-5-rooms-sea-view-for-rent",
+    "en": "en-bsr-sarona-5-room-sea-view-apartment-for-rent"
+   },
+   "files": {
+    "block-he.html": "listings/L03/block-he.html",
+    "block-en.html": "listings/L03/block-en.html",
+    "content-he.html": "listings/L03/content-he.html",
+    "content-en.html": "listings/L03/content-en.html",
+    "wp-he.json": "listings/L03/wp-he.json",
+    "wp-en.json": "listings/L03/wp-en.json",
+    "schema-he.jsonld": "listings/L03/schema-he.jsonld",
+    "schema-en.jsonld": "listings/L03/schema-en.jsonld",
+    "seo.json": "listings/L03/seo.json",
+    "shotlist.md": "listings/L03/shotlist.md",
+    "brief-he.md": "listings/L03/brief-he.md"
+   },
+   "sources_on_page": 77,
+   "photos_needed": 8
+  },
+  {
+   "id": "L09",
+   "deal": "rent",
+   "status": "confirm",
+   "last_instagram_post": "2026-06-17",
+   "title": {
+    "he": "מיני פנטהאוז של 5 חדרים עם נוף לים, נופי ים",
+    "en": "Five-Room Mini Penthouse with a Sea View, Nofei Yam"
+   },
+   "city": {
+    "he": "תל אביב-יפו",
+    "en": "Tel Aviv-Yafo"
+   },
+   "area": {
+    "he": "נופי ים",
+    "en": "Nofei Yam"
+   },
+   "price_nis": null,
+   "rent_nis_month": null,
+   "rent_band_nis": [
+    15500,
+    20250
+   ],
+   "rooms": 5,
+   "size_sqm": 135,
+   "balcony_sqm": 20,
+   "slug": {
+    "he": "nofei-yam-mini-penthouse-5-rooms-for-rent",
+    "en": "en-nofei-yam-5-room-mini-penthouse-for-rent"
+   },
+   "files": {
+    "block-he.html": "listings/L09/block-he.html",
+    "block-en.html": "listings/L09/block-en.html",
+    "content-he.html": "listings/L09/content-he.html",
+    "content-en.html": "listings/L09/content-en.html",
+    "wp-he.json": "listings/L09/wp-he.json",
+    "wp-en.json": "listings/L09/wp-en.json",
+    "schema-he.jsonld": "listings/L09/schema-he.jsonld",
+    "schema-en.jsonld": "listings/L09/schema-en.jsonld",
+    "seo.json": "listings/L09/seo.json",
+    "shotlist.md": "listings/L09/shotlist.md",
+    "brief-he.md": "listings/L09/brief-he.md"
+   },
+   "sources_on_page": 55,
+   "photos_needed": 10
+  },
+  {
+   "id": "L10",
+   "deal": "rent",
+   "status": "active",
+   "last_instagram_post": "2026-09-12",
+   "title": {
+    "he": "3 חדרים עם מרפסת של 20 מ״ר ו-2 חניות, נופי ים",
+    "en": "Three Rooms with a 20 sqm Balcony and Two Parking Spaces, Nofei Yam"
+   },
+   "city": {
+    "he": "תל אביב-יפו",
+    "en": "Tel Aviv-Yafo"
+   },
+   "area": {
+    "he": "נופי ים",
+    "en": "Nofei Yam"
+   },
+   "price_nis": null,
+   "rent_nis_month": 9500,
+   "rent_band_nis": null,
+   "rooms": 3,
+   "size_sqm": 90,
+   "balcony_sqm": 20,
+   "slug": {
+    "he": "nofei-yam-3-rooms-balcony-for-rent",
+    "en": "en-nofei-yam-3-room-apartment-for-rent"
+   },
+   "files": {
+    "block-he.html": "listings/L10/block-he.html",
+    "block-en.html": "listings/L10/block-en.html",
+    "content-he.html": "listings/L10/content-he.html",
+    "content-en.html": "listings/L10/content-en.html",
+    "wp-he.json": "listings/L10/wp-he.json",
+    "wp-en.json": "listings/L10/wp-en.json",
+    "schema-he.jsonld": "listings/L10/schema-he.jsonld",
+    "schema-en.jsonld": "listings/L10/schema-en.jsonld",
+    "seo.json": "listings/L10/seo.json",
+    "shotlist.md": "listings/L10/shotlist.md",
+    "brief-he.md": "listings/L10/brief-he.md"
+   },
+   "sources_on_page": 45,
+   "photos_needed": 9
+  },
+  {
+   "id": "L11",
+   "deal": "rent",
+   "status": "confirm",
+   "last_instagram_post": "2026-08-18",
+   "title": {
+    "he": "5 חדרים בקומה גבוהה במתחם עם בריכה, רמת אביב",
+    "en": "Five Rooms on a High Floor in a Complex with a Pool, Ramat Aviv"
+   },
+   "city": {
+    "he": "תל אביב-יפו",
+    "en": "Tel Aviv-Yafo"
+   },
+   "area": {
+    "he": "רמת אביב",
+    "en": "Ramat Aviv"
+   },
+   "price_nis": null,
+   "rent_nis_month": null,
+   "rent_band_nis": [
+    12800,
+    18000
+   ],
+   "rooms": 5,
+   "size_sqm": null,
+   "balcony_sqm": null,
+   "slug": {
+    "he": "ramat-aviv-5-rooms-pool-complex-for-rent",
+    "en": "en-ramat-aviv-5-room-apartment-pool-complex-for-rent"
+   },
+   "files": {
+    "block-he.html": "listings/L11/block-he.html",
+    "block-en.html": "listings/L11/block-en.html",
+    "content-he.html": "listings/L11/content-he.html",
+    "content-en.html": "listings/L11/content-en.html",
+    "wp-he.json": "listings/L11/wp-he.json",
+    "wp-en.json": "listings/L11/wp-en.json",
+    "schema-he.jsonld": "listings/L11/schema-he.jsonld",
+    "schema-en.jsonld": "listings/L11/schema-en.jsonld",
+    "seo.json": "listings/L11/seo.json",
+    "shotlist.md": "listings/L11/shotlist.md",
+    "brief-he.md": "listings/L11/brief-he.md"
+   },
+   "sources_on_page": 55,
+   "photos_needed": 9
+  }
+ ]
+}

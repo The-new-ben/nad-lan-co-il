@@ -1,0 +1,113 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "Three Rooms with Two Parking Spaces, Eliyahu Berlin Street",
+   "description": "Three rooms, 90 sqm plus a 12 sqm balcony, two parking spaces, storage and a safe room in a boutique building. NIS 4,650,000 with tax, costs and comps.",
+   "inLanguage": "en",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/en/properties/en-tzukei-aviv-3-room-apartment-for-sale/",
+   "about": {
+    "@type": "Apartment",
+    "name": "Three Rooms with Two Parking Spaces, Eliyahu Berlin Street",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Tel Aviv-Yafo",
+     "addressRegion": "Tzukei Aviv",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 3,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 90,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Safe room",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "2 parking spaces",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Storage",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Gym",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Lobby",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#Sell",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "Meital Katzir, Real Estate by the Sea",
+     "telephone": "+972523631582"
+    },
+    "price": 4650000
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "How does the price per sqm compare with the neighborhood?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "On 90 sqm built the asking price is about NIS 51,667 per sqm. The Tzukei Aviv median was about NIS 49,000 per sqm in August 2026, and 3-room sales on nearby streets in 2025 and 2026 were recorded at NIS 48,734 to 52,632 per sqm, in older buildings."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does the apartment have a sea view?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The broker describes a balcony facing an open green view and presents the building as the first building to the sea. The land between the neighborhood and the sea is covered by plan TA/3700, which a planner quoted by Globes described as buildings of eight floors at most. Check what is planned west of the building before paying for a view."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How much purchase tax would a buyer pay?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Under the 2026 brackets: about NIS 128,038 for a single-home buyer, NIS 372,000 for an additional home or a foreign resident, and about NIS 13,356 for an eligible new immigrant. This is not tax advice."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What are the monthly costs?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A management fee of NIS 600 a month according to the broker. Arnona was not published; at 2026 rates for a new building it would be about NIS 771 to 960 a month, depending on the arnona zone."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "When can a buyer move in?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The apartment is ready, and the listings show a flexible entry date."
+     }
+    }
+   ]
+  }
+ ]
+}

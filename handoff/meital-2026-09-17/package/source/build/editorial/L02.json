@@ -1,0 +1,148 @@
+{
+ "id": "L02", "extends": "L03",
+ "inherit": ["city", "area", "plate_name", "building_h2", "building_lead", "building", "location_h2", "location", "schools_override", "transport", "transport_override", "future", "future_override", "amenities"],
+ "token_map": {"S9": "S6", "S10": "S7", "S11": "S8", "S12": "S9", "S17": "S18", "S33": "S10", "S34": "S11", "S36": "S33", "S38": "S35", "S39": "S36", "S40": "S37", "S41": "S38", "S43": "S40", "S27": "S28", "S44": "S41", "S45": "S42", "S54": "S50", "S55": "S51", "S56": "S52", "S57": "S53", "S58": "S54", "S61": "S57", "S66": "S62", "S30": "S16"},
+ "deal": "rent", "ptype": "apartment", "plate": "tower", "status": "active", "last_post": "2026-09-03",
+ "rooms": 4.5, "rent": null, "rent_band": [16640, 18944], "rent_band_src": ["S84"], "rent_area": 128, "built": 128, "balcony": 14,
+ "kicker": {"he": "להשכרה · שרונה, מרכז תל אביב", "en": "For rent · Sarona, central Tel Aviv"},
+ "title": {"he": "4.5 חדרים בעיצוב מעצבת עם מרפסת לים, ב.ס.ר שרונה", "en": "Designer-Finished 4.5 Rooms with a Sea-View Balcony, B.S.R Sarona"},
+ "dek": {"he": "דירה חדשה של 128 מ״ר בנוי, במקור 5 חדרים, עם מרפסת מערבית של 14 מ״ר, מקררים אינטגרליים מוסתרים, פרקט ותאורה מתוכננת, חניה מקורה ומחסן, בפרויקט שקיבל טופס 4 במרץ 2026.", "en": "A new 128 sqm apartment, originally five rooms, with a 14 sqm west-facing balcony, concealed integrated refrigerators, parquet and designed lighting, covered parking and storage, in a project that received its occupancy certificate in March 2026."},
+ "chips": [
+  {"he": "בלעדיות: מיטל קציר, נדל״ן על הים", "en": "Exclusive: Meital Katzir, Real Estate by the Sea", "sea": true},
+  {"he": "חדשה מהניילונים", "en": "Brand new"},
+  {"he": "תכנון וחומרים של מעצבת", "en": "Designer planning and materials"}
+ ],
+ "facts": [
+  {"label": {"he": "חדרים", "en": "Rooms"}, "value": {"he": "4.5 (במקור 5)", "en": "4.5 (originally 5)"}, "basis": "broker"},
+  {"label": {"he": "שטח בנוי", "en": "Built area"}, "value": {"he": "128 מ״ר", "en": "128 sqm"}, "basis": "broker"},
+  {"label": {"he": "מרפסת", "en": "Balcony"}, "value": {"he": "14 מ״ר", "en": "14 sqm"}, "basis": "broker"},
+  {"label": {"he": "כיוון המרפסת", "en": "Balcony faces"}, "value": {"he": "מערב לים", "en": "West, to the sea"}, "basis": "broker"},
+  {"label": {"he": "קומה", "en": "Floor"}, "value": {"he": "גבוהה", "en": "High"}, "basis": "broker"},
+  {"label": {"he": "חניה", "en": "Parking"}, "value": {"he": "מקורה, פרטית", "en": "Covered, private"}, "basis": "broker"},
+  {"label": {"he": "מחסן", "en": "Storage"}, "value": {"he": "יש", "en": "Yes"}, "basis": "broker"},
+  {"label": {"he": "מצב", "en": "Condition"}, "value": {"he": "חדשה", "en": "New"}, "basis": "broker"}
+ ],
+ "price_rows": [
+  {"dt": {"he": "טופס 4", "en": "Occupancy certificate"}, "dd": {"he": "29.3.2026", "en": "29 Mar 2026"}}
+ ],
+ "story_h2": {"he": "דירת מעצבת, מערבה אל הים", "en": "A designer home, facing west to the sea"},
+ "story": {
+  "he": [
+   "ב.ס.ר שרונה, לשעבר פרויקט קבוצת הרכישה יונייטד שרונה, כולל שלושה מגדלים של כ-40 קומות ו-420 דירות ברחוב ארניה אוסוולדו, בחלק הדרומי של מתחם שרונה.[[S7,S8]] הפרויקט קיבל טופס 4 ב-29 במרץ 2026.[[S9]]",
+   "הדירה תוכננה במקור כ-5 חדרים והוסבה ל-4.5, על 128 מ״ר בנוי ומרפסת של 14 מ״ר הפונה למערב, בקומה גבוהה עם נוף פתוח לים.[[S1,S5]] לפי המשווקת התכנון ובחירת החומרים נעשו על ידי מעצבת מובילה: מטבח עם אי, מקררים אינטגרליים מוסתרים, כיריים יוקרתיות, פרקט איכותי ותאורה מתוכננת בכל הדירה.[[S2,S5]]",
+   "לדירה חניה מקורה פרטית ומחסן, ובבניין שמירה 24/7 וחדר כושר לדיירים.[[S4,S5]] שכר הדירה לא פורסם; לפי מודעות של דירות 5 חדרים עם נוף לים בפרויקט, טווח השוק המחושב לדירה בגודל כזה הוא כ-16,640 עד 18,944 ש״ח לחודש.[[S84]]"
+  ],
+  "en": [
+   "B.S.R Sarona, formerly the United Sarona purchase group project, comprises three towers of about 40 floors and 420 apartments on Arania Osvaldo Street, in the southern part of the Sarona complex.[[S7,S8]] The project received its occupancy certificate (Tofes 4) on 29 March 2026.[[S9]]",
+   "The apartment was planned as five rooms and converted to 4.5, on 128 sqm built with a 14 sqm balcony facing west, on a high floor with open sea views.[[S1,S5]] According to the broker, a leading designer planned it and chose the materials: a kitchen with an island, concealed integrated refrigerators, a premium cooktop, quality parquet and designed lighting throughout.[[S2,S5]]",
+   "It comes with a covered private parking space and storage, and the building has 24/7 security and a residents' gym.[[S4,S5]] The rent was not published; based on listings of 5-room sea-view units in the project, the computed market band for this size is about NIS 16,640 to 18,944 a month.[[S84]]"
+  ]
+ },
+ "features": {
+  "he": [["128 מ״ר בנוי", "4.5 חדרים, במקור 5"], ["מרפסת של 14 מ״ר", "פונה למערב, לים"], ["עיצוב של מעצבת מובילה", "תכנון וחומרים, לפי המשווקת"], ["מקררים אינטגרליים מוסתרים", "מטבח עם אי וכיריים יוקרתיות"], ["חניה מקורה ומחסן", "צמודים לדירה"], ["טופס 4 ממרץ 2026", "שמירה 24/7 וחדר כושר[[S9]]"]],
+  "en": [["128 sqm built", "4.5 rooms, originally 5"], ["A 14 sqm balcony", "Facing west, to the sea"], ["Planned by a leading designer", "Layout and materials, per the broker"], ["Concealed integrated refrigerators", "Island kitchen and premium cooktop"], ["Covered parking and storage", "Attached to the unit"], ["Tofes 4 in March 2026", "24/7 security and gym[[S9]]"]]
+ },
+ "spec": [
+  {"title": {"he": "הדירה", "en": "The apartment"}, "rows": [
+   {"dt": {"he": "חדרים", "en": "Rooms"}, "dd": {"he": "4.5, במקור 5 חדרים", "en": "4.5, originally 5 rooms"}, "basis": "broker", "src": ["S1"]},
+   {"dt": {"he": "שטח בנוי", "en": "Built area"}, "dd": {"he": "128 מ״ר", "en": "128 sqm"}, "basis": "broker", "src": ["S1"]},
+   {"dt": {"he": "מרפסת", "en": "Balcony"}, "dd": {"he": "14 מ״ר, מערב ודרום-מערב", "en": "14 sqm, west and south-west"}, "basis": "broker", "src": ["S1", "S5"]},
+   {"dt": {"he": "קומה ונוף", "en": "Floor and view"}, "dd": {"he": "קומה גבוהה; נוף פתוח לים ואור טבעי לאורך היום", "en": "High floor; open sea view and natural light all day"}, "basis": "broker", "src": ["S1", "S5"]},
+   {"dt": {"he": "מטבח", "en": "Kitchen"}, "dd": {"he": "מטבח יוקרתי עם אי, מקררים אינטגרליים מוסתרים וכיריים יוקרתיות", "en": "Luxury island kitchen, concealed integrated refrigerators and a premium cooktop"}, "basis": "broker", "src": ["S2", "S5"]},
+   {"dt": {"he": "גמר", "en": "Finish"}, "dd": {"he": "פרקט איכותי ותאורה מתוכננת בכל הדירה; חדשה מהניילונים", "en": "Quality parquet and designed lighting throughout; brand new"}, "basis": "broker", "src": ["S2", "S5"]}
+  ]},
+  {"title": {"he": "חניה ואחסון", "en": "Parking and storage"}, "rows": [
+   {"dt": {"he": "חניה", "en": "Parking"}, "dd": {"he": "חניה מקורה פרטית", "en": "Covered private space"}, "basis": "broker", "src": ["S2"]},
+   {"dt": {"he": "מחסן", "en": "Storage"}, "dd": {"he": "יש", "en": "Yes"}, "basis": "broker", "src": ["S4"]}
+  ]}
+ ],
+ "numbers": {
+  "h2": {"he": "טווח שוק מחושב, ומה העלות המלאה", "en": "A computed market band, and the full cost"},
+  "lead": {"he": "שכר הדירה לא פורסם. הטווח מחושב מ-11 מודעות של דירות 5 חדרים עם נוף לים או למערב בפרויקט, ואינו הצעת מחיר.", "en": "The rent was not published. The band is computed from 11 listings of 5-room sea or west-facing units in the project and is not a quote."},
+  "extra_kpis": [
+   {"dt": {"he": "טווח שוק מחושב לחודש", "en": "Computed monthly band"}, "dd": {"he": "16,640-18,944 ₪", "en": "NIS 16,640-18,944"}, "small": {"he": "128 מ״ר × 130 עד 148 ₪ למ״ר", "en": "128 sqm x NIS 130 to 148 per sqm"}},
+   {"dt": {"he": "בשנה, לפי הטווח", "en": "Per year, at the band"}, "dd": {"he": "199,680-227,328 ₪", "en": "NIS 199,680-227,328"}},
+   {"dt": {"he": "חציון למ״ר בפרויקט", "en": "Project median per sqm"}, "dd": {"he": "136 ₪", "en": "NIS 136"}, "small": {"he": "לחודש, דירות 5 חדרים עם נוף לים", "en": "Per month, 5-room sea-view units"}},
+   {"dt": {"he": "מודעה דומה, 128 מ״ר, במקור 5 חדרים[[S12]]", "en": "Similar listing, 128 sqm, originally 5 rooms[[S12]]"}, "dd": {"he": "17,000 ₪", "en": "NIS 17,000"}, "small": {"he": "משרד אחר; לא אומת שזו אותה דירה", "en": "Another agency; not confirmed as the same unit"}}
+  ],
+  "tabs_title": {"he": "העלות לשוכר, לפי הטווח", "en": "What the tenant pays, at the band"},
+  "tabs": [
+   {"label": {"he": "חודשי", "en": "Monthly"}, "rows": [
+    {"dt": {"he": "שכר דירה, טווח מחושב", "en": "Rent, computed band"}, "dd": {"he": "16,640-18,944 ₪", "en": "NIS 16,640-18,944"}},
+    {"dt": {"he": "דמי ניהול, הערכה[[S16]]", "en": "Management fee, estimate[[S16]]"}, "dd": {"he": "1,971-2,187 ₪", "en": "NIS 1,971-2,187"}, "note": {"he": "15.4 ₪ למ״ר כפי שצוין במודעה אחרת בפרויקט, על 128 עד 142 מ״ר; לא אומת", "en": "NIS 15.4 per sqm as stated in another listing, on 128 to 142 sqm; unverified"}},
+    {"dt": {"he": "ארנונה, הערכה[[G_KH_TLV,G_NC_ARNONA]]", "en": "Arnona, estimate[[G_KH_TLV,G_NC_ARNONA]]"}, "dd": {"he": "1,073-1,337 ₪", "en": "NIS 1,073-1,337"}, "note": {"he": "142 מ״ר כולל מרפסת, אזור 2 עד אזור 1; אם יחול תעריף מעל 140 מ״ר, עד כ-1,652 ₪", "en": "142 sqm including the balcony, zone 2 to zone 1; up to about NIS 1,652 if the over-140 sqm rate applies"}},
+    {"dt": {"he": "סך הכול בחודש", "en": "Total per month"}, "dd": {"he": "19,685-22,468 ₪", "en": "NIS 19,685-22,468"}}
+   ]},
+   {"label": {"he": "בכניסה", "en": "At signing"}, "rows": [
+    {"dt": {"he": "תקרת ערבויות לפי החוק[[G_KZ_GUAR]]", "en": "Legal cap on guarantees[[G_KZ_GUAR]]"}, "dd": {"he": "49,920-56,832 ₪", "en": "NIS 49,920-56,832"}, "note": {"he": "3 חודשי שכירות לפי הטווח, בחוזה של שנה; חל אם שכר הדירה עד 20,000 ש״ח", "en": "3 months at the band on a 12-month lease; applies if rent is up to NIS 20,000"}},
+    {"dt": {"he": "דמי תיווך, אם השוכר הזמין מתווך[[G_NBN_RENT]]", "en": "Brokerage, if the tenant engaged a broker[[G_NBN_RENT]]"}, "dd": {"he": "19,635-22,354 ₪", "en": "NIS 19,635-22,354"}, "note": {"he": "שכר חודש ומע״מ של 18%", "en": "One month plus 18% VAT"}}
+   ]},
+   {"label": {"he": "מה החוק קובע", "en": "What the law says"}, "rows": [
+    {"dt": {"he": "חוק השכירות ההוגנת[[G_KZ_FAIR,G_NC_FAIR]]", "en": "Fair Rental Law[[G_KZ_FAIR,G_NC_FAIR]]"}, "dd": {"he": "עד 20,000 ₪ לחודש", "en": "Up to NIS 20,000 a month"}, "note": {"he": "הטווח המחושב כולו מתחת לסף", "en": "The whole computed band is below the threshold"}},
+    {"dt": {"he": "תיקון ליקויים[[G_NC_FAIR]]", "en": "Repairs[[G_NC_FAIR]]"}, "dd": {"he": "3 ימים או 30 יום", "en": "3 days or 30 days"}},
+    {"dt": {"he": "דמי תיווך של המשכיר[[G_NC_FAIR]]", "en": "The landlord's brokerage[[G_NC_FAIR]]"}, "dd": {"he": "לא על השוכר", "en": "Not charged to the tenant"}}
+   ]}
+  ],
+  "bars": {"title": {"he": "שכר דירה למ״ר בפרויקט", "en": "Rent per sqm in the project"}, "items": [
+   {"label": {"he": "רבעון עליון, 5 חדרים עם נוף לים", "en": "Upper quartile, 5 rooms with sea view"}, "value": 148, "src": ["S66"]},
+   {"label": {"he": "5 חדרים, 128 מ״ר, קומה 22, דרום-מערב[[S14]]", "en": "5 rooms, 128 sqm, floor 22, south-west[[S14]]"}, "value": 148},
+   {"label": {"he": "חציון, 5 חדרים עם נוף לים", "en": "Median, 5 rooms with sea view"}, "value": 136, "src": ["S66"]},
+   {"label": {"he": "4 חדרים במקור 5, 128 מ״ר, מערב[[S12]]", "en": "4 rooms originally 5, 128 sqm, west[[S12]]"}, "value": 133},
+   {"label": {"he": "רבעון תחתון, 5 חדרים עם נוף לים", "en": "Lower quartile, 5 rooms with sea view"}, "value": 130, "src": ["S66"]}
+  ], "note": {"he": "₪ למ״ר בנוי לחודש לפי מודעות, לא חוזים. כל הפסים באותו קנה מידה.", "en": "NIS per built sqm per month from listings, not leases. All bars share one scale."}},
+  "ledger_title": {"he": "שוק ומגמה", "en": "Market and trend"},
+  "ledger": [
+   {"dt": {"he": "שכר דירה ממוצע, שכונת שרונה[[S40]]", "en": "Average rent, Sarona neighborhood[[S40]]"}, "dd": {"he": "13,000 ₪", "en": "NIS 13,000"}, "note": {"he": "כל הגדלים, לפי מדלן", "en": "All sizes, per Madlan"}},
+   {"dt": {"he": "מחירי היזם לדירות 4 עד 5 חדרים, דצמבר 2025[[S19]]", "en": "Developer prices for 4 to 5 rooms, Dec 2025[[S19]]"}, "dd": {"he": "52,000-54,000 ₪ למ״ר", "en": "NIS 52,000-54,000 per sqm"}},
+   {"dt": {"he": "שכר דירה לשוכרים חדשים בישראל[[G_CBS_WALLA]]", "en": "Rents for new tenants in Israel[[G_CBS_WALLA]]"}, "dd": {"he": "4.4%+ בשנה", "en": "+4.4% a year"}, "note": {"he": "מדד אוגוסט 2026 של הלמ״ס", "en": "CBS, August 2026 index"}}
+  ]
+ },
+ "market": {
+  "h2": {"he": "שכירות ומכירות בפרויקט ובשכנים", "en": "Rents and sales in the project and next door"},
+  "lead": {"he": "מודעות שכירות לדירות 4 ו-5 חדרים בב.ס.ר שרונה ובמגדלים הסמוכים, עסקאות מכירה בפרויקט ונתוני שכונה. מחירי שכירות הם מבוקשים ולא חוזים חתומים.", "en": "Rental listings for 4 and 5-room units in B.S.R Sarona and neighboring towers, sales in the project, and neighborhood data. Rents are asking figures, not signed leases."},
+  "stats": [0, 1, 2, 3, 4, 5, 6, 7],
+  "where_override": {"rent:19": {"he": "ב.ס.ר שרונה, 5 חדרים, 118 מ״ר ומרפסת דרום-מערבית", "en": "B.S.R Sarona, 5 rooms, 118 sqm, south-west balcony"}}
+ },
+ "questions": [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+ "checks_h2": {"he": "מה לבדוק לפני חתימה", "en": "What to check before signing"},
+ "checks_lead": {"he": "השאלות ששוכר זהיר שואל על דירה שעברה שינוי תכנון, והמסמכים שכדאי לקבל.", "en": "The questions a careful tenant asks about a converted layout, and the documents to obtain."},
+ "checks_extra": {
+  "he": ["תשריט הדירה אחרי ההסבה ל-4.5 חדרים", "טיוטת חוזה השכירות, כולל ערבויות, הצמדה ואופציה", "חשבון ארנונה אחרון של הדירה", "רשימת הציוד והגופים שנשארים בדירה"],
+  "en": ["The unit plan after the conversion to 4.5 rooms", "The draft lease, including guarantees, indexation and option", "The unit's latest arnona bill", "The list of fittings and appliances that stay"]
+ },
+ "faq": [
+  {"q": {"he": "מה שכר הדירה?", "en": "What is the rent?"}, "a": {"he": "שכר הדירה לא פורסם. לפי 11 מודעות של דירות 5 חדרים עם נוף לים או למערב בפרויקט, שכר הדירה המבוקש הוא 130 עד 148 ש״ח למ״ר בנוי, כלומר כ-16,640 עד 18,944 ש״ח לחודש לדירה של 128 מ״ר. זה חישוב ולא הצעת מחיר.[[S84]]", "en": "The rent was not published. Eleven listings of 5-room sea or west-facing units in the project ask NIS 130 to 148 per built sqm, about NIS 16,640 to 18,944 a month for 128 sqm. This is a computation, not a quote.[[S84]]"}},
+  {"q": {"he": "מה השתנה כשהדירה הוסבה ל-4.5 חדרים?", "en": "What changed when it was converted to 4.5 rooms?"}, "a": {"he": "המשווקת מציינת שהדירה תוכננה במקור כ-5 חדרים והוסבה ל-4.5.[[S1]] את תכנית השינוי ואת שלמות הממ״ד כדאי לבדוק בתשריט.", "en": "The broker notes the unit was planned as five rooms and converted to 4.5.[[S1]] Check the change and the integrity of the safe room on the plan."}},
+  {"q": {"he": "האם יש בריכה בבניין?", "en": "Is there a pool?"}, "a": {"he": "לא נמצאו בריכה או ספא משותפים במקורות היזם והקבלן. בפרויקט חדר כושר לדיירים ושמירה 24/7.[[S7,S10,S11]]", "en": "No communal pool or spa appears in developer or contractor sources. The project has a residents' gym and 24/7 security.[[S7,S10,S11]]"}},
+  {"q": {"he": "כמה קרובה הרכבת הקלה?", "en": "How close is the light rail?"}, "a": {"he": "יציאה A של תחנת יהודית בקו האדום משרתת את מתחם שרונה, והקו פועל מאוגוסט 2023.[[S53,S54]]", "en": "Exit A of Yehudit station on the Red Line serves the Sarona complex, and the line has run since August 2023.[[S53,S54]]"}},
+  {"q": {"he": "האם חוק השכירות ההוגנת יחול?", "en": "Will the Fair Rental Law apply?"}, "a": {"he": "אם שכר הדירה יהיה עד 20,000 ש״ח לחודש, החוק חל, והערבויות מוגבלות לנמוך מבין 3 חודשי שכירות לשליש משכר הדירה לכל התקופה.[[G_KZ_FAIR,G_KZ_GUAR]]", "en": "If the rent is up to NIS 20,000 a month, the law applies and guarantees are capped at the lower of 3 months' rent or a third of the total rent.[[G_KZ_FAIR,G_KZ_GUAR]]"}}
+ ],
+ "seo": {
+  "he": {"title": "דירת 4.5 חדרים להשכרה בב.ס.ר שרונה, עיצוב מעצבת", "desc": "4.5 חדרים (במקור 5), 128 מ״ר ומרפסת מערבית של 14 מ״ר לים, מקררים מוסתרים, חניה מקורה ומחסן. טווח שכירות מחושב, עלויות וחוק.", "kw": "דירת מעצבת להשכרה בשרונה", "slug": "bsr-sarona-designer-4-5-rooms-for-rent"},
+  "en": {"title": "Designer 4.5-Room Apartment for Rent, B.S.R Sarona", "desc": "4.5 rooms (originally 5), 128 sqm and a 14 sqm west balcony to the sea, concealed fridges, covered parking and storage. Computed rent band, costs and law.", "kw": "designer apartment for rent Sarona Tel Aviv", "slug": "en-bsr-sarona-designer-4-5-room-apartment-for-rent"}
+ },
+ "shots": [
+  {"he": "הסלון והמרפסת המערבית", "en": "Living room and west balcony"},
+  {"he": "המטבח עם האי והמקררים המוסתרים", "en": "Island kitchen and concealed refrigerators"},
+  {"he": "התאורה המתוכננת בערב", "en": "The lighting design at dusk"},
+  {"he": "יחידת ההורים", "en": "Master suite"},
+  {"he": "הנוף לים מהמרפסת", "en": "Sea view from the balcony"},
+  {"he": "הלובי וחדר הכושר", "en": "Lobby and gym"},
+  {"he": "תשריט הדירה אחרי ההסבה", "en": "Floor plan after conversion"}
+ ],
+ "internal": {
+  "assessment": [
+   "שכר הדירה לא פורסם ולא נמצאה מודעה תואמת של המשווקת. טווח מחושב: 16,640 עד 18,944 ₪. מודעה של משרד אחר לדירה זהה בגודלה (4 חדרים במקור 5, 128+14 מ״ר, מערב) מבקשת 17,000 ₪; ייתכן שזו אותה דירה.",
+   "יתרון על דירות רגילות בפרויקט: עיצוב מעצבת ומפרט (מקררים מוסתרים, תאורה). מתאים לשוכר תאגידי או משפחה מחו״ל, ולכן הדף באנגלית חשוב.",
+   "בלי מחיר, הדף ממיר פחות. כדאי לקבל ממיטל שכר דירה לפרסום."
+  ],
+  "confirm": [
+   "שכר הדירה המבוקש.",
+   "קומה ומגדל, ומה נשאר מהממ״ד אחרי ההסבה.",
+   "מרוהטת או לא; מה כלול.",
+   "האם מודעת המשרד האחר ב-17,000 ₪ היא אותה דירה.",
+   "אישור לתמונות."
+  ]
+ },
+ "wp": {"listing_type": "rent", "property_type": "apartment", "price": null, "rooms": 4.5, "floor": null, "total_floors": null, "size_sqm": 128, "balcony_sqm": 14, "parking": true, "elevator": true, "ac": true, "protected_room": null, "street": "ארניה אוסוולדו", "building_number": "", "city": "תל אביב-יפו", "neighborhood": "שרונה", "arnona_monthly": 0, "vaad_bayit_monthly": 0, "storage": true, "condition": "new"}
+}

@@ -1,0 +1,47 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/nadlan_property. Status stays draft. Verify meta keys and term names first (see HANDOFF).",
+ "status": "draft",
+ "title": "Five Rooms on a High Floor in a Complex with a Pool, Ramat Aviv",
+ "slug": "en-ramat-aviv-5-room-apartment-pool-complex-for-rent",
+ "content_file": "content-en.html",
+ "excerpt": "Five rooms on a high floor, spacious and bright, two parking spaces and storage, in a complex with a pool, gym and guard. Local rent range, fees and law.",
+ "meta": {
+  "listing_type": "rent",
+  "property_type": "apartment",
+  "price": null,
+  "price_per_sqm": null,
+  "rooms": 5,
+  "floor": null,
+  "total_floors": null,
+  "size_sqm": null,
+  "balcony_sqm": null,
+  "parking": true,
+  "elevator": null,
+  "ac": null,
+  "protected_room": null,
+  "storage": true,
+  "condition": null,
+  "street": "",
+  "building_number": "",
+  "lat": null,
+  "lng": null,
+  "city": "Tel Aviv-Yafo",
+  "neighborhood": "Ramat Aviv",
+  "arnona_monthly": null,
+  "vaad_bayit_monthly": null,
+  "status": "active",
+  "photos_csv": ""
+ },
+ "terms": {
+  "nadlan_city": [
+   "Tel Aviv-Yafo"
+  ]
+ },
+ "yoast_meta": {
+  "_yoast_wpseo_title": "5-Room Apartment for Rent in Ramat Aviv, Complex with Pool",
+  "_yoast_wpseo_metadesc": "Five rooms on a high floor, spacious and bright, two parking spaces and storage, in a complex with a pool, gym and guard. Local rent range, fees and law.",
+  "_yoast_wpseo_focuskw": "5 room apartment for rent Ramat Aviv pool"
+ },
+ "language": "en",
+ "translation_group": "L11"
+}

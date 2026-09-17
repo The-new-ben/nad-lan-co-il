@@ -1,0 +1,1019 @@
+{
+ "id": "L04",
+ "deal": "sale",
+ "ptype": "apartment",
+ "plate": "apartment",
+ "status": "active",
+ "last_post": "2026-08-26",
+ "rooms": 3,
+ "price": 4650000,
+ "price_src": [
+  "S82",
+  "S3"
+ ],
+ "built": 90,
+ "balcony": 12,
+ "city": {
+  "he": "תל אביב-יפו",
+  "en": "Tel Aviv-Yafo"
+ },
+ "area": {
+  "he": "צוקי אביב",
+  "en": "Tzukei Aviv"
+ },
+ "plate_name": {
+  "he": "צוקי אביב, רחוב אליהו ברלין",
+  "en": "Tzukei Aviv, Eliyahu Berlin St"
+ },
+ "kicker": {
+  "he": "למכירה · צוקי אביב, צפון תל אביב",
+  "en": "For sale · Tzukei Aviv, north Tel Aviv"
+ },
+ "title": {
+  "he": "3 חדרים עם 2 חניות ומחסן, רחוב אליהו ברלין",
+  "en": "Three Rooms with Two Parking Spaces, Eliyahu Berlin Street"
+ },
+ "dek": {
+  "he": "דירה חדשה בבניין בוטיק בן 9 קומות: כ-90 מ״ר, מרפסת של 12 מ״ר, ממ״ד ומחסן, כחמש דקות הליכה מחוף תל ברוך לפי המשווקת.",
+  "en": "A new apartment in a nine-floor boutique building: about 90 sqm, a 12 sqm balcony, a safe room and storage, about five minutes on foot from Tel Baruch beach, according to the broker."
+ },
+ "chips": [
+  {
+   "he": "בלעדיות: מיטל קציר, נדל״ן על הים",
+   "en": "Exclusive: Meital Katzir, Real Estate by the Sea",
+   "sea": true
+  },
+  {
+   "he": "מוכנה לכניסה",
+   "en": "Ready to move in"
+  },
+  {
+   "he": "ממ״ד בדירה",
+   "en": "Safe room in the unit"
+  }
+ ],
+ "facts": [
+  {
+   "label": {
+    "he": "חדרים",
+    "en": "Rooms"
+   },
+   "value": {
+    "he": "3",
+    "en": "3"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "שטח בנוי",
+    "en": "Built area"
+   },
+   "value": {
+    "he": "כ-90 מ״ר",
+    "en": "about 90 sqm"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "מרפסת שמש",
+    "en": "Sun balcony"
+   },
+   "value": {
+    "he": "12 מ״ר",
+    "en": "12 sqm"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "קומה",
+    "en": "Floor"
+   },
+   "value": {
+    "he": "2 או 3 מתוך 9",
+    "en": "2 or 3 of 9"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "חניות",
+    "en": "Parking"
+   },
+   "value": {
+    "he": "2 פרטיות",
+    "en": "2 private"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "מחסן",
+    "en": "Storage"
+   },
+   "value": {
+    "he": "פרטי",
+    "en": "Private"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "מרחב מוגן",
+    "en": "Safe room"
+   },
+   "value": {
+    "he": "ממ״ד בדירה",
+    "en": "In the unit"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "כניסה",
+    "en": "Entry"
+   },
+   "value": {
+    "he": "גמישה",
+    "en": "Flexible"
+   },
+   "basis": "broker"
+  }
+ ],
+ "price_rows": [
+  {
+   "dt": {
+    "he": "דמי ניהול",
+    "en": "Management fee"
+   },
+   "dd": {
+    "he": "600 ₪ לחודש",
+    "en": "NIS 600 a month"
+   }
+  }
+ ],
+ "story_h2": {
+  "he": "שלושה חדרים עם חבילת הבעלות של דירה גדולה",
+  "en": "Three rooms with the ownership package of a larger home"
+ },
+ "story": {
+  "he": [
+   "הדירה נמצאת בבניין בוטיק בן 9 קומות ברחוב אליהו ברלין, בקצה המערבי של צוקי אביב.[[S1,S3]] לצד שלושת החדרים היא כוללת שתי חניות פרטיות, מחסן וממ״ד בתוך הדירה, והמחיר המבוקש הוא 4,650,000 ש״ח.[[S82,S3]]",
+   "לפי המשווקת השטח הבנוי כ-90 מ״ר, ולצדו מרפסת שמש של 12 מ״ר הפונה לנוף פתוח וירוק. החלוקה כוללת יחידת הורים וחלל מגורים מואר, והדירה מתוארת כשקטה במיוחד. מודעת המשווקת במדלן רושמת 95 מ״ר ומרפסת של 10 מ״ר, ומודעות ביד2 מציינות קומה 2 או 3 מתוך 9, ולכן את השטח והקומה יש לאמת בנסח ובתשריט.[[S1,S2,S3]]",
+   "בבניין לובי מעוצב וחדר כושר לדיירים, ודמי הניהול הם 600 ש״ח לחודש.[[S87,S1]] הדירה מוכנה לכניסה, ולפי המשווקת נמצאת כחמש דקות הליכה מחוף תל ברוך ומטיילת פארק החוף."
+  ],
+  "en": [
+   "The apartment is in a nine-floor boutique building on Eliyahu Berlin Street, at the western edge of Tzukei Aviv.[[S1,S3]] Beyond its three rooms it comes with two private parking spaces, a storage room and a safe room inside the unit, at an asking price of NIS 4,650,000.[[S82,S3]]",
+   "The broker gives about 90 sqm built plus a 12 sqm sun balcony facing an open green view. The layout includes a master suite and a bright living space, and the unit is described as particularly quiet. The broker's Madlan listing records 95 sqm with a 10 sqm balcony, and her Yad2 listings give floor 2 or 3 of 9, so the exact area and floor should be checked against the land registry extract and the unit plan.[[S1,S2,S3]]",
+   "The building has a designed lobby and a residents' gym, and the management fee is NIS 600 a month.[[S87,S1]] The apartment is ready to move in and, according to the broker, about five minutes on foot from Tel Baruch beach and the coastal park promenade."
+  ]
+ },
+ "features": {
+  "he": [
+   [
+    "כ-90 מ״ר ומרפסת של 12 מ״ר",
+    "שטח בנוי ומרפסת שמש, לפי המשווקת"
+   ],
+   [
+    "2 חניות פרטיות ומחסן",
+    "כפי שמופיע במודעות המשווקת"
+   ],
+   [
+    "ממ״ד בתוך הדירה",
+    "מרחב מוגן דירתי"
+   ],
+   [
+    "לובי וחדר כושר לדיירים",
+    "חדר הכושר מתואר כחדש"
+   ],
+   [
+    "600 ש״ח לחודש",
+    "דמי ניהול, 7,200 ש״ח בשנה"
+   ],
+   [
+    "טיילת של כ-2 ק״מ",
+    "פארק החוף נפתח ב-2023, מחוף תל ברוך עד חוף הצוק[[S21]]"
+   ]
+  ],
+  "en": [
+   [
+    "About 90 sqm plus a 12 sqm balcony",
+    "Built area and sun balcony, broker-stated"
+   ],
+   [
+    "Two private parking spaces and storage",
+    "As listed by the broker"
+   ],
+   [
+    "Safe room inside the unit",
+    "An in-apartment protected room (mamad)"
+   ],
+   [
+    "Lobby and residents' gym",
+    "The gym is described as new"
+   ],
+   [
+    "NIS 600 a month",
+    "Management fee, NIS 7,200 a year"
+   ],
+   [
+    "A promenade of about 2 km",
+    "The coastal park opened in 2023, from Tel Baruch beach to Tzuk beach[[S21]]"
+   ]
+  ]
+ },
+ "spec": [
+  {
+   "title": {
+    "he": "הדירה",
+    "en": "The apartment"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "חדרים",
+      "en": "Rooms"
+     },
+     "dd": {
+      "he": "3, כולל יחידת הורים",
+      "en": "3 (Israeli count, including the living room), with a master suite"
+     },
+     "basis": "broker",
+     "src": [
+      "S82"
+     ]
+    },
+    {
+     "dt": {
+      "he": "שטח בנוי",
+      "en": "Built area"
+     },
+     "dd": {
+      "he": "כ-90 מ״ר (במודעת מדלן: 95 מ״ר)",
+      "en": "About 90 sqm (Madlan listing: 95 sqm)"
+     },
+     "basis": "broker",
+     "src": [
+      "S82",
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מרפסת",
+      "en": "Balcony"
+     },
+     "dd": {
+      "he": "מרפסת שמש של 12 מ״ר הפונה לנוף פתוח וירוק (במודעת מדלן: 10 מ״ר)",
+      "en": "12 sqm sun balcony facing an open green view (Madlan listing: 10 sqm)"
+     },
+     "basis": "broker",
+     "src": [
+      "S82",
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "קומה",
+      "en": "Floor"
+     },
+     "dd": {
+      "he": "2 או 3 מתוך 9 (המודעות אינן אחידות)",
+      "en": "2 or 3 of 9 (the listings differ)"
+     },
+     "basis": "broker",
+     "src": [
+      "S2",
+      "S3"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מרחב מוגן",
+      "en": "Safe room"
+     },
+     "dd": {
+      "he": "ממ״ד בתוך הדירה",
+      "en": "Mamad (protected room) inside the unit"
+     },
+     "basis": "broker",
+     "src": [
+      "S3"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מצב",
+      "en": "Condition"
+     },
+     "dd": {
+      "he": "חדשה, גרו בה; מוכנה לכניסה",
+      "en": "New, previously occupied; ready to move in"
+     },
+     "basis": "broker",
+     "src": [
+      "S2"
+     ]
+    }
+   ]
+  },
+  {
+   "title": {
+    "he": "חניה, אחסון ועלויות",
+    "en": "Parking, storage and running costs"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "חניה",
+      "en": "Parking"
+     },
+     "dd": {
+      "he": "2 חניות פרטיות",
+      "en": "2 private spaces"
+     },
+     "basis": "broker",
+     "src": [
+      "S3"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מחסן",
+      "en": "Storage"
+     },
+     "dd": {
+      "he": "מחסן פרטי",
+      "en": "Private storage room"
+     },
+     "basis": "broker",
+     "src": [
+      "S3"
+     ]
+    },
+    {
+     "dt": {
+      "he": "דמי ניהול",
+      "en": "Management fee"
+     },
+     "dd": {
+      "he": "600 ש״ח לחודש",
+      "en": "NIS 600 a month"
+     },
+     "basis": "broker",
+     "src": [
+      "S87"
+     ]
+    },
+    {
+     "dt": {
+      "he": "ארנונה",
+      "en": "Arnona (municipal tax)"
+     },
+     "dd": {
+      "he": "לא פורסמה; הערכה לפי תעריפי 2026 בפרק המספרים",
+      "en": "Not published; a 2026 rate estimate appears under The numbers"
+     },
+     "basis": "calc"
+    }
+   ]
+  }
+ ],
+ "building_h2": {
+  "he": "בניין בוטיק בן 9 קומות ברחוב אליהו ברלין",
+  "en": "A nine-floor boutique building on Eliyahu Berlin Street"
+ },
+ "building_lead": {
+  "he": "את היזם, הקבלן ומועד טופס 4 לא מצאנו במקורות פתוחים, ויש לבקש אותם מהמשווקת לפני חתימה.",
+  "en": "The developer, the contractor and the date of the occupancy certificate (Tofes 4) were not found in open sources and should be requested before signing."
+ },
+ "building": [
+  {
+   "dt": {
+    "he": "מיקום",
+    "en": "Location"
+   },
+   "dd": {
+    "he": "רחוב אליהו ברלין, צוקי אביב (ג׳ החדשה), תל אביב-יפו",
+    "en": "Eliyahu Berlin Street, Tzukei Aviv (Gimel HaHadasha), Tel Aviv-Yafo"
+   },
+   "src": [
+    "S81",
+    "S1"
+   ]
+  },
+  {
+   "dt": {
+    "he": "קומות",
+    "en": "Floors"
+   },
+   "dd": {
+    "he": "9",
+    "en": "9"
+   },
+   "basis": "broker",
+   "src": [
+    "S1",
+    "S2"
+   ]
+  },
+  {
+   "dt": {
+    "he": "שנת בנייה",
+    "en": "Year built"
+   },
+   "dd": {
+    "he": "2021 עד 2023 לפי שדות המודעות השונות",
+    "en": "2021 to 2023, per the fields of different listings"
+   },
+   "basis": "broker",
+   "src": [
+    "S1",
+    "S4"
+   ]
+  },
+  {
+   "dt": {
+    "he": "שירותים לדיירים",
+    "en": "Resident services"
+   },
+   "dd": {
+    "he": "לובי מעוצב וחדר כושר",
+    "en": "Designed lobby and gym"
+   },
+   "basis": "broker",
+   "src": [
+    "S87",
+    "S93"
+   ]
+  },
+  {
+   "dt": {
+    "he": "דמי ניהול",
+    "en": "Management fee"
+   },
+   "dd": {
+    "he": "600 ש״ח לחודש לדירות 3 ו-3.5 חדרים בבניין",
+    "en": "NIS 600 a month for the 3 and 3.5-room units in the building"
+   },
+   "basis": "broker",
+   "src": [
+    "S84",
+    "S1"
+   ]
+  },
+  {
+   "dt": {
+    "he": "ברחוב",
+    "en": "On the street"
+   },
+   "dd": {
+    "he": "שביל אופניים שהושלם בינואר 2022",
+    "en": "A bike path completed in January 2022"
+   },
+   "src": [
+    "S16"
+   ]
+  }
+ ],
+ "location_h2": {
+  "he": "צוקי אביב: בין פארק החוף לרובע שדה דב",
+  "en": "Tzukei Aviv, between the coastal park and the Sde Dov district"
+ },
+ "location": {
+  "he": [
+   "צוקי אביב היא השכונה שבין רחוב יוניצמן בצפון, דרך נמיר במזרח, רחוב פרופס בדרום והים במערב.[[S20]] השם ג׳ החדשה מתייחס לחלק החדש יותר שלה, שנבנה לצד מגדלי אזורי חן.[[S19,S16]] לפי נתוני מדלן שפורסמו במאקו, מחיר העסקה החציוני באזורי חן בין תחילת 2023 לאוקטובר 2025 היה 5.9 מיליון ש״ח, החמישי בגובהו בישראל.[[S73]]",
+   "טיילת פארק החוף נפתחה בספטמבר 2023 ומשתרעת לאורך כ-2 ק״מ על המצוק, מחוף תל ברוך בדרום עד חוף הצוק בצפון, עם שביל אופניים לכל אורכה.[[S21]] תיכון נתן אלתרמן, שבניינו זכה בפרס רוקח לאדריכלות ב-2015, נמצא בשכונה.[[S36]]",
+   "מדרום מתפתח רובע שדה דב, שבו נמכרו דירות חדשות במחיר ממוצע של 79,000 עד 85,000 ש״ח למ״ר לפי כלכליסט בפברואר 2026.[[S28]] הקו הירוק של הרכבת הקלה צפוי לפעול בקטעו הדרומי ב-2028 ובמלואו ב-2030.[[S27]]"
+  ],
+  "en": [
+   "Tzukei Aviv runs from Unitzman Street in the north to Propes Street in the south, between Namir Road and the sea.[[S20]] Gimel HaHadasha is the name for its newer part, built beside the Azorei Chen towers.[[S19,S16]] Madlan data published by Mako put the median deal in Azorei Chen from early 2023 to October 2025 at NIS 5.9 million, the fifth highest neighborhood median in Israel.[[S73]]",
+   "The coastal park promenade opened in September 2023 and runs about 2 km along the cliff, from Tel Baruch beach in the south to Tzuk beach in the north, with a bike path along its length.[[S21]] Nathan Alterman High School, whose building won the Rokach architecture prize in 2015, is in the neighborhood.[[S36]]",
+   "To the south the Sde Dov district is taking shape, where new apartments sold at an average of NIS 79,000 to 85,000 per sqm according to Calcalist in February 2026.[[S28]] The Green Line light rail is expected to open its southern section in 2028 and the full line in 2030.[[S27]]"
+  ]
+ },
+ "numbers": {
+  "h2": {
+   "he": "4,650,000 ש״ח, מפורק למספרים",
+   "en": "NIS 4,650,000, broken down"
+  },
+  "lead": {
+   "he": "המחיר המבוקש של המשווקת, מחושב לפי כללי המס והמימון שפורסמו עד 16.9.2026.",
+   "en": "The broker's asking price, computed against the tax and lending rules published up to 16 September 2026."
+  },
+  "median_psqm": {
+   "value": 49000,
+   "label": {
+    "he": "חציון למ״ר, צוקי אביב",
+    "en": "Median per sqm, Tzukei Aviv"
+   },
+   "small": {
+    "he": "ביזפורטל, אוגוסט 2026",
+    "en": "Bizportal, August 2026"
+   },
+   "src": [
+    "S19"
+   ]
+  },
+  "bars": {
+   "title": {
+    "he": "מחיר למ״ר: הדירה מול השוק",
+    "en": "Price per sqm against the market"
+   },
+   "items": [
+    {
+     "label": {
+      "he": "הדירה, על 90 מ״ר בנוי",
+      "en": "This apartment, on 90 sqm built"
+     },
+     "value": 51667,
+     "this": true
+    },
+    {
+     "label": {
+      "he": "חציון צוקי אביב, 2026",
+      "en": "Tzukei Aviv median, 2026"
+     },
+     "value": 49000,
+     "src": [
+      "S19"
+     ]
+    },
+    {
+     "label": {
+      "he": "עסקת 3 חדרים הגבוהה באזור, 2026",
+      "en": "Highest 3-room sale nearby, 2026"
+     },
+     "value": 52632,
+     "src": [
+      "S12"
+     ]
+    },
+    {
+     "label": {
+      "he": "ממוצע דירות חדשות בשדה דב",
+      "en": "New-build average, Sde Dov"
+     },
+     "value": 85000,
+     "value_text": {
+      "he": "79,000 עד 85,000 ₪",
+      "en": "NIS 79,000 to 85,000"
+     },
+     "src": [
+      "S28"
+     ]
+    }
+   ],
+   "note": {
+    "he": "כל הפסים באותו קנה מידה. עסקאות האזור נרשמו בבניינים מ-2002 עד 2008.",
+    "en": "All bars share one scale. The nearby sales were in buildings from 2002 to 2008."
+   }
+  },
+  "ledger": [
+   {
+    "dt": {
+     "he": "דמי ניהול בשנה",
+     "en": "Management fee per year"
+    },
+    "dd": {
+     "he": "7,200 ₪",
+     "en": "NIS 7,200"
+    },
+    "note": {
+     "he": "600 ₪ לחודש לפי המשווקת",
+     "en": "NIS 600 a month, broker-stated"
+    }
+   },
+   {
+    "dt": {
+     "he": "ארנונה, הערכה שנתית[[G_KH_TLV,G_NC_ARNONA]]",
+     "en": "Arnona, annual estimate[[G_KH_TLV,G_NC_ARNONA]]"
+    },
+    "dd": {
+     "he": "9,252-11,525 ₪",
+     "en": "NIS 9,252-11,525"
+    },
+    "note": {
+     "he": "102 מ״ר כולל מרפסת, תעריף אא לשנת 2026 באזור 2 ובאזור 1. האזור לא אומת; במודעת המשווקת מופיע סכום של 1,680 ₪ ללא ציון תקופה.[[S1]]",
+     "en": "102 sqm including the balcony at the 2026 rates for the newest building code, zones 2 and 1. The zone is unverified; the broker's listing shows NIS 1,680 without a period.[[S1]]"
+    }
+   },
+   {
+    "dt": {
+     "he": "תשואה ברוטו בשכירות של 9,600 ₪[[S53]]",
+     "en": "Gross yield at NIS 9,600 rent[[S53]]"
+    },
+    "dd": {
+     "he": "2.48%",
+     "en": "2.48%"
+    },
+    "note": {
+     "he": "מודעת 3 חדרים בג׳ החדשה, אוגוסט 2026. חישוב: 9,600 × 12 ÷ 4,650,000",
+     "en": "A 3-room rental ad in Gimel HaHadasha, August 2026. Formula: 9,600 x 12 / 4,650,000"
+    }
+   },
+   {
+    "dt": {
+     "he": "תשואה ברוטו בשכירות של 15,000 ₪[[S84]]",
+     "en": "Gross yield at NIS 15,000 rent[[S84]]"
+    },
+    "dd": {
+     "he": "3.87%",
+     "en": "3.87%"
+    },
+    "note": {
+     "he": "השכירות שדיווחה המשווקת לדירת 3.5 חדרים מרוהטת באותו בניין",
+     "en": "The rent the broker reported for a furnished 3.5-room unit in the same building"
+    }
+   },
+   {
+    "dt": {
+     "he": "תשואה אופיינית בשכונה[[S19]]",
+     "en": "Typical neighborhood yield[[S19]]"
+    },
+    "dd": {
+     "he": "2.4%-2.7%",
+     "en": "2.4%-2.7%"
+    },
+    "note": {
+     "he": "ביזפורטל, אוגוסט 2026",
+     "en": "Bizportal, August 2026"
+    }
+   }
+  ]
+ },
+ "market": {
+  "h2": {
+   "he": "המחיר מול העסקאות בשכונה",
+   "en": "The price against recorded sales"
+  },
+  "lead": {
+   "he": "עסקאות שנרשמו ב-2025 וב-2026 ברחובות הסמוכים, מודעות פעילות ברחוב אליהו ברלין ונתוני שכונה. עסקאות בבניינים ותיקים יותר מסמנות רצפה; מודעות הן מחיר מבוקש בלבד.",
+   "en": "Sales recorded in 2025 and 2026 on nearby streets, live listings on Eliyahu Berlin Street and neighborhood data. Sales in older buildings mark a floor; listings are asking prices only."
+  },
+  "rent_exclude": [
+   6
+  ],
+  "where_override": {
+   "rent:0": {
+    "he": "אותו בניין: 3.5 חדרים מרוהטת, שכירות קיימת לפי המשווקת",
+    "en": "Same building: furnished 3.5 rooms, existing tenancy per the broker"
+   }
+  },
+  "stats": [
+   0,
+   1,
+   3,
+   4,
+   5,
+   6
+  ]
+ },
+ "checks_h2": {
+  "he": "מה לבדוק לפני הצעה",
+  "en": "What to check before an offer"
+ },
+ "checks_lead": {
+  "he": "השאלות שרוכש זהיר שואל על הדירה הזאת, והמסמכים שכדאי לקבל לפני חתימה.",
+  "en": "The questions a careful buyer asks about this apartment, and the documents to obtain before signing."
+ },
+ "checks_extra": {
+  "he": [
+   "נסח טאבו או אישור זכויות מחברה משכנת, כולל רישום הצמדת שתי החניות והמחסן",
+   "טופס 4, תעודת גמר, היתר הבנייה ותשריט הדירה",
+   "תקציב חברת הניהול ופירוט השירותים הכלולים בדמי הניהול",
+   "אישורים על היעדר חובות ארנונה, מים ודמי ניהול"
+  ],
+  "en": [
+   "A land registry extract or a housing company rights confirmation, including the attachment of both parking spaces and the storage room",
+   "The occupancy certificate (Tofes 4), completion certificate, building permit and unit plan",
+   "The management company budget and what the fee covers",
+   "Confirmations of no arrears on arnona, water and management fees"
+  ]
+ },
+ "faq": [
+  {
+   "q": {
+    "he": "כמה עולה המ״ר בדירה לעומת השכונה?",
+    "en": "How does the price per sqm compare with the neighborhood?"
+   },
+   "a": {
+    "he": "על 90 מ״ר בנוי המחיר המבוקש הוא כ-51,667 ש״ח למ״ר. החציון בצוקי אביב היה כ-49,000 ש״ח למ״ר באוגוסט 2026,[[S19]] ועסקאות 3 חדרים ברחובות הסמוכים נרשמו ב-2025 וב-2026 בין 48,734 ל-52,632 ש״ח למ״ר, בבניינים ותיקים יותר.[[S12]]",
+    "en": "On 90 sqm built the asking price is about NIS 51,667 per sqm. The Tzukei Aviv median was about NIS 49,000 per sqm in August 2026,[[S19]] and 3-room sales on nearby streets in 2025 and 2026 were recorded at NIS 48,734 to 52,632 per sqm, in older buildings.[[S12]]"
+   }
+  },
+  {
+   "q": {
+    "he": "האם יש מהדירה נוף לים?",
+    "en": "Does the apartment have a sea view?"
+   },
+   "a": {
+    "he": "המשווקת מתארת מרפסת הפונה לנוף פתוח וירוק, ומציגה את הבניין כבניין ראשון לים. השטח שבין השכונה לים כלול בתכנית תא/3700, ומתכנן שצוטט בגלובס תיאר בה בנייה של שמונה קומות לכל היותר.[[S23]] כדאי לבדוק מה מתוכנן ממערב לבניין לפני שמייחסים ערך לנוף.",
+    "en": "The broker describes a balcony facing an open green view and presents the building as the first building to the sea. The land between the neighborhood and the sea is covered by plan TA/3700, which a planner quoted by Globes described as buildings of eight floors at most.[[S23]] Check what is planned west of the building before paying for a view."
+   }
+  },
+  {
+   "q": {
+    "he": "כמה מס רכישה ישלם רוכש?",
+    "en": "How much purchase tax would a buyer pay?"
+   },
+   "a": {
+    "he": "לפי מדרגות 2026: כ-128,038 ש״ח לרוכש דירה יחידה, 372,000 ש״ח לרוכש דירה נוספת או לתושב חוץ, וכ-13,356 ש״ח לעולה חדש זכאי.[[G_TAX_DIR,G_KZ_OLEH]] אין בכך ייעוץ מס.",
+    "en": "Under the 2026 brackets: about NIS 128,038 for a single-home buyer, NIS 372,000 for an additional home or a foreign resident, and about NIS 13,356 for an eligible new immigrant.[[G_TAX_DIR,G_KZ_OLEH]] This is not tax advice."
+   }
+  },
+  {
+   "q": {
+    "he": "מה העלויות החודשיות?",
+    "en": "What are the monthly costs?"
+   },
+   "a": {
+    "he": "דמי ניהול של 600 ש״ח לחודש לפי המשווקת. הארנונה לא פורסמה; לפי תעריפי 2026 לבניין חדש ההערכה היא כ-771 עד 960 ש״ח לחודש, לפי אזור הארנונה.[[G_KH_TLV]]",
+    "en": "A management fee of NIS 600 a month according to the broker. Arnona was not published; at 2026 rates for a new building it would be about NIS 771 to 960 a month, depending on the arnona zone.[[G_KH_TLV]]"
+   }
+  },
+  {
+   "q": {
+    "he": "מתי אפשר להיכנס?",
+    "en": "When can a buyer move in?"
+   },
+   "a": {
+    "he": "הדירה מוכנה לכניסה, ובמודעות מופיע מועד כניסה גמיש.[[S1,S3]]",
+    "en": "The apartment is ready, and the listings show a flexible entry date.[[S1,S3]]"
+   }
+  }
+ ],
+ "amenities": [
+  {
+   "he": "ממ״ד",
+   "en": "Safe room"
+  },
+  {
+   "he": "2 חניות",
+   "en": "2 parking spaces"
+  },
+  {
+   "he": "מחסן",
+   "en": "Storage"
+  },
+  {
+   "he": "חדר כושר",
+   "en": "Gym"
+  },
+  {
+   "he": "לובי",
+   "en": "Lobby"
+  }
+ ],
+ "seo": {
+  "he": {
+   "title": "דירת 3 חדרים למכירה בצוקי אביב, רחוב אליהו ברלין",
+   "desc": "3 חדרים, 90 מ״ר ומרפסת 12 מ״ר, 2 חניות, מחסן וממ״ד בבניין בוטיק בצוקי אביב. 4,650,000 ש״ח, עם מס רכישה, עלויות ועסקאות באזור.",
+   "kw": "דירת 3 חדרים למכירה בצוקי אביב",
+   "slug": "tzukei-aviv-3-rooms-berlin-for-sale"
+  },
+  "en": {
+   "title": "3-Room Apartment for Sale in Tzukei Aviv, Tel Aviv",
+   "desc": "Three rooms, 90 sqm plus a 12 sqm balcony, two parking spaces, storage and a safe room in a boutique building. NIS 4,650,000 with tax, costs and comps.",
+   "kw": "3 room apartment for sale Tzukei Aviv",
+   "slug": "en-tzukei-aviv-3-room-apartment-for-sale"
+  }
+ },
+ "shots": [
+  {
+   "he": "חזית הבניין ברחוב אליהו ברלין",
+   "en": "Building facade on Eliyahu Berlin Street"
+  },
+  {
+   "he": "הלובי וחדר הכושר",
+   "en": "Lobby and residents' gym"
+  },
+  {
+   "he": "חלל המגורים לכיוון המרפסת",
+   "en": "Living space toward the balcony"
+  },
+  {
+   "he": "המרפסת והנוף הפתוח",
+   "en": "Balcony and the open green view"
+  },
+  {
+   "he": "המטבח",
+   "en": "Kitchen"
+  },
+  {
+   "he": "יחידת ההורים",
+   "en": "Master suite"
+  },
+  {
+   "he": "הממ״ד",
+   "en": "Safe room"
+  },
+  {
+   "he": "שתי החניות והמחסן",
+   "en": "Both parking spaces and the storage room"
+  },
+  {
+   "he": "תשריט הדירה",
+   "en": "Unit floor plan"
+  },
+  {
+   "he": "ההליכה לחוף תל ברוך ולטיילת",
+   "en": "The walk to Tel Baruch beach and the promenade"
+  }
+ ],
+ "internal": {
+  "assessment": [
+   "המחיר למ״ר (51,667 ₪ על 90 מ״ר) נמצא ברף העליון של עסקאות 3 חדרים באזור (48,734 עד 52,632 ₪), שנרשמו בבניינים מ-2002 עד 2008. כלומר, פרמיית הבנייה החדשה כמעט לא מתומחרת. זה מחיר תחרותי מול מלאי חדש, לא מציאה.",
+   "החוזקה האמיתית: 2 חניות, מחסן וממ״ד בדירת 3 חדרים. זה מה שיש להבליט, לא את הים.",
+   "הסיכון המרכזי: קומה 2 או 3 עם נוף ירוק פתוח, כשתכנית 3700 מאפשרת בנייה של עד 8 קומות ממערב. אסור לשווק נוף כנכס קבוע.",
+   "תשואה ריאלית לדירה לא מרוהטת: 2.5% עד 3.1%. ה-3.87% מבוסס על דירה מרוהטת באותו בניין ואינו מייצג."
+  ],
+  "confirm": [
+   "קומה: 2 או 3? שטח: 90+12 או 95+10 מ״ר? לתקן במודעות לפני פרסום.",
+   "האם מותר לפרסם את מספר הבית (7)? כרגע מוצג רק שם הרחוב.",
+   "יזם, קבלן, מועד טופס 4, מספר דירות בבניין, מעלית ומיזוג.",
+   "האם המחיר 4,650,000 ₪ עדיין בתוקף, ומה תוקף הבלעדיות.",
+   "אישור בכתב לשימוש בתמונות ובטקסט באתר, וחלוקת דמי התיווך בשיתוף הפעולה."
+  ]
+ },
+ "wp": {
+  "listing_type": "sale",
+  "property_type": "apartment",
+  "price": 4650000,
+  "rooms": 3,
+  "floor": 2,
+  "total_floors": 9,
+  "size_sqm": 90,
+  "balcony_sqm": 12,
+  "parking": true,
+  "elevator": null,
+  "ac": null,
+  "protected_room": true,
+  "street": "אליהו ברלין",
+  "building_number": "",
+  "city": "תל אביב-יפו",
+  "neighborhood": "צוקי אביב",
+  "arnona_monthly": 0,
+  "vaad_bayit_monthly": 600,
+  "storage": true,
+  "condition": "new"
+ },
+ "schools_override": {
+  "0": {
+   "level": {
+    "he": "יסודי, ממלכתי",
+    "en": "Elementary, state"
+   },
+   "note": {
+    "he": "רחוב יאיר רוזנבלום 13. אזור הרישום לכתובת לא אומת.",
+    "en": "13 Yair Rosenblum St. The registration zone for the address was not verified."
+   }
+  },
+  "1": {
+   "level": {
+    "he": "יסודי, ממלכתי-דתי",
+    "en": "Elementary, state-religious"
+   },
+   "note": {
+    "he": "רחוב דוד שמעוני 4א. אזור הרישום לא אומת.",
+    "en": "4A David Shimoni St. Registration zone not verified."
+   }
+  },
+  "2": {
+   "level": {
+    "he": "יסודי, כיתות א-ו",
+    "en": "Elementary, grades 1-6"
+   },
+   "note": {
+    "he": "כ-91 תלמידים בשכבה לפי מדלן. אזור הרישום לא אומת.",
+    "en": "About 91 pupils per grade per Madlan. Registration zone not verified."
+   }
+  },
+  "3": {
+   "title": {
+    "he": "תיכונ״ט נתן אלתרמן",
+    "en": "Nathan Alterman High School"
+   },
+   "level": {
+    "he": "חטיבה ותיכון, ז-יב",
+    "en": "Middle and high school, 7-12"
+   },
+   "note": {
+    "he": "בצוקי אביב, כ-251 תלמידים בשכבה; הבניין זכה בפרס רוקח לאדריכלות ב-2015.",
+    "en": "In Tzukei Aviv, about 251 pupils per grade; the building won the Rokach architecture prize in 2015."
+   }
+  }
+ },
+ "transport": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "transport_override": {
+  "0": {
+   "title": {
+    "he": "הקו הירוק של הרכבת הקלה",
+    "en": "Green Line light rail"
+   },
+   "status": {
+    "he": "בביצוע. הקטע הדרומי צפוי לפעול ב-2028 והקו המלא ב-2030; התוואי מתוכנן לאורך הכביש החדש בתחום תכנית 3700. מיקום התחנה הקרובה לא אומת.",
+    "en": "Under construction. The southern section is expected in 2028 and the full line in 2030; the route is planned along the new road inside plan 3700. The nearest station location was not verified."
+   }
+  },
+  "1": {
+   "title": {
+    "he": "גשר הולכי רגל ואופניים מעל דרך נמיר, צומת קק״ל",
+    "en": "Pedestrian and bike bridge over Namir Road at the KKL junction"
+   },
+   "status": {
+    "he": "בתכנון. לפי דיווח מספטמבר 2025 צפוי בעוד כשלוש שנים; העיצוב הסופי והתקציב טרם נקבעו.",
+    "en": "Planned. A September 2025 report expects it in about three years; final design and budget are pending."
+   }
+  },
+  "4": {
+   "title": {
+    "he": "תחנת רכבת ישראל אוניברסיטה",
+    "en": "Israel Railways, University station"
+   },
+   "status": {
+    "he": "פעילה, אחת מארבע תחנות הרכבת בתל אביב. המרחק מהבניין לא נמדד.",
+    "en": "Operating, one of Tel Aviv's four railway stations. Distance from the building not measured."
+   }
+  }
+ },
+ "future": [
+  0,
+  1,
+  3,
+  4,
+  5,
+  6
+ ],
+ "future_override": {
+  "0": {
+   "title": {
+    "he": "תכנית תא/3700, הרובע הצפון-מערבי",
+    "en": "Plan TA/3700, the north-west quarter"
+   },
+   "impact": {
+    "he": "כ-1,900 דונם בין השכונות הקיימות לים ועד גבול העיר: 11,000 עד 13,000 יחידות דיור, 1,500 חדרי מלון וכ-215,000 מ״ר תעסוקה ומסחר. באוגוסט 2024 טבלאות האיזון וההקצאה טרם אושרו, ולוח הזמנים אינו ודאי.",
+    "en": "About 1,900 dunams between the existing neighborhoods and the sea, up to the city boundary: 11,000 to 13,000 homes, 1,500 hotel rooms and about 215,000 sqm of employment and retail. In August 2024 the reallocation tables were still unapproved, so timing is uncertain."
+   }
+  },
+  "1": {
+   "title": {
+    "he": "גובה הבנייה בתכנית 3700",
+    "en": "Building heights in plan 3700"
+   },
+   "impact": {
+    "he": "מתכנן שצוטט בגלובס תיאר צפיפות של 6 עד 8 יחידות לדונם במבנים של שמונה קומות לכל היותר, ופארק חוף אקולוגי של 400 דונם. הגובה שייקבע ממערב לבניין ישפיע על הנוף הפתוח בקומות הנמוכות.",
+    "en": "A planner quoted by Globes described 6 to 8 homes per dunam in buildings of eight floors at most, plus a 400-dunam ecological coastal park. The heights set west of the building will shape the open view from lower floors."
+   }
+  },
+  "3": {
+   "title": {
+    "he": "רובע שדה דב",
+    "en": "The Sde Dov district"
+   },
+   "impact": {
+    "he": "כ-16,000 יחידות דיור ומגדלים של עד 45 קומות בתכנית המרכז; רוב הדירות צפויות להתאכלס בשנים 2029 עד 2032. היצע חדש ברמות מחיר גבוהות יותר, ושנים של עבודות בנייה מדרום לשכונה.",
+    "en": "About 16,000 homes and towers of up to 45 floors in the center plan; most apartments are expected to be occupied in 2029 to 2032. New supply at higher price levels and years of construction south of the neighborhood."
+   }
+  },
+  "4": {
+   "title": {
+    "he": "פרויקט אליהו ברלין 3",
+    "en": "Eliyahu Berlin 3 project"
+   },
+   "impact": {
+    "he": "במדלן מופיע כבנייה פעילה של 13 קומות ו-41 יחידות עם צפי סיום בתחילת 2028, בעוד שאתר project-tlv מציג אותו כמושלם. אם הבנייה פעילה, צפויות עבודות באותו רחוב עד 2028.",
+    "en": "Madlan shows active construction of 13 floors and 41 units with completion in early 2028, while project-tlv lists it as completed. If active, expect works on the same street until 2028."
+   }
+  },
+  "5": {
+   "title": {
+    "he": "מלון ומגדל מגורים בחוף הצוק",
+    "en": "Hotel and residential tower at Tzuk beach"
+   },
+   "impact": {
+    "he": "תכנית מ-2021 למגדל בן 14 קומות עם 116 דירות ולמלון של כ-200 חדרים; תכנית העיצוב אושרה במאי 2025. פעילות ותנועה נוספות בקצה הצפוני של הטיילת.",
+    "en": "A 2021 plan for a 14-floor tower with 116 apartments and a hotel of about 200 rooms; the design plan was approved in May 2025. More activity and traffic at the north end of the promenade."
+   }
+  },
+  "6": {
+   "title": {
+    "he": "נופי ים צפון",
+    "en": "Nofei Yam North"
+   },
+   "impact": {
+    "he": "במרץ 2025 הוארכה הקפאת ההיתרים לצורך תכנון מחדש, עם אפשרות להגדיל את הגובה מ-15 ל-45 קומות. בנייה גבוהה יותר אפשרית מדרום לשכונה.",
+    "en": "In March 2025 the permit freeze was extended for re-planning, with heights that could rise from 15 to 45 floors. Taller buildings are possible south of the neighborhood."
+   }
+  }
+ }
+}

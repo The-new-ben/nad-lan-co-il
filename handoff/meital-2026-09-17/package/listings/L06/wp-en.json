@@ -1,0 +1,47 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/nadlan_property. Status stays draft. Verify meta keys and term names first (see HANDOFF).",
+ "status": "draft",
+ "title": "Double-Height Mini Penthouse Facing the Sea, Tzukei Aviv",
+ "slug": "en-tzukei-aviv-double-height-mini-penthouse-for-rent",
+ "content_file": "content-en.html",
+ "excerpt": "Five rooms plus a safe room, about 184 sqm, sea-facing glass walls and a 20 sqm balcony. NIS 27,000 a month paid yearly, with costs and comparable rents.",
+ "meta": {
+  "listing_type": "rent",
+  "property_type": "penthouse",
+  "price": 27000,
+  "price_per_sqm": null,
+  "rooms": 5,
+  "floor": 8,
+  "total_floors": 9,
+  "size_sqm": 184,
+  "balcony_sqm": 20,
+  "parking": null,
+  "elevator": null,
+  "ac": null,
+  "protected_room": true,
+  "storage": null,
+  "condition": "new",
+  "street": "אליהו ברלין",
+  "building_number": "",
+  "lat": null,
+  "lng": null,
+  "city": "Tel Aviv-Yafo",
+  "neighborhood": "Tzukei Aviv",
+  "arnona_monthly": null,
+  "vaad_bayit_monthly": 1400,
+  "status": "active",
+  "photos_csv": ""
+ },
+ "terms": {
+  "nadlan_city": [
+   "Tel Aviv-Yafo"
+  ]
+ },
+ "yoast_meta": {
+  "_yoast_wpseo_title": "Double-Height Mini Penthouse for Rent, Tzukei Aviv",
+  "_yoast_wpseo_metadesc": "Five rooms plus a safe room, about 184 sqm, sea-facing glass walls and a 20 sqm balcony. NIS 27,000 a month paid yearly, with costs and comparable rents.",
+  "_yoast_wpseo_focuskw": "mini penthouse for rent Tzukei Aviv"
+ },
+ "language": "en",
+ "translation_group": "L06"
+}

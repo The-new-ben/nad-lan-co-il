@@ -1,0 +1,17 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/pages. Status stays draft. Parent page slug and final slug need owner approval (HANDOFF section 12).",
+ "status": "draft",
+ "title": "מיטל קציר, נדל״ן על הים",
+ "slug": "meital-katzir",
+ "parent_slug": "brokers",
+ "content_file": "content-broker-he.html",
+ "excerpt": "11 נכסים בבלעדיות של המתווכת מיטל קציר: אחוזה בהרצליה פיתוח, מיני פנטהאוזים ודירות בצוקי אביב, בנופי ים ובשרונה, עם כל הפרטים וקשר ישיר.",
+ "template_hint": "full-width page template without a sidebar or page title",
+ "language": "he",
+ "translation_group": "broker-meital-katzir",
+ "yoast_meta": {
+  "_yoast_wpseo_title": "מיטל קציר, נדל״ן על הים | נכסי יוקרה בצפון תל אביב",
+  "_yoast_wpseo_metadesc": "11 נכסים בבלעדיות של המתווכת מיטל קציר: אחוזה בהרצליה פיתוח, מיני פנטהאוזים ודירות בצוקי אביב, בנופי ים ובשרונה, עם כל הפרטים וקשר ישיר.",
+  "_yoast_wpseo_focuskw": "מיטל קציר נדל״ן"
+ }
+}

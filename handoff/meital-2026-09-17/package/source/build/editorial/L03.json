@@ -1,0 +1,195 @@
+{
+ "id": "L03", "deal": "rent", "ptype": "apartment", "plate": "tower", "status": "active", "last_post": "2026-09-01",
+ "rooms": 5, "rent": 15500, "rent_src": ["S13"], "rent_area": 117, "built": 117, "balcony": 14,
+ "city": {"he": "תל אביב-יפו", "en": "Tel Aviv-Yafo"},
+ "area": {"he": "שרונה", "en": "Sarona"},
+ "plate_name": {"he": "מגדלי ב.ס.ר שרונה", "en": "B.S.R Sarona towers"},
+ "kicker": {"he": "להשכרה · שרונה, מרכז תל אביב", "en": "For rent · Sarona, central Tel Aviv"},
+ "title": {"he": "5 חדרים בקומה גבוהה עם נוף לים, ב.ס.ר שרונה", "en": "Five Rooms on a High Floor with a Sea View, B.S.R Sarona"},
+ "dek": {"he": "דירה חדשה בפרויקט שקיבל טופס 4 במרץ 2026: 117 מ״ר ומרפסת דרום-מערבית של 14 מ״ר, חניה ומחסן, כניסה מיידית, ב-15,500 ש״ח לחודש לפי מודעת המשווקת.", "en": "A new apartment in a project that received its occupancy certificate in March 2026: 117 sqm with a 14 sqm south-west balcony, parking and storage, immediate entry, at NIS 15,500 a month per the broker's listing."},
+ "chips": [
+  {"he": "בלעדיות: מיטל קציר, נדל״ן על הים", "en": "Exclusive: Meital Katzir, Real Estate by the Sea", "sea": true},
+  {"he": "כניסה מיידית", "en": "Immediate entry"},
+  {"he": "שמירה 24/7 וחדר כושר", "en": "24/7 security and gym"}
+ ],
+ "facts": [
+  {"label": {"he": "חדרים", "en": "Rooms"}, "value": {"he": "5", "en": "5"}, "basis": "broker"},
+  {"label": {"he": "שטח בנוי", "en": "Built area"}, "value": {"he": "117 מ״ר", "en": "117 sqm"}, "basis": "broker"},
+  {"label": {"he": "מרפסת שמש", "en": "Sun balcony"}, "value": {"he": "14 מ״ר", "en": "14 sqm"}, "basis": "broker"},
+  {"label": {"he": "קומה", "en": "Floor"}, "value": {"he": "גבוהה", "en": "High"}, "basis": "broker"},
+  {"label": {"he": "נוף", "en": "View"}, "value": {"he": "ים ועיר", "en": "Sea and city"}, "basis": "broker"},
+  {"label": {"he": "חניה", "en": "Parking"}, "value": {"he": "צמודה", "en": "Attached"}, "basis": "broker"},
+  {"label": {"he": "מחסן", "en": "Storage"}, "value": {"he": "יש", "en": "Yes"}, "basis": "broker"},
+  {"label": {"he": "כניסה", "en": "Entry"}, "value": {"he": "מיידית", "en": "Immediate"}, "basis": "broker"}
+ ],
+ "price_rows": [
+  {"dt": {"he": "טופס 4", "en": "Occupancy certificate"}, "dd": {"he": "29.3.2026", "en": "29 Mar 2026"}}
+ ],
+ "story_h2": {"he": "מגדל חדש בשרונה, והים ממערב", "en": "A new tower in Sarona, with the sea to the west"},
+ "story": {
+  "he": [
+   "ב.ס.ר שרונה, לשעבר פרויקט קבוצת הרכישה יונייטד שרונה, כולל שלושה מגדלים של כ-40 קומות ו-420 דירות ברחוב ארניה אוסוולדו, בחלק הדרומי של מתחם שרונה.[[S10,S11]] הפרויקט קיבל טופס 4 ב-29 במרץ 2026.[[S12]] היזם ומנהל הפרויקט הוא קבוצת ב.ס.ר, והקבלן הראשי אלקטרה.[[S10,S11]]",
+   "הדירה המוצעת: 5 חדרים על 117 מ״ר בנוי ומרפסת שמש של 14 מ״ר הפונה לדרום-מערב, בקומה גבוהה עם נוף פתוח לים ולכל תל אביב.[[S2,S1]] היא חדשה, כוללת מוצרי חשמל במטבח, חניה ומחסן צמודים, וזמינה לכניסה מיידית.[[S7,S8]] מודעת הבלעדיות של המשווקת במדלן מבקשת 15,500 ש״ח לחודש.[[S13]]",
+   "בבניין לובי בגובה כפול עם שמירה 24/7, חדר כושר לדיירים ו-4 מעליות מהירות בכל מגדל.[[S33,S34]] שרונה מרקט במרחק של כ-40 מ׳ מהרחוב, ותחנת יהודית של הקו האדום פועלת בסמוך.[[S40,S57]]"
+  ],
+  "en": [
+   "B.S.R Sarona, formerly the United Sarona purchase group project, comprises three towers of about 40 floors and 420 apartments on Arania Osvaldo Street, in the southern part of the Sarona complex.[[S10,S11]] The project received its occupancy certificate (Tofes 4) on 29 March 2026.[[S12]] B.S.R Group is the developer and project manager, and Electra is the main contractor.[[S10,S11]]",
+   "The apartment has five rooms on 117 sqm built and a 14 sqm sun balcony facing south-west, on a high floor with open views to the sea and across Tel Aviv.[[S2,S1]] It is new, comes with kitchen appliances, attached parking and storage, and is available immediately.[[S7,S8]] The broker's exclusive Madlan listing asks NIS 15,500 a month.[[S13]]",
+   "The building has a double-height lobby with 24/7 security, a residents' gym and four high-speed lifts per tower.[[S33,S34]] Sarona Market is about 40 m from the street, and Yehudit station on the Red Line operates nearby.[[S40,S57]]"
+  ]
+ },
+ "features": {
+  "he": [["117 מ״ר בנוי", "5 חדרים, לפי המשווקת"], ["מרפסת של 14 מ״ר", "פונה לדרום-מערב, עם נוף לים"], ["טופס 4 ממרץ 2026", "בניין חדש לגמרי[[S12]]"], ["שמירה 24/7 וחדר כושר", "ולובי בגובה כפול"], ["חניה ומחסן", "צמודים לדירה, לפי המשווקת"], ["כ-40 מ׳ לשרונה מרקט", "והקו האדום בתחנת יהודית[[S40]]"]],
+  "en": [["117 sqm built", "Five rooms, broker-stated"], ["A 14 sqm balcony", "Facing south-west, with a sea view"], ["Tofes 4 in March 2026", "A brand-new building[[S12]]"], ["24/7 security and gym", "And a double-height lobby"], ["Parking and storage", "Attached to the unit, per the broker"], ["About 40 m to Sarona Market", "And the Red Line at Yehudit station[[S40]]"]]
+ },
+ "spec": [
+  {"title": {"he": "הדירה", "en": "The apartment"}, "rows": [
+   {"dt": {"he": "חדרים", "en": "Rooms"}, "dd": {"he": "5", "en": "5 (Israeli count)"}, "basis": "broker", "src": ["S4"]},
+   {"dt": {"he": "שטח בנוי", "en": "Built area"}, "dd": {"he": "117 מ״ר", "en": "117 sqm"}, "basis": "broker", "src": ["S2"]},
+   {"dt": {"he": "מרפסת", "en": "Balcony"}, "dd": {"he": "מרפסת שמש של 14 מ״ר, דרום-מערב", "en": "14 sqm sun balcony, south-west"}, "basis": "broker", "src": ["S2"]},
+   {"dt": {"he": "קומה", "en": "Floor"}, "dd": {"he": "גבוהה; בפרסום מינואר 2026 צוינה קומה 20", "en": "High; a January 2026 post gave floor 20"}, "basis": "broker", "src": ["S1", "S7"]},
+   {"dt": {"he": "נוף", "en": "View"}, "dd": {"he": "נוף פתוח לים ולכל תל אביב", "en": "Open views to the sea and across Tel Aviv"}, "basis": "broker", "src": ["S1", "S7"]},
+   {"dt": {"he": "מצב וציוד", "en": "Condition and equipment"}, "dd": {"he": "חדשה מהניילונים; מוצרי חשמל במטבח", "en": "Brand new; kitchen appliances included"}, "basis": "broker", "src": ["S6", "S7"]}
+  ]},
+  {"title": {"he": "חניה, אחסון וכניסה", "en": "Parking, storage and entry"}, "rows": [
+   {"dt": {"he": "חניה", "en": "Parking"}, "dd": {"he": "חניה צמודה", "en": "Attached parking space"}, "basis": "broker", "src": ["S7"]},
+   {"dt": {"he": "מחסן", "en": "Storage"}, "dd": {"he": "מחסן צמוד (במודעה מיוני: מחסן גדול)", "en": "Attached storage (a June post: large storage)"}, "basis": "broker", "src": ["S5", "S7"]},
+   {"dt": {"he": "כניסה", "en": "Entry"}, "dd": {"he": "מיידית", "en": "Immediate"}, "basis": "broker", "src": ["S8"]}
+  ]}
+ ],
+ "building_h2": {"he": "שלושה מגדלים, 420 דירות, טופס 4 ב-2026", "en": "Three towers, 420 homes, occupancy in 2026"},
+ "building_lead": {"he": "דמי הניהול ושם חברת הניהול לא פורסמו. מודעה אחרת בפרויקט ציינה דמי ניהול של 15.4 ש״ח למ״ר.[[S30]]", "en": "The management fee and the management company's name were not published. Another listing in the project stated NIS 15.4 per sqm.[[S30]]"},
+ "building": [
+  {"dt": {"he": "פרויקט", "en": "Project"}, "dd": {"he": "ב.ס.ר שרונה, לשעבר יונייטד שרונה", "en": "B.S.R Sarona, formerly United Sarona"}, "src": ["S9", "S10"]},
+  {"dt": {"he": "יזם", "en": "Developer"}, "dd": {"he": "קבוצת ב.ס.ר; הדירות בבעלות חברי קבוצת הרכישה", "en": "B.S.R Group; apartments are owned by purchase group members"}, "src": ["S10", "S19"]},
+  {"dt": {"he": "קבלן ראשי", "en": "Main contractor"}, "dd": {"he": "אלקטרה", "en": "Electra"}, "src": ["S11"]},
+  {"dt": {"he": "אדריכלים", "en": "Architects"}, "dd": {"he": "משה צור אדריכלים ומתכנני ערים, עם CityBee", "en": "Moshe Tzur Architects and Town Planners, with CityBee"}, "src": ["S10", "S39"]},
+  {"dt": {"he": "היקף", "en": "Scale"}, "dd": {"he": "3 מגדלים, 420 דירות, משרדים, מסחר, שטחי ציבור ו-3 מבני טמפלרים לשימור", "en": "3 towers, 420 apartments, offices, retail, public space and 3 preserved Templer buildings"}, "src": ["S11", "S19"]},
+  {"dt": {"he": "קומות", "en": "Floors"}, "dd": {"he": "כ-38 עד 40; לפי ב.ס.ר 39 קומות מגורים מעל 5 קומות משרדים ומסחר", "en": "About 38 to 40; per B.S.R, 39 residential floors above 5 floors of offices and retail"}, "src": ["S10", "S11"]},
+  {"dt": {"he": "טופס 4", "en": "Tofes 4"}, "dd": {"he": "התקבל ב-29.3.2026 לשלושת המגדלים", "en": "Received on 29 March 2026 for all three towers"}, "src": ["S12", "S17"]},
+  {"dt": {"he": "שירותים", "en": "Services"}, "dd": {"he": "שמירה ואחזקה 24/7, לובי בגובה כפול, חדר כושר לדיירים", "en": "24/7 security and maintenance, double-height lobby, residents' gym"}, "src": ["S33", "S34"]},
+  {"dt": {"he": "חניון", "en": "Car park"}, "dd": {"he": "חניון תת-קרקעי ב-5 מפלסים עם זיהוי לוחיות רישוי", "en": "Five-level underground car park with licence plate recognition"}, "src": ["S11", "S33"]},
+  {"dt": {"he": "מעליות", "en": "Lifts"}, "dd": {"he": "4 מעליות מהירות בכל מגדל", "en": "4 high-speed lifts per tower"}, "src": ["S33", "S11"]},
+  {"dt": {"he": "מיזוג", "en": "Air conditioning"}, "dd": {"he": "מערכת רב-מפצלית (VRF) דירתית", "en": "Per-apartment VRF system"}, "src": ["S33"]},
+  {"dt": {"he": "בריכה וספא", "en": "Pool and spa"}, "dd": {"he": "לא נמצאו במקורות היזם והקבלן", "en": "None found in developer or contractor sources"}, "src": ["S10", "S11"]}
+ ],
+ "location_h2": {"he": "שרונה: המתחם, הרכבת והעיר במרחק הליכה", "en": "Sarona: the complex, the light rail and the city within walking range"},
+ "location": {
+  "he": [
+   "הפרויקט ממוקם מדרום לשרונה מרקט ויוצר את הדופן המערבית של מתחם שרונה, בין אזור העסקים לאורך האיילון לשכונות המגורים ממערב.[[S17,S39]] מגדלי לנדמרק צמודים אליו מדרום.[[S27]]",
+   "בקו אווירי, כיכר הבימה במרחק של כ-600 מ׳, מוזיאון תל אביב לאמנות כ-1.1 ק״מ, מרכז עזריאלי כ-1.2 ק״מ ובית החולים איכילוב כ-1.6 ק״מ.[[S44,S45,S54,S55]] פארק צ׳ארלס קלור על קו החוף נמצא כ-2 ק״מ בקו אווירי.[[S56]]",
+   "הקו האדום פועל מאוגוסט 2023, ויציאה A של תחנת יהודית משרתת את מתחם שרונה.[[S57,S58]] הקו הירוק, עם תחנות בקרליבך ובקפלן, צפוי להיפתח ב-2028, ותחנת רכבת תל אביב השלום מחוברת בגשר הולכי רגל למרכז עזריאלי.[[S61,S66]]"
+  ],
+  "en": [
+   "The project sits south of Sarona Market and forms the western edge of the Sarona complex, between the business district along the Ayalon and the residential neighborhoods to the west.[[S17,S39]] The Landmark towers adjoin it to the south.[[S27]]",
+   "In a straight line, Habima Square is about 600 m away, the Tel Aviv Museum of Art about 1.1 km, Azrieli Center about 1.2 km and Ichilov hospital about 1.6 km.[[S44,S45,S54,S55]] Charles Clore Park on the seafront is about 2 km in a straight line.[[S56]]",
+   "The Red Line has run since August 2023, and exit A of Yehudit station serves the Sarona complex.[[S57,S58]] The Green Line, with stations at Carlebach and Kaplan, is expected to open in 2028, and Tel Aviv HaShalom railway station is linked to Azrieli Center by a footbridge.[[S61,S66]]"
+  ]
+ },
+ "schools_override": {
+  "0": {"note": {"he": "כ-80 תלמידים בשכבה; כ-313 מ׳ מרחוב ארניה אוסוולדו. אזור הרישום לא אומת.", "en": "About 80 pupils per grade; about 313 m from Arania Osvaldo Street. Registration zone not verified."}},
+  "1": {"note": {"he": "כ-72 תלמידים בשכבה; כ-266 מ׳ מהרחוב. אזור הרישום לא אומת.", "en": "About 72 pupils per grade; about 266 m from the street. Registration zone not verified."}},
+  "2": {"note": {"he": "כ-280 מ׳ מהרחוב. תנאי הקבלה לא אומתו.", "en": "About 280 m from the street. Admission terms not verified."}},
+  "3": {"note": {"he": "תנאי הקבלה והמרחק לא אומתו.", "en": "Admission terms and distance not verified."}}
+ },
+ "transport": [0, 1, 3, 4, 6, 7],
+ "transport_override": {
+  "0": {"title": {"he": "הקו האדום, תחנת יהודית", "en": "Red Line, Yehudit station"}, "status": {"he": "פועל מאוגוסט 2023. יציאה A הנגישה משרתת את רחוב הארבעה, מתחם שרונה וקריית הממשלה; רכבת כל כ-3 דקות בשעות השיא.", "en": "Operating since August 2023. The accessible exit A serves HaArba'a Street, the Sarona complex and the government complex; trains about every 3 minutes at peak."}},
+  "1": {"title": {"he": "הקו האדום, תחנת קרליבך", "en": "Red Line, Carlebach station"}, "status": {"he": "פועל. כניסות בקרליבך פינת לינקולן ובקרליבך פינת בגין.", "en": "Operating. Entrances at Carlebach and Lincoln, and at Carlebach and Begin."}},
+  "3": {"title": {"he": "הקו הירוק, תחנות קפלן וקרליבך", "en": "Green Line, Kaplan and Carlebach stations"}, "status": {"he": "בבנייה. הקטע הדרומי צפוי ב-2028 והקו כולו ב-2030.", "en": "Under construction. Southern section expected in 2028, full line in 2030."}},
+  "4": {"title": {"he": "הקו הסגול", "en": "Purple Line"}, "status": {"he": "בבנייה, פתיחה צפויה ב-2028; אין תחנה בשרונה. מעבר לקו האדום בארלוזורוב וביהודה הלוי.", "en": "Under construction, opening expected in 2028; no station in Sarona. Interchanges with the Red Line at Arlozorov and Yehuda HaLevi."}},
+  "6": {"title": {"he": "רכבת ישראל, תחנת השלום", "en": "Israel Railways, HaShalom station"}, "status": {"he": "פועלת; גשר הולכי רגל ממרכז עזריאלי.", "en": "Operating; footbridge from Azrieli Center."}},
+  "7": {"title": {"he": "נתיבי איילון", "en": "Ayalon Highway"}, "status": {"he": "המחלף הקרוב הוא מחלף השלום.", "en": "The nearest interchange is HaShalom."}}
+ },
+ "future": [0, 1, 2, 3, 5],
+ "future_override": {
+  "0": {"title": {"he": "מלון שרונה בפינת הארבעה ובגין", "en": "Sarona Hotel at HaArba'a and Begin"}, "impact": {"he": "47 קומות ו-880 חדרים לפי ויקיפדיה (45 קומות ו-800 חדרים לפי פרויקט TLV). המלון ממזרח לפרויקט ואינו בינו לבין הים; צפויה פעילות בנייה בצד המזרחי של שרונה.", "en": "47 floors and 880 rooms per Wikipedia (45 floors and 800 rooms per Project TLV). The hotel lies east of the project, not between it and the sea; expect construction activity on Sarona's east side."}},
+  "1": {"title": {"he": "מגדל הספירלה במרכז עזריאלי", "en": "The Spiral Tower at Azrieli Center"}, "impact": {"he": "91 קומות ו-350 מ׳, סיום צפוי ב-2027. ישנה את קו הרקיע במזרח ולא בצד הים.", "en": "91 floors and 350 m, due in 2027. It changes the eastern skyline, not the sea side."}},
+  "2": {"title": {"he": "קומות המגורים במגדלי לנדמרק", "en": "Residential floors of the Landmark towers"}, "impact": {"he": "מדלן רושם עסקאות מ-2026 עם שנת בנייה 2027; אם הבנייה נמשכת, צפויות עבודות מדרום לפרויקט.", "en": "Madlan records 2026 sales with a 2027 building year; if work continues, expect construction just south of the project."}}
+ },
+ "numbers": {
+  "h2": {"he": "15,500 ש״ח לחודש, והעלות המלאה", "en": "NIS 15,500 a month, and the full cost"},
+  "lead": {"he": "שכר הדירה במודעת הבלעדיות של המשווקת במדלן, מחושב לפי תעריפי 2026 וכללי חוק השכירות ההוגנת.", "en": "The rent in the broker's exclusive Madlan listing, computed against 2026 rates and the Fair Rental Law rules."},
+  "tabs_title": {"he": "העלות לשוכר", "en": "What the tenant pays"},
+  "tabs": [
+   {"label": {"he": "חודשי", "en": "Monthly"}, "rows": [
+    {"dt": {"he": "שכר דירה[[S13]]", "en": "Rent[[S13]]"}, "dd": {"he": "15,500 ₪", "en": "NIS 15,500"}},
+    {"dt": {"he": "דמי ניהול, הערכה[[S30]]", "en": "Management fee, estimate[[S30]]"}, "dd": {"he": "1,802-2,017 ₪", "en": "NIS 1,802-2,017"}, "note": {"he": "15.4 ₪ למ״ר כפי שצוין במודעה אחרת בפרויקט, על 117 עד 131 מ״ר; לא אומת", "en": "NIS 15.4 per sqm as stated in another listing in the project, on 117 to 131 sqm; unverified"}},
+    {"dt": {"he": "ארנונה, הערכה[[G_KH_TLV,G_NC_ARNONA]]", "en": "Arnona, estimate[[G_KH_TLV,G_NC_ARNONA]]"}, "dd": {"he": "990-1,234 ₪", "en": "NIS 990-1,234"}, "note": {"he": "131 מ״ר כולל מרפסת בתעריף אא, אזור 2 עד אזור 1; האזור לא אומת", "en": "131 sqm including the balcony at newest-code rates, zone 2 to zone 1; zone unverified"}},
+    {"dt": {"he": "סך הכול בחודש", "en": "Total per month"}, "dd": {"he": "18,292-18,751 ₪", "en": "NIS 18,292-18,751"}}
+   ]},
+   {"label": {"he": "בכניסה", "en": "At signing"}, "rows": [
+    {"dt": {"he": "שכר דירה לחודש הראשון", "en": "First month's rent"}, "dd": {"he": "15,500 ₪", "en": "NIS 15,500"}},
+    {"dt": {"he": "תקרת ערבויות לפי החוק[[G_KZ_GUAR]]", "en": "Legal cap on guarantees[[G_KZ_GUAR]]"}, "dd": {"he": "עד 46,500 ₪", "en": "Up to NIS 46,500"}, "note": {"he": "הנמוך מבין 3 חודשי שכירות לשליש משכר הדירה לכל התקופה, בחוזה של שנה", "en": "The lower of 3 months' rent or a third of the total rent, on a 12-month lease"}},
+    {"dt": {"he": "דמי תיווך, אם השוכר הזמין מתווך[[G_NBN_RENT]]", "en": "Brokerage, if the tenant engaged a broker[[G_NBN_RENT]]"}, "dd": {"he": "18,290 ₪", "en": "NIS 18,290"}, "note": {"he": "שכר חודש ומע״מ של 18%", "en": "One month plus 18% VAT"}}
+   ]},
+   {"label": {"he": "מה החוק קובע", "en": "What the law says"}, "rows": [
+    {"dt": {"he": "חוק השכירות ההוגנת[[G_KZ_FAIR,G_NC_FAIR]]", "en": "Fair Rental Law[[G_KZ_FAIR,G_NC_FAIR]]"}, "dd": {"he": "חל", "en": "Applies"}, "note": {"he": "שכר הדירה נמוך מ-20,000 ש״ח לחודש", "en": "The rent is below NIS 20,000 a month"}},
+    {"dt": {"he": "תיקון ליקויים[[G_NC_FAIR]]", "en": "Repairs[[G_NC_FAIR]]"}, "dd": {"he": "3 ימים או 30 יום", "en": "3 days or 30 days"}, "note": {"he": "ליקוי דחוף תוך 3 ימים, ליקוי אחר תוך 30 יום", "en": "Urgent defects within 3 days, others within 30 days"}},
+    {"dt": {"he": "דמי תיווך של המשכיר[[G_NC_FAIR]]", "en": "The landlord's brokerage[[G_NC_FAIR]]"}, "dd": {"he": "לא על השוכר", "en": "Not charged to the tenant"}},
+    {"dt": {"he": "ארנונה וועד בית[[G_NC_FAIR]]", "en": "Arnona and building fee[[G_NC_FAIR]]"}, "dd": {"he": "על השוכר", "en": "Paid by the tenant"}, "note": {"he": "ביטוח המבנה על המשכיר", "en": "Building insurance is the landlord's"}}
+   ]}
+  ],
+  "bars": {"title": {"he": "שכר דירה למ״ר מול הפרויקט", "en": "Rent per sqm against the project"}, "items": [
+   {"label": {"he": "הדירה, על 117 מ״ר", "en": "This apartment, on 117 sqm"}, "value": 132, "this": true},
+   {"label": {"he": "רבעון עליון, 5 חדרים עם נוף לים", "en": "Upper quartile, 5 rooms with sea view"}, "value": 148, "src": ["S18", "S16"]},
+   {"label": {"he": "חציון, 5 חדרים עם נוף לים", "en": "Median, 5 rooms with sea view"}, "value": 136, "src": ["S18", "S16"]},
+   {"label": {"he": "רבעון תחתון, 5 חדרים עם נוף לים", "en": "Lower quartile, 5 rooms with sea view"}, "value": 130, "src": ["S18", "S16"]}
+  ], "note": {"he": "₪ למ״ר בנוי לחודש, חישוב על 11 מודעות של דירות 5 חדרים עם נוף לים או למערב בפרויקט (115 עד 122 מ״ר). כל הפסים באותו קנה מידה.", "en": "NIS per built sqm per month, computed from 11 listings of 5-room sea or west-facing units in the project (115 to 122 sqm). All bars share one scale."}},
+  "ledger_title": {"he": "שוק ומגמה", "en": "Market and trend"},
+  "ledger": [
+   {"dt": {"he": "שכר דירה ממוצע, שכונת שרונה[[S43]]", "en": "Average rent, Sarona neighborhood[[S43]]"}, "dd": {"he": "13,000 ₪", "en": "NIS 13,000"}, "note": {"he": "כל הגדלים, לפי מדלן", "en": "All sizes, per Madlan"}},
+   {"dt": {"he": "מחירי היזם לדירות 4 עד 5 חדרים, דצמבר 2025[[S19]]", "en": "Developer prices for 4 to 5 rooms, Dec 2025[[S19]]"}, "dd": {"he": "52,000-54,000 ₪ למ״ר", "en": "NIS 52,000-54,000 per sqm"}},
+   {"dt": {"he": "שכר דירה לשוכרים חדשים בישראל[[G_CBS_WALLA]]", "en": "Rents for new tenants in Israel[[G_CBS_WALLA]]"}, "dd": {"he": "4.4%+ בשנה", "en": "+4.4% a year"}, "note": {"he": "מדד אוגוסט 2026 של הלמ״ס", "en": "CBS, August 2026 index"}}
+  ]
+ },
+ "market": {
+  "h2": {"he": "שכירות ומכירות בפרויקט ובשכנים", "en": "Rents and sales in the project and next door"},
+  "lead": {"he": "מודעות שכירות לדירות 5 חדרים בב.ס.ר שרונה ובמגדלים הסמוכים, עסקאות מכירה בפרויקט, ונתוני שכונה. מחירי שכירות הם מבוקשים ולא חוזים חתומים.", "en": "Rental listings for 5-room units in B.S.R Sarona and neighboring towers, sales in the project, and neighborhood data. Rents are asking figures, not signed leases."},
+  "stats": [0, 1, 2, 3, 4, 5, 6, 7]
+ },
+ "questions": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+ "checks_h2": {"he": "מה לבדוק לפני חתימה", "en": "What to check before signing"},
+ "checks_lead": {"he": "השאלות ששוכר זהיר שואל על הדירה והפרויקט, והמסמכים שכדאי לקבל.", "en": "The questions a careful tenant asks about the unit and the project, and the documents to obtain."},
+ "checks_extra": {
+  "he": ["טיוטת חוזה השכירות, כולל ערבויות, הצמדה ואופציה", "חשבון ארנונה אחרון של הדירה", "אישור זכויות המשכיר בדירה", "פרוטוקול מסירה ורשימת ציוד"],
+  "en": ["The draft lease, including guarantees, indexation and option", "The unit's latest arnona bill", "Confirmation of the landlord's rights in the unit", "A handover record and equipment list"]
+ },
+ "faq": [
+  {"q": {"he": "כמה עולה הדירה בחודש?", "en": "What does the apartment cost per month?"}, "a": {"he": "15,500 ש״ח לפי מודעת המשווקת במדלן, ועם דמי ניהול וארנונה בהערכה כ-18,292 עד 18,751 ש״ח לחודש.[[S13,S30,G_KH_TLV]]", "en": "NIS 15,500 per the broker's Madlan listing, and with the management fee and arnona an estimated NIS 18,292 to 18,751 a month.[[S13,S30,G_KH_TLV]]"}},
+  {"q": {"he": "באיזו קומה ולאן הנוף?", "en": "Which floor, and where does it look?"}, "a": {"he": "המשווקת מתארת קומה גבוהה עם נוף פתוח לים ולכל תל אביב, ובפרסום מינואר 2026 צוינה קומה 20. המרפסת פונה לדרום-מערב.[[S1,S2]]", "en": "The broker describes a high floor with open views to the sea and across Tel Aviv, and a January 2026 post gave floor 20. The balcony faces south-west.[[S1,S2]]"}},
+  {"q": {"he": "האם יש בריכה בבניין?", "en": "Is there a pool?"}, "a": {"he": "לא נמצאו בריכה או ספא משותפים במקורות היזם והקבלן. בפרויקט חדר כושר לדיירים, שמירה 24/7 ולובי בגובה כפול.[[S10,S33,S34]]", "en": "No communal pool or spa appears in developer or contractor sources. The project has a residents' gym, 24/7 security and a double-height lobby.[[S10,S33,S34]]"}},
+  {"q": {"he": "כמה קרובה הרכבת הקלה?", "en": "How close is the light rail?"}, "a": {"he": "יציאה A של תחנת יהודית בקו האדום משרתת את מתחם שרונה, והקו פועל מאוגוסט 2023.[[S57,S58]]", "en": "Exit A of Yehudit station on the Red Line serves the Sarona complex, and the line has run since August 2023.[[S57,S58]]"}},
+  {"q": {"he": "מה החוק קובע לגבי ערבויות?", "en": "What does the law say about guarantees?"}, "a": {"he": "בשכר דירה של עד 20,000 ש״ח חל חוק השכירות ההוגנת, והערבויות מוגבלות לנמוך מבין 3 חודשי שכירות לשליש משכר הדירה לכל התקופה: עד 46,500 ש״ח בחוזה של שנה.[[G_KZ_GUAR,G_KZ_FAIR]]", "en": "At rents up to NIS 20,000 the Fair Rental Law applies, and guarantees are capped at the lower of 3 months' rent or a third of the total rent: up to NIS 46,500 on a 12-month lease.[[G_KZ_GUAR,G_KZ_FAIR]]"}}
+ ],
+ "amenities": [{"he": "שמירה 24/7", "en": "24/7 security"}, {"he": "חדר כושר", "en": "Gym"}, {"he": "חניה", "en": "Parking"}, {"he": "מחסן", "en": "Storage"}, {"he": "מעליות מהירות", "en": "High-speed lifts"}],
+ "seo": {
+  "he": {"title": "דירת 5 חדרים להשכרה בב.ס.ר שרונה, נוף לים", "desc": "5 חדרים, 117 מ״ר ומרפסת 14 מ״ר בקומה גבוהה, נוף פתוח לים, חניה ומחסן, כניסה מיידית. 15,500 ש״ח לחודש, עם עלויות, חוק ושכירויות בפרויקט.", "kw": "דירה להשכרה בב.ס.ר שרונה", "slug": "bsr-sarona-5-rooms-sea-view-for-rent"},
+  "en": {"title": "5-Room Sea-View Apartment for Rent, B.S.R Sarona Tel Aviv", "desc": "Five rooms, 117 sqm plus a 14 sqm balcony on a high floor with open sea views, parking and storage, immediate entry. NIS 15,500 a month with costs and comps.", "kw": "apartment for rent Sarona Tel Aviv sea view", "slug": "en-bsr-sarona-5-room-sea-view-apartment-for-rent"}
+ },
+ "shots": [
+  {"he": "הנוף מהמרפסת לים", "en": "Sea view from the balcony"},
+  {"he": "הסלון והמטבח", "en": "Living room and kitchen"},
+  {"he": "יחידת ההורים", "en": "Master suite"},
+  {"he": "חדרי הילדים", "en": "Bedrooms"},
+  {"he": "הלובי בגובה כפול", "en": "Double-height lobby"},
+  {"he": "חדר הכושר", "en": "Gym"},
+  {"he": "המגדלים ושרונה מרקט מלמטה", "en": "The towers and Sarona Market from street level"},
+  {"he": "תשריט הדירה", "en": "Floor plan"}
+ ],
+ "internal": {
+  "assessment": [
+   "15,500 ₪ הם 132 ₪ למ״ר, מתחת לחציון המודעות בפרויקט (136 ₪) ובתחתית הטווח הבין-רבעוני (130-148 ₪). מחיר הוגן לקומה גבוהה עם נוף לים.",
+   "הדירה משווקת מינואר: בהשכרה, אחר כך למכירה (אפריל עד יוני), ושוב בהשכרה. במדלן יש גם מודעה ישנה של המשווקת ב-19,000 ₪. ברחוב 26 דירות 5 חדרים להשכרה, היצע גבוה.",
+   "לשוכר: הבעלים עשויים למכור. כדאי סעיף שמגן על השכירות במקרה מכירה."
+  ],
+  "confirm": [
+   "האם 15,500 ₪ הוא המחיר הנוכחי?",
+   "קומה 20? באיזה מגדל, ומרפסת לדרום-מערב או לצפון-מערב?",
+   "מרוהטת או לא; מה כלול.",
+   "האם החניה רשומה לדירה; דמי ניהול בפועל.",
+   "אישור לתמונות."
+  ]
+ },
+ "wp": {"listing_type": "rent", "property_type": "apartment", "price": 15500, "rooms": 5, "floor": null, "total_floors": null, "size_sqm": 117, "balcony_sqm": 14, "parking": true, "elevator": true, "ac": true, "protected_room": null, "street": "ארניה אוסוולדו", "building_number": "", "city": "תל אביב-יפו", "neighborhood": "שרונה", "arnona_monthly": 0, "vaad_bayit_monthly": 0, "storage": true, "condition": "new"}
+}

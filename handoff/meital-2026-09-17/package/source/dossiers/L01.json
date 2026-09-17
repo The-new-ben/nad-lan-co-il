@@ -1,0 +1,2952 @@
+{
+  "id": "L01",
+  "identification": {
+    "summary_en": "Private estate for sale in Herzliya Pituach, posted by Meital Katzir on 2026-09-15 without a price or street: about 700 sqm built over 3 levels on a plot of about 1,100 sqm (1.1 dunam), 7 master suites, large pool, cinema room, gym, wine cellar and elevator, about 5 minutes from De Shalit Square. A Yad2 listing by Anglo Saxon Herzliya Pituach (posted 2025-12-11) gives the same built area, plot and number of levels and almost the same feature list at NIS 46,000,000, so it is likely the same estate. No address, block and parcel or photo comparison confirms this. Other agencies advertise similar Herzliya Pituach villas at NIS 45,000,000 to NIS 46,000,000 with conflicting sizes.",
+    "summary_he": "אחוזה פרטית למכירה בהרצליה פיתוח, שפורסמה על ידי מיטל קציר ב-15.9.2026 ללא מחיר וללא ציון רחוב: כ-700 מ״ר בנויים ב-3 מפלסים על מגרש של כ-1,100 מ״ר (1.1 דונם), 7 סוויטות מאסטר, בריכה גדולה, חדר קולנוע, חדר כושר, מרתף יין ומעלית, כ-5 דקות מכיכר דה שליט. מודעה ביד2 של אנגלו סכסון הרצליה פיתוח (פורסמה ב-11.12.2025) מציגה אותו שטח בנוי, אותו גודל מגרש ואותו מספר מפלסים, ורשימת מאפיינים כמעט זהה, במחיר 46,000,000 ש״ח, ולכן סביר שמדובר באותה אחוזה. אין כתובת, גוש וחלקה או השוואת תמונות שמאשרים זאת. משרדים נוספים מפרסמים וילות דומות בהרצליה פיתוח ב-45 עד 46 מיליון ש״ח, עם נתוני שטח סותרים.",
+    "address_or_project_en": "Street not disclosed. Herzliya Pituach, about 5 minutes from De Shalit Square according to the broker",
+    "address_or_project_he": "הרחוב לא פורסם. הרצליה פיתוח, כ-5 דקות מכיכר דה שליט לפי המתווכת",
+    "confidence": "likely",
+    "evidence": [
+      "Broker post of 2026-09-15 (location tag Herzliya Pituach): about 700 sqm built on 3 levels, plot about 1,100 sqm (1.1 dunam), 7 master suites, large mamad, smart electrical system, underfloor heating, large pool, cinema room, gym, wine cellar, elevator, custom carpentry, 5 minutes from De Shalit Square.",
+      "Yad2 item 48q4dbek (Anglo Saxon Herzliya Pituach, posted 2025-12-11): NIS 46,000,000, 8 rooms, 700 sqm built, 1,100 sqm plot; text: huge parents' master and further spacious suites, mamad, smart electrical system, pool, cinema room, gym, elevator, about 700 sqm built on 3 levels. In the Israeli room count, 8 rooms is consistent with 7 bedroom suites plus a living room.",
+      "Features in the broker post that the Anglo Saxon text does not mention: wine cellar, underfloor heating, custom carpentry, garden view. A Silco Group listing at the same NIS 46,000,000 on a 1,100 sqm plot does mention a wine cellar and underfloor heating, but states 11 rooms and about 600 sqm built.",
+      "Portals checked without a match on 700 sqm, 1.1 dunam and 7 suites: Madlan houses for sale in Herzliya Pituach (140 listings, pages 1-4), Israel Sotheby's International Realty search pages 1-12 (NIS 170m down to NIS 25.5m), the Sotheby's Canada syndication page, JamesEdition (23 Herzliya listings), the Anglo Saxon Herzliya Pituach website, and the Komo and Homeless index pages.",
+      "Closest non-matching lookalike: HaNuriot 24 on Madlan (plot 1,120 sqm, 766 sqm built, 8 bedrooms plus a master suite, NIS 59,000,000). Its built area and bedroom count differ, and its text names no cinema, gym or wine cellar."
+    ],
+    "source_ids": [
+      "S1",
+      "S51",
+      "S55",
+      "S36",
+      "S37",
+      "S48",
+      "S47",
+      "S49",
+      "S76",
+      "S50"
+    ]
+  },
+  "cross_listings": [
+    {
+      "what_en": "Yad2 sale listing by Anglo Saxon Herzliya Pituach (item 48q4dbek)",
+      "url": "https://www.yad2.co.il/realestate/item/48q4dbek",
+      "date": "2025-12-11",
+      "price_nis": 46000000,
+      "details_en": "8 rooms; built area 700 sqm; plot 1,100 sqm; about 700 sqm built on 3 levels; huge parents' master plus further spacious suites; mamad; smart electrical system; pool; cinema room; gym; elevator; condition renovated; 2 parking spaces; flexible entry. The page states that complementary items were added to the photos with AI to illustrate the property's potential. Computed: NIS 65,714 per built sqm (46,000,000 / 700) and NIS 41,818 per plot sqm (46,000,000 / 1,100). At the Bank of Israel rates of 2026-09-15, about USD 15.09 million or EUR 13.08 million (46,000,000 / 3.0490 and / 3.5169).",
+      "same_unit_evidence_en": "Same neighbourhood, same built area (700 sqm), same plot (1,100 sqm), same 3 levels, and the same unusual combination of huge master suite, further suites, mamad, smart electrical system, pool, cinema room, gym and elevator. Differences: no mention of wine cellar, underfloor heating or carpentry, and 8 rooms instead of 7 suites (consistent under the Israeli room count). Not confirmed by street, block and parcel or photos, and the price may have changed since December 2025.",
+      "confidence": "likely",
+      "source_ids": [
+        "S51",
+        "S1",
+        "S83"
+      ]
+    },
+    {
+      "what_en": "Yad2 sale listing by Ahuzat HaNadlan (item 9oaofjvg), possible duplicate",
+      "url": "https://www.yad2.co.il/realestate/item/9oaofjvg",
+      "date": "2026-08-24",
+      "price_nis": 45000000,
+      "details_en": "11 rooms, all described as suites, on three levels; built about 700 sqm; plot about 1,200 sqm; large pool, jacuzzi, sauna, gym, cinema room, elevator; renovated; 3 parking spaces; the agency also offers the house for rent at NIS 130,000 per month.",
+      "same_unit_evidence_en": "Matches about 700 sqm built on 3 levels, an all-suite layout, a large pool, cinema room, gym and elevator. Conflicts: plot about 1,200 sqm (broker: about 1,100), 11 rooms, price NIS 45,000,000. Not confirmed as the same estate.",
+      "confidence": "unverified",
+      "source_ids": [
+        "S52"
+      ]
+    },
+    {
+      "what_en": "Yad2 sale listings by M.M.M Group (items tsail49m and hvubhv2x), possible duplicate",
+      "url": "https://www.yad2.co.il/realestate/item/tsail49m",
+      "date": "2025-07-20 (earlier post 2024-05-26)",
+      "price_nis": 46000000,
+      "details_en": "8 rooms; built area 700 sqm; plot 1,000 sqm; European-style private house; 8 spacious bedrooms with high ceilings; smart electrical system; elevator; gym; large pool; entertaining areas.",
+      "same_unit_evidence_en": "Same price and built area as the Anglo Saxon listing, with a smart electrical system, elevator, gym and large pool. Conflicts: plot 1,000 sqm and 8 bedrooms. Not confirmed.",
+      "confidence": "unverified",
+      "source_ids": [
+        "S53",
+        "S54"
+      ]
+    },
+    {
+      "what_en": "Yad2 sale listings by Silco Group (items 42nukvpz, eds8uuaf, qbhe91mf), possible duplicate",
+      "url": "https://www.yad2.co.il/realestate/item/qbhe91mf",
+      "date": "2026-04-28 (earlier posts 2024-01-03 and 2025-03-13)",
+      "price_nis": 46000000,
+      "details_en": "11 rooms; European-style villa; plot 1,100 sqm; built about 600 sqm; pool, elevator, sauna, wine cellar, smart home, underfloor heating, parents' unit; renovated; 3 parking spaces.",
+      "same_unit_evidence_en": "Same price and plot as the Anglo Saxon listing, and the only candidate that mentions both a wine cellar and underfloor heating, as the broker does. Conflicts: about 600 sqm built and 11 rooms, with no cinema or gym mentioned. Not confirmed.",
+      "confidence": "unverified",
+      "source_ids": [
+        "S55",
+        "S56",
+        "S57"
+      ]
+    },
+    {
+      "what_en": "Yad2 sale listing by Sea Real Estate (item g2yehy3d), possible duplicate",
+      "url": "https://www.yad2.co.il/realestate/item/g2yehy3d",
+      "date": "2025-12-18",
+      "price_nis": 45000000,
+      "details_en": "9.5 rooms; built 800 sqm; plot 1,100 sqm; classic villa in a quiet location in the heart of Herzliya Pituach, 7 minutes' walk from the sea (agency's claim); almost all bedrooms are suites; pool, jacuzzi and outdoor kitchen; elevator; smart electrical system; basement with 2 units.",
+      "same_unit_evidence_en": "Plot of 1,100 sqm, quiet location near the sea, suites, pool, elevator and smart electrical system all match. Conflicts: 800 sqm built and 9.5 rooms, with no cinema, gym or wine cellar mentioned. Not confirmed.",
+      "confidence": "unverified",
+      "source_ids": [
+        "S58"
+      ]
+    },
+    {
+      "what_en": "Yad2 sale listing by Vera Prime Luxury Properties (item dide5u9c), weak candidate",
+      "url": "https://www.yad2.co.il/realestate/item/dide5u9c",
+      "date": "2024-10-14",
+      "price_nis": 45000000,
+      "details_en": "8 rooms; built 800 sqm; plot not stated; high ceilings, large suites, pool, elevator, underfloor heating; renovated; immediate entry.",
+      "same_unit_evidence_en": "Suites, pool, elevator and underfloor heating match. Built area of 800 sqm; no plot size, cinema, gym or wine cellar given. Not confirmed.",
+      "confidence": "unverified",
+      "source_ids": [
+        "S59"
+      ]
+    }
+  ],
+  "building_facts": [
+    {
+      "label_en": "Built area",
+      "label_he": "שטח בנוי",
+      "value_en": "About 700 sqm over 3 levels",
+      "value_he": "כ-700 מ״ר בנויים ב-3 מפלסים",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S51"
+      ],
+      "note_en": "Broker figure; the Anglo Saxon Yad2 listing gives the same 700 sqm on 3 levels. Other possible duplicates give about 600 or 800 sqm. Permitted and registered areas not verified."
+    },
+    {
+      "label_en": "Plot",
+      "label_he": "מגרש",
+      "value_en": "About 1,100 sqm (1.1 dunam)",
+      "value_he": "כ-1,100 מ״ר (1.1 דונם)",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S51"
+      ],
+      "note_en": "Same figure in the Anglo Saxon listing; M.M.M gives 1,000 sqm and Ahuzat HaNadlan about 1,200 sqm. Check against the land registry extract."
+    },
+    {
+      "label_en": "Bedrooms",
+      "label_he": "חדרי שינה",
+      "value_en": "7 master suites (8 rooms in the Israeli count on the likely cross-listing)",
+      "value_he": "7 סוויטות מאסטר (8 חדרים לפי הספירה המקובלת במודעה המקבילה)",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S1",
+        "S51"
+      ],
+      "note_en": "Other candidate listings state 8, 9.5 or 11 rooms."
+    },
+    {
+      "label_en": "Master suite",
+      "label_he": "סוויטת הורים",
+      "value_en": "Very large master suite",
+      "value_he": "סוויטת הורים ענקית",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S51"
+      ],
+      "note_en": "The Anglo Saxon listing also describes a huge parents' master."
+    },
+    {
+      "label_en": "Safe room",
+      "label_he": "ממ״ד",
+      "value_en": "Large mamad",
+      "value_he": "ממ״ד גדול",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S51"
+      ],
+      "note_en": "Mamad listed on the Anglo Saxon listing; size and Home Front Command approval not verified."
+    },
+    {
+      "label_en": "Smart electrical system",
+      "label_he": "חשמל חכם",
+      "value_en": "Yes",
+      "value_he": "יש",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S51",
+        "S53"
+      ],
+      "note_en": "Also named on the Anglo Saxon and M.M.M listings; system brand not stated."
+    },
+    {
+      "label_en": "Underfloor heating",
+      "label_he": "חימום תת-רצפתי",
+      "value_en": "Yes",
+      "value_he": "יש",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S1",
+        "S57"
+      ],
+      "note_en": "Not on the Anglo Saxon listing; named on the Silco Group listing, a possible duplicate."
+    },
+    {
+      "label_en": "Living room",
+      "label_he": "סלון",
+      "value_en": "Very large living room overlooking a pastoral garden",
+      "value_he": "סלון ענק הצופה לגינה פסטורלית",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S1"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Swimming pool",
+      "label_he": "בריכת שחייה",
+      "value_en": "Large pool",
+      "value_he": "בריכה גדולה",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S51"
+      ],
+      "note_en": "Pool also listed on the Anglo Saxon listing. Check that the pool appears in the building permit."
+    },
+    {
+      "label_en": "Cinema room",
+      "label_he": "חדר קולנוע",
+      "value_en": "Yes",
+      "value_he": "יש",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S51"
+      ],
+      "note_en": "Also on the Anglo Saxon listing. Level (basement or above ground) not stated."
+    },
+    {
+      "label_en": "Gym",
+      "label_he": "חדר כושר",
+      "value_en": "Yes",
+      "value_he": "יש",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S51"
+      ],
+      "note_en": "Also on the Anglo Saxon and M.M.M listings."
+    },
+    {
+      "label_en": "Wine cellar",
+      "label_he": "מרתף יין",
+      "value_en": "Yes",
+      "value_he": "יש",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S1",
+        "S57"
+      ],
+      "note_en": "Not on the Anglo Saxon listing; named on the Silco Group listing, a possible duplicate."
+    },
+    {
+      "label_en": "Elevator",
+      "label_he": "מעלית",
+      "value_en": "Private elevator",
+      "value_he": "מעלית פנימית",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S51"
+      ],
+      "note_en": "Listed on all candidate cross-listings."
+    },
+    {
+      "label_en": "Carpentry",
+      "label_he": "נגרות",
+      "value_en": "Custom carpentry in all bedrooms and throughout the house",
+      "value_he": "נגרות בהתאמה אישית בכל החדרים ובכל הבית",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S1"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Location",
+      "label_he": "מיקום",
+      "value_en": "Quiet location within walking distance of the sea, about 5 minutes from De Shalit Square",
+      "value_he": "מיקום שקט במרחק הליכה מהים, כ-5 דקות מכיכר דה שליט",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S1"
+      ],
+      "note_en": "Walking or driving mode not stated; no source gives minutes. Street not disclosed."
+    },
+    {
+      "label_en": "Viewing",
+      "label_he": "ביקור בנכס",
+      "value_en": "By appointment only",
+      "value_he": "בתיאום מראש בלבד",
+      "basis": "broker",
+      "confidence": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "note_en": "Broker statement."
+    },
+    {
+      "label_en": "Asking price",
+      "label_he": "מחיר מבוקש",
+      "value_en": "Not published by the broker. NIS 46,000,000 on the likely cross-listing (Anglo Saxon, December 2025); NIS 45,000,000 to 46,000,000 on other possible duplicates",
+      "value_he": "לא פורסם על ידי המתווכת. 46,000,000 ש״ח במודעה המקבילה הסבירה (אנגלו סכסון, דצמבר 2025); 45 עד 46 מיליון ש״ח במודעות נוספות שאולי מתייחסות לאותו נכס",
+      "basis": "source",
+      "confidence": "unverified",
+      "source_ids": [
+        "S51",
+        "S52",
+        "S53",
+        "S57",
+        "S58"
+      ],
+      "note_en": "Do not publish as the asking price until the broker confirms it."
+    },
+    {
+      "label_en": "Condition and parking (cross-listing)",
+      "label_he": "מצב וחניה (לפי המודעה המקבילה)",
+      "value_en": "Renovated; 2 parking spaces; flexible entry",
+      "value_he": "משופץ; 2 חניות; כניסה גמישה",
+      "basis": "source",
+      "confidence": "unverified",
+      "source_ids": [
+        "S51"
+      ],
+      "note_en": "From the likely cross-listing only."
+    },
+    {
+      "label_en": "Built area to plot ratio",
+      "label_he": "יחס שטח בנוי למגרש",
+      "value_en": "About 64% (700 / 1,100)",
+      "value_he": "כ-64% (700 חלקי 1,100)",
+      "basis": "computed",
+      "confidence": "unverified",
+      "source_ids": [
+        "S1"
+      ],
+      "note_en": "Computed from broker figures. Gross area over 3 levels, not ground coverage or permitted building rights."
+    }
+  ],
+  "neighborhood_facts": [
+    {
+      "label_en": "De Shalit Square position",
+      "label_he": "מיקום כיכר דה שליט",
+      "value_en": "The Ministry of Transport bus stop named Kikar De Shalit (code 26921) is at 32.179018 N, 34.805034 E, in western Herzliya Pituach",
+      "value_he": "תחנת האוטובוס 'ככר דה שליט' (קוד 26921) של משרד התחבורה ממוקמת בנקודה 32.179018 צפון, 34.805034 מזרח, במערב הרצליה פיתוח",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "note_en": "Official GTFS stop coordinates, service dates through 2026-09-15. Used as the square's reference point for all straight-line distances."
+    },
+    {
+      "label_en": "Streets at the square",
+      "label_he": "רחובות סביב הכיכר",
+      "value_en": "Ramat Yam St and Wingate St meet at the square: the nearest stops are 'Sharon Hotel' (about 125-150 m west), 'Commercial Center/Wingate' (about 130 m north-east), 'Wingate/Sderot HaTish'im VeShalosh' (about 160 m north-east) and 'Medical Center/Ramat Yam' (about 240 m south-west)",
+      "value_he": "רחוב רמת ים ורחוב וינגייט נפגשים באזור הכיכר: התחנות הקרובות הן 'מלון השרון' (כ-125 עד 150 מ׳ מערבה), 'מרכז מסחרי/וינגייט' (כ-130 מ׳ צפון-מזרחה), 'וינגייט/שד׳ התשעים ושלוש' (כ-160 מ׳ צפון-מזרחה) ו'מדיקל סנטר/רמת ים' (כ-240 מ׳ דרום-מערבה)",
+      "basis": "computed",
+      "confidence": "likely",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "note_en": "Inferred from stop names and computed straight-line distances between official stop coordinates; Wikidata gives the Sharon Hotel at 4 Ramat Yam St and Herzliya Medical Center at 7 Ramat Yam St."
+    },
+    {
+      "label_en": "Sharon Hotel",
+      "label_he": "מלון השרון",
+      "value_en": "4 Ramat Yam St, about 160 m west-north-west of the square (straight line)",
+      "value_he": "רחוב רמת ים 4, כ-160 מ׳ מערבית-צפון-מערבית לכיכר (בקו אווירי)",
+      "basis": "computed",
+      "confidence": "likely",
+      "source_ids": [
+        "S3",
+        "S2"
+      ],
+      "note_en": "Single source for the address (Wikidata); a GTFS stop of the same name is about 125 m from the square."
+    },
+    {
+      "label_en": "Herzliya Medical Center",
+      "label_he": "הרצליה מדיקל סנטר",
+      "value_en": "Private hospital founded 1982 at 7 Ramat Yam St, about 250 m south-west of the square (straight line)",
+      "value_he": "בית חולים פרטי שנוסד ב-1982, ברחוב רמת ים 7, כ-250 מ׳ דרום-מערבית לכיכר (בקו אווירי)",
+      "basis": "computed",
+      "confidence": "verified",
+      "source_ids": [
+        "S4",
+        "S103",
+        "S2"
+      ],
+      "note_en": "Address from Wikidata, corroborated by the GTFS stop 'Medical Center/Ramat Yam'; founding year from Wikipedia."
+    },
+    {
+      "label_en": "Descent to Sharon Beach",
+      "label_he": "הירידה לחוף השרון",
+      "value_en": "The Herzliya Seafront Plan Har/2202 groups De Shalit Square with the descent to Sharon Beach in its central coastal section",
+      "value_he": "תוכנית חוף הים של הרצליה, הר/2202, כוללת את כיכר דה שליט ואת הירידה לחוף השרון במקטע החוף המרכזי",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S24",
+        "S25"
+      ],
+      "note_en": "Plan explanatory text and Mikumi article."
+    },
+    {
+      "label_en": "Beach zoning around the square",
+      "label_he": "ייעודי החוף סביב הכיכר",
+      "value_en": "Under Har/2202 the beach from the marina up to and including Sharon Beach is for intensive development, and from Sharon Beach north to Sidna Ali for moderate urban development",
+      "value_he": "לפי הר/2202, החוף מהמרינה ועד חוף השרון (כולל) מיועד לפיתוח אינטנסיבי, ומחוף השרון צפונה ועד סידנא עלי לפיתוח עירוני מתון",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S24",
+        "S25"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Galei Tchelet St",
+      "label_he": "רחוב גלי תכלת",
+      "value_en": "Cliff-top villa street; its Wikidata reference point is about 440 m north-north-west of the square. N12 reports western, cliff-line villas cost double or more than those on the eastern side",
+      "value_he": "רחוב וילות על קו המצוק; נקודת הייחוס שלו בוויקינתונים נמצאת כ-440 מ׳ צפונית-צפון-מערבית לכיכר. לפי N12, הווילות בצד המערבי, על קו המצוק, יקרות פי שניים ויותר מאלה שבצד המזרחי",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S5",
+        "S2",
+        "S29"
+      ],
+      "note_en": "Distance is to a single reference point on a long street, not to its nearest house."
+    },
+    {
+      "label_en": "Nof Yam",
+      "label_he": "נוף ים",
+      "value_en": "Nof Yam begins north-east of the square: the HaEshel St stop (a street ynet places on the Nof Yam and Herzliya Pituach border) is about 1.2 km away, as is the Nof Yam interchange stop",
+      "value_he": "שכונת נוף ים מתחילה צפון-מזרחית לכיכר: תחנת שער הים/האשל (רחוב ש-ynet ממקם על הגבול בין נוף ים להרצליה פיתוח) נמצאת כ-1.2 ק״מ מהכיכר, וכך גם תחנת מחלף נוף ים",
+      "basis": "computed",
+      "confidence": "likely",
+      "source_ids": [
+        "S26",
+        "S2"
+      ],
+      "note_en": "No official neighbourhood boundary map was read."
+    },
+    {
+      "label_en": "Neighbourhood profile",
+      "label_he": "פרופיל השכונה",
+      "value_en": "Socio-economic index 9/10; founded in 1925; villas and cottages including some of the largest and most expensive in Israel",
+      "value_he": "מדד חברתי-כלכלי 9 מתוך 10; נוסדה ב-1925; וילות וקוטג׳ים, ובהם מהגדולים והיקרים בישראל",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S27",
+        "S31"
+      ],
+      "note_en": "Index per Madlan; founding year also on Wikipedia."
+    },
+    {
+      "label_en": "Diplomats",
+      "label_he": "דיפלומטים",
+      "value_en": "55 ambassadors live in Herzliya (citywide figure quoted from the mayor)",
+      "value_he": "55 שגרירים מתגוררים בהרצליה (נתון עירוני כולל, מפי ראש העירייה)",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S28"
+      ],
+      "note_en": "Citywide, not a Herzliya Pituach count."
+    },
+    {
+      "label_en": "Beaches",
+      "label_he": "חופים",
+      "value_en": "The municipality lists Acadia (accessible), Sharon, HaKochavim, the separate beach (HaNifrad), Zevulun and Sidna Ali beaches",
+      "value_he": "העירייה מונה את חופי אכדיה (נגיש), השרון, הכוכבים, החוף הנפרד, זבולון וסידנא עלי",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S30"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Apollonia National Park",
+      "label_he": "גן לאומי אפולוניה",
+      "value_en": "Crusader fortress built in 1241 and a 1st-century CE Roman seaside villa; opened to the public in 2002; about 1.6 km straight line north of De Shalit Square",
+      "value_he": "מבצר צלבני משנת 1241 ווילה רומית מהמאה הראשונה לספירה על חוף הים; נפתח לציבור ב-2002; כ-1.6 ק״מ בקו אווירי צפונית לכיכר דה שליט",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S107",
+        "S9",
+        "S2"
+      ],
+      "note_en": "History per the Israel Nature and Parks Authority; distance computed."
+    },
+    {
+      "label_en": "Herzliya Marina and Arena Mall",
+      "label_he": "מרינה הרצליה וקניון ארנה",
+      "value_en": "Arena Mall is at HaShunit 2 by the marina, about 1.9 km straight line south-south-west of De Shalit Square; the marina is about 2.2 km",
+      "value_he": "קניון ארנה ברחוב השונית 2 שליד המרינה, כ-1.9 ק״מ בקו אווירי דרום-דרום-מערבית לכיכר דה שליט; המרינה כ-2.2 ק״מ",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S108",
+        "S11",
+        "S12",
+        "S2"
+      ],
+      "note_en": "Address per the mall's site; distances computed."
+    }
+  ],
+  "distances": [
+    {
+      "to_en": "De Shalit Square (from the estate)",
+      "to_he": "כיכר דה שליט (מהנכס)",
+      "value_en": "about 5 minutes (walking or driving not stated)",
+      "value_he": "כ-5 דקות (לא צוין אם בהליכה או בנסיעה)",
+      "basis": "broker",
+      "source_ids": [
+        "S1"
+      ],
+      "note_en": "Broker claim; not verified."
+    },
+    {
+      "to_en": "The sea (from the estate)",
+      "to_he": "הים (מהנכס)",
+      "value_en": "within walking distance",
+      "value_he": "במרחק הליכה",
+      "basis": "broker",
+      "source_ids": [
+        "S1"
+      ],
+      "note_en": "Broker claim; measure from the plot before publishing."
+    },
+    {
+      "to_en": "Sharon Hotel, 4 Ramat Yam St (from De Shalit Square)",
+      "to_he": "מלון השרון, רמת ים 4 (מכיכר דה שליט)",
+      "value_en": "about 160 m, straight line",
+      "value_he": "כ-160 מ׳ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Herzliya Medical Center, 7 Ramat Yam St (from De Shalit Square)",
+      "to_he": "הרצליה מדיקל סנטר, רמת ים 7 (מכיכר דה שליט)",
+      "value_en": "about 250 m, straight line",
+      "value_he": "כ-250 מ׳ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Galei Tchelet St reference point (from De Shalit Square)",
+      "to_he": "נקודת ייחוס ברחוב גלי תכלת (מכיכר דה שליט)",
+      "value_en": "about 440 m, straight line",
+      "value_he": "כ-440 מ׳ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S5"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula. Single reference point on the street."
+    },
+    {
+      "to_en": "Basel St / HaNasi St junction (from De Shalit Square)",
+      "to_he": "צומת בזל/הנשיא (מכיכר דה שליט)",
+      "value_en": "about 450 m, straight line",
+      "value_he": "כ-450 מ׳ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula. Basel St had a NIS 59.7m villa sale in the 5786 Hebrew year (Globes)."
+    },
+    {
+      "to_en": "Wingate St / Baruch Kamin St junction (from De Shalit Square)",
+      "to_he": "צומת וינגייט/ברוך קמין (מכיכר דה שליט)",
+      "value_en": "about 480 m, straight line",
+      "value_he": "כ-480 מ׳ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula. To the GTFS stop at the junction."
+    },
+    {
+      "to_en": "HaNasi Yitzhak Ben Zvi St / Yoni Netanyahu St junction (from De Shalit Square)",
+      "to_he": "צומת הנשיא יצחק בן צבי/יוני נתניהו (מכיכר דה שליט)",
+      "value_en": "about 520 m, straight line",
+      "value_he": "כ-520 מ׳ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "HaNasi St / Nili St junction (from De Shalit Square)",
+      "to_he": "צומת הנשיא/ניל״י (מכיכר דה שליט)",
+      "value_en": "about 640 m, straight line",
+      "value_he": "כ-640 מ׳ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "HaNasi St / Kedoshei HaShoah St junction (from De Shalit Square)",
+      "to_he": "צומת הנשיא/קדושי השואה (מכיכר דה שליט)",
+      "value_en": "about 990 m, straight line",
+      "value_he": "כ-990 מ׳ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula. Kedoshei HaShoah St had a NIS 80m villa sale in the 5786 Hebrew year (Globes)."
+    },
+    {
+      "to_en": "Sha'ar HaYam St / HaEshel St junction, Nof Yam border (from De Shalit Square)",
+      "to_he": "צומת שער הים/האשל, גבול נוף ים (מכיכר דה שליט)",
+      "value_en": "about 1.2 km, straight line",
+      "value_he": "כ-1.2 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Medinat HaYehudim St / David HaMelech St junction (from De Shalit Square)",
+      "to_he": "צומת מדינת היהודים/דוד המלך (מכיכר דה שליט)",
+      "value_en": "about 1.4 km, straight line",
+      "value_he": "כ-1.4 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Zevulun Beach (from De Shalit Square)",
+      "to_he": "חוף זבולון (מכיכר דה שליט)",
+      "value_en": "about 750 m, straight line",
+      "value_he": "כ-750 מ׳ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S6"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula. To the Wikidata point for the beach."
+    },
+    {
+      "to_en": "Sidna Ali Mosque (from De Shalit Square)",
+      "to_he": "מסגד סידנא עלי (מכיכר דה שליט)",
+      "value_en": "about 980 m, straight line",
+      "value_he": "כ-980 מ׳ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S7"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Sidna Ali National Park (from De Shalit Square)",
+      "to_he": "גן לאומי סידנא עלי (מכיכר דה שליט)",
+      "value_en": "about 1.3 km, straight line",
+      "value_he": "כ-1.3 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S8"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Apollonia National Park (from De Shalit Square)",
+      "to_he": "גן לאומי אפולוניה (מכיכר דה שליט)",
+      "value_en": "about 1.6 km, straight line",
+      "value_he": "כ-1.6 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S9"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Dan Accadia Hotel, beachfront (from De Shalit Square)",
+      "to_he": "מלון דן אכדיה, על קו החוף (מכיכר דה שליט)",
+      "value_en": "about 1.4 km, straight line",
+      "value_he": "כ-1.4 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S10"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Arena Mall, Herzliya Marina (from De Shalit Square)",
+      "to_he": "קניון ארנה, מרינה הרצליה (מכיכר דה שליט)",
+      "value_en": "about 1.9 km, straight line",
+      "value_he": "כ-1.9 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S11"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Herzliya Marina (from De Shalit Square)",
+      "to_he": "מרינה הרצליה (מכיכר דה שליט)",
+      "value_en": "about 2.2 km, straight line",
+      "value_he": "כ-2.2 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S12"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Rabin Interchange, Route 2 (from De Shalit Square)",
+      "to_he": "מחלף רבין, כביש 2 (מכיכר דה שליט)",
+      "value_en": "about 1.0 km, straight line",
+      "value_he": "כ-1.0 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S19"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Kfar Shmaryahu, centre point (from De Shalit Square)",
+      "to_he": "כפר שמריהו, נקודת מרכז (מכיכר דה שליט)",
+      "value_en": "about 1.75 km, straight line",
+      "value_he": "כ-1.75 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S20"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Herzliya railway station (from De Shalit Square)",
+      "to_he": "תחנת הרכבת הרצליה (מכיכר דה שליט)",
+      "value_en": "about 2.1 km, straight line",
+      "value_he": "כ-2.1 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S13"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Reichman University (from De Shalit Square)",
+      "to_he": "אוניברסיטת רייכמן (מכיכר דה שליט)",
+      "value_en": "about 2.9 km, straight line",
+      "value_he": "כ-2.9 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S14"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Walworth Barbour American International School, Even Yehuda (from De Shalit Square)",
+      "to_he": "בית הספר האמריקאי הבינלאומי ע״ש וולוורת׳ ברבור, אבן יהודה (מכיכר דה שליט)",
+      "value_en": "about 11.7 km, straight line",
+      "value_he": "כ-11.7 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S15"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula. No source for road distance or drive time was found."
+    },
+    {
+      "to_en": "Tel Aviv, Azrieli Center (from De Shalit Square)",
+      "to_he": "תל אביב, מרכז עזריאלי (מכיכר דה שליט)",
+      "value_en": "about 11.7 km, straight line",
+      "value_he": "כ-11.7 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S17"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Tel Aviv Savidor Center railway station (from De Shalit Square)",
+      "to_he": "תחנת הרכבת תל אביב סבידור מרכז (מכיכר דה שליט)",
+      "value_en": "about 10.6 km, straight line",
+      "value_he": "כ-10.6 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S18"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Tel Aviv (from Dan Accadia Hotel, about 1.4 km from the square)",
+      "to_he": "תל אביב (ממלון דן אכדיה, כ-1.4 ק״מ מהכיכר)",
+      "value_en": "a twenty-minute drive, per the hotel",
+      "value_he": "כ-20 דקות נסיעה, לפי המלון",
+      "basis": "source",
+      "source_ids": [
+        "S106"
+      ],
+      "note_en": "Hotel marketing claim, traffic dependent, not measured from the estate."
+    },
+    {
+      "to_en": "Ben Gurion Airport (from De Shalit Square)",
+      "to_he": "נמל התעופה בן גוריון (מכיכר דה שליט)",
+      "value_en": "about 20.2 km, straight line",
+      "value_he": "כ-20.2 ק״מ בקו אווירי",
+      "basis": "computed",
+      "source_ids": [
+        "S2",
+        "S16"
+      ],
+      "note_en": "Measured from the De Shalit Square bus stop (GTFS 32.179018, 34.805034), not from the estate, whose street is not disclosed. Haversine formula."
+    },
+    {
+      "to_en": "Ben Gurion Airport (from The Ritz-Carlton Herzliya, about 2 km from the square)",
+      "to_he": "נמל התעופה בן גוריון (ממלון ריץ-קרלטון הרצליה, כ-2 ק״מ מהכיכר)",
+      "value_en": "about 32.4 km, per the hotel",
+      "value_he": "כ-32.4 ק״מ, לפי המלון",
+      "basis": "source",
+      "source_ids": [
+        "S105"
+      ],
+      "note_en": "Hotel figure, presumably by road; not measured from the estate."
+    }
+  ],
+  "schools": [
+    {
+      "name_en": "Nof Yam elementary school",
+      "name_he": "בית הספר היסודי נוף ים",
+      "level_en": "Elementary (1-6)",
+      "level_he": "יסודי (א-ו)",
+      "note_en": "Municipal elementary school. For 2026-27 its graduates are zoned to Yad Giora middle school. Registration zone for the estate's address not verified; school address not verified.",
+      "note_he": "בית ספר יסודי עירוני. בשנת הלימודים תשפ״ז בוגריו משובצים לחטיבת הביניים יד גיורא. אזור הרישום לכתובת הנכס וכתובת בית הספר לא אומתו.",
+      "source_ids": [
+        "S109",
+        "S110"
+      ]
+    },
+    {
+      "name_en": "Brandeis elementary school",
+      "name_he": "בית הספר היסודי ברנדייס",
+      "level_en": "Elementary (1-6)",
+      "level_he": "יסודי (א-ו)",
+      "note_en": "Municipal elementary school; the bus stop named after it is about 1.4 km straight line from De Shalit Square. Graduates go to Yad Giora middle school in 2026-27. Zone for the address not verified.",
+      "note_he": "בית ספר יסודי עירוני; תחנת האוטובוס הקרויה על שמו נמצאת כ-1.4 ק״מ בקו אווירי מכיכר דה שליט. בוגריו עולים לחטיבת הביניים יד גיורא בתשפ״ז. אזור הרישום לכתובת לא אומת.",
+      "source_ids": [
+        "S109",
+        "S110",
+        "S2"
+      ]
+    },
+    {
+      "name_en": "Democratic School named after Janusz Korczak",
+      "name_he": "בית החינוך הדמוקרטי ע״ש יאנוש קורצ׳אק",
+      "level_en": "Elementary (1-6)",
+      "level_he": "יסודי (א-ו)",
+      "note_en": "Moving to Herzliya Pituach: permanent site at 150 Wingate St (Samdar complex); opens for 2026-27 in a temporary building in Herzliya Park; enrolls from across the city.",
+      "note_he": "עובר להרצליה פיתוח: המשכן הקבוע ברחוב וינגייט 150 (מתחם סמדר); בשנת תשפ״ז יפעל במבנה זמני בפארק הרצליה; הרישום פתוח לכל העיר.",
+      "source_ids": [
+        "S111",
+        "S27",
+        "S109"
+      ]
+    },
+    {
+      "name_en": "Samdar school",
+      "name_he": "סמדר",
+      "level_en": "Middle school (7-9)",
+      "level_he": "חטיבת ביניים (ז-ט)",
+      "note_en": "Listed by Madlan in Herzliya Pituach (about 118 students per grade). The municipality says the Democratic School's permanent site is the Samdar complex, so check Samdar's current status.",
+      "note_he": "מופיע במדלן בשכונה (כ-118 תלמידים בשכבה). העירייה מציינת שהמשכן הקבוע של בית החינוך הדמוקרטי יהיה במתחם סמדר, ולכן יש לבדוק את מצבו הנוכחי של סמדר.",
+      "source_ids": [
+        "S27",
+        "S111"
+      ]
+    },
+    {
+      "name_en": "Yad Giora middle school",
+      "name_he": "חטיבת הביניים יד גיורא",
+      "level_en": "Middle school (7-9)",
+      "level_he": "חטיבת ביניים (ז-ט)",
+      "note_en": "Receives Nof Yam and Brandeis graduates in 2026-27. Address not verified.",
+      "note_he": "קולטת את בוגרי נוף ים וברנדייס בתשפ״ז. הכתובת לא אומתה.",
+      "source_ids": [
+        "S110"
+      ]
+    },
+    {
+      "name_en": "HaYovel high school",
+      "name_he": "תיכון היובל",
+      "level_en": "High school",
+      "level_he": "תיכון",
+      "note_en": "Receives Alterman middle school graduates (fed by Alon and Navon elementary schools) in 2026-27. Which high school serves Yad Giora graduates was not verified.",
+      "note_he": "קולט את בוגרי חטיבת הביניים אלתרמן (בוגרי אלון ונבון) בתשפ״ז. לא אומת לאיזה תיכון עולים בוגרי יד גיורא.",
+      "source_ids": [
+        "S110",
+        "S112"
+      ]
+    },
+    {
+      "name_en": "Handasaim Herzliya High School",
+      "name_he": "תיכון הנדסאים הרצליה",
+      "level_en": "High school",
+      "level_he": "תיכון",
+      "note_en": "About 2.6 km straight line from De Shalit Square. Registration zone not verified.",
+      "note_he": "כ-2.6 ק״מ בקו אווירי מכיכר דה שליט. אזור הרישום לא אומת.",
+      "source_ids": [
+        "S112",
+        "S21",
+        "S2"
+      ]
+    },
+    {
+      "name_en": "Tichon Hadash (New High School) Herzliya",
+      "name_he": "התיכון החדש הרצליה",
+      "level_en": "High school",
+      "level_he": "תיכון",
+      "note_en": "About 2.6 km straight line from De Shalit Square. Registration zone not verified.",
+      "note_he": "כ-2.6 ק״מ בקו אווירי מכיכר דה שליט. אזור הרישום לא אומת.",
+      "source_ids": [
+        "S112",
+        "S22",
+        "S2"
+      ]
+    },
+    {
+      "name_en": "HaRishonim High School",
+      "name_he": "תיכון הראשונים",
+      "level_en": "High school",
+      "level_he": "תיכון",
+      "note_en": "About 3.8 km straight line from De Shalit Square. Registration zone not verified.",
+      "note_he": "כ-3.8 ק״מ בקו אווירי מכיכר דה שליט. אזור הרישום לא אומת.",
+      "source_ids": [
+        "S112",
+        "S23",
+        "S2"
+      ]
+    },
+    {
+      "name_en": "Walworth Barbour American International School (WBAIS)",
+      "name_he": "בית הספר האמריקאי הבינלאומי ע״ש וולוורת׳ ברבור (WBAIS)",
+      "level_en": "International, PK3-12",
+      "level_he": "בינלאומי, גן עד י״ב",
+      "note_en": "65 HaShomron St, Even Yehuda. Independent American-curriculum school taught in English, founded 1958 under the auspices of the US Embassy; moved in 2007 from a 19-dunam campus in Kfar Shmaryahu to a 73-dunam campus; accredited by the Middle States Association. About 11.7 km straight line from De Shalit Square; drive distance, tuition and school buses not verified.",
+      "note_he": "רחוב השומרון 65, אבן יהודה. בית ספר עצמאי בתוכנית לימודים אמריקאית ובשפה האנגלית, נוסד ב-1958 בחסות שגרירות ארה״ב; עבר ב-2007 מקמפוס של 19 דונם בכפר שמריהו לקמפוס של 73 דונם; מוסמך על ידי Middle States Association. כ-11.7 ק״מ בקו אווירי מכיכר דה שליט; מרחק נסיעה, שכר לימוד והסעות לא אומתו.",
+      "source_ids": [
+        "S102",
+        "S15",
+        "S2"
+      ]
+    },
+    {
+      "name_en": "Reichman University",
+      "name_he": "אוניברסיטת רייכמן",
+      "level_en": "University",
+      "level_he": "אוניברסיטה",
+      "note_en": "Private university in Herzliya, founded 1994 and renamed from IDC Herzliya in 2021. About 2.9 km straight line from De Shalit Square.",
+      "note_he": "אוניברסיטה פרטית בהרצליה, נוסדה ב-1994 ושינתה את שמה מהמרכז הבינתחומי הרצליה ב-2021. כ-2.9 ק״מ בקו אווירי מכיכר דה שליט.",
+      "source_ids": [
+        "S104",
+        "S14",
+        "S2"
+      ]
+    }
+  ],
+  "transport": [
+    {
+      "item_en": "Herzliya railway station (Ben Zion Michaeli St, next to Seven Stars Mall, in the Ayalon Highway median), about 2.1 km straight line from De Shalit Square; direct trains to Tel Aviv, Jerusalem, Beersheba, Haifa and Ben Gurion Airport",
+      "item_he": "תחנת הרכבת הרצליה (רחוב בן ציון מיכאלי, ליד קניון שבעת הכוכבים, בין נתיבי איילון), כ-2.1 ק״מ בקו אווירי מכיכר דה שליט; רכבות ישירות לתל אביב, ירושלים, באר שבע, חיפה ונמל התעופה בן גוריון",
+      "status_en": "operating",
+      "status_he": "פעילה",
+      "source_ids": [
+        "S101",
+        "S13",
+        "S2"
+      ]
+    },
+    {
+      "item_en": "Tel Aviv light rail Green Line (Rishon LeZion and Holon through Tel Aviv to Herzliya, 39 km, 62 stations); Herzliya station locations not verified",
+      "item_he": "הקו הירוק של הרכבת הקלה (מראשון לציון וחולון דרך תל אביב ועד הרצליה, 39 ק״מ, 62 תחנות); מיקום התחנות בהרצליה לא אומת",
+      "status_en": "under construction, partial opening expected end of 2028 and full line including Herzliya in 2030",
+      "status_he": "בבנייה, פתיחה חלקית צפויה בסוף 2028 והקו המלא כולל הרצליה ב-2030",
+      "source_ids": [
+        "S100"
+      ]
+    },
+    {
+      "item_en": "Bus stop Kikar De Shalit (code 26921) at the square",
+      "item_he": "תחנת אוטובוס 'ככר דה שליט' (קוד 26921) בכיכר",
+      "status_en": "operating (scheduled service in GTFS data through 2026-09-15)",
+      "status_he": "פעילה (שירות מתוכנן בנתוני GTFS עד 15.9.2026)",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "item_en": "Route 2 coastal highway via Rabin Interchange, about 1.0 km straight line east of De Shalit Square",
+      "item_he": "כביש 2 (כביש החוף) דרך מחלף רבין, כ-1.0 ק״מ בקו אווירי מזרחית לכיכר דה שליט",
+      "status_en": "operating",
+      "status_he": "פעיל",
+      "source_ids": [
+        "S19",
+        "S2"
+      ]
+    }
+  ],
+  "planning_future": [
+    {
+      "item_en": "Herzliya Seafront Plan Har/2202 (approved): the central section includes De Shalit Square and the descent to Sharon Beach; significant beach widening with detached breakwaters and a northern groyne to allow beach promenades and urban beach infrastructure",
+      "item_he": "תוכנית חוף הים של הרצליה הר/2202 (מאושרת): המקטע המרכזי כולל את כיכר דה שליט ואת הירידה לחוף השרון; הרחבת חופים משמעותית באמצעות שוברי גלים מנותקים ודורבן צפוני, שיאפשרו טיילות חוף ותשתיות לחוף עירוני",
+      "impact_en": "More public beach infrastructure and visitors near the square; the beach south of Sharon Beach is zoned for intensive development and north of it for moderate urban development. Check the plan sheets for any promenade line or easement on the plot.",
+      "impact_he": "יותר תשתיות חוף ומבקרים סמוך לכיכר; החוף מדרום לחוף השרון מיועד לפיתוח אינטנסיבי ומצפון לו לפיתוח עירוני מתון. יש לבדוק בתשריטי התוכנית אם עובר במגרש קו טיילת או זיקת הנאה.",
+      "source_ids": [
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "item_en": "Land-side cliff protection plan for Herzliya's coast (rock revetments and anchored netting), approved by the local planning committee on 2025-01-08",
+      "item_he": "תוכנית להגנה יבשתית על המצוק לאורך חופי הרצליה (מסלעות ורשת מעוגנת), שאושרה בוועדה המקומית לתכנון ובנייה ב-8.1.2025",
+      "impact_en": "Still needs Environment Ministry and coastal committee (VALHOF) approval; until then the city is limited to fencing, signs and drainage. Expect works and access limits along the cliff; schedule unknown.",
+      "impact_he": "נדרש עוד אישור המשרד להגנת הסביבה והוועדה לשמירת הסביבה החופית (ולחוף); עד אז העירייה מוגבלת לגידור, שילוט וניקוז. צפויות עבודות והגבלות גישה לאורך המצוק; לוח הזמנים לא ידוע.",
+      "source_ids": [
+        "S91"
+      ]
+    },
+    {
+      "item_en": "Cliff protection funding: in December 2024 the mayor asked the Finance Ministry for NIS 150m, citing immediate danger to life; about NIS 410m promised for marine protection in Herzliya, Ashdod, Bat Yam and Beit Yanai had not been transferred",
+      "item_he": "מימון ההגנה על המצוק: בדצמבר 2024 ביקש ראש העירייה ממשרד האוצר 150 מיליון ש״ח בשל סכנת חיים מיידית; כ-410 מיליון ש״ח שהובטחו להגנות ימיות בהרצליה, אשדוד, בת ים ובית ינאי לא הועברו",
+      "impact_en": "Protection works depend on state funding that was not in place at the last report.",
+      "impact_he": "ביצוע ההגנות תלוי במימון ממשלתי שלא הוסדר נכון לדיווח האחרון.",
+      "source_ids": [
+        "S92"
+      ]
+    },
+    {
+      "item_en": "Promenade right of way precedent: a 6 m pedestrian right of way was approved along the western part of the Galei Tchelet 40 garden for the cliff-top promenade",
+      "item_he": "תקדים של זכות מעבר לטיילת: אושרה זכות מעבר להולכי רגל ברוחב 6 מ׳ לאורך החלק המערבי של גינת גלי תכלת 40, לטובת טיילת על המצוק",
+      "impact_en": "Cliff-line plots can carry public easements under the seafront plan.",
+      "impact_he": "מגרשים על קו המצוק עשויים להיות כפופים לזיקות הנאה לציבור מכוח תוכנית החוף.",
+      "source_ids": [
+        "S96"
+      ]
+    },
+    {
+      "item_en": "UAE embassy at 9 Sapir St in the Herzliya employment zone: about 2.5 dunams, up to 15 floors and 15,000 sqm, with offices and homes for the ambassador and staff; advanced by the Tel Aviv District Planning Committee on 2025-10-20",
+      "item_he": "שגרירות איחוד האמירויות ברחוב ספיר 9 באזור התעסוקה של הרצליה: כ-2.5 דונם, עד 15 קומות ו-15,000 מ״ר, כולל משרדים ודירות לשגריר ולצוות; קודמה בוועדה המחוזית תל אביב ב-20.10.2025",
+      "impact_en": "Strengthens diplomatic demand in Herzliya; the site is in the employment zone, not beside De Shalit Square (distance not measured).",
+      "impact_he": "מחזק את הביקוש הדיפלומטי בהרצליה; האתר נמצא באזור התעסוקה ולא בסמוך לכיכר דה שליט (המרחק לא נמדד).",
+      "source_ids": [
+        "S28"
+      ]
+    },
+    {
+      "item_en": "Employment zone densification: a 30-storey tower approved by the local subcommittee at 103 Medinat HaYehudim St (offices, retail, 47 homes) and the Gav-Yam Science Park plan Har/Mak/2443 (392 micro-apartments, buildings up to 15 floors)",
+      "item_he": "ציפוף אזור התעסוקה: מגדל בן 30 קומות שאושר בוועדת המשנה המקומית ברחוב מדינת היהודים 103 (משרדים, מסחר ו-47 דירות) ותוכנית פארק המדע של גב-ים הר/מק/2443 (392 דירות קטנות, מבנים עד 15 קומות)",
+      "impact_en": "More residents and traffic in southern Herzliya Pituach; the Wingate/Medinat HaYehudim junction is about 1.2 km straight line south of the square.",
+      "impact_he": "יותר תושבים ותנועה בדרום הרצליה פיתוח; צומת וינגייט/מדינת היהודים נמצא כ-1.2 ק״מ בקו אווירי דרומית לכיכר.",
+      "source_ids": [
+        "S97",
+        "S98",
+        "S2"
+      ]
+    },
+    {
+      "item_en": "Southwest Quarter plan Har/2200/A: about 1,986 dunams and 12,500 housing units between Abba Eban St and the Tel Aviv boundary; residential permits require detailed plans",
+      "item_he": "תוכנית הרובע הדרום-מערבי הר/2200/א: כ-1,986 דונם ו-12,500 יחידות דיור בין שדרות אבא אבן לגבול תל אביב; היתרי מגורים מחייבים תוכניות מפורטות",
+      "impact_en": "Long-term new supply and traffic south of the employment zone, well south of De Shalit Square.",
+      "impact_he": "היצע חדש ותנועה בטווח הארוך מדרום לאזור התעסוקה, הרחק דרומית לכיכר דה שליט.",
+      "source_ids": [
+        "S99"
+      ]
+    },
+    {
+      "item_en": "Tel Aviv light rail Green Line to Herzliya",
+      "item_he": "הקו הירוק של הרכבת הקלה להרצליה",
+      "impact_en": "Full line including Herzliya expected in 2030; not a current amenity.",
+      "impact_he": "הקו המלא כולל הרצליה צפוי ב-2030; אינו פעיל כיום.",
+      "source_ids": [
+        "S100"
+      ]
+    }
+  ],
+  "market_stats": [
+    {
+      "metric_en": "Median private-house deal price, Herzliya Pituach",
+      "metric_he": "חציון מחיר עסקה לבית פרטי, הרצליה פיתוח",
+      "value_en": "About NIS 13.6m (2022), NIS 14.3m (2023), NIS 10.75m (2024), NIS 15m (2025); about 24 to 28 house deals a year",
+      "value_he": "כ-13.6 מיליון ש״ח (2022), 14.3 מיליון (2023), 10.75 מיליון (2024), 15 מיליון (2025); כ-24 עד 28 עסקאות בתים בשנה",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S32"
+      ]
+    },
+    {
+      "metric_en": "Median price per built sqm, private houses, last two years",
+      "metric_he": "חציון מחיר למ״ר בנוי, בתים פרטיים, בשנתיים האחרונות",
+      "value_en": "About NIS 45,000",
+      "value_he": "כ-45,000 ש״ח",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S32"
+      ]
+    },
+    {
+      "metric_en": "Listings in Herzliya Pituach (Bizportal count of portal listings)",
+      "metric_he": "היצע מודעות בהרצליה פיתוח (ספירת Bizportal של מודעות באתרים)",
+      "value_en": "About 410 listings: about 289 houses and cottages, about 70 apartments, about 50 plots. Median asking price for houses about NIS 14m (bottom decile about NIS 9.2m, top decile above NIS 37m)",
+      "value_he": "כ-410 מודעות: כ-289 בתים וקוטג׳ים, כ-70 דירות וכ-50 מגרשים. חציון המחיר המבוקש לבתים כ-14 מיליון ש״ח (העשירון התחתון כ-9.2 מיליון, העליון מעל 37 מיליון)",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S32"
+      ]
+    },
+    {
+      "metric_en": "Vacant plots, median asking price",
+      "metric_he": "מגרשים ריקים, חציון מחיר מבוקש",
+      "value_en": "About NIS 19m per plot, about NIS 22,000 per sqm of land",
+      "value_he": "כ-19 מיליון ש״ח למגרש, כ-22,000 ש״ח למ״ר קרקע",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S32"
+      ]
+    },
+    {
+      "metric_en": "Implied land value of a 1,100 sqm plot at the median plot asking rate",
+      "metric_he": "שווי קרקע משתמע למגרש של 1,100 מ״ר לפי חציון המחיר המבוקש למגרשים",
+      "value_en": "About NIS 24.2m (1,100 x NIS 22,000), computed. A Wingate St house offered for land value only is listed at NIS 22m for a 1,005 sqm plot (NIS 21,891 per sqm, computed)",
+      "value_he": "כ-24.2 מיליון ש״ח (1,100 כפול 22,000), חישוב. בית ברחוב וינגייט המוצע לפי שווי הקרקע בלבד מפורסם ב-22 מיליון ש״ח למגרש של 1,005 מ״ר (21,891 ש״ח למ״ר, חישוב)",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S32",
+        "S67"
+      ]
+    },
+    {
+      "metric_en": "Median rental yield, Herzliya Pituach (gov.nadlan)",
+      "metric_he": "תשואת שכירות חציונית, הרצליה פיתוח (גוב.נדל״ן)",
+      "value_en": "2.45% a year",
+      "value_he": "2.45% בשנה",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S32"
+      ]
+    },
+    {
+      "metric_en": "Israel deals of NIS 10m or more, 2025",
+      "metric_he": "עסקאות של 10 מיליון ש״ח ומעלה בישראל, 2025",
+      "value_en": "635 deals: Tel Aviv 60%, Jerusalem 20%, Herzliya 8% (about 51 deals, computed 635 x 0.08), rest of Israel 12%",
+      "value_he": "635 עסקאות: תל אביב 60%, ירושלים 20%, הרצליה 8% (כ-51 עסקאות, חישוב 635 כפול 0.08), יתר הארץ 12%",
+      "as_of": "2025",
+      "source_ids": [
+        "S33"
+      ]
+    },
+    {
+      "metric_en": "Mega-luxury list for Hebrew year 5786 (Rosh Hashana 2025 to Rosh Hashana 2026)",
+      "metric_he": "רשימת עסקאות המגה-יוקרה לשנת תשפ״ו (מראש השנה 2025 עד ראש השנה 2026)",
+      "value_en": "Includes Herzliya Pituach villas bought for NIS 59.7m on Basel St and NIS 80m on Kedoshei HaShoah St; Globes calls the list preliminary because the Tax Authority publishes luxury deals months late",
+      "value_he": "כוללת וילות בהרצליה פיתוח שנרכשו ב-59.7 מיליון ש״ח ברחוב בזל וב-80 מיליון ש״ח ברחוב קדושי השואה; גלובס מציין שהרשימה ארעית משום שרשות המסים מפרסמת עסקאות יוקרה באיחור של חודשים",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S33"
+      ]
+    },
+    {
+      "metric_en": "Herzliya deals above NIS 20m, 2025",
+      "metric_he": "עסקאות מעל 20 מיליון ש״ח בהרצליה, 2025",
+      "value_en": "8 deals, all in Herzliya Pituach, total NIS 220m (NIS 19m less than in 2024); the largest was a NIS 37m marina apartment",
+      "value_he": "8 עסקאות, כולן בהרצליה פיתוח, בהיקף 220 מיליון ש״ח (19 מיליון פחות מ-2024); הגדולה שבהן דירה במרינה ב-37 מיליון ש״ח",
+      "as_of": "2025",
+      "source_ids": [
+        "S34"
+      ]
+    },
+    {
+      "metric_en": "Asking prices, 15 listed villas of 500-900 sqm built on 1,000-1,200 sqm plots (possible duplicates of this estate excluded)",
+      "metric_he": "מחירים מבוקשים, 15 וילות של 500 עד 900 מ״ר בנוי על מגרשים של 1,000 עד 1,200 מ״ר (ללא מודעות שאולי מתייחסות לנכס זה)",
+      "value_en": "Price: lower quartile NIS 35.0m, median NIS 59.2m, upper quartile NIS 67.0m. Per built sqm: NIS 66,667, NIS 77,023, NIS 92,308. Per plot sqm: NIS 34,811, NIS 55,833, NIS 62,000. Computed; quartiles are medians of the lower and upper halves",
+      "value_he": "מחיר: רבעון תחתון 35.0 מיליון ש״ח, חציון 59.2 מיליון, רבעון עליון 67.0 מיליון. למ״ר בנוי: 66,667 ש״ח, 77,023 ש״ח, 92,308 ש״ח. למ״ר מגרש: 34,811 ש״ח, 55,833 ש״ח, 62,000 ש״ח. חישוב; הרבעונים הם חציוני המחצית התחתונה והעליונה",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S37",
+        "S38",
+        "S39",
+        "S40",
+        "S41",
+        "S45",
+        "S46",
+        "S47",
+        "S60",
+        "S61",
+        "S62",
+        "S63",
+        "S64",
+        "S65",
+        "S66"
+      ]
+    },
+    {
+      "metric_en": "Private houses for sale on Madlan, Herzliya Pituach",
+      "metric_he": "בתים פרטיים למכירה במדלן, הרצליה פיתוח",
+      "value_en": "140 listings; Madlan's neighbourhood averages (all property types): sale NIS 8,418,100, rent NIS 27,500 per month",
+      "value_he": "140 מודעות; ממוצעי מדלן לשכונה (כל סוגי הנכסים): מכירה 8,418,100 ש״ח, שכירות 27,500 ש״ח לחודש",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S36",
+        "S27"
+      ]
+    },
+    {
+      "metric_en": "Illustrative gross rental yield for a large villa",
+      "metric_he": "תשואת שכירות ברוטו להמחשה לווילה גדולה",
+      "value_en": "About 2.5%: NIS 95,000 per month (median of 7 villa rent asks of 480-872 sqm) x 12 / NIS 46,000,000 = 2.48%. Computed, illustrative only",
+      "value_he": "כ-2.5%: 95,000 ש״ח לחודש (חציון 7 מחירי שכירות מבוקשים לווילות של 480 עד 872 מ״ר) כפול 12, חלקי 46,000,000 ש״ח = 2.48%. חישוב להמחשה בלבד",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S70",
+        "S71",
+        "S72",
+        "S73",
+        "S74",
+        "S75",
+        "S76",
+        "S51"
+      ]
+    },
+    {
+      "metric_en": "Exchange rates for foreign buyers",
+      "metric_he": "שערי חליפין לרוכשים זרים",
+      "value_en": "USD/ILS 3.0490 and EUR/ILS 3.5169 (Bank of Israel representative rates)",
+      "value_he": "דולר 3.0490 ש״ח ואירו 3.5169 ש״ח (שערים יציגים של בנק ישראל)",
+      "as_of": "2026-09-15",
+      "source_ids": [
+        "S83"
+      ]
+    }
+  ],
+  "sale_comps": [
+    {
+      "date": "5786 Hebrew year (about 2025-09 to 2026-09)",
+      "where_en": "Basel St, Herzliya Pituach (villa)",
+      "where_he": "רחוב בזל, הרצליה פיתוח (וילה)",
+      "rooms": null,
+      "sqm": null,
+      "floor": null,
+      "price_nis": 59700000,
+      "price_per_sqm_nis": null,
+      "kind": "transaction",
+      "source_ids": [
+        "S33",
+        "S2"
+      ],
+      "note_en": "Globes mega-luxury list from Tax Authority data, preliminary; built area, plot and exact date not given. The Basel/HaNasi junction is about 450 m straight line from De Shalit Square."
+    },
+    {
+      "date": "5786 Hebrew year (about 2025-09 to 2026-09)",
+      "where_en": "Kedoshei HaShoah St, Herzliya Pituach (villa)",
+      "where_he": "רחוב קדושי השואה, הרצליה פיתוח (וילה)",
+      "rooms": null,
+      "sqm": null,
+      "floor": null,
+      "price_nis": 80000000,
+      "price_per_sqm_nis": null,
+      "kind": "transaction",
+      "source_ids": [
+        "S33",
+        "S2"
+      ],
+      "note_en": "Globes list, preliminary; sizes and exact date not given. The HaNasi/Kedoshei HaShoah junction is about 990 m straight line from De Shalit Square. Calcalist's count of 2025 Herzliya deals (published 2026-05-27) tops out at NIS 37m, so this and the Basel villa deal were probably signed in 2026 or published after that count."
+    },
+    {
+      "date": "reported 2026-09-02 (deal date not stated)",
+      "where_en": "Basel St, Herzliya Pituach (house)",
+      "where_he": "רחוב בזל, הרצליה פיתוח (בית)",
+      "rooms": null,
+      "sqm": 603,
+      "floor": null,
+      "price_nis": 27500000,
+      "price_per_sqm_nis": 45605,
+      "kind": "transaction",
+      "source_ids": [
+        "S32"
+      ],
+      "note_en": "Bizportal from gov.nadlan data; per sqm computed 27,500,000 / 603; plot not given."
+    },
+    {
+      "date": "2025-01-12",
+      "where_en": "Shlomtzion HaMalka St, Herzliya Pituach (villa on 3 floors, built 2020)",
+      "where_he": "רחוב שלומציון המלכה, הרצליה פיתוח (וילה ב-3 קומות, נבנתה ב-2020)",
+      "rooms": "7",
+      "sqm": 510,
+      "floor": null,
+      "price_nis": 33680000,
+      "price_per_sqm_nis": 66039,
+      "kind": "transaction",
+      "source_ids": [
+        "S26"
+      ],
+      "note_en": "Per sqm computed 33,680,000 / 510; plot not given."
+    },
+    {
+      "date": "2025-02-11",
+      "where_en": "HaEshel St, Nof Yam and Herzliya Pituach border (private house)",
+      "where_he": "רחוב האשל, גבול נוף ים והרצליה פיתוח (בית פרטי)",
+      "rooms": "7",
+      "sqm": 290,
+      "floor": null,
+      "price_nis": 34000000,
+      "price_per_sqm_nis": 117241,
+      "kind": "transaction",
+      "source_ids": [
+        "S26"
+      ],
+      "note_en": "Per sqm computed 34,000,000 / 290; the price mainly reflects land value; plot not given; below the target size range."
+    },
+    {
+      "date": "2024",
+      "where_en": "HaShikma St, Herzliya Pituach (villa built 2008, pool)",
+      "where_he": "רחוב השקמה, הרצליה פיתוח (וילה משנת 2008, בריכה)",
+      "rooms": "9",
+      "sqm": 471,
+      "floor": null,
+      "price_nis": 33799000,
+      "price_per_sqm_nis": 71760,
+      "kind": "transaction",
+      "source_ids": [
+        "S35"
+      ],
+      "note_en": "Plot 780 sqm, so NIS 43,332 per plot sqm (computed). Slightly below the 500-900 sqm and 900-1,500 sqm target ranges."
+    },
+    {
+      "date": "2025-09",
+      "where_en": "Shlonsky St, Herzliya Pituach (single-family house)",
+      "where_he": "רחוב שלונסקי, הרצליה פיתוח (בית חד-משפחתי)",
+      "rooms": null,
+      "sqm": 417,
+      "floor": null,
+      "price_nis": 15000000,
+      "price_per_sqm_nis": 35971,
+      "kind": "transaction",
+      "source_ids": [
+        "S32"
+      ],
+      "note_en": "Per sqm computed; plot not given; below the target size range."
+    },
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "HaNuriot 24, Herzliya Pituach",
+      "where_he": "הנוריות 24, הרצליה פיתוח",
+      "rooms": "8",
+      "sqm": 766,
+      "floor": null,
+      "price_nis": 59000000,
+      "price_per_sqm_nis": 77023,
+      "kind": "asking",
+      "source_ids": [
+        "S37",
+        "S50"
+      ],
+      "note_en": "Plot 1,120 sqm (NIS 52,679 per plot sqm, computed). Pool, elevator, mamad. Yad2 shows NIS 59,000,000, 8-room, 1,120 sqm listings from two agencies, probably the same house. Not this estate: built area and bedroom count differ."
+    },
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "Arie Ben Eliezer 13, Herzliya Pituach",
+      "where_he": "אריה בן אליעזר 13, הרצליה פיתוח",
+      "rooms": "10",
+      "sqm": 650,
+      "floor": null,
+      "price_nis": 62000000,
+      "price_per_sqm_nis": 95385,
+      "kind": "asking",
+      "source_ids": [
+        "S38"
+      ],
+      "note_en": "Plot 1 dunam (NIS 62,000 per plot sqm, computed). Pool, elevator, mamad."
+    },
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "Western Herzliya Pituach, second street from the sea (Madlan card shows Wingate 54)",
+      "where_he": "מערב הרצליה פיתוח, רחוב שני מהים (בכרטיס במדלן: וינגייט 54)",
+      "rooms": "8",
+      "sqm": 600,
+      "floor": null,
+      "price_nis": 28500000,
+      "price_per_sqm_nis": 47500,
+      "kind": "asking",
+      "source_ids": [
+        "S39",
+        "S36"
+      ],
+      "note_en": "Plot 1 dunam (NIS 28,500 per plot sqm, computed). Pool, elevator; agency says 5 minutes' walk to the sea."
+    },
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "Herzliya Pituach, sought-after street very close to the sea",
+      "where_he": "הרצליה פיתוח, רחוב מבוקש קרוב מאוד לים",
+      "rooms": "7",
+      "sqm": 550,
+      "floor": null,
+      "price_nis": 40000000,
+      "price_per_sqm_nis": 72727,
+      "kind": "asking",
+      "source_ids": [
+        "S40"
+      ],
+      "note_en": "Plot 1 dunam (NIS 40,000 per plot sqm, computed). Needs refreshing; pool."
+    },
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "Herzliya Pituach (street not shown)",
+      "where_he": "הרצליה פיתוח (רחוב לא מצוין)",
+      "rooms": "8",
+      "sqm": 900,
+      "floor": null,
+      "price_nis": 67000000,
+      "price_per_sqm_nis": 74444,
+      "kind": "asking",
+      "source_ids": [
+        "S41"
+      ],
+      "note_en": "Plot 1,200 sqm (NIS 55,833 per plot sqm, computed). Pool, elevator, basement."
+    },
+    {
+      "date": "modified 2026-07-09",
+      "where_en": "Galei Tchelet St, Herzliya Pituach (John Pawson design)",
+      "where_he": "רחוב גלי תכלת, הרצליה פיתוח (תכנון ג׳ון פוסון)",
+      "rooms": "6 bedrooms",
+      "sqm": 800,
+      "floor": null,
+      "price_nis": 170000000,
+      "price_per_sqm_nis": 212500,
+      "kind": "asking",
+      "source_ids": [
+        "S45"
+      ],
+      "note_en": "Plot 1,050 sqm (NIS 161,905 per plot sqm, computed). Cinema, wine cellar, gym, heated pool, basement guest suites. Top-end outlier."
+    },
+    {
+      "date": "modified 2025-03-12",
+      "where_en": "Galei Tchelet St, west side facing the sea, Herzliya Pituach",
+      "where_he": "רחוב גלי תכלת, הצד המערבי מול הים, הרצליה פיתוח",
+      "rooms": "5 bedrooms",
+      "sqm": 550,
+      "floor": null,
+      "price_nis": 110000000,
+      "price_per_sqm_nis": 200000,
+      "kind": "asking",
+      "source_ids": [
+        "S46"
+      ],
+      "note_en": "Plot 1,002 sqm (NIS 109,780 per plot sqm, computed). 3 levels, pool. Cliff-line premium outlier."
+    },
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "Herzliya Pituach, two minutes from Herzliya Marina (Israel Sotheby's International Realty)",
+      "where_he": "הרצליה פיתוח, שתי דקות ממרינה הרצליה (ישראל סותביס)",
+      "rooms": "7 bedrooms",
+      "sqm": 900,
+      "floor": null,
+      "price_nis": 60000000,
+      "price_per_sqm_nis": 66667,
+      "kind": "asking",
+      "source_ids": [
+        "S47",
+        "S49"
+      ],
+      "note_en": "Living area 9,687.52 sq ft (900 sqm); plot 1,000 sqm (NIS 60,000 per plot sqm, computed). Home cinema, wine cellar, gym, sauna, smart home, VRF. Not this estate: built area, plot and location wording differ."
+    },
+    {
+      "date": "2026-05-12",
+      "where_en": "HaNasi Yitzhak Ben Zvi St, Herzliya Pituach",
+      "where_he": "רחוב הנשיא יצחק בן צבי, הרצליה פיתוח",
+      "rooms": "10",
+      "sqm": 780,
+      "floor": null,
+      "price_nis": 72000000,
+      "price_per_sqm_nis": 92308,
+      "kind": "asking",
+      "source_ids": [
+        "S60"
+      ],
+      "note_en": "Plot 1,000 sqm (NIS 72,000 per plot sqm, computed). 5 suites plus 3 bedrooms, wine room, gym, cinema, pool; entry June 2028."
+    },
+    {
+      "date": "2024-05-12",
+      "where_en": "Herzliya, modern villa near the beach",
+      "where_he": "הרצליה, וילה מודרנית סמוך לחוף",
+      "rooms": "10",
+      "sqm": 650,
+      "floor": null,
+      "price_nis": 60000000,
+      "price_per_sqm_nis": 92308,
+      "kind": "asking",
+      "source_ids": [
+        "S61"
+      ],
+      "note_en": "Plot 1,050 sqm (NIS 57,143 per plot sqm, computed). All rooms suites, elevator, pool. Yad2 shows the location only as Herzliya; the agency text says near the beach."
+    },
+    {
+      "date": "2025-08-19",
+      "where_en": "Herzliya Pituach, high location with 180-degree sea view from the roof terrace",
+      "where_he": "הרצליה פיתוח, מיקום גבוה עם נוף של 180 מעלות לים ממרפסת הגג",
+      "rooms": "7",
+      "sqm": 670,
+      "floor": null,
+      "price_nis": 59200000,
+      "price_per_sqm_nis": 88358,
+      "kind": "asking",
+      "source_ids": [
+        "S62"
+      ],
+      "note_en": "Plot 1,030 sqm (NIS 57,476 per plot sqm, computed). Classic representational house to refresh, pool."
+    },
+    {
+      "date": "2024-06-17",
+      "where_en": "Herzliya Pituach (Anglo Saxon Herzliya Pituach)",
+      "where_he": "הרצליה פיתוח (אנגלו סכסון הרצליה פיתוח)",
+      "rooms": "7",
+      "sqm": 700,
+      "floor": null,
+      "price_nis": 35000000,
+      "price_per_sqm_nis": 50000,
+      "kind": "asking",
+      "source_ids": [
+        "S63"
+      ],
+      "note_en": "Plot 1,014 sqm (NIS 34,517 per plot sqm, computed). Renovated; large master opening to the pool, 5 bedrooms, living room about 200 sqm, basement about 200 sqm with cinema and guest unit. Same agency and similar size as the likely cross-listing but different layout; not confirmed as the same or a different house."
+    },
+    {
+      "date": "2025-05-07",
+      "where_en": "Herzliya Pituach, quiet exclusive street (European classic style)",
+      "where_he": "הרצליה פיתוח, רחוב שקט ויוקרתי (סגנון אירופאי קלאסי)",
+      "rooms": "8",
+      "sqm": 600,
+      "floor": null,
+      "price_nis": 34950000,
+      "price_per_sqm_nis": 58250,
+      "kind": "asking",
+      "source_ids": [
+        "S64"
+      ],
+      "note_en": "Plot 1,004 sqm (NIS 34,811 per plot sqm, computed). Agency states about 600 sqm built but 500 sqm per arnona. Large pool, huge basement."
+    },
+    {
+      "date": "2025-05-01",
+      "where_en": "Herzliya Pituach, renovated house on a dunam",
+      "where_he": "הרצליה פיתוח, בית משופץ על דונם",
+      "rooms": "8.5",
+      "sqm": 500,
+      "floor": null,
+      "price_nis": 34000000,
+      "price_per_sqm_nis": 68000,
+      "kind": "asking",
+      "source_ids": [
+        "S65"
+      ],
+      "note_en": "Plot 1,000 sqm (NIS 34,000 per plot sqm, computed). Pool."
+    },
+    {
+      "date": "2026-05-07",
+      "where_en": "Herzliya, Tuscan-style luxury house",
+      "where_he": "הרצליה, בית יוקרה בסגנון טוסקני",
+      "rooms": "8",
+      "sqm": 550,
+      "floor": null,
+      "price_nis": 48000000,
+      "price_per_sqm_nis": 87273,
+      "kind": "asking",
+      "source_ids": [
+        "S66"
+      ],
+      "note_en": "Plot 1,000 sqm (NIS 48,000 per plot sqm, computed). Elevator, mamad. Yad2 shows the location only as Herzliya."
+    },
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "Nili St, Herzliya Pituach",
+      "where_he": "רחוב ניל״י, הרצליה פיתוח",
+      "rooms": "7",
+      "sqm": 800,
+      "floor": null,
+      "price_nis": 60000000,
+      "price_per_sqm_nis": 75000,
+      "kind": "asking",
+      "source_ids": [
+        "S42",
+        "S2"
+      ],
+      "note_en": "Plot not stated, so excluded from the statistics. New; elevator, pool, mamad. The HaNasi/Nili junction is about 640 m straight line from De Shalit Square."
+    },
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "Arie Ben Eliezer St, Herzliya Pituach (new modern house)",
+      "where_he": "רחוב אריה בן אליעזר, הרצליה פיתוח (בית מודרני חדש)",
+      "rooms": "7",
+      "sqm": 750,
+      "floor": null,
+      "price_nis": 50000000,
+      "price_per_sqm_nis": 66667,
+      "kind": "asking",
+      "source_ids": [
+        "S43"
+      ],
+      "note_en": "Plot not stated, so excluded from the statistics. Pool, elevator, mamad."
+    },
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "Western Herzliya Pituach, short walk to the sea",
+      "where_he": "מערב הרצליה פיתוח, הליכה קצרה לים",
+      "rooms": "8",
+      "sqm": 600,
+      "floor": null,
+      "price_nis": 55000000,
+      "price_per_sqm_nis": 91667,
+      "kind": "asking",
+      "source_ids": [
+        "S44"
+      ],
+      "note_en": "Plot not stated, so excluded from the statistics. Renovated, high finish, pool, elevator, basement."
+    },
+    {
+      "date": "2025-10-21",
+      "where_en": "Wingate St, second line to the beach (old house priced as land)",
+      "where_he": "רחוב וינגייט, קו שני לחוף (בית ישן המתומחר כקרקע)",
+      "rooms": "8",
+      "sqm": 375,
+      "floor": null,
+      "price_nis": 22000000,
+      "price_per_sqm_nis": 58667,
+      "kind": "asking",
+      "source_ids": [
+        "S67"
+      ],
+      "note_en": "Plot 1,005 sqm: NIS 21,891 per plot sqm (computed), which the agency presents as land value only. Land benchmark, not a villa comp."
+    },
+    {
+      "date": "2025-11-24",
+      "where_en": "Arie Ben Eliezer St, Herzliya Pituach (house on a dunam)",
+      "where_he": "רחוב אריה בן אליעזר, הרצליה פיתוח (בית על דונם)",
+      "rooms": "7",
+      "sqm": 400,
+      "floor": null,
+      "price_nis": 26000000,
+      "price_per_sqm_nis": 65000,
+      "kind": "asking",
+      "source_ids": [
+        "S68"
+      ],
+      "note_en": "Plot 1,000 sqm (NIS 26,000 per plot sqm, computed). Pool. Land-heavy benchmark below the target size range."
+    }
+  ],
+  "rent_comps": [
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "Wingate St at De Shalit Square, Herzliya Pituach",
+      "where_he": "רחוב וינגייט (כיכר דה שליט), הרצליה פיתוח",
+      "rooms": "6 suites",
+      "sqm": 600,
+      "rent_nis": 70000,
+      "rent_per_sqm_nis": 117,
+      "kind": "asking",
+      "source_ids": [
+        "S72",
+        "S69"
+      ],
+      "note_en": "Plot 1 dunam; huge basement, 2 family rooms, elevator, 17 x 4 m pool, smart electrical system, underfloor heating, mamad; short lets of a few months possible. Built area from the Madlan card. Similar features to this estate, but 6 suites and 1 dunam, and it is on the square rather than 5 minutes from it."
+    },
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "Herzliya Pituach, quiet lane (new villa, also for sale)",
+      "where_he": "הרצליה פיתוח, סמטה שקטה (וילה חדשה, גם למכירה)",
+      "rooms": "8",
+      "sqm": 650,
+      "rent_nis": 90000,
+      "rent_per_sqm_nis": 138,
+      "kind": "asking",
+      "source_ids": [
+        "S70"
+      ],
+      "note_en": "Plot about 930 sqm; heated pool; fully furnished; immediate entry."
+    },
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "Herzliya Pituach, quiet internal location (new villa)",
+      "where_he": "הרצליה פיתוח, מיקום שקט ופנימי (וילה חדשה)",
+      "rooms": "6 suites",
+      "sqm": 650,
+      "rent_nis": 95000,
+      "rent_per_sqm_nis": 146,
+      "kind": "asking",
+      "source_ids": [
+        "S71"
+      ],
+      "note_en": "Plot 900 sqm; elevator, smart home, private sauna, heated pool, outdoor kitchen, 4 parking; long-term; can be let furnished."
+    },
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "David HaMelech St, Herzliya Pituach",
+      "where_he": "רחוב דוד המלך, הרצליה פיתוח",
+      "rooms": "5",
+      "sqm": 600,
+      "rent_nis": 140000,
+      "rent_per_sqm_nis": 233,
+      "kind": "asking",
+      "source_ids": [
+        "S74"
+      ],
+      "note_en": "Pool, large garden, cinema room, basement with 2 more rooms; plot not stated."
+    },
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "HaEshel St, Herzliya Pituach",
+      "where_he": "רחוב האשל, הרצליה פיתוח",
+      "rooms": "8",
+      "sqm": 500,
+      "rent_nis": 80000,
+      "rent_per_sqm_nis": 160,
+      "kind": "asking",
+      "source_ids": [
+        "S75"
+      ],
+      "note_en": "Plot about 1.1 dunam; pool; unfurnished; entry 06/2026."
+    },
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "Herzliya Pituach, Galei Tchelet area per the listing",
+      "where_he": "הרצליה פיתוח, אזור גלי תכלת לפי המודעה",
+      "rooms": "9 (7 suites)",
+      "sqm": 480,
+      "rent_nis": 120000,
+      "rent_per_sqm_nis": 250,
+      "kind": "asking",
+      "source_ids": [
+        "S73"
+      ],
+      "note_en": "Plot 550 sqm; elevator, home cinema, sea view; below the target size range."
+    },
+    {
+      "date": "accessed 2026-09-16",
+      "where_en": "Herzliya (Anglo Saxon Herzliya Pituach), classic representational villa",
+      "where_he": "הרצליה (אנגלו סכסון הרצליה פיתוח), וילה ייצוגית קלאסית",
+      "rooms": "4 suites",
+      "sqm": 872,
+      "rent_nis": 95000,
+      "rent_per_sqm_nis": 109,
+      "kind": "asking",
+      "source_ids": [
+        "S76"
+      ],
+      "note_en": "Plot 1,500 sqm; staff quarters."
+    },
+    {
+      "date": "2026-08-24",
+      "where_en": "Herzliya Pituach (Ahuzat HaNadlan sale listing with a rent option)",
+      "where_he": "הרצליה פיתוח (מודעת מכירה של אחוזת הנדל״ן עם אפשרות שכירות)",
+      "rooms": "11 (all suites)",
+      "sqm": 700,
+      "rent_nis": 130000,
+      "rent_per_sqm_nis": 186,
+      "kind": "asking",
+      "source_ids": [
+        "S52"
+      ],
+      "note_en": "About 700 sqm on about 1,200 sqm; cinema, gym, sauna, elevator, pool. Possible duplicate of this estate (unverified); rent per sqm computed."
+    }
+  ],
+  "costs": [
+    {
+      "item_en": "Arnona, if Herzliya Pituach is in a tiered zone (Bet to Vav)",
+      "item_he": "ארנונה, אם הרצליה פיתוח נמצאת באזור מדורג ב׳ עד ו׳",
+      "value_en": "NIS 65,296 to NIS 71,099 per year (700 x 93.28 in zone Vav to 700 x 101.57 in zone Bet), about NIS 10,883 to NIS 11,850 per two months",
+      "value_he": "65,296 עד 71,099 ש״ח לשנה (700 כפול 93.28 באזור ו׳ עד 700 כפול 101.57 באזור ב׳), כ-10,883 עד 11,850 ש״ח לחודשיים",
+      "basis": "computed",
+      "source_ids": [
+        "S77",
+        "S78",
+        "S64",
+        "S1"
+      ],
+      "note_en": "Formula: 700 sqm x 2026 residential rate in NIS per sqm per year (Kol HaBayit table based on Herzliya's 2026 arnona order). Assumptions: the whole 700 sqm is chargeable, and in zones Bet to Vav the rate for houses and penthouses over 125 sqm applies. Herzliya Pituach's zone was NOT verified: the municipal zone map and order could not be read. The chargeable area is measured under the municipal order and can differ from the marketed area (a Herzliya Pituach listing states about 600 sqm built but 500 sqm per arnona). For 2026 the Interior Ministry approved an extra 1.15% residential increase for Herzliya on top of the national update."
+    },
+    {
+      "item_en": "Arnona, if zone Alef",
+      "item_he": "ארנונה, אם באזור א׳",
+      "value_en": "NIS 99,617 per year (700 x 142.31), about NIS 16,603 per two months",
+      "value_he": "99,617 ש״ח לשנה (700 כפול 142.31), כ-16,603 ש״ח לחודשיים",
+      "basis": "computed",
+      "source_ids": [
+        "S77",
+        "S1"
+      ],
+      "note_en": "Formula: 700 sqm x 2026 residential rate in NIS per sqm per year (Kol HaBayit table based on Herzliya's 2026 arnona order). Assumptions: the whole 700 sqm is chargeable, and in zones Bet to Vav the rate for houses and penthouses over 125 sqm applies. Herzliya Pituach's zone was NOT verified: the municipal zone map and order could not be read. The chargeable area is measured under the municipal order and can differ from the marketed area (a Herzliya Pituach listing states about 600 sqm built but 500 sqm per arnona). For 2026 the Interior Ministry approved an extra 1.15% residential increase for Herzliya on top of the national update."
+    },
+    {
+      "item_en": "Arnona, if zone Zayin",
+      "item_he": "ארנונה, אם באזור ז׳",
+      "value_en": "NIS 29,841 per year (700 x 42.63)",
+      "value_he": "29,841 ש״ח לשנה (700 כפול 42.63)",
+      "basis": "computed",
+      "source_ids": [
+        "S77",
+        "S1"
+      ],
+      "note_en": "Formula: 700 sqm x 2026 residential rate in NIS per sqm per year (Kol HaBayit table based on Herzliya's 2026 arnona order). Assumptions: the whole 700 sqm is chargeable, and in zones Bet to Vav the rate for houses and penthouses over 125 sqm applies. Herzliya Pituach's zone was NOT verified: the municipal zone map and order could not be read. The chargeable area is measured under the municipal order and can differ from the marketed area (a Herzliya Pituach listing states about 600 sqm built but 500 sqm per arnona). For 2026 the Interior Ministry approved an extra 1.15% residential increase for Herzliya on top of the national update. Zone Zayin has one uniform rate for all dwelling types; shown for completeness."
+    },
+    {
+      "item_en": "Purchase tax, single home, Israeli resident, at illustrative price NIS 31,500,000",
+      "item_he": "מס רכישה, דירה יחידה לתושב ישראל, במחיר להמחשה 31,500,000 ש״ח",
+      "value_en": "NIS 2,460,215 (7.81% of price)",
+      "value_he": "2,460,215 ש״ח (7.81% מהמחיר)",
+      "basis": "computed",
+      "source_ids": [
+        "S79",
+        "S32"
+      ],
+      "note_en": "Illustrative only, not the asking price. Single-home brackets frozen until 2028-01-15: 0% to NIS 1,978,745; 3.5% to 2,347,040; 5% to 6,055,070; 8% to 20,183,565; 10% above. Tax = 12,890.33 + 185,401.50 + 1,130,279.60 + 10% x (price - 20,183,565) = 1,328,571.43 + 10% x (price - 20,183,565). Applies to an Israeli resident's only home, including a buyer who becomes a resident or returning resident within two years of purchase. Price point = 700 sqm x NIS 45,000, the two-year median price per built sqm of Herzliya Pituach house deals (Bizportal)."
+    },
+    {
+      "item_en": "Purchase tax, additional home or foreign resident, at illustrative price NIS 31,500,000",
+      "item_he": "מס רכישה, דירה נוספת או תושב חוץ, במחיר להמחשה 31,500,000 ש״ח",
+      "value_en": "NIS 3,028,899 (9.62% of price)",
+      "value_he": "3,028,899 ש״ח (9.62% מהמחיר)",
+      "basis": "computed",
+      "source_ids": [
+        "S79",
+        "S81",
+        "S32"
+      ],
+      "note_en": "Illustrative only, not the asking price. Additional apartment schedule (also used for foreign residents who do not become Israeli residents): 8% to NIS 6,055,070 and 10% above; Kol Zchut shows it valid to 2026-12-31, and Globes reports automatic extension into February 2027 because of the election period. Tax = 484,405.60 + 10% x (price - 6,055,070). Price point = 700 sqm x NIS 45,000, the two-year median price per built sqm of Herzliya Pituach house deals (Bizportal)."
+    },
+    {
+      "item_en": "Purchase tax, new immigrant (oleh), at illustrative price NIS 31,500,000",
+      "item_he": "מס רכישה, עולה חדש, במחיר להמחשה 31,500,000 ש״ח",
+      "value_en": "NIS 2,460,215 if it is the oleh's only home (no oleh discount above NIS 20,183,565); NIS 3,028,899 if not",
+      "value_he": "2,460,215 ש״ח אם זו דירתו היחידה (אין הטבת עולה מעל 20,183,565 ש״ח); 3,028,899 ש״ח אם לא",
+      "basis": "computed",
+      "source_ids": [
+        "S80",
+        "S79",
+        "S32"
+      ],
+      "note_en": "Illustrative only. The oleh brackets (0% to NIS 1,978,745; 0.5% to 6,055,070; 8% to 20,183,565) do not apply at all to a home valued above NIS 20,183,565, so an oleh pays the regular single-home rates if this is the only home, or the additional-apartment rates otherwise. Price point = 700 sqm x NIS 45,000, the two-year median price per built sqm of Herzliya Pituach house deals (Bizportal)."
+    },
+    {
+      "item_en": "Purchase tax, single home, Israeli resident, at illustrative price NIS 46,000,000",
+      "item_he": "מס רכישה, דירה יחידה לתושב ישראל, במחיר להמחשה 46,000,000 ש״ח",
+      "value_en": "NIS 3,910,215 (8.50% of price)",
+      "value_he": "3,910,215 ש״ח (8.50% מהמחיר)",
+      "basis": "computed",
+      "source_ids": [
+        "S79",
+        "S51"
+      ],
+      "note_en": "Illustrative only, not the asking price. Single-home brackets frozen until 2028-01-15: 0% to NIS 1,978,745; 3.5% to 2,347,040; 5% to 6,055,070; 8% to 20,183,565; 10% above. Tax = 12,890.33 + 185,401.50 + 1,130,279.60 + 10% x (price - 20,183,565) = 1,328,571.43 + 10% x (price - 20,183,565). Applies to an Israeli resident's only home, including a buyer who becomes a resident or returning resident within two years of purchase. Price point = the price on the likely cross-listing (Anglo Saxon, Yad2, December 2025), not confirmed by the broker."
+    },
+    {
+      "item_en": "Purchase tax, additional home or foreign resident, at illustrative price NIS 46,000,000",
+      "item_he": "מס רכישה, דירה נוספת או תושב חוץ, במחיר להמחשה 46,000,000 ש״ח",
+      "value_en": "NIS 4,478,899 (9.74% of price)",
+      "value_he": "4,478,899 ש״ח (9.74% מהמחיר)",
+      "basis": "computed",
+      "source_ids": [
+        "S79",
+        "S81",
+        "S51"
+      ],
+      "note_en": "Illustrative only, not the asking price. Additional apartment schedule (also used for foreign residents who do not become Israeli residents): 8% to NIS 6,055,070 and 10% above; Kol Zchut shows it valid to 2026-12-31, and Globes reports automatic extension into February 2027 because of the election period. Tax = 484,405.60 + 10% x (price - 6,055,070). Price point = the price on the likely cross-listing (Anglo Saxon, Yad2, December 2025), not confirmed by the broker."
+    },
+    {
+      "item_en": "Purchase tax, new immigrant (oleh), at illustrative price NIS 46,000,000",
+      "item_he": "מס רכישה, עולה חדש, במחיר להמחשה 46,000,000 ש״ח",
+      "value_en": "NIS 3,910,215 if it is the oleh's only home (no oleh discount above NIS 20,183,565); NIS 4,478,899 if not",
+      "value_he": "3,910,215 ש״ח אם זו דירתו היחידה (אין הטבת עולה מעל 20,183,565 ש״ח); 4,478,899 ש״ח אם לא",
+      "basis": "computed",
+      "source_ids": [
+        "S80",
+        "S79",
+        "S51"
+      ],
+      "note_en": "Illustrative only. The oleh brackets (0% to NIS 1,978,745; 0.5% to 6,055,070; 8% to 20,183,565) do not apply at all to a home valued above NIS 20,183,565, so an oleh pays the regular single-home rates if this is the only home, or the additional-apartment rates otherwise. Price point = the price on the likely cross-listing (Anglo Saxon, Yad2, December 2025), not confirmed by the broker."
+    },
+    {
+      "item_en": "Purchase tax, single home, Israeli resident, at illustrative price NIS 53,916,100",
+      "item_he": "מס רכישה, דירה יחידה לתושב ישראל, במחיר להמחשה 53,916,100 ש״ח",
+      "value_en": "NIS 4,701,825 (8.72% of price)",
+      "value_he": "4,701,825 ש״ח (8.72% מהמחיר)",
+      "basis": "computed",
+      "source_ids": [
+        "S79",
+        "S37",
+        "S60",
+        "S47"
+      ],
+      "note_en": "Illustrative only, not the asking price. Single-home brackets frozen until 2028-01-15: 0% to NIS 1,978,745; 3.5% to 2,347,040; 5% to 6,055,070; 8% to 20,183,565; 10% above. Tax = 12,890.33 + 185,401.50 + 1,130,279.60 + 10% x (price - 20,183,565) = 1,328,571.43 + 10% x (price - 20,183,565). Applies to an Israeli resident's only home, including a buyer who becomes a resident or returning resident within two years of purchase. Price point = 700 sqm x NIS 77,023, the median asking price per built sqm of 15 comparable listed villas."
+    },
+    {
+      "item_en": "Purchase tax, additional home or foreign resident, at illustrative price NIS 53,916,100",
+      "item_he": "מס רכישה, דירה נוספת או תושב חוץ, במחיר להמחשה 53,916,100 ש״ח",
+      "value_en": "NIS 5,270,509 (9.78% of price)",
+      "value_he": "5,270,509 ש״ח (9.78% מהמחיר)",
+      "basis": "computed",
+      "source_ids": [
+        "S79",
+        "S81",
+        "S37",
+        "S60",
+        "S47"
+      ],
+      "note_en": "Illustrative only, not the asking price. Additional apartment schedule (also used for foreign residents who do not become Israeli residents): 8% to NIS 6,055,070 and 10% above; Kol Zchut shows it valid to 2026-12-31, and Globes reports automatic extension into February 2027 because of the election period. Tax = 484,405.60 + 10% x (price - 6,055,070). Price point = 700 sqm x NIS 77,023, the median asking price per built sqm of 15 comparable listed villas."
+    },
+    {
+      "item_en": "Purchase tax, new immigrant (oleh), at illustrative price NIS 53,916,100",
+      "item_he": "מס רכישה, עולה חדש, במחיר להמחשה 53,916,100 ש״ח",
+      "value_en": "NIS 4,701,825 if it is the oleh's only home (no oleh discount above NIS 20,183,565); NIS 5,270,509 if not",
+      "value_he": "4,701,825 ש״ח אם זו דירתו היחידה (אין הטבת עולה מעל 20,183,565 ש״ח); 5,270,509 ש״ח אם לא",
+      "basis": "computed",
+      "source_ids": [
+        "S80",
+        "S79",
+        "S37",
+        "S60",
+        "S47"
+      ],
+      "note_en": "Illustrative only. The oleh brackets (0% to NIS 1,978,745; 0.5% to 6,055,070; 8% to 20,183,565) do not apply at all to a home valued above NIS 20,183,565, so an oleh pays the regular single-home rates if this is the only home, or the additional-apartment rates otherwise. Price point = 700 sqm x NIS 77,023, the median asking price per built sqm of 15 comparable listed villas."
+    },
+    {
+      "item_en": "Purchase tax, single home, Israeli resident, at illustrative price NIS 64,615,600",
+      "item_he": "מס רכישה, דירה יחידה לתושב ישראל, במחיר להמחשה 64,615,600 ש״ח",
+      "value_en": "NIS 5,771,775 (8.93% of price)",
+      "value_he": "5,771,775 ש״ח (8.93% מהמחיר)",
+      "basis": "computed",
+      "source_ids": [
+        "S79",
+        "S37",
+        "S60",
+        "S47"
+      ],
+      "note_en": "Illustrative only, not the asking price. Single-home brackets frozen until 2028-01-15: 0% to NIS 1,978,745; 3.5% to 2,347,040; 5% to 6,055,070; 8% to 20,183,565; 10% above. Tax = 12,890.33 + 185,401.50 + 1,130,279.60 + 10% x (price - 20,183,565) = 1,328,571.43 + 10% x (price - 20,183,565). Applies to an Israeli resident's only home, including a buyer who becomes a resident or returning resident within two years of purchase. Price point = 700 sqm x NIS 92,308, the upper-quartile asking price per built sqm of the same 15 listings."
+    },
+    {
+      "item_en": "Purchase tax, additional home or foreign resident, at illustrative price NIS 64,615,600",
+      "item_he": "מס רכישה, דירה נוספת או תושב חוץ, במחיר להמחשה 64,615,600 ש״ח",
+      "value_en": "NIS 6,340,459 (9.81% of price)",
+      "value_he": "6,340,459 ש״ח (9.81% מהמחיר)",
+      "basis": "computed",
+      "source_ids": [
+        "S79",
+        "S81",
+        "S37",
+        "S60",
+        "S47"
+      ],
+      "note_en": "Illustrative only, not the asking price. Additional apartment schedule (also used for foreign residents who do not become Israeli residents): 8% to NIS 6,055,070 and 10% above; Kol Zchut shows it valid to 2026-12-31, and Globes reports automatic extension into February 2027 because of the election period. Tax = 484,405.60 + 10% x (price - 6,055,070). Price point = 700 sqm x NIS 92,308, the upper-quartile asking price per built sqm of the same 15 listings."
+    },
+    {
+      "item_en": "Purchase tax, new immigrant (oleh), at illustrative price NIS 64,615,600",
+      "item_he": "מס רכישה, עולה חדש, במחיר להמחשה 64,615,600 ש״ח",
+      "value_en": "NIS 5,771,775 if it is the oleh's only home (no oleh discount above NIS 20,183,565); NIS 6,340,459 if not",
+      "value_he": "5,771,775 ש״ח אם זו דירתו היחידה (אין הטבת עולה מעל 20,183,565 ש״ח); 6,340,459 ש״ח אם לא",
+      "basis": "computed",
+      "source_ids": [
+        "S80",
+        "S79",
+        "S37",
+        "S60",
+        "S47"
+      ],
+      "note_en": "Illustrative only. The oleh brackets (0% to NIS 1,978,745; 0.5% to 6,055,070; 8% to 20,183,565) do not apply at all to a home valued above NIS 20,183,565, so an oleh pays the regular single-home rates if this is the only home, or the additional-apartment rates otherwise. Price point = 700 sqm x NIS 92,308, the upper-quartile asking price per built sqm of the same 15 listings."
+    },
+    {
+      "item_en": "Mortgage loan-to-value limits",
+      "item_he": "מגבלות שיעור המימון במשכנתא",
+      "value_en": "75% for a single home, 70% for a replacement home, 50% for an investment home; the single and replacement categories require an individual Israeli citizen, so non-citizens are capped at 50%",
+      "value_he": "75% לדירה יחידה, 70% לדירה חלופית, 50% לדירה להשקעה; הקטגוריות של דירה יחידה וחלופית מחייבות אזרח ישראלי יחיד, ולכן מי שאינו אזרח מוגבל ל-50%",
+      "basis": "source",
+      "source_ids": [
+        "S82"
+      ],
+      "note_en": "Bank of Israel Directive 329, version 12 (02/2026). Bank practice may be stricter."
+    },
+    {
+      "item_en": "Betterment levy (heitel hashbacha)",
+      "item_he": "היטל השבחה",
+      "value_en": "Usually 50% of the increase in value created by a plan approval, a relief or a non-conforming use; usually paid on sale",
+      "value_he": "בדרך כלל 50% מעליית השווי שנוצרה מאישור תוכנית, הקלה או שימוש חורג; משולם בדרך כלל במכירה",
+      "basis": "source",
+      "source_ids": [
+        "S84",
+        "S85"
+      ],
+      "note_en": "Herzliya lets owners request betterment levy information for a property. The contract should say who pays."
+    },
+    {
+      "item_en": "Municipal development levies",
+      "item_he": "היטלי פיתוח עירוניים",
+      "value_en": "Charged by Herzliya on new construction and additions (roads, sidewalks, drainage, sewage)",
+      "value_he": "נגבים בהרצליה על בנייה חדשה ותוספות (כבישים, מדרכות, תיעול וביוב)",
+      "basis": "source",
+      "source_ids": [
+        "S86"
+      ],
+      "note_en": "Relevant if a buyer adds built area; amounts not researched."
+    }
+  ],
+  "risks": [
+    {
+      "en": "Cliff erosion near Sharon Beach: two collapses, at Sidna Ali beach and north of Sharon Beach, were reported in January 2025; in December 2024 the mayor warned of immediate danger to life. The State Comptroller (2024) found no protections implemented in Herzliya, and the Geological Survey recorded 77 collapse events in 2023-2024 along the 10 km Ga'ash coastal cliff segment, which its report describes as running to Herzliya (Herzliya is not analysed separately). If the plot is near the cliff, get a geotechnical opinion.",
+      "he": "נסיגת המצוק וקריסות סמוך לחוף השרון: בינואר 2025 דווח על שתי קריסות, בחוף סידנא עלי ומצפון לחוף השרון; בדצמבר 2024 התריע ראש העירייה על סכנת חיים מיידית. מבקר המדינה (2024) מצא שבהרצליה לא בוצעו הגנות כלל, והמכון הגיאולוגי תיעד 77 אירועי קריסה בשנים 2023 עד 2024 לאורך מקטע המצוק געש, באורך 10 ק״מ, שהדוח מתאר כמגיע עד הרצליה (הרצליה לא נותחה בנפרד). אם המגרש קרוב למצוק, יש לקבל חוות דעת גיאוטכנית.",
+      "source_ids": [
+        "S91",
+        "S92",
+        "S93",
+        "S94"
+      ]
+    },
+    {
+      "en": "Coastal law: within 300 m of the coastline (the coastal environment), plans, non-conforming-use permits and building height reliefs need the coastal committee's (VALHOF) approval, and the first 100 m (the seacoast area) is an open public right of way. Permits granted before the law are not affected. A licensed surveyor should measure the plot's distance from the coastline before any addition or relief is planned.",
+      "he": "חוק שמירת הסביבה החופית: בתחום 300 מ׳ מקו החוף (הסביבה החופית) תוכניות, היתרים לשימוש חורג והקלות בגובה בנייה טעונים אישור הוועדה לשמירת הסביבה החופית (ולחוף), ו-100 המטרים הראשונים (תחום חוף הים) פתוחים למעבר הציבור. היתרים שניתנו לפני החוק אינם נפגעים. יש למדוד באמצעות מודד מוסמך את מרחק המגרש מקו החוף לפני תכנון תוספת או הקלה.",
+      "source_ids": [
+        "S90"
+      ]
+    },
+    {
+      "en": "Cliff management on the Galei Tchelet segment: the government cliff protection company notes urban construction on and close to the cliff top and plans to restrict public access, divert drainage from private plots eastward and widen the beach; the municipality asked Galei Tchelet residents to block access to the cliff and look after their yards.",
+      "he": "ניהול המצוק במקטע גלי תכלת: החברה הממשלתית להגנת המצוק מציינת בנייה עירונית על ראש המצוק ובסמוך לו, ומתכננת להגביל את גישת הציבור, להפנות את הניקוז מהמגרשים הפרטיים מזרחה ולהרחיב את החוף; העירייה ביקשה מתושבי גלי תכלת לחסום את הגישה למצוק ולטפל בחצרותיהם.",
+      "source_ids": [
+        "S95",
+        "S91"
+      ]
+    },
+    {
+      "en": "Conflicting specifications across listings that may describe this estate: 600, 700 or 800 sqm built; 1,000, 1,100 or 1,200 sqm plot; 8, 9.5 or 11 rooms. Verify registered, permitted and arnona areas before quoting figures.",
+      "he": "נתונים סותרים במודעות שאולי מתארות את הנכס: 600, 700 או 800 מ״ר בנוי; מגרש של 1,000, 1,100 או 1,200 מ״ר; 8, 9.5 או 11 חדרים. יש לאמת את השטחים הרשומים, המותרים ולפי הארנונה לפני פרסום נתונים.",
+      "source_ids": [
+        "S51",
+        "S52",
+        "S53",
+        "S57",
+        "S58"
+      ]
+    },
+    {
+      "en": "Marketing history and price discovery: villas of similar size and features have been advertised in Herzliya Pituach at NIS 45,000,000 to NIS 46,000,000 since at least January 2024. If these describe this estate, it has been on the market for a long time. Not confirmed.",
+      "he": "היסטוריית שיווק וגילוי מחיר: וילות בגודל ובמאפיינים דומים מפורסמות בהרצליה פיתוח ב-45 עד 46 מיליון ש״ח לפחות מינואר 2024. אם מדובר באותו נכס, הוא משווק זמן רב. לא אומת.",
+      "source_ids": [
+        "S55",
+        "S54",
+        "S59",
+        "S51"
+      ]
+    },
+    {
+      "en": "The likely cross-listing states that complementary items were added to its photos with AI. Use the broker's own photos, and check the property in person.",
+      "he": "במודעה המקבילה הסבירה נכתב שלתמונות נוספו פריטים משלימים בבינה מלאכותית. יש להשתמש בתמונות המתווכת ולבדוק את הנכס בביקור.",
+      "source_ids": [
+        "S51"
+      ]
+    },
+    {
+      "en": "Permits: the cinema room, wine cellar, gym, elevator and pool must appear in the building permit and completion approval. Areas and uses not covered by permits cannot be marketed as rights, and marketed areas can differ from the arnona area.",
+      "he": "היתרים: חדר הקולנוע, מרתף היין, חדר הכושר, המעלית והבריכה צריכים להופיע בהיתר הבנייה ובאישור האכלוס. אין לשווק כזכויות שטחים או שימושים שאינם בהיתר, ושטחי השיווק עשויים להיות שונים משטח הארנונה.",
+      "source_ids": [
+        "S88",
+        "S64"
+      ]
+    },
+    {
+      "en": "Foreign buyers: purchase tax at 8% and 10% (about 9.7% effective at NIS 46m, computed) under a temporary order whose extension beyond early 2027 is uncertain, and bank financing capped at 50% loan-to-value for non-citizens.",
+      "he": "רוכשים זרים: מס רכישה של 8% ו-10% (כ-9.7% אפקטיבי ב-46 מיליון ש״ח, חישוב) מכוח הוראת שעה שהארכתה מעבר לתחילת 2027 אינה ודאית, ומימון בנקאי מוגבל ל-50% משווי הנכס למי שאינו אזרח.",
+      "source_ids": [
+        "S79",
+        "S81",
+        "S82"
+      ]
+    },
+    {
+      "en": "New immigrants get no oleh purchase tax discount on a home valued above NIS 20,183,565.",
+      "he": "עולים חדשים אינם זכאים להטבת מס רכישה לעולים בדירה ששוויה מעל 20,183,565 ש״ח.",
+      "source_ids": [
+        "S80"
+      ]
+    },
+    {
+      "en": "Thin price evidence: most comps are asking prices; the Tax Authority publishes luxury deals months late, and no 2024-2026 villa deal was found with both built area and plot in the target range.",
+      "he": "ראיות מחיר דלות: רוב ההשוואות הן מחירים מבוקשים; רשות המסים מפרסמת עסקאות יוקרה באיחור של חודשים, ולא נמצאה עסקת וילה מ-2024 עד 2026 עם שטח בנוי וגודל מגרש בטווח היעד.",
+      "source_ids": [
+        "S33",
+        "S32"
+      ]
+    },
+    {
+      "en": "Development pressure in southern Herzliya Pituach (a 30-storey tower, micro-apartments of up to 15 floors, and the 12,500-unit Southwest Quarter) may add traffic on the main roads.",
+      "he": "לחץ פיתוח בדרום הרצליה פיתוח (מגדל בן 30 קומות, דירות קטנות בבניינים של עד 15 קומות ו-12,500 יחידות דיור ברובע הדרום-מערבי) עשוי להוסיף תנועה בצירים הראשיים.",
+      "source_ids": [
+        "S97",
+        "S98",
+        "S99"
+      ]
+    },
+    {
+      "en": "Title: the Israel Land Authority manages 93% of land in Israel, and urban leases were historically for 49 years with an option to renew. Order a land registry extract for the block and parcel, and, if the land is ILA-managed, an ILA rights confirmation, before relying on ownership claims.",
+      "he": "זכויות בקרקע: רשות מקרקעי ישראל מנהלת 93% מהקרקעות בישראל, וחכירות עירוניות ניתנו בעבר ל-49 שנה עם אפשרות הארכה. לפני הסתמכות על טענות בעלות יש להוציא נסח טאבו לגוש ולחלקה, ואם הקרקע מנוהלת על ידי רמ״י, גם אישור זכויות.",
+      "source_ids": [
+        "S89",
+        "S87",
+        "S88"
+      ]
+    }
+  ],
+  "buyer_or_renter_questions": [
+    {
+      "en": "What is the asking price, and is this the estate advertised on Yad2 by Anglo Saxon Herzliya Pituach at NIS 46,000,000 and by other agencies at NIS 45,000,000 to NIS 46,000,000?",
+      "he": "מה המחיר המבוקש, והאם זו האחוזה שפורסמה ביד2 על ידי אנגלו סכסון הרצליה פיתוח ב-46,000,000 ש״ח ועל ידי משרדים נוספים ב-45 עד 46 מיליון ש״ח?"
+    },
+    {
+      "en": "What are the street address, block and parcel, and is the land privately owned and registered, or leased from the Israel Land Authority?",
+      "he": "מה הכתובת, הגוש והחלקה, והאם הקרקע פרטית ורשומה בטאבו או בחכירה מרשות מקרקעי ישראל?"
+    },
+    {
+      "en": "What are the registered plot area, the permitted built area, the built area on each level including the basement, and the area billed for arnona?",
+      "he": "מהו שטח המגרש הרשום, השטח הבנוי המותר, השטח הבנוי בכל מפלס כולל המרתף, והשטח שלפיו מחויבת הארנונה?"
+    },
+    {
+      "en": "Do the building permit and completion approval cover the basement uses (cinema, wine cellar, gym), the elevator and the pool? Are there open building violations?",
+      "he": "האם היתר הבנייה ואישור האכלוס כוללים את שימושי המרתף (קולנוע, מרתף יין, חדר כושר), את המעלית ואת הבריכה? האם קיימות חריגות בנייה פתוחות?"
+    },
+    {
+      "en": "How much building right remains unused, and are there plans in preparation that affect the plot?",
+      "he": "אילו זכויות בנייה נותרו לניצול, והאם יש תוכניות בהכנה שחלות על המגרש?"
+    },
+    {
+      "en": "What is the surveyed distance from the plot to the coastline and to the cliff edge, and does any Har/2202 promenade line or public easement touch it?",
+      "he": "מה המרחק המדוד מהמגרש לקו החוף ולשפת המצוק, והאם עובר בו קו טיילת או זיקת הנאה לציבור לפי הר/2202?"
+    },
+    {
+      "en": "What is the arnona zone, and what is the current annual arnona bill?",
+      "he": "באיזה אזור ארנונה נמצא הנכס ומהו חיוב הארנונה השנתי הנוכחי?"
+    },
+    {
+      "en": "What do the pool, garden, security, electricity and elevator and smart-home maintenance contracts cost each year?",
+      "he": "מהן העלויות השנתיות בפועל של הבריכה, הגינה, האבטחה, החשמל וחוזי התחזוקה של המעלית והבית החכם?"
+    },
+    {
+      "en": "Is any betterment levy or development levy outstanding, and who pays it under the contract?",
+      "he": "האם יש היטל השבחה או היטלי פיתוח פתוחים, ומי נושא בהם לפי החוזה?"
+    },
+    {
+      "en": "When was the house built and last renovated, who was the architect, and what warranties cover the underfloor heating, smart electrical system and elevator?",
+      "he": "מתי נבנה הבית ומתי שופץ לאחרונה, מי האדריכל, ואילו אחריות קיימות לחימום התת-רצפתי, לחשמל החכם ולמעלית?"
+    },
+    {
+      "en": "How large is the mamad, and does it have Home Front Command approval?",
+      "he": "מה גודל הממ״ד והאם יש לו אישור פיקוד העורף?"
+    },
+    {
+      "en": "Which elementary, middle and high schools serve this address for 2026-27?",
+      "he": "לאילו בתי ספר יסודיים, חטיבות ביניים ותיכונים משויכת הכתובת בשנת תשפ״ז?"
+    },
+    {
+      "en": "How many minutes is the walk to the nearest beach access, and which beach is it?",
+      "he": "כמה דקות הליכה לירידה לחוף הקרובה, ולאיזה חוף?"
+    },
+    {
+      "en": "Would the owner consider a lease, and at what rent?",
+      "he": "האם הבעלים ישקלו השכרה, ובאיזה מחיר?"
+    },
+    {
+      "en": "Have any listing photos been edited with AI?",
+      "he": "האם תמונות כלשהן במודעות עברו עריכה בבינה מלאכותית?"
+    }
+  ],
+  "gaps": [
+    {
+      "en": "The estate's street and coordinates are unknown, so every distance is measured from De Shalit Square, not from the estate.",
+      "he": "הרחוב והקואורדינטות של הנכס אינם ידועים, ולכן כל המרחקים נמדדו מכיכר דה שליט ולא מהנכס."
+    },
+    {
+      "en": "The cross-listing match is not confirmed by address, block and parcel or photos, and the current price is unknown.",
+      "he": "ההתאמה למודעה המקבילה לא אושרה בכתובת, בגוש וחלקה או בתמונות, והמחיר העדכני אינו ידוע."
+    },
+    {
+      "en": "No source gives walking or driving minutes for the broker's '5 minutes from De Shalit Square', or road distances from the estate to WBAIS, Tel Aviv or the airport.",
+      "he": "אין מקור לדקות הליכה או נסיעה עבור '5 דקות מכיכר דה שליט', או למרחקי נסיעה מהנכס ל-WBAIS, לתל אביב או לנמל התעופה."
+    },
+    {
+      "en": "No 2024-2026 villa transaction was found with both built area and plot in the 500-900 sqm and 900-1,500 sqm ranges; the Globes Basel and Kedoshei HaShoah deals lack sizes and exact dates, and the Bizportal Basel deal is undated.",
+      "he": "לא נמצאה עסקת וילה מ-2024 עד 2026 עם שטח בנוי של 500 עד 900 מ״ר ומגרש של 900 עד 1,500 מ״ר; לעסקאות בזל וקדושי השואה בגלובס אין שטחים ותאריכים מדויקים, ולעסקת בזל בביזפורטל אין תאריך."
+    },
+    {
+      "en": "Herzliya Pituach's arnona zone is not verified; the municipal zone map and 2026 order could not be read.",
+      "he": "אזור הארנונה של הרצליה פיתוח לא אומת; לא ניתן היה לקרוא את מפת האזורים ואת צו הארנונה 2026 של העירייה."
+    },
+    {
+      "en": "No source was found for pool, garden or private security running costs.",
+      "he": "לא נמצא מקור לעלויות תחזוקת בריכה, גינה או אבטחה פרטית."
+    },
+    {
+      "en": "School registration zones for the address are not verified, and the municipal registration page could not be re-checked.",
+      "he": "אזורי הרישום לבתי הספר עבור הכתובת לא אומתו, ולא ניתן היה לבדוק שוב את דף הרישום העירוני."
+    },
+    {
+      "en": "No source was found on redevelopment, hotel or tower plans for the sites next to De Shalit Square (Sharon Hotel, the Tadmor site, the Reshef base).",
+      "he": "לא נמצא מקור על תוכניות פיתוח, מלונאות או מגדלים באתרים הסמוכים לכיכר דה שליט (מלון השרון, מתחם תדמור, מחנה רשף)."
+    },
+    {
+      "en": "The statutory status of the cliff protection plan after January 2025 is not verified.",
+      "he": "מעמדה הסטטוטורי של תוכנית ההגנה על המצוק לאחר ינואר 2025 לא אומת."
+    },
+    {
+      "en": "The locations of HaNuriot St and Arie Ben Eliezer St, where several comps are listed, are not verified.",
+      "he": "מיקום רחובות הנוריות ואריה בן אליעזר, שבהם מפורסמות כמה מההשוואות, לא אומת."
+    },
+    {
+      "en": "Green Line station locations in Herzliya are not verified.",
+      "he": "מיקומי תחנות הקו הירוק בהרצליה לא אומתו."
+    },
+    {
+      "en": "Not checked: LuxuryEstate (timed out), the Engel & Voelkers and RE/MAX Israel websites (RE/MAX listings seen only on Yad2), and filtered Komo and Homeless searches (their index pages showed no Herzliya Pituach villas).",
+      "he": "לא נבדקו: LuxuryEstate (תם הזמן), אתרי Engel & Voelkers ו-RE/MAX ישראל (מודעות RE/MAX נבדקו רק ביד2), וחיפוש מסונן בקומו ובהומלס (דפי האינדקס לא הציגו וילות בהרצליה פיתוח)."
+    }
+  ],
+  "access_notes": [
+    "Web search was unavailable: the session's search budget (200) was already used, so this dossier relies on direct fetches of known URLs and public data services.",
+    "overpass-api.de (OpenStreetMap): the connection was reset through the proxy on 2 attempts; not used further.",
+    "nominatim.openstreetmap.org: disallowed by robots.txt for the fetch tool; not used.",
+    "he.wikipedia.org: cache-only for the fetch tool; not fetched.",
+    "www.wikidata.org API (entity search) returned non-JSON; coordinates were taken from query.wikidata.org SPARQL results, which were already in use.",
+    "edu.herzliya.muni.il: the 2026-27 registration zones page and the Democratic School page were rejected by the fetch proxy (HTTP 403); those items rely on same-day project research.",
+    "herzliya.muni.il arnona pages returned only navigation menus, and https://www.herzliya.muni.il/433/ returned 404; the 2026 order and zone map were not read.",
+    "luxuryestate.com: read timeout; not retried.",
+    "Yad2 result ordering changed between page fetches, so the 152-result scan may have missed listings.",
+    "Browser tool: the only available tab group belonged to another session, so it was not used (the one tab opened was closed). Photos were not compared with the Instagram post.",
+    "Instagram was not re-fetched; broker facts come from the project registry (registry.md, section L01).",
+    "nadlan.gov.il (JavaScript application) and TheMarker (robots.txt) were not readable, per same-day project research."
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Meital Katzir Instagram post \"THE PRIVATE ESTATE\" (broker listing)",
+      "url": "https://www.instagram.com/p/DdVsYwDIWfF/",
+      "published": "2026-09-15"
+    },
+    {
+      "id": "S2",
+      "title": "Ministry of Transport GTFS bus stops, Herzliya (stop 26921 \"ככר דה שליט\" and neighbouring stops), via Open Bus Stride API (Hasadna)",
+      "url": "https://open-bus-stride-api.hasadna.org.il/gtfs_stops/list?city=%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94&date_from=2026-09-01&date_to=2026-09-15&limit=5000",
+      "published": "GTFS data dated 2026-09-15; accessed 2026-09-16"
+    },
+    {
+      "id": "S3",
+      "title": "Wikidata Q20502060: Sharon Hotel (coordinates; address 4 Ramat Yam St)",
+      "url": "https://www.wikidata.org/wiki/Q20502060",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S4",
+      "title": "Wikidata Q2895355: Herzliya Medical Center (coordinates; address 7 Ramat Yam St)",
+      "url": "https://www.wikidata.org/wiki/Q2895355",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S5",
+      "title": "Wikidata Q20502635: Galei Tchelet Street (reference coordinate)",
+      "url": "https://www.wikidata.org/wiki/Q20502635",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S6",
+      "title": "Wikidata Q30184246: Zvulun Beach, Herzliya (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q30184246",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S7",
+      "title": "Wikidata Q2975910: Sidna Ali Mosque (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q2975910",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S8",
+      "title": "Wikidata Q26768820: Sidna Ali National Park (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q26768820",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S9",
+      "title": "Wikidata Q26770940: Apollonia National Park (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q26770940",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S10",
+      "title": "Wikidata Q21160708: Dan Accadia Hotel (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q21160708",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S11",
+      "title": "Wikidata Q20502820: Arena Mall Herzliya (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q20502820",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S12",
+      "title": "Wikidata Q7060578: Herzliya Marina (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q7060578",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S13",
+      "title": "Wikidata Q2915718: Herzliya railway station (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q2915718",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S14",
+      "title": "Wikidata Q2908845: Reichman University (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q2908845",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S15",
+      "title": "Wikidata Q7966873: Walworth Barbour American International School in Israel (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q7966873",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S16",
+      "title": "Wikidata Q181479: Ben Gurion Airport (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q181479",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S17",
+      "title": "Wikidata Q555350: Azrieli Center, Tel Aviv (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q555350",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S18",
+      "title": "Wikidata Q2915697: Tel Aviv Savidor Center railway station (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q2915697",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S19",
+      "title": "Wikidata Q6835658: Rabin Interchange, Route 2 (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q6835658",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S20",
+      "title": "Wikidata Q2389508: Kfar Shmaryahu (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q2389508",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S21",
+      "title": "Wikidata Q5647257: Handasaim Herzliya High School (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q5647257",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S22",
+      "title": "Wikidata Q107296483: Tichon Hadash Herzliya (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q107296483",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S23",
+      "title": "Wikidata Q141255078: HaRishonim High School (coordinates)",
+      "url": "https://www.wikidata.org/wiki/Q141255078",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S24",
+      "title": "Herzliya Seafront Plan Har/2202, plan instructions (Israel Land Authority plans archive)",
+      "url": "https://apps.land.gov.il/IturTabotData/takanonim/telmer/5050235.pdf",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S25",
+      "title": "Mikumi: Herzliya seafront plan approved (Har/2202)",
+      "url": "https://mikumi.co.il/real-estate-news/%D7%9E%D7%A1%D7%93%D7%99%D7%A8%D7%99%D7%9D-%D7%90%D7%AA-%D7%94%D7%99%D7%9D-%D7%91%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%90%D7%95%D7%A9%D7%A8%D7%94-%D7%AA%D7%9B%D7%A0%D7%99%D7%AA-%D7%97%D7%96%D7%99/",
+      "published": "2023-06-08 (updated 2026-01-15)"
+    },
+    {
+      "id": "S26",
+      "title": "ynet: top home deals of 2025 (Shlomtzion HaMalka and HaEshel villa deals)",
+      "url": "https://www.ynet.co.il/economy/article/yokra14636352",
+      "published": "2026-01-08"
+    },
+    {
+      "id": "S27",
+      "title": "Madlan neighbourhood page: Herzliya Pituach (socio-economic index, schools, averages)",
+      "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S28",
+      "title": "Calcalist: UAE embassy plan at 9 Sapir St, Herzliya; 55 ambassadors live in Herzliya",
+      "url": "https://www.calcalist.co.il/real-estate/article/s1vkzcmcxx",
+      "published": "2025-10-20"
+    },
+    {
+      "id": "S29",
+      "title": "N12 (mako): Galei Tchelet villas, west side vs east side prices",
+      "url": "https://www.mako.co.il/news-money/real_estate/Article-bfa376217146b91027.htm",
+      "published": "2025-12-28"
+    },
+    {
+      "id": "S30",
+      "title": "Herzliya Municipality: beaches page",
+      "url": "https://www.herzliya.muni.il/203/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S31",
+      "title": "Wikipedia: Herzliya Pituah",
+      "url": "https://en.wikipedia.org/wiki/Herzliya_Pituah",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S32",
+      "title": "Bizportal: Herzliya Pituach, private-house median back to NIS 15m (gov.nadlan / Tax Authority data)",
+      "url": "https://www.bizportal.co.il/realestates/news/article/20038130",
+      "published": "2026-09-02"
+    },
+    {
+      "id": "S33",
+      "title": "Globes: the mega-luxury market, NIS 10m+ deals (Tax Authority data)",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001554920",
+      "published": "2026-09-12"
+    },
+    {
+      "id": "S34",
+      "title": "Calcalist: luxury home market grew in 2025 (deals above NIS 20m by city)",
+      "url": "https://www.calcalist.co.il/real-estate/article/sjrqmo7lmx",
+      "published": "2026-05-27"
+    },
+    {
+      "id": "S35",
+      "title": "Bizportal: 10 largest real estate deals in Israel (HaShikma villa, 2024)",
+      "url": "https://www.bizportal.co.il/realestates/news/article/20014589",
+      "published": "2025-03-13"
+    },
+    {
+      "id": "S36",
+      "title": "Madlan: private houses for sale in Herzliya Pituach (index pages 1-4, 140 listings)",
+      "url": "https://www.madlan.co.il/villas-for-sale/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S37",
+      "title": "Madlan listing zdEaUPvfrDu: HaNuriot 24, Herzliya Pituach (plot 1,120 sqm, built 766 sqm)",
+      "url": "https://www.madlan.co.il/listings/zdEaUPvfrDu",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S38",
+      "title": "Madlan listing KvuSRn5bZdW: Arie Ben Eliezer 13 (1 dunam, 650 sqm)",
+      "url": "https://www.madlan.co.il/listings/KvuSRn5bZdW",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S39",
+      "title": "Madlan listing b8PaobJavIe: western Herzliya Pituach, 600 sqm on 1 dunam",
+      "url": "https://www.madlan.co.il/listings/b8PaobJavIe",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S40",
+      "title": "Madlan listing tYvwMbwisSQ: 550 sqm on 1 dunam, very close to the sea",
+      "url": "https://www.madlan.co.il/listings/tYvwMbwisSQ",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S41",
+      "title": "Madlan listing FUm87MEUvCD: 900 sqm on 1,200 sqm",
+      "url": "https://www.madlan.co.il/listings/FUm87MEUvCD",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S42",
+      "title": "Madlan listing et8ByQD627P: Nili St, 800 sqm, 7 rooms",
+      "url": "https://www.madlan.co.il/listings/et8ByQD627P",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S43",
+      "title": "Madlan listing j9XdpvLlCBi: Arie Ben Eliezer St, 750 sqm, 7 rooms",
+      "url": "https://www.madlan.co.il/listings/j9XdpvLlCBi",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S44",
+      "title": "Madlan listing 0tCmcc8eWCj: western Herzliya Pituach, 600 sqm, 8 rooms",
+      "url": "https://www.madlan.co.il/listings/0tCmcc8eWCj",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S45",
+      "title": "Israel Sotheby's International Realty: Exquisite Architectural Masterpiece by John Pawson (Galei Tchelet St)",
+      "url": "https://www.israelsir.com/property/exquisite-architectural-masterpiece-by-john-pawson/",
+      "published": "modified 2026-07-09"
+    },
+    {
+      "id": "S46",
+      "title": "Israel Sotheby's International Realty: Seafront Private Villa on Galei Tchelet Street",
+      "url": "https://www.israelsir.com/property/seafront-private-villa-on-galei-tchelet-street/",
+      "published": "modified 2025-03-12"
+    },
+    {
+      "id": "S47",
+      "title": "Sotheby's International Realty Canada: House for Sale in Herzliya Pituach (SIRC3160368, Israel SIR)",
+      "url": "https://sothebysrealty.ca/en/property/global/region-israel/herzliya-pituach-real-estate/3160368/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S48",
+      "title": "Israel Sotheby's International Realty: property search, pages 1-12",
+      "url": "https://www.israelsir.com/property-search/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S49",
+      "title": "JamesEdition: luxury real estate in Herzliya (23 listings)",
+      "url": "https://www.jamesedition.com/real_estate/herzliya-israel",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S50",
+      "title": "Yad2: houses for sale in Herzliya, 7+ rooms, 500+ sqm (152 results, pages 1-8)",
+      "url": "https://www.yad2.co.il/realestate/forsale?city=6400&propertyGroup=houses&minRooms=7&minSquaremeter=500",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S51",
+      "title": "Yad2 item 48q4dbek: Anglo Saxon Herzliya Pituach, 8 rooms, 700 sqm built, 1,100 sqm plot, NIS 46,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/48q4dbek",
+      "published": "2025-12-11"
+    },
+    {
+      "id": "S52",
+      "title": "Yad2 item 9oaofjvg: Ahuzat HaNadlan, 11 rooms, about 700 sqm built, about 1,200 sqm plot, NIS 45,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/9oaofjvg",
+      "published": "2026-08-24"
+    },
+    {
+      "id": "S53",
+      "title": "Yad2 item tsail49m: M.M.M Group, 8 rooms, 700 sqm built, 1,000 sqm plot, NIS 46,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/tsail49m",
+      "published": "2025-07-20"
+    },
+    {
+      "id": "S54",
+      "title": "Yad2 item hvubhv2x: M.M.M Group, 8 rooms, 700 sqm built, 1,000 sqm plot, NIS 46,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/hvubhv2x",
+      "published": "2024-05-26"
+    },
+    {
+      "id": "S55",
+      "title": "Yad2 item 42nukvpz: Silco Group, 11 rooms, about 600 sqm built, 1,100 sqm plot, NIS 46,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/42nukvpz",
+      "published": "2024-01-03"
+    },
+    {
+      "id": "S56",
+      "title": "Yad2 item eds8uuaf: Silco Group, same villa text, NIS 46,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/eds8uuaf",
+      "published": "2025-03-13"
+    },
+    {
+      "id": "S57",
+      "title": "Yad2 item qbhe91mf: Silco Group, same villa text, NIS 46,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/qbhe91mf",
+      "published": "2026-04-28"
+    },
+    {
+      "id": "S58",
+      "title": "Yad2 item g2yehy3d: Sea Real Estate, 9.5 rooms, 800 sqm built, 1,100 sqm plot, NIS 45,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/g2yehy3d",
+      "published": "2025-12-18"
+    },
+    {
+      "id": "S59",
+      "title": "Yad2 item dide5u9c: Vera Prime Luxury Properties, 8 rooms, 800 sqm, NIS 45,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/dide5u9c",
+      "published": "2024-10-14"
+    },
+    {
+      "id": "S60",
+      "title": "Yad2 item 6cl20kuh: HaNasi Yitzhak Ben Zvi St, 780 sqm on 1,000 sqm, NIS 72,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/6cl20kuh",
+      "published": "2026-05-12"
+    },
+    {
+      "id": "S61",
+      "title": "Yad2 item st7qtmgh: modern villa near the beach, 650 sqm on 1,050 sqm, NIS 60,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/st7qtmgh",
+      "published": "2024-05-12"
+    },
+    {
+      "id": "S62",
+      "title": "Yad2 item uo2l4xvg: classic house, 670 sqm on 1,030 sqm, NIS 59,200,000",
+      "url": "https://www.yad2.co.il/realestate/item/uo2l4xvg",
+      "published": "2025-08-19"
+    },
+    {
+      "id": "S63",
+      "title": "Yad2 item xfm7wnn0: Anglo Saxon Herzliya Pituach, 700 sqm on 1,014 sqm, NIS 35,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/xfm7wnn0",
+      "published": "2024-06-17"
+    },
+    {
+      "id": "S64",
+      "title": "Yad2 item fso3b00e: European-style villa, about 600 sqm (500 sqm per arnona) on 1,004 sqm, NIS 34,950,000",
+      "url": "https://www.yad2.co.il/realestate/item/fso3b00e",
+      "published": "2025-05-07"
+    },
+    {
+      "id": "S65",
+      "title": "Yad2 item dmseavgg: renovated house, 500 sqm on 1,000 sqm, NIS 34,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/dmseavgg",
+      "published": "2025-05-01"
+    },
+    {
+      "id": "S66",
+      "title": "Yad2 item rz7viibq: Tuscan-style house, 550 sqm on 1,000 sqm, NIS 48,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/rz7viibq",
+      "published": "2026-05-07"
+    },
+    {
+      "id": "S67",
+      "title": "Yad2 item 5cffw3za: Wingate St, old house priced as land, 1,005 sqm plot, NIS 22,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/5cffw3za",
+      "published": "2025-10-21"
+    },
+    {
+      "id": "S68",
+      "title": "Yad2 item g5sng6f4: Arie Ben Eliezer St, 400 sqm on 1,000 sqm, NIS 26,000,000",
+      "url": "https://www.yad2.co.il/realestate/item/g5sng6f4",
+      "published": "2025-11-24"
+    },
+    {
+      "id": "S69",
+      "title": "Madlan: private houses for rent in Herzliya Pituach (index)",
+      "url": "https://www.madlan.co.il/villas-for-rent/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S70",
+      "title": "Madlan rental listing ZeisihL76ca: new villa, 650 sqm on about 930 sqm, NIS 90,000 per month",
+      "url": "https://www.madlan.co.il/listings/ZeisihL76ca",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S71",
+      "title": "Madlan rental listing jM0QSk2xKs0: new villa, 650 sqm on 900 sqm, NIS 95,000 per month",
+      "url": "https://www.madlan.co.il/listings/jM0QSk2xKs0",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S72",
+      "title": "Madlan rental listing BnIlPFgVl8D: Wingate St (De Shalit Square), villa on 1 dunam, NIS 70,000 per month",
+      "url": "https://www.madlan.co.il/listings/BnIlPFgVl8D",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S73",
+      "title": "Madlan rental listing ndn7dyBWtdZ: 480 sqm on 550 sqm, 7 suites, NIS 120,000 per month",
+      "url": "https://www.madlan.co.il/listings/ndn7dyBWtdZ",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S74",
+      "title": "Madlan rental listing cWGUgsPV5z1: David HaMelech St, 600 sqm, NIS 140,000 per month",
+      "url": "https://www.madlan.co.il/listings/cWGUgsPV5z1",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S75",
+      "title": "Madlan rental listing eTtxjoPnl5t: HaEshel St, about 1.1 dunam plot, NIS 80,000 per month",
+      "url": "https://www.madlan.co.il/listings/eTtxjoPnl5t",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S76",
+      "title": "Anglo Saxon Herzliya Pituach: our properties (incl. classic representational villa for rent, 872 sqm on 1,500 sqm)",
+      "url": "https://real-estate-herzliya-pituach.com/our-properties/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S77",
+      "title": "Kol HaBayit: Herzliya arnona calculator 2026 (rates per the 2026 arnona order)",
+      "url": "https://kolhabait.com/arnona/herzliya",
+      "published": "updated August 2026; accessed 2026-09-16"
+    },
+    {
+      "id": "S78",
+      "title": "Nadlan Center: arnona increases approved for 2026 (Herzliya extra 1.15%)",
+      "url": "https://www.nadlancenter.co.il/article/13556",
+      "published": "2025-12-28"
+    },
+    {
+      "id": "S79",
+      "title": "Kol Zchut: purchase tax calculation (single and additional apartment brackets)",
+      "url": "https://www.kolzchut.org.il/he/%D7%97%D7%99%D7%A9%D7%95%D7%91_%D7%9E%D7%A1_%D7%A8%D7%9B%D7%99%D7%A9%D7%94",
+      "published": "updated 2026-08-03"
+    },
+    {
+      "id": "S80",
+      "title": "Kol Zchut: purchase tax discount for new immigrants (olim)",
+      "url": "https://www.kolzchut.org.il/he/%D7%94%D7%A0%D7%97%D7%94_%D7%91%D7%9E%D7%A1_%D7%A8%D7%9B%D7%99%D7%A9%D7%94_%D7%9C%D7%A2%D7%95%D7%9C%D7%99%D7%9D",
+      "published": "updated 2026-03-31"
+    },
+    {
+      "id": "S81",
+      "title": "Globes: what will happen to purchase tax (investor rate temporary order)",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001554581",
+      "published": "2026-09-07"
+    },
+    {
+      "id": "S82",
+      "title": "Bank of Israel, Proper Conduct of Banking Business Directive 329 (version 12), housing loan limits",
+      "url": "https://www.boi.org.il/media/brep4lzt/329_12.pdf",
+      "published": "2026-02"
+    },
+    {
+      "id": "S83",
+      "title": "Bank of Israel: representative exchange rates",
+      "url": "https://www.boi.org.il/en/economic-roles/financial-markets/exchange-rates/",
+      "published": "2026-09-15"
+    },
+    {
+      "id": "S84",
+      "title": "Kol Zchut: betterment levy (heitel hashbacha)",
+      "url": "https://www.kolzchut.org.il/he/%D7%94%D7%99%D7%98%D7%9C_%D7%94%D7%A9%D7%91%D7%97%D7%94",
+      "published": "updated 2023-11-29"
+    },
+    {
+      "id": "S85",
+      "title": "Herzliya Municipality: request for betterment levy information",
+      "url": "https://www.herzliya.muni.il/%D7%91%D7%A7%D7%A9%D7%94-%D7%9C%D7%91%D7%A8%D7%95%D7%A8-%D7%9E%D7%99%D7%93%D7%A2-%D7%94%D7%99%D7%98%D7%9C-%D7%94%D7%A9%D7%91%D7%97%D7%94/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S86",
+      "title": "Herzliya Municipality: development levies inquiry (roads, sidewalks, drainage, sewage)",
+      "url": "https://www.herzliya.muni.il/%D7%91%D7%99%D7%A8%D7%95%D7%A8-%D7%94%D7%99%D7%98%D7%9C%D7%99-%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%9E%D7%92%D7%95%D7%A8%D7%99%D7%9D/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S87",
+      "title": "gov.il: land registration extract (nesach tabu) service",
+      "url": "https://www.gov.il/he/service/land_registration_extract",
+      "published": "updated 2025-12-14"
+    },
+    {
+      "id": "S88",
+      "title": "Nadlan Center: buyer due diligence guide (permits, plans, rights)",
+      "url": "https://www.nadlancenter.co.il/article/2775",
+      "published": "updated 2024-10-15"
+    },
+    {
+      "id": "S89",
+      "title": "Wikipedia: Israel Land Administration",
+      "url": "https://en.wikipedia.org/wiki/Israel_Land_Administration",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S90",
+      "title": "Protection of the Coastal Environment Law 2004, unofficial English translation (gov.il)",
+      "url": "https://www.gov.il/BlobFolder/legalinfo/coastal_environment_protection_law_2004/en/marine_coastal_environment_protection_of_coastal_environment_law_2004_eng_unofficial_translation.pdf",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S91",
+      "title": "Sharonline: cliff collapses and the cliff protection plan approved by the local committee",
+      "url": "https://sharonline.co.il/local-news/%D7%94%D7%A6%D7%94%D7%A8%D7%95%D7%AA-%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%95%D7%AA-%D7%95%D7%A2%D7%93%D7%95%D7%AA-%D7%A9%D7%9C%D7%90-%D7%9E%D7%AA%D7%9B%D7%A0%D7%A1%D7%95%D7%AA-%D7%95%D7%91%D7%A9/",
+      "published": "2025-01-09"
+    },
+    {
+      "id": "S92",
+      "title": "Calcalist: Herzliya cliff collapses and NIS 150m funding request",
+      "url": "https://www.calcalist.co.il/local_news/article/b1v9jkfbkx",
+      "published": "2024-12-25"
+    },
+    {
+      "id": "S93",
+      "title": "State Comptroller: follow-up audit on coastal cliff protection (2024)",
+      "url": "https://library.mevaker.gov.il/sites/DigitalLibrary/Documents/2024/Shilton/EN/2024-Shilton-501-Matzok-EN.pdf",
+      "published": "2024-07"
+    },
+    {
+      "id": "S94",
+      "title": "Geological Survey of Israel report GSI/13/2025: coastal cliff collapse monitoring 2023-2024",
+      "url": "https://www.gov.il/BlobFolder/reports/mushkin-et-al-2025/he/report_GSI%2013%202025.pdf",
+      "published": "2025-05"
+    },
+    {
+      "id": "S95",
+      "title": "Mediterranean Coastal Cliffs Protection company: Herzliya Galei Tchelet segment page",
+      "url": "https://www.mccp.co.il/page.php?type=page&id=2560&ht=%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94+%D7%92%D7%9C%D7%99+%D7%AA%D7%9B%D7%9C%D7%AA&bmb=1917",
+      "published": "no date shown; accessed 2026-09-16"
+    },
+    {
+      "id": "S96",
+      "title": "Calcalist: promenade right of way along Galei Tchelet 40",
+      "url": "https://www.calcalist.co.il/real-estate/article/sy1w3sjuh",
+      "published": "2023-06-05"
+    },
+    {
+      "id": "S97",
+      "title": "Nadlan Center: 30-storey tower approved at 103 Medinat HaYehudim St, Herzliya",
+      "url": "https://www.nadlancenter.co.il/article/13926",
+      "published": "2026-02-15"
+    },
+    {
+      "id": "S98",
+      "title": "Nadlan Center: Gav-Yam Science Park plan (Har/Mak/2443), Herzliya",
+      "url": "https://www.nadlancenter.co.il/article/13956",
+      "published": "2026-02-18"
+    },
+    {
+      "id": "S99",
+      "title": "Southwest Quarter plan Har/2200/A, plan instructions",
+      "url": "https://apps.land.gov.il/IturTabotData/takanonim-h/telmer/5050234.pdf",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S100",
+      "title": "Israel Hayom: Tel Aviv light rail Green Line timeline",
+      "url": "https://www.israelhayom.co.il/news/transportation/article/20411489",
+      "published": "2026-04-27"
+    },
+    {
+      "id": "S101",
+      "title": "Wikipedia: Herzliya railway station",
+      "url": "https://en.wikipedia.org/wiki/Herzliya_railway_station",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S102",
+      "title": "Wikipedia: Walworth Barbour American International School",
+      "url": "https://en.wikipedia.org/wiki/Walworth_Barbour_American_International_School",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S103",
+      "title": "Wikipedia: Herzliya Medical Center",
+      "url": "https://en.wikipedia.org/wiki/Herzliya_Medical_Center",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S104",
+      "title": "Wikipedia: Reichman University",
+      "url": "https://en.wikipedia.org/wiki/Reichman_University",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S105",
+      "title": "The Ritz-Carlton, Herzliya: hotel overview (distance to Ben Gurion Airport)",
+      "url": "https://www.ritzcarlton.com/en/hotels/tlvrz-the-ritz-carlton-herzliya/overview/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S106",
+      "title": "Dan Hotels: Dan Accadia Herzliya (drive to Tel Aviv)",
+      "url": "https://www.danhotels.com/HerzliyaHotels/DanAccadiaHerzliyaHotel",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S107",
+      "title": "Israel Nature and Parks Authority: Apollonia National Park (Tel Arsuf)",
+      "url": "https://en.parks.org.il/reserve-park/apollonia-national-park-tel-arsuf/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S108",
+      "title": "Arena Mall Herzliya Marina: official site",
+      "url": "https://www.arenamall.co.il/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S109",
+      "title": "Herzliya education portal: elementary schools list",
+      "url": "https://edu.herzliya.muni.il/%D7%90%D7%AA%D7%A8%D7%99-%D7%91%D7%AA%D7%99-%D7%94%D7%A1%D7%A4%D7%A8-%D7%94%D7%99%D7%A1%D7%95%D7%93%D7%99%D7%99%D7%9D/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S110",
+      "title": "Herzliya education portal: secondary registration zones for 2026-27",
+      "url": "https://edu.herzliya.muni.il/%D7%90%D7%96%D7%95%D7%A8%D7%99-%D7%94%D7%A8%D7%99%D7%A9%D7%95%D7%9D-%D7%91%D7%AA%D7%99-%D7%94%D7%A1%D7%A4%D7%A8-%D7%94%D7%A2%D7%9C-%D7%99%D7%A1%D7%95%D7%93%D7%99%D7%99%D7%9D-%D7%A9%D7%A0%D7%94-%D7%9C-%D7%AA%D7%A9%D7%A4-%D7%96/",
+      "published": "accessed 2026-09-16 by project research; re-check blocked"
+    },
+    {
+      "id": "S111",
+      "title": "Herzliya education portal: Democratic School named after Janusz Korczak moves to Herzliya Pituach",
+      "url": "https://edu.herzliya.muni.il/%D7%9E%D7%A2%D7%91%D7%A8-%D7%91%D7%99%D7%AA-%D7%94%D7%A1%D7%A4%D7%A8-%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99-%D7%A2-%D7%A9-%D7%99%D7%90%D7%A0%D7%95%D7%A9-%D7%A7%D7%95%D7%A8%D7%A6-%D7%90%D7%A7-%D7%9C%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%A4%D7%99%D7%AA%D7%95%D7%97/",
+      "published": "2026-04-26 (page update, per project research; re-check blocked)"
+    },
+    {
+      "id": "S112",
+      "title": "Herzliya education portal: high schools and secondary schools list",
+      "url": "https://edu.herzliya.muni.il/%D7%90%D7%AA%D7%A8%D7%99-%D7%97%D7%98%D7%99%D7%91%D7%95%D7%AA-%D7%95%D7%AA%D7%99%D7%9B%D7%95%D7%A0%D7%99%D7%9D/",
+      "published": "accessed 2026-09-16 by project research"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "4.5 Rooms in a Pool and Spa Complex, Migdalei Ne'eman",
+   "description": "4.5 rooms plus a safe room, about 130 sqm, two parking spaces and storage in a complex with a covered pool, spa and 24/7 guard. NIS 5,900,000.",
+   "inLanguage": "en",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/en/properties/en-migdalei-neeman-4-5-room-apartment-for-sale/",
+   "about": {
+    "@type": "Apartment",
+    "name": "4.5 Rooms in a Pool and Spa Complex, Migdalei Ne'eman",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Tel Aviv-Yafo",
+     "addressRegion": "Tzukei Aviv, Migdalei Ne'eman",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 4.5,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 130,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Covered pool",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Spa",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Gym",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "24/7 guard",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Safe room",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "2 parking spaces",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#Sell",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "Meital Katzir, Real Estate by the Sea",
+     "telephone": "+972523631582"
+    },
+    "price": 5900000
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What is the price per sqm in the complex?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The asking price is about NIS 45,385 per sqm. Appraisers valued typical units in the complex at NIS 45,000 to 50,000 per sqm in 2024, and two 2026 sales of 130 sqm units on the street were recorded at NIS 43,846 and 54,615 per sqm."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How much is the complex fee?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Globes reported about NIS 2,300 a month for a 138 sqm apartment in 2024, including maintenance and use of all facilities. For 130 sqm that is about NIS 2,170 a month if the fee scales with area; ask for the current amount."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How far is the sea?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "According to the broker, about two minutes on foot to the sea and Tzuk beach. A rental listing by another advertiser in the complex says five minutes."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How much purchase tax would a buyer pay?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Under the 2026 brackets: about NIS 190,538 for a single-home buyer, NIS 472,000 for an additional home or a foreign resident, and about NIS 19,606 for an eligible new immigrant."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What will change around the complex?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Ibn Gabirol extension has been paved to the east, with the Green Line planned along it; a design plan for a hotel and residential tower was approved at Tzuk beach; and the open land around the complex is part of plan TA/3700."
+     }
+    }
+   ]
+  }
+ ]
+}

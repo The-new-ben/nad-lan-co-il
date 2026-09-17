@@ -1,0 +1,134 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "אחוזה פרטית של 700 מ״ר על מגרש של 1.1 דונם, הרצליה פיתוח",
+   "description": "אחוזה פרטית בהרצליה פיתוח: כ-700 מ״ר ב-3 מפלסים על מגרש של 1,100 מ״ר, 7 סוויטות, בריכה, קולנוע, חדר כושר, מרתף יין ומעלית. מחיר לפי פנייה.",
+   "inLanguage": "he-IL",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/properties/herzliya-pituach-private-estate-for-sale/",
+   "about": {
+    "@type": "SingleFamilyResidence",
+    "name": "אחוזה פרטית של 700 מ״ר על מגרש של 1.1 דונם, הרצליה פיתוח",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "הרצליה",
+     "addressRegion": "הרצליה פיתוח",
+     "addressCountry": "IL"
+    },
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 700,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "בריכה",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חדר קולנוע",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חדר כושר",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מרתף יין",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מעלית",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "ממ״ד",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חימום תת-רצפתי",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חשמל חכם",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#Sell",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "מיטל קציר, נדל״ן על הים",
+     "telephone": "+972523631582"
+    }
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "מה המחיר?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "המחיר נמסר בפנייה ישירה למשווקת. להתמצאות: חציון המחיר המבוקש ב-15 וילות של 500 עד 900 מ״ר על מגרשים של 1,000 עד 1,200 מ״ר בהרצליה פיתוח הוא 59.2 מיליון ש״ח, ו-77,023 ש״ח למ״ר בנוי."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "כמה מס רכישה ישלם רוכש?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "זה תלוי במחיר ובסוג הרוכש. בתרחיש של 53.9 מיליון ש״ח, למשל: 4,701,825 ש״ח לדירה יחידה, ו-5,270,509 ש״ח לדירה נוספת או לתושב חוץ. עולה חדש אינו זכאי להטבה בנכס ששוויו מעל 20,183,565 ש״ח."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "אפשר לממן במשכנתא?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לפי הוראות בנק ישראל, עד 75% מהשווי לדירה יחידה, 70% לדירה חלופית ו-50% לדירה להשקעה או לרוכש שאינו אזרח ישראלי. הבנקים רשאים להחמיר."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "כמה רחוק הים?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לפי המשווקת במרחק הליכה, וכחמש דקות מכיכר דה שליט. חוף זבולון נמצא כ-750 מ׳ מהכיכר בקו אווירי; המרחק מהמגרש עצמו יימסר עם הכתובת."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "אילו מוסדות חינוך בינלאומיים יש בסביבה?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "בית הספר האמריקאי הבינלאומי WBAIS באבן יהודה, כ-11.7 ק״מ בקו אווירי מכיכר דה שליט, ואוניברסיטת רייכמן בהרצליה, כ-2.9 ק״מ."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "איך מתאמים סיור?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "הסיורים בתיאום מראש בלבד, ישירות מול מיטל קציר."
+     }
+    }
+   ]
+  }
+ ]
+}

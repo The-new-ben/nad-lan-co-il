@@ -1,0 +1,784 @@
+{
+ "L01": {
+  "deal": "sale",
+  "ptype": {
+   "he": "אחוזה",
+   "en": "Estate"
+  },
+  "area": {
+   "he": "הרצליה פיתוח",
+   "en": "Herzliya Pituach"
+  },
+  "title": {
+   "he": "אחוזה פרטית על 1.1 דונם",
+   "en": "A private estate on 1.1 dunam"
+  },
+  "price": null,
+  "per_sqm": null,
+  "specs": [
+   [
+    "area",
+    {
+     "he": "כ-700 מ״ר",
+     "en": "About 700 sqm"
+    }
+   ],
+   [
+    "plot",
+    {
+     "he": "מגרש 1,100 מ״ר",
+     "en": "1,100 sqm plot"
+    }
+   ],
+   [
+    "levels",
+    {
+     "he": "3 מפלסים",
+     "en": "3 levels"
+    }
+   ],
+   [
+    "rooms",
+    {
+     "he": "7 סוויטות",
+     "en": "7 suites"
+    }
+   ]
+  ],
+  "amen": [
+   "pool",
+   "elevator",
+   "mamad",
+   "cinema"
+  ],
+  "hi": {
+   "he": [
+    "סוויטת הורים גדולה במיוחד",
+    "קולנוע, חדר כושר ומרתף יין",
+    "חשמל חכם וחימום תת-רצפתי"
+   ],
+   "en": [
+    "A very large master suite",
+    "Cinema, gym and wine cellar",
+    "Smart electrics and underfloor heating"
+   ]
+  },
+  "entry": {
+   "he": "סיור בתיאום מראש",
+   "en": "Viewing by appointment"
+  },
+  "updated": "2026-09-15",
+  "review": false
+ },
+ "L07": {
+  "deal": "sale",
+  "ptype": {
+   "he": "מיני פנטהאוז",
+   "en": "Mini penthouse"
+  },
+  "area": {
+   "he": "כוכב הצפון",
+   "en": "Kochav HaTzafon"
+  },
+  "title": {
+   "he": "מיני פנטהאוז חדש עם 80 מ״ר מרפסות",
+   "en": "New mini penthouse with 80 sqm of terraces"
+  },
+  "price": 18000000,
+  "per_sqm": 94737,
+  "specs": [
+   [
+    "rooms",
+    {
+     "he": "5 חדרים",
+     "en": "5 rooms"
+    }
+   ],
+   [
+    "area",
+    {
+     "he": "כ-190 מ״ר",
+     "en": "About 190 sqm"
+    }
+   ],
+   [
+    "balcony",
+    {
+     "he": "76 עד 80 מ״ר",
+     "en": "76 to 80 sqm"
+    }
+   ],
+   [
+    "floor",
+    {
+     "he": "קומה 11 מתוך 12",
+     "en": "Floor 11 of 12"
+    }
+   ]
+  ],
+  "amen": [
+   "parking2",
+   "storage",
+   "mamad",
+   "elevator"
+  ],
+  "hi": {
+   "he": [
+    "3 עד 4 כיווני אוויר",
+    "אגף ילדים עם מרפסת לים",
+    "מיזוג רב-מפצלי וחדר כושר בבניין"
+   ],
+   "en": [
+    "3 to 4 exposures",
+    "A children's wing with a sea-facing balcony",
+    "VRF air conditioning and a residents' gym"
+   ]
+  },
+  "entry": {
+   "he": "בניין בוטיק חדש",
+   "en": "New boutique building"
+  },
+  "updated": "2026-08-24",
+  "review": false
+ },
+ "L08": {
+  "deal": "sale",
+  "ptype": {
+   "he": "דירה",
+   "en": "Apartment"
+  },
+  "area": {
+   "he": "מגדלי נאמן, צוקי אביב",
+   "en": "Migdalei Ne'eman, Tzukei Aviv"
+  },
+  "title": {
+   "he": "4.5 חדרים במתחם עם בריכה וספא",
+   "en": "4.5 rooms in a pool and spa complex"
+  },
+  "price": 5900000,
+  "per_sqm": 45385,
+  "specs": [
+   [
+    "rooms",
+    {
+     "he": "4.5 וממ״ד",
+     "en": "4.5 plus safe room"
+    }
+   ],
+   [
+    "area",
+    {
+     "he": "כ-130 מ״ר",
+     "en": "About 130 sqm"
+    }
+   ],
+   [
+    "floor",
+    {
+     "he": "קומה 1 מתוך 8",
+     "en": "Floor 1 of 8"
+    }
+   ],
+   [
+    "exposure",
+    {
+     "he": "3 כיווני אוויר",
+     "en": "3 exposures"
+    }
+   ]
+  ],
+  "amen": [
+   "parking2",
+   "storage",
+   "pool",
+   "guard"
+  ],
+  "hi": {
+   "he": [
+    "בריכה מקורה, ספא וחדר כושר",
+    "מאבטח 24/7 בלובי",
+    "כניסה מיידית"
+   ],
+   "en": [
+    "Covered pool, spa and gym",
+    "24/7 guard in the lobby",
+    "Immediate entry"
+   ]
+  },
+  "entry": {
+   "he": "כניסה מיידית",
+   "en": "Immediate entry"
+  },
+  "updated": "2026-08-28",
+  "review": false
+ },
+ "L05": {
+  "deal": "sale",
+  "ptype": {
+   "he": "דירה",
+   "en": "Apartment"
+  },
+  "area": {
+   "he": "צוקי אביב",
+   "en": "Tzukei Aviv"
+  },
+  "title": {
+   "he": "3.5 חדרים מרוהטת עם שוכר",
+   "en": "Furnished 3.5 rooms with a tenant in place"
+  },
+  "price": 5000000,
+  "per_sqm": 55556,
+  "specs": [
+   [
+    "rooms",
+    {
+     "he": "3.5 חדרים",
+     "en": "3.5 rooms"
+    }
+   ],
+   [
+    "area",
+    {
+     "he": "כ-90 מ״ר",
+     "en": "About 90 sqm"
+    }
+   ],
+   [
+    "balcony",
+    {
+     "he": "מרפסת 12 מ״ר",
+     "en": "12 sqm balcony"
+    }
+   ],
+   [
+    "floor",
+    {
+     "he": "קומה 3 מתוך 9",
+     "en": "Floor 3 of 9"
+    }
+   ]
+  ],
+  "amen": [
+   "parking2",
+   "storage",
+   "gym"
+  ],
+  "hi": {
+   "he": [
+    "מושכרת ב-15,000 ₪ לחודש",
+    "מרוהטת ומאובזרת",
+    "לובי וחדר כושר, ועד בית 600 ₪"
+   ],
+   "en": [
+    "Let at NIS 15,000 a month",
+    "Furnished and equipped",
+    "Lobby and gym, NIS 600 building fee"
+   ]
+  },
+  "entry": {
+   "he": "פינוי גמיש",
+   "en": "Flexible vacating"
+  },
+  "updated": "2026-08-31",
+  "review": false
+ },
+ "L04": {
+  "deal": "sale",
+  "ptype": {
+   "he": "דירה",
+   "en": "Apartment"
+  },
+  "area": {
+   "he": "צוקי אביב",
+   "en": "Tzukei Aviv"
+  },
+  "title": {
+   "he": "3 חדרים עם 2 חניות ומחסן",
+   "en": "Three rooms with two parking spaces"
+  },
+  "price": 4650000,
+  "per_sqm": 51667,
+  "specs": [
+   [
+    "rooms",
+    {
+     "he": "3 חדרים",
+     "en": "3 rooms"
+    }
+   ],
+   [
+    "area",
+    {
+     "he": "כ-90 מ״ר",
+     "en": "About 90 sqm"
+    }
+   ],
+   [
+    "balcony",
+    {
+     "he": "מרפסת 12 מ״ר",
+     "en": "12 sqm balcony"
+    }
+   ],
+   [
+    "floor",
+    {
+     "he": "קומה 2 או 3 מתוך 9",
+     "en": "Floor 2 or 3 of 9"
+    }
+   ]
+  ],
+  "amen": [
+   "parking2",
+   "storage",
+   "mamad",
+   "gym"
+  ],
+  "hi": {
+   "he": [
+    "ממ״ד בתוך הדירה",
+    "מרפסת לנוף פתוח וירוק",
+    "כחמש דקות הליכה לחוף תל ברוך"
+   ],
+   "en": [
+    "Safe room inside the unit",
+    "Balcony facing an open green view",
+    "About five minutes on foot to Tel Baruch beach"
+   ]
+  },
+  "entry": {
+   "he": "מוכנה לכניסה",
+   "en": "Ready to move in"
+  },
+  "updated": "2026-08-26",
+  "review": false
+ },
+ "L06": {
+  "deal": "rent",
+  "ptype": {
+   "he": "מיני פנטהאוז",
+   "en": "Mini penthouse"
+  },
+  "area": {
+   "he": "צוקי אביב",
+   "en": "Tzukei Aviv"
+  },
+  "title": {
+   "he": "מיני פנטהאוז בחלל כפול מול הים",
+   "en": "Double-height mini penthouse facing the sea"
+  },
+  "price": 27000,
+  "per_sqm": 147,
+  "price_note": {
+   "he": "בתשלום מראש ל-12 חודשים",
+   "en": "With 12 months paid upfront"
+  },
+  "specs": [
+   [
+    "rooms",
+    {
+     "he": "5 וממ״ד",
+     "en": "5 plus safe room"
+    }
+   ],
+   [
+    "area",
+    {
+     "he": "כ-184 מ״ר",
+     "en": "About 184 sqm"
+    }
+   ],
+   [
+    "balcony",
+    {
+     "he": "מרפסת 20 מ״ר",
+     "en": "20 sqm balcony"
+    }
+   ],
+   [
+    "floor",
+    {
+     "he": "קומה 8 מתוך 9",
+     "en": "Floor 8 of 9"
+    }
+   ]
+  ],
+  "amen": [
+   "mamad",
+   "gym",
+   "sea"
+  ],
+  "hi": {
+   "he": [
+    "חלל בגובה 6 עד 7 מ׳",
+    "קירות מסך מול הים",
+    "מטבח האקר וחימום תת-רצפתי"
+   ],
+   "en": [
+    "Ceilings of 6 to 7 m",
+    "Curtain walls facing the sea",
+    "Hacker kitchen and underfloor heating"
+   ]
+  },
+  "entry": {
+   "he": "כניסה מיידית",
+   "en": "Immediate entry"
+  },
+  "updated": "2026-08-06",
+  "review": false
+ },
+ "L02": {
+  "deal": "rent",
+  "ptype": {
+   "he": "דירה",
+   "en": "Apartment"
+  },
+  "area": {
+   "he": "ב.ס.ר שרונה",
+   "en": "B.S.R Sarona"
+  },
+  "title": {
+   "he": "4.5 חדרים בעיצוב מעצבת עם מרפסת לים",
+   "en": "Designer 4.5 rooms with a sea-view balcony"
+  },
+  "price": null,
+  "per_sqm": null,
+  "specs": [
+   [
+    "rooms",
+    {
+     "he": "4.5 חדרים",
+     "en": "4.5 rooms"
+    }
+   ],
+   [
+    "area",
+    {
+     "he": "128 מ״ר",
+     "en": "128 sqm"
+    }
+   ],
+   [
+    "balcony",
+    {
+     "he": "מרפסת 14 מ״ר",
+     "en": "14 sqm balcony"
+    }
+   ],
+   [
+    "floor",
+    {
+     "he": "קומה גבוהה",
+     "en": "High floor"
+    }
+   ]
+  ],
+  "amen": [
+   "parking",
+   "storage",
+   "elevator",
+   "guard"
+  ],
+  "hi": {
+   "he": [
+    "תכנון וחומרים של מעצבת מובילה",
+    "מקררים אינטגרליים מוסתרים ופרקט",
+    "חדר כושר ושמירה 24/7"
+   ],
+   "en": [
+    "Planned and specified by a leading designer",
+    "Concealed integrated fridges and parquet",
+    "Residents' gym and 24/7 security"
+   ]
+  },
+  "entry": {
+   "he": "חדשה מהניילונים",
+   "en": "Brand new"
+  },
+  "updated": "2026-09-03",
+  "review": false
+ },
+ "L03": {
+  "deal": "rent",
+  "ptype": {
+   "he": "דירה",
+   "en": "Apartment"
+  },
+  "area": {
+   "he": "ב.ס.ר שרונה",
+   "en": "B.S.R Sarona"
+  },
+  "title": {
+   "he": "5 חדרים בקומה גבוהה עם נוף לים",
+   "en": "Five rooms on a high floor with a sea view"
+  },
+  "price": 15500,
+  "per_sqm": 132,
+  "specs": [
+   [
+    "rooms",
+    {
+     "he": "5 חדרים",
+     "en": "5 rooms"
+    }
+   ],
+   [
+    "area",
+    {
+     "he": "117 מ״ר",
+     "en": "117 sqm"
+    }
+   ],
+   [
+    "balcony",
+    {
+     "he": "מרפסת 14 מ״ר",
+     "en": "14 sqm balcony"
+    }
+   ],
+   [
+    "floor",
+    {
+     "he": "קומה גבוהה",
+     "en": "High floor"
+    }
+   ]
+  ],
+  "amen": [
+   "parking",
+   "storage",
+   "elevator",
+   "sea"
+  ],
+  "hi": {
+   "he": [
+    "נוף פתוח לים ולעיר",
+    "טופס 4 ממרץ 2026",
+    "כ-40 מ׳ לשרונה מרקט"
+   ],
+   "en": [
+    "Open views to the sea and the city",
+    "Occupancy certificate from March 2026",
+    "About 40 m to Sarona Market"
+   ]
+  },
+  "entry": {
+   "he": "כניסה מיידית",
+   "en": "Immediate entry"
+  },
+  "updated": "2026-09-01",
+  "review": false
+ },
+ "L09": {
+  "deal": "rent",
+  "ptype": {
+   "he": "מיני פנטהאוז",
+   "en": "Mini penthouse"
+  },
+  "area": {
+   "he": "נופי ים",
+   "en": "Nofei Yam"
+  },
+  "title": {
+   "he": "מיני פנטהאוז 5 חדרים עם נוף לים",
+   "en": "Five-room mini penthouse with a sea view"
+  },
+  "price": null,
+  "per_sqm": null,
+  "specs": [
+   [
+    "rooms",
+    {
+     "he": "5 חדרים",
+     "en": "5 rooms"
+    }
+   ],
+   [
+    "area",
+    {
+     "he": "135 מ״ר",
+     "en": "135 sqm"
+    }
+   ],
+   [
+    "balcony",
+    {
+     "he": "מרפסת 20 מ״ר",
+     "en": "20 sqm balcony"
+    }
+   ],
+   [
+    "floor",
+    {
+     "he": "קומה גבוהה",
+     "en": "High floor"
+    }
+   ]
+  ],
+  "amen": [
+   "parking2",
+   "storage",
+   "gym",
+   "guard"
+  ],
+  "hi": {
+   "he": [
+    "3 יחידות הורים",
+    "2 חניות עם הכנה לטעינת רכב חשמלי",
+    "תכנון אדריכלי, פרקט ונגרות"
+   ],
+   "en": [
+    "Three master suites",
+    "Two EV-ready parking spaces",
+    "Architect-designed, parquet and carpentry"
+   ]
+  },
+  "entry": {
+   "he": "כניסה גמישה",
+   "en": "Flexible entry"
+  },
+  "updated": "2026-06-17",
+  "review": true
+ },
+ "L10": {
+  "deal": "rent",
+  "ptype": {
+   "he": "דירה",
+   "en": "Apartment"
+  },
+  "area": {
+   "he": "נופי ים",
+   "en": "Nofei Yam"
+  },
+  "title": {
+   "he": "3 חדרים עם מרפסת של 20 מ״ר",
+   "en": "Three rooms with a 20 sqm balcony"
+  },
+  "price": 9500,
+  "per_sqm": 106,
+  "specs": [
+   [
+    "rooms",
+    {
+     "he": "3 חדרים",
+     "en": "3 rooms"
+    }
+   ],
+   [
+    "area",
+    {
+     "he": "כ-90 מ״ר",
+     "en": "About 90 sqm"
+    }
+   ],
+   [
+    "balcony",
+    {
+     "he": "מרפסת 20 מ״ר",
+     "en": "20 sqm balcony"
+    }
+   ],
+   [
+    "floor",
+    {
+     "he": "קומה 5 מתוך 7",
+     "en": "Floor 5 of 7"
+    }
+   ]
+  ],
+  "amen": [
+   "parking2",
+   "storage",
+   "mamad",
+   "elevator"
+  ],
+  "hi": {
+   "he": [
+    "מרפסת מול שטח פתוח",
+    "מחסן גדול ליד החניה",
+    "כחמש דקות הליכה לים"
+   ],
+   "en": [
+    "Balcony facing an open area",
+    "Large storage room by the parking",
+    "About five minutes on foot to the sea"
+   ]
+  },
+  "entry": {
+   "he": "כניסה ב-1.10.2026",
+   "en": "Entry 1 Oct 2026"
+  },
+  "updated": "2026-09-12",
+  "review": false
+ },
+ "L11": {
+  "deal": "rent",
+  "ptype": {
+   "he": "דירה",
+   "en": "Apartment"
+  },
+  "area": {
+   "he": "רמת אביב",
+   "en": "Ramat Aviv"
+  },
+  "title": {
+   "he": "5 חדרים במתחם עם בריכה",
+   "en": "Five rooms in a complex with a pool"
+  },
+  "price": null,
+  "per_sqm": null,
+  "specs": [
+   [
+    "rooms",
+    {
+     "he": "5 חדרים",
+     "en": "5 rooms"
+    }
+   ],
+   [
+    "floor",
+    {
+     "he": "קומה גבוהה",
+     "en": "High floor"
+    }
+   ],
+   [
+    "parking2",
+    {
+     "he": "2 חניות",
+     "en": "2 parking spaces"
+    }
+   ],
+   [
+    "storage",
+    {
+     "he": "מחסן",
+     "en": "Storage"
+    }
+   ]
+  ],
+  "amen": [
+   "pool",
+   "gym",
+   "guard"
+  ],
+  "hi": {
+   "he": [
+    "מתחם עם בריכה, חדר כושר ושומר",
+    "דירה מרווחת ומוארת",
+    "שם המתחם נמסר בפנייה"
+   ],
+   "en": [
+    "A complex with a pool, gym and guard",
+    "Spacious and bright",
+    "Complex name given on request"
+   ]
+  },
+  "entry": {
+   "he": "פרטים בפנייה",
+   "en": "Details on request"
+  },
+  "updated": "2026-08-18",
+  "review": true
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/nadlan_property. Status stays draft. Verify meta keys and term names first (see HANDOFF).",
+ "status": "draft",
+ "title": "3 חדרים עם 2 חניות ומחסן, רחוב אליהו ברלין",
+ "slug": "tzukei-aviv-3-rooms-berlin-for-sale",
+ "content_file": "content-he.html",
+ "excerpt": "3 חדרים, 90 מ״ר ומרפסת 12 מ״ר, 2 חניות, מחסן וממ״ד בבניין בוטיק בצוקי אביב. 4,650,000 ש״ח, עם מס רכישה, עלויות ועסקאות באזור.",
+ "meta": {
+  "listing_type": "sale",
+  "property_type": "apartment",
+  "price": 4650000,
+  "price_per_sqm": 51667,
+  "rooms": 3,
+  "floor": 2,
+  "total_floors": 9,
+  "size_sqm": 90,
+  "balcony_sqm": 12,
+  "parking": true,
+  "elevator": null,
+  "ac": null,
+  "protected_room": true,
+  "storage": true,
+  "condition": "new",
+  "street": "אליהו ברלין",
+  "building_number": "",
+  "lat": null,
+  "lng": null,
+  "city": "תל אביב-יפו",
+  "neighborhood": "צוקי אביב",
+  "arnona_monthly": null,
+  "vaad_bayit_monthly": 600,
+  "status": "active",
+  "photos_csv": ""
+ },
+ "terms": {
+  "nadlan_city": [
+   "תל אביב-יפו"
+  ]
+ },
+ "yoast_meta": {
+  "_yoast_wpseo_title": "דירת 3 חדרים למכירה בצוקי אביב, רחוב אליהו ברלין",
+  "_yoast_wpseo_metadesc": "3 חדרים, 90 מ״ר ומרפסת 12 מ״ר, 2 חניות, מחסן וממ״ד בבניין בוטיק בצוקי אביב. 4,650,000 ש״ח, עם מס רכישה, עלויות ועסקאות באזור.",
+  "_yoast_wpseo_focuskw": "דירת 3 חדרים למכירה בצוקי אביב"
+ },
+ "language": "he",
+ "translation_group": "L04"
+}

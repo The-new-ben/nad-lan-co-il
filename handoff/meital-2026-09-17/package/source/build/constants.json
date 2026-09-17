@@ -1,0 +1,231 @@
+{
+ "as_of": "2026-09-16",
+ "fx": {
+  "usd": 3.049,
+  "eur": 3.5169,
+  "date": "2026-09-15",
+  "src": [
+   "G_FX"
+  ]
+ },
+ "boi": {
+  "rate": 3.25,
+  "prime": 4.75,
+  "decision": "2026-09-01",
+  "src": [
+   "G_BOI_RATE"
+  ]
+ },
+ "ltv": {
+  "single": 0.75,
+  "replacement": 0.7,
+  "investment": 0.5,
+  "src": [
+   "G_LTV"
+  ]
+ },
+ "tax_single": [
+  [
+   1978745,
+   0.0
+  ],
+  [
+   2347040,
+   0.035
+  ],
+  [
+   6055070,
+   0.05
+  ],
+  [
+   20183565,
+   0.08
+  ],
+  [
+   null,
+   0.1
+  ]
+ ],
+ "tax_additional": [
+  [
+   6055070,
+   0.08
+  ],
+  [
+   null,
+   0.1
+  ]
+ ],
+ "tax_oleh": [
+  [
+   1978745,
+   0.0
+  ],
+  [
+   6055070,
+   0.005
+  ],
+  [
+   20183565,
+   0.08
+  ]
+ ],
+ "oleh_cap": 20183565,
+ "tax_src": [
+  "G_TAX_DIR",
+  "G_KZ_TAX",
+  "G_GLOBES_TAX"
+ ],
+ "oleh_src": [
+  "G_KZ_OLEH",
+  "G_NBN_OLEH"
+ ],
+ "fair_rent_cap": 20000,
+ "fair_rent_src": [
+  "G_KZ_FAIR",
+  "G_NC_FAIR",
+  "G_KZ_GUAR"
+ ],
+ "vat": 0.18,
+ "arnona_tlv": {
+  "zone1_upto140": 112.99,
+  "zone1_over140": 139.6,
+  "zone2_upto140": 90.71,
+  "zone2_over140": 108.98,
+  "code": "אא",
+  "src": [
+   "G_KH_TLV",
+   "G_NC_ARNONA",
+   "G_KH_MEASURE"
+  ]
+ },
+ "arnona_herzliya": {
+  "alef": 142.31,
+  "bet_house_over125": 101.57,
+  "vav_house_over125": 93.28,
+  "src": [
+   "G_KH_HRZ"
+  ]
+ },
+ "cbs": {
+  "tlv_district_yoy": -0.9,
+  "tlv_district_2m": 0.7,
+  "rent_new_yoy": 4.4,
+  "rent_renew_yoy": 2.6,
+  "release": "2026-09-15",
+  "src": [
+   "G_CBS_WALLA",
+   "G_CBS_IH"
+  ]
+ },
+ "sources": {
+  "G_FX": {
+   "title": "Bank of Israel, representative exchange rates",
+   "title_he": "בנק ישראל, שערי חליפין יציגים",
+   "url": "https://www.boi.org.il/en/economic-roles/financial-markets/exchange-rates/",
+   "published": "2026-09-15"
+  },
+  "G_BOI_RATE": {
+   "title": "Bank of Israel: Monetary Committee lowers the interest rate to 3.25 percent",
+   "title_he": "בנק ישראל: הוועדה המוניטרית הורידה את הריבית ל-3.25%",
+   "url": "https://www.boi.org.il/en/communication-and-publications/press-releases/01-9-26-en/",
+   "published": "2026-09-01"
+  },
+  "G_LTV": {
+   "title": "Bank of Israel, Proper Conduct of Banking Business Directive 329 (version 12)",
+   "title_he": "בנק ישראל, הוראת ניהול בנקאי תקין 329 (גרסה 12)",
+   "url": "https://www.boi.org.il/media/brep4lzt/329_12.pdf",
+   "published": "2026-02"
+  },
+  "G_TAX_DIR": {
+   "title": "Israel Tax Authority, Real Estate Taxation Directive 1/2025 (brackets, frozen to 15.1.2028)",
+   "title_he": "רשות המסים, הוראת ביצוע מיסוי מקרקעין 1/2025",
+   "url": "https://www.gov.il/BlobFolder/policy/inst-01-2025-3/he/realestate_inst-01-2025-3.pdf",
+   "published": "2025-01-16"
+  },
+  "G_KZ_TAX": {
+   "title": "Kol Zchut: purchase tax calculation",
+   "title_he": "כל זכות: חישוב מס רכישה",
+   "url": "https://www.kolzchut.org.il/he/%D7%97%D7%99%D7%A9%D7%95%D7%91_%D7%9E%D7%A1_%D7%A8%D7%9B%D7%99%D7%A9%D7%94",
+   "published": "2026-08-03"
+  },
+  "G_GLOBES_TAX": {
+   "title": "Globes: what will happen to purchase tax on additional apartments",
+   "title_he": "גלובס: מה יקרה למס הרכישה על דירה נוספת",
+   "url": "https://www.globes.co.il/news/article.aspx?did=1001554581",
+   "published": "2026-09-07"
+  },
+  "G_KZ_OLEH": {
+   "title": "Kol Zchut: purchase tax discount for new immigrants",
+   "title_he": "כל זכות: הנחה במס רכישה לעולים",
+   "url": "https://www.kolzchut.org.il/he/%D7%94%D7%A0%D7%97%D7%94_%D7%91%D7%9E%D7%A1_%D7%A8%D7%9B%D7%99%D7%A9%D7%94_%D7%9C%D7%A2%D7%95%D7%9C%D7%99%D7%9D",
+   "published": "2026-03-31"
+  },
+  "G_NBN_OLEH": {
+   "title": "Nefesh B'Nefesh: planning your aliyah, purchase tax",
+   "title_he": "נפש בנפש: מס רכישה לעולים",
+   "url": "https://www.nbn.org.il/life-in-israel/finances/taxes/planning-your-aliyah-purchase-tax/",
+   "published": "2026-04-15"
+  },
+  "G_KZ_FAIR": {
+   "title": "Kol Zchut: renting an apartment fit for habitation (Fair Rental chapter, scope)",
+   "title_he": "כל זכות: השכרת דירה ראויה למגורים (חוק השכירות ההוגנת)",
+   "url": "https://www.kolzchut.org.il/he/%D7%94%D7%A9%D7%9B%D7%A8%D7%AA_%D7%93%D7%99%D7%A8%D7%94_%D7%A8%D7%90%D7%95%D7%99%D7%94_%D7%9C%D7%9E%D7%92%D7%95%D7%A8%D7%99%D7%9D",
+   "published": "2025-03-02"
+  },
+  "G_NC_FAIR": {
+   "title": "Nadlan Center: Fair Rental Law, complete guide for 2026",
+   "title_he": "נדל״ן סנטר: חוק השכירות ההוגנת, המדריך המלא ל-2026",
+   "url": "https://www.nadlancenter.co.il/article/766",
+   "published": "2026-05-10"
+  },
+  "G_NBN_RENT": {
+   "title": "Nefesh B'Nefesh: renting an apartment in Israel",
+   "title_he": "נפש בנפש: שכירת דירה בישראל",
+   "url": "https://www.nbn.org.il/life-in-israel/community-and-housing/buying-and-renting/renting-in-israel/",
+   "published": "2025-05-07"
+  },
+  "G_KH_TLV": {
+   "title": "Kol HaBayit: Tel Aviv-Yafo arnona rates 2026 (based on the 2026 order)",
+   "title_he": "כל הבית: תעריפי ארנונה בתל אביב-יפו 2026",
+   "url": "https://kolhabait.com/arnona/tel-aviv",
+   "published": "2026-08"
+  },
+  "G_NC_ARNONA": {
+   "title": "Nadlan Center: arnona increases approved for 2026",
+   "title_he": "נדל״ן סנטר: העלאות הארנונה שאושרו ל-2026",
+   "url": "https://www.nadlancenter.co.il/article/13556",
+   "published": "2025-12-28"
+  },
+  "G_KH_HRZ": {
+   "title": "Kol HaBayit: Herzliya arnona rates 2026",
+   "title_he": "כל הבית: תעריפי ארנונה בהרצליה 2026",
+   "url": "https://kolhabait.com/arnona/herzliya",
+   "published": "accessed 2026-09-16"
+  },
+  "G_CBS_WALLA": {
+   "title": "Walla Finance: CBS housing price index and rents, September 2026 release",
+   "title_he": "וואלה כסף: מדד מחירי הדירות והשכירות, פרסום הלמ״ס 15.9.2026",
+   "url": "https://finance.walla.co.il/item/3868023",
+   "published": "2026-09-15"
+  },
+  "G_CBS_IH": {
+   "title": "Israel Hayom: home prices by district, CBS release",
+   "title_he": "ישראל היום: מחירי הדירות לפי מחוזות, פרסום הלמ״ס",
+   "url": "https://www.israelhayom.co.il/business/real-estate/article/21428241",
+   "published": "2026-09-15"
+  },
+  "G_KZ_GUAR": {
+   "title": "Kol Zchut: limit on the security a landlord may demand",
+   "title_he": "כל זכות: הגבלת סכום הערובה שמותר לדרוש משוכר",
+   "url": "https://www.kolzchut.org.il/he/%D7%94%D7%92%D7%91%D7%9C%D7%AA_%D7%A1%D7%9B%D7%95%D7%9D_%D7%94%D7%A2%D7%A8%D7%95%D7%91%D7%94_%D7%A9%D7%9E%D7%95%D7%AA%D7%A8_%D7%9C%D7%93%D7%A8%D7%95%D7%A9_%D7%9E%D7%A9%D7%95%D7%9B%D7%A8_%D7%93%D7%99%D7%A8%D7%94",
+   "published": "2026-08-12"
+  },
+  "G_KH_MEASURE": {
+   "title": "Kol HaBayit: arnona measurement methods by city",
+   "title_he": "כל הבית: שיטות מדידה לארנונה",
+   "url": "https://kolhabait.com/arnona/shitat-medida",
+   "published": "2026"
+  }
+ }
+}

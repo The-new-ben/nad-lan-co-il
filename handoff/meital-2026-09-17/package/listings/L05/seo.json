@@ -1,0 +1,46 @@
+{
+ "he": {
+  "title": "דירת 3.5 חדרים מרוהטת למכירה עם שוכר, צוקי אביב",
+  "title_chars": 47,
+  "metadesc": "3.5 חדרים מרוהטים בבניין בוטיק ברחוב אליהו ברלין, מושכרת ב-15,000 ש״ח לפי המשווקת. 5,000,000 ש״ח, תשואה של 3.6%, מס רכישה ועסקאות.",
+  "metadesc_chars": 130,
+  "focus_keyphrase": "דירה מושכרת למכירה בצוקי אביב",
+  "slug": "tzukei-aviv-3-5-rooms-furnished-tenanted-for-sale",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/properties/tzukei-aviv-3-5-rooms-furnished-tenanted-for-sale/",
+  "hreflang": {
+   "he": "https://nad-lan.co.il/properties/tzukei-aviv-3-5-rooms-furnished-tenanted-for-sale/",
+   "en": "https://nad-lan.co.il/en/properties/en-tzukei-aviv-furnished-3-5-rooms-tenanted-for-sale/",
+   "x-default": "https://nad-lan.co.il/properties/tzukei-aviv-3-5-rooms-furnished-tenanted-for-sale/"
+  },
+  "og_title": "3.5 חדרים מרוהטת עם שוכר, רחוב אליהו ברלין",
+  "og_description": "3.5 חדרים מרוהטים בבניין בוטיק ברחוב אליהו ברלין, מושכרת ב-15,000 ש״ח לפי המשווקת. 5,000,000 ש״ח, תשואה של 3.6%, מס רכישה ועסקאות.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "דירת 3.5 חדרים מרוהטת למכירה עם שוכר, צוקי אביב",
+   "_yoast_wpseo_metadesc": "3.5 חדרים מרוהטים בבניין בוטיק ברחוב אליהו ברלין, מושכרת ב-15,000 ש״ח לפי המשווקת. 5,000,000 ש״ח, תשואה של 3.6%, מס רכישה ועסקאות.",
+   "_yoast_wpseo_focuskw": "דירה מושכרת למכירה בצוקי אביב"
+  }
+ },
+ "en": {
+  "title": "Furnished 3.5-Room Apartment with Tenant, Tzukei Aviv",
+  "title_chars": 53,
+  "metadesc": "Furnished 3.5 rooms in a boutique building on Eliyahu Berlin Street, let at NIS 15,000 per the broker. NIS 5,000,000, 3.6% gross yield, taxes and comps.",
+  "metadesc_chars": 152,
+  "focus_keyphrase": "tenanted apartment for sale Tzukei Aviv",
+  "slug": "en-tzukei-aviv-furnished-3-5-rooms-tenanted-for-sale",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/en/properties/en-tzukei-aviv-furnished-3-5-rooms-tenanted-for-sale/",
+  "hreflang": {
+   "en": "https://nad-lan.co.il/en/properties/en-tzukei-aviv-furnished-3-5-rooms-tenanted-for-sale/",
+   "he": "https://nad-lan.co.il/properties/tzukei-aviv-3-5-rooms-furnished-tenanted-for-sale/",
+   "x-default": "https://nad-lan.co.il/properties/tzukei-aviv-3-5-rooms-furnished-tenanted-for-sale/"
+  },
+  "og_title": "Furnished 3.5 Rooms with a Tenant in Place, Eliyahu Berlin Street",
+  "og_description": "Furnished 3.5 rooms in a boutique building on Eliyahu Berlin Street, let at NIS 15,000 per the broker. NIS 5,000,000, 3.6% gross yield, taxes and comps.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "Furnished 3.5-Room Apartment with Tenant, Tzukei Aviv",
+   "_yoast_wpseo_metadesc": "Furnished 3.5 rooms in a boutique building on Eliyahu Berlin Street, let at NIS 15,000 per the broker. NIS 5,000,000, 3.6% gross yield, taxes and comps.",
+   "_yoast_wpseo_focuskw": "tenanted apartment for sale Tzukei Aviv"
+  }
+ }
+}

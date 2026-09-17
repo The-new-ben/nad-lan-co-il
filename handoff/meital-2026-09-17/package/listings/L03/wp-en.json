@@ -1,0 +1,47 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/nadlan_property. Status stays draft. Verify meta keys and term names first (see HANDOFF).",
+ "status": "draft",
+ "title": "Five Rooms on a High Floor with a Sea View, B.S.R Sarona",
+ "slug": "en-bsr-sarona-5-room-sea-view-apartment-for-rent",
+ "content_file": "content-en.html",
+ "excerpt": "Five rooms, 117 sqm plus a 14 sqm balcony on a high floor with open sea views, parking and storage, immediate entry. NIS 15,500 a month with costs and comps.",
+ "meta": {
+  "listing_type": "rent",
+  "property_type": "apartment",
+  "price": 15500,
+  "price_per_sqm": null,
+  "rooms": 5,
+  "floor": null,
+  "total_floors": null,
+  "size_sqm": 117,
+  "balcony_sqm": 14,
+  "parking": true,
+  "elevator": true,
+  "ac": true,
+  "protected_room": null,
+  "storage": true,
+  "condition": "new",
+  "street": "ארניה אוסוולדו",
+  "building_number": "",
+  "lat": null,
+  "lng": null,
+  "city": "Tel Aviv-Yafo",
+  "neighborhood": "Sarona",
+  "arnona_monthly": null,
+  "vaad_bayit_monthly": null,
+  "status": "active",
+  "photos_csv": ""
+ },
+ "terms": {
+  "nadlan_city": [
+   "Tel Aviv-Yafo"
+  ]
+ },
+ "yoast_meta": {
+  "_yoast_wpseo_title": "5-Room Sea-View Apartment for Rent, B.S.R Sarona Tel Aviv",
+  "_yoast_wpseo_metadesc": "Five rooms, 117 sqm plus a 14 sqm balcony on a high floor with open sea views, parking and storage, immediate entry. NIS 15,500 a month with costs and comps.",
+  "_yoast_wpseo_focuskw": "apartment for rent Sarona Tel Aviv sea view"
+ },
+ "language": "en",
+ "translation_group": "L03"
+}

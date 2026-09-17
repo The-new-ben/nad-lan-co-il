@@ -1,0 +1,113 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "3.5 חדרים מרוהטת עם שוכר, רחוב אליהו ברלין",
+   "description": "3.5 חדרים מרוהטים בבניין בוטיק ברחוב אליהו ברלין, מושכרת ב-15,000 ש״ח לפי המשווקת. 5,000,000 ש״ח, תשואה של 3.6%, מס רכישה ועסקאות.",
+   "inLanguage": "he-IL",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/properties/tzukei-aviv-3-5-rooms-furnished-tenanted-for-sale/",
+   "about": {
+    "@type": "Apartment",
+    "name": "3.5 חדרים מרוהטת עם שוכר, רחוב אליהו ברלין",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "תל אביב-יפו",
+     "addressRegion": "צוקי אביב",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 3.5,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 90,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "ממ״ד",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "2 חניות",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מחסן",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חדר כושר",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "לובי",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#Sell",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "מיטל קציר, נדל״ן על הים",
+     "telephone": "+972523631582"
+    },
+    "price": 5000000
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "מה התשואה על הדירה?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לפי השכירות שדיווחה המשווקת, 15,000 ש״ח לחודש, התשואה ברוטו היא 3.60% על 5,000,000 ש״ח. אם המשכיר משלם את דמי הניהול היא 3.46%, ובמסלול מס של 10% על השכירות 3.24%."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "האם אפשר לקבל את הדירה פנויה?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "בנובמבר 2025 ציינה המשווקת פינוי גמיש. את תאריך סיום החוזה ואת עמדת השוכר יש לקבל בכתב לפני הצעה."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "מה כולל הריהוט?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לפי המשווקת הדירה מרוהטת ומאובזרת, כולל כלי מטבח ומגבות. כדאי לצרף לחוזה רשימת ציוד ומצב, ולבדוק עם עורך דין כיצד מטפלים בשווי הריהוט בדיווח לרשות המסים."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "כמה מס רכישה ישלם רוכש משקיע?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "רוכש דירה נוספת או תושב חוץ ישלם כ-400,000 ש״ח (8%). רוכש דירה יחידה ישלם כ-145,538 ש״ח, ועולה חדש זכאי כ-15,106 ש״ח."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "מה ההבדל מול דירת 3 החדרים באותו בניין?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "באותו בניין מוצעת גם דירת 3 חדרים לא מרוהטת ב-4,650,000 ש״ח. ההפרש, 350,000 ש״ח, משקף ריהוט, שכירות קיימת וחצי חדר נוסף לפי תיאור המשווקת."
+     }
+    }
+   ]
+  }
+ ]
+}

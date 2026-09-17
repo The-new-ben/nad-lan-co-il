@@ -1,0 +1,113 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "3 חדרים עם 2 חניות ומחסן, רחוב אליהו ברלין",
+   "description": "3 חדרים, 90 מ״ר ומרפסת 12 מ״ר, 2 חניות, מחסן וממ״ד בבניין בוטיק בצוקי אביב. 4,650,000 ש״ח, עם מס רכישה, עלויות ועסקאות באזור.",
+   "inLanguage": "he-IL",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/properties/tzukei-aviv-3-rooms-berlin-for-sale/",
+   "about": {
+    "@type": "Apartment",
+    "name": "3 חדרים עם 2 חניות ומחסן, רחוב אליהו ברלין",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "תל אביב-יפו",
+     "addressRegion": "צוקי אביב",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 3,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 90,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "ממ״ד",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "2 חניות",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מחסן",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חדר כושר",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "לובי",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#Sell",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "מיטל קציר, נדל״ן על הים",
+     "telephone": "+972523631582"
+    },
+    "price": 4650000
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "כמה עולה המ״ר בדירה לעומת השכונה?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "על 90 מ״ר בנוי המחיר המבוקש הוא כ-51,667 ש״ח למ״ר. החציון בצוקי אביב היה כ-49,000 ש״ח למ״ר באוגוסט 2026, ועסקאות 3 חדרים ברחובות הסמוכים נרשמו ב-2025 וב-2026 בין 48,734 ל-52,632 ש״ח למ״ר, בבניינים ותיקים יותר."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "האם יש מהדירה נוף לים?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "המשווקת מתארת מרפסת הפונה לנוף פתוח וירוק, ומציגה את הבניין כבניין ראשון לים. השטח שבין השכונה לים כלול בתכנית תא/3700, ומתכנן שצוטט בגלובס תיאר בה בנייה של שמונה קומות לכל היותר. כדאי לבדוק מה מתוכנן ממערב לבניין לפני שמייחסים ערך לנוף."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "כמה מס רכישה ישלם רוכש?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לפי מדרגות 2026: כ-128,038 ש״ח לרוכש דירה יחידה, 372,000 ש״ח לרוכש דירה נוספת או לתושב חוץ, וכ-13,356 ש״ח לעולה חדש זכאי. אין בכך ייעוץ מס."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "מה העלויות החודשיות?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "דמי ניהול של 600 ש״ח לחודש לפי המשווקת. הארנונה לא פורסמה; לפי תעריפי 2026 לבניין חדש ההערכה היא כ-771 עד 960 ש״ח לחודש, לפי אזור הארנונה."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "מתי אפשר להיכנס?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "הדירה מוכנה לכניסה, ובמודעות מופיע מועד כניסה גמיש."
+     }
+    }
+   ]
+  }
+ ]
+}

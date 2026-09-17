@@ -1,0 +1,1413 @@
+{
+  "id": "L08",
+  "identification": {
+    "summary_en": "Migdalei Ne'eman, Michael Ne'eman St, north Tel Aviv. The broker's own Madlan listing for this unit gives the address as Michael Ne'eman 22, floor 1 of an 8-floor building, at an asking price of NIS 5,900,000, and its text names Migdalei Ne'eman. Madlan files the street under Glilot, while the complex's management company places it in Tzukei Aviv next to Tzuk beach. Which phase and developer built No. 22, and when, is not verified.",
+    "summary_he": "מגדלי נאמן, רחוב מיכאל נאמן, צפון תל אביב. מודעת המתווכת עצמה במדלן לנכס זה מציינת את הכתובת מיכאל נאמן 22, קומה 1 בבניין בן 8 קומות, במחיר מבוקש של 5,900,000 ש״ח, ובטקסט המודעה מופיע השם מגדלי נאמן. מדלן משייך את הרחוב לשכונת גלילות, ואילו חברת הניהול של המתחם ממקמת אותו בצוקי אביב, סמוך לחוף הצוק. איזה שלב ואיזה יזם בנו את בניין מספר 22, ומתי, לא אומת.",
+    "address_or_project_en": "Migdalei Ne'eman, Michael Ne'eman 22, Tel Aviv (house number per the broker's Madlan listing)",
+    "address_or_project_he": "מגדלי נאמן, רחוב מיכאל נאמן 22, תל אביב (מספר הבית לפי מודעת המתווכת במדלן)",
+    "confidence": "likely",
+    "evidence": [
+      "Madlan listing ursJzZcmnWm (agent Meital Katzir, license 3131540, exclusive): Michael Ne'eman 22, Glilot; 4.5 rooms; floor 1 of 8; 130 sqm; separate mamad; 2 parking spaces; storage; 3 exposures; condition well kept; immediate entry; NIS 5,900,000 (NIS 45,385 per sqm).",
+      "The Madlan description repeats the Instagram captions: 2 minutes from the sea with a private-resort feel, for sale in Migdalei Ne'eman, 4.5 rooms, about 130 sqm, separate mamad inside the unit, first floor facing a quiet green view, pool, spa, gym, lawns and 24/7 concierge.",
+      "Other brokers' listings place Migdalei Ne'eman units at Michael Ne'eman 18, 20 and 23, so No. 22 fits the complex's street range.",
+      "The listing's 8-floor figure for No. 22 differs from the 11-14 floor buildings described for the complex by developers, Globes and the management company; the complex may include lower buildings (a listing at No. 20 shows 3 floors), but this is not verified.",
+      "Complex scale: 330 apartments in seven buildings, occupied in stages from 2000 to 2015 (Globes 2024); the management company also cites seven buildings and 330 units.",
+      "Confidence is likely rather than verified because the house number, floor and building height come only from the broker's listing."
+    ],
+    "source_ids": [
+      "S1",
+      "S43",
+      "S44",
+      "S20",
+      "S22",
+      "S26",
+      "S3",
+      "S4",
+      "S10",
+      "S6",
+      "S7",
+      "S8"
+    ]
+  },
+  "cross_listings": [
+    {
+      "what_en": "Madlan listing posted by Meital Katzir (license 3131540): exclusive 4.5-room apartment for sale in Migdalei Ne'eman",
+      "url": "https://www.madlan.co.il/listings/ursJzZcmnWm",
+      "date": "2026-09-16 (accessed; posting date not shown)",
+      "price_nis": 5900000,
+      "details_en": "Michael Ne'eman 22 (neighborhood shown as Glilot); floor 1 of 8; 130 sqm; 4.5 rooms; separate mamad; 2 parking spaces; storage; elevator; 3 exposures; 2 bathrooms and 3 toilets in the feature list; condition well kept; immediate entry; NIS 45,385 per sqm. The building fields also read 'on pillars: yes' (automated read).",
+      "same_unit_evidence_en": "Same agent and license as the Instagram reels. The description matches the captions (4.5 rooms, about 130 sqm, separate mamad in the unit, quiet green view, pool, spa, gym, lawns, 24/7 concierge, 2 minutes from the sea) and adds the floor, the house number and the price.",
+      "confidence": "likely"
+    }
+  ],
+  "building_facts": [
+    {
+      "label_en": "Asking price",
+      "label_he": "מחיר מבוקש",
+      "value_en": "NIS 5,900,000",
+      "value_he": "5,900,000 ש״ח",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1"
+      ],
+      "note_en": "Likely: the broker's own Madlan listing, one source; the Instagram reels give no price. An asking price, not a transaction."
+    },
+    {
+      "label_en": "Price per sqm",
+      "label_he": "מחיר למ״ר",
+      "value_en": "NIS 45,385",
+      "value_he": "45,385 ש״ח",
+      "basis": "computed",
+      "confidence": "likely",
+      "source_ids": [
+        "S1"
+      ],
+      "note_en": "5,900,000 / 130 sqm; same figure as Madlan. Likely because it rests on broker figures."
+    },
+    {
+      "label_en": "Asking price in US dollars",
+      "label_he": "המחיר המבוקש בדולרים",
+      "value_en": "About USD 1.94 million",
+      "value_he": "כ-1.94 מיליון דולר",
+      "basis": "computed",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S37"
+      ],
+      "note_en": "5,900,000 / 3.0490 (Bank of Israel representative rate, 2026-09-15) = USD 1,935,061. Rests on the broker's price."
+    },
+    {
+      "label_en": "Unit",
+      "label_he": "הדירה",
+      "value_en": "4.5 rooms plus a separate mamad inside the unit, about 130 sqm",
+      "value_he": "4.5 חדרים וממ״ד נפרד בתוך הדירה, כ-130 מ״ר",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S43",
+        "S44",
+        "S1"
+      ],
+      "note_en": "Likely: consistent across the reels and the Madlan listing, but broker-stated only. Registered and arnona areas not seen."
+    },
+    {
+      "label_en": "Floor and outlook",
+      "label_he": "קומה ונוף",
+      "value_en": "Floor 1 of 8, facing landscaped gardens (green, quiet view)",
+      "value_he": "קומה 1 מתוך 8, פונה לגינות מטופחות (נוף ירוק ושקט)",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S43"
+      ],
+      "note_en": "Likely: broker-stated. The floor appears only on the Madlan listing; the reels say only that the unit faces the gardens."
+    },
+    {
+      "label_en": "Parking and storage",
+      "label_he": "חניה ומחסן",
+      "value_en": "2 parking spaces; storage room",
+      "value_he": "2 חניות; מחסן",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S43",
+        "S1"
+      ],
+      "note_en": "Likely: broker-stated in both the reels and the listing; registration not seen."
+    },
+    {
+      "label_en": "Condition and entry",
+      "label_he": "מצב ומועד כניסה",
+      "value_en": "Well kept; immediate entry",
+      "value_he": "שמורה; כניסה מיידית",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1"
+      ],
+      "note_en": "Likely: Madlan listing fields only (broker-entered)."
+    },
+    {
+      "label_en": "Building of the unit",
+      "label_he": "הבניין שבו הדירה",
+      "value_en": "Michael Ne'eman 22, listed as 8 floors",
+      "value_he": "מיכאל נאמן 22, 8 קומות לפי המודעה",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S1"
+      ],
+      "note_en": "Broker-entered listing field; developer, phase and year not found."
+    },
+    {
+      "label_en": "Complex size",
+      "label_he": "היקף המתחם",
+      "value_en": "330 apartments in 7 buildings",
+      "value_he": "330 דירות ב-7 בניינים",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S3",
+        "S10",
+        "S11"
+      ],
+      "note_en": "project-tlv mentions 12 buildings and Hightower's page also mentions 4 buildings of 14 floors, so building counts vary by phase definition."
+    },
+    {
+      "label_en": "Occupancy years",
+      "label_he": "שנות אכלוס",
+      "value_en": "Occupied in stages from 2000 to 2015",
+      "value_he": "אוכלס בשלבים בין 2000 ל-2015",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S3",
+        "S18",
+        "S21"
+      ],
+      "note_en": "Likely: one reputable source for the 2000-2015 span (Globes 2024). Madlan deal rows on the street show buildings dated 2000 and 2005, and one listing gives 2003."
+    },
+    {
+      "label_en": "Developers and phases",
+      "label_he": "יזמים ושלבים",
+      "value_en": "Built in phases by several developers: Azorim; Yossi Avrahami (phase B at Michael Ne'eman 4: 3 buildings of 12-13 floors with 125 units, contractor Danya Cebus; and the 41-unit Ne'eman VIP phase); Hagag Group (1 building of 12 floors with 46 units); Acro (a 13-floor tower with 45 apartments)",
+      "value_he": "נבנה בשלבים על ידי כמה יזמים: אזורים; יוסי אברהמי (שלב ב׳ במיכאל נאמן 4: 3 בניינים בני 12 עד 13 קומות עם 125 דירות, קבלן דניה סיבוס; ושלב נאמן VIP עם 41 דירות); קבוצת חגג (בניין אחד בן 12 קומות עם 46 דירות); אקרו (מגדל בן 13 קומות עם 45 דירות)",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S11",
+        "S6",
+        "S9",
+        "S7",
+        "S8"
+      ],
+      "note_en": "Likely: each phase figure comes from a single developer, broker or portal page. Which developer built No. 22, and in which year, is not verified."
+    },
+    {
+      "label_en": "Architect",
+      "label_he": "אדריכל",
+      "value_en": "Canaan Shenhav Architects",
+      "value_he": "כנען שנהב אדריכלים",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S6",
+        "S8",
+        "S11"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Facades",
+      "label_he": "חזיתות",
+      "value_en": "Colorful mosaics by the artist Yaacov Agam",
+      "value_he": "פסיפסים צבעוניים של האמן יעקב אגם",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S10",
+        "S3"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Typical unit sizes",
+      "label_he": "גודל דירות אופייני",
+      "value_en": "Units of about 125-138 sqm with 4-5 rooms recur across several buildings (11- and 12-floor buildings; buildings dated 2000 and 2005)",
+      "value_he": "דירות של כ-125 עד 138 מ״ר עם 4 עד 5 חדרים חוזרות בכמה בניינים (בני 11 ו-12 קומות; בניינים משנת 2000 ומשנת 2005)",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S4",
+        "S3",
+        "S18",
+        "S21"
+      ],
+      "note_en": "Shows the 130 sqm size class is common in the complex; the exact layout at No. 22 is not confirmed."
+    },
+    {
+      "label_en": "Pool, gym and security (2024)",
+      "label_he": "בריכה, חדר כושר ואבטחה (2024)",
+      "value_en": "Covered pool open all year from 06:00 to midnight; equipped gym; lobby guard 24/7; active synagogue; car-wash station",
+      "value_he": "בריכה מקורה הפתוחה כל השנה משש בבוקר עד חצות; חדר כושר מאובזר; שומר בלובי 24/7; בית כנסת פעיל; עמדת שטיפת רכבים",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S3"
+      ],
+      "note_en": "Likely: one reputable source, dated 2024; 2026 hours not verified."
+    },
+    {
+      "label_en": "Spa",
+      "label_he": "ספא",
+      "value_en": "Spa with an indoor pool, sauna and jacuzzi; round-the-clock security",
+      "value_he": "ספא עם בריכה מקורה, סאונה וג׳קוזי; אבטחה מסביב לשעון",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S8",
+        "S10"
+      ],
+      "note_en": "Acro lists the spa facilities; Hightower lists pool and spa management among its services at the complex."
+    },
+    {
+      "label_en": "Concierge",
+      "label_he": "קונסיירז׳",
+      "value_en": "24/7 concierge advertised by Sotheby's (2023) and by the broker; Globes (2024) describes a 24/7 lobby guard",
+      "value_he": "שירות קונסיירז׳ 24/7 מפורסם אצל סותביס (2023) ואצל המתווכת; גלובס (2024) מתאר שומר בלובי 24/7",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S12",
+        "S3",
+        "S8",
+        "S1"
+      ],
+      "note_en": "Likely: round-the-clock lobby staffing or security is confirmed by Globes and Acro, but the scope of concierge service is not."
+    },
+    {
+      "label_en": "Other facilities (2026 rental listing)",
+      "label_he": "מתקנים נוספים (מודעת השכרה, 2026)",
+      "value_en": "Sports club, covered semi-Olympic pool, toddler pool and children's playground",
+      "value_he": "מועדון ספורט, בריכה חצי אולימפית מקורה, בריכת פעוטות וגינת שעשועים",
+      "basis": "source",
+      "confidence": "unverified",
+      "source_ids": [
+        "S26"
+      ],
+      "note_en": "From another broker's rental listing in the complex; not independently confirmed."
+    },
+    {
+      "label_en": "Management company",
+      "label_he": "חברת ניהול",
+      "value_en": "Hightower: complex management, pool and spa, gym and lobby",
+      "value_he": "הייטאואר: ניהול המתחם, הבריכה והספא, חדר הכושר והלובי",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S10"
+      ],
+      "note_en": "Likely: the company's own page, one source."
+    }
+  ],
+  "neighborhood_facts": [
+    {
+      "label_en": "Neighborhood name",
+      "label_he": "שיוך שכונתי",
+      "value_en": "Madlan files Michael Ne'eman St under Glilot; the management company places the complex in Tzukei Aviv next to Tzuk beach; project-tlv files it under the Glilot compound",
+      "value_he": "מדלן משייך את רחוב מיכאל נאמן לגלילות; חברת הניהול ממקמת את המתחם בצוקי אביב סמוך לחוף הצוק; project-tlv משייך אותו למתחם גלילות",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S19",
+        "S10",
+        "S11"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Tzukei Aviv boundaries",
+      "label_he": "גבולות צוקי אביב",
+      "value_en": "Unitzman St or the Glilot compound (north), Namir Rd (east), Propes St (south), the sea (west)",
+      "value_he": "רחוב יוניצמן או מתחם גלילות (צפון), דרך נמיר (מזרח), רחוב פרופס (דרום), הים (מערב)",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S45",
+        "S46"
+      ],
+      "note_en": "The two sources differ only on the northern edge."
+    },
+    {
+      "label_en": "Location",
+      "label_he": "מיקום",
+      "value_en": "Near Tzuk beach, Namir Rd and the Herzliya border",
+      "value_he": "סמוך לחוף הצוק, לדרך נמיר ולגבול הרצליה",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S28"
+      ],
+      "note_en": "Likely: one reputable source describing the neighborhood."
+    },
+    {
+      "label_en": "Coastal park promenade",
+      "label_he": "טיילת פארק החוף",
+      "value_en": "Opened in September 2023: about 2 km along the cliff from Tel Baruch beach to Tzuk beach, with a 2 km bike path, inside a nature park on the coastal kurkar ridge",
+      "value_he": "נפתחה בספטמבר 2023: כ-2 ק״מ לאורך המצוק מחוף תל ברוך לחוף הצוק, עם שביל אופניים של 2 ק״מ, בתוך פארק טבע על רכס הכורכר",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S31",
+        "S32",
+        "S33"
+      ],
+      "note_en": "Globes gives the park as 400 dunams and Walla as 500."
+    },
+    {
+      "label_en": "Tzuk beach",
+      "label_he": "חוף הצוק",
+      "value_en": "Described as the neighborhood's main anchor and a favorite beach for children from north Tel Aviv",
+      "value_he": "מתואר כעוגן המרכזי של השכונה וכחוף אהוב על ילדי צפון תל אביב",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S45"
+      ],
+      "note_en": "Likely: one source, dated 2018."
+    },
+    {
+      "label_en": "Nearby luxury complex",
+      "label_he": "מתחם יוקרה סמוך",
+      "value_en": "Sea and Sun at Herzl Rosenblum 4-10, designed by Uri Zerubavel and built in the 1990s",
+      "value_he": "סי אנד סאן ברחוב הרצל רוזנבלום 4-10, בתכנון אורי זרובבל, נבנה בשנות ה-90",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S48",
+        "S16",
+        "S18"
+      ],
+      "note_en": "Madlan deal rows give building years of 1994-1995 at Herzl Rosenblum 4 and 8."
+    },
+    {
+      "label_en": "Socioeconomic rating",
+      "label_he": "דירוג חברתי-כלכלי",
+      "value_en": "9 out of 10 on Madlan's index (Glilot)",
+      "value_he": "9 מתוך 10 במדד של מדלן (גלילות)",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S19"
+      ],
+      "note_en": "Likely: Madlan only."
+    }
+  ],
+  "distances": [
+    {
+      "to_en": "The sea and Tzuk beach",
+      "to_he": "הים וחוף הצוק",
+      "value_en": "about 2 minutes on foot (broker)",
+      "value_he": "כ-2 דקות הליכה (לפי המתווכת)",
+      "basis": "broker",
+      "source_ids": [
+        "S43",
+        "S44",
+        "S1",
+        "S26",
+        "S3"
+      ],
+      "note_en": "Not measured. Another broker's 2026 rental listing in the complex (Michael Ne'eman 23) says 5 minutes' walk to the sea, and Globes (2024) says within walking distance."
+    },
+    {
+      "to_en": "Ibn Gabirol extension (planned main street)",
+      "to_he": "המשך ציר אבן גבירול (רחוב ראשי מתוכנן)",
+      "value_en": "adjacent, on the east side of the complex",
+      "value_he": "צמוד, בצד המזרחי של המתחם",
+      "basis": "source",
+      "source_ids": [
+        "S3"
+      ],
+      "note_en": "Globes (2024): the continuation of the Ibn Gabirol axis is planned east of and adjacent to the complex as a main street."
+    },
+    {
+      "to_en": "Sea and Sun complex (Herzl Rosenblum 4-8)",
+      "to_he": "מתחם סי אנד סאן (הרצל רוזנבלום 4-8)",
+      "value_en": "about 300 to 410 m (Madlan distance figures)",
+      "value_he": "כ-300 עד 410 מ׳ (לפי נתוני המרחק במדלן)",
+      "basis": "source",
+      "source_ids": [
+        "S18",
+        "S39",
+        "S16"
+      ],
+      "note_en": "Madlan's deal tables show 301-306 m from Michael Ne'eman 4 and 406-409 m from Michael Ne'eman 2 (automated read; Madlan does not state how it measures). The Tzuk beach hotel and tower site borders Herzl Rosenblum St and the Sea and Sun complex (Ynet 2021), so the planned site is in the same area."
+    },
+    {
+      "to_en": "Tel Baruch beach",
+      "to_he": "חוף תל ברוך",
+      "value_en": "about 2 km south of Tzuk beach along the promenade; not measured from the complex",
+      "value_he": "כ-2 ק״מ דרומית לחוף הצוק לאורך הטיילת; לא נמדד מהמתחם",
+      "basis": "source",
+      "source_ids": [
+        "S31",
+        "S32"
+      ],
+      "note_en": "Based on the length of the coastal park promenade between the two beaches."
+    }
+  ],
+  "schools": [
+    {
+      "name_en": "Nathan Alterman High School",
+      "name_he": "תיכון נתן אלתרמן",
+      "level_en": "Secondary (7-12)",
+      "level_he": "חטיבת ביניים ותיכון (ז-יב)",
+      "note_en": "In Tzukei Aviv; about 251 pupils per grade per Madlan; its building won the Rokach architecture prize in 2015; registration zone and walking distance not verified",
+      "note_he": "בצוקי אביב; כ-251 תלמידים בשכבה לפי מדלן; המבנה זכה בפרס רוקח לאדריכלות ב-2015; אזור הרישום ומרחק ההליכה לא אומתו",
+      "source_ids": [
+        "S29",
+        "S30"
+      ]
+    },
+    {
+      "name_en": "Nofei Yam Elementary School",
+      "name_he": "בית הספר היסודי נופי ים",
+      "level_en": "Elementary (1-6)",
+      "level_he": "יסודי (א-ו)",
+      "note_en": "Listed as nearby on Madlan's Tzukei Aviv page, about 91 pupils per grade; registration zone and distance not verified",
+      "note_he": "מופיע כבית ספר סמוך בעמוד צוקי אביב במדלן, כ-91 תלמידים בשכבה; אזור הרישום והמרחק לא אומתו",
+      "source_ids": [
+        "S29"
+      ]
+    }
+  ],
+  "transport": [
+    {
+      "item_en": "Green Line light rail through the plan 3700 area",
+      "item_he": "הקו הירוק של הרכבת הקלה בשטח תכנית 3700",
+      "status_en": "under construction; southern section expected 2028 and full line 2030; planned along the new Rokach-Herzliya road (Ibn Gabirol extension); Globes reported light rail works on site next to the complex in 2024; nearest station not verified",
+      "status_he": "בביצוע; הקטע הדרומי צפוי ב-2028 והקו המלא ב-2030; מתוכנן לאורך הדרך החדשה מרוקח להרצליה (המשך אבן גבירול); גלובס דיווח ב-2024 על עבודות הרכבת הקלה בשטח ליד המתחם; התחנה הקרובה לא אומתה",
+      "source_ids": [
+        "S34",
+        "S33",
+        "S3"
+      ]
+    },
+    {
+      "item_en": "Ibn Gabirol extension road (about 5 km from Rokach to Herzliya)",
+      "item_he": "המשך דרך אבן גבירול (כ-5 ק״מ מרוקח להרצליה)",
+      "status_en": "the section beside the complex was described as recently paved in 2024; completion of the full road not verified",
+      "status_he": "הקטע הסמוך למתחם תואר ב-2024 כסלול לאחרונה; השלמת הדרך כולה לא אומתה",
+      "source_ids": [
+        "S33",
+        "S3"
+      ]
+    },
+    {
+      "item_en": "Namir Road",
+      "item_he": "דרך נמיר",
+      "status_en": "operating; forms the eastern edge of Tzukei Aviv; distance from the complex not measured",
+      "status_he": "פעילה; הגבול המזרחי של צוקי אביב; המרחק מהמתחם לא נמדד",
+      "source_ids": [
+        "S45",
+        "S28"
+      ]
+    },
+    {
+      "item_en": "Coastal park bike path",
+      "item_he": "שביל האופניים בפארק החוף",
+      "status_en": "operating since 2023; 2 km along the cliff",
+      "status_he": "פעיל מ-2023; 2 ק״מ לאורך המצוק",
+      "source_ids": [
+        "S31"
+      ]
+    }
+  ],
+  "planning_future": [
+    {
+      "item_en": "Ibn Gabirol extension and light rail beside the complex",
+      "item_he": "המשך אבן גבירול והרכבת הקלה בצמוד למתחם",
+      "impact_en": "Globes (2024) says the complex will be exposed to the recently paved Ibn Gabirol street, which is expected to block the open view, alongside a busy main road and light rail works. Expect traffic noise and lost open views on the east side; check this building's exposure.",
+      "impact_he": "לפי גלובס (2024) המתחם ייחשף לרחוב אבן גבירול שנסלל לאחרונה, שצפוי לחסום את הנוף הפתוח, לצד רחוב ראשי סואן ועבודות הרכבת הקלה. צפויים רעש תנועה ואובדן נוף פתוח בצד המזרחי; יש לבדוק את כיווני הבניין הספציפי.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "item_en": "Plan TA/3700, the north-west quarter",
+      "item_he": "תכנית תא/3700, רובע צפון מערב",
+      "impact_en": "11,000-13,000 units, 1,500 hotel rooms and about 215,000 sqm of employment and commerce on about 1,900 dunams between Sde Dov and the Herzliya border, around the complex. Approved in 2015 but stuck in 2024 over revised rights tables; about 70% of the land is privately owned. Compound 4 runs from Shimon Samet St to Unitzman St and compound 5 from Unitzman St to Glilot. Timing is uncertain and works could last many years.",
+      "impact_he": "11,000 עד 13,000 יחידות דיור, 1,500 חדרי מלון וכ-215,000 מ״ר תעסוקה ומסחר על כ-1,900 דונם בין שדה דב לגבול הרצליה, סביב המתחם. התכנית אושרה ב-2015 אך נתקעה ב-2024 בשל תיקון טבלאות האיזון; כ-70% מהקרקע בבעלות פרטית. מתחם 4 משתרע מרחוב שמעון סאמט עד רחוב יוניצמן ומתחם 5 מיוניצמן עד גלילות. לוחות הזמנים אינם ודאיים והעבודות עשויות להימשך שנים רבות.",
+      "source_ids": [
+        "S14",
+        "S15",
+        "S3"
+      ]
+    },
+    {
+      "item_en": "Residents' compensation claim over plan 3700",
+      "item_he": "תביעת הפיצויים של הדיירים בגין תכנית 3700",
+      "impact_en": "Migdalei Ne'eman residents sought about NIS 71 million for loss of value, citing noise, air pollution, damage to views and proximity to a commercial center. The Tel Aviv district appeals committee (chair Adv. Eyal Iluz) rejected three appeals, found no damage proven and ordered NIS 60,000 in costs (NIS 20,000 per appeal). Buyers should not price in compensation for future view loss.",
+      "impact_he": "דיירי מגדלי נאמן דרשו כ-71 מיליון ש״ח בגין ירידת ערך, בטענה לרעש, זיהום אוויר, פגיעה בנוף וקרבה למרכז מסחרי. ועדת הערר המחוזית בתל אביב (בראשות עו״ד אייל אילוז) דחתה שלושה עררים, קבעה שלא הוכח נזק וחייבה את העוררים ב-60,000 ש״ח הוצאות (20,000 ש״ח לכל ערר). אין להניח קבלת פיצוי על פגיעה עתידית בנוף.",
+      "source_ids": [
+        "S13"
+      ]
+    },
+    {
+      "item_en": "Tzuk beach hotel and residential tower",
+      "item_he": "מלון ומגדל מגורים בחוף הצוק",
+      "impact_en": "A 14-floor tower with 116 apartments and a hotel of at least 198 rooms (3 floors in the 2025 design; 3-5 floors in the 2021 plan) on about 16-20 dunams between Shimon Samet St, Herzl Rosenblum St and the Sea and Sun complex, less than 100 m from the sea. Developers: an Ashtrom group company and the Reality fund. District committee approval in 2021; the local committee approved the design on 2025-05-28, with the hotel to be completed before residential occupancy and 30 public parking spaces. Start of works not found.",
+      "impact_he": "מגדל בן 14 קומות עם 116 דירות ומלון של 198 חדרים לפחות (3 קומות בתכנית העיצוב מ-2025; 3 עד 5 קומות בתכנית מ-2021) על כ-16 עד 20 דונם בין רחוב שמעון סאמט, רחוב הרצל רוזנבלום ומתחם סי אנד סאן, פחות מ-100 מ׳ מהים. יזמים: חברה מקבוצת אשטרום וקרן ריאליטי. אישור הוועדה המחוזית ב-2021; הוועדה המקומית אישרה את תכנית העיצוב ב-28.5.2025, בתנאי שהמלון יושלם לפני אכלוס המגורים ועם 30 חניות ציבוריות. מועד תחילת העבודות לא נמצא.",
+      "source_ids": [
+        "S16",
+        "S17"
+      ]
+    },
+    {
+      "item_en": "Coastal park",
+      "item_he": "פארק החוף",
+      "impact_en": "First phase (promenade, bike path, landscape restoration and lighting) cost NIS 75 million and opened in 2023; further phases planned. Keeps the cliff front public and open.",
+      "impact_he": "השלב הראשון (טיילת, שביל אופניים, שיקום נופי ותאורה) עלה 75 מיליון ש״ח ונפתח ב-2023; שלבים נוספים מתוכננים. שומר על חזית המצוק כשטח ציבורי פתוח.",
+      "source_ids": [
+        "S33",
+        "S31"
+      ]
+    }
+  ],
+  "market_stats": [
+    {
+      "metric_en": "Median price per sqm, Tzukei Aviv",
+      "metric_he": "מחיר חציוני למ״ר, צוקי אביב",
+      "value_en": "About NIS 49,000, down from about NIS 54,600 in 2024 (about 10-12% in two years)",
+      "value_he": "כ-49,000 ש״ח, לעומת כ-54,600 ש״ח ב-2024 (ירידה של כ-10% עד 12% בשנתיים)",
+      "as_of": "2026-08",
+      "source_ids": [
+        "S28"
+      ]
+    },
+    {
+      "metric_en": "Gross rental yield, Tzukei Aviv",
+      "metric_he": "תשואה ברוטו, צוקי אביב",
+      "value_en": "About 2.4%-2.7% a year",
+      "value_he": "כ-2.4% עד 2.7% בשנה",
+      "as_of": "2026-08",
+      "source_ids": [
+        "S28"
+      ]
+    },
+    {
+      "metric_en": "Asking rents, Tzukei Aviv",
+      "metric_he": "שכר דירה מבוקש, צוקי אביב",
+      "value_en": "4 rooms about NIS 9,500-10,500 a month; 5 rooms about NIS 15,000",
+      "value_he": "4 חדרים כ-9,500 עד 10,500 ש״ח לחודש; 5 חדרים כ-15,000 ש״ח",
+      "as_of": "2026-08",
+      "source_ids": [
+        "S28"
+      ]
+    },
+    {
+      "metric_en": "Sde Dov supply",
+      "metric_he": "היצע בשדה דב",
+      "value_en": "About 16,000 apartments marketed at about NIS 60,000-90,000 per sqm, expected to restrain price growth in Tzukei Aviv",
+      "value_he": "כ-16,000 דירות המשווקות בכ-60,000 עד 90,000 ש״ח למ״ר, שצפויות לבלום עליות מחירים בצוקי אביב",
+      "as_of": "2026-08",
+      "source_ids": [
+        "S28"
+      ]
+    },
+    {
+      "metric_en": "Madlan averages, Glilot",
+      "metric_he": "ממוצעים במדלן, גלילות",
+      "value_en": "Purchase NIS 4,950,000; rent NIS 11,500 a month",
+      "value_he": "רכישה 4,950,000 ש״ח; שכירות 11,500 ש״ח לחודש",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S19"
+      ]
+    },
+    {
+      "metric_en": "Appraisers' value range in the complex (2024)",
+      "metric_he": "טווח שווי לפי שמאים במתחם (2024)",
+      "value_en": "NIS 45,000-50,000 per sqm for typical units; a 138 sqm unit needing renovation sold at about NIS 40,000",
+      "value_he": "45,000 עד 50,000 ש״ח למ״ר לדירות טיפוסיות; דירה של 138 מ״ר שדרשה שיפוץ נמכרה בכ-40,000 ש״ח למ״ר",
+      "as_of": "2024-10",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "metric_en": "Recorded 2026 deals on Michael Ne'eman St (Madlan)",
+      "metric_he": "עסקאות 2026 ברחוב מיכאל נאמן (מדלן)",
+      "value_en": "NIS 43,846 and NIS 54,615 per sqm on two 130 sqm units",
+      "value_he": "43,846 ש״ח ו-54,615 ש״ח למ״ר בשתי דירות של 130 מ״ר",
+      "as_of": "2026-03",
+      "source_ids": [
+        "S18",
+        "S19"
+      ]
+    },
+    {
+      "metric_en": "Current asking prices in the complex",
+      "metric_he": "מחירים מבוקשים כיום במתחם",
+      "value_en": "NIS 45,385-58,333 per sqm across six listings of 105-218 sqm, including this unit (computed)",
+      "value_he": "45,385 עד 58,333 ש״ח למ״ר בשש מודעות של 105 עד 218 מ״ר, כולל הנכס (חישוב)",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S1",
+        "S20",
+        "S21",
+        "S22",
+        "S23",
+        "S24"
+      ]
+    },
+    {
+      "metric_en": "This unit against the 2024 appraisers' range",
+      "metric_he": "הנכס ביחס לטווח השמאים מ-2024",
+      "value_en": "NIS 45,385 per sqm sits at the bottom of the NIS 45,000-50,000 range and at the low end of current asking prices in the complex (computed)",
+      "value_he": "45,385 ש״ח למ״ר, בתחתית הטווח של 45,000 עד 50,000 ש״ח ובקצה הנמוך של המחירים המבוקשים כיום במתחם (חישוב)",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S1",
+        "S3"
+      ]
+    },
+    {
+      "metric_en": "Implied gross yield for this unit",
+      "metric_he": "תשואה ברוטו משתמעת לנכס",
+      "value_en": "About 2.5%-2.7% at NIS 5.9 million if let at NIS 12,500-13,500 a month, the asking rents of comparable units nearby (computed: rent x 12 / 5,900,000)",
+      "value_he": "כ-2.5% עד 2.7% במחיר 5.9 מיליון ש״ח בהשכרה של 12,500 עד 13,500 ש״ח לחודש, שכר הדירה המבוקש בדירות דומות בסביבה (חישוב: שכירות x 12 / 5,900,000)",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S1",
+        "S26",
+        "S27"
+      ]
+    },
+    {
+      "metric_en": "CBS price index, Tel Aviv district",
+      "metric_he": "מדד מחירי הדירות של הלמ״ס, מחוז תל אביב",
+      "value_en": "+0.7% in June-July 2026; -0.9% year on year",
+      "value_he": "עלייה של 0.7% ביוני-יולי 2026; ירידה של 0.9% בשנה",
+      "as_of": "2026-07",
+      "source_ids": [
+        "S38"
+      ]
+    },
+    {
+      "metric_en": "CBS resale price index, Tel Aviv",
+      "metric_he": "מדד מחירי דירות יד שנייה של הלמ״ס, תל אביב",
+      "value_en": "-2.0% in Q2 2026 against Q1",
+      "value_he": "ירידה של 2.0% ברבעון השני של 2026 לעומת הרבעון הראשון",
+      "as_of": "2026-06",
+      "source_ids": [
+        "S47"
+      ]
+    }
+  ],
+  "sale_comps": [
+    {
+      "date": "2026-03-31",
+      "where_en": "Michael Ne'eman St, Migdalei Ne'eman (house number read as 2)",
+      "where_he": "רחוב מיכאל נאמן, מגדלי נאמן (מספר הבית נקרא כ-2)",
+      "rooms": "5",
+      "sqm": 130,
+      "floor": 6,
+      "price_nis": 5700000,
+      "price_per_sqm_nis": 43846,
+      "kind": "transaction",
+      "source_ids": [
+        "S18",
+        "S19"
+      ],
+      "note_en": "Madlan building year 2005. Rooms and floor read as 5 and 6 in most automated reads; the house number was also read as 26 on one page. Verify on nadlan.gov.il."
+    },
+    {
+      "date": "2026-02-03",
+      "where_en": "Michael Ne'eman St, Migdalei Ne'eman (house number read as 2)",
+      "where_he": "רחוב מיכאל נאמן, מגדלי נאמן (מספר הבית נקרא כ-2)",
+      "rooms": "4",
+      "sqm": 130,
+      "floor": 10,
+      "price_nis": 7100000,
+      "price_per_sqm_nis": 54615,
+      "kind": "transaction",
+      "source_ids": [
+        "S18",
+        "S19"
+      ],
+      "note_en": "Madlan building year 2000. Floor read as 10 in most reads; the house number was also read as 22 on one page. Verify on nadlan.gov.il."
+    },
+    {
+      "date": "2026-02-03",
+      "where_en": "Address withheld by Madlan ('deal in the area'), about 84-132 m from Michael Ne'eman 2, 4 and 22",
+      "where_he": "כתובת לא מוצגת במדלן (עסקה באזור), כ-84 עד 132 מ׳ ממיכאל נאמן 2, 4 ו-22",
+      "rooms": "4",
+      "sqm": 122,
+      "floor": 8,
+      "price_nis": 5100000,
+      "price_per_sqm_nis": 41803,
+      "kind": "transaction",
+      "source_ids": [
+        "S18",
+        "S39",
+        "S40"
+      ],
+      "note_en": "Madlan building year 2004. May be inside the complex; not confirmed."
+    },
+    {
+      "date": "2024-10 (reported 2024-10-27)",
+      "where_en": "Migdalei Ne'eman",
+      "where_he": "מגדלי נאמן",
+      "rooms": "5",
+      "sqm": 138,
+      "floor": 5,
+      "price_nis": 5450000,
+      "price_per_sqm_nis": 39493,
+      "kind": "transaction",
+      "source_ids": [
+        "S3"
+      ],
+      "note_en": "Floor 5 of 12; 20 sqm north-east balcony without sea view; 2 parking spaces and storage; needed about NIS 500,000 of renovation. Outside the 2025-2026 window, kept as the latest press-reported deal in the complex. Price per sqm computed (Globes: about NIS 40,000)."
+    },
+    {
+      "date": "2026-07-01",
+      "where_en": "Herzl Rosenblum 4, Sea and Sun (nearby complex)",
+      "where_he": "הרצל רוזנבלום 4, סי אנד סאן (מתחם סמוך)",
+      "rooms": "4",
+      "sqm": 107,
+      "floor": 8,
+      "price_nis": 4950000,
+      "price_per_sqm_nis": 46261,
+      "kind": "transaction",
+      "source_ids": [
+        "S18",
+        "S19"
+      ],
+      "note_en": "Madlan building year 1994. Not in Migdalei Ne'eman; nearby benchmark."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Michael Ne'eman 18, Migdalei Ne'eman",
+      "where_he": "מיכאל נאמן 18, מגדלי נאמן",
+      "rooms": "4",
+      "sqm": 131,
+      "floor": 13,
+      "price_nis": 6000000,
+      "price_per_sqm_nis": 45802,
+      "kind": "asking",
+      "source_ids": [
+        "S20",
+        "S2"
+      ],
+      "note_en": "Open sea view per the listing; 12 sqm balcony; 6 sqm storage; parking. The listing card showed floor 10."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Michael Ne'eman St",
+      "where_he": "רחוב מיכאל נאמן",
+      "rooms": "5",
+      "sqm": 138,
+      "floor": 9,
+      "price_nis": 7950000,
+      "price_per_sqm_nis": 57609,
+      "kind": "asking",
+      "source_ids": [
+        "S21"
+      ],
+      "note_en": "5 rooms plus mamad converted to 3 plus mamad (reversible); floor 9 of 11; 138 sqm per arnona; balconies of 12 and 4 sqm; renovated; 2 parking; open sea view from every room; building year 2003 per the listing."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Michael Ne'eman 20, Migdalei Ne'eman",
+      "where_he": "מיכאל נאמן 20, מגדלי נאמן",
+      "rooms": "4",
+      "sqm": 105,
+      "floor": 1,
+      "price_nis": 5400000,
+      "price_per_sqm_nis": 51429,
+      "kind": "asking",
+      "source_ids": [
+        "S22"
+      ],
+      "note_en": "Floor 1 of 3 per the listing; 18 sqm of west-facing balconies; renovated."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Michael Ne'eman 8: mini penthouse",
+      "where_he": "מיכאל נאמן 8: מיני פנטהאוז",
+      "rooms": "4.5",
+      "sqm": 120,
+      "floor": 1,
+      "price_nis": 7000000,
+      "price_per_sqm_nis": 58333,
+      "kind": "asking",
+      "source_ids": [
+        "S23"
+      ],
+      "note_en": "Originally 5 rooms; floor 1 of 12; large terrace off the living room (80 sqm per the listing); 2 parking spaces and storage."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Migdalei Ne'eman, Michael Ne'eman St: large apartment",
+      "where_he": "מגדלי נאמן, רחוב מיכאל נאמן: דירה גדולה",
+      "rooms": "4.5",
+      "sqm": 218,
+      "floor": null,
+      "price_nis": 10490000,
+      "price_per_sqm_nis": 48119,
+      "kind": "asking",
+      "source_ids": [
+        "S24",
+        "S2"
+      ],
+      "note_en": "Full sea frontage; west balconies of 73 and 11 sqm; 2 parking spaces, 2 storage rooms; renovated. Floor read as 2 of 11 on the listing and 4 on the card."
+    }
+  ],
+  "rent_comps": [
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Michael Ne'eman 23, Migdalei Ne'eman",
+      "where_he": "מיכאל נאמן 23, מגדלי נאמן",
+      "rooms": "4",
+      "sqm": 125,
+      "rent_nis": 12500,
+      "rent_per_sqm_nis": 100.0,
+      "kind": "asking",
+      "source_ids": [
+        "S26",
+        "S25"
+      ],
+      "note_en": "Floor 4 of 12; plus 11 sqm balcony; unfurnished; 2 parking spaces, storage, mamad; flexible entry."
+    },
+    {
+      "date": "2026-09-16 (accessed)",
+      "where_en": "Blue Towers, Penina Zaltsman 10 (nearby complex)",
+      "where_he": "מגדלי בלו, פנינה זלצמן 10 (מתחם סמוך)",
+      "rooms": "4.5",
+      "sqm": 130,
+      "rent_nis": 13500,
+      "rent_per_sqm_nis": 103.8,
+      "kind": "asking",
+      "source_ids": [
+        "S27",
+        "S25"
+      ],
+      "note_en": "Floor 3 of 12; plus 12 sqm balcony; 2 parking spaces and storage; building with 24/7 guard, gym, pool and tennis court."
+    },
+    {
+      "date": "2026-08 (reported 2026-08-06)",
+      "where_en": "Tzukei Aviv, neighborhood level",
+      "where_he": "צוקי אביב, רמה שכונתית",
+      "rooms": "5",
+      "sqm": null,
+      "rent_nis": 15000,
+      "rent_per_sqm_nis": null,
+      "kind": "reported",
+      "source_ids": [
+        "S28"
+      ],
+      "note_en": "About NIS 15,000 a month for 5 rooms; special properties above NIS 20,000; no size given."
+    }
+  ],
+  "costs": [
+    {
+      "item_en": "Asking price",
+      "item_he": "מחיר מבוקש",
+      "value_en": "NIS 5,900,000",
+      "value_he": "5,900,000 ש״ח",
+      "basis": "broker",
+      "source_ids": [
+        "S1"
+      ],
+      "note_en": "From the broker's Madlan listing."
+    },
+    {
+      "item_en": "Building management fee",
+      "item_he": "דמי ניהול",
+      "value_en": "About NIS 2,300 per month (2024, for a 138 sqm apartment)",
+      "value_he": "כ-2,300 ש״ח לחודש (2024, לדירה של 138 מ״ר)",
+      "basis": "source",
+      "source_ids": [
+        "S3",
+        "S4",
+        "S5"
+      ],
+      "note_en": "Globes: covers maintenance and use of all facilities. Earlier levels: NIS 1,900 a month for a 125 sqm apartment (2018) and NIS 12 per sqm including the sports center (2017). The 2026 fee for this unit is not stated."
+    },
+    {
+      "item_en": "Management fee estimate for 130 sqm",
+      "item_he": "הערכת דמי ניהול ל-130 מ״ר",
+      "value_en": "About NIS 2,170 per month",
+      "value_he": "כ-2,170 ש״ח לחודש",
+      "basis": "computed",
+      "source_ids": [
+        "S3"
+      ],
+      "note_en": "2,300 / 138 sqm x 130 sqm, assuming the fee scales with area. Not a quote."
+    },
+    {
+      "item_en": "Purchase tax, single apartment of an Israeli resident",
+      "item_he": "מס רכישה, דירה יחידה לתושב ישראל",
+      "value_en": "About NIS 190,538 (3.23%)",
+      "value_he": "כ-190,538 ש״ח (3.23%)",
+      "basis": "computed",
+      "source_ids": [
+        "S35",
+        "S1"
+      ],
+      "note_en": "0% to NIS 1,978,745; 3.5% to 2,347,040; 5% above, up to 6,055,070. Computed on NIS 5,900,000. Not tax advice."
+    },
+    {
+      "item_en": "Purchase tax, additional apartment or foreign resident",
+      "item_he": "מס רכישה, דירה נוספת או תושב חוץ",
+      "value_en": "About NIS 472,000 (8%)",
+      "value_he": "כ-472,000 ש״ח (8%)",
+      "basis": "computed",
+      "source_ids": [
+        "S35",
+        "S41",
+        "S1"
+      ],
+      "note_en": "8% up to NIS 6,055,070. The investor-rate temporary order runs to the end of 2026, with an automatic extension into February 2027 because of the election period (Globes)."
+    },
+    {
+      "item_en": "Arnona, illustration",
+      "item_he": "ארנונה, המחשה",
+      "value_en": "About NIS 11,800-14,700 per year on 130 sqm",
+      "value_he": "כ-11,800 עד 14,700 ש״ח בשנה על 130 מ״ר",
+      "basis": "computed",
+      "source_ids": [
+        "S36"
+      ],
+      "note_en": "2026 residential rates for units up to 140 sqm, building code אא: zone 1 NIS 112.99 and zone 2 NIS 90.71 per sqm per year (secondary source). Older buildings may fall under lower codes; the zone and code for this address are not verified."
+    }
+  ],
+  "risks": [
+    {
+      "en": "Ibn Gabirol extension and light rail: Globes (2024) reports a busy main street already paved beside the complex and light rail works on site, and expects the street to block the open view. Globes tied the roughly 10% below-value price of a 2024 sale partly to this and partly to renovation needs.",
+      "he": "המשך אבן גבירול והרכבת הקלה: גלובס (2024) מדווח על רחוב ראשי סואן שכבר נסלל ליד המתחם ועל עבודות הרכבת הקלה בשטח, וצופה שהרחוב יחסום את הנוף הפתוח. גלובס קשר לכך, לצד הצורך בשיפוץ, מחיר נמוך בכ-10% מהשווי בעסקה מ-2024.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "en": "Plan 3700: thousands of units, hotels and offices are planned around the complex with uncertain timing, and residents' claims for loss of value over noise, air pollution and views were rejected in January 2026.",
+      "he": "תכנית 3700: אלפי יחידות דיור, מלונות ומשרדים מתוכננים סביב המתחם בלוחות זמנים לא ודאיים, ותביעות הדיירים לפיצוי על ירידת ערך בשל רעש, זיהום אוויר ופגיעה בנוף נדחו בינואר 2026.",
+      "source_ids": [
+        "S14",
+        "S13"
+      ]
+    },
+    {
+      "en": "Tzuk beach hotel and 14-floor tower: design approved in May 2025 on a site beside the Sea and Sun complex; construction would bring several years of works nearby.",
+      "he": "המלון והמגדל בן 14 הקומות בחוף הצוק: תכנית העיצוב אושרה במאי 2025 באתר הסמוך למתחם סי אנד סאן; הבנייה צפויה להביא כמה שנים של עבודות בסביבה.",
+      "source_ids": [
+        "S17",
+        "S16"
+      ]
+    },
+    {
+      "en": "Ageing buildings and shared facilities: the complex was occupied between 2000 and 2015, and the 2024 sale needed about NIS 500,000 of renovation.",
+      "he": "בניינים ומתקנים משותפים מתיישנים: המתחם אוכלס בין 2000 ל-2015, והדירה שנמכרה ב-2024 דרשה שיפוץ בהיקף של כ-500,000 ש״ח.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "en": "Running costs: a management fee of about NIS 2,300 a month (2024) equals about 17-18% of the NIS 12,500-13,500 monthly asking rents of comparable units (computed: 2,300 / 13,500 and 2,300 / 12,500), a material addition to monthly holding or occupancy costs.",
+      "he": "הוצאות שוטפות: דמי ניהול של כ-2,300 ש״ח לחודש (2024) שווים לכ-17% עד 18% משכר הדירה המבוקש בדירות דומות, 12,500 עד 13,500 ש״ח לחודש (חישוב: 2,300 חלקי 13,500 ו-2,300 חלקי 12,500), תוספת משמעותית לעלות החודשית של החזקת הנכס או המגורים בו.",
+      "source_ids": [
+        "S3",
+        "S26",
+        "S27"
+      ]
+    },
+    {
+      "en": "Local prices: Tzukei Aviv's median price per sqm fell about 10-12% in two years, and about 16,000 Sde Dov apartments are expected to restrain price growth.",
+      "he": "מחירים מקומיים: המחיר החציוני למ״ר בצוקי אביב ירד בכ-10% עד 12% בשנתיים, וכ-16,000 דירות בשדה דב צפויות לבלום עליות מחירים.",
+      "source_ids": [
+        "S28"
+      ]
+    },
+    {
+      "en": "Data quality: rooms, floors and house numbers in Madlan's 2026 deal rows were read inconsistently, and the 8-floor height given for No. 22 does not match the 11-14 floor buildings described for the complex.",
+      "he": "איכות נתונים: מספרי החדרים, הקומות והבתים בשורות העסקאות של 2026 במדלן נקראו באופן לא עקבי, וגובה 8 הקומות שצוין לבניין מספר 22 אינו תואם את הבניינים בני 11 עד 14 הקומות שתוארו במתחם.",
+      "source_ids": [
+        "S18",
+        "S19",
+        "S1",
+        "S3",
+        "S4",
+        "S6",
+        "S7",
+        "S8",
+        "S10"
+      ]
+    },
+    {
+      "en": "Financing: banks may lend up to 75% of value for a single apartment, 70% for a replacement apartment and 50% for an investment property, the category that covers buyers who are not Israeli citizens under the directive's definitions.",
+      "he": "מימון: הבנקים רשאים להלוות עד 75% מהשווי לדירה יחידה, 70% לדירה חלופית ו-50% לדירה להשקעה, הקטגוריה שחלה לפי הגדרות ההוראה גם על רוכש שאינו אזרח ישראלי.",
+      "source_ids": [
+        "S42"
+      ]
+    }
+  ],
+  "buyer_or_renter_questions": [
+    {
+      "en": "Which building and phase is No. 22, who built it and when was it occupied? Is the unit registered in the Land Registry as part of the condominium?",
+      "he": "איזה בניין ושלב הוא מספר 22, מי בנה אותו ומתי אוכלס? האם הדירה רשומה בטאבו כחלק מהבית המשותף?"
+    },
+    {
+      "en": "Is floor 1 above a pillar level or at garden level? Does the unit have a balcony or garden rights, and how private is it from the lawns and pool area?",
+      "he": "האם קומה 1 נמצאת מעל קומת עמודים או בגובה הגינה? האם יש לדירה מרפסת או זכויות בגינה, ועד כמה היא מוגנת מבחינת פרטיות מהמדשאות ומאזור הבריכה?"
+    },
+    {
+      "en": "What is the current monthly management fee for this unit, what does it cover (pool, spa, concierge, gym), and are any special levies planned?",
+      "he": "מהם דמי הניהול החודשיים כיום לדירה זו, מה הם כוללים (בריכה, ספא, קונסיירז׳, חדר כושר), והאם מתוכננים היטלים מיוחדים?"
+    },
+    {
+      "en": "What are the annual arnona and the registered and arnona areas, compared with the advertised 130 sqm?",
+      "he": "מהי הארנונה השנתית ומהם השטח הרשום ושטח הארנונה, בהשוואה ל-130 מ״ר שפורסמו?"
+    },
+    {
+      "en": "Are the 2 parking spaces and the storage room registered or attached to the unit?",
+      "he": "האם 2 החניות והמחסן רשומים או צמודים לדירה?"
+    },
+    {
+      "en": "What condition are the kitchen, bathrooms and building systems in (the listing says well kept), and what renovation budget is realistic?",
+      "he": "מה מצב המטבח, חדרי הרחצה והמערכות (במודעה נכתב שמורה), ואיזה תקציב שיפוץ סביר?"
+    },
+    {
+      "en": "How will the Ibn Gabirol extension, the light rail and plan 3700 construction affect noise and views for this building and floor?",
+      "he": "כיצד ישפיעו המשך אבן גבירול, הרכבת הקלה והבנייה בתכנית 3700 על הרעש והנוף בבניין ובקומה הזו?"
+    },
+    {
+      "en": "When is construction of the Tzuk beach hotel and tower expected to start?",
+      "he": "מתי צפויה להתחיל הבנייה של המלון והמגדל בחוף הצוק?"
+    },
+    {
+      "en": "Can the seller provide the nadlan.gov.il record of 2025-2026 deals in the complex, including the NIS 5.7 million and NIS 7.1 million sales of 130 sqm units?",
+      "he": "האם המוכר יכול להציג את נתוני העסקאות מאתר nadlan.gov.il במתחם בשנים 2025 עד 2026, כולל המכירות של דירות 130 מ״ר ב-5.7 מיליון ש״ח וב-7.1 מיליון ש״ח?"
+    },
+    {
+      "en": "Are the pool and spa hours, the 24/7 concierge and the gym operating as advertised today?",
+      "he": "האם שעות הבריכה והספא, שירות הקונסיירז׳ 24/7 וחדר הכושר פועלים היום כפי שפורסם?"
+    },
+    {
+      "en": "Which schools serve the address under municipal registration zones, and how far is the walk to Alterman High School and Nofei Yam Elementary?",
+      "he": "לאילו בתי ספר משויכת הכתובת לפי אזורי הרישום של העירייה, ומה מרחק ההליכה לתיכון אלתרמן ולבית הספר היסודי נופי ים?"
+    }
+  ],
+  "gaps": [
+    {
+      "en": "Phase, developer, completion year and floor count of Michael Ne'eman 22 not verified.",
+      "he": "השלב, היזם, שנת הסיום ומספר הקומות של מיכאל נאמן 22 לא אומתו."
+    },
+    {
+      "en": "2025 transactions in the complex not retrieved: Madlan shows only the latest nearby rows and nadlan.gov.il was unavailable. Rooms, floors and house numbers of the 2026 rows need checking.",
+      "he": "עסקאות 2025 במתחם לא אותרו: מדלן מציג רק את השורות האחרונות בסביבה ואתר nadlan.gov.il לא היה זמין. יש לבדוק את מספרי החדרים, הקומות והבתים בשורות 2026."
+    },
+    {
+      "en": "2026 management fee, pool and spa hours and the concierge service not confirmed.",
+      "he": "דמי הניהול ב-2026, שעות הבריכה והספא ושירות הקונסיירז׳ לא אומתו."
+    },
+    {
+      "en": "No measured distances to Tzuk beach, Tel Baruch beach, the promenade, Alterman High School, Nofei Yam Elementary, Glilot or Namir Rd: no coordinate source could be reached.",
+      "he": "לא נמדדו מרחקים לחוף הצוק, לחוף תל ברוך, לטיילת, לתיכון אלתרמן, לבית הספר נופי ים, לגלילות או לדרך נמיר: לא נמצא מקור קואורדינטות נגיש."
+    },
+    {
+      "en": "Which plan 3700 compound borders the complex, and the heights allowed there, not checked on mavat.",
+      "he": "איזה מתחם של תכנית 3700 גובל במתחם, ומהם הגבהים המותרים בו, לא נבדק באתר מבא״ת."
+    },
+    {
+      "en": "Start date for the Tzuk beach hotel and tower not found.",
+      "he": "מועד תחילת הבנייה של המלון והמגדל בחוף הצוק לא נמצא."
+    },
+    {
+      "en": "Arnona zone and building code, and school registration zones, not verified.",
+      "he": "אזור הארנונה וסיווג המבנה, ואזורי הרישום לבתי הספר, לא אומתו."
+    }
+  ],
+  "access_notes": [
+    "The session's web search quota was already used up (200 of 200), so no new web searches were run. Research relied on known URLs, links followed from them and portal listing pages.",
+    "Madlan pages were read through an automated text extractor. Listing cards and single listings read consistently, but transaction tables mixed columns (rooms, floor, house number) and some reads produced impossible values; only figures that were internally consistent (price = sqm x price per sqm) and repeated across reads are used, flagged for checking on nadlan.gov.il.",
+    "Madlan's address pages show only the latest nearby transactions; older pages of results could not be opened.",
+    "One attempt to download a Madlan page directly returned HTTP 403; no other method was tried.",
+    "nominatim.openstreetmap.org and overpass-api.de were disallowed by robots rules and wikidata.org was cache-only, so no sourced coordinates were available and no straight-line distances were computed.",
+    "Carried over from the existing research: nadlan.gov.il returned no data (JavaScript only), tel-aviv.gov.il returned HTTP 472 (including the comptroller report on plan 3700), mavat.iplan.gov.il was not reached, Wikipedia was blocked and TheMarker was blocked by robots rules."
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Madlan listing: 4.5-room apartment for sale, Michael Ne'eman 22, Migdalei Ne'eman (agent Meital Katzir, license 3131540)",
+      "url": "https://www.madlan.co.il/listings/ursJzZcmnWm",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S2",
+      "title": "Madlan: apartments for sale in Glilot (listing cards, incl. Michael Ne'eman St)",
+      "url": "https://www.madlan.co.il/for-sale/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%92%D7%9C%D7%99%D7%9C%D7%95%D7%AA-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S3",
+      "title": "Globes: 138 sqm apartment in Migdalei Ne'eman sold for NIS 5.45 million (Anat Danieli Lev)",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001492199",
+      "published": "2024-10-27"
+    },
+    {
+      "id": "S4",
+      "title": "Globes: Migdalei Ne'eman apartment deal, 125 sqm for NIS 4 million",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001250497",
+      "published": "2018-08-23"
+    },
+    {
+      "id": "S5",
+      "title": "Globes: management fees in luxury towers (Shlomit Tzur)",
+      "url": "http://www.globes.co.il/news/article.aspx?did=1001213159",
+      "published": "2017-11-27"
+    },
+    {
+      "id": "S6",
+      "title": "Madlan project page: Migdalei Ne'eman phase B (Yossi Avrahami), Michael Ne'eman 4",
+      "url": "https://www.madlan.co.il/projects/%D7%9E%D7%92%D7%93%D7%9C%D7%99%20%D7%A0%D7%90%D7%9E%D7%9F",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S7",
+      "title": "Hagag Group: Migdalei Ne'eman project page",
+      "url": "https://www.hagag-group.co.il/projects/ResidentProjects/%D7%9E%D7%92%D7%93%D7%9C%D7%99_%D7%A0%D7%90%D7%9E%D7%9F",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S8",
+      "title": "Acro: Neeman Towers project page",
+      "url": "https://acronadlan.com/en/project/naaman-towers/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S9",
+      "title": "Eshkol real estate: Migdalei Ne'eman / Ne'eman VIP page",
+      "url": "https://eshkol.co.il/%D7%9E%D7%92%D7%93%D7%9C%D7%99-%D7%A0%D7%90%D7%9E%D7%9F-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S10",
+      "title": "Hightower (management company): Migdalei Ne'eman page",
+      "url": "https://hightower.co.il/neeman/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S11",
+      "title": "project-tlv: Migdalei Ne'eman page",
+      "url": "https://project-tlv.info/new-projects/north/neeman/",
+      "published": "modified 2026-01-19"
+    },
+    {
+      "id": "S12",
+      "title": "Sotheby's International Realty Israel: sea-view apartment in Neeman Towers (listing)",
+      "url": "https://www.israelsir.com/property/refined-sea-view-apartment-in-neeman-towers/",
+      "published": "modified 2023-06-08"
+    },
+    {
+      "id": "S13",
+      "title": "Magdilim: Migdalei Ne'eman residents' compensation claims over plan TA/3700 rejected (Ziv Goldfish)",
+      "url": "https://magdilim.co.il/190120260920-2/",
+      "published": "2026-01-19"
+    },
+    {
+      "id": "S14",
+      "title": "Globes: plan TA/3700 stuck again (Yuval Nisani)",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001487019",
+      "published": "2024-08-19"
+    },
+    {
+      "id": "S15",
+      "title": "project-tlv: plan 3700 north-west Tel Aviv (compounds, news log)",
+      "url": "https://project-tlv.info/urban-plans/3700-2/",
+      "published": "modified 2026-06-18"
+    },
+    {
+      "id": "S16",
+      "title": "Ynet: Tzuk beach hotel and residential tower plan approved (Hila Tzion)",
+      "url": "https://www.ynet.co.il/economy/article/r1Kes8AlO",
+      "published": "2021-02-08"
+    },
+    {
+      "id": "S17",
+      "title": "tlvonline: hotel and residential tower at Tzuk beach, design approved",
+      "url": "https://tlvonline.co.il/%d7%9e%d7%9c%d7%95%d7%9f-%d7%95%d7%9e%d7%92%d7%93%d7%9c-%d7%9e%d7%92%d7%95%d7%a8%d7%99%d7%9d-%d7%91%d7%97%d7%95%d7%a3-%d7%94%d7%a6%d7%95%d7%a7/",
+      "published": "2025-06-29"
+    },
+    {
+      "id": "S18",
+      "title": "Madlan: Michael Ne'eman 4 address page (sold prices, nearby deals with distances)",
+      "url": "https://www.madlan.co.il/address/%D7%9E%D7%99%D7%9B%D7%90%D7%9C-%D7%A0%D7%90%D7%9E%D7%9F-4-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S19",
+      "title": "Madlan: Glilot neighborhood data (averages, transactions)",
+      "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%92%D7%9C%D7%99%D7%9C%D7%95%D7%AA-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S20",
+      "title": "Madlan listing: 4-room apartment for sale, Michael Ne'eman 18, Migdalei Ne'eman",
+      "url": "https://www.madlan.co.il/listings/NllzoK8PFCR",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S21",
+      "title": "Madlan listing: 5-room apartment for sale, Michael Ne'eman St",
+      "url": "https://www.madlan.co.il/listings/0rekCmKGV0G",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S22",
+      "title": "Madlan listing: 4-room apartment for sale, Michael Ne'eman 20, Migdalei Ne'eman",
+      "url": "https://www.madlan.co.il/listings/EEPBzFLy0UU",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S23",
+      "title": "Madlan listing: mini penthouse for sale, Michael Ne'eman 8",
+      "url": "https://www.madlan.co.il/listings/VgyUsXzCClP",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S24",
+      "title": "Madlan listing: 4.5-room apartment for sale, Migdalei Ne'eman, 218 sqm",
+      "url": "https://www.madlan.co.il/listings/npBelaMF698",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S25",
+      "title": "Madlan: apartments for rent in Glilot (listing cards)",
+      "url": "https://www.madlan.co.il/for-rent/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%92%D7%9C%D7%99%D7%9C%D7%95%D7%AA-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S26",
+      "title": "Madlan listing: 4-room apartment for rent, Michael Ne'eman 23, Migdalei Ne'eman",
+      "url": "https://www.madlan.co.il/listings/6G78zDS05vA",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S27",
+      "title": "Madlan listing: 4.5-room apartment for rent, Blue Towers, Penina Zaltsman 10",
+      "url": "https://www.madlan.co.il/listings/IMdzP17IsEU",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S28",
+      "title": "Bizportal: Tzukei Aviv neighborhood prices, rents and deals (Tzali Aharon)",
+      "url": "https://www.bizportal.co.il/realestates/news/article/20036059",
+      "published": "2026-08-06"
+    },
+    {
+      "id": "S29",
+      "title": "Madlan: Tzukei Aviv neighborhood data (schools)",
+      "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A6%D7%95%D7%A7%D7%99-%D7%90%D7%91%D7%99%D7%91-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S30",
+      "title": "project-tlv: Nathan Alterman High School, Tzukei Aviv",
+      "url": "https://project-tlv.info/new-projects/north/tsukei-aviv/high-school/",
+      "published": "modified 2025-01-15"
+    },
+    {
+      "id": "S31",
+      "title": "Walla: the coastal park promenade opens",
+      "url": "https://travel.walla.co.il/item/3609266",
+      "published": "2023-09-14"
+    },
+    {
+      "id": "S32",
+      "title": "Timeout: coastal park promenade walk",
+      "url": "https://timeout.co.il/%d7%98%d7%99%d7%99%d7%9c%d7%aa-%d7%94%d7%a4%d7%90%d7%a8%d7%a7-%d7%94%d7%97%d7%95%d7%a4%d7%99-%d7%aa%d7%9c-%d7%90%d7%91%d7%99%d7%91/",
+      "published": "2023-09-13"
+    },
+    {
+      "id": "S33",
+      "title": "Globes English: work begins on large new Tel Aviv neighborhood (plan 3700 infrastructure)",
+      "url": "https://en.globes.co.il/en/article-work-begins-on-large-new-tel-aviv-neighborhood-1001448943",
+      "published": "2023-06-08"
+    },
+    {
+      "id": "S34",
+      "title": "ice: Green Line progress and opening dates",
+      "url": "https://www.ice.co.il/realestate/news/article/1114193",
+      "published": "2026-05-25"
+    },
+    {
+      "id": "S35",
+      "title": "Kol Zchut: purchase tax calculation (brackets)",
+      "url": "https://www.kolzchut.org.il/he/%D7%97%D7%99%D7%A9%D7%95%D7%91_%D7%9E%D7%A1_%D7%A8%D7%9B%D7%99%D7%A9%D7%94",
+      "published": "updated 2026-08-03"
+    },
+    {
+      "id": "S36",
+      "title": "Kol HaBayit: Tel Aviv arnona calculator 2026 (secondary source based on the 2026 order)",
+      "url": "https://kolhabait.com/arnona/tel-aviv",
+      "published": "updated 2026-08"
+    },
+    {
+      "id": "S37",
+      "title": "Bank of Israel: representative exchange rates",
+      "url": "https://www.boi.org.il/en/economic-roles/financial-markets/exchange-rates/",
+      "published": "2026-09-15"
+    },
+    {
+      "id": "S38",
+      "title": "Walla Finance: CBS housing price index June-July 2026",
+      "url": "https://finance.walla.co.il/item/3868023",
+      "published": "2026-09-15"
+    },
+    {
+      "id": "S39",
+      "title": "Madlan: Michael Ne'eman 2 address page (nearby deals with distances)",
+      "url": "https://www.madlan.co.il/address/%D7%9E%D7%99%D7%9B%D7%90%D7%9C-%D7%A0%D7%90%D7%9E%D7%9F-2-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S40",
+      "title": "Madlan: Michael Ne'eman 22 address page (nearby deals with distances)",
+      "url": "https://www.madlan.co.il/address/%D7%9E%D7%99%D7%9B%D7%90%D7%9C-%D7%A0%D7%90%D7%9E%D7%9F-22-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S41",
+      "title": "Globes: what will happen to purchase tax (investor rates temporary order)",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001554581",
+      "published": "2026-09-07"
+    },
+    {
+      "id": "S42",
+      "title": "Bank of Israel: Proper Conduct of Banking Business Directive 329 (housing loans), version 12",
+      "url": "https://www.boi.org.il/media/brep4lzt/329_12.pdf",
+      "published": "2026-02-08"
+    },
+    {
+      "id": "S43",
+      "title": "Instagram, Meital Katzir: Migdalei Ne'eman 4.5 rooms (Hebrew reel)",
+      "url": "https://www.instagram.com/reel/DcY_pIuIID7/",
+      "published": "2026-08-23"
+    },
+    {
+      "id": "S44",
+      "title": "Instagram, Meital Katzir: Migdalei Ne'eman 4.5 rooms (English reel)",
+      "url": "https://www.instagram.com/reel/DclC9_vlIYo/",
+      "published": "2026-08-28"
+    },
+    {
+      "id": "S45",
+      "title": "Timeout: Glilot and Tzukei Aviv neighborhood guide",
+      "url": "https://timeout.co.il/%D7%92%D7%9C%D7%99%D7%9C%D7%95%D7%AA-%D7%95%D7%A6%D7%95%D7%A7%D7%99-%D7%90%D7%91%D7%99%D7%91/",
+      "published": "2018-01-08"
+    },
+    {
+      "id": "S46",
+      "title": "project-tlv: Tzukei Aviv page (boundaries, projects)",
+      "url": "https://project-tlv.info/new-projects/north/tsukei-aviv/",
+      "published": "updated 2025-06-24"
+    },
+    {
+      "id": "S47",
+      "title": "Globes: new CBS resale price index",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001555377",
+      "published": "2026-09-14"
+    },
+    {
+      "id": "S48",
+      "title": "project-tlv: Herzl Rosenblum 4-10 (Sea and Sun)",
+      "url": "https://project-tlv.info/buildings/rozenblum/4-10/",
+      "published": "accessed 2026-09-16"
+    }
+  ]
+}

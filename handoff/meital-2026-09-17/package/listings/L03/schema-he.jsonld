@@ -1,0 +1,118 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "5 חדרים בקומה גבוהה עם נוף לים, ב.ס.ר שרונה",
+   "description": "5 חדרים, 117 מ״ר ומרפסת 14 מ״ר בקומה גבוהה, נוף פתוח לים, חניה ומחסן, כניסה מיידית. 15,500 ש״ח לחודש, עם עלויות, חוק ושכירויות בפרויקט.",
+   "inLanguage": "he-IL",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/properties/bsr-sarona-5-rooms-sea-view-for-rent/",
+   "about": {
+    "@type": "Apartment",
+    "name": "5 חדרים בקומה גבוהה עם נוף לים, ב.ס.ר שרונה",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "תל אביב-יפו",
+     "addressRegion": "שרונה",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 5,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 117,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "שמירה 24/7",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חדר כושר",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חניה",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מחסן",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מעליות מהירות",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "מיטל קציר, נדל״ן על הים",
+     "telephone": "+972523631582"
+    },
+    "priceSpecification": {
+     "@type": "UnitPriceSpecification",
+     "price": 15500,
+     "priceCurrency": "ILS",
+     "unitCode": "MON"
+    }
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "כמה עולה הדירה בחודש?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "15,500 ש״ח לפי מודעת המשווקת במדלן, ועם דמי ניהול וארנונה בהערכה כ-18,292 עד 18,751 ש״ח לחודש."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "באיזו קומה ולאן הנוף?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "המשווקת מתארת קומה גבוהה עם נוף פתוח לים ולכל תל אביב, ובפרסום מינואר 2026 צוינה קומה 20. המרפסת פונה לדרום-מערב."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "האם יש בריכה בבניין?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לא נמצאו בריכה או ספא משותפים במקורות היזם והקבלן. בפרויקט חדר כושר לדיירים, שמירה 24/7 ולובי בגובה כפול."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "כמה קרובה הרכבת הקלה?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "יציאה A של תחנת יהודית בקו האדום משרתת את מתחם שרונה, והקו פועל מאוגוסט 2023."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "מה החוק קובע לגבי ערבויות?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "בשכר דירה של עד 20,000 ש״ח חל חוק השכירות ההוגנת, והערבויות מוגבלות לנמוך מבין 3 חודשי שכירות לשליש משכר הדירה לכל התקופה: עד 46,500 ש״ח בחוזה של שנה."
+     }
+    }
+   ]
+  }
+ ]
+}

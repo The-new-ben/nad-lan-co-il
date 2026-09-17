@@ -1,0 +1,99 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "5 חדרים בקומה גבוהה במתחם עם בריכה, רמת אביב",
+   "description": "5 חדרים בקומה גבוהה, מרווחת ומוארת, 2 חניות ומחסן, במתחם עם בריכה, חדר כושר ושומר. טווח שכירות באזור, ועד בית, ארנונה וחוק.",
+   "inLanguage": "he-IL",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/properties/ramat-aviv-5-rooms-pool-complex-for-rent/",
+   "about": {
+    "@type": "Apartment",
+    "name": "5 חדרים בקומה גבוהה במתחם עם בריכה, רמת אביב",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "תל אביב-יפו",
+     "addressRegion": "רמת אביב",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 5,
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "בריכת שחייה",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חדר כושר",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "שומר",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חניה",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מחסן",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "מיטל קציר, נדל״ן על הים",
+     "telephone": "+972523631582"
+    }
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "כמה עולה הדירה בחודש?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "המשווקת לא פרסמה שכר דירה. דירות 5 חדרים ברמת אביב החדשה וברמת אביב ג׳ מוצעות ב-12,800 עד 18,000 ש״ח לחודש, ובבניין עם בריכה יש להוסיף ועד בית של כ-1,700 עד 2,300 ש״ח לפי הדוגמאות באזור."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "באיזה מתחם מדובר?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "שם המתחם והכתובת לא פורסמו, ומיטל קציר מוסרת אותם בפנייה ישירה. לפי המשווקת במתחם בריכת שחייה, חדר כושר, שומר ושירותים נוספים."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "האם חוק השכירות ההוגנת חל?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "אם שכר הדירה אינו עולה על כ-20,000 ש״ח לחודש, כמו בכל טווח המודעות לדירות דומות באזור. אז הערבויות מוגבלות לנמוך מבין 3 חודשי שכירות לשליש משכר הדירה לכל התקופה."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "מה נמצא בסביבה?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "ברמת אביב נמצאים אוניברסיטת תל אביב, קניון רמת אביב עם כ-140 חנויות, מוזיאון ארץ ישראל ומוזיאון הפלמ״ח. המרחקים המדויקים תלויים בכתובת."
+     }
+    }
+   ]
+  }
+ ]
+}

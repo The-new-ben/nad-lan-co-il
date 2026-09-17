@@ -1,0 +1,131 @@
+{
+ "id": "L05", "extends": "L04",
+ "inherit": ["city", "area", "building_h2", "building_lead", "building", "location_h2", "location", "schools_override", "transport", "transport_override", "future", "future_override", "amenities"],
+ "deal": "sale", "ptype": "apartment", "plate": "apartment", "status": "active", "last_post": "2026-08-31",
+ "rooms": 3.5, "price": 5000000, "price_src": ["S4", "S5"], "built": 90, "balcony": 12,
+ "plate_name": {"he": "צוקי אביב, רחוב אליהו ברלין", "en": "Tzukei Aviv, Eliyahu Berlin St"},
+ "kicker": {"he": "למכירה, מושכרת · צוקי אביב, צפון תל אביב", "en": "For sale, tenanted · Tzukei Aviv, north Tel Aviv"},
+ "title": {"he": "3.5 חדרים מרוהטת עם שוכר, רחוב אליהו ברלין", "en": "Furnished 3.5 Rooms with a Tenant in Place, Eliyahu Berlin Street"},
+ "dek": {"he": "דירה מרוהטת ומאובזרת בבניין בוטיק בצוקי אביב, מושכרת לפי המשווקת ב-15,000 ש״ח לחודש: תשואה ברוטו של 3.6% על המחיר המבוקש, עם 2 חניות ומחסן.", "en": "A furnished, fully equipped apartment in a Tzukei Aviv boutique building, let at NIS 15,000 a month according to the broker: a 3.6% gross yield on the asking price, with two parking spaces and storage."},
+ "chips": [
+  {"he": "בלעדיות: מיטל קציר, נדל״ן על הים", "en": "Exclusive: Meital Katzir, Real Estate by the Sea", "sea": true},
+  {"he": "מושכרת ב-15,000 ₪ לחודש", "en": "Let at NIS 15,000 a month"},
+  {"he": "מרוהטת ומאובזרת", "en": "Furnished and equipped"}
+ ],
+ "facts": [
+  {"label": {"he": "חדרים", "en": "Rooms"}, "value": {"he": "3.5", "en": "3.5"}, "basis": "broker"},
+  {"label": {"he": "שטח בנוי", "en": "Built area"}, "value": {"he": "כ-90 מ״ר", "en": "about 90 sqm"}, "basis": "broker"},
+  {"label": {"he": "מרפסת", "en": "Balcony"}, "value": {"he": "12 מ״ר", "en": "12 sqm"}, "basis": "broker"},
+  {"label": {"he": "קומה", "en": "Floor"}, "value": {"he": "3 מתוך 9", "en": "3 of 9"}, "basis": "broker"},
+  {"label": {"he": "חניות", "en": "Parking"}, "value": {"he": "2", "en": "2"}, "basis": "broker"},
+  {"label": {"he": "מחסן", "en": "Storage"}, "value": {"he": "יש", "en": "Yes"}, "basis": "broker"},
+  {"label": {"he": "ריהוט", "en": "Furnishing"}, "value": {"he": "מלא", "en": "Full"}, "basis": "broker"},
+  {"label": {"he": "שכירות קיימת", "en": "Current rent"}, "value": {"he": "15,000 ₪", "en": "NIS 15,000"}, "basis": "broker"}
+ ],
+ "price_rows": [
+  {"dt": {"he": "שכירות קיימת", "en": "Current rent"}, "dd": {"he": "15,000 ₪ לחודש", "en": "NIS 15,000 a month"}},
+  {"dt": {"he": "תשואה ברוטו", "en": "Gross yield"}, "dd": {"he": "3.60%", "en": "3.60%"}},
+  {"dt": {"he": "דמי ניהול", "en": "Management fee"}, "dd": {"he": "600 ₪ לחודש", "en": "NIS 600 a month"}}
+ ],
+ "story_h2": {"he": "השקעה שכבר עובדת, ליד הים", "en": "An investment that already works, by the sea"},
+ "story": {
+  "he": [
+   "זו דירה שנקנית כהשקעה פעילה: 3.5 חדרים מרוהטים ומאובזרים עד כלי המטבח והמגבות, בבניין בוטיק בן 9 קומות ברחוב אליהו ברלין.[[S86,S4]] לפי המשווקת הדירה מושכרת ב-15,000 ש״ח לחודש, והמחיר המבוקש במודעתה במדלן הוא 5,000,000 ש״ח, לאחר הורדה מ-5,800,000 ש״ח.[[S85,S4]]",
+   "השטח הבנוי כ-90 מ״ר ולצדו מרפסת של 12 מ״ר. במדלן רשומים 96 מ״ר, קומה 3 מתוך 9 ושנת בנייה 2022.[[S84,S4]] החלוקה כוללת יחידת הורים מרווחת ומטבח מאובזר, ולפי המשווקת נשקף מהדירה נוף פתוח. לדירה 2 חניות ומחסן.[[S93]]",
+   "דמי הניהול בבניין הם 600 ש״ח לחודש, ובבניין לובי מעוצב וחדר כושר חדש.[[S87]] את מועד הפינוי האפשרי ואת תנאי חוזה השכירות יש לקבל בכתב, משום שהם קובעים אם הדירה מתאימה לרוכש משקיע או לרוכש שמתכוון לגור בה."
+  ],
+  "en": [
+   "This is an apartment bought as a working investment: 3.5 rooms furnished and equipped down to the kitchenware and towels, in a nine-floor boutique building on Eliyahu Berlin Street.[[S86,S4]] According to the broker it is let at NIS 15,000 a month, and the asking price in her Madlan listing is NIS 5,000,000, reduced from NIS 5,800,000.[[S85,S4]]",
+   "The built area is about 90 sqm with a 12 sqm balcony. Madlan records 96 sqm, floor 3 of 9 and a 2022 building year.[[S84,S4]] The layout includes a generous master suite and an equipped kitchen, and the broker describes an open view. Two parking spaces and a storage room come with the unit.[[S93]]",
+   "The building charges a NIS 600 monthly management fee and has a designed lobby and a new residents' gym.[[S87]] The possible vacating date and the lease terms should be obtained in writing, because they decide whether the unit suits an investor or a buyer who plans to live in it."
+  ]
+ },
+ "features": {
+  "he": [["15,000 ש״ח לחודש", "שכירות קיימת לפי המשווקת, 180,000 ש״ח בשנה"], ["3.6% תשואה ברוטו", "על מחיר מבוקש של 5,000,000 ש״ח"], ["מרוהטת ומאובזרת", "כולל כלי מטבח ומגבות, לפי המשווקת"], ["2 חניות ומחסן", "כפי שמופיע במודעות המשווקת"], ["600 ש״ח לחודש", "דמי ניהול, לובי וחדר כושר"], ["כ-5 עד 7 דקות לחוף", "הליכה לחוף תל ברוך ולטיילת, לפי המשווקת"]],
+  "en": [["NIS 15,000 a month", "Current rent per the broker, NIS 180,000 a year"], ["3.6% gross yield", "On an asking price of NIS 5,000,000"], ["Furnished and equipped", "Including kitchenware and towels, per the broker"], ["Two parking spaces and storage", "As listed by the broker"], ["NIS 600 a month", "Management fee, lobby and gym"], ["About 5 to 7 minutes to the beach", "On foot to Tel Baruch beach and the promenade, per the broker"]]
+ },
+ "spec": [
+  {"title": {"he": "הדירה", "en": "The apartment"}, "rows": [
+   {"dt": {"he": "חדרים", "en": "Rooms"}, "dd": {"he": "3.5, כולל יחידת הורים מרווחת", "en": "3.5 (Israeli count), with a generous master suite"}, "basis": "broker", "src": ["S93"]},
+   {"dt": {"he": "שטח בנוי", "en": "Built area"}, "dd": {"he": "כ-90 מ״ר (במדלן: 96 מ״ר)", "en": "About 90 sqm (Madlan: 96 sqm)"}, "basis": "broker", "src": ["S84", "S4"]},
+   {"dt": {"he": "מרפסת", "en": "Balcony"}, "dd": {"he": "12 מ״ר", "en": "12 sqm"}, "basis": "broker", "src": ["S84"]},
+   {"dt": {"he": "קומה", "en": "Floor"}, "dd": {"he": "3 מתוך 9 (ביד2: 2 מתוך 9)", "en": "3 of 9 (Yad2: 2 of 9)"}, "basis": "broker", "src": ["S4", "S5"]},
+   {"dt": {"he": "נוף", "en": "View"}, "dd": {"he": "נוף פתוח", "en": "Open view"}, "basis": "broker", "src": ["S93"]},
+   {"dt": {"he": "ריהוט וציוד", "en": "Furniture and equipment"}, "dd": {"he": "מרוהטת ומאובזרת, כולל מוצרי חשמל, כלי מטבח ומגבות", "en": "Furnished and equipped, including appliances, kitchenware and towels"}, "basis": "broker", "src": ["S86"]}
+  ]},
+  {"title": {"he": "השקעה ועלויות", "en": "Investment and running costs"}, "rows": [
+   {"dt": {"he": "שכירות קיימת", "en": "Current rent"}, "dd": {"he": "15,000 ש״ח לחודש (נובמבר 2025 וינואר 2026)", "en": "NIS 15,000 a month (November 2025 and January 2026)"}, "basis": "broker", "src": ["S84", "S85"]},
+   {"dt": {"he": "פינוי", "en": "Vacating"}, "dd": {"he": "פינוי גמיש לפי מודעת נובמבר 2025", "en": "Flexible vacating, per the November 2025 post"}, "basis": "broker", "src": ["S84"]},
+   {"dt": {"he": "חניה ומחסן", "en": "Parking and storage"}, "dd": {"he": "2 חניות ומחסן", "en": "2 parking spaces and a storage room"}, "basis": "broker", "src": ["S93"]},
+   {"dt": {"he": "דמי ניהול", "en": "Management fee"}, "dd": {"he": "600 ש״ח לחודש", "en": "NIS 600 a month"}, "basis": "broker", "src": ["S87"]}
+  ]}
+ ],
+ "numbers": {
+  "h2": {"he": "5,000,000 ש״ח ו-15,000 ש״ח בחודש, בחשבון מלא", "en": "NIS 5,000,000 and NIS 15,000 a month, fully worked"},
+  "lead": {"he": "המחיר המבוקש במודעת המשווקת במדלן והשכירות שדיווחה, מחושבים לפי כללי המס והמימון שפורסמו עד 16.9.2026. במודעות אחרות מופיע מחיר של 4,999,000 עד 4,999,999 ש״ח.", "en": "The asking price in the broker's Madlan listing and the rent she reported, computed against tax and lending rules published up to 16 September 2026. Other listings show NIS 4,999,000 to 4,999,999."},
+  "median_psqm": {"value": 49000, "label": {"he": "חציון למ״ר, צוקי אביב", "en": "Median per sqm, Tzukei Aviv"}, "small": {"he": "ביזפורטל, אוגוסט 2026", "en": "Bizportal, August 2026"}, "src": ["S19"]},
+  "bars": {"title": {"he": "מחיר למ״ר: הדירה מול השוק", "en": "Price per sqm against the market"}, "items": [
+   {"label": {"he": "הדירה, על 90 מ״ר בנוי", "en": "This apartment, on 90 sqm built"}, "value": 55556, "this": true},
+   {"label": {"he": "3 חדרים באותו בניין, מבוקש", "en": "3 rooms in the same building, asking"}, "value": 51667, "src": ["S1"]},
+   {"label": {"he": "חציון צוקי אביב, 2026", "en": "Tzukei Aviv median, 2026"}, "value": 49000, "src": ["S19"]},
+   {"label": {"he": "ממוצע דירות חדשות בשדה דב", "en": "New-build average, Sde Dov"}, "value": 85000, "value_text": {"he": "79,000 עד 85,000 ₪", "en": "NIS 79,000 to 85,000"}, "src": ["S28"]}
+  ], "note": {"he": "כל הפסים באותו קנה מידה. ההפרש מול דירת 3 החדרים באותו בניין כולל ריהוט, שכירות קיימת וחצי חדר.", "en": "All bars share one scale. The gap to the 3-room unit in the same building covers furniture, a sitting tenant and half a room."}},
+  "ledger_title": {"he": "שכירות, תשואה ועלויות", "en": "Rent, yield and running costs"},
+  "ledger": [
+   {"dt": {"he": "שכירות שנתית[[S84,S85]]", "en": "Annual rent[[S84,S85]]"}, "dd": {"he": "180,000 ₪", "en": "NIS 180,000"}, "note": {"he": "15,000 ₪ × 12, לפי המשווקת", "en": "NIS 15,000 x 12, per the broker"}},
+   {"dt": {"he": "תשואה ברוטו", "en": "Gross yield"}, "dd": {"he": "3.60%", "en": "3.60%"}, "note": {"he": "180,000 ÷ 5,000,000", "en": "180,000 / 5,000,000"}},
+   {"dt": {"he": "תשואה אם המשכיר משלם דמי ניהול", "en": "Yield if the landlord pays the management fee"}, "dd": {"he": "3.46%", "en": "3.46%"}, "note": {"he": "(180,000 פחות 7,200) ÷ 5,000,000", "en": "(180,000 less 7,200) / 5,000,000"}},
+   {"dt": {"he": "תשואה במסלול מס של 10% על השכירות[[S67]]", "en": "Yield under the 10% rental tax track[[S67]]"}, "dd": {"he": "3.24%", "en": "3.24%"}, "note": {"he": "(180,000 פחות 18,000) ÷ 5,000,000; אין בכך ייעוץ מס", "en": "(180,000 less 18,000) / 5,000,000; not tax advice"}},
+   {"dt": {"he": "תשואה אופיינית בשכונה[[S19]]", "en": "Typical neighborhood yield[[S19]]"}, "dd": {"he": "2.4%-2.7%", "en": "2.4%-2.7%"}, "note": {"he": "ביזפורטל, אוגוסט 2026", "en": "Bizportal, August 2026"}},
+   {"dt": {"he": "ארנונה, הערכה שנתית[[G_KH_TLV,G_NC_ARNONA]]", "en": "Arnona, annual estimate[[G_KH_TLV,G_NC_ARNONA]]"}, "dd": {"he": "9,252-11,525 ₪", "en": "NIS 9,252-11,525"}, "note": {"he": "102 מ״ר כולל מרפסת, תעריף אא לשנת 2026 באזור 2 ובאזור 1; האזור לא אומת", "en": "102 sqm including the balcony at 2026 newest-code rates, zones 2 and 1; zone unverified"}}
+  ]
+ },
+ "market": {
+  "h2": {"he": "המחיר והשכירות מול השכונה", "en": "Price and rent against the neighborhood"},
+  "lead": {"he": "עסקאות מ-2025 ו-2026 ברחובות הסמוכים, מודעות פעילות, ושכירות מבוקשת לדירות חדשות באזור. השכירות הקיימת בדירה גבוהה ממודעות 4 חדרים חדשות באזור, ויש לכך משקל בהערכת התשואה בעתיד.", "en": "Sales from 2025 and 2026 on nearby streets, live listings, and asking rents for newer units nearby. The current rent is above asking rents for new 4-room units nearby, which matters when projecting the yield."},
+  "stats": [0, 1, 3, 4, 5, 6],
+  "rent_exclude": [5]
+ },
+ "checks_h2": {"he": "מה לבדוק לפני הצעה על דירה מושכרת", "en": "What to check before bidding on a tenanted unit"},
+ "checks_lead": {"he": "השאלות שרוכש זהיר שואל על דירה עם שוכר, והמסמכים שכדאי לקבל לפני חתימה.", "en": "The questions a careful buyer asks about a tenanted apartment, and the documents to obtain before signing."},
+ "checks_extra": {
+  "he": ["חוזה השכירות החתום, כולל ערבויות, הצמדה ותאריך סיום", "רשימת ריהוט וציוד חתומה ומצבם", "נסח טאבו או אישור זכויות, כולל הצמדת החניות והמחסן", "טופס 4, תעודת גמר ותשריט הדירה"],
+  "en": ["The signed lease, including guarantees, indexation and end date", "A signed furniture and equipment inventory with condition", "A land registry extract or rights confirmation, including the attached parking and storage", "The occupancy certificate (Tofes 4), completion certificate and unit plan"]
+ },
+ "faq": [
+  {"q": {"he": "מה התשואה על הדירה?", "en": "What yield does the apartment produce?"}, "a": {"he": "לפי השכירות שדיווחה המשווקת, 15,000 ש״ח לחודש, התשואה ברוטו היא 3.60% על 5,000,000 ש״ח. אם המשכיר משלם את דמי הניהול היא 3.46%, ובמסלול מס של 10% על השכירות 3.24%.[[S84,S67]]", "en": "At the NIS 15,000 monthly rent the broker reported, the gross yield is 3.60% on NIS 5,000,000. If the landlord pays the management fee it is 3.46%, and under the 10% rental tax track 3.24%.[[S84,S67]]"}},
+  {"q": {"he": "האם אפשר לקבל את הדירה פנויה?", "en": "Can the buyer take the unit vacant?"}, "a": {"he": "בנובמבר 2025 ציינה המשווקת פינוי גמיש.[[S84]] את תאריך סיום החוזה ואת עמדת השוכר יש לקבל בכתב לפני הצעה.", "en": "In November 2025 the broker noted flexible vacating.[[S84]] Obtain the lease end date and the tenant's position in writing before making an offer."}},
+  {"q": {"he": "מה כולל הריהוט?", "en": "What does the furniture include?"}, "a": {"he": "לפי המשווקת הדירה מרוהטת ומאובזרת, כולל כלי מטבח ומגבות.[[S86]] כדאי לצרף לחוזה רשימת ציוד ומצב, ולבדוק עם עורך דין כיצד מטפלים בשווי הריהוט בדיווח לרשות המסים.", "en": "According to the broker it is furnished and equipped, including kitchenware and towels.[[S86]] Attach an inventory to the contract and ask a lawyer how the furniture is treated in the tax filing."}},
+  {"q": {"he": "כמה מס רכישה ישלם רוכש משקיע?", "en": "How much purchase tax would an investor pay?"}, "a": {"he": "רוכש דירה נוספת או תושב חוץ ישלם כ-400,000 ש״ח (8%). רוכש דירה יחידה ישלם כ-145,538 ש״ח, ועולה חדש זכאי כ-15,106 ש״ח.[[G_TAX_DIR,G_KZ_OLEH]]", "en": "A buyer of an additional home or a foreign resident would pay about NIS 400,000 (8%). A single-home buyer would pay about NIS 145,538, and an eligible new immigrant about NIS 15,106.[[G_TAX_DIR,G_KZ_OLEH]]"}},
+  {"q": {"he": "מה ההבדל מול דירת 3 החדרים באותו בניין?", "en": "How does it differ from the 3-room unit in the same building?"}, "a": {"he": "באותו בניין מוצעת גם דירת 3 חדרים לא מרוהטת ב-4,650,000 ש״ח.[[S1]] ההפרש, 350,000 ש״ח, משקף ריהוט, שכירות קיימת וחצי חדר נוסף לפי תיאור המשווקת.", "en": "The same building also offers an unfurnished 3-room unit at NIS 4,650,000.[[S1]] The NIS 350,000 gap reflects furniture, a sitting tenant and an extra half room as the broker describes it."}}
+ ],
+ "seo": {
+  "he": {"title": "דירת 3.5 חדרים מרוהטת למכירה עם שוכר, צוקי אביב", "desc": "3.5 חדרים מרוהטים בבניין בוטיק ברחוב אליהו ברלין, מושכרת ב-15,000 ש״ח לפי המשווקת. 5,000,000 ש״ח, תשואה של 3.6%, מס רכישה ועסקאות.", "kw": "דירה מושכרת למכירה בצוקי אביב", "slug": "tzukei-aviv-3-5-rooms-furnished-tenanted-for-sale"},
+  "en": {"title": "Furnished 3.5-Room Apartment with Tenant, Tzukei Aviv", "desc": "Furnished 3.5 rooms in a boutique building on Eliyahu Berlin Street, let at NIS 15,000 per the broker. NIS 5,000,000, 3.6% gross yield, taxes and comps.", "kw": "tenanted apartment for sale Tzukei Aviv", "slug": "en-tzukei-aviv-furnished-3-5-rooms-tenanted-for-sale"}
+ },
+ "shots": [
+  {"he": "חלל המגורים המרוהט", "en": "Furnished living space"},
+  {"he": "המטבח המאובזר", "en": "Equipped kitchen"},
+  {"he": "יחידת ההורים", "en": "Master suite"},
+  {"he": "החדר הנוסף וחצי החדר", "en": "Second room and half room"},
+  {"he": "המרפסת והנוף הפתוח", "en": "Balcony and the open view"},
+  {"he": "הלובי וחדר הכושר", "en": "Lobby and gym"},
+  {"he": "החניות והמחסן", "en": "Parking and storage"},
+  {"he": "תשריט הדירה", "en": "Unit floor plan"}
+ ],
+ "internal": {
+  "assessment": [
+   "המחיר למ״ר (55,556 ₪ על 90 מ״ר) גבוה בכ-13% מחציון השכונה ובכ-7.5% מדירת 3 החדרים באותו בניין. הפרמיה נשענת על ריהוט ושכירות קיימת.",
+   "3.6% ברוטו הוא טוב ביחס לשכונה (2.4%-2.7%), אבל 15,000 ₪ לדירת 3.5 חדרים מרוהטת גבוה ממודעות 4 חדרים חדשות באזור (13,200-14,200 ₪). יש סיכון שהשכירות לא תחזור אחרי סיום החוזה.",
+   "הורדת מחיר מ-5,800,000 ל-5,000,000 ₪ (13.8%) מעידה על קושי במכירה. יש מקום למשא ומתן."
+  ],
+  "confirm": [
+   "האם השכירות עדיין 15,000 ₪, ומתי מסתיים החוזה?",
+   "האם L04 ו-L05 הן שתי דירות נפרדות? שתיהן משווקות כ-90+12 מ״ר.",
+   "קומה 2 או 3, ושטח 90 או 96 מ״ר.",
+   "המחיר הנוכחי: 5,000,000 או 4,999,999 ₪.",
+   "רשימת ריהוט, ואישור לשימוש בתמונות."
+  ]
+ },
+ "wp": {"listing_type": "sale", "property_type": "apartment", "price": 5000000, "rooms": 3.5, "floor": 3, "total_floors": 9, "size_sqm": 90, "balcony_sqm": 12, "parking": true, "elevator": null, "ac": null, "protected_room": null, "street": "אליהו ברלין", "building_number": "", "city": "תל אביב-יפו", "neighborhood": "צוקי אביב", "arnona_monthly": 0, "vaad_bayit_monthly": 600, "storage": true, "condition": "new"}
+}

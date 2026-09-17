@@ -1,0 +1,1391 @@
+{
+  "id": "L10",
+  "identification": {
+    "summary_en": "3-room rental in Nofei Yam (HaGush HaGadol) advertised by Meital Katzir (license 3131540) at NIS 9,500 a month, with a 20 sqm balcony, 2 separate parking spaces and storage, entry 1.10.2026 (flexible). The broker's own Madlan listing for the same unit adds about 90 sqm, floor 5 of a 7-floor building on pillars with an elevator, and a mamad. Madlan's search card places it at Arthur Rubinstein 16.",
+    "summary_he": "דירת 3 חדרים להשכרה בנופי ים (הגוש הגדול), בשיווק מיטל קציר (רישיון 3131540), ב-9,500 ש״ח לחודש, עם מרפסת של 20 מ״ר, 2 חניות נפרדות ומחסן, כניסה ב-1.10.2026 (גמיש). מודעת המתווכת במדלן לאותה דירה מוסיפה שטח של כ-90 מ״ר, קומה 5 בבניין בן 7 קומות על עמודים עם מעלית, וממ״ד. כרטיס החיפוש במדלן ממקם אותה ברחוב ארתור רובינשטיין 16.",
+    "address_or_project_en": "Arthur Rubinstein 16, Nofei Yam (HaGush HaGadol), Tel Aviv-Yafo (address from a Madlan search card; confirm with the broker before publishing)",
+    "address_or_project_he": "ארתור רובינשטיין 16, נופי ים (הגוש הגדול), תל אביב-יפו (הכתובת מכרטיס חיפוש במדלן; יש לאשר מול המתווכת לפני פרסום)",
+    "confidence": "likely",
+    "evidence": [
+      "Instagram post of 2026-09-12: 3 rooms, 20 sqm balcony, 5-minute walk to the beach next to the walking path to the beach, 2 separate parking spaces and storage, NIS 9,500, entry 1.10.2026 (flexible).",
+      "Madlan listing fz9Ta4GtD64, posted by Meital Katzir with license 3131540: Nofei Yam, 3 rooms, NIS 9,500, balcony of about 20 sqm facing an open area near the path to the sea, mamad, 2 separate parking spaces and a large storage room near the parking, floor 5, 7 floors in the building, on pillars, elevator, entry flexible.",
+      "The same card (NIS 9,500, 3 rooms, floor 5, 90 sqm, Nofei Yam) appears in the 'other listings by Meital Katzir' section of her other Madlan listings.",
+      "Madlan's Nofei Yam rental results show this listing's card as 'Arthur Rubinstein 16'; the listing page itself does not print the street. Madlan's address page places Arthur Rubinstein 16 in Nofei Yam, and project-tlv lists Arthur Rubinstein St as a Nofei Yam street."
+    ],
+    "source_ids": [
+      "IG_L10",
+      "MAD_L10",
+      "MAD_0TMW",
+      "MAD_NY_RENT",
+      "MAD_AR16",
+      "PTLV_NY"
+    ]
+  },
+  "cross_listings": [
+    {
+      "what_en": "Madlan rental listing by the same broker (Meital Katzir, license 3131540)",
+      "url": "https://www.madlan.co.il/listings/fz9Ta4GtD64",
+      "date": "accessed 2026-09-16",
+      "price_nis": 9500,
+      "details_en": "3 rooms; about 90 sqm; balcony of about 20 sqm facing an open area; floor 5 of 7; building on pillars with an elevator; mamad; 2 separate parking spaces and a large storage room near the parking; about 5 minutes' walk to the sea, near the path to the sea; entry flexible. Search card address: Arthur Rubinstein 16.",
+      "same_unit_evidence_en": "Same broker license, neighborhood, room count, rent (NIS 9,500), balcony size (20 sqm), parking and storage wording and 'near the path to the sea'. The Madlan page shows entry as flexible rather than 1.10.2026. No other 3-room Nofei Yam listing by this broker was seen.",
+      "confidence": "verified"
+    }
+  ],
+  "building_facts": [
+    {
+      "label_en": "Asking rent",
+      "label_he": "שכר דירה מבוקש",
+      "value_en": "NIS 9,500 per month",
+      "value_he": "9,500 ש״ח לחודש",
+      "basis": "broker",
+      "confidence": "verified",
+      "source_ids": [
+        "IG_L10",
+        "MAD_L10"
+      ],
+      "note_en": "Published by the broker on both Instagram and Madlan."
+    },
+    {
+      "label_en": "Rooms and size",
+      "label_he": "חדרים ושטח",
+      "value_en": "3 rooms, about 90 sqm, plus a balcony of about 20 sqm",
+      "value_he": "3 חדרים, כ-90 מ״ר, ומרפסת של כ-20 מ״ר",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "IG_L10",
+        "MAD_L10"
+      ],
+      "note_en": "The size appears only on Madlan; the Instagram post gives the balcony but not the unit size. Check the area on the arnona bill."
+    },
+    {
+      "label_en": "Floor and building",
+      "label_he": "קומה ובניין",
+      "value_en": "Floor 5 of 7; the building stands on pillars and has an elevator",
+      "value_he": "קומה 5 מתוך 7; הבניין על עמודים ויש בו מעלית",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "MAD_L10"
+      ],
+      "note_en": "Madlan listing fields entered by the broker."
+    },
+    {
+      "label_en": "Safe room",
+      "label_he": "ממ״ד",
+      "value_en": "Mamad in the apartment",
+      "value_he": "ממ״ד בדירה",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "MAD_L10"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Parking and storage",
+      "label_he": "חניה ומחסן",
+      "value_en": "2 separate parking spaces and a large storage room near the parking",
+      "value_he": "2 חניות נפרדות ומחסן גדול בסמוך לחניות",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "IG_L10",
+        "MAD_L10"
+      ],
+      "note_en": "Registration of the spaces not verified."
+    },
+    {
+      "label_en": "Balcony outlook",
+      "label_he": "נוף מהמרפסת",
+      "value_en": "The balcony faces an open area near the path to the sea",
+      "value_he": "המרפסת פונה לשטח פתוח בסמוך לשביל לים",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "MAD_L10"
+      ],
+      "note_en": "Open land nearby is subject to future plans (see planning)."
+    },
+    {
+      "label_en": "Entry date",
+      "label_he": "מועד כניסה",
+      "value_en": "1.10.2026, flexible",
+      "value_he": "1.10.2026, גמיש",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "IG_L10",
+        "MAD_L10"
+      ],
+      "note_en": "Madlan shows 'flexible' only."
+    },
+    {
+      "label_en": "Rent per sqm",
+      "label_he": "שכר דירה למ״ר",
+      "value_en": "About NIS 106 per built sqm per month, or about NIS 86 including the balcony",
+      "value_he": "כ-106 ש״ח למ״ר בנוי לחודש, או כ-86 ש״ח כולל המרפסת",
+      "basis": "computed",
+      "confidence": "likely",
+      "source_ids": [
+        "MAD_L10"
+      ],
+      "note_en": "9,500 / 90 = 105.6; 9,500 / (90 + 20) = 86.4."
+    },
+    {
+      "label_en": "Street location",
+      "label_he": "מיקום הרחוב",
+      "value_en": "Arthur Rubinstein 16 is in Nofei Yam (HaGush HaGadol)",
+      "value_he": "ארתור רובינשטיין 16 נמצא בנופי ים (הגוש הגדול)",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "MAD_AR16",
+        "PTLV_NY"
+      ],
+      "note_en": "The street is verified as Nofei Yam; that the unit is at No. 16 rests on one Madlan search card."
+    },
+    {
+      "label_en": "Building amenities",
+      "label_he": "שירותים בבניין",
+      "value_en": "No lobby, guard, gym or pool is mentioned for this building",
+      "value_he": "לא מוזכרים לובי, שומר, חדר כושר או בריכה בבניין",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "IG_L10",
+        "MAD_L10"
+      ],
+      "note_en": "Absence of a claim, not proof of absence."
+    }
+  ],
+  "neighborhood_facts": [
+    {
+      "label_en": "Neighborhood boundaries",
+      "label_he": "גבולות השכונה",
+      "value_en": "Nofei Yam is bounded by Propes St (north), Levi Eshkol Blvd (east), Einstein St (south) and the Sde Dov area (west).",
+      "value_he": "נופי ים תחומה ברחוב פרופס מצפון, בשדרות לוי אשכול ממזרח, ברחוב איינשטיין מדרום ובאזור שדה דב ממערב.",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "PTLV_NY"
+      ],
+      "note_en": "One source (project-tlv)."
+    },
+    {
+      "label_en": "HaGush HaGadol",
+      "label_he": "הגוש הגדול",
+      "value_en": "Ramat Aviv HaHadasha (east of Levi Eshkol Blvd, up to Namir Rd) and Nofei Yam together form the area known as HaGush HaGadol.",
+      "value_he": "רמת אביב החדשה (ממזרח לשדרות לוי אשכול ועד דרך נמיר) ונופי ים יוצרות יחד את האזור המכונה ״הגוש הגדול״.",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "HON_RAH"
+      ],
+      "note_en": "One source (hon.co.il, 2019)."
+    },
+    {
+      "label_en": "Streets in Nofei Yam",
+      "label_he": "רחובות בנופי ים",
+      "value_en": "Streets placed in Nofei Yam by project-tlv and Madlan include Arthur Rubinstein, Yechezkel Strichman, Amir Gilboa, Marc Chagall and Yitzhak Bashevis Singer, plus the Nofei Yam side of Levi Eshkol and Einstein. Isaac Stern St lies south of Einstein St, in Lamed HaHadasha, not in Nofei Yam.",
+      "value_he": "בין הרחובות המשויכים לנופי ים ב-project-tlv ובמדלן: ארתור רובינשטיין, יחזקאל שטרייכמן, אמיר גלבוע, מרק שאגאל ויצחק בשביס זינגר, וכן הצד של לוי אשכול ואיינשטיין הסמוך לנופי ים. רחוב אייזק שטרן נמצא מדרום לרחוב איינשטיין, בל׳ החדשה, ולא בנופי ים.",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "PTLV_NY",
+        "MAD_NY_RENT",
+        "MAD_NY_SALE",
+        "PTLV_LAMED",
+        "MAD_LAMED_RENT"
+      ],
+      "note_en": "Yitzhak Bashevis Singer appears only in a Madlan listing address; the other streets appear in both sources."
+    },
+    {
+      "label_en": "Building stock",
+      "label_he": "אופי הבנייה",
+      "value_en": "About 2,000 apartments in relatively low buildings, because of height limits linked to the former Sde Dov airport. Buildings in the Nofei Yam listings reviewed on Madlan have 6 to 11 floors; a 30-floor tower is under construction at Einstein 15 and another tower project is planned at Einstein 1.",
+      "value_he": "כ-2,000 דירות בבניינים נמוכים יחסית, בשל מגבלות גובה שנבעו מהסמיכות לשדה התעופה שדה דב לשעבר. בבניינים שבמודעות נופי ים שנבדקו במדלן יש 6 עד 11 קומות; מגדל בן 30 קומות נמצא בבנייה באיינשטיין 15 ופרויקט מגדל נוסף מתוכנן באיינשטיין 1.",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "GLOBES_NY_2024",
+        "MAD_NY_RENT",
+        "MAD_NY_SALE",
+        "MAD_E15"
+      ],
+      "note_en": "The Globes article is Madlan content. The 6 to 11 floor range comes from listings reviewed on 2026-09-16, not from a survey of all buildings."
+    },
+    {
+      "label_en": "Shops and services",
+      "label_he": "מסחר ושירותים",
+      "value_en": "At least two small commercial centers operate among the complexes, but there is no lively commercial street; several kindergartens and a school operate within HaGush HaGadol.",
+      "value_he": "בין המתחמים פועלים לפחות שני מרכזים מסחריים קטנים, אך אין רחוב מסחרי תוסס; בתחומי הגוש הגדול פועלים כמה גני ילדים ובית ספר.",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "TLV_COMPARE",
+        "GLOBES_NY_2024"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Road access and peak congestion",
+      "label_he": "גישה בכביש ועומסי תנועה",
+      "value_en": "Access relies mainly on the Levi Eshkol axis and on Einstein Road from the south. At peak hours the Einstein-Namir junction can be heavily congested, which mainly affects residents leaving Ramat Aviv HaHadasha and Nofei Yam.",
+      "value_he": "הכניסות והיציאות העיקריות תלויות בציר לוי אשכול ובכביש איינשטיין מדרום. בשעות העומס צומת איינשטיין-נמיר עלול להיות עמוס, מה שמשפיע בעיקר על היוצאים מרמת אביב החדשה ומנופי ים.",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "TLV_COMPARE"
+      ],
+      "note_en": "One source (an appraiser's analysis); no traffic counts found."
+    },
+    {
+      "label_en": "Coastal park promenade",
+      "label_he": "טיילת הפארק החופי",
+      "value_en": "The coastal park promenade, opened in September 2023, runs about 2 km along the cliff from Tel Baruch beach (south) to Tzuk beach (north), inside a 500-dunam nature park, with a 2 km bike path.",
+      "value_he": "טיילת הפארק החופי, שנפתחה בספטמבר 2023, נמשכת כ-2 ק״מ לאורך המצוק מחוף תל ברוך בדרום ועד חוף הצוק בצפון, בתוך פארק טבע בשטח 500 דונם, ולצידה שביל אופניים באורך 2 ק״מ.",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "WALLA_PROM",
+        "TIMEOUT_PROM"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Walk to the beach",
+      "label_he": "הליכה לחוף",
+      "value_en": "Madlan content published by Globes describes Nofei Yam as a short walk from the beach. No source measured a walking route, and no source describes the specific path to the sea mentioned in the broker's posts.",
+      "value_he": "תוכן של מדלן שפורסם בגלובס מתאר את נופי ים כמרחק הליכה קצר מהחוף. אף מקור לא מדד מסלול הליכה, ואף מקור אינו מתאר את השביל לים שמוזכר בפרסומי המתווכת.",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "GLOBES_NY_2024"
+      ],
+      "note_en": "Qualitative only."
+    },
+    {
+      "label_en": "Sde Dov district",
+      "label_he": "רובע שדה דב",
+      "value_en": "Sde Dov, the former airport west of Nofei Yam (closed in 2019), is being built as a district of about 16,000 apartments. Developers had sold over 1,500 apartments by February 2026, and most apartments are expected to be ready in about 3 to 6 years.",
+      "value_he": "שדה דב, שדה התעופה לשעבר ממערב לנופי ים (נסגר ב-2019), נבנה כרובע של כ-16,000 דירות. עד פברואר 2026 מכרו היזמים יותר מ-1,500 דירות, ורוב הדירות צפויות להיות מוכנות בתוך כ-3 עד 6 שנים.",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "WIKI_SDEDOV",
+        "WALLA_SDEDOV",
+        "CALC_SDEDOV",
+        "GLOBES_GINDI"
+      ],
+      "note_en": "The 16,000 figure has two sources. The 3 to 6 year timeline is from Calcalist, which reads like a collaboration piece; Globes (2025) cited 6 to 9 years to occupancy for one project."
+    },
+    {
+      "label_en": "Construction dust from Sde Dov",
+      "label_he": "אבק מעבודות שדה דב",
+      "value_en": "Residents of Kochav HaTzafon and Lamed have complained of sand and dust clouds from the Sde Dov works for about a year and a half (reported November 2025). Works stop on Saturdays, and the municipality says access roads are wetted continuously.",
+      "value_he": "תושבי כוכב הצפון ול׳ מתלוננים על ענני חול ואבק מעבודות שדה דב כשנה וחצי (דיווח מנובמבר 2025). העבודות נעצרות בשבת, והעירייה מסרה שדרכי הגישה מורטבות ברציפות.",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "TLV_DUST"
+      ],
+      "note_en": "No report was found for Nofei Yam itself, and no noise measurements were found."
+    },
+    {
+      "label_en": "Einstein bridge",
+      "label_he": "גשר איינשטיין",
+      "value_en": "Since November 2023 a pedestrian and cycle bridge with elevators, over Einstein St at Yuval Ne'eman St, has linked Nofei Yam and Lamed HaHadasha. It was designed to pass over the Green Line route.",
+      "value_he": "מאז נובמבר 2023 מחבר גשר להולכי רגל ולרוכבי אופניים עם מעליות, מעל רחוב איינשטיין בגובה רחוב יובל נאמן, בין נופי ים לל׳ החדשה. הגשר תוכנן לעבור מעל תוואי הקו הירוק.",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "TLV_BRIDGE23",
+        "PTLV_EINBRIDGE",
+        "TLV_BRIDGE22"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Country clubs nearby",
+      "label_he": "קאנטרי קלאב בסביבה",
+      "value_en": "Plan Lamed, south of Einstein St, has a municipal community country club (Country Lamed). Azorei Chen, north of Propes St, has a neighborhood country club for its residents.",
+      "value_he": "בתוכנית ל׳, מדרום לרחוב איינשטיין, פועל קאנטרי קלאב קהילתי עירוני (קאנטרי ל׳). באזורי חן, מצפון לרחוב פרופס, פועל מועדון קאנטרי שכונתי לדיירים.",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "TLV_COMPARE",
+        "MAD_B9MY"
+      ],
+      "note_en": "One press source. A Nofei Yam listing on Madlan describes its building as next to 'the country club' without naming it. Distances not measured."
+    }
+  ],
+  "distances": [
+    {
+      "to_en": "The sea",
+      "to_he": "הים",
+      "value_en": "about 5 minutes' walk, per the broker",
+      "value_he": "כ-5 דקות הליכה, לפי המתווכת",
+      "basis": "broker",
+      "source_ids": [
+        "IG_L10",
+        "MAD_L10"
+      ],
+      "note_en": "Not measured by any independent source."
+    },
+    {
+      "to_en": "Einstein 15 tower construction site (30 floors, completion expected mid-2028)",
+      "to_he": "אתר הבנייה של מגדל איינשטיין 15 (30 קומות, צפי סיום באמצע 2028)",
+      "value_en": "77 m, as shown by Madlan for Arthur Rubinstein 16",
+      "value_he": "77 מ׳, כפי שמוצג במדלן עבור ארתור רובינשטיין 16",
+      "basis": "source",
+      "source_ids": [
+        "MAD_AR16",
+        "MAD_E15"
+      ],
+      "note_en": "Madlan's figure; its measurement method is not stated. Valid only if the unit is at Arthur Rubinstein 16."
+    }
+  ],
+  "schools": [
+    {
+      "name_en": "Nofei Yam elementary school",
+      "name_he": "בית ספר נופי ים",
+      "level_en": "Elementary (1-6)",
+      "level_he": "יסודי (א-ו)",
+      "note_en": "Listed as nearby on Madlan pages for Nofei Yam addresses; about 91 pupils per grade per Madlan. Registration zone not verified.",
+      "note_he": "מופיע כבית ספר סמוך בדפי כתובות בנופי ים במדלן; כ-91 תלמידים בשכבה לפי מדלן. אזור הרישום לא אומת.",
+      "source_ids": [
+        "MAD_E15",
+        "MAD_TZ_AREA"
+      ]
+    },
+    {
+      "name_en": "Alumot (state religious)",
+      "name_he": "אלומות (ממלכתי דתי)",
+      "level_en": "Elementary",
+      "level_he": "יסודי",
+      "note_en": "Listed as nearby on Madlan pages for Nofei Yam addresses. Registration zone not verified.",
+      "note_he": "מופיע כבית ספר סמוך בדפי כתובות בנופי ים במדלן. אזור הרישום לא אומת.",
+      "source_ids": [
+        "MAD_E15",
+        "MAD_RA_AREA"
+      ]
+    },
+    {
+      "name_en": "Amos Oz school (Ironi Kaf-Dalet)",
+      "name_he": "בית הספר עמוס עוז (עירוני כ״ד)",
+      "level_en": "Middle and high school (7-12)",
+      "level_he": "חטיבת ביניים ותיכון (ז-יב)",
+      "note_en": "New building on the northern extension of Ibn Gabirol St at Marc Chagall St, on the edge of Nofei Yam and the Sde Dov district, near a Green Line station; seven classes plus a special education class per grade. In January 2025 construction was being completed and the move was expected within weeks. Grades per Madlan. Registration zone not verified.",
+      "note_he": "מבנה חדש בהמשך הצפוני של רחוב אבן גבירול במפגש עם רחוב מרק שאגאל, בתפר שבין נופי ים לרובע שדה דב, סמוך לתחנת הקו הירוק; שבע כיתות וכיתת חינוך מיוחד בכל שכבה. בינואר 2025 הבנייה הייתה בשלבי סיום והמעבר היה צפוי בתוך שבועות. השכבות לפי מדלן. אזור הרישום לא אומת.",
+      "source_ids": [
+        "TLV_AMOSOZ",
+        "MAD_KH_AREA"
+      ]
+    },
+    {
+      "name_en": "Nathan Alterman High School",
+      "name_he": "תיכון נתן אלתרמן",
+      "level_en": "Middle and high school (7-12)",
+      "level_he": "חטיבת ביניים ותיכון (ז-יב)",
+      "note_en": "In Tzukei Aviv, north of Propes St; about 251 pupils per grade per Madlan. Registration zone not verified.",
+      "note_he": "בצוקי אביב, מצפון לרחוב פרופס; כ-251 תלמידים בשכבה לפי מדלן. אזור הרישום לא אומת.",
+      "source_ids": [
+        "MAD_TZ_AREA",
+        "PTLV_TZUKEI"
+      ]
+    },
+    {
+      "name_en": "Aviv elementary school",
+      "name_he": "בית ספר אביב",
+      "level_en": "Elementary (1-6)",
+      "level_he": "יסודי (א-ו)",
+      "note_en": "In Ramat Aviv HaHadasha, east of Levi Eshkol Blvd; about 65 pupils per grade per Madlan. Registration zone not verified.",
+      "note_he": "ברמת אביב החדשה, ממזרח לשדרות לוי אשכול; כ-65 תלמידים בשכבה לפי מדלן. אזור הרישום לא אומת.",
+      "source_ids": [
+        "MAD_RAH_AREA"
+      ]
+    }
+  ],
+  "transport": [
+    {
+      "item_en": "Green Line light rail (Rishon LeZion and Holon to Herzliya, with a branch to Ramat HaHayal)",
+      "item_he": "הקו הירוק של הרכבת הקלה (מראשון לציון וחולון להרצליה, עם שלוחה לרמת החייל)",
+      "status_en": "under construction; southern section expected 2028, full line 2030",
+      "status_he": "בבנייה; הקטע הדרומי צפוי ב-2028 והקו כולו ב-2030",
+      "source_ids": [
+        "ICE_GREEN",
+        "WIKI_GREEN"
+      ]
+    },
+    {
+      "item_en": "Green Line route near Nofei Yam: along Einstein St, with a sunken station planned at the Namir-Einstein junction and a station near Marc Chagall St on the Ibn Gabirol extension",
+      "item_he": "תוואי הקו הירוק ליד נופי ים: לאורך רחוב איינשטיין, עם תחנה שקועה מתוכננת בצומת נמיר-איינשטיין ותחנה ליד רחוב מרק שאגאל בהמשך אבן גבירול",
+      "status_en": "planned route; the works schedule on Einstein St was not verified",
+      "status_he": "תוואי מתוכנן; לוח הזמנים של העבודות ברחוב איינשטיין לא אומת",
+      "source_ids": [
+        "GLOBES_GREEN_2017",
+        "TLV_BRIDGE22",
+        "TLV_AMOSOZ"
+      ]
+    },
+    {
+      "item_en": "Einstein pedestrian and cycle bridge between Nofei Yam and Lamed HaHadasha",
+      "item_he": "גשר איינשטיין להולכי רגל ולאופניים בין נופי ים לל׳ החדשה",
+      "status_en": "operating since November 2023",
+      "status_he": "פעיל מנובמבר 2023",
+      "source_ids": [
+        "TLV_BRIDGE23",
+        "PTLV_EINBRIDGE"
+      ]
+    },
+    {
+      "item_en": "Car access via Levi Eshkol Blvd and Einstein St; Einstein-Namir junction congested at peak hours",
+      "item_he": "גישה ברכב דרך שדרות לוי אשכול ורחוב איינשטיין; צומת איינשטיין-נמיר עמוס בשעות השיא",
+      "status_en": "operating; congestion reported in 2025",
+      "status_he": "פעיל; עומסים דווחו ב-2025",
+      "source_ids": [
+        "TLV_COMPARE"
+      ]
+    },
+    {
+      "item_en": "Public transport to the city center: about 25 to 30 minutes from Plan Lamed and Ramat Aviv HaHadasha (appraiser's estimate; no figure given for Nofei Yam)",
+      "item_he": "תחבורה ציבורית למרכז העיר: כ-25 עד 30 דקות מתוכנית ל׳ ומרמת אביב החדשה (הערכת שמאי; לנופי ים לא ניתן נתון)",
+      "status_en": "estimate published 2025",
+      "status_he": "הערכה שפורסמה ב-2025",
+      "source_ids": [
+        "TLV_COMPARE"
+      ]
+    },
+    {
+      "item_en": "Coastal park bike path (2 km, Tel Baruch beach to Tzuk beach)",
+      "item_he": "שביל האופניים בפארק החופי (2 ק״מ, מחוף תל ברוך לחוף הצוק)",
+      "status_en": "operating since 2023",
+      "status_he": "פעיל מ-2023",
+      "source_ids": [
+        "WALLA_PROM"
+      ]
+    }
+  ],
+  "planning_future": [
+    {
+      "item_en": "Einstein 15 tower project: 30 floors, 180 units",
+      "item_he": "פרויקט איינשטיין 15: 30 קומות, 180 יחידות דיור",
+      "impact_en": "Madlan shows completion expected in mid-2028; expect construction traffic, noise and dust nearby until then.",
+      "impact_he": "לפי מדלן צפי הסיום באמצע 2028; עד אז צפויים תנועת רכבי בנייה, רעש ואבק בסביבה.",
+      "source_ids": [
+        "MAD_E15",
+        "GLOBES_NY_2024"
+      ]
+    },
+    {
+      "item_en": "Einstein 1 project: 179 apartments",
+      "item_he": "פרויקט איינשטיין 1: 179 דירות",
+      "impact_en": "Construction was planned to start in 2025 (Madlan content in Globes, 2024); current status not verified.",
+      "impact_he": "תחילת הבנייה תוכננה ל-2025 (תוכן של מדלן בגלובס, 2024); הסטטוס הנוכחי לא אומת.",
+      "source_ids": [
+        "GLOBES_NY_2024"
+      ]
+    },
+    {
+      "item_en": "Nofei Yam North: 191 vacant dunams between Nofei Yam and Propes St",
+      "item_he": "נופי ים צפון: 191 דונם פנויים בין נופי ים לרחוב פרופס",
+      "impact_en": "A 2021 plan allows 1,530 units but no permits were issued; on 2025-03-05 a permit freeze was extended by three years for re-planning, and heights could rise from 15 to 45 floors under master plan TA/5500. Views to the north may change in the long term.",
+      "impact_he": "תוכנית מ-2021 מתירה 1,530 יחידות דיור אך לא הוצאו היתרים; ב-5 במרץ 2025 הוארכה הקפאת היתרים בשלוש שנים לצורך תכנון מחדש, והגובה עשוי לעלות מ-15 ל-45 קומות במסגרת תוכנית המתאר ת״א/5500. הנוף לכיוון צפון עשוי להשתנות בטווח הארוך.",
+      "source_ids": [
+        "TLV_NYNORTH"
+      ]
+    },
+    {
+      "item_en": "Sde Dov center plan: 7,128 units with towers of 20 and 45 floors",
+      "item_he": "תוכנית מרכז שדה דב: 7,128 יחידות דיור במגדלים של 20 ו-45 קומות",
+      "impact_en": "Objections were rejected in February 2025; the skyline to the west and south-west will change and works will continue for years.",
+      "impact_he": "ההתנגדויות נדחו בפברואר 2025; קו הרקיע ממערב ומדרום-מערב ישתנה והעבודות יימשכו שנים.",
+      "source_ids": [
+        "NC_SDEDOV"
+      ]
+    },
+    {
+      "item_en": "Plan 3700 (north-west Tel Aviv), north of Propes St: about 12,000 housing units",
+      "item_he": "תוכנית 3700 (צפון-מערב העיר), מצפון לרחוב פרופס: כ-12,000 יחידות דיור",
+      "impact_en": "Large new supply and long-term construction north of Nofei Yam.",
+      "impact_he": "היצע חדש גדול ובנייה ארוכת טווח מצפון לנופי ים.",
+      "source_ids": [
+        "GLOBES_3700"
+      ]
+    },
+    {
+      "item_en": "Underground light rail electrical substation planned beneath the Marc Chagall playground and dog park (2022 report)",
+      "item_he": "תחנת השנאה תת-קרקעית של הרכבת הקלה שתוכננה מתחת לגן המשחקים ולגינת הכלבים ברחוב מרק שאגאל (דיווח מ-2022)",
+      "impact_en": "Residents objected and the deputy mayor asked NTA to examine an alternative site; the outcome was not verified.",
+      "impact_he": "התושבים התנגדו וסגן ראש העירייה ביקש מנת״ע לבחון חלופה; התוצאה לא אומתה.",
+      "source_ids": [
+        "TLV_SUBST"
+      ]
+    },
+    {
+      "item_en": "High school for about 1,500 pupils planned in Nofei Yam (2023)",
+      "item_he": "תיכון לכ-1,500 תלמידים שתוכנן בנופי ים (2023)",
+      "impact_en": "Residents appealed over traffic and loss of green space in 2023. Inference: this is probably the Amos Oz school building at Marc Chagall St that was nearing completion in January 2025.",
+      "impact_he": "ב-2023 הגישו התושבים ערר בטענה לעומסי תנועה ולפגיעה בשטחים ירוקים. הסקה: ככל הנראה מדובר במבנה בית הספר עמוס עוז ברחוב מרק שאגאל, שהיה בשלבי סיום בינואר 2025.",
+      "source_ids": [
+        "TLV_HS2023",
+        "TLV_AMOSOZ"
+      ]
+    }
+  ],
+  "market_stats": [
+    {
+      "metric_en": "Average rent, Nofei Yam (all sizes)",
+      "metric_he": "שכר דירה ממוצע, נופי ים (כל הגדלים)",
+      "value_en": "NIS 12,300 per month",
+      "value_he": "12,300 ש״ח לחודש",
+      "as_of": "2026-09",
+      "source_ids": [
+        "MAD_NY_AREA"
+      ]
+    },
+    {
+      "metric_en": "Average purchase price, Nofei Yam",
+      "metric_he": "מחיר רכישה ממוצע, נופי ים",
+      "value_en": "about NIS 4.57 million",
+      "value_he": "כ-4.57 מיליון ש״ח",
+      "as_of": "2026-09",
+      "source_ids": [
+        "MAD_NY_AREA"
+      ]
+    },
+    {
+      "metric_en": "3-room deals in Nofei Yam since June 2024, average price per sqm",
+      "metric_he": "עסקאות 3 חדרים בנופי ים מאז יוני 2024, מחיר ממוצע למ״ר",
+      "value_en": "NIS 84,900 per sqm, second highest in Tel Aviv (Madlan survey reported by Ynet)",
+      "value_he": "84,900 ש״ח למ״ר, השני בגובהו בתל אביב (סקר מדלן שפורסם ב-ynet)",
+      "as_of": "2025-07",
+      "source_ids": [
+        "YNET_3R"
+      ]
+    },
+    {
+      "metric_en": "Rent change for new tenants, Israel (CBS, August 2026 CPI)",
+      "metric_he": "שינוי בשכר הדירה לשוכרים חדשים, ישראל (למ״ס, מדד אוגוסט 2026)",
+      "value_en": "up 4.4% year on year; up 2.6% for renewing tenants",
+      "value_he": "עלייה של 4.4% בשנה; עלייה של 2.6% לשוכרים שחידשו חוזה",
+      "as_of": "2026-08",
+      "source_ids": [
+        "WALLA_CBS"
+      ]
+    },
+    {
+      "metric_en": "Madlan rental supply in Nofei Yam",
+      "metric_he": "היצע להשכרה במדלן בנופי ים",
+      "value_en": "16 listing cards on the first results page; this unit was the only 3-room card",
+      "value_he": "16 מודעות בעמוד התוצאות הראשון; דירה זו הייתה המודעה היחידה של 3 חדרים",
+      "as_of": "2026-09",
+      "source_ids": [
+        "MAD_NY_RENT"
+      ]
+    }
+  ],
+  "sale_comps": [
+    {
+      "date": "2026-04-20",
+      "where_en": "Amir Gilboa 20, Nofei Yam",
+      "where_he": "אמיר גלבוע 20, נופי ים",
+      "rooms": "3",
+      "sqm": 71,
+      "floor": 5,
+      "price_nis": 3580000,
+      "price_per_sqm_nis": 50478,
+      "kind": "transaction",
+      "source_ids": [
+        "MAD_E15"
+      ],
+      "note_en": "Madlan transaction table (building year 2004); Madlan's per-sqm figure. Confirm on nadlan.gov.il."
+    },
+    {
+      "date": "2026-06-02",
+      "where_en": "Marc Chagall 9, Nofei Yam",
+      "where_he": "מרק שאגאל 9, נופי ים",
+      "rooms": "4",
+      "sqm": 94,
+      "floor": 2,
+      "price_nis": 4220000,
+      "price_per_sqm_nis": 44946,
+      "kind": "transaction",
+      "source_ids": [
+        "MAD_E15"
+      ],
+      "note_en": "Madlan transaction table (building year 2006). Confirm on nadlan.gov.il."
+    },
+    {
+      "date": "2026-02-19",
+      "where_en": "Marc Chagall 9, Nofei Yam",
+      "where_he": "מרק שאגאל 9, נופי ים",
+      "rooms": "4",
+      "sqm": 110,
+      "floor": 4,
+      "price_nis": 4820000,
+      "price_per_sqm_nis": 43836,
+      "kind": "transaction",
+      "source_ids": [
+        "MAD_E15"
+      ],
+      "note_en": "Madlan transaction table (building year 2007). Confirm on nadlan.gov.il."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Amir Gilboa St, Nofei Yam",
+      "where_he": "רחוב אמיר גלבוע, נופי ים",
+      "rooms": "3",
+      "sqm": 92,
+      "floor": 1,
+      "price_nis": 4120000,
+      "price_per_sqm_nis": 44783,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_NY_SALE"
+      ],
+      "note_en": "Asking price on Madlan results page; 4,120,000 / 92."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Nofei Yam (street not shown)",
+      "where_he": "נופי ים (הרחוב לא מוצג)",
+      "rooms": "3",
+      "sqm": 97,
+      "floor": 2,
+      "price_nis": 4490000,
+      "price_per_sqm_nis": 46289,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_NY_SALE"
+      ],
+      "note_en": "Asking price on Madlan results page; 4,490,000 / 97."
+    }
+  ],
+  "rent_comps": [
+    {
+      "date": "2026-09-16",
+      "where_en": "Ramat Aviv HaHadasha (street not shown): 3-room loft duplex, floor 4 of 12, entry 1.12.2026",
+      "where_he": "רמת אביב החדשה (הרחוב לא מוצג): דופלקס לופט 3 חדרים, קומה 4 מתוך 12, כניסה 1.12.2026",
+      "rooms": "3",
+      "sqm": 84,
+      "rent_nis": 12000,
+      "rent_per_sqm_nis": 143,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_CTXV",
+        "MAD_RAH_RENT"
+      ],
+      "note_en": "About 84 sqm plus a 12 sqm balcony, with parking; the listing gives va'ad NIS 740 a month and arnona NIS 1,500 every two months. 12,000 / 84."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Azorei Chen / Gimel HaHadasha (Tzukei Aviv), floor 4",
+      "where_he": "אזורי חן / גימל החדשה (צוקי אביב), קומה 4",
+      "rooms": "3",
+      "sqm": 93,
+      "rent_nis": 9600,
+      "rent_per_sqm_nis": 103,
+      "kind": "asking",
+      "source_ids": [
+        "YAD2_AZ_3R"
+      ],
+      "note_en": "Yad2 card; street not shown. 9,600 / 93."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Aba Achimeir St, Ramat Aviv Gimel, floor 8",
+      "where_he": "רחוב אבא אחימאיר, רמת אביב ג׳, קומה 8",
+      "rooms": "3",
+      "sqm": 75,
+      "rent_nis": 7500,
+      "rent_per_sqm_nis": 100,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_RAG_RENT"
+      ],
+      "note_en": "Results page only; listing page not checked. 7,500 / 75."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Kochav HaTzafon (card labeled Agnon / Sde Dov Eshkol)",
+      "where_he": "כוכב הצפון (כרטיס המסומן עגנון / אשכול שדה דב)",
+      "rooms": "3",
+      "sqm": 74,
+      "rent_nis": 13500,
+      "rent_per_sqm_nis": 182,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_KH_RENT"
+      ],
+      "note_en": "Recorded in earlier research in this project on the same day; listing page not checked. 13,500 / 74."
+    },
+    {
+      "date": "2025-11-20",
+      "where_en": "Tzukei Aviv, new boutique building with gym: the broker's own 3.5-room listing, furnished",
+      "where_he": "צוקי אביב, בניין בוטיק חדש עם חדר כושר: דירת 3.5 חדרים מרוהטת בשיווק אותה מתווכת",
+      "rooms": "3.5",
+      "sqm": 90,
+      "rent_nis": 15000,
+      "rent_per_sqm_nis": 167,
+      "kind": "reported",
+      "source_ids": [
+        "IG_L05"
+      ],
+      "note_en": "Broker-stated existing tenancy at NIS 15,000 a month; about 90 sqm plus a 12 sqm balcony, fully furnished, so not directly comparable. 15,000 / 90."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Strichman 1, Nofei Yam, floor 6",
+      "where_he": "שטרייכמן 1, נופי ים, קומה 6",
+      "rooms": "4",
+      "sqm": 115,
+      "rent_nis": 12900,
+      "rent_per_sqm_nis": 112,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_NY_RENT"
+      ],
+      "note_en": "4-room context comp. 12,900 / 115."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Nofei Yam (street not shown), floor 3",
+      "where_he": "נופי ים (הרחוב לא מוצג), קומה 3",
+      "rooms": "4",
+      "sqm": 115,
+      "rent_nis": 12500,
+      "rent_per_sqm_nis": 109,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_NY_RENT"
+      ],
+      "note_en": "4-room context comp; shown at NIS 13,000 earlier the same day. 12,500 / 115."
+    }
+  ],
+  "costs": [
+    {
+      "item_en": "Rent",
+      "item_he": "שכר דירה",
+      "value_en": "NIS 9,500 per month",
+      "value_he": "9,500 ש״ח לחודש",
+      "basis": "broker",
+      "source_ids": [
+        "IG_L10",
+        "MAD_L10"
+      ],
+      "note_en": ""
+    },
+    {
+      "item_en": "Broker fee, if the tenant engages the broker",
+      "item_he": "דמי תיווך, אם השוכר מתקשר עם המתווכת",
+      "value_en": "about NIS 11,210 (one month's rent plus 18% VAT)",
+      "value_he": "כ-11,210 ש״ח (שכר דירה של חודש אחד בתוספת 18% מע״מ)",
+      "basis": "computed",
+      "source_ids": [
+        "NBN_RENT",
+        "NC_FAIR"
+      ],
+      "note_en": "9,500 x 1.18 = 11,210. The posts do not say who pays; under the Fair Rental chapter a tenant does not pay for a broker who represents the landlord."
+    },
+    {
+      "item_en": "Security cap at this rent",
+      "item_he": "תקרת הערובה בשכר דירה זה",
+      "value_en": "up to NIS 28,500 on a lease of 9 months or more",
+      "value_he": "עד 28,500 ש״ח בחוזה של 9 חודשים ומעלה",
+      "basis": "computed",
+      "source_ids": [
+        "KZ_GUAR",
+        "NBN_RENT",
+        "KZ_FAIR"
+      ],
+      "note_en": "The rent is under NIS 20,000, so the Fair Rental chapter should apply to a lease of 3 months to 10 years. Lower of 3 x 9,500 = 28,500 and one third of total rent (12 x 9,500 / 3 = 38,000 for 12 months). On leases shorter than 9 months, one third of total rent is lower."
+    },
+    {
+      "item_en": "Va'ad bayit",
+      "item_he": "ועד בית",
+      "value_en": "Not stated. Examples in other listings: NIS 550 a month in a new 7-floor HaGush HaGadol building; NIS 740 a month for a 3-room unit in a 12-floor Ramat Aviv HaHadasha building",
+      "value_he": "לא צוין. דוגמאות ממודעות אחרות: 550 ש״ח לחודש בבניין חדש בן 7 קומות בגוש הגדול; 740 ש״ח לחודש לדירת 3 חדרים בבניין בן 12 קומות ברמת אביב החדשה",
+      "basis": "source",
+      "source_ids": [
+        "MAD_FPDK",
+        "MAD_CTXV"
+      ],
+      "note_en": "Advertiser-entered figures in other listings; ask for this building's current fee."
+    },
+    {
+      "item_en": "Arnona estimate",
+      "item_he": "הערכת ארנונה",
+      "value_en": "about NIS 1,660 to 2,070 every two months for 110 sqm (90 sqm plus a 20 sqm balcony), at the newest-code rates of zones 2 and 1; lower for older building codes",
+      "value_he": "כ-1,660 עד 2,070 ש״ח לחודשיים עבור 110 מ״ר (90 מ״ר ומרפסת של 20 מ״ר), לפי תעריפי סוג המבנה החדש ביותר באזורים 2 ו-1; נמוך יותר בסוגי מבנה ותיקים",
+      "basis": "computed",
+      "source_ids": [
+        "KH_TLV",
+        "NC_ARNONA",
+        "KH_MEASURE",
+        "KH_ZONES",
+        "MAD_CTXV"
+      ],
+      "note_en": "110 x 90.71 = 9,978 a year (zone 2) and 110 x 112.99 = 12,429 a year (zone 1), divided into 6 bi-monthly bills. Zone, building code and charged area are unverified. A 3-room listing in Ramat Aviv HaHadasha states NIS 1,500 every two months for about 84 sqm plus a 12 sqm balcony, which fits this range."
+    },
+    {
+      "item_en": "Fair Rental chapter: scope",
+      "item_he": "פרק השכירות ההוגנת: תחולה",
+      "value_en": "Applies to residential leases of at least 3 months (or with an option beyond 3 months) and up to 10 years, where the monthly rent does not exceed about NIS 20,000. Hotels, holiday rentals, dormitories and sheltered housing are excluded.",
+      "value_he": "חל על שכירות למגורים לתקופה של 3 חודשים לפחות (או עם אופציה להארכה מעבר ל-3 חודשים) ועד 10 שנים, כששכר הדירה החודשי אינו עולה על כ-20,000 ש״ח. בתי מלון, דירות נופש, מעונות ודיור מוגן אינם כלולים.",
+      "basis": "source",
+      "source_ids": [
+        "KZ_FAIR",
+        "KZ_GUAR",
+        "NC_FAIR"
+      ],
+      "note_en": "Two independent secondary sources agree on the NIS 20,000 limit. Kol Zchut words it as 'below' on one page and 'not above' on another; Nadlan Center excludes rent 'above NIS 20,000'. The statute text could not be fetched, so the exact boundary and any indexation are not confirmed."
+    },
+    {
+      "item_en": "Security cap (Fair Rental chapter)",
+      "item_he": "תקרת ערובה (פרק השכירות ההוגנת)",
+      "value_en": "The security a landlord may demand is capped at the lower of 3 months' rent or one third of the rent for the whole lease. Securities must be returned within 60 days after the apartment is returned or the tenant's debts are settled.",
+      "value_he": "הערובה שמשכיר רשאי לדרוש מוגבלת לנמוך מבין שכר דירה של 3 חודשים או שליש משכר הדירה לכל תקופת השכירות. יש להחזיר את הערובה בתוך 60 ימים מהחזרת הדירה או מסילוק חובות השוכר.",
+      "basis": "source",
+      "source_ids": [
+        "KZ_GUAR",
+        "NBN_RENT"
+      ],
+      "note_en": "Sources differ on which instruments count toward the cap: NBN names cash, deposited checks and bank guarantees; Kol Zchut's page appears to focus on securities that cost the tenant money. Confirm with a lawyer."
+    },
+    {
+      "item_en": "Broker fee",
+      "item_he": "דמי תיווך",
+      "value_en": "Paid by the party that engaged the broker, usually one month's rent plus VAT at 18%. Under the Fair Rental chapter the tenant does not pay the fee of a broker who represents the landlord.",
+      "value_he": "משולמים על ידי הצד שהתקשר עם המתווך, בדרך כלל שכר דירה של חודש אחד בתוספת מע״מ בשיעור 18%. לפי פרק השכירות ההוגנת, השוכר אינו נושא בדמי התיווך של מתווך שמייצג את המשכיר.",
+      "basis": "source",
+      "source_ids": [
+        "NBN_RENT",
+        "NC_FAIR"
+      ],
+      "note_en": ""
+    },
+    {
+      "item_en": "Who pays running costs",
+      "item_he": "מי משלם את ההוצאות השוטפות",
+      "value_en": "Under the Fair Rental chapter the tenant pays occupant taxes, including arnona, and regular maintenance payments to the house committee (va'ad bayit); the landlord pays building insurance.",
+      "value_he": "לפי פרק השכירות ההוגנת, השוכר משלם את המסים החלים על המחזיק, כולל ארנונה, ואת התשלומים השוטפים לנציגות הבית המשותף (ועד בית); המשכיר נושא בביטוח המבנה.",
+      "basis": "source",
+      "source_ids": [
+        "NC_FAIR"
+      ],
+      "note_en": ""
+    },
+    {
+      "item_en": "Repairs and notice (Fair Rental chapter)",
+      "item_he": "תיקונים והודעה מוקדמת (פרק השכירות ההוגנת)",
+      "value_en": "Urgent defects must be repaired within 3 days and other defects within 30 days; the landlord's notice period is 90 days and the tenant's is 60 days.",
+      "value_he": "ליקויים דחופים יתוקנו בתוך 3 ימים ושאר הליקויים בתוך 30 יום; תקופת ההודעה המוקדמת של המשכיר היא 90 יום ושל השוכר 60 יום.",
+      "basis": "source",
+      "source_ids": [
+        "NC_FAIR"
+      ],
+      "note_en": "One source; check the lease."
+    },
+    {
+      "item_en": "Arnona rates 2026 (Tel Aviv, residential)",
+      "item_he": "תעריפי ארנונה 2026 (תל אביב, מגורים)",
+      "value_en": "Charged per sqm per year by zone and building code. For the newest code (אא): zone 1 NIS 112.99 up to 140 sqm and NIS 139.60 above 140 sqm; zone 2 NIS 90.71 and NIS 108.98. Older building codes pay less.",
+      "value_he": "החיוב למ״ר לשנה לפי אזור וסוג מבנה. בסוג המבנה החדש ביותר (אא): באזור 1 112.99 ש״ח עד 140 מ״ר ו-139.60 ש״ח מעל 140 מ״ר; באזור 2 90.71 ש״ח ו-108.98 ש״ח. בסוגי מבנה ותיקים יותר התעריף נמוך יותר.",
+      "basis": "source",
+      "source_ids": [
+        "KH_TLV",
+        "NC_ARNONA",
+        "KH_ZONES",
+        "KH_MEASURE"
+      ],
+      "note_en": "The zone for these addresses is unverified; Kol HaBayit says the zone follows the address of the building's main entrance. Kol HaBayit's summary of the 2026 order counts balconies in full (not checked against the order). It is unclear whether the over-140 sqm rate applies to the whole unit."
+    }
+  ],
+  "risks": [
+    {
+      "en": "Construction next door: Madlan shows the Einstein 15 project (30 floors, 180 units, completion expected mid-2028) 77 m from Arthur Rubinstein 16, so noise, dust and construction traffic are likely throughout a lease starting in October 2026.",
+      "he": "בנייה בסמוך: מדלן מציג את פרויקט איינשטיין 15 (30 קומות, 180 יחידות דיור, צפי סיום באמצע 2028) במרחק 77 מ׳ מארתור רובינשטיין 16, ולכן צפויים רעש, אבק ותנועת רכבי בנייה לאורך חוזה שמתחיל באוקטובר 2026.",
+      "source_ids": [
+        "MAD_AR16",
+        "MAD_E15"
+      ]
+    },
+    {
+      "en": "The Sde Dov district west of Nofei Yam will be under construction for years, and residents of nearby Kochav HaTzafon and Lamed have complained of dust clouds from the works.",
+      "he": "רובע שדה דב ממערב לנופי ים יהיה בבנייה במשך שנים, ותושבי כוכב הצפון ול׳ הסמוכות התלוננו על ענני אבק מהעבודות.",
+      "source_ids": [
+        "CALC_SDEDOV",
+        "TLV_DUST"
+      ]
+    },
+    {
+      "en": "Green Line works are planned along Einstein St, and a 2022 report described an underground substation planned beneath the Marc Chagall playground; the works schedule and the substation decision were not verified.",
+      "he": "עבודות הקו הירוק מתוכננות לאורך רחוב איינשטיין, ודיווח מ-2022 תיאר תחנת השנאה תת-קרקעית שתוכננה מתחת לגן המשחקים ברחוב מרק שאגאל; לוח הזמנים של העבודות וההחלטה לגבי התחנה לא אומתו.",
+      "source_ids": [
+        "GLOBES_GREEN_2017",
+        "TLV_SUBST",
+        "ICE_GREEN"
+      ]
+    },
+    {
+      "en": "Peak-hour congestion at the Einstein-Namir junction affects residents leaving Nofei Yam by car.",
+      "he": "עומסי תנועה בשעות השיא בצומת איינשטיין-נמיר משפיעים על היוצאים מנופי ים ברכב.",
+      "source_ids": [
+        "TLV_COMPARE"
+      ]
+    },
+    {
+      "en": "The balcony faces open land. Nearby vacant areas (Nofei Yam North, Sde Dov) are planned for towers of up to 45 floors, so the outlook can change.",
+      "he": "המרפסת פונה לשטח פתוח. בשטחים פנויים סמוכים (נופי ים צפון, שדה דב) מתוכננים מגדלים של עד 45 קומות, ולכן הנוף עשוי להשתנות.",
+      "source_ids": [
+        "MAD_L10",
+        "TLV_NYNORTH",
+        "NC_SDEDOV"
+      ]
+    },
+    {
+      "en": "The unit size, floor and street come from Madlan rather than the Instagram post, and the street comes from a search card only. Confirm them, and the broker's consent, before publishing an address.",
+      "he": "השטח, הקומה והרחוב מקורם במדלן ולא בפוסט באינסטגרם, והרחוב מופיע רק בכרטיס חיפוש. יש לאמת אותם, ולקבל את הסכמת המתווכת, לפני פרסום כתובת.",
+      "source_ids": [
+        "MAD_L10",
+        "MAD_NY_RENT"
+      ]
+    },
+    {
+      "en": "The building is described only as 7 floors on pillars with an elevator; its year built and management arrangements are unknown.",
+      "he": "הבניין מתואר רק כבניין בן 7 קומות על עמודים עם מעלית; שנת הבנייה וסידורי הניהול אינם ידועים.",
+      "source_ids": [
+        "MAD_L10"
+      ]
+    }
+  ],
+  "buyer_or_renter_questions": [
+    {
+      "en": "What is the exact address, and may it be published?",
+      "he": "מהי הכתובת המדויקת, והאם מותר לפרסם אותה?"
+    },
+    {
+      "en": "What is the lease term, is there an option to extend, and is the rent fixed or linked to the index?",
+      "he": "מהי תקופת השכירות, האם יש אופציה להארכה, והאם שכר הדירה קבוע או צמוד למדד?"
+    },
+    {
+      "en": "Which securities will the landlord ask for (bank guarantee, promissory note, guarantors), and for what amounts?",
+      "he": "אילו ערבויות יבקש המשכיר (ערבות בנקאית, שטר חוב, ערבים), ובאילו סכומים?"
+    },
+    {
+      "en": "Does the tenant pay a broker fee, how much, and does the amount include VAT?",
+      "he": "האם השוכר משלם דמי תיווך, בכמה, והאם הסכום כולל מע״מ?"
+    },
+    {
+      "en": "What are the current monthly va'ad bayit and the bi-monthly arnona bill, and which area and zone appear on the bill?",
+      "he": "מהו ועד הבית החודשי הנוכחי ומהו חשבון הארנונה הדו-חודשי, ואיזה שטח ואזור מופיעים בחשבון?"
+    },
+    {
+      "en": "Are the 2 parking spaces registered to the unit, side by side or in tandem, and underground or at ground level? Where is the storage room and how big is it?",
+      "he": "האם 2 החניות רשומות לדירה, נפרדות או בטור, ותת-קרקעיות או בגובה הקרקע? היכן המחסן ומה גודלו?"
+    },
+    {
+      "en": "Is the apartment furnished, and which appliances and air conditioners stay?",
+      "he": "האם הדירה מרוהטת, ואילו מוצרי חשמל ומזגנים נשארים בה?"
+    },
+    {
+      "en": "What are the working hours at the Einstein 15 site, and is other building work planned next to the building?",
+      "he": "מהן שעות העבודה באתר איינשטיין 15, והאם מתוכננות עבודות בנייה נוספות ליד הבניין?"
+    },
+    {
+      "en": "Which way does the balcony face, and what exactly is the open area in front of it?",
+      "he": "לאיזה כיוון פונה המרפסת, ומהו בדיוק השטח הפתוח שמולה?"
+    },
+    {
+      "en": "Is the 1.10.2026 entry date firm, and are pets allowed?",
+      "he": "האם מועד הכניסה 1.10.2026 סופי, והאם מותרים בעלי חיים?"
+    },
+    {
+      "en": "Which route is the path to the sea, and is it lit and open all year?",
+      "he": "באיזה מסלול עובר השביל לים, והאם הוא מואר ופתוח כל השנה?"
+    }
+  ],
+  "gaps": [
+    {
+      "en": "Year built, number of units and management arrangements of the building.",
+      "he": "שנת הבנייה, מספר הדירות וסידורי הניהול של הבניין."
+    },
+    {
+      "en": "A confirmed street address: only a Madlan search card shows Arthur Rubinstein 16.",
+      "he": "כתובת מאומתת: רק כרטיס חיפוש במדלן מציג את ארתור רובינשטיין 16."
+    },
+    {
+      "en": "The actual va'ad bayit and arnona for this unit, and its arnona zone and building code.",
+      "he": "ועד הבית והארנונה בפועל לדירה, ואזור הארנונה וסוג המבנה שלה."
+    },
+    {
+      "en": "A measured walking distance to Tel Baruch beach and the promenade, and the route of the path to the sea.",
+      "he": "מרחק הליכה מדוד לחוף תל ברוך ולטיילת, ומסלול השביל לים."
+    },
+    {
+      "en": "School registration zones for the address.",
+      "he": "אזורי הרישום לבתי ספר עבור הכתובת."
+    },
+    {
+      "en": "The Green Line works schedule on Einstein St, and any noise data for the Einstein 15 and Sde Dov sites.",
+      "he": "לוח הזמנים של עבודות הקו הירוק ברחוב איינשטיין, ונתוני רעש מאתרי איינשטיין 15 ושדה דב."
+    },
+    {
+      "en": "Furnishing, orientation and air conditioning of the unit.",
+      "he": "ריהוט, כיווני אוויר ומיזוג בדירה."
+    },
+    {
+      "en": "Achieved rents: Israel publishes no rent transactions, so all rent comps are asking rents or broker-reported tenancies.",
+      "he": "שכר דירה בפועל: בישראל לא מתפרסמות עסקאות שכירות, ולכן כל ההשוואות מבוססות על מחירים מבוקשים או על שכירויות שדווחו על ידי מתווכים."
+    }
+  ],
+  "access_notes": [
+    "The web search budget for this session was already exhausted, so pages were reached only through known URLs and links found on fetched pages.",
+    "Madlan pages were read through the WebFetch text extractor. A direct HTML request returned HTTP 403 (bot protection) and was not repeated. Madlan's feature icon list names every amenity, including 'pool', whether present or not, so amenities were taken only from advertisers' free text. Some figures differed between Madlan search cards and listing pages on the same day; listing pages were preferred.",
+    "A Madlan search URL with filter parameters was rejected by the fetch proxy (HTTP 403) and was not retried. Madlan results page 2 is not server-rendered, so only the first page of each neighborhood was read. Several Madlan listings returned HTTP 410 (removed) and were not used.",
+    "The statute text of the Rental and Borrowing Law on Hebrew Wikisource, and Wikidata, are cache-only for the fetch tool. OpenStreetMap Nominatim and Photon are disallowed by robots rules. With no geocoder and no sourced coordinates for the buildings, no straight-line distances were computed.",
+    "Yad2 neighborhood IDs for Nofei Yam and the Ramat Aviv neighborhoods could not be found (the Yad2 address autocomplete API is disallowed by robots rules); only the Glilot (1491) and Azorei Chen (1490) searches were used.",
+    "tel-aviv.gov.il (school registration zones, arnona GIS) was not attempted because earlier research in this project recorded HTTP 472 there. Instagram was not re-read; broker facts come from the project registry compiled on 2026-09-16."
+  ],
+  "sources": [
+    {
+      "id": "IG_L10",
+      "title": "Meital Katzir Instagram post: Nofei Yam 3 rooms for rent, NIS 9,500",
+      "url": "https://www.instagram.com/p/DdLdx2sCISW/",
+      "published": "2026-09-12"
+    },
+    {
+      "id": "MAD_L10",
+      "title": "Madlan listing by Meital Katzir (license 3131540): Nofei Yam 3 rooms, floor 5 of 7, NIS 9,500",
+      "url": "https://www.madlan.co.il/listings/fz9Ta4GtD64",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_0TMW",
+      "title": "Madlan listing by Meital Katzir: Ramat Aviv HaHadasha penthouse, with section of the broker's other listings",
+      "url": "https://www.madlan.co.il/listings/0tMWPnyRg4a",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_NY_RENT",
+      "title": "Madlan: apartments for rent in Nofei Yam (HaGush HaGadol)",
+      "url": "https://www.madlan.co.il/for-rent/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A0%D7%95%D7%A4%D7%99-%D7%99%D7%9D-%D7%94%D7%92%D7%95%D7%A9-%D7%94%D7%92%D7%93%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_AR16",
+      "title": "Madlan: address page, Arthur Rubinstein 16, Tel Aviv-Yafo",
+      "url": "https://www.madlan.co.il/address/%D7%90%D7%A8%D7%AA%D7%95%D7%A8-%D7%A8%D7%95%D7%91%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F-16-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "PTLV_NY",
+      "title": "project-tlv: Nofei Yam neighborhood page (boundaries, streets, projects)",
+      "url": "https://project-tlv.info/new-projects/nofei-yam/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "HON_RAH",
+      "title": "hon.co.il: Ramat Aviv HaHadasha, neighborhood profile",
+      "url": "https://www.hon.co.il/%D7%A8%D7%9E%D7%AA-%D7%90%D7%91%D7%99%D7%91-%D7%94%D7%97%D7%93%D7%A9%D7%94-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%AA%D7%A2%D7%95%D7%93%D7%AA-%D7%96%D7%94%D7%95%D7%AA/",
+      "published": "2019-05-08"
+    },
+    {
+      "id": "MAD_NY_SALE",
+      "title": "Madlan: apartments for sale in Nofei Yam (HaGush HaGadol)",
+      "url": "https://www.madlan.co.il/for-sale/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A0%D7%95%D7%A4%D7%99-%D7%99%D7%9D-%D7%94%D7%92%D7%95%D7%A9-%D7%94%D7%92%D7%93%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "PTLV_LAMED",
+      "title": "project-tlv: Plan Lamed and Lamed HaHadasha projects (Isaac Stern 20 and 22)",
+      "url": "https://project-tlv.info/new-projects/north/lamed/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_LAMED_RENT",
+      "title": "Madlan: apartments for rent in Lamed HaHadasha",
+      "url": "https://www.madlan.co.il/for-rent/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%9C-%D7%94%D7%97%D7%93%D7%A9%D7%94-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "GLOBES_NY_2024",
+      "title": "Globes (Madlan content): Eshkol vs Nofei Yam neighborhoods",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001481146",
+      "published": "2024-06-19"
+    },
+    {
+      "id": "MAD_E15",
+      "title": "Madlan: address page, Einstein 15 (30 floors, 180 units, completion mid-2028) with Nofei Yam transactions",
+      "url": "https://www.madlan.co.il/address/%D7%90%D7%99%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F-15-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "TLV_COMPARE",
+      "title": "Tel Aviv Online (Dr. Assaf Gestfreund): comparison of north-west Tel Aviv neighborhoods",
+      "url": "https://tlvonline.co.il/%D7%94%D7%A9%D7%95%D7%95%D7%90%D7%AA-%D7%A9%D7%9B%D7%95%D7%A0%D7%95%D7%AA-%D7%A6%D7%A4%D7%95%D7%9F-%D7%9E%D7%A2%D7%A8%D7%91-%D7%94%D7%A2%D7%99%D7%A8/",
+      "published": "2025-05-28"
+    },
+    {
+      "id": "WALLA_PROM",
+      "title": "Walla (Ziv Reinstein): the coastal park promenade opens in Tel Aviv",
+      "url": "https://travel.walla.co.il/item/3609266",
+      "published": "2023-09-14"
+    },
+    {
+      "id": "TIMEOUT_PROM",
+      "title": "Time Out Tel Aviv: the coastal park promenade",
+      "url": "https://timeout.co.il/%d7%98%d7%99%d7%99%d7%9c%d7%aa-%d7%94%d7%a4%d7%90%d7%a8%d7%a7-%d7%94%d7%97%d7%95%d7%a4%d7%99-%d7%aa%d7%9c-%d7%90%d7%91%d7%99%d7%91/",
+      "published": "2023-09-13"
+    },
+    {
+      "id": "WIKI_SDEDOV",
+      "title": "Wikipedia: Sde Dov Airport",
+      "url": "https://en.wikipedia.org/wiki/Sde_Dov_Airport",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "WALLA_SDEDOV",
+      "title": "Walla: Sde Dov plan, about 16,000 apartments",
+      "url": "https://nadlan.walla.co.il/item/3053023",
+      "published": "2017-03-29"
+    },
+    {
+      "id": "CALC_SDEDOV",
+      "title": "Calcalist: Sde Dov sales and delivery timeline",
+      "url": "https://www.calcalist.co.il/article/r12n2qiowx",
+      "published": "2026-02-24"
+    },
+    {
+      "id": "GLOBES_GINDI",
+      "title": "Globes English: Gindi undercuts rivals with much lower Sde Dov prices",
+      "url": "https://en.globes.co.il/en/article-gindi-undercuts-rivals-with-much-lower-sde-dov-prices-1001512098",
+      "published": "2025-06-05"
+    },
+    {
+      "id": "TLV_DUST",
+      "title": "Tel Aviv Online (Ortal Levi): the nuisance polluting the air of Kochav HaTzafon residents",
+      "url": "https://tlvonline.co.il/%D7%94%D7%9E%D7%98%D7%A8%D7%93-%D7%9E%D7%9E%D7%A0%D7%95-%D7%A1%D7%95%D7%91%D7%9C%D7%AA-%D7%A9%D7%9B%D7%95%D7%A0%D7%AA-%D7%9B%D7%95%D7%9B%D7%91-%D7%94%D7%A6%D7%A4%D7%95%D7%9F/",
+      "published": "2025-11-06"
+    },
+    {
+      "id": "TLV_BRIDGE23",
+      "title": "Tel Aviv Online (Shai Shgav): Einstein bridge opens",
+      "url": "https://tlvonline.co.il/%D7%92%D7%A9%D7%A8-%D7%90%D7%99%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F-%D7%A0%D7%A4%D7%AA%D7%97-%D7%9C%D7%AA%D7%A0%D7%95%D7%A2%D7%94/",
+      "published": "2023-11-24"
+    },
+    {
+      "id": "PTLV_EINBRIDGE",
+      "title": "project-tlv: Einstein bridge",
+      "url": "https://project-tlv.info/places/bridges/einstein/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "TLV_BRIDGE22",
+      "title": "Tel Aviv Online (Ruti Bosidan): residents of Nofei Yam and Lamed HaHadasha demand Einstein bridge",
+      "url": "https://tlvonline.co.il/%D7%92%D7%A9%D7%A8-%D7%90%D7%99%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F-%D7%91%D7%A0%D7%95%D7%A4%D7%99-%D7%99%D7%9D/",
+      "published": "2022-02-07"
+    },
+    {
+      "id": "MAD_B9MY",
+      "title": "Madlan listing: Nofei Yam penthouse, 5 rooms, 130 sqm + 30 sqm",
+      "url": "https://www.madlan.co.il/listings/b9mYGERoryV",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_TZ_AREA",
+      "title": "Madlan: Tzukei Aviv area information",
+      "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A6%D7%95%D7%A7%D7%99-%D7%90%D7%91%D7%99%D7%91-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_RA_AREA",
+      "title": "Madlan: Ramat Aviv area information",
+      "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A8%D7%9E%D7%AA-%D7%90%D7%91%D7%99%D7%91-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "TLV_AMOSOZ",
+      "title": "Tel Aviv Online (Shai Shgav): Amos Oz school moves to its new building",
+      "url": "https://tlvonline.co.il/%D7%91%D7%99%D7%AA-%D7%94%D7%A1%D7%A4%D7%A8-%D7%A2%D7%9E%D7%95%D7%A1-%D7%A2%D7%95%D7%96/",
+      "published": "2025-01-09"
+    },
+    {
+      "id": "MAD_KH_AREA",
+      "title": "Madlan: Kochav HaTzafon area information",
+      "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%9B%D7%95%D7%9B%D7%91-%D7%94%D7%A6%D7%A4%D7%95%D7%9F-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "PTLV_TZUKEI",
+      "title": "project-tlv: Tzukei Aviv (Nathan Alterman High School)",
+      "url": "https://project-tlv.info/new-projects/north/tsukei-aviv/",
+      "published": "modified 2025-06-24"
+    },
+    {
+      "id": "MAD_RAH_AREA",
+      "title": "Madlan: Ramat Aviv HaHadasha area information",
+      "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A8%D7%9E%D7%AA-%D7%90%D7%91%D7%99%D7%91-%D7%94%D7%97%D7%93%D7%A9%D7%94-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "ICE_GREEN",
+      "title": "ice.co.il: new Yarkon bridge opened, Green Line timeline",
+      "url": "https://www.ice.co.il/realestate/news/article/1114193",
+      "published": "2026-05-25"
+    },
+    {
+      "id": "WIKI_GREEN",
+      "title": "Wikipedia: Green Line (Tel Aviv Light Rail)",
+      "url": "https://en.wikipedia.org/wiki/Green_Line_(Tel_Aviv_Light_Rail)",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "GLOBES_GREEN_2017",
+      "title": "Globes: Ramat Aviv residents against the Green Line route on Einstein and Levanon",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001186251",
+      "published": "2017-04-25"
+    },
+    {
+      "id": "TLV_NYNORTH",
+      "title": "Tel Aviv Online: Nofei Yam North plan, towers of up to 45 floors",
+      "url": "https://tlvonline.co.il/%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA-%D7%A0%D7%95%D7%A4%D7%99-%D7%99%D7%9D-%D7%A6%D7%A4%D7%95%D7%9F/",
+      "published": "2025-03-12"
+    },
+    {
+      "id": "NC_SDEDOV",
+      "title": "Nadlan Center: Sde Dov center plan, objections rejected",
+      "url": "https://www.nadlancenter.co.il/article/11492",
+      "published": "2025-02-03"
+    },
+    {
+      "id": "GLOBES_3700",
+      "title": "Globes English: slow progress in huge northwest Tel Aviv plan",
+      "url": "https://en.globes.co.il/en/article-slow-progress-in-huge-northwest-tel-aviv-plan-1001441423",
+      "published": "2023-03-15"
+    },
+    {
+      "id": "TLV_SUBST",
+      "title": "Tel Aviv Online (Ruti Bosidan): Nofei Yam residents against a light rail electrical site",
+      "url": "https://tlvonline.co.il/%d7%aa%d7%95%d7%a9%d7%91%d7%99%d7%9d-%d7%91%d7%a0%d7%95%d7%a4%d7%99-%d7%99%d7%9d-%d7%a0%d7%90%d7%91%d7%a7%d7%99%d7%9d-%d7%a2%d7%9c-%d7%a9%d7%99%d7%a0%d7%95%d7%99-%d7%9e%d7%99%d7%a7%d7%95%d7%9d-%d7%97/",
+      "published": "2022-01-21"
+    },
+    {
+      "id": "TLV_HS2023",
+      "title": "Tel Aviv Online: Nofei Yam residents' fight against a planned high school",
+      "url": "https://tlvonline.co.il/%D7%9E%D7%90%D7%91%D7%A7-%D7%A0%D7%92%D7%93-%D7%94%D7%A7%D7%9E%D7%AA-%D7%AA%D7%99%D7%9B%D7%95%D7%9F-%D7%91%D7%A0%D7%95%D7%A4%D7%99-%D7%99%D7%9D/",
+      "published": "2023-07-01"
+    },
+    {
+      "id": "MAD_NY_AREA",
+      "title": "Madlan: Nofei Yam (HaGush HaGadol) area information",
+      "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A0%D7%95%D7%A4%D7%99-%D7%99%D7%9D-%D7%94%D7%92%D7%95%D7%A9-%D7%94%D7%92%D7%93%D7%95%D7%9C-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "YNET_3R",
+      "title": "Ynet (Madlan survey): 3-room price per sqm by Tel Aviv neighborhood",
+      "url": "https://www.ynet.co.il/economy/article/yokra14443171",
+      "published": "2025-07-19"
+    },
+    {
+      "id": "WALLA_CBS",
+      "title": "Walla Finance: CBS housing price index and August 2026 rents",
+      "url": "https://finance.walla.co.il/item/3868023",
+      "published": "2026-09-15"
+    },
+    {
+      "id": "MAD_CTXV",
+      "title": "Madlan listing: Ramat Aviv HaHadasha 3-room loft duplex, va'ad NIS 740, arnona NIS 1,500 bi-monthly",
+      "url": "https://www.madlan.co.il/listings/CTxvlPcuouh",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_RAH_RENT",
+      "title": "Madlan: apartments for rent in Ramat Aviv HaHadasha",
+      "url": "https://www.madlan.co.il/for-rent/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A8%D7%9E%D7%AA-%D7%90%D7%91%D7%99%D7%91-%D7%94%D7%97%D7%93%D7%A9%D7%94-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "YAD2_AZ_3R",
+      "title": "Yad2: 3 to 3.5-room rentals in Azorei Chen / Gimel HaHadasha",
+      "url": "https://www.yad2.co.il/realestate/rent?topArea=2&area=1&city=5000&neighborhood=1490&rooms=3-3.5",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_RAG_RENT",
+      "title": "Madlan: apartments for rent in Ramat Aviv Gimel",
+      "url": "https://www.madlan.co.il/for-rent/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A8%D7%9E%D7%AA-%D7%90%D7%91%D7%99%D7%91-%D7%92-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_KH_RENT",
+      "title": "Madlan: apartments for rent in Kochav HaTzafon",
+      "url": "https://www.madlan.co.il/for-rent/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%9B%D7%95%D7%9B%D7%91-%D7%94%D7%A6%D7%A4%D7%95%D7%9F-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "IG_L05",
+      "title": "Meital Katzir Instagram reel: Tzukei Aviv 3.5 rooms, rented at NIS 15,000",
+      "url": "https://www.instagram.com/reel/DRRoRx4DhAD/",
+      "published": "2025-11-20"
+    },
+    {
+      "id": "NBN_RENT",
+      "title": "Nefesh B'Nefesh (Adv. Russell D. Mayer): renting an apartment in Israel",
+      "url": "https://www.nbn.org.il/life-in-israel/community-and-housing/buying-and-renting/renting-in-israel/",
+      "published": "updated 2025-05-07"
+    },
+    {
+      "id": "NC_FAIR",
+      "title": "Nadlan Center: Fair Rental Law, complete guide for 2026",
+      "url": "https://www.nadlancenter.co.il/article/766",
+      "published": "updated 2026-05-10"
+    },
+    {
+      "id": "KZ_GUAR",
+      "title": "Kol Zchut: limit on the security a landlord may demand from a tenant",
+      "url": "https://www.kolzchut.org.il/he/%D7%94%D7%92%D7%91%D7%9C%D7%AA_%D7%A1%D7%9B%D7%95%D7%9D_%D7%94%D7%A2%D7%A8%D7%95%D7%91%D7%94_%D7%A9%D7%9E%D7%95%D7%AA%D7%A8_%D7%9C%D7%93%D7%A8%D7%95%D7%A9_%D7%9E%D7%A9%D7%95%D7%9B%D7%A8_%D7%93%D7%99%D7%A8%D7%94",
+      "published": "updated 2026-08-12"
+    },
+    {
+      "id": "KZ_FAIR",
+      "title": "Kol Zchut: renting an apartment fit for habitation (Fair Rental chapter, eligibility)",
+      "url": "https://www.kolzchut.org.il/he/%D7%94%D7%A9%D7%9B%D7%A8%D7%AA_%D7%93%D7%99%D7%A8%D7%94_%D7%A8%D7%90%D7%95%D7%99%D7%94_%D7%9C%D7%9E%D7%92%D7%95%D7%A8%D7%99%D7%9D",
+      "published": "updated 2025-03-02"
+    },
+    {
+      "id": "MAD_FPDK",
+      "title": "Madlan listing: HaGush HaGadol mini penthouse, 110 sqm + 50 sqm, new luxury building",
+      "url": "https://www.madlan.co.il/listings/fPDK0AjEyJ3",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "KH_TLV",
+      "title": "Kol HaBayit: Tel Aviv arnona calculator 2026 (rates by zone and building code)",
+      "url": "https://kolhabait.com/arnona/tel-aviv",
+      "published": "updated 2026-08"
+    },
+    {
+      "id": "NC_ARNONA",
+      "title": "Nadlan Center: Tel Aviv 2026 arnona increases approved",
+      "url": "https://www.nadlancenter.co.il/article/13556",
+      "published": "2025-12-28"
+    },
+    {
+      "id": "KH_MEASURE",
+      "title": "Kol HaBayit: arnona measurement methods by city",
+      "url": "https://kolhabait.com/arnona/shitat-medida",
+      "published": "2026"
+    },
+    {
+      "id": "KH_ZONES",
+      "title": "Kol HaBayit: arnona zones guide (zone set by main entrance address)",
+      "url": "https://kolhabait.com/arnona/madrich/zones",
+      "published": "accessed 2026-09-16"
+    }
+  ]
+}

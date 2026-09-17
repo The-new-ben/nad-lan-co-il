@@ -1,0 +1,126 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "3 חדרים עם מרפסת של 20 מ״ר ו-2 חניות, נופי ים",
+   "description": "3 חדרים, כ-90 מ״ר ומרפסת 20 מ״ר בקומה 5, ממ״ד, 2 חניות ומחסן, כחמש דקות מהים. 9,500 ש״ח לחודש, כניסה 1.10.2026, עם עלויות, חוק ושכירויות באזור.",
+   "inLanguage": "he-IL",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/properties/nofei-yam-3-rooms-balcony-for-rent/",
+   "about": {
+    "@type": "Apartment",
+    "name": "3 חדרים עם מרפסת של 20 מ״ר ו-2 חניות, נופי ים",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "תל אביב-יפו",
+     "addressRegion": "נופי ים",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 3,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 90,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מעלית",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "ממ״ד",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חניה",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מחסן",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מרפסת",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "מיטל קציר, נדל״ן על הים",
+     "telephone": "+972523631582"
+    },
+    "priceSpecification": {
+     "@type": "UnitPriceSpecification",
+     "price": 9500,
+     "priceCurrency": "ILS",
+     "unitCode": "MON"
+    }
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "כמה עולה הדירה בחודש?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "9,500 ש״ח לפי מודעות המשווקת. עם ארנונה בהערכה, ולפני ועד בית שלא פורסם, כ-10,332 עד 10,536 ש״ח לחודש."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "מה גודל הדירה ובאיזו קומה היא?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לפי מודעת המשווקת במדלן: כ-90 מ״ר ומרפסת של כ-20 מ״ר, בקומה 5 בבניין בן 7 קומות על עמודים עם מעלית."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "יש ממ״ד וחניה?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "כן. לפי המשווקת בדירה ממ״ד, ולה 2 חניות נפרדות ומחסן גדול ליד החניה."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "כמה רחוק הים?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לפי המשווקת כחמש דקות הליכה, סמוך לשביל לים. טיילת פארק החוף, באורך כ-2 ק״מ מחוף תל ברוך עד חוף הצוק, נפתחה ב-2023."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "מה החוק קובע לגבי ערבויות?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "בשכר דירה של עד 20,000 ש״ח חל חוק השכירות ההוגנת, והערבויות מוגבלות לנמוך מבין 3 חודשי שכירות לשליש משכר הדירה לכל התקופה: עד 28,500 ש״ח בחוזה של 9 חודשים ומעלה."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "האם יש עבודות בנייה בסביבה?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "כן. ברחוב איינשטיין נבנה מגדל בן 30 קומות שצפוי להסתיים באמצע 2028, וממערב לשכונה נבנה רובע שדה דב."
+     }
+    }
+   ]
+  }
+ ]
+}

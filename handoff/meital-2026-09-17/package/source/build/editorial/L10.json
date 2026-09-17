@@ -1,0 +1,1240 @@
+{
+ "id": "L10",
+ "deal": "rent",
+ "ptype": "apartment",
+ "plate": "apartment",
+ "status": "active",
+ "last_post": "2026-09-12",
+ "rooms": 3,
+ "rent": 9500,
+ "rent_src": [
+  "IG_L10",
+  "MAD_L10"
+ ],
+ "rent_area": 90,
+ "built": 90,
+ "balcony": 20,
+ "city": {
+  "he": "תל אביב-יפו",
+  "en": "Tel Aviv-Yafo"
+ },
+ "area": {
+  "he": "נופי ים",
+  "en": "Nofei Yam"
+ },
+ "plate_name": {
+  "he": "נופי ים, הגוש הגדול",
+  "en": "Nofei Yam, HaGush HaGadol"
+ },
+ "kicker": {
+  "he": "להשכרה · נופי ים, צפון תל אביב",
+  "en": "For rent · Nofei Yam, north Tel Aviv"
+ },
+ "title": {
+  "he": "3 חדרים עם מרפסת של 20 מ״ר ו-2 חניות, נופי ים",
+  "en": "Three Rooms with a 20 sqm Balcony and Two Parking Spaces, Nofei Yam"
+ },
+ "dek": {
+  "he": "כ-90 מ״ר בקומה 5 מתוך 7, מרפסת של כ-20 מ״ר, ממ״ד, 2 חניות נפרדות ומחסן גדול, כחמש דקות הליכה מהים לפי המשווקת. 9,500 ש״ח לחודש, כניסה ב-1.10.2026 בגמישות.",
+  "en": "About 90 sqm on floor 5 of 7, a balcony of about 20 sqm, a safe room, two separate parking spaces and a large storage room, about five minutes on foot from the sea according to the broker. NIS 9,500 a month, entry 1 October 2026, flexible."
+ },
+ "chips": [
+  {
+   "he": "בלעדיות: מיטל קציר, נדל״ן על הים",
+   "en": "Exclusive: Meital Katzir, Real Estate by the Sea",
+   "sea": true
+  },
+  {
+   "he": "כניסה ב-1.10.2026, גמיש",
+   "en": "Entry 1 Oct 2026, flexible"
+  },
+  {
+   "he": "ממ״ד, 2 חניות ומחסן",
+   "en": "Safe room, two parking spaces, storage"
+  }
+ ],
+ "facts": [
+  {
+   "label": {
+    "he": "חדרים",
+    "en": "Rooms"
+   },
+   "value": {
+    "he": "3",
+    "en": "3"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "שטח בנוי",
+    "en": "Built area"
+   },
+   "value": {
+    "he": "כ-90 מ״ר",
+    "en": "About 90 sqm"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "מרפסת",
+    "en": "Balcony"
+   },
+   "value": {
+    "he": "כ-20 מ״ר",
+    "en": "About 20 sqm"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "קומה",
+    "en": "Floor"
+   },
+   "value": {
+    "he": "5 מתוך 7",
+    "en": "5 of 7"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "ממ״ד",
+    "en": "Safe room"
+   },
+   "value": {
+    "he": "יש",
+    "en": "Yes"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "חניה",
+    "en": "Parking"
+   },
+   "value": {
+    "he": "2 נפרדות",
+    "en": "2 separate"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "מחסן",
+    "en": "Storage"
+   },
+   "value": {
+    "he": "גדול",
+    "en": "Large"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "כניסה",
+    "en": "Entry"
+   },
+   "value": {
+    "he": "1.10.2026",
+    "en": "1 Oct 2026"
+   },
+   "basis": "broker"
+  }
+ ],
+ "price_rows": [
+  {
+   "dt": {
+    "he": "כניסה",
+    "en": "Entry"
+   },
+   "dd": {
+    "he": "1.10.2026, בגמישות",
+    "en": "1 Oct 2026, flexible"
+   }
+  }
+ ],
+ "story_h2": {
+  "he": "שלושה חדרים בשכונה נמוכה, קרוב לפארק החוף",
+  "en": "Three rooms in a low-rise neighborhood near the coastal park"
+ },
+ "story": {
+  "he": [
+   "נופי ים היא השכונה שבין רחוב פרופס בצפון, שדרות לוי אשכול במזרח, רחוב איינשטיין בדרום ואזור שדה דב במערב, ויחד עם רמת אביב החדשה היא יוצרת את האזור המכונה הגוש הגדול.[[PTLV_NY,HON_RAH]] בשכונה כ-2,000 דירות בבניינים נמוכים יחסית, בשל מגבלות הגובה שנבעו משדה התעופה שדה דב לשעבר.[[GLOBES_NY_2024]]",
+   "הדירה המוצעת: 3 חדרים על כ-90 מ״ר, מרפסת של כ-20 מ״ר הפונה לשטח פתוח, וממ״ד, בקומה 5 בבניין בן 7 קומות על עמודים עם מעלית.[[MAD_L10]] לדירה 2 חניות נפרדות ומחסן גדול ליד החניה, ולפי המשווקת היא נמצאת כחמש דקות הליכה מהים, סמוך לשביל ההולכים לים.[[IG_L10,MAD_L10]]",
+   "שכר הדירה המבוקש 9,500 ש״ח לחודש, והכניסה ב-1.10.2026 בגמישות.[[IG_L10,MAD_L10]] ב-16 בספטמבר 2026 הופיעו בעמוד התוצאות הראשון של מדלן בנופי ים 16 מודעות להשכרה, ודירה זו הייתה היחידה בת 3 חדרים.[[MAD_NY_RENT]]"
+  ],
+  "en": [
+   "Nofei Yam is the neighborhood between Propes Street to the north, Levi Eshkol Boulevard to the east, Einstein Street to the south and the Sde Dov area to the west; with Ramat Aviv HaHadasha it forms the area known as HaGush HaGadol.[[PTLV_NY,HON_RAH]] It holds about 2,000 apartments in relatively low buildings, a result of height limits linked to the former Sde Dov airport.[[GLOBES_NY_2024]]",
+   "The apartment has three rooms on about 90 sqm, a balcony of about 20 sqm facing an open area, and a safe room (mamad), on floor 5 of a seven-floor building on pillars with a lift.[[MAD_L10]] It comes with two separate parking spaces and a large storage room near the parking, and according to the broker it is about five minutes on foot from the sea, next to the walking path down to the beach.[[IG_L10,MAD_L10]]",
+   "The asking rent is NIS 9,500 a month, with entry on 1 October 2026, flexible.[[IG_L10,MAD_L10]] On 16 September 2026 the first page of Madlan results for Nofei Yam showed 16 rental listings, and this was the only three-room unit among them.[[MAD_NY_RENT]]"
+  ]
+ },
+ "features": {
+  "he": [
+   [
+    "כ-90 מ״ר ומרפסת של 20 מ״ר",
+    "3 חדרים, לפי המשווקת"
+   ],
+   [
+    "ממ״ד בתוך הדירה",
+    "מרחב מוגן דירתי"
+   ],
+   [
+    "2 חניות נפרדות",
+    "ומחסן גדול ליד החניה"
+   ],
+   [
+    "קומה 5 מתוך 7",
+    "בניין על עמודים עם מעלית"
+   ],
+   [
+    "כחמש דקות הליכה לים",
+    "לפי המשווקת; טיילת פארק החוף נפתחה ב-2023[[WALLA_PROM]]"
+   ],
+   [
+    "כ-106 ש״ח למ״ר בחודש",
+    "חישוב על 90 מ״ר בנוי"
+   ]
+  ],
+  "en": [
+   [
+    "About 90 sqm plus a 20 sqm balcony",
+    "Three rooms, broker-stated"
+   ],
+   [
+    "Safe room inside the unit",
+    "An in-apartment protected room (mamad)"
+   ],
+   [
+    "Two separate parking spaces",
+    "And a large storage room near the parking"
+   ],
+   [
+    "Floor 5 of 7",
+    "A building on pillars with a lift"
+   ],
+   [
+    "About five minutes on foot to the sea",
+    "Per the broker; the coastal park promenade opened in 2023[[WALLA_PROM]]"
+   ],
+   [
+    "About NIS 106 per sqm a month",
+    "Computed on 90 sqm built"
+   ]
+  ]
+ },
+ "spec": [
+  {
+   "title": {
+    "he": "הדירה",
+    "en": "The apartment"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "חדרים",
+      "en": "Rooms"
+     },
+     "dd": {
+      "he": "3",
+      "en": "3 (Israeli count)"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L10"
+     ]
+    },
+    {
+     "dt": {
+      "he": "שטח בנוי",
+      "en": "Built area"
+     },
+     "dd": {
+      "he": "כ-90 מ״ר",
+      "en": "About 90 sqm"
+     },
+     "basis": "broker",
+     "src": [
+      "MAD_L10"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מרפסת",
+      "en": "Balcony"
+     },
+     "dd": {
+      "he": "כ-20 מ״ר, פונה לשטח פתוח",
+      "en": "About 20 sqm, facing an open area"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L10",
+      "MAD_L10"
+     ]
+    },
+    {
+     "dt": {
+      "he": "קומה",
+      "en": "Floor"
+     },
+     "dd": {
+      "he": "5 מתוך 7",
+      "en": "5 of 7"
+     },
+     "basis": "broker",
+     "src": [
+      "MAD_L10"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מרחב מוגן",
+      "en": "Safe room"
+     },
+     "dd": {
+      "he": "ממ״ד בדירה",
+      "en": "Mamad in the apartment"
+     },
+     "basis": "broker",
+     "src": [
+      "MAD_L10"
+     ]
+    }
+   ]
+  },
+  {
+   "title": {
+    "he": "חניה, אחסון וכניסה",
+    "en": "Parking, storage and entry"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "חניה",
+      "en": "Parking"
+     },
+     "dd": {
+      "he": "2 חניות נפרדות",
+      "en": "Two separate parking spaces"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L10",
+      "MAD_L10"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מחסן",
+      "en": "Storage"
+     },
+     "dd": {
+      "he": "מחסן גדול ליד החניה",
+      "en": "Large storage room near the parking"
+     },
+     "basis": "broker",
+     "src": [
+      "MAD_L10"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מעלית",
+      "en": "Lift"
+     },
+     "dd": {
+      "he": "יש; הבניין על עמודים",
+      "en": "Yes; the building stands on pillars"
+     },
+     "basis": "broker",
+     "src": [
+      "MAD_L10"
+     ]
+    },
+    {
+     "dt": {
+      "he": "כניסה",
+      "en": "Entry"
+     },
+     "dd": {
+      "he": "1.10.2026, בגמישות",
+      "en": "1 October 2026, flexible"
+     },
+     "basis": "broker",
+     "src": [
+      "IG_L10",
+      "MAD_L10"
+     ]
+    }
+   ]
+  },
+  {
+   "title": {
+    "he": "טרם פורסם",
+    "en": "Not yet published"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "ריהוט ומיזוג",
+      "en": "Furnishing and air conditioning"
+     },
+     "dd": {
+      "he": "לא צוינו במודעות",
+      "en": "Not stated in the listings"
+     }
+    },
+    {
+     "dt": {
+      "he": "כיוון המרפסת",
+      "en": "Balcony orientation"
+     },
+     "dd": {
+      "he": "לא צוין; המרפסת פונה לשטח פתוח",
+      "en": "Not stated; the balcony faces an open area"
+     }
+    },
+    {
+     "dt": {
+      "he": "ועד בית וארנונה",
+      "en": "Building fee and arnona"
+     },
+     "dd": {
+      "he": "לא צוינו; הערכת ארנונה בפרק המספרים",
+      "en": "Not stated; an arnona estimate is in the numbers section"
+     }
+    },
+    {
+     "dt": {
+      "he": "כתובת",
+      "en": "Address"
+     },
+     "dd": {
+      "he": "תימסר בתיאום עם המשווקת",
+      "en": "Given on contact with the broker"
+     }
+    }
+   ]
+  }
+ ],
+ "building_h2": {
+  "he": "בניין בן 7 קומות על עמודים, עם מעלית",
+  "en": "A seven-floor building on pillars, with a lift"
+ },
+ "building_lead": {
+  "he": "שנת הבנייה, מספר הדירות והסדרי הניהול של הבניין לא פורסמו, ובמודעות לא מוזכרים לובי, שמירה, חדר כושר או בריכה.[[IG_L10,MAD_L10]]",
+  "en": "The year built, number of units and management arrangements were not published, and the listings mention no lobby, guard, gym or pool.[[IG_L10,MAD_L10]]"
+ },
+ "building": [
+  {
+   "dt": {
+    "he": "קומות",
+    "en": "Floors"
+   },
+   "dd": {
+    "he": "7, על עמודים",
+    "en": "7, on pillars"
+   },
+   "basis": "broker",
+   "src": [
+    "MAD_L10"
+   ]
+  },
+  {
+   "dt": {
+    "he": "מעלית",
+    "en": "Lift"
+   },
+   "dd": {
+    "he": "יש",
+    "en": "Yes"
+   },
+   "basis": "broker",
+   "src": [
+    "MAD_L10"
+   ]
+  },
+  {
+   "dt": {
+    "he": "גובה הבנייה בשכונה",
+    "en": "Building heights nearby"
+   },
+   "dd": {
+    "he": "6 עד 11 קומות בבניינים שבמודעות נופי ים שנבדקו במדלן; מגדל בן 30 קומות נבנה ברחוב איינשטיין",
+    "en": "6 to 11 floors in the Nofei Yam listings reviewed on Madlan; a 30-floor tower is under construction on Einstein Street"
+   },
+   "src": [
+    "MAD_NY_RENT",
+    "MAD_E15"
+   ]
+  },
+  {
+   "dt": {
+    "he": "גיל הבניינים הסמוכים",
+    "en": "Age of nearby buildings"
+   },
+   "dd": {
+    "he": "עסקאות 2026 ברחובות אמיר גלבוע ומרק שאגאל נרשמו בבניינים משנים 2004 עד 2007",
+    "en": "2026 sales on Amir Gilboa and Marc Chagall streets were in buildings from 2004 to 2007"
+   },
+   "src": [
+    "MAD_E15"
+   ]
+  },
+  {
+   "dt": {
+    "he": "ועד בית",
+    "en": "Building fee (va'ad bayit)"
+   },
+   "dd": {
+    "he": "לא פורסם. במודעות אחרות באזור: 550 ש״ח לחודש בבניין חדש בן 7 קומות בגוש הגדול, ו-740 ש״ח לדירת 3 חדרים בבניין בן 12 קומות ברמת אביב החדשה",
+    "en": "Not published. Other listings nearby state NIS 550 a month in a new seven-floor HaGush HaGadol building and NIS 740 for a three-room unit in a 12-floor Ramat Aviv HaHadasha building"
+   },
+   "src": [
+    "MAD_FPDK",
+    "MAD_CTXV"
+   ]
+  },
+  {
+   "dt": {
+    "he": "שירותים בבניין",
+    "en": "Building services"
+   },
+   "dd": {
+    "he": "לא צוינו",
+    "en": "None stated"
+   },
+   "src": [
+    "IG_L10",
+    "MAD_L10"
+   ]
+  }
+ ],
+ "location_h2": {
+  "he": "נופי ים: בין הגוש הגדול לפארק החוף",
+  "en": "Nofei Yam, between HaGush HaGadol and the coastal park"
+ },
+ "location": {
+  "he": [
+   "טיילת פארק החוף נפתחה בספטמבר 2023 ומשתרעת לאורך כ-2 ק״מ על המצוק, מחוף תל ברוך בדרום עד חוף הצוק בצפון, בתוך פארק טבע של 500 דונם ולצד שביל אופניים.[[WALLA_PROM,TIMEOUT_PROM]] זמן ההליכה מהדירה לים הוא הערכת המשווקת ולא נמדד באופן עצמאי.",
+   "בין המתחמים בשכונה פועלים לפחות שני מרכזים מסחריים קטנים, אך אין בה רחוב מסחרי תוסס; בגוש הגדול פועלים כמה גני ילדים ובית ספר.[[TLV_COMPARE,GLOBES_NY_2024]] מנובמבר 2023 מחבר גשר להולכי רגל ולאופניים, עם מעליות, מעל רחוב איינשטיין בין נופי ים לל׳ החדשה, ומדרום לרחוב פועל הקאנטרי העירוני של תוכנית ל׳.[[TLV_BRIDGE23,TLV_COMPARE]]",
+   "ממערב לשכונה נבנה רובע שדה דב, על שטח שדה התעופה שנסגר ב-2019, עם כ-16,000 דירות. עד פברואר 2026 מכרו היזמים יותר מ-1,500 דירות, ורובן צפויות להיות מוכנות בתוך 3 עד 6 שנים.[[WIKI_SDEDOV,CALC_SDEDOV]] הגישה ברכב נשענת בעיקר על שדרות לוי אשכול ועל רחוב איינשטיין, וצומת איינשטיין-נמיר עמוס בשעות השיא.[[TLV_COMPARE]]"
+  ],
+  "en": [
+   "The coastal park promenade opened in September 2023 and runs about 2 km along the cliff, from Tel Baruch beach in the south to Tzuk beach in the north, inside a 500-dunam nature park and alongside a bike path.[[WALLA_PROM,TIMEOUT_PROM]] The walking time from the apartment to the sea is the broker's estimate and has not been measured independently.",
+   "At least two small shopping centers operate among the neighborhood's complexes, though there is no lively shopping street; several kindergartens and a school operate within HaGush HaGadol.[[TLV_COMPARE,GLOBES_NY_2024]] Since November 2023 a pedestrian and cycle bridge with lifts has crossed Einstein Street between Nofei Yam and Lamed HaHadasha, and the municipal country club of Plan Lamed lies south of the street.[[TLV_BRIDGE23,TLV_COMPARE]]",
+   "West of the neighborhood, the Sde Dov district is being built on the airport that closed in 2019, with about 16,000 apartments. By February 2026 developers had sold more than 1,500 of them, and most are expected to be ready within 3 to 6 years.[[WIKI_SDEDOV,CALC_SDEDOV]] Car access relies mainly on Levi Eshkol Boulevard and Einstein Street, and the Einstein and Namir junction is congested at peak hours.[[TLV_COMPARE]]"
+  ]
+ },
+ "dist": [
+  0
+ ],
+ "schools_override": {
+  "0": {
+   "note": {
+    "he": "כ-91 תלמידים בשכבה לפי מדלן. אזור הרישום לא אומת.",
+    "en": "About 91 pupils per grade per Madlan. Registration zone not verified."
+   }
+  },
+  "1": {
+   "note": {
+    "he": "מופיע כבית ספר סמוך בדפי כתובות בנופי ים במדלן. אזור הרישום לא אומת.",
+    "en": "Listed as nearby on Madlan pages for Nofei Yam addresses. Registration zone not verified."
+   }
+  },
+  "2": {
+   "note": {
+    "he": "מבנה חדש בהמשך הצפוני של רחוב אבן גבירול, במפגש עם רחוב מרק שאגאל; שבע כיתות וכיתת חינוך מיוחד בכל שכבה. בינואר 2025 הבנייה הייתה בשלבי סיום. אזור הרישום לא אומת.",
+    "en": "A new building on the northern extension of Ibn Gabirol Street at Marc Chagall Street; seven classes plus a special education class per grade. In January 2025 construction was being completed. Registration zone not verified."
+   }
+  }
+ },
+ "transport_override": {
+  "0": {
+   "title": {
+    "he": "הקו הירוק של הרכבת הקלה",
+    "en": "Green Line light rail"
+   },
+   "status": {
+    "he": "בבנייה, מראשון לציון וחולון להרצליה. הקטע הדרומי צפוי ב-2028 והקו כולו ב-2030.",
+    "en": "Under construction, from Rishon LeZion and Holon to Herzliya. The southern section is expected in 2028 and the full line in 2030."
+   }
+  },
+  "1": {
+   "title": {
+    "he": "תוואי הקו הירוק ליד נופי ים",
+    "en": "Green Line route near Nofei Yam"
+   },
+   "status": {
+    "he": "מתוכנן לאורך רחוב איינשטיין, עם תחנה שקועה בצומת נמיר-איינשטיין ותחנה ליד רחוב מרק שאגאל. לוח הזמנים של העבודות ברחוב איינשטיין לא אומת.",
+    "en": "Planned along Einstein Street, with a sunken station at the Namir and Einstein junction and a station near Marc Chagall Street. The works schedule on Einstein Street was not verified."
+   }
+  },
+  "2": {
+   "title": {
+    "he": "גשר איינשטיין",
+    "en": "Einstein bridge"
+   },
+   "status": {
+    "he": "להולכי רגל ולאופניים, עם מעליות, בין נופי ים לל׳ החדשה. פועל מנובמבר 2023.",
+    "en": "For pedestrians and cyclists, with lifts, between Nofei Yam and Lamed HaHadasha. Open since November 2023."
+   }
+  },
+  "3": {
+   "title": {
+    "he": "גישה ברכב",
+    "en": "Car access"
+   },
+   "status": {
+    "he": "דרך שדרות לוי אשכול ורחוב איינשטיין; צומת איינשטיין-נמיר עמוס בשעות השיא, לפי דיווח מ-2025.",
+    "en": "Via Levi Eshkol Boulevard and Einstein Street; the Einstein and Namir junction is congested at peak hours, per a 2025 report."
+   }
+  },
+  "4": {
+   "title": {
+    "he": "תחבורה ציבורית למרכז העיר",
+    "en": "Public transport to the city center"
+   },
+   "status": {
+    "he": "כ-25 עד 30 דקות מתוכנית ל׳ ומרמת אביב החדשה, לפי הערכת שמאי מ-2025; לנופי ים עצמה לא ניתן נתון.",
+    "en": "About 25 to 30 minutes from Plan Lamed and Ramat Aviv HaHadasha, per a 2025 appraiser's estimate; no figure was given for Nofei Yam itself."
+   }
+  },
+  "5": {
+   "title": {
+    "he": "שביל האופניים בפארק החוף",
+    "en": "Coastal park bike path"
+   },
+   "status": {
+    "he": "2 ק״מ, מחוף תל ברוך לחוף הצוק. פועל מ-2023.",
+    "en": "2 km, from Tel Baruch beach to Tzuk beach. Open since 2023."
+   }
+  }
+ },
+ "future": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "future_override": {
+  "0": {
+   "title": {
+    "he": "פרויקט איינשטיין 15",
+    "en": "Einstein 15 project"
+   },
+   "impact": {
+    "he": "מגדל של 30 קומות ו-180 יחידות דיור ברחוב איינשטיין, בגבול הדרומי של השכונה; לפי מדלן צפי הסיום באמצע 2028. עד אז צפויות בסביבה עבודות בנייה ותנועת רכבי בנייה. המרחק מהבניין תלוי בכתובת המדויקת.[[PTLV_NY]]",
+    "en": "A 30-floor tower with 180 homes on Einstein Street, the neighborhood's southern edge; Madlan expects completion in mid-2028. Until then, expect construction work and site traffic nearby. The distance from the building depends on the exact address.[[PTLV_NY]]"
+   }
+  },
+  "1": {
+   "title": {
+    "he": "פרויקט איינשטיין 1",
+    "en": "Einstein 1 project"
+   },
+   "impact": {
+    "he": "179 דירות. תחילת הבנייה תוכננה ל-2025 לפי תוכן של מדלן שפורסם בגלובס ב-2024; הסטטוס הנוכחי לא אומת.",
+    "en": "179 apartments. Construction was planned to start in 2025, per Madlan content published in Globes in 2024; current status not verified."
+   }
+  },
+  "2": {
+   "title": {
+    "he": "נופי ים צפון",
+    "en": "Nofei Yam North"
+   },
+   "impact": {
+    "he": "191 דונם פנויים בין השכונה לרחוב פרופס. תוכנית מ-2021 מתירה 1,530 יחידות דיור, אך לא הוצאו היתרים; במרץ 2025 הוארכה הקפאת ההיתרים בשלוש שנים לתכנון מחדש, והגובה עשוי לעלות מ-15 ל-45 קומות. הנוף לכיוון צפון עשוי להשתנות בטווח הארוך.",
+    "en": "191 vacant dunams between the neighborhood and Propes Street. A 2021 plan allows 1,530 homes but no permits were issued; in March 2025 the permit freeze was extended by three years for re-planning, and heights could rise from 15 to 45 floors. Views to the north may change in the long term."
+   }
+  },
+  "3": {
+   "title": {
+    "he": "תוכנית מרכז שדה דב",
+    "en": "Sde Dov center plan"
+   },
+   "impact": {
+    "he": "7,128 יחידות דיור במגדלים של 20 ו-45 קומות. ההתנגדויות נדחו בפברואר 2025; קו הרקיע ממערב ומדרום-מערב ישתנה, והעבודות יימשכו שנים.",
+    "en": "7,128 homes in towers of 20 and 45 floors. Objections were rejected in February 2025; the skyline to the west and south-west will change, and works will continue for years."
+   }
+  },
+  "4": {
+   "title": {
+    "he": "תוכנית 3700, צפון-מערב העיר",
+    "en": "Plan 3700, north-west Tel Aviv"
+   },
+   "impact": {
+    "he": "כ-12,000 יחידות דיור מצפון לרחוב פרופס: היצע חדש גדול ובנייה ארוכת טווח מצפון לשכונה.",
+    "en": "About 12,000 homes north of Propes Street: a large new supply and long-term construction north of the neighborhood."
+   }
+  }
+ },
+ "numbers": {
+  "h2": {
+   "he": "9,500 ש״ח לחודש, והעלות המלאה",
+   "en": "NIS 9,500 a month, and the full cost"
+  },
+  "lead": {
+   "he": "שכר הדירה לפי מודעות המשווקת, מחושב לפי תעריפי הארנונה של 2026 וכללי חוק השכירות ההוגנת.",
+   "en": "The rent in the broker's listings, computed against 2026 arnona rates and the Fair Rental Law rules."
+  },
+  "extra_kpis": [
+   {
+    "dt": {
+     "he": "כולל ארנונה, הערכה",
+     "en": "Including arnona, estimate"
+    },
+    "dd": {
+     "he": "10,332-10,536 ₪",
+     "en": "NIS 10,332-10,536"
+    },
+    "small": {
+     "he": "לחודש, לפני ועד בית שלא פורסם",
+     "en": "A month, before the unpublished building fee"
+    }
+   }
+  ],
+  "tabs_title": {
+   "he": "העלות לשוכר",
+   "en": "What the tenant pays"
+  },
+  "tabs": [
+   {
+    "label": {
+     "he": "חודשי",
+     "en": "Monthly"
+    },
+    "rows": [
+     {
+      "dt": {
+       "he": "שכר דירה[[IG_L10,MAD_L10]]",
+       "en": "Rent[[IG_L10,MAD_L10]]"
+      },
+      "dd": {
+       "he": "9,500 ₪",
+       "en": "NIS 9,500"
+      }
+     },
+     {
+      "dt": {
+       "he": "ארנונה, הערכה[[G_KH_TLV,G_NC_ARNONA]]",
+       "en": "Arnona, estimate[[G_KH_TLV,G_NC_ARNONA]]"
+      },
+      "dd": {
+       "he": "832-1,036 ₪",
+       "en": "NIS 832-1,036"
+      },
+      "note": {
+       "he": "110 מ״ר כולל המרפסת, בתעריף אא של אזור 2 עד אזור 1; נמוך יותר בסיווגי בניין ישנים. האזור, הסיווג והשטח לחיוב לא אומתו",
+       "en": "110 sqm including the balcony, at newest-code rates for zone 2 to zone 1; lower for older building codes. Zone, code and charged area unverified"
+      }
+     },
+     {
+      "dt": {
+       "he": "ועד בית[[MAD_FPDK,MAD_CTXV]]",
+       "en": "Building fee[[MAD_FPDK,MAD_CTXV]]"
+      },
+      "dd": {
+       "he": "לא פורסם",
+       "en": "Not published"
+      },
+      "note": {
+       "he": "במודעות אחרות באזור: 550 עד 740 ₪ לחודש",
+       "en": "Other listings nearby: NIS 550 to 740 a month"
+      }
+     },
+     {
+      "dt": {
+       "he": "סך הכול בחודש, לפני ועד בית",
+       "en": "Total per month, before the building fee"
+      },
+      "dd": {
+       "he": "10,332-10,536 ₪",
+       "en": "NIS 10,332-10,536"
+      }
+     }
+    ]
+   },
+   {
+    "label": {
+     "he": "בכניסה",
+     "en": "At signing"
+    },
+    "rows": [
+     {
+      "dt": {
+       "he": "שכר דירה לחודש הראשון",
+       "en": "First month's rent"
+      },
+      "dd": {
+       "he": "9,500 ₪",
+       "en": "NIS 9,500"
+      }
+     },
+     {
+      "dt": {
+       "he": "תקרת ערבויות לפי החוק[[G_KZ_GUAR]]",
+       "en": "Legal cap on guarantees[[G_KZ_GUAR]]"
+      },
+      "dd": {
+       "he": "עד 28,500 ₪",
+       "en": "Up to NIS 28,500"
+      },
+      "note": {
+       "he": "הנמוך מבין 3 חודשי שכירות לשליש משכר הדירה לכל התקופה, בחוזה של 9 חודשים ומעלה",
+       "en": "The lower of 3 months' rent or a third of the total rent, on a lease of 9 months or more"
+      }
+     },
+     {
+      "dt": {
+       "he": "דמי תיווך, אם השוכר הזמין מתווך[[G_NBN_RENT]]",
+       "en": "Brokerage, if the tenant engaged a broker[[G_NBN_RENT]]"
+      },
+      "dd": {
+       "he": "11,210 ₪",
+       "en": "NIS 11,210"
+      },
+      "note": {
+       "he": "שכר חודש ומע״מ של 18%",
+       "en": "One month plus 18% VAT"
+      }
+     }
+    ]
+   },
+   {
+    "label": {
+     "he": "מה החוק קובע",
+     "en": "What the law says"
+    },
+    "rows": [
+     {
+      "dt": {
+       "he": "חוק השכירות ההוגנת[[G_KZ_FAIR,G_NC_FAIR]]",
+       "en": "Fair Rental Law[[G_KZ_FAIR,G_NC_FAIR]]"
+      },
+      "dd": {
+       "he": "חל",
+       "en": "Applies"
+      },
+      "note": {
+       "he": "שכר הדירה נמוך מ-20,000 ש״ח לחודש",
+       "en": "The rent is below NIS 20,000 a month"
+      }
+     },
+     {
+      "dt": {
+       "he": "תיקון ליקויים[[G_NC_FAIR]]",
+       "en": "Repairs[[G_NC_FAIR]]"
+      },
+      "dd": {
+       "he": "3 ימים או 30 יום",
+       "en": "3 days or 30 days"
+      },
+      "note": {
+       "he": "ליקוי דחוף תוך 3 ימים, ליקוי אחר תוך 30 יום",
+       "en": "Urgent defects within 3 days, others within 30 days"
+      }
+     },
+     {
+      "dt": {
+       "he": "הודעה מוקדמת[[G_NC_FAIR]]",
+       "en": "Notice periods[[G_NC_FAIR]]"
+      },
+      "dd": {
+       "he": "90 או 60 יום",
+       "en": "90 or 60 days"
+      },
+      "note": {
+       "he": "90 יום מצד המשכיר, 60 יום מצד השוכר",
+       "en": "90 days from the landlord, 60 days from the tenant"
+      }
+     },
+     {
+      "dt": {
+       "he": "דמי תיווך של המשכיר[[G_NC_FAIR]]",
+       "en": "The landlord's brokerage[[G_NC_FAIR]]"
+      },
+      "dd": {
+       "he": "לא על השוכר",
+       "en": "Not charged to the tenant"
+      }
+     },
+     {
+      "dt": {
+       "he": "ארנונה וועד בית[[G_NC_FAIR]]",
+       "en": "Arnona and building fee[[G_NC_FAIR]]"
+      },
+      "dd": {
+       "he": "על השוכר",
+       "en": "Paid by the tenant"
+      },
+      "note": {
+       "he": "ביטוח המבנה על המשכיר",
+       "en": "Building insurance is the landlord's"
+      }
+     }
+    ]
+   }
+  ],
+  "bars": {
+   "title": {
+    "he": "שכר דירה למ״ר מול מודעות באזור",
+    "en": "Rent per sqm against nearby listings"
+   },
+   "items": [
+    {
+     "label": {
+      "he": "הדירה, על 90 מ״ר",
+      "en": "This apartment, on 90 sqm"
+     },
+     "value": 106,
+     "this": true
+    },
+    {
+     "label": {
+      "he": "3 חדרים, דופלקס לופט, רמת אביב החדשה",
+      "en": "3-room loft duplex, Ramat Aviv HaHadasha"
+     },
+     "value": 143,
+     "src": [
+      "MAD_CTXV"
+     ]
+    },
+    {
+     "label": {
+      "he": "4 חדרים, רחוב שטרייכמן, נופי ים",
+      "en": "4 rooms, Strichman Street, Nofei Yam"
+     },
+     "value": 112,
+     "src": [
+      "MAD_NY_RENT"
+     ]
+    },
+    {
+     "label": {
+      "he": "4 חדרים, נופי ים",
+      "en": "4 rooms, Nofei Yam"
+     },
+     "value": 109,
+     "src": [
+      "MAD_NY_RENT"
+     ]
+    },
+    {
+     "label": {
+      "he": "3 חדרים, אזורי חן, צוקי אביב",
+      "en": "3 rooms, Azorei Chen, Tzukei Aviv"
+     },
+     "value": 103,
+     "src": [
+      "YAD2_AZ_3R"
+     ]
+    },
+    {
+     "label": {
+      "he": "3 חדרים, רמת אביב ג׳",
+      "en": "3 rooms, Ramat Aviv Gimel"
+     },
+     "value": 100,
+     "src": [
+      "MAD_RAG_RENT"
+     ]
+    }
+   ],
+   "note": {
+    "he": "₪ למ״ר בנוי לחודש, מחושב ממודעות שכירות מבוקשות מ-16.9.2026 על השטח שפורסם. כל הפסים באותו קנה מידה.",
+    "en": "NIS per built sqm per month, computed from asking rents listed on 16 Sep 2026, on the published area. All bars share one scale."
+   }
+  },
+  "ledger_title": {
+   "he": "שוק ומגמה",
+   "en": "Market and trend"
+  },
+  "ledger": [
+   {
+    "dt": {
+     "he": "שכר דירה ממוצע, נופי ים[[MAD_NY_AREA]]",
+     "en": "Average rent, Nofei Yam[[MAD_NY_AREA]]"
+    },
+    "dd": {
+     "he": "12,300 ₪",
+     "en": "NIS 12,300"
+    },
+    "note": {
+     "he": "כל הגדלים, לפי מדלן",
+     "en": "All sizes, per Madlan"
+    }
+   },
+   {
+    "dt": {
+     "he": "שכר דירה למ״ר כולל המרפסת",
+     "en": "Rent per sqm including the balcony"
+    },
+    "dd": {
+     "he": "כ-86 ₪",
+     "en": "About NIS 86"
+    },
+    "note": {
+     "he": "חישוב על 110 מ״ר",
+     "en": "Computed on 110 sqm"
+    }
+   },
+   {
+    "dt": {
+     "he": "שכר דירה לשוכרים חדשים בישראל[[G_CBS_WALLA]]",
+     "en": "Rents for new tenants in Israel[[G_CBS_WALLA]]"
+    },
+    "dd": {
+     "he": "4.4%+ בשנה",
+     "en": "+4.4% a year"
+    },
+    "note": {
+     "he": "מדד אוגוסט 2026 של הלמ״ס; 2.6%+ לשוכרים שחידשו חוזה",
+     "en": "CBS, August 2026 index; +2.6% for renewing tenants"
+    }
+   }
+  ]
+ },
+ "market": {
+  "h2": {
+   "he": "שכירות ומכירות בנופי ים ובשכנות",
+   "en": "Rents and sales in Nofei Yam and next door"
+  },
+  "lead": {
+   "he": "מודעות שכירות לדירות 3 ו-4 חדרים בנופי ים ובשכונות הסמוכות, עסקאות מכירה בשכונה ונתוני שוק. מחירי השכירות הם מבוקשים ולא חוזים חתומים, כי בישראל לא מתפרסמים נתוני עסקאות שכירות.",
+   "en": "Rental listings for three- and four-room units in Nofei Yam and neighboring areas, sales in the neighborhood, and market data. Rents are asking figures, not signed leases, because Israel publishes no rental transaction data."
+  },
+  "stats": [
+   0,
+   1,
+   3,
+   4
+  ],
+  "where_override": {
+   "rent:0": {
+    "he": "רמת אביב החדשה, דופלקס לופט, קומה 4 מתוך 12",
+    "en": "Ramat Aviv HaHadasha, loft duplex, floor 4 of 12"
+   },
+   "rent:3": {
+    "he": "כוכב הצפון",
+    "en": "Kochav HaTzafon"
+   },
+   "rent:4": {
+    "he": "צוקי אביב, בניין בוטיק חדש, מרוהטת; שכירות קיימת לפי המשווקת",
+    "en": "Tzukei Aviv, new boutique building, furnished; existing tenancy per the broker"
+   }
+  }
+ },
+ "questions": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10
+ ],
+ "checks_h2": {
+  "he": "מה לבדוק לפני חתימה",
+  "en": "What to check before signing"
+ },
+ "checks_lead": {
+  "he": "השאלות ששוכר זהיר שואל על הדירה והבניין, והמסמכים שכדאי לקבל.",
+  "en": "The questions a careful tenant asks about the unit and the building, and the documents to obtain."
+ },
+ "checks_extra": {
+  "he": [
+   "טיוטת חוזה השכירות, כולל ערבויות, הצמדה ואופציה",
+   "חשבון ארנונה אחרון של הדירה",
+   "אישור זכויות המשכיר בדירה ובשתי החניות",
+   "פרוטוקול מסירה ורשימת ציוד"
+  ],
+  "en": [
+   "The draft lease, including guarantees, indexation and option",
+   "The unit's latest arnona bill",
+   "Confirmation of the landlord's rights in the unit and both parking spaces",
+   "A handover record and equipment list"
+  ]
+ },
+ "faq": [
+  {
+   "q": {
+    "he": "כמה עולה הדירה בחודש?",
+    "en": "What does the apartment cost per month?"
+   },
+   "a": {
+    "he": "9,500 ש״ח לפי מודעות המשווקת. עם ארנונה בהערכה, ולפני ועד בית שלא פורסם, כ-10,332 עד 10,536 ש״ח לחודש.[[IG_L10,G_KH_TLV]]",
+    "en": "NIS 9,500 per the broker's listings. With arnona as estimated, and before the building fee, which was not published, about NIS 10,332 to 10,536 a month.[[IG_L10,G_KH_TLV]]"
+   }
+  },
+  {
+   "q": {
+    "he": "מה גודל הדירה ובאיזו קומה היא?",
+    "en": "How large is it, and on which floor?"
+   },
+   "a": {
+    "he": "לפי מודעת המשווקת במדלן: כ-90 מ״ר ומרפסת של כ-20 מ״ר, בקומה 5 בבניין בן 7 קומות על עמודים עם מעלית.[[MAD_L10]]",
+    "en": "Per the broker's Madlan listing: about 90 sqm plus a balcony of about 20 sqm, on floor 5 of a seven-floor building on pillars with a lift.[[MAD_L10]]"
+   }
+  },
+  {
+   "q": {
+    "he": "יש ממ״ד וחניה?",
+    "en": "Is there a safe room and parking?"
+   },
+   "a": {
+    "he": "כן. לפי המשווקת בדירה ממ״ד, ולה 2 חניות נפרדות ומחסן גדול ליד החניה.[[IG_L10,MAD_L10]]",
+    "en": "Yes. Per the broker, the unit has a safe room, two separate parking spaces and a large storage room near the parking.[[IG_L10,MAD_L10]]"
+   }
+  },
+  {
+   "q": {
+    "he": "כמה רחוק הים?",
+    "en": "How far is the sea?"
+   },
+   "a": {
+    "he": "לפי המשווקת כחמש דקות הליכה, סמוך לשביל לים. טיילת פארק החוף, באורך כ-2 ק״מ מחוף תל ברוך עד חוף הצוק, נפתחה ב-2023.[[IG_L10,WALLA_PROM]]",
+    "en": "About five minutes on foot per the broker, next to the path to the sea. The coastal park promenade, about 2 km from Tel Baruch beach to Tzuk beach, opened in 2023.[[IG_L10,WALLA_PROM]]"
+   }
+  },
+  {
+   "q": {
+    "he": "מה החוק קובע לגבי ערבויות?",
+    "en": "What does the law say about guarantees?"
+   },
+   "a": {
+    "he": "בשכר דירה של עד 20,000 ש״ח חל חוק השכירות ההוגנת, והערבויות מוגבלות לנמוך מבין 3 חודשי שכירות לשליש משכר הדירה לכל התקופה: עד 28,500 ש״ח בחוזה של 9 חודשים ומעלה.[[G_KZ_GUAR,G_KZ_FAIR]]",
+    "en": "At rents up to NIS 20,000 the Fair Rental Law applies, and guarantees are capped at the lower of 3 months' rent or a third of the total rent: up to NIS 28,500 on a lease of 9 months or more.[[G_KZ_GUAR,G_KZ_FAIR]]"
+   }
+  },
+  {
+   "q": {
+    "he": "האם יש עבודות בנייה בסביבה?",
+    "en": "Is there construction nearby?"
+   },
+   "a": {
+    "he": "כן. ברחוב איינשטיין נבנה מגדל בן 30 קומות שצפוי להסתיים באמצע 2028, וממערב לשכונה נבנה רובע שדה דב.[[MAD_E15,CALC_SDEDOV]]",
+    "en": "Yes. A 30-floor tower on Einstein Street is due for completion in mid-2028, and the Sde Dov district is being built west of the neighborhood.[[MAD_E15,CALC_SDEDOV]]"
+   }
+  }
+ ],
+ "amenities": [
+  {
+   "he": "מעלית",
+   "en": "Lift"
+  },
+  {
+   "he": "ממ״ד",
+   "en": "Safe room"
+  },
+  {
+   "he": "חניה",
+   "en": "Parking"
+  },
+  {
+   "he": "מחסן",
+   "en": "Storage"
+  },
+  {
+   "he": "מרפסת",
+   "en": "Balcony"
+  }
+ ],
+ "seo": {
+  "he": {
+   "title": "דירת 3 חדרים להשכרה בנופי ים, מרפסת 20 מ״ר ו-2 חניות",
+   "desc": "3 חדרים, כ-90 מ״ר ומרפסת 20 מ״ר בקומה 5, ממ״ד, 2 חניות ומחסן, כחמש דקות מהים. 9,500 ש״ח לחודש, כניסה 1.10.2026, עם עלויות, חוק ושכירויות באזור.",
+   "kw": "דירה להשכרה בנופי ים",
+   "slug": "nofei-yam-3-rooms-balcony-for-rent"
+  },
+  "en": {
+   "title": "3-Room Apartment for Rent in Nofei Yam, North Tel Aviv",
+   "desc": "Three rooms, about 90 sqm plus a 20 sqm balcony on floor 5, safe room, two parking spaces and storage near the beach. NIS 9,500 a month with costs and comps.",
+   "kw": "apartment for rent Nofei Yam Tel Aviv",
+   "slug": "en-nofei-yam-3-room-apartment-for-rent"
+  }
+ },
+ "shots": [
+  {
+   "he": "חזית הבניין והכניסה",
+   "en": "Building facade and entrance"
+  },
+  {
+   "he": "המרפסת והשטח הפתוח מולה",
+   "en": "The balcony and the open area in front of it"
+  },
+  {
+   "he": "הסלון לכיוון המרפסת",
+   "en": "Living room toward the balcony"
+  },
+  {
+   "he": "המטבח",
+   "en": "Kitchen"
+  },
+  {
+   "he": "חדר השינה הראשי",
+   "en": "Main bedroom"
+  },
+  {
+   "he": "הממ״ד",
+   "en": "Safe room"
+  },
+  {
+   "he": "שתי החניות והמחסן",
+   "en": "Both parking spaces and the storage room"
+  },
+  {
+   "he": "השביל לים",
+   "en": "The path to the sea"
+  },
+  {
+   "he": "תשריט הדירה",
+   "en": "Floor plan"
+  }
+ ],
+ "internal": {
+  "assessment": [
+   "9,500 ₪ הם כ-106 ₪ למ״ר בנוי: בקו אחד עם מודעות 4 חדרים בנופי ים (109-112 ₪) ומעט מעל 3 חדרים באזורי חן וברמת אביב ג׳ (100-103 ₪). מחיר שוק, לא מציאה. הערך המוסף הוא 2 חניות, מחסן, ממ״ד ומרפסת של 20 מ״ר, וזה מה שיש להבליט.",
+   "זו הדירה היחידה בת 3 חדרים בעמוד התוצאות הראשון של מדלן בנופי ים, והפוסט עלה ב-12.9. צפוי ביקוש מהיר, ואם תושכר לפני העלאת העמוד יש לסמן אותה כמושכרת.",
+   "הסיכון לשוכר: אם הכתובת היא ארתור רובינשטיין 16 (מכרטיס חיפוש במדלן), אתר הבנייה של איינשטיין 15 נמצא 77 מ׳ ממנה לפי מדלן, עד אמצע 2028. בעמוד הציבורי הפרויקט מוצג ללא מרחק.",
+   "הושמט מהעמוד: נתון ynet של 84,900 ₪ למ״ר לעסקאות 3 חדרים בנופי ים אינו מתיישב עם העסקאות שנרשמו (44,946 עד 50,478 ₪ למ״ר). הושמט גם דיווח מ-2022 על תחנת השנאה של הרכבת הקלה מתחת לגינה ברחוב מרק שאגאל, שתוצאתו לא אומתה."
+  ],
+  "confirm": [
+   "כתובת: ארתור רובינשטיין 16? האם מותר לפרסם את שם הרחוב? כרגע לא מופיע רחוב בעמוד.",
+   "שטח כ-90 מ״ר, קומה 5 מתוך 7 וממ״ד: הנתונים ממודעת המשווקת במדלן ולא מהאינסטגרם.",
+   "ועד בית, חשבון ארנונה, שנת בנייה ומספר הדירות בבניין.",
+   "ריהוט, מזגנים, כיוון המרפסת ובעלי חיים.",
+   "מי משלם דמי תיווך, והאם הדירה עדיין פנויה.",
+   "אישור בכתב לשימוש בתמונות ובטקסט באתר."
+  ]
+ },
+ "wp": {
+  "listing_type": "rent",
+  "property_type": "apartment",
+  "price": 9500,
+  "rooms": 3,
+  "floor": 5,
+  "total_floors": 7,
+  "size_sqm": 90,
+  "balcony_sqm": 20,
+  "parking": true,
+  "elevator": true,
+  "ac": null,
+  "protected_room": true,
+  "street": "",
+  "building_number": "",
+  "city": "תל אביב-יפו",
+  "neighborhood": "נופי ים",
+  "arnona_monthly": 0,
+  "vaad_bayit_monthly": 0,
+  "storage": true,
+  "condition": null
+ }
+}

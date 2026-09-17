@@ -1,0 +1,1317 @@
+{
+ "id": "L01",
+ "deal": "sale",
+ "ptype": "villa",
+ "plate": "villa",
+ "status": "active",
+ "last_post": "2026-09-15",
+ "rooms": null,
+ "price": null,
+ "price_src": [
+  "S1"
+ ],
+ "built": 700,
+ "balcony": null,
+ "city": {
+  "he": "הרצליה",
+  "en": "Herzliya"
+ },
+ "area": {
+  "he": "הרצליה פיתוח",
+  "en": "Herzliya Pituach"
+ },
+ "plate_name": {
+  "he": "הרצליה פיתוח",
+  "en": "Herzliya Pituach"
+ },
+ "kicker": {
+  "he": "למכירה · הרצליה פיתוח",
+  "en": "For sale · Herzliya Pituach"
+ },
+ "title": {
+  "he": "אחוזה פרטית של 700 מ״ר על מגרש של 1.1 דונם, הרצליה פיתוח",
+  "en": "A Private Estate of 700 sqm on a 1.1-Dunam Plot, Herzliya Pituach"
+ },
+ "dek": {
+  "he": "שלושה מפלסים, 7 סוויטות, בריכה גדולה, חדר קולנוע, חדר כושר, מרתף יין ומעלית, במיקום שקט במרחק הליכה מהים וכחמש דקות מכיכר דה שליט, לפי המשווקת. המחיר והכתובת נמסרים בפנייה, והסיורים בתיאום מראש בלבד.",
+  "en": "Three levels, seven master suites, a large pool, a cinema room, a gym, a wine cellar and a lift, in a quiet location within walking distance of the sea and about five minutes from De Shalit Square, according to the broker. Price and address on request; viewings by appointment only."
+ },
+ "chips": [
+  {
+   "he": "בלעדיות: מיטל קציר, נדל״ן על הים",
+   "en": "Exclusive: Meital Katzir, Real Estate by the Sea",
+   "sea": true
+  },
+  {
+   "he": "7 סוויטות",
+   "en": "Seven master suites"
+  },
+  {
+   "he": "סיור בתיאום מראש בלבד",
+   "en": "Viewing by appointment only"
+  }
+ ],
+ "facts": [
+  {
+   "label": {
+    "he": "שטח בנוי",
+    "en": "Built area"
+   },
+   "value": {
+    "he": "כ-700 מ״ר",
+    "en": "About 700 sqm"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "מגרש",
+    "en": "Plot"
+   },
+   "value": {
+    "he": "כ-1,100 מ״ר",
+    "en": "About 1,100 sqm"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "מפלסים",
+    "en": "Levels"
+   },
+   "value": {
+    "he": "3",
+    "en": "3"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "סוויטות",
+    "en": "Master suites"
+   },
+   "value": {
+    "he": "7",
+    "en": "7"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "בריכה",
+    "en": "Pool"
+   },
+   "value": {
+    "he": "גדולה",
+    "en": "Large"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "מעלית",
+    "en": "Lift"
+   },
+   "value": {
+    "he": "פרטית",
+    "en": "Private"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "קולנוע וחדר כושר",
+    "en": "Cinema and gym"
+   },
+   "value": {
+    "he": "יש",
+    "en": "Yes"
+   },
+   "basis": "broker"
+  },
+  {
+   "label": {
+    "he": "מרתף יין",
+    "en": "Wine cellar"
+   },
+   "value": {
+    "he": "יש",
+    "en": "Yes"
+   },
+   "basis": "broker"
+  }
+ ],
+ "price_rows": [
+  {
+   "dt": {
+    "he": "סיור",
+    "en": "Viewing"
+   },
+   "dd": {
+    "he": "בתיאום מראש בלבד",
+    "en": "By appointment only"
+   }
+  }
+ ],
+ "story_h2": {
+  "he": "שלושה מפלסים סביב גן ובריכה",
+  "en": "Three levels around a garden and a pool"
+ },
+ "story": {
+  "he": [
+   "לפי המשווקת, האחוזה משתרעת על כ-700 מ״ר בנויים בשלושה מפלסים, על מגרש של כ-1,100 מ״ר, במיקום שקט במרחק הליכה מהים וכחמש דקות מכיכר דה שליט.[[S1]]",
+   "חדרי השינה תוכננו כסוויטות מרווחות, 7 בסך הכול, ובהן סוויטת הורים גדולה במיוחד. בבית סלון גדול הצופה אל גן פסטורלי, בריכה גדולה, חדר קולנוע, חדר כושר, מרתף יין, מעלית וממ״ד גדול.[[S1]]",
+   "הבית כולל מערכת חשמל חכם, חימום תת-רצפתי ונגרות בהתאמה אישית בכל חדרי השינה ולאורך הבית. הסיורים בתיאום מראש בלבד.[[S1]]"
+  ],
+  "en": [
+   "According to the broker, the estate has about 700 sqm built over three levels on a plot of about 1,100 sqm, in a quiet location within walking distance of the sea and about five minutes from De Shalit Square.[[S1]]",
+   "The bedrooms are planned as spacious suites, seven in all, including a very large master suite. The house has a large living room overlooking a pastoral garden, a large pool, a cinema room, a gym, a wine cellar, a lift and a large safe room (mamad).[[S1]]",
+   "It has a smart electrical system, underfloor heating and custom carpentry in every bedroom and throughout the house. Viewings are by appointment only.[[S1]]"
+  ]
+ },
+ "features": {
+  "he": [
+   [
+    "כ-700 מ״ר בנויים",
+    "ב-3 מפלסים, לפי המשווקת"
+   ],
+   [
+    "מגרש של 1.1 דונם",
+    "כ-1,100 מ״ר; יחס בנוי למגרש כ-64%"
+   ],
+   [
+    "7 סוויטות",
+    "ובהן סוויטת הורים גדולה במיוחד"
+   ],
+   [
+    "קולנוע, חדר כושר ומרתף יין",
+    "חללי פנאי בתוך הבית"
+   ],
+   [
+    "בריכה וגן פסטורלי",
+    "הסלון צופה אל הגן"
+   ],
+   [
+    "חשמל חכם וחימום תת-רצפתי",
+    "מעלית וממ״ד גדול"
+   ]
+  ],
+  "en": [
+   [
+    "About 700 sqm built",
+    "Over 3 levels, broker-stated"
+   ],
+   [
+    "A 1.1-dunam plot",
+    "About 1,100 sqm; built-to-plot ratio about 64%"
+   ],
+   [
+    "Seven master suites",
+    "Including a very large master suite"
+   ],
+   [
+    "Cinema, gym and wine cellar",
+    "Leisure rooms inside the house"
+   ],
+   [
+    "Pool and pastoral garden",
+    "The living room overlooks the garden"
+   ],
+   [
+    "Smart electrics, underfloor heating",
+    "A lift and a large safe room"
+   ]
+  ]
+ },
+ "spec": [
+  {
+   "title": {
+    "he": "חללים",
+    "en": "Rooms and spaces"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "סוויטות",
+      "en": "Suites"
+     },
+     "dd": {
+      "he": "7 סוויטות, ובהן סוויטת הורים גדולה במיוחד",
+      "en": "7 suites, including a very large master suite"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "סלון",
+      "en": "Living room"
+     },
+     "dd": {
+      "he": "סלון גדול הצופה אל גן פסטורלי",
+      "en": "A large living room overlooking a pastoral garden"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "פנאי",
+      "en": "Leisure"
+     },
+     "dd": {
+      "he": "חדר קולנוע, חדר כושר ומרתף יין",
+      "en": "Cinema room, gym and wine cellar"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מרחב מוגן",
+      "en": "Safe room"
+     },
+     "dd": {
+      "he": "ממ״ד גדול",
+      "en": "A large mamad"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    }
+   ]
+  },
+  {
+   "title": {
+    "he": "מערכות וגימור",
+    "en": "Systems and finish"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "מעלית",
+      "en": "Lift"
+     },
+     "dd": {
+      "he": "מעלית פרטית",
+      "en": "Private lift"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "חשמל",
+      "en": "Electrics"
+     },
+     "dd": {
+      "he": "מערכת חשמל חכם",
+      "en": "Smart electrical system"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "חימום",
+      "en": "Heating"
+     },
+     "dd": {
+      "he": "חימום תת-רצפתי",
+      "en": "Underfloor heating"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "נגרות",
+      "en": "Carpentry"
+     },
+     "dd": {
+      "he": "בהתאמה אישית בכל חדרי השינה ולאורך הבית",
+      "en": "Custom-made in every bedroom and throughout the house"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    }
+   ]
+  },
+  {
+   "title": {
+    "he": "חוץ ומיקום",
+    "en": "Outdoors and location"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "בריכה",
+      "en": "Pool"
+     },
+     "dd": {
+      "he": "בריכה גדולה",
+      "en": "A large pool"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "גן",
+      "en": "Garden"
+     },
+     "dd": {
+      "he": "גן פסטורלי",
+      "en": "A pastoral garden"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "מיקום",
+      "en": "Setting"
+     },
+     "dd": {
+      "he": "שקט, במרחק הליכה מהים, כחמש דקות מכיכר דה שליט",
+      "en": "Quiet, within walking distance of the sea, about five minutes from De Shalit Square"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    },
+    {
+     "dt": {
+      "he": "סיור",
+      "en": "Viewing"
+     },
+     "dd": {
+      "he": "בתיאום מראש בלבד",
+      "en": "By appointment only"
+     },
+     "basis": "broker",
+     "src": [
+      "S1"
+     ]
+    }
+   ]
+  },
+  {
+   "title": {
+    "he": "טרם פורסם",
+    "en": "Not yet published"
+   },
+   "rows": [
+    {
+     "dt": {
+      "he": "מחיר",
+      "en": "Price"
+     },
+     "dd": {
+      "he": "לפי פנייה",
+      "en": "On request"
+     }
+    },
+    {
+     "dt": {
+      "he": "רחוב, גוש וחלקה",
+      "en": "Street, block and parcel"
+     },
+     "dd": {
+      "he": "יימסרו בתיאום עם המשווקת",
+      "en": "Given on contact with the broker"
+     }
+    },
+    {
+     "dt": {
+      "he": "שנת בנייה ושיפוץ",
+      "en": "Year built and renovated"
+     },
+     "dd": {
+      "he": "לא צוינו",
+      "en": "Not stated"
+     }
+    },
+    {
+     "dt": {
+      "he": "חניה",
+      "en": "Parking"
+     },
+     "dd": {
+      "he": "לא צוינה",
+      "en": "Not stated"
+     }
+    },
+    {
+     "dt": {
+      "he": "זכויות בנייה",
+      "en": "Building rights"
+     },
+     "dd": {
+      "he": "לא פורסמו",
+      "en": "Not published"
+     }
+    }
+   ]
+  }
+ ],
+ "building_h2": {
+  "he": "המגרש, הזכויות והבדיקות",
+  "en": "The plot, the rights and the checks"
+ },
+ "building_lead": {
+  "he": "הרחוב והמגרש לא פורסמו. נתוני המגרש נמסרו על ידי המשווקת, והבדיקות המשפטיות שלהלן חלות על כל בית בהרצליה פיתוח.[[S1]]",
+  "en": "The street and plot were not published. The plot figures come from the broker, and the legal checks below apply to any house in Herzliya Pituach.[[S1]]"
+ },
+ "building": [
+  {
+   "dt": {
+    "he": "מגרש",
+    "en": "Plot"
+   },
+   "dd": {
+    "he": "כ-1,100 מ״ר (1.1 דונם)",
+    "en": "About 1,100 sqm (1.1 dunam)"
+   },
+   "basis": "broker",
+   "src": [
+    "S1"
+   ]
+  },
+  {
+   "dt": {
+    "he": "בנוי",
+    "en": "Built"
+   },
+   "dd": {
+    "he": "כ-700 מ״ר בשלושה מפלסים",
+    "en": "About 700 sqm over three levels"
+   },
+   "basis": "broker",
+   "src": [
+    "S1"
+   ]
+  },
+  {
+   "dt": {
+    "he": "יחס בנוי למגרש",
+    "en": "Built-to-plot ratio"
+   },
+   "dd": {
+    "he": "כ-64%",
+    "en": "About 64%"
+   },
+   "basis": "calc"
+  },
+  {
+   "dt": {
+    "he": "היתרים",
+    "en": "Permits"
+   },
+   "dd": {
+    "he": "יש לוודא שהיתר הבנייה ותעודת הגמר כוללים את המרתף, חדר הקולנוע, מרתף היין, חדר הכושר, המעלית והבריכה; שטחים שאינם בהיתר אינם זכות",
+    "en": "Check that the building permit and completion certificate cover the basement, cinema, wine cellar, gym, lift and pool; unpermitted areas are not rights"
+   },
+   "src": [
+    "S88"
+   ]
+  },
+  {
+   "dt": {
+    "he": "בעלות",
+    "en": "Title"
+   },
+   "dd": {
+    "he": "רשות מקרקעי ישראל מנהלת כ-93% מהקרקע בישראל. יש להזמין נסח טאבו לגוש ולחלקה, ואם הקרקע מנוהלת על ידי הרשות, גם אישור זכויות",
+    "en": "The Israel Land Authority manages about 93% of land in Israel. Order a land registry extract for the block and parcel, and an ILA rights confirmation if the land is ILA-managed"
+   },
+   "src": [
+    "S89",
+    "S87"
+   ]
+  },
+  {
+   "dt": {
+    "he": "סביבה חופית",
+    "en": "Coastal zone"
+   },
+   "dd": {
+    "he": "בתחום 300 מ׳ מקו החוף, תוכניות, שימושים חורגים והקלות גובה טעונים אישור הוועדה לשמירת הסביבה החופית (ולחוף)",
+    "en": "Within 300 m of the coastline, plans, non-conforming uses and height reliefs need approval from the coastal environment committee (VALHOF)"
+   },
+   "src": [
+    "S90"
+   ]
+  },
+  {
+   "dt": {
+    "he": "היטל השבחה",
+    "en": "Betterment levy"
+   },
+   "dd": {
+    "he": "בדרך כלל 50% מעליית השווי שנוצרה מאישור תוכנית, הקלה או שימוש חורג; משולם בדרך כלל במכירה",
+    "en": "Usually 50% of the value increase from a plan approval, relief or non-conforming use; usually paid on sale"
+   },
+   "src": [
+    "S84",
+    "S85"
+   ]
+  }
+ ],
+ "location_h2": {
+  "he": "הרצליה פיתוח, חמש דקות מכיכר דה שליט",
+  "en": "Herzliya Pituach, five minutes from De Shalit Square"
+ },
+ "location": {
+  "he": [
+   "הרצליה פיתוח, שנוסדה ב-1925, מדורגת 9 מתוך 10 במדד החברתי-כלכלי ומוכרת בווילות ובבתים הפרטיים שבה, מהגדולים והיקרים בישראל.[[S27,S31]] לפי ראש העירייה מתגוררים בהרצליה 55 שגרירים.[[S28]]",
+   "כיכר דה שליט, מפגש הרחובות רמת ים ווינגייט, נמצאת במערב השכונה. סמוך לה מלון השרון, כ-160 מ׳ בקו אווירי, והמרכז הרפואי הרצליה, בית חולים פרטי שנוסד ב-1982, כ-250 מ׳.[[S2,S3,S4]] תוכנית חוף הים של הרצליה, הר/2202, כוללת את הכיכר ואת הירידה לחוף השרון בקטע המרכזי שלה.[[S24,S25]]",
+   "חופי העיר כוללים את חוף אכדיה, חוף השרון, חוף הכוכבים, החוף הנפרד, חוף זבולון וחוף סידנא עלי.[[S30]] הגן הלאומי אפולוניה, עם מבצר צלבני מ-1241 ווילה רומית מהמאה הראשונה לספירה, נמצא כ-1.6 ק״מ צפונית לכיכר, וקניון ארנה במרינה הרצליה כ-1.9 ק״מ דרומית לה.[[S107,S108]]"
+  ],
+  "en": [
+   "Herzliya Pituach, founded in 1925, ranks 9 of 10 on the socio-economic index and is known for villas and private houses among the largest and most expensive in Israel.[[S27,S31]] According to the mayor, 55 ambassadors live in Herzliya.[[S28]]",
+   "De Shalit Square, where Ramat Yam and Wingate streets meet, lies in the west of the neighborhood. The Sharon Hotel is about 160 m away in a straight line, and Herzliya Medical Center, a private hospital founded in 1982, about 250 m.[[S2,S3,S4]] Herzliya's seafront plan, Har/2202, includes the square and the descent to Sharon Beach in its central section.[[S24,S25]]",
+   "The city's beaches include Accadia, Sharon, HaKochavim, the separate beach, Zevulun and Sidna Ali.[[S30]] Apollonia National Park, with a Crusader fortress from 1241 and a first-century Roman villa, is about 1.6 km north of the square, and Arena Mall at Herzliya Marina about 1.9 km south of it.[[S107,S108]]"
+  ]
+ },
+ "dist": [
+  0,
+  1,
+  3,
+  12,
+  19,
+  14,
+  15,
+  17,
+  21,
+  22,
+  24,
+  23,
+  27
+ ],
+ "dist_nobar": [
+  24,
+  23,
+  27
+ ],
+ "schools": [
+  0,
+  1,
+  2,
+  4,
+  6,
+  7,
+  9,
+  10
+ ],
+ "schools_override": {
+  "0": {
+   "note": {
+    "he": "בית ספר יסודי עירוני. בשנת הלימודים תשפ״ז בוגריו משובצים לחטיבת הביניים יד גיורא. אזור הרישום לכתובת לא אומת.",
+    "en": "Municipal elementary school. For 2026-27 its graduates are zoned to Yad Giora middle school. Registration zone for the address not verified."
+   }
+  },
+  "9": {
+   "note": {
+    "he": "רחוב השומרון 65, אבן יהודה. בית ספר עצמאי בתוכנית לימודים אמריקאית ובאנגלית, נוסד ב-1958 בחסות שגרירות ארה״ב, בקמפוס של 73 דונם. כ-11.7 ק״מ בקו אווירי מכיכר דה שליט; שכר לימוד והסעות לא אומתו.",
+    "en": "65 HaShomron St, Even Yehuda. An independent American-curriculum school taught in English, founded in 1958 under the auspices of the US Embassy, on a 73-dunam campus. About 11.7 km in a straight line from De Shalit Square; tuition and school buses not verified."
+   }
+  }
+ },
+ "transport_override": {
+  "0": {
+   "title": {
+    "he": "תחנת הרכבת הרצליה",
+    "en": "Herzliya railway station"
+   },
+   "status": {
+    "he": "פעילה. ליד קניון שבעת הכוכבים, כ-2.1 ק״מ בקו אווירי מכיכר דה שליט; רכבות ישירות לתל אביב, ירושלים, באר שבע, חיפה ונמל התעופה בן גוריון.",
+    "en": "Operating. Next to Seven Stars Mall, about 2.1 km in a straight line from De Shalit Square; direct trains to Tel Aviv, Jerusalem, Beersheba, Haifa and Ben Gurion Airport."
+   }
+  },
+  "1": {
+   "title": {
+    "he": "הקו הירוק של הרכבת הקלה",
+    "en": "Green Line light rail"
+   },
+   "status": {
+    "he": "בבנייה: 39 ק״מ ו-62 תחנות מראשון לציון וחולון עד הרצליה. פתיחה חלקית צפויה בסוף 2028 והקו המלא ב-2030; מיקום התחנות בהרצליה לא אומת.",
+    "en": "Under construction: 39 km and 62 stations from Rishon LeZion and Holon to Herzliya. Partial opening expected at the end of 2028 and the full line in 2030; Herzliya station locations not verified."
+   }
+  },
+  "2": {
+   "title": {
+    "he": "תחנת האוטובוס בכיכר דה שליט",
+    "en": "Bus stop at De Shalit Square"
+   },
+   "status": {
+    "he": "פעילה, קוד תחנה 26921.",
+    "en": "Operating, stop code 26921."
+   }
+  },
+  "3": {
+   "title": {
+    "he": "כביש 2 (כביש החוף), מחלף רבין",
+    "en": "Route 2 coastal highway, Rabin Interchange"
+   },
+   "status": {
+    "he": "פעיל, כ-1.0 ק״מ בקו אווירי מזרחית לכיכר.",
+    "en": "Operating, about 1.0 km in a straight line east of the square."
+   }
+  }
+ },
+ "future": [
+  0,
+  1,
+  4,
+  5,
+  6,
+  7
+ ],
+ "future_override": {
+  "0": {
+   "title": {
+    "he": "תוכנית חוף הים הר/2202 (מאושרת)",
+    "en": "Seafront plan Har/2202 (approved)"
+   },
+   "impact": {
+    "he": "המקטע המרכזי כולל את כיכר דה שליט ואת הירידה לחוף השרון, עם הרחבת חופים באמצעות שוברי גלים וטיילות חוף. החוף מדרום לחוף השרון מיועד לפיתוח אינטנסיבי ומצפון לו לפיתוח עירוני מתון. כדאי לבדוק בתשריטים אם עובר במגרש קו טיילת או זיקת הנאה.",
+    "en": "The central section includes De Shalit Square and the descent to Sharon Beach, with beach widening through breakwaters and beach promenades. The beach south of Sharon Beach is zoned for intensive development and north of it for moderate urban development. Check the plan sheets for any promenade line or easement on the plot."
+   }
+  },
+  "1": {
+   "title": {
+    "he": "הגנה יבשתית על המצוק",
+    "en": "Land-side cliff protection"
+   },
+   "impact": {
+    "he": "תוכנית למסלעות ולרשת מעוגנת לאורך חופי הרצליה אושרה בוועדה המקומית ב-8.1.2025, ונדרשים עוד אישורי המשרד להגנת הסביבה והוועדה לשמירת הסביבה החופית. צפויות עבודות והגבלות גישה לאורך המצוק; לוח הזמנים לא ידוע.",
+    "en": "A plan for rock revetments and anchored netting along Herzliya's coast was approved by the local committee on 8 January 2025 and still needs Environment Ministry and coastal committee approval. Expect works and access limits along the cliff; the schedule is unknown."
+   }
+  },
+  "4": {
+   "title": {
+    "he": "שגרירות איחוד האמירויות, רחוב ספיר 9",
+    "en": "UAE embassy, 9 Sapir Street"
+   },
+   "impact": {
+    "he": "כ-2.5 דונם, עד 15 קומות ו-15,000 מ״ר, כולל מגורי השגריר והצוות; קודמה בוועדה המחוזית ב-20.10.2025. האתר נמצא באזור התעסוקה ולא בסמוך לכיכר דה שליט.",
+    "en": "About 2.5 dunams, up to 15 floors and 15,000 sqm, including homes for the ambassador and staff; advanced by the district committee on 20 October 2025. The site is in the employment zone, not near De Shalit Square."
+   }
+  },
+  "5": {
+   "title": {
+    "he": "ציפוף אזור התעסוקה",
+    "en": "Employment zone densification"
+   },
+   "impact": {
+    "he": "מגדל בן 30 קומות ברחוב מדינת היהודים 103 ותוכנית פארק המדע של גב-ים (392 דירות קטנות, עד 15 קומות). צפויים יותר תושבים ותנועה בדרום הרצליה פיתוח, כ-1.2 ק״מ דרומית לכיכר.",
+    "en": "A 30-floor tower at 103 Medinat HaYehudim Street and the Gav-Yam Science Park plan (392 small apartments, up to 15 floors). Expect more residents and traffic in southern Herzliya Pituach, about 1.2 km south of the square."
+   }
+  },
+  "6": {
+   "title": {
+    "he": "הרובע הדרום-מערבי הר/2200/א",
+    "en": "Southwest Quarter plan Har/2200/A"
+   },
+   "impact": {
+    "he": "כ-1,986 דונם ו-12,500 יחידות דיור בין שדרות אבא אבן לגבול תל אביב: היצע ותנועה בטווח הארוך, הרחק דרומית לכיכר.",
+    "en": "About 1,986 dunams and 12,500 homes between Abba Eban Boulevard and the Tel Aviv boundary: long-term supply and traffic, well south of the square."
+   }
+  },
+  "7": {
+   "title": {
+    "he": "הקו הירוק להרצליה",
+    "en": "Green Line to Herzliya"
+   },
+   "impact": {
+    "he": "הקו המלא, כולל הרצליה, צפוי ב-2030.",
+    "en": "The full line, including Herzliya, is expected in 2030."
+   }
+  }
+ },
+ "numbers": {
+  "h2": {
+   "he": "המחיר לפי פנייה, והמספרים סביבו",
+   "en": "Price on request, and the numbers around it"
+  },
+  "lead": {
+   "he": "המשווקת לא פרסמה מחיר. כדי לאפשר תכנון, מס הרכישה והמימון מוצגים בשלושה תרחישי מחיר להמחשה, הנגזרים מנתוני שוק שפורסמו. אלה אינם הערכת שווי ואינם המחיר המבוקש.",
+   "en": "The broker has not published a price. To support planning, purchase tax and financing are shown at three illustrative price points derived from published market data. They are not a valuation and not the asking price."
+  },
+  "median_psqm": {
+   "label": {
+    "he": "חציון מבוקש למ״ר בנוי, 15 וילות דומות",
+    "en": "Median asking price per built sqm, 15 similar villas"
+   },
+   "value": 77023,
+   "src": [
+    "S37",
+    "S60"
+   ],
+   "small": {
+    "he": "רבעון תחתון 66,667 ₪, רבעון עליון 92,308 ₪",
+    "en": "Lower quartile NIS 66,667, upper quartile NIS 92,308"
+   }
+  },
+  "extra_kpis": [
+   {
+    "dt": {
+     "he": "שווי קרקע משתמע למגרש",
+     "en": "Implied land value of the plot"
+    },
+    "dd": {
+     "he": "24.2 מיליון ₪[[S32]]",
+     "en": "NIS 24.2m[[S32]]"
+    },
+    "small": {
+     "he": "חישוב: 1,100 מ״ר כפול כ-22,000 ₪, חציון המחיר המבוקש למ״ר במגרשים ריקים",
+     "en": "Computed: 1,100 sqm at about NIS 22,000, the median asking price per sqm of vacant plots"
+    }
+   },
+   {
+    "dt": {
+     "he": "חציון עסקאות בתים פרטיים, 2025",
+     "en": "Median private-house deal, 2025"
+    },
+    "dd": {
+     "he": "15 מיליון ₪[[S32]]",
+     "en": "NIS 15m[[S32]]"
+    },
+    "small": {
+     "he": "בקירוב, בהרצליה פיתוח; כ-24 עד 28 עסקאות בתים בשנה",
+     "en": "Approximate, Herzliya Pituach; about 24 to 28 house deals a year"
+    }
+   }
+  ],
+  "tabs_title": {
+   "he": "מס רכישה ומימון בשלושה תרחישי מחיר להמחשה",
+   "en": "Purchase tax and financing at three illustrative prices"
+  },
+  "scenarios": [
+   {
+    "label": {
+     "he": "31.5 מיליון ₪",
+     "en": "NIS 31.5m"
+    },
+    "price": 31500000,
+    "basis": {
+     "he": "700 מ״ר כפול כ-45,000 ₪, חציון העסקאות למ״ר בנוי בבתים פרטיים בשנתיים האחרונות[[S32]]",
+     "en": "700 sqm at about NIS 45,000, the median deal price per built sqm for private houses over the last two years[[S32]]"
+    }
+   },
+   {
+    "label": {
+     "he": "53.9 מיליון ₪",
+     "en": "NIS 53.9m"
+    },
+    "price": 53916100,
+    "basis": {
+     "he": "700 מ״ר כפול 77,023 ₪, חציון המחיר המבוקש למ״ר ב-15 וילות דומות[[S37,S60]]",
+     "en": "700 sqm at NIS 77,023, the median asking price per sqm across 15 similar villas[[S37,S60]]"
+    }
+   },
+   {
+    "label": {
+     "he": "64.6 מיליון ₪",
+     "en": "NIS 64.6m"
+    },
+    "price": 64615600,
+    "basis": {
+     "he": "700 מ״ר כפול 92,308 ₪, הרבעון העליון של אותן מודעות[[S37,S60]]",
+     "en": "700 sqm at NIS 92,308, the upper quartile of the same listings[[S37,S60]]"
+    }
+   }
+  ],
+  "bars": {
+   "title": {
+    "he": "מחיר למ״ר בנוי, בתים פרטיים בהרצליה פיתוח",
+    "en": "Price per built sqm, private houses in Herzliya Pituach"
+   },
+   "items": [
+    {
+     "label": {
+      "he": "רבעון עליון, 15 וילות מוצעות",
+      "en": "Upper quartile, 15 listed villas"
+     },
+     "value": 92308,
+     "src": [
+      "S37",
+      "S60"
+     ]
+    },
+    {
+     "label": {
+      "he": "חציון, 15 וילות מוצעות",
+      "en": "Median, 15 listed villas"
+     },
+     "value": 77023,
+     "src": [
+      "S37",
+      "S60"
+     ]
+    },
+    {
+     "label": {
+      "he": "רבעון תחתון, 15 וילות מוצעות",
+      "en": "Lower quartile, 15 listed villas"
+     },
+     "value": 66667,
+     "src": [
+      "S37",
+      "S60"
+     ]
+    },
+    {
+     "label": {
+      "he": "חציון עסקאות, כל הבתים הפרטיים, שנתיים",
+      "en": "Median of recorded deals, all private houses, two years"
+     },
+     "value": 45000,
+     "value_text": {
+      "he": "כ-45,000 ₪",
+      "en": "About NIS 45,000"
+     },
+     "src": [
+      "S32"
+     ]
+    }
+   ],
+   "note": {
+    "he": "₪ למ״ר בנוי. הווילות: 500 עד 900 מ״ר על מגרשים של 1,000 עד 1,200 מ״ר, מחירים מבוקשים; העסקאות: כל גדלי הבתים. כל הפסים באותו קנה מידה.",
+    "en": "NIS per built sqm. Villas: 500 to 900 sqm on 1,000 to 1,200 sqm plots, asking prices; deals: houses of all sizes. All bars share one scale."
+   }
+  },
+  "ledger_title": {
+   "he": "עלויות שוטפות, שכירות ומטבע",
+   "en": "Running costs, rents and currency"
+  },
+  "ledger": [
+   {
+    "dt": {
+     "he": "ארנונה, הערכה[[G_KH_HRZ]]",
+     "en": "Arnona, estimate[[G_KH_HRZ]]"
+    },
+    "dd": {
+     "he": "65,296-71,099 ₪ בשנה",
+     "en": "NIS 65,296-71,099 a year"
+    },
+    "note": {
+     "he": "700 מ״ר בתעריפי אזורים ב׳ עד ו׳ לבתים מעל 125 מ״ר; באזור א׳ 99,617 ₪. האזור והשטח לחיוב לא אומתו",
+     "en": "700 sqm at zone Bet to Vav rates for houses over 125 sqm; NIS 99,617 in zone Alef. Zone and charged area unverified"
+    }
+   },
+   {
+    "dt": {
+     "he": "שכר דירה מבוקש לווילות גדולות[[S70,S71]]",
+     "en": "Asking rents for large villas[[S70,S71]]"
+    },
+    "dd": {
+     "he": "70,000-140,000 ₪ לחודש",
+     "en": "NIS 70,000-140,000 a month"
+    },
+    "note": {
+     "he": "6 מודעות של 480 עד 650 מ״ר; חציון 92,500 ₪",
+     "en": "6 listings of 480 to 650 sqm; median NIS 92,500"
+    }
+   },
+   {
+    "dt": {
+     "he": "תשואת שכירות חציונית, הרצליה פיתוח[[S32]]",
+     "en": "Median rental yield, Herzliya Pituach[[S32]]"
+    },
+    "dd": {
+     "he": "2.45% בשנה",
+     "en": "2.45% a year"
+    },
+    "note": {
+     "he": "לפי נתוני נדל״ן של רשות המסים",
+     "en": "Per Tax Authority real estate data"
+    }
+   },
+   {
+    "dt": {
+     "he": "היטל השבחה[[S84]]",
+     "en": "Betterment levy[[S84]]"
+    },
+    "dd": {
+     "he": "בדרך כלל 50% מעליית השווי",
+     "en": "Usually 50% of the value increase"
+    },
+    "note": {
+     "he": "משולם בדרך כלל במכירה; החוזה צריך לקבוע מי משלם",
+     "en": "Usually paid on sale; the contract should say who pays"
+    }
+   }
+  ],
+  "foot": {
+   "he": "כל המספרים בפרק זה הם המחשה מחושבת ואינם הצעת מחיר, שמאות או ייעוץ. תרחישי המחיר אינם המחיר המבוקש.",
+   "en": "All figures in this section are computed illustrations, not a quote, an appraisal or advice. The price scenarios are not the asking price."
+  }
+ },
+ "market": {
+  "h2": {
+   "he": "וילות בהרצליה פיתוח: עסקאות, מודעות ושכירות",
+   "en": "Villas in Herzliya Pituach: deals, listings and rents"
+  },
+  "lead": {
+   "he": "עסקאות שנרשמו ודווחו, מחירים מבוקשים של וילות דומות בגודלן, ומחירי שכירות. מחיר למ״ר מחושב על השטח שפורסם; רוב הנתונים הם מחירים מבוקשים, ורשות המסים מפרסמת עסקאות יוקרה באיחור.",
+   "en": "Recorded and reported deals, asking prices for villas of similar size, and rents. Price per sqm is computed on the published area; most figures are asking prices, and the Tax Authority publishes luxury deals late."
+  },
+  "stats": [
+   0,
+   1,
+   2,
+   3,
+   6,
+   7,
+   8,
+   9
+  ],
+  "stats_override": {
+   "0": {
+    "dd": {
+     "he": "15 מיליון ש״ח ב-2025, לעומת 10.75 מיליון ב-2024; כ-24 עד 28 עסקאות בתים בשנה",
+     "en": "NIS 15m in 2025, against NIS 10.75m in 2024; about 24 to 28 house deals a year"
+    }
+   },
+   "2": {
+    "dt": {
+     "he": "היצע מודעות בהרצליה פיתוח, לפי ספירת ביזפורטל",
+     "en": "Listings in Herzliya Pituach, Bizportal count"
+    },
+    "dd": {
+     "he": "כ-410 מודעות, מהן כ-289 בתים; חציון המחיר המבוקש לבית כ-14 מיליון ש״ח",
+     "en": "About 410 listings, about 289 of them houses; median asking price for a house about NIS 14m"
+    }
+   },
+   "6": {
+    "dd": {
+     "he": "635 עסקאות; כ-8% מהן בהרצליה, כ-51 עסקאות",
+     "en": "635 deals; about 8% in Herzliya, about 51 deals"
+    }
+   },
+   "7": {
+    "dt": {
+     "he": "עסקאות המגה-יוקרה של שנת תשפ״ו, רשימה ארעית",
+     "en": "Mega-luxury deals of Hebrew year 5786, preliminary list"
+    },
+    "dd": {
+     "he": "וילות ברחוב בזל ב-59.7 מיליון ש״ח וברחוב קדושי השואה ב-80 מיליון ש״ח",
+     "en": "Villas on Basel Street at NIS 59.7m and on Kedoshei HaShoah Street at NIS 80m"
+    }
+   },
+   "8": {
+    "dd": {
+     "he": "8 עסקאות, כולן בהרצליה פיתוח, בהיקף 220 מיליון ש״ח",
+     "en": "8 deals, all in Herzliya Pituach, NIS 220m in total"
+    }
+   },
+   "9": {
+    "dt": {
+     "he": "מחירים מבוקשים, 15 וילות של 500 עד 900 מ״ר בנוי על מגרשים של 1,000 עד 1,200 מ״ר",
+     "en": "Asking prices, 15 listed villas of 500 to 900 sqm built on 1,000 to 1,200 sqm plots"
+    },
+    "dd": {
+     "he": "חציון 59.2 מיליון ש״ח, רבעונים 35.0 עד 67.0 מיליון; 77,023 ש״ח למ״ר בנוי",
+     "en": "Median NIS 59.2m, quartiles NIS 35.0m to 67.0m; NIS 77,023 per built sqm"
+    }
+   }
+  },
+  "sale_exclude": [
+   18,
+   22,
+   23,
+   24,
+   26
+  ],
+  "where_override": {
+   "sale:9": {
+    "he": "מערב הרצליה פיתוח, רחוב שני מהים",
+    "en": "Western Herzliya Pituach, second street from the sea"
+   },
+   "sale:14": {
+    "he": "הרצליה פיתוח, שתי דקות ממרינה הרצליה",
+    "en": "Herzliya Pituach, two minutes from Herzliya Marina"
+   }
+  },
+  "date_override": {
+   "sale:0": {
+    "he": "תשפ״ו",
+    "en": "5786 (2025-26)"
+   },
+   "sale:1": {
+    "he": "תשפ״ו",
+    "en": "5786 (2025-26)"
+   }
+  },
+  "rent_exclude": [
+   6,
+   7
+  ]
+ },
+ "questions": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13
+ ],
+ "checks_h2": {
+  "he": "מה לבדוק לפני הצעה",
+  "en": "What to check before an offer"
+ },
+ "checks_lead": {
+  "he": "השאלות שרוכש בסדר גודל כזה שואל, והמסמכים שעורך הדין, השמאי והמודד צריכים לראות.",
+  "en": "The questions a buyer at this level asks, and the documents your lawyer, appraiser and surveyor need to see."
+ },
+ "checks_extra": {
+  "he": [
+   "נסח טאבו לגוש ולחלקה, ואם רלוונטי אישור זכויות מרשות מקרקעי ישראל",
+   "היתר הבנייה, תעודת הגמר ומפת מדידה עדכנית",
+   "תיק מידע תכנוני ובדיקת זכויות בנייה לא מנוצלות",
+   "אישורים על היעדר חובות ארנונה, מים והיטלים",
+   "מסמכי אחריות ותחזוקה למעלית, לחימום התת-רצפתי ולמערכת החשמל החכם"
+  ],
+  "en": [
+   "A land registry extract for the block and parcel, and an Israel Land Authority rights confirmation where relevant",
+   "The building permit, completion certificate and an up-to-date survey map",
+   "A planning information file and a check of unused building rights",
+   "Confirmations of no arrears on arnona, water and levies",
+   "Warranty and maintenance documents for the lift, underfloor heating and smart electrical system"
+  ]
+ },
+ "faq": [
+  {
+   "q": {
+    "he": "מה המחיר?",
+    "en": "What is the price?"
+   },
+   "a": {
+    "he": "המחיר נמסר בפנייה ישירה למשווקת. להתמצאות: חציון המחיר המבוקש ב-15 וילות של 500 עד 900 מ״ר על מגרשים של 1,000 עד 1,200 מ״ר בהרצליה פיתוח הוא 59.2 מיליון ש״ח, ו-77,023 ש״ח למ״ר בנוי.[[S37,S60]]",
+    "en": "The price is given on direct contact with the broker. For orientation, the median asking price across 15 Herzliya Pituach villas of 500 to 900 sqm on 1,000 to 1,200 sqm plots is NIS 59.2 million, or NIS 77,023 per built sqm.[[S37,S60]]"
+   }
+  },
+  {
+   "q": {
+    "he": "כמה מס רכישה ישלם רוכש?",
+    "en": "How much purchase tax would a buyer pay?"
+   },
+   "a": {
+    "he": "זה תלוי במחיר ובסוג הרוכש. בתרחיש של 53.9 מיליון ש״ח, למשל: 4,701,825 ש״ח לדירה יחידה, ו-5,270,509 ש״ח לדירה נוספת או לתושב חוץ. עולה חדש אינו זכאי להטבה בנכס ששוויו מעל 20,183,565 ש״ח.[[G_KZ_TAX,G_KZ_OLEH]]",
+    "en": "It depends on the price and the buyer. At the NIS 53.9 million scenario, for example: NIS 4,701,825 for a single home, and NIS 5,270,509 for an additional home or a foreign resident. New immigrants get no relief on a home valued above NIS 20,183,565.[[G_KZ_TAX,G_KZ_OLEH]]"
+   }
+  },
+  {
+   "q": {
+    "he": "אפשר לממן במשכנתא?",
+    "en": "Can it be financed with a mortgage?"
+   },
+   "a": {
+    "he": "לפי הוראות בנק ישראל, עד 75% מהשווי לדירה יחידה, 70% לדירה חלופית ו-50% לדירה להשקעה או לרוכש שאינו אזרח ישראלי. הבנקים רשאים להחמיר.[[G_LTV]]",
+    "en": "Under Bank of Israel rules, up to 75% of value for a single home, 70% for a replacement home and 50% for an investment home or a buyer who is not an Israeli citizen. Banks may be stricter.[[G_LTV]]"
+   }
+  },
+  {
+   "q": {
+    "he": "כמה רחוק הים?",
+    "en": "How far is the sea?"
+   },
+   "a": {
+    "he": "לפי המשווקת במרחק הליכה, וכחמש דקות מכיכר דה שליט. חוף זבולון נמצא כ-750 מ׳ מהכיכר בקו אווירי; המרחק מהמגרש עצמו יימסר עם הכתובת.[[S1,S2]]",
+    "en": "Within walking distance according to the broker, and about five minutes from De Shalit Square. Zevulun Beach is about 750 m from the square in a straight line; the distance from the plot itself comes with the address.[[S1,S2]]"
+   }
+  },
+  {
+   "q": {
+    "he": "אילו מוסדות חינוך בינלאומיים יש בסביבה?",
+    "en": "Which international schools are nearby?"
+   },
+   "a": {
+    "he": "בית הספר האמריקאי הבינלאומי WBAIS באבן יהודה, כ-11.7 ק״מ בקו אווירי מכיכר דה שליט, ואוניברסיטת רייכמן בהרצליה, כ-2.9 ק״מ.[[S102,S104]]",
+    "en": "The Walworth Barbour American International School (WBAIS) in Even Yehuda, about 11.7 km in a straight line from De Shalit Square, and Reichman University in Herzliya, about 2.9 km.[[S102,S104]]"
+   }
+  },
+  {
+   "q": {
+    "he": "איך מתאמים סיור?",
+    "en": "How do I arrange a viewing?"
+   },
+   "a": {
+    "he": "הסיורים בתיאום מראש בלבד, ישירות מול מיטל קציר.[[S1]]",
+    "en": "Viewings are by appointment only, arranged directly with Meital Katzir.[[S1]]"
+   }
+  }
+ ],
+ "amenities": [
+  {
+   "he": "בריכה",
+   "en": "Swimming pool"
+  },
+  {
+   "he": "חדר קולנוע",
+   "en": "Cinema room"
+  },
+  {
+   "he": "חדר כושר",
+   "en": "Gym"
+  },
+  {
+   "he": "מרתף יין",
+   "en": "Wine cellar"
+  },
+  {
+   "he": "מעלית",
+   "en": "Lift"
+  },
+  {
+   "he": "ממ״ד",
+   "en": "Safe room"
+  },
+  {
+   "he": "חימום תת-רצפתי",
+   "en": "Underfloor heating"
+  },
+  {
+   "he": "חשמל חכם",
+   "en": "Smart electrical system"
+  }
+ ],
+ "seo": {
+  "he": {
+   "title": "וילה למכירה בהרצליה פיתוח, 700 מ״ר על 1.1 דונם",
+   "desc": "אחוזה פרטית בהרצליה פיתוח: כ-700 מ״ר ב-3 מפלסים על מגרש של 1,100 מ״ר, 7 סוויטות, בריכה, קולנוע, חדר כושר, מרתף יין ומעלית. מחיר לפי פנייה.",
+   "kw": "וילה למכירה בהרצליה פיתוח",
+   "slug": "herzliya-pituach-private-estate-for-sale"
+  },
+  "en": {
+   "title": "Herzliya Pituach Estate for Sale, 700 sqm on 1.1 Dunam",
+   "desc": "About 700 sqm over three levels on a 1,100 sqm plot: seven master suites, pool, cinema, gym, wine cellar and lift, near De Shalit Square. Price on request.",
+   "kw": "villa for sale Herzliya Pituach",
+   "slug": "en-herzliya-pituach-private-estate-for-sale"
+  }
+ },
+ "shots": [
+  {
+   "he": "החזית והכניסה",
+   "en": "Facade and entrance"
+  },
+  {
+   "he": "הבריכה והגן",
+   "en": "Pool and garden"
+  },
+  {
+   "he": "הסלון לכיוון הגן",
+   "en": "Living room toward the garden"
+  },
+  {
+   "he": "המטבח",
+   "en": "Kitchen"
+  },
+  {
+   "he": "סוויטת ההורים",
+   "en": "Master suite"
+  },
+  {
+   "he": "סוויטה נוספת",
+   "en": "A further suite"
+  },
+  {
+   "he": "חדר הקולנוע",
+   "en": "Cinema room"
+  },
+  {
+   "he": "חדר הכושר",
+   "en": "Gym"
+  },
+  {
+   "he": "מרתף היין",
+   "en": "Wine cellar"
+  },
+  {
+   "he": "המעלית והמדרגות בין המפלסים",
+   "en": "Lift and stairs between levels"
+  },
+  {
+   "he": "צילום אווירי של המגרש",
+   "en": "Aerial view of the plot"
+  },
+  {
+   "he": "תשריט המפלסים",
+   "en": "Level plans"
+  }
+ ],
+ "internal": {
+  "assessment": [
+   "הצלבה סבירה: מודעת ביד2 של אנגלו סכסון הרצליה פיתוח מדצמבר 2025, 700 מ״ר על 1,100 מ״ר ב-3 מפלסים, ב-46,000,000 ₪. משרדים אחרים מפרסמים וילות דומות ב-45 עד 46 מיליון ₪ מאז ינואר 2024, עם שטחים סותרים (600/700/800 מ״ר, מגרש 1,000/1,100/1,200). אם זה אותו נכס, הוא בשוק זמן רב. לא אומת בכתובת או בתמונות.",
+   "ב-46 מיליון ₪ המחיר הוא כ-65,714 ₪ למ״ר בנוי, מתחת לרבעון התחתון של 15 הווילות המוצעות (66,667 ₪). תמחור תחרותי מול המודעות, אבל ללא עסקה השוואתית עם שטח ומגרש דומים מ-2024 עד 2026.",
+   "מודעת ההצלבה מציינת שחלק מהפריטים בתמונות נוספו בבינה מלאכותית. להשתמש רק בתמונות של מיטל.",
+   "הושמטו מהעמוד: המחיר מההצלבות, מודעת השכירות של אחוזת הנדל״ן ב-130,000 ₪, וילת השכירות של אנגלו סכסון (872 מ״ר), מימון ההגנה על המצוק וזכויות המעבר לטיילת בגלי תכלת.",
+   "שימו לב: מודעת אנגלו סכסון של 700 מ״ר על 1,014 מ״ר ב-35 מיליון ₪ (יוני 2024) הוצאה מטבלת ההשוואה, אבל היא אחת מ-15 הווילות בחישוב הרבעונים (מופיעה במקורות בשם ניטרלי). אם מיטל תאשר שזה אותו נכס, יש להוציא אותה מהחישוב ולחשב מחדש את החציון והרבעונים."
+  ],
+  "confirm": [
+   "המחיר המבוקש, והאם זה הנכס שמפורסם ב-46,000,000 ₪ ביד2.",
+   "רחוב, גוש וחלקה; האם מותר לפרסם את שם הרחוב.",
+   "שטח רשום, שטח בהיתר ושטח לארנונה; חניות; שנת בנייה ושיפוץ.",
+   "האם הבעלים ישקלו השכרה, ובאיזה מחיר.",
+   "אישור בכתב לשימוש בתמונות ובטקסט באתר, וחלוקת דמי התיווך בשיתוף הפעולה."
+  ]
+ },
+ "wp": {
+  "listing_type": "sale",
+  "property_type": "villa",
+  "price": null,
+  "rooms": null,
+  "floor": null,
+  "total_floors": 3,
+  "size_sqm": 700,
+  "balcony_sqm": null,
+  "parking": null,
+  "elevator": true,
+  "ac": null,
+  "protected_room": true,
+  "street": "",
+  "building_number": "",
+  "city": "הרצליה",
+  "neighborhood": "הרצליה פיתוח",
+  "arnona_monthly": 0,
+  "vaad_bayit_monthly": 0,
+  "storage": null,
+  "condition": null,
+  "plot_sqm": 1100
+ },
+ "source_titles": {
+  "S63": {
+   "he": "Yad2 item xfm7wnn0: villa listing in Herzliya Pituach (2024)",
+   "en": "Yad2 item xfm7wnn0: villa listing in Herzliya Pituach (2024)"
+  }
+ }
+}

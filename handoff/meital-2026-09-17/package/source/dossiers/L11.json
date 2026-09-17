@@ -1,0 +1,1651 @@
+{
+  "id": "L11",
+  "identification": {
+    "summary_en": "5-room rental on a high floor, tagged 'Ramat Aviv' by the broker, in a complex with a swimming pool, gym, guard and other services, with 2 parking spaces and storage (posted 2026-08-18). Rent, size, complex name and address are not stated, and the unit was not among the broker's Madlan listings seen on 2026-09-16. In the Ramat Aviv neighborhoods, the best-documented match for this set of amenities is the group of 11 to 13-floor buildings on Stimatzky St in Ramat Aviv HaHadasha, which several brokers describe as having a 24/7 guard, a swimming pool and a gym. This is a candidate, not an identification.",
+    "summary_he": "דירת 5 חדרים להשכרה בקומה גבוהה, שתויגה ״רמת אביב״ על ידי המתווכת, במתחם עם בריכת שחייה, חדר כושר, שמירה ושירותים נוספים, עם 2 חניות ומחסן (פורסם ב-18.8.2026). שכר הדירה, השטח, שם המתחם והכתובת לא צוינו, והדירה לא נמצאה בין מודעות המתווכת במדלן שנבדקו ב-16.9.2026. בשכונות רמת אביב, ההתאמה המתועדת ביותר לשירותים אלה היא קבוצת הבניינים בני 11 עד 13 קומות ברחוב סטימצקי ברמת אביב החדשה, שכמה מתווכים מתארים עם שמירה 24/7, בריכת שחייה וחדר כושר. זו מועמדות בלבד ולא זיהוי.",
+    "address_or_project_en": "Ramat Aviv area (broker's location tag); complex not identified. Leading candidate: the Stimatzky St buildings, Ramat Aviv HaHadasha",
+    "address_or_project_he": "אזור רמת אביב (תיוג המיקום של המתווכת); המתחם לא זוהה. מועמד מוביל: הבניינים ברחוב סטימצקי, רמת אביב החדשה",
+    "confidence": "unverified",
+    "evidence": [
+      "Instagram post of 2026-08-18, location tag 'Ramat Aviv': 5 rooms, high floor, spacious and bright, 2 parking spaces, storage, quality complex with swimming pool, gym, guard and more services. No rent, size or address.",
+      "Brokers use 'Ramat Aviv' loosely: a Lamed HaHadasha mini penthouse on Madlan is advertised as 'in Ramat Aviv'. Wikipedia counts Neve Avivim, Ramat Aviv Gimel and Ramat Aviv HaHadasha as parts of Ramat Aviv.",
+      "Stimatzky St, Ramat Aviv HaHadasha: separate broker listings describe No. 6 with a 24/7 guard, a large heated covered pool, a gym and a residents' events room; No. 8 with a 24/7 guard and a pool (another listing: guard and gym); No. 18a as a luxury building with a gym and swimming pool; and an unnumbered 11-floor building with a guard, pool and gym.",
+      "A 5-room top-floor unit at Stimatzky 18a (130 sqm, floor 11, parking and storage) is advertised on Madlan by another agency (IsraHome) at NIS 18,000. It is called a penthouse, which the broker's post does not say, so it is not treated as the same unit.",
+      "Migdalei Ne'eman on Michael Ne'eman St has a covered year-round pool, a gym and a lobby guard (Globes 2018 and 2024), but it lies in Tzukei Aviv/Glilot rather than Ramat Aviv, and the same broker markets a unit there by name (listing L08).",
+      "Streets suggested for checking are outside Ramat Aviv on Madlan: Moshe Sneh 12 is in Ramot Tzahala, Pinchas Rosen 50 in Shikun Dan and Kehilat Venezia in Neot Afeka A.",
+      "The 'other listings by Meital Katzir' sections on her Madlan listing pages showed no 5-room Ramat Aviv complex unit."
+    ],
+    "source_ids": [
+      "IG_L11",
+      "MAD_QON7",
+      "WIKI_RA",
+      "MAD_QYSY",
+      "MAD_PBIC",
+      "MAD_CU8V",
+      "MAD_60TV",
+      "MAD_KSOP",
+      "MAD_QQT6",
+      "GLOBES_NEEMAN_2024",
+      "GLOBES_NEEMAN_2018",
+      "MAD_MS12",
+      "MAD_PR50",
+      "MAD_KV",
+      "MAD_0TMW",
+      "MAD_L10"
+    ]
+  },
+  "cross_listings": [],
+  "building_facts": [
+    {
+      "label_en": "Rooms and floor",
+      "label_he": "חדרים וקומה",
+      "value_en": "5 rooms on a high floor, described as spacious and bright",
+      "value_he": "5 חדרים בקומה גבוהה, מתוארת כמרווחת ומוארת",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "IG_L11"
+      ],
+      "note_en": "Floor number not stated."
+    },
+    {
+      "label_en": "Parking and storage",
+      "label_he": "חניה ומחסן",
+      "value_en": "2 parking spaces and a storage room",
+      "value_he": "2 חניות ומחסן",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "IG_L11"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Complex services",
+      "label_he": "שירותי המתחם",
+      "value_en": "Swimming pool, gym, guard and other services",
+      "value_he": "בריכת שחייה, חדר כושר, שמירה ושירותים נוספים",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "IG_L11"
+      ],
+      "note_en": "Cannot be checked until the complex is identified."
+    },
+    {
+      "label_en": "Not stated by the broker",
+      "label_he": "לא צוין על ידי המתווכת",
+      "value_en": "Rent, size, floor number, complex name, address and entry date",
+      "value_he": "שכר דירה, שטח, מספר קומה, שם המתחם, כתובת ומועד כניסה",
+      "basis": "broker",
+      "confidence": "verified",
+      "source_ids": [
+        "IG_L11"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Candidate: Stimatzky 6, Ramat Aviv HaHadasha",
+      "label_he": "מועמד: סטימצקי 6, רמת אביב החדשה",
+      "value_en": "12-floor building on pillars with a 24/7 guard, a large heated covered pool, a gym and a residents' events room; va'ad bayit NIS 1,700 a month for a 110 sqm unit",
+      "value_he": "בניין בן 12 קומות על עמודים עם שומר 24/7, בריכה ענקית מחוממת ומקורה, חדר כושר וחדר דיירים לאירועים; ועד בית 1,700 ש״ח לחודש לדירה של 110 מ״ר",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "MAD_QYSY",
+        "MAD_PBIC"
+      ],
+      "note_en": "Two independent broker listings on Madlan (a rental and a sale). Year built not shown."
+    },
+    {
+      "label_en": "Candidate: Stimatzky 8, Ramat Aviv HaHadasha",
+      "label_he": "מועמד: סטימצקי 8, רמת אביב החדשה",
+      "value_en": "A sale listing describes a 24/7 guard and a pool (11 floors); a rental listing describes a luxury building with a guard, a gym and a children's play room (13 floors)",
+      "value_he": "מודעת מכירה מתארת שומר 24/7 ובריכה (11 קומות); מודעת השכרה מתארת בניין יוקרתי עם שומר, חדר כושר וג׳ימבורי לילדים (13 קומות)",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "MAD_CU8V",
+        "MAD_60TV"
+      ],
+      "note_en": "Floor counts differ between the listings; they may describe different entrances."
+    },
+    {
+      "label_en": "Candidate: Stimatzky 18a, Ramat Aviv HaHadasha",
+      "label_he": "מועמד: סטימצקי 18א, רמת אביב החדשה",
+      "value_en": "Described as a luxury building with a gym and a swimming pool; top floor 11",
+      "value_he": "מתואר כבניין יוקרתי עם חדר כושר ובריכת שחייה; הקומה העליונה 11",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "MAD_KSOP",
+        "MAD_QQT6"
+      ],
+      "note_en": "House number from one listing. A second listing on Stimatzky St (floor 9 of 11, no house number) describes a building with a guard, pool and gym."
+    },
+    {
+      "label_en": "Stimatzky 10, Ramat Aviv HaHadasha",
+      "label_he": "סטימצקי 10, רמת אביב החדשה",
+      "value_en": "12-floor building on pillars, built in 2018, called by its broker the most sought-after building in the neighborhood",
+      "value_he": "בניין בן 12 קומות על עמודים, נבנה ב-2018, מתואר על ידי המתווך כבניין המבוקש ביותר בשכונה",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "MAD_WPXC"
+      ],
+      "note_en": "The free text mentions no pool or gym."
+    },
+    {
+      "label_en": "Candidate outside Ramat Aviv: Migdalei Ne'eman, Michael Ne'eman St (Tzukei Aviv/Glilot)",
+      "label_he": "מועמד מחוץ לרמת אביב: מגדלי נאמן, רחוב מיכאל נאמן (צוקי אביב/גלילות)",
+      "value_en": "Covered pool open all year from 06:00 to midnight, equipped gym, guard in the lobby, synagogue and car-wash point; management fee about NIS 2,300 a month for a 138 sqm apartment (2024) and NIS 1,900 for a 125 sqm apartment (2018)",
+      "value_he": "בריכה מקורה הפתוחה כל השנה משש בבוקר עד חצות, חדר כושר מאובזר, שומר בלובי, בית כנסת ועמדת שטיפת רכבים; דמי ניהול של כ-2,300 ש״ח לחודש לדירת 138 מ״ר (2024) ו-1,900 ש״ח לדירת 125 מ״ר (2018)",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "GLOBES_NEEMAN_2024",
+        "GLOBES_NEEMAN_2018"
+      ],
+      "note_en": "Two Globes articles. The same broker markets a Migdalei Ne'eman unit by name (L08), so a 'Ramat Aviv' tag for it would be unusual."
+    },
+    {
+      "label_en": "Ramat Aviv Gimel towers on Avshalom Haviv St",
+      "label_he": "המגדלים ברחוב אבשלום חביב, רמת אביב ג׳",
+      "value_en": "12 to 14-floor buildings with a guard: a renovated lobby with a guard post (12 floors) and a quality building with a 24/7 guard (14 floors); no shared pool mentioned",
+      "value_he": "בניינים בני 12 עד 14 קומות עם שמירה: לובי מחודש עם עמדת שומר (12 קומות) ובניין איכותי עם שומר 24/7 (14 קומות); לא מוזכרת בריכה משותפת",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "GLOBES_AH_2024",
+        "MAD_NBSJ"
+      ],
+      "note_en": "Guard verified by two sources; no source mentions a pool."
+    },
+    {
+      "label_en": "Avshalom Haviv 7, Ramat Aviv Gimel",
+      "label_he": "אבשלום חביב 7, רמת אביב ג׳",
+      "value_en": "New, well-kept 9-floor building with a gym and an events room; no pool mentioned",
+      "value_he": "בניין חדש ומתוחזק בן 9 קומות עם חדר כושר וחדר אירועים; לא מוזכרת בריכה",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "MAD_CFMG"
+      ],
+      "note_en": "One broker listing."
+    },
+    {
+      "label_en": "Streets suggested for checking",
+      "label_he": "רחובות שהוצעו לבדיקה",
+      "value_en": "Madlan places Moshe Sneh 12 in Ramot Tzahala, Pinchas Rosen 50 in Shikun Dan and Kehilat Venezia in Neot Afeka A; none is in Ramat Aviv",
+      "value_he": "מדלן משייך את משה סנה 12 לרמות צהלה, את פנחס רוזן 50 לשיכון דן ואת קהילת ונציה לנאות אפקה א׳; אף אחד מהם אינו ברמת אביב",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "MAD_MS12",
+        "MAD_PR50",
+        "MAD_KV"
+      ],
+      "note_en": "One source per street."
+    }
+  ],
+  "neighborhood_facts": [
+    {
+      "label_en": "Ramat Aviv and its parts",
+      "label_he": "רמת אביב וחלקיה",
+      "value_en": "Ramat Aviv (Aleph) is bounded by Einstein St (north), Haim Levanon St (east and south) and Namir Rd (west). Neve Avivim, Ramat Aviv Gimel and Ramat Aviv HaHadasha are counted as its other parts.",
+      "value_he": "רמת אביב (א׳) תחומה ברחוב איינשטיין מצפון, ברחוב חיים לבנון ממזרח ומדרום ובדרך נמיר ממערב. נווה אביבים, רמת אביב ג׳ ורמת אביב החדשה נחשבות לחלקיה האחרים.",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "WIKI_RA"
+      ],
+      "note_en": "One source."
+    },
+    {
+      "label_en": "Ramat Aviv HaHadasha",
+      "label_he": "רמת אביב החדשה",
+      "value_en": "Bounded by Propes St (north), Namir Rd (east), Levi Eshkol Blvd (west) and Einstein St (south); built mainly from 1996 to 2016, mostly in 5 to 7-floor buildings, with taller buildings on some streets such as Stimatzky St (11 to 13 floors in listings)",
+      "value_he": "תחומה ברחוב פרופס מצפון, בדרך נמיר ממזרח, בשדרות לוי אשכול ממערב וברחוב איינשטיין מדרום; נבנתה בעיקר בשנים 1996 עד 2016, רובה בבניינים בני 5 עד 7 קומות, עם בניינים גבוהים יותר בחלק מהרחובות, כמו סטימצקי (11 עד 13 קומות לפי המודעות)",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "HON_RAH",
+        "TLV_PRICES",
+        "MAD_QYSY",
+        "MAD_60TV"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Ramat Aviv Gimel",
+      "label_he": "רמת אביב ג׳",
+      "value_en": "Luxury residential towers alongside lower buildings, two commercial centers (Shuster and Elram); rents described as similar to Neve Avivim",
+      "value_he": "מגדלי מגורים יוקרתיים לצד בניינים נמוכים, שני מרכזים מסחריים (שוסטר ואלרם); מחירי השכירות מתוארים כדומים לנווה אביבים",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "GLOBES_RAG_2023"
+      ],
+      "note_en": "One source (2023)."
+    },
+    {
+      "label_en": "Ramat Aviv Mall",
+      "label_he": "קניון רמת אביב",
+      "value_en": "Einstein St 40; opened in 1997; about 140 stores on 17,800 sqm; owned by Melisron",
+      "value_he": "רחוב איינשטיין 40; נפתח ב-1997; כ-140 חנויות בשטח 17,800 מ״ר; בבעלות מליסרון",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "WIKI_MALL"
+      ],
+      "note_en": "One source."
+    },
+    {
+      "label_en": "Tel Aviv University",
+      "label_he": "אוניברסיטת תל אביב",
+      "value_en": "Main campus in Ramat Aviv, about 89 hectares, with about 28,500 students in 2019",
+      "value_he": "הקמפוס הראשי ברמת אביב, כ-89 הקטאר, ובו כ-28,500 סטודנטים ב-2019",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "WIKI_TAU",
+        "WIKI_RA"
+      ],
+      "note_en": "Student numbers are from 2019."
+    },
+    {
+      "label_en": "Museums",
+      "label_he": "מוזיאונים",
+      "value_en": "The Eretz Israel Museum, the Palmach Museum and ANU Museum of the Jewish People are in Ramat Aviv",
+      "value_he": "מוזיאון ארץ ישראל, מוזיאון הפלמ״ח ואנו, מוזיאון העם היהודי, נמצאים ברמת אביב",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "WIKI_RA"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Road access and peak congestion",
+      "label_he": "גישה בכביש ועומסי תנועה",
+      "value_en": "Access relies mainly on the Levi Eshkol axis and on Einstein Road from the south. At peak hours the Einstein-Namir junction can be heavily congested, which mainly affects residents leaving Ramat Aviv HaHadasha and Nofei Yam.",
+      "value_he": "הכניסות והיציאות העיקריות תלויות בציר לוי אשכול ובכביש איינשטיין מדרום. בשעות העומס צומת איינשטיין-נמיר עלול להיות עמוס, מה שמשפיע בעיקר על היוצאים מרמת אביב החדשה ומנופי ים.",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "TLV_COMPARE"
+      ],
+      "note_en": "One source (an appraiser's analysis); no traffic counts found."
+    },
+    {
+      "label_en": "Coastal park promenade",
+      "label_he": "טיילת הפארק החופי",
+      "value_en": "The coastal park promenade, opened in September 2023, runs about 2 km along the cliff from Tel Baruch beach (south) to Tzuk beach (north), inside a 500-dunam nature park, with a 2 km bike path.",
+      "value_he": "טיילת הפארק החופי, שנפתחה בספטמבר 2023, נמשכת כ-2 ק״מ לאורך המצוק מחוף תל ברוך בדרום ועד חוף הצוק בצפון, בתוך פארק טבע בשטח 500 דונם, ולצידה שביל אופניים באורך 2 ק״מ.",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "WALLA_PROM",
+        "TIMEOUT_PROM"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Country clubs nearby",
+      "label_he": "קאנטרי קלאב בסביבה",
+      "value_en": "Plan Lamed, south of Einstein St, has a municipal community country club (Country Lamed). Azorei Chen, north of Propes St, has a neighborhood country club for its residents.",
+      "value_he": "בתוכנית ל׳, מדרום לרחוב איינשטיין, פועל קאנטרי קלאב קהילתי עירוני (קאנטרי ל׳). באזורי חן, מצפון לרחוב פרופס, פועל מועדון קאנטרי שכונתי לדיירים.",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "TLV_COMPARE",
+        "MAD_B9MY"
+      ],
+      "note_en": "One press source. A Nofei Yam listing on Madlan describes its building as next to 'the country club' without naming it. Distances not measured."
+    },
+    {
+      "label_en": "Shops and services",
+      "label_he": "מסחר ושירותים",
+      "value_en": "At least two small commercial centers operate among the complexes, but there is no lively commercial street; several kindergartens and a school operate within HaGush HaGadol.",
+      "value_he": "בין המתחמים פועלים לפחות שני מרכזים מסחריים קטנים, אך אין רחוב מסחרי תוסס; בתחומי הגוש הגדול פועלים כמה גני ילדים ובית ספר.",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "TLV_COMPARE",
+        "GLOBES_NY_2024"
+      ],
+      "note_en": ""
+    }
+  ],
+  "distances": [],
+  "schools": [
+    {
+      "name_en": "Aviv elementary school",
+      "name_he": "בית ספר אביב",
+      "level_en": "Elementary (1-6)",
+      "level_he": "יסודי (א-ו)",
+      "note_en": "In Ramat Aviv HaHadasha; about 65 pupils per grade per Madlan. Registration zone not verified.",
+      "note_he": "ברמת אביב החדשה; כ-65 תלמידים בשכבה לפי מדלן. אזור הרישום לא אומת.",
+      "source_ids": [
+        "MAD_RAH_AREA"
+      ]
+    },
+    {
+      "name_en": "Ironi Yud-Alef (Alliance)",
+      "name_he": "עירוני י״א (אליאנס)",
+      "level_en": "Middle and high school (7-12)",
+      "level_he": "חטיבת ביניים ותיכון (ז-יב)",
+      "note_en": "In Ramat Aviv; about 252 pupils per grade per Madlan. Registration zone not verified.",
+      "note_he": "ברמת אביב; כ-252 תלמידים בשכבה לפי מדלן. אזור הרישום לא אומת.",
+      "source_ids": [
+        "MAD_RA_AREA",
+        "WIKI_RA"
+      ]
+    },
+    {
+      "name_en": "Brushim",
+      "name_he": "ברושים",
+      "level_en": "Middle and high school (7-12)",
+      "level_he": "חטיבת ביניים ותיכון (ז-יב)",
+      "note_en": "Listed by Madlan for Ramat Aviv Gimel. Registration zone not verified.",
+      "note_he": "מופיע במדלן עבור רמת אביב ג׳. אזור הרישום לא אומת.",
+      "source_ids": [
+        "MAD_RAG_AREA"
+      ]
+    },
+    {
+      "name_en": "Ramat Aviv and Beit Tzuri elementary schools",
+      "name_he": "בתי הספר היסודיים רמת אביב ובית צורי",
+      "level_en": "Elementary (1-6)",
+      "level_he": "יסודי (א-ו)",
+      "note_en": "Listed by Madlan for Ramat Aviv Gimel. Registration zone not verified.",
+      "note_he": "מופיעים במדלן עבור רמת אביב ג׳. אזור הרישום לא אומת.",
+      "source_ids": [
+        "MAD_RAG_AREA"
+      ]
+    },
+    {
+      "name_en": "Amos Oz school (Ironi Kaf-Dalet)",
+      "name_he": "בית הספר עמוס עוז (עירוני כ״ד)",
+      "level_en": "Middle and high school (7-12)",
+      "level_he": "חטיבת ביניים ותיכון (ז-יב)",
+      "note_en": "New building on the northern extension of Ibn Gabirol St at Marc Chagall St, on the edge of Nofei Yam and the Sde Dov district, near a Green Line station; seven classes plus a special education class per grade. In January 2025 construction was being completed and the move was expected within weeks. Grades per Madlan. Registration zone not verified.",
+      "note_he": "מבנה חדש בהמשך הצפוני של רחוב אבן גבירול במפגש עם רחוב מרק שאגאל, בתפר שבין נופי ים לרובע שדה דב, סמוך לתחנת הקו הירוק; שבע כיתות וכיתת חינוך מיוחד בכל שכבה. בינואר 2025 הבנייה הייתה בשלבי סיום והמעבר היה צפוי בתוך שבועות. השכבות לפי מדלן. אזור הרישום לא אומת.",
+      "source_ids": [
+        "TLV_AMOSOZ",
+        "MAD_KH_AREA"
+      ]
+    },
+    {
+      "name_en": "Nathan Alterman High School",
+      "name_he": "תיכון נתן אלתרמן",
+      "level_en": "Middle and high school (7-12)",
+      "level_he": "חטיבת ביניים ותיכון (ז-יב)",
+      "note_en": "In Tzukei Aviv, north of Propes St; about 251 pupils per grade per Madlan. Registration zone not verified.",
+      "note_he": "בצוקי אביב, מצפון לרחוב פרופס; כ-251 תלמידים בשכבה לפי מדלן. אזור הרישום לא אומת.",
+      "source_ids": [
+        "MAD_TZ_AREA",
+        "PTLV_TZUKEI"
+      ]
+    }
+  ],
+  "transport": [
+    {
+      "item_en": "Green Line light rail (Rishon LeZion and Holon to Herzliya, with a branch to Ramat HaHayal)",
+      "item_he": "הקו הירוק של הרכבת הקלה (מראשון לציון וחולון להרצליה, עם שלוחה לרמת החייל)",
+      "status_en": "under construction; southern section expected 2028, full line 2030",
+      "status_he": "בבנייה; הקטע הדרומי צפוי ב-2028 והקו כולו ב-2030",
+      "source_ids": [
+        "ICE_GREEN",
+        "WIKI_GREEN"
+      ]
+    },
+    {
+      "item_en": "Green Line route through Ramat Aviv along Namir Rd, Einstein St and Haim Levanon St, with a sunken station planned at the Namir-Einstein junction",
+      "item_he": "תוואי הקו הירוק ברמת אביב לאורך דרך נמיר, רחוב איינשטיין ורחוב חיים לבנון, עם תחנה שקועה מתוכננת בצומת נמיר-איינשטיין",
+      "status_en": "planned route (residents objected in 2017); works schedule not verified",
+      "status_he": "תוואי מתוכנן (תושבים התנגדו ב-2017); לוח הזמנים של העבודות לא אומת",
+      "source_ids": [
+        "GLOBES_GREEN_2017"
+      ]
+    },
+    {
+      "item_en": "Green Line station names in the area include Tel Aviv University, Brodetsky and Namir",
+      "item_he": "שמות תחנות הקו הירוק באזור כוללים את אוניברסיטת תל אביב, ברודצקי ונמיר",
+      "status_en": "planned; order and exact locations not verified",
+      "status_he": "מתוכנן; הסדר והמיקום המדויק לא אומתו",
+      "source_ids": [
+        "PTLV_GREEN"
+      ]
+    },
+    {
+      "item_en": "Israel Railways University station",
+      "item_he": "תחנת רכבת ישראל אוניברסיטה",
+      "status_en": "operating; walking distance from candidate buildings not measured",
+      "status_he": "פעילה; מרחק ההליכה מהבניינים המועמדים לא נמדד",
+      "source_ids": [
+        "PTLV_RAIL"
+      ]
+    },
+    {
+      "item_en": "Car access via Levi Eshkol Blvd and Einstein St; Einstein-Namir junction congested at peak hours",
+      "item_he": "גישה ברכב דרך שדרות לוי אשכול ורחוב איינשטיין; צומת איינשטיין-נמיר עמוס בשעות השיא",
+      "status_en": "operating; congestion reported in 2025",
+      "status_he": "פעיל; עומסים דווחו ב-2025",
+      "source_ids": [
+        "TLV_COMPARE"
+      ]
+    },
+    {
+      "item_en": "Public transport to the city center: about 25 to 30 minutes from Plan Lamed and Ramat Aviv HaHadasha (appraiser's estimate; no figure given for Nofei Yam)",
+      "item_he": "תחבורה ציבורית למרכז העיר: כ-25 עד 30 דקות מתוכנית ל׳ ומרמת אביב החדשה (הערכת שמאי; לנופי ים לא ניתן נתון)",
+      "status_en": "estimate published 2025",
+      "status_he": "הערכה שפורסמה ב-2025",
+      "source_ids": [
+        "TLV_COMPARE"
+      ]
+    }
+  ],
+  "planning_future": [
+    {
+      "item_en": "Green Line construction through Ramat Aviv",
+      "item_he": "עבודות הקו הירוק ברמת אביב",
+      "impact_en": "The southern section is expected in 2028 and the full line in 2030; works along Namir, Einstein and Haim Levanon can disrupt traffic until then.",
+      "impact_he": "הקטע הדרומי צפוי ב-2028 והקו כולו ב-2030; עד אז העבודות לאורך נמיר, איינשטיין וחיים לבנון עלולות לשבש את התנועה.",
+      "source_ids": [
+        "ICE_GREEN",
+        "GLOBES_GREEN_2017"
+      ]
+    },
+    {
+      "item_en": "Nofei Yam North: 191 vacant dunams between Nofei Yam and Propes St",
+      "item_he": "נופי ים צפון: 191 דונם פנויים בין נופי ים לרחוב פרופס",
+      "impact_en": "A 2021 plan allows 1,530 units but no permits were issued; on 2025-03-05 a permit freeze was extended by three years for re-planning, and heights could rise from 15 to 45 floors under master plan TA/5500. Views to the north may change in the long term.",
+      "impact_he": "תוכנית מ-2021 מתירה 1,530 יחידות דיור אך לא הוצאו היתרים; ב-5 במרץ 2025 הוארכה הקפאת היתרים בשלוש שנים לצורך תכנון מחדש, והגובה עשוי לעלות מ-15 ל-45 קומות במסגרת תוכנית המתאר ת״א/5500. הנוף לכיוון צפון עשוי להשתנות בטווח הארוך.",
+      "source_ids": [
+        "TLV_NYNORTH"
+      ]
+    },
+    {
+      "item_en": "Sde Dov center plan: 7,128 units with towers of 20 and 45 floors",
+      "item_he": "תוכנית מרכז שדה דב: 7,128 יחידות דיור במגדלים של 20 ו-45 קומות",
+      "impact_en": "Objections were rejected in February 2025; the skyline to the west and south-west will change and works will continue for years.",
+      "impact_he": "ההתנגדויות נדחו בפברואר 2025; קו הרקיע ממערב ומדרום-מערב ישתנה והעבודות יימשכו שנים.",
+      "source_ids": [
+        "NC_SDEDOV"
+      ]
+    },
+    {
+      "item_en": "Plan 3700 (north-west Tel Aviv), north of Propes St: about 12,000 housing units",
+      "item_he": "תוכנית 3700 (צפון-מערב העיר), מצפון לרחוב פרופס: כ-12,000 יחידות דיור",
+      "impact_en": "Relevant if the complex is in Tzukei Aviv or Glilot. Migdalei Ne'eman residents claimed about NIS 71 million for noise, air pollution and lost views; the appeals committee found no damage proven (January 2026).",
+      "impact_he": "רלוונטי אם המתחם בצוקי אביב או בגלילות. דיירי מגדלי נאמן תבעו כ-71 מיליון ש״ח בגין רעש, זיהום אוויר ופגיעה בנוף; ועדת הערר קבעה שלא הוכח נזק (ינואר 2026).",
+      "source_ids": [
+        "GLOBES_3700",
+        "MAGDILIM_NEEMAN"
+      ]
+    },
+    {
+      "item_en": "Hof HaTchelet, Herzliya: about 14,100 housing units between the Microsoft campus and the WIX campus at Glilot junction",
+      "item_he": "חוף התכלת, הרצליה: כ-14,100 יחידות דיור בין קמפוס מיקרוסופט לקמפוס WIX בצומת גלילות",
+      "impact_en": "Agreement signed in November 2025 with implementation planned for 2026 to 2032; more construction and traffic north of the area.",
+      "impact_he": "ההסכם נחתם בנובמבר 2025 והביצוע מתוכנן לשנים 2026 עד 2032; צפויות בנייה ותנועה נוספות מצפון לאזור.",
+      "source_ids": [
+        "TLV_TCHELET"
+      ]
+    },
+    {
+      "item_en": "Barkai urban renewal compound, Ramat Aviv Gimel: 370 units",
+      "item_he": "מתחם ההתחדשות העירונית ברקאי, רמת אביב ג׳: 370 יחידות דיור",
+      "impact_en": "Design plan approved on 2025-10-29; future construction inside Ramat Aviv Gimel.",
+      "impact_he": "תוכנית העיצוב אושרה ב-29 באוקטובר 2025; צפויה בנייה בתוך רמת אביב ג׳.",
+      "source_ids": [
+        "PTLV_RAG"
+      ]
+    }
+  ],
+  "market_stats": [
+    {
+      "metric_en": "Average rent, Ramat Aviv HaHadasha (all sizes)",
+      "metric_he": "שכר דירה ממוצע, רמת אביב החדשה (כל הגדלים)",
+      "value_en": "NIS 13,400 per month",
+      "value_he": "13,400 ש״ח לחודש",
+      "as_of": "2026-09",
+      "source_ids": [
+        "MAD_RAH_AREA"
+      ]
+    },
+    {
+      "metric_en": "Average purchase price, Ramat Aviv HaHadasha",
+      "metric_he": "מחיר רכישה ממוצע, רמת אביב החדשה",
+      "value_en": "NIS 4,425,000",
+      "value_he": "4,425,000 ש״ח",
+      "as_of": "2026-09",
+      "source_ids": [
+        "MAD_RAH_AREA"
+      ]
+    },
+    {
+      "metric_en": "Average rent, Ramat Aviv Gimel (all sizes)",
+      "metric_he": "שכר דירה ממוצע, רמת אביב ג׳ (כל הגדלים)",
+      "value_en": "NIS 12,300 per month",
+      "value_he": "12,300 ש״ח לחודש",
+      "as_of": "2026-09",
+      "source_ids": [
+        "MAD_RAG_AREA"
+      ]
+    },
+    {
+      "metric_en": "Tzukei Aviv rents (neighborhood review)",
+      "metric_he": "שכר דירה בצוקי אביב (סקירת שכונה)",
+      "value_en": "5 rooms about NIS 15,000 a month; special properties above NIS 20,000; gross yield about 2.4% to 2.7%",
+      "value_he": "5 חדרים כ-15,000 ש״ח לחודש; נכסים מיוחדים מעל 20,000 ש״ח; תשואה ברוטו של כ-2.4% עד 2.7%",
+      "as_of": "2026-08",
+      "source_ids": [
+        "BIZ_TZ"
+      ]
+    },
+    {
+      "metric_en": "Rent change for new tenants, Israel (CBS, August 2026 CPI)",
+      "metric_he": "שינוי בשכר הדירה לשוכרים חדשים, ישראל (למ״ס, מדד אוגוסט 2026)",
+      "value_en": "up 4.4% year on year; up 2.6% for renewing tenants",
+      "value_he": "עלייה של 4.4% בשנה; עלייה של 2.6% לשוכרים שחידשו חוזה",
+      "as_of": "2026-08",
+      "source_ids": [
+        "WALLA_CBS"
+      ]
+    },
+    {
+      "metric_en": "Asking rents, 5-room non-penthouse units of 119 to 137 sqm in Ramat Aviv HaHadasha and Ramat Aviv Gimel",
+      "metric_he": "שכר דירה מבוקש, דירות 5 חדרים שאינן פנטהאוז בשטח 119 עד 137 מ״ר ברמת אביב החדשה וברמת אביב ג׳",
+      "value_en": "NIS 12,800 to 17,000 a month (NIS 93 to 131 per sqm, computed from 6 listings); a 130 sqm top-floor unit in a Stimatzky St building with pool and gym asks NIS 18,000",
+      "value_he": "12,800 עד 17,000 ש״ח לחודש (93 עד 131 ש״ח למ״ר, חישוב על בסיס 6 מודעות); דירת קומה עליונה של 130 מ״ר בבניין ברחוב סטימצקי עם בריכה וחדר כושר מבוקשת ב-18,000 ש״ח",
+      "as_of": "2026-09",
+      "source_ids": [
+        "MAD_V6WX",
+        "MAD_QN6N",
+        "MAD_LLOZ",
+        "MAD_WWFD",
+        "MAD_CFMG",
+        "MAD_AMTO",
+        "MAD_KSOP"
+      ]
+    }
+  ],
+  "sale_comps": [
+    {
+      "date": "2026-09-16",
+      "where_en": "Stimatzky 10, Ramat Aviv HaHadasha (12-floor building, built 2018)",
+      "where_he": "סטימצקי 10, רמת אביב החדשה (בניין בן 12 קומות, נבנה ב-2018)",
+      "rooms": "5",
+      "sqm": 127,
+      "floor": 12,
+      "price_nis": 6650000,
+      "price_per_sqm_nis": 52362,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_WPXC"
+      ],
+      "note_en": "Plus a 12 sqm balcony; 6,650,000 / 127."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Stimatzky 6, Ramat Aviv HaHadasha (pool, gym, 24/7 guard)",
+      "where_he": "סטימצקי 6, רמת אביב החדשה (בריכה, חדר כושר, שומר 24/7)",
+      "rooms": "4.5",
+      "sqm": 110,
+      "floor": 11,
+      "price_nis": 6390000,
+      "price_per_sqm_nis": 58091,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_PBIC"
+      ],
+      "note_en": "Plus a 10 sqm balcony; 6,390,000 / 110."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Stimatzky 8, Ramat Aviv HaHadasha (24/7 guard, pool)",
+      "where_he": "סטימצקי 8, רמת אביב החדשה (שומר 24/7, בריכה)",
+      "rooms": "3.5",
+      "sqm": 84,
+      "floor": 2,
+      "price_nis": 4200000,
+      "price_per_sqm_nis": 50000,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_CU8V"
+      ],
+      "note_en": "Plus a 15 sqm balcony; 4,200,000 / 84."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Levi Eshkol 100, Ramat Aviv HaHadasha",
+      "where_he": "לוי אשכול 100, רמת אביב החדשה",
+      "rooms": "5",
+      "sqm": 130,
+      "floor": 7,
+      "price_nis": 6500000,
+      "price_per_sqm_nis": 50000,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_RAH_SALE"
+      ],
+      "note_en": "Results page only; 6,500,000 / 130."
+    },
+    {
+      "date": "2024-10-27",
+      "where_en": "Migdalei Ne'eman, Michael Ne'eman St (Tzukei Aviv/Glilot)",
+      "where_he": "מגדלי נאמן, רחוב מיכאל נאמן (צוקי אביב/גלילות)",
+      "rooms": "5",
+      "sqm": 138,
+      "floor": 5,
+      "price_nis": 5450000,
+      "price_per_sqm_nis": 39493,
+      "kind": "transaction",
+      "source_ids": [
+        "GLOBES_NEEMAN_2024"
+      ],
+      "note_en": "Floor 5 of 12, 20 sqm balcony, 2 parking and storage; appraisers put typical units at NIS 45,000 to 50,000 per sqm, so this deal was below value. Article date used; deal date not given."
+    },
+    {
+      "date": "2024-05-04",
+      "where_en": "Avshalom Haviv St, Ramat Aviv Gimel",
+      "where_he": "רחוב אבשלום חביב, רמת אביב ג׳",
+      "rooms": "4",
+      "sqm": 114,
+      "floor": 5,
+      "price_nis": 5170000,
+      "price_per_sqm_nis": 45351,
+      "kind": "transaction",
+      "source_ids": [
+        "GLOBES_AH_2024"
+      ],
+      "note_en": "Floor 5 of 12, 16 sqm balcony, sea view; old renovated building with a guard post. Article date used."
+    }
+  ],
+  "rent_comps": [
+    {
+      "date": "2026-09-16",
+      "where_en": "Stimatzky 18a, Ramat Aviv HaHadasha: top floor 11, building with gym and swimming pool",
+      "where_he": "סטימצקי 18א, רמת אביב החדשה: קומה עליונה 11, בניין עם חדר כושר ובריכת שחייה",
+      "rooms": "5",
+      "sqm": 130,
+      "rent_nis": 18000,
+      "rent_per_sqm_nis": 138,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_KSOP"
+      ],
+      "note_en": "Called a penthouse; renovated; parking and storage; immediate entry. 18,000 / 130."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Stimatzky 6, Ramat Aviv HaHadasha: floor 11, 24/7 guard, pool, gym",
+      "where_he": "סטימצקי 6, רמת אביב החדשה: קומה 11, שומר 24/7, בריכה, חדר כושר",
+      "rooms": "4",
+      "sqm": 110,
+      "rent_nis": 12500,
+      "rent_per_sqm_nis": 114,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_QYSY"
+      ],
+      "note_en": "4 rooms plus a half-room mamad; 2 parking and storage; va'ad NIS 1,700. 12,500 / 110."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Stimatzky St, Ramat Aviv HaHadasha: 24/7 guard, pool and gym",
+      "where_he": "רחוב סטימצקי, רמת אביב החדשה: שמירה 24/7, בריכה וחדר כושר",
+      "rooms": "4.5",
+      "sqm": 110,
+      "rent_nis": 13500,
+      "rent_per_sqm_nis": 123,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_J9TB"
+      ],
+      "note_en": "About 110 sqm including a half-room mamad, plus a 10 sqm balcony; 2 parking and storage; entry 07/2026. 13,500 / 110."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Stimatzky 8, Ramat Aviv HaHadasha: floor 1 of 13, guard and gym",
+      "where_he": "סטימצקי 8, רמת אביב החדשה: קומה 1 מתוך 13, שומר וחדר כושר",
+      "rooms": "4",
+      "sqm": 110,
+      "rent_nis": 11500,
+      "rent_per_sqm_nis": 105,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_60TV"
+      ],
+      "note_en": "11,500 / 110."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Ramat Aviv HaHadasha (street not shown): 11-floor building with a guard",
+      "where_he": "רמת אביב החדשה (הרחוב לא מוצג): בניין בן 11 קומות עם שומר",
+      "rooms": "5",
+      "sqm": 132,
+      "rent_nis": 14000,
+      "rent_per_sqm_nis": 106,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_WWFD"
+      ],
+      "note_en": "Plus a 12 sqm balcony with sea view, 2 parking and storage; entry 09/2026; floor shown inconsistently. 14,000 / 132."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Zeritsky 8, Ramat Aviv HaHadasha: floor 7 of 8",
+      "where_he": "זריצקי 8, רמת אביב החדשה: קומה 7 מתוך 8",
+      "rooms": "5",
+      "sqm": 137,
+      "rent_nis": 12800,
+      "rent_per_sqm_nis": 93,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_V6WX"
+      ],
+      "note_en": "Plus an 18 sqm balcony; 2 elevators, 2 private parking, mamad, storage; renovated. 12,800 / 137."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Stimatzky 8, Ramat Aviv HaHadasha: penthouse, floor 6 of 8",
+      "where_he": "סטימצקי 8, רמת אביב החדשה: פנטהאוז, קומה 6 מתוך 8",
+      "rooms": "5",
+      "sqm": 165,
+      "rent_nis": 22000,
+      "rent_per_sqm_nis": 133,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_KM2X",
+        "MAD_RAH_RENT"
+      ],
+      "note_en": "Results page shows NIS 22,000 to 25,000. 22,000 / 165."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Eli Cohen St, Ramat Aviv HaHadasha: penthouse, floor 12 of 12, open sea view",
+      "where_he": "רחוב אלי כהן, רמת אביב החדשה: פנטהאוז, קומה 12 מתוך 12, נוף פתוח לים",
+      "rooms": "6",
+      "sqm": 160,
+      "rent_nis": 24500,
+      "rent_per_sqm_nis": 153,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_KSSA"
+      ],
+      "note_en": "Plus terraces of 42 and 30 sqm; entry 1.10.2026. 24,500 / 160."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Avshalom Haviv 7, Ramat Aviv Gimel: floor 7 of 9, gym and events room",
+      "where_he": "אבשלום חביב 7, רמת אביב ג׳: קומה 7 מתוך 9, חדר כושר וחדר אירועים",
+      "rooms": "5",
+      "sqm": 130,
+      "rent_nis": 17000,
+      "rent_per_sqm_nis": 131,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_CFMG"
+      ],
+      "note_en": "Plus a 12 sqm balcony; 2 private parking; 8 sqm storage; mamad. 17,000 / 130."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Ramat Aviv Gimel (street not shown): floor 8 of 13, sea view",
+      "where_he": "רמת אביב ג׳ (הרחוב לא מוצג): קומה 8 מתוך 13, נוף לים",
+      "rooms": "5",
+      "sqm": 135,
+      "rent_nis": 17000,
+      "rent_per_sqm_nis": 126,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_AMTO"
+      ],
+      "note_en": "Large balcony, mamad, parking and storage. 17,000 / 135."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Ramat Aviv Gimel (street not shown), renovated",
+      "where_he": "רמת אביב ג׳ (הרחוב לא מוצג), משופצת",
+      "rooms": "5",
+      "sqm": 119,
+      "rent_nis": 13500,
+      "rent_per_sqm_nis": 113,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_QN6N"
+      ],
+      "note_en": "Plus a 17 sqm balcony; parking and storage. 13,500 / 119."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Ramat Aviv Gimel (street not shown), facing a park",
+      "where_he": "רמת אביב ג׳ (הרחוב לא מוצג), פונה לפארק",
+      "rooms": "5",
+      "sqm": 128,
+      "rent_nis": 14000,
+      "rent_per_sqm_nis": 109,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_LLOZ"
+      ],
+      "note_en": "Plus a 14 sqm balcony. 14,000 / 128."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Ramat Aviv, near Ramat Aviv Mall",
+      "where_he": "רמת אביב, בסמוך לקניון רמת אביב",
+      "rooms": "5",
+      "sqm": 120,
+      "rent_nis": 16500,
+      "rent_per_sqm_nis": 138,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_JSXY",
+        "MAD_RA_RENT"
+      ],
+      "note_en": "Results card shows Einstein 40 and floor 1; the listing page shows floor 11 without a street. 16,500 / 120."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Michael Ne'eman 14, Glilot: floor 3",
+      "where_he": "מיכאל נאמן 14, גלילות: קומה 3",
+      "rooms": "5",
+      "sqm": 158,
+      "rent_nis": 15200,
+      "rent_per_sqm_nis": 96,
+      "kind": "asking",
+      "source_ids": [
+        "YAD2_GLILOT_5R"
+      ],
+      "note_en": "Yad2 card (parking, 2 balconies). That No. 14 is part of Migdalei Ne'eman is not verified. 15,200 / 158."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Herzl Rosenblum 4, Glilot: floor 9, sea view",
+      "where_he": "הרצל רוזנבלום 4, גלילות: קומה 9, נוף לים",
+      "rooms": "5",
+      "sqm": 157,
+      "rent_nis": 14000,
+      "rent_per_sqm_nis": 89,
+      "kind": "asking",
+      "source_ids": [
+        "YAD2_GLILOT_5R",
+        "PTLV_SEASUN"
+      ],
+      "note_en": "Yad2 card. Herzl Rosenblum 4-10 is the Sea and Sun complex per project-tlv; its amenities were not verified. 14,000 / 157."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Kedoshei HaShoah 5, Azorei Chen: floor 5 of 7, facing the sea",
+      "where_he": "קדושי השואה 5, אזורי חן: קומה 5 מתוך 7, פונה לים",
+      "rooms": "5",
+      "sqm": 135,
+      "rent_nis": 20000,
+      "rent_per_sqm_nis": 148,
+      "kind": "asking",
+      "source_ids": [
+        "MAD_JBP8"
+      ],
+      "note_en": "Plus a 28 sqm balcony; upgraded and equipped. 20,000 / 135."
+    }
+  ],
+  "costs": [
+    {
+      "item_en": "Rent",
+      "item_he": "שכר דירה",
+      "value_en": "Not stated",
+      "value_he": "לא צוין",
+      "basis": "broker",
+      "source_ids": [
+        "IG_L11"
+      ],
+      "note_en": ""
+    },
+    {
+      "item_en": "Va'ad bayit in buildings with a pool",
+      "item_he": "ועד בית בבניינים עם בריכה",
+      "value_en": "Examples: Stimatzky 6 (pool, gym, 24/7 guard) NIS 1,700 a month for a 110 sqm unit; Migdalei Ne'eman about NIS 2,300 a month for 138 sqm (2024) and NIS 1,900 for 125 sqm (2018)",
+      "value_he": "דוגמאות: סטימצקי 6 (בריכה, חדר כושר, שומר 24/7) 1,700 ש״ח לחודש לדירה של 110 מ״ר; מגדלי נאמן כ-2,300 ש״ח לחודש ל-138 מ״ר (2024) ו-1,900 ש״ח ל-125 מ״ר (2018)",
+      "basis": "source",
+      "source_ids": [
+        "MAD_QYSY",
+        "GLOBES_NEEMAN_2024",
+        "GLOBES_NEEMAN_2018"
+      ],
+      "note_en": "The Stimatzky figure is advertiser-entered."
+    },
+    {
+      "item_en": "Va'ad bayit estimate for a 5-room unit",
+      "item_he": "הערכת ועד בית לדירת 5 חדרים",
+      "value_en": "about NIS 15 to 17 per sqm a month in these examples, roughly NIS 2,000 to 2,300 a month for 130 to 140 sqm",
+      "value_he": "כ-15 עד 17 ש״ח למ״ר לחודש בדוגמאות אלה, כלומר כ-2,000 עד 2,300 ש״ח לחודש ל-130 עד 140 מ״ר",
+      "basis": "computed",
+      "source_ids": [
+        "MAD_QYSY",
+        "GLOBES_NEEMAN_2024",
+        "GLOBES_NEEMAN_2018",
+        "GLOBES_FEES_2017"
+      ],
+      "note_en": "1,700 / 110 = 15.5; 2,300 / 138 = 16.7; 1,900 / 125 = 15.2; 130 x 15.5 = 2,015; 140 x 16.7 = 2,338. Fees are not always set per sqm. In a 2017 Globes survey, Migdalei Ne'eman charged NIS 12 per sqm including entry to its sports center, against NIS 17 at Gan HaIr and NIS 18.6 at Akirov Towers."
+    },
+    {
+      "item_en": "Arnona estimate",
+      "item_he": "הערכת ארנונה",
+      "value_en": "for an assumed 140 sqm including balconies: about NIS 2,120 every two months at zone 2 newest-code rates, or about NIS 2,640 at zone 1",
+      "value_he": "בהנחה של 140 מ״ר כולל מרפסות: כ-2,120 ש״ח לחודשיים לפי תעריף אזור 2 בסוג המבנה החדש ביותר, או כ-2,640 ש״ח לפי אזור 1",
+      "basis": "computed",
+      "source_ids": [
+        "KH_TLV",
+        "NC_ARNONA",
+        "KH_MEASURE",
+        "KH_ZONES",
+        "MAD_CTXV",
+        "MAD_ZBR7"
+      ],
+      "note_en": "140 x 90.71 = 12,699 a year; 140 x 112.99 = 15,819 a year; divided into 6 bills. Above 140 sqm the rates are 108.98 and 139.60. Size, zone and building code are unknown. Two Ramat Aviv HaHadasha listings (NIS 1,500 every two months for about 96 sqm including balcony; NIS 6,000, period not shown, for about 340 sqm including terraces) sit closer to zone 2 rates; this is a cross-check, not a verification."
+    },
+    {
+      "item_en": "Fair Rental chapter at likely rent levels",
+      "item_he": "פרק השכירות ההוגנת ברמות שכר צפויות",
+      "value_en": "Asking rents for comparable 5-room units (NIS 12,800 to 18,000) are below NIS 20,000, so the chapter would likely apply; above NIS 20,000, security and repair terms are left to the contract",
+      "value_he": "שכר הדירה המבוקש בדירות 5 חדרים דומות (12,800 עד 18,000 ש״ח) נמוך מ-20,000 ש״ח, ולכן הפרק צפוי לחול; מעל 20,000 ש״ח, תנאי הערובה והתיקונים נקבעים בחוזה",
+      "basis": "computed",
+      "source_ids": [
+        "KZ_FAIR",
+        "MAD_V6WX",
+        "MAD_KSOP"
+      ],
+      "note_en": "Inference from comps; the actual rent is not known."
+    },
+    {
+      "item_en": "Upfront payment seen at the top of the market",
+      "item_he": "תשלום מראש בקצה העליון של השוק",
+      "value_en": "The same broker offered a Tzukei Aviv mini penthouse at NIS 27,000 a month subject to 12 months paid upfront",
+      "value_he": "אותה מתווכת הציעה מיני פנטהאוז בצוקי אביב ב-27,000 ש״ח לחודש בתנאי של תשלום 12 חודשים מראש",
+      "basis": "broker",
+      "source_ids": [
+        "IG_L06"
+      ],
+      "note_en": "Different unit, above the NIS 20,000 threshold."
+    },
+    {
+      "item_en": "Fair Rental chapter: scope",
+      "item_he": "פרק השכירות ההוגנת: תחולה",
+      "value_en": "Applies to residential leases of at least 3 months (or with an option beyond 3 months) and up to 10 years, where the monthly rent does not exceed about NIS 20,000. Hotels, holiday rentals, dormitories and sheltered housing are excluded.",
+      "value_he": "חל על שכירות למגורים לתקופה של 3 חודשים לפחות (או עם אופציה להארכה מעבר ל-3 חודשים) ועד 10 שנים, כששכר הדירה החודשי אינו עולה על כ-20,000 ש״ח. בתי מלון, דירות נופש, מעונות ודיור מוגן אינם כלולים.",
+      "basis": "source",
+      "source_ids": [
+        "KZ_FAIR",
+        "KZ_GUAR",
+        "NC_FAIR"
+      ],
+      "note_en": "Two independent secondary sources agree on the NIS 20,000 limit. Kol Zchut words it as 'below' on one page and 'not above' on another; Nadlan Center excludes rent 'above NIS 20,000'. The statute text could not be fetched, so the exact boundary and any indexation are not confirmed."
+    },
+    {
+      "item_en": "Security cap (Fair Rental chapter)",
+      "item_he": "תקרת ערובה (פרק השכירות ההוגנת)",
+      "value_en": "The security a landlord may demand is capped at the lower of 3 months' rent or one third of the rent for the whole lease. Securities must be returned within 60 days after the apartment is returned or the tenant's debts are settled.",
+      "value_he": "הערובה שמשכיר רשאי לדרוש מוגבלת לנמוך מבין שכר דירה של 3 חודשים או שליש משכר הדירה לכל תקופת השכירות. יש להחזיר את הערובה בתוך 60 ימים מהחזרת הדירה או מסילוק חובות השוכר.",
+      "basis": "source",
+      "source_ids": [
+        "KZ_GUAR",
+        "NBN_RENT"
+      ],
+      "note_en": "Sources differ on which instruments count toward the cap: NBN names cash, deposited checks and bank guarantees; Kol Zchut's page appears to focus on securities that cost the tenant money. Confirm with a lawyer."
+    },
+    {
+      "item_en": "Broker fee",
+      "item_he": "דמי תיווך",
+      "value_en": "Paid by the party that engaged the broker, usually one month's rent plus VAT at 18%. Under the Fair Rental chapter the tenant does not pay the fee of a broker who represents the landlord.",
+      "value_he": "משולמים על ידי הצד שהתקשר עם המתווך, בדרך כלל שכר דירה של חודש אחד בתוספת מע״מ בשיעור 18%. לפי פרק השכירות ההוגנת, השוכר אינו נושא בדמי התיווך של מתווך שמייצג את המשכיר.",
+      "basis": "source",
+      "source_ids": [
+        "NBN_RENT",
+        "NC_FAIR"
+      ],
+      "note_en": ""
+    },
+    {
+      "item_en": "Who pays running costs",
+      "item_he": "מי משלם את ההוצאות השוטפות",
+      "value_en": "Under the Fair Rental chapter the tenant pays occupant taxes, including arnona, and regular maintenance payments to the house committee (va'ad bayit); the landlord pays building insurance.",
+      "value_he": "לפי פרק השכירות ההוגנת, השוכר משלם את המסים החלים על המחזיק, כולל ארנונה, ואת התשלומים השוטפים לנציגות הבית המשותף (ועד בית); המשכיר נושא בביטוח המבנה.",
+      "basis": "source",
+      "source_ids": [
+        "NC_FAIR"
+      ],
+      "note_en": ""
+    },
+    {
+      "item_en": "Repairs and notice (Fair Rental chapter)",
+      "item_he": "תיקונים והודעה מוקדמת (פרק השכירות ההוגנת)",
+      "value_en": "Urgent defects must be repaired within 3 days and other defects within 30 days; the landlord's notice period is 90 days and the tenant's is 60 days.",
+      "value_he": "ליקויים דחופים יתוקנו בתוך 3 ימים ושאר הליקויים בתוך 30 יום; תקופת ההודעה המוקדמת של המשכיר היא 90 יום ושל השוכר 60 יום.",
+      "basis": "source",
+      "source_ids": [
+        "NC_FAIR"
+      ],
+      "note_en": "One source; check the lease."
+    },
+    {
+      "item_en": "Arnona rates 2026 (Tel Aviv, residential)",
+      "item_he": "תעריפי ארנונה 2026 (תל אביב, מגורים)",
+      "value_en": "Charged per sqm per year by zone and building code. For the newest code (אא): zone 1 NIS 112.99 up to 140 sqm and NIS 139.60 above 140 sqm; zone 2 NIS 90.71 and NIS 108.98. Older building codes pay less.",
+      "value_he": "החיוב למ״ר לשנה לפי אזור וסוג מבנה. בסוג המבנה החדש ביותר (אא): באזור 1 112.99 ש״ח עד 140 מ״ר ו-139.60 ש״ח מעל 140 מ״ר; באזור 2 90.71 ש״ח ו-108.98 ש״ח. בסוגי מבנה ותיקים יותר התעריף נמוך יותר.",
+      "basis": "source",
+      "source_ids": [
+        "KH_TLV",
+        "NC_ARNONA",
+        "KH_ZONES",
+        "KH_MEASURE"
+      ],
+      "note_en": "The zone for these addresses is unverified; Kol HaBayit says the zone follows the address of the building's main entrance. Kol HaBayit's summary of the 2026 order counts balconies in full (not checked against the order). It is unclear whether the over-140 sqm rate applies to the whole unit."
+    }
+  ],
+  "risks": [
+    {
+      "en": "The complex is not identified, so the pool, gym and guard cannot be checked, and brokers use 'Ramat Aviv' loosely for nearby neighborhoods.",
+      "he": "המתחם לא זוהה, ולכן לא ניתן לבדוק את הבריכה, חדר הכושר והשמירה, ומתווכים משתמשים בשם ״רמת אביב״ גם לשכונות סמוכות.",
+      "source_ids": [
+        "IG_L11",
+        "MAD_QON7"
+      ]
+    },
+    {
+      "en": "Buildings with a pool and 24/7 guard carry high va'ad bayit: NIS 1,700 for 110 sqm at Stimatzky 6 and about NIS 2,300 for 138 sqm at Migdalei Ne'eman.",
+      "he": "בבניינים עם בריכה ושמירה 24/7 ועד הבית גבוה: 1,700 ש״ח ל-110 מ״ר בסטימצקי 6 וכ-2,300 ש״ח ל-138 מ״ר במגדלי נאמן.",
+      "source_ids": [
+        "MAD_QYSY",
+        "GLOBES_NEEMAN_2024"
+      ]
+    },
+    {
+      "en": "Green Line works along Namir Rd, Einstein St and Haim Levanon St can disrupt access until the line opens (southern section 2028, full line 2030).",
+      "he": "עבודות הקו הירוק לאורך דרך נמיר, רחוב איינשטיין ורחוב חיים לבנון עלולות לשבש את הגישה עד פתיחת הקו (הקטע הדרומי ב-2028, הקו כולו ב-2030).",
+      "source_ids": [
+        "GLOBES_GREEN_2017",
+        "ICE_GREEN"
+      ]
+    },
+    {
+      "en": "Peak-hour congestion at the Einstein-Namir junction mainly affects residents leaving Ramat Aviv HaHadasha.",
+      "he": "עומסי השיא בצומת איינשטיין-נמיר משפיעים בעיקר על היוצאים מרמת אביב החדשה.",
+      "source_ids": [
+        "TLV_COMPARE"
+      ]
+    },
+    {
+      "en": "Views from high floors toward the sea can change: Nofei Yam North may allow towers of up to 45 floors, and the Sde Dov center plan includes 45-floor towers.",
+      "he": "הנוף מהקומות הגבוהות לכיוון הים עשוי להשתנות: בנופי ים צפון ייתכנו מגדלים של עד 45 קומות, ותוכנית מרכז שדה דב כוללת מגדלים בני 45 קומות.",
+      "source_ids": [
+        "TLV_NYNORTH",
+        "NC_SDEDOV"
+      ]
+    },
+    {
+      "en": "If the complex is in Tzukei Aviv or Glilot, plan 3700 and Hof HaTchelet mean years of construction nearby; Migdalei Ne'eman residents' claim over noise, pollution and views was rejected.",
+      "he": "אם המתחם בצוקי אביב או בגלילות, תוכנית 3700 וחוף התכלת משמעותן שנים של בנייה בסביבה; תביעת דיירי מגדלי נאמן בגין רעש, זיהום ונוף נדחתה.",
+      "source_ids": [
+        "GLOBES_3700",
+        "TLV_TCHELET",
+        "MAGDILIM_NEEMAN"
+      ]
+    },
+    {
+      "en": "The unit was posted once (2026-08-18) and was not found on Madlan, so it may already be let.",
+      "he": "הדירה פורסמה פעם אחת (18.8.2026) ולא נמצאה במדלן, ולכן ייתכן שכבר הושכרה.",
+      "source_ids": [
+        "IG_L11"
+      ]
+    }
+  ],
+  "buyer_or_renter_questions": [
+    {
+      "en": "Which complex and building is it, and which floor out of how many?",
+      "he": "באיזה מתחם ובאיזה בניין מדובר, ובאיזו קומה מתוך כמה?"
+    },
+    {
+      "en": "What is the rent, what area appears on the arnona bill, and when is entry?",
+      "he": "מהו שכר הדירה, איזה שטח מופיע בחשבון הארנונה, ומהו מועד הכניסה?"
+    },
+    {
+      "en": "What is the va'ad bayit, and does it cover the pool, gym, guard and the other services, or are there separate fees?",
+      "he": "מהו ועד הבית, והאם הוא כולל את הבריכה, חדר הכושר, השמירה ושאר השירותים, או שיש תשלומים נפרדים?"
+    },
+    {
+      "en": "Is the guard on duty 24/7, and is the pool heated, covered and open all year? What are the hours and the rules for tenants and guests?",
+      "he": "האם השמירה 24/7, והאם הבריכה מחוממת, מקורה ופתוחה כל השנה? מהן שעות הפעילות והכללים לשוכרים ולאורחים?"
+    },
+    {
+      "en": "Are the 2 parking spaces registered to the unit, and is EV charging available or allowed?",
+      "he": "האם 2 החניות רשומות לדירה, והאם יש או מותרת עמדת טעינה לרכב חשמלי?"
+    },
+    {
+      "en": "Is there a mamad in the apartment or a shelter on the floor?",
+      "he": "האם יש ממ״ד בדירה או מרחב מוגן קומתי?"
+    },
+    {
+      "en": "What lease term, extension option and indexation are offered, which securities are required, and who pays the broker fee?",
+      "he": "איזו תקופת שכירות, אופציה והצמדה מוצעות, אילו ערבויות נדרשות, ומי משלם את דמי התיווך?"
+    },
+    {
+      "en": "Is the apartment furnished, and what air conditioning and appliances are included?",
+      "he": "האם הדירה מרוהטת, ואילו מיזוג ומוצרי חשמל כלולים?"
+    },
+    {
+      "en": "Which schools is the address zoned for?",
+      "he": "לאילו בתי ספר משויכת הכתובת?"
+    },
+    {
+      "en": "Is building work or Green Line work planned next to the complex during the lease?",
+      "he": "האם מתוכננות עבודות בנייה או עבודות של הקו הירוק ליד המתחם במהלך השכירות?"
+    }
+  ],
+  "gaps": [
+    {
+      "en": "The complex name and address; nothing public links the post to a building.",
+      "he": "שם המתחם והכתובת; אין מידע פומבי שמקשר את הפוסט לבניין."
+    },
+    {
+      "en": "Rent, size, floor and entry date.",
+      "he": "שכר דירה, שטח, קומה ומועד כניסה."
+    },
+    {
+      "en": "Year built and management company of the Stimatzky St buildings (only Stimatzky 10 shows 2018); their amenities rest on broker listings, not on a management or press source.",
+      "he": "שנת הבנייה וחברת הניהול של הבניינים ברחוב סטימצקי (רק בסטימצקי 10 מופיעה שנת 2018); השירותים בהם מבוססים על מודעות מתווכים ולא על חברת ניהול או כתבה."
+    },
+    {
+      "en": "Amenities of the Sea and Sun complex, and whether Michael Ne'eman 14 is part of Migdalei Ne'eman.",
+      "he": "השירותים במתחם סי אנד סאן, והאם מיכאל נאמן 14 הוא חלק ממגדלי נאמן."
+    },
+    {
+      "en": "Distances: without an address or sourced coordinates, no distances to the beach, Tel Aviv University, the mall or stations could be given.",
+      "he": "מרחקים: ללא כתובת או קואורדינטות ממקור, לא ניתן לציין מרחקים לחוף, לאוניברסיטה, לקניון או לתחנות."
+    },
+    {
+      "en": "The actual va'ad bayit and arnona of the unit, its arnona zone and building code, and school registration zones.",
+      "he": "ועד הבית והארנונה בפועל, אזור הארנונה וסוג המבנה, ואזורי הרישום לבתי הספר."
+    },
+    {
+      "en": "Achieved rents: all rent comps are asking rents.",
+      "he": "שכר דירה בפועל: כל ההשוואות מבוססות על מחירים מבוקשים."
+    }
+  ],
+  "access_notes": [
+    "The web search budget for this session was already exhausted, so pages were reached only through known URLs and links found on fetched pages.",
+    "Madlan pages were read through the WebFetch text extractor. A direct HTML request returned HTTP 403 (bot protection) and was not repeated. Madlan's feature icon list names every amenity, including 'pool', whether present or not, so amenities were taken only from advertisers' free text. Some figures differed between Madlan search cards and listing pages on the same day; listing pages were preferred.",
+    "A Madlan search URL with filter parameters was rejected by the fetch proxy (HTTP 403) and was not retried. Madlan results page 2 is not server-rendered, so only the first page of each neighborhood was read. Several Madlan listings returned HTTP 410 (removed) and were not used.",
+    "The statute text of the Rental and Borrowing Law on Hebrew Wikisource, and Wikidata, are cache-only for the fetch tool. OpenStreetMap Nominatim and Photon are disallowed by robots rules. With no geocoder and no sourced coordinates for the buildings, no straight-line distances were computed.",
+    "Yad2 neighborhood IDs for Nofei Yam and the Ramat Aviv neighborhoods could not be found (the Yad2 address autocomplete API is disallowed by robots rules); only the Glilot (1491) and Azorei Chen (1490) searches were used.",
+    "tel-aviv.gov.il (school registration zones, arnona GIS) was not attempted because earlier research in this project recorded HTTP 472 there. Instagram was not re-read; broker facts come from the project registry compiled on 2026-09-16.",
+    "Other press sources on Sea and Sun (Calcalist 2021, Ynet 2020, Walla 2017) did not describe its amenities."
+  ],
+  "sources": [
+    {
+      "id": "IG_L11",
+      "title": "Meital Katzir Instagram post: Ramat Aviv 5 rooms for rent, complex with pool",
+      "url": "https://www.instagram.com/p/DcNd78Goers/",
+      "published": "2026-08-18"
+    },
+    {
+      "id": "MAD_QON7",
+      "title": "Madlan listing: Lamed HaHadasha mini penthouse, 5 rooms, 136 sqm + 24 sqm, lobby and gym",
+      "url": "https://www.madlan.co.il/listings/QoN71iK0y6Z",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "WIKI_RA",
+      "title": "Wikipedia: Ramat Aviv",
+      "url": "https://en.wikipedia.org/wiki/Ramat_Aviv",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_QYSY",
+      "title": "Madlan listing: Stimatzky 6, 4 rooms, 24/7 guard, pool, gym, va'ad NIS 1,700",
+      "url": "https://www.madlan.co.il/listings/QySyHtkszQW",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_PBIC",
+      "title": "Madlan listing (sale): Stimatzky 6, heated covered pool, gym, 24/7 guard",
+      "url": "https://www.madlan.co.il/listings/pbICBbWyCcn",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_CU8V",
+      "title": "Madlan listing (sale): Stimatzky 8, 24/7 guard, pool",
+      "url": "https://www.madlan.co.il/listings/cu8vE4mpV4A",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_60TV",
+      "title": "Madlan listing: Stimatzky 8, 4 rooms, guard and gym",
+      "url": "https://www.madlan.co.il/listings/60TvKNOJPWK",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_KSOP",
+      "title": "Madlan listing: Stimatzky 18a, Ramat Aviv HaHadasha, 5-room penthouse, building with gym and pool",
+      "url": "https://www.madlan.co.il/listings/kSop8iLk6qc",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_QQT6",
+      "title": "Madlan listing (sale): Stimatzky St, floor 9 of 11, building with guard, pool and gym",
+      "url": "https://www.madlan.co.il/listings/Qqt6xnpuNA5",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "GLOBES_NEEMAN_2024",
+      "title": "Globes: Migdalei Ne'eman 5-room apartment sold for NIS 5.45 million",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001492199",
+      "published": "2024-10-27"
+    },
+    {
+      "id": "GLOBES_NEEMAN_2018",
+      "title": "Globes: Migdalei Ne'eman, Ne'eman 4, 5-room apartment sold for NIS 4 million",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001250497",
+      "published": "2018-08-23"
+    },
+    {
+      "id": "MAD_MS12",
+      "title": "Madlan: address page, Moshe Sneh 12 (Ramot Tzahala)",
+      "url": "https://www.madlan.co.il/address/%D7%9E%D7%A9%D7%94-%D7%A1%D7%A0%D7%94-12-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_PR50",
+      "title": "Madlan: address page, Pinchas Rosen 50 (Shikun Dan)",
+      "url": "https://www.madlan.co.il/address/%D7%A4%D7%A0%D7%97%D7%A1-%D7%A8%D7%95%D7%96%D7%9F-50-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_KV",
+      "title": "Madlan: street page, Kehilat Venezia (Neot Afeka A)",
+      "url": "https://www.madlan.co.il/street-info/%D7%A7%D7%94%D7%99%D7%9C%D7%AA-%D7%95%D7%A0%D7%A6%D7%99%D7%94-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_0TMW",
+      "title": "Madlan listing by Meital Katzir: Ramat Aviv HaHadasha penthouse, with section of the broker's other listings",
+      "url": "https://www.madlan.co.il/listings/0tMWPnyRg4a",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_L10",
+      "title": "Madlan listing by Meital Katzir (license 3131540): Nofei Yam 3 rooms, floor 5 of 7, NIS 9,500",
+      "url": "https://www.madlan.co.il/listings/fz9Ta4GtD64",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_WPXC",
+      "title": "Madlan listing (sale): Stimatzky 10, 5 rooms, 12-floor building built 2018",
+      "url": "https://www.madlan.co.il/listings/WPxcY0sUYBB",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "GLOBES_AH_2024",
+      "title": "Globes: 4-room apartment on Avshalom Haviv, Ramat Aviv Gimel, sold for NIS 5.17 million",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001477686",
+      "published": "2024-05-04"
+    },
+    {
+      "id": "MAD_NBSJ",
+      "title": "Madlan listing (sale): Avshalom Haviv, floor 3 of 14, building with 24/7 guard",
+      "url": "https://www.madlan.co.il/listings/nBsJMA9QSYa",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_CFMG",
+      "title": "Madlan listing: Avshalom Haviv 7, Ramat Aviv Gimel, 5 rooms, gym and events room",
+      "url": "https://www.madlan.co.il/listings/CfMg5eL61rI",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "HON_RAH",
+      "title": "hon.co.il: Ramat Aviv HaHadasha, neighborhood profile",
+      "url": "https://www.hon.co.il/%D7%A8%D7%9E%D7%AA-%D7%90%D7%91%D7%99%D7%91-%D7%94%D7%97%D7%93%D7%A9%D7%94-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%AA%D7%A2%D7%95%D7%93%D7%AA-%D7%96%D7%94%D7%95%D7%AA/",
+      "published": "2019-05-08"
+    },
+    {
+      "id": "TLV_PRICES",
+      "title": "Tel Aviv Online (Dr. Assaf Gestfreund): reasons for price gaps in north-west Tel Aviv",
+      "url": "https://tlvonline.co.il/%D7%9E%D7%97%D7%99%D7%A8%D7%99%D7%9D-%D7%A6%D7%A4%D7%95%D7%9F-%D7%9E%D7%A2%D7%A8%D7%91-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/",
+      "published": "2025-05-25"
+    },
+    {
+      "id": "GLOBES_RAG_2023",
+      "title": "Globes: Neve Avivim or Ramat Aviv Gimel, head to head",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001448034",
+      "published": "2023-06-07"
+    },
+    {
+      "id": "WIKI_MALL",
+      "title": "Wikipedia: Ramat Aviv Mall",
+      "url": "https://en.wikipedia.org/wiki/Ramat_Aviv_Mall",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "WIKI_TAU",
+      "title": "Wikipedia: Tel Aviv University",
+      "url": "https://en.wikipedia.org/wiki/Tel_Aviv_University",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "TLV_COMPARE",
+      "title": "Tel Aviv Online (Dr. Assaf Gestfreund): comparison of north-west Tel Aviv neighborhoods",
+      "url": "https://tlvonline.co.il/%D7%94%D7%A9%D7%95%D7%95%D7%90%D7%AA-%D7%A9%D7%9B%D7%95%D7%A0%D7%95%D7%AA-%D7%A6%D7%A4%D7%95%D7%9F-%D7%9E%D7%A2%D7%A8%D7%91-%D7%94%D7%A2%D7%99%D7%A8/",
+      "published": "2025-05-28"
+    },
+    {
+      "id": "WALLA_PROM",
+      "title": "Walla (Ziv Reinstein): the coastal park promenade opens in Tel Aviv",
+      "url": "https://travel.walla.co.il/item/3609266",
+      "published": "2023-09-14"
+    },
+    {
+      "id": "TIMEOUT_PROM",
+      "title": "Time Out Tel Aviv: the coastal park promenade",
+      "url": "https://timeout.co.il/%d7%98%d7%99%d7%99%d7%9c%d7%aa-%d7%94%d7%a4%d7%90%d7%a8%d7%a7-%d7%94%d7%97%d7%95%d7%a4%d7%99-%d7%aa%d7%9c-%d7%90%d7%91%d7%99%d7%91/",
+      "published": "2023-09-13"
+    },
+    {
+      "id": "MAD_B9MY",
+      "title": "Madlan listing: Nofei Yam penthouse, 5 rooms, 130 sqm + 30 sqm",
+      "url": "https://www.madlan.co.il/listings/b9mYGERoryV",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "GLOBES_NY_2024",
+      "title": "Globes (Madlan content): Eshkol vs Nofei Yam neighborhoods",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001481146",
+      "published": "2024-06-19"
+    },
+    {
+      "id": "MAD_RAH_AREA",
+      "title": "Madlan: Ramat Aviv HaHadasha area information",
+      "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A8%D7%9E%D7%AA-%D7%90%D7%91%D7%99%D7%91-%D7%94%D7%97%D7%93%D7%A9%D7%94-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_RA_AREA",
+      "title": "Madlan: Ramat Aviv area information",
+      "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A8%D7%9E%D7%AA-%D7%90%D7%91%D7%99%D7%91-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_RAG_AREA",
+      "title": "Madlan: Ramat Aviv Gimel area information",
+      "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A8%D7%9E%D7%AA-%D7%90%D7%91%D7%99%D7%91-%D7%92-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "TLV_AMOSOZ",
+      "title": "Tel Aviv Online (Shai Shgav): Amos Oz school moves to its new building",
+      "url": "https://tlvonline.co.il/%D7%91%D7%99%D7%AA-%D7%94%D7%A1%D7%A4%D7%A8-%D7%A2%D7%9E%D7%95%D7%A1-%D7%A2%D7%95%D7%96/",
+      "published": "2025-01-09"
+    },
+    {
+      "id": "MAD_KH_AREA",
+      "title": "Madlan: Kochav HaTzafon area information",
+      "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%9B%D7%95%D7%9B%D7%91-%D7%94%D7%A6%D7%A4%D7%95%D7%9F-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_TZ_AREA",
+      "title": "Madlan: Tzukei Aviv area information",
+      "url": "https://www.madlan.co.il/area-info/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A6%D7%95%D7%A7%D7%99-%D7%90%D7%91%D7%99%D7%91-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "PTLV_TZUKEI",
+      "title": "project-tlv: Tzukei Aviv (Nathan Alterman High School)",
+      "url": "https://project-tlv.info/new-projects/north/tsukei-aviv/",
+      "published": "modified 2025-06-24"
+    },
+    {
+      "id": "ICE_GREEN",
+      "title": "ice.co.il: new Yarkon bridge opened, Green Line timeline",
+      "url": "https://www.ice.co.il/realestate/news/article/1114193",
+      "published": "2026-05-25"
+    },
+    {
+      "id": "WIKI_GREEN",
+      "title": "Wikipedia: Green Line (Tel Aviv Light Rail)",
+      "url": "https://en.wikipedia.org/wiki/Green_Line_(Tel_Aviv_Light_Rail)",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "GLOBES_GREEN_2017",
+      "title": "Globes: Ramat Aviv residents against the Green Line route on Einstein and Levanon",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001186251",
+      "published": "2017-04-25"
+    },
+    {
+      "id": "PTLV_GREEN",
+      "title": "project-tlv: Green Line page (station names)",
+      "url": "https://project-tlv.info/places/transportation/train/green/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "PTLV_RAIL",
+      "title": "project-tlv: Israel Railways stations in Tel Aviv (University station)",
+      "url": "https://project-tlv.info/places/transportation/%d7%a8%d7%9b%d7%91%d7%aa-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "TLV_NYNORTH",
+      "title": "Tel Aviv Online: Nofei Yam North plan, towers of up to 45 floors",
+      "url": "https://tlvonline.co.il/%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA-%D7%A0%D7%95%D7%A4%D7%99-%D7%99%D7%9D-%D7%A6%D7%A4%D7%95%D7%9F/",
+      "published": "2025-03-12"
+    },
+    {
+      "id": "NC_SDEDOV",
+      "title": "Nadlan Center: Sde Dov center plan, objections rejected",
+      "url": "https://www.nadlancenter.co.il/article/11492",
+      "published": "2025-02-03"
+    },
+    {
+      "id": "GLOBES_3700",
+      "title": "Globes English: slow progress in huge northwest Tel Aviv plan",
+      "url": "https://en.globes.co.il/en/article-slow-progress-in-huge-northwest-tel-aviv-plan-1001441423",
+      "published": "2023-03-15"
+    },
+    {
+      "id": "MAGDILIM_NEEMAN",
+      "title": "Magdilim: Migdalei Ne'eman residents' plan 3700 compensation claim rejected",
+      "url": "https://magdilim.co.il/190120260920-2/",
+      "published": "2026-01-19"
+    },
+    {
+      "id": "TLV_TCHELET",
+      "title": "Tel Aviv Online: Herzliya connects to north Tel Aviv (Hof HaTchelet)",
+      "url": "https://tlvonline.co.il/%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94-%D7%9E%D7%AA%D7%97%D7%91%D7%A8%D7%AA-%D7%9C%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/",
+      "published": "2025-11-24"
+    },
+    {
+      "id": "PTLV_RAG",
+      "title": "project-tlv: Ramat Aviv Gimel (Barkai urban renewal)",
+      "url": "https://project-tlv.info/places/ramat-aviv-gimel/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "BIZ_TZ",
+      "title": "Bizportal: Tzukei Aviv neighborhood review, prices and rents",
+      "url": "https://www.bizportal.co.il/realestates/news/article/20036059",
+      "published": "2026-08-06"
+    },
+    {
+      "id": "WALLA_CBS",
+      "title": "Walla Finance: CBS housing price index and August 2026 rents",
+      "url": "https://finance.walla.co.il/item/3868023",
+      "published": "2026-09-15"
+    },
+    {
+      "id": "MAD_V6WX",
+      "title": "Madlan listing: Zeritsky 8, Ramat Aviv HaHadasha, 5 rooms, 137 sqm",
+      "url": "https://www.madlan.co.il/listings/V6wXEKQExGn",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_QN6N",
+      "title": "Madlan listing: Ramat Aviv Gimel 5 rooms, 119 sqm + 17 sqm",
+      "url": "https://www.madlan.co.il/listings/qN6ngxZChbq",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_LLOZ",
+      "title": "Madlan listing: Ramat Aviv Gimel 5 rooms, 128 sqm + 14 sqm",
+      "url": "https://www.madlan.co.il/listings/Llozf2TanwR",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_WWFD",
+      "title": "Madlan listing: Ramat Aviv HaHadasha 5 rooms, 132 sqm, building with guard",
+      "url": "https://www.madlan.co.il/listings/wwFDnqIFMnb",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_AMTO",
+      "title": "Madlan listing: Ramat Aviv Gimel 5 rooms, floor 8 of 13, 135 sqm",
+      "url": "https://www.madlan.co.il/listings/aMTOKC9AeMS",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_RAH_SALE",
+      "title": "Madlan: apartments for sale in Ramat Aviv HaHadasha",
+      "url": "https://www.madlan.co.il/for-sale/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A8%D7%9E%D7%AA-%D7%90%D7%91%D7%99%D7%91-%D7%94%D7%97%D7%93%D7%A9%D7%94-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_J9TB",
+      "title": "Madlan listing: Stimatzky St, 4.5 rooms, 24/7 guard, pool and gym",
+      "url": "https://www.madlan.co.il/listings/j9Tb9HZNbfp",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_KM2X",
+      "title": "Madlan listing: Stimatzky 8, 5-room penthouse, 165 sqm",
+      "url": "https://www.madlan.co.il/listings/km2XY0MGZ1p",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_RAH_RENT",
+      "title": "Madlan: apartments for rent in Ramat Aviv HaHadasha",
+      "url": "https://www.madlan.co.il/for-rent/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A8%D7%9E%D7%AA-%D7%90%D7%91%D7%99%D7%91-%D7%94%D7%97%D7%93%D7%A9%D7%94-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_KSSA",
+      "title": "Madlan listing: Eli Cohen St, 6-room penthouse, floor 12",
+      "url": "https://www.madlan.co.il/listings/ksSAnWiwPnk",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_JSXY",
+      "title": "Madlan listing: Ramat Aviv 5 rooms, 120 sqm",
+      "url": "https://www.madlan.co.il/listings/jsXyMAUs63O",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_RA_RENT",
+      "title": "Madlan: apartments for rent in Ramat Aviv",
+      "url": "https://www.madlan.co.il/for-rent/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A8%D7%9E%D7%AA-%D7%90%D7%91%D7%99%D7%91-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "YAD2_GLILOT_5R",
+      "title": "Yad2: 5-room rentals in Glilot, Tel Aviv-Yafo",
+      "url": "https://www.yad2.co.il/realestate/rent?topArea=2&area=1&city=5000&neighborhood=1491&rooms=5-5",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "PTLV_SEASUN",
+      "title": "project-tlv: Sea and Sun, Herzl Rosenblum 4-10",
+      "url": "https://project-tlv.info/buildings/rozenblum/4-10/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_JBP8",
+      "title": "Madlan listing: Kedoshei HaShoah 5, Azorei Chen, 5 rooms, 135 sqm + 28 sqm",
+      "url": "https://www.madlan.co.il/listings/JbP8ieVkun6",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "GLOBES_FEES_2017",
+      "title": "Globes (Shlomit Tzur): the hidden extra, what it costs to maintain a tower",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001213159",
+      "published": "2017-11-27"
+    },
+    {
+      "id": "KH_TLV",
+      "title": "Kol HaBayit: Tel Aviv arnona calculator 2026 (rates by zone and building code)",
+      "url": "https://kolhabait.com/arnona/tel-aviv",
+      "published": "updated 2026-08"
+    },
+    {
+      "id": "NC_ARNONA",
+      "title": "Nadlan Center: Tel Aviv 2026 arnona increases approved",
+      "url": "https://www.nadlancenter.co.il/article/13556",
+      "published": "2025-12-28"
+    },
+    {
+      "id": "KH_MEASURE",
+      "title": "Kol HaBayit: arnona measurement methods by city",
+      "url": "https://kolhabait.com/arnona/shitat-medida",
+      "published": "2026"
+    },
+    {
+      "id": "KH_ZONES",
+      "title": "Kol HaBayit: arnona zones guide (zone set by main entrance address)",
+      "url": "https://kolhabait.com/arnona/madrich/zones",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_CTXV",
+      "title": "Madlan listing: Ramat Aviv HaHadasha 3-room loft duplex, va'ad NIS 740, arnona NIS 1,500 bi-monthly",
+      "url": "https://www.madlan.co.il/listings/CTxvlPcuouh",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "MAD_ZBR7",
+      "title": "Madlan listing: Eli Cohen St penthouse duplex, arnona and va'ad fields",
+      "url": "https://www.madlan.co.il/listings/zBR7r78IeWB",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "KZ_FAIR",
+      "title": "Kol Zchut: renting an apartment fit for habitation (Fair Rental chapter, eligibility)",
+      "url": "https://www.kolzchut.org.il/he/%D7%94%D7%A9%D7%9B%D7%A8%D7%AA_%D7%93%D7%99%D7%A8%D7%94_%D7%A8%D7%90%D7%95%D7%99%D7%94_%D7%9C%D7%9E%D7%92%D7%95%D7%A8%D7%99%D7%9D",
+      "published": "updated 2025-03-02"
+    },
+    {
+      "id": "IG_L06",
+      "title": "Meital Katzir Instagram reel: Tzukei Aviv mini penthouse, NIS 27,000 with 12 months upfront",
+      "url": "https://www.instagram.com/reel/Dbshp6PEkH4/",
+      "published": "2026-08-06"
+    },
+    {
+      "id": "KZ_GUAR",
+      "title": "Kol Zchut: limit on the security a landlord may demand from a tenant",
+      "url": "https://www.kolzchut.org.il/he/%D7%94%D7%92%D7%91%D7%9C%D7%AA_%D7%A1%D7%9B%D7%95%D7%9D_%D7%94%D7%A2%D7%A8%D7%95%D7%91%D7%94_%D7%A9%D7%9E%D7%95%D7%AA%D7%A8_%D7%9C%D7%93%D7%A8%D7%95%D7%A9_%D7%9E%D7%A9%D7%95%D7%9B%D7%A8_%D7%93%D7%99%D7%A8%D7%94",
+      "published": "updated 2026-08-12"
+    },
+    {
+      "id": "NC_FAIR",
+      "title": "Nadlan Center: Fair Rental Law, complete guide for 2026",
+      "url": "https://www.nadlancenter.co.il/article/766",
+      "published": "updated 2026-05-10"
+    },
+    {
+      "id": "NBN_RENT",
+      "title": "Nefesh B'Nefesh (Adv. Russell D. Mayer): renting an apartment in Israel",
+      "url": "https://www.nbn.org.il/life-in-israel/community-and-housing/buying-and-renting/renting-in-israel/",
+      "published": "updated 2025-05-07"
+    }
+  ]
+}

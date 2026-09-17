@@ -1,0 +1,1716 @@
+{
+  "id": "L06",
+  "identification": {
+    "summary_en": "L06 is a new double-height mini penthouse (5 rooms plus mamad, listed as 6 rooms) of about 184 sqm by arnona, or 200 sqm built in portal listings, with a 20 sqm sea-facing balcony, in the same 9-floor boutique building on Eliyahu Berlin St as L04 and L05. The broker's Yad2 listings of 2026-08-02 place it on floor 8 of 9, new from contractor and never lived in, at NIS 27,000 a month with one year paid upfront, plus va'ad bayit of NIS 1,400.",
+    "summary_he": "L06 היא מיני פנטהאוז חדש בחלל כפול (5 חדרים וממ״ד, מופיע כ-6 חדרים) בשטח של כ-184 מ״ר לפי ארנונה, או 200 מ״ר בנוי לפי המודעות, עם מרפסת של 20 מ״ר הפונה לים, באותו בניין בוטיק בן 9 קומות ברחוב אליהו ברלין שבו נמצאות L04 ו-L05. במודעות יד2 של המתווכת מ-2.8.2026 הדירה בקומה 8 מתוך 9, חדשה מקבלן ולא גרו בה, ב-27,000 ש״ח לחודש בתשלום שנה מראש, ובנוסף ועד בית של 1,400 ש״ח.",
+    "address_or_project_en": "Eliyahu Berlin St, likely No. 7 (same building as L04), Tzukei Aviv / Gimel HaHadasha, Tel Aviv-Yafo",
+    "address_or_project_he": "רחוב אליהו ברלין, ככל הנראה מספר 7 (אותו בניין כמו L04), צוקי אביב / ג׳ החדשה, תל אביב-יפו",
+    "confidence": "likely",
+    "evidence": [
+      "Yad2 listing by Meital Katzir (license 3131540), published 2026-08-02: Eliyahu Berlin, roof / penthouse, 6 rooms, floor 8/9, 200 sqm, new from contractor (not lived in), NIS 27,000, va'ad bayit NIS 1,400 per month; text: no brokerage fee for leases closed in August, NIS 27,000 with one year paid in advance, sea view, 5 minutes' walk to Tel Baruch beach and the new cliff promenade, ceilings 6 m high.",
+      "Second Yad2 listing by the same broker on the same date: duplex, 6 rooms, floor 8/9, 200 sqm, NIS 27,004, va'ad bayit NIS 1,400, same text about Tel Baruch beach and the cliff promenade.",
+      "Madlan listing by the same broker: Eliyahu Berlin, duplex, 6 rooms, 200 sqm, 20 sqm balcony, NIS 35,000 (NIS 175 per sqm), entry 06/2026, building year 2023, 9 floors in building, gym in building, underfloor heating, luxury kitchen, 7 minutes' walk to the beach. Its search card shows No. 10 and floor 8; the listing page shows floor 2 of 9.",
+      "Madlan listing by another advertiser: Berlin Eliyahu 7, duplex, 5 rooms, floor 7, 190 sqm, balconies of 12 and 8 sqm, new, immediate entry, NIS 35,000; text: first line to the sea, 180-degree open sea view, boutique building 5 minutes' walk from Tel Baruch beach and the promenade.",
+      "Instagram: about 200 sqm built, entry 1/6 (2026-04-09); NIS 35,000 (2026-04-19); NIS 32,000 with about 184 sqm by arnona and a 20 sqm balcony (2026-05-28); NIS 27,000 with 12 months upfront (2026-08-06).",
+      "Caveats: ceiling height is 6 m on Yad2 and 7 m on Instagram; the floor appears as 8, 7 and 2 in different listings; area is 184, 190 or 200 sqm."
+    ],
+    "source_ids": [
+      "S7",
+      "S8",
+      "S6",
+      "S9",
+      "S88",
+      "S89",
+      "S90",
+      "S92",
+      "S11"
+    ]
+  },
+  "cross_listings": [
+    {
+      "what_en": "Yad2 rental listing by the same broker",
+      "url": "https://www.yad2.co.il/realestate/item/tel-aviv-area/1uj9m4vf",
+      "date": "2026-08-02",
+      "price_nis": 27000,
+      "details_en": "Eliyahu Berlin, roof / penthouse, 6 rooms, floor 8/9, 200 sqm, new from contractor (not lived in), immediate entry, payments field 'flexible', va'ad bayit NIS 1,400 per month; NIS 27,000 with one year paid in advance; ceilings 6 m high.",
+      "same_unit_evidence_en": "Same broker and license, same NIS 27,000 rent with a year upfront and the August no-fee offer as the Instagram post of 2026-08-06, 200 sqm and 5 rooms plus mamad.",
+      "confidence": "likely"
+    },
+    {
+      "what_en": "Duplicate Yad2 rental listing by the same broker",
+      "url": "https://www.yad2.co.il/realestate/item/tel-aviv-area/6vpbjgxb",
+      "date": "2026-08-02",
+      "price_nis": 27004,
+      "details_en": "Azorei Chen / Gimel HaHadasha, duplex, 6 rooms, floor 8/9, 200 sqm, new from contractor (not lived in), immediate entry, va'ad bayit NIS 1,400; balcony in the master suite; sea view, 5 minutes' walk to Tel Baruch beach and the cliff promenade.",
+      "same_unit_evidence_en": "Identical broker, date, floor, size, rooms and va'ad bayit as the listing above; the NIS 4 difference looks like a duplicate entry.",
+      "confidence": "likely"
+    },
+    {
+      "what_en": "Madlan rental listing by the same broker (older price)",
+      "url": "https://www.madlan.co.il/listings/bWYTHP8aPf3",
+      "date": "2026-09-16 (seen)",
+      "price_nis": 35000,
+      "details_en": "Eliyahu Berlin (card shows No. 10), duplex, 6 rooms, 200 sqm, 20 sqm balcony, entry 06/2026, building year 2023, 9 floors, gym in building, underfloor heating; floor shown as 8 on the card and 2 of 9 on the page.",
+      "same_unit_evidence_en": "Same broker, NIS 35,000 as the April 2026 Instagram price, entry June 2026 as in the April post, 20 sqm balcony, underfloor heating and gym. The listing still shows the older rent.",
+      "confidence": "likely"
+    },
+    {
+      "what_en": "Madlan rental listing by another advertiser",
+      "url": "https://www.madlan.co.il/listings/LlcKDGyvAvk",
+      "date": "2026-09-16 (seen)",
+      "price_nis": 35000,
+      "details_en": "Berlin Eliyahu 7, duplex, 5 rooms, floor 7, 190 sqm, balconies of 12 and 8 sqm, new, immediate entry; first line to the sea, 180-degree open sea view, boutique building 5 minutes' walk from Tel Baruch beach and the promenade.",
+      "same_unit_evidence_en": "Same street, same NIS 35,000 asked by the broker in April, a new duplex of 190 sqm (broker 184-200 sqm) and balconies totaling 20 sqm. Posted by a different advertiser with floor 7 instead of 8, so it could also be a similar unit; it has not been updated to the current NIS 27,000.",
+      "confidence": "likely"
+    }
+  ],
+  "building_facts": [
+    {
+      "label_en": "Street and house number",
+      "label_he": "רחוב ומספר בית",
+      "value_en": "Eliyahu Berlin St, most likely No. 7, Tzukei Aviv (Azorei Chen / Gimel HaHadasha), Tel Aviv-Yafo",
+      "value_he": "רחוב אליהו ברלין, ככל הנראה מספר 7, צוקי אביב (אזורי חן / ג׳ החדשה), תל אביב-יפו",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S9",
+        "S11",
+        "S81"
+      ],
+      "note_en": "The broker's own Madlan sale listing (S1) and a separate advertiser's Madlan rental listing for what appears to be L06 (S9) both give No. 7. The broker's Madlan rental card shows No. 10 (S11); her Yad2 listings show no house number. Not checked against municipal records."
+    },
+    {
+      "label_en": "Floors in the building",
+      "label_he": "מספר קומות בבניין",
+      "value_en": "9 floors",
+      "value_he": "9 קומות",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S7"
+      ],
+      "note_en": "Every portal listing by the broker gives 9 floors (for example 2 of 9, 3/9, 8/9). Advertiser-entered data, not a permit or Tofes 4 record."
+    },
+    {
+      "label_en": "Year built / completion",
+      "label_he": "שנת בנייה / סיום בנייה",
+      "value_en": "About 2021 to 2023 per listing data; Tofes 4 date not found",
+      "value_he": "בערך 2021 עד 2023 לפי נתוני המודעות; מועד טופס 4 לא אותר",
+      "basis": "source",
+      "confidence": "unverified",
+      "source_ids": [
+        "S1",
+        "S4",
+        "S6",
+        "S7"
+      ],
+      "note_en": "Madlan building-year fields on the broker's three listings differ: 2021 (L04), 2022 (L05), 2023 (L06). Her L04 text calls it a boutique building 4 years old. L06 is marked on Yad2 as new from contractor, not lived in."
+    },
+    {
+      "label_en": "Developer",
+      "label_he": "יזם",
+      "value_en": "Not identified",
+      "value_he": "לא אותר",
+      "basis": "source",
+      "confidence": "unverified",
+      "source_ids": [
+        "S13"
+      ],
+      "note_en": "No source reviewed names the developer of the existing building. Madlan's 'Eliyahu Berlin 5-7' record lists only 'private development', and that record conflicts with this building (see the Madlan project record item)."
+    },
+    {
+      "label_en": "Architect and contractor",
+      "label_he": "אדריכל וקבלן מבצע",
+      "value_en": "Not identified",
+      "value_he": "לא אותרו",
+      "basis": "source",
+      "confidence": "unverified",
+      "source_ids": [
+        "S13"
+      ],
+      "note_en": "Madlan's 'Eliyahu Berlin 5-7' record names Elisha and Ronit Rubin Architects, but it is not confirmed to describe this building. No contractor was found."
+    },
+    {
+      "label_en": "Madlan project record 'Eliyahu Berlin 5-7'",
+      "label_he": "רשומת פרויקט במדלן ״אליהו ברלין 5-7״",
+      "value_en": "2 buildings, 11-12 floors, 68 apartments, status 'initial planning', completion estimate 'early 2028', private developer, Elisha and Ronit Rubin Architects",
+      "value_he": "2 בניינים, 11-12 קומות, 68 דירות, סטטוס ״תכנון ראשוני״, צפי סיום ״תחילת 2028״, יזמות פרטית, אלישע ורונית רובין אדריכלים",
+      "basis": "source",
+      "confidence": "unverified",
+      "source_ids": [
+        "S13",
+        "S1",
+        "S4",
+        "S84"
+      ],
+      "note_en": "Conflict resolved as far as possible: the building at No. 7 is already occupied (L04 and L05 are 'new, lived in' and L05 has been tenanted since at least November 2025) and has 9 floors, so this record is most likely an outdated pre-construction entry or a different scheme for the lots. Do not use it for unit count, height or completion year until the municipal building file is checked."
+    },
+    {
+      "label_en": "Number of apartments in the building",
+      "label_he": "מספר הדירות בבניין",
+      "value_en": "Not verified",
+      "value_he": "לא אומת",
+      "basis": "source",
+      "confidence": "unverified",
+      "source_ids": [
+        "S13"
+      ],
+      "note_en": "Only the conflicting Madlan record (68 apartments in 2 buildings) gives a count."
+    },
+    {
+      "label_en": "Lobby and residents' gym",
+      "label_he": "לובי וחדר כושר לדיירים",
+      "value_en": "Designed lobby and a residents' gym; the broker's listings describe the gym as new",
+      "value_he": "לובי מעוצב וחדר כושר לדיירים; במודעות המתווכת חדר הכושר מתואר כחדש",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S2",
+        "S5",
+        "S6",
+        "S87",
+        "S93"
+      ],
+      "note_en": "Broker-stated only (Instagram, Yad2 and Madlan listings). Not independently checked."
+    },
+    {
+      "label_en": "Parking and storage",
+      "label_he": "חניה ומחסן",
+      "value_en": "2 private parking spaces and a storage room with each of L04, L05 and L06",
+      "value_he": "2 חניות פרטיות ומחסן לכל אחת מהדירות L04, L05 ו-L06",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S3",
+        "S4",
+        "S6"
+      ],
+      "note_en": "Whether the spaces are side by side or tandem, and whether they are registered to each unit, was not checked."
+    },
+    {
+      "label_en": "Management fee / va'ad bayit",
+      "label_he": "דמי ניהול / ועד בית",
+      "value_en": "NIS 600 per month for the 3 and 3.5 room units; NIS 1,400 per month shown for the mini penthouse",
+      "value_he": "600 ש״ח לחודש לדירות 3 ו-3.5 חדרים; 1,400 ש״ח לחודש למיני פנטהאוז",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S5",
+        "S7",
+        "S84"
+      ],
+      "note_en": "Consistent across the broker's Instagram, Madlan and Yad2 listings. What the fee covers was not disclosed."
+    },
+    {
+      "label_en": "Facade",
+      "label_he": "חזית",
+      "value_en": "Curtain walls (floor-to-ceiling glazing)",
+      "value_he": "קירות מסך",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "note_en": "Broker-stated in the L04 and L06 marketing."
+    },
+    {
+      "label_en": "Position relative to the sea",
+      "label_he": "מיקום ביחס לים",
+      "value_en": "Marketed as the 'first building to the sea', facing the new cliff promenade; not verified against a map",
+      "value_he": "משווק כ״בניין ראשון לים״ מול טיילת המצוק החדשה; לא אומת מול מפה",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S9"
+      ],
+      "note_en": "A second advertiser's listing at Berlin Eliyahu 7 also says first line to the sea with a 180-degree open sea view (S9). No map, orthophoto or plan could be reached to confirm what lies between the building and the shoreline."
+    },
+    {
+      "label_en": "Land to the west",
+      "label_he": "השטח ממערב לבניין",
+      "value_en": "Plan TA/3700 covers the land from Propes St and Nofei Yam north to the city border, and from Namir Rd west to the sea, with the coastal park and cliff promenade along the shore. Which compound lies directly west of this building, and its permitted heights, was not verified.",
+      "value_he": "תכנית תא/3700 חלה על השטח מרחוב פרופס ונופי ים צפונה עד גבול העיר, ומדרך נמיר מערבה עד הים, והפארק החופי וטיילת המצוק לאורך החוף. לא אומת איזה מתחם גובל בבניין ממערב ומה גובה הבנייה המותר בו.",
+      "basis": "source",
+      "confidence": "unverified",
+      "source_ids": [
+        "S23",
+        "S77",
+        "S25",
+        "S21"
+      ],
+      "note_en": "Plan boundaries from Globes (S23, S77). project-tlv compounds, south to north: 1 from Sde Dov to Shoshana Persitz St; 2 and 3 from Persitz to Shimon Samet St; 4 from Samet to Unitzman St; 5 from Unitzman to Glilot (S25). mavat.iplan.gov.il was not reached."
+    },
+    {
+      "label_en": "Project on the same street: Eliyahu Berlin 3",
+      "label_he": "פרויקט באותו רחוב: אליהו ברלין 3",
+      "value_en": "Developer Aura Israel, Milbauer Architects (project-tlv lists it under completed projects); Madlan shows 'construction started, 13 floors, 41 units, completion early 2028'",
+      "value_he": "יזם אאורה ישראל, מילבאואר אדריכלים (ב-project-tlv ברשימת הפרויקטים שהושלמו); במדלן: ״בנייה שהחלה, 13 קומות, 41 יחידות, צפי סיום תחילת 2028״",
+      "basis": "source",
+      "confidence": "unverified",
+      "source_ids": [
+        "S15",
+        "S16",
+        "S14"
+      ],
+      "note_en": "The sources conflict on status. If Madlan is right, there may be construction on the street until about 2028. Distance from No. 7 not verified."
+    },
+    {
+      "label_en": "Older stock on the street",
+      "label_he": "מלאי ותיק יותר ברחוב",
+      "value_en": "The street also has older luxury buildings: the three-building 'Prestige' project completed in 2012 (Shikun & Binui and Africa Israel Residences, contractor A. Dori), and buildings that Madlan records as built in 1998 (No. 8, 12 floors) and 2007 (No. 11, 12 floors)",
+      "value_he": "ברחוב גם בנייני יוקרה ותיקים יותר: פרויקט ״פרסטיז׳״ בן שלושה בניינים שהושלם ב-2012 (שיכון ובינוי ואפריקה ישראל מגורים, קבלן ביצוע א. דורי), ובניינים שמדלן רושם כבנויים ב-1998 (מס׳ 8, 12 קומות) וב-2007 (מס׳ 11, 12 קומות)",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S18",
+        "S46",
+        "S44"
+      ],
+      "note_en": "In 2023, 132 Prestige residents were awarded about NIS 950,000 for common-area defects (S18). Madlan building years come from listing data."
+    },
+    {
+      "label_en": "Unit floor",
+      "label_he": "קומת הדירה",
+      "value_en": "Floor 8 of 9 (top part of the building)",
+      "value_he": "קומה 8 מתוך 9 (החלק העליון של הבניין)",
+      "basis": "source",
+      "confidence": "unverified",
+      "source_ids": [
+        "S7",
+        "S8",
+        "S9",
+        "S6"
+      ],
+      "note_en": "Floor 8/9 in the broker's Yad2 listings and on her Madlan card; floor 7 in another advertiser's listing; floor 2 of 9 on the broker's Madlan page, which looks like an entry error for a mini penthouse."
+    },
+    {
+      "label_en": "Unit area",
+      "label_he": "שטח הדירה",
+      "value_en": "About 184 sqm by arnona; 200 sqm built in portal listings",
+      "value_he": "כ-184 מ״ר לפי ארנונה; 200 מ״ר בנוי במודעות",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S90",
+        "S7",
+        "S88",
+        "S9"
+      ],
+      "note_en": "Another advertiser lists 190 sqm. Registered area not seen."
+    },
+    {
+      "label_en": "Balcony",
+      "label_he": "מרפסת",
+      "value_en": "About 20 sqm sun balcony facing the sea",
+      "value_he": "מרפסת שמש של כ-20 מ״ר הפונה לים",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S90",
+        "S6",
+        "S9"
+      ],
+      "note_en": "Madlan listings show 20 sqm, or two balconies of 12 and 8 sqm."
+    },
+    {
+      "label_en": "Rooms",
+      "label_he": "חדרים",
+      "value_en": "5 rooms plus mamad (listed as 6 rooms)",
+      "value_he": "5 חדרים וממ״ד (מופיע כ-6 חדרים)",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S7",
+        "S6"
+      ],
+      "note_en": "Another advertiser lists 5 rooms."
+    },
+    {
+      "label_en": "Ceiling height",
+      "label_he": "גובה תקרה",
+      "value_en": "Double-height space of 7 m (Instagram) or ceilings 6 m high (Yad2)",
+      "value_he": "חלל כפול בגובה 7 מ׳ (אינסטגרם) או תקרות בגובה 6 מ׳ (יד2)",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S7"
+      ],
+      "note_en": "Broker figures conflict."
+    },
+    {
+      "label_en": "Condition",
+      "label_he": "מצב הנכס",
+      "value_en": "New from contractor, never lived in",
+      "value_he": "חדשה מקבלן, לא גרו בה",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S7",
+        "S8"
+      ],
+      "note_en": "Yad2 condition field; suggests the unit may still be held by the developer or a first buyer."
+    },
+    {
+      "label_en": "Fit-out",
+      "label_he": "גימור ומפרט",
+      "value_en": "Curtain walls facing the sea, underfloor heating, luxury Hacker kitchen with hidden premium appliances, custom carpentry, designer lighting",
+      "value_he": "קירות מסך לים, חימום תת-רצפתי, מטבח האקר יוקרתי עם מכשירים נסתרים, נגרות בהתאמה אישית, גופי תאורה מעוצבים",
+      "basis": "broker",
+      "confidence": "unverified",
+      "source_ids": [
+        "S6"
+      ],
+      "note_en": "Madlan listing confirms underfloor heating and a luxury kitchen as listed features; the rest is from Instagram posts."
+    },
+    {
+      "label_en": "Entry",
+      "label_he": "כניסה",
+      "value_en": "Immediate (August 2026 listings)",
+      "value_he": "מיידית (מודעות אוגוסט 2026)",
+      "basis": "broker",
+      "confidence": "likely",
+      "source_ids": [
+        "S7",
+        "S8"
+      ],
+      "note_en": "Earlier posts gave 1 June and 1 July 2026."
+    }
+  ],
+  "neighborhood_facts": [
+    {
+      "label_en": "Gimel HaHadasha",
+      "label_he": "ג׳ החדשה",
+      "value_en": "Informal name for the newer part of Tzukei Aviv, built later than Azorei Chen, with buildings from recent decades; not a municipal neighborhood name",
+      "value_he": "כינוי לא רשמי לחלק החדש של צוקי אביב, שנבנה אחרי אזורי חן וכולל בניינים מהעשורים האחרונים; אינו שם שכונה עירוני",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S19",
+        "S20",
+        "S16"
+      ],
+      "note_en": "project-tlv lists Gimel HaHadasha and Azorei Chen as alternative names for Tzukei Aviv."
+    },
+    {
+      "label_en": "Neighborhood boundaries",
+      "label_he": "גבולות השכונה",
+      "value_en": "Unitzman St (north), Namir Rd (east), Propes St (south), the sea (west)",
+      "value_he": "רחוב יוניצמן (צפון), דרך נמיר (מזרח), רחוב פרופס (דרום), הים (מערב)",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S20",
+        "S16"
+      ],
+      "note_en": "project-tlv uses the Glilot compound as the northern edge."
+    },
+    {
+      "label_en": "Street character",
+      "label_he": "אופי הרחוב",
+      "value_en": "Madlan describes Eliyahu Berlin St as a quiet street used mainly for housing",
+      "value_he": "מדלן מתאר את רחוב אליהו ברלין כרחוב שקט המשמש בעיקר למגורים",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S12",
+        "S13"
+      ],
+      "note_en": "Single source (Madlan editorial text)."
+    },
+    {
+      "label_en": "Cliff promenade",
+      "label_he": "טיילת המצוק",
+      "value_en": "Opened in September 2023; runs about 2 km along the cliff from Tel Baruch beach (south) to Tzuk beach (north), with a 2 km bike path",
+      "value_he": "נפתחה בספטמבר 2023; כ-2 ק״מ לאורך המצוק מחוף תל ברוך (דרום) עד חוף הצוק (צפון), עם שביל אופניים של 2 ק״מ",
+      "basis": "source",
+      "confidence": "verified",
+      "source_ids": [
+        "S21",
+        "S22",
+        "S75"
+      ],
+      "note_en": ""
+    },
+    {
+      "label_en": "Coastal park size",
+      "label_he": "שטח הפארק החופי",
+      "value_en": "About 400 dunams (Globes, as part of plan 3700) or about 500 dunams (Walla)",
+      "value_he": "כ-400 דונם (גלובס, במסגרת תכנית 3700) או כ-500 דונם (וואלה)",
+      "basis": "source",
+      "confidence": "unverified",
+      "source_ids": [
+        "S23",
+        "S21"
+      ],
+      "note_en": "The two sources give different areas."
+    },
+    {
+      "label_en": "Sde Dov district to the south",
+      "label_he": "רובע שדה דב מדרום",
+      "value_en": "About 16,000 apartments are planned south of Tzukei Aviv in Sde Dov; new units there are marketed at about NIS 60,000-90,000 per sqm",
+      "value_he": "כ-16 אלף דירות מתוכננות מדרום לצוקי אביב ברובע שדה דב; דירות חדשות שם משווקות בכ-60-90 אלף ש״ח למ״ר",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S19",
+        "S28"
+      ],
+      "note_en": "Calcalist (S28) reports average sales of NIS 79,000-85,000 per sqm."
+    },
+    {
+      "label_en": "Street amenities",
+      "label_he": "תשתיות ברחוב",
+      "value_en": "Bike path on Eliyahu Berlin St (completed January 2022) and a public garden at Eliyahu Berlin 6",
+      "value_he": "שביל אופניים ברחוב אליהו ברלין (הושלם בינואר 2022) וגינה ציבורית באליהו ברלין 6",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S16"
+      ],
+      "note_en": "Single source (project-tlv)."
+    },
+    {
+      "label_en": "Tzuk beach",
+      "label_he": "חוף הצוק",
+      "value_en": "Described as the neighborhood's main anchor and a favourite beach for children from north Tel Aviv",
+      "value_he": "מתואר כעוגן המרכזי של השכונה וכחוף האהוב על ילדי צפון העיר",
+      "basis": "source",
+      "confidence": "likely",
+      "source_ids": [
+        "S20"
+      ],
+      "note_en": "2018 source."
+    }
+  ],
+  "distances": [
+    {
+      "to_en": "Tel Baruch beach",
+      "to_he": "חוף תל ברוך",
+      "value_en": "5 minutes' walk (broker, April and August 2026) or 7 minutes' walk (broker, June 2026 and Madlan)",
+      "value_he": "5 דקות הליכה (לפי המתווכת, אפריל ואוגוסט 2026) או 7 דקות הליכה (לפי המתווכת, יוני 2026 ובמדלן)",
+      "basis": "broker",
+      "source_ids": [
+        "S7",
+        "S89",
+        "S91",
+        "S6"
+      ],
+      "note_en": "Another advertiser also says 5 minutes' walk. Not measured; no coordinates were available."
+    },
+    {
+      "to_en": "Cliff promenade (coastal park)",
+      "to_he": "טיילת המצוק (הפארק החופי)",
+      "value_en": "5 minutes' walk (broker)",
+      "value_he": "5 דקות הליכה (לפי המתווכת)",
+      "basis": "broker",
+      "source_ids": [
+        "S7"
+      ],
+      "note_en": "Not measured."
+    }
+  ],
+  "schools": [
+    {
+      "name_en": "Tzukei Aviv school",
+      "name_he": "בית ספר צוקי אביב",
+      "level_en": "Elementary (state)",
+      "level_he": "יסודי (ממלכתי)",
+      "note_en": "Yair Rosenblum 13; listed near Berlin Eliyahu 7 by Madlan; grades and registration zone not verified",
+      "note_he": "יאיר רוזנבלום 13; מופיע ליד אליהו ברלין 7 במדלן; שכבות גיל ואזור רישום לא אומתו",
+      "source_ids": [
+        "S12"
+      ]
+    },
+    {
+      "name_en": "Alumot school",
+      "name_he": "בית ספר אלומות",
+      "level_en": "Elementary (state-religious)",
+      "level_he": "יסודי (ממלכתי-דתי)",
+      "note_en": "David Shimoni 4a; listed for the address by Madlan; registration zone not verified",
+      "note_he": "דוד שמעוני 4א; מופיע לכתובת במדלן; אזור רישום לא אומת",
+      "source_ids": [
+        "S12"
+      ]
+    },
+    {
+      "name_en": "Nofei Yam school",
+      "name_he": "בית ספר נופי ים",
+      "level_en": "Elementary (1-6)",
+      "level_he": "יסודי (א-ו)",
+      "note_en": "About 91 students per grade; listed for Tzukei Aviv by Madlan; registration zone not verified",
+      "note_he": "כ-91 תלמידים בשכבה; מופיע לצוקי אביב במדלן; אזור רישום לא אומת",
+      "source_ids": [
+        "S35"
+      ]
+    },
+    {
+      "name_en": "Nathan Alterman high school (Tichonet)",
+      "name_he": "תיכונ״ט ע״ש נתן אלתרמן",
+      "level_en": "Middle and high school (7-12)",
+      "level_he": "חטיבת ביניים ותיכון (ז-יב)",
+      "note_en": "In Tzukei Aviv; about 251 students per grade per Madlan; building won the Rokach architecture prize in 2015; distance and registration zone not verified",
+      "note_he": "בצוקי אביב; כ-251 תלמידים בשכבה לפי מדלן; המבנה זכה בפרס רוקח לאדריכלות ב-2015; מרחק ואזור רישום לא אומתו",
+      "source_ids": [
+        "S35",
+        "S36"
+      ]
+    }
+  ],
+  "transport": [
+    {
+      "item_en": "Green Line light rail",
+      "item_he": "הקו הירוק של הרכבת הקלה",
+      "status_en": "Under construction; Madlan says a station will be built not far from the address and the line should run in 2028; ice.co.il reports the southern section in 2028 and the full line in 2030; the route is planned along the new road through plan 3700. Exact station and opening date for this segment not verified.",
+      "status_he": "בביצוע; לפי מדלן תיבנה תחנה לא רחוק מהכתובת והקו צפוי לפעול ב-2028; לפי ice הקטע הדרומי ב-2028 והקו המלא ב-2030; התוואי מתוכנן לאורך הכביש החדש בתחום תכנית 3700. התחנה המדויקת ומועד הפתיחה של קטע זה לא אומתו.",
+      "source_ids": [
+        "S12",
+        "S27",
+        "S26"
+      ]
+    },
+    {
+      "item_en": "Pedestrian and bike bridge over Namir Rd at the KKL junction (Tzukei Aviv to Ramat Aviv Gimel)",
+      "item_he": "גשר להולכי רגל ולרוכבי אופניים מעל צומת נמיר-קק״ל (צוקי אביב - רמת אביב ג׳)",
+      "status_en": "Planned; a 2025-09-17 report expects it in about three years, with final design and budget still pending",
+      "status_he": "בתכנון; לפי דיווח מ-17.9.2025 צפוי בעוד כשלוש שנים, והעיצוב הסופי והתקציב טרם נקבעו",
+      "source_ids": [
+        "S33",
+        "S34",
+        "S12"
+      ]
+    },
+    {
+      "item_en": "Bike path on Eliyahu Berlin St",
+      "item_he": "שביל אופניים ברחוב אליהו ברלין",
+      "status_en": "Operating (completed January 2022)",
+      "status_he": "פעיל (הושלם בינואר 2022)",
+      "source_ids": [
+        "S16"
+      ]
+    },
+    {
+      "item_en": "Coastal park bike path along the cliff (about 2 km)",
+      "item_he": "שביל אופניים בפארק החופי לאורך המצוק (כ-2 ק״מ)",
+      "status_en": "Operating since September 2023",
+      "status_he": "פעיל מספטמבר 2023",
+      "source_ids": [
+        "S21"
+      ]
+    },
+    {
+      "item_en": "Israel Railways University station",
+      "item_he": "תחנת רכבת ישראל אוניברסיטה",
+      "status_en": "Operating (one of Tel Aviv's four stations); distance from the building not verified",
+      "status_he": "פעילה (אחת מארבע התחנות בתל אביב); המרחק מהבניין לא אומת",
+      "source_ids": [
+        "S37"
+      ]
+    },
+    {
+      "item_en": "Bus lines 90 and 125 to the city center",
+      "item_he": "קווי אוטובוס 90 ו-125 למרכז העיר",
+      "status_en": "Cited in 2018 with about 45 minutes to the center; current routes not re-checked",
+      "status_he": "צוינו ב-2018 עם כ-45 דקות למרכז; המסלולים הנוכחיים לא נבדקו מחדש",
+      "source_ids": [
+        "S20"
+      ]
+    }
+  ],
+  "planning_future": [
+    {
+      "item_en": "Plan TA/3700 (north-west quarter): about 1,900 dunams, 11,000-13,000 housing units, 1,500 hotel rooms and about 215,000 sqm of employment and commerce; about 70% privately owned; about 130 objections; in August 2024 the rights-allocation tables still could not be approved",
+      "item_he": "תכנית תא/3700 (הרובע הצפון-מערבי): כ-1,900 דונם, 11-13 אלף יחידות דיור, 1,500 חדרי מלון וכ-215 אלף מ״ר תעסוקה ומסחר; כ-70% בבעלות פרטית; כ-130 התנגדויות; באוגוסט 2024 טבלאות האיזון וההקצאה עדיין לא אושרו",
+      "impact_en": "Long-term development of the land between Tzukei Aviv and the sea; timing is uncertain, which also means years of possible construction once it starts",
+      "impact_he": "פיתוח ארוך טווח של השטח שבין צוקי אביב לים; לוח הזמנים אינו ודאי, ומשמעותו גם שנים של בנייה אפשרית כשתתחיל",
+      "source_ids": [
+        "S24",
+        "S23"
+      ]
+    },
+    {
+      "item_en": "Heights in plan 3700: a planner quoted by Globes describes about 6 to 8 units per dunam 'with buildings of eight floors at most'; compound 1 offers 866 units on 659 dunams; a 400-dunam ecological coastal park",
+      "item_he": "גובה הבנייה בתכנית 3700: לפי ציטוט בגלובס מדובר בצפיפות של 6 עד 8 יח״ד לדונם ״עם מבנים בני שמונה קומות לכל היותר״; מתחם 1 כולל 866 יח״ד על 659 דונם; פארק חוף אקולוגי של 400 דונם",
+      "impact_en": "If buildings of up to 8 floors rise west of this 9-floor building, units on floors 2-3 would lose most open views; upper floors would be less affected. The detailed plan for the land directly west was not checked.",
+      "impact_he": "אם ייבנו ממערב לבניין זה מבנים של עד 8 קומות, דירות בקומות 2-3 יאבדו את רוב הנוף הפתוח; בקומות העליונות ההשפעה קטנה יותר. התכנית המפורטת לשטח שממערב לא נבדקה.",
+      "source_ids": [
+        "S23"
+      ]
+    },
+    {
+      "item_en": "Plan 3700 compounds: five compounds with separate architects; project-tlv logs a 2024-08-28 discussion on cancelling a section 106b publication for compounds 1 and 2",
+      "item_he": "מתחמי תכנית 3700: חמישה מתחמים עם צוותי תכנון נפרדים; ב-project-tlv רשום דיון מ-28.8.2024 בביטול פרסום מכוח סעיף 106ב׳ למתחמים 1 ו-2",
+      "impact_en": "Detailed planning is still in process, so heights, building lines and timing near the building can still change",
+      "impact_he": "התכנון המפורט עדיין בהליך, ולכן גובה, קווי בניין ולוחות זמנים ליד הבניין עשויים להשתנות",
+      "source_ids": [
+        "S25",
+        "S76"
+      ]
+    },
+    {
+      "item_en": "Sde Dov district: about 16,000 units, towers of up to 45 floors in the center plan; most apartments expected in about 2029-2032",
+      "item_he": "רובע שדה דב: כ-16 אלף יחידות דיור, מגדלים של עד 45 קומות בתכנית המרכז; רוב הדירות צפויות בערך בשנים 2029-2032",
+      "impact_en": "Competing new supply at higher price levels and years of construction south of Tzukei Aviv",
+      "impact_he": "היצע חדש מתחרה ברמות מחיר גבוהות יותר ושנים של בנייה מדרום לצוקי אביב",
+      "source_ids": [
+        "S29",
+        "S28",
+        "S19"
+      ]
+    },
+    {
+      "item_en": "Eliyahu Berlin 3: Madlan shows construction started, 13 floors, 41 units, completion early 2028; project-tlv lists the project as completed",
+      "item_he": "אליהו ברלין 3: במדלן מופיע כבנייה שהחלה, 13 קומות, 41 יחידות, צפי סיום תחילת 2028; ב-project-tlv מופיע כפרויקט שהושלם",
+      "impact_en": "Possible construction on the same street until about 2028; status unverified",
+      "impact_he": "בנייה אפשרית באותו רחוב עד כ-2028; הסטטוס לא אומת",
+      "source_ids": [
+        "S14",
+        "S15",
+        "S16"
+      ]
+    },
+    {
+      "item_en": "Tzuk beach hotel and residential tower at the north end of the promenade: 2021 plan for a 14-floor tower with 116 apartments and a hotel of about 200 rooms; design plan approved in May 2025",
+      "item_he": "מלון ומגדל מגורים בחוף הצוק בקצה הצפוני של הטיילת: תכנית מ-2021 למגדל בן 14 קומות עם 116 דירות ומלון של כ-200 חדרים; תכנית העיצוב אושרה במאי 2025",
+      "impact_en": "More activity and traffic at the north end of the promenade; not directly west of the building",
+      "impact_he": "יותר פעילות ותנועה בקצה הצפוני של הטיילת; לא ממערב ישירות לבניין",
+      "source_ids": [
+        "S31",
+        "S32"
+      ]
+    },
+    {
+      "item_en": "Nofei Yam North (south of Propes St): permit freeze extended in March 2025 for re-planning, with heights that could rise from 15 to 45 floors",
+      "item_he": "נופי ים צפון (מדרום לרחוב פרופס): הקפאת היתרים הוארכה במרץ 2025 לצורך תכנון מחדש, והגובה עשוי לעלות מ-15 ל-45 קומות",
+      "impact_en": "Taller buildings possible south of the neighborhood",
+      "impact_he": "אפשרות לבנייה גבוהה יותר מדרום לשכונה",
+      "source_ids": [
+        "S74"
+      ]
+    }
+  ],
+  "market_stats": [
+    {
+      "metric_en": "Tzukei Aviv median price per sqm",
+      "metric_he": "מחיר חציוני למ״ר בצוקי אביב",
+      "value_en": "About NIS 49,000 per sqm now, down from about NIS 54,600 in 2024 (about 10-12% lower over two years)",
+      "value_he": "כ-49 אלף ש״ח למ״ר כיום, לעומת כ-54.6 אלף ש״ח ב-2024 (ירידה של כ-10-12% בשנתיים)",
+      "as_of": "2026-08",
+      "source_ids": [
+        "S19"
+      ]
+    },
+    {
+      "metric_en": "Tzukei Aviv rents and gross yield",
+      "metric_he": "שכר דירה ותשואה ברוטו בצוקי אביב",
+      "value_en": "4 rooms about NIS 9,500-10,500 per month; 5 rooms about NIS 15,000; special properties above NIS 20,000; gross yield about 2.4-2.7%",
+      "value_he": "4 חדרים כ-9,500-10,500 ש״ח לחודש; 5 חדרים כ-15,000 ש״ח; נכסים מיוחדים מעל 20,000 ש״ח; תשואה ברוטו כ-2.4%-2.7%",
+      "as_of": "2026-08",
+      "source_ids": [
+        "S19"
+      ]
+    },
+    {
+      "metric_en": "Rents for special properties in Tzukei Aviv",
+      "metric_he": "שכר דירה לנכסים מיוחדים בצוקי אביב",
+      "value_en": "Above NIS 20,000 per month (5-room apartments about NIS 15,000)",
+      "value_he": "מעל 20,000 ש״ח לחודש (דירות 5 חדרים כ-15,000 ש״ח)",
+      "as_of": "2026-08",
+      "source_ids": [
+        "S19"
+      ]
+    },
+    {
+      "metric_en": "Madlan figures on the Eliyahu Berlin 5-7 project page",
+      "metric_he": "נתוני מדלן בעמוד הפרויקט אליהו ברלין 5-7",
+      "value_en": "Average NIS 50,000 per sqm; yield 2.76% (area and period not stated)",
+      "value_he": "ממוצע 50 אלף ש״ח למ״ר; תשואה 2.76% (האזור והתקופה לא צוינו)",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S13"
+      ]
+    },
+    {
+      "metric_en": "Sde Dov new-build prices",
+      "metric_he": "מחירי דירות חדשות בשדה דב",
+      "value_en": "Marketed at about NIS 60,000-90,000 per sqm (Bizportal); average NIS 79,000-85,000 per sqm across more than 1,000 sales (Calcalist, February 2026)",
+      "value_he": "משווקות בכ-60-90 אלף ש״ח למ״ר (ביזפורטל); ממוצע של 79-85 אלף ש״ח למ״ר ביותר מ-1,000 עסקאות (כלכליסט, פברואר 2026)",
+      "as_of": "2026-08",
+      "source_ids": [
+        "S19",
+        "S28"
+      ]
+    },
+    {
+      "metric_en": "CBS: Tel Aviv district prices and national rents",
+      "metric_he": "הלמ״ס: מחירים במחוז תל אביב ושכר דירה",
+      "value_en": "Tel Aviv district home prices -0.9% year on year (June-July 2026); rents for new tenants +4.4% year on year (August 2026 CPI)",
+      "value_he": "מחירי הדירות במחוז תל אביב -0.9% בשנה (יוני-יולי 2026); שכר הדירה לשוכרים חדשים +4.4% בשנה (מדד אוגוסט 2026)",
+      "as_of": "2026-09",
+      "source_ids": [
+        "S69",
+        "S70"
+      ]
+    },
+    {
+      "metric_en": "CBS resale price index, Tel Aviv",
+      "metric_he": "מדד מחירי דירות יד שנייה של הלמ״ס, תל אביב",
+      "value_en": "-2.0% in Q2 2026 against Q1 2026",
+      "value_he": "-2.0% ברבעון השני של 2026 לעומת הרבעון הראשון",
+      "as_of": "2026-Q2",
+      "source_ids": [
+        "S71"
+      ]
+    },
+    {
+      "metric_en": "Azorei Chen median deal price",
+      "metric_he": "מחיר עסקה חציוני באזורי חן",
+      "value_en": "NIS 5.9 million, fifth highest neighborhood in Israel (early 2023 to October 2025, Madlan data)",
+      "value_he": "5.9 מיליון ש״ח, השכונה החמישית ביוקרה בישראל (תחילת 2023 עד אוקטובר 2025, נתוני מדלן)",
+      "as_of": "2025-10",
+      "source_ids": [
+        "S73"
+      ]
+    }
+  ],
+  "sale_comps": [
+    {
+      "date": "2025-10-23",
+      "where_en": "Uri Zvi Greenberg 5, Azorei Chen",
+      "where_he": "אורי צבי גרינברג 5, אזורי חן",
+      "rooms": "4",
+      "sqm": 155,
+      "floor": 13,
+      "price_nis": 9100000,
+      "price_per_sqm_nis": 58710,
+      "kind": "transaction",
+      "source_ids": [
+        "S12"
+      ],
+      "note_en": "Building year 1999 per Madlan; Madlan shows NIS 58,709 per sqm."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Uri Zvi Greenberg 11, penthouse, floor 10",
+      "where_he": "אורי צבי גרינברג 11, פנטהאוז, קומה 10",
+      "rooms": "4",
+      "sqm": 153,
+      "floor": 10,
+      "price_nis": 6900000,
+      "price_per_sqm_nis": 45098,
+      "kind": "asking",
+      "source_ids": [
+        "S39"
+      ],
+      "note_en": "Madlan search card only."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Kedoshei HaShoah St, Azorei Chen / Gimel HaHadasha, floor 6",
+      "where_he": "רחוב קדושי השואה, אזורי חן / ג׳ החדשה, קומה 6",
+      "rooms": "5",
+      "sqm": 209,
+      "floor": 6,
+      "price_nis": 10900000,
+      "price_per_sqm_nis": 52153,
+      "kind": "asking",
+      "source_ids": [
+        "S59"
+      ],
+      "note_en": "Yad2 search card."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Gimel HaHadasha, roof / penthouse, floor 10 (street not shown)",
+      "where_he": "ג׳ החדשה, גג / פנטהאוז, קומה 10 (רחוב לא צוין)",
+      "rooms": "6",
+      "sqm": 280,
+      "floor": 10,
+      "price_nis": 9100000,
+      "price_per_sqm_nis": 32500,
+      "kind": "asking",
+      "source_ids": [
+        "S59"
+      ],
+      "note_en": "Yad2 search card; larger than the 150-220 sqm range, included for context."
+    }
+  ],
+  "rent_comps": [
+    {
+      "date": "2026-06-14",
+      "where_en": "Gimel HaHadasha, new luxury building with gym, double-height duplex, floor 8 of 8",
+      "where_he": "ג׳ החדשה, בניין יוקרה חדש עם חדר כושר, דופלקס בחלל כפול, קומה 8 מתוך 8",
+      "rooms": "5",
+      "sqm": 160,
+      "rent_nis": 22000,
+      "rent_per_sqm_nis": 138,
+      "kind": "asking",
+      "source_ids": [
+        "S55"
+      ],
+      "note_en": "About 160 sqm on 2 levels plus about 25 sqm balcony with open sea view; furnished; arnona NIS 3,500 per two months; va'ad bayit NIS 1,300. Similar product to L06, not the same unit."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Gimel HaHadasha, new building, duplex, floor 7 (street not shown)",
+      "where_he": "ג׳ החדשה, בניין חדש, דופלקס, קומה 7 (רחוב לא צוין)",
+      "rooms": "6",
+      "sqm": 200,
+      "rent_nis": 27000,
+      "rent_per_sqm_nis": 135,
+      "kind": "asking",
+      "source_ids": [
+        "S50"
+      ],
+      "note_en": "200 sqm plus 15 sqm balcony, panoramic sea view, underfloor heating, listing says 8 floors in building. Could be L06 or a similar unit; not treated as the same unit."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Gimel HaHadasha / Azorei Chen, duplex, floor 8 (street not shown)",
+      "where_he": "ג׳ החדשה / אזורי חן, דופלקס, קומה 8 (רחוב לא צוין)",
+      "rooms": "5",
+      "sqm": 200,
+      "rent_nis": 27000,
+      "rent_per_sqm_nis": 135,
+      "kind": "asking",
+      "source_ids": [
+        "S49"
+      ],
+      "note_en": "200 sqm plus 50 sqm balcony open to the sea; building year 2007 per listing. The same advertiser has a second card for it."
+    },
+    {
+      "date": "shown as 25/07/25",
+      "where_en": "Kedoshei HaShoah St, Azorei Chen, penthouse duplex, floor 7 of 7",
+      "where_he": "רחוב קדושי השואה, אזורי חן, פנטהאוז דופלקס, קומה 7 מתוך 7",
+      "rooms": "3",
+      "sqm": 220,
+      "rent_nis": 27000,
+      "rent_per_sqm_nis": 123,
+      "kind": "asking",
+      "source_ids": [
+        "S54"
+      ],
+      "note_en": "Converted from 5 to 3 rooms, renovated, sea view; furniture optional; va'ad bayit NIS 850. Date format on Yad2 unclear."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Eliyahu Berlin 13 (per Madlan card), high floor",
+      "where_he": "אליהו ברלין 13 (לפי כרטיס מדלן), קומה גבוהה",
+      "rooms": "4",
+      "sqm": 170,
+      "rent_nis": 20000,
+      "rent_per_sqm_nis": 118,
+      "kind": "asking",
+      "source_ids": [
+        "S48",
+        "S41"
+      ],
+      "note_en": "Text: 140 sqm plus 25 sqm sun balcony with full sea view; furnished; building year 2007 per listing (NIS 143 per sqm on 140)."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Nofei Yam (HaGush HaGadol), floor 9",
+      "where_he": "נופי ים (הגוש הגדול), קומה 9",
+      "rooms": "5",
+      "sqm": 200,
+      "rent_nis": 25000,
+      "rent_per_sqm_nis": 125,
+      "kind": "asking",
+      "source_ids": [
+        "S42"
+      ],
+      "note_en": "Madlan search card."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Nofei Yam (HaGush HaGadol), penthouse, floor 6",
+      "where_he": "נופי ים (הגוש הגדול), פנטהאוז, קומה 6",
+      "rooms": "4.5",
+      "sqm": 270,
+      "rent_nis": 32000,
+      "rent_per_sqm_nis": 119,
+      "kind": "asking",
+      "source_ids": [
+        "S42"
+      ],
+      "note_en": "Madlan search card."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Nofei Yam (HaGush HaGadol), mini penthouse, floor 3",
+      "where_he": "נופי ים (הגוש הגדול), מיני פנטהאוז, קומה 3",
+      "rooms": "4",
+      "sqm": 150,
+      "rent_nis": 30000,
+      "rent_per_sqm_nis": 200,
+      "kind": "asking",
+      "source_ids": [
+        "S42"
+      ],
+      "note_en": "Madlan search card."
+    },
+    {
+      "date": "2026-09-16",
+      "where_en": "Kochav HaTzafon, mini penthouse",
+      "where_he": "כוכב הצפון, מיני פנטהאוז",
+      "rooms": "5.5",
+      "sqm": 280,
+      "rent_nis": 37500,
+      "rent_per_sqm_nis": 134,
+      "kind": "asking",
+      "source_ids": [
+        "S43"
+      ],
+      "note_en": "From the earlier project research of Madlan's Kochav HaTzafon rentals; not re-opened in this session."
+    }
+  ],
+  "costs": [
+    {
+      "item_en": "Current asking rent",
+      "item_he": "שכר דירה מבוקש כעת",
+      "value_en": "NIS 27,000 per month, conditional on 12 months paid upfront",
+      "value_he": "27,000 ש״ח לחודש, בתנאי תשלום 12 חודשים מראש",
+      "basis": "broker",
+      "source_ids": [
+        "S92",
+        "S7"
+      ],
+      "note_en": "Yad2 payments field says 'flexible'; the rent without prepayment is not stated."
+    },
+    {
+      "item_en": "Upfront payment",
+      "item_he": "תשלום מראש",
+      "value_en": "NIS 324,000 at the start of the lease",
+      "value_he": "324,000 ש״ח בתחילת השכירות",
+      "basis": "computed",
+      "source_ids": [
+        "S92",
+        "S7"
+      ],
+      "note_en": "27,000 x 12."
+    },
+    {
+      "item_en": "Annual rent at each asking level",
+      "item_he": "שכר דירה שנתי בכל מחיר מבוקש",
+      "value_en": "NIS 324,000 at NIS 27,000; NIS 384,000 at NIS 32,000; NIS 420,000 at NIS 35,000",
+      "value_he": "324,000 ש״ח ב-27,000 ש״ח; 384,000 ש״ח ב-32,000 ש״ח; 420,000 ש״ח ב-35,000 ש״ח",
+      "basis": "computed",
+      "source_ids": [
+        "S89",
+        "S90",
+        "S92"
+      ],
+      "note_en": "Monthly asks x 12."
+    },
+    {
+      "item_en": "Rent per sqm",
+      "item_he": "שכר דירה למ״ר",
+      "value_en": "NIS 147 per sqm per month on 184 sqm; NIS 135 on 200 sqm",
+      "value_he": "147 ש״ח למ״ר לחודש לפי 184 מ״ר; 135 ש״ח לפי 200 מ״ר",
+      "basis": "computed",
+      "source_ids": [
+        "S90",
+        "S7"
+      ],
+      "note_en": "27,000 / 184 = 146.7; 27,000 / 200 = 135. At the April ask of NIS 35,000 it was NIS 190 on 184 sqm."
+    },
+    {
+      "item_en": "Rent reduction since April 2026",
+      "item_he": "הפחתת שכר הדירה מאז אפריל 2026",
+      "value_en": "From NIS 35,000 (2026-04-19) to NIS 32,000 (2026-05-28) to NIS 27,000 (2026-08-06), about 22.9% lower",
+      "value_he": "מ-35,000 ש״ח (19.4.2026) ל-32,000 ש״ח (28.5.2026) ול-27,000 ש״ח (6.8.2026), ירידה של כ-22.9%",
+      "basis": "computed",
+      "source_ids": [
+        "S89",
+        "S90",
+        "S92"
+      ],
+      "note_en": "(35,000 - 27,000) / 35,000. The last step also added the prepayment condition."
+    },
+    {
+      "item_en": "Va'ad bayit",
+      "item_he": "ועד בית",
+      "value_en": "NIS 1,400 per month (NIS 16,800 per year)",
+      "value_he": "1,400 ש״ח לחודש (16,800 ש״ח לשנה)",
+      "basis": "broker",
+      "source_ids": [
+        "S7",
+        "S8"
+      ],
+      "note_en": "Annual computed: 1,400 x 12. A similar double-height duplex in Gimel HaHadasha lists NIS 1,300 (S55)."
+    },
+    {
+      "item_en": "Arnona illustration from the 2026 rate table",
+      "item_he": "המחשת ארנונה לפי טבלת התעריפים 2026",
+      "value_en": "About NIS 25,686 per year (NIS 4,281 per two months) in zone 1, or NIS 20,052 per year (NIS 3,342 per two months) in zone 2",
+      "value_he": "כ-25,686 ש״ח לשנה (4,281 ש״ח לחודשיים) באזור 1, או 20,052 ש״ח לשנה (3,342 ש״ח לחודשיים) באזור 2",
+      "basis": "computed",
+      "source_ids": [
+        "S60",
+        "S62",
+        "S55"
+      ],
+      "note_en": "184 x NIS 139.60 and 184 x NIS 108.98 (newest building code, over 140 sqm). Zone unverified, and it is unclear whether the higher rate applies to the whole unit. For comparison, a 160 sqm plus 25 sqm double-height duplex in Gimel HaHadasha lists arnona of NIS 3,500 per two months (NIS 21,000 per year)."
+    },
+    {
+      "item_en": "Estimated monthly outlay",
+      "item_he": "הוצאה חודשית משוערת",
+      "value_en": "About NIS 30,071 to 30,541 (rent, va'ad bayit and arnona)",
+      "value_he": "כ-30,071 עד 30,541 ש״ח (שכר דירה, ועד בית וארנונה)",
+      "basis": "computed",
+      "source_ids": [
+        "S92",
+        "S7",
+        "S60"
+      ],
+      "note_en": "27,000 + 1,400 + arnona of 20,052 / 12 or 25,686 / 12. Arnona zone unverified; assumes the tenant pays va'ad bayit and arnona, which the listings do not state."
+    },
+    {
+      "item_en": "Brokerage fee if charged",
+      "item_he": "דמי תיווך אם ייגבו",
+      "value_en": "About NIS 31,860 (one month's rent plus 18% VAT)",
+      "value_he": "כ-31,860 ש״ח (חודש שכירות ומע״מ 18%)",
+      "basis": "computed",
+      "source_ids": [
+        "S92",
+        "S68"
+      ],
+      "note_en": "The broker's no-fee offer covered leases closed in August 2026. One month plus VAT is the typical fee per NBN; 27,000 x 1.18."
+    },
+    {
+      "item_en": "Security cap if the Fair Rental chapter applies",
+      "item_he": "תקרת בטוחות אם חל פרק השכירות ההוגנת",
+      "value_en": "NIS 81,000 (lower of 3 months' rent or one third of the rent for a 12-month lease)",
+      "value_he": "81,000 ש״ח (הנמוך מבין 3 חודשי שכירות לבין שליש משכר הדירה לתקופת חוזה של 12 חודשים)",
+      "basis": "computed",
+      "source_ids": [
+        "S68",
+        "S78"
+      ],
+      "note_en": "3 x 27,000 = 81,000 against 324,000 / 3 = 108,000. The chapter is commonly described as not applying to rents above NIS 20,000 a month; that threshold was not verified."
+    }
+  ],
+  "risks": [
+    {
+      "en": "Construction around the building for years: plan 3700 infrastructure and housing on the land toward the sea, Sde Dov to the south (most apartments due about 2029-2032), Green Line works (southern section 2028, full line 2030), and possibly the Eliyahu Berlin 3 project until about 2028.",
+      "he": "בנייה סביב הבניין במשך שנים: תשתיות ומגורים של תכנית 3700 בשטח שלכיוון הים, רובע שדה דב מדרום (רוב הדירות צפויות בערך ב-2029-2032), עבודות הקו הירוק (הקטע הדרומי ב-2028 והקו המלא ב-2030), ואולי גם פרויקט אליהו ברלין 3 עד כ-2028.",
+      "source_ids": [
+        "S24",
+        "S28",
+        "S27",
+        "S14"
+      ]
+    },
+    {
+      "en": "The 'first building to the sea' position is not protected: plan 3700 allows housing on the land between Tzukei Aviv and the sea, and when Migdalei Ne'eman owners claimed about NIS 71 million for loss of value and views from plan 3700, the appeals committee found no damage proven.",
+      "he": "המיקום כ״בניין ראשון לים״ אינו מוגן: תכנית 3700 מאפשרת מגורים בשטח שבין צוקי אביב לים, וכאשר בעלי דירות במגדלי נאמן תבעו כ-71 מיליון ש״ח בגין ירידת ערך ופגיעה בנוף בשל התכנית, ועדת הערר קבעה שלא הוכח נזק.",
+      "source_ids": [
+        "S23",
+        "S30"
+      ]
+    },
+    {
+      "en": "Building records conflict: Madlan's project record for Eliyahu Berlin 5-7 still shows initial planning with completion in early 2028, listing building years range from 2021 to 2023, and the developer, contractor and Tofes 4 date were not found.",
+      "he": "סתירות ברשומות הבניין: רשומת הפרויקט של אליהו ברלין 5-7 במדלן עדיין מציגה תכנון ראשוני עם צפי סיום בתחילת 2028, שנות הבנייה במודעות נעות בין 2021 ל-2023, והיזם, הקבלן ומועד טופס 4 לא אותרו.",
+      "source_ids": [
+        "S13",
+        "S1",
+        "S4",
+        "S6"
+      ]
+    },
+    {
+      "en": "Price softness: the Tzukei Aviv median price per sqm fell about 10-12% in two years, Bizportal expects the roughly 16,000 Sde Dov apartments to hold back prices, and the CBS resale index for Tel Aviv fell 2.0% in Q2 2026.",
+      "he": "חולשת מחירים: המחיר החציוני למ״ר בצוקי אביב ירד בכ-10-12% בשנתיים, בביזפורטל מעריכים שכ-16 אלף הדירות בשדה דב יבלמו את המחירים, ומדד הדירות יד שנייה של הלמ״ס בתל אביב ירד ב-2.0% ברבעון השני של 2026.",
+      "source_ids": [
+        "S19",
+        "S71"
+      ]
+    },
+    {
+      "en": "Defect history on the same street: residents of the 2012 Prestige project needed a lawsuit to recover about NIS 950,000 for common-area defects, and that project's contractor entered insolvency proceedings in 2019. Check who stands behind this building's warranty.",
+      "he": "היסטוריית ליקויים באותו רחוב: דיירי פרויקט פרסטיז׳ מ-2012 נזקקו לתביעה כדי לקבל כ-950 אלף ש״ח בגין ליקויים ברכוש המשותף, וקבלן הביצוע שם נכנס להליכי חדלות פירעון ב-2019. יש לבדוק מי עומד מאחורי האחריות בבניין זה.",
+      "source_ids": [
+        "S18"
+      ]
+    },
+    {
+      "en": "Cliff and coastal setback not verified: no geotechnical, coastal-committee or setback information was found for the building.",
+      "he": "מצוק ומרחק מקו החוף לא אומתו: לא נמצא מידע גיאוטכני, מידע מהוועדה לשמירה על הסביבה החופית או מידע על קו הבניין מהחוף עבור הבניין.",
+      "source_ids": []
+    },
+    {
+      "en": "Prepayment exposure: paying NIS 324,000 upfront leaves the tenant exposed for a year to the landlord's credit and title risks (a sale, a mortgage enforcement or a dispute). Protection depends entirely on the contract.",
+      "he": "חשיפה בתשלום מראש: תשלום של 324,000 ש״ח מראש חושף את השוכר למשך שנה לסיכוני האשראי והבעלות של המשכיר (מכירה, מימוש משכנתה או סכסוך). ההגנה תלויה כולה בחוזה.",
+      "source_ids": [
+        "S92",
+        "S7"
+      ]
+    },
+    {
+      "en": "Statutory protections may not apply: at NIS 27,000 a month the lease is likely above the NIS 20,000 threshold commonly cited for the Fair Rental chapter (not verified), so security caps, repair deadlines and habitability duties would rest on the lease terms.",
+      "he": "ייתכן שההגנות בחוק לא יחולו: בשכר דירה של 27,000 ש״ח לחודש החוזה צפוי להיות מעל הרף של 20,000 ש״ח המקובל לפרק השכירות ההוגנת (לא אומת), ולכן תקרת הבטוחות, מועדי התיקון וחובות ההתאמה למגורים ייקבעו לפי החוזה.",
+      "source_ids": [
+        "S68",
+        "S78"
+      ]
+    },
+    {
+      "en": "A never-occupied unit may still show snagging and defects in its first year, and a unit that is 'new from contractor' may be held by the developer; the landlord's identity and Tofes 4 should be confirmed.",
+      "he": "בדירה שלא גרו בה עדיין עלולים להתגלות ליקויים בשנה הראשונה, ודירה ״חדשה מקבלן״ עשויה להיות בידי היזם; יש לוודא את זהות המשכיר ואת טופס 4.",
+      "source_ids": [
+        "S7"
+      ]
+    },
+    {
+      "en": "Views: plan 3700 buildings of up to 8 floors (as quoted by Globes) would sit below a floor 8 unit, but the detailed plan for the land directly west was not checked, and towers of up to 45 floors are planned in Sde Dov and possible in Nofei Yam North.",
+      "he": "נוף: מבנים של עד 8 קומות לפי תכנית 3700 (כפי שצוטט בגלובס) יהיו נמוכים מדירה בקומה 8, אך התכנית המפורטת לשטח שממערב לא נבדקה, ומגדלים של עד 45 קומות מתוכננים בשדה דב ואפשריים בנופי ים צפון.",
+      "source_ids": [
+        "S23",
+        "S29",
+        "S74"
+      ]
+    },
+    {
+      "en": "Rent level: the ask fell about 22.9% in four months. Similar Gimel HaHadasha duplexes of about 200 sqm are advertised at NIS 27,000 without a stated prepayment, and a furnished 160 sqm double-height duplex at NIS 22,000, so NIS 27,000 with a year upfront is at the top of the local range.",
+      "he": "רמת שכר הדירה: המחיר המבוקש ירד בכ-22.9% בארבעה חודשים. דופלקסים דומים של כ-200 מ״ר בג׳ החדשה מוצעים ב-27,000 ש״ח בלי תנאי תשלום מראש שצוין, ודופלקס מרוהט בחלל כפול של 160 מ״ר ב-22,000 ש״ח, כך ש-27,000 ש״ח עם שנה מראש נמצא בקצה העליון של הטווח המקומי.",
+      "source_ids": [
+        "S89",
+        "S92",
+        "S50",
+        "S49",
+        "S55"
+      ]
+    },
+    {
+      "en": "Listing data conflict on floor (8, 7 or 2), area (184, 190 or 200 sqm), ceiling height (6 or 7 m) and house number (7 or 10).",
+      "he": "נתוני המודעות סותרים לגבי הקומה (8, 7 או 2), השטח (184, 190 או 200 מ״ר), גובה התקרה (6 או 7 מ׳) ומספר הבית (7 או 10).",
+      "source_ids": [
+        "S6",
+        "S7",
+        "S9",
+        "S11"
+      ]
+    }
+  ],
+  "buyer_or_renter_questions": [
+    {
+      "en": "Is NIS 27,000 available without paying 12 months upfront, and what is the monthly rent with normal monthly or quarterly payments?",
+      "he": "האם 27,000 ש״ח אפשרי בלי תשלום 12 חודשים מראש, ומהו שכר הדירה בתשלומים חודשיים או רבעוניים רגילים?"
+    },
+    {
+      "en": "Who is the landlord (developer or private owner), and does a land registry or developer record show a mortgage, lien or caveat on the unit?",
+      "he": "מי המשכיר (יזם או בעלים פרטי), והאם נסח טאבו או רישום אצל היזם מראים משכנתה, שעבוד או הערת אזהרה על הדירה?"
+    },
+    {
+      "en": "How will the prepayment be protected: a bank guarantee from the landlord, a lawyer's trust account released monthly, or a lease clause for refund on early termination?",
+      "he": "איך יוגן התשלום מראש: ערבות בנקאית מהמשכיר, חשבון נאמנות אצל עורך דין שמשוחרר חודשית, או סעיף החזר במקרה של סיום מוקדם?"
+    },
+    {
+      "en": "What security does the landlord require from the tenant on top of the prepayment?",
+      "he": "אילו בטוחות נוספות דורש המשכיר מהשוכר מעבר לתשלום מראש?"
+    },
+    {
+      "en": "What is the lease term, is there an option to extend, and how will the rent be set on renewal?",
+      "he": "מהי תקופת השכירות, האם יש אופציה להארכה, ואיך ייקבע שכר הדירה בחידוש?"
+    },
+    {
+      "en": "Which floor is the unit on, what is the arnona area and bill, and what is the ceiling height?",
+      "he": "באיזו קומה הדירה, מהם שטח הארנונה והחיוב, ומהו גובה התקרה?"
+    },
+    {
+      "en": "What does the NIS 1,400 va'ad bayit cover, and does the tenant pay it and the arnona?",
+      "he": "מה כולל ועד הבית של 1,400 ש״ח, והאם השוכר משלם אותו ואת הארנונה?"
+    },
+    {
+      "en": "Has Tofes 4 been issued, and who handles defects during the lease and how fast?",
+      "he": "האם ניתן טופס 4, ומי מטפל בליקויים במהלך השכירות ותוך כמה זמן?"
+    },
+    {
+      "en": "What stays in the unit: appliances, light fixtures, window treatments, any furniture?",
+      "he": "מה נשאר בדירה: מכשירי חשמל, גופי תאורה, וילונות ותריסים, ריהוט כלשהו?"
+    },
+    {
+      "en": "Is a brokerage fee payable now that the August offer has ended, and how much?",
+      "he": "האם ייגבו דמי תיווך עכשיו כשמבצע אוגוסט הסתיים, ובאיזה סכום?"
+    },
+    {
+      "en": "Which plan 3700 compound lies west, and is construction expected there during the lease?",
+      "he": "איזה מתחם של תכנית 3700 נמצא ממערב, והאם צפויה שם בנייה בתקופת השכירות?"
+    }
+  ],
+  "gaps": [
+    {
+      "en": "Developer, architect, contractor, number of apartments, Tofes 4 and completion certificate dates for the building.",
+      "he": "יזם, אדריכל, קבלן מבצע, מספר הדירות, ומועדי טופס 4 ותעודת גמר לבניין."
+    },
+    {
+      "en": "Exact house number (listings show 7, one card shows 10) and gush / helka.",
+      "he": "מספר בית מדויק (במודעות מופיע 7, בכרטיס אחד 10) וגוש / חלקה."
+    },
+    {
+      "en": "Which plan 3700 compound lies directly west, its permitted heights, building lines and timing (mavat not reached).",
+      "he": "איזה מתחם של תכנית 3700 גובל ממערב, גובה הבנייה המותר, קווי הבניין ולוח הזמנים (אתר מבא״ת לא נבדק)."
+    },
+    {
+      "en": "Straight-line distances to Tzuk beach, Tel Baruch beach, the promenade entrance, Namir Rd, Alterman high school, University station and Ramat Aviv Mall: no coordinates could be obtained, so only broker walking times are given.",
+      "he": "מרחקים בקו אווירי לחוף הצוק, חוף תל ברוך, הכניסה לטיילת, דרך נמיר, תיכון אלתרמן, תחנת אוניברסיטה וקניון רמת אביב: לא ניתן היה להשיג קואורדינטות, ולכן מובאים רק זמני הליכה לפי המתווכת."
+    },
+    {
+      "en": "Arnona zone and building code for the address; whether the over-140 sqm rate applies to the whole unit.",
+      "he": "אזור הארנונה וסיווג הבניין לכתובת; האם התעריף מעל 140 מ״ר חל על כל שטח הדירה."
+    },
+    {
+      "en": "No 2025-2026 transaction in a new building on Eliyahu Berlin St was found; sale comps are older buildings (1998-2008) or asking prices. Transactions from Madlan should be confirmed on nadlan.gov.il.",
+      "he": "לא נמצאה עסקה מ-2025-2026 בבניין חדש ברחוב אליהו ברלין; עסקאות ההשוואה הן מבניינים ותיקים (1998-2008) או מחירים מבוקשים. עסקאות ממדלן יש לאמת באתר נדל״ן ממשלתי."
+    },
+    {
+      "en": "School registration zones for the address.",
+      "he": "אזורי רישום לבתי ספר עבור הכתובת."
+    },
+    {
+      "en": "Rent without the 12-month prepayment is not stated.",
+      "he": "שכר הדירה ללא תשלום 12 חודשים מראש לא צוין."
+    },
+    {
+      "en": "No signed-lease rent data for penthouses in Tzukei Aviv; all rent comps are asking prices.",
+      "he": "אין נתוני שכירות מחוזים חתומים לפנטהאוזים בצוקי אביב; כל השוואות השכירות הן מחירים מבוקשים."
+    },
+    {
+      "en": "Whether the Fair Rental chapter applies at this rent level was not verified.",
+      "he": "לא אומת אם פרק השכירות ההוגנת חל ברמת שכר דירה זו."
+    }
+  ],
+  "access_notes": [
+    "Web search quota was exhausted for this session, so every finding came from direct page fetches of Madlan, Yad2, project-tlv, press pages and pages linked from them.",
+    "Madlan pages loaded through the fetch tool, but a direct download attempt returned Madlan's bot-block page (HTTP 403), so no further attempt was made. Madlan transaction rows were read as concatenated text and parsed; each price divided by area matched Madlan's price per sqm.",
+    "The Madlan street page (street-info) for Berlin Eliyahu returned city-wide transaction rows, so it was not used. Madlan search pages expose only the first cards without JavaScript; later pages returned no cards.",
+    "Yad2 search and listing pages loaded. Yad2 feature icon lists appeared identical across listings, so only explicit fields (price, rooms, floor, size, condition, va'ad, arnona, description, date) were used. Yad2 dates are shown as dd/mm/yy.",
+    "nominatim.openstreetmap.org and photon.komoot.io were blocked by robots rules and overpass-api.de was rejected by the proxy (HTTP 403). Madlan and Yad2 pages exposed no coordinates, so no straight-line distances were computed.",
+    "The Hebrew Wikipedia page on the Coastal Environment Protection Law was cache-only and could not be fetched.",
+    "Guessed developer and architect domains (aura-israel.co.il, aura-invest.co.il, milbauer.co.il) do not resolve; no developer site was found.",
+    "tel-aviv.gov.il (building files, arnona order), mavat.iplan.gov.il and nadlan.gov.il were not tried again: the earlier project research found them unreachable or JavaScript-only.",
+    "Arnona rates come from the secondary Kol HaBayit table used in the project economics research, not from the official 2026 order."
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Madlan listing: Eliyahu Berlin 7, 3 rooms, NIS 4,650,000 (broker Meital Katzir, license 3131540)",
+      "url": "https://www.madlan.co.il/listings/E4SjHiZRKI8",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S2",
+      "title": "Yad2 listing: 3 rooms, floor 2/9, NIS 4,650,000 (Nadlan Al HaYam, Meital Katzir)",
+      "url": "https://www.yad2.co.il/realestate/item/tel-aviv-area/v2vxz828",
+      "published": "2026-08-04"
+    },
+    {
+      "id": "S3",
+      "title": "Yad2 listing: Eliyahu Berlin, 3 rooms, floor 3/9, 90 + 12 sqm, NIS 4,650,000 (Meital Katzir)",
+      "url": "https://www.yad2.co.il/realestate/item/tel-aviv-area/llvm094i",
+      "published": "2026-09-02"
+    },
+    {
+      "id": "S4",
+      "title": "Madlan listing: Berlin Eliyahu, 3.5 rooms, floor 3 of 9, 96 sqm, furnished, NIS 5,000,000 (Meital Katzir)",
+      "url": "https://www.madlan.co.il/listings/e6ME1FMZdMr",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S5",
+      "title": "Yad2 listing: Eliyahu Berlin, floor 2/9, 102 sqm, NIS 4,999,999, immediate yield (Meital Katzir)",
+      "url": "https://www.yad2.co.il/realestate/item/tel-aviv-area/wg76nyy7",
+      "published": "2026-07-28"
+    },
+    {
+      "id": "S6",
+      "title": "Madlan listing: Eliyahu Berlin duplex for rent, 6 rooms, 200 sqm, NIS 35,000 (Meital Katzir)",
+      "url": "https://www.madlan.co.il/listings/bWYTHP8aPf3",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S7",
+      "title": "Yad2 listing: Eliyahu Berlin penthouse for rent, 6 rooms, floor 8/9, 200 sqm, NIS 27,000 (Meital Katzir)",
+      "url": "https://www.yad2.co.il/realestate/item/tel-aviv-area/1uj9m4vf",
+      "published": "2026-08-02"
+    },
+    {
+      "id": "S8",
+      "title": "Yad2 listing: Gimel HaHadasha duplex for rent, 6 rooms, floor 8/9, 200 sqm, NIS 27,004 (Meital Katzir)",
+      "url": "https://www.yad2.co.il/realestate/item/tel-aviv-area/6vpbjgxb",
+      "published": "2026-08-02"
+    },
+    {
+      "id": "S9",
+      "title": "Madlan listing: Berlin Eliyahu 7, duplex for rent, 5 rooms, floor 7, 190 sqm, NIS 35,000 (other advertiser)",
+      "url": "https://www.madlan.co.il/listings/LlcKDGyvAvk",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S11",
+      "title": "Madlan: apartments for rent on Berlin Eliyahu St, Tel Aviv",
+      "url": "https://www.madlan.co.il/for-rent/ברלין-אליהו-תל-אביב-יפו-ישראל",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S12",
+      "title": "Madlan address page: Berlin Eliyahu 7 (nearby transactions, schools, transport notes)",
+      "url": "https://www.madlan.co.il/address/ברלין-אליהו-7-תל-אביב-יפו-ישראל",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S13",
+      "title": "Madlan project page: Eliyahu Berlin 5-7 Tel Aviv",
+      "url": "https://www.madlan.co.il/projects/%D7%90%D7%9C%D7%99%D7%94%D7%95_%D7%91%D7%A8%D7%9C%D7%99%D7%9F_5_7_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91_%D7%99%D7%A4%D7%95",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S14",
+      "title": "Madlan address page: Berlin Eliyahu 3 (new construction block)",
+      "url": "https://www.madlan.co.il/address/ברלין-אליהו-3-תל-אביב-יפו-ישראל",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S15",
+      "title": "project-tlv: Eliyahu Berlin 3 project page",
+      "url": "https://project-tlv.info/buildings/%d7%a8%d7%97%d7%95%d7%91-%d7%91%d7%a8%d7%9c%d7%99%d7%9f-%d7%90%d7%9c%d7%99%d7%94%d7%95/%d7%a4%d7%a8%d7%95%d7%99%d7%a7%d7%98-%d7%90%d7%9c%d7%99%d7%94%d7%95-%d7%91%d7%a8%d7%9c%d7%99%d7%9f-3/",
+      "published": "modified 2025-03-18"
+    },
+    {
+      "id": "S16",
+      "title": "project-tlv: Tzukei Aviv neighborhood page",
+      "url": "https://project-tlv.info/new-projects/north/tsukei-aviv/",
+      "published": "modified 2025-06-24"
+    },
+    {
+      "id": "S18",
+      "title": "Ynet: Prestige project residents on Berlin Eliyahu St awarded about NIS 950,000 for construction defects",
+      "url": "https://www.ynet.co.il/economy/article/rk9kdkhdh",
+      "published": "2023-06-30"
+    },
+    {
+      "id": "S19",
+      "title": "Bizportal: Tzukei Aviv neighborhood analysis (prices, rents, yields)",
+      "url": "https://www.bizportal.co.il/realestates/news/article/20036059",
+      "published": "2026-08-06"
+    },
+    {
+      "id": "S20",
+      "title": "Timeout: Glilot and Tzukei Aviv neighborhood guide",
+      "url": "https://timeout.co.il/%D7%92%D7%9C%D7%99%D7%9C%D7%95%D7%AA-%D7%95%D7%A6%D7%95%D7%A7%D7%99-%D7%90%D7%91%D7%99%D7%91/",
+      "published": "2018-01-08"
+    },
+    {
+      "id": "S21",
+      "title": "Walla: the coastal park promenade in north Tel Aviv opens",
+      "url": "https://travel.walla.co.il/item/3609266",
+      "published": "2023-09-14"
+    },
+    {
+      "id": "S22",
+      "title": "Timeout: the coastal park promenade in Tel Aviv",
+      "url": "https://timeout.co.il/%d7%98%d7%99%d7%99%d7%9c%d7%aa-%d7%94%d7%a4%d7%90%d7%a8%d7%a7-%d7%94%d7%97%d7%95%d7%a4%d7%99-%d7%aa%d7%9c-%d7%90%d7%91%d7%99%d7%91/",
+      "published": "2023-09-13"
+    },
+    {
+      "id": "S23",
+      "title": "Globes (Hebrew): Tel Aviv's new neighborhood (plan TA/3700) still far from realization",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001440479",
+      "published": "2023-03-15"
+    },
+    {
+      "id": "S24",
+      "title": "Globes (Hebrew): the giant plan in north Tel Aviv is stuck again",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001487019",
+      "published": "2024-08-19"
+    },
+    {
+      "id": "S25",
+      "title": "project-tlv: plan 3700 (north-west Tel Aviv) page",
+      "url": "https://project-tlv.info/urban-plans/3700-2/",
+      "published": "modified 2026-06-18"
+    },
+    {
+      "id": "S26",
+      "title": "Globes (English): Work begins on large new Tel Aviv neighborhood",
+      "url": "https://en.globes.co.il/en/article-work-begins-on-large-new-tel-aviv-neighborhood-1001448943",
+      "published": "2023-06-08"
+    },
+    {
+      "id": "S27",
+      "title": "ice.co.il: Green Line timeline and Yarkon bridge",
+      "url": "https://www.ice.co.il/realestate/news/article/1114193",
+      "published": "2026-05-25"
+    },
+    {
+      "id": "S28",
+      "title": "Calcalist: Sde Dov sales and prices",
+      "url": "https://www.calcalist.co.il/article/r12n2qiowx",
+      "published": "2026-02-24"
+    },
+    {
+      "id": "S29",
+      "title": "Nadlan Center: Sde Dov center plan, objections rejected",
+      "url": "https://www.nadlancenter.co.il/article/11492",
+      "published": "2025-02-03"
+    },
+    {
+      "id": "S30",
+      "title": "Magdilim: Migdalei Ne'eman residents' plan 3700 compensation claim rejected",
+      "url": "https://magdilim.co.il/190120260920-2/",
+      "published": "2026-01-19"
+    },
+    {
+      "id": "S31",
+      "title": "Ynet: Tzuk beach tower and hotel plan",
+      "url": "https://www.ynet.co.il/economy/article/r1Kes8AlO",
+      "published": "2021-02-08"
+    },
+    {
+      "id": "S32",
+      "title": "tlvonline: Tzuk beach hotel and residential tower design approved",
+      "url": "https://tlvonline.co.il/%d7%9e%d7%9c%d7%95%d7%9f-%d7%95%d7%9e%d7%92%d7%93%d7%9c-%d7%9e%d7%92%d7%95%d7%a8%d7%99%d7%9d-%d7%91%d7%97%d7%95%d7%a3-%d7%94%d7%a6%d7%95%d7%a7/",
+      "published": "2025-06-29"
+    },
+    {
+      "id": "S33",
+      "title": "tlvonline: north Tel Aviv neighborhoods to be linked by a bridge over Namir Rd",
+      "url": "https://tlvonline.co.il/שכונות-צפון-תל-אביב-יחוברו-בגשר/",
+      "published": "2025-09-17"
+    },
+    {
+      "id": "S34",
+      "title": "tlvonline: pedestrian bridge over Namir Rd to be built",
+      "url": "https://tlvonline.co.il/יוקם-גשר-להולכי-רגל-בדרך-נמיר/",
+      "published": "2022-08-14"
+    },
+    {
+      "id": "S35",
+      "title": "Madlan area page: Tzukei Aviv, Tel Aviv (schools, light rail note)",
+      "url": "https://www.madlan.co.il/area-info/שכונה-צוקי-אביב-תל-אביב-יפו-ישראל",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S36",
+      "title": "project-tlv: Nathan Alterman high school, Tzukei Aviv",
+      "url": "https://project-tlv.info/new-projects/north/tsukei-aviv/high-school/",
+      "published": "modified 2025-01-15"
+    },
+    {
+      "id": "S37",
+      "title": "project-tlv: Israel Railways stations in Tel Aviv",
+      "url": "https://project-tlv.info/places/transportation/%d7%a8%d7%9b%d7%91%d7%aa-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S39",
+      "title": "Madlan: apartments for sale in Tzukei Aviv (page 2)",
+      "url": "https://www.madlan.co.il/for-sale/שכונה-צוקי-אביב-תל-אביב-יפו-ישראל?page=2",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S41",
+      "title": "Madlan: apartments for rent in Tzukei Aviv (page 2)",
+      "url": "https://www.madlan.co.il/for-rent/שכונה-צוקי-אביב-תל-אביב-יפו-ישראל?page=2",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S42",
+      "title": "Madlan: apartments for rent in Nofei Yam (HaGush HaGadol)",
+      "url": "https://www.madlan.co.il/for-rent/שכונה-נופי-ים-הגוש-הגדול-תל-אביב-יפו-ישראל",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S43",
+      "title": "Madlan: apartments for rent in Kochav HaTzafon",
+      "url": "https://www.madlan.co.il/for-rent/שכונה-כוכב-הצפון-תל-אביב-יפו-ישראל",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S44",
+      "title": "Madlan listing: Eliyahu Berlin 11, 3 rooms, 104 sqm, NIS 5,300,000",
+      "url": "https://www.madlan.co.il/listings/NqdzeZrQt0t",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S46",
+      "title": "Madlan listing: Eliyahu Berlin 8, 4 rooms, 96 sqm, NIS 5,140,000",
+      "url": "https://www.madlan.co.il/listings/XaEMGcLpZAt",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S48",
+      "title": "Madlan listing: Eliyahu Berlin 13 (per search card), 4 rooms for rent, NIS 20,000",
+      "url": "https://www.madlan.co.il/listings/E9XyPuQSfci",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S49",
+      "title": "Madlan listing: Gimel HaHadasha duplex for rent, 5 rooms, 200 sqm + 50 sqm balcony, NIS 27,000",
+      "url": "https://www.madlan.co.il/listings/VSEBJTVJybm",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S50",
+      "title": "Madlan listing: Gimel HaHadasha duplex for rent, 6 rooms, 200 sqm + 15 sqm balcony, NIS 27,000",
+      "url": "https://www.madlan.co.il/listings/7jyuwW0DiHI",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S54",
+      "title": "Yad2 listing: Kedoshei HaShoah penthouse for rent, 220 sqm, NIS 27,000",
+      "url": "https://www.yad2.co.il/realestate/item/tel-aviv-area/vlv217lg",
+      "published": "shown as 25/07/25"
+    },
+    {
+      "id": "S55",
+      "title": "Yad2 listing: Gimel HaHadasha double-height duplex for rent, 5 rooms, 160 sqm, NIS 22,000",
+      "url": "https://www.yad2.co.il/realestate/item/tel-aviv-area/autkwj5v",
+      "published": "2026-06-14"
+    },
+    {
+      "id": "S59",
+      "title": "Yad2: apartments for sale in Azorei Chen / Gimel HaHadasha",
+      "url": "https://www.yad2.co.il/realestate/forsale?topArea=2&area=1&city=5000&neighborhood=1490",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S60",
+      "title": "Kol HaBayit: Tel Aviv arnona calculator 2026 (rates by zone and building code)",
+      "url": "https://kolhabait.com/arnona/tel-aviv",
+      "published": "updated 2026-08"
+    },
+    {
+      "id": "S62",
+      "title": "Nadlan Center: 2026 arnona increases, Tel Aviv zone-1 rates for new units",
+      "url": "https://www.nadlancenter.co.il/article/13556",
+      "published": "2025-12-28"
+    },
+    {
+      "id": "S68",
+      "title": "Nefesh B'Nefesh: renting an apartment in Israel",
+      "url": "https://www.nbn.org.il/life-in-israel/community-and-housing/buying-and-renting/renting-in-israel/",
+      "published": "updated 2025-05-07"
+    },
+    {
+      "id": "S69",
+      "title": "Walla Finance: CBS housing price index and rents, September 2026 release",
+      "url": "https://finance.walla.co.il/item/3868023",
+      "published": "2026-09-15"
+    },
+    {
+      "id": "S70",
+      "title": "Israel Hayom: CBS district price changes",
+      "url": "https://www.israelhayom.co.il/business/real-estate/article/21428241",
+      "published": "2026-09-15"
+    },
+    {
+      "id": "S71",
+      "title": "Globes: the new CBS resale price index",
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001555377",
+      "published": "2026-09-14"
+    },
+    {
+      "id": "S73",
+      "title": "Mako: most expensive neighborhoods by Madlan median price",
+      "url": "https://www.mako.co.il/finances-real-estate/Article-8533ddd4469c991027.htm",
+      "published": "2025-10-10"
+    },
+    {
+      "id": "S74",
+      "title": "tlvonline: Nofei Yam North plan",
+      "url": "https://tlvonline.co.il/תוכנית-נופי-ים-צפון/",
+      "published": "2025-03-12"
+    },
+    {
+      "id": "S75",
+      "title": "project-tlv: northern promenade and coastal park project",
+      "url": "https://project-tlv.info/places/promenade/%d7%a4%d7%a8%d7%95%d7%99%d7%a7%d7%98-%d7%94%d7%a9%d7%9c%d7%9e%d7%aa-%d7%a8%d7%a6%d7%a3-%d7%94%d7%98%d7%99%d7%99%d7%9c%d7%aa-%d7%94%d7%a6%d7%a4%d7%95%d7%a0%d7%99%d7%aa/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S76",
+      "title": "project-tlv: plan 3700 compound 1 page",
+      "url": "https://project-tlv.info/urban-plans/3700-2/%d7%a4%d7%a8%d7%95%d7%99%d7%a7%d7%98-%d7%9e%d7%aa%d7%97%d7%9d-1-%d7%aa%d7%9b%d7%a0%d7%99%d7%aa-%d7%a6%d7%a4%d7%95%d7%9f-%d7%9e%d7%a2%d7%a8%d7%91-%d7%aa%d7%9c-%d7%90%d7%91%d7%99%d7%91/",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S77",
+      "title": "Globes (English): Slow progress in huge north-west Tel Aviv plan",
+      "url": "https://en.globes.co.il/en/article-slow-progress-in-huge-northwest-tel-aviv-plan-1001441423",
+      "published": "2023-03-15"
+    },
+    {
+      "id": "S78",
+      "title": "Hebrew Wikipedia: Rental and Borrowing Law (as cited in project economics research)",
+      "url": "https://he.wikipedia.org/wiki/%D7%97%D7%95%D7%A7_%D7%94%D7%A9%D7%9B%D7%99%D7%A8%D7%95%D7%AA_%D7%95%D7%94%D7%A9%D7%90%D7%99%D7%9C%D7%94",
+      "published": "accessed 2026-09-16"
+    },
+    {
+      "id": "S81",
+      "title": "Instagram, Meital Katzir: Berlin Street | North Tel Aviv | JUST LISTED",
+      "url": "https://www.instagram.com/reel/DUihlb9CJxh/",
+      "published": "2026-02-09"
+    },
+    {
+      "id": "S84",
+      "title": "Instagram, Meital Katzir: 3.5 rooms, NIS 4,999,000, rented at NIS 15,000, fee NIS 600",
+      "url": "https://www.instagram.com/reel/DRRoRx4DhAD/",
+      "published": "2025-11-20"
+    },
+    {
+      "id": "S87",
+      "title": "Instagram, Meital Katzir: new gym in building, fee NIS 600",
+      "url": "https://www.instagram.com/p/Dcu5qm5CLjq/",
+      "published": "2026-08-31"
+    },
+    {
+      "id": "S88",
+      "title": "Instagram, Meital Katzir: mini penthouse, about 200 sqm built, entry 1/6",
+      "url": "https://www.instagram.com/p/DW7CqiTjDKq/",
+      "published": "2026-04-09"
+    },
+    {
+      "id": "S89",
+      "title": "Instagram, Meital Katzir: mini penthouse for rent, NIS 35,000, 5 minute walk",
+      "url": "https://www.instagram.com/reel/DXUrYIKCJJ-/",
+      "published": "2026-04-19"
+    },
+    {
+      "id": "S90",
+      "title": "Instagram, Meital Katzir: 184 sqm per arnona, 20 sqm balcony, NIS 32,000",
+      "url": "https://www.instagram.com/p/DY5LagoCF-g/",
+      "published": "2026-05-28"
+    },
+    {
+      "id": "S91",
+      "title": "Instagram, Meital Katzir: 7 minute walk, 184 sqm arnona, new gym and lobby",
+      "url": "https://www.instagram.com/reel/DZJn9Kco44Q/",
+      "published": "2026-06-03"
+    },
+    {
+      "id": "S92",
+      "title": "Instagram, Meital Katzir: NIS 27,000 with one year upfront, no brokerage fee in August",
+      "url": "https://www.instagram.com/reel/Dbshp6PEkH4/",
+      "published": "2026-08-06"
+    },
+    {
+      "id": "S93",
+      "title": "Instagram, Meital Katzir: 3.5 rooms, first building to the sea, fee NIS 600, lobby and gym",
+      "url": "https://www.instagram.com/reel/DZFJEbHDsPb/",
+      "published": "2026-06-02"
+    }
+  ]
+}

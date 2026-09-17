@@ -1,0 +1,159 @@
+{
+ "id": "L07", "deal": "sale", "ptype": "mini_penthouse", "plate": "mini_penthouse", "status": "active", "last_post": "2026-08-24",
+ "rooms": 5, "price": 18000000, "price_src": ["S1", "S2"], "built": 190, "balcony": 80,
+ "city": {"he": "תל אביב-יפו", "en": "Tel Aviv-Yafo"},
+ "area": {"he": "כוכב הצפון", "en": "Kochav HaTzafon"},
+ "plate_name": {"he": "כוכב הצפון, קומה 11", "en": "Kochav HaTzafon, floor 11"},
+ "kicker": {"he": "למכירה · כוכב הצפון, צפון תל אביב", "en": "For sale · Kochav HaTzafon, north Tel Aviv"},
+ "title": {"he": "מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון", "en": "New Mini Penthouse with 80 sqm of Terraces, Kochav HaTzafon"},
+ "dek": {"he": "5 חדרים על כ-190 מ״ר בנוי ועוד 76 עד 80 מ״ר מרפסות, בקומה 11 מתוך 12 בבניין בוטיק חדש. נוף פתוח לכל תל אביב, במחיר מבוקש של 18,000,000 ש״ח.", "en": "Five rooms on about 190 sqm built with another 76 to 80 sqm of terraces, on floor 11 of 12 in a new boutique building. Open views across Tel Aviv, asking NIS 18,000,000."},
+ "chips": [
+  {"he": "בלעדיות: מיטל קציר, נדל״ן על הים", "en": "Exclusive: Meital Katzir, Real Estate by the Sea", "sea": true},
+  {"he": "בניין בוטיק חדש", "en": "New boutique building"},
+  {"he": "אגף ילדים עם מרפסת לים", "en": "Children's wing with a sea-view balcony"}
+ ],
+ "facts": [
+  {"label": {"he": "חדרים", "en": "Rooms"}, "value": {"he": "5", "en": "5"}, "basis": "broker"},
+  {"label": {"he": "שטח בנוי", "en": "Built area"}, "value": {"he": "כ-190 מ״ר", "en": "about 190 sqm"}, "basis": "broker"},
+  {"label": {"he": "מרפסות", "en": "Terraces"}, "value": {"he": "76 עד 80 מ״ר", "en": "76 to 80 sqm"}, "basis": "broker"},
+  {"label": {"he": "קומה", "en": "Floor"}, "value": {"he": "11 מתוך 12", "en": "11 of 12"}, "basis": "broker"},
+  {"label": {"he": "כיווני אוויר", "en": "Exposures"}, "value": {"he": "3 עד 4", "en": "3 to 4"}, "basis": "broker"},
+  {"label": {"he": "חניות", "en": "Parking"}, "value": {"he": "2", "en": "2"}, "basis": "broker"},
+  {"label": {"he": "מחסן", "en": "Storage"}, "value": {"he": "יש", "en": "Yes"}, "basis": "broker"},
+  {"label": {"he": "ממ״ד ומעלית", "en": "Safe room, lift"}, "value": {"he": "יש", "en": "Yes"}, "basis": "broker"}
+ ],
+ "price_rows": [
+  {"dt": {"he": "למ״ר משוקלל, מרפסות בשליש", "en": "Per weighted sqm, terraces at one third"}, "dd": {"he": "83,077 ₪", "en": "NIS 83,077"}}
+ ],
+ "story_h2": {"he": "קומה 11, שני כיוונים של נוף, ובית בגודל של וילה", "en": "Floor 11, views both ways, and the scale of a house"},
+ "story": {
+  "he": [
+   "מיני פנטהאוז חדש בקומה 11 מתוך 12, בבניין בוטיק בכוכב הצפון, השכונה שבין פארק הירקון לרמת אביב.[[S1,S2,S6]] 5 חדרים על כ-190 מ״ר בנוי, ולצדם מרפסות בשטח כולל של 76 עד 80 מ״ר עם נוף פתוח לכל תל אביב.[[S43,S44]] המחיר המבוקש במודעות המשווקת במדלן הוא 18,000,000 ש״ח.[[S1,S2]]",
+   "התכנון כולל יחידת הורים מרווחת, אגף ילדים עם מרפסת הצופה לים, סלון גדול ומטבח מאובזר עם מקרר אינטגרלי מוסתר. נגרות בהתאמה אישית עוברת בכל הבית, והמיזוג במערכת רב-מפצלית (VRF).[[S43,S44,S50]] לדירה 2 חניות ומחסן, ובמודעות מסומנים גם ממ״ד ומעלית.[[S1,S2]]",
+   "בבניין חדר כושר לדיירים.[[S43]] מקצה השכונה נבנה מקיץ 2026 גשר הולכי רגל ואופניים באורך של כ-170 מ׳ מרחוב לוי אשכול אל פארק הירקון, שצפוי להיפתח ב-2027.[[S7]] השטחים, מספר כיווני האוויר ושנת הבנייה אינם אחידים במודעות השונות, ולכן יש לאמת אותם בתשריט ובהיתר.[[S49,S1,S2]]"
+  ],
+  "en": [
+   "A new mini penthouse on floor 11 of 12, in a boutique building in Kochav HaTzafon, the neighborhood between Yarkon Park and Ramat Aviv.[[S1,S2,S6]] Five rooms on about 190 sqm built, with terraces totaling 76 to 80 sqm and open views across Tel Aviv.[[S43,S44]] The broker's Madlan listings ask NIS 18,000,000.[[S1,S2]]",
+   "The plan includes a generous master suite, a children's wing with a sea-view balcony, a large living room and an equipped kitchen with a concealed integrated refrigerator. Custom joinery runs through the home, and air conditioning is a VRF multi-split system.[[S43,S44,S50]] Two parking spaces and a storage room come with the unit, and the listings also mark a safe room and a lift.[[S1,S2]]",
+   "The building has a residents' gym.[[S43]] At the edge of the neighborhood, a pedestrian and cycle bridge of about 170 m from Levi Eshkol Street into Yarkon Park has been under construction since summer 2026 and is expected to open in 2027.[[S7]] Areas, exposures and building year differ between the listings, so check them against the unit plan and the permit.[[S49,S1,S2]]"
+  ]
+ },
+ "features": {
+  "he": [["קומה 11 מתוך 12", "נוף פתוח לכל תל אביב"], ["כ-190 מ״ר בנוי", "5 חדרים; 197 מ״ר באחת המודעות"], ["76 עד 80 מ״ר מרפסות", "כולל מרפסת לים באגף הילדים"], ["מיזוג רב-מפצלי (VRF)", "ומטבח עם מקרר אינטגרלי מוסתר"], ["2 חניות ומחסן", "מחסן של 14 מ״ר באחת המודעות"], ["גשר לפארק הירקון", "כ-170 מ׳, צפוי להיפתח ב-2027[[S7]]"]],
+  "en": [["Floor 11 of 12", "Open views across Tel Aviv"], ["About 190 sqm built", "Five rooms; 197 sqm in one listing"], ["76 to 80 sqm of terraces", "Including a sea-view balcony off the children's wing"], ["VRF air conditioning", "And a kitchen with a concealed integrated refrigerator"], ["Two parking spaces and storage", "A 14 sqm storage room in one listing"], ["A bridge into Yarkon Park", "About 170 m, expected to open in 2027[[S7]]"]]
+ },
+ "spec": [
+  {"title": {"he": "הדירה", "en": "The residence"}, "rows": [
+   {"dt": {"he": "סוג וחדרים", "en": "Type and rooms"}, "dd": {"he": "מיני פנטהאוז, 5 חדרים", "en": "Mini penthouse, 5 rooms (Israeli count)"}, "basis": "broker", "src": ["S43", "S1"]},
+   {"dt": {"he": "שטח בנוי", "en": "Built area"}, "dd": {"he": "190 עד 200 מ״ר באינסטגרם; 190 ו-197 מ״ר בשתי מודעות מדלן", "en": "190 to 200 sqm on Instagram; 190 and 197 sqm in the two Madlan listings"}, "basis": "broker", "src": ["S43", "S44", "S1", "S2"]},
+   {"dt": {"he": "מרפסות", "en": "Terraces"}, "dd": {"he": "76 עד 80 מ״ר בסך הכול", "en": "76 to 80 sqm in total"}, "basis": "broker", "src": ["S43", "S44"]},
+   {"dt": {"he": "קומה", "en": "Floor"}, "dd": {"he": "11 מתוך 12", "en": "11 of 12"}, "basis": "broker", "src": ["S1", "S2"]},
+   {"dt": {"he": "כיווני אוויר", "en": "Exposures"}, "dd": {"he": "3 או 4 (המודעות אינן אחידות)", "en": "3 or 4 (the listings differ)"}, "basis": "broker", "src": ["S50", "S49"]},
+   {"dt": {"he": "חלוקה", "en": "Layout"}, "dd": {"he": "יחידת הורים, אגף ילדים עם מרפסת לים, סלון גדול", "en": "Master suite, children's wing with sea-view balcony, large living room"}, "basis": "broker", "src": ["S43"]}
+  ]},
+  {"title": {"he": "מפרט ושירותים", "en": "Specification and services"}, "rows": [
+   {"dt": {"he": "מטבח", "en": "Kitchen"}, "dd": {"he": "מטבח מאובזר עם מוצרי חשמל ומקרר אינטגרלי מוסתר", "en": "Equipped kitchen with appliances and a concealed integrated refrigerator"}, "basis": "broker", "src": ["S50"]},
+   {"dt": {"he": "מיזוג", "en": "Air conditioning"}, "dd": {"he": "מערכת רב-מפצלית (VRF)", "en": "VRF multi-split system"}, "basis": "broker", "src": ["S44"]},
+   {"dt": {"he": "נגרות", "en": "Joinery"}, "dd": {"he": "נגרות בהתאמה אישית", "en": "Custom joinery"}, "basis": "broker", "src": ["S43"]},
+   {"dt": {"he": "חניה ומחסן", "en": "Parking and storage"}, "dd": {"he": "2 חניות ומחסן (14 מ״ר באחת המודעות)", "en": "2 parking spaces and a storage room (14 sqm in one listing)"}, "basis": "broker", "src": ["S1", "S2"]},
+   {"dt": {"he": "ממ״ד ומעלית", "en": "Safe room and lift"}, "dd": {"he": "מסומנים בשתי המודעות", "en": "Marked on both listings"}, "basis": "broker", "src": ["S1", "S2"]}
+  ]}
+ ],
+ "building_h2": {"he": "בניין בוטיק חדש בן 12 קומות", "en": "A new twelve-floor boutique building"},
+ "building_lead": {"he": "כתובת הבניין, היזם ודמי הניהול לא פורסמו, ויש לקבל אותם מהמשווקת לפני סיור.", "en": "The building's address, developer and management fee were not published and should be obtained from the broker before a viewing."},
+ "building": [
+  {"dt": {"he": "מיקום", "en": "Location"}, "dd": {"he": "כוכב הצפון, תל אביב-יפו; הרחוב לא פורסם", "en": "Kochav HaTzafon, Tel Aviv-Yafo; street not published"}, "src": ["S1", "S2"]},
+  {"dt": {"he": "קומות", "en": "Floors"}, "dd": {"he": "12", "en": "12"}, "basis": "broker", "src": ["S1", "S2"]},
+  {"dt": {"he": "שנת בנייה", "en": "Year built"}, "dd": {"he": "2022 או 2023 לפי שדות המודעות", "en": "2022 or 2023 per the listing fields"}, "basis": "broker", "src": ["S1", "S2"]},
+  {"dt": {"he": "שירותים לדיירים", "en": "Resident services"}, "dd": {"he": "חדר כושר", "en": "Gym"}, "basis": "broker", "src": ["S43"]},
+  {"dt": {"he": "מחיר בדולרים", "en": "Price in US dollars"}, "dd": {"he": "כ-5.9 מיליון דולר לפי השער היציג", "en": "About USD 5.9 million at the representative rate"}, "basis": "calc", "src": ["G_FX"]}
+ ],
+ "location_h2": {"he": "כוכב הצפון: הפארק מדרום, שדה דב מצפון", "en": "Kochav HaTzafon, the park to the south and Sde Dov to the north"},
+ "location": {
+  "he": [
+   "כוכב הצפון תחומה בשדרות רוקח ופארק הירקון מדרום, בדרך נמיר ממזרח, ברחוב ש״י עגנון ורובע שדה דב מצפון ובאבן גבירול ממערב.[[S6]] השכונה פותחה בעיקר בשנות ה-90 וה-2000 כבלוקים של 8 עד 12 קומות סביב פארק מרכזי, לצד מגדלי מגורים ובנייני בוטיק.[[S4,S46]] לפי נתוני מדלן שפורסמו במאקו, מחיר העסקה החציוני בה בין 2023 לאוקטובר 2025 היה 6.1 מיליון ש״ח, הרביעי בגובהו בישראל.[[S31]]",
+   "פארק הירקון, כ-3,750 דונם כולל הספורטק, גובל בשכונה לאורך שדרות רוקח, ונמל תל אביב הוא מתחם פנאי של 220 דונם בקצה הפארק.[[S26,S27]] בפינת רוקח ונמיר מתוכנן פרויקט סמינר הקיבוצים, עם שלושה מגדלי מגורים בני 28 קומות ו-450 דירות.[[S11]]",
+   "הקו הירוק של הרכבת הקלה צפוי לפעול בקטעו הדרומי ב-2028 ובמלואו ב-2030, עם תחנת רדינג על הגשר החדש מצפון לשדרות רוקח.[[S10]] גשר הולכי רגל ואופניים חדש מעל הירקון, באורך 180 מ׳, נפתח במאי 2026.[[S10]]"
+  ],
+  "en": [
+   "Kochav HaTzafon is bounded by Rokach Boulevard and Yarkon Park to the south, Namir Road to the east, Shai Agnon Street and the Sde Dov district to the north, and Ibn Gabirol to the west.[[S6]] It was built mostly in the 1990s and 2000s as 8 to 12-floor blocks around a central park, alongside residential towers and boutique buildings.[[S4,S46]] Madlan data published by Mako put its median deal from 2023 to October 2025 at NIS 6.1 million, the fourth highest in Israel.[[S31]]",
+   "Yarkon Park, about 3,750 dunams including the Sportek, borders the neighborhood along Rokach Boulevard, and Tel Aviv Port is a 220-dunam leisure complex at the park's end.[[S26,S27]] At Rokach and Namir, the Seminar HaKibbutzim project plans three 28-floor residential towers with 450 apartments.[[S11]]",
+   "The Green Line light rail is expected to open its southern section in 2028 and the full line in 2030, with Reading station on the new bridge north of Rokach Boulevard.[[S10]] A new 180 m pedestrian and cycle bridge over the Yarkon opened in May 2026.[[S10]]"
+  ]
+ },
+ "future_override": {
+  "0": {"title": {"he": "גשר רוקח ולוי אשכול לפארק הירקון", "en": "The Rokach and Levi Eshkol bridge into Yarkon Park"}, "impact": {"he": "חיבור ישיר להולכי רגל ולרוכבי אופניים מרחוב לוי אשכול לפארק החל מ-2027, עם עבודות בשדרות רוקח עד אז. התכנית אושרה בינואר 2022 עם הקצאה של 35 מיליון ש״ח.", "en": "A direct walking and cycling link from Levi Eshkol Street into the park from 2027, with works on Rokach Boulevard until then. The plan was approved in January 2022 with NIS 35 million allocated."}},
+  "2": {"impact": {"he": "בתכנית המרכז, שההתנגדויות לה נדחו ב-3.2.2025, 7,128 יחידות דיור במגדלים של 20 ו-45 קומות; רוב הדירות ברובע צפויות בתוך 3 עד 6 שנים. מגדלים מצפון עשויים לשנות את קו הרקיע ואת הנוף לכיוון הים.", "en": "The center plan, whose objections were rejected on 3 February 2025, has 7,128 homes in towers of 20 and 45 floors; most district apartments are expected within 3 to 6 years. Towers to the north may change the skyline and the view toward the sea."}}
+ },
+ "numbers": {
+  "h2": {"he": "18,000,000 ש״ח, בחשבון של רוכש", "en": "NIS 18,000,000, as a buyer does the math"},
+  "lead": {"he": "המחיר המבוקש במודעות המשווקת במדלן, מחושב לפי כללי המס והמימון שפורסמו עד 16.9.2026.", "en": "The asking price in the broker's Madlan listings, computed against tax and lending rules published up to 16 September 2026."},
+  "median_psqm": {"value": 51000, "label": {"he": "ממוצע למ״ר, כוכב הצפון", "en": "Average per sqm, Kochav HaTzafon"}, "small": {"he": "49,000 עד 51,000 ₪, ביזפורטל, יולי 2026", "en": "NIS 49,000 to 51,000, Bizportal, July 2026"}, "src": ["S4"]},
+  "bars": {"title": {"he": "מחיר למ״ר: הדירה מול השוק", "en": "Price per sqm against the market"}, "items": [
+   {"label": {"he": "הדירה, על 190 מ״ר בנוי", "en": "This home, on 190 sqm built"}, "value": 94737, "this": true},
+   {"label": {"he": "הדירה, מרפסות בשליש משטחן", "en": "This home, terraces at one third"}, "value": 83077, "this": true},
+   {"label": {"he": "פרויקטים חדשים בשכונה, עד", "en": "New projects in the neighborhood, up to"}, "value": 95000, "value_text": {"he": "90,000 עד 95,000 ₪", "en": "NIS 90,000 to 95,000"}, "src": ["S4"]},
+   {"label": {"he": "עסקה: סמינר הקיבוצים, 4 חדרים, יולי 2026", "en": "Sale: Seminar HaKibbutzim, 4 rooms, July 2026"}, "value": 75793, "src": ["S5"]},
+   {"label": {"he": "עסקה: ש״י עגנון 40, 5 חדרים, 2026", "en": "Sale: Shai Agnon 40, 5 rooms, 2026"}, "value": 75281, "src": ["S4"]},
+   {"label": {"he": "ממוצע השכונה", "en": "Neighborhood average"}, "value": 51000, "value_text": {"he": "49,000 עד 51,000 ₪", "en": "NIS 49,000 to 51,000"}, "src": ["S4"]}
+  ], "note": {"he": "כל הפסים באותו קנה מידה. שקלול מרפסות בשליש או בחצי משטחן הוא שיטה מקובלת בדיווחי עסקאות.[[S12]]", "en": "All bars share one scale. Weighting terraces at a third or a half of their area is a common convention in deal reports.[[S12]]"}},
+  "ledger": [
+   {"dt": {"he": "למ״ר משוקלל, מרפסות בשליש", "en": "Per weighted sqm, terraces at one third"}, "dd": {"he": "83,077 ₪", "en": "NIS 83,077"}, "note": {"he": "18,000,000 ÷ (190 + 80 ÷ 3)", "en": "18,000,000 / (190 + 80 / 3)"}},
+   {"dt": {"he": "למ״ר משוקלל, מרפסות בחצי", "en": "Per weighted sqm, terraces at one half"}, "dd": {"he": "78,261 ₪", "en": "NIS 78,261"}, "note": {"he": "18,000,000 ÷ (190 + 80 ÷ 2)", "en": "18,000,000 / (190 + 80 / 2)"}},
+   {"dt": {"he": "ארנונה, הערכה שנתית[[G_KH_TLV,G_KH_MEASURE]]", "en": "Arnona, annual estimate[[G_KH_TLV,G_KH_MEASURE]]"}, "dd": {"he": "20,706-37,692 ₪", "en": "NIS 20,706-37,692"}, "note": {"he": "190 מ״ר באזור 2 עד 270 מ״ר כולל מרפסות באזור 1, בתעריף מעל 140 מ״ר. האזור ואופן החיוב על מרפסות פתוחות לא אומתו.", "en": "190 sqm in zone 2 up to 270 sqm including terraces in zone 1, at the over-140 sqm rate. The zone and how open terraces are charged were not verified."}},
+   {"dt": {"he": "דמי ניהול", "en": "Management fee"}, "dd": {"he": "לא פורסמו", "en": "Not published"}},
+   {"dt": {"he": "עסקאות של 10 מיליון ש״ח ומעלה ב-2025[[S40]]", "en": "Deals of NIS 10 million and more in 2025[[S40]]"}, "dd": {"he": "635", "en": "635"}, "note": {"he": "60% מהן בתל אביב", "en": "60% of them in Tel Aviv"}}
+  ]
+ },
+ "market": {
+  "h2": {"he": "המחיר מול עסקאות ומודעות יוקרה", "en": "The price against luxury sales and listings"},
+  "lead": {"he": "עסקאות 2025 ו-2026 בכוכב הצפון ובסביבתה, מודעות פנטהאוז ודופלקס פעילות, ונתוני השוק בתל אביב. חלק מהעסקאות הן רכישות על הנייר בפרויקטים חדשים.", "en": "Sales in 2025 and 2026 in and around Kochav HaTzafon, live penthouse and duplex listings, and Tel Aviv market data. Some sales are off-plan purchases in new projects."},
+  "stats": [0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11]
+ },
+ "questions": [0, 2, 3, 4, 5, 6, 7, 8, 9],
+ "checks_h2": {"he": "מה לבדוק לפני הצעה", "en": "What to check before an offer"},
+ "checks_lead": {"he": "השאלות שרוכש ברמת מחיר כזו שואל, והמסמכים שכדאי לקבל לפני משא ומתן.", "en": "The questions a buyer at this price level asks, and the documents to obtain before negotiating."},
+ "checks_extra": {
+  "he": ["תשריט הדירה והיתר הבנייה, כולל שטחי המרפסות המקורות והפתוחות", "טופס 4 ורישום הבית המשותף", "הערכת שמאי עדכנית ושיטת שקלול המרפסות", "בדיקה תכנונית של מה שיכול להיבנות מול כיווני הנוף"],
+  "en": ["The unit plan and building permit, including covered and open terrace areas", "The occupancy certificate (Tofes 4) and condominium registration", "A current appraisal and how it weights the terraces", "A planning check of what could be built facing the views"]
+ },
+ "faq": [
+  {"q": {"he": "כמה עולה המ״ר בדירה?", "en": "What is the price per sqm?"}, "a": {"he": "על 190 מ״ר בנוי כ-94,737 ש״ח למ״ר. בשקלול 80 מ״ר המרפסות בשליש משטחן כ-83,077 ש״ח, ובחצי משטחן כ-78,261 ש״ח. הממוצע בשכונה 49,000 עד 51,000 ש״ח למ״ר, ופרויקטים חדשים בה מגיעים ל-90,000 עד 95,000 ש״ח.[[S4]]", "en": "On 190 sqm built, about NIS 94,737 per sqm. Weighting the 80 sqm of terraces at a third gives about NIS 83,077, and at a half about NIS 78,261. The neighborhood average is NIS 49,000 to 51,000 per sqm, and new projects there reach NIS 90,000 to 95,000.[[S4]]"}},
+  {"q": {"he": "כמה מס רכישה ישלם רוכש?", "en": "How much purchase tax would a buyer pay?"}, "a": {"he": "לפי מדרגות 2026: כ-1,153,886 ש״ח לרוכש דירה יחידה (6.41%), כ-1,678,899 ש״ח לדירה נוספת או לתושב חוץ (9.33%), וכ-975,976 ש״ח לעולה חדש זכאי (5.42%).[[G_TAX_DIR,G_KZ_OLEH]]", "en": "Under the 2026 brackets: about NIS 1,153,886 for a single-home buyer (6.41%), about NIS 1,678,899 for an additional home or a foreign resident (9.33%), and about NIS 975,976 for an eligible new immigrant (5.42%).[[G_TAX_DIR,G_KZ_OLEH]]"}},
+  {"q": {"he": "איך מגיעים ברגל לפארק הירקון?", "en": "How do you reach Yarkon Park on foot?"}, "a": {"he": "גשר הולכי רגל ואופניים של כ-170 מ׳ מרחוב לוי אשכול אל הפארק נמצא בבנייה מקיץ 2026 וצפוי להיפתח ב-2027.[[S7]]", "en": "A pedestrian and cycle bridge of about 170 m from Levi Eshkol Street into the park has been under construction since summer 2026 and is expected to open in 2027.[[S7]]"}},
+  {"q": {"he": "מה עשוי להשתנות בנוף?", "en": "What could change in the view?"}, "a": {"he": "מצפון מתפתח רובע שדה דב, עם מגדלים של 20 עד 45 קומות בתכנית המרכז, ובפינת רוקח ונמיר מתוכננים שלושה מגדלים של 28 קומות.[[S15,S11]] לפי מדלן, נופים פתוחים בשכונה צפויים להיחסם בחלקם.[[S5]]", "en": "The Sde Dov district is rising to the north, with towers of 20 to 45 floors in the center plan, and three 28-floor towers are planned at Rokach and Namir.[[S15,S11]] Madlan notes that some open views in the neighborhood are expected to be blocked.[[S5]]"}},
+  {"q": {"he": "כמה זה בדולרים?", "en": "What is it in dollars?"}, "a": {"he": "לפי השער היציג מ-15.9.2026, 18,000,000 ש״ח הם כ-5.9 מיליון דולר או כ-5.1 מיליון אירו.[[G_FX]]", "en": "At the 15 September 2026 representative rate, NIS 18,000,000 is about USD 5.9 million or EUR 5.1 million.[[G_FX]]"}}
+ ],
+ "amenities": [{"he": "מרפסות 80 מ״ר", "en": "80 sqm terraces"}, {"he": "מיזוג VRF", "en": "VRF air conditioning"}, {"he": "ממ״ד", "en": "Safe room"}, {"he": "2 חניות", "en": "2 parking spaces"}, {"he": "מחסן", "en": "Storage"}, {"he": "חדר כושר", "en": "Gym"}],
+ "seo": {
+  "he": {"title": "מיני פנטהאוז חדש למכירה בכוכב הצפון, 80 מ״ר מרפסות", "desc": "5 חדרים, כ-190 מ״ר ומרפסות של 76 עד 80 מ״ר בקומה 11 מתוך 12, בניין בוטיק חדש. 18,000,000 ש״ח, עם מחיר למ״ר, מס רכישה ועסקאות.", "kw": "מיני פנטהאוז למכירה בכוכב הצפון", "slug": "kochav-hatzafon-new-mini-penthouse-for-sale"},
+  "en": {"title": "New Mini Penthouse for Sale in Kochav HaTzafon, Tel Aviv", "desc": "Five rooms, about 190 sqm plus 76 to 80 sqm of terraces on floor 11 of 12 in a new boutique building. NIS 18,000,000 with price per sqm, taxes and comps.", "kw": "mini penthouse for sale Kochav HaTzafon Tel Aviv", "slug": "en-kochav-hatzafon-new-mini-penthouse-for-sale"}
+ },
+ "shots": [
+  {"he": "המרפסת הראשית והנוף לתל אביב", "en": "Main terrace and the Tel Aviv view"},
+  {"he": "הסלון עם יציאה למרפסת", "en": "Living room opening to the terrace"},
+  {"he": "המטבח והמקרר האינטגרלי", "en": "Kitchen and the integrated refrigerator"},
+  {"he": "יחידת ההורים", "en": "Master suite"},
+  {"he": "אגף הילדים והמרפסת לים", "en": "Children's wing and the sea-view balcony"},
+  {"he": "חדר הכושר בבניין", "en": "Building gym"},
+  {"he": "חזית הבניין", "en": "Building facade"},
+  {"he": "תשריט הדירה והמרפסות", "en": "Floor plan with terraces"},
+  {"he": "צילום לילה מהמרפסת", "en": "Night view from the terrace"}
+ ],
+ "internal": {
+  "assessment": [
+   "94,737 ₪ למ״ר בנוי: כמעט פי 2 מממוצע השכונה ומעל כל עסקה שנרשמה בה ב-2026 (עד כ-80,000 ₪). גם בשקלול מרפסות (83,077 ₪) המחיר ברף העליון של פרויקטים חדשים. זה מחיר שאפתני.",
+   "קונה ברמה הזאת ישווה לשדה דב (ממוצע 79,000 עד 85,000 ₪, פנטהאוזים מעל 103,000 ₪) ולמגדלי ספורטק (דופלקס של 192 מ״ר ב-20 מיליון).",
+   "חולשה: אין כתובת, אין יזם, וסתירות בשטחים (190/197/200), בכיווני אוויר (3/4) ובשנת בנייה (2022/2023). בלי תשריט והיתר זה לא ייסגר במחיר כזה.",
+   "לקהל מחו״ל: כ-5.9 מיליון דולר. הדף באנגלית חשוב."
+  ],
+  "confirm": [
+   "כתובת הבניין (בכרטיס חיפוש אחד הופיע ביליה מאוז 11 או 15; לא אומת).",
+   "יזם, דמי ניהול, שנת טופס 4.",
+   "שטח בנוי ושטחי מרפסות מדויקים, כיווני אוויר.",
+   "האם שתי מודעות מדלן הן אותה דירה.",
+   "האם 18,000,000 ₪ עדיין בתוקף, ואישור לתמונות."
+  ]
+ },
+ "wp": {"listing_type": "sale", "property_type": "penthouse", "price": 18000000, "rooms": 5, "floor": 11, "total_floors": 12, "size_sqm": 190, "balcony_sqm": 80, "parking": true, "elevator": true, "ac": true, "protected_room": true, "street": "", "building_number": "", "city": "תל אביב-יפו", "neighborhood": "כוכב הצפון", "arnona_monthly": 0, "vaad_bayit_monthly": 0, "storage": true, "condition": "new"}
+}

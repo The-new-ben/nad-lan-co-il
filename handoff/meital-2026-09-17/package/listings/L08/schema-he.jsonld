@@ -1,0 +1,118 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "4.5 חדרים במתחם עם בריכה וספא, מגדלי נאמן",
+   "description": "4.5 חדרים וממ״ד, כ-130 מ״ר, 2 חניות ומחסן במתחם מגדלי נאמן עם בריכה מקורה, ספא ומאבטח 24/7. 5,900,000 ש״ח, עם דמי ניהול, מס ועסקאות.",
+   "inLanguage": "he-IL",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/properties/migdalei-neeman-4-5-rooms-for-sale/",
+   "about": {
+    "@type": "Apartment",
+    "name": "4.5 חדרים במתחם עם בריכה וספא, מגדלי נאמן",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "תל אביב-יפו",
+     "addressRegion": "צוקי אביב, מגדלי נאמן",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 4.5,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 130,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "בריכה מקורה",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "ספא",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חדר כושר",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מאבטח 24/7",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "ממ״ד",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "2 חניות",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#Sell",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "מיטל קציר, נדל״ן על הים",
+     "telephone": "+972523631582"
+    },
+    "price": 5900000
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "מה המחיר למ״ר במתחם?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "המחיר המבוקש הוא כ-45,385 ש״ח למ״ר. שמאים העריכו ב-2024 דירות טיפוסיות במתחם ב-45,000 עד 50,000 ש״ח למ״ר, ושתי עסקאות של דירות 130 מ״ר ברחוב נרשמו ב-2026 ב-43,846 וב-54,615 ש״ח למ״ר."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "כמה עולים דמי הניהול?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "גלובס דיווח ב-2024 על כ-2,300 ש״ח לחודש לדירה של 138 מ״ר, כולל תחזוקה ושימוש בכל המתקנים. לדירה של 130 מ״ר זה כ-2,170 ש״ח לחודש בהנחה שהתעריף יחסי לשטח; יש לקבל את הסכום העדכני."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "כמה רחוק הים?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לפי המשווקת כשתי דקות הליכה לים ולחוף הצוק. מודעת שכירות של מפרסם אחר במתחם מציינת חמש דקות הליכה."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "כמה מס רכישה ישלם רוכש?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לפי מדרגות 2026: כ-190,538 ש״ח לרוכש דירה יחידה, 472,000 ש״ח לדירה נוספת או לתושב חוץ, וכ-19,606 ש״ח לעולה חדש זכאי."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "מה ישתנה סביב המתחם?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "ממזרח נסלל המשך אבן גבירול, שלאורכו מתוכנן הקו הירוק; בחוף הצוק אושרה תכנית עיצוב למלון ולמגדל מגורים; והשטחים הפנויים סביב המתחם כלולים בתכנית תא/3700."
+     }
+    }
+   ]
+  }
+ ]
+}

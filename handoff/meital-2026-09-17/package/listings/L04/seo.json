@@ -1,0 +1,46 @@
+{
+ "he": {
+  "title": "דירת 3 חדרים למכירה בצוקי אביב, רחוב אליהו ברלין",
+  "title_chars": 48,
+  "metadesc": "3 חדרים, 90 מ״ר ומרפסת 12 מ״ר, 2 חניות, מחסן וממ״ד בבניין בוטיק בצוקי אביב. 4,650,000 ש״ח, עם מס רכישה, עלויות ועסקאות באזור.",
+  "metadesc_chars": 125,
+  "focus_keyphrase": "דירת 3 חדרים למכירה בצוקי אביב",
+  "slug": "tzukei-aviv-3-rooms-berlin-for-sale",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/properties/tzukei-aviv-3-rooms-berlin-for-sale/",
+  "hreflang": {
+   "he": "https://nad-lan.co.il/properties/tzukei-aviv-3-rooms-berlin-for-sale/",
+   "en": "https://nad-lan.co.il/en/properties/en-tzukei-aviv-3-room-apartment-for-sale/",
+   "x-default": "https://nad-lan.co.il/properties/tzukei-aviv-3-rooms-berlin-for-sale/"
+  },
+  "og_title": "3 חדרים עם 2 חניות ומחסן, רחוב אליהו ברלין",
+  "og_description": "3 חדרים, 90 מ״ר ומרפסת 12 מ״ר, 2 חניות, מחסן וממ״ד בבניין בוטיק בצוקי אביב. 4,650,000 ש״ח, עם מס רכישה, עלויות ועסקאות באזור.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "דירת 3 חדרים למכירה בצוקי אביב, רחוב אליהו ברלין",
+   "_yoast_wpseo_metadesc": "3 חדרים, 90 מ״ר ומרפסת 12 מ״ר, 2 חניות, מחסן וממ״ד בבניין בוטיק בצוקי אביב. 4,650,000 ש״ח, עם מס רכישה, עלויות ועסקאות באזור.",
+   "_yoast_wpseo_focuskw": "דירת 3 חדרים למכירה בצוקי אביב"
+  }
+ },
+ "en": {
+  "title": "3-Room Apartment for Sale in Tzukei Aviv, Tel Aviv",
+  "title_chars": 50,
+  "metadesc": "Three rooms, 90 sqm plus a 12 sqm balcony, two parking spaces, storage and a safe room in a boutique building. NIS 4,650,000 with tax, costs and comps.",
+  "metadesc_chars": 151,
+  "focus_keyphrase": "3 room apartment for sale Tzukei Aviv",
+  "slug": "en-tzukei-aviv-3-room-apartment-for-sale",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/en/properties/en-tzukei-aviv-3-room-apartment-for-sale/",
+  "hreflang": {
+   "en": "https://nad-lan.co.il/en/properties/en-tzukei-aviv-3-room-apartment-for-sale/",
+   "he": "https://nad-lan.co.il/properties/tzukei-aviv-3-rooms-berlin-for-sale/",
+   "x-default": "https://nad-lan.co.il/properties/tzukei-aviv-3-rooms-berlin-for-sale/"
+  },
+  "og_title": "Three Rooms with Two Parking Spaces, Eliyahu Berlin Street",
+  "og_description": "Three rooms, 90 sqm plus a 12 sqm balcony, two parking spaces, storage and a safe room in a boutique building. NIS 4,650,000 with tax, costs and comps.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "3-Room Apartment for Sale in Tzukei Aviv, Tel Aviv",
+   "_yoast_wpseo_metadesc": "Three rooms, 90 sqm plus a 12 sqm balcony, two parking spaces, storage and a safe room in a boutique building. NIS 4,650,000 with tax, costs and comps.",
+   "_yoast_wpseo_focuskw": "3 room apartment for sale Tzukei Aviv"
+  }
+ }
+}

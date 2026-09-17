@@ -1,0 +1,117 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "מיני פנטהאוז של 5 חדרים עם נוף לים, נופי ים",
+   "description": "5 חדרים ו-3 יחידות הורים, 135 מ״ר ומרפסת 20 מ״ר בקומה גבוהה עם נוף לים, 2 חניות עם הכנה לטעינה, חדר כושר ושומר. טווח שכירות, עלויות וחוק.",
+   "inLanguage": "he-IL",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/properties/nofei-yam-mini-penthouse-5-rooms-for-rent/",
+   "about": {
+    "@type": "Apartment",
+    "name": "מיני פנטהאוז של 5 חדרים עם נוף לים, נופי ים",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "תל אביב-יפו",
+     "addressRegion": "נופי ים",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 5,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 135,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חדר כושר",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "שומר",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חניה",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "הכנה לטעינת רכב חשמלי",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מחסן",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מרפסת",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "מיטל קציר, נדל״ן על הים",
+     "telephone": "+972523631582"
+    }
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "כמה עולה הדירה בחודש?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "המשווקת לא פרסמה שכר דירה. לפי מודעות דומות בנופי ים ובל׳ החדשה, טווח השוק לדירה של 135 מ״ר הוא כ-15,500 עד 20,250 ש״ח לחודש, לפני ארנונה וועד בית. זה חישוב ולא הצעת מחיר."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "מתי אפשר להיכנס?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לפי המשווקת הכניסה גמישה. יש לתאם מועד ישירות מולה."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "אילו שירותים יש בבניין?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לפי המשווקת חדר כושר ושומר. שעות השמירה ומה כולל ועד הבית לא פורסמו."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "האם חוק השכירות ההוגנת חל?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "רק אם שכר הדירה אינו עולה על כ-20,000 ש״ח לחודש. אז הערבויות מוגבלות ל-3 חודשי שכירות לכל היותר, וחלות חובות התיקון של המשכיר. הטווח המחושב לדירה חוצה את הסף."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "יש הכנה לרכב חשמלי?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לפי המשווקת החניות מוכנות לטעינה. אם מותקן מטען, ומי משלם על ההתקנה ועל החשמל, לא צוין."
+     }
+    }
+   ]
+  }
+ ]
+}

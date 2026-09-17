@@ -1,0 +1,134 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "A Private Estate of 700 sqm on a 1.1-Dunam Plot, Herzliya Pituach",
+   "description": "About 700 sqm over three levels on a 1,100 sqm plot: seven master suites, pool, cinema, gym, wine cellar and lift, near De Shalit Square. Price on request.",
+   "inLanguage": "en",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/en/properties/en-herzliya-pituach-private-estate-for-sale/",
+   "about": {
+    "@type": "SingleFamilyResidence",
+    "name": "A Private Estate of 700 sqm on a 1.1-Dunam Plot, Herzliya Pituach",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Herzliya",
+     "addressRegion": "Herzliya Pituach",
+     "addressCountry": "IL"
+    },
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 700,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Swimming pool",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Cinema room",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Gym",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Wine cellar",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Lift",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Safe room",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Underfloor heating",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Smart electrical system",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#Sell",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "Meital Katzir, Real Estate by the Sea",
+     "telephone": "+972523631582"
+    }
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What is the price?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The price is given on direct contact with the broker. For orientation, the median asking price across 15 Herzliya Pituach villas of 500 to 900 sqm on 1,000 to 1,200 sqm plots is NIS 59.2 million, or NIS 77,023 per built sqm."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How much purchase tax would a buyer pay?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It depends on the price and the buyer. At the NIS 53.9 million scenario, for example: NIS 4,701,825 for a single home, and NIS 5,270,509 for an additional home or a foreign resident. New immigrants get no relief on a home valued above NIS 20,183,565."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can it be financed with a mortgage?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Under Bank of Israel rules, up to 75% of value for a single home, 70% for a replacement home and 50% for an investment home or a buyer who is not an Israeli citizen. Banks may be stricter."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How far is the sea?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Within walking distance according to the broker, and about five minutes from De Shalit Square. Zevulun Beach is about 750 m from the square in a straight line; the distance from the plot itself comes with the address."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which international schools are nearby?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Walworth Barbour American International School (WBAIS) in Even Yehuda, about 11.7 km in a straight line from De Shalit Square, and Reichman University in Herzliya, about 2.9 km."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How do I arrange a viewing?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Viewings are by appointment only, arranged directly with Meital Katzir."
+     }
+    }
+   ]
+  }
+ ]
+}
