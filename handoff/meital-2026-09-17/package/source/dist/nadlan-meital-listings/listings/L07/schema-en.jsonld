@@ -1,0 +1,118 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "New Mini Penthouse with 80 sqm of Terraces, Kochav HaTzafon",
+   "description": "Five rooms, about 190 sqm plus 76 to 80 sqm of terraces on floor 11 of 12 in a new boutique building. NIS 18,000,000 with price per sqm, taxes and comps.",
+   "inLanguage": "en",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/en/properties/en-kochav-hatzafon-new-mini-penthouse-for-sale/",
+   "about": {
+    "@type": "Apartment",
+    "name": "New Mini Penthouse with 80 sqm of Terraces, Kochav HaTzafon",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Tel Aviv-Yafo",
+     "addressRegion": "Kochav HaTzafon",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 5,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 190,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "80 sqm terraces",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "VRF air conditioning",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Safe room",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "2 parking spaces",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Storage",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Gym",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#Sell",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "Meital Katzir, Real Estate by the Sea",
+     "telephone": "+972523631582"
+    },
+    "price": 18000000
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What is the price per sqm?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "On 190 sqm built, about NIS 94,737 per sqm. Weighting the 80 sqm of terraces at a third gives about NIS 83,077, and at a half about NIS 78,261. The neighborhood average is NIS 49,000 to 51,000 per sqm, and new projects there reach NIS 90,000 to 95,000."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How much purchase tax would a buyer pay?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Under the 2026 brackets: about NIS 1,153,886 for a single-home buyer (6.41%), about NIS 1,678,899 for an additional home or a foreign resident (9.33%), and about NIS 975,976 for an eligible new immigrant (5.42%)."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How do you reach Yarkon Park on foot?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A pedestrian and cycle bridge of about 170 m from Levi Eshkol Street into the park has been under construction since summer 2026 and is expected to open in 2027."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What could change in the view?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Sde Dov district is rising to the north, with towers of 20 to 45 floors in the center plan, and three 28-floor towers are planned at Rokach and Namir. Madlan notes that some open views in the neighborhood are expected to be blocked."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is it in dollars?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "At the 15 September 2026 representative rate, NIS 18,000,000 is about USD 5.9 million or EUR 5.1 million."
+     }
+    }
+   ]
+  }
+ ]
+}

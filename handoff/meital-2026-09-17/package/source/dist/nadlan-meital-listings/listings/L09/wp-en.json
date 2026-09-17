@@ -1,0 +1,47 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/nadlan_property. Status stays draft. Verify meta keys and term names first (see HANDOFF).",
+ "status": "draft",
+ "title": "Five-Room Mini Penthouse with a Sea View, Nofei Yam",
+ "slug": "en-nofei-yam-5-room-mini-penthouse-for-rent",
+ "content_file": "content-en.html",
+ "excerpt": "Five rooms with three master suites, 135 sqm plus a 20 sqm balcony on a high floor with a sea view, two EV-ready parking spaces, gym and guard.",
+ "meta": {
+  "listing_type": "rent",
+  "property_type": "penthouse",
+  "price": null,
+  "price_per_sqm": null,
+  "rooms": 5,
+  "floor": null,
+  "total_floors": null,
+  "size_sqm": 135,
+  "balcony_sqm": 20,
+  "parking": true,
+  "elevator": null,
+  "ac": null,
+  "protected_room": null,
+  "storage": true,
+  "condition": null,
+  "street": "",
+  "building_number": "",
+  "lat": null,
+  "lng": null,
+  "city": "Tel Aviv-Yafo",
+  "neighborhood": "Nofei Yam",
+  "arnona_monthly": null,
+  "vaad_bayit_monthly": null,
+  "status": "active",
+  "photos_csv": ""
+ },
+ "terms": {
+  "nadlan_city": [
+   "Tel Aviv-Yafo"
+  ]
+ },
+ "yoast_meta": {
+  "_yoast_wpseo_title": "5-Room Mini Penthouse for Rent in Nofei Yam, Tel Aviv",
+  "_yoast_wpseo_metadesc": "Five rooms with three master suites, 135 sqm plus a 20 sqm balcony on a high floor with a sea view, two EV-ready parking spaces, gym and guard.",
+  "_yoast_wpseo_focuskw": "mini penthouse for rent Nofei Yam Tel Aviv"
+ },
+ "language": "en",
+ "translation_group": "L09"
+}

@@ -1,0 +1,17 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/pages. Status stays draft. Parent page slug and final slug need owner approval (HANDOFF section 12).",
+ "status": "draft",
+ "title": "Meital Katzir, Real Estate by the Sea",
+ "slug": "meital-katzir",
+ "parent_slug": "brokers",
+ "content_file": "content-broker-en.html",
+ "excerpt": "11 exclusive listings from broker Meital Katzir: a Herzliya Pituach estate, mini penthouses and apartments in Tzukei Aviv, Nofei Yam and Sarona.",
+ "template_hint": "full-width page template without a sidebar or page title",
+ "language": "en",
+ "translation_group": "broker-meital-katzir",
+ "yoast_meta": {
+  "_yoast_wpseo_title": "Meital Katzir, Real Estate by the Sea | Tel Aviv Homes",
+  "_yoast_wpseo_metadesc": "11 exclusive listings from broker Meital Katzir: a Herzliya Pituach estate, mini penthouses and apartments in Tzukei Aviv, Nofei Yam and Sarona.",
+  "_yoast_wpseo_focuskw": "Meital Katzir real estate"
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "he": {
+  "title": "דירת 5 חדרים להשכרה ברמת אביב, מתחם עם בריכה",
+  "title_chars": 44,
+  "metadesc": "5 חדרים בקומה גבוהה, מרווחת ומוארת, 2 חניות ומחסן, במתחם עם בריכה, חדר כושר ושומר. טווח שכירות באזור, ועד בית, ארנונה וחוק.",
+  "metadesc_chars": 123,
+  "focus_keyphrase": "דירת 5 חדרים להשכרה ברמת אביב",
+  "slug": "ramat-aviv-5-rooms-pool-complex-for-rent",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/properties/ramat-aviv-5-rooms-pool-complex-for-rent/",
+  "hreflang": {
+   "he": "https://nad-lan.co.il/properties/ramat-aviv-5-rooms-pool-complex-for-rent/",
+   "en": "https://nad-lan.co.il/en/properties/en-ramat-aviv-5-room-apartment-pool-complex-for-rent/",
+   "x-default": "https://nad-lan.co.il/properties/ramat-aviv-5-rooms-pool-complex-for-rent/"
+  },
+  "og_title": "5 חדרים בקומה גבוהה במתחם עם בריכה, רמת אביב",
+  "og_description": "5 חדרים בקומה גבוהה, מרווחת ומוארת, 2 חניות ומחסן, במתחם עם בריכה, חדר כושר ושומר. טווח שכירות באזור, ועד בית, ארנונה וחוק.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "דירת 5 חדרים להשכרה ברמת אביב, מתחם עם בריכה",
+   "_yoast_wpseo_metadesc": "5 חדרים בקומה גבוהה, מרווחת ומוארת, 2 חניות ומחסן, במתחם עם בריכה, חדר כושר ושומר. טווח שכירות באזור, ועד בית, ארנונה וחוק.",
+   "_yoast_wpseo_focuskw": "דירת 5 חדרים להשכרה ברמת אביב"
+  }
+ },
+ "en": {
+  "title": "5-Room Apartment for Rent in Ramat Aviv, Complex with Pool",
+  "title_chars": 58,
+  "metadesc": "Five rooms on a high floor, spacious and bright, two parking spaces and storage, in a complex with a pool, gym and guard. Local rent range, fees and law.",
+  "metadesc_chars": 153,
+  "focus_keyphrase": "5 room apartment for rent Ramat Aviv pool",
+  "slug": "en-ramat-aviv-5-room-apartment-pool-complex-for-rent",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/en/properties/en-ramat-aviv-5-room-apartment-pool-complex-for-rent/",
+  "hreflang": {
+   "en": "https://nad-lan.co.il/en/properties/en-ramat-aviv-5-room-apartment-pool-complex-for-rent/",
+   "he": "https://nad-lan.co.il/properties/ramat-aviv-5-rooms-pool-complex-for-rent/",
+   "x-default": "https://nad-lan.co.il/properties/ramat-aviv-5-rooms-pool-complex-for-rent/"
+  },
+  "og_title": "Five Rooms on a High Floor in a Complex with a Pool, Ramat Aviv",
+  "og_description": "Five rooms on a high floor, spacious and bright, two parking spaces and storage, in a complex with a pool, gym and guard. Local rent range, fees and law.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "5-Room Apartment for Rent in Ramat Aviv, Complex with Pool",
+   "_yoast_wpseo_metadesc": "Five rooms on a high floor, spacious and bright, two parking spaces and storage, in a complex with a pool, gym and guard. Local rent range, fees and law.",
+   "_yoast_wpseo_focuskw": "5 room apartment for rent Ramat Aviv pool"
+  }
+ }
+}

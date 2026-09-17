@@ -1,0 +1,47 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/nadlan_property. Status stays draft. Verify meta keys and term names first (see HANDOFF).",
+ "status": "draft",
+ "title": "מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון",
+ "slug": "kochav-hatzafon-new-mini-penthouse-for-sale",
+ "content_file": "content-he.html",
+ "excerpt": "5 חדרים, כ-190 מ״ר ומרפסות של 76 עד 80 מ״ר בקומה 11 מתוך 12, בניין בוטיק חדש. 18,000,000 ש״ח, עם מחיר למ״ר, מס רכישה ועסקאות.",
+ "meta": {
+  "listing_type": "sale",
+  "property_type": "penthouse",
+  "price": 18000000,
+  "price_per_sqm": 94737,
+  "rooms": 5,
+  "floor": 11,
+  "total_floors": 12,
+  "size_sqm": 190,
+  "balcony_sqm": 80,
+  "parking": true,
+  "elevator": true,
+  "ac": true,
+  "protected_room": true,
+  "storage": true,
+  "condition": "new",
+  "street": "",
+  "building_number": "",
+  "lat": null,
+  "lng": null,
+  "city": "תל אביב-יפו",
+  "neighborhood": "כוכב הצפון",
+  "arnona_monthly": null,
+  "vaad_bayit_monthly": null,
+  "status": "active",
+  "photos_csv": ""
+ },
+ "terms": {
+  "nadlan_city": [
+   "תל אביב-יפו"
+  ]
+ },
+ "yoast_meta": {
+  "_yoast_wpseo_title": "מיני פנטהאוז חדש למכירה בכוכב הצפון, 80 מ״ר מרפסות",
+  "_yoast_wpseo_metadesc": "5 חדרים, כ-190 מ״ר ומרפסות של 76 עד 80 מ״ר בקומה 11 מתוך 12, בניין בוטיק חדש. 18,000,000 ש״ח, עם מחיר למ״ר, מס רכישה ועסקאות.",
+  "_yoast_wpseo_focuskw": "מיני פנטהאוז למכירה בכוכב הצפון"
+ },
+ "language": "he",
+ "translation_group": "L07"
+}

@@ -1,0 +1,46 @@
+{
+ "he": {
+  "title": "דירת 4.5 חדרים למכירה במגדלי נאמן, בריכה וספא",
+  "title_chars": 45,
+  "metadesc": "4.5 חדרים וממ״ד, כ-130 מ״ר, 2 חניות ומחסן במתחם מגדלי נאמן עם בריכה מקורה, ספא ומאבטח 24/7. 5,900,000 ש״ח, עם דמי ניהול, מס ועסקאות.",
+  "metadesc_chars": 132,
+  "focus_keyphrase": "דירה למכירה במגדלי נאמן",
+  "slug": "migdalei-neeman-4-5-rooms-for-sale",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/properties/migdalei-neeman-4-5-rooms-for-sale/",
+  "hreflang": {
+   "he": "https://nad-lan.co.il/properties/migdalei-neeman-4-5-rooms-for-sale/",
+   "en": "https://nad-lan.co.il/en/properties/en-migdalei-neeman-4-5-room-apartment-for-sale/",
+   "x-default": "https://nad-lan.co.il/properties/migdalei-neeman-4-5-rooms-for-sale/"
+  },
+  "og_title": "4.5 חדרים במתחם עם בריכה וספא, מגדלי נאמן",
+  "og_description": "4.5 חדרים וממ״ד, כ-130 מ״ר, 2 חניות ומחסן במתחם מגדלי נאמן עם בריכה מקורה, ספא ומאבטח 24/7. 5,900,000 ש״ח, עם דמי ניהול, מס ועסקאות.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "דירת 4.5 חדרים למכירה במגדלי נאמן, בריכה וספא",
+   "_yoast_wpseo_metadesc": "4.5 חדרים וממ״ד, כ-130 מ״ר, 2 חניות ומחסן במתחם מגדלי נאמן עם בריכה מקורה, ספא ומאבטח 24/7. 5,900,000 ש״ח, עם דמי ניהול, מס ועסקאות.",
+   "_yoast_wpseo_focuskw": "דירה למכירה במגדלי נאמן"
+  }
+ },
+ "en": {
+  "title": "4.5-Room Apartment for Sale, Migdalei Ne'eman, Tel Aviv",
+  "title_chars": 55,
+  "metadesc": "4.5 rooms plus a safe room, about 130 sqm, two parking spaces and storage in a complex with a covered pool, spa and 24/7 guard. NIS 5,900,000.",
+  "metadesc_chars": 142,
+  "focus_keyphrase": "apartment for sale Migdalei Neeman Tel Aviv",
+  "slug": "en-migdalei-neeman-4-5-room-apartment-for-sale",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/en/properties/en-migdalei-neeman-4-5-room-apartment-for-sale/",
+  "hreflang": {
+   "en": "https://nad-lan.co.il/en/properties/en-migdalei-neeman-4-5-room-apartment-for-sale/",
+   "he": "https://nad-lan.co.il/properties/migdalei-neeman-4-5-rooms-for-sale/",
+   "x-default": "https://nad-lan.co.il/properties/migdalei-neeman-4-5-rooms-for-sale/"
+  },
+  "og_title": "4.5 Rooms in a Pool and Spa Complex, Migdalei Ne'eman",
+  "og_description": "4.5 rooms plus a safe room, about 130 sqm, two parking spaces and storage in a complex with a covered pool, spa and 24/7 guard. NIS 5,900,000.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "4.5-Room Apartment for Sale, Migdalei Ne'eman, Tel Aviv",
+   "_yoast_wpseo_metadesc": "4.5 rooms plus a safe room, about 130 sqm, two parking spaces and storage in a complex with a covered pool, spa and 24/7 guard. NIS 5,900,000.",
+   "_yoast_wpseo_focuskw": "apartment for sale Migdalei Neeman Tel Aviv"
+  }
+ }
+}

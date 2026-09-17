@@ -1,0 +1,186 @@
+<article class="nlb" lang="{{ lang }}" dir="{{ dir }}" id="nlb-meital-{{ lang }}">
+<header class="nlb-hero">
+  <div class="nlb-hero-media" aria-hidden="true">{% if hero_img %}<img src="{{ hero_img }}" alt="" loading="eager" decoding="async">{% else %}<div class="nlb-scene nlb-scene--wide">{{ scene_wide }}</div><div class="nlb-scene nlb-scene--tall">{{ scene_tall }}</div>{% endif %}</div>
+  <div class="nlb-wrap nlb-hero-in">
+    <p class="nlb-eyebrow nlb-eyebrow--line">{{ t.eyebrow }}</p>
+    <h1 class="nlb-name">{{ t.name }}</h1>
+    <p class="nlb-brand">{{ t.brand }}</p>
+    <p class="nlb-lede">{{ t.lede }}</p>
+    <div class="nlb-cta">
+      <a class="nlb-btn nlb-btn--paper" href="{{ wa_general }}" target="_blank" rel="noopener">{{ icon('wa') }}<span>{{ t.wa }}</span></a>
+      <a class="nlb-btn nlb-btn--ghost" href="{{ tel }}">{{ icon('phone') }}<span class="nlb-num">{{ phone }}</span></a>
+      <a class="nlb-btn nlb-btn--ghost" href="{{ ig }}" target="_blank" rel="noopener">{{ icon('ig') }}<span>{{ t.ig }}</span></a>
+    </div>
+  </div>
+  <div class="nlb-hero-meta">
+    <div class="nlb-wrap nlb-hero-meta-in">
+      <dl>{% for a, b in t.meta %}<div><dt>{{ a }}</dt><dd><span class="nlb-num">{{ b }}</span></dd></div>{% endfor %}</dl>
+      <span class="nlb-coords nlb-num">{{ t.coords }}</span>
+    </div>
+  </div>
+</header>
+
+<section class="nlb-sec nlb-feature-sec">
+  <div class="nlb-wrap nlb-feature">
+    <div class="nlb-feature-copy">
+      <p class="nlb-eyebrow nlb-eyebrow--line">{{ t.f_eyebrow }}</p>
+      <h2 class="nlb-h2 nlb-h2--xl">{{ t.f_title }}</h2>
+      <p class="nlb-lead">{{ t.f_lead }}</p>
+      <dl class="nlb-feature-stats">{% for a, b in t.f_stats %}<div><dt><span class="nlb-num">{{ a }}</span></dt><dd>{{ b }}</dd></div>{% endfor %}</dl>
+      <p class="nlb-feature-amen">{{ t.f_amen }}</p>
+      <p class="nlb-price-tag"><strong>{{ t.f_price }}</strong><span>{{ t.f_price_sub }}</span></p>
+      <div class="nlb-cta">
+        <a class="nlb-btn nlb-btn--abyss" href="{{ cards[0].wa }}" target="_blank" rel="noopener">{{ icon('wa') }}<span>{{ t.f_cta }}</span></a>
+        <a class="nlb-btn nlb-btn--line" href="{{ l01_url }}"><span>{{ t.f_cta2 }}</span></a>
+      </div>
+    </div>
+    <figure class="nlb-feature-media">{% if feature_img %}<img src="{{ feature_img }}" alt="{{ t.f_title }}" loading="lazy" decoding="async">{% else %}{{ estate }}<figcaption class="nlb-illus">{{ t.illus }}</figcaption>{% endif %}<span class="nlb-code">L01</span></figure>
+  </div>
+</section>
+
+<section class="nlb-sec nlb-numbers">
+  <div class="nlb-wrap nlb-numbers-in">
+    <div class="nlb-numbers-copy">
+      <p class="nlb-eyebrow nlb-eyebrow--line">{{ t.n_eyebrow }}</p>
+      <h2 class="nlb-h2">{{ t.n_title }}</h2>
+      <p class="nlb-lead">{{ t.n_lead }}</p>
+      <div class="nlb-ladders">
+      {% for r in ladders %}
+        <div class="nlb-ladder">
+          <div class="nlb-ladder-head">
+            <p class="nlb-ladder-label"><b>{{ r.label }}</b><span class="nlb-num">{{ r.count }}</span></p>
+            <p class="nlb-ladder-range"><span class="nlb-num">{{ r.range }}</span><small>{{ r.unit }}</small></p>
+          </div>
+          <div class="nlb-track nlb-track--wide">{{ r.svg_wide }}</div>
+          <div class="nlb-track nlb-track--narrow">{{ r.svg_narrow }}</div>
+          <div class="nlb-chips">{% for c in r.chips %}<a class="nlb-chip{% if not c.value %} nlb-chip--ask{% endif %}" href="#nlb-{{ lang }}-{{ c.id }}"><b>{{ c.id }}</b><span{% if c.value %} class="nlb-num"{% endif %}>{{ c.value or t.n_on_request }}</span></a>{% endfor %}</div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+    <figure class="nlb-map">{{ map }}<figcaption>{{ t.map_caption }}</figcaption></figure>
+  </div>
+</section>
+
+<section class="nlb-sec nlb-listings">
+  <div class="nlb-wrap">
+    <input class="nlb-f nlb-f-all" type="radio" name="nlb-f-{{ lang }}" id="nlb-f-{{ lang }}-all" checked>
+    <input class="nlb-f nlb-f-sale" type="radio" name="nlb-f-{{ lang }}" id="nlb-f-{{ lang }}-sale">
+    <input class="nlb-f nlb-f-rent" type="radio" name="nlb-f-{{ lang }}" id="nlb-f-{{ lang }}-rent">
+    <div class="nlb-listings-top">
+      <div class="nlb-listings-head">
+        <p class="nlb-eyebrow nlb-eyebrow--line">{{ t.l_eyebrow }}</p>
+        <h2 class="nlb-h2">{{ t.l_title }}</h2>
+        <p class="nlb-lead">{{ t.l_lead }}</p>
+      </div>
+      <div class="nlb-filters" role="group" aria-label="{{ filter_label }}">
+        <label class="nlb-l-all" for="nlb-f-{{ lang }}-all">{{ t.all }} <span class="nlb-num">{{ n_all }}</span></label>
+        <label class="nlb-l-sale" for="nlb-f-{{ lang }}-sale">{{ t.sale }} <span class="nlb-num">{{ n_sale }}</span></label>
+        <label class="nlb-l-rent" for="nlb-f-{{ lang }}-rent">{{ t.rent }} <span class="nlb-num">{{ n_rent }}</span></label>
+      </div>
+    </div>
+    <ul class="nlb-grid">
+    {% for c in cards %}
+      <li class="nlb-lcard" data-deal="{{ c.deal }}" id="nlb-{{ lang }}-{{ c.id }}">
+        <a class="nlb-lcard-media" href="{{ c.url }}" tabindex="-1" aria-hidden="true">
+          {% if c.img %}<img src="{{ c.img }}" alt="" loading="lazy" decoding="async">{% else %}{{ c.plate }}{% endif %}
+          <span class="nlb-badges"><span class="nlb-badge nlb-badge--{{ c.deal }}">{{ c.deal_label }}</span>{% if c.note %}<span class="nlb-badge nlb-badge--note">{{ c.note }}</span>{% endif %}{% if c.review %}<span class="nlb-badge nlb-badge--review">{{ t.review }}</span>{% endif %}</span>
+          <span class="nlb-code">{{ c.id }}</span>
+        </a>
+        <p class="nlb-lcard-kicker">{{ c.kicker }}</p>
+        <h3 class="nlb-lcard-title"><a href="{{ c.url }}">{{ c.title }}</a></h3>
+        <div class="nlb-price">{{ c.price }}</div>
+        <ul class="nlb-specs">{% for s in c.specs %}<li>{{ s.icon }}<span>{{ s.text }}</span></li>{% endfor %}</ul>
+        <ul class="nlb-hi">{% for h in c.hi %}<li>{{ h }}</li>{% endfor %}</ul>
+        <div class="nlb-amen">{% for a in c.amen %}<span>{{ a.icon }}{{ a.text }}</span>{% endfor %}</div>
+        <p class="nlb-lcard-meta"><span>{{ icon('key') }}{{ c.entry }}</span><span class="nlb-num">{{ c.updated }}</span></p>
+        <div class="nlb-lcard-cta">
+          <a class="nlb-btn nlb-btn--sea" href="{{ c.wa }}" target="_blank" rel="noopener" aria-label="{{ t.c_wa }}: {{ c.title }}">{{ icon('wa') }}<span>{{ t.c_wa }}</span></a>
+          <a class="nlb-btn nlb-btn--line" href="{{ c.url }}" aria-label="{{ t.c_page }}: {{ c.title }}"><span>{{ t.c_page }}</span>{{ icon(arrow) }}</a>
+        </div>
+      </li>
+    {% endfor %}
+      <li class="nlb-igtile">
+        <div class="nlb-igtile-top">
+          {{ icon('ig') }}
+          <p class="nlb-eyebrow">{{ t.ig_eyebrow }}</p>
+          <p class="nlb-igtile-handle" dir="ltr">@meitalkatzir_realestate</p>
+          <p class="nlb-igtile-lead">{{ t.ig_lead }}</p>
+        </div>
+        <div class="nlb-igtile-bottom">
+          <div class="nlb-igtile-qr">{{ ig_qr }}<span>{{ t.ig_scan }}</span></div>
+          <a class="nlb-btn nlb-btn--ghost" href="{{ ig }}" target="_blank" rel="noopener">{{ icon('ig') }}<span>{{ t.ig_cta }}</span></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+{% if gallery %}
+<section class="nlb-sec nlb-gallery">
+  <div class="nlb-wrap">
+    <div class="nlb-sec-head">
+      <p class="nlb-eyebrow nlb-eyebrow--line">{{ 'מהאינסטגרם של מיטל' if he else 'From Meital’s Instagram' }}</p>
+      <h2 class="nlb-h2">{{ 'רגעים מתוך הנכסים' if he else 'Moments from the listings' }}</h2>
+    </div>
+    <div class="nlb-strip" tabindex="0" role="region" aria-label="{{ 'גלריית תמונות' if he else 'Photo gallery' }}">
+      {% for g in gallery %}<figure><img src="{{ g.src }}" alt="{{ g.cap }}" loading="lazy" decoding="async"><figcaption>{{ g.cap }}</figcaption></figure>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="nlb-sec nlb-cardsec">
+  <div class="nlb-wrap nlb-cardsec-in">
+    <div class="nlb-cardsec-head">
+      <p class="nlb-eyebrow nlb-eyebrow--line">{{ t.b_eyebrow }}</p>
+      <h2 class="nlb-h2">{{ t.b_title }}</h2>
+      <p class="nlb-lead">{{ t.b_lead }}</p>
+    </div>
+    <div class="nlb-bcards">
+      <div class="nlb-bcard nlb-bcard--front">
+        <div class="nlb-bcard-scene" aria-hidden="true">{{ card_scene }}</div>
+        <div class="nlb-bcard-in">
+          <p class="nlb-bcard-brand">{{ t.brand }}</p>
+          <div><p class="nlb-bcard-name">{{ t.name }}</p><p class="nlb-bcard-role">{{ t.role }} <span class="nlb-num">3131540</span></p></div>
+        </div>
+      </div>
+      <div class="nlb-bcard nlb-bcard--back">
+        <div class="nlb-bcard-back-in">
+          <ul class="nlb-bcard-rows">
+            <li>{{ icon('phone') }}<span class="nlb-num">{{ phone }}</span></li>
+            <li>{{ icon('wa') }}<span>{{ t.direct_wa }}</span></li>
+            <li>{{ icon('ig') }}<span class="nlb-num">@meitalkatzir_realestate</span></li>
+            <li>{{ icon('pin') }}<span>{{ t.areas_line }}</span></li>
+          </ul>
+          <div class="nlb-qr">{{ wa_qr }}<span>{{ t.scan_wa }}</span></div>
+        </div>
+        <p class="nlb-bcard-url"><span class="nlb-num">{{ t.share_url }}</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="nlb-contact">
+  <div class="nlb-wrap">
+    <div class="nlb-contact-top">
+      <div class="nlb-contact-copy">
+        <p class="nlb-eyebrow nlb-eyebrow--line">{{ t.k_eyebrow }}</p>
+        <h2 class="nlb-h2 nlb-h2--xl">{{ t.k_title }}</h2>
+        <p>{{ t.k_lead }}</p>
+      </div>
+      <div class="nlb-cta">
+        <a class="nlb-btn nlb-btn--paper" href="{{ wa_general }}" target="_blank" rel="noopener">{{ icon('wa') }}<span>{{ t.c_wa }}</span></a>
+        <a class="nlb-btn nlb-btn--ghost" href="{{ tel }}">{{ icon('phone') }}<span class="nlb-num">{{ phone }}</span></a>
+      </div>
+    </div>
+    <div class="nlb-method">{% for a, b in t.method %}<div><h3>{{ a }}</h3><p>{{ b }}</p></div>{% endfor %}</div>
+    <p class="nlb-legal">{{ t.legal }}</p>
+  </div>
+</footer>
+
+<div class="nlb-mbar">
+  <a class="nlb-btn nlb-btn--sea" href="{{ wa_general }}" target="_blank" rel="noopener">{{ icon('wa') }}<span>{{ t.c_wa }}</span></a>
+  <a class="nlb-btn nlb-btn--white" href="{{ tel }}">{{ icon('phone') }}<span>{{ t.k_call }}</span></a>
+</div>
+</article>

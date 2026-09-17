@@ -1,0 +1,47 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/nadlan_property. Status stays draft. Verify meta keys and term names first (see HANDOFF).",
+ "status": "draft",
+ "title": "4.5 Rooms in a Pool and Spa Complex, Migdalei Ne'eman",
+ "slug": "en-migdalei-neeman-4-5-room-apartment-for-sale",
+ "content_file": "content-en.html",
+ "excerpt": "4.5 rooms plus a safe room, about 130 sqm, two parking spaces and storage in a complex with a covered pool, spa and 24/7 guard. NIS 5,900,000.",
+ "meta": {
+  "listing_type": "sale",
+  "property_type": "apartment",
+  "price": 5900000,
+  "price_per_sqm": 45385,
+  "rooms": 4.5,
+  "floor": 1,
+  "total_floors": 8,
+  "size_sqm": 130,
+  "balcony_sqm": null,
+  "parking": true,
+  "elevator": true,
+  "ac": null,
+  "protected_room": true,
+  "storage": true,
+  "condition": "good",
+  "street": "מיכאל נאמן",
+  "building_number": "",
+  "lat": null,
+  "lng": null,
+  "city": "Tel Aviv-Yafo",
+  "neighborhood": "Tzukei Aviv, Migdalei Ne'eman",
+  "arnona_monthly": null,
+  "vaad_bayit_monthly": null,
+  "status": "active",
+  "photos_csv": ""
+ },
+ "terms": {
+  "nadlan_city": [
+   "Tel Aviv-Yafo"
+  ]
+ },
+ "yoast_meta": {
+  "_yoast_wpseo_title": "4.5-Room Apartment for Sale, Migdalei Ne'eman, Tel Aviv",
+  "_yoast_wpseo_metadesc": "4.5 rooms plus a safe room, about 130 sqm, two parking spaces and storage in a complex with a covered pool, spa and 24/7 guard. NIS 5,900,000.",
+  "_yoast_wpseo_focuskw": "apartment for sale Migdalei Neeman Tel Aviv"
+ },
+ "language": "en",
+ "translation_group": "L08"
+}

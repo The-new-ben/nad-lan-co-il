@@ -1,0 +1,118 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "Double-Height Mini Penthouse Facing the Sea, Tzukei Aviv",
+   "description": "Five rooms plus a safe room, about 184 sqm, sea-facing glass walls and a 20 sqm balcony. NIS 27,000 a month paid yearly, with costs and comparable rents.",
+   "inLanguage": "en",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/en/properties/en-tzukei-aviv-double-height-mini-penthouse-for-rent/",
+   "about": {
+    "@type": "Apartment",
+    "name": "Double-Height Mini Penthouse Facing the Sea, Tzukei Aviv",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Tel Aviv-Yafo",
+     "addressRegion": "Tzukei Aviv",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 5,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 184,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Double-height space",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Glass walls",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Underfloor heating",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Safe room",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Gym",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "Meital Katzir, Real Estate by the Sea",
+     "telephone": "+972523631582"
+    },
+    "priceSpecification": {
+     "@type": "UnitPriceSpecification",
+     "price": 27000,
+     "priceCurrency": "ILS",
+     "unitCode": "MON"
+    }
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Can the rent be paid monthly?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The broker published NIS 27,000 subject to a year paid upfront, and the payments field on Yad2 is marked flexible. Ask the broker for the monthly-payment rent."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does the home cost per month in practice?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "NIS 27,000 rent, NIS 1,400 building fee and estimated arnona of NIS 1,671 to 2,141: about NIS 30,071 to 30,541 a month."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does the Fair Rental Law apply?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The law covers leases of up to about NIS 20,000 a month, so at NIS 27,000 guarantees, repair deadlines and termination terms are set by the contract."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Will brokerage be charged?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The broker's no-brokerage offer applied to leases closed in August 2026. Customary brokerage is one month plus VAT, about NIS 31,860 here."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How far is the beach?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "According to the broker, five to seven minutes on foot to Tel Baruch beach and the coastal park promenade."
+     }
+    }
+   ]
+  }
+ ]
+}

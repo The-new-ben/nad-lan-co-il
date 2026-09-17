@@ -1,0 +1,47 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/nadlan_property. Status stays draft. Verify meta keys and term names first (see HANDOFF).",
+ "status": "draft",
+ "title": "A Private Estate of 700 sqm on a 1.1-Dunam Plot, Herzliya Pituach",
+ "slug": "en-herzliya-pituach-private-estate-for-sale",
+ "content_file": "content-en.html",
+ "excerpt": "About 700 sqm over three levels on a 1,100 sqm plot: seven master suites, pool, cinema, gym, wine cellar and lift, near De Shalit Square. Price on request.",
+ "meta": {
+  "listing_type": "sale",
+  "property_type": "villa",
+  "price": null,
+  "price_per_sqm": null,
+  "rooms": null,
+  "floor": null,
+  "total_floors": 3,
+  "size_sqm": 700,
+  "balcony_sqm": null,
+  "parking": null,
+  "elevator": true,
+  "ac": null,
+  "protected_room": true,
+  "storage": null,
+  "condition": null,
+  "street": "",
+  "building_number": "",
+  "lat": null,
+  "lng": null,
+  "city": "Herzliya",
+  "neighborhood": "Herzliya Pituach",
+  "arnona_monthly": null,
+  "vaad_bayit_monthly": null,
+  "status": "active",
+  "photos_csv": ""
+ },
+ "terms": {
+  "nadlan_city": [
+   "Herzliya"
+  ]
+ },
+ "yoast_meta": {
+  "_yoast_wpseo_title": "Herzliya Pituach Estate for Sale, 700 sqm on 1.1 Dunam",
+  "_yoast_wpseo_metadesc": "About 700 sqm over three levels on a 1,100 sqm plot: seven master suites, pool, cinema, gym, wine cellar and lift, near De Shalit Square. Price on request.",
+  "_yoast_wpseo_focuskw": "villa for sale Herzliya Pituach"
+ },
+ "language": "en",
+ "translation_group": "L01"
+}

@@ -1,0 +1,46 @@
+{
+ "he": {
+  "title": "דירת 3 חדרים להשכרה בנופי ים, מרפסת 20 מ״ר ו-2 חניות",
+  "title_chars": 52,
+  "metadesc": "3 חדרים, כ-90 מ״ר ומרפסת 20 מ״ר בקומה 5, ממ״ד, 2 חניות ומחסן, כחמש דקות מהים. 9,500 ש״ח לחודש, כניסה 1.10.2026, עם עלויות, חוק ושכירויות באזור.",
+  "metadesc_chars": 143,
+  "focus_keyphrase": "דירה להשכרה בנופי ים",
+  "slug": "nofei-yam-3-rooms-balcony-for-rent",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/properties/nofei-yam-3-rooms-balcony-for-rent/",
+  "hreflang": {
+   "he": "https://nad-lan.co.il/properties/nofei-yam-3-rooms-balcony-for-rent/",
+   "en": "https://nad-lan.co.il/en/properties/en-nofei-yam-3-room-apartment-for-rent/",
+   "x-default": "https://nad-lan.co.il/properties/nofei-yam-3-rooms-balcony-for-rent/"
+  },
+  "og_title": "3 חדרים עם מרפסת של 20 מ״ר ו-2 חניות, נופי ים",
+  "og_description": "3 חדרים, כ-90 מ״ר ומרפסת 20 מ״ר בקומה 5, ממ״ד, 2 חניות ומחסן, כחמש דקות מהים. 9,500 ש״ח לחודש, כניסה 1.10.2026, עם עלויות, חוק ושכירויות באזור.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "דירת 3 חדרים להשכרה בנופי ים, מרפסת 20 מ״ר ו-2 חניות",
+   "_yoast_wpseo_metadesc": "3 חדרים, כ-90 מ״ר ומרפסת 20 מ״ר בקומה 5, ממ״ד, 2 חניות ומחסן, כחמש דקות מהים. 9,500 ש״ח לחודש, כניסה 1.10.2026, עם עלויות, חוק ושכירויות באזור.",
+   "_yoast_wpseo_focuskw": "דירה להשכרה בנופי ים"
+  }
+ },
+ "en": {
+  "title": "3-Room Apartment for Rent in Nofei Yam, North Tel Aviv",
+  "title_chars": 54,
+  "metadesc": "Three rooms, about 90 sqm plus a 20 sqm balcony on floor 5, safe room, two parking spaces and storage near the beach. NIS 9,500 a month with costs and comps.",
+  "metadesc_chars": 157,
+  "focus_keyphrase": "apartment for rent Nofei Yam Tel Aviv",
+  "slug": "en-nofei-yam-3-room-apartment-for-rent",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/en/properties/en-nofei-yam-3-room-apartment-for-rent/",
+  "hreflang": {
+   "en": "https://nad-lan.co.il/en/properties/en-nofei-yam-3-room-apartment-for-rent/",
+   "he": "https://nad-lan.co.il/properties/nofei-yam-3-rooms-balcony-for-rent/",
+   "x-default": "https://nad-lan.co.il/properties/nofei-yam-3-rooms-balcony-for-rent/"
+  },
+  "og_title": "Three Rooms with a 20 sqm Balcony and Two Parking Spaces, Nofei Yam",
+  "og_description": "Three rooms, about 90 sqm plus a 20 sqm balcony on floor 5, safe room, two parking spaces and storage near the beach. NIS 9,500 a month with costs and comps.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "3-Room Apartment for Rent in Nofei Yam, North Tel Aviv",
+   "_yoast_wpseo_metadesc": "Three rooms, about 90 sqm plus a 20 sqm balcony on floor 5, safe room, two parking spaces and storage near the beach. NIS 9,500 a month with costs and comps.",
+   "_yoast_wpseo_focuskw": "apartment for rent Nofei Yam Tel Aviv"
+  }
+ }
+}

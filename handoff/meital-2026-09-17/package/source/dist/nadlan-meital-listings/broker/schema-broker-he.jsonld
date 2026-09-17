@@ -1,0 +1,107 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateAgent",
+   "@id": "https://nad-lan.co.il/brokers/meital-katzir/#agent",
+   "name": "מיטל קציר, נדל״ן על הים",
+   "url": "https://nad-lan.co.il/brokers/meital-katzir/",
+   "telephone": "+972-52-363-1582",
+   "areaServed": [
+    {
+     "@type": "Place",
+     "name": "צפון תל אביב"
+    },
+    {
+     "@type": "Place",
+     "name": "שרונה"
+    },
+    {
+     "@type": "Place",
+     "name": "הרצליה פיתוח"
+    }
+   ],
+   "sameAs": [
+    "https://www.instagram.com/meitalkatzir_realestate/"
+   ],
+   "identifier": {
+    "@type": "PropertyValue",
+    "name": "רישיון תיווך",
+    "value": "3131540"
+   }
+  },
+  {
+   "@type": "ItemList",
+   "name": "נכסים בבלעדיות",
+   "numberOfItems": 11,
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "url": "https://nad-lan.co.il/properties/herzliya-pituach-private-estate-for-sale/",
+     "name": "אחוזה פרטית של 700 מ״ר על מגרש של 1.1 דונם, הרצליה פיתוח"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "url": "https://nad-lan.co.il/properties/kochav-hatzafon-new-mini-penthouse-for-sale/",
+     "name": "מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "url": "https://nad-lan.co.il/properties/migdalei-neeman-4-5-rooms-for-sale/",
+     "name": "4.5 חדרים במתחם עם בריכה וספא, מגדלי נאמן"
+    },
+    {
+     "@type": "ListItem",
+     "position": 4,
+     "url": "https://nad-lan.co.il/properties/tzukei-aviv-3-5-rooms-furnished-tenanted-for-sale/",
+     "name": "3.5 חדרים מרוהטת עם שוכר, רחוב אליהו ברלין"
+    },
+    {
+     "@type": "ListItem",
+     "position": 5,
+     "url": "https://nad-lan.co.il/properties/tzukei-aviv-3-rooms-berlin-for-sale/",
+     "name": "3 חדרים עם 2 חניות ומחסן, רחוב אליהו ברלין"
+    },
+    {
+     "@type": "ListItem",
+     "position": 6,
+     "url": "https://nad-lan.co.il/properties/tzukei-aviv-double-height-mini-penthouse-for-rent/",
+     "name": "מיני פנטהאוז בחלל כפול מול הים, צוקי אביב"
+    },
+    {
+     "@type": "ListItem",
+     "position": 7,
+     "url": "https://nad-lan.co.il/properties/bsr-sarona-designer-4-5-rooms-for-rent/",
+     "name": "4.5 חדרים בעיצוב מעצבת עם מרפסת לים, ב.ס.ר שרונה"
+    },
+    {
+     "@type": "ListItem",
+     "position": 8,
+     "url": "https://nad-lan.co.il/properties/bsr-sarona-5-rooms-sea-view-for-rent/",
+     "name": "5 חדרים בקומה גבוהה עם נוף לים, ב.ס.ר שרונה"
+    },
+    {
+     "@type": "ListItem",
+     "position": 9,
+     "url": "https://nad-lan.co.il/properties/nofei-yam-mini-penthouse-5-rooms-for-rent/",
+     "name": "מיני פנטהאוז של 5 חדרים עם נוף לים, נופי ים"
+    },
+    {
+     "@type": "ListItem",
+     "position": 10,
+     "url": "https://nad-lan.co.il/properties/nofei-yam-3-rooms-balcony-for-rent/",
+     "name": "3 חדרים עם מרפסת של 20 מ״ר ו-2 חניות, נופי ים"
+    },
+    {
+     "@type": "ListItem",
+     "position": 11,
+     "url": "https://nad-lan.co.il/properties/ramat-aviv-5-rooms-pool-complex-for-rent/",
+     "name": "5 חדרים בקומה גבוהה במתחם עם בריכה, רמת אביב"
+    }
+   ]
+  }
+ ]
+}

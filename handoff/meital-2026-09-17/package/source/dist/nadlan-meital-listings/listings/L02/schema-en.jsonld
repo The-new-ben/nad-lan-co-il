@@ -1,0 +1,112 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "Designer-Finished 4.5 Rooms with a Sea-View Balcony, B.S.R Sarona",
+   "description": "4.5 rooms (originally 5), 128 sqm and a 14 sqm west balcony to the sea, concealed fridges, covered parking and storage. Computed rent band, costs and law.",
+   "inLanguage": "en",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/en/properties/en-bsr-sarona-designer-4-5-room-apartment-for-rent/",
+   "about": {
+    "@type": "Apartment",
+    "name": "Designer-Finished 4.5 Rooms with a Sea-View Balcony, B.S.R Sarona",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Tel Aviv-Yafo",
+     "addressRegion": "Sarona",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 4.5,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 128,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "24/7 security",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Gym",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Parking",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Storage",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "High-speed lifts",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "Meital Katzir, Real Estate by the Sea",
+     "telephone": "+972523631582"
+    }
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What is the rent?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The rent was not published. Eleven listings of 5-room sea or west-facing units in the project ask NIS 130 to 148 per built sqm, about NIS 16,640 to 18,944 a month for 128 sqm. This is a computation, not a quote."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What changed when it was converted to 4.5 rooms?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The broker notes the unit was planned as five rooms and converted to 4.5. Check the change and the integrity of the safe room on the plan."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is there a pool?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No communal pool or spa appears in developer or contractor sources. The project has a residents' gym and 24/7 security."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How close is the light rail?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Exit A of Yehudit station on the Red Line serves the Sarona complex, and the line has run since August 2023."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Will the Fair Rental Law apply?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "If the rent is up to NIS 20,000 a month, the law applies and guarantees are capped at the lower of 3 months' rent or a third of the total rent."
+     }
+    }
+   ]
+  }
+ ]
+}

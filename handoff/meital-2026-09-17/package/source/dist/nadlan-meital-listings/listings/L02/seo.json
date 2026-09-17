@@ -1,0 +1,46 @@
+{
+ "he": {
+  "title": "דירת 4.5 חדרים להשכרה בב.ס.ר שרונה, עיצוב מעצבת",
+  "title_chars": 47,
+  "metadesc": "4.5 חדרים (במקור 5), 128 מ״ר ומרפסת מערבית של 14 מ״ר לים, מקררים מוסתרים, חניה מקורה ומחסן. טווח שכירות מחושב, עלויות וחוק.",
+  "metadesc_chars": 123,
+  "focus_keyphrase": "דירת מעצבת להשכרה בשרונה",
+  "slug": "bsr-sarona-designer-4-5-rooms-for-rent",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/properties/bsr-sarona-designer-4-5-rooms-for-rent/",
+  "hreflang": {
+   "he": "https://nad-lan.co.il/properties/bsr-sarona-designer-4-5-rooms-for-rent/",
+   "en": "https://nad-lan.co.il/en/properties/en-bsr-sarona-designer-4-5-room-apartment-for-rent/",
+   "x-default": "https://nad-lan.co.il/properties/bsr-sarona-designer-4-5-rooms-for-rent/"
+  },
+  "og_title": "4.5 חדרים בעיצוב מעצבת עם מרפסת לים, ב.ס.ר שרונה",
+  "og_description": "4.5 חדרים (במקור 5), 128 מ״ר ומרפסת מערבית של 14 מ״ר לים, מקררים מוסתרים, חניה מקורה ומחסן. טווח שכירות מחושב, עלויות וחוק.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "דירת 4.5 חדרים להשכרה בב.ס.ר שרונה, עיצוב מעצבת",
+   "_yoast_wpseo_metadesc": "4.5 חדרים (במקור 5), 128 מ״ר ומרפסת מערבית של 14 מ״ר לים, מקררים מוסתרים, חניה מקורה ומחסן. טווח שכירות מחושב, עלויות וחוק.",
+   "_yoast_wpseo_focuskw": "דירת מעצבת להשכרה בשרונה"
+  }
+ },
+ "en": {
+  "title": "Designer 4.5-Room Apartment for Rent, B.S.R Sarona",
+  "title_chars": 50,
+  "metadesc": "4.5 rooms (originally 5), 128 sqm and a 14 sqm west balcony to the sea, concealed fridges, covered parking and storage. Computed rent band, costs and law.",
+  "metadesc_chars": 154,
+  "focus_keyphrase": "designer apartment for rent Sarona Tel Aviv",
+  "slug": "en-bsr-sarona-designer-4-5-room-apartment-for-rent",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/en/properties/en-bsr-sarona-designer-4-5-room-apartment-for-rent/",
+  "hreflang": {
+   "en": "https://nad-lan.co.il/en/properties/en-bsr-sarona-designer-4-5-room-apartment-for-rent/",
+   "he": "https://nad-lan.co.il/properties/bsr-sarona-designer-4-5-rooms-for-rent/",
+   "x-default": "https://nad-lan.co.il/properties/bsr-sarona-designer-4-5-rooms-for-rent/"
+  },
+  "og_title": "Designer-Finished 4.5 Rooms with a Sea-View Balcony, B.S.R Sarona",
+  "og_description": "4.5 rooms (originally 5), 128 sqm and a 14 sqm west balcony to the sea, concealed fridges, covered parking and storage. Computed rent band, costs and law.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "Designer 4.5-Room Apartment for Rent, B.S.R Sarona",
+   "_yoast_wpseo_metadesc": "4.5 rooms (originally 5), 128 sqm and a 14 sqm west balcony to the sea, concealed fridges, covered parking and storage. Computed rent band, costs and law.",
+   "_yoast_wpseo_focuskw": "designer apartment for rent Sarona Tel Aviv"
+  }
+ }
+}

@@ -1,0 +1,117 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "Five-Room Mini Penthouse with a Sea View, Nofei Yam",
+   "description": "Five rooms with three master suites, 135 sqm plus a 20 sqm balcony on a high floor with a sea view, two EV-ready parking spaces, gym and guard.",
+   "inLanguage": "en",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/en/properties/en-nofei-yam-5-room-mini-penthouse-for-rent/",
+   "about": {
+    "@type": "Apartment",
+    "name": "Five-Room Mini Penthouse with a Sea View, Nofei Yam",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Tel Aviv-Yafo",
+     "addressRegion": "Nofei Yam",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 5,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 135,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Gym",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Guard",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Parking",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "EV charging preparation",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Storage",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Balcony",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "Meital Katzir, Real Estate by the Sea",
+     "telephone": "+972523631582"
+    }
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What does the apartment cost per month?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The broker has not published a rent. Based on similar listings in Nofei Yam and Lamed HaHadasha, the market range for 135 sqm is about NIS 15,500 to 20,250 a month, before arnona and the building fee. This is a computation, not a quote."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "When can a tenant move in?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The broker gives a flexible entry date; agree the date with her directly."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does the building offer?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Per the broker, a gym and a guard. The guard's hours and what the building fee covers were not published."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does the Fair Rental Law apply?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Only if the rent does not exceed about NIS 20,000 a month. Then guarantees are capped at 3 months' rent at most, and the landlord's repair duties apply. The computed range for this unit crosses that threshold."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is the parking EV-ready?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Per the broker, the parking spaces are prepared for charging. Whether a charger is installed, and who pays for installation and electricity, was not stated."
+     }
+    }
+   ]
+  }
+ ]
+}

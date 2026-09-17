@@ -1,0 +1,47 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/nadlan_property. Status stays draft. Verify meta keys and term names first (see HANDOFF).",
+ "status": "draft",
+ "title": "New Mini Penthouse with 80 sqm of Terraces, Kochav HaTzafon",
+ "slug": "en-kochav-hatzafon-new-mini-penthouse-for-sale",
+ "content_file": "content-en.html",
+ "excerpt": "Five rooms, about 190 sqm plus 76 to 80 sqm of terraces on floor 11 of 12 in a new boutique building. NIS 18,000,000 with price per sqm, taxes and comps.",
+ "meta": {
+  "listing_type": "sale",
+  "property_type": "penthouse",
+  "price": 18000000,
+  "price_per_sqm": 94737,
+  "rooms": 5,
+  "floor": 11,
+  "total_floors": 12,
+  "size_sqm": 190,
+  "balcony_sqm": 80,
+  "parking": true,
+  "elevator": true,
+  "ac": true,
+  "protected_room": true,
+  "storage": true,
+  "condition": "new",
+  "street": "",
+  "building_number": "",
+  "lat": null,
+  "lng": null,
+  "city": "Tel Aviv-Yafo",
+  "neighborhood": "Kochav HaTzafon",
+  "arnona_monthly": null,
+  "vaad_bayit_monthly": null,
+  "status": "active",
+  "photos_csv": ""
+ },
+ "terms": {
+  "nadlan_city": [
+   "Tel Aviv-Yafo"
+  ]
+ },
+ "yoast_meta": {
+  "_yoast_wpseo_title": "New Mini Penthouse for Sale in Kochav HaTzafon, Tel Aviv",
+  "_yoast_wpseo_metadesc": "Five rooms, about 190 sqm plus 76 to 80 sqm of terraces on floor 11 of 12 in a new boutique building. NIS 18,000,000 with price per sqm, taxes and comps.",
+  "_yoast_wpseo_focuskw": "mini penthouse for sale Kochav HaTzafon Tel Aviv"
+ },
+ "language": "en",
+ "translation_group": "L07"
+}

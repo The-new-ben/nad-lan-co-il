@@ -1,0 +1,126 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "Three Rooms with a 20 sqm Balcony and Two Parking Spaces, Nofei Yam",
+   "description": "Three rooms, about 90 sqm plus a 20 sqm balcony on floor 5, safe room, two parking spaces and storage near the beach. NIS 9,500 a month with costs and comps.",
+   "inLanguage": "en",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/en/properties/en-nofei-yam-3-room-apartment-for-rent/",
+   "about": {
+    "@type": "Apartment",
+    "name": "Three Rooms with a 20 sqm Balcony and Two Parking Spaces, Nofei Yam",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Tel Aviv-Yafo",
+     "addressRegion": "Nofei Yam",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 3,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 90,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Lift",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Safe room",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Parking",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Storage",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Balcony",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "Meital Katzir, Real Estate by the Sea",
+     "telephone": "+972523631582"
+    },
+    "priceSpecification": {
+     "@type": "UnitPriceSpecification",
+     "price": 9500,
+     "priceCurrency": "ILS",
+     "unitCode": "MON"
+    }
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What does the apartment cost per month?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "NIS 9,500 per the broker's listings. With arnona as estimated, and before the building fee, which was not published, about NIS 10,332 to 10,536 a month."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How large is it, and on which floor?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Per the broker's Madlan listing: about 90 sqm plus a balcony of about 20 sqm, on floor 5 of a seven-floor building on pillars with a lift."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is there a safe room and parking?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Per the broker, the unit has a safe room, two separate parking spaces and a large storage room near the parking."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How far is the sea?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "About five minutes on foot per the broker, next to the path to the sea. The coastal park promenade, about 2 km from Tel Baruch beach to Tzuk beach, opened in 2023."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does the law say about guarantees?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "At rents up to NIS 20,000 the Fair Rental Law applies, and guarantees are capped at the lower of 3 months' rent or a third of the total rent: up to NIS 28,500 on a lease of 9 months or more."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is there construction nearby?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. A 30-floor tower on Einstein Street is due for completion in mid-2028, and the Sde Dov district is being built west of the neighborhood."
+     }
+    }
+   ]
+  }
+ ]
+}

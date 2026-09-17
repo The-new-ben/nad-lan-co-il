@@ -1,0 +1,47 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/nadlan_property. Status stays draft. Verify meta keys and term names first (see HANDOFF).",
+ "status": "draft",
+ "title": "Three Rooms with Two Parking Spaces, Eliyahu Berlin Street",
+ "slug": "en-tzukei-aviv-3-room-apartment-for-sale",
+ "content_file": "content-en.html",
+ "excerpt": "Three rooms, 90 sqm plus a 12 sqm balcony, two parking spaces, storage and a safe room in a boutique building. NIS 4,650,000 with tax, costs and comps.",
+ "meta": {
+  "listing_type": "sale",
+  "property_type": "apartment",
+  "price": 4650000,
+  "price_per_sqm": 51667,
+  "rooms": 3,
+  "floor": 2,
+  "total_floors": 9,
+  "size_sqm": 90,
+  "balcony_sqm": 12,
+  "parking": true,
+  "elevator": null,
+  "ac": null,
+  "protected_room": true,
+  "storage": true,
+  "condition": "new",
+  "street": "אליהו ברלין",
+  "building_number": "",
+  "lat": null,
+  "lng": null,
+  "city": "Tel Aviv-Yafo",
+  "neighborhood": "Tzukei Aviv",
+  "arnona_monthly": null,
+  "vaad_bayit_monthly": 600,
+  "status": "active",
+  "photos_csv": ""
+ },
+ "terms": {
+  "nadlan_city": [
+   "Tel Aviv-Yafo"
+  ]
+ },
+ "yoast_meta": {
+  "_yoast_wpseo_title": "3-Room Apartment for Sale in Tzukei Aviv, Tel Aviv",
+  "_yoast_wpseo_metadesc": "Three rooms, 90 sqm plus a 12 sqm balcony, two parking spaces, storage and a safe room in a boutique building. NIS 4,650,000 with tax, costs and comps.",
+  "_yoast_wpseo_focuskw": "3 room apartment for sale Tzukei Aviv"
+ },
+ "language": "en",
+ "translation_group": "L04"
+}

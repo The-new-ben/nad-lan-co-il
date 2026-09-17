@@ -1,0 +1,118 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון",
+   "description": "5 חדרים, כ-190 מ״ר ומרפסות של 76 עד 80 מ״ר בקומה 11 מתוך 12, בניין בוטיק חדש. 18,000,000 ש״ח, עם מחיר למ״ר, מס רכישה ועסקאות.",
+   "inLanguage": "he-IL",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/properties/kochav-hatzafon-new-mini-penthouse-for-sale/",
+   "about": {
+    "@type": "Apartment",
+    "name": "מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "תל אביב-יפו",
+     "addressRegion": "כוכב הצפון",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 5,
+    "floorSize": {
+     "@type": "QuantitativeValue",
+     "value": 190,
+     "unitCode": "MTK"
+    },
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מרפסות 80 מ״ר",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מיזוג VRF",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "ממ״ד",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "2 חניות",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "מחסן",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "חדר כושר",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#Sell",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "מיטל קציר, נדל״ן על הים",
+     "telephone": "+972523631582"
+    },
+    "price": 18000000
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "כמה עולה המ״ר בדירה?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "על 190 מ״ר בנוי כ-94,737 ש״ח למ״ר. בשקלול 80 מ״ר המרפסות בשליש משטחן כ-83,077 ש״ח, ובחצי משטחן כ-78,261 ש״ח. הממוצע בשכונה 49,000 עד 51,000 ש״ח למ״ר, ופרויקטים חדשים בה מגיעים ל-90,000 עד 95,000 ש״ח."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "כמה מס רכישה ישלם רוכש?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לפי מדרגות 2026: כ-1,153,886 ש״ח לרוכש דירה יחידה (6.41%), כ-1,678,899 ש״ח לדירה נוספת או לתושב חוץ (9.33%), וכ-975,976 ש״ח לעולה חדש זכאי (5.42%)."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "איך מגיעים ברגל לפארק הירקון?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "גשר הולכי רגל ואופניים של כ-170 מ׳ מרחוב לוי אשכול אל הפארק נמצא בבנייה מקיץ 2026 וצפוי להיפתח ב-2027."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "מה עשוי להשתנות בנוף?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "מצפון מתפתח רובע שדה דב, עם מגדלים של 20 עד 45 קומות בתכנית המרכז, ובפינת רוקח ונמיר מתוכננים שלושה מגדלים של 28 קומות. לפי מדלן, נופים פתוחים בשכונה צפויים להיחסם בחלקם."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "כמה זה בדולרים?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "לפי השער היציג מ-15.9.2026, 18,000,000 ש״ח הם כ-5.9 מיליון דולר או כ-5.1 מיליון אירו."
+     }
+    }
+   ]
+  }
+ ]
+}

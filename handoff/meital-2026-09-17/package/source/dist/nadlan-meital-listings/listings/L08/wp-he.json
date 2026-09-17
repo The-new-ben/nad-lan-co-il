@@ -1,0 +1,47 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/nadlan_property. Status stays draft. Verify meta keys and term names first (see HANDOFF).",
+ "status": "draft",
+ "title": "4.5 חדרים במתחם עם בריכה וספא, מגדלי נאמן",
+ "slug": "migdalei-neeman-4-5-rooms-for-sale",
+ "content_file": "content-he.html",
+ "excerpt": "4.5 חדרים וממ״ד, כ-130 מ״ר, 2 חניות ומחסן במתחם מגדלי נאמן עם בריכה מקורה, ספא ומאבטח 24/7. 5,900,000 ש״ח, עם דמי ניהול, מס ועסקאות.",
+ "meta": {
+  "listing_type": "sale",
+  "property_type": "apartment",
+  "price": 5900000,
+  "price_per_sqm": 45385,
+  "rooms": 4.5,
+  "floor": 1,
+  "total_floors": 8,
+  "size_sqm": 130,
+  "balcony_sqm": null,
+  "parking": true,
+  "elevator": true,
+  "ac": null,
+  "protected_room": true,
+  "storage": true,
+  "condition": "good",
+  "street": "מיכאל נאמן",
+  "building_number": "",
+  "lat": null,
+  "lng": null,
+  "city": "תל אביב-יפו",
+  "neighborhood": "צוקי אביב, מגדלי נאמן",
+  "arnona_monthly": null,
+  "vaad_bayit_monthly": null,
+  "status": "active",
+  "photos_csv": ""
+ },
+ "terms": {
+  "nadlan_city": [
+   "תל אביב-יפו"
+  ]
+ },
+ "yoast_meta": {
+  "_yoast_wpseo_title": "דירת 4.5 חדרים למכירה במגדלי נאמן, בריכה וספא",
+  "_yoast_wpseo_metadesc": "4.5 חדרים וממ״ד, כ-130 מ״ר, 2 חניות ומחסן במתחם מגדלי נאמן עם בריכה מקורה, ספא ומאבטח 24/7. 5,900,000 ש״ח, עם דמי ניהול, מס ועסקאות.",
+  "_yoast_wpseo_focuskw": "דירה למכירה במגדלי נאמן"
+ },
+ "language": "he",
+ "translation_group": "L08"
+}

@@ -1,0 +1,99 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "RealEstateListing",
+   "name": "Five Rooms on a High Floor in a Complex with a Pool, Ramat Aviv",
+   "description": "Five rooms on a high floor, spacious and bright, two parking spaces and storage, in a complex with a pool, gym and guard. Local rent range, fees and law.",
+   "inLanguage": "en",
+   "datePosted": "2026-09-16",
+   "url": "https://nad-lan.co.il/en/properties/en-ramat-aviv-5-room-apartment-pool-complex-for-rent/",
+   "about": {
+    "@type": "Apartment",
+    "name": "Five Rooms on a High Floor in a Complex with a Pool, Ramat Aviv",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Tel Aviv-Yafo",
+     "addressRegion": "Ramat Aviv",
+     "addressCountry": "IL"
+    },
+    "numberOfRooms": 5,
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Swimming pool",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Gym",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Guard",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Parking",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Storage",
+      "value": true
+     }
+    ]
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+    "offeredBy": {
+     "@type": "RealEstateAgent",
+     "name": "Meital Katzir, Real Estate by the Sea",
+     "telephone": "+972523631582"
+    }
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What does the apartment cost per month?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The broker has not published a rent. Five-room units in Ramat Aviv HaHadasha and Ramat Aviv Gimel are offered at NIS 12,800 to 18,000 a month, and a building with a pool adds a building fee of about NIS 1,700 to 2,300, based on examples nearby."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which complex is it?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The complex name and address were not published; Meital Katzir gives them on direct contact. Per the broker, the complex has a swimming pool, a gym, a guard and further services."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does the Fair Rental Law apply?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It does if the rent does not exceed about NIS 20,000 a month, as across the whole asking range for similar units nearby. Guarantees are then capped at the lower of 3 months' rent or a third of the total rent."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is nearby?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ramat Aviv has Tel Aviv University, Ramat Aviv Mall with about 140 stores, the Eretz Israel Museum and the Palmach Museum. Exact distances depend on the address."
+     }
+    }
+   ]
+  }
+ ]
+}

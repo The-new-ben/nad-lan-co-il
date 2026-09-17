@@ -6,7 +6,7 @@ import base64, ctypes, ctypes.wintypes as wt, json, os, re, sys, time, urllib.re
 
 SECRETS_PATH = r"C:\Users\777\Documents\websites\.codex-secrets\wordpress-app-passwords\nad-lan.co.il.json"
 HERE = os.path.dirname(os.path.abspath(__file__))
-PKG = "C:/Users/777/nad-lan/nad-lan-co-il/handoff/meital-2026-09-17/package"
+PKG = r"C:/Users/777/nad-lan/nad-lan-co-il/handoff/meital-2026-09-17/package"
 WP = "https://nad-lan.co.il"
 ARGS = sys.argv[1:]
 APPLY = "--apply" in ARGS
@@ -59,14 +59,24 @@ EXTRA_LISTING = """
 .nlps-title{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;margin:0!important}
 /* nad-lan: the block masthead carries the photo; hide the theme's own featured image */
 .single-nadlan_property .wp-block-post-featured-image{display:none!important}
+/* nad-lan: the listing runs at its own width, not the theme's reading column */
+.single-nadlan_property .entry-content.is-layout-constrained>*{max-width:none!important;margin-left:auto!important;margin-right:auto!important}
+.nlx .nlx-wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(16px,3vw,28px)}
 /* nad-lan: one breadcrumb, no site-wide pills on the broker's listing pages */
 .single-nadlan_property .yoast-breadcrumbs,.single-nadlan_property .nlcta-start,.single-nadlan_property .nlcta-wa{display:none!important}
-/* nad-lan: photo gallery inside the prestige block */
-.nlx .nlx-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0}
-.nlx .nlx-gallery figure{margin:0;aspect-ratio:4/3;overflow:hidden;border-radius:var(--nlx-r,8px);background:var(--nlx-sand,#EEE9DD)}
-.nlx .nlx-gallery img{width:100%;height:100%;object-fit:cover;display:block}
-.nlx .nlx-gallery figure:first-child{grid-column:span 2;grid-row:span 2}
-@media (max-width:720px){.nlx .nlx-gallery{grid-template-columns:repeat(2,1fr)}.nlx .nlx-gallery figure:first-child{grid-column:span 2;grid-row:auto}}
+.single-nadlan_property .wp-block-post-featured-image{display:none!important}
+/* nad-lan: the listing runs at its own width, not the theme's reading column */
+.single-nadlan_property .entry-content.is-layout-constrained>*{max-width:none!important;margin-left:auto!important;margin-right:auto!important}
+.nlx .nlx-wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(16px,3vw,28px)}
+/* nad-lan: the masthead frame takes the photograph's own proportion, so nothing is cropped */
+.nlx .nlx-plate--photo{background:var(--nlx-deep);aspect-ratio:var(--nlx-cover-ar,1.5);height:auto;max-height:78vh;position:relative;overflow:hidden}
+.nlx .nlx-plate--photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;max-width:none}
+/* nad-lan: photographs keep their own shape in a column gallery */
+.nlx .nlx-gallery{columns:3;column-gap:12px;margin:0}
+.nlx .nlx-gallery figure{break-inside:avoid;margin:0 0 12px;border-radius:var(--nlx-r,8px);overflow:hidden;background:var(--nlx-sand,#EEE9DD)}
+.nlx .nlx-gallery img{width:100%;height:auto;display:block}
+@media (max-width:900px){.nlx .nlx-gallery{columns:2}}
+@media (max-width:520px){.nlx .nlx-gallery{columns:1}}
 """
 
 def inline_css(content, css):
@@ -85,14 +95,15 @@ def build(it):
     assert m, "plate figure not found"
     name_m = re.search(r'<span class="nlx-plate-name">(.*?)</span>', m.group(0), re.S)
     plate_name = name_m.group(1) if name_m else it["area"]["he"]
-    photo_fig = ('<figure class="nlx-plate nlx-plate--photo"><img src="' + esc(cover["url"]) + '" alt="' + esc(cover["alt"]) +
-                 '" width="1440" height="1080" loading="eager" decoding="async" fetchpriority="high"><span class="nlx-plate-name">' + plate_name + '</span></figure>')
+    ar = cover.get("r") or 1.5
+    photo_fig = ('<figure class="nlx-plate nlx-plate--photo" style="--nlx-cover-ar:' + ("%.3f" % ar) + '"><img src="' + esc(cover["url"]) + '" alt="' + esc(cover["alt"]) +
+                 '" width="' + str(cover.get("w") or 1600) + '" height="' + str(cover.get("h") or 1067) + '" loading="eager" decoding="async" fetchpriority="high"><span class="nlx-plate-name">' + plate_name + '</span></figure>')
     content = content[:m.start()] + photo_fig + content[m.end():]
     # 2. gallery section before the first content section inside .nlx-main
     if gallery:
         figs = "".join('<figure><img src="' + esc(g["url"]) + '" alt="' + esc(g["alt"]) + '" loading="lazy" decoding="async"></figure>' for g in gallery)
         sec = ('<section class="nlx-sec" id="photos-' + L + '-he"><div class="nlx-sec-head"><p class="nlx-eyebrow">תמונות</p><h2 class="nlx-h2">הנכס בתמונות</h2></div>'
-               '<div class="nlx-gallery">' + figs + '</div><p class="nlx-facts-note">צילומים: המשווקת, מתוך הפרסומים שלה.</p></section>\n')
+               '<div class="nlx-gallery">' + figs + '</div><p class="nlx-facts-note">צילומים: מיטל קציר.</p></section>\n')
         anchor = re.search(r'<div class="nlx-main">\s*', content)
         assert anchor, "nlx-main not found"
         content = content[:anchor.end()] + sec + content[anchor.end():]

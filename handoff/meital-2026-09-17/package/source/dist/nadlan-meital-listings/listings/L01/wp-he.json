@@ -1,0 +1,47 @@
+{
+ "_about": "WordPress REST payload for POST /wp-json/wp/v2/nadlan_property. Status stays draft. Verify meta keys and term names first (see HANDOFF).",
+ "status": "draft",
+ "title": "אחוזה פרטית של 700 מ״ר על מגרש של 1.1 דונם, הרצליה פיתוח",
+ "slug": "herzliya-pituach-private-estate-for-sale",
+ "content_file": "content-he.html",
+ "excerpt": "אחוזה פרטית בהרצליה פיתוח: כ-700 מ״ר ב-3 מפלסים על מגרש של 1,100 מ״ר, 7 סוויטות, בריכה, קולנוע, חדר כושר, מרתף יין ומעלית. מחיר לפי פנייה.",
+ "meta": {
+  "listing_type": "sale",
+  "property_type": "villa",
+  "price": null,
+  "price_per_sqm": null,
+  "rooms": null,
+  "floor": null,
+  "total_floors": 3,
+  "size_sqm": 700,
+  "balcony_sqm": null,
+  "parking": null,
+  "elevator": true,
+  "ac": null,
+  "protected_room": true,
+  "storage": null,
+  "condition": null,
+  "street": "",
+  "building_number": "",
+  "lat": null,
+  "lng": null,
+  "city": "הרצליה",
+  "neighborhood": "הרצליה פיתוח",
+  "arnona_monthly": null,
+  "vaad_bayit_monthly": null,
+  "status": "active",
+  "photos_csv": ""
+ },
+ "terms": {
+  "nadlan_city": [
+   "הרצליה"
+  ]
+ },
+ "yoast_meta": {
+  "_yoast_wpseo_title": "וילה למכירה בהרצליה פיתוח, 700 מ״ר על 1.1 דונם",
+  "_yoast_wpseo_metadesc": "אחוזה פרטית בהרצליה פיתוח: כ-700 מ״ר ב-3 מפלסים על מגרש של 1,100 מ״ר, 7 סוויטות, בריכה, קולנוע, חדר כושר, מרתף יין ומעלית. מחיר לפי פנייה.",
+  "_yoast_wpseo_focuskw": "וילה למכירה בהרצליה פיתוח"
+ },
+ "language": "he",
+ "translation_group": "L01"
+}

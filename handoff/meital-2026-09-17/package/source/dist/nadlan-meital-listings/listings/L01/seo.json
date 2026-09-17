@@ -1,0 +1,46 @@
+{
+ "he": {
+  "title": "וילה למכירה בהרצליה פיתוח, 700 מ״ר על 1.1 דונם",
+  "title_chars": 46,
+  "metadesc": "אחוזה פרטית בהרצליה פיתוח: כ-700 מ״ר ב-3 מפלסים על מגרש של 1,100 מ״ר, 7 סוויטות, בריכה, קולנוע, חדר כושר, מרתף יין ומעלית. מחיר לפי פנייה.",
+  "metadesc_chars": 138,
+  "focus_keyphrase": "וילה למכירה בהרצליה פיתוח",
+  "slug": "herzliya-pituach-private-estate-for-sale",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/properties/herzliya-pituach-private-estate-for-sale/",
+  "hreflang": {
+   "he": "https://nad-lan.co.il/properties/herzliya-pituach-private-estate-for-sale/",
+   "en": "https://nad-lan.co.il/en/properties/en-herzliya-pituach-private-estate-for-sale/",
+   "x-default": "https://nad-lan.co.il/properties/herzliya-pituach-private-estate-for-sale/"
+  },
+  "og_title": "אחוזה פרטית של 700 מ״ר על מגרש של 1.1 דונם, הרצליה פיתוח",
+  "og_description": "אחוזה פרטית בהרצליה פיתוח: כ-700 מ״ר ב-3 מפלסים על מגרש של 1,100 מ״ר, 7 סוויטות, בריכה, קולנוע, חדר כושר, מרתף יין ומעלית. מחיר לפי פנייה.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "וילה למכירה בהרצליה פיתוח, 700 מ״ר על 1.1 דונם",
+   "_yoast_wpseo_metadesc": "אחוזה פרטית בהרצליה פיתוח: כ-700 מ״ר ב-3 מפלסים על מגרש של 1,100 מ״ר, 7 סוויטות, בריכה, קולנוע, חדר כושר, מרתף יין ומעלית. מחיר לפי פנייה.",
+   "_yoast_wpseo_focuskw": "וילה למכירה בהרצליה פיתוח"
+  }
+ },
+ "en": {
+  "title": "Herzliya Pituach Estate for Sale, 700 sqm on 1.1 Dunam",
+  "title_chars": 54,
+  "metadesc": "About 700 sqm over three levels on a 1,100 sqm plot: seven master suites, pool, cinema, gym, wine cellar and lift, near De Shalit Square. Price on request.",
+  "metadesc_chars": 155,
+  "focus_keyphrase": "villa for sale Herzliya Pituach",
+  "slug": "en-herzliya-pituach-private-estate-for-sale",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/en/properties/en-herzliya-pituach-private-estate-for-sale/",
+  "hreflang": {
+   "en": "https://nad-lan.co.il/en/properties/en-herzliya-pituach-private-estate-for-sale/",
+   "he": "https://nad-lan.co.il/properties/herzliya-pituach-private-estate-for-sale/",
+   "x-default": "https://nad-lan.co.il/properties/herzliya-pituach-private-estate-for-sale/"
+  },
+  "og_title": "A Private Estate of 700 sqm on a 1.1-Dunam Plot, Herzliya Pituach",
+  "og_description": "About 700 sqm over three levels on a 1,100 sqm plot: seven master suites, pool, cinema, gym, wine cellar and lift, near De Shalit Square. Price on request.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "Herzliya Pituach Estate for Sale, 700 sqm on 1.1 Dunam",
+   "_yoast_wpseo_metadesc": "About 700 sqm over three levels on a 1,100 sqm plot: seven master suites, pool, cinema, gym, wine cellar and lift, near De Shalit Square. Price on request.",
+   "_yoast_wpseo_focuskw": "villa for sale Herzliya Pituach"
+  }
+ }
+}

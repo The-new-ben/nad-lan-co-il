@@ -1,0 +1,46 @@
+{
+ "he": {
+  "title": "דירת 5 חדרים להשכרה בב.ס.ר שרונה, נוף לים",
+  "title_chars": 41,
+  "metadesc": "5 חדרים, 117 מ״ר ומרפסת 14 מ״ר בקומה גבוהה, נוף פתוח לים, חניה ומחסן, כניסה מיידית. 15,500 ש״ח לחודש, עם עלויות, חוק ושכירויות בפרויקט.",
+  "metadesc_chars": 135,
+  "focus_keyphrase": "דירה להשכרה בב.ס.ר שרונה",
+  "slug": "bsr-sarona-5-rooms-sea-view-for-rent",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/properties/bsr-sarona-5-rooms-sea-view-for-rent/",
+  "hreflang": {
+   "he": "https://nad-lan.co.il/properties/bsr-sarona-5-rooms-sea-view-for-rent/",
+   "en": "https://nad-lan.co.il/en/properties/en-bsr-sarona-5-room-sea-view-apartment-for-rent/",
+   "x-default": "https://nad-lan.co.il/properties/bsr-sarona-5-rooms-sea-view-for-rent/"
+  },
+  "og_title": "5 חדרים בקומה גבוהה עם נוף לים, ב.ס.ר שרונה",
+  "og_description": "5 חדרים, 117 מ״ר ומרפסת 14 מ״ר בקומה גבוהה, נוף פתוח לים, חניה ומחסן, כניסה מיידית. 15,500 ש״ח לחודש, עם עלויות, חוק ושכירויות בפרויקט.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "דירת 5 חדרים להשכרה בב.ס.ר שרונה, נוף לים",
+   "_yoast_wpseo_metadesc": "5 חדרים, 117 מ״ר ומרפסת 14 מ״ר בקומה גבוהה, נוף פתוח לים, חניה ומחסן, כניסה מיידית. 15,500 ש״ח לחודש, עם עלויות, חוק ושכירויות בפרויקט.",
+   "_yoast_wpseo_focuskw": "דירה להשכרה בב.ס.ר שרונה"
+  }
+ },
+ "en": {
+  "title": "5-Room Sea-View Apartment for Rent, B.S.R Sarona Tel Aviv",
+  "title_chars": 57,
+  "metadesc": "Five rooms, 117 sqm plus a 14 sqm balcony on a high floor with open sea views, parking and storage, immediate entry. NIS 15,500 a month with costs and comps.",
+  "metadesc_chars": 157,
+  "focus_keyphrase": "apartment for rent Sarona Tel Aviv sea view",
+  "slug": "en-bsr-sarona-5-room-sea-view-apartment-for-rent",
+  "slug_status": "proposed, needs owner approval",
+  "url": "https://nad-lan.co.il/en/properties/en-bsr-sarona-5-room-sea-view-apartment-for-rent/",
+  "hreflang": {
+   "en": "https://nad-lan.co.il/en/properties/en-bsr-sarona-5-room-sea-view-apartment-for-rent/",
+   "he": "https://nad-lan.co.il/properties/bsr-sarona-5-rooms-sea-view-for-rent/",
+   "x-default": "https://nad-lan.co.il/properties/bsr-sarona-5-rooms-sea-view-for-rent/"
+  },
+  "og_title": "Five Rooms on a High Floor with a Sea View, B.S.R Sarona",
+  "og_description": "Five rooms, 117 sqm plus a 14 sqm balcony on a high floor with open sea views, parking and storage, immediate entry. NIS 15,500 a month with costs and comps.",
+  "yoast_meta": {
+   "_yoast_wpseo_title": "5-Room Sea-View Apartment for Rent, B.S.R Sarona Tel Aviv",
+   "_yoast_wpseo_metadesc": "Five rooms, 117 sqm plus a 14 sqm balcony on a high floor with open sea views, parking and storage, immediate entry. NIS 15,500 a month with costs and comps.",
+   "_yoast_wpseo_focuskw": "apartment for rent Sarona Tel Aviv sea view"
+  }
+ }
+}
