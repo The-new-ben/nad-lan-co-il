@@ -1,0 +1,48 @@
+{
+  "note": "Screenshot capture in the operating Chrome window is still non-functional (viewport 0x0, CDP clip error). Evidence is live DOM and CSSOM receipts plus deterministic renders from the real image files.",
+  "cascade_proof": {
+    "method": "before saving anything, a sentinel stylesheet rule with the same selector and !important was injected live and then removed",
+    "result": "only the type-nadlan_project card changed (aspect-ratio 16/9, object-fit none) while two type-page cards kept the inline 4/3 contain; the inline style attribute stayed present throughout",
+    "conclusion": "selector is exact and stylesheet !important beats the non-important inline declaration"
+  },
+  "single_project_searches": [
+    {"q": "Aurelia",        "type": "type-nadlan_project", "computed": "4 / 3 contain", "inline": "3/2 cover", "effect": "exact fit, no bars"},
+    {"q": "EINSTEIN TOWER", "type": "type-nadlan_project", "computed": "4 / 3 contain", "inline": "3/2 cover", "effect": "exact fit, no bars"},
+    {"q": "SIX-8",          "type": "type-nadlan_project", "computed": "4 / 3 contain", "inline": "3/2 cover", "effect": "exact fit, no bars"},
+    {"q": "UTOPIA",         "type": "type-nadlan_project", "computed": "4 / 3 contain", "inline": "3/2 cover", "effect": "exact fit, no bars"},
+    {"q": "H Infinity",     "type": "type-nadlan_project", "computed": "4 / 3 contain", "inline": "3/2 cover", "effect": "exact fit, no bars"}
+  ],
+  "mixed_search_H_Infinity": [
+    {"type": "type-nadlan_project", "native": "1448x1086 (1.333)", "computed": "4 / 3 contain", "effect": "exact fit, no bars"},
+    {"type": "type-page", "native": "1600x900 (1.778)", "computed": "3 / 2 cover", "effect": "side crop 15.6%, original behaviour"},
+    {"type": "type-page", "native": "1600x900 (1.778)", "computed": "3 / 2 cover", "effect": "side crop 15.6%, original behaviour"}
+  ],
+  "mixed_search_SIX_8": [
+    {"type": "type-nadlan_project", "native": "1448x1086", "computed": "4 / 3 contain", "effect": "exact fit"},
+    {"type": "type-page", "native": "1400x933 (1.500)", "computed": "3 / 2 cover", "effect": "exact fill, 0% crop, no bars, original behaviour"}
+  ],
+  "general_non_project_search": {"q": "משכנתא", "results": 14, "with_image": 4, "all": "1600x900 at 3 / 2 cover, side crop 15.6%, identical to the original state", "bars": "none"},
+  "cls": {"H_Infinity_mixed": 0.0, "general_14_results": 0.0, "shift_entries": 0, "threshold": 0.1, "verdict": "pass"},
+  "responsive": {"stylesheets_scanned": 52, "media_query_rules_affecting_the_image": 0, "verdict": "ratio and fit are viewport independent; desktop, tablet and mobile render identically"},
+  "console_errors": 0,
+  "distortion": "none; contain preserves the intrinsic ratio and for the plates box ratio equals image ratio",
+  "overflow": "contain cannot overflow its box; img is width:100% inside a constrained group; no rule changes the figure",
+  "unchanged_surfaces": {
+    "catalog /projects/": "object-fit contain, .nldc-media aspect-ratio 4/3, no inline style, zero wp-block-post cards, untouched",
+    "project page": "zero featured-image blocks, og:image untouched as instructed",
+    "home": "zero featured-image blocks, zero project cards, zero plate images",
+    "404": "zero featured-image blocks, zero project cards, zero plate images"
+  },
+  "residual_known_issue": {
+    "what": "project cards whose featured image is not 4:3 now letterbox",
+    "found": "four UTOPIA language variants (EN, FR, RU, AR) still use utopia-sde-dov-independent-concept-v1.webp at 1536x1024 (3:2); they now show 11.1% cream bars where they previously filled exactly",
+    "scale": "option B moved bars from every 16:9 article result to the small set of project cards that do not yet have a 4:3 plate",
+    "fix_path": "give those variants the series plate as featured image, which is queued work, not a CSS matter",
+    "not_addressed_here": true
+  },
+  "card_alignment": {
+    "observation": "in a mixed result list project cards are now 4/3 and other cards 3/2, so image heights differ by card type",
+    "context": "the query loop is a single column list, not a grid, so cards stack rather than align side by side",
+    "verdict": "acceptable and inherent to option B; if uniform heights matter more than whole plates, option A is the alternative"
+  }
+}

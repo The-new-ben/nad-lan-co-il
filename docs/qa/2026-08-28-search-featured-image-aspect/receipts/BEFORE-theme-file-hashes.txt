@@ -1,0 +1,2 @@
+ef33b0e2cb667c4a7b9d65a409d56fa2d964183ee831b721ce7c3b4d30939c3f  templates/search.html
+2b55c1f5977aa11b79ce7a2a488bc0717fb1b3050ae8af4cf8fa0c97e3e10ba6  patterns/template-query-loop.php

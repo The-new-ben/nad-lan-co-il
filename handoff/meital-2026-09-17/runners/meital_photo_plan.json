@@ -7,13 +7,12 @@
    "alt_source": "fallback",
    "kind": "photo",
    "width": "",
-   "height": ""
+   "height": "",
+   "r": 0.8,
+   "w": 1350,
+   "h": 1688
   },
-  "gallery": [],
-  "total": 1,
-  "unique": 1,
-  "photos": 1,
-  "posters": 0
+  "gallery": []
  },
  "L02": {
   "cover": {
@@ -23,7 +22,10 @@
    "alt_source": "shotlist #1",
    "kind": "photo",
    "width": "",
-   "height": ""
+   "height": "",
+   "r": 0.8,
+   "w": 1638,
+   "h": 2048
   },
   "gallery": [
    {
@@ -33,7 +35,10 @@
     "alt_source": "shotlist #1",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.8,
+    "w": 1638,
+    "h": 2048
    },
    {
     "attachment_id": "7651",
@@ -42,7 +47,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.8,
+    "w": 1638,
+    "h": 2048
    },
    {
     "attachment_id": "7661",
@@ -51,7 +59,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.75,
+    "w": 1448,
+    "h": 1931
    },
    {
     "attachment_id": "7654",
@@ -60,7 +71,10 @@
     "alt_source": "shotlist #5",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.8,
+    "w": 1638,
+    "h": 2048
    },
    {
     "attachment_id": "7655",
@@ -69,7 +83,10 @@
     "alt_source": "shotlist #5",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.8,
+    "w": 1638,
+    "h": 2048
    },
    {
     "attachment_id": "7657",
@@ -78,7 +95,10 @@
     "alt_source": "fallback",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 2048,
+    "h": 2048
    },
    {
     "attachment_id": "7659",
@@ -87,7 +107,10 @@
     "alt_source": "fallback",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.801,
+    "w": 1080,
+    "h": 1349
    },
    {
     "attachment_id": "7658",
@@ -96,7 +119,10 @@
     "alt_source": "fallback",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 2048,
+    "h": 2048
    },
    {
     "attachment_id": "7660",
@@ -105,7 +131,10 @@
     "alt_source": "fallback",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.799,
+    "w": 761,
+    "h": 952
    },
    {
     "attachment_id": "7656",
@@ -114,25 +143,39 @@
     "alt_source": "fallback",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.8,
+    "w": 1638,
+    "h": 2048
    }
-  ],
-  "total": 12,
-  "unique": 12,
-  "photos": 11,
-  "posters": 1
+  ]
  },
  "L03": {
   "cover": {
-   "attachment_id": "7680",
-   "url": "https://nad-lan.co.il/wp-content/uploads/2026/09/L03_DcK4k9ZiPW9_01.jpg",
-   "alt": "5 חדרים בקומה גבוהה עם נוף לים, ב.ס.ר שרונה, הנוף מהמרפסת לים",
-   "alt_source": "shotlist #1",
+   "attachment_id": "7670",
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/09/L03_DTpmFR4DInD_01.jpg",
+   "alt": "5 חדרים בקומה גבוהה עם נוף לים, ב.ס.ר שרונה, הסלון והמטבח",
+   "alt_source": "shotlist #2",
    "kind": "photo",
    "width": "",
-   "height": ""
+   "height": "",
+   "r": 1.523,
+   "w": 2048,
+   "h": 1345
   },
   "gallery": [
+   {
+    "attachment_id": "7680",
+    "url": "https://nad-lan.co.il/wp-content/uploads/2026/09/L03_DcK4k9ZiPW9_01.jpg",
+    "alt": "5 חדרים בקומה גבוהה עם נוף לים, ב.ס.ר שרונה, הנוף מהמרפסת לים",
+    "alt_source": "shotlist #1",
+    "kind": "photo",
+    "width": "",
+    "height": "",
+    "r": 0.75,
+    "w": 1086,
+    "h": 1448
+   },
    {
     "attachment_id": "7678",
     "url": "https://nad-lan.co.il/wp-content/uploads/2026/09/L03_DZudqxmjKyR_04.jpg",
@@ -140,7 +183,10 @@
     "alt_source": "shotlist #1",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.193,
+    "w": 2048,
+    "h": 1717
    },
    {
     "attachment_id": "7679",
@@ -149,16 +195,10 @@
     "alt_source": "shotlist #1",
     "kind": "photo",
     "width": "",
-    "height": ""
-   },
-   {
-    "attachment_id": "7670",
-    "url": "https://nad-lan.co.il/wp-content/uploads/2026/09/L03_DTpmFR4DInD_01.jpg",
-    "alt": "5 חדרים בקומה גבוהה עם נוף לים, ב.ס.ר שרונה, הסלון והמטבח",
-    "alt_source": "shotlist #2",
-    "kind": "photo",
-    "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.193,
+    "w": 2048,
+    "h": 1717
    },
    {
     "attachment_id": "7675",
@@ -167,7 +207,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.193,
+    "w": 2048,
+    "h": 1717
    },
    {
     "attachment_id": "7676",
@@ -176,7 +219,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.193,
+    "w": 2048,
+    "h": 1717
    },
    {
     "attachment_id": "7681",
@@ -185,7 +231,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.75,
+    "w": 1448,
+    "h": 1930
    },
    {
     "attachment_id": "7677",
@@ -194,7 +243,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.193,
+    "w": 2048,
+    "h": 1717
    },
    {
     "attachment_id": "7682",
@@ -203,7 +255,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.75,
+    "w": 1086,
+    "h": 1448
    },
    {
     "attachment_id": "7666",
@@ -212,7 +267,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.755,
+    "w": 1600,
+    "h": 2120
    },
    {
     "attachment_id": "7667",
@@ -221,7 +279,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.755,
+    "w": 1600,
+    "h": 2120
    },
    {
     "attachment_id": "7668",
@@ -230,7 +291,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.755,
+    "w": 1600,
+    "h": 2120
    },
    {
     "attachment_id": "7669",
@@ -239,13 +303,12 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.755,
+    "w": 1600,
+    "h": 2120
    }
-  ],
-  "total": 21,
-  "unique": 21,
-  "photos": 16,
-  "posters": 5
+  ]
  },
  "L04": {
   "cover": {
@@ -255,7 +318,10 @@
    "alt_source": "shotlist #1",
    "kind": "photo",
    "width": "",
-   "height": ""
+   "height": "",
+   "r": 1.65,
+   "w": 2048,
+   "h": 1241
   },
   "gallery": [
    {
@@ -265,7 +331,10 @@
     "alt_source": "shotlist #3",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 2463,
+    "h": 2463
    },
    {
     "attachment_id": "7694",
@@ -274,7 +343,10 @@
     "alt_source": "shotlist #3",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 2463,
+    "h": 2463
    },
    {
     "attachment_id": "7705",
@@ -283,7 +355,10 @@
     "alt_source": "shotlist #3",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 1080,
+    "h": 1080
    },
    {
     "attachment_id": "7689",
@@ -292,7 +367,10 @@
     "alt_source": "shotlist #3",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.65,
+    "w": 2048,
+    "h": 1241
    },
    {
     "attachment_id": "7690",
@@ -301,7 +379,10 @@
     "alt_source": "shotlist #3",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.65,
+    "w": 2048,
+    "h": 1241
    },
    {
     "attachment_id": "7706",
@@ -310,7 +391,10 @@
     "alt_source": "shotlist #4",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 1080,
+    "h": 1080
    },
    {
     "attachment_id": "7695",
@@ -319,7 +403,10 @@
     "alt_source": "shotlist #5",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 2463,
+    "h": 2463
    },
    {
     "attachment_id": "7696",
@@ -328,7 +415,10 @@
     "alt_source": "shotlist #5",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 2463,
+    "h": 2463
    },
    {
     "attachment_id": "7691",
@@ -337,7 +427,10 @@
     "alt_source": "shotlist #5",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.65,
+    "w": 2048,
+    "h": 1241
    },
    {
     "attachment_id": "7692",
@@ -346,7 +439,10 @@
     "alt_source": "shotlist #5",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.65,
+    "w": 2048,
+    "h": 1241
    },
    {
     "attachment_id": "7697",
@@ -355,7 +451,10 @@
     "alt_source": "shotlist #10",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 421,
+    "h": 421
    },
    {
     "attachment_id": "7685",
@@ -364,25 +463,39 @@
     "alt_source": "fallback",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.193,
+    "w": 2048,
+    "h": 1717
    }
-  ],
-  "total": 25,
-  "unique": 25,
-  "photos": 22,
-  "posters": 3
+  ]
  },
  "L05": {
   "cover": {
-   "attachment_id": "7714",
-   "url": "https://nad-lan.co.il/wp-content/uploads/2026/09/L05_DTuofN7jGNo_01.jpg",
+   "attachment_id": "7736",
+   "url": "https://nad-lan.co.il/wp-content/uploads/2026/09/L05_Dcu5qm5CLjq_01.jpg",
    "alt": "3.5 חדרים מרוהטת עם שוכר, רחוב אליהו ברלין, חלל המגורים המרוהט",
    "alt_source": "shotlist #1",
    "kind": "photo",
    "width": "",
-   "height": ""
+   "height": "",
+   "r": 1.5,
+   "w": 1068,
+   "h": 712
   },
   "gallery": [
+   {
+    "attachment_id": "7714",
+    "url": "https://nad-lan.co.il/wp-content/uploads/2026/09/L05_DTuofN7jGNo_01.jpg",
+    "alt": "3.5 חדרים מרוהטת עם שוכר, רחוב אליהו ברלין, חלל המגורים המרוהט",
+    "alt_source": "shotlist #1",
+    "kind": "photo",
+    "width": "",
+    "height": "",
+    "r": 1.498,
+    "w": 1600,
+    "h": 1068
+   },
    {
     "attachment_id": "7719",
     "url": "https://nad-lan.co.il/wp-content/uploads/2026/09/L05_DXEACpoDaFB_01.jpg",
@@ -390,16 +503,10 @@
     "alt_source": "shotlist #1",
     "kind": "photo",
     "width": "",
-    "height": ""
-   },
-   {
-    "attachment_id": "7736",
-    "url": "https://nad-lan.co.il/wp-content/uploads/2026/09/L05_Dcu5qm5CLjq_01.jpg",
-    "alt": "3.5 חדרים מרוהטת עם שוכר, רחוב אליהו ברלין, חלל המגורים המרוהט",
-    "alt_source": "shotlist #1",
-    "kind": "photo",
-    "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 1440,
+    "h": 1440
    },
    {
     "attachment_id": "7737",
@@ -408,7 +515,10 @@
     "alt_source": "shotlist #1",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.5,
+    "w": 1068,
+    "h": 712
    },
    {
     "attachment_id": "7725",
@@ -417,7 +527,10 @@
     "alt_source": "shotlist #1",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.499,
+    "w": 1067,
+    "h": 712
    },
    {
     "attachment_id": "7717",
@@ -426,7 +539,10 @@
     "alt_source": "shotlist #1",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.498,
+    "w": 1600,
+    "h": 1068
    },
    {
     "attachment_id": "7731",
@@ -435,7 +551,10 @@
     "alt_source": "shotlist #1",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.9,
+    "w": 1231,
+    "h": 1368
    },
    {
     "attachment_id": "7732",
@@ -444,7 +563,10 @@
     "alt_source": "shotlist #1",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.9,
+    "w": 1231,
+    "h": 1368
    },
    {
     "attachment_id": "7723",
@@ -453,7 +575,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.499,
+    "w": 1067,
+    "h": 712
    },
    {
     "attachment_id": "7724",
@@ -462,7 +587,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.499,
+    "w": 1067,
+    "h": 712
    },
    {
     "attachment_id": "7729",
@@ -471,7 +599,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.9,
+    "w": 1231,
+    "h": 1368
    },
    {
     "attachment_id": "7716",
@@ -480,7 +611,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.498,
+    "w": 1600,
+    "h": 1068
    },
    {
     "attachment_id": "7740",
@@ -489,13 +623,12 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.5,
+    "w": 1068,
+    "h": 712
    }
-  ],
-  "total": 34,
-  "unique": 30,
-  "photos": 23,
-  "posters": 7
+  ]
  },
  "L06": {
   "cover": {
@@ -505,7 +638,10 @@
    "alt_source": "shotlist #1",
    "kind": "photo",
    "width": "",
-   "height": ""
+   "height": "",
+   "r": 0.8,
+   "w": 1638,
+   "h": 2048
   },
   "gallery": [
    {
@@ -515,7 +651,10 @@
     "alt_source": "shotlist #1",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.8,
+    "w": 1122,
+    "h": 1402
    },
    {
     "attachment_id": "7744",
@@ -524,7 +663,10 @@
     "alt_source": "shotlist #1",
     "kind": "poster",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.563,
+    "w": 640,
+    "h": 1136
    },
    {
     "attachment_id": "7748",
@@ -533,7 +675,10 @@
     "alt_source": "shotlist #1",
     "kind": "poster",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.563,
+    "w": 640,
+    "h": 1136
    },
    {
     "attachment_id": "7747",
@@ -542,7 +687,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.8,
+    "w": 1086,
+    "h": 1357
    },
    {
     "attachment_id": "7745",
@@ -551,7 +699,10 @@
     "alt_source": "fallback",
     "kind": "poster",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.563,
+    "w": 640,
+    "h": 1136
    },
    {
     "attachment_id": "7749",
@@ -560,7 +711,10 @@
     "alt_source": "fallback",
     "kind": "poster",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.562,
+    "w": 1125,
+    "h": 2000
    },
    {
     "attachment_id": "7750",
@@ -569,7 +723,10 @@
     "alt_source": "fallback",
     "kind": "poster",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.562,
+    "w": 1320,
+    "h": 2347
    },
    {
     "attachment_id": "7751",
@@ -578,13 +735,12 @@
     "alt_source": "fallback",
     "kind": "poster",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.562,
+    "w": 720,
+    "h": 1280
    }
-  ],
-  "total": 9,
-  "unique": 9,
-  "photos": 3,
-  "posters": 6
+  ]
  },
  "L07": {
   "cover": {
@@ -594,7 +750,10 @@
    "alt_source": "shotlist #1",
    "kind": "photo",
    "width": "",
-   "height": ""
+   "height": "",
+   "r": 1.523,
+   "w": 2048,
+   "h": 1345
   },
   "gallery": [
    {
@@ -604,7 +763,10 @@
     "alt_source": "shotlist #1",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 1366,
+    "h": 1366
    },
    {
     "attachment_id": "7769",
@@ -613,7 +775,10 @@
     "alt_source": "shotlist #1",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 1366,
+    "h": 1366
    },
    {
     "attachment_id": "7752",
@@ -622,7 +787,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.523,
+    "w": 2048,
+    "h": 1345
    },
    {
     "attachment_id": "7756",
@@ -631,7 +799,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 1366,
+    "h": 1366
    },
    {
     "attachment_id": "7764",
@@ -640,7 +811,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 1366,
+    "h": 1366
    },
    {
     "attachment_id": "7766",
@@ -649,7 +823,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 1366,
+    "h": 1366
    },
    {
     "attachment_id": "7755",
@@ -658,7 +835,10 @@
     "alt_source": "shotlist #3",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 1366,
+    "h": 1366
    },
    {
     "attachment_id": "7763",
@@ -667,7 +847,10 @@
     "alt_source": "shotlist #3",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 1366,
+    "h": 1366
    },
    {
     "attachment_id": "7758",
@@ -676,7 +859,10 @@
     "alt_source": "shotlist #5",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 1366,
+    "h": 1366
    },
    {
     "attachment_id": "7772",
@@ -685,7 +871,10 @@
     "alt_source": "shotlist #5",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 1366,
+    "h": 1366
    },
    {
     "attachment_id": "7759",
@@ -694,7 +883,10 @@
     "alt_source": "fallback",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 1366,
+    "h": 1366
    },
    {
     "attachment_id": "7760",
@@ -703,13 +895,12 @@
     "alt_source": "fallback",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.0,
+    "w": 1440,
+    "h": 1440
    }
-  ],
-  "total": 23,
-  "unique": 19,
-  "photos": 15,
-  "posters": 4
+  ]
  },
  "L08": {
   "cover": {
@@ -719,7 +910,10 @@
    "alt_source": "fallback",
    "kind": "poster",
    "width": "",
-   "height": ""
+   "height": "",
+   "r": 0.562,
+   "w": 1320,
+   "h": 2347
   },
   "gallery": [
    {
@@ -729,13 +923,12 @@
     "alt_source": "fallback",
     "kind": "poster",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 0.562,
+    "w": 1080,
+    "h": 1920
    }
-  ],
-  "total": 2,
-  "unique": 2,
-  "photos": 0,
-  "posters": 2
+  ]
  },
  "L09": {
   "cover": {
@@ -745,7 +938,10 @@
    "alt_source": "shotlist #1",
    "kind": "photo",
    "width": "",
-   "height": ""
+   "height": "",
+   "r": 1.523,
+   "w": 2048,
+   "h": 1345
   },
   "gallery": [
    {
@@ -755,7 +951,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.523,
+    "w": 2048,
+    "h": 1345
    },
    {
     "attachment_id": "7782",
@@ -764,7 +963,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.333,
+    "w": 2048,
+    "h": 1536
    },
    {
     "attachment_id": "7785",
@@ -773,7 +975,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.193,
+    "w": 2048,
+    "h": 1717
    },
    {
     "attachment_id": "7786",
@@ -782,7 +987,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.193,
+    "w": 2048,
+    "h": 1717
    },
    {
     "attachment_id": "7783",
@@ -791,7 +999,10 @@
     "alt_source": "shotlist #3",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.333,
+    "w": 2048,
+    "h": 1536
    },
    {
     "attachment_id": "7784",
@@ -800,7 +1011,10 @@
     "alt_source": "shotlist #4",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.333,
+    "w": 2048,
+    "h": 1536
    },
    {
     "attachment_id": "7779",
@@ -809,7 +1023,10 @@
     "alt_source": "fallback",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.193,
+    "w": 2048,
+    "h": 1717
    },
    {
     "attachment_id": "7780",
@@ -818,13 +1035,12 @@
     "alt_source": "fallback",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.193,
+    "w": 940,
+    "h": 788
    }
-  ],
-  "total": 10,
-  "unique": 9,
-  "photos": 9,
-  "posters": 0
+  ]
  },
  "L10": {
   "cover": {
@@ -834,7 +1050,10 @@
    "alt_source": "shotlist #2",
    "kind": "photo",
    "width": "",
-   "height": ""
+   "height": "",
+   "r": 1.041,
+   "w": 1131,
+   "h": 1086
   },
   "gallery": [
    {
@@ -844,7 +1063,10 @@
     "alt_source": "shotlist #2",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.041,
+    "w": 1131,
+    "h": 1086
    },
    {
     "attachment_id": "7787",
@@ -853,7 +1075,10 @@
     "alt_source": "shotlist #3",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.042,
+    "w": 1086,
+    "h": 1042
    },
    {
     "attachment_id": "7789",
@@ -862,13 +1087,12 @@
     "alt_source": "shotlist #3",
     "kind": "photo",
     "width": "",
-    "height": ""
+    "height": "",
+    "r": 1.041,
+    "w": 1131,
+    "h": 1086
    }
-  ],
-  "total": 4,
-  "unique": 4,
-  "photos": 4,
-  "posters": 0
+  ]
  },
  "L11": {
   "cover": {
@@ -878,12 +1102,11 @@
    "alt_source": "shotlist #4",
    "kind": "photo",
    "width": "",
-   "height": ""
+   "height": "",
+   "r": 0.8,
+   "w": 1350,
+   "h": 1688
   },
-  "gallery": [],
-  "total": 1,
-  "unique": 1,
-  "photos": 1,
-  "posters": 0
+  "gallery": []
  }
 }

@@ -1,0 +1,43 @@
+{
+  "decision": "Option B. The universal template override was reverted; a narrow post-type-scoped CSS rule now corrects project cards only.",
+  "timeline": [
+    {"step": "before",       "state": "search template source=theme, block aspectRatio 3/2 (implicit cover). Plates clipped 11.1% vertically. Legacy 16:9 side-cropped 15.6%, legacy 3:2 exact fill."},
+    {"step": "intermediate", "state": "search template override wp_id 7527 created with aspectRatio 4/3 + scale contain. Plates whole, but ALL results moved to 4/3 contain, giving 16:9 a 25% letterbox and 3:2 an 11.1% letterbox."},
+    {"step": "final",        "state": "override deleted (template byte-identical to original), scoped CSS added to the child theme's global styles. Plates whole via CSS; every non-project result back to the original 3/2 cover."}
+  ],
+  "search_template": {
+    "id": "nadlan-platform-child//search",
+    "source_now": "theme",
+    "content_raw_length_now": 4885,
+    "content_raw_sha256_now": "bfbca07967dd0cd6d447aa4e7cb80f116f07898c39daff08d335c12b0bce81f0",
+    "identical_to_original": true,
+    "custom_templates_site_wide_now": [],
+    "intermediate_override_wp_id_deleted": 7527
+  },
+  "css_applied_live": {
+    "where": "WordPress global styles post id 4940, title 'Custom Styles', bound to theme nadlan-platform-child. This is the block-theme equivalent of Additional CSS and is scoped to the child theme.",
+    "rest_path": "/wp/v2/global-styles/4940",
+    "field": "styles.css",
+    "state_before": "styles was an empty object; there was no css value",
+    "length_after": 555,
+    "rule": "body.search-results li.wp-block-post.type-nadlan_project .wp-block-post-featured-image img { aspect-ratio: 4 / 3 !important; object-fit: contain !important; }",
+    "why_important": "the query loop writes a non-important inline style, so a stylesheet !important wins the cascade; proven live with a sentinel test before anything was saved",
+    "why_no_figure_rule": "measured, not assumed: .wp-block-post-featured-image computes aspect-ratio auto, display block, margin 0, overflow visible and has no independent height, so its height follows the img",
+    "why_body_search_results": "keeps the rule strictly inside Search Results as instructed; the class was verified present on live search pages",
+    "no_filename_targeting": true
+  },
+  "permanent_home_in_repo": {
+    "file": "themes/nadlan-platform-child/assets/css/platform.css",
+    "sha256_before": "46a3321975d982094acfc36c222799aa53ac0a24335c5e9695cb2edae414f5b4",
+    "sha256_after":  "a378a2d5beebaff98bee9f785f9f72674698bb0afb3530764c4f47d58a0d33da",
+    "bytes_before": 13826,
+    "bytes_after": 14617,
+    "note": "committed on the isolated branch only, not deployed. When this file ships, remove the global-styles copy so the rule is not defined twice."
+  },
+  "rollback": {
+    "css": "await wp.apiFetch({path:'/wp/v2/global-styles/4940',method:'POST',data:{styles:{}}})  // restores the exact prior state (empty styles object)",
+    "ui": "Appearance > Editor > Styles > three dots > Additional CSS, clear the field",
+    "template": "nothing to roll back; the search template is already byte-identical to the theme file",
+    "triggers": ["selector proves unstable", "CSS fails to beat the inline style", "mixed grid harmed"]
+  }
+}

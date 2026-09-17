@@ -1,0 +1,42 @@
+{
+  "browser_note": "Screenshot capture in this Chrome window is non-functional (viewport reports 0x0, CDP clip error). All findings below are DOM and CSSOM receipts read live, plus deterministic renders built from the actual image files.",
+  "plates_on_search": [
+    {"query": "Aurelia",        "file": "aurelia-plate-capsules-v1.jpg",                 "inline": "aspect-ratio:4/3;width:100%;object-fit:contain;", "fit": "contain", "ar": "4 / 3", "wxh": "1448x1086", "bars_pct": 0},
+    {"query": "EINSTEIN TOWER", "file": "einstein-tower-plate-capsules-v1.jpg",          "inline": "aspect-ratio:4/3;width:100%;object-fit:contain;", "fit": "contain", "ar": "4 / 3", "wxh": "1448x1086", "bars_pct": 0},
+    {"query": "H Infinity",     "file": "h-infinity-somail-tel-aviv-plate-capsules-v1.jpg","inline": "aspect-ratio:4/3;width:100%;object-fit:contain;","fit": "contain", "ar": "4 / 3", "wxh": "1448x1086", "bars_pct": 0},
+    {"query": "SIX-8",          "file": "six-8-herbert-samuel-tel-aviv-plate-capsules-v1.jpg","inline": "aspect-ratio:4/3;width:100%;object-fit:contain;","fit":"contain","ar":"4 / 3","wxh":"1448x1086","bars_pct": 0},
+    {"query": "UTOPIA",         "file": "utopia-sde-dov-plate-capsules-v1.jpg",          "inline": "aspect-ratio:4/3;width:100%;object-fit:contain;", "fit": "contain", "ar": "4 / 3", "wxh": "1448x1086", "bars_pct": 0}
+  ],
+  "cls": {"aurelia_search": {"value": 0, "shift_entries": 0}, "general_search_14_results": {"value": 0, "shift_entries": 0}, "threshold": 0.1, "verdict": "pass",
+          "why": "the block emits width=1448 height=1086 attributes and an inline aspect-ratio, so the box is reserved before the image loads"},
+  "mobile_and_responsive": {
+    "method": "scanned all 49 stylesheets including every @media block for any rule matching the featured image or its figure that sets object-fit, aspect-ratio, width, height or max-height",
+    "media_query_hits": 0,
+    "plain_rule_hits": [".wp-block-post-featured-image :where(img) {width:100%; height:auto; max-width:100%}", "img {max-width:100%; height:auto}"],
+    "verdict": "the 4/3 + contain behaviour is viewport independent; mobile, tablet and desktop render the identical ratio, so the full plate is visible at every width",
+    "overflow": "contain can never overflow its box by definition, and the img is width:100% inside a constrained group; no horizontal overflow is introduced",
+    "distortion": "none; contain preserves the intrinsic ratio, and for the plates box ratio == image ratio so the image is pixel-for-pixel undistorted"
+  },
+  "grid_uniformity": "every card in the query loop uses the same single block, so all image boxes are 4/3 on every device; uniformity is preserved (it was uniformly 3/2 before)",
+  "alt_text": {
+    "observed": "the block renders the POST TITLE as alt, e.g. 'Aurelia Sde Dov - אורליה שדה דב', not the media library alt field",
+    "pre_existing": true,
+    "verdict": "descriptive and readable; unchanged by this edit"
+  },
+  "letterbox_background": {
+    "figure_bg": "rgba(0,0,0,0)",
+    "img_bg": "rgba(0,0,0,0)",
+    "nearest_painted_ancestor": "rgb(250,247,241) on DIV.wp-site-blocks",
+    "verdict": "bars fall on the site's warm cream paper, which is the same family as the plate paper; verifier condition 2 is satisfied without any CSS change"
+  },
+  "legacy_non_plate_results": {
+    "sample_general_query": "משכנתא (14 results, 4 with featured image)",
+    "measured": [
+      {"native": "1600x900", "ar": 1.778, "before": "3/2 cover, 15.6% cropped off the sides", "after": "4/3 contain, 25.0% cream bars, no pixel lost"},
+      {"native": "1672x941", "ar": 1.777, "before": "3/2 cover, 15.5% cropped off the sides", "after": "4/3 contain, 25.0% cream bars"},
+      {"native": "1536x1024","ar": 1.500, "before": "3/2 cover, perfect fill, 0% crop",      "after": "4/3 contain, 11.1% cream bars"},
+      {"native": "1400x933", "ar": 1.500, "before": "3/2 cover, perfect fill, 0% crop",      "after": "4/3 contain, 11.1% cream bars"}
+    ],
+    "assessment": "no legacy content is lost, but 3:2 photos go from edge to edge to an 11.1% letterbox and 16:9 photos to a 25% letterbox. This is the known cost of the authorised setting and matches the verifier's condition 5 watch item."
+  }
+}

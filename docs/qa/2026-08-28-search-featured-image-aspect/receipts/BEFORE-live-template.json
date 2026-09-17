@@ -1,0 +1,22 @@
+{
+  "captured_at": "2026-08-28T00:1x:00+03:00",
+  "template_id": "nadlan-platform-child//search",
+  "title": "Search Results",
+  "theme": "nadlan-platform-child",
+  "source": "theme",
+  "status": "publish",
+  "modified": null,
+  "content_raw_length": 4885,
+  "content_raw_sha256": "bfbca07967dd0cd6d447aa4e7cb80f116f07898c39daff08d335c12b0bce81f0",
+  "note": "source=theme means NO database override existed before the change. Rollback = DELETE the wp_template override, which restores this exact theme file.",
+  "block_occurrences": {
+    "wp:post-featured-image": 1,
+    "aspectRatio 3/2": 1,
+    "scale attribute": 0,
+    "wp:pattern (unresolved)": 0
+  },
+  "origin_of_block": "patterns/template-query-loop.php line 20 in parent theme 'NadLan Revenue', resolved into the template at read time",
+  "templates_sharing_that_pattern": ["templates/index.html", "templates/search.html", "templates/archive.html"],
+  "templates_containing_a_featured_image_block": ["nadlan-platform-child//archive", "nadlan-platform-child//index", "nadlan-platform-child//search", "nadlan-platform-child//single"],
+  "all_four_source": "theme (uncustomised)"
+}
