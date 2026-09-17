@@ -26,7 +26,7 @@
  },
  "kicker": {
   "he": "למכירה · בלעדיות · הרצליה פיתוח",
-  "en": "For sale · Herzliya Pituach"
+  "en": "For sale · Exclusive · Herzliya Pituach"
  },
  "title": {
   "he": "אחוזה פרטית של 700 מ״ר על מגרש של 1.1 דונם, הרצליה פיתוח",
@@ -34,7 +34,7 @@
  },
  "dek": {
   "he": "במרחק הליכה מהים, כחמש דקות מכיכר דה שליט, אחוזה פרטית של כ-700 מ״ר על מגרש של 1.1 דונם: שלושה מפלסים, שבע סוויטות, בריכה גדולה וסלון שנפתח אל הגן. המחיר והכתובת נמסרים בפנייה ישירה.",
-  "en": "Three levels, seven master suites, a large pool, a cinema room, a gym, a wine cellar and a lift, in a quiet location within walking distance of the sea and about five minutes from De Shalit Square, according to the broker. Price and address on request; viewings by appointment only."
+  "en": "Within walking distance of the sea, about five minutes from De Shalit Square, a private estate of about 700 sqm on a 1.1-dunam plot: three levels, seven suites, a large pool and a living room that opens to the garden. The price and the address are given on direct request."
  },
  "chips": [
   {
@@ -164,9 +164,9 @@
    "מערכת חשמל חכם וחימום תת-רצפתי עוברים בכל הבית, ונגרות בהתאמה אישית נבנתה לכל חדרי השינה ולאורך המפלסים. הסיורים בתיאום מראש בלבד.[[S1]]"
   ],
   "en": [
-   "According to the broker, the estate has about 700 sqm built over three levels on a plot of about 1,100 sqm, in a quiet location within walking distance of the sea and about five minutes from De Shalit Square.[[S1]]",
-   "The bedrooms are planned as spacious suites, seven in all, including a very large master suite. The house has a large living room overlooking a pastoral garden, a large pool, a cinema room, a gym, a wine cellar, a lift and a large safe room (mamad).[[S1]]",
-   "It has a smart electrical system, underfloor heating and custom carpentry in every bedroom and throughout the house. Viewings are by appointment only.[[S1]]"
+   "The estate runs to about 700 sqm built over three levels, on a plot of about 1,100 sqm in a quiet part of Herzliya Pituach, within walking distance of the sea and about five minutes from De Shalit Square.[[S1]]",
+   "The bedrooms are planned as spacious suites, seven in all, including a very large master suite. The large living room opens to a pastoral garden and a large pool, and beside them are a cinema room, a gym, a wine cellar, a lift and a large safe room.[[S1]]",
+   "A smart electrical system and underfloor heating run through the whole house, and custom carpentry was built for every bedroom and along the levels. Viewings are by appointment only.[[S1]]"
   ]
  },
  "features": {
@@ -199,7 +199,7 @@
   "en": [
    [
     "About 700 sqm built",
-    "Over 3 levels, broker-stated"
+    "Over three levels"
    ],
    [
     "A 1.1-dunam plot",
@@ -481,7 +481,7 @@
  },
  "building_lead": {
   "he": "פרטי הרחוב, המגרש והזכויות נמסרים בפנייה ישירה. הבדיקות שלהלן נכונות לכל בית בהרצליה פיתוח.[[S1]]",
-  "en": "The street and plot were not published. The plot figures come from the broker, and the legal checks below apply to any house in Herzliya Pituach.[[S1]]"
+  "en": "The street, the plot and the rights are given on direct request. The checks below apply to any house in Herzliya Pituach.[[S1]]"
  },
  "building": [
   {
@@ -628,13 +628,13 @@
   "0": {
    "note": {
     "he": "בית ספר יסודי עירוני. בשנת הלימודים תשפ״ז בוגריו משובצים לחטיבת הביניים יד גיורא. אזור הרישום לכתובת לאימות.",
-    "en": "Municipal elementary school. For 2026-27 its graduates are zoned to Yad Giora middle school. Registration zone for the address not verified."
+    "en": "Municipal elementary school. For 2026-27 its graduates are zoned to Yad Giora middle school. Registration zone for the address to be confirmed with the municipality."
    }
   },
   "9": {
    "note": {
     "he": "רחוב השומרון 65, אבן יהודה. בית ספר עצמאי בתוכנית לימודים אמריקאית ובאנגלית, נוסד ב-1958 בחסות שגרירות ארה״ב, בקמפוס של 73 דונם. כ-11.7 ק״מ בקו אווירי מכיכר דה שליט; שכר לימוד והסעות לאימות.",
-    "en": "65 HaShomron St, Even Yehuda. An independent American-curriculum school taught in English, founded in 1958 under the auspices of the US Embassy, on a 73-dunam campus. About 11.7 km in a straight line from De Shalit Square; tuition and school buses not verified."
+    "en": "65 HaShomron St, Even Yehuda. An independent American-curriculum school taught in English, founded in 1958 under the auspices of the US Embassy, on a 73-dunam campus. About 11.7 km in a straight line from De Shalit Square; tuition and school buses to be confirmed."
    }
   }
  },
@@ -656,7 +656,7 @@
    },
    "status": {
     "he": "בבנייה: 39 ק״מ ו-62 תחנות מראשון לציון וחולון עד הרצליה. פתיחה חלקית צפויה בסוף 2028 והקו המלא ב-2030; מיקום התחנות בהרצליה לאימות.",
-    "en": "Under construction: 39 km and 62 stations from Rishon LeZion and Holon to Herzliya. Partial opening expected at the end of 2028 and the full line in 2030; Herzliya station locations not verified."
+    "en": "Under construction: 39 km and 62 stations from Rishon LeZion and Holon to Herzliya. Partial opening expected at the end of 2028 and the full line in 2030; Herzliya station locations to be confirmed."
    }
   },
   "2": {
@@ -757,7 +757,7 @@
   },
   "lead": {
    "he": "המחיר נמסר בפנייה ישירה. כדי לאפשר תכנון, מס הרכישה והמימון מוצגים בשלושה תרחישי מחיר להמחשה, הנגזרים מנתוני שוק שפורסמו. אלה אינם הערכת שווי ואינם המחיר המבוקש.",
-   "en": "The broker has not published a price. To support planning, purchase tax and financing are shown at three illustrative price points derived from published market data. They are not a valuation and not the asking price."
+   "en": "The price is given on direct request. To support planning, purchase tax and financing are shown at three illustrative price points derived from published market data. They are not a valuation and not the asking price."
   },
   "median_psqm": {
    "label": {
@@ -918,7 +918,7 @@
     },
     "note": {
      "he": "700 מ״ר בתעריפי אזורים ב׳ עד ו׳ לבתים מעל 125 מ״ר; באזור א׳ 99,617 ₪. האזור והשטח לחיוב לאימות",
-     "en": "700 sqm at zone Bet to Vav rates for houses over 125 sqm; NIS 99,617 in zone Alef. Zone and charged area unverified"
+     "en": "700 sqm at zone Bet to Vav rates for houses over 125 sqm; NIS 99,617 in zone Alef. Zone and charged area to be confirmed"
     }
    },
    {
@@ -972,7 +972,7 @@
  "market": {
   "h2": {
    "he": "וילות בהרצליה פיתוח: עסקאות ומודעות",
-   "en": "Villas in Herzliya Pituach: deals, listings and rents"
+   "en": "Villas in Herzliya Pituach: deals and listings"
   },
   "lead": {
    "he": "עסקאות שנרשמו ודווחו, מחירים מבוקשים של וילות דומות בגודלן, ומחירי שכירות. מחיר למ״ר מחושב על השטח שפורסם; רוב הנתונים הם מחירים מבוקשים, ורשות המסים מפרסמת עסקאות יוקרה באיחור.",
@@ -1087,7 +1087,7 @@
  ],
  "checks_h2": {
   "he": "הבדיקות שכדאי לעשות",
-  "en": "What to check before an offer"
+  "en": "The checks worth making"
  },
  "checks_lead": {
   "he": "השאלות שרוכש בסדר גודל כזה שואל, והמסמכים שעורך הדין, השמאי והמודד צריכים לראות.",
@@ -1117,7 +1117,7 @@
    },
    "a": {
     "he": "המחיר נמסר בפנייה ישירה למשווקת. להתמצאות: חציון המחיר המבוקש ב-15 וילות של 500 עד 900 מ״ר על מגרשים של 1,000 עד 1,200 מ״ר בהרצליה פיתוח הוא 59.2 מיליון ש״ח, ו-77,023 ש״ח למ״ר בנוי.[[S37,S60]]",
-    "en": "The price is given on direct contact with the broker. For orientation, the median asking price across 15 Herzliya Pituach villas of 500 to 900 sqm on 1,000 to 1,200 sqm plots is NIS 59.2 million, or NIS 77,023 per built sqm.[[S37,S60]]"
+    "en": "The price is given on direct request. For orientation, the median asking price across 15 Herzliya Pituach villas of 500 to 900 sqm on 1,000 to 1,200 sqm plots is NIS 59.2 million, or NIS 77,023 per built sqm.[[S37,S60]]"
    }
   },
   {
@@ -1147,7 +1147,7 @@
    },
    "a": {
     "he": "במרחק הליכה, וכחמש דקות מכיכר דה שליט. חוף זבולון נמצא כ-750 מ׳ מהכיכר בקו אווירי; המרחק מהמגרש עצמו יימסר עם הכתובת.[[S1,S2]]",
-    "en": "Within walking distance according to the broker, and about five minutes from De Shalit Square. Zevulun Beach is about 750 m from the square in a straight line; the distance from the plot itself comes with the address.[[S1,S2]]"
+    "en": "Within walking distance, and about five minutes from De Shalit Square. Zevulun Beach is about 750 m from the square in a straight line; the distance from the plot itself comes with the address.[[S1,S2]]"
    }
   },
   {

@@ -28,7 +28,7 @@
  },
  "kicker": {
   "he": "להשכרה · בלעדיות · נופי ים, צפון תל אביב",
-  "en": "For rent · Nofei Yam, north Tel Aviv"
+  "en": "For rent · Exclusive · Nofei Yam, north Tel Aviv"
  },
  "title": {
   "he": "3 חדרים עם מרפסת של 20 מ״ר ו-2 חניות, נופי ים",
@@ -36,7 +36,7 @@
  },
  "dek": {
   "he": "בקומה 5 בבניין נמוך בנופי ים, כחמש דקות הליכה מהים: שלושה חדרים על כ-90 מ״ר עם מרפסת של כ-20 מ״ר לשטח פתוח, ממ״ד, שתי חניות ומחסן גדול. 9,500 ש״ח לחודש.",
-  "en": "About 90 sqm on floor 5 of 7, a balcony of about 20 sqm, a safe room, two separate parking spaces and a large storage room, about five minutes on foot from the sea according to the broker. NIS 9,500 a month, entry 1 October 2026, flexible."
+  "en": "On floor 5 of a low building in Nofei Yam, about five minutes on foot from the sea: three rooms on about 90 sqm with a balcony of about 20 sqm facing an open area, a safe room, two parking spaces and a large storage room. NIS 9,500 a month."
  },
  "chips": [
   {
@@ -166,9 +166,9 @@
    "נופי ים היא השכונה שבין רחוב פרופס בצפון, שדרות לוי אשכול במזרח, רחוב איינשטיין בדרום ואזור שדה דב במערב, ויחד עם רמת אביב החדשה היא יוצרת את הגוש הגדול.[[PTLV_NY,HON_RAH]] בשכונה כ-2,000 דירות בבניינים נמוכים יחסית, בשל מגבלות הגובה מימי שדה התעופה.[[GLOBES_NY_2024]]"
   ],
   "en": [
-   "Nofei Yam is the neighborhood between Propes Street to the north, Levi Eshkol Boulevard to the east, Einstein Street to the south and the Sde Dov area to the west; with Ramat Aviv HaHadasha it forms the area known as HaGush HaGadol.[[PTLV_NY,HON_RAH]] It holds about 2,000 apartments in relatively low buildings, a result of height limits linked to the former Sde Dov airport.[[GLOBES_NY_2024]]",
-   "The apartment has three rooms on about 90 sqm, a balcony of about 20 sqm facing an open area, and a safe room (mamad), on floor 5 of a seven-floor building on pillars with a lift.[[MAD_L10]] It comes with two separate parking spaces and a large storage room near the parking, and according to the broker it is about five minutes on foot from the sea, next to the walking path down to the beach.[[IG_L10,MAD_L10]]",
-   "The asking rent is NIS 9,500 a month, with entry on 1 October 2026, flexible.[[IG_L10,MAD_L10]] On 16 September 2026 the first page of Madlan results for Nofei Yam showed 16 rental listings, and this was the only three-room unit among them.[[MAD_NY_RENT]]"
+   "Three rooms on about 90 sqm, a balcony of about 20 sqm facing an open area, and a safe room, on floor 5 of a seven-floor building on pillars with a lift.[[MAD_L10]] Two separate parking spaces and a large storage room by the parking, and the sea about five minutes on foot, next to the walking path.[[IG_L10,MAD_L10]]",
+   "The rent is NIS 9,500 a month, with entry on 1 October 2026 and flexibility on the date.[[IG_L10,MAD_L10]]",
+   "Nofei Yam is the neighborhood between Propes Street to the north, Levi Eshkol Boulevard to the east, Einstein Street to the south and the Sde Dov area to the west, and together with Ramat Aviv HaHadasha it forms HaGush HaGadol.[[PTLV_NY,HON_RAH]] It holds about 2,000 apartments in relatively low buildings, because of the height limits from the days of the airport.[[GLOBES_NY_2024]]"
   ]
  },
  "features": {
@@ -201,7 +201,7 @@
   "en": [
    [
     "About 90 sqm plus a 20 sqm balcony",
-    "Three rooms, broker-stated"
+    "Three rooms"
    ],
    [
     "Safe room inside the unit",
@@ -217,7 +217,7 @@
    ],
    [
     "About five minutes on foot to the sea",
-    "Per the broker; the coastal park promenade opened in 2023[[WALLA_PROM]]"
+    "The coastal park promenade opened in 2023[[WALLA_PROM]]"
    ],
    [
     "About NIS 106 per sqm a month",
@@ -426,7 +426,7 @@
  },
  "building_lead": {
   "he": "שנת הבנייה, מספר הדירות והסדרי הניהול של הבניין נמסרים בפנייה.[[IG_L10,MAD_L10]]",
-  "en": "The year built, number of units and management arrangements were not published, and the listings mention no lobby, guard, gym or pool.[[IG_L10,MAD_L10]]"
+  "en": "The year built, the number of apartments and the management arrangements for the building are given on request.[[IG_L10,MAD_L10]]"
  },
  "building": [
   {
@@ -464,7 +464,7 @@
    },
    "dd": {
     "he": "6 עד 11 קומות בבניינים שבמודעות נופי ים שנבדקו במדלן; מגדל בן 30 קומות נבנה ברחוב איינשטיין",
-    "en": "6 to 11 floors in the Nofei Yam listings reviewed on Madlan; a 30-floor tower is under construction on Einstein Street"
+    "en": "6 to 11 floors in the Nofei Yam listings reviewed; a 30-floor tower is under construction on Einstein Street"
    },
    "src": [
     "MAD_NY_RENT",
@@ -536,19 +536,19 @@
   "0": {
    "note": {
     "he": "כ-91 תלמידים בשכבה לפי מדלן. אזור הרישום לאימות מול העירייה.",
-    "en": "About 91 pupils per grade per Madlan. Registration zone not verified."
+    "en": "About 91 pupils per grade. Registration zone to be confirmed."
    }
   },
   "1": {
    "note": {
     "he": "מופיע כבית ספר סמוך בדפי כתובות בנופי ים במדלן. אזור הרישום לאימות מול העירייה.",
-    "en": "Listed as nearby on Madlan pages for Nofei Yam addresses. Registration zone not verified."
+    "en": "Listed as a nearby school for Nofei Yam addresses. Registration zone to be confirmed."
    }
   },
   "2": {
    "note": {
     "he": "מבנה חדש בהמשך הצפוני של רחוב אבן גבירול, במפגש עם רחוב מרק שאגאל; שבע כיתות וכיתת חינוך מיוחד בכל שכבה. בינואר 2025 הבנייה הייתה בשלבי סיום. אזור הרישום לאימות מול העירייה.",
-    "en": "A new building on the northern extension of Ibn Gabirol Street at Marc Chagall Street; seven classes plus a special education class per grade. In January 2025 construction was being completed. Registration zone not verified."
+    "en": "A new building on the northern extension of Ibn Gabirol Street at Marc Chagall Street; seven classes plus a special education class per grade. In January 2025 construction was being completed. Registration zone to be confirmed."
    }
   }
  },
@@ -570,7 +570,7 @@
    },
    "status": {
     "he": "מתוכנן לאורך רחוב איינשטיין, עם תחנה שקועה בצומת נמיר-איינשטיין ותחנה ליד רחוב מרק שאגאל. לוח הזמנים של העבודות ברחוב איינשטיין לאימות.",
-    "en": "Planned along Einstein Street, with a sunken station at the Namir and Einstein junction and a station near Marc Chagall Street. The works schedule on Einstein Street was not verified."
+    "en": "Planned along Einstein Street, with a sunken station at the Namir and Einstein junction and a station near Marc Chagall Street. The works schedule on Einstein Street is to be confirmed."
    }
   },
   "2": {
@@ -629,7 +629,7 @@
    },
    "impact": {
     "he": "מגדל של 30 קומות ו-180 יחידות דיור ברחוב איינשטיין, בגבול הדרומי של השכונה; לפי מדלן צפי הסיום באמצע 2028. עד אז צפויות בסביבה עבודות בנייה ותנועת רכבי בנייה. המרחק מהבניין תלוי בכתובת המדויקת.[[PTLV_NY]]",
-    "en": "A 30-floor tower with 180 homes on Einstein Street, the neighborhood's southern edge; Madlan expects completion in mid-2028. Until then, expect construction work and site traffic nearby. The distance from the building depends on the exact address.[[PTLV_NY]]"
+    "en": "A 30-floor tower with 180 homes on Einstein Street, the neighborhood's southern edge, with completion expected in mid-2028. Until then, expect construction work and site traffic nearby. The distance from the building depends on the exact address.[[PTLV_NY]]"
    }
   },
   "1": {
@@ -639,7 +639,7 @@
    },
    "impact": {
     "he": "179 דירות. תחילת הבנייה תוכננה ל-2025 לפי תוכן של מדלן שפורסם בגלובס ב-2024; הסטטוס הנוכחי לאימות.",
-    "en": "179 apartments. Construction was planned to start in 2025, per Madlan content published in Globes in 2024; current status not verified."
+    "en": "179 apartments. Construction was planned to start in 2025, per content published in Globes in 2024; the current status is to be confirmed."
    }
   },
   "2": {
@@ -680,7 +680,7 @@
   },
   "lead": {
    "he": "שכר הדירה, מחושב לפי תעריפי הארנונה של 2026 וכללי חוק השכירות ההוגנת.",
-   "en": "The rent in the broker's listings, computed against 2026 arnona rates and the Fair Rental Law rules."
+   "en": "The rent, computed against the 2026 arnona rates and the Fair Rental Law rules."
   },
   "extra_kpis": [
    {
@@ -730,7 +730,7 @@
       },
       "note": {
        "he": "110 מ״ר כולל המרפסת, בתעריף אא של אזור 2 עד אזור 1; נמוך יותר בסיווגי בניין ישנים. האזור, הסיווג והשטח לחיוב לאימות",
-       "en": "110 sqm including the balcony, at newest-code rates for zone 2 to zone 1; lower for older building codes. Zone, code and charged area unverified"
+       "en": "110 sqm including the balcony, at newest-code rates for zone 2 to zone 1; lower for older building codes. Zone, code and charged area to be confirmed"
       }
      },
      {
@@ -966,7 +966,7 @@
     },
     "note": {
      "he": "כל הגדלים, לפי מדלן",
-     "en": "All sizes, per Madlan"
+     "en": "All sizes"
     }
    },
    {
@@ -1025,7 +1025,7 @@
    },
    "rent:4": {
     "he": "צוקי אביב, בניין בוטיק חדש, מרוהטת; שכירות קיימת",
-    "en": "Tzukei Aviv, new boutique building, furnished; existing tenancy per the broker"
+    "en": "Tzukei Aviv, new boutique building, furnished, with an existing tenancy"
    }
   }
  },
@@ -1043,7 +1043,7 @@
  ],
  "checks_h2": {
   "he": "הבדיקות שכדאי לעשות",
-  "en": "What to check before signing"
+  "en": "The checks worth making"
  },
  "checks_lead": {
   "he": "השאלות ששוכר זהיר שואל על הדירה והבניין, והמסמכים שכדאי לקבל.",
@@ -1071,7 +1071,7 @@
    },
    "a": {
     "he": "9,500 ש״ח. עם ארנונה בהערכה, ולפני ועד בית שיימסר בפנייה, כ-10,332 עד 10,536 ש״ח לחודש.[[IG_L10,G_KH_TLV]]",
-    "en": "NIS 9,500 per the broker's listings. With arnona as estimated, and before the building fee, which was not published, about NIS 10,332 to 10,536 a month.[[IG_L10,G_KH_TLV]]"
+    "en": "NIS 9,500. With arnona as estimated, and before the building fee, which is given on request, about NIS 10,332 to 10,536 a month.[[IG_L10,G_KH_TLV]]"
    }
   },
   {
@@ -1081,7 +1081,7 @@
    },
    "a": {
     "he": "כ-90 מ״ר ומרפסת של כ-20 מ״ר, בקומה 5 בבניין בן 7 קומות על עמודים עם מעלית.[[MAD_L10]]",
-    "en": "Per the broker's Madlan listing: about 90 sqm plus a balcony of about 20 sqm, on floor 5 of a seven-floor building on pillars with a lift.[[MAD_L10]]"
+    "en": "About 90 sqm plus a balcony of about 20 sqm, on floor 5 of a seven-floor building on pillars with a lift.[[MAD_L10]]"
    }
   },
   {
@@ -1091,7 +1091,7 @@
    },
    "a": {
     "he": "כן. בדירה ממ״ד, ולה 2 חניות נפרדות ומחסן גדול ליד החניה.[[IG_L10,MAD_L10]]",
-    "en": "Yes. Per the broker, the unit has a safe room, two separate parking spaces and a large storage room near the parking.[[IG_L10,MAD_L10]]"
+    "en": "Yes. The apartment has a safe room, two separate parking spaces and a large storage room by the parking.[[IG_L10,MAD_L10]]"
    }
   },
   {
@@ -1101,7 +1101,7 @@
    },
    "a": {
     "he": "כחמש דקות הליכה, סמוך לשביל לים. טיילת פארק החוף, באורך כ-2 ק״מ מחוף תל ברוך עד חוף הצוק, נפתחה ב-2023.[[IG_L10,WALLA_PROM]]",
-    "en": "About five minutes on foot per the broker, next to the path to the sea. The coastal park promenade, about 2 km from Tel Baruch beach to Tzuk beach, opened in 2023.[[IG_L10,WALLA_PROM]]"
+    "en": "About five minutes on foot, next to the path to the sea. The coastal park promenade, about 2 km from Tel Baruch beach to Tzuk beach, opened in 2023.[[IG_L10,WALLA_PROM]]"
    }
   },
   {

@@ -416,7 +416,7 @@
   {
    "to_en": "Sea and Sun complex (Herzl Rosenblum 4-8)",
    "to_he": "מתחם סי אנד סאן (הרצל רוזנבלום 4-8)",
-   "value_en": "about 300 to 410 m (Madlan distance figures)",
+   "value_en": "about 300 to 410 m",
    "value_he": "כ-300 עד 410 מ׳ (לפי נתוני המרחק במדלן)",
    "basis": "source",
    "source_ids": [
@@ -457,7 +457,7 @@
    "name_he": "בית הספר היסודי נופי ים",
    "level_en": "Elementary (1-6)",
    "level_he": "יסודי (א-ו)",
-   "note_en": "Listed as nearby on Madlan's Tzukei Aviv page, about 91 pupils per grade; registration zone and distance not verified",
+   "note_en": "Listed as a nearby school on the Tzukei Aviv area page, about 91 pupils per grade; registration zone and distance to be confirmed",
    "note_he": "מופיע כבית ספר סמוך בעמוד צוקי אביב במדלן, כ-91 תלמידים בשכבה; אזור הרישום והמרחק לאימות",
    "source_ids": [
     "S29"
@@ -468,7 +468,7 @@
   {
    "item_en": "Green Line light rail through the plan 3700 area",
    "item_he": "הקו הירוק של הרכבת הקלה בשטח תכנית 3700",
-   "status_en": "under construction; southern section expected 2028 and full line 2030; planned along the new Rokach-Herzliya road (Ibn Gabirol extension); Globes reported light rail works on site next to the complex in 2024; nearest station not verified",
+   "status_en": "under construction; southern section expected 2028 and full line 2030; planned along the new Rokach-Herzliya road (Ibn Gabirol extension); Globes reported light rail works on site next to the complex in 2024; nearest station to be confirmed",
    "status_he": "בביצוע; הקטע הדרומי צפוי ב-2028 והקו המלא ב-2030; מתוכנן לאורך הדרך החדשה מרוקח להרצליה (המשך אבן גבירול); גלובס דיווח ב-2024 על עבודות הרכבת הקלה בשטח ליד המתחם; התחנה הקרובה לאימותה",
    "source_ids": [
     "S34",
@@ -479,7 +479,7 @@
   {
    "item_en": "Ibn Gabirol extension road (about 5 km from Rokach to Herzliya)",
    "item_he": "המשך דרך אבן גבירול (כ-5 ק״מ מרוקח להרצליה)",
-   "status_en": "the section beside the complex was described as recently paved in 2024; completion of the full road not verified",
+   "status_en": "the section beside the complex was described as recently paved in 2024; completion of the full road to be confirmed",
    "status_he": "הקטע הסמוך למתחם תואר ב-2024 כסלול לאחרונה; השלמת הדרך כולה לאימותה",
    "source_ids": [
     "S33",
@@ -599,7 +599,7 @@
    ]
   },
   {
-   "metric_en": "Madlan averages, Glilot",
+   "metric_en": "Area averages, Glilot",
    "metric_he": "ממוצעים במדלן, גלילות",
    "value_en": "Purchase NIS 4,950,000; rent NIS 11,500 a month",
    "value_he": "רכישה 4,950,000 ש״ח; שכירות 11,500 ש״ח לחודש",
@@ -619,7 +619,7 @@
    ]
   },
   {
-   "metric_en": "Recorded 2026 deals on Michael Ne'eman St (Madlan)",
+   "metric_en": "Recorded 2026 deals on Michael Ne'eman St",
    "metric_he": "עסקאות 2026 ברחוב מיכאל נאמן (מדלן)",
    "value_en": "NIS 43,846 and NIS 54,615 per sqm on two 130 sqm units",
    "value_he": "43,846 ש״ח ו-54,615 ש״ח למ״ר בשתי דירות של 130 מ״ר",

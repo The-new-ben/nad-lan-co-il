@@ -388,7 +388,7 @@
   {
    "label_en": "Kindergarten cluster",
    "label_he": "אשכול גנים",
-   "value_en": "A 4-floor kindergarten cluster at Arania 14A in Tower B, planned to open in September 2025; operating status not confirmed",
+   "value_en": "A 4-floor kindergarten cluster at Arania 14A in Tower B, planned to open in September 2025; whether it is operating is to be confirmed",
    "value_he": "אשכול גנים בן 4 קומות ברחוב ארניה 14א במגדל B, שתוכנן להיפתח בספטמבר 2025; לאימות אם הוא פועל",
    "basis": "source",
    "confidence": "likely",
@@ -720,7 +720,7 @@
    "name_he": "אשכול גנים, ארניה 14א (בתוך הפרויקט)",
    "level_en": "Kindergartens",
    "level_he": "גני ילדים",
-   "note_en": "4-floor cluster in Tower B planned for September 2025; operating status not confirmed.",
+   "note_en": "4-floor cluster in Tower B planned for September 2025; whether it is operating is to be confirmed.",
    "note_he": "אשכול בן 4 קומות במגדל B שתוכנן לספטמבר 2025; לאימות אם הוא פועל.",
    "source_ids": [
     "S35"
@@ -859,7 +859,7 @@
   {
    "item_en": "Kindergarten cluster at Arania 14A in Tower B",
    "item_he": "אשכול גנים בארניה 14א במגדל B",
-   "impact_en": "A family amenity inside the project that may also bring drop-off traffic; opening status not confirmed.",
+   "impact_en": "A family amenity inside the project that may also bring drop-off traffic; the opening date is to be confirmed.",
    "impact_he": "שירות למשפחות בתוך הפרויקט, שעשוי גם להוסיף תנועת הורים; מועד הפתיחה לאימות.",
    "source_ids": [
     "S35"
@@ -877,7 +877,7 @@
  ],
  "market_stats": [
   {
-   "metric_en": "Asking rent, B.S.R Sarona 5-room units with sea or west views (11 Madlan cards, 115 to 122 sqm built)",
+   "metric_en": "Asking rent, B.S.R Sarona 5-room units with sea or west views (11 listings, 115 to 122 sqm built)",
    "metric_he": "שכר דירה מבוקש, דירות 5 חדרים עם נוף לים או למערב בב.ס.ר שרונה (11 מודעות במדלן, 115 עד 122 מ״ר בנוי)",
    "value_en": "NIS 15,000 to 18,500 a month, median NIS 16,500 (computed from asking rents)",
    "value_he": "15,000 עד 18,500 ש״ח לחודש, חציון 16,500 ש״ח (חישוב על בסיס מחירים מבוקשים)",
@@ -917,7 +917,7 @@
    ]
   },
   {
-   "metric_en": "Madlan average rent, Sarona neighborhood (all sizes, period not stated)",
+   "metric_en": "Average asking rent, Sarona neighborhood (all sizes, period not stated)",
    "metric_he": "שכר דירה ממוצע במדלן, שכונת שרונה (כל הגדלים, התקופה לא צוינה)",
    "value_en": "NIS 13,000 a month",
    "value_he": "13,000 ש״ח לחודש",
@@ -927,7 +927,7 @@
    ]
   },
   {
-   "metric_en": "Rental supply on Arania Osvaldo Street (Madlan)",
+   "metric_en": "Rental supply on Arania Osvaldo Street",
    "metric_he": "היצע להשכרה ברחוב ארניה אוסוולדו (מדלן)",
    "value_en": "159 apartments for rent, 26 of them with 5 rooms (not all house numbers are B.S.R)",
    "value_he": "159 דירות להשכרה, מתוכן 26 בנות 5 חדרים (לא כל מספרי הבתים שייכים לב.ס.ר)",
@@ -959,7 +959,7 @@
    ]
   },
   {
-   "metric_en": "Madlan area price level and gross rental yield (shown with B.S.R listings, period not stated)",
+   "metric_en": "Area price level and gross rental yield (shown with B.S.R listings, period not stated)",
    "metric_he": "רמת מחירים ותשואת שכירות ברוטו לפי מדלן (מוצג במודעות ב.ס.ר, התקופה לא צוינה)",
    "value_en": "about NIS 57,000 per sqm; yield 2.97%",
    "value_he": "כ-57,000 ש״ח למ״ר; תשואה 2.97%",
@@ -1241,7 +1241,7 @@
   },
   {
    "date": "2026-09-16",
-   "where_en": "Arania Osvaldo St (Madlan tags Gindi TLV; building not named in text)",
+   "where_en": "Arania Osvaldo St (tagged Gindi TLV; building not named in text)",
    "where_he": "רחוב ארניה אוסוולדו (מדלן מתייג גינדי TLV; הבניין לא צוין בטקסט)",
    "rooms": "5",
    "sqm": 128,
@@ -1325,7 +1325,7 @@
   },
   {
    "date": "2026-09-16",
-   "where_en": "Da Vinci 6 (Madlan tags Gindi TLV; building not named)",
+   "where_en": "Da Vinci 6 (tagged Gindi TLV; building not named)",
    "where_he": "דה וינצ׳י 6 (מדלן מתייג גינדי TLV; הבניין לא צוין)",
    "rooms": "5",
    "sqm": 134,
@@ -1618,7 +1618,7 @@
    "he": "באיזה מגדל (A, B או C) ובאיזו קומה נמצאת הדירה, ואילו חדרים פונים לים?"
   },
   {
-   "en": "What is the asking rent? Is this the unit on the Madlan card at NIS 17,000 (4 rooms, originally 5, 128 sqm, Leonardo da Vinci 1) or on your furnished 5-room cards at NIS 20,000?",
+   "en": "What is the asking rent? Is this the unit listed at NIS 17,000 (4 rooms, originally 5, 128 sqm, Leonardo da Vinci 1) or the furnished 5-room unit listed at NIS 20,000?",
    "he": "מה שכר הדירה המבוקש? האם זו הדירה שבמודעה במדלן ב-17,000 ש״ח (4 חדרים, במקור 5, 128 מ״ר, לאונרדו דה וינצ׳י 1) או הדירה שבמודעות שלך לדירת 5 חדרים מרוהטת ב-20,000 ש״ח?"
   },
   {

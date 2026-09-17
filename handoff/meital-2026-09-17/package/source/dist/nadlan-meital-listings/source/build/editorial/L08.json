@@ -25,7 +25,7 @@
  },
  "kicker": {
   "he": "למכירה · בלעדיות · מגדלי נאמן, צפון תל אביב",
-  "en": "For sale · Migdalei Ne'eman, north Tel Aviv"
+  "en": "For sale · Exclusive · Migdalei Ne'eman, north Tel Aviv"
  },
  "title": {
   "he": "4.5 חדרים במתחם עם בריכה וספא, מגדלי נאמן",
@@ -33,7 +33,7 @@
  },
  "dek": {
   "he": "מול הגינות המטופחות של מגדלי נאמן, כשתי דקות הליכה מחוף הצוק: 4.5 חדרים וממ״ד נפרד על כ-130 מ״ר, בתוך מתחם עם בריכה מקורה, ספא ומאבטח בלובי מסביב לשעון. 5,900,000 ש״ח.",
-  "en": "About 130 sqm with a separate safe room, two parking spaces and storage, facing the complex's landscaped gardens, about two minutes on foot from Tzuk beach according to the broker. Asking NIS 5,900,000."
+  "en": "Facing the landscaped gardens of Migdalei Ne'eman, about two minutes on foot from Tzuk beach: 4.5 rooms plus a separate safe room on about 130 sqm, inside a complex with a covered pool, a spa and a lobby guard around the clock. NIS 5,900,000."
  },
  "chips": [
   {
@@ -163,9 +163,9 @@
    "דמי הניהול כוללים את התחזוקה ואת השימוש בכל המתקנים, ודווחו ב-2024 כ-2,300 ש״ח לחודש לדירה של 138 מ״ר.[[S3]] הים וחוף הצוק במרחק של כשתי דקות הליכה.[[S43]]"
   ],
   "en": [
-   "Migdalei Ne'eman is a complex of 330 apartments in seven buildings on Michael Ne'eman Street, next to Tzuk beach, occupied in stages between 2000 and 2015.[[S3,S10,S11]] Residents have a covered pool open all year, a spa with sauna and jacuzzi, a gym, lawns and a lobby guard around the clock.[[S3,S8,S10]] The facades carry mosaics by the artist Yaacov Agam.[[S10]]",
-   "The apartment offers 4.5 rooms plus a separate safe room on about 130 sqm, on floor 1 of 8, with three exposures, two parking spaces and a storage room.[[S1,S43]] It faces the complex's landscaped gardens, is well kept and available immediately, at an asking price of NIS 5,900,000.[[S1]]",
-   "The complex fee covers maintenance and use of all facilities, and was reported in 2024 at about NIS 2,300 a month for a 138 sqm apartment.[[S3]] According to the broker, the sea and Tzuk beach are about two minutes away on foot.[[S43]]"
+   "The apartment faces the landscaped gardens of the complex: 4.5 rooms plus a separate safe room on about 130 sqm, on floor 1 of 8, with three exposures, two parking spaces and a storage room.[[S1,S43]] It is well kept, available for immediate entry, and the price is NIS 5,900,000.[[S1]]",
+   "Migdalei Ne'eman is a complex of 330 apartments in seven buildings on Michael Ne'eman Street, next to Tzuk beach, occupied in stages between 2000 and 2015.[[S3,S10,S11]] Residents have a covered pool open all year, a spa with a sauna and a jacuzzi, a gym, lawns and a lobby guard 24 hours a day.[[S3,S8,S10]] The building facades carry mosaics by the artist Yaacov Agam.[[S10]]",
+   "The complex fee covers the maintenance and the use of all the facilities, and was reported in 2024 at about NIS 2,300 a month for a 138 sqm apartment.[[S3]] The sea and Tzuk beach are about two minutes away on foot.[[S43]]"
   ]
  },
  "features": {
@@ -210,7 +210,7 @@
    ],
    [
     "24/7 lobby guard",
-    "And a concierge, per the broker"
+    "And a concierge"
    ],
    [
     "Two parking spaces and storage",
@@ -294,7 +294,7 @@
      },
      "dd": {
       "he": "2 חדרי רחצה ו-3 שירותים לפי שדות המודעה",
-      "en": "2 bathrooms and 3 toilets per the listing fields"
+      "en": "2 bathrooms and 3 toilets"
      },
      "basis": "broker",
      "src": [
@@ -374,7 +374,7 @@
  },
  "building_lead": {
   "he": "שלב הבנייה של הבניין ושנת האכלוס שלו נמסרים בפנייה ישירה.",
-  "en": "Which phase of the complex built the unit's building, and when, was not verified in open sources."
+  "en": "Which phase of the complex built this building, and the year it was occupied, are given on direct request."
  },
  "building": [
   {
@@ -500,7 +500,7 @@
    "סביב המתחם חלה תכנית תא/3700 לרובע צפון-מערבי, וממזרח לו נסלל המשך ציר אבן גבירול, שלאורכו מתוכנן גם הקו הירוק של הרכבת הקלה.[[S3,S14,S34]]"
   ],
   "en": [
-   "The complex sits in northern Tzukei Aviv, the neighborhood between Unitzman Street, Namir Road, Propes Street and the sea.[[S45]] The management company places it next to Tzuk beach, and Madlan files the street under Glilot.[[S10,S19]]",
+   "The complex sits in northern Tzukei Aviv, the neighborhood between Unitzman Street, Namir Road, Propes Street and the sea.[[S45]] The management company places it next to Tzuk beach, and the street is filed under the Glilot area in some records.[[S10,S19]]",
    "The coastal park promenade, about 2 km along the cliff, links Tzuk beach with Tel Baruch beach and opened in 2023.[[S31]] Nathan Alterman High School, whose building won the Rokach architecture prize, is in the neighborhood.[[S30]]",
    "Plan TA/3700 for a new north-west quarter covers the land around the complex, and the Ibn Gabirol extension has been paved to its east, where the Green Line light rail is also planned.[[S3,S14,S34]]"
   ]
@@ -554,7 +554,7 @@
   },
   "lead": {
    "he": "המחיר, מחושב לפי כללי המס והמימון שפורסמו עד 16.9.2026.",
-   "en": "The asking price in the broker's Madlan listing, computed against tax and lending rules published up to 16 September 2026."
+   "en": "The price, computed against the tax and lending rules published up to 16 September 2026."
   },
   "median_psqm": {
    "value": 50000,
@@ -635,7 +635,7 @@
    ],
    "note": {
     "he": "כל הפסים באותו קנה מידה. מספרי החדרים והקומות בעסקאות מדלן נקראו באופן ממוכן ולאמתם באתר רשות המסים.",
-    "en": "All bars share one scale. Rooms and floors in the Madlan sales were read automatically and should be checked on the Tax Authority site."
+    "en": "All bars share one scale. The room counts and floors in the recorded sales were read automatically and should be checked on the Tax Authority site."
    }
   },
   "ledger_title": {
@@ -704,12 +704,12 @@
   },
   "lead": {
    "he": "עסקאות ומודעות ברחוב מיכאל נאמן ובמתחמים סמוכים, ונתוני שוק. עסקאות מדלן נקראו באופן ממוכן, ולאמת אותן לפני משא ומתן.",
-   "en": "Sales and listings on Michael Ne'eman Street and nearby complexes, plus market data. Madlan sales were read automatically and should be verified before negotiating."
+   "en": "Sales and listings on Michael Ne'eman Street and nearby complexes, plus market data. The recorded sales were read automatically and should be confirmed before negotiating."
   }
  },
  "checks_h2": {
   "he": "הבדיקות שכדאי לעשות",
-  "en": "What to check before an offer"
+  "en": "The checks worth making"
  },
  "checks_lead": {
   "he": "השאלות שרוכש זהיר שואל על דירה במתחם כזה, והמסמכים שכדאי לקבל.",
@@ -757,7 +757,7 @@
    },
    "a": {
     "he": "כשתי דקות הליכה לים ולחוף הצוק.[[S43]] מודעת שכירות של מפרסם אחר במתחם מציינת חמש דקות הליכה.[[S26]]",
-    "en": "According to the broker, about two minutes on foot to the sea and Tzuk beach.[[S43]] A rental listing by another advertiser in the complex says five minutes.[[S26]]"
+    "en": "About two minutes on foot to the sea and Tzuk beach.[[S43]] A rental listing by another advertiser in the complex says five minutes.[[S26]]"
    }
   },
   {

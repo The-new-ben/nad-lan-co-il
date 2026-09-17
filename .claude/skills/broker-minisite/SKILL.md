@@ -25,7 +25,7 @@ description: Build a broker a real website inside nad-lan.co.il, in Hebrew and E
 תיקיית מדיה ← ספריית המדיה של וורדפרס (alt לכל קובץ) ← runners/meital_photo_plan.json (יחס אמיתי לכל קובץ)
   ↓
 source/build/editorial/Lxx.json (שדות he, en, ...)  +  source/dossiers/Lxx.json
-  ↓ python build/build.py ; python build/package.py
+  ↓ bash build-and-sync.sh  (build.py ; package.py ; ואז סנכרון אל package/listings)
 package/listings/Lxx/content-<lang>.html  +  source/dist/broker/broker-<lang>.html
   ↓ runners/meital_site.py (שער שפה על כל עמוד לפני פרסום)
 האתר ועמודי הנכס, בכל שפה, עם switcher ו-hreflang
@@ -45,7 +45,11 @@ package/listings/Lxx/content-<lang>.html  +  source/dist/broker/broker-<lang>.ht
 
 **שפה חדשה = שלושה דברים:** ערך חדש ב-`LANGS` בראנר (תוויות התפריט, הטקסטים של "עליי" והאזורים, רשימת הניקוי והרשימה השחורה של אותה שפה), `content-<lang>.html` לכל נכס ו-`broker-<lang>.html` מהחבילה, ו-`--pages --apply` שיוצר את העץ תחת `/<lang>/brokers/`. הפורטל כבר מחזיק עצים ל-en, ru, fr, ar.
 
-**hreflang:** סניפט קבוע `nl-i18n-hreflang` (Code Snippets, id 684) מדפיס `<link rel="alternate" hreflang>` מתוך המטא `nl_hreflang` (JSON של שפה←כתובת), עם x-default לעברית, וחושף ל-REST את `_yoast_wpseo_title` ו-`_yoast_wpseo_metadesc`. כלומר: כותרות SEO ותיאורים מתעדכנים מהראנר, בלי סניפט זמני.
+**hreflang: שני סניפטים, וזה חשוב.** `nl-i18n-meta-rest` (id 684) רק *רושם* את המטא `nl_hreflang` ואת `_yoast_wpseo_title` / `_yoast_wpseo_metadesc` ל-REST, כדי שהראנר יוכל לכתוב אותם. הוא לא מדפיס כלום. את התגיות מדפיסים שניים:
+- התוסף עצמו (`plugins/nadlan-config/inc/page-lang.php`) מדפיס אשכול שפות רק כשהכתובות סימטריות: עברית ב-`/<rest>/` והתרגום ב-`/<lang>/<rest>/`, ורק ב-`is_page()`. זה מכסה את עמוד המתווך ואת העמוד הגנרי.
+- זוג עמודי נכס אינו סימטרי: העברית יושבת על `nadlan_property` ב-`/properties/<slug>/` והאנגלית על עמוד ב-`/en/brokers/<broker>/<slug>/`. לכן `nl-i18n-hreflang-print` (id 685, המקור בריפו: `snippets/nl-i18n-hreflang-print.php`) מדפיס את האשכול מתוך `nl_hreflang`, ושותק בכל מקום שהתוסף כבר הדפיס בו.
+
+בלי 685 כל 22 עמודי הנכס יוצאים עם `hreflang=0` גם כשהמטא נשמר. `--verify` הוא מה שתופס את זה.
 
 ## איך מעדכנים (שום דבר לא "באוויר")
 

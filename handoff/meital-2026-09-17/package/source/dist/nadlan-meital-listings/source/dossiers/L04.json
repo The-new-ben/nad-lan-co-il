@@ -721,7 +721,7 @@
   {
    "metric_en": "Azorei Chen median deal price",
    "metric_he": "מחיר עסקה חציוני באזורי חן",
-   "value_en": "NIS 5.9 million, fifth highest neighborhood in Israel (early 2023 to October 2025, Madlan data)",
+   "value_en": "NIS 5.9 million, fifth highest neighborhood in Israel (early 2023 to October 2025, published data)",
    "value_he": "5.9 מיליון ש״ח, השכונה החמישית ביוקרה בישראל (תחילת 2023 עד אוקטובר 2025, נתוני מדלן)",
    "as_of": "2025-10",
    "source_ids": [
@@ -854,7 +854,7 @@
   },
   {
    "date": "2026-09-16",
-   "where_en": "Eliyahu Berlin (No. 20 per the Madlan card), 11-floor building",
+   "where_en": "Eliyahu Berlin (No. 20 as listed), 11-floor building",
    "where_he": "אליהו ברלין (מס׳ 20 לפי כרטיס מדלן), בניין בן 11 קומות",
    "rooms": "3",
    "sqm": 100,
@@ -964,7 +964,7 @@
   },
   {
    "date": "2026-09-16",
-   "where_en": "Eliyahu Berlin 16 (per Madlan card), new building, full sea view, floor 10",
+   "where_en": "Eliyahu Berlin 16 (as listed), new building, full sea view, floor 10",
    "where_he": "אליהו ברלין 16 (לפי כרטיס מדלן), בניין חדש, נוף מלא לים, קומה 10",
    "rooms": "4",
    "sqm": 107,

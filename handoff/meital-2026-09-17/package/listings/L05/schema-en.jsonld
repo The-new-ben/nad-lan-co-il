@@ -4,7 +4,7 @@
   {
    "@type": "RealEstateListing",
    "name": "Furnished 3.5 Rooms with a Tenant in Place, Eliyahu Berlin Street",
-   "description": "Furnished 3.5 rooms in a boutique building on Eliyahu Berlin Street, let at NIS 15,000 per the broker. NIS 5,000,000, 3.6% gross yield, taxes and comps.",
+   "description": "Furnished 3.5 rooms in a boutique building on Eliyahu Berlin Street, let at NIS 15,000 a month. NIS 5,000,000, 3.6% gross yield, taxes and comps.",
    "inLanguage": "en",
    "datePosted": "2026-09-16",
    "url": "https://nad-lan.co.il/en/properties/en-tzukei-aviv-furnished-3-5-rooms-tenanted-for-sale/",
@@ -72,7 +72,7 @@
      "name": "What yield does the apartment produce?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "At the NIS 15,000 monthly rent the broker reported, the gross yield is 3.60% on NIS 5,000,000. If the landlord pays the management fee it is 3.46%, and under the 10% rental tax track 3.24%."
+      "text": "At the current rent of NIS 15,000 a month, the gross yield is 3.60% on NIS 5,000,000. If the landlord pays the management fee it is 3.46%, and under the 10% rental tax track 3.24%."
      }
     },
     {
@@ -80,7 +80,7 @@
      "name": "Can the buyer take the unit vacant?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "In November 2025 the broker noted flexible vacating. Obtain the lease end date and the tenant's position in writing before making an offer."
+      "text": "Vacating is flexible. Obtain the lease end date and the tenant's position in writing before making an offer."
      }
     },
     {
@@ -88,7 +88,7 @@
      "name": "What does the furniture include?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "According to the broker it is furnished and equipped, including kitchenware and towels. Attach an inventory to the contract and ask a lawyer how the furniture is treated in the tax filing."
+      "text": "The apartment is furnished and equipped, including kitchenware and towels. Attach an inventory and its condition to the contract, and ask a lawyer how the value of the furniture is handled in the filing to the Tax Authority."
      }
     },
     {
@@ -104,7 +104,7 @@
      "name": "How does it differ from the 3-room unit in the same building?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "The same building also offers an unfurnished 3-room unit at NIS 4,650,000. The NIS 350,000 gap reflects furniture, a sitting tenant and an extra half room as the broker describes it."
+      "text": "The same building also offers an unfurnished 3-room apartment at NIS 4,650,000. The NIS 350,000 gap reflects the furniture, the sitting tenant and an extra half room."
      }
     }
    ]

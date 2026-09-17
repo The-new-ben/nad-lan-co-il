@@ -66,7 +66,7 @@
      "name": "What does the apartment cost per month?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "The broker has not published a rent. Five-room units in Ramat Aviv HaHadasha and Ramat Aviv Gimel are offered at NIS 12,800 to 18,000 a month, and a building with a pool adds a building fee of about NIS 1,700 to 2,300, based on examples nearby."
+      "text": "The rent is given on direct request. Five-room units in Ramat Aviv HaHadasha and Ramat Aviv Gimel are offered at NIS 12,800 to 18,000 a month, and a building with a pool adds a building fee of about NIS 1,700 to 2,300, based on examples nearby."
      }
     },
     {
@@ -74,7 +74,7 @@
      "name": "Which complex is it?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "The complex name and address were not published; Meital Katzir gives them on direct contact. Per the broker, the complex has a swimming pool, a gym, a guard and further services."
+      "text": "The name of the complex and the address are given on direct request. The complex has a swimming pool, a gym, a guard and other services."
      }
     },
     {

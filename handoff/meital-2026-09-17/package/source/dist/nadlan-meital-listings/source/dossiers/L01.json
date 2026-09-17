@@ -871,7 +871,7 @@
    "name_he": "בית הספר היסודי נוף ים",
    "level_en": "Elementary (1-6)",
    "level_he": "יסודי (א-ו)",
-   "note_en": "Municipal elementary school. For 2026-27 its graduates are zoned to Yad Giora middle school. Registration zone for the estate's address not verified; school address not verified.",
+   "note_en": "Municipal elementary school. For 2026-27 its graduates are zoned to Yad Giora middle school. The registration zone for the address of the estate and the school address are to be confirmed.",
    "note_he": "בית ספר יסודי עירוני. בשנת הלימודים תשפ״ז בוגריו משובצים לחטיבת הביניים יד גיורא. אזור הרישום לכתובת הנכס וכתובת בית הספר לאימות.",
    "source_ids": [
     "S109",
@@ -883,7 +883,7 @@
    "name_he": "בית הספר היסודי ברנדייס",
    "level_en": "Elementary (1-6)",
    "level_he": "יסודי (א-ו)",
-   "note_en": "Municipal elementary school; the bus stop named after it is about 1.4 km straight line from De Shalit Square. Graduates go to Yad Giora middle school in 2026-27. Zone for the address not verified.",
+   "note_en": "Municipal elementary school; the bus stop named after it is about 1.4 km in a straight line from De Shalit Square. Its graduates go up to Yad Giora middle school in 2026-27. The registration zone for the address is to be confirmed.",
    "note_he": "בית ספר יסודי עירוני; תחנת האוטובוס הקרויה על שמו נמצאת כ-1.4 ק״מ בקו אווירי מכיכר דה שליט. בוגריו עולים לחטיבת הביניים יד גיורא בתשפ״ז. אזור הרישום לכתובת לאימות.",
    "source_ids": [
     "S109",
@@ -921,7 +921,7 @@
    "name_he": "חטיבת הביניים יד גיורא",
    "level_en": "Middle school (7-9)",
    "level_he": "חטיבת ביניים (ז-ט)",
-   "note_en": "Receives Nof Yam and Brandeis graduates in 2026-27. Address not verified.",
+   "note_en": "Receives Nof Yam and Brandeis graduates in 2026-27. The address is to be confirmed.",
    "note_he": "קולטת את בוגרי נוף ים וברנדייס בתשפ״ז. הכתובת לאימותה.",
    "source_ids": [
     "S110"
@@ -944,7 +944,7 @@
    "name_he": "תיכון הנדסאים הרצליה",
    "level_en": "High school",
    "level_he": "תיכון",
-   "note_en": "About 2.6 km straight line from De Shalit Square. Registration zone not verified.",
+   "note_en": "About 2.6 km in a straight line from De Shalit Square. Registration zone to be confirmed with the municipality.",
    "note_he": "כ-2.6 ק״מ בקו אווירי מכיכר דה שליט. אזור הרישום לאימות מול העירייה.",
    "source_ids": [
     "S112",
@@ -957,7 +957,7 @@
    "name_he": "התיכון החדש הרצליה",
    "level_en": "High school",
    "level_he": "תיכון",
-   "note_en": "About 2.6 km straight line from De Shalit Square. Registration zone not verified.",
+   "note_en": "About 2.6 km in a straight line from De Shalit Square. Registration zone to be confirmed with the municipality.",
    "note_he": "כ-2.6 ק״מ בקו אווירי מכיכר דה שליט. אזור הרישום לאימות מול העירייה.",
    "source_ids": [
     "S112",
@@ -1765,7 +1765,7 @@
   },
   {
    "date": "accessed 2026-09-16",
-   "where_en": "Herzliya Pituach, Galei Tchelet area per the listing",
+   "where_en": "Herzliya Pituach, Galei Tchelet area as listed",
    "where_he": "הרצליה פיתוח, אזור גלי תכלת לפי המודעה",
    "rooms": "9 (7 suites)",
    "sqm": 480,
@@ -2151,7 +2151,7 @@
  ],
  "buyer_or_renter_questions": [
   {
-   "en": "What is the asking price, and is this the estate advertised on Yad2 by Anglo Saxon Herzliya Pituach at NIS 46,000,000 and by other agencies at NIS 45,000,000 to NIS 46,000,000?",
+   "en": "What is the asking price, and is this the estate advertised by Anglo Saxon Herzliya Pituach at NIS 46,000,000 and by other agencies at NIS 45,000,000 to NIS 46,000,000?",
    "he": "מה המחיר המבוקש, והאם זו האחוזה שפורסמה ביד2 על ידי אנגלו סכסון הרצליה פיתוח ב-46,000,000 ש״ח ועל ידי משרדים נוספים ב-45 עד 46 מיליון ש״ח?"
   },
   {

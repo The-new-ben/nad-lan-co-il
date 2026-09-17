@@ -77,7 +77,7 @@
      "name": "Can the rent be paid monthly?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "The broker published NIS 27,000 subject to a year paid upfront, and the payments field on Yad2 is marked flexible. Ask the broker for the monthly-payment rent."
+      "text": "The rent is NIS 27,000 on the condition of a year paid upfront, and the payments field is marked flexible. Monthly payment is arranged directly with Meital Katzir."
      }
     },
     {
@@ -101,7 +101,7 @@
      "name": "Will brokerage be charged?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "The broker's no-brokerage offer applied to leases closed in August 2026. Customary brokerage is one month plus VAT, about NIS 31,860 here."
+      "text": "The no-brokerage offer applied to leases closed in August 2026. Customary brokerage is one month plus VAT, about NIS 31,860 here."
      }
     },
     {
@@ -109,7 +109,7 @@
      "name": "How far is the beach?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "According to the broker, five to seven minutes on foot to Tel Baruch beach and the coastal park promenade."
+      "text": "About five to seven minutes on foot to Tel Baruch beach and the coastal park promenade."
      }
     }
    ]

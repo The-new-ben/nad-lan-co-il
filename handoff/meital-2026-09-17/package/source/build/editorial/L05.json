@@ -35,7 +35,7 @@
  },
  "kicker": {
   "he": "למכירה, מושכרת · בלעדיות · צוקי אביב, צפון תל אביב",
-  "en": "For sale, tenanted · Tzukei Aviv, north Tel Aviv"
+  "en": "For sale, tenanted · Exclusive · Tzukei Aviv, north Tel Aviv"
  },
  "title": {
   "he": "3.5 חדרים מרוהטת עם שוכר, רחוב אליהו ברלין",
@@ -43,7 +43,7 @@
  },
  "dek": {
   "he": "דירה מרוהטת ומאובזרת בבניין בוטיק בצוקי אביב, מושכרת ב-15,000 ש״ח לחודש: תשואה ברוטו של 3.6% על מחיר של 5,000,000 ש״ח, עם שתי חניות ומחסן.",
-  "en": "A furnished, fully equipped apartment in a Tzukei Aviv boutique building, let at NIS 15,000 a month according to the broker: a 3.6% gross yield on the asking price, with two parking spaces and storage."
+  "en": "A furnished, fully equipped apartment in a Tzukei Aviv boutique building, let at NIS 15,000 a month: a 3.6% gross yield on a price of NIS 5,000,000, with two parking spaces and a storage room."
  },
  "chips": [
   {
@@ -193,9 +193,9 @@
    "דמי הניהול 600 ש״ח לחודש, ובבניין לובי מעוצב וחדר כושר חדש.[[S87]] מועד הפינוי האפשרי ותנאי חוזה השכירות נמסרים בכתב לפני חתימה, והם שקובעים אם הדירה מתאימה למשקיע או למי שמתכוון לגור בה."
   ],
   "en": [
-   "This is an apartment bought as a working investment: 3.5 rooms furnished and equipped down to the kitchenware and towels, in a nine-floor boutique building on Eliyahu Berlin Street.[[S86,S4]] According to the broker it is let at NIS 15,000 a month, and the asking price in her Madlan listing is NIS 5,000,000, reduced from NIS 5,800,000.[[S85,S4]]",
-   "The built area is about 90 sqm with a 12 sqm balcony. Madlan records 96 sqm, floor 3 of 9 and a 2022 building year.[[S84,S4]] The layout includes a generous master suite and an equipped kitchen, and the broker describes an open view. Two parking spaces and a storage room come with the unit.[[S93]]",
-   "The building charges a NIS 600 monthly management fee and has a designed lobby and a new residents' gym.[[S87]] The possible vacating date and the lease terms should be obtained in writing, because they decide whether the unit suits an investor or a buyer who plans to live in it."
+   "3.5 rooms, furnished and equipped down to the kitchenware and the towels, in a nine-floor boutique building on Eliyahu Berlin Street.[[S86,S4]] The apartment is let at NIS 15,000 a month, and the price is NIS 5,000,000.[[S85,S4]]",
+   "About 90 sqm built with a 12 sqm balcony, on floor 3 of 9, in a building from 2022.[[S84,S4]] The layout includes a generous master suite and an equipped kitchen, and the apartment looks out to an open view. Two parking spaces and a storage room are attached.[[S93]]",
+   "The management fee is NIS 600 a month, and the building has a designed lobby and a new gym.[[S87]] The possible vacating date and the terms of the lease are given in writing before signing, and they decide whether the apartment suits an investor or a buyer who means to live in it."
   ]
  },
  "features": {
@@ -228,7 +228,7 @@
   "en": [
    [
     "NIS 15,000 a month",
-    "Current rent per the broker, NIS 180,000 a year"
+    "Current rent, NIS 180,000 a year"
    ],
    [
     "3.6% gross yield",
@@ -236,11 +236,11 @@
    ],
    [
     "Furnished and equipped",
-    "Including kitchenware and towels, per the broker"
+    "Including kitchenware and towels"
    ],
    [
     "Two parking spaces and storage",
-    "As listed by the broker"
+    "Attached to the unit"
    ],
    [
     "NIS 600 a month",
@@ -248,7 +248,7 @@
    ],
    [
     "About 5 to 7 minutes to the beach",
-    "On foot to Tel Baruch beach and the promenade, per the broker"
+    "On foot to Tel Baruch beach and the promenade"
    ]
   ]
  },
@@ -280,7 +280,7 @@
      },
      "dd": {
       "he": "כ-90 מ״ר",
-      "en": "About 90 sqm (Madlan: 96 sqm)"
+      "en": "About 90 sqm"
      },
      "basis": "broker",
      "src": [
@@ -309,7 +309,7 @@
      },
      "dd": {
       "he": "3 מתוך 9",
-      "en": "3 of 9 (Yad2: 2 of 9)"
+      "en": "3 of 9"
      },
      "basis": "broker",
      "src": [
@@ -420,7 +420,7 @@
   },
   "lead": {
    "he": "המחיר והשכירות הקיימת, מחושבים לפי כללי המס והמימון שפורסמו עד 16.9.2026.",
-   "en": "The asking price in the broker's Madlan listing and the rent she reported, computed against tax and lending rules published up to 16 September 2026. Other listings show NIS 4,999,000 to 4,999,999."
+   "en": "The price and the current rent, computed against the tax and lending rules published up to 16 September 2026."
   },
   "median_psqm": {
    "value": 49000,
@@ -506,7 +506,7 @@
     },
     "note": {
      "he": "15,000 ₪ × 12",
-     "en": "NIS 15,000 x 12, per the broker"
+     "en": "NIS 15,000 x 12"
     }
    },
    {
@@ -576,7 +576,7 @@
     },
     "note": {
      "he": "102 מ״ר כולל מרפסת, תעריף אא לשנת 2026 באזור 2 ובאזור 1; האזור לאימות",
-     "en": "102 sqm including the balcony at 2026 newest-code rates, zones 2 and 1; zone unverified"
+     "en": "102 sqm including the balcony at 2026 newest-code rates, zones 2 and 1; zone to be confirmed"
     }
    }
   ]
@@ -604,7 +604,7 @@
  },
  "checks_h2": {
   "he": "הבדיקות שכדאי לעשות",
-  "en": "What to check before bidding on a tenanted unit"
+  "en": "The checks worth making"
  },
  "checks_lead": {
   "he": "השאלות שרוכש זהיר שואל על דירה עם שוכר, והמסמכים שכדאי לקבל לפני חתימה.",
@@ -632,7 +632,7 @@
    },
    "a": {
     "he": "לפי השכירות הקיימת, 15,000 ש״ח לחודש, התשואה ברוטו היא 3.60% על 5,000,000 ש״ח. אם המשכיר משלם את דמי הניהול היא 3.46%, ובמסלול מס של 10% על השכירות 3.24%.[[S84,S67]]",
-    "en": "At the NIS 15,000 monthly rent the broker reported, the gross yield is 3.60% on NIS 5,000,000. If the landlord pays the management fee it is 3.46%, and under the 10% rental tax track 3.24%.[[S84,S67]]"
+    "en": "At the current rent of NIS 15,000 a month, the gross yield is 3.60% on NIS 5,000,000. If the landlord pays the management fee it is 3.46%, and under the 10% rental tax track 3.24%.[[S84,S67]]"
    }
   },
   {
@@ -642,7 +642,7 @@
    },
    "a": {
     "he": "הפינוי גמיש.[[S84]] את תאריך סיום החוזה ואת עמדת השוכר לקבל בכתב לפני הצעה.",
-    "en": "In November 2025 the broker noted flexible vacating.[[S84]] Obtain the lease end date and the tenant's position in writing before making an offer."
+    "en": "Vacating is flexible.[[S84]] Obtain the lease end date and the tenant's position in writing before making an offer."
    }
   },
   {
@@ -652,7 +652,7 @@
    },
    "a": {
     "he": "הדירה מרוהטת ומאובזרת, כולל כלי מטבח ומגבות.[[S86]] כדאי לצרף לחוזה רשימת ציוד ומצב, ולבדוק עם עורך דין כיצד מטפלים בשווי הריהוט בדיווח לרשות המסים.",
-    "en": "According to the broker it is furnished and equipped, including kitchenware and towels.[[S86]] Attach an inventory to the contract and ask a lawyer how the furniture is treated in the tax filing."
+    "en": "The apartment is furnished and equipped, including kitchenware and towels.[[S86]] Attach an inventory and its condition to the contract, and ask a lawyer how the value of the furniture is handled in the filing to the Tax Authority."
    }
   },
   {
@@ -672,7 +672,7 @@
    },
    "a": {
     "he": "באותו בניין מוצעת גם דירת 3 חדרים לא מרוהטת ב-4,650,000 ש״ח.[[S1]] ההפרש, 350,000 ש״ח, משקף ריהוט, שכירות קיימת וחצי חדר נוסף.",
-    "en": "The same building also offers an unfurnished 3-room unit at NIS 4,650,000.[[S1]] The NIS 350,000 gap reflects furniture, a sitting tenant and an extra half room as the broker describes it."
+    "en": "The same building also offers an unfurnished 3-room apartment at NIS 4,650,000.[[S1]] The NIS 350,000 gap reflects the furniture, the sitting tenant and an extra half room."
    }
   }
  ],
@@ -685,7 +685,7 @@
   },
   "en": {
    "title": "Furnished 3.5-Room Apartment with Tenant, Tzukei Aviv",
-   "desc": "Furnished 3.5 rooms in a boutique building on Eliyahu Berlin Street, let at NIS 15,000 per the broker. NIS 5,000,000, 3.6% gross yield, taxes and comps.",
+   "desc": "Furnished 3.5 rooms in a boutique building on Eliyahu Berlin Street, let at NIS 15,000 a month. NIS 5,000,000, 3.6% gross yield, taxes and comps.",
    "kw": "tenanted apartment for sale Tzukei Aviv",
    "slug": "en-tzukei-aviv-furnished-3-5-rooms-tenanted-for-sale"
   }

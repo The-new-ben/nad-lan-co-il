@@ -76,7 +76,7 @@
      "name": "What does the apartment cost per month?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "The broker has not published a rent. Based on similar listings in Nofei Yam and Lamed HaHadasha, the market range for 135 sqm is about NIS 15,500 to 20,250 a month, before arnona and the building fee. This is a computation, not a quote."
+      "text": "The rent is given on direct request. Based on similar listings in Nofei Yam and Lamed HaHadasha, the market range for 135 sqm is about NIS 15,500 to 20,250 a month, before arnona and the building fee. This is a computation, not a quote."
      }
     },
     {
@@ -84,7 +84,7 @@
      "name": "When can a tenant move in?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "The broker gives a flexible entry date; agree the date with her directly."
+      "text": "Entry is flexible, and the date is agreed directly with Meital Katzir."
      }
     },
     {
@@ -92,7 +92,7 @@
      "name": "What does the building offer?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Per the broker, a gym and a guard. The guard's hours and what the building fee covers were not published."
+      "text": "The building has a gym and a guard. The hours of the guard and what the building fee covers are given on request."
      }
     },
     {
@@ -108,7 +108,7 @@
      "name": "Is the parking EV-ready?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Per the broker, the parking spaces are prepared for charging. Whether a charger is installed, and who pays for installation and electricity, was not stated."
+      "text": "The parking spaces are prepared for charging. The installation and electricity details are given on request."
      }
     }
    ]

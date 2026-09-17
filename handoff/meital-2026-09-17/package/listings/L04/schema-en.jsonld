@@ -80,7 +80,7 @@
      "name": "Does the apartment have a sea view?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "The broker describes a balcony facing an open green view and presents the building as the first building to the sea. The land between the neighborhood and the sea is covered by plan TA/3700, which a planner quoted by Globes described as buildings of eight floors at most. Check what is planned west of the building before paying for a view."
+      "text": "The balcony faces an open green view, and the building is presented as the first building to the sea. The land between the neighborhood and the sea is covered by plan TA/3700, which a planner quoted by Globes described as buildings of eight floors at most. Check what is planned west of the building before paying for a view."
      }
     },
     {
@@ -96,7 +96,7 @@
      "name": "What are the monthly costs?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "A management fee of NIS 600 a month according to the broker. Arnona was not published; at 2026 rates for a new building it would be about NIS 771 to 960 a month, depending on the arnona zone."
+      "text": "The management fee is NIS 600 a month. At 2026 rates for a new building, arnona would be about NIS 771 to 960 a month, depending on the arnona zone."
      }
     },
     {

@@ -1,0 +1,14 @@
+{
+ "dossiers/L01.json": {
+  "buyer_or_renter_questions[0].en": "What is the asking price, and is this the estate advertised by Anglo Saxon Herzliya Pituach at NIS 46,000,000 and by other agencies at NIS 45,000,000 to NIS 46,000,000?"
+ },
+ "dossiers/L02.json": {
+  "buyer_or_renter_questions[1].en": "What is the asking rent? Is this the unit listed at NIS 17,000 (4 rooms, originally 5, 128 sqm, Leonardo da Vinci 1) or the furnished 5-room unit listed at NIS 20,000?"
+ },
+ "dossiers/L03.json": {
+  "buyer_or_renter_questions[0].en": "Is the listing at NIS 15,500 (5 rooms, high floor, open sea view, appliances, immediate entry) this unit, and was the NIS 19,000 listing for a 118 sqm south-west unit the same apartment at an earlier price?"
+ },
+ "dossiers/L07.json": {
+  "buyer_or_renter_questions[1].en": "Do the two listings (190 sqm and 197 sqm, both NIS 18,000,000) describe the same unit? If there are two mini penthouses on floor 11, which one is this?"
+ }
+}

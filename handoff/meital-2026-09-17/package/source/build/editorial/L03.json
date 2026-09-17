@@ -27,7 +27,7 @@
  },
  "kicker": {
   "he": "להשכרה · בלעדיות · שרונה, מרכז תל אביב",
-  "en": "For rent · Sarona, central Tel Aviv"
+  "en": "For rent · Exclusive · Sarona, central Tel Aviv"
  },
  "title": {
   "he": "5 חדרים בקומה גבוהה עם נוף לים, ב.ס.ר שרונה",
@@ -35,7 +35,7 @@
  },
  "dek": {
   "he": "קומה גבוהה במגדל חדש בשרונה, עם מרפסת דרום-מערבית ונוף פתוח לים ולעיר: חמישה חדרים על 117 מ״ר, חניה ומחסן, כניסה מיידית. 15,500 ש״ח לחודש.",
-  "en": "A new apartment in a project that received its occupancy certificate in March 2026: 117 sqm with a 14 sqm south-west balcony, parking and storage, immediate entry, at NIS 15,500 a month per the broker's listing."
+  "en": "A high floor in a new tower in Sarona, with a south-west balcony and an open view to the sea and the city: five rooms on 117 sqm, parking and storage, immediate entry. NIS 15,500 a month."
  },
  "chips": [
   {
@@ -165,8 +165,8 @@
    "בבניין לובי בגובה כפול עם שמירה 24 שעות ביממה, חדר כושר לדיירים וארבע מעליות מהירות בכל מגדל.[[S33,S34]] שרונה מרקט במרחק של כ-40 מ׳ מהרחוב, ותחנת יהודית של הקו האדום פועלת בסמוך.[[S40,S57]]"
   ],
   "en": [
-   "B.S.R Sarona, formerly the United Sarona purchase group project, comprises three towers of about 40 floors and 420 apartments on Arania Osvaldo Street, in the southern part of the Sarona complex.[[S10,S11]] The project received its occupancy certificate (Tofes 4) on 29 March 2026.[[S12]] B.S.R Group is the developer and project manager, and Electra is the main contractor.[[S10,S11]]",
-   "The apartment has five rooms on 117 sqm built and a 14 sqm sun balcony facing south-west, on a high floor with open views to the sea and across Tel Aviv.[[S2,S1]] It is new, comes with kitchen appliances, attached parking and storage, and is available immediately.[[S7,S8]] The broker's exclusive Madlan listing asks NIS 15,500 a month.[[S13]]",
+   "Five rooms on 117 sqm built and a 14 sqm sun balcony facing south-west, on a high floor with an open view to the sea and across Tel Aviv.[[S2,S1]] The apartment is new, includes kitchen appliances, attached parking and storage, and is available for immediate entry.[[S7,S8]] The rent is NIS 15,500 a month.[[S13]]",
+   "B.S.R Sarona is a complex of three towers of about 40 floors and 420 apartments on Arania Osvaldo Street, in the southern part of the Sarona district.[[S10,S11]] B.S.R Group is the developer and project manager, Electra is the main contractor, and the project received its occupancy certificate on 29 March 2026.[[S12]]",
    "The building has a double-height lobby with 24/7 security, a residents' gym and four high-speed lifts per tower.[[S33,S34]] Sarona Market is about 40 m from the street, and Yehudit station on the Red Line operates nearby.[[S40,S57]]"
   ]
  },
@@ -200,7 +200,7 @@
   "en": [
    [
     "117 sqm built",
-    "Five rooms, broker-stated"
+    "Five rooms"
    ],
    [
     "A 14 sqm balcony",
@@ -216,7 +216,7 @@
    ],
    [
     "Parking and storage",
-    "Attached to the unit, per the broker"
+    "Attached to the unit"
    ],
    [
     "About 40 m to Sarona Market",
@@ -378,7 +378,7 @@
  },
  "building_lead": {
   "he": "דמי הניהול ושם חברת הניהול נמסרים בפנייה. מודעה אחרת בפרויקט ציינה 15.4 ש״ח למ״ר.[[S30]]",
-  "en": "The management fee and the management company's name were not published. Another listing in the project stated NIS 15.4 per sqm.[[S30]]"
+  "en": "The management fee and the name of the management company are given on request. Another listing in the project stated NIS 15.4 per sqm.[[S30]]"
  },
  "building": [
   {
@@ -568,25 +568,25 @@
   "0": {
    "note": {
     "he": "כ-80 תלמידים בשכבה; כ-313 מ׳ מרחוב ארניה אוסוולדו. אזור הרישום לאימות מול העירייה.",
-    "en": "About 80 pupils per grade; about 313 m from Arania Osvaldo Street. Registration zone not verified."
+    "en": "About 80 pupils per grade; about 313 m from Arania Osvaldo Street. Registration zone to be confirmed."
    }
   },
   "1": {
    "note": {
     "he": "כ-72 תלמידים בשכבה; כ-266 מ׳ מהרחוב. אזור הרישום לאימות מול העירייה.",
-    "en": "About 72 pupils per grade; about 266 m from the street. Registration zone not verified."
+    "en": "About 72 pupils per grade; about 266 m from the street. Registration zone to be confirmed."
    }
   },
   "2": {
    "note": {
     "he": "כ-280 מ׳ מהרחוב. תנאי הקבלה לאימות.",
-    "en": "About 280 m from the street. Admission terms not verified."
+    "en": "About 280 m from the street. Admission terms to be confirmed."
    }
   },
   "3": {
    "note": {
     "he": "תנאי הקבלה והמרחק לאימות.",
-    "en": "Admission terms and distance not verified."
+    "en": "Admission terms and distance to be confirmed."
    }
   }
  },
@@ -695,7 +695,7 @@
    },
    "impact": {
     "he": "מדלן רושם עסקאות מ-2026 עם שנת בנייה 2027; אם הבנייה נמשכת, צפויות עבודות מדרום לפרויקט.",
-    "en": "Madlan records 2026 sales with a 2027 building year; if work continues, expect construction just south of the project."
+    "en": "Sales recorded in 2026 carry a 2027 building year; if work continues, expect construction just south of the project."
    }
   }
  },
@@ -706,7 +706,7 @@
   },
   "lead": {
    "he": "שכר הדירה, מחושב לפי תעריפי 2026 וכללי חוק השכירות ההוגנת.",
-   "en": "The rent in the broker's exclusive Madlan listing, computed against 2026 rates and the Fair Rental Law rules."
+   "en": "The rent, computed against 2026 rates and the Fair Rental Law rules."
   },
   "tabs_title": {
    "he": "העלות לשוכר",
@@ -740,7 +740,7 @@
       },
       "note": {
        "he": "15.4 ₪ למ״ר כפי שצוין במודעה אחרת בפרויקט, על 117 עד 131 מ״ר; לאימות",
-       "en": "NIS 15.4 per sqm as stated in another listing in the project, on 117 to 131 sqm; unverified"
+       "en": "NIS 15.4 per sqm as stated in another listing in the project, on 117 to 131 sqm; to be confirmed"
       }
      },
      {
@@ -754,7 +754,7 @@
       },
       "note": {
        "he": "131 מ״ר כולל מרפסת בתעריף אא, אזור 2 עד אזור 1; האזור לאימות",
-       "en": "131 sqm including the balcony at newest-code rates, zone 2 to zone 1; zone unverified"
+       "en": "131 sqm including the balcony at newest-code rates, zone 2 to zone 1; zone to be confirmed"
       }
      },
      {
@@ -945,7 +945,7 @@
     },
     "note": {
      "he": "כל הגדלים, לפי מדלן",
-     "en": "All sizes, per Madlan"
+     "en": "All sizes"
     }
    },
    {
@@ -1012,7 +1012,7 @@
  ],
  "checks_h2": {
   "he": "הבדיקות שכדאי לעשות",
-  "en": "What to check before signing"
+  "en": "The checks worth making"
  },
  "checks_lead": {
   "he": "השאלות ששוכר זהיר שואל על הדירה והפרויקט, והמסמכים שכדאי לקבל.",
@@ -1040,7 +1040,7 @@
    },
    "a": {
     "he": "15,500 ש״ח, ועם דמי ניהול וארנונה בהערכה כ-18,292 עד 18,751 ש״ח לחודש.[[S13,S30,G_KH_TLV]]",
-    "en": "NIS 15,500 per the broker's Madlan listing, and with the management fee and arnona an estimated NIS 18,292 to 18,751 a month.[[S13,S30,G_KH_TLV]]"
+    "en": "NIS 15,500, and with the management fee and arnona an estimated NIS 18,292 to 18,751 a month.[[S13,S30,G_KH_TLV]]"
    }
   },
   {
@@ -1050,7 +1050,7 @@
    },
    "a": {
     "he": "קומה גבוהה עם נוף פתוח לים ולכל תל אביב; בפרסום מינואר 2026 צוינה קומה 20. המרפסת פונה לדרום-מערב.[[S1,S2]]",
-    "en": "The broker describes a high floor with open views to the sea and across Tel Aviv, and a January 2026 post gave floor 20. The balcony faces south-west.[[S1,S2]]"
+    "en": "A high floor with an open view to the sea and across Tel Aviv; a January 2026 post gave floor 20. The balcony faces south-west.[[S1,S2]]"
    }
   },
   {

@@ -24,8 +24,8 @@
  "en": {
   "title": "Furnished 3.5-Room Apartment with Tenant, Tzukei Aviv",
   "title_chars": 53,
-  "metadesc": "Furnished 3.5 rooms in a boutique building on Eliyahu Berlin Street, let at NIS 15,000 per the broker. NIS 5,000,000, 3.6% gross yield, taxes and comps.",
-  "metadesc_chars": 152,
+  "metadesc": "Furnished 3.5 rooms in a boutique building on Eliyahu Berlin Street, let at NIS 15,000 a month. NIS 5,000,000, 3.6% gross yield, taxes and comps.",
+  "metadesc_chars": 145,
   "focus_keyphrase": "tenanted apartment for sale Tzukei Aviv",
   "slug": "en-tzukei-aviv-furnished-3-5-rooms-tenanted-for-sale",
   "slug_status": "proposed, needs owner approval",
@@ -36,10 +36,10 @@
    "x-default": "https://nad-lan.co.il/properties/tzukei-aviv-3-5-rooms-furnished-tenanted-for-sale/"
   },
   "og_title": "Furnished 3.5 Rooms with a Tenant in Place, Eliyahu Berlin Street",
-  "og_description": "Furnished 3.5 rooms in a boutique building on Eliyahu Berlin Street, let at NIS 15,000 per the broker. NIS 5,000,000, 3.6% gross yield, taxes and comps.",
+  "og_description": "Furnished 3.5 rooms in a boutique building on Eliyahu Berlin Street, let at NIS 15,000 a month. NIS 5,000,000, 3.6% gross yield, taxes and comps.",
   "yoast_meta": {
    "_yoast_wpseo_title": "Furnished 3.5-Room Apartment with Tenant, Tzukei Aviv",
-   "_yoast_wpseo_metadesc": "Furnished 3.5 rooms in a boutique building on Eliyahu Berlin Street, let at NIS 15,000 per the broker. NIS 5,000,000, 3.6% gross yield, taxes and comps.",
+   "_yoast_wpseo_metadesc": "Furnished 3.5 rooms in a boutique building on Eliyahu Berlin Street, let at NIS 15,000 a month. NIS 5,000,000, 3.6% gross yield, taxes and comps.",
    "_yoast_wpseo_focuskw": "tenanted apartment for sale Tzukei Aviv"
   }
  }

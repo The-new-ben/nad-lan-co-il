@@ -35,7 +35,7 @@
  },
  "kicker": {
   "he": "להשכרה · בלעדיות · צוקי אביב, צפון תל אביב",
-  "en": "For rent · Tzukei Aviv, north Tel Aviv"
+  "en": "For rent · Exclusive · Tzukei Aviv, north Tel Aviv"
  },
  "title": {
   "he": "מיני פנטהאוז בחלל כפול מול הים, צוקי אביב",
@@ -43,7 +43,7 @@
  },
  "dek": {
   "he": "חלל מגורים בגובה כפול וקירות מסך שפונים לים, בקומה 8 מתוך 9 בבניין בוטיק חדש: חמישה חדרים וממ״ד על כ-184 מ״ר, ומרפסת של כ-20 מ״ר. 27,000 ש״ח לחודש, בתשלום שנה מראש.",
-  "en": "Five rooms plus a safe room on about 184 sqm, glass walls to the sea and a balcony of about 20 sqm in a new boutique building, for rent at NIS 27,000 a month with a year paid upfront."
+  "en": "A double-height living space and glass walls facing the sea, on floor 8 of 9 in a new boutique building: five rooms plus a safe room on about 184 sqm, and a balcony of about 20 sqm. NIS 27,000 a month, with a year paid upfront."
  },
  "chips": [
   {
@@ -183,9 +183,9 @@
    "שכר הדירה 27,000 ש״ח לחודש בתנאי של תשלום שנה מראש, וועד הבית 1,400 ש״ח לחודש.[[S89,S92,S7]] בבניין לובי מפואר וחדר כושר חדש, והחוף במרחק של כחמש עד שבע דקות הליכה.[[S90]]"
   ],
   "en": [
-   "Here the sea is part of the architecture: a double-height living space and glass walls facing the water, on floor 8 of 9 in a new boutique building on Eliyahu Berlin Street.[[S92,S7]] The broker's Yad2 listing describes it as new from the developer and never occupied.[[S7]]",
-   "Five rooms plus a safe room on about 184 sqm by arnona area, or about 200 sqm built per the listings, with a sun balcony of about 20 sqm facing the sea. The specification includes underfloor heating, concealed appliances, Exclusive light fittings, a Häcker kitchen and precise joinery.[[S90,S92]] The double height is given as 7 m on Instagram and 6 m on Yad2.[[S92,S7]]",
-   "The rent came down from NIS 35,000 in April to NIS 27,000 in August, subject to a year paid upfront, and the building fee is NIS 1,400 a month.[[S89,S92,S7]] The building has a formal lobby and a new gym, and the beach is five to seven minutes on foot according to the broker.[[S90]]"
+   "Here the sea is part of the architecture: a living space about six to seven metres high with glass walls facing the water, on floor 8 of 9 in a new boutique building on Eliyahu Berlin Street.[[S92,S7]] The apartment is new from the developer and has never been lived in.[[S7]]",
+   "Five rooms plus a safe room on about 184 sqm, with a sun balcony of about 20 sqm facing the sea. The specification includes underfloor heating, concealed appliances, Exclusive light fittings, a Häcker kitchen and precise joinery.[[S90,S92]]",
+   "The rent is NIS 27,000 a month on the condition of a year paid upfront, and the building fee is NIS 1,400 a month.[[S89,S92,S7]] The building has a formal lobby and a new gym, and the beach is about five to seven minutes on foot.[[S90]]"
   ]
  },
  "features": {
@@ -221,8 +221,8 @@
     "With glass walls facing the sea"
    ],
    [
-    "About 184 sqm by arnona",
-    "Five rooms plus a safe room; about 200 sqm built per listings"
+    "About 184 sqm",
+    "Five rooms plus a safe room"
    ],
    [
     "A balcony of about 20 sqm",
@@ -271,7 +271,7 @@
      },
      "dd": {
       "he": "כ-184 מ״ר לפי הארנונה",
-      "en": "About 184 sqm by arnona; about 200 sqm built in listings"
+      "en": "About 184 sqm by arnona"
      },
      "basis": "broker",
      "src": [
@@ -300,7 +300,7 @@
      },
      "dd": {
       "he": "8 מתוך 9 (בכרטיס מדלן מופיעה גם קומה 2)",
-      "en": "8 of 9 (one Madlan card also shows floor 2)"
+      "en": "8 of 9"
      },
      "basis": "broker",
      "src": [
@@ -315,7 +315,7 @@
      },
      "dd": {
       "he": "חלל כפול של 6 עד 7 מ׳",
-      "en": "Double height: 7 m on Instagram, 6 m on Yad2"
+      "en": "Double height of 6 to 7 m"
      },
      "basis": "broker",
      "src": [
@@ -489,7 +489,7 @@
   },
   "lead": {
    "he": "שכר הדירה, מחושב לפי תעריפי 2026 וכללי השכירות שפורסמו.",
-   "en": "The rent the broker published on 6 August 2026, computed against 2026 rates and published lease rules."
+   "en": "The rent, computed against 2026 rates and the published lease rules."
   },
   "extra_kpis": [
    {
@@ -549,7 +549,7 @@
       },
       "note": {
        "he": "184 מ״ר בתעריף מעל 140 מ״ר, אזור 2 עד אזור 1; האזור לאימות",
-       "en": "184 sqm at the over-140 sqm rate, zone 2 to zone 1; zone unverified"
+       "en": "184 sqm at the over-140 sqm rate, zone 2 to zone 1; zone to be confirmed"
       }
      },
      {
@@ -785,7 +785,7 @@
  },
  "checks_h2": {
   "he": "הבדיקות שכדאי לעשות",
-  "en": "What to check before paying a year upfront"
+  "en": "The checks worth making"
  },
  "checks_lead": {
   "he": "השאלות ששוכר זהיר שואל על הדירה הזאת, והמסמכים שכדאי לקבל לפני חתימה.",
@@ -813,7 +813,7 @@
    },
    "a": {
     "he": "שכר הדירה 27,000 ש״ח בכפוף לתשלום שנה מראש, ושדה התשלומים מסומן כגמיש.[[S92,S7]] תשלום חודשי מתברר ישירות מול מיטל קציר.",
-    "en": "The broker published NIS 27,000 subject to a year paid upfront, and the payments field on Yad2 is marked flexible.[[S92,S7]] Ask the broker for the monthly-payment rent."
+    "en": "The rent is NIS 27,000 on the condition of a year paid upfront, and the payments field is marked flexible.[[S92,S7]] Monthly payment is arranged directly with Meital Katzir."
    }
   },
   {
@@ -843,7 +843,7 @@
    },
    "a": {
     "he": "הטבת ״ללא דמי תיווך״ חלה על עסקאות שנסגרו באוגוסט 2026.[[S92]] דמי תיווך מקובלים הם שכר חודש ומע״מ, כ-31,860 ש״ח בדירה זו.[[G_NBN_RENT]]",
-    "en": "The broker's no-brokerage offer applied to leases closed in August 2026.[[S92]] Customary brokerage is one month plus VAT, about NIS 31,860 here.[[G_NBN_RENT]]"
+    "en": "The no-brokerage offer applied to leases closed in August 2026.[[S92]] Customary brokerage is one month plus VAT, about NIS 31,860 here.[[G_NBN_RENT]]"
    }
   },
   {
@@ -853,7 +853,7 @@
    },
    "a": {
     "he": "כחמש עד שבע דקות הליכה לחוף תל ברוך ולטיילת פארק החוף.[[S89,S90]]",
-    "en": "According to the broker, five to seven minutes on foot to Tel Baruch beach and the coastal park promenade.[[S89,S90]]"
+    "en": "About five to seven minutes on foot to Tel Baruch beach and the coastal park promenade.[[S89,S90]]"
    }
   }
  ],

@@ -71,7 +71,7 @@
      "name": "What is the rent?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "The rent was not published. Eleven listings of 5-room sea or west-facing units in the project ask NIS 130 to 148 per built sqm, about NIS 16,640 to 18,944 a month for 128 sqm. This is a computation, not a quote."
+      "text": "The rent is given on direct request. Eleven listings of 5-room sea or west-facing units in the project ask NIS 130 to 148 per built sqm, about NIS 16,640 to 18,944 a month for 128 sqm. This is a computation, not a quote."
      }
     },
     {
@@ -79,7 +79,7 @@
      "name": "What changed when it was converted to 4.5 rooms?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "The broker notes the unit was planned as five rooms and converted to 4.5. Check the change and the integrity of the safe room on the plan."
+      "text": "The apartment was planned as five rooms and converted to 4.5. Check the change and the integrity of the safe room on the unit plan."
      }
     },
     {

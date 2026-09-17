@@ -1,0 +1,21 @@
+{
+ "dossiers/L02.json": {
+  "building_facts[24].value_en": "A 4-floor kindergarten cluster at Arania 14A in Tower B, planned to open in September 2025; whether it is operating is to be confirmed",
+  "schools[4].note_en": "4-floor cluster in Tower B planned for September 2025; whether it is operating is to be confirmed.",
+  "market_stats[0].metric_en": "Asking rent, B.S.R Sarona 5-room units with sea or west views (11 listings, 115 to 122 sqm built)"
+ },
+ "dossiers/L03.json": {
+  "building_facts[24].value_en": "A 4-floor kindergarten cluster at Arania 14A in Tower B, planned to open in September 2025; whether it is operating is to be confirmed",
+  "schools[4].note_en": "4-floor cluster in Tower B planned for September 2025; whether it is operating is to be confirmed.",
+  "market_stats[0].metric_en": "Asking rent, B.S.R Sarona 5-room units with sea or west views (11 listings, 115 to 122 sqm built)"
+ },
+ "dossiers/L04.json": {
+  "sale_comps[8].where_en": "Eliyahu Berlin (No. 20 as listed), 11-floor building"
+ },
+ "dossiers/L05.json": {
+  "sale_comps[8].where_en": "Eliyahu Berlin (No. 20 as listed), 11-floor building"
+ },
+ "dossiers/L06.json": {
+  "distances[0].value_en": "5 to 7 minutes' walk"
+ }
+}

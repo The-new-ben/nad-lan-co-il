@@ -27,7 +27,7 @@
  },
  "kicker": {
   "he": "למכירה · בלעדיות · צוקי אביב, צפון תל אביב",
-  "en": "For sale · Tzukei Aviv, north Tel Aviv"
+  "en": "For sale · Exclusive · Tzukei Aviv, north Tel Aviv"
  },
  "title": {
   "he": "3 חדרים עם 2 חניות ומחסן, רחוב אליהו ברלין",
@@ -35,7 +35,7 @@
  },
  "dek": {
   "he": "בקצה המערבי של צוקי אביב, בבניין בוטיק בן 9 קומות: שלושה חדרים על כ-90 מ״ר עם מרפסת שמש של 12 מ״ר לנוף ירוק, ממ״ד בדירה, שתי חניות ומחסן. 4,650,000 ש״ח.",
-  "en": "A new apartment in a nine-floor boutique building: about 90 sqm, a 12 sqm balcony, a safe room and storage, about five minutes on foot from Tel Baruch beach, according to the broker."
+  "en": "At the western edge of Tzukei Aviv, in a nine-floor boutique building: three rooms on about 90 sqm with a 12 sqm sun balcony facing a green view, a safe room inside the apartment, two parking spaces and a storage room. NIS 4,650,000."
  },
  "chips": [
   {
@@ -166,8 +166,8 @@
   ],
   "en": [
    "The apartment is in a nine-floor boutique building on Eliyahu Berlin Street, at the western edge of Tzukei Aviv.[[S1,S3]] Beyond its three rooms it comes with two private parking spaces, a storage room and a safe room inside the unit, at an asking price of NIS 4,650,000.[[S82,S3]]",
-   "The broker gives about 90 sqm built plus a 12 sqm sun balcony facing an open green view. The layout includes a master suite and a bright living space, and the unit is described as particularly quiet. The broker's Madlan listing records 95 sqm with a 10 sqm balcony, and her Yad2 listings give floor 2 or 3 of 9, so the exact area and floor should be checked against the land registry extract and the unit plan.[[S1,S2,S3]]",
-   "The building has a designed lobby and a residents' gym, and the management fee is NIS 600 a month.[[S87,S1]] The apartment is ready to move in and, according to the broker, about five minutes on foot from Tel Baruch beach and the coastal park promenade."
+   "The built area is about 90 sqm, with a 12 sqm sun balcony facing an open green view. The layout includes a master suite and a bright living space, and the apartment is particularly quiet.[[S1,S2,S3]]",
+   "The building has a designed lobby and a residents’ gym, and the management fee is NIS 600 a month.[[S87,S1]] The apartment is ready to move in, and Tel Baruch beach and the coastal park promenade are about five minutes on foot."
   ]
  },
  "features": {
@@ -200,11 +200,11 @@
   "en": [
    [
     "About 90 sqm plus a 12 sqm balcony",
-    "Built area and sun balcony, broker-stated"
+    "Built area and sun balcony"
    ],
    [
     "Two private parking spaces and storage",
-    "As listed by the broker"
+    "Attached to the unit"
    ],
    [
     "Safe room inside the unit",
@@ -212,7 +212,7 @@
    ],
    [
     "Lobby and residents' gym",
-    "The gym is described as new"
+    "The gym is new"
    ],
    [
     "NIS 600 a month",
@@ -252,7 +252,7 @@
      },
      "dd": {
       "he": "כ-90 מ״ר",
-      "en": "About 90 sqm (Madlan listing: 95 sqm)"
+      "en": "About 90 sqm"
      },
      "basis": "broker",
      "src": [
@@ -267,7 +267,7 @@
      },
      "dd": {
       "he": "מרפסת שמש של 12 מ״ר הפונה לנוף פתוח וירוק",
-      "en": "12 sqm sun balcony facing an open green view (Madlan listing: 10 sqm)"
+      "en": "12 sqm sun balcony facing an open green view"
      },
      "basis": "broker",
      "src": [
@@ -388,7 +388,7 @@
  },
  "building_lead": {
   "he": "פרטי היזם, הקבלן ומועד טופס 4 נמסרים בפנייה ישירה.",
-  "en": "The developer, the contractor and the date of the occupancy certificate (Tofes 4) were not found in open sources and should be requested before signing."
+  "en": "The developer, the contractor and the date of the occupancy certificate are given on direct request."
  },
  "building": [
   {
@@ -490,7 +490,7 @@
    "מדרום מתפתח רובע שדה דב, שבו נמכרו דירות חדשות במחיר ממוצע של 79,000 עד 85,000 ש״ח למ״ר לפי כלכליסט בפברואר 2026.[[S28]] הקו הירוק של הרכבת הקלה צפוי לפעול בקטעו הדרומי ב-2028 ובמלואו ב-2030.[[S27]]"
   ],
   "en": [
-   "Tzukei Aviv runs from Unitzman Street in the north to Propes Street in the south, between Namir Road and the sea.[[S20]] Gimel HaHadasha is the name for its newer part, built beside the Azorei Chen towers.[[S19,S16]] Madlan data published by Mako put the median deal in Azorei Chen from early 2023 to October 2025 at NIS 5.9 million, the fifth highest neighborhood median in Israel.[[S73]]",
+   "Tzukei Aviv runs from Unitzman Street in the north to Propes Street in the south, between Namir Road and the sea.[[S20]] Gimel HaHadasha is the name for its newer part, built beside the Azorei Chen towers.[[S19,S16]] Data published by Mako put the median deal in Azorei Chen from early 2023 to October 2025 at NIS 5.9 million, the fifth highest neighborhood median in Israel.[[S73]]",
    "The coastal park promenade opened in September 2023 and runs about 2 km along the cliff, from Tel Baruch beach in the south to Tzuk beach in the north, with a bike path along its length.[[S21]] Nathan Alterman High School, whose building won the Rokach architecture prize in 2015, is in the neighborhood.[[S36]]",
    "To the south the Sde Dov district is taking shape, where new apartments sold at an average of NIS 79,000 to 85,000 per sqm according to Calcalist in February 2026.[[S28]] The Green Line light rail is expected to open its southern section in 2028 and the full line in 2030.[[S27]]"
   ]
@@ -502,7 +502,7 @@
   },
   "lead": {
    "he": "המחיר, מחושב לפי כללי המס והמימון שפורסמו עד 16.9.2026.",
-   "en": "The broker's asking price, computed against the tax and lending rules published up to 16 September 2026."
+   "en": "The price, computed against the tax and lending rules published up to 16 September 2026."
   },
   "median_psqm": {
    "value": 49000,
@@ -584,7 +584,7 @@
     },
     "note": {
      "he": "600 ₪ לחודש",
-     "en": "NIS 600 a month, broker-stated"
+     "en": "NIS 600 a month"
     }
    },
    {
@@ -598,7 +598,7 @@
     },
     "note": {
      "he": "102 מ״ר כולל מרפסת, תעריף אא לשנת 2026 באזור 2 ובאזור 1. האזור לאימות; במודעה מופיע סכום של 1,680 ₪ ללא ציון תקופה.[[S1]]",
-     "en": "102 sqm including the balcony at the 2026 rates for the newest building code, zones 2 and 1. The zone is unverified; the broker's listing shows NIS 1,680 without a period.[[S1]]"
+     "en": "102 sqm including the balcony at the 2026 rates for the newest building code, zones 2 and 1. The zone is to be confirmed; NIS 1,680 is shown without a period.[[S1]]"
     }
    },
    {
@@ -660,7 +660,7 @@
   "where_override": {
    "rent:0": {
     "he": "אותו בניין: 3.5 חדרים מרוהטת, שכירות קיימת",
-    "en": "Same building: furnished 3.5 rooms, existing tenancy per the broker"
+    "en": "Same building: furnished 3.5 rooms with an existing tenancy"
    }
   },
   "stats": [
@@ -674,7 +674,7 @@
  },
  "checks_h2": {
   "he": "הבדיקות שכדאי לעשות",
-  "en": "What to check before an offer"
+  "en": "The checks worth making"
  },
  "checks_lead": {
   "he": "השאלות שרוכש זהיר שואל על הדירה הזאת, והמסמכים שכדאי לקבל לפני חתימה.",
@@ -712,7 +712,7 @@
    },
    "a": {
     "he": "המרפסת פונה לנוף פתוח וירוק, והבניין מוצג כבניין ראשון לים. השטח שבין השכונה לים כלול בתכנית תא/3700, ומתכנן שצוטט בגלובס תיאר בה בנייה של שמונה קומות לכל היותר.[[S23]] כדאי לבדוק מה מתוכנן ממערב לבניין לפני שמייחסים ערך לנוף.",
-    "en": "The broker describes a balcony facing an open green view and presents the building as the first building to the sea. The land between the neighborhood and the sea is covered by plan TA/3700, which a planner quoted by Globes described as buildings of eight floors at most.[[S23]] Check what is planned west of the building before paying for a view."
+    "en": "The balcony faces an open green view, and the building is presented as the first building to the sea. The land between the neighborhood and the sea is covered by plan TA/3700, which a planner quoted by Globes described as buildings of eight floors at most.[[S23]] Check what is planned west of the building before paying for a view."
    }
   },
   {
@@ -732,7 +732,7 @@
    },
    "a": {
     "he": "דמי הניהול 600 ש״ח לחודש. לפי תעריפי 2026 לבניין חדש ההערכה היא כ-771 עד 960 ש״ח לחודש, לפי אזור הארנונה.[[G_KH_TLV]]",
-    "en": "A management fee of NIS 600 a month according to the broker. Arnona was not published; at 2026 rates for a new building it would be about NIS 771 to 960 a month, depending on the arnona zone.[[G_KH_TLV]]"
+    "en": "The management fee is NIS 600 a month. At 2026 rates for a new building, arnona would be about NIS 771 to 960 a month, depending on the arnona zone.[[G_KH_TLV]]"
    }
   },
   {
@@ -854,7 +854,7 @@
    },
    "note": {
     "he": "רחוב יאיר רוזנבלום 13. אזור הרישום לכתובת לאימות.",
-    "en": "13 Yair Rosenblum St. The registration zone for the address was not verified."
+    "en": "13 Yair Rosenblum St. The registration zone for the address is to be confirmed."
    }
   },
   "1": {
@@ -864,7 +864,7 @@
    },
    "note": {
     "he": "רחוב דוד שמעוני 4א. אזור הרישום לאימות מול העירייה.",
-    "en": "4A David Shimoni St. Registration zone not verified."
+    "en": "4A David Shimoni St. Registration zone to be confirmed."
    }
   },
   "2": {
@@ -874,7 +874,7 @@
    },
    "note": {
     "he": "כ-91 תלמידים בשכבה לפי מדלן. אזור הרישום לאימות מול העירייה.",
-    "en": "About 91 pupils per grade per Madlan. Registration zone not verified."
+    "en": "About 91 pupils per grade. Registration zone to be confirmed."
    }
   },
   "3": {
@@ -907,7 +907,7 @@
    },
    "status": {
     "he": "בביצוע. הקטע הדרומי צפוי לפעול ב-2028 והקו המלא ב-2030; התוואי מתוכנן לאורך הכביש החדש בתחום תכנית 3700. מיקום התחנה הקרובה לאימות.",
-    "en": "Under construction. The southern section is expected in 2028 and the full line in 2030; the route is planned along the new road inside plan 3700. The nearest station location was not verified."
+    "en": "Under construction. The southern section is expected in 2028 and the full line in 2030; the route is planned along the new road inside plan 3700. The nearest station location is to be confirmed."
    }
   },
   "1": {
@@ -977,7 +977,7 @@
    },
    "impact": {
     "he": "במדלן מופיע כבנייה פעילה של 13 קומות ו-41 יחידות עם צפי סיום בתחילת 2028, בעוד שאתר project-tlv מציג אותו כמושלם. אם הבנייה פעילה, צפויות עבודות באותו רחוב עד 2028.",
-    "en": "Madlan shows active construction of 13 floors and 41 units with completion in early 2028, while project-tlv lists it as completed. If active, expect works on the same street until 2028."
+    "en": "One record shows active construction of 13 floors and 41 units with completion in early 2028, while project-tlv lists it as completed. If work is active, expect building on the same street until 2028."
    }
   },
   "5": {

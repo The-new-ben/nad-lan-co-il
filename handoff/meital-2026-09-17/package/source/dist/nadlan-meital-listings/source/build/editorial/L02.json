@@ -62,7 +62,7 @@
  "balcony": 14,
  "kicker": {
   "he": "להשכרה · בלעדיות · שרונה, מרכז תל אביב",
-  "en": "For rent · Sarona, central Tel Aviv"
+  "en": "For rent · Exclusive · Sarona, central Tel Aviv"
  },
  "title": {
   "he": "4.5 חדרים בעיצוב מעצבת עם מרפסת לים, ב.ס.ר שרונה",
@@ -70,7 +70,7 @@
  },
  "dek": {
   "he": "קומה גבוהה בב.ס.ר שרונה, עם מרפסת מערבית שפונה לים: 4.5 חדרים על 128 מ״ר, בתכנון ובחומרים של מעצבת מובילה, בבניין שקיבל טופס 4 במרץ 2026. שכר הדירה נמסר בפנייה.",
-  "en": "A new 128 sqm apartment, originally five rooms, with a 14 sqm west-facing balcony, concealed integrated refrigerators, parquet and designed lighting, covered parking and storage, in a project that received its occupancy certificate in March 2026."
+  "en": "A high floor at B.S.R Sarona, with a west-facing balcony that looks to the sea: 4.5 rooms on 128 sqm, planned and finished by a leading designer, in a building that received its occupancy certificate in March 2026. The rent is given on request."
  },
  "chips": [
   {
@@ -200,9 +200,9 @@
    "לדירה חניה מקורה פרטית ומחסן, ובבניין שמירה 24 שעות ביממה וחדר כושר לדיירים.[[S4,S5]] ב.ס.ר שרונה הוא מתחם של שלושה מגדלים בני כ-40 קומות ו-420 דירות ברחוב ארניה אוסוולדו, שקיבל טופס 4 ב-29 במרץ 2026.[[S7,S8,S9]]"
   ],
   "en": [
-   "B.S.R Sarona, formerly the United Sarona purchase group project, comprises three towers of about 40 floors and 420 apartments on Arania Osvaldo Street, in the southern part of the Sarona complex.[[S7,S8]] The project received its occupancy certificate (Tofes 4) on 29 March 2026.[[S9]]",
-   "The apartment was planned as five rooms and converted to 4.5, on 128 sqm built with a 14 sqm balcony facing west, on a high floor with open sea views.[[S1,S5]] According to the broker, a leading designer planned it and chose the materials: a kitchen with an island, concealed integrated refrigerators, a premium cooktop, quality parquet and designed lighting throughout.[[S2,S5]]",
-   "It comes with a covered private parking space and storage, and the building has 24/7 security and a residents' gym.[[S4,S5]] The rent was not published; based on listings of 5-room sea-view units in the project, the computed market band for this size is about NIS 16,640 to 18,944 a month.[[S84]]"
+   "The apartment sits on a high floor in a new tower at B.S.R Sarona, with a 14 sqm balcony facing west and an open view to the sea. It was planned as five rooms and converted to 4.5, on 128 sqm built.[[S1,S5]]",
+   "A leading designer planned the apartment and chose the materials: an island kitchen, concealed integrated refrigerators, a premium cooktop, quality parquet and designed lighting throughout.[[S2,S5]]",
+   "It comes with a covered private parking space and a storage room, and the building has 24-hour security and a residents’ gym.[[S4,S5]] B.S.R Sarona is a complex of three towers of about 40 floors and 420 apartments on Arania Osvaldo Street, which received its occupancy certificate on 29 March 2026.[[S7,S8,S9]]"
   ]
  },
  "features": {
@@ -243,7 +243,7 @@
    ],
    [
     "Planned by a leading designer",
-    "Layout and materials, per the broker"
+    "Layout and materials"
    ],
    [
     "Concealed integrated refrigerators",
@@ -400,7 +400,7 @@
   },
   "lead": {
    "he": "שכר הדירה נמסר בפנייה ישירה. הטווח מחושב מ-11 מודעות של דירות 5 חדרים עם נוף לים או למערב בפרויקט, ואינו הצעת מחיר.",
-   "en": "The rent was not published. The band is computed from 11 listings of 5-room sea or west-facing units in the project and is not a quote."
+   "en": "The rent is given on direct request. The band is computed from 11 listings of 5-room sea or west-facing units in the project and is not a quote."
   },
   "extra_kpis": [
    {
@@ -452,7 +452,7 @@
     },
     "small": {
      "he": "משרד אחר; ייתכן שמדובר בנכס אחר",
-     "en": "Another agency; not confirmed as the same unit"
+     "en": "Another agency; it may be a different unit"
     }
    }
   ],
@@ -488,7 +488,7 @@
       },
       "note": {
        "he": "15.4 ₪ למ״ר כפי שצוין במודעה אחרת בפרויקט, על 128 עד 142 מ״ר; לאימות",
-       "en": "NIS 15.4 per sqm as stated in another listing, on 128 to 142 sqm; unverified"
+       "en": "NIS 15.4 per sqm as stated in another listing in the project, on 128 to 142 sqm; to be confirmed"
       }
      },
      {
@@ -668,7 +668,7 @@
     },
     "note": {
      "he": "כל הגדלים, לפי מדלן",
-     "en": "All sizes, per Madlan"
+     "en": "All sizes"
     }
    },
    {
@@ -741,7 +741,7 @@
  ],
  "checks_h2": {
   "he": "הבדיקות שכדאי לעשות",
-  "en": "What to check before signing"
+  "en": "The checks worth making"
  },
  "checks_lead": {
   "he": "השאלות ששוכר זהיר שואל על דירה שעברה שינוי תכנון, והמסמכים שכדאי לקבל.",
@@ -769,7 +769,7 @@
    },
    "a": {
     "he": "שכר הדירה נמסר בפנייה ישירה. לפי 11 מודעות של דירות 5 חדרים עם נוף לים או למערב בפרויקט, שכר הדירה המבוקש הוא 130 עד 148 ש״ח למ״ר בנוי, כלומר כ-16,640 עד 18,944 ש״ח לחודש לדירה של 128 מ״ר. זה חישוב ולא הצעת מחיר.[[S84]]",
-    "en": "The rent was not published. Eleven listings of 5-room sea or west-facing units in the project ask NIS 130 to 148 per built sqm, about NIS 16,640 to 18,944 a month for 128 sqm. This is a computation, not a quote.[[S84]]"
+    "en": "The rent is given on direct request. Eleven listings of 5-room sea or west-facing units in the project ask NIS 130 to 148 per built sqm, about NIS 16,640 to 18,944 a month for 128 sqm. This is a computation, not a quote.[[S84]]"
    }
   },
   {
@@ -779,7 +779,7 @@
    },
    "a": {
     "he": "הדירה תוכננה במקור כ-5 חדרים והוסבה ל-4.5.[[S1]] את תכנית השינוי ואת שלמות הממ״ד כדאי לבדוק בתשריט.",
-    "en": "The broker notes the unit was planned as five rooms and converted to 4.5.[[S1]] Check the change and the integrity of the safe room on the plan."
+    "en": "The apartment was planned as five rooms and converted to 4.5.[[S1]] Check the change and the integrity of the safe room on the unit plan."
    }
   },
   {

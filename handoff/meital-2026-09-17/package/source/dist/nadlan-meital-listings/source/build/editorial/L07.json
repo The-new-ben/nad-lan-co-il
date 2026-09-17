@@ -27,7 +27,7 @@
  },
  "kicker": {
   "he": "למכירה · בלעדיות · כוכב הצפון, צפון תל אביב",
-  "en": "For sale · Kochav HaTzafon, north Tel Aviv"
+  "en": "For sale · Exclusive · Kochav HaTzafon, north Tel Aviv"
  },
  "title": {
   "he": "מיני פנטהאוז חדש עם 80 מ״ר מרפסות, כוכב הצפון",
@@ -35,7 +35,7 @@
  },
  "dek": {
   "he": "קומה אחת מתחת לאחרונה, בבניין בוטיק חדש בכוכב הצפון: חמישה חדרים על כ-190 מ״ר, ולצדם 80 מ״ר של מרפסות שנפתחות אל קו הרקיע של תל אביב. 18,000,000 ש״ח.",
-  "en": "Five rooms on about 190 sqm built with another 76 to 80 sqm of terraces, on floor 11 of 12 in a new boutique building. Open views across Tel Aviv, asking NIS 18,000,000."
+  "en": "One floor below the top, in a new boutique building in Kochav HaTzafon: five rooms on about 190 sqm, and beside them 80 sqm of terraces that open onto the Tel Aviv skyline. NIS 18,000,000."
  },
  "chips": [
   {
@@ -165,9 +165,9 @@
    "בבניין חדר כושר לדיירים.[[S43]] מקצה השכונה נבנה מקיץ 2026 גשר הולכי רגל ואופניים באורך של כ-170 מ׳ מרחוב לוי אשכול אל פארק הירקון, שצפוי להיפתח ב-2027.[[S7]]"
   ],
   "en": [
-   "A new mini penthouse on floor 11 of 12, in a boutique building in Kochav HaTzafon, the neighborhood between Yarkon Park and Ramat Aviv.[[S1,S2,S6]] Five rooms on about 190 sqm built, with terraces totaling 76 to 80 sqm and open views across Tel Aviv.[[S43,S44]] The broker's Madlan listings ask NIS 18,000,000.[[S1,S2]]",
-   "The plan includes a generous master suite, a children's wing with a sea-view balcony, a large living room and an equipped kitchen with a concealed integrated refrigerator. Custom joinery runs through the home, and air conditioning is a VRF multi-split system.[[S43,S44,S50]] Two parking spaces and a storage room come with the unit, and the listings also mark a safe room and a lift.[[S1,S2]]",
-   "The building has a residents' gym.[[S43]] At the edge of the neighborhood, a pedestrian and cycle bridge of about 170 m from Levi Eshkol Street into Yarkon Park has been under construction since summer 2026 and is expected to open in 2027.[[S7]] Areas, exposures and building year differ between the listings, so check them against the unit plan and the permit.[[S49,S1,S2]]"
+   "A new mini penthouse on floor 11 of 12, in a boutique building in Kochav HaTzafon, the neighborhood between Yarkon Park and Ramat Aviv.[[S1,S2,S6]] Five rooms on about 190 sqm built, with terraces totaling 76 to 80 sqm and open views across Tel Aviv.[[S43,S44]] The price is NIS 18,000,000.[[S1,S2]]",
+   "The plan includes a generous master suite, a children's wing with a sea-view balcony, a large living room and an equipped kitchen with a concealed integrated refrigerator. Custom joinery runs through the home, and the air conditioning is a VRF multi-split system.[[S43,S44,S50]] Two parking spaces, a storage room, a safe room and a lift come with the apartment.[[S1,S2]]",
+   "The building has a residents' gym.[[S43]] At the edge of the neighborhood, a pedestrian and cycle bridge of about 170 m from Levi Eshkol Street into Yarkon Park has been under construction since summer 2026 and is expected to open in 2027.[[S7]]"
   ]
  },
  "features": {
@@ -204,7 +204,7 @@
    ],
    [
     "About 190 sqm built",
-    "Five rooms; 197 sqm in one listing"
+    "Five rooms and a generous master suite"
    ],
    [
     "76 to 80 sqm of terraces",
@@ -216,7 +216,7 @@
    ],
    [
     "Two parking spaces and storage",
-    "A 14 sqm storage room in one listing"
+    "A safe room and a lift"
    ],
    [
     "A bridge into Yarkon Park",
@@ -253,7 +253,7 @@
      },
      "dd": {
       "he": "כ-190 מ״ר בנוי",
-      "en": "190 to 200 sqm on Instagram; 190 and 197 sqm in the two Madlan listings"
+      "en": "About 190 sqm built"
      },
      "basis": "broker",
      "src": [
@@ -411,7 +411,7 @@
  },
  "building_lead": {
   "he": "כתובת הבניין, היזם ודמי הניהול נמסרים בפנייה ישירה.",
-  "en": "The building's address, developer and management fee were not published and should be obtained from the broker before a viewing."
+  "en": "The building's address, the developer and the management fee are given on direct request."
  },
  "building": [
   {
@@ -421,7 +421,7 @@
    },
    "dd": {
     "he": "כוכב הצפון, תל אביב-יפו",
-    "en": "Kochav HaTzafon, Tel Aviv-Yafo; street not published"
+    "en": "Kochav HaTzafon, Tel Aviv-Yafo"
    },
    "src": [
     "S1",
@@ -450,7 +450,7 @@
    },
    "dd": {
     "he": "2022 או 2023",
-    "en": "2022 or 2023 per the listing fields"
+    "en": "2022 or 2023"
    },
    "basis": "broker",
    "src": [
@@ -498,7 +498,7 @@
    "הקו הירוק של הרכבת הקלה צפוי לפעול בקטעו הדרומי ב-2028 ובמלואו ב-2030, עם תחנת רדינג על הגשר החדש מצפון לשדרות רוקח.[[S10]] גשר הולכי רגל ואופניים חדש מעל הירקון, באורך 180 מ׳, נפתח במאי 2026.[[S10]]"
   ],
   "en": [
-   "Kochav HaTzafon is bounded by Rokach Boulevard and Yarkon Park to the south, Namir Road to the east, Shai Agnon Street and the Sde Dov district to the north, and Ibn Gabirol to the west.[[S6]] It was built mostly in the 1990s and 2000s as 8 to 12-floor blocks around a central park, alongside residential towers and boutique buildings.[[S4,S46]] Madlan data published by Mako put its median deal from 2023 to October 2025 at NIS 6.1 million, the fourth highest in Israel.[[S31]]",
+   "Kochav HaTzafon is bounded by Rokach Boulevard and Yarkon Park to the south, Namir Road to the east, Shai Agnon Street and the Sde Dov district to the north, and Ibn Gabirol to the west.[[S6]] It was built mostly in the 1990s and 2000s as 8 to 12-floor blocks around a central park, alongside residential towers and boutique buildings.[[S4,S46]] Data published by Mako put its median deal from 2023 to October 2025 at NIS 6.1 million, the fourth highest in Israel.[[S31]]",
    "Yarkon Park, about 3,750 dunams including the Sportek, borders the neighborhood along Rokach Boulevard, and Tel Aviv Port is a 220-dunam leisure complex at the park's end.[[S26,S27]] At Rokach and Namir, the Seminar HaKibbutzim project plans three 28-floor residential towers with 450 apartments.[[S11]]",
    "The Green Line light rail is expected to open its southern section in 2028 and the full line in 2030, with Reading station on the new bridge north of Rokach Boulevard.[[S10]] A new 180 m pedestrian and cycle bridge over the Yarkon opened in May 2026.[[S10]]"
   ]
@@ -528,7 +528,7 @@
   },
   "lead": {
    "he": "המחיר 18,000,000 ש״ח, מחושב לפי כללי המס והמימון שפורסמו עד 16.9.2026.",
-   "en": "The asking price in the broker's Madlan listings, computed against tax and lending rules published up to 16 September 2026."
+   "en": "The price of NIS 18,000,000, computed against the tax and lending rules published up to 16 September 2026."
   },
   "median_psqm": {
    "value": 51000,
@@ -660,7 +660,7 @@
     },
     "note": {
      "he": "190 מ״ר באזור 2 עד 270 מ״ר כולל מרפסות באזור 1, בתעריף מעל 140 מ״ר. האזור ואופן החיוב על מרפסות פתוחות לאימות.",
-     "en": "190 sqm in zone 2 up to 270 sqm including terraces in zone 1, at the over-140 sqm rate. The zone and how open terraces are charged were not verified."
+     "en": "190 sqm in zone 2 up to 270 sqm including terraces in zone 1, at the over-140 sqm rate. The zone and the way open terraces are charged are to be confirmed."
     }
    },
    {
@@ -692,7 +692,7 @@
  "market": {
   "h2": {
    "he": "המחיר מול השוק בכוכב הצפון",
-   "en": "The price against luxury sales and listings"
+   "en": "The price against the market in Kochav HaTzafon"
   },
   "lead": {
    "he": "עסקאות 2025 ו-2026 בכוכב הצפון ובסביבתה, מודעות פנטהאוז ודופלקס פעילות, ונתוני השוק בתל אביב. חלק מהעסקאות הן רכישות על הנייר בפרויקטים חדשים.",
@@ -725,7 +725,7 @@
  ],
  "checks_h2": {
   "he": "הבדיקות שכדאי לעשות",
-  "en": "What to check before an offer"
+  "en": "The checks worth making"
  },
  "checks_lead": {
   "he": "השאלות שרוכש ברמת מחיר כזו שואל, והמסמכים שכדאי לקבל לפני משא ומתן.",
@@ -783,7 +783,7 @@
    },
    "a": {
     "he": "מצפון מתפתח רובע שדה דב, עם מגדלים של 20 עד 45 קומות בתכנית המרכז, ובפינת רוקח ונמיר מתוכננים שלושה מגדלים של 28 קומות.[[S15,S11]] לפי מדלן, נופים פתוחים בשכונה צפויים להיחסם בחלקם.[[S5]]",
-    "en": "The Sde Dov district is rising to the north, with towers of 20 to 45 floors in the center plan, and three 28-floor towers are planned at Rokach and Namir.[[S15,S11]] Madlan notes that some open views in the neighborhood are expected to be blocked.[[S5]]"
+    "en": "The Sde Dov district is rising to the north, with towers of 20 to 45 floors in the center plan, and three 28-floor towers are planned at Rokach and Namir.[[S15,S11]] Some open views in the neighborhood are expected to be blocked.[[S5]]"
    }
   },
   {

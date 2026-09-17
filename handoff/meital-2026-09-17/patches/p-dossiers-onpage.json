@@ -1,0 +1,61 @@
+{
+ "dossiers/L01.json": {
+  "schools[0].note_en": "Municipal elementary school. For 2026-27 its graduates are zoned to Yad Giora middle school. The registration zone for the address of the estate and the school address are to be confirmed.",
+  "schools[1].note_en": "Municipal elementary school; the bus stop named after it is about 1.4 km in a straight line from De Shalit Square. Its graduates go up to Yad Giora middle school in 2026-27. The registration zone for the address is to be confirmed.",
+  "schools[4].note_en": "Receives Nof Yam and Brandeis graduates in 2026-27. The address is to be confirmed.",
+  "schools[6].note_en": "About 2.6 km in a straight line from De Shalit Square. Registration zone to be confirmed with the municipality.",
+  "schools[7].note_en": "About 2.6 km in a straight line from De Shalit Square. Registration zone to be confirmed with the municipality.",
+  "rent_comps[5].where_en": "Herzliya Pituach, Galei Tchelet area as listed"
+ },
+ "dossiers/L02.json": {
+  "planning_future[5].impact_en": "A family amenity inside the project that may also bring drop-off traffic; the opening date is to be confirmed.",
+  "market_stats[2].metric_en": "Average asking rent, Sarona neighborhood (all sizes, period not stated)",
+  "market_stats[3].metric_en": "Rental supply on Arania Osvaldo Street",
+  "market_stats[6].metric_en": "Area price level and gross rental yield (shown with B.S.R listings, period not stated)",
+  "rent_comps[11].where_en": "Arania Osvaldo St (tagged Gindi TLV; building not named in text)",
+  "rent_comps[17].where_en": "Da Vinci 6 (tagged Gindi TLV; building not named)"
+ },
+ "dossiers/L03.json": {
+  "planning_future[5].impact_en": "A family amenity inside the project that may also bring drop-off traffic; the opening date is to be confirmed.",
+  "market_stats[2].metric_en": "Average asking rent, Sarona neighborhood (all sizes, period not stated)",
+  "market_stats[3].metric_en": "Rental supply on Arania Osvaldo Street",
+  "market_stats[6].metric_en": "Area price level and gross rental yield (shown with B.S.R listings, period not stated)",
+  "rent_comps[17].where_en": "Arania Osvaldo St (tagged Gindi TLV; building not named in text)"
+ },
+ "dossiers/L04.json": {
+  "market_stats[6].value_en": "NIS 5.9 million, fifth highest neighborhood in Israel (early 2023 to October 2025, published data)",
+  "rent_comps[2].where_en": "Eliyahu Berlin 16 (as listed), new building, full sea view, floor 10"
+ },
+ "dossiers/L05.json": {
+  "market_stats[6].value_en": "NIS 5.9 million, fifth highest neighborhood in Israel (early 2023 to October 2025, published data)",
+  "rent_comps[1].where_en": "Eliyahu Berlin 16 (as listed), new building, full sea view, floor 10"
+ },
+ "dossiers/L06.json": {
+  "market_stats[7].value_en": "NIS 5.9 million, fifth highest neighborhood in Israel (early 2023 to October 2025, published data)",
+  "rent_comps[4].where_en": "Eliyahu Berlin 13 (as listed), high floor"
+ },
+ "dossiers/L07.json": {
+  "planning_future[4].impact_en": "Generation to end under the 2024 decision, with part of the site going to civilian use and beach and the rest kept for storage and an undersea cable link; a conservation plan converts Reading A into a museum, visitor center and event space. Timing to be confirmed.",
+  "sale_comps[11].where_en": "Shai Agnon 28, Kochav HaTzafon (the Philharmonic project, from a rental listing at this address)"
+ },
+ "dossiers/L08.json": {
+  "distances[2].value_en": "about 300 to 410 m",
+  "schools[1].note_en": "Listed as a nearby school on the Tzukei Aviv area page, about 91 pupils per grade; registration zone and distance to be confirmed",
+  "transport[0].status_en": "under construction; southern section expected 2028 and full line 2030; planned along the new Rokach-Herzliya road (Ibn Gabirol extension); Globes reported light rail works on site next to the complex in 2024; nearest station to be confirmed",
+  "transport[1].status_en": "the section beside the complex was described as recently paved in 2024; completion of the full road to be confirmed",
+  "market_stats[4].metric_en": "Area averages, Glilot",
+  "market_stats[6].metric_en": "Recorded 2026 deals on Michael Ne'eman St"
+ },
+ "dossiers/L09.json": {
+  "schools[3].note_en": "In Tzukei Aviv, north of Propes St; about 251 pupils per grade. Registration zone to be confirmed with the municipality.",
+  "schools[4].note_en": "In Ramat Aviv HaHadasha, east of Levi Eshkol Blvd; about 65 pupils per grade. Registration zone to be confirmed with the municipality."
+ },
+ "dossiers/L10.json": {
+  "schools[3].note_en": "In Tzukei Aviv, north of Propes St; about 251 pupils per grade. Registration zone to be confirmed with the municipality.",
+  "schools[4].note_en": "In Ramat Aviv HaHadasha, east of Levi Eshkol Blvd; about 65 pupils per grade. Registration zone to be confirmed with the municipality.",
+  "market_stats[4].metric_en": "Rental supply in Nofei Yam"
+ },
+ "dossiers/L11.json": {
+  "schools[5].note_en": "In Tzukei Aviv, north of Propes St; about 251 pupils per grade. Registration zone to be confirmed with the municipality."
+ }
+}

@@ -36,7 +36,7 @@
  },
  "kicker": {
   "he": "להשכרה · בלעדיות · נופי ים, צפון תל אביב",
-  "en": "For rent · Nofei Yam, north Tel Aviv"
+  "en": "For rent · Exclusive · Nofei Yam, north Tel Aviv"
  },
  "title": {
   "he": "מיני פנטהאוז של 5 חדרים עם נוף לים, נופי ים",
@@ -44,7 +44,7 @@
  },
  "dek": {
   "he": "מיני פנטהאוז בקומה גבוהה בנופי ים: חמישה חדרים על 135 מ״ר, שלוש יחידות הורים, ושתי מרפסות שאחת מהן פונה לים. שכר הדירה נמסר בפנייה ישירה.",
-  "en": "135 sqm built and a 20 sqm balcony on a high floor, three master suites, two parking spaces prepared for EV charging and a storage room, in a building with a gym and a guard, according to the broker. Rent on request."
+  "en": "A mini penthouse on a high floor in Nofei Yam: five rooms on 135 sqm, three master suites, and two balconies, one of them facing the sea. The rent is given on direct request."
  },
  "chips": [
   {
@@ -174,9 +174,9 @@
    "שתי חניות נפרדות עם הכנה לטעינת רכב חשמלי ומחסן צמוד, ובבניין חדר כושר ושומר.[[IG_L09D,IG_L09C]] שכר הדירה ופרטי הבניין נמסרים בפנייה ישירה."
   ],
   "en": [
-   "According to the broker, this is a five-room mini penthouse, three of the rooms master suites, on 135 sqm built with a 20 sqm balcony, on a high floor of a luxury building in Nofei Yam.[[IG_L09A,IG_L09B]] It has two balconies, one facing the sea, and the broker highlights its privacy and sea view.[[IG_L09A,IG_L09D]]",
-   "The apartment was designed by an architect, with quality parquet throughout, a luxury kitchen and custom carpentry.[[IG_L09E]] It comes with two separate parking spaces prepared for EV charging and a storage room, and the building has a gym and a guard.[[IG_L09D,IG_L09C]]",
-   "The rent was not published. Listings for five-room units and mini penthouses of 110 to 140 sqm in new and boutique buildings in Nofei Yam and Lamed HaHadasha ask NIS 115 to 150 per sqm, or about NIS 15,500 to 20,250 a month for 135 sqm. That is a computed market range, not a valuation.[[MAD_TXCK,MAD_SDOT]]"
+   "A five-room mini penthouse, three of the rooms master suites, on 135 sqm built with a 20 sqm balcony, on a high floor of a luxury building in Nofei Yam.[[IG_L09A,IG_L09B]] It has two balconies, one of them facing the sea, and the apartment keeps its privacy.[[IG_L09A,IG_L09D]]",
+   "The apartment was designed by an architect, with quality parquet throughout, a luxury kitchen and custom carpentry.[[IG_L09E]]",
+   "Two separate parking spaces prepared for electric-car charging and an attached storage room, and the building has a gym and a guard.[[IG_L09D,IG_L09C]] The rent and the building details are given on direct request."
   ]
  },
  "features": {
@@ -209,7 +209,7 @@
   "en": [
    [
     "135 sqm plus a 20 sqm balcony",
-    "Five rooms, broker-stated"
+    "Five rooms"
    ],
    [
     "Three master suites",
@@ -217,7 +217,7 @@
    ],
    [
     "High floor with a sea view",
-    "And privacy, per the broker"
+    "And privacy"
    ],
    [
     "Two separate parking spaces",
@@ -225,7 +225,7 @@
    ],
    [
     "Gym and guard",
-    "In the building, per the broker"
+    "In the building"
    ],
    [
     "Architect-designed",
@@ -445,7 +445,7 @@
  },
  "building_lead": {
   "he": "פרטי הבניין, שנת הבנייה וועד הבית נמסרים בפנייה ישירה.[[IG_L09C]]",
-  "en": "The building could not be identified in open sources, so its year built, floor count, guard hours and building fee are unverified. The figures in this section come from the broker or describe the neighborhood.[[IG_L09C]]"
+  "en": "The building details, the year it was built and the building fee are given on direct request.[[IG_L09C]]"
  },
  "building": [
   {
@@ -483,7 +483,7 @@
    },
    "dd": {
     "he": "6 עד 11 קומות בבניינים שבמודעות נופי ים שנבדקו במדלן; מגדל בן 30 קומות נבנה ברחוב איינשטיין",
-    "en": "6 to 11 floors in the Nofei Yam listings reviewed on Madlan; a 30-floor tower is under construction on Einstein Street"
+    "en": "6 to 11 floors in the Nofei Yam listings reviewed; a 30-floor tower is under construction on Einstein Street"
    },
    "src": [
     "MAD_NY_RENT",
@@ -512,7 +512,7 @@
    "ממערב לשכונה נבנה רובע שדה דב, על שטח שדה התעופה שנסגר ב-2019, עם כ-16,000 דירות. עד פברואר 2026 מכרו היזמים יותר מ-1,500 דירות, ורובן צפויות להיות מוכנות בתוך 3 עד 6 שנים.[[WIKI_SDEDOV,CALC_SDEDOV]] הגישה ברכב נשענת בעיקר על שדרות לוי אשכול ועל רחוב איינשטיין, וצומת איינשטיין-נמיר עמוס בשעות השיא.[[TLV_COMPARE]]"
   ],
   "en": [
-   "The coastal park promenade opened in September 2023 and runs about 2 km along the cliff, from Tel Baruch beach in the south to Tzuk beach in the north, inside a 500-dunam nature park and alongside a bike path.[[WALLA_PROM,TIMEOUT_PROM]] Madlan content published by Globes describes Nofei Yam as a short walk from the beach.[[GLOBES_NY_2024]]",
+   "The coastal park promenade opened in September 2023 and runs about 2 km along the cliff, from Tel Baruch beach in the south to Tzuk beach in the north, inside a 500-dunam nature park and alongside a bike path.[[WALLA_PROM,TIMEOUT_PROM]] Content published by Globes describes Nofei Yam as a short walk from the beach.[[GLOBES_NY_2024]]",
    "At least two small shopping centers operate among the neighborhood's complexes, though there is no lively shopping street; several kindergartens and a school operate within HaGush HaGadol.[[TLV_COMPARE,GLOBES_NY_2024]] Since November 2023 a pedestrian and cycle bridge with lifts has crossed Einstein Street between Nofei Yam and Lamed HaHadasha, and the municipal country club of Plan Lamed lies south of the street.[[TLV_BRIDGE23,TLV_COMPARE]]",
    "West of the neighborhood, the Sde Dov district is being built on the airport that closed in 2019, with about 16,000 apartments. By February 2026 developers had sold more than 1,500 of them, and most are expected to be ready within 3 to 6 years.[[WIKI_SDEDOV,CALC_SDEDOV]] Car access relies mainly on Levi Eshkol Boulevard and Einstein Street, and the Einstein and Namir junction is congested at peak hours.[[TLV_COMPARE]]"
   ]
@@ -524,7 +524,7 @@
   },
   "lead": {
    "he": "שכר הדירה נמסר בפנייה ישירה. החישובים כאן מבוססים על מודעות דומות בנופי ים ובל׳ החדשה, על תעריפי הארנונה של 2026 ועל כללי חוק השכירות ההוגנת.",
-   "en": "The broker has not published a rent. These figures are computed from similar listings in Nofei Yam and Lamed HaHadasha, 2026 arnona rates and the Fair Rental Law rules."
+   "en": "The rent is given on direct request. The figures here are based on similar listings in Nofei Yam and Lamed HaHadasha, the 2026 arnona rates and the Fair Rental Law rules."
   },
   "extra_kpis": [
    {
@@ -616,7 +616,7 @@
       },
       "note": {
        "he": "מ-135 מ״ר ללא המרפסת בתעריף אא של אזור 2, עד 155 מ״ר כולל המרפסת בתעריף מעל 140 מ״ר של אזור 1. האזור, הסיווג והשטח לחיוב לאימות",
-       "en": "From 135 sqm without the balcony at the zone 2 newest-code rate, to 155 sqm including the balcony at the zone 1 over-140 sqm rate. Zone, code and charged area unverified"
+       "en": "From 135 sqm without the balcony at the zone 2 newest-code rate, to 155 sqm including the balcony at the zone 1 over-140 sqm rate. Zone, code and charged area to be confirmed"
       }
      },
      {
@@ -858,7 +858,7 @@
     },
     "note": {
      "he": "כל הגדלים, לפי מדלן",
-     "en": "All sizes, per Madlan"
+     "en": "All sizes"
     }
    },
    {
@@ -894,7 +894,7 @@
  "market": {
   "h2": {
    "he": "דירות גדולות להשכרה בנופי ים ובל׳ החדשה",
-   "en": "Large homes for rent and sale in Nofei Yam and Lamed HaHadasha"
+   "en": "Large homes for rent in Nofei Yam and Lamed HaHadasha"
   },
   "lead": {
    "he": "מודעות שכירות לדירות 4 ו-5 חדרים, מיני פנטהאוזים ופנטהאוזים בנופי ים, בל׳ החדשה וברמת אביב החדשה, ועסקאות מכירה של דירות גדולות בשכונה. מחירי השכירות הם מבוקשים ולא חוזים חתומים.",
@@ -942,7 +942,7 @@
    },
    "a": {
     "he": "שכר הדירה נמסר בפנייה ישירה. לפי מודעות דומות בנופי ים ובל׳ החדשה, טווח השוק לדירה של 135 מ״ר הוא כ-15,500 עד 20,250 ש״ח לחודש, לפני ארנונה וועד בית. זה חישוב ולא הצעת מחיר.[[MAD_TXCK,MAD_SDOT]]",
-    "en": "The broker has not published a rent. Based on similar listings in Nofei Yam and Lamed HaHadasha, the market range for 135 sqm is about NIS 15,500 to 20,250 a month, before arnona and the building fee. This is a computation, not a quote.[[MAD_TXCK,MAD_SDOT]]"
+    "en": "The rent is given on direct request. Based on similar listings in Nofei Yam and Lamed HaHadasha, the market range for 135 sqm is about NIS 15,500 to 20,250 a month, before arnona and the building fee. This is a computation, not a quote.[[MAD_TXCK,MAD_SDOT]]"
    }
   },
   {
@@ -952,7 +952,7 @@
    },
    "a": {
     "he": "הכניסה גמישה, והמועד נקבע ישירות מול מיטל קציר.[[IG_L09D]]",
-    "en": "The broker gives a flexible entry date; agree the date with her directly.[[IG_L09D]]"
+    "en": "Entry is flexible, and the date is agreed directly with Meital Katzir.[[IG_L09D]]"
    }
   },
   {
@@ -962,7 +962,7 @@
    },
    "a": {
     "he": "בבניין חדר כושר ושומר. שעות השמירה ומה כולל ועד הבית נמסרים בפנייה.[[IG_L09C]]",
-    "en": "Per the broker, a gym and a guard. The guard's hours and what the building fee covers were not published.[[IG_L09C]]"
+    "en": "The building has a gym and a guard. The hours of the guard and what the building fee covers are given on request.[[IG_L09C]]"
    }
   },
   {
@@ -982,7 +982,7 @@
    },
    "a": {
     "he": "החניות מוכנות לטעינה. פרטי ההתקנה והחשמל נמסרים בפנייה.[[IG_L09D]]",
-    "en": "Per the broker, the parking spaces are prepared for charging. Whether a charger is installed, and who pays for installation and electricity, was not stated.[[IG_L09D]]"
+    "en": "The parking spaces are prepared for charging. The installation and electricity details are given on request.[[IG_L09D]]"
    }
   }
  ],

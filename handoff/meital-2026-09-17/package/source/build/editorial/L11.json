@@ -32,7 +32,7 @@
  },
  "kicker": {
   "he": "להשכרה · בלעדיות · רמת אביב, צפון תל אביב",
-  "en": "For rent · Ramat Aviv, north Tel Aviv"
+  "en": "For rent · Exclusive · Ramat Aviv, north Tel Aviv"
  },
  "title": {
   "he": "5 חדרים בקומה גבוהה במתחם עם בריכה, רמת אביב",
@@ -40,7 +40,7 @@
  },
  "dek": {
   "he": "דירת חמישה חדרים בקומה גבוהה, במתחם ברמת אביב עם בריכת שחייה, חדר כושר ושומר. שתי חניות ומחסן. שכר הדירה ושם המתחם נמסרים בפנייה ישירה.",
-  "en": "A spacious, bright apartment with two parking spaces and storage, in a complex with a swimming pool, a gym and a guard, according to the broker. Rent and the complex name are given on request."
+  "en": "A five-room apartment on a high floor, in a Ramat Aviv complex with a swimming pool, a gym and a guard. Two parking spaces and a storage room. The rent and the name of the complex are given on direct request."
  },
  "chips": [
   {
@@ -159,8 +159,8 @@
    "שירותי מתחם כמו בריכה ושמירה מתומחרים בוועד הבית. בבניינים דומים באזור: 1,700 ש״ח לחודש ל-110 מ״ר בבניין עם בריכה, חדר כושר ושמירה 24 שעות ביממה, וכ-2,300 ש״ח ל-138 מ״ר במתחם עם בריכה בצפון העיר.[[MAD_QYSY,GLOBES_NEEMAN_2024]]"
   ],
   "en": [
-   "According to the broker, this is a spacious, bright five-room apartment on a high floor, in a quality Ramat Aviv complex with a swimming pool, a gym, a guard and other services. It comes with two parking spaces and a storage room.[[IG_L11]]",
-   "The rent, size, floor number and complex name were not published. Listings for five-room units other than penthouses, of 119 to 137 sqm in Ramat Aviv HaHadasha and Ramat Aviv Gimel, ask NIS 12,800 to 17,000 a month, and a 130 sqm top-floor unit in a building with a pool and gym asks NIS 18,000.[[MAD_V6WX,MAD_KSOP]]",
+   "A spacious, bright five-room apartment on a high floor, in a quality Ramat Aviv complex with a swimming pool, a gym, a guard and other services. It comes with two parking spaces and a storage room.[[IG_L11]]",
+   "The name of the complex, the floor and the exact area are given on direct request.",
    "Complex services such as a pool and a guard are priced into the building fee: in examples checked nearby, NIS 1,700 a month for 110 sqm in a building with a pool, gym and 24/7 security, and about NIS 2,300 for 138 sqm in a complex with a pool in north Tel Aviv.[[MAD_QYSY,GLOBES_NEEMAN_2024]]"
   ]
  },
@@ -194,7 +194,7 @@
   "en": [
    [
     "Five rooms",
-    "Spacious and bright, per the broker"
+    "Spacious and bright"
    ],
    [
     "High floor",
@@ -206,11 +206,11 @@
    ],
    [
     "Guard and other services",
-    "Per the broker"
+    "In the complex"
    ],
    [
     "Two parking spaces and storage",
-    "Per the broker"
+    "Attached to the unit"
    ],
    [
     "NIS 12,800-18,000",
@@ -422,7 +422,7 @@
  },
  "building_lead": {
   "he": "שם המתחם והכתובת נמסרים בפנייה. לצד השירותים מובאות דוגמאות לעלויות בבניינים עם שירותים דומים באזור.[[IG_L11]]",
-  "en": "The complex name and address were not published. The services are as stated by the broker, shown with cost examples from buildings with similar services nearby.[[IG_L11]]"
+  "en": "The name of the complex and the address are given on request. Alongside the services are cost examples from buildings with similar services nearby.[[IG_L11]]"
  },
  "building": [
   {
@@ -503,7 +503,7 @@
   "4": {
    "note": {
     "he": "מבנה חדש בהמשך הצפוני של רחוב אבן גבירול, במפגש עם רחוב מרק שאגאל; שבע כיתות וכיתת חינוך מיוחד בכל שכבה. אזור הרישום לאימות מול העירייה.",
-    "en": "A new building on the northern extension of Ibn Gabirol Street at Marc Chagall Street; seven classes plus a special education class per grade. Registration zone not verified."
+    "en": "A new building on the northern extension of Ibn Gabirol Street at Marc Chagall Street; seven classes plus a special education class per grade. Registration zone to be confirmed."
    }
   }
  },
@@ -525,7 +525,7 @@
    },
    "status": {
     "he": "מתוכנן לאורך דרך נמיר, רחוב איינשטיין ורחוב חיים לבנון, עם תחנה שקועה בצומת נמיר-איינשטיין. לוח הזמנים של העבודות לאימות.",
-    "en": "Planned along Namir Road, Einstein Street and Haim Levanon Street, with a sunken station at the Namir and Einstein junction. The works schedule was not verified."
+    "en": "Planned along Namir Road, Einstein Street and Haim Levanon Street, with a sunken station at the Namir and Einstein junction. The works schedule is to be confirmed."
    }
   },
   "2": {
@@ -535,7 +535,7 @@
    },
    "status": {
     "he": "בין שמות התחנות: אוניברסיטת תל אביב, ברודצקי ונמיר. הסדר והמיקום המדויק לאימות.",
-    "en": "Station names include Tel Aviv University, Brodetsky and Namir. Order and exact locations not verified."
+    "en": "Station names include Tel Aviv University, Brodetsky and Namir. Order and exact locations to be confirmed."
    }
   },
   "3": {
@@ -624,7 +624,7 @@
   },
   "lead": {
    "he": "שכר הדירה והשטח נמסרים בפנייה ישירה. החישובים כאן מבוססים על מודעות לדירות 5 חדרים ברמת אביב החדשה וברמת אביב ג׳, על דוגמאות לוועד בית בבניינים עם בריכה ועל תעריפי הארנונה של 2026.",
-   "en": "The broker has not published a rent or size. These figures come from five-room listings in Ramat Aviv HaHadasha and Ramat Aviv Gimel, building fee examples from complexes with a pool, and 2026 arnona rates."
+   "en": "The rent and the area are given on direct request. The figures here are based on five-room listings in Ramat Aviv HaHadasha and Ramat Aviv Gimel, building fee examples from complexes with a pool, and the 2026 arnona rates."
   },
   "extra_kpis": [
    {
@@ -716,7 +716,7 @@
       },
       "note": {
        "he": "15 עד 17 ₪ למ״ר בדוגמאות של בניינים עם בריכה, בהנחה של 130 עד 140 מ״ר",
-       "en": "NIS 15 to 17 per sqm in examples from buildings with a pool, assuming 130 to 140 sqm; the unit's size was not published"
+       "en": "NIS 15 to 17 per sqm in examples from buildings with a pool, assuming 130 to 140 sqm; the area of this apartment is given on request"
       }
      },
      {
@@ -730,7 +730,7 @@
       },
       "note": {
        "he": "בהנחה של 140 מ״ר כולל מרפסות, בתעריף אא של אזור 2 עד אזור 1; השטח, האזור והסיווג לאימות",
-       "en": "Assuming 140 sqm including balconies, at newest-code rates for zone 2 to zone 1; area, zone and code unverified"
+       "en": "Assuming 140 sqm including balconies, at newest-code rates for zone 2 to zone 1; area, zone and code to be confirmed"
       }
      },
      {
@@ -954,7 +954,7 @@
     },
     "note": {
      "he": "כל הגדלים, לפי מדלן",
-     "en": "All sizes, per Madlan"
+     "en": "All sizes"
     }
    },
    {
@@ -968,7 +968,7 @@
     },
     "note": {
      "he": "כל הגדלים, לפי מדלן",
-     "en": "All sizes, per Madlan"
+     "en": "All sizes"
     }
    },
    {
@@ -1024,7 +1024,7 @@
  ],
  "checks_h2": {
   "he": "הבדיקות שכדאי לעשות",
-  "en": "What to check before signing"
+  "en": "The checks worth making"
  },
  "checks_lead": {
   "he": "השאלות ששוכר זהיר שואל על הדירה והמתחם, והמסמכים שכדאי לקבל.",
@@ -1054,7 +1054,7 @@
    },
    "a": {
     "he": "שכר הדירה נמסר בפנייה ישירה. דירות 5 חדרים ברמת אביב החדשה וברמת אביב ג׳ מוצעות ב-12,800 עד 18,000 ש״ח לחודש, ובבניין עם בריכה יש להוסיף ועד בית של כ-1,700 עד 2,300 ש״ח לפי הדוגמאות באזור.[[MAD_V6WX,MAD_KSOP,MAD_QYSY]]",
-    "en": "The broker has not published a rent. Five-room units in Ramat Aviv HaHadasha and Ramat Aviv Gimel are offered at NIS 12,800 to 18,000 a month, and a building with a pool adds a building fee of about NIS 1,700 to 2,300, based on examples nearby.[[MAD_V6WX,MAD_KSOP,MAD_QYSY]]"
+    "en": "The rent is given on direct request. Five-room units in Ramat Aviv HaHadasha and Ramat Aviv Gimel are offered at NIS 12,800 to 18,000 a month, and a building with a pool adds a building fee of about NIS 1,700 to 2,300, based on examples nearby.[[MAD_V6WX,MAD_KSOP,MAD_QYSY]]"
    }
   },
   {
@@ -1064,7 +1064,7 @@
    },
    "a": {
     "he": "שם המתחם והכתובת נמסרים בפנייה ישירה. במתחם בריכת שחייה, חדר כושר, שומר ושירותים נוספים.[[IG_L11]]",
-    "en": "The complex name and address were not published; Meital Katzir gives them on direct contact. Per the broker, the complex has a swimming pool, a gym, a guard and further services.[[IG_L11]]"
+    "en": "The name of the complex and the address are given on direct request. The complex has a swimming pool, a gym, a guard and other services.[[IG_L11]]"
    }
   },
   {
