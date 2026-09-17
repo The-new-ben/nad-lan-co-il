@@ -1,0 +1,23 @@
+{
+ "sea_terrace": {
+  "id": 7798,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/09/meital-katzir-sea-terrace.jpg",
+  "w": 2048,
+  "h": 1157,
+  "alt": "מרפסת מול הים בשקיעה, נופי ים, תל אביב"
+ },
+ "sea_chairs": {
+  "id": 7799,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/09/meital-katzir-sea-chairs.jpg",
+  "w": 1086,
+  "h": 1100,
+  "alt": "שקיעה מול הים ממרפסת בצוקי אביב"
+ },
+ "portrait": {
+  "id": 7800,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/09/meital-katzir-portrait.jpg",
+  "w": 1080,
+  "h": 1350,
+  "alt": "מיטל קציר, נדל״ן על הים"
+ }
+}
