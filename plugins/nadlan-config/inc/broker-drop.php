@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config · Broker drop box (x-broker-drop) · v1.0.0 · 23.9.2026
+ * nadlan-config · Broker drop box (x-broker-drop) · v1.1.0 · 23.9.2026
  *
  * Owner order 23.9.2026 (voice): a broker gets one private address, throws photos and a few lines at it,
  * and the system builds the property in the broker's own website. No replies. No login. No owner step.
@@ -16,13 +16,21 @@
  * reg. 19(c): a publication is removed or updated once the property is off the market), a new price in two.
  * Every listing carries the broker's name, "broker" status and licence number (reg. 19(a)).
  *
+ * 1.1 (owner order 23.9, "do it all, each one in the best and most profound way"):
+ *   - four languages: Hebrew and English from the writing step, Russian and French from a second, gated
+ *     translation step (no hype words, the broker's numbers only, place names kept out of the claim check);
+ *   - the broker's site in each language: a broker who joined alone (x-broker-join) gets an engine-built site;
+ *     the English, Russian and French sites appear with the first listing in that language;
+ *   - owners (x-owner-wizard) publish through the same engine, without a licence line and without a site;
+ *   - the token use and cost of every submission are kept on it (nl_usage).
+ *
  * Installed as the persistent Code Snippet "x-broker-drop" by scripts/broker-drop/deploydrop.py.
  * Rollback: python scripts/broker-drop/deploydrop.py --off
  */
 
 if ( ! defined( 'ABSPATH' ) ) { return; }
 if ( defined( 'NL_DROP_VERSION' ) ) { return; }
-define( 'NL_DROP_VERSION', '1.0.1' );
+define( 'NL_DROP_VERSION', '1.1.0' );
 define( 'NL_DROP_MAX_BYTES', 15728640 );
 define( 'NL_DROP_MAX_PHOTOS', 30 );
 
@@ -32,11 +40,11 @@ define( 'NL_DROP_MAX_PHOTOS', 30 );
 add_action( 'init', function () {
 	$auth = function () { return current_user_can( 'edit_posts' ); };
 	$str  = array( 'type' => 'string', 'single' => true, 'show_in_rest' => true, 'auth_callback' => $auth );
-	foreach ( array( 'nl_drop_on', 'nl_name_he', 'nl_name_en', 'nl_brand_en', 'nl_gender', 'nl_site_he', 'nl_site_en', 'nl_auto_publish' ) as $k ) {
+	foreach ( array( 'nl_drop_on', 'nl_name_he', 'nl_name_en', 'nl_name_ru', 'nl_brand_en', 'nl_gender', 'nl_site_he', 'nl_site_en', 'nl_site_ru', 'nl_site_fr', 'nl_auto_publish', 'nl_langs', 'nl_tier', 'nl_slug', 'nl_hero', 'nl_areas_en', 'nl_areas_ru', 'nl_areas_fr', 'nl_bio_en' ) as $k ) {
 		register_post_meta( 'nadlan_professional', $k, $str );
 	}
 	foreach ( array( 'nadlan_property', 'page' ) as $t ) {
-		foreach ( array( 'nl_broker_id', 'nl_card_key', 'nl_twin', 'nl_status', 'nl_broker_site', 'nl_lang', 'nl_drop_id' ) as $k ) {
+		foreach ( array( 'nl_broker_id', 'nl_card_key', 'nl_twin', 'nl_twins', 'nl_status', 'nl_broker_site', 'nl_broker_auto', 'nl_lang', 'nl_drop_id' ) as $k ) {
 			register_post_meta( $t, $k, $str );
 		}
 	}
@@ -67,23 +75,41 @@ add_filter( 'rest_prepare_nadlan_professional', function ( $resp ) {
 /* =====================================================================================================
  * Brokers
  * ===================================================================================================== */
+/** The languages a listing and a broker site can live in. Hebrew is always the first. */
+function nl_drop_langs() {
+	return array( 'he', 'en', 'ru', 'fr' );
+}
+
+function nl_drop_L( $lang ) {
+	return in_array( (string) $lang, nl_drop_langs(), true ) ? (string) $lang : 'he';
+}
+
+function nl_drop_rtl( $lang ) {
+	return nl_drop_L( $lang ) === 'he';
+}
+
 function nl_drop_broker( $pid ) {
 	$p = get_post( (int) $pid );
 	if ( ! $p || $p->post_type !== 'nadlan_professional' ) { return null; }
 	$m = function ( $k ) use ( $p ) { return trim( (string) get_post_meta( $p->ID, $k, true ) ); };
+	$split   = function ( $v ) { return array_values( array_filter( array_map( 'trim', explode( ',', (string) $v ) ) ) ); };
 	$parts   = preg_split( '/\s*·\s*/u', (string) $p->post_title );
 	$name_he = $m( 'nl_name_he' ) !== '' ? $m( 'nl_name_he' ) : trim( (string) $parts[0] );
+	$name_en = $m( 'nl_name_en' ) !== '' ? $m( 'nl_name_en' ) : $name_he;
 	$phone   = $m( 'phone' );
 	$digits  = preg_replace( '/\D+/', '', $phone );
 	if ( $digits !== '' && $digits[0] === '0' ) { $digits = '972' . substr( $digits, 1 ); }
 	$nat  = strpos( $digits, '972' ) === 0 ? substr( $digits, 3 ) : '';
 	$intl = strlen( $nat ) >= 8 ? '+972 ' . substr( $nat, 0, 2 ) . '-' . substr( $nat, 2, 3 ) . '-' . substr( $nat, 5 ) : $phone;
-	return array(
+	$photos   = $split( $m( 'photos_csv' ) );
+	$b = array(
 		'id'         => (int) $p->ID,
+		'kind'       => 'broker',
 		'name_he'    => $name_he,
-		'name_en'    => $m( 'nl_name_en' ) !== '' ? $m( 'nl_name_en' ) : $name_he,
+		'name_en'    => $name_en,
+		'name_ru'    => $m( 'nl_name_ru' ) !== '' ? $m( 'nl_name_ru' ) : $name_en,
 		'brand_he'   => $m( 'company_name' ),
-		'brand_en'   => $m( 'nl_brand_en' ) !== '' ? $m( 'nl_brand_en' ) : $m( 'company_name' ),
+		'brand_en'   => $m( 'nl_brand_en' ) !== '' ? $m( 'nl_brand_en' ) : ( preg_match( '/\p{Hebrew}/u', $m( 'company_name' ) ) ? '' : $m( 'company_name' ) ),
 		'license'    => $m( 'license_number' ),
 		'phone'      => $phone,
 		'phone_intl' => $intl,
@@ -91,11 +117,65 @@ function nl_drop_broker( $pid ) {
 		'female'     => $m( 'nl_gender' ) === 'f',
 		'site_he'    => (int) $m( 'nl_site_he' ),
 		'site_en'    => (int) $m( 'nl_site_en' ),
+		'site_ru'    => (int) $m( 'nl_site_ru' ),
+		'site_fr'    => (int) $m( 'nl_site_fr' ),
 		'auto'       => $m( 'nl_auto_publish' ) !== '0',
 		'on'         => $m( 'nl_drop_on' ) === '1',
 		'token'      => trim( (string) get_post_meta( $p->ID, '_nl_drop_token', true ) ),
-		'areas'      => array_values( array_filter( array_map( 'trim', explode( ',', $m( 'areas_served' ) ) ) ) ),
+		'areas'      => $split( $m( 'areas_served' ) ),
+		'areas_l'    => array( 'he' => $split( $m( 'areas_served' ) ), 'en' => $split( $m( 'nl_areas_en' ) ), 'ru' => $split( $m( 'nl_areas_ru' ) ), 'fr' => $split( $m( 'nl_areas_fr' ) ) ),
+		'bio'        => array( 'he' => $m( 'bio' ), 'en' => $m( 'nl_bio_en' ) ),
+		'portrait'   => $photos ? $photos[0] : '',
+		'hero'       => (int) $m( 'nl_hero' ),
+		'tier'       => $m( 'nl_tier' ) !== '' ? $m( 'nl_tier' ) : 'free',
+		'slug'       => $m( 'nl_slug' ),
 	);
+	$b['langs'] = nl_drop_broker_langs( $b, $m( 'nl_langs' ) );
+	return $b;
+}
+
+/** The languages this broker's listings are written in: the saved choice, or Hebrew plus English when an English site exists. */
+function nl_drop_broker_langs( $b, $csv ) {
+	$want = array_values( array_intersect( nl_drop_langs(), array_map( 'trim', explode( ',', strtolower( (string) $csv ) ) ) ) );
+	if ( ! $want ) {
+		$want = array( 'he' );
+		if ( ! empty( $b['site_en'] ) ) { $want[] = 'en'; }
+	}
+	if ( ! in_array( 'he', $want, true ) ) { array_unshift( $want, 'he' ); }
+	return $want;
+}
+
+function nl_drop_name( $b, $lang ) {
+	$lang = nl_drop_L( $lang );
+	if ( $lang === 'he' ) { return (string) $b['name_he']; }
+	if ( $lang === 'ru' ) { return (string) ( $b['name_ru'] ?? $b['name_en'] ); }
+	return (string) $b['name_en'];
+}
+
+function nl_drop_brand( $b, $lang ) {
+	return nl_drop_L( $lang ) === 'he' ? (string) $b['brand_he'] : (string) $b['brand_en'];
+}
+
+/** Hebrew joins a list with a vav on the last item; the other languages with their own word. */
+function nl_drop_join( $items, $lang ) {
+	$items = array_values( array_filter( array_map( 'trim', (array) $items ) ) );
+	$n     = count( $items );
+	if ( $n === 0 ) { return ''; }
+	if ( $n === 1 ) { return $items[0]; }
+	$last = array_pop( $items );
+	$lang = nl_drop_L( $lang );
+	if ( $lang === 'he' ) {
+		$v = preg_match( '/^\p{Hebrew}/u', $last ) ? 'ו' : 'ו-';
+		return implode( ', ', $items ) . ' ' . $v . $last;
+	}
+	$and = array( 'en' => 'and', 'ru' => 'и', 'fr' => 'et' );
+	return implode( ', ', $items ) . ' ' . $and[ $lang ] . ' ' . $last;
+}
+
+/** Hebrew "in X": the letter bet joins a Hebrew word directly, anything else with a hyphen. */
+function nl_drop_he_in( $s ) {
+	$s = trim( (string) $s );
+	return $s === '' ? '' : ( preg_match( '/^\p{Hebrew}/u', $s ) ? 'ב' . $s : 'ב-' . $s );
 }
 
 function nl_drop_broker_by_token( $token ) {
@@ -136,8 +216,9 @@ function nl_drop_rate( $bid, $bucket, $limit, $window ) {
 }
 
 function nl_drop_site_url( $b, $lang ) {
-	$id = $lang === 'en' ? (int) $b['site_en'] : (int) $b['site_he'];
-	return $id ? (string) get_permalink( $id ) : '';
+	$id = (int) ( $b[ 'site_' . nl_drop_L( $lang ) ] ?? 0 );
+	if ( ! $id || get_post_status( $id ) !== 'publish' ) { return ''; }
+	return (string) get_permalink( $id );
 }
 
 /* =====================================================================================================
@@ -160,6 +241,16 @@ function nl_drop_t( $lang, $k ) {
 			'ask_sub' => 'פרטים בפנייה ישירה', 'rooms_n' => '%s חדרים', 'size_n' => '%s מ״ר', 'balcony_n' => 'מרפסת %s מ״ר', 'garden_n' => 'גינה %s מ״ר',
 			'floor_of' => 'קומה %1$s מתוך %2$s', 'floor_n' => 'קומה %s', 'parking_n' => '%s חניות', 'parking_1' => 'חניה', 'entry_n' => 'כניסה: %s',
 			'wa_text' => 'שלום %1$s, אשמח לפרטים ולתיאום סיור: %2$s (nad-lan.co.il)',
+			'ground' => 'קרקע', 'broker_tab_f' => 'המתווכת', 'broker_tab_m' => 'המתווך', 'owner' => 'בעלי הנכס', 'owner_chip' => 'מבעלי הנכס',
+			'owner_note' => 'מודעה של בעלי הנכס, ללא תיווך.',
+			'nav_listings' => 'הנכסים', 'nav_sale' => 'למכירה', 'nav_rent' => 'להשכרה', 'nav_about' => 'עליי', 'nav_contact' => 'יצירת קשר', 'nav_aria' => 'ניווט באתר של %s',
+			'site_eyebrow' => 'תיווך נדל״ן', 'lede_areas' => 'נכסים למכירה ולהשכרה %s.', 'lede_plain' => 'נכסים למכירה ולהשכרה.',
+			'stat_listings' => 'נכסים', 'stat_areas' => 'אזורים', 'listings_h2' => 'הנכסים', 'listings_lead' => 'לכל נכס עמוד מלא עם התמונות, הפרטים והמחיר.',
+			'filter_all' => 'הכול', 'filter_aria' => 'סינון לפי סוג עסקה', 'empty' => 'כרגע אין נכסים פעילים באתר. לפרטים על נכסים נוספים אפשר לפנות ישירות.',
+			'contact_h2' => 'לתיאום סיור', 'legal' => 'האתר של %s ב-nad-lan.co.il. המידע אינו הצעה מחייבת, שמאות או ייעוץ.',
+			'wa_site' => 'שלום %s, הגעתי מהאתר שלך ב-nad-lan ואשמח לדבר', 'about_h2' => 'קצת עליי',
+			'seo_site_t' => '%1$s | נכסים למכירה ולהשכרה %2$s', 'seo_site_t0' => '%s | נכסים למכירה ולהשכרה',
+			'seo_site_d' => '%1$s. נכסים למכירה ולהשכרה %2$s, עמוד מלא לכל נכס ופנייה ישירה בוואטסאפ.', 'seo_site_d0' => '%s. נכסים למכירה ולהשכרה, עמוד מלא לכל נכס ופנייה ישירה בוואטסאפ.',
 		),
 		'en' => array(
 			'sale' => 'For sale', 'rent' => 'For rent', 'exclusive' => 'Exclusive', 'sqm' => 'sqm', 'of' => 'of', 'yes' => 'Yes',
@@ -176,36 +267,173 @@ function nl_drop_t( $lang, $k ) {
 			'ask_sub' => 'Details given on direct enquiry', 'rooms_n' => '%s rooms', 'size_n' => '%s sqm', 'balcony_n' => '%s sqm balcony', 'garden_n' => '%s sqm garden',
 			'floor_of' => 'Floor %1$s of %2$s', 'floor_n' => 'Floor %s', 'parking_n' => '%s parking', 'parking_1' => 'Parking', 'entry_n' => 'Entry: %s',
 			'wa_text' => 'Hello %1$s, I would like details and a viewing: %2$s (nad-lan.co.il)',
+			'ground' => 'Ground', 'broker_tab_f' => 'Broker', 'broker_tab_m' => 'Broker', 'owner' => 'The owners', 'owner_chip' => 'Private owner',
+			'owner_note' => 'Listed by the owners, without a broker.',
+			'nav_listings' => 'Listings', 'nav_sale' => 'For sale', 'nav_rent' => 'For rent', 'nav_about' => 'About', 'nav_contact' => 'Contact', 'nav_aria' => '%s: site navigation',
+			'site_eyebrow' => 'Real estate', 'lede_areas' => 'Homes for sale and for rent in %s.', 'lede_plain' => 'Homes for sale and for rent.',
+			'stat_listings' => 'Listings', 'stat_areas' => 'Areas', 'listings_h2' => 'Listings', 'listings_lead' => 'Every home has a full page with photographs, details and the price.',
+			'filter_all' => 'All', 'filter_aria' => 'Filter by deal', 'empty' => 'No homes are listed right now. For other homes, get in touch directly.',
+			'contact_h2' => 'Book a viewing', 'legal' => '%s’s site on nad-lan.co.il. The information is not a binding offer, an appraisal or advice.',
+			'wa_site' => 'Hello %s, I found your site on nad-lan and would like to talk', 'about_h2' => 'About',
+			'seo_site_t' => '%1$s | Homes for Sale and Rent in %2$s', 'seo_site_t0' => '%s | Homes for Sale and Rent',
+			'seo_site_d' => '%1$s. Homes for sale and for rent in %2$s, a full page for every home and direct WhatsApp contact.', 'seo_site_d0' => '%s. Homes for sale and for rent, a full page for every home and direct WhatsApp contact.',
+		),
+		'ru' => array(
+			'sale' => 'Продажа', 'rent' => 'Аренда', 'exclusive' => 'Эксклюзив', 'sqm' => 'м²', 'of' => 'из', 'yes' => 'Есть',
+			'f_rooms' => 'Комнаты', 'f_size' => 'Площадь', 'f_balcony' => 'Балкон', 'f_garden' => 'Сад', 'f_floor' => 'Этаж', 'f_parking' => 'Парковка',
+			'f_storage' => 'Кладовая', 'f_safe' => 'Мамад', 'f_lift' => 'Лифт', 'f_condition' => 'Состояние', 'f_entry' => 'Въезд', 'f_furnished' => 'Мебель',
+			'c_new' => 'Новая', 'c_renovated' => 'После ремонта', 'c_good' => 'Ухоженная', 'c_needs_renovation' => 'Требует ремонта', 'furnished' => 'С мебелью',
+			'price_sale' => 'Цена', 'price_rent' => 'Аренда в месяц', 'ask_sale' => 'Цена по запросу', 'ask_rent' => 'Стоимость аренды по запросу',
+			'psqm_sale' => 'За м²', 'psqm_rent' => 'За м² в месяц', 'year' => 'В год',
+			'cta' => 'Записаться на просмотр', 'call' => 'Позвонить', 'wa' => 'WhatsApp', 'home' => 'Объект', 'photos' => 'Фотографии', 'photos_h2' => 'Объект в фотографиях',
+			'broker_f' => 'Риелтор', 'broker_m' => 'Риелтор', 'broker_ex_f' => 'Риелтор', 'broker_ex_m' => 'Риелтор',
+			'lic_f' => 'лицензированный риелтор, лицензия №', 'lic_m' => 'лицензированный риелтор, лицензия №', 'site' => 'Сайт: %s', 'switch' => 'עברית',
+			'toc' => 'Содержание', 'rail' => 'Цена и контакты', 'sold' => 'Объект продан', 'rented' => 'Объект сдан', 'more' => 'Другие объекты: %s',
+			'card_view' => 'Страница объекта', 'updated' => 'Обновлено', 'month' => 'в месяц', 'ask_short' => 'Цена по запросу', 'ask_short_rent' => 'Аренда по запросу',
+			'ask_sub' => 'Подробности по прямому запросу', 'rooms_n' => '%s комнаты', 'size_n' => '%s м²', 'balcony_n' => 'балкон %s м²', 'garden_n' => 'сад %s м²',
+			'floor_of' => 'этаж %1$s из %2$s', 'floor_n' => 'этаж %s', 'parking_n' => '%s парковки', 'parking_1' => 'Парковка', 'entry_n' => 'Въезд: %s',
+			'wa_text' => 'Здравствуйте, %1$s. Хочу узнать подробности и записаться на просмотр: %2$s (nad-lan.co.il)',
+			'ground' => 'Партер', 'broker_tab_f' => 'Риелтор', 'broker_tab_m' => 'Риелтор', 'owner' => 'Владельцы', 'owner_chip' => 'От владельцев',
+			'owner_note' => 'Объявление владельцев, без посредника.',
+			'nav_listings' => 'Объекты', 'nav_sale' => 'Продажа', 'nav_rent' => 'Аренда', 'nav_about' => 'Обо мне', 'nav_contact' => 'Контакты', 'nav_aria' => 'Навигация по сайту: %s',
+			'site_eyebrow' => 'Недвижимость', 'lede_areas' => 'Объекты на продажу и в аренду: %s.', 'lede_plain' => 'Объекты на продажу и в аренду.',
+			'stat_listings' => 'Объекты', 'stat_areas' => 'Районы', 'listings_h2' => 'Объекты', 'listings_lead' => 'У каждого объекта своя страница с фотографиями, деталями и ценой.',
+			'filter_all' => 'Все', 'filter_aria' => 'Фильтр по типу сделки', 'empty' => 'Сейчас на сайте нет активных объектов. О других объектах можно спросить напрямую.',
+			'contact_h2' => 'Записаться на просмотр', 'legal' => 'Сайт %s на nad-lan.co.il. Информация не является офертой, оценкой или консультацией.',
+			'wa_site' => 'Здравствуйте, %s. Пишу с вашего сайта на nad-lan', 'about_h2' => 'Обо мне',
+			'seo_site_t' => '%1$s | Продажа и аренда недвижимости: %2$s', 'seo_site_t0' => '%s | Продажа и аренда недвижимости',
+			'seo_site_d' => '%1$s. Объекты на продажу и в аренду: %2$s. У каждого объекта своя страница, связь напрямую в WhatsApp.', 'seo_site_d0' => '%s. Объекты на продажу и в аренду, у каждого своя страница, связь напрямую в WhatsApp.',
+		),
+		'fr' => array(
+			'sale' => 'À vendre', 'rent' => 'À louer', 'exclusive' => 'Exclusivité', 'sqm' => 'm²', 'of' => 'sur', 'yes' => 'Oui',
+			'f_rooms' => 'Pièces', 'f_size' => 'Surface', 'f_balcony' => 'Balcon', 'f_garden' => 'Jardin', 'f_floor' => 'Étage', 'f_parking' => 'Parking',
+			'f_storage' => 'Cave', 'f_safe' => 'Mamad', 'f_lift' => 'Ascenseur', 'f_condition' => 'État', 'f_entry' => 'Entrée', 'f_furnished' => 'Mobilier',
+			'c_new' => 'Neuf', 'c_renovated' => 'Rénové', 'c_good' => 'Bien entretenu', 'c_needs_renovation' => 'À rénover', 'furnished' => 'Meublé',
+			'price_sale' => 'Prix', 'price_rent' => 'Loyer mensuel', 'ask_sale' => 'Prix sur demande', 'ask_rent' => 'Loyer sur demande',
+			'psqm_sale' => 'Au m²', 'psqm_rent' => 'Au m² par mois', 'year' => 'Par an',
+			'cta' => 'Organiser une visite privée', 'call' => 'Appeler', 'wa' => 'WhatsApp', 'home' => 'Le bien', 'photos' => 'Photos', 'photos_h2' => 'Le bien en images',
+			'broker_f' => 'L’agente immobilière', 'broker_m' => 'L’agent immobilier', 'broker_ex_f' => 'L’agente immobilière', 'broker_ex_m' => 'L’agent immobilier',
+			'lic_f' => 'agente immobilière agréée, licence n°', 'lic_m' => 'agent immobilier agréé, licence n°', 'site' => 'Le site %s', 'switch' => 'עברית',
+			'toc' => 'Sur cette page', 'rail' => 'Prix et contact', 'sold' => 'Ce bien a été vendu', 'rented' => 'Ce bien a été loué', 'more' => 'Autres biens %s',
+			'card_view' => 'Voir le bien', 'updated' => 'Mis à jour le', 'month' => 'par mois', 'ask_short' => 'Prix sur demande', 'ask_short_rent' => 'Loyer sur demande',
+			'ask_sub' => 'Détails sur demande directe', 'rooms_n' => '%s pièces', 'size_n' => '%s m²', 'balcony_n' => 'balcon de %s m²', 'garden_n' => 'jardin de %s m²',
+			'floor_of' => '%1$s étage sur %2$s', 'floor_n' => '%s étage', 'parking_n' => '%s places de parking', 'parking_1' => 'Parking', 'entry_n' => 'Entrée : %s',
+			'wa_text' => 'Bonjour %1$s, je souhaite des détails et une visite : %2$s (nad-lan.co.il)',
+			'ground' => 'Rez-de-chaussée', 'broker_tab_f' => 'L’agente', 'broker_tab_m' => 'L’agent', 'owner' => 'Les propriétaires', 'owner_chip' => 'De particulier',
+			'owner_note' => 'Annonce des propriétaires, sans agence.',
+			'nav_listings' => 'Les biens', 'nav_sale' => 'À vendre', 'nav_rent' => 'À louer', 'nav_about' => 'À propos', 'nav_contact' => 'Contact', 'nav_aria' => 'Navigation du site %s',
+			'site_eyebrow' => 'Immobilier', 'lede_areas' => 'Biens à vendre et à louer : %s.', 'lede_plain' => 'Biens à vendre et à louer.',
+			'stat_listings' => 'Biens', 'stat_areas' => 'Quartiers', 'listings_h2' => 'Les biens', 'listings_lead' => 'Chaque bien a sa page complète, avec les photos, les détails et le prix.',
+			'filter_all' => 'Tous', 'filter_aria' => 'Filtrer par type de transaction', 'empty' => 'Aucun bien en ligne pour le moment. Pour d’autres biens, un contact direct suffit.',
+			'contact_h2' => 'Organiser une visite', 'legal' => 'Le site %s sur nad-lan.co.il. Ces informations ne constituent ni une offre ferme, ni une expertise, ni un conseil.',
+			'wa_site' => 'Bonjour %s, je vous écris depuis votre site sur nad-lan', 'about_h2' => 'À propos',
+			'seo_site_t' => '%1$s | Biens à vendre et à louer : %2$s', 'seo_site_t0' => '%s | Biens à vendre et à louer',
+			'seo_site_d' => '%1$s. Biens à vendre et à louer : %2$s. Une page complète pour chaque bien, contact direct sur WhatsApp.', 'seo_site_d0' => '%s. Biens à vendre et à louer, une page complète pour chaque bien, contact direct sur WhatsApp.',
 		),
 	);
-	$lang = $lang === 'en' ? 'en' : 'he';
-	return isset( $T[ $lang ][ $k ] ) ? $T[ $lang ][ $k ] : $k;
+	$lang = nl_drop_L( $lang );
+	if ( isset( $T[ $lang ][ $k ] ) ) { return $T[ $lang ][ $k ]; }
+	return isset( $T['en'][ $k ] ) ? $T['en'][ $k ] : $k;
+}
+
+/** A string with the broker's name in it; French says "de Meital" but "d’Israel". */
+function nl_drop_tn( $lang, $k, $name ) {
+	$lang = nl_drop_L( $lang );
+	if ( $lang === 'fr' ) { $name = ( preg_match( '/^[aeiouyhàâéèêëîïôûùAEIOUYHÀÂÉÈÊËÎÏÔÛÙ]/u', (string) $name ) ? 'd’' : 'de ' ) . $name; }
+	return sprintf( nl_drop_t( $lang, $k ), $name );
+}
+
+/** Cut on a whole word, never inside one. */
+function nl_drop_cut_words( $s, $max ) {
+	$s = trim( (string) $s );
+	if ( ( function_exists( 'mb_strlen' ) ? mb_strlen( $s ) : strlen( $s ) ) <= $max ) { return $s; }
+	$c = function_exists( 'mb_substr' ) ? mb_substr( $s, 0, $max ) : substr( $s, 0, $max );
+	// a whole sentence first, then a whole clause, then a whole word
+	foreach ( array( '. ' => '.', ', ' => '.' ) as $sep => $end ) {
+		$p = function_exists( 'mb_strrpos' ) ? mb_strrpos( $c, $sep ) : strrpos( $c, $sep );
+		if ( $p !== false && $p > $max * 0.55 ) { return ( function_exists( 'mb_substr' ) ? mb_substr( $c, 0, $p ) : substr( $c, 0, $p ) ) . $end; }
+	}
+	$p = function_exists( 'mb_strrpos' ) ? mb_strrpos( $c, ' ' ) : strrpos( $c, ' ' );
+	return rtrim( $p ? ( function_exists( 'mb_substr' ) ? mb_substr( $c, 0, $p ) : substr( $c, 0, $p ) ) : $c, ' ,;:·' );
+}
+
+/** Each language named in itself, for the language links. */
+function nl_drop_lang_name( $lang ) {
+	static $n = array( 'he' => 'עברית', 'en' => 'English', 'ru' => 'Русский', 'fr' => 'Français' );
+	return $n[ nl_drop_L( $lang ) ];
+}
+
+/** "4 rooms" in each language: Russian and French agree the noun with the number. */
+function nl_drop_rooms_word( $n, $lang ) {
+	$lang = nl_drop_L( $lang );
+	$n    = (float) $n;
+	if ( $lang === 'ru' ) {
+		if ( floor( $n ) != $n ) { return 'комнаты'; }
+		$i = (int) $n;
+		if ( $i % 10 === 1 && $i % 100 !== 11 ) { return 'комната'; }
+		if ( $i % 10 >= 2 && $i % 10 <= 4 && ( $i % 100 < 12 || $i % 100 > 14 ) ) { return 'комнаты'; }
+		return 'комнат';
+	}
+	if ( $lang === 'fr' ) { return $n < 2 ? 'pièce' : 'pièces'; }
+	if ( $lang === 'en' ) { return 'rooms'; }
+	return 'חדרים';
+}
+
+function nl_drop_parking_word( $n, $lang ) {
+	$lang = nl_drop_L( $lang );
+	$i    = (int) $n;
+	if ( $lang === 'ru' ) {
+		if ( $i % 10 === 1 && $i % 100 !== 11 ) { return 'парковочное место'; }
+		if ( $i % 10 >= 2 && $i % 10 <= 4 && ( $i % 100 < 12 || $i % 100 > 14 ) ) { return 'парковочных места'; }
+		return 'парковочных мест';
+	}
+	if ( $lang === 'fr' ) { return $i < 2 ? 'place de parking' : 'places de parking'; }
+	if ( $lang === 'en' ) { return $i < 2 ? 'parking space' : 'parking spaces'; }
+	return 'חניות';
+}
+
+/** French ordinal floors: 1er, 2e. */
+function nl_drop_fr_floor( $n ) {
+	$n = (int) $n;
+	return $n === 1 ? '1er' : $n . 'e';
 }
 
 function nl_drop_type_label( $t, $lang ) {
-	static $he = array( 'apartment' => 'דירה', 'penthouse' => 'פנטהאוז', 'mini_penthouse' => 'מיני פנטהאוז', 'garden' => 'דירת גן', 'duplex' => 'דופלקס', 'villa' => 'וילה', 'cottage' => 'קוטג׳', 'studio' => 'סטודיו', 'other' => 'נכס' );
-	static $en = array( 'apartment' => 'Apartment', 'penthouse' => 'Penthouse', 'mini_penthouse' => 'Mini penthouse', 'garden' => 'Garden apartment', 'duplex' => 'Duplex', 'villa' => 'Villa', 'cottage' => 'Cottage', 'studio' => 'Studio', 'other' => 'Property' );
-	$t = isset( $en[ (string) $t ] ) ? (string) $t : 'other';
-	return $lang === 'en' ? $en[ $t ] : $he[ $t ];
+	static $L = array(
+		'he' => array( 'apartment' => 'דירה', 'penthouse' => 'פנטהאוז', 'mini_penthouse' => 'מיני פנטהאוז', 'garden' => 'דירת גן', 'duplex' => 'דופלקס', 'villa' => 'וילה', 'cottage' => 'קוטג׳', 'studio' => 'סטודיו', 'other' => 'נכס' ),
+		'en' => array( 'apartment' => 'Apartment', 'penthouse' => 'Penthouse', 'mini_penthouse' => 'Mini penthouse', 'garden' => 'Garden apartment', 'duplex' => 'Duplex', 'villa' => 'Villa', 'cottage' => 'Cottage', 'studio' => 'Studio', 'other' => 'Property' ),
+		'ru' => array( 'apartment' => 'Квартира', 'penthouse' => 'Пентхаус', 'mini_penthouse' => 'Мини-пентхаус', 'garden' => 'Квартира с садом', 'duplex' => 'Дуплекс', 'villa' => 'Вилла', 'cottage' => 'Коттедж', 'studio' => 'Студия', 'other' => 'Объект' ),
+		'fr' => array( 'apartment' => 'Appartement', 'penthouse' => 'Penthouse', 'mini_penthouse' => 'Mini-penthouse', 'garden' => 'Appartement avec jardin', 'duplex' => 'Duplex', 'villa' => 'Villa', 'cottage' => 'Maison', 'studio' => 'Studio', 'other' => 'Bien' ),
+	);
+	$t = isset( $L['en'][ (string) $t ] ) ? (string) $t : 'other';
+	return $L[ nl_drop_L( $lang ) ][ $t ];
 }
 
-function nl_drop_fmt_int( $n ) {
+/** Russian and French group thousands with a no-break space and write decimals with a comma. */
+function nl_drop_fmt_int( $n, $lang = 'he' ) {
+	if ( $lang === 'ru' || $lang === 'fr' ) { return number_format( (float) $n, 0, ',', "\u{00A0}" ); }
 	return number_format( (float) $n, 0, '.', ',' );
 }
 
-function nl_drop_fmt_num( $n ) {
-	$n = (float) $n;
-	if ( floor( $n ) == $n ) { return number_format( $n, 0, '.', ',' ); }
-	return rtrim( rtrim( number_format( $n, 2, '.', ',' ), '0' ), '.' );
+function nl_drop_fmt_num( $n, $lang = 'he' ) {
+	$n   = (float) $n;
+	$lat = ( $lang === 'ru' || $lang === 'fr' );
+	$dec = $lat ? ',' : '.';
+	$th  = $lat ? "\u{00A0}" : ',';
+	if ( floor( $n ) == $n ) { return number_format( $n, 0, $dec, $th ); }
+	return rtrim( rtrim( number_format( $n, 2, $dec, $th ), '0' ), $dec );
 }
 
 function nl_drop_money_html( $n, $lang ) {
-	$num = '<span class="nlx-num">' . esc_html( nl_drop_fmt_int( $n ) ) . '</span>';
-	return '<span class="nlx-money">' . ( $lang === 'en' ? 'NIS&nbsp;' . $num : $num . '&nbsp;₪' ) . '</span>';
+	$num = '<span class="nlx-num">' . esc_html( nl_drop_fmt_int( $n, $lang ) ) . '</span>';
+	if ( $lang === 'en' ) { return '<span class="nlx-money">NIS&nbsp;' . $num . '</span>'; }
+	return '<span class="nlx-money">' . $num . '&nbsp;₪</span>';
 }
 
 function nl_drop_price_text( $n, $lang ) {
-	return $lang === 'en' ? 'NIS ' . nl_drop_fmt_int( $n ) : nl_drop_fmt_int( $n ) . ' ש״ח';
+	if ( $lang === 'en' ) { return 'NIS ' . nl_drop_fmt_int( $n ); }
+	if ( $lang === 'ru' || $lang === 'fr' ) { return nl_drop_fmt_int( $n, $lang ) . "\u{00A0}₪"; }
+	return nl_drop_fmt_int( $n ) . ' ש״ח';
 }
 
 /** Every number a broker wrote, including "4.2 מיליון" as 4200000 and "15 אלף" as 15000. */
@@ -224,14 +452,34 @@ function nl_drop_nums_in_text( $text ) {
 	return $out;
 }
 
-function nl_drop_nums_in_copy( $s ) {
+/** The day, month and year of a written date (1.10, 15/11/2026): each is a number the broker wrote. */
+function nl_drop_date_parts( $s ) {
+	$out = array();
+	if ( preg_match_all( '/(?<![\d.])(\d{1,2})[.\/](\d{1,2})(?:[.\/](\d{2,4}))?(?![\d])/u', (string) $s, $m, PREG_SET_ORDER ) ) {
+		foreach ( $m as $x ) {
+			if ( (int) $x[1] >= 1 && (int) $x[1] <= 31 && (int) $x[2] >= 1 && (int) $x[2] <= 12 ) {
+				$out[] = (float) $x[1];
+				$out[] = (float) $x[2];
+				if ( ! empty( $x[3] ) ) { $out[] = (float) $x[3]; }
+			}
+		}
+	}
+	return $out;
+}
+
+function nl_drop_nums_in_copy( $s, $lang = 'he' ) {
 	$out = array();
 	$s   = str_replace( '{{PRICE}}', ' ', (string) $s );
+	if ( $lang === 'ru' || $lang === 'fr' ) {
+		$s = preg_replace( '/(?<=\d)[\x{00A0}\x{202F}\x{2009} ](?=\d{3}(?!\d))/u', '', $s );
+		$s = preg_replace( '/(?<=\d),(?=\d{1,2}(?!\d))/u', '.', $s );
+	}
 	if ( preg_match_all( '/\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?/u', $s, $m ) ) {
 		foreach ( $m[0] as $x ) { $out[] = (float) str_replace( ',', '', $x ); }
 	}
 	return $out;
 }
+
 
 function nl_drop_num_ok( $n, $allowed ) {
 	foreach ( (array) $allowed as $a ) {
@@ -275,24 +523,56 @@ function nl_drop_banned( $lang ) {
 		return array( 'madlan', 'yad2', 'instagram', 'not verified', 'unverified', 'according to the broker', 'per the listing', 'not published', 'not confirmed', 'the marketer',
 			'once in a lifetime', 'dream', 'stunning', 'breathtaking', 'must see', "won't last", 'hurry', 'unique opportunity', 'luxury at its finest', '—', '–', '!' );
 	}
+	if ( $lang === 'ru' ) {
+		return array( 'мадлан', 'яд2', 'яд 2', 'инстаграм', 'не проверено', 'не подтверждено', 'по словам риелтора', 'по словам маклера', 'не опубликовано',
+			'уникальн*', 'мечт*', 'идеальн*', 'потрясающ*', 'шикарн*', 'невероятн*', 'сказочн*', 'не упустите', 'спешите', 'успейте', 'эксклюзивное предложение', '—', '–', '!' );
+	}
+	if ( $lang === 'fr' ) {
+		return array( 'madlan', 'yad2', 'instagram', 'non vérifié', 'non confirmé', 'selon l’agent', 'selon l\'agent', 'non publié',
+			'unique', 'uniques', 'rêve*', 'parfait*', 'exceptionnel*', 'magnifique*', 'sublime*', 'incroyable*', 'à ne pas manquer', 'coup de cœur', 'opportunité*', 'dépêchez', '—', '–', '!' );
+	}
 	return array( 'לפי המשווקת', 'המשווקת', 'לפי המתווכת', 'לפי המתווך', 'מדלן', 'יד2', 'יד 2', 'אינסטגרם', 'לא אומת', 'יש לאמת', 'לא פורסם', 'זמינות בבדיקה',
 		'הזדמנות', 'חלום', 'מושלם', 'מדהים', 'פנטסטי', 'חוויה', 'לא תחזור', 'יוקרה במיטבה', 'בעידן', '—', '–', '!' );
 }
 
-function nl_drop_gate_str( $s, $lang, $allowed, $stated = null, $names = array() ) {
-	$issues = array();
-	$low    = nl_drop_norm( $s );
+/**
+ * Hebrew and English match a banned string anywhere, as before. Russian and French match whole words, and a
+ * trailing * matches every ending (уникальный, уникальная; parfait, parfaite), so "uniquement" never trips "unique".
+ */
+function nl_drop_banned_hits( $s, $lang ) {
+	$hits = array();
+	$low  = nl_drop_norm( $s );
+	$word = ( $lang === 'ru' || $lang === 'fr' );
+	$ws   = $word ? nl_drop_words( $s ) : array();
 	foreach ( nl_drop_banned( $lang ) as $w ) {
-		if ( $w !== '' && strpos( $low, nl_drop_norm( $w ) ) !== false ) { $issues[] = 'banned:' . $w; }
+		if ( $w === '' ) { continue; }
+		$nw = nl_drop_norm( $w );
+		if ( ! $word || strpos( $nw, ' ' ) !== false || ! preg_match( '/^[\p{L}\p{N}*-]+$/u', $nw ) ) {
+			if ( strpos( $low, rtrim( $nw, '*' ) ) !== false ) { $hits[] = 'banned:' . $w; }
+			continue;
+		}
+		$stem = substr( $nw, -1 ) === '*';
+		$core = rtrim( $nw, '*' );
+		foreach ( $ws as $x ) {
+			if ( $stem ? strpos( $x, $core ) === 0 : $x === $core ) { $hits[] = 'banned:' . $w; break; }
+		}
 	}
-	foreach ( nl_drop_nums_in_copy( $s ) as $n ) {
+	return $hits;
+}
+
+function nl_drop_gate_str( $s, $lang, $allowed, $stated = null, $names = array() ) {
+	$issues = nl_drop_banned_hits( $s, $lang );
+	foreach ( nl_drop_nums_in_copy( $s, $lang ) as $n ) {
 		if ( ! nl_drop_num_ok( $n, $allowed ) ) { $issues[] = 'number:' . $n; }
 	}
 	if ( preg_match( '/https?:|www\./i', (string) $s ) ) { $issues[] = 'link'; }
 	if ( is_array( $stated ) ) {
 		$bare = (string) $s;
 		foreach ( (array) $names as $nm ) {
-			if ( $nm !== '' && $nm !== null ) { $bare = str_ireplace( nl_drop_he_typo( $nm ), ' ', str_ireplace( $nm, ' ', $bare ) ); }
+			if ( $nm === '' || $nm === null ) { continue; }
+			foreach ( array_unique( array( (string) $nm, nl_drop_he_typo( $nm ) ) ) as $v ) {
+				$bare = (string) preg_replace( '/' . preg_quote( $v, '/' ) . '/iu', ' ', $bare );
+			}
 		}
 		foreach ( nl_drop_claims_in( $bare ) as $g ) {
 			if ( ! in_array( $g, $stated, true ) ) { $issues[] = 'claim:' . $g; }
@@ -307,9 +587,11 @@ function nl_drop_he_typo( $s ) {
 	return preg_replace( "/(?<=[\\x{05D0}-\\x{05EA}])'/u", '׳', $s );
 }
 
-/** Descriptive claims a page may make only when the broker made them. */
+/** Descriptive claims a page may make only when the broker made them. A trailing * matches every ending. */
 function nl_drop_claim_groups() {
-	return array(
+	static $g = null;
+	if ( $g !== null ) { return $g; }
+	$g = array(
 		'sea'      => array( 'ים', 'לים', 'הים', 'מהים', 'בים', 'וים', 'sea', 'seafront', 'beach', 'חוף', 'לחוף', 'החוף' ),
 		'view'     => array( 'נוף', 'לנוף', 'הנוף', 'ונוף', 'נופים', 'view', 'views' ),
 		'park'     => array( 'פארק', 'לפארק', 'הפארק', 'park' ),
@@ -336,7 +618,37 @@ function nl_drop_claim_groups() {
 		'family'   => array( 'משפחה', 'משפחות', 'family', 'families' ),
 		'light'    => array( 'אור', 'שמש', 'sun', 'sunny', 'daylight' ),
 	);
+	$more = array(
+		'sea'      => array( 'море', 'моря', 'морю', 'морем', 'морск*', 'пляж*', 'побережь*', 'mer', 'plage*', 'balnéaire*', 'littoral' ),
+		'view'     => array( 'вид', 'вида', 'видом', 'виды', 'видами', 'панорам*', 'vue', 'vues', 'panoram*' ),
+		'park'     => array( 'парк', 'парка', 'парку', 'парком', 'parc', 'parcs' ),
+		'quiet'    => array( 'тих*', 'спокойн*', 'тишин*', 'calme*', 'tranquill*', 'paisible*' ),
+		'bright'   => array( 'светл*', 'солнечн*', 'lumineu*', 'ensoleillé*' ),
+		'new'      => array( 'новы*', 'нова*', 'ново*', 'neuf', 'neufs', 'neuve*', 'nouve*' ),
+		'reno'     => array( 'отремонтирован*', 'ремонт*', 'rénov*', 'refait*' ),
+		'boutique' => array( 'бутик*' ),
+		'design'   => array( 'дизайн*', 'conçu*' ),
+		'luxury'   => array( 'роскош*', 'люкс*', 'элитн*', 'престижн*', 'luxe', 'luxueu*', 'prestig*', 'haut de gamme' ),
+		'spacious' => array( 'просторн*', 'spacieu*', 'vaste*', 'généreu*' ),
+		'garden'   => array( 'сад', 'сада', 'саду', 'садом', 'jardin*' ),
+		'pool'     => array( 'бассейн*', 'piscine*' ),
+		'gym'      => array( 'тренаж*', 'фитнес*', 'salle de sport' ),
+		'guard'    => array( 'охран*', 'консьерж*', 'лобби', 'gardien*', 'concierg*', 'vigile*' ),
+		'walk'     => array( 'пешком', 'пешей', 'минут*', 'à pied' ),
+		'school'   => array( 'школ*', 'детсад*', 'école*', 'crèche*', 'jardindenfants' ),
+		'transit'  => array( 'поезд*', 'железнодорож*', 'метро', 'автобус*', 'трамва*', 'gare*', 'métro*', 'tram*' ),
+		'size'     => array( 'больш*', 'огромн*', 'широк*', 'грандиозн*', 'grand', 'grande', 'grands', 'grandes', 'immense*', 'large*' ),
+		'quality'  => array( 'качествен*', 'качеств*', 'отделк*', 'qualit*', 'finition*' ),
+		'advanced' => array( 'современн*', 'передов*', 'продвинут*', 'инновацион*', 'moderne*', 'avancé*', 'innov*', 'dernier cri' ),
+		'living'   => array( 'гостин*', 'салон*', 'salon*', 'séjour*' ),
+		'control'  => array( 'управлен*', 'контрол*', 'централизован*', 'contrôl*', 'centralis*' ),
+		'family'   => array( 'семья', 'семьи', 'семье', 'семью', 'семьёй', 'семьей', 'семей', 'семьям*', 'семейн*', 'famil*' ),
+		'light'    => array( 'свет', 'света', 'светом', 'солнц*', 'lumière*', 'soleil*' ),
+	);
+	foreach ( $more as $k => $list ) { $g[ $k ] = array_merge( $g[ $k ], $list ); }
+	return $g;
 }
+
 
 function nl_drop_words( $s ) {
 	$s = nl_drop_norm( $s );
@@ -345,6 +657,8 @@ function nl_drop_words( $s ) {
 }
 
 function nl_drop_claims_in( $s ) {
+	// a kindergarten is a school claim, not a garden: детский сад, jardin d'enfants
+	$s     = preg_replace( array( '/детск\p{L}*\s+сад\p{L}*/iu', "/jardins?\\s+d[’']\\s*enfants/iu" ), array( ' детсад ', ' jardindenfants ' ), (string) $s );
 	$words = array();
 	foreach ( nl_drop_words( $s ) as $w ) {
 		$words[ $w ] = true;
@@ -354,11 +668,20 @@ function nl_drop_claims_in( $s ) {
 			$words[ preg_replace( '/^[\x{05D5}\x{05D4}\x{05D1}\x{05DC}\x{05DE}\x{05E9}\x{05DB}]{2}/u', '', $w ) ] = true;
 		}
 	}
-	$low   = ' ' . implode( ' ', array_keys( $words ) ) . ' ';
+	$keys  = array_keys( $words );
+	$low   = ' ' . implode( ' ', $keys ) . ' ';
 	$found = array();
 	foreach ( nl_drop_claim_groups() as $g => $list ) {
 		foreach ( $list as $w ) {
-			$hit = strpos( $w, ' ' ) !== false ? strpos( $low, ' ' . $w . ' ' ) !== false : isset( $words[ $w ] );
+			if ( strpos( $w, ' ' ) !== false ) {
+				$hit = strpos( $low, ' ' . rtrim( $w, '*' ) . ' ' ) !== false;
+			} elseif ( substr( $w, -1 ) === '*' ) {
+				$core = substr( $w, 0, -1 );
+				$hit  = false;
+				foreach ( $keys as $k ) { if ( strpos( (string) $k, $core ) === 0 ) { $hit = true; break; } }
+			} else {
+				$hit = isset( $words[ $w ] );
+			}
 			if ( $hit ) { $found[ $g ] = true; break; }
 		}
 	}
@@ -371,7 +694,7 @@ function nl_drop_allowed_numbers( $f, $text ) {
 		if ( isset( $f[ $k ] ) && $f[ $k ] !== null && $f[ $k ] !== '' ) { $a[] = (float) $f[ $k ]; }
 	}
 	if ( ! empty( $f['price'] ) && ! empty( $f['size_sqm'] ) ) { $a[] = round( (float) $f['price'] / (float) $f['size_sqm'] ); }
-	return $a;
+	return array_merge( $a, nl_drop_date_parts( ( $f['entry_he'] ?? '' ) . ' ' . ( $f['entry_en'] ?? '' ) ) );
 }
 
 /* =====================================================================================================
@@ -418,6 +741,7 @@ function nl_drop_llm_json( $system, $user, $max_tokens, &$err = null ) {
 			if ( ( $blk['type'] ?? '' ) === 'text' ) { $txt .= (string) $blk['text']; }
 		}
 		if ( function_exists( 'nadlan_ai_record_usage' ) ) { nadlan_ai_record_usage( 'anthropic', $model, (array) ( $data['usage'] ?? array() ), 0, 'ok' ); }
+		nl_drop_usage_add( $model, $data['usage']['input_tokens'] ?? 0, $data['usage']['output_tokens'] ?? 0 );
 		$j = nl_drop_parse_json( $txt );
 		if ( ! is_array( $j ) ) { $err = 'badjson'; }
 		return $j;
@@ -445,6 +769,7 @@ function nl_drop_llm_json( $system, $user, $max_tokens, &$err = null ) {
 		$data = json_decode( wp_remote_retrieve_body( $resp ), true );
 		if ( $code >= 200 && $code < 300 && is_array( $data ) ) {
 			if ( function_exists( 'nadlan_ai_record_usage' ) ) { nadlan_ai_record_usage( 'openai', $model, (array) ( $data['usage'] ?? array() ), 0, 'ok' ); }
+			nl_drop_usage_add( $model, $data['usage']['prompt_tokens'] ?? 0, $data['usage']['completion_tokens'] ?? 0 );
 			$j = nl_drop_parse_json( (string) ( $data['choices'][0]['message']['content'] ?? '' ) );
 			if ( is_array( $j ) ) { return $j; }
 			$err = 'badjson';
@@ -568,9 +893,10 @@ function nl_drop_clean_facts( $j, $text ) {
 		}
 		$f[ $k ] = $list;
 	}
+	$dates = array_merge( $nums, nl_drop_date_parts( (string) $f['entry_he'] ) );
 	foreach ( array( 'notes_he', 'notes_en', 'entry_he', 'entry_en' ) as $k ) {
 		if ( $f[ $k ] === null ) { continue; }
-		foreach ( nl_drop_nums_in_copy( $f[ $k ] ) as $n ) { if ( ! nl_drop_num_ok( $n, $nums ) ) { $f[ $k ] = null; break; } }
+		foreach ( nl_drop_nums_in_copy( $f[ $k ] ) as $n ) { if ( ! nl_drop_num_ok( $n, strpos( $k, 'entry' ) === 0 ? $dates : $nums ) ) { $f[ $k ] = null; break; } }
 	}
 	return $f;
 }
@@ -650,10 +976,7 @@ function nl_drop_write( $f, $text, $b, &$err = null ) {
 function nl_drop_finish_copy( $j, $f, $text ) {
 	$allowed = nl_drop_allowed_numbers( $f, $text );
 	$names   = array_values( array_filter( array( $f['area_he'] ?? '', $f['area_en'] ?? '', $f['city_he'] ?? '', $f['city_en'] ?? '' ) ) );
-	$msg     = (string) $text;
-	foreach ( $names as $nm ) { $msg = str_ireplace( $nm, ' ', $msg ); }
-	$stated  = nl_drop_claims_in( $msg . ' ' . implode( ' ', array_merge( (array) ( $f['features_he'] ?? array() ), (array) ( $f['features_en'] ?? array() ) ) ) . ' ' . ( $f['view_he'] ?? '' ) . ' ' . ( $f['view_en'] ?? '' ) . ' ' . ( $f['notes_he'] ?? '' ) . ' ' . ( $f['notes_en'] ?? '' ) );
-	if ( ! empty( $f['garden_sqm'] ) ) { $stated[] = 'garden'; }
+	$stated  = nl_drop_stated( $f, $text );
 	$out     = array();
 	$caps    = array( 'title' => 90, 'card_title' => 70, 'dek' => 460, 'story_h2' => 80, 'seo_title' => 90, 'seo_desc' => 200 );
 	foreach ( array( 'he', 'en' ) as $lang ) {
@@ -793,6 +1116,223 @@ function nl_drop_tpl( $f, $lang ) {
 }
 
 /* =====================================================================================================
+ * Step 3 (brokers with Russian or French): the checked English page, translated, and checked again
+ * ===================================================================================================== */
+
+/** A per-language name or date the translation step added: area_ru, city_fr, entry_ru. English is the fallback. */
+function nl_drop_fx( $f, $k, $lang ) {
+	$lang = nl_drop_L( $lang );
+	$v    = isset( $f[ $k . '_' . $lang ] ) ? (string) $f[ $k . '_' . $lang ] : '';
+	if ( $v === '' && $lang !== 'he' ) { $v = isset( $f[ $k . '_en' ] ) ? (string) $f[ $k . '_en' ] : ''; }
+	return $v;
+}
+
+/** The claims the broker made: in the message, the features, the view, the notes, and the condition. */
+function nl_drop_stated( $f, $text ) {
+	$msg = (string) $text;
+	foreach ( array( $f['area_he'] ?? '', $f['area_en'] ?? '', $f['city_he'] ?? '', $f['city_en'] ?? '' ) as $nm ) {
+		if ( $nm !== '' && $nm !== null ) { $msg = str_ireplace( (string) $nm, ' ', $msg ); }
+	}
+	$stated = nl_drop_claims_in( $msg . ' ' . implode( ' ', array_merge( (array) ( $f['features_he'] ?? array() ), (array) ( $f['features_en'] ?? array() ) ) ) . ' ' . ( $f['view_he'] ?? '' ) . ' ' . ( $f['view_en'] ?? '' ) . ' ' . ( $f['notes_he'] ?? '' ) . ' ' . ( $f['notes_en'] ?? '' ) );
+	if ( ! empty( $f['garden_sqm'] ) ) { $stated[] = 'garden'; }
+	if ( in_array( $f['condition'] ?? '', array( 'renovated', 'needs_renovation' ), true ) ) { $stated[] = 'reno'; }
+	if ( ( $f['condition'] ?? '' ) === 'new' ) { $stated[] = 'new'; }
+	return array_values( array_unique( $stated ) );
+}
+
+function nl_drop_translate_prompt() {
+	return <<<'NLPROMPT'
+You translate the listing page of ONE property on the website of an Israeli real-estate broker, for Russian-speaking and French-speaking buyers and tenants. You receive EN (the approved English page, already checked against the broker's words), FACTS, and LANGS (the languages to write). Return ONLY a JSON object with one key per language in LANGS ("ru", "fr"), each with exactly these keys:
+title, card_title, dek, story_h2, story, features, chips, card_hi, seo_title, seo_desc, area, city, entry.
+
+Hard rules. A field that breaks one is thrown away:
+1. Translate faithfully. Add nothing: no view, direction, floor, facility, distance, year, material, adjective or number that is not in EN.
+2. Keep the token {{PRICE}} exactly where EN has it. Never write a price or an amount of money.
+3. No exclamation marks. No long dashes; use a comma or a colon. No hype. Russian: never уникальный, мечта, идеальный, потрясающий, шикарный, невероятный, сказочный. French: never unique, rêve, parfait, exceptionnel, magnifique, sublime, incroyable, coup de cœur, opportunité.
+4. Numbers as digits, the same numbers as EN. Russian and French write decimals with a comma (4,5) and group thousands with a space (1 200).
+5. Never mention the broker, a licence, a listing site, a portal or a source.
+6. Same structure as EN: story is an array of the same paragraphs, features an array of [bold line, second line] pairs (keep "" where EN has ""), chips and card_hi arrays of the same length.
+7. area and city: the usual name of FACTS.area_en and FACTS.city_en in that language (Russian: Тель-Авив, Герцлия-Питуах, Рамат-Авив, Нофей Ям, Цукей Авив; French: Tel Aviv, Herzliya Pituah, Ramat Aviv, Nofei Yam, Tsoukei Aviv), or "" when FACTS has none. entry: FACTS.entry_en in that language, or "".
+
+Vocabulary:
+- Russian: комнаты (the Israeli count, the living room included), м², этаж 5 из 8, балкон, мамад (защищённая комната), кладовая, парковка, лифт, въезд. Polite вы.
+- French: pièces (the living room counts), m², 5e étage sur 8, balcon, mamad (pièce sécurisée), cave, parking, ascenseur, entrée dans les lieux. Vouvoiement.
+- title: max 60 characters. card_title: max 45 characters, no area. seo_title: max 65 characters with the type or rooms, the deal (продажа / аренда; à vendre / à louer) and the area. seo_desc: max 155 characters.
+Register: calm and precise, the way a top broker writes to a private client. Prefer the fact to the adjective.
+NLPROMPT;
+}
+
+function nl_drop_translate( $copy, $f, $text, $langs, &$err = null ) {
+	$langs = array_values( array_intersect( array( 'ru', 'fr' ), (array) $langs ) );
+	if ( ! $langs ) { return array( 'copy' => array(), 'names' => array() ); }
+	$src = array(
+		'LANGS' => $langs,
+		'FACTS' => array(
+			'listing_type'  => $f['listing_type'] ?? null,
+			'property_type' => $f['property_type'] ?? null,
+			'area_en'       => $f['area_en'] ?? null,
+			'city_en'       => $f['city_en'] ?? null,
+			'entry_en'      => $f['entry_en'] ?? null,
+		),
+		'EN'    => isset( $copy['en'] ) ? $copy['en'] : array(),
+	);
+	$j = nl_drop_llm_json( nl_drop_translate_prompt(), wp_json_encode( $src, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ), 1800 * count( $langs ), $err );
+	return nl_drop_finish_tr( is_array( $j ) ? $j : array(), $f, $text, $langs );
+}
+
+/** The price, however the model wrote it (4 200 000, 4,200,000, 4200000 ₪), becomes the live token. */
+function nl_drop_price_token( $s, $f ) {
+	if ( empty( $f['price'] ) ) { return $s; }
+	$groups = explode( ',', number_format( (float) $f['price'], 0, '.', ',' ) );
+	$num    = implode( '[\s\x{00A0}\x{202F},.]?', array_map( function ( $g ) { return preg_quote( $g, '/' ); }, $groups ) );
+	return (string) preg_replace( '/(?:NIS\s*|₪\s*)?(?<![\d,.])' . $num . '(?![\d]|[,.]\d)(?:[\s\x{00A0}\x{202F}]*(?:ש״ח|ש"ח|₪|шекел\p{L}*|шек\.?|NIS|ILS|shekels?))?/u', '{{PRICE}}', (string) $s );
+}
+
+function nl_drop_finish_tr( $j, $f, $text, $langs ) {
+	$allowed = nl_drop_allowed_numbers( $f, $text );
+	$stated  = nl_drop_stated( $f, $text );
+	$caps    = array( 'title' => 90, 'card_title' => 70, 'dek' => 460, 'story_h2' => 80, 'seo_title' => 90, 'seo_desc' => 200 );
+	$cut     = function ( $s, $n ) { return function_exists( 'mb_substr' ) ? mb_substr( $s, 0, $n ) : substr( $s, 0, $n ); };
+	$out     = array( 'copy' => array(), 'names' => array(), 'plain' => array() );
+	foreach ( $langs as $lang ) {
+		$src = isset( $j[ $lang ] ) && is_array( $j[ $lang ] ) ? $j[ $lang ] : array();
+		// the names come first: they are kept out of the claim check (Парк Цамерет is a place, not a park claim)
+		$nm = array();
+		foreach ( array( 'area' => 60, 'city' => 60, 'entry' => 60 ) as $k => $max ) {
+			$v    = $cut( trim( wp_strip_all_tags( (string) ( $src[ $k ] ?? '' ) ) ), $max );
+			$base = (string) ( $f[ $k . '_en' ] ?? '' );
+			if ( $v === '' || $base === '' || nl_drop_banned_hits( $v, $lang ) || preg_match( '/https?:|www\.|[{}]/i', $v ) ) {
+				$v = '';
+			} elseif ( $k !== 'entry' && preg_match( '/\d/', $v ) && ! preg_match( '/\d/', $base ) ) {
+				$v = '';
+			} elseif ( $k === 'entry' ) {
+				foreach ( nl_drop_nums_in_copy( $v, $lang ) as $n ) { if ( ! nl_drop_num_ok( $n, $allowed ) ) { $v = ''; break; } }
+			}
+			$nm[ $k ] = $v;
+		}
+		$out['names'][ $lang ] = $nm;
+		$fl = $f;
+		foreach ( $nm as $k => $v ) { if ( $v !== '' ) { $fl[ $k . '_' . $lang ] = $v; } }
+		$names = array_values( array_filter( array( $f['area_he'] ?? '', $f['area_en'] ?? '', $f['city_he'] ?? '', $f['city_en'] ?? '', $nm['area'], $nm['city'] ) ) );
+		$tpl   = nl_drop_tpl_x( $fl, $lang );
+		$fix   = function ( $s ) use ( $f ) {
+			$s = nl_drop_price_token( trim( wp_strip_all_tags( (string) $s ) ), $f );
+			return trim( (string) preg_replace( '/[ \t\r\n]+/u', ' ', $s ) );
+		};
+		$ok    = function ( $s ) use ( $lang, $allowed, $stated, $names ) { return $s !== '' && ! nl_drop_gate_str( $s, $lang, $allowed, $stated, $names ); };
+		$c     = array();
+		$bad   = 0;
+		foreach ( $caps as $k => $max ) {
+			$v = $cut( $fix( $src[ $k ] ?? '' ), $max );
+			if ( $ok( $v ) ) { $c[ $k ] = $v; } else { $c[ $k ] = $tpl[ $k ]; $bad++; }
+		}
+		$story = array();
+		foreach ( array_slice( (array) ( $src['story'] ?? array() ), 0, 3 ) as $para ) {
+			$para = $fix( $para );
+			if ( $ok( $para ) ) { $story[] = $cut( $para, 800 ); }
+		}
+		$c['story'] = $story ? $story : $tpl['story'];
+		$feat = array();
+		foreach ( array_slice( (array) ( $src['features'] ?? array() ), 0, 6 ) as $pair ) {
+			$pair = array_values( (array) $pair );
+			$bo   = $fix( $pair[0] ?? '' );
+			$sm   = $fix( $pair[1] ?? '' );
+			if ( $sm !== '' && ! $ok( $sm ) ) { $sm = ''; }
+			if ( $ok( $bo ) ) { $feat[] = array( $bo, $sm ); }
+		}
+		$c['features'] = count( $feat ) >= 3 ? $feat : $tpl['features'];
+		foreach ( array( 'chips' => array( 2, 40 ), 'card_hi' => array( 3, 60 ) ) as $k => $lim ) {
+			$list = array();
+			foreach ( array_slice( (array) ( $src[ $k ] ?? array() ), 0, $lim[0] ) as $s ) {
+				$s = $fix( $s );
+				if ( $ok( $s ) ) { $list[] = $cut( $s, $lim[1] ); }
+			}
+			$c[ $k ] = $list ? $list : $tpl[ $k ];
+		}
+		if ( $bad >= 4 || ! $src ) { $c = $tpl; $out['plain'][] = $lang; }
+		$out['copy'][ $lang ] = $c;
+	}
+	return $out;
+}
+
+/** The plain Russian or French page, from the structured facts only (the free-text features exist in Hebrew and English). */
+function nl_drop_tpl_x( $f, $lang ) {
+	$lang  = $lang === 'fr' ? 'fr' : 'ru';
+	$ru    = $lang === 'ru';
+	$deal  = ( $f['listing_type'] ?? '' ) === 'rent' ? 'rent' : 'sale';
+	$area  = nl_drop_fx( $f, 'area', $lang );
+	$city  = nl_drop_fx( $f, 'city', $lang );
+	if ( $area === '' ) { $area = $city; }
+	$type  = ! empty( $f['property_type'] ) ? $f['property_type'] : 'apartment';
+	$rooms = ! empty( $f['rooms'] ) ? nl_drop_fmt_num( $f['rooms'], $lang ) : '';
+	$rw    = ! empty( $f['rooms'] ) ? nl_drop_rooms_word( $f['rooms'], $lang ) : '';
+	$tl    = nl_drop_type_label( $type, $lang );
+	$sqm   = nl_drop_t( $lang, 'sqm' );
+	$n     = function ( $x ) use ( $lang ) { return nl_drop_fmt_int( $x, $lang ); };
+	$lc    = function ( $s ) { return function_exists( 'mb_strtolower' ) ? mb_strtolower( mb_substr( $s, 0, 1 ) ) . mb_substr( $s, 1 ) : $s; };
+	if ( $rooms === '' ) { $head = $tl; }
+	elseif ( $ru ) { $head = $type === 'apartment' ? $rooms . '-комнатная квартира' : $tl . ', ' . $rooms . ' ' . $rw; }
+	else { $head = $tl . ' ' . $rooms . ' ' . $rw; }
+	$rare  = '';
+	if ( ! empty( $f['balcony_sqm'] ) ) { $rare = $ru ? ' с балконом ' . $n( $f['balcony_sqm'] ) . ' ' . $sqm : ' avec balcon de ' . $n( $f['balcony_sqm'] ) . ' ' . $sqm; }
+	elseif ( ! empty( $f['garden_sqm'] ) && $type !== 'garden' ) { $rare = $ru ? ' с садом ' . $n( $f['garden_sqm'] ) . ' ' . $sqm : ' avec jardin de ' . $n( $f['garden_sqm'] ) . ' ' . $sqm; }
+	$bits  = array();
+	if ( ! empty( $f['size_sqm'] ) ) { $bits[] = $rooms !== '' ? ( $ru ? $rooms . ' ' . $rw . ', ' . $n( $f['size_sqm'] ) . ' ' . $sqm : $rooms . ' ' . $rw . ' sur ' . $n( $f['size_sqm'] ) . ' ' . $sqm ) : $n( $f['size_sqm'] ) . ' ' . $sqm; }
+	elseif ( $rooms !== '' ) { $bits[] = $rooms . ' ' . $rw; }
+	if ( ! empty( $f['balcony_sqm'] ) ) { $bits[] = $ru ? 'балкон ' . $n( $f['balcony_sqm'] ) . ' ' . $sqm : 'balcon de ' . $n( $f['balcony_sqm'] ) . ' ' . $sqm; }
+	$floor = '';
+	if ( isset( $f['floor'] ) && $f['floor'] !== null ) {
+		if ( (int) $f['floor'] === 0 ) { $floor = $ru ? 'партер' : 'rez-de-chaussée'; }
+		else { $floor = $ru ? 'этаж ' . (int) $f['floor'] . ( ! empty( $f['total_floors'] ) ? ' из ' . (int) $f['total_floors'] : '' ) : nl_drop_fr_floor( $f['floor'] ) . ' étage' . ( ! empty( $f['total_floors'] ) ? ' sur ' . (int) $f['total_floors'] : '' ); }
+		$bits[] = $floor;
+	}
+	$park = '';
+	if ( ! empty( $f['parking_count'] ) && $f['parking_count'] > 1 ) { $park = (int) $f['parking_count'] . ' ' . nl_drop_parking_word( $f['parking_count'], $lang ); }
+	elseif ( ! empty( $f['parking'] ) || ! empty( $f['parking_count'] ) ) { $park = $ru ? 'парковка' : 'parking'; }
+	if ( $park !== '' ) { $bits[] = $park; }
+	if ( ! empty( $f['storage'] ) ) { $bits[] = $ru ? 'кладовая' : 'cave'; }
+	if ( ! empty( $f['protected_room'] ) ) { $bits[] = 'мамад'; if ( ! $ru ) { array_pop( $bits ); $bits[] = 'mamad'; } }
+	$place = trim( $area . ( $city !== '' && $city !== $area ? ', ' . $city : '' ) );
+	$dek   = ( $place !== '' ? $place . ( $ru ? ': ' : ' : ' ) : '' ) . implode( ', ', $bits ) . '.';
+	if ( ! empty( $f['price'] ) ) { $dek .= ' {{PRICE}}' . ( $deal === 'rent' ? ( $ru ? ' в месяц' : ' par mois' ) : '' ) . '.'; }
+	$story = array( ( $place !== '' ? $place . ( $ru ? ': ' : ' : ' ) : '' ) . implode( ', ', $bits ) . '.' );
+	$entry = nl_drop_fx( $f, 'entry', $lang );
+	$more  = array();
+	if ( ! empty( $f['condition'] ) ) { $more[] = nl_drop_t( $lang, 'f_condition' ) . ( $ru ? ': ' : ' : ' ) . $lc( nl_drop_t( $lang, 'c_' . $f['condition'] ) ); }
+	if ( $entry !== '' ) { $more[] = nl_drop_t( $lang, 'f_entry' ) . ( $ru ? ': ' : ' : ' ) . $entry; }
+	if ( ! empty( $f['price'] ) ) { $more[] = nl_drop_t( $lang, 'price_' . $deal ) . ( $ru ? ': ' : ' : ' ) . '{{PRICE}}'; }
+	if ( $more ) { $story[] = implode( '. ', $more ) . '.'; }
+	$feat = array();
+	if ( ! empty( $f['size_sqm'] ) ) { $feat[] = array( $n( $f['size_sqm'] ) . ' ' . $sqm, $rooms !== '' ? $rooms . ' ' . $rw : '' ); }
+	if ( ! empty( $f['balcony_sqm'] ) ) { $feat[] = array( $ru ? 'Балкон ' . $n( $f['balcony_sqm'] ) . ' ' . $sqm : 'Balcon de ' . $n( $f['balcony_sqm'] ) . ' ' . $sqm, '' ); }
+	if ( $floor !== '' ) { $feat[] = array( function_exists( 'mb_strtoupper' ) ? mb_strtoupper( mb_substr( $floor, 0, 1 ) ) . mb_substr( $floor, 1 ) : $floor, ! empty( $f['elevator'] ) ? ( $ru ? 'с лифтом' : 'avec ascenseur' ) : '' ); }
+	if ( $park !== '' || ! empty( $f['storage'] ) ) {
+		$ps = trim( ( $park !== '' ? $park : '' ) . ( ! empty( $f['storage'] ) ? ( $park !== '' ? ( $ru ? ' и кладовая' : ' et cave' ) : ( $ru ? 'кладовая' : 'cave' ) ) : '' ) );
+		$feat[] = array( function_exists( 'mb_strtoupper' ) ? mb_strtoupper( mb_substr( $ps, 0, 1 ) ) . mb_substr( $ps, 1 ) : $ps, '' );
+	}
+	if ( ! empty( $f['protected_room'] ) ) { $feat[] = array( $ru ? 'Мамад' : 'Mamad', $ru ? 'защищённая комната в квартире' : 'pièce sécurisée dans l’appartement' ); }
+	if ( $entry !== '' ) { $feat[] = array( nl_drop_t( $lang, 'f_entry' ) . ( $ru ? ': ' : ' : ' ) . $entry, '' ); }
+	$hi = array();
+	if ( ! empty( $f['storage'] ) ) { $hi[] = $ru ? 'Кладовая' : 'Cave'; }
+	if ( ! empty( $f['elevator'] ) ) { $hi[] = $ru ? 'Лифт' : 'Ascenseur'; }
+	if ( $park !== '' ) { $hi[] = function_exists( 'mb_strtoupper' ) ? mb_strtoupper( mb_substr( $park, 0, 1 ) ) . mb_substr( $park, 1 ) : $park; }
+	$chips = array_values( array_filter( array( ! empty( $f['size_sqm'] ) ? $n( $f['size_sqm'] ) . ' ' . $sqm : '', $entry !== '' ? nl_drop_t( $lang, 'f_entry' ) . ( $ru ? ': ' : ' : ' ) . $entry : ( ! empty( $f['protected_room'] ) ? ( $ru ? 'Мамад' : 'Mamad' ) : '' ) ) ) );
+	$seo_t = $ru ? nl_drop_t( 'ru', $deal ) . ': ' . $lc( $head ) . ( $area !== '' ? ', ' . $area : '' ) : $head . ( $deal === 'rent' ? ' à louer' : ' à vendre' ) . ( $area !== '' ? ', ' . $area : '' );
+	return array(
+		'title'      => $head . $rare . ( $area !== '' ? ', ' . $area : '' ),
+		'card_title' => $head . $rare,
+		'dek'        => $dek,
+		'story_h2'   => $head . ( $area !== '' ? ( $ru ? ', ' : ', ' ) . $area : '' ),
+		'story'      => $story,
+		'features'   => array_slice( $feat, 0, 6 ),
+		'chips'      => array_slice( $chips, 0, 2 ),
+		'card_hi'    => array_slice( $hi, 0, 3 ),
+		'seo_title'  => $seo_t,
+		'seo_desc'   => function_exists( 'mb_substr' ) ? mb_substr( $dek, 0, 155 ) : $dek,
+	);
+}
+
+/* =====================================================================================================
  * Latin slug: area, type, rooms, deal. No word twice. Never Hebrew.
  * ===================================================================================================== */
 function nl_drop_slug( $f, $b ) {
@@ -822,7 +1362,11 @@ function nl_drop_slug( $f, $b ) {
 	$base = $slug;
 	for ( $i = 2; $i < 60; $i++ ) {
 		$taken = get_page_by_path( $slug, OBJECT, 'nadlan_property' );
-		if ( ! $taken && ! empty( $b['site_en'] ) ) { $taken = get_page_by_path( get_page_uri( (int) $b['site_en'] ) . '/' . $slug, OBJECT, 'page' ); }
+		foreach ( array( 'en', 'ru', 'fr' ) as $l ) {
+			if ( $taken ) { break; }
+			$sid = (int) ( $b[ 'site_' . $l ] ?? 0 );
+			if ( $sid ) { $taken = get_page_by_path( get_page_uri( $sid ) . '/' . $slug, OBJECT, 'page' ); }
+		}
 		if ( ! $taken ) { break; }
 		$slug = $base . '-' . $i;
 	}
@@ -1107,49 +1651,99 @@ function nl_drop_nums_html( $s ) {
 
 function nl_drop_wa_link( $b, $lang, $title ) {
 	if ( empty( $b['wa'] ) ) { return ''; }
-	$name = $lang === 'en' ? $b['name_en'] : $b['name_he'];
-	$txt  = sprintf( nl_drop_t( $lang, 'wa_text' ), $name, $title );
+	$txt = sprintf( nl_drop_t( $lang, 'wa_text' ), nl_drop_name( $b, $lang ), $title );
 	return 'https://wa.me/' . rawurlencode( $b['wa'] ) . '?text=' . rawurlencode( $txt );
 }
 
+/** Reg. 19(a): name, broker status and licence number on every marketing page. Owners are not brokers. */
 function nl_drop_licence_line( $b, $lang ) {
-	$brand = $lang === 'en' ? $b['brand_en'] : $b['brand_he'];
+	if ( ( $b['kind'] ?? 'broker' ) === 'owner' ) { return ''; }
+	$brand = nl_drop_brand( $b, $lang );
 	$lic   = $b['license'] !== '' ? nl_drop_t( $lang, $b['female'] ? 'lic_f' : 'lic_m' ) . ' ' . $b['license'] : '';
 	return trim( implode( ' · ', array_filter( array( $brand, $lic ) ) ) );
 }
 
+/** A date each reader reads without the site's Hebrew month names. */
+function nl_drop_date( $ts, $lang ) {
+	$lang = nl_drop_L( $lang );
+	if ( $lang === 'en' ) {
+		$mon = array( 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' );
+		return wp_date( 'j', $ts ) . ' ' . $mon[ (int) wp_date( 'n', $ts ) - 1 ] . ' ' . wp_date( 'Y', $ts );
+	}
+	if ( $lang === 'ru' ) { return wp_date( 'd.m.Y', $ts ); }
+	if ( $lang === 'fr' ) { return wp_date( 'd/m/Y', $ts ); }
+	return wp_date( 'j.n.Y', $ts );
+}
+
+/** Rooms, the floor and parking as the facts row and the cards print them, number first. */
+function nl_drop_rooms_html( $n, $lang, $wrap ) {
+	$lang = nl_drop_L( $lang );
+	$num  = $wrap( nl_drop_fmt_num( $n, $lang ) );
+	if ( $lang === 'he' || $lang === 'en' ) { return sprintf( esc_html( nl_drop_t( $lang, 'rooms_n' ) ), $num ); }
+	return $num . ' ' . esc_html( nl_drop_rooms_word( $n, $lang ) );
+}
+
+function nl_drop_floor_html( $f, $lang, $wrap ) {
+	$lang = nl_drop_L( $lang );
+	if ( (int) $f['floor'] === 0 ) { return esc_html( nl_drop_t( $lang, 'ground' ) ); }
+	if ( $lang === 'fr' ) {
+		$fl = $wrap( nl_drop_fr_floor( $f['floor'] ) );
+		return ! empty( $f['total_floors'] ) ? $fl . ' étage sur ' . $wrap( (int) $f['total_floors'] ) : $fl . ' étage';
+	}
+	return ! empty( $f['total_floors'] ) ? sprintf( esc_html( nl_drop_t( $lang, 'floor_of' ) ), $wrap( (int) $f['floor'] ), $wrap( (int) $f['total_floors'] ) ) : sprintf( esc_html( nl_drop_t( $lang, 'floor_n' ) ), $wrap( (int) $f['floor'] ) );
+}
+
+function nl_drop_parking_txt( $f, $lang ) {
+	$lang = nl_drop_L( $lang );
+	if ( ! empty( $f['parking_count'] ) && $f['parking_count'] > 1 ) {
+		if ( $lang === 'he' || $lang === 'en' ) { return sprintf( nl_drop_t( $lang, 'parking_n' ), (int) $f['parking_count'] ); }
+		return (int) $f['parking_count'] . ' ' . nl_drop_parking_word( $f['parking_count'], $lang );
+	}
+	return nl_drop_t( $lang, 'parking_1' );
+}
+
+
 /**
- * @param array $d id, facts, copy, photos[{id,url,w,h,alt}], broker, url, alt_url, page_id, date
+ * @param array $d id, facts, copy, photos[{id,url,w,h}], broker, url, alts (lang => url of the other versions), page_id, date
  */
 function nl_drop_listing_html( $d, $lang ) {
-	$he    = $lang !== 'en';
+	$lang  = nl_drop_L( $lang );
+	$he    = $lang === 'he';
 	$f     = $d['facts'];
-	$c     = $d['copy'][ $he ? 'he' : 'en' ];
+	$c     = isset( $d['copy'][ $lang ] ) ? $d['copy'][ $lang ] : $d['copy']['en'];
 	$b     = $d['broker'];
-	$uid   = 'd' . (int) $d['id'] . '-' . ( $he ? 'he' : 'en' );
+	$owner = ( $b['kind'] ?? 'broker' ) === 'owner';
+	$uid   = 'd' . (int) $d['id'] . '-' . $lang;
 	$deal  = ( $f['listing_type'] ?? '' ) === 'rent' ? 'rent' : 'sale';
-	$area  = $he ? ( $f['area_he'] ?: ( $f['city_he'] ?? '' ) ) : ( $f['area_en'] ?: ( $f['city_en'] ?? '' ) );
-	$city  = $he ? ( $f['city_he'] ?? '' ) : ( $f['city_en'] ?? '' );
-	$name  = $he ? $b['name_he'] : $b['name_en'];
+	$area  = $he ? ( $f['area_he'] ?: ( $f['city_he'] ?? '' ) ) : ( nl_drop_fx( $f, 'area', $lang ) !== '' ? nl_drop_fx( $f, 'area', $lang ) : nl_drop_fx( $f, 'city', $lang ) );
+	$city  = $he ? ( $f['city_he'] ?? '' ) : nl_drop_fx( $f, 'city', $lang );
+	$name  = nl_drop_name( $b, $lang );
 	$fill  = function ( $s ) use ( $f, $lang ) { return nl_drop_fill( $s, $f, $lang ); };
 	$title = $fill( $c['title'] );
-	$site  = nl_drop_site_url( $b, $he ? 'he' : 'en' );
-	$wa    = nl_drop_wa_link( $b, $he ? 'he' : 'en', $title );
+	$site  = nl_drop_site_url( $b, $lang );
+	$wa    = nl_drop_wa_link( $b, $lang, $title );
 	$tel   = $b['wa'] !== '' ? 'tel:+' . $b['wa'] : '';
 	$photos = array_values( (array) $d['photos'] );
 	$cover  = $photos ? $photos[0] : null;
 	$kick   = array( nl_drop_t( $lang, $deal ) );
-	$place = trim( $area . ( $city && $city !== $area ? ', ' . $city : '' ) );
+	$place  = trim( $area . ( $city && $city !== $area ? ', ' . $city : '' ) );
 	if ( $place !== '' ) { $kick[] = $place; }
+	$wrap   = function ( $x ) { return '<span class="nlx-num">' . esc_html( $x ) . '</span>'; };
+	$alts   = isset( $d['alts'] ) && is_array( $d['alts'] ) ? $d['alts'] : array();
+	if ( ! $alts && ! empty( $d['alt_url'] ) ) { $alts[ $he ? 'en' : 'he' ] = $d['alt_url']; }
 
-	$h = '<article class="nlx" lang="' . ( $he ? 'he' : 'en' ) . '" dir="' . ( $he ? 'rtl' : 'ltr' ) . '" id="nlx-' . esc_attr( $uid ) . '" data-listing="' . esc_attr( $uid ) . '">' . "\n" . '<div class="nlx-wrap">' . "\n";
+	$h = '<article class="nlx" lang="' . $lang . '" dir="' . ( $he ? 'rtl' : 'ltr' ) . '" id="nlx-' . esc_attr( $uid ) . '" data-listing="' . esc_attr( $uid ) . '">' . "\n" . '<div class="nlx-wrap">' . "\n";
 	$h .= '<header class="nlx-mast">' . "\n" . '<div class="nlx-mast-copy">' . "\n";
 	$h .= '<p class="nlx-kicker">' . esc_html( implode( ' · ', $kick ) ) . '</p>' . "\n";
 	$tag = $he ? 'h2' : 'h1';
 	$h .= '<' . $tag . ' class="nlx-title">' . nl_drop_nums_html( $title ) . '</' . $tag . '>' . "\n";
 	$h .= '<p class="nlx-dek">' . nl_drop_nums_html( $fill( $c['dek'] ) ) . '</p>' . "\n";
 	$name_html = $site ? '<a href="' . esc_url( $site ) . '">' . esc_html( $name ) . '</a>' : esc_html( $name );
-	$chips     = '<span class="nlx-chip nlx-chip--sea">' . ( ! empty( $f['exclusive'] ) ? esc_html( nl_drop_t( $lang, 'exclusive' ) ) . ' · ' : '' ) . $name_html . '</span>';
+	if ( $owner ) {
+		$chips = '<span class="nlx-chip nlx-chip--sea">' . esc_html( nl_drop_t( $lang, 'owner_chip' ) ) . '</span>';
+	} else {
+		$chips = '<span class="nlx-chip nlx-chip--sea">' . ( ! empty( $f['exclusive'] ) ? esc_html( nl_drop_t( $lang, 'exclusive' ) ) . ' · ' : '' ) . $name_html . '</span>';
+	}
 	foreach ( (array) $c['chips'] as $ch ) { $chips .= '<span class="nlx-chip">' . esc_html( $fill( $ch ) ) . '</span>'; }
 	$h .= '<div class="nlx-chips">' . $chips . '</div>' . "\n" . '</div>' . "\n";
 	if ( $cover ) {
@@ -1164,21 +1758,22 @@ function nl_drop_listing_html( $d, $lang ) {
 	// facts: only what the broker wrote
 	$facts = array();
 	$sq    = nl_drop_t( $lang, 'sqm' );
-	if ( ! empty( $f['rooms'] ) ) { $facts[] = array( nl_drop_t( $lang, 'f_rooms' ), '<span class="nlx-num">' . esc_html( nl_drop_fmt_num( $f['rooms'] ) ) . '</span>' ); }
-	if ( ! empty( $f['size_sqm'] ) ) { $facts[] = array( nl_drop_t( $lang, 'f_size' ), '<span class="nlx-num">' . esc_html( nl_drop_fmt_int( $f['size_sqm'] ) ) . '</span> ' . $sq ); }
-	if ( ! empty( $f['balcony_sqm'] ) ) { $facts[] = array( nl_drop_t( $lang, 'f_balcony' ), '<span class="nlx-num">' . esc_html( nl_drop_fmt_int( $f['balcony_sqm'] ) ) . '</span> ' . $sq ); }
-	if ( ! empty( $f['garden_sqm'] ) ) { $facts[] = array( nl_drop_t( $lang, 'f_garden' ), '<span class="nlx-num">' . esc_html( nl_drop_fmt_int( $f['garden_sqm'] ) ) . '</span> ' . $sq ); }
+	if ( ! empty( $f['rooms'] ) ) { $facts[] = array( nl_drop_t( $lang, 'f_rooms' ), $wrap( nl_drop_fmt_num( $f['rooms'], $lang ) ) ); }
+	if ( ! empty( $f['size_sqm'] ) ) { $facts[] = array( nl_drop_t( $lang, 'f_size' ), $wrap( nl_drop_fmt_int( $f['size_sqm'], $lang ) ) . ' ' . $sq ); }
+	if ( ! empty( $f['balcony_sqm'] ) ) { $facts[] = array( nl_drop_t( $lang, 'f_balcony' ), $wrap( nl_drop_fmt_int( $f['balcony_sqm'], $lang ) ) . ' ' . $sq ); }
+	if ( ! empty( $f['garden_sqm'] ) ) { $facts[] = array( nl_drop_t( $lang, 'f_garden' ), $wrap( nl_drop_fmt_int( $f['garden_sqm'], $lang ) ) . ' ' . $sq ); }
 	if ( isset( $f['floor'] ) && $f['floor'] !== null ) {
-		$fl = $f['floor'] == 0 ? ( $he ? 'קרקע' : 'Ground' ) : '<span class="nlx-num">' . (int) $f['floor'] . '</span>' . ( ! empty( $f['total_floors'] ) ? ' ' . nl_drop_t( $lang, 'of' ) . ' <span class="nlx-num">' . (int) $f['total_floors'] . '</span>' : '' );
+		if ( (int) $f['floor'] === 0 ) { $fl = esc_html( nl_drop_t( $lang, 'ground' ) ); }
+		else { $fl = $wrap( $lang === 'fr' ? nl_drop_fr_floor( $f['floor'] ) : (int) $f['floor'] ) . ( ! empty( $f['total_floors'] ) ? ' ' . nl_drop_t( $lang, 'of' ) . ' ' . $wrap( (int) $f['total_floors'] ) : '' ); }
 		$facts[] = array( nl_drop_t( $lang, 'f_floor' ), $fl );
 	}
-	if ( ! empty( $f['parking'] ) ) { $facts[] = array( nl_drop_t( $lang, 'f_parking' ), ! empty( $f['parking_count'] ) ? '<span class="nlx-num">' . (int) $f['parking_count'] . '</span>' : nl_drop_t( $lang, 'yes' ) ); }
+	if ( ! empty( $f['parking'] ) ) { $facts[] = array( nl_drop_t( $lang, 'f_parking' ), ! empty( $f['parking_count'] ) ? $wrap( (int) $f['parking_count'] ) : nl_drop_t( $lang, 'yes' ) ); }
 	if ( ! empty( $f['storage'] ) ) { $facts[] = array( nl_drop_t( $lang, 'f_storage' ), nl_drop_t( $lang, 'yes' ) ); }
 	if ( ! empty( $f['protected_room'] ) ) { $facts[] = array( nl_drop_t( $lang, 'f_safe' ), nl_drop_t( $lang, 'yes' ) ); }
 	if ( ! empty( $f['elevator'] ) ) { $facts[] = array( nl_drop_t( $lang, 'f_lift' ), nl_drop_t( $lang, 'yes' ) ); }
 	if ( ! empty( $f['furnished'] ) ) { $facts[] = array( nl_drop_t( $lang, 'f_furnished' ), nl_drop_t( $lang, 'furnished' ) ); }
 	if ( ! empty( $f['condition'] ) ) { $facts[] = array( nl_drop_t( $lang, 'f_condition' ), nl_drop_t( $lang, 'c_' . $f['condition'] ) ); }
-	$entry = $he ? ( $f['entry_he'] ?? '' ) : ( $f['entry_en'] ?? '' );
+	$entry = $he ? ( $f['entry_he'] ?? '' ) : nl_drop_fx( $f, 'entry', $lang );
 	if ( $entry ) { $facts[] = array( nl_drop_t( $lang, 'f_entry' ), esc_html( $entry ) ); }
 	if ( $facts ) {
 		$h .= '<dl class="nlx-facts">' . "\n";
@@ -1188,13 +1783,15 @@ function nl_drop_listing_html( $d, $lang ) {
 
 	$gallery = array_slice( $photos, 1 );
 	$toc     = '';
-	if ( $site ) { $toc .= '<a class="nlx-home" href="' . esc_url( $site ) . '">' . esc_html( sprintf( nl_drop_t( $lang, 'site' ), $name ) ) . '</a>'; }
+	if ( $site ) { $toc .= '<a class="nlx-home" href="' . esc_url( $site ) . '">' . esc_html( nl_drop_tn( $lang, 'site', $name ) ) . '</a>'; }
 	if ( $gallery ) { $toc .= '<a href="#photos-' . esc_attr( $uid ) . '">' . esc_html( nl_drop_t( $lang, 'photos' ) ) . '</a>'; }
 	$toc .= '<a href="#home-' . esc_attr( $uid ) . '">' . esc_html( nl_drop_t( $lang, 'home' ) ) . '</a>';
-	$toc .= '<a href="#broker-' . esc_attr( $uid ) . '">' . esc_html( $he ? ( $b['female'] ? 'המתווכת' : 'המתווך' ) : 'Broker' ) . '</a>';
-	if ( ! empty( $d['alt_url'] ) ) {
-		$al   = $he ? 'en' : 'he';
-		$toc .= '<a class="nlx-lang" href="' . esc_url( $d['alt_url'] ) . '" hreflang="' . $al . '" lang="' . $al . '">' . esc_html( nl_drop_t( $lang, 'switch' ) ) . '</a>';
+	$toc .= '<a href="#broker-' . esc_attr( $uid ) . '">' . esc_html( $owner ? nl_drop_t( $lang, 'owner' ) : nl_drop_t( $lang, $b['female'] ? 'broker_tab_f' : 'broker_tab_m' ) ) . '</a>';
+	$first = true;
+	foreach ( nl_drop_langs() as $al ) {
+		if ( $al === $lang || empty( $alts[ $al ] ) ) { continue; }
+		$toc  .= '<a class="nlx-lang' . ( $first ? '' : ' nlx-lang--more' ) . '" href="' . esc_url( $alts[ $al ] ) . '" hreflang="' . $al . '" lang="' . $al . '">' . esc_html( nl_drop_lang_name( $al ) ) . '</a>';
+		$first = false;
 	}
 	$h .= '<nav class="nlx-toc" aria-label="' . esc_attr( nl_drop_t( $lang, 'toc' ) ) . '">' . $toc . '</nav>' . "\n";
 
@@ -1220,14 +1817,14 @@ function nl_drop_listing_html( $d, $lang ) {
 	}
 	$h .= '</section>' . "\n";
 
-	$eyebrow = nl_drop_t( $lang, ( ! empty( $f['exclusive'] ) ? 'broker_ex_' : 'broker_' ) . ( $b['female'] ? 'f' : 'm' ) );
-	$lic     = nl_drop_licence_line( $b, $lang );
+	$eyebrow = $owner ? nl_drop_t( $lang, 'owner' ) : nl_drop_t( $lang, ( ! empty( $f['exclusive'] ) ? 'broker_ex_' : 'broker_' ) . ( $b['female'] ? 'f' : 'm' ) );
+	$lic     = $owner ? nl_drop_t( $lang, 'owner_note' ) : nl_drop_licence_line( $b, $lang );
 	$mono    = function_exists( 'mb_substr' ) ? mb_substr( $name, 0, 1 ) : substr( $name, 0, 1 );
 	$btn_wa  = $wa ? '<a class="nlx-btn" href="' . esc_url( $wa ) . '" rel="noopener" target="_blank">' . nl_drop_icon( 'wa' ) . '<span>' . esc_html( nl_drop_t( $lang, 'cta' ) ) . '</span></a>' : '';
 	$btn_tel = $tel ? '<a class="nlx-btn nlx-btn--ghost" href="' . esc_url( $tel ) . '">' . nl_drop_icon( 'phone' ) . '<span>' . esc_html( nl_drop_t( $lang, 'call' ) . ' ' . ( $he ? $b['phone'] : $b['phone_intl'] ) ) . '</span></a>' : '';
 	$h .= '<section class="nlx-sec" id="broker-' . esc_attr( $uid ) . '">' . "\n" . '<div class="nlx-agent">' . "\n";
 	$h .= '<span class="nlx-monogram" aria-hidden="true">' . esc_html( $mono ) . '</span>' . "\n";
-	$h .= '<div><p class="nlx-eyebrow">' . esc_html( $eyebrow ) . '</p><p class="nlx-agent-name">' . $name_html . '</p><p class="nlx-small">' . nl_drop_nums_html( $lic ) . '</p></div>' . "\n";
+	$h .= '<div><p class="nlx-eyebrow">' . esc_html( $eyebrow ) . '</p><p class="nlx-agent-name">' . $name_html . '</p>' . ( $lic !== '' ? '<p class="nlx-small">' . nl_drop_nums_html( $lic ) . '</p>' : '' ) . '</div>' . "\n";
 	$h .= '<div class="nlx-cta">' . $btn_wa . $btn_tel . '</div>' . "\n" . '</div>' . "\n" . '</section>' . "\n";
 	$h .= '</div>' . "\n";
 
@@ -1245,7 +1842,7 @@ function nl_drop_listing_html( $d, $lang ) {
 		$h .= '<span class="nlx-price nlx-price--ask">' . esc_html( nl_drop_t( $lang, 'ask_' . $deal ) ) . '</span>' . "\n";
 	}
 	$h .= '<div class="nlx-cta">' . $btn_wa . ( $tel ? '<a class="nlx-btn nlx-btn--ghost" href="' . esc_url( $tel ) . '">' . nl_drop_icon( 'phone' ) . '<span>' . esc_html( nl_drop_t( $lang, 'call' ) ) . '</span></a>' : '' ) . '</div>' . "\n" . '</div>' . "\n";
-	$h .= '<div class="nlx-card nlx-agent-mini"><span class="nlx-monogram" aria-hidden="true">' . esc_html( $mono ) . '</span><div><b>' . $name_html . '</b><br><span class="nlx-muted">' . nl_drop_nums_html( $lic ) . '</span></div></div>' . "\n";
+	$h .= '<div class="nlx-card nlx-agent-mini"><span class="nlx-monogram" aria-hidden="true">' . esc_html( $mono ) . '</span><div><b>' . $name_html . '</b>' . ( $lic !== '' ? '<br><span class="nlx-muted">' . nl_drop_nums_html( $lic ) . '</span>' : '' ) . '</div></div>' . "\n";
 	$h .= '</aside>' . "\n" . '</div>' . "\n";
 	if ( $wa || $tel ) {
 		$h .= '<div class="nlx-mbar">' . ( $wa ? '<a class="nlx-btn" href="' . esc_url( $wa ) . '" rel="noopener" target="_blank">' . nl_drop_icon( 'wa' ) . '<span>' . esc_html( nl_drop_t( $lang, 'wa' ) ) . '</span></a>' : '' ) . ( $tel ? '<a class="nlx-btn nlx-btn--ghost" href="' . esc_url( $tel ) . '">' . nl_drop_icon( 'phone' ) . '<span>' . esc_html( nl_drop_t( $lang, 'call' ) ) . '</span></a>' : '' ) . '</div>' . "\n";
@@ -1260,7 +1857,7 @@ function nl_drop_listing_html( $d, $lang ) {
 			'name'        => $title,
 			'description' => $fill( $c['seo_desc'] ),
 			'url'         => (string) $d['url'],
-			'inLanguage'  => 'en',
+			'inLanguage'  => $lang,
 			'datePosted'  => (string) $d['date'],
 			'image'       => $imgs,
 			'about'       => array_filter( array(
@@ -1268,7 +1865,7 @@ function nl_drop_listing_html( $d, $lang ) {
 				'name'          => $title,
 				'numberOfRooms' => ! empty( $f['rooms'] ) ? (float) $f['rooms'] : null,
 				'floorSize'     => ! empty( $f['size_sqm'] ) ? array( '@type' => 'QuantitativeValue', 'value' => (int) $f['size_sqm'], 'unitCode' => 'MTK' ) : null,
-				'address'       => array_filter( array( '@type' => 'PostalAddress', 'addressLocality' => $f['city_en'] ?? null, 'addressRegion' => $f['area_en'] ?? null, 'addressCountry' => 'IL' ) ),
+				'address'       => array_filter( array( '@type' => 'PostalAddress', 'addressLocality' => $city !== '' ? $city : null, 'addressRegion' => $area !== '' ? $area : null, 'addressCountry' => 'IL' ) ),
 			) ),
 		);
 		if ( ! empty( $f['price'] ) ) { $node['offers'] = array( '@type' => 'Offer', 'price' => (int) $f['price'], 'priceCurrency' => 'ILS', 'availability' => 'https://schema.org/InStock' ); }
@@ -1282,7 +1879,8 @@ function nl_drop_listing_html( $d, $lang ) {
 		$css .= "\nbody.page-id-{$pid} .entry-content.is-layout-constrained>*{max-width:none!important;margin-left:auto!important;margin-right:auto!important}"
 			. "\nbody.page-id-{$pid} .wp-block-post-featured-image,body.page-id-{$pid} .yoast-breadcrumbs,body.page-id-{$pid} .nlcta-start,body.page-id-{$pid} .nlcta-wa{display:none!important}";
 	}
-	$css .= "\n.nlx .nlx-price--ask{font-size:20px;line-height:1.35}";
+	$css .= "\n.nlx .nlx-price--ask{font-size:20px;line-height:1.35}\n.nlx .nlx-toc .nlx-lang--more{margin-inline-start:0}"
+		. "\n.nlx:not([lang=\"he\"]) .nlx-agent{grid-template-columns:auto minmax(0,1fr)}\n.nlx:not([lang=\"he\"]) .nlx-agent .nlx-cta{grid-column:1/-1;justify-content:start}";
 	return "<!-- wp:html -->\n<style>\n" . $css . "\n</style>\n" . $h . "\n<!-- /wp:html -->";
 }
 
@@ -1328,26 +1926,90 @@ function nl_drop_data_for( $he_id, $b ) {
 	return array( 'facts' => $f, 'copy' => $c, 'photos' => is_array( $photos ) ? $photos : array(), 'broker' => $b );
 }
 
-/** Writes both pages from the stored facts and copy. Used on first build, and on every price change. */
-function nl_drop_render_pair( $he_id, $en_id, $b ) {
+/** The language versions of a Hebrew listing: lang => page id. The first English twin predates the map. */
+function nl_drop_twins( $he_id ) {
+	$t = json_decode( (string) get_post_meta( $he_id, 'nl_twins', true ), true );
+	$t = is_array( $t ) ? array_map( 'intval', $t ) : array();
+	$en = (int) get_post_meta( $he_id, 'nl_twin', true );
+	if ( $en && empty( $t['en'] ) ) { $t['en'] = $en; }
+	$out = array();
+	foreach ( $t as $l => $id ) {
+		if ( $l !== 'he' && in_array( $l, nl_drop_langs(), true ) && $id > 0 ) { $out[ $l ] = $id; }
+	}
+	return $out;
+}
+
+/** Writes every language version from the stored facts and copy. Used on first build, and on every price change. */
+function nl_drop_render_all( $he_id, $b ) {
 	$data = nl_drop_data_for( $he_id, $b );
 	if ( ! $data ) { return false; }
-	$url_he = (string) get_permalink( $he_id );
-	$url_en = $en_id ? (string) get_permalink( $en_id ) : '';
-	$date   = get_post_time( 'Y-m-d', false, $he_id );
-	$had = nl_drop_kses_off();
-	wp_update_post( array( 'ID' => $he_id, 'post_excerpt' => nl_drop_fill( $data['copy']['he']['dek'], $data['facts'], 'he' ), 'post_content' => nl_drop_listing_html( array_merge( $data, array( 'id' => $he_id, 'url' => $url_he, 'alt_url' => $url_en, 'page_id' => 0, 'date' => $date ) ), 'he' ) ) );
-	if ( $en_id ) {
-		wp_update_post( array( 'ID' => $en_id, 'post_excerpt' => nl_drop_fill( $data['copy']['en']['dek'], $data['facts'], 'en' ), 'post_content' => nl_drop_listing_html( array_merge( $data, array( 'id' => $he_id, 'url' => $url_en, 'alt_url' => $url_he, 'page_id' => $en_id, 'date' => $date ) ), 'en' ) ) );
+	$ids = array( 'he' => (int) $he_id );
+	foreach ( nl_drop_twins( $he_id ) as $l => $id ) {
+		if ( ! empty( $data['copy'][ $l ] ) && get_post( $id ) ) { $ids[ $l ] = $id; }
+	}
+	$urls = array();
+	$live = array();
+	foreach ( $ids as $l => $id ) {
+		$urls[ $l ] = (string) get_permalink( $id );
+		if ( get_post_status( $id ) === 'publish' ) { $live[ $l ] = $urls[ $l ]; }
+	}
+	$date = get_post_time( 'Y-m-d', false, $he_id );
+	$had  = nl_drop_kses_off();
+	foreach ( $ids as $l => $id ) {
+		$alts = $live;
+		unset( $alts[ $l ] );
+		wp_update_post( array(
+			'ID'           => $id,
+			'post_excerpt' => nl_drop_fill( $data['copy'][ $l ]['dek'], $data['facts'], $l ),
+			'post_content' => nl_drop_listing_html( array_merge( $data, array( 'id' => $he_id, 'url' => $urls[ $l ], 'alts' => $alts, 'page_id' => $l === 'he' ? 0 : $id, 'date' => $date ) ), $l ),
+		) );
 	}
 	nl_drop_kses_on( $had );
-	update_post_meta( $he_id, '_yoast_wpseo_title', wp_slash( nl_drop_fill( $data['copy']['he']['seo_title'], $data['facts'], 'he' ) ) );
-	update_post_meta( $he_id, '_yoast_wpseo_metadesc', wp_slash( nl_drop_fill( $data['copy']['he']['seo_desc'], $data['facts'], 'he' ) ) );
-	if ( $en_id ) {
-		update_post_meta( $en_id, '_yoast_wpseo_title', wp_slash( nl_drop_fill( $data['copy']['en']['seo_title'], $data['facts'], 'en' ) ) );
-		update_post_meta( $en_id, '_yoast_wpseo_metadesc', wp_slash( nl_drop_fill( $data['copy']['en']['seo_desc'], $data['facts'], 'en' ) ) );
+	foreach ( $ids as $l => $id ) {
+		update_post_meta( $id, '_yoast_wpseo_title', wp_slash( nl_drop_fill( $data['copy'][ $l ]['seo_title'], $data['facts'], $l ) ) );
+		update_post_meta( $id, '_yoast_wpseo_metadesc', wp_slash( nl_drop_fill( $data['copy'][ $l ]['seo_desc'], $data['facts'], $l ) ) );
+	}
+	if ( count( $live ) > 1 ) {
+		$map = wp_slash( wp_json_encode( $live, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) );
+		foreach ( $live as $l => $u ) { update_post_meta( $ids[ $l ], 'nl_hreflang', $map ); }
 	}
 	return true;
+}
+
+/** Kept for callers of 1.0: the pair is now every language. */
+function nl_drop_render_pair( $he_id, $en_id, $b ) {
+	return nl_drop_render_all( $he_id, $b );
+}
+
+/* Token use and cost of the model calls in this request, kept on the submission. */
+function nl_drop_usage_add( $model, $in, $out ) {
+	$in    = (int) $in;
+	$out   = (int) $out;
+	$price = array( 'gpt-4.1' => array( 2.0, 8.0 ), 'gpt-4o' => array( 2.5, 10.0 ), 'gpt-4o-mini' => array( 0.15, 0.6 ), 'claude-sonnet-5' => array( 3.0, 15.0 ) );
+	$p     = null;
+	foreach ( $price as $k => $v ) { if ( strpos( (string) $model, $k ) === 0 ) { $p = $v; } }
+	$usd = function_exists( 'nadlan_ai_estimated_cost_usd' ) ? (float) nadlan_ai_estimated_cost_usd( strpos( (string) $model, 'claude' ) === 0 ? 'anthropic' : 'openai', $model, $in, $out ) : 0.0;
+	if ( $usd <= 0 && $p ) { $usd = ( $in * $p[0] + $out * $p[1] ) / 1000000; }
+	$u = isset( $GLOBALS['nl_drop_usage'] ) && is_array( $GLOBALS['nl_drop_usage'] ) ? $GLOBALS['nl_drop_usage'] : array( 'calls' => 0, 'in' => 0, 'out' => 0, 'usd' => 0.0, 'models' => array() );
+	$u['calls']++;
+	$u['in']  += $in;
+	$u['out'] += $out;
+	$u['usd'] += $usd;
+	$u['models'][ (string) $model ] = true;
+	$GLOBALS['nl_drop_usage'] = $u;
+}
+
+function nl_drop_usage_save( $post_id ) {
+	if ( empty( $GLOBALS['nl_drop_usage'] ) ) { return; }
+	$prev = get_post_meta( $post_id, 'nl_usage', true );
+	$u    = $GLOBALS['nl_drop_usage'];
+	if ( is_array( $prev ) ) {
+		foreach ( array( 'calls', 'in', 'out', 'usd' ) as $k ) { $u[ $k ] += $prev[ $k ] ?? 0; }
+		$u['models'] = array_merge( (array) ( $prev['models'] ?? array() ), (array) $u['models'] );
+	}
+	$u['usd'] = round( (float) $u['usd'], 5 );
+	update_post_meta( $post_id, 'nl_usage', $u );
+	$GLOBALS['nl_drop_usage'] = null;
 }
 
 function nl_drop_build( $drop_id, $b ) {
@@ -1357,14 +2019,27 @@ function nl_drop_build( $drop_id, $b ) {
 	$text   = (string) get_post_meta( $drop_id, 'nl_text', true );
 	$ids    = array_map( 'intval', (array) get_post_meta( $drop_id, 'nl_photos', true ) );
 	if ( ! is_array( $f ) ) { return new WP_Error( 'nofacts', 'no facts' ); }
+	$owner  = ( $b['kind'] ?? 'broker' ) === 'owner';
+	$langs  = $owner ? array( 'he' ) : (array) ( $b['langs'] ?? array( 'he', 'en' ) );
 	update_post_meta( $drop_id, 'nl_state', 'writing' );
 	$err  = null;
 	$copy = nl_drop_write( $f, $text, $b, $err );
+	$xl   = array_values( array_intersect( array( 'ru', 'fr' ), $langs ) );
+	if ( $xl ) {
+		$terr = null;
+		$tr   = nl_drop_translate( $copy, $f, $text, $xl, $terr );
+		if ( $terr ) { $err = ( $err ? $err . '; ' : '' ) . 'translate:' . $terr; }
+		foreach ( $tr['names'] as $l => $nm ) {
+			foreach ( $nm as $k => $v ) { if ( $v !== '' ) { $f[ $k . '_' . $l ] = $v; } }
+		}
+		foreach ( $tr['copy'] as $l => $c ) { $copy[ $l ] = $c; }
+		if ( ! empty( $tr['plain'] ) ) { update_post_meta( $drop_id, 'nl_plain', implode( ',', $tr['plain'] ) ); }
+	}
 	$slug = nl_drop_slug( $f, $b );
 	$pub  = $f;
 	unset( $pub['street_he'] );
 	$photos = nl_drop_photos( $ids, $copy['he']['title'] );
-	$author = nl_drop_author();
+	$author = $owner && ! empty( $b['user_id'] ) ? (int) $b['user_id'] : nl_drop_author();
 	$status = $b['auto'] ? 'publish' : 'draft';
 
 	$had   = nl_drop_kses_off();
@@ -1408,10 +2083,17 @@ function nl_drop_build( $drop_id, $b ) {
 	}
 	update_post_meta( $he_id, 'status', 'active' );
 	update_post_meta( $he_id, 'claim_status', 'verified' );
-	update_post_meta( $he_id, 'source', 'broker_drop' );
-	update_post_meta( $he_id, 'nl_broker_id', (string) $b['id'] );
 	update_post_meta( $he_id, 'nl_status', 'active' );
 	update_post_meta( $he_id, 'nl_drop_id', (string) $drop_id );
+	if ( $owner ) {
+		update_post_meta( $he_id, 'source', 'owner_wizard' );
+		update_post_meta( $he_id, 'nl_owner', '1' );
+		update_post_meta( $he_id, 'owner_user_id', (int) ( $b['user_id'] ?? 0 ) );
+		update_post_meta( $he_id, 'nl_owner_contact', wp_slash( wp_json_encode( array( 'name' => $b['name_he'], 'phone' => $b['phone'] ), JSON_UNESCAPED_UNICODE ) ) );
+	} else {
+		update_post_meta( $he_id, 'source', 'broker_drop' );
+		update_post_meta( $he_id, 'nl_broker_id', (string) $b['id'] );
+	}
 	update_post_meta( $he_id, 'nl_facts', wp_slash( wp_json_encode( $pub, JSON_UNESCAPED_UNICODE ) ) );
 	update_post_meta( $he_id, 'nl_copy', wp_slash( wp_json_encode( $copy, JSON_UNESCAPED_UNICODE ) ) );
 	update_post_meta( $he_id, 'nl_photos_json', wp_slash( wp_json_encode( $photos, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) ) );
@@ -1424,52 +2106,57 @@ function nl_drop_build( $drop_id, $b ) {
 		update_post_meta( $p['id'], '_wp_attachment_image_alt', wp_slash( nl_drop_fill( $copy['he']['title'], $f, 'he' ) . ( $i ? ' · ' . ( $i + 1 ) : '' ) ) );
 	}
 
-	$en_id = 0;
-	if ( ! empty( $b['site_en'] ) && get_post( (int) $b['site_en'] ) ) {
-		$had   = nl_drop_kses_off();
-		$en_id = wp_insert_post( array(
+	// one page per language, under the broker's site in that language (created with the first listing that needs it)
+	$twins = array();
+	foreach ( array_diff( $langs, array( 'he' ) ) as $l ) {
+		if ( empty( $copy[ $l ] ) ) { continue; }
+		$site = nl_drop_site_ensure( $b, $l, $status );
+		if ( ! $site ) { continue; }
+		$had = nl_drop_kses_off();
+		$tid = wp_insert_post( array(
 			'post_type'    => 'page',
 			'post_status'  => $status,
-			'post_parent'  => (int) $b['site_en'],
-			'post_title'   => nl_drop_fill( $copy['en']['title'], $f, 'en' ),
+			'post_parent'  => $site,
+			'post_title'   => nl_drop_fill( $copy[ $l ]['title'], $f, $l ),
 			'post_name'    => $slug,
-			'post_excerpt' => nl_drop_fill( $copy['en']['dek'], $f, 'en' ),
+			'post_excerpt' => nl_drop_fill( $copy[ $l ]['dek'], $f, $l ),
 			'post_content' => '',
 			'post_author'  => $author,
 		), true );
 		nl_drop_kses_on( $had );
-		if ( is_wp_error( $en_id ) ) { $en_id = 0; }
+		if ( is_wp_error( $tid ) || ! $tid ) { continue; }
+		update_post_meta( $tid, 'nl_broker_id', (string) $b['id'] );
+		update_post_meta( $tid, 'nl_twin', (string) $he_id );
+		update_post_meta( $tid, 'nl_lang', $l );
+		update_post_meta( $tid, 'nl_status', 'active' );
+		update_post_meta( $tid, 'source', 'broker_drop' );
+		if ( $photos ) { set_post_thumbnail( $tid, $photos[0]['id'] ); }
+		$twins[ $l ] = (int) $tid;
 	}
-	if ( $en_id ) {
-		update_post_meta( $en_id, 'nl_broker_id', (string) $b['id'] );
-		update_post_meta( $en_id, 'nl_twin', (string) $he_id );
-		update_post_meta( $en_id, 'nl_status', 'active' );
-		update_post_meta( $en_id, 'source', 'broker_drop' );
-		update_post_meta( $en_id, '_yoast_wpseo_title', nl_drop_fill( $copy['en']['seo_title'], $f, 'en' ) );
-		update_post_meta( $en_id, '_yoast_wpseo_metadesc', nl_drop_fill( $copy['en']['seo_desc'], $f, 'en' ) );
-		if ( $photos ) { set_post_thumbnail( $en_id, $photos[0]['id'] ); }
-		update_post_meta( $he_id, 'nl_twin', (string) $en_id );
+	if ( ! empty( $twins['en'] ) ) { update_post_meta( $he_id, 'nl_twin', (string) $twins['en'] ); }
+	if ( $twins ) { update_post_meta( $he_id, 'nl_twins', wp_slash( wp_json_encode( $twins ) ) ); }
+	if ( ! $owner ) {
+		$fresh = nl_drop_broker( $b['id'] );
+		if ( $fresh ) { $b = $fresh; }
 	}
-	nl_drop_render_pair( $he_id, $en_id, $b );
-	$url_he = (string) get_permalink( $he_id );
-	$url_en = $en_id ? (string) get_permalink( $en_id ) : '';
-	if ( $en_id ) {
-		$map = wp_slash( wp_json_encode( array( 'he' => $url_he, 'en' => $url_en ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) );
-		update_post_meta( $he_id, 'nl_hreflang', $map );
-		update_post_meta( $en_id, 'nl_hreflang', $map );
-	}
-	nl_drop_purge( array( $he_id, $en_id, $b['site_he'], $b['site_en'] ) );
+	nl_drop_render_all( $he_id, $b );
+	$urls = array( 'he' => (string) get_permalink( $he_id ) );
+	foreach ( $twins as $l => $tid ) { $urls[ $l ] = (string) get_permalink( $tid ); }
+	nl_drop_site_sync( $b );
+	nl_drop_purge( array_merge( array( $he_id ), array_values( $twins ), array( $b['site_he'] ?? 0, $b['site_en'] ?? 0, $b['site_ru'] ?? 0, $b['site_fr'] ?? 0 ) ) );
 	$res = array(
 		'state'  => $status === 'publish' ? 'published' : 'draft',
 		'he_id'  => (int) $he_id,
-		'en_id'  => (int) $en_id,
-		'url_he' => $url_he,
-		'url_en' => $url_en,
+		'en_id'  => (int) ( $twins['en'] ?? 0 ),
+		'url_he' => $urls['he'],
+		'url_en' => $urls['en'] ?? '',
+		'urls'   => $urls,
 		'title'  => nl_drop_fill( $copy['he']['title'], $f, 'he' ),
 		'ai'     => $err ? 'fallback:' . $err : 'ok',
 	);
 	update_post_meta( $drop_id, 'nl_result', $res );
 	update_post_meta( $drop_id, 'nl_state', $res['state'] );
+	nl_drop_usage_save( $drop_id );
 	return $res;
 }
 
@@ -1567,6 +2254,7 @@ function nl_drop_rest_submit( WP_REST_Request $req ) {
 	update_post_meta( $drop_id, 'nl_state', 'reading' );
 	$err = null;
 	$f   = nl_drop_extract( $text, $b, $err );
+	nl_drop_usage_save( $drop_id );
 	update_post_meta( $drop_id, 'nl_facts', wp_slash( wp_json_encode( $f, JSON_UNESCAPED_UNICODE ) ) );
 	if ( $err ) { update_post_meta( $drop_id, 'nl_ai', 'fallback:' . $err ); }
 	$miss = nl_drop_missing( $f, $ids );
@@ -1594,9 +2282,9 @@ function nl_drop_rest_build( WP_REST_Request $req ) {
 	return $res;
 }
 
-/** The broker's properties, newest first: the pages built here and the ones linked to the broker. */
 function nl_drop_broker_listings( $bid, $lang = 'he', $only_live = true ) {
-	$q = get_posts( array(
+	$lang = nl_drop_L( $lang );
+	$q    = get_posts( array(
 		'post_type'        => 'nadlan_property',
 		'post_status'      => $only_live ? array( 'publish' ) : array( 'publish', 'draft' ),
 		'numberposts'      => 200,
@@ -1607,14 +2295,16 @@ function nl_drop_broker_listings( $bid, $lang = 'he', $only_live = true ) {
 	) );
 	$out = array();
 	foreach ( $q as $p ) {
-		$twin = (int) get_post_meta( $p->ID, 'nl_twin', true );
-		if ( $lang === 'en' && ( ! $twin || get_post_status( $twin ) !== 'publish' ) ) { continue; }
+		$twins = nl_drop_twins( $p->ID );
+		$lid   = $lang === 'he' ? (int) $p->ID : (int) ( $twins[ $lang ] ?? 0 );
+		if ( $lang !== 'he' && ( ! $lid || get_post_status( $lid ) !== 'publish' ) ) { continue; }
 		$st = (string) get_post_meta( $p->ID, 'nl_status', true );
 		$out[] = array(
 			'id'       => (int) $p->ID,
-			'twin'     => $twin,
-			'url'      => (string) get_permalink( $lang === 'en' ? $twin : $p->ID ),
-			'title'    => (string) ( $lang === 'en' && $twin ? get_the_title( $twin ) : get_the_title( $p ) ),
+			'twin'     => (int) ( $twins['en'] ?? 0 ),
+			'twins'    => $twins,
+			'url'      => (string) get_permalink( $lid ),
+			'title'    => (string) get_the_title( $lid ),
 			'deal'     => (string) get_post_meta( $p->ID, 'listing_type', true ) === 'rent' ? 'rent' : 'sale',
 			'status'   => in_array( $st, array( 'sold', 'rented' ), true ) ? $st : 'active',
 			'card_key' => (string) get_post_meta( $p->ID, 'nl_card_key', true ),
@@ -1643,9 +2333,54 @@ function nl_drop_rest_listings( WP_REST_Request $req ) {
 			'price'    => $L['price'] ? nl_drop_price_text( $L['price'], 'he' ) . ( $L['deal'] === 'rent' ? ' לחודש' : '' ) : '',
 			'editable' => $L['source'] === 'broker_drop',
 			'live'     => get_post_status( $L['id'] ) === 'publish',
+			'langs'    => array_keys( $L['twins'] ),
 		);
 	}
 	return array( 'name' => $b['name_he'], 'site' => nl_drop_site_url( $b, 'he' ), 'listings' => $rows );
+}
+
+/** Every page of a listing: the Hebrew one and its language versions (the first English twin may predate the map). */
+function nl_drop_listing_ids( $id ) {
+	$twins = nl_drop_twins( $id );
+	if ( ! $twins ) {
+		$tw = get_posts( array( 'post_type' => 'page', 'post_status' => 'any', 'numberposts' => 5, 'fields' => 'ids', 'meta_query' => array( array( 'key' => 'nl_twin', 'value' => (string) $id ) ) ) );
+		foreach ( $tw as $t ) {
+			$l = nl_drop_L( (string) get_post_meta( $t, 'nl_lang', true ) ?: 'en' );
+			if ( $l !== 'he' ) { $twins[ $l ] = (int) $t; }
+		}
+	}
+	return array_merge( array( (int) $id ), array_values( $twins ) );
+}
+
+/** Sold, let, back on the market, or a new price: every language, the broker's sites, the caches. */
+function nl_drop_apply_update( $id, $b, $status, $price ) {
+	$ids = nl_drop_listing_ids( $id );
+	$sites = array( $b['site_he'] ?? 0, $b['site_en'] ?? 0, $b['site_ru'] ?? 0, $b['site_fr'] ?? 0 );
+	if ( in_array( $status, array( 'sold', 'rented', 'active' ), true ) ) {
+		foreach ( $ids as $pid ) {
+			update_post_meta( $pid, 'nl_status', $status );
+			update_post_meta( $pid, 'status', $status );
+		}
+		nl_drop_site_sync( $b );
+		nl_drop_purge( array_merge( $ids, $sites ) );
+		return array( 'ok' => true, 'status' => $status );
+	}
+	if ( $price !== null && $price !== '' ) {
+		$src = (string) get_post_meta( $id, 'source', true );
+		if ( $src !== 'broker_drop' && $src !== 'owner_wizard' ) { return new WP_Error( 'static', 'את המחיר של הנכס הזה מעדכנים מול nad-lan.', array( 'status' => 409 ) ); }
+		$p = (int) preg_replace( '/\D+/', '', (string) $price );
+		if ( $p < 500 || $p > 500000000 ) { return new WP_Error( 'price', 'המחיר לא נראה תקין.', array( 'status' => 400 ) ); }
+		$f = json_decode( (string) get_post_meta( $id, 'nl_facts', true ), true );
+		if ( ! is_array( $f ) ) { return new WP_Error( 'nofacts', 'לא ניתן לעדכן.', array( 'status' => 409 ) ); }
+		$f['price'] = $p;
+		update_post_meta( $id, 'nl_facts', wp_slash( wp_json_encode( $f, JSON_UNESCAPED_UNICODE ) ) );
+		update_post_meta( $id, 'price', $p );
+		nl_drop_render_all( $id, $b );
+		nl_drop_site_sync( $b );
+		nl_drop_purge( array_merge( $ids, $sites ) );
+		return array( 'ok' => true, 'price' => nl_drop_price_text( $p, 'he' ) );
+	}
+	return new WP_Error( 'nothing', 'לא התקבל עדכון.', array( 'status' => 400 ) );
 }
 
 function nl_drop_rest_update( WP_REST_Request $req ) {
@@ -1656,35 +2391,7 @@ function nl_drop_rest_update( WP_REST_Request $req ) {
 	if ( get_post_type( $id ) !== 'nadlan_property' || (string) get_post_meta( $id, 'nl_broker_id', true ) !== (string) $b['id'] ) {
 		return new WP_Error( 'nf', 'הנכס לא נמצא.', array( 'status' => 404 ) );
 	}
-	$twin = (int) get_post_meta( $id, 'nl_twin', true );
-	if ( ! $twin ) {
-		$tw = get_posts( array( 'post_type' => 'page', 'post_status' => 'any', 'numberposts' => 1, 'fields' => 'ids', 'meta_query' => array( array( 'key' => 'nl_twin', 'value' => (string) $id ) ) ) );
-		$twin = $tw ? (int) $tw[0] : 0;
-	}
-	$status = (string) $req->get_param( 'status' );
-	if ( in_array( $status, array( 'sold', 'rented', 'active' ), true ) ) {
-		foreach ( array_filter( array( $id, $twin ) ) as $pid ) {
-			update_post_meta( $pid, 'nl_status', $status );
-			update_post_meta( $pid, 'status', $status );
-		}
-		nl_drop_purge( array( $id, $twin, $b['site_he'], $b['site_en'] ) );
-		return array( 'ok' => true, 'status' => $status );
-	}
-	$price = $req->get_param( 'price' );
-	if ( $price !== null && $price !== '' ) {
-		if ( (string) get_post_meta( $id, 'source', true ) !== 'broker_drop' ) { return new WP_Error( 'static', 'את המחיר של הנכס הזה מעדכנים מול nad-lan.', array( 'status' => 409 ) ); }
-		$p = (int) preg_replace( '/\D+/', '', (string) $price );
-		if ( $p < 500 || $p > 500000000 ) { return new WP_Error( 'price', 'המחיר לא נראה תקין.', array( 'status' => 400 ) ); }
-		$f = json_decode( (string) get_post_meta( $id, 'nl_facts', true ), true );
-		if ( ! is_array( $f ) ) { return new WP_Error( 'nofacts', 'לא ניתן לעדכן.', array( 'status' => 409 ) ); }
-		$f['price'] = $p;
-		update_post_meta( $id, 'nl_facts', wp_slash( wp_json_encode( $f, JSON_UNESCAPED_UNICODE ) ) );
-		update_post_meta( $id, 'price', $p );
-		nl_drop_render_pair( $id, $twin, $b );
-		nl_drop_purge( array( $id, $twin, $b['site_he'], $b['site_en'] ) );
-		return array( 'ok' => true, 'price' => nl_drop_price_text( $p, 'he' ) );
-	}
-	return new WP_Error( 'nothing', 'לא התקבל עדכון.', array( 'status' => 400 ) );
+	return nl_drop_apply_update( $id, $b, (string) $req->get_param( 'status' ), $req->get_param( 'price' ) );
 }
 
 /* =====================================================================================================
@@ -1711,42 +2418,44 @@ function nl_drop_remove_li( $html, $id ) {
 }
 
 function nl_drop_card_html( $L, $lang, $b ) {
-	$he   = $lang !== 'en';
+	$lang = nl_drop_L( $lang );
+	$he   = $lang === 'he';
 	$data = nl_drop_data_for( $L['id'], $b );
 	if ( ! $data ) { return ''; }
 	$f    = $data['facts'];
-	$c    = $data['copy'][ $he ? 'he' : 'en' ];
+	$c    = isset( $data['copy'][ $lang ] ) ? $data['copy'][ $lang ] : $data['copy']['en'];
 	$deal = $L['deal'];
 	$ttl  = nl_drop_fill( $c['card_title'] ?? $c['title'], $f, $lang );
 	$url  = $L['url'];
 	$cov  = ! empty( $data['photos'][0]['url'] ) ? $data['photos'][0]['url'] : $L['cover'];
-	$area = $he ? ( $f['area_he'] ?: ( $f['city_he'] ?? '' ) ) : ( $f['area_en'] ?: ( $f['city_en'] ?? '' ) );
+	$area = $he ? ( $f['area_he'] ?: ( $f['city_he'] ?? '' ) ) : ( nl_drop_fx( $f, 'area', $lang ) !== '' ? nl_drop_fx( $f, 'area', $lang ) : nl_drop_fx( $f, 'city', $lang ) );
 	$kick = trim( nl_drop_type_label( $f['property_type'] ?: 'apartment', $lang ) . ( $area !== '' ? ' · ' . $area : '' ) );
 	$num  = function ( $n ) { return '<span class="nlb-num">' . esc_html( $n ) . '</span>'; };
-	$h  = '<li class="nlb-lcard" data-deal="' . esc_attr( $deal ) . '" id="nlb-' . ( $he ? 'he' : 'en' ) . '-d' . (int) $L['id'] . '">' . "\n";
+	$lc   = function ( $s ) use ( $he ) { return ( $he || ! function_exists( 'mb_strtolower' ) ) ? $s : mb_strtolower( mb_substr( $s, 0, 1 ) ) . mb_substr( $s, 1 ); };
+	$h  = '<li class="nlb-lcard" data-deal="' . esc_attr( $deal ) . '" id="nlb-' . $lang . '-d' . (int) $L['id'] . '">' . "\n";
 	$h .= '<a class="nlb-lcard-media" href="' . esc_url( $url ) . '" tabindex="-1" aria-hidden="true">' . ( $cov ? '<img src="' . esc_url( $cov ) . '" alt="" loading="lazy" decoding="async">' : '' );
 	$h .= '<span class="nlb-badges"><span class="nlb-badge nlb-badge--' . esc_attr( $deal ) . '">' . esc_html( nl_drop_t( $lang, $deal ) ) . '</span></span></a>' . "\n";
 	$h .= '<p class="nlb-lcard-kicker">' . esc_html( $kick ) . '</p>' . "\n";
 	$h .= '<h3 class="nlb-lcard-title"><a href="' . esc_url( $url ) . '">' . esc_html( $ttl ) . '</a></h3>' . "\n";
 	if ( ! empty( $f['price'] ) ) {
-		$money = $he ? '<span>' . $num( nl_drop_fmt_int( $f['price'] ) ) . '&nbsp;₪</span>' : '<span>NIS&nbsp;' . $num( nl_drop_fmt_int( $f['price'] ) ) . '</span>';
+		$pn    = $num( nl_drop_fmt_int( $f['price'], $lang ) );
+		$money = $lang === 'en' ? '<span>NIS&nbsp;' . $pn . '</span>' : '<span>' . $pn . '&nbsp;₪</span>';
 		$sub   = '';
 		if ( ! empty( $f['size_sqm'] ) ) {
-			$ps  = nl_drop_fmt_int( round( $f['price'] / $f['size_sqm'] ) );
-			$sub = $he ? '<span>' . $num( $ps ) . '&nbsp;₪ ' . ( $deal === 'rent' ? 'למ״ר לחודש' : 'למ״ר' ) . '</span>' : '<span>NIS&nbsp;' . $num( $ps ) . ' ' . ( $deal === 'rent' ? 'per sqm a month' : 'per sqm' ) . '</span>';
+			$ps  = $num( nl_drop_fmt_int( round( $f['price'] / $f['size_sqm'] ), $lang ) );
+			$per = $lc( nl_drop_t( $lang, 'psqm_' . $deal ) );
+			$sub = $lang === 'en' ? '<span>NIS&nbsp;' . $ps . ' ' . esc_html( $per ) . '</span>' : '<span>' . $ps . '&nbsp;₪ ' . esc_html( $per ) . '</span>';
 		}
 		$h .= '<div class="nlb-price"><strong>' . $money . ( $deal === 'rent' ? ' <small>' . esc_html( nl_drop_t( $lang, 'month' ) ) . '</small>' : '' ) . '</strong>' . $sub . '</div>' . "\n";
 	} else {
 		$h .= '<div class="nlb-price"><strong class="nlb-ask">' . esc_html( nl_drop_t( $lang, $deal === 'rent' ? 'ask_short_rent' : 'ask_short' ) ) . '</strong><span>' . esc_html( nl_drop_t( $lang, 'ask_sub' ) ) . '</span></div>' . "\n";
 	}
 	$specs = array();
-	if ( ! empty( $f['rooms'] ) ) { $specs[] = array( 'rooms', sprintf( esc_html( nl_drop_t( $lang, 'rooms_n' ) ), $num( nl_drop_fmt_num( $f['rooms'] ) ) ) ); }
-	if ( ! empty( $f['size_sqm'] ) ) { $specs[] = array( 'area', sprintf( esc_html( nl_drop_t( $lang, 'size_n' ) ), $num( nl_drop_fmt_int( $f['size_sqm'] ) ) ) ); }
-	if ( ! empty( $f['balcony_sqm'] ) ) { $specs[] = array( 'balcony', sprintf( esc_html( nl_drop_t( $lang, 'balcony_n' ) ), $num( nl_drop_fmt_int( $f['balcony_sqm'] ) ) ) ); }
-	elseif ( ! empty( $f['garden_sqm'] ) ) { $specs[] = array( 'balcony', sprintf( esc_html( nl_drop_t( $lang, 'garden_n' ) ), $num( nl_drop_fmt_int( $f['garden_sqm'] ) ) ) ); }
-	if ( isset( $f['floor'] ) && $f['floor'] !== null && $f['floor'] > 0 ) {
-		$specs[] = array( 'floor', ! empty( $f['total_floors'] ) ? sprintf( esc_html( nl_drop_t( $lang, 'floor_of' ) ), $num( (int) $f['floor'] ), $num( (int) $f['total_floors'] ) ) : sprintf( esc_html( nl_drop_t( $lang, 'floor_n' ) ), $num( (int) $f['floor'] ) ) );
-	}
+	if ( ! empty( $f['rooms'] ) ) { $specs[] = array( 'rooms', nl_drop_rooms_html( $f['rooms'], $lang, $num ) ); }
+	if ( ! empty( $f['size_sqm'] ) ) { $specs[] = array( 'area', sprintf( esc_html( nl_drop_t( $lang, 'size_n' ) ), $num( nl_drop_fmt_int( $f['size_sqm'], $lang ) ) ) ); }
+	if ( ! empty( $f['balcony_sqm'] ) ) { $specs[] = array( 'balcony', sprintf( esc_html( nl_drop_t( $lang, 'balcony_n' ) ), $num( nl_drop_fmt_int( $f['balcony_sqm'], $lang ) ) ) ); }
+	elseif ( ! empty( $f['garden_sqm'] ) ) { $specs[] = array( 'balcony', sprintf( esc_html( nl_drop_t( $lang, 'garden_n' ) ), $num( nl_drop_fmt_int( $f['garden_sqm'], $lang ) ) ) ); }
+	if ( isset( $f['floor'] ) && $f['floor'] !== null && $f['floor'] > 0 ) { $specs[] = array( 'floor', nl_drop_floor_html( $f, $lang, $num ) ); }
 	if ( $specs ) {
 		$h .= '<ul class="nlb-specs">';
 		foreach ( array_slice( $specs, 0, 4 ) as $s ) { $h .= '<li>' . nl_drop_icon( $s[0] ) . '<span>' . $s[1] . '</span></li>'; }
@@ -1759,7 +2468,7 @@ function nl_drop_card_html( $L, $lang, $b ) {
 		$h .= '</ul>' . "\n";
 	}
 	$amen = array();
-	if ( ! empty( $f['parking'] ) ) { $amen[] = array( 'parking', ! empty( $f['parking_count'] ) && $f['parking_count'] > 1 ? sprintf( nl_drop_t( $lang, 'parking_n' ), (int) $f['parking_count'] ) : nl_drop_t( $lang, 'parking_1' ) ); }
+	if ( ! empty( $f['parking'] ) ) { $amen[] = array( 'parking', nl_drop_parking_txt( $f, $lang ) ); }
 	if ( ! empty( $f['storage'] ) ) { $amen[] = array( 'storage', nl_drop_t( $lang, 'f_storage' ) ); }
 	if ( ! empty( $f['protected_room'] ) ) { $amen[] = array( 'shield', nl_drop_t( $lang, 'f_safe' ) ); }
 	if ( ! empty( $f['elevator'] ) ) { $amen[] = array( 'lift', nl_drop_t( $lang, 'f_lift' ) ); }
@@ -1768,15 +2477,597 @@ function nl_drop_card_html( $L, $lang, $b ) {
 		foreach ( array_slice( $amen, 0, 4 ) as $a ) { $h .= '<span>' . nl_drop_icon( $a[0] ) . esc_html( $a[1] ) . '</span>'; }
 		$h .= '</div>' . "\n";
 	}
-	$entry = $he ? ( $f['entry_he'] ?? '' ) : ( $f['entry_en'] ?? '' );
-	$date  = $he ? wp_date( 'j.n.Y', $L['modified'] ) : wp_date( 'j M Y', $L['modified'] );
-	$h .= '<p class="nlb-lcard-meta">' . ( $entry ? '<span>' . nl_drop_icon( 'key' ) . esc_html( sprintf( nl_drop_t( $lang, 'entry_n' ), $entry ) ) . '</span>' : '<span></span>' ) . '<span class="nlb-num">' . esc_html( nl_drop_t( $lang, 'updated' ) . ' ' . $date ) . '</span></p>' . "\n";
+	$entry = $he ? ( $f['entry_he'] ?? '' ) : nl_drop_fx( $f, 'entry', $lang );
+	$h .= '<p class="nlb-lcard-meta">' . ( $entry ? '<span>' . nl_drop_icon( 'key' ) . esc_html( sprintf( nl_drop_t( $lang, 'entry_n' ), $entry ) ) . '</span>' : '<span></span>' ) . '<span class="nlb-num">' . esc_html( nl_drop_t( $lang, 'updated' ) . ' ' . nl_drop_date( $L['modified'], $lang ) ) . '</span></p>' . "\n";
 	$wa = nl_drop_wa_link( $b, $lang, $ttl );
 	$h .= '<div class="nlb-lcard-cta">';
 	if ( $wa ) { $h .= '<a class="nlb-btn nlb-btn--sea" href="' . esc_url( $wa ) . '" target="_blank" rel="noopener" aria-label="' . esc_attr( nl_drop_t( $lang, 'wa' ) . ': ' . $ttl ) . '">' . nl_drop_icon( 'wa' ) . '<span>' . esc_html( nl_drop_t( $lang, 'wa' ) ) . '</span></a>'; }
 	$h .= '<a class="nlb-btn nlb-btn--line" href="' . esc_url( $url ) . '" aria-label="' . esc_attr( nl_drop_t( $lang, 'card_view' ) . ': ' . $ttl ) . '"><span>' . esc_html( nl_drop_t( $lang, 'card_view' ) ) . '</span>' . nl_drop_icon( 'arrow' ) . '</a>';
 	$h .= '</div>' . "\n" . '</li>' . "\n";
 	return $h;
+}
+
+/* =====================================================================================================
+ * The broker's own site, built by the engine (1.1). A broker who joined alone gets a Hebrew site at once;
+ * the English, Russian and French sites appear with the first listing written in that language.
+ * Hand-built sites (Meital's Hebrew and English) keep their own markup and get cards injected at view time.
+ * ===================================================================================================== */
+
+/** The "for brokers" page of a language: /brokers/, /en/brokers/, /ru/brokers/, /fr/brokers/. Published, or none. */
+function nl_drop_lang_parent( $lang ) {
+	$lang = nl_drop_L( $lang );
+	$p    = get_page_by_path( $lang === 'he' ? 'brokers' : $lang . '/brokers', OBJECT, 'page' );
+	return ( $p && $p->post_status === 'publish' ) ? (int) $p->ID : 0;
+}
+
+/** The broker's Latin slug: saved, or the Hebrew site's own slug, or the English name. */
+function nl_drop_broker_slug( $b ) {
+	if ( ! empty( $b['slug'] ) && preg_match( '/^[a-z0-9-]+$/', $b['slug'] ) ) { return $b['slug']; }
+	if ( ! empty( $b['site_he'] ) ) {
+		$s = (string) get_post_field( 'post_name', (int) $b['site_he'] );
+		if ( preg_match( '/^[a-z0-9-]+$/', $s ) ) { return $s; }
+	}
+	$s = sanitize_title( remove_accents( (string) $b['name_en'] ) );
+	return preg_match( '/^[a-z0-9-]+$/', $s ) ? $s : '';
+}
+
+function nl_drop_site_title( $b, $lang ) {
+	$brand = nl_drop_brand( $b, $lang );
+	return nl_drop_name( $b, $lang ) . ( $brand !== '' ? ' · ' . $brand : '' );
+}
+
+/** Returns the broker's site page in a language, creating it (engine-built) when it does not exist yet. */
+function nl_drop_site_ensure( $b, $lang, $status = 'publish' ) {
+	$lang = nl_drop_L( $lang );
+	if ( ( $b['kind'] ?? 'broker' ) !== 'broker' || empty( $b['id'] ) ) { return 0; }
+	$id = (int) ( $b[ 'site_' . $lang ] ?? 0 );
+	if ( $id && get_post( $id ) && get_post_status( $id ) !== 'trash' ) { return $id; }
+	$parent = nl_drop_lang_parent( $lang );
+	$slug   = nl_drop_broker_slug( $b );
+	if ( ! $parent || $slug === '' ) { return 0; }
+	$there = get_page_by_path( get_page_uri( $parent ) . '/' . $slug, OBJECT, 'page' );
+	if ( $there ) {
+		$own = (string) get_post_meta( $there->ID, 'nl_broker_auto', true ) === (string) $b['id'] || (string) get_post_meta( $there->ID, 'nl_broker_site', true ) === (string) $b['id'];
+		if ( ! $own ) { return 0; }
+		update_post_meta( (int) $b['id'], 'nl_site_' . $lang, (string) $there->ID );
+		return (int) $there->ID;
+	}
+	$had = nl_drop_kses_off();
+	$pid = wp_insert_post( array(
+		'post_type'    => 'page',
+		'post_status'  => $status,
+		'post_parent'  => $parent,
+		'post_name'    => $slug,
+		'post_title'   => nl_drop_site_title( $b, $lang ),
+		'post_content' => '',
+		'post_author'  => nl_drop_author(),
+	), true );
+	nl_drop_kses_on( $had );
+	if ( is_wp_error( $pid ) || ! $pid ) { return 0; }
+	update_post_meta( $pid, 'nl_broker_auto', (string) $b['id'] );
+	update_post_meta( $pid, 'nl_lang', $lang );
+	update_post_meta( (int) $b['id'], 'nl_site_' . $lang, (string) $pid );
+	return (int) $pid;
+}
+
+/** Re-writes every engine-built site page of the broker (after a new listing, a sale, a price) and clears the caches. */
+function nl_drop_site_sync( $b ) {
+	if ( ( $b['kind'] ?? 'broker' ) !== 'broker' || empty( $b['id'] ) ) { return; }
+	$b = nl_drop_broker( $b['id'] );
+	if ( ! $b ) { return; }
+	$touched = array();
+	$sites   = array();
+	foreach ( nl_drop_langs() as $l ) {
+		$pid = (int) ( $b[ 'site_' . $l ] ?? 0 );
+		if ( $pid && get_post( $pid ) ) { $sites[ $l ] = $pid; }
+	}
+	$live = array();
+	foreach ( $sites as $l => $pid ) { if ( get_post_status( $pid ) === 'publish' ) { $live[ $l ] = (string) get_permalink( $pid ); } }
+	foreach ( $sites as $l => $pid ) {
+		$touched[] = $pid;
+		if ( (string) get_post_meta( $pid, 'nl_broker_auto', true ) !== (string) $b['id'] ) { continue; }
+		$alts = $live;
+		unset( $alts[ $l ] );
+		$html = nl_drop_site_html( $b, $l, $pid, $alts );
+		$had  = nl_drop_kses_off();
+		wp_update_post( array( 'ID' => $pid, 'post_content' => $html, 'post_title' => nl_drop_site_title( $b, $l ) ) );
+		nl_drop_kses_on( $had );
+		$seo = nl_drop_site_seo( $b, $l );
+		update_post_meta( $pid, '_yoast_wpseo_title', wp_slash( $seo[0] ) );
+		update_post_meta( $pid, '_yoast_wpseo_metadesc', wp_slash( $seo[1] ) );
+		if ( count( $live ) > 1 ) { update_post_meta( $pid, 'nl_hreflang', wp_slash( wp_json_encode( $live, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) ) ); }
+	}
+	nl_drop_purge( $touched );
+}
+
+/** The areas the broker works in, in a language: the broker's own list in Hebrew, the saved translation elsewhere. */
+function nl_drop_areas( $b, $lang ) {
+	$lang = nl_drop_L( $lang );
+	$a    = (array) ( $b['areas_l'][ $lang ] ?? array() );
+	if ( ! $a && $lang !== 'he' ) { $a = (array) ( $b['areas_l']['en'] ?? array() ); }
+	return array_values( array_filter( $a ) );
+}
+
+function nl_drop_areas_phrase( $b, $lang, $max = 3 ) {
+	$a = array_slice( nl_drop_areas( $b, $lang ), 0, $max );
+	if ( ! $a ) { return ''; }
+	$j = nl_drop_join( $a, $lang );
+	return nl_drop_L( $lang ) === 'he' ? nl_drop_he_in( $j ) : $j;
+}
+
+function nl_drop_site_seo( $b, $lang ) {
+	$lang  = nl_drop_L( $lang );
+	$name  = nl_drop_name( $b, $lang );
+	$brand = nl_drop_brand( $b, $lang );
+	$areas = nl_drop_areas_phrase( $b, $lang, 2 );
+	$title = $areas !== '' ? sprintf( nl_drop_t( $lang, 'seo_site_t' ), $name, $areas ) : sprintf( nl_drop_t( $lang, 'seo_site_t0' ), $name );
+	$who   = trim( $name . ( $brand !== '' ? ', ' . $brand : '' ) . ( $b['license'] !== '' ? ', ' . nl_drop_t( $lang, $b['female'] ? 'lic_f' : 'lic_m' ) . ' ' . $b['license'] : '' ) );
+	$areas = nl_drop_areas_phrase( $b, $lang, 3 );
+	$desc  = $areas !== '' ? sprintf( nl_drop_t( $lang, 'seo_site_d' ), $who, $areas ) : sprintf( nl_drop_t( $lang, 'seo_site_d0' ), $who );
+	return array( nl_drop_cut_words( $title, 70 ), nl_drop_cut_words( $desc, 158 ) );
+}
+
+function nl_drop_site_css() {
+	return <<<'NLBCSS'
+.nlb{
+  --paper:#F7F6F2; --surf:#FFFFFF; --ink:#14212B; --ink2:#3B4753; --mute:#5F6B75; --line:#E3E1DA;
+  --sea:#2F6F86; --seah:#255C70; --deep:#1F4B5C; --abyss:#10262F; --sand:#EEE9DD; --mist:#CFE3EA; --foam:#E8F1F3;
+  --serif:'Noto Serif Hebrew','Frank Ruhl Libre','Times New Roman',serif;
+  --sans:Assistant,'Segoe UI','Arial Hebrew',sans-serif;
+  --gutter:clamp(16px,5.6vw,80px); --max:1440px;
+  background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.6;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; overflow-x:clip;
+}
+.nlb[lang="en"]{--serif:'Noto Serif Display','Noto Serif',Georgia,serif}
+.nlb *,.nlb *::before,.nlb *::after{box-sizing:border-box}
+.nlb img{max-width:100%;display:block}
+.nlb a{color:inherit}
+.nlb p{margin:0}
+.nlb .nlb-wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.nlb .nlb-num{font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum" 1,"lnum" 1;direction:ltr;unicode-bidi:isolate}
+.nlb .nlb-eyebrow{display:flex;align-items:center;gap:14px;font-size:14px;font-weight:700;letter-spacing:.03em;color:var(--sea)}
+.nlb[lang="en"] .nlb-eyebrow{letter-spacing:.14em;text-transform:uppercase;font-size:13px}
+.nlb .nlb-eyebrow--line::before{content:"";width:40px;height:1px;background:currentColor;flex:none}
+.nlb.nlb h1,.nlb.nlb h2,.nlb.nlb h3{font-family:var(--serif)!important;font-weight:400!important;color:inherit!important;margin:0!important;letter-spacing:0;text-wrap:balance}
+.nlb .nlb-h2{font-size:clamp(34px,4.2vw,56px)!important;line-height:1.08!important}
+.nlb .nlb-h2--xl{font-size:clamp(40px,5vw,72px)!important;line-height:1.05!important}
+.nlb .nlb-lead{color:var(--ink2);max-width:62ch;font-size:clamp(16px,1.35vw,19px);line-height:1.65}
+.nlb .nlb-sec{padding-block:clamp(56px,7.8vw,112px)}
+.nlb .nlb-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:16px;line-height:1;text-decoration:none!important;border:1px solid transparent;transition:background .2s ease,color .2s ease,border-color .2s ease;white-space:nowrap}
+.nlb .nlb-btn svg{width:19px;height:19px;flex:none}
+.nlb .nlb-btn--paper{background:var(--paper);color:var(--abyss)!important;border-color:var(--paper)}
+.nlb .nlb-btn--paper svg{color:var(--sea)}
+.nlb .nlb-btn--paper:hover{background:#fff}
+.nlb .nlb-btn--ghost{background:transparent;color:var(--paper)!important;border-color:rgba(247,246,242,.42)}
+.nlb .nlb-btn--ghost:hover{background:rgba(247,246,242,.1);border-color:rgba(247,246,242,.7)}
+.nlb .nlb-btn--sea{background:var(--sea);color:#fff!important;border-color:var(--sea)}
+.nlb .nlb-btn--sea:hover{background:var(--seah);border-color:var(--seah)}
+.nlb .nlb-btn--abyss{background:var(--abyss);color:var(--paper)!important;border-color:var(--abyss)}
+.nlb .nlb-btn--abyss:hover{background:var(--deep);border-color:var(--deep)}
+.nlb .nlb-btn--line{background:transparent;color:var(--ink)!important;border-color:var(--ink)}
+.nlb .nlb-btn--line:hover{background:var(--ink);color:var(--paper)!important}
+.nlb .nlb-btn--white{background:#fff;color:var(--ink)!important;border-color:var(--line)}
+.nlb .nlb-btn:focus-visible,.nlb a:focus-visible,.nlb label:focus-visible{outline:2px solid var(--sea);outline-offset:3px}
+.nlb .nlb-cta{display:flex;flex-wrap:wrap;gap:12px}
+.nlb .nlb-hero{position:relative;isolation:isolate;display:grid;grid-template-rows:1fr auto;min-height:clamp(760px,61vw,1000px);background:var(--abyss);color:var(--paper);overflow:hidden}
+.nlb .nlb-hero-media{position:absolute;inset:0;z-index:-1}
+.nlb .nlb-hero-media img,.nlb .nlb-scene,.nlb .nlb-scene svg{width:100%;height:100%;object-fit:cover}
+.nlb .nlb-scene--tall{display:none}
+.nlb .nlb-hero-in{width:100%;display:flex;flex-direction:column;align-items:flex-start;padding-block:clamp(88px,11vw,168px) clamp(150px,15vw,230px)}
+.nlb .nlb-hero .nlb-eyebrow{color:var(--mist);font-size:15px}
+.nlb.nlb .nlb-name{margin-top:26px!important;font-size:clamp(64px,10.4vw,150px)!important;line-height:1!important;letter-spacing:-.01em;color:var(--paper)!important;white-space:nowrap}
+.nlb[lang="en"] .nlb-name{font-size:clamp(52px,8.9vw,128px)!important}
+.nlb .nlb-brand{margin-top:20px;font-family:var(--serif);font-size:clamp(24px,2.9vw,42px);line-height:1.15;font-weight:300;color:var(--mist)}
+.nlb[lang="en"] .nlb-brand{font-style:italic}
+.nlb .nlb-hero .nlb-lede{margin-top:28px;max-width:600px;font-size:clamp(17px,1.46vw,21px);line-height:1.6;color:rgba(247,246,242,.86)}
+.nlb .nlb-hero .nlb-cta{margin-top:40px}
+.nlb .nlb-hero .nlb-btn{min-height:56px;font-size:17px}
+.nlb .nlb-hero-meta{border-top:1px solid rgba(207,227,234,.18)}
+.nlb .nlb-hero-meta-in{display:flex;align-items:center;gap:24px;min-height:104px}
+.nlb .nlb-hero-meta dl{margin:0;display:flex;flex-wrap:wrap;gap:12px 64px}
+.nlb .nlb-hero-meta dl div{display:flex;flex-direction:column;gap:6px}
+.nlb .nlb-hero-meta dt{font-size:13px;font-weight:600;letter-spacing:.03em;color:var(--mist)}
+.nlb .nlb-hero-meta dd{margin:0;font-size:22px;font-weight:600;color:var(--paper)}
+.nlb .nlb-coords{margin-inline-start:auto;font-size:13px;letter-spacing:.06em;color:rgba(207,227,234,.7)}
+.nlb .nlb-feature{display:grid;grid-template-columns:minmax(0,480px) minmax(0,1fr);gap:40px;align-items:center}
+.nlb .nlb-feature-copy{display:flex;flex-direction:column}
+.nlb .nlb-feature-copy .nlb-h2{margin-top:18px!important}
+.nlb .nlb-feature-copy .nlb-lead{margin-top:22px}
+.nlb .nlb-feature-stats{margin:30px 0 0;padding-top:22px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.nlb .nlb-feature-stats dt{font-size:clamp(34px,3.1vw,44px);line-height:1;font-weight:300;color:var(--ink)}
+.nlb .nlb-feature-stats dd{margin:8px 0 0;font-size:14px;color:var(--mute)}
+.nlb .nlb-feature-amen{margin-top:26px;font-size:16px;color:var(--ink2)}
+.nlb .nlb-price-tag{margin-top:26px;display:flex;flex-direction:column;gap:4px}
+.nlb .nlb-price-tag strong{font-size:24px;font-weight:800;color:var(--ink)}
+.nlb .nlb-price-tag span{font-size:15px;color:var(--mute)}
+.nlb .nlb-feature-copy .nlb-cta{margin-top:30px}
+.nlb .nlb-feature-media{position:relative;margin:0;height:600px;border-radius:22px;overflow:hidden;background:var(--abyss)}
+.nlb .nlb-feature-media img,.nlb .nlb-feature-media>svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.nlb .nlb-code{position:absolute;display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:7px;background:rgba(16,38,47,.62);color:var(--paper);font-size:12.5px;font-weight:700;letter-spacing:.06em}
+.nlb .nlb-feature-media .nlb-code{top:20px;inset-inline-start:20px}
+.nlb .nlb-illus{position:absolute;bottom:18px;inset-inline-end:20px;font-size:12px;font-weight:600;letter-spacing:.04em;color:rgba(207,227,234,.72)}
+.nlb .nlb-numbers{background:var(--surf);border-block:1px solid var(--line)}
+.nlb .nlb-numbers-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,456px);gap:64px;align-items:start}
+.nlb .nlb-numbers-copy{display:flex;flex-direction:column}
+.nlb .nlb-numbers-copy .nlb-h2{margin-top:18px!important;font-size:clamp(32px,3.6vw,52px)!important}
+.nlb .nlb-numbers-copy .nlb-lead{margin-top:18px;font-size:clamp(16px,1.25vw,18px)}
+.nlb .nlb-ladders{margin-top:48px;display:flex;flex-direction:column;gap:44px}
+.nlb .nlb-ladder{display:flex;flex-direction:column;gap:12px}
+.nlb .nlb-ladder-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px}
+.nlb .nlb-ladder-label{display:flex;align-items:baseline;gap:10px}
+.nlb .nlb-ladder-label b{font-size:21px;font-weight:700}
+.nlb .nlb-ladder-label span{font-size:15px;color:var(--mute)}
+.nlb .nlb-ladder-range{display:flex;align-items:baseline;gap:8px}
+.nlb .nlb-ladder-range .nlb-num{font-family:var(--serif);font-size:clamp(28px,2.4vw,34px);line-height:1.1}
+.nlb .nlb-ladder-range small{font-size:15px;font-weight:600;color:var(--mute)}
+.nlb .nlb-track svg{display:block;width:100%;height:auto;overflow:visible}
+.nlb .nlb-track--narrow{display:none}
+.nlb .nlb-chips{display:flex;flex-wrap:wrap;gap:8px}
+.nlb .nlb-chip{display:inline-flex;align-items:center;gap:8px;min-height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--paper);font-size:14px;color:var(--ink2);text-decoration:none;white-space:nowrap}
+.nlb .nlb-chip b{font-weight:800;color:var(--ink);letter-spacing:.04em}
+.nlb .nlb-chip:hover{border-color:var(--sea)}
+.nlb .nlb-chip--ask{background:transparent;border-style:dashed;border-color:#AEB8BF;color:var(--mute)}
+.nlb .nlb-map{margin:0}
+.nlb .nlb-map svg{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line)}
+.nlb .nlb-map figcaption{margin-top:12px;font-size:13px;line-height:1.5;color:var(--mute)}
+.nlb .nlb-listings-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 40px;margin-bottom:48px}
+.nlb .nlb-listings-head{max-width:720px;display:flex;flex-direction:column}
+.nlb .nlb-listings-head .nlb-h2{margin-top:18px!important}
+.nlb .nlb-listings-head .nlb-lead{margin-top:18px}
+.nlb .nlb-f{position:absolute;opacity:0;pointer-events:none}
+.nlb .nlb-filters{display:flex;gap:8px}
+.nlb .nlb-filters label{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;border:1px solid var(--line);font-weight:700;font-size:15px;color:var(--ink);cursor:pointer;user-select:none;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.nlb .nlb-filters label span{opacity:.72}
+.nlb .nlb-f-all:checked ~ .nlb-listings-top label.nlb-l-all,
+.nlb .nlb-f-sale:checked ~ .nlb-listings-top label.nlb-l-sale,
+.nlb .nlb-f-rent:checked ~ .nlb-listings-top label.nlb-l-rent{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.nlb .nlb-f:focus-visible ~ .nlb-listings-top .nlb-filters{outline:2px solid var(--sea);outline-offset:4px;border-radius:999px}
+.nlb .nlb-f-sale:checked ~ .nlb-grid .nlb-lcard[data-deal="rent"],
+.nlb .nlb-f-rent:checked ~ .nlb-grid .nlb-lcard[data-deal="sale"]{display:none}
+.nlb .nlb-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:32px;row-gap:36px}
+.nlb .nlb-lcard{position:relative;display:flex;flex-direction:column;background:var(--surf);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:box-shadow .25s ease,border-color .25s ease}
+@supports (grid-template-rows:subgrid){
+  .nlb .nlb-lcard,.nlb .nlb-igtile{display:grid;grid-row:span 9;grid-template-rows:subgrid;row-gap:0}
+}
+.nlb .nlb-lcard:hover{box-shadow:0 18px 40px rgba(16,38,47,.10),0 3px 10px rgba(16,38,47,.05);border-color:#D6D3CA}
+.nlb .nlb-lcard>*:not(.nlb-lcard-media){padding-inline:22px}
+.nlb .nlb-lcard-media{position:relative;display:block;height:224px;background:var(--abyss);overflow:hidden}
+.nlb .nlb-lcard-media img,.nlb .nlb-lcard-media>svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.nlb .nlb-lcard:hover .nlb-lcard-media img{transform:scale(1.03)}
+.nlb .nlb-badges{position:absolute;top:14px;inset-inline-start:14px;inset-inline-end:64px;display:flex;flex-wrap:wrap;gap:6px}
+.nlb .nlb-badge{display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;font-size:13px;font-weight:700;white-space:nowrap}
+.nlb .nlb-badge--sale{background:var(--abyss);color:var(--paper)}
+.nlb .nlb-badge--rent{background:var(--paper);color:var(--abyss)}
+.nlb .nlb-badge--note{background:var(--mist);color:var(--abyss)}
+.nlb .nlb-badge--review{background:var(--sand);color:var(--ink)}
+.nlb .nlb-lcard-media .nlb-code{bottom:12px;inset-inline-end:12px;height:24px;padding:0 9px;font-size:12px}
+.nlb .nlb-lcard-kicker{padding-top:22px;font-size:13px;line-height:1.3;font-weight:700;letter-spacing:.02em;color:var(--sea)}
+.nlb[lang="en"] .nlb-lcard-kicker{letter-spacing:.06em}
+.nlb.nlb .nlb-lcard-title{padding-top:8px!important;font-size:22px!important;line-height:1.3!important;font-weight:500!important}
+.nlb[lang="en"] .nlb-lcard-title{font-size:21px!important}
+.nlb .nlb-lcard-title a{text-decoration:none}
+.nlb .nlb-lcard-title a::after{content:"";position:absolute;inset:0;z-index:0}
+.nlb .nlb-lcard-title a:hover{color:var(--sea)}
+.nlb .nlb-lcard-cta,.nlb .nlb-chip{position:relative;z-index:1}
+.nlb .nlb-price{padding-top:12px;display:flex;flex-direction:column;justify-content:center;gap:4px;min-height:70px}
+.nlb .nlb-price strong{display:flex;align-items:baseline;gap:8px;font-size:27px;line-height:1.15;font-weight:800;color:var(--ink);white-space:nowrap}
+.nlb .nlb-price strong small{font-size:15px;font-weight:600;color:var(--mute)}
+.nlb .nlb-price strong.nlb-ask{font-size:23px}
+.nlb .nlb-price>span{font-size:14px;line-height:1.3;color:var(--mute)}
+.nlb .nlb-specs{list-style:none;margin:16px 22px 0;padding:16px 0 0!important;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px;align-content:start}
+.nlb .nlb-specs li{display:flex;align-items:center;gap:8px;min-width:0;font-size:15px;line-height:1.3;font-weight:600;color:var(--ink)}
+.nlb[lang="en"] .nlb-specs li{font-size:14px}
+.nlb .nlb-specs svg{width:18px;height:18px;flex:none;color:var(--sea)}
+.nlb .nlb-hi{list-style:none;margin:0;padding-top:16px;display:flex;flex-direction:column;gap:5px}
+.nlb .nlb-hi li{position:relative;padding-inline-start:15px;font-size:14.5px;line-height:1.45;color:var(--ink2)}
+.nlb[lang="en"] .nlb-hi li{font-size:14px}
+.nlb .nlb-hi li::before{content:"";position:absolute;inset-inline-start:0;top:.56em;width:5px;height:5px;border-radius:50%;background:var(--sea)}
+.nlb .nlb-amen{padding-top:14px;display:flex;flex-wrap:wrap;align-content:flex-start;gap:6px}
+.nlb .nlb-amen span{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:999px;background:var(--foam);color:var(--deep);font-size:13px;font-weight:600;white-space:nowrap}
+.nlb .nlb-amen svg{width:14px;height:14px}
+.nlb .nlb-lcard-meta{margin:16px 22px 0;padding:12px 0 0!important;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:var(--mute)}
+.nlb .nlb-lcard-meta span:first-child{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--ink)}
+.nlb .nlb-lcard-meta svg{width:16px;height:16px;color:var(--sea);flex:none}
+.nlb .nlb-lcard-cta{padding-block:14px 22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-self:end}
+.nlb .nlb-lcard-cta .nlb-btn{min-height:44px;padding:0 12px;font-size:15px;gap:8px}
+.nlb .nlb-lcard-cta .nlb-btn svg{width:17px;height:17px}
+.nlb .nlb-igtile{display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:32px;background:var(--abyss);color:var(--paper);border-radius:10px}
+@supports (grid-template-rows:subgrid){.nlb .nlb-igtile{display:flex}}
+.nlb .nlb-igtile-top{display:flex;flex-direction:column;gap:16px}
+.nlb .nlb-igtile-top>svg{width:30px;height:30px;color:var(--mist)}
+.nlb .nlb-igtile .nlb-eyebrow{color:var(--mist);font-size:13px}
+.nlb .nlb-igtile-handle{font-family:'Noto Serif Display','Noto Serif',Georgia,serif;font-size:25px;line-height:1.25;overflow-wrap:anywhere;text-align:start}
+.nlb[dir="rtl"] .nlb-igtile-handle{text-align:end}
+.nlb .nlb-igtile-lead{font-size:16px;color:rgba(247,246,242,.8)}
+.nlb .nlb-igtile-bottom{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px}
+.nlb .nlb-igtile-qr{display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--mist)}
+.nlb .nlb-igtile-qr svg{width:144px;height:144px;padding:12px;background:#fff;border-radius:8px}
+.nlb .nlb-igtile .nlb-btn{min-height:44px;padding:0 18px;font-size:15px}
+.nlb .nlb-sec-head{display:flex;flex-direction:column;gap:16px;margin-bottom:40px}
+.nlb .nlb-strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,300px);gap:12px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory}
+.nlb .nlb-strip figure{margin:0;scroll-snap-align:start;display:grid;gap:8px}
+.nlb .nlb-strip img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px;background:var(--sand)}
+.nlb .nlb-strip figcaption{font-size:13px;color:var(--mute)}
+.nlb .nlb-cardsec{background:var(--sand);padding-block:clamp(56px,6.7vw,96px)}
+.nlb .nlb-cardsec-in{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:56px;align-items:center}
+.nlb .nlb-cardsec-head{display:flex;flex-direction:column}
+.nlb .nlb-cardsec-head .nlb-h2{margin-top:18px!important;font-size:clamp(32px,2.9vw,42px)!important;line-height:1.12!important}
+.nlb .nlb-cardsec-head .nlb-lead{margin-top:18px;font-size:17px}
+.nlb .nlb-bcards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.nlb .nlb-bcard{position:relative;container-type:inline-size;aspect-ratio:1050/600;border-radius:12px;overflow:hidden}
+.nlb .nlb-bcard--front{background:var(--abyss);color:var(--paper);box-shadow:0 18px 40px rgba(16,38,47,.18)}
+.nlb .nlb-bcard-scene,.nlb .nlb-bcard-scene svg{position:absolute;inset:0;width:100%;height:100%}
+.nlb .nlb-bcard-in{position:absolute;inset:0;padding:6.1cqw;display:flex;flex-direction:column;justify-content:space-between}
+.nlb .nlb-bcard-brand{display:flex;align-items:center;gap:1.7cqw;font-family:var(--serif);font-size:3.62cqw;line-height:1.2;font-weight:300;color:var(--mist)}
+.nlb .nlb-bcard-brand::before{content:"";width:5.3cqw;height:1px;background:var(--mist)}
+.nlb .nlb-bcard-name{font-family:var(--serif);font-size:9.9cqw;line-height:1;white-space:nowrap}
+.nlb[lang="en"] .nlb-bcard-name{font-size:8.8cqw}
+.nlb .nlb-bcard-role{margin-top:1.33cqw;font-size:2.48cqw;font-weight:600;letter-spacing:.02em;color:var(--mist)}
+.nlb .nlb-bcard--back{background:#fff;color:var(--ink);box-shadow:0 18px 40px rgba(16,38,47,.12);padding:6.1cqw;display:flex;flex-direction:column;justify-content:space-between}
+.nlb .nlb-bcard-back-in{display:flex;align-items:center;justify-content:space-between;gap:3.8cqw}
+.nlb .nlb-bcard-rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2.48cqw}
+.nlb .nlb-bcard-rows li{display:flex;align-items:center;gap:1.9cqw;font-size:2.67cqw;line-height:1.25;font-weight:600}
+.nlb .nlb-bcard-rows svg{width:2.67cqw;height:2.67cqw;min-width:10px;min-height:10px;color:var(--sea);flex:none}
+.nlb .nlb-qr{display:flex;flex-direction:column;align-items:center;gap:1.14cqw;font-size:1.81cqw;font-weight:600;color:var(--mute)}
+.nlb .nlb-qr svg{width:20cqw;height:20cqw}
+.nlb .nlb-bcard-url{display:flex;align-items:center;gap:1.7cqw;font-size:1.71cqw;font-weight:600;letter-spacing:.02em;color:var(--mute)}
+.nlb .nlb-bcard-url::before{content:"";flex:1;height:1px;background:var(--sea);opacity:.45}
+.nlb .nlb-contact{background:var(--abyss);color:var(--paper);padding-block:clamp(56px,7.8vw,112px) clamp(40px,4.5vw,64px)}
+.nlb .nlb-contact-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px 48px}
+.nlb .nlb-contact-copy{max-width:760px;display:flex;flex-direction:column}
+.nlb .nlb-contact .nlb-eyebrow{color:var(--mist)}
+.nlb .nlb-contact .nlb-h2{margin-top:20px!important;color:var(--paper)!important}
+.nlb .nlb-contact-copy p:last-child{margin-top:18px;font-size:clamp(16px,1.4vw,20px);color:rgba(207,227,234,.9)}
+.nlb .nlb-contact .nlb-btn{min-height:56px;font-size:17px}
+.nlb .nlb-method{margin-top:clamp(48px,5.6vw,80px);padding-top:40px;border-top:1px solid rgba(207,227,234,.18);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px}
+.nlb .nlb-method div{display:flex;flex-direction:column;gap:10px}
+.nlb.nlb .nlb-method h3{font-family:var(--sans)!important;font-size:18px!important;font-weight:700!important;color:var(--paper)!important}
+.nlb .nlb-method p{font-size:15px;color:rgba(207,227,234,.82)}
+.nlb .nlb-legal{margin-top:48px;max-width:980px;font-size:13px;line-height:1.7;color:rgba(207,227,234,.66)}
+.nlb .nlb-mbar{display:none}
+@media (max-width:1180px){
+  .nlb .nlb-grid{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}
+  .nlb .nlb-feature{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .nlb .nlb-numbers-in{grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:48px}
+}
+@media (max-width:1024px){
+  .nlb .nlb-feature,.nlb .nlb-numbers-in,.nlb .nlb-cardsec-in{grid-template-columns:minmax(0,1fr)}
+  .nlb .nlb-feature-media{order:-1;height:auto;aspect-ratio:4/3}
+  .nlb .nlb-map{max-width:520px}
+  .nlb .nlb-method{grid-template-columns:minmax(0,1fr);gap:24px}
+  .nlb .nlb-coords{display:none}
+}
+@media (max-width:720px){
+  .nlb{font-size:16px}
+  .nlb .nlb-scene--wide{display:none}
+  .nlb .nlb-scene--tall{display:block}
+  .nlb .nlb-hero{min-height:0}
+  .nlb .nlb-hero-in{padding-block:56px 150px;align-items:stretch}
+  .nlb .nlb-hero .nlb-eyebrow{font-size:13px}
+  .nlb.nlb .nlb-name{margin-top:18px!important;font-size:clamp(52px,17vw,68px)!important;white-space:normal}
+  .nlb[lang="en"] .nlb-name{font-size:clamp(44px,14vw,56px)!important}
+  .nlb .nlb-brand{margin-top:10px}
+  .nlb .nlb-hero .nlb-lede{margin-top:18px}
+  .nlb .nlb-hero .nlb-cta{margin-top:26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .nlb .nlb-hero .nlb-cta .nlb-btn:first-child{grid-column:1/-1}
+  .nlb .nlb-hero .nlb-btn{min-height:48px;font-size:15px;padding:0 10px}
+  .nlb .nlb-hero .nlb-cta .nlb-btn:first-child{min-height:52px;font-size:16px}
+  .nlb .nlb-hero-meta-in{min-height:76px}
+  .nlb .nlb-hero-meta dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:100%}
+  .nlb .nlb-hero-meta dt{font-size:11px}
+  .nlb .nlb-hero-meta dd{font-size:15px}
+  .nlb .nlb-feature-sec{padding-top:0}
+  .nlb .nlb-feature{gap:36px}
+  .nlb .nlb-feature-media{margin-inline:calc(var(--gutter) * -1);border-radius:0;aspect-ratio:auto;height:300px}
+  .nlb .nlb-feature-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px;padding-top:0;border-top:0}
+  .nlb .nlb-feature-stats div{padding-block:14px;border-top:1px solid var(--line)}
+  .nlb .nlb-feature-copy .nlb-cta,.nlb .nlb-contact .nlb-cta{display:grid;grid-template-columns:minmax(0,1fr);width:100%}
+  .nlb .nlb-track--wide{display:none}
+  .nlb .nlb-track--narrow{display:block}
+  .nlb .nlb-grid{grid-template-columns:minmax(0,1fr);row-gap:20px}
+  .nlb .nlb-lcard,.nlb .nlb-igtile{grid-row:auto!important;display:flex!important;flex-direction:column}
+  .nlb .nlb-lcard-media{height:214px}
+  .nlb .nlb-lcard>*:not(.nlb-lcard-media){padding-inline:20px}
+  .nlb .nlb-specs,.nlb .nlb-lcard-meta{margin-inline:20px}
+  .nlb .nlb-filters{width:100%}
+  .nlb .nlb-filters label{padding:0 16px;min-height:40px;font-size:14px}
+  .nlb .nlb-contact-top{align-items:stretch}
+  .nlb .nlb-contact{padding-bottom:112px}
+  .nlb .nlb-mbar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;position:sticky;bottom:0;z-index:30;padding:12px 16px calc(16px + env(safe-area-inset-bottom,0px));background:rgba(247,246,242,.97);border-top:1px solid var(--line)}
+  .nlb .nlb-mbar .nlb-btn{min-height:48px;font-size:16px;padding:0 10px}
+}
+@media (max-width:400px){
+  .nlb .nlb-lcard-cta .nlb-btn{font-size:14px}
+}
+@media (max-width:359px){
+  .nlb .nlb-hero-meta dl{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){.nlb *{transition:none!important}}
+@media print{.nlb .nlb-mbar,.nlb .nlb-cta,.nlb .nlb-lcard-cta,.nlb .nlb-filters{display:none!important}}
+.nlb-site-nav{position:sticky;top:var(--nlb-top,0px);z-index:40;background:rgba(247,246,242,.94);backdrop-filter:saturate(1.2) blur(8px);border-block-end:1px solid var(--line,#E3E1DA)}
+.nlb-site-nav .nlb-wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:58px;flex-wrap:wrap}
+.nlb-site-brand{display:flex;flex-direction:column;line-height:1.15}
+.nlb-site-brand b{font-family:var(--serif,'Noto Serif Hebrew',Georgia,serif);font-size:17px;font-weight:600;color:var(--ink,#14212B)}
+.nlb-site-brand span{font-size:12.5px;color:var(--mute,#6B7680);letter-spacing:.02em}
+.nlb-site-links{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.nlb-site-links a{font-size:14.5px;color:var(--ink-2,#3B4753)!important;text-decoration:none;padding:7px 12px;border-radius:999px;white-space:nowrap;display:inline-block;transition:background .18s ease,color .18s ease}
+.nlb-site-links a:hover,.nlb-site-links a.is-active{background:var(--sand,#EEE9DD);color:var(--ink,#14212B)!important}
+.nlb-site-links a.is-cta{background:var(--sea,#2F6F86);color:#fff!important;font-weight:600}
+.nlb-site-links a.is-cta:hover{background:var(--sea-hover,#255C70);color:#fff!important}
+.nlb-site-links a.is-lang{border:1px solid var(--line,#E3E1DA);font-weight:600;font-size:13.5px}
+@media (max-width:760px){.nlb-site-nav{position:static}.nlb-site-links{width:100%;overflow-x:auto;flex-wrap:nowrap;padding-block-end:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}.nlb-site-links::-webkit-scrollbar{display:none}}
+.nlb [id]{scroll-margin-top:calc(var(--nlb-top,0px) + 72px)}
+.nlb .nlb-hero-media{position:absolute;inset:0;z-index:-1;overflow:hidden;background:#1F4B5C}
+.nlb .nlb-hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 58%;transform:scale(1.06);animation:nlb-settle 16s ease-out forwards}
+@media (max-width:700px){.nlb .nlb-hero-media img{object-position:60% center}}
+@keyframes nlb-settle{to{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.nlb .nlb-hero-media img{animation:none;transform:none}}
+.nlb .nlb-hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(16,38,47,.94) 0%,rgba(16,38,47,.58) 38%,rgba(16,38,47,.16) 72%,rgba(16,38,47,.02) 100%),linear-gradient(to left,rgba(16,38,47,.46) 0%,rgba(16,38,47,0) 55%)}
+.nlb[dir="ltr"] .nlb-hero-media::after{background:linear-gradient(to top,rgba(16,38,47,.94) 0%,rgba(16,38,47,.58) 38%,rgba(16,38,47,.16) 72%,rgba(16,38,47,.02) 100%),linear-gradient(to right,rgba(16,38,47,.46) 0%,rgba(16,38,47,0) 55%)}
+.nlb .nlb-coords{display:none!important}
+.nlb-intro{background:var(--paper,#F7F6F2)}
+.nlb-intro .nlb-wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,5vw,72px);align-items:center;padding-block:clamp(44px,6vw,84px)}
+.nlb-intro h2{font-family:var(--serif,'Noto Serif Hebrew',Georgia,serif);font-size:clamp(26px,3.4vw,40px);font-weight:600;line-height:1.2;margin:0 0 18px;color:var(--ink,#14212B);text-wrap:balance}
+.nlb-intro p{margin:0 0 14px;font-size:clamp(16px,1.6vw,18px);line-height:1.75;color:var(--ink-2,#3B4753);max-width:60ch}
+.nlb-intro-portrait{aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:var(--sand,#EEE9DD);max-width:440px;justify-self:start;margin:0}
+.nlb-intro-portrait img{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:820px){.nlb-intro .nlb-wrap{grid-template-columns:minmax(0,1fr)}.nlb-intro-portrait{max-width:340px;justify-self:center}}
+.nlb-areas{background:var(--surface,#fff);border-block:1px solid var(--line,#E3E1DA)}
+.nlb-areas .nlb-wrap{padding-block:clamp(34px,4.5vw,64px)}
+.nlb-areas h2{font-family:var(--serif,'Noto Serif Hebrew',Georgia,serif);font-size:clamp(24px,2.8vw,32px);font-weight:600;margin:0 0 6px;color:var(--ink,#14212B)}
+.nlb-areas>.nlb-wrap>p{margin:0 0 22px;color:var(--mute,#6B7680);font-size:15.5px}
+.nlb-areagrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0;padding:0;list-style:none}
+.nlb-areagrid li{margin:0}
+.nlb-areagrid a{position:relative;display:block;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:var(--sand,#EEE9DD);color:#fff!important;text-decoration:none;isolation:isolate}
+.nlb-areagrid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease;z-index:-1}
+.nlb-areagrid a::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(16,38,47,.82) 0%,rgba(16,38,47,.25) 55%,rgba(16,38,47,.05) 100%);z-index:0}
+.nlb-areagrid a:hover img{transform:scale(1.04)}
+.nlb-areagrid .nlb-areaname{position:absolute;inset-inline:16px;inset-block-end:14px;z-index:1;display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.nlb-areagrid .nlb-areaname b{font-family:var(--serif,'Noto Serif Hebrew',Georgia,serif);font-size:clamp(18px,2vw,23px);font-weight:600;letter-spacing:.005em}
+.nlb-areagrid .nlb-areaname em{font-style:normal;font-size:13px;opacity:.9}
+@media (max-width:700px){.nlb-areagrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.nlb-areagrid a{aspect-ratio:1/1}}
+.nlb .nlb-lcard-media{aspect-ratio:4/5}
+.nlb .nlb-lcard-media img{object-position:center}
+.nlb .nlb-code{display:none!important}
+.nlb .nlb-igtile .nlb-handle{direction:ltr;unicode-bidi:isolate;font-size:.84em;letter-spacing:-.01em;display:inline-block}
+NLBCSS;
+}
+
+function nl_drop_site_js( $lang ) {
+	return "<script>(function(){var nav=document.querySelector('.nlb-site-nav');if(!nav)return;var art=nav.closest('.nlb');function top(){var h=document.querySelector('header.wp-block-template-part,.header-luxury,.nlpc-site-header');var t=h?Math.round(h.getBoundingClientRect().height):0;if(art)art.style.setProperty('--nlb-top',t+'px');return t;}top();window.addEventListener('resize',top);var links=[].slice.call(nav.querySelectorAll('a[href^=\"#\"]'));var byId={};links.forEach(function(a){var id=a.getAttribute('href').slice(1);byId[id]=a;a.addEventListener('click',function(e){var t=document.getElementById(id);var f=(id==='sale'||id==='rent')?document.getElementById('nlb-f-" . nl_drop_L( $lang ) . "-'+id):null;if(f){f.checked=true;f.dispatchEvent(new Event('change',{bubbles:true}));t=document.getElementById('listings');}if(!t)return;e.preventDefault();var y=t.getBoundingClientRect().top+window.pageYOffset-top()-(nav.offsetHeight||58)-8;window.scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});history.replaceState(null,'','#'+id);});});if(!('IntersectionObserver' in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;links.forEach(function(a){a.classList.remove('is-active')});var a=byId[en.target.id];if(a)a.classList.add('is-active');});},{rootMargin:'-40% 0px -55% 0px'});['about','listings','contact'].forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el);});})();</script>";
+}
+
+/**
+ * The whole site page of a broker in one language: the same design and classes as the approved hand-built site.
+ * @param array $alts lang => url of the broker's other published site pages
+ */
+function nl_drop_site_html( $b, $lang, $pid = 0, $alts = array() ) {
+	$lang  = nl_drop_L( $lang );
+	$he    = $lang === 'he';
+	$name  = nl_drop_name( $b, $lang );
+	$brand = nl_drop_brand( $b, $lang );
+	$first = trim( (string) preg_split( '/\s+/u', $name )[0] );
+	$aid   = 'nlb-' . ( $b['slug'] !== '' ? $b['slug'] : 'b' . (int) $b['id'] ) . '-' . $lang;
+	$live  = array();
+	foreach ( nl_drop_broker_listings( $b['id'], $lang ) as $L ) {
+		if ( $L['source'] === 'broker_drop' && $L['status'] === 'active' ) { $live[] = $L; }
+	}
+	$cards = '';
+	$n     = array( 'sale' => 0, 'rent' => 0 );
+	foreach ( $live as $L ) {
+		$card = nl_drop_card_html( $L, $lang, $b );
+		if ( $card === '' ) { continue; }
+		$cards .= $card;
+		$n[ $L['deal'] ]++;
+	}
+	$total  = $n['sale'] + $n['rent'];
+	$areas  = nl_drop_areas( $b, $lang );
+	$bio    = trim( (string) ( $b['bio'][ $lang ] ?? '' ) );
+	$wa     = $b['wa'] !== '' ? 'https://wa.me/' . rawurlencode( $b['wa'] ) . '?text=' . rawurlencode( sprintf( nl_drop_t( $lang, 'wa_site' ), $first ) ) : '';
+	$tel    = $b['wa'] !== '' ? 'tel:+' . $b['wa'] : '';
+	$phone  = $he ? $b['phone'] : $b['phone_intl'];
+	$licln  = nl_drop_licence_line( $b, $lang );
+	$hero   = '';
+	if ( ! empty( $b['hero'] ) && wp_get_attachment_url( (int) $b['hero'] ) ) {
+		$m    = wp_get_attachment_metadata( (int) $b['hero'] );
+		$hero = '<img src="' . esc_url( wp_get_attachment_url( (int) $b['hero'] ) ) . '" alt="" width="' . (int) ( $m['width'] ?? 0 ) . '" height="' . (int) ( $m['height'] ?? 0 ) . '" loading="eager" decoding="async" fetchpriority="high">';
+	} elseif ( $live ) {
+		$d0 = nl_drop_data_for( $live[0]['id'], $b );
+		$p0 = $d0 && ! empty( $d0['photos'][0] ) ? $d0['photos'][0] : null;
+		if ( $p0 ) { $hero = '<img src="' . esc_url( $p0['url'] ) . '" alt="" width="' . (int) $p0['w'] . '" height="' . (int) $p0['h'] . '" loading="eager" decoding="async" fetchpriority="high">'; }
+	}
+
+	// navigation: the sections that exist, then the other languages
+	$links = '<a href="#listings">' . esc_html( nl_drop_t( $lang, 'nav_listings' ) ) . '</a>';
+	if ( $n['sale'] && $n['rent'] ) {
+		$links .= '<a href="#sale">' . esc_html( nl_drop_t( $lang, 'nav_sale' ) ) . '</a><a href="#rent">' . esc_html( nl_drop_t( $lang, 'nav_rent' ) ) . '</a>';
+	}
+	if ( $bio !== '' ) { $links .= '<a href="#about">' . esc_html( nl_drop_t( $lang, 'nav_about' ) ) . '</a>'; }
+	$links .= '<a href="#contact" class="is-cta">' . esc_html( nl_drop_t( $lang, 'nav_contact' ) ) . '</a>';
+	foreach ( nl_drop_langs() as $al ) {
+		if ( $al !== $lang && ! empty( $alts[ $al ] ) ) {
+			$links .= '<a class="is-lang" href="' . esc_url( $alts[ $al ] ) . '" hreflang="' . $al . '" lang="' . $al . '">' . esc_html( nl_drop_lang_name( $al ) ) . '</a>';
+		}
+	}
+	$btn_wa  = function ( $cls, $label ) use ( $wa ) { return $wa ? '<a class="nlb-btn ' . $cls . '" href="' . esc_url( $wa ) . '" target="_blank" rel="noopener">' . nl_drop_icon( 'wa' ) . '<span>' . esc_html( $label ) . '</span></a>' : ''; };
+	$btn_tel = function ( $cls, $label ) use ( $tel ) { return $tel ? '<a class="nlb-btn ' . $cls . '" href="' . esc_url( $tel ) . '">' . nl_drop_icon( 'phone' ) . '<span class="nlb-num">' . esc_html( $label ) . '</span></a>' : ''; };
+
+	$h  = '<article class="nlb" lang="' . $lang . '" dir="' . ( $he ? 'rtl' : 'ltr' ) . '" id="' . esc_attr( $aid ) . '">' . "\n";
+	$h .= '<nav class="nlb-site-nav" aria-label="' . esc_attr( nl_drop_tn( $lang, 'nav_aria', $name ) ) . '"><div class="nlb-wrap"><span class="nlb-site-brand"><b>' . esc_html( $name ) . '</b>' . ( $brand !== '' ? '<span>' . esc_html( $brand ) . '</span>' : '' ) . '</span><span class="nlb-site-links">' . $links . '</span></div></nav>' . "\n";
+
+	$lede = $areas ? sprintf( nl_drop_t( $lang, 'lede_areas' ), nl_drop_areas_phrase( $b, $lang, 4 ) ) : nl_drop_t( $lang, 'lede_plain' );
+	$h .= '<header class="nlb-hero">' . "\n" . '<div class="nlb-hero-media" aria-hidden="true">' . $hero . '</div>' . "\n";
+	$h .= '<div class="nlb-wrap nlb-hero-in">' . "\n" . '<p class="nlb-eyebrow nlb-eyebrow--line">' . esc_html( nl_drop_t( $lang, 'site_eyebrow' ) ) . '</p>' . "\n";
+	$h .= '<h1 class="nlb-name">' . esc_html( $name ) . '</h1>' . "\n";
+	if ( $brand !== '' ) { $h .= '<p class="nlb-brand">' . esc_html( $brand ) . '</p>' . "\n"; }
+	$h .= '<p class="nlb-lede">' . esc_html( $lede ) . '</p>' . "\n";
+	$h .= '<div class="nlb-cta">' . $btn_wa( 'nlb-btn--paper', nl_drop_t( $lang, 'wa' ) ) . $btn_tel( 'nlb-btn--ghost', $phone ) . '</div>' . "\n" . '</div>' . "\n";
+	$stats = '';
+	if ( $total ) { $stats .= '<div><dt>' . esc_html( nl_drop_t( $lang, 'stat_listings' ) ) . '</dt><dd><span class="nlb-num">' . (int) $total . '</span></dd></div>'; }
+	if ( $areas ) { $stats .= '<div><dt>' . esc_html( nl_drop_t( $lang, 'stat_areas' ) ) . '</dt><dd>' . esc_html( nl_drop_join( array_slice( $areas, 0, 3 ), $lang ) ) . '</dd></div>'; }
+	if ( $stats !== '' ) { $h .= '<div class="nlb-hero-meta"><div class="nlb-wrap nlb-hero-meta-in"><dl>' . $stats . '</dl></div></div>' . "\n"; }
+	$h .= '</header>' . "\n";
+
+	if ( $bio !== '' ) {
+		$h .= '<section class="nlb-sec nlb-intro' . ( $b['portrait'] === '' ? ' nlb-intro--solo' : '' ) . '" id="about"><div class="nlb-wrap"><div><h2>' . esc_html( nl_drop_t( $lang, 'about_h2' ) ) . '</h2><p>' . esc_html( $bio ) . '</p></div>';
+		if ( $b['portrait'] !== '' ) { $h .= '<figure class="nlb-intro-portrait"><img src="' . esc_url( $b['portrait'] ) . '" alt="' . esc_attr( $name ) . '" loading="lazy" decoding="async"></figure>'; }
+		$h .= '</div></section>' . "\n";
+	}
+
+	$h .= '<section class="nlb-sec nlb-listings" id="listings">' . "\n" . '<div class="nlb-wrap">' . "\n";
+	if ( $total && $n['sale'] && $n['rent'] ) {
+		foreach ( array( 'all', 'sale', 'rent' ) as $k ) {
+			$h .= '<input class="nlb-f nlb-f-' . $k . '" type="radio" name="nlb-f-' . $lang . '" id="nlb-f-' . $lang . '-' . $k . '"' . ( $k === 'all' ? ' checked' : '' ) . '>' . "\n";
+		}
+	}
+	$h .= '<div class="nlb-listings-top">' . "\n" . '<div class="nlb-listings-head">' . "\n";
+	$h .= '<p class="nlb-eyebrow nlb-eyebrow--line">' . esc_html( nl_drop_t( $lang, 'nav_listings' ) ) . '</p>' . "\n";
+	$h .= '<h2 class="nlb-h2">' . esc_html( nl_drop_t( $lang, 'listings_h2' ) ) . '</h2>' . "\n";
+	$h .= '<p class="nlb-lead">' . esc_html( $total ? nl_drop_t( $lang, 'listings_lead' ) : nl_drop_t( $lang, 'empty' ) ) . '</p>' . "\n" . '</div>' . "\n";
+	if ( $total && $n['sale'] && $n['rent'] ) {
+		$h .= '<div class="nlb-filters" role="group" aria-label="' . esc_attr( nl_drop_t( $lang, 'filter_aria' ) ) . '">';
+		$h .= '<label class="nlb-l-all" for="nlb-f-' . $lang . '-all">' . esc_html( nl_drop_t( $lang, 'filter_all' ) ) . ' <span class="nlb-num">' . (int) $total . '</span></label>';
+		$h .= '<label class="nlb-l-sale" for="nlb-f-' . $lang . '-sale">' . esc_html( nl_drop_t( $lang, 'nav_sale' ) ) . ' <span class="nlb-num">' . (int) $n['sale'] . '</span></label>';
+		$h .= '<label class="nlb-l-rent" for="nlb-f-' . $lang . '-rent">' . esc_html( nl_drop_t( $lang, 'nav_rent' ) ) . ' <span class="nlb-num">' . (int) $n['rent'] . '</span></label>';
+		$h .= '</div>' . "\n";
+	}
+	$h .= '</div>' . "\n";
+	if ( $total ) { $h .= '<ul class="nlb-grid">' . "\n" . $cards . '</ul>' . "\n"; }
+	$h .= '</div>' . "\n" . '</section>' . "\n";
+
+	$h .= '<footer class="nlb-contact" id="contact">' . "\n" . '<div class="nlb-wrap">' . "\n" . '<div class="nlb-contact-top">' . "\n" . '<div class="nlb-contact-copy">' . "\n";
+	$h .= '<p class="nlb-eyebrow nlb-eyebrow--line">' . esc_html( nl_drop_t( $lang, 'nav_contact' ) ) . '</p>' . "\n";
+	$h .= '<h2 class="nlb-h2 nlb-h2--xl">' . esc_html( nl_drop_t( $lang, 'contact_h2' ) ) . '</h2>' . "\n";
+	$h .= '<p>' . nl_drop_nums_html( trim( $name . ( $licln !== '' ? ', ' . $licln : '' ) ) ) . '.</p>' . "\n" . '</div>' . "\n";
+	$h .= '<div class="nlb-cta">' . $btn_wa( 'nlb-btn--paper', nl_drop_t( $lang, 'wa' ) ) . $btn_tel( 'nlb-btn--ghost', $phone ) . '</div>' . "\n" . '</div>' . "\n";
+	$h .= '<p class="nlb-legal">' . esc_html( nl_drop_tn( $lang, 'legal', $name ) ) . '</p>' . "\n" . '</div>' . "\n" . '</footer>' . "\n";
+	if ( $wa || $tel ) {
+		$h .= '<div class="nlb-mbar">' . $btn_wa( 'nlb-btn--sea', nl_drop_t( $lang, 'wa' ) ) . ( $tel ? '<a class="nlb-btn nlb-btn--white" href="' . esc_url( $tel ) . '">' . nl_drop_icon( 'phone' ) . '<span>' . esc_html( nl_drop_t( $lang, 'call' ) ) . '</span></a>' : '' ) . '</div>' . "\n";
+	}
+	$agent = array_filter( array(
+		'@type'      => 'RealEstateAgent',
+		'name'       => $name,
+		'url'        => $pid ? (string) get_permalink( $pid ) : null,
+		'telephone'  => $b['phone_intl'] !== '' ? $b['phone_intl'] : null,
+		'areaServed' => $areas ? $areas : null,
+		'image'      => $b['portrait'] !== '' ? $b['portrait'] : null,
+		'address'    => array( '@type' => 'PostalAddress', 'addressCountry' => 'IL' ),
+	) );
+	if ( $brand !== '' ) { $agent['parentOrganization'] = array( '@type' => 'Organization', 'name' => $brand ); }
+	$h .= '<script type="application/ld+json">' . wp_json_encode( array( '@context' => 'https://schema.org', '@graph' => array( $agent ) ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
+	$h .= nl_drop_site_js( $lang ) . "\n" . '</article>';
+
+	$css = nl_drop_site_css();
+	if ( $pid ) {
+		$pid  = (int) $pid;
+		$css .= "\nbody.page-id-{$pid} .entry-content.is-layout-constrained>*{max-width:none!important;margin-left:0!important;margin-right:0!important}"
+			. "\nbody.page-id-{$pid} .entry-content{padding-left:0!important;padding-right:0!important}"
+			. "\nbody.page-id-{$pid} .wp-block-post-featured-image,body.page-id-{$pid} .nlcta-start,body.page-id-{$pid} .nlcta-wa,body.page-id-{$pid} .yoast-breadcrumbs{display:none!important}";
+	}
+	$css .= "\n.nlb .nlb-hero-media:empty{background:linear-gradient(135deg,#1F4B5C 0%,#10262F 100%)}"
+		. "\n.nlb .nlb-intro--solo{padding-block:clamp(36px,5vw,64px)}\n.nlb .nlb-intro--solo .nlb-wrap{grid-template-columns:minmax(0,1fr);padding-block:0}"
+		. "\n.nlb .nlb-lcard-media{height:auto!important;width:100%}";
+	return "<!-- wp:html -->\n<style>\n" . $css . "\n</style>\n" . $h . "\n<!-- /wp:html -->";
 }
 
 function nl_drop_is_current( $pid ) {
@@ -1790,7 +3081,7 @@ add_filter( 'the_content', function ( $html ) {
 	if ( ! $bid || strpos( $html, '<ul class="nlb-grid">' ) === false ) { return $html; }
 	$b = nl_drop_broker( $bid );
 	if ( ! $b ) { return $html; }
-	$lang = get_post_meta( $pid, 'nl_lang', true ) === 'en' ? 'en' : 'he';
+	$lang = nl_drop_L( (string) get_post_meta( $pid, 'nl_lang', true ) ?: 'he' );
 	$all  = nl_drop_broker_listings( $bid, $lang );
 	foreach ( $all as $L ) {
 		if ( $L['card_key'] !== '' && $L['status'] !== 'active' ) { $html = nl_drop_remove_li( $html, 'nlb-' . $lang . '-' . $L['card_key'] ); }
@@ -1823,14 +3114,14 @@ add_filter( 'the_content', function ( $html ) {
 	if ( $st !== 'sold' && $st !== 'rented' ) { return $html; }
 	$at = strpos( $html, '<div class="nlx-wrap">' );
 	if ( $at === false ) { return $html; }
-	$lang = get_post_type( $pid ) === 'page' ? 'en' : 'he';
+	$lang = get_post_type( $pid ) === 'page' ? nl_drop_L( (string) get_post_meta( $pid, 'nl_lang', true ) ?: 'en' ) : 'he';
 	$b    = nl_drop_broker( get_post_meta( $pid, 'nl_broker_id', true ) );
 	$site = $b ? nl_drop_site_url( $b, $lang ) : '';
-	$name = $b ? ( $lang === 'en' ? $b['name_en'] : $b['name_he'] ) : '';
+	$name = $b ? nl_drop_name( $b, $lang ) : '';
 	$bar  = '<style>.nlx .nlx-soldbar{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:16px 0 0;padding:12px 16px;border-radius:8px;background:#1F4B5C;color:#fff;font-weight:600}'
 		. '.nlx .nlx-soldbar a{color:#fff!important;text-decoration:underline;font-weight:500}.nlx .nlx-rail .nlx-cta,.nlx .nlx-mbar,.nlx .nlx-agent .nlx-cta{display:none!important}</style>'
 		. '<div class="nlx-soldbar" role="status"><span>' . esc_html( nl_drop_t( $lang, $st ) ) . '</span>'
-		. ( $site ? '<a href="' . esc_url( $site ) . '">' . esc_html( sprintf( nl_drop_t( $lang, 'more' ), $name ) ) . '</a>' : '' ) . '</div>';
+		. ( $site ? '<a href="' . esc_url( $site ) . '">' . esc_html( nl_drop_tn( $lang, 'more', $name ) ) . '</a>' : '' ) . '</div>';
 	$at += strlen( '<div class="nlx-wrap">' );
 	return substr( $html, 0, $at ) . $bar . substr( $html, $at );
 }, 25 );
@@ -1994,6 +3285,7 @@ try{var d=localStorage.getItem('nldrop-draft');if(d&&!txt.value){txt.value=d;}}c
 txt.addEventListener('input',function(){try{localStorage.setItem('nldrop-draft',txt.value);}catch(e){}});
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
 function say(kind,html){statusEl.hidden=false;statusEl.setAttribute('data-k',kind||'');statusEl.innerHTML=html;}
+function langBtns(j){var names={en:'באנגלית',ru:'ברוסית',fr:'בצרפתית'},u=j.urls||(j.url_en?{en:j.url_en}:{}),h='';['en','ru','fr'].forEach(function(l){if(u[l]){h+='<a class="btn btn--small btn--ghost" href="'+esc(u[l])+'" target="_blank" rel="noopener">'+names[l]+'</a>';}});return h;}
 function shrink(file){
   return new Promise(function(res){
     var url=URL.createObjectURL(file),img=new Image();
@@ -2072,7 +3364,7 @@ $('f').addEventListener('submit',function(e){
   }).then(function(x){
     if(!x||!x.ok||!x.j||!x.j.url_he){say('bad','<b>בניית העמוד לא הושלמה</b>אפשר ללחוץ שוב על שליחה. שום דבר לא יוכפל.');throw 'stop';}
     var live=x.j.state==='published';
-    say('ok','<b>'+(live?'הנכס עלה לאתר':'העמוד נשמר כטיוטה')+'</b>'+esc(x.j.title||'')+'<div class="row"><a class="btn btn--small" href="'+esc(x.j.url_he)+'" target="_blank" rel="noopener">לצפייה בעמוד</a>'+(x.j.url_en?'<a class="btn btn--small btn--ghost" href="'+esc(x.j.url_en)+'" target="_blank" rel="noopener">בעמוד באנגלית</a>':'')+'<button type="button" class="btn btn--small btn--ghost" id="again">נכס נוסף</button></div>');
+    say('ok','<b>'+(live?'הנכס עלה לאתר':'העמוד נשמר כטיוטה')+'</b>'+esc(x.j.title||'')+'<div class="row"><a class="btn btn--small" href="'+esc(x.j.url_he)+'" target="_blank" rel="noopener">לצפייה בעמוד</a>'+langBtns(x.j)+'<button type="button" class="btn btn--small btn--ghost" id="again">נכס נוסף</button></div>');
     var again=$('again');if(again){again.addEventListener('click',function(){items=[];render();txt.value='';try{localStorage.removeItem('nldrop-draft');}catch(e){}statusEl.hidden=true;window.scrollTo(0,0);});}
     try{localStorage.removeItem('nldrop-draft');}catch(e){}
     load();
@@ -2126,7 +3418,17 @@ function nl_drop_metabox( $post ) {
 		echo '<p style="margin:6px 0 2px">הקישור ששולחים למתווך:</p><input type="text" readonly value="' . esc_attr( $url ) . '" style="width:100%;direction:ltr" onclick="this.select()">';
 		echo '<p><label><input type="checkbox" name="nl_drop_rotate" value="1"> קישור חדש (הקישור הקודם יפסיק לעבוד)</label></p>';
 	}
-	$fields = array( 'nl_name_he' => 'שם בעברית', 'nl_name_en' => 'שם באנגלית', 'nl_brand_en' => 'שם העסק באנגלית', 'nl_site_he' => 'מזהה עמוד האתר בעברית', 'nl_site_en' => 'מזהה עמוד האתר באנגלית' );
+	$langs = $b ? $b['langs'] : array( 'he' );
+	echo '<p style="margin:10px 0 2px">שפות הנכסים</p><p style="margin:0">';
+	foreach ( array( 'en' => 'אנגלית', 'ru' => 'רוסית', 'fr' => 'צרפתית' ) as $l => $lbl ) {
+		echo '<label style="margin-inline-end:10px"><input type="checkbox" name="nl_langs[]" value="' . esc_attr( $l ) . '"' . checked( in_array( $l, $langs, true ), true, false ) . '> ' . esc_html( $lbl ) . '</label>';
+	}
+	echo '</p>';
+	$tier = $b ? $b['tier'] : 'free';
+	echo '<p style="margin:8px 0 2px">מסלול</p><select name="nl_tier">';
+	foreach ( array( 'free' => 'בסיס (חינם)', 'pro' => 'מקצועי', 'studio' => 'בונים לכם' ) as $k => $lbl ) { echo '<option value="' . esc_attr( $k ) . '"' . selected( $tier, $k, false ) . '>' . esc_html( $lbl ) . '</option>'; }
+	echo '</select>';
+	$fields = array( 'nl_name_he' => 'שם בעברית', 'nl_name_en' => 'שם באנגלית', 'nl_name_ru' => 'שם ברוסית (לא חובה)', 'nl_brand_en' => 'שם העסק באנגלית', 'nl_site_he' => 'מזהה עמוד האתר בעברית', 'nl_site_en' => 'מזהה עמוד האתר באנגלית', 'nl_site_ru' => 'מזהה עמוד האתר ברוסית', 'nl_site_fr' => 'מזהה עמוד האתר בצרפתית' );
 	foreach ( $fields as $k => $label ) {
 		echo '<p style="margin:8px 0 2px">' . esc_html( $label ) . '</p><input type="text" name="' . esc_attr( $k ) . '" value="' . esc_attr( (string) get_post_meta( $post->ID, $k, true ) ) . '" style="width:100%">';
 	}
@@ -2145,14 +3447,22 @@ add_action( 'save_post_nadlan_professional', function ( $pid ) {
 		update_post_meta( $pid, '_nl_drop_token', nl_drop_new_token() );
 		delete_post_meta( $pid, 'nl_drop_token' );
 	}
-	foreach ( array( 'nl_name_he', 'nl_name_en', 'nl_brand_en' ) as $k ) {
+	foreach ( array( 'nl_name_he', 'nl_name_en', 'nl_name_ru', 'nl_brand_en' ) as $k ) {
 		if ( isset( $_POST[ $k ] ) ) { update_post_meta( $pid, $k, sanitize_text_field( wp_unslash( $_POST[ $k ] ) ) ); }
 	}
-	foreach ( array( 'nl_site_he', 'nl_site_en' ) as $k ) {
+	foreach ( array( 'nl_site_he', 'nl_site_en', 'nl_site_ru', 'nl_site_fr' ) as $k ) {
 		if ( isset( $_POST[ $k ] ) ) { update_post_meta( $pid, $k, (string) absint( wp_unslash( $_POST[ $k ] ) ) ); }
 	}
 	update_post_meta( $pid, 'nl_gender', ( isset( $_POST['nl_gender'] ) && $_POST['nl_gender'] === 'f' ) ? 'f' : 'm' );
 	update_post_meta( $pid, 'nl_auto_publish', ! empty( $_POST['nl_auto_publish'] ) ? '1' : '0' );
+	$langs = array( 'he' );
+	foreach ( (array) ( $_POST['nl_langs'] ?? array() ) as $l ) {
+		$l = sanitize_key( wp_unslash( $l ) );
+		if ( in_array( $l, array( 'en', 'ru', 'fr' ), true ) ) { $langs[] = $l; }
+	}
+	update_post_meta( $pid, 'nl_langs', implode( ',', array_unique( $langs ) ) );
+	$tier = isset( $_POST['nl_tier'] ) ? sanitize_key( wp_unslash( $_POST['nl_tier'] ) ) : 'free';
+	update_post_meta( $pid, 'nl_tier', in_array( $tier, array( 'free', 'pro', 'studio' ), true ) ? $tier : 'free' );
 } );
 
 add_filter( 'manage_nadlan_drop_posts_columns', function ( $cols ) {
@@ -2192,6 +3502,8 @@ add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 		'drops_7d'     => $q(),
 		'published_7d' => $q( 'published' ),
 		'held_7d'      => $q( 'held' ),
+		'sites_auto'   => count( get_posts( array( 'post_type' => 'page', 'post_status' => 'publish', 'fields' => 'ids', 'numberposts' => 500, 'meta_query' => array( array( 'key' => 'nl_broker_auto', 'compare' => 'EXISTS' ) ), 'suppress_filters' => true ) ) ),
+		'langs'        => nl_drop_langs(),
 	);
 	return $out;
 } );
