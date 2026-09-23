@@ -100,7 +100,7 @@ LANGS = {
         areas_h2="האזורים שלי", areas_p="קו החוף הצפוני של תל אביב, ומשם פנימה אל שרונה וצפונה אל הרצליה פיתוח.",
         one="נכס אחד", many="{n} נכסים", nav_aria="ניווט באתר של מיטל קציר",
         photos_eyebrow="תמונות", photos_h2="הנכס בתמונות", home_label="האתר של מיטל קציר",
-        agent_line_re=r'נדל״ן על הים · רישיון תיווך <span class="nlx-num">3131540</span>[^<]*', agent_line="נדל״ן על הים · " + TEL,
+        agent_line_re=r'נדל״ן על הים · רישיון תיווך <span class="nlx-num">3131540</span>[^<]*', agent_line='נדל״ן על הים · מתווכת במקרקעין, רישיון <span class="nlx-num">3131540</span> · ' + TEL,   # Brokers Ethics Regulations reg. 19(a): name, broker status and licence number on every listing
         text_fixes=[(r"(למכירה|להשכרה) · בלעדיות · ", r"\1 · "), (r" לפי מודעת השכרה במדלן באותה כתובת", ""), (r" ?\(לפי נתוני המרחק במדלן\)", ""), (r" בעמוד [֐-׿ ]+? במדלן", ""),
                     (r" במדלן מופיע כ", " מופיע כ"), (r", במדלן תחת [֐-׿ ]+?(?=\s\d)", ""), (r" \(מספר הבית לא ברור\)", ""), (r"\s*במדלן\s+מופיע", " מופיע"), (r"(\d{4}) ובמדלן\)", r"\1)"),
                     (r"5 דקות הליכה \(לפי המתווכת, [^)]*\) או 7 דקות הליכה \(לפי המתווכת, [^)]*\)", "5 עד 7 דקות הליכה"),
@@ -135,7 +135,7 @@ LANGS = {
         areas_h2="My areas", areas_p="North Tel Aviv’s coastline, inland to Sarona and north to Herzliya Pituach.",
         one="1 listing", many="{n} listings", nav_aria="Meital Katzir site navigation",
         photos_eyebrow="Photographs", photos_h2="The home in pictures", home_label="Meital Katzir’s site",
-        agent_line_re=r'Real Estate by the Sea · Israeli brokerage license <span class="nlx-num">3131540</span>[^<]*', agent_line="Real Estate by the Sea · " + TEL_INTL,
+        agent_line_re=r'Real Estate by the Sea · Israeli brokerage license <span class="nlx-num">3131540</span>[^<]*', agent_line='Real Estate by the Sea · licensed real estate broker, licence <span class="nlx-num">3131540</span> · ' + TEL_INTL,
         text_fixes=[(r"(For sale|For rent) · Exclusive · ", r"\1 · "), (r"\s*per the listing fields", ""), (r",? according to the broker", ""), (r"\bnot verified\b", "to be confirmed"),
                     (r"\bunverified\b", "to be confirmed"), (r" per Madlan", ""), (r" by Madlan", ""), (r"\bthe listing broker\b", "Meital Katzir")],
         switch_listing="English",
