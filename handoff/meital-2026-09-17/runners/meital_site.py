@@ -172,7 +172,7 @@ def clean_sales_surface(s, lang):
 
 EXTRA_LISTING = """
 /* the theme's own showroom layers (generic 3D, price, facts, facade, costs, claim card, similar listings) stay off her pages; the theme H1 stays for search, unseen */
-.single-nadlan_property .nlps-price,.single-nadlan_property .nlps-facts,.single-nadlan_property .nlps-chips,.single-nadlan_property .nlps-trust,.single-nadlan_property .nlps-hl,.single-nadlan_property .nlps-3d,.single-nadlan_property .nlps-facade,.single-nadlan_property .nlps-costs,.single-nadlan_property .nlps-map-sec,.single-nadlan_property .nlps-share,.single-nadlan_property .nlps-report,.single-nadlan_property .nlcard{display:none!important}
+.single-nadlan_property .nlps-hero,.single-nadlan_property .nlps-price,.single-nadlan_property .nlps-facts,.single-nadlan_property .nlps-chips,.single-nadlan_property .nlps-trust,.single-nadlan_property .nlps-hl,.single-nadlan_property .nlps-3d,.single-nadlan_property .nlps-facade,.single-nadlan_property .nlps-costs,.single-nadlan_property .nlps-map-sec,.single-nadlan_property .nlps-share,.single-nadlan_property .nlps-report,.single-nadlan_property .nlcard{display:none!important}
 .single-nadlan_property .nlps{margin:0!important;padding:0!important}
 .single-nadlan_property .nlps-title{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
 .single-nadlan_property .entry-content>article.nlx~*{display:none!important}
