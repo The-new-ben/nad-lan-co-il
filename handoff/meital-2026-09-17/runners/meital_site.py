@@ -298,7 +298,7 @@ SITE_CSS = """
 .nlb-areagrid .nlb-areaname em{font-style:normal;font-size:13px;opacity:.9}
 @media (max-width:700px){.nlb-areagrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.nlb-areagrid a{aspect-ratio:1/1}}
 /* listings polish */
-.nlb .nlb-lcard-media{aspect-ratio:4/5}
+.nlb .nlb-lcard-media{aspect-ratio:4/5;height:auto;width:100%}
 .nlb .nlb-lcard-media img{object-position:center}
 .nlb .nlb-code{display:none!important}
 .nlb .nlb-igtile .nlb-handle{direction:ltr;unicode-bidi:isolate;font-size:.84em;letter-spacing:-.01em;display:inline-block}
@@ -481,6 +481,16 @@ GENERIC = {
 <p>Want a site like this? Write to <a href="mailto:info@nad-lan.co.il">info@nad-lan.co.il</a> or <a href="/contact/">contact us</a>, and we will come back with a proposal and an example built on your listings.</p>
 <!-- /wp:paragraph -->"""},
 }
+# 23.9.2026: /brokers/ and /en/brokers/ belong to scripts/broker-drop/pages/ (the sign-up form, the plans, the four
+# languages). This runner reads them from there, so a --pages run can never bring back the old copy above.
+_REPO_ROOT = os.path.normpath(os.path.join(PKG, "..", "..", ".."))
+for _l in ("he", "en"):
+    _p = os.path.join(_REPO_ROOT, "scripts", "broker-drop", "pages", "brokers-%s.html" % _l)
+    if os.path.exists(_p):
+        GENERIC[_l]["content"] = open(_p, encoding="utf-8").read()
+GENERIC["he"].update({"title": "אתר למתווכים ולמשרדי תיווך, בחינם", "yoast_title": "אתר למתווך נדל״ן בחינם | עמוד לכל נכס בעברית ובאנגלית",
+                      "yoast_desc": "אתר על שמכם בחינם, עמוד לכל נכס בעברית ובאנגלית, ונכס שעולה מהטלפון בתוך דקה. הרישיון נבדק מול פנקס המתווכים. מסלול מקצועי: רוסית, צרפתית והבלטה."})
+GENERIC["en"].update({"yoast_desc": "A free site under your name, a full page for every listing, Hebrew and English, and a listing live from your phone in a minute. Licence checked against the register."})
 
 def find_page(slug, parent):
     st, r = req("GET", "/wp/v2/pages", None, {"slug": slug, "parent": parent, "per_page": 5, "status": "publish,draft,private", "_fields": "id,slug,parent,link"})

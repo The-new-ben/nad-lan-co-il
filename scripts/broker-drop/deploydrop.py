@@ -243,8 +243,8 @@ def install_and_setup():
         if "--pages" in ARGS:
             # the "for brokers" page in four languages, each ending with the sign-up form (x-broker-join fills the mount)
             pages_dir = os.path.join(REPO, "scripts", "broker-drop", "pages")
-            spec = {"he": (7645, 0, "מיניסייט למתווכים ולמשרדי תיווך", "מיניסייט למתווכים | האתר שלכם בתוך פורטל הנדל״ן nad-lan",
-                           "אתר על שמכם בחינם, עמוד מלא לכל נכס, עברית ואנגלית, והעלאת נכס מהטלפון בתוך דקה. הרישיון נבדק מול פנקס המתווכים."),
+            spec = {"he": (7645, 0, "אתר למתווכים ולמשרדי תיווך, בחינם", "אתר למתווך נדל״ן בחינם | עמוד לכל נכס בעברית ובאנגלית",
+                           "אתר על שמכם בחינם, עמוד לכל נכס בעברית ובאנגלית, ונכס שעולה מהטלפון בתוך דקה. הרישיון נבדק מול פנקס המתווכים. מסלול מקצועי: רוסית, צרפתית והבלטה."),
                     "en": (7803, 5011, "Minisites for Real Estate Brokers and Agencies", "Broker Minisites | Your Real Estate Site Inside nad-lan",
                            "A free site under your name, a full page for every listing, Hebrew and English, and a listing live from your phone in a minute. Licence checked against the register."),
                     "ru": (0, 5056, "Мини-сайт для риелторов и агентств недвижимости", "Мини-сайт для риелторов в Израиле | nad-lan",

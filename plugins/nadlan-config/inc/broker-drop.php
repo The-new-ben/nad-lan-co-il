@@ -30,7 +30,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { return; }
 if ( defined( 'NL_DROP_VERSION' ) ) { return; }
-define( 'NL_DROP_VERSION', '1.1.0' );
+define( 'NL_DROP_VERSION', '1.1.1' );
 define( 'NL_DROP_MAX_BYTES', 15728640 );
 define( 'NL_DROP_MAX_PHOTOS', 30 );
 
@@ -581,6 +581,17 @@ function nl_drop_gate_str( $s, $lang, $allowed, $stated = null, $names = array()
 	return $issues;
 }
 
+/** True when a copy field names the street the broker wrote (the address is never published). */
+function nl_drop_has_street( $s, $f ) {
+	foreach ( array( $f['street_he'] ?? '', $f['street_en'] ?? '' ) as $st ) {
+		$st = trim( preg_replace( '/^(רחוב|רח׳|רח\'|שד׳|שדרות|st\.?|street|rehov|rechov|sderot|sd\.)\s+/iu', '', (string) $st ) );
+		$st = trim( preg_replace( '/\s+\d+[a-zא-ת]?$/iu', '', $st ) );
+		$st = trim( preg_replace( '/\s+(st\.?|street|blvd\.?|boulevard|ave\.?|avenue|rd\.?|road)$/iu', '', $st ) );
+		if ( ( function_exists( 'mb_strlen' ) ? mb_strlen( $st ) : strlen( $st ) ) >= 3 && stripos( nl_drop_norm( $s ), nl_drop_norm( $st ) ) !== false ) { return true; }
+	}
+	return false;
+}
+
 /** Hebrew typography: מ"ר -> מ״ר, ג'קוזי -> ג׳קוזי. */
 function nl_drop_he_typo( $s ) {
 	$s = preg_replace( '/(?<=[\x{05D0}-\x{05EA}])"(?=[\x{05D0}-\x{05EA}])/u', '״', (string) $s );
@@ -788,7 +799,7 @@ function nl_drop_extract_prompt() {
 	return <<<'NLPROMPT'
 You read ONE message that an Israeli real-estate broker wrote about ONE property, in Hebrew or English, often informal. Return ONLY a JSON object with exactly these keys:
 listing_type ("sale" or "rent" or null), property_type ("apartment", "penthouse", "mini_penthouse", "garden", "duplex", "villa", "cottage", "studio", "other" or null), exclusive (true or false),
-city_he, city_en, area_he, area_en, street_he,
+city_he, city_en, area_he, area_en, street_he, street_en,
 rooms, size_sqm, balcony_sqm, garden_sqm, floor, total_floors, price, parking_count,
 parking, storage, elevator, protected_room, ac, furnished (each true, false or null),
 condition ("new", "renovated", "good", "needs_renovation" or null),
@@ -801,8 +812,8 @@ Rules, all strict:
 4. price: the asking price in NIS for a sale, or the monthly rent for a rental. Only if written.
 5. floor: 0 for a ground floor only if the message says קרקע or ground. "5 מתוך 8" means floor 5 and total_floors 8.
 6. exclusive: true only if the message says בלעדיות, בבלעדיות, בלעדי or exclusive.
-7. area_he: the neighborhood or area exactly as written in the message. area_en: its usual English spelling (Tzukei Aviv, Nofei Yam, Kochav HaTzafon, Ramat Aviv HaHadasha, Herzliya Pituach, Sarona, Neve Tzedek, Old North, Bavli, Florentin). city_he and city_en: only if written, or if the neighborhood is unmistakably inside one city (נופי ים, צוקי אביב, כוכב הצפון, רמת אביב, שרונה, בבלי are in תל אביב-יפו / Tel Aviv-Yafo; הרצליה פיתוח is in הרצליה / Herzliya).
-8. street_he: only if a street is written. It is kept private and never published.
+7. area_he: the neighborhood or area exactly as written in the message. area_en: its usual English spelling (Tzukei Aviv, Nofei Yam, Kochav HaTzafon, Ramat Aviv HaHadasha, Herzliya Pituach, Sarona, Neve Tzedek, Old North, Bavli, Florentin). city_he and city_en: only if written, or if the neighborhood is unmistakably inside one city (נופי ים, צוקי אביב, כוכב הצפון, רמת אביב, שרונה, בבלי, יפו, פלורנטין, נווה צדק are areas in תל אביב-יפו / Tel Aviv-Yafo, so for them area_he is the area and city_he is תל אביב-יפו; הרצליה פיתוח is in הרצליה / Herzliya).
+8. street_he: only if a street is written; street_en: the same street in English letters. Both are kept private and never published.
 9. parking_count: only if a number of parking spaces is written. parking: true if parking is mentioned at all.
 10. features_he: up to 8 short items taken from the message (materials, brands, systems, facilities, what the balcony faces), each under 40 characters, in Hebrew, with no praise words the message does not use. features_en: the same items in English, in the same order.
 11. view_he and view_en: only if the message says what is seen (ים or sea, פארק or park, העיר or the city).
@@ -871,7 +882,7 @@ function nl_drop_clean_facts( $j, $text ) {
 	foreach ( array( 'parking', 'storage', 'elevator', 'protected_room', 'ac', 'furnished' ) as $k ) { $f[ $k ] = $bool( $j[ $k ] ?? null ); }
 	if ( $f['parking_count'] ) { $f['parking'] = true; }
 	$f['condition'] = in_array( $j['condition'] ?? null, array( 'new', 'renovated', 'good', 'needs_renovation' ), true ) ? $j['condition'] : null;
-	foreach ( array( 'city_he' => 60, 'city_en' => 60, 'area_he' => 60, 'area_en' => 60, 'street_he' => 80, 'entry_he' => 60, 'entry_en' => 60, 'view_he' => 60, 'view_en' => 60, 'notes_he' => 320, 'notes_en' => 320 ) as $k => $max ) {
+	foreach ( array( 'city_he' => 60, 'city_en' => 60, 'area_he' => 60, 'area_en' => 60, 'street_he' => 80, 'street_en' => 80, 'entry_he' => 60, 'entry_en' => 60, 'view_he' => 60, 'view_en' => 60, 'notes_he' => 320, 'notes_en' => 320 ) as $k => $max ) {
 		$f[ $k ] = $str( $j[ $k ] ?? null, $max );
 	}
 	foreach ( array( 'city_he', 'area_he', 'street_he', 'entry_he', 'view_he', 'notes_he' ) as $k ) {
@@ -967,7 +978,7 @@ NLPROMPT;
 
 function nl_drop_write( $f, $text, $b, &$err = null ) {
 	$pub = $f;
-	unset( $pub['street_he'] );
+	unset( $pub['street_he'], $pub['street_en'] );
 	$user = wp_json_encode( array( 'FACTS' => $pub, 'MESSAGE' => (string) $text ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
 	$j    = nl_drop_llm_json( nl_drop_write_prompt( $b ), $user, 2600, $err );
 	return nl_drop_finish_copy( is_array( $j ) ? $j : array(), $f, $text );
@@ -993,7 +1004,7 @@ function nl_drop_finish_copy( $j, $f, $text ) {
 			$s = preg_replace( '/\s+/u', ' ', $s );
 			return $lang === 'he' ? nl_drop_he_typo( $s ) : $s;
 		};
-		$ok = function ( $s ) use ( $lang, $allowed, $stated, $names ) { return $s !== '' && ! nl_drop_gate_str( $s, $lang, $allowed, $stated, $names ); };
+		$ok = function ( $s ) use ( $lang, $allowed, $stated, $names, $f ) { return $s !== '' && ! nl_drop_gate_str( $s, $lang, $allowed, $stated, $names ) && ! nl_drop_has_street( $s, $f ); };
 		foreach ( $caps as $k => $max ) {
 			$v   = $fix( $src[ $k ] ?? '' );
 			$v   = function_exists( 'mb_substr' ) ? mb_substr( $v, 0, $max ) : substr( $v, 0, $max );
@@ -1219,7 +1230,7 @@ function nl_drop_finish_tr( $j, $f, $text, $langs ) {
 			$s = nl_drop_price_token( trim( wp_strip_all_tags( (string) $s ) ), $f );
 			return trim( (string) preg_replace( '/[ \t\r\n]+/u', ' ', $s ) );
 		};
-		$ok    = function ( $s ) use ( $lang, $allowed, $stated, $names ) { return $s !== '' && ! nl_drop_gate_str( $s, $lang, $allowed, $stated, $names ); };
+		$ok    = function ( $s ) use ( $lang, $allowed, $stated, $names, $f ) { return $s !== '' && ! nl_drop_gate_str( $s, $lang, $allowed, $stated, $names ) && ! nl_drop_has_street( $s, $f ); };
 		$c     = array();
 		$bad   = 0;
 		foreach ( $caps as $k => $max ) {
@@ -2037,7 +2048,7 @@ function nl_drop_build( $drop_id, $b ) {
 	}
 	$slug = nl_drop_slug( $f, $b );
 	$pub  = $f;
-	unset( $pub['street_he'] );
+	unset( $pub['street_he'], $pub['street_en'] );
 	$photos = nl_drop_photos( $ids, $copy['he']['title'] );
 	$author = $owner && ! empty( $b['user_id'] ) ? (int) $b['user_id'] : nl_drop_author();
 	$status = $b['auto'] ? 'publish' : 'draft';

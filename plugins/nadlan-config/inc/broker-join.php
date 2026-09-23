@@ -24,7 +24,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { return; }
 if ( defined( 'NL_JOIN_VERSION' ) ) { return; }
-define( 'NL_JOIN_VERSION', '1.0.0' );
+define( 'NL_JOIN_VERSION', '1.0.1' );
 define( 'NL_JOIN_REGISTER', 'a0f56034-88db-4132-8803-854bcdb01ca1' );
 
 /* =====================================================================================================
@@ -404,6 +404,10 @@ function nl_join_rest( WP_REST_Request $req ) {
 	if ( $p( 'website', 50 ) !== '' ) { return array( 'ok' => true ); }   // the trap: a quiet no
 	if ( nl_join_limited( 'try', 12, HOUR_IN_SECONDS ) ) { return nl_join_err( 'nljoin_rate', $lang, 'e_rate', 429 ); }
 	$licence = preg_replace( '/\D+/', '', $p( 'licence', 20 ) );
+	// a licence that already has a site answers first: the broker who lost the link needs only the licence and the email
+	if ( $licence !== '' && nl_join_by_licence( $licence ) ) {
+		return nl_join_err( 'nljoin_dup', $lang, 'e_dup', 409, array( 'btn' => nl_join_t( $lang, 'e_dup_btn' ), 'other' => sprintf( esc_html( nl_join_t( $lang, 'e_dup_other' ) ), '<a href="mailto:' . esc_attr( nl_join_contact() ) . '">' . esc_html( nl_join_contact() ) . '</a>' ) ) );
+	}
 	$name_he = preg_replace( '/\s+/u', ' ', $p( 'name_he', 60 ) );
 	$name_en = preg_replace( '/\s+/u', ' ', $p( 'name_en', 60 ) );
 	$brand   = $p( 'brand', 60 );
@@ -430,11 +434,6 @@ function nl_join_rest( WP_REST_Request $req ) {
 	}
 	if ( $bio !== '' && function_exists( 'nl_drop_banned_hits' ) && nl_drop_banned_hits( $bio, 'he' ) ) { $bio = ''; }
 
-	// one site per licence
-	$dup = nl_join_by_licence( $licence );
-	if ( $dup ) {
-		return nl_join_err( 'nljoin_dup', $lang, 'e_dup', 409, array( 'btn' => nl_join_t( $lang, 'e_dup_btn' ), 'other' => sprintf( esc_html( nl_join_t( $lang, 'e_dup_other' ) ), '<a href="mailto:' . esc_attr( nl_join_contact() ) . '">' . esc_html( nl_join_contact() ) . '</a>' ) ) );
-	}
 	if ( nl_join_limited( 'reg', 8, HOUR_IN_SECONDS ) ) { return nl_join_err( 'nljoin_rate', $lang, 'e_rate', 429 ); }
 	$reg = nl_join_registry( $licence );
 	if ( is_wp_error( $reg ) ) { return nl_join_err( 'nljoin_register', $lang, 'e_register', 503 ); }
