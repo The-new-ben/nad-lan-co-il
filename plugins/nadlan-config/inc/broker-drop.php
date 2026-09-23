@@ -22,7 +22,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { return; }
 if ( defined( 'NL_DROP_VERSION' ) ) { return; }
-define( 'NL_DROP_VERSION', '1.0.0' );
+define( 'NL_DROP_VERSION', '1.0.1' );
 define( 'NL_DROP_MAX_BYTES', 15728640 );
 define( 'NL_DROP_MAX_PHOTOS', 30 );
 
@@ -32,7 +32,7 @@ define( 'NL_DROP_MAX_PHOTOS', 30 );
 add_action( 'init', function () {
 	$auth = function () { return current_user_can( 'edit_posts' ); };
 	$str  = array( 'type' => 'string', 'single' => true, 'show_in_rest' => true, 'auth_callback' => $auth );
-	foreach ( array( 'nl_drop_on', 'nl_drop_token', 'nl_name_he', 'nl_name_en', 'nl_brand_en', 'nl_gender', 'nl_site_he', 'nl_site_en', 'nl_auto_publish' ) as $k ) {
+	foreach ( array( 'nl_drop_on', 'nl_name_he', 'nl_name_en', 'nl_brand_en', 'nl_gender', 'nl_site_he', 'nl_site_en', 'nl_auto_publish' ) as $k ) {
 		register_post_meta( 'nadlan_professional', $k, $str );
 	}
 	foreach ( array( 'nadlan_property', 'page' ) as $t ) {
@@ -51,6 +51,18 @@ add_action( 'init', function () {
 		'capabilities'    => array( 'create_posts' => 'do_not_allow' ),
 	) );
 }, 20 );
+
+/* The personal link is a secret: never in a REST response, whatever else registers the key. */
+add_filter( 'rest_prepare_nadlan_professional', function ( $resp ) {
+	if ( $resp instanceof WP_REST_Response ) {
+		$d = $resp->get_data();
+		if ( isset( $d['meta'] ) && is_array( $d['meta'] ) ) {
+			unset( $d['meta']['nl_drop_token'], $d['meta']['_nl_drop_token'], $d['meta']['_nl_email'] );
+			$resp->set_data( $d );
+		}
+	}
+	return $resp;
+}, 99 );
 
 /* =====================================================================================================
  * Brokers
@@ -81,7 +93,7 @@ function nl_drop_broker( $pid ) {
 		'site_en'    => (int) $m( 'nl_site_en' ),
 		'auto'       => $m( 'nl_auto_publish' ) !== '0',
 		'on'         => $m( 'nl_drop_on' ) === '1',
-		'token'      => $m( 'nl_drop_token' ),
+		'token'      => trim( (string) get_post_meta( $p->ID, '_nl_drop_token', true ) ),
 		'areas'      => array_values( array_filter( array_map( 'trim', explode( ',', $m( 'areas_served' ) ) ) ) ),
 	);
 }
@@ -96,7 +108,7 @@ function nl_drop_broker_by_token( $token ) {
 		'fields'           => 'ids',
 		'no_found_rows'    => true,
 		'suppress_filters' => true,
-		'meta_query'       => array( array( 'key' => 'nl_drop_token', 'value' => $token ) ),
+		'meta_query'       => array( array( 'key' => '_nl_drop_token', 'value' => $token ) ),
 	) );
 	if ( ! $ids ) { return null; }
 	$b = nl_drop_broker( $ids[0] );
@@ -2129,8 +2141,9 @@ add_action( 'save_post_nadlan_professional', function ( $pid ) {
 	if ( ! current_user_can( 'edit_post', $pid ) || wp_is_post_revision( $pid ) ) { return; }
 	$on = ! empty( $_POST['nl_drop_on'] );
 	update_post_meta( $pid, 'nl_drop_on', $on ? '1' : '0' );
-	if ( $on && ( (string) get_post_meta( $pid, 'nl_drop_token', true ) === '' || ! empty( $_POST['nl_drop_rotate'] ) ) ) {
-		update_post_meta( $pid, 'nl_drop_token', nl_drop_new_token() );
+	if ( $on && ( (string) get_post_meta( $pid, '_nl_drop_token', true ) === '' || ! empty( $_POST['nl_drop_rotate'] ) ) ) {
+		update_post_meta( $pid, '_nl_drop_token', nl_drop_new_token() );
+		delete_post_meta( $pid, 'nl_drop_token' );
 	}
 	foreach ( array( 'nl_name_he', 'nl_name_en', 'nl_brand_en' ) as $k ) {
 		if ( isset( $_POST[ $k ] ) ) { update_post_meta( $pid, $k, sanitize_text_field( wp_unslash( $_POST[ $k ] ) ) ); }

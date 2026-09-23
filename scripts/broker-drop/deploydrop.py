@@ -10,6 +10,7 @@ Usage:
   python deploydrop.py                 lint on the server + install/update x-broker-drop + verify
   python deploydrop.py --setup         also wire Meital (token, site pages, her 11 listings and their English twins)
   python deploydrop.py --auto 0|1      Meital's pages publish at once (1) or wait as drafts (0)
+  python deploydrop.py --rotate        a new personal link for Meital (the old one stops working at once)
   python deploydrop.py --off           deactivate x-broker-drop (rollback)
   python deploydrop.py --verify        checks only
 The drop link is printed once at --setup (it is the deliverable the owner forwards to the broker). The WordPress app
@@ -122,8 +123,9 @@ add_action( 'rest_api_init', function () {
 			}
 			if ( ! empty( $b['token_for'] ) ) {
 				$pid = (int) $b['token_for'];
-				$t   = (string) get_post_meta( $pid, 'nl_drop_token', true );
-				if ( ! preg_match( '/^[a-z0-9]{24}$/', $t ) ) { $t = substr( bin2hex( random_bytes( 16 ) ), 0, 24 ); update_post_meta( $pid, 'nl_drop_token', $t ); }
+				$t   = (string) get_post_meta( $pid, '_nl_drop_token', true );
+				if ( ! empty( $b['rotate'] ) || ! preg_match( '/^[a-z0-9]{24}$/', $t ) ) { $t = substr( bin2hex( random_bytes( 16 ) ), 0, 24 ); update_post_meta( $pid, '_nl_drop_token', $t ); }
+				delete_post_meta( $pid, 'nl_drop_token' );
 				$out['drop_url'] = home_url( '/drop/' . $t . '/' );
 			}
 			if ( ! empty( $b['purge'] ) ) {
@@ -188,6 +190,12 @@ def install_and_setup():
             print("setup: meta on", len(r.get("meta_ok", [])), "posts; missing", r.get("meta_missing", []))
             print("DROP LINK:", r["drop_url"])
 
+        if "--rotate" in ARGS:
+            r = ops({"token_for": BROKER, "rotate": 1}, "rotate")
+            print("NEW DROP LINK:", r["drop_url"])
+            with open(os.path.join(os.environ.get("NL_SCRATCH", "."), "drop_url.txt"), "w", encoding="utf-8") as fh:
+                fh.write(r["drop_url"] + chr(10))
+
         if "--auto" in ARGS:
             val = ARGS[ARGS.index("--auto") + 1]
             ops({"meta": [{"id": BROKER, "set": {"nl_auto_publish": "1" if val == "1" else "0"}}]}, "auto")
@@ -199,7 +207,7 @@ def install_and_setup():
         s3, _, _ = req("POST", "/wp-json/nadlan-drop-ops/v1/apply", {"token": "x"})
         print("bridge route after cleanup:", s3, "(want 404)")
 
-if "--verify" not in ARGS or "--setup" in ARGS or "--auto" in ARGS or "--install" in ARGS:
+if "--verify" not in ARGS or "--setup" in ARGS or "--auto" in ARGS or "--install" in ARGS or "--rotate" in ARGS:
     install_and_setup()
 
 # ---- verify ----
@@ -213,5 +221,8 @@ for path in ("/", "/brokers/meital-katzir/", "/en/brokers/meital-katzir/", "/pro
     cards = b.count('class="nlb-lcard"')
     err = ("Fatal error" in t) or ("Warning:" in b[:4000])
     print(f"GET {path}: {s} bytes={len(t)} cards={cards} php_error={err} soldbar={b.count('nlx-soldbar')}")
+s, pro, _ = req("GET", "/wp-json/wp/v2/nadlan_professional/%d?nlv=%d" % (BROKER, time.time()), auth=False)
+leak = [k for k in ((pro or {}).get("meta") or {}) if "token" in k or k == "_nl_email"]
+print("public REST record of the broker:", s, "secret keys exposed:", leak or "none")
 s, body, _ = req("GET", "/drop/000000000000000000000000/", raw=True, auth=False)
 print("drop page with a dead token:", s, "(want 404)")
