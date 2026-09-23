@@ -158,6 +158,11 @@ add_action( 'rest_api_init', function () {
 					$out['yoast_ok'][] = $pid;
 				}
 			}
+			if ( ! empty( $b['yoast_get'] ) ) {
+				foreach ( (array) $b['yoast_get'] as $pid ) {
+					$out['yoast_now'][ (int) $pid ] = array( get_post_meta( (int) $pid, '_yoast_wpseo_title', true ), get_post_meta( (int) $pid, '_yoast_wpseo_metadesc', true ) );
+				}
+			}
 			if ( ! empty( $b['attachment_by_url'] ) ) {
 				$out['attachment'] = (int) attachment_url_to_postid( (string) $b['attachment_by_url'] );
 			}
@@ -263,6 +268,18 @@ def install_and_setup():
                 yo.append({"id": pid, "title": ytitle, "desc": ydesc})
             ops({"yoast": yo, "purge": [y["id"] for y in yo]}, "yoast")
 
+        if "--post-listing" in ARGS:
+            # /post-listing/ (4958): one H1, the truth about what the page does, then the owner tool (x-owner-wizard)
+            now = ops({"yoast_get": [4958]}, "yoast now")["yoast_now"]
+            print("post-listing Yoast before:", json.dumps(now, ensure_ascii=False))
+            content = open(os.path.join(REPO, "scripts", "broker-drop", "pages", "post-listing-he.html"), encoding="utf-8").read()
+            s, r, _ = req("POST", "/wp-json/wp/v2/pages/4958", {"content": content})
+            must(s, r, "post-listing page")
+            ops({"yoast": [{"id": 4958, "title": "פרסום דירה בחינם, למכירה או להשכרה | nad-lan",
+                            "desc": "מפרסמים דירה בעצמכם? תמונות וכמה שורות, והעמוד עולה בתוך דקה בכתובת משלו, עם כפתורי וואטסאפ וחיוג אליכם. בלי עמלה ובלי כרטיס אשראי."}],
+                 "purge": [4958]}, "post-listing yoast")
+            print("post-listing page updated:", r.get("link"))
+
         if "--rotate" in ARGS:
             r = ops({"token_for": BROKER, "rotate": 1}, "rotate")
             print("NEW DROP LINK:", r["drop_url"])
@@ -281,7 +298,7 @@ def install_and_setup():
         print("bridge route after cleanup:", s3, "(want 404)")
 
 
-if "--verify" not in ARGS or any(a in ARGS for a in ("--setup", "--auto", "--install", "--rotate", "--meital-langs", "--pages")):
+if "--verify" not in ARGS or any(a in ARGS for a in ("--setup", "--auto", "--install", "--rotate", "--meital-langs", "--pages", "--post-listing")):
     install_and_setup()
 
 # ---- verify ----
