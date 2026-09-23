@@ -30,7 +30,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { return; }
 if ( defined( 'NL_DROP_VERSION' ) ) { return; }
-define( 'NL_DROP_VERSION', '1.1.1' );
+define( 'NL_DROP_VERSION', '1.1.2' );
 define( 'NL_DROP_MAX_BYTES', 15728640 );
 define( 'NL_DROP_MAX_PHOTOS', 30 );
 
@@ -1626,7 +1626,7 @@ function nl_drop_listing_css() {
 .nlx .nlx-plate--photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
 .nlx .nlx-plate--photo .nlx-plate-name{color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.45)}
 .nlx .nlx-sec{scroll-margin-top:calc(var(--nlx-header-offset,96px) + 16px)}
-.single-nadlan_property .nlps-price,.single-nadlan_property .nlps-facts,.single-nadlan_property .nlps-chips,.single-nadlan_property .nlps-trust,.single-nadlan_property .nlps-hl,.single-nadlan_property .nlps-3d,.single-nadlan_property .nlps-facade,.single-nadlan_property .nlps-costs,.single-nadlan_property .nlps-map-sec,.single-nadlan_property .nlps-share,.single-nadlan_property .nlps-report,.single-nadlan_property .nlcard{display:none!important}
+.single-nadlan_property .nlps-hero,.single-nadlan_property .nlps-price,.single-nadlan_property .nlps-facts,.single-nadlan_property .nlps-chips,.single-nadlan_property .nlps-trust,.single-nadlan_property .nlps-hl,.single-nadlan_property .nlps-3d,.single-nadlan_property .nlps-facade,.single-nadlan_property .nlps-costs,.single-nadlan_property .nlps-map-sec,.single-nadlan_property .nlps-share,.single-nadlan_property .nlps-report,.single-nadlan_property .nlcard{display:none!important}
 .single-nadlan_property .nlps{margin:0!important;padding:0!important}
 .single-nadlan_property .nlps-title{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
 .single-nadlan_property .entry-content>article.nlx~*{display:none!important}
