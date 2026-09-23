@@ -141,7 +141,7 @@ function nl_drop_t( $lang, $k ) {
 			'price_sale' => 'מחיר', 'price_rent' => 'שכר דירה לחודש', 'ask_sale' => 'המחיר נמסר בפנייה ישירה', 'ask_rent' => 'שכר הדירה נמסר בפנייה ישירה',
 			'psqm_sale' => 'למ״ר', 'psqm_rent' => 'למ״ר לחודש', 'year' => 'בשנה',
 			'cta' => 'תיאום סיור פרטי', 'call' => 'חיוג', 'wa' => 'וואטסאפ', 'home' => 'הבית', 'photos' => 'תמונות', 'photos_h2' => 'הנכס בתמונות',
-			'broker_f' => 'המתווכת', 'broker_m' => 'המתווך', 'broker_ex_f' => 'המתווכת בבלעדיות', 'broker_ex_m' => 'המתווך בבלעדיות',
+			'broker_f' => 'המתווכת', 'broker_m' => 'המתווך', 'broker_ex_f' => 'המתווכת', 'broker_ex_m' => 'המתווך',
 			'lic_f' => 'מתווכת במקרקעין, רישיון', 'lic_m' => 'מתווך במקרקעין, רישיון', 'site' => 'האתר של %s', 'switch' => 'English',
 			'toc' => 'תוכן העמוד', 'rail' => 'מחיר ויצירת קשר', 'sold' => 'הנכס נמכר', 'rented' => 'הנכס הושכר', 'more' => 'לנכסים נוספים של %s',
 			'card_view' => 'לעמוד הנכס', 'updated' => 'עודכן', 'month' => 'לחודש', 'ask_short' => 'המחיר נמסר בפנייה', 'ask_short_rent' => 'שכר הדירה נמסר בפנייה',
@@ -157,8 +157,8 @@ function nl_drop_t( $lang, $k ) {
 			'price_sale' => 'Asking price', 'price_rent' => 'Monthly rent', 'ask_sale' => 'Price on request', 'ask_rent' => 'Rent on request',
 			'psqm_sale' => 'Per sqm', 'psqm_rent' => 'Per sqm a month', 'year' => 'A year',
 			'cta' => 'Book a private viewing', 'call' => 'Call', 'wa' => 'WhatsApp', 'home' => 'The residence', 'photos' => 'Photographs', 'photos_h2' => 'The home in pictures',
-			'broker_f' => 'Broker', 'broker_m' => 'Broker', 'broker_ex_f' => 'Exclusive broker', 'broker_ex_m' => 'Exclusive broker',
-			'lic_f' => 'licensed real estate broker, licence', 'lic_m' => 'licensed real estate broker, licence', 'site' => 'More from %s', 'switch' => 'עברית',
+			'broker_f' => 'The broker', 'broker_m' => 'The broker', 'broker_ex_f' => 'The broker', 'broker_ex_m' => 'The broker',
+			'lic_f' => 'licensed real estate broker, licence', 'lic_m' => 'licensed real estate broker, licence', 'site' => '%s’s site', 'switch' => 'עברית',
 			'toc' => 'On this page', 'rail' => 'Price and contact', 'sold' => 'This home has been sold', 'rented' => 'This home has been let', 'more' => 'More homes from %s',
 			'card_view' => 'Listing page', 'updated' => 'Updated', 'month' => 'a month', 'ask_short' => 'Price on request', 'ask_short_rent' => 'Rent on request',
 			'ask_sub' => 'Details given on direct enquiry', 'rooms_n' => '%s rooms', 'size_n' => '%s sqm', 'balcony_n' => '%s sqm balcony', 'garden_n' => '%s sqm garden',
@@ -1127,7 +1127,6 @@ function nl_drop_listing_html( $d, $lang ) {
 	$photos = array_values( (array) $d['photos'] );
 	$cover  = $photos ? $photos[0] : null;
 	$kick   = array( nl_drop_t( $lang, $deal ) );
-	if ( ! empty( $f['exclusive'] ) ) { $kick[] = nl_drop_t( $lang, 'exclusive' ); }
 	$place = trim( $area . ( $city && $city !== $area ? ', ' . $city : '' ) );
 	if ( $place !== '' ) { $kick[] = $place; }
 
@@ -1137,7 +1136,8 @@ function nl_drop_listing_html( $d, $lang ) {
 	$tag = $he ? 'h2' : 'h1';
 	$h .= '<' . $tag . ' class="nlx-title">' . nl_drop_nums_html( $title ) . '</' . $tag . '>' . "\n";
 	$h .= '<p class="nlx-dek">' . nl_drop_nums_html( $fill( $c['dek'] ) ) . '</p>' . "\n";
-	$chips = '<span class="nlx-chip nlx-chip--sea">' . esc_html( ( ! empty( $f['exclusive'] ) ? nl_drop_t( $lang, 'exclusive' ) . ' · ' : '' ) . $name ) . '</span>';
+	$name_html = $site ? '<a href="' . esc_url( $site ) . '">' . esc_html( $name ) . '</a>' : esc_html( $name );
+	$chips     = '<span class="nlx-chip nlx-chip--sea">' . ( ! empty( $f['exclusive'] ) ? esc_html( nl_drop_t( $lang, 'exclusive' ) ) . ' · ' : '' ) . $name_html . '</span>';
 	foreach ( (array) $c['chips'] as $ch ) { $chips .= '<span class="nlx-chip">' . esc_html( $fill( $ch ) ) . '</span>'; }
 	$h .= '<div class="nlx-chips">' . $chips . '</div>' . "\n" . '</div>' . "\n";
 	if ( $cover ) {
@@ -1215,7 +1215,7 @@ function nl_drop_listing_html( $d, $lang ) {
 	$btn_tel = $tel ? '<a class="nlx-btn nlx-btn--ghost" href="' . esc_url( $tel ) . '">' . nl_drop_icon( 'phone' ) . '<span>' . esc_html( nl_drop_t( $lang, 'call' ) . ' ' . ( $he ? $b['phone'] : $b['phone_intl'] ) ) . '</span></a>' : '';
 	$h .= '<section class="nlx-sec" id="broker-' . esc_attr( $uid ) . '">' . "\n" . '<div class="nlx-agent">' . "\n";
 	$h .= '<span class="nlx-monogram" aria-hidden="true">' . esc_html( $mono ) . '</span>' . "\n";
-	$h .= '<div><p class="nlx-eyebrow">' . esc_html( $eyebrow ) . '</p><p class="nlx-agent-name">' . esc_html( $name ) . '</p><p class="nlx-small">' . nl_drop_nums_html( $lic ) . '</p></div>' . "\n";
+	$h .= '<div><p class="nlx-eyebrow">' . esc_html( $eyebrow ) . '</p><p class="nlx-agent-name">' . $name_html . '</p><p class="nlx-small">' . nl_drop_nums_html( $lic ) . '</p></div>' . "\n";
 	$h .= '<div class="nlx-cta">' . $btn_wa . $btn_tel . '</div>' . "\n" . '</div>' . "\n" . '</section>' . "\n";
 	$h .= '</div>' . "\n";
 
@@ -1233,7 +1233,7 @@ function nl_drop_listing_html( $d, $lang ) {
 		$h .= '<span class="nlx-price nlx-price--ask">' . esc_html( nl_drop_t( $lang, 'ask_' . $deal ) ) . '</span>' . "\n";
 	}
 	$h .= '<div class="nlx-cta">' . $btn_wa . ( $tel ? '<a class="nlx-btn nlx-btn--ghost" href="' . esc_url( $tel ) . '">' . nl_drop_icon( 'phone' ) . '<span>' . esc_html( nl_drop_t( $lang, 'call' ) ) . '</span></a>' : '' ) . '</div>' . "\n" . '</div>' . "\n";
-	$h .= '<div class="nlx-card nlx-agent-mini"><span class="nlx-monogram" aria-hidden="true">' . esc_html( $mono ) . '</span><div><b>' . esc_html( $name ) . '</b><br><span class="nlx-muted">' . nl_drop_nums_html( $lic ) . '</span></div></div>' . "\n";
+	$h .= '<div class="nlx-card nlx-agent-mini"><span class="nlx-monogram" aria-hidden="true">' . esc_html( $mono ) . '</span><div><b>' . $name_html . '</b><br><span class="nlx-muted">' . nl_drop_nums_html( $lic ) . '</span></div></div>' . "\n";
 	$h .= '</aside>' . "\n" . '</div>' . "\n";
 	if ( $wa || $tel ) {
 		$h .= '<div class="nlx-mbar">' . ( $wa ? '<a class="nlx-btn" href="' . esc_url( $wa ) . '" rel="noopener" target="_blank">' . nl_drop_icon( 'wa' ) . '<span>' . esc_html( nl_drop_t( $lang, 'wa' ) ) . '</span></a>' : '' ) . ( $tel ? '<a class="nlx-btn nlx-btn--ghost" href="' . esc_url( $tel ) . '">' . nl_drop_icon( 'phone' ) . '<span>' . esc_html( nl_drop_t( $lang, 'call' ) ) . '</span></a>' : '' ) . '</div>' . "\n";
