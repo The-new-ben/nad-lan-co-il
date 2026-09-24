@@ -114,8 +114,6 @@ if ( ! function_exists( 'nadlan_ps_square' ) ) {
 		$h .= '<div class="nlbsq__body"><h3 class="nlbsq__name"><a href="' . esc_url( $href ) . '"' . $ev . '>' . esc_html( $name ) . '</a></h3>';
 		$h .= '<p class="nlbsq__role">' . ( '' !== $role ? '<b>' . esc_html( $role ) . '</b>' : '' ) . ( $areas ? ( '' !== $role ? ' · ' : '' ) . esc_html( implode( ', ', $areas ) ) : '' ) . '</p>';
 		if ( '' !== $lic ) { $h .= '<p class="nlbsq__lic">רישיון תיווך <span class="nlds-num">' . esc_html( $lic ) . '</span></p>'; }
-		$recs = function_exists( 'nadlan_endorse_counts' ) ? ( nadlan_endorse_counts( array( $pid ) )[ $pid ] ?? 0 ) : 0;
-		if ( $recs > 0 ) { $h .= '<p class="nlbsq__recs">' . nadlan_endorse_count_html( $recs, true ) . '</p>'; }
 		$h .= '<div class="nlbsq__cta">';
 		$h .= '' !== $wa
 			? '<a class="nlds-btn nlds-btn--primary" target="_blank" rel="noopener" href="https://wa.me/' . esc_attr( $wa ) . '?text=' . rawurlencode( $text ) . '"' . $ev . ' data-nlps-wa="1">' . ( function_exists( 'nlds_icon' ) ? nlds_icon( 'whatsapp' ) : '' ) . '<span>התייעצות בוואטסאפ</span></a>'

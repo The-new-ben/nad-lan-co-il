@@ -1,10 +1,10 @@
 <?php
 /**
- * The professionals network on screen (owner FOCUS, 24.9.2026): "המלצות" between professionals, built only from the
+ * The professionals network on screen (owner FOCUS, 24.9.2026): "פרגונים" between professionals, built only from the
  * design system (Claude Design artifact L9Nqz7Viv7K3MYeZrBc9s8, version 7: EndorsementStrip, FirgunForm,
  * ProfessionalCard, PageHeader). The rules and the table are in inc/pro-network.php.
  *
- *  1. On a professional's page: the endorsements they received ("המלצות") and the professionals they recommend
+ *  1. On a professional's page: the endorsements they received ("פרגונים") and the professionals they recommend
  *     ("מיטל ממליצה על"). Nothing when there is none.
  *  2. /firgun/ ([nadlan_firgun]): a professional with a private link (?t=, the same token as the upload link) endorses
  *     a colleague who is on the site, or invites one who is not and sends the join link on WhatsApp. The invited
@@ -105,12 +105,12 @@ if ( ! function_exists( 'nadlan_fg_strip' ) ) {
 		if ( ! $recv && ! $given ) { return ''; }
 		$h = '<div class="nlds nlpp-network" dir="rtl" lang="he">';
 		if ( $recv ) {
-			$h .= '<section class="nlds-endorse" aria-labelledby="nlfg-recv"><div class="nlds-endorse__head"><h2 class="nlds-endorse__title" id="nlfg-recv">המלצות</h2>' . ( function_exists( 'nadlan_endorse_counts' ) ? nadlan_endorse_count_html( nadlan_endorse_counts( array( (int) $id ) )[ (int) $id ] ?? count( $recv ) ) : '' )
-				. '<a class="nlds-btn nlds-btn--quiet nlds-btn--sm" href="' . esc_url( home_url( '/firgun/' ) ) . '">איך ממליצים ←</a></div><ul class="nlds-endorse__list">';
+			$h .= '<section class="nlds-endorse" aria-labelledby="nlfg-recv"><div class="nlds-endorse__head"><h2 class="nlds-endorse__title" id="nlfg-recv">פרגונים</h2>'
+				. '<a class="nlds-btn nlds-btn--quiet nlds-btn--sm" href="' . esc_url( home_url( '/firgun/' ) ) . '">איך מפרגנים ←</a></div><ul class="nlds-endorse__list">';
 			foreach ( array_slice( $recv, 0, 3 ) as $r ) { $h .= nadlan_fg_item( (int) $r['from_pro'], $r['qualities'], $r['line'] ); }
 			$h .= '</ul>';
 			if ( count( $recv ) > 3 ) {
-				$h .= '<details class="nlfg-more"><summary class="nlds-btn nlds-btn--quiet">עוד המלצות ←</summary><ul class="nlds-endorse__list">';
+				$h .= '<details class="nlfg-more"><summary class="nlds-btn nlds-btn--quiet">עוד פרגונים ←</summary><ul class="nlds-endorse__list">';
 				foreach ( array_slice( $recv, 3 ) as $r ) { $h .= nadlan_fg_item( (int) $r['from_pro'], $r['qualities'], $r['line'] ); }
 				$h .= '</ul></details>';
 			}
@@ -171,12 +171,12 @@ if ( ! function_exists( 'nadlan_fg_join_form' ) ) {
 		$contact = function_exists( 'nl_join_contact' ) ? (string) nl_join_contact() : '';
 		$prof    = $invite ? (string) $invite['invite_prof'] : '';
 		$h  = '<form class="nlds-form" data-fg="join" id="nlfg-join" novalidate>';
-		$h .= '<h2 class="nlds-form__title">' . ( $invite ? 'המלצה מחכה לך' : 'הצטרפות לאנשי המקצוע באתר' ) . '</h2>';
+		$h .= '<h2 class="nlds-form__title">' . ( $invite ? 'פרגון מחכה לך' : 'הצטרפות לאנשי המקצוע באתר' ) . '</h2>';
 		if ( $invite ) {
 			$h .= '<ul class="nlds-endorse__list nlds-endorse__list--one">' . nadlan_fg_item( (int) $invite['from_pro'], $invite['qualities'], $invite['line'] ) . '</ul>';
-			$h .= '<p class="nlds-form__lead">כדי שההמלצה תופיע, נפתח לך כרטיס באתר. זה בחינם.</p>';
+			$h .= '<p class="nlds-form__lead">כדי שהפרגון יופיע, נפתח לך כרטיס באתר. זה בחינם.</p>';
 		} else {
-			$h .= '<p class="nlds-form__lead">כרטיס באתר בחינם: השם, המקצוע, העיר והנייד, והמלצות מאנשי מקצוע שעבדו איתך. מתווכים פותחים אתר מלא עם בדיקת רישיון <a href="' . esc_url( home_url( '/brokers/#join' ) ) . '">בעמוד המתווכים</a>.</p>';
+			$h .= '<p class="nlds-form__lead">כרטיס באתר בחינם: השם, המקצוע, העיר והנייד, ופרגונים מאנשי מקצוע שעבדו איתך. מתווכים פותחים אתר מלא עם בדיקת רישיון <a href="' . esc_url( home_url( '/brokers/#join' ) ) . '">בעמוד המתווכים</a>.</p>';
 		}
 		$h .= '<div class="nlds-field"><label for="nlfg-jn">השם כפי שיופיע<span class="nlds-field__req" aria-hidden="true">*</span></label><input id="nlfg-jn" type="text" maxlength="80" autocomplete="name" data-fg-f="name"' . ( $invite ? ' value="' . esc_attr( $invite['invite_name'] ) . '"' : '' ) . '></div>';
 		$h .= '<div class="nlds-field"><label for="nlfg-jp">מקצוע<span class="nlds-field__req" aria-hidden="true">*</span></label><select id="nlfg-jp" data-fg-f="profession">' . nadlan_fg_profession_options( $prof ) . '</select></div>';
@@ -218,28 +218,28 @@ if ( ! function_exists( 'nadlan_fg_page' ) ) {
 
 		$h  = '<div class="nlds nlfg" id="nlfg" dir="rtl" lang="he" data-cfg="' . esc_attr( wp_json_encode( $cfg ) ) . '">';
 		$h .= '<header class="nlds-pagehead"><nav class="nlds-crumbs" aria-label="ניווט"><a href="' . esc_url( home_url( '/' ) ) . '">בית</a><span class="nlds-crumbs__sep" aria-hidden="true">›</span>'
-			. '<a href="' . esc_url( home_url( '/professionals/' ) ) . '">אנשי מקצוע</a><span class="nlds-crumbs__sep" aria-hidden="true">›</span><span aria-current="page">המלצות</span></nav>'
-			. '<h1 class="nlds-pagehead__title">המלצות בין אנשי מקצוע</h1>'
+			. '<a href="' . esc_url( home_url( '/professionals/' ) ) . '">אנשי מקצוע</a><span class="nlds-crumbs__sep" aria-hidden="true">›</span><span aria-current="page">פרגונים</span></nav>'
+			. '<h1 class="nlds-pagehead__title">פרגונים בין אנשי מקצוע</h1>'
 			. '<p class="nlds-pagehead__lead">מתווכים, שמאים, עורכי דין, יועצי משכנתאות ואנשי מקצוע בכל תחום של הבית ממליצים זה על זה. רק מילים טובות: עד שלוש תכונות ומשפט אחד, בלי כוכבים ובלי ציונים.</p></header>';
 
 		if ( $me ) {
 			$p  = nadlan_fg_person( $me );
-			$h .= '<form class="nlds-form" data-fg="give" novalidate><h2 class="nlds-form__title">המלצה על איש מקצוע</h2>'
-				. '<p class="nlds-form__lead">ממליצים בשם ' . esc_html( $p['name'] ) . '. ההמלצה תופיע בעמוד של מי שקיבל אותה, ובעמוד שלך תחת ההמלצות שנתת.</p>'
-				. '<div class="nlds-field"><label for="nlfg-q">על מי ממליצים<span class="nlds-field__req" aria-hidden="true">*</span></label>'
+			$h .= '<form class="nlds-form" data-fg="give" novalidate><h2 class="nlds-form__title">פרגון לאיש מקצוע</h2>'
+				. '<p class="nlds-form__lead">מפרגנים בשם ' . esc_html( $p['name'] ) . '. הפרגון יופיע בעמוד של מי שקיבל אותו, ובעמוד שלך תחת ההמלצות שלך.</p>'
+				. '<div class="nlds-field"><label for="nlfg-q">למי מפרגנים<span class="nlds-field__req" aria-hidden="true">*</span></label>'
 				. '<input id="nlfg-q" type="search" autocomplete="off" placeholder="שם, לפחות שתי אותיות" data-fg-q>'
 				. '<ul class="nlds-pick" role="listbox" aria-label="תוצאות" data-fg-list hidden></ul>'
 				. '<div class="nlds-pick__chosen" data-fg-chosen hidden><span data-fg-name></span><button type="button" class="nlds-btn nlds-btn--quiet nlds-btn--sm" data-fg-change>החלפה</button></div></div>'
 				. nadlan_fg_line_field( 'nlfg-line' )
-				. '<button type="submit" class="nlds-btn nlds-btn--primary">שליחת ההמלצה</button><div class="nlds-msg" role="status" hidden data-fg-msg></div>'
+				. '<button type="submit" class="nlds-btn nlds-btn--primary">שליחת הפרגון</button><div class="nlds-msg" role="status" hidden data-fg-msg></div>'
 				. '<div class="nlds-form__alt"><button type="button" class="nlds-btn nlds-btn--quiet" data-fg-switch="invite">לא מוצאים? הזמינו</button></div></form>';
 			$h .= '<form class="nlds-form" data-fg="invite" novalidate hidden><h2 class="nlds-form__title">הזמנה לאיש מקצוע שעוד לא באתר</h2>'
-				. '<p class="nlds-form__lead">ההמלצה תחכה לו או לה. תקבלו קישור לשלוח בוואטסאפ; כשהכרטיס יעלה לאתר, ההמלצה תופיע בו.</p>'
+				. '<p class="nlds-form__lead">הפרגון יחכה לו או לה. תקבלו קישור לשלוח בוואטסאפ; כשהכרטיס יעלה לאתר, הפרגון יופיע בו.</p>'
 				. '<div class="nlds-field"><label for="nlfg-in">שם<span class="nlds-field__req" aria-hidden="true">*</span></label><input id="nlfg-in" type="text" maxlength="80" data-fg-iname></div>'
 				. '<div class="nlds-field"><label for="nlfg-ip">מקצוע<span class="nlds-field__req" aria-hidden="true">*</span></label><select id="nlfg-ip" data-fg-iprof>' . nadlan_fg_profession_options() . '</select></div>'
 				. nadlan_fg_line_field( 'nlfg-iline' )
 				. '<button type="submit" class="nlds-btn nlds-btn--primary">יצירת הזמנה</button><div class="nlds-msg" role="status" hidden data-fg-msg></div>'
-				. '<div class="nlds-form__alt"><button type="button" class="nlds-btn nlds-btn--quiet" data-fg-switch="give">חזרה להמלצה על איש מקצוע באתר</button></div></form>';
+				. '<div class="nlds-form__alt"><button type="button" class="nlds-btn nlds-btn--quiet" data-fg-switch="give">חזרה לפרגון לאיש מקצוע באתר</button></div></form>';
 			$h .= '<div class="nlds-form" data-fg="sent" hidden><h2 class="nlds-form__title">ההזמנה מוכנה</h2><p class="nlds-form__lead" data-fg-sent-lead></p>'
 				. '<a class="nlds-btn nlds-btn--primary" target="_blank" rel="noopener" href="#" data-fg-wa>' . $wa . '<span>שליחה בוואטסאפ</span></a>'
 				. '<div class="nlds-form__alt"><button type="button" class="nlds-btn nlds-btn--quiet" data-fg-copy>העתקת הקישור</button></div></div>';
@@ -249,8 +249,8 @@ if ( ! function_exists( 'nadlan_fg_page' ) ) {
 			if ( '' !== $token || '' !== $inv ) {
 				$h .= '<div class="nlds-msg" role="status">הקישור לא תקין או שכבר השתמשו בו. אפשר להצטרף כאן, או לבקש קישור חדש.</div>';
 			}
-			$h .= '<div class="nlfg-intro"><p>המלצה היא מילה טובה של איש מקצוע על איש מקצוע אחר שעבד איתו: עד שלוש תכונות מרשימה קבועה של מילים טובות, ומשפט אחד. ההמלצות מופיעים בעמוד של מי שקיבל אותם, ובעמוד של מי שנתן אותם מופיעים אנשי המקצוע שהוא ממליץ עליהם.</p>'
-				. '<p>כבר יש לכם כרטיס באתר? ההמלצה נשלחת מהקישור האישי שקיבלתם מאיתנו.</p>'
+			$h .= '<div class="nlfg-intro"><p>פרגון הוא המלצה של איש מקצוע על איש מקצוע אחר שעבד איתו: עד שלוש תכונות מרשימה קבועה של מילים טובות, ומשפט אחד. הפרגונים מופיעים בעמוד של מי שקיבל אותם, ובעמוד של מי שנתן אותם מופיעים אנשי המקצוע שהוא ממליץ עליהם.</p>'
+				. '<p>כבר יש לכם כרטיס באתר? הפרגון נשלח מהקישור האישי שקיבלתם מאיתנו.</p>'
 				. '<div class="nlfg-ctas"><a class="nlds-btn nlds-btn--primary" href="' . esc_url( add_query_arg( 'join', '1', home_url( '/firgun/' ) ) ) . '#nlfg-join">הצטרפות לאנשי המקצוע באתר</a>'
 				. '<a class="nlds-btn nlds-btn--secondary" href="' . esc_url( home_url( '/brokers/#join' ) ) . '">מתווכים: פתיחת אתר בחינם</a></div></div>';
 		}
@@ -340,12 +340,12 @@ add_action( 'wp_footer', function () {
 		});
 		give.addEventListener('submit', function (e) {
 			e.preventDefault();
-			if (!to) { say(give, 'בחרו על מי ממליצים מתוך הרשימה.'); return; }
+			if (!to) { say(give, 'בחרו למי מפרגנים מתוך הרשימה.'); return; }
 			if (!qualities(give).length && !line(give)) { say(give, 'בחרו תכונה אחת לפחות או כתבו משפט.'); return; }
 			var btn = give.querySelector('[type="submit"]'); btn.disabled = true;
 			post(cfg.endorse, { token: cfg.token, to: to, qualities: qualities(give), line: line(give) }).then(function (r) {
 				btn.disabled = false;
-				if (r.ok && r.j.ok) { say(give, 'ההמלצה נשלחה ותופיע בעמוד של ' + toName + '.', true); }
+				if (r.ok && r.j.ok) { say(give, 'הפרגון נשלח ויופיע בעמוד של ' + toName + '.', true); }
 				else { say(give, r.j.message || oops); }
 			}, function () { btn.disabled = false; say(give, oops); });
 		});
@@ -361,8 +361,8 @@ add_action( 'wp_footer', function () {
 			post(cfg.endorse, { token: cfg.token, to: 0, invite_name: name, invite_profession: prof, qualities: qualities(invite), line: line(invite) }).then(function (r) {
 				btn.disabled = false;
 				if (!(r.ok && r.j.ok && r.j.join_url)) { say(invite, r.j.message || oops); return; }
-				var url = r.j.join_url, text = 'המלצתי עליך באתר נדלן. ההמלצה מחכה לך כאן: ' + url;
-				one('[data-fg-sent-lead]', sent).textContent = 'שלחו אותה ל' + name + '. כשהכרטיס יעלה לאתר, ההמלצה תופיע בו.';
+				var url = r.j.join_url, text = 'פירגנתי לך באתר נדלן. הפרגון מחכה לך כאן: ' + url;
+				one('[data-fg-sent-lead]', sent).textContent = 'שלחו אותה ל' + name + '. כשהכרטיס יעלה לאתר, הפרגון יופיע בו.';
 				one('[data-fg-wa]', sent).setAttribute('href', 'https://wa.me/?text=' + encodeURIComponent(text));
 				one('[data-fg-copy]', sent).onclick = function () {
 					var b = this, done = function () { b.textContent = 'הקישור הועתק'; }, show = function () { b.textContent = url; b.style.direction = 'ltr'; };
@@ -393,7 +393,7 @@ add_action( 'wp_footer', function () {
 			if (!body.consent) { say(join, 'צריך לסמן את ההסכמה.'); return; }
 			var btn = join.querySelector('[type="submit"]'); btn.disabled = true;
 			post(cfg.join, body).then(function (r) {
-				if (r.ok && r.j.ok) { say(join, 'הפרטים התקבלו. הכרטיס שלך יעלה לאתר אחרי בדיקה' + (cfg.inv ? ', וההמלצה תופיע בו.' : '.'), true); all('input, select, textarea, button', join).forEach(function (x) { x.disabled = true; }); }
+				if (r.ok && r.j.ok) { say(join, 'הפרטים התקבלו. הכרטיס שלך יעלה לאתר אחרי בדיקה' + (cfg.inv ? ', והפרגון יופיע בו.' : '.'), true); all('input, select, textarea, button', join).forEach(function (x) { x.disabled = true; }); }
 				else { btn.disabled = false; say(join, r.j.message || oops); }
 			}, function () { btn.disabled = false; say(join, oops); });
 		});
@@ -464,9 +464,9 @@ add_action( 'transition_post_status', function ( $new, $old, $post ) {
 add_action( 'add_meta_boxes_nadlan_professional', function ( $post ) {
 	$tok = (string) get_post_meta( $post->ID, '_nl_drop_token', true );
 	if ( '' === $tok || '1' !== (string) get_post_meta( $post->ID, 'nl_drop_on', true ) ) { return; }
-	add_meta_box( 'nlfg_link_box', 'המלצות: הקישור האישי', function ( $post ) use ( $tok ) {
+	add_meta_box( 'nlfg_link_box', 'פרגונים: הקישור האישי', function ( $post ) use ( $tok ) {
 		$url = add_query_arg( 't', $tok, home_url( '/firgun/' ) );
-		echo '<p style="margin:0 0 4px">הקישור ששולחים לבעל המקצוע כדי להמליץ ולהזמין:</p><input type="text" readonly value="' . esc_attr( $url ) . '" style="width:100%;direction:ltr" onclick="this.select()">';
+		echo '<p style="margin:0 0 4px">הקישור ששולחים לבעל המקצוע כדי לפרגן ולהזמין:</p><input type="text" readonly value="' . esc_attr( $url ) . '" style="width:100%;direction:ltr" onclick="this.select()">';
 		echo '<p class="description">אותו קוד כמו בקישור השליחה. קישור חדש בתיבת הנכסים מחליף גם את זה.</p>';
 	}, 'nadlan_professional', 'side', 'default' );
 } );
@@ -475,5 +475,5 @@ add_action( 'admin_notices', function () {
 	$n = count( get_posts( array( 'post_type' => 'nadlan_professional', 'post_status' => 'pending', 'numberposts' => 50, 'fields' => 'ids',
 		'meta_query' => array( array( 'key' => 'source', 'value' => 'firgun_join' ) ) ) ) );
 	if ( $n < 1 ) { return; }
-	echo '<div class="notice notice-info"><p>' . esc_html( $n . ' אנשי מקצוע ביקשו להצטרף דרך ההמלצות וממתינים לבדיקה.' ) . ' <a href="' . esc_url( admin_url( 'edit.php?post_type=nadlan_professional&post_status=pending' ) ) . '">לבדיקה</a></p></div>';
+	echo '<div class="notice notice-info"><p>' . esc_html( $n . ' אנשי מקצוע ביקשו להצטרף דרך הפרגונים וממתינים לבדיקה.' ) . ' <a href="' . esc_url( admin_url( 'edit.php?post_type=nadlan_professional&post_status=pending' ) ) . '">לבדיקה</a></p></div>';
 } );

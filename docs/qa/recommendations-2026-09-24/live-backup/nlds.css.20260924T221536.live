@@ -299,13 +299,6 @@
 :root body .nlds .nlbslot__text{font-size:14px !important;line-height:1.55 !important;color:var(--nlds-sa-ink2) !important;margin:0 !important}
 :root body .nlds .nlbslot__cta{color:var(--nlds-sa-sea) !important;font-weight:700 !important;font-size:15px !important;text-decoration:none !important}
 :root body .nlds .nlbslot__cta::after{content:"" !important;position:absolute !important;inset:0 !important}
-:root body .nlds .nlds-reccount{display:inline-flex !important;align-items:center !important;gap:6px !important;padding:3px 11px 3px 10px !important;border-radius:var(--nlds-radius-pill) !important;background:var(--nlds-sa-sand) !important;color:var(--nlds-sa-deep) !important;font-size:13.5px !important;font-weight:700 !important;line-height:1.45 !important;white-space:nowrap !important;text-decoration:none !important}
-:root body .nlds .nlds-reccount .nlds-ico{width:16px !important;height:16px !important;flex:none !important}
-:root body .nlds .nlds-reccount b{font-weight:800 !important}
-:root body .nlds .nlds-reccount--sm{padding:2px 8px !important;gap:4px !important;font-size:12.5px !important}
-:root body .nlds .nlds-reccount--sm .nlds-ico{width:14px !important;height:14px !important}
-:root body .nlds .nlds-endorse__head .nlds-reccount{align-self:center !important}
-:root body .nlds .nlbsq__recs{margin:2px 0 0 !important}
 /* site layer */
 :root body .nlds{font-size:16px !important}
 :root body .nlds :is(p, a, span, b, strong, em, i, small, time, label, li){font-family:inherit !important}

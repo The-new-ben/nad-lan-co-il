@@ -2,12 +2,12 @@
 /**
  * The professionals network (owner FOCUS, 24.9.2026): "a social network of professionals for everything in a home,
  * brokers, designers, furniture, movers, every component. Positive only: professionals endorse each other
- * ('המלצות'), and the endorsed surface inside each other's profiles. A call to join."
+ * ('פרגונים'), and the endorsed surface inside each other's profiles. A call to join."
  *
  * This module is the data layer and the rules; the screens come from the NadLan design system (Claude Design):
  *  1. The profession registry for every part of a home, grouped, with plural forms (one source for labels,
  *     breadcrumbs, the hub and the join flow). Register contractors get a `trade` from their register branches.
- *  2. Endorsements ("המלצות"): one professional recommends another in one line and up to three qualities.
+ *  2. Endorsements ("פרגונים"): one professional recommends another in one line and up to three qualities.
  *     Positive by construction: no stars, no scores, nothing negative can be written. One per pair; at most
  *     12 given in 30 days; the receiver (or an admin) can hide one. A broker endorses from the private upload
  *     link (drop token); a claimed professional from their login.
@@ -161,14 +161,14 @@ if ( ! function_exists( 'nadlan_endorse_add' ) ) {
 		$t    = nadlan_endorse_table();
 		$from = (int) $from;
 		$to   = (int) $to;
-		if ( $from <= 0 || 'nadlan_professional' !== get_post_type( $from ) || 'publish' !== get_post_status( $from ) ) { return new WP_Error( 'from', 'הממליץ לא נמצא' ); }
+		if ( $from <= 0 || 'nadlan_professional' !== get_post_type( $from ) || 'publish' !== get_post_status( $from ) ) { return new WP_Error( 'from', 'המפרגן לא נמצא' ); }
 		if ( $to > 0 && ( $to === $from || 'nadlan_professional' !== get_post_type( $to ) || 'publish' !== get_post_status( $to ) ) ) { return new WP_Error( 'to', 'בעל המקצוע לא נמצא' ); }
 		$recent = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM $t WHERE from_pro = %d AND created_at > %s", $from, gmdate( 'Y-m-d H:i:s', time() - 30 * DAY_IN_SECONDS ) ) );
-		if ( $recent >= 12 ) { return new WP_Error( 'limit', 'עד 12 המלצות בחודש' ); }
-		if ( $to > 0 && $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $t WHERE from_pro = %d AND to_pro = %d LIMIT 1", $from, $to ) ) ) { return new WP_Error( 'dup', 'כבר המלצת על בעל המקצוע הזה' ); }
+		if ( $recent >= 12 ) { return new WP_Error( 'limit', 'עד 12 פרגונים בחודש' ); }
+		if ( $to > 0 && $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $t WHERE from_pro = %d AND to_pro = %d LIMIT 1", $from, $to ) ) ) { return new WP_Error( 'dup', 'כבר פרגנת לבעל המקצוע הזה' ); }
 		$ql   = array_values( array_intersect( array_map( 'sanitize_key', (array) $qualities ), array_keys( nadlan_endorse_qualities() ) ) );
 		$line = nadlan_endorse_clean_line( $line );
-		if ( '' === $line && ! $ql ) { return new WP_Error( 'empty', 'חסר משפט המלצה' ); }
+		if ( '' === $line && ! $ql ) { return new WP_Error( 'empty', 'חסר משפט פרגון' ); }
 		$row = array( 'from_pro' => $from, 'to_pro' => $to, 'line' => $line, 'qualities' => implode( ',', array_slice( $ql, 0, 3 ) ),
 			'status' => 'shown', 'created_at' => gmdate( 'Y-m-d H:i:s' ) );
 		if ( $to <= 0 ) {
@@ -206,36 +206,6 @@ if ( ! function_exists( 'nadlan_endorse_list' ) ) {
 		return array_values( array_filter( (array) $rows, function ( $r ) {
 			return 'publish' === get_post_status( (int) $r['from_pro'] ) && 'publish' === get_post_status( (int) $r['to_pro'] );
 		} ) );
-	}
-}
-
-if ( ! function_exists( 'nadlan_endorse_counts' ) ) {
-	/** How many shown recommendations each card received, from published cards only: id => n (no entry = none). One query
-	 * for a whole list. The owner, 24.9.2026: "an indication of how many recommendations, a thumbs up, something that makes
-	 * a challenge". A count is a fact, not a score: no stars, no averages, never in a rating schema. */
-	function nadlan_endorse_counts( $ids ) {
-		static $memo = array();
-		$ids = array_values( array_unique( array_filter( array_map( 'intval', (array) $ids ) ) ) );
-		if ( ! $ids || get_option( 'nadlan_network_db_version' ) !== NADLAN_NETWORK_DB_VERSION ) { return array(); }
-		$key = md5( implode( ',', $ids ) );
-		if ( isset( $memo[ $key ] ) ) { return $memo[ $key ]; }
-		global $wpdb;
-		$t    = nadlan_endorse_table();
-		$in   = implode( ',', $ids ); // integers only
-		$rows = $wpdb->get_results( "SELECT e.to_pro AS id, COUNT(*) AS n FROM $t e JOIN {$wpdb->posts} p ON p.ID = e.from_pro AND p.post_status = 'publish' WHERE e.status = 'shown' AND e.to_pro IN ($in) GROUP BY e.to_pro", ARRAY_A );
-		$out  = array();
-		foreach ( (array) $rows as $r ) { $out[ (int) $r['id'] ] = (int) $r['n']; }
-		return $memo[ $key ] = $out;
-	}
-}
-
-if ( ! function_exists( 'nadlan_endorse_count_html' ) ) {
-	/** RecCount (design system): a thumbs-up and "12 המלצות"; '' for none. $sm: the small variant for cards. */
-	function nadlan_endorse_count_html( $n, $sm = false ) {
-		$n = (int) $n;
-		if ( $n < 1 ) { return ''; }
-		$words = 1 === $n ? 'המלצה אחת' : '<b class="nlds-num">' . $n . '</b> המלצות';
-		return '<span class="nlds-reccount' . ( $sm ? ' nlds-reccount--sm' : '' ) . '">' . ( function_exists( 'nlds_icon' ) ? nlds_icon( 'thumb' ) : '' ) . '<span>' . $words . '</span></span>';
 	}
 }
 

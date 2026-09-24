@@ -251,9 +251,6 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 				<?php elseif ( $in_reg && 'pinkas_hakablanim' === (string) $g( 'source' ) && '' !== trim( (string) $g( 'registry_number' ) ) ) : ?><span class="nlpp-ver">✓ רשום בפנקס הקבלנים, מספר <span class="nlpp-num"><?php echo esc_html( trim( (string) $g( 'registry_number' ) ) ); ?></span></span>
 				<?php elseif ( $in_reg ) : ?><span class="nlpp-ver">✓ מאומת ברשם (gov.il)</span><?php endif; ?>
 				<?php $nlpp_cls = 'pinkas_hakablanim' === (string) $g( 'source' ) ? trim( preg_replace( '/\s*\(סיווג\s*\d+\)/u', '', (string) $g( 'classification' ) ) ) : ''; if ( '' !== $nlpp_cls ) : ?><span class="nlpp-cls"><?php echo esc_html( 'תחומי רישום: ' . str_replace( ' · ', ', ', $nlpp_cls ) ); ?></span><?php endif; ?>
-				<?php /* how many recommendations other professionals gave (owner 24.9.2026: a thumbs up, a challenge); a count, not a score */
-				$nlpp_recs = function_exists( 'nadlan_endorse_counts' ) ? ( nadlan_endorse_counts( array( (int) $id ) )[ (int) $id ] ?? 0 ) : 0;
-				if ( $nlpp_recs > 0 ) : ?><span class="nlds nlpp-recwrap"><a href="#nlfg-recv" style="text-decoration:none"><?php echo nadlan_endorse_count_html( $nlpp_recs ); // phpcs:ignore ?></a></span><?php endif; ?>
 				<?php if ( $rating > 0 ) : ?><span class="nlpp-stars" aria-label="דירוג <?php echo esc_attr( $rating ); ?>">★ <?php echo esc_html( number_format( $rating, 1 ) ); ?><?php echo $reviews ? ' (' . (int) $reviews . ')' : ''; ?></span><?php endif; ?>
 			</div>
 		</div>

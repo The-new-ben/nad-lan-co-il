@@ -36,14 +36,8 @@ if ( ! function_exists( 'nadlan_bl_brokers' ) ) {
 			$ia = false === $ia ? 99 : $ia; $ib = false === $ib ? 99 : $ib;
 			return $ia === $ib ? strcmp( $a, $b ) : $ia - $ib;
 		} );
-		// more recommendations first within a city (owner 24.9.2026: "something that makes a challenge"), then by name
-		$GLOBALS['nadlan_bl_counts'] = function_exists( 'nadlan_endorse_counts' ) ? nadlan_endorse_counts( $ids ) : array();
-		$cnt = $GLOBALS['nadlan_bl_counts'];
 		foreach ( $rest as $c => $list ) {
-			usort( $list, function ( $a, $b ) use ( $cnt ) {
-				$d = ( $cnt[ $b ] ?? 0 ) - ( $cnt[ $a ] ?? 0 );
-				return 0 !== $d ? $d : strcmp( get_the_title( $a ), get_the_title( $b ) );
-			} );
+			usort( $list, function ( $a, $b ) { return strcmp( get_the_title( $a ), get_the_title( $b ) ); } );
 			$rest[ $c ] = $list;
 		}
 		return array( 'featured' => $feat, 'rest' => $rest );
@@ -129,7 +123,6 @@ if ( ! function_exists( 'nadlan_bl_card' ) ) {
 	</div>
 	<?php if ( '' !== $city ) : ?><div class="nlds-procard__meta"><span class="nlds-procard__city"><img src="<?php echo esc_url( nlds_asset_url( 'icons/card-pin.svg' ) ); ?>" alt="" width="16" height="16"><?php echo esc_html( $city ); ?></span></div><?php endif; ?>
 	<div class="nlds-procard__foot">
-		<?php echo function_exists( 'nadlan_endorse_count_html' ) ? nadlan_endorse_count_html( $GLOBALS['nadlan_bl_counts'][ $id ] ?? 0, true ) : ''; // phpcs:ignore ?>
 		<?php if ( '' !== $lic ) : ?><span class="nlds-licence nlds-licence--pill"><span class="nlds-licence__check" aria-hidden="true">✓</span><span>רישיון <span class="nlds-num"><?php echo esc_html( $lic ); ?></span></span></span><?php endif; ?>
 		<span class="nlds-procard__go">לפרופיל ←</span>
 	</div>
