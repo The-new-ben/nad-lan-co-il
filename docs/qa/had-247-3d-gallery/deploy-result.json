@@ -1,0 +1,14 @@
+{
+  "released": "1.72.228",
+  "from": "1.72.227",
+  "at": "2026-09-24 12:59:58",
+  "files": {
+    "inc/property-gallery.php": "fd527521151704b0afcf196233d3e59d",
+    "inc/property-showroom.php": "ccebb89f408bb1866c185ffb2360435a",
+    "nadlan-config.php": "6b90e1da2492d2f9193247d659beec38"
+  },
+  "live_before": {
+    "inc/property-showroom.php": "e4b7067f8a992fa1f985508fe6f13d49",
+    "nadlan-config.php": "ffc1687f744e4f1c1353edeb0129e2ae"
+  }
+}

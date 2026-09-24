@@ -1,0 +1,36 @@
+[health] 1.72.227 ok
+[lint] inc/property-gallery.php: ok
+[lint] inc/property-showroom.php: ok
+[bridge] up, id 719 | live header version 1.72.227
+[drift] live property-showroom.php e4b7067f8a vs git HEAD e4b7067f8a
+[lint] nadlan-config.php (live text, bumped): ok
+[plan] 1.72.227 -> 1.72.228; property-gallery.php new; property-showroom.php replaced
+[put] inc/property-gallery.php: 11760 bytes, md5 fd52752115 verified
+[put] inc/property-showroom.php: 43681 bytes, md5 3dbb01a16d verified
+[put] nadlan-config.php: 32953 bytes, md5 6b90e1da24 verified
+[purge] {'opcache': True, 'purged': 1}
+[health] 1.72.228 ok after 2s
+[page] OK  200 /properties/%d7%9c%d7%9e%d7%9b%d7%99%d7%a8%d7%94-%d7%91%d7%90%d7%95%d7 missing=[] forbidden=[]
+[page] OK  200 /properties/bialik-rg-4r-demo/ missing=[] forbidden=[]
+[page] OK  200 /properties/mazeh-tlv-3r-demo/ missing=[] forbidden=[]
+[page] BAD 200 /properties/tzukei-aviv-3-rooms-berlin-for-sale/ missing=[] forbidden=['nlps-cover']
+[page] OK  200 /en/brokers/meital-katzir/tzukei-aviv-3-room-apartment-for-sale/ missing=[] forbidden=[]
+[page] OK  200 / missing=[] forbidden=[]
+[page] OK  200 /projects/rainbow-tel-aviv/ missing=[] forbidden=[]
+[page] OK  200 /projects/h-infinity-somail-tel-aviv/ missing=[] forbidden=[]
+[health] 1.72.228 ok after 0s
+[page] OK  200 /properties/%d7%9c%d7%9e%d7%9b%d7%99%d7%a8%d7%94-%d7%91%d7%90%d7%95%d7 missing=[] forbidden=[]
+[page] OK  200 /properties/bialik-rg-4r-demo/ missing=[] forbidden=[]
+[page] OK  200 /properties/mazeh-tlv-3r-demo/ missing=[] forbidden=[]
+[page] BAD 200 /properties/tzukei-aviv-3-rooms-berlin-for-sale/ missing=[] forbidden=['nlps-cover']
+[page] OK  200 /en/brokers/meital-katzir/tzukei-aviv-3-room-apartment-for-sale/ missing=[] forbidden=[]
+[page] OK  200 / missing=[] forbidden=[]
+[page] OK  200 /projects/rainbow-tel-aviv/ missing=[] forbidden=[]
+[page] OK  200 /projects/h-infinity-somail-tel-aviv/ missing=[] forbidden=[]
+[FAIL] pages: ['/properties/tzukei-aviv-3-rooms-berlin-for-sale/']
+[rollback] restoring .bak247 files
+   inc/property-showroom.php e4b7067f8a992fa1f985508fe6f13d49
+   nadlan-config.php ffc1687f744e4f1c1353edeb0129e2ae
+   inc/property-gallery.php unlink 1
+[bridge] delete http 500; route now http 500 (want 404)
+FATAL purge: HTTP 500: {"code": "internal_server_error", "message": "<p>באתר זה אירעה שגיאה קריטית.</p><p><a href=\"https://wordpress.org/documentation/article/faq-troubleshooting/\">מידע נוסף על ניפוי תקלות בוורדפרס.</a></p>", "data": {"status": 500, "error": {"type": 1, "message": "Uncaught Error: Failed opening required '/home/nadlvzld/domains/nad-lan.co.il/public_html/wp-content/plugins/nadlan-config/inc/property-ga

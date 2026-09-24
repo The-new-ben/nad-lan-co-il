@@ -15,29 +15,12 @@
  *   4. Single-listing Leaflet map (OSM tiles, no key) with the asset marker.
  *   5. Honest "לדוגמה" badge on is_demo listings.
  *
- * HAD-247 (24.9.2026, owner order 17.9): the big generic 3D theater under the
- * title is gone. The page opens with the listing's real photo (the theme's
- * featured image, or .nlps-cover from photos_csv); the building illustration
- * is a view inside the building section, loaded only when opened, smaller,
- * with markers from the listing's own facts (floor, balcony, parking, storage).
- * No building view for a cottage or a villa, and no invented floor when the
- * listing does not state one. Owned listings (article.nlx) get none of this.
- * The photo viewer lives in inc/property-gallery.php.
- *
  * Registers the extra Israeli listing meta Yad2/Madlan-parity requires:
  * arnona_monthly, vaad_bayit_monthly, entry_date, condition, storage,
  * renovated_year, direction, units_per_floor, unit_position.
  */
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
-
-/* HAD-247: the photo viewer is this module's companion. It is loaded from here, so
-   the module list in nadlan-config.php (shared with the property-owner release)
-   stays untouched; it runs on every listing, owned ones included.
-   include_once, never require: a missing companion must cost the photo viewer, not
-   the site (24.9.2026: with opcache.enable_file_override a file_exists() guard can
-   answer from the cache after the file is gone, and require_once then fatals). */
-@include_once __DIR__ . '/property-gallery.php';
 
 /* ---------------- extra listing meta ---------------- */
 if ( ! function_exists( 'nadlan_pshow_register_meta' ) ) {
@@ -90,7 +73,7 @@ if ( ! function_exists( 'nadlan_pshow_facade_svg' ) ) {
 		$ground_y = $h - 30;
 
 		$uw  = ( $bw - 24 ) / $units_per_floor;     // unit cell width
-		$svg = '<svg class="nlps-facade-svg" viewBox="0 0 ' . $w . ' ' . $h . '" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="חזית הבניין, הדירה ' . esc_attr( $listing_floor > 0 ? 'בקומה ' . $listing_floor : 'בקומת הקרקע' ) . '">';
+		$svg = '<svg class="nlps-facade-svg" viewBox="0 0 ' . $w . ' ' . $h . '" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="חזית הבניין - הדירה המוצעת בקומה ' . esc_attr( $listing_floor ) . '">';
 		$svg .= '<style>.nlps-f-fl{cursor:pointer}.nlps-f-fl:hover .nlps-f-bg{fill:#F3EEE3}.nlps-f-win{fill:#FAF8F3;stroke:#2E2B26;stroke-width:1.1}.nlps-f-sel .nlps-f-win{fill:#E6D4AE}.nlps-f-unit{fill:#C2563A;fill-opacity:.85;stroke:#9C3F28;stroke-width:1.4}</style>';
 		// ground line + trees (sketch feel)
 		$svg .= '<line x1="6" y1="' . $ground_y . '" x2="' . ( $w - 6 ) . '" y2="' . $ground_y . '" stroke="#2E2B26" stroke-width="1.6"/>';
@@ -132,7 +115,7 @@ if ( ! function_exists( 'nadlan_pshow_plan_svg' ) ) {
 		$rooms    = max( 1, min( 8, (float) $rooms ) );
 		$bedrooms = max( 0, (int) ceil( $rooms ) - 1 );
 		$w = 340; $h = 250;
-		$s = '<svg class="nlps-plan-svg" viewBox="0 0 ' . $w . ' ' . $h . '" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="תוכנית דירה להמחשה">';
+		$s = '<svg class="nlps-plan-svg" viewBox="0 0 ' . $w . ' ' . $h . '" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="תוכנית דירה סכמטית">';
 		$s .= '<style>.nlps-p-r{fill:#FFFDFC;stroke:#1B1A17;stroke-width:1.6}.nlps-p-t{font-size:10px;fill:#2E2B26;font-weight:600}.nlps-p-s{font-size:8px;fill:#6D665C}</style>';
 		$s .= '<rect x="8" y="8" width="' . ( $w - 16 ) . '" height="' . ( $h - 16 ) . '" fill="none" stroke="#1B1A17" stroke-width="2.4"/>';
 		// salon+kitchen block (right half, RTL)
@@ -154,7 +137,7 @@ if ( ! function_exists( 'nadlan_pshow_plan_svg' ) ) {
 			$s .= '<text class="nlps-p-t" x="' . ( $w * 0.79 ) . '" y="' . ( $h * 0.82 ) . '">מרפסת</text>';
 		}
 		if ( (int) $size_sqm > 0 ) {
-			$s .= '<text class="nlps-p-s" x="' . ( $w / 2 ) . '" y="' . ( $h - 2 ) . '" text-anchor="middle">שטח בנוי כ־' . (int) $size_sqm . ' מ״ר · תוכנית להמחשה בלבד</text>'; // centred: anchored at x=14 it ran off the left edge in RTL
+			$s .= '<text class="nlps-p-s" x="14" y="' . ( $h - 2 ) . '">שטח בנוי כ־' . (int) $size_sqm . ' מ״ר · תוכנית להמחשה בלבד</text>';
 		}
 		$s .= '</svg>';
 		return $s;
@@ -179,39 +162,44 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 		$lat     = (float) $g( 'lat' ); $lng = (float) $g( 'lng' );
 		$demo    = (bool) $g( 'is_demo' );
 
-		/* HAD-247 (owner 17.9.2026): the listing opens with its real photo, never with a
-		   generic building. A listing that carries its own broker block (article.nlx)
-		   keeps its own photos: no portal photo and no building on it. */
-		$owned = ( function_exists( 'nadlan_property_is_owned' ) && nadlan_property_is_owned( $id ) )
-			|| false !== strpos( (string) $content, '<article class="nlx' );
-		$ptype = (string) $g( 'property_type' );
-		// a building view only where the listing is a unit in a building (never for a cottage or a villa)
-		$in_building = in_array( $ptype, array( '', 'apartment', 'penthouse', 'mini_penthouse', 'garden', 'duplex', 'studio' ), true );
-		// the floor counts as given only when the listing states it (a stored 0 with no building height is "not given")
-		$floor_known = $in_building && ( $floor > 0 || $tfloors > 0 || 'garden' === $ptype );
-		$show_out    = ! $owned && $floor_known;
-		$show_plan   = ! $owned && $in_building && $rooms > 0;
-
-		// the first real photo, when the theme has no featured image to print above the title
-		$cover = '';
-		if ( ! $owned && ! has_post_thumbnail( $id ) ) {
-			$photos = array_values( array_filter( array_map( 'trim', explode( ',', (string) $g( 'photos_csv' ) ) ) ) );
-			if ( $photos ) {
-				$att   = function_exists( 'attachment_url_to_postid' ) ? (int) attachment_url_to_postid( $photos[0] ) : 0;
-				$alt   = get_the_title( $id );
-				$cover = $att ? (string) wp_get_attachment_image( $att, 'large', false, array( 'class' => 'nlps-cover-img', 'alt' => $alt, 'loading' => 'eager', 'fetchpriority' => 'high', 'decoding' => 'async', 'sizes' => '(max-width: 960px) 94vw, 920px' ) ) : '';
-				if ( '' === $cover ) {
-					$cover = '<img class="nlps-cover-img" src="' . esc_url( $photos[0] ) . '" alt="' . esc_attr( $alt ) . '" loading="eager" fetchpriority="high" decoding="async">';
-				}
-			}
-		}
-
 		ob_start(); ?>
-<div class="nlps" dir="rtl"<?php echo $show_out ? ' data-has3d="1"' : ''; ?>>
-	<?php if ( $cover ) : ?><figure class="nlps-cover"><?php echo $cover; // phpcs:ignore -- wp_get_attachment_image or an escaped URL ?></figure><?php endif; ?>
+<div class="nlps" dir="rtl">
 	<?php if ( $demo ) : ?><div class="nlps-demo">נכס לדוגמה - להמחשת חוויית המודעה. <a href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>">פרסמו נכס אמיתי חינם ←</a></div><?php endif; ?>
 
 	<h1 class="nlps-title"><?php echo esc_html( get_the_title( $id ) ); ?></h1>
+
+	<?php /* the listing 3D theater (owner 2026-07-07: a listing without 3D
+	   "looks broken"): the generic flagship tower, spinnable, honest chip,
+	   day/dusk/night light. The floor badge states the REAL floor - no
+	   invented hotspot positions on a generic model. */
+	$glb = function_exists( 'nadlan_showroom_engine_base_url' ) ? nadlan_showroom_engine_base_url() . 'models/standard-residential.glb' : '';
+	if ( $glb ) : ?>
+	<div class="nlps-3d" id="nlps-3d" style="background-image:linear-gradient(180deg,rgba(237,242,245,.15),rgba(246,241,230,.35)),url('<?php echo esc_url( content_url( 'uploads/2026/07/nadlan-poster-standard-building.jpg' ) ); ?>');background-size:cover;background-position:center">
+		<model-viewer id="nlps-mv" src="<?php echo esc_url( $glb ); ?>" loading="lazy" reveal="auto" camera-controls interaction-prompt="basic" environment-image="neutral" exposure="1.02" shadow-intensity="0.55" camera-target="0 13 0" camera-orbit="-28deg 76deg 46m" min-camera-orbit="auto 48deg 26m" max-camera-orbit="auto 86deg 80m" min-field-of-view="16deg" max-field-of-view="68deg" touch-action="pan-y"></model-viewer>
+		<span class="nlps-3d__chip">המחשה כללית של מגורים בבניין - לא הבניין של הנכס</span>
+		<?php if ( $floor ) : ?><span class="nlps-3d__floor">קומה <?php echo (int) $floor; ?><?php echo $tfloors ? ' מתוך ' . (int) $tfloors : ''; ?></span><?php endif; ?>
+		<span class="nlps-3d__hint">גררו לסיבוב - המבט ננעל לזווית</span>
+		<div class="nlps-3d__light" role="group" aria-label="תאורה">
+			<button type="button" data-l="day" aria-pressed="true">יום</button>
+			<button type="button" data-l="dusk" aria-pressed="false">שקיעה</button>
+			<button type="button" data-l="night" aria-pressed="false">לילה</button>
+		</div>
+	</div>
+	<script>
+	(function(){
+		var box=document.getElementById("nlps-3d");if(!box)return;
+		var mv=document.getElementById("nlps-mv"),exp={day:"1.02",dusk:"0.5",night:"0.25"};
+		box.querySelectorAll("[data-l]").forEach(function(b){
+			b.addEventListener("click",function(){
+				var m=b.dataset.l;
+				box.classList.toggle("is-dusk",m==="dusk");box.classList.toggle("is-night",m==="night");
+				if(mv)mv.setAttribute("exposure",exp[m]||"1.02");
+				box.querySelectorAll("[data-l]").forEach(function(x){x.setAttribute("aria-pressed",String(x===b))});
+			});
+		});
+	})();
+	</script>
+	<?php endif; ?>
 
 	<div class="nlps-hero">
 		<div class="nlps-price">
@@ -235,10 +223,7 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 			if ( $g( 'ac' ) ) { $chips[] = 'מיזוג'; }
 			if ( (int) $g( 'balcony_sqm' ) > 0 ) { $chips[] = 'מרפסת ' . (int) $g( 'balcony_sqm' ) . ' מ״ר'; }
 			if ( $g( 'condition' ) ) { $chips[] = nadlan_pshow_condition_label( $g( 'condition' ) ); }
-			if ( $g( 'direction' ) ) {
-				$dir = trim( (string) $g( 'direction' ) );
-				$chips[] = ctype_digit( $dir ) ? $dir . ' כיווני אוויר' : 'כיוונים: ' . $dir; // "2" was printed as "כיוונים: 2"
-			}
+			if ( $g( 'direction' ) ) { $chips[] = 'כיוונים: ' . $g( 'direction' ); }
 			foreach ( $chips as $c ) { echo '<span class="nlps-chip">' . esc_html( $c ) . '</span>'; }
 			?>
 		</div>
@@ -261,74 +246,36 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 	<?php endif; ?>
 
 	<?php
-	/* The building section. The facade sketch and the building illustration appear
-	   only when the listing states its floor (HAD-247: the old default drew "floor 2"
-	   of an invented 4-floor block on every listing without a floor, a cottage too).
-	   The illustration is loaded on request only: model-viewer.min.js and the GLB are
-	   fetched when the buyer opens it, never with the page. */
+	// Default model for EVERY listing: when building data wasn't fed, render a
+	// sensible schematic default (4 floors, or enough to contain the listing floor).
 	$f_tfloors = $tfloors > 0 ? $tfloors : max( 4, $floor + 1 );
-	$floor_txt = $floor > 0 ? 'קומה ' . (int) $floor : 'קומת קרקע';
-	$glb       = function_exists( 'nadlan_showroom_engine_base_url' ) ? nadlan_showroom_engine_base_url() . 'models/standard-residential.glb' : '';
-	$hs        = array();
-	if ( $show_out && $glb ) {
-		// standard-residential.glb: an open lobby, then 7 residential floors of 3.05 m, balconies on the south (+z) and west (-x) faces
-		$mf = 0;
-		if ( $floor > 0 ) { $mf = $tfloors > 0 ? max( 1, min( 7, (int) round( $floor / $tfloors * 7 ) ) ) : min( 7, $floor ); }
-		$hs[] = array( 'k' => 'floor', 't' => $floor_txt . ( $floor > 0 && $tfloors ? ' מתוך ' . (int) $tfloors : '' ), 'p' => '-13.45 ' . ( $mf ? round( 3.05 * $mf + 1.5, 2 ) : 1.4 ) . ' 13.45', 'n' => '-0.7071 0 0.7071' );
-		if ( (int) $g( 'balcony_sqm' ) > 0 && $mf > 0 ) {
-			$hs[] = array( 'k' => 'balcony', 't' => 'מרפסת ' . (int) $g( 'balcony_sqm' ) . ' מ״ר', 'p' => '0 ' . round( 3.05 * $mf + 0.45, 2 ) . ' 15.75', 'n' => '0 0 1' );
-		}
-		if ( $g( 'parking' ) ) {
-			$pc   = (int) $g( 'parking_count' );
-			$hs[] = array( 'k' => 'parking', 't' => $pc > 1 ? $pc . ' חניות' : 'חניה', 'p' => '4 0.25 18.5', 'n' => '0 1 0' );
-		}
-		if ( $g( 'storage' ) ) {
-			$hs[] = array( 'k' => 'storage', 't' => 'מחסן', 'p' => '6.5 1.4 13.4', 'n' => '0 0 1' );
-		}
-	}
-	if ( $show_out || $show_plan ) : ?>
-	<section class="nlps-facade" id="nlps-building" aria-label="<?php echo $show_out ? 'הבניין ותוכנית הדירה' : 'תוכנית הדירה'; ?>">
+	$f_floor   = ( $floor > 0 || $tfloors > 0 ) ? $floor : 2;
+	?>
+	<section class="nlps-facade" aria-label="חזית הבניין ותוכנית הדירה">
 		<header class="nlps-sec-head">
-			<h2><?php echo $show_out ? 'איפה הדירה בבניין?' : 'תוכנית הדירה'; ?></h2>
+			<h2>איפה הדירה בבניין?</h2>
 			<div class="nlps-toggle" role="tablist">
-				<?php if ( $show_out ) : ?>
 				<button type="button" class="is-on" data-view="out" role="tab" aria-selected="true">מבט חוץ</button>
-				<?php if ( $hs ) : ?><button type="button" data-view="3d" role="tab" aria-selected="false">הדמיה</button><?php endif; ?>
-				<?php endif; ?>
-				<?php if ( $show_plan ) : ?>
-				<button type="button"<?php echo $show_out ? '' : ' class="is-on"'; ?> data-view="in" role="tab" aria-selected="<?php echo $show_out ? 'false' : 'true'; ?>">תוכנית הדירה</button>
+				<button type="button" data-view="in" role="tab" aria-selected="false">תוכנית הדירה</button>
 				<button type="button" data-view="fp" role="tab" aria-selected="false">🚶 סיור פנימי</button>
-				<?php endif; ?>
 			</div>
 		</header>
 		<div class="nlps-facade-stage">
-			<?php if ( $show_out ) : ?>
 			<div class="nlps-view nlps-view-out is-on">
-				<?php echo nadlan_pshow_facade_svg( $f_tfloors, $floor, (int) $g( 'units_per_floor' ), (int) $g( 'unit_position' ) ); // phpcs:ignore ?>
-				<p class="nlps-cap"><?php echo $floor > 0 ? 'הדירה ב' . esc_html( $floor_txt ) . ' מסומנת בצבע.' : 'הדירה בקומת הקרקע.'; ?> הדמיה להמחשה בלבד.</p>
+				<?php echo nadlan_pshow_facade_svg( $f_tfloors, $f_floor, (int) $g( 'units_per_floor' ), (int) $g( 'unit_position' ) ); // phpcs:ignore ?>
+				<p class="nlps-cap">הדירה המוצעת מסומנת בקומה <?php echo (int) $f_floor; ?>. לחצו עליה כדי להיכנס פנימה לתוכנית הדירה. הדמיה סכמטית להמחשה.</p>
 			</div>
-			<?php if ( $hs ) : ?>
-			<div class="nlps-view nlps-view-3d" data-glb="<?php echo esc_url( $glb ); ?>" data-mv="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js" data-hs="<?php echo esc_attr( wp_json_encode( $hs ) ); ?>">
-				<div class="nlps-3dv" style="background-image:url('<?php echo esc_url( content_url( 'uploads/2026/07/nadlan-poster-standard-building.jpg' ) ); ?>')"></div>
-				<p class="nlps-cap nlps-3dv-cap"><span>הדמיה להמחשה בלבד: הבניין בהדמיה אינו הבניין של הנכס, והסימונים לפי פרטי המודעה.</span>
-					<span class="nlps-light" role="group" aria-label="תאורה"><button type="button" data-l="day" aria-pressed="true">יום</button><button type="button" data-l="dusk" aria-pressed="false">שקיעה</button><button type="button" data-l="night" aria-pressed="false">לילה</button></span></p>
-			</div>
-			<?php endif; ?>
-			<?php endif; ?>
-			<?php if ( $show_plan ) : ?>
-			<div class="nlps-view nlps-view-in<?php echo $show_out ? '' : ' is-on'; ?>">
-				<p class="nlps-plan-title">תוכנית הדירה<?php echo $floor_known ? ' · ' . esc_html( $floor_txt ) : ''; ?></p>
+			<div class="nlps-view nlps-view-in">
+				<p class="nlps-plan-title">תוכנית הדירה · קומה <?php echo (int) $f_floor; ?></p>
 				<?php echo nadlan_pshow_plan_svg( $rooms, (bool) $g( 'protected_room' ), (int) $g( 'balcony_sqm' ), $sqm ); // phpcs:ignore ?>
-				<?php if ( $show_out ) : ?><p class="nlps-cap"><button type="button" class="nlps-backout">← חזרה למבט על הבניין</button></p><?php endif; ?>
+				<p class="nlps-cap"><button type="button" class="nlps-backout">← חזרה למבט על הבניין</button></p>
 			</div>
 			<div class="nlps-view nlps-view-fp">
 				<?php if ( function_exists( 'nadlan_interior_fp_html' ) ) { echo nadlan_interior_fp_html( array( 'rooms' => $rooms, 'size_sqm' => $sqm, 'protected_room' => (bool) $g( 'protected_room' ), 'balcony_sqm' => (int) $g( 'balcony_sqm' ), 'direction' => (string) $g( 'direction' ) ) ); } // phpcs:ignore ?>
 			</div>
-			<?php endif; ?>
 			<div class="nlps-floor-tip" hidden></div>
 		</div>
 	</section>
-	<?php endif; ?>
 
 	<?php if ( (int) $g( 'arnona_monthly' ) || (int) $g( 'vaad_bayit_monthly' ) || ( $price && ! $is_rent ) ) : ?>
 	<section class="nlps-costs" aria-label="עלויות חודשיות">
@@ -353,7 +300,7 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 		}, (array) $pois ) );
 	?>
 	<section class="nlps-map-sec" aria-label="מיקום">
-		<h2>מיקום וסביבה</h2>
+		<h2>מיקום וסביבה - מפה חיה</h2>
 		<div class="nlps-poichips" role="group" aria-label="סינון נקודות עניין">
 			<button type="button" class="is-on" data-poi="schools">🏫 חינוך</button>
 			<button type="button" class="is-on" data-poi="kindergartens">🧒 גנים</button>
@@ -365,7 +312,7 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 		</div>
 		<div id="nlps-map" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-title="<?php echo esc_attr( get_the_title( $id ) ); ?>"></div>
 		<script>window.NLPS_POIS = <?php echo $poi_json ? $poi_json : '{}'; // phpcs:ignore ?>;</script>
-		<p class="nlps-cap">המרחקים בקו אווירי, בקירוב.</p>
+		<p class="nlps-cap">הקישו על קטגוריה כדי להציג או להסתיר אותה במפה. נתונים חיים מ-OpenStreetMap, מרחקים אוויריים בקירוב. תצוגת לוויין בכפתור השכבות שבמפה.</p>
 	</section>
 	<?php endif; ?>
 </div>
@@ -394,27 +341,19 @@ if ( ! function_exists( 'nadlan_pshow_assets' ) ) {
 .nlps-demo a{color:var(--gold);font-weight:600;text-decoration:none}
 .nlps-hero{border:1px solid var(--line);border-radius:10px;background:#FFFDFC;padding:18px 20px;margin-bottom:18px;box-shadow:0 1px 2px rgba(17,17,15,.04)}
 .nlps-title{font-family:"Frank Ruhl Libre",serif;font-size:clamp(1.5rem,3.2vw,2.2rem);line-height:1.25;color:#1B1A17;margin:4px 0 14px}
-.nlps-cover{margin:0 0 18px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--band);display:flex;align-items:center;justify-content:center;max-height:min(72vh,640px)}
-.nlps-cover-img{display:block;width:auto;max-width:100%;height:auto;max-height:min(72vh,640px)}
-.nlps-3dv{position:relative;height:clamp(300px,50vh,420px);border-radius:10px;overflow:hidden;background-color:#EDF2F5;background-size:cover;background-position:center;transition:background-color .6s}
-.nlps-3dv.is-dusk{background-color:#2A2224}
-.nlps-3dv.is-night{background-color:#0C0F16}
-.nlps-3dv model-viewer{width:100%;height:100%;display:block;transition:filter .6s;--poster-color:transparent;background-color:transparent}
-.nlps-3dv.is-dusk model-viewer{filter:sepia(.35) saturate(.85) brightness(.8) contrast(1.04)}
-.nlps-3dv.is-night model-viewer{filter:brightness(.5) saturate(.6) contrast(1.08)}
-.nlps-3dv model-viewer::part(default-progress-bar){display:none}
-.nlps-3dv .nlux-compass{display:none!important}
-.nlps-3dv.is-loading::after{content:"";position:absolute;inset-inline:0;bottom:0;height:3px;background:linear-gradient(90deg,transparent,#9C7A3C,transparent);background-size:50% 100%;background-repeat:no-repeat;animation:nlps-load 1.1s linear infinite}
-@keyframes nlps-load{from{background-position:-50% 0}to{background-position:150% 0}}
-.nlps-3dv-cap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 14px}
-.nlps-light{display:inline-flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px;background:#fff}
-.nlps-light button{font:600 11.5px/1 Heebo,sans-serif;color:#51483A;background:transparent;border:0;border-radius:999px;padding:5px 10px;cursor:pointer}
-.nlps-light button[aria-pressed="true"]{background:var(--ink);color:#FAF7F1}
-.nlps-hs{width:14px;height:14px;border-radius:50%;background:var(--ink);border:2px solid #FAF7F1;box-shadow:0 1px 5px rgba(17,17,15,.4);position:relative;pointer-events:none;transition:opacity .25s}
-.nlps-hs--floor{background:var(--terra)}
-.nlps-hs--floor::before{content:"";position:absolute;inset:-7px;border-radius:50%;border:2px solid rgba(194,86,58,.45)}
-.nlps-hs-t{position:absolute;top:50%;inset-inline-start:calc(100% + 7px);transform:translateY(-50%);white-space:nowrap;font:600 12.5px/1 Heebo,sans-serif;color:var(--ink);background:rgba(250,247,241,.96);border:1px solid #E2DCD0;border-radius:999px;padding:6px 10px;box-shadow:0 1px 6px rgba(17,17,15,.14)}
-.nlps-hs:not([data-visible]){opacity:.3}
+.nlps-3d{position:relative;height:min(58vh,520px);border-radius:14px;overflow:hidden;background:linear-gradient(180deg,#EDF2F5,#F6F1E6 78%);border:1px solid var(--line,#E2DCD0);margin-bottom:18px;transition:background .6s}
+.nlps-3d.is-dusk{background:linear-gradient(180deg,#3E2E33,#1E1A1B 75%)}
+.nlps-3d.is-night{background:linear-gradient(180deg,#0C0F16,#14130F 75%)}
+.nlps-3d model-viewer{width:100%;height:100%;transition:filter .6s;--poster-color:transparent;background-color:transparent}
+.nlps-3d.is-dusk model-viewer{filter:sepia(.35) saturate(.85) brightness(.8) contrast(1.04)}
+.nlps-3d.is-night model-viewer{filter:brightness(.5) saturate(.6) contrast(1.08)}
+.nlps-3d__chip{position:absolute;top:12px;inset-inline-start:12px;background:rgba(20,19,15,.82);color:#E9D9A8;font:600 11.5px/1 Heebo,sans-serif;padding:7px 11px;border-radius:999px;border:1px solid rgba(233,217,168,.4);pointer-events:none}
+.nlps-3d__floor{position:absolute;bottom:12px;inset-inline-start:12px;background:#FAF7F1;color:#1B1A17;font:700 12.5px/1 Heebo,sans-serif;padding:8px 12px;border-radius:999px;border:1px solid #D6C189}
+.nlps-3d__light{position:absolute;top:12px;inset-inline-end:12px;display:inline-flex;gap:4px;background:rgba(250,247,241,.92);border:1px solid #E2DCD0;border-radius:11px;padding:4px}
+.nlps-3d__light button{font:600 12px/1 Heebo,sans-serif;color:#51483A;background:transparent;border:0;border-radius:8px;padding:7px 11px;cursor:pointer}
+.nlps-3d__light button[aria-pressed="true"]{background:#1B1A17;color:#FAF7F1}
+.nlps-3d__hint{position:absolute;bottom:12px;inset-inline-end:12px;background:rgba(20,19,15,.75);color:#F5EFE2;font:600 11.5px/1 Heebo,sans-serif;padding:8px 12px;border-radius:999px;pointer-events:none}
+.nlps-3d model-viewer::part(default-progress-bar){display:none}
 .nlps-price{display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
 .nlps-price b{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:2rem;letter-spacing:-.01em}
 .nlps-price span{color:var(--warm);font-size:.95rem}
@@ -454,7 +393,7 @@ if ( ! function_exists( 'nadlan_pshow_assets' ) ) {
 .nlps-plan-title{text-align:center;font-weight:700;font-size:14px;margin:0 0 6px}
 .nlps-backout{font:inherit;font-size:12.5px;border:0;background:none;color:var(--gold);cursor:pointer;text-decoration:underline}
 .nlps-f-sel{cursor:zoom-in}
-@media(max-width:560px){.nlps-price b{font-size:1.5rem}.nlps-facts{gap:16px}.nlps-toggle{width:100%}.nlps-toggle button{flex:1 1 0;padding:8px 4px;font-size:12px;white-space:nowrap}}
+@media(max-width:560px){.nlps-price b{font-size:1.5rem}.nlps-facts{gap:16px}}
 ' );
 		wp_register_script( 'nadlan-pshow-js', false, $has_map ? array( 'leaflet' ) : array(), '1.69.70', true );
 		wp_enqueue_script( 'nadlan-pshow-js' );
@@ -462,68 +401,20 @@ if ( ! function_exists( 'nadlan_pshow_assets' ) ) {
 (function(){
 	document.addEventListener("DOMContentLoaded",function(){
 		var root=document.querySelector(".nlps");if(!root){return}
-		// the building section: sketch, illustration (loaded on request only), plan, walk-through
-		var tip=root.querySelector(".nlps-floor-tip"),MVP=null;
-		function loadMV(src){
-			if(window.customElements&&customElements.get("model-viewer")){return Promise.resolve()}
-			if(MVP){return MVP}
-			MVP=new Promise(function(res,rej){
-				var s=document.createElement("script");s.type="module";s.src=src;
-				s.onload=function(){(window.customElements&&customElements.whenDefined?customElements.whenDefined("model-viewer"):Promise.resolve()).then(res)};
-				s.onerror=function(){MVP=null;rej()};
-				document.head.appendChild(s);
+		// facade / plan toggle
+		root.querySelectorAll(".nlps-toggle button").forEach(function(b){
+			b.addEventListener("click",function(){
+				root.querySelectorAll(".nlps-toggle button").forEach(function(x){x.classList.toggle("is-on",x===b);x.setAttribute("aria-selected",x===b?"true":"false")});
+				root.querySelectorAll(".nlps-view").forEach(function(v){v.classList.remove("is-on")});
+				var t=root.querySelector(".nlps-view-"+b.dataset.view);if(t){t.classList.add("is-on");if(b.dataset.view==="fp"&&window.nadlanInitFP){window.nadlanInitFP()}}
 			});
-			return MVP;
-		}
-		function mount3d(v){
-			if(!v||v.getAttribute("data-on")){return}
-			v.setAttribute("data-on","1");
-			var st=v.querySelector(".nlps-3dv"),hs=[];st.classList.add("is-loading");
-			try{hs=JSON.parse(v.getAttribute("data-hs")||"[]")}catch(e){}
-			loadMV(v.getAttribute("data-mv")).then(function(){
-				// dir=ltr: model-viewer places hotspots from the left edge; inside an RTL page they drift out of the box
-				var mv=document.createElement("model-viewer"),A={"dir":"ltr","src":v.getAttribute("data-glb"),"alt":"הדמיה להמחשה של בניין מגורים","camera-controls":"","disable-zoom":"","touch-action":"pan-y","interaction-prompt":"none","environment-image":"neutral","exposure":"1.02","shadow-intensity":"0.55","camera-target":"0 11.5 2","camera-orbit":"-32deg 74deg 78m","min-camera-orbit":"auto 52deg 40m","max-camera-orbit":"auto 86deg 140m","field-of-view":"30deg","loading":"eager"};
-				Object.keys(A).forEach(function(k){mv.setAttribute(k,A[k])});
-				hs.forEach(function(h,i){
-					var b=document.createElement("div"),t=document.createElement("span");
-					b.className="nlps-hs nlps-hs--"+h.k;b.setAttribute("slot","hotspot-"+i);b.setAttribute("data-position",h.p);b.setAttribute("data-normal",h.n);b.setAttribute("data-visibility-attribute","visible");
-					t.className="nlps-hs-t";t.setAttribute("dir","rtl");t.textContent=h.t;b.appendChild(t);mv.appendChild(b);
-				});
-				mv.addEventListener("load",function(){st.classList.remove("is-loading");st.style.backgroundImage="none"});
-				mv.addEventListener("error",function(){st.classList.remove("is-loading")});
-				st.appendChild(mv);
-			},function(){st.classList.remove("is-loading");v.removeAttribute("data-on")});
-		}
+		});
+		// floor click: selected floor = enter the apartment (slice inspect); others = tooltip
+		var tip=root.querySelector(".nlps-floor-tip");
 		function setView(v){
 			root.querySelectorAll(".nlps-toggle button").forEach(function(x){x.classList.toggle("is-on",x.dataset.view===v);x.setAttribute("aria-selected",x.dataset.view===v?"true":"false")});
 			root.querySelectorAll(".nlps-view").forEach(function(x){x.classList.remove("is-on")});
 			var t=root.querySelector(".nlps-view-"+v);if(t){t.classList.add("is-on")}
-			if(v==="fp"&&window.nadlanInitFP){window.nadlanInitFP()}
-			if(v==="3d"){mount3d(t)}
-		}
-		root.querySelectorAll(".nlps-toggle button").forEach(function(b){
-			b.addEventListener("click",function(){setView(b.dataset.view)});
-		});
-		// day, dusk and night on the illustration
-		var EXP={day:"1.02",dusk:"0.5",night:"0.25"};
-		root.querySelectorAll(".nlps-light [data-l]").forEach(function(b){
-			b.addEventListener("click",function(){
-				var m=b.dataset.l,st=root.querySelector(".nlps-3dv"),mv=st?st.querySelector("model-viewer"):null;
-				if(st){st.classList.toggle("is-dusk",m==="dusk");st.classList.toggle("is-night",m==="night")}
-				if(mv){mv.setAttribute("exposure",EXP[m]||"1.02")}
-				root.querySelectorAll(".nlps-light [data-l]").forEach(function(x){x.setAttribute("aria-pressed",String(x===b))});
-			});
-		});
-		// the photo at the top carries a second button that opens the illustration
-		if(root.getAttribute("data-has3d")&&root.querySelector(".nlps-view-3d")){
-			var fig=document.querySelector(".nlps-cover")||document.querySelector(".single-nadlan_property .wp-block-post-featured-image");
-			if(fig&&(fig.offsetWidth||fig.offsetHeight)){
-				var pl=fig.querySelector(".nlpg-pills");if(!pl){pl=document.createElement("div");pl.className="nlpg-pills";fig.appendChild(pl)}
-				var pb=document.createElement("button");pb.type="button";pb.className="nlpg-pill nlpg-pill--3d";
-				pb.innerHTML="<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M8 1.5 14 4.8v6.4L8 14.5 2 11.2V4.8ZM2 4.8 8 8l6-3.2M8 8v6.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linejoin=\"round\"/></svg><span>הדמיית הבניין</span>";
-				pb.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();setView("3d");var sec=document.getElementById("nlps-building");if(sec){sec.scrollIntoView({behavior:"smooth",block:"start"})}});
-				pl.appendChild(pb);
-			}
 		}
 		root.querySelectorAll(".nlps-f-fl").forEach(function(fl){
 			fl.addEventListener("click",function(){
@@ -584,9 +475,12 @@ if ( ! function_exists( 'nadlan_pshow_assets' ) ) {
 }
 add_action( 'wp_enqueue_scripts', 'nadlan_pshow_assets' );
 
-/* HAD-247: model-viewer is no longer enqueued on listing pages. The building
-   illustration injects the same pinned runtime (4.3.1) when the buyer opens it
-   (.nlps-view-3d data-mv), so no listing pays for it on load. */
+/* the listing 3D theater needs the model-viewer runtime (same version the engine pins) */
+add_action( 'wp_enqueue_scripts', function () {
+	if ( ! is_singular( 'nadlan_property' ) ) { return; }
+	wp_enqueue_script( 'nadlan-model-viewer', 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js', array(), '4.3.1', true );
+	wp_script_add_data( 'nadlan-model-viewer', 'type', 'module' );
+} );
 
 /* Demo listings are showcase-only: keep them out of Google regardless of body length. */
 if ( ! function_exists( 'nadlan_pshow_demo_noindex' ) ) {
@@ -622,13 +516,9 @@ if ( ! function_exists( 'nadlan_pshow_meta_desc' ) ) {
 		$deal  = $g( 'listing_type' ) === 'rent' ? 'להשכרה' : 'למכירה';
 		$bits[] = 'דירת ' . ( $rooms ? rtrim( rtrim( number_format( $rooms, 1 ), '0' ), '.' ) . ' חדרים ' : '' ) . $deal
 			. ( $g( 'city' ) ? ' ב' . $g( 'city' ) : '' ) . ( $g( 'street' ) ? ', רחוב ' . $g( 'street' ) : '' ) . '.';
-		if ( (int) $g( 'size_sqm' ) ) {
-			// the floor only when the listing states it ("קומה 0" was printed for a cottage with no floor)
-			$fl = (int) $g( 'floor' );
-			$bits[] = (int) $g( 'size_sqm' ) . ' מ"ר' . ( $fl > 0 ? ', קומה ' . $fl : ( (int) $g( 'total_floors' ) > 0 ? ', קומת קרקע' : '' ) ) . '.';
-		}
+		if ( (int) $g( 'size_sqm' ) ) { $bits[] = (int) $g( 'size_sqm' ) . ' מ"ר, קומה ' . (int) $g( 'floor' ) . '.'; }
 		if ( (int) $g( 'price' ) ) { $bits[] = number_format( (int) $g( 'price' ) ) . ' ₪' . ( $g( 'listing_type' ) === 'rent' ? ' לחודש' : '' ) . '.'; }
-		$bits[] = 'כל הפרטים, המיקום והסביבה בנדלן.';
+		$bits[] = 'כל הפרטים, מפה חיה וסביבת מגורים - בנדלן.';
 		return mb_substr( implode( ' ', $bits ), 0, 156 );
 	}
 }

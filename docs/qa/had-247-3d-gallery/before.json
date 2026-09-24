@@ -1,0 +1,365 @@
+{
+  "label": "before",
+  "at": "2026-09-24T09:18:29.375Z",
+  "runs": 3,
+  "results": [
+    {
+      "url": "https://nad-lan.co.il/properties/tzukei-aviv-3-rooms-berlin-for-sale/",
+      "profile": "desktop",
+      "lcp_median": 1096,
+      "fcp_median": 1096,
+      "cls_max": 0.024,
+      "load_median": 1539,
+      "kb_median": 4539,
+      "reqs_median": 64,
+      "lcp_element": "img",
+      "lcp_image": "L04_DY3rdjmDJiE_01.jpg",
+      "model_viewer_or_glb_fetched": true,
+      "fetched": [
+        "4.3.1/model-viewer.min.js?ver=4.3.1"
+      ],
+      "runs": [
+        {
+          "lcp": 2416,
+          "lcpEl": "img",
+          "lcpImg": "L04_DY3rdjmDJiE_01.jpg",
+          "fcp": 2416,
+          "cls": 0.024,
+          "load": 2649,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1"
+          ],
+          "reqs": 66,
+          "kb": 4541
+        },
+        {
+          "lcp": 1012,
+          "lcpEl": "img",
+          "lcpImg": "L04_DY3rdjmDJiE_01.jpg",
+          "fcp": 1012,
+          "cls": 0.024,
+          "load": 1360,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1"
+          ],
+          "reqs": 64,
+          "kb": 4539
+        },
+        {
+          "lcp": 1096,
+          "lcpEl": "img",
+          "lcpImg": "L04_DY3rdjmDJiE_01.jpg",
+          "fcp": 1096,
+          "cls": 0.024,
+          "load": 1539,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1"
+          ],
+          "reqs": 64,
+          "kb": 4539
+        }
+      ]
+    },
+    {
+      "url": "https://nad-lan.co.il/properties/tzukei-aviv-3-rooms-berlin-for-sale/",
+      "profile": "mobile",
+      "lcp_median": 3304,
+      "fcp_median": 2624,
+      "cls_max": 0.16,
+      "load_median": 9239,
+      "kb_median": 1487,
+      "reqs_median": 55,
+      "lcp_element": "p.nlx-dek",
+      "lcp_image": null,
+      "model_viewer_or_glb_fetched": true,
+      "fetched": [
+        "4.3.1/model-viewer.min.js?ver=4.3.1"
+      ],
+      "runs": [
+        {
+          "lcp": 3304,
+          "lcpEl": "p.nlx-dek",
+          "lcpImg": null,
+          "fcp": 2620,
+          "cls": 0.16,
+          "load": 23696,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1"
+          ],
+          "reqs": 67,
+          "kb": 4670
+        },
+        {
+          "lcp": 3436,
+          "lcpEl": "p.nlx-dek",
+          "lcpImg": null,
+          "fcp": 2700,
+          "cls": 0.16,
+          "load": 9239,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1"
+          ],
+          "reqs": 55,
+          "kb": 1487
+        },
+        {
+          "lcp": 3256,
+          "lcpEl": "p.nlx-dek",
+          "lcpImg": null,
+          "fcp": 2624,
+          "cls": 0.16,
+          "load": 9066,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1"
+          ],
+          "reqs": 55,
+          "kb": 1487
+        }
+      ]
+    },
+    {
+      "url": "https://nad-lan.co.il/properties/%d7%9c%d7%9e%d7%9b%d7%99%d7%a8%d7%94-%d7%91%d7%90%d7%95%d7%a4%d7%a7%d7%99%d7%9d-%d7%a9%d7%9b%d7%95%d7%a0%d7%aa-%d7%a9%d7%a4%d7%99%d7%a8%d7%90-%d7%a7%d7%95%d7%98%d7%92-5-%d7%97%d7%93%d7%a8%d7%99%d7%9d/",
+      "profile": "desktop",
+      "lcp_median": 1108,
+      "fcp_median": 1056,
+      "cls_max": 0.007,
+      "load_median": 1495,
+      "kb_median": 1530,
+      "reqs_median": 69,
+      "lcp_element": "div#nlps-3d.nlps-3d",
+      "lcp_image": "nadlan-poster-standard-building.jpg",
+      "model_viewer_or_glb_fetched": true,
+      "fetched": [
+        "4.3.1/model-viewer.min.js?ver=4.3.1",
+        "models/standard-residential.glb"
+      ],
+      "runs": [
+        {
+          "lcp": 1128,
+          "lcpEl": "div#nlps-3d.nlps-3d",
+          "lcpImg": "nadlan-poster-standard-building.jpg",
+          "fcp": 1076,
+          "cls": 0.007,
+          "load": 2653,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1",
+            "models/standard-residential.glb"
+          ],
+          "reqs": 69,
+          "kb": 1530
+        },
+        {
+          "lcp": 1108,
+          "lcpEl": "div#nlps-3d.nlps-3d",
+          "lcpImg": "nadlan-poster-standard-building.jpg",
+          "fcp": 1056,
+          "cls": 0.005,
+          "load": 1495,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1",
+            "models/standard-residential.glb"
+          ],
+          "reqs": 69,
+          "kb": 1530
+        },
+        {
+          "lcp": 1024,
+          "lcpEl": "div#nlps-3d.nlps-3d",
+          "lcpImg": "nadlan-poster-standard-building.jpg",
+          "fcp": 924,
+          "cls": 0.006,
+          "load": 1451,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1",
+            "models/standard-residential.glb"
+          ],
+          "reqs": 69,
+          "kb": 1530
+        }
+      ]
+    },
+    {
+      "url": "https://nad-lan.co.il/properties/%d7%9c%d7%9e%d7%9b%d7%99%d7%a8%d7%94-%d7%91%d7%90%d7%95%d7%a4%d7%a7%d7%99%d7%9d-%d7%a9%d7%9b%d7%95%d7%a0%d7%aa-%d7%a9%d7%a4%d7%99%d7%a8%d7%90-%d7%a7%d7%95%d7%98%d7%92-5-%d7%97%d7%93%d7%a8%d7%99%d7%9d/",
+      "profile": "mobile",
+      "lcp_median": 5124,
+      "fcp_median": 3408,
+      "cls_max": 0.01,
+      "load_median": 9568,
+      "kb_median": 1587,
+      "reqs_median": 73,
+      "lcp_element": "div#nlps-3d.nlps-3d",
+      "lcp_image": "nadlan-poster-standard-building.jpg",
+      "model_viewer_or_glb_fetched": true,
+      "fetched": [
+        "4.3.1/model-viewer.min.js?ver=4.3.1",
+        "models/standard-residential.glb"
+      ],
+      "runs": [
+        {
+          "lcp": 5012,
+          "lcpEl": "div#nlps-3d.nlps-3d",
+          "lcpImg": "nadlan-poster-standard-building.jpg",
+          "fcp": 3096,
+          "cls": 0.008,
+          "load": 13816,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1",
+            "models/standard-residential.glb"
+          ],
+          "reqs": 73,
+          "kb": 1587
+        },
+        {
+          "lcp": 5456,
+          "lcpEl": "div#nlps-3d.nlps-3d",
+          "lcpImg": "nadlan-poster-standard-building.jpg",
+          "fcp": 3588,
+          "cls": 0.01,
+          "load": 9568,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1",
+            "models/standard-residential.glb"
+          ],
+          "reqs": 73,
+          "kb": 1587
+        },
+        {
+          "lcp": 5124,
+          "lcpEl": "div#nlps-3d.nlps-3d",
+          "lcpImg": "nadlan-poster-standard-building.jpg",
+          "fcp": 3408,
+          "cls": 0.007,
+          "load": 9512,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1",
+            "models/standard-residential.glb"
+          ],
+          "reqs": 73,
+          "kb": 1587
+        }
+      ]
+    },
+    {
+      "url": "https://nad-lan.co.il/properties/mazeh-tlv-3r-demo/",
+      "profile": "desktop",
+      "lcp_median": 1160,
+      "fcp_median": 1160,
+      "cls_max": 0.006,
+      "load_median": 2104,
+      "kb_median": 2156,
+      "reqs_median": 75,
+      "lcp_element": "img.attachment-post-thumbnail.size-post-thumbnail",
+      "lcp_image": "mazeh-40-tlv-listing-plate.webp",
+      "model_viewer_or_glb_fetched": true,
+      "fetched": [
+        "4.3.1/model-viewer.min.js?ver=4.3.1",
+        "models/standard-residential.glb"
+      ],
+      "runs": [
+        {
+          "lcp": 1216,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "mazeh-40-tlv-listing-plate.webp",
+          "fcp": 1216,
+          "cls": 0.006,
+          "load": 2051,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1",
+            "models/standard-residential.glb"
+          ],
+          "reqs": 74,
+          "kb": 2155
+        },
+        {
+          "lcp": 1160,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "mazeh-40-tlv-listing-plate.webp",
+          "fcp": 1160,
+          "cls": 0.006,
+          "load": 2104,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1",
+            "models/standard-residential.glb"
+          ],
+          "reqs": 75,
+          "kb": 2156
+        },
+        {
+          "lcp": 1124,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "mazeh-40-tlv-listing-plate.webp",
+          "fcp": 1124,
+          "cls": 0.006,
+          "load": 2199,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1",
+            "models/standard-residential.glb"
+          ],
+          "reqs": 75,
+          "kb": 2157
+        }
+      ]
+    },
+    {
+      "url": "https://nad-lan.co.il/properties/mazeh-tlv-3r-demo/",
+      "profile": "mobile",
+      "lcp_median": 9464,
+      "fcp_median": 3608,
+      "cls_max": 0.051,
+      "load_median": 11809,
+      "kb_median": 2132,
+      "reqs_median": 75,
+      "lcp_element": "img.attachment-post-thumbnail.size-post-thumbnail",
+      "lcp_image": "mazeh-40-tlv-listing-plate.webp",
+      "model_viewer_or_glb_fetched": true,
+      "fetched": [
+        "4.3.1/model-viewer.min.js?ver=4.3.1",
+        "models/standard-residential.glb"
+      ],
+      "runs": [
+        {
+          "lcp": 9464,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "mazeh-40-tlv-listing-plate.webp",
+          "fcp": 3356,
+          "cls": 0.028,
+          "load": 11976,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1",
+            "models/standard-residential.glb"
+          ],
+          "reqs": 75,
+          "kb": 2132
+        },
+        {
+          "lcp": 9348,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "mazeh-40-tlv-listing-plate.webp",
+          "fcp": 3608,
+          "cls": 0.051,
+          "load": 11345,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1",
+            "models/standard-residential.glb"
+          ],
+          "reqs": 75,
+          "kb": 2132
+        },
+        {
+          "lcp": 9480,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "mazeh-40-tlv-listing-plate.webp",
+          "fcp": 3608,
+          "cls": 0.027,
+          "load": 11809,
+          "mv": [
+            "4.3.1/model-viewer.min.js?ver=4.3.1",
+            "models/standard-residential.glb"
+          ],
+          "reqs": 75,
+          "kb": 2132
+        }
+      ]
+    }
+  ]
+}

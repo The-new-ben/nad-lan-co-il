@@ -1,0 +1,24 @@
+{"outDir":"C:/Users/777/nad-lan/nad-lan-co-il/docs/qa/had-247-3d-gallery","width":390,"height":844,"dpr":2,"mobile":true,"noCache":true,
+"steps":[
+ {"go":"https://nad-lan.co.il/properties/%d7%9c%d7%9e%d7%9b%d7%99%d7%a8%d7%94-%d7%91%d7%90%d7%95%d7%a4%d7%a7%d7%99%d7%9d-%d7%a9%d7%9b%d7%95%d7%a0%d7%aa-%d7%a9%d7%a4%d7%99%d7%a8%d7%90-%d7%a7%d7%95%d7%98%d7%92-5-%d7%97%d7%93%d7%a8%d7%99%d7%9d/?nlv=a247m","settle":4000},
+ {"eval":"JSON.stringify({page:'ofakim',sw:document.documentElement.scrollWidth,cw:document.documentElement.clientWidth,mvOnLoad:performance.getEntriesByType('resource').filter(e=>/model-viewer|glb/.test(e.name)).length})","as":"ofakim"},
+ {"shot":"after-ofakim-mobile-top.png"},
+
+ {"go":"https://nad-lan.co.il/properties/bialik-rg-4r-demo/?nlv=a247m","settle":4000},
+ {"eval":"JSON.stringify({page:'bialik',sw:document.documentElement.scrollWidth,cw:document.documentElement.clientWidth,mvOnLoad:performance.getEntriesByType('resource').filter(e=>/model-viewer|glb/.test(e.name)).length})","as":"bialik"},
+ {"shot":"after-bialik-mobile-top.png"},
+ {"tap":".nlps-toggle [data-view='3d']","after":10000},
+ {"scroll":"#nlps-building","block":"start"},
+ {"wait":1500},
+ {"eval":"JSON.stringify({hotspots:[...document.querySelectorAll('.nlps-hs')].map(h=>h.textContent+(h.hasAttribute('data-visible')?'':' (hidden)'))})","as":"bialik3d"},
+ {"shot":"after-bialik-mobile-3d.png"},
+
+ {"go":"https://nad-lan.co.il/properties/tzukei-aviv-3-rooms-berlin-for-sale/?nlv=a247m","settle":4000},
+ {"eval":"JSON.stringify({page:'meital',sw:document.documentElement.scrollWidth,cw:document.documentElement.clientWidth,mvOnLoad:performance.getEntriesByType('resource').filter(e=>/model-viewer|glb/.test(e.name)).length})","as":"meital"},
+ {"tap":"article.nlx .nlx-mast img","after":1800},
+ {"eval":"document.querySelector('.nlpg-n').textContent","as":"meitalOpen"},
+ {"swipe":".nlpg-track","dx":-260,"after":1500},
+ {"eval":"document.querySelector('.nlpg-n').textContent","as":"meitalAfterSwipe"},
+ {"shot":"after-meital-mobile-lightbox.png"},
+ {"eval":"(history.back(), new Promise(r=>setTimeout(()=>r(JSON.stringify({open:!document.querySelector('.nlpg').hidden,url:location.pathname})),1000)))","as":"meitalBack"}
+]}

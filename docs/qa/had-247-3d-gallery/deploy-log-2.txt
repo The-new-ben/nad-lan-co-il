@@ -1,0 +1,22 @@
+[health] 1.72.227 ok
+[lint] inc/property-gallery.php: ok
+[lint] inc/property-showroom.php: ok
+[bridge] up, id 722 | live header version 1.72.227
+[drift] live property-showroom.php e4b7067f8a vs git HEAD e4b7067f8a
+[lint] nadlan-config.php (live text, bumped): ok
+[plan] 1.72.227 -> 1.72.228; property-gallery.php new; property-showroom.php replaced
+[put] inc/property-gallery.php: 11760 bytes, md5 fd52752115 verified
+[put] inc/property-showroom.php: 43873 bytes, md5 ccebb89f40 verified
+[put] nadlan-config.php: 32953 bytes, md5 6b90e1da24 verified
+[purge] {'opcache': True, 'purged': 1}
+[health] 1.72.228 ok after 2s
+[page] OK  200 /properties/%d7%9c%d7%9e%d7%9b%d7%99%d7%a8%d7%94-%d7%91%d7%90%d7%95%d7 missing=[] forbidden=[]
+[page] OK  200 /properties/bialik-rg-4r-demo/ missing=[] forbidden=[]
+[page] OK  200 /properties/mazeh-tlv-3r-demo/ missing=[] forbidden=[]
+[page] OK  200 /properties/tzukei-aviv-3-rooms-berlin-for-sale/ missing=[] forbidden=[]
+[page] OK  200 /en/brokers/meital-katzir/tzukei-aviv-3-room-apartment-for-sale/ missing=[] forbidden=[]
+[page] OK  200 / missing=[] forbidden=[]
+[page] OK  200 /projects/rainbow-tel-aviv/ missing=[] forbidden=[]
+[page] OK  200 /projects/h-infinity-somail-tel-aviv/ missing=[] forbidden=[]
+RELEASE 1.72.228 LIVE
+[bridge] delete http 204; route now http 404 (want 404)
