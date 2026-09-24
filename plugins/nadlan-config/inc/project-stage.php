@@ -1,0 +1,267 @@
+<?php
+/**
+ * ProjectStage: the top of a project page (owner, 24.9.2026: "Rainbow... what happens when you click a floor... the view
+ * from outside... when you click a floor you see the beam on the map below, which way it faces, relative to the sea, the
+ * city, the buildings... every page is a whole information system around the project"; later the same evening: "put
+ * Rainbow inside the page... Meital at the side with a square you can click, and an empty square for brokers: 'do you
+ * want to appear here?'... plans are very important"). From the design system (Claude Design artifact
+ * L9Nqz7Viv7K3MYeZrBc9s8 version 10: ProjectStage, BrokerSquare, BrokerSlot).
+ *
+ *  - The page's one h1 (inc/showroom-engine.php prints it for machines only) becomes the visible title, with the developer
+ *    and the quarter under it, right before the lead paragraph.
+ *  - Under the lead: the project's stage (a three.js scene of its buildings, assets/project-stage/<dir>/stage.js). The
+ *    visitor picks a floor, then a point on that floor's ring: a direction. A side rail holds a professional's square
+ *    (an advertisement, labelled) and the empty square that invites professionals.
+ *  - Under the stage, side by side: the view from there (assets/project-stage/bridge.js: satellite with 3D buildings, the
+ *    camera at the floor's estimated height) and the area map (#nlpjx-map), moved up from the bottom of the page; a beam
+ *    on it turns to the chosen direction, so the direction is read against the sea, the city and the buildings. The
+ *    beam is the engine's wedge drawn again from outside: engine.js is never touched, and nothing is drawn when the
+ *    engine is on the page, so a page never has two beams.
+ *  - A direction is said by what lies that way (the project's own sectors below, from the map), never in degrees.
+ *  - "לקבלת תוכניות ומחירים" opens the site's WhatsApp with the project, the floor and the direction.
+ * Everything is composed on the finished HTML (an outer output buffer, so it runs after catalog-plus has put the price
+ * and surroundings blocks under the lead; they now follow the stage). It fails open: a missing anchor leaves the page as
+ * it was. Nothing about apartments, prices or availability comes from the stage; the view is labelled an estimate. Only
+ * in review mode (the owner's 30.8 order); a showroom page keeps its engine. Off switch: option nadlan_project_stage = '0'.
+ */
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
+if ( ! function_exists( 'nadlan_ps_config' ) ) {
+	/**
+	 * slug => the stage for that project. bearing_offset aligns the scene's north with the real site. sectors: what lies
+	 * in each direction from the building, true bearings clockwise from north, measured on the map from the building's
+	 * coordinates (Rainbow 32.1032, 34.7844: the shore about 0.9 km west, Tel Baruch beach north, Tel Aviv University at
+	 * 59°, Yarkon Park about 100°, the Azrieli towers at 167°, the Old North about 197°, the port at 243°).
+	 */
+	function nadlan_ps_config() {
+		return array(
+			'rainbow-tel-aviv' => array(
+				'dir'            => 'rainbow',
+				'mount'          => 'mountRainbowStage',
+				'bearing_offset' => 0,
+				'name'           => 'ריינבו תל אביב',
+				'name_en'        => 'Rainbow Tel Aviv',
+				'developer'      => 'ישראל קנדה',
+				'place'          => 'רובע שדה דב, צפון תל אביב',
+				'rail'           => array( 7833 ),
+				'sectors'        => array(
+					array( 230, 345, 'לכיוון הים' ),
+					array( 345, 30, 'לכיוון תל ברוך והרצליה' ),
+					array( 30, 105, 'לכיוון רמת אביב והאוניברסיטה' ),
+					array( 105, 150, 'לכיוון פארק הירקון' ),
+					array( 150, 195, 'לכיוון מגדלי העיר' ),
+					array( 195, 230, 'לכיוון הצפון הישן' ),
+				),
+			),
+		);
+	}
+}
+
+if ( ! function_exists( 'nadlan_ps_current' ) ) {
+	function nadlan_ps_current() {
+		static $memo = false;
+		if ( false !== $memo ) { return $memo; }
+		$memo = null;
+		if ( '0' === (string) get_option( 'nadlan_project_stage', '1' ) || is_admin() || ! is_singular( 'nadlan_project' ) ) { return $memo; }
+		$id   = (int) get_queried_object_id();
+		$slug = (string) get_post_field( 'post_name', $id );
+		$all  = nadlan_ps_config();
+		if ( ! isset( $all[ $slug ] ) ) { return $memo; }
+		if ( function_exists( 'nadlan_project_mode' ) && 'showroom' === nadlan_project_mode( $id ) ) { return $memo; } // the engine has the page
+		if ( post_password_required( $id ) || get_post_meta( $id, '_nadlan_private_unit_journey', true ) ) { return $memo; }
+		$file = dirname( __DIR__ ) . '/assets/project-stage/' . $all[ $slug ]['dir'] . '/stage.js';
+		if ( ! file_exists( $file ) ) { return $memo; }
+		$memo = array_merge( $all[ $slug ], array( 'id' => $id, 'slug' => $slug ) );
+		return $memo;
+	}
+}
+
+if ( ! function_exists( 'nadlan_ps_close' ) ) {
+	/** The offset just after the element that opens at $start closes (nesting of the same tag counted); 0 if none. */
+	function nadlan_ps_close( $html, $start, $tag ) {
+		$depth = 0;
+		$pos   = $start;
+		while ( preg_match( '#<(/?)' . $tag . '\b[^>]*>#i', $html, $m, PREG_OFFSET_CAPTURE, $pos ) ) {
+			$depth += '/' === $m[1][0] ? -1 : 1;
+			$pos    = $m[0][1] + strlen( $m[0][0] );
+			if ( 0 === $depth ) { return $pos; }
+		}
+		return 0;
+	}
+}
+
+if ( ! function_exists( 'nadlan_ps_ver' ) ) {
+	function nadlan_ps_ver() { return defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '1'; }
+}
+
+if ( ! function_exists( 'nadlan_ps_square' ) ) {
+	/** BrokerSquare: a professional's square in the rail; the whole square opens the profile, the button opens WhatsApp. */
+	function nadlan_ps_square( $pid, $ps ) {
+		$pid = (int) $pid;
+		if ( $pid <= 0 || 'nadlan_professional' !== get_post_type( $pid ) || 'publish' !== get_post_status( $pid ) ) { return ''; }
+		$name  = function_exists( 'nadlan_prof_person_name' ) ? (string) nadlan_prof_person_name( $pid ) : get_the_title( $pid );
+		$role  = function_exists( 'nadlan_dir_prof_label' ) ? (string) nadlan_dir_prof_label( (string) get_post_meta( $pid, 'profession', true ), $pid ) : '';
+		$lic   = trim( (string) get_post_meta( $pid, 'license_number', true ) );
+		$areas = array_slice( array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $pid, 'areas_served', true ) ) ) ), 0, 3 );
+		$wa    = function_exists( 'nadlan_prof_wa_digits' ) ? (string) nadlan_prof_wa_digits( (string) get_post_meta( $pid, 'phone', true ) ) : '';
+		$site  = (int) get_post_meta( $pid, 'nl_site_he', true );
+		$href  = $site > 0 && 'publish' === get_post_status( $site ) ? get_permalink( $site ) : get_permalink( $pid );
+		$photo = has_post_thumbnail( $pid ) ? get_the_post_thumbnail( $pid, 'medium_large', array( 'alt' => $name, 'loading' => 'lazy' ) ) : '<span class="nlds-mono" aria-hidden="true">' . esc_html( mb_substr( $name, 0, 1 ) ) . '</span>';
+		$text  = 'שלום ' . $name . ', ראיתי את הכרטיס שלך בעמוד של ' . $ps['name'] . ' באתר nad-lan.co.il ואשמח להתייעץ';
+		$ev    = ' data-nlps-ev="rail" data-nlps-pro="' . $pid . '"';
+		$h  = '<div class="nlds"><article class="nlbsq">';
+		$h .= '<figure class="nlbsq__photo"><span class="nlbsq__ad">פרסומת</span>' . $photo . '</figure>';
+		$h .= '<div class="nlbsq__body"><h3 class="nlbsq__name"><a href="' . esc_url( $href ) . '"' . $ev . '>' . esc_html( $name ) . '</a></h3>';
+		$h .= '<p class="nlbsq__role">' . ( '' !== $role ? '<b>' . esc_html( $role ) . '</b>' : '' ) . ( $areas ? ( '' !== $role ? ' · ' : '' ) . esc_html( implode( ', ', $areas ) ) : '' ) . '</p>';
+		if ( '' !== $lic ) { $h .= '<p class="nlbsq__lic">רישיון תיווך <span class="nlds-num">' . esc_html( $lic ) . '</span></p>'; }
+		$h .= '<div class="nlbsq__cta">';
+		$h .= '' !== $wa
+			? '<a class="nlds-btn nlds-btn--primary" target="_blank" rel="noopener" href="https://wa.me/' . esc_attr( $wa ) . '?text=' . rawurlencode( $text ) . '"' . $ev . ' data-nlps-wa="1">' . ( function_exists( 'nlds_icon' ) ? nlds_icon( 'whatsapp' ) : '' ) . '<span>התייעצות בוואטסאפ</span></a>'
+			: '<a class="nlds-btn nlds-btn--secondary" href="' . esc_url( $href ) . '"' . $ev . '><span>לכרטיס המלא</span></a>';
+		$h .= '</div></div></article></div>';
+		return $h;
+	}
+}
+
+if ( ! function_exists( 'nadlan_ps_slot' ) ) {
+	/** BrokerSlot: the empty square, an open invitation to professionals (the join form with the licence check is on /brokers/). */
+	function nadlan_ps_slot() {
+		return '<div class="nlds"><div class="nlbslot">'
+			. '<span class="nlbslot__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>'
+			. '<p class="nlbslot__title">רוצה להופיע כאן?</p>'
+			. '<p class="nlbslot__text">מתווכים ואנשי מקצוע באזור: הכרטיס שלכם ליד הפרויקט, מול מי שבודק אותו עכשיו.</p>'
+			. '<a class="nlbslot__cta" href="' . esc_url( home_url( '/brokers/#join' ) ) . '" data-nlps-ev="slot">לפרטים ולהצטרפות</a>'
+			. '</div></div>';
+	}
+}
+
+if ( ! function_exists( 'nadlan_ps_parts' ) ) {
+	/** The pieces the page top is composed of. $h1 is the page's own h1 text; $map the moved area map section. */
+	function nadlan_ps_parts( $ps, $h1, $map ) {
+		$id  = (int) $ps['id'];
+		$wa  = function_exists( 'nadlan_cta_whatsapp_number' ) ? preg_replace( '/\D/', '', (string) nadlan_cta_whatsapp_number() ) : '';
+		$sec = array();
+		foreach ( (array) $ps['sectors'] as $s ) { $sec[] = array( (float) $s[0], (float) $s[1], (string) $s[2] ); }
+		$cfg = array(
+			'stage'         => plugins_url( 'assets/project-stage/' . $ps['dir'] . '/stage.js', dirname( __FILE__ ) ) . '?ver=' . nadlan_ps_ver(),
+			'mount'         => (string) $ps['mount'],
+			'bearingOffset' => (float) $ps['bearing_offset'],
+			'lat'           => (float) get_post_meta( $id, 'lat', true ),
+			'lng'           => (float) get_post_meta( $id, 'lng', true ),
+			'token'         => (string) get_option( 'nadlan_mapbox_token', '' ),
+			'wa'            => $wa,
+			'name'          => (string) $ps['name'],
+			'sectors'       => $sec,
+		);
+		$hero = '';
+		if ( '' !== $h1 ) {
+			$en   = (string) ( $ps['name_en'] ?? '' );
+			$hero = '<header class="nlds nlps-herowrap" dir="rtl" lang="he"><div class="nlps-hero">'
+				. '<h1 id="nl-project-page-title" class="nlps-h1">' . esc_html( $ps['name'] ) . ( '' !== $en ? ' <span class="nlps-h1__en" lang="en">' . esc_html( $en ) . '</span>' : '' ) . '</h1>'
+				. ( ! empty( $ps['developer'] ) || ! empty( $ps['place'] ) ? '<p class="nlps-kicker">' . ( ! empty( $ps['developer'] ) ? '<b>' . esc_html( $ps['developer'] ) . '</b>' : '' ) . ( ! empty( $ps['developer'] ) && ! empty( $ps['place'] ) ? ' · ' : '' ) . esc_html( (string) ( $ps['place'] ?? '' ) ) . '</p>' : '' )
+				. '</div></header>';
+		}
+		$rail = '';
+		foreach ( (array) ( $ps['rail'] ?? array() ) as $pid ) { $rail .= nadlan_ps_square( $pid, $ps ); }
+		$rail .= nadlan_ps_slot();
+		$view = '<div class="nlds nlps-viewwrap"><div class="nlps-view" id="nlps-view">'
+			. '<div class="nlps-view__head"><p class="nlds-kicker">הנוף מהקומה</p><h3 class="nlps-view__title" id="nlps-view-t">בחרו קומה וכיוון</h3></div>'
+			. '<div class="nlps-view__map nlps-stand" id="nlps-view-map" role="img" aria-label="מבט משוער מהקומה לכיוון שנבחר"><span id="nlps-view-empty">בחרו קומה במגדל ונקודה בטבעת שלה, והנוף מהגובה ומהכיוון האלה יופיע כאן.</span></div>'
+			. '<p class="nlps-view__cap" id="nlps-view-cap" hidden></p>'
+			. '<div class="nlps-view__cta" id="nlps-view-cta" hidden>'
+			. ( '' !== $wa ? '<a class="nlds-btn nlds-btn--primary" id="nlps-wa" target="_blank" rel="noopener" href="https://wa.me/' . esc_attr( $wa ) . '">' . ( function_exists( 'nlds_icon' ) ? nlds_icon( 'whatsapp' ) : '' ) . '<span>לקבלת תוכניות ומחירים</span></a>' : '' )
+			. ( '' !== $map ? '<a class="nlds-btn nlds-btn--secondary" id="nlps-tomap" href="#nlpjx-map"><span>הכיוון על המפה</span></a>' : '' ) . '</div>'
+			. '</div></div>';
+		$shell = '<div class="nlps-shell" dir="rtl" lang="he">'
+			. '<div class="nlds"><h2 class="nlps-title" id="nlps-t">הקומות והנוף</h2></div>'
+			. '<div class="nlps-layout">'
+			. '<div class="nlps-stagebox"><section class="nlps-stage" id="nlps" aria-labelledby="nlps-t" data-cfg="' . esc_attr( wp_json_encode( $cfg ) ) . '"><div class="nlps-stage__mount" id="nlps-stage"></div></section>'
+			. '<div class="nlds"><p class="nlps-hint" id="nlps-hint">בחרו קומה במגדל, ואחר כך נקודה בטבעת הקומה כדי לבחור כיוון.</p></div></div>'
+			. '<aside class="nlps-rail" aria-label="אנשי מקצוע באזור">' . $rail . '</aside>'
+			. '<div class="nlps-below' . ( '' === $map ? ' nlps-below--solo' : '' ) . '">' . $view . $map . '</div>'
+			. '</div></div>';
+		return array( 'hero' => $hero, 'shell' => $shell );
+	}
+}
+
+if ( ! function_exists( 'nadlan_ps_compose' ) ) {
+	/** The page top, composed on the finished HTML. Fails open: any missing anchor returns the page unchanged. */
+	function nadlan_ps_compose( $html, $ps ) {
+		if ( ! is_string( $html ) || false !== strpos( $html, 'id="nlps"' ) ) { return $html; }
+		$b = strpos( $html, '<body' );
+		if ( false === $b ) { return $html; }
+		$a = strpos( $html, '<div class="nl-lead">', $b );
+		if ( false === $a ) { return $html; }
+		$lead_end = nadlan_ps_close( $html, $a, 'div' );
+		if ( ! $lead_end ) { return $html; }
+		// the area map leaves its place at the bottom: it comes back next to the view from the floor
+		$map = '';
+		if ( preg_match( '#<section\b[^>]*\bid="nlpjx-map"#', $html, $m, PREG_OFFSET_CAPTURE, $lead_end ) ) {
+			$s = $m[0][1];
+			$e = nadlan_ps_close( $html, $s, 'section' );
+			if ( $e ) {
+				$map  = substr( $html, $s, $e - $s );
+				$html = substr( $html, 0, $s ) . substr( $html, $e );
+			}
+		}
+		// the page's one h1 (printed for machines only) becomes the visible title before the lead
+		$h1 = '';
+		if ( preg_match( '#<h1\b[^>]*\bid="nl-project-page-title"[^>]*>(.*?)</h1>#s', $html, $m, PREG_OFFSET_CAPTURE, $b ) ) {
+			$h1   = trim( wp_strip_all_tags( $m[1][0] ) );
+			$html = substr( $html, 0, $m[0][1] ) . substr( $html, $m[0][1] + strlen( $m[0][0] ) );
+			if ( $m[0][1] < $a ) { $a -= strlen( $m[0][0] ); $lead_end -= strlen( $m[0][0] ); }
+		}
+		$parts = nadlan_ps_parts( $ps, $h1, $map );
+		if ( '' === $h1 && false === stripos( substr( $html, $b ), '<h1' ) ) { return $html; } // never leave the page without its h1
+		// the price band's note pointed down to the map; the map is now above it (and "המפה החיה" is off the word list)
+		$html = str_replace( 'כל המחירים, המוסדות והתוכניות - על המפה החיה למטה ←', 'כל המחירים, המוסדות והתוכניות על מפת האזור ←', $html );
+		$lead = substr( $html, $a, $lead_end - $a );
+		return substr( $html, 0, $a ) . $parts['hero'] . $lead . $parts['shell'] . substr( $html, $lead_end );
+	}
+}
+
+/* An outer output buffer: started before catalog-plus's (template_redirect priority 1), so it runs after it. */
+add_action( 'template_redirect', function () {
+	$ps = nadlan_ps_current();
+	if ( ! $ps ) { return; }
+	ob_start( function ( $html ) use ( $ps ) {
+		try {
+			return nadlan_ps_compose( $html, $ps );
+		} catch ( \Throwable $e ) {
+			return $html;
+		}
+	} );
+}, 0 );
+
+/* three.js by the stage's own import map: in <head>, before any module script */
+add_action( 'wp_head', function () {
+	if ( ! nadlan_ps_current() ) { return; }
+	echo "\n" . '<script type="importmap" id="nadlan-ps-importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>' . "\n";
+	echo '<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" crossorigin>' . "\n";
+	echo '<link rel="preload" as="image" href="' . esc_url( plugins_url( 'assets/project-stage/rainbow/poster.jpg', dirname( __FILE__ ) ) ) . '">' . "\n";
+}, 1 );
+
+add_action( 'wp_footer', function () {
+	if ( ! nadlan_ps_current() ) { return; }
+	$src = plugins_url( 'assets/project-stage/bridge.js', dirname( __FILE__ ) ) . '?ver=' . nadlan_ps_ver();
+	echo "\n" . '<script type="module" id="nadlan-ps-bridge" src="' . esc_url( $src ) . '"></script>' . "\n";
+	/* the layout is the design system's (ProjectStage, version 10); it lives here because the shell also holds the area
+	   map, which must stay outside the design system's scope (its resets would reach the map's own controls) */
+	echo '<style id="nadlan-ps-css">'
+		. '.nlps-herowrap{max-width:1240px;margin:6px auto 12px;padding:0 clamp(12px,2vw,20px)}'
+		. '.nlps-shell{max-width:1240px;margin:14px auto 26px;padding:0 clamp(12px,2vw,20px);display:grid;gap:12px}'
+		. '.nlps-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-areas:"stage rail" "below below";gap:16px;align-items:start}'
+		. '.nlps-stagebox{grid-area:stage;display:grid;gap:10px;min-width:0}'
+		. '.nlps-rail{grid-area:rail;display:grid;gap:16px;align-content:start;min-width:0}'
+		. '.nlps-below{grid-area:below;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:stretch;min-width:0}'
+		. '.nlps-below--solo{grid-template-columns:minmax(0,1fr)}'
+		. '.nlps-below>#nlpjx-map{margin:0!important;min-width:0;max-width:none!important}'
+		. '.nlps-stage{position:relative;width:100%;height:72vh;min-height:420px;max-height:760px;border-radius:16px;overflow:hidden;background:var(--nlds-sa-paper,#F7F6F2);border:1px solid var(--nlds-sa-line,#E3E1DA);margin:0}'
+		. '.nlps-stage__mount{position:absolute;inset:0}'
+		. ':root body .nlds .nlps-hint[hidden],:root body .nlds .nlps-view__cap[hidden],:root body .nlds .nlps-view__cta[hidden],:root body .nlds #nlps-view-empty[hidden]{display:none!important}'
+		. ':root body .nlds .nlps-view__map.nlps-stand{cursor:default}'
+		. ':root body .nlds .nlbsq__photo img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:50% 24%!important}'
+		. '@media(max-width:1099px){.nlps-layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"stage" "below" "rail"}.nlps-below{grid-template-columns:minmax(0,1fr)}.nlps-rail{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}'
+		. '@media(max-width:600px){.nlps-stage{height:70svh;min-height:360px}.nlps-rail{gap:12px}.nlps-shell,.nlps-herowrap{padding:0 12px}}'
+		. '</style>' . "\n";
+}, 60 );

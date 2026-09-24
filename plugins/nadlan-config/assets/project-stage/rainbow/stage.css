@@ -1,0 +1,191 @@
+/* Rainbow Tel Aviv 3D stage. All classes are prefixed rbs- so the stage can live inside any WordPress page. */
+.rbs {
+  --rbs-paper: #F7F6F2;
+  --rbs-ink: #14212B;
+  --rbs-sea: #2F6F86;
+  --rbs-deep: #1F4B5C;
+  --rbs-sand: #EEE9DD;
+  --rbs-line: #E3E1DA;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--rbs-sand);
+  color: var(--rbs-ink);
+  font-family: 'Assistant', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  isolation: isolate;
+  contain: layout paint;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.rbs--auto { height: auto; aspect-ratio: 16 / 10; min-height: 420px; }
+@media (max-width: 640px) { .rbs--auto { aspect-ratio: 4 / 5; min-height: 360px; } }
+
+.rbs-poster {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 44% 50%;
+  display: block; opacity: 1; transition: opacity .9s ease;
+}
+.rbs-canvas { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease; }
+.rbs-canvas canvas { display: block; width: 100% !important; height: 100% !important; outline: none; }
+.rbs-canvas canvas:focus-visible { outline: 2px solid var(--rbs-sea); outline-offset: -4px; }
+.rbs--live .rbs-canvas { opacity: 1; }
+.rbs--live .rbs-poster { opacity: 0; }
+/* when the opening move plays, the poster (hero view) dips out before the aerial view fades in, no double exposure */
+.rbs--intro.rbs--live .rbs-poster { transition: opacity .3s ease; }
+.rbs--intro.rbs--live .rbs-canvas { transition: opacity .7s ease .22s; }
+.rbs--live.rbs--settled .rbs-poster { visibility: hidden; }
+
+.rbs-ui { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.rbs-ui > * { pointer-events: auto; }
+
+/* honest caption, bottom start (right in RTL) */
+.rbs-caption {
+  position: absolute; bottom: 14px; inset-inline-start: 16px;
+  margin: 0; max-width: min(460px, calc(100% - 220px));
+  font-size: 12px; line-height: 1.45; font-weight: 400;
+  color: rgba(20, 33, 43, .82);
+  background: rgba(247, 246, 242, .9);
+  border: 1px solid var(--rbs-line); border-radius: 8px;
+  padding: 6px 10px;
+  pointer-events: none;
+}
+
+/* light presets, bottom end (left in RTL) */
+.rbs-presets {
+  position: absolute; bottom: 14px; inset-inline-end: 16px;
+  display: none; gap: 2px; padding: 3px;
+  background: rgba(247, 246, 242, .94);
+  border: 1px solid var(--rbs-line); border-radius: 999px;
+}
+.rbs--live .rbs-presets { display: flex; }
+.rbs-presets button {
+  appearance: none; -webkit-appearance: none; border: 0; margin: 0;
+  background: transparent; color: var(--rbs-ink);
+  font: 600 13px/1 'Assistant', system-ui, sans-serif;
+  padding: 0 14px; min-height: 32px; min-width: 64px;
+  border-radius: 999px; cursor: pointer;
+  transition: background-color .2s ease, color .2s ease;
+}
+.rbs-presets button:hover { background: rgba(20, 33, 43, .06); }
+.rbs-presets button[aria-checked="true"] { background: var(--rbs-ink); color: var(--rbs-paper); }
+.rbs-presets button:focus-visible,
+.rbs-label button:focus-visible,
+.rbs-open:focus-visible { outline: 2px solid var(--rbs-sea); outline-offset: 2px; }
+
+/* first-use hint, top start */
+.rbs-hint {
+  position: absolute; top: 14px; inset-inline-start: 16px;
+  display: none; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; line-height: 1;
+  color: var(--rbs-ink);
+  background: rgba(247, 246, 242, .92);
+  border: 1px solid var(--rbs-line); border-radius: 999px;
+  padding: 8px 12px 8px 14px;
+  pointer-events: none;
+  transition: opacity .5s ease;
+}
+.rbs-hint::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--rbs-sea); flex: none;
+}
+.rbs--live .rbs-hint { display: inline-flex; }
+.rbs-hint.is-gone { opacity: 0; }
+
+/* floor label */
+.rbs-label {
+  position: absolute; left: 0; top: 0;
+  width: 244px; box-sizing: border-box;
+  background: var(--rbs-paper);
+  border: 1px solid var(--rbs-line); border-radius: 12px;
+  padding: 14px 16px 16px;
+  box-shadow: 0 8px 22px rgba(20, 33, 43, .12);
+  text-align: start;
+  opacity: 0; visibility: hidden;
+  transition: opacity .18s ease, visibility 0s linear .18s;
+  will-change: transform;
+}
+.rbs-label.is-on { opacity: 1; visibility: visible; transition: opacity .18s ease; }
+.rbs-label-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.rbs-label-title {
+  margin: 0; font-family: 'Noto Serif Hebrew', 'Frank Ruhl Libre', Georgia, serif;
+  font-weight: 600; font-size: 22px; line-height: 1.15; color: var(--rbs-ink);
+}
+.rbs-label-close {
+  appearance: none; -webkit-appearance: none; border: 0; background: transparent;
+  width: 28px; height: 28px; margin: -6px -8px 0 0; padding: 0;
+  border-radius: 50%; cursor: pointer; color: rgba(20, 33, 43, .6);
+  font: 400 20px/28px 'Assistant', system-ui, sans-serif;
+}
+.rbs-label-close:hover { background: rgba(20, 33, 43, .06); color: var(--rbs-ink); }
+.rbs-label-line { margin: 6px 0 14px; font-size: 14px; line-height: 1.45; color: var(--rbs-deep); font-weight: 600; }
+.rbs-label-cta {
+  appearance: none; -webkit-appearance: none; display: block; width: 100%;
+  border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--rbs-deep); color: #fff;
+  font: 700 14px/1 'Assistant', system-ui, sans-serif;
+  padding: 12px 14px; min-height: 40px;
+  transition: background-color .2s ease;
+}
+.rbs-label-cta:hover { background: var(--rbs-sea); }
+
+.rbs-leader { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 1; }
+.rbs-leader line { stroke: var(--rbs-deep); stroke-width: 1.25; }
+.rbs-leader circle { fill: var(--rbs-paper); stroke: var(--rbs-sea); stroke-width: 2; }
+
+/* fallback: poster stays, one button */
+.rbs-open {
+  position: absolute; left: 50%; bottom: 64px; transform: translateX(-50%);
+  display: none; appearance: none; -webkit-appearance: none;
+  border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--rbs-ink); color: var(--rbs-paper);
+  font: 700 15px/1 'Assistant', system-ui, sans-serif;
+  padding: 14px 22px; min-height: 46px;
+}
+.rbs--fallback .rbs-open { display: block; }
+.rbs--fallback.rbs--nogl .rbs-open { display: none; }
+.rbs-open:hover { background: var(--rbs-deep); }
+
+.rbs--grab .rbs-canvas { cursor: grab; }
+.rbs--pointer .rbs-canvas { cursor: pointer; }
+.rbs--grabbing .rbs-canvas { cursor: grabbing; }
+
+/* narrow stages: caption across the bottom, presets on top, label docked */
+.rbs--narrow .rbs-caption { inset-inline-end: 12px; inset-inline-start: 12px; bottom: 10px; max-width: none; font-size: 11.5px; }
+.rbs--narrow .rbs-presets { top: 12px; bottom: auto; inset-inline-end: 12px; }
+.rbs--narrow .rbs-presets button { min-width: 56px; padding: 0 11px; font-size: 12.5px; min-height: 30px; }
+.rbs--narrow .rbs-hint { top: 12px; inset-inline-start: 12px; font-size: 12px; padding: 7px 10px 7px 12px; }
+.rbs--narrow .rbs-label { width: auto; }
+.rbs--narrow .rbs-open { bottom: 72px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rbs-poster, .rbs-canvas, .rbs-label, .rbs-hint { transition: none; }
+}
+
+.rbs-stats {
+  position: absolute; top: 56px; inset-inline-start: 16px; z-index: 3;
+  font: 11px/1.4 ui-monospace, Consolas, monospace; direction: ltr; text-align: left;
+  background: rgba(247, 246, 242, .9); border: 1px solid var(--rbs-line); border-radius: 6px;
+  padding: 6px 8px; color: var(--rbs-ink); pointer-events: none; white-space: pre;
+}
+
+/* v2: facing line in the floor card, and the small chip at the tip of the facing arrow */
+.rbs-label-facing { margin: -6px 0 14px; font-size: 13.5px; line-height: 1.4; font-weight: 600; color: rgba(20, 33, 43, .6); }
+.rbs-label-facing.is-set { color: var(--rbs-sea); font-weight: 700; }
+.rbs-label-facing[hidden] { display: none; }
+.rbs-facing {
+  position: absolute; left: 0; top: 0;
+  display: inline-flex; align-items: center;
+  padding: 6px 11px; border-radius: 999px;
+  background: var(--rbs-paper); border: 1px solid var(--rbs-line);
+  color: var(--rbs-deep); font: 700 13px/1 'Assistant', system-ui, sans-serif;
+  white-space: nowrap; pointer-events: none;
+  box-shadow: 0 4px 12px rgba(20, 33, 43, .10);
+  opacity: 0; visibility: hidden;
+  transition: opacity .18s ease, visibility 0s linear .18s;
+  will-change: transform;
+}
+.rbs-facing.is-on { opacity: 1; visibility: visible; transition: opacity .18s ease; }
+@media (prefers-reduced-motion: reduce) { .rbs-facing { transition: none; } }
