@@ -140,7 +140,13 @@ def flags(c, status):
 
 def slug_of(url):
     s = re.sub(r"^https?://", "", url).strip("/").replace("nad-lan.co.il", "").strip("/")
-    return re.sub(r"[^a-z0-9-]+", "-", s.lower()).strip("-") or "home"
+    slug = re.sub(r"[^a-z0-9-]+", "-", s.lower()).strip("-") or "home"
+    # A percent-encoded Hebrew slug becomes a folder name past the Windows path limit
+    # (24.9.2026: the Ofakim listing crashed the run). Long slugs keep a readable head
+    # plus a short hash of the full slug, so every run lands in the same folder.
+    if len(slug) > 80:
+        slug = slug[:60].rstrip("-") + "-" + hashlib.sha1(slug.encode()).hexdigest()[:10]
+    return slug
 
 
 def load_registry():

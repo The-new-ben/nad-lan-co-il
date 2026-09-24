@@ -30,7 +30,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { return; }
 if ( defined( 'NL_DROP_VERSION' ) ) { return; }
-define( 'NL_DROP_VERSION', '1.1.2' );
+define( 'NL_DROP_VERSION', '1.1.3' );
 define( 'NL_DROP_MAX_BYTES', 15728640 );
 define( 'NL_DROP_MAX_PHOTOS', 30 );
 
@@ -1386,6 +1386,10 @@ function nl_drop_slug( $f, $b ) {
 
 /* =====================================================================================================
  * The listing page (same design and classes as the approved broker listing pages)
+ * 1.1.3 (24.9.2026, HAD-251): the lines that hid the portal's own layers (.nlps-*, .nlcard, everything after
+ * article.nlx, the floating pills, the Yoast breadcrumb, the featured image) are gone. A listing with an owner
+ * (nl_broker_id, or nl_owner=1 for private owners) no longer gets those layers printed at all:
+ * plugins/nadlan-config/inc/property-owner.php, server side.
  * ===================================================================================================== */
 function nl_drop_listing_css() {
 	return <<<'NLXCSS'
@@ -1626,13 +1630,7 @@ function nl_drop_listing_css() {
 .nlx .nlx-plate--photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
 .nlx .nlx-plate--photo .nlx-plate-name{color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.45)}
 .nlx .nlx-sec{scroll-margin-top:calc(var(--nlx-header-offset,96px) + 16px)}
-.single-nadlan_property .nlps-hero,.single-nadlan_property .nlps-price,.single-nadlan_property .nlps-facts,.single-nadlan_property .nlps-chips,.single-nadlan_property .nlps-trust,.single-nadlan_property .nlps-hl,.single-nadlan_property .nlps-3d,.single-nadlan_property .nlps-facade,.single-nadlan_property .nlps-costs,.single-nadlan_property .nlps-map-sec,.single-nadlan_property .nlps-share,.single-nadlan_property .nlps-report,.single-nadlan_property .nlcard{display:none!important}
-.single-nadlan_property .nlps{margin:0!important;padding:0!important}
-.single-nadlan_property .nlps-title{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
-.single-nadlan_property .entry-content>article.nlx~*{display:none!important}
 .nlx .nlx-toc .nlx-home{font-weight:600;color:var(--nlx-sea,#2F6F86)}
-.single-nadlan_property .yoast-breadcrumbs,.single-nadlan_property .nlcta-start,.single-nadlan_property .nlcta-wa{display:none!important}
-.single-nadlan_property .wp-block-post-featured-image{display:none!important}
 .single-nadlan_property .entry-content.is-layout-constrained>*{max-width:none!important;margin-left:auto!important;margin-right:auto!important}
 .nlx .nlx-wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(16px,3vw,28px)}
 .nlx .nlx-plate--photo{background:var(--nlx-deep);aspect-ratio:var(--nlx-cover-ar,1.5);height:auto;max-height:78vh;position:relative;overflow:hidden}

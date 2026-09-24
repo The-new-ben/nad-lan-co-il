@@ -22,7 +22,9 @@ if ( ! function_exists( 'nadlan_card_fact_rows' ) ) {
 		if ( $type === 'nadlan_professional' ) {
 			$prof_map = array( 'kablan' => 'קבלן רשום', 'shamai' => 'שמאי מקרקעין', 'bedek_bait' => 'בדק בית',
 				'mashkanta' => 'יועץ משכנתאות', 'architect' => 'אדריכל', 'lawyer' => 'עו"ד מקרקעין', 'inspector' => 'מפקח בנייה' );
-			$rows['סוג']               = $prof_map[ $g( 'profession' ) ] ?? $g( 'profession' );
+			// the directory's own labels (gendered when the card says); a raw key like "metavech" is never printed (HAD-249)
+			$rows['סוג']               = function_exists( 'nadlan_dir_prof_label' ) ? nadlan_dir_prof_label( $g( 'profession' ), $id )
+				: ( $prof_map[ $g( 'profession' ) ] ?? ( preg_match( '/^[a-z0-9_\-]+$/', $g( 'profession' ) ) ? '' : $g( 'profession' ) ) );
 			$rows['מספר רשם הקבלנים']  = $g( 'registry_number' );
 			$rows['סיווג וענפים']      = $g( 'classification' );
 			$rows['עיר']               = $g( 'city' );
@@ -51,8 +53,12 @@ if ( ! function_exists( 'nadlan_card_fact_rows' ) ) {
 			$rows['מספר תוכנית']  = $g( 'plan_number' );
 			$rows['שנת תוקף']     = (int) $g( 'completion_year' ) ?: '';
 		} else { // property
-			$rows['סוג']      = $g( 'property_type' );
-			$rows['עסקה']     = $g( 'listing_type' );
+			// Hebrew words, never the stored keys ("cottage", "sale" were printed as is; 24.9.2026)
+			$ptype_he = array( 'apartment' => 'דירה', 'penthouse' => 'פנטהאוז', 'mini_penthouse' => 'מיני פנטהאוז', 'garden' => 'דירת גן',
+				'garden_apartment' => 'דירת גן', 'duplex' => 'דופלקס', 'villa' => 'וילה', 'cottage' => 'קוטג׳', 'studio' => 'סטודיו', 'private_house' => 'בית פרטי' );
+			$deal_he  = array( 'sale' => 'למכירה', 'rent' => 'להשכרה' );
+			$rows['סוג']      = $ptype_he[ $g( 'property_type' ) ] ?? ( preg_match( '/^[a-z0-9_\-]+$/', $g( 'property_type' ) ) ? '' : $g( 'property_type' ) );
+			$rows['עסקה']     = $deal_he[ $g( 'listing_type' ) ] ?? ( preg_match( '/^[a-z0-9_\-]+$/', $g( 'listing_type' ) ) ? '' : $g( 'listing_type' ) );
 			$rows['מחיר']     = $g( 'price' ) ? '₪' . number_format( (float) $g( 'price' ) ) : '';
 			$rows['חדרים']    = $g( 'rooms' );
 			$rows['מ"ר']      = $g( 'size_sqm' );
@@ -95,6 +101,12 @@ if ( ! function_exists( 'nadlan_card_render' ) ) {
 	$claim_allowed = ! ( $type === 'nadlan_project'
 		&& function_exists( 'nadlan_showroom_engine_active_for' )
 		&& nadlan_showroom_engine_active_for( $id ) );
+	// A broker who joined, or whose site the owner built, already manages the card through the drop box link:
+	// "זה הכרטיס שלכם? בקשו בעלות" is wrong there (HAD-249).
+	if ( $type === 'nadlan_professional' && ( get_post_meta( $id, 'nl_drop_on', true ) === '1'
+		|| in_array( (string) $source, array( 'broker_minisite', 'broker_join' ), true ) ) ) {
+		$claim_allowed = false;
+	}
 	if ( $claim_allowed && $claim_status !== 'verified' ) : ?>
 	<div class="nlcard-claim">
 		<strong>זה הכרטיס שלכם?</strong>
@@ -114,8 +126,16 @@ if ( ! function_exists( 'nadlan_card_render' ) ) {
 	</div>
 	<?php endif; ?>
 
-	<?php if ( $source ) : ?>
-	<p class="nlcard-source">המקור: <?php echo esc_html( $source === 'pinkas_hakablanim' ? 'פנקס הקבלנים הרשומים, data.gov.il' : ( $source === 'urban_renewal' ? 'מאגר התחדשות עירונית, data.gov.il' : $source ) ); ?> · עודכן <?php echo esc_html( get_the_modified_date( 'd/m/Y', $id ) ); ?></p>
+	<?php
+	$source_label = array(
+		'pinkas_hakablanim' => 'פנקס הקבלנים הרשומים, data.gov.il',
+		'urban_renewal'     => 'מאגר התחדשות עירונית, data.gov.il',
+		'metavhim'          => 'פנקס המתווכים במקרקעין, משרד המשפטים (data.gov.il)',
+	);
+	// a known source gets its name; a raw machine key ("broker_minisite") is never printed (HAD-249)
+	$source_text = isset( $source_label[ $source ] ) ? $source_label[ $source ] : ( preg_match( '/^[a-z0-9_\-]+$/', (string) $source ) ? '' : (string) $source );
+	if ( '' !== $source_text ) : ?>
+	<p class="nlcard-source">המקור: <?php echo esc_html( $source_text ); ?> · עודכן <?php echo esc_html( get_the_modified_date( 'd/m/Y', $id ) ); ?></p>
 	<?php endif; ?>
 </div>
 		<?php

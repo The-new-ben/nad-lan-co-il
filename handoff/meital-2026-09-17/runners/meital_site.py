@@ -13,8 +13,10 @@ Usage:
   python meital_site.py --hreflang --apply                     write nl_hreflang on every pair that exists
   python meital_site.py --verify                               live gate on every URL
 """
-import base64, ctypes, ctypes.wintypes as wt, csv, html as H, json, os, re, sys, time
+import base64, ctypes, ctypes.wintypes as wt, csv, html as H, io, json, os, re, sys, time
 import urllib.request, urllib.error, urllib.parse
+if (sys.stdout.encoding or "").lower() != "utf-8":   # --verify prints Hebrew; the Windows console default (cp1252) crashed it on 24.9.2026
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PKG = r"C:/Users/777/nad-lan/nad-lan-co-il/handoff/meital-2026-09-17/package"
@@ -171,14 +173,10 @@ def clean_sales_surface(s, lang):
     return s
 
 EXTRA_LISTING = """
-/* the theme's own showroom layers (generic 3D, price, facts, facade, costs, claim card, similar listings) stay off her pages; the theme H1 stays for search, unseen */
-.single-nadlan_property .nlps-hero,.single-nadlan_property .nlps-price,.single-nadlan_property .nlps-facts,.single-nadlan_property .nlps-chips,.single-nadlan_property .nlps-trust,.single-nadlan_property .nlps-hl,.single-nadlan_property .nlps-3d,.single-nadlan_property .nlps-facade,.single-nadlan_property .nlps-costs,.single-nadlan_property .nlps-map-sec,.single-nadlan_property .nlps-share,.single-nadlan_property .nlps-report,.single-nadlan_property .nlcard{display:none!important}
-.single-nadlan_property .nlps{margin:0!important;padding:0!important}
-.single-nadlan_property .nlps-title{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
-.single-nadlan_property .entry-content>article.nlx~*{display:none!important}
+/* 24.9.2026 (HAD-251): the portal's own layers (generic 3D, price box, facts, claim card, similar listings, booking band,
+   floating pills, Yoast breadcrumb, featured image) are no longer printed on an owner's listing at all: the rule lives in
+   plugins/nadlan-config/inc/property-owner.php, server side. Nothing here hides them any more. */
 .nlx .nlx-toc .nlx-home{font-weight:600;color:var(--nlx-sea,#2F6F86)}
-.single-nadlan_property .yoast-breadcrumbs,.single-nadlan_property .nlcta-start,.single-nadlan_property .nlcta-wa{display:none!important}
-.single-nadlan_property .wp-block-post-featured-image{display:none!important}
 .single-nadlan_property .entry-content.is-layout-constrained>*{max-width:none!important;margin-left:auto!important;margin-right:auto!important}
 .nlx .nlx-wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(16px,3vw,28px)}
 .nlx .nlx-plate--photo{background:var(--nlx-deep);aspect-ratio:var(--nlx-cover-ar,1.5);height:auto;max-height:78vh;position:relative;overflow:hidden}

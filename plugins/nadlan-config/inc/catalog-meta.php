@@ -23,6 +23,7 @@ if ( ! function_exists( 'nadlan_cards_register_meta_set' ) ) {
 	 * @param string $post_type
 	 * @param array  $fields   key => WP meta type
 	 * @param bool   $writable whether REST clients with edit_post on the listing may write
+	 *                         (false = server-managed: only an administrator may write it, never a card owner)
 	 */
 	function nadlan_cards_register_meta_set( $post_type, $fields, $writable = true ) {
 		foreach ( $fields as $key => $type ) {
@@ -32,11 +33,33 @@ if ( ! function_exists( 'nadlan_cards_register_meta_set' ) ) {
 				'type'          => $type,
 				'auth_callback' => $writable
 					? function ( $allowed, $meta_key, $post_id ) { return current_user_can( 'edit_post', (int) $post_id ); }
-					: '__return_false',
+					: function () { return current_user_can( 'manage_options' ); },
 			) );
 		}
 	}
 }
+
+/* REST writes on cards answer with the truth (HAD-249, 24.9.2026).
+ * The server-managed keys (claim_status, owner_user_id, verified_at) were refused only AFTER the post row
+ * was inserted or updated; WordPress then answered 403, and the host's nginx replaces a 403 with its own
+ * "404 Not Found" page. So a successful create looked like a failure and a retry made a duplicate card.
+ * Now an administrator may write those keys (the register importer records verified_at), and anyone else
+ * is refused with a 400 before anything is written. */
+if ( ! function_exists( 'nadlan_cards_rest_guard' ) ) {
+	function nadlan_cards_rest_guard( $prepared, $request ) {
+		$meta = $request->get_param( 'meta' );
+		if ( ! is_array( $meta ) || current_user_can( 'manage_options' ) ) { return $prepared; }
+		$locked = array_values( array_intersect( array_keys( $meta ), array( 'claim_status', 'owner_user_id', 'verified_at' ) ) );
+		if ( $locked ) {
+			return new WP_Error( 'nadlan_server_managed_meta', 'These fields are managed by the server: ' . implode( ', ', $locked ), array( 'status' => 400, 'keys' => $locked ) );
+		}
+		return $prepared;
+	}
+}
+foreach ( array( 'nadlan_property', 'nadlan_project', 'nadlan_professional' ) as $nadlan_guard_pt ) {
+	add_filter( 'rest_pre_insert_' . $nadlan_guard_pt, 'nadlan_cards_rest_guard', 10, 2 );
+}
+unset( $nadlan_guard_pt );
 
 if ( ! function_exists( 'nadlan_cards_register_meta' ) ) {
 	function nadlan_cards_register_meta() {

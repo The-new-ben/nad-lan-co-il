@@ -16,13 +16,19 @@ if ( ! function_exists( 'nadlan_cp_render' ) ) {
 	function nadlan_cp_render( $id ) {
 		$claim = (string) get_post_meta( $id, 'claim_status', true );
 		if ( $claim === 'verified' || $claim === 'pending' ) { return ''; } // only unclaimed
+		// HAD-249: the sentence must be true for this card. Not on a sample card, not on a card the broker already
+		// manages through the drop box, and "ממאגר רשם הקבלנים" only when the card came from that register.
+		$src = (string) get_post_meta( $id, 'source', true );
+		if ( get_post_meta( $id, 'is_demo', true ) || get_post_meta( $id, 'nl_drop_on', true ) === '1' || in_array( $src, array( 'broker_minisite', 'broker_join' ), true ) ) { return ''; }
+		$origin = array( 'pinkas_hakablanim' => 'פתחנו לכם כרטיס בחינם ממאגר רשם הקבלנים הרשמי.', 'metavhim' => 'פתחנו לכם כרטיס בחינם מפנקס המתווכים של משרד המשפטים.' );
+		$opened = isset( $origin[ $src ] ) ? $origin[ $src ] : 'פתחנו לכם כרטיס בחינם במאגר אנשי המקצוע.';
 		$title = esc_attr( get_the_title( $id ) );
 		ob_start(); ?>
 <div class="nlcp" dir="rtl" id="nadlan-claim-prompt">
 	<div class="nlcp-icon">🪪</div>
 	<div class="nlcp-body">
 		<h3>זה הכרטיס שלכם?</h3>
-		<p>פתחנו לכם כרטיס בחינם ממאגר רשם הקבלנים הרשמי. רוצים לערוך, להוסיף תמונות, לקבל לידים? בקשו בעלות וקבלו <strong>30 ימי Pro חינם</strong>.</p>
+		<p><?php echo esc_html( $opened ); ?> רוצים לערוך, להוסיף תמונות, לקבל לידים? בקשו בעלות וקבלו <strong>30 ימי Pro חינם</strong>.</p>
 	</div>
 	<div class="nlcp-cta">
 		<button type="button" class="nlcp-btn" onclick="nadlanClaimNow(<?php echo (int) $id; ?>,'<?php echo esc_js( get_the_title( $id ) ); ?>')">בקשת בעלות + 30 ימי Pro חינם</button>

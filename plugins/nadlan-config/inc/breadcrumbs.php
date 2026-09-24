@@ -28,7 +28,7 @@ if ( ! function_exists( 'nadlan_breadcrumbs_items' ) ) {
 			$items[] = array( 'name' => 'אנשי מקצוע', 'url' => home_url( '/professionals/' ) );
 			$prof = (string) get_post_meta( get_the_ID(), 'profession', true );
 			$prof_label = array( 'kablan' => 'קבלנים', 'shamai' => 'שמאים', 'bedek_bait' => 'בדק בית', 'mashkanta' => 'יועצי משכנתאות',
-				'architect' => 'אדריכלים', 'lawyer' => 'עורכי דין', 'inspector' => 'מפקחי בנייה' )[ $prof ] ?? '';
+				'architect' => 'אדריכלים', 'lawyer' => 'עורכי דין', 'inspector' => 'מפקחי בנייה', 'metavech' => 'מתווכים' )[ $prof ] ?? '';
 			if ( $prof_label ) { $items[] = array( 'name' => $prof_label, 'url' => add_query_arg( 'profession', $prof, home_url( '/professionals/' ) ) ); }
 			$items[] = array( 'name' => get_the_title(), 'url' => get_permalink() );
 		} elseif ( is_post_type_archive( 'nadlan_property' ) ) { $items[] = array( 'name' => 'דירות', 'url' => home_url( '/properties/' ) ); }
@@ -88,3 +88,27 @@ add_action( 'wp_head', function () {
 
 /* Single BreadcrumbList owner (source-audit 30.8.2026): drop Yoast's graph piece. */
 add_filter( 'wpseo_schema_needs_breadcrumb', '__return_false' );
+
+/* The theme's Yoast breadcrumb names a catalog section by its admin label ("NadLan Professionals",
+ * "NadLan Properties"; the admin labels stay English on purpose). On the site the crumb speaks Hebrew,
+ * the same words as the plugin trail above (HAD-249, 24.9.2026). Matched by the crumb's archive key
+ * or by its URL, whichever the Yoast version provides. */
+add_filter( 'wpseo_breadcrumb_links', function ( $links ) {
+	if ( ! is_array( $links ) ) { return $links; }
+	$labels = array( 'nadlan_professional' => 'אנשי מקצוע', 'nadlan_property' => 'דירות', 'nadlan_project' => 'פרויקטים' );
+	$urls   = array();
+	foreach ( $labels as $pt => $label ) {
+		$u = get_post_type_archive_link( $pt );
+		if ( $u ) { $urls[ untrailingslashit( $u ) ] = $label; }
+	}
+	foreach ( $links as $i => $link ) {
+		if ( ! is_array( $link ) ) { continue; }
+		$pt = isset( $link['ptarchive'] ) ? (string) $link['ptarchive'] : '';
+		if ( '' !== $pt && isset( $labels[ $pt ] ) ) {
+			$links[ $i ]['text'] = $labels[ $pt ];
+		} elseif ( ! empty( $link['url'] ) && isset( $urls[ untrailingslashit( (string) $link['url'] ) ] ) ) {
+			$links[ $i ]['text'] = $urls[ untrailingslashit( (string) $link['url'] ) ];
+		}
+	}
+	return $links;
+}, 20 );

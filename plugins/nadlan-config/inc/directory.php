@@ -73,6 +73,44 @@ if ( ! function_exists( 'nadlan_dir_prof_meta' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_dir_prof_label' ) ) {
+	/** The profession label in the card holder's grammatical gender (meta nl_gender: f|m), when the card states it (HAD-249). */
+	function nadlan_dir_prof_label( $key, $id = 0 ) {
+		$key = (string) $key;
+		$pm  = nadlan_dir_prof_meta( $key );
+		$g   = $id ? (string) get_post_meta( (int) $id, 'nl_gender', true ) : '';
+		if ( 'f' !== $g && 'm' !== $g ) { return $pm['label']; }
+		$forms = array(
+			'metavech'          => array( 'm' => 'מתווך', 'f' => 'מתווכת' ),
+			'shamai'            => array( 'm' => 'שמאי מקרקעין', 'f' => 'שמאית מקרקעין' ),
+			'mashkanta'         => array( 'm' => 'יועץ משכנתאות', 'f' => 'יועצת משכנתאות' ),
+			'architect'         => array( 'm' => 'אדריכל', 'f' => 'אדריכלית' ),
+			'mefakeach'         => array( 'm' => 'מפקח בנייה', 'f' => 'מפקחת בנייה' ),
+			'kablan'            => array( 'm' => 'קבלן', 'f' => 'קבלנית' ),
+			'interior_designer' => array( 'm' => 'מעצב פנים', 'f' => 'מעצבת פנים' ),
+			'engineer'          => array( 'm' => 'מהנדס בניין', 'f' => 'מהנדסת בניין' ),
+			'surveyor'          => array( 'm' => 'מודד מוסמך', 'f' => 'מודדת מוסמכת' ),
+			'urban_planner'     => array( 'm' => 'מתכנן ערים', 'f' => 'מתכננת ערים' ),
+		);
+		return isset( $forms[ $key ][ $g ] ) ? $forms[ $key ][ $g ] : $pm['label'];
+	}
+}
+
+if ( ! function_exists( 'nadlan_dir_registry_sources' ) ) {
+	/** Card sources that ARE an official register: a card imported from one is verified by where it came from. */
+	function nadlan_dir_registry_sources() {
+		return (array) apply_filters( 'nadlan_dir_registry_sources', array( 'pinkas_hakablanim', 'metavhim' ) );
+	}
+}
+
+if ( ! function_exists( 'nadlan_dir_registry_verified' ) ) {
+	/** "Verified in the register" = a recorded check (verified_at) or an official-register source. A filled field alone is not a check (HAD-249). */
+	function nadlan_dir_registry_verified( $id ) {
+		return (int) get_post_meta( (int) $id, 'verified_at', true ) > 0
+			|| in_array( (string) get_post_meta( (int) $id, 'source', true ), nadlan_dir_registry_sources(), true );
+	}
+}
+
 /* small whitespace-normaliser (shared) */
 if ( ! function_exists( 'nadlan_meta_norm' ) ) {
 	function nadlan_meta_norm( $s ) { return trim( preg_replace( '/\s+/u', ' ', (string) $s ) ); }
@@ -164,7 +202,7 @@ if ( ! function_exists( 'nadlan_dir_card' ) ) {
 		$initial  = mb_substr( trim( wp_strip_all_tags( $title ) ), 0, 1 );
 		$url      = get_permalink( $id );
 
-		// rating stars (review-ready: shows real data when present, prompt otherwise)
+		// rating stars: real data when present; no reviews = no line (a card never announces what it lacks, HAD-249)
 		$stars = '';
 		if ( $reviews > 0 && $rating > 0 ) {
 			$full = (int) round( $rating );
@@ -174,8 +212,6 @@ if ( ! function_exists( 'nadlan_dir_card' ) ) {
 			$stars = '<div class="nldc-rate"><span class="nldc-stars" aria-hidden="true">'
 				. str_repeat( '★', $full ) . str_repeat( '☆', max( 0, 5 - $full ) )
 				. '</span><b>' . number_format( $rating, 1 ) . '</b><span class="nldc-rev">(' . $reviews . ' חוות דעת)</span>' . $demo_note . '</div>';
-		} else {
-			$stars = '<div class="nldc-rate nldc-norate">היו הראשונים לדרג</div>';
 		}
 
 		$featured = in_array( $tier, array( 'pro', 'premier' ), true );
@@ -187,7 +223,7 @@ if ( ! function_exists( 'nadlan_dir_card' ) ) {
 		<span class="nldc-av" aria-hidden="true"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></span>
 		<div class="nldc-id">
 			<h3 class="nldc-name"><?php echo esc_html( $title ); ?></h3>
-			<span class="nldc-pill"><?php echo esc_html( $pm['label'] ); ?></span>
+			<span class="nldc-pill"><?php echo esc_html( nadlan_dir_prof_label( $prof_key, $id ) ); ?></span>
 			<?php if ( $verified ) : ?><span class="nldc-vf">✓ מאומת</span><?php endif; ?>
 		</div>
 	</div>
@@ -249,7 +285,70 @@ if ( ! function_exists( 'nadlan_dir_facet_counts' ) ) {
 		return $out;
 	}
 }
-add_action( 'save_post_nadlan_professional', function () { delete_transient( 'nadlan_dir_facets_v1' ); } );
+add_action( 'save_post_nadlan_professional', function () { delete_transient( 'nadlan_dir_facets_v1' ); delete_transient( 'nadlan_dir_sources_v1' ); } );
+
+/* ---------------------------------------------------------------------------
+ * The directory headline says only what the sources say (HAD-249, 24.9.2026):
+ * contractors imported from the contractors register, brokers whose licence was
+ * checked in the brokers register. Sample cards are not counted as professionals.
+ * ------------------------------------------------------------------------- */
+if ( ! function_exists( 'nadlan_dir_source_counts' ) ) {
+	function nadlan_dir_source_counts() {
+		$k = 'nadlan_dir_sources_v1';
+		$c = get_transient( $k );
+		if ( is_array( $c ) ) { return $c; }
+		global $wpdb;
+		$p   = $wpdb->posts;
+		$pm  = $wpdb->postmeta;
+		$reg = array_map( 'esc_sql', nadlan_dir_registry_sources() );
+		$in  = "'" . implode( "','", $reg ) . "'";
+		$demo = "NOT EXISTS (SELECT 1 FROM $pm d WHERE d.post_id=x.ID AND d.meta_key='is_demo' AND d.meta_value IN ('1','true'))";
+		$real = (int) $wpdb->get_var( "SELECT COUNT(*) FROM $p x WHERE x.post_type='nadlan_professional' AND x.post_status='publish' AND $demo" );
+		$contractors = (int) $wpdb->get_var( "SELECT COUNT(*) FROM $p x JOIN $pm s ON s.post_id=x.ID AND s.meta_key='source' AND s.meta_value='pinkas_hakablanim' WHERE x.post_type='nadlan_professional' AND x.post_status='publish' AND $demo" );
+		$brokers = $wpdb->get_col( "SELECT COALESCE(g.meta_value,'') FROM $p x
+			JOIN $pm f ON f.post_id=x.ID AND f.meta_key='profession' AND f.meta_value='metavech'
+			LEFT JOIN $pm v ON v.post_id=x.ID AND v.meta_key='verified_at'
+			LEFT JOIN $pm s ON s.post_id=x.ID AND s.meta_key='source'
+			LEFT JOIN $pm g ON g.post_id=x.ID AND g.meta_key='nl_gender'
+			WHERE x.post_type='nadlan_professional' AND x.post_status='publish' AND $demo
+			AND ( v.meta_value+0 > 0 OR s.meta_value IN ($in) )" );
+		$c = array( 'real' => $real, 'contractors' => $contractors, 'brokers' => count( $brokers ), 'broker_gender' => 1 === count( $brokers ) ? (string) $brokers[0] : '' );
+		set_transient( $k, $c, HOUR_IN_SECONDS );
+		return $c;
+	}
+}
+$nadlan_dir_sources_flush = function ( $meta_id, $object_id, $meta_key ) {
+	if ( in_array( $meta_key, array( 'verified_at', 'source', 'profession', 'nl_gender', 'is_demo' ), true ) && 'nadlan_professional' === get_post_type( $object_id ) ) {
+		delete_transient( 'nadlan_dir_sources_v1' );
+	}
+};
+add_action( 'added_post_meta', $nadlan_dir_sources_flush, 10, 3 );
+add_action( 'updated_post_meta', $nadlan_dir_sources_flush, 10, 3 );
+unset( $nadlan_dir_sources_flush );
+
+if ( ! function_exists( 'nadlan_dir_sources_lead' ) ) {
+	function nadlan_dir_sources_lead() {
+		$c = nadlan_dir_source_counts();
+		$n = function ( $v ) { return '<strong>' . esc_html( number_format( (int) $v ) ) . '</strong>'; };
+		$parts = array();
+		if ( $c['contractors'] > 0 ) {
+			$parts[] = $n( $c['contractors'] ) . ' קבלנים רשומים מפנקס הקבלנים (gov.il)';
+		}
+		if ( $c['brokers'] > 0 ) {
+			$who = 1 === (int) $c['brokers'] ? ( 'f' === $c['broker_gender'] ? 'מתווכת אחת' : 'מתווך אחד' ) : $n( $c['brokers'] ) . ' מתווכים';
+			$parts[] = $who . ' עם רישיון שנבדק בפנקס המתווכים של משרד המשפטים';
+		}
+		if ( ! $parts ) { return 'בעלי מקצוע לנדל״ן, לפי עיר והתמחות.'; }
+		$last = array_pop( $parts );
+		if ( $parts ) {
+			$last = ( 1 === (int) $c['brokers'] ? 'ו' : 'ו-' ) . $last;
+			$list = implode( ', ', $parts ) . ' ' . $last;
+		} else {
+			$list = $last;
+		}
+		return $n( $c['real'] ) . ' בעלי מקצוע, מהם ' . $list . '.';
+	}
+}
 
 /* ---------------------------------------------------------------------------
  * REST: live directory results (returns rendered card HTML + meta)
@@ -292,11 +391,11 @@ add_filter( 'get_the_archive_title', function ( $t ) {
 /* Professionals archive had no meta description. */
 add_filter( 'wpseo_metadesc', function ( $desc ) {
 	if ( ! is_post_type_archive( 'nadlan_professional' ) || $desc ) { return $desc; }
-	return 'מאגר בעלי מקצוע לנדל"ן בישראל: קבלנים רשומים מפנקס gov.il, שמאים, עורכי דין, יועצי משכנתאות, בדק בית ומעצבים. חיפוש לפי עיר והתמחות, פרופילים מאומתים ויצירת קשר ישירה.';
+	return 'מאגר בעלי מקצוע לנדל"ן בישראל: קבלנים רשומים מפנקס gov.il, מתווכים, שמאים, עורכי דין, יועצי משכנתאות, בדק בית ומעצבים. חיפוש לפי עיר והתמחות ויצירת קשר ישירה.';
 }, 25 );
 add_filter( 'pre_get_document_title', function ( $t ) {
 	if ( is_post_type_archive( 'nadlan_professional' ) ) {
-		return 'מאגר בעלי מקצוע בנדל״ן: קבלנים, שמאים, יועצים מאומתים | נדלן';
+		return 'מאגר בעלי מקצוע בנדל״ן: קבלנים, מתווכים, שמאים ויועצים | נדלן';
 	}
 	return $t;
 }, 20 );
@@ -341,8 +440,8 @@ if ( ! function_exists( 'nadlan_dir_render_page' ) ) {
 	<!-- HERO -->
 	<header class="nldir-hero">
 		<nav class="nldir-crumbs"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">בית</a> › <span>בעלי מקצוע</span></nav>
-		<h1>מצאו בעל מקצוע מאומת לנדל״ן</h1>
-		<p class="nldir-lead">קבלנים, שמאים, יועצי משכנתאות ועו״ד: <strong><?php echo number_format( $facets['total'] ); ?></strong> בעלי מקצוע, מאומתים מול פנקס הקבלנים הרשמי (gov.il).</p>
+		<h1>מצאו בעל מקצוע לנדל״ן</h1>
+		<p class="nldir-lead"><?php echo nadlan_dir_sources_lead(); // phpcs:ignore - built from escaped parts ?></p>
 		<form class="nldir-search" role="search">
 			<input type="search" name="q" value="<?php echo esc_attr( $state['q'] ); ?>" placeholder="חיפוש לפי שם, חברה או התמחות" autocomplete="off">
 			<input type="text" name="city" value="<?php echo esc_attr( $state['city'] ); ?>" placeholder="עיר" autocomplete="off">
@@ -447,12 +546,17 @@ if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 		$rating   = (float) get_post_meta( $id, 'rating', true );
 		$reviews  = (int) get_post_meta( $id, 'reviews_count', true );
 		$title    = get_the_title( $id );
-		nadlan_dir_enqueue_professional_quote_script();
+		$prof_key = (string) get_post_meta( $id, 'profession', true );
+		$broker   = ( 'metavech' === $prof_key );
+		$own_wa   = ( $broker && function_exists( 'nadlan_prof_wa_digits' ) ) ? nadlan_prof_wa_digits( $phone ) : '';
+		$person   = function_exists( 'nadlan_prof_person_name' ) ? nadlan_prof_person_name( $id ) : $title;
+		if ( ! $broker ) { nadlan_dir_enqueue_professional_quote_script(); }
 
+		// no reviews = no line: "טרם התקבלו חוות דעת" announced missing information on nearly every card (honesty law, HAD-249)
 		$pf_demo = get_post_meta( $id, 'reviews_verified', true ) ? '' : ' <span class="nlpf-demo">נתוני דוגמה</span>';
 		$stars = ( $reviews > 0 && $rating > 0 )
 			? '<span class="nlpf-stars">' . str_repeat( '★', (int) round( $rating ) ) . str_repeat( '☆', max( 0, 5 - (int) round( $rating ) ) ) . '</span> <b>' . number_format( $rating, 1 ) . '</b> <span class="nlpf-rev">(' . $reviews . ' חוות דעת)</span>' . $pf_demo
-			: '<span class="nlpf-norate">טרם התקבלו חוות דעת. היו הראשונים לדרג.</span>';
+			: '';
 
 		ob_start(); ?>
 <div class="nlpf" dir="rtl" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
@@ -461,7 +565,7 @@ if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 		<span class="nlpf-av" aria-hidden="true"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></span>
 		<div class="nlpf-id">
 			<div class="nlpf-badges">
-				<span class="nlpf-pill"><?php echo esc_html( $pm['label'] ); ?></span>
+				<span class="nlpf-pill"><?php echo esc_html( nadlan_dir_prof_label( $prof_key, $id ) ); ?></span>
 				<?php if ( $verified ) : ?><span class="nlpf-vf">✓ בעלות מאומתת</span><?php endif; ?>
 				<?php if ( $reg ) : ?><span class="nlpf-reg"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M8 1.5l5.5 2v4c0 3.5-2.5 6-5.5 7-3-1-5.5-3.5-5.5-7v-4l5.5-2z"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M5.5 8l2 2 3-4"/></svg>רשם הקבלנים #<?php echo esc_html( $reg ); ?></span><?php endif; ?>
 			</div>
@@ -470,11 +574,15 @@ if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 				<?php if ( $city ) : ?><span><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 14s5-4.5 5-8.5A5 5 0 1 0 3 5.5C3 9.5 8 14 8 14z"/><circle cx="8" cy="5.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><?php echo esc_html( $city ); ?></span><?php endif; ?>
 				<?php if ( $cls ) : ?><span><?php echo esc_html( $cls ); ?></span><?php endif; ?>
 			</div>
-			<div class="nlpf-rate"><?php echo $stars; ?></div>
+			<?php if ( '' !== $stars ) : ?><div class="nlpf-rate"><?php echo $stars; ?></div><?php endif; ?>
 		</div>
 		<div class="nlpf-cta">
 			<?php if ( $phone ) : ?><a class="nlpf-call" href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M5.5 2.5c.3 1 .7 2 1.2 2.8.2.3.1.7-.1 1l-.9.9c.7 1.4 1.8 2.5 3.2 3.2l.9-.9c.3-.2.7-.3 1-.1.8.5 1.8.9 2.8 1.2.4.1.6.5.6.9V14a1 1 0 0 1-1.1 1A11.5 11.5 0 0 1 2 4.1 1 1 0 0 1 3 3h1.6c.4 0 .8.2.9.6z"/></svg>התקשרו</a><?php endif; ?>
+			<?php if ( $broker ) : /* a broker gets viewings, not quotes; straight to the broker (HAD-249) */ ?>
+				<?php if ( $own_wa ) : ?><a class="nlpf-quote" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $own_wa ); ?>?text=<?php echo rawurlencode( 'שלום ' . $person . ', אשמח לתאם סיור באחד הנכסים שלך (nad-lan.co.il)' ); ?>">תיאום סיור</a><?php endif; ?>
+			<?php else : ?>
 			<button type="button" class="nlpf-quote" data-nadlan-professional-quote data-partner-id="<?php echo (int) $id; ?>" data-partner-title="<?php echo esc_attr( $title ); ?>">בקשת הצעת מחיר</button>
+			<?php endif; ?>
 		</div>
 	</div>
 </div>
@@ -510,9 +618,18 @@ if ( ! function_exists( 'nadlan_dir_similar' ) ) {
 		$prof = (string) get_post_meta( $id, 'profession', true );
 		$city = nadlan_meta_norm( get_post_meta( $id, 'city', true ) );
 		$mq = array( 'relation' => 'OR' );
-		if ( $prof ) { $mq[] = array( 'key' => 'profession', 'value' => $prof ); }
-		if ( $city ) { $mq[] = array( 'key' => 'city', 'value' => $city, 'compare' => 'LIKE' ); }
-		if ( count( $mq ) < 2 ) { return ''; }
+		if ( 'metavech' === $prof ) {
+			// a broker's card offers other brokers, never contractors, and never a sample card (HAD-249)
+			$mq = array(
+				'relation' => 'AND',
+				array( 'key' => 'profession', 'value' => 'metavech' ),
+				array( 'relation' => 'OR', array( 'key' => 'is_demo', 'compare' => 'NOT EXISTS' ), array( 'key' => 'is_demo', 'value' => array( '1', 'true' ), 'compare' => 'NOT IN' ) ),
+			);
+		} else {
+			if ( $prof ) { $mq[] = array( 'key' => 'profession', 'value' => $prof ); }
+			if ( $city ) { $mq[] = array( 'key' => 'city', 'value' => $city, 'compare' => 'LIKE' ); }
+			if ( count( $mq ) < 2 ) { return ''; }
+		}
 		$q = new WP_Query( array(
 			'post_type' => 'nadlan_professional', 'post_status' => 'publish',
 			'posts_per_page' => 4, 'post__not_in' => array( $id ),
