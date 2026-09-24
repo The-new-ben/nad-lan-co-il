@@ -137,4 +137,26 @@ traffic.
   real tag had id-before-class. Match by class token regex; and whenever a
   filter drops content, verify the RENDERED page still carries the full word
   count (count words, not tags) on ALL language siblings.
+- HIDING IS NOT REMOVING (24.9.2026, HAD-251): portal layers hidden with CSS
+  inside a broker's content still ran their scripts (the booking script injected a
+  dead "תיאום מועד ביומן" button into the broker's own card; model-viewer kept
+  loading) and every new theme layer re-appeared there. Remove server-side. Then
+  re-measure the page on a slow phone: once the layers were really gone the
+  article moved up and the lazy gallery pulled 12 full-size originals (4.1 MB),
+  so every content image needs srcset + sizes.
+- A HEADLINE MUST NOT CONTRADICT THE PAGE: two totals on one screen (2,711 in the
+  lead, 2,726 in the results bar) read as a lie even when both are "true". State
+  only what the sources say, or one number.
+- LOCAL BENCH IS NOT THE LIVE SITE (HAD-247, 24.9.2026): a harness without the
+  theme CSS and without WordPress's content filters passed a building facade that
+  was broken live (wpautop), and four tabs that fit locally clipped on the real
+  theme font. After every deploy run a phone-width probe on the LIVE page with
+  real taps (`tools/page_probe.mjs`, mobile: true), then look at the screenshot.
+  The owner's gmktec Chrome window is hidden and shared, so its tabs do not paint
+  and LCP cannot be read there; clicks and performance entries still count. Take
+  pixels and LCP from `tools/page_probe.mjs` / `tools/lcp_probe.mjs`.
+- A REAL PHOTO CAN MAKE LCP WORSE THAN A SKETCH: swapping an 80 KB poster for a
+  326 KB photo raised phone LCP by 1.7 s until the `sizes` attribute was computed
+  from the photo's real shown width. Every hero image gets sizes from its
+  aspect ratio, not a flat `94vw`.
 - EVERY TIME you learn a new failure mode, ADD IT HERE. This skill compounds.

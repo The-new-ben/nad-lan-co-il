@@ -124,7 +124,39 @@ curl -s -u "$WP_USER:$WP_APP_PASSWORD" -X POST "$WP_BASE_URL/wp-json/agentdeploy
 7. **Never print `WP_APP_PASSWORD`** to output/logs/commits. Public repo = the
    zip must contain no secrets; keys live in wp-options, entered via wp-admin.
 8. Response bodies lie behind some proxies (404 body on a successful write) -
-   truth is the independent GET verification, always.
+   truth is the independent GET verification, always. On nad-lan (uPress nginx)
+   the "404 after a successful write" is WordPress's 403 masked by nginx: the
+   post row was already inserted, then a protected meta key was refused. Retrying
+   makes duplicates. Fix at the source: refuse in `rest_pre_insert_{type}` (before
+   the insert) with a non-403 code (HAD-249, 24.9.2026).
+9. **A rollback never deletes a file that live code may require (outage
+   24.9.2026, about 2 minutes of HTTP 500 on every URL, HAD-247).** After you
+   restore the old source of a caller, OPcache can keep serving the NEW compiled
+   caller; if the rollback deletes the new file it `require_once`s, every request
+   fatals, and the purge call that would reset OPcache dies on the same fatal.
+   Order: restore -> `opcache_invalidate()` each restored file -> `opcache_reset()`
+   -> check a page; leave the unused new file on disk. Load optional companions
+   with `@include_once`, never `require_once` behind `file_exists()` (with
+   opcache.enable_file_override the guard answers from the cache).
+10. **Two sessions, one live plugin**: patch shared files (nadlan-config.php) on
+    the LIVE text by anchors with a compare-and-swap on the live md5, swap other
+    files only when live == git HEAD, announce every deploy to the other session,
+    and never ship a whole-plugin zip from a shared working tree (it carries the
+    other session's unfinished files). Runners: `scripts/owned-rule/deployowned.py`,
+    `scripts/had-247/deploy232.py`.
+11. **Post-deploy checks match printed markup, never bare class names.** Class
+    names also sit inside the page's inline CSS/JS, so "must not contain
+    nlps-cover" hit the gallery's own script and fired the rollback in rule 9.
+    Match `<figure class="nlps-cover"` exactly as printed.
+12. **A `the_content` filter that prints SVG or structured HTML runs after
+    wpautop (priority 11 or later).** Below 10, wpautop writes `</p>` inside
+    `<svg>` and `<br />` between inline buttons: the drawing dies silently (the
+    listing facade showed an empty box with "87654321" from the day it was built).
+13. **On Windows, patch PHP as bytes.** Python text mode writes CRLF; git stores
+    LF, so a live-vs-git md5 compare fails on identical content. Write with
+    `open(p, 'wb')` and compare with line endings normalised.
+14. **One bridge route per run** (a random namespace): a bridge snippet left
+    active by a failed run keeps answering the old route with the old token.
 
 ## Emergency recovery (memorize before you need it)
 - Site 500 and REST dead: host File Manager -> `wp-content/plugins/` -> rename the
