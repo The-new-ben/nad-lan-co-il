@@ -25,3 +25,11 @@ scripts/__pycache__/
 .env.local
 .env
 wp-api.ps1
+
+# competitor captures and Google imagery stay private (EcoCity takedown 30.8, competitors own their renders, Google Maps
+# Platform terms forbid storing imagery); keep them in C:/Users/777/nad-lan/_private-research/, never in this public repo
+docs/research/**/ecocity-cfg/
+docs/research/**/*ecocity*
+docs/research/**/hauzd/
+docs/research/**/worlds/earth-*
+docs/research/**/worlds/pilot-google*
