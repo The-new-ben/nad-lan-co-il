@@ -1,0 +1,21 @@
+{
+  "released": "1.72.262",
+  "from": "1.72.261",
+  "at": "2026-09-25 00:53:45",
+  "files": {
+    "inc/project-stage.php": "761b03edabdd92d463230b3459b25ca1",
+    "inc/project-experience.php": "bf1aed9d4cf5140f2c5261b473f03acb",
+    "inc/sdedov-teaser.php": "049d0e7cc7600d5ab7aba90bbcf9f2bf",
+    "assets/project-stage/bridge.js": "f0c6c71366ce1593dc995129f2d5e191",
+    "assets/project-stage/rainbow/poster.jpg": "70f70533d706ded7c54107bd62811fe1",
+    "nadlan-config.php": "5ea64f7fb9fd61c4928e149bd1345117"
+  },
+  "live_before": {
+    "inc/project-stage.php": "3148d9f3570ebbcc9fa589ef53528921",
+    "inc/project-experience.php": "2156108e6dece7a2cf6cb56df6d52071",
+    "inc/sdedov-teaser.php": "26bfcf482fec832192e09c5aa7cd96ac",
+    "assets/project-stage/bridge.js": "660c811f01310e0632f70492de76b378",
+    "assets/project-stage/rainbow/poster.jpg": "fe0be8c0492a2c72fb5c22b5adbefb37",
+    "nadlan-config.php": "0979bd2bcc5b6f9490764848425187aa"
+  }
+}

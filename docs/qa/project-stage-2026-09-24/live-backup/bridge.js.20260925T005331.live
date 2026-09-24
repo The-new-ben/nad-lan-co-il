@@ -202,25 +202,14 @@ async function boot() {
     if (!host) return;
     if (win.map) { winCam(); return; }
     host.classList.remove('nlps-stand');
-    if (empty) empty.remove(); // the map's container must be empty
+    if (empty) empty.hidden = true;
     gl.accessToken = cfg.token;
-    // Hebrew place names need the right-to-left text plugin (otherwise the letters come out reversed); once per page
-    try { if (gl.getRTLTextPluginStatus && gl.getRTLTextPluginStatus() === 'unavailable') gl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.3.0/mapbox-gl-rtl-text.js', null, true); } catch (e) {}
     const map = new gl.Map({
       container: host, style: 'mapbox://styles/mapbox/satellite-streets-v12', center: [Number(cfg.lng), Number(cfg.lat)],
       zoom: 16.5, pitch: 70, bearing: win.bearing, maxPitch: 85, interactive: false, attributionControl: true,
     });
     win.map = map;
     map.on('load', () => {
-      // place names in Hebrew: in Israel the local name is the Hebrew one (the style would show the English one first)
-      try {
-        const nf = ['coalesce', ['get', 'name'], ['get', 'name_en']];
-        for (const l of map.getStyle().layers || []) {
-          if (l.type === 'symbol' && l.layout && l.layout['text-field'] && JSON.stringify(l.layout['text-field']).indexOf('name') > -1) {
-            try { map.setLayoutProperty(l.id, 'text-field', nf); } catch (e) {}
-          }
-        }
-      } catch (e) {}
       try { map.addLayer({ id: 'nl-ps-sky', type: 'sky', paint: { 'sky-type': 'atmosphere', 'sky-atmosphere-sun-intensity': 8 } }); } catch (e) {}
       try {
         const layers = map.getStyle().layers; let label;

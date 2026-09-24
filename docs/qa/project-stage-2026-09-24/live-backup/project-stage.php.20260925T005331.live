@@ -65,7 +65,7 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 				// the municipality; the full permit 10.2025; occupancy per the project site, the last phase about mid 2030 per
 				// Ashtrom's execution contract)
 				'progress'       => array(
-					array( 'תכנון', '1.2024', 'done' ),
+					array( 'תכנון', 'תכנית עיצוב 1.2024', 'done' ),
 					array( 'היתר בנייה', '10.2025', 'done' ),
 					array( 'בבנייה', 'עכשיו', 'now' ),
 					array( 'אכלוס', 'צפוי ב-2030', 'next' ),
@@ -410,11 +410,6 @@ add_action( 'wp_footer', function () {
 		// the theme's sitewide sheet has its own older ".nlpf" (1120px wide, auto margins, a deep shadow): not here
 		. ':root body .nlps-page .nlds .nlpf{width:auto!important;margin:0!important;box-shadow:none!important}'
 		. ':root body .nlps-page>.nlps-dealswrap{grid-area:deals;padding:0!important;margin-top:10px!important}'
-		// one map per page (the recipe, row 18): the area map stands next to the view, so the surroundings band's static map, a
-		// second way into the price map, is not shown; its tiles take the whole width
-		. ':root body .nlcp-surr .nlcp-surr__map{display:none!important}'
-		. ':root body .nlcp-surr .nlcp-surr__grid{grid-template-columns:minmax(0,1fr)!important}'
-		. ':root body .nlcp-surr .nlcp-surr__tiles{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))!important}'
 		. ':root body .nlps-page>.nlps-below{grid-area:below;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:stretch;margin-top:10px!important}'
 		. '.nlps-below--solo{grid-template-columns:minmax(0,1fr)!important}'
 		. '.nlps-below>#nlpjx-map{margin:0!important;min-width:0;max-width:none!important}'

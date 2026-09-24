@@ -202,10 +202,8 @@ async function boot() {
     if (!host) return;
     if (win.map) { winCam(); return; }
     host.classList.remove('nlps-stand');
-    if (empty) empty.remove(); // the map's container must be empty
+    if (empty) empty.hidden = true;
     gl.accessToken = cfg.token;
-    // Hebrew place names need the right-to-left text plugin (otherwise the letters come out reversed); once per page
-    try { if (gl.getRTLTextPluginStatus && gl.getRTLTextPluginStatus() === 'unavailable') gl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.3.0/mapbox-gl-rtl-text.js', null, true); } catch (e) {}
     const map = new gl.Map({
       container: host, style: 'mapbox://styles/mapbox/satellite-streets-v12', center: [Number(cfg.lng), Number(cfg.lat)],
       zoom: 16.5, pitch: 70, bearing: win.bearing, maxPitch: 85, interactive: false, attributionControl: true,
