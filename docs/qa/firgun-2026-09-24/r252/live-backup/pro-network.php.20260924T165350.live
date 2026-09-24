@@ -251,7 +251,7 @@ add_action( 'rest_api_init', function () {
 		'methods' => 'POST', 'permission_callback' => '__return_true',
 		'callback' => function ( WP_REST_Request $req ) {
 			$from = nadlan_endorse_actor( $req );
-			if ( $from <= 0 ) { return new WP_Error( 'auth', 'הקישור לא תקין. אפשר לבקש קישור חדש.', array( 'status' => 400 ) ); } // 400, not 403: uPress turns a 403 into its 404 page, and the message is lost
+			if ( $from <= 0 ) { return new WP_Error( 'auth', 'רק בעל מקצוע רשום יכול לפרגן', array( 'status' => 403 ) ); }
 			$rk = 'nlend_' . $from;
 			$n  = (int) get_transient( $rk );
 			if ( $n >= 20 ) { return new WP_Error( 'rate', 'נסו שוב מאוחר יותר', array( 'status' => 429 ) ); }
@@ -276,7 +276,7 @@ add_action( 'rest_api_init', function () {
 			$t   = nadlan_endorse_table();
 			$row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $t WHERE id = %d", (int) $req['id'] ), ARRAY_A );
 			if ( ! $row || ( $me <= 0 && ! current_user_can( 'manage_options' ) ) || ( $me > 0 && (int) $row['to_pro'] !== $me && ! current_user_can( 'manage_options' ) ) ) {
-				return new WP_Error( 'auth', 'אין הרשאה', array( 'status' => 400 ) );
+				return new WP_Error( 'auth', 'אין הרשאה', array( 'status' => 403 ) );
 			}
 			$st = 'hide' === (string) $req->get_param( 'do' ) ? 'hidden' : 'shown';
 			$wpdb->update( $t, array( 'status' => $st, 'decided_at' => gmdate( 'Y-m-d H:i:s' ) ), array( 'id' => (int) $row['id'] ) );

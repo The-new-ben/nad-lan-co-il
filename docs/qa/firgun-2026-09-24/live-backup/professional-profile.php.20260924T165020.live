@@ -294,8 +294,6 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 
 	<?php echo nadlan_prof_video_html( $id, $person ); // phpcs:ignore -- built from escaped parts ?>
 
-	<?php echo function_exists( 'nadlan_fg_strip' ) ? nadlan_fg_strip( $id, $person ) : ''; // phpcs:ignore -- the professionals network (inc/firgun.php) ?>
-
 	<?php if ( $premium && ! $meeting && ! $is_broker ) : ?>
 	<form class="nlpp-meet" id="nlpp-meet" hidden data-rest="<?php echo esc_attr( rest_url( 'nadlan/v1/lead' ) ); ?>" data-prof="<?php echo esc_attr( $name ); ?>">
 		<b>תיאום שיחת וידאו עם <?php echo esc_html( $name ); ?></b>
@@ -401,10 +399,6 @@ a.nlpp-chip{text-decoration:none;color:var(--ink)}a.nlpp-chip:hover{border-color
 .nlpp-chip{font-size:12.5px;border:1px solid var(--line);background:#FFFDFC;border-radius:999px;padding:5px 12px}
 .nlpp-sec{border:1px solid var(--line);border-radius:12px;background:#FFFDFC;padding:16px 18px;margin-bottom:14px}
 :root body .nlds.nlpp-video{margin-block:6px 18px!important}
-:root body .nlds.nlpp-network{display:grid!important;gap:var(--nlds-space-22)!important;margin-block:6px 18px!important}
-:root body .nlds .nlfg-more summary{list-style:none;cursor:pointer}
-:root body .nlds .nlfg-more summary::-webkit-details-marker{display:none}
-:root body .nlds .nlfg-more[open] summary{margin-bottom:12px}
 .nlpp-pin{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-inline-end:4px}
 .nlpp-sec h3{font-family:var(--font-serif,serif);font-size:1.1rem;margin:0 0 10px}
 .nlpp-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}

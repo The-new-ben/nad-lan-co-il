@@ -1,0 +1,15 @@
+{
+  "released": "1.72.252",
+  "from": "1.72.251",
+  "at": "2026-09-24 16:54:00",
+  "files": {
+    "inc/firgun.php": "5b21edd9609f421e4696500caf45010a",
+    "inc/pro-network.php": "12c722cff78e9d995ef7affb069ecf55",
+    "nadlan-config.php": "4bf0128b289a74e919f7463dec2b6f87"
+  },
+  "live_before": {
+    "inc/firgun.php": "9bd8f688a63c9e18cdd9b5e3572b8e36",
+    "inc/pro-network.php": "1b013027fa20145268a2a3c3312a0ce4",
+    "nadlan-config.php": "360d9c0f1f18d04416cb5e3ce3b0bf32"
+  }
+}
