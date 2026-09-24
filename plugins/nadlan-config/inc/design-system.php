@@ -1,0 +1,38 @@
+<?php
+/**
+ * The NadLan design system on the site (owner order 24.9.2026: "you don't work without Claude Design; everything,
+ * down to the smallest button and icon, comes from it").
+ *
+ * assets/nlds/nlds.css is built from the Claude Design artifact (https://claude.ai/artifact/L9Nqz7Viv7K3MYeZrBc9s8)
+ * by scripts/nlds/build_nlds_css.py: its tokens (Skin A values) and its components (nlds-*). New screens use these
+ * classes and nothing else. The helpers below print the shared inline icons, so markup stays identical to the previews.
+ */
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
+add_action( 'wp_enqueue_scripts', function () {
+	if ( is_admin() ) { return; }
+	$file = dirname( __DIR__ ) . '/assets/nlds/nlds.css';
+	if ( ! file_exists( $file ) ) { return; }
+	wp_enqueue_style( 'nadlan-nlds', plugins_url( 'assets/nlds/nlds.css', dirname( __FILE__ ) ), array(), defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '1' );
+}, 30 );
+
+if ( ! function_exists( 'nlds_asset_url' ) ) {
+	/** A file of the design system shipped with the plugin (assets/nlds/...), e.g. icons/profession-broker.svg. */
+	function nlds_asset_url( $rel ) {
+		return plugins_url( 'assets/nlds/' . ltrim( $rel, '/' ), dirname( __FILE__ ) );
+	}
+}
+
+if ( ! function_exists( 'nlds_icon' ) ) {
+	/** The design system's inline icons (paths copied from its Icons and Professions groups). */
+	function nlds_icon( $name, $extra_class = '' ) {
+		$cls = trim( 'nlds-ico ' . $extra_class );
+		$i   = array(
+			'whatsapp' => '<svg class="' . $cls . '" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>',
+			'forward'  => '<svg class="' . $cls . ' nlds-ico--forward" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+			'pin'      => '<svg class="' . $cls . '" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 14s5-4.5 5-8.5A5 5 0 1 0 3 5.5C3 9.5 8 14 8 14z"/><circle cx="8" cy="5.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>',
+			'broker'   => '<svg class="' . $cls . '" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="currentColor" opacity=".08" d="M9 31h30v9H9z"/><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M11 38h26M14 38V24l10-8 10 8v14M20 38V28h8v10"/><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M34 14l4-4 4 4-4 4zM34 14H24"/></svg>',
+		);
+		return $i[ $name ] ?? '';
+	}
+}

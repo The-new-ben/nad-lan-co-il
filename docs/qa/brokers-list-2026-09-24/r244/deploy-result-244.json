@@ -1,0 +1,15 @@
+{
+  "released": "1.72.244",
+  "from": "1.72.243",
+  "at": "2026-09-24 15:40:18",
+  "files": {
+    "assets/nlds/nlds.css": "47673ef1b2748bd6f756f5f1d72230e8",
+    "inc/brokers-list.php": "88c1c63642dd7a353c71dc5ac063c08f",
+    "nadlan-config.php": "207e286a4198fae86a73c268463b6acc"
+  },
+  "live_before": {
+    "assets/nlds/nlds.css": "4c5de06bdfd21ddf5553f687c5d3470d",
+    "inc/brokers-list.php": "82f59e82207db1208caccc05e730524f",
+    "nadlan-config.php": "54e5ab1dda9cd1352e695d796317f1cf"
+  }
+}
