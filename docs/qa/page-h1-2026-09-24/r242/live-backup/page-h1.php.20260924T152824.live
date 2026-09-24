@@ -58,8 +58,6 @@ if ( ! function_exists( 'nadlan_page_h1_promote' ) ) {
 add_filter( 'the_content', function ( $content ) {
 	if ( '0' === (string) get_option( 'nadlan_page_h1', '1' ) ) { return $content; }
 	if ( ! is_page() || is_front_page() || ! in_the_loop() || ! is_main_query() ) { return $content; }
-	// the shop pages print their own title outside the content (1.72.241 gave /cart/ and /checkout/ a second H1)
-	if ( function_exists( 'is_cart' ) && ( is_cart() || is_checkout() || ( function_exists( 'is_account_page' ) && is_account_page() ) ) ) { return $content; }
 	if ( false !== stripos( $content, '<h1' ) ) { return $content; }
 	$id    = get_the_ID();
 	$title = nadlan_page_h1_title( $id );
