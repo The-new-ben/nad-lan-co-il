@@ -1,0 +1,10 @@
+{"outDir":"C:/Users/777/nad-lan/nad-lan-co-il/docs/qa/had-247-3d-gallery","width":390,"height":844,"dpr":2,"mobile":true,"noCache":true,
+"steps":[
+ {"go":"https://nad-lan.co.il/properties/bialik-rg-4r-demo/?nlv=a233m","settle":4000},
+ {"shot":"final233-bialik-mobile-top.png"},
+ {"tap":".nlpg-pill--3d","after":10000},
+ {"scroll":"#nlps-building","block":"start"},
+ {"wait":1500},
+ {"eval":"JSON.stringify({tab:document.querySelector('.nlps-toggle .is-on').textContent,hotspots:[...document.querySelectorAll('.nlps-hs')].map(h=>h.textContent+(h.hasAttribute('data-visible')?'':' (hidden)')),tabRows:new Set([...document.querySelectorAll('.nlps-toggle button')].map(b=>Math.round(b.getBoundingClientRect().top))).size})","as":"final3d"},
+ {"shot":"final233-bialik-mobile-3d.png"}
+]}

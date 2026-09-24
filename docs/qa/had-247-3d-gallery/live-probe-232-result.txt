@@ -1,0 +1,3 @@
+{"shot":"final232-bialik-mobile-top.png"}
+{"final3d":"{\"tab\":\"הדמיה\",\"hotspots\":[\"קומה 5 מתוך 8 · מרפסת 12 מ״ר\",\"חניה\",\"מחסן\"],\"tabRows\":2}"}
+{"shot":"final232-bialik-mobile-3d.png"}
