@@ -87,8 +87,6 @@ if ( ! function_exists( 'nadlan_dir_prof_label' ) ) {
 		$key = (string) $key;
 		$pm  = nadlan_dir_prof_meta( $key );
 		$g   = $id ? (string) get_post_meta( (int) $id, 'nl_gender', true ) : '';
-		// the brokers register gives no gender: a card imported from it names the field, not the person (24.9.2026)
-		if ( 'metavech' === $key && 'f' !== $g && 'm' !== $g ) { return 'תיווך נדל״ן'; }
 		if ( 'f' !== $g && 'm' !== $g ) { return $pm['label']; }
 		$forms = array(
 			'metavech'          => array( 'm' => 'מתווך', 'f' => 'מתווכת' ),

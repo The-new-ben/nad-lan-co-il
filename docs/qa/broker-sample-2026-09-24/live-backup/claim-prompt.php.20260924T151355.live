@@ -12,17 +12,6 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-if ( ! function_exists( 'nadlan_cp_css' ) ) {
-	/* the site's own sea-and-stone colours (Skin A tokens); the old blue gradient and the emoji badge are gone (24.9.2026) */
-	function nadlan_cp_css() {
-		return '<style>.nlcp{font-family:var(--sa-sans,Assistant,Arial,sans-serif);direction:rtl;display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:var(--sa-sand,#EEE9DD);border:1px solid var(--sa-line,#E3E1DA);border-radius:14px;padding:18px 22px;margin:20px 0;color:var(--sa-ink,#14212B)}'
-			. '.nlcp-body{flex:1;min-width:220px}.nlcp-body h3{font-family:var(--sa-serif,"Noto Serif Hebrew",Georgia,serif);font-size:19px;font-weight:600;margin:0 0 4px;color:var(--sa-ink,#14212B)}'
-			. '.nlcp-body p{font-size:15px;color:var(--sa-ink2,#3B4753);line-height:1.6;margin:0}.nlcp-cta{min-width:200px}'
-			. '.nlcp-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;background:var(--sa-sea,#2F6F86);color:#fff;border:0;border-radius:999px;padding:0 22px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;width:100%;text-decoration:none}'
-			. '.nlcp-btn:hover{background:var(--sa-seah,#255C70);color:#fff}.nlcp-btn:focus-visible{outline:3px solid var(--sa-deep,#1F4B5C);outline-offset:2px}</style>';
-	}
-}
-
 if ( ! function_exists( 'nadlan_cp_render' ) ) {
 	function nadlan_cp_render( $id ) {
 		$claim = (string) get_post_meta( $id, 'claim_status', true );
@@ -34,25 +23,9 @@ if ( ! function_exists( 'nadlan_cp_render' ) ) {
 		$origin = array( 'pinkas_hakablanim' => 'פתחנו לכם כרטיס בחינם ממאגר רשם הקבלנים הרשמי.', 'metavhim' => 'פתחנו לכם כרטיס בחינם מפנקס המתווכים של משרד המשפטים.' );
 		$opened = isset( $origin[ $src ] ) ? $origin[ $src ] : 'פתחנו לכם כרטיס בחינם במאגר אנשי המקצוע.';
 		$title = esc_attr( get_the_title( $id ) );
-		/* A broker from the register claims by opening the free site: the join form checks the licence against the
-		 * register and hands over the card at once, no call back needed (24.9.2026). */
-		if ( 'metavhim' === $src && 'metavech' === (string) get_post_meta( $id, 'profession', true ) ) {
-			$lic = trim( (string) get_post_meta( $id, 'license_number', true ) );
-			ob_start(); ?>
-<div class="nlcp" dir="rtl" id="nadlan-claim-prompt">
-	<div class="nlcp-body">
-		<h3>זה הכרטיס שלכם?</h3>
-		<p><?php echo esc_html( $opened ); ?> פתחו בחינם אתר משלכם בתוך נדלן, עם עמוד לכל נכס, והכרטיס עובר אליכם.</p>
-	</div>
-	<div class="nlcp-cta">
-		<a class="nlcp-btn" href="<?php echo esc_url( add_query_arg( 'licence', rawurlencode( $lic ), home_url( '/brokers/' ) ) . '#join' ); ?>">פתיחת האתר בחינם</a>
-	</div>
-</div>
-<?php
-			return ob_get_clean() . nadlan_cp_css();
-		}
 		ob_start(); ?>
 <div class="nlcp" dir="rtl" id="nadlan-claim-prompt">
+	<div class="nlcp-icon">🪪</div>
 	<div class="nlcp-body">
 		<h3>זה הכרטיס שלכם?</h3>
 		<p><?php echo esc_html( $opened ); ?> רוצים לערוך, להוסיף תמונות, לקבל לידים? בקשו בעלות וקבלו <strong>30 ימי Pro חינם</strong>.</p>
@@ -61,7 +34,16 @@ if ( ! function_exists( 'nadlan_cp_render' ) ) {
 		<button type="button" class="nlcp-btn" onclick="nadlanClaimNow(<?php echo (int) $id; ?>,'<?php echo esc_js( get_the_title( $id ) ); ?>')">בקשת בעלות + 30 ימי Pro חינם</button>
 	</div>
 </div>
-<?php echo nadlan_cp_css(); // phpcs:ignore ?>
+<style>
+.nlcp{font-family:var(--font-sans,Heebo,sans-serif);direction:rtl;display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:linear-gradient(135deg,#F5FBFF,#E7F3FF);border:1px solid rgba(37,99,235,.25);border-radius:14px;padding:18px 22px;margin:20px 0}
+.nlcp-icon{font-size:38px;line-height:1}
+.nlcp-body{flex:1;min-width:220px}
+.nlcp-body h3{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:18px;font-weight:600;color:#1B1A17;margin:0 0 4px}
+.nlcp-body p{font-size:13.5px;color:#5a5a5a;line-height:1.55;margin:0}
+.nlcp-cta{min-width:200px}
+.nlcp-btn{background:#2563EB;color:#fff;border:0;border-radius:10px;padding:12px 18px;font:inherit;font-weight:700;font-size:13.5px;cursor:pointer;transition:transform .15s,background .2s;width:100%}
+.nlcp-btn:hover{background:#1d4ed8;transform:translateY(-2px)}
+</style>
 <script>
 window.nadlanClaimNow=window.nadlanClaimNow||function(id,name){
 	var n=prompt('שמכם המלא:');if(!n)return;
@@ -82,11 +64,3 @@ add_filter( 'the_content', function ( $content ) {
 	if ( ! is_singular( 'nadlan_professional' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
 	return $content . nadlan_cp_render( get_the_ID() );
 }, 24 );
-
-/* /brokers/?licence=NNN#join: the licence from a claim link is already in the join form */
-add_action( 'wp_footer', function () {
-	if ( ! is_page( 'brokers' ) || empty( $_GET['licence'] ) ) { return; }
-	$lic = preg_replace( '/\D/', '', (string) $_GET['licence'] );
-	if ( '' === $lic ) { return; }
-	echo '<script>(function(){var f=document.querySelector(".nljoin form [name=licence]");if(f&&!f.value){f.value=' . wp_json_encode( $lic ) . ';}})();</script>';
-}, 50 );

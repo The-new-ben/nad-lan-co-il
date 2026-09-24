@@ -1,0 +1,15 @@
+{
+  "released": "1.72.240",
+  "from": "1.72.239",
+  "at": "2026-09-24 15:14:05",
+  "files": {
+    "inc/directory.php": "ae0d3d79ffed287b475021837207ddd9",
+    "inc/claim-prompt.php": "2d6128d0905c10bcd1536205e25c7f5f",
+    "nadlan-config.php": "f502c69025f0d8753e61a39970c03439"
+  },
+  "live_before": {
+    "inc/directory.php": "ed36b5d8d74d75644a22fd31108a0117",
+    "inc/claim-prompt.php": "2d92b90e43065a05293996d32bb55932",
+    "nadlan-config.php": "3a802a996b85b4f356ced145c61dffe9"
+  }
+}

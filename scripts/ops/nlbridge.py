@@ -156,6 +156,16 @@ add_action( 'rest_api_init', function () {
 				foreach ( $ids as $id ) { $p = get_post( $id ); $res[] = array( 'id' => (int) $id, 'type' => $p->post_type, 'title' => $p->post_title, 'link' => get_permalink( $p ) ); }
 				$out['demo'] = $res;
 			}
+			if ( ! empty( $b['upsert_cards'] ) && function_exists( 'nadlan_card_upsert' ) ) {
+				// professional cards only, through the importer's own idempotent upsert (source + source_id)
+				if ( ! empty( $b['no_indexnow'] ) ) { remove_action( 'save_post', 'nadlan_config_indexnow_on_save', 20 ); }
+				$res = array();
+				foreach ( array_slice( (array) $b['upsert_cards'], 0, 200 ) as $c ) {
+					$id = nadlan_card_upsert( 'nadlan_professional', (string) $c['source'], (string) $c['source_id'], (string) $c['title'], (array) $c['meta'] );
+					$res[] = is_wp_error( $id ) ? array( 'sid' => $c['source_id'], 'err' => $id->get_error_message() ) : array( 'sid' => $c['source_id'], 'id' => (int) $id, 'link' => get_permalink( $id ) );
+				}
+				$out['upsert_cards'] = $res;
+			}
 			if ( ! empty( $b['purge'] ) ) {
 				foreach ( (array) ( $b['purge_ids'] ?? array() ) as $id ) { clean_post_cache( (int) $id ); do_action( 'litespeed_purge_post', (int) $id ); }
 				do_action( 'litespeed_purge_all' ); wp_cache_flush(); $out['purged'] = 1;
