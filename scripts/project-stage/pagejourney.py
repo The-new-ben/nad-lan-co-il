@@ -60,6 +60,28 @@ with sync_playwright() as p:
             hScroll: document.documentElement.scrollWidth > innerWidth + 1,
         })""")
         print(json.dumps(info, ensure_ascii=False, indent=1))
+        # example apartments (25.9.2026): the pick is an example apartment, and it says so everywhere; the address keeps it
+        ex = page.evaluate("""() => {
+            const s = window.__nlpsStage && window.__nlpsStage.getSelection();
+            const lt = document.querySelector('.rbs-label-title');
+            return { unit: s && s.unit, labelTitle: lt && lt.textContent, viewTitle: (document.getElementById('nlps-view-t') || {}).textContent,
+                     kicker: (document.getElementById('nlps-view-k') || {}).textContent, url: location.search,
+                     caption: (document.querySelector('.rbs-caption') || {}).textContent,
+                     deals: document.querySelectorAll('.nlpd__table tbody tr').length, dealButtons: document.querySelectorAll('[data-nlps-floor]').length };
+        }""")
+        print("example", json.dumps(ex, ensure_ascii=False))
+        if ex.get("dealButtons"):
+            page.evaluate("document.getElementById('nlps-deals').scrollIntoView({block: 'center'})")
+            time.sleep(1.5)
+            page.screenshot(path=os.path.join(OUT, f"{tag}_6_deals.png"))
+            btn = page.locator('[data-nlps-floor="6"]').first
+            if btn.count():
+                (btn.tap if MOBILE else btn.click)()
+                time.sleep(4)
+                print("deal button -> selection", json.dumps(page.evaluate("window.__nlpsStage.getSelection()"), ensure_ascii=False),
+                      "| view title", page.evaluate("(document.getElementById('nlps-view-t') || {}).textContent"),
+                      "| floor line", page.evaluate("(document.querySelector('.rbs-label-line') || {}).textContent"))
+                page.screenshot(path=os.path.join(OUT, f"{tag}_7_dealfloor.png"))
     rail = page.evaluate("() => { const r = document.querySelector('.nlps-rail'); if (!r) return null; const b = r.getBoundingClientRect(); return b.top + scrollY; }")
     if rail is not None:
         page.evaluate(f"window.scrollTo(0, {max(0, rail - 80)})")

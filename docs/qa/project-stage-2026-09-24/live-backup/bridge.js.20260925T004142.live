@@ -55,13 +55,6 @@ async function boot() {
     return '';
   };
   const stageEl = document.getElementById('nlps-stage');
-  /* the floor card's sourced line: a sold apartment reported on that floor, else what the developer said about that height */
-  const notes = cfg.notes && typeof cfg.notes === 'object' ? cfg.notes : {};
-  const floorNote = (f) => notes[String(f)] || (cfg.lowNote && f <= Number(cfg.lowUpTo || 0) ? cfg.lowNote : (cfg.highNote || null));
-  /* example apartments (the owner, 25.9.2026: "דירות לדוגמה עם כיוון, ועם תווית ברורה שהן לדוגמה"): one per side of the floor */
-  const units = Array.isArray(cfg.units) && cfg.units.length
-    ? { sides: cfg.units.map((u) => ({ id: String(u[0]), bearing: Number(u[1]) })), half: 180 / cfg.units.length, label: 'דירה לדוגמה', chip: 'לדוגמה' }
-    : null;
   try {
     const mod = await import(cfg.stage);
     window.__nlpsStage = mod[cfg.mount](stageEl, {
@@ -69,12 +62,8 @@ async function boot() {
       poster: cfg.poster || null, // versioned, so a new poster is never hidden behind a cached one
       bearingOffset: Number(cfg.bearingOffset) || 0,
       facingWords: sectors.length ? facingWords : null,
-      floorNote,
-      units,
-      text: units
-        ? { cta: 'לקבלת תוכניות ומחירים', facingHint: 'בחרו דירה לדוגמה בטבעת הקומה', caption: 'הדמיה להמחשה בלבד, על בסיס מקורות פומביים. חלוקת הקומה לדירות היא לדוגמה, ואינה לפי תוכנית מכר.' }
-        : { cta: 'לקבלת תוכניות ומחירים' },
-      force3D: /[?&]nlps3d\b/.test(location.search), // QA only: the scene even on a software renderer
+      text: { cta: 'לקבלת תוכניות ומחירים' },
+      force3D: /[?&]nlps3d/.test(location.search), // QA only: the scene even on a software renderer
     });
   } catch (e) {
     console.warn('[project stage]', e);
@@ -86,7 +75,6 @@ async function boot() {
   const empty = document.getElementById('nlps-view-empty');
   const hint = document.getElementById('nlps-hint');
   const wa = document.getElementById('nlps-wa');
-  const kicker = document.getElementById('nlps-view-k');
   const hasGeo = Number(cfg.lat) && Number(cfg.lng) && cfg.token;
   let last = null;
   const win = { map: null, bearing: 270, vert: 0, alt: 10 };
@@ -94,7 +82,7 @@ async function boot() {
   const waUrl = (d) => {
     if (!cfg.wa || !d || d.floor == null) return '';
     const words = d.bearing != null ? facingWords(d.bearing) : '';
-    const text = 'שלום, אשמח לקבל תוכניות ומחירים ' + (d.unit ? 'לדירה בקומה ' : 'לקומה ') + d.floor + ' ב' + cfg.name + (words ? ', ' + words : '') + ' (nad-lan.co.il)';
+    const text = 'שלום, אשמח לקבל תוכניות ומחירים לקומה ' + d.floor + ' ב' + cfg.name + (words ? ', ' + words : '') + ' (nad-lan.co.il)';
     return 'https://wa.me/' + cfg.wa + '?text=' + encodeURIComponent(text);
   };
   const setTitle = (d) => {
@@ -105,19 +93,6 @@ async function boot() {
       title.append(' · ');
       const s = document.createElement('span'); s.className = 'nlps-dir'; s.textContent = words; title.append(s);
     }
-    // an example apartment says so, here too
-    if (d.unit) {
-      const c = document.createElement('span'); c.className = 'nlds-sample'; c.textContent = 'דירה לדוגמה'; title.append(' ', c);
-    }
-    if (kicker) kicker.textContent = d.unit ? 'הנוף מהדירה לדוגמה' : 'הנוף מהקומה';
-  };
-  /* the address keeps an example apartment, so a link opens the same one */
-  const keepUnit = (id) => {
-    try {
-      const u = new URL(location.href);
-      if (id) u.searchParams.set('unit', id); else u.searchParams.delete('unit');
-      history.replaceState(history.state, '', u.pathname + (u.search ? u.search : '') + u.hash);
-    } catch (e) {}
   };
 
   window.addEventListener('nl:floor', (e) => {
@@ -127,7 +102,7 @@ async function boot() {
     if (wa) wa.href = waUrl(d);
     if (!last || last.floor !== d.floor) {
       setTitle({ floor: d.floor });
-      if (empty && !win.map) empty.textContent = units ? 'עכשיו בחרו דירה לדוגמה בטבעת הקומה, והנוף ממנה יופיע כאן.' : 'עכשיו בחרו נקודה בטבעת הקומה, והנוף לכיוון הזה יופיע כאן.';
+      if (empty && !win.map) empty.textContent = 'עכשיו בחרו נקודה בטבעת הקומה, והנוף לכיוון הזה יופיע כאן.';
     }
     if (cta) cta.hidden = false;
   });
@@ -136,10 +111,9 @@ async function boot() {
     const d = e.detail || {};
     if (d.floor == null || d.bearing == null) return;
     last = d;
-    ga('stage_facing', { floor: d.floor, facing: facingWords(d.bearing), project: cfg.name, unit: d.unit || '' });
+    ga('stage_facing', { floor: d.floor, facing: facingWords(d.bearing), project: cfg.name });
     if (hint) hint.hidden = true;
     setTitle(d);
-    keepUnit(d.unit || '');
     const h = Math.max(10, Math.round(Number(d.heightM) || 0));
     if (cap) { cap.textContent = 'הדמיה להמחשה בלבד: מבט משוער מגובה של כ־' + h + ' מ׳, לפי מפה. אינו צילום מהדירה.'; cap.hidden = false; }
     if (wa) wa.href = waUrl(d);
@@ -158,29 +132,6 @@ async function boot() {
     if (url) window.open(url, '_blank', 'noopener');
   });
   if (wa) wa.addEventListener('click', () => ga('whatsapp_click', { source: 'project-stage-view', floor: last ? last.floor : null }));
-
-  /* ?unit=16-w opens that example apartment once the stage is ready (as a tap would: the view and the map follow) */
-  const stage = window.__nlpsStage;
-  const wanted = (() => { try { return new URL(location.href).searchParams.get('unit') || ''; } catch (e) { return ''; } })();
-  if (wanted && units && stage && stage.ready) {
-    Promise.resolve(stage.ready).then(() => { stage.selectUnit(wanted, 'user'); }).catch(() => {});
-  }
-  /* "לקומה במגדל" in the deals table: that floor on the stage, and the stage into view */
-  document.addEventListener('click', (e) => {
-    const b = e.target && e.target.closest ? e.target.closest('[data-nlps-floor]') : null;
-    if (!b || !stage) return;
-    const f = Number(b.getAttribute('data-nlps-floor'));
-    if (!(f > 0)) return;
-    ga('deal_floor_click', { floor: f, project: cfg.name });
-    Promise.resolve(stage.ready).then(() => {
-      stage.selectFloor(f);
-      window.dispatchEvent(new CustomEvent('nl:floor', { detail: { floor: f, heightM: stage.floorHeight(f) } }));
-      // a direction already picked stays (the same side of the new floor): the view and the map follow it
-      const sel = stage.getSelection();
-      if (sel && sel.bearing != null) window.dispatchEvent(new CustomEvent('nl:facing', { detail: sel }));
-      root.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
-    }).catch(() => {});
-  });
 
   /* ---------------- the view from the floor ---------------- */
   function winCam() {

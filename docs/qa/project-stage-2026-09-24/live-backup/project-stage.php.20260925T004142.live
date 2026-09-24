@@ -70,30 +70,6 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 					array( 'בבנייה', 'עכשיו', 'now' ),
 					array( 'אכלוס', 'צפוי ב-2030', 'next' ),
 				),
-				// example apartments (the owner, 25.9.2026: "דירות לדוגמה עם כיוון, ועם תווית ברורה שהן לדוגמה"): one per side of
-				// each tower floor, four in all, within the developer's "3 to 5 apartments per floor" (Bizportal 19.7.2023)
-				'units'          => array( array( 'n', 0 ), array( 'e', 90 ), array( 's', 180 ), array( 'w', 270 ) ),
-				// the floor card's line where no sold apartment is known: what the developer said about that height (Bizportal
-				// 19.7.2023: two-room apartments "עד קומה 25 בערך"), and above it the project's range
-				'low_up_to'      => 25,
-				'low_note'       => 'בקומות עד 25 בערך יש גם דירות 2 חדרים, לפי היזם',
-				'high_note'      => 'בפרויקט דירות 2 עד 5 חדרים, לפי פרסומי השיווק',
-				// ProjectDeals: the sold apartments the sources tie to a floor (checked 25.9.2026 against the articles; the Tax
-				// Authority's data as Globes published it on 29.11.2023; Bizportal 19.7.2023; Globes 9.7.2024). No buyer is named.
-				// n = the tower floor the stage can open (0 = not a tower floor, or the floor was not published)
-				'deals'          => array(
-					array( 'floor' => 'אחת הגבוהות', 'n' => 0, 'bld' => 'מגדל', 'apt' => 'כמה דירות באותה קומה, לאיחוד לכ-550 מ״ר', 'price' => 'כ-50 מיליון ₪', 'psqm' => 'לא פורסם', 'date' => '7.2024', 'src' => 'גלובס', 'url' => 'https://www.globes.co.il/news/article.aspx?did=1001483864', 'via' => '' ),
-					array( 'floor' => '13', 'n' => 13, 'bld' => 'מגדל', 'apt' => '3 חדרים · 98 מ״ר', 'price' => 'יותר מ-8 מיליון ₪', 'psqm' => 'מעל 81,600 ₪', 'date' => '9.2023', 'src' => 'גלובס', 'url' => 'https://www.globes.co.il/news/article.aspx?did=1001463064', 'via' => 'לפי רשות המסים', 'note' => 'בקומה הזו נמכרה דירת 3 חדרים, 98 מ״ר, ביותר מ-8 מיליון ₪ (9.2023)' ),
-					array( 'floor' => '8', 'n' => 0, 'bld' => 'בניין בוטיק, מתוך 9', 'apt' => '6 חדרים · 182 מ״ר', 'price' => 'כ-21.7 מיליון ₪', 'psqm' => 'כ-119,200 ₪', 'date' => '9.2023', 'src' => 'גלובס', 'url' => 'https://www.globes.co.il/news/article.aspx?did=1001463064', 'via' => 'לפי רשות המסים' ),
-					array( 'floor' => '8', 'n' => 0, 'bld' => 'בניין בוטיק, מתוך 9', 'apt' => '6 חדרים · 202 מ״ר', 'price' => '20 מיליון ₪', 'psqm' => 'כ-99,000 ₪', 'date' => '3.2023', 'src' => 'גלובס', 'url' => 'https://www.globes.co.il/news/article.aspx?did=1001463064', 'via' => 'לפי רשות המסים' ),
-					array( 'floor' => '7', 'n' => 0, 'bld' => 'הבניין לא צוין', 'apt' => '5 חדרים · 133 מ״ר ומרפסת 17 מ״ר, עם נוף לים', 'price' => '10.18 מיליון ₪', 'psqm' => 'כ-76,500 ₪', 'date' => '7.2023', 'src' => 'ביזפורטל', 'url' => 'https://www.bizportal.co.il/realestates/news/article/816625', 'via' => '' ),
-					array( 'floor' => '6', 'n' => 6, 'bld' => 'מגדל', 'apt' => '3 חדרים · 60 מ״ר, ללא חניה', 'price' => '4 מיליון ₪', 'psqm' => 'כ-66,700 ₪', 'date' => '10.2023', 'src' => 'גלובס', 'url' => 'https://www.globes.co.il/news/article.aspx?did=1001463064', 'via' => 'לפי רשות המסים', 'note' => 'בקומה הזו נמכרה דירת 3 חדרים, 60 מ״ר, ב-4 מיליון ₪ (10.2023)' ),
-					array( 'floor' => '4', 'n' => 4, 'bld' => 'מגדל', 'apt' => 'חדר אחד · 32 מ״ר', 'price' => '3.1 מיליון ₪', 'psqm' => 'כ-96,900 ₪', 'date' => '7.2023', 'src' => 'גלובס', 'url' => 'https://www.globes.co.il/news/article.aspx?did=1001463064', 'via' => 'לפי רשות המסים', 'note' => 'בקומה הזו נמכרה דירת חדר, 32 מ״ר, ב-3.1 מיליון ₪ (7.2023)' ),
-				),
-				'deals_sum'      => array(
-					array( '275 מתוך 459', 'דירות נמכרו עד 6.2026, לפי דוחות היזם' ),
-					array( 'כ-81,800 ₪ למ״ר', 'המחיר הממוצע בדירות שנמכרו עד 3.2026, לפי דוחות היזם' ),
-				),
 				'tower_lat'      => 32.10354,
 				'tower_lng'      => 34.78466,
 				'sectors'        => array(
@@ -189,34 +165,6 @@ if ( ! function_exists( 'nadlan_ps_slot' ) ) {
 	}
 }
 
-if ( ! function_exists( 'nadlan_ps_deals' ) ) {
-	/** ProjectDeals (design system, 25.9.2026): the sold apartments the sources tie to a floor, each row with its source; a
-	 *  tower row opens that floor on the stage. Nothing is printed without at least two deals. No buyer is ever named. */
-	function nadlan_ps_deals( $ps ) {
-		$rows = (array) ( $ps['deals'] ?? array() );
-		if ( count( $rows ) < 2 ) { return ''; }
-		$h  = '<div class="nlds nlps-dealswrap" dir="rtl" lang="he"><section class="nlpd" id="nlps-deals" aria-labelledby="nlpd-t">';
-		$h .= '<div class="nlpd__head"><p class="nlds-kicker">עסקאות בפרויקט</p><h2 class="nlpd__title" id="nlpd-t">דירות שנמכרו ב' . esc_html( $ps['name'] ) . ', לפי קומה</h2>';
-		$h .= '<p class="nlpd__intro">הדירות שנמכרו בפרויקט ופורסמו עם הקומה שלהן, לפי נתוני רשות המסים כפי שפורסמו בעיתונות. לא כל העסקאות פורסמו, ועסקאות של בניינים שכנים אינן כאן.</p></div>';
-		if ( ! empty( $ps['deals_sum'] ) ) {
-			$h .= '<ul class="nlpd__sum">';
-			foreach ( (array) $ps['deals_sum'] as $t ) { $h .= '<li><b>' . esc_html( $t[0] ) . '</b><span>' . esc_html( $t[1] ) . '</span></li>'; }
-			$h .= '</ul>';
-		}
-		$h .= '<table class="nlpd__table"><thead><tr><th scope="col">קומה</th><th scope="col">הדירה</th><th scope="col">מחיר</th><th scope="col">למ״ר</th><th scope="col">מועד</th><th scope="col">מקור</th><th scope="col"><span class="nlpd__sr">בבמה</span></th></tr></thead><tbody>';
-		foreach ( $rows as $d ) {
-			$n   = (int) ( $d['n'] ?? 0 );
-			$src = '<a href="' . esc_url( $d['url'] ) . '" target="_blank" rel="noopener">' . esc_html( $d['src'] ) . '</a>' . ( ! empty( $d['via'] ) ? ', ' . esc_html( $d['via'] ) : '' );
-			$h  .= '<tr><td class="nlpd__floor"><b>' . esc_html( $d['floor'] ) . '</b><span>' . esc_html( $d['bld'] ) . '</span></td>'
-				. '<td>' . esc_html( $d['apt'] ) . '</td><td>' . esc_html( $d['price'] ) . '</td><td>' . esc_html( $d['psqm'] ) . '</td>'
-				. '<td>' . esc_html( $d['date'] ) . '</td><td class="nlpd__src">' . $src . '</td>'
-				. '<td>' . ( $n > 0 ? '<button class="nlpd__go" type="button" data-nlps-floor="' . $n . '" aria-label="' . esc_attr( 'קומה ' . $n . ' במגדל, בבמה' ) . '">לקומה במגדל</button>' : '' ) . '</td></tr>';
-		}
-		$h .= '</tbody></table><p class="nlpd__note">המחיר למ״ר מחושב: המחיר שפורסם חלקי שטח הדירה, בלי המרפסת והחניה.</p></section></div>';
-		return $h;
-	}
-}
-
 if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 	/** The pieces the page top is composed of. $h1 is the page's own h1 text; $map the moved area map section. */
 	function nadlan_ps_parts( $ps, $h1, $map ) {
@@ -236,15 +184,6 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 			'name'          => (string) $ps['name'],
 			'sectors'       => $sec,
 		);
-		// example apartments and the floor card's sourced lines (a sold apartment on that tower floor, else the developer's words)
-		if ( ! empty( $ps['units'] ) ) { $cfg['units'] = array_values( (array) $ps['units'] ); }
-		$notes = array();
-		foreach ( (array) ( $ps['deals'] ?? array() ) as $d ) {
-			if ( ! empty( $d['n'] ) && ! empty( $d['note'] ) ) { $notes[ (string) (int) $d['n'] ] = (string) $d['note']; }
-		}
-		if ( $notes ) { $cfg['notes'] = $notes; }
-		if ( ! empty( $ps['low_note'] ) ) { $cfg['lowNote'] = (string) $ps['low_note']; $cfg['lowUpTo'] = (int) ( $ps['low_up_to'] ?? 0 ); }
-		if ( ! empty( $ps['high_note'] ) ) { $cfg['highNote'] = (string) $ps['high_note']; }
 		$hero = '';
 		$cta  = '';
 		if ( '' !== $h1 ) {
@@ -262,8 +201,8 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 		foreach ( (array) ( $ps['rail'] ?? array() ) as $pid ) { $rail .= nadlan_ps_square( $pid, $ps ); }
 		$rail .= nadlan_ps_slot();
 		$view = '<div class="nlds nlps-viewwrap"><div class="nlps-view" id="nlps-view">'
-			. '<div class="nlps-view__head"><p class="nlds-kicker" id="nlps-view-k">הנוף מהקומה</p><h3 class="nlps-view__title" id="nlps-view-t">' . ( ! empty( $ps['units'] ) ? 'בחרו קומה ודירה לדוגמה' : 'בחרו קומה וכיוון' ) . '</h3></div>'
-			. '<div class="nlps-view__map nlps-stand" id="nlps-view-map" role="img" aria-label="מבט משוער מהקומה לכיוון שנבחר"><span id="nlps-view-empty">' . ( ! empty( $ps['units'] ) ? 'בחרו קומה במגדל ודירה לדוגמה בטבעת שלה, והנוף מהדירה יופיע כאן.' : 'בחרו קומה במגדל ונקודה בטבעת שלה, והנוף מהגובה ומהכיוון האלה יופיע כאן.' ) . '</span></div>'
+			. '<div class="nlps-view__head"><p class="nlds-kicker">הנוף מהקומה</p><h3 class="nlps-view__title" id="nlps-view-t">בחרו קומה וכיוון</h3></div>'
+			. '<div class="nlps-view__map nlps-stand" id="nlps-view-map" role="img" aria-label="מבט משוער מהקומה לכיוון שנבחר"><span id="nlps-view-empty">בחרו קומה במגדל ונקודה בטבעת שלה, והנוף מהגובה ומהכיוון האלה יופיע כאן.</span></div>'
 			. '<p class="nlps-view__cap" id="nlps-view-cap" hidden></p>'
 			. '<div class="nlps-view__cta" id="nlps-view-cta" hidden>'
 			. ( '' !== $wa ? '<a class="nlds-btn nlds-btn--primary" id="nlps-wa" target="_blank" rel="noopener" href="https://wa.me/' . esc_attr( $wa ) . '">' . ( function_exists( 'nlds_icon' ) ? nlds_icon( 'whatsapp' ) : '' ) . '<span>לקבלת תוכניות ומחירים</span></a>' : '' )
@@ -273,7 +212,7 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 		// page itself the stage sits next to the title, which says it all
 		$stagebox = '<div class="nlps-stagebox"><h2 class="nlps-srt" id="nlps-t">סיור וירטואלי: הקומות והנוף</h2>'
 			. '<section class="nlps-stage" id="nlps" aria-labelledby="nlps-t" data-cfg="' . esc_attr( wp_json_encode( $cfg ) ) . '"><div class="nlps-stage__mount" id="nlps-stage"></div></section>'
-			. '<div class="nlds"><p class="nlps-hint" id="nlps-hint">' . ( ! empty( $ps['units'] ) ? 'בחרו קומה במגדל, ואחר כך דירה לדוגמה בטבעת הקומה.' : 'בחרו קומה במגדל, ואחר כך נקודה בטבעת הקומה כדי לבחור כיוון.' ) . '</p></div></div>';
+			. '<div class="nlds"><p class="nlps-hint" id="nlps-hint">בחרו קומה במגדל, ואחר כך נקודה בטבעת הקומה כדי לבחור כיוון.</p></div></div>';
 		$rail  = '<aside class="nlps-rail" aria-label="אנשי מקצוע באזור">' . $rail . '</aside>';
 		$below = '<div class="nlps-below' . ( '' === $map ? ' nlps-below--solo' : '' ) . '">' . $view . $map . '</div>';
 		$facts = '';
@@ -296,7 +235,7 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 			}
 			$facts .= '</div>';
 		}
-		return array( 'hero' => $hero, 'cta' => $cta, 'stagebox' => $stagebox, 'rail' => $rail, 'facts' => $facts, 'below' => $below, 'deals' => nadlan_ps_deals( $ps ) );
+		return array( 'hero' => $hero, 'cta' => $cta, 'stagebox' => $stagebox, 'rail' => $rail, 'facts' => $facts, 'below' => $below );
 	}
 }
 
@@ -337,7 +276,7 @@ if ( ! function_exists( 'nadlan_ps_compose' ) ) {
 		// one grid (design system version 14): the text column, the stage and the rail share the first fold; the source
 		// order stays title, lead, buttons, stage, rail, facts, view and map
 		$lead = substr( $html, $a, $lead_end - $a );
-		$page = '<div class="nlps-page" dir="rtl" lang="he">' . $parts['hero'] . $lead . $parts['cta'] . $parts['stagebox'] . $parts['rail'] . $parts['facts'] . $parts['below'] . $parts['deals'] . '</div>';
+		$page = '<div class="nlps-page" dir="rtl" lang="he">' . $parts['hero'] . $lead . $parts['cta'] . $parts['stagebox'] . $parts['rail'] . $parts['facts'] . $parts['below'] . '</div>';
 		$html = substr( $html, 0, $a ) . $page . substr( $html, $lead_end );
 		// one FAQPage schema, from the page's own visible questions and answers (the recipe, row 25): the first
 		// "שאלות נפוצות" section that really holds question and answer pairs
@@ -396,7 +335,7 @@ add_action( 'wp_footer', function () {
 	   everything in the content, several with !important: inside the grid they are set back, with a longer selector and
 	   !important. */
 	echo '<style id="nadlan-ps-css">'
-		. ':root body .nlps-page{box-sizing:border-box!important;width:100%!important;max-width:none!important;margin:6px 0 30px!important;padding:0 clamp(12px,2vw,20px)!important;display:grid!important;grid-template-columns:minmax(300px,380px) minmax(0,1fr) 260px;grid-template-areas:"hero stage rail" "lead stage rail" "cta stage rail" "facts facts facts" "below below below" "deals deals deals";grid-template-rows:auto auto 1fr;column-gap:22px;row-gap:14px;align-items:start}'
+		. ':root body .nlps-page{box-sizing:border-box!important;width:100%!important;max-width:none!important;margin:6px 0 30px!important;padding:0 clamp(12px,2vw,20px)!important;display:grid!important;grid-template-columns:minmax(300px,380px) minmax(0,1fr) 260px;grid-template-areas:"hero stage rail" "lead stage rail" "cta stage rail" "facts facts facts" "below below below";grid-template-rows:auto auto 1fr;column-gap:22px;row-gap:14px;align-items:start}'
 		. ':root body .nlps-page>*{min-width:0;max-width:none!important;margin:0!important;box-sizing:border-box}'
 		. ':root body .nlps-page>.nlps-herowrap{grid-area:hero;padding:0!important}'
 		. ':root body .nlps-page>.nl-lead{grid-area:lead;background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important}'
@@ -409,7 +348,6 @@ add_action( 'wp_footer', function () {
 		. ':root body .nlps-page>.nlps-factswrap{grid-area:facts;padding:0!important;margin-top:10px!important}'
 		// the theme's sitewide sheet has its own older ".nlpf" (1120px wide, auto margins, a deep shadow): not here
 		. ':root body .nlps-page .nlds .nlpf{width:auto!important;margin:0!important;box-shadow:none!important}'
-		. ':root body .nlps-page>.nlps-dealswrap{grid-area:deals;padding:0!important;margin-top:10px!important}'
 		. ':root body .nlps-page>.nlps-below{grid-area:below;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:stretch;margin-top:10px!important}'
 		. '.nlps-below--solo{grid-template-columns:minmax(0,1fr)!important}'
 		. '.nlps-below>#nlpjx-map{margin:0!important;min-width:0;max-width:none!important}'
@@ -420,8 +358,8 @@ add_action( 'wp_footer', function () {
 		. ':root body .nlds .nlps-view__map.nlps-stand{cursor:default}'
 		. ':root body .nlds .nlbsq__photo img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:50% 24%!important}'
 		. ':root body .nlps-rail .nlds .nlbslot{min-height:0!important}'
-		. '@media(max-width:1279px){:root body .nlps-page{grid-template-columns:minmax(280px,360px) minmax(0,1fr);grid-template-areas:"hero stage" "lead stage" "cta stage" "facts facts" "below below" "deals deals" "rail rail"}:root body .nlps-page>.nlps-rail{grid-template-columns:repeat(2,minmax(0,300px));margin-top:6px!important}}'
-		. '@media(max-width:1099px){:root body .nlps-page{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"hero" "cta" "stage" "lead" "facts" "below" "deals" "rail";column-gap:0}:root body .nlps-page>.nlps-below{grid-template-columns:minmax(0,1fr)}:root body .nlps-page>.nlps-rail{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nlps-stage{height:62svh;min-height:380px}}'
+		. '@media(max-width:1279px){:root body .nlps-page{grid-template-columns:minmax(280px,360px) minmax(0,1fr);grid-template-areas:"hero stage" "lead stage" "cta stage" "facts facts" "below below" "rail rail"}:root body .nlps-page>.nlps-rail{grid-template-columns:repeat(2,minmax(0,300px));margin-top:6px!important}}'
+		. '@media(max-width:1099px){:root body .nlps-page{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"hero" "cta" "stage" "lead" "facts" "below" "rail";column-gap:0}:root body .nlps-page>.nlps-below{grid-template-columns:minmax(0,1fr)}:root body .nlps-page>.nlps-rail{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nlps-stage{height:62svh;min-height:380px}}'
 		. '@media(max-width:600px){.nlps-stage{height:70svh;min-height:360px}:root body .nlps-page{padding:0 12px!important;row-gap:12px}:root body .nlps-page>.nlps-rail{gap:12px}:root body .nlps-page>.nl-lead>p{font-size:16px!important}}'
 		. '</style>' . "\n";
 }, 60 );

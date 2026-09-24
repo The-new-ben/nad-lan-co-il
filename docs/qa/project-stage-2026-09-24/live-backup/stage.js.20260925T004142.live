@@ -49,7 +49,7 @@ const DEFAULTS = {
   autoOrbit: true,
   intro: true,
   highFloorsFrom: 21,    // floors from this number up use the "high floors" line
-  penthouseFloors: 0,    // top N floors are labelled as penthouses: only when a source names them (none does for Rainbow)
+  penthouseFloors: 3,    // top N floors are labelled as penthouses
   hint: true,
   adaptive: true,        // lower the pixel ratio automatically when frames get slow
   bearingOffset: 0,      // degrees added to every reported bearing, to align the scene's north with the real site
@@ -58,10 +58,6 @@ const DEFAULTS = {
   toneMapping: 'aces',   // 'aces' | 'agx'
   text: null,            // override any of the Hebrew strings
   facingWords: null,     // (bearing) => words for that direction from the page ("לכיוון הים"); replaces the compass word and the degrees
-  floorNote: null,       // (floor) => the page's sourced line for that floor, or null for the project-wide line
-  units: null,           // example apartments (owner, 25.9.2026: "דירות לדוגמה עם כיוון, ועם תווית ברורה שהן לדוגמה"):
-                         // { sides: [{ id: 'w', bearing: 270 }, ...], half: 45, label: 'דירה לדוגמה', chip: 'לדוגמה' }; a pick on
-                         // the ring snaps to the apartment whose arc holds it, and every place says it is an example
   debug: false,
 };
 
@@ -321,8 +317,6 @@ export function mountRainbowStage(container, options = {}) {
     setFacing(bearing) { return engine ? engine.setFacing(bearing) : null; },
     clearFacing() { if (engine) engine.clearFacing(); },
     /* { floor, heightM, bearing } of the current pick, or null */
-    /* an example apartment by its id ("16-w"); source 'user' dispatches the events a tap would */
-    selectUnit(id, source) { return engine ? engine.selectUnit(id, source) : null; },
     getSelection() { return engine ? engine.getSelection() : null; },
     /* eye height above the street for floor n, in metres */
     floorHeight(n) { const f = Math.round(Number(n)); return f >= 1 && f <= TOWER.floors ? floorEyeHeight(f) : null; },
@@ -794,38 +788,6 @@ function createEngine(ctx) {
     ringGroup.add(new THREE.Mesh(toGeom(acc), ringMat));
   }
 
-  /* example apartments: arcs of the ring, one per side; the picked one (and the hovered one) is drawn thicker */
-  const UNITS = opts.units && Array.isArray(opts.units.sides) && opts.units.sides.length ? opts.units : null;
-  const unitHalf = UNITS ? Math.max(10, Math.min(90, Number(UNITS.half) || 45)) : 0;
-  function unitFor(b) {
-    if (!UNITS) return null;
-    let best = null, bd = 1e9;
-    for (const s of UNITS.sides) {
-      let d = Math.abs(normDeg(b) - normDeg(s.bearing));
-      if (d > 180) d = 360 - d;
-      if (d < bd) { bd = d; best = s; }
-    }
-    return bd <= unitHalf + 0.001 ? best : null;
-  }
-  const arcMat = new THREE.MeshBasicMaterial({ color: '#2F6F86', toneMapped: false });
-  const arcPrevMat = new THREE.MeshBasicMaterial({ color: '#2F6F86', toneMapped: false, transparent: true, opacity: 0.35, depthWrite: false });
-  function makeArc(mat) { const m = new THREE.Mesh(new THREE.BufferGeometry(), mat); m.visible = false; m.renderOrder = 4; scene.add(m); return m; }
-  const unitArc = makeArc(arcMat), unitArcPrev = makeArc(arcPrevMat);
-  function placeArc(mesh, side, f) {
-    if (!side) { mesh.visible = false; return; }
-    const gap = 4; // degrees left open at each end, so four arcs read as four apartments
-    const pts = [];
-    for (let a = -unitHalf + gap; a <= unitHalf - gap + 0.01; a += 2) {
-      const r = ring[idxForSceneBearing(normDeg(side.bearing + a - offset))];
-      pts.push(new THREE.Vector3(r.x, 0, r.z));
-    }
-    if (pts.length < 2) { mesh.visible = false; return; }
-    mesh.geometry.dispose();
-    mesh.geometry = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts, false, 'centripetal'), Math.max(8, pts.length * 2), 0.36, 8, false);
-    mesh.position.set(0, ringY(f), 0);
-    mesh.visible = true;
-  }
-
   /* facing arrow (and a lighter preview that follows the pointer) */
   const ARROW_LEN = 9.7;
   function makeArrow(mat) {
@@ -876,51 +838,31 @@ function createEngine(ctx) {
       labelFacing.classList.remove('is-set');
       facingChip.classList.remove('is-on');
     }
-    // an example apartment says so in the card's title: "דירה לדוגמה · קומה 16" and the chip "לדוגמה"
-    if (selected) {
-      labelTitle.textContent = T.floor(selected.floor);
-      if (facing && facing.unit) {
-        const chip = document.createElement('span');
-        chip.className = 'rbs-sample';
-        chip.textContent = UNITS.label || 'דירה לדוגמה';
-        labelTitle.append(' ', chip);
-      }
-    }
     labelBox.w = 0; chipBox.w = 0;
   }
   function setFacingIdx(idx, source, exact) {
     if (!selected || !selected.pinned || idx < 0) return null;
-    let b = exact != null ? round1(exact) : round1(trueBearing(ring[idx].sb));
-    // an example apartment: the pick snaps to the middle of the apartment's arc, and that is its direction
-    const side = unitFor(b);
-    if (side) { b = round1(side.bearing); idx = idxForSceneBearing(normDeg(side.bearing - offset)); }
-    facing = { idx, bearing: b, unit: side ? `${selected.floor}-${side.id}` : null };
+    const b = exact != null ? round1(exact) : round1(trueBearing(ring[idx].sb));
+    facing = { idx, bearing: b };
     placeArrow(arrow, idx, selected.floor);
-    placeArc(unitArc, side, selected.floor);
     setPreview(-1);
     updateFacingUI();
     needsRender = true;
     lastInteract = performance.now();
-    if (source === 'user') emit('nl:facing', { floor: selected.floor, heightM: heightOf(selected.floor), bearing: b, unit: facing.unit });
+    if (source === 'user') emit('nl:facing', { floor: selected.floor, heightM: heightOf(selected.floor), bearing: b });
     return b;
   }
   function setFacingBearing(b, source) { return setFacingIdx(idxForSceneBearing(normDeg(b - offset)), source, b); }
-  function clearFacing() { facing = null; arrow.visible = false; unitArc.visible = false; setPreview(-1); updateFacingUI(); needsRender = true; }
+  function clearFacing() { facing = null; arrow.visible = false; setPreview(-1); updateFacingUI(); needsRender = true; }
   function setPreview(idx) {
-    // over an example apartment's arc the preview shows that apartment: its middle and its arc
-    let side = null;
-    if (idx >= 0 && UNITS) {
-      side = unitFor(trueBearing(ring[idx].sb));
-      if (side) idx = idxForSceneBearing(normDeg(side.bearing - offset));
-    }
     if (idx >= 0 && facing) {
       let d = Math.abs(idx - facing.idx); d = Math.min(d, RING_N - d);
-      if (d < 10) { idx = -1; side = null; }
+      if (d < 10) idx = -1;
     }
     if (idx === previewIdx) return;
     previewIdx = idx;
-    if (idx >= 0 && selected && selected.pinned) { placeArrow(arrowPrev, idx, selected.floor); placeArc(unitArcPrev, side, selected.floor); }
-    else { arrowPrev.visible = false; unitArcPrev.visible = false; }
+    if (idx >= 0 && selected && selected.pinned) placeArrow(arrowPrev, idx, selected.floor);
+    else arrowPrev.visible = false;
     needsRender = true;
   }
   function bearingTowardCamera() {
@@ -989,9 +931,8 @@ function createEngine(ctx) {
       if (!pinned || next !== selected.floor) selectFloor(next, 'user');
     } else if ((k === 'ArrowLeft' || k === 'ArrowRight') && pinned) {
       e.preventDefault();
-      const step = UNITS ? 360 / UNITS.sides.length : 45; // with example apartments, one apartment at a time
-      if (facing) setFacingBearing(Math.round(facing.bearing / step) * step + (k === 'ArrowRight' ? step : -step), 'user');
-      else setFacingBearing(Math.round(bearingTowardCamera() / step) * step, 'user');
+      if (facing) setFacingBearing(Math.round(facing.bearing / 45) * 45 + (k === 'ArrowRight' ? 45 : -45), 'user');
+      else setFacingBearing(Math.round(bearingTowardCamera() / 45) * 45, 'user');
     } else if (k === 'Enter' && selected) {
       e.preventDefault();
       emitCta();
@@ -1031,31 +972,22 @@ function createEngine(ctx) {
     if (reduced) U.uDim.value = 1;
     U.uHiGlow.value = 0.5;
     controls.minDistance = 55;
-    if (facing) {
-      placeArrow(arrow, facing.idx, f);
-      // the same side of the new floor: its example apartment
-      const side = facing.unit ? unitFor(facing.bearing) : null;
-      facing.unit = side ? `${f}-${side.id}` : null;
-      placeArc(unitArc, side, f);
-    }
-    if (previewIdx >= 0) { placeArrow(arrowPrev, previewIdx, f); placeArc(unitArcPrev, UNITS ? unitFor(trueBearing(ring[previewIdx].sb)) : null, f); }
+    if (facing) placeArrow(arrow, facing.idx, f);
+    if (previewIdx >= 0) placeArrow(arrowPrev, previewIdx, f);
     updateFacingUI();
     frameFloor(f, prev);
     lastInteract = performance.now();
     if (source === 'user') {
       emit('nl:floor', { floor: f, heightM: heightOf(f) });
-      if (facing) emit('nl:facing', { floor: f, heightM: heightOf(f), bearing: facing.bearing, unit: facing.unit });
+      if (facing) emit('nl:facing', { floor: f, heightM: heightOf(f), bearing: facing.bearing });
     }
   }
   function showFloor(f, pinned) {
     selected = { floor: f, pinned };
     U.uHiFloor.value = f;
     labelTitle.textContent = T.floor(f);
-    // the page's sourced line for this floor (a sold apartment reported on it, or what the developer said about this
-    // height); otherwise the project-wide line. A floor is never called a penthouse floor unless the page says so.
-    const note = typeof opts.floorNote === 'function' ? opts.floorNote(f) : null;
-    const top = TOWER.floors - (opts.penthouseFloors || 0);
-    labelLine.textContent = note ? String(note) : (opts.penthouseFloors && f > top ? T.penthouse : (f >= opts.highFloorsFrom ? T.high : T.low));
+    const top = TOWER.floors - (opts.penthouseFloors || 3);
+    labelLine.textContent = f > top ? T.penthouse : (f >= opts.highFloorsFrom ? T.high : T.low);
     labelFacing.hidden = !pinned;
     label.classList.add('is-on');
     labelBox.w = 0;
@@ -1067,7 +999,7 @@ function createEngine(ctx) {
     hover = null;
     facing = null;
     previewIdx = -1;
-    arrow.visible = false; arrowPrev.visible = false; ringGroup.visible = false; unitArc.visible = false; unitArcPrev.visible = false;
+    arrow.visible = false; arrowPrev.visible = false; ringGroup.visible = false;
     U.uHiFloor.value = -100;
     U.uHiGlow.value = 0.22;
     dimTarget = 0;
@@ -1512,21 +1444,9 @@ function createEngine(ctx) {
       return r;
     },
     clearFacing() { clearFacing(); kick(); },
-    /* an example apartment by its id ("16-w": the floor and the side); returns the id or null */
-    selectUnit(id, source) {
-      const m = /^(\d+)-([a-z]+)$/.exec(String(id || ''));
-      if (!m || !UNITS) return null;
-      const f = Number(m[1]); const side = UNITS.sides.find((x) => x.id === m[2]);
-      if (!side || !(f >= 1 && f <= TOWER.floors)) return null;
-      if (phase === 'intro') endIntro();
-      selectFloor(f, source === 'user' ? 'user' : 'api');
-      setFacingBearing(side.bearing, source === 'user' ? 'user' : 'api');
-      kick();
-      return facing ? facing.unit : null;
-    },
     getSelection() {
       if (!(selected && selected.pinned)) return null;
-      return { floor: selected.floor, heightM: heightOf(selected.floor), bearing: facing ? facing.bearing : null, unit: facing ? facing.unit : null };
+      return { floor: selected.floor, heightM: heightOf(selected.floor), bearing: facing ? facing.bearing : null };
     },
     getNorth() {
       const n = staticNorth(offset);
