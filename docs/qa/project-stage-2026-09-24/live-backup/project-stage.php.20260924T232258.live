@@ -44,11 +44,6 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 				'developer'      => 'ישראל קנדה',
 				'place'          => 'רובע שדה דב, צפון תל אביב',
 				'rail'           => array( 7833 ),
-				// the tower, not the lot's centre: lot 111's official outline (Tel Aviv plans layer, plan תע"א/תמ"ל3001(111),
-				// 8,695 m², long north-south, turned 10° east) and the design plan's "north-east corner" put it about 46 m NNE of
-				// the centre. The view from a floor and the beam start here.
-				'tower_lat'      => 32.10354,
-				'tower_lng'      => 34.78466,
 				'sectors'        => array(
 					array( 230, 345, 'לכיוון הים' ),
 					array( 345, 30, 'לכיוון תל ברוך והרצליה' ),
@@ -154,8 +149,8 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 			'poster'        => plugins_url( 'assets/project-stage/' . $ps['dir'] . '/poster.jpg', dirname( __FILE__ ) ) . '?ver=' . nadlan_ps_ver(),
 			'mount'         => (string) $ps['mount'],
 			'bearingOffset' => (float) $ps['bearing_offset'],
-			'lat'           => ! empty( $ps['tower_lat'] ) ? (float) $ps['tower_lat'] : (float) get_post_meta( $id, 'lat', true ),
-			'lng'           => ! empty( $ps['tower_lng'] ) ? (float) $ps['tower_lng'] : (float) get_post_meta( $id, 'lng', true ),
+			'lat'           => (float) get_post_meta( $id, 'lat', true ),
+			'lng'           => (float) get_post_meta( $id, 'lng', true ),
 			'token'         => (string) get_option( 'nadlan_mapbox_token', '' ),
 			'wa'            => $wa,
 			'name'          => (string) $ps['name'],

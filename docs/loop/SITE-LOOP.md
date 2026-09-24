@@ -40,7 +40,7 @@ only inside runners; every release through a runner with drift check, lint, back
 
 | # | Item | State | Evidence / notes |
 |---|---|---|---|
-| R1 | Rainbow facts fixed on the page: tower 39 floors and 3.6 m floors in the stage, the tower in the lot's NE corner, units "459 (480 in the approved plan)", the NIS/m² tile relabelled to its true source and updated, "2,432 deals" said to be the city's | todo | rainbow-facts.md, unit-layer §5 |
+| R1 | Rainbow facts fixed on the page and the stage | **done 24.9 (1.72.258)** | the stage: tower in lot 111's NE corner (its official outline from the Tel Aviv plans layer), 39 floors, 3.75 m, pools on two boutique roofs, turned 10° like the lot, shore 713 m; view and beam start at the tower (32.10354, 34.78466); demo units never feed public numbers (the "82-210 מ״ר" is gone); the page text: writer's notes removed, 459 (480 approved), NIS/m² 81,782 per the developer's reports. Next inside R2/R4: the lot's full real layout (150 x 75 m, long N-S) |
 | R2 | Rainbow page to the recipe: hero with the two CTAs and the building in the first fold, the answer paragraph (names, developer, place, status, mix, sourced prices, keywords), six facts, progress, one FAQ with one FAQPage schema, the notice after the lead and the disclaimers last | todo | recipe rows 3-8, 25, 28 |
 | R3 | Rainbow apartments in the stage: floor + side arcs (3-5 per floor), the unit card (floor, side in words, rooms and m² only where sourced, the illustrative plan), `?unit=`, the cone and the view per apartment, the lead with the unit id. DS first: UnitPicker, UnitCard | todo | unit-layer §6; waits for the deep research for real layouts, starts with honest side-arcs labelled "חלוקה משוערת להמחשה" |
 | R4 | Rainbow surroundings: the real Sde Dov quarter in the white-model style from the find-place data; our 11 projects clickable with a card and "what you see from Rainbow toward it"; facilities clickable | todo | worlds.md §9 |
@@ -59,5 +59,6 @@ only inside runners; every release through a runner with drift check, lint, back
   default until he says), or wait for real data (c). unit-layer §6.6.
 
 ## Done in this loop
+- 24.9 night: R1 (1.72.258 + page text + NIS/m² meta). Research in: hauzd-teardown.md (85 screens), tech-stack.md.
 - 24.9: 1.72.255-256 Rainbow page top (stage, view, beam, rail) and the shore at 713 m; 1.72.257 "המלצות" and the count;
   EcoCity's /tour/ecocity/ taken off (404, folder moved out of the web root).

@@ -34,15 +34,12 @@ if ( ! function_exists( 'nadlan_pjx_units' ) ) {
 			if ( preg_match( '/קומה\s*(\d+)/u', $title, $m ) ) { $floor = (int) $m[1]; }
 			if ( isset( $u['floor'] ) && (int) $u['floor'] > 0 ) { $floor = (int) $u['floor']; }
 			if ( preg_match( '/([\d.]+)\s*חדרים/u', $title, $m ) ) { $rooms = (float) $m[1]; }
-			// the unit's own notes say when it is a demonstration unit ("יחידת הדגמה"); such a unit never feeds a public number
-			$u_note  = (string) ( $u['note'] ?? '' ) . ' ' . (string) ( $u['source_note'] ?? '' ) . ' ' . (string) ( $u['market_note'] ?? '' );
 			$units[] = array(
 				'title' => $title,
 				'floor' => $floor,
 				'rooms' => $rooms,
 				'sqm'   => (int) ( $u['sqm'] ?? ( $u['size_sqm'] ?? 0 ) ),
 				'price' => (int) ( $u['price'] ?? 0 ),
-				'demo'  => false !== mb_strpos( $u_note, 'הדגמה' ) || false !== stripos( $u_note, 'demo' ),
 			);
 		}
 		return $units;
@@ -152,7 +149,6 @@ if ( ! function_exists( 'nadlan_pjx_price_band' ) ) {
 		$units = nadlan_pjx_units( $id );
 		$prices = array(); $sqms = array();
 		foreach ( $units as $u ) {
-			if ( ! empty( $u['demo'] ) ) { continue; } // a demo unit never becomes a public number (iron law 3, 24.9.2026)
 			if ( ! empty( $u['price'] ) ) { $prices[] = (int) $u['price']; }
 			if ( ! empty( $u['sqm'] ) ) { $sqms[] = (int) $u['sqm']; }
 		}

@@ -91,11 +91,10 @@ const PRESETS = {
 
 /* Site-local layout (metres). Local -z points to the quarter's grid north, which is turned
    20 degrees east of true north, like the Tel Aviv coast. The sea is to the local west. */
-const GRID_ANGLE = -10 * DEG; // lot 111 is turned 10° east of north (its official outline); the scene follows the lot
+const GRID_ANGLE = -20 * DEG;
 const PLOT = { hx: 52, hz: 40, r: 9, h: 1.2 };
-// y0: first residential floor level above the street (1.2 m courtyard deck + 6.0 m lobby). The approved design plan
-// (10.5.2023): the tower stands in the lot's north-east corner, 39 floors above the entrance, floors 3.5-4.0 m gross
-const TOWER = { cx: 33, cz: -21, rot: 98 * DEG, A: 16.5, B: 10.8, y0: 7.2, fh: 3.75, floors: 39 };
+// y0: first residential floor level above the street (1.2 m courtyard deck + 6.0 m lobby); fh: 3.2 m per floor
+const TOWER = { cx: -30, cz: -4, rot: 98 * DEG, A: 16.5, B: 10.8, y0: 7.2, fh: 3.2, floors: 40 };
 TOWER.roof = TOWER.y0 + TOWER.floors * TOWER.fh;
 const EYE_M = 1.6;             // eye height above a floor level
 const RING_OFF = 4.4;          // the floor ring: offset from the glass line (clears the deepest balcony)
@@ -105,8 +104,8 @@ function normDeg(b) { return ((b % 360) + 360) % 360; }
 const BLOCK_W = 12.5;
 const BLOCKS = [
   { p0: [-13.75, -28.5], p1: [-5, -33.5], p2: [3.75, -28.5], floors: 9, ph: 0.3 },
-  { p0: [-41, -28], p1: [-46, -19], p2: [-41, -10], floors: 8, ph: 1.7 },
-  { p0: [42, 3], p1: [46, 9], p2: [42, 15], floors: 9, ph: 2.9 },
+  { p0: [24.25, -28.5], p1: [33.5, -33.5], p2: [42.75, -28.5], floors: 8, ph: 1.7 },
+  { p0: [41, -7.75], p1: [46, 1], p2: [41, 9.75], floors: 9, ph: 2.9 },
   { p0: [27.25, 28.5], p1: [35, 33.5], p2: [42.75, 28.5], floors: 8, ph: 4.1 },
   { p0: [-8.75, 28.5], p1: [-0.5, 33.5], p2: [7.75, 28.5], floors: 9, ph: 5.3 },
   { p0: [-42.75, 28.5], p1: [-35.5, 33.5], p2: [-28.25, 28.5], floors: 8, ph: 0.9 },
@@ -114,7 +113,7 @@ const BLOCKS = [
 /* the waterline, local x. The tower stands 713 m from the shore (OSM coastline, nearest point at 287°, from the project's
    parcel coordinates 32.10317, 34.78444; 24.9.2026); the tower is at local x -30, so the shore is at -743. Between them
    the quarter's blocks continue west, then the coastal park, the promenade and the beach. */
-const COAST_X = -713; // measured from the lot's centre, the scene's origin (the tower now stands in the NE corner)
+const COAST_X = -743;
 const PITCH_X = 128, PITCH_Z = 104;
 
 let cssInjected = false;
@@ -2250,12 +2249,28 @@ function buildWorld(site, M, U) {
   const Y = PLOT.h;
   addSlab(ground, roundRectPoly(22, 11, 21, 12, 5.5, 8), Y, Y + 0.18);
   addSlab(ground, roundRectPoly(-1, -14, 16, 7, 3.5, 8), Y, Y + 0.18);
+  addSlab(ground, roundRectPoly(-44, -31, 12, 12, 5, 8), Y, Y + 0.18);
   addSlab(ground, roundRectPoly(46, -36.5, 9, 5, 2.4, 6), Y, Y + 0.18);
   addSlab(ground, roundRectPoly(-47, 8, 6, 22, 3, 8), Y, Y + 0.18);
   addSlab(ground, rotatePoly(roundRectPoly(10, -4, 14, 5, 2.5, 6), 10, -4, 18 * DEG), Y, Y + 0.18);
 
   /* ---------- pools ---------- */
-  // the two pools stand on the roofs of two boutique buildings (the approved design plan); see after the boutique blocks
+  // amenity pavilion with the infinity pool on its roof
+  const pav = { cx: 0, cz: 6, w: 21, d: 11, h: 3.6 };
+  setCol(ground, C.deck);
+  const pavLoop = addSlab(ground, roundRectPoly(pav.cx, pav.cz, pav.w, pav.d, 2.2, 8), Y, Y + pav.h);
+  // glazed recess around the pavilion (a thin glass band under the roof edge)
+  addWallFlat(glass, offsetLoop(pavLoop, 0.03), Y + 0.4, Y + pav.h - 0.55);
+  const poolTop = Y + pav.h;
+  addPool(water, white, pav.cx, pav.cz + 1.4, 17, 5.2, 1.4, poolTop, true);
+  // adults-only pool at courtyard level, framed by a deck and trees
+  setCol(ground, C.deck);
+  addSlab(ground, roundRectPoly(24, -10, 19, 10, 3, 8), Y, Y + 0.1);
+  addPool(water, white, 24, -10, 12, 4.6, 1.6, Y + 0.1, false);
+  // loungers
+  for (let k = 0; k < 6; k++) addBox(white, -6.5 + k * 2.6, pav.cz - 2.9, 0.8, 2.0, poolTop, poolTop + 0.35, 0);
+  for (let k = 0; k < 4; k++) addBox(white, 19.5 + k * 3.0, -13.6, 0.8, 2.0, Y + 0.1, Y + 0.45, 0);
+
   /* ---------- tower ---------- */
   const towerPoly = ellipsePoly(TOWER.A, TOWER.B, TOWER.cx, TOWER.cz, TOWER.rot, 720);
   const tLoop = resampleLoop(towerPoly, 84, 7);
@@ -2361,17 +2376,6 @@ function buildWorld(site, M, U) {
     blockFootprints.push(loop);
   });
 
-  /* ---------- the two roof pools (the approved design plan: pools on the roofs of two boutique buildings; which two is
-     not public, so the two southern ones here, as an illustration) ---------- */
-  for (const bi of [3, 4]) {
-    const bk = BLOCKS[bi];
-    const roofY = Y + 4.4 + (bk.floors - 1) * 3.2;
-    const px = (bk.p0[0] + bk.p2[0]) / 2 * 0.35 + bk.p1[0] * 0.65;
-    const pz = (bk.p0[1] + bk.p2[1]) / 2 * 0.35 + bk.p1[1] * 0.65 - 1.2;
-    addPool(water, white, px, pz, 9, 3.4, 1.1, roofY + 0.05, false);
-    for (let k = 0; k < 4; k++) addBox(white, px - 3.9 + k * 2.6, pz - 3.2, 0.8, 2.0, roofY + 0.05, roofY + 0.4, 0);
-  }
-
   /* ---------- planters ---------- */
   {
     const bush = new THREE.IcosahedronGeometry(1, 1);
@@ -2391,7 +2395,7 @@ function buildWorld(site, M, U) {
   /* ---------- trees ---------- */
   const trees = [];
   // courtyard
-  [[15, -14], [18, -5.5], [12, 16], [33, 16], [27, 3], [15.5, 3.5], [-8, -20], [6, -20.5],
+  [[15, -14], [18, -5.5], [30.5, -5], [31, -14.5], [12, 16], [33, 16], [27, 3], [15.5, 3.5], [-8, -20], [6, -20.5],
     [-12, 14.5], [-9, 20], [10, 21], [-44, -21], [-46, -12], [-45, 18], [-19, -34], [47, 22], [48, -20], [-50, 35]].forEach(([x, z]) => trees.push({ x, z, y: Y + 0.18, r: 2.1 + rnd() * 0.7, dark: false }));
   // street trees around the plot and the neighbouring plates
   const streetRows = [];
@@ -2454,6 +2458,7 @@ function buildWorld(site, M, U) {
     const rot = Math.atan2(bk.p2[1] - bk.p0[1], bk.p2[0] - bk.p0[0]);
     decal(cx, cz, len + 8, BLOCK_W + 9, rot, Y + 0.02);
   });
+  decal(pav.cx, pav.cz, pav.w + 6, pav.d + 6, 0, Y + 0.02);
 
   /* ---------- meshes ---------- */
   const meshes = [];
