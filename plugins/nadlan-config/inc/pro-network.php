@@ -1,0 +1,300 @@
+<?php
+/**
+ * The professionals network (owner FOCUS, 24.9.2026): "a social network of professionals for everything in a home,
+ * brokers, designers, furniture, movers, every component. Positive only: professionals endorse each other
+ * ('פרגונים'), and the endorsed surface inside each other's profiles. A call to join."
+ *
+ * This module is the data layer and the rules; the screens come from the NadLan design system (Claude Design):
+ *  1. The profession registry for every part of a home, grouped, with plural forms (one source for labels,
+ *     breadcrumbs, the hub and the join flow). Register contractors get a `trade` from their register branches.
+ *  2. Endorsements ("פרגונים"): one professional recommends another in one line and up to three qualities.
+ *     Positive by construction: no stars, no scores, nothing negative can be written. One per pair; at most
+ *     12 given in 30 days; the receiver (or an admin) can hide one. A broker endorses from the private upload
+ *     link (drop token); a claimed professional from their login.
+ *  3. Invitations: a professional who is not on the site yet gets an endorsement waiting for them and a join
+ *     link the endorser sends on WhatsApp. When they join, the endorsement attaches.
+ * Nothing here prints on the site until the design is in; `nadlan_pro_network_on` = '1' turns the display on.
+ */
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
+const NADLAN_NETWORK_DB_VERSION = '1';
+
+/* ---------------- 1. professions for every part of a home ---------------- */
+if ( ! function_exists( 'nadlan_pro_groups' ) ) {
+	/** group => array( label, professions => key => array( label, plural, female ) ). Keys already in use keep their meaning. */
+	function nadlan_pro_groups() {
+		return array(
+			'deal'     => array( 'label' => 'קנייה, מכירה ומימון', 'professions' => array(
+				'metavech'   => array( 'מתווך', 'מתווכים', 'מתווכת' ),
+				'shamai'     => array( 'שמאי מקרקעין', 'שמאי מקרקעין', 'שמאית מקרקעין' ),
+				'lawyer'     => array( 'עורך דין מקרקעין', 'עורכי דין מקרקעין', 'עורכת דין מקרקעין' ),
+				'mashkanta'  => array( 'יועץ משכנתאות', 'יועצי משכנתאות', 'יועצת משכנתאות' ),
+				'accountant' => array( 'רואה חשבון, מיסוי מקרקעין', 'רואי חשבון', 'רואת חשבון, מיסוי מקרקעין' ),
+				'actuary'    => array( 'אקטואר', 'אקטוארים', 'אקטוארית' ),
+				'insurance'  => array( 'סוכן ביטוח דירה', 'סוכני ביטוח דירה', 'סוכנת ביטוח דירה' ),
+			) ),
+			'build'    => array( 'label' => 'תכנון ובנייה', 'professions' => array(
+				'architect'     => array( 'אדריכל', 'אדריכלים', 'אדריכלית' ),
+				'engineer'      => array( 'מהנדס בניין', 'מהנדסי בניין', 'מהנדסת בניין' ),
+				'mefakeach'     => array( 'מפקח בנייה', 'מפקחי בנייה', 'מפקחת בנייה' ),
+				'surveyor'      => array( 'מודד מוסמך', 'מודדים מוסמכים', 'מודדת מוסמכת' ),
+				'urban_planner' => array( 'מתכנן ערים', 'מתכנני ערים', 'מתכננת ערים' ),
+				'kablan'        => array( 'קבלן', 'קבלנים', 'קבלנית' ),
+				'renovation'    => array( 'קבלן שיפוצים', 'קבלני שיפוצים', 'קבלנית שיפוצים' ),
+				'bedek_bait'    => array( 'בדק בית', 'בדק בית', 'בדק בית' ),
+				'developer'     => array( 'יזם', 'יזמים', 'יזמית' ),
+			) ),
+			'systems'  => array( 'label' => 'מערכות הבית', 'professions' => array(
+				'electrician'   => array( 'חשמלאי', 'חשמלאים', 'חשמלאית' ),
+				'plumber'       => array( 'אינסטלטור', 'אינסטלטורים', 'אינסטלטורית' ),
+				'hvac'          => array( 'מיזוג אוויר', 'מיזוג אוויר', 'מיזוג אוויר' ),
+				'waterproofing' => array( 'איטום', 'איטום', 'איטום' ),
+				'solar'         => array( 'מערכות סולאריות', 'מערכות סולאריות', 'מערכות סולאריות' ),
+				'pools'         => array( 'בריכות', 'בריכות', 'בריכות' ),
+				'security'      => array( 'מיגון ואבטחה', 'מיגון ואבטחה', 'מיגון ואבטחה' ),
+			) ),
+			'design'   => array( 'label' => 'עיצוב וריהוט', 'professions' => array(
+				'interior_designer' => array( 'מעצב פנים', 'מעצבי פנים', 'מעצבת פנים' ),
+				'kitchens'          => array( 'מטבחים ונגרות', 'מטבחים ונגרות', 'מטבחים ונגרות' ),
+				'flooring'          => array( 'ריצוף וחיפוי', 'ריצוף וחיפוי', 'ריצוף וחיפוי' ),
+				'windows'           => array( 'אלומיניום וחלונות', 'אלומיניום וחלונות', 'אלומיניום וחלונות' ),
+				'furniture'         => array( 'רהיטים', 'רהיטים', 'רהיטים' ),
+				'lighting'          => array( 'תאורה', 'תאורה', 'תאורה' ),
+				'gardens'           => array( 'גינון ופיתוח חצר', 'גינון ופיתוח חצר', 'גינון ופיתוח חצר' ),
+			) ),
+			'services' => array( 'label' => 'מעבר דירה ושירותים', 'professions' => array(
+				'movers'           => array( 'הובלות', 'הובלות', 'הובלות' ),
+				'cleaning'         => array( 'ניקיון', 'ניקיון', 'ניקיון' ),
+				'property_manager' => array( 'ניהול נכסים', 'ניהול נכסים', 'ניהול נכסים' ),
+				'organizer'        => array( 'ארגון דיירים', 'ארגון דיירים', 'ארגון דיירים' ),
+			) ),
+		);
+	}
+}
+
+if ( ! function_exists( 'nadlan_pro_registry' ) ) {
+	/** Flat key => array( label, plural, female, group ). */
+	function nadlan_pro_registry() {
+		static $flat = null;
+		if ( null !== $flat ) { return $flat; }
+		$flat = array();
+		foreach ( nadlan_pro_groups() as $g => $grp ) {
+			foreach ( $grp['professions'] as $k => $p ) {
+				$flat[ $k ] = array( 'label' => $p[0], 'plural' => $p[1], 'female' => $p[2], 'group' => $g );
+			}
+		}
+		return $flat;
+	}
+}
+
+if ( ! function_exists( 'nadlan_pro_trade_from_register' ) ) {
+	/** A register contractor's trade key from the branches the register lists, first branch first. */
+	function nadlan_pro_trade_from_register( $classification ) {
+		$map = array( 'שיפוצ' => 'renovation', 'חשמל' => 'electrician', 'אינסטלצ' => 'plumber', 'מיזוג' => 'hvac', 'איטום' => 'waterproofing',
+			'בריכ' => 'pools', 'סולאר' => 'solar', 'פיתוח' => 'gardens', 'נגר' => 'kitchens', 'ריצוף' => 'flooring', 'אלומיני' => 'windows' );
+		foreach ( explode( '·', (string) $classification ) as $branch ) {
+			foreach ( $map as $needle => $key ) {
+				if ( false !== mb_strpos( $branch, $needle ) ) { return $key; }
+			}
+		}
+		return 'kablan';
+	}
+}
+
+/* ---------------- 2 and 3. endorsements and invitations ---------------- */
+if ( ! function_exists( 'nadlan_endorse_table' ) ) {
+	function nadlan_endorse_table() { global $wpdb; return $wpdb->prefix . 'nadlan_endorse'; }
+}
+
+if ( ! function_exists( 'nadlan_endorse_install' ) ) {
+	function nadlan_endorse_install() {
+		if ( get_option( 'nadlan_network_db_version' ) === NADLAN_NETWORK_DB_VERSION ) { return; }
+		global $wpdb;
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+		dbDelta( 'CREATE TABLE ' . nadlan_endorse_table() . " (
+			id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+			from_pro BIGINT UNSIGNED NOT NULL,
+			to_pro BIGINT UNSIGNED NOT NULL DEFAULT 0,
+			invite_name VARCHAR(120) NOT NULL DEFAULT '',
+			invite_prof VARCHAR(40) NOT NULL DEFAULT '',
+			invite_token CHAR(24) NOT NULL DEFAULT '',
+			line VARCHAR(160) NOT NULL DEFAULT '',
+			qualities VARCHAR(160) NOT NULL DEFAULT '',
+			status VARCHAR(10) NOT NULL DEFAULT 'shown',
+			created_at DATETIME NOT NULL,
+			decided_at DATETIME NULL,
+			PRIMARY KEY  (id),
+			KEY to_pro (to_pro,status),
+			KEY from_pro (from_pro,status),
+			KEY invite_token (invite_token)
+		) " . $wpdb->get_charset_collate() . ';' );
+		update_option( 'nadlan_network_db_version', NADLAN_NETWORK_DB_VERSION, false );
+	}
+}
+add_action( 'admin_init', 'nadlan_endorse_install' );
+
+if ( ! function_exists( 'nadlan_endorse_qualities' ) ) {
+	/** The only words an endorsement can carry besides its one line: all positive. */
+	function nadlan_endorse_qualities() {
+		return array( 'pro' => 'מקצועיות', 'trust' => 'אמינות', 'avail' => 'זמינות', 'personal' => 'יחס אישי', 'time' => 'עמידה בזמנים',
+			'clear' => 'שקיפות', 'creative' => 'יצירתיות', 'fair' => 'מחיר הוגן', 'calm' => 'סבלנות', 'detail' => 'דיוק' );
+	}
+}
+
+if ( ! function_exists( 'nadlan_endorse_clean_line' ) ) {
+	/** One short line of praise: no phone numbers, no links, no dashes as punctuation. */
+	function nadlan_endorse_clean_line( $s ) {
+		$s = sanitize_text_field( (string) $s );
+		$s = preg_replace( '#https?://\S+|www\.\S+#iu', '', $s );
+		$s = preg_replace( '/[\d\-\s]{7,}/u', ' ', $s );
+		$s = str_replace( array( '—', '–' ), ',', $s );
+		$s = trim( preg_replace( '/\s+/u', ' ', $s ) );
+		return mb_substr( $s, 0, 140 );
+	}
+}
+
+if ( ! function_exists( 'nadlan_endorse_add' ) ) {
+	/** from -> to (a card) or an invitation (to = 0 with a name and a profession). Returns the row id or a WP_Error. */
+	function nadlan_endorse_add( $from, $to, $line, $qualities, $invite = array() ) {
+		nadlan_endorse_install();
+		global $wpdb;
+		$t    = nadlan_endorse_table();
+		$from = (int) $from;
+		$to   = (int) $to;
+		if ( $from <= 0 || 'nadlan_professional' !== get_post_type( $from ) || 'publish' !== get_post_status( $from ) ) { return new WP_Error( 'from', 'המפרגן לא נמצא' ); }
+		if ( $to > 0 && ( $to === $from || 'nadlan_professional' !== get_post_type( $to ) || 'publish' !== get_post_status( $to ) ) ) { return new WP_Error( 'to', 'בעל המקצוע לא נמצא' ); }
+		$recent = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM $t WHERE from_pro = %d AND created_at > %s", $from, gmdate( 'Y-m-d H:i:s', time() - 30 * DAY_IN_SECONDS ) ) );
+		if ( $recent >= 12 ) { return new WP_Error( 'limit', 'עד 12 פרגונים בחודש' ); }
+		if ( $to > 0 && $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $t WHERE from_pro = %d AND to_pro = %d LIMIT 1", $from, $to ) ) ) { return new WP_Error( 'dup', 'כבר פרגנת לבעל המקצוע הזה' ); }
+		$ql   = array_values( array_intersect( array_map( 'sanitize_key', (array) $qualities ), array_keys( nadlan_endorse_qualities() ) ) );
+		$line = nadlan_endorse_clean_line( $line );
+		if ( '' === $line && ! $ql ) { return new WP_Error( 'empty', 'חסר משפט פרגון' ); }
+		$row = array( 'from_pro' => $from, 'to_pro' => $to, 'line' => $line, 'qualities' => implode( ',', array_slice( $ql, 0, 3 ) ),
+			'status' => 'shown', 'created_at' => gmdate( 'Y-m-d H:i:s' ) );
+		if ( $to <= 0 ) {
+			$prof = sanitize_key( (string) ( $invite['profession'] ?? '' ) );
+			$name = mb_substr( sanitize_text_field( (string) ( $invite['name'] ?? '' ) ), 0, 120 );
+			if ( '' === $name || ! isset( nadlan_pro_registry()[ $prof ] ) ) { return new WP_Error( 'invite', 'חסר שם או מקצוע' ); }
+			$row['invite_name']  = $name;
+			$row['invite_prof']  = $prof;
+			$row['invite_token'] = strtolower( wp_generate_password( 24, false, false ) );
+			$row['status']       = 'invited';
+		}
+		$wpdb->insert( $t, $row );
+		return (int) $wpdb->insert_id;
+	}
+}
+
+if ( ! function_exists( 'nadlan_endorse_attach_invite' ) ) {
+	/** When an invited professional joins: the waiting endorsement now points at their new card. */
+	function nadlan_endorse_attach_invite( $token, $card_id ) {
+		global $wpdb;
+		$t = nadlan_endorse_table();
+		return (bool) $wpdb->update( $t, array( 'to_pro' => (int) $card_id, 'status' => 'shown', 'decided_at' => gmdate( 'Y-m-d H:i:s' ) ),
+			array( 'invite_token' => (string) $token, 'status' => 'invited' ) );
+	}
+}
+
+if ( ! function_exists( 'nadlan_endorse_list' ) ) {
+	/** 'received' or 'given' endorsements of a card that are shown, newest first. */
+	function nadlan_endorse_list( $pro, $dir = 'received', $limit = 12 ) {
+		if ( get_option( 'nadlan_network_db_version' ) !== NADLAN_NETWORK_DB_VERSION ) { return array(); }
+		global $wpdb;
+		$t   = nadlan_endorse_table();
+		$col = 'given' === $dir ? 'from_pro' : 'to_pro';
+		$rows = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $t WHERE $col = %d AND status = 'shown' AND to_pro > 0 ORDER BY id DESC LIMIT %d", (int) $pro, (int) $limit ), ARRAY_A );
+		return array_values( array_filter( (array) $rows, function ( $r ) {
+			return 'publish' === get_post_status( (int) $r['from_pro'] ) && 'publish' === get_post_status( (int) $r['to_pro'] );
+		} ) );
+	}
+}
+
+if ( ! function_exists( 'nadlan_endorse_actor' ) ) {
+	/** Who is endorsing: a broker by the private upload token, or the logged-in owner of a claimed card. */
+	function nadlan_endorse_actor( WP_REST_Request $req ) {
+		$token = (string) $req->get_param( 'token' );
+		if ( '' !== $token && function_exists( 'nl_drop_broker_by_token' ) ) {
+			$b = nl_drop_broker_by_token( $token );
+			if ( is_array( $b ) && ! empty( $b['id'] ) ) { return (int) $b['id']; }
+			if ( is_object( $b ) && ! empty( $b->ID ) ) { return (int) $b->ID; }
+			if ( is_numeric( $b ) && (int) $b > 0 ) { return (int) $b; }
+		}
+		$uid = get_current_user_id();
+		if ( $uid > 0 ) {
+			$own = get_posts( array( 'post_type' => 'nadlan_professional', 'post_status' => 'publish', 'numberposts' => 1, 'fields' => 'ids',
+				'meta_query' => array( array( 'key' => 'owner_user_id', 'value' => $uid, 'type' => 'NUMERIC' ), array( 'key' => 'claim_status', 'value' => 'verified' ) ) ) );
+			if ( $own ) { return (int) $own[0]; }
+		}
+		return 0;
+	}
+}
+
+add_action( 'rest_api_init', function () {
+	// search for a professional to endorse (public, minimal fields, published cards only)
+	register_rest_route( 'nadlan/v1', '/pros/search', array(
+		'methods' => 'GET', 'permission_callback' => '__return_true',
+		'callback' => function ( WP_REST_Request $req ) {
+			$q = sanitize_text_field( (string) $req->get_param( 'q' ) );
+			if ( mb_strlen( $q ) < 2 ) { return array(); }
+			$ids = get_posts( array( 'post_type' => 'nadlan_professional', 'post_status' => 'publish', 's' => $q, 'numberposts' => 8, 'fields' => 'ids' ) );
+			$reg = nadlan_pro_registry();
+			return array_map( function ( $id ) use ( $reg ) {
+				$p = (string) get_post_meta( $id, 'profession', true );
+				return array( 'id' => (int) $id, 'name' => html_entity_decode( get_the_title( $id ), ENT_QUOTES, 'UTF-8' ),
+					'profession' => $reg[ $p ]['label'] ?? '', 'city' => (string) get_post_meta( $id, 'city', true ) );
+			}, $ids );
+		},
+	) );
+	// give an endorsement or an invitation
+	register_rest_route( 'nadlan/v1', '/endorse', array(
+		'methods' => 'POST', 'permission_callback' => '__return_true',
+		'callback' => function ( WP_REST_Request $req ) {
+			$from = nadlan_endorse_actor( $req );
+			if ( $from <= 0 ) { return new WP_Error( 'auth', 'רק בעל מקצוע רשום יכול לפרגן', array( 'status' => 403 ) ); }
+			$rk = 'nlend_' . $from;
+			$n  = (int) get_transient( $rk );
+			if ( $n >= 20 ) { return new WP_Error( 'rate', 'נסו שוב מאוחר יותר', array( 'status' => 429 ) ); }
+			set_transient( $rk, $n + 1, HOUR_IN_SECONDS );
+			$id = nadlan_endorse_add( $from, (int) $req->get_param( 'to' ), (string) $req->get_param( 'line' ), (array) $req->get_param( 'qualities' ),
+				array( 'name' => (string) $req->get_param( 'invite_name' ), 'profession' => (string) $req->get_param( 'invite_profession' ) ) );
+			if ( is_wp_error( $id ) ) { $id->add_data( array( 'status' => 400 ) ); return $id; }
+			global $wpdb;
+			$tok = (string) $wpdb->get_var( $wpdb->prepare( 'SELECT invite_token FROM ' . nadlan_endorse_table() . ' WHERE id = %d', $id ) );
+			$out = array( 'ok' => 1, 'id' => $id );
+			if ( '' !== $tok ) { $out['join_url'] = add_query_arg( 'inv', $tok, home_url( '/join-pro/' ) ); }
+			return $out;
+		},
+	) );
+	// the receiver hides or shows an endorsement on their own card
+	register_rest_route( 'nadlan/v1', '/endorse/(?P<id>\d+)', array(
+		'methods' => 'POST', 'permission_callback' => '__return_true',
+		'callback' => function ( WP_REST_Request $req ) {
+			$me = nadlan_endorse_actor( $req );
+			global $wpdb;
+			$t   = nadlan_endorse_table();
+			$row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $t WHERE id = %d", (int) $req['id'] ), ARRAY_A );
+			if ( ! $row || ( $me <= 0 && ! current_user_can( 'manage_options' ) ) || ( $me > 0 && (int) $row['to_pro'] !== $me && ! current_user_can( 'manage_options' ) ) ) {
+				return new WP_Error( 'auth', 'אין הרשאה', array( 'status' => 403 ) );
+			}
+			$st = 'hide' === (string) $req->get_param( 'do' ) ? 'hidden' : 'shown';
+			$wpdb->update( $t, array( 'status' => $st, 'decided_at' => gmdate( 'Y-m-d H:i:s' ) ), array( 'id' => (int) $row['id'] ) );
+			return array( 'ok' => 1, 'status' => $st );
+		},
+	) );
+} );
+
+/* backfill: every register contractor gets its trade key, in small cron batches (no page ever waits) */
+add_action( 'nadlan_pro_trade_backfill', function () {
+	$ids = get_posts( array( 'post_type' => 'nadlan_professional', 'post_status' => 'publish', 'numberposts' => 300, 'fields' => 'ids',
+		'meta_query' => array( 'relation' => 'AND', array( 'key' => 'source', 'value' => 'pinkas_hakablanim' ), array( 'key' => 'trade', 'compare' => 'NOT EXISTS' ) ) ) );
+	foreach ( $ids as $id ) {
+		update_post_meta( $id, 'trade', nadlan_pro_trade_from_register( get_post_meta( $id, 'classification', true ) ) );
+	}
+	if ( count( $ids ) === 300 ) { wp_schedule_single_event( time() + 60, 'nadlan_pro_trade_backfill' ); }
+	else { update_option( 'nadlan_pro_trade_backfill_done', gmdate( 'c' ), false ); }
+} );
+add_action( 'init', function () {
+	if ( ! get_option( 'nadlan_pro_trade_backfill_done' ) && ! wp_next_scheduled( 'nadlan_pro_trade_backfill' ) ) {
+		wp_schedule_single_event( time() + 30, 'nadlan_pro_trade_backfill' );
+	}
+}, 40 );

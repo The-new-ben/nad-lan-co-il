@@ -20,10 +20,6 @@ if ( ! function_exists( 'nadlan_breadcrumbs_profession' ) ) {
 			'metavech' => 'מתווכים', 'interior_designer' => 'מעצבי פנים', 'engineer' => 'מהנדסי בניין', 'accountant' => 'רואי חשבון',
 			'surveyor' => 'מודדים', 'property_manager' => 'ניהול נכסים', 'urban_planner' => 'מתכנני ערים',
 		)[ $prof ] ?? '';
-		if ( '' === $label && function_exists( 'nadlan_pro_registry' ) ) {
-			$reg   = nadlan_pro_registry();
-			$label = isset( $reg[ $prof ] ) ? $reg[ $prof ]['plural'] : '';
-		}
 		return '' === $label ? null : array( $label, add_query_arg( 'profession', $prof, home_url( '/professionals/' ) ) );
 	}
 }

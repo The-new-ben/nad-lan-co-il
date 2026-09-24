@@ -1,0 +1,17 @@
+{
+  "released": "1.72.239",
+  "from": "1.72.238",
+  "at": "2026-09-24 15:10:25",
+  "files": {
+    "inc/pro-network.php": "88384b9e154a921867f7541abc42dc46",
+    "inc/directory.php": "ed36b5d8d74d75644a22fd31108a0117",
+    "inc/breadcrumbs.php": "f404be1cd53f5d2023c12a8ef723e4e2",
+    "nadlan-config.php": "3a802a996b85b4f356ced145c61dffe9"
+  },
+  "live_before": {
+    "inc/pro-network.php": "missing",
+    "inc/directory.php": "b1751acaecb39298b63aa6047f29a5ef",
+    "inc/breadcrumbs.php": "e91b822cf18dad2bc9e2a6c2556507b0",
+    "nadlan-config.php": "9b8a0c64f351368e36bcd12c08732bf8"
+  }
+}

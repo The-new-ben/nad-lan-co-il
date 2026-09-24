@@ -70,11 +70,6 @@ if ( ! function_exists( 'nadlan_dir_prof_meta' ) ) {
 		// lookup leaked raw machine enums onto buyer-facing cards (audit 2026-07-06).
 		$all = nadlan_dir_professions_all();
 		if ( isset( $all[ $key ] ) ) { return $all[ $key ]; }
-		// every profession of a home (pro-network.php): a key the directory lists do not know still gets its Hebrew label
-		if ( function_exists( 'nadlan_pro_registry' ) ) {
-			$reg = nadlan_pro_registry();
-			if ( isset( $reg[ $key ] ) ) { return array( 'label' => $reg[ $key ]['label'], 'color' => '#2F6F86', 'soft' => '#EEF4F6', 'icon' => 'profession-contractor' ); }
-		}
 		// never print a machine token; a Hebrew free-text value may pass through
 		$label = ( $key !== '' && ! preg_match( '/^[a-z0-9_\-]+$/', $key ) ) ? $key : 'בעל/ת מקצוע';
 		return array( 'label' => $label, 'color' => '#9C7A3C', 'soft' => '#FBF6EE', 'icon' => 'profession-broker' );
@@ -100,12 +95,7 @@ if ( ! function_exists( 'nadlan_dir_prof_label' ) ) {
 			'surveyor'          => array( 'm' => 'מודד מוסמך', 'f' => 'מודדת מוסמכת' ),
 			'urban_planner'     => array( 'm' => 'מתכנן ערים', 'f' => 'מתכננת ערים' ),
 		);
-		if ( isset( $forms[ $key ][ $g ] ) ) { return $forms[ $key ][ $g ]; }
-		if ( function_exists( 'nadlan_pro_registry' ) ) {
-			$reg = nadlan_pro_registry();
-			if ( isset( $reg[ $key ] ) ) { return 'f' === $g ? $reg[ $key ]['female'] : $reg[ $key ]['label']; }
-		}
-		return $pm['label'];
+		return isset( $forms[ $key ][ $g ] ) ? $forms[ $key ][ $g ] : $pm['label'];
 	}
 }
 
