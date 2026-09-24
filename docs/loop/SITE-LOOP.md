@@ -32,7 +32,8 @@ only inside runners; every release through a runner with drift check, lint, back
 - `worlds.md`: the Sde Dov and Somail tours (three.js, wrong positions) and the Google-tiles "earth" views (true, not
   cinematic, a 401 layer); the 12 Sde Dov and Einstein-axis projects; the find-place data (4,495 places) for a real quarter.
 - `engine-journey.md`, `competitors.md`: the earlier maps.
-- Coming: `hauzd-teardown.md`, `ecocity-cfg-teardown.md`, `tech-stack.md` (background agents).
+- `hauzd-teardown.md` (the facade is the interface: per-unit hover, fly-to, card, plans rail, drone 360 column, walk; our edge: 6 MB vs 659 MB, SEO, data), `tech-stack.md` (pre-render what the buyer looks at, live only what they move through; Blender orbit frames with unit masks; Google 3D view at the floor; Blender 360 rooms; LiveKit).
+- PRIVATE, never in this public repo: EcoCity configurator teardown and all competitor/Google screenshots are in C:/Users/777/nad-lan/_private-research/2026-09-24-rainbow-run/ (Hiway VR: one pre-rendered 6000x3000 360 per room per scheme; drone 360 per floor for the view).
 - ChatGPT Pro deep research on Rainbow's floors and deals: https://chatgpt.com/c/6ab58178-54f8-83eb-848d-1bb86a034149
   (started 24.9.2026 ~22:45). When done, save it as `deep-research-rainbow.md` and use it in items R3 and R8.
 
