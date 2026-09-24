@@ -1,0 +1,13 @@
+{
+  "released": "1.72.234",
+  "from": "1.72.233",
+  "at": "2026-09-24 14:27:55",
+  "files": {
+    "inc/nearby-poi.php": "33585e429c42f9927024352e10518eca",
+    "nadlan-config.php": "e434a334c1b10c2a3a96a6a39df3807b"
+  },
+  "live_before": {
+    "inc/nearby-poi.php": "c218635adfb35f997c851f2f06ccae19",
+    "nadlan-config.php": "11dcfdf17a063f3fdb8a455986f1fc5a"
+  }
+}

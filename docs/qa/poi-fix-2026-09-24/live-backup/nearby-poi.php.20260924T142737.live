@@ -27,49 +27,12 @@ if ( ! function_exists( 'nadlan_poi_dist_m' ) ) {
 	}
 }
 
-if ( ! function_exists( 'nadlan_poi_key' ) ) {
-	function nadlan_poi_key( $lat, $lng, $radius_m ) {
-		return 'nadlan_poi2_' . md5( round( $lat, 4 ) . ',' . round( $lng, 4 ) . ',' . $radius_m );
-	}
-}
-
-/*
- * v3 (24.9.2026): a page never waits on Overpass. The site crawl measured 14.8 s before the first byte on
- * every uncached project page (about 1,000 of them): one mirror refused the server, the other hung until
- * the 14 s timeout, and a failed answer was never cached, so every view paid the full wait again.
- * Now a cache miss queues one background fetch (WP-Cron) and the page renders at once without the layer;
- * the next view has it. A failed fetch opens a 30-minute breaker, and cron asks Overpass at most 6 times
- * a minute.
- */
 if ( ! function_exists( 'nadlan_poi_fetch' ) ) {
 	function nadlan_poi_fetch( $lat, $lng, $radius_m = 1000 ) {
-		$cached = get_transient( nadlan_poi_key( $lat, $lng, $radius_m ) );
+		$bucket = round( $lat, 4 ) . ',' . round( $lng, 4 ) . ',' . $radius_m;
+		$key    = 'nadlan_poi2_' . md5( $bucket );
+		$cached = get_transient( $key );
 		if ( is_array( $cached ) ) { return $cached; }
-		if ( wp_doing_cron() ) { return get_transient( 'nadlan_poi_down' ) ? array() : nadlan_poi_fetch_remote( $lat, $lng, $radius_m ); }
-		if ( ! get_transient( 'nadlan_poi_down' ) ) {
-			$args = array( round( (float) $lat, 4 ), round( (float) $lng, 4 ), (int) $radius_m );
-			if ( ! wp_next_scheduled( 'nadlan_poi_refresh', $args ) ) {
-				wp_schedule_single_event( time() + 5, 'nadlan_poi_refresh', $args );
-			}
-		}
-		return array();
-	}
-}
-
-add_action( 'nadlan_poi_refresh', function ( $lat, $lng, $radius_m ) {
-	if ( get_transient( 'nadlan_poi_down' ) || is_array( get_transient( nadlan_poi_key( $lat, $lng, $radius_m ) ) ) ) { return; }
-	$n = (int) get_transient( 'nadlan_poi_rate' );
-	if ( $n >= 6 ) {
-		wp_schedule_single_event( time() + 90, 'nadlan_poi_refresh', array( $lat, $lng, $radius_m ) );
-		return;
-	}
-	set_transient( 'nadlan_poi_rate', $n + 1, MINUTE_IN_SECONDS );
-	nadlan_poi_fetch_remote( $lat, $lng, $radius_m );
-}, 10, 3 );
-
-if ( ! function_exists( 'nadlan_poi_fetch_remote' ) ) {
-	function nadlan_poi_fetch_remote( $lat, $lng, $radius_m = 1000 ) {
-		$key = nadlan_poi_key( $lat, $lng, $radius_m );
 		$r = (int) $radius_m; $la = (float) $lat; $ln = (float) $lng;
 		$q = '[out:json][timeout:25];('
 			. "nwr(around:$r,$la,$ln)[amenity~\"^(school|kindergarten|pharmacy|hospital|clinic|doctors|cafe|restaurant|community_centre|library)$\"];"
@@ -79,22 +42,16 @@ if ( ! function_exists( 'nadlan_poi_fetch_remote' ) ) {
 			. "nwr(around:$r,$la,$ln)[railway~\"^(station|subway_entrance|tram_stop|halt)$\"];"
 			. ');out tags center 400;';
 		$els = null;
-		// 24.9.2026, measured from the server: overpass-api.de refuses its IP, kumi.systems hangs for the full
-		// timeout, mail.ru answers 504. openstreetmap.fr answered in under a second from outside.
-		foreach ( array( 'https://overpass.openstreetmap.fr/api/interpreter', 'https://overpass-api.de/api/interpreter', 'https://maps.mail.ru/osm/tools/overpass/api/interpreter' ) as $endpoint ) {
+		foreach ( array( 'https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter' ) as $endpoint ) {
 			$res = wp_remote_post( $endpoint, array(
-				'timeout' => 10, 'body' => array( 'data' => $q ),
+				'timeout' => 14, 'body' => array( 'data' => $q ),
 				'headers' => array( 'User-Agent' => 'nadlan-config/2.0 (nad-lan.co.il)' ),
 			) );
 			if ( is_wp_error( $res ) || 200 !== (int) wp_remote_retrieve_response_code( $res ) ) { continue; }
 			$j = json_decode( wp_remote_retrieve_body( $res ), true );
 			if ( is_array( $j ) && isset( $j['elements'] ) ) { $els = $j['elements']; break; }
 		}
-		if ( null === $els ) {
-			// both mirrors failed: no page and no cron run asks again for 30 minutes
-			set_transient( 'nadlan_poi_down', 1, 30 * MINUTE_IN_SECONDS );
-			return array();
-		}
+		if ( null === $els ) { return array(); } // both mirrors down: no caching, retry next view
 		$generic = array(
 			'bus_stop' => 'תחנת אוטובוס', 'park' => 'פארק', 'playground' => 'גן משחקים',
 			'garden' => 'גינה ציבורית', 'pitch' => 'מגרש ספורט', 'kindergarten' => 'גן ילדים',

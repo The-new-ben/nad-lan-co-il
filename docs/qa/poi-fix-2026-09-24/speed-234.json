@@ -1,0 +1,30 @@
+{
+  "before": {
+    "/projects/shikun-binui-sde-dov/": [
+      200,
+      14.83
+    ],
+    "/projects/%D7%94%D7%AA%D7%90%D7%A0%D7%94/": [
+      200,
+      14.81
+    ],
+    "/projects/%D7%9E%D7%9C%D7%9B%D7%99-%D7%A6%D7%93%D7%A7-5-7/": [
+      200,
+      14.78
+    ]
+  },
+  "after": {
+    "/projects/shikun-binui-sde-dov/": [
+      200,
+      1.29
+    ],
+    "/projects/%D7%94%D7%AA%D7%90%D7%A0%D7%94/": [
+      200,
+      1.59
+    ],
+    "/projects/%D7%9E%D7%9C%D7%9B%D7%99-%D7%A6%D7%93%D7%A7-5-7/": [
+      200,
+      2.26
+    ]
+  }
+}
