@@ -98,15 +98,10 @@ const PRESETS = {
 /* Site-local layout (metres). Local -z points to the quarter's grid north, which is turned
    20 degrees east of true north, like the Tel Aviv coast. The sea is to the local west. */
 const GRID_ANGLE = -10 * DEG; // lot 111 is turned 10° east of north (its official outline); the scene follows the lot
-const PLOT = { h: 1.2 };
-/* lot 111's official line (Tel Aviv-Yafo GIS plan layer, "מגרש 111, אשכול, שדה דב", about 8,500 m²) in the scene's frame:
-   metres from the lot's centre, turned with the grid (x = grid east, z = grid south). Long north to south, the north-east
-   corner cut. scripts/project-stage/rainbow_lot_layout.py checks the buildings against it (design system StageLot). */
-const LOT_OUTLINE = [[-30.7, 68.7], [-29.5, -71.7], [19.3, -71.1], [30.7, -61.4], [30.3, 46.6], [22.6, 65.3], [10.1, 75.8]];
+const PLOT = { hx: 52, hz: 40, r: 9, h: 1.2 };
 // y0: first residential floor level above the street (1.2 m courtyard deck + 6.0 m lobby). The approved design plan
-// (10.5.2023): the tower stands in the lot's north-east corner, 39 floors above the entrance, floors 3.5-4.0 m gross.
-// cx, cz: its true point 32.10354, 34.78466 (the point the view and the beam start from); until 1.72.266 it stood ~30 m off
-const TOWER = { cx: 13.2, cz: -44.1, rot: 98 * DEG, A: 16.5, B: 10.8, y0: 7.2, fh: 3.75, floors: 39 };
+// (10.5.2023): the tower stands in the lot's north-east corner, 39 floors above the entrance, floors 3.5-4.0 m gross
+const TOWER = { cx: 33, cz: -21, rot: 98 * DEG, A: 16.5, B: 10.8, y0: 7.2, fh: 3.75, floors: 39 };
 TOWER.roof = TOWER.y0 + TOWER.floors * TOWER.fh;
 const EYE_M = 1.6;             // eye height above a floor level
 const RING_OFF = 4.4;          // the floor ring: offset from the glass line (clears the deepest balcony)
@@ -114,20 +109,17 @@ const RING_OFF = 4.4;          // the floor ring: offset from the glass line (cl
 function floorEyeHeight(n) { return Math.round((TOWER.y0 + (n - 1) * TOWER.fh + EYE_M) * 10) / 10; }
 function normDeg(b) { return ((b % 360) + 360) % 360; }
 const BLOCK_W = 12.5;
-/* the six boutique buildings (the developer's count) lining the streets around the shared courtyard, 9 floors above the
-   entrance, 8 m apart and 12 m from the tower, 5 m back from lot 306 in the west (the design plan). Their exact places are
-   not public: these follow the rules, as an illustration (the caption says so). West column, the south one, the east two. */
 const BLOCKS = [
-  { p0: [-18.5, -62], p1: [-13.5, -53], p2: [-18.5, -44], floors: 9, ph: 0.3 },
-  { p0: [-18.5, -23.3], p1: [-13.5, -14.3], p2: [-18.5, -5.3], floors: 9, ph: 1.7 },
-  { p0: [-18.5, 15.4], p1: [-13.5, 24.4], p2: [-18.5, 33.4], floors: 9, ph: 2.9 },
-  { p0: [-19.4, 60], p1: [-9.4, 55], p2: [0.6, 60], floors: 9, ph: 4.1 },
-  { p0: [21, -10], p1: [16, -1], p2: [21, 8], floors: 9, ph: 5.3 },
-  { p0: [21, 28.7], p1: [16, 37.7], p2: [21, 46.7], floors: 9, ph: 0.9 },
+  { p0: [-13.75, -28.5], p1: [-5, -33.5], p2: [3.75, -28.5], floors: 9, ph: 0.3 },
+  { p0: [-41, -28], p1: [-46, -19], p2: [-41, -10], floors: 8, ph: 1.7 },
+  { p0: [42, 3], p1: [46, 9], p2: [42, 15], floors: 9, ph: 2.9 },
+  { p0: [27.25, 28.5], p1: [35, 33.5], p2: [42.75, 28.5], floors: 8, ph: 4.1 },
+  { p0: [-8.75, 28.5], p1: [-0.5, 33.5], p2: [7.75, 28.5], floors: 9, ph: 5.3 },
+  { p0: [-42.75, 28.5], p1: [-35.5, 33.5], p2: [-28.25, 28.5], floors: 8, ph: 0.9 },
 ];
-/* the waterline, local x: 713 m from the lot's centre (OSM coastline, nearest point at 287°, from the parcel point
-   32.10317, 34.78444; 24.9.2026). Between them the quarter's blocks continue west, then the coastal park, the promenade
-   and the beach. */
+/* the waterline, local x. The tower stands 713 m from the shore (OSM coastline, nearest point at 287°, from the project's
+   parcel coordinates 32.10317, 34.78444; 24.9.2026); the tower is at local x -30, so the shore is at -743. Between them
+   the quarter's blocks continue west, then the coastal park, the promenade and the beach. */
 const COAST_X = -713; // measured from the lot's centre, the scene's origin (the tower now stands in the NE corner)
 const PITCH_X = 128, PITCH_Z = 104;
 
@@ -1274,24 +1266,6 @@ function createEngine(ctx) {
     if (!qpins.length) return;
     const pinned = !!(selected && selected.pinned);
     const shown = [];
-    // Rainbow's tower on screen: no pin may sit on it, in front of it or behind it (the label would seem to name it)
-    let hero = null;
-    {
-      let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9, any = false;
-      const c = Math.cos(TOWER.rot), sn = Math.sin(TOWER.rot);
-      for (let k = 0; k < 12; k++) {
-        const t = (k / 12) * Math.PI * 2, ex = (TOWER.A + 2.2) * Math.cos(t), ez = (TOWER.B + 2.2) * Math.sin(t);
-        for (const y of [0, TOWER.roof + 6]) {
-          localToWorld(TOWER.cx + ex * c - ez * sn, y, TOWER.cz + ex * sn + ez * c, qv);
-          const s = projectToStage(qv);
-          if (s.behind) continue;
-          any = true;
-          x0 = Math.min(x0, s.x); x1 = Math.max(x1, s.x); y0 = Math.min(y0, s.y); y1 = Math.max(y1, s.y);
-        }
-      }
-      // a band above the crown too: a label resting on the roof reads as the tower's own name
-      if (any) hero = { x: x0 - 8, y: y0 - 44, w: x1 - x0 + 16, h: y1 - y0 + 44 };
-    }
     for (const p of qpins) {
       qv.set(p.x, p.y, p.z);
       const a = projectToStage(qv);
@@ -1311,7 +1285,7 @@ function createEngine(ctx) {
     }
     // two pins never cover each other: the nearer one keeps its place, a farther one waits for another angle
     shown.sort((u, v) => u.d - v.d);
-    const kept = hero ? [hero] : [];
+    const kept = [];
     for (const s of shown) {
       if (kept.some((k) => s.x < k.x + k.w + 4 && k.x < s.x + s.w + 4 && s.y < k.y + k.h + 2 && k.y < s.y + s.h + 2)) {
         s.p.el.style.visibility = 'hidden';
@@ -2181,21 +2155,6 @@ function roundRectPoly(cx, cz, w, d, r, seg = 10) {
   }
   return P;
 }
-/* a polygon with its corners eased by a short curve (d metres back along each side); the line is otherwise exact */
-function easeCorners(P, d, seg = 6) {
-  const out = [];
-  for (let i = 0; i < P.length; i++) {
-    const a = P[(i + P.length - 1) % P.length], b = P[i], c = P[(i + 1) % P.length];
-    const la = Math.hypot(a[0] - b[0], a[1] - b[1]), lc = Math.hypot(c[0] - b[0], c[1] - b[1]);
-    const ka = Math.min(d, la * 0.4) / la, kc = Math.min(d, lc * 0.4) / lc;
-    const p0 = [b[0] + (a[0] - b[0]) * ka, b[1] + (a[1] - b[1]) * ka], p2 = [b[0] + (c[0] - b[0]) * kc, b[1] + (c[1] - b[1]) * kc];
-    for (let k = 0; k <= seg; k++) {
-      const t = k / seg, u = 1 - t;
-      out.push([u * u * p0[0] + 2 * u * t * b[0] + t * t * p2[0], u * u * p0[1] + 2 * u * t * b[1] + t * t * p2[1]]);
-    }
-  }
-  return out;
-}
 function rotatePoly(P, cx, cz, rot) {
   const c = Math.cos(rot), s = Math.sin(rot);
   return P.map(([x, z]) => [cx + (x - cx) * c - (z - cz) * s, cz + (x - cx) * s + (z - cz) * c]);
@@ -2460,7 +2419,7 @@ function buildWorld(site, M, U, quarter) {
   for (let i = -4; i <= 4; i++) { // the quarter runs west to the coastal park (i = -4 ends 180 m before the beach)
     for (let j = -4; j <= 4; j++) {
       if (i === 0 && j === 0) continue;
-      const cx = i * PITCH_X, cz = j * PITCH_Z + (i === 0 && j !== 0 ? Math.sign(j) * 24 : 0);
+      const cx = i * PITCH_X, cz = j * PITCH_Z;
       if (i === 0 && j === 1) {
         setCol(ground, C.park);
         addSlab(ground, roundRectPoly(cx, cz, 104, 80, 8, 6), 0, 0.3);
@@ -2489,7 +2448,7 @@ function buildWorld(site, M, U, quarter) {
 
   /* ---------- the plot ---------- */
   setCol(ground, C.plinth);
-  const plotLoop = addSlab(ground, easeCorners(LOT_OUTLINE, 3.2, 8), 0, PLOT.h);
+  const plotLoop = addSlab(ground, roundRectPoly(0, 0, PLOT.hx * 2, PLOT.hz * 2, PLOT.r, 10), 0, PLOT.h);
   // plot outline: a fine engraved line just inside the plinth edge
   setCol(ground, C.outline);
   addLoopRibbon(ground, offsetLoop(plotLoop, -0.9), 0.28, PLOT.h + 0.012);
@@ -2497,10 +2456,11 @@ function buildWorld(site, M, U, quarter) {
   // courtyard lawns
   setCol(ground, C.lawn);
   const Y = PLOT.h;
-  addSlab(ground, roundRectPoly(1, 8, 14, 34, 5, 8), Y, Y + 0.18);
-  addSlab(ground, roundRectPoly(1, 38, 14, 12, 4, 8), Y, Y + 0.18);
-  addSlab(ground, roundRectPoly(-3.5, -49, 8, 14, 3, 8), Y, Y + 0.18);
-  addSlab(ground, rotatePoly(roundRectPoly(1, -16, 12, 5, 2.5, 6), 1, -16, 18 * DEG), Y, Y + 0.18);
+  addSlab(ground, roundRectPoly(22, 11, 21, 12, 5.5, 8), Y, Y + 0.18);
+  addSlab(ground, roundRectPoly(-1, -14, 16, 7, 3.5, 8), Y, Y + 0.18);
+  addSlab(ground, roundRectPoly(46, -36.5, 9, 5, 2.4, 6), Y, Y + 0.18);
+  addSlab(ground, roundRectPoly(-47, 8, 6, 22, 3, 8), Y, Y + 0.18);
+  addSlab(ground, rotatePoly(roundRectPoly(10, -4, 14, 5, 2.5, 6), 10, -4, 18 * DEG), Y, Y + 0.18);
 
   /* ---------- pools ---------- */
   // the two pools stand on the roofs of two boutique buildings (the approved design plan); see after the boutique blocks
@@ -2611,17 +2571,13 @@ function buildWorld(site, M, U, quarter) {
 
   /* ---------- the two roof pools (the approved design plan: pools on the roofs of two boutique buildings; which two is
      not public, so the two southern ones here, as an illustration) ---------- */
-  for (const bi of [3, 5]) {
+  for (const bi of [3, 4]) {
     const bk = BLOCKS[bi];
     const roofY = Y + 4.4 + (bk.floors - 1) * 3.2;
-    // on the centre line's middle, along the building
-    const px = bk.p1[0] * 0.5 + (bk.p0[0] + bk.p2[0]) * 0.25, pz = bk.p1[1] * 0.5 + (bk.p0[1] + bk.p2[1]) * 0.25;
-    const along = Math.abs(bk.p2[0] - bk.p0[0]) >= Math.abs(bk.p2[1] - bk.p0[1]);
-    addPool(water, white, px, pz, along ? 9 : 3.4, along ? 3.4 : 9, 1.1, roofY + 0.05, false);
-    for (let k = 0; k < 4; k++) {
-      if (along) addBox(white, px - 3.9 + k * 2.6, pz + 3.2, 0.8, 1.6, roofY + 0.05, roofY + 0.4, 0);
-      else addBox(white, px + 2.9, pz - 3.9 + k * 2.6, 1.6, 0.8, roofY + 0.05, roofY + 0.4, 0);
-    }
+    const px = (bk.p0[0] + bk.p2[0]) / 2 * 0.35 + bk.p1[0] * 0.65;
+    const pz = (bk.p0[1] + bk.p2[1]) / 2 * 0.35 + bk.p1[1] * 0.65 - 1.2;
+    addPool(water, white, px, pz, 9, 3.4, 1.1, roofY + 0.05, false);
+    for (let k = 0; k < 4; k++) addBox(white, px - 3.9 + k * 2.6, pz - 3.2, 0.8, 2.0, roofY + 0.05, roofY + 0.4, 0);
   }
 
   /* ---------- planters ---------- */
@@ -2643,30 +2599,23 @@ function buildWorld(site, M, U, quarter) {
   /* ---------- trees ---------- */
   const trees = [];
   // courtyard
-  [[-6, -22], [8, -24], [-7, -3], [10, 2], [-7, 20], [10, 22], [-6, 44], [9, 47], [-5, -62], [1, -65], [24, -24], [-20, 46],
-    [12, 60]].forEach(([x, z]) => trees.push({ x, z, y: Y + 0.18, r: 2.1 + rnd() * 0.7, dark: false }));
-  // street trees on the verge around Rainbow's own lot, 4.5 m outside its line, about one every 14 m; the quarter stays clean
-  {
-    const L = LOT_OUTLINE;
-    const inLot = (x, z) => {
-      let c = false;
-      for (let i = 0, j = L.length - 1; i < L.length; j = i++) {
-        const [xi, zi] = L[i], [xj, zj] = L[j];
-        if ((zi > z) !== (zj > z) && x < ((xj - xi) * (z - zi)) / (zj - zi) + xi) c = !c;
-      }
-      return c;
-    };
-    for (let i = 0; i < L.length; i++) {
-      const a = L[i], b = L[(i + 1) % L.length];
-      const dx = b[0] - a[0], dz = b[1] - a[1], len = Math.hypot(dx, dz);
-      if (len < 20) continue;
-      let nx = dz / len, nz = -dx / len;
-      if (inLot((a[0] + b[0]) / 2 + nx, (a[1] + b[1]) / 2 + nz)) { nx = -nx; nz = -nz; }
-      const n = Math.max(1, Math.round((len - 8) / 14));
-      for (let k = 0; k <= n; k++) {
-        const t = (4 + (k * (len - 8)) / n) / len;
-        trees.push({ x: a[0] + dx * t + nx * 4.5, z: a[1] + dz * t + nz * 4.5, y: 0, r: 1.7 + rnd() * 0.4, dark: rnd() < 0.3 });
-      }
+  [[15, -14], [18, -5.5], [12, 16], [33, 16], [27, 3], [15.5, 3.5], [-8, -20], [6, -20.5],
+    [-12, 14.5], [-9, 20], [10, 21], [-44, -21], [-46, -12], [-45, 18], [-19, -34], [47, 22], [48, -20], [-50, 35]].forEach(([x, z]) => trees.push({ x, z, y: Y + 0.18, r: 2.1 + rnd() * 0.7, dark: false }));
+  // street trees around the plot and the neighbouring plates
+  const streetRows = [];
+  streetRows.push([0, 0]);   // street trees only around Rainbow's own plot; the quarter stays clean
+  for (const [cx, cz] of streetRows) {
+    const hx = 52 - 2.4, hz = 40 - 2.4;
+    const onSite = cx === 0 && cz === 0;
+    const yy = onSite ? 0.0 : 0.3;
+    const edgeOffset = onSite ? 5 : 0; // around the plot, trees stand on the street verge outside the plinth
+    for (let x = -hx + 6; x <= hx - 6; x += 14) {
+      trees.push({ x: cx + x, z: cz - hz - edgeOffset, y: yy, r: 1.7 + rnd() * 0.4, dark: rnd() < 0.3 });
+      trees.push({ x: cx + x, z: cz + hz + edgeOffset, y: yy, r: 1.7 + rnd() * 0.4, dark: rnd() < 0.3 });
+    }
+    for (let z = -hz + 8; z <= hz - 8; z += 14) {
+      trees.push({ x: cx - hx - edgeOffset, z: cz + z, y: yy, r: 1.7 + rnd() * 0.4, dark: rnd() < 0.3 });
+      trees.push({ x: cx + hx + edgeOffset, z: cz + z, y: yy, r: 1.7 + rnd() * 0.4, dark: rnd() < 0.3 });
     }
   }
   // pocket park south of the plot
