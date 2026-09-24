@@ -55,7 +55,7 @@ if ( ! function_exists( 'nadlan_premium_catalog_data' ) ) {
 			array(
 				'slug' => 'ashira-sde-dov', 'name' => 'ASHIRA שדה דב', 'dev' => 'אביסרור',
 				'area' => 'רובע שדה דב, מול הים', 'floors' => 35, 'units' => 406, 'delivery' => '2028',
-				'price_note' => 'אומדן אזור: כ-75,000 ₪ למ"ר (מקורות ברשת, לאימות מול היזם)',
+				'price_note' => 'אומדן אזור: כ-75,000 ₪ למ"ר (מדלן, לאימות מול היזם)',
 				'rooms' => array( 2, 3, 4, 5 ), 'sea' => true, 'park' => true, 'marina' => true,
 				'fac' => array( 'בריכה', 'ספא', 'חדר כושר', 'קולנוע', "לאונג'", 'אזורי ילדים', 'חניון', 'ממ"ד' ),
 				'deal' => '4 בניינים במדרוג 8/8/16/35 קומות, תכנון אבנר ישר',

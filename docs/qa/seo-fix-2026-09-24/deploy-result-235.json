@@ -1,0 +1,23 @@
+{
+  "released": "1.72.235",
+  "from": "1.72.234",
+  "at": "2026-09-24 14:46:04",
+  "files": {
+    "inc/bulk-project-seo.php": "1c954cf9aa3ac47b1d737b431295fc2d",
+    "inc/showroom-engine.php": "a75833978bbab4a6919d8ee001a183e3",
+    "inc/premium-catalog.php": "f2d30cf8717bce9244695169a5f8399c",
+    "inc/showroom-support.php": "55f8ae9066f1b660bbbff18528794bcb",
+    "assets/showroom-engine/i18n.js": "9f2504246c71e1c63c0e0716a51c470f",
+    "inc/seo-gaps.php": "fa4e37002c7b96543dc35954ac11f546",
+    "nadlan-config.php": "4b7b59293b968becd8947fc7bb057040"
+  },
+  "live_before": {
+    "inc/bulk-project-seo.php": "05d5f2648758b6dcadb9bea178ef15c6",
+    "inc/showroom-engine.php": "dcaa0c7033c57fa231e1de2c7364a8fb",
+    "inc/premium-catalog.php": "ed02be7d23f246fd026f1a337ee6757f",
+    "inc/showroom-support.php": "3750d13e199bd9adce72e175b7b0bcce",
+    "assets/showroom-engine/i18n.js": "86e3f290d3142a54475d144cf527036f",
+    "inc/seo-gaps.php": "missing",
+    "nadlan-config.php": "e434a334c1b10c2a3a96a6a39df3807b"
+  }
+}

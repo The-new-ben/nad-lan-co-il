@@ -775,7 +775,7 @@ add_action( 'init', function () {
 		array( 'date' => '2025-12-29', 'rooms' => 5, 'sqm' => 116, 'total' => 7070000, 'psqm' => 60948 ),
 		array( 'date' => '2025-12-29', 'rooms' => 5, 'sqm' => 116, 'total' => 7720000, 'psqm' => 66551 ),
 	), JSON_UNESCAPED_UNICODE );
-	$src = 'מבוסס עסקאות מדווחות במגרש 101, מתחם אשכול, שדה דב. אינו מחיר יזם או הצעה. מקור: רשות המסים, עסקאות מדווחות.';
+	$src = 'מבוסס עסקאות מדווחות במגרש 101, מתחם אשכול, שדה דב. אינו מחיר יזם או הצעה. מקור: מדלן/רשות המסים.';
 	$seeded = false;
 	foreach ( $slugs as $slug ) {
 		$p = get_page_by_path( $slug, OBJECT, 'nadlan_project' );
@@ -948,7 +948,7 @@ add_filter( 'the_content', function ( $content ) {
 		}
 	}
 	return '<h1 id="nl-project-page-title" class="screen-reader-text" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;margin:0;padding:0">'
-		. esc_html( function_exists( 'nadlan_bulk_project_display_name' ) ? nadlan_bulk_project_display_name( $pid ) : get_the_title( $pid ) ) . '</h1>'
+		. esc_html( get_the_title( $pid ) ) . '</h1>'
 		. $engine . $prefix . '<div class="nadlan-project-article nadlan-guide">' . $chips . nadlan_showroom_engine_weave( $article, $pid ) . '</div>';
 }, 8 );
 

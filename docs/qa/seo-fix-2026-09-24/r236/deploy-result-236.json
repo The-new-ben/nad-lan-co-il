@@ -1,0 +1,13 @@
+{
+  "released": "1.72.236",
+  "from": "1.72.235",
+  "at": "2026-09-24 14:47:39",
+  "files": {
+    "inc/bulk-project-seo.php": "8ff68fbbe8e66e625e1d7db912af008c",
+    "nadlan-config.php": "227aac8f4f7e5811130ca55cce815103"
+  },
+  "live_before": {
+    "inc/bulk-project-seo.php": "1c954cf9aa3ac47b1d737b431295fc2d",
+    "nadlan-config.php": "4b7b59293b968becd8947fc7bb057040"
+  }
+}

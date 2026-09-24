@@ -50,7 +50,7 @@
     price_pending: "אומדן מחיר ועסקאות השוואה יוצגו עם קבלת נתונים מאומתים.",
     comps_title: "עסקאות שנמכרו באזור", comps_pending: "עסקאות השוואה יוצגו עם קבלת נתונים מאומתים.",
     comps_col_date: "תאריך", comps_col_rooms: "חדרים", comps_col_sqm: "שטח", comps_col_total: "מחיר", comps_col_psqm: "למ\u05F4ר",
-    comps_source: "מקור: רשות המסים, עסקאות מדווחות",
+    comps_source: "מקור: מדלן / רשות המסים",
     /* hero / intent (block 2) */
     hero_eyebrow: "רובע שדה דב · מול הים",
     hero_cta_primary: "השארת פרטים",
@@ -267,7 +267,7 @@
     price_pending: "A price estimate and comparable sales will appear once verified data is available.",
     comps_title: "Recent sales nearby", comps_pending: "Comparable sales will appear once verified data is available.",
     comps_col_date: "Date", comps_col_rooms: "Rooms", comps_col_sqm: "Area", comps_col_total: "Price", comps_col_psqm: "/m\u00B2",
-    comps_source: "Source: Israel Tax Authority, reported deals",
+    comps_source: "Source: Madlan / Israel Tax Authority",
     hero_eyebrow: "Sde Dov district · By the sea",
     hero_cta_primary: "Enquire",
     hero_cta_secondary: "Choose an apartment",
