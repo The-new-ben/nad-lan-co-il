@@ -1,0 +1,15 @@
+{
+  "released": "1.72.238",
+  "from": "1.72.237",
+  "at": "2026-09-24 15:02:29",
+  "files": {
+    "inc/insights.php": "05218dfb418ca1689c5a8a15c50b1856",
+    "inc/placements.php": "6b8b5e2e4cba06d2883dfec2e361859d",
+    "nadlan-config.php": "9b8a0c64f351368e36bcd12c08732bf8"
+  },
+  "live_before": {
+    "inc/insights.php": "missing",
+    "inc/placements.php": "missing",
+    "nadlan-config.php": "2814fb4c3c9690f22bd42728e9de8298"
+  }
+}
