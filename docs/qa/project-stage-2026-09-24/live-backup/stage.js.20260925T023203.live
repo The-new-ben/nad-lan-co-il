@@ -285,24 +285,14 @@ export function mountRainbowStage(container, options = {}) {
   const ready = new Promise((res) => readyCallbacks.push(res));
   const markReady = () => { if (!readyResolved) { readyResolved = true; readyCallbacks.forEach((f) => f()); } };
 
-  // the real city around the building (design system StageCity): its file sits next to this module; without it, the old fill
-  let cityData;
-  function loadCity() {
-    if (cityData !== undefined || opts.city === false) return Promise.resolve(cityData || null);
-    return fetch(new URL('./city.json', import.meta.url).href)
-      .then((r) => (r.ok ? r.json() : null))
-      .catch(() => null)
-      .then((d) => { cityData = d && (Array.isArray(d.b) || Array.isArray(d.lots)) ? d : null; return cityData; });
-  }
   async function start3D() {
     root.classList.remove('rbs--fallback');
     try {
       if (!THREE) {
-        const [three, oc] = await Promise.all([import('three'), import('three/addons/controls/OrbitControls.js'), loadCity()]);
+        const [three, oc] = await Promise.all([import('three'), import('three/addons/controls/OrbitControls.js')]);
         THREE = three;
         OrbitControls = oc.OrbitControls;
-      } else await loadCity();
-      opts.cityData = cityData || null;
+      }
       if (disposed) return;
       engine = createEngine({
         root, canvasWrap, label, labelTitle, labelLine, labelFacing, labelCta, labelClose, leader, hint, facingChip, qpins, qcard,
@@ -485,7 +475,7 @@ function createEngine(ctx) {
 
   /* materials */
   const M = makeMaterials(U);
-  const world = buildWorld(site, M, U, opts.quarter, opts.cityData);
+  const world = buildWorld(site, M, U, opts.quarter);
   scene.updateMatrixWorld(true);
 
   // coast line in world space for the sea shader (point on the waterline + normal towards the sea)
@@ -2396,7 +2386,7 @@ function mulberry32(seed) {
 /* World                                                                                       */
 /* ------------------------------------------------------------------------------------------ */
 
-function buildWorld(site, M, U, quarter, city) {
+function buildWorld(site, M, U, quarter) {
   const col = (h) => new THREE.Color(h);
   const C = {
     base: col('#D0CCC4'), plate: col('#DBD7CF'), plinth: col('#EFEBE4'), deck: col('#F1EDE6'), outline: col('#B7AE9F'),
@@ -2467,33 +2457,7 @@ function buildWorld(site, M, U, quarter, city) {
   }
   const qNear = (cx, cz) => qProj.some((q) => Math.hypot(q.lx - cx, q.lz - cz) < 62);
   const parkCells = [];
-  const real = !!(city && ((city.b && city.b.length) || (city.lots && city.lots.length)));
-  const ptsOf = (a, k) => { const P = []; for (let i = k; i + 1 < a.length; i += 2) P.push([a[i], a[i + 1]]); return P; };
-  const inPoly = (x, z, L) => {
-    let c = false;
-    for (let i = 0, j = L.length - 1; i < L.length; j = i++) {
-      const [xi, zi] = L[i], [xj, zj] = L[j];
-      if ((zi > z) !== (zj > z) && x < ((xj - xi) * (z - zi)) / (zj - zi) + xi) c = !c;
-    }
-    return c;
-  };
-  const planLots = [];
-  if (real) {
-    // the Sde Dov plan's lots (approved design plans) as plates, the planned linear park in the park's colour
-    for (const l of city.lots || []) {
-      const poly = ptsOf(l, 2);
-      if (poly.length < 3) continue;
-      setCol(ground, l[0] === 'park' ? C.park : C.plate);
-      addSlab(ground, poly, 0, l[0] === 'park' ? 0.2 : 0.3);
-      if (l[0] !== 'park') planLots.push(poly);
-    }
-    // the buildings standing today (TLV GIS layer 513), at their recorded heights, in the white model's pale material
-    for (const b of city.b || []) {
-      const poly = ptsOf(b, 3);
-      if (poly.length >= 3 && b[0] > 0) addSlab(ghosts, poly, 0, b[0]);
-    }
-  }
-  for (let i = -4; i <= 4 && !real; i++) { // the quarter runs west to the coastal park (i = -4 ends 180 m before the beach)
+  for (let i = -4; i <= 4; i++) { // the quarter runs west to the coastal park (i = -4 ends 180 m before the beach)
     for (let j = -4; j <= 4; j++) {
       if (i === 0 && j === 0) continue;
       const cx = i * PITCH_X, cz = j * PITCH_Z + (i === 0 && j !== 0 ? Math.sign(j) * 24 : 0);
@@ -2517,10 +2481,8 @@ function buildWorld(site, M, U, quarter, city) {
   for (const q of qProj) {
     const h = Math.max(12, q.floors * 3.3 + 4);
     const tall = q.floors >= 20;
-    if (!planLots.some((L) => inPoly(q.lx, q.lz, L))) {
-      setCol(ground, C.plate);
-      addSlab(ground, roundRectPoly(q.lx, q.lz, 64, 52, 8, 6), 0, 0.55); // a little above the quarter's plates (no flicker)
-    }
+    setCol(ground, C.plate);
+    addSlab(ground, roundRectPoly(q.lx, q.lz, 64, 52, 8, 6), 0, 0.55); // a little above the quarter's plates (no flicker)
     if (tall) { addBox(qmass, q.lx, q.lz, 26, 26, 0.55, h, 0); addBox(qmass, q.lx - 4, q.lz + 16, 44, 14, 0.55, 14, 0); }
     else addBox(qmass, q.lx, q.lz, 44, 26, 0.55, h, 0);
   }

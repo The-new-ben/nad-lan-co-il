@@ -257,8 +257,6 @@
 :root body .nlds .nlps-title{font-family:var(--nlds-font-serif) !important;font-weight:600 !important;font-size:24px !important;line-height:1.25 !important;letter-spacing:-.005em !important;color:var(--nlds-sa-ink) !important;margin:0 !important;text-wrap:balance !important}
 :root body .nlds .nlps-stage{position:relative !important;width:100% !important;height:72vh !important;min-height:420px !important;max-height:760px !important;border-radius:var(--nlds-radius-16) !important;overflow:hidden !important;background:var(--nlds-sa-paper) !important;border:1px solid var(--nlds-sa-line) !important}
 :root body .nlds .nlps-hint{font-size:15px !important;line-height:1.55 !important;color:var(--nlds-sa-ink2) !important;margin:0 !important}
-:root body .nlds .nlps-src{font-size:12.5px !important;line-height:1.5 !important;color:var(--nlds-sa-mute) !important;margin:4px 0 0 !important}
-:root body .nlds .nlps-src span{white-space:nowrap !important}
 :root body .nlds .nlps-view{display:grid !important;gap:var(--nlds-space-12) !important;background:var(--nlds-sa-surf) !important;border:1px solid var(--nlds-sa-line) !important;border-radius:var(--nlds-radius-16) !important;padding:clamp(16px, 2.4vw, 24px) !important}
 :root body .nlds .nlps-view__head{display:grid !important;gap:4px !important}
 :root body .nlds .nlps-view__title{font-family:var(--nlds-font-serif) !important;font-weight:600 !important;font-size:22px !important;line-height:1.25 !important;color:var(--nlds-sa-ink) !important;margin:0 !important}
