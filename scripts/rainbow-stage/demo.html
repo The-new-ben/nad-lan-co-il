@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ריינבו תל אביב · הדמיה</title>
+  <meta name="theme-color" content="#F7F6F2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Noto+Serif+Hebrew:wght@500;600&display=swap">
+  <link rel="stylesheet" href="stage.css" data-rbs-css>
+  <link rel="preload" as="image" href="poster.jpg" fetchpriority="high">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" crossorigin>
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/controls/OrbitControls.js" crossorigin>
+  <style>
+    html, body { margin: 0; height: 100%; background: #F7F6F2; }
+    #rainbow-stage { position: relative; width: 100%; height: 100vh; height: 100svh; }
+  </style>
+</head>
+<body>
+  <div id="rainbow-stage"></div>
+  <script type="module">
+    import { mountRainbowStage } from './stage.js';
+    const q = new URLSearchParams(location.search);
+    const stage = mountRainbowStage(document.getElementById('rainbow-stage'), {
+      preset: q.get('preset') || 'sunset',
+      force3D: q.has('force3d'),
+      ao: q.get('ao') || 'auto',
+      intro: q.get('intro') !== '0',
+      autoOrbit: q.get('orbit') !== '0',
+      debug: q.has('debug'),
+      adaptive: !q.has('nogov'),
+    });
+    window.__rbs = stage;
+    window.addEventListener('nl:floor', (e) => {
+      window.__lastFloorEvent = e.detail;
+      console.log('nl:floor', JSON.stringify(e.detail));
+    });
+  </script>
+</body>
+</html>
