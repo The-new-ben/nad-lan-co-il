@@ -46,7 +46,7 @@ if ( ! function_exists( 'nadlan_prof_meta_of' ) ) {
 /* ---------------- extra profile meta ---------------- */
 if ( ! function_exists( 'nadlan_prof_register_meta' ) ) {
 	function nadlan_prof_register_meta() {
-		foreach ( array( 'specialties_csv' => 'string', 'languages_csv' => 'string', 'bio' => 'string', 'response_time' => 'string', 'meeting_url' => 'string', 'calendar_url' => 'string', 'lat' => 'number', 'lng' => 'number', 'profile_views' => 'integer' ) as $k => $t ) {
+		foreach ( array( 'specialties_csv' => 'string', 'languages_csv' => 'string', 'bio' => 'string', 'response_time' => 'string', 'meeting_url' => 'string', 'lat' => 'number', 'lng' => 'number', 'profile_views' => 'integer' ) as $k => $t ) {
 			register_post_meta( 'nadlan_professional', $k, array(
 				'show_in_rest' => true, 'single' => true, 'type' => $t,
 				'auth_callback' => function ( $a, $m, $pid ) { return current_user_can( 'edit_post', (int) $pid ); },
@@ -55,31 +55,6 @@ if ( ! function_exists( 'nadlan_prof_register_meta' ) ) {
 	}
 }
 add_action( 'init', 'nadlan_prof_register_meta', 15 );
-
-/* ---------------- the professional's own booking page (owner, 24.9.2026: "תיאום מועד ביומן, אולי Calendly") ----------------
- * Checked that day: Calendly's booking page has no Hebrew (English plus seven languages); Google Calendar's booking page
- * is free with a Gmail account and shows in the visitor's own language, Hebrew included. So any https booking link is
- * accepted, Google recommended. With a link, "תיאום סיור" opens it (counted as a tour request in the private insights);
- * without one, the button stays on WhatsApp. The portal's own date band stays off on a broker's card (HAD-249). */
-if ( ! function_exists( 'nadlan_prof_calendar_url' ) ) {
-	function nadlan_prof_calendar_url( $id ) {
-		$u = trim( (string) get_post_meta( (int) $id, 'calendar_url', true ) );
-		return ( '' !== $u && 0 === strpos( $u, 'https://' ) && wp_http_validate_url( $u ) ) ? $u : '';
-	}
-}
-add_action( 'add_meta_boxes_nadlan_professional', function () {
-	add_meta_box( 'nlpp_calendar_box', 'יומן לתיאום סיור', function ( $post ) {
-		wp_nonce_field( 'nlpp_calendar_save', 'nlpp_calendar_nonce' );
-		echo '<p><input type="url" name="nlpp_calendar_url" value="' . esc_attr( (string) get_post_meta( $post->ID, 'calendar_url', true ) ) . '" style="width:100%;direction:ltr" placeholder="https://calendar.app.google/..."></p>';
-		echo '<p class="description">הקישור לדף ההזמנה ביומן של בעל המקצוע. מומלץ דף ההזמנה של יומן Google: חינם, ומוצג בשפה של המבקר, גם בעברית. אפשר גם Calendly, שאין בו עברית ומתאים למשקיעים מחו״ל. בלי קישור, "תיאום סיור" נשאר בוואטסאפ.</p>';
-	}, 'nadlan_professional', 'side', 'default' );
-} );
-add_action( 'save_post_nadlan_professional', function ( $post_id ) {
-	if ( ! isset( $_POST['nlpp_calendar_nonce'] ) || ! wp_verify_nonce( (string) $_POST['nlpp_calendar_nonce'], 'nlpp_calendar_save' ) ) { return; }
-	if ( ! current_user_can( 'edit_post', $post_id ) || wp_is_post_revision( $post_id ) ) { return; }
-	$u = esc_url_raw( trim( wp_unslash( (string) ( $_POST['nlpp_calendar_url'] ?? '' ) ) ), array( 'https' ) );
-	if ( '' === $u ) { delete_post_meta( $post_id, 'calendar_url' ); } else { update_post_meta( $post_id, 'calendar_url', $u ); }
-} );
 
 /* ---------------- brand monogram portrait (design-consistent "generic picture") ---------------- */
 if ( ! function_exists( 'nadlan_prof_monogram_svg' ) ) {
@@ -224,8 +199,7 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 		<div class="nlpp-ctas">
 			<?php if ( $own_wa ) : /* a broker: straight to the broker, never through the portal */ ?>
 				<a class="nlpp-btn nlpp-wa" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $own_wa ); ?>?text=<?php echo rawurlencode( 'שלום ' . $person . ', הגעתי מהכרטיס שלך ב-nad-lan ואשמח לדבר' ); ?>">וואטסאפ</a>
-				<?php $nlpp_cal = nadlan_prof_calendar_url( $id ); if ( '' !== $nlpp_cal ) : /* the broker's own booking page */ ?><a class="nlpp-btn nlpp-tel" target="_blank" rel="noopener" href="<?php echo esc_url( $nlpp_cal ); ?>" data-nl-ev="tour">תיאום סיור</a>
-				<?php else : ?><a class="nlpp-btn nlpp-tel" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $own_wa ); ?>?text=<?php echo rawurlencode( 'שלום ' . $person . ', אשמח לתאם סיור באחד הנכסים שלך (nad-lan.co.il)' ); ?>">תיאום סיור</a><?php endif; ?>
+				<a class="nlpp-btn nlpp-tel" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $own_wa ); ?>?text=<?php echo rawurlencode( 'שלום ' . $person . ', אשמח לתאם סיור באחד הנכסים שלך (nad-lan.co.il)' ); ?>">תיאום סיור</a>
 				<a class="nlpp-btn nlpp-call" href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>">חיוג</a>
 			<?php else : ?>
 				<?php if ( $wa ) : ?><a class="nlpp-btn nlpp-wa" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo rawurlencode( 'היי, אשמח לחיבור אל ' . $name . ' דרך האתר' ); ?>">פנייה בוואטסאפ</a><?php endif; ?>

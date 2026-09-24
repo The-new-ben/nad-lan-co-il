@@ -69,10 +69,8 @@ if ( ! function_exists( 'nadlan_bl_feature_card' ) ) {
 			'site_label' => 'מתווכת' === $role ? 'לעמוד המתווכת' : 'לעמוד המתווך',
 			'line'       => '',
 			'link_attrs' => '',
-			'calendar'   => true, // the broker's own booking page, when there is one, takes the tour button
 		) );
 		$tag    = in_array( $args['name_tag'], array( 'h2', 'h3', 'p' ), true ) ? $args['name_tag'] : 'h3';
-		$cal    = $args['calendar'] && function_exists( 'nadlan_prof_calendar_url' ) ? nadlan_prof_calendar_url( $id ) : '';
 		$brand  = trim( (string) get_post_meta( $id, 'company_name', true ) );
 		$city   = trim( (string) get_post_meta( $id, 'city', true ) );
 		$lic    = trim( (string) get_post_meta( $id, 'license_number', true ) );
@@ -96,8 +94,7 @@ if ( ! function_exists( 'nadlan_bl_feature_card' ) ) {
 		<?php if ( $count > 0 ) : ?><p class="nlds-bfeat__count"><b class="nlds-num"><?php echo (int) $count; ?></b> נכסים</p><?php endif; ?>
 	</div>
 	<div class="nlds-bfeat__cta">
-		<?php if ( '' !== $cal ) : ?><a class="nlds-btn nlds-btn--primary" target="_blank" rel="noopener" href="<?php echo esc_url( $cal ); ?>" data-nl-ev="tour"><span><?php echo esc_html( $args['wa_label'] ); ?></span></a>
-		<?php elseif ( '' !== $wa ) : ?><a class="nlds-btn nlds-btn--primary" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo rawurlencode( (string) $args['wa_text'] ); ?>"<?php echo $args['link_attrs']; // phpcs:ignore ?>><?php echo nlds_icon( 'whatsapp' ); // phpcs:ignore ?><span><?php echo esc_html( $args['wa_label'] ); ?></span></a><?php endif; ?>
+		<?php if ( '' !== $wa ) : ?><a class="nlds-btn nlds-btn--primary" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo rawurlencode( (string) $args['wa_text'] ); ?>"<?php echo $args['link_attrs']; // phpcs:ignore ?>><?php echo nlds_icon( 'whatsapp' ); // phpcs:ignore ?><span><?php echo esc_html( $args['wa_label'] ); ?></span></a><?php endif; ?>
 		<a class="nlds-btn nlds-btn--secondary" href="<?php echo esc_url( $href ); ?>"<?php echo $args['link_attrs']; // phpcs:ignore ?>><span><?php echo esc_html( $args['site_label'] ); ?></span><?php echo nlds_icon( 'forward' ); // phpcs:ignore ?></a>
 	</div>
 </article>

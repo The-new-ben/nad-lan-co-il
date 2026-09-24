@@ -153,7 +153,6 @@ if ( ! function_exists( 'nadlan_pl_card' ) ) {
 			'site_label' => 'לנכסים של ' . $first,
 			'line'       => trim( (string) get_post_meta( $pl, 'pl_headline', true ) ),
 			'link_attrs' => ' data-nl-ev="place_click" data-nl-slot="' . esc_attr( $slot ) . '"',
-			'calendar'   => false, // an advertisement on an article offers a conversation, not a tour
 		) );
 		if ( '' === trim( $inner ) ) { return ''; }
 		// the label is the law: the site is a publisher, and this is the broker's advertisement (name and licence are in the card)
