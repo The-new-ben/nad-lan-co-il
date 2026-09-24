@@ -189,19 +189,52 @@ EXTRA_LISTING = """
 @media (max-width:520px){.nlx .nlx-gallery{columns:1}}
 """
 
+# 24.9.2026: every photo carries srcset + sizes from the sizes WordPress already generated. Before this, a phone downloaded the
+# originals (a 2463 px, 507 KB file for a 262 px column), and once the portal layers stopped pushing her article down, a slow
+# phone pulled the whole gallery early: 4.1 MB instead of about 1 MB. The original stays as src (the full-screen viewer and the
+# structured data keep using it); the browser picks a smaller candidate from srcset.
+MEDIA = {}
+COVER_SIZES = "(max-width: 520px) 70vw, (max-width: 900px) 320px, 520px"
+GALLERY_SIZES = "(max-width: 520px) 70vw, (max-width: 900px) 340px, 240px"
+
+def media_sizes(ids):
+    need = sorted({str(i) for i in ids if i and str(i) not in MEDIA})
+    for n in range(0, len(need), 100):
+        st, r = req("GET", "/wp/v2/media", None, {"include": ",".join(need[n:n + 100]), "per_page": 100, "_fields": "id,source_url,media_details"})
+        for m in (r or []) if st == 200 else []:
+            md = m.get("media_details") or {}
+            W, Hh = md.get("width"), md.get("height")
+            cands = {}
+            for s_ in (md.get("sizes") or {}).values():
+                w, h, u = s_.get("width"), s_.get("height"), s_.get("source_url")
+                if w and h and u and W and Hh and abs(w / h - W / Hh) < 0.01:   # same shape only: no square crops of a wide photo
+                    cands[int(w)] = u
+            if W and m.get("source_url"):
+                cands[int(W)] = m["source_url"]
+            MEDIA[str(m["id"])] = sorted(cands.items())
+
+def srcset_attr(att_id, sizes):
+    c = MEDIA.get(str(att_id)) or []
+    if len(c) < 2:
+        return ""
+    return ' srcset="' + esc(", ".join(u + " " + str(w) + "w" for w, u in c)) + '" sizes="' + sizes + '"'
+
 def build_listing(it, lang, page_id=None):
     T = LANGS[lang]; L = it["id"]; p = plan[L]; cover = p["cover"]; gallery = p["gallery"]
+    media_sizes([cover.get("attachment_id")] + [g.get("attachment_id") for g in gallery])
     s = open(f"{PKG}/listings/{L}/content-{lang}.html", encoding="utf-8").read()
     m = re.search(r'<figure class="nlx-plate[^"]*"[^>]*>.*?</figure>', s, re.S)
     nm = re.search(r'<span class="nlx-plate-name">(.*?)</span>', m.group(0), re.S)
     ar = cover.get("r") or 1.5
     fig = ('<figure class="nlx-plate nlx-plate--photo" style="--nlx-cover-ar:' + ("%.3f" % ar) +
            '"><img src="' + esc(cover["url"]) + '" alt="' + esc(cover["alt"]) + '" width="' + str(cover.get("w") or 1600) +
-           '" height="' + str(cover.get("h") or 1067) + '" loading="eager" decoding="async" fetchpriority="high">' +
+           '" height="' + str(cover.get("h") or 1067) + '"' + srcset_attr(cover.get("attachment_id"), COVER_SIZES) + ' loading="eager" decoding="async" fetchpriority="high">' +
            '<span class="nlx-plate-name">' + (nm.group(1) if nm else it["area"][lang]) + '</span></figure>')
     s = s[:m.start()] + fig + s[m.end():]
     if gallery:
-        figs = "".join('<figure><img src="' + esc(g["url"]) + '" alt="' + esc(g["alt"]) + '" loading="lazy" decoding="async"></figure>' for g in gallery)
+        figs = "".join('<figure><img src="' + esc(g["url"]) + '" alt="' + esc(g["alt"]) + '"'
+                       + ((' width="' + str(g["w"]) + '" height="' + str(g["h"]) + '"') if g.get("w") and g.get("h") else "")
+                       + srcset_attr(g.get("attachment_id"), GALLERY_SIZES) + ' loading="lazy" decoding="async"></figure>' for g in gallery)
         sec_ = ('<section class="nlx-sec" id="photos-' + L + '-' + lang + '"><div class="nlx-sec-head"><p class="nlx-eyebrow">' + T["photos_eyebrow"] + '</p>'
                 '<h2 class="nlx-h2">' + T["photos_h2"] + '</h2></div><div class="nlx-gallery">' + figs + '</div></section>\n')
         a = re.search(r'<div class="nlx-main">\s*', s)

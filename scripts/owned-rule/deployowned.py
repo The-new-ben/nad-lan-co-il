@@ -36,6 +36,8 @@ BAK = ".bak-had251"
 FULL = ["inc/property-owner.php", "inc/catalog-meta.php", "inc/cards-render.php", "inc/claim-prompt.php",
         "inc/breadcrumbs.php", "inc/directory.php", "inc/professional-profile.php"]
 NEW_FILES = {"inc/property-owner.php"}
+if "--only" in ARGS:   # a follow-up release of some of the files (e.g. --only inc/directory.php); nadlan-config.php gets the version bump
+    FULL = [f for f in ARGS[ARGS.index("--only") + 1].split(",") if f in FULL]
 MAIN = "nadlan-config.php"
 MEITAL = 7833
 LICENCE = "3131540"

@@ -32,6 +32,9 @@ if ( ! function_exists( 'nadlan_dir_header_single_h1' ) ) {
 			/* the compat header is plain unstyled text above the real block header - hide it */
 			$fixed = str_replace( '<div id="header" ', '<div id="header" style="display:none" ', $fixed );
 			$fixed = str_replace( '<div id="header">', '<div id="header" style="display:none">', $fixed );
+			/* ...and the compat <hr /> right after it, which drew a stray line and an empty strip above the site header (24.9.2026) */
+			$hr_off = preg_replace( '#(<div id="header" style="display:none"[^>]*>.*?</div>\s*</div>\s*)<hr\s*/?>#su', '$1', $fixed, 1 );
+			if ( null !== $hr_off ) { $fixed = $hr_off; }
 		}
 		echo null !== $fixed ? $fixed : $html;
 	}
@@ -346,7 +349,8 @@ if ( ! function_exists( 'nadlan_dir_sources_lead' ) ) {
 		} else {
 			$list = $last;
 		}
-		return $n( $c['real'] ) . ' בעלי מקצוע, מהם ' . $list . '.';
+		// no grand total here: the results bar counts every published card (sample cards too, HAD-248), and two different totals read as a contradiction
+		return 'במאגר ' . $list . '.';
 	}
 }
 
