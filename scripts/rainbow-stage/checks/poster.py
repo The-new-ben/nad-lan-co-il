@@ -1,9 +1,9 @@
 import time, base64, sys
 from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
-    b = p.chromium.launch(channel="chrome", headless=True, args=["--ignore-gpu-blocklist"])
+    b = p.chromium.launch(channel="chrome", headless=True, args=["--use-angle=d3d11", "--ignore-gpu-blocklist", "--enable-gpu"])
     page = b.new_page(viewport={'width':1440,'height':900})
-    page.goto('http://127.0.0.1:47913/index.html?force3d&ao=on&orbit=0&intro=0')
+    page.goto('http://127.0.0.1:47914/index.html?force3d&ao=on&orbit=0&intro=0')
     page.wait_for_function('window.__rbs && window.__rbs.phase === "orbit"')
     page.wait_for_function('window.__rbs.stats().ao === true', timeout=30000)
     time.sleep(2)

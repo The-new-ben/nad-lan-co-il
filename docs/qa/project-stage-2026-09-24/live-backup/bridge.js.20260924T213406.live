@@ -59,7 +59,6 @@ async function boot() {
     const mod = await import(cfg.stage);
     window.__nlpsStage = mod[cfg.mount](stageEl, {
       preset: 'sunset',
-      poster: cfg.poster || null, // versioned, so a new poster is never hidden behind a cached one
       bearingOffset: Number(cfg.bearingOffset) || 0,
       facingWords: sectors.length ? facingWords : null,
       text: { cta: 'לקבלת תוכניות ומחירים' },
@@ -215,12 +214,8 @@ async function boot() {
         cone = new gl.Marker({ element: el, rotationAlignment: 'map', pitchAlignment: 'map', anchor: 'center' }).setLngLat(lngLat);
       }
       cone.setRotation(norm(bearing)).addTo(map);
-      // the map turns so the chosen way is up, and centres 450 m ahead: the building low in the frame, what lies that way
-      // (the sea, the city) filling the rest, so the beam is read against it
-      const r = norm(bearing) * Math.PI / 180, ahead = 450;
-      const lat = Number(cfg.lat) + (ahead * Math.cos(r)) / 111320;
-      const lng = Number(cfg.lng) + (ahead * Math.sin(r)) / (111320 * Math.cos(Number(cfg.lat) * Math.PI / 180));
-      map.easeTo({ center: [lng, lat], zoom: 14.3, bearing: norm(bearing), pitch: 0, duration: 900 });
+      // the map turns so the chosen way is up, the building in the middle and what lies that way ahead of it
+      map.easeTo({ center: lngLat, zoom: 14.6, bearing: norm(bearing), duration: 900 }); // 14.6: the coast and the city are in the frame
     } catch (e) {}
   }
 }

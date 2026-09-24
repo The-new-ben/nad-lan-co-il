@@ -74,7 +74,7 @@ const PRESETS = {
     envZenith: '#AFC3D6', envHorizon: '#E6DCCF',
     groundEnv: '#BFAE95',
     sea: '#1F5A70', seaShallow: '#5E9FA2', sparkle: 1.0,
-    exposure: 0.95, fog: 1 / 6500,
+    exposure: 0.95, fog: 1 / 3300,
   },
   noon: {
     sunAz: 158, sunEl: 60, sunColor: '#FFF4E6', sunI: 3.9,
@@ -85,7 +85,7 @@ const PRESETS = {
     envZenith: '#A9C3DA', envHorizon: '#E0E6E8',
     groundEnv: '#CFC6B6',
     sea: '#236D8E', seaShallow: '#6DB4B7', sparkle: 0.55,
-    exposure: 0.8, fog: 1 / 7000,
+    exposure: 0.8, fog: 1 / 3600,
   },
 };
 
@@ -110,10 +110,7 @@ const BLOCKS = [
   { p0: [-8.75, 28.5], p1: [-0.5, 33.5], p2: [7.75, 28.5], floors: 9, ph: 5.3 },
   { p0: [-42.75, 28.5], p1: [-35.5, 33.5], p2: [-28.25, 28.5], floors: 8, ph: 0.9 },
 ];
-/* the waterline, local x. The tower stands 713 m from the shore (OSM coastline, nearest point at 287°, from the project's
-   parcel coordinates 32.10317, 34.78444; 24.9.2026); the tower is at local x -30, so the shore is at -743. Between them
-   the quarter's blocks continue west, then the coastal park, the promenade and the beach. */
-const COAST_X = -743;
+const COAST_X = -172;          // waterline (local x)
 const PITCH_X = 128, PITCH_Z = 104;
 
 let cssInjected = false;
@@ -485,15 +482,14 @@ function createEngine(ctx) {
     const vf = camera.fov * DEG;
     const hf = 2 * Math.atan(Math.tan(vf / 2) * camera.aspect);
     const halfW = camera.aspect < 1 ? 58 : 92;
-    return (HERO.dist || 1) * Math.max(118 / Math.tan(vf / 2), halfW / Math.tan(hf / 2));
+    return Math.max(118 / Math.tan(vf / 2), halfW / Math.tan(hf / 2));
   }
   function heroTargetFor(aspect, out) {
     // portrait stages centre on the tower itself; landscape keeps the courtyard in frame
     const k = Math.min(1, Math.max(0, (aspect - 0.6) / 0.6));
     return localToWorld(TOWER.cx + 5 + 11 * k, 70 - 6 * k, TOWER.cz + 3 + 5 * k, out);
   }
-  // from the south-south-east, a little higher and further: the tower, the quarter, and the sea as a band on the horizon
-  const HERO = { bearing: 170, elev: 16, dist: 1.2 };
+  const HERO = { bearing: 188, elev: 10 };
   const INTRO = { bearing: 142, elev: 42, distMul: 2.35 };
   heroTargetFor(1.6, heroTarget);
 
@@ -2197,10 +2193,10 @@ function buildWorld(site, M, U) {
   strip(COAST_X + 40, COAST_X + 54, 0.45, C.prom);
   // coastal park plate (the column west of the site)
   setCol(ground, C.park);
-  addBox(ground, COAST_X + 75, 0, 42, 14000, 0, 0.16, 0);
+  addBox(ground, -97, 0, 42, 14000, 0, 0.16, 0);
   // park paths
   setCol(ground, C.path);
-  for (const [x0, amp, ph] of [[COAST_X + 68, 3, 0], [COAST_X + 84, 2.5, 1.7]]) {
+  for (const [x0, amp, ph] of [[-104, 3, 0], [-88, 2.5, 1.7]]) {
     const P = [];
     for (let i = 0; i <= 120; i++) {
       const z = -1400 + i * (2800 / 120);
@@ -2217,7 +2213,7 @@ function buildWorld(site, M, U) {
 
   /* ---------- quarter: block plates + ghost volumes ---------- */
   const parkCells = [];
-  for (let i = -4; i <= 4; i++) { // the quarter runs west to the coastal park (i = -4 ends 180 m before the beach)
+  for (let i = 0; i <= 4; i++) {
     for (let j = -4; j <= 4; j++) {
       if (i === 0 && j === 0) continue;
       const cx = i * PITCH_X, cz = j * PITCH_Z;
@@ -2420,7 +2416,7 @@ function buildWorld(site, M, U) {
   }
   // coastal park groves
   for (let k = 0; k < 40; k++) {
-    const x = COAST_X + 58 + rnd() * 34, z = -300 + rnd() * 600;
+    const x = -114 + rnd() * 34, z = -300 + rnd() * 600;
     trees.push({ x, z, y: 0.35, r: 2.3 + rnd() * 1.1, dark: rnd() < 0.5 });
   }
   {

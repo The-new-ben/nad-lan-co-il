@@ -144,7 +144,6 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 		foreach ( (array) $ps['sectors'] as $s ) { $sec[] = array( (float) $s[0], (float) $s[1], (string) $s[2] ); }
 		$cfg = array(
 			'stage'         => plugins_url( 'assets/project-stage/' . $ps['dir'] . '/stage.js', dirname( __FILE__ ) ) . '?ver=' . nadlan_ps_ver(),
-			'poster'        => plugins_url( 'assets/project-stage/' . $ps['dir'] . '/poster.jpg', dirname( __FILE__ ) ) . '?ver=' . nadlan_ps_ver(),
 			'mount'         => (string) $ps['mount'],
 			'bearingOffset' => (float) $ps['bearing_offset'],
 			'lat'           => (float) get_post_meta( $id, 'lat', true ),
@@ -239,8 +238,7 @@ add_action( 'wp_head', function () {
 	if ( ! nadlan_ps_current() ) { return; }
 	echo "\n" . '<script type="importmap" id="nadlan-ps-importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>' . "\n";
 	echo '<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" crossorigin>' . "\n";
-	$ps = nadlan_ps_current();
-	echo '<link rel="preload" as="image" href="' . esc_url( plugins_url( 'assets/project-stage/' . $ps['dir'] . '/poster.jpg', dirname( __FILE__ ) ) . '?ver=' . nadlan_ps_ver() ) . '">' . "\n";
+	echo '<link rel="preload" as="image" href="' . esc_url( plugins_url( 'assets/project-stage/rainbow/poster.jpg', dirname( __FILE__ ) ) ) . '">' . "\n";
 }, 1 );
 
 add_action( 'wp_footer', function () {
