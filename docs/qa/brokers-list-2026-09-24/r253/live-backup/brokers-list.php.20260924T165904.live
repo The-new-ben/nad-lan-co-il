@@ -153,18 +153,13 @@ if ( ! function_exists( 'nadlan_bl_html' ) ) {
 	<?php foreach ( $b['rest'] as $c => $list ) : ?>
 	<section class="nlbl-city" id="<?php echo esc_attr( $slug( $c ) ); ?>" aria-label="<?php echo esc_attr( 'מתווכים ב' . $c ); ?>">
 		<h2 class="nlbl-city__title">מתווכים ב<?php echo esc_html( $c ); ?></h2>
-		<div class="nlds-dgrid"><?php foreach ( array_slice( $list, 0, 6 ) as $id ) { echo nadlan_bl_card( $id ); } // phpcs:ignore ?></div>
-		<?php if ( count( $list ) > 6 ) : /* six per city, the rest open in place (the page ran 34,000px on a phone); all of them stay in the page */ ?>
-		<details class="nlbl-more"><summary class="nlds-btn nlds-btn--quiet"><?php echo esc_html( 'עוד ' . ( count( $list ) - 6 ) . ' מתווכים ב' . $c ); ?></summary>
-			<div class="nlds-dgrid"><?php foreach ( array_slice( $list, 6 ) as $id ) { echo nadlan_bl_card( $id ); } // phpcs:ignore ?></div>
-		</details>
-		<?php endif; ?>
+		<div class="nlds-dgrid"><?php foreach ( $list as $id ) { echo nadlan_bl_card( $id ); } // phpcs:ignore ?></div>
 	</section>
 	<?php endforeach; ?>
 	<?php endif; ?>
 	<p class="nlbl-source">המקור: פנקס המתווכים של משרד המשפטים, לפי מספר הרישיון. מתווך שרוצה לעדכן את הכרטיס שלו: הכפתור "פתיחת האתר בחינם" בכרטיס.</p>
 </div>
-<style id="nadlan-brokers-list">:root body .nlbl{display:grid!important;gap:var(--nlds-space-22)!important;margin-block-end:40px!important}:root body .nlbl .nlbl-feat{display:grid!important;gap:var(--nlds-space-16)!important}:root body .nlbl .nlbl-cities{margin-block:4px!important}:root body .nlbl .nlbl-city{display:grid!important;gap:var(--nlds-space-14)!important;scroll-margin-top:90px}:root body .nlbl .nlbl-city__title{font-family:var(--nlds-font-serif)!important;font-weight:600!important;font-size:24px!important;line-height:1.2!important;letter-spacing:normal!important;color:var(--nlds-sa-ink)!important;margin:10px 0 0!important}:root body .nlbl .nlbl-more summary{list-style:none;cursor:pointer;justify-self:start}:root body .nlbl .nlbl-more summary::-webkit-details-marker{display:none}:root body .nlbl .nlbl-more[open] summary{margin-bottom:14px}:root body .nlbl .nlbl-source{font-size:13px!important;line-height:1.5!important;color:var(--nlds-sa-ink2)!important}:root body .nlbl .nlds-pagehead__lead a{color:var(--nlds-sa-sea)!important;font-weight:600!important;text-decoration:underline;text-underline-offset:3px}</style>
+<style id="nadlan-brokers-list">:root body .nlbl{display:grid!important;gap:var(--nlds-space-22)!important;margin-block-end:40px!important}:root body .nlbl .nlbl-feat{display:grid!important;gap:var(--nlds-space-16)!important}:root body .nlbl .nlbl-cities{margin-block:4px!important}:root body .nlbl .nlbl-city{display:grid!important;gap:var(--nlds-space-14)!important;scroll-margin-top:90px}:root body .nlbl .nlbl-city__title{font-family:var(--nlds-font-serif)!important;font-weight:600!important;font-size:24px!important;line-height:1.2!important;letter-spacing:normal!important;color:var(--nlds-sa-ink)!important;margin:10px 0 0!important}:root body .nlbl .nlbl-source{font-size:13px!important;line-height:1.5!important;color:var(--nlds-sa-ink2)!important}:root body .nlbl .nlds-pagehead__lead a{color:var(--nlds-sa-sea)!important;font-weight:600!important;text-decoration:underline;text-underline-offset:3px}</style>
 		<?php
 		return ob_get_clean();
 	}
