@@ -1,0 +1,31 @@
+{
+ "yoast": {
+  "_yoast_wpseo_primary_nadlan_city": "",
+  "_yoast_wpseo_content_score": "30",
+  "_yoast_wpseo_estimated-reading-time-minutes": "17",
+  "_yoast_wpseo_title": "ריינבו תל אביב Rainbow - ישראל קנדה, שדה דב | מחירים ודירות | נדלן",
+  "_yoast_wpseo_metadesc": "Rainbow Tel Aviv - ריינבו תל אביב בשדה דב: מחירים מדווחים ואומדן לא מחייב, בחירת דירה בתלת ממד, תוכניות, מבט מהדירה וליווי בדיקה לפני פנייה ליזם.",
+  "_yoast_wpseo_focuskw": "ריינבו תל אביב מחיר",
+  "_yoast_wpseo_primary_nadlan_compound": "25",
+  "_yoast_wpseo_linkdex": "63",
+  "_yoast_wpseo_opengraph-image": "https://nad-lan.co.il/wp-content/uploads/2026/07/rainbow-showroom-hero-v1664.jpg",
+  "_yoast_wpseo_twitter-image": "https://nad-lan.co.il/wp-content/uploads/2026/07/rainbow-showroom-hero-v1664.jpg"
+ },
+ "photos_csv": "https://nad-lan.co.il/wp-content/uploads/2026/06/rainbow-tel-aviv-hero.jpg,https://nad-lan.co.il/wp-content/uploads/2026/06/rainbow-tel-aviv-amenities.jpg,https://nad-lan.co.il/wp-content/uploads/2026/06/rainbow-tel-aviv-location.jpg",
+ "thumbnail": 5099,
+ "thumb_url": "https://nad-lan.co.il/wp-content/uploads/2026/07/rainbow-tel-aviv-plate-v3.webp",
+ "plate_id": 5099,
+ "indexable": {
+  "id": "3815",
+  "description": "Rainbow Tel Aviv - ריינבו תל אביב בשדה דב: מחירים מדווחים ואומדן לא מחייב, בחירת דירה בתלת ממד, תוכניות, מבט מהדירה וליווי בדיקה לפני פנייה ליזם.",
+  "open_graph_description": null,
+  "open_graph_image": "https://nad-lan.co.il/wp-content/uploads/2026/07/rainbow-showroom-hero-v1664.jpg",
+  "open_graph_image_id": null,
+  "open_graph_image_source": "set-by-user",
+  "open_graph_image_meta": null,
+  "twitter_description": null,
+  "twitter_image": "https://nad-lan.co.il/wp-content/uploads/2026/07/rainbow-showroom-hero-v1664.jpg",
+  "twitter_image_id": null,
+  "twitter_image_source": "set-by-user"
+ }
+}

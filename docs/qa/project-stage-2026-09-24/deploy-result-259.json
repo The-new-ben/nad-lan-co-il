@@ -1,0 +1,15 @@
+{
+  "released": "1.72.259",
+  "from": "1.72.258",
+  "at": "2026-09-24 23:37:06",
+  "files": {
+    "inc/project-stage.php": "4e1372161a0c03ae3d5311472933e665",
+    "assets/nlds/nlds.css": "a6b42937c1270b5103156f678131c9ed",
+    "nadlan-config.php": "e8089b64a2a55d0cefe57d89462b5f34"
+  },
+  "live_before": {
+    "inc/project-stage.php": "7387dd47912702c13dbb92c6c4734209",
+    "assets/nlds/nlds.css": "45410847286031800da54b3158b3fe91",
+    "nadlan-config.php": "d7c0b5b5211213ff9cdf5ce99e85b7fc"
+  }
+}

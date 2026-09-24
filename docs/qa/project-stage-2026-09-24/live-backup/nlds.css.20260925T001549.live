@@ -323,17 +323,6 @@
 :root body .nlds .nlprog__step b{color:var(--nlds-sa-ink) !important;font-weight:700 !important}
 :root body .nlds .nlprog__step.is-now b{color:var(--nlds-sa-sea) !important}
 :root body .nlds .nlps-lead{font-size:17px !important;line-height:1.75 !important;color:var(--nlds-sa-ink) !important;max-width:76ch !important;margin:0 !important;text-wrap:pretty !important}
-:root body .nlds .nlps-page{display:grid !important;grid-template-columns:minmax(300px, 380px) minmax(0, 1fr) 260px !important;grid-template-areas:"hero stage rail" "lead stage rail" "cta stage rail" "facts facts facts" "below below below" !important;grid-template-rows:auto auto 1fr !important;column-gap:var(--nlds-space-22) !important;row-gap:var(--nlds-space-14) !important;align-items:start !important}
-:root body .nlds .nlps-page > .nlps-hero{grid-area:hero !important}
-:root body .nlds .nlps-page > .nlps-lead{grid-area:lead !important;font-size:16.5px !important;max-width:none !important}
-:root body .nlds .nlps-page > .nlps-hero__cta{grid-area:cta !important;margin-top:0 !important}
-:root body .nlds .nlps-page > .nlps-hero__cta .nlds-btn{flex:1 1 auto !important;justify-content:center !important}
-:root body .nlds .nlps-page > .nlps-stagebox{grid-area:stage !important}
-:root body .nlds .nlps-page > .nlps-rail{grid-area:rail !important}
-:root body .nlds .nlps-page > .nlps-facts{grid-area:facts !important;display:grid !important;gap:var(--nlds-space-12) !important;margin-top:var(--nlds-space-10) !important}
-:root body .nlds .nlps-page > .nlps-below{grid-area:below !important;margin-top:var(--nlds-space-10) !important}
-:root body .nlds .nlps-page .nlps-stage{height:clamp(520px, calc(100svh - 240px), 700px) !important;max-height:none !important}
-:root body .nlds .nlps-page .nlps-rail .nlbslot{min-height:0 !important}
 /* site layer */
 :root body .nlds{font-size:16px !important}
 :root body .nlds :is(p, a, span, b, strong, em, i, small, time, label, li){font-family:inherit !important}
@@ -378,10 +367,6 @@
 :root body .nlds .nlprog__step{font-size:12px !important}
 :root body .nlds .nlps-hero__cta .nlds-btn{flex:1 !important;min-height:var(--nlds-tap-target) !important;padding:0 12px !important;font-size:15px !important}
 :root body .nlds .nlps-lead{font-size:16px !important}
-:root body .nlds .nlps-page{grid-template-columns:minmax(0, 1fr) !important;grid-template-areas:"hero" "cta" "stage" "lead" "facts" "below" "rail" !important;column-gap:0 !important}
-:root body .nlds .nlps-page .nlps-stage{height:70svh !important;min-height:360px !important}
-:root body .nlds .nlps-page > .nlps-lead{font-size:16px !important}
-:root body .nlds .nlps-page > .nlps-rail{grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;gap:var(--nlds-space-12) !important}
 :root body .nlds .nlds-bfeat:has(> .nlds-bfeat__cta){grid-template-rows:none !important;row-gap:var(--nlds-space-14) !important}
 :root body .nlds .nlds-bfeat:has(> .nlds-bfeat__cta) > .nlds-bfeat__portrait{grid-row:auto !important;align-self:start !important}
 :root body .nlds .nlds-bfeat > .nlds-bfeat__cta{grid-column:1 / -1 !important;padding-top:0 !important}

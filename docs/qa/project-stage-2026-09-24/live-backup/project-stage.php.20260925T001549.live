@@ -9,13 +9,9 @@
  *
  *  - The page's one h1 (inc/showroom-engine.php prints it for machines only) becomes the visible title, with the developer
  *    and the quarter under it, right before the lead paragraph.
- *  - The building is in the first fold (design system version 14, 25.9.2026): one grid, where on a wide screen the text
- *    column (title, lead, the two buttons), the project's stage and the side rail stand side by side, and on a phone the
- *    stage comes right after the title and the buttons. The stage is a three.js scene of the project's buildings
- *    (assets/project-stage/<dir>/stage.js): the visitor picks a floor, then a point on that floor's ring, a direction. The
- *    rail holds a professional's square (an advertisement, labelled) and the empty square that invites professionals.
- *  - Then six sourced facts and where the project stands (the older progress band and the card's facts table are not
- *    printed on these pages: one of each).
+ *  - Under the lead: the project's stage (a three.js scene of its buildings, assets/project-stage/<dir>/stage.js). The
+ *    visitor picks a floor, then a point on that floor's ring: a direction. A side rail holds a professional's square
+ *    (an advertisement, labelled) and the empty square that invites professionals.
  *  - Under the stage, side by side: the view from there (assets/project-stage/bridge.js: satellite with 3D buildings, the
  *    camera at the floor's estimated height) and the area map (#nlpjx-map), moved up from the bottom of the page; a beam
  *    on it turns to the chosen direction, so the direction is read against the sea, the city and the buildings. The
@@ -55,17 +51,14 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 				'facts'          => array(
 					array( 'מיקום', 'רובע שדה דב', 'צפון תל אביב, כ-700 מ׳ מהים' ),
 					array( 'בניינים', 'מגדל 39 קומות', 'ובנייני בוטיק בני 9 קומות' ),
-					// 275 of 459 sold by the developer's H1 2026 report (Globes 27.8.2026, docs/research/.../deep-research-rainbow.md)
-					array( 'דירות', '459', '275 מהן נמכרו עד 6.2026, לפי דוחות היזם' ),
+					array( 'דירות', '459', 'לפי היזם; 480 בתכנית שאושרה' ),
 					array( 'תמהיל', '2 עד 5 חדרים', 'ופנטהאוזים, לפי השיווק' ),
 					array( 'מחיר ממוצע', 'כ-81,800 ₪ למ״ר', 'דוחות היזם, עד 3.2026' ),
 					array( 'מצב', 'בבנייה', 'אכלוס צפוי ב-2030' ),
 				),
-				// ProjectProgress: done, now, next (the design plan: decided 10.5.2023 subject to conditions, approved 17.1.2024 per
-				// the municipality; the full permit 10.2025; occupancy per the project site, the last phase about mid 2030 per
-				// Ashtrom's execution contract)
+				// ProjectProgress: done, now, next (the design plan 10.5.2023; the full permit 10.2025; occupancy per the project site)
 				'progress'       => array(
-					array( 'תכנון', 'תכנית עיצוב 1.2024', 'done' ),
+					array( 'תכנון', 'תכנית עיצוב 5.2023', 'done' ),
 					array( 'היתר בנייה', '10.2025', 'done' ),
 					array( 'בבנייה', 'עכשיו', 'now' ),
 					array( 'אכלוס', 'צפוי ב-2030', 'next' ),
@@ -185,17 +178,15 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 			'sectors'       => $sec,
 		);
 		$hero = '';
-		$cta  = '';
 		if ( '' !== $h1 ) {
 			$en   = (string) ( $ps['name_en'] ?? '' );
-			// the kicker is a div, so the lead stays the first paragraph after the h1 (the recipe, row 5)
 			$hero = '<header class="nlds nlps-herowrap" dir="rtl" lang="he"><div class="nlps-hero">'
 				. '<h1 id="nl-project-page-title" class="nlps-h1">' . esc_html( $ps['name'] ) . ( '' !== $en ? ' <span class="nlps-h1__en" lang="en">' . esc_html( $en ) . '</span>' : '' ) . '</h1>'
-				. ( ! empty( $ps['developer'] ) || ! empty( $ps['place'] ) ? '<div class="nlps-kicker">' . ( ! empty( $ps['developer'] ) ? '<b>' . esc_html( $ps['developer'] ) . '</b>' : '' ) . ( ! empty( $ps['developer'] ) && ! empty( $ps['place'] ) ? ' · ' : '' ) . esc_html( (string) ( $ps['place'] ?? '' ) ) . '</div>' : '' )
-				. '</div></header>';
-			$cta  = '<div class="nlds nlps-ctawrap" dir="rtl" lang="he"><div class="nlps-hero__cta">'
+				. ( ! empty( $ps['developer'] ) || ! empty( $ps['place'] ) ? '<p class="nlps-kicker">' . ( ! empty( $ps['developer'] ) ? '<b>' . esc_html( $ps['developer'] ) . '</b>' : '' ) . ( ! empty( $ps['developer'] ) && ! empty( $ps['place'] ) ? ' · ' : '' ) . esc_html( (string) ( $ps['place'] ?? '' ) ) . '</p>' : '' )
+				. '<div class="nlps-hero__cta">'
 				. ( '' !== $wa ? '<a class="nlds-btn nlds-btn--primary" target="_blank" rel="noopener" data-nlps-ev="hero-wa" href="https://wa.me/' . esc_attr( $wa ) . '?text=' . rawurlencode( 'שלום, אשמח לקבל תוכניות ומחירים ב' . $ps['name'] . ' (nad-lan.co.il)' ) . '">' . ( function_exists( 'nlds_icon' ) ? nlds_icon( 'whatsapp' ) : '' ) . '<span>לקבלת תוכניות ומחירים</span></a>' : '' )
-				. '<a class="nlds-btn nlds-btn--secondary" href="#nlps-t" data-nlps-ev="hero-pick"><span>לבחירת קומה</span></a></div></div>';
+				. '<a class="nlds-btn nlds-btn--secondary" href="#nlps-t" data-nlps-ev="hero-pick"><span>לבחירת קומה</span></a></div>'
+				. '</div></header>';
 		}
 		$rail = '';
 		foreach ( (array) ( $ps['rail'] ?? array() ) as $pid ) { $rail .= nadlan_ps_square( $pid, $ps ); }
@@ -208,13 +199,14 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 			. ( '' !== $wa ? '<a class="nlds-btn nlds-btn--primary" id="nlps-wa" target="_blank" rel="noopener" href="https://wa.me/' . esc_attr( $wa ) . '">' . ( function_exists( 'nlds_icon' ) ? nlds_icon( 'whatsapp' ) : '' ) . '<span>לקבלת תוכניות ומחירים</span></a>' : '' )
 			. ( '' !== $map ? '<a class="nlds-btn nlds-btn--secondary" id="nlps-tomap" href="#nlpjx-map"><span>הכיוון על המפה</span></a>' : '' ) . '</div>'
 			. '</div></div>';
-		// the stage keeps a section heading for the page's outline (h1, then this h2), read by screen readers only: on the
-		// page itself the stage sits next to the title, which says it all
-		$stagebox = '<div class="nlps-stagebox"><h2 class="nlps-srt" id="nlps-t">סיור וירטואלי: הקומות והנוף</h2>'
-			. '<section class="nlps-stage" id="nlps" aria-labelledby="nlps-t" data-cfg="' . esc_attr( wp_json_encode( $cfg ) ) . '"><div class="nlps-stage__mount" id="nlps-stage"></div></section>'
-			. '<div class="nlds"><p class="nlps-hint" id="nlps-hint">בחרו קומה במגדל, ואחר כך נקודה בטבעת הקומה כדי לבחור כיוון.</p></div></div>';
-		$rail  = '<aside class="nlps-rail" aria-label="אנשי מקצוע באזור">' . $rail . '</aside>';
-		$below = '<div class="nlps-below' . ( '' === $map ? ' nlps-below--solo' : '' ) . '">' . $view . $map . '</div>';
+		$shell = '<div class="nlps-shell" dir="rtl" lang="he">'
+			. '<div class="nlds"><h2 class="nlps-title" id="nlps-t">הקומות והנוף</h2></div>'
+			. '<div class="nlps-layout">'
+			. '<div class="nlps-stagebox"><section class="nlps-stage" id="nlps" aria-labelledby="nlps-t" data-cfg="' . esc_attr( wp_json_encode( $cfg ) ) . '"><div class="nlps-stage__mount" id="nlps-stage"></div></section>'
+			. '<div class="nlds"><p class="nlps-hint" id="nlps-hint">בחרו קומה במגדל, ואחר כך נקודה בטבעת הקומה כדי לבחור כיוון.</p></div></div>'
+			. '<aside class="nlps-rail" aria-label="אנשי מקצוע באזור">' . $rail . '</aside>'
+			. '<div class="nlps-below' . ( '' === $map ? ' nlps-below--solo' : '' ) . '">' . $view . $map . '</div>'
+			. '</div></div>';
 		$facts = '';
 		if ( ! empty( $ps['facts'] ) || ! empty( $ps['progress'] ) ) {
 			$facts = '<div class="nlds nlps-factswrap" dir="rtl" lang="he">';
@@ -235,7 +227,7 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 			}
 			$facts .= '</div>';
 		}
-		return array( 'hero' => $hero, 'cta' => $cta, 'stagebox' => $stagebox, 'rail' => $rail, 'facts' => $facts, 'below' => $below );
+		return array( 'hero' => $hero, 'facts' => $facts, 'shell' => $shell );
 	}
 }
 
@@ -270,14 +262,18 @@ if ( ! function_exists( 'nadlan_ps_compose' ) ) {
 		if ( '' === $h1 && false === stripos( substr( $html, $b ), '<h1' ) ) { return $html; } // never leave the page without its h1
 		// the price band's note pointed down to the map; the map is now above it (and "המפה החיה" is off the word list)
 		$html = str_replace( 'כל המחירים, המוסדות והתוכניות - על המפה החיה למטה ←', 'כל המחירים, המוסדות והתוכניות על מפת האזור ←', $html );
-		// the non-affiliation notice is not moved: the owner's order of 29.8.2026 keeps it out of the snippet zone, opening
-		// the article section (inc/legal-notice.php), and the public-source audit checks exactly that. (1.72.259 had lifted
-		// it under the facts, after the recipe's row 6; the audit caught it on 25.9.)
-		// one grid (design system version 14): the text column, the stage and the rail share the first fold; the source
-		// order stays title, lead, buttons, stage, rail, facts, view and map
+		// the non-affiliation notice, one line, right under the facts (the recipe, row 6); the rest of the disclaimers stay last
+		$notice = '';
+		if ( preg_match( '#<aside\b[^>]*\bclass="nl-projnotice"#', $html, $m, PREG_OFFSET_CAPTURE, $lead_end ) ) {
+			$ns = $m[0][1];
+			$ne = nadlan_ps_close( $html, $ns, 'aside' );
+			if ( $ne ) {
+				$notice = substr( $html, $ns, $ne - $ns );
+				$html   = substr( $html, 0, $ns ) . substr( $html, $ne );
+			}
+		}
 		$lead = substr( $html, $a, $lead_end - $a );
-		$page = '<div class="nlps-page" dir="rtl" lang="he">' . $parts['hero'] . $lead . $parts['cta'] . $parts['stagebox'] . $parts['rail'] . $parts['facts'] . $parts['below'] . '</div>';
-		$html = substr( $html, 0, $a ) . $page . substr( $html, $lead_end );
+		$html = substr( $html, 0, $a ) . $parts['hero'] . $lead . $parts['facts'] . $notice . $parts['shell'] . substr( $html, $lead_end );
 		// one FAQPage schema, from the page's own visible questions and answers (the recipe, row 25): the first
 		// "שאלות נפוצות" section that really holds question and answer pairs
 		$body = substr( $html, (int) strpos( $html, '<body' ) );
@@ -329,37 +325,25 @@ add_action( 'wp_footer', function () {
 	if ( ! nadlan_ps_current() ) { return; }
 	$src = plugins_url( 'assets/project-stage/bridge.js', dirname( __FILE__ ) ) . '?ver=' . nadlan_ps_ver();
 	echo "\n" . '<script type="module" id="nadlan-ps-bridge" src="' . esc_url( $src ) . '"></script>' . "\n";
-	/* the layout is the design system's (ProjectStage, version 14: the building in the first fold); it lives here because
-	   the grid also holds the area map, which must stay outside the design system's scope (its resets would reach the
-	   map's own controls), and the theme's lead. The skin forces a box on the lead, and the theme a width and margins on
-	   everything in the content, several with !important: inside the grid they are set back, with a longer selector and
-	   !important. */
+	/* the layout is the design system's (ProjectStage, version 10); it lives here because the shell also holds the area
+	   map, which must stay outside the design system's scope (its resets would reach the map's own controls) */
 	echo '<style id="nadlan-ps-css">'
-		. ':root body .nlps-page{box-sizing:border-box!important;width:100%!important;max-width:none!important;margin:6px 0 30px!important;padding:0 clamp(12px,2vw,20px)!important;display:grid!important;grid-template-columns:minmax(300px,380px) minmax(0,1fr) 260px;grid-template-areas:"hero stage rail" "lead stage rail" "cta stage rail" "facts facts facts" "below below below";grid-template-rows:auto auto 1fr;column-gap:22px;row-gap:14px;align-items:start}'
-		. ':root body .nlps-page>*{min-width:0;max-width:none!important;margin:0!important;box-sizing:border-box}'
-		. ':root body .nlps-page>.nlps-herowrap{grid-area:hero;padding:0!important}'
-		. ':root body .nlps-page>.nl-lead{grid-area:lead;background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important}'
-		. ':root body .nlps-page>.nl-lead>p{max-width:none!important;margin:0!important;font-size:16.5px!important;line-height:1.75!important;color:var(--nlds-sa-ink,#1B1A17)}'
-		. ':root body .nlps-page>.nlps-ctawrap{grid-area:cta}'
-		. ':root body .nlds .nlps-ctawrap .nlps-hero__cta{margin-top:0!important}'
-		. ':root body .nlds .nlps-ctawrap .nlps-hero__cta .nlds-btn{flex:1 1 auto!important;justify-content:center!important}'
-		. ':root body .nlps-page>.nlps-stagebox{grid-area:stage;display:grid;gap:10px}'
-		. ':root body .nlps-page>.nlps-rail{grid-area:rail;display:grid;gap:14px;align-content:start}'
-		. ':root body .nlps-page>.nlps-factswrap{grid-area:facts;padding:0!important;margin-top:10px!important}'
-		// the theme's sitewide sheet has its own older ".nlpf" (1120px wide, auto margins, a deep shadow): not here
-		. ':root body .nlps-page .nlds .nlpf{width:auto!important;margin:0!important;box-shadow:none!important}'
-		. ':root body .nlps-page>.nlps-below{grid-area:below;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:stretch;margin-top:10px!important}'
-		. '.nlps-below--solo{grid-template-columns:minmax(0,1fr)!important}'
+		. '.nlps-herowrap{max-width:1240px;margin:6px auto 12px;padding:0 clamp(12px,2vw,20px)}'
+		. '.nlps-factswrap{max-width:1240px;margin:14px auto 10px;padding:0 clamp(12px,2vw,20px)}'
+		. '@media(max-width:600px){.nlps-factswrap{padding:0 12px}}'
+		. '.nlps-shell{max-width:1240px;margin:14px auto 26px;padding:0 clamp(12px,2vw,20px);display:grid;gap:12px}'
+		. '.nlps-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-areas:"stage rail" "below below";gap:16px;align-items:start}'
+		. '.nlps-stagebox{grid-area:stage;display:grid;gap:10px;min-width:0}'
+		. '.nlps-rail{grid-area:rail;display:grid;gap:16px;align-content:start;min-width:0}'
+		. '.nlps-below{grid-area:below;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:stretch;min-width:0}'
+		. '.nlps-below--solo{grid-template-columns:minmax(0,1fr)}'
 		. '.nlps-below>#nlpjx-map{margin:0!important;min-width:0;max-width:none!important}'
-		. '.nlps-stage{position:relative;width:100%;height:clamp(520px,calc(100svh - 240px),700px);border-radius:16px;overflow:hidden;background:var(--nlds-sa-paper,#F7F6F2);border:1px solid var(--nlds-sa-line,#E3E1DA);margin:0}'
+		. '.nlps-stage{position:relative;width:100%;height:72vh;min-height:420px;max-height:760px;border-radius:16px;overflow:hidden;background:var(--nlds-sa-paper,#F7F6F2);border:1px solid var(--nlds-sa-line,#E3E1DA);margin:0}'
 		. '.nlps-stage__mount{position:absolute;inset:0}'
-		. ':root body .nlps-srt{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}'
 		. ':root body .nlds .nlps-hint[hidden],:root body .nlds .nlps-view__cap[hidden],:root body .nlds .nlps-view__cta[hidden],:root body .nlds #nlps-view-empty[hidden]{display:none!important}'
 		. ':root body .nlds .nlps-view__map.nlps-stand{cursor:default}'
 		. ':root body .nlds .nlbsq__photo img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:50% 24%!important}'
-		. ':root body .nlps-rail .nlds .nlbslot{min-height:0!important}'
-		. '@media(max-width:1279px){:root body .nlps-page{grid-template-columns:minmax(280px,360px) minmax(0,1fr);grid-template-areas:"hero stage" "lead stage" "cta stage" "facts facts" "below below" "rail rail"}:root body .nlps-page>.nlps-rail{grid-template-columns:repeat(2,minmax(0,300px));margin-top:6px!important}}'
-		. '@media(max-width:1099px){:root body .nlps-page{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"hero" "cta" "stage" "lead" "facts" "below" "rail";column-gap:0}:root body .nlps-page>.nlps-below{grid-template-columns:minmax(0,1fr)}:root body .nlps-page>.nlps-rail{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nlps-stage{height:62svh;min-height:380px}}'
-		. '@media(max-width:600px){.nlps-stage{height:70svh;min-height:360px}:root body .nlps-page{padding:0 12px!important;row-gap:12px}:root body .nlps-page>.nlps-rail{gap:12px}:root body .nlps-page>.nl-lead>p{font-size:16px!important}}'
+		. '@media(max-width:1099px){.nlps-layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"stage" "below" "rail"}.nlps-below{grid-template-columns:minmax(0,1fr)}.nlps-rail{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}'
+		. '@media(max-width:600px){.nlps-stage{height:70svh;min-height:360px}.nlps-rail{gap:12px}.nlps-shell,.nlps-herowrap{padding:0 12px}}'
 		. '</style>' . "\n";
 }, 60 );

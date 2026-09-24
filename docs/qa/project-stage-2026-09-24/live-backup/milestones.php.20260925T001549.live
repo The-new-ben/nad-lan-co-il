@@ -52,9 +52,6 @@ if ( ! function_exists( 'nadlan_ms_status_for' ) ) {
 
 add_filter( 'the_content', function ( $content ) {
 	if ( ! is_singular( 'nadlan_project' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
-	// one progress band per page: where the project's own page top is on (inc/project-stage.php), its dated progress
-	// (ProjectProgress) is the band (25.9.2026)
-	if ( function_exists( 'nadlan_ps_current' ) && nadlan_ps_current() ) { return $content; }
 	$post   = get_post();
 	$status = nadlan_ms_status_for( $post );
 	$stage  = nadlan_ms_stage_of( $status );

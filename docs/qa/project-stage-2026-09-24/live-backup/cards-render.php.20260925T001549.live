@@ -73,11 +73,6 @@ if ( ! function_exists( 'nadlan_card_render' ) ) {
 	function nadlan_card_render( $id ) {
 		$type = get_post_type( $id );
 		$rows = nadlan_card_fact_rows( $id, $type );
-		// one facts table per page: where the project's own page top is on (inc/project-stage.php), its six sourced facts
-		// are the table, so the card does not print a second one (25.9.2026)
-		if ( 'nadlan_project' === $type && function_exists( 'nadlan_ps_current' ) && nadlan_ps_current() && (int) $id === (int) get_queried_object_id() ) {
-			$rows = array();
-		}
 		$claim_status = get_post_meta( $id, 'claim_status', true ) ?: 'unclaimed';
 		$source = get_post_meta( $id, 'source', true );
 		ob_start(); ?>

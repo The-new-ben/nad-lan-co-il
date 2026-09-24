@@ -1,0 +1,19 @@
+{
+  "released": "1.72.260",
+  "from": "1.72.259",
+  "at": "2026-09-25 00:16:03",
+  "files": {
+    "inc/project-stage.php": "4e9d6655e2756ad2c390db6678c5b245",
+    "assets/nlds/nlds.css": "469cb8bf3905c281c89642dafb158e3f",
+    "inc/milestones.php": "678255abbef3a8ac59ceb18cdd62adf3",
+    "inc/cards-render.php": "728b8571c2cdf98b221f1fe921010438",
+    "nadlan-config.php": "376389a07bd9f5e367815e01e62a391a"
+  },
+  "live_before": {
+    "inc/project-stage.php": "4e1372161a0c03ae3d5311472933e665",
+    "assets/nlds/nlds.css": "a6b42937c1270b5103156f678131c9ed",
+    "inc/milestones.php": "386560983d31531303464e04839f55db",
+    "inc/cards-render.php": "4cca0a2efe89a18baa31aefed0d32a34",
+    "nadlan-config.php": "e8089b64a2a55d0cefe57d89462b5f34"
+  }
+}
