@@ -266,8 +266,8 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 				<?php elseif ( ! $is_broker ) : /* the quote request the directory header already runs (the old #nlcard-claim anchor led nowhere) */ ?><button type="button" class="nlpp-btn nlpp-tel" data-nadlan-professional-quote data-partner-id="<?php echo (int) $id; ?>" data-partner-title="<?php echo esc_attr( $name ); ?>">קבלו הצעת מחיר</button><?php endif; ?>
 			<?php endif; ?>
 			<?php if ( $premium && ( $meeting || ! $is_broker ) ) : ?>
-				<?php if ( $meeting ) : ?><a class="nlpp-btn nlpp-vid" target="_blank" rel="noopener" href="<?php echo esc_url( $meeting ); ?>">פגישת וידאו</a>
-				<?php else : ?><button type="button" class="nlpp-btn nlpp-vid" data-nlpp-meet>תיאום שיחת וידאו</button><?php endif; ?>
+				<?php if ( $meeting ) : ?><a class="nlpp-btn nlpp-vid" target="_blank" rel="noopener" href="<?php echo esc_url( $meeting ); ?>">🎥 פגישת וידאו</a>
+				<?php else : ?><button type="button" class="nlpp-btn nlpp-vid" data-nlpp-meet>🎥 תיאום שיחת וידאו</button><?php endif; ?>
 			<?php endif; ?>
 		</div>
 	</header>
@@ -284,13 +284,13 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 	<?php if ( $specialties || $langs || $areas ) : ?>
 	<div class="nlpp-chips">
 		<?php foreach ( $specialties as $sp ) : ?><a class="nlpp-chip" href="<?php echo esc_url( home_url( '/professionals/?q=' . rawurlencode( $sp ) ) ); ?>"><?php echo esc_html( $sp ); ?></a><?php endforeach; ?>
-		<?php foreach ( $langs as $l ) : ?><span class="nlpp-chip nlpp-lang"><?php echo esc_html( $l ); ?></span><?php endforeach; ?>
-		<?php foreach ( array_slice( $areas, 0, 6 ) as $a ) : ?><span class="nlpp-chip nlpp-area"><?php if ( function_exists( 'nlds_asset_url' ) ) : ?><img class="nlpp-pin" src="<?php echo esc_url( nlds_asset_url( 'icons/card-pin.svg' ) ); ?>" alt="" width="14" height="14"><?php endif; ?><?php echo esc_html( $a ); ?></span><?php endforeach; ?>
+		<?php foreach ( $langs as $l ) : ?><span class="nlpp-chip nlpp-lang">🌐 <?php echo esc_html( $l ); ?></span><?php endforeach; ?>
+		<?php foreach ( array_slice( $areas, 0, 6 ) as $a ) : ?><span class="nlpp-chip nlpp-area">📍 <?php echo esc_html( $a ); ?></span><?php endforeach; ?>
 	</div>
 	<?php endif; ?>
 
 	<?php /* views are a real counter; "זמינות גבוהה" was printed when nothing was known, so it goes (honesty law) */
-	if ( $views >= 5 ) : ?><p class="nlpp-fomo"><?php echo number_format( $views ); ?> צפיות בפרופיל<?php echo $g( 'response_time' ) ? ' · מענה ' . esc_html( $g( 'response_time' ) ) : ''; ?></p><?php endif; ?>
+	if ( $views >= 5 ) : ?><p class="nlpp-fomo">👁 <?php echo number_format( $views ); ?> צפיות בפרופיל<?php echo $g( 'response_time' ) ? ' · מענה ' . esc_html( $g( 'response_time' ) ) : ''; ?></p><?php endif; ?>
 
 	<?php echo nadlan_prof_video_html( $id, $person ); // phpcs:ignore -- built from escaped parts ?>
 
@@ -316,7 +316,7 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 
 	<?php if ( $premium && $ai_on ) : ?>
 	<section class="nlpp-sec nlpp-ai" data-rest="<?php echo esc_attr( rest_url( 'nadlan/v1/concierge' ) ); ?>" data-prof="<?php echo esc_attr( $pm['label'] ); ?>">
-		<h3>שאלו את ה-AI על <?php echo esc_html( $pm['label'] ); ?></h3>
+		<h3>✨ שאלו את ה-AI על <?php echo esc_html( $pm['label'] ); ?></h3>
 		<p class="nlpp-ai-hint">למשל: מה בודקים לפני שסוגרים עם <?php echo esc_html( $pm['label'] ); ?>? כמה זה עולה בדרך כלל?</p>
 		<div class="nlpp-ai-row"><input type="text" id="nlpp-ai-q" placeholder="שאלה חופשית..."><button type="button" class="nlpp-btn nlpp-tel" id="nlpp-ai-send">שאלו</button></div>
 		<div class="nlpp-ai-a" id="nlpp-ai-a" hidden aria-live="polite"></div>
@@ -399,7 +399,6 @@ a.nlpp-chip{text-decoration:none;color:var(--ink)}a.nlpp-chip:hover{border-color
 .nlpp-chip{font-size:12.5px;border:1px solid var(--line);background:#FFFDFC;border-radius:999px;padding:5px 12px}
 .nlpp-sec{border:1px solid var(--line);border-radius:12px;background:#FFFDFC;padding:16px 18px;margin-bottom:14px}
 :root body .nlds.nlpp-video{margin-block:6px 18px!important}
-.nlpp-pin{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-inline-end:4px}
 .nlpp-sec h3{font-family:var(--font-serif,serif);font-size:1.1rem;margin:0 0 10px}
 .nlpp-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
 .nlpp-list a{color:var(--ink);text-decoration:none;font-size:14px}
