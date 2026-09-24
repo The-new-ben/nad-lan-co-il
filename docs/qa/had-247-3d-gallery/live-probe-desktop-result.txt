@@ -1,0 +1,18 @@
+{"ofakim":"{\"page\":\"ofakim\",\"mvOnLoad\":[],\"cover\":true,\"building\":true,\"zoomable\":2,\"sw\":1440,\"cw\":1440}"}
+{"shot":"after-ofakim-desktop-top.png"}
+{"ofakimLightbox":"{\"open\":true,\"n\":\"1 / 1\"}"}
+{"shot":"after-ofakim-desktop-lightbox.png"}
+{"bialik":"{\"page\":\"bialik\",\"mvOnLoad\":[],\"pills\":[\"2 תמונות\",\"הדמיית הבניין\"],\"tabs\":[\"מבט חוץ\",\"הדמיה\",\"תוכנית הדירה\",\"סיור פנימי\"]}"}
+{"shot":"after-bialik-desktop-top.png"}
+{"bialik3d":"{\"mvAfterClick\":[\"model-viewer.min.js@6217ms\",\"standard-residential.glb@6745ms\"],\"hotspots\":[\"קומה 5 מתוך 8\",\"מרפסת 12 מ״ר\",\"חניה\",\"מחסן\"]}"}
+{"shot":"after-bialik-desktop-3d.png"}
+{"bialikLightbox":"{\"open\":true,\"n\":\"1 / 2\"}"}
+{"shot":"after-bialik-desktop-lightbox.png"}
+{"meital":"{\"page\":\"meital\",\"mvOnLoad\":[],\"zoomable\":13,\"templateLayers\":false,\"h1\":1}"}
+{"shot":"after-meital-desktop-top.png"}
+{"shot":"after-meital-desktop-gallery.png"}
+{"meitalLightbox":"{\"open\":true,\"n\":\"3 / 13\"}"}
+{"shot":"after-meital-desktop-lightbox.png"}
+{"meitalAfterArrow":"4 / 13"}
+{"meitalEn":"{\"page\":\"meital-en\",\"open\":true,\"n\":\"1 / 13\",\"close\":\"Close\"}"}
+{"shot":"after-meital-en-desktop-lightbox.png"}

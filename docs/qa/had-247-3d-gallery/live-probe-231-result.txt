@@ -1,0 +1,8 @@
+{"facade":"{\"svgRects\":35,\"unit\":true,\"brInTabs\":0,\"tabsOneLine\":true}"}
+{"shot":"after231-bialik-mobile-facade.png"}
+{"threeD":"{\"tab\":\"הדמיה\",\"mv\":true,\"hotspots\":[\"קומה 5 מתוך 8\",\"מרפסת 12 מ״ר\",\"חניה\",\"מחסן\"],\"res\":[\"model-viewer.min.js\",\"standard-residential.glb\"]}"}
+{"shot":"after231-bialik-mobile-3d.png"}
+{"plan":"{\"planRects\":7,\"planTitle\":\"תוכנית הדירה · קומה 5\"}"}
+{"shot":"after231-bialik-mobile-plan.png"}
+{"ofakimPlan":"{\"h2\":\"תוכנית הבית\",\"tabs\":[\"תוכנית הבית\",\"סיור פנימי\"],\"planRects\":8,\"facade\":false}"}
+{"shot":"after231-ofakim-mobile-plan.png"}

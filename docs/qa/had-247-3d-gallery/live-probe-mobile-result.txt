@@ -1,0 +1,11 @@
+{"ofakim":"{\"page\":\"ofakim\",\"sw\":390,\"cw\":390,\"mvOnLoad\":0}"}
+{"shot":"after-ofakim-mobile-top.png"}
+{"bialik":"{\"page\":\"bialik\",\"sw\":390,\"cw\":390,\"mvOnLoad\":0}"}
+{"shot":"after-bialik-mobile-top.png"}
+{"bialik3d":"{\"hotspots\":[]}"}
+{"shot":"after-bialik-mobile-3d.png"}
+{"meital":"{\"page\":\"meital\",\"sw\":390,\"cw\":390,\"mvOnLoad\":0}"}
+{"meitalOpen":"1 / 13"}
+{"meitalAfterSwipe":"2 / 13"}
+{"shot":"after-meital-mobile-lightbox.png"}
+{"meitalBack":"{\"open\":false,\"url\":\"/properties/tzukei-aviv-3-rooms-berlin-for-sale/\"}"}

@@ -1,0 +1,399 @@
+{
+  "label": "after",
+  "at": "2026-09-24T10:00:30.160Z",
+  "runs": 3,
+  "results": [
+    {
+      "url": "https://nad-lan.co.il/properties/tzukei-aviv-3-rooms-berlin-for-sale/",
+      "profile": "desktop",
+      "lcp_median": 1812,
+      "fcp_median": 1812,
+      "cls_max": 0.027,
+      "load_median": 2410,
+      "kb_median": 4105,
+      "reqs_median": 54,
+      "lcp_element": "img.nlpg-zoom",
+      "lcp_image": "L04_DY3rdjmDJiE_01.jpg",
+      "model_viewer_or_glb_fetched": false,
+      "fetched": [],
+      "runs": [
+        {
+          "lcp": 1812,
+          "lcpEl": "img.nlpg-zoom",
+          "lcpImg": "L04_DY3rdjmDJiE_01.jpg",
+          "fcp": 1812,
+          "cls": 0.027,
+          "load": 2103,
+          "mv": [],
+          "reqs": 56,
+          "kb": 4107
+        },
+        {
+          "lcp": 1296,
+          "lcpEl": "img.nlpg-zoom",
+          "lcpImg": "L04_DY3rdjmDJiE_01.jpg",
+          "fcp": 1296,
+          "cls": 0.025,
+          "load": 2410,
+          "mv": [],
+          "reqs": 54,
+          "kb": 4105
+        },
+        {
+          "lcp": 2076,
+          "lcpEl": "img.nlpg-zoom",
+          "lcpImg": "L04_DY3rdjmDJiE_01.jpg",
+          "fcp": 2076,
+          "cls": 0.025,
+          "load": 2950,
+          "mv": [],
+          "reqs": 54,
+          "kb": 4105
+        }
+      ]
+    },
+    {
+      "url": "https://nad-lan.co.il/properties/tzukei-aviv-3-rooms-berlin-for-sale/",
+      "profile": "mobile",
+      "lcp_median": 4084,
+      "fcp_median": 3232,
+      "cls_max": 0.083,
+      "load_median": 21274,
+      "kb_median": 4162,
+      "reqs_median": 57,
+      "lcp_element": "p.nlx-dek",
+      "lcp_image": null,
+      "model_viewer_or_glb_fetched": false,
+      "fetched": [],
+      "runs": [
+        {
+          "lcp": 4116,
+          "lcpEl": "p.nlx-dek",
+          "lcpImg": null,
+          "fcp": 3232,
+          "cls": 0.083,
+          "load": 21171,
+          "mv": [],
+          "reqs": 57,
+          "kb": 4162
+        },
+        {
+          "lcp": 4084,
+          "lcpEl": "p.nlx-dek",
+          "lcpImg": null,
+          "fcp": 3148,
+          "cls": 0.083,
+          "load": 21607,
+          "mv": [],
+          "reqs": 57,
+          "kb": 4162
+        },
+        {
+          "lcp": 3952,
+          "lcpEl": "p.nlx-dek",
+          "lcpImg": null,
+          "fcp": 3268,
+          "cls": 0.083,
+          "load": 21274,
+          "mv": [],
+          "reqs": 57,
+          "kb": 4162
+        }
+      ]
+    },
+    {
+      "url": "https://nad-lan.co.il/properties/%d7%9c%d7%9e%d7%9b%d7%99%d7%a8%d7%94-%d7%91%d7%90%d7%95%d7%a4%d7%a7%d7%99%d7%9d-%d7%a9%d7%9b%d7%95%d7%a0%d7%aa-%d7%a9%d7%a4%d7%99%d7%a8%d7%90-%d7%a7%d7%95%d7%98%d7%92-5-%d7%97%d7%93%d7%a8%d7%99%d7%9d/",
+      "profile": "desktop",
+      "lcp_median": 1280,
+      "fcp_median": 1280,
+      "cls_max": 0.005,
+      "load_median": 1751,
+      "kb_median": 1157,
+      "reqs_median": 66,
+      "lcp_element": "img.nlps-cover-img.nlpg-zoom",
+      "lcp_image": "ofakim_yad2-1.jpg",
+      "model_viewer_or_glb_fetched": false,
+      "fetched": [],
+      "runs": [
+        {
+          "lcp": 1408,
+          "lcpEl": "img.nlps-cover-img.nlpg-zoom",
+          "lcpImg": "ofakim_yad2-1.jpg",
+          "fcp": 1408,
+          "cls": 0.005,
+          "load": 1959,
+          "mv": [],
+          "reqs": 66,
+          "kb": 1157
+        },
+        {
+          "lcp": 1180,
+          "lcpEl": "img.nlps-cover-img.nlpg-zoom",
+          "lcpImg": "ofakim_yad2-1.jpg",
+          "fcp": 1180,
+          "cls": 0.005,
+          "load": 1593,
+          "mv": [],
+          "reqs": 66,
+          "kb": 1157
+        },
+        {
+          "lcp": 1280,
+          "lcpEl": "img.nlps-cover-img.nlpg-zoom",
+          "lcpImg": "ofakim_yad2-1.jpg",
+          "fcp": 1280,
+          "cls": 0.005,
+          "load": 1751,
+          "mv": [],
+          "reqs": 66,
+          "kb": 1157
+        }
+      ]
+    },
+    {
+      "url": "https://nad-lan.co.il/properties/%d7%9c%d7%9e%d7%9b%d7%99%d7%a8%d7%94-%d7%91%d7%90%d7%95%d7%a4%d7%a7%d7%99%d7%9d-%d7%a9%d7%9b%d7%95%d7%a0%d7%aa-%d7%a9%d7%a4%d7%99%d7%a8%d7%90-%d7%a7%d7%95%d7%98%d7%92-5-%d7%97%d7%93%d7%a8%d7%99%d7%9d/",
+      "profile": "mobile",
+      "lcp_median": 6820,
+      "fcp_median": 3520,
+      "cls_max": 0.008,
+      "load_median": 11952,
+      "kb_median": 1214,
+      "reqs_median": 70,
+      "lcp_element": "img.nlps-cover-img.nlpg-zoom",
+      "lcp_image": "ofakim_yad2-1.jpg",
+      "model_viewer_or_glb_fetched": false,
+      "fetched": [],
+      "runs": [
+        {
+          "lcp": 6404,
+          "lcpEl": "img.nlps-cover-img.nlpg-zoom",
+          "lcpImg": "ofakim_yad2-1.jpg",
+          "fcp": 3520,
+          "cls": 0.006,
+          "load": 11952,
+          "mv": [],
+          "reqs": 70,
+          "kb": 1214
+        },
+        {
+          "lcp": 6820,
+          "lcpEl": "img.nlps-cover-img.nlpg-zoom",
+          "lcpImg": "ofakim_yad2-1.jpg",
+          "fcp": 4300,
+          "cls": 0.008,
+          "load": 13291,
+          "mv": [],
+          "reqs": 70,
+          "kb": 1214
+        },
+        {
+          "lcp": 6952,
+          "lcpEl": "img.nlps-cover-img.nlpg-zoom",
+          "lcpImg": "ofakim_yad2-1.jpg",
+          "fcp": 3516,
+          "cls": 0.006,
+          "load": 11199,
+          "mv": [],
+          "reqs": 71,
+          "kb": 1214
+        }
+      ]
+    },
+    {
+      "url": "https://nad-lan.co.il/properties/mazeh-tlv-3r-demo/",
+      "profile": "desktop",
+      "lcp_median": 1408,
+      "fcp_median": 1408,
+      "cls_max": 0.006,
+      "load_median": 2256,
+      "kb_median": 1472,
+      "reqs_median": 72,
+      "lcp_element": "img.attachment-post-thumbnail.size-post-thumbnail",
+      "lcp_image": "mazeh-40-tlv-listing-plate.webp",
+      "model_viewer_or_glb_fetched": false,
+      "fetched": [],
+      "runs": [
+        {
+          "lcp": 1408,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "mazeh-40-tlv-listing-plate.webp",
+          "fcp": 1408,
+          "cls": 0.006,
+          "load": 2154,
+          "mv": [],
+          "reqs": 72,
+          "kb": 1471
+        },
+        {
+          "lcp": 1364,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "mazeh-40-tlv-listing-plate.webp",
+          "fcp": 1364,
+          "cls": 0.006,
+          "load": 2393,
+          "mv": [],
+          "reqs": 72,
+          "kb": 1472
+        },
+        {
+          "lcp": 1472,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "mazeh-40-tlv-listing-plate.webp",
+          "fcp": 1472,
+          "cls": 0.006,
+          "load": 2256,
+          "mv": [],
+          "reqs": 72,
+          "kb": 1472
+        }
+      ]
+    },
+    {
+      "url": "https://nad-lan.co.il/properties/mazeh-tlv-3r-demo/",
+      "profile": "mobile",
+      "lcp_median": 7832,
+      "fcp_median": 4280,
+      "cls_max": 0.048,
+      "load_median": 14408,
+      "kb_median": 1447,
+      "reqs_median": 72,
+      "lcp_element": "img.attachment-post-thumbnail.size-post-thumbnail",
+      "lcp_image": "mazeh-40-tlv-listing-plate.webp",
+      "model_viewer_or_glb_fetched": false,
+      "fetched": [],
+      "runs": [
+        {
+          "lcp": 7832,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "mazeh-40-tlv-listing-plate.webp",
+          "fcp": 4280,
+          "cls": 0.048,
+          "load": 14299,
+          "mv": [],
+          "reqs": 72,
+          "kb": 1447
+        },
+        {
+          "lcp": 7328,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "mazeh-40-tlv-listing-plate.webp",
+          "fcp": 3892,
+          "cls": 0.034,
+          "load": 14408,
+          "mv": [],
+          "reqs": 72,
+          "kb": 1447
+        },
+        {
+          "lcp": 8268,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "mazeh-40-tlv-listing-plate.webp",
+          "fcp": 4696,
+          "cls": 0,
+          "load": 14893,
+          "mv": [],
+          "reqs": 72,
+          "kb": 1447
+        }
+      ]
+    },
+    {
+      "url": "https://nad-lan.co.il/properties/bialik-rg-4r-demo/",
+      "profile": "desktop",
+      "lcp_median": 1324,
+      "fcp_median": 1324,
+      "cls_max": 0.006,
+      "load_median": 2262,
+      "kb_median": 1459,
+      "reqs_median": 74,
+      "lcp_element": "img.attachment-post-thumbnail.size-post-thumbnail",
+      "lcp_image": "nadlan-listing-ramat-gan-bialik.jpg",
+      "model_viewer_or_glb_fetched": false,
+      "fetched": [],
+      "runs": [
+        {
+          "lcp": 1168,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "nadlan-listing-ramat-gan-bialik.jpg",
+          "fcp": 1168,
+          "cls": 0.006,
+          "load": 2262,
+          "mv": [],
+          "reqs": 74,
+          "kb": 1459
+        },
+        {
+          "lcp": 1404,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "nadlan-listing-ramat-gan-bialik.jpg",
+          "fcp": 1404,
+          "cls": 0.006,
+          "load": 2532,
+          "mv": [],
+          "reqs": 74,
+          "kb": 1516
+        },
+        {
+          "lcp": 1324,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "nadlan-listing-ramat-gan-bialik.jpg",
+          "fcp": 1324,
+          "cls": 0.006,
+          "load": 2092,
+          "mv": [],
+          "reqs": 74,
+          "kb": 1459
+        }
+      ]
+    },
+    {
+      "url": "https://nad-lan.co.il/properties/bialik-rg-4r-demo/",
+      "profile": "mobile",
+      "lcp_median": 5296,
+      "fcp_median": 3660,
+      "cls_max": 0.05,
+      "load_median": 14654,
+      "kb_median": 1282,
+      "reqs_median": 72,
+      "lcp_element": "img.attachment-post-thumbnail.size-post-thumbnail",
+      "lcp_image": "nadlan-listing-ramat-gan-bialik.jpg",
+      "model_viewer_or_glb_fetched": false,
+      "fetched": [],
+      "runs": [
+        {
+          "lcp": 5296,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "nadlan-listing-ramat-gan-bialik.jpg",
+          "fcp": 3660,
+          "cls": 0.05,
+          "load": 15248,
+          "mv": [],
+          "reqs": 74,
+          "kb": 1284
+        },
+        {
+          "lcp": 5436,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "nadlan-listing-ramat-gan-bialik.jpg",
+          "fcp": 3516,
+          "cls": 0.05,
+          "load": 14495,
+          "mv": [],
+          "reqs": 72,
+          "kb": 1282
+        },
+        {
+          "lcp": 5176,
+          "lcpEl": "img.attachment-post-thumbnail.size-post-thumbnail",
+          "lcpImg": "nadlan-listing-ramat-gan-bialik.jpg",
+          "fcp": 3724,
+          "cls": 0,
+          "load": 14654,
+          "mv": [],
+          "reqs": 72,
+          "kb": 1282
+        }
+      ]
+    }
+  ]
+}

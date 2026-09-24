@@ -1,0 +1,28 @@
+PASS  menu -> professionals                      
+PASS  professionals -> profile -> her site       
+PASS  site he -> 11 listings + english           
+PASS  site en -> 11 listings + hebrew            
+PASS  L01 he -> her site + english               
+PASS  L01 en -> her site + hebrew                
+PASS  L07 he -> her site + english               
+PASS  L07 en -> her site + hebrew                
+PASS  L08 he -> her site + english               
+PASS  L08 en -> her site + hebrew                
+PASS  L05 he -> her site + english               
+PASS  L05 en -> her site + hebrew                
+PASS  L04 he -> her site + english               
+PASS  L04 en -> her site + hebrew                
+PASS  L06 he -> her site + english               
+PASS  L06 en -> her site + hebrew                
+PASS  L02 he -> her site + english               
+PASS  L02 en -> her site + hebrew                
+PASS  L03 he -> her site + english               
+PASS  L03 en -> her site + hebrew                
+PASS  L09 he -> her site + english               
+PASS  L09 en -> her site + hebrew                
+PASS  L10 he -> her site + english               
+PASS  L10 en -> her site + hebrew                
+PASS  L11 he -> her site + english               
+PASS  L11 en -> her site + hebrew                
+journey: all links in place
+done

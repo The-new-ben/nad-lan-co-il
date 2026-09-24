@@ -1,0 +1,8 @@
+desktop LCP  1476 ms  FCP  1476  CLS 0.027  load 2432  4120 KB/55 req  3D-on-load: no  LCP el: img.nlpg-zoom L04_DY3rdjmDJiE_01.jpg  | https://nad-lan.co.il/properties/tzukei-aviv-3-rooms-berlin-for-sale/
+mobile  LCP  3560 ms  FCP  3140  CLS 0.083  load 21275  4176 KB/57 req  3D-on-load: no  LCP el: p.nlx-dek   | https://nad-lan.co.il/properties/tzukei-aviv-3-rooms-berlin-for-sale/
+desktop LCP  1060 ms  FCP  1060  CLS 0.005  load 1436  1009 KB/67 req  3D-on-load: no  LCP el: img.nlps-cover-img.nlpg-zoom ofakim_yad2-1-600x900.jpg  | https://nad-lan.co.il/properties/למכירה-באופקים-שכונת-שפירא-קוטג-5-חדרים/
+mobile  LCP  4500 ms  FCP  3368  CLS 0.007  load 7628  1097 KB/71 req  3D-on-load: no  LCP el: img.nlps-cover-img.nlpg-zoom ofakim_yad2-1-768x1152.jpg  | https://nad-lan.co.il/properties/למכירה-באופקים-שכונת-שפירא-קוטג-5-חדרים/
+desktop LCP  1132 ms  FCP  1132  CLS 0.006  load 1816  1484 KB/71 req  3D-on-load: no  LCP el: img.attachment-post-thumbnail.size-post-thumbnail mazeh-40-tlv-listing-plate.webp  | https://nad-lan.co.il/properties/mazeh-tlv-3r-demo/
+mobile  LCP  7152 ms  FCP  3512  CLS 0.05  load 9901  1461 KB/72 req  3D-on-load: no  LCP el: img.attachment-post-thumbnail.size-post-thumbnail mazeh-40-tlv-listing-plate.webp  | https://nad-lan.co.il/properties/mazeh-tlv-3r-demo/
+desktop LCP  1156 ms  FCP  1156  CLS 0.006  load 1597  1459 KB/73 req  3D-on-load: no  LCP el: img.attachment-post-thumbnail.size-post-thumbnail nadlan-listing-ramat-gan-bialik.jpg  | https://nad-lan.co.il/properties/bialik-rg-4r-demo/
+mobile  LCP  4928 ms  FCP  3252  CLS 0.076  load 9068  1282 KB/72 req  3D-on-load: no  LCP el: img.attachment-post-thumbnail.size-post-thumbnail nadlan-listing-ramat-gan-bialik.jpg  | https://nad-lan.co.il/properties/bialik-rg-4r-demo/
