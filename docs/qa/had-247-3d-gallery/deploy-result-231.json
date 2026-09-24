@@ -1,0 +1,13 @@
+{
+  "released": "1.72.231",
+  "from": "1.72.230",
+  "at": "2026-09-24 13:24:40",
+  "files": {
+    "inc/property-showroom.php": "f435a2e5697d367edc75af1c15d82f82",
+    "nadlan-config.php": "e77d53d39dc391c2969cdaf364332212"
+  },
+  "live_before": {
+    "inc/property-showroom.php": "c3474a708fac7e07b55c56d062cf22c2",
+    "nadlan-config.php": "74b2e648718b60c5c01268c7deb3eaf0"
+  }
+}

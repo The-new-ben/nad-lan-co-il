@@ -381,11 +381,7 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 		return ob_get_clean() . $content;
 	}
 }
-/* Priority 11, after wpautop (10) and do_shortcode (11): at 6 wpautop ran over this block and
-   broke it; it wrote </p> inside the facade and plan <svg> (the browser then printed the floor
-   numbers "87654321" as text over an empty box) and <br /> between the view tabs. Found live
-   on 24.9.2026 (HAD-247); it had been broken on every portal listing since the block was built. */
-add_filter( 'the_content', 'nadlan_pshow_render', 11 );
+add_filter( 'the_content', 'nadlan_pshow_render', 6 );
 
 /* ---------------- assets ---------------- */
 if ( ! function_exists( 'nadlan_pshow_assets' ) ) {

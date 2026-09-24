@@ -1,0 +1,20 @@
+[health] 1.72.230 ok
+[lint] inc/property-showroom.php: ok
+[bridge] up, id 731 | live header version 1.72.230
+[drift] live inc/property-showroom.php c3474a708f vs git HEAD c3474a708f
+[lint] nadlan-config.php (live text, bumped): ok
+[plan] 1.72.230 -> 1.72.231; replacing inc/property-showroom.php
+[put] inc/property-showroom.php: 44478 bytes, md5 f435a2e569 verified
+[put] nadlan-config.php: 32953 bytes, md5 e77d53d39d verified
+[purge] {'opcache': True, 'purged': 1}
+[health] 1.72.231 ok after 2s
+[page] OK  200 /properties/%d7%9c%d7%9e%d7%9b%d7%99%d7%a8%d7%94-%d7%91%d7%90%d7%95%d7 missing=[] forbidden=[]
+[page] OK  200 /properties/bialik-rg-4r-demo/ missing=[] forbidden=[]
+[page] OK  200 /properties/mazeh-tlv-3r-demo/ missing=[] forbidden=[]
+[page] OK  200 /properties/tzukei-aviv-3-rooms-berlin-for-sale/ missing=[] forbidden=[]
+[page] OK  200 /en/brokers/meital-katzir/tzukei-aviv-3-room-apartment-for-sale/ missing=[] forbidden=[]
+[page] OK  200 / missing=[] forbidden=[]
+[page] OK  200 /projects/rainbow-tel-aviv/ missing=[] forbidden=[]
+[page] OK  200 /projects/h-infinity-somail-tel-aviv/ missing=[] forbidden=[]
+RELEASE 1.72.231 LIVE
+[bridge] delete http 204; route now http 404 (want 404)
