@@ -1,0 +1,19 @@
+{
+  "released": "1.72.237",
+  "from": "1.72.236",
+  "at": "2026-09-24 14:55:42",
+  "files": {
+    "inc/professional-profile.php": "8ba3d53cb9dd39e483dd0073288c78d4",
+    "inc/directory.php": "b1751acaecb39298b63aa6047f29a5ef",
+    "inc/breadcrumbs.php": "e91b822cf18dad2bc9e2a6c2556507b0",
+    "inc/layout-fixes.php": "f0999f9094fad226b9cee19caaca7cb0",
+    "nadlan-config.php": "2814fb4c3c9690f22bd42728e9de8298"
+  },
+  "live_before": {
+    "inc/professional-profile.php": "b658fbdf7afb8f6b107d7253dcb841a7",
+    "inc/directory.php": "23ff3e5ef2f21fb1029483d7287ecdde",
+    "inc/breadcrumbs.php": "0ffcb8c21429054370a50c141792392c",
+    "inc/layout-fixes.php": "missing",
+    "nadlan-config.php": "227aac8f4f7e5811130ca55cce815103"
+  }
+}

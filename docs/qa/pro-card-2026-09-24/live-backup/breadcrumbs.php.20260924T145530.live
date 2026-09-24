@@ -10,20 +10,6 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-if ( ! function_exists( 'nadlan_breadcrumbs_profession' ) ) {
-	/** The profession level of a professional card's trail: array( label, url ), or null. One source for the visible trail and the schema. */
-	function nadlan_breadcrumbs_profession( $id ) {
-		$prof  = (string) get_post_meta( $id, 'profession', true );
-		$label = array(
-			'kablan' => 'קבלנים', 'shamai' => 'שמאים', 'bedek_bait' => 'בדק בית', 'mashkanta' => 'יועצי משכנתאות',
-			'architect' => 'אדריכלים', 'lawyer' => 'עורכי דין', 'inspector' => 'מפקחי בנייה', 'mefakeach' => 'מפקחי בנייה',
-			'metavech' => 'מתווכים', 'interior_designer' => 'מעצבי פנים', 'engineer' => 'מהנדסי בניין', 'accountant' => 'רואי חשבון',
-			'surveyor' => 'מודדים', 'property_manager' => 'ניהול נכסים', 'urban_planner' => 'מתכנני ערים',
-		)[ $prof ] ?? '';
-		return '' === $label ? null : array( $label, add_query_arg( 'profession', $prof, home_url( '/professionals/' ) ) );
-	}
-}
-
 if ( ! function_exists( 'nadlan_breadcrumbs_items' ) ) {
 	function nadlan_breadcrumbs_items() {
 		if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab() ) {
@@ -40,8 +26,10 @@ if ( ! function_exists( 'nadlan_breadcrumbs_items' ) ) {
 			$items[] = array( 'name' => get_the_title(), 'url' => get_permalink() );
 		} elseif ( is_singular( 'nadlan_professional' ) ) {
 			$items[] = array( 'name' => 'אנשי מקצוע', 'url' => home_url( '/professionals/' ) );
-			$level = nadlan_breadcrumbs_profession( get_the_ID() );
-			if ( $level ) { $items[] = array( 'name' => $level[0], 'url' => $level[1] ); }
+			$prof = (string) get_post_meta( get_the_ID(), 'profession', true );
+			$prof_label = array( 'kablan' => 'קבלנים', 'shamai' => 'שמאים', 'bedek_bait' => 'בדק בית', 'mashkanta' => 'יועצי משכנתאות',
+				'architect' => 'אדריכלים', 'lawyer' => 'עורכי דין', 'inspector' => 'מפקחי בנייה', 'metavech' => 'מתווכים' )[ $prof ] ?? '';
+			if ( $prof_label ) { $items[] = array( 'name' => $prof_label, 'url' => add_query_arg( 'profession', $prof, home_url( '/professionals/' ) ) ); }
 			$items[] = array( 'name' => get_the_title(), 'url' => get_permalink() );
 		} elseif ( is_post_type_archive( 'nadlan_property' ) ) { $items[] = array( 'name' => 'דירות', 'url' => home_url( '/properties/' ) ); }
 		elseif ( is_post_type_archive( 'nadlan_project' ) )    { $items[] = array( 'name' => 'פרויקטים', 'url' => home_url( '/projects/' ) ); }
@@ -74,15 +62,6 @@ add_filter( 'the_content', function ( $content ) {
 		 * everything filters prepend), reading as "the page starts again with
 		 * breadcrumbs" mid-scroll. The engine topbar owns wayfinding there;
 		 * BreadcrumbList schema in wp_head is unaffected. */
-		/* One visible trail per page (owner 24.9.2026, "breadcrumbs twice"): where the theme prints Yoast's trail
-		 * at the top, this one stays out. Yoast's trail is on professional cards and on listings without an
-		 * owner; an owned listing drops Yoast's (property-owner.php), so it keeps this one. */
-		if ( is_singular( 'nadlan_professional' ) ) {
-			return $content;
-		}
-		if ( is_singular( 'nadlan_property' ) && ! ( function_exists( 'nadlan_property_is_owned' ) && nadlan_property_is_owned( get_the_ID() ) ) ) {
-			return $content;
-		}
 		if ( is_singular( 'nadlan_project' )
 			&& function_exists( 'nadlan_showroom_engine_active_for' )
 			&& nadlan_showroom_engine_active_for( get_the_ID() ) ) {
@@ -121,13 +100,6 @@ add_filter( 'wpseo_breadcrumb_links', function ( $links ) {
 	foreach ( $labels as $pt => $label ) {
 		$u = get_post_type_archive_link( $pt );
 		if ( $u ) { $urls[ untrailingslashit( $u ) ] = $label; }
-	}
-	/* the profession level on a professional card, the same level the schema trail carries */
-	if ( is_singular( 'nadlan_professional' ) ) {
-		$level = nadlan_breadcrumbs_profession( get_queried_object_id() );
-		if ( $level && count( $links ) >= 2 ) {
-			array_splice( $links, count( $links ) - 1, 0, array( array( 'url' => $level[1], 'text' => $level[0], 'allow_html' => false ) ) );
-		}
 	}
 	foreach ( $links as $i => $link ) {
 		if ( ! is_array( $link ) ) { continue; }

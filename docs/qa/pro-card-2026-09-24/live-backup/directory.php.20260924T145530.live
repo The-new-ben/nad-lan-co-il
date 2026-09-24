@@ -649,12 +649,7 @@ if ( ! function_exists( 'nadlan_dir_similar' ) ) {
 
 add_filter( 'the_content', function ( $content ) {
 	if ( ! is_singular( 'nadlan_professional' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
-	/* One header per card (owner 24.9.2026): the profile hero (professional-profile.php, priority 6) is the header and
-	 * carries the only H1; this second header, with its own H1 and breadcrumb-like band, is no longer printed. The
-	 * quote script it enqueued still loads, because the hero's "קבלו הצעת מחיר" button runs on it. */
-	$id = get_the_ID();
-	if ( 'metavech' !== (string) get_post_meta( $id, 'profession', true ) ) { nadlan_dir_enqueue_professional_quote_script(); }
-	return $content . nadlan_dir_similar( $id );
+	return nadlan_dir_profile_header( get_the_ID() ) . $content . nadlan_dir_similar( get_the_ID() );
 }, 5 );
 
 /* v1.37.0: clean document title for the glossary (nadlan_term) archive  - 
