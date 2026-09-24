@@ -46,7 +46,7 @@ if ( ! function_exists( 'nadlan_prof_meta_of' ) ) {
 /* ---------------- extra profile meta ---------------- */
 if ( ! function_exists( 'nadlan_prof_register_meta' ) ) {
 	function nadlan_prof_register_meta() {
-		foreach ( array( 'specialties_csv' => 'string', 'languages_csv' => 'string', 'bio' => 'string', 'response_time' => 'string', 'meeting_url' => 'string', 'calendar_url' => 'string', 'nl_video' => 'string', 'lat' => 'number', 'lng' => 'number', 'profile_views' => 'integer' ) as $k => $t ) {
+		foreach ( array( 'specialties_csv' => 'string', 'languages_csv' => 'string', 'bio' => 'string', 'response_time' => 'string', 'meeting_url' => 'string', 'calendar_url' => 'string', 'lat' => 'number', 'lng' => 'number', 'profile_views' => 'integer' ) as $k => $t ) {
 			register_post_meta( 'nadlan_professional', $k, array(
 				'show_in_rest' => true, 'single' => true, 'type' => $t,
 				'auth_callback' => function ( $a, $m, $pid ) { return current_user_can( 'edit_post', (int) $pid ); },
@@ -67,39 +67,6 @@ if ( ! function_exists( 'nadlan_prof_calendar_url' ) ) {
 		return ( '' !== $u && 0 === strpos( $u, 'https://' ) && wp_http_validate_url( $u ) ) ? $u : '';
 	}
 }
-if ( ! function_exists( 'nadlan_prof_video_html' ) ) {
-	/**
-	 * ListingsVideo (design system, 24.9.2026; owner: "שלכל מתווך יהיה וידאו על כל הנכסים שלו"): the broker's listings in
-	 * one video, from meta nl_video, a JSON object {tall, wide, poster_tall, poster_wide, count, secs, date}. Nothing without
-	 * both videos. No autoplay, and nothing downloads until play is pressed (preload none): the upright file shows on
-	 * phones, the wide one elsewhere. The count and the date are the video's own, so an older video says how old it is.
-	 */
-	function nadlan_prof_video_html( $id, $person ) {
-		$v = json_decode( (string) get_post_meta( (int) $id, 'nl_video', true ), true );
-		if ( ! is_array( $v ) ) { return ''; }
-		$url = function ( $k ) use ( $v ) {
-			$u = isset( $v[ $k ] ) ? esc_url( (string) $v[ $k ] ) : '';
-			return 0 === strpos( $u, 'https://' ) ? $u : '';
-		};
-		if ( '' === $url( 'tall' ) || '' === $url( 'wide' ) ) { return ''; }
-		$meta = array();
-		if ( ! empty( $v['count'] ) ) { $meta[] = '<span class="nlds-num">' . (int) $v['count'] . '</span> נכסים'; }
-		if ( ! empty( $v['secs'] ) ) { $meta[] = '<span class="nlds-num">' . (int) $v['secs'] . '</span> שניות'; }
-		if ( ! empty( $v['date'] ) && preg_match( '/^(\d{4})-(\d{2})-(\d{2})$/', (string) $v['date'], $d ) ) {
-			$meta[] = 'עודכן <span class="nlds-num">' . (int) $d[3] . '.' . (int) $d[2] . '.' . $d[1] . '</span>';
-		}
-		$vid = function ( $cls, $src, $poster ) {
-			return '<video class="nlds-video__v ' . $cls . '" controls playsinline preload="none"' . ( '' !== $poster ? ' poster="' . $poster . '"' : '' ) . '><source src="' . $src . '" type="video/mp4"></video>';
-		};
-		// the design system styles what sits inside a .nlds wrapper, so the component is not the wrapper itself
-		return '<div class="nlds nlpp-video" dir="rtl" lang="he"><section class="nlds-video" aria-label="' . esc_attr( 'סרטון הנכסים של ' . $person ) . '">'
-			. '<h2 class="nlds-video__title">סרטון הנכסים</h2>'
-			. '<div class="nlds-video__frame">' . $vid( 'nlds-video__v--wide', $url( 'wide' ), $url( 'poster_wide' ) ) . $vid( 'nlds-video__v--tall', $url( 'tall' ), $url( 'poster_tall' ) ) . '</div>'
-			. ( $meta ? '<p class="nlds-video__meta">בסרטון: ' . implode( ' · ', $meta ) . '</p>' : '' )
-			. '</section></div>';
-	}
-}
-
 add_action( 'add_meta_boxes_nadlan_professional', function () {
 	add_meta_box( 'nlpp_calendar_box', 'יומן לתיאום סיור', function ( $post ) {
 		wp_nonce_field( 'nlpp_calendar_save', 'nlpp_calendar_nonce' );
@@ -292,8 +259,6 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 	<?php /* views are a real counter; "זמינות גבוהה" was printed when nothing was known, so it goes (honesty law) */
 	if ( $views >= 5 ) : ?><p class="nlpp-fomo">👁 <?php echo number_format( $views ); ?> צפיות בפרופיל<?php echo $g( 'response_time' ) ? ' · מענה ' . esc_html( $g( 'response_time' ) ) : ''; ?></p><?php endif; ?>
 
-	<?php echo nadlan_prof_video_html( $id, $person ); // phpcs:ignore -- built from escaped parts ?>
-
 	<?php if ( $premium && ! $meeting && ! $is_broker ) : ?>
 	<form class="nlpp-meet" id="nlpp-meet" hidden data-rest="<?php echo esc_attr( rest_url( 'nadlan/v1/lead' ) ); ?>" data-prof="<?php echo esc_attr( $name ); ?>">
 		<b>תיאום שיחת וידאו עם <?php echo esc_html( $name ); ?></b>
@@ -398,7 +363,6 @@ a.nlpp-chip{text-decoration:none;color:var(--ink)}a.nlpp-chip:hover{border-color
 .nlpp-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
 .nlpp-chip{font-size:12.5px;border:1px solid var(--line);background:#FFFDFC;border-radius:999px;padding:5px 12px}
 .nlpp-sec{border:1px solid var(--line);border-radius:12px;background:#FFFDFC;padding:16px 18px;margin-bottom:14px}
-:root body .nlds.nlpp-video{margin-block:6px 18px!important}
 .nlpp-sec h3{font-family:var(--font-serif,serif);font-size:1.1rem;margin:0 0 10px}
 .nlpp-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
 .nlpp-list a{color:var(--ink);text-decoration:none;font-size:14px}

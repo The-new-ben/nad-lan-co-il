@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Broker video composer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Noto+Serif+Hebrew:wght@400;500;600;700&display=block" rel="stylesheet">
+<style>
+  html, body { margin: 0; height: 100%; background: #0c151c; }
+  body { display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  canvas { max-width: 100vw; max-height: 100vh; display: block; }
+  #status { position: fixed; top: 6px; left: 8px; color: #8fa5b3; font: 12px/1.4 monospace; direction: ltr; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="status">loading</div>
+<script>
+'use strict';
+/*
+  Broker listings video composer (nad-lan.co.il)
+  One page, data driven: reads data/<broker>.json and draws the whole timeline on a canvas.
+
+  URL parameters
+    broker   data file slug                (default meital-katzir)
+    w, h     output size in pixels          (default 1080 x 1920)
+    fps      capture frame rate             (default 30)
+    mode     preview | still | record       (default preview: plays in a loop)
+    t        time in seconds for mode=still
+    kbps     recorder bitrate               (default 8000)
+    per      seconds per listing            (default 4, min 3)
+    max      first N listings only          (default all)
+
+  Automation hooks (used by render.py through Playwright)
+    window.__state            'loading' | 'ready' | 'recording' | 'done' | 'error'
+    window.__info             { duration, width, height, fps, mime, ... }
+    window.__drawAt(t)        draws time t, returns a PNG data URL
+    window.__record()         records the full timeline in real time, resolves with stats
+    window.__slice(off, len)  base64 slice of the recorded file
+*/
+const Q = new URLSearchParams(location.search);
+const W = +(Q.get('w') || 1080), H = +(Q.get('h') || 1920);
+const FPS = +(Q.get('fps') || 30);
+const MODE = Q.get('mode') || 'preview';
+const BROKER = (Q.get('broker') || 'meital-katzir').replace(/[^a-z0-9-]/gi, '');
+const KBPS = +(Q.get('kbps') || 8000);
+const PER = Math.max(3, +(Q.get('per') || 4));      // seconds per listing (default 4)
+const MAXL = +(Q.get('max') || 0);                   // show only the first N listings (0 = all)
+const ORIENT = H >= W ? 'portrait' : 'landscape';
+const PORTRAIT = ORIENT === 'portrait';
+const U = Math.min(W, H) / 1080;              // type scale unit (1 for 1080x1920 and 1920x1080)
+
+const PAL = { paper: '#F7F6F2', ink: '#14212B', sea: '#2F6F86', deep: '#1F4B5C', sand: '#EEE9DD', white: '#FFFFFF' };
+const INK_RGB = '20,33,43';
+const SERIF = '"Noto Serif Hebrew"', SANS = '"Assistant"';
+
+const TL = {
+  intro: 3.0, listing: PER, outro: 4.0,
+  xfade: 0.5,          // photo cross-fade between listings
+  bookend: 0.6,        // intro -> first listing and last listing -> outro
+  zoom: 1.08,          // Ken Burns range (1.0 <-> 1.08)
+  maxUpscale: 2.0,     // above this, a photo is shown framed instead of full-bleed
+};
+
+const canvas = document.getElementById('c');
+canvas.width = W; canvas.height = H;
+const ctx = canvas.getContext('2d', { alpha: false });
+const statusEl = document.getElementById('status');
+const setStatus = s => { statusEl.textContent = s; };
+window.__state = 'loading';
+
+// ---------- helpers ----------
+const clamp01 = x => x < 0 ? 0 : x > 1 ? 1 : x;
+const ramp = (t, a, b) => clamp01((t - a) / (b - a));
+const easeInOutSine = x => 0.5 - 0.5 * Math.cos(Math.PI * clamp01(x));
+const easeOutCubic = x => 1 - Math.pow(1 - clamp01(x), 3);
+const easeInOutCubic = x => { x = clamp01(x); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const px = v => Math.round(v * U);
+function mk(w, h) { const c = document.createElement('canvas'); c.width = Math.max(1, Math.round(w)); c.height = Math.max(1, Math.round(h)); return c; }
+function loadImage(src) {
+  return new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => rej(new Error('image failed: ' + src)); im.src = src; })
+    .then(im => (im.decode ? im.decode().then(() => im, () => im) : im));
+}
+function font(weight, size, fam) { return `${weight} ${size}px ${fam}`; }
+// house style for every string that comes from data: no em or en dashes, no emoji
+function tidy(s) {
+  if (s == null) return s;
+  return String(s)
+    .replace(/(\d)\s*[\u2013\u2014]\s*(\d)/g, '$1-$2')
+    .replace(/\s*[\u2013\u2014]\s*/g, ', ')
+    .replace(/\p{Extended_Pictographic}/gu, '').replace(/[\uFE0F\u200D]/g, '')
+    .replace(/\s{2,}/g, ' ').trim();
+}
+function tidyData(D) {
+  for (const k of ['name', 'brand', 'role', 'licence', 'phone', 'site', 'cta']) D[k] = tidy(D[k]);
+  for (const L of D.listings) {
+    for (const k of ['title', 'deal', 'area', 'price']) L[k] = tidy(L[k]);
+    L.facts = (L.facts || []).map(tidy).filter(Boolean);
+  }
+  return D;
+}
+
+// ---------- data + assets ----------
+let DATA, LISTINGS = [], PORTRAIT_IMG = null, SCRIM = null, T_TOTAL = 0, SEG = [];
+
+async function loadFonts() {
+  const sample = 'אבגדהוזחטיכלמנסעפצקרשת ךםןףץ ״׳ 0123456789 ,.·₪- abcdefghijklmnopqrstuvwxyz/';
+  const specs = [];
+  for (const w of [400, 500, 600, 700]) { specs.push(font(w, 40, SERIF)); specs.push(font(w, 40, SANS)); }
+  await Promise.all(specs.map(s => document.fonts.load(s, sample)));
+  await document.fonts.ready;
+  const ok = specs.every(s => document.fonts.check(s, sample));
+  if (!ok) throw new Error('fonts did not load');
+}
+
+function chooseHero(L) {
+  const idx = (L.hero && Number.isInteger(L.hero[ORIENT])) ? L.hero[ORIENT] : 0;
+  return L.photos[Math.min(idx, L.photos.length - 1)];
+}
+
+// Prepare one photo for this canvas: a pre-scaled "base" canvas at zoom headroom, so each frame is a cheap,
+// alias-free sub-rect draw. Cover (full-bleed) by default; framed when the source is far too small or narrow.
+function preparePhoto(img, ph, fitOverride) {
+  const iw = img.naturalWidth, ih = img.naturalHeight;
+  const crop = (ph.crop && ph.crop[ORIENT]) || [0, 0, iw, ih];
+  const focus = ph.focus || [(crop[0] + crop[2] / 2) / iw, (crop[1] + crop[3] / 2) / ih];
+  const fx = focus[0] * iw, fy = focus[1] * ih;
+  const ar = W / H;
+  let sw, sh;
+  if (crop[2] / crop[3] > ar) { sh = crop[3]; sw = sh * ar; } else { sw = crop[2]; sh = sw / ar; }
+  const upscale = W / sw;
+  const fit = fitOverride || (upscale > TL.maxUpscale ? 'frame' : 'cover');
+  const Z = TL.zoom;
+  if (fit === 'cover') {
+    let sx = Math.max(crop[0], Math.min(crop[0] + crop[2] - sw, fx - sw / 2));
+    let sy = Math.max(crop[1], Math.min(crop[1] + crop[3] - sh, fy - sh / 2));
+    const PW = Math.round(W * Z), PH = Math.round(H * Z);
+    const base = mk(PW, PH), g = base.getContext('2d');
+    g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
+    g.drawImage(img, sx, sy, sw, sh, 0, 0, PW, PH);
+    const ax = clamp01((fx - sx) / sw), ay = clamp01((fy - sy) / sh);
+    return { fit, base, PW, PH, ax, ay, upscale };
+  }
+  // framed: blurred, darkened full-bleed backdrop + the whole clean crop contained in a box
+  const bg = mk(W, H), gb = bg.getContext('2d');
+  const cs = Math.max(W / crop[2], H / crop[3]) * 1.15;
+  gb.filter = `blur(${px(38)}px)`;
+  gb.drawImage(img, crop[0], crop[1], crop[2], crop[3], (W - crop[2] * cs) / 2, (H - crop[3] * cs) / 2, crop[2] * cs, crop[3] * cs);
+  gb.filter = 'none';
+  gb.fillStyle = `rgba(${INK_RGB},0.42)`; gb.fillRect(0, 0, W, H);
+  const box = PORTRAIT ? { x: px(56), y: px(150), w: W - px(112), h: H * 0.56 - px(150) }
+                       : { x: px(72), y: px(72), w: W * 0.50 - px(72), h: H - px(144) };
+  const s = Math.min(box.w / crop[2], box.h / crop[3]);
+  const rw = crop[2] * s, rh = crop[3] * s;
+  const rect = { x: Math.round(box.x + (box.w - rw) / 2), y: Math.round(box.y + (box.h - rh) / 2), w: Math.round(rw), h: Math.round(rh) };
+  const Zf = 1.06;
+  const PW = Math.round(rect.w * Zf), PH = Math.round(rect.h * Zf);
+  const base = mk(PW, PH), g = base.getContext('2d');
+  g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
+  g.drawImage(img, crop[0], crop[1], crop[2], crop[3], 0, 0, PW, PH);
+  const ax = clamp01((fx - crop[0]) / crop[2]), ay = clamp01((fy - crop[1]) / crop[3]);
+  return { fit, bg, base, PW, PH, ax, ay, rect, Zf, upscale };
+}
+
+function preparePortrait(img, spec, d) {
+  const c = mk(d, d), g = c.getContext('2d');
+  const iw = img.naturalWidth, ih = img.naturalHeight;
+  const size = (spec.size || 0.6) * iw;
+  const f = spec.focus || [0.5, 0.4];
+  let sx = Math.max(0, Math.min(iw - size, f[0] * iw - size / 2));
+  let sy = Math.max(0, Math.min(ih - size, f[1] * ih - size / 2));
+  g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
+  g.drawImage(img, sx, sy, size, size, 0, 0, d, d);
+  g.globalCompositeOperation = 'destination-in';
+  g.beginPath(); g.arc(d / 2, d / 2, d / 2, 0, Math.PI * 2); g.closePath(); g.fill();
+  return c;
+}
+
+function prepareScrim() {
+  const c = mk(W, H), g = c.getContext('2d');
+  const y0 = PORTRAIT ? H * 0.38 : H * 0.28;
+  const gr = g.createLinearGradient(0, y0, 0, H);
+  const stops = PORTRAIT ? [[0, 0], [0.2, 0.18], [0.4, 0.48], [0.65, 0.72], [1, 0.86]]
+                         : [[0, 0], [0.2, 0.2], [0.42, 0.5], [0.66, 0.72], [1, 0.86]];
+  for (const [o, a] of stops) gr.addColorStop(o, `rgba(${INK_RGB},${a})`);
+  g.fillStyle = gr; g.fillRect(0, y0, W, H - y0);
+  return c;
+}
+
+// ---------- layout ----------
+const LAY = {};
+function computeLayout() {
+  LAY.pad = PORTRAIT ? px(76) : px(104);
+  LAY.right = W - LAY.pad;
+  LAY.textW = PORTRAIT ? W - 2 * LAY.pad : Math.min(px(1080), W * 0.58);
+  LAY.legalY = PORTRAIT ? H - px(212) : H - px(58);        // legal line baseline
+  LAY.ruleY = LAY.legalY - (PORTRAIT ? px(50) : px(46));   // hairline
+  LAY.blockBottom = LAY.ruleY - (PORTRAIT ? px(46) : px(40)); // lowest text baseline
+  LAY.fontLegal = font(500, px(27), SANS);
+  LAY.fontKicker = font(600, px(30), SANS);
+  LAY.fontPill = font(600, px(27), SANS);
+  LAY.fontFacts = font(500, px(40), SANS);
+  LAY.fontPrice = font(700, px(56), SANS);
+  LAY.titleSizes = [62, 58, 54, 50, 46].map(px);
+}
+
+function measure(f, s) { ctx.font = f; return ctx.measureText(s).width; }
+
+function wrapTitle(text, size, maxW) {
+  const f = font(600, size, SERIF);
+  if (measure(f, text) <= maxW) return [text];
+  const words = text.split(/\s+/);
+  let best = null;
+  for (let k = 1; k < words.length; k++) {
+    if (/\d$/.test(words[k - 1])) continue;             // never split a number from its unit ("80 מ״ר", "ו-2 חניות")
+    const a = words.slice(0, k).join(' '), b = words.slice(k).join(' ');
+    const wa = measure(f, a), wb = measure(f, b);
+    if (wa > maxW || wb > maxW) continue;
+    let score = Math.max(wa, wb);
+    if (/[,،]$/.test(a)) score -= 0.22 * maxW;        // prefer breaking after the comma (title, place)
+    if (wb > wa * 1.25) score += 0.04 * maxW;          // avoid a heavy last line
+    if (/^(של|על|עם|מול|את|או|אל|לפני|אחרי|בין)$/.test(words[k - 1])) score += 0.16 * maxW;  // no dangling preposition
+    if (!best || score < best.score) best = { lines: [a, b], score };
+  }
+  return best ? best.lines : null;
+}
+
+function layoutListing(L) {
+  const lay = { items: [] };
+  let titleSize = LAY.titleSizes[LAY.titleSizes.length - 1], lines = null;
+  for (const s of LAY.titleSizes) { lines = wrapTitle(L.title, s, LAY.textW); if (lines) { titleSize = s; break; } }
+  if (!lines) {   // last resort: greedy 3 lines at the smallest size
+    const f = font(600, titleSize, SERIF); lines = []; let cur = '';
+    for (const w of L.title.split(/\s+/)) { const tryS = cur ? cur + ' ' + w : w; if (measure(f, tryS) > LAY.textW && cur) { lines.push(cur); cur = w; } else cur = tryS; }
+    if (cur) lines.push(cur);
+  }
+  // one-line elements shrink (never clip) when a long string would overflow the text column
+  const fitFont = (weight, size, fam, text, minSize, maxW) => {
+    let s = size;
+    while (s > minSize && measure(font(weight, s, fam), text) > maxW) s -= 2;
+    return font(weight, s, fam);
+  };
+  let y = LAY.blockBottom;
+  const order = [];  // bottom-up
+  if (L.price) { order.push({ kind: 'price', text: L.price, font: fitFont(700, px(56), SANS, L.price, px(36), LAY.textW), color: PAL.paper, y }); y -= px(80); }
+  const factsText = (L.facts || []).join('  ·  ');
+  if (factsText) { order.push({ kind: 'facts', text: factsText, font: fitFont(500, px(40), SANS, factsText, px(28), LAY.textW), color: 'rgba(255,255,255,0.93)', y }); y -= px(88); }
+  const lh = Math.round(titleSize * 1.24);
+  for (let i = lines.length - 1; i >= 0; i--) { order.push({ kind: 'title', text: lines[i], font: font(600, titleSize, SERIF), color: PAL.paper, y }); if (i > 0) y -= lh; }
+  y -= Math.round(titleSize * 0.80) + px(36);
+  const pillW = L.deal ? measure(LAY.fontPill, L.deal) + px(30) + px(18) : 0;
+  order.push({ kind: 'kicker', deal: L.deal || '', text: L.area || '', y,
+               font: fitFont(600, px(30), SANS, L.area || '', px(22), LAY.textW - pillW) });
+  // entrance order top-down: kicker, title lines, facts, price
+  const top = order.slice().reverse();
+  top.forEach((it, i) => { it.stagger = i; });
+  lay.items = top;
+  lay.titleSize = titleSize;
+  lay.top = y - px(40);
+  return lay;
+}
+
+// ---------- timeline ----------
+function buildTimeline(n) {
+  SEG = [];
+  for (let i = 0; i < n; i++) {
+    const S = TL.intro + i * TL.listing;
+    const fadeIn = i === 0 ? TL.bookend : TL.xfade;
+    const nextFade = i === n - 1 ? TL.bookend : TL.xfade;
+    SEG.push({ S, fin0: S - fadeIn / 2, fin1: S + fadeIn / 2, vis1: S + TL.listing + nextFade / 2 });
+  }
+  const Sout = TL.intro + n * TL.listing;
+  T_TOTAL = Sout + TL.outro;
+  return Sout;
+}
+let S_OUT = 0;
+
+// ---------- drawing ----------
+function drawPhoto(P, alpha, p, zoomIn) {
+  if (alpha <= 0) return;
+  ctx.globalAlpha = alpha;
+  const e = easeInOutSine(p);
+  if (P.fit === 'cover') {
+    const z = zoomIn ? 1 + (TL.zoom - 1) * e : TL.zoom - (TL.zoom - 1) * e;
+    const vw = P.PW / z, vh = P.PH / z;
+    const vx = P.ax * (P.PW - vw), vy = P.ay * (P.PH - vh);
+    ctx.drawImage(P.base, vx, vy, vw, vh, 0, 0, W, H);
+  } else {
+    ctx.drawImage(P.bg, 0, 0);
+    const Z = P.Zf;
+    const z = zoomIn ? 1 + (Z - 1) * e : Z - (Z - 1) * e;
+    const vw = P.PW / z, vh = P.PH / z;
+    const vx = P.ax * (P.PW - vw), vy = P.ay * (P.PH - vh);
+    ctx.drawImage(P.base, vx, vy, vw, vh, P.rect.x, P.rect.y, P.rect.w, P.rect.h);
+  }
+  ctx.globalAlpha = 1;
+}
+
+function textAt(str, x, y, f, color, align, dir, alpha) {
+  if (alpha <= 0 || !str) return;
+  ctx.globalAlpha = alpha;
+  ctx.font = f; ctx.fillStyle = color; ctx.textAlign = align; ctx.direction = dir || 'rtl';
+  ctx.fillText(str, x, y);
+  ctx.globalAlpha = 1;
+}
+
+function roundRect(x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y); ctx.arcTo(x + w, y, x + w, y + r, r);
+  ctx.lineTo(x + w, y + h - r); ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+  ctx.lineTo(x + r, y + h); ctx.arcTo(x, y + h, x, y + h - r, r);
+  ctx.lineTo(x, y + r); ctx.arcTo(x, y, x + r, y, r); ctx.closePath();
+}
+
+function drawListingText(L, tau) {
+  const outA = 1 - easeInOutSine(ramp(tau, TL.listing - 0.45, TL.listing - 0.15));
+  if (outA <= 0) return;
+  for (const it of L.lay.items) {
+    const k = ramp(tau, 0.22 + 0.075 * it.stagger, 0.22 + 0.075 * it.stagger + 0.6);
+    const e = easeOutCubic(k);
+    const a = e * outA;
+    if (a <= 0) continue;
+    const dy = Math.round((1 - e) * px(18));
+    const y = it.y + dy;
+    if (it.kind === 'kicker') {
+      let x = LAY.right;
+      if (it.deal) {
+        ctx.font = LAY.fontPill;
+        const tw = ctx.measureText(it.deal).width;
+        const ph = px(44), pw = Math.round(tw + px(30));
+        ctx.globalAlpha = a;
+        ctx.fillStyle = PAL.sea;
+        roundRect(x - pw, y - Math.round(ph * 0.74), pw, ph, Math.round(ph / 2));
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        textAt(it.deal, x - pw / 2, y, LAY.fontPill, PAL.white, 'center', 'rtl', a);
+        x -= pw + px(18);
+      }
+      textAt(it.text, x, y, it.font || LAY.fontKicker, PAL.sand, 'right', 'rtl', a);
+    } else {
+      textAt(it.text, LAY.right, y, it.font, it.color, 'right', 'rtl', a);
+    }
+  }
+}
+
+function drawIntro(t) {
+  const out = 1 - easeInOutSine(ramp(t, 2.25, 2.62));
+  if (out <= 0) return;
+  const d = PORTRAIT ? px(460) : px(340);
+  const cx = W / 2, cy = PORTRAIT ? Math.round(H * 0.365) : Math.round(H * 0.305);
+  // the first frame is a complete title card (messaging apps use it as the thumbnail);
+  // motion: the portrait settles in slowly and the ring draws around it
+  if (PORTRAIT_IMG) {
+    const s = 0.955 + 0.045 * easeOutCubic(ramp(t, 0, 2.4));
+    const dd = d * s;
+    ctx.globalAlpha = out;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(PORTRAIT_IMG, cx - dd / 2, cy - dd / 2, dd, dd);
+    ctx.globalAlpha = 1;
+  }
+  const rp = easeInOutCubic(ramp(t, 0.05, 1.45));
+  if (rp > 0) {
+    ctx.globalAlpha = 0.75 * out;
+    ctx.strokeStyle = PAL.sand; ctx.lineWidth = Math.max(2, px(2.5));
+    ctx.beginPath();
+    ctx.arc(cx, cy, d / 2 + px(18), -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * rp);
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  const ringBottom = cy + d / 2 + px(18);
+  const nameY = ringBottom + (PORTRAIT ? px(150) : px(128));
+  const brandY = nameY + (PORTRAIT ? px(90) : px(78));
+  const ruleY = brandY + (PORTRAIT ? px(52) : px(44));
+  const licY = ruleY + (PORTRAIT ? px(72) : px(62));
+  textAt(DATA.name, cx, nameY, font(600, PORTRAIT ? px(116) : px(100), SERIF), PAL.paper, 'center', 'rtl', out);
+  textAt(DATA.brand, cx, brandY, font(400, PORTRAIT ? px(54) : px(48), SERIF), PAL.sand, 'center', 'rtl', out);
+  const e = easeInOutCubic(ramp(t, 0.25, 1.15));
+  if (e > 0) { const rw = px(110) * e; ctx.globalAlpha = 0.5 * out; ctx.fillStyle = PAL.sand; ctx.fillRect(Math.round(cx - rw / 2), ruleY, Math.round(rw), Math.max(2, px(2))); ctx.globalAlpha = 1; }
+  textAt(`${DATA.role} · רישיון ${DATA.licence}`, cx, licY, font(500, PORTRAIT ? px(38) : px(36), SANS), 'rgba(255,255,255,0.84)', 'center', 'rtl', out);
+}
+
+function drawOutro(t) {
+  const tau = t - S_OUT;
+  if (tau < 0) return;
+  const el = (a, b) => easeOutCubic(ramp(tau, a, b));
+  const rise = e => Math.round((1 - e) * px(16));
+  const cx = W / 2;
+  const headY = PORTRAIT ? Math.round(H * 0.40) : Math.round(H * 0.36);
+  const ruleY = headY + (PORTRAIT ? px(62) : px(54));
+  const phoneY = ruleY + (PORTRAIT ? px(168) : px(150));
+  const urlY = phoneY + (PORTRAIT ? px(90) : px(80));
+  let e = el(0.30, 0.90); textAt(DATA.cta, cx, headY + rise(e), font(600, PORTRAIT ? px(92) : px(84), SERIF), PAL.paper, 'center', 'rtl', e);
+  e = el(0.42, 1.02);
+  if (e > 0) { const rw = px(110) * e; ctx.globalAlpha = 0.5; ctx.fillStyle = PAL.sand; ctx.fillRect(Math.round(cx - rw / 2), ruleY, Math.round(rw), Math.max(2, px(2))); ctx.globalAlpha = 1; }
+  e = el(0.50, 1.10); textAt(DATA.phone, cx, phoneY + rise(e), font(700, PORTRAIT ? px(118) : px(110), SANS), PAL.white, 'center', 'ltr', e);
+  e = el(0.62, 1.22); textAt(DATA.site, cx, urlY + rise(e), font(500, PORTRAIT ? px(40) : px(38), SANS), PAL.sand, 'center', 'ltr', e);
+}
+
+function draw(t) {
+  ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+  ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'low';
+  ctx.fillStyle = PAL.deep; ctx.fillRect(0, 0, W, H);
+  const n = LISTINGS.length;
+  // photos, each new layer fades in over the previous one (no brightness dip)
+  let presence = 0;
+  for (let i = 0; i < n; i++) {
+    const s = SEG[i];
+    if (t < s.fin0 || t > s.vis1) continue;
+    const a = easeInOutSine(ramp(t, s.fin0, s.fin1));
+    const p = (t - s.fin0) / (s.vis1 - s.fin0);
+    drawPhoto(LISTINGS[i].P, a, p, i % 2 === 0);
+    presence = i === 0 ? Math.max(presence, a) : 1;
+  }
+  if (presence > 0) {
+    ctx.globalAlpha = presence; ctx.drawImage(SCRIM, 0, 0);
+    ctx.globalAlpha = 0.30 * presence; ctx.fillStyle = PAL.sand;
+    ctx.fillRect(PORTRAIT ? LAY.pad : LAY.right - LAY.textW, LAY.ruleY, PORTRAIT ? W - 2 * LAY.pad : LAY.textW, Math.max(1, px(1.5)));
+    ctx.globalAlpha = 1;
+  }
+  for (let i = 0; i < n; i++) {
+    const tau = t - SEG[i].S;
+    if (tau < 0 || tau > TL.listing) continue;
+    drawListingText(LISTINGS[i], tau);
+  }
+  // outro backdrop fades in over the last photo
+  const oA = easeInOutSine(ramp(t, S_OUT - TL.bookend / 2, S_OUT + TL.bookend / 2));
+  if (oA > 0) { ctx.globalAlpha = oA; ctx.fillStyle = PAL.deep; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; }
+  if (t < 3) drawIntro(t);
+  drawOutro(t);
+  // legal line (Israeli broker ethics reg. 19): fully visible before the first listing appears, until the end
+  const lA = easeInOutSine(ramp(t, 2.30, 2.66));
+  textAt(`${DATA.name} · ${DATA.role} · רישיון ${DATA.licence}`, LAY.right, LAY.legalY, LAY.fontLegal, 'rgba(255,255,255,0.86)', 'right', 'rtl', lA);
+}
+
+// ---------- boot ----------
+async function boot() {
+  const res = await fetch(`data/${BROKER}.json`, { cache: 'no-store' });
+  if (!res.ok) throw new Error('data file not found: data/' + BROKER + '.json');
+  DATA = tidyData(await res.json());
+  await loadFonts();
+  computeLayout();
+  SCRIM = prepareScrim();
+  if (DATA.portrait && DATA.portrait.src) {
+    const pim = await loadImage(DATA.portrait.src);
+    PORTRAIT_IMG = preparePortrait(pim, DATA.portrait, PORTRAIT ? px(460) : px(340));
+  }
+  LISTINGS = [];
+  const chosen = MAXL > 0 ? DATA.listings.slice(0, MAXL) : DATA.listings;
+  for (const L of chosen) {
+    const ph = chooseHero(L);
+    const img = await loadImage(ph.src);
+    const P = preparePhoto(img, ph, L.fit && L.fit[ORIENT]);
+    LISTINGS.push(Object.assign({}, L, { P, hero: ph.src, lay: layoutListing(L) }));
+    setStatus(`prepared ${LISTINGS.length}/${chosen.length}`);
+  }
+  S_OUT = buildTimeline(LISTINGS.length);
+  window.__info = {
+    broker: BROKER, width: W, height: H, fps: FPS, duration: T_TOTAL, orientation: ORIENT,
+    textWidth: LAY.textW,
+    listings: LISTINGS.map(L => ({ key: L.key, hero: L.hero, fit: L.P.fit, upscale: +L.P.upscale.toFixed(2), titleSize: L.lay.titleSize,
+      title: L.lay.items.filter(i => i.kind === 'title').map(i => i.text),
+      widest: Math.round(Math.max(...L.lay.items.filter(i => i.kind !== 'kicker').map(i => measure(i.font, i.text)))) })),
+  };
+  draw(0);
+  window.__state = 'ready';
+  setStatus(`ready ${W}x${H} ${T_TOTAL.toFixed(1)}s`);
+}
+
+window.__drawAt = t => { draw(t); return canvas.toDataURL('image/png'); };
+
+function pickMime() {
+  const c = ['video/mp4;codecs=avc1.640028', 'video/mp4;codecs=avc1.4d0028', 'video/mp4;codecs=avc1.42E028',
+             'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'];
+  const forced = Q.get('mime');
+  if (forced && MediaRecorder.isTypeSupported(forced)) return forced;
+  return c.find(m => MediaRecorder.isTypeSupported(m)) || '';
+}
+window.__mimeSupport = () => {
+  const c = ['video/mp4;codecs=avc1', 'video/mp4;codecs=avc1.640028', 'video/mp4;codecs=avc1.4d0028', 'video/mp4;codecs=avc1.42E028', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm'];
+  return Object.fromEntries(c.map(m => [m, MediaRecorder.isTypeSupported(m)]));
+};
+
+let BLOB = null;
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+// Real-time capture, frame exact: the k-th captured frame always shows time k/FPS (never "whatever time it is"),
+// and it is handed to the recorder with requestFrame() as close as possible to its wall-clock slot.
+// render.py then stamps the samples at exactly 1/FPS (constant frame rate) when no frame was lost.
+function captureRun(seconds, drawFn, opts) {
+  return new Promise((resolve, reject) => {
+    const mime = pickMime();
+    const stream = canvas.captureStream(0);
+    const track = stream.getVideoTracks()[0];
+    const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: KBPS * 1000 });
+    const chunks = [];
+    // hold the first and the last picture for a few frames: an encoder that skips a frame at the very
+    // start or end of a take then costs nothing
+    const pre = (opts && opts.hold) || 0, post = (opts && opts.hold) || 0;
+    const N = Math.round(seconds * FPS) + 1 + pre + post;  // content frames show t = 0 .. seconds
+    const stats = { mime, kbps: KBPS, frames: 0, slotLateMsMax: 0, slotLateMsSum: 0, tickGapMax: 0 };
+    rec.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+    rec.onerror = e => reject(new Error('recorder error: ' + (e.error && e.error.message)));
+    rec.onstop = () => {
+      stream.getTracks().forEach(tr => tr.stop());
+      stats.blob = new Blob(chunks, { type: (mime || 'video/webm').split(';')[0] });
+      stats.size = stats.blob.size;
+      stats.slotLateMsAvg = +(stats.slotLateMsSum / Math.max(1, stats.frames)).toFixed(2);
+      delete stats.slotLateMsSum;
+      resolve(stats);
+    };
+    let t0 = null, k = 0, lastTick = null;
+    const tick = () => {
+      const now = performance.now();
+      if (t0 === null) t0 = now;
+      if (lastTick !== null) stats.tickGapMax = Math.max(stats.tickGapMax, +(now - lastTick).toFixed(1));
+      lastTick = now;
+      if (k < N && now - t0 >= (k * 1000) / FPS - 0.5) {
+        const late = Math.max(0, now - t0 - (k * 1000) / FPS);
+        stats.slotLateMsMax = Math.max(stats.slotLateMsMax, +late.toFixed(1)); stats.slotLateMsSum += late;
+        drawFn(Math.min(seconds, Math.max(0, (k - pre) / FPS)));
+        track.requestFrame();
+        stats.frames++; k++;
+        if (opts && opts.status) setStatus(`rec ${(k / FPS).toFixed(2)} / ${seconds.toFixed(1)}`);
+      }
+      if (k < N) requestAnimationFrame(tick);
+      else setTimeout(() => { rec.requestData(); rec.stop(); }, 700);   // let the encoder flush the last frames
+    };
+    rec.start(1000);
+    requestAnimationFrame(tick);
+  });
+}
+
+window.__record = async () => {
+  window.__state = 'recording';
+  // 1) warm-up take, discarded: lets Chrome initialise the H.264 encoder and GPU readback path,
+  //    so the real take does not start with a frozen first second
+  const warm = await captureRun(1.5, () => draw(0), null);
+  await sleep(300);
+  // 2) the real take
+  const HOLD = 6;   // 0.2 s hold of the title card at the start and of the outro at the end
+  const stats = await captureRun(T_TOTAL, t => draw(Math.min(t, T_TOTAL)), { status: true, hold: HOLD });
+  BLOB = stats.blob; delete stats.blob;
+  stats.expectedFrames = Math.round(T_TOTAL * FPS) + 1 + 2 * HOLD;
+  stats.holdFrames = HOLD;
+  stats.fps = FPS; stats.duration = T_TOTAL;
+  stats.warmupFrames = warm.frames;
+  window.__state = 'done';
+  return stats;
+};
+
+window.__slice = (off, len) => new Promise(res => {
+  const fr = new FileReader();
+  fr.onload = () => res(fr.result.slice(fr.result.indexOf(',') + 1));
+  fr.readAsDataURL(BLOB.slice(off, off + len));
+});
+
+function preview() {
+  let t0 = performance.now();
+  const loop = now => { let t = (now - t0) / 1000; if (t > T_TOTAL + 1) { t0 = now; t = 0; } draw(Math.min(t, T_TOTAL)); requestAnimationFrame(loop); };
+  requestAnimationFrame(loop);
+}
+
+boot().then(() => {
+  if (MODE === 'still') draw(+(Q.get('t') || 0));
+  else if (MODE === 'preview') preview();
+}).catch(err => { window.__state = 'error'; window.__error = String(err && err.stack || err); setStatus('ERROR ' + err); console.error(err); });
+</script>
+</body>
+</html>

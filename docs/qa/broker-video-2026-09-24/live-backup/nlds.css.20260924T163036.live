@@ -223,14 +223,6 @@
 :root body .nlds .nlds-ibar .nlds-ibar__label{position:absolute !important;width:1px !important;height:1px !important;overflow:hidden !important;clip:rect(0 0 0 0) !important;white-space:nowrap !important}}
 @media print{:root body .nlds .nlds-ibar{display:none !important}}
 @media (prefers-reduced-motion: reduce){:root body .nlds *:not(#nlds-rm){transition:none !important}}
-:root body .nlds .nlds-video{display:grid !important;gap:var(--nlds-space-14) !important}
-:root body .nlds .nlds-video__title{font-family:var(--nlds-font-serif) !important;font-weight:600 !important;font-size:24px !important;line-height:1.25 !important;letter-spacing:-.005em !important;color:var(--nlds-sa-ink) !important;margin:0 !important;text-wrap:balance !important}
-:root body .nlds .nlds-video__frame{border-radius:var(--nlds-radius-16) !important;overflow:hidden !important;background:var(--nlds-sa-deep) !important;border:1px solid var(--nlds-sa-line) !important}
-:root body .nlds .nlds-video__v{display:block !important;width:100% !important;height:auto !important;background:var(--nlds-sa-deep) !important}
-:root body .nlds .nlds-video__v--tall{display:none !important}
-:root body .nlds .nlds-video__stand{position:relative !important}
-:root body .nlds .nlds-video__stand > span{position:absolute !important;inset:0 !important;display:flex !important;align-items:center !important;justify-content:center !important;gap:.3em !important;color:var(--nlds-sa-paper) !important;font-size:14px !important;font-weight:600 !important}
-:root body .nlds .nlds-video__meta{font-size:14px !important;line-height:1.5 !important;color:var(--nlds-sa-ink2) !important;margin:0 !important}
 /* site layer */
 :root body .nlds{font-size:16px !important}
 :root body .nlds :is(p, a, span, b, strong, em, i, small, time, label, li){font-family:inherit !important}
@@ -252,8 +244,6 @@
 :root body .nlds .nlds-profile__ctas{width:100% !important}
 :root body .nlds .nlds-profile__ctas .nlds-btn{flex:1 !important;justify-content:center !important;padding-inline:10px !important}
 :root body .nlds .nlds-endorse__list{grid-template-columns:minmax(0, 1fr) !important}
-:root body .nlds .nlds-video__v--tall{display:block !important;max-height:80vh !important}
-:root body .nlds .nlds-video__v--wide{display:none !important}
 :root body .nlds .nlds-bfeat:has(> .nlds-bfeat__cta){grid-template-rows:none !important;row-gap:var(--nlds-space-14) !important}
 :root body .nlds .nlds-bfeat:has(> .nlds-bfeat__cta) > .nlds-bfeat__portrait{grid-row:auto !important;align-self:start !important}
 :root body .nlds .nlds-bfeat > .nlds-bfeat__cta{grid-column:1 / -1 !important;padding-top:0 !important}
