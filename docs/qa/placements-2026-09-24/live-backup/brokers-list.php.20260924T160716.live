@@ -54,23 +54,9 @@ if ( ! function_exists( 'nadlan_bl_active_listings' ) ) {
 }
 
 if ( ! function_exists( 'nadlan_bl_feature_card' ) ) {
-	/**
-	 * BrokerFeatureCard. $args lets a broker's advertisement on a content page (inc/placements.php) reuse it:
-	 * name_tag (h3 here; a <p> inside an article, so the page outline stays the article's), wa_label, wa_text,
-	 * site_label, line (one more line under the role), link_attrs (tracking attributes on both buttons).
-	 */
-	function nadlan_bl_feature_card( $id, $args = array() ) {
+	function nadlan_bl_feature_card( $id ) {
 		$name   = function_exists( 'nadlan_prof_person_name' ) ? (string) nadlan_prof_person_name( $id ) : get_the_title( $id );
 		$role   = function_exists( 'nadlan_dir_prof_label' ) ? nadlan_dir_prof_label( 'metavech', $id ) : 'מתווך';
-		$args   = wp_parse_args( $args, array(
-			'name_tag'   => 'h3',
-			'wa_label'   => 'תיאום סיור',
-			'wa_text'    => 'שלום ' . $name . ', אשמח לתאם סיור באחד הנכסים שלך (nad-lan.co.il)',
-			'site_label' => 'מתווכת' === $role ? 'לעמוד המתווכת' : 'לעמוד המתווך',
-			'line'       => '',
-			'link_attrs' => '',
-		) );
-		$tag    = in_array( $args['name_tag'], array( 'h2', 'h3', 'p' ), true ) ? $args['name_tag'] : 'h3';
 		$brand  = trim( (string) get_post_meta( $id, 'company_name', true ) );
 		$city   = trim( (string) get_post_meta( $id, 'city', true ) );
 		$lic    = trim( (string) get_post_meta( $id, 'license_number', true ) );
@@ -86,16 +72,15 @@ if ( ! function_exists( 'nadlan_bl_feature_card' ) ) {
 <article class="nlds-bfeat">
 	<figure class="nlds-bfeat__portrait"><?php echo $photo; // phpcs:ignore ?></figure>
 	<div class="nlds-bfeat__body">
-		<<?php echo $tag; ?> class="nlds-bfeat__name"><a href="<?php echo esc_url( $href ); ?>"<?php echo $args['link_attrs']; // phpcs:ignore ?>><?php echo esc_html( $name ); ?></a></<?php echo $tag; ?>>
+		<h3 class="nlds-bfeat__name"><a href="<?php echo esc_url( $href ); ?>"><?php echo esc_html( $name ); ?></a></h3>
 		<p class="nlds-bfeat__role"><b><?php echo esc_html( $role ); ?></b><?php echo '' !== $brand && false === mb_strpos( $name, $brand ) ? ' · ' . esc_html( $brand ) : ''; ?><?php echo '' !== $city ? ' · ' . esc_html( $city ) : ''; ?></p>
-		<?php if ( '' !== trim( (string) $args['line'] ) ) : ?><p class="nlds-bfeat__role"><?php echo esc_html( $args['line'] ); ?></p><?php endif; ?>
 		<?php if ( '' !== $lic ) : ?><span class="nlds-licence"><?php if ( $verified ) : ?><span class="nlds-licence__check" aria-hidden="true">✓</span><?php endif; ?><span>רישיון תיווך <span class="nlds-num"><?php echo esc_html( $lic ); ?></span><?php echo $verified ? ', מאומת בפנקס המתווכים' : ''; ?></span></span><?php endif; ?>
 		<?php if ( $areas ) : ?><div class="nlds-chips" aria-label="האזורים"><?php foreach ( $areas as $a ) : ?><span class="nlds-chip nlds-chip--fact"><?php echo esc_html( $a ); ?></span><?php endforeach; ?></div><?php endif; ?>
 		<?php if ( $count > 0 ) : ?><p class="nlds-bfeat__count"><b class="nlds-num"><?php echo (int) $count; ?></b> נכסים</p><?php endif; ?>
 	</div>
 	<div class="nlds-bfeat__cta">
-		<?php if ( '' !== $wa ) : ?><a class="nlds-btn nlds-btn--primary" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo rawurlencode( (string) $args['wa_text'] ); ?>"<?php echo $args['link_attrs']; // phpcs:ignore ?>><?php echo nlds_icon( 'whatsapp' ); // phpcs:ignore ?><span><?php echo esc_html( $args['wa_label'] ); ?></span></a><?php endif; ?>
-		<a class="nlds-btn nlds-btn--secondary" href="<?php echo esc_url( $href ); ?>"<?php echo $args['link_attrs']; // phpcs:ignore ?>><span><?php echo esc_html( $args['site_label'] ); ?></span><?php echo nlds_icon( 'forward' ); // phpcs:ignore ?></a>
+		<?php if ( '' !== $wa ) : ?><a class="nlds-btn nlds-btn--primary" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo rawurlencode( 'שלום ' . $name . ', אשמח לתאם סיור באחד הנכסים שלך (nad-lan.co.il)' ); ?>"><?php echo nlds_icon( 'whatsapp' ); // phpcs:ignore ?><span>תיאום סיור</span></a><?php endif; ?>
+		<a class="nlds-btn nlds-btn--secondary" href="<?php echo esc_url( $href ); ?>"><span><?php echo 'מתווכת' === $role ? 'לעמוד המתווכת' : 'לעמוד המתווך'; ?></span><?php echo nlds_icon( 'forward' ); // phpcs:ignore ?></a>
 	</div>
 </article>
 		<?php

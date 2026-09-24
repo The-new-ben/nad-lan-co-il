@@ -1,0 +1,15 @@
+{
+  "released": "1.72.246",
+  "from": "1.72.245",
+  "at": "2026-09-24 16:07:26",
+  "files": {
+    "inc/brokers-list.php": "935fcfa1c830c6be973cd47cdb578233",
+    "inc/placements.php": "c7737e22f23f7c80cfc95c3467eafbab",
+    "nadlan-config.php": "0b0febd20435f08bb14b7104a323ad2f"
+  },
+  "live_before": {
+    "inc/brokers-list.php": "9a7c836ea1850d97fce32ed8b40afc31",
+    "inc/placements.php": "6b8b5e2e4cba06d2883dfec2e361859d",
+    "nadlan-config.php": "b0c158960ae59a89d13262d81b7c68a0"
+  }
+}

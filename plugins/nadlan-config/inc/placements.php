@@ -11,6 +11,11 @@
  *
  * Nothing shows until a placement is published AND active. An admin can preview a draft on its page with
  * ?nlpl_preview=<placement id>.
+ *
+ * 1.72.246: the card is the design system's BrokerFeatureCard (the same one as on /brokers/), under a "פרסומת" label,
+ * with the broker's name as a paragraph so the article's outline stays the article's. The position can be a number of
+ * sections or a word from a section heading ("מחיר": right after the prices section), and each page line in the
+ * paths can carry its own position ("/property-value/ 4").
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
@@ -31,8 +36,8 @@ if ( ! function_exists( 'nadlan_pl_fields' ) ) {
 	function nadlan_pl_fields() {
 		return array(
 			'pl_pro'      => 'מזהה הכרטיס של המתווך',
-			'pl_paths'    => 'עמודים (נתיב בכל שורה, למשל /property-value/ או /north-tel-aviv/*)',
-			'pl_after_h2' => 'אחרי כמה פרקים (מספר; 0 = בסוף העמוד)',
+			'pl_paths'    => 'עמודים: נתיב בכל שורה, למשל /property-value/ או /north-tel-aviv/* (כוכבית = כל העמודים מתחת). אחרי הנתיב אפשר לכתוב מיקום לעמוד הזה, למשל /property-value/ 4',
+			'pl_after_h2' => 'מיקום: אחרי כמה פרקים (מספר), או מילה מכותרת הפרק שאחריו הכרטיס יופיע (למשל מחיר); 0 = בסוף העמוד',
 			'pl_headline' => 'כותרת הכרטיס (לא חובה)',
 			'pl_ask'      => 'הטקסט המוכן בוואטסאפ (לא חובה)',
 			'pl_start'    => 'מתחיל בתאריך (YYYY-MM-DD, לא חובה)',
@@ -71,87 +76,124 @@ add_action( 'save_post_nadlan_placement', function ( $post_id ) {
 	}
 } );
 
-if ( ! function_exists( 'nadlan_pl_path_matches' ) ) {
-	function nadlan_pl_path_matches( $paths, $here ) {
+if ( ! function_exists( 'nadlan_pl_match' ) ) {
+	/** false when no line matches this page; else the position written after the matching path ('' when none). */
+	function nadlan_pl_match( $paths, $here ) {
 		$here = '/' . trim( (string) $here, '/' ) . '/';
-		foreach ( preg_split( '/\R/', (string) $paths ) as $p ) {
-			$p = trim( $p );
+		foreach ( preg_split( '/\R/', (string) $paths ) as $line ) {
+			$parts = preg_split( '/\s+/u', trim( $line ), 2 );
+			$p     = rawurldecode( (string) $parts[0] );
+			$pos   = isset( $parts[1] ) ? trim( $parts[1] ) : '';
 			if ( '' === $p ) { continue; }
-			$p = rawurldecode( $p );
 			if ( '*' === substr( $p, -1 ) ) {
+				// "/north-tel-aviv/*" is that page and every page under it, never "/north-tel-aviv-new-projects/"
 				$pre = '/' . trim( substr( $p, 0, -1 ), '/' );
-				if ( 0 === strpos( rtrim( $here, '/' ), $pre ) ) { return true; }
+				$h   = rtrim( $here, '/' );
+				if ( $h === $pre || 0 === strpos( $h, $pre . '/' ) ) { return $pos; }
 			} elseif ( '/' . trim( $p, '/' ) . '/' === $here ) {
-				return true;
+				return $pos;
 			}
 		}
 		return false;
 	}
 }
 
+if ( ! function_exists( 'nadlan_pl_path_matches' ) ) {
+	function nadlan_pl_path_matches( $paths, $here ) {
+		return false !== nadlan_pl_match( $paths, $here );
+	}
+}
+
 if ( ! function_exists( 'nadlan_pl_for_request' ) ) {
 	/** The placement for this page: an admin preview first, else the first active one whose paths match and whose dates cover today. */
-	function nadlan_pl_for_request() {
+	function nadlan_pl_for_request( $want = 'id' ) {
 		static $memo = null;
-		if ( null !== $memo ) { return $memo; }
-		$memo = 0;
-		if ( is_admin() || ! is_singular() ) { return $memo; }
-		$here = (string) wp_parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH );
-		$here = rawurldecode( $here );
-		if ( isset( $_GET['nlpl_preview'] ) && current_user_can( 'edit_pages' ) ) {
-			$pid = (int) $_GET['nlpl_preview'];
-			if ( 'nadlan_placement' === get_post_type( $pid ) ) { $memo = $pid; return $memo; }
+		if ( null === $memo ) {
+			$memo = array( 'id' => 0, 'pos' => '' );
+			if ( ! is_admin() && is_singular() ) {
+				$here = rawurldecode( (string) wp_parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH ) );
+				$pick = function ( $pid, $line_pos ) {
+					$pos = false !== $line_pos && '' !== $line_pos ? $line_pos : (string) get_post_meta( $pid, 'pl_after_h2', true );
+					return array( 'id' => (int) $pid, 'pos' => $pos );
+				};
+				if ( isset( $_GET['nlpl_preview'] ) && current_user_can( 'edit_pages' ) && 'nadlan_placement' === get_post_type( (int) $_GET['nlpl_preview'] ) ) {
+					$pid  = (int) $_GET['nlpl_preview'];
+					$memo = $pick( $pid, nadlan_pl_match( get_post_meta( $pid, 'pl_paths', true ), $here ) );
+				} else {
+					$ids = get_posts( array( 'post_type' => 'nadlan_placement', 'post_status' => 'publish', 'numberposts' => 50, 'fields' => 'ids',
+						'orderby' => 'date', 'order' => 'ASC', 'meta_query' => array( array( 'key' => 'pl_active', 'value' => '1' ) ) ) );
+					$today = current_time( 'Y-m-d' );
+					foreach ( $ids as $pid ) {
+						$s = (string) get_post_meta( $pid, 'pl_start', true );
+						$e = (string) get_post_meta( $pid, 'pl_end', true );
+						if ( ( '' !== $s && $today < $s ) || ( '' !== $e && $today > $e ) ) { continue; }
+						$m = nadlan_pl_match( get_post_meta( $pid, 'pl_paths', true ), $here );
+						if ( false !== $m ) { $memo = $pick( $pid, $m ); break; }
+					}
+				}
+			}
 		}
-		$ids = get_posts( array( 'post_type' => 'nadlan_placement', 'post_status' => 'publish', 'numberposts' => 50, 'fields' => 'ids',
-			'meta_query' => array( array( 'key' => 'pl_active', 'value' => '1' ) ) ) );
-		$today = current_time( 'Y-m-d' );
-		foreach ( $ids as $pid ) {
-			$s = (string) get_post_meta( $pid, 'pl_start', true );
-			$e = (string) get_post_meta( $pid, 'pl_end', true );
-			if ( ( '' !== $s && $today < $s ) || ( '' !== $e && $today > $e ) ) { continue; }
-			if ( nadlan_pl_path_matches( get_post_meta( $pid, 'pl_paths', true ), $here ) ) { $memo = (int) $pid; break; }
-		}
-		return $memo;
+		return 'pos' === $want ? $memo['pos'] : $memo['id'];
 	}
 }
 
 if ( ! function_exists( 'nadlan_pl_card' ) ) {
 	function nadlan_pl_card( $pl ) {
 		$pro = (int) get_post_meta( $pl, 'pl_pro', true );
-		if ( $pro <= 0 || 'nadlan_professional' !== get_post_type( $pro ) || 'publish' !== get_post_status( $pro ) ) { return ''; }
-		$name   = function_exists( 'nadlan_prof_person_name' ) ? (string) nadlan_prof_person_name( $pro ) : get_the_title( $pro );
-		$label  = function_exists( 'nadlan_dir_prof_label' ) ? nadlan_dir_prof_label( (string) get_post_meta( $pro, 'profession', true ), $pro ) : '';
-		$lic    = trim( (string) get_post_meta( $pro, 'license_number', true ) );
-		$brand  = trim( (string) get_post_meta( $pro, 'company_name', true ) );
-		$areas  = array_slice( array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $pro, 'areas_served', true ) ) ) ), 0, 5 );
-		$phone  = (string) get_post_meta( $pro, 'phone', true );
-		$wa     = function_exists( 'nadlan_prof_wa_digits' ) ? (string) nadlan_prof_wa_digits( $phone ) : preg_replace( '/\D/', '', $phone );
-		$site   = (int) get_post_meta( $pro, 'nl_site_he', true );
-		$href   = $site > 0 && 'publish' === get_post_status( $site ) ? get_permalink( $site ) : get_permalink( $pro );
-		$head   = trim( (string) get_post_meta( $pl, 'pl_headline', true ) );
-		$ask    = trim( (string) get_post_meta( $pl, 'pl_ask', true ) );
-		$ask    = '' !== $ask ? $ask : 'שלום ' . $name . ', הגעתי מאתר נדלן ואשמח להתייעץ על הדירה שלי';
-		$photo  = has_post_thumbnail( $pro ) ? get_the_post_thumbnail( $pro, 'thumbnail', array( 'class' => 'nlpl-ph', 'alt' => $name, 'loading' => 'lazy' ) ) : '';
-		$slot   = 'pl-' . (int) $pl;
-		$here   = (int) get_queried_object_id();
-		ob_start(); ?>
-<aside class="nlpl" dir="rtl" data-pl="<?php echo (int) $pl; ?>" data-pro="<?php echo (int) $pro; ?>" data-post="<?php echo $here; ?>" aria-label="<?php echo esc_attr( 'פרסומת: ' . $name ); ?>">
-	<p class="nlpl-tag">פרסומת<?php echo '' !== $label ? ' · ' . esc_html( $label ) : ''; ?><?php echo '' !== $lic ? ' · רישיון ' . esc_html( $lic ) : ''; ?></p>
-	<div class="nlpl-row">
-		<?php echo $photo; // phpcs:ignore ?>
-		<div class="nlpl-id">
-			<p class="nlpl-name"><?php echo esc_html( $name ); ?><?php echo '' !== $brand && false === mb_strpos( $name, $brand ) ? '<span> · ' . esc_html( $brand ) . '</span>' : ''; ?></p>
-			<?php if ( '' !== $head ) : ?><p class="nlpl-head"><?php echo esc_html( $head ); ?></p><?php endif; ?>
-			<?php if ( $areas ) : ?><p class="nlpl-areas"><?php echo esc_html( implode( ', ', $areas ) ); ?></p><?php endif; ?>
-		</div>
-	</div>
-	<div class="nlpl-cta">
-		<a class="nlpl-btn nlpl-main" href="<?php echo esc_url( $href ); ?>" data-nl-ev="place_click" data-nl-slot="<?php echo esc_attr( $slot ); ?>">לנכסים של <?php echo esc_html( $name ); ?></a>
-		<?php if ( '' !== $wa ) : ?><a class="nlpl-btn" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo rawurlencode( $ask ); ?>" data-nl-ev="place_click" data-nl-slot="<?php echo esc_attr( $slot ); ?>">וואטסאפ</a><?php endif; ?>
-	</div>
-</aside>
-		<?php
-		return ob_get_clean();
+		if ( $pro <= 0 || 'nadlan_professional' !== get_post_type( $pro ) || 'publish' !== get_post_status( $pro ) || ! function_exists( 'nadlan_bl_feature_card' ) ) { return ''; }
+		$name  = function_exists( 'nadlan_prof_person_name' ) ? (string) nadlan_prof_person_name( $pro ) : get_the_title( $pro );
+		$first = (string) strtok( $name, ' ' );
+		$ask   = trim( (string) get_post_meta( $pl, 'pl_ask', true ) );
+		$ask   = '' !== $ask ? $ask : 'שלום ' . $first . ', הגעתי מאתר נדלן ואשמח להתייעץ על דירה';
+		$slot  = 'pl-' . (int) $pl;
+		$inner = nadlan_bl_feature_card( $pro, array(
+			'name_tag'   => 'p',
+			'wa_label'   => 'התייעצות בוואטסאפ',
+			'wa_text'    => $ask,
+			'site_label' => 'לנכסים של ' . $first,
+			'line'       => trim( (string) get_post_meta( $pl, 'pl_headline', true ) ),
+			'link_attrs' => ' data-nl-ev="place_click" data-nl-slot="' . esc_attr( $slot ) . '"',
+		) );
+		if ( '' === trim( $inner ) ) { return ''; }
+		// the label is the law: the site is a publisher, and this is the broker's advertisement (name and licence are in the card)
+		return '<aside class="nlds nlpl" dir="rtl" lang="he" data-pl="' . (int) $pl . '" data-pro="' . (int) $pro . '" data-post="' . (int) get_queried_object_id() . '" aria-label="' . esc_attr( 'פרסומת: ' . $name ) . '">'
+			. '<p class="nlds-kicker nlpl-tag">פרסומת</p>' . $inner . '</aside>';
+	}
+}
+
+if ( ! function_exists( 'nadlan_pl_insert' ) ) {
+	/**
+	 * Puts the card where the placement says: after N sections (the end when the page has fewer), or after the first
+	 * section whose heading has the word. A page without such a section gets no card: an advertisement dropped
+	 * under the sources list is worth less than none.
+	 */
+	function nadlan_pl_insert( $content, $card, $pos ) {
+		$pos = trim( (string) $pos );
+		if ( '' === $pos || '0' === $pos ) { return $content . $card; }
+		if ( preg_match( '/^\d+$/', $pos ) ) {
+			// before the (n+1)th section heading, so the card closes the n-th section
+			$n   = (int) $pos;
+			$at  = false;
+			$off = 0;
+			for ( $i = 0; $i <= $n; $i++ ) {
+				$at = strpos( $content, '<h2', $off );
+				if ( false === $at ) { break; }
+				$off = $at + 3;
+			}
+			return false !== $at && $at > 0 ? substr( $content, 0, $at ) . $card . substr( $content, $at ) : $content . $card;
+		}
+		if ( preg_match_all( '/<h2\b[^>]*>(.*?)<\/h2>/is', $content, $m, PREG_OFFSET_CAPTURE ) ) {
+			foreach ( $m[1] as $k => $h ) {
+				$text = html_entity_decode( wp_strip_all_tags( $h[0] ), ENT_QUOTES, 'UTF-8' );
+				if ( false === mb_stripos( $text, $pos ) ) { continue; }
+				if ( isset( $m[0][ $k + 1 ] ) ) {
+					$at = $m[0][ $k + 1 ][1];
+					return substr( $content, 0, $at ) . $card . substr( $content, $at );
+				}
+				return $content . $card; // the matching section is the last one
+			}
+		}
+		return $content;
 	}
 }
 
@@ -161,24 +203,12 @@ add_filter( 'the_content', function ( $content ) {
 	if ( ! $pl ) { return $content; }
 	$card = nadlan_pl_card( $pl );
 	if ( '' === $card ) { return $content; }
-	$n = (int) get_post_meta( $pl, 'pl_after_h2', true );
-	if ( $n > 0 ) {
-		// before the (n+1)th section heading, so the card closes the n-th section
-		$pos = -1;
-		$off = 0;
-		for ( $i = 0; $i <= $n; $i++ ) {
-			$pos = strpos( $content, '<h2', $off );
-			if ( false === $pos ) { break; }
-			$off = $pos + 3;
-		}
-		if ( false !== $pos && $pos > 0 ) { return substr( $content, 0, $pos ) . $card . substr( $content, $pos ); }
-	}
-	return $content . $card;
+	return nadlan_pl_insert( $content, $card, nadlan_pl_for_request( 'pos' ) );
 }, 40 );
 
 add_action( 'wp_footer', function () {
 	if ( ! nadlan_pl_for_request() ) { return; }
 	$url = esc_url_raw( rest_url( 'nadlan/v1/ev' ) );
-	echo "\n<style id=\"nadlan-placement-css\">.nlpl{margin:28px 0;padding:18px 20px;border:1px solid var(--sa-line,#E3E1DA);border-radius:14px;background:var(--sa-surf,#fff);font-family:var(--sa-sans,Assistant,Arial,sans-serif);color:var(--sa-ink,#14212B)}.nlpl p{margin:0}.nlpl-tag{font-size:12px;letter-spacing:.02em;color:var(--sa-mute,#6B7680);margin-bottom:10px!important}.nlpl-row{display:flex;gap:14px;align-items:center}.nlpl-ph{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 22%;flex:none}.nlpl-name{font-family:var(--sa-serif,'Noto Serif Hebrew',Georgia,serif);font-size:20px;font-weight:600;line-height:1.25}.nlpl-name span{font-family:var(--sa-sans,Assistant,Arial,sans-serif);font-size:15px;font-weight:400;color:var(--sa-ink2,#3B4753)}.nlpl-head{font-size:15px;color:var(--sa-ink2,#3B4753);margin-top:2px!important}.nlpl-areas{font-size:14px;color:var(--sa-mute,#6B7680);margin-top:4px!important}.nlpl-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.nlpl-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--sa-sea,#2F6F86);color:var(--sa-sea,#2F6F86);text-decoration:none;font-weight:600;font-size:15px}.nlpl-main{background:var(--sa-sea,#2F6F86);color:#fff}.nlpl-btn:focus-visible{outline:3px solid var(--sa-deep,#1F4B5C);outline-offset:2px}@media(max-width:520px){.nlpl-btn{flex:1}}</style>\n";
+	echo "\n<style id=\"nadlan-placement-css\">:root body .nlds.nlpl{display:grid!important;gap:var(--nlds-space-10)!important;margin-block:32px!important;clear:both}:root body .nlds.nlpl .nlpl-tag{color:var(--nlds-sa-ink2)!important;font-weight:600!important}</style>\n";
 	echo "<script id=\"nadlan-placement-ev\">(function(){if(!navigator.sendBeacon)return;var u=" . wp_json_encode( $url ) . ";function s(c,e){try{navigator.sendBeacon(u,new Blob([JSON.stringify({e:e,pro:+c.dataset.pro,post:+c.dataset.post,slot:'pl-'+c.dataset.pl})],{type:'application/json'}))}catch(_){}}document.querySelectorAll('.nlpl').forEach(function(c){if('IntersectionObserver' in window){var o=new IntersectionObserver(function(x){if(x[0].isIntersecting){s(c,'place_view');o.disconnect()}},{threshold:.5});o.observe(c)}else{s(c,'place_view')}c.addEventListener('click',function(v){if(v.target.closest('[data-nl-ev]'))s(c,'place_click')})})})();</script>\n";
 }, 41 );

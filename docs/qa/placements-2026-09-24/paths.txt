@@ -1,0 +1,8 @@
+/property-value/ הרצליה פיתוח
+/property-value/luxury-apartments-tel-aviv/ מחיר ושווי
+/north-tel-aviv/* מחיר
+/ramat-aviv/ מחירים ברמת אביב
+/ramat-aviv/einstein/ מחירים וערך
+/ramat-aviv/* מחירים
+/herzliya-pituach-luxury/ שיקולי בדיקה
+/herzliya-pituach-apartment-prices/ מכירה בהרצליה
