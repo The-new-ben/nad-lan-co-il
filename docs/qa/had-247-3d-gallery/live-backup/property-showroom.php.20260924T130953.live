@@ -190,10 +190,7 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 		// the floor counts as given only when the listing states it (a stored 0 with no building height is "not given")
 		$floor_known = $in_building && ( $floor > 0 || $tfloors > 0 || 'garden' === $ptype );
 		$show_out    = ! $owned && $floor_known;
-		// the plan and the walk-through are illustrations from the listing's own rooms, so they stay on every listing
-		// that states rooms, a cottage too (additive law); only the building facade needs a unit in a building
-		$show_plan   = ! $owned && $rooms > 0;
-		$unit_word   = $in_building ? 'הדירה' : 'הבית';
+		$show_plan   = ! $owned && $in_building && $rooms > 0;
 
 		// the first real photo, when the theme has no featured image to print above the title
 		$cover = '';
@@ -202,12 +199,7 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 			if ( $photos ) {
 				$att   = function_exists( 'attachment_url_to_postid' ) ? (int) attachment_url_to_postid( $photos[0] ) : 0;
 				$alt   = get_the_title( $id );
-				// sizes from the real shown width: the photo is at most 640 px tall (never cropped), so a portrait photo is
-				// narrow on desktop; phones get about 2x density, not the full file (LCP: 326 KB -> 186 KB on the Ofakim flyer)
-				$meta  = $att ? wp_get_attachment_metadata( $att ) : array();
-				$ar    = ( ! empty( $meta['width'] ) && ! empty( $meta['height'] ) ) ? $meta['width'] / $meta['height'] : 1.5;
-				$sizes = '(max-width: 600px) 64vw, (max-width: 960px) 80vw, ' . (int) min( 920, round( 640 * $ar ) ) . 'px';
-				$cover = $att ? (string) wp_get_attachment_image( $att, 'large', false, array( 'class' => 'nlps-cover-img', 'alt' => $alt, 'loading' => 'eager', 'fetchpriority' => 'high', 'decoding' => 'async', 'sizes' => $sizes ) ) : '';
+				$cover = $att ? (string) wp_get_attachment_image( $att, 'large', false, array( 'class' => 'nlps-cover-img', 'alt' => $alt, 'loading' => 'eager', 'fetchpriority' => 'high', 'decoding' => 'async', 'sizes' => '(max-width: 960px) 94vw, 920px' ) ) : '';
 				if ( '' === $cover ) {
 					$cover = '<img class="nlps-cover-img" src="' . esc_url( $photos[0] ) . '" alt="' . esc_attr( $alt ) . '" loading="eager" fetchpriority="high" decoding="async">';
 				}
@@ -295,16 +287,16 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 		}
 	}
 	if ( $show_out || $show_plan ) : ?>
-	<section class="nlps-facade" id="nlps-building" aria-label="<?php echo esc_attr( $show_out ? 'הבניין ותוכנית הדירה' : 'תוכנית ' . $unit_word ); ?>">
+	<section class="nlps-facade" id="nlps-building" aria-label="<?php echo $show_out ? 'הבניין ותוכנית הדירה' : 'תוכנית הדירה'; ?>">
 		<header class="nlps-sec-head">
-			<h2><?php echo esc_html( $show_out ? 'איפה הדירה בבניין?' : 'תוכנית ' . $unit_word ); ?></h2>
+			<h2><?php echo $show_out ? 'איפה הדירה בבניין?' : 'תוכנית הדירה'; ?></h2>
 			<div class="nlps-toggle" role="tablist">
 				<?php if ( $show_out ) : ?>
 				<button type="button" class="is-on" data-view="out" role="tab" aria-selected="true">מבט חוץ</button>
 				<?php if ( $hs ) : ?><button type="button" data-view="3d" role="tab" aria-selected="false">הדמיה</button><?php endif; ?>
 				<?php endif; ?>
 				<?php if ( $show_plan ) : ?>
-				<button type="button"<?php echo $show_out ? '' : ' class="is-on"'; ?> data-view="in" role="tab" aria-selected="<?php echo $show_out ? 'false' : 'true'; ?>"><?php echo esc_html( 'תוכנית ' . $unit_word ); ?></button>
+				<button type="button"<?php echo $show_out ? '' : ' class="is-on"'; ?> data-view="in" role="tab" aria-selected="<?php echo $show_out ? 'false' : 'true'; ?>">תוכנית הדירה</button>
 				<button type="button" data-view="fp" role="tab" aria-selected="false">🚶 סיור פנימי</button>
 				<?php endif; ?>
 			</div>
@@ -325,7 +317,7 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 			<?php endif; ?>
 			<?php if ( $show_plan ) : ?>
 			<div class="nlps-view nlps-view-in<?php echo $show_out ? '' : ' is-on'; ?>">
-				<p class="nlps-plan-title"><?php echo esc_html( 'תוכנית ' . $unit_word ); ?><?php echo $floor_known ? ' · ' . esc_html( $floor_txt ) : ''; ?></p>
+				<p class="nlps-plan-title">תוכנית הדירה<?php echo $floor_known ? ' · ' . esc_html( $floor_txt ) : ''; ?></p>
 				<?php echo nadlan_pshow_plan_svg( $rooms, (bool) $g( 'protected_room' ), (int) $g( 'balcony_sqm' ), $sqm ); // phpcs:ignore ?>
 				<?php if ( $show_out ) : ?><p class="nlps-cap"><button type="button" class="nlps-backout">← חזרה למבט על הבניין</button></p><?php endif; ?>
 			</div>

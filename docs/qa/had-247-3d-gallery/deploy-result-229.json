@@ -1,0 +1,15 @@
+{
+  "released": "1.72.229",
+  "from": "1.72.228",
+  "at": "2026-09-24 13:10:04",
+  "files": {
+    "inc/property-showroom.php": "c3474a708fac7e07b55c56d062cf22c2",
+    "inc/interior-fp.php": "d52d5036bdaa85d23ca342587c633bad",
+    "nadlan-config.php": "c0226ce505133c6f47a0dbad4a8b66f6"
+  },
+  "live_before": {
+    "inc/property-showroom.php": "ccebb89f408bb1866c185ffb2360435a",
+    "inc/interior-fp.php": "9f8a057f90c6db219161308604264694",
+    "nadlan-config.php": "6b90e1da2492d2f9193247d659beec38"
+  }
+}

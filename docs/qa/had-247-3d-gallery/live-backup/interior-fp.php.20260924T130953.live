@@ -59,8 +59,8 @@ if ( ! function_exists( 'nadlan_interior_fp_html' ) ) {
 		$html = '<div class="nlifp" id="' . esc_attr( $uid ) . '" data-rooms="' . esc_attr( wp_json_encode( $rooms ) ) . '">'
 			. '<div class="nlifp-stage" tabindex="0" role="application" aria-label="סיור פנימי בדירה - גררו כדי להביט סביב">'
 			. '<div class="nlifp-cam"><div class="nlifp-world"></div></div>'
-			. '<div class="nlifp-hud"><span class="nlifp-room"></span><span class="nlifp-hint">גררו כדי להביט סביב · דלת מובילה לחדר הבא</span></div>'
-			. '<span class="nlifp-tag">הדמיה להמחשה בלבד, לפי נתוני הדירה</span>'
+			. '<div class="nlifp-hud"><span class="nlifp-room"></span><span class="nlifp-hint">גררו להסתכל · לחצו על דלת למעבר חדר</span></div>'
+			. '<span class="nlifp-tag">הדמיה סכמטית להמחשה - נוצרה מנתוני הדירה</span>'
 			. '</div>'
 			. '<div class="nlifp-doors"></div>'
 			. '</div>';
