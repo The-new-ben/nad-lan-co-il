@@ -29,13 +29,6 @@ add_action( 'wp_enqueue_scripts', function () {
 }, 999 );
 
 add_action( 'wp_footer', function () {
-	// the corner follows the page's own language (the start side: right in Hebrew and Arabic, left in English, French and
-	// Russian), exactly like the WhatsApp pill takes the end side; the site's locale is Hebrew on every page (25.9.2026)
-	$a11y_rtl = true;
-	if ( function_exists( 'nadlan_lang_is_rtl' ) && function_exists( 'nadlan_current_lang' ) ) {
-		$a11y_rtl = nadlan_lang_is_rtl( nadlan_current_lang() );
-	}
-	$a11y_side = $a11y_rtl ? 'right' : 'left';
 	?>
 <div id="nla11y" dir="rtl">
 	<button type="button" id="nla11y-btn" aria-expanded="false" aria-controls="nla11y-panel" aria-label="תפריט נגישות" title="נגישות">
@@ -55,13 +48,13 @@ add_action( 'wp_footer', function () {
 <style>
 <?php /* the bottom corner at the start side (owner, 25.9.2026: "להזיז אותו לפינה התחתונה"): at mid-height on the edge it
    covered the start of Hebrew lines on every page. The WhatsApp pill holds the other bottom corner. */ ?>
-#nla11y{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));<?php echo $a11y_side; ?>:20px;z-index:99998;font-family:Heebo,system-ui,sans-serif}
-@media(max-width:520px){#nla11y{bottom:calc(14px + env(safe-area-inset-bottom,0px));<?php echo $a11y_side; ?>:14px}}
+#nla11y{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));<?php echo is_rtl() ? 'right' : 'left'; ?>:20px;z-index:99998;font-family:Heebo,system-ui,sans-serif}
+@media(max-width:520px){#nla11y{bottom:calc(14px + env(safe-area-inset-bottom,0px));<?php echo is_rtl() ? 'right' : 'left'; ?>:14px}}
 body:has(#nlai) #nla11y{bottom:calc(88px + env(safe-area-inset-bottom,0px))}
 #nla11y-btn{width:52px;height:52px;border-radius:50%;background:#14130F;color:#E9D9A8;border:1px solid #9C7A3C;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px -10px rgba(27,26,23,.55)}
 #nla11y-btn:hover{background:#2A251B}
 #nla11y-btn:focus-visible,#nla11y-panel button:focus-visible,#nla11y-panel a:focus-visible{outline:3px solid #C2563A;outline-offset:2px}
-#nla11y-panel{position:absolute;bottom:62px;<?php echo $a11y_side; ?>:0;width:218px;max-height:calc(100vh - 110px);overflow:auto;background:#FAF7F1;border:1px solid #D6C189;border-radius:14px;padding:10px;box-shadow:0 22px 48px -20px rgba(27,26,23,.5)}
+#nla11y-panel{position:absolute;bottom:62px;<?php echo is_rtl() ? 'right' : 'left'; ?>:0;width:218px;max-height:calc(100vh - 110px);overflow:auto;background:#FAF7F1;border:1px solid #D6C189;border-radius:14px;padding:10px;box-shadow:0 22px 48px -20px rgba(27,26,23,.5)}
 .nla11y-head{display:flex;justify-content:space-between;align-items:center;font:700 15px/1 Heebo;color:#1B1A17;padding:4px 4px 10px}
 #nla11y-x{background:none;border:0;font-size:14px;cursor:pointer;color:#6D665C;padding:4px}
 #nla11y-panel>button{display:block;width:100%;text-align:right;background:#fff;border:1px solid #E2DCD0;border-radius:9px;font:500 13.5px/1 Heebo;color:#1B1A17;padding:10px 12px;margin:5px 0;cursor:pointer}

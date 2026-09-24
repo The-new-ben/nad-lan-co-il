@@ -245,15 +245,6 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 		if ( $notes ) { $cfg['notes'] = $notes; }
 		if ( ! empty( $ps['low_note'] ) ) { $cfg['lowNote'] = (string) $ps['low_note']; $cfg['lowUpTo'] = (int) ( $ps['low_up_to'] ?? 0 ); }
 		if ( ! empty( $ps['high_note'] ) ) { $cfg['highNote'] = (string) $ps['high_note']; }
-		// the quarter around the building (design system QuarterPins): built offline into the project's folder
-		// (scripts/project-stage/build_quarter_rainbow.py); a missing or broken file leaves the stage as it was
-		$qf = dirname( __DIR__ ) . '/assets/project-stage/' . $ps['dir'] . '/quarter.json';
-		if ( is_readable( $qf ) ) {
-			$q = json_decode( (string) file_get_contents( $qf ), true );
-			if ( is_array( $q ) && ( ! empty( $q['projects'] ) || ! empty( $q['places'] ) ) ) {
-				$cfg['quarter'] = array( 'projects' => array_values( (array) ( $q['projects'] ?? array() ) ), 'places' => array_values( (array) ( $q['places'] ?? array() ) ), 'note' => (string) ( $q['note'] ?? '' ) );
-			}
-		}
 		$hero = '';
 		$cta  = '';
 		if ( '' !== $h1 ) {

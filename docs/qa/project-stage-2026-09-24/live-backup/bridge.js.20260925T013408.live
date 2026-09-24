@@ -71,7 +71,6 @@ async function boot() {
       facingWords: sectors.length ? facingWords : null,
       floorNote,
       units,
-      quarter: cfg.quarter && typeof cfg.quarter === 'object' ? cfg.quarter : null,
       text: units
         ? { cta: 'לקבלת תוכניות ומחירים', facingHint: 'בחרו דירה לדוגמה בטבעת הקומה', caption: 'הדמיה להמחשה בלבד, על בסיס מקורות פומביים. חלוקת הקומה לדירות היא לדוגמה, ואינה לפי תוכנית מכר.' }
         : { cta: 'לקבלת תוכניות ומחירים' },
@@ -94,15 +93,14 @@ async function boot() {
 
   const waUrl = (d) => {
     if (!cfg.wa || !d || d.floor == null) return '';
-    const words = d.toward ? 'לכיוון ' + d.toward : (d.bearing != null ? facingWords(d.bearing) : '');
+    const words = d.bearing != null ? facingWords(d.bearing) : '';
     const text = 'שלום, אשמח לקבל תוכניות ומחירים ' + (d.unit ? 'לדירה בקומה ' : 'לקומה ') + d.floor + ' ב' + cfg.name + (words ? ', ' + words : '') + ' (nad-lan.co.il)';
     return 'https://wa.me/' + cfg.wa + '?text=' + encodeURIComponent(text);
   };
   const setTitle = (d) => {
     if (!title) return;
     title.textContent = 'קומה ' + d.floor;
-    // toward a pin in the quarter: the pin's name ("לכיוון דמרי ימה"); otherwise what lies that way
-    const words = d.toward ? 'לכיוון ' + d.toward : (d.bearing != null ? facingWords(d.bearing) : '');
+    const words = d.bearing != null ? facingWords(d.bearing) : '';
     if (words) {
       title.append(' · ');
       const s = document.createElement('span'); s.className = 'nlps-dir'; s.textContent = words; title.append(s);
@@ -138,7 +136,7 @@ async function boot() {
     const d = e.detail || {};
     if (d.floor == null || d.bearing == null) return;
     last = d;
-    ga('stage_facing', { floor: d.floor, facing: facingWords(d.bearing), project: cfg.name, unit: d.unit || '', toward: d.toward || '' });
+    ga('stage_facing', { floor: d.floor, facing: facingWords(d.bearing), project: cfg.name, unit: d.unit || '' });
     if (hint) hint.hidden = true;
     setTitle(d);
     keepUnit(d.unit || '');
@@ -150,11 +148,6 @@ async function boot() {
       showView(d).catch(() => {});
       showBeam(d.bearing).catch(() => {});
     }
-  });
-
-  window.addEventListener('nl:quarter', (e) => {
-    const d = e.detail || {};
-    ga('quarter_pin', { kind: d.kind || '', name: d.name || '', project: cfg.name });
   });
 
   window.addEventListener('nl:floor-cta', (e) => {

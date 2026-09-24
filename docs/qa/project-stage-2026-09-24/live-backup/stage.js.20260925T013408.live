@@ -59,8 +59,6 @@ const DEFAULTS = {
   text: null,            // override any of the Hebrew strings
   facingWords: null,     // (bearing) => words for that direction from the page ("לכיוון הים"); replaces the compass word and the degrees
   floorNote: null,       // (floor) => the page's sourced line for that floor, or null for the project-wide line
-  quarter: null,         // the quarter around the building (quarter.json): { projects: [...], places: [...], note } with each
-                         // item's x (m east) and z (m south) from the scene's origin, its distance and bearing from the tower
   units: null,           // example apartments (owner, 25.9.2026: "דירות לדוגמה עם כיוון, ועם תווית ברורה שהן לדוגמה"):
                          // { sides: [{ id: 'w', bearing: 270 }, ...], half: 45, label: 'דירה לדוגמה', chip: 'לדוגמה' }; a pick on
                          // the ring snaps to the apartment whose arc holds it, and every place says it is an example
@@ -235,22 +233,6 @@ export function mountRainbowStage(container, options = {}) {
   const labelCta = el('button', 'rbs-label-cta', label, { type: 'button' });
   labelCta.textContent = T.cta;
   const facingChip = el('div', 'rbs-facing', ui, { 'aria-hidden': 'true' });
-  /* the quarter (design system QuarterPins): a pin per project and place, and one card */
-  const Q = opts.quarter && (Array.isArray(opts.quarter.projects) || Array.isArray(opts.quarter.places)) ? opts.quarter : null;
-  const qpins = [];
-  let qcard = null;
-  if (Q) {
-    const pinsEl = el('div', 'rbs-qpins', ui);
-    for (const it of [...(Q.projects || []), ...(Q.places || [])]) {
-      const isP = it.kind === 'project';
-      const b = el('button', 'rbs-qpin ' + (isP ? 'rbs-qpin--project' : 'rbs-qpin--place rbs-qpin--' + it.kind), pinsEl, { type: 'button', 'aria-label': it.name });
-      if (!isP) el('i', 'rbs-qdot', b);
-      b.append(it.pin || it.name); // a short name on the pin; the card has the full one
-      const h = isP ? Math.max(12, (Number(it.floors) || 10) * 3.3 + 4) : 10;
-      qpins.push({ el: b, it, x: Number(it.x) || 0, y: h + (isP ? 7 : 3), z: Number(it.z) || 0, w: 0 });
-    }
-    qcard = el('div', 'rbs-qcard', ui, { role: 'dialog', 'aria-live': 'polite' });
-  }
   const openBtn = el('button', 'rbs-open', ui, { type: 'button' });
   openBtn.textContent = T.open3d;
   container.appendChild(root);
@@ -287,7 +269,7 @@ export function mountRainbowStage(container, options = {}) {
       }
       if (disposed) return;
       engine = createEngine({
-        root, canvasWrap, label, labelTitle, labelLine, labelFacing, labelCta, labelClose, leader, hint, facingChip, qpins, qcard,
+        root, canvasWrap, label, labelTitle, labelLine, labelFacing, labelCta, labelClose, leader, hint, facingChip,
         opts, T, reduced, phone, coarse, preset: currentPreset,
         onReady: markReady,
         onContextLost: () => { root.classList.remove('rbs--live', 'rbs--settled'); },
@@ -341,9 +323,6 @@ export function mountRainbowStage(container, options = {}) {
     /* { floor, heightM, bearing } of the current pick, or null */
     /* an example apartment by its id ("16-w"); source 'user' dispatches the events a tap would */
     selectUnit(id, source) { return engine ? engine.selectUnit(id, source) : null; },
-    /* the quarter's pins, by name: open the card, or turn the stage toward it (a floor and the exact direction) */
-    openQuarter(name) { return engine ? engine.openQuarter(name) : false; },
-    lookToward(name) { return engine ? engine.lookToward(name) : false; },
     getSelection() { return engine ? engine.getSelection() : null; },
     /* eye height above the street for floor n, in metres */
     floorHeight(n) { const f = Math.round(Number(n)); return f >= 1 && f <= TOWER.floors ? floorEyeHeight(f) : null; },
@@ -374,7 +353,6 @@ export function mountRainbowStage(container, options = {}) {
 
 function createEngine(ctx) {
   const { root, canvasWrap, label, labelTitle, labelLine, labelFacing, labelCta, labelClose, leader, hint, facingChip, opts, T, reduced, phone } = ctx;
-  const qpins = ctx.qpins || [], qcard = ctx.qcard || null;
   const leaderLine = leader.querySelector('line');
   const leaderDot = leader.querySelector('circle');
 
@@ -467,7 +445,7 @@ function createEngine(ctx) {
 
   /* materials */
   const M = makeMaterials(U);
-  const world = buildWorld(site, M, U, opts.quarter);
+  const world = buildWorld(site, M, U);
   scene.updateMatrixWorld(true);
 
   // coast line in world space for the sea shader (point on the waterline + normal towards the sea)
@@ -893,8 +871,6 @@ function createEngine(ctx) {
       renderFacing(labelFacing, facing.bearing);
       labelFacing.classList.add('is-set');
       renderFacing(facingChip, facing.bearing);
-      // toward a pin in the quarter: say the pin ("לכיוון דמרי ימה")
-      if (facing.toward) { labelFacing.textContent = 'לכיוון ' + facing.toward; facingChip.textContent = 'לכיוון ' + facing.toward; }
     } else {
       labelFacing.textContent = T.facingHint;
       labelFacing.classList.remove('is-set');
@@ -912,24 +888,23 @@ function createEngine(ctx) {
     }
     labelBox.w = 0; chipBox.w = 0;
   }
-  function setFacingIdx(idx, source, exact, toward) {
+  function setFacingIdx(idx, source, exact) {
     if (!selected || !selected.pinned || idx < 0) return null;
     let b = exact != null ? round1(exact) : round1(trueBearing(ring[idx].sb));
-    // an example apartment: the pick snaps to the middle of the apartment's arc, and that is its direction; a direction
-    // toward a pin in the quarter stays exact
-    const side = toward ? null : unitFor(b);
+    // an example apartment: the pick snaps to the middle of the apartment's arc, and that is its direction
+    const side = unitFor(b);
     if (side) { b = round1(side.bearing); idx = idxForSceneBearing(normDeg(side.bearing - offset)); }
-    facing = { idx, bearing: b, unit: side ? `${selected.floor}-${side.id}` : null, toward: toward || null };
+    facing = { idx, bearing: b, unit: side ? `${selected.floor}-${side.id}` : null };
     placeArrow(arrow, idx, selected.floor);
     placeArc(unitArc, side, selected.floor);
     setPreview(-1);
     updateFacingUI();
     needsRender = true;
     lastInteract = performance.now();
-    if (source === 'user') emit('nl:facing', { floor: selected.floor, heightM: heightOf(selected.floor), bearing: b, unit: facing.unit, toward: facing.toward });
+    if (source === 'user') emit('nl:facing', { floor: selected.floor, heightM: heightOf(selected.floor), bearing: b, unit: facing.unit });
     return b;
   }
-  function setFacingBearing(b, source, toward) { return setFacingIdx(idxForSceneBearing(normDeg(b - offset)), source, b, toward); }
+  function setFacingBearing(b, source) { return setFacingIdx(idxForSceneBearing(normDeg(b - offset)), source, b); }
   function clearFacing() { facing = null; arrow.visible = false; unitArc.visible = false; setPreview(-1); updateFacingUI(); needsRender = true; }
   function setPreview(idx) {
     // over an example apartment's arc the preview shows that apartment: its middle and its arc
@@ -1260,84 +1235,6 @@ function createEngine(ctx) {
     leaderDot.setAttribute('visibility', 'visible');
     placeChip(tip);
   }
-  /* the quarter's pins: over each mass and place; hidden behind the camera or off the stage, fainter far away */
-  const qv = new THREE.Vector3(), qdir = new THREE.Vector3();
-  function placeQuarter() {
-    if (!qpins.length) return;
-    const pinned = !!(selected && selected.pinned);
-    const shown = [];
-    for (const p of qpins) {
-      qv.set(p.x, p.y, p.z);
-      const a = projectToStage(qv);
-      if (a.behind || a.x < -40 || a.x > stageW + 40 || a.y < 20 || a.y > stageH - 40) { p.el.style.visibility = 'hidden'; continue; }
-      // a pin hidden behind Rainbow's tower is not shown (it would seem to name Rainbow)
-      qdir.subVectors(qv, camera.position);
-      const d = qdir.length();
-      raycaster.set(camera.position, qdir.normalize());
-      raycaster.far = d;
-      const hidden = raycaster.intersectObject(world.towerProxy, false).length > 0;
-      raycaster.far = Infinity;
-      if (hidden) { p.el.style.visibility = 'hidden'; continue; }
-      if (!p.w && p.el.offsetWidth) { p.w = p.el.offsetWidth; p.h = p.el.offsetHeight; }
-      const w = p.w || 80, h = p.h || 30;
-      const x = Math.min(Math.max(6, a.x - w / 2), stageW - w - 6); // never cut by the stage's edge
-      shown.push({ p, x, y: a.y - 34, w, h, d });
-    }
-    // two pins never cover each other: the nearer one keeps its place, a farther one waits for another angle
-    shown.sort((u, v) => u.d - v.d);
-    const kept = [];
-    for (const s of shown) {
-      if (kept.some((k) => s.x < k.x + k.w + 4 && k.x < s.x + s.w + 4 && s.y < k.y + k.h + 2 && k.y < s.y + s.h + 2)) {
-        s.p.el.style.visibility = 'hidden';
-        continue;
-      }
-      kept.push(s);
-      const fade = Math.min(1, Math.max(0.35, 1.25 - s.d / 2600)) * (pinned ? 0.6 : 1);
-      s.p.el.style.visibility = 'visible';
-      s.p.el.style.opacity = fade.toFixed(2);
-      s.p.el.style.transform = `translate3d(${Math.round(s.x)}px, ${Math.round(s.y)}px, 0)`;
-    }
-  }
-  function openQuarterCard(it) {
-    if (!qcard) return;
-    const isP = it.kind === 'project';
-    const words = typeof opts.facingWords === 'function' ? String(opts.facingWords(Number(it.bearing)) || '') : '';
-    const where = Math.round(Number(it.dist) || 0) + ' מ׳ מריינבו' + (!isP && it.walk ? ', כ-' + it.walk + ' דקות הליכה' : '') + (words ? ', ' + words : '');
-    qcard.textContent = '';
-    const x = el('button', 'rbs-qcard-x', qcard, { type: 'button', 'aria-label': T.close });
-    x.textContent = '×';
-    x.addEventListener('click', () => { qcard.classList.remove('is-on'); });
-    el('p', 'rbs-qcard-kick', qcard).textContent = isP ? 'פרויקט ברובע' : 'מקום ברובע';
-    el('p', 'rbs-qcard-title', qcard).textContent = it.name;
-    if (isP && it.brand) el('p', 'rbs-qcard-brand', qcard).textContent = it.brand;
-    const line = isP ? [it.developer, it.status].filter(Boolean).join(' · ') : String(it.status || '');
-    if (line) el('p', 'rbs-qcard-line', qcard).textContent = line;
-    if (isP) {
-      const facts = [it.floors ? it.floors + ' קומות' : '', it.units ? it.units + ' דירות' : ''].filter(Boolean).join(' · ');
-      if (facts) el('p', 'rbs-qcard-facts', qcard).textContent = facts;
-    }
-    el('p', 'rbs-qcard-dist', qcard).textContent = where;
-    el('p', 'rbs-qcard-note', qcard).textContent = isP ? (Q_NOTE || '') : String(it.source || '');
-    const cta = el('div', 'rbs-qcard-cta', qcard);
-    const go = el('button', 'rbs-qcard-go', cta, { type: 'button' });
-    go.textContent = 'מה רואים מריינבו לכיוונו';
-    go.addEventListener('click', () => { lookToward(it); qcard.classList.remove('is-on'); });
-    if (isP && it.url) {
-      const a = el('a', 'rbs-qcard-page', cta, { href: String(it.url) });
-      a.textContent = 'לעמוד הפרויקט';
-    }
-    qcard.setAttribute('aria-label', it.name);
-    qcard.classList.add('is-on');
-    emit('nl:quarter', { kind: it.kind, name: it.name, id: it.id || null });
-  }
-  function lookToward(it) {
-    const f = selected && selected.pinned ? selected.floor : 25;
-    if (!(selected && selected.pinned && selected.floor === f)) selectFloor(f, 'user');
-    setFacingBearing(Number(it.bearing) || 0, 'user', it.name);
-    kick();
-  }
-  const Q_NOTE = opts.quarter && opts.quarter.note ? String(opts.quarter.note) : '';
-  for (const p of qpins) on(p.el, 'click', (e) => { e.stopPropagation(); openQuarterCard(p.it); });
   function placeChip(tip) {
     if (!tip || tip.behind || !(selected && selected.pinned)) { facingChip.classList.remove('is-on'); return; }
     if (!chipBox.w) { facingChip.classList.add('is-on'); chipBox.w = facingChip.offsetWidth || 120; chipBox.h = facingChip.offsetHeight || 30; }
@@ -1507,7 +1404,6 @@ function createEngine(ctx) {
       render();
       needsRender = false;
       if (selected) placeLabel();
-      placeQuarter();
       if (!firstFrameDone) {
         firstFrameDone = true;
         root.classList.add('rbs--live');
@@ -1616,9 +1512,6 @@ function createEngine(ctx) {
       return r;
     },
     clearFacing() { clearFacing(); kick(); },
-    /* the quarter: open a pin's card by its name, or turn the stage toward it */
-    openQuarter(name) { const p = qpins.find((q) => q.it.name === name); if (p) openQuarterCard(p.it); return !!p; },
-    lookToward(name) { const p = qpins.find((q) => q.it.name === name); if (p) lookToward(p.it); return !!p; },
     /* an example apartment by its id ("16-w": the floor and the side); returns the id or null */
     selectUnit(id, source) {
       const m = /^(\d+)-([a-z]+)$/.exec(String(id || ''));
@@ -2345,7 +2238,7 @@ function mulberry32(seed) {
 /* World                                                                                       */
 /* ------------------------------------------------------------------------------------------ */
 
-function buildWorld(site, M, U, quarter) {
+function buildWorld(site, M, U) {
   const col = (h) => new THREE.Color(h);
   const C = {
     base: col('#D0CCC4'), plate: col('#DBD7CF'), plinth: col('#EFEBE4'), deck: col('#F1EDE6'), outline: col('#B7AE9F'),
@@ -2360,7 +2253,6 @@ function buildWorld(site, M, U, quarter) {
   const foliage = newAcc({ col: true });
   const trunks = newAcc({ col: true });
   const ghosts = newAcc();
-  const qmass = newAcc(); // our other projects: translucent schematic volumes (below)
   const water = newAcc();
   const sea = newAcc();
   const decals = newAcc({ uv: true });
@@ -2405,16 +2297,6 @@ function buildWorld(site, M, U, quarter) {
   }
 
   /* ---------- quarter: block plates + ghost volumes ---------- */
-  // our other projects (quarter.json): world metres (x east, z south) into the site's turned frame
-  const qProj = [];
-  if (quarter && Array.isArray(quarter.projects)) {
-    const cg = Math.cos(GRID_ANGLE), sg = Math.sin(GRID_ANGLE);
-    for (const p of quarter.projects) {
-      const X = Number(p.x) || 0, Z = Number(p.z) || 0;
-      qProj.push({ lx: X * cg - Z * sg, lz: X * sg + Z * cg, floors: Number(p.floors) || 10 });
-    }
-  }
-  const qNear = (cx, cz) => qProj.some((q) => Math.hypot(q.lx - cx, q.lz - cz) < 62);
   const parkCells = [];
   for (let i = -4; i <= 4; i++) { // the quarter runs west to the coastal park (i = -4 ends 180 m before the beach)
     for (let j = -4; j <= 4; j++) {
@@ -2431,20 +2313,10 @@ function buildWorld(site, M, U, quarter) {
       }
       setCol(ground, C.plate);
       addSlab(ground, roundRectPoly(cx, cz, 104, 80, 8, 6), 0, 0.3);
-      if (qNear(cx, cz)) continue; // one of our projects stands here: its own mass, below
       ghostCell(ghosts, cx, cz, i, j, rnd);
     }
   }
   // blocks behind the park to the north/south along the coast are left open (parkland)
-  // our other projects: pale schematic masses at their floors' height (the card says so), on their own plate
-  for (const q of qProj) {
-    const h = Math.max(12, q.floors * 3.3 + 4);
-    const tall = q.floors >= 20;
-    setCol(ground, C.plate);
-    addSlab(ground, roundRectPoly(q.lx, q.lz, 64, 52, 8, 6), 0, 0.55); // a little above the quarter's plates (no flicker)
-    if (tall) { addBox(qmass, q.lx, q.lz, 26, 26, 0.55, h, 0); addBox(qmass, q.lx - 4, q.lz + 16, 44, 14, 0.55, 14, 0); }
-    else addBox(qmass, q.lx, q.lz, 44, 26, 0.55, h, 0);
-  }
 
   /* ---------- the plot ---------- */
   setCol(ground, C.plinth);
@@ -2683,15 +2555,6 @@ function buildWorld(site, M, U, quarter) {
   add(water, M.pool, false, true, 'pools');
   const dm = add(decals, M.decal, false, false, 'decals');
   if (dm) dm.renderOrder = 2;
-  // our other projects: a pale translucent fill and soft edges; Rainbow stays the one solid building
-  if (qmass.n) {
-    const qg = toGeom(qmass);
-    const qm = new THREE.Mesh(qg, new THREE.MeshBasicMaterial({ color: '#F1ECE2', transparent: true, opacity: 0.3, depthWrite: false }));
-    qm.name = 'quarter-masses'; qm.renderOrder = 3; qm.matrixAutoUpdate = false;
-    const qe = new THREE.LineSegments(new THREE.EdgesGeometry(qg, 30), new THREE.LineBasicMaterial({ color: '#9E9584', transparent: true, opacity: 0.7 }));
-    qe.name = 'quarter-edges'; qe.renderOrder = 3; qe.matrixAutoUpdate = false;
-    site.add(qm); site.add(qe); meshes.push(qm); // the edges have no index: they stay out of the triangle count
-  }
   site.updateMatrixWorld(true);
   meshes.forEach((m) => m.updateMatrix());
 

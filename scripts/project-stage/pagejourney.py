@@ -82,6 +82,27 @@ with sync_playwright() as p:
                       "| view title", page.evaluate("(document.getElementById('nlps-view-t') || {}).textContent"),
                       "| floor line", page.evaluate("(document.querySelector('.rbs-label-line') || {}).textContent"))
                 page.screenshot(path=os.path.join(OUT, f"{tag}_7_dealfloor.png"))
+        # the quarter (25.9.2026, design system QuarterPins): pins over our projects and places; a pin's card turns the stage
+        qn = page.evaluate("document.querySelectorAll('.rbs-qpin').length")
+        if qn:
+            page.evaluate("document.getElementById('nlps').scrollIntoView({block: 'center'})")
+            page.evaluate("window.__nlpsStage.clearFloor()")
+            time.sleep(4)
+            vis = page.evaluate("[...document.querySelectorAll('.rbs-qpin')].filter(b => b.style.visibility === 'visible').map(b => b.textContent)")
+            print("quarter pins", qn, "| visible:", json.dumps(vis, ensure_ascii=False))
+            page.screenshot(path=os.path.join(OUT, f"{tag}_8_quarter.png"))
+            target = page.evaluate("(() => { const b = [...document.querySelectorAll('.rbs-qpin--project')].find(x => x.style.visibility === 'visible'); return b ? b.textContent : null; })()")
+            if target:
+                page.evaluate("(n) => [...document.querySelectorAll('.rbs-qpin')].find(x => x.textContent === n).click()", target)
+                time.sleep(1.5)
+                card = page.evaluate("(() => { const c = document.querySelector('.rbs-qcard'); return c && c.classList.contains('is-on') ? c.innerText : null; })()")
+                print("quarter card:", (card or "").replace("\n", " | ")[:300])
+                page.screenshot(path=os.path.join(OUT, f"{tag}_9_qcard.png"))
+                page.evaluate("document.querySelector('.rbs-qcard-go') && document.querySelector('.rbs-qcard-go').click()")
+                time.sleep(6)
+                print("toward ->", json.dumps(page.evaluate("window.__nlpsStage.getSelection()"), ensure_ascii=False),
+                      "| view title", page.evaluate("(document.getElementById('nlps-view-t') || {}).textContent"))
+                page.screenshot(path=os.path.join(OUT, f"{tag}_10_toward.png"))
     rail = page.evaluate("() => { const r = document.querySelector('.nlps-rail'); if (!r) return null; const b = r.getBoundingClientRect(); return b.top + scrollY; }")
     if rail is not None:
         page.evaluate(f"window.scrollTo(0, {max(0, rail - 80)})")
