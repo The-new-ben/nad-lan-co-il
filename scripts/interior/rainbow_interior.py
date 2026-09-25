@@ -314,13 +314,6 @@ for p in q.get("projects", []):
     else:
         box("q-" + str(p["id"]), bx, by, h / 2, 44, 26, h, M["quarter"], rot)
 
-# the rest of Rainbow: the tower's own floors above and below, as simple slabs with glass (seen from the balcony edge)
-for f in range(FLOOR - 3, FLOOR + 4):
-    if f == FLOOR:
-        continue
-    zf = TOWER["y0"] + (f - 1) * TOWER["fh"]
-    ring = [ellipse_pt(i / 96 * 2 * math.pi, 1.9) for i in range(96)]
-    prism("slab-%d" % f, ring, zf - 0.3, zf, M["slab"])
 
 # ---------------------------------------------------------------- the apartment
 t0 = t_for_bearing(BEARING)
@@ -420,22 +413,97 @@ for i in range(len(gl_thin) - 1):
     wall("head-%d" % i, a, b, Z0 + CEIL - 0.08, Z0 + CEIL, M["frame"], 0.08)
     wall("sill-%d" % i, a, b, Z0, Z0 + 0.06, M["frame"], 0.08)
 
-# the balcony: a slab outside the glass whose edge waves like the stage's bands (0.9 to 2.3 m), a glass railing
-bal_out = []
-for idx, t in enumerate(ts):
-    s = idx / (len(ts) - 1)
-    depth = 1.6 + 0.7 * math.sin(2 * math.pi * 1.2 * s + 0.6)
-    bal_out.append(ellipse_pt(t, depth))
-balcony = glass_line + bal_out[::-1]
-prism("balcony-slab", balcony, Z0 - 0.3, Z0 - 0.02, M["slab"])
-prism("balcony-deck", balcony, Z0 - 0.02, Z0, M["deck"])
-if not NOGLASS:
-    ribbon("rail-glass", thin(bal_out, 6), Z0, Z0 + 1.08, M["glass"])
-bo_thin = thin(bal_out, 6)
-for i in range(len(bo_thin) - 1):
-    wall("rail-cap-%d" % i, bo_thin[i], bo_thin[i + 1], Z0 + 1.08, Z0 + 1.12, M["frame"], 0.05)
-# the balcony above (its soffit frames the view)
-prism("balcony-above", balcony, Z0 + TOWER["fh"] - 0.3, Z0 + TOWER["fh"], M["slab"])
+# ---------------------------------------------------------------- the tower's balconies, as the stage draws them
+# stage.js: every floor's band waves 3 times around the tower (K = 3), 0.7 to 3.6 m deep from the glass, its phase moving
+# 0.16 rad a floor (the rainbow's spiral); a solid rounded parapet 1.05 m high, a 0.4 m slab. s is the arc position from the
+# ellipse's start, as the stage's resampled loop has it.
+RN = 540
+RT = [i / RN * 2 * math.pi for i in range(RN)]
+RP = [ellipse_pt(t) for t in RT]
+RL = [0.0]
+for i in range(1, RN + 1):
+    RL.append(RL[-1] + math.dist(RP[i - 1], RP[i % RN]))
+RS = [RL[i] / RL[RN] for i in range(RN)]
+
+
+def ring_normal(i):
+    a, b = RP[(i - 1) % RN], RP[(i + 1) % RN]
+    tx, ty = b[0] - a[0], b[1] - a[1]
+    nx, ny = ty, -tx
+    ln = math.hypot(nx, ny) or 1
+    nx, ny = nx / ln, ny / ln
+    if (RP[i][0] - TCX) * nx + (RP[i][1] - TCY) * ny < 0:
+        nx, ny = -nx, -ny
+    return nx, ny
+
+
+RNORM = [ring_normal(i) for i in range(RN)]
+
+
+def band_depth(f, s_):
+    ph = 0.4 + f * 0.16
+    return 0.7 + (3.6 - 0.7) * (0.5 + 0.5 * math.sin(2 * math.pi * 3 * s_ + ph))
+
+
+def balcony_ring(f):
+    zf = TOWER["y0"] + (f - 1) * TOWER["fh"]
+    bm = bmesh.new()
+    G, O, Q = [], [], []
+    for i in range(RN):
+        d = band_depth(f, RS[i])
+        (gx, gy), (nx, ny) = RP[i], RNORM[i]
+        G.append((gx, gy)); O.append((gx + nx * d, gy + ny * d)); Q.append((gx + nx * (d - 0.24), gy + ny * (d - 0.24)))
+    V = lambda p, z: bm.verts.new((p[0], p[1], z))
+    g_top = [V(p, zf) for p in G]; q_top = [V(p, zf) for p in Q]
+    g_bot = [V(p, zf - 0.4) for p in G]; o_bot = [V(p, zf - 0.4) for p in O]
+    o_top = [V(p, zf + 1.05) for p in O]; q_hi = [V(p, zf + 1.05) for p in Q]
+    deck, white_faces = [], []
+    for i in range(RN):
+        j = (i + 1) % RN
+        deck.append(bm.faces.new((g_top[i], g_top[j], q_top[j], q_top[i])))
+        white_faces.append(bm.faces.new((g_bot[j], g_bot[i], o_bot[i], o_bot[j])))          # soffit
+        white_faces.append(bm.faces.new((o_bot[i], o_bot[j], o_top[j], o_top[i])))           # the band's outer face
+        white_faces.append(bm.faces.new((q_top[j], q_top[i], q_hi[i], q_hi[j])))             # the parapet's inner face
+        white_faces.append(bm.faces.new((q_hi[i], q_hi[j], o_top[j], o_top[i])))             # the parapet's top
+    me = bpy.data.meshes.new("band-%d" % f)
+    bm.to_mesh(me)
+    bm.free()
+    ob = bpy.data.objects.new("band-%d" % f, me)
+    ob.data.materials.append(M["slab"])
+    ob.data.materials.append(M["deck"])
+    for poly in me.polygons:
+        poly.material_index = 0
+    # the deck faces were made first in each step: every fifth face from 0
+    for k in range(RN):
+        me.polygons[k * 5].material_index = 1
+    bpy.context.collection.objects.link(ob)
+    return ob
+
+
+M["facade"] = mat("facade-glass", (0.045, 0.06, 0.07), 0.06)   # the tower's own glass, dark and reflective
+for f in range(FLOOR - 4, FLOOR + 5):
+    balcony_ring(f)
+# the tower's glass between the bands (other floors), and around this floor except the apartment's own window
+fz0 = TOWER["y0"] + (FLOOR - 5) * TOWER["fh"]
+fz1 = TOWER["y0"] + (FLOOR + 4) * TOWER["fh"]
+loop = RP + [RP[0]]
+ribbon("facade-below", loop, fz0, Z0 - 0.4, M["facade"])
+ribbon("facade-above", loop, Z0 + CEIL + 0.3, fz1, M["facade"])
+# this floor: the glass all round except the arc of the apartment's window (its own glazing, above)
+t_lo, t_hi = min(ts), max(ts)
+inside_arc = lambda t: (t_lo <= t <= t_hi) or (t_lo <= t + 2 * math.pi <= t_hi) or (t_lo <= t - 2 * math.pi <= t_hi)
+# (the strip starts right after the window and ends right before it, so it never spans across the window)
+inside = [inside_arc(RT[i]) for i in range(RN)]
+if any(inside) and not all(inside):
+    last_in = max(i for i in range(RN) if inside[i] and not inside[(i + 1) % RN])   # the window's last sample
+    rest = []
+    k = (last_in + 1) % RN
+    while not inside[k]:
+        rest.append(RP[k])
+        k = (k + 1) % RN
+    ribbon("facade-floor", rest, Z0 - 0.4, Z0 + CEIL + 0.3, M["facade"])
+# a strip of wall over the apartment's window, up to the next band
+ribbon("facade-head", glass_line, Z0 + CEIL, Z0 + TOWER["fh"] - 0.4, M["facade"])
 
 # the kitchen: a run along the back wall and an island
 bx0, by0 = back_l
@@ -525,12 +593,13 @@ except (AttributeError, TypeError):
 cam = bpy.data.objects.new("pano", cam_data)
 bpy.context.collection.objects.link(cam)
 if SPOT == "balcony":
-    # where the balcony is deepest (its wave peaks near one end): 1.1 m out from the glass
-    best = max(range(len(ts)), key=lambda i: math.dist(glass_line[i], bal_out[i]))
-    gx, gy = glass_line[best]
-    ox, oy = bal_out[best]
-    dl = math.dist((gx, gy), (ox, oy))
-    eye = (gx + (ox - gx) / dl * 1.1, gy + (oy - gy) / dl * 1.1, Z0 + 1.6)
+    # on this floor's band, where it is deepest in front of the apartment: halfway out towards the parapet
+    cand = [i for i in range(RN) if inside_arc(RT[i])] or list(range(RN))
+    best = max(cand, key=lambda i: band_depth(FLOOR, RS[i]))
+    (gx, gy), (nx, ny) = RP[best], RNORM[best]
+    dd = band_depth(FLOOR, RS[best])
+    eye = (gx + nx * min(dd * 0.5, 1.4), gy + ny * min(dd * 0.5, 1.4), Z0 + 1.6)
+    print("balcony: depth %.2f m at the spot" % dd)
 else:
     eye = (mx + inx * 3.1, my + iny * 3.1, Z0 + 1.6)
 cam.location = eye

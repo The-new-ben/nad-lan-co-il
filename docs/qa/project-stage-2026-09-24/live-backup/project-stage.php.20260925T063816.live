@@ -358,38 +358,26 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 				array( 's', 'דרום', 'לכיוון מגדלי העיר', $planned ),
 				array( 'w', 'מערב', 'לכיוון הים', '' ),
 			);
-			// each direction in the living room and on the balcony (version 26), where its picture is on the server
-			$spots  = array( array( 'living', 'בסלון', '' ), array( 'balcony', 'במרפסת', 'במרפסת, ' ) );
-			// the stage draws the tower's balconies as its marketing shows them (waves up to 3.6 m); the design plan
-			// (10.5.2023) limits the tower's balconies to 2 m: the balcony scenes say so, so no buyer takes the size as given
-			$balnote = 'עומק המרפסת בציור להמחשה בלבד: לפי תכנית העיצוב (5.2023), מרפסות המגדל בולטות עד 2 מ׳.';
 			$scenes = array();
-			$bal    = false;
 			foreach ( $dirs as $dd ) {
-				foreach ( $spots as $sp ) {
-					if ( ! is_readable( dirname( __DIR__ ) . '/' . $tdir . $sp[0] . '-25' . $dd[0] . '.jpg' ) ) {
-						continue;
-					}
-					$bal      = $bal || 'balcony' === $sp[0];
-					$scenes[] = array(
-						'id'        => $dd[0] . ( 'living' === $sp[0] ? '' : '-' . $sp[0] ),
-						'dir'       => $dd[0],
-						'dirLabel'  => $dd[1],
-						'spot'      => $sp[0],
-						'spotLabel' => $sp[1],
-						'title'     => 'קומה 25 · ' . $sp[2] . $dd[2],
-						'src'       => $turl . $sp[0] . '-25' . $dd[0] . '.jpg' . $tv,
-						'small'     => $turl . $sp[0] . '-25' . $dd[0] . '-2k.jpg' . $tv,
-						'note'      => trim( ( 'balcony' === $sp[0] ? $balnote . ' ' : '' ) . $dd[3] ),
-					);
+				if ( ! is_readable( dirname( __DIR__ ) . '/' . $tdir . 'living-25' . $dd[0] . '.jpg' ) ) {
+					continue;
 				}
+				$scenes[] = array(
+					'id'    => $dd[0],
+					'label' => $dd[1],
+					'title' => 'קומה 25 · ' . $dd[2],
+					'src'   => $turl . 'living-25' . $dd[0] . '.jpg' . $tv,
+					'small' => $turl . 'living-25' . $dd[0] . '-2k.jpg' . $tv,
+					'note'  => $dd[3],
+				);
 			}
 			$tour = '<div class="nlds nlps-tourwrap" dir="rtl" lang="he"><section class="nlat" id="nlps-tour" aria-labelledby="nlat-t">'
 				. '<div class="nlat__media"><img src="' . esc_url( $turl . 'living-25w-card.jpg' . $tv ) . '" alt="הסלון בדירה לדוגמה בקומה 25, מבט אל הים (הדמיה)" width="1200" height="675" loading="lazy" decoding="async"><span class="nlds-sample">דירה לדוגמה</span></div>'
 				. '<div class="nlat__body"><p class="nlds-kicker">הדירה לדוגמה מבפנים</p>'
 				. '<h2 class="nlat__title" id="nlat-t">קומה 25' . ( count( $scenes ) > 1 ? ', בארבעת הכיוונים' : ' · לכיוון הים' ) . '</h2>'
 				. '<p class="nlat__text">סלון ומטבח פתוח כמו במסירה, בלי ריהוט, בגובה של כ־99 מ׳'
-				. ( count( $scenes ) > 1 ? ': מול הים, תל ברוך, רמת אביב ומגדלי העיר' . ( $bal ? ', מהסלון ומהמרפסת' : '' ) : '' )
+				. ( count( $scenes ) > 1 ? ': מול הים, תל ברוך, רמת אביב ומגדלי העיר' : '' )
 				. '. הנוף בחלון בנוי מהבניינים הקיימים לפי שכבת המבנים של העירייה, מהפרויקטים המתוכננים ברובע כנפחים שקופים, מקו החוף ומהים.</p>'
 				. '<button type="button" class="nlds-btn nlds-btn--primary nlat__go" data-nlps-tour="' . esc_url( $turl . 'living-25w.jpg' . $tv ) . '" data-nlps-tour-small="' . esc_url( $turl . 'living-25w-2k.jpg' . $tv ) . '" data-nlps-tour-title="קומה 25 · לכיוון הים" data-nlps-tour-scenes="' . esc_attr( wp_json_encode( $scenes ) ) . '"><span>להיכנס לדירה · 360°</span></button>'
 				. '<p class="nlat__note">הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר.</p></div></section></div>';

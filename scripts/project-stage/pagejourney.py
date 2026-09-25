@@ -155,6 +155,16 @@ with sync_playwright() as p:
                 return { scene: v.nlTour.scene, yaw: v.nlTour.yaw, title: v.querySelector('.nlat-viewer__title').textContent,
                          pressed: [...v.querySelectorAll('.nlat-viewer__dirs button')].filter(b => b.getAttribute('aria-pressed') === 'true').map(b => b.textContent),
                          caption: v.querySelector('.nlat-viewer__cap').textContent.slice(-60), error: v.classList.contains('is-error') }; })()"""), ensure_ascii=False))
+        # where one stands (version 26): the balcony keeps the direction
+        if page.evaluate("!!document.querySelector('.nlat-viewer__spots')"):
+            page.evaluate("[...document.querySelectorAll('.nlat-viewer__spots button')].find(b => b.textContent === 'במרפסת').click()")
+            time.sleep(4)
+            page.screenshot(path=os.path.join(OUT, f"{tag}_16_tourbalcony.png"))
+            print("tour balcony:", json.dumps(page.evaluate("""(() => { const v = document.querySelector('.nlat-viewer');
+                return { scene: v.nlTour.scene, title: v.querySelector('.nlat-viewer__title').textContent,
+                         dir: [...v.querySelectorAll('.nlat-viewer__dirs button')].filter(b => b.getAttribute('aria-pressed') === 'true').map(b => b.textContent),
+                         spot: [...v.querySelectorAll('.nlat-viewer__spots button')].filter(b => b.getAttribute('aria-pressed') === 'true').map(b => b.textContent),
+                         error: v.classList.contains('is-error') }; })()"""), ensure_ascii=False))
         page.keyboard.press("Escape")
         time.sleep(1)
         print("tour closed:", page.evaluate("!document.querySelector('.nlat-viewer')"),

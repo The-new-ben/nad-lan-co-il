@@ -1,9 +1,9 @@
 /* The example apartment from the inside (design system ApartmentTour): a full-screen 360° viewer.
    Loaded only when the buyer asks for it (the card's button in the page). A sphere carries the panorama; the small
    picture shows first, the large one replaces it. Drag or arrow keys look around, the wheel or a pinch zooms, Esc closes.
-   openTour({ scenes: [{ id, dir, dirLabel, spot, spotLabel, title, src, small, note }], start, chip, caption, hint, close,
-   opener }) (or a single { src, srcSmall, title }). Two switches at the bottom: the directions (version 25) and, above them,
-   where one stands (version 26: in the living room, on the balcony); each keeps the other. Every picture opens facing out. */
+   openTour({ scenes: [{ id, label, title, src, small, note }], start, chip, caption, hint, close, opener })
+   (or a single { src, srcSmall, title }). With several scenes a bar at the bottom switches between them (version 25: the
+   four directions of floor 25); each opens facing its own window. */
 import * as THREE from 'three';
 
 let cssDone = false;
@@ -19,13 +19,9 @@ function ensureCss() {
 
 export function openTour(o) {
   ensureCss();
-  const scenes = (Array.isArray(o.scenes) && o.scenes.length ? o.scenes
-    : [{ id: 'one', label: '', title: o.title || '', src: o.src, small: o.srcSmall, note: '' }])
-    .map((sc) => ({ ...sc, dir: sc.dir || sc.id, dirLabel: sc.dirLabel || sc.label || '', spot: sc.spot || 'living', spotLabel: sc.spotLabel || '' }));
-  const uniq = (key, label) => { const seen = new Map(); for (const sc of scenes) if (!seen.has(sc[key])) seen.set(sc[key], sc[label]); return [...seen]; };
-  const dirs = uniq('dir', 'dirLabel'), spots = uniq('spot', 'spotLabel');
-  const pick = (dir, spot) => scenes.find((sc) => sc.dir === dir && sc.spot === spot) || scenes.find((sc) => sc.dir === dir) || scenes[0];
-  let cur = scenes.find((sc) => sc.id === o.start) || scenes.find((sc) => sc.dir === o.start && sc.spot === 'living') || scenes[0];
+  const scenes = Array.isArray(o.scenes) && o.scenes.length ? o.scenes
+    : [{ id: 'one', label: '', title: o.title || '', src: o.src, small: o.srcSmall, note: '' }];
+  let cur = scenes.find((sc) => sc.id === o.start) || scenes[0];
   const prevFocus = o.opener || document.activeElement; // back to the button that opened it (Safari does not focus a clicked button)
   const root = document.createElement('div');
   root.className = 'nlds nlat-viewer';
@@ -57,43 +53,26 @@ export function openTour(o) {
   setCaption();
   const stage = document.createElement('div');
   stage.className = 'nlat-viewer__stage';
-  // the bottom column: where one stands, the directions, the caption (stacked, so a long caption never covers a switch)
-  const bottom = document.createElement('div');
-  bottom.className = 'nlat-viewer__bottom';
-  root.append(stage, top, hint, bottom);
-  // the two switches: the directions, and where one stands; one pressed in each, each keeps the other
-  const ctrls = [];
-  function makeBar(cls, label, items, onPick) {
-    const bar = document.createElement('div');
-    bar.className = cls;
+  root.append(stage, top, hint, cap);
+  // the directions (or rooms): one pressed; a switch loads that picture, small first, facing its window
+  let bar = null;
+  if (scenes.length > 1) {
+    bar = document.createElement('div');
+    bar.className = 'nlat-viewer__dirs';
     bar.setAttribute('role', 'group');
-    bar.setAttribute('aria-label', label);
-    const btns = new Map();
-    for (const [id, text] of items) {
+    bar.setAttribute('aria-label', o.barLabel || 'כיוון הדירה');
+    for (const sc of scenes) {
       const b = document.createElement('button');
       b.type = 'button';
-      b.textContent = text;
-      b.addEventListener('click', () => onPick(id));
-      btns.set(id, b);
+      b.textContent = sc.label;
+      b.setAttribute('aria-pressed', sc === cur ? 'true' : 'false');
+      b.addEventListener('click', () => show(sc));
+      sc.btn = b;
       bar.appendChild(b);
-      ctrls.push(b);
     }
-    bottom.appendChild(bar);
-    return btns;
+    root.appendChild(bar);
+    root.classList.add('has-dirs');
   }
-  const spotBtns = spots.length > 1 ? makeBar('nlat-viewer__spots', o.spotLabel || 'איפה עומדים', spots, (id) => show(pick(cur.dir, id))) : null;
-  const dirBtns = dirs.length > 1 ? makeBar('nlat-viewer__dirs', o.barLabel || 'כיוון הדירה', dirs, (id) => show(pick(id, cur.spot))) : null;
-  bottom.appendChild(cap);
-  if (dirBtns) root.classList.add('has-dirs');
-  if (spotBtns) root.classList.add('has-spots');
-  function markBars() {
-    if (dirBtns) for (const [id, b] of dirBtns) b.setAttribute('aria-pressed', id === cur.dir ? 'true' : 'false');
-    if (spotBtns) for (const [id, b] of spotBtns) {
-      b.setAttribute('aria-pressed', id === cur.spot ? 'true' : 'false');
-      b.disabled = !scenes.some((sc) => sc.dir === cur.dir && sc.spot === id); // a place this direction has not rendered
-    }
-  }
-  markBars();
   document.body.appendChild(root);
   document.documentElement.classList.add('nlat-open');
 
@@ -165,7 +144,7 @@ export function openTour(o) {
     title.textContent = sc.title || '';
     root.setAttribute('aria-label', sc.title || '');
     setCaption();
-    markBars();
+    for (const x2 of scenes) if (x2.btn) x2.btn.setAttribute('aria-pressed', x2 === sc ? 'true' : 'false');
     yaw = 0; pitch = -0.05; vy = vp = 0;   // facing its own window
     loadScene(sc);
     if (typeof o.onScene === 'function') o.onScene(sc.id);
@@ -225,7 +204,7 @@ export function openTour(o) {
     else if (e.key === 'ArrowDown') pitch -= step;
     else if (e.key === 'Tab') { // the dialog's controls in a ring: close, then the direction buttons
       e.preventDefault();
-      const ring = [x, ...ctrls.filter((b) => !b.disabled)];
+      const ring = [x, ...scenes.map((sc) => sc.btn).filter(Boolean)];
       const i = ring.indexOf(document.activeElement);
       ring[(i + (e.shiftKey ? ring.length - 1 : 1)) % ring.length].focus();
       return;
