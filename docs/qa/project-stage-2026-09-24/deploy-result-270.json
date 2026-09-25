@@ -1,0 +1,37 @@
+{
+  "released": "1.72.270",
+  "from": "1.72.269",
+  "at": "2026-09-25 04:57:10",
+  "files": {
+    "assets/project-stage/rainbow/tour/living-25n.jpg": "2793ad916ba0063af08269e4999d41b5",
+    "assets/project-stage/rainbow/tour/living-25n-2k.jpg": "cb83ef4ea5ee9b1e745bd7300108125c",
+    "assets/project-stage/rainbow/tour/living-25e.jpg": "59a0f08a2f53ed87ee64f990925361fb",
+    "assets/project-stage/rainbow/tour/living-25e-2k.jpg": "369b6a229a809489c45943426983e0b2",
+    "assets/project-stage/rainbow/tour/living-25s.jpg": "bec823645f8142b3a9e7cd106879695e",
+    "assets/project-stage/rainbow/tour/living-25s-2k.jpg": "42912d2d469cb37f3c3f5164a9409bcc",
+    "assets/project-stage/rainbow/tour/living-25w.jpg": "fcea4a048a62e113b672c87536f770bc",
+    "assets/project-stage/rainbow/tour/living-25w-2k.jpg": "bbbbe66a1f5079873c924d5da14f52a4",
+    "assets/project-stage/rainbow/tour/living-25w-card.jpg": "e667a22814fe5b97ab5bf1fa2806f655",
+    "assets/project-stage/tour.js": "18237da9f3c17c9f7109932278288eca",
+    "assets/project-stage/tour.css": "546ab0cea28d798e83a51a2585a0eb67",
+    "assets/project-stage/bridge.js": "57ff32f22834df9e85af061702eb3a28",
+    "inc/project-stage.php": "c2372d9119e7c77f872aeb7bc605486c",
+    "nadlan-config.php": "ccfb6eabdccfcfda88a0d8f498a9e731"
+  },
+  "live_before": {
+    "assets/project-stage/rainbow/tour/living-25n.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25n-2k.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25e.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25e-2k.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25s.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25s-2k.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25w.jpg": "e6152154dd68f46847733e14e56bf03e",
+    "assets/project-stage/rainbow/tour/living-25w-2k.jpg": "053f31f1d4dfc0735ef928e69a9e39d5",
+    "assets/project-stage/rainbow/tour/living-25w-card.jpg": "99159be9ea3a8f063eddda57f2c73d2f",
+    "assets/project-stage/tour.js": "45cf3b10abd28917a557f65e69c3a708",
+    "assets/project-stage/tour.css": "a0be77f8cd2da7c9c545e9a22ccc242d",
+    "assets/project-stage/bridge.js": "f1cca4b03383cb7ed290c7069f8bc1dd",
+    "inc/project-stage.php": "674b2aac359fe2bbd4041cd3869b8576",
+    "nadlan-config.php": "497d60e0650b9f21d63bba39d3b437bd"
+  }
+}

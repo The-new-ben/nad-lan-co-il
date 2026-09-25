@@ -178,18 +178,10 @@ async function boot() {
     if (!b) return;
     ga('tour_open', { room: 'living-25w', project: cfg.name });
     // the viewer keeps this module's version (?ver=), so a new release never meets an old cached viewer
-    // the four directions of the floor; it opens on the side picked on the stage, if an example apartment is picked
-    let scenes = null;
-    try { scenes = JSON.parse(b.getAttribute('data-nlps-tour-scenes') || 'null'); } catch (err) { scenes = null; }
-    let start = 'w';
-    try { const sel = stage && stage.getSelection && stage.getSelection(); if (sel && sel.unit) start = String(sel.unit).split('-')[1] || start; } catch (err) { /* keep the sea */ }
     import(new URL('./tour.js' + new URL(import.meta.url).search, import.meta.url).href).then((m) => m.openTour({
       src: b.getAttribute('data-nlps-tour'),
       srcSmall: b.getAttribute('data-nlps-tour-small'),
       title: b.getAttribute('data-nlps-tour-title') || '',
-      scenes: Array.isArray(scenes) && scenes.length ? scenes : null,
-      start,
-      onScene: (id) => ga('tour_direction', { side: id, project: cfg.name }),
       opener: b,
       caption: 'הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר.',
     })).catch((err) => console.warn('[project stage] tour', err));

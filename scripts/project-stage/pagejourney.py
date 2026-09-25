@@ -146,6 +146,15 @@ with sync_playwright() as p:
             return { ready: v.classList.contains('is-ready'), moved: v.classList.contains('is-moved'), error: v.classList.contains('is-error'),
                      title: v.querySelector('.nlat-viewer__title').textContent, chip: v.querySelector('.nlds-sample').textContent,
                      caption: v.querySelector('.nlat-viewer__cap').textContent }; })()"""), ensure_ascii=False))
+        # the directions of the floor (version 25): north opens facing its own window, with its own title and caption
+        if page.evaluate("!!document.querySelector('.nlat-viewer__dirs')"):
+            page.evaluate("[...document.querySelectorAll('.nlat-viewer__dirs button')].find(b => b.textContent === 'צפון').click()")
+            time.sleep(4)
+            page.screenshot(path=os.path.join(OUT, f"{tag}_15_tournorth.png"))
+            print("tour north:", json.dumps(page.evaluate("""(() => { const v = document.querySelector('.nlat-viewer');
+                return { scene: v.nlTour.scene, yaw: v.nlTour.yaw, title: v.querySelector('.nlat-viewer__title').textContent,
+                         pressed: [...v.querySelectorAll('.nlat-viewer__dirs button')].filter(b => b.getAttribute('aria-pressed') === 'true').map(b => b.textContent),
+                         caption: v.querySelector('.nlat-viewer__cap').textContent.slice(-60), error: v.classList.contains('is-error') }; })()"""), ensure_ascii=False))
         page.keyboard.press("Escape")
         time.sleep(1)
         print("tour closed:", page.evaluate("!document.querySelector('.nlat-viewer')"),

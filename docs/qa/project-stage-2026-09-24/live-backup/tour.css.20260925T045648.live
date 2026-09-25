@@ -16,7 +16,6 @@ html.nlat-open, html.nlat-open body { overflow: hidden !important; }
   background: rgba(247, 246, 242, .94); color: #14212B; font: 400 26px/44px 'Assistant', system-ui, sans-serif; padding: 0;
 }
 .nlat-viewer__x:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }
-.nlat-viewer .nlds-sample { white-space: nowrap; flex: none; }  /* the chip stays one line beside a long title */
 :root body .nlat-viewer p.nlat-viewer__hint {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0 !important;
   background: rgba(20, 19, 15, .62); color: #fff !important; font: 600 15px/1 'Assistant', system-ui, sans-serif !important;
@@ -27,22 +26,6 @@ html.nlat-open, html.nlat-open body { overflow: hidden !important; }
   position: absolute; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); inset-inline-start: 12px; margin: 0 !important;
   max-width: min(560px, calc(100% - 24px)) !important; background: rgba(247, 246, 242, .92); color: #14212B !important;
   font: 400 12.5px/1.45 'Assistant', system-ui, sans-serif !important; padding: 6px 10px; border-radius: 8px;
-}
-/* the directions of the floor (version 25): a segmented bar at the bottom centre, the caption under it */
-.nlat-viewer__dirs {
-  position: absolute; left: 50%; transform: translateX(-50%); bottom: calc(58px + env(safe-area-inset-bottom, 0px));
-  display: flex; gap: 2px; padding: 3px; background: rgba(247, 246, 242, .94); border-radius: 999px;
-  box-shadow: 0 8px 22px rgba(20, 19, 15, .25);
-}
-.nlat-viewer__dirs button {
-  appearance: none; -webkit-appearance: none; border: 0; margin: 0; cursor: pointer; background: transparent; color: #14212B;
-  font: 600 14px/1 'Assistant', system-ui, sans-serif; padding: 0 16px; min-height: 38px; min-width: 60px; border-radius: 999px;
-}
-.nlat-viewer__dirs button[aria-pressed="true"] { background: #14212B; color: #fff; }
-.nlat-viewer__dirs button:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }
-@media (max-width: 600px) {
-  .nlat-viewer.has-dirs .nlat-viewer__dirs { bottom: calc(86px + env(safe-area-inset-bottom, 0px)); }
-  .nlat-viewer__dirs button { padding: 0 12px; min-width: 56px; }
 }
 .nlat-viewer.is-error .nlat-viewer__stage::after {
   content: 'התמונה לא נטענה. נסו שוב מאוחר יותר.'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);

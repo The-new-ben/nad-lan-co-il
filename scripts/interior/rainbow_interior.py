@@ -10,7 +10,9 @@ true in it comes from the record and our data:
   - the view through the glass: the city's buildings standing today (city.json, TLV GIS layer 513) at their recorded
     heights, the coastline 713 m from the lot's centre, the sea, the sun low in the west.
 Cycles on the CPU (this machine has no supported GPU): a 4096 x 2048 equirectangular render takes minutes.
-  blender -b --factory-startup --python scripts/interior/rainbow_interior.py -- <out.png> [floor] [bearing] [width] [samples]"""
+  blender -b --factory-startup --python scripts/interior/rainbow_interior.py -- <out.png> [floor] [bearing] [width] [samples] [light] [spot]
+light: sunset (a September late afternoon over the sea) or noon (the sun high in the south); spot: living (in the living room,
+3.1 m inside the glass) or balcony (standing on the balcony where it is deepest, the railing in front)."""
 import json, math, os, sys
 
 import bmesh
@@ -23,6 +25,8 @@ FLOOR = int(ARGS[1]) if len(ARGS) > 1 else 25
 BEARING = float(ARGS[2]) if len(ARGS) > 2 else 270.0          # true bearing the window wall faces
 WIDTH = int(ARGS[3]) if len(ARGS) > 3 else 4096
 SAMPLES = int(ARGS[4]) if len(ARGS) > 4 else 128
+LIGHT = ARGS[5] if len(ARGS) > 5 else "sunset"
+SPOT = ARGS[6] if len(ARGS) > 6 else "living"
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CITY = os.path.join(REPO, "plugins", "nadlan-config", "assets", "project-stage", "rainbow", "city.json")
@@ -87,7 +91,7 @@ scene.render.resolution_percentage = 100
 scene.render.image_settings.file_format = "PNG"
 scene.view_settings.view_transform = "AgX"
 scene.view_settings.look = "AgX - Medium High Contrast"
-scene.view_settings.exposure = -1.0
+scene.view_settings.exposure = -1.0 if SPOT == "living" else -1.9   # outside there is no dark room to lift
 
 
 def mat(name, color, rough=0.5, metal=0.0, alpha=1.0, transmission=0.0, emission=None):
@@ -155,7 +159,7 @@ M = {
     "ground": mat("ground", (0.13, 0.12, 0.105), 0.95),
     "park": mat("park", (0.06, 0.09, 0.045), 0.95),
     "sand": mat("sand", (0.40, 0.35, 0.27), 0.95),
-    "sea": mat("sea", (0.06, 0.20, 0.27), 0.06),
+    "sea": mat("sea", (0.035, 0.15, 0.22), 0.11),
     "light": mat("downlight", (1, 1, 1), 0.5, emission=((1.0, 0.86, 0.70), 18.0)),
 }
 
@@ -183,6 +187,32 @@ def tile_floor():
 
 
 M["floor"] = tile_floor()
+M["sea"].node_tree.nodes["Principled BSDF"].inputs["IOR"].default_value = 1.33   # water: less mirror at the horizon
+
+
+def hazed(m, haze=(0.66, 0.69, 0.72), dist=3200.0):
+    """aerial perspective for the world outside: the base colour drifts to the haze with distance from the camera, so land
+    far away pales into the sky as it does over Tel Aviv, instead of staying dark and reading as a sea on the horizon"""
+    nt = m.node_tree
+    b = nt.nodes["Principled BSDF"]
+    base = tuple(b.inputs["Base Color"].default_value)
+    cam = nt.nodes.new("ShaderNodeCameraData")
+    div = nt.nodes.new("ShaderNodeMath"); div.operation = "DIVIDE"; div.inputs[1].default_value = -dist
+    ex = nt.nodes.new("ShaderNodeMath"); ex.operation = "EXPONENT"
+    inv = nt.nodes.new("ShaderNodeMath"); inv.operation = "SUBTRACT"; inv.inputs[0].default_value = 1.0
+    mix = nt.nodes.new("ShaderNodeMix"); mix.data_type = "RGBA"
+    mix.inputs[6].default_value = base
+    mix.inputs[7].default_value = (*haze, 1)
+    nt.links.new(cam.outputs["View Distance"], div.inputs[0])
+    nt.links.new(div.outputs[0], ex.inputs[0])
+    nt.links.new(ex.outputs[0], inv.inputs[1])
+    nt.links.new(inv.outputs[0], mix.inputs[0])
+    nt.links.new(mix.outputs[2], b.inputs["Base Color"])
+    return m
+
+
+for _k in ("ground", "park", "sand", "city"):
+    hazed(M[_k])
 
 
 def add_mesh(name, verts, faces, material):
@@ -230,15 +260,17 @@ def box(name, cx, cy, cz, sx, sy, sz, material, rot=0.0):
 
 
 # ---------------------------------------------------------------- the world outside
-# ground and sea (the waterline 713 m west of the lot's centre, along the grid)
-coast = [grid_to_bl(COAST_X, z) for z in (-6000, 6000)]
-sea_poly = [grid_to_bl(COAST_X - 9000, -9000), grid_to_bl(COAST_X, -9000), grid_to_bl(COAST_X, 9000), grid_to_bl(COAST_X - 9000, 9000)]
+# ground and sea (the waterline 713 m west of the lot's centre, along the grid), 40 km out: a plane that ends closer lets the
+# sky's dark ground show as a false sea on the horizon inland (seen facing north and east)
+FAR = 40000
+coast = [grid_to_bl(COAST_X, z) for z in (-FAR, FAR)]
+sea_poly = [grid_to_bl(COAST_X - FAR, -FAR), grid_to_bl(COAST_X, -FAR), grid_to_bl(COAST_X, FAR), grid_to_bl(COAST_X - FAR, FAR)]
 add_mesh("sea", [(x, y, -0.3) for x, y in sea_poly], [(0, 1, 2, 3)], M["sea"])
-land = [grid_to_bl(COAST_X, -9000), grid_to_bl(9000, -9000), grid_to_bl(9000, 9000), grid_to_bl(COAST_X, 9000)]
+land = [grid_to_bl(COAST_X, -FAR), grid_to_bl(FAR, -FAR), grid_to_bl(FAR, FAR), grid_to_bl(COAST_X, FAR)]
 add_mesh("land", [(x, y, 0) for x, y in land], [(0, 1, 2, 3)], M["ground"])
-beach = [grid_to_bl(COAST_X, -9000), grid_to_bl(COAST_X + 45, -9000), grid_to_bl(COAST_X + 45, 9000), grid_to_bl(COAST_X, 9000)]
+beach = [grid_to_bl(COAST_X, -FAR), grid_to_bl(COAST_X + 45, -FAR), grid_to_bl(COAST_X + 45, FAR), grid_to_bl(COAST_X, FAR)]
 add_mesh("beach", [(x, y, 0.05) for x, y in beach], [(0, 1, 2, 3)], M["sand"])
-park = [grid_to_bl(COAST_X + 45, -9000), grid_to_bl(COAST_X + 120, -9000), grid_to_bl(COAST_X + 120, 9000), grid_to_bl(COAST_X + 45, 9000)]
+park = [grid_to_bl(COAST_X + 45, -FAR), grid_to_bl(COAST_X + 120, -FAR), grid_to_bl(COAST_X + 120, FAR), grid_to_bl(COAST_X + 45, FAR)]
 add_mesh("coastal-park", [(x, y, 0.08) for x, y in park], [(0, 1, 2, 3)], M["park"])
 
 # the city standing today (TLV GIS layer 513, city.json), one mesh
@@ -440,8 +472,12 @@ try:
     sky.sky_type = "NISHITA"
 except TypeError:
     pass
-SUN_ELEV = math.radians(11)
-SUN_AZ = math.radians(262)            # just south of west, a September late afternoon over the sea
+if LIGHT == "noon":
+    SUN_ELEV = math.radians(57)       # Tel Aviv at the end of September, around 12:45
+    SUN_AZ = math.radians(185)
+else:
+    SUN_ELEV = math.radians(11)
+    SUN_AZ = math.radians(262)        # just south of west, a September late afternoon over the sea
 for attr, val in (("sun_elevation", SUN_ELEV), ("sun_rotation", math.radians(90) - SUN_AZ + math.pi), ("altitude", 100.0),
                   ("air_density", 1.2), ("dust_density", 2.2), ("ozone_density", 1.0), ("sun_intensity", 0.6)):
     if hasattr(sky, attr):
@@ -453,8 +489,8 @@ nt.links.new(sky.outputs[0], bg.inputs[0])
 nt.links.new(bg.outputs[0], out.inputs[0])
 
 sun_data = bpy.data.lights.new("sun", "SUN")
-sun_data.energy = 2.6
-sun_data.color = (1.0, 0.86, 0.72)
+sun_data.energy = 2.6 if LIGHT == "sunset" else 3.4
+sun_data.color = (1.0, 0.86, 0.72) if LIGHT == "sunset" else (1.0, 0.97, 0.93)
 sun_data.angle = math.radians(0.8)
 sun = bpy.data.objects.new("sun", sun_data)
 bpy.context.collection.objects.link(sun)
@@ -477,6 +513,10 @@ fill_ob.visible_glossy = False
 
 # ---------------------------------------------------------------- the 360 camera: standing in the living room
 cam_data = bpy.data.cameras.new("pano")
+# a new camera sees only 1 km: the land and the sea beyond it were cut, and the sky's dark lower half showed through as a
+# false sea on every horizon (seen 25.9.2026). The view reaches 60 km.
+cam_data.clip_start = 0.05
+cam_data.clip_end = 60000.0
 cam_data.type = "PANO"
 try:
     cam_data.panorama_type = "EQUIRECTANGULAR"
@@ -484,7 +524,15 @@ except (AttributeError, TypeError):
     cam_data.cycles.panorama_type = "EQUIRECTANGULAR"
 cam = bpy.data.objects.new("pano", cam_data)
 bpy.context.collection.objects.link(cam)
-eye = (mx + inx * 3.1, my + iny * 3.1, Z0 + 1.6)
+if SPOT == "balcony":
+    # where the balcony is deepest (its wave peaks near one end): 1.1 m out from the glass
+    best = max(range(len(ts)), key=lambda i: math.dist(glass_line[i], bal_out[i]))
+    gx, gy = glass_line[best]
+    ox, oy = bal_out[best]
+    dl = math.dist((gx, gy), (ox, oy))
+    eye = (gx + (ox - gx) / dl * 1.1, gy + (oy - gy) / dl * 1.1, Z0 + 1.6)
+else:
+    eye = (mx + inx * 3.1, my + iny * 3.1, Z0 + 1.6)
 cam.location = eye
 # the panorama's centre looks out through the glass (towards the bearing)
 look = math.atan2(-inx, -iny)

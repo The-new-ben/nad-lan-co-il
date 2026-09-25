@@ -1,9 +1,7 @@
 /* The example apartment from the inside (design system ApartmentTour): a full-screen 360° viewer.
    Loaded only when the buyer asks for it (the card's button in the page). A sphere carries the panorama; the small
    picture shows first, the large one replaces it. Drag or arrow keys look around, the wheel or a pinch zooms, Esc closes.
-   openTour({ scenes: [{ id, label, title, src, small, note }], start, chip, caption, hint, close, opener })
-   (or a single { src, srcSmall, title }). With several scenes a bar at the bottom switches between them (version 25: the
-   four directions of floor 25); each opens facing its own window. */
+   openTour({ src, srcSmall, title, chip, caption, hint, close, opener }) */
 import * as THREE from 'three';
 
 let cssDone = false;
@@ -19,9 +17,6 @@ function ensureCss() {
 
 export function openTour(o) {
   ensureCss();
-  const scenes = Array.isArray(o.scenes) && o.scenes.length ? o.scenes
-    : [{ id: 'one', label: '', title: o.title || '', src: o.src, small: o.srcSmall, note: '' }];
-  let cur = scenes.find((sc) => sc.id === o.start) || scenes[0];
   const prevFocus = o.opener || document.activeElement; // back to the button that opened it (Safari does not focus a clicked button)
   const root = document.createElement('div');
   root.className = 'nlds nlat-viewer';
@@ -29,12 +24,12 @@ export function openTour(o) {
   root.lang = 'he';
   root.setAttribute('role', 'dialog');
   root.setAttribute('aria-modal', 'true');
-  root.setAttribute('aria-label', cur.title || '');
+  root.setAttribute('aria-label', o.title || '');
   const top = document.createElement('div');
   top.className = 'nlat-viewer__top';
   const title = document.createElement('p');
   title.className = 'nlat-viewer__title';
-  title.textContent = cur.title || '';
+  title.textContent = o.title || '';
   const chip = document.createElement('span');
   chip.className = 'nlds-sample';
   chip.textContent = o.chip || 'דירה לדוגמה';
@@ -49,30 +44,10 @@ export function openTour(o) {
   hint.textContent = o.hint || 'גררו כדי להסתכל מסביב';
   const cap = document.createElement('p');
   cap.className = 'nlat-viewer__cap';
-  const setCaption = () => { cap.textContent = [o.caption || '', cur.note || ''].filter(Boolean).join(' '); };
-  setCaption();
+  cap.textContent = o.caption || '';
   const stage = document.createElement('div');
   stage.className = 'nlat-viewer__stage';
   root.append(stage, top, hint, cap);
-  // the directions (or rooms): one pressed; a switch loads that picture, small first, facing its window
-  let bar = null;
-  if (scenes.length > 1) {
-    bar = document.createElement('div');
-    bar.className = 'nlat-viewer__dirs';
-    bar.setAttribute('role', 'group');
-    bar.setAttribute('aria-label', o.barLabel || 'כיוון הדירה');
-    for (const sc of scenes) {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.textContent = sc.label;
-      b.setAttribute('aria-pressed', sc === cur ? 'true' : 'false');
-      b.addEventListener('click', () => show(sc));
-      sc.btn = b;
-      bar.appendChild(b);
-    }
-    root.appendChild(bar);
-    root.classList.add('has-dirs');
-  }
   document.body.appendChild(root);
   document.documentElement.classList.add('nlat-open');
 
@@ -127,30 +102,11 @@ export function openTour(o) {
     root.classList.add('is-ready');
     kick();
   };
-  let loadId = 0;
-  function loadScene(sc) {
-    const id = ++loadId;
-    const fresh = () => alive && id === loadId; // a later switch wins over a slower picture
-    root.classList.remove('is-error');
-    load(sc.small || sc.src).then((t) => {
-      if (!fresh()) { t.dispose(); return null; }
-      useTex(t);
-      return sc.small && sc.src && sc.src !== sc.small ? load(sc.src) : null;
-    }).then((t) => { if (t) { if (fresh()) useTex(t); else t.dispose(); } }).catch(() => { if (fresh()) root.classList.add('is-error'); });
-  }
-  function show(sc) {
-    if (sc === cur) return;
-    cur = sc;
-    title.textContent = sc.title || '';
-    root.setAttribute('aria-label', sc.title || '');
-    setCaption();
-    for (const x2 of scenes) if (x2.btn) x2.btn.setAttribute('aria-pressed', x2 === sc ? 'true' : 'false');
-    yaw = 0; pitch = -0.05; vy = vp = 0;   // facing its own window
-    loadScene(sc);
-    if (typeof o.onScene === 'function') o.onScene(sc.id);
-    kick();
-  }
-  loadScene(cur);
+  load(o.srcSmall || o.src).then((t) => {
+    if (!alive) { t.dispose(); return null; }
+    useTex(t);
+    return o.srcSmall && o.src && o.src !== o.srcSmall ? load(o.src) : null;
+  }).then((t) => { if (t) { if (alive) useTex(t); else t.dispose(); } }).catch(() => { root.classList.add('is-error'); });
 
   // looking around: drag (one pointer), pinch (two), the wheel, the arrow keys
   const pts = new Map();
@@ -202,13 +158,7 @@ export function openTour(o) {
     else if (e.key === 'ArrowRight') yaw -= step;
     else if (e.key === 'ArrowUp') pitch += step;
     else if (e.key === 'ArrowDown') pitch -= step;
-    else if (e.key === 'Tab') { // the dialog's controls in a ring: close, then the direction buttons
-      e.preventDefault();
-      const ring = [x, ...scenes.map((sc) => sc.btn).filter(Boolean)];
-      const i = ring.indexOf(document.activeElement);
-      ring[(i + (e.shiftKey ? ring.length - 1 : 1)) % ring.length].focus();
-      return;
-    }
+    else if (e.key === 'Tab') { e.preventDefault(); x.focus(); return; } // one control in the dialog
     else return;
     e.preventDefault();
     if (!moved) { moved = true; root.classList.add('is-moved'); }
@@ -238,8 +188,7 @@ export function openTour(o) {
     if (typeof o.onClose === 'function') o.onClose();
   }
   x.focus();
-  const api = { close, show: (id) => { const sc = scenes.find((x2) => x2.id === id); if (sc) show(sc); }, get scene() { return cur.id; },
-    get yaw() { return yaw; }, get pitch() { return pitch; }, get fov() { return fov; } };
+  const api = { close, get yaw() { return yaw; }, get pitch() { return pitch; }, get fov() { return fov; } };
   root.nlTour = api; // for the page's checks (scripts/project-stage/pagejourney.py)
   return api;
 }
