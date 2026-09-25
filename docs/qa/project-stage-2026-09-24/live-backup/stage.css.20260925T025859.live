@@ -218,13 +218,6 @@
 .rbs-qpin--school .rbs-qdot { background: #9C7A3C; }
 .rbs-qpin--park .rbs-qdot, .rbs-qpin--nature .rbs-qdot { background: #517048; }
 .rbs-qpin--beach .rbs-qdot { background: #C9A96E; }
-/* the legend's groups on the project pins (design system QuarterPins, version 23); a light ring reads on the dark pill */
-.rbs-qpin--project .rbs-qdot { box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .9); }
-.rbs-qdot--building { background: var(--rbs-sea); }
-.rbs-qdot--selling { background: #9C7A3C; }
-.rbs-qdot--permit { background: #8E8676; }
-/* the building's own label in the legend's overview: the brand's sea, not a button */
-.rbs-qpin--hero { padding: 5px 12px; border: 0; background: var(--rbs-sea); color: #fff; font-weight: 700; box-shadow: 0 6px 16px rgba(20, 33, 43, .22); pointer-events: none; cursor: default; }
 .rbs-qcard {
   position: absolute; top: 14px; inset-inline-end: 14px; width: 280px; box-sizing: border-box; z-index: 3;
   display: grid; gap: 4px; padding: 14px 16px 16px; text-align: start;

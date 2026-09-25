@@ -103,6 +103,26 @@ with sync_playwright() as p:
                 print("toward ->", json.dumps(page.evaluate("window.__nlpsStage.getSelection()"), ensure_ascii=False),
                       "| view title", page.evaluate("(document.getElementById('nlps-view-t') || {}).textContent"))
                 page.screenshot(path=os.path.join(OUT, f"{tag}_10_toward.png"))
+        # the quarter's legend under the stage (25.9.2026, design system version 23): a chip shows its group alone
+        if ok and page.evaluate("document.querySelectorAll('[data-nlps-phase]').length"):
+            page.evaluate("document.getElementById('nlps').scrollIntoView({block: 'center'})")
+            page.evaluate("window.__nlpsStage.clearFloor()")
+            time.sleep(2)
+            vis = "[...document.querySelectorAll('.rbs-qpin--project')].filter(b => b.style.visibility === 'visible').map(b => b.textContent)"
+            for ph in ("selling", "today", "building"):
+                page.evaluate(f"document.querySelector('[data-nlps-phase=\"{ph}\"]').click()")
+                time.sleep(1.5)
+                print("legend", ph, "| pressed:", page.evaluate(f"document.querySelector('[data-nlps-phase=\"{ph}\"]').getAttribute('aria-pressed')"),
+                      "| project pins:", json.dumps(page.evaluate(vis), ensure_ascii=False))
+                if ph == "selling":
+                    page.evaluate("document.querySelector('.qp-legend').scrollIntoView({block: 'end'})")
+                    time.sleep(0.8)
+                    page.screenshot(path=os.path.join(OUT, f"{tag}_11_legend.png"))
+                    page.evaluate("document.getElementById('nlps').scrollIntoView({block: 'center'})")
+            page.evaluate("document.querySelector('[data-nlps-phase=\"building\"]').click()")
+            time.sleep(1)
+            print("legend off | pressed:", page.evaluate("[...document.querySelectorAll('[data-nlps-phase]')].filter(b => b.getAttribute('aria-pressed') === 'true').length"),
+                  "| project pins:", json.dumps(page.evaluate(vis), ensure_ascii=False))
     rail = page.evaluate("() => { const r = document.querySelector('.nlps-rail'); if (!r) return null; const b = r.getBoundingClientRect(); return b.top + scrollY; }")
     if rail is not None:
         page.evaluate(f"window.scrollTo(0, {max(0, rail - 80)})")

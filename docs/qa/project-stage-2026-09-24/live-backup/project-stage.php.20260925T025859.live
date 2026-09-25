@@ -284,44 +284,9 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 		$src = is_readable( dirname( __DIR__ ) . '/assets/project-stage/' . $ps['dir'] . '/city.json' )
 			? '<p class="nlps-src">מקורות הבמה: קו המגרש והבניינים הקיימים סביבו לפי עיריית <span>תל אביב-יפו</span> (שכבות התוכניות והמבנים, 9.2026); הפרויקטים ברובע לפי העמודים שלהם באתר.</p>'
 			: '';
-		// the quarter's legend (design system QuarterPins, version 23): what stands today, what is being built, what is selling,
-		// what is at the permit stage; each project's group from its page, counted here; the building itself counts when it is
-		// being built. Not a year-by-year view: most pages give no completion year, and a guessed year is not shown.
-		$legend = '';
-		if ( ! empty( $cfg['quarter']['projects'] ) ) {
-			$n = array( 'building' => 0, 'selling' => 0, 'permit' => 0 );
-			foreach ( (array) $cfg['quarter']['projects'] as $qp ) {
-				$ph = isset( $qp['phase'] ) ? (string) $qp['phase'] : '';
-				if ( isset( $n[ $ph ] ) ) {
-					$n[ $ph ]++;
-				}
-			}
-			foreach ( (array) ( $ps['facts'] ?? array() ) as $f ) { // the building itself, by the page's own status row
-				if ( isset( $f[0], $f[1] ) && 'מצב' === $f[0] && false !== strpos( (string) $f[1], 'בבנייה' ) ) {
-					$n['building']++;
-					break;
-				}
-			}
-			$today = 0;
-			$cfile = dirname( __DIR__ ) . '/assets/project-stage/' . $ps['dir'] . '/city.json';
-			if ( is_readable( $cfile ) ) {
-				$cj    = json_decode( (string) file_get_contents( $cfile ), true );
-				$today = is_array( $cj ) && ! empty( $cj['b'] ) ? count( $cj['b'] ) : 0;
-			}
-			$chip   = function ( $key, $label, $count ) {
-				return '<button type="button" class="qp-chip" data-nlps-phase="' . esc_attr( $key ) . '" aria-pressed="false"><i class="qp-dot qp-dot--' . esc_attr( $key ) . '"></i>' . esc_html( $label )
-					. ( '' !== (string) $count ? ' <span class="qp-chip__n">' . esc_html( (string) $count ) . '</span>' : '' ) . '</button>';
-			};
-			$legend = '<div class="qp-legend" role="group" aria-label="' . esc_attr( 'מה סביב ' . $ps['name'] ) . '">'
-				. ( $today ? $chip( 'today', 'קיים היום', number_format( $today ) . ' בניינים' ) : '' )
-				. ( $n['building'] ? $chip( 'building', 'בבנייה', $n['building'] ) : '' )
-				. ( $n['selling'] ? $chip( 'selling', 'בשיווק', $n['selling'] ) : '' )
-				. ( $n['permit'] ? $chip( 'permit', 'בשלב ההיתר', $n['permit'] ) : '' )
-				. '<p class="qp-legend__note">המצב של כל פרויקט לפי העמוד שלו באתר, 9.2026. שנת אכלוס מוצגת רק כשהעמוד נותן אותה.</p></div>';
-		}
 		$stagebox = '<div class="nlps-stagebox"><h2 class="nlps-srt" id="nlps-t">סיור וירטואלי: הקומות והנוף</h2>'
 			. '<section class="nlps-stage" id="nlps" aria-labelledby="nlps-t" data-cfg="' . esc_attr( wp_json_encode( $cfg ) ) . '"><div class="nlps-stage__mount" id="nlps-stage"></div></section>'
-			. '<div class="nlds"><p class="nlps-hint" id="nlps-hint">' . ( ! empty( $ps['units'] ) ? 'בחרו קומה במגדל, ואחר כך דירה לדוגמה בטבעת הקומה.' : 'בחרו קומה במגדל, ואחר כך נקודה בטבעת הקומה כדי לבחור כיוון.' ) . '</p>' . $legend . $src . '</div></div>';
+			. '<div class="nlds"><p class="nlps-hint" id="nlps-hint">' . ( ! empty( $ps['units'] ) ? 'בחרו קומה במגדל, ואחר כך דירה לדוגמה בטבעת הקומה.' : 'בחרו קומה במגדל, ואחר כך נקודה בטבעת הקומה כדי לבחור כיוון.' ) . '</p>' . $src . '</div></div>';
 		$rail  = '<aside class="nlps-rail" aria-label="אנשי מקצוע באזור">' . $rail . '</aside>';
 		$below = '<div class="nlps-below' . ( '' === $map ? ' nlps-below--solo' : '' ) . '">' . $view . $map . '</div>';
 		$facts = '';

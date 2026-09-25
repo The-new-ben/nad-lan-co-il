@@ -36,7 +36,6 @@ const TEXT = {
   faces: 'פונה',
   dirs: ['צפונה', 'צפון מזרחה', 'מזרחה', 'דרום מזרחה', 'דרומה', 'דרום מערבה', 'מערבה', 'צפון מערבה'],
   close: 'סגירה',
-  heroName: 'ריינבו', // the building's own label when the legend pulls the camera back
   aria: 'הדמיה של פרויקט ריינבו תל אביב, מגדל ובנייני בוטיק סביב גינה',
 };
 
@@ -254,17 +253,10 @@ export function mountRainbowStage(container, options = {}) {
       const isP = it.kind === 'project';
       const b = el('button', 'rbs-qpin ' + (isP ? 'rbs-qpin--project' : 'rbs-qpin--place rbs-qpin--' + it.kind), pinsEl, { type: 'button', 'aria-label': it.name });
       if (!isP) el('i', 'rbs-qdot', b);
-      else if (it.phase) el('i', 'rbs-qdot rbs-qdot--' + it.phase, b); // the legend's colour (being built, selling, permit)
       b.append(it.pin || it.name); // a short name on the pin; the card has the full one
       const h = isP ? Math.max(12, (Number(it.floors) || 10) * 3.3 + 4) : 10;
       qpins.push({ el: b, it, x: Number(it.x) || 0, y: h + (isP ? 7 : 3), z: Number(it.z) || 0, w: 0 });
     }
-    // the building's own label, shown only when the legend pulls the camera back (the tower is small and far then)
-    const heroEl = el('div', 'rbs-qpin rbs-qpin--hero', pinsEl, { 'aria-hidden': 'true' });
-    heroEl.textContent = T.heroName;
-    const G = GRID_ANGLE;
-    qpins.push({ el: heroEl, it: { kind: 'hero', name: T.heroName }, hero: true,
-      x: TOWER.cx * Math.cos(G) + TOWER.cz * Math.sin(G), y: TOWER.roof + 10, z: -TOWER.cx * Math.sin(G) + TOWER.cz * Math.cos(G), w: 0 });
     qcard = el('div', 'rbs-qcard', ui, { role: 'dialog', 'aria-live': 'polite' });
   }
   const openBtn = el('button', 'rbs-open', ui, { type: 'button' });
@@ -369,8 +361,6 @@ export function mountRainbowStage(container, options = {}) {
     selectUnit(id, source) { return engine ? engine.selectUnit(id, source) : null; },
     /* the quarter's pins, by name: open the card, or turn the stage toward it (a floor and the exact direction) */
     openQuarter(name) { return engine ? engine.openQuarter(name) : false; },
-    /* the legend under the stage: 'today' | 'building' | 'selling' | 'permit' shows that group alone; null shows all */
-    focusPhase(ph) { return engine ? engine.focusPhase(ph) : null; },
     lookToward(name) { return engine ? engine.lookToward(name) : false; },
     getSelection() { return engine ? engine.getSelection() : null; },
     /* eye height above the street for floor n, in metres */
@@ -1290,41 +1280,6 @@ function createEngine(ctx) {
   }
   /* the quarter's pins: over each mass and place; hidden behind the camera or off the stage, fainter far away */
   const qv = new THREE.Vector3(), qdir = new THREE.Vector3();
-  let framedPhase = false; // the legend pulled the camera back to show a group
-  const frameCam = camera.clone();
-  function frameGroup(k) {
-    const tw = towerCenterW.clone().setY(0);
-    const pts = [tw.clone(), tw.clone().setY(TOWER.roof)];
-    const centres = [];
-    for (const p of qpins) {
-      if (p.it.kind !== 'project' || p.it.phase !== k) continue;
-      pts.push(new THREE.Vector3(p.x, 0, p.z), new THREE.Vector3(p.x, p.y, p.z));
-      centres.push(new THREE.Vector3(p.x, 0, p.z));
-    }
-    if (!centres.length) return;
-    const gc = centres.reduce((acc, v) => acc.add(v), new THREE.Vector3()).multiplyScalar(1 / centres.length);
-    const c = gc.clone().add(tw).multiplyScalar(0.5).setY(TOWER.roof * 0.25);
-    const ax = gc.x - tw.x, az = gc.z - tw.z;
-    const cur = camSpherical();
-    const near = (t) => Math.abs(Math.atan2(Math.sin(t - cur.theta), Math.cos(t - cur.theta)));
-    let th = Math.atan2(-az, ax);
-    if (near(th + Math.PI) < near(th)) th += Math.PI;
-    const phi = 52 * DEG;
-    frameCam.aspect = camera.aspect; frameCam.fov = camera.fov; frameCam.updateProjectionMatrix();
-    // a group can stand a kilometre away (Einstein): the camera may go further out than the usual limit while it is shown
-    let lo = 60, hi = 3200;
-    for (let i = 0; i < 18; i++) {
-      const d = (lo + hi) / 2;
-      sph.set(d, phi, th);
-      frameCam.position.setFromSpherical(sph).add(c);
-      frameCam.lookAt(c);
-      frameCam.updateMatrixWorld(true);
-      const ok = pts.every((v) => { const q = v.clone().project(frameCam); return q.z < 1 && Math.abs(q.x) < 0.84 && q.y > -0.78 && q.y < 0.72; });
-      if (ok) hi = d; else lo = d;
-    }
-    if (hi * 1.05 > controls.maxDistance) controls.maxDistance = hi * 1.05;
-    glideTo(c, hi, phi, th, 1.2);
-  }
   function placeQuarter() {
     if (!qpins.length) return;
     const pinned = !!(selected && selected.pinned);
@@ -1348,7 +1303,6 @@ function createEngine(ctx) {
       if (any) hero = { x: x0 - 8, y: y0 - 44, w: x1 - x0 + 16, h: y1 - y0 + 44 };
     }
     for (const p of qpins) {
-      if (p.off || (p.hero && !framedPhase)) { p.el.style.visibility = 'hidden'; continue; } // the legend's choice
       qv.set(p.x, p.y, p.z);
       const a = projectToStage(qv);
       if (a.behind || a.x < -40 || a.x > stageW + 40 || a.y < 20 || a.y > stageH - 40) { p.el.style.visibility = 'hidden'; continue; }
@@ -1357,7 +1311,7 @@ function createEngine(ctx) {
       const d = qdir.length();
       raycaster.set(camera.position, qdir.normalize());
       raycaster.far = d;
-      const hidden = !p.hero && raycaster.intersectObject(world.towerProxy, false).length > 0;
+      const hidden = raycaster.intersectObject(world.towerProxy, false).length > 0;
       raycaster.far = Infinity;
       if (hidden) { p.el.style.visibility = 'hidden'; continue; }
       if (!p.w && p.el.offsetWidth) { p.w = p.el.offsetWidth; p.h = p.el.offsetHeight; }
@@ -1366,21 +1320,15 @@ function createEngine(ctx) {
       shown.push({ p, x, y: a.y - 34, w, h, d });
     }
     // two pins never cover each other: the nearer one keeps its place, a farther one waits for another angle
-    // the building's own label first (it may sit on the tower: it is its name), then the nearer pins
-    shown.sort((u, v) => (v.p.hero ? 1 : 0) - (u.p.hero ? 1 : 0) || u.d - v.d);
-    const kept = [];
+    shown.sort((u, v) => u.d - v.d);
+    const kept = hero ? [hero] : [];
     for (const s of shown) {
-      if (!s.p.hero && hero && s.x < hero.x + hero.w + 4 && hero.x < s.x + s.w + 4 && s.y < hero.y + hero.h + 2 && hero.y < s.y + s.h + 2) {
-        s.p.el.style.visibility = 'hidden';
-        continue;
-      }
       if (kept.some((k) => s.x < k.x + k.w + 4 && k.x < s.x + s.w + 4 && s.y < k.y + k.h + 2 && k.y < s.y + s.h + 2)) {
         s.p.el.style.visibility = 'hidden';
         continue;
       }
       kept.push(s);
-      // in the legend's overview the shown pins are the point: full strength; otherwise the far ones step back
-      const fade = framedPhase ? 1 : Math.min(1, Math.max(0.35, 1.25 - s.d / 2600)) * (pinned ? 0.6 : 1);
+      const fade = Math.min(1, Math.max(0.35, 1.25 - s.d / 2600)) * (pinned ? 0.6 : 1);
       s.p.el.style.visibility = 'visible';
       s.p.el.style.opacity = fade.toFixed(2);
       s.p.el.style.transform = `translate3d(${Math.round(s.x)}px, ${Math.round(s.y)}px, 0)`;
@@ -1400,12 +1348,9 @@ function createEngine(ctx) {
     if (isP && it.brand) el('p', 'rbs-qcard-brand', qcard).textContent = it.brand;
     const line = isP ? [it.developer, it.status].filter(Boolean).join(' · ') : String(it.status || '');
     if (line) el('p', 'rbs-qcard-line', qcard).textContent = line;
-    qcard.dataset.phase = isP ? String(it.phase || '') : '';
     if (isP) {
       const facts = [it.floors ? it.floors + ' קומות' : '', it.units ? it.units + ' דירות' : ''].filter(Boolean).join(' · ');
       if (facts) el('p', 'rbs-qcard-facts', qcard).textContent = facts;
-      // a year only where the project's page gives one
-      if (Number(it.occupancy) > 2000) el('p', 'rbs-qcard-facts', qcard).textContent = 'אכלוס צפוי ' + it.occupancy + ', לפי עמוד הפרויקט';
     }
     el('p', 'rbs-qcard-dist', qcard).textContent = where;
     el('p', 'rbs-qcard-note', qcard).textContent = isP ? (Q_NOTE || '') : String(it.source || '');
@@ -1428,7 +1373,7 @@ function createEngine(ctx) {
     kick();
   }
   const Q_NOTE = opts.quarter && opts.quarter.note ? String(opts.quarter.note) : '';
-  for (const p of qpins) if (!p.hero) on(p.el, 'click', (e) => { e.stopPropagation(); openQuarterCard(p.it); });
+  for (const p of qpins) on(p.el, 'click', (e) => { e.stopPropagation(); openQuarterCard(p.it); });
   function placeChip(tip) {
     if (!tip || tip.behind || !(selected && selected.pinned)) { facingChip.classList.remove('is-on'); return; }
     if (!chipBox.w) { facingChip.classList.add('is-on'); chipBox.w = facingChip.offsetWidth || 120; chipBox.h = facingChip.offsetHeight || 30; }
@@ -1709,27 +1654,6 @@ function createEngine(ctx) {
     clearFacing() { clearFacing(); kick(); },
     /* the quarter: open a pin's card by its name, or turn the stage toward it */
     openQuarter(name) { const p = qpins.find((q) => q.it.name === name); if (p) openQuarterCard(p.it); return !!p; },
-    focusPhase(ph) {
-      const k = ['today', 'building', 'selling', 'permit'].includes(ph) ? ph : null;
-      const groups = world.qGroups || {};
-      for (const g in groups) for (const m of groups[g]) m.visible = !k || (k !== 'today' && g === k);
-      for (const p of qpins) p.off = !!k && p.it.kind === 'project' && (k === 'today' || p.it.phase !== k);
-      if (qcard && qcard.classList.contains('is-on') && qcard.dataset.phase && k && qcard.dataset.phase !== k) qcard.classList.remove('is-on');
-      if (k && k !== 'today' && world.qGroups && world.qGroups[k]) {
-        // the group comes into view with the building: the camera looks across the line from the building to the group
-        // (the side it is already on), from a little higher, at the smallest distance that shows all of them
-        frameGroup(k);
-        framedPhase = true;
-      } else if (!k && framedPhase) {
-        framedPhase = false;
-        glideTo(heroTarget, heroDistance(), (90 - HERO.elev) * DEG, camSpherical().theta, 1.0, () => {
-          controls.maxDistance = Math.max(1150, heroDistance() * 2.2); // the usual limit again
-        });
-      }
-      placeQuarter();
-      kick();
-      return k;
-    },
     lookToward(name) { const p = qpins.find((q) => q.it.name === name); if (p) lookToward(p.it); return !!p; },
     /* an example apartment by its id ("16-w": the floor and the side); returns the id or null */
     selectUnit(id, source) {
@@ -2487,8 +2411,7 @@ function buildWorld(site, M, U, quarter, city) {
   const foliage = newAcc({ col: true });
   const trunks = newAcc({ col: true });
   const ghosts = newAcc();
-  // our other projects: translucent schematic volumes, one set per legend group (below)
-  const qmassBy = { building: newAcc(), selling: newAcc(), permit: newAcc() };
+  const qmass = newAcc(); // our other projects: translucent schematic volumes (below)
   const water = newAcc();
   const sea = newAcc();
   const decals = newAcc({ uv: true });
@@ -2539,7 +2462,7 @@ function buildWorld(site, M, U, quarter, city) {
     const cg = Math.cos(GRID_ANGLE), sg = Math.sin(GRID_ANGLE);
     for (const p of quarter.projects) {
       const X = Number(p.x) || 0, Z = Number(p.z) || 0;
-      qProj.push({ lx: X * cg - Z * sg, lz: X * sg + Z * cg, floors: Number(p.floors) || 10, phase: String(p.phase || 'permit') });
+      qProj.push({ lx: X * cg - Z * sg, lz: X * sg + Z * cg, floors: Number(p.floors) || 10 });
     }
   }
   const qNear = (cx, cz) => qProj.some((q) => Math.hypot(q.lx - cx, q.lz - cz) < 62);
@@ -2598,9 +2521,8 @@ function buildWorld(site, M, U, quarter, city) {
       setCol(ground, C.plate);
       addSlab(ground, roundRectPoly(q.lx, q.lz, 64, 52, 8, 6), 0, 0.55); // a little above the quarter's plates (no flicker)
     }
-    const qa = qmassBy[q.phase] || qmassBy.permit;
-    if (tall) { addBox(qa, q.lx, q.lz, 26, 26, 0.55, h, 0); addBox(qa, q.lx - 4, q.lz + 16, 44, 14, 0.55, 14, 0); }
-    else addBox(qa, q.lx, q.lz, 44, 26, 0.55, h, 0);
+    if (tall) { addBox(qmass, q.lx, q.lz, 26, 26, 0.55, h, 0); addBox(qmass, q.lx - 4, q.lz + 16, 44, 14, 0.55, 14, 0); }
+    else addBox(qmass, q.lx, q.lz, 44, 26, 0.55, h, 0);
   }
 
   /* ---------- the plot ---------- */
@@ -2850,19 +2772,14 @@ function buildWorld(site, M, U, quarter, city) {
   add(water, M.pool, false, true, 'pools');
   const dm = add(decals, M.decal, false, false, 'decals');
   if (dm) dm.renderOrder = 2;
-  // our other projects: a translucent fill and soft edges in the legend group's colour; Rainbow stays the one solid building
-  const QTINT = { building: ['#D6E3E7', 0.34, '#1F4B5C', 0.55], selling: ['#F4EAD4', 0.32, '#9C7A3C', 0.7], permit: ['#F1ECE2', 0.28, '#8E8676', 0.62] };
-  const qGroups = {};
-  for (const k in qmassBy) {
-    if (!qmassBy[k].n) continue;
-    const [fc, fo, ec, eo] = QTINT[k];
-    const qg = toGeom(qmassBy[k]);
-    const qm = new THREE.Mesh(qg, new THREE.MeshBasicMaterial({ color: fc, transparent: true, opacity: fo, depthWrite: false }));
-    qm.name = 'quarter-masses-' + k; qm.renderOrder = 3; qm.matrixAutoUpdate = false;
-    const qe = new THREE.LineSegments(new THREE.EdgesGeometry(qg, 30), new THREE.LineBasicMaterial({ color: ec, transparent: true, opacity: eo }));
-    qe.name = 'quarter-edges-' + k; qe.renderOrder = 3; qe.matrixAutoUpdate = false;
+  // our other projects: a pale translucent fill and soft edges; Rainbow stays the one solid building
+  if (qmass.n) {
+    const qg = toGeom(qmass);
+    const qm = new THREE.Mesh(qg, new THREE.MeshBasicMaterial({ color: '#F1ECE2', transparent: true, opacity: 0.3, depthWrite: false }));
+    qm.name = 'quarter-masses'; qm.renderOrder = 3; qm.matrixAutoUpdate = false;
+    const qe = new THREE.LineSegments(new THREE.EdgesGeometry(qg, 30), new THREE.LineBasicMaterial({ color: '#9E9584', transparent: true, opacity: 0.7 }));
+    qe.name = 'quarter-edges'; qe.renderOrder = 3; qe.matrixAutoUpdate = false;
     site.add(qm); site.add(qe); meshes.push(qm); // the edges have no index: they stay out of the triangle count
-    qGroups[k] = [qm, qe];
   }
   site.updateMatrixWorld(true);
   meshes.forEach((m) => m.updateMatrix());
@@ -2880,7 +2797,7 @@ function buildWorld(site, M, U, quarter, city) {
 
   let triangles = 0;
   for (const m of meshes) triangles += m.geometry.index.count / 3;
-  return { towerProxy, triangles, meshCount: meshes.length, qGroups };
+  return { towerProxy, triangles, meshCount: meshes.length };
 }
 
 /* ribbon along an open polyline (paths) */

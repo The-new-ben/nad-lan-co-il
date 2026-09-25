@@ -172,17 +172,6 @@ async function boot() {
   if (wanted && units && stage && stage.ready) {
     Promise.resolve(stage.ready).then(() => { stage.selectUnit(wanted, 'user'); }).catch(() => {});
   }
-  /* the quarter's legend under the stage (design system QuarterPins): a chip shows its group alone; pressed again, all */
-  document.addEventListener('click', (e) => {
-    const b = e.target && e.target.closest ? e.target.closest('[data-nlps-phase]') : null;
-    if (!b || !stage || typeof stage.focusPhase !== 'function') return;
-    const on = b.getAttribute('aria-pressed') !== 'true';
-    document.querySelectorAll('[data-nlps-phase]').forEach((x) => x.setAttribute('aria-pressed', x === b && on ? 'true' : 'false'));
-    const ph = on ? b.getAttribute('data-nlps-phase') : null;
-    ga('quarter_legend', { phase: ph || 'all', project: cfg.name });
-    Promise.resolve(stage.ready).then(() => stage.focusPhase(ph)).catch(() => {});
-  });
-
   /* "לקומה במגדל" in the deals table: that floor on the stage, and the stage into view */
   document.addEventListener('click', (e) => {
     const b = e.target && e.target.closest ? e.target.closest('[data-nlps-floor]') : null;

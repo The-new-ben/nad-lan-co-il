@@ -31,6 +31,9 @@ PROJECTS = [
 ]
 # a page's status as a buyer reads it (a few pages still hold a machine word)
 STATUS = {"permits": "בהליכי היתר", "construction": "בבנייה", "marketing": "בשיווק", "planning": "בתכנון", "presale": "בשיווק מוקדם"}
+# the legend's groups (design system QuarterPins): being built, selling, at the permit stage
+PHASE = {"בבנייה": "building", "בשיווק": "selling", "בשיווק מוקדם": "selling", "בהיתר בנייה": "permit", "בהליכי היתר": "permit",
+         "בתכנון": "permit"}
 SRC_ATLAS = "find-place, נתוני עיריית תל אביב-יפו ו-OpenStreetMap, 8.2026"
 PLACES = [
     # kind, name, lat, lng, status words, source
@@ -79,6 +82,9 @@ for pid, short, brand in PROJECTS:
             "floors": floors or None, "units": int(m.get("num_units") or 0) or None, "url": d.get("link"),
             "x": round(e, 1), "z": round(-n, 1), "dist": dist, "bearing": brg,
             "source": "עמוד הפרויקט באתר"}
+    item["phase"] = PHASE.get(item["status"], "permit")
+    if int(m.get("completion_year") or 0) > 2000:   # a year only where the page gives one
+        item["occupancy"] = int(m["completion_year"])
     out["projects"].append(item)
     print("project", pid, short, "| floors", floors, "| %d m at %.0f°" % (dist, brg))
 for kind, name, lat, lng, status, src in PLACES:
