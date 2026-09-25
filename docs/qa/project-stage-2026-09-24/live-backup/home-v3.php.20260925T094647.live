@@ -208,7 +208,7 @@ if ( ! function_exists( 'nadlan_hp_top' ) ) {
 		?>
 <section class="nlhp-hero" id="nlhp-hero" aria-label="חיפוש נדל״ן" data-nlhp-projects="<?php echo (int) $c['projects']; ?>" data-nlhp-cities="<?php echo (int) $c['cities']; ?>">
 	<picture>
-		<source media="(max-width: 760px)" srcset="<?php echo esc_url( nadlan_hp_img( 'hero-m-780.jpg' ) ); ?> 720w" sizes="100vw">
+		<source media="(max-width: 760px)" srcset="<?php echo esc_url( nadlan_hp_img( 'hero-m-780.jpg' ) ); ?> 780w" sizes="100vw">
 		<img class="nlhp-hero__img" src="<?php echo esc_url( nadlan_hp_img( 'hero-d-1400.jpg' ) ); ?>" srcset="<?php echo esc_url( nadlan_hp_img( 'hero-d-1400.jpg' ) ); ?> 1400w, <?php echo esc_url( nadlan_hp_img( 'hero-d-1920.jpg' ) ); ?> 1920w" sizes="(max-width: 1440px) calc(100vw - 48px), 1392px" width="1392" height="540" alt="קו החוף של תל אביב מהאוויר" fetchpriority="high" decoding="async">
 	</picture>
 	<div class="nlhp-hero__body">
@@ -328,7 +328,7 @@ if ( ! function_exists( 'nadlan_hp_band_projects' ) ) {
 			if ( $un > 0 ) { $facts[] = '<span><b class="nlhp-n">' . number_format( $un ) . '</b> יחידות דיור</span>'; }
 			$tour  = isset( $stage[ $p->post_name ] );
 			$cards .= '<a class="nlhp-pcard' . ( $lead ? ' nlhp-pcard--lead' : '' ) . '" href="' . esc_url( $row['link'] ) . '">'
-				. '<span class="nlhp-pcard__media">' . ( $img ? '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( 'הדמיה להמחשה: ' . $title ) . '" loading="lazy" decoding="async" fetchpriority="low">' : '' )
+				. '<span class="nlhp-pcard__media">' . ( $img ? '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( 'הדמיה להמחשה: ' . $title ) . '" loading="lazy" decoding="async">' : '' )
 				. ( $tour ? '<span class="nlhp-badge"><i aria-hidden="true"></i>סיור וירטואלי</span>' : '' )
 				. '<span class="nlhp-pcard__cap">הדמיה להמחשה</span></span>'
 				. '<span class="nlhp-pcard__body"><span class="nlhp-pcard__meta">' . esc_html( $meta ) . '</span><h3>' . esc_html( $title ) . '</h3>'
@@ -375,7 +375,7 @@ if ( ! function_exists( 'nadlan_hp_band_listings' ) ) {
 		$html = preg_replace( '~<a class="nlhv2-list nlhv2-cta-tile"[^>]*>.*?</a>~s', '', $html );
 		$html = preg_replace_callback( '~<img src="([^"]+)"~', function ( $m ) {
 			$t = nadlan_hp_thumb( html_entity_decode( $m[1] ) );
-			return '<img fetchpriority="low" src="' . esc_url( $t[0] ) . '"' . ( $t[1] ? ' width="' . (int) $t[1] . '" height="' . (int) $t[2] . '"' : '' );
+			return '<img src="' . esc_url( $t[0] ) . '"' . ( $t[1] ? ' width="' . (int) $t[1] . '" height="' . (int) $t[2] . '"' : '' );
 		}, $html );
 		$html = preg_replace( '~<section class="nlhv2-band nlhv2-alt">~', '<section class="nlhv2-band nlhv2-alt nlhp-listings">', $html, 1 );
 		$post = '<div class="nlhp-postline"><div><b>מפרסמים דירה?</b> <span>פרסום מודעה חינם, עם עוזר חכם לניסוח המודעה.</span></div><a class="nlhp-btn" href="' . esc_url( home_url( '/post-listing/' ) ) . '">פרסום מודעה</a></div>';
@@ -619,7 +619,7 @@ add_filter( 'style_loader_tag', function ( $tag, $handle ) {
 /* the first picture: one preload per media (the phone's portrait crop, the desktop's wide crop), fetched once */
 add_action( 'wp_head', function () {
 	if ( ! nadlan_hp_on() ) { return; }
-	echo '<link rel="preload" as="image" href="' . esc_url( nadlan_hp_img( 'hero-m-780.jpg' ) ) . '" imagesrcset="' . esc_url( nadlan_hp_img( 'hero-m-780.jpg' ) ) . ' 720w" imagesizes="100vw" media="(max-width: 760px)" fetchpriority="high">' . "\n";
+	echo '<link rel="preload" as="image" href="' . esc_url( nadlan_hp_img( 'hero-m-780.jpg' ) ) . '" imagesrcset="' . esc_url( nadlan_hp_img( 'hero-m-780.jpg' ) ) . ' 780w" imagesizes="100vw" media="(max-width: 760px)" fetchpriority="high">' . "\n";
 	echo '<link rel="preload" as="image" href="' . esc_url( nadlan_hp_img( 'hero-d-1400.jpg' ) ) . '" imagesrcset="' . esc_url( nadlan_hp_img( 'hero-d-1400.jpg' ) ) . ' 1400w, ' . esc_url( nadlan_hp_img( 'hero-d-1920.jpg' ) ) . ' 1920w" imagesizes="(max-width: 1440px) calc(100vw - 48px), 1392px" media="(min-width: 761px)" fetchpriority="high">' . "\n";
 }, 2 );
 

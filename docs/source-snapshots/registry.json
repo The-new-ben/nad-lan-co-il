@@ -1437,6 +1437,57 @@
     "ecocity_render_leak": 0,
     "secret_tokens": 0
    }
+  },
+  {
+   "ts": "20260925T064925Z",
+   "sha256": "7c4e45130a5015f917bc282f9ba87192fc7565e314a7fb8d1dacbb6026773067",
+   "bytes": 286768,
+   "status": 200,
+   "checks": {
+    "title": "נדלן - דירות למכירה, פרויקטים חדשים ומחירי דירות בישראל",
+    "title_len": 55,
+    "meta_desc": "נדל״ן בישראל: 975 פרויקטים חדשים, דירות למכירה ולהשכרה, מחירי דירות לפי עיר ושכונה, מחשבון משכנתא ומס רכישה, מגזין נדל״ן ואנשי מקצוע.",
+    "meta_desc_len": 133,
+    "canonical": "https://nad-lan.co.il/",
+    "canonical_count": 1,
+    "robots_meta": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "hreflang_count": 16,
+    "favicon_count": 4,
+    "h1_count": 1,
+    "h1_first": "נדל״ן: פרויקטים חדשים, דירות למכירה ומחירי דירות",
+    "jsonld_blocks": 2,
+    "jsonld_faqpage": 0,
+    "jsonld_breadcrumb": 0,
+    "scripts_ext": [
+     "https://nad-lan.co.il/wp-content/plugins/consent-aware-hotjar/assets/hotjar-loader.js",
+     "https://nad-lan.co.il/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-events-provider-content-events-c7172f3fd0e4d5ad62ef.js",
+     "https://nad-lan.co.il/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-events-provider-woocommerce-86c5a3ff303665006998.js",
+     "https://nad-lan.co.il/wp-content/plugins/paid-member-subscriptions/assets/js/front-end.js",
+     "https://nad-lan.co.il/wp-content/plugins/paid-member-subscriptions/includes/features/discount-codes/assets/js/frontend-discount-code.js",
+     "https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+     "https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+     "https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+     "https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+     "https://nad-lan.co.il/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+     "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/js/nadlan-premium-revenue.js",
+     "https://nad-lan.co.il/wp-content/themes/nadlan-revenue/assets/js/nlpc-header-nav-inject.js",
+     "https://nad-lan.co.il/wp-includes/js/jquery/jquery-migrate.min.js",
+     "https://nad-lan.co.il/wp-includes/js/jquery/jquery.min.js",
+     "https://www.googletagmanager.com/gtag/js"
+    ],
+    "scripts_count": 43,
+    "styles_count": 30,
+    "duplicate_ids": [],
+    "og_image": "https://nad-lan.co.il/wp-content/uploads/2026/09/og-default-1200x630-1.jpg",
+    "emdash_visible": 0,
+    "blacklist_hits": [],
+    "internal_words": [],
+    "showroom_payload": false,
+    "notice_count": 0,
+    "notice_below_article_head": true,
+    "ecocity_render_leak": 0,
+    "secret_tokens": 0
+   }
   }
  ],
  "https://nad-lan.co.il/projects/": [
