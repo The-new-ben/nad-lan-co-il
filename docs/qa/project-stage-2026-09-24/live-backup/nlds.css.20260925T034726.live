@@ -390,15 +390,6 @@
 :root body .nlds .qp-dot--selling{background:#9C7A3C !important}
 :root body .nlds .qp-dot--permit{background:#8E8676 !important}
 :root body .nlds .qp-legend__note{flex-basis:100% !important;font-size:12.5px !important;line-height:1.5 !important;color:var(--nlds-sa-ink2) !important;margin:0 !important}
-:root body .nlds .nlat{display:grid !important;grid-template-columns:minmax(0, 1.35fr) minmax(0, 1fr) !important;gap:24px !important;align-items:center !important;background:var(--nlds-sa-paper) !important;border:1px solid var(--nlds-sa-line) !important;border-radius:var(--nlds-radius-16) !important;padding:16px !important}
-:root body .nlds .nlat__media{position:relative !important;margin:0 !important;border-radius:var(--nlds-radius-12) !important;overflow:hidden !important;aspect-ratio:16 / 9 !important;background:#1B1A17 !important}
-:root body .nlds .nlat__media img{display:block !important;width:100% !important;height:100% !important;object-fit:cover !important}
-:root body .nlds .nlat__media .nlds-sample{position:absolute !important;top:12px !important;inset-inline-start:12px !important}
-:root body .nlds .nlat__body{display:grid !important;gap:10px !important;align-content:center !important;padding:4px 4px 4px 8px !important}
-:root body .nlds .nlat__title{font-family:var(--nlds-font-serif) !important;font-size:26px !important;font-weight:600 !important;line-height:1.2 !important;color:var(--nlds-sa-ink) !important;margin:0 !important}
-:root body .nlds .nlat__text{font-size:16px !important;line-height:1.6 !important;color:var(--nlds-sa-ink) !important;margin:0 !important;max-width:46ch !important}
-:root body .nlds .nlat__go{justify-self:start !important;min-height:48px !important}
-:root body .nlds .nlat__note{font-size:12.5px !important;line-height:1.5 !important;color:var(--nlds-sa-ink2) !important;margin:0 !important}
 /* site layer */
 :root body .nlds{font-size:16px !important}
 :root body .nlds :is(p, a, span, b, strong, em, i, small, time, label, li){font-family:inherit !important}
@@ -457,9 +448,6 @@
 :root body .nlds .nlpd__sum li{min-width:0 !important;flex:1 1 140px !important}
 :root body .nlds .nlpd__table td:last-child{grid-column:1 / -1 !important}
 :root body .nlds .qp-card{position:absolute !important;top:auto !important;bottom:12px !important;inset-inline:12px !important;width:auto !important}
-:root body .nlds .nlat{grid-template-columns:1fr !important;padding:12px !important;gap:14px !important}
-:root body .nlds .nlat__title{font-size:22px !important}
-:root body .nlds .nlat__go{justify-self:stretch !important}
 :root body .nlds .nlds-bfeat:has(> .nlds-bfeat__cta){grid-template-rows:none !important;row-gap:var(--nlds-space-14) !important}
 :root body .nlds .nlds-bfeat:has(> .nlds-bfeat__cta) > .nlds-bfeat__portrait{grid-row:auto !important;align-self:start !important}
 :root body .nlds .nlds-bfeat > .nlds-bfeat__cta{grid-column:1 / -1 !important;padding-top:0 !important}

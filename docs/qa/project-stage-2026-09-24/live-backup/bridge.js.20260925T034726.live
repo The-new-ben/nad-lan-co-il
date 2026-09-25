@@ -172,21 +172,6 @@ async function boot() {
   if (wanted && units && stage && stage.ready) {
     Promise.resolve(stage.ready).then(() => { stage.selectUnit(wanted, 'user'); }).catch(() => {});
   }
-  /* the example apartment from the inside (design system ApartmentTour): the viewer loads on the button */
-  document.addEventListener('click', (e) => {
-    const b = e.target && e.target.closest ? e.target.closest('[data-nlps-tour]') : null;
-    if (!b) return;
-    ga('tour_open', { room: 'living-25w', project: cfg.name });
-    // the viewer keeps this module's version (?ver=), so a new release never meets an old cached viewer
-    import(new URL('./tour.js' + new URL(import.meta.url).search, import.meta.url).href).then((m) => m.openTour({
-      src: b.getAttribute('data-nlps-tour'),
-      srcSmall: b.getAttribute('data-nlps-tour-small'),
-      title: b.getAttribute('data-nlps-tour-title') || '',
-      opener: b,
-      caption: 'הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר.',
-    })).catch((err) => console.warn('[project stage] tour', err));
-  });
-
   /* the quarter's legend under the stage (design system QuarterPins): a chip shows its group alone; pressed again, all */
   document.addEventListener('click', (e) => {
     const b = e.target && e.target.closest ? e.target.closest('[data-nlps-phase]') : null;

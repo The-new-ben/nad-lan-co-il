@@ -1,0 +1,27 @@
+{
+  "released": "1.72.269",
+  "from": "1.72.268",
+  "at": "2026-09-25 03:47:45",
+  "files": {
+    "assets/project-stage/rainbow/tour/living-25w.jpg": "e6152154dd68f46847733e14e56bf03e",
+    "assets/project-stage/rainbow/tour/living-25w-2k.jpg": "053f31f1d4dfc0735ef928e69a9e39d5",
+    "assets/project-stage/rainbow/tour/living-25w-card.jpg": "99159be9ea3a8f063eddda57f2c73d2f",
+    "assets/project-stage/tour.js": "45cf3b10abd28917a557f65e69c3a708",
+    "assets/project-stage/tour.css": "a0be77f8cd2da7c9c545e9a22ccc242d",
+    "assets/nlds/nlds.css": "4643903e14c2364666b780179eeebe65",
+    "assets/project-stage/bridge.js": "f1cca4b03383cb7ed290c7069f8bc1dd",
+    "inc/project-stage.php": "674b2aac359fe2bbd4041cd3869b8576",
+    "nadlan-config.php": "497d60e0650b9f21d63bba39d3b437bd"
+  },
+  "live_before": {
+    "assets/project-stage/rainbow/tour/living-25w.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25w-2k.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25w-card.jpg": "missing",
+    "assets/project-stage/tour.js": "missing",
+    "assets/project-stage/tour.css": "missing",
+    "assets/nlds/nlds.css": "3a1fec649e847aaf95c8ff77520c626e",
+    "assets/project-stage/bridge.js": "c4030241c1bc5a02c3bc3dfc5b3b1174",
+    "inc/project-stage.php": "0af01827a1e8d60038c1cfc9dfa423b7",
+    "nadlan-config.php": "472ad4401981bc58610e695dc6952f39"
+  }
+}

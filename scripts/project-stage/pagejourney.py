@@ -123,6 +123,34 @@ with sync_playwright() as p:
             time.sleep(1)
             print("legend off | pressed:", page.evaluate("[...document.querySelectorAll('[data-nlps-phase]')].filter(b => b.getAttribute('aria-pressed') === 'true').length"),
                   "| project pins:", json.dumps(page.evaluate(vis), ensure_ascii=False))
+    # the example apartment from the inside (25.9.2026, design system ApartmentTour): the card opens the 360° viewer
+    if page.evaluate("!!document.querySelector('[data-nlps-tour]')"):
+        page.evaluate("document.getElementById('nlps-tour').scrollIntoView({block: 'center'})")
+        time.sleep(2)
+        page.screenshot(path=os.path.join(OUT, f"{tag}_12_tourcard.png"))
+        page.evaluate("document.querySelector('[data-nlps-tour]').click()")
+        try:
+            page.wait_for_function("document.querySelector('.nlat-viewer.is-ready')", timeout=90000)
+        except Exception as e:
+            print("tour never became ready:", e)
+        time.sleep(3)
+        page.screenshot(path=os.path.join(OUT, f"{tag}_13_tour.png"))
+        c = page.evaluate("(() => { const r = document.querySelector('.nlat-viewer__stage').getBoundingClientRect(); return {x: r.left + r.width / 2, y: r.top + r.height / 2}; })()")
+        page.mouse.move(c["x"], c["y"])
+        page.mouse.down()
+        page.mouse.move(c["x"] - 320, c["y"], steps=10)
+        page.mouse.up()
+        time.sleep(2)
+        page.screenshot(path=os.path.join(OUT, f"{tag}_14_tourturn.png"))
+        print("tour:", json.dumps(page.evaluate("""(() => { const v = document.querySelector('.nlat-viewer'); if (!v) return null;
+            return { ready: v.classList.contains('is-ready'), moved: v.classList.contains('is-moved'), error: v.classList.contains('is-error'),
+                     title: v.querySelector('.nlat-viewer__title').textContent, chip: v.querySelector('.nlds-sample').textContent,
+                     caption: v.querySelector('.nlat-viewer__cap').textContent }; })()"""), ensure_ascii=False))
+        page.keyboard.press("Escape")
+        time.sleep(1)
+        print("tour closed:", page.evaluate("!document.querySelector('.nlat-viewer')"),
+              "| focus back on the button:", page.evaluate("!!(document.activeElement && document.activeElement.hasAttribute('data-nlps-tour'))"),
+              "| scroll unlocked:", page.evaluate("!document.documentElement.classList.contains('nlat-open')"))
     rail = page.evaluate("() => { const r = document.querySelector('.nlps-rail'); if (!r) return null; const b = r.getBoundingClientRect(); return b.top + scrollY; }")
     if rail is not None:
         page.evaluate(f"window.scrollTo(0, {max(0, rail - 80)})")
