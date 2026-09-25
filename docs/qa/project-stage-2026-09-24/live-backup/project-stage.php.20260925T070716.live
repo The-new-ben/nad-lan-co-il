@@ -109,22 +109,6 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 	}
 }
 
-/* The stage's first picture in the page's own HTML (design system ProjectStage, version 29): a phone-sized file and the
-   full one; the head's preload names the same set, and the stage's script adopts this very image as its poster. */
-if ( ! function_exists( 'nadlan_ps_poster_set' ) ) {
-	function nadlan_ps_poster_set( $ps ) {
-		$base  = 'assets/project-stage/' . $ps['dir'] . '/';
-		$v     = '?ver=' . nadlan_ps_ver();
-		$full  = plugins_url( $base . 'poster.jpg', dirname( __FILE__ ) ) . $v;
-		$small = is_readable( dirname( __DIR__ ) . '/' . $base . 'poster-716.jpg' ) ? plugins_url( $base . 'poster-716.jpg', dirname( __FILE__ ) ) . $v : '';
-		return array(
-			'src'    => $full,
-			'srcset' => '' !== $small ? $small . ' 716w, ' . $full . ' 1432w' : '',
-			'sizes'  => '(max-width: 1099px) calc(100vw - 32px), 716px',
-		);
-	}
-}
-
 if ( ! function_exists( 'nadlan_ps_current' ) ) {
 	function nadlan_ps_current() {
 		static $memo = false;
@@ -335,13 +319,8 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 				. ( $n['permit'] ? $chip( 'permit', 'בשלב ההיתר', $n['permit'] ) : '' )
 				. '<p class="qp-legend__note">המצב של כל פרויקט לפי העמוד שלו באתר, 9.2026. שנת אכלוס מוצגת רק כשהעמוד נותן אותה.</p></div>';
 		}
-		// the first picture, painted with the page (it no longer waits for the scripts; 9.1 s on a mid Android before)
-		$pset = nadlan_ps_poster_set( $ps );
-		$ssr  = '<img class="nlps-ssr-poster" src="' . esc_url( $pset['src'] ) . '"'
-			. ( '' !== $pset['srcset'] ? ' srcset="' . esc_attr( $pset['srcset'] ) . '" sizes="' . esc_attr( $pset['sizes'] ) . '"' : '' )
-			. ' width="1432" height="1320" alt="' . esc_attr( 'הדמיה של פרויקט ' . $ps['name'] . ', מגדל ובנייני בוטיק סביב גינה' ) . '" fetchpriority="high" decoding="async">';
 		$stagebox = '<div class="nlps-stagebox"><h2 class="nlps-srt" id="nlps-t">סיור וירטואלי: הקומות והנוף</h2>'
-			. '<section class="nlps-stage" id="nlps" aria-labelledby="nlps-t" data-cfg="' . esc_attr( wp_json_encode( $cfg ) ) . '"><div class="nlps-stage__mount" id="nlps-stage">' . $ssr . '</div></section>'
+			. '<section class="nlps-stage" id="nlps" aria-labelledby="nlps-t" data-cfg="' . esc_attr( wp_json_encode( $cfg ) ) . '"><div class="nlps-stage__mount" id="nlps-stage"></div></section>'
 			. '<div class="nlds"><p class="nlps-hint" id="nlps-hint">' . ( ! empty( $ps['units'] ) ? 'בחרו קומה במגדל, ואחר כך דירה לדוגמה בטבעת הקומה.' : 'בחרו קומה במגדל, ואחר כך נקודה בטבעת הקומה כדי לבחור כיוון.' ) . '</p>' . $legend . $src . '</div></div>';
 		$rail  = '<aside class="nlps-rail" aria-label="אנשי מקצוע באזור">' . $rail . '</aside>';
 		$below = '<div class="nlps-below' . ( '' === $map ? ' nlps-below--solo' : '' ) . '">' . $view . $map . '</div>';
@@ -501,27 +480,14 @@ add_action( 'wp_head', function () {
 	if ( ! nadlan_ps_current() ) { return; }
 	echo "\n" . '<script type="importmap" id="nadlan-ps-importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>' . "\n";
 	echo '<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" crossorigin>' . "\n";
-	$ps   = nadlan_ps_current();
-	$pset = nadlan_ps_poster_set( $ps );
-	// the same set as the page's first picture (design system ProjectStage, version 29), so it is fetched once
-	echo '<link rel="preload" as="image" href="' . esc_url( $pset['src'] ) . '"'
-		. ( '' !== $pset['srcset'] ? ' imagesrcset="' . esc_attr( $pset['srcset'] ) . '" imagesizes="' . esc_attr( $pset['sizes'] ) . '"' : '' )
-		. ' fetchpriority="high">' . "\n";
-	// the stage's script itself, early and quietly: it used to start downloading only after every other script had run
-	echo '<link rel="modulepreload" href="' . esc_url( plugins_url( 'assets/project-stage/' . $ps['dir'] . '/stage.js', dirname( __FILE__ ) ) . '?ver=' . nadlan_ps_ver() ) . '" fetchpriority="low">' . "\n";
+	$ps = nadlan_ps_current();
+	echo '<link rel="preload" as="image" href="' . esc_url( plugins_url( 'assets/project-stage/' . $ps['dir'] . '/poster.jpg', dirname( __FILE__ ) ) . '?ver=' . nadlan_ps_ver() ) . '">' . "\n";
 }, 1 );
 
 add_action( 'wp_footer', function () {
 	if ( ! nadlan_ps_current() ) { return; }
 	$src = plugins_url( 'assets/project-stage/bridge.js', dirname( __FILE__ ) ) . '?ver=' . nadlan_ps_ver();
 	echo "\n" . '<script type="module" id="nadlan-ps-bridge" src="' . esc_url( $src ) . '"></script>' . "\n";
-}, 60 );
-
-/* The page's layout (the grid, the stage's box and the rest) at the very end of the head (design system ProjectStage,
-   version 29): in the footer it came last, so on a slow phone the stage sat low and small until the whole page had
-   arrived (the first picture showed at 7 s). The rules win by their :root body selectors and !important, not by order. */
-add_action( 'wp_head', function () {
-	if ( ! nadlan_ps_current() ) { return; }
 	/* the layout is the design system's (ProjectStage, version 14: the building in the first fold); it lives here because
 	   the grid also holds the area map, which must stay outside the design system's scope (its resets would reach the
 	   map's own controls), and the theme's lead. The skin forces a box on the lead, and the theme a width and margins on
@@ -552,7 +518,6 @@ add_action( 'wp_head', function () {
 		. '.nlps-below>#nlpjx-map{margin:0!important;min-width:0;max-width:none!important}'
 		. '.nlps-stage{position:relative;width:100%;height:clamp(520px,calc(100svh - 240px),700px);border-radius:16px;overflow:hidden;background:var(--nlds-sa-paper,#F7F6F2);border:1px solid var(--nlds-sa-line,#E3E1DA);margin:0}'
 		. '.nlps-stage__mount{position:absolute;inset:0}'
-		. ':root body .nlps-stage .nlps-ssr-poster{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover;object-position:44% 50%;display:block;border:0;margin:0!important;border-radius:0!important;box-shadow:none!important}'
 		. ':root body .nlps-srt{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}'
 		. ':root body .nlds .nlps-hint[hidden],:root body .nlds .nlps-view__cap[hidden],:root body .nlds .nlps-view__cta[hidden],:root body .nlds #nlps-view-empty[hidden]{display:none!important}'
 		. ':root body .nlds .nlps-view__map.nlps-stand{cursor:default}'
@@ -562,4 +527,4 @@ add_action( 'wp_head', function () {
 		. '@media(max-width:1099px){:root body .nlps-page{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"hero" "cta" "stage" "lead" "facts" "below" "tour" "deals" "rail";column-gap:0}:root body .nlps-page>.nlps-below{grid-template-columns:minmax(0,1fr)}:root body .nlps-page>.nlps-rail{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nlps-stage{height:62svh;min-height:380px}}'
 		. '@media(max-width:600px){.nlps-stage{height:70svh;min-height:360px}:root body .nlps-page{padding:0 12px!important;row-gap:12px}:root body .nlps-page>.nlps-rail{gap:12px}:root body .nlps-page>.nl-lead>p{font-size:16px!important}}'
 		. '</style>' . "\n";
-}, 999 );
+}, 60 );

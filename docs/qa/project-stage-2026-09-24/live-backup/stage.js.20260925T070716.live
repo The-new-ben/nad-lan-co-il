@@ -212,13 +212,9 @@ export function mountRainbowStage(container, options = {}) {
   /* DOM */
   const root = el('div', 'rbs', null, { dir: 'rtl', lang: 'he' });
   if (container.clientHeight < 40) root.classList.add('rbs--auto');
-  // the page may already carry the first picture in its HTML (design system ProjectStage, version 29): adopt that very image
-  // as the poster, so nothing is fetched or painted twice (it moves into the stage within this same task: no flash)
-  const ssr = container.querySelector('img.nlps-ssr-poster');
-  const poster = ssr || el('img', 'rbs-poster', root, { alt: T.aria, decoding: 'async', fetchpriority: 'high' });
-  if (ssr) { ssr.classList.add('rbs-poster'); root.appendChild(ssr); }
+  const poster = el('img', 'rbs-poster', root, { alt: T.aria, decoding: 'async', fetchpriority: 'high' });
   poster.addEventListener('error', () => { poster.style.visibility = 'hidden'; }, { once: true });
-  if (!ssr) poster.src = opts.poster || new URL('./poster.jpg', import.meta.url).href;
+  poster.src = opts.poster || new URL('./poster.jpg', import.meta.url).href;
   const canvasWrap = el('div', 'rbs-canvas', root);
   const leader = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   leader.setAttribute('class', 'rbs-leader');
@@ -1372,17 +1368,7 @@ function createEngine(ctx) {
     // two pins never cover each other: the nearer one keeps its place, a farther one waits for another angle
     // the building's own label first (it may sit on the tower: it is its name), then the nearer pins
     shown.sort((u, v) => (v.p.hero ? 1 : 0) - (u.p.hero ? 1 : 0) || u.d - v.d);
-    // the stage's own chrome is never covered: the first-use hint (while it shows), the light switch and the caption
-    // (seen 25.9.2026: "פירסט" and "מגדל איינשטיין" sat on "בחרו קומה במגדל" in the first view)
     const kept = [];
-    {
-      const rr = root.getBoundingClientRect();
-      for (const u of [hint, root.querySelector('.rbs-presets'), root.querySelector('.rbs-caption')]) {
-        if (!u || (u === hint && u.classList.contains('is-gone'))) continue;
-        const b = u.getBoundingClientRect();
-        if (b.width > 0 && b.height > 0) kept.push({ x: b.left - rr.left - 4, y: b.top - rr.top - 4, w: b.width + 8, h: b.height + 8, chrome: true });
-      }
-    }
     for (const s of shown) {
       if (!s.p.hero && hero && s.x < hero.x + hero.w + 4 && hero.x < s.x + s.w + 4 && s.y < hero.y + hero.h + 2 && hero.y < s.y + s.h + 2) {
         s.p.el.style.visibility = 'hidden';

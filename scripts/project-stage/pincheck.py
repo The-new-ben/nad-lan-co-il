@@ -27,6 +27,11 @@ with sync_playwright() as p:
         r = pg.evaluate("""() => { const v = [...document.querySelectorAll('.rbs-qpin')].filter(b => b.style.visibility === 'visible').map(b => { const r = b.getBoundingClientRect(); return {n: b.textContent, x: r.left, y: r.top, w: r.width, h: r.height}; });
           let bad = []; for (let i = 0; i < v.length; i++) for (let j = i + 1; j < v.length; j++) { const a = v[i], c = v[j];
             if (a.x < c.x + c.w && c.x < a.x + a.w && a.y < c.y + c.h && c.y < a.y + a.h) bad.push(a.n + ' x ' + c.n); }
+          // 1.72.272: the stage's chrome too (the first-use hint while it shows, the light switch, the caption)
+          for (const u of ['.rbs-hint:not(.is-gone)', '.rbs-presets', '.rbs-caption']) {
+            const e = document.querySelector(u); if (!e) continue; const r = e.getBoundingClientRect(); if (!r.width) continue;
+            for (const a of v) if (a.x < r.left + r.width && r.left < a.x + a.w && a.y < r.top + r.height && r.top < a.y + a.h) bad.push(a.n + ' x ' + u);
+          }
           return {n: v.length, names: v.map(x => x.n), bad}; }""")
         samples += 1; worst = max(worst, len(r["bad"])); seen.update(r["names"])
         if r["bad"]: print("OVERLAP at step", i, r["bad"])
