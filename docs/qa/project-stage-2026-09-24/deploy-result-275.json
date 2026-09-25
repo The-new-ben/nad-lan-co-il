@@ -1,0 +1,17 @@
+{
+  "released": "1.72.275",
+  "from": "1.72.274",
+  "at": "2026-09-25 09:41:54",
+  "files": {
+    "inc/i18n.php": "4b6fbfa71acbbc657879d6cc3a6484d2",
+    "inc/drone-map.php": "7307ee24173a747461675954b342ba45",
+    "inc/home-v3.php": "ac33d7a610a563c62bc8d8dff2d25304",
+    "nadlan-config.php": "303f3cfdd3031d7b8ad80b09190dd5b9"
+  },
+  "live_before": {
+    "inc/i18n.php": "b48c083a8e3f3e41ef391996ad0fd082",
+    "inc/drone-map.php": "7c418115f0047ceec6fb2ec62b67f185",
+    "inc/home-v3.php": "53b0b0b1f2eeee8f4c1a1fcb395de39c",
+    "nadlan-config.php": "ca67634dad4d630cdd65870e3c0679fb"
+  }
+}
