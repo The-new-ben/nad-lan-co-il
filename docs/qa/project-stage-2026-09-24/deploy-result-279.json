@@ -1,0 +1,13 @@
+{
+  "released": "1.72.279",
+  "from": "1.72.278",
+  "at": "2026-09-25 11:32:37",
+  "files": {
+    "assets/project-stage/rainbow/stage.js": "05e9ad3e63533d09fad7694603bfba72",
+    "nadlan-config.php": "a985ab47c4602ba85caf41e601e84dd7"
+  },
+  "live_before": {
+    "assets/project-stage/rainbow/stage.js": "d9e83994f0c805e6b78bb380c77b2625",
+    "nadlan-config.php": "dadf55adfc2b7632b1e6ca3fd96d128c"
+  }
+}

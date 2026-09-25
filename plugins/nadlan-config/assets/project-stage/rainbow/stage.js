@@ -62,6 +62,9 @@ const DEFAULTS = {
   floorNote: null,       // (floor) => the page's sourced line for that floor, or null for the project-wide line
   quarter: null,         // the quarter around the building (quarter.json): { projects: [...], places: [...], note } with each
                          // item's x (m east) and z (m south) from the scene's origin, its distance and bearing from the tower
+  autoFacing: null,      // a side id ('w'): the first tap on a floor also picks that side's example apartment, so the view and
+                         // the map's beam answer at once (design system ProjectStage version 33; the owner, 25.9.2026)
+  actions: null,         // the floor card's actions (version 33): [{ id, label, kind: 'go' | 'sec' }]; each emits nl:floor-action
   units: null,           // example apartments (owner, 25.9.2026: "דירות לדוגמה עם כיוון, ועם תווית ברורה שהן לדוגמה"):
                          // { sides: [{ id: 'w', bearing: 270 }, ...], half: 45, label: 'דירה לדוגמה', chip: 'לדוגמה' }; a pick on
                          // the ring snaps to the apartment whose arc holds it, and every place says it is an example
@@ -245,6 +248,17 @@ export function mountRainbowStage(container, options = {}) {
   labelClose.textContent = '×';
   const labelLine = el('p', 'rbs-label-line', label);
   const labelFacing = el('p', 'rbs-label-facing', label);
+  const labelMore = el('p', 'rbs-label-more', label);
+  labelMore.hidden = true;
+  const actBtns = {};
+  if (Array.isArray(opts.actions) && opts.actions.length) {
+    const acts = el('div', 'rbs-label-acts', label);
+    for (const a of opts.actions) {
+      const b = el('button', 'rbs-act rbs-act--' + (a.kind === 'go' ? 'go' : 'sec'), acts, { type: 'button', 'data-act': String(a.id) });
+      b.textContent = String(a.label);
+      actBtns[a.id] = b;
+    }
+  }
   const labelCta = el('button', 'rbs-label-cta', label, { type: 'button' });
   labelCta.textContent = T.cta;
   const facingChip = el('div', 'rbs-facing', ui, { 'aria-hidden': 'true' });
@@ -317,7 +331,7 @@ export function mountRainbowStage(container, options = {}) {
       opts.cityData = cityData || null;
       if (disposed) return;
       engine = createEngine({
-        root, canvasWrap, label, labelTitle, labelLine, labelFacing, labelCta, labelClose, leader, hint, facingChip, qpins, qcard,
+        root, canvasWrap, label, labelTitle, labelLine, labelFacing, labelMore, actBtns, labelCta, labelClose, leader, hint, facingChip, qpins, qcard,
         opts, T, reduced, phone, coarse, preset: currentPreset,
         onReady: markReady,
         onContextLost: () => { root.classList.remove('rbs--live', 'rbs--settled'); },
@@ -405,7 +419,7 @@ export function mountRainbowStage(container, options = {}) {
 /* ------------------------------------------------------------------------------------------ */
 
 function createEngine(ctx) {
-  const { root, canvasWrap, label, labelTitle, labelLine, labelFacing, labelCta, labelClose, leader, hint, facingChip, opts, T, reduced, phone } = ctx;
+  const { root, canvasWrap, label, labelTitle, labelLine, labelFacing, labelMore, actBtns, labelCta, labelClose, leader, hint, facingChip, opts, T, reduced, phone } = ctx;
   const qpins = ctx.qpins || [], qcard = ctx.qcard || null;
   const leaderLine = leader.querySelector('line');
   const leaderDot = leader.querySelector('circle');
@@ -907,6 +921,7 @@ function createEngine(ctx) {
 
   /* facing state and its words: "פונה מערבה · 270°" */
   let facing = null;          // { idx, bearing }  bearing: degrees clockwise from true north
+  let skipAuto = false;      // selectUnit picks its own side
   let previewIdx = -1;
   const chipBox = { w: 0, h: 0 };
   function renderFacing(elm, b) {
@@ -927,9 +942,12 @@ function createEngine(ctx) {
       renderFacing(facingChip, facing.bearing);
       // toward a pin in the quarter: say the pin ("לכיוון דמרי ימה")
       if (facing.toward) { labelFacing.textContent = 'לכיוון ' + facing.toward; facingChip.textContent = 'לכיוון ' + facing.toward; }
+      labelMore.textContent = T.more || '';
+      labelMore.hidden = !(facing.auto && T.more);
     } else {
       labelFacing.textContent = T.facingHint;
       labelFacing.classList.remove('is-set');
+      labelMore.hidden = true;
       facingChip.classList.remove('is-on');
     }
     // an example apartment says so in the card's title: "דירה לדוגמה · קומה 16" and the chip "לדוגמה"
@@ -1059,7 +1077,18 @@ function createEngine(ctx) {
   let labelHover = false;
   on(label, 'pointerenter', () => { labelHover = true; });
   on(label, 'pointerleave', () => { labelHover = false; });
-  on(labelCta, 'click', () => emitCta());
+  // a phone's tap that opens the card must not also press the button that appears under the finger (the browser's click
+  // follows the touch): the card's buttons wait a moment after it opens (found live on 1.72.278, a tap opened the designer)
+  let cardAt = 0;
+  const fresh = () => performance.now() - cardAt < 500;
+  on(labelCta, 'click', () => { if (!fresh()) emitCta(); });
+  // the card's actions (design system ProjectStage version 33): the page decides what each one opens
+  for (const id of Object.keys(actBtns || {})) {
+    on(actBtns[id], 'click', () => {
+      if (!selected || fresh()) return;
+      emit('nl:floor-action', { action: id, floor: selected.floor, heightM: heightOf(selected.floor), bearing: facing ? facing.bearing : null, unit: facing ? facing.unit : null });
+    });
+  }
   on(labelClose, 'click', () => clearFloor());
   function emitCta() {
     if (!selected) return;
@@ -1082,6 +1111,9 @@ function createEngine(ctx) {
     const prev = selected && selected.pinned ? selected.floor : null;
     showFloor(f, true);
     hint.classList.add('is-gone');
+    // one tap, the whole answer (version 33): no side yet, so the project's first side (the sea) is picked for this floor
+    const auto = !facing && !skipAuto && UNITS && opts.autoFacing ? UNITS.sides.find((x) => x.id === opts.autoFacing) : null;
+    if (auto) facing = { idx: idxForSceneBearing(normDeg(auto.bearing - offset)), bearing: round1(auto.bearing), unit: `${f}-${auto.id}`, toward: null, auto: true };
     ringGroup.position.y = ringY(f);
     ringGroup.visible = true;
     dimTarget = 1;
@@ -1105,6 +1137,7 @@ function createEngine(ctx) {
     }
   }
   function showFloor(f, pinned) {
+    if (!label.classList.contains('is-on')) cardAt = performance.now();
     selected = { floor: f, pinned };
     U.uHiFloor.value = f;
     labelTitle.textContent = T.floor(f);
@@ -1752,7 +1785,8 @@ function createEngine(ctx) {
       const f = Number(m[1]); const side = UNITS.sides.find((x) => x.id === m[2]);
       if (!side || !(f >= 1 && f <= TOWER.floors)) return null;
       if (phase === 'intro') endIntro();
-      selectFloor(f, source === 'user' ? 'user' : 'api');
+      skipAuto = true;
+      try { selectFloor(f, source === 'user' ? 'user' : 'api'); } finally { skipAuto = false; }
       setFacingBearing(side.bearing, source === 'user' ? 'user' : 'api');
       kick();
       return facing ? facing.unit : null;

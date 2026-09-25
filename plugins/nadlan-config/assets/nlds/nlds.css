@@ -325,7 +325,7 @@
 :root body .nlds .nlprog__step b{color:var(--nlds-sa-ink) !important;font-weight:700 !important}
 :root body .nlds .nlprog__step.is-now b{color:var(--nlds-sa-sea) !important}
 :root body .nlds .nlps-lead{font-size:17px !important;line-height:1.75 !important;color:var(--nlds-sa-ink) !important;max-width:76ch !important;margin:0 !important;text-wrap:pretty !important}
-:root body .nlds .nlps-page{display:grid !important;grid-template-columns:minmax(300px, 380px) minmax(0, 1fr) 260px !important;grid-template-areas:"hero stage rail" "lead stage rail" "cta stage rail" "facts facts facts" "below below below" !important;grid-template-rows:auto auto 1fr !important;column-gap:var(--nlds-space-22) !important;row-gap:var(--nlds-space-14) !important;align-items:start !important}
+:root body .nlds .nlps-page{display:grid !important;grid-template-columns:minmax(300px, 380px) minmax(0, 1fr) 260px !important;grid-template-areas:"hero stage rail" "lead stage rail" "cta stage rail" "below below below" "facts facts facts" !important;grid-template-rows:auto auto 1fr !important;column-gap:var(--nlds-space-22) !important;row-gap:var(--nlds-space-14) !important;align-items:start !important}
 :root body .nlds .nlps-page > .nlps-hero{grid-area:hero !important}
 :root body .nlds .nlps-page > .nlps-lead{grid-area:lead !important;font-size:16.5px !important;max-width:none !important}
 :root body .nlds .nlps-page > .nlps-hero__cta{grid-area:cta !important;margin-top:0 !important}
@@ -333,7 +333,14 @@
 :root body .nlds .nlps-page > .nlps-stagebox{grid-area:stage !important}
 :root body .nlds .nlps-page > .nlps-rail{grid-area:rail !important}
 :root body .nlds .nlps-page > .nlps-facts{grid-area:facts !important;display:grid !important;gap:var(--nlds-space-12) !important;margin-top:var(--nlds-space-10) !important}
-:root body .nlds .nlps-page > .nlps-below{grid-area:below !important;margin-top:var(--nlds-space-10) !important}
+:root body .nlds .nlps-page > .nlps-below{grid-area:below !important;margin-top:var(--nlds-space-4) !important}
+:root body .nlds .nlps-steps{display:grid !important;grid-template-columns:repeat(4, minmax(0, 1fr)) !important;gap:var(--nlds-space-8) !important;margin:0 !important;padding:0 !important;list-style:none !important}
+:root body .nlds .nlps-step{appearance:none !important;-webkit-appearance:none !important;display:flex !important;align-items:center !important;gap:var(--nlds-space-10) !important;width:100% !important;min-height:48px !important;padding:8px 12px !important;border:1px solid var(--nlds-sa-line) !important;border-radius:var(--nlds-radius-12) !important;background:var(--nlds-sa-surf) !important;color:var(--nlds-sa-ink) !important;font:600 14px/1.3 var(--nlds-font-sans) !important;text-align:start !important;cursor:pointer !important;transition:border-color .15s ease, box-shadow .15s ease !important}
+:root body .nlds .nlps-step i{flex:none !important;display:grid !important;place-items:center !important;width:26px !important;height:26px !important;border-radius:50% !important;background:var(--nlds-sa-sand) !important;color:var(--nlds-sa-ink) !important;font:700 13px/1 var(--nlds-font-sans) !important;font-style:normal !important}
+:root body .nlds .nlps-step:hover{border-color:var(--nlds-sa-ink2) !important}
+:root body .nlds .nlps-step[aria-current="step"]{border-color:var(--nlds-sa-sea) !important;box-shadow:inset 0 0 0 1px var(--nlds-sa-sea) !important}
+:root body .nlds .nlps-step[aria-current="step"] i{background:var(--nlds-sa-sea) !important;color:#fff !important}
+:root body .nlds .nlps-step:focus-visible{outline:2px solid var(--nlds-sa-sea) !important;outline-offset:2px !important}
 :root body .nlds .nlps-page .nlps-stage{height:clamp(520px, calc(100svh - 240px), 700px) !important;max-height:none !important}
 :root body .nlds .nlps-page .nlps-rail .nlbslot{min-height:0 !important}
 :root body .nlds .nlpd{display:grid !important;gap:var(--nlds-space-14) !important;background:var(--nlds-sa-surf) !important;border:1px solid var(--nlds-sa-line) !important;border-radius:var(--nlds-radius-16) !important;padding:clamp(16px, 2.4vw, 26px) !important}
@@ -443,7 +450,9 @@
 :root body .nlds .nlprog__step{font-size:12px !important}
 :root body .nlds .nlps-hero__cta .nlds-btn{flex:1 !important;min-height:var(--nlds-tap-target) !important;padding:0 12px !important;font-size:15px !important}
 :root body .nlds .nlps-lead{font-size:16px !important}
-:root body .nlds .nlps-page{grid-template-columns:minmax(0, 1fr) !important;grid-template-areas:"hero" "cta" "stage" "lead" "facts" "below" "rail" !important;column-gap:0 !important}
+:root body .nlds .nlps-steps{grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important}
+:root body .nlds .nlps-step{min-height:44px !important;padding:6px 10px !important;font-size:13.5px !important}
+:root body .nlds .nlps-page{grid-template-columns:minmax(0, 1fr) !important;grid-template-areas:"hero" "cta" "stage" "below" "lead" "facts" "rail" !important;column-gap:0 !important}
 :root body .nlds .nlps-page .nlps-stage{height:70svh !important;min-height:360px !important}
 :root body .nlds .nlps-page > .nlps-lead{font-size:16px !important}
 :root body .nlds .nlps-page > .nlps-rail{grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;gap:var(--nlds-space-12) !important}

@@ -342,7 +342,14 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 			. ' width="1432" height="1320" alt="' . esc_attr( 'הדמיה של פרויקט ' . $ps['name'] . ', מגדל ובנייני בוטיק סביב גינה' ) . '" fetchpriority="high" decoding="async">';
 		$stagebox = '<div class="nlps-stagebox"><h2 class="nlps-srt" id="nlps-t">סיור וירטואלי: הקומות והנוף</h2>'
 			. '<section class="nlps-stage" id="nlps" aria-labelledby="nlps-t" data-cfg="' . esc_attr( wp_json_encode( $cfg ) ) . '"><div class="nlps-stage__mount" id="nlps-stage">' . $ssr . '</div></section>'
-			. '<div class="nlds"><p class="nlps-hint" id="nlps-hint">' . ( ! empty( $ps['units'] ) ? 'בחרו קומה במגדל, ואחר כך דירה לדוגמה בטבעת הקומה.' : 'בחרו קומה במגדל, ואחר כך נקודה בטבעת הקומה כדי לבחור כיוון.' ) . '</p>' . $legend . $src . '</div></div>';
+			. '<div class="nlds">' . ( ! empty( $ps['units'] )
+				// the steps under the stage (design system ProjectStage version 33): what the page can do, each a button
+				? '<ol class="nlps-steps" aria-label="מה אפשר לעשות כאן">'
+					. '<li><button type="button" class="nlps-step" data-nlps-step="floor" aria-current="step"><i>1</i>בוחרים קומה</button></li>'
+					. '<li><button type="button" class="nlps-step" data-nlps-step="view"><i>2</i>הנוף והמפה</button></li>'
+					. '<li><button type="button" class="nlps-step" data-nlps-step="inside"><i>3</i>נכנסים לדירה</button></li>'
+					. '<li><button type="button" class="nlps-step" data-nlps-step="design"><i>4</i>מעצבים את הדירה</button></li></ol>'
+				: '<p class="nlps-hint" id="nlps-hint">בחרו קומה במגדל, ואחר כך נקודה בטבעת הקומה כדי לבחור כיוון.</p>' ) . $legend . $src . '</div></div>';
 		$rail  = '<aside class="nlps-rail" aria-label="אנשי מקצוע באזור">' . $rail . '</aside>';
 		$below = '<div class="nlps-below' . ( '' === $map ? ' nlps-below--solo' : '' ) . '">' . $view . $map . '</div>';
 		$facts = '';
@@ -386,9 +393,10 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 			$balnote = 'עומק המרפסת בציור להמחשה בלבד: לפי תכנית העיצוב (5.2023), מרפסות המגדל בולטות עד 2 מ׳.';
 			$scenes = array();
 			$bal    = false;
+			foreach ( array( 25, 10, 36 ) as $fl ) {
 			foreach ( $dirs as $dd ) {
 				foreach ( $spots as $sp ) {
-					if ( ! is_readable( dirname( __DIR__ ) . '/' . $tdir . $sp[0] . '-25' . $dd[0] . '.jpg' ) ) {
+					if ( ! is_readable( dirname( __DIR__ ) . '/' . $tdir . $sp[0] . '-' . $fl . $dd[0] . '.jpg' ) ) {
 						continue;
 					}
 					$bal      = $bal || 'balcony' === $sp[0];
@@ -398,19 +406,26 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 						'dirLabel'  => $dd[1],
 						'spot'      => $sp[0],
 						'spotLabel' => $sp[1],
-						'title'     => 'קומה 25 · ' . $sp[2] . $dd[2],
-						'src'       => $turl . $sp[0] . '-25' . $dd[0] . '.jpg' . $tv,
-						'small'     => $turl . $sp[0] . '-25' . $dd[0] . '-2k.jpg' . $tv,
+						'title'     => 'קומה ' . $fl . ' · ' . $sp[2] . $dd[2],
+						'src'       => $turl . $sp[0] . '-' . $fl . $dd[0] . '.jpg' . $tv,
+						'small'     => $turl . $sp[0] . '-' . $fl . $dd[0] . '-2k.jpg' . $tv,
 						'note'      => trim( ( 'balcony' === $sp[0] ? $balnote . ' ' : '' ) . $dd[3] ),
+						'floor'     => $fl,
 					);
 				}
 			}
+			}
+			// the floors that have pictures, low to high ("קומות 10, 25 ו־36")
+			$fls = array_values( array_unique( array_map( function ( $x ) { return (int) $x['floor']; }, $scenes ) ) );
+			sort( $fls );
+			$fln = count( $fls ) > 1 ? 'קומות ' . implode( ', ', array_slice( $fls, 0, -1 ) ) . ' ו־' . end( $fls ) : 'קומה 25';
+			$n25 = count( array_filter( $scenes, function ( $x ) { return 25 === (int) $x['floor']; } ) );
 			$tour = '<div class="nlds nlps-tourwrap" dir="rtl" lang="he"><section class="nlat" id="nlps-tour" aria-labelledby="nlat-t">'
 				. '<div class="nlat__media"><img src="' . esc_url( $turl . 'living-25w-card.jpg' . $tv ) . '" alt="הסלון בדירה לדוגמה בקומה 25, מבט אל הים (הדמיה)" width="1200" height="675" loading="lazy" decoding="async"><span class="nlds-sample">דירה לדוגמה</span></div>'
 				. '<div class="nlat__body"><p class="nlds-kicker">הדירה לדוגמה מבפנים</p>'
-				. '<h2 class="nlat__title" id="nlat-t">קומה 25' . ( count( $scenes ) > 1 ? ', בארבעת הכיוונים' : ' · לכיוון הים' ) . '</h2>'
-				. '<p class="nlat__text">סלון ומטבח פתוח כמו במסירה, בלי ריהוט, בגובה של כ־99 מ׳'
-				. ( count( $scenes ) > 1 ? ': מול הים, תל ברוך, רמת אביב ומגדלי העיר' . ( $bal ? ', מהסלון ומהמרפסת' : '' ) : '' )
+				. '<h2 class="nlat__title" id="nlat-t">' . esc_html( $fln ) . ( $n25 > 1 ? ', בארבעת הכיוונים' : ' · לכיוון הים' ) . '</h2>'
+				. '<p class="nlat__text">סלון ומטבח פתוח כמו במסירה, בלי ריהוט, ' . ( count( $fls ) > 1 ? 'ב' . esc_html( $fln ) : 'בגובה של כ־99 מ׳' )
+				. ( $n25 > 1 ? ': מול הים, תל ברוך, רמת אביב ומגדלי העיר' . ( $bal ? ', מהסלון ומהמרפסת' : '' ) : '' )
 				. '. הנוף בחלון בנוי מהבניינים הקיימים לפי שכבת המבנים של העירייה, מהפרויקטים המתוכננים ברובע כנפחים שקופים, מקו החוף ומהים.</p>'
 				. '<button type="button" class="nlds-btn nlds-btn--primary nlat__go" data-nlps-tour="' . esc_url( $turl . 'living-25w.jpg' . $tv ) . '" data-nlps-tour-small="' . esc_url( $turl . 'living-25w-2k.jpg' . $tv ) . '" data-nlps-tour-title="קומה 25 · לכיוון הים" data-nlps-tour-scenes="' . esc_attr( wp_json_encode( $scenes ) ) . '"><span>להיכנס לדירה · 360°</span></button>'
 				. '<p class="nlat__note">הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר.</p></div></section></div>';
@@ -528,7 +543,7 @@ add_action( 'wp_head', function () {
 	   everything in the content, several with !important: inside the grid they are set back, with a longer selector and
 	   !important. */
 	echo '<style id="nadlan-ps-css">'
-		. ':root body .nlps-page{box-sizing:border-box!important;width:100%!important;max-width:none!important;margin:6px 0 30px!important;padding:0 clamp(12px,2vw,20px)!important;display:grid!important;grid-template-columns:minmax(300px,380px) minmax(0,1fr) 260px;grid-template-areas:"hero stage rail" "lead stage rail" "cta stage rail" "facts facts facts" "below below below" "tour tour tour" "deals deals deals";grid-template-rows:auto auto 1fr;column-gap:22px;row-gap:14px;align-items:start}'
+		. ':root body .nlps-page{box-sizing:border-box!important;width:100%!important;max-width:none!important;margin:6px 0 30px!important;padding:0 clamp(12px,2vw,20px)!important;display:grid!important;grid-template-columns:minmax(300px,380px) minmax(0,1fr) 260px;grid-template-areas:"hero stage rail" "lead stage rail" "cta stage rail" "below below below" "facts facts facts" "tour tour tour" "deals deals deals";grid-template-rows:auto auto 1fr;column-gap:22px;row-gap:14px;align-items:start}'
 		. ':root body .nlps-page>*{min-width:0;max-width:none!important;margin:0!important;box-sizing:border-box}'
 		. ':root body .nlps-page>.nlps-herowrap{grid-area:hero;padding:0!important}'
 		. ':root body .nlps-page>.nl-lead{grid-area:lead;background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important}'
@@ -558,8 +573,8 @@ add_action( 'wp_head', function () {
 		. ':root body .nlds .nlps-view__map.nlps-stand{cursor:default}'
 		. ':root body .nlds .nlbsq__photo img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:50% 24%!important}'
 		. ':root body .nlps-rail .nlds .nlbslot{min-height:0!important}'
-		. '@media(max-width:1279px){:root body .nlps-page{grid-template-columns:minmax(280px,360px) minmax(0,1fr);grid-template-areas:"hero stage" "lead stage" "cta stage" "facts facts" "below below" "tour tour" "deals deals" "rail rail"}:root body .nlps-page>.nlps-rail{grid-template-columns:repeat(2,minmax(0,300px));margin-top:6px!important}}'
-		. '@media(max-width:1099px){:root body .nlps-page{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"hero" "cta" "stage" "lead" "facts" "below" "tour" "deals" "rail";column-gap:0}:root body .nlps-page>.nlps-below{grid-template-columns:minmax(0,1fr)}:root body .nlps-page>.nlps-rail{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nlps-stage{height:62svh;min-height:380px}}'
+		. '@media(max-width:1279px){:root body .nlps-page{grid-template-columns:minmax(280px,360px) minmax(0,1fr);grid-template-areas:"hero stage" "lead stage" "cta stage" "below below" "facts facts" "tour tour" "deals deals" "rail rail"}:root body .nlps-page>.nlps-rail{grid-template-columns:repeat(2,minmax(0,300px));margin-top:6px!important}}'
+		. '@media(max-width:1099px){:root body .nlps-page{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"hero" "cta" "stage" "below" "lead" "facts" "tour" "deals" "rail";column-gap:0}:root body .nlps-page>.nlps-below{grid-template-columns:minmax(0,1fr)}:root body .nlps-page>.nlps-rail{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nlps-stage{height:62svh;min-height:380px}}'
 		. '@media(max-width:600px){.nlps-stage{height:70svh;min-height:360px}:root body .nlps-page{padding:0 12px!important;row-gap:12px}:root body .nlps-page>.nlps-rail{gap:12px}:root body .nlps-page>.nl-lead>p{font-size:16px!important}}'
 		. '</style>' . "\n";
 }, 999 );

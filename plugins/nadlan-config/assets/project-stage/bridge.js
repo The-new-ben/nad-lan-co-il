@@ -59,6 +59,8 @@ async function boot() {
   const notes = cfg.notes && typeof cfg.notes === 'object' ? cfg.notes : {};
   const floorNote = (f) => notes[String(f)] || (cfg.lowNote && f <= Number(cfg.lowUpTo || 0) ? cfg.lowNote : (cfg.highNote || null));
   /* example apartments (the owner, 25.9.2026: "דירות לדוגמה עם כיוון, ועם תווית ברורה שהן לדוגמה"): one per side of the floor */
+  // the sea-side apartment (west) answers first: the side buyers ask about most; else the first side of the list
+  const seaSide = Array.isArray(cfg.units) && cfg.units.length ? String((cfg.units.find((u) => String(u[0]) === 'w') || cfg.units[0])[0]) : 'w';
   const units = Array.isArray(cfg.units) && cfg.units.length
     ? { sides: cfg.units.map((u) => ({ id: String(u[0]), bearing: Number(u[1]) })), half: 180 / cfg.units.length, label: 'דירה לדוגמה', chip: 'לדוגמה' }
     : null;
@@ -72,8 +74,16 @@ async function boot() {
       floorNote,
       units,
       quarter: cfg.quarter && typeof cfg.quarter === 'object' ? cfg.quarter : null,
+      // one tap, the whole answer (design system ProjectStage version 33): the floor's sea-side example apartment at once,
+      // and the card's actions: inside the apartment, the view and the map under the stage, the designer
+      autoFacing: units ? seaSide : null,
+      actions: units ? [
+        { id: 'inside', label: 'להיכנס לדירה · 360°', kind: 'go' },
+        { id: 'view', label: 'הנוף והמפה', kind: 'sec' },
+        { id: 'design', label: 'לעצב את הדירה', kind: 'sec' },
+      ] : null,
       text: units
-        ? { cta: 'לקבלת תוכניות ומחירים', facingHint: 'בחרו דירה לדוגמה בטבעת הקומה', caption: 'הדמיה להמחשה בלבד, על בסיס מקורות פומביים. חלוקת הקומה לדירות היא לדוגמה, ואינה לפי תוכנית מכר.' }
+        ? { cta: 'לקבלת תוכניות ומחירים', more: 'לצד אחר: הקישו על הטבעת', facingHint: 'בחרו דירה לדוגמה בטבעת הקומה', caption: 'הדמיה להמחשה בלבד, על בסיס מקורות פומביים. חלוקת הקומה לדירות היא לדוגמה, ואינה לפי תוכנית מכר.' }
         : { cta: 'לקבלת תוכניות ומחירים' },
       force3D: /[?&]nlps3d\b/.test(location.search), // QA only: the scene even on a software renderer
     });
@@ -172,27 +182,82 @@ async function boot() {
   if (wanted && units && stage && stage.ready) {
     Promise.resolve(stage.ready).then(() => { stage.selectUnit(wanted, 'user'); }).catch(() => {});
   }
-  /* the example apartment from the inside (design system ApartmentTour): the viewer loads on the button */
+  /* the example apartment from the inside (design system ApartmentTour): the viewer loads on demand. The pictures exist
+     for some floors (10, 25, 36): the viewer takes the floor nearest the pick and says which one it is */
+  const tourBtn = document.querySelector('[data-nlps-tour]');
+  let allScenes = [];
+  try { allScenes = JSON.parse((tourBtn && tourBtn.getAttribute('data-nlps-tour-scenes')) || '[]') || []; } catch (err) { allScenes = []; }
+  const tourFloors = [...new Set(allScenes.map((x) => Number(x.floor) || 25))].sort((a, b) => a - b);
+  const nearestFloor = (f) => (tourFloors.length ? tourFloors.reduce((b, x) => (Math.abs(x - f) < Math.abs(b - f) ? x : b), tourFloors[0]) : 25);
+  function openTourAt(floor, side, opener) {
+    if (!tourBtn) return;
+    const fl = nearestFloor(Number(floor) || 25);
+    const scenes = allScenes.filter((x) => (Number(x.floor) || 25) === fl);
+    const start = side && scenes.some((x) => x.id === side) ? side : 'w';
+    const first = scenes.find((x) => x.id === start) || scenes[0] || null;
+    ga('tour_open', { room: 'living-' + fl + start, project: cfg.name });
+    // the viewer keeps this module's version (?ver=), so a new release never meets an old cached viewer
+    import(new URL('./tour.js' + new URL(import.meta.url).search, import.meta.url).href).then((m) => m.openTour({
+      src: first ? first.src : tourBtn.getAttribute('data-nlps-tour'),
+      srcSmall: first ? first.small : tourBtn.getAttribute('data-nlps-tour-small'),
+      title: first ? first.title : (tourBtn.getAttribute('data-nlps-tour-title') || ''),
+      scenes: scenes.length ? scenes : null,
+      start,
+      onScene: (id) => ga('tour_direction', { side: id, project: cfg.name, floor: fl }),
+      opener: opener || tourBtn,
+      caption: 'הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר.',
+    })).catch((err) => console.warn('[project stage] tour', err));
+  }
+  const selSide = () => { try { const sel = stage && stage.getSelection && stage.getSelection(); return sel && sel.unit ? String(sel.unit).split('-')[1] : null; } catch (err) { return null; } };
+  const selFloor = () => { try { const sel = stage && stage.getSelection && stage.getSelection(); return sel ? sel.floor : null; } catch (err) { return null; } };
   document.addEventListener('click', (e) => {
     const b = e.target && e.target.closest ? e.target.closest('[data-nlps-tour]') : null;
     if (!b) return;
-    ga('tour_open', { room: 'living-25w', project: cfg.name });
-    // the viewer keeps this module's version (?ver=), so a new release never meets an old cached viewer
-    // the four directions of the floor; it opens on the side picked on the stage, if an example apartment is picked
-    let scenes = null;
-    try { scenes = JSON.parse(b.getAttribute('data-nlps-tour-scenes') || 'null'); } catch (err) { scenes = null; }
-    let start = 'w';
-    try { const sel = stage && stage.getSelection && stage.getSelection(); if (sel && sel.unit) start = String(sel.unit).split('-')[1] || start; } catch (err) { /* keep the sea */ }
-    import(new URL('./tour.js' + new URL(import.meta.url).search, import.meta.url).href).then((m) => m.openTour({
-      src: b.getAttribute('data-nlps-tour'),
-      srcSmall: b.getAttribute('data-nlps-tour-small'),
-      title: b.getAttribute('data-nlps-tour-title') || '',
-      scenes: Array.isArray(scenes) && scenes.length ? scenes : null,
-      start,
-      onScene: (id) => ga('tour_direction', { side: id, project: cfg.name }),
-      opener: b,
-      caption: 'הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר.',
-    })).catch((err) => console.warn('[project stage] tour', err));
+    // the section's button: the side and the floor picked on the stage, else floor 25 toward the sea
+    openTourAt(selFloor() || 25, selSide() || 'w', b);
+  });
+
+  /* the view and the map, right under the stage */
+  const below = document.querySelector('.nlps-below');
+  const smooth = () => (matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
+  const toBelow = () => {
+    if (!below) return;
+    const top = below.getBoundingClientRect().top + window.scrollY - 84; // under the sticky header
+    window.scrollTo({ top, behavior: smooth() });
+  };
+  const DESIGNER = '/tour/designer/';
+  /* the floor card's actions (design system ProjectStage version 33) */
+  window.addEventListener('nl:floor-action', (e) => {
+    const d = e.detail || {};
+    ga('floor_action', { action: d.action || '', floor: d.floor, project: cfg.name });
+    if (d.action === 'inside') openTourAt(d.floor, d.unit ? String(d.unit).split('-')[1] : 'w', null);
+    else if (d.action === 'view') toBelow();
+    else if (d.action === 'design') location.href = DESIGNER;
+  });
+  /* the button says which floor's pictures open, when they are not the picked floor's */
+  const insideLabel = (f) => {
+    const b = document.querySelector('.rbs-act[data-act="inside"]');
+    if (!b || !tourFloors.length) return;
+    const fl = nearestFloor(f);
+    b.textContent = fl === f ? 'להיכנס לדירה · 360°' : 'להיכנס לדירה · מקומה ' + fl;
+  };
+  /* the steps under the stage: what the page can do, each a button; the current one ringed */
+  const steps = [...document.querySelectorAll('[data-nlps-step]')];
+  const setStep = (k) => steps.forEach((x) => { if (x.getAttribute('data-nlps-step') === k) x.setAttribute('aria-current', 'step'); else x.removeAttribute('aria-current'); });
+  window.addEventListener('nl:floor', (e) => { const d = e.detail || {}; if (d.floor != null) { setStep('view'); insideLabel(Number(d.floor)); } });
+  document.addEventListener('click', (e) => {
+    const b = e.target && e.target.closest ? e.target.closest('[data-nlps-step]') : null;
+    if (!b) return;
+    const k = b.getAttribute('data-nlps-step');
+    ga('stage_step', { step: k, project: cfg.name });
+    if (k === 'floor') { root.scrollIntoView({ behavior: smooth(), block: 'center' }); return; }
+    if (k === 'design') { location.href = DESIGNER; return; }
+    if (k === 'inside') { openTourAt(selFloor() || 25, selSide() || 'w', b); return; }
+    if (k === 'view') {
+      // nothing picked yet: floor 25's sea-side example apartment first, so the view and the beam have something to show
+      if (!selFloor() && stage && stage.selectUnit) Promise.resolve(stage.ready).then(() => { stage.selectUnit('25-' + seaSide, 'user'); }).catch(() => {});
+      toBelow();
+    }
   });
 
   /* the quarter's legend under the stage (design system QuarterPins): a chip shows its group alone; pressed again, all */
