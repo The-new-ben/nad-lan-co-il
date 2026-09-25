@@ -27,23 +27,6 @@ if ( ! function_exists( 'nadlan_hp_on' ) ) {
 	}
 }
 
-if ( ! function_exists( 'nadlan_hp_header_on' ) ) {
-	/** H1.3 (design system version 32): the new header on every Hebrew page, the home and the inner pages. Language pages
-	 *  keep the theme's header (translated there by i18n.php) until they get a string table. Option nadlan_home_v3_header
-	 *  = off keeps the theme's header on the inner pages; ?hp=off shows any page without it. */
-	function nadlan_hp_header_on() {
-		static $on = null;
-		if ( null !== $on ) { return $on; }
-		if ( is_admin() || wp_doing_ajax() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || is_feed() || is_embed() || is_robots() || get_query_var( 'sitemap' ) ) { return $on = false; }
-		if ( ! function_exists( 'nadlan_skin_a_on' ) || ! nadlan_skin_a_on() ) { return $on = false; }
-		if ( function_exists( 'nadlan_is_language_home' ) && nadlan_is_language_home() ) { return $on = false; }
-		if ( function_exists( 'nadlan_current_lang' ) && 'he' !== nadlan_current_lang() ) { return $on = false; }
-		if ( isset( $_GET['hp'] ) && 'off' === sanitize_key( wp_unslash( $_GET['hp'] ) ) ) { return $on = false; }
-		if ( is_front_page() ) { return $on = nadlan_hp_on(); }
-		return $on = ( 'off' !== get_option( 'nadlan_home_v3_header', 'on' ) );
-	}
-}
-
 if ( ! function_exists( 'nadlan_hp_img' ) ) {
 	function nadlan_hp_img( $f ) {
 		return plugins_url( 'assets/home/' . $f, dirname( __FILE__ ) ) . '?ver=' . ( defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '1' );
@@ -171,7 +154,7 @@ if ( ! function_exists( 'nadlan_hp_header' ) ) {
 		$globe = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg>';
 		ob_start();
 		?>
-<header class="nlhp-top wp-block-template-part" id="nlhp-top" role="banner">
+<header class="nlhp-top" id="nlhp-top" role="banner">
 	<div class="nlhp-top__in">
 		<a class="nlhp-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="NadLan, פורטל נדל״ן"><span class="nlhp-logo__mark" aria-hidden="true"><i><b style="height:9px"></b><b style="height:17px"></b><b style="height:12px"></b></i></span><span class="nlhp-logo__word">NadLan</span></a>
 		<nav class="nlhp-nav" id="nlhp-nav" aria-label="קטגוריות נדל״ן">
@@ -544,37 +527,12 @@ if ( ! function_exists( 'nadlan_hp_body' ) ) {
 	}
 }
 
-if ( ! function_exists( 'nadlan_hp_header_cached' ) ) {
-	/** The header's markup, made once per request (the block filter and the classic page buffer share it). */
-	function nadlan_hp_header_cached() {
-		static $h = null;
-		if ( null === $h ) { $h = nadlan_hp_header(); }
-		return $h;
-	}
-}
-
-/* the header, block templates: the theme's header template part is replaced */
+/* the header: the theme's header part is replaced on this page only */
 add_filter( 'render_block', function ( $html, $block ) {
 	if ( empty( $block['blockName'] ) || 'core/template-part' !== $block['blockName'] ) { return $html; }
-	if ( ! isset( $block['attrs']['slug'] ) || 'header' !== $block['attrs']['slug'] || ! nadlan_hp_header_on() ) { return $html; }
-	return nadlan_hp_header_cached();
+	if ( ! isset( $block['attrs']['slug'] ) || 'header' !== $block['attrs']['slug'] || ! nadlan_hp_on() ) { return $html; }
+	return nadlan_hp_header();
 }, 20, 2 );
-
-/* the header, classic templates (the catalogue, archives): header.php prints the theme's header element directly, so it
-   is swapped in the page's output. strpos only (no regex over a whole page); the markup is made before the buffer
-   starts, because an output-buffer callback may not start buffering itself. Fails open: no header element, no change. */
-add_action( 'template_redirect', function () {
-	if ( ! nadlan_hp_header_on() ) { return; }
-	$hdr = nadlan_hp_header_cached();
-	ob_start( function ( $html ) use ( $hdr ) {
-		if ( ! is_string( $html ) || '' === $html || false !== strpos( $html, 'id="nlhp-top"' ) ) { return $html; }
-		$a = strpos( $html, '<header class="nlpc-site-header"' );
-		if ( false === $a ) { return $html; }
-		$e = strpos( $html, '</header>', $a );
-		if ( false === $e ) { return $html; }
-		return substr( $html, 0, $a ) . $hdr . substr( $html, $e + 9 );
-	} );
-}, 3 );
 
 /* The Hebrew home: the new top and the design's bands (H1.2). If the bands cannot be made (a missing function, an
    error, no projects band), the skin's page stays with only its top swapped (H1.1): from its language bar to the end
@@ -667,15 +625,14 @@ add_action( 'wp_head', function () {
 
 /* the top's CSS, at the end of the head so it wins over the skin and the theme */
 add_action( 'wp_head', function () {
-	if ( ! nadlan_hp_header_on() ) { return; }
+	if ( ! nadlan_hp_on() ) { return; }
 	$css = <<<'NLHPCSS'
-body:has(#nlhp-hero) .nlhv2-langbar,body:has(#nlhp-hero) .nlhv2-browse{display:none!important}
+body:has(#nlhp-top) .nlhv2-langbar,body:has(#nlhp-top) .nlhv2-browse{display:none!important}
 html:has(#nlhp-top),html:has(#nlhp-top) body,body:has(#nlhp-top) .wp-site-blocks{overflow-x:clip!important;overflow-y:visible!important}
-body:has(#nlhp-hero) main.nlpc-main{padding-top:0!important}
+body:has(#nlhp-top) main.nlpc-main{padding-top:0!important}
 body:has(#nlhp-top) .nlhv2-renewal,body:has(#nlhp-top) .nlhv2-rentals{content-visibility:auto;contain-intrinsic-size:auto 560px}
 .nlhp-top{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid #e3e1da;font-family:Assistant,"Segoe UI",Arial,sans-serif;direction:rtl}
 body.admin-bar .nlhp-top{top:32px}
-@media (max-width:782px){body.admin-bar .nlhp-top{top:46px}}
 .nlhp-top *,.nlhp-top *::before,.nlhp-top *::after,.nlhp-hero *,.nlhp-cats *{box-sizing:border-box}
 .nlhp-top a{text-decoration:none!important}
 .nlhp-top__in{display:flex;align-items:stretch;gap:22px;height:68px;max-width:1440px;margin:0 auto;padding:0 24px}
@@ -909,7 +866,7 @@ NLHPCSS;
 
 /* the menus: one open at a time, hover opens on a mouse, Esc and a click outside close; the phone's sheet */
 add_action( 'wp_footer', function () {
-	if ( ! nadlan_hp_header_on() ) { return; }
+	if ( ! nadlan_hp_on() ) { return; }
 	$js = <<<'NLHPJS'
 (function(){var top=document.getElementById("nlhp-top");if(!top)return;var dds=[].slice.call(top.querySelectorAll(".nlhp-dd"));
 var fine=window.matchMedia("(hover: hover) and (pointer: fine)");var wide=window.matchMedia("(min-width: 1061px)");
