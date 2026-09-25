@@ -38,3 +38,6 @@ docs/research/**/worlds/pilot-google*
 scripts/project-stage/shots/
 scripts/project-stage/*.log
 **/__pycache__/
+
+# headless Chrome profiles made by assets/skin-a/brand/render-brand.py (empty, checked 25.9.2026)
+assets/skin-a/brand/out/ud-*/
