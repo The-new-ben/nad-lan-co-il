@@ -1,0 +1,19 @@
+{
+  "released": "1.72.273",
+  "from": "1.72.272",
+  "at": "2026-09-25 09:02:01",
+  "files": {
+    "assets/home/hero-m-780.jpg": "c503d3c4b80ae460ceb7eb12bc958d2a",
+    "assets/home/hero-d-1400.jpg": "05a7ecd94340997f53ce047b410cdcd8",
+    "assets/home/hero-d-1920.jpg": "392b93dec245ea0fd0737e3209deb94d",
+    "inc/home-v3.php": "b10c1d33738ed1a2d903d3036dfcaf93",
+    "nadlan-config.php": "7bb348d94a45a47a6fdc8108db6d7893"
+  },
+  "live_before": {
+    "assets/home/hero-m-780.jpg": "missing",
+    "assets/home/hero-d-1400.jpg": "missing",
+    "assets/home/hero-d-1920.jpg": "missing",
+    "inc/home-v3.php": "missing",
+    "nadlan-config.php": "7fbc28de20ce67debae04e819b835cc7"
+  }
+}

@@ -81,3 +81,27 @@
 2. The homepage v2 in Claude Design: the portal kept (mega menus, search, listings, projects, prices, tools, guides, professionals), with a premium hero of our own that paints in under 3 s.
 3. The SEO copy plan from the table above.
 4. The build, in releases.
+
+## After H1.1 (1.72.273-274, 25.9.2026)
+
+**What changed on the Hebrew front page**
+
+- One header row. It holds the categories as menus: פרויקטים חדשים, דירות למכירה, דירות להשכרה, מחירי דירות, סיורים וירטואליים, מגזין נדל״ן, אנשי מקצוע and נדל״ן בחו״ל. It also holds the language menu and "פרסום מודעה". On a phone, a menu button opens the same panels as a sheet.
+- The hero is the site's own coastline photo across the width. On a phone it is a portrait crop.
+- The H1 is "נדל״ן: פרויקטים חדשים, דירות למכירה ומחירי דירות", with the live count and the search.
+- A row of eight category tiles follows the hero.
+- The description is now honest and uses the live count.
+- The theme's JSON-LD no longer names the page "…עם בחירת דירה בתלת ממד".
+
+**Speed on a mid Android** (4x CPU, Slow 4G, three runs each):
+
+| Measure | Before (1.72.272) | 1.72.273 | 1.72.274 |
+|---|---|---|---|
+| First contentful paint | 3.95-4.25 s | 3.06-3.28 s (the H1) | 2.84-3.11 s (the H1) |
+| Largest contentful paint | **17.0-17.7 s** (the coastline photo, 530 KB) | 5.1-5.4 s (the phone crop, 92 KB) | **3.96-4.04 s** |
+| Transferred | 2.3 MB | 1.95 MB | **594 KB** |
+| Requests | 52 | 54 | 42 |
+| Layout shift | 0.097 | 0.001 | 0.001 |
+
+- **Why 1.72.274 helped:** 1.72.273 still printed model-viewer (285 KB) and Stripe (262 KB) on a page with no 3D viewer and no payment form, and two band pictures loaded at once (350 + 414 KB). 1.72.274 drops the two scripts at print time and defers the bands until they are scrolled to.
+- **Still to do for 3 s (H1.2):** a phone hero under 70 KB, fewer render-blocking stylesheets (about 140 KB before the first paint), and the video poster (36 KB) waiting its turn.
