@@ -90,9 +90,12 @@ only inside runners; every release through a runner with drift check, lint, back
     - DUO (no answer paragraph);
     - the language siblings.
 - **Codex's lab:** DS v37 UnitCut (the unit cell, the bounded cut, the compact row) and the kit scripts/project-stage/harness/mklab.py.
+- 1.72.286: the view from the floor at the right height. The eye height had been counted twice (+1.6 m); Codex found it. DS v40.
+- Codex's UnitCut pilot was reviewed on 28.9. Keep: the row, the lift, the honest label. Change: the cut's inside as a paper volume, and the side words from the page. The baseline is b4ec433, and the picking policy (Tier A/B/C) is agreed. Integration: a read-only `stage.internals()` hook plus a lazy `cut.js`.
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner
+- **Rainbow's article, one sentence** (Linear HAD-333): "מספר היחידות עומד על 480 לפי שיווק היזם ואתר השיווק החדש, בעוד שהיתר הבנייה והמקורות התכנוניים-ביצועיים מציינים 459 דירות" inverts the sources. 459 is the developer's current number (its page, Ashtrom, Bizportal 5.2026, Calcalist 3.2026); 480 is the design plan of 10.5.2023 (229 + 251). The article is the owner's ChatGPT text, so the fix waits for his word (or goes into his ChatGPT prompt).
 - **The loop is stopped** (the owner, 25.9 midday: usage running out; resume from R7 when usage returns).
 - Contact with Rainbow's developer (ישראל קנדה) for the marketing data: apartments left, price lists, the plans per side. When it arrives it goes onto the floor card as published, with its source.
 - A finding to rule on: /tour/designer/ ends in a demo checkout with a card form marked "(דמו)" (unchanged).

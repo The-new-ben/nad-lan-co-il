@@ -1,0 +1,13 @@
+{
+  "released": "1.72.286",
+  "from": "1.72.285",
+  "at": "2026-09-28 00:23:53",
+  "files": {
+    "assets/project-stage/bridge.js": "bcebc3c55ed6213c80079748c9d170b7",
+    "nadlan-config.php": "1eff5d007636311527963e40a9a1bed0"
+  },
+  "live_before": {
+    "assets/project-stage/bridge.js": "4f582ce5a6bcf0e5e29121fbb2d263ab",
+    "nadlan-config.php": "d3532d72be2c58a29dfc72d888978db9"
+  }
+}

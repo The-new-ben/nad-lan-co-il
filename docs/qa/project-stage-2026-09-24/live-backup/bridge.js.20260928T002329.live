@@ -381,9 +381,7 @@ async function boot() {
   async function showView(d) {
     const gl = await loadMapbox();
     win.bearing = norm(d.bearing);
-    // heightM is already the eye height above the floor (the stage's floorEyeHeight adds 1.6 m); the view map has no
-    // terrain, so its buildings rise from 0 and this is the camera's height above the ground (Codex's finding, 28.9.2026)
-    win.alt = Math.max(10, Number(d.heightM) || 0);
+    win.alt = Math.max(10, (Number(d.heightM) || 0) + 1.6);
     win.vert = 0;
     const host = document.getElementById('nlps-view-map');
     if (!host) return;
