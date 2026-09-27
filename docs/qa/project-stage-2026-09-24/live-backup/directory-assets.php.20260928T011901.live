@@ -187,11 +187,6 @@ if ( ! function_exists( 'nadlan_dir_css' ) ) {
 :root body .nldir-results .nldc-slot41 .nldc-slot41__go{grid-column:3!important;grid-row:1/span 2!important;border:0!important;padding:0!important;margin:0!important;font-size:0!important}
 :root body .nldir-results .nldc-slot41 .nldc-slot41__go::after{content:"←";font-size:18px;color:#2F6F86}
 }
-
-/* ---------- a demo profile says so (design system ProfessionalCard v43) ---------- */
-:root body .nldir-results .nldc.nldc--pro.nldc--demo .nldc-av{box-shadow:0 0 0 2px #FAF8F3,0 0 0 3.5px #8a857b!important}
-:root body .nldir-results .nldc.nldc--pro .nldc-sample{display:inline-block!important;width:max-content!important;font-size:11.5px!important;font-weight:600!important;line-height:1.6!important;color:#57534B!important;background:#EFE9DC!important;border:1px solid #E3E1DA!important;border-radius:6px!important;padding:0 8px!important}
-@media(max-width:600px){:root body .nldir-results .nldc.nldc--pro .nldc-sample{grid-column:2!important;justify-self:start!important}}
 </style>
 CSS;
 	}

@@ -300,25 +300,24 @@ if ( ! function_exists( 'nadlan_dir_cards_html' ) ) {
  * ------------------------------------------------------------------------- */
 if ( ! function_exists( 'nadlan_dir_facet_counts' ) ) {
 	function nadlan_dir_facet_counts() {
-		$k = 'nadlan_dir_facets_v2'; // v2 (28.9.2026): demo showcases are not counted as professionals (design system v43)
+		$k = 'nadlan_dir_facets_v1';
 		$c = get_transient( $k );
 		if ( is_array( $c ) ) { return $c; }
 		global $wpdb;
-		$nodemo = "NOT EXISTS (SELECT 1 FROM {$wpdb->postmeta} d WHERE d.post_id=p.ID AND d.meta_key='is_demo' AND d.meta_value IN ('1','true'))";
 		$prof = $wpdb->get_results(
 			"SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm
 			 INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id
-			 WHERE pm.meta_key='profession' AND pm.meta_value<>'' AND p.post_type='nadlan_professional' AND p.post_status='publish' AND $nodemo
+			 WHERE pm.meta_key='profession' AND pm.meta_value<>'' AND p.post_type='nadlan_professional' AND p.post_status='publish'
 			 GROUP BY pm.meta_value", ARRAY_A );
 		$cities = $wpdb->get_results(
 			"SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm
 			 INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id
-			 WHERE pm.meta_key='city' AND pm.meta_value<>'' AND p.post_type='nadlan_professional' AND p.post_status='publish' AND $nodemo
+			 WHERE pm.meta_key='city' AND pm.meta_value<>'' AND p.post_type='nadlan_professional' AND p.post_status='publish'
 			 GROUP BY pm.meta_value ORDER BY n DESC LIMIT 24", ARRAY_A );
 		$out = array(
 			'professions' => array(),
 			'cities'      => array(),
-			'total'       => (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->posts} p WHERE p.post_type='nadlan_professional' AND p.post_status='publish' AND $nodemo" ),
+			'total'       => (int) wp_count_posts( 'nadlan_professional' )->publish,
 		);
 		foreach ( (array) $prof as $r )   { $out['professions'][ $r['v'] ] = (int) $r['n']; }
 		foreach ( (array) $cities as $r ) { $out['cities'][] = array( 'name' => nadlan_meta_norm( $r['v'] ), 'n' => (int) $r['n'] ); }
@@ -326,7 +325,7 @@ if ( ! function_exists( 'nadlan_dir_facet_counts' ) ) {
 		return $out;
 	}
 }
-add_action( 'save_post_nadlan_professional', function () { delete_transient( 'nadlan_dir_facets_v2' ); delete_transient( 'nadlan_dir_sources_v1' ); } );
+add_action( 'save_post_nadlan_professional', function () { delete_transient( 'nadlan_dir_facets_v1' ); delete_transient( 'nadlan_dir_sources_v1' ); } );
 
 /* ---------------------------------------------------------------------------
  * The directory headline says only what the sources say (HAD-249, 24.9.2026):

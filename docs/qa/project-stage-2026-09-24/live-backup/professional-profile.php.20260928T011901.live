@@ -251,7 +251,7 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 				if ( $is_broker && '' !== $lic ) : ?><span class="<?php echo $in_reg ? 'nlpp-ver' : 'nlpp-lic'; ?>"><?php echo $in_reg ? '✓ ' : ''; ?>רישיון תיווך <span class="nlpp-num"><?php echo esc_html( $lic ); ?></span><?php echo $in_reg ? ', מאומת בפנקס המתווכים' : ''; ?></span>
 				<?php elseif ( $in_reg && 'pinkas_hakablanim' === (string) $g( 'source' ) && '' !== trim( (string) $g( 'registry_number' ) ) ) : ?><span class="nlpp-ver">✓ רשום בפנקס הקבלנים, מספר <span class="nlpp-num"><?php echo esc_html( trim( (string) $g( 'registry_number' ) ) ); ?></span></span>
 				<?php elseif ( $in_reg ) : ?><span class="nlpp-ver">✓ מאומת ברשם (gov.il)</span><?php endif; ?>
-				<?php $nlpp_cls = 'pinkas_hakablanim' === (string) $g( 'source' ) ? trim( (string) $g( 'classification' ) ) : ''; /* v43: with its grades, shown once (the stat box no longer repeats it) */ if ( '' !== $nlpp_cls ) : ?><span class="nlpp-cls"><?php echo esc_html( 'תחומי רישום: ' . str_replace( ' · ', ', ', $nlpp_cls ) ); ?></span><?php endif; ?>
+				<?php $nlpp_cls = 'pinkas_hakablanim' === (string) $g( 'source' ) ? trim( preg_replace( '/\s*\(סיווג\s*\d+\)/u', '', (string) $g( 'classification' ) ) ) : ''; if ( '' !== $nlpp_cls ) : ?><span class="nlpp-cls"><?php echo esc_html( 'תחומי רישום: ' . str_replace( ' · ', ', ', $nlpp_cls ) ); ?></span><?php endif; ?>
 				<?php /* how many recommendations other professionals gave (owner 24.9.2026: a thumbs up, a challenge); a count, not a score */
 				$nlpp_recs = function_exists( 'nadlan_endorse_counts' ) ? ( nadlan_endorse_counts( array( (int) $id ) )[ (int) $id ] ?? 0 ) : 0;
 				if ( $nlpp_recs > 0 ) : ?><span class="nlds nlpp-recwrap"><a href="#nlfg-recv" style="text-decoration:none"><?php echo nadlan_endorse_count_html( $nlpp_recs ); // phpcs:ignore ?></a></span><?php endif; ?>
@@ -279,7 +279,7 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 	<div class="nlpp-stats">
 		<?php if ( $years ) : ?><div><b><?php echo (int) $years; ?>+</b><span>שנות ניסיון</span></div><?php endif; ?>
 		<?php if ( $projects_n ) : ?><div><b><?php echo number_format( $projects_n ); ?></b><span>פרויקטים</span></div><?php endif; ?>
-		<?php if ( $g( 'classification' ) && 'pinkas_hakablanim' !== (string) $g( 'source' ) ) : /* a register contractor's classification stands in the header (v43) */ ?><div><b><?php echo esc_html( $g( 'classification' ) ); ?></b><span>סיווג רשמי</span></div><?php endif; ?>
+		<?php if ( $g( 'classification' ) ) : ?><div><b><?php echo esc_html( $g( 'classification' ) ); ?></b><span>סיווג רשמי</span></div><?php endif; ?>
 		<?php if ( $g( 'response_time' ) ) : ?><div><b><?php echo esc_html( $g( 'response_time' ) ); ?></b><span>זמן מענה ממוצע</span></div><?php endif; ?>
 	</div>
 

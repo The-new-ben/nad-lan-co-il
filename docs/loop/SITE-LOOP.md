@@ -114,10 +114,11 @@ only inside runners; every release through a runner with drift check, lint, back
     - Now both are shielded and put back at 11.
     - Checked on a contractor, Meital and a demo profile, on desktop and phone.
   - **The loop now runs as /loop** (self-paced), in the owner's order: every professional type → /brokers/ and the minisites → the home's pros band → the listings → the projects → the home → the 3D stages → Rainbow.
-  - **Next:**
-    - the demo profiles in the directory (demo-ronit-almog-lawyer and others) show as real cards with invented stats: mark them "לדוגמה" (DS first);
-    - the contractor's classification is shown twice (the header and a stat box);
-    - then /brokers/.
+  - 1.72.292-293 (DS v43): **the demo profiles are honest.**
+    - The 7 seeded showcases now say "פרופיל לדוגמה" on the card, with a dashed ring, and come after the real professionals.
+    - The profession chips and cities count real professionals only ("שמאי מקרקעין 2" were both demos, so the chip goes).
+    - A register contractor's classification appears once, in the header, with its grades.
+  - **Next:** /brokers/, then the home's professionals band.
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner

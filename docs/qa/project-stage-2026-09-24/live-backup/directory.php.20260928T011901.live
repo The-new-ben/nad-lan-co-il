@@ -254,9 +254,8 @@ if ( ! function_exists( 'nadlan_dir_card' ) ) {
 		} elseif ( '' !== $reg ) {
 			$lic = ( 'kablan' === $prof_key ? 'רשם הקבלנים ' : 'מספר רישום ' ) . $reg;
 		}
-		$is_demo = (bool) get_post_meta( $id, 'is_demo', true ); // a showcase of the paid profile (v43): it says so
 		ob_start(); ?>
-<a class="nldc nldc--pro<?php echo $featured ? ' is-featured' : ''; ?><?php echo $is_demo ? ' nldc--demo' : ''; ?>" href="<?php echo esc_url( $url ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
+<a class="nldc nldc--pro<?php echo $featured ? ' is-featured' : ''; ?>" href="<?php echo esc_url( $url ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
 	<div class="nldc-top">
 		<span class="nldc-av" aria-hidden="true"><?php echo $photo ? $photo : '<b class="nldc-ini">' . esc_html( $ini ) . '</b>'; // phpcs:ignore ?><i class="nldc-mk"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></i></span>
 		<div class="nldc-id">
@@ -264,7 +263,6 @@ if ( ! function_exists( 'nadlan_dir_card' ) ) {
 			<?php if ( '' !== $biz ) : ?><p class="nldc-biz"><?php echo esc_html( $biz ); ?></p><?php endif; ?>
 		</div>
 	</div>
-	<?php if ( $is_demo ) : ?><span class="nldc-sample">פרופיל לדוגמה</span><?php endif; ?>
 	<p class="nldc-role"><b><?php echo esc_html( nadlan_dir_prof_label( $prof_key, $id ) ); ?></b><?php if ( $city ) : ?> · <?php echo esc_html( $city ); ?><?php endif; ?><?php if ( $distance !== null && $distance !== '' ) : ?> · <?php echo esc_html( number_format_i18n( (float) $distance, 1 ) ); ?> ק״מ<?php endif; ?></p>
 	<?php if ( '' !== $lic ) : ?><span class="nldc-lic"><i aria-hidden="true">✓</i><?php echo esc_html( $lic ); ?></span><?php endif; ?>
 	<?php if ( $verified ) : ?><span class="nldc-lic nldc-lic--vf"><i aria-hidden="true">✓</i>פרופיל מאומת</span><?php endif; ?>
@@ -287,10 +285,7 @@ if ( ! function_exists( 'nadlan_dir_cards_html' ) ) {
 			return '<div class="nldir-empty"><p>לא נמצאו בעלי מקצוע התואמים את החיפוש.</p><p>נסו עיר אחרת או הסירו סינון.</p></div>';
 		}
 		$out = '';
-		// the real professionals first, the demo showcases after them (design system ProfessionalCard v43)
-		$real = array(); $demo = array();
-		foreach ( $wq->posts as $p ) { if ( get_post_meta( $p->ID, 'is_demo', true ) ) { $demo[] = $p; } else { $real[] = $p; } }
-		foreach ( array_merge( $real, $demo ) as $p ) { $out .= nadlan_dir_card( $p->ID ); }
+		foreach ( $wq->posts as $p ) { $out .= nadlan_dir_card( $p->ID ); }
 		return apply_filters( 'nadlan_dir_cards_html', $out, 'nadlan_professional' );
 	}
 }
@@ -300,25 +295,24 @@ if ( ! function_exists( 'nadlan_dir_cards_html' ) ) {
  * ------------------------------------------------------------------------- */
 if ( ! function_exists( 'nadlan_dir_facet_counts' ) ) {
 	function nadlan_dir_facet_counts() {
-		$k = 'nadlan_dir_facets_v2'; // v2 (28.9.2026): demo showcases are not counted as professionals (design system v43)
+		$k = 'nadlan_dir_facets_v1';
 		$c = get_transient( $k );
 		if ( is_array( $c ) ) { return $c; }
 		global $wpdb;
-		$nodemo = "NOT EXISTS (SELECT 1 FROM {$wpdb->postmeta} d WHERE d.post_id=p.ID AND d.meta_key='is_demo' AND d.meta_value IN ('1','true'))";
 		$prof = $wpdb->get_results(
 			"SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm
 			 INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id
-			 WHERE pm.meta_key='profession' AND pm.meta_value<>'' AND p.post_type='nadlan_professional' AND p.post_status='publish' AND $nodemo
+			 WHERE pm.meta_key='profession' AND pm.meta_value<>'' AND p.post_type='nadlan_professional' AND p.post_status='publish'
 			 GROUP BY pm.meta_value", ARRAY_A );
 		$cities = $wpdb->get_results(
 			"SELECT pm.meta_value v, COUNT(*) n FROM {$wpdb->postmeta} pm
 			 INNER JOIN {$wpdb->posts} p ON p.ID=pm.post_id
-			 WHERE pm.meta_key='city' AND pm.meta_value<>'' AND p.post_type='nadlan_professional' AND p.post_status='publish' AND $nodemo
+			 WHERE pm.meta_key='city' AND pm.meta_value<>'' AND p.post_type='nadlan_professional' AND p.post_status='publish'
 			 GROUP BY pm.meta_value ORDER BY n DESC LIMIT 24", ARRAY_A );
 		$out = array(
 			'professions' => array(),
 			'cities'      => array(),
-			'total'       => (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->posts} p WHERE p.post_type='nadlan_professional' AND p.post_status='publish' AND $nodemo" ),
+			'total'       => (int) wp_count_posts( 'nadlan_professional' )->publish,
 		);
 		foreach ( (array) $prof as $r )   { $out['professions'][ $r['v'] ] = (int) $r['n']; }
 		foreach ( (array) $cities as $r ) { $out['cities'][] = array( 'name' => nadlan_meta_norm( $r['v'] ), 'n' => (int) $r['n'] ); }
@@ -326,7 +320,7 @@ if ( ! function_exists( 'nadlan_dir_facet_counts' ) ) {
 		return $out;
 	}
 }
-add_action( 'save_post_nadlan_professional', function () { delete_transient( 'nadlan_dir_facets_v2' ); delete_transient( 'nadlan_dir_sources_v1' ); } );
+add_action( 'save_post_nadlan_professional', function () { delete_transient( 'nadlan_dir_facets_v1' ); delete_transient( 'nadlan_dir_sources_v1' ); } );
 
 /* ---------------------------------------------------------------------------
  * The directory headline says only what the sources say (HAD-249, 24.9.2026):
