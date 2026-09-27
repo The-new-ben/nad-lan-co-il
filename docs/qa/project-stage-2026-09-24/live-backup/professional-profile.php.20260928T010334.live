@@ -242,8 +242,7 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 		echo has_post_thumbnail( $id ) ? get_the_post_thumbnail( $id, 'medium', array( 'class' => 'nlpp-avatar nlpp-photo', 'alt' => wp_strip_all_tags( $name ), 'loading' => 'eager' ) ) : nadlan_prof_monogram_svg( $name, $pm['color'] ); // phpcs:ignore ?>
 		<div class="nlpp-id">
 			<span class="nlpp-pill"><?php echo esc_html( $label ); ?></span>
-			<?php $nlpp_np = preg_split( '/\s+·\s+/u', (string) $name, 2 ); /* v42: the words search engines know stay; the office reads as a second line */ ?>
-			<h1 class="nlpp-name"><?php echo esc_html( $nlpp_np[0] ); ?><?php if ( isset( $nlpp_np[1] ) && '' !== $nlpp_np[1] ) : ?> <span class="nlpp-office">· <?php echo esc_html( $nlpp_np[1] ); ?></span><?php endif; ?></h1>
+			<h1 class="nlpp-name"><?php echo esc_html( $name ); ?></h1>
 			<div class="nlpp-sub">
 				<?php if ( $city ) : ?><span><?php echo esc_html( $city ); ?></span><?php endif; ?>
 				<?php /* The badge says "checked", so it needs a recorded check (verified_at) or a card imported from the official register.
@@ -260,9 +259,9 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 		</div>
 		<div class="nlpp-ctas">
 			<?php if ( $own_wa ) : /* a broker: straight to the broker, never through the portal */ ?>
+				<a class="nlpp-btn nlpp-wa" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $own_wa ); ?>?text=<?php echo rawurlencode( 'שלום ' . $person . ', הגעתי מהכרטיס שלך ב-nad-lan ואשמח לדבר' ); ?>">וואטסאפ</a>
 				<?php $nlpp_cal = nadlan_prof_calendar_url( $id ); if ( '' !== $nlpp_cal ) : /* the broker's own booking page */ ?><a class="nlpp-btn nlpp-tel" target="_blank" rel="noopener" href="<?php echo esc_url( $nlpp_cal ); ?>" data-nl-ev="tour">תיאום סיור</a>
 				<?php else : ?><a class="nlpp-btn nlpp-tel" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $own_wa ); ?>?text=<?php echo rawurlencode( 'שלום ' . $person . ', אשמח לתאם סיור באחד הנכסים שלך (nad-lan.co.il)' ); ?>">תיאום סיור</a><?php endif; ?>
-				<a class="nlpp-btn nlpp-wa" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $own_wa ); ?>?text=<?php echo rawurlencode( 'שלום ' . $person . ', הגעתי מהכרטיס שלך ב-nad-lan ואשמח לדבר' ); ?>">וואטסאפ</a>
 				<a class="nlpp-btn nlpp-call" href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>">חיוג</a>
 			<?php else : ?>
 				<?php if ( $wa ) : ?><a class="nlpp-btn nlpp-wa" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo rawurlencode( 'היי, אשמח לחיבור אל ' . $name . ' דרך האתר' ); ?>">פנייה בוואטסאפ</a><?php endif; ?>
@@ -285,15 +284,16 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 
 	<?php if ( $g( 'bio' ) ) : ?><p class="nlpp-bio"><?php echo esc_html( $g( 'bio' ) ); ?></p><?php endif; ?>
 
-	<?php if ( $specialties || $langs || $areas ) : /* v42: the chips in named groups */ ?>
-	<div class="nlpp-groups">
-		<?php if ( $specialties ) : ?><div class="nlpp-group"><p class="nlpp-group-h">התמחויות</p><div class="nlpp-chips"><?php foreach ( $specialties as $sp ) : ?><a class="nlpp-chip" href="<?php echo esc_url( home_url( '/professionals/?q=' . rawurlencode( $sp ) ) ); ?>"><?php echo esc_html( $sp ); ?></a><?php endforeach; ?></div></div><?php endif; ?>
-		<?php if ( $langs ) : ?><div class="nlpp-group"><p class="nlpp-group-h">שפות</p><div class="nlpp-chips"><?php foreach ( $langs as $l ) : ?><span class="nlpp-chip nlpp-lang"><?php echo esc_html( $l ); ?></span><?php endforeach; ?></div></div><?php endif; ?>
-		<?php if ( $areas ) : ?><div class="nlpp-group"><p class="nlpp-group-h">אזורי פעילות</p><div class="nlpp-chips"><?php foreach ( array_slice( $areas, 0, 6 ) as $a ) : ?><span class="nlpp-chip nlpp-area"><?php if ( function_exists( 'nlds_asset_url' ) ) : ?><img class="nlpp-pin" src="<?php echo esc_url( nlds_asset_url( 'icons/card-pin.svg' ) ); ?>" alt="" width="14" height="14"><?php endif; ?><?php echo esc_html( $a ); ?></span><?php endforeach; ?></div></div><?php endif; ?>
+	<?php if ( $specialties || $langs || $areas ) : ?>
+	<div class="nlpp-chips">
+		<?php foreach ( $specialties as $sp ) : ?><a class="nlpp-chip" href="<?php echo esc_url( home_url( '/professionals/?q=' . rawurlencode( $sp ) ) ); ?>"><?php echo esc_html( $sp ); ?></a><?php endforeach; ?>
+		<?php foreach ( $langs as $l ) : ?><span class="nlpp-chip nlpp-lang"><?php echo esc_html( $l ); ?></span><?php endforeach; ?>
+		<?php foreach ( array_slice( $areas, 0, 6 ) as $a ) : ?><span class="nlpp-chip nlpp-area"><?php if ( function_exists( 'nlds_asset_url' ) ) : ?><img class="nlpp-pin" src="<?php echo esc_url( nlds_asset_url( 'icons/card-pin.svg' ) ); ?>" alt="" width="14" height="14"><?php endif; ?><?php echo esc_html( $a ); ?></span><?php endforeach; ?>
 	</div>
 	<?php endif; ?>
 
-	<?php /* the views are counted (profile_views) but never shown to the public: the owner's rule, no public traffic numbers (design system ProfileHeader v42) */ ?>
+	<?php /* views are a real counter; "זמינות גבוהה" was printed when nothing was known, so it goes (honesty law) */
+	if ( $views >= 5 ) : ?><p class="nlpp-fomo"><?php echo number_format( $views ); ?> צפיות בפרופיל<?php echo $g( 'response_time' ) ? ' · מענה ' . esc_html( $g( 'response_time' ) ) : ''; ?></p><?php endif; ?>
 
 	<?php echo nadlan_prof_video_html( $id, $person ); // phpcs:ignore -- built from escaped parts ?>
 
@@ -414,24 +414,6 @@ a.nlpp-chip{text-decoration:none;color:var(--ink)}a.nlpp-chip:hover{border-color
 .nlpp-list a{color:var(--ink);text-decoration:none;font-size:14px}
 .nlpp-list a:hover{color:var(--gold)}
 @media(max-width:560px){.nlpp-hero{padding:16px}.nlpp-name{font-size:1.4rem}.nlpp-ctas{width:100%}.nlpp-btn{flex:1;justify-content:center}}
-/* design system ProfileHeader v42 (28.9.2026): one portrait, the office on its own line, the actions stacked, the chips in groups, a wider page */
-body.single-nadlan_professional .wp-block-post-featured-image{display:none!important}
-:root body.single-nadlan_professional .entry-content>.nlpp,:root body.single-nadlan_professional .entry-content>.nldir-similar{max-width:1040px!important;width:100%;margin-inline:auto!important}
-.nlpp .nlpp-hero{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(200px,230px);align-items:center;gap:22px;padding:24px;border-radius:16px}
-.nlpp .nlpp-avatar{width:104px;height:104px}.nlpp .nlpp-photo{border:3px solid #FAF8F3;box-shadow:0 0 0 1px var(--line)}
-.nlpp .nlpp-pill{background:#EFE9DC;color:#14212b;border:1px solid var(--line)}
-.nlpp .nlpp-name{font-size:34px;margin:6px 0 8px}
-.nlpp .nlpp-office{display:block;font-size:18px;font-weight:500;color:#57534B;margin-top:4px}
-.nlpp .nlpp-ctas{display:grid;gap:8px}
-.nlpp .nlpp-btn{width:100%;justify-content:center;box-sizing:border-box}
-.nlpp .nlpp-ctas .nlpp-btn{background:#fff;color:#14212b;border:1.5px solid var(--line)}
-.nlpp .nlpp-ctas>.nlpp-btn:first-child{background:#2F6F86;color:#fff;border-color:#2F6F86}
-.nlpp .nlpp-bio{max-width:none!important;font-size:16px;line-height:1.75}
-.nlpp-groups{display:grid;gap:12px;margin:0 0 18px}
-.nlpp-group{display:grid;grid-template-columns:110px minmax(0,1fr);align-items:start;gap:10px}
-.nlpp-group-h{margin:0;padding-top:6px;font-size:12.5px;font-weight:700;color:#57534B;letter-spacing:.02em}
-.nlpp-group .nlpp-chips{margin:0}
-@media(max-width:560px){.nlpp .nlpp-hero{grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px}.nlpp .nlpp-avatar{width:80px;height:80px}.nlpp .nlpp-name{font-size:25px}.nlpp .nlpp-office{font-size:15px}.nlpp .nlpp-ctas{grid-column:1/-1;grid-template-columns:1fr 1fr}.nlpp .nlpp-ctas>:first-child{grid-column:1/-1}.nlpp-group{grid-template-columns:minmax(0,1fr);gap:6px}}
 ' );
 		wp_register_script( 'nadlan-nlpp-js', false, array(), '1.69.83', true );
 		wp_enqueue_script( 'nadlan-nlpp-js' );

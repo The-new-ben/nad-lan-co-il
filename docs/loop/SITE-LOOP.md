@@ -101,7 +101,14 @@ only inside runners; every release through a runner with drift check, lint, back
     - no stripe and no empty middle: 180px cards in even rows;
     - on a phone, dense 86px rows; the top box centred with the search inside it; the professions in a row that scrolls, in the plural;
     - the open slot the size of a card, without "המוביל בישראל".
-  - **Next in the polish:** the profile page, /brokers/, the home's professionals band, then the listings.
+  - 1.72.290: **a professional's page** (DS ProfileHeader v42):
+    - one portrait (the theme's featured band hidden);
+    - the H1's words kept, with the office on its own line;
+    - the actions in the design's order, stacked;
+    - the chips in named groups;
+    - a 1040px page;
+    - the public view counter removed (the owner's rule), still counted.
+  - **Next in the polish:** /brokers/, the home's professionals band, then the listings.
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner
