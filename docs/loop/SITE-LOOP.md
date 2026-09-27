@@ -62,6 +62,13 @@ only inside runners; every release through a runner with drift check, lint, back
 
 | X1 | Small defects found on the way (Linear HAD-287, a checklist) | **Rainbow part done 25.9 (1.72.262-263)**; the rest waits for the fleet items | Done: Hebrew place names in the view and the area map (with the right-to-left plugin), chips and popups without emoji, one map per page (the surroundings band's static map hidden), the Sde Dov tour box readable, the phone progress, the poster at the stage's aspect. Left, picked up with their pages: Dimri Yama's title (P1), Aurelia's coordinates (P1), /earth/ 401 and the Somail tour (D1), catalog-plus's surroundings wording ("תכנית ל'", "find-place", permit numbers), repo hygiene. Found 25.9 with R4 and fixed in 1.72.265: the accessibility button sat on the WhatsApp pill on the English, French and Russian pages (it followed the site's locale, now the page's language). Noted, not changed: in its corner the button still covers 2-3 letters of the bottom lines on a phone (a slim edge tab would cover less; the corner is the owner's ruling) |
 
+## Live 27.9 (the loop re-armed on the owner's word)
+- 1.72.280: Rainbow on a phone. The picked floor is framed in the upper third, the card is a compact 2x2 sheet at the bottom, the direction tag hides while the card is open, and the steps' rows are reset. DS ProjectStage v34; HAD-221.
+- 1.72.281: the homepage film back in its own band under the categories. DS HomePage v33; HAD-297.
+  - The phone photo is at 2.8-3.7 s (3.6-3.7 before), and the page is 530 KB (865 before).
+  - The film plays on desktop and phone; the services' tour card shows the tour picture.
+- Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
+
 ## Waiting for the owner
 - **The loop is stopped** (the owner, 25.9 midday: usage running out; resume from R7 when usage returns).
 - Contact with Rainbow's developer (ישראל קנדה) for the marketing data: apartments left, price lists, the plans per side. When it arrives it goes onto the floor card as published, with its source.

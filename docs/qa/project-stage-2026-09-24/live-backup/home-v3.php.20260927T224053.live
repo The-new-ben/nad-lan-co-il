@@ -483,8 +483,8 @@ if ( ! function_exists( 'nadlan_hp_band_services' ) ) {
 				. ( '' !== $t( 'rm_note' ) ? '<span class="nlhp-svcard__note">' . esc_html( $t( 'rm_note' ) ) . '</span>' : '' ) . '</div>';
 		}
 		$tour  = function_exists( 'nadlan_sdedov_tour_url' ) ? nadlan_sdedov_tour_url() : home_url( '/tour/sde-dov/' );
-		$media = ''; // one film per page: the film has its own band under the categories (design system version 33)
-		if ( function_exists( 'nadlan_sdedov_tour_poster' ) ) {
+		$media = function_exists( 'nadlan_hv2_video_embed' ) ? nadlan_hv2_video_embed() : '';
+		if ( '' === $media && function_exists( 'nadlan_sdedov_tour_poster' ) ) {
 			$media = '<img src="' . esc_url( nadlan_sdedov_tour_poster() ) . '" alt="" loading="lazy" decoding="async">';
 		}
 		$cards .= '<div class="nlhp-svcard nlhp-svcard--tour">' . ( '' !== $media ? '<span class="nlhp-svcard__media">' . $media . '</span>' : '' )
@@ -492,30 +492,6 @@ if ( ! function_exists( 'nadlan_hp_band_services' ) ) {
 			. '<span class="nlhp-svcard__ctas"><a class="nlhp-btn nlhp-btn--line" href="' . esc_url( $tour ) . '">כניסה לסיור</a></span>'
 			. '<span class="nlhp-svcard__note">הדמיה להמחשה על פי תכנית רובע שדה דב. אינה מטעם היזמים או גורם רשמי.</span></div>';
 		return '<section class="nlhp-band nlhp-services" aria-labelledby="nlhp-svc-h">' . nadlan_hp_head( 'לבעלי דירות ולדיירים', 'שירותים לבעלי דירות', 'nlhp-svc-h' ) . '<div class="nlhp-svc">' . $cards . '</div></section>';
-	}
-}
-
-if ( ! function_exists( 'nadlan_hp_band_film' ) ) {
-	/** The site's own film under the categories (design system HomePage version 33; the owner, 25.9.2026: the film back on
-	    the homepage, where he put it on 29.7.2026). It plays by itself (muted autoplay with a real source, the site's
-	    autoplay law); the words say what it shows and take the visitor to try it. No film set: no band. */
-	function nadlan_hp_band_film() {
-		$media = function_exists( 'nadlan_hv2_video_embed' ) ? nadlan_hv2_video_embed() : '';
-		if ( '' === $media ) { return ''; }
-		$tour  = function_exists( 'nadlan_sdedov_tour_url' ) ? nadlan_sdedov_tour_url() : home_url( '/tour/sde-dov/' );
-		$steps = '';
-		foreach ( array( 'בוחרים קומה', 'הנוף והמפה', 'נכנסים לדירה', 'מעצבים את הדירה' ) as $i => $w ) {
-			$steps .= '<li><i>' . ( $i + 1 ) . '</i>' . esc_html( $w ) . '</li>';
-		}
-		return '<section class="nlhp-film" aria-labelledby="nlhp-film-h">'
-			. '<div class="nlhp-film__media">' . $media . '<span class="nlhp-film__tag">הדמיה להמחשה</span></div>'
-			. '<div class="nlhp-film__body"><p class="nlhp-kicker">סיור וירטואלי</p>'
-			. '<h2 class="nlhp-h2 nlhp-film__h" id="nlhp-film-h">ככה בוחרים דירה בנדלן</h2>'
-			. '<p class="nlhp-film__line">בוחרים קומה במגדל, רואים את הנוף מהדירה ואת הכיוון על המפה, נכנסים לדירה לדוגמה ומעצבים אותה.</p>'
-			. '<ol class="nlhp-film__steps">' . $steps . '</ol>'
-			. '<div class="nlhp-film__ctas"><a class="nlhp-btn" href="' . esc_url( home_url( '/projects/rainbow-tel-aviv/#nlps-t' ) ) . '">לבחירת קומה בריינבו תל אביב</a>'
-			. '<a class="nlhp-btn nlhp-btn--line" href="' . esc_url( $tour ) . '">סיור ברובע שדה דב</a></div>'
-			. '<p class="nlhp-film__note">הסרטון והסיורים הם הדמיות להמחשה בלבד.</p></div></section>';
 	}
 }
 
@@ -554,8 +530,7 @@ if ( ! function_exists( 'nadlan_hp_body' ) ) {
 			}
 			return (string) ob_get_clean();
 		};
-		return nadlan_hp_band_film()
-			. nadlan_hp_band_projects()
+		return nadlan_hp_band_projects()
 			. nadlan_hp_band_listings( $cap( 'nadlan_hv2_band_listings' ) )
 			. nadlan_hp_band_prices()
 			. nadlan_hp_band_cities()
@@ -892,19 +867,6 @@ body.nlhp-lock{overflow:hidden}
 #nlhp-page .nlhp-magazine .nlhv2-mag-lead span{color:rgba(247,246,242,.74)!important;font-size:13px}
 #nlhp-page .nlhp-magazine .nlhv2-mag-lead .nlhv2-list-media{display:none!important}
 #nlhp-page .nlhp-svc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}
-#nlhp-page .nlhp-film{margin-top:40px;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:34px;align-items:center;background:#fff;border:1px solid #e3e1da;border-radius:22px;padding:22px}
-#nlhp-page .nlhp-film__media{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#1b1a17}
-#nlhp-page .nlhp-film__media video,#nlhp-page .nlhp-film__media img,#nlhp-page .nlhp-film__media iframe{display:block;width:100%;height:100%;object-fit:cover;border:0;margin:0;max-width:none}
-#nlhp-page .nlhp-film__tag{position:absolute;bottom:12px;inset-inline-start:12px;font:600 12px/1 Assistant,Arial,sans-serif;color:#fff;background:rgba(0,0,0,.45);border-radius:6px;padding:6px 8px;pointer-events:none}
-#nlhp-page .nlhp-film__body{display:grid;gap:14px;align-content:center;padding-inline-end:8px}
-#nlhp-page .nlhp-film__body .nlhp-kicker{margin:0!important}
-#nlhp-page .nlhp-film__h{font-size:30px!important}
-#nlhp-page .nlhp-film__line{margin:0!important;font:400 16.5px/1.6 Assistant,Arial,sans-serif!important;color:#1b1a17}
-#nlhp-page .nlhp-film__steps{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0!important;padding:0!important;list-style:none!important}
-#nlhp-page .nlhp-film__steps li{display:flex;align-items:center;gap:10px;margin:0!important;padding:0!important;font:600 14.5px/1.3 Assistant,Arial,sans-serif;color:#1b1a17}
-#nlhp-page .nlhp-film__steps i{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#efe9dc;font:700 13px/1 Assistant,Arial,sans-serif;font-style:normal}
-#nlhp-page .nlhp-film__ctas{display:flex;flex-wrap:wrap;gap:10px}
-#nlhp-page .nlhp-film__note{margin:0!important;font:400 12.5px/1.5 Assistant,Arial,sans-serif!important;color:#6b6760}
 #nlhp-page .nlhp-svcard{display:grid;gap:8px;align-content:start;padding:22px 22px 20px;background:#fff;border:1px solid #e3e1da;border-radius:16px}
 #nlhp-page .nlhp-svcard small{font:700 12.5px/1 Assistant,Arial,sans-serif;letter-spacing:.07em;color:#2f6f86}
 #nlhp-page .nlhp-svcard h3{font-size:22px!important;line-height:1.25!important;margin:0!important}
@@ -939,9 +901,6 @@ body.nlhp-lock{overflow:hidden}
 #nlhp-page .nlhp-city{padding:14px}
 #nlhp-page .nlhp-city h3{font-size:19px!important}
 #nlhp-page .nlhp-svc{grid-template-columns:1fr}
-#nlhp-page .nlhp-film{grid-template-columns:1fr;gap:16px;padding:12px;border-radius:18px;margin-top:20px}
-#nlhp-page .nlhp-film__h{font-size:24px!important}
-#nlhp-page .nlhp-film__ctas .nlhp-btn{flex:1 1 100%}
 #nlhp-page .nlhp-seo{grid-template-columns:1fr;gap:20px}
 }
 NLHPCSS;
@@ -967,7 +926,6 @@ document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var o
 var sr=top.querySelector(".nlhp-ico--search");if(sr)sr.addEventListener("click",function(e){var i=document.querySelector("#nlhp-hero input[name=q]");if(!i)return;e.preventDefault();i.scrollIntoView({block:"center"});setTimeout(function(){i.focus();},250);});
 [].slice.call(document.querySelectorAll("#nlhp-hero .nlhp-search__tab")).forEach(function(b,i,all){b.addEventListener("click",function(){all.forEach(function(x){x.setAttribute("aria-selected",x===b?"true":"false");});});});
 })();
-(function(){if(!window.matchMedia||!matchMedia("(prefers-reduced-motion: reduce)").matches)return;[].slice.call(document.querySelectorAll(".nlhp-film video")).forEach(function(v){v.removeAttribute("autoplay");try{v.pause();}catch(e){}v.controls=true;});})();
 NLHPJS;
 	echo '<script id="nadlan-hp-js">' . $js . '</script>' . "\n";
 }, 99 );
