@@ -232,19 +232,17 @@ add_action( 'init', function () {
 	}
 } );
 
-/* Sponsored slot: one professional per profession (sponsored first, else top-rated). */
+/* The paid home slot: one real professional per profession while sponsored_until runs (design system ProsBand v45).
+   The old fallback, "else top-rated", always picked a seeded demo profile with typed-in stars: it is gone. */
 if ( ! function_exists( 'nadlan_hv2_pro_slot' ) ) {
 	function nadlan_hv2_pro_slot( $profession ) {
 		$q = get_posts( array( 'post_type' => 'nadlan_professional', 'posts_per_page' => 1, 'no_found_rows' => true, 'fields' => 'ids',
 			'meta_query' => array(
 				array( 'key' => 'profession', 'value' => $profession ),
 				array( 'key' => 'sponsored_until', 'value' => current_time( 'Y-m-d' ), 'compare' => '>=', 'type' => 'DATE' ),
+				array( 'relation' => 'OR', array( 'key' => 'is_demo', 'compare' => 'NOT EXISTS' ), array( 'key' => 'is_demo', 'value' => array( '1', 'true' ), 'compare' => 'NOT IN' ) ),
 			) ) );
-		if ( $q ) { return array( 'id' => $q[0], 'sponsored' => true ); }
-		$q = get_posts( array( 'post_type' => 'nadlan_professional', 'posts_per_page' => 1, 'no_found_rows' => true, 'fields' => 'ids',
-			'meta_key' => 'rating', 'orderby' => 'meta_value_num', 'order' => 'DESC',
-			'meta_query' => array( array( 'key' => 'profession', 'value' => $profession ) ) ) );
-		return $q ? array( 'id' => $q[0], 'sponsored' => false ) : null;
+		return $q ? array( 'id' => (int) $q[0], 'sponsored' => true ) : null;
 	}
 }
 
@@ -791,39 +789,172 @@ if ( ! function_exists( 'nadlan_hv2_band_tools' ) ) {
 	}
 }
 
+/* ProsBand (design system v45, 28.9.2026): the six professions of a deal in three stages, true counts only.
+   The band used to show the top-rated card of four professions: the seeded demo profiles, with typed-in stars and no
+   mark, since those professions have no real professional yet. The paid home slot (sponsored_until) stays, for a real
+   professional only. */
+if ( ! function_exists( 'nadlan_pb_strings' ) ) {
+	function nadlan_pb_strings( $lang ) {
+		$s = array(
+			'he' => array(
+				'kicker' => 'אנשי מקצוע לנדל״ן', 'title' => 'הליווי הנכון לעסקה', 'more' => 'לכל %s אנשי המקצוע', 'join' => 'אנשי מקצוע בנדל״ן?', 'join_a' => 'הצטרפו למאגר',
+				'ph' => array( 'מוצאים ובודקים', 'מממנים וחותמים', 'משפצים ובונים' ), 'ad' => 'מקודם', 'profile' => 'לפרופיל',
+				'metavech' => array( 'מתווכים', 'מציאת הנכס, ביקורים ומשא ומתן', 'מצאו מתווך' ), 'shamai' => array( 'שמאי מקרקעין', 'שווי הנכס לפני שחותמים', 'מצאו שמאי' ),
+				'bedek_bait' => array( 'בודקי בית', 'ליקויי בנייה לפני המסירה', 'מצאו בודק בית' ), 'mashkanta' => array( 'יועצי משכנתאות', 'המסלולים והריבית שמתאימים לכם', 'מצאו יועץ' ),
+				'lawyer' => array( 'עורכי דין מקרקעין', 'בדיקת הזכויות וחוזה הרכישה', 'מצאו עורך דין' ), 'kablan' => array( 'קבלנים', 'שיפוץ, בנייה ותוספות', 'מצאו קבלן' ),
+				'c_brokers' => '%s בעלי רישיון תיווך', 'c_contractors' => '%s רשומים בפנקס הקבלנים', 'c_other' => '%s במאגר',
+			),
+			'en' => array(
+				'kicker' => 'Real-estate professionals', 'title' => 'The right guidance for the deal', 'more' => 'All %s professionals', 'join' => 'A real-estate professional?', 'join_a' => 'Join the directory',
+				'ph' => array( 'Find and check', 'Finance and sign', 'Renovate and build' ), 'ad' => 'Sponsored', 'profile' => 'View profile',
+				'metavech' => array( 'Brokers', 'Finding the property, viewings and negotiation', 'Find a broker' ), 'shamai' => array( 'Property appraisers', 'The value of the property before you sign', 'Find an appraiser' ),
+				'bedek_bait' => array( 'Home inspectors', 'Building defects before handover', 'Find an inspector' ), 'mashkanta' => array( 'Mortgage advisers', 'The tracks and the rate that fit you', 'Find an adviser' ),
+				'lawyer' => array( 'Real-estate lawyers', 'The rights check and the purchase contract', 'Find a lawyer' ), 'kablan' => array( 'Contractors', 'Renovation, building and additions', 'Find a contractor' ),
+				'c_brokers' => '%s licensed brokers', 'c_contractors' => '%s in the contractors register', 'c_other' => '%s in the directory',
+			),
+			'fr' => array(
+				'kicker' => 'Professionnels de l’immobilier', 'title' => 'Le bon accompagnement pour l’affaire', 'more' => 'Les %s professionnels', 'join' => 'Professionnel de l’immobilier ?', 'join_a' => 'Rejoignez l’annuaire',
+				'ph' => array( 'Trouver et vérifier', 'Financer et signer', 'Rénover et construire' ), 'ad' => 'Sponsorisé', 'profile' => 'Voir le profil',
+				'metavech' => array( 'Agents immobiliers', 'Recherche du bien, visites et négociation', 'Trouver un agent' ), 'shamai' => array( 'Experts immobiliers', 'La valeur du bien avant de signer', 'Trouver un expert' ),
+				'bedek_bait' => array( 'Inspecteurs en bâtiment', 'Les défauts de construction avant la remise des clés', 'Trouver un inspecteur' ), 'mashkanta' => array( 'Courtiers en crédit', 'Les formules et le taux qui vous conviennent', 'Trouver un courtier' ),
+				'lawyer' => array( 'Avocats immobiliers', 'La vérification des droits et le contrat d’achat', 'Trouver un avocat' ), 'kablan' => array( 'Entrepreneurs', 'Rénovation, construction et extensions', 'Trouver un entrepreneur' ),
+				'c_brokers' => '%s agents titulaires d’une licence', 'c_contractors' => '%s au registre des entrepreneurs', 'c_other' => '%s dans l’annuaire',
+			),
+			'ru' => array(
+				'kicker' => 'Специалисты по недвижимости', 'title' => 'Верное сопровождение сделки', 'more' => 'Все специалисты: %s', 'join' => 'Вы специалист по недвижимости?', 'join_a' => 'Присоединяйтесь к каталогу',
+				'ph' => array( 'Находим и проверяем', 'Финансируем и подписываем', 'Ремонтируем и строим' ), 'ad' => 'Реклама', 'profile' => 'Профиль',
+				'metavech' => array( 'Риелторы', 'Поиск объекта, показы и переговоры', 'Найти риелтора' ), 'shamai' => array( 'Оценщики недвижимости', 'Стоимость объекта до подписания', 'Найти оценщика' ),
+				'bedek_bait' => array( 'Инспекторы жилья', 'Строительные дефекты до сдачи', 'Найти инспектора' ), 'mashkanta' => array( 'Ипотечные консультанты', 'Программы и ставка, которые вам подходят', 'Найти консультанта' ),
+				'lawyer' => array( 'Юристы по недвижимости', 'Проверка прав и договор покупки', 'Найти юриста' ), 'kablan' => array( 'Подрядчики', 'Ремонт, строительство и пристройки', 'Найти подрядчика' ),
+				'c_brokers' => 'Риелторов с лицензией: %s', 'c_contractors' => 'В реестре подрядчиков: %s', 'c_other' => 'В каталоге: %s',
+			),
+			'ar' => array(
+				'kicker' => 'مختصون في العقارات', 'title' => 'المرافقة الصحيحة للصفقة', 'more' => 'جميع المختصين (%s)', 'join' => 'هل أنت مختص في العقارات؟', 'join_a' => 'انضموا إلى الدليل',
+				'ph' => array( 'نبحث ونفحص', 'نموّل ونوقّع', 'نرمّم ونبني' ), 'ad' => 'إعلان', 'profile' => 'الملف الشخصي',
+				'metavech' => array( 'وسطاء عقاريون', 'إيجاد العقار والمعاينات والتفاوض', 'ابحثوا عن وسيط' ), 'shamai' => array( 'مثمّنو عقارات', 'قيمة العقار قبل التوقيع', 'ابحثوا عن مثمّن' ),
+				'bedek_bait' => array( 'فاحصو مبانٍ', 'عيوب البناء قبل التسليم', 'ابحثوا عن فاحص' ), 'mashkanta' => array( 'مستشارو رهن عقاري', 'المسارات والفائدة المناسبة لكم', 'ابحثوا عن مستشار' ),
+				'lawyer' => array( 'محامو عقارات', 'فحص الحقوق وعقد الشراء', 'ابحثوا عن محامٍ' ), 'kablan' => array( 'مقاولون', 'ترميم وبناء وإضافات', 'ابحثوا عن مقاول' ),
+				'c_brokers' => 'وسطاء مرخّصون: %s', 'c_contractors' => 'في سجل المقاولين: %s', 'c_other' => 'في الدليل: %s',
+			),
+		);
+		return isset( $s[ $lang ] ) ? $s[ $lang ] : $s['he'];
+	}
+}
+
+if ( ! function_exists( 'nadlan_pb_total' ) ) {
+	/** Real professionals only (the directory's own count, demos excluded). */
+	function nadlan_pb_total() {
+		if ( function_exists( 'nadlan_dir_facet_counts' ) ) { $c = nadlan_dir_facet_counts(); if ( ! empty( $c['total'] ) ) { return (int) $c['total']; } }
+		return 0;
+	}
+}
+
+if ( ! function_exists( 'nadlan_pb_html' ) ) {
+	/** The stages and the tiles, the join line and the band's styles (one self-contained component for every home). */
+	function nadlan_pb_html( $lang = 'he' ) {
+		$t    = nadlan_pb_strings( $lang );
+		$rtl  = in_array( $lang, array( 'he', 'ar' ), true );
+		$arr  = $rtl ? '←' : '→';
+		$fmt  = function ( $n ) { return number_format( (int) $n ); };
+		$src  = function_exists( 'nadlan_dir_source_counts' ) ? nadlan_dir_source_counts() : array();
+		$fac  = function_exists( 'nadlan_dir_facet_counts' ) ? nadlan_dir_facet_counts() : array( 'professions' => array() );
+		$stages = array( array( 'metavech', 'shamai', 'bedek_bait' ), array( 'mashkanta', 'lawyer' ), array( 'kablan' ) );
+		$h = '<div class="nlpb">';
+		foreach ( $stages as $i => $keys ) {
+			$h .= '<section class="nlpb-phase" aria-label="' . esc_attr( $t['ph'][ $i ] ) . '"><p class="nlpb-phase__h"><i>' . ( $i + 1 ) . '</i>' . esc_html( $t['ph'][ $i ] ) . '</p><ul class="nlpb-tiles" style="--n:' . count( $keys ) . '">';
+			foreach ( $keys as $key ) {
+				$pm   = function_exists( 'nadlan_dir_prof_meta' ) ? nadlan_dir_prof_meta( $key ) : array( 'color' => '#9C7A3C', 'soft' => '#FBF6EE', 'icon' => 'profession-broker' );
+				$sty  = '--pc:' . esc_attr( $pm['color'] ) . ';--ps:' . esc_attr( $pm['soft'] );
+				$slot = function_exists( 'nadlan_hv2_pro_slot' ) ? nadlan_hv2_pro_slot( $key ) : null;
+				if ( $slot ) { // the paid home slot: the person, marked quietly
+					$pid   = (int) $slot['id'];
+					$name  = function_exists( 'nadlan_prof_person_name' ) ? (string) nadlan_prof_person_name( $pid ) : get_the_title( $pid );
+					$name  = trim( preg_replace( '/\s+[·\-–]\s+.*$/u', '', wp_strip_all_tags( html_entity_decode( $name, ENT_QUOTES, 'UTF-8' ) ) ) );
+					$words = preg_split( '/\s+/u', trim( preg_replace( '/[^\p{L}\s]/u', ' ', $name ) ) );
+					$ini   = mb_substr( (string) ( $words[0] ?? '' ), 0, 1 ) . ( isset( $words[1] ) && '' !== $words[1] ? '.' . mb_substr( $words[1], 0, 1 ) : '' );
+					$face  = has_post_thumbnail( $pid ) ? get_the_post_thumbnail( $pid, 'thumbnail', array( 'alt' => '', 'loading' => 'lazy', 'decoding' => 'async' ) ) : '<b>' . esc_html( $ini ) . '</b>';
+					$city  = trim( (string) get_post_meta( $pid, 'city', true ) );
+					$role  = function_exists( 'nadlan_dir_prof_label' ) ? nadlan_dir_prof_label( $key, $pid ) : '';
+					$h .= '<li><a class="nlpb-tile" href="' . esc_url( get_permalink( $pid ) ) . '" style="' . $sty . '"><span class="nlpb-ico nlpb-ico--face" aria-hidden="true">' . $face . '</span>'
+						. '<span class="nlpb-txt"><b class="nlpb-name">' . esc_html( $name ) . '</b><span class="nlpb-what">' . esc_html( trim( $role . ( '' !== $city ? ' · ' . $city : '' ) ) ) . '</span></span>'
+						. '<span class="nlpb-foot"><span class="nlpb-ad">' . esc_html( $t['ad'] ) . '</span><span class="nlpb-act">' . esc_html( $t['profile'] . ' ' . $arr ) . '</span></span></a></li>';
+					continue;
+				}
+				$href = 'metavech' === $key ? home_url( '/brokers/' ) : add_query_arg( 'profession', $key, home_url( '/professionals/' ) );
+				$cnt  = '';
+				if ( 'metavech' === $key && ! empty( $src['brokers'] ) ) {
+					$cnt = sprintf( $t['c_brokers'], $fmt( $src['brokers'] ) );
+				} elseif ( 'kablan' === $key && ! empty( $src['contractors'] ) ) {
+					$cnt = sprintf( $t['c_contractors'], $fmt( $src['contractors'] ) );
+				} elseif ( ! in_array( $key, array( 'metavech', 'kablan' ), true ) && ! empty( $fac['professions'][ $key ] ) ) {
+					$cnt = sprintf( $t['c_other'], $fmt( $fac['professions'][ $key ] ) );
+				}
+				$ico = function_exists( 'nlds_asset_url' ) ? '<img src="' . esc_url( nlds_asset_url( 'icons/' . $pm['icon'] . '.svg' ) ) . '" alt="" width="28" height="28" loading="lazy">' : '';
+				$h .= '<li><a class="nlpb-tile" href="' . esc_url( $href ) . '" style="' . $sty . '"><span class="nlpb-ico" aria-hidden="true">' . $ico . '</span>'
+					. '<span class="nlpb-txt"><b class="nlpb-name">' . esc_html( $t[ $key ][0] ) . '</b><span class="nlpb-what">' . esc_html( $t[ $key ][1] ) . '</span>'
+					. ( '' !== $cnt ? '<span class="nlpb-count"><i aria-hidden="true">✓</i>' . esc_html( $cnt ) . '</span>' : '' ) . '</span>'
+					. '<span class="nlpb-foot"><span class="nlpb-act">' . esc_html( $t[ $key ][2] . ' ' . $arr ) . '</span></span></a></li>';
+			}
+			$h .= '</ul></section>';
+		}
+		$h .= '</div><p class="nlpb-join">' . esc_html( $t['join'] ) . ' <a href="' . esc_url( home_url( '/advertise/' ) ) . '">' . esc_html( $t['join_a'] ) . '</a></p>';
+		return $h . '<style id="nadlan-pb-css">' . nadlan_pb_css() . '</style>';
+	}
+}
+
+if ( ! function_exists( 'nadlan_pb_css' ) ) {
+	function nadlan_pb_css() {
+		return <<<'CSS'
+.nlpb{display:grid!important;grid-template-columns:minmax(0,calc((100% - 60px)/2 + 24px)) minmax(0,calc((100% - 60px)/3 + 12px)) minmax(0,1fr)!important;gap:12px!important;align-items:stretch}
+.nlpb-phase{display:grid!important;grid-template-rows:auto 1fr;gap:10px;margin:0!important;padding:0!important;min-width:0}
+.nlpb-phase__h{display:flex!important;align-items:center;gap:8px;margin:0!important;font:700 13px/1.2 Assistant,Heebo,Arial,sans-serif!important;color:#2F6F86!important;letter-spacing:.01em;white-space:nowrap}
+.nlpb-phase__h i{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#2F6F86;color:#fff;font:700 12px/1 Assistant,Arial,sans-serif;font-style:normal}
+.nlpb-phase__h::after{content:"";flex:1;height:1px;background:#D2CBBB;min-width:12px}
+.nlpb-tiles{list-style:none!important;margin:0!important;padding:0!important;display:grid!important;grid-template-columns:repeat(var(--n,1),minmax(0,1fr))!important;gap:12px!important}
+.nlpb-tiles>li{margin:0!important;padding:0!important;list-style:none!important;display:flex!important;min-width:0}
+.nlpb-tiles>li::before,.nlpb-tiles>li::marker{content:none!important}
+.nlpb-tile{position:relative;flex:1;min-width:0;display:flex!important;flex-direction:column;gap:6px;min-height:198px;padding:18px 16px 14px!important;background:#fff!important;border:1px solid #E3E1DA!important;border-radius:16px!important;color:#14212B!important;text-decoration:none!important;transition:border-color .15s,transform .15s,box-shadow .15s}
+.nlpb-tile:hover{border-color:#2F6F86!important;transform:translateY(-2px);box-shadow:0 10px 24px rgba(20,33,43,.10)}
+.nlpb-tile:focus-visible{outline:2px solid #2F6F86;outline-offset:2px}
+.nlpb-ico{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--ps,#FBF6EE);margin-bottom:6px;overflow:hidden}
+.nlpb-ico img{width:28px!important;height:28px!important;display:block}
+.nlpb-ico--face{background:#EFEAE0}
+.nlpb-ico--face img{width:48px!important;height:48px!important;object-fit:cover;border-radius:50%}
+.nlpb-ico--face b{font:700 16px/1 "Noto Serif Hebrew",Georgia,serif;color:var(--pc,#9C7A3C)}
+.nlpb-txt{display:flex;flex-direction:column;gap:5px;min-width:0}
+.nlpb-name{font:700 16.5px/1.25 Assistant,Heebo,Arial,sans-serif!important;color:#14212B!important;margin:0!important}
+.nlpb-what{font:400 13px/1.45 Assistant,Heebo,Arial,sans-serif!important;color:#57534B!important;margin:0!important}
+.nlpb-count{font:600 12.5px/1.35 Assistant,Heebo,Arial,sans-serif;color:#14212B;font-variant-numeric:tabular-nums}
+.nlpb-count i{font-style:normal;color:#2F6F86;font-weight:700;margin-inline-end:4px}
+.nlpb-foot{margin-top:auto!important;display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:12px;border-top:1px solid #EFEAE0}
+.nlpb-act{font:700 13.5px/1.2 Assistant,Heebo,Arial,sans-serif;color:#2F6F86;white-space:nowrap}
+.nlpb-ad{font:600 11px/1 Assistant,Heebo,Arial,sans-serif;color:#8a857b;letter-spacing:.02em}
+.nlpb-join{margin:16px 0 0!important;font:400 14px/1.5 Assistant,Heebo,Arial,sans-serif!important;color:#57534B!important}
+.nlpb-join a{color:#2F6F86!important;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:1180px){.nlpb{grid-template-columns:repeat(3,minmax(0,1fr))!important;row-gap:20px!important}.nlpb-phase:nth-child(1){grid-column:span 3}.nlpb-phase:nth-child(2){grid-column:span 2}}
+@media (max-width:600px){.nlpb{grid-template-columns:minmax(0,1fr)!important;row-gap:18px!important}.nlpb-phase:nth-child(n){grid-column:auto}.nlpb-phase{gap:8px}.nlpb-tiles{grid-template-columns:minmax(0,1fr)!important;gap:8px!important}
+.nlpb-tile{min-height:0;display:grid!important;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;column-gap:12px;row-gap:0;padding:12px 14px!important;border-radius:14px!important}
+.nlpb-ico{width:40px;height:40px;margin:0}.nlpb-ico img{width:24px!important;height:24px!important}.nlpb-ico--face img{width:40px!important;height:40px!important}
+.nlpb-txt{gap:1px}.nlpb-name{font-size:15.5px!important}.nlpb-what{font-size:12.5px!important;line-height:1.35!important}.nlpb-count{font-size:12px}
+.nlpb-foot{margin:0!important;padding:0;border:0;flex-direction:column;align-items:flex-end;gap:4px}.nlpb-act{font-size:0}.nlpb-act::after{content:"←";font-size:19px;color:#2F6F86}[dir="ltr"] .nlpb-act::after{content:"→"}}
+@media (prefers-reduced-motion:reduce){.nlpb-tile{transition:none}.nlpb-tile:hover{transform:none}}
+#nlhp-page .nlhp-pros{background:#EFEAE0;border-radius:22px;padding:34px 30px 30px}
+@media (max-width:600px){#nlhp-page .nlhp-pros{padding:22px 16px 18px;border-radius:16px}}
+CSS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_hv2_band_pros' ) ) {
 	function nadlan_hv2_band_pros() {
-		$cats = array(
-			'lawyer'    => nadlan_i18n( 'pr_lawyer' ),
-			'shamai'    => nadlan_i18n( 'pr_shamai' ),
-			'mashkanta' => nadlan_i18n( 'pr_mashkanta' ),
-			'bedek_bait'=> nadlan_i18n( 'pr_bedek' ),
-		);
-		$total = (int) wp_count_posts( 'nadlan_professional' )->publish;
-		$slots = array();
-		foreach ( $cats as $key => $label ) {
-			$s = nadlan_hv2_pro_slot( $key );
-			if ( $s ) { $slots[ $key ] = $s + array( 'label' => $label ); }
-		}
-		if ( ! $slots ) { return; }
+		$lang  = function_exists( 'nadlan_current_lang' ) ? (string) nadlan_current_lang() : 'he';
+		$t     = nadlan_pb_strings( $lang );
+		$total = nadlan_pb_total();
+		$arr   = in_array( $lang, array( 'he', 'ar' ), true ) ? '←' : '→';
 		?>
-	<section class="nlhv2-band nlhv2-alt">
-		<header><p class="nlhv2-kicker"><?php nadlan_e( 'pr_kicker' ); ?></p><h2><?php nadlan_e( 'pr_title' ); ?></h2>
-			<a href="<?php echo esc_url( home_url( '/professionals/' ) ); ?>"><?php nadlan_e( 'pr_more_pre' ); ?> <?php echo number_format( $total ); ?> <?php nadlan_e( 'pr_more_suf' ); ?></a></header>
-		<div class="nlhv2-prosgrid">
-			<?php foreach ( $slots as $key => $s ) :
-				$pid = $s['id'];
-				$rating = (float) get_post_meta( $pid, 'rating', true );
-				$pm = function_exists( 'nadlan_prof_meta_of' ) ? nadlan_prof_meta_of( $key ) : array( 'color' => '#1B1A17' ); ?>
-			<a class="nlhv2-pro" href="<?php echo esc_url( get_permalink( $pid ) ); ?>">
-				<?php if ( $s['sponsored'] ) : ?><i class="nlhv2-spon"><?php nadlan_e( 'pr_sponsored' ); ?></i><?php endif; ?>
-				<?php echo function_exists( 'nadlan_prof_monogram_svg' ) ? nadlan_prof_monogram_svg( get_the_title( $pid ), $pm['color'] ?? '#1B1A17' ) : ''; // phpcs:ignore ?>
-				<b><?php echo esc_html( get_the_title( $pid ) ); ?></b>
-				<span><?php echo esc_html( $s['label'] ); ?><?php echo esc_html( ( $c = get_post_meta( $pid, 'city', true ) ) ? ' · ' . $c : '' ); ?><?php echo $rating ? ' · ★ ' . number_format( $rating, 1 ) : ''; ?></span>
-			</a>
-			<?php endforeach; ?>
-			<a class="nlhv2-pro nlhv2-cta-tile" href="<?php echo esc_url( home_url( '/advertise/' ) ); ?>"><b><?php nadlan_e( 'pr_join_b' ); ?></b><span><?php nadlan_e( 'pr_join_s' ); ?></span></a>
-		</div>
+	<section class="nlhv2-band nlhv2-alt nlpb-band">
+		<header><p class="nlhv2-kicker"><?php echo esc_html( $t['kicker'] ); ?></p><h2><?php echo esc_html( $t['title'] ); ?></h2>
+			<?php if ( $total > 0 ) : ?><a href="<?php echo esc_url( home_url( '/professionals/' ) ); ?>"><?php echo esc_html( sprintf( $t['more'], number_format( $total ) ) . ' ' . $arr ); ?></a><?php endif; ?></header>
+		<?php echo nadlan_pb_html( $lang ); // phpcs:ignore ?>
 	</section>
 		<?php
 	}

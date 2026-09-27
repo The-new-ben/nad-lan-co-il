@@ -464,6 +464,19 @@ if ( ! function_exists( 'nadlan_hp_band_magazine' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_hp_band_pros' ) ) {
+	/** "הליווי הנכון לעסקה" (design system ProsBand v45): the six professions of a deal in three stages, true counts only,
+	 *  the paid slot as a person; with the home's own header. */
+	function nadlan_hp_band_pros() {
+		if ( ! function_exists( 'nadlan_pb_html' ) ) { return ''; }
+		$t     = nadlan_pb_strings( 'he' );
+		$total = nadlan_pb_total();
+		return '<section class="nlhp-band nlhp-pros" aria-labelledby="nlhp-pros-h">'
+			. nadlan_hp_head( $t['kicker'], $t['title'], 'nlhp-pros-h', $total > 0 ? sprintf( $t['more'], number_format( $total ) ) : '', home_url( '/professionals/' ) )
+			. nadlan_pb_html( 'he' ) . '</section>';
+	}
+}
+
 if ( ! function_exists( 'nadlan_hp_band_services' ) ) {
 	/** The three product bands as three cards, in their own words: the building's renewal room, rentals management,
 	 *  the Sde Dov virtual tour with the site's video. */
@@ -560,7 +573,7 @@ if ( ! function_exists( 'nadlan_hp_body' ) ) {
 			. nadlan_hp_band_prices()
 			. nadlan_hp_band_cities()
 			. $cap( 'nadlan_hv2_band_dronemap' )
-			. $cap( 'nadlan_hv2_band_pros' )
+			. nadlan_hp_band_pros()
 			. nadlan_hp_band_magazine( $cap( 'nadlan_hv2_band_magazine' ) )
 			. nadlan_hp_band_services()
 			. $cap( 'nadlan_hv2_band_intl' )

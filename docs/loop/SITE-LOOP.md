@@ -124,7 +124,16 @@ only inside runners; every release through a runner with drift check, lint, back
     - A broker's site: the bar sits under the header (132px were empty), and the area names keep one line on a phone.
     - Found: the /brokers/ title speaks of the free site offer, while the H1 lists brokers. Check it against Search Console before changing it.
     - Codex's designer and tour findings: Linear HAD-346. The designer's source is now tracked at docs/live-sources/tour-designer/.
-  - **Next:** the home's professionals band (demo profiles with stars and no sample mark), then the listings.
+  - 1.72.295 (DS ProsBand v45, artifact version 52): **the home's professionals band is honest and designed.**
+    - It showed four demo profiles with typed-in stars (4.7-5.0) and no mark, since the picker took the top-rated card of professions with no real professional.
+    - Now: the six professions of a deal in three stages (מוצאים ובודקים · מממנים וחותמים · משפצים ובונים).
+    - A count shows only when it is real and comes from a register (121 בעלי רישיון תיווך, 2,698 רשומים בפנקס הקבלנים).
+    - The paid home slot stays, for a real professional only, as a person marked "מקודם".
+    - The total counts real professionals only (2,831, was 2,846).
+    - The language homes print the same band in English, French, Russian and Arabic.
+    - A phone gets a dense list by stage (771px, was 919).
+    - Found: the English and Russian homes carry a YELLOW source flag for dashes (3 and 4, predating this release), and the English title ends in Hebrew ("... in Israel - נדלן"). Take them up with the home pass.
+  - **Next:** the listings (/properties/, the filters, single listings, the publish flow).
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner
