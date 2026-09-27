@@ -1,0 +1,17 @@
+{
+  "released": "1.72.280",
+  "from": "1.72.279",
+  "at": "2026-09-27 22:34:53",
+  "files": {
+    "assets/project-stage/rainbow/stage.js": "f33e9c547b43ad0ecedaa3632b5b6256",
+    "assets/project-stage/rainbow/stage.css": "02141e9add68c9a53ea0914fc4b35078",
+    "assets/nlds/nlds.css": "31d8aaeaf14533defb95173c357ca349",
+    "nadlan-config.php": "972687ab49bc0c470de251019e317611"
+  },
+  "live_before": {
+    "assets/project-stage/rainbow/stage.js": "05e9ad3e63533d09fad7694603bfba72",
+    "assets/project-stage/rainbow/stage.css": "72400dd834df896f94cfe19feb06b92d",
+    "assets/nlds/nlds.css": "8554fb0482df3b2512159155090a705f",
+    "nadlan-config.php": "a985ab47c4602ba85caf41e601e84dd7"
+  }
+}

@@ -1232,10 +1232,7 @@ function createEngine(ctx) {
     const y = floorLevel(f) + EYE_M;
     // low floors are seen from a little higher, so the boutique buildings do not hide them
     const elev = y < 40 ? Math.min(46, Math.max(9, Math.atan2(42 - y, 30) / DEG)) : 9;
-    // a phone (design system ProjectStage version 34): the card docks at the bottom of the stage, so the picked floor is
-    // framed in the upper third (the camera looks a little below it) and its ring stays visible and tappable
-    const lift = stageW < 600 ? 0.44 * r * Math.tan(vf / 2) : 0;
-    return { target: new THREE.Vector3(towerCenterW.x, Math.max(2, y - lift), towerCenterW.z), r, phi: (90 - elev) * DEG };
+    return { target: new THREE.Vector3(towerCenterW.x, y, towerCenterW.z), r, phi: (90 - elev) * DEG };
   }
   function frameFloor(f, prev) {
     const fr = floorFrame(f);
