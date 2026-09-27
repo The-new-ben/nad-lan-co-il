@@ -133,10 +133,18 @@ only inside runners; every release through a runner with drift check, lint, back
     - The language homes print the same band in English, French, Russian and Arabic.
     - A phone gets a dense list by stage (771px, was 919).
     - Found: the English and Russian homes carry a YELLOW source flag for dashes (3 and 4, predating this release), and the English title ends in Hebrew ("... in Israel - נדלן"). Take them up with the home pass.
-  - **Next:** the listings (/properties/, the filters, single listings, the publish flow).
+  - 1.72.296-297 (DS ListingsPage v46, artifact version 53; Linear HAD-347): **the listings page.**
+    - One H1 by the filter (was two: the old theme bar), and a true lead. "בדיקה משפטית מקדימה" is gone here and on /catalog/: no such check exists.
+    - The deal tabs with real counts, and one filter row (city or neighbourhood, rooms, price).
+    - The portal listing card: the deal, the price when published, rooms, area, floor, and the broker with the licence.
+    - **Seven seeded demo listings (4951-4957) were shown as real homes with prices.** They are now marked "מודעה לדוגמה", come last, and are never counted, never on the map, never on the home band.
+    - The map is printed only when real listings have coordinates. Meital's 11 have none yet.
+    - The public-source audit on /properties/ went from RED to GREEN.
+  - **Next:** the single listing page (the demo mark there too), then the publish flow.
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner
+- **A privacy decision (found 28.9, HAD-347):** the listings' distance chip ("ממך · משוער") sends the visitor's IP to the third-party service ipwho.is. It is dormant now, because no real listing has coordinates. Keep it, replace it with the browser's own location (asked from the visitor), or drop it?
 - **The Pro price appears twice** (found 28.9 on /brokers/): the brokers' page offers "149 ש"ח לחודש" (and a site build at 1,490), while the professionals' slot, the catalogue and the pricing schema say Pro ₪349 a month. Are these two products (the broker site vs the directory placement) or one? Nothing is changed until the owner says.
 - **Rainbow's article, one sentence** (Linear HAD-340): "מספר היחידות עומד על 480 לפי שיווק היזם ואתר השיווק החדש, בעוד שהיתר הבנייה והמקורות התכנוניים-ביצועיים מציינים 459 דירות" inverts the sources. 459 is the developer's current number (its page, Ashtrom, Bizportal 5.2026, Calcalist 3.2026); 480 is the design plan of 10.5.2023 (229 + 251). The article is the owner's ChatGPT text, so the fix waits for his word (or goes into his ChatGPT prompt).
 - **The loop is stopped** (the owner, 25.9 midday: usage running out; resume from R7 when usage returns).
