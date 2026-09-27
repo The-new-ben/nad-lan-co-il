@@ -118,7 +118,13 @@ only inside runners; every release through a runner with drift check, lint, back
     - The 7 seeded showcases now say "פרופיל לדוגמה" on the card, with a dashed ring, and come after the real professionals.
     - The profession chips and cities count real professionals only ("שמאי מקרקעין 2" were both demos, so the chip goes).
     - A register contractor's classification appears once, in the header, with its grades.
-  - **Next:** /brokers/, then the home's professionals band.
+  - 1.72.294 (DS v44, artifact versions 50-51): **the brokers page and the brokers' own sites.**
+    - /brokers/ prints the directory's card (the initials and the broker mark, one licence line; `nadlan_ds_procard`), three per row, two on a tablet, a dense row on a phone. The phone page went from 19,229px to 15,278px.
+    - The cities are one scrolling row, and "more" is a real button.
+    - A broker's site: the bar sits under the header (132px were empty), and the area names keep one line on a phone.
+    - Found: the /brokers/ title speaks of the free site offer, while the H1 lists brokers. Check it against Search Console before changing it.
+    - Codex's designer and tour findings: Linear HAD-346. The designer's source is now tracked at docs/live-sources/tour-designer/.
+  - **Next:** the home's professionals band (demo profiles with stars and no sample mark), then the listings.
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner
