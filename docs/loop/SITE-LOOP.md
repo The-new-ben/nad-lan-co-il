@@ -71,6 +71,11 @@ only inside runners; every release through a runner with drift check, lint, back
   - Labels in the view from the floor, at the places' positions, with distances.
   - "מה יש לכיוון הזה" under the view: nearest first, with the walk, the status (the light rail "מאושרת, עוד לא פועלת") and the source. Project rows link to their pages.
   - Only what quarter.json holds.
+- 1.72.283 (H1.3b part 1): inner pages now carry only the header's styles (7.9 KB), and the home keeps its own (18.7 KB).
+  - Every inner page is 18.7 KB lighter.
+  - Before/after pictures of five pages on desktop and phone are identical; only the moving 3D stage's pins differ by timing.
+  - The DS HomePage v36 note.
+  - The audit found /projects/bnei-dan-54-56/ and /projects/stricker-13-brandeis-14/ as 404. They were 404 before this release too (the same snapshot size). Waiting for the owner: are they meant to be gone?
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner
