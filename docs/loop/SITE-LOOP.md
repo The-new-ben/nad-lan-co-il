@@ -92,6 +92,16 @@ only inside runners; every release through a runner with drift check, lint, back
 - **Codex's lab:** DS v37 UnitCut (the unit cell, the bounded cut, the compact row) and the kit scripts/project-stage/harness/mklab.py.
 - 1.72.286: the view from the floor at the right height. The eye height had been counted twice (+1.6 m); Codex found it. DS v40.
 - Codex's UnitCut pilot was reviewed on 28.9. Keep: the row, the lift, the honest label. Change: the cut's inside as a paper volume, and the side words from the page. The baseline is b4ec433, and the picking policy (Tier A/B/C) is agreed. Integration: a read-only `stage.internals()` hook plus a lazy `cut.js`.
+- **28.9, the owner: "polish everything, micro level, Claude Design first; professionals first, then listings, projects, the home, then Rainbow to the maximum".**
+  - HAD-340: the 459/480 sentence fixed on the owner's word (a backup was taken first).
+  - 1.72.287-289: **the professionals directory** (DS ProfessionalCard v41/v41b):
+    - the face (a photo, else the initials in the profession's colour, with the profession's mark as a badge);
+    - the business on its own line, one role line, and a licence line from the register;
+    - the verified mark kept, and a quiet "מקודם";
+    - no stripe and no empty middle: 180px cards in even rows;
+    - on a phone, dense 86px rows; the top box centred with the search inside it; the professions in a row that scrolls, in the plural;
+    - the open slot the size of a card, without "המוביל בישראל".
+  - **Next in the polish:** the profile page, /brokers/, the home's professionals band, then the listings.
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner

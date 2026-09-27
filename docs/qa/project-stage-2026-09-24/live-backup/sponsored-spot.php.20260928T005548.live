@@ -29,15 +29,6 @@ if ( ! function_exists( 'nadlan_ss_card' ) ) {
 		// pricing link), which is illegal HTML - browsers split the card into a
 		// stray gold "מקודם" stub plus a detached body (owner saw a broken empty
 		// card in the grid, audit 2026-07-05). Primary CTA is a real inner link.
-		if ( 'project' !== $mode ) {
-			// the professionals' open place (design system ProfessionalCard v41b): the size of a card, dashed, a plus; plain
-			// words, no superlative (slogans are off the word list), the plan as the site sells it today
-			return '<div class="nldc nldc-sponsored-spot nldc-slot41">'
-				. '<div class="nldc-slot41__top"><span class="nldc-slot41__plus" aria-hidden="true">+</span><h3 class="nldc-slot41__h">הכרטיס שלכם יכול להיות כאן</h3></div>'
-				. '<p class="nldc-slot41__p">הצטרפו למאגר אנשי המקצוע של נדלן. תוכנית Pro מ־₪349 לחודש.</p>'
-				. '<a class="nldc-go nldc-slot41__go" href="' . $cart . '">בקשו מידע ←</a>'
-				. '</div>';
-		}
 		return '<div class="nldc nldc-sponsored-spot">'
 			. '<span class="nldc-sponsor nldc-sponsor-slot">מקודם · פנוי</span>'
 			. '<div class="nldc-sponsored-body">'
