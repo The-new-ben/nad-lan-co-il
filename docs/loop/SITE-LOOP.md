@@ -140,7 +140,10 @@ only inside runners; every release through a runner with drift check, lint, back
     - **Seven seeded demo listings (4951-4957) were shown as real homes with prices.** They are now marked "מודעה לדוגמה", come last, and are never counted, never on the map, never on the home band.
     - The map is printed only when real listings have coordinates. Meital's 11 have none yet.
     - The public-source audit on /properties/ went from RED to GREEN.
-  - **Next:** the single listing page (the demo mark there too), then the publish flow.
+  - 1.72.298 (DS ListingPage v47, artifact version 54; HAD-347): **a listing page's honest states.**
+    - A demo listing had a thin line over real WhatsApp, visit, calendar and claim actions, so a buyer could book a visit to a home that does not exist. Now the panel "זו לא דירה אמיתית", no contact action, and real homes as "similar".
+    - A real listing: no "קומה 0", no emoji, no public view count, and "similar" never lists a demo.
+  - **Next:** the publish flow (/post-listing/, the owner wizard). A finding to fix there: it minted a Hebrew slug (the Ofakim listing).
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner
