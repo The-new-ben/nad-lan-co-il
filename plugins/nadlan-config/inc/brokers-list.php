@@ -9,7 +9,10 @@
  *    4/5, name, gendered role, office, licence, areas, live count of active listings, "תיאום סיור" straight to the
  *    broker and "לעמוד המתווכת". Premium is the photo, the size and the position, never a word. The buttons are a
  *    direct child of the card (the artifact's phone markup), so on a phone they run the full width under the photo;
- *  - ProfessionalCard for every other licensed broker, grouped by city, with the city chips as anchors.
+ *  - ProfessionalCard for every other licensed broker, grouped by city, with the city chips as anchors. Since the design
+ *    system's v44 (28.9.2026) it is the directory's card (ProfessionalCard v41: the initials and the profession's mark,
+ *    one role line, one licence line), printed by nadlan_ds_procard() for this page and the recommendations page;
+ *    BrokersList v44: three per row, a dense row on a phone, the cities in one scrolling row, a real "more" button.
  * The page's own offer for brokers (the free site and the join form) stays below it; its H1 steps down to an H2 so
  * the page keeps exactly one H1. Hebrew page only (id 7645); the English, Russian and French pages are unchanged.
  * Off switch: option nadlan_brokers_list = '0'.
@@ -97,7 +100,7 @@ if ( ! function_exists( 'nadlan_bl_feature_card' ) ) {
 		<<?php echo $tag; ?> class="nlds-bfeat__name"><a href="<?php echo esc_url( $href ); ?>"<?php echo $args['link_attrs']; // phpcs:ignore ?>><?php echo esc_html( $name ); ?></a></<?php echo $tag; ?>>
 		<p class="nlds-bfeat__role"><b><?php echo esc_html( $role ); ?></b><?php echo '' !== $brand && false === mb_strpos( $name, $brand ) ? ' · ' . esc_html( $brand ) : ''; ?><?php echo '' !== $city ? ' · ' . esc_html( $city ) : ''; ?></p>
 		<?php if ( '' !== trim( (string) $args['line'] ) ) : ?><p class="nlds-bfeat__role"><?php echo esc_html( $args['line'] ); ?></p><?php endif; ?>
-		<?php if ( '' !== $lic ) : ?><span class="nlds-licence"><?php if ( $verified ) : ?><span class="nlds-licence__check" aria-hidden="true">✓</span><?php endif; ?><span>רישיון תיווך <span class="nlds-num"><?php echo esc_html( $lic ); ?></span><?php echo $verified ? ', מאומת בפנקס המתווכים' : ''; ?></span></span><?php endif; ?>
+		<?php if ( '' !== $lic ) : ?><span class="nlds-licence"><?php if ( $verified ) : ?><span class="nlds-licence__check" aria-hidden="true">✓</span><?php endif; ?><span>רישיון תיווך <span class="nlds-num"><?php echo esc_html( $lic ); ?></span><?php echo $verified ? '<span class="nlds-licence__vf">, מאומת בפנקס המתווכים</span>' : ''; // phpcs:ignore ?></span></span><?php endif; ?>
 		<?php if ( $areas ) : ?><div class="nlds-chips" aria-label="האזורים"><?php foreach ( $areas as $a ) : ?><span class="nlds-chip nlds-chip--fact"><?php echo esc_html( $a ); ?></span><?php endforeach; ?></div><?php endif; ?>
 		<?php if ( $count > 0 ) : ?><p class="nlds-bfeat__count"><b class="nlds-num"><?php echo (int) $count; ?></b> נכסים</p><?php endif; ?>
 	</div>
@@ -112,30 +115,53 @@ if ( ! function_exists( 'nadlan_bl_feature_card' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_ds_procard' ) ) {
+	/**
+	 * ProfessionalCard v41 in the design system's markup (nlds.css): the photo or the initials in the profession's colour
+	 * with its mark in the corner, the name (and the business on its own line), one role line, one licence line from the
+	 * register, a demo profile marked as one, and the foot: $foot (the recommendations, or a quality chip) then "לפרופיל".
+	 * The directory prints the same card from inc/directory.php (nadlan_dir_card); this is its twin for pages built from
+	 * the design system (/brokers/, the recommendations page).
+	 */
+	function nadlan_ds_procard( $id, $foot = '' ) {
+		$key   = (string) get_post_meta( $id, 'profession', true );
+		$pm    = function_exists( 'nadlan_dir_prof_meta' ) ? nadlan_dir_prof_meta( $key ) : array( 'color' => '#9C7A3C', 'soft' => '#FBF6EE', 'icon' => 'profession-broker' );
+		$title = trim( wp_strip_all_tags( html_entity_decode( get_the_title( $id ), ENT_QUOTES, 'UTF-8' ) ) );
+		$parts = preg_split( '/\s+·\s+/u', $title, 2 );
+		$pname = $parts[0];
+		$biz   = isset( $parts[1] ) ? $parts[1] : '';
+		$words = preg_split( '/\s+/u', trim( preg_replace( '/[^\p{L}\s]/u', ' ', $pname ) ) );
+		$ini   = mb_substr( (string) ( $words[0] ?? '' ), 0, 1 ) . ( isset( $words[1] ) && '' !== $words[1] ? '.' . mb_substr( $words[1], 0, 1 ) : '' );
+		$role  = function_exists( 'nadlan_dir_prof_label' ) ? nadlan_dir_prof_label( $key, $id ) : 'תיווך נדל״ן';
+		$city  = trim( (string) get_post_meta( $id, 'city', true ) );
+		$reg   = trim( (string) get_post_meta( $id, 'registry_number', true ) );
+		$lic   = '';
+		if ( 'metavech' === $key ) {
+			$ln  = trim( (string) get_post_meta( $id, 'license_number', true ) );
+			$ln  = '' !== $ln ? $ln : $reg;
+			$lic = '' !== $ln ? 'רישיון תיווך ' . $ln : '';
+		} elseif ( '' !== $reg ) {
+			$lic = ( 'kablan' === $key ? 'רשם הקבלנים ' : 'מספר רישום ' ) . $reg;
+		}
+		$demo  = (bool) get_post_meta( $id, 'is_demo', true );
+		$icon  = function_exists( 'nlds_asset_url' ) ? nlds_asset_url( 'icons/' . $pm['icon'] . '.svg' ) : '';
+		$face  = has_post_thumbnail( $id ) ? get_the_post_thumbnail( $id, 'thumbnail', array( 'class' => 'nlds-procard__photo', 'alt' => '', 'loading' => 'lazy', 'decoding' => 'async' ) ) : esc_html( $ini );
+		return '<a class="nlds-procard' . ( $demo ? ' nlds-procard--demo' : '' ) . '" href="' . esc_url( get_permalink( $id ) ) . '" style="--pc:' . esc_attr( $pm['color'] ) . ';--ps:' . esc_attr( $pm['soft'] ) . '">'
+			. '<div class="nlds-procard__top"><span class="nlds-procard__av" aria-hidden="true">' . $face
+			. ( '' !== $icon ? '<i class="nlds-procard__mark"><img src="' . esc_url( $icon ) . '" alt="" width="13" height="13"></i>' : '' ) . '</span>'
+			. '<div class="nlds-procard__id"><h3 class="nlds-procard__name">' . esc_html( $pname ) . '</h3>' . ( '' !== $biz ? '<p class="nlds-procard__biz">' . esc_html( $biz ) . '</p>' : '' ) . '</div></div>'
+			. ( $demo ? '<span class="nlds-procard__sample">פרופיל לדוגמה</span>' : '' )
+			. '<p class="nlds-procard__role"><b>' . esc_html( $role ) . '</b>' . ( '' !== $city ? ' · ' . esc_html( $city ) : '' ) . '</p>'
+			. ( '' !== $lic ? '<span class="nlds-procard__lic"><i>✓</i>' . esc_html( $lic ) . '</span>' : '' )
+			. '<div class="nlds-procard__foot">' . $foot . '<span class="nlds-procard__go">לפרופיל ←</span></div></a>';
+	}
+}
+
 if ( ! function_exists( 'nadlan_bl_card' ) ) {
+	/** A broker in the list: ProfessionalCard with the recommendations in the foot (BrokersList v44). */
 	function nadlan_bl_card( $id ) {
-		$name = html_entity_decode( get_the_title( $id ), ENT_QUOTES, 'UTF-8' );
-		$role = function_exists( 'nadlan_dir_prof_label' ) ? nadlan_dir_prof_label( 'metavech', $id ) : 'תיווך נדל״ן';
-		$city = trim( (string) get_post_meta( $id, 'city', true ) );
-		$lic  = trim( (string) get_post_meta( $id, 'license_number', true ) );
-		ob_start(); ?>
-<a class="nlds-procard" href="<?php echo esc_url( get_permalink( $id ) ); ?>">
-	<div class="nlds-procard__top">
-		<span class="nlds-procard__av" aria-hidden="true"><img src="<?php echo esc_url( nlds_asset_url( 'icons/profession-broker.svg' ) ); ?>" alt="" width="32" height="32"></span>
-		<div class="nlds-procard__id">
-			<h3 class="nlds-procard__name"><?php echo esc_html( $name ); ?></h3>
-			<span class="nlds-procard__pill"><?php echo esc_html( $role ); ?></span>
-		</div>
-	</div>
-	<?php if ( '' !== $city ) : ?><div class="nlds-procard__meta"><span class="nlds-procard__city"><img src="<?php echo esc_url( nlds_asset_url( 'icons/card-pin.svg' ) ); ?>" alt="" width="16" height="16"><?php echo esc_html( $city ); ?></span></div><?php endif; ?>
-	<div class="nlds-procard__foot">
-		<?php echo function_exists( 'nadlan_endorse_count_html' ) ? nadlan_endorse_count_html( $GLOBALS['nadlan_bl_counts'][ $id ] ?? 0, true ) : ''; // phpcs:ignore ?>
-		<?php if ( '' !== $lic ) : ?><span class="nlds-licence nlds-licence--pill"><span class="nlds-licence__check" aria-hidden="true">✓</span><span>רישיון <span class="nlds-num"><?php echo esc_html( $lic ); ?></span></span></span><?php endif; ?>
-		<span class="nlds-procard__go">לפרופיל ←</span>
-	</div>
-</a>
-		<?php
-		return ob_get_clean();
+		$rec = function_exists( 'nadlan_endorse_count_html' ) ? nadlan_endorse_count_html( $GLOBALS['nadlan_bl_counts'][ $id ] ?? 0, true ) : '';
+		return nadlan_ds_procard( $id, $rec );
 	}
 }
 
@@ -143,35 +169,34 @@ if ( ! function_exists( 'nadlan_bl_html' ) ) {
 	function nadlan_bl_html() {
 		$b      = nadlan_bl_brokers();
 		$total  = count( $b['featured'] ) + array_sum( array_map( 'count', $b['rest'] ) );
-		$cities = count( $b['rest'] );
 		$slug   = function ( $c ) { return 'nlbl-' . substr( md5( $c ), 0, 8 ); };
 		ob_start(); ?>
-<div class="nlds nlbl" dir="rtl" lang="he">
+<div class="nlds nlbl" dir="rtl" lang="he"><div class="nlds-blist">
 	<header class="nlds-pagehead">
 		<nav class="nlds-crumbs" aria-label="ניווט"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">בית</a><span class="nlds-crumbs__sep" aria-hidden="true">›</span><span aria-current="page">מתווכים</span></nav>
 		<h1 class="nlds-pagehead__title">מתווכי נדל״ן</h1>
 		<p class="nlds-pagehead__lead"><span class="nlds-num"><?php echo (int) $total; ?></span> מתווכים עם רישיון בתוקף בפנקס המתווכים של משרד המשפטים, ולכל אחד עמוד משלו באתר. מתווכים? <a href="#join">פתחו אתר משלכם בחינם</a>.</p>
 	</header>
-	<?php if ( $b['featured'] ) : ?><div class="nlbl-feat"><?php foreach ( $b['featured'] as $id ) { echo nadlan_bl_feature_card( $id ); } // phpcs:ignore ?></div><?php endif; ?>
+	<?php if ( $b['featured'] ) : ?><div class="nlds-blist__feat"><?php foreach ( $b['featured'] as $id ) { echo nadlan_bl_feature_card( $id ); } // phpcs:ignore ?></div><?php endif; ?>
 	<?php if ( $b['rest'] ) : ?>
-	<nav class="nlds-chips nlbl-cities" aria-label="ערים">
+	<nav class="nlds-chips nlds-chips--scroll" aria-label="ערים">
 		<?php foreach ( $b['rest'] as $c => $list ) : ?><a class="nlds-chip nlds-chip--link" href="#<?php echo esc_attr( $slug( $c ) ); ?>"><?php echo esc_html( $c ); ?> <span class="nlds-num"><?php echo count( $list ); ?></span></a><?php endforeach; ?>
 	</nav>
 	<?php foreach ( $b['rest'] as $c => $list ) : ?>
-	<section class="nlbl-city" id="<?php echo esc_attr( $slug( $c ) ); ?>" aria-label="<?php echo esc_attr( 'מתווכים ב' . $c ); ?>">
-		<h2 class="nlbl-city__title">מתווכים ב<?php echo esc_html( $c ); ?></h2>
+	<section class="nlds-citysec" id="<?php echo esc_attr( $slug( $c ) ); ?>" aria-label="<?php echo esc_attr( 'מתווכים ב' . $c ); ?>">
+		<h2 class="nlds-citysec__title">מתווכים ב<?php echo esc_html( $c ); ?> <span class="nlds-num"><?php echo count( $list ); ?></span></h2>
 		<div class="nlds-dgrid"><?php foreach ( array_slice( $list, 0, 6 ) as $id ) { echo nadlan_bl_card( $id ); } // phpcs:ignore ?></div>
 		<?php if ( count( $list ) > 6 ) : /* six per city, the rest open in place (the page ran 34,000px on a phone); all of them stay in the page */ ?>
-		<details class="nlbl-more"><summary class="nlds-btn nlds-btn--quiet"><?php echo esc_html( 'עוד ' . ( count( $list ) - 6 ) . ' מתווכים ב' . $c ); ?></summary>
+		<details class="nlds-more"><summary><span class="nlds-more__open"><?php echo esc_html( 'עוד ' . ( count( $list ) - 6 ) . ' מתווכים ב' . $c ); ?></span><span class="nlds-more__less">פחות</span></summary>
 			<div class="nlds-dgrid"><?php foreach ( array_slice( $list, 6 ) as $id ) { echo nadlan_bl_card( $id ); } // phpcs:ignore ?></div>
 		</details>
 		<?php endif; ?>
 	</section>
 	<?php endforeach; ?>
 	<?php endif; ?>
-	<p class="nlbl-source">המקור: פנקס המתווכים של משרד המשפטים, לפי מספר הרישיון. מתווך שרוצה לעדכן את הכרטיס שלו: הכפתור "פתיחת האתר בחינם" בכרטיס.</p>
-</div>
-<style id="nadlan-brokers-list">:root body .nlbl{display:grid!important;gap:var(--nlds-space-22)!important;margin-block-end:40px!important}:root body .nlbl .nlbl-feat{display:grid!important;gap:var(--nlds-space-16)!important}:root body .nlbl .nlbl-cities{margin-block:4px!important}:root body .nlbl .nlbl-city{display:grid!important;gap:var(--nlds-space-14)!important;scroll-margin-top:90px}:root body .nlbl .nlbl-city__title{font-family:var(--nlds-font-serif)!important;font-weight:600!important;font-size:24px!important;line-height:1.2!important;letter-spacing:normal!important;color:var(--nlds-sa-ink)!important;margin:10px 0 0!important}:root body .nlbl .nlbl-more summary{list-style:none;cursor:pointer;justify-self:start}:root body .nlbl .nlbl-more summary::-webkit-details-marker{display:none}:root body .nlbl .nlbl-more[open] summary{margin-bottom:14px}:root body .nlbl .nlbl-source{font-size:13px!important;line-height:1.5!important;color:var(--nlds-sa-ink2)!important}:root body .nlbl .nlds-pagehead__lead a{color:var(--nlds-sa-sea)!important;font-weight:600!important;text-decoration:underline;text-underline-offset:3px}</style>
+	<p class="nlds-source">המקור: פנקס המתווכים של משרד המשפטים, לפי מספר הרישיון. מתווך שרוצה לעדכן את הכרטיס שלו: הכפתור "פתיחת האתר בחינם" בכרטיס.</p>
+</div></div>
+<style id="nadlan-brokers-list">:root body .nlds-blist{margin-block-end:40px!important}:root body .nlds-blist .nlds-pagehead__lead a{color:var(--nlds-sa-sea)!important;font-weight:600!important;text-decoration:underline;text-underline-offset:3px}@media (max-width:900px) and (min-width:601px){:root body .nlds .nlds-citysec .nlds-dgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}</style>
 		<?php
 		return ob_get_clean();
 	}
@@ -191,3 +216,16 @@ add_filter( 'render_block', function ( $html, $block ) {
 	if ( preg_match( '#^/(en|ru|fr|ar)/#', $path ) ) { return $html; }
 	return preg_replace( '#(<a href="/professionals/">[^<]*</a>)#u', '$1' . "\n\t\t\t" . '<a href="/brokers/">מתווכים</a>', (string) $html, 1 );
 }, 10, 2 );
+
+/* BrokerSite v44 (28.9.2026). A broker's site (a page with nl_broker_site, written by the x-broker-drop snippet): the
+   broker's bar is the second header, right under the site's (132px were empty on desktop, 60px on a phone), and on a
+   phone the area tiles give the name one whole line with the count under it ("כוכב / הצפון" broke next to "נכס / אחד"). */
+add_action( 'wp_head', function () {
+	if ( is_admin() || ! is_page() ) { return; }
+	$pid = (int) get_queried_object_id();
+	if ( ! $pid || ! get_post_meta( $pid, 'nl_broker_site', true ) ) { return; }
+	echo '<style id="nadlan-broker-site-v44">:root body main.nlpc-page-main{margin-block-start:0!important;padding-block-start:0!important}:root body .entry-content>article.nlb{margin-block-start:0!important}'
+		. '@media (max-width:720px){:root body .nlb .nlb-areagrid .nlb-areaname{flex-direction:column!important;align-items:flex-start!important;justify-content:flex-end!important;gap:1px!important}'
+		. ':root body .nlb .nlb-areagrid .nlb-areaname b{max-width:100%!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;font-size:17px!important;line-height:1.15!important}'
+		. ':root body .nlb .nlb-areagrid .nlb-areaname em{font-size:12px!important;line-height:1.3!important}}</style>' . "\n";
+}, 99 );

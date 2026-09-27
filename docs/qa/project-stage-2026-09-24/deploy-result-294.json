@@ -1,0 +1,17 @@
+{
+  "released": "1.72.294",
+  "from": "1.72.293",
+  "at": "2026-09-28 01:45:58",
+  "files": {
+    "inc/brokers-list.php": "419bc10ce9d9a478305c312be91c663e",
+    "inc/firgun.php": "0de19801404677573080d1448101d096",
+    "assets/nlds/nlds.css": "c6eed1ae433d8e9ee5cf564c9f52578a",
+    "nadlan-config.php": "1e596eafbab3093a57a819ff8342d600"
+  },
+  "live_before": {
+    "inc/brokers-list.php": "1a8d3a50cb84985596df8e516893f153",
+    "inc/firgun.php": "82076ea3035ad0d4c84fa165d113584b",
+    "assets/nlds/nlds.css": "22841524a54d54115bdf2bb76f60067e",
+    "nadlan-config.php": "746155de9e858ff57b885d02225b1241"
+  }
+}

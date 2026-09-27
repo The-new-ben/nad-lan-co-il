@@ -82,17 +82,11 @@ if ( ! function_exists( 'nadlan_fg_item' ) ) {
 }
 
 if ( ! function_exists( 'nadlan_fg_procard' ) ) {
-	/** ProfessionalCard for any profession, with one quality in the foot. */
+	/** ProfessionalCard for any profession, with one quality in the foot (nadlan_ds_procard, inc/brokers-list.php). */
 	function nadlan_fg_procard( $id, $chip = '' ) {
-		$p    = nadlan_fg_person( (int) $id );
-		$city = trim( (string) get_post_meta( $id, 'city', true ) );
-		$icon = function_exists( 'nlds_asset_url' ) ? nlds_asset_url( 'icons/' . nadlan_fg_icon_for( $p['key'] ) ) : '';
-		$pin  = function_exists( 'nlds_asset_url' ) ? nlds_asset_url( 'icons/card-pin.svg' ) : '';
-		return '<a class="nlds-procard" href="' . esc_url( get_permalink( $id ) ) . '"><div class="nlds-procard__top"><span class="nlds-procard__av" aria-hidden="true"><img src="' . esc_url( $icon ) . '" alt="" width="32" height="32"></span>'
-			. '<div class="nlds-procard__id"><h3 class="nlds-procard__name">' . esc_html( html_entity_decode( get_the_title( $id ), ENT_QUOTES, 'UTF-8' ) ) . '</h3>'
-			. ( '' !== $p['role'] ? '<span class="nlds-procard__pill">' . esc_html( $p['role'] ) . '</span>' : '' ) . '</div></div>'
-			. ( '' !== $city ? '<div class="nlds-procard__meta"><span class="nlds-procard__city"><img src="' . esc_url( $pin ) . '" alt="" width="16" height="16">' . esc_html( $city ) . '</span></div>' : '' )
-			. '<div class="nlds-procard__foot">' . ( '' !== $chip ? '<span class="nlds-chip nlds-chip--fact">' . esc_html( $chip ) . '</span>' : '<span></span>' ) . '<span class="nlds-procard__go">לפרופיל ←</span></div></a>';
+		// the design system's ProfessionalCard v41, the same card as /brokers/ and the directory (design system v44)
+		$foot = '' !== $chip ? '<span class="nlds-chip nlds-chip--fact">' . esc_html( $chip ) . '</span>' : '';
+		return nadlan_ds_procard( (int) $id, $foot );
 	}
 }
 
