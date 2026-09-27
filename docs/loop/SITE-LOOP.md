@@ -147,7 +147,15 @@ only inside runners; every release through a runner with drift check, lint, back
     - /post-listing/ now has "איך זה עובד" in three steps, each from what the engine does.
     - The floating WhatsApp pill on a phone, site-wide: full at the top, a round 54px button after scrolling, out of the way while a form's button is at the bottom, hidden while typing (back 0.7s after). Desktop is unchanged.
     - The Hebrew slug on the Ofakim listing predates the engine (8.9). The engine mints Latin addresses since 23.9. Existing slugs stay (no redirects).
-  - **The listings surface is done (296-299).** **Next:** the projects catalogue (/projects/) and project pages, then HAD-332's remainder (Aurelia, DUO, language siblings).
+  - **The listings surface is done (296-299).**
+  - 1.72.300 (DS ProjectCard v49, artifact version 57): **the projects catalogue.**
+    - The lead tells the true make-up: "975 פרויקטים בקטלוג: 942 מתחמי פינוי בינוי, 18 פרויקטים בבנייה חדשה ו־5 פרויקטי תמ״א 38". It used to say "פרויקטים חדשים ודירות מקבלן".
+    - "מיקום מדויק" becomes "מיקום".
+    - The "✓ gov.il / מאומת מול רשם הקבלנים" mark is off the project cards: no such check exists.
+    - The repeated "סוג" line is gone, also on "הצגת עוד" cards.
+    - The phone card is 518px (was 656).
+    - Found, for the next release: "עוד פרטים על X -" ends in a dash (the x-catalog-plus snippet cuts the title at " - ").
+  - **Next:** the project pages (content first is OK on the three with a stage), then HAD-332's remainder (Aurelia's showroom H1, DUO's lead, the language siblings).
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner

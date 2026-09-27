@@ -101,6 +101,8 @@ if ( ! function_exists( 'nadlan_dir_css' ) ) {
 .nldir-results .nldc-project{padding:0!important;overflow:hidden;display:flex;flex-direction:column}
 .nldir-results .nldc-project::before{display:none!important}
 .nldc-project .nldc-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--band);margin:0;border-radius:0}
+/* ProjectCard v49: on a phone the card was 656px (the 4/3 image 261 of it): a 16/9 image, a tighter market line and foot */
+@media (max-width:600px){.nldir-results .nldc-project .nldc-media{aspect-ratio:16/9}.nldir-results .nldc-project .nlcp-ctx{padding:8px 10px!important;font-size:12.5px!important;margin-bottom:6px!important}.nldir-results .nldc-project .nldcp-foot{padding-top:10px}.nldir-results .nldc-project .nlcp-facts{padding-top:8px!important;margin-bottom:6px!important}}
 .nldc-project .nldc-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .nldc-project:hover .nldc-media img{transform:scale(1.03)}
 /* T1 27.8.2026 (owner order): plates render in full - the capsule row is never cropped */

@@ -965,7 +965,6 @@ if ( ! function_exists( 'nadlan_dir_project_card' ) ) {
 		<?php endif; ?>
 		<div class="nldcp-foot">
 			<span class="nldcp-cta">לצפייה בפרויקט</span>
-			<span class="nldcp-reg" title="מאומת מול רשם הקבלנים (gov.il)"><svg class="nl-ico" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M8 1.5l5.5 2v4c0 3.5-2.5 6-5.5 7-3-1-5.5-3.5-5.5-7v-4l5.5-2z"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M5.5 8l2 2 3-4"/></svg>gov.il</span>
 		</div>
 	</div>
 </a>
@@ -1082,6 +1081,10 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 		nadlan_dir_header_single_h1();
 		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
 		echo nadlan_dir_css();
+		// ProjectCard v49: the enrichment's "סוג" repeats the badge on the image; it goes (also on cards "הצגת עוד" adds)
+		echo '<script id="nadlan-pc49">(function(){function d(r){(r||document).querySelectorAll(".nldc-project").forEach(function(c){var t=c.querySelector(".nldcp-type");if(!t)return;c.querySelectorAll(".nlcp-facts > div").forEach(function(f){var dt=f.querySelector("dt"),dd=f.querySelector("dd");if(dt&&dd&&dt.textContent.trim()==="סוג"&&dd.textContent.trim()===t.textContent.trim()){var l=f.parentNode;f.remove();if(l&&!l.children.length)l.remove();}});});}'
+			. 'function go(){d();var g=document.querySelector(".nldir-results");if(g&&window.MutationObserver){new MutationObserver(function(){d(g);}).observe(g,{childList:true});}}'
+			. 'if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",go);}else{go();}})();</script>';
 		?>
 <div class="nldir" dir="rtl" data-mode="projects"
 	data-rest="<?php echo esc_url( rest_url( 'nadlan/v1/projects' ) ); ?>"
@@ -1089,8 +1092,14 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 	<header class="nldir-hero">
 		<nav class="nldir-crumbs"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">בית</a> › <span>פרויקטים</span></nav>
 		<h1>פרויקטים חדשים בישראל</h1>
-		<p class="nldir-lead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים חדשים ודירות מקבלן בקטלוג, לפי עיר, יזם וסטטוס. בעלי דירות בבניין ישן? <a href="<?php echo esc_url( home_url( '/urban-renewal/' ) ); ?>">המדריך המלא להתחדשות עירונית</a>.</p>
-		<p class="nldir-lead nldir-intro">מחפשים דירה חדשה מקבלן? כאן בודקים כל פרויקט לפני הפגישה עם היזם: סטטוס בנייה, יחידות, מיקום מדויק וכל מה שחשוב לדעת לפני שמתקדמים.</p>
+		<?php /* ProjectCard v49: the catalog's true make-up from the live counts (942 of 975 are urban-renewal compounds in planning) */
+		$nlpc_nouns = array( 'pinui_binui' => 'מתחמי פינוי בינוי', 'new_build' => 'פרויקטים בבנייה חדשה', 'tama38' => 'פרויקטי תמ״א 38', 'urban' => 'פרויקטי התחדשות עירונית' );
+		$nlpc_parts = array(); $nlpc_types = (array) ( $facets['types'] ?? array() ); arsort( $nlpc_types );
+		foreach ( $nlpc_types as $nlpc_k => $nlpc_n ) { if ( isset( $nlpc_nouns[ $nlpc_k ] ) && (int) $nlpc_n > 0 ) { $nlpc_parts[] = number_format( (int) $nlpc_n ) . ' ' . $nlpc_nouns[ $nlpc_k ]; } }
+		$nlpc_last = count( $nlpc_parts ) > 1 ? array_pop( $nlpc_parts ) : '';
+		$nlpc_mix  = $nlpc_parts ? ': ' . implode( ', ', $nlpc_parts ) . ( '' !== $nlpc_last ? ' ו־' . $nlpc_last : '' ) : ''; ?>
+		<p class="nldir-lead"><strong><?php echo number_format( $facets['total'] ); ?></strong> פרויקטים בקטלוג<?php echo esc_html( $nlpc_mix ); ?>, לפי עיר, יזם וסטטוס. בעלי דירות בבניין ישן? <a href="<?php echo esc_url( home_url( '/urban-renewal/' ) ); ?>">המדריך המלא להתחדשות עירונית</a>.</p>
+		<p class="nldir-lead nldir-intro">מחפשים דירה חדשה מקבלן? כאן בודקים כל פרויקט לפני הפגישה עם היזם: סטטוס בנייה, יחידות, מיקום וכל מה שחשוב לדעת לפני שמתקדמים.</p>
 		<form class="nldir-search" role="search">
 			<input type="search" name="q" value="<?php echo esc_attr( $state['q'] ); ?>" placeholder="חיפוש לפי שם פרויקט או יזם" autocomplete="off">
 			<input type="text" name="city" value="<?php echo esc_attr( $state['city'] ); ?>" placeholder="עיר" autocomplete="off">
