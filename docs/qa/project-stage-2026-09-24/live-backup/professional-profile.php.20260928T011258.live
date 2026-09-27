@@ -339,33 +339,10 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 	</section>
 </div>
 <?php
-		return nadlan_pp_shield( ob_get_clean() ) . $content; // shielded from wpautop, put back at 11
+		return ob_get_clean() . $content;
 	}
 }
 add_filter( 'the_content', 'nadlan_prof_render', 6 );
-
-/* A shield from wpautop (priority 10) for the markup printed earlier on a professional's page (the profile at 6, the
-   similar professionals at 5): WordPress was cutting the header, the cards and even the directory's <style> with stray
-   </p>, <p> and <br /> (found 28.9.2026 on a contractor's page). The markup waits as a comment where it belongs and is
-   put back, untouched, right after wpautop, so the page keeps its order. */
-if ( ! function_exists( 'nadlan_pp_shield' ) ) {
-	function nadlan_pp_shield( $html ) {
-		if ( ! isset( $GLOBALS['nadlan_pp_shield'] ) ) { $GLOBALS['nadlan_pp_shield'] = array(); }
-		$k = 'NLPPSHIELD' . count( $GLOBALS['nadlan_pp_shield'] ) . 'X' . wp_rand( 1000, 9999 );
-		$GLOBALS['nadlan_pp_shield'][ $k ] = (string) $html;
-		return "\n\n<!--" . $k . "-->\n\n";
-	}
-}
-add_filter( 'the_content', function ( $content ) {
-	if ( empty( $GLOBALS['nadlan_pp_shield'] ) || ! is_string( $content ) ) { return $content; }
-	foreach ( $GLOBALS['nadlan_pp_shield'] as $k => $html ) {
-		$n = 0;
-		$content = preg_replace_callback( '#(?:<p>\s*)?<!--' . preg_quote( $k, '#' ) . '-->(?:\s*</p>)?#', function () use ( $html ) { return $html; }, $content, 1, $n );
-		if ( ! $n ) { $content .= $html; } // never lose it
-	}
-	$GLOBALS['nadlan_pp_shield'] = array();
-	return $content;
-}, 11 );
 
 /* demo profiles: honest tag above + keep out of Google (extends the listings pattern) */
 add_filter( 'wp_robots', function ( $robots ) {

@@ -686,8 +686,7 @@ add_filter( 'the_content', function ( $content ) {
 	 * quote script it enqueued still loads, because the hero's "קבלו הצעת מחיר" button runs on it. */
 	$id = get_the_ID();
 	if ( 'metavech' !== (string) get_post_meta( $id, 'profession', true ) ) { nadlan_dir_enqueue_professional_quote_script(); }
-	$sim = nadlan_dir_similar( $id );
-	return $content . ( function_exists( 'nadlan_pp_shield' ) && '' !== $sim ? nadlan_pp_shield( $sim ) : $sim ); // shielded from wpautop (professional-profile.php)
+	return $content . nadlan_dir_similar( $id );
 }, 5 );
 
 /* v1.37.0: clean document title for the glossary (nadlan_term) archive  - 

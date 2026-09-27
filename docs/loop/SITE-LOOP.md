@@ -108,7 +108,16 @@ only inside runners; every release through a runner with drift check, lint, back
     - the chips in named groups;
     - a 1040px page;
     - the public view counter removed (the owner's rule), still counted.
-  - **Next in the polish:** /brokers/, the home's professionals band, then the listings.
+  - 1.72.291: **the wpautop shield on a professional's page.**
+    - The profile (priority 6) and the similar professionals (5) were cut by wpautop (10), which injected stray p and br tags into the header, the cards and the directory's own style tag.
+    - On a contractor's page the actions fell under the initials and the similar grid broke.
+    - Now both are shielded and put back at 11.
+    - Checked on a contractor, Meital and a demo profile, on desktop and phone.
+  - **The loop now runs as /loop** (self-paced), in the owner's order: every professional type → /brokers/ and the minisites → the home's pros band → the listings → the projects → the home → the 3D stages → Rainbow.
+  - **Next:**
+    - the demo profiles in the directory (demo-ronit-almog-lawyer and others) show as real cards with invented stats: mark them "לדוגמה" (DS first);
+    - the contractor's classification is shown twice (the header and a stat box);
+    - then /brokers/.
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner
