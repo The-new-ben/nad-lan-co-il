@@ -230,7 +230,12 @@ add_filter( 'posts_clauses', function ( $c, $q ) {
 }, 10, 2 );
 
 /* the page's one publish button is in its head: no floating pill over the cards (the listing pages keep theirs) */
-add_filter( 'nadlan_cta_start_map', function ( $m ) { return is_post_type_archive( 'nadlan_property' ) ? array() : $m; } );
+add_filter( 'nadlan_cta_start_map', function ( $m ) {
+	// the archive's publish button is in its head; a demo listing's is in its panel (ListingPage v47): no floating pill over them
+	if ( is_post_type_archive( 'nadlan_property' ) ) { return array(); }
+	if ( is_singular( 'nadlan_property' ) && nadlan_pl_is_demo( (int) get_queried_object_id() ) ) { return array(); }
+	return $m;
+} );
 
 if ( ! function_exists( 'nadlan_pl_card' ) ) {
 	function nadlan_pl_card( $id ) {

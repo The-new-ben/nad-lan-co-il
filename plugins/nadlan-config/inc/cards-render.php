@@ -60,9 +60,10 @@ if ( ! function_exists( 'nadlan_card_fact_rows' ) ) {
 			$rows['סוג']      = $ptype_he[ $g( 'property_type' ) ] ?? ( preg_match( '/^[a-z0-9_\-]+$/', $g( 'property_type' ) ) ? '' : $g( 'property_type' ) );
 			$rows['עסקה']     = $deal_he[ $g( 'listing_type' ) ] ?? ( preg_match( '/^[a-z0-9_\-]+$/', $g( 'listing_type' ) ) ? '' : $g( 'listing_type' ) );
 			$rows['מחיר']     = $g( 'price' ) ? '₪' . number_format( (float) $g( 'price' ) ) : '';
-			$rows['חדרים']    = $g( 'rooms' );
-			$rows['מ"ר']      = $g( 'size_sqm' );
-			$rows['קומה']     = $g( 'floor' );
+			// never a 0 on a sales surface (ListingPage v47: "קומה 0" on a cottage with no floor given)
+			$rows['חדרים']    = (float) $g( 'rooms' ) > 0 ? $g( 'rooms' ) : '';
+			$rows['מ"ר']      = (float) $g( 'size_sqm' ) > 0 ? $g( 'size_sqm' ) : '';
+			$rows['קומה']     = (int) $g( 'floor' ) > 0 ? $g( 'floor' ) : '';
 			$rows['עיר']      = $g( 'city' );
 		}
 		return array_filter( $rows, function ( $v ) { return $v !== '' && $v !== null; } );
@@ -112,6 +113,8 @@ if ( ! function_exists( 'nadlan_card_render' ) ) {
 		|| in_array( (string) $source, array( 'broker_minisite', 'broker_join' ), true ) ) ) {
 		$claim_allowed = false;
 	}
+	// a demo listing is not anyone's card: no claim form on it (ListingPage v47)
+	if ( $type === 'nadlan_property' && function_exists( 'nadlan_pl_is_demo' ) && nadlan_pl_is_demo( $id ) ) { $claim_allowed = false; }
 	if ( $claim_allowed && $claim_status !== 'verified' ) : ?>
 	<div class="nlcard-claim">
 		<strong>זה הכרטיס שלכם?</strong>

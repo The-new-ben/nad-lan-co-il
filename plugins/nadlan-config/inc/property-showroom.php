@@ -177,7 +177,7 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 		$is_rent = ( $ltype === 'rent' );
 		$ppsqm   = ( $price && $sqm && ! $is_rent ) ? (int) round( $price / $sqm ) : 0;
 		$lat     = (float) $g( 'lat' ); $lng = (float) $g( 'lng' );
-		$demo    = (bool) $g( 'is_demo' );
+		$demo    = function_exists( 'nadlan_pl_is_demo' ) ? nadlan_pl_is_demo( $id ) : (bool) $g( 'is_demo' );
 
 		/* HAD-247 (owner 17.9.2026): the listing opens with its real photo, never with a
 		   generic building. A listing that carries its own broker block (article.nlx)
@@ -217,7 +217,7 @@ if ( ! function_exists( 'nadlan_pshow_render' ) ) {
 		ob_start(); ?>
 <div class="nlps" dir="rtl"<?php echo $show_out ? ' data-has3d="1"' : ''; ?>>
 	<?php if ( $cover ) : ?><figure class="nlps-cover"><?php echo $cover; // phpcs:ignore -- wp_get_attachment_image or an escaped URL ?></figure><?php endif; ?>
-	<?php if ( $demo ) : ?><div class="nlps-demo">נכס לדוגמה - להמחשת חוויית המודעה. <a href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>">פרסמו נכס אמיתי חינם ←</a></div><?php endif; ?>
+	<?php if ( $demo ) : /* ListingPage v47: the demo says there is no home, in place of a thin line over real contact actions */ ?><section class="nlld-demo" aria-label="מודעה לדוגמה"><div><span class="nlld-demo__tag">מודעה לדוגמה</span><h2>זו לא דירה אמיתית</h2><p>כך נראית מודעה בנדלן. התמונה, המחיר והפרטים כאן להמחשה בלבד: אין דירה לבקר בה ואין למי לפנות.</p></div><div class="nlld-demo__go"><a href="<?php echo esc_url( home_url( '/properties/' ) ); ?>">לדירות למכירה ולהשכרה</a><a href="<?php echo esc_url( home_url( '/post-listing/' ) ); ?>">פרסום מודעה בחינם</a></div></section><style id="nadlan-ld-css">.nlld-demo{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px 24px;margin:18px 0 22px;padding:18px 20px;background:#EFE9DC;border:1.5px dashed #8a857b;border-radius:16px;color:#14212B;font-family:Assistant,Heebo,Arial,sans-serif}.nlld-demo__tag{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;background:#fff;border:1px dashed #8a857b;color:#57534B;font-size:12px;font-weight:700;margin:0 0 8px}.nlld-demo h2{font:600 21px/1.25 "Noto Serif Hebrew",Georgia,serif!important;margin:0 0 6px!important;color:#14212B!important}.nlld-demo p{margin:0!important;font-size:15px!important;line-height:1.55!important;color:#57534B!important;max-width:60ch}.nlld-demo__go{display:flex;gap:8px;flex-wrap:wrap}.nlld-demo__go a{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 18px;border-radius:999px;font-weight:700;font-size:14.5px;text-decoration:none!important;white-space:nowrap}.nlld-demo__go a:first-child{background:#14212B;color:#fff!important}.nlld-demo__go a:last-child{background:#fff;color:#14212B!important;border:1px solid #D2CBBB}.nlld-demo__go a:hover{filter:brightness(1.08)}.nlld-sig{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;margin:6px 0 14px;font-size:13.5px;color:#57534B;font-family:Assistant,Heebo,Arial,sans-serif}.nlld-sig b{color:#14212B;font-weight:700;font-variant-numeric:tabular-nums}@media (max-width:600px){.nlld-demo{grid-template-columns:minmax(0,1fr);padding:16px}.nlld-demo__go a{flex:1}}</style><?php endif; ?>
 
 	<h1 class="nlps-title"><?php echo esc_html( get_the_title( $id ) ); ?></h1>
 

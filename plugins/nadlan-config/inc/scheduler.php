@@ -680,6 +680,7 @@ add_filter( 'the_content', function ( $content ) {
 	if ( $done ) { return $content; }
 	$card = get_the_ID();
 	if ( get_post_meta( $card, 'nadlan_sched_off', true ) === '1' ) { return $content; }
+	if ( 'nadlan_property' === get_post_type( $card ) && function_exists( 'nadlan_pl_is_demo' ) && nadlan_pl_is_demo( $card ) ) { return $content; } // no visit to a home that does not exist (ListingPage v47)
 	/* Review mode (owner order 31.8.2026): no choose-a-date block on review
 	 * project pages - it reads like the developer's own sales surface. */
 	if ( 'nadlan_project' === get_post_type( $card ) && function_exists( 'nadlan_project_mode' ) && 'showroom' !== nadlan_project_mode( $card ) ) { return $content; }

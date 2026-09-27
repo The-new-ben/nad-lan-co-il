@@ -1,0 +1,21 @@
+{
+  "released": "1.72.298",
+  "from": "1.72.297",
+  "at": "2026-09-28 02:34:39",
+  "files": {
+    "inc/property-showroom.php": "4d5ece116910af91e88a2b0ce1665c93",
+    "inc/cards-render.php": "40a48a5780af8a495edd52cac4dea073",
+    "inc/listings-ux.php": "bc7fec6fbf4d939b86fadd2524a9105b",
+    "inc/scheduler.php": "dacbed250e21fb3fb2e7f341222c3277",
+    "inc/archive-grid.php": "2aaf492214148fe9c697e1b86d855217",
+    "nadlan-config.php": "bea2a377e749e6879528e04fc5fa6e2a"
+  },
+  "live_before": {
+    "inc/property-showroom.php": "c2d9de33d28f3e284316a6d2280a3a65",
+    "inc/cards-render.php": "728b8571c2cdf98b221f1fe921010438",
+    "inc/listings-ux.php": "7e4f00f0d95f98625d0804c9c6b983a1",
+    "inc/scheduler.php": "e706b2c814d0a5c5931318fbff832638",
+    "inc/archive-grid.php": "94b73c9fe431e75131b241c2485e6af1",
+    "nadlan-config.php": "776ee9fe87c96bf336a0b8c122d301f5"
+  }
+}

@@ -82,6 +82,7 @@ if ( ! function_exists( 'nadlan_listing_similar' ) ) {
 		if ( $ltype ) { $meta[] = array( 'key' => 'listing_type', 'value' => $ltype ); }
 		if ( $rooms ) { $meta[] = array( 'key' => 'rooms', 'value' => array( $rooms - 1, $rooms + 1 ), 'type' => 'NUMERIC', 'compare' => 'BETWEEN' ); }
 		if ( $price ) { $meta[] = array( 'key' => 'price', 'value' => array( (int) ( $price * 0.85 ), (int) ( $price * 1.15 ) ), 'type' => 'NUMERIC', 'compare' => 'BETWEEN' ); }
+		if ( function_exists( 'nadlan_pl_nodemo' ) ) { $meta[] = nadlan_pl_nodemo(); } // a demo is never "similar" (ListingPage v47)
 		$q = new WP_Query( array(
 			'post_type' => 'nadlan_property', 'posts_per_page' => $limit + 1,
 			'post__not_in' => array( $id ), 'no_found_rows' => true,
@@ -89,7 +90,7 @@ if ( ! function_exists( 'nadlan_listing_similar' ) ) {
 				// Audit fix 2026-07-02: the old tax_query was dead code, so "similar
 				// listings" ignored location entirely. City is a meta field here.
 				if ( $city !== '' ) { $meta[] = array( 'key' => 'city', 'value' => $city ); }
-				return count( $meta ) > 1 ? $meta : array();
+				return $meta;
 			} )(),
 		) );
 		$out = array();
@@ -102,6 +103,25 @@ if ( ! function_exists( 'nadlan_listing_similar' ) ) {
 	}
 }
 
+/* ---- a demo listing's tail (ListingPage v47): no contact action, real listings to go on to ---- */
+if ( ! function_exists( 'nadlan_listing_demo_tail' ) ) {
+	function nadlan_listing_demo_tail( $id ) {
+		$q = get_posts( array( 'post_type' => 'nadlan_property', 'post_status' => 'publish', 'posts_per_page' => 4, 'no_found_rows' => true,
+			'post__not_in' => array( (int) $id ), 'meta_query' => function_exists( 'nadlan_pl_nodemo' ) ? array( nadlan_pl_nodemo() ) : array() ) );
+		if ( ! $q ) { return ''; }
+		$h = '<div class="nlx" dir="rtl"><h3 class="nlx-h">דירות אמיתיות באתר</h3><div class="nlx-similar">';
+		foreach ( $q as $p ) {
+			$pp = (float) get_post_meta( $p->ID, 'price', true ); $rr = (float) get_post_meta( $p->ID, 'rooms', true ); $sq = (float) get_post_meta( $p->ID, 'size_sqm', true );
+			$img = get_the_post_thumbnail_url( $p->ID, 'medium' );
+			if ( ! $img ) { $csv = array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $p->ID, 'photos_csv', true ) ) ) ); $img = $csv ? reset( $csv ) : ''; }
+			$h .= '<a class="nlx-sim" href="' . esc_url( get_permalink( $p ) ) . '">' . ( $img ? '<img src="' . esc_url( $img ) . '" alt="" loading="lazy">' : '' )
+				. '<span class="nlx-sim-t">' . esc_html( get_the_title( $p ) ) . '</span><span class="nlx-sim-p">' . ( $pp ? '₪' . number_format( $pp ) : '' ) . '</span>'
+				. '<span class="nlx-sim-m">' . esc_html( trim( ( $rr ? rtrim( rtrim( number_format( $rr, 1 ), '0' ), '.' ) . ' חד׳ · ' : '' ) . ( $sq ? (int) $sq . ' מ״ר' : '' ), ' ·' ) ) . '</span></a>';
+		}
+		return $h . '</div></div>';
+	}
+}
+
 /* ---- append engagement block to property single ---- */
 if ( ! function_exists( 'nadlan_listing_append' ) ) {
 	function nadlan_listing_append( $content ) {
@@ -110,11 +130,12 @@ if ( ! function_exists( 'nadlan_listing_append' ) ) {
 		$dom   = nadlan_listing_days_on_market( $id );
 		$views = (int) get_post_meta( $id, 'view_count', true );
 		$phone = (string) get_post_meta( $id, 'phone', true );
+		if ( function_exists( 'nadlan_pl_is_demo' ) && nadlan_pl_is_demo( $id ) ) { return $content . nadlan_listing_demo_tail( $id ); } // ListingPage v47
 		ob_start(); ?>
 <div class="nlx" dir="rtl">
 	<div class="nlx-signals">
-		<span class="nlx-badge">🗓️ <?php echo (int) $dom; ?> ימים באתר</span>
-		<span class="nlx-badge">👁️ <?php echo (int) $views; ?> צפיות</span>
+		<?php /* ListingPage v47: in words, no emoji; the view count is kept but not shown (as the professionals' pages, v42) */ ?>
+		<span class="nlx-badge">באתר <?php echo 1 === (int) $dom ? 'יום אחד' : (int) $dom . ' ימים'; ?></span>
 		<button class="nlx-fav" data-id="<?php echo (int) $id; ?>" onclick="nadlanFav(this)">♡ שמירה</button>
 	</div>
 
@@ -134,7 +155,7 @@ if ( ! function_exists( 'nadlan_listing_append' ) ) {
 
 	<?php /* V7 (owner order 22.8): the 3D tours reach the sale/rent pages too */ ?>
 	<a class="nlx-tours" href="<?php echo esc_url( home_url( '/tours/' ) ); ?>">
-		<b>🏙️ רוצים להרגיש את השכונה לפני שמתקשרים?</b>
+		<b>רוצים להרגיש את השכונה לפני שמתקשרים?</b>
 		<span>סיורים תלת־ממדיים חיים: טיסה, הליכה ברחוב וקריינות · כל הסיורים במקום אחד ←</span>
 	</a>
 
