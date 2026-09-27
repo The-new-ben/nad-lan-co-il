@@ -102,83 +102,6 @@ async function boot() {
   let last = null;
   const win = { map: null, bearing: 270, vert: 0, alt: 10 };
 
-  /* what lies that way (design system ProjectStage version 35): the quarter's places and projects, each with its distance
-     and bearing from the tower (quarter.json); labels in the view and a list under it, only what the file holds */
-  const Q = cfg.quarter && typeof cfg.quarter === 'object' ? cfg.quarter : null;
-  const QITEMS = Q ? [...(Q.places || []), ...(Q.projects || [])].filter((it) => it && it.name && Number.isFinite(Number(it.dist)) && Number.isFinite(Number(it.bearing))) : [];
-  const QCOL = { beach: '#C9A96E', park: '#517048', nature: '#517048', school: '#9C7A3C', rail: '#2F6F86', building: '#2F6F86', selling: '#9C7A3C', permit: '#8E8676' };
-  const qColor = (it) => QCOL[it.kind === 'project' ? it.phase : it.kind] || '#57534B';
-  const angOff = (a, b) => { const d = Math.abs(norm(a) - norm(b)); return Math.min(d, 360 - d); };
-  const HALF = 55;
-  const fmtDist = (m) => (m < 1000 ? Math.round(m / 10) * 10 + ' מ׳' : (Math.round(m / 100) / 10) + ' ק״מ');
-  const nearEl = document.getElementById('nlps-near');
-  function showNear(bearing) {
-    if (!nearEl || !QITEMS.length) return;
-    const list = QITEMS.filter((it) => angOff(it.bearing, bearing) <= HALF).sort((a, b) => a.dist - b.dist);
-    nearEl.textContent = '';
-    const h = document.createElement('p'); h.className = 'nlps-near__h'; h.textContent = 'מה יש לכיוון הזה'; nearEl.append(h);
-    if (!list.length) {
-      const e = document.createElement('p'); e.className = 'nlps-near__src'; e.textContent = 'אין בכיוון הזה מקומות מסומנים בקובץ הרובע.'; nearEl.append(e);
-    } else {
-      const ul = document.createElement('ul'); ul.className = 'nlps-near__list';
-      for (const it of list) {
-        const li = document.createElement('li');
-        const dot = document.createElement('i'); dot.className = 'nlps-near__dot'; dot.style.setProperty('background', qColor(it), 'important'); li.append(dot);
-        const nm = document.createElement('span'); nm.className = 'nlps-near__name';
-        if (it.kind === 'project' && it.url) { const a = document.createElement('a'); a.href = it.url; a.textContent = it.name; nm.append(a); } else nm.textContent = it.name;
-        li.append(nm);
-        const d = document.createElement('span'); d.className = 'nlps-near__d'; d.textContent = fmtDist(Number(it.dist)); li.append(d);
-        const extra = [];
-        if (it.kind !== 'project' && it.walk) extra.push('כ־' + it.walk + ' דק׳ הליכה');
-        if (it.status && it.status !== 'קיים') extra.push(String(it.status));
-        if (extra.length) { const x = document.createElement('span'); x.textContent = extra.join(' · '); li.append(x); }
-        ul.append(li);
-      }
-      nearEl.append(ul);
-    }
-    const src = document.createElement('p'); src.className = 'nlps-near__src';
-    src.textContent = 'מרחק בקו אווירי מהבניין, לפי המפה; זמן ההליכה משוער. מקור: נתוני עיריית תל אביב-יפו ו-OpenStreetMap, 8.2026; הפרויקטים לפי העמודים שלהם באתר.';
-    nearEl.append(src);
-    nearEl.hidden = false;
-  }
-  const vpins = [];
-  function addViewPins(gl, map) {
-    if (vpins.length || !QITEMS.length) return;
-    const lat0 = Number(cfg.lat), lng0 = Number(cfg.lng);
-    for (const it of QITEMS) {
-      const r = norm(it.bearing) * Math.PI / 180, dm = Number(it.dist);
-      const lat = lat0 + (dm * Math.cos(r)) / 111320;
-      const lng = lng0 + (dm * Math.sin(r)) / (111320 * Math.cos(lat0 * Math.PI / 180));
-      const el = document.createElement('span');
-      el.className = 'nlps-vpin' + (it.kind === 'project' ? ' nlps-vpin--project' : '');
-      const dot = document.createElement('i'); dot.style.background = qColor(it); el.append(dot);
-      el.append((it.pin || it.name) + ' · ' + fmtDist(dm));
-      const mk = new gl.Marker({ element: el, anchor: 'bottom' }).setLngLat([lng, lat]).addTo(map);
-      vpins.push({ it, el, mk });
-    }
-    placeViewPins();
-  }
-  function placeViewPins() {
-    const map = win.map;
-    const W = map ? map.getContainer().clientWidth : 0;
-    for (const p of vpins) {
-      let on = angOff(p.it.bearing, win.bearing) <= HALF - 10;
-      // near the edge of the view the label slides inward (its place is still in view); a place outside the view waits
-      // until the head turns to it
-      let dx = 0;
-      if (on && map && W) {
-        try {
-          const pt = map.project(p.mk.getLngLat()); const w = p.el.offsetWidth || 120;
-          if (pt.x < 4 || pt.x > W - 4) on = false;
-          else if (pt.x - w / 2 < 6) dx = 6 - (pt.x - w / 2);
-          else if (pt.x + w / 2 > W - 6) dx = (W - 6) - (pt.x + w / 2);
-        } catch (e) { /* keep it */ }
-      }
-      p.mk.setOffset([Math.round(dx), 0]);
-      p.el.style.visibility = on ? 'visible' : 'hidden';
-    }
-  }
-
   const waUrl = (d) => {
     if (!cfg.wa || !d || d.floor == null) return '';
     const words = d.toward ? 'לכיוון ' + d.toward : (d.bearing != null ? facingWords(d.bearing) : '');
@@ -233,7 +156,6 @@ async function boot() {
     if (cap) { cap.textContent = 'הדמיה להמחשה בלבד: מבט משוער מגובה של כ־' + h + ' מ׳, לפי מפה. אינו צילום מהדירה.'; cap.hidden = false; }
     if (wa) wa.href = waUrl(d);
     if (cta) cta.hidden = false;
-    showNear(d.bearing);
     if (hasGeo) {
       showView(d).catch(() => {});
       showBeam(d.bearing).catch(() => {});
@@ -376,7 +298,6 @@ async function boot() {
       cam.setPitchBearing(Math.max(35, Math.min(90, 86 + win.vert)), win.bearing); // 86: eye level at the horizon
       map.setFreeCameraOptions(cam);
     } catch (e) {}
-    placeViewPins();
   }
   async function showView(d) {
     const gl = await loadMapbox();
@@ -414,7 +335,6 @@ async function boot() {
           paint: { 'fill-extrusion-color': '#d8d2c4', 'fill-extrusion-height': ['get', 'height'], 'fill-extrusion-base': ['get', 'min_height'], 'fill-extrusion-opacity': 0.85 } }, label);
       } catch (e) {}
       winCam();
-      addViewPins(gl, map);
     });
     // drag turns the head: sideways the direction, up and down the gaze
     let drag = false, lx = 0, ly = 0;

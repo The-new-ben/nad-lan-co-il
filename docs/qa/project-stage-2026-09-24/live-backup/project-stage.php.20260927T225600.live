@@ -290,8 +290,6 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 			. '<div class="nlps-view__head"><p class="nlds-kicker" id="nlps-view-k">הנוף מהקומה</p><h3 class="nlps-view__title" id="nlps-view-t">' . ( ! empty( $ps['units'] ) ? 'בחרו קומה ודירה לדוגמה' : 'בחרו קומה וכיוון' ) . '</h3></div>'
 			. '<div class="nlps-view__map nlps-stand" id="nlps-view-map" role="img" aria-label="מבט משוער מהקומה לכיוון שנבחר"><span id="nlps-view-empty">' . ( ! empty( $ps['units'] ) ? 'בחרו קומה במגדל ודירה לדוגמה בטבעת שלה, והנוף מהדירה יופיע כאן.' : 'בחרו קומה במגדל ונקודה בטבעת שלה, והנוף מהגובה ומהכיוון האלה יופיע כאן.' ) . '</span></div>'
 			. '<p class="nlps-view__cap" id="nlps-view-cap" hidden></p>'
-			// what lies that way (design system ProjectStage version 35): filled by the bridge from quarter.json, per direction
-			. ( ! empty( $cfg['quarter'] ) ? '<div class="nlps-near" id="nlps-near" hidden></div>' : '' )
 			. '<div class="nlps-view__cta" id="nlps-view-cta" hidden>'
 			. ( '' !== $wa ? '<a class="nlds-btn nlds-btn--primary" id="nlps-wa" target="_blank" rel="noopener" href="https://wa.me/' . esc_attr( $wa ) . '">' . ( function_exists( 'nlds_icon' ) ? nlds_icon( 'whatsapp' ) : '' ) . '<span>לקבלת תוכניות ומחירים</span></a>' : '' )
 			. ( '' !== $map ? '<a class="nlds-btn nlds-btn--secondary" id="nlps-tomap" href="#nlpjx-map"><span>הכיוון על המפה</span></a>' : '' ) . '</div>'
@@ -573,10 +571,6 @@ add_action( 'wp_head', function () {
 		. ':root body .nlps-srt{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}'
 		. ':root body .nlds .nlps-hint[hidden],:root body .nlds .nlps-view__cap[hidden],:root body .nlds .nlps-view__cta[hidden],:root body .nlds #nlps-view-empty[hidden]{display:none!important}'
 		. ':root body .nlds .nlps-view__map.nlps-stand{cursor:default}'
-		// the labels in the view from the floor (version 35): the quarter's places and projects, at their positions
-		. ':root body .nlds .nlps-near[hidden]{display:none!important}'
-		. '.nlps-vpin{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;background:rgba(255,255,255,.94);color:#14212b;font:700 12.5px/1 Assistant,Arial,sans-serif;border-radius:999px;padding:6px 10px;box-shadow:0 2px 8px rgba(0,0,0,.2);pointer-events:none}'
-		. '.nlps-vpin i{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}.nlps-vpin--project{background:rgba(20,33,43,.9);color:#fff}'
 		. ':root body .nlds .nlbsq__photo img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:50% 24%!important}'
 		. ':root body .nlps-rail .nlds .nlbslot{min-height:0!important}'
 		. '@media(max-width:1279px){:root body .nlps-page{grid-template-columns:minmax(280px,360px) minmax(0,1fr);grid-template-areas:"hero stage" "lead stage" "cta stage" "below below" "facts facts" "tour tour" "deals deals" "rail rail"}:root body .nlps-page>.nlps-rail{grid-template-columns:repeat(2,minmax(0,300px));margin-top:6px!important}}'

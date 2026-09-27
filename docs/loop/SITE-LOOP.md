@@ -67,6 +67,10 @@ only inside runners; every release through a runner with drift check, lint, back
 - 1.72.281: the homepage film back in its own band under the categories. DS HomePage v33; HAD-297.
   - The phone photo is at 2.8-3.7 s (3.6-3.7 before), and the page is 530 KB (865 before).
   - The film plays on desktop and phone; the services' tour card shows the tour picture.
+- 1.72.282: Rainbow, the view answers questions (DS ProjectStage v35).
+  - Labels in the view from the floor, at the places' positions, with distances.
+  - "מה יש לכיוון הזה" under the view: nearest first, with the walk, the status (the light rail "מאושרת, עוד לא פועלת") and the source. Project rows link to their pages.
+  - Only what quarter.json holds.
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner

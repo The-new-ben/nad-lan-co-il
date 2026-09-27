@@ -75,4 +75,4 @@ The full answer went to the owner in the chat. The short version:
 
 1. ~~Rainbow phone polish~~: **live 1.72.280.** The accessibility button is a fixed floating control; it covers whatever scrolls under it, which is expected.
 2. ~~The homepage film band~~: **live 1.72.281.**
-3. **The view answers questions:** labelled places with distances, from `quarter.json`.
+3. ~~The view answers questions~~: **live 1.72.282.** The labels in the view and the list under it are in `assets/project-stage/bridge.js` (`showNear`, `addViewPins`).

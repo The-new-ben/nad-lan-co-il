@@ -1,0 +1,17 @@
+{
+  "released": "1.72.282",
+  "from": "1.72.281",
+  "at": "2026-09-27 22:56:24",
+  "files": {
+    "assets/project-stage/bridge.js": "4f582ce5a6bcf0e5e29121fbb2d263ab",
+    "inc/project-stage.php": "f9cf6daf80477346ed59314f08e7e691",
+    "assets/nlds/nlds.css": "2f95761044b118bb93458aeb2ba0af3b",
+    "nadlan-config.php": "1e85f466fded7cbfd9e0958a3c397b10"
+  },
+  "live_before": {
+    "assets/project-stage/bridge.js": "e7dd3526d0505ef8699dd606880b0430",
+    "inc/project-stage.php": "2d2c6fbd9f94d80e2e5db7bd9b5b05c3",
+    "assets/nlds/nlds.css": "31d8aaeaf14533defb95173c357ca349",
+    "nadlan-config.php": "e2af00dc9b9ce6a1e2f74f5397e93b2f"
+  }
+}
