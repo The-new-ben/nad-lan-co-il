@@ -21,6 +21,7 @@ add_action( 'rest_api_init', function () {
 				array( 'key' => 'lat', 'compare' => 'EXISTS' ),
 				array( 'key' => 'lng', 'compare' => 'EXISTS' ),
 			);
+			if ( function_exists( 'nadlan_pl_nodemo' ) ) { $mq[] = nadlan_pl_nodemo(); } // ListingsPage v46: a demo listing is never a pin
 			$city = trim( (string) $req->get_param( 'city' ) );
 			$lt   = trim( (string) $req->get_param( 'listing_type' ) );
 			if ( $city !== '' ) { $mq[] = array( 'key' => 'city', 'value' => sanitize_text_field( $city ) ); }

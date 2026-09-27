@@ -218,7 +218,7 @@ add_shortcode( 'nadlan_featured_pros', 'nadlan_featured_pros_render' );
  */
 if ( ! function_exists( 'nadlan_directory_hub_render' ) ) {
 	function nadlan_directory_hub_render() {
-		$prop = (int) wp_count_posts( 'nadlan_property' )->publish;
+		$prop = function_exists( 'nadlan_pl_count' ) ? nadlan_pl_count( '' ) : (int) wp_count_posts( 'nadlan_property' )->publish; // real listings, the demos are not counted (v46)
 		$pros = (int) wp_count_posts( 'nadlan_professional' )->publish;
 		$proj = function_exists( 'nadlan_unit_journey_public_project_count' )
 			? nadlan_unit_journey_public_project_count()
@@ -243,8 +243,8 @@ if ( ! function_exists( 'nadlan_directory_hub_render' ) ) {
 			array(
 				'url'   => home_url( '/properties/' ),
 				'count' => $prop,
-				'label' => 'נכסים למכירה והשקעה',
-				'desc'  => 'דירות ובתים עם בדיקה משפטית מקדימה - מחיר, חדרים, מ״ר ושכונה.',
+				'label' => 'דירות למכירה ולהשכרה',
+				'desc'  => 'מודעות של דירות ובתים ממתווכים עם רישיון ומבעלי נכסים: מחיר, חדרים, מ״ר ושכונה.',
 				'cta'   => $prop > 0 ? 'לנכסים' : 'בקרוב נכסים חדשים',
 				'live'  => false,
 			),

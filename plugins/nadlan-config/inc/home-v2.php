@@ -659,7 +659,7 @@ if ( ! function_exists( 'nadlan_hv2_band_listings' ) ) {
 	function nadlan_hv2_band_listings() {
 		$grab = function ( $type ) {
 			return get_posts( array( 'post_type' => 'nadlan_property', 'posts_per_page' => 4, 'no_found_rows' => true,
-				'meta_query' => array( array( 'key' => 'listing_type', 'value' => $type ) ) ) );
+				'meta_query' => array_merge( array( array( 'key' => 'listing_type', 'value' => $type ) ), function_exists( 'nadlan_pl_nodemo' ) ? array( nadlan_pl_nodemo() ) : array() ) ) ); // a seeded demo listing is never shown as a home for sale (v46)
 		};
 		$sale = $grab( 'sale' ); $rent = $grab( 'rent' );
 		if ( ! $sale && ! $rent ) { $sale = get_posts( array( 'post_type' => 'nadlan_property', 'posts_per_page' => 4, 'no_found_rows' => true ) ); }

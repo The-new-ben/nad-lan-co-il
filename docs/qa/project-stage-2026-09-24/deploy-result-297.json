@@ -1,0 +1,15 @@
+{
+  "released": "1.72.297",
+  "from": "1.72.296",
+  "at": "2026-09-28 02:22:53",
+  "files": {
+    "inc/facets.php": "9e2e93527bcf64ad9efa4b66d7f0d9d5",
+    "inc/archive-grid.php": "94b73c9fe431e75131b241c2485e6af1",
+    "nadlan-config.php": "776ee9fe87c96bf336a0b8c122d301f5"
+  },
+  "live_before": {
+    "inc/facets.php": "8038c00ef8d66afdbef5eb775be4efff",
+    "inc/archive-grid.php": "bb8015435f221dac1d7f020e0a010650",
+    "nadlan-config.php": "69563b20472250a81a1a818ee68431a9"
+  }
+}

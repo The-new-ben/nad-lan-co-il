@@ -1,0 +1,19 @@
+{
+  "released": "1.72.296",
+  "from": "1.72.295",
+  "at": "2026-09-28 02:19:58",
+  "files": {
+    "inc/archive-grid.php": "bb8015435f221dac1d7f020e0a010650",
+    "inc/map.php": "04db89689d8504b8a183563442d24e9a",
+    "inc/catalog-shine.php": "53cc2ed1974e39c1a4311283cc37e251",
+    "inc/home-v2.php": "480304a91df1382fb8918b6824bf16bc",
+    "nadlan-config.php": "69563b20472250a81a1a818ee68431a9"
+  },
+  "live_before": {
+    "inc/archive-grid.php": "9027f09b4e1faaa439c6fd69ddc8721c",
+    "inc/map.php": "3109d0ec8bdd320482f0da82e5d6291d",
+    "inc/catalog-shine.php": "57767f53519d76046735b9716c2ac2c0",
+    "inc/home-v2.php": "78bbfe5b01ddd29ecb499d42c16f65e7",
+    "nadlan-config.php": "4ee312a59673c1a0222f261830bb33e5"
+  }
+}

@@ -29,7 +29,13 @@ if ( ! function_exists( 'nadlan_facets_apply' ) ) {
 		$add = array();
 		// City: partial, case-insensitive LIKE so "תל אביב" matches "תל אביב יפו"
 		// and trailing spaces / inexact typing still find results.
-		if ( ! empty( $_GET['city'] ) )         { $add[] = array( 'key' => 'city', 'value' => sanitize_text_field( wp_unslash( $_GET['city'] ) ), 'compare' => 'LIKE' ); }
+		if ( ! empty( $_GET['city'] ) ) {
+			$cv = sanitize_text_field( wp_unslash( $_GET['city'] ) );
+			// a listing's box says "עיר או שכונה" (design system ListingsPage v46): the city or the neighbourhood
+			$add[] = 'nadlan_property' === $pt
+				? array( 'relation' => 'OR', array( 'key' => 'city', 'value' => $cv, 'compare' => 'LIKE' ), array( 'key' => 'neighborhood', 'value' => $cv, 'compare' => 'LIKE' ) )
+				: array( 'key' => 'city', 'value' => $cv, 'compare' => 'LIKE' );
+		}
 		if ( $pt === 'nadlan_property' ) {
 			if ( ! empty( $_GET['listing_type'] ) ){ $add[] = array( 'key' => 'listing_type', 'value' => sanitize_text_field( wp_unslash( $_GET['listing_type'] ) ) ); }
 			if ( ! empty( $_GET['rooms_min'] ) )   { $add[] = array( 'key' => 'rooms', 'value' => (float) $_GET['rooms_min'], 'type' => 'NUMERIC', 'compare' => '>=' ); }
