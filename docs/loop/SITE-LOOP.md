@@ -143,7 +143,11 @@ only inside runners; every release through a runner with drift check, lint, back
   - 1.72.298 (DS ListingPage v47, artifact version 54; HAD-347): **a listing page's honest states.**
     - A demo listing had a thin line over real WhatsApp, visit, calendar and claim actions, so a buyer could book a visit to a home that does not exist. Now the panel "זו לא דירה אמיתית", no contact action, and real homes as "similar".
     - A real listing: no "קומה 0", no emoji, no public view count, and "similar" never lists a demo.
-  - **Next:** the publish flow (/post-listing/, the owner wizard). A finding to fix there: it minted a Hebrew slug (the Ofakim listing).
+  - 1.72.299 (DS PublishPage v48, artifact versions 55-56; HAD-347): **the publish page and the phone WhatsApp pill.**
+    - /post-listing/ now has "איך זה עובד" in three steps, each from what the engine does.
+    - The floating WhatsApp pill on a phone, site-wide: full at the top, a round 54px button after scrolling, out of the way while a form's button is at the bottom, hidden while typing (back 0.7s after). Desktop is unchanged.
+    - The Hebrew slug on the Ofakim listing predates the engine (8.9). The engine mints Latin addresses since 23.9. Existing slugs stay (no redirects).
+  - **The listings surface is done (296-299).** **Next:** the projects catalogue (/projects/) and project pages, then HAD-332's remainder (Aurelia, DUO, language siblings).
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner

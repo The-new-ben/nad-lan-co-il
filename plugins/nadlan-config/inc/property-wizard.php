@@ -311,6 +311,18 @@ if ( ! function_exists( 'nadlan_pwiz_shortcode' ) ) {
 }
 add_shortcode( 'nadlan_listing_wizard', 'nadlan_pwiz_shortcode' );
 
+/* PublishPage v48 (28.9.2026): what happens after the account form, in three steps, each from what the engine does
+   (inc/owner-wizard.php: up to 30 photos, the page up in a minute, WhatsApp and a call to the owner, sold in one tap). */
+add_filter( 'the_content', function ( $content ) {
+	if ( is_admin() || ! is_page( 'post-listing' ) || ! in_the_loop() || ! is_main_query() || is_user_logged_in() ) { return $content; }
+	return $content . '<section class="nlpub-how" aria-labelledby="nlpub-how-h"><h2 id="nlpub-how-h">איך זה עובד</h2><ol>'
+		. '<li><i>1</i><b>פותחים חשבון</b><span>שם ומייל. בלי כרטיס אשראי ובלי לחכות למייל אימות.</span></li>'
+		. '<li><i>2</i><b>מעלים תמונות וכותבים כמה שורות</b><span>עד 30 תמונות מהטלפון, והעובדות במילים שלכם: חדרים, מ״ר, קומה ומחיר.</span></li>'
+		. '<li><i>3</i><b>המודעה עולה בתוך דקה</b><span>בכתובת משלה, עם כפתורי וואטסאפ וחיוג אליכם. בלי עמלה.</span></li>'
+		. '</ol><p>נמכר או הושכר? מסמנים בלחיצה אחת, ומעדכנים מחיר מאותו עמוד.</p></section>'
+		. '<style id="nadlan-pub-css">.nlpub-how{max-width:760px;margin:8px auto 40px;padding:clamp(20px,4vw,28px);background:#F3EEE3;border:1px solid #E3E1DA;border-radius:16px;box-sizing:border-box;font-family:Assistant,Heebo,Arial,sans-serif;color:#14212B}.nlpub-how h2{font:600 clamp(21px,2.4vw,25px)/1.25 "Noto Serif Hebrew",Georgia,serif!important;margin:0 0 16px!important;color:#14212B!important}.nlpub-how ol{list-style:none!important;margin:0!important;padding:0!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.nlpub-how li{margin:0!important;padding:16px!important;background:#fff;border:1px solid #E3E1DA;border-radius:14px;display:grid;gap:6px;align-content:start;list-style:none!important}.nlpub-how li::before,.nlpub-how li::marker{content:none!important}.nlpub-how li i{font-style:normal;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#14212B;color:#fff;font:700 14px/1 Assistant,Arial,sans-serif}.nlpub-how li b{font-size:16px;font-weight:700;line-height:1.3;color:#14212B}.nlpub-how li span{font-size:14px;line-height:1.5;color:#57534B}.nlpub-how p{margin:14px 0 0!important;font-size:14px!important;line-height:1.55!important;color:#57534B!important}@media (max-width:640px){.nlpub-how ol{grid-template-columns:minmax(0,1fr);gap:8px}.nlpub-how li{grid-template-columns:30px minmax(0,1fr);column-gap:12px;padding:12px 14px!important}.nlpub-how li i{grid-row:1/span 2}.nlpub-how li b,.nlpub-how li span{grid-column:2}}</style>';
+}, 30 );
+
 /* ---------------- wizard assets ---------------- */
 if ( ! function_exists( 'nadlan_pwiz_assets' ) ) {
 	function nadlan_pwiz_assets() {

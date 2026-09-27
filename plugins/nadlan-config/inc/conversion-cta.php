@@ -97,6 +97,9 @@ body.nl-skin-a #nlcta .nlcta-wa{box-shadow:0 10px 24px rgba(15,122,99,.30)!impor
 body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 @media(max-width:760px){body.nl-has-engine #nlcta{bottom:calc(env(safe-area-inset-bottom,0px) + 148px)!important}}
 @media(max-width:760px){body.nadlan-p3d-stage-active #nlcta{display:none}}
+/* PublishPage v48 (28.9.2026): on a phone the pill covered forms' buttons and cards. Full at the top of the page, a round
+   54px button once the reader scrolls, hidden while a text field has focus; the link, its label and tracking unchanged. */
+@media(max-width:600px){#nlcta.is-mini .nlcta-wa{width:54px;height:54px;min-height:54px;max-width:none;padding:0;justify-content:center;border-radius:50%}#nlcta.is-mini .nlcta-txt,#nlcta.is-mini .nlcta-brand{display:none}#nlcta.is-mini .nlcta-glyph{width:40px;height:40px}html body #nlcta.is-typing,html body #nlcta.is-clear{display:none!important}}
 </style>
 <script>
 (function(){
@@ -104,6 +107,25 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 	window.nadlanGA=window.nadlanGA||function(n,p){try{window.dataLayer.push(Object.assign({event:n},p||{}));}catch(e){}};
 	var wa=document.querySelector('.nlcta-wa');
 	if(wa)wa.addEventListener('click',function(){window.nadlanGA('whatsapp_click');});
+	var box=document.getElementById('nlcta');
+	if(box&&window.matchMedia){
+		var mq=window.matchMedia('(max-width:600px)'),tick=false,back=0;
+		var subs=[].slice.call(document.querySelectorAll('form button,form input[type=submit],.nlow button'));
+		var fit=function(){
+			tick=false;
+			var h=window.innerHeight||0,clash=subs.some(function(el){var r=el.getBoundingClientRect();return r.height>0&&r.bottom>h-110&&r.top<h;});
+			box.classList.toggle('is-mini',mq.matches&&(window.scrollY||0)>120);
+			box.classList.toggle('is-clear',mq.matches&&clash);
+		};
+		var ask=function(){if(!tick){tick=true;window.requestAnimationFrame(fit);}};
+		window.addEventListener('scroll',ask,{passive:true});
+		window.addEventListener('resize',ask);
+		if(mq.addEventListener){mq.addEventListener('change',fit);}
+		fit();
+		var typing=function(t){return t&&t.matches&&t.matches('textarea,select,input:not([type=checkbox]):not([type=radio]):not([type=button]):not([type=submit]):not([type=hidden])');};
+		document.addEventListener('focusin',function(e){if(typing(e.target)){clearTimeout(back);box.classList.add('is-typing');}});
+		document.addEventListener('focusout',function(e){if(typing(e.target)){clearTimeout(back);back=setTimeout(function(){box.classList.remove('is-typing');fit();},700);}});
+	}
 })();
 </script>
 	<?php
