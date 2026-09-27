@@ -500,63 +500,6 @@ if ( ! function_exists( 'nadlan_ps_compose' ) ) {
 	}
 }
 
-/* The visible H1 of a project page without a stage (design system ProjectTitle, version 39; Linear HAD-332; checklist C1).
-   On these pages the one H1 was printed for screen readers only, after the answer paragraph, the prices and the notice.
-   Here it becomes visible, with the same text, and moves right before the answer paragraph. Fails open: no paragraph or
-   no H1 leaves the page exactly as it was. */
-if ( ! function_exists( 'nadlan_pt_on' ) ) {
-	function nadlan_pt_on() {
-		static $on = null;
-		if ( null !== $on ) { return $on; }
-		$on = false;
-		if ( is_admin() || ! is_singular( 'nadlan_project' ) || nadlan_ps_current() ) { return $on; } // Rainbow has its own hero
-		$id = (int) get_queried_object_id();
-		if ( ! $id || post_password_required( $id ) || get_post_meta( $id, '_nadlan_private_unit_journey', true ) ) { return $on; }
-		if ( function_exists( 'nadlan_project_mode' ) && 'showroom' === nadlan_project_mode( $id ) ) { return $on; } // the theatre shows the title
-		if ( preg_match( '/-(en|fr|ru|ar)$/', (string) get_post_field( 'post_name', $id ) ) ) { return $on; } // language siblings: later
-		return $on = true;
-	}
-}
-if ( ! function_exists( 'nadlan_pt_compose' ) ) {
-	function nadlan_pt_compose( $html ) {
-		if ( ! is_string( $html ) || false !== strpos( $html, 'class="nlpt-h1"' ) ) { return $html; }
-		$b = strpos( $html, '<body' );
-		if ( false === $b ) { return $html; }
-		$lead = strpos( $html, '<div class="nl-lead">', $b );
-		if ( false === $lead ) { return $html; }
-		if ( ! preg_match( '#<h1\b[^>]*\bid="nl-project-page-title"[^>]*>(.*?)</h1>#s', $html, $m, PREG_OFFSET_CAPTURE, $b ) ) { return $html; }
-		$text = trim( $m[1][0] );
-		if ( '' === $text ) { return $html; }
-		$h1 = '<h1 id="nl-project-page-title" class="nlpt-h1">' . $text . '</h1>';
-		$at = $m[0][1];
-		$len = strlen( $m[0][0] );
-		if ( $at > $lead ) {
-			$html = substr( $html, 0, $at ) . substr( $html, $at + $len ); // out of its place after the paragraph
-			$html = substr( $html, 0, $lead ) . $h1 . substr( $html, $lead ); // in, right before it
-		} else {
-			$html = substr( $html, 0, $at ) . substr( $html, $at + $len );
-			$lead -= $len;
-			$html = substr( $html, 0, $lead ) . $h1 . substr( $html, $lead );
-		}
-		return $html;
-	}
-}
-add_action( 'template_redirect', function () {
-	if ( ! nadlan_pt_on() ) { return; }
-	ob_start( function ( $html ) {
-		try {
-			return nadlan_pt_compose( $html );
-		} catch ( \Throwable $e ) {
-			return $html;
-		}
-	} );
-}, 0 );
-add_action( 'wp_head', function () {
-	if ( ! nadlan_pt_on() ) { return; }
-	echo '<style id="nadlan-pt-css">:root body h1.nlpt-h1{font-family:"Frank Ruhl Libre","Noto Serif Hebrew",Georgia,serif!important;font-weight:600!important;font-size:34px!important;line-height:1.15!important;color:#14212b!important;margin:18px 0 12px!important;padding:0 26px!important;box-sizing:border-box;text-wrap:balance;text-align:start!important;letter-spacing:-.01em;max-width:none!important}'
-		. '@media(max-width:760px){:root body h1.nlpt-h1{font-size:27px!important;margin:14px 0 10px!important;padding:0 16px!important}}</style>' . "\n";
-}, 999 );
-
 /* The project page checklist, where a person editing a project meets it (the owner, 27.9.2026: "inject it where everyone
    working on the project meets it"). The full list: docs/checklists/PROJECT-PAGE-CHECKLIST.md in the repository. */
 add_action( 'add_meta_boxes', function () {

@@ -82,7 +82,13 @@ only inside runners; every release through a runner with drift check, lint, back
   - the checklist docs/checklists/PROJECT-PAGE-CHECKLIST.md, pointed to from AGENTS.md, CLAUDE.md iron law 4, the DS and a box on the WordPress project edit screen;
   - the rendered check tools/content_first_check.py;
   - the runner's grid guard.
-- **Finding (fleet):** the project pages without a stage (H-Infinity, Dimri Yama...) carry only a hidden H1 (screen-reader-text). This is a fleet task with a design first.
+- 1.72.285: **a visible H1 first on the fleet's project pages** (DS ProjectTitle v39; HAD-332).
+  - The hidden H1 that came after the paragraph is now visible, with the same text, right before the answer paragraph, on every Hebrew review-mode project page. It fails open.
+  - Checked live: H-Infinity, Dimri Yama and SIX-8 (phone: the H1 at 154, the paragraph at 226).
+  - Still open in HAD-332:
+    - showroom-mode pages such as Aurelia (does the theatre show the title?);
+    - DUO (no answer paragraph);
+    - the language siblings.
 - **Codex's lab:** DS v37 UnitCut (the unit cell, the bounded cut, the compact row) and the kit scripts/project-stage/harness/mklab.py.
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 

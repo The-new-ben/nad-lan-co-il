@@ -31,7 +31,7 @@ Technical things (a 3D stage, maps, code) never come before the answer paragraph
 
 | # | Rule | How it is checked |
 |---|---|---|
-| C1 | One H1, first in the body, with the project name in Hebrew and English | the runner's `H1_EXACTLY_ONE` and ORDER; `tools/source_audit.py` |
+| C1 | One H1, **visible**, first in the body, with the project name in Hebrew and English. The fleet's review-mode pages get it from `nadlan_pt_compose` (1.72.285) | the runner's `H1_EXACTLY_ONE` and ORDER; `tools/source_audit.py` |
 | C2 | The answer paragraph (`.nl-lead`) is the first paragraph after the H1 **in the source**. It carries every name (he+en), the developer, the exact place, the status, the unit mix, a real price with its source and date, and what the page lets you do. No disclaimer comes before it | the runner's ORDER check (the source position) |
 | C3 | **The answer paragraph comes before the stage on the screen, on every width**. On a 412px phone its top is above the stage's top and inside the first 1.2 screens; on desktop it is in the first screen | `python tools/content_first_check.py` (rendered, a mobile Googlebot user agent at 412×915 and desktop 1440×900); the runner needs the phone grid `"hero" "lead" "cta" "stage"` |
 | C4 | The stage follows the paragraph and the buttons at once (on a phone its top is within the first 1.5 screens). It is never pushed to the end | `tools/content_first_check.py` |
