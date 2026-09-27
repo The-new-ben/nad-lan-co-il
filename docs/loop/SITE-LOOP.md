@@ -75,7 +75,15 @@ only inside runners; every release through a runner with drift check, lint, back
   - Every inner page is 18.7 KB lighter.
   - Before/after pictures of five pages on desktop and phone are identical; only the moving 3D stage's pins differ by timing.
   - The DS HomePage v36 note.
-  - The audit found /projects/bnei-dan-54-56/ and /projects/stricker-13-brandeis-14/ as 404. They were 404 before this release too (the same snapshot size). Waiting for the owner: are they meant to be gone?
+  - The audit's 404s on /projects/bnei-dan-54-56/, /projects/stricker-13-brandeis-14/ and /echo-city/ are a **deliberate removal**. EcoCity asked for all their publicity to be taken down (owner, 27.9.2026, restating the 30.8 takedown). They are never restored or promoted. tools/source_audit.py now treats a 404 there as expected and raises RED if one ever answers again.
+- 1.72.284: **content first on Rainbow's phone page.** v33's grid had pushed the answer paragraph to 2,400px on phones, below the stage, the view and the map. Now:
+  - the order is title, paragraph (291px), buttons, stage (621px), view and map;
+  - DS v38;
+  - the checklist docs/checklists/PROJECT-PAGE-CHECKLIST.md, pointed to from AGENTS.md, CLAUDE.md iron law 4, the DS and a box on the WordPress project edit screen;
+  - the rendered check tools/content_first_check.py;
+  - the runner's grid guard.
+- **Finding (fleet):** the project pages without a stage (H-Infinity, Dimri Yama...) carry only a hidden H1 (screen-reader-text). This is a fleet task with a design first.
+- **Codex's lab:** DS v37 UnitCut (the unit cell, the bounded cut, the compact row) and the kit scripts/project-stage/harness/mklab.py.
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner

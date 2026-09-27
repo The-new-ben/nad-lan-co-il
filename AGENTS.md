@@ -11,6 +11,25 @@
 
 ---
 
+## Project pages: content first, Claude Design first (owner law, 27.9.2026)
+
+Before touching any project page (or any page) read `docs/checklists/PROJECT-PAGE-CHECKLIST.md`.
+
+- **The order, on every width (phones first):**
+  1. the H1;
+  2. **the answer paragraph** (`.nl-lead`);
+  3. the buttons;
+  4. the stage;
+  5. the view and the map;
+  6. the facts, the rest of the tools, the article.
+
+  Technical things (3D, maps, code) never come before the paragraph, not in the source and not on the screen, and the stage follows the paragraph at once. Google indexes the phone version, so the RENDERED order is what counts: run `python tools/content_first_check.py`.
+- **Claude Design first:** no visual change anywhere on the site without a new version in the design system artifact (https://claude.ai/artifact/L9Nqz7Viv7K3MYeZrBc9s8).
+- **Who owns what between Claude and Codex:** `docs/coordination/claude-codex.md`.
+- **EcoCity's pages** (/echo-city/, /projects/stricker-13-brandeis-14/, /projects/bnei-dan-54-56/) are removed on purpose. They are never restored or promoted.
+
+---
+
 ## Project overview
 
 This repository operates **nad-lan.co.il** — a Hebrew real-estate authority site

@@ -463,7 +463,7 @@
 :root body .nlds .nlps-lead{font-size:16px !important}
 :root body .nlds .nlps-steps{grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important}
 :root body .nlds .nlps-step{min-height:44px !important;padding:6px 10px !important;font-size:13.5px !important}
-:root body .nlds .nlps-page{grid-template-columns:minmax(0, 1fr) !important;grid-template-areas:"hero" "lead" "cta" "stage" "below" "facts" "rail" !important;column-gap:0 !important}
+:root body .nlds .nlps-page{grid-template-columns:minmax(0, 1fr) !important;grid-template-areas:"hero" "cta" "stage" "below" "lead" "facts" "rail" !important;column-gap:0 !important}
 :root body .nlds .nlps-page .nlps-stage{height:70svh !important;min-height:360px !important}
 :root body .nlds .nlps-page > .nlps-lead{font-size:16px !important}
 :root body .nlds .nlps-page > .nlps-rail{grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;gap:var(--nlds-space-12) !important}

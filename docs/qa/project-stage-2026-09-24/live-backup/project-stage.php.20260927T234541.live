@@ -500,25 +500,6 @@ if ( ! function_exists( 'nadlan_ps_compose' ) ) {
 	}
 }
 
-/* The project page checklist, where a person editing a project meets it (the owner, 27.9.2026: "inject it where everyone
-   working on the project meets it"). The full list: docs/checklists/PROJECT-PAGE-CHECKLIST.md in the repository. */
-add_action( 'add_meta_boxes', function () {
-	add_meta_box( 'nadlan-ps-checklist', 'צ׳קליסט עמוד פרויקט: התוכן קודם', function () {
-		$rows = array(
-			'כותרת H1 אחת: שם הפרויקט בעברית ובאנגלית.',
-			'מיד אחריה פסקת התשובה (4-7 שורות): השם, היזם, המקום המדויק, המצב, התמהיל, מחיר אמיתי עם מקור ותאריך.',
-			'הסדר בכל מסך, גם בטלפון: כותרת, פסקה, כפתורים, הבמה, הנוף והמפה, העובדות, המאמר. שום דבר טכני לפני הפסקה.',
-			'הבמה מיד אחרי הפסקה, לא בסוף העמוד. המפה צמודה מתחת לבמה.',
-			'נתוני שיווק כפי שפורסמו, עם המקור. לא ממציאים מלאי, מחיר, כיוון או תוכנית. הדמיה מסומנת "להמחשה".',
-			'המאמר המלא נשאר אחרי הכלים ולא מתקצר.',
-			'כל שינוי חזותי עובר קודם ב-Claude Design.',
-		);
-		echo '<ol style="margin:0 18px 8px 0;padding:0;line-height:1.5">';
-		foreach ( $rows as $r ) { echo '<li style="margin:0 0 6px">' . esc_html( $r ) . '</li>'; }
-		echo '</ol><p style="margin:0"><a href="' . esc_url( 'https://github.com/The-new-ben/nad-lan-co-il/blob/claude/production-truth-1.72.212/docs/checklists/PROJECT-PAGE-CHECKLIST.md' ) . '" target="_blank" rel="noopener">הצ׳קליסט המלא</a></p>';
-	}, 'nadlan_project', 'side', 'high' );
-} );
-
 /* An outer output buffer: started before catalog-plus's (template_redirect priority 1), so it runs after it. */
 add_action( 'template_redirect', function () {
 	$ps = nadlan_ps_current();
@@ -599,7 +580,7 @@ add_action( 'wp_head', function () {
 		. ':root body .nlds .nlbsq__photo img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:50% 24%!important}'
 		. ':root body .nlps-rail .nlds .nlbslot{min-height:0!important}'
 		. '@media(max-width:1279px){:root body .nlps-page{grid-template-columns:minmax(280px,360px) minmax(0,1fr);grid-template-areas:"hero stage" "lead stage" "cta stage" "below below" "facts facts" "tour tour" "deals deals" "rail rail"}:root body .nlps-page>.nlps-rail{grid-template-columns:repeat(2,minmax(0,300px));margin-top:6px!important}}'
-		. '@media(max-width:1099px){:root body .nlps-page{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"hero" "lead" "cta" "stage" "below" "facts" "tour" "deals" "rail";column-gap:0}:root body .nlps-page>.nlps-below{grid-template-columns:minmax(0,1fr)}:root body .nlps-page>.nlps-rail{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nlps-stage{height:62svh;min-height:380px}}'
+		. '@media(max-width:1099px){:root body .nlps-page{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"hero" "cta" "stage" "below" "lead" "facts" "tour" "deals" "rail";column-gap:0}:root body .nlps-page>.nlps-below{grid-template-columns:minmax(0,1fr)}:root body .nlps-page>.nlps-rail{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nlps-stage{height:62svh;min-height:380px}}'
 		. '@media(max-width:600px){.nlps-stage{height:70svh;min-height:360px}:root body .nlps-page{padding:0 12px!important;row-gap:12px}:root body .nlps-page>.nlps-rail{gap:12px}:root body .nlps-page>.nl-lead>p{font-size:16px!important}}'
 		. '</style>' . "\n";
 }, 999 );

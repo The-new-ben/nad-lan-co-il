@@ -37,6 +37,14 @@ WATCHLIST = [
     "https://nad-lan.co.il/tours/",
 ]
 
+# EcoCity asked for all their publicity to be removed (owner takedown 30.8.2026, restated 27.9.2026): these pages must stay
+# gone. A 404/410 here is the expected state; the page answering 200 again is the alarm.
+EXPECTED_GONE = {
+    "https://nad-lan.co.il/projects/bnei-dan-54-56/",
+    "https://nad-lan.co.il/projects/stricker-13-brandeis-14/",
+    "https://nad-lan.co.il/echo-city/",
+}
+
 BLACKLIST = ["בהמתנה לחומרי היזם", "יחליף אותו עם קבלתו", "בבדיקה מול היזם",
              "יוצגו עם קבלת נתונים", "תוכנית תתווסף", "טרם התקבלו", "מחכים ליזם",
              "אין שרטוטים", "0 חדרים", "כיוון בבדיקה", "· בקרוב"]
@@ -184,6 +192,8 @@ def main():
             fname = f"{now}-{sha[:12]}.html"
             with open(os.path.join(sdir, fname), "wb") as f:
                 f.write(PUB_TOKEN_RE.sub(b"pk.[REDACTED-MAPBOX-PUBLIC-TOKEN]", body))
+        if url in EXPECTED_GONE:
+            fl = [] if status in (404, 410) else ["RED EcoCity page answers again (takedown 30.8.2026: it must stay gone)"]
         light = "RED" if any(x.startswith("RED") for x in fl) else ("ORANGE" if any(x.startswith("ORANGE") for x in fl) else ("YELLOW" if fl else "GREEN"))
         print(f"[{light}] {url}")
         print(f"    http {status} · {len(body):,}b · {ms}ms · sha {sha[:12]} · {'CHANGED' if changed else 'unchanged'}")
