@@ -128,6 +128,7 @@ only inside runners; every release through a runner with drift check, lint, back
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner
+- **The Pro price appears twice** (found 28.9 on /brokers/): the brokers' page offers "149 ש"ח לחודש" (and a site build at 1,490), while the professionals' slot, the catalogue and the pricing schema say Pro ₪349 a month. Are these two products (the broker site vs the directory placement) or one? Nothing is changed until the owner says.
 - **Rainbow's article, one sentence** (Linear HAD-340): "מספר היחידות עומד על 480 לפי שיווק היזם ואתר השיווק החדש, בעוד שהיתר הבנייה והמקורות התכנוניים-ביצועיים מציינים 459 דירות" inverts the sources. 459 is the developer's current number (its page, Ashtrom, Bizportal 5.2026, Calcalist 3.2026); 480 is the design plan of 10.5.2023 (229 + 251). The article is the owner's ChatGPT text, so the fix waits for his word (or goes into his ChatGPT prompt).
 - **The loop is stopped** (the owner, 25.9 midday: usage running out; resume from R7 when usage returns).
 - Contact with Rainbow's developer (ישראל קנדה) for the marketing data: apartments left, price lists, the plans per side. When it arrives it goes onto the floor card as published, with its source.
