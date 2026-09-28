@@ -145,4 +145,8 @@ if ( ! function_exists( 'nadlan_bulk_project_seo_description' ) ) {
 // priority number (e.g. Rainbow's at 50) still overrides this for its own post.
 add_filter( 'wpseo_title', 'nadlan_bulk_project_seo_title', 5 );
 add_filter( 'pre_get_document_title', 'nadlan_bulk_project_seo_title', 5 );
-add_filter( 'wpseo_metadesc', 'nadlan_bulk_project_seo_description', 5 );
+// The description is the last resort (28.9.2026, Search Console: the project pages drew 16,004 impressions and 96 clicks
+// in 28 days). At priority 5 this generic line ("כל המידע על ...") filled every empty description first, so the page's
+// own opening paragraph (inc/seo-gaps.php, 90) and the facts line (inc/project-experience.php) never ran. Now it only
+// fills what nothing else could.
+add_filter( 'wpseo_metadesc', 'nadlan_bulk_project_seo_description', 95 );

@@ -755,11 +755,13 @@ if ( ! function_exists( 'nadlan_pjx_meta_desc' ) ) {
 		if ( function_exists( 'nadlan_unit_journey_is_private_lab' ) && nadlan_unit_journey_is_private_lab() ) { return ''; }
 		if ( $desc ) { return $desc; }
 		$id = get_queried_object_id();
+		// an urban-renewal compound in planning has no apartments for sale: its own line is inc/bulk-project-seo.php's (95)
+		if ( function_exists( 'nadlan_bulk_project_is_renewal' ) && nadlan_bulk_project_is_renewal( $id ) ) { return $desc; }
 		$g  = function ( $k ) use ( $id ) { return get_post_meta( $id, $k, true ); };
 		$bits = array( 'דירות למכירה ב' . get_the_title( $id ) . ( $g( 'city' ) ? ', ' . $g( 'city' ) : '' ) . '.' );
 		if ( (int) $g( 'project_3d_avg_price_per_sqm' ) ) { $bits[] = 'אומדן ' . number_format( (int) $g( 'project_3d_avg_price_per_sqm' ) ) . ' ₪ למ״ר.'; }
-		$bits[] = 'הדמיה, בחירת דירה, מפת סביבה ותוכניות עתידיות - בנדלן.';
+		$bits[] = 'מפת הסביבה ומחירי האזור, בנדלן.'; // only what every project page has (28.9.2026: no unit picker or plans on most)
 		return mb_substr( implode( ' ', $bits ), 0, 156 );
 	}
 }
-add_filter( 'wpseo_metadesc', 'nadlan_pjx_meta_desc', 25 );
+add_filter( 'wpseo_metadesc', 'nadlan_pjx_meta_desc', 93 ); // after the page's own opening paragraph (seo-gaps, 90); 28.9.2026

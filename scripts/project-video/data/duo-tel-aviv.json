@@ -1,0 +1,314 @@
+{
+ "slug": "duo-tel-aviv",
+ "page": "https://nad-lan.co.il/projects/duo-tel-aviv/",
+ "checked": "2026-09-28",
+ "note": "Every visible line carries its source: the live page (read 28.9.2026) and docs/research/2026-09-28-duo/duo-film-facts.md. Stills are ours: the live 3D stage captured by capture.py, and the page's own tour cards. All of them are illustrations.",
+ "sources": {
+  "research": "docs/research/2026-09-28-duo/duo-film-facts.md",
+  "page": "https://nad-lan.co.il/projects/duo-tel-aviv/ (read 28.9.2026)"
+ },
+ "brand": {
+  "mark": {
+   "text": "נדל״ן",
+   "source": "the site's name as the page prints it ('נדל״ן היא פלטפורמת מידע עצמאית')"
+  },
+  "site": {
+   "text": "nad-lan.co.il",
+   "source": "the site's domain"
+  },
+  "independent": {
+   "text": "פלטפורמה עצמאית, לא מטעם היזם",
+   "source": "the brief's required wording; matches page_independent"
+  }
+ },
+ "labels": {
+  "render": {
+   "text": "הדמיה להמחשה",
+   "source": "required on every frame that shows a rendering; the page's own wording ('הדמיה להמחשה בלבד')"
+  },
+  "view": {
+   "text": "הדמיה להמחשה, נוף משוער",
+   "source": "required on every view card; the page's view section ('הנוף המשוער', 'להמחשה בלבד')"
+  }
+ },
+ "scenes": [
+  {
+   "id": "title",
+   "type": "title",
+   "dur": 5.0,
+   "render": true,
+   "image": {
+    "landscape": {
+     "src": "img/duo-tel-aviv/stage-hero_1920x1080.jpg",
+     "focus": [
+      0.5,
+      0.42
+     ]
+    },
+    "portrait": {
+     "src": "img/duo-tel-aviv/stage-hero_1080x1920.jpg",
+     "focus": [
+      0.5,
+      0.36
+     ]
+    }
+   },
+   "zoom": "in",
+   "title": {
+    "text": "DUO תל אביב",
+    "source": "the page H1 'מגדלי דואו תל אביב DUO Tel Aviv' (the Latin brand as the developer writes it)"
+   },
+   "line": {
+    "text": "אבן גבירול פינת ארלוזורוב, מתחם סומייל",
+    "source": "the page's line under the H1 (place)"
+   },
+   "small": {
+    "text": "יזם: אפריקה ישראל מגורים",
+    "source": "the page's line under the H1 (developer)"
+   }
+  },
+  {
+   "id": "location",
+   "type": "card",
+   "dur": 4.8,
+   "render": true,
+   "image": {
+    "landscape": {
+     "src": "img/duo-tel-aviv/stage-quarter-own_1920x1080.jpg",
+     "focus": [
+      0.45,
+      0.45
+     ]
+    },
+    "portrait": {
+     "src": "img/duo-tel-aviv/stage-quarter-own_1080x1920.jpg",
+     "focus": [
+      0.42,
+      0.4
+     ]
+    }
+   },
+   "zoom": "out",
+   "kicker": {
+    "text": "המיקום",
+    "source": "section name"
+   },
+   "title": {
+    "text": "בלב תל אביב",
+    "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 1 (the company's 2025 report: the Ibn Gabirol, Arlozorov and Ben Saruk junction)"
+   },
+   "lines": [
+    {
+     "text": "במפגש אבן גבירול, ארלוזורוב ובן סרוק",
+     "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 1"
+    },
+    {
+     "text": "חיבור ישיר לקו הירוק מקומת המינוס אחת, לפי החברה",
+     "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 8 (the CEO in Globes, 19.4.2026)"
+    }
+   ],
+   "source": {
+    "text": "לפי דוח החברה לשנת 2025 וגלובס, 19.4.2026",
+    "source": "docs/research/2026-09-28-duo/duo-film-facts.md lines 1 and 8"
+   }
+  },
+  {
+   "id": "buildings",
+   "type": "card",
+   "dur": 4.8,
+   "render": true,
+   "image": {
+    "landscape": {
+     "src": "img/duo-tel-aviv/stage-lot_1920x1080.jpg",
+     "focus": [
+      0.5,
+      0.45
+     ]
+    },
+    "portrait": {
+     "src": "img/duo-tel-aviv/stage-lot_1080x1920.jpg",
+     "focus": [
+      0.5,
+      0.38
+     ]
+    }
+   },
+   "zoom": "in",
+   "kicker": {
+    "text": "הבניינים",
+    "source": "section name"
+   },
+   "title": {
+    "text": "2 מגדלים של 54 קומות",
+    "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 2; the page's facts ('בניינים: 2 מגדלים של 54 קומות')"
+   },
+   "lines": [
+    {
+     "text": "50 קומות מגורים בכל מגדל",
+     "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 2; the page's facts"
+    },
+    {
+     "text": "668 דירות, מ-2 עד 5 חדרים ופנטהאוזים",
+     "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 3 (the 2025 report: 668; the developer's site: 2-5 rooms and penthouses)"
+    }
+   ],
+   "source": {
+    "text": "לפי דוח החברה, היתר הבנייה ואתר היזם",
+    "source": "docs/research/2026-09-28-duo/duo-film-facts.md lines 2 and 3; the page's facts (668 by the permit)"
+   }
+  },
+  {
+   "id": "facilities",
+   "type": "list",
+   "dur": 8.4,
+   "render": true,
+   "image": {
+    "landscape": {
+     "src": "img/duo-tel-aviv/stage-facilities_1920x1080.jpg",
+     "focus": [
+      0.5,
+      0.42
+     ]
+    },
+    "portrait": {
+     "src": "img/duo-tel-aviv/stage-facilities_1080x1920.jpg",
+     "focus": [
+      0.5,
+      0.3
+     ]
+    }
+   },
+   "zoom": "in",
+   "kicker": {
+    "text": "המתקנים בפרויקט",
+    "source": "the page's stage legend chip 'מתקנים בפרויקט'"
+   },
+   "items": [
+    {
+     "text": "לובי ראשי בגובה של כ-7 מטרים",
+     "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 4 (the developer's site)"
+    },
+    {
+     "text": "בריכת אינפיניטי על גג מבנה הלובי",
+     "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 5 (the developer's site)"
+    },
+    {
+     "text": "מתחם וולנס וחדר כושר",
+     "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 6 (the developer's site: the wellness complex with direct entry from the lobby)"
+    },
+    {
+     "text": "מסחר בשלוש קומות, כ-13 אלף מ״ר",
+     "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 7 (the 2025 report)"
+    },
+    {
+     "text": "חניון בחמש קומות מרתף",
+     "source": "the page's facts ('חניה: 5 קומות מרתף, לפי החלטת רשות הרישוי, 9.2025')"
+    }
+   ],
+   "source": {
+    "text": "לפי אתר היזם, דוח החברה ורשות הרישוי. מיקום המתקנים בציור להמחשה.",
+    "source": "docs/research/2026-09-28-duo/duo-film-facts.md lines 4-7; the page's stage source line ('מיקום המתקנים להמחשה')"
+   }
+  },
+  {
+   "id": "sales",
+   "type": "card",
+   "dur": 5.0,
+   "render": false,
+   "panel": "paper",
+   "kicker": {
+    "text": "מכירות",
+    "source": "section name"
+   },
+   "stats": [
+    {
+     "value": {
+      "text": "372 מתוך 510",
+      "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 9 (Q2 2026 report, section 1.3: signed contracts at 30.6.2026)"
+     },
+     "caption": {
+      "text": "דירות בשיווק נמכרו עד 6.2026, לפי דוח היזם",
+      "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 9"
+     }
+    },
+    {
+     "value": {
+      "text": "כ-11 מיליון ₪",
+      "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 10 (Q2 2026 report, section 3.5: 12 units, average 10,985K ₪ including VAT)"
+     },
+     "caption": {
+      "text": "הממוצע לדירה, כולל מע״מ, ב-12 הדירות שנמכרו ב-1-6.2026",
+      "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 10"
+     }
+    }
+   ],
+   "source": {
+    "text": "מקור: דוח אפריקה ישראל מגורים לרבעון השני של 2026. מחיר וזמינות מחייבים אישור היזם.",
+    "source": "docs/research/2026-09-28-duo/duo-film-facts.md lines 9-10; the page's caveat"
+   }
+  },
+  {
+   "id": "status",
+   "type": "card",
+   "dur": 4.6,
+   "render": true,
+   "image": {
+    "landscape": {
+     "src": "img/duo-tel-aviv/stage-hero-noon_1920x1080.jpg",
+     "focus": [
+      0.5,
+      0.45
+     ]
+    },
+    "portrait": {
+     "src": "img/duo-tel-aviv/stage-hero-noon_1080x1920.jpg",
+     "focus": [
+      0.5,
+      0.38
+     ]
+    }
+   },
+   "zoom": "out",
+   "kicker": {
+    "text": "מצב הפרויקט",
+    "source": "section name"
+   },
+   "title": {
+    "text": "בבנייה, 87% הושלמו",
+    "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 12 (Q2 2026 report: 87%)"
+   },
+   "lines": [
+    {
+     "text": "השלמה מתוכננת ב-2027, לפי החברה",
+     "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 12; the page's facts ('השלמה מתוכננת ב-2027, לפי דוח החברה')"
+    }
+   ],
+   "source": {
+    "text": "דוח החברה לרבעון השני של 2026; גלובס, 19.4.2026",
+    "source": "docs/research/2026-09-28-duo/duo-film-facts.md line 12"
+   }
+  },
+  {
+   "id": "outro",
+   "type": "outro",
+   "dur": 6.6,
+   "render": false,
+   "kicker": {
+    "text": "DUO תל אביב",
+    "source": "the page H1"
+   },
+   "actions": [
+    {
+     "text": "שיחת וידאו עם נציג",
+     "source": "the page's hero button 'שיחת וידאו עם נציג'",
+     "primary": true
+    },
+    {
+     "text": "שאלות? וואטסאפ",
+     "source": "the page's WhatsApp link wa.me/972525101555, in Israeli format",
+     "sub": "052-510-1555"
+    }
+   ]
+  }
+ ]
+}

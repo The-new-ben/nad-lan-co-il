@@ -1,0 +1,17 @@
+{
+  "released": "1.72.341",
+  "from": "1.72.340",
+  "at": "2026-09-28 14:28:29",
+  "files": {
+    "inc/bulk-project-seo.php": "8346bf75dbfc73cd037347b4381ce174",
+    "inc/seo-gaps.php": "44c6e5fee41583f57b0e162a476c9fc7",
+    "inc/project-experience.php": "2ff23fbd85611e1e204f2431e298700e",
+    "nadlan-config.php": "ba68ec7e69cc679c563e32ac979098b1"
+  },
+  "live_before": {
+    "inc/bulk-project-seo.php": "8ff68fbbe8e66e625e1d7db912af008c",
+    "inc/seo-gaps.php": "fa4e37002c7b96543dc35954ac11f546",
+    "inc/project-experience.php": "8a79ac11c8590416c3a941f632c38cbc",
+    "nadlan-config.php": "596d66ecd77aceda533f1193d74fbac8"
+  }
+}

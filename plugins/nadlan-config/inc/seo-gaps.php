@@ -117,7 +117,10 @@ if ( ! function_exists( 'nadlan_seo_gap_description' ) ) {
 			// the first paragraph that reads as a sentence, shortcodes and blocks removed
 			if ( preg_match_all( '#<p\b[^>]*>(.*?)</p>#is', strip_shortcodes( (string) $post->post_content ), $m ) ) {
 				foreach ( $m[1] as $p ) {
-					if ( mb_strlen( nadlan_seo_gap_plain( $p ) ) >= 60 ) { $src = $p; break; }
+					$pl = nadlan_seo_gap_plain( $p );
+					// a byline or a sources note is not the page's opening ("נערך עבור nad-lan.co.il על בסיס...", DUO, 28.9.2026)
+					if ( preg_match( '/^(נערך עבור|המאמר מבוסס|המקורות ששימשו|מקורות:)/u', $pl ) ) { continue; }
+					if ( mb_strlen( $pl ) >= 60 ) { $src = $p; break; }
 				}
 			}
 		}
