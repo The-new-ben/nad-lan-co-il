@@ -1,0 +1,13 @@
+{
+  "released": "1.72.315",
+  "from": "1.72.314",
+  "at": "2026-09-28 06:20:39",
+  "files": {
+    "assets/project-stage/tour.css": "89a6f5e2861956702469a635675161e9",
+    "nadlan-config.php": "4255957eb05d79a41c301e5ccc0831c7"
+  },
+  "live_before": {
+    "assets/project-stage/tour.css": "996a25d47ddab36bde45867eb921a83d",
+    "nadlan-config.php": "2b4614515dcd4a7b2c4eebca021a5eba"
+  }
+}

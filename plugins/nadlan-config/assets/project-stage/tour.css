@@ -1,4 +1,4 @@
-/* The example apartment from the inside, the full-screen viewer (design system ApartmentTour, version 24) */
+/* The example apartment from the inside, the full-screen viewer (design system ApartmentTour, version 24; 44px controls version 61) */
 html.nlat-open, html.nlat-open body { overflow: hidden !important; }
 .nlat-viewer { position: fixed; inset: 0; z-index: 100000; background: #14130F; color: #fff; font-family: 'Assistant', system-ui, sans-serif; }
 .nlat-viewer__stage { position: absolute; inset: 0; cursor: grab; touch-action: none; }
@@ -15,6 +15,9 @@ html.nlat-open, html.nlat-open body { overflow: hidden !important; }
   margin-inline-start: auto; width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer;
   background: rgba(247, 246, 242, .94); color: #14212B; font: 400 26px/44px 'Assistant', system-ui, sans-serif; padding: 0;
 }
+/* v61b: a long title ("במרפסת, לכיוון רמת אביב והאוניברסיטה") squeezed the close button to 23px wide; it keeps its 44px and the title wraps */
+.nlat-viewer__x { flex: none; }
+:root body .nlat-viewer p.nlat-viewer__title { min-width: 0; }
 .nlat-viewer__x:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }
 .nlat-viewer .nlds-sample { white-space: nowrap; flex: none; }  /* the chip stays one line beside a long title */
 :root body .nlat-viewer p.nlat-viewer__hint {
@@ -41,7 +44,7 @@ html.nlat-open, html.nlat-open body { overflow: hidden !important; }
 }
 .nlat-viewer__dirs button {
   appearance: none; -webkit-appearance: none; border: 0; margin: 0; cursor: pointer; background: transparent; color: #14212B;
-  font: 600 14px/1 'Assistant', system-ui, sans-serif; padding: 0 16px; min-height: 38px; min-width: 60px; border-radius: 999px;
+  font: 600 15px/1 'Assistant', system-ui, sans-serif; padding: 0 16px; min-height: 44px; min-width: 64px; border-radius: 999px; /* v61: 44px targets (HAD-346) */
 }
 .nlat-viewer__dirs button[aria-pressed="true"] { background: #14212B; color: #fff; }
 .nlat-viewer__dirs button:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }
@@ -51,14 +54,14 @@ html.nlat-open, html.nlat-open body { overflow: hidden !important; }
 }
 .nlat-viewer__spots button {
   appearance: none; -webkit-appearance: none; border: 0; margin: 0; cursor: pointer; background: transparent; color: #fff;
-  font: 600 13px/1 'Assistant', system-ui, sans-serif; padding: 0 14px; min-height: 34px; border-radius: 999px;
+  font: 600 14px/1 'Assistant', system-ui, sans-serif; padding: 0 16px; min-height: 44px; min-width: 64px; border-radius: 999px; /* v61: 44px targets (HAD-346) */
 }
 .nlat-viewer__spots button[aria-pressed="true"] { background: #fff; color: #14212B; }
 .nlat-viewer__spots button:disabled { opacity: .45; cursor: default; }
 .nlat-viewer__spots button:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }
 @media (max-width: 600px) {
   :root body .nlat-viewer p.nlat-viewer__cap { align-self: stretch; }
-  .nlat-viewer__dirs button { padding: 0 12px; min-width: 56px; }
+  .nlat-viewer__dirs button { padding: 0 12px; min-width: 64px; }
 }
 .nlat-viewer.is-error .nlat-viewer__stage::after {
   content: 'התמונה לא נטענה. נסו שוב מאוחר יותר.'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
