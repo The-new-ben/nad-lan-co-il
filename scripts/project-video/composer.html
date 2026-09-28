@@ -509,7 +509,8 @@ function drawViewsBackground(s, a, t) {
     ctx.globalAlpha = ak; ctx.strokeStyle = 'rgba(250,247,241,0.55)'; ctx.lineWidth = Math.max(1, px(2));
     roundRect(B.x, B.y, B.w, B.h, px(14)); ctx.stroke(); ctx.globalAlpha = 1;
     // the label on the picture itself (top-right corner of the frame)
-    drawLabelPill(txt(DATA.labels.view), B.x + B.w - px(22), B.y + px(22) + px(23), ak, 'right');
+    // a scene may name its own label (screens of the site are not renders: "צילום מסך מהאתר")
+    drawLabelPill(txt(s.label || DATA.labels.view), B.x + B.w - px(22), B.y + px(22) + px(23), ak, 'right');
   }
 }
 

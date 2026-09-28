@@ -1,0 +1,285 @@
+{
+ "slug": "nadlan-developers",
+ "page": "https://nad-lan.co.il/",
+ "checked": "2026-09-28",
+ "note": "The film for developers: the live site's own screens and renders; no traffic or sales number of ours is claimed.",
+ "sources": {
+  "screens": "scripts/project-video/capture_dev.py, 28.9.2026"
+ },
+ "brand": {
+  "mark": {
+   "text": "נדל״ן",
+   "source": "the site's name as the page prints it ('נדל״ן היא פלטפורמת מידע עצמאית')"
+  },
+  "site": {
+   "text": "nad-lan.co.il",
+   "source": "the site's domain"
+  },
+  "independent": {
+   "text": "פלטפורמה עצמאית, לא מטעם היזם",
+   "source": "the brief's required wording; matches page_independent"
+  }
+ },
+ "labels": {
+  "render": {
+   "text": "הדמיה להמחשה",
+   "source": "required on every frame that shows a rendering; the page's own wording ('הדמיה להמחשה בלבד')"
+  },
+  "view": {
+   "text": "הדמיה להמחשה, נוף משוער",
+   "source": "required on every view card; the page's view section ('הנוף המשוער', 'להמחשה בלבד')"
+  }
+ },
+ "scenes": [
+  {
+   "id": "title",
+   "type": "title",
+   "dur": 5.2,
+   "render": true,
+   "image": {
+    "landscape": {
+     "src": "img/nadlan-developers/fit/rb-pool-360.jpg",
+     "focus": [
+      0.55,
+      0.5
+     ]
+    },
+    "portrait": {
+     "src": "img/nadlan-developers/fit/rb-pool-360.jpg",
+     "focus": [
+      0.62,
+      0.5
+     ]
+    }
+   },
+   "zoom": "in",
+   "title": {
+    "text": "חדר המכירות של הפרויקט, בעמוד אחד",
+    "source": "what the project pages do (1.72.265-1.72.345)"
+   },
+   "line": {
+    "text": "מה קונה רואה היום בעמוד פרויקט בנדל״ן",
+    "source": "the film's subject"
+   },
+   "small": {
+    "text": "ריינבו תל אביב ו-DUO תל אביב, 9.2026",
+    "source": "the two pages the screens come from"
+   }
+  },
+  {
+   "id": "building",
+   "type": "card",
+   "dur": 4.8,
+   "render": true,
+   "image": {
+    "landscape": {
+     "src": "img/nadlan-developers/fit/duo-stage-floor.jpg",
+     "focus": [
+      0.5,
+      0.45
+     ]
+    },
+    "portrait": {
+     "src": "img/nadlan-developers/fit/duo-stage-floor.jpg",
+     "focus": [
+      0.45,
+      0.4
+     ]
+    }
+   },
+   "zoom": "in",
+   "kicker": {
+    "text": "הבניין",
+    "source": "section name"
+   },
+   "title": {
+    "text": "הבניין בתלת ממד, על המגרש האמיתי",
+    "source": "the stage (project-stage.php): the lot, the towers and the city around by the Tel Aviv GIS layers"
+   },
+   "lines": [
+    {
+     "text": "קומה אחרי קומה, וכל כיוון במילים של המקום",
+     "source": "the stage's floor ring and the sectors' words"
+    }
+   ],
+   "source": {
+    "text": "לפי שכבות עיריית תל אביב-יפו. הדמיה להמחשה.",
+    "source": "the stage's source line on the pages"
+   }
+  },
+  {
+   "id": "pick",
+   "type": "views",
+   "dur": 11.0,
+   "render": true,
+   "label": {
+    "text": "צילום מסך מהאתר",
+    "source": "the screens are the live site's, captured by capture_dev.py"
+   },
+   "kicker": {
+    "text": "הקונה בוחר",
+    "source": "section name"
+   },
+   "items": [
+    {
+     "src": "img/nadlan-developers/fit/rb-stage-floor.jpg",
+     "from": "capture_dev.py (the live site, 28.9.2026)",
+     "title": {
+      "text": "קומה 25",
+      "source": "Rainbow's stage, floor 25 west"
+     },
+     "line": {
+      "text": "לכיוון הים, דירה לדוגמה על הבניין",
+      "source": "Rainbow's stage, floor 25 west"
+     }
+    },
+    {
+     "src": "img/nadlan-developers/fit/rb-view.jpg",
+     "from": "capture_dev.py (the live site, 28.9.2026)",
+     "title": {
+      "text": "הנוף והמפה",
+      "source": "the view from the floor and the area map"
+     },
+     "line": {
+      "text": "מה רואים מהגובה הזה, ומה יש סביב",
+      "source": "the view from the floor and the area map"
+     }
+    },
+    {
+     "src": "img/nadlan-developers/fit/rb-slice.jpg",
+     "from": "capture_dev.py (the live site, 28.9.2026)",
+     "title": {
+      "text": "חתך הקומה",
+      "source": "FloorSlice v87"
+     },
+     "line": {
+      "text": "התוכנית של הקומה, להמחשה",
+      "source": "FloorSlice v87"
+     }
+    }
+   ],
+   "source": {
+    "text": "צילומי מסך מעמוד ריינבו תל אביב, 28.9.2026",
+    "source": "capture_dev.py"
+   }
+  },
+  {
+   "id": "inside",
+   "type": "views",
+   "dur": 7.4,
+   "render": true,
+   "kicker": {
+    "text": "נכנסים פנימה",
+    "source": "section name"
+   },
+   "items": [
+    {
+     "src": "img/nadlan-developers/fit/rb-inside-warm.jpg",
+     "from": "capture_dev.py (the live site, 28.9.2026)",
+     "title": {
+      "text": "בתוך הדירה",
+      "source": "ApartmentTour, ApartmentStyles v80/v85"
+     },
+     "line": {
+      "text": "דירה לדוגמה ב־360°, בשלושה סגנונות עיצוב",
+      "source": "ApartmentTour, ApartmentStyles v80/v85"
+     }
+    },
+    {
+     "src": "img/nadlan-developers/fit/rb-pool-360.jpg",
+     "from": "capture_dev.py (the live site, 28.9.2026)",
+     "title": {
+      "text": "הבריכה על הגג",
+      "source": "FacilityRooms v83"
+     },
+     "line": {
+      "text": "המתקנים ב־360°",
+      "source": "FacilityRooms v83"
+     }
+    }
+   ],
+   "source": {
+    "text": "הדמיות להמחשה, לא לפי תוכנית מכר",
+    "source": "the pages' own caption"
+   }
+  },
+  {
+   "id": "with-you",
+   "type": "views",
+   "dur": 11.0,
+   "render": false,
+   "label": {
+    "text": "צילום מסך מהאתר",
+    "source": "the screens are the live site's, captured by capture_dev.py"
+   },
+   "kicker": {
+    "text": "והקונה ממשיך איתכם",
+    "source": "section name"
+   },
+   "items": [
+    {
+     "src": "img/nadlan-developers/fit/rb-basket.jpg",
+     "from": "capture_dev.py (the live site, 28.9.2026)",
+     "title": {
+      "text": "סל הדירה",
+      "source": "BasketOne v86"
+     },
+     "line": {
+      "text": "הדירה, העיצוב, הצוות והמחיר המלא, לנציג",
+      "source": "BasketOne v86"
+     }
+    },
+    {
+     "src": "img/nadlan-developers/fit/duo-deals.jpg",
+     "from": "capture_dev.py (the live site, 28.9.2026)",
+     "title": {
+      "text": "עסקאות",
+      "source": "DUO's ProjectDeals (1.72.342)"
+     },
+     "line": {
+      "text": "לפי קומה, כל שורה עם המקור שלה",
+      "source": "DUO's ProjectDeals (1.72.342)"
+     }
+    },
+    {
+     "src": "img/nadlan-developers/fit/rb-en.jpg",
+     "from": "capture_dev.py (the live site, 28.9.2026)",
+     "title": {
+      "text": "בחמש שפות",
+      "source": "the language pages (LanguagePages v84)"
+     },
+     "line": {
+      "text": "גם לקונים מחו״ל",
+      "source": "the language pages (LanguagePages v84)"
+     }
+    }
+   ],
+   "source": {
+    "text": "צילומי מסך מהאתר, 28.9.2026",
+    "source": "capture_dev.py"
+   }
+  },
+  {
+   "id": "outro",
+   "type": "outro",
+   "dur": 6.6,
+   "render": false,
+   "kicker": {
+    "text": "הפרויקט שלכם בנדל״ן",
+    "source": "the film's ask"
+   },
+   "actions": [
+    {
+     "text": "שיחה איתנו בוואטסאפ",
+     "source": "the site's WhatsApp link on every page",
+     "primary": true
+    },
+    {
+     "text": "nad-lan.co.il",
+     "source": "the site's domain",
+     "sub": "052-510-1555"
+    }
+   ]
+  }
+ ]
+}
