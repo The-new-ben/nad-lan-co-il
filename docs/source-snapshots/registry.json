@@ -21652,6 +21652,44 @@
     "ecocity_render_leak": 0,
     "secret_tokens": 0
    }
+  },
+  {
+   "ts": "20260928T031406Z",
+   "sha256": "10ad1d834cac13cc7183bdd4bcc080b0ec659fa13a9ce092729efb58b8a3c129",
+   "bytes": 293190,
+   "status": 200,
+   "checks": {
+    "title": "רובע שדה דב — הסיור | nad-lan.co.il",
+    "title_len": 35,
+    "meta_desc": "סיור תלת־ממדי ברובע שדה דב, תל אביב — אור יום ים־תיכוני, חיי רחוב, טיסת היכרות וסיור חופשי עד ציר איינשטיין. הדמיה להמחשה.",
+    "meta_desc_len": 122,
+    "canonical": "",
+    "canonical_count": 0,
+    "robots_meta": "noindex",
+    "hreflang_count": 0,
+    "favicon_count": 0,
+    "h1_count": 1,
+    "h1_first": "רובע שדה דב — הסיור",
+    "jsonld_blocks": 0,
+    "jsonld_faqpage": 0,
+    "jsonld_breadcrumb": 0,
+    "scripts_ext": [
+     "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js",
+     "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    ],
+    "scripts_count": 5,
+    "styles_count": 3,
+    "duplicate_ids": [],
+    "og_image": "",
+    "emdash_visible": 12,
+    "blacklist_hits": [],
+    "internal_words": [],
+    "showroom_payload": false,
+    "notice_count": 0,
+    "notice_below_article_head": true,
+    "ecocity_render_leak": 0,
+    "secret_tokens": 0
+   }
   }
  ],
  "https://nad-lan.co.il/tour/somail/": [
@@ -21735,6 +21773,44 @@
    "ts": "20260928T030300Z",
    "sha256": "9781cd3d6dbf7be0607953a3902d690a51445e7c42867fa500cb1f626781adfc",
    "bytes": 261703,
+   "status": 200,
+   "checks": {
+    "title": "מתחם סומייל — הסיור | nad-lan.co.il",
+    "title_len": 35,
+    "meta_desc": "סיור תלת־ממדי במתחם סומייל, אבן גבירול פינת ארלוזורוב — מגדלי DUO, גן העיר וכיכר רבין. טיסת היכרות, סיור חופשי ומכונת זמן 2026/2035. הדמיה להמחשה.",
+    "meta_desc_len": 146,
+    "canonical": "",
+    "canonical_count": 0,
+    "robots_meta": "noindex",
+    "hreflang_count": 0,
+    "favicon_count": 0,
+    "h1_count": 1,
+    "h1_first": "מתחם סומייל — הסיור",
+    "jsonld_blocks": 0,
+    "jsonld_faqpage": 0,
+    "jsonld_breadcrumb": 0,
+    "scripts_ext": [
+     "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js",
+     "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    ],
+    "scripts_count": 5,
+    "styles_count": 3,
+    "duplicate_ids": [],
+    "og_image": "",
+    "emdash_visible": 23,
+    "blacklist_hits": [],
+    "internal_words": [],
+    "showroom_payload": false,
+    "notice_count": 0,
+    "notice_below_article_head": true,
+    "ecocity_render_leak": 0,
+    "secret_tokens": 0
+   }
+  },
+  {
+   "ts": "20260928T031406Z",
+   "sha256": "f034e09f59c302159ae8e170a466fbcba124cc3646f26e1efc21df6ee2f1a5a0",
+   "bytes": 262323,
    "status": 200,
    "checks": {
     "title": "מתחם סומייל — הסיור | nad-lan.co.il",

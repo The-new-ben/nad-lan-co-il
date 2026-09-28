@@ -409,7 +409,8 @@
     #modePill{top:calc(112px + env(safe-area-inset-top));font-size:13px;padding:8px 16px}
     #sndBtn{width:44px;height:44px}
     .badge{font-size:12px}
-    #mmWrap{left:10px;bottom:auto;top:calc(232px + env(safe-area-inset-top));padding:7px 7px 6px}
+    #mmWrap{left:10px;bottom:auto;top:calc(196px + env(safe-area-inset-top));padding:7px 7px 6px} /* v60: under the free-tour button (ends at 187px since v59) */
+    #exHelp{top:calc(406px + env(safe-area-inset-top));left:12px;right:12px;transform:none;margin-inline:auto;width:max-content;max-width:calc(100vw - 24px);text-wrap:balance} /* v60: the help box below the mini map (it was centred on the screen, over the map, and only half the screen wide: five lines), full width in balanced lines */
     .mmbtns button{font-size:13px;padding:0 4px;min-height:44px}
     #mmSky{display:none} /* the exSide overview button covers it — keeps 2 buttons readable at >=13px */
     #waFab{bottom:calc(30px + env(safe-area-inset-bottom));width:48px;height:48px}
@@ -1005,6 +1006,7 @@ const I18N = {
     how: 'איך זזים?', howAria: 'איך זזים? הצגת ההסבר',
     mmAria: 'מפת הרובע — הקישו למעבר לנקודה', mmSky: 'מבט־על ↗', mmEast: 'לגן העיר ↓', mmEnd: 'לפרויקטים במתחם',
     waFab: 'וואטסאפ ישיר',
+    yearNow: 'היום<small>2026</small>', yearQ: 'הרובע<small>2035</small>',
     helpMob: 'גררו כדי להביט סביב · חיצים למטה = תנועה · הקישו על בניין לפרטים · הקשה כפולה על הקרקע או על בניין מקרבת לשם',
     helpDesk: 'גררו כדי להביט סביב · WASD או חיצים לתנועה · קליק על בניין לפרטים · דאבל־קליק על הקרקע או על בניין מקרב לשם',
     ctaGo: 'לחצו כדי לגשת ←', ctaWalkHere: 'לחצו לסיור חופשי כאן ←', ctaDetails: 'לחצו לפרטים ←',
@@ -1083,6 +1085,7 @@ const I18N = {
     how: 'How to move?', howAria: 'How to move? Show the help',
     mmAria: 'Compound map — tap to travel there', mmSky: 'Overview ↗', mmEast: 'To Gan Ha’ir ↓', mmEnd: 'The compound’s projects',
     waFab: 'WhatsApp direct',
+    yearNow: 'Today<small>2026</small>', yearQ: 'The compound<small>2035</small>',
     helpMob: 'Drag to look around · arrows below to move · tap a building for details · double-tap the ground or a building to go there',
     helpDesk: 'Drag to look around · WASD or arrow keys to move · click a building for details · double-click the ground or a building to travel there',
     ctaGo: 'Click to approach →', ctaWalkHere: 'Click for a free walk here →', ctaDetails: 'Click for details →',
@@ -1167,6 +1170,7 @@ const I18N_TXT = [
   ['#gFly', 'gFly'], ['#gWalk', 'gWalk'], ['#gEarth', 'gEarth'], ['#gHub', 'gHub'],
 ];
 const I18N_HTML = [
+  ['#year2026', 'yearNow'], ['#year2035', 'yearQ'],
   ['#card-ganhair li:nth-child(1)', 'liGh1'], ['#card-ganhair li:nth-child(2)', 'liGh2'], ['#card-ganhair li:nth-child(3)', 'liGh3'],
   ['#card-duo li:nth-child(1)', 'liDuo1'], ['#card-duo li:nth-child(2)', 'liDuo2'],
   ['#card-duo li:nth-child(3)', 'liDuo3'], ['#card-duo li:nth-child(4)', 'liDuo4'],
