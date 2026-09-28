@@ -155,7 +155,14 @@ only inside runners; every release through a runner with drift check, lint, back
     - The repeated "סוג" line is gone, also on "הצגת עוד" cards.
     - The phone card is 518px (was 656).
     - Found, for the next release: "עוד פרטים על X -" ends in a dash (the x-catalog-plus snippet cuts the title at " - ").
-  - **Next:** the project pages (content first is OK on the three with a stage), then HAD-332's remainder (Aurelia's showroom H1, DUO's lead, the language siblings).
+  - 1.72.301 (DS ProjectTitle v50, artifact versions 58-59; HAD-332): **the visible H1 on showroom and language pages.**
+    - DUO had no answer paragraph and a hidden H1. Aurelia and the English Rainbow had hidden H1s.
+    - Now the visible H1 sits right before the answer on those pages too.
+    - DUO's answer is its article's "שורה תחתונה", word for word, right after the breadcrumbs. The article keeps every word, and its block is not shown twice.
+    - The catalogue's "עוד פרטים על X -" lost its dash.
+    - content_first_check passes on the fleet: Rainbow, DUO, Aurelia, H-Infinity, Dimri Yama, Ashira, Einstein, Rainbow-en and DUO-en.
+    - Found: H-Infinity in English has no answer paragraph at all.
+  - **Next:** the language pages' answer paragraphs (H-Infinity EN first; their text is the owner's article, so the lead comes from it, never written anew), then the home page.
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner

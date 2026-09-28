@@ -1082,7 +1082,7 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
 		echo nadlan_dir_css();
 		// ProjectCard v49: the enrichment's "סוג" repeats the badge on the image; it goes (also on cards "הצגת עוד" adds)
-		echo '<script id="nadlan-pc49">(function(){function d(r){(r||document).querySelectorAll(".nldc-project").forEach(function(c){var t=c.querySelector(".nldcp-type");if(!t)return;c.querySelectorAll(".nlcp-facts > div").forEach(function(f){var dt=f.querySelector("dt"),dd=f.querySelector("dd");if(dt&&dd&&dt.textContent.trim()==="סוג"&&dd.textContent.trim()===t.textContent.trim()){var l=f.parentNode;f.remove();if(l&&!l.children.length)l.remove();}});});}'
+		echo '<script id="nadlan-pc49">(function(){function d(r){(r||document).querySelectorAll(".nldc-project").forEach(function(c){var t=c.querySelector(".nldcp-type");if(!t)return;c.querySelectorAll(".nlcp-facts > div").forEach(function(f){var dt=f.querySelector("dt"),dd=f.querySelector("dd");if(dt&&dd&&dt.textContent.trim()==="סוג"&&dd.textContent.trim()===t.textContent.trim()){var l=f.parentNode;f.remove();if(l&&!l.children.length)l.remove();}});var s=c.parentNode&&c.nextElementSibling&&c.nextElementSibling.querySelector(".nlcp-more summary span");if(s){s.textContent=s.textContent.replace(/\\s+[-\\u2013]\\s*$/,"");}});}'
 			. 'function go(){d();var g=document.querySelector(".nldir-results");if(g&&window.MutationObserver){new MutationObserver(function(){d(g);}).observe(g,{childList:true});}}'
 			. 'if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",go);}else{go();}})();</script>';
 		?>

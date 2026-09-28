@@ -512,8 +512,7 @@ if ( ! function_exists( 'nadlan_pt_on' ) ) {
 		if ( is_admin() || ! is_singular( 'nadlan_project' ) || nadlan_ps_current() ) { return $on; } // Rainbow has its own hero
 		$id = (int) get_queried_object_id();
 		if ( ! $id || post_password_required( $id ) || get_post_meta( $id, '_nadlan_private_unit_journey', true ) ) { return $on; }
-		if ( function_exists( 'nadlan_project_mode' ) && 'showroom' === nadlan_project_mode( $id ) ) { return $on; } // the theatre shows the title
-		if ( preg_match( '/-(en|fr|ru|ar)$/', (string) get_post_field( 'post_name', $id ) ) ) { return $on; } // language siblings: later
+		// ProjectTitle v50 (28.9.2026): showroom pages (Aurelia, DUO) and the language pages too; the compose fails open
 		return $on = true;
 	}
 }
@@ -523,7 +522,20 @@ if ( ! function_exists( 'nadlan_pt_compose' ) ) {
 		$b = strpos( $html, '<body' );
 		if ( false === $b ) { return $html; }
 		$lead = strpos( $html, '<div class="nl-lead">', $b );
-		if ( false === $lead ) { return $html; }
+		if ( false === $lead ) {
+			// ProjectTitle v50: no answer paragraph (DUO), but the article's "שורה תחתונה": its words, as they are, right after
+			// the breadcrumbs; the article keeps every word
+			if ( ! preg_match( '#<div class="bottom-line">(.*?)</div>#s', $html, $bl, PREG_OFFSET_CAPTURE, $b ) ) { return $html; }
+			$txt = trim( preg_replace( '/\s+/u', ' ', wp_strip_all_tags( preg_replace( '#<strong>\s*שורה תחתונה:?\s*</strong>#u', '', $bl[1][0] ) ) ) );
+			$nav = strpos( $html, '<nav class="nlptop"', $b );
+			$end = false === $nav ? false : strpos( $html, '</nav>', $nav );
+			if ( mb_strlen( $txt ) < 60 || false === $end ) { return $html; }
+			$end += 6;
+			// the article's block, now the answer at the top, is not shown a second time a screen below (it stays in the source)
+			$html = substr( $html, 0, $bl[0][1] ) . '<div class="bottom-line" data-nl-lead="1">' . substr( $html, $bl[0][1] + strlen( '<div class="bottom-line">' ) );
+			$html = substr( $html, 0, $end ) . '<div class="nl-lead"><p>' . esc_html( $txt ) . '</p></div>' . substr( $html, $end );
+			$lead = $end;
+		}
 		if ( ! preg_match( '#<h1\b[^>]*\bid="nl-project-page-title"[^>]*>(.*?)</h1>#s', $html, $m, PREG_OFFSET_CAPTURE, $b ) ) { return $html; }
 		$text = trim( $m[1][0] );
 		if ( '' === $text ) { return $html; }
@@ -554,6 +566,7 @@ add_action( 'template_redirect', function () {
 add_action( 'wp_head', function () {
 	if ( ! nadlan_pt_on() ) { return; }
 	echo '<style id="nadlan-pt-css">:root body h1.nlpt-h1{font-family:"Frank Ruhl Libre","Noto Serif Hebrew",Georgia,serif!important;font-weight:600!important;font-size:34px!important;line-height:1.15!important;color:#14212b!important;margin:18px 0 12px!important;padding:0 26px!important;box-sizing:border-box;text-wrap:balance;text-align:start!important;letter-spacing:-.01em;max-width:none!important}'
+		. ':root body .bottom-line[data-nl-lead]{display:none!important}'
 		. '@media(max-width:760px){:root body h1.nlpt-h1{font-size:27px!important;margin:14px 0 10px!important;padding:0 16px!important}}</style>' . "\n";
 }, 999 );
 
