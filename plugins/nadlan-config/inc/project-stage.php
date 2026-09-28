@@ -152,6 +152,23 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 				),
 				// example apartments (the owner, 25.9.2026): one per face of each tower floor; true bearings from the GIS footprints
 				'units'          => array( array( 'n', 10 ), array( 'e', 100 ), array( 's', 190 ), array( 'w', 280 ) ),
+				// ProjectDeals (HAD-365, research docs/research/2026-09-28-duo/duo-deals.md): the signed sales tied to a floor, three, from
+				// the company's report of 12.9.2021 as Merkaz HaNadlan (13.9.2021) and Globes (11.10.2021) quoted it: pre-sale sales to
+				// the company's insiders, labelled so. The press names the buyers; we never do. Floor 43 and a penthouse (Israel Hayom,
+				// 4.2021) were purchase requests, not contracts, and stay out. Price per m² calculated: the price over the net area.
+				'deals_intro'    => 'הדירות שנמכרו בפרויקט ופורסמו עם הקומה שלהן, לפי דיווח החברה כפי שפורסם בעיתונות. לא כל העסקאות פורסמו, ועסקאות של בניינים שכנים אינן כאן.',
+				'deals'          => array(
+					array( 'floor' => '17', 'n' => 17, 'bld' => 'הבניין השני בפרויקט', 'apt' => '4 חדרים · כ-102 מ״ר ומרפסת כ-17 מ״ר, עם חניה', 'price' => 'כ-7.44 מיליון ₪', 'psqm' => 'כ-72,900 ₪', 'date' => '9.2021', 'src' => 'מרכז הנדל״ן', 'url' => 'https://www.nadlancenter.co.il/article/4320', 'via' => 'לפי דיווח החברה: מכירה מוקדמת לבעלי עניין', 'note' => 'בקומה הזו בבניין השני נמכרה במכירה המוקדמת דירת 4 חדרים, כ-102 מ״ר, בכ-7.44 מיליון ₪ (9.2021)' ),
+					array( 'floor' => '16', 'n' => 16, 'bld' => 'הבניין השני בפרויקט', 'apt' => '4 חדרים · כ-102 מ״ר ומרפסת כ-17 מ״ר, עם חניה', 'price' => 'כ-7.33 מיליון ₪', 'psqm' => 'כ-71,900 ₪', 'date' => '9.2021', 'src' => 'מרכז הנדל״ן', 'url' => 'https://www.nadlancenter.co.il/article/4320', 'via' => 'לפי דיווח החברה: מכירה מוקדמת לבעלי עניין', 'note' => 'בקומה הזו בבניין השני נמכרה במכירה המוקדמת דירת 4 חדרים, כ-102 מ״ר, בכ-7.33 מיליון ₪ (9.2021)' ),
+					array( 'floor' => '12', 'n' => 12, 'bld' => 'הבניין השני בפרויקט', 'apt' => '4 חדרים · כ-102 מ״ר ומרפסת כ-17 מ״ר, עם חניה', 'price' => 'כ-7.03 מיליון ₪', 'psqm' => 'כ-68,900 ₪', 'date' => '9.2021', 'src' => 'מרכז הנדל״ן', 'url' => 'https://www.nadlancenter.co.il/article/4320', 'via' => 'לפי דיווח החברה: מכירה מוקדמת לבעלי עניין', 'note' => 'בקומה הזו בבניין השני נמכרה במכירה המוקדמת דירת 4 חדרים, כ-102 מ״ר, בכ-7.03 מיליון ₪ (9.2021)' ),
+				),
+				// the developer's Q2 2026 report (https://res.afi-g.com/about/Documents/2026/Q2-2026.pdf): 1.3 (372 of 510, signed
+				// contracts only), 7.13.2 (71K ₪/m² before VAT, contracts of 1-6.2026), 3.5 (12 units, 10,985K ₪ average incl. VAT)
+				'deals_sum'      => array(
+					array( '372 מתוך 510', 'דירות נמכרו עד 6.2026, לפי דוח היזם' ),
+					array( 'כ-71,000 ₪ למ״ר', 'המחיר הממוצע לפני מע״מ בחוזים שנחתמו ב-1-6.2026, לפי דוח היזם' ),
+					array( 'כ-11 מיליון ₪', 'המחיר הממוצע לדירה, כולל מע״מ, ב-12 הדירות שנמכרו ב-1-6.2026, לפי דוח היזם' ),
+				),
 				// the view and the beam start between the two towers (build_city_duo.py); each tower's centre is about 30 m away
 				'tower_lat'      => 32.085658,
 				'tower_lng'      => 34.783027,
@@ -381,7 +398,9 @@ if ( ! function_exists( 'nadlan_ps_deals' ) ) {
 		if ( count( $rows ) < 2 ) { return ''; }
 		$h  = '<div class="nlds nlps-dealswrap" dir="rtl" lang="he"><section class="nlpd" id="nlps-deals" aria-labelledby="nlpd-t">';
 		$h .= '<div class="nlpd__head"><p class="nlds-kicker">עסקאות בפרויקט</p><h2 class="nlpd__title" id="nlpd-t">דירות שנמכרו ב' . esc_html( $ps['name'] ) . ', לפי קומה</h2>';
-		$h .= '<p class="nlpd__intro">הדירות שנמכרו בפרויקט ופורסמו עם הקומה שלהן, לפי נתוני רשות המסים כפי שפורסמו בעיתונות. לא כל העסקאות פורסמו, ועסקאות של בניינים שכנים אינן כאן.</p></div>';
+		// the sources' own words per project (DuoInside, 28.9.2026: DUO's rows come from the company's report, not the Tax Authority)
+		$intro = ! empty( $ps['deals_intro'] ) ? (string) $ps['deals_intro'] : 'הדירות שנמכרו בפרויקט ופורסמו עם הקומה שלהן, לפי נתוני רשות המסים כפי שפורסמו בעיתונות. לא כל העסקאות פורסמו, ועסקאות של בניינים שכנים אינן כאן.';
+		$h .= '<p class="nlpd__intro">' . esc_html( $intro ) . '</p></div>';
 		if ( ! empty( $ps['deals_sum'] ) ) {
 			$h .= '<ul class="nlpd__sum">';
 			foreach ( (array) $ps['deals_sum'] as $t ) { $h .= '<li><b>' . esc_html( $t[0] ) . '</b><span>' . esc_html( $t[1] ) . '</span></li>'; }
