@@ -161,8 +161,8 @@ only inside runners; every release through a runner with drift check, lint, back
     - DUO's answer is its article's "שורה תחתונה", word for word, right after the breadcrumbs. The article keeps every word, and its block is not shown twice.
     - The catalogue's "עוד פרטים על X -" lost its dash.
     - content_first_check passes on the fleet: Rainbow, DUO, Aurelia, H-Infinity, Dimri Yama, Ashira, Einstein, Rainbow-en and DUO-en.
-    - Found: H-Infinity in English has no answer paragraph at all.
-  - **Next:** the language pages' answer paragraphs (H-Infinity EN first; their text is the owner's article, so the lead comes from it, never written anew), then the home page.
+    - (Corrected after the release: the "H-Infinity in English" failure was a guessed address. /projects/h-infinity-somail-tel-aviv-en/ is a 404, and the Hebrew page links to no language page, with no hreflang and no switcher. Nothing is broken.)
+  - **Next:** the home page.
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner
