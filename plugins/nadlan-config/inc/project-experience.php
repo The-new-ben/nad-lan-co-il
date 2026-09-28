@@ -445,6 +445,40 @@ html body.nlpc-project-page .nlpc-main .wp-block-post-content.is-layout-constrai
 html body.nlpc-project-page .nlpc-main .wp-block-post-content.is-layout-constrained > .nadlan-project-article{max-width:min(812px, calc(100% - 40px)) !important}
 }
 @media (max-width:767px){html body.nlpc-project-page .nlpc-main .wp-block-post-content.is-layout-constrained > :is(.nlcard,.nlpe){width:auto !important}}
+/* ProjectDossier v64 (design system, 28.9.2026): the dossier-format article (article.project-article, DUO) had no styles at all.
+   The facts and the data table become one spec sheet, the buyer checks numbered cards, hairlines between the questions, the
+   disclosure and the sources a quiet box. Presentation only: no word added or removed. */
+html body.nlpc-project-page .nadlan-project-article .project-article .fact-cards{display:block !important;margin:6px 0 30px !important;padding:2px 20px !important;background:#fff !important;border:1px solid #E2DCD0 !important;border-radius:16px !important;box-shadow:0 1px 2px rgba(27,26,23,.04) !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .fact-card{display:grid !important;grid-template-columns:128px minmax(0,1fr) !important;gap:16px !important;align-items:baseline !important;margin:0 !important;padding:14px 0 !important;border:0 !important;border-top:1px solid #EFE9DD !important;background:none !important;box-shadow:none !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .fact-card:first-child{border-top:0 !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .fact-card > br{display:none !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .fact-card .label{font-size:13px !important;font-weight:700 !important;line-height:1.5 !important;letter-spacing:.02em !important;color:#8A6A2E !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .fact-card .value{font-size:16px !important;font-weight:500 !important;line-height:1.65 !important;color:#1B1A17 !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .data-table table{display:block !important;width:100% !important;margin:8px 0 26px !important;padding:2px 20px !important;background:#fff !important;border:1px solid #E2DCD0 !important;border-radius:16px !important;border-collapse:separate !important;box-shadow:0 1px 2px rgba(27,26,23,.04) !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .data-table tbody{display:block !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .data-table tr{display:grid !important;grid-template-columns:minmax(0,36%) minmax(0,1fr) !important;gap:16px !important;align-items:baseline !important;margin:0 !important;padding:13px 0 !important;background:none !important;border:0 !important;border-top:1px solid #EFE9DD !important;border-radius:0 !important;box-shadow:none !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .data-table tr:first-child{border-top:0 !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .data-table :is(th,td){display:block !important;width:auto !important;padding:0 !important;margin:0 !important;background:none !important;border:0 !important;text-align:start !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .data-table th{font-size:13px !important;font-weight:700 !important;line-height:1.5 !important;color:#8A6A2E !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .data-table td{font-size:15.5px !important;font-weight:500 !important;line-height:1.6 !important;color:#1B1A17 !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .buyer-checklist{counter-reset:nlchk}
+html body.nlpc-project-page .nadlan-project-article .project-article .buyer-checklist > p{counter-increment:nlchk;position:relative !important;max-width:none !important;margin:0 0 12px !important;padding:16px 18px !important;padding-inline-start:60px !important;background:#fff !important;border:1px solid #E2DCD0 !important;border-radius:14px !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .buyer-checklist > p::before{content:counter(nlchk);position:absolute;inset-inline-start:16px;top:18px;width:30px;height:30px;border-radius:50%;background:#1F4B5C;color:#fff;font-size:14px;font-weight:700;line-height:30px;text-align:center}
+html body.nlpc-project-page .nadlan-project-article .project-article .faq > h3{margin:0 !important;padding-top:20px !important;border-top:1px solid #E2DCD0 !important;font-size:19px !important;line-height:1.45 !important;font-weight:600 !important;color:#1B1A17 !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .faq > h2 + h3{padding-top:4px !important;border-top:0 !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .faq > h3 + p{margin:6px 0 20px !important}
+html body.nlpc-project-page .nadlan-project-article .project-article :is(.disclaimer,.sources){margin:28px 0 0 !important;padding:4px 20px 16px !important;background:#F3EEE3 !important;border-radius:14px !important}
+html body.nlpc-project-page .nadlan-project-article .project-article :is(.disclaimer,.sources) h2{margin:14px 0 6px !important;font-size:18px !important}
+html body.nlpc-project-page .nadlan-project-article .project-article :is(.disclaimer,.sources) p{max-width:none !important;margin:0 !important;font-size:14px !important;line-height:1.75 !important;color:#5A5347 !important;overflow-wrap:anywhere !important}
+html body.nlpc-project-page .nadlan-project-article .project-article + .nl-provenance .byline,html body.nlpc-project-page .nadlan-project-article .nl-provenance .byline{font-size:13px !important;line-height:1.6 !important;color:#6D665C !important}
+html body.nlpc-project-page .nadlan-project-article .project-article > .intro{max-width:72ch !important}
+@media (max-width:600px){
+html body.nlpc-project-page .nadlan-project-article .project-article .fact-cards,html body.nlpc-project-page .nadlan-project-article .project-article .data-table table{padding:2px 16px !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .fact-card,html body.nlpc-project-page .nadlan-project-article .project-article .data-table tr{grid-template-columns:1fr !important;gap:2px !important;padding:12px 0 !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .buyer-checklist > p{padding:14px !important;padding-inline-start:52px !important}
+html body.nlpc-project-page .nadlan-project-article .project-article .buyer-checklist > p::before{inset-inline-start:12px;top:16px;width:28px;height:28px;line-height:28px}
+html body.nlpc-project-page .nadlan-project-article .project-article :is(.disclaimer,.sources){padding:2px 16px 14px !important}
+}
 ' );
 		wp_register_script( 'nadlan-pjx-js', false, $has_map ? array( 'leaflet' ) : array(), '1.69.85', true );
 		wp_enqueue_script( 'nadlan-pjx-js' );
