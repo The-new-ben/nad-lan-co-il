@@ -1,0 +1,27 @@
+{
+  "released": "1.72.362",
+  "from": "1.72.361",
+  "at": "2026-09-28 22:09:22",
+  "files": {
+    "data/register-facts.json": "45fdb801d30f08e6dd99dcaac3857328",
+    "assets/pronet/procard.css": "216007104f42e31ff6c67e97d9933036",
+    "inc/pro-card.php": "36ec6fd63b883382a6f6b130ca5cd94b",
+    "inc/directory.php": "316c3ec36294de41cf40a4aef5bc37b9",
+    "inc/cards-render.php": "3d58a859943195c330d0c5b6142374cd",
+    "inc/schema.php": "cb53de2e86ff8835098cdc8c93c65748",
+    "inc/rest-privacy.php": "3bfb22a010758bba9a26853ccf81c12b",
+    "inc/professional-profile.php": "f5fc31c3f09a05ad96ebb34501ea6646",
+    "nadlan-config.php": "9b1ae3071a160097541499c519cdb677"
+  },
+  "live_before": {
+    "data/register-facts.json": "missing",
+    "assets/pronet/procard.css": "missing",
+    "inc/pro-card.php": "missing",
+    "inc/directory.php": "84987c3f9042fb5da462bce2bcad6cb6",
+    "inc/cards-render.php": "40a48a5780af8a495edd52cac4dea073",
+    "inc/schema.php": "d5d5d7bbbd24656b6cf66fed5836a4f2",
+    "inc/rest-privacy.php": "6f71f64d3f376cca2987451b8a71cec5",
+    "inc/professional-profile.php": "d4e30054855352b7799c9fd99b385762",
+    "nadlan-config.php": "b1fd0f64950b355446d76ab2cfcc9c3e"
+  }
+}

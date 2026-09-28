@@ -75,3 +75,14 @@ The article itself is to be written by the owner's ChatGPT Pro from the prompt f
   "DUO 510 apartments": official figures are ~278 homes, ~267 m² retail, and DUO 668 homes (510 is the partners' share).
 - Language pages for H Infinity do not exist yet; the fleet pattern would be `/projects/h-infinity-somail-tel-aviv-{en,ru,fr,ar}/`.
   Run `tools/gsc/url_word_audit.py` before minting them (URL word law).
+
+## 28.9.2026 night: the Hebrew article from ChatGPT Pro (the owner's account, Chrome "gmktec")
+- Conversation: https://chatgpt.com/c/6abaa318-0a58-83ed-900e-adac1adff8cf (worked 38 min; the prompt: prompt-he.md, attached as a file).
+- Result: SERP and competitor table, SEO title and description, lead paragraph, the full article (facts table with a source per
+  value, the floors/units conflict table 47/49/51/52/53 and 237/273/277/278/287, 25 recorded deals 2024-2026 with medians, the
+  August promotion and its real yield arithmetic, facilities with what is NOT published, occupancy and the municipal condition
+  (Bavli 3 plan deposit 31.10.2026), Somail's history and neighbours, walking distances, the light rail dates, the 8 checks
+  before signing, foreign buyers: purchase tax 2026 brackets, BOI 329 50% LTV for non-residents), FAQ.
+- Every legal/contract statement carries "[לאישור הבעלים]": publishing waits for the owner's word on those lines.
+- Next: pull the text into article-he.html, check it against facts.md and the checklist (>= 5,000 net words), fix the page
+  errors listed in README (map pin 154 m off, address, stale floors/units, Arlozorov 71 m, the LRT claim), publish with a backup.

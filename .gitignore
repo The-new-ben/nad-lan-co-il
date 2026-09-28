@@ -41,3 +41,9 @@ scripts/project-stage/*.log
 
 # headless Chrome profiles made by assets/skin-a/brand/render-brand.py (empty, checked 25.9.2026)
 assets/skin-a/brand/out/ud-*/
+
+# cached API answers of the offline builders (Mapbox walking, Overpass)
+scripts/project-stage/_cache/
+
+# the contractors register extract (17,874 names, rebuilt by scripts/pros/build_register_facts.py); the plugin ships only business facts
+scripts/pros/data/

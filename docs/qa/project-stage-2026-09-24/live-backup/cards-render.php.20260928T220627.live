@@ -26,21 +26,10 @@ if ( ! function_exists( 'nadlan_card_fact_rows' ) ) {
 			$rows['סוג']               = function_exists( 'nadlan_dir_prof_label' ) ? nadlan_dir_prof_label( $g( 'profession' ), $id )
 				: ( $prof_map[ $g( 'profession' ) ] ?? ( preg_match( '/^[a-z0-9_\-]+$/', $g( 'profession' ) ) ? '' : $g( 'profession' ) ) );
 			$rows['מספר רשם הקבלנים']  = $g( 'registry_number' );
-			// ProNetwork v98 (28.9): what the contractors register says, in words (since, branches with classification)
-			$rf = function_exists( 'nadlan_pc_facts' ) ? nadlan_pc_facts( $id ) : null;
-			if ( $rf ) {
-				$rows['רשום בפנקס מאז'] = ! empty( $rf['y'] ) ? (string) (int) $rf['y'] : '';
-				$rows['ענפים וסיווג']   = implode( ' · ', array_map( function ( $b ) { return trim( $b[0] . ' ' . $b[1] ) . ( ! empty( $b[2] ) ? ' (ללא הגבלת היקף)' : '' ); }, (array) $rf['b'] ) );
-				$rows['עבודות ממשלתיות'] = ! empty( $rf['r'] ) ? 'מוכר' : '';
-			} else {
-				$rows['סיווג וענפים'] = $g( 'classification' );
-			}
+			$rows['סיווג וענפים']      = $g( 'classification' );
 			$rows['עיר']               = $g( 'city' );
-			// a private person from a public register who has not taken over the profile: the city, never a home address
-			$rows['כתובת']             = ( function_exists( 'nadlan_pc_is_private' ) && nadlan_pc_is_private( $id ) ) ? '' : $g( 'address' );
-			// years_active holds a count of years on some cards and a founding year on others ("ותק 1963" was printed)
-			$ya = (int) $g( 'years_active' );
-			if ( $ya > 1800 && $ya <= (int) gmdate( 'Y' ) ) { $rows['פעילה מאז'] = (string) $ya; } elseif ( $ya > 0 && $ya < 120 ) { $rows['ותק (שנים)'] = (string) $ya; }
+			$rows['כתובת']             = $g( 'address' );
+			$rows['ותק (שנים)']        = $g( 'years_active' );
 			$rows['פרויקטים']          = (int) $g( 'project_count' ) ?: '';
 		} elseif ( $type === 'nadlan_project' ) {
 			// Design audit 2026-07-02 (D3): NEVER leak raw machine enums like

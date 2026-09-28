@@ -130,7 +130,7 @@ if ( ! function_exists( 'nadlan_prof_monogram_svg' ) ) {
 			. '<rect x="1.5" y="1.5" width="93" height="93" rx="24" fill="#FFFDFC" stroke="' . esc_attr( $color ) . '" stroke-opacity=".3" stroke-width="1.5"/>'
 			. '<rect x="1.5" y="1.5" width="93" height="93" rx="24" fill="' . esc_attr( $color ) . '" fill-opacity=".08"/>'
 			. '<rect x="11" y="11" width="74" height="74" rx="16" fill="none" stroke="#9C7A3C" stroke-opacity=".55" stroke-width="1.2"/>'
-			. '<text x="48" y="59" text-anchor="middle" font-family="Frank Ruhl Libre,Noto Serif Hebrew,serif" font-size="31" font-weight="600" fill="' . esc_attr( $color ) . '" style="fill:' . esc_attr( $color ) . '!important">' . esc_html( $ini ) . '</text>' /* skin-a.css paints .nlpp-avatar text near-white with !important (the old circle's letters) */
+			. '<text x="48" y="59" text-anchor="middle" font-family="Frank Ruhl Libre,Noto Serif Hebrew,serif" font-size="31" font-weight="600" fill="' . esc_attr( $color ) . '" style="fill:' . esc_attr( $color ) . '">' . esc_html( $ini ) . '</text>' /* skin-a.css paints .nlpp-avatar text near-white (the old circle's letters) */
 			. '</svg>';
 	}
 }

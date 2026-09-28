@@ -60,26 +60,23 @@ if ( ! function_exists( 'nadlan_card_jsonld' ) ) {
 		if ( $type === 'nadlan_professional' ) {
 			$prof = (string) $g( 'profession' );
 			$ld_type = ( $prof === 'kablan' ) ? 'GeneralContractor' : 'LocalBusiness';
-			// a private person from a public register who has not taken over the profile: no phone, e-mail or street (v98)
-			$priv = function_exists( 'nadlan_pc_is_private' ) && nadlan_pc_is_private( $id );
 			$data = array(
 				'@context' => 'https://schema.org', '@type' => $ld_type,
 				'name' => $name, 'url' => $url,
-				'telephone' => ( ! $priv && $g( 'phone' ) ) ? $g( 'phone' ) : null,
-				'email' => ( ! $priv && $g( 'email' ) ) ? $g( 'email' ) : null,
+				'telephone' => $g( 'phone' ) ?: null,
+				'email' => $g( 'email' ) ?: null,
 				'identifier' => $g( 'registry_number' ) ? array(
 					'@type' => 'PropertyValue', 'propertyID' => 'מספר רשם הקבלנים', 'value' => $g( 'registry_number' )
 				) : null,
 				'address' => array_filter( array(
 					'@type' => 'PostalAddress',
-					'streetAddress' => ( ! $priv && $g( 'address' ) ) ? $g( 'address' ) : null,
+					'streetAddress' => $g( 'address' ) ?: null,
 					'addressLocality' => $g( 'city' ) ?: null,
 					'addressCountry' => 'IL',
 				) ),
 				'areaServed' => $g( 'areas_served' ) ?: $g( 'city' ) ?: null,
 			);
-			// only real, verified reviews go to search engines (the seeded demo ratings never did belong there)
-			if ( (float) $g( 'rating' ) > 0 && (int) $g( 'reviews_count' ) > 0 && $g( 'reviews_verified' ) ) {
+			if ( (float) $g( 'rating' ) > 0 && (int) $g( 'reviews_count' ) > 0 ) {
 				$data['aggregateRating'] = array(
 					'@type' => 'AggregateRating',
 					'ratingValue' => (float) $g( 'rating' ), 'reviewCount' => (int) $g( 'reviews_count' ),

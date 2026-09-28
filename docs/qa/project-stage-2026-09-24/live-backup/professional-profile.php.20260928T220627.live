@@ -117,20 +117,13 @@ add_action( 'save_post_nadlan_professional', function ( $post_id ) {
 /* ---------------- brand monogram portrait (design-consistent "generic picture") ---------------- */
 if ( ! function_exists( 'nadlan_prof_monogram_svg' ) ) {
 	function nadlan_prof_monogram_svg( $name, $color ) {
-		// design system ProNetwork v98: the same designed monogram as the network card (a rounded square, two letters in the
-		// heading face, a thin gold frame), not a coloured circle with initials
-		$pname = preg_split( '/\s+·\s+/u', trim( wp_strip_all_tags( (string) $name ) ), 2 )[0];
-		if ( function_exists( 'nadlan_pc_mono' ) ) {
-			$ini = nadlan_pc_mono( $pname );
-		} else {
-			$parts = preg_split( '/\s+/u', $pname );
-			$ini   = mb_substr( $parts[0] ?? '', 0, 1 ) . ( isset( $parts[1] ) ? mb_substr( $parts[1], 0, 1 ) : '' );
-		}
-		return '<svg class="nlpp-avatar nlpp-mono" viewBox="0 0 96 96" role="img" aria-label="' . esc_attr( $pname ) . '">'
-			. '<rect x="1.5" y="1.5" width="93" height="93" rx="24" fill="#FFFDFC" stroke="' . esc_attr( $color ) . '" stroke-opacity=".3" stroke-width="1.5"/>'
-			. '<rect x="1.5" y="1.5" width="93" height="93" rx="24" fill="' . esc_attr( $color ) . '" fill-opacity=".08"/>'
-			. '<rect x="11" y="11" width="74" height="74" rx="16" fill="none" stroke="#9C7A3C" stroke-opacity=".55" stroke-width="1.2"/>'
-			. '<text x="48" y="59" text-anchor="middle" font-family="Frank Ruhl Libre,Noto Serif Hebrew,serif" font-size="31" font-weight="600" fill="' . esc_attr( $color ) . '" style="fill:' . esc_attr( $color ) . '!important">' . esc_html( $ini ) . '</text>' /* skin-a.css paints .nlpp-avatar text near-white with !important (the old circle's letters) */
+		$parts = preg_split( '/\s+/u', trim( (string) $name ) );
+		$ini   = mb_substr( $parts[0] ?? '', 0, 1 ) . ( isset( $parts[1] ) ? '.' . mb_substr( $parts[1], 0, 1 ) : '' );
+		return '<svg class="nlpp-avatar" viewBox="0 0 96 96" role="img" aria-label="' . esc_attr( $name ) . '">'
+			. '<circle cx="48" cy="48" r="46" fill="#FFFDFC" stroke="' . esc_attr( $color ) . '" stroke-width="2"/>'
+			. '<circle cx="48" cy="48" r="40" fill="' . esc_attr( $color ) . '"/>'
+			. '<path d="M20 14 A46 46 0 0 1 76 14" fill="none" stroke="#9C7A3C" stroke-width="2.4" stroke-linecap="round"/>'
+			. '<text x="48" y="58" text-anchor="middle" font-family="\'Frank Ruhl Libre\',serif" font-size="30" font-weight="700" fill="#FAF8F3">' . esc_html( $ini ) . '</text>'
 			. '</svg>';
 	}
 }
@@ -192,15 +185,12 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 		$pm   = nadlan_prof_meta_of( (string) $g( 'profession' ) );
 		$name = get_the_title( $id );
 		$city = (string) $g( 'city' );
-		// stars only from real, verified reviews (ProNetwork v98: the seeded ratings are not shown)
-		$rating = $g( 'reviews_verified' ) ? (float) $g( 'rating' ) : 0.0; $reviews = (int) $g( 'reviews_count' );
+		$rating = (float) $g( 'rating' ); $reviews = (int) $g( 'reviews_count' );
 		$years  = (int) $g( 'years_active' ); $projects_n = (int) $g( 'project_count' );
 		$demo   = (bool) $g( 'is_demo' );
 		$is_broker    = ( 'metavech' === (string) $g( 'profession' ) );
 		$show_contact = function_exists( 'nadlan_tier_can_show' ) ? nadlan_tier_can_show( $id, 'phone' ) : false;
 		$phone  = ( $show_contact || $is_broker ) ? (string) $g( 'phone' ) : '';
-		// a private person from a public register who has not taken over the profile: no phone (ProNetwork v98)
-		if ( function_exists( 'nadlan_pc_is_private' ) && nadlan_pc_is_private( $id ) ) { $phone = ''; }
 		$wa     = preg_replace( '/\D+/', '', (string) get_option( 'nadlan_whatsapp_e164', '' ) );
 		$own_wa = $is_broker ? nadlan_prof_wa_digits( $phone ) : '';
 		$person = nadlan_prof_person_name( $id );
@@ -259,7 +249,7 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 				<?php /* The badge says "checked", so it needs a recorded check (verified_at) or a card imported from the official register.
 				   A filled registry or licence field alone is only what someone typed (HAD-249). */
 				if ( $is_broker && '' !== $lic ) : ?><span class="<?php echo $in_reg ? 'nlpp-ver' : 'nlpp-lic'; ?>"><?php echo $in_reg ? '✓ ' : ''; ?>רישיון תיווך <span class="nlpp-num"><?php echo esc_html( $lic ); ?></span><?php echo $in_reg ? ', מאומת בפנקס המתווכים' : ''; ?></span>
-				<?php elseif ( $in_reg && 'pinkas_hakablanim' === (string) $g( 'source' ) && '' !== trim( (string) $g( 'registry_number' ) ) ) : ?><?php $nlpp_rf = function_exists( 'nadlan_pc_facts' ) ? nadlan_pc_facts( $id ) : null; /* v98: the year from the register */ ?><span class="nlpp-ver">✓ רשום בפנקס הקבלנים<?php echo ! empty( $nlpp_rf['y'] ) ? ' מאז ' . (int) $nlpp_rf['y'] : ''; ?>, מספר <span class="nlpp-num"><?php echo esc_html( trim( (string) $g( 'registry_number' ) ) ); ?></span></span><?php if ( ! empty( $nlpp_rf['r'] ) ) : ?><span class="nlpp-lic">מוכר לעבודות ממשלתיות</span><?php endif; ?>
+				<?php elseif ( $in_reg && 'pinkas_hakablanim' === (string) $g( 'source' ) && '' !== trim( (string) $g( 'registry_number' ) ) ) : ?><span class="nlpp-ver">✓ רשום בפנקס הקבלנים, מספר <span class="nlpp-num"><?php echo esc_html( trim( (string) $g( 'registry_number' ) ) ); ?></span></span>
 				<?php elseif ( $in_reg ) : ?><span class="nlpp-ver">✓ מאומת ברשם (gov.il)</span><?php endif; ?>
 				<?php $nlpp_cls = 'pinkas_hakablanim' === (string) $g( 'source' ) ? trim( (string) $g( 'classification' ) ) : ''; /* v43: with its grades, shown once (the stat box no longer repeats it) */ if ( '' !== $nlpp_cls ) : ?><span class="nlpp-cls"><?php echo esc_html( 'תחומי רישום: ' . str_replace( ' · ', ', ', $nlpp_cls ) ); ?></span><?php endif; ?>
 				<?php /* how many recommendations other professionals gave (owner 24.9.2026: a thumbs up, a challenge); a count, not a score */
@@ -287,7 +277,7 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 	</header>
 
 	<div class="nlpp-stats">
-		<?php /* years_active holds a founding year on some cards ("1963+ שנות ניסיון" was printed) */ if ( $years > 1800 && $years <= (int) gmdate( 'Y' ) ) : ?><div><b><?php echo (int) $years; ?></b><span>פעילה מאז</span></div><?php elseif ( $years > 0 && $years < 120 ) : ?><div><b><?php echo (int) $years; ?>+</b><span>שנות ניסיון</span></div><?php endif; ?>
+		<?php if ( $years ) : ?><div><b><?php echo (int) $years; ?>+</b><span>שנות ניסיון</span></div><?php endif; ?>
 		<?php if ( $projects_n ) : ?><div><b><?php echo number_format( $projects_n ); ?></b><span>פרויקטים</span></div><?php endif; ?>
 		<?php if ( $g( 'classification' ) && 'pinkas_hakablanim' !== (string) $g( 'source' ) ) : /* a register contractor's classification stands in the header (v43) */ ?><div><b><?php echo esc_html( $g( 'classification' ) ); ?></b><span>סיווג רשמי</span></div><?php endif; ?>
 		<?php if ( $g( 'response_time' ) ) : ?><div><b><?php echo esc_html( $g( 'response_time' ) ); ?></b><span>זמן מענה ממוצע</span></div><?php endif; ?>
@@ -401,7 +391,7 @@ if ( ! function_exists( 'nadlan_prof_assets' ) ) {
 .nlpp-demo{background:#F3EEE3;border:1px solid var(--line);border-inline-start:3px solid var(--gold);border-radius:8px;padding:10px 14px;font-size:13.5px;margin-bottom:16px}
 .nlpp-demo a{color:var(--gold);font-weight:700;text-decoration:none}
 .nlpp-hero{display:flex;align-items:center;gap:18px;flex-wrap:wrap;border:1px solid var(--line);border-radius:14px;background:#FFFDFC;padding:22px;box-shadow:0 1px 2px rgba(17,17,15,.04)}
-.nlpp-avatar{width:88px;height:88px;flex-shrink:0}.nlpp-photo{border-radius:22px;object-fit:cover;object-position:50% 22%;border:2px solid var(--pc,#2F6F86);background:#fff}.nlpp-cls{flex-basis:100%;font-size:.86rem;color:#6B7680}
+.nlpp-avatar{width:88px;height:88px;flex-shrink:0}.nlpp-photo{border-radius:50%;object-fit:cover;object-position:50% 22%;border:2px solid var(--pc,#2F6F86);background:#fff}.nlpp-cls{flex-basis:100%;font-size:.86rem;color:#6B7680}
 .nlpp-id{flex:1;min-width:200px}
 .nlpp-pill{display:inline-block;font-size:11.5px;font-weight:700;color:#fff;background:var(--pc,var(--ink));border-radius:999px;padding:4px 12px}
 .nlpp-name{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:1.7rem;margin:8px 0 6px;line-height:1.15}

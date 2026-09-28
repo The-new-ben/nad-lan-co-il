@@ -209,66 +209,74 @@ if ( ! function_exists( 'nadlan_dir_query' ) ) {
  * ------------------------------------------------------------------------- */
 if ( ! function_exists( 'nadlan_dir_card' ) ) {
 	function nadlan_dir_card( $id ) {
-		// design system ProCard v98 (28.9.2026): a card of the professionals' network - a cover with the profession's
-		// architectural pattern, a portrait or a designed monogram, the strongest register fact, separate trust labels and
-		// two actions (open the profile, save). The facts and labels come from inc/pro-card.php; nothing is invented.
 		$prof_key = (string) get_post_meta( $id, 'profession', true );
-		$pm       = nadlan_dir_prof_meta( $prof_key );
-		$city     = nadlan_meta_norm( get_post_meta( $id, 'city', true ) );
+		$pm   = nadlan_dir_prof_meta( $prof_key );
+		$city = nadlan_meta_norm( get_post_meta( $id, 'city', true ) );
+		$cls  = nadlan_meta_norm( get_post_meta( $id, 'classification', true ) );
+		$cls  = mb_strlen( $cls ) > 60 ? mb_substr( $cls, 0, 60 ) . '…' : $cls;
+		$reg  = nadlan_meta_norm( get_post_meta( $id, 'registry_number', true ) );
+		$verified = get_post_meta( $id, 'claim_status', true ) === 'verified';
 		$tier     = (string) get_post_meta( $id, 'paid_tier', true );
 		$distance = apply_filters( 'nadlan_geo_card_distance', null, $id );
 		$rating   = (float) get_post_meta( $id, 'rating', true );
 		$reviews  = (int) get_post_meta( $id, 'reviews_count', true );
-		$title    = trim( wp_strip_all_tags( get_the_title( $id ) ) );
+		$title    = get_the_title( $id );
+		$initial  = mb_substr( trim( wp_strip_all_tags( $title ) ), 0, 1 );
 		$url      = get_permalink( $id );
-		$verified = 'verified' === (string) get_post_meta( $id, 'claim_status', true );
-		$is_demo  = (bool) get_post_meta( $id, 'is_demo', true ); // a showcase of the paid profile (v43): it says so
-		$featured = in_array( $tier, array( 'pro', 'premier' ), true );
-		$src      = (string) get_post_meta( $id, 'source', true );
 
-		$parts = preg_split( '/\s+·\s+/u', $title, 2 );
-		$pname = $parts[0];
-		$biz   = isset( $parts[1] ) ? $parts[1] : nadlan_meta_norm( get_post_meta( $id, 'company_name', true ) );
-		if ( $biz === $pname ) { $biz = ''; } // the register repeats a private person's name as the business
-		$photo = has_post_thumbnail( $id ) ? get_the_post_thumbnail( $id, 'thumbnail', array( 'alt' => '', 'loading' => 'lazy', 'decoding' => 'async' ) ) : '';
-		$role  = nadlan_dir_prof_label( $prof_key, $id ) . ( $city ? ' · ' . $city : '' )
-			. ( null !== $distance && '' !== $distance ? ' · ' . number_format_i18n( (float) $distance, 1 ) . ' ק״מ' : '' );
-		// a showcase card (is_demo) carries seeded numbers: it shows the design, never a figure
-		$fact  = ( ! $is_demo && function_exists( 'nadlan_pc_fact' ) ) ? nadlan_pc_fact( $id, $prof_key ) : null;
-		$trust = function_exists( 'nadlan_pc_trust' ) ? nadlan_pc_trust( $id, $prof_key ) : array();
-		if ( $is_demo ) {
-			$state = '<span class="nlpn-state is-demo"><i></i>פרופיל לדוגמה</span>';
-		} elseif ( $verified ) {
-			$state = '<span class="nlpn-state is-live"><i></i>פרופיל פעיל</span>';
-		} elseif ( in_array( $src, array( 'pinkas_hakablanim', 'metavhim' ), true ) ) {
-			$state = '<span class="nlpn-state"><i></i>מהפנקס הרשמי</span>';
-		} else {
-			$state = '';
+		// rating stars: real data when present; no reviews = no line (a card never announces what it lacks, HAD-249)
+		$stars = '';
+		if ( $reviews > 0 && $rating > 0 ) {
+			$full = (int) round( $rating );
+			// owner decision 2026-07-06 (#34): seeded ratings carry an honest
+			// demo note until real, verified reviews exist (reviews_verified flag).
+			$demo_note = get_post_meta( $id, 'reviews_verified', true ) ? '' : ' <span class="nldc-demo">נתוני דוגמה</span>';
+			$stars = '<div class="nldc-rate"><span class="nldc-stars" aria-hidden="true">'
+				. str_repeat( '★', $full ) . str_repeat( '☆', max( 0, 5 - $full ) )
+				. '</span><b>' . number_format( $rating, 1 ) . '</b><span class="nldc-rev">(' . $reviews . ' חוות דעת)</span>' . $demo_note . '</div>';
 		}
-		// stars only from real, verified reviews (the seeded demo ratings are not shown on the network's cards)
-		$stars = ( $reviews > 0 && $rating > 0 && get_post_meta( $id, 'reviews_verified', true ) )
-			? '<p class="nlpn-rate"><b>★ ' . esc_html( number_format( $rating, 1 ) ) . '</b> · ' . (int) $reviews . ' חוות דעת</p>' : '';
-		$mark = '<svg class="nl-mark" viewBox="0 0 48 48"><use href="#' . esc_attr( $pm['icon'] ) . '"></use></svg>';
+
+		$featured = in_array( $tier, array( 'pro', 'premier' ), true );
+
+		// design system ProfessionalCard v41: the face (a photo, else the initials), the business on its own line, one role
+		// line, one licence line from the register, no empty middle, no stripe
+		$parts = preg_split( '/\s+·\s+/u', trim( wp_strip_all_tags( $title ) ), 2 );
+		$pname = $parts[0];
+		$biz   = isset( $parts[1] ) ? $parts[1] : '';
+		$words = preg_split( '/\s+/u', trim( preg_replace( '/[^\p{L}\s]/u', ' ', $pname ) ) );
+		$ini   = mb_substr( (string) ( $words[0] ?? '' ), 0, 1 ) . ( isset( $words[1] ) && '' !== $words[1] ? '.' . mb_substr( $words[1], 0, 1 ) : '' );
+		$photo = has_post_thumbnail( $id ) ? get_the_post_thumbnail( $id, 'thumbnail', array( 'class' => 'nldc-photo', 'alt' => '', 'loading' => 'lazy', 'decoding' => 'async' ) ) : '';
+		$lic   = '';
+		if ( 'metavech' === $prof_key ) {
+			$ln = nadlan_meta_norm( get_post_meta( $id, 'license_number', true ) );
+			$ln = '' !== $ln ? $ln : $reg;
+			if ( '' !== $ln ) { $lic = 'רישיון תיווך ' . $ln; }
+		} elseif ( '' !== $reg ) {
+			$lic = ( 'kablan' === $prof_key ? 'רשם הקבלנים ' : 'מספר רישום ' ) . $reg;
+		}
+		$is_demo = (bool) get_post_meta( $id, 'is_demo', true ); // a showcase of the paid profile (v43): it says so
 		ob_start(); ?>
-<article class="nlpn<?php echo $featured ? ' is-featured' : ''; ?><?php echo $is_demo ? ' is-demo' : ''; ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
-	<div class="nlpn-cover" aria-hidden="true"><?php echo $state; // phpcs:ignore ?><span class="nlpn-emb"><?php echo $mark; // phpcs:ignore ?></span></div>
-	<div class="nlpn-av" aria-hidden="true"><?php echo $photo ? $photo : '<span class="nlpn-mono">' . esc_html( nadlan_pc_mono( $pname ) ) . '</span>'; // phpcs:ignore ?><i class="nlpn-mk"><?php echo $mark; // phpcs:ignore ?></i></div>
-	<div class="nlpn-body">
-		<h3 class="nlpn-name"><a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $pname ); ?></a></h3>
-		<?php if ( '' !== $biz ) : ?><p class="nlpn-biz"><?php echo esc_html( $biz ); ?></p><?php endif; ?>
-		<p class="nlpn-role"><?php echo esc_html( $role ); ?></p>
-		<?php if ( $fact ) : ?><p class="nlpn-fact"><small><?php echo esc_html( $fact[0] ); ?></small><?php echo esc_html( $fact[1] ); ?></p><?php endif; ?>
-		<?php if ( $trust ) : ?><ul class="nlpn-trust"><?php foreach ( $trust as $t ) : ?><li<?php echo $t[1] ? ' class="' . esc_attr( $t[1] ) . '"' : ''; ?>><?php echo wp_kses( $t[0], array( 'b' => array() ) ); ?></li><?php endforeach; ?></ul><?php endif; ?>
-		<?php echo $stars; // phpcs:ignore ?>
-		<div class="nlpn-act">
-			<a class="nlpn-go" href="<?php echo esc_url( $url ); ?>" tabindex="-1" aria-hidden="true">לפרופיל</a>
-			<button type="button" class="nlpn-save" aria-pressed="false" aria-label="שמירה" data-id="<?php echo (int) $id; ?>" data-name="<?php echo esc_attr( $pname ); ?>" data-url="<?php echo esc_url( $url ); ?>" data-role="<?php echo esc_attr( $role ); ?>"><?php echo nadlan_pc_save_icon(); // phpcs:ignore ?></button>
-			<?php if ( $featured ) : ?><span class="nlpn-ad">מקודם</span><?php endif; ?>
+<a class="nldc nldc--pro<?php echo $featured ? ' is-featured' : ''; ?><?php echo $is_demo ? ' nldc--demo' : ''; ?>" href="<?php echo esc_url( $url ); ?>" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
+	<div class="nldc-top">
+		<span class="nldc-av" aria-hidden="true"><?php echo $photo ? $photo : '<b class="nldc-ini">' . esc_html( $ini ) . '</b>'; // phpcs:ignore ?><i class="nldc-mk"><svg class="nl-mark" viewBox="0 0 48 48"><use href="#<?php echo esc_attr( $pm['icon'] ); ?>"></use></svg></i></span>
+		<div class="nldc-id">
+			<h3 class="nldc-name"><?php echo esc_html( $pname ); ?></h3>
+			<?php if ( '' !== $biz ) : ?><p class="nldc-biz"><?php echo esc_html( $biz ); ?></p><?php endif; ?>
 		</div>
 	</div>
-</article>
+	<?php if ( $is_demo ) : ?><span class="nldc-sample">פרופיל לדוגמה</span><?php endif; ?>
+	<p class="nldc-role"><b><?php echo esc_html( nadlan_dir_prof_label( $prof_key, $id ) ); ?></b><?php if ( $city ) : ?> · <?php echo esc_html( $city ); ?><?php endif; ?><?php if ( $distance !== null && $distance !== '' ) : ?> · <?php echo esc_html( number_format_i18n( (float) $distance, 1 ) ); ?> ק״מ<?php endif; ?></p>
+	<?php if ( '' !== $lic ) : ?><span class="nldc-lic"><i aria-hidden="true">✓</i><?php echo esc_html( $lic ); ?></span><?php endif; ?>
+	<?php if ( $verified ) : ?><span class="nldc-lic nldc-lic--vf"><i aria-hidden="true">✓</i>פרופיל מאומת</span><?php endif; ?>
+	<?php if ( $cls ) : ?><span class="nldc-cls"><?php echo esc_html( $cls ); ?></span><?php endif; ?>
+	<?php echo $stars; // phpcs:ignore ?>
+	<div class="nldc-foot">
+		<?php if ( $featured ) : ?><span class="nldc-ad">מקודם</span><?php endif; ?>
+		<span class="nldc-go">לפרופיל ←</span>
+	</div>
+</a>
 		<?php
-		return ( function_exists( 'nadlan_pc_assets' ) ? nadlan_pc_assets() : '' ) . ob_get_clean();
+		return ob_get_clean();
 	}
 }
 
@@ -576,8 +584,6 @@ if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 		$cls  = nadlan_meta_norm( get_post_meta( $id, 'classification', true ) );
 		$reg  = nadlan_meta_norm( get_post_meta( $id, 'registry_number', true ) );
 		$phone= nadlan_meta_norm( get_post_meta( $id, 'phone', true ) );
-		// a private person from a public register who has not taken over the profile: the quote goes through the site (v98)
-		if ( function_exists( 'nadlan_pc_is_private' ) && nadlan_pc_is_private( $id ) ) { $phone = ''; }
 		$verified = get_post_meta( $id, 'claim_status', true ) === 'verified';
 		$rating   = (float) get_post_meta( $id, 'rating', true );
 		$reviews  = (int) get_post_meta( $id, 'reviews_count', true );

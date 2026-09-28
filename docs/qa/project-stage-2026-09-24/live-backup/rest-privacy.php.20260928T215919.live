@@ -21,7 +21,7 @@ if ( ! function_exists( 'nadlan_rest_private_keys' ) ) {
 			'email', 'phone', 'owner_user_id', 'claim_status', 'boost_multiplier', 'is_pinned', 'is_sponsored',
 			'paid_tier', 'priority_weight', 'nl_tier', 'nl_auto_publish', 'nl_drop_on', 'nl_drop_id', 'nl_card_key',
 			'nl_broker_auto', 'data_quality', 'calendar_url', 'meeting_url', '_nadlan_private_unit_journey',
-			'_nadlan_flagship_source_post_id', 'address', // a register record's street address (ProNetwork v98, 28.9)
+			'_nadlan_flagship_source_post_id',
 		);
 	}
 }
