@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<title>Project video composer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Heebo:wght@400;500;600;700&display=block" rel="stylesheet">
+<style>
+  html, body { margin: 0; height: 100%; background: #10191d; }
+  body { display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  canvas { max-width: 100vw; max-height: 100vh; display: block; }
+  #status { position: fixed; top: 6px; left: 8px; color: #8fa5b3; font: 12px/1.4 monospace; direction: ltr; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="status">loading</div>
+<script>
+'use strict';
+/*
+  Project video composer (nad-lan.co.il). One page, data driven: reads data/<project>.json and draws the whole
+  timeline on a canvas. Scene types: title, card, list, views, outro (see README.md for the data format).
+
+  URL parameters
+    project  data file slug                  (default rainbow-tel-aviv)
+    w, h     output size in pixels            (default 1080 x 1920)
+    fps      capture frame rate               (default 30)
+    mode     preview | still | record         (default preview: plays in a loop)
+    t        time in seconds for mode=still
+    kbps     recorder bitrate                 (default 8000)
+    fonts    'strict' (default: stop when the web fonts do not load) | 'fallback' (draw with the system fonts)
+
+  Automation hooks (render.py through Playwright)
+    window.__state            'loading' | 'ready' | 'recording' | 'done' | 'error'
+    window.__info             { duration, width, height, fps, scenes, checks, ... }
+    window.__drawAt(t)        draws time t, returns a PNG data URL
+    window.__record()         records the full timeline in real time, resolves with stats
+    window.__slice(off, len)  base64 slice of the recorded file
+*/
+const Q = new URLSearchParams(location.search);
+const W = +(Q.get('w') || 1080), H = +(Q.get('h') || 1920);
+const FPS = +(Q.get('fps') || 30);
+const MODE = Q.get('mode') || 'preview';
+const PROJECT = (Q.get('project') || 'rainbow-tel-aviv').replace(/[^a-z0-9-]/gi, '');
+const KBPS = +(Q.get('kbps') || 8000);
+const FONTS = Q.get('fonts') || 'strict';
+const PORTRAIT = H >= W;
+const ORIENT = PORTRAIT ? 'portrait' : 'landscape';
+const U = Math.min(W, H) / 1080;              // type scale unit (1 for 1080x1920 and 1920x1080)
+
+// the site's palette (design DNA): terracotta only for the final call to action
+const PAL = { cream: '#FAF7F1', ink: '#1B1A17', gold: '#9C7A3C', goldLight: '#D6BF8E', teal: '#1F4B5C',
+              terra: '#C2563A', hair: '#E2DCD0', band: '#F3EEE3' };
+const SCRIM_RGB = '16,31,38';                 // a deep teal-ink for the text scrims
+const SERIF = '"Frank Ruhl Libre", "David", "Times New Roman", serif';
+const SANS = '"Heebo", "Arial", sans-serif';
+
+const TL = { xf: 0.5, zoom: 1.07, textIn: 0.25, stagger: 0.09, rise: 0.6, outA: 0.55, outB: 0.25 };
+
+const canvas = document.getElementById('c');
+canvas.width = W; canvas.height = H;
+const ctx = canvas.getContext('2d', { alpha: false });
+const statusEl = document.getElementById('status');
+const setStatus = s => { statusEl.textContent = s; };
+window.__state = 'loading';
+
+// ---------- helpers ----------
+const clamp01 = x => x < 0 ? 0 : x > 1 ? 1 : x;
+const ramp = (t, a, b) => clamp01((t - a) / (b - a));
+const easeInOutSine = x => 0.5 - 0.5 * Math.cos(Math.PI * clamp01(x));
+const easeOutCubic = x => 1 - Math.pow(1 - clamp01(x), 3);
+const easeInOutCubic = x => { x = clamp01(x); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const px = v => Math.round(v * U);
+function mk(w, h) { const c = document.createElement('canvas'); c.width = Math.max(1, Math.round(w)); c.height = Math.max(1, Math.round(h)); return c; }
+function loadImage(src) {
+  return new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => rej(new Error('image failed: ' + src)); im.src = src; })
+    .then(im => (im.decode ? im.decode().then(() => im, () => im) : im));
+}
+function font(weight, size, fam) { return `${weight} ${Math.round(size)}px ${fam}`; }
+// house style for every string from data: no em or en dashes, no emoji
+function tidy(s) {
+  if (s == null) return s;
+  return String(s)
+    .replace(/(\d)\s*[–—]\s*(\d)/g, '$1-$2')
+    .replace(/\s*[–—]\s*/g, ', ')
+    .replace(/\p{Extended_Pictographic}/gu, '').replace(/[️‍]/g, '')
+    .replace(/\s{2,}/g, ' ').trim();
+}
+const txt = o => (o && typeof o === 'object') ? tidy(o.text) : tidy(o);
+function measure(f, s) { ctx.font = f; return ctx.measureText(s).width; }
+function fitSize(weight, size, fam, text, minSize, maxW) {
+  let s = size;
+  while (s > minSize && measure(font(weight, s, fam), text) > maxW) s -= 2;
+  return s;
+}
+function tokens(text) {
+  const out = [];
+  for (const w of text.split(/\s+/)) { if (out.length && /^[\d(]/.test(w) && /\d/.test(w)) out[out.length - 1] += ' ' + w; else out.push(w); }
+  return out;
+}
+function wrap(text, f, maxW, maxLines) {
+  const words = tokens(text); const lines = []; let cur = '';
+  for (const w of words) {
+    const tryS = cur ? cur + ' ' + w : w;
+    if (cur && measure(f, tryS) > maxW) { lines.push(cur); cur = w; } else cur = tryS;
+  }
+  if (cur) lines.push(cur);
+  if (lines.length > maxLines) {   // never silently drop words: merge the tail into the last line (it may be wide)
+    const head = lines.slice(0, maxLines - 1); head.push(lines.slice(maxLines - 1).join(' ')); return head;
+  }
+  return lines;
+}
+// the same number of lines as a greedy wrap, but with the lines as even as possible (no one-word last line)
+function wrapBalanced(text, f, maxW, maxLines) {
+  const greedy = wrap(text, f, maxW, maxLines);
+  if (greedy.length < 2) return greedy;
+  // two lines: break at a sentence end when both halves fit (never inside a name like "ישראל קנדה")
+  if (greedy.length === 2) {
+    const cuts = [...text.matchAll(/[.:;] /g)].map(m => m.index + 1);
+    let bestCut = null;
+    for (const c of cuts) {
+      const a = text.slice(0, c).trim(), b = text.slice(c).trim();
+      if (measure(f, a) <= maxW && measure(f, b) <= maxW) {
+        const sc = Math.abs(measure(f, a) - measure(f, b));
+        if (!bestCut || sc < bestCut.sc) bestCut = { lines: [a, b], sc };
+      }
+    }
+    if (bestCut) return bestCut.lines;
+  }
+  let best = greedy;
+  for (let w = maxW - px(10); w > maxW * 0.4; w -= px(10)) {
+    const t = wrap(text, f, w, 99);
+    if (t.length !== greedy.length) break;
+    best = t;
+  }
+  return best;
+}
+// balanced two-line split for titles (never splits a number from its unit)
+function wrapTitle(text, f, maxW) {
+  if (measure(f, text) <= maxW) return [text];
+  const words = text.split(/\s+/); let best = null;
+  for (let k = 1; k < words.length; k++) {
+    if (/\d$/.test(words[k - 1])) continue;
+    const a = words.slice(0, k).join(' '), b = words.slice(k).join(' ');
+    const wa = measure(f, a), wb = measure(f, b);
+    if (wa > maxW || wb > maxW) continue;
+    let score = Math.max(wa, wb);
+    if (/[,،]$/.test(a)) score -= 0.2 * maxW;
+    if (!best || score < best.score) best = { lines: [a, b], score };
+  }
+  return best ? best.lines : null;
+}
+function textAt(str, x, y, f, color, align, alpha, dir) {
+  if (alpha <= 0 || !str) return;
+  ctx.globalAlpha = alpha;
+  ctx.font = f; ctx.fillStyle = color; ctx.textAlign = align; ctx.direction = dir || 'rtl'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(str, x, y);
+  ctx.globalAlpha = 1;
+}
+function roundRect(x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y); ctx.arcTo(x + w, y, x + w, y + r, r);
+  ctx.lineTo(x + w, y + h - r); ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+  ctx.lineTo(x + r, y + h); ctx.arcTo(x, y + h, x, y + h - r, r);
+  ctx.lineTo(x, y + r); ctx.arcTo(x, y, x + r, y, r); ctx.closePath();
+}
+function rule(x, y, w, color, alpha, thick) {
+  if (alpha <= 0 || w <= 0) return;
+  ctx.globalAlpha = alpha; ctx.fillStyle = color; ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.max(1, thick || px(2))); ctx.globalAlpha = 1;
+}
+
+// ---------- data + assets ----------
+let DATA, SCENES = [], T_TOTAL = 0;
+const LAY = {};
+
+async function loadFonts() {
+  const sample = 'אבגדהוזחטיכלמנסעפצקרשת ךםןףץ ״׳־ 0123456789 ,.?:()·₪- abcdefghijklmnopqrstuvwxyz RC';
+  const specs = [];
+  for (const w of [400, 500, 700]) specs.push(`${w} 40px "Frank Ruhl Libre"`);
+  for (const w of [400, 500, 600, 700]) specs.push(`${w} 40px "Heebo"`);
+  try {
+    await Promise.all(specs.map(s => document.fonts.load(s, sample)));
+    await document.fonts.ready;
+  } catch (e) { /* checked below */ }
+  const ok = specs.every(s => document.fonts.check(s, sample));
+  window.__fonts = ok ? 'web' : 'fallback';
+  if (!ok && FONTS === 'strict') throw new Error('web fonts (Frank Ruhl Libre, Heebo) did not load; use &fonts=fallback to draw with system fonts');
+}
+
+function computeLayout() {
+  LAY.pad = PORTRAIT ? px(84) : px(120);
+  LAY.right = W - LAY.pad;
+  LAY.textW = PORTRAIT ? W - 2 * LAY.pad : px(780);
+  LAY.chromeY = PORTRAIT ? px(150) : px(92);       // baseline of the top brand mark and the label
+  LAY.blockBottom = PORTRAIT ? H - px(330) : H - px(104);
+  LAY.fKicker = font(600, px(30), SANS);
+  LAY.fLine = font(400, PORTRAIT ? px(44) : px(40), SANS);
+  LAY.fSource = font(400, px(26), SANS);
+  LAY.fLabel = font(500, px(26), SANS);
+  LAY.fBrand = font(700, px(40), SERIF);
+  LAY.titleCard = PORTRAIT ? px(100) : px(92);
+  LAY.titleHero = PORTRAIT ? px(132) : px(124);
+}
+
+// A still prepared for this canvas: a pre-scaled base at zoom headroom (cover crop around the focus), so each frame
+// is a cheap sub-rect draw.
+function prepareCover(img, focus) {
+  const iw = img.naturalWidth, ih = img.naturalHeight, ar = W / H;
+  let sw, sh; if (iw / ih > ar) { sh = ih; sw = sh * ar; } else { sw = iw; sh = sw / ar; }
+  const f = focus || [0.5, 0.5];
+  const fx = f[0] * iw, fy = f[1] * ih;
+  const sx = Math.max(0, Math.min(iw - sw, fx - sw / 2)), sy = Math.max(0, Math.min(ih - sh, fy - sh / 2));
+  const Z = TL.zoom, PW = Math.round(W * Z), PH = Math.round(H * Z);
+  const base = mk(PW, PH), g = base.getContext('2d');
+  g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
+  g.drawImage(img, sx, sy, sw, sh, 0, 0, PW, PH);
+  return { base, PW, PH, ax: clamp01((fx - sx) / sw), ay: clamp01((fy - sy) / sh), upscale: +(W * Z / sw).toFixed(2) };
+}
+function drawCover(P, alpha, p, zoomIn) {
+  if (alpha <= 0) return;
+  const e = easeInOutSine(p);
+  const z = zoomIn ? 1 + (TL.zoom - 1) * e : TL.zoom - (TL.zoom - 1) * e;
+  const vw = P.PW / z, vh = P.PH / z;
+  ctx.globalAlpha = alpha;
+  ctx.drawImage(P.base, P.ax * (P.PW - vw), P.ay * (P.PH - vh), vw, vh, 0, 0, W, H);
+  ctx.globalAlpha = 1;
+}
+// blurred, darkened full-bleed backdrop of an image (views)
+function prepareBackdrop(img) {
+  const c = mk(W, H), g = c.getContext('2d');
+  const s = Math.max(W / img.naturalWidth, H / img.naturalHeight) * 1.15;
+  g.filter = `blur(${px(42)}px)`;
+  g.drawImage(img, (W - img.naturalWidth * s) / 2, (H - img.naturalHeight * s) / 2, img.naturalWidth * s, img.naturalHeight * s);
+  g.filter = 'none';
+  g.fillStyle = `rgba(${SCRIM_RGB},0.62)`; g.fillRect(0, 0, W, H);
+  return c;
+}
+
+// scrim behind a text block: bottom (portrait) or right side (landscape), plus a soft top band for the brand mark
+function prepareScrim(blockTop) {
+  const c = mk(W, H), g = c.getContext('2d');
+  if (PORTRAIT) {
+    const y0 = Math.max(H * 0.36, blockTop - px(260));
+    const gr = g.createLinearGradient(0, y0, 0, H);
+    for (const [o, a] of [[0, 0], [0.22, 0.34], [0.45, 0.66], [0.7, 0.8], [1, 0.88]]) gr.addColorStop(o, `rgba(${SCRIM_RGB},${a})`);
+    g.fillStyle = gr; g.fillRect(0, y0, W, H - y0);
+  } else {
+    const x0 = W - LAY.pad - LAY.textW - px(380);
+    const gr = g.createLinearGradient(x0, 0, W, 0);
+    for (const [o, a] of [[0, 0], [0.25, 0.3], [0.5, 0.62], [0.75, 0.76], [1, 0.84]]) gr.addColorStop(o, `rgba(${SCRIM_RGB},${a})`);
+    g.fillStyle = gr; g.fillRect(x0, 0, W - x0, H);
+    const gb = g.createLinearGradient(0, H * 0.55, 0, H);
+    gb.addColorStop(0, `rgba(${SCRIM_RGB},0)`); gb.addColorStop(1, `rgba(${SCRIM_RGB},0.35)`);
+    g.fillStyle = gb; g.fillRect(0, H * 0.55, W, H * 0.45);
+  }
+  const top = px(PORTRAIT ? 300 : 190);
+  const gt = g.createLinearGradient(0, 0, 0, top);
+  gt.addColorStop(0, `rgba(${SCRIM_RGB},0.42)`); gt.addColorStop(1, `rgba(${SCRIM_RGB},0)`);
+  g.fillStyle = gt; g.fillRect(0, 0, W, top);
+  return c;
+}
+
+// ---------- text blocks ----------
+// A block is a list of rows (top-down). Layout is bottom-anchored at LAY.blockBottom (image scenes) or centred (panels).
+function rowsForCard(s) {
+  const rows = [];
+  if (s.kicker) rows.push({ kind: 'kicker', text: txt(s.kicker), gap: px(PORTRAIT ? 34 : 30) });
+  const tSize0 = s.type === 'title' ? LAY.titleHero : LAY.titleCard;
+  const tText = txt(s.title);
+  if (tText) {
+    let size = fitSize(700, tSize0, SERIF, tText, Math.round(tSize0 * 0.78), LAY.textW);
+    let lines = [tText];
+    if (measure(font(700, size, SERIF), tText) > LAY.textW) lines = wrapTitle(tText, font(700, size, SERIF), LAY.textW) || wrap(tText, font(700, size, SERIF), LAY.textW, 3);
+    lines.forEach((l, i) => rows.push({ kind: 'title', text: l, size, font: font(700, size, SERIF), gap: i < lines.length - 1 ? Math.round(size * 0.22) : px(34), h: Math.round(size * 0.82) }));
+  }
+  if (s.type === 'title') {
+    if (s.line) rows.push({ kind: 'line', text: txt(s.line), font: font(500, PORTRAIT ? px(50) : px(46), SANS), color: PAL.cream, gap: px(40), h: px(40) });
+    if (s.small) rows.push({ kind: 'rule', gap: px(34), h: px(2) });
+    if (s.small) rows.push({ kind: 'small', text: txt(s.small), font: font(500, px(34), SANS), color: PAL.goldLight, gap: 0, h: px(26) });
+    return rows;
+  }
+  // data panels: stats, each a big value and its caption, separated by a hairline
+  (s.stats || []).forEach((st, i) => {
+    const v = txt(st.value), c = txt(st.caption);
+    const size = fitSize(700, PORTRAIT ? px(112) : px(100), SERIF, v, px(64), LAY.textW);
+    rows.push({ kind: 'title', text: v, size, font: font(700, size, SERIF), gap: px(30), h: Math.round(size * 0.8) });
+    const f = font(400, fitSize(400, PORTRAIT ? px(42) : px(38), SANS, c, px(28), LAY.textW), SANS);
+    rows.push({ kind: 'line', text: c, font: f, gap: i < s.stats.length - 1 ? px(44) : px(22), h: px(32) });
+    if (i < s.stats.length - 1) rows.push({ kind: 'rule-soft', gap: px(56), h: px(0) });
+  });
+  for (const l of (s.lines || [])) {
+    const t = txt(l); const f = font(400, fitSize(400, PORTRAIT ? px(44) : px(40), SANS, t, px(30), LAY.textW), SANS);
+    rows.push({ kind: 'line', text: t, font: f, color: 'rgba(250,247,241,0.94)', gap: px(PORTRAIT ? 22 : 18), h: px(34) });
+  }
+  if (s.items) {
+    s.items.forEach((it, i) => {
+      const t = txt(it); const size = fitSize(500, PORTRAIT ? px(54) : px(48), SERIF, t, px(36), LAY.textW - px(44));
+      rows.push({ kind: 'item', idx: i, text: t, font: font(500, size, SERIF), gap: px(PORTRAIT ? 30 : 24), h: Math.round(size * 0.78) });
+    });
+  }
+  if (s.source) {
+    const f = LAY.fSource; const lines = wrapBalanced(txt(s.source), f, LAY.textW, 3);
+    rows.push({ kind: 'rule-soft', gap: px(26), h: px(30) });
+    lines.forEach((l, i) => rows.push({ kind: 'source', text: l, font: f, gap: px(12), h: px(22) }));
+  }
+  return rows;
+}
+function rowH(r) {
+  if (r.kind === 'kicker') return px(24);
+  return r.h || px(30);
+}
+function layoutRows(rows, anchor) {
+  // total height: each row's cap height + the gap after it (the last row's gap ignored)
+  let total = 0; rows.forEach((r, i) => { total += rowH(r) + (i < rows.length - 1 ? r.gap : 0); });
+  let top = anchor === 'center' ? Math.round(H * 0.46 - total / 2) + Math.round(rowH(rows[0])) : null;   // optical centre
+  if (anchor !== 'center') top = LAY.blockBottom - total + rowH(rows[0]);
+  let y = top;
+  rows.forEach((r, i) => { if (i > 0) y += rows[i - 1].gap + rowH(r); r.y = y; });
+  return { top: top - rowH(rows[0]), bottom: y, total };
+}
+
+function drawRows(rows, tau, opts) {
+  const { dur, dark, noIn, noOut, align } = opts;
+  const outA = noOut ? 1 : 1 - easeInOutSine(ramp(tau, dur - TL.outA, dur - TL.outB));
+  if (outA <= 0) return;
+  const xR = align === 'center' ? W / 2 : LAY.right;
+  const ta = align === 'center' ? 'center' : 'right';
+  const cMain = dark ? PAL.ink : PAL.cream;
+  let k = 0;
+  for (const r of rows) {
+    const start = r.at != null ? r.at : TL.textIn + TL.stagger * k;
+    if (r.at == null) k++;
+    const e = noIn ? 1 : easeOutCubic(ramp(tau, start, start + TL.rise));
+    const a = e * outA;
+    if (a <= 0) continue;
+    const y = r.y + Math.round((1 - e) * px(18));
+    if (r.kind === 'kicker') {
+      const f = LAY.fKicker, w = measure(f, r.text), rw = px(46);
+      if (ta === 'center') { textAt(r.text, xR, y, f, dark ? PAL.gold : PAL.goldLight, 'center', a); continue; }
+      rule(xR - rw, y - px(11), rw, dark ? PAL.gold : PAL.goldLight, a, px(2));
+      textAt(r.text, xR - rw - px(16), y, f, dark ? PAL.gold : PAL.goldLight, 'right', a);
+    } else if (r.kind === 'title') {
+      textAt(r.text, xR, y, r.font, cMain, ta, a);
+    } else if (r.kind === 'line') {
+      textAt(r.text, xR, y, r.font, dark ? 'rgba(27,26,23,0.86)' : (r.color || PAL.cream), ta, a);
+    } else if (r.kind === 'small') {
+      textAt(r.text, xR, y, r.font, dark ? PAL.gold : r.color, ta, a);
+    } else if (r.kind === 'rule') {
+      const rw = px(110) * easeInOutCubic(noIn ? ramp(tau, 0.2, 1.2) : e);
+      rule(ta === 'center' ? xR - rw / 2 : xR - rw, y - px(2), rw, dark ? PAL.gold : PAL.goldLight, 0.85 * a);
+    } else if (r.kind === 'rule-soft') {
+      rule(LAY.right - LAY.textW, y - px(2), LAY.textW, dark ? PAL.ink : PAL.cream, (dark ? 0.16 : 0.26) * a, Math.max(1, px(1.5)));
+    } else if (r.kind === 'source') {
+      textAt(r.text, xR, y, r.font, dark ? 'rgba(27,26,23,0.66)' : 'rgba(250,247,241,0.78)', ta, a);
+    } else if (r.kind === 'item') {
+      const d = px(7);
+      ctx.globalAlpha = a; ctx.fillStyle = dark ? PAL.gold : PAL.goldLight;
+      ctx.beginPath(); ctx.arc(xR - d, y - Math.round(r.h * 0.42), d, 0, Math.PI * 2); ctx.fill(); ctx.globalAlpha = 1;
+      textAt(r.text, xR - px(44), y, r.font, cMain, 'right', a);
+    }
+  }
+}
+
+// ---------- chrome: the site's mark (top right) and the illustration label (top left) ----------
+function drawBrand(alpha, dark) {
+  if (alpha <= 0) return;
+  // over a picture the mark gets a soft dark halo, so it reads on a light facade too
+  if (!dark) { ctx.save(); ctx.shadowColor = `rgba(${SCRIM_RGB},0.85)`; ctx.shadowBlur = px(18); ctx.shadowOffsetY = px(1); }
+  textAt(txt(DATA.brand.mark), LAY.right, LAY.chromeY, LAY.fBrand, dark ? PAL.ink : PAL.cream, 'right', alpha);
+  if (!dark) ctx.restore();
+  const w = measure(LAY.fBrand, txt(DATA.brand.mark));
+  ctx.globalAlpha = alpha; ctx.fillStyle = PAL.gold;
+  ctx.beginPath(); ctx.arc(LAY.right - w - px(16), LAY.chromeY - px(9), px(5), 0, Math.PI * 2); ctx.fill(); ctx.globalAlpha = 1;
+}
+function drawLabelPill(text, x, yMid, alpha, anchor) {
+  if (alpha <= 0 || !text) return;
+  const f = LAY.fLabel, tw = measure(f, text), ph = px(46), pw = Math.round(tw + px(36));
+  const x0 = anchor === 'right' ? x - pw : x;
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = `rgba(${SCRIM_RGB},0.62)`; roundRect(x0, yMid - ph / 2, pw, ph, ph / 2); ctx.fill();
+  ctx.strokeStyle = 'rgba(250,247,241,0.35)'; ctx.lineWidth = Math.max(1, px(1.2)); ctx.stroke();
+  ctx.globalAlpha = 1;
+  textAt(text, x0 + pw / 2, yMid + px(9), f, PAL.cream, 'center', alpha);
+}
+
+// ---------- scenes ----------
+async function prepareScene(s, i) {
+  const S = Object.assign({}, s);
+  if (S.image) {
+    const spec = S.image[ORIENT] || S.image.landscape || S.image.portrait;
+    const img = await loadImage(spec.src);
+    S.P = prepareCover(img, spec.focus);
+    S.src = spec.src;
+  }
+  if (S.type === 'views') {
+    S.V = [];
+    for (const it of S.items) {
+      const img = await loadImage(it.src);
+      S.V.push({ it, img, bg: prepareBackdrop(img), title: txt(it.title), line: txt(it.line) });
+    }
+    // image box: left of the text column (landscape) or below the kicker (portrait)
+    const iw = S.V[0].img.naturalWidth, ih = S.V[0].img.naturalHeight;
+    if (PORTRAIT) { const bw = W - 2 * px(60); const bh = Math.round(bw * ih / iw); S.box = { x: px(60), y: px(540), w: bw, h: bh }; }
+    else { const bw = px(1160); const bh = Math.round(bw * ih / iw); S.box = { x: px(96), y: Math.round((H - bh) / 2) + px(10), w: bw, h: bh }; }
+    S.boxUpscale = +(S.box.w / iw).toFixed(2);
+  }
+  if (S.stats && !PORTRAIT) {   // landscape data panel: the stats side by side, the source across the bottom
+    const x0 = LAY.pad, x1 = W - LAY.pad, gap = px(130), colW = Math.round((x1 - x0 - gap) / 2);
+    S.cols = S.stats.map((st, i) => {
+      const r = x1 - i * (colW + gap), v = txt(st.value), c = txt(st.caption);
+      const vs = fitSize(700, px(104), SERIF, v, px(64), colW), cs = fitSize(400, px(38), SANS, c, px(26), colW);
+      return { r, v, c, vf: font(700, vs, SERIF), cf: font(400, cs, SANS) };
+    });
+    S.colW = colW; S.gap = gap;
+    S.srcLines = wrapBalanced(txt(S.source), LAY.fSource, x1 - x0, 2);
+    S.statsCols = true;
+    return S;
+  }
+  if (S.type === 'card' || S.type === 'title' || S.type === 'list') {
+    S.rows = rowsForCard(S);
+    const box = layoutRows(S.rows, S.panel ? 'center' : 'bottom');
+    S.blockTop = box.top;
+    if (S.type === 'list') {   // the facility names come in one by one after the kicker
+      let n = 0; S.rows.forEach(r => { if (r.kind === 'item') { r.at = 0.55 + 0.85 * n; n++; } });
+      S.rows.forEach(r => { if (r.kind === 'rule-soft' || r.kind === 'source') r.at = 0.55 + 0.85 * n + 0.1; });
+    }
+    if (!S.panel) S.scrim = prepareScrim(S.blockTop);
+  }
+  if (S.type === 'views') {
+    // text column
+    const colR = LAY.right, colW = PORTRAIT ? LAY.textW : (W - LAY.pad) - (S.box.x + S.box.w) - px(70);
+    S.col = { right: colR, w: colW };
+    S.fSrc = LAY.fSource;
+    S.srcLines = wrapBalanced(txt(S.source), LAY.fSource, PORTRAIT ? LAY.textW : colW, 4);
+  }
+  return S;
+}
+
+function buildTimeline() {
+  let t = 0;
+  SCENES.forEach((s, i) => {
+    s.S = t; s.end = t + s.dur;
+    s.fin0 = i === 0 ? -1 : t - TL.xf / 2; s.fin1 = i === 0 ? 0 : t + TL.xf / 2;
+    s.vis1 = i === SCENES.length - 1 ? 1e9 : s.end + TL.xf / 2;
+    t = s.end;
+  });
+  T_TOTAL = t;
+}
+
+function drawSceneBackground(s, a, t) {
+  const p = clamp01((t - s.fin0) / ((s.vis1 > 1e8 ? T_TOTAL : s.vis1) - s.fin0));
+  if (s.P) {
+    drawCover(s.P, a, p, s.zoom !== 'out');
+    if (s.scrim) { ctx.globalAlpha = a; ctx.drawImage(s.scrim, 0, 0); ctx.globalAlpha = 1; }
+  } else if (s.panel === 'paper') {
+    ctx.globalAlpha = a; ctx.fillStyle = PAL.cream; ctx.fillRect(0, 0, W, H);
+    // a restrained frame: one gold hairline inset
+    const m = px(PORTRAIT ? 48 : 44);
+    ctx.strokeStyle = 'rgba(156,122,60,0.45)'; ctx.lineWidth = Math.max(1, px(1.5));
+    ctx.strokeRect(m, m, W - 2 * m, H - 2 * m);
+    ctx.globalAlpha = 1;
+  } else if (s.type === 'outro') {
+    ctx.globalAlpha = a; ctx.fillStyle = PAL.teal; ctx.fillRect(0, 0, W, H);
+    const gr = ctx.createRadialGradient(W / 2, H * 0.42, 0, W / 2, H * 0.42, Math.max(W, H) * 0.75);
+    gr.addColorStop(0, 'rgba(255,255,255,0.06)'); gr.addColorStop(1, 'rgba(0,0,0,0.22)');
+    ctx.fillStyle = gr; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1;
+  } else if (s.type === 'views') {
+    drawViewsBackground(s, a, t);
+  }
+}
+
+function viewIndex(s, tau) { const per = s.dur / s.V.length; return { per, k: Math.max(0, Math.min(s.V.length - 1, Math.floor(tau / per))) }; }
+
+function drawViewsBackground(s, a, t) {
+  const tau = t - s.S, per = s.dur / s.V.length;
+  for (let k = 0; k < s.V.length; k++) {
+    const S0 = k * per;
+    const fin0 = k === 0 ? -TL.xf / 2 : S0 - TL.xf / 2, fin1 = k === 0 ? TL.xf / 2 : S0 + TL.xf / 2;
+    const vis1 = k === s.V.length - 1 ? s.dur + TL.xf / 2 : S0 + per + TL.xf / 2;
+    if (tau < fin0 || tau > vis1) continue;
+    const ak = k === 0 ? a : a * easeInOutSine(ramp(tau, fin0, fin1));
+    const V = s.V[k];
+    ctx.globalAlpha = ak; ctx.drawImage(V.bg, 0, 0); ctx.globalAlpha = 1;
+    // the framed view: slow push-in inside the frame
+    const B = s.box, z = 1 + 0.045 * easeInOutSine(ramp(tau, fin0, vis1));
+    const iw = V.img.naturalWidth, ih = V.img.naturalHeight, vw = iw / z, vh = ih / z;
+    ctx.save();
+    ctx.globalAlpha = ak;
+    ctx.shadowColor = 'rgba(0,0,0,0.35)'; ctx.shadowBlur = px(40); ctx.shadowOffsetY = px(14);
+    roundRect(B.x, B.y, B.w, B.h, px(14)); ctx.fillStyle = PAL.ink; ctx.fill();
+    ctx.shadowColor = 'transparent';
+    roundRect(B.x, B.y, B.w, B.h, px(14)); ctx.clip();
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(V.img, (iw - vw) / 2, (ih - vh) / 2, vw, vh, B.x, B.y, B.w, B.h);
+    ctx.restore();
+    ctx.globalAlpha = ak; ctx.strokeStyle = 'rgba(250,247,241,0.55)'; ctx.lineWidth = Math.max(1, px(2));
+    roundRect(B.x, B.y, B.w, B.h, px(14)); ctx.stroke(); ctx.globalAlpha = 1;
+    // the label on the picture itself (top-right corner of the frame)
+    drawLabelPill(txt(DATA.labels.view), B.x + B.w - px(22), B.y + px(22) + px(23), ak, 'right');
+  }
+}
+
+function drawViewsText(s, t) {
+  const tau = t - s.S;
+  const outAll = 1 - easeInOutSine(ramp(tau, s.dur - TL.outA, s.dur - TL.outB));
+  const eK = easeOutCubic(ramp(tau, TL.textIn, TL.textIn + TL.rise)) * outAll;
+  const B = s.box;
+  // kicker: above the frame (portrait) or at the top of the text column (landscape)
+  const xR = LAY.right;
+  const kY = PORTRAIT ? B.y - px(52) : B.y + px(24);
+  if (eK > 0) {
+    const rw = px(46);
+    rule(xR - rw, kY - px(11) + Math.round((1 - eK) * px(18)), rw, PAL.goldLight, eK, px(2));
+    textAt(txt(s.kicker), xR - rw - px(16), kY + Math.round((1 - eK) * px(18)), LAY.fKicker, PAL.goldLight, 'right', eK);
+  }
+  // per view: floor (title) + room and direction (line)
+  const per = s.dur / s.V.length;
+  for (let k = 0; k < s.V.length; k++) {
+    const S0 = k * per, a0 = S0 + (k === 0 ? TL.textIn + 0.1 : 0.3);
+    const outK = k === s.V.length - 1 ? outAll : 1 - easeInOutSine(ramp(tau, S0 + per - 0.5, S0 + per - 0.2));
+    const e = easeOutCubic(ramp(tau, a0, a0 + TL.rise));
+    const a = e * outK;
+    if (a <= 0) continue;
+    const dy = Math.round((1 - e) * px(18));
+    const V = s.V[k];
+    const tf = font(700, PORTRAIT ? px(110) : px(104), SERIF);
+    const lf = font(400, PORTRAIT ? px(46) : px(42), SANS);
+    if (PORTRAIT) {
+      const ty = B.y + B.h + px(150);
+      textAt(V.title, xR, ty + dy, tf, PAL.cream, 'right', a);
+      textAt(V.line, xR, ty + px(74) + dy, lf, 'rgba(250,247,241,0.94)', 'right', a);
+    } else {
+      const ty = B.y + px(190);
+      textAt(V.title, xR, ty + dy, tf, PAL.cream, 'right', a);
+      const lines = wrap(V.line, lf, s.col.w, 2);
+      lines.forEach((l, i) => textAt(l, xR, ty + px(70) + i * px(54) + dy, lf, 'rgba(250,247,241,0.94)', 'right', a));
+    }
+  }
+  // source: bottom of the column (landscape) or the block bottom (portrait)
+  const eS = easeOutCubic(ramp(tau, 0.7, 0.7 + TL.rise)) * outAll;
+  if (eS > 0) {
+    const n = s.srcLines.length, lh = px(36);
+    const yLast = PORTRAIT ? LAY.blockBottom : B.y + B.h - px(4);
+    const w = PORTRAIT ? LAY.textW : s.col.w;
+    rule(xR - w, yLast - (n - 1) * lh - px(52), w, PAL.cream, 0.26 * eS, Math.max(1, px(1.5)));
+    s.srcLines.forEach((l, i) => textAt(l, xR, yLast - (n - 1 - i) * lh, LAY.fSource, 'rgba(250,247,241,0.78)', 'right', eS));
+  }
+}
+
+function drawStatsCols(s, tau) {
+  const outA = 1 - easeInOutSine(ramp(tau, s.dur - TL.outA, s.dur - TL.outB));
+  if (outA <= 0) return;
+  const E = at => easeOutCubic(ramp(tau, at, at + TL.rise)) * outA;
+  const D = at => Math.round((1 - easeOutCubic(ramp(tau, at, at + TL.rise))) * px(18));
+  const x1 = W - LAY.pad, yK = px(318), yV = px(500), yC = px(578), yRule = px(690), yS = px(760);
+  let e = E(0.25);
+  if (e > 0) { const rw = px(46); rule(x1 - rw, yK - px(11) + D(0.25), rw, PAL.gold, e, px(2));
+    textAt(txt(s.kicker), x1 - rw - px(16), yK + D(0.25), LAY.fKicker, PAL.gold, 'right', e); }
+  s.cols.forEach((c, i) => {
+    const at = 0.36 + 0.2 * i; e = E(at);
+    textAt(c.v, c.r, yV + D(at), c.vf, PAL.ink, 'right', e);
+    textAt(c.c, c.r, yC + D(at), c.cf, 'rgba(27,26,23,0.86)', 'right', e);
+  });
+  // the vertical hairline between the columns
+  e = E(0.5);
+  if (e > 0 && s.cols.length > 1) { ctx.globalAlpha = 0.18 * e; ctx.fillStyle = PAL.ink;
+    ctx.fillRect(Math.round(s.cols[1].r + s.gap / 2), yV - px(96), Math.max(1, px(1.5)), px(210)); ctx.globalAlpha = 1; }
+  e = E(0.7);
+  rule(LAY.pad, yRule, x1 - LAY.pad, PAL.ink, 0.16 * e, Math.max(1, px(1.5)));
+  s.srcLines.forEach((l, i) => textAt(l, x1, yS + i * px(36) + D(0.7), LAY.fSource, 'rgba(27,26,23,0.66)', 'right', e));
+}
+
+function drawOutro(s, t) {
+  const tau = t - s.S; if (tau < -TL.xf / 2) return;
+  const el = (a, b) => easeOutCubic(ramp(tau, a, b));
+  const rise = e => Math.round((1 - e) * px(16));
+  const cx = W / 2;
+  const acts = s.actions.map(a => ({ text: txt(a), sub: a.sub ? tidy(a.sub) : '', primary: !!a.primary }));
+  const fAct = font(600, PORTRAIT ? px(46) : px(42), SANS), fSub = font(600, PORTRAIT ? px(44) : px(40), SANS);
+  const ph = PORTRAIT ? px(108) : px(100);
+  const pill = (a, x, y, e) => {
+    if (e <= 0) return;
+    const tw = measure(fAct, a.text), pw = Math.round(tw + px(120));
+    ctx.globalAlpha = e;
+    roundRect(Math.round(x - pw / 2), Math.round(y - ph / 2), pw, ph, ph / 2);
+    if (a.primary) { ctx.fillStyle = PAL.terra; ctx.fill(); }
+    else { ctx.strokeStyle = PAL.cream; ctx.lineWidth = Math.max(2, px(2.5)); ctx.stroke(); }
+    ctx.globalAlpha = 1;
+    textAt(a.text, x, y + Math.round(px(PORTRAIT ? 16 : 15)), fAct, PAL.cream, 'center', e);
+    if (a.sub) textAt(a.sub, x, y + ph / 2 + px(PORTRAIT ? 70 : 64), fSub, 'rgba(250,247,241,0.92)', 'center', e, 'ltr');
+  };
+  let e;
+  if (PORTRAIT) {
+    e = el(0.25, 0.85); textAt(txt(s.kicker), cx, px(560) + rise(e), font(500, px(60), SERIF), PAL.cream, 'center', e);
+    e = el(0.35, 1.0); rule(cx - px(55) * e, px(612), px(110) * e, PAL.goldLight, 0.8 * e);
+    pill(acts[0], cx, px(770), el(0.45, 1.05));
+    if (acts[1]) pill(acts[1], cx, px(930), el(0.6, 1.2));
+    e = el(0.8, 1.4);
+    textAt(txt(DATA.brand.mark), cx, px(1290) + rise(e), font(700, px(128), SERIF), PAL.cream, 'center', e);
+    textAt(txt(DATA.brand.site), cx, px(1372) + rise(e), font(500, px(42), SANS), PAL.goldLight, 'center', e, 'ltr');
+    e = el(0.95, 1.55); textAt(txt(DATA.brand.independent), cx, px(1452) + rise(e), font(400, px(36), SANS), 'rgba(250,247,241,0.84)', 'center', e);
+  } else {
+    e = el(0.25, 0.85); textAt(txt(s.kicker), cx, px(212) + rise(e), font(500, px(56), SERIF), PAL.cream, 'center', e);
+    e = el(0.35, 1.0); rule(cx - px(55) * e, px(258), px(110) * e, PAL.goldLight, 0.8 * e);
+    const gap = px(40);
+    const w0 = measure(fAct, acts[0].text) + px(120), w1 = acts[1] ? measure(fAct, acts[1].text) + px(120) : 0;
+    const tot = w0 + (acts[1] ? gap + w1 : 0);
+    // right to left: the primary action on the right
+    pill(acts[0], cx + tot / 2 - w0 / 2, px(400), el(0.45, 1.05));
+    if (acts[1]) pill(acts[1], cx - tot / 2 + w1 / 2, px(400), el(0.6, 1.2));
+    e = el(0.8, 1.4);
+    textAt(txt(DATA.brand.mark), cx, px(740) + rise(e), font(700, px(118), SERIF), PAL.cream, 'center', e);
+    textAt(txt(DATA.brand.site), cx, px(812) + rise(e), font(500, px(40), SANS), PAL.goldLight, 'center', e, 'ltr');
+    e = el(0.95, 1.55); textAt(txt(DATA.brand.independent), cx, px(884) + rise(e), font(400, px(36), SANS), 'rgba(250,247,241,0.84)', 'center', e);
+  }
+}
+
+function draw(t) {
+  ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+  ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'low';
+  ctx.fillStyle = PAL.teal; ctx.fillRect(0, 0, W, H);
+  for (let i = 0; i < SCENES.length; i++) {
+    const s = SCENES[i];
+    if (t < s.fin0 || t > s.vis1) continue;
+    const a = i === 0 ? 1 : easeInOutSine(ramp(t, s.fin0, s.fin1));
+    drawSceneBackground(s, a, t);
+    // chrome belongs to the scene, so it crossfades with the picture it describes
+    if (s.type !== 'outro') drawBrand(a, s.panel === 'paper');
+    if (s.render && s.type !== 'views') drawLabelPill(txt(DATA.labels.render), LAY.pad, LAY.chromeY - px(13), a, 'left');
+  }
+  for (const s of SCENES) {
+    const tau = t - s.S;
+    if (s.type === 'outro') { if (tau > -TL.xf) drawOutro(s, t); continue; }
+    if (tau < 0 || tau > s.dur) continue;
+    if (s.type === 'views') { drawViewsText(s, t); continue; }
+    if (s.statsCols) { drawStatsCols(s, tau); continue; }
+    drawRows(s.rows, tau, { dur: s.dur, dark: s.panel === 'paper', noIn: s.type === 'title', align: 'right' });
+  }
+}
+
+// ---------- boot ----------
+async function boot() {
+  const res = await fetch(`data/${PROJECT}.json`, { cache: 'no-store' });
+  if (!res.ok) throw new Error('data file not found: data/' + PROJECT + '.json');
+  DATA = await res.json();
+  await loadFonts();
+  computeLayout();
+  SCENES = [];
+  for (let i = 0; i < DATA.scenes.length; i++) { SCENES.push(await prepareScene(DATA.scenes[i], i)); setStatus(`prepared ${i + 1}/${DATA.scenes.length}`); }
+  buildTimeline();
+  // check frames (content time): each scene once its text is in, the views one by one, a crossfade, the outro
+  const checks = [];
+  for (const s of SCENES) {
+    if (s.type === 'title') checks.push(+(s.S + 1.5).toFixed(3));
+    else if (s.type === 'list') checks.push(+(s.S + Math.min(s.dur - 0.8, 5.2)).toFixed(3));
+    else if (s.type === 'views') { const per = s.dur / s.V.length; s.V.forEach((v, k) => checks.push(+(s.S + k * per + per * 0.6).toFixed(3))); }
+    else if (s.type === 'outro') checks.push(+(T_TOTAL - 0.3).toFixed(3));
+    else checks.push(+(s.S + Math.min(s.dur - 0.8, 2.6)).toFixed(3));
+  }
+  if (SCENES.length > 2) checks.push(+SCENES[2].S.toFixed(3));   // the middle of a crossfade
+  checks.sort((a, b) => a - b);
+  window.__info = {
+    project: PROJECT, width: W, height: H, fps: FPS, duration: T_TOTAL, orientation: ORIENT, fonts: window.__fonts,
+    scenes: SCENES.map(s => ({ id: s.id, type: s.type, start: s.S, dur: s.dur, src: s.src || null, upscale: s.P ? s.P.upscale : (s.boxUpscale || null),
+      rows: s.cols ? s.cols.map(c => ({ kind: 'stat', text: c.v + ' | ' + c.c, width: Math.round(Math.max(measure(c.vf, c.v), measure(c.cf, c.c))) })) : s.rows ? s.rows.filter(r => r.text).map(r => ({ kind: r.kind, text: r.text, width: Math.round(measure(r.font || LAY.fKicker, r.text)) })) : null })),
+    textWidth: LAY.textW, checks,
+  };
+  draw(0);
+  window.__state = 'ready';
+  setStatus(`ready ${W}x${H} ${T_TOTAL.toFixed(1)}s fonts:${window.__fonts}`);
+}
+
+window.__drawAt = t => { draw(t); return canvas.toDataURL('image/png'); };
+
+function pickMime() {
+  const c = ['video/mp4;codecs=avc1.640028', 'video/mp4;codecs=avc1.4d0028', 'video/mp4;codecs=avc1.42E028',
+             'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'];
+  const forced = Q.get('mime');
+  if (forced && MediaRecorder.isTypeSupported(forced)) return forced;
+  return c.find(m => MediaRecorder.isTypeSupported(m)) || '';
+}
+
+let BLOB = null;
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+// Real-time capture, frame exact: the k-th captured frame always shows time k/FPS, handed to the recorder with
+// requestFrame() as close as possible to its wall-clock slot (render.py then stamps constant 1/FPS durations).
+function captureRun(seconds, drawFn, opts) {
+  return new Promise((resolve, reject) => {
+    const mime = pickMime();
+    const stream = canvas.captureStream(0);
+    const track = stream.getVideoTracks()[0];
+    const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: KBPS * 1000 });
+    const chunks = [];
+    const pre = (opts && opts.hold) || 0, post = (opts && opts.hold) || 0;
+    const N = Math.round(seconds * FPS) + 1 + pre + post;
+    const stats = { mime, kbps: KBPS, frames: 0, slotLateMsMax: 0, slotLateMsSum: 0, tickGapMax: 0 };
+    rec.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+    rec.onerror = e => reject(new Error('recorder error: ' + (e.error && e.error.message)));
+    rec.onstop = () => {
+      stream.getTracks().forEach(tr => tr.stop());
+      stats.blob = new Blob(chunks, { type: (mime || 'video/webm').split(';')[0] });
+      stats.size = stats.blob.size;
+      stats.slotLateMsAvg = +(stats.slotLateMsSum / Math.max(1, stats.frames)).toFixed(2);
+      delete stats.slotLateMsSum;
+      resolve(stats);
+    };
+    let t0 = null, k = 0, lastTick = null;
+    const tick = () => {
+      const now = performance.now();
+      if (t0 === null) t0 = now;
+      if (lastTick !== null) stats.tickGapMax = Math.max(stats.tickGapMax, +(now - lastTick).toFixed(1));
+      lastTick = now;
+      if (k < N && now - t0 >= (k * 1000) / FPS - 0.5) {
+        const late = Math.max(0, now - t0 - (k * 1000) / FPS);
+        stats.slotLateMsMax = Math.max(stats.slotLateMsMax, +late.toFixed(1)); stats.slotLateMsSum += late;
+        drawFn(Math.min(seconds, Math.max(0, (k - pre) / FPS)));
+        track.requestFrame();
+        stats.frames++; k++;
+        if (opts && opts.status) setStatus(`rec ${(k / FPS).toFixed(2)} / ${seconds.toFixed(1)}`);
+      }
+      if (k < N) requestAnimationFrame(tick);
+      else setTimeout(() => { rec.requestData(); rec.stop(); }, 700);
+    };
+    rec.start(1000);
+    requestAnimationFrame(tick);
+  });
+}
+
+window.__record = async () => {
+  window.__state = 'recording';
+  const warm = await captureRun(1.5, () => draw(0), null);   // warm-up take (discarded): encoder + readback path
+  await sleep(300);
+  const HOLD = 6;   // 0.2 s hold of the first and the last picture
+  const stats = await captureRun(T_TOTAL, t => draw(Math.min(t, T_TOTAL)), { status: true, hold: HOLD });
+  BLOB = stats.blob; delete stats.blob;
+  stats.expectedFrames = Math.round(T_TOTAL * FPS) + 1 + 2 * HOLD;
+  stats.holdFrames = HOLD;
+  stats.fps = FPS; stats.duration = T_TOTAL;
+  stats.warmupFrames = warm.frames;
+  window.__state = 'done';
+  return stats;
+};
+
+window.__slice = (off, len) => new Promise(res => {
+  const fr = new FileReader();
+  fr.onload = () => res(fr.result.slice(fr.result.indexOf(',') + 1));
+  fr.readAsDataURL(BLOB.slice(off, off + len));
+});
+
+function preview() {
+  let t0 = performance.now();
+  const loop = now => { let t = (now - t0) / 1000; if (t > T_TOTAL + 1) { t0 = now; t = 0; } draw(Math.min(t, T_TOTAL)); requestAnimationFrame(loop); };
+  requestAnimationFrame(loop);
+}
+
+boot().then(() => {
+  if (MODE === 'still') draw(+(Q.get('t') || 0));
+  else if (MODE === 'preview') preview();
+}).catch(err => { window.__state = 'error'; window.__error = String(err && err.stack || err); setStatus('ERROR ' + err); console.error(err); });
+</script>
+</body>
+</html>

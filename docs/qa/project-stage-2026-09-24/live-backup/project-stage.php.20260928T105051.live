@@ -73,14 +73,6 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 				// example apartments (the owner, 25.9.2026: "דירות לדוגמה עם כיוון, ועם תווית ברורה שהן לדוגמה"): one per side of
 				// each tower floor, four in all, within the developer's "3 to 5 apartments per floor" (Bizportal 19.7.2023)
 				'units'          => array( array( 'n', 0 ), array( 'e', 90 ), array( 's', 180 ), array( 'w', 270 ) ),
-				// ProjectFilm v79 (28.9.2026): the project's film, 49 s, from scripts/project-video (every line's source in
-				// data/rainbow-tel-aviv.json); media ids 8106-8109
-				'film'           => array(
-					'wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/09/rainbow-tel-aviv-film-wide.mp4', 'tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/09/rainbow-tel-aviv-film-tall.mp4',
-					'poster_wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/09/rainbow-tel-aviv-film-wide-poster.jpg', 'poster_tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/09/rainbow-tel-aviv-film-tall-poster.jpg',
-					'secs' => 49, 'date' => '2026-09-28', 'date_he' => '28.9.2026',
-					'desc' => 'סרטון של 49 שניות על Rainbow תל אביב של ישראל קנדה ברובע שדה דב: המיקום, המגדל בן 39 הקומות ובנייני הבוטיק, 459 הדירות, המחירים והמכירות שדווחו, המתקנים והנוף המשוער מהקומות. הדמיה להמחשה.',
-				),
 				// the floor card's line where no sold apartment is known: what the developer said about that height (Bizportal
 				// 19.7.2023: two-room apartments "עד קומה 25 בערך"), and above it the project's range
 				'low_up_to'      => 25,
@@ -298,8 +290,6 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 				. '<a class="nlds-btn nlds-btn--secondary" href="#nlps-t" data-nlps-ev="hero-pick"><span>לבחירת קומה</span></a>'
 				// VideoCall v73: a video call with NadLan's team, booked in the scheduler's band at the page's end
 				. ( function_exists( 'nadlan_sched_on' ) && nadlan_sched_on() && '1' !== get_post_meta( $id, 'nadlan_sched_off', true ) ? '<a class="nlds-btn nlds-btn--secondary nlps-hero__video" href="#nlsch" data-nlps-ev="hero-video"><span>שיחת וידאו עם נציג</span></a>' : '' )
-				// ProjectFilm v79: the film opens in a dialog (printed in the footer); nothing loads until it is pressed
-				. ( ! empty( $ps['film']['wide'] ) ? '<a class="nlds-btn nlds-btn--secondary nlps-hero__film" href="#nlfilm" data-nlps-ev="hero-film" aria-haspopup="dialog"><span class="nlps-film__pl" aria-hidden="true"></span><span>סרטון הפרויקט <small>· ' . (int) $ps['film']['secs'] . ' שניות</small></span></a>' : '' )
 				. '</div></div>';
 		}
 		$rail = '';
@@ -693,54 +683,3 @@ add_action( 'wp_head', function () {
 		. '@media(max-width:600px){.nlps-stage{height:70svh;min-height:360px}:root body .nlps-page{padding:0 12px!important;row-gap:12px}:root body .nlps-page>.nlps-rail{gap:12px}:root body .nlps-page>.nl-lead>p{font-size:16px!important}}'
 		. '</style>' . "\n";
 }, 999 );
-
-/* ProjectFilm v79 (design system, 28.9.2026): the project's film in a dialog, and a VideoObject for search. The button is in
-   the hero's button row; the dialog loads the wide film on screens over 700 px and the upright one on phones, only when the
-   button is pressed, and plays it (the visitor chose it). Escape, the close button and the veil close it. */
-add_action( 'wp_head', function () {
-	$ps = nadlan_ps_current();
-	if ( ! $ps || empty( $ps['film']['wide'] ) ) { return; }
-	$f = $ps['film'];
-	$ld = array(
-		'@context' => 'https://schema.org', '@type' => 'VideoObject',
-		'name' => $ps['name'] . ': סרטון הפרויקט', 'description' => (string) $f['desc'],
-		'thumbnailUrl' => array( $f['poster_wide'], $f['poster_tall'] ), 'uploadDate' => $f['date'] . 'T09:00:00+03:00',
-		'duration' => 'PT' . (int) $f['secs'] . 'S', 'contentUrl' => $f['wide'], 'inLanguage' => 'he',
-		'publisher' => array( '@type' => 'Organization', 'name' => 'נדל״ן', 'url' => home_url( '/' ) ),
-	);
-	echo '<script type="application/ld+json" id="nadlan-ps-film">' . wp_json_encode( $ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
-	echo '<style id="nadlan-ps-film-css">'
-		. ':root body .nlds .nlps-hero__film{gap:10px}'
-		. ':root body .nlds .nlps-hero__film small{font-weight:600;color:#6B6558}'
-		. '.nlps-film__pl{width:26px;height:26px;border-radius:50%;background:#1F4B5C;display:inline-grid;place-items:center;flex:none}'
-		. '.nlps-film__pl::before{content:"";margin-left:3px;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent #fff}'
-		. 'dialog.nlfilm{padding:0;border:0;background:transparent;width:min(1100px,calc(100vw - 32px));max-width:none;max-height:calc(100svh - 32px);overflow:visible}'
-		. 'dialog.nlfilm::backdrop{background:rgba(20,19,15,.82)}'
-		. '.nlfilm-box{position:relative;border-radius:18px;overflow:hidden;background:#14130F;box-shadow:0 30px 80px rgba(0,0,0,.5)}'
-		. '.nlfilm-v{display:block;width:100%;height:auto;max-height:calc(100svh - 110px);background:#14130F}'
-		. '.nlfilm-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:12px 16px;background:#FAF7F1;font:600 14px/1.45 Heebo,Assistant,sans-serif;color:#3B4753}'
-		. '.nlfilm-bar b{color:#1B1A17;font-weight:700}'
-		. '.nlfilm-x{position:absolute;top:12px;inset-inline-end:12px;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:rgba(250,247,241,.95);color:#1B1A17;font:700 20px/44px Heebo,sans-serif;cursor:pointer;padding:0}'
-		. '@media(max-width:700px){dialog.nlfilm{width:min(420px,calc(100vw - 24px))}.nlfilm-bar{font-size:13px}}'
-		. '</style>' . "\n";
-}, 998 );
-add_action( 'wp_footer', function () {
-	$ps = nadlan_ps_current();
-	if ( ! $ps || empty( $ps['film']['wide'] ) ) { return; }
-	$f = $ps['film'];
-	echo '<dialog id="nlfilm" class="nlfilm" dir="rtl" lang="he" aria-label="' . esc_attr( 'סרטון הפרויקט: ' . $ps['name'] ) . '"'
-		. ' data-wide="' . esc_url( $f['wide'] ) . '" data-tall="' . esc_url( $f['tall'] ) . '" data-pw="' . esc_url( $f['poster_wide'] ) . '" data-pt="' . esc_url( $f['poster_tall'] ) . '">'
-		. '<div class="nlfilm-box"><button type="button" class="nlfilm-x" aria-label="סגירה">&#10005;</button>'
-		. '<video class="nlfilm-v" controls playsinline preload="none"></video>'
-		. '<div class="nlfilm-bar"><span><b>' . esc_html( $ps['name'] ) . '</b> · סרטון הפרויקט · ' . (int) $f['secs'] . ' שניות · עודכן ' . esc_html( $f['date_he'] ) . '</span><span>הדמיה להמחשה. כל נתון עם המקור שלו.</span></div>'
-		. '</div></dialog>'
-		. '<script id="nadlan-ps-film-js">(function(){var d=document.getElementById("nlfilm");if(!d||!d.showModal)return;var v=d.querySelector("video");'
-		. 'function open(e){if(e)e.preventDefault();var tall=window.matchMedia("(max-width:700px)").matches;var src=d.getAttribute(tall?"data-tall":"data-wide");'
-		. 'if(v.getAttribute("src")!==src){v.setAttribute("poster",d.getAttribute(tall?"data-pt":"data-pw"));v.setAttribute("src",src);}'
-		. 'd.showModal();var p=v.play();if(p&&p.catch)p.catch(function(){});}'
-		. 'document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("[data-nlps-ev=hero-film]"):null;if(a)open(e);});'
-		. 'd.querySelector(".nlfilm-x").addEventListener("click",function(){d.close();});'
-		. 'd.addEventListener("click",function(e){if(e.target===d)d.close();});'
-		. 'd.addEventListener("close",function(){v.pause();});'
-		. 'if(location.hash==="#nlfilm")setTimeout(open,600);})();</script>' . "\n";
-}, 50 );

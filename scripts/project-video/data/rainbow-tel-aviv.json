@@ -1,0 +1,371 @@
+{
+  "slug": "rainbow-tel-aviv",
+  "page": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+  "checked": "2026-09-28",
+  "note": "Every visible line carries its source. Facts come only from the live project page (read 28.9.2026, release 1.72.329), plugins/nadlan-config/assets/project-stage/rainbow/facilities.json and docs/research/2026-09-24-rainbow-run/rainbow-facts.md. Nothing else. Stills are ours: the live 3D stage captured by capture.py, and the page's own view cards. All of them are illustrations.",
+  "sources": {
+    "page": "https://nad-lan.co.il/projects/rainbow-tel-aviv/ (read 28.9.2026)",
+    "page_h1": "the page H1: 'ריינבו תל אביב Rainbow Tel Aviv'",
+    "page_kicker": "the line under the H1: 'ישראל קנדה · רובע שדה דב, צפון תל אביב'",
+    "page_lead": "the lead paragraph: '... במגרש 111 ברובע שדה דב, בצפון תל אביב, כ-700 מטר מהים: מגדל בן 39 קומות ובנייני בוטיק בני 9 קומות סביב חצר פנימית, 459 דירות לפי היזם. הפרויקט בבנייה, הקבלן המבצע הוא אשטרום, והאכלוס צפוי ב-2030 לפי אתר הפרויקט. לפי דוחות היזם, המחיר הממוצע בדירות שנמכרו עד תחילת 2026 הוא כ-81,800 ₪ למ\"ר.'",
+    "page_facts": "the facts tiles: 'מיקום: רובע שדה דב / צפון תל אביב, כ-700 מ׳ מהים'; 'בניינים: מגדל 39 קומות / ובנייני בוטיק בני 9 קומות'; 'דירות: 459'; 'מחיר ממוצע: כ-81,800 ₪ למ״ר / דוחות היזם, עד 3.2026'; 'מצב: בבנייה / אכלוס צפוי ב-2030'",
+    "page_price": "the deals section: 'כ-81,800 ₪ למ״ר המחיר הממוצע בדירות שנמכרו עד 3.2026, לפי דוחות היזם' and the facts box: 'הממוצע בדירות שנמכרו עד הרבעון הראשון של 2026, לפי דוחות היזם (ביזפורטל, 29.5.2026). מחיר וזמינות מחייבים אישור היזם.'",
+    "page_interior": "the example-apartment section: 'דירה לדוגמה' ... 'הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר.'",
+    "page_cta": "the hero buttons: 'לקבלת תוכניות ומחירים' (WhatsApp, https://wa.me/972525101555?text=...) and 'שיחת וידאו עם נציג' (#nlsch); the floating pill 'וואטסאפ · שאלה על הסקירה' (https://wa.me/972525101555?text=...)",
+    "page_independent": "the page's independence box: 'עמוד זה אינו האתר הרשמי של ישראל קנדה ואינו מופעל מטעמה. נדל״ן היא פלטפורמת מידע עצמאית, ללא קשר מסחרי עם היזם.'",
+    "facilities_json": "plugins/nadlan-config/assets/project-stage/rainbow/facilities.json (FacilityHotspots v72): five facilities, names verbatim; its notes say which two boutique roofs have the pools was not published and every place on the model is an illustration",
+    "research": "docs/research/2026-09-24-rainbow-run/rainbow-facts.md: section 2.2 (design plan 10.5.2023: tower 39 floors above the entrance plus a technical floor, textural buildings 9 floors, courtyard), section 5 (straight-line distance from the lot to the Reading shore about 707 m, TLV GIS)"
+  },
+  "brand": {
+    "mark": {
+      "text": "נדל״ן",
+      "source": "the site's name as the page prints it ('נדל״ן היא פלטפורמת מידע עצמאית')"
+    },
+    "site": {
+      "text": "nad-lan.co.il",
+      "source": "the site's domain"
+    },
+    "independent": {
+      "text": "פלטפורמה עצמאית, לא מטעם היזם",
+      "source": "the brief's required wording; matches page_independent"
+    }
+  },
+  "labels": {
+    "render": {
+      "text": "הדמיה להמחשה",
+      "source": "required on every frame that shows a rendering; the page's own wording ('הדמיה להמחשה בלבד')"
+    },
+    "view": {
+      "text": "הדמיה להמחשה, נוף משוער",
+      "source": "required on every view card; the page's view section ('הנוף המשוער', 'להמחשה בלבד')"
+    }
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "type": "title",
+      "dur": 5.0,
+      "render": true,
+      "image": {
+        "landscape": {
+          "src": "img/rainbow-tel-aviv/stage-hero_1920x1080.jpg",
+          "focus": [
+            0.47,
+            0.42
+          ]
+        },
+        "portrait": {
+          "src": "img/rainbow-tel-aviv/stage-hero_1080x1920.jpg",
+          "focus": [
+            0.44,
+            0.36
+          ]
+        }
+      },
+      "zoom": "in",
+      "title": {
+        "text": "Rainbow תל אביב",
+        "source": "page_h1 (the brief's title wording)"
+      },
+      "line": {
+        "text": "רובע שדה דב, צפון תל אביב",
+        "source": "page_kicker"
+      },
+      "small": {
+        "text": "יזם: ישראל קנדה",
+        "source": "page_kicker; the page's facts box 'יזם: ישראל קנדה'"
+      }
+    },
+    {
+      "id": "location",
+      "type": "card",
+      "dur": 4.6,
+      "render": true,
+      "image": {
+        "landscape": {
+          "src": "img/rainbow-tel-aviv/stage-quarter-own_1920x1080.jpg",
+          "focus": [
+            0.4,
+            0.42
+          ]
+        },
+        "portrait": {
+          "src": "img/rainbow-tel-aviv/stage-quarter-own_1080x1920.jpg",
+          "focus": [
+            0.3,
+            0.4
+          ]
+        }
+      },
+      "zoom": "out",
+      "kicker": {
+        "text": "המיקום",
+        "source": "section name"
+      },
+      "title": {
+        "text": "רובע שדה דב",
+        "source": "page_facts (מיקום)"
+      },
+      "lines": [
+        {
+          "text": "צפון תל אביב, כ-700 מ׳ מהים",
+          "source": "page_facts (מיקום), page_lead ('כ-700 מטר מהים')"
+        }
+      ],
+      "source": {
+        "text": "מרחק בקו אווירי, לפי מפות עיריית תל אביב-יפו",
+        "source": "research section 5: straight-line distance from the lot to the Reading shore about 707 m, computed on TLV GIS polygons"
+      }
+    },
+    {
+      "id": "buildings",
+      "type": "card",
+      "dur": 4.6,
+      "render": true,
+      "image": {
+        "landscape": {
+          "src": "img/rainbow-tel-aviv/stage-lot_1920x1080.jpg",
+          "focus": [
+            0.48,
+            0.45
+          ]
+        },
+        "portrait": {
+          "src": "img/rainbow-tel-aviv/stage-lot_1080x1920.jpg",
+          "focus": [
+            0.45,
+            0.35
+          ]
+        }
+      },
+      "zoom": "in",
+      "kicker": {
+        "text": "הבניינים",
+        "source": "section name"
+      },
+      "title": {
+        "text": "מגדל 39 קומות",
+        "source": "page_facts (בניינים), page_lead"
+      },
+      "lines": [
+        {
+          "text": "ובנייני בוטיק בני 9 קומות סביב חצר פנימית",
+          "source": "page_facts (בניינים), page_lead ('ובנייני בוטיק בני 9 קומות סביב חצר פנימית')"
+        }
+      ],
+      "source": {
+        "text": "לפי תכנית העיצוב שאושרה ב-10.5.2023",
+        "source": "research section 2.2: the Tel Aviv design-plan decision of 10.5.2023 (39 floors above the entrance plus a technical floor; textural buildings of 9 floors around a courtyard)"
+      }
+    },
+    {
+      "id": "homes",
+      "type": "card",
+      "dur": 4.6,
+      "render": true,
+      "image": {
+        "landscape": {
+          "src": "img/rainbow-tel-aviv/stage-hero-noon_1920x1080.jpg",
+          "focus": [
+            0.38,
+            0.45
+          ]
+        },
+        "portrait": {
+          "src": "img/rainbow-tel-aviv/stage-hero-noon_1080x1920.jpg",
+          "focus": [
+            0.35,
+            0.4
+          ]
+        }
+      },
+      "zoom": "out",
+      "kicker": {
+        "text": "הדירות",
+        "source": "section name"
+      },
+      "title": {
+        "text": "459 דירות",
+        "source": "page_facts (דירות: 459), page_lead ('459 דירות לפי היזם')"
+      },
+      "lines": [
+        {
+          "text": "בבנייה, הקבלן המבצע: אשטרום",
+          "source": "page_lead ('הפרויקט בבנייה, הקבלן המבצע הוא אשטרום'), page_facts (מצב: בבנייה)"
+        },
+        {
+          "text": "אכלוס צפוי ב-2030",
+          "source": "page_lead ('והאכלוס צפוי ב-2030 לפי אתר הפרויקט'), page_facts ('אכלוס צפוי ב-2030')"
+        }
+      ],
+      "source": {
+        "text": "לפי היזם ואתר הפרויקט",
+        "source": "page_lead ('לפי היזם', 'לפי אתר הפרויקט')"
+      }
+    },
+    {
+      "id": "price",
+      "type": "card",
+      "dur": 4.6,
+      "render": false,
+      "panel": "paper",
+      "kicker": {
+        "text": "מחירים ומכירות",
+        "source": "section name; the page's deals section ('עסקאות בפרויקט') and facts ('מחיר ממוצע')"
+      },
+      "stats": [
+        {
+          "value": {
+            "text": "כ-81,800 ₪ למ״ר",
+            "source": "page_facts (מחיר ממוצע: 'כ-81,800 ₪ למ״ר'), page_price"
+          },
+          "caption": {
+            "text": "המחיר הממוצע שדווח בדירות שנמכרו עד 3.2026",
+            "source": "page_price ('המחיר הממוצע בדירות שנמכרו עד 3.2026, לפי דוחות היזם'); 'דווח' wording per the brief"
+          }
+        },
+        {
+          "value": {
+            "text": "275 מתוך 459",
+            "source": "page deals section ('275 מתוך 459 דירות נמכרו עד 6.2026, לפי דוחות היזם') and page_facts (דירות: '275 מהן נמכרו עד 6.2026, לפי דוחות היזם')"
+          },
+          "caption": {
+            "text": "דירות נמכרו עד 6.2026, לפי דוחות היזם",
+            "source": "the page's deals section, verbatim ('275 מתוך 459 דירות נמכרו עד 6.2026, לפי דוחות היזם'); research section 3.1 (Globes 27.8.2026: 275 of 459 after H1 2026)"
+          }
+        }
+      ],
+      "source": {
+        "text": "מקורות: ביזפורטל, 29.5.2026; גלובס, 27.8.2026. מחיר וזמינות מחייבים אישור היזם.",
+        "source": "page_price ('לפי דוחות היזם (ביזפורטל, 29.5.2026). מחיר וזמינות מחייבים אישור היזם.'); research section 3.1 for the Globes 27.8.2026 report behind '275 of 459 to 6.2026'"
+      }
+    },
+    {
+      "id": "facilities",
+      "type": "list",
+      "dur": 8.4,
+      "render": true,
+      "image": {
+        "landscape": {
+          "src": "img/rainbow-tel-aviv/stage-facilities_1920x1080.jpg",
+          "focus": [
+            0.48,
+            0.42
+          ]
+        },
+        "portrait": {
+          "src": "img/rainbow-tel-aviv/stage-facilities_1080x1920.jpg",
+          "focus": [
+            0.45,
+            0.25
+          ]
+        }
+      },
+      "zoom": "in",
+      "kicker": {
+        "text": "המתקנים בפרויקט",
+        "source": "the page's stage legend chip 'מתקנים בפרויקט'"
+      },
+      "items": [
+        {
+          "text": "שתי בריכות על הגגות",
+          "source": "facilities_json pools.name (design plan 10.5.2023)"
+        },
+        {
+          "text": "Rainbow Club, מועדון הדיירים",
+          "source": "facilities_json club.name (Israel Canada site; design plan: 960 m² for residents)"
+        },
+        {
+          "text": "לובי בכל בניין",
+          "source": "facilities_json lobby.name (design plan)"
+        },
+        {
+          "text": "מסחר בקומת הקרקע",
+          "source": "facilities_json retail.name (design plan)"
+        },
+        {
+          "text": "חניון תת־קרקעי",
+          "source": "facilities_json parking.name (Israel Canada site)"
+        }
+      ],
+      "source": {
+        "text": "לפי תכנית העיצוב (10.5.2023) ואתר ישראל קנדה. מיקום המתקנים בהדמיה להמחשה.",
+        "source": "facilities_json notes ('מקורות: תכנית העיצוב, אתר הפרויקט', 'המיקום בדגם להמחשה', 'איזה שני גגות לא פורסם')"
+      }
+    },
+    {
+      "id": "views",
+      "type": "views",
+      "dur": 10.5,
+      "render": true,
+      "kicker": {
+        "text": "הנוף מהקומה",
+        "source": "the page's view section 'הנוף מהקומה'"
+      },
+      "items": [
+        {
+          "src": "img/rainbow-tel-aviv/views/living-36w-card.jpg",
+          "from": "plugins/nadlan-config/assets/project-stage/rainbow/tour/living-36w-card.jpg",
+          "title": {
+            "text": "קומה 36",
+            "source": "file name living-36w: floor 36"
+          },
+          "line": {
+            "text": "מהסלון, מבט מערבה",
+            "source": "file name living-36w: living room, west (w)"
+          }
+        },
+        {
+          "src": "img/rainbow-tel-aviv/views/balcony-36s-card.jpg",
+          "from": "plugins/nadlan-config/assets/project-stage/rainbow/tour/balcony-36s-card.jpg",
+          "title": {
+            "text": "קומה 36",
+            "source": "file name balcony-36s: floor 36"
+          },
+          "line": {
+            "text": "מהמרפסת, מבט דרומה",
+            "source": "file name balcony-36s: balcony, south (s)"
+          }
+        },
+        {
+          "src": "img/rainbow-tel-aviv/views/balcony-10w-card.jpg",
+          "from": "plugins/nadlan-config/assets/project-stage/rainbow/tour/balcony-10w-card.jpg",
+          "title": {
+            "text": "קומה 10",
+            "source": "file name balcony-10w: floor 10"
+          },
+          "line": {
+            "text": "מהמרפסת, מבט מערבה",
+            "source": "file name balcony-10w: balcony, west (w)"
+          }
+        }
+      ],
+      "source": {
+        "text": "דירה לדוגמה: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר",
+        "source": "page_interior (verbatim, 'דירה לדוגמה' + the disclaimer)"
+      }
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "dur": 6.6,
+      "render": false,
+      "kicker": {
+        "text": "Rainbow תל אביב",
+        "source": "page_h1"
+      },
+      "actions": [
+        {
+          "text": "שיחת וידאו עם נציג",
+          "primary": true,
+          "source": "page_cta (the hero button 'שיחת וידאו עם נציג')"
+        },
+        {
+          "text": "שאלות? וואטסאפ",
+          "sub": "052-510-1555",
+          "source": "the brief's wording; the number is the page's own WhatsApp link wa.me/972525101555 (page_cta), written in Israeli format"
+        }
+      ]
+    }
+  ]
+}

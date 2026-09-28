@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Video frame check</title>
+<style>html,body{margin:0;background:#111;color:#ccc;font:12px monospace}video{max-width:48vw;max-height:90vh}</style></head>
+<body>
+<video id="v" muted playsinline preload="auto"></video>
+<script>
+'use strict';
+// Loads ?src=<video file> and exposes window.__grab(t): seek to t seconds, return the decoded frame as PNG.
+const v = document.getElementById('v');
+const src = new URLSearchParams(location.search).get('src');
+// python -m http.server has no HTTP Range support, so a plain URL is not seekable in Chrome.
+// Load the whole file into a Blob URL instead: blob URLs are fully seekable.
+window.__ready = fetch(src).then(r => { if (!r.ok) throw new Error('fetch ' + r.status); return r.blob(); })
+  .then(blob => new Promise((res, rej) => {
+    v.addEventListener('loadedmetadata', res, { once: true });
+    v.addEventListener('error', () => rej(new Error('video error ' + (v.error && v.error.code))), { once: true });
+    v.src = URL.createObjectURL(blob);
+  }));
+const once = (el, ev) => new Promise(r => el.addEventListener(ev, r, { once: true }));
+window.__meta = async () => {
+  await window.__ready;
+  let d = v.duration;
+  if (!isFinite(d)) {                       // fragmented file without a duration: scan to the end once
+    const p = once(v, 'seeked'); v.currentTime = 1e7; await p; d = v.duration; v.currentTime = 0; await once(v, 'seeked');
+  }
+  return { duration: d, width: v.videoWidth, height: v.videoHeight };
+};
+window.__grab = async (t) => {
+  await window.__ready;
+  const p = once(v, 'seeked'); v.currentTime = t; await p;
+  if (v.requestVideoFrameCallback) await new Promise(r => { v.requestVideoFrameCallback(() => r()); setTimeout(r, 400); });
+  const c = document.createElement('canvas'); c.width = v.videoWidth; c.height = v.videoHeight;
+  c.getContext('2d').drawImage(v, 0, 0);
+  return c.toDataURL('image/png');
+};
+</script>
+</body>
+</html>
