@@ -1,0 +1,15 @@
+{
+  "released": "1.72.338",
+  "from": "1.72.337",
+  "at": "2026-09-28 13:36:14",
+  "files": {
+    "inc/lang-pages.php": "9537de0cbab35c0afa9d961f0187d9e0",
+    "i18n/lang-pages.json": "fe3314f3c396c80f8de31d1218820d89",
+    "nadlan-config.php": "b78eb14c356b6fa0fbdb433ebbe8500e"
+  },
+  "live_before": {
+    "inc/lang-pages.php": "missing",
+    "i18n/lang-pages.json": "missing",
+    "nadlan-config.php": "bc8ed687943c05df5f18ab7a7f593fc9"
+  }
+}
