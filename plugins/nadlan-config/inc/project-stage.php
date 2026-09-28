@@ -42,6 +42,7 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 			'rainbow-tel-aviv' => array(
 				'dir'            => 'rainbow',
 				'mount'          => 'mountRainbowStage',
+				'basket_hint'    => 'לעזרה: המחיר הממוצע בדירות שנמכרו בפרויקט עד 3.2026 היה כ-81,800 ₪ למ״ר, לפי דוחות היזם. המחיר של דירה מסוימת מהנציג.', // BasketOne v86: shown as a hint, never multiplied into a price
 				'bearing_offset' => 0,
 				'name'           => 'ריינבו תל אביב',
 				'name_en'        => 'Rainbow Tel Aviv',
@@ -119,6 +120,7 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 			'duo-tel-aviv' => array(
 				'dir'            => 'duo',
 				'mount'          => 'mountDuoStage',
+				'basket_hint'    => 'לעזרה: בחוזים שנחתמו בינואר עד יוני 2026 המחיר הממוצע היה כ-71,000 ₪ למ״ר לפני מע״מ, וכ-11 מיליון ₪ לדירה כולל מע״מ, לפי דוח החברה לרבעון השני של 2026. המחיר של דירה מסוימת מהנציג.', // BasketOne v86: shown as a hint, never multiplied into a price
 				'bearing_offset' => 0,
 				'name'           => 'מגדלי דואו תל אביב',
 				'name_en'        => 'DUO Tel Aviv',
@@ -168,6 +170,7 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 			'dimri-yama-sde-dov' => array(
 				'dir'            => 'dimri',
 				'mount'          => 'mountDimriStage',
+				'basket_hint'    => 'לעזרה: מחיר הפתיחה שפורסם בפרויקט הוא מ-3.75 מיליון ₪. המחיר של דירה מסוימת מהנציג.', // BasketOne v86: shown as a hint, never multiplied into a price
 				'bearing_offset' => 0,                      // the stage's north is true north; the lots' 11° turn is inside the scene
 				'name'           => 'דמרי ימה שדה דב',
 				'name_en'        => 'Dimri Yama Sde Dov',
@@ -559,13 +562,16 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 		if ( is_readable( dirname( __DIR__ ) . '/' . $tdir . 'living-25w-card.jpg' ) ) {
 			$turl   = plugins_url( $tdir, dirname( __FILE__ ) );
 			$tv     = '?ver=' . nadlan_ps_ver();
+			// the words are the project's own (DuoInside, 28.9.2026: 'tour' in the config); without them, Rainbow's
+			$tc     = (array) ( $ps['tour'] ?? array() );
 			$planned = 'הנפחים השקופים הם פרויקטים מתוכננים ברובע, בגובה לפי מספר הקומות.';
-			$dirs   = array(
+			$dirs   = ! empty( $tc['dirs'] ) ? (array) $tc['dirs'] : array(
 				array( 'n', 'צפון', 'לכיוון תל ברוך והרצליה', $planned ),
 				array( 'e', 'מזרח', 'לכיוון רמת אביב והאוניברסיטה', $planned ),
 				array( 's', 'דרום', 'לכיוון מגדלי העיר', $planned ),
 				array( 'w', 'מערב', 'לכיוון הים', '' ),
 			);
+			$cd     = (string) ( $tc['card_dir'] ?? 'w' );
 			// each direction in the living room and on the balcony (version 26), where its picture is on the server
 			$spots  = array( array( 'living', 'בסלון', '' ), array( 'balcony', 'במרפסת', 'במרפסת, ' ) );
 			// the stage draws the tower's balconies as its marketing shows them (waves up to 3.6 m); the design plan
@@ -613,13 +619,13 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 			$fln = count( $fls ) > 1 ? 'קומות ' . implode( ', ', array_slice( $fls, 0, -1 ) ) . ' ו־' . end( $fls ) : 'קומה 25';
 			$n25 = count( array_filter( $scenes, function ( $x ) { return 25 === (int) $x['floor']; } ) );
 			$tour = '<div class="nlds nlps-tourwrap" dir="rtl" lang="he"><section class="nlat" id="nlps-tour" aria-labelledby="nlat-t">'
-				. '<div class="nlat__media"><img src="' . esc_url( $turl . 'living-25w-card.jpg' . $tv ) . '" alt="הסלון בדירה לדוגמה בקומה 25, מבט אל הים (הדמיה)" width="1200" height="675" loading="lazy" decoding="async"><span class="nlds-sample">דירה לדוגמה</span></div>'
+				. '<div class="nlat__media"><img src="' . esc_url( $turl . 'living-25' . $cd . '-card.jpg' . $tv ) . '" alt="' . esc_attr( (string) ( $tc['card_alt'] ?? 'הסלון בדירה לדוגמה בקומה 25, מבט אל הים (הדמיה)' ) ) . '" width="1200" height="675" loading="lazy" decoding="async"><span class="nlds-sample">דירה לדוגמה</span></div>'
 				. '<div class="nlat__body"><p class="nlds-kicker">הדירה לדוגמה מבפנים</p>'
-				. '<h2 class="nlat__title" id="nlat-t">' . esc_html( $fln ) . ( $n25 > 1 ? ', בארבעת הכיוונים' : ' · לכיוון הים' ) . '</h2>'
-				. '<p class="nlat__text">סלון ומטבח פתוח כמו במסירה, בלי ריהוט, ' . ( count( $fls ) > 1 ? 'ב' . esc_html( $fln ) : 'בגובה של כ־99 מ׳' )
-				. ( $n25 > 1 ? ': מול הים, תל ברוך, רמת אביב ומגדלי העיר' . ( $bal ? ', מהסלון ומהמרפסת' : '' ) : '' )
-				. '. הנוף בחלון בנוי מהבניינים הקיימים לפי שכבת המבנים של העירייה, מהפרויקטים המתוכננים ברובע כנפחים שקופים, מקו החוף ומהים.</p>'
-				. '<button type="button" class="nlds-btn nlds-btn--primary nlat__go" data-nlps-tour="' . esc_url( $turl . 'living-25w.jpg' . $tv ) . '" data-nlps-tour-small="' . esc_url( $turl . 'living-25w-2k.jpg' . $tv ) . '" data-nlps-tour-title="קומה 25 · לכיוון הים" data-nlps-tour-scenes="' . esc_attr( wp_json_encode( $scenes ) ) . '"><span>להיכנס לדירה · 360°</span></button>'
+				. '<h2 class="nlat__title" id="nlat-t">' . esc_html( $fln ) . ( $n25 > 1 ? ', בארבעת הכיוונים' : ' · ' . esc_html( (string) ( $tc['one_dir'] ?? 'לכיוון הים' ) ) ) . '</h2>'
+				. '<p class="nlat__text">סלון ומטבח פתוח כמו במסירה, בלי ריהוט, ' . ( count( $fls ) > 1 ? 'ב' . esc_html( $fln ) : esc_html( (string) ( $tc['height'] ?? 'בגובה של כ־99 מ׳' ) ) )
+				. ( $n25 > 1 ? ': ' . esc_html( (string) ( $tc['facing'] ?? 'מול הים, תל ברוך, רמת אביב ומגדלי העיר' ) ) . ( $bal ? ', מהסלון ומהמרפסת' : '' ) : '' )
+				. '. ' . esc_html( (string) ( $tc['view_src'] ?? 'הנוף בחלון בנוי מהבניינים הקיימים לפי שכבת המבנים של העירייה, מהפרויקטים המתוכננים ברובע כנפחים שקופים, מקו החוף ומהים.' ) ) . '</p>'
+				. '<button type="button" class="nlds-btn nlds-btn--primary nlat__go" data-nlps-tour="' . esc_url( $turl . 'living-25' . $cd . '.jpg' . $tv ) . '" data-nlps-tour-small="' . esc_url( $turl . 'living-25' . $cd . '-2k.jpg' . $tv ) . '" data-nlps-tour-title="' . esc_attr( (string) ( $tc['card_title'] ?? 'קומה 25 · לכיוון הים' ) ) . '" data-nlps-tour-scenes="' . esc_attr( wp_json_encode( $scenes ) ) . '"><span>להיכנס לדירה · 360°</span></button>'
 				. '<p class="nlat__note">הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר.</p></div></section></div>';
 		}
 		return array( 'hero' => $hero, 'cta' => $cta, 'stagebox' => $stagebox, 'rail' => $rail, 'facts' => $facts, 'below' => $below, 'tour' => $tour, 'deals' => nadlan_ps_deals( $ps ) );

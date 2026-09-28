@@ -1,0 +1,31 @@
+{
+  "released": "1.72.340",
+  "from": "1.72.339",
+  "at": "2026-09-28 14:06:39",
+  "files": {
+    "inc/basket.php": "28981299c924387771ebacd1b7b13690",
+    "assets/basket/basket.js": "02307a775d261274c73b11621b36fec4",
+    "assets/basket/basket.css": "cba8d15d456c352657797f50f2af8caa",
+    "inc/project-stage.php": "ef5e13ff274d8ccca682c492a2108d4a",
+    "assets/project-stage/duo/stage.js": "35e7f819454abca7e5cec00ac3aab2a7",
+    "assets/project-stage/duo/stage.css": "34c665b584ad802945d21c39466c4df8",
+    "assets/project-stage/dimri/stage.js": "06962cd9b383e8fb552f22567572e799",
+    "assets/project-stage/dimri/stage.css": "657385e605bcfe9ecfafa4e6555f0419",
+    "assets/project-stage/ashira/stage.js": "5ee8a286e8d91ae226248e394668f68e",
+    "assets/project-stage/ashira/stage.css": "66678da53bac5d6bb4245387d4f6a4c7",
+    "nadlan-config.php": "596d66ecd77aceda533f1193d74fbac8"
+  },
+  "live_before": {
+    "inc/basket.php": "missing",
+    "assets/basket/basket.js": "missing",
+    "assets/basket/basket.css": "missing",
+    "inc/project-stage.php": "f10b27a968e56b73a29fb948ee0ecb39",
+    "assets/project-stage/duo/stage.js": "b208ca7b615fcf29a498a246982ff1d0",
+    "assets/project-stage/duo/stage.css": "ea87fe01d6722a144adffa95366d8e6b",
+    "assets/project-stage/dimri/stage.js": "f491077e6e5b498411d2e68e344db074",
+    "assets/project-stage/dimri/stage.css": "5e1cc6bc207452d6d8226a2336814900",
+    "assets/project-stage/ashira/stage.js": "7d36a2f51fbbc475ec7daf80d37071d4",
+    "assets/project-stage/ashira/stage.css": "5580ce745e52e144b058a3fbd0338227",
+    "nadlan-config.php": "3395654caa9c6fc1639260cc3de16a75"
+  }
+}

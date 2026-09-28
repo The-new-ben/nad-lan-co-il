@@ -1,0 +1,32 @@
+// DUO Tel Aviv, ProjectDeals proposal (research 28.9.2026, evidence: docs/research/2026-09-28-duo/duo-deals.md).
+// Paste into nadlan_ps_config()['duo-tel-aviv'] in plugins/nadlan-config/inc/project-stage.php, next to 'units'.
+// Five rows meet the sourcing bar: three from the company's report to the Israel Securities Authority (12.9.2021)
+// as the press quoted it, two from Israel Hayom (21.4.2021). NONE comes from the Tax Authority. No buyer is named.
+// n = the tower floor the stage can open (1-50 on the DUO stage; 0 = the floor was not published).
+// Which tower "the second building" is was not published, so the notes do not pick one.
+//
+// BEFORE SHIPPING, two code points (not changed here):
+// 1. nadlan_ps_deals() prints a fixed intro: "לפי נתוני רשות המסים כפי שפורסמו בעיתונות". For DUO that line is
+//    false. Let the function read $ps['deals_intro'] when it is set (suggested text below).
+// 2. Its footer says "המחיר למ״ר מחושב". That holds for rows 3 to 5 but not rows 1 and 2, whose per-m² figure was
+//    published; those cells say "כפי שפורסם".
+// OWNER CHOICE: rows 3 to 5 were related-party pre-sale deals (the company's report; the articles name the buyers).
+// Without them fewer than 2 rows remain, and the section should not be printed at all.
+				'deals_intro'    => 'הדירות שנמכרו בפרויקט ופורסמו עם הקומה שלהן, לפי דיווחי החברה ולפי העיתונות. לא כל העסקאות פורסמו, ועסקאות של בניינים שכנים אינן כאן.',
+				// ProjectDeals: the sold apartments the sources tie to a floor (checked 28.9.2026 against the articles; Israel
+				// Hayom 21.4.2021; the company's report of 12.9.2021 as Merkaz HaNadlan 13.9.2021 and Globes 11.10.2021 quoted it)
+				'deals'          => array(
+					array( 'floor' => 'פנטהאוז', 'n' => 0, 'bld' => 'המגדל והקומה לא צוינו', 'apt' => 'פנטהאוז, השטח לא פורסם', 'price' => 'לא פורסם', 'psqm' => '106,545 ₪, כפי שפורסם', 'date' => '4.2021', 'src' => 'ישראל היום', 'url' => 'https://www.israelhayom.co.il/article/872519', 'via' => '' ),
+					array( 'floor' => '43', 'n' => 43, 'bld' => 'המגדל לא צוין', 'apt' => 'לא פורסם', 'price' => 'לא פורסם', 'psqm' => '76,679 ₪, כפי שפורסם', 'date' => '4.2021', 'src' => 'ישראל היום', 'url' => 'https://www.israelhayom.co.il/article/872519', 'via' => 'בקשת רכישה במכירה המוקדמת', 'note' => 'בקומה הזו, באחד המגדלים, נחתמה בקשת רכישה לפי 76,679 ₪ למ״ר (4.2021)' ),
+					array( 'floor' => '17', 'n' => 17, 'bld' => 'הבניין השני בפרויקט', 'apt' => '4 חדרים · כ-102 מ״ר ומרפסת כ-17 מ״ר, עם חניה', 'price' => 'כ-7.44 מיליון ₪', 'psqm' => 'כ-72,900 ₪', 'date' => '9.2021', 'src' => 'מרכז הנדל״ן', 'url' => 'https://www.nadlancenter.co.il/article/4320', 'via' => 'לפי דיווח החברה, במכירה המוקדמת', 'note' => 'בקומה הזו בבניין השני נמכרה דירת 4 חדרים, כ-102 מ״ר, בכ-7.44 מיליון ₪ (9.2021)' ),
+					array( 'floor' => '16', 'n' => 16, 'bld' => 'הבניין השני בפרויקט', 'apt' => '4 חדרים · כ-102 מ״ר ומרפסת כ-17 מ״ר, עם חניה', 'price' => 'כ-7.33 מיליון ₪', 'psqm' => 'כ-71,900 ₪', 'date' => '9.2021', 'src' => 'מרכז הנדל״ן', 'url' => 'https://www.nadlancenter.co.il/article/4320', 'via' => 'לפי דיווח החברה, במכירה המוקדמת', 'note' => 'בקומה הזו בבניין השני נמכרה דירת 4 חדרים, כ-102 מ״ר, בכ-7.33 מיליון ₪ (9.2021)' ),
+					array( 'floor' => '12', 'n' => 12, 'bld' => 'הבניין השני בפרויקט', 'apt' => '4 חדרים · כ-102 מ״ר ומרפסת כ-17 מ״ר, עם חניה', 'price' => 'כ-7.03 מיליון ₪', 'psqm' => 'כ-68,900 ₪', 'date' => '9.2021', 'src' => 'מרכז הנדל״ן', 'url' => 'https://www.nadlancenter.co.il/article/4320', 'via' => 'לפי דיווח החברה, במכירה המוקדמת', 'note' => 'בקומה הזו בבניין השני נמכרה דירת 4 חדרים, כ-102 מ״ר, בכ-7.03 מיליון ₪ (9.2021)' ),
+				),
+				// the developer's Q2 2026 report (https://res.afi-g.com/about/Documents/2026/Q2-2026.pdf): section 1.3 (372 sold of
+				// 510, signed contracts only), section 7.13.2 (71K ₪/m² before VAT in contracts of 1-6.2026), section 3.5 (12 units,
+				// average 10,985K ₪ incl. VAT)
+				'deals_sum'      => array(
+					array( '372 מתוך 510', 'דירות נמכרו עד 6.2026, לפי דוח היזם' ),
+					array( 'כ-71,000 ₪ למ״ר', 'המחיר הממוצע לפני מע״מ בחוזים שנחתמו ב-1-6.2026, לפי דוח היזם' ),
+					array( 'כ-11 מיליון ₪', 'המחיר הממוצע לדירה, כולל מע״מ, ב-12 הדירות שנמכרו ב-1-6.2026, לפי דוח היזם' ),
+				),

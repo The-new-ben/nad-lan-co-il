@@ -1753,6 +1753,15 @@ function createEngine(ctx) {
     el('p', 'rbs-qcard-title', qcard).textContent = it.name;
     for (const line of (Array.isArray(it.lines) ? it.lines : [])) el('p', 'rbs-qcard-line', qcard).textContent = line;
     if (it.note) el('p', 'rbs-qcard-note', qcard).textContent = it.note;
+    if (it.tour && it.tour.src) { // FacilityRooms v83: walk into the facility, a 360 room (illustration), in the page's viewer
+      const go = el('button', 'rbs-qcard-page rbs-qcard-360', qcard, { type: 'button' });
+      el('b', 'rbs-qcard-360b', go).textContent = '360°';
+      go.appendChild(document.createTextNode(it.tour.label || 'כניסה ב־360°'));
+      const q = new URL(import.meta.url).search || '';
+      const abs = (f) => new URL('./tour/' + f, import.meta.url).href.split('?')[0] + q;
+      go.addEventListener('click', () => window.dispatchEvent(new CustomEvent('nl:facility-tour', { detail: {
+        id: it.id, src: abs(it.tour.src), small: abs(it.tour.small || it.tour.src), title: it.tour.title || it.name, note: it.note || '', opener: go } })));
+    }
     const wa = String(opts.wa || '').replace(/[^0-9]/g, '');
     if (wa) {
       const cta = el('div', 'rbs-qcard-cta', qcard);
