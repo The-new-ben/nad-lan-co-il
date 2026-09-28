@@ -1,0 +1,11 @@
+{
+ "project": "duo",
+ "page": "/projects/duo-tel-aviv/",
+ "measured": "2026-09-28",
+ "source": "the live stage's floorHeight()",
+ "eye": {
+  "10": 39.9,
+  "25": 89.4,
+  "45": 155.4
+ }
+}

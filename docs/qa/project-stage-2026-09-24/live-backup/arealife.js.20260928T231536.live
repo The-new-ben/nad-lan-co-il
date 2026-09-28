@@ -31,14 +31,10 @@ export const ICONS = {
 const norm = (b) => ((Number(b) % 360) + 360) % 360;
 const angOff = (a, b) => { const d = Math.abs(norm(a) - norm(b)); return Math.min(d, 360 - d); };
 const signed = (a, b) => { let d = norm(a) - norm(b); if (d > 180) d -= 360; if (d < -180) d += 360; return d; };
-export const EYE = { 10: 42.55, 25: 98.8, 36: 140.05 };   // Rainbow's eye above the street on its floor bands
-let PL = null, loading = null;
-/* v100: each registry carries its own floor bands and eye heights (the building's own floors, measured from its stage);
-   Rainbow's first registry had neither and keeps 10/25/36 */
-const BANDS = () => (PL && Array.isArray(PL.bands) && PL.bands.length ? PL.bands.map(Number) : [10, 25, 36]);
-export const eyeOf = (fb) => { const e = PL && PL.eye && PL.eye[String(fb)]; return Number(e) || EYE[fb] || 60; };
-export const band = (floor) => { const bs = BANDS(); const mid = bs[Math.floor(bs.length / 2)]; const f = Number(floor) || mid; return bs.reduce((b, x) => (Math.abs(x - f) < Math.abs(b - f) ? x : b), mid); };
+export const EYE = { 10: 42.55, 25: 98.8, 36: 140.05 };   // the eye above the street on the registry's floor bands
+export const band = (floor) => { const f = Number(floor) || 25; return [10, 25, 36].reduce((b, x) => (Math.abs(x - f) < Math.abs(b - f) ? x : b), 25); };
 
+let PL = null, loading = null;
 export function loadPlaces(url) {
   if (PL) return Promise.resolve(PL);
   if (!loading) loading = fetch(url, { credentials: 'omit' }).then((r) => (r.ok ? r.json() : null)).then((d) => (PL = d && Array.isArray(d.places) ? d : null)).catch(() => null);
@@ -164,9 +160,8 @@ export function groupsEl(bearing, floor) {
     for (const c of list.slice(0, 3)) {
       const li = document.createElement('li');
       // a place with its own findplace page links to it (the owner's sister site)
-      // the name in its own direction (v100: "I Have Wings" ran into its walking time on a Hebrew line)
-      if (c.p.fp && lang === 'he') { const a = document.createElement('a'); a.href = c.p.fp; a.target = '_blank'; a.rel = 'noopener'; a.textContent = c.name; a.dir = 'auto'; li.append(a); }
-      else { const nm = document.createElement('bdi'); nm.textContent = c.name; li.append(nm); }
+      if (c.p.fp && lang === 'he') { const a = document.createElement('a'); a.href = c.p.fp; a.target = '_blank'; a.rel = 'noopener'; a.textContent = c.name; li.append(a); }
+      else li.textContent = c.name;
       if (c.p.future) { const e = document.createElement('em'); e.textContent = 'מתוכננת'; li.append(e); }
       else if (c.p.walk) { const e = document.createElement('em'); e.textContent = c.p.walk + ' דק׳ הליכה'; li.append(e); }
       ul.append(li);
@@ -185,7 +180,7 @@ const DIR_BEARING = { n: 0, e: 90, s: 180, w: 270 };
 /* for a scene { dir, floor }: the named places its window can see, as { at: [yaw, pitch] (degrees, + right / up), label } */
 export function looksFor(scene, lang) {
   if (!PL || !scene || DIR_BEARING[scene.dir] == null) return [];
-  const centre = DIR_BEARING[scene.dir]; const fb = band(scene.floor); const eye = eyeOf(fb);
+  const centre = DIR_BEARING[scene.dir]; const fb = band(scene.floor); const eye = EYE[fb];
   const cand = around(centre, { floor: fb, seen: true, half: 52, noBus: true, lang: lang || pageLang() });
   const out = [];
   for (const c of cand) {

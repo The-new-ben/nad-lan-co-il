@@ -202,7 +202,7 @@
     list.slice(0, shownN).forEach(function (p) {
       var li = document.createElement('li'), b = document.createElement('button'); b.type = 'button';
       var when = p.future ? T.planned : (REG && p.walk ? p.walk + ' ' + T.min : fmtM(p.dist));
-      b.innerHTML = '<i style="background:' + COLOR[p.g] + '">' + svg(p.g) + '</i><span><b><bdi>' + esc(nameOf(p)) + '</bdi></b><small>' + esc(T.g[p.g]) + (p.addr && LANG === 'he' ? ' · ' + esc(p.addr) : '') + '</small></span><em>' + esc(when) + '</em>';
+      b.innerHTML = '<i style="background:' + COLOR[p.g] + '">' + svg(p.g) + '</i><span><b>' + esc(nameOf(p)) + '</b><small>' + esc(T.g[p.g]) + (p.addr && LANG === 'he' ? ' · ' + esc(p.addr) : '') + '</small></span><em>' + esc(when) + '</em>';
       b.addEventListener('click', function () { focus(p); });
       li.appendChild(b); listEl.appendChild(li);
     });
@@ -219,7 +219,7 @@
   var MAP = null, popup = null;
   function card(p) {
     var when = p.future ? T.planned : (REG && p.walk ? p.walk + ' ' + T.walk : fmtM(p.dist) + ' ' + T.air);
-    return '<div class="nlam-pop"><b><bdi>' + esc(nameOf(p)) + '</bdi></b><span>' + esc(T.g[p.g]) + ' · ' + esc(when) + '</span>'
+    return '<div class="nlam-pop"><b>' + esc(nameOf(p)) + '</b><span>' + esc(T.g[p.g]) + ' · ' + esc(when) + '</span>'
       + (p.addr && LANG === 'he' ? '<span>' + esc(p.addr) + '</span>' : '')
       + (p.fp ? '<a href="' + esc(p.fp) + '" target="_blank" rel="noopener">' + esc(T.page) + ' ←</a>' : '') + '</div>';
   }

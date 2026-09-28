@@ -1,0 +1,11 @@
+{
+ "project": "dimri",
+ "page": "/projects/dimri-yama-sde-dov/",
+ "measured": "2026-09-28",
+ "source": "the live stage's floorHeight()",
+ "eye": {
+  "10": 45.8,
+  "25": 105.8,
+  "36": 149.8
+ }
+}

@@ -1,0 +1,21 @@
+{
+  "released": "1.72.365",
+  "from": "1.72.364",
+  "at": "2026-09-28 23:19:37",
+  "files": {
+    "assets/project-stage/dimri/places.json": "543786ab6ddadc0be42a89750224192a",
+    "assets/project-stage/ashira/places.json": "163952cdac179d1b205ad9faef33c885",
+    "assets/project-stage/duo/places.json": "3591dff4f26ef3bcb9aa44c435a894fa",
+    "assets/project-stage/arealife.js": "4edeedb39f4cd1ad0027112b8f5275be",
+    "assets/arealife/areamap.js": "965102ca1ded193cf4e9e986b166acf5",
+    "nadlan-config.php": "cff9ec10e31fe3137b1f3755584f3c4d"
+  },
+  "live_before": {
+    "assets/project-stage/dimri/places.json": "missing",
+    "assets/project-stage/ashira/places.json": "missing",
+    "assets/project-stage/duo/places.json": "missing",
+    "assets/project-stage/arealife.js": "d80d6f62a460023d02505090657ab8fb",
+    "assets/arealife/areamap.js": "58ce3b2838948e204dc81f7ec2ed0579",
+    "nadlan-config.php": "b3b151776841b23d771d1a08ddd416bd"
+  }
+}
