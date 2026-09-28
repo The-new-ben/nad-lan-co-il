@@ -734,7 +734,7 @@ if(l==='en'){document.body.classList.add('en');document.documentElement.lang='en
 </div>
 
 <article class="pcard" id="card-dimri" data-a="0.215" data-b="0.44">
-  <div class="tag">מגורים ומלון</div>
+  <div class="tag">קו ראשון לים</div>
   <h3>דימרי ימה</h3>
   <div class="en">DIMRI YAMA · SDE DOV</div>
   <ul>
@@ -806,7 +806,7 @@ if(l==='en'){document.body.classList.add('en');document.documentElement.lang='en
     <p>לכל פרויקט עמוד משלו, עם העובדות והמקורות.</p>
     <div class="fin-grid">
       <a class="fin-card" href="https://nad-lan.co.il/projects/dimri-yama-sde-dov/" target="_blank" rel="noopener">
-        <b>דימרי ימה</b><span>מגורים ומלון · 39 קומות · 458 דירות</span><em>לעמוד הפרויקט ←</em></a>
+        <b>דימרי ימה</b><span>קו ראשון לים · 39 קומות · 458 דירות</span><em>לעמוד הפרויקט ←</em></a>
       <a class="fin-card" href="https://nad-lan.co.il/projects/rainbow-tel-aviv/" target="_blank" rel="noopener">
         <b>ריינבו תל אביב</b><span>מגדל הדגל · 39 קומות · 459 דירות</span><em>לעמוד הפרויקט ←</em></a>
       <a class="fin-card" href="https://nad-lan.co.il/projects/ashira-sde-dov/" target="_blank" rel="noopener">
@@ -977,7 +977,7 @@ const I18N = {
     fineIllu: 'הדמיה להמחשה בלבד',
     fineDyn: 'הדמיה להמחשה בלבד · מסה סכמטית על פי פרסומים',
     finePlan: 'מסה סכמטית להתרשמות בלבד · אינה מסמך תכנוני',
-    tagDimri: 'מגורים ומלון', tagRainbow: 'מגדל הדגל של הרובע', tagAshira: 'קומפוזיציה של 4 בניינים',
+    tagDimri: 'קו ראשון לים', tagRainbow: 'מגדל הדגל של הרובע', tagAshira: 'קומפוזיציה של 4 בניינים',
     liDimri1: '<b>39</b> קומות מעל פודיום', liDimri2: '<b>458</b> דירות', liStSale: 'סטטוס: <b>בשיווק</b>', liStBuild: 'סטטוס: <b>בבנייה</b>',
     liRain1: '<b>39</b> קומות', liRain2: '<b>459</b> דירות',
     liAsh1: '<b>35 / 16 / 8 / 8</b> קומות', liAsh2: '<b>406</b> דירות',
@@ -988,7 +988,7 @@ const I18N = {
     liPlan5: 'המסלול ההיסטורי נשמר כפארק המסלול',
     finKick: 'הרובע החדש של תל אביב מחכה לכם', finH2: 'שלושה פרויקטים ברובע',
     finP: 'לכל פרויקט עמוד משלו, עם העובדות והמקורות.',
-    finSpan1: 'מגורים ומלון · 39 קומות · 458 דירות', finSpan2: 'מגדל הדגל · 39 קומות · 459 דירות',
+    finSpan1: 'קו ראשון לים · 39 קומות · 458 דירות', finSpan2: 'מגדל הדגל · 39 קומות · 459 דירות',
     finSpan3: '4 בניינים · 35/16/8/8 קומות · 406 דירות', finEm: 'לעמוד הפרויקט ←',
     finWa: 'וואטסאפ ישיר — 052-510-1555', finTour: 'רוצים להסתובב ברובע? התחילו סיור חופשי ←',
     finFine: 'הדמיה להמחשה בלבד · הנתונים המלאים והמחייבים מופיעים בעמודי הפרויקטים',
