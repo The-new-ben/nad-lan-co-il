@@ -1,0 +1,29 @@
+{
+  "released": "1.72.361",
+  "from": "1.72.360",
+  "at": "2026-09-28 21:23:33",
+  "files": {
+    "assets/project-stage/arealife.js": "d80d6f62a460023d02505090657ab8fb",
+    "assets/project-stage/rainbow/places.json": "419b216b7a69681f73fc7ffe9136deb6",
+    "assets/arealife/areamap.js": "58ce3b2838948e204dc81f7ec2ed0579",
+    "assets/project-stage/bridge.js": "ce32d67b16c8325658f0e546aadedecc",
+    "assets/project-stage/tour.js": "ced8e294be11cdec8a2e7fa843a01293",
+    "assets/project-stage/tour.css": "7c441f456742bbf9ae77bd5dfe1fc730",
+    "inc/project-stage.php": "9e03f25743da9fcc2c6ad6fe2ecd7421",
+    "inc/project-experience.php": "beb11f70a3d7df5cae6cd99833379546",
+    "i18n/stage-dict.json": "e4762dc84904ac5dcd25faad01c9b0b1",
+    "nadlan-config.php": "b1fd0f64950b355446d76ab2cfcc9c3e"
+  },
+  "live_before": {
+    "assets/project-stage/arealife.js": "missing",
+    "assets/project-stage/rainbow/places.json": "missing",
+    "assets/arealife/areamap.js": "missing",
+    "assets/project-stage/bridge.js": "35b17c50a24dba52248620f40fa8582d",
+    "assets/project-stage/tour.js": "bef71c73e6368dc83bfc1d6509b9f7f0",
+    "assets/project-stage/tour.css": "5db866fb77ed63ef5597ebbc12251f72",
+    "inc/project-stage.php": "b62ca46f5a6a04a437c3832e3d5e7fc0",
+    "inc/project-experience.php": "2ff23fbd85611e1e204f2431e298700e",
+    "i18n/stage-dict.json": "b21b9856adb098fe741815e2363bc700",
+    "nadlan-config.php": "16ca2759efca91a6d0804716d3a0addb"
+  }
+}

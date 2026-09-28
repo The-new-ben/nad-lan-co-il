@@ -130,14 +130,8 @@ async function boot() {
   const HALF = 55;
   const fmtDist = (m) => (m < 1000 ? Math.round(m / 10) * 10 + ' מ׳' : (Math.round(m / 100) / 10) + ' ק״מ');
   const nearEl = document.getElementById('nlps-near');
-  /* AreaLife v97: the place registry (places.json beside the stage) and its module, loaded when the view first opens */
-  const AL_URL = cfg.places && cfg.stage ? (() => { const u = new URL(cfg.stage, location.href); return new URL('./places.json', u).href.split('?')[0] + u.search; })() : null;
-  let AL = null, alLayer = null, nearTok = 0;
-  const alMod = () => (AL ? Promise.resolve(AL) : import(new URL('./arealife.js' + new URL(import.meta.url).search, import.meta.url).href).then((m) => (AL = m)));
-  const alReady = () => (AL_URL ? alMod().then((m) => m.loadPlaces(AL_URL).then((d) => (d ? m : null))).catch(() => null) : Promise.resolve(null));
   function showNear(bearing) {
     if (!nearEl || !QITEMS.length) return;
-    const tok = ++nearTok;
     const list = QITEMS.filter((it) => angOff(it.bearing, bearing) <= HALF).sort((a, b) => a.dist - b.dist);
     nearEl.textContent = '';
     const h = document.createElement('p'); h.className = 'nlps-near__h'; h.textContent = 'מה יש לכיוון הזה'; nearEl.append(h);
@@ -164,12 +158,6 @@ async function boot() {
     src.textContent = 'מרחק בקו אווירי מהבניין, לפי המפה; זמן ההליכה משוער. מקור: נתוני עיריית תל אביב-יפו ו-OpenStreetMap, 8.2026; הפרויקטים לפי העמודים שלהם באתר.';
     nearEl.append(src);
     nearEl.hidden = false;
-    // AreaLife v97: everything else that way, by group, from the registry (a later turn of the head wins)
-    alReady().then((m) => {
-      if (!m || tok !== nearTok) return;
-      const el = m.groupsEl(bearing, last && last.floor);
-      if (el) nearEl.append(el);
-    });
   }
   const vpins = [];
   function addViewPins(gl, map) {
@@ -207,7 +195,6 @@ async function boot() {
       p.mk.setOffset([Math.round(dx), 0]);
       p.el.style.visibility = on ? 'visible' : 'hidden';
     }
-    if (alLayer) alLayer.update();
   }
 
   const waUrl = (d) => {
@@ -356,15 +343,8 @@ async function boot() {
       caption: 'הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר.',
       onScene: (id) => ga('tour_room', { room: id, project: cfg.name }) };
   }
-  async function openWalk(startId, opener) {
-    const o = walkOpts(startId);
-    // AreaLife v97: the named places each apartment window looks at (a sight line over the city's buildings layer)
-    const al = await alReady();
-    if (al) {
-      for (const sc of o.scenes) if (sc.group === 'apt' && sc.spot === 'living') sc.looks = al.looksFor(sc);
-      o.looksNote = 'השמות בחלון: findplace ו-OpenStreetMap, בכיוון ובמרחק האמיתיים מהבניין; מה שבניין מסתיר לא מסומן.';
-    }
-    import(new URL('./tour.js' + new URL(import.meta.url).search, import.meta.url).href).then((m) => m.openTour(Object.assign(o, { opener: opener || null })))
+  function openWalk(startId, opener) {
+    import(new URL('./tour.js' + new URL(import.meta.url).search, import.meta.url).href).then((m) => m.openTour(Object.assign(walkOpts(startId), { opener: opener || null })))
       .catch((err) => console.warn('[project stage] walk', err));
   }
   function openTourAt(floor, side, opener) {
@@ -534,13 +514,6 @@ async function boot() {
       } catch (e) {}
       winCam();
       addViewPins(gl, map);
-      // AreaLife v97: the registry's places the floor can see, named in the view
-      alReady().then((m) => {
-        if (!m) return;
-        alLayer = m.viewLayer(gl, map, () => ({ bearing: win.bearing, floor: last ? last.floor : 25 }));
-        alLayer.update();
-        map.on('idle', () => alLayer.update());
-      });
     });
     // drag turns the head: sideways the direction, up and down the gaze
     let drag = false, lx = 0, ly = 0;

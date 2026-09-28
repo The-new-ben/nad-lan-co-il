@@ -283,6 +283,13 @@ EXACT = [
     row("מתקן בפרויקט", "Facility in the project", "Équipement du projet", "Объект в проекте", "مرفق في المشروع"),
     row("מתקנים בפרויקט", "Facilities in the project", "Équipements du projet", "Инфраструктура проекта", "مرافق المشروع"),
     row("מתקן לדוגמה", "Example facility", "Équipement témoin", "Пример объекта", "مرفق نموذجي"),
+    # --- AreaLife v97 (1.72.361): the groups, the planned station, the sources
+    row("פארקים, חוף וספורט", "Parks, beach and sport", "Parcs, plage et sport", "Парки, пляж и спорт", "حدائق وشاطئ ورياضة"),
+    row("קניות וסידורים", "Shops and errands", "Commerces et services", "Магазины и услуги", "تسوق وخدمات"),
+    row("קהילה ותרבות", "Community and culture", "Vie locale et culture", "Сообщество и культура", "المجتمع والثقافة"),
+    row("מתוכננת", "planned", "prévue", "планируется", "مخطط لها"),
+    row("מקומות: findplace.co.il (עיריית תל אביב-יפו, מידע פתוח, ו-OpenStreetMap). זמני הליכה לפי מסלול הליכה של Mapbox, מהבניין; מרחק בקו אווירי.", "Places: findplace.co.il (Tel Aviv-Yafo open data, and OpenStreetMap). Walking times by Mapbox walking routes from the building; distance in a straight line.", "Lieux : findplace.co.il (données ouvertes de Tel Aviv-Jaffa, et OpenStreetMap). Temps de marche selon les itinéraires piétons Mapbox depuis l'immeuble ; distance à vol d'oiseau.", "Места: findplace.co.il (открытые данные Тель-Авива-Яффо и OpenStreetMap). Время пешком по пешеходным маршрутам Mapbox от здания; расстояние по прямой.", "الأماكن: findplace.co.il (بيانات تل أبيب-يافا المفتوحة وOpenStreetMap). أوقات السير وفق مسارات المشي من Mapbox من المبنى؛ المسافة بخط مستقيم."),
+    row("השמות בחלון: findplace ו-OpenStreetMap, בכיוון ובמרחק האמיתיים מהבניין; מה שבניין מסתיר לא מסומן.", "The names in the window: findplace and OpenStreetMap, at their true direction and distance from the building; what a building hides is not marked.", "Les noms dans la fenêtre : findplace et OpenStreetMap, à leur direction et distance réelles depuis l'immeuble ; ce qu'un bâtiment cache n'est pas indiqué.", "Названия в окне: findplace и OpenStreetMap, в реальном направлении и на реальном расстоянии от здания; то, что закрывает здание, не отмечено.", "الأسماء في النافذة: findplace وOpenStreetMap، باتجاهها ومسافتها الحقيقيين من المبنى؛ ما يحجبه مبنى لا يُشار إليه."),
     # --- StageFacilities v95 (1.72.357), BuildingWalk v96 (1.72.358-359), DUO's 360 lines (1.72.353)
     row("המתקנים בפרויקט", "The project's facilities", "Les équipements du projet", "Объекты проекта", "مرافق المشروع"),
     row("הסלון בדירה לדוגמה בקומה 25 במגדלי דואו, מבט מערבה לכיוון הים (הדמיה)", "The living room of the example apartment on floor 25 at DUO, looking west toward the sea (illustration)", "Le séjour de l'appartement témoin au 25e étage de DUO, vue vers l'ouest et la mer (illustration)", "Гостиная квартиры-примера на 25-м этаже в DUO, вид на запад, к морю (иллюстрация)", "صالون الشقة النموذجية في الطابق 25 في DUO، إطلالة غربًا نحو البحر (تصوير توضيحي)"),
@@ -726,6 +733,10 @@ PATTERNS = [
     pat("המגדל הצפוני · קומה {I}", "The north tower · floor {1}", "La tour nord · étage {1}", "Северная башня · этаж {1}", "البرج الشمالي · الطابق {1}"),
     pat("המגדל הדרומי · קומה {I}", "The south tower · floor {1}", "La tour sud · étage {1}", "Южная башня · этаж {1}", "البرج الجنوبي · الطابق {1}"),
     pat("המעליות · לדירה בקומה {I}", "The lifts · to the apartment on floor {1}", "Les ascenseurs · vers l'appartement au {1}e étage", "Лифты · к квартире на {1}-м этаже", "المصاعد · إلى الشقة في الطابق {1}"),
+    # --- AreaLife v97: counts and walking minutes
+    pat("{I} בכיוון הזה", "{1} this way", "{1} dans cette direction", "{1} в этом направлении", "{1} في هذا الاتجاه"),
+    pat("{I} דק׳ הליכה", "{1} min walk", "{1} min à pied", "{1} мин пешком", "{1} دقيقة سيرًا"),
+    pat("{I} דק׳", "{1} min", "{1} min", "{1} мин", "{1} د"),
     pat("קומה {I}", "Floor {1}", "Étage {1}", "Этаж {1}", "الطابق {1}"),
     pat("להיכנס לדירה · מקומה {I}", "Enter the apartment · from floor {1}", "Entrer dans l'appartement · depuis l'étage {1}", "Войти в квартиру · с {1}-го этажа", "الدخول إلى الشقة · من الطابق {1}"),
     pat("פונה {X} ·", "Facing {1} ·", "Orienté {1} ·", "Ориентация: {1} ·", "باتجاه {1} ·"),

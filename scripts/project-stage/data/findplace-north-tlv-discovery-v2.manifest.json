@@ -1,0 +1,51 @@
+{
+  "manifestSchemaVersion": "1.0.0",
+  "snapshotId": "north-tlv-discovery-v2",
+  "dataSchemaVersion": "2.0.0",
+  "retrievedAt": "2026-08-27",
+  "publicationMode": "embedded_only",
+  "createsPublicRoutes": false,
+  "counts": {
+    "total": 3448,
+    "byCategory": {
+      "school": 109,
+      "kindergarten": 208,
+      "community": 61,
+      "daycare": 23,
+      "health": 63,
+      "pharmacy": 38,
+      "culture": 75,
+      "library": 17,
+      "hotel": 39,
+      "sport": 232,
+      "gym": 43,
+      "park": 206,
+      "dog_park": 41,
+      "lrt_station": 17,
+      "transit_stop": 244,
+      "shopping": 477,
+      "restaurant": 451,
+      "supermarket": 248,
+      "cafe": 177,
+      "wellness": 315,
+      "bar": 40,
+      "parking": 68,
+      "bank": 28,
+      "bike": 43,
+      "bakery": 13,
+      "worship": 15,
+      "playground": 7,
+      "beach": 4,
+      "construction": 146
+    },
+    "merged": 705,
+    "skipped": 551
+  },
+  "files": [
+    {
+      "path": "discovery.geojson",
+      "bytes": 685027,
+      "sha256": "2909a0c221e025f82e2e27304ce6346ed656da5d45caec0146f332a516cd1452"
+    }
+  ]
+}

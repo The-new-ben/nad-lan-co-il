@@ -489,8 +489,6 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 			// BuildingWalk v96: the building's walk between the 360 rooms (the doors' positions, the where-to list's words)
 			if ( ! empty( $cfg['facilities'] ) && ! empty( $fj['walk'] ) && is_array( $fj['walk'] ) ) { $cfg['walk'] = $fj['walk']; }
 		}
-		// AreaLife v97: the place registry beside the stage (scripts/project-stage/build_places_<project>.py); the browser loads it
-		if ( is_readable( dirname( __DIR__ ) . '/assets/project-stage/' . $ps['dir'] . '/places.json' ) ) { $cfg['places'] = 1; }
 		// the quarter around the building (design system QuarterPins): built offline into the project's folder
 		// (scripts/project-stage/build_quarter_rainbow.py); a missing or broken file leaves the stage as it was
 		$qf = dirname( __DIR__ ) . '/assets/project-stage/' . $ps['dir'] . '/quarter.json';

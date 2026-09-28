@@ -74,12 +74,7 @@ export function openTour(o) {
   // design styles (design system ApartmentStyles v80): 'bare' is the room as delivered, the scene's own picture
   let style = 'bare';
   const styleOf = (sc) => (style !== 'bare' && Array.isArray(sc.styles) ? sc.styles.find((st) => st.id === style) : null) || null;
-  // each part of the caption its own text, so a language page's translator finds every one of them (AreaLife v97)
-  const setCaption = () => {
-    const parts = [cur.caption != null ? cur.caption : (o.caption || ''), styleOf(cur) ? (o.styleNote || 'רעיון עיצוב להמחשה, לא המפרט של היזם.') : '', cur.note || '', Array.isArray(cur.looks) && cur.looks.length ? (o.looksNote || '') : ''].filter(Boolean);
-    cap.replaceChildren();
-    parts.forEach((t, i) => { if (i) cap.append(' '); const sp = document.createElement('span'); sp.textContent = t; cap.append(sp); });
-  };
+  const setCaption = () => { cap.textContent = [cur.caption != null ? cur.caption : (o.caption || ''), styleOf(cur) ? (o.styleNote || 'רעיון עיצוב להמחשה, לא המפרט של היזם.') : '', cur.note || ''].filter(Boolean).join(' '); };
   setCaption();
   const stage = document.createElement('div');
   stage.className = 'nlat-viewer__stage';
@@ -329,7 +324,7 @@ export function openTour(o) {
      as the render scripts' LOCATE prints them), label, sub, arrival: { yaw, pitch } (degrees, optional) }. */
   const RAD = Math.PI / 180;
   const dv = new THREE.Vector3();
-  let doorEls = [], lookEls = [];
+  let doorEls = [];
   const history = [];
   function buildDoors() {
     doorsBox.replaceChildren();
@@ -355,54 +350,16 @@ export function openTour(o) {
       doorEls.push({ el: b, y: -Number(d.at[0] || 0) * RAD, p: Number(d.at[1] || 0) * RAD });
     }
     root.classList.toggle('has-doors', doorEls.length > 0);
-    /* AreaLife v97: what this window looks at (cur.looks: { at, name, walk, future, icon, color }), named where it stands,
-       the best first, never over each other; the icon is the page's own SVG, the name is text */
-    lookEls = [];
-    const looks = Array.isArray(cur.looks) ? cur.looks.slice().sort((a, b) => (b.score || 0) - (a.score || 0)).slice(0, 18) : [];
-    for (const lk of looks) {
-      if (!Array.isArray(lk.at)) continue;
-      const sp = document.createElement('span');
-      sp.className = 'nlat-look';
-      const ic = document.createElement('i'); ic.style.background = lk.color || '#1F4B5C'; if (lk.icon) ic.innerHTML = lk.icon; sp.append(ic);
-      const nm = document.createElement('b'); nm.textContent = lk.name || ''; sp.append(nm);
-      if (lk.future) { const e = document.createElement('em'); e.textContent = 'מתוכננת'; sp.append(e); }
-      else if (lk.walk) { const e = document.createElement('em'); e.textContent = lk.walk + ' דק׳'; sp.append(e); }
-      doorsBox.appendChild(sp);
-      lookEls.push({ el: sp, y: -Number(lk.at[0]) * RAD, p: Number(lk.at[1]) * RAD, w: 0 });
-    }
-    root.classList.toggle('has-looks', lookEls.length > 0);
     placeDoors();
   }
   function placeDoors() { // every rendered frame: drags, glides and looks set from outside
-    if (!doorEls.length && !lookEls.length) return;
+    if (!doorEls.length) return;
     const w = stage.clientWidth || window.innerWidth, h = stage.clientHeight || window.innerHeight;
-    const boxes = [];
     for (const d of doorEls) {
       dv.set(-Math.cos(d.y) * Math.cos(d.p), Math.sin(d.p), Math.sin(d.y) * Math.cos(d.p)).multiplyScalar(100).project(camera);
       const on = dv.z < 1 && Math.abs(dv.x) < 0.94 && Math.abs(dv.y) < 0.86;
       d.el.classList.toggle('is-off', !on);
-      if (on) {
-        const sx = (dv.x * 0.5 + 0.5) * w, sy = (-dv.y * 0.5 + 0.5) * h;
-        d.el.style.transform = 'translate(' + sx.toFixed(1) + 'px,' + sy.toFixed(1) + 'px)';
-        boxes.push([sx - 30, sy - 30, 240, 60]);
-      }
-    }
-    // the window's names: a few at a time (four on a phone), the best first, clear of the doors and of each other
-    const maxL = w < 600 ? 4 : 8;
-    let shown = 0;
-    for (const L of lookEls) {
-      dv.set(-Math.cos(L.y) * Math.cos(L.p), Math.sin(L.p), Math.sin(L.y) * Math.cos(L.p)).multiplyScalar(100).project(camera);
-      let on = shown < maxL && dv.z < 1 && Math.abs(dv.x) < 0.9 && dv.y > -0.8 && dv.y < 0.75;
-      if (on) {
-        const sx = (dv.x * 0.5 + 0.5) * w, sy = (-dv.y * 0.5 + 0.5) * h;
-        // measured once the viewer's style is in (before it, a label is as wide as the screen)
-        if (!L.w && getComputedStyle(L.el).position === 'absolute') L.w = L.el.offsetWidth;
-        const lw = L.w || 140, lh = 40;
-        const bx = [sx - lw / 2, sy - lh, lw, lh];
-        if (bx[0] < 6 || bx[0] + lw > w - 6 || boxes.some((b) => bx[0] < b[0] + b[2] + 6 && b[0] < bx[0] + bx[2] + 6 && bx[1] < b[1] + b[3] + 4 && b[1] < bx[1] + bx[3] + 4)) on = false;
-        else { boxes.push(bx); shown++; L.el.style.transform = 'translate(' + (sx - lw / 2).toFixed(1) + 'px,' + (sy - lh).toFixed(1) + 'px)'; }
-      }
-      L.el.classList.toggle('is-off', !on);
+      if (on) d.el.style.transform = 'translate(' + ((dv.x * 0.5 + 0.5) * w).toFixed(1) + 'px,' + ((-dv.y * 0.5 + 0.5) * h).toFixed(1) + 'px)';
     }
   }
   /* the move: the room fades, the next picture loads, then it shows (title, doors and picture together) and fades in */
@@ -654,7 +611,6 @@ export function openTour(o) {
   }
   const api = { close, show: (id) => { const sc = scenes.find((x2) => x2.id === id); if (sc) show(sc); }, get scene() { return cur.id; },
     get yaw() { return yaw; }, get pitch() { return pitch; }, get fov() { return fov; }, get style() { return style; }, setStyle: (id) => applyStyle(id),
-    get looks() { return lookEls.map((L) => ({ yaw: L.y, pitch: L.p, off: L.el.classList.contains('is-off') })); }, // the page's checks
     getView, setView, project, pick: pickLook, get scenes() { return scenes.map((sc) => ({ id: sc.id, dir: sc.dir, spot: sc.spot, floor: sc.floor })); } };
   root.nlTour = api; // for the page's checks (scripts/project-stage/pagejourney.py)
   window.__nlTour = api; // the shared viewing room

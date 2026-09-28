@@ -307,7 +307,7 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 	<?php if ( $lat && $lng ) :
 		$pois = function_exists( 'nadlan_poi_fetch' ) ? nadlan_poi_fetch( $lat, $lng, 1200 ) : array();
 		$poi_json = wp_json_encode( array_map( function ( $grp ) {
-			return array_values( array_filter( array_slice( (array) $grp, 0, 40 ), function ( $i ) { return ! empty( $i['lat'] ) && ! empty( $i['lng'] ); } ) ); // AreaMap v97: 40 a group (was 16)
+			return array_values( array_filter( array_slice( (array) $grp, 0, 16 ), function ( $i ) { return ! empty( $i['lat'] ) && ! empty( $i['lng'] ); } ) );
 		}, (array) $pois ) );
 		$near = nadlan_pjx_nearby_projects( $id, $lat, $lng );
 		// This section sits right under the 3D theater on every language sibling,
@@ -341,17 +341,7 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 			<button type="button" data-layer="3d"><?php echo esc_html( $mt['d3'] ); ?></button>
 			<button type="button" data-layer="sat"><?php echo esc_html( $mt['sat'] ); ?></button>
 		</div>
-		<?php
-		// AreaMap v97: the project's place registry (findplace + OSM, walking minutes, walking areas) when its stage folder has one
-		$amp = '';
-		if ( function_exists( 'nadlan_ps_current' ) ) {
-			$amps = nadlan_ps_current();
-			if ( is_array( $amps ) && ! empty( $amps['dir'] ) && is_readable( dirname( __DIR__ ) . '/assets/project-stage/' . $amps['dir'] . '/places.json' ) ) {
-				$amp = plugins_url( 'assets/project-stage/' . $amps['dir'] . '/places.json', dirname( __FILE__ ) ) . '?ver=' . rawurlencode( NADLAN_CONFIG_VERSION );
-			}
-		}
-		?>
-		<div id="nlpjx-unimap" data-lang="<?php echo esc_attr( $mlang ); ?>" data-token="<?php echo esc_attr( $unimap ); ?>" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-title="<?php echo esc_attr( get_the_title( $id ) ); ?>"<?php echo $amp ? ' data-places="' . esc_url( $amp ) . '"' : ''; ?>></div>
+		<div id="nlpjx-unimap" data-lang="<?php echo esc_attr( $mlang ); ?>" data-token="<?php echo esc_attr( $unimap ); ?>" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-title="<?php echo esc_attr( get_the_title( $id ) ); ?>"></div>
 		<?php else : ?>
 		<div id="nlpjx-leaflet" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-title="<?php echo esc_attr( get_the_title( $id ) ); ?>"></div>
 		<?php endif; ?>
@@ -599,9 +589,6 @@ html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-table :i
 }
 ' );
 		}
-		if ( $has_map ) { // AreaMap v97: the area map's places, named, filtered, listed (runs before the lazy map boots)
-			wp_enqueue_script( 'nadlan-areamap', plugins_url( 'assets/arealife/areamap.js', dirname( __FILE__ ) ), array(), NADLAN_CONFIG_VERSION, true );
-		}
 		wp_register_script( 'nadlan-pjx-js', false, $has_map ? array( 'leaflet' ) : array(), '1.69.85', true );
 		wp_enqueue_script( 'nadlan-pjx-js' );
 		wp_add_inline_script( 'nadlan-pjx-js', '
@@ -652,7 +639,7 @@ document.addEventListener("DOMContentLoaded",function(){
 					groups.comps.push(new mapboxgl.Marker({element:el}).setLngLat([c.lng,c.lat]).setPopup(pop("<b>"+c.name+"</b><br>אומדן ~"+Number(c.ppsqm).toLocaleString()+" ₪/מ\"ר · לא מחייב<br><a href=\""+c.url+"\">לעמוד הפרויקט ←</a>")));
 				});
 				// POIs by layer
-				var P=window.NLPJX_AREALIFE?{}:(window.NLPJX_POIS||{}); // AreaMap v97 (assets/arealife/areamap.js) draws them
+				var P=window.NLPJX_POIS||{};
 				var poiStyle={schools:["#334236",""],kindergartens:["#334236",""],parks:["#517048",""],transit:["#183C3C",""],shops:["#9F6F54",""],health:["#A93F2A",""],food:["#8A6B3F",""]};
 				Object.keys(P).forEach(function(k){
 					var g=(k==="kindergartens")?"schools":k;

@@ -206,17 +206,3 @@ html.nlat-open, html.nlat-open body { overflow: hidden !important; }
 }
 /* the first-use hint steps below the middle, where a door often stands */
 :root body .nlat-viewer.has-doors p.nlat-viewer__hint { top: 66%; }
-/* AreaLife v97: what the window looks at, named where it stands (a stem down to the place) */
-.nlat-look {
-  position: absolute; left: 0; top: 0; display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px 4px 4px; direction: rtl;
-  white-space: nowrap; border-radius: 999px; background: rgba(250, 247, 241, .93); color: #14212B; box-shadow: 0 4px 14px rgba(0, 0, 0, .22);
-  font: 700 12.5px/1 'Assistant', system-ui, sans-serif; pointer-events: none; transition: opacity .2s ease;
-}
-.nlat-look::after { content: ''; position: absolute; left: 50%; top: 100%; width: 1.5px; height: 12px; background: rgba(250, 247, 241, .85); transform: translateX(-50%); }
-.nlat-look i { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; color: #fff; flex: none; }
-.nlat-look i svg { width: 13px; height: 13px; }
-.nlat-look em { font-style: normal; font-weight: 600; color: #6B6558; }
-.nlat-look.is-off { opacity: 0; }
-.nlat-viewer[dir="ltr"] .nlat-look { direction: ltr; padding: 4px 4px 4px 10px; }
-.nlat-viewer.is-walking .nlat-look { opacity: 0; }
-@media (prefers-reduced-motion: reduce) { .nlat-look { transition: none; } }
