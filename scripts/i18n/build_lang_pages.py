@@ -151,6 +151,12 @@ EXACT = [
     row("אתר", "Website", "Site web", "Сайт", "الموقع الإلكتروني"),
     row("בנייה חדשה", "New build", "Construction neuve", "Новостройка", "بناء جديد"),
     row("משרדים ומסחר", "Offices and retail", "Bureaux et commerces", "Офисы и торговля", "مكاتب وتجارة"),
+    # the head's structured data (Yoast's WebSite piece, the site's tagline), 28.9.2026
+    row("פרויקטים חדשים, דירות, אנשי מקצוע ומחשבונים - רואים הכל לפני שקונים",
+        "New projects, apartments, professionals and calculators - see everything before you buy",
+        "Projets neufs, appartements, professionnels et calculateurs - tout voir avant d'acheter",
+        "Новые проекты, квартиры, специалисты и калькуляторы - всё видно до покупки",
+        "مشاريع جديدة وشقق ومختصون وحاسبات - كل شيء أمامكم قبل الشراء"),
 ]
 
 # {1}.. = the captures; a capture that is a known name goes through NAMES
@@ -217,6 +223,8 @@ def main():
         ex[he] = tr
     pats = []
     for p in PATTERNS:
+        # a quote needs no backslash in a class, and the browser (i18n-dom.js, RegExp with the u flag) refuses \" there
+        p = (p[0].replace('\\"', '"'),) + tuple(p[1:])
         re.compile(p[0])
         n = re.compile(p[0]).groups
         tr = dict(zip(L, p[1:]))

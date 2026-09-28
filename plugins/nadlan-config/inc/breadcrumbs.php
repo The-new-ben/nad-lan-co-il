@@ -51,7 +51,8 @@ if ( ! function_exists( 'nadlan_breadcrumbs_items' ) ) {
 		elseif ( is_post_type_archive( 'nadlan_project' ) )    { $items[] = array( 'name' => 'פרויקטים', 'url' => home_url( '/projects/' ) ); }
 		elseif ( is_post_type_archive( 'nadlan_professional' ) ){ $items[] = array( 'name' => 'אנשי מקצוע', 'url' => home_url( '/professionals/' ) ); }
 		else { return array(); }
-		return $items;
+		// a language page starts at its own language's home (inc/lang-pages.php, 28.9.2026)
+		return (array) apply_filters( 'nadlan_breadcrumbs_items', $items );
 	}
 }
 

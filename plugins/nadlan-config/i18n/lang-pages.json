@@ -582,6 +582,12 @@
    "fr": "Bureaux et commerces",
    "ru": "Офисы и торговля",
    "ar": "مكاتب وتجارة"
+  },
+  "פרויקטים חדשים, דירות, אנשי מקצוע ומחשבונים - רואים הכל לפני שקונים": {
+   "en": "New projects, apartments, professionals and calculators - see everything before you buy",
+   "fr": "Projets neufs, appartements, professionnels et calculateurs - tout voir avant d'acheter",
+   "ru": "Новые проекты, квартиры, специалисты и калькуляторы - всё видно до покупки",
+   "ar": "مشاريع جديدة وشقق ومختصون وحاسبات - كل شيء أمامكم قبل الشراء"
   }
  },
  "patterns": [
@@ -593,14 +599,14 @@
    "ar": "كم يبلغ سعر شقة في {1}؟"
   },
   {
-   "re": "^עסקאות שדווחו לרשות המסים, ([\\d.]+) עד ([\\d.]+?)\\. חציון של דירות בבתי קומות\\. מ[־-]?(\\d{4}) עד (\\d{4}): ([+\\-−]?\\d+%) במחיר למ[״\\\"]ר בעיר\\.$",
+   "re": "^עסקאות שדווחו לרשות המסים, ([\\d.]+) עד ([\\d.]+?)\\. חציון של דירות בבתי קומות\\. מ[־-]?(\\d{4}) עד (\\d{4}): ([+\\-−]?\\d+%) במחיר למ[״\"]ר בעיר\\.$",
    "en": "Deals reported to the Tax Authority, {1} to {2}. The median of apartments in multi-storey buildings. {3} to {4}: {5} in the city's price per m².",
    "fr": "Transactions déclarées à l'administration fiscale, de {1} à {2}. Médiane des appartements en immeubles collectifs. De {3} à {4} : {5} sur le prix au m² de la ville.",
    "ru": "Сделки, заявленные в Налоговое управление, с {1} по {2}. Медиана по квартирам в многоквартирных домах. С {3} по {4}: {5} к цене за м² в городе.",
    "ar": "صفقات أُبلغت بها سلطة الضرائب، من {1} حتى {2}. الوسيط لشقق في مبانٍ متعددة الطوابق. من {3} حتى {4}: {5} في سعر المتر المربع في المدينة."
   },
   {
-   "re": "^מחיר למ[״\\\"]ר ב(.+)$",
+   "re": "^מחיר למ[״\"]ר ב(.+)$",
    "en": "Price per m² in {1}",
    "fr": "Prix au m² à {1}",
    "ru": "Цена за м² в городе {1}",
@@ -614,7 +620,7 @@
    "ar": "عدد الصفقات: {1}"
   },
   {
-   "re": "^([\\d,]+) ₪ למ[״\\\"]ר$",
+   "re": "^([\\d,]+) ₪ למ[״\"]ר$",
    "en": "{1} ₪ per m²",
    "fr": "{1} ₪ le m²",
    "ru": "{1} ₪ за м²",
@@ -649,14 +655,14 @@
    "ar": "النموذج {1} والتسليم"
   },
   {
-   "re": "^~([\\d,]+) ₪/מ[״\\\"]ר$",
+   "re": "^~([\\d,]+) ₪/מ[״\"]ר$",
    "en": "~{1} ₪/m²",
    "fr": "~{1} ₪/m²",
    "ru": "~{1} ₪/м²",
    "ar": "~{1} ₪/م²"
   },
   {
-   "re": "^מחיר ממוצע למ[״\\\"]ר בפרויקט, דירות (\\d+)-(\\d+) מ[״\\\"]ר\\. אומדן לא מחייב\\.$",
+   "re": "^מחיר ממוצע למ[״\"]ר בפרויקט, דירות (\\d+)-(\\d+) מ[״\"]ר\\. אומדן לא מחייב\\.$",
    "en": "Average price per m² in the project, apartments of {1}-{2} m². A non-binding estimate.",
    "fr": "Prix moyen au m² dans le projet, appartements de {1} à {2} m². Estimation non contractuelle.",
    "ru": "Средняя цена за м² в проекте, квартиры {1}-{2} м². Необязывающая оценка.",
@@ -670,14 +676,14 @@
    "ar": "{1} م"
   },
   {
-   "re": "^([\\d.,]+) ק[״\\\"]מ$",
+   "re": "^([\\d.,]+) ק[״\"]מ$",
    "en": "{1} km",
    "fr": "{1} km",
    "ru": "{1} км",
    "ar": "{1} كم"
   },
   {
-   "re": "^סדר גודל של החזר חודשי לדירת ~(\\d+) מ[״\\\"]ר\\. אומדן לא מחייב, תלוי במסלול ובריבית\\.$",
+   "re": "^סדר גודל של החזר חודשי לדירת ~(\\d+) מ[״\"]ר\\. אומדן לא מחייב, תלוי במסלול ובריבית\\.$",
    "en": "The order of magnitude of the monthly repayment for a ~{1} m² apartment. A non-binding estimate that depends on the loan track and the rate.",
    "fr": "Ordre de grandeur de la mensualité pour un appartement d'environ {1} m². Estimation non contractuelle, selon le type de prêt et le taux.",
    "ru": "Примерный ежемесячный платёж за квартиру ~{1} м². Необязывающая оценка, зависит от программы и ставки.",

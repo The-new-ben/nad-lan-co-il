@@ -674,12 +674,29 @@ if ( ! function_exists( 'nadlan_hv2_band_listings' ) ) {
 			$pr = (int) get_post_meta( $l->ID, 'price', true ); $rm = (float) get_post_meta( $l->ID, 'rooms', true );
 			$sq = (int) get_post_meta( $l->ID, 'size_sqm', true ); $fl = get_post_meta( $l->ID, 'floor', true );
 			$city = (string) get_post_meta( $l->ID, 'city', true );
-			echo '<a class="nlhv2-list" href="' . esc_url( get_permalink( $l ) ) . '">';
+			// on a language home, a broker's listing that has its own page in that language (the broker's minisite,
+			// inc/broker-drop.php) links there, under that page's title (28.9.2026: the English home showed the broker's
+			// Hebrew titles and sent English readers to the Hebrew page)
+			$href = get_permalink( $l );
+			$name = get_the_title( $l );
+			$cur  = function_exists( 'nadlan_current_lang' ) ? nadlan_current_lang() : 'he';
+			if ( 'he' !== $cur && function_exists( 'nl_drop_twins' ) ) {
+				$tw = nl_drop_twins( $l->ID );
+				// French and Russian readers get the English page when the broker has none in their language (1.72.349)
+				foreach ( ( 'ar' === $cur ? array( $cur ) : array( $cur, 'en' ) ) as $want ) {
+					if ( ! empty( $tw[ $want ] ) && 'publish' === get_post_status( $tw[ $want ] ) ) {
+						$href = get_permalink( $tw[ $want ] );
+						$name = get_the_title( $tw[ $want ] );
+						break;
+					}
+				}
+			}
+			echo '<a class="nlhv2-list" href="' . esc_url( $href ) . '">';
 			echo '<span class="nlhv2-list-media' . ( '' === $img ? ' nlfc-ph' : '' ) . '">' .
-				( $img ? '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( get_the_title( $l ) ) . '" loading="lazy" decoding="async">' : '<i class="nlfc-ph-mark" aria-hidden="true">נדלן</i>' ) .
+				( $img ? '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( $name ) . '" loading="lazy" decoding="async">' : '<i class="nlfc-ph-mark" aria-hidden="true">נדלן</i>' ) .
 				( 'interior' === $src ? '<i class="nlfc-imgtag">הדמיה</i>' : '' ) .
 			'</span>';
-			echo '<b class="nlfc-price">' . ( $pr ? number_format( $pr ) . ' ₪' : esc_html( get_the_title( $l ) ) ) . '</b>';
+			echo '<b class="nlfc-price">' . ( $pr ? number_format( $pr ) . ' ₪' : esc_html( $name ) ) . '</b>';
 			$bits = array_filter( array(
 				$city,
 				$rm ? rtrim( rtrim( number_format( $rm, 1 ), '0' ), '.' ) . ' ' . nadlan_i18n( 'u_rooms' ) : '',

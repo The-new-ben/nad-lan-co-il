@@ -1,0 +1,27 @@
+{
+  "released": "1.72.348",
+  "from": "1.72.347",
+  "at": "2026-09-28 16:21:40",
+  "files": {
+    "inc/lang-pages.php": "7aec4f01330f3f769a9b7ec76b735658",
+    "inc/i18n.php": "d44037c6df0ea7968ee2540549a5612b",
+    "inc/home-v2.php": "c74ef8778a48303c2a03a5f9d4fe87f6",
+    "inc/breadcrumbs.php": "dee4922aa81e0b9e54e1eec4b3f3567c",
+    "inc/bulk-project-seo.php": "3f3bf78e7e7055bfa98d1759ea1aacb9",
+    "i18n/lang-pages.json": "f5f40d0f0ed9b1952011ace333e3764d",
+    "i18n/stage-dict.json": "d55a74d1b2da6cfa350ee11a2e0db5f2",
+    "i18n/lang-other.json": "6a826c98d8b8b41da8ae7181ff47dbee",
+    "nadlan-config.php": "59e15267a24cda76d97b5b4e8f8c6908"
+  },
+  "live_before": {
+    "inc/lang-pages.php": "dcba6385106a9699e5e19672b3990e83",
+    "inc/i18n.php": "4b6fbfa71acbbc657879d6cc3a6484d2",
+    "inc/home-v2.php": "a2c28449faf52e233c5e8e00fb004e12",
+    "inc/breadcrumbs.php": "f404be1cd53f5d2023c12a8ef723e4e2",
+    "inc/bulk-project-seo.php": "8346bf75dbfc73cd037347b4381ce174",
+    "i18n/lang-pages.json": "874e6c6e89b487ba7dbfd84865b5b3c4",
+    "i18n/stage-dict.json": "missing",
+    "i18n/lang-other.json": "missing",
+    "nadlan-config.php": "3d2475346426d89e45fd4cbea621882e"
+  }
+}

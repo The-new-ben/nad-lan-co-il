@@ -93,6 +93,12 @@ if ( ! function_exists( 'nadlan_bulk_project_seo_title' ) ) {
 		if ( ! is_singular( 'nadlan_project' ) ) {
 			return $title;
 		}
+		// a project's language page (/projects/<slug>-en ...) keeps its own title: this Hebrew template made them read
+		// "Rainbow Tel Aviv | Coastal Resort Living in Sde Dov, תל אביב יפו - מחירים, דירות ובחירה מהבניין | נדלן"
+		// (28.9.2026, 51 titles); inc/lang-pages.php writes the site's name there in Latin letters
+		if ( function_exists( 'nadlan_plang_suffix' ) && '' !== (string) nadlan_plang_suffix() ) {
+			return $title;
+		}
 		$post_title = get_the_title();
 		if ( ! nadlan_bulk_project_is_bare_title( $title, $post_title ) ) {
 			return $title;

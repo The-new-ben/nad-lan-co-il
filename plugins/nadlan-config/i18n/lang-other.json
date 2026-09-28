@@ -1,0 +1,1691 @@
+{
+ "note": "LanguageOther (28.9.2026): the words outside the article on the non-project language pages (the language homes, guides, new-projects, brokers). Built by scripts/i18n/build_lang_other.py; an addition to lang-pages.json for inc/lang-pages.php. Keys are the exact Hebrew the site prints, including the half-translated twins the language homes print.",
+ "exact": {
+  "מפקח בנייה": {
+   "en": "Construction supervisor",
+   "fr": "Superviseur de chantier",
+   "ru": "Строительный инспектор",
+   "ar": "مشرف بناء"
+  },
+  "מתווך": {
+   "en": "Real-estate broker",
+   "fr": "Agent immobilier",
+   "ru": "Риелтор",
+   "ar": "وسيط عقاري"
+  },
+  "מתווכת": {
+   "en": "Real-estate broker",
+   "fr": "Agente immobilière",
+   "ru": "Риелтор",
+   "ar": "وسيطة عقارية"
+  },
+  "מעצב/ת פנים": {
+   "en": "Interior designer",
+   "fr": "Architecte d'intérieur",
+   "ru": "Дизайнер интерьера",
+   "ar": "مصمم/ة ديكور داخلي"
+  },
+  "מעצב פנים": {
+   "en": "Interior designer",
+   "fr": "Architecte d'intérieur",
+   "ru": "Дизайнер интерьера",
+   "ar": "مصمم ديكور داخلي"
+  },
+  "מעצבת פנים": {
+   "en": "Interior designer",
+   "fr": "Architecte d'intérieur",
+   "ru": "Дизайнер интерьера",
+   "ar": "مصممة ديكور داخلي"
+  },
+  "מהנדס/ת בניין": {
+   "en": "Building engineer",
+   "fr": "Ingénieur en bâtiment",
+   "ru": "Инженер-строитель",
+   "ar": "مهندس/ة بناء"
+  },
+  "מהנדס בניין": {
+   "en": "Building engineer",
+   "fr": "Ingénieur en bâtiment",
+   "ru": "Инженер-строитель",
+   "ar": "مهندس بناء"
+  },
+  "עו״ד מקרקעין": {
+   "en": "Property lawyer",
+   "fr": "Avocat en immobilier",
+   "ru": "Юрист по недвижимости",
+   "ar": "محامي عقارات"
+  },
+  "עו\"ד מקרקעין": {
+   "en": "Property lawyer",
+   "fr": "Avocat en immobilier",
+   "ru": "Юрист по недвижимости",
+   "ar": "محامي عقارات"
+  },
+  "שמאי מקרקעין": {
+   "en": "Property appraiser",
+   "fr": "Expert immobilier",
+   "ru": "Оценщик недвижимости",
+   "ar": "مثمّن عقاري"
+  },
+  "יועץ משכנתאות": {
+   "en": "Mortgage adviser",
+   "fr": "Conseiller en crédit immobilier",
+   "ru": "Ипотечный консультант",
+   "ar": "مستشار رهن عقاري"
+  },
+  "רו״ח מיסוי נדל״ן": {
+   "en": "Real-estate tax accountant",
+   "fr": "Expert-comptable en fiscalité immobilière",
+   "ru": "Бухгалтер по налогам на недвижимость",
+   "ar": "محاسب ضرائب عقارية"
+  },
+  "רו\"ח מיסוי נדל\"ן": {
+   "en": "Real-estate tax accountant",
+   "fr": "Expert-comptable en fiscalité immobilière",
+   "ru": "Бухгалтер по налогам на недвижимость",
+   "ar": "محاسب ضرائب عقارية"
+  },
+  "בדק בית": {
+   "en": "Home inspection",
+   "fr": "Inspection du logement",
+   "ru": "Осмотр жилья",
+   "ar": "فحص المنزل"
+  },
+  "אדריכל": {
+   "en": "Architect",
+   "fr": "Architecte",
+   "ru": "Архитектор",
+   "ar": "مهندس معماري"
+  },
+  "· מתעדכן רבעונית": {
+   "en": "· Updated quarterly",
+   "fr": "· Mise à jour trimestrielle",
+   "ru": "· Обновляется ежеквартально",
+   "ar": "· يُحدَّث كل ربع سنة"
+  },
+  "מתעדכן רבעונית": {
+   "en": "Updated quarterly",
+   "fr": "Mise à jour trimestrielle",
+   "ru": "Обновляется ежеквартально",
+   "ar": "يُحدَّث كل ربع سنة"
+  },
+  "ככה בוחרים דירה בנדלן": {
+   "en": "This is how you choose an apartment on NadLan",
+   "fr": "Voici comment choisir un appartement avec NadLan",
+   "ru": "Вот как выбирают квартиру на NadLan",
+   "ar": "هكذا تختارون شقة مع NadLan"
+  },
+  "סיור תלת ממדי וסרטון היכרות": {
+   "en": "3D tour and introduction video",
+   "fr": "Visite 3D et vidéo de présentation",
+   "ru": "3D-тур и вводное видео",
+   "ar": "جولة ثلاثية الأبعاد وفيديو تعريفي"
+  },
+  "כל הקישורים": {
+   "en": "All links",
+   "fr": "Tous les liens",
+   "ru": "Все ссылки",
+   "ar": "كل الروابط"
+  },
+  "דירת 3 חדרים ב-690 אלף שקל: המספרים המלאים מאחורי הדירות הזולות בישראל 2026": {
+   "en": "A 3-room apartment for 690 thousand shekels: the full numbers behind Israel's cheapest apartments in 2026",
+   "fr": "Un 3 pièces à 690 mille shekels : tous les chiffres derrière les logements les moins chers d'Israël en 2026",
+   "ru": "3-комнатная квартира за 690 тысяч шекелей: все цифры о самых дешёвых квартирах Израиля в 2026 году",
+   "ar": "شقة من 3 غرف بـ690 ألف شيكل: الأرقام الكاملة وراء أرخص الشقق في إسرائيل 2026"
+  },
+  "קונים דירה מקבלן ב-2026? כללי המשא ומתן השתנו לטובתכם": {
+   "en": "Buying an apartment from a developer in 2026? The negotiation rules have changed in your favour",
+   "fr": "Acheter un logement auprès d'un promoteur en 2026 ? Les règles de la négociation ont changé en votre faveur",
+   "ru": "Покупаете квартиру у застройщика в 2026 году? Правила переговоров изменились в вашу пользу",
+   "ar": "تشترون شقة من مطوّر في 2026؟ قواعد التفاوض تغيّرت لصالحكم"
+  },
+  "הקו הירוק בירושלים נפתח ב-2026: איפה זה פוגש את מחירי הדירות": {
+   "en": "Jerusalem's Green Line opens in 2026: where it meets apartment prices",
+   "fr": "La ligne verte de Jérusalem ouvre en 2026 : là où elle rencontre les prix des logements",
+   "ru": "Зелёная линия в Иерусалиме открывается в 2026 году: где она встречается с ценами на квартиры",
+   "ar": "الخط الأخضر في القدس يُفتتح في 2026: أين يلتقي بأسعار الشقق"
+  },
+  "עיצוב פנים 2026: הצבעים, החומרים והטרנדים שנכנסים לדירות החדשות": {
+   "en": "Interior design 2026: the colours, materials and trends coming into new apartments",
+   "fr": "Design d'intérieur 2026 : les couleurs, les matériaux et les tendances qui entrent dans les logements neufs",
+   "ru": "Дизайн интерьера 2026: цвета, материалы и тренды, которые приходят в новые квартиры",
+   "ar": "التصميم الداخلي 2026: الألوان والمواد والصيحات التي تدخل الشقق الجديدة"
+  },
+  "תמ\"א 38 פוקעת במאי 2026: מה עושים דיירים ויזמים עכשיו": {
+   "en": "TAMA 38 expires in May 2026: what residents and developers do now",
+   "fr": "La TAMA 38 expire en mai 2026 : ce que font maintenant les résidents et les promoteurs",
+   "ru": "ТАМА 38 истекает в мае 2026 года: что делать жильцам и застройщикам сейчас",
+   "ar": "تاما 38 تنتهي في أيار 2026: ماذا يفعل السكان والمطوّرون الآن"
+  },
+  "תמ״א 38 פוקעת במאי 2026: מה עושים דיירים ויזמים עכשיו": {
+   "en": "TAMA 38 expires in May 2026: what residents and developers do now",
+   "fr": "La TAMA 38 expire en mai 2026 : ce que font maintenant les résidents et les promoteurs",
+   "ru": "ТАМА 38 истекает в мае 2026 года: что делать жильцам и застройщикам сейчас",
+   "ar": "تاما 38 تنتهي في أيار 2026: ماذا يفعل السكان والمطوّرون الآن"
+  },
+  "איור אדריכלי של מגדל ריינבו תל אביב עם מרפסות גליות ותגי מתקנים, הדמיה להמחשה": {
+   "en": "Architectural illustration of the Rainbow Tel Aviv tower with wavy balconies and facility tags, an illustrative rendering",
+   "fr": "Illustration architecturale de la tour Rainbow Tel Aviv, balcons ondulés et étiquettes des équipements, image d'illustration",
+   "ru": "Архитектурная иллюстрация башни Rainbow Tel Aviv с волнистыми балконами и метками удобств, визуализация для наглядности",
+   "ar": "رسم معماري لبرج Rainbow Tel Aviv بشرفاته المتموجة وعلامات المرافق، تصوير توضيحي"
+  },
+  "איור אדריכלי של פרויקט דמרי ימה שדה דב, מגדל טורי לבן ותגי מתקנים, הדמיה להמחשה": {
+   "en": "Architectural illustration of the DIMRI YAMA Sde Dov project, a white tower of vertical lines and facility tags, an illustrative rendering",
+   "fr": "Illustration architecturale du projet DIMRI YAMA Sde Dov, une tour blanche aux lignes verticales et les étiquettes des équipements, image d'illustration",
+   "ru": "Архитектурная иллюстрация проекта DIMRI YAMA Сде-Дов: белая башня с вертикальными линиями и метки удобств, визуализация для наглядности",
+   "ar": "رسم معماري لمشروع DIMRI YAMA سديه دوف، برج أبيض بخطوط عمودية وعلامات المرافق، تصوير توضيحي"
+  },
+  "איור אדריכלי של פרויקט אשירה שדה דב בקווים מעוגלים ותגי מתקנים, הדמיה להמחשה": {
+   "en": "Architectural illustration of the ASHIRA Sde Dov project in rounded lines with facility tags, an illustrative rendering",
+   "fr": "Illustration architecturale du projet ASHIRA Sde Dov aux lignes arrondies, avec les étiquettes des équipements, image d'illustration",
+   "ru": "Архитектурная иллюстрация проекта ASHIRA Сде-Дов в плавных линиях с метками удобств, визуализация для наглядности",
+   "ar": "رسم معماري لمشروع ASHIRA سديه دوف بخطوط منحنية وعلامات المرافق، تصوير توضيحي"
+  },
+  "Проекты в תל אביב יפו": {
+   "en": "Projects in Tel Aviv-Yafo",
+   "fr": "Projets à Tel Aviv-Jaffa",
+   "ru": "Проекты в Тель-Авиве-Яффо",
+   "ar": "مشاريع في تل أبيب يافا"
+  },
+  "Проекты в תל אביב-יפו": {
+   "en": "Projects in Tel Aviv-Yafo",
+   "fr": "Projets à Tel Aviv-Jaffa",
+   "ru": "Проекты в Тель-Авиве-Яффо",
+   "ar": "مشاريع في تل أبيب يافا"
+  },
+  "Проекты в בני ברק": {
+   "en": "Projects in Bnei Brak",
+   "fr": "Projets à Bnei Brak",
+   "ru": "Проекты в Бней-Браке",
+   "ar": "مشاريع في بني براك"
+  },
+  "Проекты в תל אביב": {
+   "en": "Projects in Tel Aviv",
+   "fr": "Projets à Tel Aviv",
+   "ru": "Проекты в Тель-Авиве",
+   "ar": "مشاريع في تل أبيب"
+  },
+  "Проекты в ירושלים": {
+   "en": "Projects in Jerusalem",
+   "fr": "Projets à Jérusalem",
+   "ru": "Проекты в Иерусалиме",
+   "ar": "مشاريع في القدس"
+  },
+  "Проекты в רמת גן": {
+   "en": "Projects in Ramat Gan",
+   "fr": "Projets à Ramat Gan",
+   "ru": "Проекты в Рамат-Гане",
+   "ar": "مشاريع في رمات غان"
+  },
+  "Проекты в חיפה": {
+   "en": "Projects in Haifa",
+   "fr": "Projets à Haïfa",
+   "ru": "Проекты в Хайфе",
+   "ar": "مشاريع في حيفا"
+  },
+  "Проекты в נתניה": {
+   "en": "Projects in Netanya",
+   "fr": "Projets à Netanya",
+   "ru": "Проекты в Нетании",
+   "ar": "مشاريع في نتانيا"
+  },
+  "Проекты в בת ים": {
+   "en": "Projects in Bat Yam",
+   "fr": "Projets à Bat Yam",
+   "ru": "Проекты в Бат-Яме",
+   "ar": "مشاريع في بات يام"
+  },
+  "Проекты в פתח תקוה": {
+   "en": "Projects in Petah Tikva",
+   "fr": "Projets à Petah Tikva",
+   "ru": "Проекты в Петах-Тикве",
+   "ar": "مشاريع في بيتح تكفا"
+  },
+  "Проекты в פתח תקווה": {
+   "en": "Projects in Petah Tikva",
+   "fr": "Projets à Petah Tikva",
+   "ru": "Проекты в Петах-Тикве",
+   "ar": "مشاريع في بيتح تكفا"
+  },
+  "Проекты в הרצליה": {
+   "en": "Projects in Herzliya",
+   "fr": "Projets à Herzliya",
+   "ru": "Проекты в Герцлии",
+   "ar": "مشاريع في هرتسليا"
+  },
+  "Проекты в חולון": {
+   "en": "Projects in Holon",
+   "fr": "Projets à Holon",
+   "ru": "Проекты в Холоне",
+   "ar": "مشاريع في حولون"
+  },
+  "Проекты в גבעתיים": {
+   "en": "Projects in Givatayim",
+   "fr": "Projets à Givatayim",
+   "ru": "Проекты в Гиватаиме",
+   "ar": "مشاريع في غفعتايم"
+  },
+  "Проекты в גבעתים": {
+   "en": "Projects in Givatayim",
+   "fr": "Projets à Givatayim",
+   "ru": "Проекты в Гиватаиме",
+   "ar": "مشاريع في غفعتايم"
+  },
+  "Проекты в באר שבע": {
+   "en": "Projects in Beersheba",
+   "fr": "Projets à Beer-Sheva",
+   "ru": "Проекты в Беэр-Шеве",
+   "ar": "مشاريع في بئر السبع"
+  },
+  "Проекты в אופקים": {
+   "en": "Projects in Ofakim",
+   "fr": "Projets à Ofakim",
+   "ru": "Проекты в Офакиме",
+   "ar": "مشاريع في أوفاكيم"
+  },
+  "Проекты в חדרה": {
+   "en": "Projects in Hadera",
+   "fr": "Projets à Hadera",
+   "ru": "Проекты в Хадере",
+   "ar": "مشاريع في الخضيرة"
+  },
+  "Проекты в ראשון לציון": {
+   "en": "Projects in Rishon LeZion",
+   "fr": "Projets à Rishon LeZion",
+   "ru": "Проекты в Ришон-ле-Ционе",
+   "ar": "مشاريع في ريشون لتسيون"
+  },
+  "Проекты в אשדוד": {
+   "en": "Projects in Ashdod",
+   "fr": "Projets à Ashdod",
+   "ru": "Проекты в Ашдоде",
+   "ar": "مشاريع في أسدود"
+  },
+  "Проекты в אשקלון": {
+   "en": "Projects in Ashkelon",
+   "fr": "Projets à Ashkelon",
+   "ru": "Проекты в Ашкелоне",
+   "ar": "مشاريع في عسقلان"
+  },
+  "Проекты в רחובות": {
+   "en": "Projects in Rehovot",
+   "fr": "Projets à Rehovot",
+   "ru": "Проекты в Реховоте",
+   "ar": "مشاريع في رحوفوت"
+  },
+  "Проекты в רעננה": {
+   "en": "Projects in Ra'anana",
+   "fr": "Projets à Ra'anana",
+   "ru": "Проекты в Раанане",
+   "ar": "مشاريع في رعنانا"
+  },
+  "Проекты в כפר סבא": {
+   "en": "Projects in Kfar Saba",
+   "fr": "Projets à Kfar Saba",
+   "ru": "Проекты в Кфар-Сабе",
+   "ar": "مشاريع في كفار سابا"
+  },
+  "Проекты в הוד השרון": {
+   "en": "Projects in Hod HaSharon",
+   "fr": "Projets à Hod HaSharon",
+   "ru": "Проекты в Ход-ха-Шароне",
+   "ar": "مشاريع في هود هشارون"
+  },
+  "Проекты в מודיעין": {
+   "en": "Projects in Modi'in",
+   "fr": "Projets à Modiin",
+   "ru": "Проекты в Модиине",
+   "ar": "مشاريع في موديعين"
+  },
+  "Проекты в ראש העין": {
+   "en": "Projects in Rosh HaAyin",
+   "fr": "Projets à Rosh HaAyin",
+   "ru": "Проекты в Рош-ха-Аине",
+   "ar": "مشاريع في روش هعاين"
+  },
+  "Проекты в נס ציונה": {
+   "en": "Projects in Ness Ziona",
+   "fr": "Projets à Ness Ziona",
+   "ru": "Проекты в Нес-Ционе",
+   "ar": "مشاريع في نيس تسيونا"
+  },
+  "Проекты в נהריה": {
+   "en": "Projects in Nahariya",
+   "fr": "Projets à Nahariya",
+   "ru": "Проекты в Нагарии",
+   "ar": "مشاريع في نهاريا"
+  },
+  "Проекты в אילת": {
+   "en": "Projects in Eilat",
+   "fr": "Projets à Eilat",
+   "ru": "Проекты в Эйлате",
+   "ar": "مشاريع في إيلات"
+  },
+  "Проекты в הרצליה פיתוח": {
+   "en": "Projects in Herzliya Pituah",
+   "fr": "Projets à Herzliya Pituah",
+   "ru": "Проекты в Герцлии-Питуах",
+   "ar": "مشاريع في هرتسليا بيتوح"
+  },
+  "Проекты в רמת אביב": {
+   "en": "Projects in Ramat Aviv",
+   "fr": "Projets à Ramat Aviv",
+   "ru": "Проекты в Рамат-Авиве",
+   "ar": "مشاريع في رمات أفيف"
+  },
+  "Проекты в נווה צדק": {
+   "en": "Projects in Neve Tzedek",
+   "fr": "Projets à Neve Tzedek",
+   "ru": "Проекты в районе Неве-Цедек",
+   "ar": "مشاريع في نفيه تسيدك"
+  },
+  "Проекты в יפו": {
+   "en": "Projects in Jaffa",
+   "fr": "Projets à Jaffa",
+   "ru": "Проекты в Яффо",
+   "ar": "مشاريع في يافا"
+  },
+  "Проекты в צוקי אביב": {
+   "en": "Projects in Tzukei Aviv",
+   "fr": "Projets à Tzukei Aviv",
+   "ru": "Проекты в районе Цукей-Авив",
+   "ar": "مشاريع في تسوكي أفيف"
+  },
+  "Проекты в נופי ים": {
+   "en": "Projects in Nofei Yam",
+   "fr": "Projets à Nofei Yam",
+   "ru": "Проекты в районе Нофей-Ям",
+   "ar": "مشاريع في نوفي يام"
+  },
+  "Проекты в שרונה": {
+   "en": "Projects in Sarona",
+   "fr": "Projets à Sarona",
+   "ru": "Проекты в районе Сарона",
+   "ar": "مشاريع في سارونا"
+  },
+  "Проекты в כוכב הצפון": {
+   "en": "Projects in Kochav HaTzafon",
+   "fr": "Projets à Kochav HaTzafon",
+   "ru": "Проекты в районе Кохав-ха-Цафон",
+   "ar": "مشاريع في كوخاف هتسافون"
+  },
+  "Проекты в שדה דב": {
+   "en": "Projects in Sde Dov",
+   "fr": "Projets à Sde Dov",
+   "ru": "Проекты в районе Сде-Дов",
+   "ar": "مشاريع في سديه دوف"
+  },
+  "Цены в תל אביב יפו": {
+   "en": "Prices in Tel Aviv-Yafo",
+   "fr": "Prix à Tel Aviv-Jaffa",
+   "ru": "Цены в Тель-Авиве-Яффо",
+   "ar": "الأسعار في تل أبيب يافا"
+  },
+  "Цены в תל אביב-יפו": {
+   "en": "Prices in Tel Aviv-Yafo",
+   "fr": "Prix à Tel Aviv-Jaffa",
+   "ru": "Цены в Тель-Авиве-Яффо",
+   "ar": "الأسعار في تل أبيب يافا"
+  },
+  "Цены в בני ברק": {
+   "en": "Prices in Bnei Brak",
+   "fr": "Prix à Bnei Brak",
+   "ru": "Цены в Бней-Браке",
+   "ar": "الأسعار في بني براك"
+  },
+  "Цены в תל אביב": {
+   "en": "Prices in Tel Aviv",
+   "fr": "Prix à Tel Aviv",
+   "ru": "Цены в Тель-Авиве",
+   "ar": "الأسعار في تل أبيب"
+  },
+  "Цены в ירושלים": {
+   "en": "Prices in Jerusalem",
+   "fr": "Prix à Jérusalem",
+   "ru": "Цены в Иерусалиме",
+   "ar": "الأسعار في القدس"
+  },
+  "Цены в רמת גן": {
+   "en": "Prices in Ramat Gan",
+   "fr": "Prix à Ramat Gan",
+   "ru": "Цены в Рамат-Гане",
+   "ar": "الأسعار في رمات غان"
+  },
+  "Цены в חיפה": {
+   "en": "Prices in Haifa",
+   "fr": "Prix à Haïfa",
+   "ru": "Цены в Хайфе",
+   "ar": "الأسعار في حيفا"
+  },
+  "Цены в נתניה": {
+   "en": "Prices in Netanya",
+   "fr": "Prix à Netanya",
+   "ru": "Цены в Нетании",
+   "ar": "الأسعار في نتانيا"
+  },
+  "Цены в בת ים": {
+   "en": "Prices in Bat Yam",
+   "fr": "Prix à Bat Yam",
+   "ru": "Цены в Бат-Яме",
+   "ar": "الأسعار في بات يام"
+  },
+  "Цены в פתח תקוה": {
+   "en": "Prices in Petah Tikva",
+   "fr": "Prix à Petah Tikva",
+   "ru": "Цены в Петах-Тикве",
+   "ar": "الأسعار في بيتح تكفا"
+  },
+  "Цены в פתח תקווה": {
+   "en": "Prices in Petah Tikva",
+   "fr": "Prix à Petah Tikva",
+   "ru": "Цены в Петах-Тикве",
+   "ar": "الأسعار في بيتح تكفا"
+  },
+  "Цены в הרצליה": {
+   "en": "Prices in Herzliya",
+   "fr": "Prix à Herzliya",
+   "ru": "Цены в Герцлии",
+   "ar": "الأسعار في هرتسليا"
+  },
+  "Цены в חולון": {
+   "en": "Prices in Holon",
+   "fr": "Prix à Holon",
+   "ru": "Цены в Холоне",
+   "ar": "الأسعار في حولون"
+  },
+  "Цены в גבעתיים": {
+   "en": "Prices in Givatayim",
+   "fr": "Prix à Givatayim",
+   "ru": "Цены в Гиватаиме",
+   "ar": "الأسعار في غفعتايم"
+  },
+  "Цены в גבעתים": {
+   "en": "Prices in Givatayim",
+   "fr": "Prix à Givatayim",
+   "ru": "Цены в Гиватаиме",
+   "ar": "الأسعار في غفعتايم"
+  },
+  "Цены в באר שבע": {
+   "en": "Prices in Beersheba",
+   "fr": "Prix à Beer-Sheva",
+   "ru": "Цены в Беэр-Шеве",
+   "ar": "الأسعار في بئر السبع"
+  },
+  "Цены в אופקים": {
+   "en": "Prices in Ofakim",
+   "fr": "Prix à Ofakim",
+   "ru": "Цены в Офакиме",
+   "ar": "الأسعار في أوفاكيم"
+  },
+  "Цены в חדרה": {
+   "en": "Prices in Hadera",
+   "fr": "Prix à Hadera",
+   "ru": "Цены в Хадере",
+   "ar": "الأسعار في الخضيرة"
+  },
+  "Цены в ראשון לציון": {
+   "en": "Prices in Rishon LeZion",
+   "fr": "Prix à Rishon LeZion",
+   "ru": "Цены в Ришон-ле-Ционе",
+   "ar": "الأسعار في ريشون لتسيون"
+  },
+  "Цены в אשדוד": {
+   "en": "Prices in Ashdod",
+   "fr": "Prix à Ashdod",
+   "ru": "Цены в Ашдоде",
+   "ar": "الأسعار في أسدود"
+  },
+  "Цены в אשקלון": {
+   "en": "Prices in Ashkelon",
+   "fr": "Prix à Ashkelon",
+   "ru": "Цены в Ашкелоне",
+   "ar": "الأسعار في عسقلان"
+  },
+  "Цены в רחובות": {
+   "en": "Prices in Rehovot",
+   "fr": "Prix à Rehovot",
+   "ru": "Цены в Реховоте",
+   "ar": "الأسعار في رحوفوت"
+  },
+  "Цены в רעננה": {
+   "en": "Prices in Ra'anana",
+   "fr": "Prix à Ra'anana",
+   "ru": "Цены в Раанане",
+   "ar": "الأسعار في رعنانا"
+  },
+  "Цены в כפר סבא": {
+   "en": "Prices in Kfar Saba",
+   "fr": "Prix à Kfar Saba",
+   "ru": "Цены в Кфар-Сабе",
+   "ar": "الأسعار في كفار سابا"
+  },
+  "Цены в הוד השרון": {
+   "en": "Prices in Hod HaSharon",
+   "fr": "Prix à Hod HaSharon",
+   "ru": "Цены в Ход-ха-Шароне",
+   "ar": "الأسعار في هود هشارون"
+  },
+  "Цены в מודיעין": {
+   "en": "Prices in Modi'in",
+   "fr": "Prix à Modiin",
+   "ru": "Цены в Модиине",
+   "ar": "الأسعار في موديعين"
+  },
+  "Цены в ראש העין": {
+   "en": "Prices in Rosh HaAyin",
+   "fr": "Prix à Rosh HaAyin",
+   "ru": "Цены в Рош-ха-Аине",
+   "ar": "الأسعار في روش هعاين"
+  },
+  "Цены в נס ציונה": {
+   "en": "Prices in Ness Ziona",
+   "fr": "Prix à Ness Ziona",
+   "ru": "Цены в Нес-Ционе",
+   "ar": "الأسعار في نيس تسيونا"
+  },
+  "Цены в נהריה": {
+   "en": "Prices in Nahariya",
+   "fr": "Prix à Nahariya",
+   "ru": "Цены в Нагарии",
+   "ar": "الأسعار في نهاريا"
+  },
+  "Цены в אילת": {
+   "en": "Prices in Eilat",
+   "fr": "Prix à Eilat",
+   "ru": "Цены в Эйлате",
+   "ar": "الأسعار في إيلات"
+  },
+  "Цены в הרצליה פיתוח": {
+   "en": "Prices in Herzliya Pituah",
+   "fr": "Prix à Herzliya Pituah",
+   "ru": "Цены в Герцлии-Питуах",
+   "ar": "الأسعار في هرتسليا بيتوح"
+  },
+  "Цены в רמת אביב": {
+   "en": "Prices in Ramat Aviv",
+   "fr": "Prix à Ramat Aviv",
+   "ru": "Цены в Рамат-Авиве",
+   "ar": "الأسعار في رمات أفيف"
+  },
+  "Цены в נווה צדק": {
+   "en": "Prices in Neve Tzedek",
+   "fr": "Prix à Neve Tzedek",
+   "ru": "Цены в районе Неве-Цедек",
+   "ar": "الأسعار في نفيه تسيدك"
+  },
+  "Цены в יפו": {
+   "en": "Prices in Jaffa",
+   "fr": "Prix à Jaffa",
+   "ru": "Цены в Яффо",
+   "ar": "الأسعار في يافا"
+  },
+  "Цены в צוקי אביב": {
+   "en": "Prices in Tzukei Aviv",
+   "fr": "Prix à Tzukei Aviv",
+   "ru": "Цены в районе Цукей-Авив",
+   "ar": "الأسعار في تسوكي أفيف"
+  },
+  "Цены в נופי ים": {
+   "en": "Prices in Nofei Yam",
+   "fr": "Prix à Nofei Yam",
+   "ru": "Цены в районе Нофей-Ям",
+   "ar": "الأسعار في نوفي يام"
+  },
+  "Цены в שרונה": {
+   "en": "Prices in Sarona",
+   "fr": "Prix à Sarona",
+   "ru": "Цены в районе Сарона",
+   "ar": "الأسعار في سارونا"
+  },
+  "Цены в כוכב הצפון": {
+   "en": "Prices in Kochav HaTzafon",
+   "fr": "Prix à Kochav HaTzafon",
+   "ru": "Цены в районе Кохав-ха-Цафон",
+   "ar": "الأسعار في كوخاف هتسافون"
+  },
+  "Цены в שדה דב": {
+   "en": "Prices in Sde Dov",
+   "fr": "Prix à Sde Dov",
+   "ru": "Цены в районе Сде-Дов",
+   "ar": "الأسعار في سديه دوف"
+  },
+  "Квартиры в תל אביב יפו": {
+   "en": "Apartments in Tel Aviv-Yafo",
+   "fr": "Appartements à Tel Aviv-Jaffa",
+   "ru": "Квартиры в Тель-Авиве-Яффо",
+   "ar": "شقق في تل أبيب يافا"
+  },
+  "Квартиры в תל אביב-יפו": {
+   "en": "Apartments in Tel Aviv-Yafo",
+   "fr": "Appartements à Tel Aviv-Jaffa",
+   "ru": "Квартиры в Тель-Авиве-Яффо",
+   "ar": "شقق في تل أبيب يافا"
+  },
+  "Квартиры в בני ברק": {
+   "en": "Apartments in Bnei Brak",
+   "fr": "Appartements à Bnei Brak",
+   "ru": "Квартиры в Бней-Браке",
+   "ar": "شقق في بني براك"
+  },
+  "Квартиры в תל אביב": {
+   "en": "Apartments in Tel Aviv",
+   "fr": "Appartements à Tel Aviv",
+   "ru": "Квартиры в Тель-Авиве",
+   "ar": "شقق في تل أبيب"
+  },
+  "Квартиры в ירושלים": {
+   "en": "Apartments in Jerusalem",
+   "fr": "Appartements à Jérusalem",
+   "ru": "Квартиры в Иерусалиме",
+   "ar": "شقق في القدس"
+  },
+  "Квартиры в רמת גן": {
+   "en": "Apartments in Ramat Gan",
+   "fr": "Appartements à Ramat Gan",
+   "ru": "Квартиры в Рамат-Гане",
+   "ar": "شقق في رمات غان"
+  },
+  "Квартиры в חיפה": {
+   "en": "Apartments in Haifa",
+   "fr": "Appartements à Haïfa",
+   "ru": "Квартиры в Хайфе",
+   "ar": "شقق في حيفا"
+  },
+  "Квартиры в נתניה": {
+   "en": "Apartments in Netanya",
+   "fr": "Appartements à Netanya",
+   "ru": "Квартиры в Нетании",
+   "ar": "شقق في نتانيا"
+  },
+  "Квартиры в בת ים": {
+   "en": "Apartments in Bat Yam",
+   "fr": "Appartements à Bat Yam",
+   "ru": "Квартиры в Бат-Яме",
+   "ar": "شقق في بات يام"
+  },
+  "Квартиры в פתח תקוה": {
+   "en": "Apartments in Petah Tikva",
+   "fr": "Appartements à Petah Tikva",
+   "ru": "Квартиры в Петах-Тикве",
+   "ar": "شقق في بيتح تكفا"
+  },
+  "Квартиры в פתח תקווה": {
+   "en": "Apartments in Petah Tikva",
+   "fr": "Appartements à Petah Tikva",
+   "ru": "Квартиры в Петах-Тикве",
+   "ar": "شقق في بيتح تكفا"
+  },
+  "Квартиры в הרצליה": {
+   "en": "Apartments in Herzliya",
+   "fr": "Appartements à Herzliya",
+   "ru": "Квартиры в Герцлии",
+   "ar": "شقق في هرتسليا"
+  },
+  "Квартиры в חולון": {
+   "en": "Apartments in Holon",
+   "fr": "Appartements à Holon",
+   "ru": "Квартиры в Холоне",
+   "ar": "شقق في حولون"
+  },
+  "Квартиры в גבעתיים": {
+   "en": "Apartments in Givatayim",
+   "fr": "Appartements à Givatayim",
+   "ru": "Квартиры в Гиватаиме",
+   "ar": "شقق في غفعتايم"
+  },
+  "Квартиры в גבעתים": {
+   "en": "Apartments in Givatayim",
+   "fr": "Appartements à Givatayim",
+   "ru": "Квартиры в Гиватаиме",
+   "ar": "شقق في غفعتايم"
+  },
+  "Квартиры в באר שבע": {
+   "en": "Apartments in Beersheba",
+   "fr": "Appartements à Beer-Sheva",
+   "ru": "Квартиры в Беэр-Шеве",
+   "ar": "شقق في بئر السبع"
+  },
+  "Квартиры в אופקים": {
+   "en": "Apartments in Ofakim",
+   "fr": "Appartements à Ofakim",
+   "ru": "Квартиры в Офакиме",
+   "ar": "شقق في أوفاكيم"
+  },
+  "Квартиры в חדרה": {
+   "en": "Apartments in Hadera",
+   "fr": "Appartements à Hadera",
+   "ru": "Квартиры в Хадере",
+   "ar": "شقق في الخضيرة"
+  },
+  "Квартиры в ראשון לציון": {
+   "en": "Apartments in Rishon LeZion",
+   "fr": "Appartements à Rishon LeZion",
+   "ru": "Квартиры в Ришон-ле-Ционе",
+   "ar": "شقق في ريشون لتسيون"
+  },
+  "Квартиры в אשדוד": {
+   "en": "Apartments in Ashdod",
+   "fr": "Appartements à Ashdod",
+   "ru": "Квартиры в Ашдоде",
+   "ar": "شقق في أسدود"
+  },
+  "Квартиры в אשקלון": {
+   "en": "Apartments in Ashkelon",
+   "fr": "Appartements à Ashkelon",
+   "ru": "Квартиры в Ашкелоне",
+   "ar": "شقق في عسقلان"
+  },
+  "Квартиры в רחובות": {
+   "en": "Apartments in Rehovot",
+   "fr": "Appartements à Rehovot",
+   "ru": "Квартиры в Реховоте",
+   "ar": "شقق في رحوفوت"
+  },
+  "Квартиры в רעננה": {
+   "en": "Apartments in Ra'anana",
+   "fr": "Appartements à Ra'anana",
+   "ru": "Квартиры в Раанане",
+   "ar": "شقق في رعنانا"
+  },
+  "Квартиры в כפר סבא": {
+   "en": "Apartments in Kfar Saba",
+   "fr": "Appartements à Kfar Saba",
+   "ru": "Квартиры в Кфар-Сабе",
+   "ar": "شقق في كفار سابا"
+  },
+  "Квартиры в הוד השרון": {
+   "en": "Apartments in Hod HaSharon",
+   "fr": "Appartements à Hod HaSharon",
+   "ru": "Квартиры в Ход-ха-Шароне",
+   "ar": "شقق في هود هشارون"
+  },
+  "Квартиры в מודיעין": {
+   "en": "Apartments in Modi'in",
+   "fr": "Appartements à Modiin",
+   "ru": "Квартиры в Модиине",
+   "ar": "شقق في موديعين"
+  },
+  "Квартиры в ראש העין": {
+   "en": "Apartments in Rosh HaAyin",
+   "fr": "Appartements à Rosh HaAyin",
+   "ru": "Квартиры в Рош-ха-Аине",
+   "ar": "شقق في روش هعاين"
+  },
+  "Квартиры в נס ציונה": {
+   "en": "Apartments in Ness Ziona",
+   "fr": "Appartements à Ness Ziona",
+   "ru": "Квартиры в Нес-Ционе",
+   "ar": "شقق في نيس تسيونا"
+  },
+  "Квартиры в נהריה": {
+   "en": "Apartments in Nahariya",
+   "fr": "Appartements à Nahariya",
+   "ru": "Квартиры в Нагарии",
+   "ar": "شقق في نهاريا"
+  },
+  "Квартиры в אילת": {
+   "en": "Apartments in Eilat",
+   "fr": "Appartements à Eilat",
+   "ru": "Квартиры в Эйлате",
+   "ar": "شقق في إيلات"
+  },
+  "Квартиры в הרצליה פיתוח": {
+   "en": "Apartments in Herzliya Pituah",
+   "fr": "Appartements à Herzliya Pituah",
+   "ru": "Квартиры в Герцлии-Питуах",
+   "ar": "شقق في هرتسليا بيتوح"
+  },
+  "Квартиры в רמת אביב": {
+   "en": "Apartments in Ramat Aviv",
+   "fr": "Appartements à Ramat Aviv",
+   "ru": "Квартиры в Рамат-Авиве",
+   "ar": "شقق في رمات أفيف"
+  },
+  "Квартиры в נווה צדק": {
+   "en": "Apartments in Neve Tzedek",
+   "fr": "Appartements à Neve Tzedek",
+   "ru": "Квартиры в районе Неве-Цедек",
+   "ar": "شقق في نفيه تسيدك"
+  },
+  "Квартиры в יפו": {
+   "en": "Apartments in Jaffa",
+   "fr": "Appartements à Jaffa",
+   "ru": "Квартиры в Яффо",
+   "ar": "شقق في يافا"
+  },
+  "Квартиры в צוקי אביב": {
+   "en": "Apartments in Tzukei Aviv",
+   "fr": "Appartements à Tzukei Aviv",
+   "ru": "Квартиры в районе Цукей-Авив",
+   "ar": "شقق في تسوكي أفيف"
+  },
+  "Квартиры в נופי ים": {
+   "en": "Apartments in Nofei Yam",
+   "fr": "Appartements à Nofei Yam",
+   "ru": "Квартиры в районе Нофей-Ям",
+   "ar": "شقق في نوفي يام"
+  },
+  "Квартиры в שרונה": {
+   "en": "Apartments in Sarona",
+   "fr": "Appartements à Sarona",
+   "ru": "Квартиры в районе Сарона",
+   "ar": "شقق في سارونا"
+  },
+  "Квартиры в כוכב הצפון": {
+   "en": "Apartments in Kochav HaTzafon",
+   "fr": "Appartements à Kochav HaTzafon",
+   "ru": "Квартиры в районе Кохав-ха-Цафон",
+   "ar": "شقق في كوخاف هتسافون"
+  },
+  "Квартиры в שדה דב": {
+   "en": "Apartments in Sde Dov",
+   "fr": "Appartements à Sde Dov",
+   "ru": "Квартиры в районе Сде-Дов",
+   "ar": "شقق في سديه دوف"
+  },
+  "Квартиры на продажу в תל אביב יפו": {
+   "en": "Apartments for sale in Tel Aviv-Yafo",
+   "fr": "Appartements à vendre à Tel Aviv-Jaffa",
+   "ru": "Квартиры на продажу в Тель-Авиве-Яффо",
+   "ar": "شقق للبيع في تل أبيب يافا"
+  },
+  "Квартиры на продажу в תל אביב-יפו": {
+   "en": "Apartments for sale in Tel Aviv-Yafo",
+   "fr": "Appartements à vendre à Tel Aviv-Jaffa",
+   "ru": "Квартиры на продажу в Тель-Авиве-Яффо",
+   "ar": "شقق للبيع في تل أبيب يافا"
+  },
+  "Квартиры на продажу в בני ברק": {
+   "en": "Apartments for sale in Bnei Brak",
+   "fr": "Appartements à vendre à Bnei Brak",
+   "ru": "Квартиры на продажу в Бней-Браке",
+   "ar": "شقق للبيع في بني براك"
+  },
+  "Квартиры на продажу в תל אביב": {
+   "en": "Apartments for sale in Tel Aviv",
+   "fr": "Appartements à vendre à Tel Aviv",
+   "ru": "Квартиры на продажу в Тель-Авиве",
+   "ar": "شقق للبيع في تل أبيب"
+  },
+  "Квартиры на продажу в ירושלים": {
+   "en": "Apartments for sale in Jerusalem",
+   "fr": "Appartements à vendre à Jérusalem",
+   "ru": "Квартиры на продажу в Иерусалиме",
+   "ar": "شقق للبيع في القدس"
+  },
+  "Квартиры на продажу в רמת גן": {
+   "en": "Apartments for sale in Ramat Gan",
+   "fr": "Appartements à vendre à Ramat Gan",
+   "ru": "Квартиры на продажу в Рамат-Гане",
+   "ar": "شقق للبيع في رمات غان"
+  },
+  "Квартиры на продажу в חיפה": {
+   "en": "Apartments for sale in Haifa",
+   "fr": "Appartements à vendre à Haïfa",
+   "ru": "Квартиры на продажу в Хайфе",
+   "ar": "شقق للبيع في حيفا"
+  },
+  "Квартиры на продажу в נתניה": {
+   "en": "Apartments for sale in Netanya",
+   "fr": "Appartements à vendre à Netanya",
+   "ru": "Квартиры на продажу в Нетании",
+   "ar": "شقق للبيع في نتانيا"
+  },
+  "Квартиры на продажу в בת ים": {
+   "en": "Apartments for sale in Bat Yam",
+   "fr": "Appartements à vendre à Bat Yam",
+   "ru": "Квартиры на продажу в Бат-Яме",
+   "ar": "شقق للبيع في بات يام"
+  },
+  "Квартиры на продажу в פתח תקוה": {
+   "en": "Apartments for sale in Petah Tikva",
+   "fr": "Appartements à vendre à Petah Tikva",
+   "ru": "Квартиры на продажу в Петах-Тикве",
+   "ar": "شقق للبيع في بيتح تكفا"
+  },
+  "Квартиры на продажу в פתח תקווה": {
+   "en": "Apartments for sale in Petah Tikva",
+   "fr": "Appartements à vendre à Petah Tikva",
+   "ru": "Квартиры на продажу в Петах-Тикве",
+   "ar": "شقق للبيع في بيتح تكفا"
+  },
+  "Квартиры на продажу в הרצליה": {
+   "en": "Apartments for sale in Herzliya",
+   "fr": "Appartements à vendre à Herzliya",
+   "ru": "Квартиры на продажу в Герцлии",
+   "ar": "شقق للبيع في هرتسليا"
+  },
+  "Квартиры на продажу в חולון": {
+   "en": "Apartments for sale in Holon",
+   "fr": "Appartements à vendre à Holon",
+   "ru": "Квартиры на продажу в Холоне",
+   "ar": "شقق للبيع في حولون"
+  },
+  "Квартиры на продажу в גבעתיים": {
+   "en": "Apartments for sale in Givatayim",
+   "fr": "Appartements à vendre à Givatayim",
+   "ru": "Квартиры на продажу в Гиватаиме",
+   "ar": "شقق للبيع في غفعتايم"
+  },
+  "Квартиры на продажу в גבעתים": {
+   "en": "Apartments for sale in Givatayim",
+   "fr": "Appartements à vendre à Givatayim",
+   "ru": "Квартиры на продажу в Гиватаиме",
+   "ar": "شقق للبيع في غفعتايم"
+  },
+  "Квартиры на продажу в באר שבע": {
+   "en": "Apartments for sale in Beersheba",
+   "fr": "Appartements à vendre à Beer-Sheva",
+   "ru": "Квартиры на продажу в Беэр-Шеве",
+   "ar": "شقق للبيع في بئر السبع"
+  },
+  "Квартиры на продажу в אופקים": {
+   "en": "Apartments for sale in Ofakim",
+   "fr": "Appartements à vendre à Ofakim",
+   "ru": "Квартиры на продажу в Офакиме",
+   "ar": "شقق للبيع في أوفاكيم"
+  },
+  "Квартиры на продажу в חדרה": {
+   "en": "Apartments for sale in Hadera",
+   "fr": "Appartements à vendre à Hadera",
+   "ru": "Квартиры на продажу в Хадере",
+   "ar": "شقق للبيع في الخضيرة"
+  },
+  "Квартиры на продажу в ראשון לציון": {
+   "en": "Apartments for sale in Rishon LeZion",
+   "fr": "Appartements à vendre à Rishon LeZion",
+   "ru": "Квартиры на продажу в Ришон-ле-Ционе",
+   "ar": "شقق للبيع في ريشون لتسيون"
+  },
+  "Квартиры на продажу в אשדוד": {
+   "en": "Apartments for sale in Ashdod",
+   "fr": "Appartements à vendre à Ashdod",
+   "ru": "Квартиры на продажу в Ашдоде",
+   "ar": "شقق للبيع في أسدود"
+  },
+  "Квартиры на продажу в אשקלון": {
+   "en": "Apartments for sale in Ashkelon",
+   "fr": "Appartements à vendre à Ashkelon",
+   "ru": "Квартиры на продажу в Ашкелоне",
+   "ar": "شقق للبيع في عسقلان"
+  },
+  "Квартиры на продажу в רחובות": {
+   "en": "Apartments for sale in Rehovot",
+   "fr": "Appartements à vendre à Rehovot",
+   "ru": "Квартиры на продажу в Реховоте",
+   "ar": "شقق للبيع في رحوفوت"
+  },
+  "Квартиры на продажу в רעננה": {
+   "en": "Apartments for sale in Ra'anana",
+   "fr": "Appartements à vendre à Ra'anana",
+   "ru": "Квартиры на продажу в Раанане",
+   "ar": "شقق للبيع في رعنانا"
+  },
+  "Квартиры на продажу в כפר סבא": {
+   "en": "Apartments for sale in Kfar Saba",
+   "fr": "Appartements à vendre à Kfar Saba",
+   "ru": "Квартиры на продажу в Кфар-Сабе",
+   "ar": "شقق للبيع في كفار سابا"
+  },
+  "Квартиры на продажу в הוד השרון": {
+   "en": "Apartments for sale in Hod HaSharon",
+   "fr": "Appartements à vendre à Hod HaSharon",
+   "ru": "Квартиры на продажу в Ход-ха-Шароне",
+   "ar": "شقق للبيع في هود هشارون"
+  },
+  "Квартиры на продажу в מודיעין": {
+   "en": "Apartments for sale in Modi'in",
+   "fr": "Appartements à vendre à Modiin",
+   "ru": "Квартиры на продажу в Модиине",
+   "ar": "شقق للبيع في موديعين"
+  },
+  "Квартиры на продажу в ראש העין": {
+   "en": "Apartments for sale in Rosh HaAyin",
+   "fr": "Appartements à vendre à Rosh HaAyin",
+   "ru": "Квартиры на продажу в Рош-ха-Аине",
+   "ar": "شقق للبيع في روش هعاين"
+  },
+  "Квартиры на продажу в נס ציונה": {
+   "en": "Apartments for sale in Ness Ziona",
+   "fr": "Appartements à vendre à Ness Ziona",
+   "ru": "Квартиры на продажу в Нес-Ционе",
+   "ar": "شقق للبيع في نيس تسيونا"
+  },
+  "Квартиры на продажу в נהריה": {
+   "en": "Apartments for sale in Nahariya",
+   "fr": "Appartements à vendre à Nahariya",
+   "ru": "Квартиры на продажу в Нагарии",
+   "ar": "شقق للبيع في نهاريا"
+  },
+  "Квартиры на продажу в אילת": {
+   "en": "Apartments for sale in Eilat",
+   "fr": "Appartements à vendre à Eilat",
+   "ru": "Квартиры на продажу в Эйлате",
+   "ar": "شقق للبيع في إيلات"
+  },
+  "Квартиры на продажу в הרצליה פיתוח": {
+   "en": "Apartments for sale in Herzliya Pituah",
+   "fr": "Appartements à vendre à Herzliya Pituah",
+   "ru": "Квартиры на продажу в Герцлии-Питуах",
+   "ar": "شقق للبيع في هرتسليا بيتوح"
+  },
+  "Квартиры на продажу в רמת אביב": {
+   "en": "Apartments for sale in Ramat Aviv",
+   "fr": "Appartements à vendre à Ramat Aviv",
+   "ru": "Квартиры на продажу в Рамат-Авиве",
+   "ar": "شقق للبيع في رمات أفيف"
+  },
+  "Квартиры на продажу в נווה צדק": {
+   "en": "Apartments for sale in Neve Tzedek",
+   "fr": "Appartements à vendre à Neve Tzedek",
+   "ru": "Квартиры на продажу в районе Неве-Цедек",
+   "ar": "شقق للبيع في نفيه تسيدك"
+  },
+  "Квартиры на продажу в יפו": {
+   "en": "Apartments for sale in Jaffa",
+   "fr": "Appartements à vendre à Jaffa",
+   "ru": "Квартиры на продажу в Яффо",
+   "ar": "شقق للبيع في يافا"
+  },
+  "Квартиры на продажу в צוקי אביב": {
+   "en": "Apartments for sale in Tzukei Aviv",
+   "fr": "Appartements à vendre à Tzukei Aviv",
+   "ru": "Квартиры на продажу в районе Цукей-Авив",
+   "ar": "شقق للبيع في تسوكي أفيف"
+  },
+  "Квартиры на продажу в נופי ים": {
+   "en": "Apartments for sale in Nofei Yam",
+   "fr": "Appartements à vendre à Nofei Yam",
+   "ru": "Квартиры на продажу в районе Нофей-Ям",
+   "ar": "شقق للبيع في نوفي يام"
+  },
+  "Квартиры на продажу в שרונה": {
+   "en": "Apartments for sale in Sarona",
+   "fr": "Appartements à vendre à Sarona",
+   "ru": "Квартиры на продажу в районе Сарона",
+   "ar": "شقق للبيع في سارونا"
+  },
+  "Квартиры на продажу в כוכב הצפון": {
+   "en": "Apartments for sale in Kochav HaTzafon",
+   "fr": "Appartements à vendre à Kochav HaTzafon",
+   "ru": "Квартиры на продажу в районе Кохав-ха-Цафон",
+   "ar": "شقق للبيع في كوخاف هتسافون"
+  },
+  "Квартиры на продажу в שדה דב": {
+   "en": "Apartments for sale in Sde Dov",
+   "fr": "Appartements à vendre à Sde Dov",
+   "ru": "Квартиры на продажу в районе Сде-Дов",
+   "ar": "شقق للبيع في سديه دوف"
+  },
+  "Projects, דירות, אזורים וכלי בדיקה": {
+   "en": "Projects, homes, areas and checking tools",
+   "fr": "Projets, logements, quartiers et outils de vérification",
+   "ru": "Проекты, квартиры, районы и инструменты проверки",
+   "ar": "مشاريع وشقق ومناطق وأدوات فحص"
+  },
+  "Projets, דירות, אזורים וכלי בדיקה": {
+   "en": "Projects, homes, areas and checking tools",
+   "fr": "Projets, logements, quartiers et outils de vérification",
+   "ru": "Проекты, квартиры, районы и инструменты проверки",
+   "ar": "مشاريع وشقق ومناطق وأدوات فحص"
+  },
+  "Проекты, דירות, אזורים וכלי בדיקה": {
+   "en": "Projects, homes, areas and checking tools",
+   "fr": "Projets, logements, quartiers et outils de vérification",
+   "ru": "Проекты, квартиры, районы и инструменты проверки",
+   "ar": "مشاريع وشقق ومناطق وأدوات فحص"
+  },
+  "مشاريع, דירות, אזורים וכלי בדיקה": {
+   "en": "Projects, homes, areas and checking tools",
+   "fr": "Projets, logements, quartiers et outils de vérification",
+   "ru": "Проекты, квартиры, районы и инструменты проверки",
+   "ar": "مشاريع وشقق ومناطق وأدوات فحص"
+  },
+  "מידע נדל״ן, Projects חדשים, סביבת מגורים וכלים לבדיקת עסקה לפני שמתקדמים לפנייה.": {
+   "en": "Property information, new projects, the neighbourhood and tools to check a deal before you make an enquiry.",
+   "fr": "Informations immobilières, projets neufs, cadre de vie et outils pour vérifier une transaction avant de prendre contact.",
+   "ru": "Информация о недвижимости, новые проекты, район и инструменты для проверки сделки до обращения.",
+   "ar": "معلومات عقارية ومشاريع جديدة وبيئة السكن وأدوات لفحص الصفقة قبل التواصل."
+  },
+  "מידע נדל״ן, Projets חדשים, סביבת מגורים וכלים לבדיקת עסקה לפני שמתקדמים לפנייה.": {
+   "en": "Property information, new projects, the neighbourhood and tools to check a deal before you make an enquiry.",
+   "fr": "Informations immobilières, projets neufs, cadre de vie et outils pour vérifier une transaction avant de prendre contact.",
+   "ru": "Информация о недвижимости, новые проекты, район и инструменты для проверки сделки до обращения.",
+   "ar": "معلومات عقارية ومشاريع جديدة وبيئة السكن وأدوات لفحص الصفقة قبل التواصل."
+  },
+  "מידע נדל״ן, Проекты חדשים, סביבת מגורים וכלים לבדיקת עסקה לפני שמתקדמים לפנייה.": {
+   "en": "Property information, new projects, the neighbourhood and tools to check a deal before you make an enquiry.",
+   "fr": "Informations immobilières, projets neufs, cadre de vie et outils pour vérifier une transaction avant de prendre contact.",
+   "ru": "Информация о недвижимости, новые проекты, район и инструменты для проверки сделки до обращения.",
+   "ar": "معلومات عقارية ومشاريع جديدة وبيئة السكن وأدوات لفحص الصفقة قبل التواصل."
+  },
+  "מידע נדל״ן, مشاريع חדשים, סביבת מגורים וכלים לבדיקת עסקה לפני שמתקדמים לפנייה.": {
+   "en": "Property information, new projects, the neighbourhood and tools to check a deal before you make an enquiry.",
+   "fr": "Informations immobilières, projets neufs, cadre de vie et outils pour vérifier une transaction avant de prendre contact.",
+   "ru": "Информация о недвижимости, новые проекты, район и инструменты для проверки сделки до обращения.",
+   "ar": "معلومات عقارية ومشاريع جديدة وبيئة السكن وأدوات لفحص الصفقة قبل التواصل."
+  },
+  "מפת האתר המלאה: כל הכלים, הGuides והמאגרים ←": {
+   "en": "The full site map: every tool, guide and database →",
+   "fr": "Le plan complet du site : tous les outils, guides et bases de données →",
+   "ru": "Полная карта сайта: все инструменты, руководства и базы данных →",
+   "ar": "خريطة الموقع الكاملة: كل الأدوات والأدلة وقواعد البيانات ←"
+  },
+  "מפת האתר המלאה: כל הכלים, הГиды והמאגרים ←": {
+   "en": "The full site map: every tool, guide and database →",
+   "fr": "Le plan complet du site : tous les outils, guides et bases de données →",
+   "ru": "Полная карта сайта: все инструменты, руководства и базы данных →",
+   "ar": "خريطة الموقع الكاملة: كل الأدوات والأدلة وقواعد البيانات ←"
+  },
+  "מפת האתר המלאה: כל הכלים, הأدلة והמאגרים ←": {
+   "en": "The full site map: every tool, guide and database →",
+   "fr": "Le plan complet du site : tous les outils, guides et bases de données →",
+   "ru": "Полная карта сайта: все инструменты, руководства и базы данных →",
+   "ar": "خريطة الموقع الكاملة: كل الأدوات والأدلة وقواعد البيانات ←"
+  },
+  "All projects החדשים": {
+   "en": "All new projects",
+   "fr": "Tous les projets neufs",
+   "ru": "Все новые проекты",
+   "ar": "كل المشاريع الجديدة"
+  },
+  "Tous les projets החדשים": {
+   "en": "All new projects",
+   "fr": "Tous les projets neufs",
+   "ru": "Все новые проекты",
+   "ar": "كل المشاريع الجديدة"
+  },
+  "Все проекты החדשים": {
+   "en": "All new projects",
+   "fr": "Tous les projets neufs",
+   "ru": "Все новые проекты",
+   "ar": "كل المشاريع الجديدة"
+  },
+  "كل المشاريع החדשים": {
+   "en": "All new projects",
+   "fr": "Tous les projets neufs",
+   "ru": "Все новые проекты",
+   "ar": "كل المشاريع الجديدة"
+  },
+  "Projects סמוכים להשוואה · מבוסס על קטלוג נדלן": {
+   "en": "Nearby projects to compare · based on the NadLan catalogue",
+   "fr": "Projets voisins à comparer · d'après le catalogue NadLan",
+   "ru": "Соседние проекты для сравнения · по каталогу NadLan",
+   "ar": "مشاريع مجاورة للمقارنة · بحسب كتالوج NadLan"
+  },
+  "Projets סמוכים להשוואה · מבוסס על קטלוג נדלן": {
+   "en": "Nearby projects to compare · based on the NadLan catalogue",
+   "fr": "Projets voisins à comparer · d'après le catalogue NadLan",
+   "ru": "Соседние проекты для сравнения · по каталогу NadLan",
+   "ar": "مشاريع مجاورة للمقارنة · بحسب كتالوج NadLan"
+  },
+  "Проекты סמוכים להשוואה · מבוסס על קטלוג נדלן": {
+   "en": "Nearby projects to compare · based on the NadLan catalogue",
+   "fr": "Projets voisins à comparer · d'après le catalogue NadLan",
+   "ru": "Соседние проекты для сравнения · по каталогу NadLan",
+   "ar": "مشاريع مجاورة للمقارنة · بحسب كتالوج NadLan"
+  },
+  "مشاريع סמוכים להשוואה · מבוסס על קטלוג נדלן": {
+   "en": "Nearby projects to compare · based on the NadLan catalogue",
+   "fr": "Projets voisins à comparer · d'après le catalogue NadLan",
+   "ru": "Соседние проекты для сравнения · по каталогу NadLan",
+   "ar": "مشاريع مجاورة للمقارنة · بحسب كتالوج NadLan"
+  },
+  "פרופיל, רישום וProjects נוספים ←": {
+   "en": "Profile, registration and other projects →",
+   "fr": "Profil, immatriculation et autres projets →",
+   "ru": "Профиль, регистрация и другие проекты →",
+   "ar": "الملف والتسجيل ومشاريع أخرى ←"
+  },
+  "פרופיל, רישום וProjets נוספים ←": {
+   "en": "Profile, registration and other projects →",
+   "fr": "Profil, immatriculation et autres projets →",
+   "ru": "Профиль, регистрация и другие проекты →",
+   "ar": "الملف والتسجيل ومشاريع أخرى ←"
+  },
+  "פרופיל, רישום וПроекты נוספים ←": {
+   "en": "Profile, registration and other projects →",
+   "fr": "Profil, immatriculation et autres projets →",
+   "ru": "Профиль, регистрация и другие проекты →",
+   "ar": "الملف والتسجيل ومشاريع أخرى ←"
+  },
+  "פרופיל, רישום וمشاريع נוספים ←": {
+   "en": "Profile, registration and other projects →",
+   "fr": "Profil, immatriculation et autres projets →",
+   "ru": "Профиль, регистрация и другие проекты →",
+   "ar": "الملف والتسجيل ومشاريع أخرى ←"
+  },
+  "Real-estate lawyer, שמאים, Home inspection ←": {
+   "en": "Property lawyers, appraisers, home inspection →",
+   "fr": "Avocats en immobilier, experts, inspection du logement →",
+   "ru": "Юристы по недвижимости, оценщики, осмотр жилья →",
+   "ar": "محامو عقارات ومثمّنون وفحص المنزل ←"
+  },
+  "Avocat immobilier, שמאים, Inspection du logement ←": {
+   "en": "Property lawyers, appraisers, home inspection →",
+   "fr": "Avocats en immobilier, experts, inspection du logement →",
+   "ru": "Юристы по недвижимости, оценщики, осмотр жилья →",
+   "ar": "محامو عقارات ومثمّنون وفحص المنزل ←"
+  },
+  "Юрист по недвижимости, שמאים, Осмотр жилья ←": {
+   "en": "Property lawyers, appraisers, home inspection →",
+   "fr": "Avocats en immobilier, experts, inspection du logement →",
+   "ru": "Юристы по недвижимости, оценщики, осмотр жилья →",
+   "ar": "محامو عقارات ومثمّنون وفحص المنزل ←"
+  },
+  "محامي عقارات, שמאים, فحص المنزل ←": {
+   "en": "Property lawyers, appraisers, home inspection →",
+   "fr": "Avocats en immobilier, experts, inspection du logement →",
+   "ru": "Юристы по недвижимости, оценщики, осмотр жилья →",
+   "ar": "محامو عقارات ومثمّنون وفحص المنزل ←"
+  },
+  "Buying guide מContractor": {
+   "en": "Guide: buying from a developer",
+   "fr": "Guide : acheter auprès d'un promoteur",
+   "ru": "Руководство: покупка у застройщика",
+   "ar": "دليل الشراء من المطوّر"
+  },
+  "Guide d'achat מEntrepreneur": {
+   "en": "Guide: buying from a developer",
+   "fr": "Guide : acheter auprès d'un promoteur",
+   "ru": "Руководство: покупка у застройщика",
+   "ar": "دليل الشراء من المطوّر"
+  },
+  "Гид покупки מПодрядчик": {
+   "en": "Guide: buying from a developer",
+   "fr": "Guide : acheter auprès d'un promoteur",
+   "ru": "Руководство: покупка у застройщика",
+   "ar": "دليل الشراء من المطوّر"
+  },
+  "دليل الشراء מمقاول": {
+   "en": "Guide: buying from a developer",
+   "fr": "Guide : acheter auprès d'un promoteur",
+   "ru": "Руководство: покупка у застройщика",
+   "ar": "دليل الشراء من المطوّر"
+  },
+  "Projects חדשים, דירות, Professionals וCalculators - רואים הכל לפני שקונים": {
+   "en": "New projects, apartments, professionals and calculators - see everything before you buy",
+   "fr": "Projets neufs, appartements, professionnels et calculateurs - tout voir avant d'acheter",
+   "ru": "Новые проекты, квартиры, специалисты и калькуляторы - всё видно до покупки",
+   "ar": "مشاريع جديدة وشقق ومختصون وحاسبات - كل شيء أمامكم قبل الشراء"
+  },
+  "Projets חדשים, דירות, Professionnels וCalculateurs - רואים הכל לפני שקונים": {
+   "en": "New projects, apartments, professionals and calculators - see everything before you buy",
+   "fr": "Projets neufs, appartements, professionnels et calculateurs - tout voir avant d'acheter",
+   "ru": "Новые проекты, квартиры, специалисты и калькуляторы - всё видно до покупки",
+   "ar": "مشاريع جديدة وشقق ومختصون وحاسبات - كل شيء أمامكم قبل الشراء"
+  },
+  "Проекты חדשים, דירות, Специалисты וКалькуляторы - רואים הכל לפני שקונים": {
+   "en": "New projects, apartments, professionals and calculators - see everything before you buy",
+   "fr": "Projets neufs, appartements, professionnels et calculateurs - tout voir avant d'acheter",
+   "ru": "Новые проекты, квартиры, специалисты и калькуляторы - всё видно до покупки",
+   "ar": "مشاريع جديدة وشقق ومختصون وحاسبات - كل شيء أمامكم قبل الشراء"
+  },
+  "مشاريع חדשים, דירות, مختصون וحاسبات - רואים הכל לפני שקונים": {
+   "en": "New projects, apartments, professionals and calculators - see everything before you buy",
+   "fr": "Projets neufs, appartements, professionnels et calculateurs - tout voir avant d'acheter",
+   "ru": "Новые проекты, квартиры, специалисты и калькуляторы - всё видно до покупки",
+   "ar": "مشاريع جديدة وشقق ومختصون وحاسبات - كل شيء أمامكم قبل الشراء"
+  },
+  "קונים דירה מContractor ב-2026? כללי המשא ומתן השתנו לטובתכם": {
+   "en": "Buying an apartment from a developer in 2026? The negotiation rules have changed in your favour",
+   "fr": "Acheter un logement auprès d'un promoteur en 2026 ? Les règles de la négociation ont changé en votre faveur",
+   "ru": "Покупаете квартиру у застройщика в 2026 году? Правила переговоров изменились в вашу пользу",
+   "ar": "تشترون شقة من مطوّر في 2026؟ قواعد التفاوض تغيّرت لصالحكم"
+  },
+  "קונים דירה מEntrepreneur ב-2026? כללי המשא ומתן השתנו לטובתכם": {
+   "en": "Buying an apartment from a developer in 2026? The negotiation rules have changed in your favour",
+   "fr": "Acheter un logement auprès d'un promoteur en 2026 ? Les règles de la négociation ont changé en votre faveur",
+   "ru": "Покупаете квартиру у застройщика в 2026 году? Правила переговоров изменились в вашу пользу",
+   "ar": "تشترون شقة من مطوّر في 2026؟ قواعد التفاوض تغيّرت لصالحكم"
+  },
+  "קונים דירה מПодрядчик ב-2026? כללי המשא ומתן השתנו לטובתכם": {
+   "en": "Buying an apartment from a developer in 2026? The negotiation rules have changed in your favour",
+   "fr": "Acheter un logement auprès d'un promoteur en 2026 ? Les règles de la négociation ont changé en votre faveur",
+   "ru": "Покупаете квартиру у застройщика в 2026 году? Правила переговоров изменились в вашу пользу",
+   "ar": "تشترون شقة من مطوّر في 2026؟ قواعد التفاوض تغيّرت لصالحكم"
+  },
+  "קונים דירה מمقاول ב-2026? כללי המשא ומתן השתנו לטובתכם": {
+   "en": "Buying an apartment from a developer in 2026? The negotiation rules have changed in your favour",
+   "fr": "Acheter un logement auprès d'un promoteur en 2026 ? Les règles de la négociation ont changé en votre faveur",
+   "ru": "Покупаете квартиру у застройщика в 2026 году? Правила переговоров изменились в вашу пользу",
+   "ar": "تشترون شقة من مطوّر في 2026؟ قواعد التفاوض تغيّرت لصالحكم"
+  },
+  "איור Architectי של מגדל ריינבו תל אביב עם מרפסות גליות ותגי מתקנים, הדמיה להמחשה": {
+   "en": "Architectural illustration of the Rainbow Tel Aviv tower with wavy balconies and facility tags, an illustrative rendering",
+   "fr": "Illustration architecturale de la tour Rainbow Tel Aviv, balcons ondulés et étiquettes des équipements, image d'illustration",
+   "ru": "Архитектурная иллюстрация башни Rainbow Tel Aviv с волнистыми балконами и метками удобств, визуализация для наглядности",
+   "ar": "رسم معماري لبرج Rainbow Tel Aviv بشرفاته المتموجة وعلامات المرافق، تصوير توضيحي"
+  },
+  "איור Architecteי של מגדל ריינבו תל אביב עם מרפסות גליות ותגי מתקנים, הדמיה להמחשה": {
+   "en": "Architectural illustration of the Rainbow Tel Aviv tower with wavy balconies and facility tags, an illustrative rendering",
+   "fr": "Illustration architecturale de la tour Rainbow Tel Aviv, balcons ondulés et étiquettes des équipements, image d'illustration",
+   "ru": "Архитектурная иллюстрация башни Rainbow Tel Aviv с волнистыми балконами и метками удобств, визуализация для наглядности",
+   "ar": "رسم معماري لبرج Rainbow Tel Aviv بشرفاته المتموجة وعلامات المرافق، تصوير توضيحي"
+  },
+  "איור Архитекторי של מגדל ריינבו תל אביב עם מרפסות גליות ותגי מתקנים, הדמיה להמחשה": {
+   "en": "Architectural illustration of the Rainbow Tel Aviv tower with wavy balconies and facility tags, an illustrative rendering",
+   "fr": "Illustration architecturale de la tour Rainbow Tel Aviv, balcons ondulés et étiquettes des équipements, image d'illustration",
+   "ru": "Архитектурная иллюстрация башни Rainbow Tel Aviv с волнистыми балконами и метками удобств, визуализация для наглядности",
+   "ar": "رسم معماري لبرج Rainbow Tel Aviv بشرفاته المتموجة وعلامات المرافق، تصوير توضيحي"
+  },
+  "איור معماريי של מגדל ריינבו תל אביב עם מרפסות גליות ותגי מתקנים, הדמיה להמחשה": {
+   "en": "Architectural illustration of the Rainbow Tel Aviv tower with wavy balconies and facility tags, an illustrative rendering",
+   "fr": "Illustration architecturale de la tour Rainbow Tel Aviv, balcons ondulés et étiquettes des équipements, image d'illustration",
+   "ru": "Архитектурная иллюстрация башни Rainbow Tel Aviv с волнистыми балконами и метками удобств, визуализация для наглядности",
+   "ar": "رسم معماري لبرج Rainbow Tel Aviv بشرفاته المتموجة وعلامات المرافق، تصوير توضيحي"
+  },
+  "איור Architectי של פרויקט דמרי ימה שדה דב, מגדל טורי לבן ותגי מתקנים, הדמיה להמחשה": {
+   "en": "Architectural illustration of the DIMRI YAMA Sde Dov project, a white tower of vertical lines and facility tags, an illustrative rendering",
+   "fr": "Illustration architecturale du projet DIMRI YAMA Sde Dov, une tour blanche aux lignes verticales et les étiquettes des équipements, image d'illustration",
+   "ru": "Архитектурная иллюстрация проекта DIMRI YAMA Сде-Дов: белая башня с вертикальными линиями и метки удобств, визуализация для наглядности",
+   "ar": "رسم معماري لمشروع DIMRI YAMA سديه دوف، برج أبيض بخطوط عمودية وعلامات المرافق، تصوير توضيحي"
+  },
+  "איור Architecteי של פרויקט דמרי ימה שדה דב, מגדל טורי לבן ותגי מתקנים, הדמיה להמחשה": {
+   "en": "Architectural illustration of the DIMRI YAMA Sde Dov project, a white tower of vertical lines and facility tags, an illustrative rendering",
+   "fr": "Illustration architecturale du projet DIMRI YAMA Sde Dov, une tour blanche aux lignes verticales et les étiquettes des équipements, image d'illustration",
+   "ru": "Архитектурная иллюстрация проекта DIMRI YAMA Сде-Дов: белая башня с вертикальными линиями и метки удобств, визуализация для наглядности",
+   "ar": "رسم معماري لمشروع DIMRI YAMA سديه دوف، برج أبيض بخطوط عمودية وعلامات المرافق، تصوير توضيحي"
+  },
+  "איור Архитекторי של פרויקט דמרי ימה שדה דב, מגדל טורי לבן ותגי מתקנים, הדמיה להמחשה": {
+   "en": "Architectural illustration of the DIMRI YAMA Sde Dov project, a white tower of vertical lines and facility tags, an illustrative rendering",
+   "fr": "Illustration architecturale du projet DIMRI YAMA Sde Dov, une tour blanche aux lignes verticales et les étiquettes des équipements, image d'illustration",
+   "ru": "Архитектурная иллюстрация проекта DIMRI YAMA Сде-Дов: белая башня с вертикальными линиями и метки удобств, визуализация для наглядности",
+   "ar": "رسم معماري لمشروع DIMRI YAMA سديه دوف، برج أبيض بخطوط عمودية وعلامات المرافق، تصوير توضيحي"
+  },
+  "איור معماريי של פרויקט דמרי ימה שדה דב, מגדל טורי לבן ותגי מתקנים, הדמיה להמחשה": {
+   "en": "Architectural illustration of the DIMRI YAMA Sde Dov project, a white tower of vertical lines and facility tags, an illustrative rendering",
+   "fr": "Illustration architecturale du projet DIMRI YAMA Sde Dov, une tour blanche aux lignes verticales et les étiquettes des équipements, image d'illustration",
+   "ru": "Архитектурная иллюстрация проекта DIMRI YAMA Сде-Дов: белая башня с вертикальными линиями и метки удобств, визуализация для наглядности",
+   "ar": "رسم معماري لمشروع DIMRI YAMA سديه دوف، برج أبيض بخطوط عمودية وعلامات المرافق، تصوير توضيحي"
+  },
+  "איור Architectי של פרויקט אשירה שדה דב בקווים מעוגלים ותגי מתקנים, הדמיה להמחשה": {
+   "en": "Architectural illustration of the ASHIRA Sde Dov project in rounded lines with facility tags, an illustrative rendering",
+   "fr": "Illustration architecturale du projet ASHIRA Sde Dov aux lignes arrondies, avec les étiquettes des équipements, image d'illustration",
+   "ru": "Архитектурная иллюстрация проекта ASHIRA Сде-Дов в плавных линиях с метками удобств, визуализация для наглядности",
+   "ar": "رسم معماري لمشروع ASHIRA سديه دوف بخطوط منحنية وعلامات المرافق، تصوير توضيحي"
+  },
+  "איור Architecteי של פרויקט אשירה שדה דב בקווים מעוגלים ותגי מתקנים, הדמיה להמחשה": {
+   "en": "Architectural illustration of the ASHIRA Sde Dov project in rounded lines with facility tags, an illustrative rendering",
+   "fr": "Illustration architecturale du projet ASHIRA Sde Dov aux lignes arrondies, avec les étiquettes des équipements, image d'illustration",
+   "ru": "Архитектурная иллюстрация проекта ASHIRA Сде-Дов в плавных линиях с метками удобств, визуализация для наглядности",
+   "ar": "رسم معماري لمشروع ASHIRA سديه دوف بخطوط منحنية وعلامات المرافق، تصوير توضيحي"
+  },
+  "איור Архитекторי של פרויקט אשירה שדה דב בקווים מעוגלים ותגי מתקנים, הדמיה להמחשה": {
+   "en": "Architectural illustration of the ASHIRA Sde Dov project in rounded lines with facility tags, an illustrative rendering",
+   "fr": "Illustration architecturale du projet ASHIRA Sde Dov aux lignes arrondies, avec les étiquettes des équipements, image d'illustration",
+   "ru": "Архитектурная иллюстрация проекта ASHIRA Сде-Дов в плавных линиях с метками удобств, визуализация для наглядности",
+   "ar": "رسم معماري لمشروع ASHIRA سديه دوف بخطوط منحنية وعلامات المرافق، تصوير توضيحي"
+  },
+  "איור معماريי של פרויקט אשירה שדה דב בקווים מעוגלים ותגי מתקנים, הדמיה להמחשה": {
+   "en": "Architectural illustration of the ASHIRA Sde Dov project in rounded lines with facility tags, an illustrative rendering",
+   "fr": "Illustration architecturale du projet ASHIRA Sde Dov aux lignes arrondies, avec les étiquettes des équipements, image d'illustration",
+   "ru": "Архитектурная иллюстрация проекта ASHIRA Сде-Дов в плавных линиях с метками удобств, визуализация для наглядности",
+   "ar": "رسم معماري لمشروع ASHIRA سديه دوف بخطوط منحنية وعلامات المرافق، تصوير توضيحي"
+  }
+ },
+ "patterns": [
+  {
+   "re": "^מחיר ממוצע לדירה בשוק החופשי · רבעון (\\d+), (\\d{4})$",
+   "en": "Average apartment price on the open market · Q{1} {2}",
+   "fr": "Prix moyen d'un logement sur le marché libre · T{1} {2}",
+   "ru": "Средняя цена квартиры на свободном рынке · {1}-й квартал {2}",
+   "ar": "متوسط سعر الشقة في السوق الحرة · الربع {1}، {2}"
+  },
+  {
+   "re": "^שינוי מדד מחירי הדירות בשנה האחרונה: ([+\\-−]?[\\d.,]+%) · המקור:$",
+   "en": "Change in the home price index over the last year: {1} · Source:",
+   "fr": "Variation de l'indice des prix des logements sur un an : {1} · Source :",
+   "ru": "Изменение индекса цен на жильё за последний год: {1} · Источник:",
+   "ar": "تغيّر مؤشر أسعار الشقق في السنة الأخيرة: {1} · المصدر:"
+  }
+ ],
+ "names": {
+  "הלשכה המרכזית לסטטיסטיקה": {
+   "en": "Central Bureau of Statistics",
+   "fr": "Bureau central des statistiques",
+   "ru": "Центральное статистическое бюро",
+   "ar": "دائرة الإحصاء المركزية"
+  },
+  "מגדלי DUO תל אביב - פרוייקט דואו אבן גבירול תל אביב": {
+   "en": "DUO Tel Aviv",
+   "fr": "DUO Tel Aviv",
+   "ru": "DUO Tel Aviv",
+   "ar": "DUO Tel Aviv"
+  },
+  "ToHa2 תל אביב - משרדים להשכרה מגדל תוהא תל אביב": {
+   "en": "ToHa2 Tel Aviv",
+   "fr": "ToHa2 Tel Aviv",
+   "ru": "ToHa2 Tel Aviv",
+   "ar": "ToHa2 Tel Aviv"
+  },
+  "THE PARK - משרדים להשכרה בני ברק ליד רכבת": {
+   "en": "THE PARK Bnei Brak",
+   "fr": "THE PARK Bnei Brak",
+   "ru": "THE PARK Bnei Brak",
+   "ar": "THE PARK Bnei Brak"
+  },
+  "H Infinity - מגדל אינפיניטי של קבוצת חג'ג' במתחם סומייל, תל אביב": {
+   "en": "H Infinity Tel Aviv",
+   "fr": "H Infinity Tel Aviv",
+   "ru": "H Infinity Tel Aviv",
+   "ar": "H Infinity Tel Aviv"
+  },
+  "תל אביב": {
+   "en": "Tel Aviv",
+   "fr": "Tel Aviv",
+   "ru": "Тель-Авив",
+   "ar": "تل أبيب"
+  },
+  "ירושלים": {
+   "en": "Jerusalem",
+   "fr": "Jérusalem",
+   "ru": "Иерусалим",
+   "ar": "القدس"
+  },
+  "רמת גן": {
+   "en": "Ramat Gan",
+   "fr": "Ramat Gan",
+   "ru": "Рамат-Ган",
+   "ar": "رمات غان"
+  },
+  "חיפה": {
+   "en": "Haifa",
+   "fr": "Haïfa",
+   "ru": "Хайфа",
+   "ar": "حيفا"
+  },
+  "נתניה": {
+   "en": "Netanya",
+   "fr": "Netanya",
+   "ru": "Нетания",
+   "ar": "نتانيا"
+  },
+  "בת ים": {
+   "en": "Bat Yam",
+   "fr": "Bat Yam",
+   "ru": "Бат-Ям",
+   "ar": "بات يام"
+  },
+  "פתח תקוה": {
+   "en": "Petah Tikva",
+   "fr": "Petah Tikva",
+   "ru": "Петах-Тиква",
+   "ar": "بيتح تكفا"
+  },
+  "פתח תקווה": {
+   "en": "Petah Tikva",
+   "fr": "Petah Tikva",
+   "ru": "Петах-Тиква",
+   "ar": "بيتح تكفا"
+  },
+  "הרצליה": {
+   "en": "Herzliya",
+   "fr": "Herzliya",
+   "ru": "Герцлия",
+   "ar": "هرتسليا"
+  },
+  "חולון": {
+   "en": "Holon",
+   "fr": "Holon",
+   "ru": "Холон",
+   "ar": "حولون"
+  },
+  "גבעתיים": {
+   "en": "Givatayim",
+   "fr": "Givatayim",
+   "ru": "Гиватаим",
+   "ar": "غفعتايم"
+  },
+  "גבעתים": {
+   "en": "Givatayim",
+   "fr": "Givatayim",
+   "ru": "Гиватаим",
+   "ar": "غفعتايم"
+  },
+  "באר שבע": {
+   "en": "Beersheba",
+   "fr": "Beer-Sheva",
+   "ru": "Беэр-Шева",
+   "ar": "بئر السبع"
+  },
+  "אופקים": {
+   "en": "Ofakim",
+   "fr": "Ofakim",
+   "ru": "Офаким",
+   "ar": "أوفاكيم"
+  },
+  "חדרה": {
+   "en": "Hadera",
+   "fr": "Hadera",
+   "ru": "Хадера",
+   "ar": "الخضيرة"
+  },
+  "ראשון לציון": {
+   "en": "Rishon LeZion",
+   "fr": "Rishon LeZion",
+   "ru": "Ришон-ле-Цион",
+   "ar": "ريشون لتسيون"
+  },
+  "אשדוד": {
+   "en": "Ashdod",
+   "fr": "Ashdod",
+   "ru": "Ашдод",
+   "ar": "أسدود"
+  },
+  "אשקלון": {
+   "en": "Ashkelon",
+   "fr": "Ashkelon",
+   "ru": "Ашкелон",
+   "ar": "عسقلان"
+  },
+  "רחובות": {
+   "en": "Rehovot",
+   "fr": "Rehovot",
+   "ru": "Реховот",
+   "ar": "رحوفوت"
+  },
+  "רעננה": {
+   "en": "Ra'anana",
+   "fr": "Ra'anana",
+   "ru": "Раанана",
+   "ar": "رعنانا"
+  },
+  "כפר סבא": {
+   "en": "Kfar Saba",
+   "fr": "Kfar Saba",
+   "ru": "Кфар-Саба",
+   "ar": "كفار سابا"
+  },
+  "הוד השרון": {
+   "en": "Hod HaSharon",
+   "fr": "Hod HaSharon",
+   "ru": "Ход-ха-Шарон",
+   "ar": "هود هشارون"
+  },
+  "מודיעין": {
+   "en": "Modi'in",
+   "fr": "Modiin",
+   "ru": "Модиин",
+   "ar": "موديعين"
+  },
+  "ראש העין": {
+   "en": "Rosh HaAyin",
+   "fr": "Rosh HaAyin",
+   "ru": "Рош-ха-Аин",
+   "ar": "روش هعاين"
+  },
+  "נס ציונה": {
+   "en": "Ness Ziona",
+   "fr": "Ness Ziona",
+   "ru": "Нес-Циона",
+   "ar": "نيس تسيونا"
+  },
+  "נהריה": {
+   "en": "Nahariya",
+   "fr": "Nahariya",
+   "ru": "Нагария",
+   "ar": "نهاريا"
+  },
+  "אילת": {
+   "en": "Eilat",
+   "fr": "Eilat",
+   "ru": "Эйлат",
+   "ar": "إيلات"
+  },
+  "הרצליה פיתוח": {
+   "en": "Herzliya Pituah",
+   "fr": "Herzliya Pituah",
+   "ru": "Герцлия-Питуах",
+   "ar": "هرتسليا بيتوح"
+  },
+  "רמת אביב": {
+   "en": "Ramat Aviv",
+   "fr": "Ramat Aviv",
+   "ru": "Рамат-Авив",
+   "ar": "رمات أفيف"
+  },
+  "נווה צדק": {
+   "en": "Neve Tzedek",
+   "fr": "Neve Tzedek",
+   "ru": "Неве-Цедек",
+   "ar": "نفيه تسيدك"
+  },
+  "יפו": {
+   "en": "Jaffa",
+   "fr": "Jaffa",
+   "ru": "Яффо",
+   "ar": "يافا"
+  },
+  "צוקי אביב": {
+   "en": "Tzukei Aviv",
+   "fr": "Tzukei Aviv",
+   "ru": "Цукей-Авив",
+   "ar": "تسوكي أفيف"
+  },
+  "נופי ים": {
+   "en": "Nofei Yam",
+   "fr": "Nofei Yam",
+   "ru": "Нофей-Ям",
+   "ar": "نوفي يام"
+  },
+  "שרונה": {
+   "en": "Sarona",
+   "fr": "Sarona",
+   "ru": "Сарона",
+   "ar": "سارونا"
+  },
+  "כוכב הצפון": {
+   "en": "Kochav HaTzafon",
+   "fr": "Kochav HaTzafon",
+   "ru": "Кохав-ха-Цафон",
+   "ar": "كوخاف هتسافون"
+  },
+  "שדה דב": {
+   "en": "Sde Dov",
+   "fr": "Sde Dov",
+   "ru": "Сде-Дов",
+   "ar": "سديه دوف"
+  }
+ }
+}

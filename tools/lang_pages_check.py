@@ -8,6 +8,11 @@ Also reports the page's own count (the comment inc/lang-pages.php prints: transl
 
     python tools/lang_pages_check.py            all language pages
     python tools/lang_pages_check.py rainbow    only slugs containing "rainbow"
+    python tools/lang_pages_check.py --other    the other language pages (28.9.2026): the language homes /en/ /fr/ /ru/
+                                                /ar/, the guides, the buying guide, the brokers ... (the list in
+                                                docs/i18n/lang-other.json); their body is the page's own translated text
+                                                and is cut out like the article, except on the language homes, whose
+                                                body is the home's blocks
 Exit code 1 when any page has Hebrew left: add the string to scripts/i18n/build_lang_pages.py, never skip it.
 """
 import collections, concurrent.futures as cf, html as H, io, re, sys, time, urllib.request
@@ -15,7 +20,7 @@ import collections, concurrent.futures as cf, html as H, io, re, sys, time, urll
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36"}
 HE = re.compile(r"[֐-׿]")
-ALLOWED = {"עב"}
+ALLOWED = {"עב", "עברית"}  # the language switcher names Hebrew in Hebrew
 
 
 def get(u):
@@ -52,8 +57,45 @@ def hebrew_left(h):
     return [x for x in nodes + attrs if HE.search(x) and x not in ALLOWED]
 
 
+def body_range(b):
+    """The page's own body on the other language pages (the entry-content block), cut out like the article."""
+    m = re.search(r'<div\b[^>]*\bclass="[^"]*\bentry-content\b[^"]*"', b)
+    if not m:
+        return None
+    depth = 0
+    for t in re.finditer(r"<(/?)div\b[^>]*>", b[m.start():]):
+        depth += -1 if t.group(1) else 1
+        if depth == 0:
+            return m.start(), m.start() + t.end()
+    return None
+
+
+def other():
+    import json, os
+    here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    urls = json.load(io.open(os.path.join(here, "docs", "i18n", "lang-other.json"), encoding="utf-8"))["urls"]
+    only = sys.argv[2] if len(sys.argv) > 2 else ""
+    urls = [u for u in urls if only in u]
+
+    def one(u):
+        h = get(u + ("&" if "?" in u else "?") + "nllpc=%d" % time.time())
+        home = re.fullmatch(r"https://nad-lan\.co\.il/(en|fr|ru|ar)/", u) is not None
+        if not home:
+            b0 = h.find("<body")
+            r = body_range(h[b0:])
+            if r:
+                h = h[:b0 + r[0]] + h[b0 + r[1]:]
+        c = re.search(r"<!-- nadlan-lang-pages (\w+) (\d+)/(\d+) -->", h)
+        return u, hebrew_left(h), (c.group(2) + "/" + c.group(3)) if c else "no count"
+
+    return urls, one
+
+
 def main():
     only = sys.argv[1] if len(sys.argv) > 1 else ""
+    if only == "--other":
+        urls, one = other()
+        return report(urls, one)
     idx = get("https://nad-lan.co.il/wp-sitemap.xml")
     urls = []
     for m in re.findall(r"<loc>([^<]+)</loc>", idx):
@@ -66,6 +108,10 @@ def main():
         c = re.search(r"<!-- nadlan-lang-pages (\w+) (\d+)/(\d+) -->", h)
         return u, hebrew_left(h), (c.group(2) + "/" + c.group(3)) if c else "no count"
 
+    report(urls, one)
+
+
+def report(urls, one):
     bad = 0
     agg = collections.Counter()
     with cf.ThreadPoolExecutor(6) as ex:

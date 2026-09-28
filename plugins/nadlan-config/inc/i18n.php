@@ -335,6 +335,10 @@ if ( ! function_exists( 'nadlan_i18n_theme_map' ) ) {
 }
 add_action( 'template_redirect', function () {
 	if ( is_admin() || ! nadlan_is_language_home() || 'he' === nadlan_current_lang() ) { return; }
+	// 28.9.2026: the word-by-word swap wrote half words into Hebrew lines ("איור Architectי", "מContractor", "הGuides");
+	// the language pass (inc/lang-pages.php) now owns these pages, by whole strings, with this map inside its dictionary.
+	// This buffer stays only as the fallback when that pass is off (option nadlan_lang_pages = '0').
+	if ( function_exists( 'nadlan_lp_lang' ) && '' !== nadlan_lp_lang() ) { return; }
 	ob_start( function ( $html ) {
 		$map = nadlan_i18n_theme_map( nadlan_current_lang() );
 		return $map ? strtr( $html, $map ) : $html;
