@@ -42,6 +42,7 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 			'rainbow-tel-aviv' => array(
 				'dir'            => 'rainbow',
 				'mount'          => 'mountRainbowStage',
+				'slice_note'     => 'בקומה 3 עד 5 דירות, לפי היזם (ביזפורטל, 7.2023).', // FloorSlice v87
 				'basket_hint'    => 'לעזרה: המחיר הממוצע בדירות שנמכרו בפרויקט עד 3.2026 היה כ-81,800 ₪ למ״ר, לפי דוחות היזם. המחיר של דירה מסוימת מהנציג.', // BasketOne v86: shown as a hint, never multiplied into a price
 				'bearing_offset' => 0,
 				'name'           => 'ריינבו תל אביב',
@@ -448,6 +449,8 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 		if ( $notes ) { $cfg['notes'] = $notes; }
 		if ( ! empty( $ps['low_note'] ) ) { $cfg['lowNote'] = (string) $ps['low_note']; $cfg['lowUpTo'] = (int) ( $ps['low_up_to'] ?? 0 ); }
 		if ( ! empty( $ps['high_note'] ) ) { $cfg['highNote'] = (string) $ps['high_note']; }
+		// FloorSlice v87: the project's own sourced line under the floor's plan (apartments per floor, as published)
+		if ( ! empty( $ps['slice_note'] ) ) { $cfg['sliceNote'] = (string) $ps['slice_note']; }
 		// the project's facilities (design system FacilityHotspots v72): sourced cards pinned on the model, in the project's folder
 		$ff = dirname( __DIR__ ) . '/assets/project-stage/' . $ps['dir'] . '/facilities.json';
 		if ( is_readable( $ff ) ) {

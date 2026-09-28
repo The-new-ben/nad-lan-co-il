@@ -283,6 +283,25 @@ async function boot() {
   const tourBtn = document.querySelector('[data-nlps-tour]');
   let allScenes = [];
   try { allScenes = JSON.parse((tourBtn && tourBtn.getAttribute('data-nlps-tour-scenes')) || '[]') || []; } catch (err) { allScenes = []; }
+  /* FloorSlice v87: the picked floor as a plan (slice.js, loaded on demand), next to the view's buttons, on a stage that can
+     draw it (stage.floorPlan) and has example apartments */
+  if (cta && stage && typeof stage.floorPlan === 'function' && units) {
+    const sl = document.createElement('button');
+    sl.type = 'button';
+    sl.className = 'nlds-btn nlds-btn--secondary nlps-slice';
+    const sp = document.createElement('span'); sp.textContent = 'חתך הקומה'; sl.appendChild(sp);
+    cta.appendChild(sl);
+    const tourFloors = [...new Set(allScenes.map((x) => Number(x.floor)).filter(Boolean))];
+    sl.addEventListener('click', () => {
+      const sel = stage.getSelection ? stage.getSelection() : null;
+      const f = (sel && sel.floor) || (last && last.floor) || 25;
+      const u = sel && sel.unit ? String(sel.unit).split('-')[1] : null;
+      ga('floor_slice', { floor: f, project: cfg.name });
+      import(new URL('./slice.js' + new URL(import.meta.url).search, import.meta.url).href).then((m) => m.openSlice({
+        stage, floor: f, unit: u, units: cfg.units, words: facingWords, note: cfg.sliceNote || '', tourFloors, opener: sl,
+      })).catch((err) => console.warn('[project stage] slice', err));
+    });
+  }
   const tourFloors = [...new Set(allScenes.map((x) => Number(x.floor) || 25))].sort((a, b) => a - b);
   const nearestFloor = (f) => (tourFloors.length ? tourFloors.reduce((b, x) => (Math.abs(x - f) < Math.abs(b - f) ? x : b), tourFloors[0]) : 25);
   function openTourAt(floor, side, opener) {

@@ -116,6 +116,34 @@ const EYE_M = 1.6;             // eye height above a floor level
 const RING_OFF = 4.4;          // the floor ring: offset from the glass line (clears the deepest balcony)
 /* eye height above the street for floor n, in metres (the heightM of the events) */
 function floorEyeHeight(n) { return Math.round((TOWER.y0 + (n - 1) * TOWER.fh + EYE_M) * 10) / 10; }
+/* FloorSlice v87 (28.9.2026): floor n as a plan, north up, in metres from the tower's centre (x east, y north), from the
+   very numbers the tower is built from (buildWorld): the glass line (the top three floors set back 1.3 m), the balcony edge
+   (three waves, 0.7-3.6 m, 2.4-4.8 m on the top floors, the phase turning 0.16 rad a floor), and a core drawn along the
+   tower's axis. The core and any division into apartments are illustrations; the plan says so. */
+function floorPlan(n, offset) {
+  const f = Math.round(Number(n));
+  if (!(f >= 1 && f <= TOWER.floors)) return null;
+  const top = TOWER.floors - 3, pent = f > top;
+  const tLoop = resampleLoop(ellipsePoly(TOWER.A, TOWER.B, TOWER.cx, TOWER.cz, TOWER.rot, 720), 84, 7);
+  const lp = pent ? offsetLoop(tLoop, -1.3) : tLoop;
+  const dmin = pent ? 2.4 : 0.7, dmax = pent ? 4.8 : 3.6, ph = 0.4 + f * 0.16;
+  const cg = Math.cos(GRID_ANGLE), sg = Math.sin(GRID_ANGLE); // site.rotation.y = GRID_ANGLE
+  const r2 = (v) => Math.round(v * 100) / 100;
+  const toPlan = (x, z) => {
+    const dx = x - TOWER.cx, dz = z - TOWER.cz;
+    const wx = dx * cg + dz * sg, wz = -dx * sg + dz * cg;
+    const b = (Math.atan2(wx, -wz) / DEG + (Number(offset) || 0)) * DEG, r = Math.hypot(wx, wz);
+    return [r2(r * Math.sin(b)), r2(r * Math.cos(b))];
+  };
+  const glass = lp.pts.map((p) => toPlan(p.x, p.z));
+  const outer = lp.pts.map((p) => {
+    const d = dmin + (dmax - dmin) * (0.5 + 0.5 * Math.sin(2 * Math.PI * 3 * p.s + ph));
+    return toPlan(p.x + p.nx * d, p.z + p.nz * d);
+  });
+  const c = Math.cos(TOWER.rot), s = Math.sin(TOWER.rot), hw = 4.5, hd = 3;
+  const core = [[-hw, -hd], [hw, -hd], [hw, hd], [-hw, hd]].map(([x, z]) => toPlan(TOWER.cx + x * c - z * s, TOWER.cz + x * s + z * c));
+  return { floor: f, floors: TOWER.floors, penthouse: pent, heightM: floorEyeHeight(f), glass, outer, core };
+}
 function normDeg(b) { return ((b % 360) + 360) % 360; }
 const BLOCK_W = 12.5;
 /* the six boutique buildings (the developer's count) lining the streets around the shared courtyard, 9 floors above the
@@ -410,6 +438,8 @@ export function mountRainbowStage(container, options = {}) {
     getSelection() { return engine ? engine.getSelection() : null; },
     /* eye height above the street for floor n, in metres */
     floorHeight(n) { const f = Math.round(Number(n)); return f >= 1 && f <= TOWER.floors ? floorEyeHeight(f) : null; },
+    /* FloorSlice v87: floor n as a plan (see floorPlan), for assets/project-stage/slice.js */
+    floorPlan(n) { return floorPlan(n, Number(opts.bearingOffset) || 0); },
     /* how the scene's north relates to the real site, and where the camera looks */
     getNorth() { return engine ? engine.getNorth() : staticNorth(Number(opts.bearingOffset) || 0); },
     setAutoOrbit(on) { if (engine) engine.setAutoOrbit(on); },

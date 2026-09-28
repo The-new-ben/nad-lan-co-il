@@ -1,0 +1,51 @@
+/* FloorSlice v87: the floor's plan in a dialog. Paper for the plan, deep sea for the lines, terracotta for the picked
+   apartment. 44 px targets (48 on phones). Heading colours set with the theme's weight (NadLan CSS cascade hazard). */
+.nlsl { position: fixed; inset: 0; z-index: 100001; display: grid; place-items: center; padding: 16px; background: rgba(20, 33, 43, .5);
+  font-family: Assistant, Heebo, Arial, sans-serif; color: #14212B; }
+html.nlsl-open { overflow: hidden; }
+.nlsl__box { width: min(1060px, 100%); max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); display: flex; flex-direction: column;
+  background: #FAF7F1; border-radius: 20px; box-shadow: 0 20px 60px rgba(20, 33, 43, .35); overflow: hidden; }
+.nlsl__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 16px 20px 12px; background: #fff; border-bottom: 1px solid #E3E1DA; }
+.nlsl__kick { margin: 0 0 2px !important; font: 700 12.5px/1.3 Assistant, Heebo, Arial, sans-serif !important; letter-spacing: .04em; color: #1F4B5C !important; }
+:root body .nlsl h2.nlsl__title { margin: 0 !important; font: 600 24px/1.2 "Noto Serif Hebrew", "Frank Ruhl Libre", Georgia, serif !important; color: #14212B !important; }
+.nlsl__x { flex: none; width: 44px; height: 44px; border: 1px solid #E3E1DA; border-radius: 12px; background: #fff; color: #14212B; font: 400 24px/1 Arial, sans-serif; cursor: pointer; }
+.nlsl__body { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); grid-auto-rows: max-content; align-content: start; gap: 18px; padding: 16px 20px 20px; overflow-y: auto; }
+/* the plan keeps its full height: a box with hidden overflow may otherwise shrink to fit the sheet (a phone, 28.9.2026) */
+.nlsl__plan { min-height: max-content; }
+.nlsl__plan { background: #F6F2EA; border: 1px solid #E3E1DA; border-radius: 16px; overflow: hidden; }
+.nlsl__plan svg { display: block; width: 100%; height: auto; font-family: Assistant, Heebo, Arial, sans-serif; }
+.nlsl__u polygon { fill: #E9E4D8; stroke: #fff; stroke-width: 3; cursor: pointer; transition: fill .15s; }
+.nlsl__u:hover polygon { fill: #E2D9C6; }
+.nlsl__u.is-on polygon { fill: #EBC6B3; }
+.nlsl__bal { fill: #fff; stroke: #B9B2A3; stroke-width: 1; pointer-events: none; }
+.nlsl__glass { fill: none; stroke: #1F4B5C; stroke-width: 2.2; pointer-events: none; }
+.nlsl__core { fill: #5A5A55; opacity: .85; pointer-events: none; }
+.nlsl__coret { fill: #fff; font-size: 10.5px; font-weight: 700; pointer-events: none; }
+.nlsl__lab { fill: #3B4753; font-size: 11.5px; font-weight: 700; pointer-events: none; }
+.nlsl__lab.is-on, .nlsl__dir.is-on { fill: #8C3A22; }
+.nlsl__dir { fill: #3B4753; font-size: 12px; font-weight: 600; pointer-events: none; }
+.nlsl__n { fill: #14212B; font-size: 12px; font-weight: 700; }
+.nlsl__side { display: flex; flex-direction: column; gap: 12px; }
+.nlsl__step { display: flex; gap: 8px; }
+.nlsl__step .nlsl__btn { flex: 1; }
+.nlsl__facts { margin: 0 !important; font: 400 14px/1.55 Assistant, Heebo, Arial, sans-serif !important; color: #3B4753 !important; }
+.nlsl__units { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.nlsl__ub { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-height: 56px; padding: 8px 12px; border: 1px solid #E3E1DA;
+  border-radius: 12px; background: #fff; color: #14212B; text-align: start; cursor: pointer; font-family: Assistant, Heebo, Arial, sans-serif; }
+.nlsl__ub b { font-size: 14px; }
+.nlsl__ub span { font-size: 12.5px; color: #6B7680; }
+.nlsl__ub.is-on { border-color: #C2563A; background: #FBF1EC; box-shadow: inset 0 0 0 1px #C2563A; }
+.nlsl__acts { display: flex; flex-direction: column; gap: 8px; }
+.nlsl__btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid #1F4B5C;
+  background: #1F4B5C; color: #fff; font: 700 15px/1.2 Assistant, Heebo, Arial, sans-serif; cursor: pointer; }
+.nlsl__btn--2 { background: #fff; color: #1F4B5C; }
+.nlsl__btn:disabled { opacity: .45; cursor: default; }
+.nlsl__btn[hidden] { display: none !important; }
+.nlsl__note { margin: 0 !important; padding: 10px 12px; border-radius: 12px; background: #EEE9DD; font: 400 12.5px/1.6 Assistant, Heebo, Arial, sans-serif !important; color: #3B4753 !important; }
+.nlsl button:focus-visible, .nlsl .nlsl__u:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }
+@media (max-width: 760px) {
+  .nlsl { padding: 0; place-items: end stretch; }
+  .nlsl__box { width: 100%; max-height: 94vh; max-height: 94dvh; border-radius: 20px 20px 0 0; }
+  .nlsl__body { grid-template-columns: 1fr; padding: 12px 14px calc(18px + env(safe-area-inset-bottom, 0px)); }
+  .nlsl__btn, .nlsl__x { min-height: 48px; }
+}

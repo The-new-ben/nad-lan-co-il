@@ -1,0 +1,13 @@
+{
+  "released": "1.72.343",
+  "from": "1.72.342",
+  "at": "2026-09-28 14:50:48",
+  "files": {
+    "assets/project-stage/slice.css": "853619991941e530f650e85c2db12fcd",
+    "nadlan-config.php": "7e07ed959125ee7853ff09dc6b144085"
+  },
+  "live_before": {
+    "assets/project-stage/slice.css": "78976a7878ffc689856cac6851bae52c",
+    "nadlan-config.php": "0fd1ab9bfed9e1291135eebfb939d5b8"
+  }
+}
