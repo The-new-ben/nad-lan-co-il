@@ -1,0 +1,81 @@
+<!doctype html>
+<!--
+  TogetherRoom, the offline harness (design system TogetherRoom v77, 28.9.2026).
+  The room (assets/together/together.js + .css) over a static picture of the stage (rainbow/poster.jpg), with a flat
+  stand-in for the stage's handle (the same calls: getView / setView / pickPoint / project / selectUnit ...). The REST
+  calls go to the real inc/together.php on the WordPress stand-in:
+
+    php -S 127.0.0.1:8765 scripts/together/router.php          (from the repository's root)
+    http://127.0.0.1:8765/__reset?rep_now=1                     (a clean store; a representative available)
+    http://127.0.0.1:8765/harness.html?room=new&rep=1           (the representative opens a room)
+    http://127.0.0.1:8765/harness.html?room=<id>                (a buyer joins, in a second window)
+
+  Here the picture pans instead of the 3D camera; the modes "בתוך הדירה" and "הנוף" need the live page (harness.py runs
+  the room over the live stage).
+-->
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TogetherRoom harness</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@500;600;700&family=Assistant:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="/plugins/nadlan-config/assets/together/together.css">
+<style>
+  body { margin: 0; background: #FAF7F1; font-family: Assistant, sans-serif; }
+  #nlps { position: relative; height: 100vh; }
+  .fake { position: absolute; inset: 0; background: #D9D3C8 url(/plugins/nadlan-config/assets/project-stage/rainbow/poster.jpg) 50% 50% / 140% auto no-repeat; cursor: grab; touch-action: none; }
+  .rbs-caption { position: absolute; bottom: 14px; inset-inline-start: 16px; margin: 0; padding: 6px 10px; border-radius: 8px; background: rgba(247, 246, 242, .9); font-size: 12px; }
+</style>
+</head>
+<body>
+<section class="nlps-stage" id="nlps" data-cfg='{"units":[["n",0],["e",90],["s",180],["w",270]],"sectors":[[230,345,"לכיוון הים"],[345,30,"לכיוון תל ברוך והרצליה"],[30,105,"לכיוון רמת אביב והאוניברסיטה"],[105,150,"לכיוון פארק הירקון"],[150,195,"לכיוון מגדלי העיר"],[195,230,"לכיוון הצפון הישן"]]}'>
+  <div class="fake" id="fake"></div>
+  <p class="rbs-caption">הדמיה להמחשה בלבד, על בסיס מקורות פומביים. חלוקת הקומה לדירות היא לדוגמה, ואינה לפי תוכנית מכר.</p>
+</section>
+<div id="nltg-root" hidden></div>
+<script>
+/* the room's config, as inc/together.php prints it, for this origin; ?rep=1 stands for a logged-in representative */
+(function () {
+  var q = new URLSearchParams(location.search), rep = q.get('rep') === '1';
+  document.getElementById('nltg-root').setAttribute('data-cfg', JSON.stringify({
+    rest: location.origin + '/wp-json/nadlan/v1/', nonce: rep ? 'rep-nonce' : '', post: 101, name: 'ריינבו תל אביב',
+    url: location.origin + '/harness.html', wa: '972525101555', lang: 'he', canRep: rep, user: rep ? 'דנה' : '',
+    repNow: true, lk: false, lkLib: 'https://cdn.jsdelivr.net/npm/livekit-client@2.22.3/dist/livekit-client.esm.mjs'
+  }));
+})();
+/* a flat stand-in for the stage's handle: the picture pans (the "camera"); a point is a pixel of the picture */
+(function () {
+  var el = document.getElementById('fake'), pan = { x: 0, y: 0 }, sel = null, drag = null, sentAt = 0;
+  var paint = function () { el.style.backgroundPosition = 'calc(50% + ' + pan.x + 'px) calc(50% + ' + pan.y + 'px)'; };
+  var emit = function (n, d) { window.dispatchEvent(new CustomEvent(n, { detail: d })); };
+  var view = function () { return { mode: 'building', target: [pan.x, 0, pan.y], r: 100, phi: 1.2, theta: 0, hf: 1 }; };
+  el.addEventListener('pointerdown', function (e) { drag = { x: e.clientX - pan.x, y: e.clientY - pan.y }; el.setPointerCapture(e.pointerId); });
+  el.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    pan.x = e.clientX - drag.x; pan.y = e.clientY - drag.y; paint();
+    if (performance.now() - sentAt > 100) { sentAt = performance.now(); emit('nl:view', Object.assign(view(), { source: 'user' })); }
+  });
+  el.addEventListener('pointerup', function () { drag = null; });
+  window.__nlpsStage = {
+    ready: Promise.resolve(), phase: 'orbit',
+    getView: view,
+    setView: function (v) { if (!v || !v.target) return false; pan.x = +v.target[0] || 0; pan.y = +v.target[2] || 0; paint(); return true; },
+    home: function () { return true; },
+    pickPoint: function (x, y) { var r = el.getBoundingClientRect(); return { x: x - r.left - pan.x, y: 0, z: y - r.top - pan.y, floor: null, on: 'ground' }; },
+    project: function (p) { var r = el.getBoundingClientRect(); return { x: r.left + p.x + pan.x, y: r.top + p.z + pan.y, behind: false }; },
+    selectUnit: function (id, src) {
+      var m = /^(\d+)-([a-z]+)$/.exec(id || ''); if (!m) return null;
+      sel = { floor: +m[1], heightM: +m[1] * 3.3, bearing: { n: 0, e: 90, s: 180, w: 270 }[m[2]], unit: id };
+      if (src === 'user') { emit('nl:floor', { floor: sel.floor, heightM: sel.heightM }); emit('nl:facing', sel); }
+      return id;
+    },
+    selectFloor: function (n) { sel = { floor: +n, heightM: n * 3.3, bearing: null, unit: null }; },
+    getSelection: function () { return sel; },
+    floorHeight: function (n) { return n >= 1 && n <= 39 ? n * 3.3 : null; },
+    setAutoOrbit: function () {},
+  };
+})();
+</script>
+<script type="module" src="/plugins/nadlan-config/assets/together/together.js"></script>
+</body>
+</html>

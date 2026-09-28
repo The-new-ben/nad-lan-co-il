@@ -1,0 +1,23 @@
+{
+  "released": "1.72.334",
+  "from": "1.72.333",
+  "at": "2026-09-28 11:44:08",
+  "files": {
+    "inc/together.php": "826864912c47c726d97e89baa25071fc",
+    "assets/together/together.js": "f0e5a345c0dbc2dba06795cb614131d5",
+    "assets/together/together.css": "28bf444afe43a123fc69429bee066660",
+    "assets/project-stage/rainbow/stage.js": "b598a7aa60158b15c7589d9f71de1b83",
+    "assets/project-stage/tour.js": "66c84bb1c143c3138b3fdd908352e416",
+    "assets/project-stage/bridge.js": "783cfe52db5aed5652454bebf6963fdd",
+    "nadlan-config.php": "14c82f1332c64e6fa65e05d691ad8eb0"
+  },
+  "live_before": {
+    "inc/together.php": "missing",
+    "assets/together/together.js": "missing",
+    "assets/together/together.css": "missing",
+    "assets/project-stage/rainbow/stage.js": "c6d6dbdd4f790216d3f7cc04a37c2efa",
+    "assets/project-stage/tour.js": "b626eb9e658893139cb2068cd9247fe2",
+    "assets/project-stage/bridge.js": "4f4ab5588d0ecf7892662b26a6f892e1",
+    "nadlan-config.php": "e38b1be63fc7640be5323aa924d30832"
+  }
+}

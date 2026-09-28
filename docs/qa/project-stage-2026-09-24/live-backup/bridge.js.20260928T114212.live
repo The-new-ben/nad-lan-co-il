@@ -104,21 +104,6 @@ async function boot() {
   const hasGeo = Number(cfg.lat) && Number(cfg.lng) && cfg.token;
   let last = null;
   const win = { map: null, bearing: 270, vert: 0, alt: 10 };
-  /* the shared viewing room (inc/together.php, design system TogetherRoom v77): the view from the floor read and set from
-     outside ({ bearing, vert } in degrees), and a throttled nl:view while the visitor turns it himself */
-  let viewAt = 0, viewT = 0;
-  const winView = () => ({ mode: 'view', bearing: Math.round(norm(win.bearing) * 10) / 10, vert: Math.round(win.vert * 10) / 10 });
-  const sendWinView = () => { viewT = 0; viewAt = performance.now(); window.dispatchEvent(new CustomEvent('nl:view', { detail: Object.assign(winView(), { source: 'user' }) })); };
-  window.__nlpsView = {
-    getView: () => (win.map ? winView() : null),
-    setView: (v) => {
-      if (!v || !win.map) return false;
-      if (Number.isFinite(Number(v.bearing))) win.bearing = norm(Number(v.bearing));
-      if (Number.isFinite(Number(v.vert))) win.vert = Math.max(-45, Math.min(10, Number(v.vert)));
-      winCam();
-      return true;
-    },
-  };
 
   /* what lies that way (design system ProjectStage version 35): the quarter's places and projects, each with its distance
      and bearing from the tower (quarter.json); labels in the view and a list under it, only what the file holds */
@@ -444,8 +429,6 @@ async function boot() {
       win.bearing = norm(win.bearing + (x - lx) * 0.35);
       win.vert = Math.max(-45, Math.min(10, win.vert - (y - ly) * 0.22));
       lx = x; ly = y; winCam();
-      const w = 100 - (performance.now() - viewAt); // the shared viewing room: nl:view, at most ten a second
-      if (w <= 0) sendWinView(); else if (!viewT) viewT = setTimeout(sendWinView, w);
     };
     host.addEventListener('mousedown', (e) => { start(e.clientX, e.clientY); e.preventDefault(); });
     window.addEventListener('mousemove', (e) => move(e.clientX, e.clientY));

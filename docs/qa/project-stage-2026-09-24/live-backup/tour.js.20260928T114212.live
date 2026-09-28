@@ -3,11 +3,7 @@
    picture shows first, the large one replaces it. Drag or arrow keys look around, the wheel or a pinch zooms, Esc closes.
    openTour({ scenes: [{ id, dir, dirLabel, spot, spotLabel, title, src, small, note }], start, chip, caption, hint, close,
    opener }) (or a single { src, srcSmall, title }). Two switches at the bottom: the directions (version 25) and, above them,
-   where one stands (version 26: in the living room, on the balcony); each keeps the other. Every picture opens facing out.
-   The shared viewing room (inc/together.php, design system TogetherRoom v77) reads and sets the look from outside: the
-   returned handle has getView() / setView(v, dur) ({ scene, yaw, pitch, fov }, radians and degrees of field), project()
-   and pick() (a direction on the screen and back); while it is open it is window.__nlTour, it sends nl:tour on opening and
-   closing, and nl:view (throttled) while the visitor looks around himself. */
+   where one stands (version 26: in the living room, on the balcony); each keeps the other. Every picture opens facing out. */
 import * as THREE from 'three';
 
 let cssDone = false;
@@ -115,24 +111,12 @@ export function openTour(o) {
   // yaw 0 looks at the panorama's centre (the window); the sphere's u = 0.5 lies on -x
   let yaw = 0, pitch = -0.05, fov = 72, vy = 0, vp = 0, raf = 0, alive = true, moved = false, dragging = false;
   const look = new THREE.Vector3();
-  // the shared viewing room: a glide to a look set from outside, and a throttled nl:view while the visitor looks around
-  let tween = null, viewAt = 0, viewT = 0;
-  const reducedMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  const getView = () => ({ mode: 'inside', scene: cur.id, dir: cur.dir, spot: cur.spot, floor: cur.floor != null ? Number(cur.floor) : null,
-    yaw: +yaw.toFixed(4), pitch: +Math.max(-1.45, Math.min(1.45, pitch)).toFixed(4), fov: +fov.toFixed(2) });
-  function sendView() { viewT = 0; if (!alive) return; viewAt = performance.now(); window.dispatchEvent(new CustomEvent('nl:view', { detail: Object.assign(getView(), { source: 'user' }) })); }
-  function userView() { const w = 100 - (performance.now() - viewAt); if (w <= 0) sendView(); else if (!viewT) viewT = setTimeout(sendView, w); }
   function render() {
     raf = 0;
     if (!alive) return;
-    if (tween) { // a look set from outside (setView), eased
-      const t = Math.min(1, (performance.now() - tween.t0) / tween.ms), e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-      yaw = tween.y0 + tween.dy * e; pitch = tween.p0 + (tween.p1 - tween.p0) * e; fov = tween.f0 + (tween.f1 - tween.f0) * e;
-      if (t < 1) raf = requestAnimationFrame(render); else tween = null;
-    }
     if (!dragging && (Math.abs(vy) > 1e-4 || Math.abs(vp) > 1e-4)) { // a little glide after the finger lifts
       yaw += vy; pitch += vp; vy *= 0.86; vp *= 0.86;
-      if (!raf) raf = requestAnimationFrame(render);
+      raf = requestAnimationFrame(render);
     }
     pitch = Math.max(-1.45, Math.min(1.45, pitch));
     camera.fov = fov;
@@ -175,7 +159,7 @@ export function openTour(o) {
       return sc.small && sc.src && sc.src !== sc.small ? load(sc.src) : null;
     }).then((t) => { if (t) { if (fresh()) useTex(t); else t.dispose(); } }).catch(() => { if (fresh()) root.classList.add('is-error'); });
   }
-  function show(sc, src) {
+  function show(sc) {
     if (sc === cur) return;
     cur = sc;
     title.textContent = sc.title || '';
@@ -183,9 +167,8 @@ export function openTour(o) {
     setCaption();
     markBars();
     yaw = 0; pitch = -0.05; vy = vp = 0;   // facing its own window
-    tween = null;
     loadScene(sc);
-    if (src !== 'api') { if (typeof o.onScene === 'function') o.onScene(sc.id); userView(); }
+    if (typeof o.onScene === 'function') o.onScene(sc.id);
     kick();
   }
   loadScene(cur);
@@ -199,7 +182,6 @@ export function openTour(o) {
     pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
     stage.setPointerCapture(e.pointerId);
     vy = vp = 0;
-    tween = null;
     dragging = true;
     if (pts.size === 1) last = { x: e.clientX, y: e.clientY };
     if (pts.size === 2) { const [a, b] = [...pts.values()]; pinch0 = Math.hypot(a.x - b.x, a.y - b.y); fov0 = fov; }
@@ -212,7 +194,6 @@ export function openTour(o) {
       const d = Math.hypot(a.x - b.x, a.y - b.y);
       if (pinch0 > 0) fov = Math.max(35, Math.min(90, fov0 * (pinch0 / d)));
       kick();
-      userView();
       return;
     }
     if (!last) return;
@@ -223,7 +204,6 @@ export function openTour(o) {
     yaw += vy; pitch += vp;
     if (!moved && Math.hypot(dx, dy) > 2) { moved = true; root.classList.add('is-moved'); }
     kick();
-    userView();
   }
   function onUp(e) {
     pts.delete(e.pointerId);
@@ -234,9 +214,7 @@ export function openTour(o) {
   function onWheel(e) {
     e.preventDefault();
     fov = Math.max(35, Math.min(90, fov + e.deltaY * 0.04));
-    tween = null;
     kick();
-    userView();
   }
   function onKey(e) {
     if (e.key === 'Escape') { e.preventDefault(); close(); return; }
@@ -254,10 +232,8 @@ export function openTour(o) {
     }
     else return;
     e.preventDefault();
-    tween = null;
     if (!moved) { moved = true; root.classList.add('is-moved'); }
     kick();
-    userView();
   }
   stage.addEventListener('pointerdown', onDown);
   stage.addEventListener('pointermove', onMove);
@@ -271,7 +247,6 @@ export function openTour(o) {
     if (!alive) return;
     alive = false;
     if (raf) cancelAnimationFrame(raf);
-    if (viewT) clearTimeout(viewT);
     ro.disconnect();
     document.removeEventListener('keydown', onKey);
     if (mat.map) mat.map.dispose();
@@ -282,47 +257,10 @@ export function openTour(o) {
     document.documentElement.classList.remove('nlat-open');
     if (prevFocus && prevFocus.focus) prevFocus.focus();
     if (typeof o.onClose === 'function') o.onClose();
-    if (window.__nlTour === api) window.__nlTour = null;
-    window.dispatchEvent(new CustomEvent('nl:tour', { detail: { open: false } }));
   }
   x.focus();
-  /* the shared viewing room: set the look from outside (a scene switch included), and a direction to the screen and back */
-  function setView(v, dur) {
-    if (!alive || !v) return false;
-    if (v.scene && v.scene !== cur.id) { const sc = scenes.find((x2) => x2.id === v.scene); if (sc) show(sc, 'api'); }
-    const y1 = Number(v.yaw), p1 = Number(v.pitch), f1 = Number(v.fov);
-    const Y = Number.isFinite(y1) ? y1 : yaw;
-    const P = Number.isFinite(p1) ? Math.max(-1.45, Math.min(1.45, p1)) : pitch;
-    const F = Number.isFinite(f1) ? Math.max(35, Math.min(90, f1)) : fov;
-    vy = vp = 0;
-    const ms = Math.max(0, Number(dur) || 0) * 1000;
-    if (!ms || reducedMotion) { tween = null; yaw = Y; pitch = P; fov = F; kick(); return true; }
-    let dy = Y - yaw; dy = Math.atan2(Math.sin(dy), Math.cos(dy)); // the short way round
-    tween = { t0: performance.now(), ms, y0: yaw, dy, p0: pitch, p1: P, f0: fov, f1: F };
-    kick();
-    return true;
-  }
-  const projV = new THREE.Vector3();
-  function project(p) {
-    if (!alive || !p) return null;
-    const y1 = Number(p.yaw), p1 = Number(p.pitch);
-    if (!Number.isFinite(y1) || !Number.isFinite(p1)) return null;
-    projV.set(-Math.cos(y1) * Math.cos(p1), Math.sin(p1), Math.sin(y1) * Math.cos(p1)).multiplyScalar(100).project(camera);
-    const r = stage.getBoundingClientRect();
-    return { x: r.left + (projV.x * 0.5 + 0.5) * r.width, y: r.top + (-projV.y * 0.5 + 0.5) * r.height, behind: projV.z > 1 };
-  }
-  function pickLook(clientX, clientY) {
-    if (!alive) return null;
-    const r = stage.getBoundingClientRect();
-    if (!r.width || !r.height) return null;
-    projV.set(((clientX - r.left) / r.width) * 2 - 1, -((clientY - r.top) / r.height) * 2 + 1, 0.5).unproject(camera).normalize();
-    return { yaw: +Math.atan2(projV.z, -projV.x).toFixed(4), pitch: +Math.asin(Math.max(-1, Math.min(1, projV.y))).toFixed(4) };
-  }
   const api = { close, show: (id) => { const sc = scenes.find((x2) => x2.id === id); if (sc) show(sc); }, get scene() { return cur.id; },
-    get yaw() { return yaw; }, get pitch() { return pitch; }, get fov() { return fov; },
-    getView, setView, project, pick: pickLook, get scenes() { return scenes.map((sc) => ({ id: sc.id, dir: sc.dir, spot: sc.spot, floor: sc.floor })); } };
+    get yaw() { return yaw; }, get pitch() { return pitch; }, get fov() { return fov; } };
   root.nlTour = api; // for the page's checks (scripts/project-stage/pagejourney.py)
-  window.__nlTour = api; // the shared viewing room
-  window.dispatchEvent(new CustomEvent('nl:tour', { detail: { open: true, scene: cur.id } }));
   return api;
 }

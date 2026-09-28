@@ -413,16 +413,6 @@ export function mountRainbowStage(container, options = {}) {
     /* how the scene's north relates to the real site, and where the camera looks */
     getNorth() { return engine ? engine.getNorth() : staticNorth(Number(opts.bearingOffset) || 0); },
     setAutoOrbit(on) { if (engine) engine.setAutoOrbit(on); },
-    /* the shared viewing room (inc/together.php, design system TogetherRoom v77): the camera as data and a glide to it
-       ({ target: [x, y, z], r, phi, theta }; dur in seconds, 0 = a cut); a screen point as a point in the scene
-       ({ x, y, z, floor, on: 'tower'|'ground' } or null) and a scene point back on the screen ({ x, y, behind }, viewport
-       pixels). The stage also sends nl:view (throttled) while the visitor moves the camera himself. */
-    getView() { return engine ? engine.getView() : null; },
-    setView(v, dur) { return engine ? engine.setView(v, dur) : false; },
-    /* the opening view for the stage's current size (or the picked floor's), e.g. after the stage changed its box */
-    home(dur) { return engine ? engine.home(dur) : false; },
-    pickPoint(clientX, clientY) { return engine ? engine.pickPoint(clientX, clientY) : null; },
-    project(point) { return engine ? engine.project(point) : null; },
     stats() { return engine ? engine.stats() : null; },
     get phase() { return engine ? engine.phase() : 'poster'; },
     _engine() { return engine; },
@@ -786,18 +776,6 @@ function createEngine(ctx) {
   });
   on(controls, 'end', () => { lastInteract = performance.now(); root.classList.remove('rbs--grabbing'); });
   on(controls, 'change', () => { needsRender = true; });
-  /* the shared viewing room (inc/together.php, design system TogetherRoom v77): a throttled nl:view while the visitor moves
-     the camera himself (drag, pinch, wheel and the damping glide after them); a camera set from outside (setView) or a
-     glide to a picked floor never sends one, so a room never echoes its leader back */
-  let camUser = false, camUserAt = 0, viewEmitAt = 0, viewTimer = 0;
-  const sendView = () => { viewTimer = 0; if (disposedE) return; viewEmitAt = performance.now(); emit('nl:view', Object.assign(viewNow(), { source: 'user' })); };
-  on(controls, 'start', () => { camUser = true; camUserAt = performance.now(); });
-  on(controls, 'end', () => { camUser = false; camUserAt = performance.now(); });
-  on(controls, 'change', () => {
-    if (glide || !(camUser || performance.now() - camUserAt < 900)) return;
-    const wait = 100 - (performance.now() - viewEmitAt);
-    if (wait <= 0) sendView(); else if (!viewTimer) viewTimer = setTimeout(sendView, wait);
-  });
 
   // wheel zoom only once the visitor has engaged with the stage (so page scrolling is not hijacked)
   on(root, 'wheel', (e) => {
@@ -1286,46 +1264,6 @@ function createEngine(ctx) {
   function frameOverview() {
     const cur = camSpherical();
     glideTo(heroTarget, heroDistance(), (90 - HERO.elev) * DEG, cur.theta, 1.0, () => { controls.minDistance = 120; });
-  }
-  /* the shared viewing room (inc/together.php): the camera as data ({ target: [x, y, z], r, phi, theta, hf }, scene units and
-     radians; hf = the horizontal field of view), a glide to such a camera, a screen point as a point in the scene (the tower, else the ground) and a scene
-     point back on the screen (viewport pixels). Nothing here runs unless a room calls it. */
-  function viewNow() {
-    const cs = camSpherical(), t = controls.target;
-    const hf = 2 * Math.atan(Math.tan((camera.fov * DEG) / 2) * camera.aspect); // the horizontal field of view, for a screen of another shape
-    return { mode: 'building', target: [+t.x.toFixed(2), +t.y.toFixed(2), +t.z.toFixed(2)], r: +cs.r.toFixed(2), phi: +cs.phi.toFixed(4), theta: +cs.theta.toFixed(4), hf: +hf.toFixed(4) };
-  }
-  function setViewFrom(v, dur) {
-    if (!v || !Array.isArray(v.target) || v.target.length !== 3) return false;
-    const t = v.target.map(Number), r = Number(v.r), phi = Number(v.phi), theta = Number(v.theta);
-    if (!t.every(Number.isFinite) || !(r > 0) || !Number.isFinite(phi) || !Number.isFinite(theta)) return false;
-    if (phase === 'intro') endIntro();
-    camUser = false; camUserAt = 0;
-    lastInteract = performance.now(); // no idle orbit and no re-centring while a room drives the camera
-    const d = Number(dur);
-    glideTo(new THREE.Vector3(t[0], t[1], t[2]), r, phi, theta, Number.isFinite(d) ? Math.max(0, d) : 0.6);
-    kick();
-    return true;
-  }
-  const pickPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-  const pickHit = new THREE.Vector3();
-  function pickPoint(clientX, clientY) {
-    const rc = canvas.getBoundingClientRect();
-    if (!rc.width || clientX < rc.left || clientX > rc.right || clientY < rc.top || clientY > rc.bottom) return null;
-    const h = hitTower(clientX, clientY); // sets the ray
-    if (h) return { x: +h.point.x.toFixed(2), y: +h.point.y.toFixed(2), z: +h.point.z.toFixed(2), floor: h.floor, on: 'tower' };
-    if (raycaster.ray.intersectPlane(pickPlane, pickHit) && pickHit.distanceTo(camera.position) < 4000) {
-      return { x: +pickHit.x.toFixed(2), y: 0, z: +pickHit.z.toFixed(2), floor: null, on: 'ground' };
-    }
-    return null;
-  }
-  function projectPoint(p) {
-    if (!p) return null;
-    const x = Number(p.x), y = Number(p.y), z = Number(p.z);
-    if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(z)) return null;
-    const a = projectToStage(tmpV.set(x, y, z));
-    const rc = canvas.getBoundingClientRect();
-    return { x: rc.left + a.x, y: rc.top + a.y, behind: a.behind };
   }
 
   /* label placement: anchored to the tower silhouette at the selected floor */
@@ -1950,19 +1888,6 @@ function createEngine(ctx) {
       return n;
     },
     setAutoOrbit(v) { autoOrbit = !!v && !reduced; },
-    /* the shared viewing room (inc/together.php) */
-    getView: () => viewNow(),
-    setView: (v, dur) => setViewFrom(v, dur),
-    home: (dur) => {
-      if (phase === 'intro') endIntro();
-      lastInteract = performance.now();
-      if (selected && selected.pinned) frameFloor(selected.floor);
-      else glideTo(heroTarget, heroDistance(), (90 - HERO.elev) * DEG, camSpherical().theta, Number(dur) > 0 ? Number(dur) : 0);
-      kick();
-      return true;
-    },
-    pickPoint: (x, y) => pickPoint(Number(x), Number(y)),
-    project: (p) => projectPoint(p),
     stats() {
       return {
         fps: perf.fps,

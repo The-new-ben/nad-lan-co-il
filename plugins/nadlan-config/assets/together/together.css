@@ -1,0 +1,374 @@
+/* TogetherRoom, the shared viewing room (design system TogetherRoom, version 77, 28.9.2026; inc/together.php).
+   Loaded only on a project page with ?room=. Everything is scoped under .nltg; the page's own parts that the room takes
+   over (the stage, the view from the floor, the 360 viewer) are reached from html.nltg-on only. Targets: 44px, 48px on
+   phones. Role colours: representative #1F4B5C, buyer #8A6A2E, family and friends #2E7D5B, professionals #6A4C93. */
+
+html.nltg-on, .nltg {
+  --paper: #FAF7F1; --band: #F3EEE3; --ink: #1B1A17; --ink2: #3B4753; --mute: #6B6558; --hair: #E2DCD0;
+  --teal: #1F4B5C; --teal2: #2F6F86; --gold: #8A6A2E; --wa: #0F7A63; --warn: #9B3A24;
+  --r-rep: #1F4B5C; --r-buyer: #8A6A2E; --r-family: #2E7D5B; --r-pro: #6A4C93;
+  --serif: 'Noto Serif Hebrew', 'Frank Ruhl Libre', Georgia, serif;
+  --sans: Assistant, Heebo, 'Segoe UI', Arial, sans-serif;
+}
+.nltg {
+  --gap: 16px; --tgt: 44px; --tileh: 104px;
+  position: fixed; inset: 0; z-index: 100002; pointer-events: none;
+  color: var(--ink); font: 400 15px/1.45 var(--sans); text-align: start;
+  -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent;
+}
+.nltg *, .nltg *::before, .nltg *::after { box-sizing: border-box; }
+.nltg > * { pointer-events: auto; }
+.nltg [hidden] { display: none !important; }
+/* the theme styles buttons, paragraphs and fields site-wide, some with !important: the room sets its own back */
+:root body .nltg button, :root body .nltg input, :root body .nltg textarea, :root body .nltg select {
+  font-family: var(--sans) !important; letter-spacing: normal !important; text-transform: none !important; margin: 0 !important;
+  box-shadow: none; line-height: 1.2 !important; min-width: 0; max-width: none !important; width: auto;
+}
+:root body .nltg button { appearance: none; -webkit-appearance: none; cursor: pointer; text-decoration: none; }
+:root body .nltg p, :root body .nltg h2, :root body .nltg h3, :root body .nltg ul, :root body .nltg ol, :root body .nltg li {
+  margin: 0 !important; padding: 0; max-width: none !important; color: inherit !important; font-family: inherit; list-style: none;
+}
+:root body .nltg a { color: inherit; text-decoration: none; }
+.nltg :focus-visible { outline: 3px solid #C2563A !important; outline-offset: 2px; }
+
+/* the page under the room; the sizes the room's parts share (the view layer and the 360 viewer sit outside .nltg) */
+html.nltg-on { --dock: 372px; --sheet: min(350px, 44svh); }
+html.nltg-on, html.nltg-on body { overflow: hidden !important; overscroll-behavior: none; }
+/* the view layer: under the 360 viewer (100000), which covers it in the mode "בתוך הדירה"; the room's controls above both */
+.nltg-vp { position: fixed; inset: 0; z-index: 99999; background: #D9D3C8; overflow: hidden; }
+html.nltg-file .nltg-vp { display: none; }
+.nltg-vp > .nltg-layer { position: absolute; inset: 0; }
+/* a layer not in use leaves the screen whole (the stage then stops drawing: it watches its own visibility) */
+.nltg-vp > .nltg-layer.is-off { transform: translateX(-300vw); visibility: hidden; }
+:root body .nltg-vp section.nlps-stage { position: absolute !important; inset: 0 !important; width: auto !important; height: auto !important; min-height: 0 !important; margin: 0 !important; border: 0 !important; border-radius: 0 !important; }
+/* the view from the floor: the design system sizes it 16:9 in the page (:root body .nlds ..., !important); here, the screen */
+:root body .nltg-vp .nlps-viewwrap.nlds { position: absolute !important; inset: 0 !important; margin: 0 !important; padding: 0 !important; max-width: none !important; }
+:root body .nltg-vp .nlds .nlps-view { position: absolute !important; inset: 0 !important; margin: 0 !important; padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: #D9D3C8 !important; max-width: none !important; box-shadow: none !important; }
+:root body .nltg-vp .nlds .nlps-view > :not(.nlps-view__map):not(.nlps-view__cap) { display: none !important; }
+:root body .nltg-vp .nlds .nlps-view__map { position: absolute !important; inset: 0 !important; width: auto !important; height: auto !important; aspect-ratio: auto !important; min-height: 0 !important; border-radius: 0 !important; margin: 0 !important; }
+:root body .nltg-vp .nlds .nlps-view__cap { position: absolute !important; inset-block-end: 16px; inset-inline-start: 16px; z-index: 3; max-width: 520px !important; margin: 0 !important; padding: 8px 12px !important; border-radius: 10px; background: rgba(250, 247, 241, .9) !important; font: 500 12.5px/1.5 var(--sans, Assistant, sans-serif) !important; color: #6B6558 !important; }
+/* the stage's own light switch and hint are not part of the room; its caption stays, clear of the dock */
+html.nltg-on .nltg-vp .rbs-presets, html.nltg-on .nltg-vp .rbs-hint, html.nltg-on .nltg-vp .rbs-open { display: none !important; }
+html.nltg-on .nltg-vp .rbs-caption { inset-inline-start: 16px; inset-block-end: 16px; max-width: 520px; }
+/* the stage card's "לעצב את הדירה" leaves the page: not inside a live room */
+html.nltg-on .nltg-vp .rbs-act[data-act="design"] { display: none !important; }
+/* the 360 viewer under the room: its title bar and hint give way to the room's bar; its switches centre in the free area */
+html.nltg-on .nlat-viewer__top, html.nltg-on .nlat-viewer__hint { display: none !important; }
+html.nltg-on .nlat-viewer__bottom { padding-inline-end: calc(var(--dock) + 32px); padding-inline-start: 16px; padding-bottom: 16px; }
+html.nltg-on.nltg-pick .nlat-viewer__stage { cursor: crosshair; }
+
+/* ---------------- the top bar ---------------- */
+.nltg-top {
+  position: absolute; inset-block-start: var(--gap); inset-inline: var(--gap);
+  display: flex; align-items: center; gap: 12px; padding: 10px 12px 10px 14px; min-height: 64px;
+  background: rgba(250, 247, 241, .94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 220, 208, .9); border-radius: 16px; box-shadow: 0 6px 24px rgba(27, 26, 23, .10);
+}
+.nltg-t { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.nltg-k { font: 700 12px/1 var(--sans); letter-spacing: .06em; color: var(--gold); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nltg-n { font: 600 18px/1.2 var(--serif); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ink); }
+.nltg-live { display: inline-flex; align-items: center; gap: 7px; padding: 6px 11px; border-radius: 999px; background: #FBEDEA; color: var(--warn); font: 700 13px/1 var(--sans); white-space: nowrap; flex: none; }
+.nltg-live i { width: 8px; height: 8px; border-radius: 50%; background: #D24A2E; box-shadow: 0 0 0 4px rgba(210, 74, 46, .18); flex: none; }
+.nltg-live.is-sync { background: #E8F0F2; color: var(--teal); }
+.nltg-live.is-sync i { background: var(--teal2); box-shadow: 0 0 0 4px rgba(47, 111, 134, .18); }
+.nltg-sp { flex: 1; }
+
+:root body .nltg .nltg-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--tgt); padding: 0 16px;
+  border-radius: 12px; border: 1px solid var(--hair); background: #fff; color: var(--ink); font: 700 14.5px/1 var(--sans) !important;
+  white-space: nowrap; flex: none;
+}
+:root body .nltg .nltg-btn:hover { border-color: #CFC6B6; }
+:root body .nltg .nltg-btn.teal { background: var(--teal); border-color: var(--teal); color: #fff; }
+:root body .nltg .nltg-btn.teal[aria-pressed="true"] { background: #13323E; border-color: #13323E; }
+:root body .nltg .nltg-btn.wa { background: var(--wa); border-color: var(--wa); color: #fff; }
+:root body .nltg .nltg-btn.ghost { background: transparent; }
+:root body .nltg .nltg-btn.leave { color: var(--warn); border-color: #EBC9C0; background: #FFF8F6; }
+:root body .nltg .nltg-btn.round { width: var(--tgt); padding: 0; border-radius: 50%; }
+:root body .nltg .nltg-btn[aria-pressed="false"].tog { color: var(--mute); }
+:root body .nltg .nltg-btn.tog.off { background: #FFF8F6; border-color: #EBC9C0; color: var(--warn); }
+:root body .nltg .nltg-btn:disabled { opacity: .5; cursor: default; }
+.nltg-ico { width: 20px; height: 20px; flex: none; display: block; }
+
+.nltg-modes { display: flex; gap: 3px; padding: 3px; border-radius: 12px; background: var(--band); flex: none; }
+:root body .nltg .nltg-modes button {
+  display: flex; align-items: center; min-height: 38px; padding: 0 13px; border: 0; border-radius: 9px; background: transparent;
+  font: 700 14px/1 var(--sans) !important; color: var(--mute); white-space: nowrap;
+}
+/* the switch keeps its 38px look inside a 44px target */
+:root body .nltg .nltg-modes button { position: relative; }
+:root body .nltg .nltg-modes button::after { content: ''; position: absolute; inset: -3px 0; }
+:root body .nltg .nltg-modes button[aria-pressed="true"] { background: var(--teal); color: #fff; }
+.nltg-modesel { display: none; }
+
+/* ---------------- the follow pill ---------------- */
+.nltg-followwrap { position: absolute; inset-block-start: 96px; inset-inline-start: var(--gap); inset-inline-end: calc(var(--dock) + var(--gap) * 2); display: flex; justify-content: center; pointer-events: none; }
+:root body .nltg .nltg-follow {
+  pointer-events: auto; display: flex; align-items: center; gap: 10px; min-height: 42px; padding: 8px 14px 8px 10px; padding-inline: 10px 14px;
+  border-radius: 999px; border: 0; background: rgba(31, 75, 92, .92); color: #fff; font: 700 14px/1 var(--sans) !important;
+  box-shadow: 0 8px 24px rgba(31, 75, 92, .3); cursor: default;
+}
+:root body .nltg button.nltg-follow { cursor: pointer; min-height: var(--tgt); background: #fff; color: var(--teal); border: 1px solid var(--hair); box-shadow: 0 8px 24px rgba(27, 26, 23, .16); }
+.nltg-follow .dot { width: 26px; height: 26px; border-radius: 50%; background: #E8F0F2; color: var(--teal); display: grid; place-items: center; font: 800 12px var(--sans); flex: none; }
+button.nltg-follow .dot { background: var(--teal); color: #fff; }
+
+/* ---------------- pins, the representative's pointer ---------------- */
+.nltg-pins { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+:root body .nltg .nltg-pin {
+  position: absolute; left: 0; top: 0; width: 34px; height: 34px; margin: -17px 0 0 -17px; padding: 0; border-radius: 50%;
+  display: grid; place-items: center; color: #fff; font: 800 14px/1 var(--sans) !important; border: 3px solid #fff;
+  box-shadow: 0 6px 16px rgba(27, 26, 23, .3); pointer-events: auto; will-change: transform; background: var(--r-rep);
+}
+/* a 44px target around the 34px pin */
+:root body .nltg .nltg-pin::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; }
+.nltg-pin::after { content: ''; position: absolute; inset-block-start: 100%; left: 50%; width: 2px; height: 16px; margin-left: -1px; background: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, .2); }
+.nltg-pin.is-temp { opacity: .85; }
+.nltg-pin-label {
+  position: absolute; left: 0; top: 0; padding: 6px 10px; border-radius: 10px; background: rgba(250, 247, 241, .96);
+  font: 700 13px/1.3 var(--sans); color: var(--ink); box-shadow: 0 6px 18px rgba(27, 26, 23, .16); max-width: 230px; pointer-events: none; will-change: transform;
+}
+.nltg-pointer { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 6px; font: 800 12.5px/1 var(--sans); color: #fff; pointer-events: none; will-change: transform; }
+.nltg-pointer svg { filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .35)); flex: none; }
+.nltg-pointer span { padding: 5px 9px; border-radius: 8px; background: var(--r-rep); white-space: nowrap; }
+.nltg-r-rep { background: var(--r-rep) !important; }
+.nltg-r-buyer { background: var(--r-buyer) !important; }
+.nltg-r-family { background: var(--r-family) !important; }
+.nltg-r-pro { background: var(--r-pro) !important; }
+
+/* picking the point of a new note */
+.nltg-pick { position: absolute; inset: 0; cursor: crosshair; background: rgba(31, 75, 92, .04); }
+.nltg-pickhint {
+  position: absolute; inset-block-start: 96px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px;
+  padding: 6px 6px 6px 16px; padding-inline: 16px 6px; border-radius: 999px; background: var(--teal); color: #fff; font: 700 14px/1.2 var(--sans);
+  box-shadow: 0 10px 24px rgba(31, 75, 92, .35); white-space: nowrap; pointer-events: auto;
+}
+:root body .nltg .nltg-pickhint button { min-height: 36px; padding: 0 12px; border-radius: 999px; border: 0; background: rgba(255, 255, 255, .16); color: #fff; font: 700 13px/1 var(--sans) !important; position: relative; }
+:root body .nltg .nltg-pickhint button::after { content: ''; position: absolute; inset: -4px 0; }
+
+/* ---------------- the dock ---------------- */
+.nltg-dock {
+  position: absolute; inset-block: 92px var(--gap); inset-inline-end: var(--gap); width: var(--dock);
+  display: flex; flex-direction: column; background: rgba(250, 247, 241, .97); border: 1px solid rgba(226, 220, 208, .95);
+  border-radius: 20px; box-shadow: 0 18px 50px rgba(27, 26, 23, .18); overflow: hidden;
+}
+.nltg-tiles { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; padding: 10px; flex: none; }
+.nltg-tile { position: relative; aspect-ratio: 5 / 3.4; border-radius: 12px; overflow: hidden; background: linear-gradient(160deg, #2B3A42, #15201F); color: #fff; }
+.nltg-tile.big { grid-column: 1 / -1; aspect-ratio: 16 / 7; }
+.nltg-tile video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.nltg-tile.is-me video { transform: scaleX(-1); }
+.nltg-tile .av { position: absolute; inset: 0; display: grid; place-items: center; font: 700 30px/1 var(--serif); color: rgba(255, 255, 255, .88); }
+.nltg-tile.big .av { font-size: 44px; }
+.nltg-tile.has-video .av { display: none; }
+.nltg-tile .nm { position: absolute; inset-inline-start: 7px; inset-block-end: 7px; display: flex; align-items: center; gap: 5px; padding: 4px 8px; border-radius: 8px; background: rgba(0, 0, 0, .45); font: 700 12px/1.1 var(--sans); max-width: calc(100% - 14px); white-space: nowrap; overflow: hidden; }
+.nltg-tile.big .nm { font-size: 13.5px; padding: 6px 10px; }
+.nltg-tile .spk { position: absolute; inset: 0; border: 3px solid #7FD1B9; border-radius: 12px; display: none; }
+.nltg-tile.is-speaking .spk { display: block; }
+.nltg-tile .mute { position: absolute; inset-inline-end: 7px; inset-block-start: 7px; width: 24px; height: 24px; border-radius: 50%; background: rgba(0, 0, 0, .5); display: none; place-items: center; }
+.nltg-tile.is-muted .mute { display: grid; }
+.nltg-role { display: inline-block; padding: 3px 7px; border-radius: 6px; font: 800 11px/1 var(--sans); color: #fff; flex: none; }
+
+/* without video: the participants as chips, and a WhatsApp call to the representative */
+.nltg-people { padding: 12px 12px 10px; display: flex; flex-direction: column; gap: 10px; flex: none; }
+.nltg-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.nltg-chip { display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 4px 10px 4px 6px; padding-inline: 6px 10px; border-radius: 999px; background: #fff; border: 1px solid #EFE9DD; font: 700 13px/1 var(--sans); color: var(--ink); }
+.nltg-chip .d { width: 8px; height: 8px; border-radius: 50%; background: #C9C1B2; flex: none; }
+.nltg-chip.on .d { background: #2E9E6F; }
+.nltg-wait { font: 600 13px/1.45 var(--sans); color: var(--ink2); }
+:root body .nltg .nltg-people .nltg-btn { width: 100%; }
+
+.nltg-ctl { display: flex; gap: 8px; padding: 0 10px 10px; flex: none; }
+:root body .nltg .nltg-ctl .nltg-btn { flex: 1; padding: 0 10px; font-size: 13.5px !important; }
+
+.nltg-tabs { display: flex; gap: 4px; margin: 0 10px; padding: 4px; border-radius: 12px; background: var(--band); flex: none; }
+:root body .nltg .nltg-tabs button { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 40px; border: 0; border-radius: 9px; background: transparent; font: 700 14px/1 var(--sans) !important; color: var(--mute); position: relative; }
+:root body .nltg .nltg-tabs button::after { content: ''; position: absolute; inset: -4px 0; }
+:root body .nltg .nltg-tabs button[aria-selected="true"] { background: #fff; color: var(--ink); box-shadow: 0 1px 3px rgba(27, 26, 23, .12); }
+.nltg-tabs i { font-style: normal; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; background: var(--teal); color: #fff; font: 800 11.5px/20px var(--sans); text-align: center; }
+
+.nltg-list { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 10px 10px 2px; display: flex; flex-direction: column; gap: 8px; }
+.nltg-note { display: grid; grid-template-columns: 30px 1fr; gap: 10px; padding: 11px 12px; background: #fff; border: 1px solid #EFE9DD; border-radius: 14px; cursor: pointer; text-align: start; }
+.nltg-note.is-focus { border-color: var(--teal2); box-shadow: 0 0 0 2px rgba(47, 111, 134, .18); }
+.nltg-note .num { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; color: #fff; font: 800 13px/1 var(--sans); }
+.nltg-note .tx { font: 600 14.5px/1.45 var(--sans); color: var(--ink); overflow-wrap: anywhere; }
+.nltg-note .chg { color: var(--mute); font-weight: 600; }
+.nltg-note .meta { margin-top: 5px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font: 600 12px/1.3 var(--sans); color: var(--mute); }
+.nltg-note .where { display: inline-flex; align-items: center; gap: 4px; padding: 3px 7px; border-radius: 6px; background: var(--band); color: var(--ink2); }
+:root body .nltg .nltg-note .del { border: 0; background: transparent; color: var(--mute); font: 600 12px/1 var(--sans) !important; text-decoration: underline; padding: 0 4px; min-height: 24px; }
+:root body .nltg .nltg-add { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: center; width: 100%; padding: 11px 12px; border-radius: 14px; border: 1px dashed #CFC6B6; background: transparent; text-align: start; min-height: var(--tgt); }
+.nltg-add .num { width: 30px; height: 30px; border-radius: 50%; border: 2px dashed var(--teal2); color: var(--teal2); display: grid; place-items: center; font: 800 16px/1 var(--sans); }
+.nltg-add .tx { display: block; font: 600 14.5px/1.45 var(--sans); color: var(--teal); }
+.nltg-add .meta { display: block; margin-top: 3px; font: 600 12px/1.3 var(--sans); color: var(--mute); }
+.nltg-empty { padding: 4px 4px 0; font: 500 13px/1.5 var(--sans); color: var(--mute); }
+
+.nltg-person { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 8px 12px; background: #fff; border: 1px solid #EFE9DD; border-radius: 14px; font: 700 14px/1.3 var(--sans); }
+.nltg-person .av { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; color: #fff; font: 700 14px/1 var(--serif); flex: none; }
+.nltg-person .sub { display: block; font: 600 12px/1.3 var(--sans); color: var(--mute); }
+.nltg-person .st { margin-inline-start: auto; font: 600 12px/1 var(--sans); color: var(--mute); white-space: nowrap; }
+.nltg-person .st.on { color: #1E7B55; }
+
+.nltg-file { margin: 10px; padding: 12px; border-radius: 14px; background: #fff; border: 1px solid #EFE9DD; flex: none; }
+.nltg-file .h { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; font: 700 14px/1.3 var(--sans); }
+.nltg-file .h small { font: 600 12.5px/1.3 var(--sans); color: var(--mute); text-align: end; }
+.nltg-file .h .meta { display: inline-flex; align-items: center; gap: 4px; }
+:root body .nltg .nltg-file .copy { position: relative; display: inline-grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--mute); }
+:root body .nltg .nltg-file .copy::after { content: ''; position: absolute; inset: -8px; }
+:root body .nltg .nltg-file .copy:hover { background: var(--band); color: var(--ink); }
+.nltg-file .row { display: flex; gap: 8px; margin-top: 10px; }
+:root body .nltg .nltg-file .row .nltg-btn.wa { flex: 1; white-space: normal; line-height: 1.2 !important; text-align: center; padding: 6px 12px; font-size: 14px !important; }
+.nltg-consent { margin: 0 12px 12px; font: 500 11.5px/1.5 var(--sans); color: var(--mute); flex: none; }
+
+/* ---------------- the mini plan, the caption ---------------- */
+.nltg-mini { position: absolute; inset-inline-start: var(--gap); inset-block-end: 88px; padding: 10px 12px 8px; border-radius: 14px; background: rgba(250, 247, 241, .96); box-shadow: 0 8px 24px rgba(27, 26, 23, .16); pointer-events: none; }
+.nltg-mini .mh { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 6px; font: 700 13px/1.2 var(--sans); }
+.nltg-mini .mh small { font: 600 11.5px/1.2 var(--sans); color: var(--gold); }
+.nltg-mini svg { display: block; }
+html.nltg-m-view .nltg-mini { inset-block-end: 70px; }
+
+/* ---------------- the plan and the section (mode "התוכנית והחתכים") ---------------- */
+.nltg-plan { position: absolute; inset: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); display: flex; align-items: center; justify-content: center; padding: 100px calc(var(--dock) + 48px) 56px 32px; padding-inline: 32px calc(var(--dock) + 48px); }
+.nltg-plan .in { display: flex; gap: 40px; align-items: center; max-width: 100%; max-height: 100%; }
+.nltg-plan figure { margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.nltg-plan figcaption { display: flex; align-items: center; gap: 8px; font: 700 14px/1.3 var(--sans); color: var(--ink); }
+.nltg-plan .sample { display: inline-block; padding: 3px 8px; border-radius: 6px; background: #F4ECD9; color: var(--gold); font: 800 11.5px/1.2 var(--sans); }
+.nltg-plan svg { display: block; height: auto; max-width: 100%; }
+.nltg-plan .big { width: min(620px, 52vw, calc((100vh - 220px) / .6)); }
+.nltg-plan .cut { height: min(480px, calc(100vh - 240px)); width: auto; }
+.nltg-plan .note { position: absolute; inset-block-end: 16px; inset-inline-start: 16px; max-width: 560px; padding: 8px 12px; border-radius: 10px; background: rgba(243, 238, 227, .95); font: 500 12.5px/1.5 var(--sans); color: var(--mute); }
+
+/* ---------------- dialogs: joining, a new note, the invitation ---------------- */
+.nltg-scrim { position: absolute; inset: 0; background: rgba(27, 26, 23, .42); display: grid; place-items: center; padding: 16px; overflow-y: auto; }
+.nltg-card { width: min(480px, 100%); padding: 24px; border-radius: 20px; background: var(--paper); border: 1px solid var(--hair); box-shadow: 0 30px 80px rgba(27, 26, 23, .3); display: flex; flex-direction: column; gap: 14px; }
+.nltg-card .k { font: 700 12px/1 var(--sans); letter-spacing: .06em; color: var(--gold); }
+.nltg-card .h { font: 600 24px/1.2 var(--serif); color: var(--ink); text-wrap: balance; }
+.nltg-card .p { font: 400 15px/1.6 var(--sans); color: var(--ink2); }
+.nltg-card .consent { font: 500 12.5px/1.55 var(--sans); color: var(--mute); }
+.nltg-lbl { display: block; font: 700 13.5px/1.2 var(--sans); color: var(--ink2); margin-bottom: 6px; }
+:root body .nltg .nltg-in, :root body .nltg .nltg-ta {
+  display: block; width: 100%; min-height: var(--tgt); padding: 10px 12px; border-radius: 12px; border: 1px solid var(--hair); background: #fff;
+  color: var(--ink) !important; font: 500 16px/1.4 var(--sans) !important; text-align: start;
+}
+:root body .nltg .nltg-ta { min-height: 92px; resize: vertical; }
+:root body .nltg .nltg-in:focus, :root body .nltg .nltg-ta:focus { border-color: var(--teal2); outline: none; box-shadow: 0 0 0 3px rgba(47, 111, 134, .18); }
+.nltg-roles { display: flex; flex-wrap: wrap; gap: 6px; }
+:root body .nltg .nltg-roles button { min-height: var(--tgt); padding: 0 14px; border-radius: 999px; border: 1px solid var(--hair); background: #fff; color: var(--ink); font: 700 14px/1 var(--sans) !important; display: inline-flex; align-items: center; gap: 7px; }
+.nltg-roles button i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+:root body .nltg .nltg-roles button[aria-checked="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+.nltg-checks { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.nltg-check { display: inline-flex; align-items: center; gap: 8px; min-height: var(--tgt); font: 600 14px/1.3 var(--sans); color: var(--ink2); cursor: pointer; }
+:root body .nltg .nltg-check input { width: 20px; height: 20px; accent-color: var(--teal); flex: none; }
+.nltg-langs { display: flex; flex-wrap: wrap; gap: 4px; }
+:root body .nltg .nltg-langs button { min-height: 36px; min-width: 44px; padding: 0 10px; border-radius: 8px; border: 1px solid transparent; background: transparent; font: 700 13px/1 var(--sans) !important; color: var(--mute); position: relative; }
+:root body .nltg .nltg-langs button::after { content: ''; position: absolute; inset: -4px 0; }
+:root body .nltg .nltg-langs button[aria-current="true"] { border-color: var(--hair); background: #fff; color: var(--ink); }
+.nltg-err { font: 700 13.5px/1.4 var(--sans); color: var(--warn); }
+:root body .nltg .nltg-card .nltg-btn.teal.go { width: 100%; min-height: 48px; font-size: 16px !important; }
+.nltg-card .row { display: flex; gap: 8px; flex-wrap: wrap; }
+:root body .nltg .nltg-card .row .nltg-btn { flex: 1 1 auto; }
+
+.nltg-compose { position: absolute; width: 340px; padding: 16px; border-radius: 16px; background: var(--paper); border: 1px solid var(--hair); box-shadow: 0 18px 50px rgba(27, 26, 23, .24); display: flex; flex-direction: column; gap: 10px; }
+.nltg-compose .h { display: flex; align-items: center; gap: 8px; font: 700 15px/1.3 var(--sans); }
+.nltg-compose .h .num { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; color: #fff; font: 800 12px/1 var(--sans); }
+.nltg-compose .row { display: flex; gap: 8px; }
+:root body .nltg .nltg-compose .row .nltg-btn { flex: 1; }
+
+.nltg-pop { position: absolute; inset-block-start: 88px; width: 360px; padding: 16px; border-radius: 16px; background: var(--paper); border: 1px solid var(--hair); box-shadow: 0 18px 50px rgba(27, 26, 23, .22); display: flex; flex-direction: column; gap: 10px; }
+.nltg-pop .h { font: 700 15px/1.3 var(--sans); }
+.nltg-pop .p { font: 500 13px/1.5 var(--sans); color: var(--ink2); }
+.nltg-pop .row { display: flex; gap: 8px; flex-wrap: wrap; }
+:root body .nltg .nltg-pop .row .nltg-btn { flex: 1 1 auto; }
+:root body .nltg .nltg-pop .nltg-in { direction: ltr; font-size: 14px !important; }
+
+.nltg-toast { position: absolute; inset-block-end: 24px; left: 50%; transform: translateX(-50%); max-width: min(520px, calc(100vw - 32px)); padding: 12px 16px; border-radius: 12px; background: var(--ink); color: #fff; font: 600 14px/1.45 var(--sans); box-shadow: 0 12px 30px rgba(27, 26, 23, .3); z-index: 5; }
+.nltg-toast a { color: #E9D9A8 !important; text-decoration: underline !important; }
+.nltg-out { position: fixed; inset-block-end: 24px; left: 50%; transform: translateX(-50%); z-index: 100003; max-width: min(520px, calc(100vw - 32px)); padding: 12px 16px; border-radius: 12px; background: #1B1A17; color: #fff; font: 600 14px/1.45 Assistant, Heebo, Arial, sans-serif; box-shadow: 0 12px 30px rgba(27, 26, 23, .3); }
+.nltg-out a { color: #E9D9A8 !important; text-decoration: underline !important; }
+
+/* ---------------- the apartment's file (?room=...&file=1) ---------------- */
+.nltg-filepage { position: absolute; inset: 0; background: var(--paper); overflow-y: auto; padding: 40px 16px 60px; }
+.nltg-filepage .in { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+.nltg-filepage .k { font: 700 12.5px/1 var(--sans); letter-spacing: .06em; color: var(--gold); }
+.nltg-filepage .h { font: 600 30px/1.2 var(--serif); color: var(--ink); text-wrap: balance; }
+.nltg-filepage .sub { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font: 600 15px/1.4 var(--sans); color: var(--ink2); }
+.nltg-filepage .sample { display: inline-block; padding: 3px 8px; border-radius: 6px; background: #F4ECD9; color: var(--gold); font: 800 12px/1.2 var(--sans); }
+.nltg-filepage .notes { display: flex; flex-direction: column; gap: 8px; }
+.nltg-filepage .row { display: flex; flex-wrap: wrap; gap: 8px; }
+.nltg-filepage .consent { font: 500 12.5px/1.55 var(--sans); color: var(--mute); }
+.nltg-filepage .nltg-note { cursor: default; }
+
+/* the phone controls (hidden on a wide screen) */
+.nltg-fab, .nltg-ctlrow, .nltg-strip, .nltg-grab { display: none; }
+
+/* ---------------- phones (the design's 390 x 844) ---------------- */
+@media (max-width: 760px) {
+  .nltg { --tgt: 48px; --gap: 12px; }
+  html.nltg-in .nltg-vp { bottom: calc(var(--sheet) - 22px); }
+  html.nltg-in .nlat-viewer { bottom: calc(var(--sheet) - 22px); }
+  html.nltg-on .nlat-viewer__bottom { top: 80px; bottom: auto; padding: 0 12px; }
+  html.nltg-on .nlat-viewer__bottom .nlat-viewer__spots, html.nltg-on .nlat-viewer__bottom .nlat-viewer__cap { display: none !important; }
+  html.nltg-on .nltg-vp .rbs-label, html.nltg-on .nltg-vp .rbs-facing, html.nltg-on .nltg-vp .rbs-caption { display: none !important; }
+  :root body .nltg-vp .nlds .nlps-view__cap { display: none !important; }
+  .nltg-list .nltg-cap { margin: 2px 2px 0; font: 500 11.5px/1.5 var(--sans); color: var(--mute); }
+
+  .nltg-top { inset-block-start: 12px; inset-inline: 12px; gap: 8px; padding: 8px 10px; min-height: 58px; border-radius: 14px; box-shadow: 0 4px 16px rgba(27, 26, 23, .12); background: rgba(250, 247, 241, .95); }
+  .nltg-k { font-size: 11px; letter-spacing: .05em; }
+  .nltg-n { font-size: 15px; }
+  .nltg-live { font-size: 12px; padding: 5px 9px; }
+  .nltg-top .nltg-modes, .nltg-top .nltg-invite, .nltg-top .nltg-leave-top { display: none !important; }
+  .nltg-modesel { display: block; position: relative; flex: none; }
+  :root body .nltg .nltg-modesel > button { min-height: 40px; padding: 0 10px; border-radius: 10px; border: 1px solid var(--hair); background: #fff; font: 700 13px/1 var(--sans) !important; color: var(--ink); display: inline-flex; align-items: center; gap: 4px; position: relative; }
+  :root body .nltg .nltg-modesel > button::after { content: ''; position: absolute; inset: -4px 0; }
+  .nltg-modesel .menu { position: absolute; inset-block-start: calc(100% + 8px); inset-inline-end: 0; min-width: 190px; padding: 6px; border-radius: 14px; background: var(--paper); border: 1px solid var(--hair); box-shadow: 0 14px 34px rgba(27, 26, 23, .22); display: flex; flex-direction: column; gap: 2px; }
+  :root body .nltg .nltg-modesel .menu button { min-height: 48px; padding: 0 12px; border: 0; border-radius: 10px; background: transparent; font: 700 15px/1 var(--sans) !important; color: var(--ink); text-align: start; }
+  :root body .nltg .nltg-modesel .menu button[aria-pressed="true"] { background: var(--teal); color: #fff; }
+  .nltg-followwrap { display: none; }
+  .nltg-k.is-follow { color: var(--teal); }
+  :root body .nltg button.nltg-k { border: 0; background: transparent; padding: 0; min-height: 20px; text-align: start; font: 700 11px/1.2 var(--sans) !important; color: var(--teal); text-decoration: underline; }
+
+  .nltg-dock {
+    inset: auto 0 0 0; width: auto; height: var(--sheet); border-radius: 22px 22px 0 0; border: 0; border-top: 1px solid var(--hair);
+    background: var(--paper); box-shadow: 0 -10px 30px rgba(27, 26, 23, .14); padding-top: 0;
+  }
+  .nltg-grab { display: block; width: 40px; height: 5px; margin: 10px auto 8px; border-radius: 3px; background: #D6CFC2; flex: none; }
+  .nltg-dock > .nltg-tiles, .nltg-dock > .nltg-people, .nltg-dock > .nltg-ctl, .nltg-dock > .nltg-file, .nltg-dock > .nltg-consent { display: none; }
+  .nltg-tabs { margin: 0 12px; }
+  .nltg-list { padding: 10px 12px 10px; }
+  .nltg-note { padding: 10px; }
+  .nltg-consent { margin: 4px 2px 0; }
+  .nltg-ctlrow { display: flex; gap: 8px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid #EFE9DD; background: #fff; flex: none; }
+  :root body .nltg .nltg-ctlrow .nltg-btn { flex: 1; min-height: 48px; padding: 0 8px; font-size: 13.5px !important; }
+  :root body .nltg .nltg-ctlrow .nltg-btn.round { flex: none; width: 48px; }
+
+  .nltg-strip { display: flex; position: absolute; inset-inline: 10px; inset-block-end: calc(var(--sheet) + 18px); gap: 8px; overflow-x: auto; scrollbar-width: none; pointer-events: auto; }
+  .nltg-strip::-webkit-scrollbar { display: none; }
+  .nltg-strip .nltg-tile { width: 78px; aspect-ratio: 3 / 4; flex: none; }
+  .nltg-strip .nltg-tile .av { font-size: 22px; }
+  .nltg-strip .nltg-tile .nm { font-size: 10.5px; padding: 3px 6px; }
+  .nltg-strip .nltg-chip { background: rgba(250, 247, 241, .95); flex: none; }
+  .nltg-strip.is-chips { flex-wrap: nowrap; align-items: flex-end; }
+
+  :root body .nltg .nltg-fab {
+    display: flex; position: absolute; inset-inline-start: 14px; inset-block-end: calc(var(--sheet) + 18px + var(--tileh) + 12px);
+    align-items: center; gap: 8px; min-height: 48px; padding: 0 16px; border-radius: 999px; border: 0; background: var(--teal); color: #fff;
+    font: 800 14.5px/1 var(--sans) !important; box-shadow: 0 10px 24px rgba(31, 75, 92, .35);
+  }
+  .nltg.is-chips .nltg-fab { inset-block-end: calc(var(--sheet) + 18px + 50px); }
+  .nltg-list .nltg-add { display: none !important; }
+  .nltg-mini { display: none !important; }
+  .nltg-pickhint { inset-block-start: 80px; max-width: calc(100vw - 24px); white-space: normal; }
+  .nltg-pop { inset-inline: 12px; width: auto; inset-block-start: auto; inset-block-end: calc(var(--sheet) + 12px); }
+  .nltg-compose { inset-inline: 0 !important; left: 0 !important; top: auto !important; inset-block-end: 0; width: auto; border-radius: 22px 22px 0 0; padding: 16px 12px calc(16px + env(safe-area-inset-bottom, 0px)); transform: none !important; }
+  .nltg-plan { padding: 84px 12px 16px; align-items: flex-start; }
+  .nltg-plan .in { flex-direction: row; gap: 12px; align-items: flex-start; }
+  .nltg-plan .big { width: calc(100vw - 120px); }
+  .nltg-plan .cut { width: 72px; }
+  .nltg-plan .note { display: none; }
+  .nltg-card { padding: 20px 16px; }
+  .nltg-card .h { font-size: 21px; }
+}
+
+@media (prefers-reduced-motion: reduce) { .nltg * { transition: none !important; animation: none !important; } }
+@media print {
+  html.nltg-file .nltg { position: static; }
+  html.nltg-file .nltg-filepage { position: static; overflow: visible; }
+  html.nltg-file .nltg-filepage .row { display: none; }
+}
