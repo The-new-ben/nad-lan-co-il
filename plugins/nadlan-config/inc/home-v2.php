@@ -682,8 +682,9 @@ if ( ! function_exists( 'nadlan_hv2_band_listings' ) ) {
 			$cur  = function_exists( 'nadlan_current_lang' ) ? nadlan_current_lang() : 'he';
 			if ( 'he' !== $cur && function_exists( 'nl_drop_twins' ) ) {
 				$tw = nl_drop_twins( $l->ID );
-				// French and Russian readers get the English page when the broker has none in their language (1.72.349)
-				foreach ( ( 'ar' === $cur ? array( $cur ) : array( $cur, 'en' ) ) as $want ) {
+				// French and Russian readers get the English page when the broker has none in their language (1.72.349);
+				// Arabic readers too, on the owner's word (28.9.2026: "leave it in English")
+				foreach ( array( $cur, 'en' ) as $want ) {
 					if ( ! empty( $tw[ $want ] ) && 'publish' === get_post_status( $tw[ $want ] ) ) {
 						$href = get_permalink( $tw[ $want ] );
 						$name = get_the_title( $tw[ $want ] );

@@ -82,8 +82,32 @@ with sync_playwright() as pw:
     d = pg.locator(".nlps-dealswrap"); d.scroll_into_view_if_needed(); pg.wait_for_timeout(600)
     shot(pg, "duo-deals", d)
     ctx.close()
-    # 8. the same project in English
+    # 8. the same project in English: since 1.72.351 with the stage in the buyer's language
     ctx, pg = page(b, "https://nad-lan.co.il/projects/rainbow-tel-aviv-en/")
     shot(pg, "rb-en")
+    pg.evaluate("async () => { const s = window.__nlpsStage; if (s) { await s.ready; s.selectUnit('25-w', 'user'); } }")
+    pg.wait_for_timeout(6000)
+    pg.locator("#nlps").scroll_into_view_if_needed(); pg.wait_for_timeout(1500)
+    shot(pg, "rb-en-stage", pg.locator(".nlps-stagebox"))
+    ctx.close()
+    # 9. DUO from the inside (1.72.353): the living room on floor 25
+    ctx, pg = page(b, DUO)
+    pg.locator(".nlat__go").scroll_into_view_if_needed(); pg.locator(".nlat__go").click(); pg.wait_for_timeout(7000)
+    shot(pg, "duo-inside")
     ctx.close()
     b.close()
+
+# every screen fitted into the film's 16:9 frame (2400x1350) on the site's paper, centred, never cropped
+from PIL import Image
+FIT = os.path.join(OUT, "fit")
+os.makedirs(FIT, exist_ok=True)
+for f in sorted(os.listdir(OUT)):
+    if not f.endswith(".jpg"):
+        continue
+    im = Image.open(os.path.join(OUT, f)).convert("RGB")
+    k = min(2400 / im.width, 1350 / im.height)
+    im = im.resize((round(im.width * k), round(im.height * k)), Image.LANCZOS)
+    c = Image.new("RGB", (2400, 1350), (242, 238, 227))
+    c.paste(im, ((2400 - im.width) // 2, (1350 - im.height) // 2))
+    c.save(os.path.join(FIT, f), quality=90)
+print("fitted", len([f for f in os.listdir(FIT) if f.endswith(".jpg")]))

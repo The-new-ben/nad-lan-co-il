@@ -166,7 +166,7 @@
   {
    "id": "inside",
    "type": "views",
-   "dur": 7.4,
+   "dur": 11.0,
    "render": true,
    "kicker": {
     "text": "נכנסים פנימה",
@@ -189,12 +189,24 @@
      "src": "img/nadlan-developers/fit/rb-pool-360.jpg",
      "from": "capture_dev.py (the live site, 28.9.2026)",
      "title": {
-      "text": "הבריכה על הגג",
+      "text": "הבריכה",
       "source": "FacilityRooms v83"
      },
      "line": {
-      "text": "המתקנים ב־360°",
+      "text": "על הגג, והמתקנים ב־360°",
       "source": "FacilityRooms v83"
+     }
+    },
+    {
+     "src": "img/nadlan-developers/fit/duo-inside.jpg",
+     "from": "capture_dev.py (the live site, 28.9.2026)",
+     "title": {
+      "text": "גם ב־DUO",
+      "source": "DuoRooms v92 (1.72.353)"
+     },
+     "line": {
+      "text": "הסלון בקומה 25, בארבעת הכיוונים",
+      "source": "DuoRooms v92 (1.72.353)"
      }
     }
    ],
@@ -242,15 +254,15 @@
      }
     },
     {
-     "src": "img/nadlan-developers/fit/rb-en.jpg",
+     "src": "img/nadlan-developers/fit/rb-en-stage.jpg",
      "from": "capture_dev.py (the live site, 28.9.2026)",
      "title": {
-      "text": "בחמש שפות",
-      "source": "the language pages (LanguagePages v84)"
+      "text": "בשפת הקונה",
+      "source": "StageLanguages v90 (1.72.351)"
      },
      "line": {
-      "text": "גם לקונים מחו״ל",
-      "source": "the language pages (LanguagePages v84)"
+      "text": "הבמה באנגלית, בצרפתית, ברוסית ובערבית",
+      "source": "StageLanguages v90 (1.72.351)"
      }
     }
    ],
