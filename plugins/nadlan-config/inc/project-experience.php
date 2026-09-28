@@ -412,7 +412,7 @@ if ( ! function_exists( 'nadlan_pjx_assets' ) ) {
 #nlpjx-unimap{height:440px;border-radius:12px;border:1px solid #E2DCD0;background:#F3EEE3}
 #nlpjx-map.nl-adopted-map{max-width:1240px;margin:0 auto 20px;box-sizing:border-box}
 .nlpjx-maplayers{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}
-.nlpjx-maplayers button{font:600 12.5px/1 Heebo,sans-serif;border:1px solid #E2DCD0;background:#fff;color:#6D665C;border-radius:999px;padding:8px 13px;cursor:pointer;min-height:34px}
+.nlpjx-maplayers button{font:600 12.5px/1 Heebo,sans-serif;border:1px solid #E2DCD0;background:#fff;color:#6D665C;border-radius:999px;padding:8px 13px;cursor:pointer;min-height:34px}@media(max-width:600px){.nlpjx-maplayers button{min-height:44px}}
 .nlpjx-maplayers button.is-on{background:#1B1A17;border-color:#1B1A17;color:#F4EEDE}
 .nlpjx-price-mapnote{margin-top:10px}
 .nlpjx-price-mapnote a{font-size:13px;font-weight:700;color:#9C7A3C;text-decoration:none}

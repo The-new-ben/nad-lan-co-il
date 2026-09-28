@@ -276,3 +276,14 @@
 :root body .rbs p.rbs-qcard-facts { margin: 0 !important; font: 400 14px/1.4 'Assistant', system-ui, sans-serif !important; color: var(--rbs-ink) !important; max-width: none !important; }
 :root body .rbs p.rbs-qcard-dist { margin: 2px 0 0 !important; font: 700 14px/1.45 'Assistant', system-ui, sans-serif !important; color: var(--rbs-sea) !important; max-width: none !important; }
 :root body .rbs p.rbs-qcard-note { margin: 4px 0 0 !important; font: 400 11.5px/1.45 'Assistant', system-ui, sans-serif !important; color: rgba(20, 33, 43, .66) !important; max-width: none !important; }
+/* TouchTargets v62 (28.9.2026): every control on the stage answers a 44px finger. The light switch and the quarter pins
+   keep their small look over the model and get an invisible 44px touch area; the floor card's close grows to 36px with a
+   44px touch area; the floor card's actions are 44px tall on narrow stages. (.rbs-qpin is position:absolute already, so
+   its ::after needs no new positioning; never set position on a pin.) */
+.rbs-presets button { position: relative; }
+.rbs-presets button::after { content: ""; position: absolute; inset: -6px 0; }
+.rbs--narrow .rbs-presets button::after { inset: -7px 0; }
+.rbs-qpin::after { content: ""; position: absolute; inset: -10px -3px; }
+.rbs-label-close { position: relative; width: 36px; height: 36px; margin: -10px -10px 0 0; font-size: 22px; line-height: 36px; }
+.rbs-label-close::after { content: ""; position: absolute; inset: -4px; }
+.rbs--narrow .rbs-act, .rbs--narrow .rbs-label-cta { min-height: 44px; }
