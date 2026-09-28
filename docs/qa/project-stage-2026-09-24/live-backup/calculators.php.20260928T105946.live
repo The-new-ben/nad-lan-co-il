@@ -25,8 +25,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /* ---- purchase-tax brackets (single residence, IL resident) - UPDATE ANNUALLY ----
- * The brackets in force from 16.1.2025, frozen until January 2028 (the Treasury's freeze; Bizportal 6.2026: exempt up to
- * 1,978,745 on a single apartment; checked 28.9.2026). Filterable so the owner/
+ * Approximate brackets for the 16.1.2025-15.1.2026 year. Filterable so the owner/
  * Cowork can update without a code release. Always shown with the effective-date
  * label + a verify link.
  */
@@ -34,7 +33,6 @@ if ( ! function_exists( 'nadlan_purchase_tax_config' ) ) {
 	function nadlan_purchase_tax_config() {
 		return apply_filters( 'nadlan_purchase_tax_brackets', array(
 			'effective' => '16.1.2025',
-			'frozen'    => 'ינואר 2028',
 			'source'    => 'https://www.gov.il/he/departments/topics/purchase_tax',
 			// single apartment (דירה יחידה): [ceiling, rate]; last = Infinity
 			'single' => array(
@@ -101,7 +99,7 @@ add_shortcode( 'nadlan_calc_purchase_tax', function () {
 	<select id="ptax-type"><option value="single">דירה יחידה</option><option value="additional">דירה נוספת / להשקעה</option></select>
 	<button onclick="nadlanPtax()">חשבו מס רכישה</button>
 	<div class="nlcalc-out"></div>
-	<p class="nlcalc-disc">המדרגות בתוקף מ-<?php echo esc_html( $cfg['effective'] ); ?><?php echo ! empty( $cfg['frozen'] ) ? esc_html( ' וקפואות עד ' . $cfg['frozen'] ) : ''; ?>. לאימות מול המקור הרשמי: <a href="<?php echo esc_url( $cfg['source'] ); ?>" target="_blank" rel="noopener nofollow">רשות המסים</a>. אומדן בלבד, אינו חוות דעת מס.</p>
+	<p class="nlcalc-disc">המדרגות מעודכנות לתאריך <?php echo esc_html( $cfg['effective'] ); ?>. הן מתעדכנות מדי שנה; לאימות מול המקור הרשמי: <a href="<?php echo esc_url( $cfg['source'] ); ?>" target="_blank" rel="noopener nofollow">רשות המסים</a>. אומדן בלבד, אינו חוות דעת מס.</p>
 </div>
 <script>
 function nadlanPtax(){

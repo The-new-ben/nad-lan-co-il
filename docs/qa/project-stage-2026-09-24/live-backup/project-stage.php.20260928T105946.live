@@ -717,10 +717,10 @@ add_action( 'wp_head', function () {
 		. 'dialog.nlfilm{padding:0;border:0;background:transparent;width:min(1100px,calc(100vw - 32px));max-width:none;max-height:calc(100svh - 32px);overflow:visible}'
 		. 'dialog.nlfilm::backdrop{background:rgba(20,19,15,.82)}'
 		. '.nlfilm-box{position:relative;border-radius:18px;overflow:hidden;background:#14130F;box-shadow:0 30px 80px rgba(0,0,0,.5)}'
-		. '.nlfilm-v{display:block;width:100%;height:auto;max-height:calc(100svh - 176px);background:#14130F}'
+		. '.nlfilm-v{display:block;width:100%;height:auto;max-height:calc(100svh - 110px);background:#14130F}'
 		. '.nlfilm-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:12px 16px;background:#FAF7F1;font:600 14px/1.45 Heebo,Assistant,sans-serif;color:#3B4753}'
 		. '.nlfilm-bar b{color:#1B1A17;font-weight:700}'
-		. '.nlfilm-x{position:absolute;top:-56px;inset-inline-end:0;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:rgba(250,247,241,.95);color:#1B1A17;font:700 20px/44px Heebo,sans-serif;cursor:pointer;padding:0}'
+		. '.nlfilm-x{position:absolute;top:12px;inset-inline-end:12px;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:rgba(250,247,241,.95);color:#1B1A17;font:700 20px/44px Heebo,sans-serif;cursor:pointer;padding:0}'
 		. '@media(max-width:700px){dialog.nlfilm{width:min(420px,calc(100vw - 24px))}.nlfilm-bar{font-size:13px}}'
 		. '</style>' . "\n";
 }, 998 );
@@ -730,7 +730,7 @@ add_action( 'wp_footer', function () {
 	$f = $ps['film'];
 	echo '<dialog id="nlfilm" class="nlfilm" dir="rtl" lang="he" aria-label="' . esc_attr( 'סרטון הפרויקט: ' . $ps['name'] ) . '"'
 		. ' data-wide="' . esc_url( $f['wide'] ) . '" data-tall="' . esc_url( $f['tall'] ) . '" data-pw="' . esc_url( $f['poster_wide'] ) . '" data-pt="' . esc_url( $f['poster_tall'] ) . '">'
-		. '<button type="button" class="nlfilm-x" aria-label="סגירה">&#10005;</button><div class="nlfilm-box">'
+		. '<div class="nlfilm-box"><button type="button" class="nlfilm-x" aria-label="סגירה">&#10005;</button>'
 		. '<video class="nlfilm-v" controls playsinline preload="none"></video>'
 		. '<div class="nlfilm-bar"><span><b>' . esc_html( $ps['name'] ) . '</b> · סרטון הפרויקט · ' . (int) $f['secs'] . ' שניות · עודכן ' . esc_html( $f['date_he'] ) . '</span><span>הדמיה להמחשה. כל נתון עם המקור שלו.</span></div>'
 		. '</div></dialog>'
