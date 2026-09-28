@@ -1,0 +1,13 @@
+{
+  "released": "1.72.304",
+  "from": "1.72.303",
+  "at": "2026-09-28 04:06:08",
+  "files": {
+    "inc/drone-map.php": "058ae6375ff49a06531e3cf89d3d202b",
+    "nadlan-config.php": "89dd2c05a620e52e4c26a3348b6a17d4"
+  },
+  "live_before": {
+    "inc/drone-map.php": "e56ce8f6127df71a8904a15d42f5959c",
+    "nadlan-config.php": "fe66b33247289d82ce774545529f1d8c"
+  }
+}

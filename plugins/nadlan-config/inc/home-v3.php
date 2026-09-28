@@ -455,6 +455,19 @@ if ( ! function_exists( 'nadlan_hp_band_cities' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_hp_band_map' ) ) {
+	/** The projects map (design system ProjectMap v52): the home's own band head, the lead with the real counts, then the
+	 *  map without its own head (the old one sat in a sand box of its own, unlike every other band). */
+	function nadlan_hp_band_map() {
+		if ( ! function_exists( 'nadlan_drone_map_band' ) ) { return ''; }
+		$map = nadlan_drone_map_band( 'showcase', 'he', array( 'head' => false ) );
+		if ( '' === $map ) { return ''; }
+		$lead = function_exists( 'nadlan_drone_map_lead' ) ? nadlan_drone_map_lead( 'he' ) : '';
+		return '<section class="nlhp-band nlhp-mapband" aria-labelledby="nlhp-map-h">' . nadlan_hp_head( 'על המפה', 'מפת הפרויקטים', 'nlhp-map-h' )
+			. ( '' !== $lead ? '<p class="nlhp-maplead">' . esc_html( $lead ) . '</p>' : '' ) . $map . '</section>';
+	}
+}
+
 if ( ! function_exists( 'nadlan_hp_band_magazine' ) ) {
 	/** home-v2's magazine band; the lead is a deep card with no picture (the picture cropped into a broken look). */
 	function nadlan_hp_band_magazine( $html ) {
@@ -572,7 +585,7 @@ if ( ! function_exists( 'nadlan_hp_body' ) ) {
 			. nadlan_hp_band_listings( $cap( 'nadlan_hv2_band_listings' ) )
 			. nadlan_hp_band_prices()
 			. nadlan_hp_band_cities()
-			. $cap( 'nadlan_hv2_band_dronemap' )
+			. nadlan_hp_band_map()
 			. nadlan_hp_band_pros()
 			. nadlan_hp_band_magazine( $cap( 'nadlan_hv2_band_magazine' ) )
 			. nadlan_hp_band_services()
