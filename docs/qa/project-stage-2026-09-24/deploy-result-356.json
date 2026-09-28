@@ -1,0 +1,13 @@
+{
+  "released": "1.72.356",
+  "from": "1.72.355",
+  "at": "2026-09-28 18:51:26",
+  "files": {
+    "inc/rest-privacy.php": "6f71f64d3f376cca2987451b8a71cec5",
+    "nadlan-config.php": "ee01a6c63264e287a30b0a4d07228451"
+  },
+  "live_before": {
+    "inc/rest-privacy.php": "missing",
+    "nadlan-config.php": "35ebe0bd6bb0c8128f3d696d8d83ee33"
+  }
+}
