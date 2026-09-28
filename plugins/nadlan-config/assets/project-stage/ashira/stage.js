@@ -161,6 +161,36 @@ for (const T of TOWERS) {
   T.top = T.roof + T.techH;
 }
 const TOWER_BY = { S1: TOWERS[0], N2: TOWERS[1] };
+
+/* FloorSlice v87 (28.9.2026): floor n of a building as a plan, north up, in metres from its centre (x east, y north). Each
+   building records what it is built from (buildTower: the plate, the podium, the setback, its balcony rule), so the plan is
+   the model's own floor; before the 3D stage is built there is none. The core is an illustration; the plan says so. */
+const SLICE = {};
+function floorPlan(n, tower, offset) {
+  const S = SLICE[String(tower || '').toUpperCase()] || SLICE[TOWERS[0].id];
+  if (!S) return null;
+  const { TW, plateL, baseL, upTo, phL, phFrom, phSet, st } = S;
+  const f = Math.round(Number(n));
+  if (!(f >= 1 && f <= TW.floors)) return null;
+  // the setback line: the model offsets the plate (corners eased 1.2 m) by more than that radius, which folds tiny spikes
+  // into the corners (hidden in 3D, visible in a plan); here the corners are eased wider first, so the line stays clean
+  const phClean = phSet ? offsetLoop(resampleLoop(easeCorners(st.plate || TW.poly, 1.2 + phSet + 0.5, 5), st.samples || 136, 4), -phSet) : phL;
+  const L = f <= upTo && baseL ? baseL : (f >= phFrom ? phClean : plateL);
+  const extra = f >= phFrom ? phSet : 0;
+  const D = L.pts.map((p, i) => 0.42 + extra + Math.max(0, st.balcony(faceOf(p), p, i, f, L)));
+  const cg = Math.cos(GRID_ANGLE), sg = Math.sin(GRID_ANGLE); // site.rotation.y = GRID_ANGLE
+  const r2 = (v) => Math.round(v * 100) / 100;
+  const toPlan = (x, z) => {
+    const dx = x - TW.cx, dz = z - TW.cz;
+    const wx = dx * cg + dz * sg, wz = -dx * sg + dz * cg;
+    const b = (Math.atan2(wx, -wz) / DEG + (Number(offset) || 0)) * DEG, r = Math.hypot(wx, wz);
+    return [r2(r * Math.sin(b)), r2(r * Math.cos(b))];
+  };
+  const glass = L.pts.map((p) => toPlan(p.x, p.z));
+  const outer = L.pts.map((p, i) => toPlan(p.x + p.nx * D[i], p.z + p.nz * D[i]));
+  const core = [[-5, -3.5], [5, -3.5], [5, 3.5], [-5, 3.5]].map(([x, z]) => toPlan(TW.cx + x, TW.cz + z));
+  return { floor: f, floors: TW.floors, tower: TW.id, name: (TEXT.towers || {})[TW.id] || '', penthouse: f >= phFrom, heightM: Math.round((TW.lv[f] + EYE_M) * 10) / 10, glass, outer, core };
+}
 const SITE_C = { x: 0, z: 0 };
 const TOP = TOWERS[0].top;
 
@@ -521,6 +551,8 @@ export function mountAshiraStage(container, options = {}) {
     focusPhase(ph) { return engine ? engine.focusPhase(ph) : null; },
     lookToward(name) { return engine ? engine.lookToward(name) : false; },
     /* { tower, floor, heightM, bearing, unit } of the current pick, or null */
+    /* FloorSlice v87: floor n of a building as a plan (see floorPlan), for assets/project-stage/slice.js */
+    floorPlan(n, tower) { return floorPlan(n, tower, Number(opts.bearingOffset) || 0); },
     getSelection() { return engine ? engine.getSelection() : null; },
     floorHeight(n, tower) {
       const TW = TOWER_BY[String(tower || opts.tower || '').toUpperCase()] || TOWERS[0];
@@ -3249,6 +3281,7 @@ function buildTower(c, TW, st) {
   }
   const phFrom = st.phFrom || (F + 1), phSet = st.phSet || 0;
   const phL = phSet ? offsetLoop(plateL, -phSet) : plateL;
+  SLICE[TW.id] = { TW, plateL, baseL, upTo, phL, phFrom, phSet, st }; // FloorSlice v87
   glass.f = TW.k;
   if (baseL) addWall(glass, baseL, lv[1] - 0.5, lv[upTo + 1]);
   addWall(glass, plateL, lv[upTo + 1] - (baseL ? 0.05 : 0.5), lv[Math.min(phFrom, F + 1)]);

@@ -64,7 +64,9 @@
     el.appendChild(holder);
     try {
       mapboxgl.accessToken = token;
-      if (mapboxgl.setRTLTextPlugin && !window.__nlRtlPlugin) {
+      // registered once per page: the stage's view and the area map may have asked first (DUO, a phone, 28.9.2026:
+      // "RTL text plugin already registered" escaped as a page error)
+      if (mapboxgl.setRTLTextPlugin && !window.__nlRtlPlugin && (!mapboxgl.getRTLTextPluginStatus || mapboxgl.getRTLTextPluginStatus() === "unavailable")) {
         try {
           mapboxgl.setRTLTextPlugin("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.3.0/mapbox-gl-rtl-text.js", null, true);
           window.__nlRtlPlugin = 1;

@@ -29,13 +29,16 @@ const sv = (tag, attrs, parent) => {
 };
 const norm = (b) => ((Number(b) % 360) + 360) % 360;
 
-/* o: { stage, floor, unit ('w'), units: [[id, bearing]], words(bearing) -> text, note, tourFloors: [25, ...], opener } */
+/* o: { stage, floor, unit ('w'), tower ('N' on a two-tower stage, else null), units: [[id, bearing]], words(bearing) -> text,
+ *      note, tourFloors: [25, ...], opener } */
 export function openSlice(o) {
   ensureCss();
   const stage = o.stage;
   if (!stage || typeof stage.floorPlan !== 'function') return null;
   let floor = Number(o.floor) || 1;
   let unit = o.unit || null;
+  const tower = o.tower ? String(o.tower) : null;
+  const uid = (side) => (tower ? tower + '-' : '') + floor + '-' + side; // "25-w", or "N-25-w" on DUO
   const units = (o.units || []).map(([id, b]) => ({ id, b: norm(b) }));
   const words = typeof o.words === 'function' ? o.words : () => '';
   const prevFocus = o.opener || document.activeElement;
@@ -68,15 +71,16 @@ export function openSlice(o) {
   document.documentElement.classList.add('nlsl-open');
 
   function draw() {
-    const p = stage.floorPlan(floor);
+    const p = stage.floorPlan(floor, tower);
     if (!p) return;
-    title.textContent = 'קומה ' + p.floor + (p.penthouse ? ' · קומות הפנטהאוז' : '');
-    facts.textContent = 'גובה העין כ־' + p.heightM + ' מ׳ מהרחוב · ' + (p.penthouse ? 'הקומה נסוגה מקו החזית, והמרפסות עמוקות יותר' : 'המרפסות בגל, כמו על הבמה, ומשתנות מקומה לקומה');
+    title.textContent = 'קומה ' + p.floor + (p.name ? ' · ' + p.name : '') + (p.penthouse ? ' · קומות הפנטהאוז' : '');
+    // true on every stage (Rainbow's balconies wave floor by floor, DUO's sit at the corners and mid-face)
+    facts.textContent = 'גובה העין כ־' + p.heightM + ' מ׳ מהרחוב · ' + (p.penthouse ? 'הקומה נסוגה מקו החזית, והמרפסות עמוקות יותר' : 'קו החזית והמרפסות כמו בדגם שעל הבמה');
     up.disabled = p.floor >= p.floors;
     dn.disabled = p.floor <= 1;
     // the plan: metres -> pixels, north up
     const all = p.outer.concat(p.glass);
-    const R = Math.max(...all.map(([a, b]) => Math.hypot(a, b))) + 9;
+    const R = Math.max(...all.map(([a, b]) => Math.hypot(a, b))) + 12; // room for the two-line direction words outside
     const S = 520, k = S / (2 * R), c0 = S / 2;
     const P = ([a, b]) => (c0 + a * k).toFixed(1) + ',' + (c0 - b * k).toFixed(1);
     plan.textContent = '';
@@ -166,13 +170,13 @@ export function openSlice(o) {
   }
   function pickUnit(id) {
     unit = id;
-    try { stage.selectUnit(floor + '-' + id, 'user'); } catch (e) { /* the stage moves on its own */ }
+    try { stage.selectUnit(uid(id), 'user'); } catch (e) { /* the stage moves on its own */ }
     draw();
   }
   function goFloor(d) {
     floor += d;
-    try { stage.selectFloor(floor); window.dispatchEvent(new CustomEvent('nl:floor', { detail: { floor, heightM: stage.floorHeight(floor) } })); } catch (e) { /* none */ }
-    if (unit) { try { stage.selectUnit(floor + '-' + unit, 'user'); } catch (e) { /* none */ } }
+    try { stage.selectFloor(floor, tower || undefined); window.dispatchEvent(new CustomEvent('nl:floor', { detail: { floor, heightM: stage.floorHeight(floor), tower } })); } catch (e) { /* none */ }
+    if (unit) { try { stage.selectUnit(uid(unit), 'user'); } catch (e) { /* none */ } }
     draw();
   }
   up.addEventListener('click', () => goFloor(1));

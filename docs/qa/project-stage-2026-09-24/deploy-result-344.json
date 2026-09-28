@@ -1,0 +1,23 @@
+{
+  "released": "1.72.344",
+  "from": "1.72.343",
+  "at": "2026-09-28 15:07:34",
+  "files": {
+    "assets/project-stage/duo/stage.js": "15ae7d4dc31c1c517d58edb3f727fd94",
+    "assets/project-stage/dimri/stage.js": "df9b992adfd3bd386b6bd342329dcd75",
+    "assets/project-stage/ashira/stage.js": "5797858b29502f94d70f3c07a8a65c55",
+    "assets/project-stage/slice.js": "6dfd6a35b7d46fdad5346ff6b963d471",
+    "assets/project-stage/bridge.js": "43e12a3676ed666c86baf072b8a77d7e",
+    "assets/showroom-engine/mapbox-init.js": "d6289f647096c383fd4c5b0cc722b98b",
+    "nadlan-config.php": "55073d9c917867d3695dcaf49f4babdc"
+  },
+  "live_before": {
+    "assets/project-stage/duo/stage.js": "35e7f819454abca7e5cec00ac3aab2a7",
+    "assets/project-stage/dimri/stage.js": "06962cd9b383e8fb552f22567572e799",
+    "assets/project-stage/ashira/stage.js": "5ee8a286e8d91ae226248e394668f68e",
+    "assets/project-stage/slice.js": "026a1df03dc8406198f95638f9579e36",
+    "assets/project-stage/bridge.js": "31bebb63e447514462514b59420a22ae",
+    "assets/showroom-engine/mapbox-init.js": "07034fdcfdb409060948d14c86ca9bc2",
+    "nadlan-config.php": "7e07ed959125ee7853ff09dc6b144085"
+  }
+}

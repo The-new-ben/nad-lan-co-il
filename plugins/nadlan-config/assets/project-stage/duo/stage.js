@@ -167,6 +167,44 @@ const EYE_M = 1.6;
 const RING_OFF = 3.8;          // the floor ring: this far outside the glass line (clears the deepest balcony)
 function floorLevel(n) { return Y0 + (n - 1) * FH; }
 function floorEyeHeight(n) { return Math.round((floorLevel(n) + EYE_M) * 10) / 10; }
+/* FloorSlice v87 (28.9.2026): floor n of a tower ('N' | 'S') as a plan, north up, in metres from that tower's centre
+   (x east, y north), from the very numbers the towers are built from: the footprint with eased corners, the balconies
+   (deep around the corners, a sun balcony in the middle of the west and east faces, a slab edge elsewhere), the penthouse
+   floors 48-50 set back 2.2 m with deeper terraces; a core drawn along the grid. The core and any division into
+   apartments are illustrations; the plan says so. */
+function floorPlan(n, tower, offset) {
+  const f = Math.round(Number(n));
+  const TW = TOWER_BY[String(tower || 'N').toUpperCase()];
+  if (!TW || !(f >= 1 && f <= FLOORS)) return null;
+  const ph = f >= PH_FROM;
+  const loop = resampleLoop(easeCorners(TW.poly, 1.4, 5), 136, 4);
+  // the setback line: the model offsets the eased loop by 2.2 m, more than the corners' 1.4 m radius, which folds tiny spikes
+  // into the corners (hidden in 3D, visible in a plan); here the corners are eased wider first, so the line stays clean
+  const lp = ph ? offsetLoop(resampleLoop(easeCorners(TW.poly, 4.1, 5), 136, 4), -2.2) : loop;
+  const xs = TW.poly.map((p) => p[0]).slice().sort((a, b) => a - b);
+  const wMid = { x: (xs[0] + xs[1]) / 2, z: TW.cz }, eMid = { x: (xs[2] + xs[3]) / 2, z: TW.cz };
+  const D = loop.pts.map((p) => {
+    let dc = 1e9;
+    for (const c of TW.poly) dc = Math.min(dc, Math.hypot(p.x - c[0], p.z - c[1]));
+    const corner = 1 - smooth(5.8, 8.6, dc);
+    const onWE = Math.abs(p.nx) > 0.85;
+    const dm = onWE ? Math.min(Math.hypot(p.x - wMid.x, p.z - wMid.z), Math.hypot(p.x - eMid.x, p.z - eMid.z)) : 1e9;
+    const mid = 1 - smooth(4.2, 5.6, dm);
+    return 0.42 + 1.95 * Math.max(corner, mid * 0.82) + (ph ? 2.2 : 0);
+  });
+  const cg = Math.cos(GRID_ANGLE), sg = Math.sin(GRID_ANGLE); // site.rotation.y = GRID_ANGLE
+  const r2 = (v) => Math.round(v * 100) / 100;
+  const toPlan = (x, z) => {
+    const dx = x - TW.cx, dz = z - TW.cz;
+    const wx = dx * cg + dz * sg, wz = -dx * sg + dz * cg;
+    const b = (Math.atan2(wx, -wz) / DEG + (Number(offset) || 0)) * DEG, r = Math.hypot(wx, wz);
+    return [r2(r * Math.sin(b)), r2(r * Math.cos(b))];
+  };
+  const glass = lp.pts.map((p) => toPlan(p.x, p.z));
+  const outer = lp.pts.map((p, i) => toPlan(p.x + p.nx * D[i], p.z + p.nz * D[i]));
+  const core = [[-6, -4.5], [6, -4.5], [6, 4.5], [-6, 4.5]].map(([x, z]) => toPlan(TW.cx + x, TW.cz + z));
+  return { floor: f, floors: FLOORS, tower: TW.id, name: (TEXT.towers || {})[TW.id] || '', penthouse: ph, heightM: floorEyeHeight(f), glass, outer, core };
+}
 function normDeg(b) { return ((b % 360) + 360) % 360; }
 
 let cssInjected = false;
@@ -438,6 +476,8 @@ export function mountDuoStage(container, options = {}) {
     /* { tower, floor, heightM, bearing, unit } of the current pick, or null */
     getSelection() { return engine ? engine.getSelection() : null; },
     floorHeight(n) { const f = Math.round(Number(n)); return f >= 1 && f <= FLOORS ? floorEyeHeight(f) : null; },
+    /* FloorSlice v87: floor n of a tower as a plan (see floorPlan), for assets/project-stage/slice.js */
+    floorPlan(n, tower) { return floorPlan(n, tower, Number(opts.bearingOffset) || 0); },
     getNorth() { return engine ? engine.getNorth() : staticNorth(Number(opts.bearingOffset) || 0); },
     setAutoOrbit(on) { if (engine) engine.setAutoOrbit(on); },
     stats() { return engine ? engine.stats() : null; },

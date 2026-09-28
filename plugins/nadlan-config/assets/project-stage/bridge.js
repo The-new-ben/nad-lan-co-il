@@ -295,10 +295,11 @@ async function boot() {
     sl.addEventListener('click', () => {
       const sel = stage.getSelection ? stage.getSelection() : null;
       const f = (sel && sel.floor) || (last && last.floor) || 25;
-      const u = sel && sel.unit ? String(sel.unit).split('-')[1] : null;
+      const u = sel && sel.unit ? String(sel.unit).split('-').pop() : null; // "25-w", or "N-25-w" on a two-tower stage
+      const tw = sel && sel.tower ? String(sel.tower) : null;
       ga('floor_slice', { floor: f, project: cfg.name });
       import(new URL('./slice.js' + new URL(import.meta.url).search, import.meta.url).href).then((m) => m.openSlice({
-        stage, floor: f, unit: u, units: cfg.units, words: facingWords, note: cfg.sliceNote || '', tourFloors, opener: sl,
+        stage, floor: f, unit: u, tower: tw, units: cfg.units, words: facingWords, note: cfg.sliceNote || '', tourFloors, opener: sl,
       })).catch((err) => console.warn('[project stage] slice', err));
     });
   }
