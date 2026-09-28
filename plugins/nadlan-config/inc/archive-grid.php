@@ -237,8 +237,11 @@ add_filter( 'nadlan_cta_start_map', function ( $m ) {
 	return $m;
 } );
 
-if ( ! function_exists( 'nadlan_pl_card' ) ) {
-	function nadlan_pl_card( $id ) {
+if ( ! function_exists( 'nadlan_plist_card' ) ) {
+	/* nadlan_plist_card, not nadlan_pl_card: inc/placements.php owns that name for the paid broker card on articles;
+	   archive-grid loads first, and between 1.72.296 and 1.72.307 this card took the name over and replaced the
+	   broker's advertisement on /property-value/ with an empty card linking to the placement's own address. */
+	function nadlan_plist_card( $id ) {
 		$demo  = nadlan_pl_is_demo( $id );
 		$deal  = (string) get_post_meta( $id, 'listing_type', true );
 		$types = array( 'apartment' => 'דירה', 'penthouse' => 'פנטהאוז', 'garden' => 'דירת גן', 'cottage' => 'קוטג׳', 'villa' => 'בית פרטי', 'duplex' => 'דופלקס', 'studio' => 'סטודיו', 'house' => 'בית פרטי', 'land' => 'מגרש', 'office' => 'משרד' );
@@ -375,7 +378,7 @@ if ( ! function_exists( 'nadlan_pl_render' ) ) {
 				$sep = true;
 				echo '<p class="nlpl-sep"><b>מודעות לדוגמה.</b> כך נראית מודעה באתר. הן לא נספרות במספר המודעות ולא מופיעות במפה.</p>';
 			}
-			echo nadlan_pl_card( $p->ID ); // phpcs:ignore
+			echo nadlan_plist_card( $p->ID ); // phpcs:ignore
 		}
 		echo '</div>';
 		if ( $pages > 1 ) {
