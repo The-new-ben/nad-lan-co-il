@@ -103,7 +103,7 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 /* PublishPage v48-69 (28.9.2026): full at the top of the page, a round 54px button once the reader scrolls. v69 (owner
    order): the pill never hides - not for logged-in visitors, not on a 3D stage, not while typing; over a form button it
    moves up instead. The link, its label and tracking unchanged. */
-@media(max-width:600px){#nlcta.is-mini .nlcta-wa{width:54px;height:54px;min-height:54px;max-width:none;padding:0;justify-content:center;border-radius:50%}#nlcta.is-mini .nlcta-txt,#nlcta.is-mini .nlcta-brand{display:none}#nlcta.is-mini .nlcta-glyph{width:40px;height:40px}html body #nlcta.is-clear{bottom:calc(env(safe-area-inset-bottom,0px) + 150px)!important}}
+@media(max-width:600px){#nlcta.is-mini .nlcta-wa{width:54px;height:54px;min-height:54px;max-width:none;padding:0;justify-content:center;border-radius:50%}#nlcta.is-mini .nlcta-txt,#nlcta.is-mini .nlcta-brand{display:none}#nlcta.is-mini .nlcta-glyph{width:40px;height:40px}html body #nlcta.is-clear{bottom:calc(env(safe-area-inset-bottom,0px) + var(--nlcta-lift,150px))!important}}
 /* PublishPage v70 (28.9.2026): on broker sites and broker listing pages the site pill steps aside (the lead is the broker's);
    on wide screens the broker's own WhatsApp floats in the same corner. Here, not only in the engine, because broker pages
    are built once and keep their styles. */
@@ -120,9 +120,28 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 	if(box&&window.matchMedia){
 		var mq=window.matchMedia('(max-width:600px)'),tick=false,back=0;
 		var subs=[].slice.call(document.querySelectorAll('form button,form input[type=submit],.nlow button'));
+		/* StagePillClear v91 (28.9.2026): the 3D stage's floor card opens at the foot of the phone's screen with its buttons in
+		   the pill's corner ("לקבלת תוכניות ומחירים" half under the circle); a stage button in that corner lifts the pill too.
+		   Only the pill's own column counts, and its column does not move when it is lifted, so it never flickers. */
+		// the lift clears the whole card (its top + 10px), not a fixed 150px that left the circle on the card's next button
+		var wa0=box.querySelector('.nlcta-wa');
+		var stageHit=function(h){
+			if(!wa0)return 0;
+			var p=wa0.getBoundingClientRect(),els=document.querySelectorAll('#nlps button,#nlps a');
+			for(var i=0;i<els.length;i++){
+				var r=els[i].getBoundingClientRect();
+				if(r.height>0&&r.bottom>h-110&&r.top<h&&r.left<p.right+8&&r.right>p.left-8){
+					var c=els[i];
+					while(c.parentElement&&c.parentElement.id!=='nlps'&&c.parentElement.getBoundingClientRect().height<h*0.55){c=c.parentElement;}
+					return Math.min(Math.round(h-c.getBoundingClientRect().top+10),Math.round(h*0.7));
+				}
+			}
+			return 0;
+		};
 		var fit=function(){
 			tick=false;
-			var h=window.innerHeight||0,clash=subs.some(function(el){var r=el.getBoundingClientRect();return r.height>0&&r.bottom>h-110&&r.top<h;});
+			var h=window.innerHeight||0,lift=mq.matches?stageHit(h):0,clash=subs.some(function(el){var r=el.getBoundingClientRect();return r.height>0&&r.bottom>h-110&&r.top<h;})||lift>0;
+			if(lift>0){box.style.setProperty('--nlcta-lift',lift+'px');}else{box.style.removeProperty('--nlcta-lift');}
 			box.classList.toggle('is-mini',mq.matches&&(window.scrollY||0)>120);
 			box.classList.toggle('is-clear',mq.matches&&clash);
 		};
@@ -130,6 +149,9 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 		window.addEventListener('scroll',ask,{passive:true});
 		window.addEventListener('resize',ask);
 		if(mq.addEventListener){mq.addEventListener('change',fit);}
+		// the stage's card opens and closes without a scroll: look again after a tap on the stage and on its floor events
+		document.addEventListener('click',function(e){if(e.target&&e.target.closest&&e.target.closest('#nlps')){setTimeout(ask,350);}},true);
+		['nl:floor','nl:facing'].forEach(function(n){window.addEventListener(n,function(){setTimeout(ask,350);});});
 		fit();
 		var typing=function(t){return t&&t.matches&&t.matches('textarea,select,input:not([type=checkbox]):not([type=radio]):not([type=button]):not([type=submit]):not([type=hidden])');};
 		document.addEventListener('focusin',function(e){if(typing(e.target)){clearTimeout(back);box.classList.add('is-typing');}});

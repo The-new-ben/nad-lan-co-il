@@ -1,0 +1,13 @@
+{
+  "released": "1.72.352",
+  "from": "1.72.351",
+  "at": "2026-09-28 17:28:29",
+  "files": {
+    "inc/conversion-cta.php": "adec0087ce12d1c8d3aa755d3828d3a0",
+    "nadlan-config.php": "ef62cd55f95f76311aa630a9acb8329d"
+  },
+  "live_before": {
+    "inc/conversion-cta.php": "7a6c229ecb0d525482f69fce01b2bdf0",
+    "nadlan-config.php": "e2af24af1cc094e3cda42ce4a915698a"
+  }
+}
