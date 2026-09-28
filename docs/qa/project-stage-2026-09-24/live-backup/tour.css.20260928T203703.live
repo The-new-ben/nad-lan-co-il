@@ -158,7 +158,6 @@ html.nlat-open, html.nlat-open body { overflow: hidden !important; }
 .nlat-viewer__places button:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }
 .nlat-viewer__places .nlat-viewer__back { border: 1px solid rgba(255, 255, 255, .35); }
 .nlat-viewer__places .nlat-viewer__back::before { content: '→'; margin-inline-end: 6px; }
-.nlat-viewer[dir="ltr"] .nlat-viewer__places .nlat-viewer__back::before { content: '←'; } /* a left-to-right language page: back points left */
 .nlat-viewer__places .nlat-viewer__back[hidden] { display: none; }
 .nlat-viewer__places-note { flex: none; padding: 0 10px 0 4px; font: 600 11px/1.2 'Assistant', system-ui, sans-serif; color: rgba(255, 255, 255, .72); }
 /* the building's rooms have no direction or place switch */
@@ -171,7 +170,7 @@ html.nlat-open, html.nlat-open body { overflow: hidden !important; }
 }
 .nlat-lift[hidden] { display: none; }
 :root body .nlat-viewer p.nlat-lift__h { display: flex; align-items: baseline; gap: 10px; margin: 0 0 6px !important; padding-inline-end: 48px; max-width: none !important; }
-.nlat-lift__h b { font: 600 19px/1.2 'Noto Serif Hebrew', 'Frank Ruhl Libre', serif; white-space: nowrap; flex: none; }
+.nlat-lift__h b { font: 600 19px/1.2 'Noto Serif Hebrew', 'Frank Ruhl Libre', serif; }
 .nlat-lift__h small { font: 600 11.5px/1.2 'Assistant', system-ui, sans-serif; color: #8A6A2E; }
 .nlat-lift__x {
   position: absolute; top: 8px; inset-inline-end: 8px; width: 44px; height: 44px; border-radius: 50%; border: 0; padding: 0;
@@ -186,7 +185,7 @@ html.nlat-open, html.nlat-open body { overflow: hidden !important; }
 .nlat-lift__stop small { font: 600 12px/1.2 'Assistant', system-ui, sans-serif; color: #6B6558; }
 .nlat-lift__stop:hover { border-color: #1F4B5C; }
 .nlat-lift__stop:disabled { background: #F3EEE3; cursor: default; opacity: .75; }
-.nlat-lift__stop .nlat-lift__here { font-style: normal; font-weight: 600; color: #8A6A2E; }
+.nlat-lift__stop:disabled b::after { content: ' · אתם כאן'; font-weight: 600; color: #8A6A2E; }
 .nlat-lift__stop:focus-visible, .nlat-lift__x:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }
 .nlat-viewer.is-lift .nlat-viewer__doors { opacity: .35; }
 /* the move: the room fades out while the next picture loads, then the next room fades in */

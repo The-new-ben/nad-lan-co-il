@@ -157,14 +157,22 @@ function wrapTitle(text, f, maxW) {
   }
   return best ? best.lines : null;
 }
+// a left-to-right film (data "dir": "ltr", an English cut): the layout is the same composition mirrored; the pictures are
+// drawn as they are. MIR is false for a Hebrew film, which then draws exactly as before.
+let MIR = false;
+const MX = (x, w) => (MIR ? W - x - (w || 0) : x);
+const MA = a => (MIR ? (a === 'right' ? 'left' : a === 'left' ? 'right' : a) : a);
+function dot(x, y, r) { ctx.beginPath(); ctx.arc(MX(x), y, r, 0, Math.PI * 2); ctx.fill(); }
 function textAt(str, x, y, f, color, align, alpha, dir) {
   if (alpha <= 0 || !str) return;
   ctx.globalAlpha = alpha;
-  ctx.font = f; ctx.fillStyle = color; ctx.textAlign = align; ctx.direction = dir || 'rtl'; ctx.textBaseline = 'alphabetic';
+  x = MX(x); align = MA(align);
+  ctx.font = f; ctx.fillStyle = color; ctx.textAlign = align; ctx.direction = dir || (MIR ? 'ltr' : 'rtl'); ctx.textBaseline = 'alphabetic';
   ctx.fillText(str, x, y);
   ctx.globalAlpha = 1;
 }
 function roundRect(x, y, w, h, r) {
+  x = MX(x, w);
   ctx.beginPath();
   ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y); ctx.arcTo(x + w, y, x + w, y + r, r);
   ctx.lineTo(x + w, y + h - r); ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
@@ -173,7 +181,7 @@ function roundRect(x, y, w, h, r) {
 }
 function rule(x, y, w, color, alpha, thick) {
   if (alpha <= 0 || w <= 0) return;
-  ctx.globalAlpha = alpha; ctx.fillStyle = color; ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.max(1, thick || px(2))); ctx.globalAlpha = 1;
+  ctx.globalAlpha = alpha; ctx.fillStyle = color; ctx.fillRect(Math.round(MX(x, w)), Math.round(y), Math.round(w), Math.max(1, thick || px(2))); ctx.globalAlpha = 1;
 }
 
 // ---------- data + assets ----------
@@ -246,6 +254,7 @@ function prepareBackdrop(img) {
 // scrim behind a text block: bottom (portrait) or right side (landscape), plus a soft top band for the brand mark
 function prepareScrim(blockTop) {
   const c = mk(W, H), g = c.getContext('2d');
+  if (MIR) g.setTransform(-1, 0, 0, 1, W, 0); // the text side's shade on the left
   if (PORTRAIT) {
     const y0 = Math.max(H * 0.36, blockTop - px(260));
     const gr = g.createLinearGradient(0, y0, 0, H);
@@ -362,7 +371,7 @@ function drawRows(rows, tau, opts) {
     } else if (r.kind === 'item') {
       const d = px(7);
       ctx.globalAlpha = a; ctx.fillStyle = dark ? PAL.gold : PAL.goldLight;
-      ctx.beginPath(); ctx.arc(xR - d, y - Math.round(r.h * 0.42), d, 0, Math.PI * 2); ctx.fill(); ctx.globalAlpha = 1;
+      dot(xR - d, y - Math.round(r.h * 0.42), d); ctx.globalAlpha = 1;
       textAt(r.text, xR - px(44), y, r.font, cMain, 'right', a);
     }
   }
@@ -377,7 +386,7 @@ function drawBrand(alpha, dark) {
   if (!dark) ctx.restore();
   const w = measure(LAY.fBrand, txt(DATA.brand.mark));
   ctx.globalAlpha = alpha; ctx.fillStyle = PAL.gold;
-  ctx.beginPath(); ctx.arc(LAY.right - w - px(16), LAY.chromeY - px(9), px(5), 0, Math.PI * 2); ctx.fill(); ctx.globalAlpha = 1;
+  dot(LAY.right - w - px(16), LAY.chromeY - px(9), px(5)); ctx.globalAlpha = 1;
 }
 function drawLabelPill(text, x, yMid, alpha, anchor) {
   if (alpha <= 0 || !text) return;
@@ -504,7 +513,7 @@ function drawViewsBackground(s, a, t) {
     ctx.shadowColor = 'transparent';
     roundRect(B.x, B.y, B.w, B.h, px(14)); ctx.clip();
     ctx.imageSmoothingQuality = 'high';
-    ctx.drawImage(V.img, (iw - vw) / 2, (ih - vh) / 2, vw, vh, B.x, B.y, B.w, B.h);
+    ctx.drawImage(V.img, (iw - vw) / 2, (ih - vh) / 2, vw, vh, MX(B.x, B.w), B.y, B.w, B.h);
     ctx.restore();
     ctx.globalAlpha = ak; ctx.strokeStyle = 'rgba(250,247,241,0.55)'; ctx.lineWidth = Math.max(1, px(2));
     roundRect(B.x, B.y, B.w, B.h, px(14)); ctx.stroke(); ctx.globalAlpha = 1;
@@ -577,7 +586,7 @@ function drawStatsCols(s, tau) {
   // the vertical hairline between the columns
   e = E(0.5);
   if (e > 0 && s.cols.length > 1) { ctx.globalAlpha = 0.18 * e; ctx.fillStyle = PAL.ink;
-    ctx.fillRect(Math.round(s.cols[1].r + s.gap / 2), yV - px(96), Math.max(1, px(1.5)), px(210)); ctx.globalAlpha = 1; }
+    ctx.fillRect(Math.round(MX(s.cols[1].r + s.gap / 2, Math.max(1, px(1.5)))), yV - px(96), Math.max(1, px(1.5)), px(210)); ctx.globalAlpha = 1; }
   e = E(0.7);
   rule(LAY.pad, yRule, x1 - LAY.pad, PAL.ink, 0.16 * e, Math.max(1, px(1.5)));
   s.srcLines.forEach((l, i) => textAt(l, x1, yS + i * px(36) + D(0.7), LAY.fSource, 'rgba(27,26,23,0.66)', 'right', e));
@@ -697,6 +706,8 @@ async function boot() {
   const res = await fetch(`data/${PROJECT}.json`, { cache: 'no-store' });
   if (!res.ok) throw new Error('data file not found: data/' + PROJECT + '.json');
   DATA = await res.json();
+  MIR = DATA.dir === 'ltr';
+  if (MIR) { document.documentElement.dir = 'ltr'; document.documentElement.lang = DATA.lang || 'en'; }
   if (NARR) await loadNarration();
   await loadFonts();
   computeLayout();

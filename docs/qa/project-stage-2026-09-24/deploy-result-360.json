@@ -1,0 +1,17 @@
+{
+  "released": "1.72.360",
+  "from": "1.72.359",
+  "at": "2026-09-28 20:40:13",
+  "files": {
+    "i18n/stage-dict.json": "b21b9856adb098fe741815e2363bc700",
+    "assets/project-stage/tour.js": "bef71c73e6368dc83bfc1d6509b9f7f0",
+    "assets/project-stage/tour.css": "5db866fb77ed63ef5597ebbc12251f72",
+    "nadlan-config.php": "16ca2759efca91a6d0804716d3a0addb"
+  },
+  "live_before": {
+    "i18n/stage-dict.json": "6a8cccaac7c18fee523787a45f931484",
+    "assets/project-stage/tour.js": "ba658f572ca9ec1ea178e6c1f1c3e4d2",
+    "assets/project-stage/tour.css": "5f6a370724b44c83afb0cdd0b675c221",
+    "nadlan-config.php": "ceea447f57c5b10b3ddb1d17d2890019"
+  }
+}

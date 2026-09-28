@@ -425,11 +425,7 @@ export function openTour(o) {
       const n = document.createElement('b'); n.textContent = s.label || '';
       b.appendChild(n);
       if (s.sub) { const sm = document.createElement('small'); sm.textContent = s.sub; b.appendChild(sm); }
-      if (here) { // "you are here" is text, not a style's content, so a language page can translate it
-        b.disabled = true; b.setAttribute('aria-current', 'location');
-        const hh = document.createElement('i'); hh.className = 'nlat-lift__here'; hh.textContent = o.hereLabel || 'אתם כאן';
-        n.append(' · ', hh);
-      }
+      if (here) { b.disabled = true; b.setAttribute('aria-current', 'location'); }
       b.addEventListener('click', () => { const t2 = stopScene(s); if (t2) walkTo(t2.id); });
       liftBox.appendChild(b);
       liftBtns.push(b);
