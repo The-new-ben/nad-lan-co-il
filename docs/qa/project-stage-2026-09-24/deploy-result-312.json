@@ -1,0 +1,13 @@
+{
+  "released": "1.72.312",
+  "from": "1.72.311",
+  "at": "2026-09-28 05:41:13",
+  "files": {
+    "assets/tours/somail-tour.html": "af94741c7899237d50c0bb480c9e2ac5",
+    "nadlan-config.php": "43bfc553a1febf7eb3953ce5393b8bb8"
+  },
+  "live_before": {
+    "assets/tours/somail-tour.html": "missing",
+    "nadlan-config.php": "52dade8fa91c156425fc67860463dd00"
+  }
+}

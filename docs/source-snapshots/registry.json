@@ -21615,5 +21615,83 @@
     "secret_tokens": 0
    }
   }
+ ],
+ "https://nad-lan.co.il/tour/somail/": [
+  {
+   "ts": "20260928T024016Z",
+   "sha256": "7c5edf2d84fae514037a16e1fad5c153f0f4bbca29512afdf9c99acfae1345f6",
+   "bytes": 259803,
+   "status": 200,
+   "checks": {
+    "title": "מתחם סומייל — הסיור | nad-lan.co.il",
+    "title_len": 35,
+    "meta_desc": "סיור תלת־ממדי במתחם סומייל, אבן גבירול פינת ארלוזורוב — מגדלי DUO, גן העיר וכיכר רבין. טיסת היכרות, סיור חופשי ומכונת זמן 2026/2035. הדמיה להמחשה.",
+    "meta_desc_len": 146,
+    "canonical": "",
+    "canonical_count": 0,
+    "robots_meta": "noindex",
+    "hreflang_count": 0,
+    "favicon_count": 0,
+    "h1_count": 1,
+    "h1_first": "מתחם סומייל — הסיור",
+    "jsonld_blocks": 0,
+    "jsonld_faqpage": 0,
+    "jsonld_breadcrumb": 0,
+    "scripts_ext": [
+     "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js",
+     "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    ],
+    "scripts_count": 5,
+    "styles_count": 2,
+    "duplicate_ids": [],
+    "og_image": "",
+    "emdash_visible": 24,
+    "blacklist_hits": [],
+    "internal_words": [],
+    "showroom_payload": false,
+    "notice_count": 0,
+    "notice_below_article_head": true,
+    "ecocity_render_leak": 0,
+    "secret_tokens": 0
+   }
+  },
+  {
+   "ts": "20260928T024206Z",
+   "sha256": "d60164d126a305d70966fb0de59b60b63a22af146c7f444ac9a01597f5366b9c",
+   "bytes": 259937,
+   "status": 200,
+   "checks": {
+    "title": "מתחם סומייל — הסיור | nad-lan.co.il",
+    "title_len": 35,
+    "meta_desc": "סיור תלת־ממדי במתחם סומייל, אבן גבירול פינת ארלוזורוב — מגדלי DUO, גן העיר וכיכר רבין. טיסת היכרות, סיור חופשי ומכונת זמן 2026/2035. הדמיה להמחשה.",
+    "meta_desc_len": 146,
+    "canonical": "",
+    "canonical_count": 0,
+    "robots_meta": "noindex",
+    "hreflang_count": 0,
+    "favicon_count": 0,
+    "h1_count": 1,
+    "h1_first": "מתחם סומייל — הסיור",
+    "jsonld_blocks": 0,
+    "jsonld_faqpage": 0,
+    "jsonld_breadcrumb": 0,
+    "scripts_ext": [
+     "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js",
+     "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    ],
+    "scripts_count": 5,
+    "styles_count": 2,
+    "duplicate_ids": [],
+    "og_image": "",
+    "emdash_visible": 23,
+    "blacklist_hits": [],
+    "internal_words": [],
+    "showroom_payload": false,
+    "notice_count": 0,
+    "notice_below_article_head": true,
+    "ecocity_render_leak": 0,
+    "secret_tokens": 0
+   }
+  }
  ]
 }
