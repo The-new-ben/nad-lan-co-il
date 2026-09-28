@@ -697,15 +697,15 @@ if ( ! function_exists( 'nadlan_hp_band_services' ) ) {
 				. ( '' !== $t( 'rm_note' ) ? '<span class="nlhp-svcard__note">' . esc_html( $t( 'rm_note' ) ) . '</span>' : '' ) . '</div>';
 		}
 		$tour  = function_exists( 'nadlan_sdedov_tour_url' ) ? nadlan_sdedov_tour_url() : home_url( '/tour/sde-dov/' );
-		$media = ''; // one film per page: the film has its own band under the categories (design system version 33)
-		if ( function_exists( 'nadlan_sdedov_tour_poster' ) ) {
-			$media = '<img src="' . esc_url( nadlan_sdedov_tour_poster() ) . '" alt="" loading="lazy" decoding="async">';
-		}
-		$cards .= '<div class="nlhp-svcard nlhp-svcard--tour">' . ( '' !== $media ? '<span class="nlhp-svcard__media">' . $media . '</span>' : '' )
-			. '<small>סיור וירטואלי</small><h3>רובע שדה דב של 2035</h3><p>מסתובבים ברחובות הרובע של 2035, עוברים בין המגדלים, יורדים לטיילת ובוחרים דירה מתוך הבניין.</p>'
+		/* ServicesBand v56: the tour is one wide card under the owners' two services, pictured by a frame of the tour itself
+		   (its dusk mode), labelled as an illustration; the text says what the tour has (no apartment picking, no unsourced year) */
+		$pic = '<img src="' . esc_url( nadlan_hp_img( 'tour-sdedov-dusk-960.jpg' ) ) . '" srcset="' . esc_url( nadlan_hp_img( 'tour-sdedov-dusk-640.jpg' ) ) . ' 640w, ' . esc_url( nadlan_hp_img( 'tour-sdedov-dusk-960.jpg' ) ) . ' 960w" sizes="(max-width:760px) 100vw, 55vw" width="960" height="600" alt="" loading="lazy" decoding="async" fetchpriority="low">';
+		$cards .= '<div class="nlhp-svcard nlhp-svcard--tour"><span class="nlhp-svcard__body"><small>סיור וירטואלי</small><h3>רובע שדה דב, לפי התכנית</h3>'
+			. '<p>טיסת דמדומים מעל הרובע וסיור חופשי ברחובותיו, מהים ועד המגדלים של דמרי ימה, ריינבו ואשירה. מכל מגדל עוברים לעמוד הפרויקט.</p>'
 			. '<span class="nlhp-svcard__ctas"><a class="nlhp-btn nlhp-btn--line" href="' . esc_url( $tour ) . '">כניסה לסיור</a></span>'
-			. '<span class="nlhp-svcard__note">הדמיה להמחשה על פי תכנית רובע שדה דב. אינה מטעם היזמים או גורם רשמי.</span></div>';
-		return '<section class="nlhp-band nlhp-services" aria-labelledby="nlhp-svc-h">' . nadlan_hp_head( 'לבעלי דירות ולדיירים', 'שירותים לבעלי דירות', 'nlhp-svc-h' ) . '<div class="nlhp-svc">' . $cards . '</div></section>';
+			. '<span class="nlhp-svcard__note">הדמיה להמחשה על פי תכנית רובע שדה דב. אינה מטעם היזמים או גורם רשמי.</span></span>'
+			. '<span class="nlhp-svcard__media">' . $pic . '<i class="nlhp-svcard__tag">הדמיה להמחשה</i></span></div>';
+		return '<section class="nlhp-band nlhp-services" aria-labelledby="nlhp-svc-h">' . nadlan_hp_head( 'שירותים באתר', 'לבעלי דירות, לדיירים ולקונים', 'nlhp-svc-h' ) . '<div class="nlhp-svc">' . $cards . '</div></section>';
 	}
 }
 
@@ -1113,6 +1113,22 @@ body:has(#nlhp-hero) main.nlpc-main{padding-top:0!important}
 #nlhp-page .nlhp-services,#nlhp-page .nlhp-seo,#nlhp-page>.nlhv2-en,#nlhp-page>.nlhv2-mfoot{content-visibility:auto;contain-intrinsic-size:auto 520px}
 @media (max-width:1100px){#nlhp-page .nlhp-proj{grid-template-columns:1fr 1fr}#nlhp-page .nlhp-pcard--lead{grid-column:1/-1}#nlhp-page .nlhp-data{grid-template-columns:1fr}#nlhp-page .nlhp-listings .nlhv2-listgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}#nlhp-page .nlhp-svc{grid-template-columns:1fr 1fr}}
 @media (max-width:760px){#nlhp-page .nlhp-band{margin-top:40px}#nlhp-page .nlhp-h2,#nlhp-page .nlhp-listings h2{font-size:25px!important}#nlhp-page .nlhp-head{flex-wrap:wrap;align-items:flex-start;margin-bottom:14px}#nlhp-page .nlhp-proj{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(50% - 50vw);padding-inline:16px;scrollbar-width:none}#nlhp-page .nlhp-pcard{flex:0 0 82%;scroll-snap-align:start}#nlhp-page .nlhp-pcard--lead .nlhp-pcard__media{aspect-ratio:4/3}#nlhp-page .nlhp-pcard h3,#nlhp-page .nlhp-pcard--lead h3{font-size:21px!important}#nlhp-page .nlhp-postline{flex-direction:column;align-items:stretch;text-align:start}#nlhp-page .nlhp-bar{grid-template-columns:78px minmax(0,1fr) 96px;gap:10px;font-size:13.5px}#nlhp-page .nlhp-chart{padding:16px}#nlhp-page .nlhp-tools{grid-template-columns:1fr}#nlhp-page .nlhp-cities{grid-template-columns:1fr 1fr;gap:10px}#nlhp-page .nlhp-city{padding:14px}#nlhp-page .nlhp-city h3{font-size:19px!important}#nlhp-page .nlhp-svc{grid-template-columns:1fr}#nlhp-page .nlhp-film{grid-template-columns:1fr;gap:16px;padding:12px;border-radius:18px;margin-top:20px}#nlhp-page .nlhp-film__h{font-size:24px!important}#nlhp-page .nlhp-film__ctas .nlhp-btn{flex:1 1 100%}#nlhp-page .nlhp-seo{grid-template-columns:1fr;gap:20px}}
+/* ServicesBand v56: the two owners' services side by side, one height, buttons on one line; the tour below them as one
+   wide card, its text beside a labelled picture from the tour itself */
+#nlhp-page .nlhp-svc{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+#nlhp-page .nlhp-svcard{display:flex;flex-direction:column;gap:8px}
+#nlhp-page .nlhp-svcard__ctas{margin-top:auto;padding-top:8px}
+#nlhp-page .nlhp-svcard--tour{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:0;padding:0;overflow:hidden}
+#nlhp-page .nlhp-svcard__body{display:flex;flex-direction:column;gap:8px;padding:26px 28px 22px;min-width:0}
+#nlhp-page .nlhp-svcard--tour .nlhp-svcard__media{position:relative;margin:0;border-radius:0;aspect-ratio:auto;min-height:300px}
+#nlhp-page .nlhp-svcard--tour .nlhp-svcard__media img{position:absolute;inset:0;object-position:center 30%}
+#nlhp-page .nlhp-svcard__tag{position:absolute;top:12px;inset-inline-end:12px;height:24px;display:inline-flex;align-items:center;padding:0 10px;border-radius:999px;background:rgba(247,246,242,.94);color:#14212b;font:700 12px/1 Assistant,Arial,sans-serif;font-style:normal}
+@media (max-width:760px){
+#nlhp-page .nlhp-svc{grid-template-columns:1fr}
+#nlhp-page .nlhp-svcard--tour{grid-template-columns:1fr}
+#nlhp-page .nlhp-svcard--tour .nlhp-svcard__media{order:-1;aspect-ratio:16/10;min-height:0}
+#nlhp-page .nlhp-svcard__body{padding:20px 20px 18px}
+}
 NLHPCSS;
 	echo '<style id="nadlan-hp-css">' . $css_head . ( nadlan_hp_on() ? "\n" . $css : '' ) . '</style>' . "\n";
 }, 999 );

@@ -182,7 +182,9 @@ only inside runners; every release through a runner with drift check, lint, back
     - The home's big footer "דירות לפי עיר" lists only places with listings (Hebrew and English homes).
     - Two attempts rolled themselves back on my own too-broad "never" check ("מחירי דירות בירושלים" contains "דירות בירושלים"; the footer's copy). Checks tightened; the footer fixed in the same release.
     - Findings: the English footer shows Hebrew place names (no city translation table); a demo-listing-free counter now exists for any other place list.
-  - **Next:** the home page, continued (the services band's tour image), then the 3D stages.
+  - 1.72.310 (DS ServicesBand v56 + HomePage v56, artifact version 67; HAD-297): **the services band.** The two owners' services side by side at one height (buttons on one line); the Sde Dov tour below them as one wide card with a frame of the tour itself in its dusk mode (assets/home/tour-sdedov-dusk-960/640.jpg), labelled "הדמיה להמחשה". The text had promised "בוחרים דירה מתוך הבניין" (the tour has no apartment picking) and "2035" (no source on the page); it now says what the tour has. Head: "שירותים באתר" / "לבעלי דירות, לדיירים ולקונים". Pressed live: "כניסה לסיור" opens /tour/sde-dov/.
+    - Findings for the 3D item: the tour's Rainbow card says "כ־38 קומות · 480 דירות" (the page: 39 floors, 459 apartments; 480 was the 2023 plan); its buttons read "לעמוד הפרויקט ולבחירת דירה" though most projects have no apartment picking; the tour is schematic (flat towers).
+  - **Next:** the home page is through its bands (film, projects, listings, prices, cities, map, pros, magazine, services, English band, portal, footer, header); next the 3D stages and models: the Sde Dov tour's facts and promises first (the findings above), then the stages.
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner

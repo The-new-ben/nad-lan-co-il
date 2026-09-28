@@ -1,0 +1,17 @@
+{
+  "released": "1.72.310",
+  "from": "1.72.309",
+  "at": "2026-09-28 05:14:23",
+  "files": {
+    "inc/home-v3.php": "170c5abca229b0068e3233ed4b9fb694",
+    "assets/home/tour-sdedov-dusk-960.jpg": "03bbbd9632aaa2d6d88fdf2a7e587f3b",
+    "assets/home/tour-sdedov-dusk-640.jpg": "ad9148553c6bdea79bc01401234beafd",
+    "nadlan-config.php": "1f6e4487942e66e0ca74d420e4b8b0d9"
+  },
+  "live_before": {
+    "inc/home-v3.php": "f3a9396c764659b25bb92afdb4f58a71",
+    "assets/home/tour-sdedov-dusk-960.jpg": "missing",
+    "assets/home/tour-sdedov-dusk-640.jpg": "missing",
+    "nadlan-config.php": "0b551a103ed21a2b30a4492ea1fbc915"
+  }
+}
