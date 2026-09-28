@@ -4014,5 +4014,28 @@ boot().catch(err => {
   $('#fatal').classList.add('show');
 });
 </script>
+<style id="tour-wa-v71">/* PublishPage v71: WhatsApp in every phase of the tour, even with a card open */body.cardOpen #waFab{opacity:1!important;pointer-events:auto!important}@media (max-width:760px){body.cardOpen #waFab{bottom:calc(236px + env(safe-area-inset-bottom))!important}}</style>
+<script id="tour-wa-v71s">
+(function(){
+  var f=document.getElementById('waFab');
+  if(f&&f.parentElement!==document.body){document.body.appendChild(f);}
+  document.addEventListener('click',function(e){
+    var a=e.target&&e.target.closest&&e.target.closest('a[href*="wa.me/"]');
+    if(!a||a.getAttribute('data-wa-stamped'))return;
+    var h=a.getAttribute('href')||'';
+    if(!/wa\.me\/\d{6,}/.test(h))return;
+    var en=(document.documentElement.lang||'').slice(0,2)==='en';
+    try{
+      var u=new URL(h,location.href);
+      var t=u.searchParams.get('text')||(en?'Hi, I am in the 3D tour on nad-lan.co.il and would like details.':'שלום, אני בסיור התלת ממד באתר ואשמח לפרטים.');
+      u.searchParams.delete('text');
+      var s=(en?'Source: ':'מקור: ')+(document.title||'').split('|')[0].trim()+'\n'+location.origin+location.pathname;
+      var b=u.toString();
+      a.setAttribute('href',b+(b.indexOf('?')>-1?'&':'?')+'text='+encodeURIComponent(t+'\n\n'+s));
+      a.setAttribute('data-wa-stamped','1');
+    }catch(err){}
+  },true);
+})();
+</script>
 </body>
 </html>

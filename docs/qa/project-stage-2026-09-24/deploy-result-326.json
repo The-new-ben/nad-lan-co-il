@@ -1,0 +1,17 @@
+{
+  "released": "1.72.326",
+  "from": "1.72.325",
+  "at": "2026-09-28 09:08:55",
+  "files": {
+    "assets/tours/sde-dov-tour.html": "b351d99cfc76dbd64b7186ef10664a81",
+    "assets/tours/somail-tour.html": "7bb9ae8da2674cad9ddd801f148038cb",
+    "inc/wa-source.php": "bf0993d78ef3392d0f9d446c040511c2",
+    "nadlan-config.php": "26475e4559f5d6ff41a9bb9f85134e7c"
+  },
+  "live_before": {
+    "assets/tours/sde-dov-tour.html": "e98265aeed68f2fdcc0b267f09db0228",
+    "assets/tours/somail-tour.html": "2ba6b5c7c55832eabfc76dd4fc50442a",
+    "inc/wa-source.php": "ffd05f98c739a42112c869b7f088bc87",
+    "nadlan-config.php": "066c9dda7e089ce17161a14942949e3d"
+  }
+}

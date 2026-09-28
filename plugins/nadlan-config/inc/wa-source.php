@@ -42,8 +42,10 @@ add_action( 'wp_footer', function () {
 		try{
 			var u=new URL(href,location.origin);
 			var t=u.searchParams.get("text")||"";
-			u.searchParams.set("text",(t?t:"")+stamp);
-			a.setAttribute("href",u.toString());
+			u.searchParams.delete("text");
+			/* v71: encodeURIComponent keeps spaces as %20; URLSearchParams wrote "+", which some phones show as a plus sign */
+			var base=u.toString();
+			a.setAttribute("href",base+(base.indexOf("?")>-1?"&":"?")+"text="+encodeURIComponent((t?t:"")+stamp));
 		}catch(err){
 			var sep=href.indexOf("?")>-1?"&":"?";
 			if(href.indexOf("text=")===-1){a.setAttribute("href",href+sep+"text="+encodeURIComponent(stamp))}
