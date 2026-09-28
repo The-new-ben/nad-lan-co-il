@@ -27,6 +27,9 @@ WIDTH = int(ARGS[3]) if len(ARGS) > 3 else 4096
 SAMPLES = int(ARGS[4]) if len(ARGS) > 4 else 128
 LIGHT = ARGS[5] if len(ARGS) > 5 else "sunset"
 SPOT = ARGS[6] if len(ARGS) > 6 else "living"
+# a design style for the example apartment (studio_kit.py; design system BuyJourney v78): bare (as delivered) by default
+STYLE = ARGS[7] if len(ARGS) > 7 else "bare"
+THREADS = int(ARGS[8]) if len(ARGS) > 8 else 0
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CITY = os.path.join(REPO, "plugins", "nadlan-config", "assets", "project-stage", "rainbow", "city.json")
@@ -88,6 +91,9 @@ scene.cycles.sample_clamp_indirect = 8.0
 scene.render.resolution_x = WIDTH
 scene.render.resolution_y = WIDTH // 2
 scene.render.resolution_percentage = 100
+if THREADS:
+    scene.render.threads_mode = "FIXED"
+    scene.render.threads = THREADS
 scene.render.image_settings.file_format = "PNG"
 scene.view_settings.view_transform = "AgX"
 scene.view_settings.look = "AgX - Medium High Contrast"
@@ -528,6 +534,14 @@ for k in range(3):
         p = (glass_line[0][0] + (glass_line[-1][0] - glass_line[0][0]) * s + inx * (1.9 + j * 2.4),
              glass_line[0][1] + (glass_line[-1][1] - glass_line[0][1]) * s + iny * (1.9 + j * 2.4))
         box("downlight-%d-%d" % (k, j), p[0], p[1], Z0 + CEIL - 0.005, 0.09, 0.09, 0.01, M["light"])
+
+if STYLE != "bare":
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import studio_kit
+    _ia = (ic[0] - mx) * ux + (ic[1] - my) * uy
+    _ib = (ic[0] - mx) * inx + (ic[1] - my) * iny
+    print("studio:", STYLE, studio_kit.furnish(dict(box=box, M=M, Z0=Z0, CEIL=CEIL, mx=mx, my=my, inx=inx, iny=iny, ux=ux, uy=uy,
+                                                   ang=ang, glass_line=glass_line, ic_ab=(_ia, _ib)), STYLE))
 
 # ---------------------------------------------------------------- sky and sun: late afternoon light from the west
 world = bpy.data.worlds.new("sky")
