@@ -356,3 +356,24 @@
   font: 700 14.5px/1.2 Assistant, Heebo, Arial, sans-serif !important; cursor: pointer; box-shadow: none; }
 :root body .rbs .rbs-qcard-360b { display: inline-block; padding: 3px 7px; border-radius: 6px; background: #1F4B5C; color: #fff; font: 800 12px/1.2 Assistant, Heebo, Arial, sans-serif; }
 :root body .rbs button.rbs-qcard-360:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }
+
+/* StageCard v94 (28.9.2026): the floor card folds to its title, can be dragged by it on a desktop, and docks at the
+   stage's edge while the scene steps aside (the owner: "the card jumps right in front of you, hiding the building") */
+.rbs-label-top { gap: 4px; }
+.rbs-label-title { flex: 1; }
+.rbs-label-min {
+  appearance: none; -webkit-appearance: none; border: 0; background: transparent;
+  position: relative; width: 36px; height: 36px; margin: -10px 0 0 0; padding: 0; flex: none;
+  border-radius: 50%; cursor: pointer; color: rgba(20, 33, 43, .6);
+  font: 600 20px/36px 'Assistant', system-ui, sans-serif;
+}
+.rbs-label-min::after { content: ""; position: absolute; inset: -4px; }
+.rbs-label-min:hover { background: rgba(20, 33, 43, .06); color: var(--rbs-ink); }
+@media (hover: hover) and (pointer: fine) { .rbs-label-top { cursor: grab; } .rbs-label-top:active { cursor: grabbing; } }
+.rbs-label.is-min { width: auto; max-width: 280px; padding: 10px 10px 10px 14px; cursor: pointer; }
+.rbs-label.is-min > :not(.rbs-label-top) { display: none !important; }
+.rbs-label.is-min .rbs-label-top { align-items: center; }
+.rbs-label.is-min .rbs-label-min, .rbs-label.is-min .rbs-label-close { margin-top: 0; }
+.rbs-label.is-user { box-shadow: 0 14px 34px rgba(20, 33, 43, .22); }
+/* the card sits above the quarter's pins (a pin used to take a tap meant for the docked card) */
+.rbs-ui > .rbs-label { z-index: 2; }

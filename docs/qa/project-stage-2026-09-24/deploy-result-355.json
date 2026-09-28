@@ -1,0 +1,27 @@
+{
+  "released": "1.72.355",
+  "from": "1.72.354",
+  "at": "2026-09-28 18:41:04",
+  "files": {
+    "assets/project-stage/rainbow/stage.js": "e5994e53aef5aab449fcc9d7f658557f",
+    "assets/project-stage/rainbow/stage.css": "db2ca381ead7ed30950d9e17f09d1483",
+    "assets/project-stage/duo/stage.js": "b96004f375bc18191e2a670541f84743",
+    "assets/project-stage/duo/stage.css": "399964d53414c6704f1528b23fccdc43",
+    "assets/project-stage/dimri/stage.js": "c1e5182f7b3ae22eb791e2791fe64334",
+    "assets/project-stage/dimri/stage.css": "4ddb81397fff44348092eec5404b9cf4",
+    "assets/project-stage/ashira/stage.js": "1f2377f812bc6998491ae031f0dfd650",
+    "assets/project-stage/ashira/stage.css": "108f095b54425291124b8cd6bdc299c3",
+    "nadlan-config.php": "35ebe0bd6bb0c8128f3d696d8d83ee33"
+  },
+  "live_before": {
+    "assets/project-stage/rainbow/stage.js": "91683209be818767a2350a4067d5118d",
+    "assets/project-stage/rainbow/stage.css": "642084211f8403be3c65bce0a1c7f9be",
+    "assets/project-stage/duo/stage.js": "1c1c8edbeb5a0e7a777afddfa9e19de2",
+    "assets/project-stage/duo/stage.css": "34c665b584ad802945d21c39466c4df8",
+    "assets/project-stage/dimri/stage.js": "c6157ee3e054fa006ecd730379aea69a",
+    "assets/project-stage/dimri/stage.css": "657385e605bcfe9ecfafa4e6555f0419",
+    "assets/project-stage/ashira/stage.js": "a6e7ff3b65b3d16435f820eaeb44fe87",
+    "assets/project-stage/ashira/stage.css": "66678da53bac5d6bb4245387d4f6a4c7",
+    "nadlan-config.php": "c9a79a972b4fcb5532678e33270a3438"
+  }
+}

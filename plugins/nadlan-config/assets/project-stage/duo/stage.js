@@ -316,6 +316,9 @@ export function mountDuoStage(container, options = {}) {
   const labelKick = el('p', 'dus-label-kick', label);
   const labelTop = el('div', 'rbs-label-top', label);
   const labelTitle = el('p', 'rbs-label-title', labelTop);
+  // StageCard v94: the card folds to its title and can be dragged by it, so it never has to sit on the building
+  const labelMin = el('button', 'rbs-label-min', labelTop, { type: 'button', 'aria-label': T.minimize || 'לקפל את הכרטיס', 'aria-expanded': 'true' });
+  labelMin.textContent = '–';
   const labelClose = el('button', 'rbs-label-close', labelTop, { type: 'button', 'aria-label': T.close });
   labelClose.textContent = '×';
   const labelLine = el('p', 'rbs-label-line', label);
@@ -417,7 +420,7 @@ export function mountDuoStage(container, options = {}) {
       opts.cityData = cityData || null;
       if (disposed) return;
       engine = createEngine({
-        root, ui, marks, canvasWrap, label, labelKick, labelTitle, labelLine, labelFacing, labelMore, actBtns, labelCta, labelClose, leader, hint, facingChip, qpins, qcard, fpins,
+        root, ui, marks, canvasWrap, label, labelKick, labelTitle, labelLine, labelFacing, labelMore, actBtns, labelCta, labelClose, labelMin, labelTop, leader, hint, facingChip, qpins, qcard, fpins,
         opts, T, reduced, phone, coarse, preset: currentPreset,
         onReady: markReady,
         onContextLost: () => { root.classList.remove('rbs--live', 'rbs--settled'); },
@@ -511,7 +514,7 @@ export function mountDuoStage(container, options = {}) {
 /* ------------------------------------------------------------------------------------------ */
 
 function createEngine(ctx) {
-  const { root, marks, canvasWrap, label, labelKick, labelTitle, labelLine, labelFacing, labelMore, actBtns, labelCta, labelClose, leader, hint, facingChip, opts, T: TX, reduced, phone } = ctx;
+  const { root, marks, canvasWrap, label, labelKick, labelTitle, labelLine, labelFacing, labelMore, actBtns, labelCta, labelClose, labelMin, labelTop, leader, hint, facingChip, opts, T: TX, reduced, phone } = ctx;
   const T = TX;
   const qpins = ctx.qpins || [], qcard = ctx.qcard || null, fpins = ctx.fpins || [];
   let facMode = false; // the legend's "מתקנים בפרויקט" chip: the facility pins on, the quarter's pins off
@@ -694,6 +697,15 @@ function createEngine(ctx) {
   let hover = null;          // { tower, floor }
   let labelSide = 1;
   const labelBox = { w: 0, h: 0 };
+  // StageCard v94: the card's own state (folded, or where the visitor dragged it) and the scene's step aside from it
+  let cardMin = false, cardUser = null;
+  // k < 1 draws the scene smaller (a wider window on the same frustum), so the whole tower fits beside the card
+  const shift = { x: 0, y: 0, k: 1, tx: 0, ty: 0, tk: 1 };
+  function applyShift() {
+    if (Math.abs(shift.x) < 0.5 && Math.abs(shift.y) < 0.5 && Math.abs(shift.k - 1) < 0.002) { if (camera.view && camera.view.enabled) camera.clearViewOffset(); return; }
+    const fw = stageW * shift.k, fh = stageH * shift.k;
+    camera.setViewOffset(fw, fh, (fw - stageW) / 2 + shift.x, (fh - stageH) / 2 + shift.y, stageW, stageH);
+  }
   let stageW = 1, stageH = 1;
   let disposedE = false;
 
@@ -808,6 +820,7 @@ function createEngine(ctx) {
     camera.aspect = aspect;
     camera.fov = aspect < 1 ? Math.min(52, Math.max(30, 2 * Math.atan(Math.tan(11.5 * DEG) / aspect) / DEG)) : 30;
     camera.updateProjectionMatrix();
+    applyShift();
     heroTargetFor(aspect, heroTarget);
     if (phase === 'orbit' && !glide && !(selected && selected.pinned) && !controls.autoRotate && !facMode && performance.now() - lastInteract > 1500) controls.target.copy(heroTarget);
     renderer.setSize(stageW, stageH, false);
@@ -1295,6 +1308,51 @@ function createEngine(ctx) {
     });
   }
   on(labelClose, 'click', () => clearFloor());
+  // StageCard v94: fold the card to its title (and back); the scene steps back in while it is folded
+  const setCardMin = (v) => {
+    cardMin = !!v;
+    label.classList.toggle('is-min', cardMin);
+    labelMin.textContent = cardMin ? '+' : '–';
+    labelMin.setAttribute('aria-expanded', cardMin ? 'false' : 'true');
+    labelMin.setAttribute('aria-label', cardMin ? (TX.expand || 'לפתוח את הכרטיס') : (TX.minimize || 'לקפל את הכרטיס'));
+    labelBox.w = 0;
+    needsRender = true; kick();
+  };
+  on(labelMin, 'click', (e) => { e.stopPropagation(); setCardMin(!cardMin); });
+  // a tap on the folded card's title opens it again
+  on(labelTop, 'click', (e) => { if (cardMin && !e.target.closest('button')) setCardMin(false); });
+  // drag the card by its title bar (mouse and pen; on a phone it stays at the foot and folds instead)
+  let drag = null;
+  on(labelTop, 'pointerdown', (e) => {
+    if (e.pointerType === 'touch' || e.button !== 0 || e.target.closest('button')) return;
+    e.stopPropagation(); // the stage never sees a drag of the card as a tap on the model
+    const r = label.getBoundingClientRect(), rr = root.getBoundingClientRect();
+    drag = { id: e.pointerId, dx: e.clientX - r.left, dy: e.clientY - r.top, ox: rr.left, oy: rr.top, moved: false };
+    try { labelTop.setPointerCapture(e.pointerId); } catch (err) { /* none */ }
+  });
+  on(labelTop, 'pointermove', (e) => {
+    if (!drag || e.pointerId !== drag.id) return;
+    e.stopPropagation();
+    drag.moved = true;
+    cardUser = { x: e.clientX - drag.ox - drag.dx, y: e.clientY - drag.oy - drag.dy };
+    label.classList.add('is-user');
+    needsRender = true; kick();
+  });
+  const endDrag = (e) => {
+    if (!drag || e.pointerId !== drag.id) return;
+    e.stopPropagation();
+    // the click that follows a drag is the drag's own, never a tap on a pin under the card
+    if (drag.moved) {
+      const eat = (ev) => { ev.stopPropagation(); ev.preventDefault(); window.removeEventListener('click', eat, true); };
+      window.addEventListener('click', eat, true);
+      setTimeout(() => window.removeEventListener('click', eat, true), 400);
+    }
+    drag = null;
+  };
+  on(labelTop, 'pointerup', endDrag);
+  on(labelTop, 'pointercancel', endDrag);
+  // a double click on the title bar puts the card back in its dock
+  on(labelTop, 'dblclick', (e) => { if (e.target.closest('button')) return; cardUser = null; label.classList.remove('is-user'); needsRender = true; kick(); });
   function emitCta() {
     if (!selected) return;
     emit('nl:floor-cta', { floor: selected.floor, bearing: facing ? facing.bearing : null, tower: selected.tower.id });
@@ -1502,18 +1560,30 @@ function createEngine(ctx) {
     const a = labelSide === 1 ? aR : aL;
     if (a.behind) { label.classList.remove('is-on'); return; }
     let x, y, lx, ly;
-    if (narrow) {
+    if (cardUser) {
+      // StageCard v94: where the visitor dragged it, kept inside the stage
+      x = Math.min(Math.max(8, cardUser.x), stageW - lw - 8);
+      y = Math.min(Math.max(8, cardUser.y), stageH - lh - 8);
+      lx = a.x < x ? x : x + lw;
+      ly = Math.min(Math.max(a.y, y + 18), y + lh - 18);
+    } else if (narrow) {
+      // phones: the card at the foot of the stage, and the scene lifts above it (StageCard v94)
       x = Math.round((stageW - lw) / 2);
-      y = Math.round(stageH - lh - 64);
-      if (a.y > y - 30) y = Math.max(56, Math.round(a.y - lh - 48));
+      y = Math.round(stageH - lh - 12);
+      shift.ty = cardMin ? 0 : Math.round(Math.min(lh * 0.55, stageH * 0.26));
+      shift.tx = 0;
+      shift.tk = cardMin ? 1 : Math.max(0.8, Math.min(1, (stageH - lh * 0.9) / stageH + 0.18));
       lx = Math.min(Math.max(a.x, x + 24), x + lw - 24);
       ly = a.y < y ? y : y + lh;
     } else {
-      const gap = 64;
-      x = labelSide === 1 ? a.x + gap : a.x - gap - lw;
-      y = a.y - lh / 2;
-      x = Math.min(Math.max(12, x), stageW - lw - 12);
-      y = Math.min(Math.max(12, y), stageH - lh - 64);
+      // desktop: the card docks at the stage's edge on the side with more room, and the scene steps the other way by
+      // half the card, so the building stays clear (StageCard v94; it used to float 64 px off the floor, over the tower
+      // on a narrow stage)
+      x = labelSide === 1 ? stageW - lw - 14 : 14;
+      y = Math.min(Math.max(14, a.y - lh / 2), stageH - lh - 64);
+      shift.tx = cardMin ? 0 : Math.round((lw + 28) / 2) * labelSide;
+      shift.ty = 0;
+      shift.tk = cardMin ? 1 : Math.max(0.62, Math.min(1, (stageW - lw - 28) / stageW));
       lx = labelSide === 1 ? x : x + lw;
       ly = Math.min(Math.max(a.y, y + 18), y + lh - 18);
     }
@@ -1895,6 +1965,16 @@ function createEngine(ctx) {
     }
 
     if (glide) stepGlide(adt);
+    // StageCard v94: the scene eases aside from the card (and back when it folds, closes or is dragged away)
+    if (!selected || cardMin || cardUser) { shift.tx = 0; shift.ty = 0; shift.tk = 1; }
+    if (shift.x !== shift.tx || shift.y !== shift.ty || shift.k !== shift.tk) {
+      const k = Math.min(1, adt * 6);
+      shift.x = Math.abs(shift.tx - shift.x) < 0.5 ? shift.tx : shift.x + (shift.tx - shift.x) * k;
+      shift.y = Math.abs(shift.ty - shift.y) < 0.5 ? shift.ty : shift.y + (shift.ty - shift.y) * k;
+      shift.k = Math.abs(shift.tk - shift.k) < 0.002 ? shift.tk : shift.k + (shift.tk - shift.k) * k;
+      applyShift();
+      needsRender = true;
+    }
     if (U.uDim.value !== dimTarget) {
       const d = dimTarget - U.uDim.value;
       U.uDim.value = Math.abs(d) < 0.01 ? dimTarget : U.uDim.value + d * Math.min(1, adt * 7);
