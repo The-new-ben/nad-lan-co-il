@@ -408,10 +408,6 @@ if ( ! function_exists( 'nadlan_pjx_assets' ) ) {
 .nlpjx-comps th{font-size:11.5px;color:#6D665C;font-weight:600;background:#FAF8F3}
 .nlpjx-comps tr:last-child td{border-bottom:0}
 .nlpjx-comps a{color:#1B1A17;text-decoration:none;font-weight:600}
-/* TouchTargets v66: the prices list, the map note and the mortgage estimate link get an invisible 44px touch area; Ashira source rows get room */
-.nlpjx-comps a,.nlpjx-price-mapnote a,.nlpjx-fin-est a{display:inline-block;padding:13px 0;margin:-13px 0}
-html body .nlv2-source-list > li{padding-block:4px !important}
-.nlv2-source-list a{display:inline-block;padding:8px 0;margin:-8px 0}
 .nlpjx-comps a:hover{color:#9C7A3C}
 #nlpjx-unimap{height:440px;border-radius:12px;border:1px solid #E2DCD0;background:#F3EEE3}
 #nlpjx-map.nl-adopted-map{max-width:1240px;margin:0 auto 20px;box-sizing:border-box}
@@ -449,11 +445,6 @@ html body.nlpc-project-page .nlpc-main .wp-block-post-content.is-layout-constrai
 html body.nlpc-project-page .nlpc-main .wp-block-post-content.is-layout-constrained > .nadlan-project-article{max-width:min(812px, calc(100% - 40px)) !important}
 }
 @media (max-width:767px){html body.nlpc-project-page .nlpc-main .wp-block-post-content.is-layout-constrained > :is(.nlcard,.nlpe){width:auto !important}}
-' );
-		// the dossier-format articles (design system ProjectDossier v64-65): their rules print only where the format is
-		$nadlan_pjx_pc = (string) get_post_field( 'post_content', $id );
-		if ( false !== strpos( $nadlan_pjx_pc, 'class="project-article' ) ) {
-			wp_add_inline_style( 'nadlan-pjx', '
 /* ProjectDossier v64 (design system, 28.9.2026): the dossier-format article (article.project-article, DUO) had no styles at all.
    The facts and the data table become one spec sheet, the buyer checks numbered cards, hairlines between the questions, the
    disclosure and the sources a quiet box. Presentation only: no word added or removed. */
@@ -489,106 +480,6 @@ html body.nlpc-project-page .nadlan-project-article .project-article .buyer-chec
 html body.nlpc-project-page .nadlan-project-article .project-article :is(.disclaimer,.sources){padding:2px 16px 14px !important}
 }
 ' );
-		}
-		if ( false !== strpos( $nadlan_pjx_pc, '<table' ) || false !== strpos( $nadlan_pjx_pc, 'nlv2-data-grid' ) ) {
-			wp_add_inline_style( 'nadlan-pjx', '
-/* ProjectDossier v67 (design system, 28.9.2026): the tables of the guide articles (Rainbow, Dimri Yama; direct children of the
-   article) as spec sheets, and the Ashira data cards as a grid. Presentation only: no word added or removed. */
-html body.nlpc-project-page .nadlan-project-article > table{width:100% !important;margin:18px 0 26px !important;background:#fff !important;border:1px solid #E2DCD0 !important;border-radius:16px !important;border-collapse:separate !important;border-spacing:0 !important;overflow:hidden !important;box-shadow:0 1px 2px rgba(27,26,23,.04) !important}
-html body.nlpc-project-page .nadlan-project-article > table :is(th,td){padding:12px 16px !important;background:none !important;border:0 !important;border-top:1px solid #EFE9DD !important;text-align:start !important;vertical-align:top !important;font-size:15px !important;line-height:1.6 !important;color:#1B1A17 !important}
-html body.nlpc-project-page .nadlan-project-article > table tr:first-child > :is(th,td){border-top:0 !important}
-html body.nlpc-project-page .nadlan-project-article > table thead th{background:#FAF7F1 !important;font-size:12.5px !important;font-weight:700 !important;color:#8A6A2E !important}
-html body.nlpc-project-page .nadlan-project-article > table thead + tbody tr:first-child > :is(th,td){border-top:1px solid #E2DCD0 !important}
-html body.nlpc-project-page .nadlan-project-article > table tbody th{width:30% !important;font-size:13px !important;font-weight:700 !important;color:#8A6A2E !important}
-html body.nlpc-project-page .nadlan-project-article > table tbody td:first-child{font-weight:700 !important}
-html body.nlpc-project-page .nadlan-project-article .nlv2-data-grid{display:grid !important;grid-template-columns:1fr 1fr !important;gap:1px !important;margin:18px 0 !important;background:#EFE9DD !important;border:1px solid #E2DCD0 !important;border-radius:16px !important;overflow:hidden !important}
-html body.nlpc-project-page .nadlan-project-article .nlv2-data-card{display:flex !important;flex-direction:column !important;gap:3px !important;min-width:0 !important;margin:0 !important;padding:14px 16px !important;background:#fff !important;border:0 !important;border-radius:0 !important;box-shadow:none !important;font-size:12.5px !important;font-weight:700 !important;line-height:1.4 !important;color:#8A6A2E !important}
-html body.nlpc-project-page .nadlan-project-article .nlv2-data-card > strong{font-size:16px !important;font-weight:600 !important;line-height:1.45 !important;color:#1B1A17 !important}
-html body.nlpc-project-page .nadlan-project-article .nlv2-data-grid > p:empty{display:none !important}
-/* ProjectDossier v74 (28.9.2026): a fact table names its source under each value (H Infinity). */
-html body.nlpc-project-page .nadlan-project-article > table td small{display:block !important;margin-top:3px !important;font-size:12.5px !important;font-weight:400 !important;line-height:1.5 !important;color:#6B6558 !important}
-@media (max-width:600px){
-html body.nlpc-project-page .nadlan-project-article > table{display:block !important;padding:2px 16px !important}
-html body.nlpc-project-page .nadlan-project-article > table :is(thead,tbody){display:block !important}
-html body.nlpc-project-page .nadlan-project-article > table tr{display:grid !important;grid-template-columns:minmax(0,1fr) !important;gap:2px !important;margin:0 !important;padding:12px 0 !important;background:none !important;border:0 !important;border-top:1px solid #EFE9DD !important;border-radius:0 !important;box-shadow:none !important}
-html body.nlpc-project-page .nadlan-project-article > table tr:has(> :nth-child(3)){grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;gap:4px 14px !important}
-html body.nlpc-project-page .nadlan-project-article > table tr:has(> :nth-child(3)) > :first-child{grid-column:1 / -1 !important}
-html body.nlpc-project-page .nadlan-project-article > table :is(thead,tbody) tr:first-child{border-top:0 !important}
-html body.nlpc-project-page .nadlan-project-article > table thead + tbody tr:first-child{border-top:1px solid #E2DCD0 !important}
-html body.nlpc-project-page .nadlan-project-article > table :is(th,td){display:block !important;width:auto !important;margin:0 !important;padding:0 !important;border:0 !important;background:none !important;font-size:14.5px !important}
-html body.nlpc-project-page .nadlan-project-article > table thead th,html body.nlpc-project-page .nadlan-project-article > table tbody th{font-size:12.5px !important}
-html body.nlpc-project-page .nadlan-project-article > table thead + tbody tr:first-child > :is(th,td){border-top:0 !important}
-html body.nlpc-project-page .nadlan-project-article > table thead th{background:none !important}
-html body.nlpc-project-page .nadlan-project-article .nlv2-data-card{padding:12px 14px !important}
-}
-' );
-		}
-		if ( false !== strpos( $nadlan_pjx_pc, 'class="nlfs-article' ) ) {
-			wp_add_inline_style( 'nadlan-pjx', '
-/* ProjectDossier v65 (design system, 28.9.2026): the Einstein article (article.nlfs-article) had no layout on the live page (the
-   flagship stylesheet covers only the stage dialogs). Presentation only: no word added or removed, the protected article untouched. */
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-article__header{margin:0 0 4px !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-eyebrow{margin:0 !important;font-size:12.5px !important;font-weight:700 !important;letter-spacing:.06em !important;line-height:1.4 !important;color:#8A6A2E !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-article__toc{display:flex !important;flex-wrap:wrap !important;gap:8px !important;margin:10px 0 28px !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-article__toc br{display:none !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-article__toc a{position:relative !important;display:inline-flex !important;align-items:center !important;min-height:38px !important;padding:0 14px !important;background:#fff !important;border:1px solid #E2DCD0 !important;border-radius:999px !important;color:#1B1A17 !important;font-size:14px !important;font-weight:600 !important;line-height:1.2 !important;text-decoration:none !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-article__toc a::after{content:"";position:absolute;inset:-3px 0}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-article__toc a:hover{border-color:#9C7A3C !important;color:#8A6A2E !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-fact-grid{display:grid !important;grid-template-columns:1fr 1fr !important;gap:1px !important;margin:12px 0 18px !important;background:#EFE9DD !important;border:1px solid #E2DCD0 !important;border-radius:16px !important;overflow:hidden !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-fact{display:flex !important;flex-direction:column !important;gap:3px !important;min-width:0 !important;padding:14px 16px !important;background:#fff !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-fact:last-of-type:nth-of-type(odd){grid-column:1 / -1 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article :is(.nlfs-fact-grid,.nlfs-compare-grid,.nlfs-tool-grid,.nlfs-document-grid) > p:empty{display:none !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-fact > span{font-size:12.5px !important;font-weight:700 !important;line-height:1.4 !important;color:#8A6A2E !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-fact > strong{font-size:16px !important;font-weight:600 !important;line-height:1.45 !important;color:#1B1A17 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-fact > small{font-size:12px !important;line-height:1.45 !important;color:#7A7266 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-action-box{margin:18px 0 !important;padding:16px 18px 8px !important;background:#F3EEE3 !important;border-radius:14px !important;border-inline-start:3px solid #9C7A3C !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-action-box h3{margin:0 0 10px !important;font-size:17px !important;line-height:1.35 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-action-box ul{list-style:none !important;margin:0 0 8px !important;padding:0 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-action-box ul > li{position:relative !important;margin:0 0 9px !important;padding-inline-start:26px !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-action-box ul > li::before{content:"";position:absolute;inset-inline-start:3px;top:.5em;width:11px;height:6px;border-left:2px solid #1F4B5C;border-bottom:2px solid #1F4B5C;transform:rotate(-45deg)}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-action-box ol{margin:0 0 8px !important;padding-inline-start:22px !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-source-line{margin:10px 0 0 !important;font-size:13px !important;line-height:1.6 !important;color:#7A7266 !important;max-width:none !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article :is(.nlfs-compare-grid,.nlfs-tool-grid,.nlfs-document-grid){display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:12px !important;margin:18px 0 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article :is(.nlfs-compare-grid,.nlfs-tool-grid,.nlfs-document-grid):has(> article:nth-child(4):last-child){grid-template-columns:repeat(2,minmax(0,1fr)) !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article :is(.nlfs-compare-grid,.nlfs-tool-grid,.nlfs-document-grid) > article{margin:0 !important;padding:16px 18px !important;background:#fff !important;border:1px solid #E2DCD0 !important;border-radius:14px !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article :is(.nlfs-compare-grid,.nlfs-tool-grid,.nlfs-document-grid) > article h3{margin:0 0 6px !important;font-size:17px !important;line-height:1.35 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article :is(.nlfs-compare-grid,.nlfs-tool-grid,.nlfs-document-grid) > article p{margin:0 !important;font-size:15px !important;line-height:1.65 !important;max-width:none !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-document-grid > article ul{margin:0 !important;padding-inline-start:18px !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-document-grid > article li{margin:0 0 5px !important;font-size:14.5px !important;line-height:1.55 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-timeline{list-style:none !important;margin:18px 0 !important;padding:0 !important;padding-inline-start:22px !important;border-inline-start:2px solid #E2DCD0 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-timeline > li{position:relative !important;margin:0 0 14px !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-timeline > li::before{content:"";position:absolute;box-sizing:border-box;inset-inline-start:-31px;top:.45em;width:16px;height:16px;border-radius:50%;background:#FAF7F1;border:3px solid #1F4B5C}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-timeline > li strong{display:block !important;color:#1F4B5C !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-steps{list-style:none !important;counter-reset:nlst;margin:18px 0 !important;padding:0 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-steps > li{counter-increment:nlst;position:relative !important;min-height:30px !important;margin:0 0 12px !important;padding-inline-start:42px !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-steps > li::before{content:counter(nlst);position:absolute;inset-inline-start:0;top:1px;width:28px;height:28px;border-radius:50%;background:#1F4B5C;color:#fff;font-size:13.5px;font-weight:700;line-height:28px;text-align:center}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-table{display:block !important;width:100% !important;margin:18px 0 !important;padding:2px 18px !important;background:#fff !important;border:1px solid #E2DCD0 !important;border-radius:16px !important;border-collapse:separate !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-table :is(thead,tbody){display:block !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-table tr{display:grid !important;grid-template-columns:26% minmax(0,1fr) minmax(0,1fr) !important;gap:14px !important;margin:0 !important;padding:12px 0 !important;background:none !important;border:0 !important;border-top:1px solid #EFE9DD !important;border-radius:0 !important;box-shadow:none !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-table thead tr{border-top:0 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-table :is(th,td){display:block !important;width:auto !important;margin:0 !important;padding:0 !important;background:none !important;border:0 !important;text-align:start !important;font-size:14.5px !important;line-height:1.55 !important;color:#1B1A17 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-table th{font-size:12.5px !important;font-weight:700 !important;color:#8A6A2E !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-table td:first-child{font-weight:700 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-section details{margin:0 !important;border-top:1px solid #E2DCD0 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-section details:last-of-type{border-bottom:1px solid #E2DCD0 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-section details > summary{display:flex !important;align-items:center !important;justify-content:space-between !important;gap:12px !important;min-height:44px !important;padding:10px 0 !important;list-style:none !important;cursor:pointer;font-size:16.5px !important;font-weight:600 !important;line-height:1.45 !important;color:#1B1A17 !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-section details > summary::-webkit-details-marker{display:none}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-section details > summary::marker{content:""}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-section details > summary::before{display:none !important;content:none !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-section details > summary::after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;border:1px solid #E2DCD0;background:#fff;color:#1F4B5C;font-size:18px;font-weight:600;line-height:26px;text-align:center}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-section details[open] > summary::after{content:"−"}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-section details > p{margin:0 0 16px !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-sources ul{margin:12px 0 0 !important;padding:14px 18px !important;padding-inline-start:34px !important;background:#F3EEE3 !important;border-radius:14px !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-sources li{margin:0 0 8px !important;font-size:14px !important;line-height:1.6 !important;color:#5A5347 !important;overflow-wrap:anywhere !important}
-@media (max-width:600px){
-html body.nlpc-project-page .nadlan-project-article .nlfs-article :is(.nlfs-compare-grid,.nlfs-tool-grid,.nlfs-document-grid),html body.nlpc-project-page .nadlan-project-article .nlfs-article :is(.nlfs-compare-grid,.nlfs-tool-grid,.nlfs-document-grid):has(> article:nth-child(4):last-child){grid-template-columns:1fr !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-fact{padding:12px 14px !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-table{padding:2px 16px !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-table tr{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;gap:4px 14px !important}
-html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-table :is(th,td):first-child{grid-column:1 / -1 !important}
-}
-' );
-		}
 		wp_register_script( 'nadlan-pjx-js', false, $has_map ? array( 'leaflet' ) : array(), '1.69.85', true );
 		wp_enqueue_script( 'nadlan-pjx-js' );
 		wp_add_inline_script( 'nadlan-pjx-js', '

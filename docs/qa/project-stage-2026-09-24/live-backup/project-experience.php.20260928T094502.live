@@ -505,8 +505,6 @@ html body.nlpc-project-page .nadlan-project-article .nlv2-data-grid{display:grid
 html body.nlpc-project-page .nadlan-project-article .nlv2-data-card{display:flex !important;flex-direction:column !important;gap:3px !important;min-width:0 !important;margin:0 !important;padding:14px 16px !important;background:#fff !important;border:0 !important;border-radius:0 !important;box-shadow:none !important;font-size:12.5px !important;font-weight:700 !important;line-height:1.4 !important;color:#8A6A2E !important}
 html body.nlpc-project-page .nadlan-project-article .nlv2-data-card > strong{font-size:16px !important;font-weight:600 !important;line-height:1.45 !important;color:#1B1A17 !important}
 html body.nlpc-project-page .nadlan-project-article .nlv2-data-grid > p:empty{display:none !important}
-/* ProjectDossier v74 (28.9.2026): a fact table names its source under each value (H Infinity). */
-html body.nlpc-project-page .nadlan-project-article > table td small{display:block !important;margin-top:3px !important;font-size:12.5px !important;font-weight:400 !important;line-height:1.5 !important;color:#6B6558 !important}
 @media (max-width:600px){
 html body.nlpc-project-page .nadlan-project-article > table{display:block !important;padding:2px 16px !important}
 html body.nlpc-project-page .nadlan-project-article > table :is(thead,tbody){display:block !important}
