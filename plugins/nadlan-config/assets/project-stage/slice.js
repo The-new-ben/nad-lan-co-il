@@ -42,8 +42,13 @@ export function openSlice(o) {
   const units = (o.units || []).map(([id, b]) => ({ id, b: norm(b) }));
   const words = typeof o.words === 'function' ? o.words : () => '';
   const prevFocus = o.opener || document.activeElement;
+  // on a language page (HAD-361) the plan's own labels are put in the page's language before they are measured and
+  // placed, and the direction words run outward on either side whatever the reading direction (1.72.350)
+  const I18N = window.__nlStageI18n || null;
+  const T = (s) => (I18N && typeof I18N.tr === 'function' && I18N.tr(s)) || s;
+  const LTR = !!(I18N && I18N.lang !== 'he' && I18N.lang !== 'ar');
 
-  const root = el('div', 'nlds nlsl', null, { role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'nlsl-t', dir: 'rtl', lang: 'he' });
+  const root = el('div', 'nlds nlsl', null, { role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'nlsl-t', dir: LTR ? 'ltr' : 'rtl', lang: I18N ? I18N.lang : 'he' });
   const box = el('div', 'nlsl__box', root);
   const head = el('div', 'nlsl__head', box);
   const tt = el('div', 'nlsl__tt', head);
@@ -107,7 +112,7 @@ export function openSlice(o) {
     sv('polygon', { class: 'nlsl__glass', points: p.glass.map(P).join(' ') }, svg);
     sv('polygon', { class: 'nlsl__core', points: p.core.map(P).join(' ') }, svg);
     const ct = sv('text', { x: c0, y: c0 + 4, class: 'nlsl__coret', 'text-anchor': 'middle' }, svg);
-    ct.textContent = 'גרעין';
+    ct.textContent = T('גרעין');
     // labels: "דירה לדוגמה" midway between the core and the glass line on the apartment's bearing; the page's words for that
     // direction outside the balconies, facing out, in two lines when long, kept inside the picture
     const ray = (poly, a) => { // distance from the centre to the polygon along bearing a (radians)
@@ -122,8 +127,8 @@ export function openSlice(o) {
       }
       return best;
     };
-    const lines = (w) => {
-      if (w.length <= 16) return [w];
+    const lines = (w, max = 16) => {
+      if (w.length <= max) return [w];
       if (w.startsWith('לכיוון ')) return ['לכיוון', w.slice(7)]; // never split a place's name
       const sp = [...w.matchAll(/ /g)].map((m) => m.index);
       const mid = sp.reduce((m, i) => (Math.abs(i - w.length / 2) < Math.abs(m - w.length / 2) ? i : m), sp[0] || w.length);
@@ -132,17 +137,21 @@ export function openSlice(o) {
     for (const u of units) {
       const a = u.b * Math.PI / 180, on = u.id === unit;
       const ri = (ray(p.core, a) + ray(p.glass, a)) / 2;
-      const t1 = sv('text', { x: (c0 + Math.sin(a) * ri * k).toFixed(1), y: (c0 - Math.cos(a) * ri * k + 4).toFixed(1), class: 'nlsl__lab' + (on ? ' is-on' : ''), 'text-anchor': 'middle' }, svg);
-      t1.textContent = 'דירה לדוגמה';
-      const w = words(u.b);
+      const lab = T('דירה לדוגמה'), lls = lab.length > 12 ? lines(lab, 8) : [lab];
+      const lx = (c0 + Math.sin(a) * ri * k).toFixed(1), ly = c0 - Math.cos(a) * ri * k + 4 - (lls.length - 1) * 6.5;
+      const t1 = sv('text', { x: lx, y: ly.toFixed(1), class: 'nlsl__lab' + (on ? ' is-on' : ''), 'text-anchor': 'middle' }, svg);
+      lls.forEach((l, i) => { const ts = sv('tspan', { x: lx, dy: i ? 13 : 0 }, t1); ts.textContent = l; });
+      const w = words(u.b) ? T(words(u.b)) : '';
       if (!w) continue;
       const ls = lines(w), ro = ray(p.outer, a) + 2.2, sx = Math.sin(a);
       let x = c0 + sx * ro * k, y = c0 - Math.cos(a) * ro * k + 4;
       const wid = Math.max(...ls.map((l) => l.length)) * 6.4;
-      // outward: on the east the text runs right of x, on the west left of it (RTL: 'end' is the left edge)
-      const anchor = sx > 0.35 ? 'end' : (sx < -0.35 ? 'start' : 'middle');
-      if (anchor === 'end') x = Math.min(x, S - 10 - wid);
-      if (anchor === 'start') x = Math.max(x, 10 + wid);
+      // outward: on the east the text runs right of x, on the west left of it ('end' is the left edge in RTL, the
+      // right edge in LTR)
+      const east = sx > 0.35, west = sx < -0.35;
+      const anchor = east ? (LTR ? 'start' : 'end') : (west ? (LTR ? 'end' : 'start') : 'middle');
+      if (east) x = Math.min(x, S - 10 - wid);
+      if (west) x = Math.max(x, 10 + wid);
       if (anchor === 'middle') y = Math.cos(a) > 0 ? Math.max(y - (ls.length - 1) * 15, 18) : Math.min(y, S - 44 - (ls.length - 1) * 15);
       const t2 = sv('text', { x: x.toFixed(1), y: y.toFixed(1), class: 'nlsl__dir' + (on ? ' is-on' : ''), 'text-anchor': anchor }, svg);
       ls.forEach((l, i) => { const ts = sv('tspan', { x: x.toFixed(1), dy: i ? 15 : 0 }, t2); ts.textContent = l; });
@@ -151,10 +160,10 @@ export function openSlice(o) {
     const na = sv('g', { transform: 'translate(' + (S - 30) + ',36)' }, svg);
     sv('path', { d: 'M0,-18 L7,6 L0,1 L-7,6 Z', fill: '#14212B' }, na);
     const nt = sv('text', { y: 22, 'text-anchor': 'middle', class: 'nlsl__n' }, na);
-    nt.textContent = 'צפון';
+    nt.textContent = T('צפון');
     sv('line', { x1: 24, y1: S - 22, x2: (24 + 10 * k).toFixed(1), y2: S - 22, stroke: '#14212B', 'stroke-width': 3 }, svg);
     const st = sv('text', { x: (24 + 5 * k).toFixed(1), y: S - 30, 'text-anchor': 'middle', class: 'nlsl__n' }, svg);
-    st.textContent = '10 מ׳';
+    st.textContent = T('10 מ׳');
     svg.querySelectorAll('.nlsl__u').forEach((g) => g.addEventListener('click', () => pickUnit(g.getAttribute('data-u'))));
     // the side list, the same apartments as buttons
     list.textContent = '';

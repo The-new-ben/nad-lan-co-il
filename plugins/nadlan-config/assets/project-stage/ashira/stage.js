@@ -1797,7 +1797,7 @@ function createEngine(ctx) {
     const wa = String(opts.wa || '').replace(/[^0-9]/g, '');
     if (wa) {
       const cta = el('div', 'rbs-qcard-cta', qcard);
-      const a = el('a', 'rbs-qcard-page rbs-qcard-wa', cta, { href: 'https://wa.me/' + wa + '?text=' + encodeURIComponent('שלום, יש לי שאלה על ' + (it.ask || it.name) + ' ' + T.in + '.'), target: '_blank', rel: 'noopener' });
+      const a = el('a', 'rbs-qcard-page rbs-qcard-wa', cta, { href: 'https://wa.me/' + wa + '?text=' + encodeURIComponent((window.__nlStageI18n && typeof window.__nlStageI18n.wa === 'function' && window.__nlStageI18n.wa('ask', { what: it.ask || it.name, project: T.heroName })) || ('שלום, יש לי שאלה על ' + (it.ask || it.name) + ' ' + T.in + '.')), target: '_blank', rel: 'noopener' });
       a.textContent = 'שאלה על המתקן בוואטסאפ';
     }
     qcard.dataset.phase = '';

@@ -200,7 +200,10 @@ async function boot() {
   const waUrl = (d) => {
     if (!cfg.wa || !d || d.floor == null) return '';
     const words = d.toward ? 'לכיוון ' + d.toward : (d.bearing != null ? facingWords(d.bearing) : '');
-    const text = 'שלום, אשמח לקבל תוכניות ומחירים ' + (d.unit ? 'לדירה בקומה ' : 'לקומה ') + d.floor + ' ב' + cfg.name + (words ? ', ' + words : '') + ' (nad-lan.co.il)';
+    // on a language page, the message in the page's language (i18n-dom.js, HAD-361)
+    const L = window.__nlStageI18n;
+    const text = (L && typeof L.wa === 'function' && L.wa(d.unit ? 'unit' : 'floor', { floor: d.floor, project: cfg.name, words })) ||
+      'שלום, אשמח לקבל תוכניות ומחירים ' + (d.unit ? 'לדירה בקומה ' : 'לקומה ') + d.floor + ' ב' + cfg.name + (words ? ', ' + words : '') + ' (nad-lan.co.il)';
     return 'https://wa.me/' + cfg.wa + '?text=' + encodeURIComponent(text);
   };
   const setTitle = (d) => {

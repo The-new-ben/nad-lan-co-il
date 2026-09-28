@@ -18,7 +18,33 @@
   const pats = (D.patterns || []).map((p) => { try { return { re: new RegExp(p.re, 'u'), tr: p.tr }; } catch (e) { return null; } }).filter(Boolean);
   const nameKeys = Object.keys(names).sort((a, b) => b.length - a.length);
   const cache = new Map();
-  window.__nlStageI18n = { lang: D.lang, misses: new Set() };
+  // tr: for the parts that measure their words before placing them (slice.js): the string in the page's language, or null
+  // wa: the WhatsApp message a buyer sends from the stage, in the page's language (the Hebrew one stays on Hebrew pages);
+  //     a name or direction the dictionary does not know is left out rather than sent half in Hebrew
+  const WA = {
+    en: { unit: 'Hello, I would like plans and prices for the apartment on floor {floor} at {project}{words} (nad-lan.co.il)',
+          floor: 'Hello, I would like plans and prices for floor {floor} at {project}{words} (nad-lan.co.il)',
+          ask: 'Hello, I have a question about {what} at {project}.' },
+    fr: { unit: "Bonjour, je souhaite recevoir les plans et les prix de l'appartement à l'étage {floor} de {project}{words} (nad-lan.co.il)",
+          floor: "Bonjour, je souhaite recevoir les plans et les prix de l'étage {floor} de {project}{words} (nad-lan.co.il)",
+          ask: "Bonjour, j'ai une question sur {what} à {project}." },
+    ru: { unit: 'Здравствуйте, хочу получить планировки и цены: {project}, квартира на этаже {floor}{words} (nad-lan.co.il)',
+          floor: 'Здравствуйте, хочу получить планировки и цены: {project}, этаж {floor}{words} (nad-lan.co.il)',
+          ask: 'Здравствуйте, у меня вопрос: {what}, {project}.' },
+    ar: { unit: 'مرحباً، أودّ الحصول على المخططات والأسعار للشقة في الطابق {floor} في {project}{words} (nad-lan.co.il)',
+          floor: 'مرحباً، أودّ الحصول على المخططات والأسعار للطابق {floor} في {project}{words} (nad-lan.co.il)',
+          ask: 'مرحباً، لدي سؤال عن {what} في {project}.' },
+  };
+  // keep: a project's or a facility's name stays as written when unknown (the rep reads Hebrew); a direction is dropped
+  const trOr = (s, keep) => { if (s == null || s === '') return ''; const t = tr(String(s).replace(/\s+/g, ' ').trim()); return t != null ? t : (keep ? String(s) : ''); };
+  const wa = (kind, o) => {
+    const t = WA[D.lang] && WA[D.lang][kind];
+    if (!t) return null;
+    const words = trOr(o.words, false);
+    return t.replace('{floor}', o.floor != null ? String(o.floor) : '').replace('{project}', trOr(o.project, true))
+      .replace('{what}', trOr(o.what, true)).replace('{words}', words ? ', ' + words : '');
+  };
+  window.__nlStageI18n = { lang: D.lang, misses: new Set(), tr: (s) => tr(String(s).replace(/\s+/g, ' ').trim()), wa };
 
   function tr(s) {
     if (cache.has(s)) return cache.get(s);

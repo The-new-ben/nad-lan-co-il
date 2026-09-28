@@ -505,8 +505,22 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 					: '<h1 id="nl-project-page-title" class="nlps-h1">' . esc_html( $ps['name'] ) . ( '' !== $en ? ' <span class="nlps-h1__en" lang="en">' . esc_html( $en ) . '</span>' : '' ) . '</h1>' )
 				. ( ! empty( $ps['developer'] ) || ! empty( $ps['place'] ) ? '<div class="nlps-kicker">' . ( ! empty( $ps['developer'] ) ? '<b>' . esc_html( $ps['developer'] ) . '</b>' : '' ) . ( ! empty( $ps['developer'] ) && ! empty( $ps['place'] ) ? ' · ' : '' ) . esc_html( (string) ( $ps['place'] ?? '' ) ) . '</div>' : '' )
 				. '</div></header>';
+			// the WhatsApp message in the page's language on a language page (HAD-361, 1.72.350), the project by its Latin name
+			$pl    = (string) ( $ps['lang'] ?? 'he' );
+			$wa_tx = 'שלום, אשמח לקבל תוכניות ומחירים ב' . $ps['name'] . ' (nad-lan.co.il)';
+			if ( 'he' !== $pl ) {
+				$pn  = function_exists( 'nadlan_lp_tr' ) ? nadlan_lp_tr( (string) $ps['name'], $pl ) : null;
+				$pn  = null !== $pn ? $pn : ( '' !== $en ? $en : (string) $ps['name'] );
+				$tpl = array(
+					'en' => 'Hello, I would like plans and prices for %s (nad-lan.co.il)',
+					'fr' => 'Bonjour, je souhaite recevoir les plans et les prix de %s (nad-lan.co.il)',
+					'ru' => 'Здравствуйте, хочу получить планировки и цены: %s (nad-lan.co.il)',
+					'ar' => 'مرحباً، أودّ الحصول على المخططات والأسعار في %s (nad-lan.co.il)',
+				);
+				if ( isset( $tpl[ $pl ] ) ) { $wa_tx = sprintf( $tpl[ $pl ], $pn ); }
+			}
 			$cta  = '<div class="nlds nlps-ctawrap" dir="rtl" lang="he"><div class="nlps-hero__cta">'
-				. ( '' !== $wa ? '<a class="nlds-btn nlds-btn--primary" target="_blank" rel="noopener" data-nlps-ev="hero-wa" href="https://wa.me/' . esc_attr( $wa ) . '?text=' . rawurlencode( 'שלום, אשמח לקבל תוכניות ומחירים ב' . $ps['name'] . ' (nad-lan.co.il)' ) . '">' . ( function_exists( 'nlds_icon' ) ? nlds_icon( 'whatsapp' ) : '' ) . '<span>לקבלת תוכניות ומחירים</span></a>' : '' )
+				. ( '' !== $wa ? '<a class="nlds-btn nlds-btn--primary" target="_blank" rel="noopener" data-nlps-ev="hero-wa" href="https://wa.me/' . esc_attr( $wa ) . '?text=' . rawurlencode( $wa_tx ) . '">' . ( function_exists( 'nlds_icon' ) ? nlds_icon( 'whatsapp' ) : '' ) . '<span>לקבלת תוכניות ומחירים</span></a>' : '' )
 				. '<a class="nlds-btn nlds-btn--secondary" href="#nlps-t" data-nlps-ev="hero-pick"><span>לבחירת קומה</span></a>'
 				// VideoCall v73: a video call with NadLan's team, booked in the scheduler's band at the page's end
 				. ( function_exists( 'nadlan_sched_on' ) && nadlan_sched_on() && '1' !== get_post_meta( $id, 'nadlan_sched_off', true ) ? '<a class="nlds-btn nlds-btn--secondary nlps-hero__video" href="#nlsch" data-nlps-ev="hero-video"><span>שיחת וידאו עם נציג</span></a>' : '' )
@@ -994,9 +1008,10 @@ add_action( 'wp_footer', function () {
 }, 50 );
 
 if ( ! function_exists( 'nadlan_ps_langs_on' ) ) {
-	/** HAD-361: the stage on the language pages; option nadlan_ps_langs = '1' for everyone, ?nlstage=1 to look before. */
+	/** HAD-361: the stage on the language pages. On for everyone since 1.72.351 (StageLanguages v90: the rendered audit of
+	 *  16 pages, the phone and content-order checks passed); option nadlan_ps_langs = '0' turns it off, ?nlstage=1 previews. */
 	function nadlan_ps_langs_on() {
-		if ( '1' === (string) get_option( 'nadlan_ps_langs', '0' ) ) { return true; }
+		if ( '1' === (string) get_option( 'nadlan_ps_langs', '1' ) ) { return true; }
 		return isset( $_GET['nlstage'] ) && '1' === sanitize_key( wp_unslash( $_GET['nlstage'] ) ); // phpcs:ignore
 	}
 }
