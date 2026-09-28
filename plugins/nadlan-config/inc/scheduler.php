@@ -208,6 +208,7 @@ if ( ! function_exists( 'nadlan_sched_kind_for' ) ) {
 		if ( 'nadlan_professional' === $t ) { return 'meeting'; }
 		if ( 'nadlan_property' === $t ) { return 'visit'; }
 		if ( 'nadlan_intl' === $t ) { return 'meeting'; }
+		if ( 'nadlan_project' === $t && function_exists( 'nadlan_project_mode' ) && 'showroom' !== nadlan_project_mode( $card_id ) ) { return 'video'; } // VideoCall v73
 		return 'tour';
 	}
 }
@@ -368,7 +369,32 @@ if ( ! function_exists( 'nadlan_sched_strings' ) ) {
 			'kind_tour'  => 'جولة في المشروع', 'kind_visit' => 'زيارة للعقار', 'kind_meeting' => 'استشارة',
 			'honest'     => 'ندلان لا تحدد زيارات باسم المطور. يُحال الطلب إلى الجهة المخولة ويصل التأكيد النهائي عبر واتساب.',
 		);
+		/* VideoCall v73 (owner order 28.9.2026: a video conference with a representative on every project): on project pages in
+		 * review mode the band books a WhatsApp video call with NadLan's team, independent of the developer */
+		$video = array(
+			'he' => array( 'title_video' => 'שיחת וידאו עם נציג נדל״ן', 'kind_video' => 'שיחת וידאו על הפרויקט',
+				'sub_video' => 'בוחרים יום ושעה, ונציג של נדל״ן מתקשר אליכם בווידאו בוואטסאפ ועובר איתכם על הפרויקט: הדגם, הקומות, הנוף, המתקנים והמחירים שפורסמו. ללא תשלום וללא התחייבות.',
+				'honest_video' => 'השיחה היא עם צוות נדל״ן, פלטפורמה עצמאית: היא אינה מטעם היזם ואינה מחליפה את נציגי המכירות שלו. אישור המועד יגיע בוואטסאפ. שינוי או ביטול - בכפתור הביטול או בוואטסאפ.',
+				'ok_sub_video' => 'המועד נרשם אצלנו. נציג נדל״ן יאשר בוואטסאפ ויתקשר בווידאו במועד. אסמכתא:' ),
+			'en' => array( 'title_video' => 'A video call with a NadLan advisor', 'kind_video' => 'a video call about the project',
+				'sub_video' => 'Pick a day and a time, and a NadLan advisor calls you on WhatsApp video to walk you through the project: the model, the floors, the view, the facilities and the published prices. Free, no commitment.',
+				'honest_video' => 'The call is with NadLan, an independent platform: it is not on behalf of the developer and does not replace its sales team. Confirmation comes on WhatsApp. To change or cancel, use the cancel button or WhatsApp.',
+				'ok_sub_video' => 'Your time is booked. A NadLan advisor will confirm on WhatsApp and video-call you then. Reference:' ),
+			'fr' => array( 'title_video' => 'Un appel vidéo avec un conseiller NadLan', 'kind_video' => 'un appel vidéo sur le projet',
+				'sub_video' => 'Choisissez un jour et une heure : un conseiller NadLan vous appelle en vidéo sur WhatsApp et vous présente le projet : la maquette, les étages, la vue, les équipements et les prix publiés. Gratuit, sans engagement.',
+				'honest_video' => 'L\'appel est avec NadLan, une plateforme indépendante : il ne se fait pas au nom du promoteur et ne remplace pas son équipe de vente. La confirmation arrive sur WhatsApp. Pour modifier ou annuler : le bouton d\'annulation ou WhatsApp.',
+				'ok_sub_video' => 'Votre créneau est enregistré. Un conseiller NadLan confirmera sur WhatsApp et vous appellera en vidéo. Référence :' ),
+			'ru' => array( 'title_video' => 'Видеозвонок с консультантом NadLan', 'kind_video' => 'видеозвонок о проекте',
+				'sub_video' => 'Выберите день и время: консультант NadLan позвонит вам по видео в WhatsApp и покажет проект: макет, этажи, вид, инфраструктуру и опубликованные цены. Бесплатно и без обязательств.',
+				'honest_video' => 'Звонок проводит NadLan, независимая платформа: не от имени застройщика и не вместо его отдела продаж. Подтверждение придёт в WhatsApp. Изменить или отменить можно кнопкой отмены или в WhatsApp.',
+				'ok_sub_video' => 'Время записано. Консультант NadLan подтвердит в WhatsApp и позвонит по видео. Номер:' ),
+			'ar' => array( 'title_video' => 'مكالمة فيديو مع مستشار من ندلان', 'kind_video' => 'مكالمة فيديو عن المشروع',
+				'sub_video' => 'اختاروا يوماً وساعة، ويتصل بكم مستشار من ندلان بالفيديو عبر واتساب ويعرض لكم المشروع: النموذج والطوابق والإطلالة والمرافق والأسعار المنشورة. مجاناً ودون التزام.',
+				'honest_video' => 'المكالمة مع فريق ندلان، منصة مستقلة: ليست باسم المطور ولا تحل محل فريق مبيعاته. يصل التأكيد عبر واتساب. للتغيير أو الإلغاء: زر الإلغاء أو واتساب.',
+				'ok_sub_video' => 'تم تسجيل الموعد. سيؤكد مستشار ندلان عبر واتساب ويتصل بالفيديو في الموعد. المرجع:' ),
+		);
 		$all = array( 'he' => $he, 'en' => $en, 'fr' => $fr, 'ru' => $ru, 'ar' => $ar );
+		foreach ( $all as $k => $v ) { $all[ $k ] = array_merge( $v, $video[ $k ] ); }
 		return isset( $all[ $lang ] ) ? $all[ $lang ] : $en;
 	}
 }
@@ -683,11 +709,13 @@ add_filter( 'the_content', function ( $content ) {
 	if ( 'nadlan_property' === get_post_type( $card ) && function_exists( 'nadlan_pl_is_demo' ) && nadlan_pl_is_demo( $card ) ) { return $content; } // no visit to a home that does not exist (ListingPage v47)
 	/* Review mode (owner order 31.8.2026): no choose-a-date block on review
 	 * project pages - it reads like the developer's own sales surface. */
-	if ( 'nadlan_project' === get_post_type( $card ) && function_exists( 'nadlan_project_mode' ) && 'showroom' !== nadlan_project_mode( $card ) ) { return $content; }
+	/* VideoCall v73 (owner order 28.9.2026): those pages now offer a video call with NadLan's own team instead (the kind 'video'),
+	 * worded as independent of the developer. */
 	$done = true;
 	$wlang = nadlan_sched_page_lang( $card );
 	$s = nadlan_sched_strings( $wlang );
 	$kind = nadlan_sched_kind_for( $card );
+	if ( 'video' === $kind ) { $s['sub'] = $s['sub_video']; $s['honest'] = $s['honest_video']; $s['ok_sub'] = $s['ok_sub_video']; }
 	$js = plugins_url( 'assets/scheduler/booking.js', dirname( __FILE__ ) ) . '?v=' . rawurlencode( defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '1' );
 	ob_start();
 	?>
