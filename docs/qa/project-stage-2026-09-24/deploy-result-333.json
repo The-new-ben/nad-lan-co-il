@@ -1,0 +1,27 @@
+{
+  "released": "1.72.333",
+  "from": "1.72.332",
+  "at": "2026-09-28 11:36:33",
+  "files": {
+    "assets/project-stage/duo/stage.js": "b208ca7b615fcf29a498a246982ff1d0",
+    "assets/project-stage/duo/stage.css": "ea87fe01d6722a144adffa95366d8e6b",
+    "assets/project-stage/duo/city.json": "c5ca1dfb51195af650e6b234bb3c84db",
+    "assets/project-stage/duo/quarter.json": "aa567eb18f17e2de68040e86a9b00022",
+    "assets/project-stage/duo/facilities.json": "226b6d7b14e4b67a8de9cb8bbebe07ba",
+    "assets/project-stage/duo/poster.jpg": "1e2c9d62467a78850649f57201e36bb0",
+    "assets/project-stage/duo/poster-716.jpg": "4ac245aab5b97714b1136c73441b99ce",
+    "inc/project-stage.php": "ca93cddd082ee64a2474438c8dc5d613",
+    "nadlan-config.php": "e38b1be63fc7640be5323aa924d30832"
+  },
+  "live_before": {
+    "assets/project-stage/duo/stage.js": "missing",
+    "assets/project-stage/duo/stage.css": "missing",
+    "assets/project-stage/duo/city.json": "missing",
+    "assets/project-stage/duo/quarter.json": "missing",
+    "assets/project-stage/duo/facilities.json": "missing",
+    "assets/project-stage/duo/poster.jpg": "missing",
+    "assets/project-stage/duo/poster-716.jpg": "missing",
+    "inc/project-stage.php": "503a9efdfd53bf2ac6630349e376cfdb",
+    "nadlan-config.php": "0955175fb260b59d0c194218e96fbb6a"
+  }
+}

@@ -113,56 +113,6 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 					array( 195, 230, 'לכיוון הצפון הישן' ),
 				),
 			),
-			// StageDuo v81 (28.9.2026): DUO on its official lot (docs/research/2026-09-28-stages/stage-geometry.md, section 3; the
-			// proposal docs/research/2026-09-28-stages/duo-config-proposal.php.txt). The H1 carries the searched names (GSC 90 days:
-			// "duo tel aviv", "duo תל אביב", "דואו", "מגדלי duo"); Ibn Gabirol and Arlozorov are in the line under it.
-			'duo-tel-aviv' => array(
-				'dir'            => 'duo',
-				'mount'          => 'mountDuoStage',
-				'bearing_offset' => 0,
-				'name'           => 'מגדלי דואו תל אביב',
-				'name_en'        => 'DUO Tel Aviv',
-				'developer'      => 'אפריקה ישראל מגורים',
-				'place'          => 'אבן גבירול פינת ארלוזורוב, מתחם סומייל',
-				'rail'           => array(),
-				'poster_alt'     => 'הדמיה של מגדלי דואו תל אביב: שני מגדלי מגורים, מבנה הלובי ביניהם ומבני המסחר במתחם',
-				'src_line'       => 'מקורות הבמה: קו המגרש, קווי המגדלים והבניינים הקיימים סביבם לפי עיריית <span>תל אביב-יפו</span> (שכבות המגרשים, המבנים, הרחובות, השטחים הירוקים והעצים, 9.2026). הגבהים, החזית ומיקום המתקנים להמחשה.',
-				// ProjectFacts: six quick facts, each with its source
-				'facts'          => array(
-					// the permit's addresses (GIS 772) and the site's boundaries (licensing decision 1-25-0172, 21.9.2025)
-					array( 'מיקום', 'אבן גבירול פינת ארלוזורוב', 'מתחם סומייל, תל אביב' ),
-					// Africa Israel Residences' report and the city's licensing: 54 floors, of them 50 residential
-					array( 'בניינים', '2 מגדלים של 54 קומות', '50 קומות מגורים בכל מגדל' ),
-					// permit 20210784 of 29.12.2021 (GIS 772); 510 of them are the partners' marketable share
-					array( 'דירות', '668', 'לפי היתר הבנייה' ),
-					// the developer's site (duo-tlv.com, residential-towers)
-					array( 'בריכה', 'על גג מבנה הלובי', 'בין שני המגדלים, לפי אתר היזם' ),
-					// licensing decision 1-25-0172 (21.9.2025): basements 1 to 5
-					array( 'חניה', '5 קומות מרתף', 'לפי החלטת רשות הרישוי, 9.2025' ),
-					// the page: completion planned 2027 by the company's report
-					array( 'מצב', 'בבנייה', 'השלמה מתוכננת ב-2027, לפי דוח החברה' ),
-				),
-				'progress'       => array(
-					array( 'תכנית', '7.2013', 'done' ),
-					array( 'היתר בנייה', '12.2021', 'done' ),
-					array( 'בבנייה', 'עכשיו', 'now' ),
-					array( 'השלמה', 'מתוכננת ב-2027', 'next' ),
-				),
-				// example apartments (the owner, 25.9.2026): one per face of each tower floor; true bearings from the GIS footprints
-				'units'          => array( array( 'n', 10 ), array( 'e', 100 ), array( 's', 190 ), array( 'w', 280 ) ),
-				// the view and the beam start between the two towers (build_city_duo.py); each tower's centre is about 30 m away
-				'tower_lat'      => 32.085658,
-				'tower_lng'      => 34.783027,
-				// true bearings from that point (the city's beach layer GIS 579, green areas GIS 503; 28.9.2026)
-				'sectors'        => array(
-					array( 235, 315, 'לכיוון הים' ),
-					array( 315, 20, 'לכיוון נמל תל אביב והירקון' ),
-					array( 20, 70, 'לכיוון פארק הירקון' ),
-					array( 70, 120, 'לכיוון כיכר המדינה' ),
-					array( 120, 180, 'לכיוון מגדלי עזריאלי ושרונה' ),
-					array( 180, 235, 'לכיוון כיכר רבין ומרכז העיר' ),
-				),
-			),
 		);
 	}
 }
@@ -369,7 +319,7 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 		// page itself the stage sits next to the title, which says it all
 		// the stage's sources, always visible and in the page's HTML, when the real city stands around the building (StageCity)
 		$src = is_readable( dirname( __DIR__ ) . '/assets/project-stage/' . $ps['dir'] . '/city.json' )
-			? '<p class="nlps-src">' . ( ! empty( $ps['src_line'] ) ? wp_kses( (string) $ps['src_line'], array( 'span' => array() ) ) : 'מקורות הבמה: קו המגרש והבניינים הקיימים סביבו לפי עיריית <span>תל אביב-יפו</span> (שכבות התוכניות והמבנים, 9.2026); הפרויקטים ברובע לפי העמודים שלהם באתר.' ) . '</p>'
+			? '<p class="nlps-src">מקורות הבמה: קו המגרש והבניינים הקיימים סביבו לפי עיריית <span>תל אביב-יפו</span> (שכבות התוכניות והמבנים, 9.2026); הפרויקטים ברובע לפי העמודים שלהם באתר.</p>'
 			: '';
 		// the quarter's legend (design system QuarterPins, version 23): what stands today, what is being built, what is selling,
 		// what is at the permit stage; each project's group from its page, counted here; the building itself counts when it is
@@ -411,8 +361,7 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 		$pset = nadlan_ps_poster_set( $ps );
 		$ssr  = '<img class="nlps-ssr-poster" src="' . esc_url( $pset['src'] ) . '"'
 			. ( '' !== $pset['srcset'] ? ' srcset="' . esc_attr( $pset['srcset'] ) . '" sizes="' . esc_attr( $pset['sizes'] ) . '"' : '' )
-			. ' width="1432" height="1320" alt="' . esc_attr( ! empty( $ps['poster_alt'] ) ? (string) $ps['poster_alt'] : 'הדמיה של פרויקט ' . $ps['name'] . ', מגדל ובנייני בוטיק סביב גינה' ) . '" fetchpriority="high" decoding="async">';
-		$has_inside = is_readable( dirname( __DIR__ ) . '/assets/project-stage/' . $ps['dir'] . '/tour/living-25w-card.jpg' );
+			. ' width="1432" height="1320" alt="' . esc_attr( 'הדמיה של פרויקט ' . $ps['name'] . ', מגדל ובנייני בוטיק סביב גינה' ) . '" fetchpriority="high" decoding="async">';
 		$stagebox = '<div class="nlps-stagebox"><h2 class="nlps-srt" id="nlps-t">סיור וירטואלי: הקומות והנוף</h2>'
 			. '<section class="nlps-stage" id="nlps" aria-labelledby="nlps-t" data-cfg="' . esc_attr( wp_json_encode( $cfg ) ) . '"><div class="nlps-stage__mount" id="nlps-stage">' . $ssr . '</div></section>'
 			. '<div class="nlds">' . ( ! empty( $ps['units'] )
@@ -420,8 +369,8 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 				? '<ol class="nlps-steps" aria-label="מה אפשר לעשות כאן">'
 					. '<li><button type="button" class="nlps-step" data-nlps-step="floor" aria-current="step"><i>1</i>בוחרים קומה</button></li>'
 					. '<li><button type="button" class="nlps-step" data-nlps-step="view"><i>2</i>הנוף והמפה</button></li>'
-					. ( $has_inside ? '<li><button type="button" class="nlps-step" data-nlps-step="inside"><i>3</i>נכנסים לדירה</button></li>' : '' )
-					. '<li><button type="button" class="nlps-step" data-nlps-step="design"><i>' . ( $has_inside ? '4' : '3' ) . '</i>מעצבים את הדירה</button></li></ol>'
+					. '<li><button type="button" class="nlps-step" data-nlps-step="inside"><i>3</i>נכנסים לדירה</button></li>'
+					. '<li><button type="button" class="nlps-step" data-nlps-step="design"><i>4</i>מעצבים את הדירה</button></li></ol>'
 				: '<p class="nlps-hint" id="nlps-hint">בחרו קומה במגדל, ואחר כך נקודה בטבעת הקומה כדי לבחור כיוון.</p>' ) . $legend . $src . '</div></div>';
 		$rail  = '<aside class="nlps-rail" aria-label="אנשי מקצוע באזור">' . $rail . '</aside>';
 		$below = '<div class="nlps-below' . ( '' === $map ? ' nlps-below--solo' : '' ) . '">' . $view . $map . '</div>';
@@ -514,13 +463,6 @@ if ( ! function_exists( 'nadlan_ps_compose' ) ) {
 		$b = strpos( $html, '<body' );
 		if ( false === $b ) { return $html; }
 		$a = strpos( $html, '<div class="nl-lead">', $b );
-		if ( false === $a && function_exists( 'nadlan_pt_synth_lead' ) ) { // StageDuo v81: DUO's paragraph is the article's bottom line
-			$sl = nadlan_pt_synth_lead( $html, $b );
-			if ( false !== $sl ) {
-				$html = $sl[0];
-				$a    = strpos( $html, '<div class="nl-lead">', $b );
-			}
-		}
 		if ( false === $a ) { return $html; }
 		$lead_end = nadlan_ps_close( $html, $a, 'div' );
 		if ( ! $lead_end ) { return $html; }
@@ -594,23 +536,6 @@ if ( ! function_exists( 'nadlan_pt_on' ) ) {
 		return $on = true;
 	}
 }
-if ( ! function_exists( 'nadlan_pt_synth_lead' ) ) {
-	/** ProjectTitle v50: no answer paragraph (DUO), but the article's "שורה תחתונה": its words, as they are, right after the
-	 *  breadcrumbs; the article keeps every word. Returns array( $html, $lead_offset ) or false (the page stays as it is).
-	 *  Used by the title compose and, from StageDuo v81, by the stage compose on a stage page with no paragraph of its own. */
-	function nadlan_pt_synth_lead( $html, $b ) {
-		if ( ! preg_match( '#<div class="bottom-line">(.*?)</div>#s', $html, $bl, PREG_OFFSET_CAPTURE, $b ) ) { return false; }
-		$txt = trim( preg_replace( '/\s+/u', ' ', wp_strip_all_tags( preg_replace( '#<strong>\s*שורה תחתונה:?\s*</strong>#u', '', $bl[1][0] ) ) ) );
-		$nav = strpos( $html, '<nav class="nlptop"', $b );
-		$end = false === $nav ? false : strpos( $html, '</nav>', $nav );
-		if ( mb_strlen( $txt ) < 60 || false === $end ) { return false; }
-		$end += 6;
-		// the article's block, now the answer at the top, is not shown a second time a screen below (it stays in the source)
-		$html = substr( $html, 0, $bl[0][1] ) . '<div class="bottom-line" data-nl-lead="1">' . substr( $html, $bl[0][1] + strlen( '<div class="bottom-line">' ) );
-		$html = substr( $html, 0, $end ) . '<div class="nl-lead"><p>' . esc_html( $txt ) . '</p></div>' . substr( $html, $end );
-		return array( $html, $end );
-	}
-}
 if ( ! function_exists( 'nadlan_pt_compose' ) ) {
 	function nadlan_pt_compose( $html ) {
 		if ( ! is_string( $html ) || false !== strpos( $html, 'class="nlpt-h1"' ) ) { return $html; }
@@ -618,9 +543,18 @@ if ( ! function_exists( 'nadlan_pt_compose' ) ) {
 		if ( false === $b ) { return $html; }
 		$lead = strpos( $html, '<div class="nl-lead">', $b );
 		if ( false === $lead ) {
-			$sl = nadlan_pt_synth_lead( $html, $b );
-			if ( false === $sl ) { return $html; }
-			list( $html, $lead ) = $sl;
+			// ProjectTitle v50: no answer paragraph (DUO), but the article's "שורה תחתונה": its words, as they are, right after
+			// the breadcrumbs; the article keeps every word
+			if ( ! preg_match( '#<div class="bottom-line">(.*?)</div>#s', $html, $bl, PREG_OFFSET_CAPTURE, $b ) ) { return $html; }
+			$txt = trim( preg_replace( '/\s+/u', ' ', wp_strip_all_tags( preg_replace( '#<strong>\s*שורה תחתונה:?\s*</strong>#u', '', $bl[1][0] ) ) ) );
+			$nav = strpos( $html, '<nav class="nlptop"', $b );
+			$end = false === $nav ? false : strpos( $html, '</nav>', $nav );
+			if ( mb_strlen( $txt ) < 60 || false === $end ) { return $html; }
+			$end += 6;
+			// the article's block, now the answer at the top, is not shown a second time a screen below (it stays in the source)
+			$html = substr( $html, 0, $bl[0][1] ) . '<div class="bottom-line" data-nl-lead="1">' . substr( $html, $bl[0][1] + strlen( '<div class="bottom-line">' ) );
+			$html = substr( $html, 0, $end ) . '<div class="nl-lead"><p>' . esc_html( $txt ) . '</p></div>' . substr( $html, $end );
+			$lead = $end;
 		}
 		if ( ! preg_match( '#<h1\b[^>]*\bid="nl-project-page-title"[^>]*>(.*?)</h1>#s', $html, $m, PREG_OFFSET_CAPTURE, $b ) ) { return $html; }
 		$text = trim( $m[1][0] );
@@ -757,7 +691,6 @@ add_action( 'wp_head', function () {
 		. '@media(max-width:1279px){:root body .nlps-page{grid-template-columns:minmax(280px,360px) minmax(0,1fr);grid-template-areas:"hero stage" "lead stage" "cta stage" "below below" "facts facts" "tour tour" "deals deals" "rail rail"}:root body .nlps-page>.nlps-rail{grid-template-columns:repeat(2,minmax(0,300px));margin-top:6px!important}}'
 		. '@media(max-width:1099px){:root body .nlps-page{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"hero" "lead" "cta" "stage" "below" "facts" "tour" "deals" "rail";column-gap:0}:root body .nlps-page>.nlps-below{grid-template-columns:minmax(0,1fr)}:root body .nlps-page>.nlps-rail{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nlps-stage{height:62svh;min-height:380px}}'
 		. '@media(max-width:600px){.nlps-stage{height:70svh;min-height:360px}:root body .nlps-page{padding:0 12px!important;row-gap:12px}:root body .nlps-page>.nlps-rail{gap:12px}:root body .nlps-page>.nl-lead>p{font-size:16px!important}}'
-		. ':root body .bottom-line[data-nl-lead]{display:none!important}' // StageDuo v81: the article's bottom line is the paragraph above
 		. '</style>' . "\n";
 }, 999 );
 

@@ -1,0 +1,90 @@
+<?php
+/*
+ * PROPOSAL ONLY (28.9.2026, prototype): the 'duo-tel-aviv' entry for nadlan_ps_config() in
+ * plugins/nadlan-config/inc/project-stage.php. NOT applied, NOT deployed. It mounts the prototype stage in
+ * plugins/nadlan-config/assets/project-stage/duo/ (stage.js exporting mountDuoStage, stage.css, city.json, quarter.json,
+ * facilities.json, poster.jpg, poster-716.jpg), the way 'rainbow-tel-aviv' mounts Rainbow's.
+ *
+ * Every fact below carries its source (docs/research/2026-09-28-stages/stage-geometry.md, section 3; the live page
+ * https://nad-lan.co.il/projects/duo-tel-aviv/ as read on 28.9.2026). Nothing about prices, inventory or apartment lines
+ * is added: the page itself says there is no public price list and no official typical floor plan.
+ *
+ * Paste inside the array returned by nadlan_ps_config(), after the 'rainbow-tel-aviv' entry.
+ */
+
+			'duo-tel-aviv' => array(
+				'dir'            => 'duo',
+				'mount'          => 'mountDuoStage',
+				'bearing_offset' => 0,                      // the stage's north is true north; the lots' 10° turn is inside the scene
+				// the page's own H1 opens "מגדלי DUO תל אביב"; the stage's hero title and the WhatsApp texts use this name
+				'name'           => 'מגדלי DUO תל אביב',
+				'name_en'        => 'DUO Tel Aviv',
+				'developer'      => 'אפריקה ישראל מגורים',
+				// the plan's name (plan 2988א, "מתחם סמל דרום", GIS 837) and the corner the page names
+				'place'          => 'מתחם סמל דרום, אבן גבירול פינת ארלוזורוב',
+				'rail'           => array(),                // no professional's square yet: the empty square (BrokerSlot) only
+				// ProjectFacts: six quick facts, each with its source
+				'facts'          => array(
+					// the permit's addresses (GIS 772) and the site's boundaries (licensing decision 1-25-0172, 21.9.2025)
+					array( 'מיקום', 'אבן גבירול פינת ארלוזורוב', 'מתחם סמל דרום, תל אביב' ),
+					// Africa Israel Residences' report and the city's licensing: 54 floors, of them 50 residential
+					array( 'בניינים', '2 מגדלים של 54 קומות', '50 קומות מגורים בכל מגדל' ),
+					// permit 20210784 of 29.12.2021 (GIS 772); 510 of them are the partners' marketable share (the page)
+					array( 'דירות', '668', 'לפי היתר הבנייה' ),
+					// the developer's site (duo-tlv.com, residential-towers): the infinity pool on the lobby building's roof
+					array( 'בריכה', 'על גג מבנה הלובי', 'בין שני המגדלים, לפי אתר היזם' ),
+					// licensing decision 1-25-0172 (21.9.2025): basements 1 to 5
+					array( 'חניה', '5 קומות מרתף', 'לפי החלטת רשות הרישוי, 9.2025' ),
+					// the page: "מועד השלמה מתוכנן 2027 לפי דוחות החברה" (Electra's page says 12.2026; the page shows both)
+					array( 'מצב', 'בבנייה', 'השלמה מתוכננת ב-2027, לפי דוח החברה' ),
+				),
+				// ProjectProgress: done, now, next (dates from the page and the research file)
+				'progress'       => array(
+					array( 'תכנית', '7.2013', 'done' ),          // plan 2988א in force 2.7.2013 (GIS 837, research 3.2)
+					array( 'היתר בנייה', '12.2021', 'done' ),    // permit 20210784 of 29.12.2021 (GIS 772, research 3.3)
+					array( 'בבנייה', 'עכשיו', 'now' ),           // the page: contractor Electra Building, completion planned 2027
+					array( 'השלמה', 'מתוכננת ב-2027', 'next' ),  // the page: the company's report and Ynet/CTech (Electra: 12.2026)
+				),
+				// example apartments (the owner, 25.9.2026: "דירות לדוגמה עם כיוון, ועם תווית ברורה שהן לדוגמה"): one per face
+				// of each tower floor; the faces' true bearings from the GIS 513 footprints (the grid is turned 10° east of north)
+				'units'          => array( array( 'n', 10 ), array( 'e', 100 ), array( 's', 190 ), array( 'w', 280 ) ),
+				// no floor-tied sale is published for DUO (the page's prices are averages and one broker listing, not deals):
+				// no 'deals', no 'low_note'/'high_note'; the stage prints its own sourced line ("דירות 2 עד 5 חדרים ופנטהאוזים,
+				// לפי אתר הפרויקט") and on floors 48-50 the penthouse line with the private pools (licensing decision, 9.2025)
+				// the view from a floor and the beam start here: the middle point between the two towers (build_city_duo.py);
+				// each tower's centre is about 30 m from it (see the gaps in the report)
+				'tower_lat'      => 32.085658,
+				'tower_lng'      => 34.783027,
+				// what lies that way, true bearings measured from that point (28.9.2026): the coast (the city's beach layer,
+				// GIS 579: Frishman 248°, Gordon 261°, the nearest waterline 280°, Hilton 294°), the port 325°, the Yarkon's
+				// mouth 347°, Yarkon Park 59°, Kikar Hamedina 79° (GIS 503), the Azrieli towers 146°, Sarona 168°, Habima 193°,
+				// Rabin Square 206° (GIS 503)
+				'sectors'        => array(
+					array( 235, 315, 'לכיוון הים' ),
+					array( 315, 20, 'לכיוון נמל תל אביב והירקון' ),
+					array( 20, 70, 'לכיוון פארק הירקון' ),
+					array( 70, 120, 'לכיוון כיכר המדינה' ),
+					array( 120, 180, 'לכיוון מגדלי עזריאלי ושרונה' ),
+					array( 180, 235, 'לכיוון כיכר רבין ומרכז העיר' ),
+				),
+			),
+
+/*
+ * Small changes the same file needs before DUO goes live (also NOT applied), in the order they matter:
+ *
+ * 1. The first picture's alt text is Rainbow's for every project (nadlan_ps_parts: "... מגדל ובנייני בוטיק סביב גינה").
+ *    Take it from the config, e.g. 'poster_alt' => 'הדמיה של מגדלי DUO תל אביב: שני מגדלי מגורים ומתחם מסחר', and use
+ *    it in the <img class="nlps-ssr-poster"> (and its width/height stay 1432 x 1320: the DUO posters keep that aspect,
+ *    1600 x 1475 and 716 x 660).
+ * 2. The steps under the stage always print "3 נכנסים לדירה". DUO has no interior pictures (no assets/project-stage/duo/
+ *    tour/), so print that step only when living-25w-card.jpg is readable, as the tour section already does. The stage
+ *    itself already drops the card's "inside" action when the page has no [data-nlps-tour] button.
+ * 3. The stage's sources line (nlps-src) should name the layers DUO's city uses: "קו המגרש, קווי המגדלים והבניינים
+ *    הקיימים סביבם לפי עיריית תל אביב-יפו (שכבות המגרשים, המבנים, הרחובות, השטחים הירוקים והעצים, 9.2026)".
+ * 4. The quarter comment names build_quarter_rainbow.py; DUO's quarter.json comes from scripts/project-stage/
+ *    build_city_duo.py.
+ * 5. bridge.js (shared with Rainbow, untouched in this prototype): the view's title and the WhatsApp text say "קומה 25"
+ *    without the tower. The events now carry { tower, towerName }; one line in setTitle()/waUrl() could add "מגדל צפוני".
+ *    Its openTourAt()/selSide() read the side as unit.split('-')[1], which for "N-25-w" is the floor: harmless while
+ *    DUO has no tour pictures; use split('-').pop() before DUO gets them.
+ */
