@@ -19,9 +19,7 @@
     "src": "fac-pool.jpg",
     "small": "fac-pool-2k.jpg",
     "label": "כניסה לבריכה",
-    "title": "הבריכה על גג מבנה הלובי · הדמיה",
-    "place": "הבריכה על הגג",
-    "stopSub": "על גג מבנה הלובי"
+    "title": "הבריכה על גג מבנה הלובי · הדמיה"
    }
   },
   {
@@ -41,29 +39,7 @@
     "src": "fac-lobby.jpg",
     "small": "fac-lobby-2k.jpg",
     "label": "כניסה ללובי",
-    "title": "הלובי בגובה של כ־7 מטרים · הדמיה",
-    "place": "הלובי",
-    "stopSub": "מחבר בין שני המגדלים, לפי אתר היזם",
-    "doors": [
-     {
-      "to": "25-w",
-      "at": [
-       96.3,
-       -1.2
-      ],
-      "label": "המגדל הצפוני",
-      "sub": "המעליות · לדירה בקומה 25"
-     },
-     {
-      "to": "25-s",
-      "at": [
-       -96.3,
-       -1.2
-      ],
-      "label": "המגדל הדרומי",
-      "sub": "המעליות · לדירה בקומה 25"
-     }
-    ]
+    "title": "הלובי בגובה של כ־7 מטרים · הדמיה"
    }
   },
   {
@@ -83,20 +59,7 @@
     "src": "fac-wellness.jpg",
     "small": "fac-wellness-2k.jpg",
     "label": "כניסה למתחם הוולנס",
-    "title": "מתחם הוולנס וחדר הכושר · הדמיה",
-    "place": "הוולנס",
-    "stopSub": "כניסה ישירה מהלובי, לפי אתר היזם",
-    "doors": [
-     {
-      "to": "lobby",
-      "at": [
-       155.0,
-       -3.0
-      ],
-      "label": "ללובי",
-      "sub": "כניסה ישירה, לפי אתר היזם"
-     }
-    ]
+    "title": "מתחם הוולנס וחדר הכושר · הדמיה"
    }
   },
   {
@@ -143,50 +106,5 @@
    ],
    "note": "מקום הכניסה לחניון לא פורסם; הסימון בדגם להמחשה. מקור: החלטת רשות הרישוי 1-25-0172."
   }
- ],
- "walk": {
-  "note": "BuildingWalk v96 for DUO: doors measured with DUO_LOCATE and checked with DUO_PROBE (duo_facility.py / duo_interior.py): the lobby's lift portals +96.3 (north tower) and -96.3 (south tower), the wellness door to the lobby +155, the apartment's corridor opening +117.4 in every direction. The developer's site says the lobby connects the two towers and the wellness has a direct entry from the lobby; the pool's access is not published, so it has no door in the picture. The apartments n/e/w stand in the north tower, s in the south tower.",
-  "order": [
-   "lobby",
-   "club",
-   "pool"
-  ],
-  "aptDoor": {
-   "n": [
-    117.4,
-    -5.4
-   ],
-   "e": [
-    117.4,
-    -5.4
-   ],
-   "s": [
-    117.4,
-    -5.4
-   ],
-   "w": [
-    117.4,
-    -5.4
-   ]
-  },
-  "aptDoorLabel": "יציאה מהדירה",
-  "aptDoorSub": "לובי, וולנס, בריכה",
-  "aptLabel": "הדירה",
-  "aptStops": [
-   {
-    "to": "25-w",
-    "label": "המגדל הצפוני · קומה 25",
-    "sub": "דירה לדוגמה"
-   },
-   {
-    "to": "25-s",
-    "label": "המגדל הדרומי · קומה 25",
-    "sub": "דירה לדוגמה"
-   }
-  ],
-  "placesLabel": "בבניין",
-  "liftTitle": "לאן?",
-  "liftNote": "מעבר בין הדמיות, לא לפי תוכנית",
-  "routeNote": "הדמיות; המעברים להמחשה"
- }
+ ]
 }

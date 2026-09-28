@@ -328,16 +328,13 @@ async function boot() {
     for (const f of facs) {
       scenes.push({ id: 'fac-' + f.id, group: 'fac', dir: 'fac-' + f.id, spot: 'fac', title: f.tour.title || f.name, src: tourFile(f.tour.src),
         small: tourFile(f.tour.small || f.tour.src), chip: 'מתקן לדוגמה', caption: FAC_CAP, note: f.note || '',
-        doors: (Array.isArray(f.tour.doors) ? f.tour.doors : []).map((d) => Object.assign({}, d, { to: d.to === 'lift' || /^\d+-/.test(d.to) ? d.to : 'fac-' + d.to })) });
+        doors: (Array.isArray(f.tour.doors) ? f.tour.doors : []).map((d) => Object.assign({}, d, { to: d.to === 'lift' ? 'lift' : 'fac-' + d.to })) });
     }
     const order = Array.isArray(walk.order) ? walk.order : facs.map((f) => f.id);
     const places = [{ apt: true, label: walk.aptLabel || 'הדירה', floor: 25, dir: 'w' }]; // the buyer's apartment first
     for (const id of order) { const f = facs.find((x) => x.id === id); if (f) places.push({ to: 'fac-' + id, label: f.tour.place || f.pin || f.name, sub: f.tour.stopSub || '' }); }
-    // the apartments' stops: the project's own list when it has one (DUO: a tower each), else a floor each
-    const aptStops = Array.isArray(walk.aptStops) && walk.aptStops.length
-      ? walk.aptStops.filter((q) => q && q.to && scenes.some((sc) => sc.id === q.to)).map((q) => ({ to: q.to, label: q.label || '', sub: q.sub || '' }))
-      : tourFloors.slice().sort((a, b) => b - a).map((fl) => ({ floor: fl, label: 'קומה ' + fl, sub: walk.aptStopSub || 'דירה לדוגמה' }));
-    const stops = aptStops.concat(places.filter((q) => !q.apt).map((q) => ({ to: q.to, label: q.label, sub: q.sub })));
+    const stops = tourFloors.slice().sort((a, b) => b - a).map((fl) => ({ floor: fl, label: 'קומה ' + fl, sub: walk.aptStopSub || 'דירה לדוגמה' }))
+      .concat(places.filter((q) => !q.apt).map((q) => ({ to: q.to, label: q.label, sub: q.sub })));
     return { scenes, start: startId, places, placesLabel: walk.placesLabel || 'בבניין', routeNote: walk.routeNote || '',
       lift: { title: walk.liftTitle || 'לאן?', note: walk.liftNote || 'מעבר להמחשה', stops },
       caption: 'הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר.',

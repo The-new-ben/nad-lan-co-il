@@ -1,0 +1,15 @@
+{
+  "released": "1.72.359",
+  "from": "1.72.358",
+  "at": "2026-09-28 20:21:19",
+  "files": {
+    "assets/project-stage/bridge.js": "35b17c50a24dba52248620f40fa8582d",
+    "assets/project-stage/duo/facilities.json": "8df4ee4d6a8165353c04bdcb68ccb93f",
+    "nadlan-config.php": "ceea447f57c5b10b3ddb1d17d2890019"
+  },
+  "live_before": {
+    "assets/project-stage/bridge.js": "38a97123cfe193091bed3d6ea8759203",
+    "assets/project-stage/duo/facilities.json": "4db540ed58034051ac9d585223108c69",
+    "nadlan-config.php": "fef80f18a0446f1082c1ef77a12f1e72"
+  }
+}

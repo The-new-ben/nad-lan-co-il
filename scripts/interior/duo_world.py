@@ -1506,6 +1506,20 @@ def finish(out, probe_env="DUO_PROBE"):
                       "%.2f m" % (loc - cw.translation).length)
                 o = loc + d_world * 0.002
         sys.exit(0)
+    locate = os.environ.get("DUO_LOCATE")          # diagnostics: "name,name" -> each object's centre as yaw:pitch (degrees,
+    if locate:                                     # + = right/up; the doors between the 360 rooms, design system BuildingWalk)
+        bpy.context.view_layer.update()
+        inv = CAM.matrix_world.inverted()
+        for name in locate.split(","):
+            ob = bpy.data.objects.get(name)
+            if not ob:
+                print("LOCATE", name, "-> missing")
+                continue
+            c = sum((ob.matrix_world @ Vector(v) for v in ob.bound_box), Vector()) / 8.0
+            p = inv @ c
+            print("LOCATE %s yaw %+.2f pitch %+.2f dist %.2f m" % (name, math.degrees(math.atan2(p.x, -p.z)),
+                                                                 math.degrees(math.atan2(p.y, math.hypot(p.x, p.z))), p.length))
+        sys.exit(0)
     print("objects %d | %d x %d, %d samples, %d threads" % (len(bpy.data.objects), scene.render.resolution_x, scene.render.resolution_y,
                                                             scene.cycles.samples, scene.render.threads))
     out = os.path.abspath(out)                   # (a relative path would land in the drive's root)
