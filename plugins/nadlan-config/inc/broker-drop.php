@@ -1583,6 +1583,8 @@ function nl_drop_listing_css() {
 .nlx .nlx-legend{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:13.5px;color:var(--nlx-mute)}
 .nlx .nlx-disclaimer{font-size:13.5px;line-height:1.65;color:var(--nlx-mute);max-width:90ch}
 .nlx .nlx-mbar{display:none}
+/* PublishPage v70 (28.9.2026): on wide screens the broker's WhatsApp floats in the bottom corner */
+@media (min-width:761px){.nlx .nlx-mbar{display:block;position:fixed;bottom:20px;inset-inline-end:20px;z-index:9990;padding:0;background:none}.nlx .nlx-mbar > :not(:first-child){display:none}.nlx .nlx-mbar .nlx-btn{min-height:54px;padding:0 22px;border-radius:999px;box-shadow:0 10px 24px rgba(20,33,43,.28)}}
 @media (max-width:1080px){
   .nlx .nlx-layout{grid-template-columns:minmax(0,1fr)}
   .nlx .nlx-rail{position:static;order:-1;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
@@ -2834,6 +2836,8 @@ function nl_drop_site_css() {
 .nlb .nlb-method p{font-size:15px;color:rgba(207,227,234,.82)}
 .nlb .nlb-legal{margin-top:48px;max-width:980px;font-size:13px;line-height:1.7;color:rgba(207,227,234,.66)}
 .nlb .nlb-mbar{display:none}
+/* PublishPage v70 (28.9.2026): on wide screens the broker's WhatsApp floats in the bottom corner (the site's own pill steps aside on broker pages; the lead is the broker's) */
+@media (min-width:721px){.nlb .nlb-mbar{display:block;position:fixed;bottom:20px;inset-inline-end:20px;z-index:9990;padding:0;background:none;border:0}.nlb .nlb-mbar > :not(:first-child){display:none}.nlb .nlb-mbar .nlb-btn{min-height:54px;padding:0 22px;border-radius:999px;box-shadow:0 10px 24px rgba(20,33,43,.28)}}
 @media (max-width:1180px){
   .nlb .nlb-grid{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}
   .nlb .nlb-feature{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}

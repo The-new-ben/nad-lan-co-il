@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NadLan Config
  * Description: Lead-capture foundation: nadlan_lead CPT + lead-form handler + healthcheck. Read skills/nadlan-config-plugin.md.
- * Version: 1.72.322
+ * Version: 1.72.325
  * Author: nad-lan.co.il
  * License: GPL-2.0+
  * Requires PHP: 7.4
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
    above (the release script bumps all three). A frozen ver= string once kept
    browsers on a June engine.js for weeks - never hardcode versions in enqueues. */
 if ( ! defined( 'NADLAN_CONFIG_VERSION' ) ) {
-	define( 'NADLAN_CONFIG_VERSION', '1.72.322' );
+	define( 'NADLAN_CONFIG_VERSION', '1.72.325' );
 }
 
 /* ---------- v1.5.0: directory cards, claim funnel, auction engine ----------
@@ -649,7 +649,7 @@ body:not(.nlpc-home):not(.nlpc-project-page) .entry-content.is-layout-constraine
    bubble + the chat FAB piled on top. Keep exactly ONE compact two-button bar
    (call-interest + WhatsApp); everything else floating is removed. The
    accessibility button is intentionally untouched. */
-body.single-nadlan_project #nlcta { display: none !important; }
+/* 28.9.2026 (DS PublishPage v68): the WhatsApp pill shows on project pages again; the project contact bar this rule made room for is gone. */
 .nl-sticky { flex-direction: row !important; gap: 8px !important; align-items: stretch !important; }
 .nl-sticky__main { flex: 1.3; justify-content: center; min-height: 50px; border-radius: 12px !important; }
 .nl-sticky__wa { flex: 1; min-height: 50px; border-radius: 12px !important; }

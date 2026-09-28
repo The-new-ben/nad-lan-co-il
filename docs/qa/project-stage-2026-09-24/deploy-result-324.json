@@ -1,0 +1,13 @@
+{
+  "released": "1.72.324",
+  "from": "1.72.323",
+  "at": "2026-09-28 08:35:13",
+  "files": {
+    "inc/conversion-cta.php": "78cec7cff80bd153bf93d5eb02c1d0e6",
+    "nadlan-config.php": "5ba44539902205d27c2825615b88d592"
+  },
+  "live_before": {
+    "inc/conversion-cta.php": "2dbacaf6342dcc01464e462dd401a620",
+    "nadlan-config.php": "cca686d158e50a8f8a5d1c48c9dcdd02"
+  }
+}

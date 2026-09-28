@@ -1156,3 +1156,12 @@ var sr=top.querySelector(".nlhp-ico--search");if(sr)sr.addEventListener("click",
 NLHPJS;
 	echo '<script id="nadlan-hp-js">' . $js . '</script>' . "\n";
 }, 99 );
+
+/* The 404 page and the posts page (/site-map/) render through theme templates that print no viewport tag, so phones drew
+ * them 980px wide and zoomed out, the WhatsApp pill tiny at the bottom (found 28.9.2026). Every other template prints its own. */
+add_action( 'wp_head', function () {
+	if ( is_admin() ) { return; }
+	if ( is_404() || ( is_home() && ! is_front_page() ) ) {
+		echo '<meta name="viewport" content="width=device-width, initial-scale=1">' . "\n";
+	}
+}, 0 );

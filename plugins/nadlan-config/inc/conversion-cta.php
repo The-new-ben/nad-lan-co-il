@@ -20,7 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 if ( ! function_exists( 'nadlan_cta_enabled' ) ) {
 	function nadlan_cta_enabled() {
 		if ( defined( 'NADLAN_DISABLE_CONVERSION_CTA' ) && NADLAN_DISABLE_CONVERSION_CTA ) { return false; }
-		if ( is_admin() || is_user_logged_in() ) { return false; }
+		// the WhatsApp pill is on every page for every visitor, logged-in included (owner order 28.9.2026: the money button, on every page)
+		if ( is_admin() ) { return false; }
 		if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) { return false; }
 		return true;
 	}
@@ -37,6 +38,9 @@ add_action( 'wp_footer', function () {
 	if ( ! nadlan_cta_enabled() ) { return; }
 	$wa = nadlan_cta_whatsapp_number();
 	if ( ! $wa ) {
+		// PublishPage v70: pages owned by a broker or an owner empty the site number (their own buttons carry the lead); on
+		// wide screens the owner's own WhatsApp then floats in the pill's corner, so no page is left without a floating WhatsApp
+		echo '<style id="nlcta-owned">@media (min-width:721px){html body .nlb .nlb-mbar{display:block;position:fixed;bottom:20px;inset-inline-end:20px;z-index:9990;padding:0;background:none;border:0}html body .nlb .nlb-mbar > :not(:first-child){display:none}html body .nlb .nlb-mbar .nlb-btn{min-height:54px;padding:0 22px;border-radius:999px;box-shadow:0 10px 24px rgba(20,33,43,.28)}}@media (min-width:761px){html body .nlx .nlx-mbar{display:block;position:fixed;bottom:20px;inset-inline-end:20px;z-index:9990;padding:0;background:none}html body .nlx .nlx-mbar > :not(:first-child){display:none}html body .nlx .nlx-mbar .nlx-btn{min-height:54px;padding:0 22px;border-radius:999px;box-shadow:0 10px 24px rgba(20,33,43,.28)}}</style>' . "\n";
 		// No WhatsApp configured - still emit the GA helper so other modules can use it.
 		echo "<script>window.dataLayer=window.dataLayer||[];window.nadlanGA=window.nadlanGA||function(n,p){try{window.dataLayer.push(Object.assign({event:n},p||{}));}catch(e){}};</script>\n";
 		return;
@@ -96,10 +100,15 @@ body.nl-skin-a #nlcta .nlcta-wa{box-shadow:0 10px 24px rgba(15,122,99,.30)!impor
    (overrides showroom.css body.nl-has-engine #nlcta{display:none}) */
 body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 @media(max-width:760px){body.nl-has-engine #nlcta{bottom:calc(env(safe-area-inset-bottom,0px) + 148px)!important}}
-@media(max-width:760px){body.nadlan-p3d-stage-active #nlcta{display:none}}
-/* PublishPage v48 (28.9.2026): on a phone the pill covered forms' buttons and cards. Full at the top of the page, a round
-   54px button once the reader scrolls, hidden while a text field has focus; the link, its label and tracking unchanged. */
-@media(max-width:600px){#nlcta.is-mini .nlcta-wa{width:54px;height:54px;min-height:54px;max-width:none;padding:0;justify-content:center;border-radius:50%}#nlcta.is-mini .nlcta-txt,#nlcta.is-mini .nlcta-brand{display:none}#nlcta.is-mini .nlcta-glyph{width:40px;height:40px}html body #nlcta.is-typing,html body #nlcta.is-clear{display:none!important}}
+/* PublishPage v48-69 (28.9.2026): full at the top of the page, a round 54px button once the reader scrolls. v69 (owner
+   order): the pill never hides - not for logged-in visitors, not on a 3D stage, not while typing; over a form button it
+   moves up instead. The link, its label and tracking unchanged. */
+@media(max-width:600px){#nlcta.is-mini .nlcta-wa{width:54px;height:54px;min-height:54px;max-width:none;padding:0;justify-content:center;border-radius:50%}#nlcta.is-mini .nlcta-txt,#nlcta.is-mini .nlcta-brand{display:none}#nlcta.is-mini .nlcta-glyph{width:40px;height:40px}html body #nlcta.is-clear{bottom:calc(env(safe-area-inset-bottom,0px) + 150px)!important}}
+/* PublishPage v70 (28.9.2026): on broker sites and broker listing pages the site pill steps aside (the lead is the broker's);
+   on wide screens the broker's own WhatsApp floats in the same corner. Here, not only in the engine, because broker pages
+   are built once and keep their styles. */
+@media (min-width:721px){html body .nlb .nlb-mbar{display:block;position:fixed;bottom:20px;inset-inline-end:20px;z-index:9990;padding:0;background:none;border:0}html body .nlb .nlb-mbar > :not(:first-child){display:none}html body .nlb .nlb-mbar .nlb-btn{min-height:54px;padding:0 22px;border-radius:999px;box-shadow:0 10px 24px rgba(20,33,43,.28)}}
+@media (min-width:761px){html body .nlx .nlx-mbar{display:block;position:fixed;bottom:20px;inset-inline-end:20px;z-index:9990;padding:0;background:none}html body .nlx .nlx-mbar > :not(:first-child){display:none}html body .nlx .nlx-mbar .nlx-btn{min-height:54px;padding:0 22px;border-radius:999px;box-shadow:0 10px 24px rgba(20,33,43,.28)}}
 </style>
 <script>
 (function(){
