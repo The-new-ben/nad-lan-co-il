@@ -158,9 +158,11 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 				// lobby building)
 				'tour'           => array(
 					'dirs'       => array(
-						array( 'n', 'צפון', 'לכיוון נמל תל אביב והירקון', '' ),
+						// DuoRooms v92 (1.72.353): n, e and w from the north tower; s from the south tower (the north tower's south
+						// face looks at the south tower 28 m away), said in the scene; H Infinity is drawn as a volume by its floors
+						array( 'n', 'צפון', 'לכיוון נמל תל אביב והירקון', 'הנפח הבהיר הוא אייץ׳ אינפיניטי, שנמצא בבנייה, בגובה לפי מספר הקומות.' ),
 						array( 'e', 'מזרח', 'לכיוון כיכר המדינה', '' ),
-						array( 's', 'דרום', 'לכיוון כיכר רבין ומרכז העיר', '' ),
+						array( 's', 'דרום', 'לכיוון כיכר רבין ומרכז העיר', 'הדירה הזו במגדל הדרומי: החזית הדרומית של המגדל הצפוני פונה אל המגדל הדרומי.' ),
 						array( 'w', 'מערב', 'לכיוון הים', '' ),
 					),
 					'facing'     => 'מול הים, נמל תל אביב, כיכר המדינה ומרכז העיר',

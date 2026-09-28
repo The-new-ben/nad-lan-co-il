@@ -588,6 +588,17 @@ EXACT = [
     row("הדמיית כדור הארץ שלנו", "Our globe view", "Notre globe 3D", "Наш 3D-глобус", "مجسّم الكرة الأرضية لدينا"),
     row("אתר עצמאי", "Independent site", "Site indépendant", "Независимый сайт", "موقع مستقل"),
     row("כלי הבדיקה של נדלן", "NadLan's checking tools", "Les outils de vérification de NadLan", "Инструменты проверки NadLan", "أدوات الفحص من NadLan"),
+    # --- DuoRooms v92 (1.72.353): the notes of DUO's 360 rooms
+    row("הנפח הבהיר הוא אייץ׳ אינפיניטי, שנמצא בבנייה, בגובה לפי מספר הקומות.",
+        "The pale mass is H Infinity, under construction, drawn to its number of floors.",
+        "La masse claire est H Infinity, en construction, dessinée selon son nombre d'étages.",
+        "Светлый объём — H Infinity, он строится и показан по числу этажей.",
+        "الكتلة الفاتحة هي H Infinity قيد البناء، مرسومة حسب عدد طوابقها."),
+    row("הדירה הזו במגדל הדרומי: החזית הדרומית של המגדל הצפוני פונה אל המגדל הדרומי.",
+        "This apartment is in the south tower: the north tower's south face looks onto the south tower.",
+        "Cet appartement est dans la tour sud : la façade sud de la tour nord fait face à la tour sud.",
+        "Эта квартира в южной башне: южный фасад северной башни обращён к южной башне.",
+        "هذه الشقة في البرج الجنوبي: الواجهة الجنوبية للبرج الشمالي تطل على البرج الجنوبي."),
 ]
 
 # ---------------------------------------------------------------------------------------------------------------------

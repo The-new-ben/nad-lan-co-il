@@ -127,7 +127,7 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 		var wa0=box.querySelector('.nlcta-wa');
 		var stageHit=function(h){
 			if(!wa0)return 0;
-			var p=wa0.getBoundingClientRect(),els=document.querySelectorAll('#nlps button,#nlps a');
+			var p=wa0.getBoundingClientRect(),els=document.querySelectorAll('#nlps button,#nlps a,.nlps-steps button,.nlps-steps a,#nlps-view-cta button,#nlps-view-cta a');
 			for(var i=0;i<els.length;i++){
 				var r=els[i].getBoundingClientRect();
 				if(r.height>0&&r.bottom>h-110&&r.top<h&&r.left<p.right+8&&r.right>p.left-8){
@@ -150,7 +150,7 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 		window.addEventListener('resize',ask);
 		if(mq.addEventListener){mq.addEventListener('change',fit);}
 		// the stage's card opens and closes without a scroll: look again after a tap on the stage and on its floor events
-		document.addEventListener('click',function(e){if(e.target&&e.target.closest&&e.target.closest('#nlps')){setTimeout(ask,350);}},true);
+		document.addEventListener('click',function(e){if(e.target&&e.target.closest&&e.target.closest('#nlps,.nlps-steps,#nlps-view-cta')){setTimeout(ask,350);}},true);
 		['nl:floor','nl:facing'].forEach(function(n){window.addEventListener(n,function(){setTimeout(ask,350);});});
 		fit();
 		var typing=function(t){return t&&t.matches&&t.matches('textarea,select,input:not([type=checkbox]):not([type=radio]):not([type=button]):not([type=submit]):not([type=hidden])');};
