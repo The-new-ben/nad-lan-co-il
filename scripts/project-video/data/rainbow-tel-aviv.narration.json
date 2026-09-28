@@ -149,13 +149,13 @@
       "id": "outro",
       "scene": "outro",
       "text": "לשיחת וידאו עם נציג, או לשאלות בוואטסאפ. נדל״ן, פלטפורמה עצמאית.",
-      "spoken": "לשיחת וידאו עם נציג, או לשאלות בוואטסאפ. נַדְלָן, פלטפורמה עצמאית.",
+      "spoken": "לשיחת וידאו עם נציג, או לשאלות בוואטסאפ. נדלן, פלטפורמה עצמאית.",
       "source": "scenes.outro actions 'שיחת וידאו עם נציג', 'שאלות? וואטסאפ'; brand.mark 'נדל״ן' + brand.independent 'פלטפורמה עצמאית, לא מטעם היזם' (the coordinator's line 'נדל״ן, פלטפורמה עצמאית'; the full line stays on screen)",
       "file": "audio/rainbow-tel-aviv-chatterbox/outro.wav",
-      "secs": 3.84,
+      "secs": 5.84,
       "speech": [
         0.064,
-        3.52
+        5.717
       ],
       "at": 0.35,
       "onset": 0.1
@@ -170,7 +170,7 @@
       "price": 8.65,
       "facilities": 8.4,
       "views": 11.4,
-      "outro": 6.6
+      "outro": 7.1
     },
     "viewItems": [
       4.4,
@@ -181,6 +181,6 @@
       "start": 0.54,
       "step": 0.98
     },
-    "total": 57.5
+    "total": 58.0
   }
 }

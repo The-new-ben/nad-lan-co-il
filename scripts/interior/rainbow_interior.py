@@ -623,6 +623,19 @@ cam.rotation_euler = (math.radians(90), 0, -look)
 scene.camera = cam
 
 print("floor", FLOOR, "floor level %.1f m, eye %.1f m" % (Z0, Z0 + 1.6), "| bearing", BEARING, "| glass centre", (round(mx, 1), round(my, 1)))
+LOCATE = os.environ.get("RBI_LOCATE")        # diagnostics: "name,name" -> each object's centre as yaw:pitch (degrees, + = right/up)
+if LOCATE:                                   # (the doors between the 360 rooms, design system BuildingWalk)
+    bpy.context.view_layer.update()
+    inv = cam.matrix_world.inverted()
+    for name in LOCATE.split(","):
+        ob = bpy.data.objects.get(name)
+        if not ob:
+            print("LOCATE", name, "-> missing")
+            continue
+        c = sum((ob.matrix_world @ Vector(v) for v in ob.bound_box), Vector()) / 8.0
+        p = inv @ c
+        print("LOCATE %s yaw %+.2f pitch %+.2f dist %.2f m" % (name, math.degrees(math.atan2(p.x, -p.z)), math.degrees(math.atan2(p.y, math.hypot(p.x, p.z))), p.length))
+    sys.exit(0)
 scene.render.filepath = OUT
 bpy.ops.render.render(write_still=True)
 print("wrote", OUT)
