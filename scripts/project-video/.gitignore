@@ -1,7 +1,9 @@
 out/
 frames/
 img/
+audio/
 raw/
 __pycache__/
 *.mp4
 *.webm
+*.keep

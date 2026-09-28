@@ -101,27 +101,46 @@ def cmd_stills(args):
     os.makedirs(os.path.join(ROOT, "frames"), exist_ok=True)
     with Server() as srv, sync_playwright() as p:
         b = launch(p)
-        page = open_composer(b, srv.base, args.project, w, h, "still", f"&fonts={args.fonts}")
+        page = open_composer(b, srv.base, args.project, w, h, "still", f"&fonts={args.fonts}" + ("&narr=1" if args.narr else ""))
         info = page.evaluate("window.__info")
-        print(json.dumps(info, ensure_ascii=False)[:4000])
+        print(json.dumps(info, ensure_ascii=False)[:6000])
         times = [float(x) for x in args.times.split(",")] if args.times else info["checks"]
         for t in times:
-            out = os.path.join(ROOT, "frames", f"still_{args.project}_{w}x{h}_{t:05.2f}.png")
+            out = os.path.join(ROOT, "frames", f"still_{args.project}_{w}x{h}{'_narrated' if args.narr else ''}_{t:05.2f}.png")
             save_data_url(page.evaluate("t => window.__drawAt(t)", t), out)
             print("saved", out)
         b.close()
 
 
-def cmd_record(args, w=None, h=None, kbps=None, suffix=None):
+def cmd_record(args, w=None, h=None, kbps=None, suffix=None, akbps=None):
+    """One take; when the encoder lost more than 2 frames (a visible stutter) the take is recorded again (--retries)."""
+    for attempt in range(1 + max(0, args.retries)):
+        final, stats, info = _record_once(args, w, h, kbps, suffix, akbps)
+        lost = stats["frames"] - (stats.get("encodedSamples", {}).get("vide") if isinstance(stats.get("encodedSamples"), dict)
+                                  else stats.get("encodedFrames", stats["frames"]))
+        stats["attempt"] = attempt + 1
+        if lost <= 2:
+            break
+        print(f"  RETAKE: {lost} frames lost in take {attempt + 1}" + ("" if attempt < args.retries else " (no retries left, kept)"), flush=True)
+    return final, stats, info
+
+
+def _record_once(args, w=None, h=None, kbps=None, suffix=None, akbps=None):
     from playwright.sync_api import sync_playwright
     if w is None:
         w, h = parse_size(args.size)
     kbps = kbps or args.kbps
     sfx = args.suffix if suffix is None else suffix
+    if args.narr and not sfx.startswith("_narrated"):
+        sfx = "_narrated" + sfx
     os.makedirs(os.path.join(ROOT, "out"), exist_ok=True)
     with Server() as srv, sync_playwright() as p:
         b = launch(p)
         extra = f"&kbps={kbps}&fonts={args.fonts}" + (f"&mime={args.mime}" if getattr(args, "mime", None) else "")
+        if args.narr:
+            extra += f"&narr=1&akbps={akbps or args.akbps}"
+        if args.cut:
+            extra += f"&cut={args.cut}"
         page = open_composer(b, srv.base, args.project, w, h, "record", extra)
         info = page.evaluate("window.__info")
         print(f"recording {w}x{h} at {kbps} kbps, {info['duration']:.1f} s in real time (fonts: {info['fonts']}) ...", flush=True)
@@ -137,7 +156,22 @@ def cmd_record(args, w=None, h=None, kbps=None, suffix=None):
                 off += CHUNK
         b.close()
     final = os.path.join(ROOT, "out", f"{args.project}_{w}x{h}{sfx}.{ext}")
-    if ext == "mp4":
+    if args.keep_raw:
+        import shutil
+        shutil.copyfile(raw, raw + ".keep")
+    if ext == "mp4" and args.narr:
+        from mp4multi import defragment_multi, count_samples_multi, starts_multi
+        counts = count_samples_multi(raw)
+        stats["encodedSamples"] = counts
+        stats["trackStarts"] = starts_multi(raw)   # the recorder's own first timestamps per track
+        n = counts.get("vide", 0)
+        lost = stats["frames"] - n
+        remux = defragment_multi(raw, final, video_cfr_fps=stats["fps"] if 0 <= lost <= 2 else None)
+        print("  remuxed fragmented MP4 (video + audio) -> progressive MP4 (moov first):", json.dumps(remux))
+        if lost:
+            print(f"  NOTE: {lost} captured frame(s) not encoded")
+        os.remove(raw)
+    elif ext == "mp4":
         from mp4tools import is_fragmented, defragment, count_samples
         if is_fragmented(raw):
             n = count_samples(raw)
@@ -182,6 +216,51 @@ def cmd_frames(args, video=None, times=None):
     return meta, saved
 
 
+def cmd_audio(args, video=None, clips=None):
+    """The narrated cut's sound: decode it in Chrome, find where each line's speech starts, compare with the plan
+    (video time = 0.2 s hold + clip start + the clip's own lead-in), and save a 16 kHz WAV for a transcript."""
+    from playwright.sync_api import sync_playwright
+    video = video or args.video
+    rel = os.path.relpath(os.path.abspath(video), ROOT).replace("\\", "/")
+    name = os.path.splitext(os.path.basename(video))[0]
+    os.makedirs(os.path.join(ROOT, "frames"), exist_ok=True)
+    wav = os.path.join(ROOT, "frames", f"{name}_16k.wav")
+    with Server() as srv, sync_playwright() as p:
+        b = launch(p)
+        if clips is None:
+            w, h = parse_size(args.size)
+            page = open_composer(b, srv.base, args.project, w, h, "still", f"&fonts={args.fonts}&narr=1")
+            clips = page.evaluate("window.__info").get("narration", {}).get("clips", [])
+            page.close()
+        page = b.new_page()
+        page.goto(f"{srv.base}/verify.html?src={rel}")
+        a = page.evaluate("() => window.__audio()")
+        if "error" in a:
+            raise SystemExit("audio decode failed: " + a["error"])
+        save_data_url("data:audio/wav;base64," + page.evaluate("() => window.__wav16k()"), wav)
+        b.close()
+    N = json.load(open(os.path.join(ROOT, "data", f"{args.project}.narration.json"), encoding="utf-8"))
+    lead = {L["id"]: L.get("onset", (L.get("speech") or [0, 0])[0]) for L in N["lines"]}
+    env = a["env"]; peak = max(env) or 1.0
+    report = []
+    for c in clips:
+        # same rule as narrate.py's 'onset': the first 10 ms window at 5% of this line's loudest window
+        exp = HOLD_S + c["start"] + lead.get(c["id"], 0)
+        i0, i1 = max(0, int((exp - 0.5) * 100)), min(len(env), int((exp + 0.5) * 100))
+        win = env[i0:min(len(env), i0 + int((c.get("secs", 3) + 1) * 100))]
+        thr = (max(win) if win else peak) * 0.05
+        hit = next((i for i in range(i0, i1) if env[i] >= thr), None)
+        got = None if hit is None else hit / 100
+        report.append({"id": c["id"], "expected_s": round(exp, 2), "measured_s": got, "delta_ms": None if got is None else round((got - exp) * 1000)})
+    # silence where nothing should sound: before the first line
+    first = min(r["expected_s"] for r in report) if report else 0
+    pre = max(env[: max(1, int((first - 0.3) * 100))]) if first > 0.4 else 0
+    out = {"video": video, "audio_duration_s": round(a["duration"], 3), "sample_rate": a["sampleRate"], "channels": a["channels"],
+           "peak_rms": round(peak, 4), "silence_before_first_line_rms": round(pre, 5), "onsets": report, "wav16k": wav}
+    print(json.dumps(out, indent=1, ensure_ascii=False))
+    return out
+
+
 def cmd_poster(args):
     """out/<project>_<w>x<h>_poster.jpg: the finished title card (content time --poster-t, default 2.0 s)."""
     from PIL import Image
@@ -201,28 +280,35 @@ def cmd_poster(args):
 
 
 def cmd_inspect(args):
-    from mp4tools import describe
-    print(json.dumps(describe(args.video), indent=1))
+    from mp4multi import describe_multi
+    print(json.dumps(describe_multi(args.video), indent=1))
 
 
 def cmd_all(args):
     from mp4tools import describe
+    from mp4multi import describe_multi
+    desc = describe_multi if args.narr else describe
     report = {}
     for size in ("1920x1080", "1080x1920"):
         w, h = parse_size(size)
         final, stats, info = cmd_record(args, w, h, kbps=args.kbps, suffix="")
-        web, wstats, _ = cmd_record(args, w, h, kbps=args.web_kbps, suffix="_web")
+        web, wstats, _ = cmd_record(args, w, h, kbps=args.web_kbps, suffix="_web", akbps=args.web_akbps)
         times = [round(t + HOLD_S, 3) for t in info["checks"]]
         meta, saved = cmd_frames(args, video=final, times=times)
-        report[size] = {"hq": describe(final), "web": describe(web), "stats": stats, "web_stats": wstats,
-                        "meta": meta, "frames": saved}
-    cmd_poster(args)
-    print(json.dumps(report, indent=1))
+        report[size] = {"hq": desc(final), "web": desc(web), "stats": stats, "web_stats": wstats,
+                        "meta": meta, "frames": saved, "narration": info.get("narration")}
+        if args.narr:
+            clips = info["narration"]["clips"]
+            report[size]["audio_hq"] = cmd_audio(args, video=final, clips=clips)
+            report[size]["audio_web"] = cmd_audio(args, video=web, clips=clips)
+    if not args.narr:   # the narrated cut opens on the same title card: the silent film's posters serve both
+        cmd_poster(args)
+    print(json.dumps(report, indent=1, ensure_ascii=False))
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["probe", "stills", "record", "frames", "inspect", "all", "poster"])
+    ap.add_argument("cmd", choices=["probe", "stills", "record", "frames", "inspect", "all", "poster", "audio"])
     ap.add_argument("--project", default="rainbow-tel-aviv")
     ap.add_argument("--size", default="1080x1920")
     ap.add_argument("--times", default=None, help="comma list of seconds (stills: default = the composer's check list)")
@@ -235,10 +321,16 @@ def main():
     ap.add_argument("--quality", type=int, default=82, help="poster JPG quality")
     ap.add_argument("--poster-t", type=float, default=2.0, help="content time of the poster picture")
     ap.add_argument("--fonts", default="strict", choices=["strict", "fallback"])
+    ap.add_argument("--narr", action="store_true", help="the narrated cut (data/<project>.narration.json); names get _narrated")
+    ap.add_argument("--akbps", type=int, default=128, help="audio bitrate of the narrated cut")
+    ap.add_argument("--web-akbps", type=int, default=96, help="audio bitrate of the narrated web cut")
+    ap.add_argument("--cut", type=float, default=0, help="record only the first N seconds (tests)")
+    ap.add_argument("--retries", type=int, default=2, help="record a take again when the encoder lost more than 2 frames")
+    ap.add_argument("--keep-raw", action="store_true", help="keep Chrome's fragmented file as <name>.recorded.mp4.keep")
     args = ap.parse_args()
     sys.path.insert(0, os.path.join(ROOT, "tools"))
     {"probe": cmd_probe, "stills": cmd_stills, "record": cmd_record, "frames": cmd_frames,
-     "inspect": cmd_inspect, "all": cmd_all, "poster": cmd_poster}[args.cmd](args)
+     "inspect": cmd_inspect, "all": cmd_all, "poster": cmd_poster, "audio": cmd_audio}[args.cmd](args)
 
 
 if __name__ == "__main__":

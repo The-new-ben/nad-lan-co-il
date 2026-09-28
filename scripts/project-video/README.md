@@ -57,5 +57,25 @@ frames/         check frames decoded from the finished files
    `python render.py inspect --video out/<slug>_1080x1920.mp4` must show `progressive`, index (`moov`) before `mdat`,
    30 fps, `frames_longer_than_1.5x_33ms: 0`.
 
+## The narrated cut (a voice telling about the project and the area)
+
+8. **Script.** `data/<slug>.narration.json`: one short line per scene (one per view card), only from the data JSON,
+   each with `text` (as written), `spoken` (the exact TTS input) and `source`. The site's voice playbook: numbers as
+   gender-correct words ("ארבע מאות חמישים ותשע דירות"), dates as words ("עד מרץ אלפיים עשרים ושש"), vowel marks only
+   on the risk words (רֵיינְבּוֹ, שְׂדֵה דּוֹב, בּוּטִיק, נַדְלָן), commas and periods for pacing, no SSML. "הדמיה להמחשה" is said once
+   (title), the last line ends with "נדל״ן, פלטפורמה עצמאית". Never the chatterbox clone, never an EcoCity clip.
+9. **Voice.** `C:\Users\777\nad-lan\voice-rig\venv\Scripts\python.exe narrate.py --project <slug> [--force]`:
+   he-IL-AvriNeural at -8% (the site's tours) into `audio/<slug>/<id>.mp3`, measures where the speech starts and ends,
+   and writes the timing back into the narration JSON: a scene too short for its line is stretched (the voice is never
+   rushed), each view card gets its own length, the facility names are revealed with the voice.
+10. **Render.** `python render.py all --project <slug> --narr`: `out/<slug>_<size>_narrated.mp4` (10 Mbps video, AAC
+    128 kbps) and `_narrated_web.mp4` (2.5 Mbps, AAC 96 kbps), both sizes. The composer (`&narr=1`) decodes the clips
+    with WebAudio, schedules them on the film's clock from the first recorded frame, and records a
+    MediaStreamAudioDestinationNode track together with the canvas (H.264 + AAC in MP4, this Chrome supports both).
+    `tools/mp4multi.py` remuxes the two-track file (moov first, audio ended with the picture). The run also decodes
+    each file's sound in Chrome, measures every line's onset against the plan (`delta_ms`) and saves a 16 kHz WAV.
+11. **Listen.** `...\voice-rig\venv\Scripts\python.exe tools\transcribe.py --project <slug> --wav frames\<name>_16k.wav
+    --clips <clips.json>`: whisper small per line and for the whole track, next to the script.
+
 Nothing here writes to the site. Uploading the web files and posters to the media library and placing the video on the
 project page is a separate, owner-approved release (see `scripts/broker-video/upload_media.py` for the pattern).

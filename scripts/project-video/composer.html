@@ -28,6 +28,8 @@
     w, h     output size in pixels            (default 1080 x 1920)
     fps      capture frame rate               (default 30)
     mode     preview | still | record         (default preview: plays in a loop)
+    narr     1 = the narrated cut: the voice from data/<project>.narration.json, scene timing stretched to fit it
+    akbps    audio bitrate of the narrated cut (default 128)
     t        time in seconds for mode=still
     kbps     recorder bitrate                 (default 8000)
     fonts    'strict' (default: stop when the web fonts do not load) | 'fallback' (draw with the system fonts)
@@ -45,6 +47,9 @@ const FPS = +(Q.get('fps') || 30);
 const MODE = Q.get('mode') || 'preview';
 const PROJECT = (Q.get('project') || 'rainbow-tel-aviv').replace(/[^a-z0-9-]/gi, '');
 const KBPS = +(Q.get('kbps') || 8000);
+const NARR = Q.get('narr') === '1';                 // narrated cut: data/<project>.narration.json (voice + its timing)
+const AKBPS = +(Q.get('akbps') || 128);             // audio bitrate (kbps) of the narrated cut
+const CUT = +(Q.get('cut') || 0);                   // record only the first N seconds (tests)
 const FONTS = Q.get('fonts') || 'strict';
 const PORTRAIT = H >= W;
 const ORIENT = PORTRAIT ? 'portrait' : 'landscape';
@@ -423,8 +428,10 @@ async function prepareScene(s, i) {
     const box = layoutRows(S.rows, S.panel ? 'center' : 'bottom');
     S.blockTop = box.top;
     if (S.type === 'list') {   // the facility names come in one by one after the kicker
-      let n = 0; S.rows.forEach(r => { if (r.kind === 'item') { r.at = 0.55 + 0.85 * n; n++; } });
-      S.rows.forEach(r => { if (r.kind === 'rule-soft' || r.kind === 'source') r.at = 0.55 + 0.85 * n + 0.1; });
+      const L0 = (S.listTiming && S.listTiming.start) || 0.55, LS = (S.listTiming && S.listTiming.step) || 0.85;
+      let n = 0; S.rows.forEach(r => { if (r.kind === 'item') { r.at = L0 + LS * n; n++; } });
+      // the narrated cut reveals the names slowly with the voice, so its source line comes in with the first name
+      S.rows.forEach(r => { if (r.kind === 'rule-soft' || r.kind === 'source') r.at = S.listTiming ? L0 + 0.3 : L0 + LS * n + 0.1; });
     }
     if (!S.panel) S.scrim = prepareScrim(S.blockTop);
   }
@@ -471,12 +478,16 @@ function drawSceneBackground(s, a, t) {
   }
 }
 
-function viewIndex(s, tau) { const per = s.dur / s.V.length; return { per, k: Math.max(0, Math.min(s.V.length - 1, Math.floor(tau / per))) }; }
+// each view's start and length inside the scene (even shares, or the narrated cut's own lengths)
+function viewSpan(s, k) {
+  if (s.itemDur) { let S0 = 0; for (let i = 0; i < k; i++) S0 += s.itemDur[i]; return { S0, per: s.itemDur[k] }; }
+  const per = s.dur / s.V.length; return { S0: k * per, per };
+}
 
 function drawViewsBackground(s, a, t) {
-  const tau = t - s.S, per = s.dur / s.V.length;
+  const tau = t - s.S;
   for (let k = 0; k < s.V.length; k++) {
-    const S0 = k * per;
+    const { S0, per } = viewSpan(s, k);
     const fin0 = k === 0 ? -TL.xf / 2 : S0 - TL.xf / 2, fin1 = k === 0 ? TL.xf / 2 : S0 + TL.xf / 2;
     const vis1 = k === s.V.length - 1 ? s.dur + TL.xf / 2 : S0 + per + TL.xf / 2;
     if (tau < fin0 || tau > vis1) continue;
@@ -516,9 +527,8 @@ function drawViewsText(s, t) {
     textAt(txt(s.kicker), xR - rw - px(16), kY + Math.round((1 - eK) * px(18)), LAY.fKicker, PAL.goldLight, 'right', eK);
   }
   // per view: floor (title) + room and direction (line)
-  const per = s.dur / s.V.length;
   for (let k = 0; k < s.V.length; k++) {
-    const S0 = k * per, a0 = S0 + (k === 0 ? TL.textIn + 0.1 : 0.3);
+    const { S0, per } = viewSpan(s, k), a0 = S0 + (k === 0 ? TL.textIn + 0.1 : 0.3);
     const outK = k === s.V.length - 1 ? outAll : 1 - easeInOutSine(ramp(tau, S0 + per - 0.5, S0 + per - 0.2));
     const e = easeOutCubic(ramp(tau, a0, a0 + TL.rise));
     const a = e * outK;
@@ -640,22 +650,65 @@ function draw(t) {
   }
 }
 
+// ---------- narration (the voice): WebAudio clips on the film's clock ----------
+let NARRATION = null, ACTX = null, ADEST = null, CLIPS = [];
+async function loadNarration() {
+  const r = await fetch(`data/${PROJECT}.narration.json`, { cache: 'no-store' });
+  if (!r.ok) throw new Error('narration file not found: data/' + PROJECT + '.narration.json');
+  NARRATION = await r.json();
+  const T = NARRATION.timing;
+  if (!T) throw new Error('narration has no timing: run narrate.py first');
+  for (const sc of DATA.scenes) {
+    if (T.scenes && T.scenes[sc.id] != null) sc.dur = T.scenes[sc.id];
+    if (sc.type === 'views' && T.viewItems) sc.itemDur = T.viewItems.slice();
+    if (sc.type === 'list' && T.list) sc.listTiming = T.list;
+  }
+  ACTX = new AudioContext({ sampleRate: 48000 });
+  ADEST = ACTX.createMediaStreamDestination();
+  ADEST.channelCount = 1;
+  CLIPS = [];
+  for (const L of NARRATION.lines) {
+    const buf = await (await fetch(L.file, { cache: 'no-store' })).arrayBuffer();
+    CLIPS.push({ L, buffer: await ACTX.decodeAudioData(buf) });
+  }
+}
+// each clip's content time: its scene's start (+ the view's start) + 'at'
+function placeClips() {
+  for (const c of CLIPS) {
+    const s = SCENES.find(x => x.id === c.L.scene);
+    const sp = c.L.item != null ? viewSpan(s, c.L.item) : null;
+    c.T = +(s.S + (sp ? sp.S0 : 0) + (c.L.at || 0)).toFixed(3);
+    c.speechEnd = +(c.T + (c.L.speech ? c.L.speech[1] : c.buffer.duration)).toFixed(3);
+    const end = sp ? s.S + sp.S0 + sp.per : s.S + s.dur;
+    c.slack = +(end - c.speechEnd).toFixed(2);   // seconds between the last word and the end of its scene or view
+  }
+}
+// every clip on the AudioContext clock; A0 = the context time at which video content time 0 plays
+function scheduleClips(A0) {
+  for (const c of CLIPS) {
+    const src = ACTX.createBufferSource(); src.buffer = c.buffer; src.connect(ADEST);
+    src.start(A0 + c.T);
+  }
+}
+
 // ---------- boot ----------
 async function boot() {
   const res = await fetch(`data/${PROJECT}.json`, { cache: 'no-store' });
   if (!res.ok) throw new Error('data file not found: data/' + PROJECT + '.json');
   DATA = await res.json();
+  if (NARR) await loadNarration();
   await loadFonts();
   computeLayout();
   SCENES = [];
   for (let i = 0; i < DATA.scenes.length; i++) { SCENES.push(await prepareScene(DATA.scenes[i], i)); setStatus(`prepared ${i + 1}/${DATA.scenes.length}`); }
   buildTimeline();
+  if (NARR) placeClips();
   // check frames (content time): each scene once its text is in, the views one by one, a crossfade, the outro
   const checks = [];
   for (const s of SCENES) {
     if (s.type === 'title') checks.push(+(s.S + 1.5).toFixed(3));
     else if (s.type === 'list') checks.push(+(s.S + Math.min(s.dur - 0.8, 5.2)).toFixed(3));
-    else if (s.type === 'views') { const per = s.dur / s.V.length; s.V.forEach((v, k) => checks.push(+(s.S + k * per + per * 0.6).toFixed(3))); }
+    else if (s.type === 'views') { s.V.forEach((v, k) => { const sp = viewSpan(s, k); checks.push(+(s.S + sp.S0 + sp.per * 0.6).toFixed(3)); }); }
     else if (s.type === 'outro') checks.push(+(T_TOTAL - 0.3).toFixed(3));
     else checks.push(+(s.S + Math.min(s.dur - 0.8, 2.6)).toFixed(3));
   }
@@ -666,6 +719,8 @@ async function boot() {
     scenes: SCENES.map(s => ({ id: s.id, type: s.type, start: s.S, dur: s.dur, src: s.src || null, upscale: s.P ? s.P.upscale : (s.boxUpscale || null),
       rows: s.cols ? s.cols.map(c => ({ kind: 'stat', text: c.v + ' | ' + c.c, width: Math.round(Math.max(measure(c.vf, c.v), measure(c.cf, c.c))) })) : s.rows ? s.rows.filter(r => r.text).map(r => ({ kind: r.kind, text: r.text, width: Math.round(measure(r.font || LAY.fKicker, r.text)) })) : null })),
     textWidth: LAY.textW, checks,
+    narration: NARR ? { voice: NARRATION.voice, rate: NARRATION.rate, sampleRate: ACTX.sampleRate,
+      clips: CLIPS.map(c => ({ id: c.L.id, start: c.T, file: c.L.file, secs: +c.buffer.duration.toFixed(3), speechEnd: c.speechEnd, slack: c.slack })) } : null,
   };
   draw(0);
   window.__state = 'ready';
@@ -674,7 +729,13 @@ async function boot() {
 
 window.__drawAt = t => { draw(t); return canvas.toDataURL('image/png'); };
 
-function pickMime() {
+function pickMime(withAudio) {
+  if (withAudio) {
+    const a = ['video/mp4;codecs=avc1.640028,mp4a.40.2', 'video/mp4;codecs=avc1,mp4a.40.2', 'video/mp4;codecs=avc1.640028,opus', 'video/webm;codecs=vp9,opus'];
+    const forcedA = Q.get('mime');
+    if (forcedA && MediaRecorder.isTypeSupported(forcedA)) return forcedA;
+    return a.find(m => MediaRecorder.isTypeSupported(m)) || '';
+  }
   const c = ['video/mp4;codecs=avc1.640028', 'video/mp4;codecs=avc1.4d0028', 'video/mp4;codecs=avc1.42E028',
              'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'];
   const forced = Q.get('mime');
@@ -689,10 +750,14 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 // requestFrame() as close as possible to its wall-clock slot (render.py then stamps constant 1/FPS durations).
 function captureRun(seconds, drawFn, opts) {
   return new Promise((resolve, reject) => {
-    const mime = pickMime();
-    const stream = canvas.captureStream(0);
-    const track = stream.getVideoTracks()[0];
-    const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: KBPS * 1000 });
+    const withAudio = !!(opts && opts.audio);
+    const mime = pickMime(withAudio);
+    const vstream = canvas.captureStream(0);
+    const track = vstream.getVideoTracks()[0];
+    const stream = withAudio ? new MediaStream([track, ADEST.stream.getAudioTracks()[0]]) : vstream;
+    const ropts = { mimeType: mime, videoBitsPerSecond: KBPS * 1000 };
+    if (withAudio) ropts.audioBitsPerSecond = AKBPS * 1000;
+    const rec = new MediaRecorder(stream, ropts);
     const chunks = [];
     const pre = (opts && opts.hold) || 0, post = (opts && opts.hold) || 0;
     const N = Math.round(seconds * FPS) + 1 + pre + post;
@@ -700,7 +765,7 @@ function captureRun(seconds, drawFn, opts) {
     rec.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
     rec.onerror = e => reject(new Error('recorder error: ' + (e.error && e.error.message)));
     rec.onstop = () => {
-      stream.getTracks().forEach(tr => tr.stop());
+      vstream.getTracks().forEach(tr => tr.stop());
       stats.blob = new Blob(chunks, { type: (mime || 'video/webm').split(';')[0] });
       stats.size = stats.blob.size;
       stats.slotLateMsAvg = +(stats.slotLateMsSum / Math.max(1, stats.frames)).toFixed(2);
@@ -710,7 +775,12 @@ function captureRun(seconds, drawFn, opts) {
     let t0 = null, k = 0, lastTick = null;
     const tick = () => {
       const now = performance.now();
-      if (t0 === null) t0 = now;
+      if (t0 === null) {
+        t0 = now;
+        // the voice: frame k shows content time (k - pre) / FPS at wall time t0 + k / FPS, so content time 0 plays at
+        // t0 + pre / FPS; the clips are scheduled on the audio clock from this same instant
+        if (withAudio) { const A0 = ACTX.currentTime + pre / FPS; stats.audioA0 = +A0.toFixed(4); stats.audioBaseLatency = ACTX.baseLatency; scheduleClips(A0); }
+      }
       if (lastTick !== null) stats.tickGapMax = Math.max(stats.tickGapMax, +(now - lastTick).toFixed(1));
       lastTick = now;
       if (k < N && now - t0 >= (k * 1000) / FPS - 0.5) {
@@ -734,11 +804,14 @@ window.__record = async () => {
   const warm = await captureRun(1.5, () => draw(0), null);   // warm-up take (discarded): encoder + readback path
   await sleep(300);
   const HOLD = 6;   // 0.2 s hold of the first and the last picture
-  const stats = await captureRun(T_TOTAL, t => draw(Math.min(t, T_TOTAL)), { status: true, hold: HOLD });
+  if (NARR) await ACTX.resume();
+  const TT = CUT > 0 ? Math.min(CUT, T_TOTAL) : T_TOTAL;
+  const stats = await captureRun(TT, t => draw(Math.min(t, T_TOTAL)), { status: true, hold: HOLD, audio: NARR });
+  if (NARR) { stats.audio = true; stats.audioKbps = AKBPS; stats.audioState = ACTX.state; }
   BLOB = stats.blob; delete stats.blob;
-  stats.expectedFrames = Math.round(T_TOTAL * FPS) + 1 + 2 * HOLD;
+  stats.expectedFrames = Math.round(TT * FPS) + 1 + 2 * HOLD;
   stats.holdFrames = HOLD;
-  stats.fps = FPS; stats.duration = T_TOTAL;
+  stats.fps = FPS; stats.duration = TT;
   stats.warmupFrames = warm.frames;
   window.__state = 'done';
   return stats;
