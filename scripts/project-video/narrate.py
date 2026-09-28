@@ -29,20 +29,40 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--project", default="rainbow-tel-aviv")
     ap.add_argument("--force", action="store_true", help="re-synthesize clips that already exist")
+    # 28.9.2026: the owner found edge-tts's Hebrew poor; Chatterbox + Dicta (his 4.7/5 blind test, tts_chatterbox.py)
+    ap.add_argument("--engine", choices=("edge", "chatterbox"), default="edge")
+    ap.add_argument("--lang", default="he")
     args = ap.parse_args()
     from mutagen.mp3 import MP3
     npath = os.path.join(ROOT, "data", f"{args.project}.narration.json")
     N = json.load(open(npath, encoding="utf-8"))
     D = json.load(open(os.path.join(ROOT, "data", f"{args.project}.json"), encoding="utf-8"))
-    out_dir = os.path.join(ROOT, "audio", args.project)
+    out_dir = os.path.join(ROOT, "audio", args.project + ("" if args.engine == "edge" else "-" + args.engine))
     os.makedirs(out_dir, exist_ok=True)
     lead, tail = N.get("lead", 0.35), N.get("tail", 0.55)
     for L in N["lines"]:
-        path = os.path.join(out_dir, L["id"] + ".mp3")
+        path = os.path.join(out_dir, L["id"] + (".mp3" if args.engine == "edge" else ".wav"))
         if args.force or not os.path.exists(path):
-            asyncio.run(synth(L["spoken"], N["voice"], N["rate"], path))
+            if args.engine == "edge":
+                asyncio.run(synth(L["spoken"], N["voice"], N["rate"], path))
+            else:
+                from tts_chatterbox import synth_wav
+                import time
+                for attempt in range(4):  # the voice server sleeps when idle: 503/504 while it wakes
+                    try:
+                        synth_wav(L["spoken"], args.lang, path)
+                        break
+                    except Exception as e:
+                        if attempt == 3:
+                            raise
+                        print("  wait (%s)" % str(e)[:60]); time.sleep(40)
         L["file"] = os.path.relpath(path, ROOT).replace("\\", "/")
-        L["secs"] = round(MP3(path).info.length, 3)
+        if path.endswith(".wav"):
+            import wave
+            with wave.open(path, "rb") as w:
+                L["secs"] = round(w.getnframes() / float(w.getframerate()), 3)
+        else:
+            L["secs"] = round(MP3(path).info.length, 3)
         # where the speech really starts and ends (edge-tts pads ~0.2 s before and ~0.9 s after)
         import librosa
         y, sr = librosa.load(path, sr=None, mono=True)

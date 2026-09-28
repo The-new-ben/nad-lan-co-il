@@ -14,13 +14,13 @@
       "text": "ריינבו תל אביב, של ישראל קנדה. הדמיה להמחשה.",
       "spoken": "רֵיינְבּוֹ תל אביב, של ישראל קנדה. הדמיה להמחשה.",
       "source": "scenes.title: title 'Rainbow תל אביב' (page H1), small 'יזם: ישראל קנדה' (page kicker 'ישראל קנדה · ...'); labels.render 'הדמיה להמחשה' (said once, here)",
-      "file": "audio/rainbow-tel-aviv/title.mp3",
-      "secs": 6.264,
+      "file": "audio/rainbow-tel-aviv-chatterbox/title.wav",
+      "secs": 5.64,
       "speech": [
-        0.213,
-        5.333
+        0.085,
+        5.355
       ],
-      "onset": 0.25
+      "onset": 0.11
     },
     {
       "id": "location",
@@ -28,14 +28,14 @@
       "text": "ברובע שדה דב, כשבע מאות מטר מהים.",
       "spoken": "ברובע שדה דוב, כשבע מאות מטר מהים.",
       "source": "scenes.location: title 'רובע שדה דב', line 'צפון תל אביב, כ-700 מ׳ מהים' (page facts tile, page lead 'כ-700 מטר מהים')",
-      "file": "audio/rainbow-tel-aviv/location.mp3",
-      "secs": 4.536,
+      "file": "audio/rainbow-tel-aviv-chatterbox/location.wav",
+      "secs": 3.32,
       "speech": [
-        0.235,
-        3.605
+        0.064,
+        3.008
       ],
       "at": 0.35,
-      "onset": 0.25
+      "onset": 0.09
     },
     {
       "id": "buildings",
@@ -43,14 +43,14 @@
       "text": "מגדל של שלושים ותשע קומות, ובנייני בוטיק סביב חצר פנימית.",
       "spoken": "מגדל של שלושים ותשע קומות, ובנייני בּוּטִיק סביב חצר פנימית.",
       "source": "scenes.buildings: title 'מגדל 39 קומות', line 'ובנייני בוטיק בני 9 קומות סביב חצר פנימית' (page lead and facts tile)",
-      "file": "audio/rainbow-tel-aviv/buildings.mp3",
-      "secs": 6.024,
+      "file": "audio/rainbow-tel-aviv-chatterbox/buildings.wav",
+      "secs": 5.0,
       "speech": [
-        0.213,
-        4.949
+        0.064,
+        4.523
       ],
       "at": 0.35,
-      "onset": 0.23
+      "onset": 0.1
     },
     {
       "id": "homes",
@@ -58,14 +58,14 @@
       "text": "ארבע מאות חמישים ותשע דירות, והאכלוס צפוי באלפיים שלושים.",
       "spoken": "ארבע מאות חמישים ותשע דירות, והאכלוס צפוי באלפיים שלושים.",
       "source": "scenes.homes: title '459 דירות', line 'אכלוס צפוי ב-2030' (page lead: '459 דירות לפי היזם ... והאכלוס צפוי ב-2030 לפי אתר הפרויקט')",
-      "file": "audio/rainbow-tel-aviv/homes.mp3",
-      "secs": 5.808,
+      "file": "audio/rainbow-tel-aviv-chatterbox/homes.wav",
+      "secs": 5.24,
       "speech": [
-        0.213,
-        4.907
+        0.064,
+        5.056
       ],
       "at": 0.35,
-      "onset": 0.25
+      "onset": 0.1
     },
     {
       "id": "price",
@@ -73,14 +73,14 @@
       "text": "מחיר ממוצע שדווח, עד מרץ 2026: כ-81,800 שקלים למטר.",
       "spoken": "מחיר ממוצע שדווח, עד מרץ אלפיים עשרים ושש: כשמונים ואחד אלף ושמונה מאות שקלים למטר.",
       "source": "scenes.price stats[0]: 'כ-81,800 ₪ למ״ר', 'המחיר הממוצע שדווח בדירות שנמכרו עד 3.2026' (page price section; developer reports via Bizportal 29.5.2026); 3.2026 said as 'מרץ אלפיים עשרים ושש'",
-      "file": "audio/rainbow-tel-aviv/price.mp3",
-      "secs": 8.328,
+      "file": "audio/rainbow-tel-aviv-chatterbox/price.wav",
+      "secs": 8.08,
       "speech": [
-        0.213,
-        7.403
+        0.064,
+        7.701
       ],
       "at": 0.35,
-      "onset": 0.25
+      "onset": 0.1
     },
     {
       "id": "facilities",
@@ -88,14 +88,14 @@
       "text": "בריכות על הגגות, מועדון דיירים, לובי בכל בניין, מסחר וחניון תת-קרקעי.",
       "spoken": "בריכות על הגגות, מועדון דיירים, לובי בכל בניין, מסחר, וחניון תת קרקעי.",
       "source": "scenes.facilities items, shortened for speech (facilities.json: 'שתי בריכות על הגגות', 'Rainbow Club, מועדון הדיירים', 'לובי בכל בניין', 'מסחר בקומת הקרקע', 'חניון תת־קרקעי')",
-      "file": "audio/rainbow-tel-aviv/facilities.mp3",
-      "secs": 8.208,
+      "file": "audio/rainbow-tel-aviv-chatterbox/facilities.wav",
+      "secs": 5.84,
       "speech": [
-        0.213,
-        7.296
+        0.085,
+        5.568
       ],
       "at": 0.35,
-      "onset": 0.27
+      "onset": 0.11
     },
     {
       "id": "view-1",
@@ -104,14 +104,14 @@
       "text": "נוף משוער מדירה לדוגמה: קומה שלושים ושש, מערבה.",
       "spoken": "נוף משוער מדירה לדוגמה: קומה שלושים ושש, מערבה.",
       "source": "scenes.views: label 'נוף משוער', source 'דירה לדוגמה'; item living-36w 'קומה 36', 'מהסלון, מבט מערבה'",
-      "file": "audio/rainbow-tel-aviv/view-1.mp3",
-      "secs": 5.712,
+      "file": "audio/rainbow-tel-aviv-chatterbox/view-1.wav",
+      "secs": 3.72,
       "speech": [
-        0.213,
-        4.8
+        0.064,
+        3.563
       ],
       "at": 0.35,
-      "onset": 0.25
+      "onset": 0.1
     },
     {
       "id": "view-2",
@@ -120,14 +120,14 @@
       "text": "ודרומה.",
       "spoken": "ודרומה.",
       "source": "scenes.views item balcony-36s: 'קומה 36', 'מהמרפסת, מבט דרומה' (same floor as the line before)",
-      "file": "audio/rainbow-tel-aviv/view-2.mp3",
-      "secs": 1.968,
+      "file": "audio/rainbow-tel-aviv-chatterbox/view-2.wav",
+      "secs": 1.04,
       "speech": [
-        0.235,
-        1.045
+        0.064,
+        0.683
       ],
       "at": 0.3,
-      "onset": 0.27
+      "onset": 0.11
     },
     {
       "id": "view-3",
@@ -136,14 +136,14 @@
       "text": "וקומה עשר, מערבה.",
       "spoken": "וקומה עשר, מערבה.",
       "source": "scenes.views item balcony-10w: 'קומה 10', 'מהמרפסת, מבט מערבה'",
-      "file": "audio/rainbow-tel-aviv/view-3.mp3",
-      "secs": 3.312,
+      "file": "audio/rainbow-tel-aviv-chatterbox/view-3.wav",
+      "secs": 2.12,
       "speech": [
-        0.235,
-        2.389
+        0.064,
+        1.941
       ],
       "at": 0.3,
-      "onset": 0.27
+      "onset": 0.09
     },
     {
       "id": "outro",
@@ -151,36 +151,36 @@
       "text": "לשיחת וידאו עם נציג, או לשאלות בוואטסאפ. נדל״ן, פלטפורמה עצמאית.",
       "spoken": "לשיחת וידאו עם נציג, או לשאלות בוואטסאפ. נַדְלָן, פלטפורמה עצמאית.",
       "source": "scenes.outro actions 'שיחת וידאו עם נציג', 'שאלות? וואטסאפ'; brand.mark 'נדל״ן' + brand.independent 'פלטפורמה עצמאית, לא מטעם היזם' (the coordinator's line 'נדל״ן, פלטפורמה עצמאית'; the full line stays on screen)",
-      "file": "audio/rainbow-tel-aviv/outro.mp3",
-      "secs": 8.232,
+      "file": "audio/rainbow-tel-aviv-chatterbox/outro.wav",
+      "secs": 3.84,
       "speech": [
-        0.235,
-        7.296
+        0.064,
+        3.52
       ],
       "at": 0.35,
-      "onset": 0.26
+      "onset": 0.1
     }
   ],
   "timing": {
     "scenes": {
-      "title": 6.35,
+      "title": 6.4,
       "location": 4.6,
-      "buildings": 5.85,
-      "homes": 5.85,
-      "price": 8.35,
+      "buildings": 5.45,
+      "homes": 6.0,
+      "price": 8.65,
       "facilities": 8.4,
-      "views": 12.6,
-      "outro": 8.65
+      "views": 11.4,
+      "outro": 6.6
     },
     "viewItems": [
-      5.6,
+      4.4,
       3.5,
       3.5
     ],
     "list": {
-      "start": 0.66,
-      "step": 1.3
+      "start": 0.54,
+      "step": 0.98
     },
-    "total": 60.65
+    "total": 57.5
   }
 }
