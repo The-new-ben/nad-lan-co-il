@@ -1,0 +1,93 @@
+<?php
+/*
+ * PROPOSAL ONLY (28.9.2026, prototype): the 'dimri-yama-sde-dov' entry for nadlan_ps_config() in
+ * plugins/nadlan-config/inc/project-stage.php (as committed in 34edcfb8 and later: 'poster_alt' and 'src_line' keys,
+ * the "נכנסים לדירה" step gated on interior pictures). NOT applied, NOT deployed. It mounts the prototype stage in
+ * plugins/nadlan-config/assets/project-stage/dimri/ (stage.js exporting mountDimriStage, stage.css, city.json,
+ * quarter.json, facilities.json, poster.jpg 1600x1475, poster-716.jpg 716x660).
+ *
+ * Every fact carries its source: docs/research/2026-09-28-stages/stage-geometry.md section 1 (the local committee's
+ * design decision for lot 107, 10.5.2023; GIS 837) and the live page https://nad-lan.co.il/projects/dimri-yama-sde-dov/
+ * (read 28.9.2026). "First line to the sea" is NOT used anywhere: lot 107 is about 0.7 km from the water (OpenStreetMap's
+ * coastline: 680 m from the lot's centre, 650 m from the tower's).
+ *
+ * The H1 (the page's own, 28.9.2026): "DIMRI YAMA שדה דב - י.ח דמרי" (the developer's name inside the title).
+ * What people search for this page (Search Console export 25.5-25.8.2026, query x page, the local CSV in
+ * Documents/GSC-Data/nad-lan.co.il/.../query-page-reconciled.csv): "dimri yama" (24 impressions), "דמרי שדה דב" (14),
+ * "דמרי ימה שדה דב" (11), "dimri yama sde dov" (9), "דמרי שדה דב מחירים" (7), "דימרי שדה דב" (2). Proposed H1:
+ * Hebrew "דמרי ימה שדה דב" (the two Hebrew searches in one line) and English "Dimri Yama Sde Dov" (the two English
+ * searches); the developer moves to the kicker under the title, where the stage's hero prints it.
+ *
+ * Paste inside the array returned by nadlan_ps_config().
+ */
+
+			'dimri-yama-sde-dov' => array(
+				'dir'            => 'dimri',
+				'mount'          => 'mountDimriStage',
+				'bearing_offset' => 0,                      // the stage's north is true north; the lots' 11° turn is inside the scene
+				'name'           => 'דמרי ימה שדה דב',
+				'name_en'        => 'Dimri Yama Sde Dov',
+				'developer'      => 'י.ח דמרי',
+				'place'          => 'מתחם אשכול, רובע שדה דב',
+				'rail'           => array(),
+				'poster_alt'     => 'הדמיה של דמרי ימה ברובע שדה דב: מגדל, מגדלון ושני מבנים נמוכים סביב גינה, על מגרש 107',
+				'src_line'       => 'מקורות הבמה: קו המגרש והבניינים הקיימים סביבו לפי עיריית <span>תל אביב-יפו</span> (שכבות המגרשים, המבנים, הרחובות, השטחים הירוקים והעצים, 9.2026); הבניינים במגרש, הקומות והגבהים לפי תכנית העיצוב (5.2023); קו החוף לפי OpenStreetMap. החזיתות ומיקום המתקנים להמחשה.',
+				// ProjectFacts: six quick facts, each with its source
+				'facts'          => array(
+					// GIS 837 (lot 107, Eshkol); the distance: OpenStreetMap's coastline, 650-680 m (28.9.2026)
+					array( 'מיקום', 'מתחם אשכול, רובע שדה דב', 'מגרש 107, כ-700 מ׳ מהים' ),
+					// the design decision (10.5.2023): "מגדל בן 40, מגדלון בן 16 קומות ושני מבנים מרקמיים בני 9 קומות"
+					// (the developer's 39 is the same tower without its technical floor)
+					array( 'בניינים', 'מגדל של 40 קומות', 'מגדלון של 16 ושני מבנים של 9, לפי תכנית העיצוב' ),
+					// the developer and the press (sdedov.co.il 22.12.2025), as the page gives them
+					array( 'דירות', '458', 'וכ-70 חדרי מלון, לפי היזם' ),
+					// the design decision: the tower at most 165 m above the ground
+					array( 'גובה המגדל', 'עד 165 מ׳', 'לפי תכנית העיצוב' ),
+					// the page: "המחיר שפורסם מתחיל מ-3.75 מיליון שקל"
+					array( 'מחיר', 'מ-3.75 מיליון ₪', 'מחיר הפתיחה שפורסם' ),
+					// the page's status row ('בשיווק') and its words: "המכירה המוקדמת החלה והבנייה החלה"
+					array( 'מצב', 'בשיווק', 'המכירה המוקדמת והבנייה החלו, לפי הפרסומים' ),
+				),
+				// ProjectProgress: done, now, next (only dated steps; the page gives no occupancy date, so none is shown)
+				'progress'       => array(
+					array( 'תכנית עיצוב', '5.2023', 'done' ),   // the local committee, 10.5.2023 (in force 30.6.2025, GIS 528)
+					array( 'דמרי רכשה את הפרויקט', '7.2024', 'done' ), // the page: "ביולי 2024 דמרי רכשה ... מחנן מור"
+					array( 'שיווק ובנייה', 'עכשיו', 'now' ),     // the page: the pre-sale and the construction have started
+				),
+				// example apartments (the owner, 25.9.2026): one per face of each floor of the tower and of the mid-rise; the
+				// faces' true bearings from the lot's grid (11° east of north; the design decision's drawing)
+				'units'          => array( array( 'n', 11 ), array( 'e', 101 ), array( 's', 191 ), array( 'w', 281 ) ),
+				// the view and the beam start at the tower's centre (research 1.3, DRAWING grade)
+				'tower_lat'      => 32.104333,
+				'tower_lng'      => 34.784114,
+				// what lies that way, true bearings from the tower (28.9.2026): the nearest waterline 281° (OpenStreetMap),
+				// Reading beach 294°, Tel Baruch beach 13°, Tel Aviv University 60°, Yarkon Park 104°, the Azrieli towers 167°,
+				// the Old North 200°; the same sectors as Rainbow's, 150 m to the south
+				'sectors'        => array(
+					array( 230, 345, 'לכיוון הים' ),
+					array( 345, 30, 'לכיוון תל ברוך והרצליה' ),
+					array( 30, 105, 'לכיוון רמת אביב והאוניברסיטה' ),
+					array( 105, 150, 'לכיוון פארק הירקון' ),
+					array( 150, 195, 'לכיוון מגדלי העיר' ),
+					array( 195, 230, 'לכיוון הצפון הישן' ),
+				),
+			),
+
+/*
+ * Outside project-stage.php (NOT applied; content in WordPress, the owner's or the coordinator's call):
+ *
+ * 1. "First line to the sea" on the live page, 7 places (read 28.9.2026). The stage composes the page's own lead as its
+ *    answer paragraph, so the first one would sit right under the new H1:
+ *      - the lead: "... הן בגלל המיקום בקו ראשון לחוף הים והן בגלל מבנה העסקה ..."
+ *      - the data table, row "מיקום": "קו ראשון לחוף ובקרבת פארק הירקון"
+ *      - the section heading "מיקום: קו ראשון לחוף, מתחם אשכול ואבן גבירול 220" and the paragraph after it
+ *        ("קו ראשון לחוף אינו רק ביטוי שיווקי. ... קרבה ישירה לים ...")
+ *      - "... האם הדירה הספציפית נהנית מנוף לים או רק מהשתייכות כללית לפרויקט בקו ראשון"
+ *      - the price table, row "מיקום ביחס לרובע": "קו ראשון לחוף, מתחם אשכול"
+ *      - the FAQ answer "איפה נמצא DIMRI YAMA?": "... בקו ראשון לחוף הים של תל אביב ..."
+ *    A sourced replacement: "כ-700 מטר מקו המים, בין החוף לפארק הירקון" (OpenStreetMap's coastline; GIS 837).
+ * 2. The page's address "אבן גבירול 220": no official source in the research; the plan names the streets Israel Galili
+ *    (east) and Yaakov Apter (south). The REST meta address reads "מיקום משוער עד לאישור היזם".
+ * 3. The page model (showroom-engine/models/dimri-rich.glb) draws one building with a sea plate (research 1.5): the stage
+ *    replaces it on this page; the Sde Dov tour card's "קו ראשון לים" tag is still live there.
+ */

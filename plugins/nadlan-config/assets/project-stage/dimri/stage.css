@@ -1,0 +1,351 @@
+/* Dimri Yama (Sde Dov, lot 107) 3D stage (prototype, 28.9.2026). DUO's stage.css, unchanged: the same engine family and the site's DNA (cream
+   #FAF7F1, ink #1B1A17, deep teal #1F4B5C, gold-brown #8A6A2E; terracotta #C2563A only on the money button; Frank
+   Ruhl Libre headings, Heebo body). The engine's classes are rbs-, the family's additions dus-. */
+.rbs {
+  --rbs-paper: #FAF7F1;
+  --rbs-ink: #1B1A17;
+  --rbs-sea: #2F6F86;
+  --rbs-deep: #1F4B5C;
+  --rbs-sand: #EEE9DD;
+  --rbs-line: #E6E0D4;
+  --dus-gold: #8A6A2E;
+  --dus-terra: #C2563A;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--rbs-sand);
+  color: var(--rbs-ink);
+  font-family: 'Heebo', 'Assistant', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  isolation: isolate;
+  contain: layout paint;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.rbs--auto { height: auto; aspect-ratio: 16 / 10; min-height: 420px; }
+@media (max-width: 640px) { .rbs--auto { aspect-ratio: 4 / 5; min-height: 360px; } }
+
+.rbs-poster {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 44% 50%;
+  display: block; opacity: 1; transition: opacity .9s ease;
+}
+.rbs-canvas { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease; }
+.rbs-canvas canvas { display: block; width: 100% !important; height: 100% !important; outline: none; }
+.rbs-canvas canvas:focus-visible { outline: 2px solid var(--rbs-sea); outline-offset: -4px; }
+.rbs--live .rbs-canvas { opacity: 1; }
+.rbs--live .rbs-poster { opacity: 0; }
+/* when the opening move plays, the poster (hero view) dips out before the aerial view fades in, no double exposure */
+.rbs--intro.rbs--live .rbs-poster { transition: opacity .3s ease; }
+.rbs--intro.rbs--live .rbs-canvas { transition: opacity .7s ease .22s; }
+.rbs--live.rbs--settled .rbs-poster { visibility: hidden; }
+
+.rbs-ui { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.rbs-ui > * { pointer-events: auto; }
+
+/* honest caption, bottom start (right in RTL) */
+.rbs-caption {
+  position: absolute; bottom: 14px; inset-inline-start: 16px;
+  margin: 0; max-width: min(460px, calc(100% - 220px));
+  font-size: 12px; line-height: 1.45; font-weight: 400;
+  color: rgba(27, 26, 23, .82);
+  background: rgba(250, 247, 241, .9);
+  border: 1px solid var(--rbs-line); border-radius: 8px;
+  padding: 6px 10px;
+  pointer-events: none;
+}
+
+/* light presets, bottom end (left in RTL) */
+.rbs-presets {
+  position: absolute; bottom: 14px; inset-inline-end: 16px;
+  display: none; gap: 2px; padding: 3px;
+  background: rgba(250, 247, 241, .94);
+  border: 1px solid var(--rbs-line); border-radius: 999px;
+}
+.rbs--live .rbs-presets { display: flex; }
+.rbs-presets button {
+  appearance: none; -webkit-appearance: none; border: 0; margin: 0;
+  background: transparent; color: var(--rbs-ink);
+  font: 600 13px/1 'Heebo', 'Assistant', system-ui, sans-serif;
+  padding: 0 14px; min-height: 32px; min-width: 64px;
+  border-radius: 999px; cursor: pointer;
+  transition: background-color .2s ease, color .2s ease;
+}
+.rbs-presets button:hover { background: rgba(27, 26, 23, .06); }
+.rbs-presets button[aria-checked="true"] { background: var(--rbs-ink); color: var(--rbs-paper); }
+.rbs-presets button:focus-visible,
+.rbs-label button:focus-visible,
+.rbs-open:focus-visible { outline: 2px solid var(--rbs-sea); outline-offset: 2px; }
+
+/* first-use hint, top start */
+.rbs-hint {
+  position: absolute; top: 14px; inset-inline-start: 16px;
+  display: none; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; line-height: 1;
+  color: var(--rbs-ink);
+  background: rgba(250, 247, 241, .92);
+  border: 1px solid var(--rbs-line); border-radius: 999px;
+  padding: 8px 12px 8px 14px;
+  pointer-events: none;
+  transition: opacity .5s ease;
+}
+.rbs-hint::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--rbs-sea); flex: none;
+}
+.rbs--live .rbs-hint { display: inline-flex; }
+.rbs-hint.is-gone { opacity: 0; }
+
+/* floor label */
+.rbs-label {
+  position: absolute; left: 0; top: 0;
+  width: 264px; box-sizing: border-box;
+  background: var(--rbs-paper);
+  border: 1px solid var(--rbs-line); border-radius: 12px;
+  padding: 14px 16px 16px;
+  box-shadow: 0 8px 22px rgba(27, 26, 23, .12);
+  text-align: start;
+  opacity: 0; visibility: hidden;
+  transition: opacity .18s ease, visibility 0s linear .18s;
+  will-change: transform;
+}
+.rbs-label.is-on { opacity: 1; visibility: visible; transition: opacity .18s ease; }
+.rbs-label-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.rbs-label-title {
+  margin: 0; font-family: 'Frank Ruhl Libre', 'Noto Serif Hebrew', Georgia, serif;
+  font-weight: 600; font-size: 22px; line-height: 1.15; color: var(--rbs-ink);
+}
+/* "לדוגמה": an example apartment says so right in its title (the design system's nlds-sample chip) */
+.rbs-sample {
+  display: inline-block; vertical-align: middle; font-family: 'Heebo', 'Assistant', system-ui, sans-serif;
+  font-size: 11.5px; font-weight: 600; line-height: 1.6; color: #57534B; background: #EFE9DC;
+  border: 1px solid #E3E1DA; border-radius: 6px; padding: 0 8px;
+}
+.rbs-label-close {
+  appearance: none; -webkit-appearance: none; border: 0; background: transparent;
+  width: 28px; height: 28px; margin: -6px -8px 0 0; padding: 0;
+  border-radius: 50%; cursor: pointer; color: rgba(27, 26, 23, .6);
+  font: 400 20px/28px 'Heebo', 'Assistant', system-ui, sans-serif;
+}
+.rbs-label-close:hover { background: rgba(27, 26, 23, .06); color: var(--rbs-ink); }
+.rbs-label-line { margin: 6px 0 14px; font-size: 14px; line-height: 1.45; color: var(--rbs-deep); font-weight: 600; }
+.rbs-label-cta {
+  appearance: none; -webkit-appearance: none; display: block; width: 100%;
+  border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--rbs-deep); color: #fff;
+  font: 700 14px/1 'Heebo', 'Assistant', system-ui, sans-serif;
+  padding: 12px 14px; min-height: 40px;
+  transition: background-color .2s ease;
+}
+.rbs-label-cta:hover { background: var(--rbs-sea); }
+/* version 33: the floor card's actions (inside, the view and the map, the designer), above the WhatsApp button */
+.rbs-label-more { margin: -10px 0 12px; font-size: 12.5px; line-height: 1.4; color: rgba(27, 26, 23, .6); }
+.rbs-label-more[hidden] { display: none; }
+.rbs-label-acts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 0 8px; }
+.rbs-act {
+  appearance: none; -webkit-appearance: none; cursor: pointer; border-radius: 999px;
+  font: 700 13px/1.15 'Heebo', 'Assistant', system-ui, sans-serif; padding: 9px 8px; min-height: 36px;
+  border: 1px solid var(--rbs-line); background: transparent; color: var(--rbs-ink);
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.rbs-act:hover { border-color: var(--rbs-deep); background: rgba(27, 26, 23, .04); }
+.rbs-act--go { grid-column: 1 / -1; border: 0; background: var(--rbs-sea); color: #fff; font-size: 14px; min-height: 40px; }
+.rbs-act--go:hover { background: var(--rbs-deep); }
+.rbs-act:focus-visible, .rbs-label-cta:focus-visible { outline: 2px solid var(--rbs-sea); outline-offset: 2px; }
+.rbs--narrow .rbs-label-line { margin-bottom: 8px; }
+/* version 34: on a phone the card is a compact sheet at the bottom of the stage, its four actions two by two */
+.rbs--narrow .rbs-label { display: grid; grid-template-columns: 1fr 1fr; column-gap: 8px; padding: 12px 14px 6px; }
+.rbs--narrow .rbs-label > :not(.rbs-label-acts):not(.rbs-label-cta) { grid-column: 1 / -1; }
+.rbs--narrow .rbs-label-acts { display: contents; }
+.rbs--narrow .rbs-act, .rbs--narrow .rbs-label-cta { grid-column: auto; margin: 0 0 8px; min-height: 38px; padding: 8px 6px; font-size: 13px; line-height: 1.15; }
+/* one direction label at a time: while the card is open on a phone, it says the direction */
+.rbs--narrow .rbs-label.is-on ~ .rbs-facing { opacity: 0; visibility: hidden; }
+
+.rbs-leader { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 1; }
+.rbs-leader line { stroke: var(--rbs-deep); stroke-width: 1.25; }
+.rbs-leader circle { fill: var(--rbs-paper); stroke: var(--rbs-sea); stroke-width: 2; }
+
+/* fallback: poster stays, one button */
+.rbs-open {
+  position: absolute; left: 50%; bottom: 64px; transform: translateX(-50%);
+  display: none; appearance: none; -webkit-appearance: none;
+  border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--rbs-ink); color: var(--rbs-paper);
+  font: 700 15px/1 'Heebo', 'Assistant', system-ui, sans-serif;
+  padding: 14px 22px; min-height: 46px;
+}
+.rbs--fallback .rbs-open { display: block; }
+.rbs--fallback.rbs--nogl .rbs-open { display: none; }
+.rbs-open:hover { background: var(--rbs-deep); }
+
+.rbs--grab .rbs-canvas { cursor: grab; }
+.rbs--pointer .rbs-canvas { cursor: pointer; }
+.rbs--grabbing .rbs-canvas { cursor: grabbing; }
+
+/* narrow stages: caption across the bottom, presets on top, label docked */
+.rbs--narrow .rbs-caption { inset-inline-end: 12px; inset-inline-start: 12px; bottom: 10px; max-width: none; font-size: 11.5px; }
+.rbs--narrow .rbs-presets { top: 12px; bottom: auto; inset-inline-end: 12px; }
+.rbs--narrow .rbs-presets button { min-width: 56px; padding: 0 11px; font-size: 12.5px; min-height: 30px; }
+.rbs--narrow .rbs-hint { top: 12px; inset-inline-start: 12px; font-size: 12px; padding: 7px 10px 7px 12px; }
+.rbs--narrow .rbs-label { width: min(380px, calc(100% - 24px)); }
+.rbs--narrow .rbs-open { bottom: 72px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rbs-poster, .rbs-canvas, .rbs-label, .rbs-hint { transition: none; }
+}
+
+.rbs-stats {
+  position: absolute; top: 56px; inset-inline-start: 16px; z-index: 3;
+  font: 11px/1.4 ui-monospace, Consolas, monospace; direction: ltr; text-align: left;
+  background: rgba(250, 247, 241, .9); border: 1px solid var(--rbs-line); border-radius: 6px;
+  padding: 6px 8px; color: var(--rbs-ink); pointer-events: none; white-space: pre;
+}
+
+/* v2: facing line in the floor card, and the small chip at the tip of the facing arrow */
+.rbs-label-facing { margin: -6px 0 14px; font-size: 13.5px; line-height: 1.4; font-weight: 600; color: rgba(27, 26, 23, .6); }
+.rbs-label-facing.is-set { color: var(--rbs-sea); font-weight: 700; }
+.rbs-label-facing[hidden] { display: none; }
+.rbs-facing {
+  position: absolute; left: 0; top: 0;
+  display: inline-flex; align-items: center;
+  padding: 6px 11px; border-radius: 999px;
+  background: var(--rbs-paper); border: 1px solid var(--rbs-line);
+  color: var(--rbs-deep); font: 700 13px/1 'Heebo', 'Assistant', system-ui, sans-serif;
+  white-space: nowrap; pointer-events: none;
+  box-shadow: 0 4px 12px rgba(27, 26, 23, .10);
+  opacity: 0; visibility: hidden;
+  transition: opacity .18s ease, visibility 0s linear .18s;
+  will-change: transform;
+}
+.rbs-facing.is-on { opacity: 1; visibility: visible; transition: opacity .18s ease; }
+@media (prefers-reduced-motion: reduce) { .rbs-facing { transition: none; } }
+/* The theme forces its article typography on every p inside a page's content (16px !important, 72ch, margins). The stage's
+   own text keeps its sizes, so the caption never grows over the light switch and the card's title never breaks badly. */
+:root body .rbs p.rbs-caption { font-size: 12px !important; line-height: 1.45 !important; margin: 0 !important; max-width: min(460px, calc(100% - 220px)) !important; }
+:root body .rbs p.rbs-label-title { font-size: 22px !important; line-height: 1.15 !important; margin: 0 !important; max-width: none !important; }
+:root body .rbs p.rbs-label-line { font-size: 14px !important; line-height: 1.45 !important; margin: 6px 0 14px !important; max-width: none !important; }
+:root body .rbs.rbs--narrow p.rbs-label-line { font-size: 13.5px !important; margin: 4px 0 8px !important; }
+:root body .rbs p.rbs-label-more { font-size: 12.5px !important; line-height: 1.4 !important; margin: -10px 0 12px !important; max-width: none !important; }
+:root body .rbs p.rbs-label-facing { font-size: 13.5px !important; line-height: 1.4 !important; margin: -6px 0 14px !important; max-width: none !important; }
+:root body .rbs .rbs-label-title .rbs-sample { font-size: 11.5px !important; line-height: 1.6 !important; margin-inline-start: 6px; white-space: nowrap; }
+:root body .rbs.rbs--narrow p.rbs-caption { max-width: none !important; font-size: 11.5px !important; }
+/* the quarter (design system QuarterPins, 25.9.2026): pins over our other projects' masses and the main places, and the card */
+.rbs-ui > .rbs-qpins { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.rbs-qpin {
+  position: absolute; left: 0; top: 0; pointer-events: auto; appearance: none; -webkit-appearance: none;
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; cursor: pointer; border-radius: 999px;
+  font: 700 12.5px/1.2 'Heebo', 'Assistant', system-ui, sans-serif; will-change: transform; visibility: hidden;
+  transition: opacity .2s ease;
+}
+.rbs-qpin--project { padding: 5px 11px; border: 0; background: rgba(27, 26, 23, .92); color: #fff; box-shadow: 0 6px 16px rgba(27, 26, 23, .22); }
+.rbs-qpin--place { padding: 4px 10px 4px 9px; border: 1px solid var(--rbs-line); background: rgba(250, 247, 241, .95); color: var(--rbs-ink); font-weight: 600; font-size: 12px; }
+.rbs-qpin:hover, .rbs-qpin:focus-visible { outline: 2px solid var(--rbs-sea); outline-offset: 2px; opacity: 1 !important; }
+.rbs-qdot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--rbs-sea); flex: none; }
+.rbs-qpin--school .rbs-qdot { background: #9C7A3C; }
+.rbs-qpin--park .rbs-qdot, .rbs-qpin--nature .rbs-qdot { background: #517048; }
+.rbs-qpin--beach .rbs-qdot { background: #C9A96E; }
+/* the legend's groups on the project pins (design system QuarterPins, version 23); a light ring reads on the dark pill */
+.rbs-qpin--project .rbs-qdot { box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .9); }
+.rbs-qdot--building { background: var(--rbs-sea); }
+.rbs-qdot--selling { background: #9C7A3C; }
+.rbs-qdot--permit { background: #8E8676; }
+/* the building's own label in the legend's overview: the brand's sea, not a button */
+.rbs-qpin--hero { padding: 5px 12px; border: 0; background: var(--rbs-sea); color: #fff; font-weight: 700; box-shadow: 0 6px 16px rgba(27, 26, 23, .22); pointer-events: none; cursor: default; }
+.rbs-qcard {
+  position: absolute; top: 14px; inset-inline-end: 14px; width: 280px; box-sizing: border-box; z-index: 3;
+  display: grid; gap: 4px; padding: 14px 16px 16px; text-align: start;
+  background: var(--rbs-paper); border: 1px solid var(--rbs-line); border-radius: 12px; box-shadow: 0 10px 26px rgba(27, 26, 23, .14);
+  opacity: 0; visibility: hidden; transition: opacity .18s ease, visibility 0s linear .18s;
+}
+.rbs-qcard.is-on { opacity: 1; visibility: visible; transition: opacity .18s ease; }
+.rbs-qcard-x {
+  position: absolute; top: 8px; inset-inline-end: 8px; width: 28px; height: 28px; border: 0; border-radius: 50%;
+  background: transparent; color: rgba(27, 26, 23, .6); font: 400 20px/28px 'Heebo', 'Assistant', system-ui, sans-serif; cursor: pointer;
+}
+.rbs-qcard-go, .rbs-qcard-page {
+  display: flex; align-items: center; justify-content: center; min-height: 40px; border-radius: 999px; cursor: pointer;
+  font: 700 14px/1 'Heebo', 'Assistant', system-ui, sans-serif; text-decoration: none; padding: 0 14px;
+}
+.rbs-qcard-go { border: 0; background: var(--rbs-deep); color: #fff; }
+.rbs-qcard-go:hover { background: var(--rbs-sea); }
+.rbs-qcard-page { border: 1px solid var(--rbs-line); background: #fff; color: var(--rbs-deep); }
+.rbs-qcard-cta { display: grid; gap: 8px; margin-top: 10px; }
+.rbs--narrow .rbs-qcard { top: auto; bottom: 12px; inset-inline: 12px; width: auto; }
+:root body .rbs p.rbs-qcard-kick { margin: 0 !important; font: 700 12.5px/1.3 'Heebo', 'Assistant', system-ui, sans-serif !important; letter-spacing: .04em; color: var(--rbs-sea) !important; max-width: none !important; }
+:root body .rbs p.rbs-qcard-title { margin: 2px 0 0 !important; font: 600 20px/1.2 'Frank Ruhl Libre', 'Noto Serif Hebrew', Georgia, serif !important; color: var(--rbs-ink) !important; max-width: none !important; }
+:root body .rbs p.rbs-qcard-brand { margin: 0 !important; font: 700 11.5px/1.3 'Heebo', 'Assistant', system-ui, sans-serif !important; letter-spacing: .08em; color: rgba(27, 26, 23, .66) !important; direction: ltr; text-align: end; unicode-bidi: isolate; max-width: none !important; }
+:root body .rbs p.rbs-qcard-line { margin: 4px 0 0 !important; font: 600 14px/1.4 'Heebo', 'Assistant', system-ui, sans-serif !important; color: var(--rbs-deep) !important; max-width: none !important; }
+:root body .rbs p.rbs-qcard-facts { margin: 0 !important; font: 400 14px/1.4 'Heebo', 'Assistant', system-ui, sans-serif !important; color: var(--rbs-ink) !important; max-width: none !important; }
+:root body .rbs p.rbs-qcard-dist { margin: 2px 0 0 !important; font: 700 14px/1.45 'Heebo', 'Assistant', system-ui, sans-serif !important; color: var(--rbs-sea) !important; max-width: none !important; }
+:root body .rbs p.rbs-qcard-note { margin: 4px 0 0 !important; font: 400 11.5px/1.45 'Heebo', 'Assistant', system-ui, sans-serif !important; color: rgba(27, 26, 23, .66) !important; max-width: none !important; }
+/* TouchTargets v62 (28.9.2026): every control on the stage answers a 44px finger. The light switch and the quarter pins
+   keep their small look over the model and get an invisible 44px touch area; the floor card's close grows to 36px with a
+   44px touch area; the floor card's actions are 44px tall on narrow stages. (.rbs-qpin is position:absolute already, so
+   its ::after needs no new positioning; never set position on a pin.) */
+.rbs-presets button { position: relative; }
+.rbs-presets button::after { content: ""; position: absolute; inset: -6px 0; }
+.rbs--narrow .rbs-presets button::after { inset: -7px 0; }
+.rbs-qpin::after { content: ""; position: absolute; inset: -10px -3px; }
+.rbs-label-close { position: relative; width: 36px; height: 36px; margin: -10px -10px 0 0; font-size: 22px; line-height: 36px; }
+.rbs-label-close::after { content: ""; position: absolute; inset: -4px; }
+.rbs--narrow .rbs-act, .rbs--narrow .rbs-label-cta { min-height: 44px; }
+
+/* FacilityHotspots v72 (28.9.2026): the project's facilities as pins on the model (the legend's "facilities" chip); each
+   opens the quarter's card with its source and a WhatsApp question that names the facility */
+.rbs-qpin--facility { padding-block: 5px; padding-inline: 5px 12px; border: 0; background: #1F4B5C; color: #fff; box-shadow: 0 6px 16px rgba(27, 26, 23, .28); }
+.rbs-qpin--facility::after { content: ""; position: absolute; inset: -9px -3px; }
+.rbs-qpin--facility:hover { background: #2F6F86; }
+.rbs-fic { width: 22px; height: 22px; border-radius: 50%; flex: none; background: rgba(255, 255, 255, .16) center / 14px 14px no-repeat; }
+.rbs-fic--pool { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 15c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0'/%3E%3Cpath d='M2 19c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0'/%3E%3Cpath d='M8 13V6a2 2 0 0 1 4 0'/%3E%3Cpath d='M14 13V6a2 2 0 0 1 4 0'/%3E%3C/svg%3E"); }
+.rbs-fic--club { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11'/%3E%3C/svg%3E"); }
+.rbs-fic--lobby { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 21V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16'/%3E%3Cpath d='M10 21v-5h4v5'/%3E%3Cpath d='M2 21h20'/%3E%3C/svg%3E"); }
+.rbs-fic--retail { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 7h12l1 13H5z'/%3E%3Cpath d='M9 10V6a3 3 0 0 1 6 0v4'/%3E%3C/svg%3E"); }
+.rbs-fic--parking { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='4' width='16' height='16' rx='3'/%3E%3Cpath d='M9 17V7h4a3 3 0 0 1 0 6H9'/%3E%3C/svg%3E"); }
+.rbs-qcard-page.rbs-qcard-wa { border: 0; background: #0F7A63; color: #fff; }
+.rbs-qcard-page.rbs-qcard-wa:hover { background: #0B634F; }
+.rbs--narrow .rbs-qcard-page.rbs-qcard-wa { min-height: 44px; }
+:root body .nlds .qp-dot--facilities { background: #1F4B5C !important; }
+:root body .rbs a.rbs-qcard-page.rbs-qcard-wa, :root body .rbs a.rbs-qcard-page.rbs-qcard-wa:hover { color: #fff !important; text-decoration: none !important; }
+
+
+/* ---------------------------------------------------------------------------------------------------------------------
+   DUO additions (dus-)
+   --------------------------------------------------------------------------------------------------------------------- */
+/* the money button on the floor card: terracotta (the site's colour for prices and plans only) */
+.dus .rbs-label-cta { background: var(--dus-terra); }
+.dus .rbs-label-cta:hover { background: #A94730; }
+/* the card's kicker: which tower */
+.dus-label-kick { margin: 0 0 3px; font: 700 11.5px/1.3 'Heebo', 'Assistant', system-ui, sans-serif; letter-spacing: .06em; color: var(--dus-gold); }
+.dus .rbs-label-title { font-weight: 500; }
+/* no interior pictures yet, so two secondary actions: side by side; on a phone the money button takes the whole row */
+.rbs--narrow.dus .rbs-label-cta { grid-column: 1 / -1; }
+/* a phone: the pins a little smaller (their 44px touch areas stay) */
+.rbs--narrow .rbs-qpin--facility { font-size: 12px; padding-block: 4px; padding-inline: 4px 10px; gap: 5px; }
+.rbs--narrow .rbs-fic { width: 20px; height: 20px; background-size: 12px 12px; }
+.rbs--narrow .rbs-qpin--place, .rbs--narrow .rbs-qpin--project { font-size: 11.5px; }
+/* the streets' and the towers' names over the model (never buttons; under every control) */
+.rbs-ui > .dus-marks { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.dus-street {
+  position: absolute; left: 0; top: 0; visibility: hidden; white-space: nowrap; will-change: transform;
+  font: 600 11.5px/1 'Heebo', 'Assistant', system-ui, sans-serif; letter-spacing: .02em;
+  color: rgba(27, 26, 23, .66); background: rgba(250, 247, 241, .78); border-radius: 4px; padding: 3px 7px;
+}
+.dus-tname {
+  position: absolute; left: 0; top: 0; visibility: hidden; white-space: nowrap; will-change: transform;
+  font: 500 13.5px/1 'Frank Ruhl Libre', 'Noto Serif Hebrew', Georgia, serif; color: var(--rbs-ink);
+  background: rgba(250, 247, 241, .94); border: 1px solid rgba(138, 106, 46, .38); border-radius: 999px; padding: 6px 12px 5px;
+  box-shadow: 0 4px 14px rgba(27, 26, 23, .10);
+}
+.rbs--narrow .dus-tname { font-size: 12.5px; padding: 5px 10px 4px; }
+.rbs--narrow .dus-street { font-size: 11px; }
+/* the quarter's places that Rainbow has no colour for */
+.rbs-qpin--civic .rbs-qdot { background: var(--dus-gold); }
+.rbs-qpin--rail .rbs-qdot { background: var(--rbs-sea); }
+.rbs-qpin--hero { background: var(--rbs-deep); letter-spacing: .08em; }
+.rbs-qpin--facility { background: var(--rbs-deep); }
+.rbs-qpin--facility:hover { background: var(--rbs-sea); }
+:root body .rbs p.dus-label-kick { font-size: 11.5px !important; line-height: 1.3 !important; margin: 0 0 3px !important; max-width: none !important; color: var(--dus-gold) !important; }
+:root body .rbs.dus p.rbs-caption { max-width: min(520px, calc(100% - 220px)) !important; }
+:root body .rbs.dus.rbs--narrow p.rbs-caption { max-width: none !important; font-size: 11px !important; line-height: 1.4 !important; }

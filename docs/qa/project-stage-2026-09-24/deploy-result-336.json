@@ -1,0 +1,41 @@
+{
+  "released": "1.72.336",
+  "from": "1.72.335",
+  "at": "2026-09-28 12:59:40",
+  "files": {
+    "assets/project-stage/dimri/stage.js": "f491077e6e5b498411d2e68e344db074",
+    "assets/project-stage/dimri/stage.css": "5e1cc6bc207452d6d8226a2336814900",
+    "assets/project-stage/dimri/city.json": "ab467e105925d1c86b5150065f012356",
+    "assets/project-stage/dimri/quarter.json": "99955b3a6c03ca3eda99c1f9e5d3639f",
+    "assets/project-stage/dimri/facilities.json": "16865dc0f1d450f82eeb85981553374a",
+    "assets/project-stage/dimri/poster.jpg": "43881311fc16edcad0f30a9b744815cf",
+    "assets/project-stage/dimri/poster-716.jpg": "41fde880bc1fd5e6bc6e97c3e3e9a722",
+    "assets/project-stage/ashira/stage.js": "7d36a2f51fbbc475ec7daf80d37071d4",
+    "assets/project-stage/ashira/stage.css": "5580ce745e52e144b058a3fbd0338227",
+    "assets/project-stage/ashira/city.json": "f3abb2e089c4518c0b12da6e3629b6cc",
+    "assets/project-stage/ashira/quarter.json": "0e01400aadfa16465ef3acaab440b3a8",
+    "assets/project-stage/ashira/facilities.json": "63e188f6bc655957e84c620faddb5e77",
+    "assets/project-stage/ashira/poster.jpg": "581e9719dd69acefb54b0c00121cba7a",
+    "assets/project-stage/ashira/poster-716.jpg": "720cf6d0fb2ef958291f53077a97e131",
+    "inc/project-stage.php": "f10b27a968e56b73a29fb948ee0ecb39",
+    "nadlan-config.php": "597a7ece8c7bb05b3dafd1b164719311"
+  },
+  "live_before": {
+    "assets/project-stage/dimri/stage.js": "missing",
+    "assets/project-stage/dimri/stage.css": "missing",
+    "assets/project-stage/dimri/city.json": "missing",
+    "assets/project-stage/dimri/quarter.json": "missing",
+    "assets/project-stage/dimri/facilities.json": "missing",
+    "assets/project-stage/dimri/poster.jpg": "missing",
+    "assets/project-stage/dimri/poster-716.jpg": "missing",
+    "assets/project-stage/ashira/stage.js": "missing",
+    "assets/project-stage/ashira/stage.css": "missing",
+    "assets/project-stage/ashira/city.json": "missing",
+    "assets/project-stage/ashira/quarter.json": "missing",
+    "assets/project-stage/ashira/facilities.json": "missing",
+    "assets/project-stage/ashira/poster.jpg": "missing",
+    "assets/project-stage/ashira/poster-716.jpg": "missing",
+    "inc/project-stage.php": "82dbc4c24c144fe75a8283c21aa072c1",
+    "nadlan-config.php": "a0dae812126510d9c66f8c71ab5ff3d9"
+  }
+}

@@ -1,0 +1,88 @@
+<?php
+/*
+ * PROPOSAL ONLY (28.9.2026, prototype): the 'ashira-sde-dov' entry for nadlan_ps_config() in
+ * plugins/nadlan-config/inc/project-stage.php (as committed in 34edcfb8 and later: 'poster_alt' and 'src_line' keys,
+ * the "נכנסים לדירה" step gated on interior pictures). NOT applied, NOT deployed. It mounts the prototype stage in
+ * plugins/nadlan-config/assets/project-stage/ashira/ (stage.js exporting mountAshiraStage, stage.css, city.json,
+ * quarter.json, facilities.json, poster.jpg 1600x1475, poster-716.jpg 716x660).
+ *
+ * Every fact carries its source: docs/research/2026-09-28-stages/stage-geometry.md section 2 (the local committee's
+ * agenda 23-0007ב of 3.5.2023, item 13, lot 101 Eshkol; the design plan in force 12.5.2024, GIS 528; GIS 837) and the
+ * live page https://nad-lan.co.il/projects/ashira-sde-dov/ (read 28.9.2026).
+ *
+ * The H1 (the page's own, 28.9.2026): "ASHIRA - פרויקט אשירה שדה דב תל אביב מחיר" (a search string, with "מחיר" in it).
+ * What people search for this page (Search Console export 25.5-25.8.2026, query x page, the local CSV in
+ * Documents/GSC-Data/nad-lan.co.il/.../query-page-reconciled.csv): "אשירה שדה דב מחיר" (11 impressions), "פרויקט אשירה
+ * שדה דב" (8), "אשירה שדה דב" (7), "אביסרור שדה דב מחירים" (5), "אשירה תל אביב" (5), "פרויקט אשירה" (5), "ashira by
+ * avisror" (1). Proposed H1: Hebrew "פרויקט אשירה שדה דב" (every Hebrew form above is inside it; the price words belong
+ * in the title tag and the price section, not in the H1) and English "Ashira Sde Dov"; the developer (Avisror, the
+ * "אביסרור שדה דב" searches) in the kicker under the title.
+ *
+ * Paste inside the array returned by nadlan_ps_config().
+ */
+
+			'ashira-sde-dov' => array(
+				'dir'            => 'ashira',
+				'mount'          => 'mountAshiraStage',
+				'bearing_offset' => 0,                      // the stage's north is true north; the lots' 11° turn is inside the scene
+				'name'           => 'פרויקט אשירה שדה דב',
+				'name_en'        => 'Ashira Sde Dov',
+				'developer'      => 'אביסרור משה ובניו',
+				'place'          => 'מתחם אשכול, רובע שדה דב',
+				'rail'           => array(),
+				'poster_alt'     => 'הדמיה של פרויקט אשירה ברובע שדה דב: מגדל, מגדלון ושני בניינים נמוכים סביב חצר, על מגרש 101',
+				'src_line'       => 'מקורות הבמה: קו המגרש והבניינים הקיימים סביבו לפי עיריית <span>תל אביב-יפו</span> (שכבות המגרשים, המבנים, הרחובות, השטחים הירוקים והעצים, 9.2026); הבניינים במגרש, הקומות והגבהים לפי תכנית העיצוב (5.2023); קו החוף לפי OpenStreetMap. החזיתות ומיקום המתקנים להמחשה.',
+				// ProjectFacts: six quick facts, each with its source
+				'facts'          => array(
+					// GIS 837 (lot 101, Eshkol); the committee's agenda: Levi Eshkol St. on the east
+					array( 'מיקום', 'מתחם אשכול, רובע שדה דב', 'מגרש 101, על רחוב לוי אשכול' ),
+					// the design plan: "מגדל בן 35 קומות, מגדלון בן 16 קומות ושני מבנים מרקמיים בגובה 9 קומות" (the page's "8"
+					// is the same buildings without the technical floor)
+					array( 'בניינים', 'מגדל של 35 קומות', 'מגדלון של 16 ושני בניינים של 9, לפי תכנית העיצוב' ),
+					// the design plan's table (p.181): 202 in the tower, 65 + 57 + 82 in the other three
+					array( 'דירות', '406', '202 במגדל ו-204 בשלושת הבניינים האחרים, לפי תכנית העיצוב' ),
+					// the design plan: the tower about 137 m (136 in its table)
+					array( 'גובה המגדל', 'כ-137 מ׳', 'לפי תכנית העיצוב' ),
+					// the design plan: the pool and the gyms underground; three residents' clubs (N2, S1, S2)
+					array( 'מתקנים', 'בריכה וחדרי כושר', 'בקומת המרתף, ו-3 מועדוני דיירים, לפי תכנית העיצוב' ),
+					// the page's status row ('בשיווק') and its words: the full permit reported in 3.2026, the works at the
+					// foundations in spring 2026, the public target for completion 2030
+					array( 'מצב', 'בשיווק', 'יסודות באביב 2026, יעד השלמה ב-2030, לפי הפרסומים' ),
+				),
+				// ProjectProgress: done, now, next (the page's dated facts and GIS 528)
+				'progress'       => array(
+					array( 'תכנית עיצוב', '5.2024', 'done' ),    // in force 12.5.2024 (GIS 528, id_taba 8209); discussed 3.5.2023
+					array( 'היתר בנייה', '3.2026', 'done' ),     // the page: "היתר בנייה מלא דווח במרץ 2026"
+					array( 'יסודות', 'אביב 2026', 'now' ),       // the page: "העבודות דווחו בשלב היסודות באביב 2026"
+					array( 'השלמה', 'יעד 2030', 'next' ),        // the page: "היעד הפומבי להשלמה הוא 2030"
+				),
+				// example apartments (the owner, 25.9.2026): one per face of each floor of the tower and of the mid-rise; the
+				// faces' true bearings from the lot's grid (11° east of north). The design plan: every tower balcony faces west.
+				'units'          => array( array( 'n', 11 ), array( 'e', 101 ), array( 's', 191 ), array( 'w', 281 ) ),
+				// the view and the beam start at the tower's centre (research 2.3: the base's centre, DRAWING grade; the plate
+				// on it is drawn in the middle, as the plan's renders show)
+				'tower_lat'      => 32.105479,
+				'tower_lng'      => 34.787466,
+				// what lies that way, true bearings from the tower (28.9.2026): the nearest waterline about 280° and 930 m
+				// (OpenStreetMap), Tel Baruch beach 5°, Tel Aviv University 62°, Yarkon Park 109°, the Azrieli towers 173°,
+				// the Old North 207°
+				'sectors'        => array(
+					array( 240, 340, 'לכיוון הים' ),
+					array( 340, 30, 'לכיוון תל ברוך והרצליה' ),
+					array( 30, 85, 'לכיוון רמת אביב והאוניברסיטה' ),
+					array( 85, 140, 'לכיוון פארק הירקון' ),
+					array( 140, 195, 'לכיוון מגדלי העיר' ),
+					array( 195, 240, 'לכיוון הצפון הישן' ),
+				),
+			),
+
+/*
+ * Outside project-stage.php (NOT applied; the owner's or the coordinator's call):
+ *
+ * 1. The page model (showroom-engine/models/ashira-rich.glb, research 2.5) puts the tower in the middle and both low
+ *    buildings on the west, with 8 floors; the stage replaces it on this page. The Sde Dov tour's header "34F + 15F +
+ *    boutique 7-8F" and card "35 / 16 / 8 / 8" differ from the plan's 35 / 16 / 9 / 9.
+ * 2. The page's lead says "שני בניינים של 8 קומות" (the developer's count without the technical floor); the stage and
+ *    the facts above use the plan's 9 with the source named.
+ * 3. The number of basement levels is not in the text the research read; the parking card says so.
+ */

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ashira stage harness</title>
+<link rel="icon" href="data:,">
+<!-- A local harness for the ashira stage prototype (28.9.2026): the page top as inc/project-stage.php composes it, with the
+     live bridge.js mounting the stage from data-cfg. Serve the repo root and open /scripts/project-stage/ashira_harness.html:
+       python -m http.server 47961 --bind 127.0.0.1        (from C:\Users\777\nad-lan\nad-lan-co-il)
+     Nothing here talks to WordPress; the WhatsApp number is a placeholder and no Mapbox token is set (the view panel
+     stays empty, as on a page without a token). -->
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Heebo:wght@400;500;700&family=Frank+Ruhl+Libre:wght@500;700&family=Noto+Serif+Hebrew:wght@500;600&display=swap">
+<link rel="stylesheet" href="/plugins/nadlan-config/assets/nlds/nlds.css">
+<style>
+  :root { --cream: #FAF7F1; --ink: #1B1A17; --teal: #1F4B5C; --gold: #8A6A2E; --terra: #C2563A; --line: #E6E0D4; }
+  html, body { margin: 0; background: var(--cream); color: var(--ink); font-family: 'Heebo', 'Assistant', system-ui, sans-serif; }
+  .nlps-page { box-sizing: border-box; display: grid; grid-template-columns: minmax(300px, 380px) minmax(0, 1fr); grid-template-rows: auto auto 1fr auto; grid-template-areas: "hero stage" "lead stage" "cta stage" "below below"; column-gap: 24px; row-gap: 12px; padding: 18px clamp(12px, 2vw, 20px) 40px; max-width: 1440px; margin: 0 auto; }
+  .nlps-herowrap { grid-area: hero; }
+  .nl-lead { grid-area: lead; }
+  .nlps-ctawrap { grid-area: cta; align-self: start; }
+  .nlps-stagebox { grid-area: stage; display: grid; gap: 10px; align-content: start; }
+  .nlps-below { grid-area: below; }
+  .nlps-h1 { font-family: 'Frank Ruhl Libre', 'Noto Serif Hebrew', Georgia, serif; font-weight: 700; font-size: 34px; line-height: 1.15; margin: 0 0 6px; }
+  .nlps-h1__en { display: block; font-family: 'Heebo', sans-serif; font-size: 13px; letter-spacing: .14em; font-weight: 500; color: var(--gold); margin-top: 6px; }
+  .nlps-kicker { font-size: 14px; color: #57534B; }
+  .nlps-kicker b { color: var(--ink); }
+  .nl-lead p { margin: 0; font-size: 16.5px; line-height: 1.75; }
+  .nlps-hero__cta { display: flex; flex-wrap: wrap; gap: 10px; }
+  .hbtn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 20px; border-radius: 999px; font: 700 15px/1 'Heebo', sans-serif; text-decoration: none; flex: 1 1 auto; }
+  .hbtn--money { background: var(--terra); color: #fff; }
+  .hbtn--sec { border: 1px solid var(--line); color: var(--ink); background: #fff; }
+  .nlps-stage { position: relative; width: 100%; height: clamp(520px, calc(100svh - 240px), 700px); border-radius: 16px; overflow: hidden; background: #F7F6F2; border: 1px solid var(--line); margin: 0; }
+  .nlps-stage__mount { position: absolute; inset: 0; }
+  .nlps-srt { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+  .nlps-src { font-size: 12px; color: #6D665C; margin: 8px 0 0; line-height: 1.5; }
+  .nlps-view { border: 1px solid var(--line); border-radius: 16px; background: #fff; padding: 14px 16px; }
+  .nlps-view__title { font-family: 'Frank Ruhl Libre', serif; margin: 2px 0 10px; font-size: 20px; }
+  .nlps-view__map { min-height: 160px; border-radius: 12px; background: #F1ECE2; display: grid; place-items: center; color: #6D665C; font-size: 14px; padding: 12px; text-align: center; }
+  @media (max-width: 1099px) {
+    .nlps-page { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: "hero" "lead" "cta" "stage" "below"; }
+    .nlps-stage { height: 62svh; min-height: 380px; }
+  }
+  @media (max-width: 600px) {
+    .nlps-page { padding: 12px 12px 30px; }
+    .nlps-stage { height: 70svh; min-height: 360px; }
+    .nlps-h1 { font-size: 28px; }
+    .nl-lead p { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+<main class="nlps-page" dir="rtl" lang="he">
+  <header class="nlds nlps-herowrap"><div class="nlps-hero">
+    <h1 class="nlps-h1" id="nl-project-page-title">פרויקט אשירה שדה דב <span class="nlps-h1__en" lang="en">ASHIRA SDE DOV</span></h1>
+    <div class="nlps-kicker"><b>אביסרור משה ובניו</b> · מתחם אשכול, רובע שדה דב, תל אביב</div>
+  </div></header>
+  <!-- the lead: the live page's own lead (nad-lan.co.il/projects/ashira-sde-dov/, 28.9.2026), shortened; "שני בניינים של 8 קומות" as "שני בניינים נמוכים" (the plan counts 9) -->
+  <div class="nl-lead"><p>אשירה (ASHIRA) הוא פרויקט מגורים של אביסרור משה ובניו במגרש 101 בשכונת אשכול שברובע שדה דב בתל אביב: 406 דירות בארבעה בניינים, מגדל של 35 קומות, בניין של 16 קומות ושני בניינים נמוכים, לצד שטחים פתוחים והקצאה לגן ילדים. היתר בנייה מלא דווח במרץ 2026, והיעד הפומבי להשלמה הוא 2030.</p></div>
+  <div class="nlds nlps-ctawrap"><div class="nlps-hero__cta">
+    <a class="hbtn hbtn--money" href="#" onclick="return false">לקבלת תוכניות ומחירים</a>
+    <a class="hbtn hbtn--sec" href="#nlps-t">לבחירת קומה</a>
+  </div></div>
+  <div class="nlps-stagebox">
+    <h2 class="nlps-srt" id="nlps-t">סיור וירטואלי: הקומות והנוף</h2>
+    <section class="nlps-stage" id="nlps" aria-labelledby="nlps-t" data-cfg="{}"><div class="nlps-stage__mount" id="nlps-stage"></div></section>
+    <div class="nlds">
+      <ol class="nlps-steps" aria-label="מה אפשר לעשות כאן">
+        <li><button type="button" class="nlps-step" data-nlps-step="floor" aria-current="step"><i>1</i>בוחרים מגדל וקומה</button></li>
+        <li><button type="button" class="nlps-step" data-nlps-step="view"><i>2</i>הנוף והמפה</button></li>
+        <li><button type="button" class="nlps-step" data-nlps-step="design"><i>3</i>מעצבים את הדירה</button></li>
+      </ol>
+      <div class="qp-legend" role="group" aria-label="מה סביב פרויקט אשירה שדה דב" id="legend"></div>
+      <p class="nlps-src">מקורות הבמה: קו המגרש והבניינים הקיימים סביבו לפי עיריית <span>תל אביב-יפו</span> (שכבות המגרשים, המבנים, הרחובות, השטחים הירוקים והעצים, 9.2026); הבניינים במגרש לפי תכנית העיצוב (5.2023); קו החוף לפי OpenStreetMap. הגבהים, החזיתות ומיקום המתקנים להמחשה.</p>
+    </div>
+  </div>
+  <div class="nlps-below nlps-below--solo">
+    <div class="nlds nlps-viewwrap"><div class="nlps-view" id="nlps-view">
+      <div class="nlps-view__head"><p class="nlds-kicker" id="nlps-view-k">הנוף מהקומה</p><h3 class="nlps-view__title" id="nlps-view-t">בחרו קומה ודירה לדוגמה</h3></div>
+      <div class="nlps-view__map nlps-stand" id="nlps-view-map" role="img" aria-label="מבט משוער מהקומה לכיוון שנבחר"><span id="nlps-view-empty">בחרו קומה במגדל ודירה לדוגמה בטבעת שלה, והנוף מהדירה יופיע כאן.</span></div>
+      <p class="nlps-view__cap" id="nlps-view-cap" hidden></p>
+      <div class="nlps-near" id="nlps-near" hidden></div>
+      <div class="nlps-view__cta" id="nlps-view-cta" hidden><a class="nlds-btn nlds-btn--primary" id="nlps-wa" target="_blank" rel="noopener" href="#"><span>לקבלת תוכניות ומחירים</span></a></div>
+    </div></div>
+  </div>
+</main>
+<script type="module">
+  // the config as nadlan_ps_parts() would print it (docs/research/2026-09-28-stages/ashira-config-proposal.php.txt)
+  const DIR = '/plugins/nadlan-config/assets/project-stage/ashira/';
+  const get = (f) => fetch(DIR + f + '?ver=proto').then((r) => r.json());
+  const [fac, q, city] = await Promise.all([get('facilities.json'), get('quarter.json'), get('city.json')]);
+  const cfg = {
+    stage: DIR + 'stage.js?ver=proto',
+    poster: DIR + 'poster.jpg?ver=proto',
+    mount: 'mountAshiraStage',
+    bearingOffset: 0,
+    lat: 32.105479, lng: 34.787466,        // the main tower's centre (build_city_sdedov.py)
+    token: '',                              // no Mapbox token in the harness: the view from the floor stays empty
+    wa: '972000000000',                     // a placeholder, never a real number
+    name: 'פרויקט אשירה שדה דב',
+    sectors: [[240, 340, "לכיוון הים"], [340, 30, "לכיוון תל ברוך והרצליה"], [30, 85, "לכיוון רמת אביב והאוניברסיטה"], [85, 140, "לכיוון פארק הירקון"], [140, 195, "לכיוון מגדלי העיר"], [195, 240, "לכיוון הצפון הישן"]],
+    units: [["n", 11], ["e", 101], ["s", 191], ["w", 281]],
+    facilities: fac.facilities,
+    quarter: { projects: q.projects, places: q.places, note: q.note },
+  };
+  document.getElementById('nlps').dataset.cfg = JSON.stringify(cfg);
+  // the legend, as the PHP counts it
+  const n = { building: 0, selling: 0, permit: 0 }; // the project itself counts only when its page says 'בבנייה'
+  for (const p of q.projects) if (n[p.phase] != null) n[p.phase]++;
+  const chip = (k, label, count) => `<button type="button" class="qp-chip" data-nlps-phase="${k}" aria-pressed="false"><i class="qp-dot qp-dot--${k}"></i>${label} <span class="qp-chip__n">${count}</span></button>`;
+  document.getElementById('legend').innerHTML = chip('facilities', 'מתקנים בפרויקט', fac.facilities.length)
+    + chip('today', 'קיים היום', city.b.length.toLocaleString('en') + ' בניינים')
+    + (n.building ? chip('building', 'בבנייה', n.building) : '')
+    + (n.selling ? chip('selling', 'בשיווק', n.selling) : '')
+    + (n.permit ? chip('permit', 'בשלב ההיתר', n.permit) : '')
+    + '<p class="qp-legend__note">המצב של כל פרויקט לפי העמוד שלו באתר, 9.2026. שנת אכלוס מוצגת רק כשהעמוד נותן אותה.</p>';
+  await import((new URLSearchParams(location.search).get('bridge') || '/plugins/nadlan-config/assets/project-stage/bridge.js') + '?ver=proto');
+</script>
+</body>
+</html>
