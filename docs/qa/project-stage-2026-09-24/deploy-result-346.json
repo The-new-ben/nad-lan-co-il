@@ -1,0 +1,19 @@
+{
+  "released": "1.72.346",
+  "from": "1.72.345",
+  "at": "2026-09-28 15:35:27",
+  "files": {
+    "assets/project-stage/i18n-dom.js": "4a96b71ad8cca164c3e7a58a15a293b1",
+    "inc/project-stage.php": "e6de136b40f7525c22692c6cbe6d3782",
+    "inc/lang-pages.php": "dcba6385106a9699e5e19672b3990e83",
+    "inc/basket.php": "6c0b55168ea08a6a26dd080908386a63",
+    "nadlan-config.php": "2b6a8f885575101a10862e9799d69e79"
+  },
+  "live_before": {
+    "assets/project-stage/i18n-dom.js": "missing",
+    "inc/project-stage.php": "6cb5697c33c4cfbd53198486f562747b",
+    "inc/lang-pages.php": "9537de0cbab35c0afa9d961f0187d9e0",
+    "inc/basket.php": "28981299c924387771ebacd1b7b13690",
+    "nadlan-config.php": "252934835d8223b0070648551971c415"
+  }
+}

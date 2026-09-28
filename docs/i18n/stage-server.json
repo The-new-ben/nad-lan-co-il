@@ -1,0 +1,1041 @@
+{
+ "note": "HAD-361: the stage parts' server-printed Hebrew not yet in i18n/lang-pages.json (4 stage pages, 28.9.2026).",
+ "strings": [
+  {
+   "he": "ריינבו תל אביב",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "· רובע שדה דב, צפון תל אביב",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "ריינבו תל אביב (Rainbow Tel Aviv) הוא פרויקט המגורים של ישראל קנדה במגרש 111 ברובע שדה דב, בצפון תל אביב, כ-700 מטר מהים: מגדל בן 39 קומות ובנייני בוטיק בני 9 קומות סביב חצר פנימית, 459 דירות לפי היזם. הפרויקט בבנייה, הקבלן המבצע הוא אשטרום, והאכלוס צפוי ב-2030 לפי אתר הפרויקט. לפי דוחות היזם, המחיר הממוצע בדירות שנמכרו עד תחילת 2026 הוא כ-81,800 ₪ למ\"ר. בעמוד אפשר לבחור קומה וכיוון במגדל, לראות את הנוף המשוער מהקומה ואת הכיוון על מפת האזור, ולקרוא את כל הנתונים והמקורות.",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "לקבלת תוכניות ומחירים",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "לבחירת קומה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "שיחת וידאו עם נציג",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "סרטון הפרויקט",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "· 49 שניות",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "סיור וירטואלי: הקומות והנוף",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "בוחרים קומה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "הנוף והמפה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "נכנסים לדירה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מעצבים את הדירה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מתקנים בפרויקט",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "קיים היום",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "808 בניינים",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "בשלב ההיתר",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "המצב של כל פרויקט לפי העמוד שלו באתר, 9.2026. שנת אכלוס מוצגת רק כשהעמוד נותן אותה.",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מקורות הבמה: קו המגרש והבניינים הקיימים סביבו לפי עיריית",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "(שכבות התוכניות והמבנים, 9.2026); הפרויקטים ברובע לפי העמודים שלהם באתר.",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "פרסומת",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מיטל קציר",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מתווכת",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "· נופי ים, כוכב הצפון, צוקי אביב",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "רישיון תיווך",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "התייעצות בוואטסאפ",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "רוצה להופיע כאן?",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מתווכים ואנשי מקצוע באזור: הכרטיס שלכם ליד הפרויקט, מול מי שבודק אותו עכשיו.",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "לפרטים ולהצטרפות",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מיקום",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "צפון תל אביב, כ-700 מ׳ מהים",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "בניינים",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מגדל 39 קומות",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "ובנייני בוטיק בני 9 קומות",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "דירות",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "275 מהן נמכרו עד 6.2026, לפי דוחות היזם",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "תמהיל",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "2 עד 5 חדרים",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "ופנטהאוזים, לפי השיווק",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מחיר ממוצע",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "כ-81,800 ₪ למ״ר",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "דוחות היזם, עד 3.2026",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מצב",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "אכלוס צפוי ב-2030",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "עכשיו",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "אכלוס",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "צפוי ב-2030",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "הנוף מהקומה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "בחרו קומה ודירה לדוגמה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "בחרו קומה במגדל ודירה לדוגמה בטבעת שלה, והנוף מהדירה יופיע כאן.",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "הכיוון על המפה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "הכל על מפה אחת: מחירים, סביבה, תוכניות עתידיות",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "₪ מחירים בסביבה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "חינוך",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "פארקים",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "תחבורה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "קניות",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "בריאות",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "קפה ומסעדות",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "◆ תוכניות עתידיות",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "תלת ממד",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "לוויין",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "לחצו על כל סימון לקבלת פרטים. תגי המחיר הם אומדן לא מחייב למ״ר בפרויקטים סמוכים.",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "◆ סגול = תוכניות התחדשות ופרויקטים עתידיים",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "דירה לדוגמה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "הדירה לדוגמה מבפנים",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "קומות 10, 25 ו־36, בארבעת הכיוונים",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "סלון ומטבח פתוח כמו במסירה, בלי ריהוט, בקומות 10, 25 ו־36: מול הים, תל ברוך, רמת אביב ומגדלי העיר, מהסלון ומהמרפסת. הנוף בחלון בנוי מהבניינים הקיימים לפי שכבת המבנים של העירייה, מהפרויקטים המתוכננים ברובע כנפחים שקופים, מקו החוף ומהים.",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "להיכנס לדירה · 360°",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר.",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "עסקאות בפרויקט",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "דירות שנמכרו בריינבו תל אביב, לפי קומה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "הדירות שנמכרו בפרויקט ופורסמו עם הקומה שלהן, לפי נתוני רשות המסים כפי שפורסמו בעיתונות. לא כל העסקאות פורסמו, ועסקאות של בניינים שכנים אינן כאן.",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "275 מתוך 459",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "דירות נמכרו עד 6.2026, לפי דוחות היזם",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "המחיר הממוצע בדירות שנמכרו עד 3.2026, לפי דוחות היזם",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "קומה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "הדירה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מחיר",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "למ״ר",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מועד",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מקור",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "בבמה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "אחת הגבוהות",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מגדל",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "כמה דירות באותה קומה, לאיחוד לכ-550 מ״ר",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "כ-50 מיליון ₪",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "לא פורסם",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "גלובס",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "3 חדרים · 98 מ״ר",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "יותר מ-8 מיליון ₪",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מעל 81,600 ₪",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": ", לפי רשות המסים",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "לקומה במגדל",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "בניין בוטיק, מתוך 9",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "6 חדרים · 182 מ״ר",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "כ-21.7 מיליון ₪",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "כ-119,200 ₪",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "6 חדרים · 202 מ״ר",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "20 מיליון ₪",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "כ-99,000 ₪",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "הבניין לא צוין",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "5 חדרים · 133 מ״ר ומרפסת 17 מ״ר, עם נוף לים",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "10.18 מיליון ₪",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "כ-76,500 ₪",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "ביזפורטל",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "3 חדרים · 60 מ״ר, ללא חניה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "4 מיליון ₪",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "כ-66,700 ₪",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "חדר אחד · 32 מ״ר",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "3.1 מיליון ₪",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "כ-96,900 ₪",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "המחיר למ״ר מחושב: המחיר שפורסם חלקי שטח הדירה, בלי המרפסת והחניה.",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מה קורה מסביב",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "הסביבה: תכנית ל'",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מה שקיים ומה שמתוכנן במרחק הליכה: תחבורה, חינוך, פארקים, בנייה ותוכניות. מקור: find-place, שכבות מידע עירוניות וממשלתיות.",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "פתיחת המפה עם המחירים מסביב",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "רכבת קלה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "תחנת רידינג",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מאושרת, 467 מ׳",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "בתי ספר במרחק הליכה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "כוכב הצפון · ארן",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "2 עד 900 מ׳",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "פארקים וחופים",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "שפך נחל הירקון · חוף רידינג",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "761 מ׳ לקרוב",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "בנייה מסביב",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "9 אתרים פעילים",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "ברדיוס 500 מ׳ · הקרוב: אתר בנייה בשדה דב, היתר 20240293 ,20261155, 60 מ׳",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "תכנון עתידי",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "תוכנית 4444: רובע שדה דב",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "בתוקף · הפרויקט בתחום התוכנית",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "לפנייה ישירה ליזם",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "לעמוד הרשמי של ישראל קנדה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "הכלים שלנו לבדיקת הפרויקט",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מעצב הדירות שלנו",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "בודקים ריהוט, מידות ומרחקים",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "סיור תלת ממדי ברובע",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "הסביבה של הפרויקט, בהפקת נדלן",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "טיסה מעל האזור",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "הדמיית כדור הארץ שלנו",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "אתר עצמאי",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "עמוד זה אינו האתר הרשמי של ישראל קנדה ואינו מופעל מטעמה. נדל״ן היא פלטפורמת מידע עצמאית, ללא קשר מסחרי עם היזם. הפרטים נאספו ממקורות גלויים ויש לאמת אותם מול היזם.",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "הדמיה של פרויקט ריינבו תל אביב, מגדל ובנייני בוטיק סביב גינה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מה אפשר לעשות כאן",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מה סביב ריינבו תל אביב",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "אנשי מקצוע באזור",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "עובדות בקצרה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "שלב הפרויקט",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מבט משוער מהקומה לכיוון שנבחר",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מפה חיה של הסביבה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "שכבות מפה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "הסלון בדירה לדוגמה בקומה 25, מבט אל הים (הדמיה)",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "קומה 13 במגדל, בבמה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "קומה 6 במגדל, בבמה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "קומה 4 במגדל, בבמה",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מפת הסביבה של Rainbow Tel Aviv - ריינבו תל אביב, תכנית ל'",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "כלי הבדיקה של נדלן",
+   "where": "rainbow-tel-aviv"
+  },
+  {
+   "he": "מגדלי דואו תל אביב",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "· אבן גבירול פינת ארלוזורוב, מתחם סומייל",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "DUO Tel Aviv הוא פרויקט מגורים ומסחר גדול של אפריקה ישראל מגורים במתחם סמל דרום, במפגש הרחובות ארלוזורוב, אבן גבירול ובן סרוק. הדוסייה מאמתת שני מגדלי מגורים, 668 דירות, מתחם מסחרי, חניונים תת-קרקעיים, מועד השלמה מתוכנן 2027 לפי דוחות החברה, ונתוני מחיר ציבוריים בלבד, ללא מחירון יזם פומבי.",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "1,683 בניינים",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "מקורות הבמה: קו המגרש, קווי המגדלים והבניינים הקיימים סביבם לפי עיריית",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "(שכבות המגרשים, המבנים, הרחובות, השטחים הירוקים והעצים, 9.2026). הגבהים, החזית ומיקום המתקנים להמחשה.",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "אבן גבירול פינת ארלוזורוב",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "מתחם סומייל, תל אביב",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "2 מגדלים של 54 קומות",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "50 קומות מגורים בכל מגדל",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "לפי היתר הבנייה",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "בריכה",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "על גג מבנה הלובי",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "בין שני המגדלים, לפי אתר היזם",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "חניה",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "5 קומות מרתף",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "לפי החלטת רשות הרישוי, 9.2025",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "השלמה מתוכננת ב-2027, לפי דוח החברה",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "תכנית",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "השלמה",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "מתוכננת ב-2027",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "דירות שנמכרו במגדלי דואו תל אביב, לפי קומה",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "הדירות שנמכרו בפרויקט ופורסמו עם הקומה שלהן, לפי דיווח החברה כפי שפורסם בעיתונות. לא כל העסקאות פורסמו, ועסקאות של בניינים שכנים אינן כאן.",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "372 מתוך 510",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "דירות נמכרו עד 6.2026, לפי דוח היזם",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "כ-71,000 ₪ למ״ר",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "המחיר הממוצע לפני מע״מ בחוזים שנחתמו ב-1-6.2026, לפי דוח היזם",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "כ-11 מיליון ₪",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "המחיר הממוצע לדירה, כולל מע״מ, ב-12 הדירות שנמכרו ב-1-6.2026, לפי דוח היזם",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "הבניין השני בפרויקט",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "4 חדרים · כ-102 מ״ר ומרפסת כ-17 מ״ר, עם חניה",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "כ-7.44 מיליון ₪",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "כ-72,900 ₪",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "מרכז הנדל״ן",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": ", לפי דיווח החברה: מכירה מוקדמת לבעלי עניין",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "כ-7.33 מיליון ₪",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "כ-71,900 ₪",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "כ-7.03 מיליון ₪",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "כ-68,900 ₪",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "לעמוד הרשמי של אפריקה ישראל מגורים",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "עמוד זה אינו האתר הרשמי של אפריקה ישראל מגורים ואינו מופעל מטעמה. נדל״ן היא פלטפורמת מידע עצמאית, ללא קשר מסחרי עם היזם. הפרטים נאספו ממקורות גלויים ויש לאמת אותם מול היזם.",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "הדמיה של מגדלי דואו תל אביב: שני מגדלי מגורים, מבנה הלובי ביניהם ומבני המסחר במתחם",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "מה סביב מגדלי דואו תל אביב",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "קומה 17 במגדל, בבמה",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "קומה 16 במגדל, בבמה",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "קומה 12 במגדל, בבמה",
+   "where": "duo-tel-aviv"
+  },
+  {
+   "he": "דמרי ימה שדה דב",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "· מתחם אשכול, רובע שדה דב",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "DIMRI YAMA הוא אחד הפרויקטים הבולטים ברובע שדה דב בתל אביב, הן בגלל המיקום, כ-700 מטר מקו המים בין החוף לפארק הירקון, והן בגלל מבנה העסקה שממנה הגיע הפרויקט לידי היזם הנוכחי. הפרויקט משווק על ידי י.ח דמרי, באמצעות החברה י.ח דמרי בשדה דב בע\"מ, והוא ממוקם במתחם אשכול, ברחוב אבן גבירול 220, בין חוף הים, פארק הירקון והמרחב העירוני החדש של צפון תל אביב.",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "226 בניינים",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "(שכבות המגרשים, המבנים, הרחובות, השטחים הירוקים והעצים, 9.2026); הבניינים במגרש, הקומות והגבהים לפי תכנית העיצוב (5.2023); קו החוף לפי OpenStreetMap. החזיתות ומיקום המתקנים להמחשה.",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "מתחם אשכול, רובע שדה דב",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "מגרש 107, כ-700 מ׳ מהים",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "מגדל של 40 קומות",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "מגדלון של 16 ושני מבנים של 9, לפי תכנית העיצוב",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "וכ-70 חדרי מלון, לפי היזם",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "גובה המגדל",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "עד 165 מ׳",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "לפי תכנית העיצוב",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "מ-3.75 מיליון ₪",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "מחיר הפתיחה שפורסם",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "המכירה המוקדמת והבנייה החלו, לפי הפרסומים",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "תכנית עיצוב",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "דמרי רכשה את הפרויקט",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "שיווק ובנייה",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "תחנת זהרה לביטוב",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "מאושרת, 440 מ׳",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "חוף רידינג · שפך נחל הירקון",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "780 מ׳ לקרוב",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "ברדיוס 500 מ׳ · הקרוב: אתר בנייה בשדה דב, היתר 20251254, 44 מ׳",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "לעמוד הרשמי של י.ח דמרי",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "עמוד זה אינו האתר הרשמי של י.ח דמרי ואינו מופעל מטעמה. נדל״ן היא פלטפורמת מידע עצמאית, ללא קשר מסחרי עם היזם. הפרטים נאספו ממקורות גלויים ויש לאמת אותם מול היזם.",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "הדמיה של דמרי ימה ברובע שדה דב: מגדל, מגדלון ושני מבנים נמוכים סביב גינה, על מגרש 107",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "מה סביב דמרי ימה שדה דב",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "מפת הסביבה של DIMRI YAMA שדה דב - י.ח דמרי, תכנית ל'",
+   "where": "dimri-yama-sde-dov"
+  },
+  {
+   "he": "פרויקט אשירה שדה דב",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "אביסרור משה ובניו",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "אשירה (ASHIRA) הוא פרויקט מגורים של אביסרור משה ובניו במגרש 101 בשכונת אשכול שברובע שדה דב בתל אביב: 406 דירות בארבעה בניינים, מגדל של 35 קומות, בניין של 16 קומות ושני בניינים של 8 קומות, לצד כ-3,400 מ\"ר שטחים פתוחים והקצאה לגן ילדים. היתר בנייה מלא דווח במרץ 2026, העבודות דווחו בשלב היסודות באביב 2026, והיעד הפומבי להשלמה הוא 2030. בעמוד הזה: בחירת דירה מהמודל התלת ממדי, הנוף מהחלון לפי קומה וכיוון, מחירים שפורסמו בעבר וכל הבדיקות שכדאי לעשות לפני פנייה ליזם.",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "375 בניינים",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "מגרש 101, על רחוב לוי אשכול",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "מגדל של 35 קומות",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "מגדלון של 16 ושני בניינים של 9, לפי תכנית העיצוב",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "202 במגדל ו-204 בשלושת הבניינים האחרים, לפי תכנית העיצוב",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "כ-137 מ׳",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "מתקנים",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "בריכה וחדרי כושר",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "בקומת המרתף, ו-3 מועדוני דיירים, לפי תכנית העיצוב",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "יסודות באביב 2026, יעד השלמה ב-2030, לפי הפרסומים",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "יסודות",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "אביב 2026",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "יעד 2030",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "מאושרת, 581 מ׳",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "ארן · כוכב הצפון · אלומות",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "4 עד 900 מ׳",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "15 אתרים פעילים",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "ברדיוס 500 מ׳ · הקרוב: אתר הבנייה באשכול לוי 29, 39 מ׳",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "לעמוד הרשמי של אביסרור משה ובניו",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "עמוד זה אינו האתר הרשמי של אביסרור משה ובניו ואינו מופעל מטעמה. נדל״ן היא פלטפורמת מידע עצמאית, ללא קשר מסחרי עם היזם. הפרטים נאספו ממקורות גלויים ויש לאמת אותם מול היזם.",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "הדמיה של פרויקט אשירה ברובע שדה דב: מגדל, מגדלון ושני בניינים נמוכים סביב חצר, על מגרש 101",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "מה סביב פרויקט אשירה שדה דב",
+   "where": "ashira-sde-dov"
+  },
+  {
+   "he": "מפת הסביבה של ASHIRA - פרויקט אשירה שדה דב תל אביב מחיר, תכנית ל'",
+   "where": "ashira-sde-dov"
+  }
+ ]
+}

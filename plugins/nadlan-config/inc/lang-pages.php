@@ -34,6 +34,14 @@ if ( ! function_exists( 'nadlan_lp_dict' ) ) {
 		$f = dirname( __DIR__ ) . '/i18n/lang-pages.json';
 		$d = is_readable( $f ) ? json_decode( (string) file_get_contents( $f ), true ) : null;
 		if ( ! is_array( $d ) ) { $d = array(); }
+		// HAD-361: the stage's own words (i18n/stage-dict.json) join, for the stage's server-printed parts
+		$g = dirname( __DIR__ ) . '/i18n/stage-dict.json';
+		$e = is_readable( $g ) ? json_decode( (string) file_get_contents( $g ), true ) : null;
+		if ( is_array( $e ) ) {
+			$d['exact']    = array_merge( (array) ( $e['exact'] ?? array() ), (array) ( $d['exact'] ?? array() ) );
+			$d['names']    = array_merge( (array) ( $e['names'] ?? array() ), (array) ( $d['names'] ?? array() ) );
+			$d['patterns'] = array_merge( (array) ( $d['patterns'] ?? array() ), (array) ( $e['patterns'] ?? array() ) );
+		}
 		return $d;
 	}
 }

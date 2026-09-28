@@ -153,6 +153,22 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 				),
 				// example apartments (the owner, 25.9.2026): one per face of each tower floor; true bearings from the GIS footprints
 				'units'          => array( array( 'n', 10 ), array( 'e', 100 ), array( 's', 190 ), array( 'w', 280 ) ),
+				// DuoInside (28.9.2026): the example apartment's 360 rooms on floor 25 (scripts/interior/duo_interior.py), in DUO's own
+				// words for each direction (the sectors below); floor 25's eye height is about 89 m by the stage's floors (3.3 m above the
+				// lobby building)
+				'tour'           => array(
+					'dirs'       => array(
+						array( 'n', 'צפון', 'לכיוון נמל תל אביב והירקון', '' ),
+						array( 'e', 'מזרח', 'לכיוון כיכר המדינה', '' ),
+						array( 's', 'דרום', 'לכיוון כיכר רבין ומרכז העיר', '' ),
+						array( 'w', 'מערב', 'לכיוון הים', '' ),
+					),
+					'facing'     => 'מול הים, נמל תל אביב, כיכר המדינה ומרכז העיר',
+					'height'     => 'בגובה של כ־89 מ׳',
+					'view_src'   => 'הנוף בחלון בנוי מהבניינים הקיימים לפי שכבת המבנים של העירייה ומקו החוף.',
+					'card_alt'   => 'הסלון בדירה לדוגמה בקומה 25 במגדלי דואו, מבט מערבה לכיוון הים (הדמיה)',
+					'card_title' => 'קומה 25 · לכיוון הים',
+				),
 				// ProjectDeals (HAD-365, research docs/research/2026-09-28-duo/duo-deals.md): the signed sales tied to a floor, three, from
 				// the company's report of 12.9.2021 as Merkaz HaNadlan (13.9.2021) and Globes (11.10.2021) quoted it: pre-sale sales to
 				// the company's insiders, labelled so. The press names the buyers; we never do. Floor 43 and a penthouse (Israel Hayom,
@@ -320,12 +336,24 @@ if ( ! function_exists( 'nadlan_ps_current' ) ) {
 		$id   = (int) get_queried_object_id();
 		$slug = (string) get_post_field( 'post_name', $id );
 		$all  = nadlan_ps_config();
+		// HAD-361: a project's language page (<slug>-en|fr|ru|ar) takes the Hebrew page's stage, in its own language
+		// (inc/lang-pages.php on the server, assets/project-stage/i18n-dom.js in the browser); what is Hebrew-only stays
+		// out (the film, the rail, the deals table, the basket). Behind nadlan_ps_langs_on() until the dictionary is complete.
+		$lang = 'he';
+		if ( ! isset( $all[ $slug ] ) && preg_match( '/^(.+)-(en|fr|ru|ar)$/', $slug, $lm ) && isset( $all[ $lm[1] ] ) && nadlan_ps_langs_on() ) {
+			$slug = $lm[1];
+			$lang = $lm[2];
+		}
 		if ( ! isset( $all[ $slug ] ) ) { return $memo; }
 		if ( function_exists( 'nadlan_project_mode' ) && 'showroom' === nadlan_project_mode( $id ) ) { return $memo; } // the engine has the page
 		if ( post_password_required( $id ) || get_post_meta( $id, '_nadlan_private_unit_journey', true ) ) { return $memo; }
 		$file = dirname( __DIR__ ) . '/assets/project-stage/' . $all[ $slug ]['dir'] . '/stage.js';
 		if ( ! file_exists( $file ) ) { return $memo; }
-		$memo = array_merge( $all[ $slug ], array( 'id' => $id, 'slug' => $slug ) );
+		$memo = array_merge( $all[ $slug ], array( 'id' => $id, 'slug' => $slug, 'lang' => $lang ) );
+		if ( 'he' !== $lang ) {
+			unset( $memo['film'], $memo['deals'], $memo['deals_sum'], $memo['basket_hint'] );
+			$memo['rail'] = array();
+		}
 		return $memo;
 	}
 }
@@ -472,7 +500,9 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 			$en   = (string) ( $ps['name_en'] ?? '' );
 			// the kicker is a div, so the lead stays the first paragraph after the h1 (the recipe, row 5)
 			$hero = '<header class="nlds nlps-herowrap" dir="rtl" lang="he"><div class="nlps-hero">'
-				. '<h1 id="nl-project-page-title" class="nlps-h1">' . esc_html( $ps['name'] ) . ( '' !== $en ? ' <span class="nlps-h1__en" lang="en">' . esc_html( $en ) . '</span>' : '' ) . '</h1>'
+				. ( 'he' !== ( $ps['lang'] ?? 'he' )
+					? '<h1 id="nl-project-page-title" class="nlps-h1">' . esc_html( $h1 ) . '</h1>' // the language page's own title
+					: '<h1 id="nl-project-page-title" class="nlps-h1">' . esc_html( $ps['name'] ) . ( '' !== $en ? ' <span class="nlps-h1__en" lang="en">' . esc_html( $en ) . '</span>' : '' ) . '</h1>' )
 				. ( ! empty( $ps['developer'] ) || ! empty( $ps['place'] ) ? '<div class="nlps-kicker">' . ( ! empty( $ps['developer'] ) ? '<b>' . esc_html( $ps['developer'] ) . '</b>' : '' ) . ( ! empty( $ps['developer'] ) && ! empty( $ps['place'] ) ? ' · ' : '' ) . esc_html( (string) ( $ps['place'] ?? '' ) ) . '</div>' : '' )
 				. '</div></header>';
 			$cta  = '<div class="nlds nlps-ctawrap" dir="rtl" lang="he"><div class="nlps-hero__cta">'
@@ -486,7 +516,7 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 		}
 		$rail = '';
 		foreach ( (array) ( $ps['rail'] ?? array() ) as $pid ) { $rail .= nadlan_ps_square( $pid, $ps ); }
-		$rail .= nadlan_ps_slot();
+		if ( 'he' === ( $ps['lang'] ?? 'he' ) ) { $rail .= nadlan_ps_slot(); }
 		$view = '<div class="nlds nlps-viewwrap"><div class="nlps-view" id="nlps-view">'
 			. '<div class="nlps-view__head"><p class="nlds-kicker" id="nlps-view-k">הנוף מהקומה</p><h3 class="nlps-view__title" id="nlps-view-t">' . ( ! empty( $ps['units'] ) ? 'בחרו קומה ודירה לדוגמה' : 'בחרו קומה וכיוון' ) . '</h3></div>'
 			. '<div class="nlps-view__map nlps-stand" id="nlps-view-map" role="img" aria-label="מבט משוער מהקומה לכיוון שנבחר"><span id="nlps-view-empty">' . ( ! empty( $ps['units'] ) ? 'בחרו קומה במגדל ודירה לדוגמה בטבעת שלה, והנוף מהדירה יופיע כאן.' : 'בחרו קומה במגדל ונקודה בטבעת שלה, והנוף מהגובה ומהכיוון האלה יופיע כאן.' ) . '</span></div>'
@@ -866,6 +896,10 @@ add_action( 'wp_head', function () {
 	   map's own controls), and the theme's lead. The skin forces a box on the lead, and the theme a width and margins on
 	   everything in the content, several with !important: inside the grid they are set back, with a longer selector and
 	   !important. */
+	// HAD-361: on a left-to-right language page the design system's blocks read left to right (nlds.css fixes rtl on .nlds)
+	$ps_l = nadlan_ps_current();
+	if ( $ps_l && in_array( $ps_l['lang'] ?? 'he', array( 'en', 'fr', 'ru' ), true ) ) { echo '<style id="nadlan-ps-ltr">:root body .nlds{direction:ltr!important}</style>' . "
+"; }
 	echo '<style id="nadlan-ps-css">'
 		. ':root body .nlps-page{box-sizing:border-box!important;width:100%!important;max-width:none!important;margin:6px 0 30px!important;padding:0 clamp(12px,2vw,20px)!important;display:grid!important;grid-template-columns:minmax(300px,380px) minmax(0,1fr) 260px;grid-template-areas:"hero stage rail" "lead stage rail" "cta stage rail" "below below below" "facts facts facts" "tour tour tour" "deals deals deals";grid-template-rows:auto auto 1fr;column-gap:22px;row-gap:14px;align-items:start}'
 		. ':root body .nlps-page>*{min-width:0;max-width:none!important;margin:0!important;box-sizing:border-box}'
@@ -958,3 +992,33 @@ add_action( 'wp_footer', function () {
 		. 'd.addEventListener("close",function(){v.pause();});'
 		. 'if(location.hash==="#nlfilm")setTimeout(open,600);})();</script>' . "\n";
 }, 50 );
+
+if ( ! function_exists( 'nadlan_ps_langs_on' ) ) {
+	/** HAD-361: the stage on the language pages; option nadlan_ps_langs = '1' for everyone, ?nlstage=1 to look before. */
+	function nadlan_ps_langs_on() {
+		if ( '1' === (string) get_option( 'nadlan_ps_langs', '0' ) ) { return true; }
+		return isset( $_GET['nlstage'] ) && '1' === sanitize_key( wp_unslash( $_GET['nlstage'] ) ); // phpcs:ignore
+	}
+}
+
+/* HAD-361: on a language page with a stage, the dictionary for the browser's translator and the translator itself, as a
+   classic script during parsing, so it watches the page before the stage's modules (deferred) draw anything. */
+add_action( 'wp_footer', function () {
+	$ps = nadlan_ps_current();
+	if ( ! $ps || 'he' === ( $ps['lang'] ?? 'he' ) ) { return; }
+	$lang = (string) $ps['lang'];
+	$out  = array( 'lang' => $lang, 'exact' => array(), 'names' => array(), 'patterns' => array() );
+	foreach ( array( 'lang-pages.json', 'stage-dict.json' ) as $f ) {
+		$p = dirname( __DIR__ ) . '/i18n/' . $f;
+		$d = is_readable( $p ) ? json_decode( (string) file_get_contents( $p ), true ) : null;
+		if ( ! is_array( $d ) ) { continue; }
+		foreach ( (array) ( $d['exact'] ?? array() ) as $he => $tr ) { if ( isset( $tr[ $lang ] ) ) { $out['exact'][ $he ] = (string) $tr[ $lang ]; } }
+		foreach ( (array) ( $d['names'] ?? array() ) as $he => $tr ) { if ( isset( $tr[ $lang ] ) ) { $out['names'][ $he ] = (string) $tr[ $lang ]; } }
+		foreach ( (array) ( $d['patterns'] ?? array() ) as $pt ) { if ( ! empty( $pt['re'] ) && isset( $pt[ $lang ] ) ) { $out['patterns'][] = array( 're' => (string) $pt['re'], 'tr' => (string) $pt[ $lang ] ); } }
+	}
+	echo '<script type="application/json" id="nadlan-stage-i18n">' . wp_json_encode( $out, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG ) . '</script>' . "
+";
+	$js = dirname( __DIR__ ) . '/assets/project-stage/i18n-dom.js';
+	if ( is_readable( $js ) ) { echo '<script id="nadlan-stage-i18n-js">' . str_replace( '</', '<\/', (string) file_get_contents( $js ) ) . '</script>' . "
+"; } // phpcs:ignore -- inline: '</' escaped so nothing closes the script early
+}, 5 );

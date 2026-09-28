@@ -19,7 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 if ( ! function_exists( 'nadlan_bk_on' ) ) {
 	function nadlan_bk_on() {
 		if ( '0' === (string) get_option( 'nadlan_basket', '1' ) || is_admin() ) { return false; }
-		return function_exists( 'nadlan_ps_current' ) && nadlan_ps_current();
+		$ps = function_exists( 'nadlan_ps_current' ) ? nadlan_ps_current() : null;
+		return $ps && 'he' === ( $ps['lang'] ?? 'he' ); // Hebrew-only for now (HAD-361)
 	}
 }
 
