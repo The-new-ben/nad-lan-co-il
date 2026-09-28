@@ -21537,5 +21537,83 @@
     "secret_tokens": 0
    }
   }
+ ],
+ "https://nad-lan.co.il/tour/sde-dov/": [
+  {
+   "ts": "20260928T022913Z",
+   "sha256": "7b61ce834851609130d322cb928827e53994dd33f3e32a1c4af2beaab4ba9744",
+   "bytes": 290492,
+   "status": 200,
+   "checks": {
+    "title": "רובע שדה דב — הסיור | nad-lan.co.il",
+    "title_len": 35,
+    "meta_desc": "סיור תלת־ממדי ברובע שדה דב, תל אביב — אור יום ים־תיכוני, חיי רחוב, טיסת היכרות וסיור חופשי עד ציר איינשטיין. הדמיה להמחשה.",
+    "meta_desc_len": 122,
+    "canonical": "",
+    "canonical_count": 0,
+    "robots_meta": "noindex",
+    "hreflang_count": 0,
+    "favicon_count": 0,
+    "h1_count": 1,
+    "h1_first": "רובע שדה דב — הסיור",
+    "jsonld_blocks": 0,
+    "jsonld_faqpage": 0,
+    "jsonld_breadcrumb": 0,
+    "scripts_ext": [
+     "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js",
+     "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    ],
+    "scripts_count": 5,
+    "styles_count": 2,
+    "duplicate_ids": [],
+    "og_image": "",
+    "emdash_visible": 13,
+    "blacklist_hits": [],
+    "internal_words": [],
+    "showroom_payload": false,
+    "notice_count": 0,
+    "notice_below_article_head": true,
+    "ecocity_render_leak": 0,
+    "secret_tokens": 0
+   }
+  },
+  {
+   "ts": "20260928T023140Z",
+   "sha256": "4b6b68cc5f0aaa112acf4fab07b43e0d98b57d35a32bab958cff5535e66e0a2f",
+   "bytes": 290805,
+   "status": 200,
+   "checks": {
+    "title": "רובע שדה דב — הסיור | nad-lan.co.il",
+    "title_len": 35,
+    "meta_desc": "סיור תלת־ממדי ברובע שדה דב, תל אביב — אור יום ים־תיכוני, חיי רחוב, טיסת היכרות וסיור חופשי עד ציר איינשטיין. הדמיה להמחשה.",
+    "meta_desc_len": 122,
+    "canonical": "",
+    "canonical_count": 0,
+    "robots_meta": "noindex",
+    "hreflang_count": 0,
+    "favicon_count": 0,
+    "h1_count": 1,
+    "h1_first": "רובע שדה דב — הסיור",
+    "jsonld_blocks": 0,
+    "jsonld_faqpage": 0,
+    "jsonld_breadcrumb": 0,
+    "scripts_ext": [
+     "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js",
+     "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    ],
+    "scripts_count": 5,
+    "styles_count": 2,
+    "duplicate_ids": [],
+    "og_image": "",
+    "emdash_visible": 12,
+    "blacklist_hits": [],
+    "internal_words": [],
+    "showroom_payload": false,
+    "notice_count": 0,
+    "notice_below_article_head": true,
+    "ecocity_render_leak": 0,
+    "secret_tokens": 0
+   }
+  }
  ]
 }

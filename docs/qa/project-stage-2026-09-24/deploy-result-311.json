@@ -1,0 +1,23 @@
+{
+  "released": "1.72.311",
+  "from": "1.72.310",
+  "at": "2026-09-28 05:30:33",
+  "files": {
+    "inc/tour-routes.php": "f90e38de1c5f59a58400ecd9e87c6f6e",
+    "assets/tours/sde-dov-tour.html": "abe44354ba5106e397b4557ad7aea083",
+    "assets/tours/narr-sdedov-he-3-v2.mp3": "ab5bfd8a8df4c06cc40a7a29cf00b597",
+    "assets/tours/narr-sdedov-he-5-v2.mp3": "32591ac41952289ae7ee2d03357e8f22",
+    "assets/tours/narr-sdedov-en-3-v2.mp3": "f1b302356510bf9bd0c89e2bfc3fd824",
+    "assets/tours/narr-sdedov-en-5-v2.mp3": "dc3f388502ff5ba840cdb12fd43a6070",
+    "nadlan-config.php": "52dade8fa91c156425fc67860463dd00"
+  },
+  "live_before": {
+    "inc/tour-routes.php": "78244f75b999148f4bfbb80b76bfa590",
+    "assets/tours/sde-dov-tour.html": "missing",
+    "assets/tours/narr-sdedov-he-3-v2.mp3": "missing",
+    "assets/tours/narr-sdedov-he-5-v2.mp3": "missing",
+    "assets/tours/narr-sdedov-en-3-v2.mp3": "missing",
+    "assets/tours/narr-sdedov-en-5-v2.mp3": "missing",
+    "nadlan-config.php": "1f6e4487942e66e0ca74d420e4b8b0d9"
+  }
+}

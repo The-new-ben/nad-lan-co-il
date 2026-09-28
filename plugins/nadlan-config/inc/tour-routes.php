@@ -82,14 +82,17 @@ add_action( 'template_redirect', function () {
 		status_header( 404 );
 		exit;
 	}
+	/* 1.72.311: a corrected copy in the plugin (assets/tours/{slug}-tour.html) is served first, so a tour ships through the
+	   release runner (drift check, backups, page checks, rollback) like every other file; the uploads file stays the fallback */
+	$own  = dirname( __DIR__ ) . '/assets/tours/' . $slug . '-tour.html';
 	$u    = wp_get_upload_dir();
-	$file = trailingslashit( $u['basedir'] ) . $map[ $slug ];
+	$file = file_exists( $own ) ? $own : trailingslashit( $u['basedir'] ) . $map[ $slug ];
 	if ( ! file_exists( $file ) ) {
 		status_header( 404 );
 		exit;
 	}
 	status_header( 200 ); /* WP may already have stamped this request 404 (date query) — override before streaming */
-	header( 'X-NL-Tour: v5c' ); /* deploy proof: confirms this code (not stale opcache) serves the stream */
+	header( 'X-NL-Tour: ' . ( $file === $own ? 'plugin-311' : 'v5c' ) ); /* deploy proof: which copy (and this code, not stale opcache) serves the stream */
 	header( 'Content-Type: text/html; charset=utf-8' );
 	header( 'Cache-Control: public, max-age=300' );
 	readfile( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions
