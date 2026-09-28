@@ -1,0 +1,103 @@
+/* The example apartment from the inside, the full-screen viewer (design system ApartmentTour, version 24; 44px controls version 61) */
+html.nlat-open, html.nlat-open body { overflow: hidden !important; }
+.nlat-viewer { position: fixed; inset: 0; z-index: 100000; background: #14130F; color: #fff; font-family: 'Assistant', system-ui, sans-serif; }
+.nlat-viewer__stage { position: absolute; inset: 0; cursor: grab; touch-action: none; }
+.nlat-viewer__stage:active { cursor: grabbing; }
+.nlat-viewer__stage canvas { display: block; width: 100%; height: 100%; }
+.nlat-viewer__top {
+  position: absolute; top: 0; inset-inline: 0; display: flex; align-items: center; gap: 10px;
+  padding: calc(12px + env(safe-area-inset-top, 0px)) 16px 28px;
+  background: linear-gradient(180deg, rgba(20, 19, 15, .62), rgba(20, 19, 15, 0)); pointer-events: none;
+}
+.nlat-viewer__top > * { pointer-events: auto; }
+:root body .nlat-viewer p.nlat-viewer__title { margin: 0 !important; font: 600 19px/1.2 'Noto Serif Hebrew', 'Frank Ruhl Libre', serif !important; color: #fff !important; max-width: none !important; }
+.nlat-viewer__x {
+  margin-inline-start: auto; width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer;
+  background: rgba(247, 246, 242, .94); color: #14212B; font: 400 26px/44px 'Assistant', system-ui, sans-serif; padding: 0;
+}
+/* v61b: a long title ("במרפסת, לכיוון רמת אביב והאוניברסיטה") squeezed the close button to 23px wide; it keeps its 44px and the title wraps */
+.nlat-viewer__x { flex: none; }
+:root body .nlat-viewer p.nlat-viewer__title { min-width: 0; }
+.nlat-viewer__x:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }
+.nlat-viewer .nlds-sample { white-space: nowrap; flex: none; }  /* the chip stays one line beside a long title */
+:root body .nlat-viewer p.nlat-viewer__hint {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0 !important;
+  background: rgba(20, 19, 15, .62); color: #fff !important; font: 600 15px/1 'Assistant', system-ui, sans-serif !important;
+  padding: 11px 16px; border-radius: 999px; pointer-events: none; transition: opacity .6s ease; max-width: none !important;
+}
+.nlat-viewer.is-moved .nlat-viewer__hint, .nlat-viewer:not(.is-ready) .nlat-viewer__hint { opacity: 0; }
+/* the bottom column (version 26): the switches centred, the caption at the start under them */
+.nlat-viewer__bottom {
+  position: absolute; inset-inline: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 0 12px calc(12px + env(safe-area-inset-bottom, 0px)); pointer-events: none;
+}
+.nlat-viewer__bottom > * { pointer-events: auto; }
+:root body .nlat-viewer p.nlat-viewer__cap {
+  align-self: flex-start; margin: 4px 0 0 !important;
+  max-width: min(560px, 100%) !important; background: rgba(247, 246, 242, .92); color: #14212B !important;
+  font: 400 12.5px/1.45 'Assistant', system-ui, sans-serif !important; padding: 6px 10px; border-radius: 8px;
+}
+/* the directions of the floor (version 25): a segmented bar, the caption under it */
+.nlat-viewer__dirs {
+  display: flex; gap: 2px; padding: 3px; background: rgba(247, 246, 242, .94); border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(20, 19, 15, .25);
+}
+.nlat-viewer__dirs button {
+  appearance: none; -webkit-appearance: none; border: 0; margin: 0; cursor: pointer; background: transparent; color: #14212B;
+  font: 600 15px/1 'Assistant', system-ui, sans-serif; padding: 0 16px; min-height: 44px; min-width: 64px; border-radius: 999px; /* v61: 44px targets (HAD-346) */
+}
+.nlat-viewer__dirs button[aria-pressed="true"] { background: #14212B; color: #fff; }
+.nlat-viewer__dirs button:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }
+/* where one stands (version 26): a smaller dark switch above the directions */
+.nlat-viewer__spots {
+  display: flex; gap: 2px; padding: 3px; background: rgba(20, 19, 15, .58); border-radius: 999px;
+}
+.nlat-viewer__spots button {
+  appearance: none; -webkit-appearance: none; border: 0; margin: 0; cursor: pointer; background: transparent; color: #fff;
+  font: 600 14px/1 'Assistant', system-ui, sans-serif; padding: 0 16px; min-height: 44px; min-width: 64px; border-radius: 999px; /* v61: 44px targets (HAD-346) */
+}
+.nlat-viewer__spots button[aria-pressed="true"] { background: #fff; color: #14212B; }
+.nlat-viewer__spots button:disabled { opacity: .45; cursor: default; }
+.nlat-viewer__spots button:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }
+@media (max-width: 600px) {
+  :root body .nlat-viewer p.nlat-viewer__cap { align-self: stretch; }
+  .nlat-viewer__dirs button { padding: 0 12px; min-width: 64px; }
+}
+.nlat-viewer.is-error .nlat-viewer__stage::after {
+  content: 'התמונה לא נטענה. נסו שוב מאוחר יותר.'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  color: #fff; font: 600 15px/1.4 'Assistant', system-ui, sans-serif;
+}
+@media (prefers-reduced-motion: reduce) { .nlat-viewer__hint { transition: none; } }
+
+/* design styles (design system ApartmentStyles v80): a panel at the inline end, a strip over the switches on phones */
+.nlat-viewer__styles {
+  position: absolute; inset-inline-end: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 2; width: 292px;
+  display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 18px; background: rgba(247, 246, 242, .95);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .22); color: #14212B; box-sizing: border-box;
+}
+.nlat-viewer__styles[hidden] { display: none; }
+:root body .nlat-viewer p.nlat-viewer__styles-h {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin: 0 0 4px !important; max-width: none !important;
+  font: 700 14.5px/1.3 'Assistant', system-ui, sans-serif !important; color: #14212B !important;
+}
+.nlat-viewer__styles-h small { font: 600 11.5px/1.3 'Assistant', system-ui, sans-serif; color: #8A6A2E; }
+.nlat-style {
+  appearance: none; -webkit-appearance: none; display: grid; grid-template-columns: 64px 1fr; gap: 10px; align-items: center;
+  min-height: 52px; margin: 0; padding: 6px; border-radius: 12px; border: 2px solid transparent; background: transparent; color: #14212B;
+  text-align: start; cursor: pointer; font: inherit;
+}
+.nlat-style img { display: block; width: 64px; height: 40px; border-radius: 8px; object-fit: cover; }
+.nlat-style b { display: block; font: 700 14px/1.2 'Assistant', system-ui, sans-serif; }
+.nlat-style small { display: block; margin-top: 2px; font: 600 11.5px/1.3 'Assistant', system-ui, sans-serif; color: #6B6558; }
+.nlat-style[aria-pressed="true"] { border-color: #1F4B5C; background: #fff; }
+.nlat-style:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }
+.nlat-viewer__stage canvas { transition: opacity .3s ease; }
+.nlat-viewer.is-swapping .nlat-viewer__stage canvas { opacity: .5; }
+@media (max-width: 900px) {
+  .nlat-viewer__styles { position: static; width: 100%; flex-direction: row; overflow-x: auto; gap: 6px; padding: 6px; border-radius: 14px; }
+  :root body .nlat-viewer p.nlat-viewer__styles-h { display: none; }
+  .nlat-style { flex: none; width: 146px; grid-template-columns: 44px 1fr; min-height: 48px; }
+  .nlat-style img { width: 44px; height: 36px; }
+  .nlat-style small { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .nlat-viewer__stage canvas { transition: none; } }

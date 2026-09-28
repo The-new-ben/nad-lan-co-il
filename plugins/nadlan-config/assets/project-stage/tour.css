@@ -101,3 +101,107 @@ html.nlat-open, html.nlat-open body { overflow: hidden !important; }
   .nlat-style small { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .nlat-viewer__stage canvas { transition: none; } }
+
+/* BuildingWalk v96: the doors in the picture, the building's places under the title, the destinations at the lift doors.
+   Every move is a jump between illustrations (a short crossfade once the next picture loaded), labelled so. */
+.nlat-viewer__doors { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.nlat-door {
+  position: absolute; left: 0; top: 0; margin: -23px 0 0 -23px; pointer-events: auto; direction: ltr;
+  display: flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 14px 0 0; border: 0; border-radius: 999px;
+  background: transparent; color: #14212B; cursor: pointer; font: inherit; text-align: start; transition: opacity .25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.nlat-door > i {
+  position: relative; flex: none; width: 46px; height: 46px; border-radius: 50%; box-sizing: border-box;
+  background: rgba(250, 247, 241, .95); border: 2px solid #9C7A3C; box-shadow: 0 6px 18px rgba(0, 0, 0, .28);
+  display: grid; place-items: center;
+}
+/* a halo that breathes, so a door reads as a way through (still for reduced motion) */
+.nlat-door > i::after {
+  content: ''; position: absolute; inset: -7px; border-radius: 50%; border: 2px solid rgba(232, 197, 114, .75);
+  animation: nlat-door-halo 2.4s ease-out infinite;
+}
+@keyframes nlat-door-halo { 0% { transform: scale(.82); opacity: .9; } 80%, 100% { transform: scale(1.22); opacity: 0; } }
+/* the mark: a chevron forward (a way through); the lift: up and down */
+.nlat-door[data-kind="jump"] > i::before {
+  content: ''; width: 11px; height: 11px; margin-top: 5px; border-top: 3px solid #14212B; border-left: 3px solid #14212B; transform: rotate(45deg);
+}
+.nlat-door[data-kind="lift"] > i::before {
+  content: ''; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent;
+  border-bottom: 7px solid #14212B; box-shadow: none; filter: drop-shadow(0 11px 0 #14212B); margin-top: -10px;
+}
+.nlat-door > span {
+  direction: rtl; display: flex; flex-direction: column; gap: 1px; padding: 7px 12px; border-radius: 12px;
+  background: rgba(250, 247, 241, .95); box-shadow: 0 6px 18px rgba(0, 0, 0, .24); white-space: nowrap;
+}
+.nlat-door b { font: 700 14.5px/1.2 'Assistant', system-ui, sans-serif; }
+.nlat-door small { font: 600 11.5px/1.25 'Assistant', system-ui, sans-serif; color: #6B6558; }
+.nlat-door:hover > i, .nlat-door:focus-visible > i { background: #1F4B5C; border-color: #E8C572; }
+.nlat-door:hover > i::before, .nlat-door:focus-visible > i::before { border-top-color: #fff; border-left-color: #fff; }
+.nlat-door[data-kind="lift"]:hover > i::before, .nlat-door[data-kind="lift"]:focus-visible > i::before { border-bottom-color: #fff; filter: drop-shadow(0 11px 0 #fff); }
+.nlat-door:focus-visible { outline: 3px solid #C2563A; outline-offset: 3px; }
+.nlat-door.is-off { opacity: 0; pointer-events: none; }
+.nlat-door.is-off:focus-visible { opacity: 1; }
+/* the building's places: a row under the title */
+.nlat-viewer__places {
+  position: absolute; top: calc(66px + env(safe-area-inset-top, 0px)); left: 50%; transform: translateX(-50%); z-index: 1;
+  display: flex; align-items: center; gap: 4px; max-width: calc(100% - 24px); box-sizing: border-box;
+  padding: 4px; border-radius: 999px; background: rgba(20, 19, 15, .62); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.nlat-viewer__places[hidden] { display: none; }
+.nlat-viewer__places-h { flex: none; padding: 0 8px 0 6px; font: 700 12.5px/1 'Assistant', system-ui, sans-serif; color: #E8C572; }
+.nlat-viewer__places button {
+  appearance: none; -webkit-appearance: none; flex: none; border: 0; margin: 0; cursor: pointer; background: transparent; color: #fff;
+  font: 600 14px/1 'Assistant', system-ui, sans-serif; padding: 0 14px; min-height: 44px; border-radius: 999px; white-space: nowrap;
+}
+.nlat-viewer__places button[aria-current="location"] { background: #FAF7F1; color: #14212B; }
+.nlat-viewer__places button:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }
+.nlat-viewer__places .nlat-viewer__back { border: 1px solid rgba(255, 255, 255, .35); }
+.nlat-viewer__places .nlat-viewer__back::before { content: '→'; margin-inline-end: 6px; }
+.nlat-viewer__places .nlat-viewer__back[hidden] { display: none; }
+.nlat-viewer__places-note { flex: none; padding: 0 10px 0 4px; font: 600 11px/1.2 'Assistant', system-ui, sans-serif; color: rgba(255, 255, 255, .72); }
+/* the building's rooms have no direction or place switch */
+.nlat-viewer.is-fac .nlat-viewer__dirs, .nlat-viewer.is-fac .nlat-viewer__spots { display: none; }
+/* the destinations at the lift doors */
+.nlat-lift {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; width: min(340px, calc(100% - 32px));
+  box-sizing: border-box; display: flex; flex-direction: column; gap: 4px; padding: 14px; border-radius: 18px;
+  background: rgba(250, 247, 241, .97); color: #14212B; box-shadow: 0 18px 44px rgba(0, 0, 0, .35);
+}
+.nlat-lift[hidden] { display: none; }
+:root body .nlat-viewer p.nlat-lift__h { display: flex; align-items: baseline; gap: 10px; margin: 0 0 6px !important; padding-inline-end: 48px; max-width: none !important; }
+.nlat-lift__h b { font: 600 19px/1.2 'Noto Serif Hebrew', 'Frank Ruhl Libre', serif; }
+.nlat-lift__h small { font: 600 11.5px/1.2 'Assistant', system-ui, sans-serif; color: #8A6A2E; }
+.nlat-lift__x {
+  position: absolute; top: 8px; inset-inline-end: 8px; width: 44px; height: 44px; border-radius: 50%; border: 0; padding: 0;
+  background: transparent; color: #14212B; font: 400 26px/44px 'Assistant', system-ui, sans-serif; cursor: pointer;
+}
+.nlat-lift__stop {
+  appearance: none; -webkit-appearance: none; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  min-height: 52px; margin: 0; padding: 0 14px; border: 1px solid #E2DCD0; border-radius: 12px; background: #fff; color: #14212B;
+  cursor: pointer; font: inherit; text-align: start;
+}
+.nlat-lift__stop b { font: 700 15px/1.2 'Assistant', system-ui, sans-serif; }
+.nlat-lift__stop small { font: 600 12px/1.2 'Assistant', system-ui, sans-serif; color: #6B6558; }
+.nlat-lift__stop:hover { border-color: #1F4B5C; }
+.nlat-lift__stop:disabled { background: #F3EEE3; cursor: default; opacity: .75; }
+.nlat-lift__stop:disabled b::after { content: ' · אתם כאן'; font-weight: 600; color: #8A6A2E; }
+.nlat-lift__stop:focus-visible, .nlat-lift__x:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }
+.nlat-viewer.is-lift .nlat-viewer__doors { opacity: .35; }
+/* the move: the room fades out while the next picture loads, then the next room fades in */
+.nlat-viewer.is-walking .nlat-viewer__stage canvas { opacity: 0; transition: opacity .16s ease; }
+.nlat-viewer.is-walking .nlat-viewer__doors { opacity: 0; }
+.nlat-viewer__doors { transition: opacity .25s ease; }
+.nlat-viewer__live { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 600px) {
+  .nlat-viewer__places { left: 12px; right: 12px; transform: none; max-width: none; overflow-x: auto; scrollbar-width: none; border-radius: 16px; }
+  .nlat-viewer__places::-webkit-scrollbar { display: none; }
+  .nlat-viewer__places-note { display: none; }
+  .nlat-door b { font-size: 13.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nlat-door > i::after { animation: none; opacity: .6; transform: none; }
+  .nlat-viewer.is-walking .nlat-viewer__stage canvas, .nlat-viewer__doors, .nlat-door { transition: none; }
+}
+/* the first-use hint steps below the middle, where a door often stands */
+:root body .nlat-viewer.has-doors p.nlat-viewer__hint { top: 66%; }

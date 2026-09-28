@@ -20,20 +20,7 @@
     "src": "fac-roofpool.jpg",
     "small": "fac-roofpool-2k.jpg",
     "label": "כניסה לבריכה",
-    "title": "בריכה על גג של בניין בוטיק · הדמיה",
-    "place": "הבריכה על הגג",
-    "stopSub": "על גג של בניין בוטיק",
-    "doors": [
-     {
-      "to": "lift",
-      "at": [
-       27.0,
-       -1.5
-      ],
-      "label": "יציאה מהגג",
-      "sub": "לובי, מועדון, דירה"
-     }
-    ]
+    "title": "בריכה על גג של בניין בוטיק · הדמיה"
    }
   },
   {
@@ -54,20 +41,7 @@
     "src": "fac-club.jpg",
     "small": "fac-club-2k.jpg",
     "label": "כניסה למועדון",
-    "title": "מועדון הדיירים וחדר הכושר · הדמיה",
-    "place": "המועדון",
-    "stopSub": "בבסיס המגדל, לפי תכנית העיצוב",
-    "doors": [
-     {
-      "to": "lift",
-      "at": [
-       139.0,
-       -3.8
-      ],
-      "label": "יציאה מהמועדון",
-      "sub": "לובי, דירה, בריכה"
-     }
-    ]
+    "title": "מועדון הדיירים וחדר הכושר · הדמיה"
    }
   },
   {
@@ -87,29 +61,7 @@
     "src": "fac-lobby.jpg",
     "small": "fac-lobby-2k.jpg",
     "label": "כניסה ללובי",
-    "title": "הלובי במגדל · הדמיה",
-    "place": "הלובי",
-    "stopSub": "קומת הכניסה של המגדל",
-    "doors": [
-     {
-      "to": "lift",
-      "at": [
-       -106.0,
-       -2.0
-      ],
-      "label": "המעליות",
-      "sub": "לדירה, למועדון, לבריכה"
-     },
-     {
-      "to": "pools",
-      "at": [
-       -12.5,
-       -1.0
-      ],
-      "label": "לחצר ולבריכה",
-      "sub": "על גג של בניין בוטיק"
-     }
-    ]
+    "title": "הלובי במגדל · הדמיה"
    }
   },
   {
@@ -140,39 +92,5 @@
    ],
    "note": "מקור: אתר ישראל קנדה."
   }
- ],
- "walk": {
-  "note": "BuildingWalk v96: the doors' positions are measured in the render scripts (RBF_LOCATE / RBI_LOCATE): the way to the lobby's lifts -106 (the lift doors themselves stand behind the feature wall at -121, hidden from the camera) and entrance -12.5, the club's door +139, the roof's exit +27, the apartment's corridor opening +128.8 (w/e) and +113.3 (n/s). Every connection between the rooms is illustrative: the plans are not published.",
-  "order": [
-   "lobby",
-   "club",
-   "pools"
-  ],
-  "aptDoor": {
-   "w": [
-    128.8,
-    -4.9
-   ],
-   "e": [
-    128.8,
-    -4.9
-   ],
-   "n": [
-    113.3,
-    -5.7
-   ],
-   "s": [
-    113.3,
-    -5.7
-   ]
-  },
-  "aptDoorLabel": "יציאה מהדירה",
-  "aptDoorSub": "לובי, מועדון, בריכה",
-  "aptLabel": "הדירה",
-  "aptStopSub": "דירה לדוגמה",
-  "placesLabel": "בבניין",
-  "liftTitle": "לאן?",
-  "liftNote": "מעבר בין הדמיות, לא לפי תוכנית",
-  "routeNote": "הדמיות; המעברים להמחשה"
- }
+ ]
 }

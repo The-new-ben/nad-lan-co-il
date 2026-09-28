@@ -1,0 +1,21 @@
+{
+  "released": "1.72.358",
+  "from": "1.72.357",
+  "at": "2026-09-28 19:57:54",
+  "files": {
+    "assets/project-stage/tour.js": "ba658f572ca9ec1ea178e6c1f1c3e4d2",
+    "assets/project-stage/tour.css": "5f6a370724b44c83afb0cdd0b675c221",
+    "assets/project-stage/bridge.js": "38a97123cfe193091bed3d6ea8759203",
+    "assets/project-stage/rainbow/facilities.json": "5b8d66afad8453627f40c37437c996ab",
+    "inc/project-stage.php": "b62ca46f5a6a04a437c3832e3d5e7fc0",
+    "nadlan-config.php": "fef80f18a0446f1082c1ef77a12f1e72"
+  },
+  "live_before": {
+    "assets/project-stage/tour.js": "3d2f65add57807a8e48272ade6c22658",
+    "assets/project-stage/tour.css": "c8c03b5e0e3f2fd783e29ac7f01fba4b",
+    "assets/project-stage/bridge.js": "697aab01629b336f8d55791af3399457",
+    "assets/project-stage/rainbow/facilities.json": "5275656a29861df868e05ea56ee6d032",
+    "inc/project-stage.php": "e2d09b1f2c42baa77a5578ad1ac1cb5b",
+    "nadlan-config.php": "5283dab9f9d04a53be6b7104866cf952"
+  }
+}

@@ -23,26 +23,12 @@ function ensureCss() {
 
 export function openTour(o) {
   ensureCss();
-  if (window.__nlTour && typeof window.__nlTour.close === 'function') window.__nlTour.close(); // never two viewers (Codex 28.9)
   const scenes = (Array.isArray(o.scenes) && o.scenes.length ? o.scenes
     : [{ id: 'one', label: '', title: o.title || '', src: o.src, small: o.srcSmall, note: '' }])
-    .map((sc) => ({ ...sc, dir: sc.dir || sc.id, dirLabel: sc.dirLabel || sc.label || '', spot: sc.spot || 'living', spotLabel: sc.spotLabel || '',
-      group: sc.group || 'apt' }));
-  /* BuildingWalk v96: one viewer for the whole building. Apartment scenes ('apt', one floor or several, each with its floor)
-     keep the direction and place switches; the building's rooms ('fac': the lobby, the club, the roof pool) hide them. A
-     scene's doors ({ to, yaw, pitch, label, sub, kind }, degrees from the picture's centre, + = right / up, as the render
-     scripts' LOCATE prints them) are buttons standing in the picture; 'lift' opens the lift's panel (o.lift.stops). */
-  const apt = scenes.filter((sc) => sc.group === 'apt');
-  const uniq = (key, label) => { const seen = new Map(); for (const sc of apt) if (!seen.has(sc[key])) seen.set(sc[key], sc[label]); return [...seen]; };
+    .map((sc) => ({ ...sc, dir: sc.dir || sc.id, dirLabel: sc.dirLabel || sc.label || '', spot: sc.spot || 'living', spotLabel: sc.spotLabel || '' }));
+  const uniq = (key, label) => { const seen = new Map(); for (const sc of scenes) if (!seen.has(sc[key])) seen.set(sc[key], sc[label]); return [...seen]; };
   const dirs = uniq('dir', 'dirLabel'), spots = uniq('spot', 'spotLabel');
-  let lastFloor = null, lastDir = null; // the apartment one came from, for the lift and the switches
-  const pick = (dir, spot, floor) => {
-    const fl = floor != null ? floor : (cur && cur.group === 'apt' ? cur.floor : lastFloor);
-    const pool = apt.length ? apt : scenes;
-    const same = (sc) => fl == null || sc.floor == null || Number(sc.floor) === Number(fl);
-    return pool.find((sc) => sc.dir === dir && sc.spot === spot && same(sc)) || pool.find((sc) => sc.dir === dir && same(sc))
-      || pool.find((sc) => sc.spot === spot && same(sc)) || pool.find((sc) => sc.dir === dir && sc.spot === spot) || pool.find((sc) => sc.dir === dir) || scenes[0];
-  };
+  const pick = (dir, spot) => scenes.find((sc) => sc.dir === dir && sc.spot === spot) || scenes.find((sc) => sc.dir === dir) || scenes[0];
   let cur = scenes.find((sc) => sc.id === o.start) || scenes.find((sc) => sc.dir === o.start && sc.spot === 'living') || scenes[0];
   const prevFocus = o.opener || document.activeElement; // back to the button that opened it (Safari does not focus a clicked button)
   const root = document.createElement('div');
@@ -59,7 +45,7 @@ export function openTour(o) {
   title.textContent = cur.title || '';
   const chip = document.createElement('span');
   chip.className = 'nlds-sample';
-  chip.textContent = cur.chip || o.chip || 'דירה לדוגמה';
+  chip.textContent = o.chip || 'דירה לדוגמה';
   const x = document.createElement('button');
   x.type = 'button';
   x.className = 'nlat-viewer__x';
@@ -74,23 +60,14 @@ export function openTour(o) {
   // design styles (design system ApartmentStyles v80): 'bare' is the room as delivered, the scene's own picture
   let style = 'bare';
   const styleOf = (sc) => (style !== 'bare' && Array.isArray(sc.styles) ? sc.styles.find((st) => st.id === style) : null) || null;
-  const setCaption = () => { cap.textContent = [cur.caption != null ? cur.caption : (o.caption || ''), styleOf(cur) ? (o.styleNote || 'רעיון עיצוב להמחשה, לא המפרט של היזם.') : '', cur.note || ''].filter(Boolean).join(' '); };
+  const setCaption = () => { cap.textContent = [o.caption || '', styleOf(cur) ? (o.styleNote || 'רעיון עיצוב להמחשה, לא המפרט של היזם.') : '', cur.note || ''].filter(Boolean).join(' '); };
   setCaption();
   const stage = document.createElement('div');
   stage.className = 'nlat-viewer__stage';
   // the bottom column: where one stands, the directions, the caption (stacked, so a long caption never covers a switch)
   const bottom = document.createElement('div');
   bottom.className = 'nlat-viewer__bottom';
-  // BuildingWalk v96: the doors stand in the picture (a layer over the stage), the building's places run under the title
-  const doorsBox = document.createElement('div');
-  doorsBox.className = 'nlat-viewer__doors';
-  const places = Array.isArray(o.places) && o.places.length > 1 ? o.places : null;
-  const placesBar = document.createElement('div');
-  placesBar.className = 'nlat-viewer__places';
-  placesBar.setAttribute('role', 'group');
-  placesBar.setAttribute('aria-label', o.placesLabel || 'בבניין');
-  placesBar.hidden = !places;
-  root.append(stage, doorsBox, top, placesBar, hint, bottom);
+  root.append(stage, top, hint, bottom);
   // the two switches: the directions, and where one stands; one pressed in each, each keeps the other
   const ctrls = [];
   function makeBar(cls, label, items, onPick) {
@@ -158,48 +135,10 @@ export function openTour(o) {
   if (dirBtns) root.classList.add('has-dirs');
   if (spotBtns) root.classList.add('has-spots');
   function markBars() {
-    const inApt = cur.group === 'apt';
-    root.classList.toggle('is-fac', !inApt); // the building's rooms: no direction or place switch
-    if (inApt) { lastFloor = cur.floor != null ? cur.floor : lastFloor; lastDir = cur.dir; }
-    if (dirBtns) for (const [id, b] of dirBtns) b.setAttribute('aria-pressed', inApt && id === cur.dir ? 'true' : 'false');
+    if (dirBtns) for (const [id, b] of dirBtns) b.setAttribute('aria-pressed', id === cur.dir ? 'true' : 'false');
     if (spotBtns) for (const [id, b] of spotBtns) {
-      b.setAttribute('aria-pressed', inApt && id === cur.spot ? 'true' : 'false');
-      // a place this direction (on this floor) has not rendered
-      b.disabled = !apt.some((sc) => sc.dir === cur.dir && sc.spot === id && (cur.floor == null || sc.floor == null || Number(sc.floor) === Number(cur.floor)));
-    }
-    markPlaces();
-  }
-  /* the building's places under the title: the lobby, the club, the roof pool, the apartment (its floor) */
-  const placeBtns = [];
-  const placeOf = (p) => (p.to ? scenes.find((sc) => sc.id === p.to) : null);
-  function markPlaces() {
-    for (const { p, b } of placeBtns) {
-      const here = p.apt ? cur.group === 'apt' : cur.id === p.to;
-      b.setAttribute('aria-current', here ? 'location' : 'false');
-      if (p.apt) b.textContent = (p.label || 'הדירה') + (cur.group === 'apt' && cur.floor != null ? ' · קומה ' + cur.floor : (lastFloor != null ? ' · קומה ' + lastFloor : ''));
-      // on a phone the row scrolls: the place one stands in comes into view
-      if (here && placesBar.scrollWidth > placesBar.clientWidth + 1) {
-        const r = b.getBoundingClientRect(), pr = placesBar.getBoundingClientRect();
-        if (r.left < pr.left || r.right > pr.right) placesBar.scrollLeft += (r.left + r.width / 2) - (pr.left + pr.width / 2);
-      }
-    }
-  }
-  if (places) {
-    const lead = document.createElement('span');
-    lead.className = 'nlat-viewer__places-h';
-    lead.textContent = o.placesLabel || 'בבניין';
-    placesBar.appendChild(lead);
-    for (const p of places) {
-      if (!p.apt && !placeOf(p)) continue;
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.textContent = p.label || '';
-      b.addEventListener('click', () => {
-        if (p.apt) { if (cur.group !== 'apt') walkTo(pick(lastDir || p.dir || 'w', 'living', lastFloor != null ? lastFloor : p.floor).id); }
-        else walkTo(p.to);
-      });
-      placeBtns.push({ p, b });
-      placesBar.appendChild(b);
+      b.setAttribute('aria-pressed', id === cur.spot ? 'true' : 'false');
+      b.disabled = !scenes.some((sc) => sc.dir === cur.dir && sc.spot === id); // a place this direction has not rendered
     }
   }
   markBars();
@@ -207,8 +146,6 @@ export function openTour(o) {
   buildStyles();
   document.body.appendChild(root);
   document.documentElement.classList.add('nlat-open');
-  const placesRo = places && window.ResizeObserver ? new ResizeObserver(() => markPlaces()) : null; // measured once its style has loaded
-  if (placesRo) placesRo.observe(placesBar);
 
   const renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
@@ -249,7 +186,6 @@ export function openTour(o) {
     look.set(-Math.cos(yaw) * Math.cos(pitch), Math.sin(pitch), Math.sin(yaw) * Math.cos(pitch));
     camera.lookAt(look);
     renderer.render(scene, camera);
-    placeDoors();
   }
   const kick = () => { if (!raf) raf = requestAnimationFrame(render); };
   function size() {
@@ -272,28 +208,20 @@ export function openTour(o) {
     mat.needsUpdate = true;
     if (old) old.dispose();
     root.classList.add('is-ready');
-    root.classList.remove('is-swapping', 'is-walking');
+    root.classList.remove('is-swapping');
     kick();
   };
   let loadId = 0;
-  let pre = null; // BuildingWalk v96: the next room's small picture, loaded before the move
   function loadScene(sc) {
     const id = ++loadId;
     const fresh = () => alive && id === loadId; // a later switch wins over a slower picture
     root.classList.remove('is-error');
     const st = styleOf(sc), small = st ? (st.small || st.src) : sc.small, full = st ? st.src : sc.src;
-    const first = small || full;
-    let ready = null;
-    if (pre && pre.id === sc.id && pre.url === first) ready = Promise.resolve(pre.t);
-    else if (pre) pre.t.dispose();
-    pre = null;
-    // a small picture that fails still tries the large one (Codex consult 28.9)
-    (ready || load(first).catch(() => (full && full !== first ? load(full).then((t) => { t.userData.full = true; return t; }) : Promise.reject(new Error('tour')))))
-      .then((t) => {
-        if (!fresh()) { t.dispose(); return null; }
-        useTex(t);
-        return !t.userData.full && small && full && full !== small ? load(full) : null;
-      }).then((t) => { if (t) { if (fresh()) useTex(t); else t.dispose(); } }).catch(() => { if (fresh()) root.classList.add('is-error'); });
+    load(small || full).then((t) => {
+      if (!fresh()) { t.dispose(); return null; }
+      useTex(t);
+      return small && full && full !== small ? load(full) : null;
+    }).then((t) => { if (t) { if (fresh()) useTex(t); else t.dispose(); } }).catch(() => { if (fresh()) root.classList.add('is-error'); });
   }
   function show(sc, src) {
     if (sc === cur) return;
@@ -301,162 +229,16 @@ export function openTour(o) {
     if (style !== 'bare' && !styleOf(sc)) style = 'bare'; // a scene without this style shows the room as delivered
     buildStyles();
     title.textContent = sc.title || '';
-    chip.textContent = sc.chip || o.chip || 'דירה לדוגמה';
     root.setAttribute('aria-label', sc.title || '');
-    live.textContent = sc.title || '';
     setCaption();
     markBars();
-    buildDoors();
-    closeLift();
     yaw = 0; pitch = -0.05; vy = vp = 0;   // facing its own window
-    if (src === 'walk') fov = 72;
     tween = null;
     loadScene(sc);
     if (src !== 'api') { if (typeof o.onScene === 'function') o.onScene(sc.id); userView(); }
     kick();
   }
   loadScene(cur);
-
-  /* ---- BuildingWalk v96: the doors, the lift's destinations and the crossfade ----
-     Every connection here is illustrative (Codex consult 28.9: a published facility does not prove a doorway): the doors
-     are jumps between illustrations, the move is a short crossfade once the next picture has loaded, never an animated
-     lift ride or an unseen corridor. A door: { to, at: [yaw, pitch] (degrees from the picture's centre, + = right / up,
-     as the render scripts' LOCATE prints them), label, sub, arrival: { yaw, pitch } (degrees, optional) }. */
-  const RAD = Math.PI / 180;
-  const dv = new THREE.Vector3();
-  let doorEls = [];
-  const history = [];
-  function buildDoors() {
-    doorsBox.replaceChildren();
-    doorEls = [];
-    for (const d of (Array.isArray(cur.doors) ? cur.doors : [])) {
-      const target = d.to === 'lift' ? (lift ? 'lift' : null) : scenes.find((sc) => sc.id === d.to);
-      if (!target || !Array.isArray(d.at)) continue; // a door to a room this viewer does not have is not drawn
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'nlat-door';
-      b.dataset.kind = d.to === 'lift' ? 'lift' : 'jump';
-      const ring = document.createElement('i');
-      ring.setAttribute('aria-hidden', 'true');
-      const tx = document.createElement('span');
-      const nm = document.createElement('b'); nm.textContent = d.label || '';
-      tx.appendChild(nm);
-      if (d.sub) { const sm = document.createElement('small'); sm.textContent = d.sub; tx.appendChild(sm); }
-      b.append(ring, tx);
-      b.addEventListener('click', () => (d.to === 'lift' ? openLift(b) : walkTo(d.to, d.arrival)));
-      // a keyboard visitor who tabs to a door is turned towards it
-      b.addEventListener('focus', () => { if (b.matches(':focus-visible')) setView({ yaw: -Number(d.at[0]) * RAD, pitch: Number(d.at[1]) * RAD }, 0.5); });
-      doorsBox.appendChild(b);
-      doorEls.push({ el: b, y: -Number(d.at[0] || 0) * RAD, p: Number(d.at[1] || 0) * RAD });
-    }
-    root.classList.toggle('has-doors', doorEls.length > 0);
-    placeDoors();
-  }
-  function placeDoors() { // every rendered frame: drags, glides and looks set from outside
-    if (!doorEls.length) return;
-    const w = stage.clientWidth || window.innerWidth, h = stage.clientHeight || window.innerHeight;
-    for (const d of doorEls) {
-      dv.set(-Math.cos(d.y) * Math.cos(d.p), Math.sin(d.p), Math.sin(d.y) * Math.cos(d.p)).multiplyScalar(100).project(camera);
-      const on = dv.z < 1 && Math.abs(dv.x) < 0.94 && Math.abs(dv.y) < 0.86;
-      d.el.classList.toggle('is-off', !on);
-      if (on) d.el.style.transform = 'translate(' + ((dv.x * 0.5 + 0.5) * w).toFixed(1) + 'px,' + ((-dv.y * 0.5 + 0.5) * h).toFixed(1) + 'px)';
-    }
-  }
-  /* the move: the room fades, the next picture loads, then it shows (title, doors and picture together) and fades in */
-  let walking = false;
-  function walkTo(id, arrival, back) {
-    const sc = scenes.find((x2) => x2.id === id);
-    if (!alive || walking || !sc || sc === cur) return false;
-    walking = true;
-    closeLift();
-    const from = cur;
-    root.classList.add('is-walking');
-    const url = sc.small || sc.src;
-    const pause = new Promise((r) => setTimeout(r, reducedMotion ? 0 : 160));
-    Promise.all([load(url).catch(() => null), pause]).then(([t]) => {
-      walking = false;
-      if (!alive) { if (t) t.dispose(); return; }
-      pre = t ? { id: sc.id, url, t } : null;
-      if (!back) history.push(from.id);
-      show(sc, 'walk');
-      if (arrival && Number.isFinite(Number(arrival.yaw))) { yaw = -Number(arrival.yaw) * RAD; pitch = Number(arrival.pitch || 0) * RAD; kick(); }
-      markBack();
-    });
-    return true;
-  }
-  /* the lift's destinations: a list anchored at the lift doors of the picture (the lobby, the club's floor, the apartments'
-     floors this viewer has); choosing one is the same crossfade */
-  const lift = o.lift && Array.isArray(o.lift.stops) && o.lift.stops.length ? o.lift : null;
-  const liftBox = document.createElement('div');
-  liftBox.className = 'nlat-lift';
-  liftBox.setAttribute('role', 'group');
-  liftBox.hidden = true;
-  const live = document.createElement('p'); // the room's name, said when it changes
-  live.className = 'nlat-viewer__live';
-  live.setAttribute('aria-live', 'polite');
-  root.append(liftBox, live);
-  const stopScene = (s) => (s.to ? scenes.find((sc) => sc.id === s.to) : pick(lastDir || s.dir || 'w', 'living', s.floor));
-  let liftBtns = [], liftOpener = null;
-  function openLift(opener) {
-    if (!lift || !alive) return;
-    liftOpener = opener || null;
-    liftBox.replaceChildren();
-    liftBtns = [];
-    liftBox.setAttribute('aria-label', lift.title || 'לאן?');
-    const head = document.createElement('p');
-    head.className = 'nlat-lift__h';
-    const hb = document.createElement('b'); hb.textContent = lift.title || 'לאן?';
-    const hs = document.createElement('small'); hs.textContent = lift.note || 'מעבר להמחשה';
-    head.append(hb, hs);
-    const xx = document.createElement('button');
-    xx.type = 'button';
-    xx.className = 'nlat-lift__x';
-    xx.setAttribute('aria-label', o.liftClose || 'סגירה');
-    xx.textContent = '×';
-    xx.addEventListener('click', () => closeLift(true));
-    liftBox.append(head, xx);
-    for (const s of lift.stops) {
-      const sc = stopScene(s);
-      if (!sc || (s.floor != null && Number(sc.floor) !== Number(s.floor))) continue; // a floor this viewer has no picture of
-      const here = s.floor != null ? cur.group === 'apt' && Number(cur.floor) === Number(s.floor) : cur.id === sc.id;
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'nlat-lift__stop';
-      const n = document.createElement('b'); n.textContent = s.label || '';
-      b.appendChild(n);
-      if (s.sub) { const sm = document.createElement('small'); sm.textContent = s.sub; b.appendChild(sm); }
-      if (here) { b.disabled = true; b.setAttribute('aria-current', 'location'); }
-      b.addEventListener('click', () => { const t2 = stopScene(s); if (t2) walkTo(t2.id); });
-      liftBox.appendChild(b);
-      liftBtns.push(b);
-    }
-    liftBtns.push(xx);
-    liftBox.hidden = false;
-    root.classList.add('is-lift');
-    const first = liftBtns.find((b) => !b.disabled);
-    if (first) first.focus();
-  }
-  function closeLift(back) {
-    if (liftBox.hidden) return;
-    liftBox.hidden = true;
-    root.classList.remove('is-lift');
-    liftBtns = [];
-    if (back && liftOpener && liftOpener.isConnected) liftOpener.focus();
-  }
-  /* back: the room one came from (the walk's own history, not the browser's) */
-  let backBtn = null;
-  if (places) {
-    backBtn = document.createElement('button');
-    backBtn.type = 'button';
-    backBtn.className = 'nlat-viewer__back';
-    backBtn.textContent = o.backLabel || 'חזרה';
-    backBtn.hidden = true;
-    backBtn.addEventListener('click', () => { const id = history.pop(); if (id) walkTo(id, null, true); markBack(); });
-    placesBar.insertBefore(backBtn, placesBar.firstChild);
-    if (o.routeNote) { const rn = document.createElement('small'); rn.className = 'nlat-viewer__places-note'; rn.textContent = o.routeNote; placesBar.appendChild(rn); }
-  }
-  function markBack() { if (backBtn) backBtn.hidden = history.length === 0; }
-  buildDoors();
   /* a style: the same room and the same look, another picture (a short dim while it loads) */
   function applyStyle(id, src) {
     if (!alive || id === style) return false;
@@ -519,7 +301,7 @@ export function openTour(o) {
     userView();
   }
   function onKey(e) {
-    if (e.key === 'Escape') { e.preventDefault(); if (!liftBox.hidden) closeLift(true); else close(); return; }
+    if (e.key === 'Escape') { e.preventDefault(); close(); return; }
     const step = 0.08;
     if (e.key === 'ArrowLeft') yaw += step;
     else if (e.key === 'ArrowRight') yaw -= step;
@@ -527,10 +309,7 @@ export function openTour(o) {
     else if (e.key === 'ArrowDown') pitch -= step;
     else if (e.key === 'Tab') { // the dialog's controls in a ring: close, then the direction buttons
       e.preventDefault();
-      const shown = (b) => b && b.isConnected && !b.disabled && b.getClientRects().length > 0;
-      const ring = liftBtns.length ? liftBtns.filter(shown) // the lift's list holds the focus while it is open
-        : [x, ...(backBtn ? [backBtn] : []), ...placeBtns.map((q) => q.b), ...doorEls.map((d) => d.el), ...ctrls].filter(shown);
-      if (!ring.length) return;
+      const ring = [x, ...ctrls.filter((b) => !b.disabled)];
       const i = ring.indexOf(document.activeElement);
       ring[(i + (e.shiftKey ? ring.length - 1 : 1)) % ring.length].focus();
       return;
@@ -556,10 +335,7 @@ export function openTour(o) {
     if (raf) cancelAnimationFrame(raf);
     if (viewT) clearTimeout(viewT);
     ro.disconnect();
-    if (placesRo) placesRo.disconnect();
     document.removeEventListener('keydown', onKey);
-    if (phoneMq && phoneMq.removeEventListener) phoneMq.removeEventListener('change', placeStyles);
-    if (pre) { pre.t.dispose(); pre = null; }
     if (mat.map) mat.map.dispose();
     mat.dispose();
     geo.dispose();

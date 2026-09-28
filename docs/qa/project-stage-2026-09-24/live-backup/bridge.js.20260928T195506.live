@@ -308,51 +308,9 @@ async function boot() {
   }
   const tourFloors = [...new Set(allScenes.map((x) => Number(x.floor) || 25))].sort((a, b) => a - b);
   const nearestFloor = (f) => (tourFloors.length ? tourFloors.reduce((b, x) => (Math.abs(x - f) < Math.abs(b - f) ? x : b), tourFloors[0]) : 25);
-  /* BuildingWalk v96 (design system): one viewer for the whole building when the project's folder has a walk
-     (facilities.json 'walk'): the apartment's floors (ids unique per floor), the facilities' 360 rooms with their doors,
-     and a where-to list at the lift doors. The apartment's button and each facility's 360 button open it at their own
-     room. Every connection is illustrative (Codex consult 28.9), and the viewer says so. */
-  const walk = cfg.walk && typeof cfg.walk === 'object' && Array.isArray(cfg.facilities) ? cfg.walk : null;
-  const FAC_CAP = 'הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם.';
-  const tourFile = (f) => { const u = new URL(cfg.stage, location.href); return new URL('./tour/' + f, u).href.split('?')[0] + u.search; };
-  function walkOpts(startId) {
-    const scenes = [];
-    const door = walk.aptDoor || {};
-    for (const x of allScenes) {
-      const fl = Number(x.floor) || 25;
-      const sc = Object.assign({}, x, { id: fl + '-' + x.id, floor: fl, group: 'apt' });
-      if (x.spot === 'living' && Array.isArray(door[x.dir])) sc.doors = [{ to: 'lift', at: door[x.dir], label: walk.aptDoorLabel || 'יציאה מהדירה', sub: walk.aptDoorSub || '' }];
-      scenes.push(sc);
-    }
-    const facs = cfg.facilities.filter((f) => f && f.tour && f.tour.src);
-    for (const f of facs) {
-      scenes.push({ id: 'fac-' + f.id, group: 'fac', dir: 'fac-' + f.id, spot: 'fac', title: f.tour.title || f.name, src: tourFile(f.tour.src),
-        small: tourFile(f.tour.small || f.tour.src), chip: 'מתקן לדוגמה', caption: FAC_CAP, note: f.note || '',
-        doors: (Array.isArray(f.tour.doors) ? f.tour.doors : []).map((d) => Object.assign({}, d, { to: d.to === 'lift' ? 'lift' : 'fac-' + d.to })) });
-    }
-    const order = Array.isArray(walk.order) ? walk.order : facs.map((f) => f.id);
-    const places = [{ apt: true, label: walk.aptLabel || 'הדירה', floor: 25, dir: 'w' }]; // the buyer's apartment first
-    for (const id of order) { const f = facs.find((x) => x.id === id); if (f) places.push({ to: 'fac-' + id, label: f.tour.place || f.pin || f.name, sub: f.tour.stopSub || '' }); }
-    const stops = tourFloors.slice().sort((a, b) => b - a).map((fl) => ({ floor: fl, label: 'קומה ' + fl, sub: walk.aptStopSub || 'דירה לדוגמה' }))
-      .concat(places.filter((q) => !q.apt).map((q) => ({ to: q.to, label: q.label, sub: q.sub })));
-    return { scenes, start: startId, places, placesLabel: walk.placesLabel || 'בבניין', routeNote: walk.routeNote || '',
-      lift: { title: walk.liftTitle || 'לאן?', note: walk.liftNote || 'מעבר להמחשה', stops },
-      caption: 'הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר.',
-      onScene: (id) => ga('tour_room', { room: id, project: cfg.name }) };
-  }
-  function openWalk(startId, opener) {
-    import(new URL('./tour.js' + new URL(import.meta.url).search, import.meta.url).href).then((m) => m.openTour(Object.assign(walkOpts(startId), { opener: opener || null })))
-      .catch((err) => console.warn('[project stage] walk', err));
-  }
   function openTourAt(floor, side, opener) {
     if (!tourBtn) return;
     const fl = nearestFloor(Number(floor) || 25);
-    if (walk) {
-      const sd = side && allScenes.some((x) => (Number(x.floor) || 25) === fl && x.id === side) ? side : 'w';
-      ga('tour_open', { room: 'living-' + fl + sd, project: cfg.name });
-      openWalk(fl + '-' + sd, opener || tourBtn);
-      return;
-    }
     const scenes = allScenes.filter((x) => (Number(x.floor) || 25) === fl);
     const start = side && scenes.some((x) => x.id === side) ? side : 'w';
     const first = scenes.find((x) => x.id === start) || scenes[0] || null;
@@ -374,13 +332,12 @@ async function boot() {
     const d = e.detail || {};
     if (!d.src) return;
     ga('facility_tour', { facility: String(d.id || ''), project: cfg.name });
-    if (walk && cfg.facilities.some((f) => f && f.id === d.id && f.tour && f.tour.src)) { openWalk('fac-' + d.id, d.opener || null); return; }
     import(new URL('./tour.js' + new URL(import.meta.url).search, import.meta.url).href).then((m) => m.openTour({
       src: d.src, srcSmall: d.small || d.src, title: d.title || '', chip: 'מתקן לדוגמה', opener: d.opener || null,
       caption: 'הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם.' + (d.note ? ' ' + d.note : ''),
     })).catch((err) => console.warn('[project stage] facility tour', err));
   });
-  const selSide = () => { try { const sel = stage && stage.getSelection && stage.getSelection(); return sel && sel.unit ? String(sel.unit).split('-').pop() : null; } catch (err) { return null; } };
+  const selSide = () => { try { const sel = stage && stage.getSelection && stage.getSelection(); return sel && sel.unit ? String(sel.unit).split('-')[1] : null; } catch (err) { return null; } };
   const selFloor = () => { try { const sel = stage && stage.getSelection && stage.getSelection(); return sel ? sel.floor : null; } catch (err) { return null; } };
   document.addEventListener('click', (e) => {
     const b = e.target && e.target.closest ? e.target.closest('[data-nlps-tour]') : null;
@@ -402,7 +359,7 @@ async function boot() {
   window.addEventListener('nl:floor-action', (e) => {
     const d = e.detail || {};
     ga('floor_action', { action: d.action || '', floor: d.floor, project: cfg.name });
-    if (d.action === 'inside') openTourAt(d.floor, d.unit ? String(d.unit).split('-').pop() : 'w', null);
+    if (d.action === 'inside') openTourAt(d.floor, d.unit ? String(d.unit).split('-')[1] : 'w', null);
     else if (d.action === 'view') toBelow();
     else if (d.action === 'design') location.href = DESIGNER;
   });
