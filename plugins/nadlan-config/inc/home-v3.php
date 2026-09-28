@@ -110,13 +110,23 @@ if ( ! function_exists( 'nadlan_hp_header' ) ) {
 		foreach ( array_slice( (array) ( isset( $facet['cities'] ) ? $facet['cities'] : array() ), 0, 8 ) as $x ) {
 			$pcity[] = array( $x['name'], $u( '/projects/?city=' . rawurlencode( $x['name'] ) ), $fmt( $x['n'] ) );
 		}
-		$lcity = array();
-		$rcity = array();
-		foreach ( ( function_exists( 'nadlan_hv2_cities' ) ? nadlan_hv2_cities( 14 ) : array() ) as $x ) {
-			if ( empty( $x['properties'] ) || count( $lcity ) >= 8 ) { continue; }
-			$lcity[] = array( 'דירות ב' . $x['name'], $u( '/properties/?city=' . rawurlencode( $x['name'] ) ) );
-			$rcity[] = array( 'להשכרה ב' . $x['name'], $u( '/properties/?listing_type=rent&city=' . rawurlencode( $x['name'] ) ) );
-		}
+		/* the listings menus (HomePage v55): only places that have real listings for that deal, each with its count, and the
+		   rooms with real counts. They listed seven cities by a count that included the demo listings, most with none. */
+		$ld    = function_exists( 'nadlan_hp_ldata' ) ? nadlan_hp_ldata() : array( 'n' => array( 'sale' => 0, 'rent' => 0 ), 'rooms' => array() );
+		$ldeal = function ( $deal, $all ) use ( $ld, $u, $fmt ) {
+			$base   = '/properties/?listing_type=' . $deal;
+			$places = array( array( $all, $u( $base ), ! empty( $ld['n'][ $deal ] ) ? $fmt( $ld['n'][ $deal ] ) : '' ) );
+			foreach ( ( function_exists( 'nadlan_hp_lplaces' ) ? nadlan_hp_lplaces( $deal, 5 ) : array() ) as $a ) {
+				$places[] = array( $a[0], $u( $base . '&city=' . rawurlencode( $a[0] ) ), $fmt( $a[1] ) );
+			}
+			$rooms = array();
+			foreach ( array( 3, 4, 5 ) as $m ) {
+				if ( ! empty( $ld['rooms'][ $deal ][ $m ] ) ) { $rooms[] = array( 'מ־' . $m . ' חדרים', $u( $base . '&rooms_min=' . $m ), $fmt( $ld['rooms'][ $deal ][ $m ] ) ); }
+			}
+			return array( $places, $rooms );
+		};
+		list( $sale_places, $sale_rooms ) = $ldeal( 'sale', 'כל הדירות למכירה' );
+		list( $rent_places, $rent_rooms ) = $ldeal( 'rent', 'כל הדירות להשכרה' );
 		$profs = array();
 		foreach ( ( function_exists( 'nadlan_dir_professions_all' ) ? nadlan_dir_professions_all() : array() ) as $key => $p ) {
 			$profs[] = array( $p['label'], $u( '/professionals/?profession=' . rawurlencode( $key ) ) );
@@ -138,16 +148,16 @@ if ( ! function_exists( 'nadlan_hp_header' ) ) {
 				array( 'אזורי ביקוש', array( array( 'רובע שדה דב', $u( '/sde-dov/' ) ), array( 'התחדשות עירונית', $u( '/urban-renewal/' ) ) ) ) ),
 			array( array( 'סיורים וירטואליים', array( array( 'סיור ברובע שדה דב', $u( '/tour/sde-dov/' ) ), array( 'סיור במתחם סומייל', $u( '/tour/somail/' ) ), array( 'כל הסיורים', $u( '/tours/' ) ), array( $all_p, $u( '/projects/' ), '', 1 ) ) ) ),
 		), $promo );
-		$menus .= nadlan_hp_panel( 'דירות למכירה', array(
-			array( array( 'דירות למכירה', array_merge( array( array( 'כל הדירות למכירה', $u( '/properties/?listing_type=sale' ) ) ), array_slice( $lcity, 0, 4 ) ) ) ),
-			array( array( 'לפי עיר', array_slice( $lcity, 4 ) ) ),
+		$menus .= nadlan_hp_panel( 'דירות למכירה', array_values( array_filter( array(
+			array( array( 'דירות למכירה', $sale_places ) ),
+			$sale_rooms ? array( array( 'לפי חדרים', $sale_rooms ) ) : null,
 			array( array( 'מפרסמים דירה?', array( array( 'פרסום מודעה חינם', $u( '/post-listing/' ) ), array( 'פרסום לבעלי מקצוע ויזמים', $u( '/advertise/' ) ), array( 'פרסום מודעה ←', $u( '/post-listing/' ), '', 1 ) ) ) ),
-		) );
-		$menus .= nadlan_hp_panel( 'דירות להשכרה', array(
-			array( array( 'דירות להשכרה', array_merge( array( array( 'כל הדירות להשכרה', $u( '/properties/?listing_type=rent' ) ) ), array_slice( $rcity, 0, 4 ) ) ) ),
-			array( array( 'לפי עיר', array_slice( $rcity, 4 ) ) ),
+		) ) ) );
+		$menus .= nadlan_hp_panel( 'דירות להשכרה', array_values( array_filter( array(
+			array( array( 'דירות להשכרה', $rent_places ) ),
+			$rent_rooms ? array( array( 'לפי חדרים', $rent_rooms ) ) : null,
 			array( array( 'לבעלי דירות', array( array( 'ניהול השכרה חינם', $u( '/my-rentals/' ) ), array( 'פרסום דירה להשכרה', $u( '/post-listing/' ) ) ) ) ),
-		) );
+		) ) ) );
 		$menus .= nadlan_hp_panel( 'מחירי דירות', array(
 			array( array( 'מחירי דירות לפי עיר', array( array( 'מחירון הדירות · כל הערים', $u( '/apartment-prices/' ) ), array( 'מחירי דירות בתל אביב', $u( '/tel-aviv-apartment-prices/' ) ), array( 'מחירי דירות בירושלים', $u( '/jerusalem-apartment-prices/' ) ), array( 'מחירי דירות בהרצליה', $u( '/herzliya-apartment-prices/' ) ), array( 'מחירי דירות ברמת גן', $u( '/ramat-gan-apartment-prices/' ) ), array( 'מחירי דירות בנתניה', $u( '/netanya-apartment-prices/' ) ) ) ) ),
 			array( array( 'מחשבונים', array( array( 'מחשבון משכנתא', $u( '/mortgage-calculator/' ) ), array( 'מחשבון מס רכישה', $u( '/purchase-tax-calculator/' ) ), array( 'עלות עסקה מלאה', $u( '/apartment-purchase-cost-calculator/' ) ), array( 'כמה שווה הדירה שלי', $u( '/property-value-estimator/' ) ) ) ) ),
@@ -402,38 +412,63 @@ if ( ! function_exists( 'nadlan_hp_band_listings' ) ) {
 	}
 }
 
-if ( ! function_exists( 'nadlan_hp_lareas' ) ) {
-	/** The places that have real listings (ListingsBand v54): cities by count, then each city's neighbourhoods with two
-	 *  listings or more. A seeded demo listing is never counted. Cached for an hour; a saved listing clears it. */
-	function nadlan_hp_lareas() {
-		$hit = get_transient( 'nadlan_hp_lareas_v1' );
+if ( ! function_exists( 'nadlan_hp_ldata' ) ) {
+	/** The real listings counted once (HomePage v55): by deal ('' = both), by city, by the city's neighbourhoods and by
+	 *  rooms (3+, 4+, 5+), the way /properties/ filters them. A seeded demo listing is never counted. Cached for an hour
+	 *  (the header prints it on every Hebrew page); a saved listing clears it. Never reads the address's filters. */
+	function nadlan_hp_ldata() {
+		$hit = get_transient( 'nadlan_hp_ldata_v1' );
 		if ( is_array( $hit ) ) { return $hit; }
-		$ids = get_posts( array( 'post_type' => 'nadlan_property', 'post_status' => 'publish', 'posts_per_page' => 500, 'no_found_rows' => true, 'fields' => 'ids',
+		$out = array( 'n' => array( '' => 0, 'sale' => 0, 'rent' => 0 ), 'city' => array(), 'hood' => array(), 'rooms' => array() );
+		if ( ! function_exists( 'nadlan_pl_nodemo' ) || ! function_exists( 'nadlan_meta_norm' ) ) { return $out; }
+		$ids = get_posts( array( 'post_type' => 'nadlan_property', 'post_status' => 'publish', 'posts_per_page' => 2000, 'no_found_rows' => true, 'fields' => 'ids',
 			'meta_query' => array( nadlan_pl_nodemo() ) ) );
-		$city = array();
-		$hood = array();
+		if ( $ids ) { update_meta_cache( 'post', $ids ); }
 		foreach ( $ids as $id ) {
-			$c = nadlan_meta_norm( get_post_meta( $id, 'city', true ) );
-			if ( '' === $c ) { continue; }
-			$city[ $c ] = ( $city[ $c ] ?? 0 ) + 1;
+			$deal  = (string) get_post_meta( $id, 'listing_type', true );
+			$deals = in_array( $deal, array( 'sale', 'rent' ), true ) ? array( '', $deal ) : array( '' );
+			$c     = nadlan_meta_norm( get_post_meta( $id, 'city', true ) );
 			// "צוקי אביב, מגדלי נאמן" counts in צוקי אביב: the first name is the neighbourhood the search finds
-			$h = trim( (string) strtok( nadlan_meta_norm( get_post_meta( $id, 'neighborhood', true ) ), ',' ) );
-			if ( '' !== $h && $h !== $c ) { $hood[ $c ][ $h ] = ( $hood[ $c ][ $h ] ?? 0 ) + 1; }
+			$hs    = explode( ',', nadlan_meta_norm( get_post_meta( $id, 'neighborhood', true ) ) );
+			$h     = trim( (string) $hs[0] );
+			$r     = (float) get_post_meta( $id, 'rooms', true );
+			foreach ( $deals as $d ) {
+				$out['n'][ $d ]++;
+				if ( '' !== $c ) {
+					$out['city'][ $d ][ $c ] = ( $out['city'][ $d ][ $c ] ?? 0 ) + 1;
+					if ( '' !== $h && $h !== $c ) { $out['hood'][ $d ][ $c ][ $h ] = ( $out['hood'][ $d ][ $c ][ $h ] ?? 0 ) + 1; }
+				}
+				foreach ( array( 3, 4, 5 ) as $m ) { if ( $r >= $m ) { $out['rooms'][ $d ][ $m ] = ( $out['rooms'][ $d ][ $m ] ?? 0 ) + 1; } }
+			}
 		}
+		set_transient( 'nadlan_hp_ldata_v1', $out, HOUR_IN_SECONDS );
+		return $out;
+	}
+}
+add_action( 'save_post_nadlan_property', function () { delete_transient( 'nadlan_hp_ldata_v1' ); } );
+
+if ( ! function_exists( 'nadlan_hp_lplaces' ) ) {
+	/** The places with real listings for a deal: cities by count, each followed by its neighbourhoods with two listings or
+	 *  more (up to three), at most $max entries. Each entry: array( name, count, is_neighbourhood ). */
+	function nadlan_hp_lplaces( $deal = '', $max = 12 ) {
+		$d    = nadlan_hp_ldata();
+		$city = isset( $d['city'][ $deal ] ) ? $d['city'][ $deal ] : array();
 		arsort( $city );
 		$out = array();
 		foreach ( array_slice( $city, 0, 6, true ) as $c => $n ) {
 			$out[] = array( $c, $n, false );
-			if ( isset( $hood[ $c ] ) ) {
-				arsort( $hood[ $c ] );
-				foreach ( array_slice( $hood[ $c ], 0, 3, true ) as $h => $m ) { if ( $m >= 2 ) { $out[] = array( $h, $m, true ); } }
-			}
+			$hood = isset( $d['hood'][ $deal ][ $c ] ) ? $d['hood'][ $deal ][ $c ] : array();
+			arsort( $hood );
+			foreach ( array_slice( $hood, 0, 3, true ) as $h => $m ) { if ( $m >= 2 ) { $out[] = array( $h, $m, true ); } }
 		}
-		set_transient( 'nadlan_hp_lareas_v1', $out, HOUR_IN_SECONDS );
-		return $out;
+		return array_slice( $out, 0, $max );
 	}
 }
-add_action( 'save_post_nadlan_property', function () { delete_transient( 'nadlan_hp_lareas_v1' ); } );
+
+if ( ! function_exists( 'nadlan_hp_lareas' ) ) {
+	/** The home band's "לפי אזור" (ListingsBand v54): both deals. */
+	function nadlan_hp_lareas() { return nadlan_hp_lplaces( '', 12 ); }
+}
 
 if ( ! function_exists( 'nadlan_hp_band_lst' ) ) {
 	/** The listings band (design system ListingsBand v54): the four newest real listings for sale and for rent on the
@@ -927,6 +962,21 @@ body.admin-bar .nlhp-top{top:32px}
 @media (max-width:1060px){.nlhp-top__in{height:60px}.nlhp-ico{display:inline-flex}.nlhp-post,.nlhp-lang{display:none}.nlhp-nav{display:none;position:fixed;inset:0;z-index:80;flex-direction:column;background:#fff;overflow-y:auto;overscroll-behavior:contain}.nlhp-top.is-open .nlhp-nav{display:flex}.nlhp-sheet__head{display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 16px;border-bottom:1px solid #e3e1da;font:700 17px/1 Assistant,Arial,sans-serif;color:#14212b;flex:none;position:sticky;top:0;z-index:2;background:#fff}.nlhp-sheet__close{width:44px;height:44px;border:0;background:none;font:400 30px/1 Arial,sans-serif;color:#14212b;cursor:pointer}.nlhp-sheet__langs{display:block;padding:12px 16px;border-bottom:1px solid #e3e1da;flex:none}.nlhp-sheet__langs .nlhv2-langs{display:flex!important;flex-wrap:nowrap!important;gap:6px!important;overflow-x:auto;padding:0!important;background:none!important;border:0!important}.nlhp-sheet__langs a{flex:none;height:34px!important;padding:0 12px!important;border-radius:999px!important;display:inline-flex!important;align-items:center;border:1px solid #e3e1da!important;font:600 13.5px/1 Assistant,Arial,sans-serif!important;color:#3b4753!important;background:#fff!important}.nlhp-sheet__langs a.on{background:#14212b!important;color:#fff!important;border-color:#14212b!important}.nlhp-nav .nlhp-dd{border-bottom:1px solid #e3e1da}.nlhp-nav .nlhp-nav__item{height:auto;min-height:54px;padding:0 16px;justify-content:space-between;font-size:16.5px;font-weight:700;border:0}.nlhp-nav .nlhp-nav__plain{display:flex;border-bottom:1px solid #e3e1da}.nlhp-nav .nlhp-mega{position:static;box-shadow:none;border:0}.nlhp-nav .nlhp-mega__in{grid-template-columns:1fr 1fr;gap:0 14px;padding:0 16px 14px}.nlhp-nav .nlhp-mega__col{display:contents}.nlhp-nav .nlhp-mega__h{display:none}.nlhp-nav .nlhp-mega__col a{font-size:15px;padding:10px 0}.nlhp-nav .nlhp-mega__col a span{display:none}.nlhp-nav .nlhp-mega__promo{display:none}.nlhp-sheet__post{display:flex;align-items:center;justify-content:center;flex:none;height:48px;margin:16px;border-radius:999px;background:#2f6f86;color:#fff!important;font:700 16px/1 Assistant,Arial,sans-serif}body.nlhp-lock{overflow:hidden}}
 @media (max-width:760px){.nlhp-top__in{height:56px;padding:0 12px 0 8px}.nlhp-logo__mark{width:32px;height:32px;border-radius:9px}.nlhp-logo__word{font-size:21px}}
 #nlhp-top .nlhp-logo__word{font-family:"Noto Serif Hebrew","Frank Ruhl Libre",Georgia,"Times New Roman",serif!important;font-weight:700!important}
+/* HeaderMenus v55: the theme gives header.wp-block-template-part a frosted backdrop-filter, which made the header the
+   containing block of the fixed phone sheet (locked to 57px, the list invisible); off while the sheet is open. The sheet
+   keeps each group's heading and count, links in two columns, the count beside its own label. */
+html body header#nlhp-top.nlhp-top.is-open{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+body.nlhp-lock #nlcta{display:none!important}
+@media (max-width:1060px){
+.nlhp-nav .nlhp-mega__in{display:block;padding:0 16px 16px}
+.nlhp-nav .nlhp-mega__col{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.nlhp-nav .nlhp-mega__col+.nlhp-mega__col{margin-top:4px}
+.nlhp-nav .nlhp-mega__h{display:block;grid-column:1/-1;margin:12px 0 2px!important;min-height:0}
+.nlhp-nav .nlhp-mega__col a+.nlhp-mega__h{margin-top:14px!important}
+.nlhp-nav .nlhp-mega__col a{justify-content:flex-start;gap:7px}
+.nlhp-nav .nlhp-mega__col a span{display:inline;font-size:12.5px}
+.nlhp-nav .nlhp-mega__col a.nlhp-mega__all{grid-column:1/-1}
+}
 NLHPCSSH;
 	// the home's own rules (the hero, the categories, the bands): printed on the home only (the site loop H1.3b)
 	$css = <<<'NLHPCSS'

@@ -985,9 +985,15 @@ if ( ! function_exists( 'nadlan_hv2_band_megafooter' ) ) {
 		$profs  = function_exists( 'nadlan_dir_professions_all' ) ? array_slice( (array) nadlan_dir_professions_all(), 0, 8, true ) : array();
 		?>
 	<section class="nlhv2-mfoot" dir="rtl" aria-label="כל הקישורים">
+		<?php
+		/* "דירות לפי עיר" (HeaderMenus v55): only places with real listings. It listed the ten biggest cities by projects and
+		   listings together (demo listings counted), most with no listing at all. The old list stays only if the counter is missing. */
+		$apts = function_exists( 'nadlan_hp_lplaces' ) ? nadlan_hp_lplaces( '', 10 ) : array_map( function ( $c ) { return array( $c['name'], 0, false ); }, $cities );
+		if ( $apts ) : ?>
 		<div class="nlhv2-mfoot-col"><p><?php nadlan_e( 'mf_apts_city' ); ?></p>
-			<?php foreach ( $cities as $c ) : ?><a href="<?php echo esc_url( home_url( '/properties/?city=' . rawurlencode( $c['name'] ) ) ); ?>"><?php nadlan_e( 'apts_in' ); ?><?php echo esc_html( $c['name'] ); ?></a><?php endforeach; ?>
+			<?php foreach ( $apts as $c ) : ?><a href="<?php echo esc_url( home_url( '/properties/?city=' . rawurlencode( $c[0] ) ) ); ?>"><?php nadlan_e( 'apts_in' ); ?><?php echo esc_html( $c[0] ); ?></a><?php endforeach; ?>
 		</div>
+		<?php endif; ?>
 		<div class="nlhv2-mfoot-col"><p><?php nadlan_e( 'mf_proj_city' ); ?></p>
 			<?php foreach ( $cities as $c ) : if ( ! $c['projects'] ) { continue; } ?><a href="<?php echo esc_url( home_url( '/projects/?city=' . rawurlencode( $c['name'] ) ) ); ?>"><?php nadlan_e( 'projects_in' ); ?><?php echo esc_html( $c['name'] ); ?></a><?php endforeach; ?>
 			<a href="<?php echo esc_url( home_url( '/projects/?project_type=pinui_binui' ) ); ?>"><?php nadlan_e( 'pinui' ); ?></a>
