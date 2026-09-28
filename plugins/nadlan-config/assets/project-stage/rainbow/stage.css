@@ -287,3 +287,20 @@
 .rbs-label-close { position: relative; width: 36px; height: 36px; margin: -10px -10px 0 0; font-size: 22px; line-height: 36px; }
 .rbs-label-close::after { content: ""; position: absolute; inset: -4px; }
 .rbs--narrow .rbs-act, .rbs--narrow .rbs-label-cta { min-height: 44px; }
+
+/* FacilityHotspots v72 (28.9.2026): the project's facilities as pins on the model (the legend's "facilities" chip); each
+   opens the quarter's card with its source and a WhatsApp question that names the facility */
+.rbs-qpin--facility { padding-block: 5px; padding-inline: 5px 12px; border: 0; background: #1F4B5C; color: #fff; box-shadow: 0 6px 16px rgba(20, 33, 43, .28); }
+.rbs-qpin--facility::after { content: ""; position: absolute; inset: -9px -3px; }
+.rbs-qpin--facility:hover { background: #2F6F86; }
+.rbs-fic { width: 22px; height: 22px; border-radius: 50%; flex: none; background: rgba(255, 255, 255, .16) center / 14px 14px no-repeat; }
+.rbs-fic--pool { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 15c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0'/%3E%3Cpath d='M2 19c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0'/%3E%3Cpath d='M8 13V6a2 2 0 0 1 4 0'/%3E%3Cpath d='M14 13V6a2 2 0 0 1 4 0'/%3E%3C/svg%3E"); }
+.rbs-fic--club { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11'/%3E%3C/svg%3E"); }
+.rbs-fic--lobby { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 21V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16'/%3E%3Cpath d='M10 21v-5h4v5'/%3E%3Cpath d='M2 21h20'/%3E%3C/svg%3E"); }
+.rbs-fic--retail { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 7h12l1 13H5z'/%3E%3Cpath d='M9 10V6a3 3 0 0 1 6 0v4'/%3E%3C/svg%3E"); }
+.rbs-fic--parking { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='4' width='16' height='16' rx='3'/%3E%3Cpath d='M9 17V7h4a3 3 0 0 1 0 6H9'/%3E%3C/svg%3E"); }
+.rbs-qcard-page.rbs-qcard-wa { border: 0; background: #0F7A63; color: #fff; }
+.rbs-qcard-page.rbs-qcard-wa:hover { background: #0B634F; }
+.rbs--narrow .rbs-qcard-page.rbs-qcard-wa { min-height: 44px; }
+:root body .nlds .qp-dot--facilities { background: #1F4B5C !important; }
+:root body .rbs a.rbs-qcard-page.rbs-qcard-wa, :root body .rbs a.rbs-qcard-page.rbs-qcard-wa:hover { color: #fff !important; text-decoration: none !important; }

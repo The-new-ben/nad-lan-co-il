@@ -261,6 +261,12 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 		if ( $notes ) { $cfg['notes'] = $notes; }
 		if ( ! empty( $ps['low_note'] ) ) { $cfg['lowNote'] = (string) $ps['low_note']; $cfg['lowUpTo'] = (int) ( $ps['low_up_to'] ?? 0 ); }
 		if ( ! empty( $ps['high_note'] ) ) { $cfg['highNote'] = (string) $ps['high_note']; }
+		// the project's facilities (design system FacilityHotspots v72): sourced cards pinned on the model, in the project's folder
+		$ff = dirname( __DIR__ ) . '/assets/project-stage/' . $ps['dir'] . '/facilities.json';
+		if ( is_readable( $ff ) ) {
+			$fj = json_decode( (string) file_get_contents( $ff ), true );
+			if ( is_array( $fj ) && ! empty( $fj['facilities'] ) ) { $cfg['facilities'] = array_values( (array) $fj['facilities'] ); }
+		}
 		// the quarter around the building (design system QuarterPins): built offline into the project's folder
 		// (scripts/project-stage/build_quarter_rainbow.py); a missing or broken file leaves the stage as it was
 		$qf = dirname( __DIR__ ) . '/assets/project-stage/' . $ps['dir'] . '/quarter.json';
@@ -331,6 +337,7 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 					. ( '' !== (string) $count ? ' <span class="qp-chip__n">' . esc_html( (string) $count ) . '</span>' : '' ) . '</button>';
 			};
 			$legend = '<div class="qp-legend" role="group" aria-label="' . esc_attr( 'מה סביב ' . $ps['name'] ) . '">'
+				. ( ! empty( $cfg['facilities'] ) ? $chip( 'facilities', 'מתקנים בפרויקט', count( $cfg['facilities'] ) ) : '' )
 				. ( $today ? $chip( 'today', 'קיים היום', number_format( $today ) . ' בניינים' ) : '' )
 				. ( $n['building'] ? $chip( 'building', 'בבנייה', $n['building'] ) : '' )
 				. ( $n['selling'] ? $chip( 'selling', 'בשיווק', $n['selling'] ) : '' )

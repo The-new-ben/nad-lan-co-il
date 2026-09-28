@@ -285,6 +285,23 @@ export function mountRainbowStage(container, options = {}) {
       x: TOWER.cx * Math.cos(G) + TOWER.cz * Math.sin(G), y: TOWER.roof + 10, z: -TOWER.cx * Math.sin(G) + TOWER.cz * Math.cos(G), w: 0 });
     qcard = el('div', 'rbs-qcard', ui, { role: 'dialog', 'aria-live': 'polite' });
   }
+  /* the project's facilities (design system FacilityHotspots v72): a pin per facility on the model, each with a card that
+     names its source; shown by the legend's "מתקנים בפרויקט" chip. Places come from the approved design plan; where the plan
+     does not say which building, the card says the place is an illustration. */
+  const fpins = [];
+  if (Array.isArray(opts.facilities) && opts.facilities.length) {
+    const fEl = el('div', 'rbs-qpins rbs-fpins', ui);
+    for (const it of opts.facilities) {
+      for (const an of (Array.isArray(it.anchors) ? it.anchors : [])) {
+        const b = el('button', 'rbs-qpin rbs-qpin--facility', fEl, { type: 'button', 'aria-label': it.name });
+        el('i', 'rbs-fic rbs-fic--' + String(it.icon || 'dot'), b, { 'aria-hidden': 'true' });
+        b.append(it.pin || it.name);
+        b.style.visibility = 'hidden';
+        fpins.push({ el: b, it, an: String(an), fac: true, off: true, w: 0 });
+      }
+    }
+    if (!qcard) qcard = el('div', 'rbs-qcard', ui, { role: 'dialog', 'aria-live': 'polite' });
+  }
   const openBtn = el('button', 'rbs-open', ui, { type: 'button' });
   openBtn.textContent = T.open3d;
   container.appendChild(root);
@@ -331,7 +348,7 @@ export function mountRainbowStage(container, options = {}) {
       opts.cityData = cityData || null;
       if (disposed) return;
       engine = createEngine({
-        root, canvasWrap, label, labelTitle, labelLine, labelFacing, labelMore, actBtns, labelCta, labelClose, leader, hint, facingChip, qpins, qcard,
+        root, canvasWrap, label, labelTitle, labelLine, labelFacing, labelMore, actBtns, labelCta, labelClose, leader, hint, facingChip, qpins, qcard, fpins,
         opts, T, reduced, phone, coarse, preset: currentPreset,
         onReady: markReady,
         onContextLost: () => { root.classList.remove('rbs--live', 'rbs--settled'); },
@@ -420,7 +437,8 @@ export function mountRainbowStage(container, options = {}) {
 
 function createEngine(ctx) {
   const { root, canvasWrap, label, labelTitle, labelLine, labelFacing, labelMore, actBtns, labelCta, labelClose, leader, hint, facingChip, opts, T, reduced, phone } = ctx;
-  const qpins = ctx.qpins || [], qcard = ctx.qcard || null;
+  const qpins = ctx.qpins || [], qcard = ctx.qcard || null, fpins = ctx.fpins || [];
+  let facMode = false; // the legend's "מתקנים בפרויקט" chip: the facility pins on, the quarter's pins off
   const leaderLine = leader.querySelector('line');
   const leaderDot = leader.querySelector('circle');
 
@@ -1365,8 +1383,24 @@ function createEngine(ctx) {
     if (hi * 1.05 > controls.maxDistance) controls.maxDistance = hi * 1.05;
     glideTo(c, hi, phi, th, 1.2);
   }
+  function facilityPoint(an, out) {
+    const r = /^roof:(\d)$/.exec(an);
+    if (r && BLOCKS[+r[1]]) {
+      const bk = BLOCKS[+r[1]];
+      const px = bk.p1[0] * 0.5 + (bk.p0[0] + bk.p2[0]) * 0.25, pz = bk.p1[1] * 0.5 + (bk.p0[1] + bk.p2[1]) * 0.25;
+      return localToWorld(px, PLOT.h + 4.4 + (bk.floors - 1) * 3.2 + 3, pz, out); // just above the roof pool
+    }
+    const lb = /^lobby:(\d)$/.exec(an);
+    if (lb && BLOCKS[+lb[1]]) { const bk = BLOCKS[+lb[1]]; return localToWorld(bk.p1[0], PLOT.h + 3, bk.p1[1], out); } // the courtyard face
+    const len = Math.hypot(TOWER.cx, TOWER.cz) || 1, ux = TOWER.cx / len, uz = TOWER.cz / len, off = TOWER.A + 3;
+    if (an === 'tower:court') return localToWorld(TOWER.cx - ux * off, TOWER.y0 + 1.5, TOWER.cz - uz * off, out); // the base floor, courtyard side
+    if (an === 'tower:street') return localToWorld(TOWER.cx + ux * off, PLOT.h + 3, TOWER.cz + uz * off, out); // the ground floor, street side
+    if (an === 'tower:lobby') return localToWorld(TOWER.cx - ux * off * 0.6 + uz * off * 0.8, PLOT.h + 3, TOWER.cz - uz * off * 0.6 - ux * off * 0.8, out);
+    if (an === 'court') return localToWorld(0, PLOT.h + 1.5, 0, out);
+    return null;
+  }
   function placeQuarter() {
-    if (!qpins.length) return;
+    if (!qpins.length && !fpins.length) return;
     const pinned = !!(selected && selected.pinned);
     const shown = [];
     // Rainbow's tower on screen: no pin may sit on it, in front of it or behind it (the label would seem to name it)
@@ -1405,6 +1439,15 @@ function createEngine(ctx) {
       const x = Math.min(Math.max(6, a.x - w / 2), stageW - w - 6); // never cut by the stage's edge
       shown.push({ p, x, y: a.y - 34, w, h, d });
     }
+    for (const p of fpins) {
+      if (p.off || !facilityPoint(p.an, qv)) { p.el.style.visibility = 'hidden'; continue; }
+      const a = projectToStage(qv);
+      if (a.behind || a.x < -40 || a.x > stageW + 40 || a.y < 20 || a.y > stageH - 40) { p.el.style.visibility = 'hidden'; continue; }
+      if (!p.w && p.el.offsetWidth) { p.w = p.el.offsetWidth; p.h = p.el.offsetHeight; }
+      const w = p.w || 90, h = p.h || 30;
+      const x = Math.min(Math.max(6, a.x - w / 2), stageW - w - 6);
+      shown.push({ p, x, y: a.y - 34, w, h, d: qv.distanceTo(camera.position) });
+    }
     // two pins never cover each other: the nearer one keeps its place, a farther one waits for another angle
     // the building's own label first (it may sit on the tower: it is its name), then the nearer pins
     shown.sort((u, v) => (v.p.hero ? 1 : 0) - (u.p.hero ? 1 : 0) || u.d - v.d);
@@ -1420,21 +1463,43 @@ function createEngine(ctx) {
       }
     }
     for (const s of shown) {
-      if (!s.p.hero && hero && s.x < hero.x + hero.w + 4 && hero.x < s.x + s.w + 4 && s.y < hero.y + hero.h + 2 && hero.y < s.y + s.h + 2) {
+      if (!s.p.hero && !s.p.fac && hero && s.x < hero.x + hero.w + 4 && hero.x < s.x + s.w + 4 && s.y < hero.y + hero.h + 2 && hero.y < s.y + s.h + 2) {
         s.p.el.style.visibility = 'hidden';
         continue;
       }
-      if (kept.some((k) => s.x < k.x + k.w + 4 && k.x < s.x + s.w + 4 && s.y < k.y + k.h + 2 && k.y < s.y + s.h + 2)) {
+      const hits = () => kept.some((k) => s.x < k.x + k.w + 4 && k.x < s.x + s.w + 4 && s.y < k.y + k.h + 2 && k.y < s.y + s.h + 2);
+      if (s.p.fac) { for (let t = 0; t < 4 && hits(); t++) s.y -= s.h + 6; }
+      if (hits() || s.y < 4) {
         s.p.el.style.visibility = 'hidden';
         continue;
       }
       kept.push(s);
       // in the legend's overview the shown pins are the point: full strength; otherwise the far ones step back
-      const fade = framedPhase ? 1 : Math.min(1, Math.max(0.35, 1.25 - s.d / 2600)) * (pinned ? 0.6 : 1);
+      const fade = framedPhase || s.p.fac ? 1 : Math.min(1, Math.max(0.35, 1.25 - s.d / 2600)) * (pinned ? 0.6 : 1);
       s.p.el.style.visibility = 'visible';
       s.p.el.style.opacity = fade.toFixed(2);
       s.p.el.style.transform = `translate3d(${Math.round(s.x)}px, ${Math.round(s.y)}px, 0)`;
     }
+  }
+  function openFacilityCard(it) {
+    if (!qcard) return;
+    qcard.textContent = '';
+    const x = el('button', 'rbs-qcard-x', qcard, { type: 'button', 'aria-label': T.close });
+    x.textContent = '×';
+    x.addEventListener('click', () => { qcard.classList.remove('is-on'); });
+    el('p', 'rbs-qcard-kick', qcard).textContent = 'מתקן בפרויקט';
+    el('p', 'rbs-qcard-title', qcard).textContent = it.name;
+    for (const line of (Array.isArray(it.lines) ? it.lines : [])) el('p', 'rbs-qcard-line', qcard).textContent = line;
+    if (it.note) el('p', 'rbs-qcard-note', qcard).textContent = it.note;
+    const wa = String(opts.wa || '').replace(/[^0-9]/g, '');
+    if (wa) {
+      const cta = el('div', 'rbs-qcard-cta', qcard);
+      const a = el('a', 'rbs-qcard-page rbs-qcard-wa', cta, { href: 'https://wa.me/' + wa + '?text=' + encodeURIComponent('שלום, יש לי שאלה על ' + (it.ask || it.name) + ' ב' + T.heroName + '.'), target: '_blank', rel: 'noopener' });
+      a.textContent = 'שאלה על המתקן בוואטסאפ';
+    }
+    qcard.dataset.phase = '';
+    qcard.setAttribute('aria-label', it.name);
+    qcard.classList.add('is-on');
   }
   function openQuarterCard(it) {
     if (!qcard) return;
@@ -1479,6 +1544,7 @@ function createEngine(ctx) {
   }
   const Q_NOTE = opts.quarter && opts.quarter.note ? String(opts.quarter.note) : '';
   for (const p of qpins) if (!p.hero) on(p.el, 'click', (e) => { e.stopPropagation(); openQuarterCard(p.it); });
+  for (const p of fpins) on(p.el, 'click', (e) => { e.stopPropagation(); openFacilityCard(p.it); });
   function placeChip(tip) {
     if (!tip || tip.behind || !(selected && selected.pinned)) { facingChip.classList.remove('is-on'); return; }
     if (!chipBox.w) { facingChip.classList.add('is-on'); chipBox.w = facingChip.offsetWidth || 120; chipBox.h = facingChip.offsetHeight || 30; }
@@ -1760,6 +1826,24 @@ function createEngine(ctx) {
     /* the quarter: open a pin's card by its name, or turn the stage toward it */
     openQuarter(name) { const p = qpins.find((q) => q.it.name === name); if (p) openQuarterCard(p.it); return !!p; },
     focusPhase(ph) {
+      const wasFac = facMode;
+      facMode = ph === 'facilities' && fpins.length > 0;
+      for (const p of fpins) p.off = !facMode;
+      if (facMode) {
+        for (const p of qpins) if (!p.hero) p.off = true;
+        if (qcard) qcard.classList.remove('is-on');
+        framedPhase = false;
+        // the whole lot in view from a little higher, the side the camera is already on
+        glideTo(localToWorld(0, PLOT.h, -8, new THREE.Vector3()), Math.max(240, heroDistance() * 0.95), (90 - 34) * DEG, camSpherical().theta, 1.1);
+        placeQuarter();
+        kick();
+        return 'facilities';
+      }
+      if (wasFac) {
+        for (const p of qpins) p.off = false;
+        if (qcard) qcard.classList.remove('is-on');
+        if (!ph) glideTo(heroTarget, heroDistance(), (90 - HERO.elev) * DEG, camSpherical().theta, 1.0);
+      }
       const k = ['today', 'building', 'selling', 'permit'].includes(ph) ? ph : null;
       const groups = world.qGroups || {};
       for (const g in groups) for (const m of groups[g]) m.visible = !k || (k !== 'today' && g === k);

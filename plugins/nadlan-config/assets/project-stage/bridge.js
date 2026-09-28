@@ -74,6 +74,9 @@ async function boot() {
       floorNote,
       units,
       quarter: cfg.quarter && typeof cfg.quarter === 'object' ? cfg.quarter : null,
+      // the project's facilities on the model (design system FacilityHotspots v72) and the site's WhatsApp for their cards
+      facilities: Array.isArray(cfg.facilities) && cfg.facilities.length ? cfg.facilities : null,
+      wa: String(cfg.wa || ''),
       // one tap, the whole answer (design system ProjectStage version 33): the floor's sea-side example apartment at once,
       // and the card's actions: inside the apartment, the view and the map under the stage, the designer
       autoFacing: units ? seaSide : null,
