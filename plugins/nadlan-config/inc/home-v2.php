@@ -968,7 +968,7 @@ if ( ! function_exists( 'nadlan_hv2_band_intl' ) ) {
 		<div>
 			<p class="nlhv2-kicker" style="color:#C9A45C">International buyers</p>
 			<h2>Buying property in Israel, guided in your language</h2>
-			<p>New-build projects with apartment selection from inside the building, verified professionals and legal guidance for foreign buyers.</p>
+			<p>New-build and urban-renewal projects, prices from real deals, licensed professionals and legal guidance for foreign buyers.</p>
 		</div>
 		<div class="nlhv2-en__links">
 			<a href="<?php echo esc_url( home_url( '/en/' ) ); ?>">Explore in English →</a>

@@ -54,7 +54,7 @@ if ( ! function_exists( 'nadlan_hp_counts' ) ) {
 	/** Live counts: published projects as the catalogue counts them (no language siblings, no private journeys),
 	 *  their distinct cities (kept for checks, not printed yet) and published professionals. Cached one hour. */
 	function nadlan_hp_counts() {
-		$k = 'nadlan_hp_counts_v1';
+		$k = 'nadlan_hp_counts_v2'; // v2 (HomePage v51): the professionals without the demo profiles
 		$c = get_transient( $k );
 		if ( is_array( $c ) ) { return $c; }
 		global $wpdb;
@@ -69,7 +69,7 @@ if ( ! function_exists( 'nadlan_hp_counts' ) ) {
 			if ( '' !== $n && mb_strlen( $n ) <= 30 ) { $names[ $n ] = 1; }
 		}
 		$pros = wp_count_posts( 'nadlan_professional' );
-		$c    = array( 'projects' => $total, 'cities' => count( $names ), 'pros' => isset( $pros->publish ) ? (int) $pros->publish : 0 );
+		$c    = array( 'projects' => $total, 'cities' => count( $names ), 'pros' => function_exists( 'nadlan_pb_total' ) && nadlan_pb_total() > 0 ? nadlan_pb_total() : ( isset( $pros->publish ) ? (int) $pros->publish : 0 ) );
 		set_transient( $k, $c, HOUR_IN_SECONDS );
 		return $c;
 	}
@@ -130,11 +130,11 @@ if ( ! function_exists( 'nadlan_hp_header' ) ) {
 		if ( $rb && 'publish' === $rb->post_status ) {
 			$promo = '<a class="nlhp-mega__promo" href="' . esc_url( get_permalink( $rb ) ) . '"><img src="' . esc_url( plugins_url( 'assets/project-stage/rainbow/poster-716.jpg', dirname( __FILE__ ) ) ) . '" alt="הדמיה של פרויקט ריינבו תל אביב" width="716" height="660" loading="lazy" decoding="async"><span><small>סיור וירטואלי · הדמיה להמחשה</small><b>ריינבו תל אביב: בוחרים קומה ורואים את הנוף</b></span></a>';
 		}
-		$all_p = 'לכל ' . $fmt( $c['projects'] ) . ' הפרויקטים החדשים ←';
+		$all_p = 'לכל ' . $fmt( $c['projects'] ) . ' הפרויקטים בקטלוג ←'; // most are urban-renewal compounds (HomePage v51)
 
 		$menus  = nadlan_hp_panel( 'פרויקטים חדשים', array(
 			array( array( 'פרויקטים חדשים לפי עיר', $pcity ) ),
-			array( array( 'לפי סוג', array( array( 'כל הפרויקטים החדשים', $u( '/projects/' ), $fmt( $c['projects'] ) ), array( 'פינוי־בינוי', $u( '/projects/?project_type=pinui_binui' ) ), array( 'תמ״א 38', $u( '/projects/?project_type=tama38' ) ), array( 'נדל״ן מסחרי', $u( '/commercial-real-estate/' ) ) ) ),
+			array( array( 'לפי סוג', array( array( 'כל הפרויקטים', $u( '/projects/' ), $fmt( $c['projects'] ) ), array( 'פינוי־בינוי', $u( '/projects/?project_type=pinui_binui' ) ), array( 'תמ״א 38', $u( '/projects/?project_type=tama38' ) ), array( 'נדל״ן מסחרי', $u( '/commercial-real-estate/' ) ) ) ),
 				array( 'אזורי ביקוש', array( array( 'רובע שדה דב', $u( '/sde-dov/' ) ), array( 'התחדשות עירונית', $u( '/urban-renewal/' ) ) ) ) ),
 			array( array( 'סיורים וירטואליים', array( array( 'סיור ברובע שדה דב', $u( '/tour/sde-dov/' ) ), array( 'סיור במתחם סומייל', $u( '/tour/somail/' ) ), array( 'כל הסיורים', $u( '/tours/' ) ), array( $all_p, $u( '/projects/' ), '', 1 ) ) ) ),
 		), $promo );
@@ -212,7 +212,7 @@ if ( ! function_exists( 'nadlan_hp_top' ) ) {
 			array( 'דירות למכירה', '/properties/?listing_type=sale' ),
 		);
 		$cats   = array(
-			array( 'פרויקטים חדשים', '/projects/', $n . ' פרויקטים', 'M6 21V5l6-2v18M12 21V8l6 2v11M4 21h16M9 8v.01M9 12v.01M9 16v.01M15 13v.01M15 17v.01' ),
+			array( 'פרויקטים חדשים', '/projects/', $n . ' בקטלוג, לפי עיר ויזם', 'M6 21V5l6-2v18M12 21V8l6 2v11M4 21h16M9 8v.01M9 12v.01M9 16v.01M15 13v.01M15 17v.01' ),
 			array( 'דירות למכירה', '/properties/?listing_type=sale', 'לפי עיר, חדרים ומחיר', 'M4 11l8-7 8 7v9H4zM10 20v-5h4v5' ),
 			array( 'דירות להשכרה', '/properties/?listing_type=rent', 'לפי עיר, חדרים ומחיר', 'M14.5 9.5a3.5 3.5 0 1 0-.01 0M12 12l-8 8M6.5 17.5l2 2M8.5 15.5l2 2' ),
 			array( 'מחירי דירות', '/apartment-prices/', 'עסקאות לפי עיר ורחוב', 'M4 20h16M7 16v-5M12 16V8M17 16v-8' ),
@@ -231,7 +231,7 @@ if ( ! function_exists( 'nadlan_hp_top' ) ) {
 	<div class="nlhp-hero__body">
 		<p class="nlhp-hero__kicker">פורטל הנדל״ן של ישראל</p>
 		<h1>נדל״ן: פרויקטים חדשים, דירות למכירה ומחירי דירות</h1>
-		<p class="nlhp-hero__lead"><span class="nlhp-n"><?php echo esc_html( $n ); ?></span> פרויקטים חדשים, דירות למכירה ולהשכרה, מחירי דירות מעסקאות שנמכרו, מחשבונים ומגזין נדל״ן.</p>
+		<p class="nlhp-hero__lead"><span class="nlhp-n"><?php echo esc_html( $n ); ?></span> פרויקטים של בנייה חדשה והתחדשות עירונית, דירות למכירה ולהשכרה, מחירי דירות מעסקאות שנמכרו, מחשבונים ומגזין נדל״ן.</p>
 		<form class="nlhp-search nlhv2-search" action="<?php echo esc_url( home_url( '/projects/' ) ); ?>" method="get" role="search">
 			<div class="nlhp-search__tabs nlhv2-tabs" role="tablist" aria-label="מה מחפשים">
 				<?php foreach ( $tabs as $i => $t ) : ?><button type="button" role="tab" class="nlhp-search__tab<?php echo 0 === $i ? ' is-on' : ''; ?>" aria-selected="<?php echo 0 === $i ? 'true' : 'false'; ?>" data-action="<?php echo esc_url( home_url( $t[1] ) ); ?>" data-extra="<?php echo esc_attr( $t[2] ); ?>"><?php echo esc_html( $t[0] ); ?></button><?php endforeach; ?>
@@ -360,7 +360,7 @@ if ( ! function_exists( 'nadlan_hp_band_projects' ) ) {
 		}
 		$links .= '<a href="' . esc_url( home_url( '/projects/?project_type=pinui_binui' ) ) . '">פינוי־בינוי</a><a href="' . esc_url( home_url( '/projects/?project_type=tama38' ) ) . '">תמ״א 38</a>';
 		return '<section class="nlhp-band nlhp-projects" aria-labelledby="nlhp-proj-h">'
-			. nadlan_hp_head( 'פרויקטים חדשים', 'פרויקטים חדשים בתל אביב', 'nlhp-proj-h', 'לכל ' . number_format( (int) $c['projects'] ) . ' הפרויקטים החדשים', home_url( '/projects/' ) )
+			. nadlan_hp_head( 'פרויקטים חדשים', 'פרויקטים חדשים בתל אביב', 'nlhp-proj-h', 'לכל ' . number_format( (int) $c['projects'] ) . ' הפרויקטים בקטלוג', home_url( '/projects/' ) )
 			. '<div class="nlhp-proj">' . $cards . '</div><nav class="nlhp-links" aria-label="פרויקטים חדשים לפי עיר">' . $links . '</nav></section>';
 	}
 }
@@ -446,7 +446,7 @@ if ( ! function_exists( 'nadlan_hp_band_cities' ) ) {
 			$purl = '';
 			foreach ( $pp as $pk => $pu ) { if ( 0 === mb_strpos( $key, $pk ) ) { $purl = $pu; break; } }
 			$tiles .= '<div class="nlhp-city"><h3><a href="' . esc_url( home_url( '/projects/?city=' . rawurlencode( $x['name'] ) ) ) . '">' . esc_html( $x['name'] ) . '</a></h3>'
-				. '<span class="nlhp-city__row"><b class="nlhp-n">' . number_format( (int) $x['n'] ) . '</b> פרויקטים חדשים</span>'
+				. '<span class="nlhp-city__row"><b class="nlhp-n">' . number_format( (int) $x['n'] ) . '</b> פרויקטים</span>'
 				. ( $a > 0 ? '<span class="nlhp-city__row">מחיר ממוצע לדירה <b class="nlhp-val">' . nadlan_hp_mil( $a ) . '</b></span>' : '' )
 				. '<span class="nlhp-city__links"><a href="' . esc_url( home_url( '/projects/?city=' . rawurlencode( $x['name'] ) ) ) . '">פרויקטים</a><a href="' . esc_url( home_url( '/properties/?city=' . rawurlencode( $x['name'] ) ) ) . '">דירות</a>'
 				. ( $purl ? '<a href="' . esc_url( home_url( $purl ) ) . '">מחירים</a>' : '' ) . '</span></div>';
@@ -544,7 +544,7 @@ if ( ! function_exists( 'nadlan_hp_band_portal' ) ) {
 		}
 		$last = $cl ? array_pop( $cl ) : '';
 		$list = $cl ? implode( ', ', $cl ) . ' ו' . $last : $last;
-		return '<section class="nlhp-seo" aria-label="על NadLan"><div><h2>נדל״ן בישראל, במקום אחד</h2><p>NadLan הוא פורטל נדל״ן ישראלי: <a href="' . $u( '/projects/' ) . '">' . number_format( (int) $c['projects'] ) . ' פרויקטים חדשים</a> ודירות מקבלן, '
+		return '<section class="nlhp-seo" aria-label="על NadLan"><div><h2>נדל״ן בישראל, במקום אחד</h2><p>NadLan הוא פורטל נדל״ן ישראלי: <a href="' . $u( '/projects/' ) . '">' . number_format( (int) $c['projects'] ) . ' פרויקטים של בנייה חדשה והתחדשות עירונית</a>, '
 			. '<a href="' . $u( '/properties/?listing_type=sale' ) . '">דירות למכירה</a> ו<a href="' . $u( '/properties/?listing_type=rent' ) . '">דירות להשכרה</a> לפי עיר, <a href="' . $u( '/apartment-prices/' ) . '">מחירי דירות</a> מעסקאות שנמכרו לפי עיר, שכונה ורחוב, '
 			. '<a href="' . $u( '/mortgage-calculator/' ) . '">מחשבון משכנתא</a> ו<a href="' . $u( '/purchase-tax-calculator/' ) . '">מחשבון מס רכישה</a>, <a href="' . $u( '/guides/' ) . '">מגזין נדל״ן</a> ומאגר של ' . number_format( (int) $c['pros'] ) . ' <a href="' . $u( '/professionals/' ) . '">אנשי מקצוע</a>.</p></div>'
 			. ( '' !== $list ? '<div><h2>פרויקטים חדשים לפי עיר</h2><p>לכל פרויקט חדש יש עמוד משלו, עם הפרטים הידועים עליו: היזם, המיקום והשלב (תכנון, היתר, בנייה או אכלוס). הפרויקטים לפי עיר: ' . $list . '.</p></div>' : '' )
@@ -643,7 +643,8 @@ add_filter( 'the_content', function ( $content ) {
 if ( ! function_exists( 'nadlan_hp_desc' ) ) {
 	function nadlan_hp_desc() {
 		$c = nadlan_hp_counts();
-		return 'נדל״ן בישראל: ' . number_format( (int) $c['projects'] ) . ' פרויקטים חדשים, דירות למכירה ולהשכרה, מחירי דירות לפי עיר ושכונה, מחשבון משכנתא ומס רכישה, מגזין נדל״ן ואנשי מקצוע.';
+		// HomePage v51: the true make-up (most of the catalogue is urban renewal), within 160 characters
+		return 'נדל״ן בישראל: ' . number_format( (int) $c['projects'] ) . ' פרויקטים של בנייה חדשה והתחדשות עירונית, דירות למכירה ולהשכרה, מחירי דירות לפי עיר, מחשבון משכנתא ואנשי מקצוע.';
 	}
 }
 if ( ! function_exists( 'nadlan_hp_front_he' ) ) {

@@ -162,7 +162,12 @@ only inside runners; every release through a runner with drift check, lint, back
     - The catalogue's "עוד פרטים על X -" lost its dash.
     - content_first_check passes on the fleet: Rainbow, DUO, Aurelia, H-Infinity, Dimri Yama, Ashira, Einstein, Rainbow-en and DUO-en.
     - (Corrected after the release: the "H-Infinity in English" failure was a guessed address. /projects/h-infinity-somail-tel-aviv-en/ is a 404, and the Hebrew page links to no language page, with no hreflang and no switcher. Nothing is broken.)
-  - **Next:** the home page.
+  - 1.72.302 (DS HomePage v51, artifact versions 60-61; HAD-297): **the home's counts say what they count.**
+    - The hero, the tile, the menus, the projects band, the cities band, the portal paragraph and the meta description say "פרויקטים של בנייה חדשה והתחדשות עירונית" or "בקטלוג" (975, of which 942 are urban-renewal compounds).
+    - Professionals count real ones (2,831).
+    - The English band dropped the false "apartment selection from inside the building".
+    - Not yet: the home map shows only a couple of pins at the country zoom (most projects have no coordinates); the language homes' own counts.
+  - **Next:** the home page, continued (the map band, the listings band's cards, the services band's tour image), then the 3D stages.
 - Coordination with Codex: docs/coordination/claude-codex.md. Codex's RFP findings: HAD-329.
 
 ## Waiting for the owner
