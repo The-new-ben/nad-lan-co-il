@@ -592,12 +592,7 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 			. ' width="1432" height="1320" alt="' . esc_attr( ! empty( $ps['poster_alt'] ) ? (string) $ps['poster_alt'] : 'הדמיה של פרויקט ' . $ps['name'] . ', מגדל ובנייני בוטיק סביב גינה' ) . '" fetchpriority="high" decoding="async">';
 		$has_inside = is_readable( dirname( __DIR__ ) . '/assets/project-stage/' . $ps['dir'] . '/tour/living-25w-card.jpg' );
 		$stagebox = '<div class="nlps-stagebox"><h2 class="nlps-srt" id="nlps-t">סיור וירטואלי: הקומות והנוף</h2>'
-			. '<section class="nlps-stage" id="nlps" aria-labelledby="nlps-t" data-cfg="' . esc_attr( wp_json_encode( $cfg ) ) . '"><div class="nlps-stage__mount" id="nlps-stage">' . $ssr . '</div>'
-			// StageFacilities v95 (28.9.2026): the facilities on the model itself; the owner did not find them behind the
-			// legend's chip under the stage ("I didn't see facilities in Rainbow, how do you click it"). The same
-			// data-nlps-phase as the chip, so bridge.js keeps the two in step.
-			. ( ! empty( $cfg['facilities'] ) ? '<button type="button" class="nlps-facbtn" data-nlps-phase="facilities" aria-pressed="false"><i aria-hidden="true">✦</i>המתקנים בפרויקט <b>' . (int) count( $cfg['facilities'] ) . '</b></button>' : '' )
-			. '</section>'
+			. '<section class="nlps-stage" id="nlps" aria-labelledby="nlps-t" data-cfg="' . esc_attr( wp_json_encode( $cfg ) ) . '"><div class="nlps-stage__mount" id="nlps-stage">' . $ssr . '</div></section>'
 			. '<div class="nlds">' . ( ! empty( $ps['units'] )
 				// the steps under the stage (design system ProjectStage version 33): what the page can do, each a button
 				? '<ol class="nlps-steps" aria-label="מה אפשר לעשות כאן">'
@@ -931,14 +926,6 @@ add_action( 'wp_head', function () {
 		. ':root body .nlds .nlps-ctawrap .nlps-hero__cta{margin-top:0!important}'
 		. ':root body .nlds .nlps-ctawrap .nlps-hero__cta .nlds-btn{flex:1 1 auto!important;justify-content:center!important}'
 		. ':root body .nlps-page>.nlps-stagebox{grid-area:stage;display:grid;gap:10px}'
-		// StageFacilities v95: the facilities pill on the model, top corner on the reading side, above the stage's own layer
-		. ':root body .nlps-stage{position:relative}'
-		. ':root body .nlps-stage>.nlps-facbtn{position:absolute;top:12px;inset-inline-start:12px;z-index:6;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(20,33,43,.14);background:rgba(250,247,241,.94);color:#14212B;font:700 14.5px/1 Heebo,Assistant,sans-serif;box-shadow:0 6px 18px rgba(20,33,43,.14);cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}'
-		. ':root body .nlps-stage:has(>.nlps-facbtn) .rbs-hint{top:66px}'
-		. ':root body .nlps-stage>.nlps-facbtn i{font-style:normal;color:#9C7A3C}'
-		. ':root body .nlps-stage>.nlps-facbtn b{display:inline-grid;place-items:center;min-width:22px;height:22px;border-radius:999px;background:#1F4B5C;color:#fff;font-size:12.5px}'
-		. ':root body .nlps-stage>.nlps-facbtn[aria-pressed="true"]{background:#1F4B5C;color:#fff;border-color:#1F4B5C}'
-		. ':root body .nlps-stage>.nlps-facbtn[aria-pressed="true"] i{color:#E8C572}:root body .nlps-stage>.nlps-facbtn[aria-pressed="true"] b{background:#fff;color:#1F4B5C}'
 		. ':root body .nlps-page>.nlps-rail{grid-area:rail;display:grid;gap:14px;align-content:start}'
 		. ':root body .nlps-page>.nlps-factswrap{grid-area:facts;padding:0!important;margin-top:10px!important}'
 		// the theme's sitewide sheet has its own older ".nlpf" (1120px wide, auto margins, a deep shadow): not here

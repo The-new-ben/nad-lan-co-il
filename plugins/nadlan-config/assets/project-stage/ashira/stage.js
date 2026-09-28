@@ -1668,6 +1668,12 @@ function createEngine(ctx) {
       // on a narrow stage)
       x = labelSide === 1 ? stageW - lw - 14 : 14;
       y = Math.min(Math.max(14, a.y - lh / 2), stageH - lh - 64);
+      // StageFacilities v95: never under the facilities pill in the stage's top corner
+      const pill = root.parentElement && root.parentElement.parentElement ? root.parentElement.parentElement.querySelector('.nlps-facbtn') : null;
+      if (pill) {
+        const pr = pill.getBoundingClientRect(), sr = root.getBoundingClientRect();
+        if (x < pr.right - sr.left && x + lw > pr.left - sr.left && y < pr.bottom - sr.top + 8) y = Math.round(pr.bottom - sr.top + 8);
+      }
       shift.tx = cardMin ? 0 : Math.round((lw + 28) / 2) * labelSide;
       shift.ty = 0;
       shift.tk = cardMin ? 1 : Math.max(0.62, Math.min(1, (stageW - lw - 28) / stageW));
@@ -1796,7 +1802,9 @@ function createEngine(ctx) {
     const kept = [];
     {
       const rr = root.getBoundingClientRect();
-      for (const u of [hint, root.querySelector('.rbs-presets'), root.querySelector('.rbs-caption'), label.classList.contains('is-on') ? label : null, qcard && qcard.classList.contains('is-on') ? qcard : null]) {
+      // StageFacilities v95: and the facilities pill in the stage's top corner (it lives in the page's section, outside root)
+      const facbtn = root.parentElement && root.parentElement.parentElement ? root.parentElement.parentElement.querySelector('.nlps-facbtn') : null;
+      for (const u of [hint, root.querySelector('.rbs-presets'), root.querySelector('.rbs-caption'), label.classList.contains('is-on') ? label : null, qcard && qcard.classList.contains('is-on') ? qcard : null, facbtn]) {
         if (!u || (u === hint && u.classList.contains('is-gone'))) continue;
         const b = u.getBoundingClientRect();
         if (b.width > 0 && b.height > 0) kept.push({ x: b.left - rr.left - 4, y: b.top - rr.top - 4, w: b.width + 8, h: b.height + 8, chrome: true });
@@ -1805,7 +1813,11 @@ function createEngine(ctx) {
     const hits = (s) => kept.some((k) => s.x < k.x + k.w + 4 && k.x < s.x + s.w + 4 && s.y < k.y + k.h + 2 && k.y < s.y + s.h + 2);
     for (const s of shown) {
       if (!s.p.hero && !s.p.fac && onTower(s)) { s.p.el.style.visibility = 'hidden'; continue; }
-      if (s.p.fac) { for (let t = 0; t < 4 && hits(s); t++) s.y -= s.h + 6; }
+      if (s.p.fac) {
+        const y0 = s.y;
+        for (let t = 0; t < 4 && hits(s); t++) s.y -= s.h + 6;
+        if (hits(s) || s.y < 4) { s.y = y0; for (let t = 0; t < 4 && hits(s); t++) s.y += s.h + 6; }
+      }
       if (hits(s) || s.y < 4) { s.p.el.style.visibility = 'hidden'; continue; }
       kept.push(s);
       const fade = framedPhase || s.p.fac ? 1 : Math.min(1, Math.max(0.35, 1.25 - s.d / 2600)) * (pinned ? 0.6 : 1);

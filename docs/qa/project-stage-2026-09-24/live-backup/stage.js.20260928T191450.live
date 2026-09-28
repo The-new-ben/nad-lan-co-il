@@ -1,29 +1,30 @@
 /*
- * DUO Tel Aviv, 3D stage (prototype, 28.9.2026): the two towers of Africa Israel Residences on the official lots 111 + 112
- * of plan 2988א (Somail South), in the city as it stands today. Built on the Rainbow stage's engine (rainbow/stage.js:
- * the same light, sky, water, glide, card, quarter pins and facility pins), with a scene of its own.
+ * Ashira (Avisror Moshe & Sons), Sde Dov, 3D stage (prototype, 28.9.2026): the four buildings of lot 101 (plan תמ"ל/3001,
+ * Eshkol) on the official lot, next to Rainbow, in the quarter as it stands and as it is planned. The engine is DUO's and
+ * Rainbow's (the same light, sky, water, glide, card, quarter pins, facility pins and events), made general for buildings of
+ * different floor heights.
  *
- *   import { mountDuoStage } from './stage.js';
- *   const stage = mountDuoStage(document.getElementById('x'), { preset: 'sunset' });
- *   stage.dispose();
+ *   import { mountAshiraStage } from './stage.js';
+ *   const stage = mountAshiraStage(document.getElementById('x'), { preset: 'sunset' });
  *
  * The page needs an import map for "three" and "three/addons/" (three@0.170.0 on jsDelivr), like Rainbow's.
- * What is official and what is an illustration (docs/research/2026-09-28-stages/stage-geometry.md, section 3):
- *   OFFICIAL  the lot outline (GIS 837, lots 111 + 112 = 8,338 m², the permit's site), both tower footprints (GIS 513
- *             oids 44499 and 42941: 1,082 and 918 m²), the towers in the east half and the three commercial buildings and
- *             the sunken courtyard in the west half (licensing decision 1-25-0172, 21.9.2025), 50 residential floors with
- *             penthouses on 48-50 and private pools on 49-50, technical floors 51-52, 5 basements; the city around it (GIS).
- *   DEVELOPER the lobby of about 7 m joining the towers, the infinity pool on the lobby building's roof, the wellness
- *             complex, the gym and the residents' club.
- *   ILLUSTRATION every height (no official height or floor-to-floor height exists: 3.3 m a floor), the lobby building's
- *             and the commercial buildings' shapes and places inside their halves, the pools' shapes, the facade.
- *             The caption says so on the stage itself.
- * Events on window (user actions only, never for API calls), the same as Rainbow's so bridge.js works unchanged:
- *   nl:floor        { floor, heightM, tower, towerName }
- *   nl:facing       { floor, heightM, bearing, unit: 'N-25-w', toward, tower }
- *   nl:floor-action { action, floor, heightM, bearing, unit, tower }
- *   nl:floor-cta    { floor, bearing, tower }
- *   nl:quarter      { kind, name, id }
+ * What is official and what is an illustration (docs/research/2026-09-28-stages/stage-geometry.md, section 2):
+ *   OFFICIAL  the lot (GIS 837: lot 101, 7,426 m², block 6634); the four buildings and their quadrants, floors, heights and
+ *             homes (the local committee's agenda of 3.5.2023, the design plan in force 12.5.2024): S1, the tower, south-
+ *             west, 35 floors with the ground floor, over a base of floors 1-7, about 137 m, 202 homes, its plate up to
+ *             950 m² with its balconies, every balcony facing west, a wavy profile, the east facade split by a glazed lift
+ *             facade; S2, south-east, 9 floors, 65 homes; N1, north-west, 9 floors, 57 homes, a kindergarten of 2 classes
+ *             and its yard; N2, north-east, a mid-rise of 16 floors over a textural base, about 70 m, 82 homes; the
+ *             balconies' projections by face; the pool and the gyms underground with an English courtyard; three
+ *             residents' clubs on the ground floors of N2, S1 and S2; a colonnade along the south facade; the courtyard's
+ *             public easement; the ramp inside N1.
+ *   DRAWING   the buildings' outlines, read off the agenda's drawing and fitted to the lot (about ±2-3 m).
+ *   ILLUSTRATION where the tower's plate sits on its base (the renders show it in the middle), the facades, the mid-rise's
+ *             part of N2, the floor heights inside the official totals, the courtyard's layout, the kindergarten yard's
+ *             place, the English courtyard's place. The caption says so on the stage.
+ * Events on window (user actions only), the same as Rainbow's and DUO's, so bridge.js works unchanged:
+ *   nl:floor { floor, heightM, tower, towerName } · nl:facing { floor, heightM, bearing, unit: 'S1-25-w', toward, tower }
+ *   nl:floor-action · nl:floor-cta · nl:quarter · nl:facility · nl:view
  */
 
 let THREE = null;
@@ -36,13 +37,8 @@ const TEXT = {
   noon: 'צהריים',
   presets: 'תאורה',
   caption: 'הדמיה להמחשה בלבד, על בסיס מקורות פומביים. אינה תוכנית מכר.',
-  // always printed after the caption (the page may replace the caption; never this line): what is official, what is not
-  geo: 'המגרש וקווי המגדלים לפי עיריית תל אביב-יפו; הגבהים (3.3 מ׳ לקומה), הלובי והמסחר להמחשה.',
+  geo: 'המגרש לפי עיריית תל אביב-יפו; הבניינים, הקומות והגבהים לפי תכנית העיצוב (5.2023) בקירוב; החזיתות להמחשה.',
   floor: (n) => `קומה ${n}`,
-  // one project-wide line for every floor: the developer's site gives 2 to 5 rooms and penthouses for the project
-  low: 'דירות 2 עד 5 חדרים ופנטהאוזים, לפי אתר הפרויקט',
-  high: 'דירות 2 עד 5 חדרים ופנטהאוזים, לפי אתר הפרויקט',
-  penthouse: 'קומות הפנטהאוזים (48 עד 50), עם בריכות פרטיות בקומות 49 ו־50, לפי החלטת רשות הרישוי (9.2025)',
   cta: 'לקבלת פרטים על הקומה',
   open3d: 'סיור וירטואלי בפרויקט',
   hint: 'בחרו מגדל וקומה',
@@ -50,48 +46,45 @@ const TEXT = {
   faces: 'פונה',
   dirs: ['צפונה', 'צפון מזרחה', 'מזרחה', 'דרום מזרחה', 'דרומה', 'דרום מערבה', 'מערבה', 'צפון מערבה'],
   close: 'סגירה',
-  heroName: 'DUO',
-  from: 'מ־DUO',                 // "180 מ׳ מ־DUO"
-  in: 'ב־DUO',                   // "שאלה על הבריכה ב־DUO"
-  towers: { N: 'מגדל צפוני', S: 'מגדל דרומי' },
-  towerShort: { N: 'צפוני', S: 'דרומי' },
-  aria: 'הדמיה של פרויקט DUO תל אביב: שני מגדלי מגורים ומתחם מסחר, בין אבן גבירול, ארלוזורוב ובן סרוק',
+  heroName: 'ASHIRA',
+  from: 'מאשירה',
+  in: 'באשירה',
+  towers: { S1: 'המגדל', N2: 'המגדלון' },
+  aria: 'הדמיה של פרויקט אשירה ברובע שדה דב: מגדל, מגדלון ושני בניינים נמוכים סביב חצר, על מגרש 101',
 };
 
 const DEFAULTS = {
   preset: 'sunset',
-  poster: null,          // URL of the poster image; defaults to poster.jpg next to stage.js
-  injectCss: true,       // adds stage.css (next to stage.js) once per page
-  injectFonts: true,     // adds Assistant, Heebo, Frank Ruhl Libre and Noto Serif Hebrew from Google Fonts if missing
-  force3D: false,        // skip the weak-device and software-renderer fallback
-  ao: 'auto',            // 'auto' | 'on' | 'off'
+  poster: null,
+  injectCss: true,
+  injectFonts: true,
+  force3D: false,
+  ao: 'auto',
   autoOrbit: true,
   intro: true,
-  highFloorsFrom: 21,
-  penthouseFloors: 3,    // floors 48-50 are the penthouse floors (licensing decision 1-25-0172, 21.9.2025)
   hint: true,
   adaptive: true,
-  bearingOffset: 0,      // degrees added to every reported bearing (the scene's north is true north already)
+  bearingOffset: 0,
   glide: true,
   wheel: 'engaged',
   toneMapping: 'aces',
   text: null,
-  facingWords: null,     // (bearing) => words for that direction from the page ("לכיוון הים")
-  floorNote: null,       // (floor, tower) => the page's sourced line for that floor, or null for the project-wide line
-  quarter: null,         // quarter.json: { projects, places, note }
-  autoFacing: null,      // a side id ('w'): the first tap on a floor also picks that side's example apartment
-  actions: null,         // the floor card's actions: [{ id, label, kind: 'go' | 'sec' }]; each emits nl:floor-action
-  units: null,           // example apartments: { sides: [{ id: 'w', bearing: 280 }, ...], label: 'דירה לדוגמה', chip: 'לדוגמה' }
-  facilities: null,      // facilities.json's list (design system FacilityHotspots v72)
+  facingWords: null,
+  floorNote: null,
+  quarter: null,
+  autoFacing: null,
+  actions: null,
+  units: null,
+  facilities: null,
   wa: '',
-  tower: 'N',            // the tower a floor opens on when none is named ("25-w" from the page's steps)
+  tower: 'S1',           // the building a floor opens on when none is named ("25-w" from the page's steps)
   debug: false,
 };
 
-/* Light presets (Rainbow's). Colours are sRGB hex, converted to linear at runtime. */
+/* Light presets (DUO's). Colours are sRGB hex, converted to linear at runtime. */
 const PRESETS = {
   sunset: {
-    sunAz: 208, sunEl: 16, sunColor: '#FFC690', sunI: 6.6,
+    sunAz: 214, sunEl: 15, sunColor: '#FFC690', sunI: 6.6,
     hemiSky: '#9FB6CC', hemiGround: '#CDB08A', hemiI: 0.22,
     envWhite: 0.5, envGlass: 1.0,
     zenith: '#AFBDCA', horizon: '#EFD3B8', warm: '#F3AE7A', glowCol: '#FFCB93', glow: 1.35, warmPow: 1.5, skyGain: 1.0,
@@ -115,83 +108,76 @@ const PRESETS = {
 };
 
 /* ------------------------------------------------------------------------------------------ */
-/* The site (metres). Frame of the research file, section 0.2: origin = the area-weighted centroid of lots 111 + 112     */
-/* (32.085698, 34.782856); x = grid east, z = grid south; the grid is turned 10° east of true north, like the lots.      */
+/* The site (metres). Research section 0.2: origin = lot 101's centroid (GIS 837, 32.105643, 34.787673); x = grid east,  */
+/* z = grid south; the grid is turned 11° east of true north, like the lots of Sde Dov.                                  */
 /* ------------------------------------------------------------------------------------------ */
-const GRID_ANGLE = -10 * DEG;
+const GRID_ANGLE = -11 * DEG;
 const PLOT = { h: 1.2 };
-/* lots 111 + 112 together (GIS 837, plan 2988א; 4,379 + 3,959 = 8,338 m², the permit's site 6213/1468), clockwise from the
-   north-west corner; the rounded south-east corner is Arlozorov at Ben Saruk */
-const LOT_OUTLINE = [[-42.3, -48.5], [44.5, -49.0], [44.6, -5.8], [40.0, -5.7], [40.0, 1.7], [39.7, 37.2], [39.3, 41.0], [37.9, 44.5],
-  [34.6, 48.4], [32.6, 50.0], [28.1, 51.8], [25.7, 52.1], [-41.9, 48.6], [-42.1, 2.2]];
-/* heights: no official height or floor-to-floor height was found (research 3.3): a typical 3.3 m a floor over a lobby of
-   about 7 m (the developer), every height labelled an illustration */
-const FH = 3.3;
-const LOBBY_H = 7.0;
-const Y0 = PLOT.h + LOBBY_H + 0.4;   // floor 1's level; the lobby building's roof (the pool deck) is at PLOT.h + LOBBY_H
-const FLOORS = 50;                   // residential floors 1-50 (above them the technical floors 51-52)
-const PH_FROM = 48;                  // penthouse floors 48-50
-const TECH_H = 4.4;                  // each technical floor (illustration)
-/* the two towers' footprints, the city's building layer (GIS 513): north oid 44499 (1,082 m²), south oid 42941 (918 m²),
-   corners from the research's latitude and longitude, in the stage frame; both in the east half, 28 m apart */
+const LOT_OUTLINE = [[57.9, 43.6], [-26.5, 44.0], [-51.8, -25.2], [-56.3, -43.2], [29.8, -43.7], [33.7, -27.0], [42.5, 2.9]];
+const EYE_M = 1.6;
+const RING_OFF = 3.6;
+function normDeg(b) { return ((b % 360) + 360) % 360; }
+function levels(y0, hs) { const lv = [null, y0]; for (const h of hs) lv.push(lv[lv.length - 1] + h); return lv; }
+function rep(n, h) { return Array(n).fill(h); }
+function floorAt(TW, y) { for (let f = 1; f <= TW.floors; f++) if (y >= TW.lv[f] && y < TW.lv[f + 1]) return f; return -1; }
+
+/* the buildings' outlines (DRAWING, research 2.3) */
+const S1_BASE = [[-37.2, 5.4], [0.9, 5.2], [1.2, 39.3], [-27.3, 39.4]];
+// the tower's plate over the base: 28.6 x 30.5 m, 872 m² of glass line and 37 m² of west balconies (909 m², the plan's cap
+// is 950 m² with the balconies); where it sits on the base is not fixed: in the middle, as the plan's renders show
+const S1_PLATE = [[-27.8, 7.05], [0.8, 7.05], [0.8, 37.55], [-27.8, 37.55]];
+const S2_POLY = [[30.6, 13.3], [42.5, 13.3], [42.6, 23.6], [49.4, 23.5], [53.5, 39.0], [16.0, 39.2], [15.8, 23.7], [30.6, 23.6]];
+const N1_POLY = [[-53.4, -39.7], [-8.5, -39.9], [-8.4, -23.2], [-23.2, -23.2], [-23.1, -14.6], [-45.9, -14.4]];
+// N1's floors 4-8 (with the ground floor) are narrower and set back (the plan); the north part here, as an illustration
+const N1_UPPER = [[-53.4, -39.7], [-8.5, -39.9], [-8.45, -26.8], [-49.6, -26.8]];
+const N2_POLY = [[6.3, -40.0], [30.8, -40.1], [41.3, 4.1], [20.8, 4.2], [20.7, -21.7], [6.4, -21.6]];
+// N2's mid-rise (floors 8-16 with the ground floor) over its textural base: the arm along Levi Eshkol, as an illustration
+const N2_ARM = [[20.7, -40.05], [30.8, -40.1], [41.3, 4.1], [20.8, 4.2]];
+/* S2 and N1: 9 floors with the ground floor and the technical roof, about 38 m: a ground floor of about 7 m, 6 floors of
+   about 3.5 m and a top floor of about 4.5 m */
+const LOW_LV = levels(PLOT.h + 7, [...rep(6, 3.5), 4.5]);
+const WELL = [[-6, -4.2], [16, -4.2], [16, -1.8], [-6, -1.8]];     // the English courtyard: 53 m², 2.4 m wide (plan: <=60, <=2.5)
+const KG_YARD = [[-23, -23], [-5, -23], [-5, -9], [-23, -9]];      // the kindergarten's yard, 252 m² (plan: 250 m²; place illustrative)
+
 const TOWERS = [
-  { id: 'N', k: 1, poly: [[1.13, -45.65], [31.64, -45.96], [31.46, -10.86], [-0.11, -11.01]] },
-  { id: 'S', k: 2, poly: [[1.55, 17.28], [33.94, 17.11], [32.78, 46.12], [1.48, 45.9]] },
+  {
+    id: 'S1', k: 1, poly: S1_PLATE, floors: 34,
+    // 35 floors with the ground floor: a ground floor of 7 m, typical floors of about 3.5 m, the top penthouse floors about
+    // 4.5 m, a roof of about 9.5 m: about 137 m (the plan)
+    lv: levels(PLOT.h + 7, [...rep(32, 3.5), 4.5, 4.5]), techH: 9.5,
+    line: (f) => (f >= 33 ? 'קומות הפנטהאוזים, בגובה של כ־4.5 מ׳, לפי תכנית העיצוב (5.2023)' : 'במגדל 202 דירות: 32 קטנות, 53 בינוניות ו־117 גדולות, לפי תכנית העיצוב (5.2023)'),
+  },
+  {
+    id: 'N2', k: 2, poly: N2_ARM, floors: 15,
+    // 16 floors with the ground floor, floors 1-7 textural and 8-16 the mid-rise, a roof of about 8 m: about 70 m
+    lv: levels(PLOT.h + 7, [...rep(14, 3.5), 4.5]), techH: 8,
+    line: (f) => (f >= 7 ? 'קומות המגדלון; בבניין 82 דירות, לפי תכנית העיצוב (5.2023)' : 'הבסיס המרקמי של הבניין; בבניין 82 דירות, לפי תכנית העיצוב (5.2023)'),
+  },
 ];
 for (const T of TOWERS) {
-  T.cx = T.poly.reduce((s, p) => s + p[0], 0) / 4;
-  T.cz = T.poly.reduce((s, p) => s + p[1], 0) / 4;
-  T.floors = FLOORS;
-  T.roof = Y0 + FLOORS * FH;            // the roof of floor 50
-  T.top = T.roof + 2 * TECH_H + 3.4;    // the technical floors and the crown's screen
+  T.cx = T.poly.reduce((s, p) => s + p[0], 0) / T.poly.length;
+  T.cz = T.poly.reduce((s, p) => s + p[1], 0) / T.poly.length;
+  T.roof = T.lv[T.floors + 1];
+  T.top = T.roof + T.techH;
 }
-const TOWER_BY = { N: TOWERS[0], S: TOWERS[1] };
-const MID = { x: (TOWERS[0].cx + TOWERS[1].cx) / 2, z: (TOWERS[0].cz + TOWERS[1].cz) / 2 };
-const TOP = Math.max(TOWERS[0].top, TOWERS[1].top);
-/* the lobby building between the towers (the developer: the main lobby joins both towers; the pool on its roof); the gap
-   is the towers' own 28 m. Its outline is not public: the towers' width, as an illustration */
-const LOBBY = [[2.2, -11.0], [31.0, -10.9], [31.6, 17.1], [2.2, 17.2]];
-const DECK_Y = PLOT.h + LOBBY_H;
-const POOL = { cx: 8.6, cz: 3.0, w: 8.0, d: 21.0 };            // the infinity pool along the deck's west edge (illustration)
-const KIDPOOL = { cx: 16.4, cz: -6.2, w: 4.6, d: 3.6 };       // the toddler pool (the developer; illustration of its place)
-/* the west half (licensing decision 21.9.2025: "3 מבני מסחר, פיתוח שטח וחצר שקועה"): their places are not public; these
-   stand inside the west half as an illustration, and the caption says so */
-const RETAIL = [
-  { id: 'w', name: 'מסחר מערבי', poly: [[-40.6, -33.0], [-31.0, -33.0], [-31.0, 31.0], [-40.2, 31.0]], floors: 4, roof: true },
-  { id: 'n', name: 'מסחר צפוני', poly: [[-28.4, -47.0], [-5.0, -47.2], [-5.0, -30.6], [-28.4, -30.6]], floors: 3 },
-  { id: 's', name: 'מסחר דרומי', poly: [[-28.4, 30.0], [-5.0, 30.0], [-5.0, 47.4], [-28.4, 47.0]], floors: 3 },
-];
-const RETAIL_FH = 4.6;
-const COURT = { x0: -27.0, x1: -6.4, z0: -24.0, z1: 24.0, floor: -4.6 };   // the sunken courtyard
-const EYE_M = 1.6;
-const RING_OFF = 3.8;          // the floor ring: this far outside the glass line (clears the deepest balcony)
-function floorLevel(n) { return Y0 + (n - 1) * FH; }
-function floorEyeHeight(n) { return Math.round((floorLevel(n) + EYE_M) * 10) / 10; }
-/* FloorSlice v87 (28.9.2026): floor n of a tower ('N' | 'S') as a plan, north up, in metres from that tower's centre
-   (x east, y north), from the very numbers the towers are built from: the footprint with eased corners, the balconies
-   (deep around the corners, a sun balcony in the middle of the west and east faces, a slab edge elsewhere), the penthouse
-   floors 48-50 set back 2.2 m with deeper terraces; a core drawn along the grid. The core and any division into
-   apartments are illustrations; the plan says so. */
+const TOWER_BY = { S1: TOWERS[0], N2: TOWERS[1] };
+
+/* FloorSlice v87 (28.9.2026): floor n of a building as a plan, north up, in metres from its centre (x east, y north). Each
+   building records what it is built from (buildTower: the plate, the podium, the setback, its balcony rule), so the plan is
+   the model's own floor; before the 3D stage is built there is none. The core is an illustration; the plan says so. */
+const SLICE = {};
 function floorPlan(n, tower, offset) {
+  const S = SLICE[String(tower || '').toUpperCase()] || SLICE[TOWERS[0].id];
+  if (!S) return null;
+  const { TW, plateL, baseL, upTo, phL, phFrom, phSet, st } = S;
   const f = Math.round(Number(n));
-  const TW = TOWER_BY[String(tower || 'N').toUpperCase()];
-  if (!TW || !(f >= 1 && f <= FLOORS)) return null;
-  const ph = f >= PH_FROM;
-  const loop = resampleLoop(easeCorners(TW.poly, 1.4, 5), 136, 4);
-  // the setback line: the model offsets the eased loop by 2.2 m, more than the corners' 1.4 m radius, which folds tiny spikes
+  if (!(f >= 1 && f <= TW.floors)) return null;
+  // the setback line: the model offsets the plate (corners eased 1.2 m) by more than that radius, which folds tiny spikes
   // into the corners (hidden in 3D, visible in a plan); here the corners are eased wider first, so the line stays clean
-  const lp = ph ? offsetLoop(resampleLoop(easeCorners(TW.poly, 4.1, 5), 136, 4), -2.2) : loop;
-  const xs = TW.poly.map((p) => p[0]).slice().sort((a, b) => a - b);
-  const wMid = { x: (xs[0] + xs[1]) / 2, z: TW.cz }, eMid = { x: (xs[2] + xs[3]) / 2, z: TW.cz };
-  const D = loop.pts.map((p) => {
-    let dc = 1e9;
-    for (const c of TW.poly) dc = Math.min(dc, Math.hypot(p.x - c[0], p.z - c[1]));
-    const corner = 1 - smooth(5.8, 8.6, dc);
-    const onWE = Math.abs(p.nx) > 0.85;
-    const dm = onWE ? Math.min(Math.hypot(p.x - wMid.x, p.z - wMid.z), Math.hypot(p.x - eMid.x, p.z - eMid.z)) : 1e9;
-    const mid = 1 - smooth(4.2, 5.6, dm);
-    return 0.42 + 1.95 * Math.max(corner, mid * 0.82) + (ph ? 2.2 : 0);
-  });
+  const phClean = phSet ? offsetLoop(resampleLoop(easeCorners(st.plate || TW.poly, 1.2 + phSet + 0.5, 5), st.samples || 136, 4), -phSet) : phL;
+  const L = f <= upTo && baseL ? baseL : (f >= phFrom ? phClean : plateL);
+  const extra = f >= phFrom ? phSet : 0;
+  const D = L.pts.map((p, i) => 0.42 + extra + Math.max(0, st.balcony(faceOf(p), p, i, f, L)));
   const cg = Math.cos(GRID_ANGLE), sg = Math.sin(GRID_ANGLE); // site.rotation.y = GRID_ANGLE
   const r2 = (v) => Math.round(v * 100) / 100;
   const toPlan = (x, z) => {
@@ -200,20 +186,111 @@ function floorPlan(n, tower, offset) {
     const b = (Math.atan2(wx, -wz) / DEG + (Number(offset) || 0)) * DEG, r = Math.hypot(wx, wz);
     return [r2(r * Math.sin(b)), r2(r * Math.cos(b))];
   };
-  const glass = lp.pts.map((p) => toPlan(p.x, p.z));
-  const outer = lp.pts.map((p, i) => toPlan(p.x + p.nx * D[i], p.z + p.nz * D[i]));
-  const core = [[-6, -4.5], [6, -4.5], [6, 4.5], [-6, 4.5]].map(([x, z]) => toPlan(TW.cx + x, TW.cz + z));
-  return { floor: f, floors: FLOORS, tower: TW.id, name: (TEXT.towers || {})[TW.id] || '', penthouse: ph, heightM: floorEyeHeight(f), glass, outer, core };
+  const glass = L.pts.map((p) => toPlan(p.x, p.z));
+  const outer = L.pts.map((p, i) => toPlan(p.x + p.nx * D[i], p.z + p.nz * D[i]));
+  const core = [[-5, -3.5], [5, -3.5], [5, 3.5], [-5, 3.5]].map(([x, z]) => toPlan(TW.cx + x, TW.cz + z));
+  return { floor: f, floors: TW.floors, tower: TW.id, name: (TEXT.towers || {})[TW.id] || '', penthouse: f >= phFrom, heightM: Math.round((TW.lv[f] + EYE_M) * 10) / 10, glass, outer, core };
 }
-function normDeg(b) { return ((b % 360) + 360) % 360; }
+const SITE_C = { x: 0, z: 0 };
+const TOP = TOWERS[0].top;
+
+/* the facilities' places on the model (site-local metres); where the plan fixes no place, the card says "illustration" */
+function anchorOf(an) {
+  const Y = PLOT.h;
+  switch (an) {
+    case 'eng': return [5, Y + 1.8, -3];
+    case 'S1:club': return [-24, Y + 3, 4.2];
+    case 'S1:lobby': return [-5, Y + 3, 4.2];
+    case 'S2:club': return [14.8, Y + 3, 31];
+    case 'N2:club': return [19.4, Y + 3, -6];
+    case 'N2:lobby': return [40.6, Y + 3, -6];
+    case 'N1:kg': return [-14, Y + 2.6, -16];
+    case 'S2:retail': return [36, Y + 3, 40.6];
+    case 'court': return [-12, Y + 1.5, -11];
+    case 'N1:ramp': return [-53.5, Y + 2.2, -31];
+    default: return null;
+  }
+}
+
+const SCENE = {
+  // from the south: the tower beside its mid-rise and the two low buildings, clear of the neighbours planned to the south-west
+  hero: { bearing: 186, elev: 15, dist: 1.2, target: [-8, 64, 8], kx: [8, -4, -4], halfH: [86, 78], halfW: [52, 90] },
+  intro: { bearing: 176, elev: 40, distMul: 2.3 },
+  fac: { bearing: 226, elev: 30, target: [0, 44, 0], halfH: 86, halfW: [62, 100] },
+  holes: [{ poly: WELL }],
+  build(c) {
+    const Y = c.Y;
+    // the courtyard (the plan: in the middle of the lot, a public easement crossing north-south and east-west; its layout
+    // here an illustration)
+    courtyard(c,
+      [[-26, -4, 20, 9], [10, -14, 8, 10], [8, 14, 10, 12]],
+      [[[[3.5, -43], [3.5, 44]], 3.2], [[[-50, -11], [20, -11]], 3.2]],
+      [[-34, -6], [-28, -1], [-19, -6], [-10, 0], [12, -17], [8, -10], [9, 10], [11, 18], [-2, 20], [-30, 1]]);
+    // the English courtyard: a narrow light well down to the underground pool and gyms (the plan), with a glass rail
+    {
+      const F = Y - 6.5;
+      c.white.f = -1;
+      const inward = loopFromPoly(WELL);
+      for (const p of inward.pts) { p.nx = -p.nx; p.nz = -p.nz; }
+      addWallFlat(c.white, inward, F, Y);
+      addCap(c.water, loopFromPoly(WELL), F + 0.1, true);
+      c.glass.f = 0;
+      addWall(c.glass, offsetLoop(loopFromPoly(WELL), 0.25), Y, Y + 1.05);
+    }
+    // the kindergarten's yard: fenced and shaded (the plan: 250 m²; its place by N1 an illustration)
+    {
+      setCol(c.ground, c.C.soft);
+      addSlab(c.ground, KG_YARD, Y, Y + 0.08);
+      c.white.f = -1;
+      const L = loopFromPoly(KG_YARD);
+      for (let i = 0; i < 4; i++) {
+        const a = KG_YARD[i], b = KG_YARD[(i + 1) % 4];
+        const len = Math.hypot(b[0] - a[0], b[1] - a[1]), rot = Math.atan2(b[1] - a[1], b[0] - a[0]);
+        addBox(c.white, (a[0] + b[0]) / 2, (a[1] + b[1]) / 2, len, 0.08, Y + 1.1, Y + 1.2, rot);
+        for (let t = 0; t <= len; t += 1.6) addBox(c.white, a[0] + (b[0] - a[0]) * (t / len), a[1] + (b[1] - a[1]) * (t / len), 0.07, 0.07, Y, Y + 1.2, 0);
+      }
+      void L;
+      for (const [x0, z0, x1, z1] of [[-22, -22, -14.5, -16], [-13.5, -16, -6, -10]]) {
+        addBox(c.white, (x0 + x1) / 2, (z0 + z1) / 2, x1 - x0, z1 - z0, Y + 3.4, Y + 3.5, 0);
+        for (const [x, z] of [[x0, z0], [x1, z0], [x0, z1], [x1, z1]]) addBox(c.white, x, z, 0.16, 0.16, Y, Y + 3.4, 0);
+      }
+    }
+    // S1, the tower on its base: the colonnade along the south facade, balconies all to the west (1.2 m, wavy), the east
+    // facade split by the glazed lift facade, a white screen around the roof
+    buildTower(c, TOWERS[0], {
+      plate: S1_PLATE, base: { poly: S1_BASE, upTo: 6 },
+      groundRecess: { s: 4.5, w: 1.6 },
+      balcony: (face, p, i, f) => {
+        if (face !== 'w') return 0;
+        if (f <= 6) return 1.2;
+        return 0.1 + 1.1 * (0.5 + 0.5 * Math.sin(2 * Math.PI * (p.z / 30.5) * 2.2 + f * 0.55));
+      },
+      techH: TOWERS[0].techH, crown: 'white-fins', liftStrip: 'e',
+    });
+    // N2, the mid-rise over its textural base: balconies to the east (1.8 m), the entrances from Levi Eshkol
+    buildTower(c, TOWERS[1], {
+      plate: N2_ARM, base: { poly: N2_POLY, upTo: 6 },
+      groundRecess: { e: 1.6 },
+      balcony: (face) => (face === 'e' ? 1.8 : 0),
+      techH: TOWERS[1].techH, crown: 'white-fins',
+    });
+    // S2 on the south-east: the colonnade on the south, balconies to the east (1.25 m)
+    buildBlock(c, { poly: S2_POLY, lv: LOW_LV, floors: 7, groundRecess: { s: 4.5 }, bal: { e: 1.25 }, samples: 96, tech: [[33, 30, 7, 5, 3.2]] });
+    // N1 on the north-west: the kindergarten and the community space on the ground floor, the ramp inside it, floors 3-7
+    // narrower, balconies to the north (1.2 m)
+    buildBlock(c, { poly: N1_POLY, lv: LOW_LV, floors: 7, groundRecess: { n: 1.0 }, bal: { n: 1.2 }, upper: { from: 3, poly: N1_UPPER }, samples: 96, tech: [[-30, -33, 8, 5, 3.2]] });
+    setCol(c.ground, c.C.dark);
+    addBox(c.ground, -52.4, -31, 0.5, 7.0, Y, Y + 4.2, 0.2);
+  },
+};
 
 let cssInjected = false;
 function ensureCss() {
-  if (cssInjected || document.querySelector('link[data-dus-css]')) { cssInjected = true; return; }
+  if (cssInjected || document.querySelector('link[data-ashira-css]')) { cssInjected = true; return; }
   const l = document.createElement('link');
   l.rel = 'stylesheet';
   l.href = new URL('./stage.css', import.meta.url).href + (new URL(import.meta.url).search || '');
-  l.setAttribute('data-dus-css', '');
+  l.setAttribute('data-ashira-css', '');
   document.head.appendChild(l);
   cssInjected = true;
 }
@@ -267,14 +344,14 @@ function el(tag, cls, parent, attrs) {
 /* Public API                                                                                  */
 /* ------------------------------------------------------------------------------------------ */
 
-export function mountDuoStage(container, options = {}) {
-  if (!container) throw new Error('mountDuoStage: a container element is required');
+export function mountAshiraStage(container, options = {}) {
+  if (!container) throw new Error('mountAshiraStage: a container element is required');
   const opts = { ...DEFAULTS, ...options };
   const T = { ...TEXT, ...(options.text || {}) };
   if (opts.injectCss) ensureCss();
   if (opts.injectFonts) ensureFonts();
-  // the page's "inside the apartment" action needs interior pictures; DUO has none yet: that action is left out, so no
-  // button on the card does nothing (the other actions stay as the page gives them)
+  // the page's "inside the apartment" action needs interior pictures; this project has none yet: that action is left out,
+  // so no button on the card does nothing (the other actions stay as the page gives them)
   if (Array.isArray(opts.actions) && !document.querySelector('[data-nlps-tour]')) opts.actions = opts.actions.filter((a) => a.id !== 'inside');
 
   const mq = (q) => (window.matchMedia ? window.matchMedia(q).matches : false);
@@ -283,8 +360,8 @@ export function mountDuoStage(container, options = {}) {
   const smallScreen = Math.min(screen.width, screen.height) < 600;
   const phone = coarse && smallScreen;
 
-  /* DOM (Rainbow's classes, rbs-; DUO's own additions are dus-) */
-  const root = el('div', 'rbs dus', null, { dir: 'rtl', lang: 'he' });
+  /* DOM (Rainbow's classes, rbs-; the DUO family's additions, dus-) */
+  const root = el('div', 'rbs dus ashira', null, { dir: 'rtl', lang: 'he' });
   if (container.clientHeight < 40) root.classList.add('rbs--auto');
   const ssr = container.querySelector('img.nlps-ssr-poster');
   const poster = ssr || el('img', 'rbs-poster', root, { alt: T.aria, decoding: 'async', fetchpriority: 'high' });
@@ -356,7 +433,7 @@ export function mountDuoStage(container, options = {}) {
     heroEl.textContent = T.heroName;
     const G = GRID_ANGLE;
     qpins.push({ el: heroEl, it: { kind: 'hero', name: T.heroName }, hero: true,
-      x: MID.x * Math.cos(G) + MID.z * Math.sin(G), y: TOP + 10, z: -MID.x * Math.sin(G) + MID.z * Math.cos(G), w: 0 });
+      x: TOWERS[0].cx * Math.cos(G) + TOWERS[0].cz * Math.sin(G), y: TOWERS[0].top + 10, z: -TOWERS[0].cx * Math.sin(G) + TOWERS[0].cz * Math.cos(G), w: 0 });
     qcard = el('div', 'rbs-qcard', ui, { role: 'dialog', 'aria-live': 'polite' });
   }
   /* the project's facilities (design system FacilityHotspots v72): a pin per facility on the model, each with a card that
@@ -426,7 +503,7 @@ export function mountDuoStage(container, options = {}) {
         onContextLost: () => { root.classList.remove('rbs--live', 'rbs--settled'); },
       });
     } catch (err) {
-      console.warn('[duo-stage] 3D unavailable, keeping the poster.', err);
+      console.warn('[ashira-stage] 3D unavailable, keeping the poster.', err);
       root.classList.add('rbs--fallback', 'rbs--nogl');
     }
   }
@@ -465,27 +542,31 @@ export function mountDuoStage(container, options = {}) {
       setPresetButtons(k);
       if (engine) engine.setPreset(k);
     },
-    /* pick a floor (the camera glides to it) on a tower ('N' | 'S'; default: the tower picked last, else opts.tower) */
+    /* pick a floor (the camera glides to it) on a building by its id (default: the one picked last, else opts.tower) */
     selectFloor(n, tower) { if (engine) engine.selectFloor(n, tower); },
     clearFloor() { if (engine) engine.clearFloor(); },
     setFacing(bearing) { return engine ? engine.setFacing(bearing) : null; },
     clearFacing() { if (engine) engine.clearFacing(); },
-    /* an example apartment by its id: "N-25-w" (tower, floor, side), or "25-w" on the current tower */
+    /* an example apartment by its id: "A-25-w" (building, floor, side), or "25-w" on the current building */
     selectUnit(id, source) { return engine ? engine.selectUnit(id, source) : null; },
     openQuarter(name) { return engine ? engine.openQuarter(name) : false; },
     /* the legend: 'facilities' | 'today' | 'building' | 'selling' | 'permit' shows that group alone; null shows all */
     focusPhase(ph) { return engine ? engine.focusPhase(ph) : null; },
     lookToward(name) { return engine ? engine.lookToward(name) : false; },
     /* { tower, floor, heightM, bearing, unit } of the current pick, or null */
-    getSelection() { return engine ? engine.getSelection() : null; },
-    floorHeight(n) { const f = Math.round(Number(n)); return f >= 1 && f <= FLOORS ? floorEyeHeight(f) : null; },
-    /* FloorSlice v87: floor n of a tower as a plan (see floorPlan), for assets/project-stage/slice.js */
+    /* FloorSlice v87: floor n of a building as a plan (see floorPlan), for assets/project-stage/slice.js */
     floorPlan(n, tower) { return floorPlan(n, tower, Number(opts.bearingOffset) || 0); },
+    getSelection() { return engine ? engine.getSelection() : null; },
+    floorHeight(n, tower) {
+      const TW = TOWER_BY[String(tower || opts.tower || '').toUpperCase()] || TOWERS[0];
+      const f = Math.round(Number(n));
+      return f >= 1 && f <= TW.floors ? Math.round((TW.lv[f] + EYE_M) * 10) / 10 : null;
+    },
     getNorth() { return engine ? engine.getNorth() : staticNorth(Number(opts.bearingOffset) || 0); },
     setAutoOrbit(on) { if (engine) engine.setAutoOrbit(on); },
     stats() { return engine ? engine.stats() : null; },
     /* the shared viewing room (inc/together.php, design system TogetherRoom v77, being added to Rainbow's stage on
-       28.9.2026): the same calls, so a room can drive DUO too. The camera as data ({ target: [x, y, z], r, phi, theta }),
+       28.9.2026): the same calls, so a room can drive this stage too. The camera as data ({ target: [x, y, z], r, phi, theta }),
        a glide to it; a screen point as a scene point ({ x, y, z, floor, tower, on }) and back ({ x, y, behind }). */
     getView() { return engine ? engine.getView() : null; },
     setView(v, dur) { return engine ? engine.setView(v, dur) : false; },
@@ -518,6 +599,7 @@ function createEngine(ctx) {
   const T = TX;
   const qpins = ctx.qpins || [], qcard = ctx.qcard || null, fpins = ctx.fpins || [];
   let facMode = false; // the legend's "מתקנים בפרויקט" chip: the facility pins on, the quarter's pins off
+  let framedPhase = false; // the legend pulled the camera back to show a group
   const leaderLine = leader.querySelector('line');
   const leaderDot = leader.querySelector('circle');
 
@@ -561,10 +643,10 @@ function createEngine(ctx) {
     uWarmPow: { value: 2 },
     uFogDensity: { value: 1 / 2400 },
     uHiFloor: { value: -100 },
-    uHiTower: { value: 0 },        // 1 = the north tower, 2 = the south tower
+    uHiTower: { value: 0 },        // the picked building's number (TOWERS[i].k)
     uHiColor: { value: new THREE.Color('#2F6F86') },
-    uFloorY0: { value: Y0 },
-    uFloorH: { value: FH },
+    uHiYa: { value: -1e4 },        // the picked floor's band in height (the glass): from
+    uHiYb: { value: -1e4 },        // to
     uCoast: { value: new THREE.Vector4() },
     uSeaShallow: { value: new THREE.Color() },
     uGhostFade: { value: 0.14 },
@@ -649,22 +731,22 @@ function createEngine(ctx) {
   }
 
   const heroTarget = new THREE.Vector3();
-  const introTarget = localToWorld(MID.x - 6, 40, MID.z);
+  const introTarget = localToWorld(SCENE.hero.target[0], SCENE.hero.target[1] * 0.45, SCENE.hero.target[2]);
   controls.target.copy(heroTarget);
   function heroDistance() {
     const vf = camera.fov * DEG;
     const hf = 2 * Math.atan(Math.tan(vf / 2) * camera.aspect);
-    const halfW = camera.aspect < 1 ? 66 : 96;
-    return (HERO.dist || 1) * Math.max((camera.aspect < 1 ? 124 : 112) / Math.tan(vf / 2), halfW / Math.tan(hf / 2));
+    const p = camera.aspect < 1 ? 0 : 1;
+    return (HERO.dist || 1) * Math.max(HERO.halfH[p] / Math.tan(vf / 2), HERO.halfW[p] / Math.tan(hf / 2));
   }
   function heroTargetFor(aspect, out) {
-    // portrait stages centre on the towers themselves; landscape keeps the west half's retail and the courtyard in frame
+    // portrait stages centre on the tower itself; landscape moves by the project's own shift (kx) to keep the lot in frame
     const k = Math.min(1, Math.max(0, (aspect - 0.6) / 0.6));
-    return localToWorld(MID.x - 2 - 10 * k, 86 - 6 * k, MID.z + 2, out);
+    const t = HERO.target, kx = HERO.kx || [0, 0, 0];
+    return localToWorld(t[0] + kx[0] * k, t[1] + kx[1] * k, t[2] + kx[2] * k, out);
   }
-  // from the south-west (Ibn Gabirol at Arlozorov), the low sun behind the camera: both towers side by side, lit warm
-  const HERO = { bearing: 250, elev: 18, dist: 1.1 };
-  const INTRO = { bearing: 214, elev: 40, distMul: 2.3 };
+  const HERO = SCENE.hero;
+  const INTRO = SCENE.intro;
   heroTargetFor(1.6, heroTarget);
 
   /* state */
@@ -740,7 +822,7 @@ function createEngine(ctx) {
     const az = s.sunAz * DEG, elv = s.sunEl * DEG;
     const dir = new THREE.Vector3(Math.sin(az) * Math.cos(elv), Math.sin(elv), -Math.cos(az) * Math.cos(elv)).normalize();
     U.uSunDir.value.copy(dir);
-    const focus = localToWorld(MID.x, 0, MID.z, tmpV);
+    const focus = localToWorld(SITE_C.x, 0, SITE_C.z, tmpV);
     sun.target.position.copy(focus);
     sun.position.copy(focus).addScaledVector(dir, 1500);
     sun.color.copy(s.sunColor);
@@ -756,7 +838,7 @@ function createEngine(ctx) {
     U.uRoseAmt.value = s.roseAmt;
     U.uSkyGlow.value = s.glow;
     U.uWarmPow.value = s.warmPow;
-    U.uFogDensity.value = s.fog;
+    U.uFogDensity.value = s.fog * (framedPhase ? 0.3 : 1); // the legend's wide views see far: less haze
     U.uSeaShallow.value.copy(s.seaShallow);
     U.uSunTint.value.copy(s.sunColor).multiplyScalar(s.sunI * 0.9);
     U.uSparkle.value = s.sparkle;
@@ -795,8 +877,8 @@ function createEngine(ctx) {
     const R = 250;
     for (let i = 0; i < 16; i++) {
       const a = (i / 16) * Math.PI * 2;
-      pts.push(localToWorld(MID.x + Math.cos(a) * R, 0, MID.z + Math.sin(a) * R));
-      pts.push(localToWorld(MID.x + Math.cos(a) * R, 40, MID.z + Math.sin(a) * R));
+      pts.push(localToWorld(SITE_C.x + Math.cos(a) * R, 0, SITE_C.z + Math.sin(a) * R));
+      pts.push(localToWorld(SITE_C.x + Math.cos(a) * R, 40, SITE_C.z + Math.sin(a) * R));
     }
     for (const TW of TOWERS) pts.push(localToWorld(TW.cx, TW.top + 6, TW.cz));
     let minX = 1e9, maxX = -1e9, minY = 1e9, maxY = -1e9, minZ = 1e9, maxZ = -1e9;
@@ -885,7 +967,7 @@ function createEngine(ctx) {
     const hit = raycaster.intersectObjects(world.towerProxies, false)[0];
     if (!hit) return null;
     const TW = hit.object.userData.tower;
-    const f = Math.floor((hit.point.y - Y0) / FH) + 1;
+    const f = floorAt(TW, hit.point.y);
     if (f < 1 || f > TW.floors) return null;
     return { tower: TW, floor: f, point: hit.point };
   }
@@ -945,7 +1027,7 @@ function createEngine(ctx) {
   const trueBearing = (sb) => normDeg(sb + offset);
   const round1 = (b) => { const v = Math.round(normDeg(b) * 10) / 10; return v >= 360 ? 0 : v; };
   const dirWord = (b) => T.dirs[Math.round(normDeg(b) / 45) % 8];
-  const heightOf = (f) => floorEyeHeight(f);
+  const heightOf = (TW, f) => Math.round((TW.lv[f] + EYE_M) * 10) / 10;
   const nameOf = (TW) => (T.towers && T.towers[TW.id]) || TW.id;
 
   /* example apartments (the owner, 25.9.2026): one per side of each tower floor, labelled examples everywhere */
@@ -966,7 +1048,7 @@ function createEngine(ctx) {
      length; every sample carries its facade point, its outward normal, the normal's bearing and the side it belongs to */
   const RING_N = 960;
   for (const TW of TOWERS) {
-    const P = TW.poly.slice();
+    const P = (TW.ringPoly || TW.poly).slice();
     let ar = 0;
     for (let i = 0; i < P.length; i++) { const a = P[i], b = P[(i + 1) % P.length]; ar += a[0] * b[1] - b[0] * a[1]; }
     const sg = ar > 0 ? 1 : -1;
@@ -1026,12 +1108,12 @@ function createEngine(ctx) {
       }
     }
     // the picked floor's label is anchored to the tower's outline: its corners, a little outside the balconies
-    TW.cornersW = TW.poly.map(([x, z]) => {
+    TW.cornersW = (TW.ringPoly || TW.poly).map(([x, z]) => {
       const dx = x - TW.cx, dz = z - TW.cz, l = Math.hypot(dx, dz) || 1;
       return localToWorld(x + (dx / l) * 2.8, 0, z + (dz / l) * 2.8);
     });
   }
-  const ringY = (f) => floorLevel(f) + 0.5;
+  const ringY = (TW, f) => TW.lv[f] + 0.5;
   /* the ring sample of a tower that lies in a scene direction from the tower's centre */
   function idxByAngle(TW, sb) {
     let best = 0, bd = 1e9;
@@ -1102,7 +1184,7 @@ function createEngine(ctx) {
     if (pts.length < 2) { mesh.visible = false; return; }
     mesh.geometry.dispose();
     mesh.geometry = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts, false, 'centripetal'), Math.max(8, pts.length * 2), 0.36, 8, false);
-    mesh.position.set(0, ringY(f), 0);
+    mesh.position.set(0, ringY(TW, f), 0);
     mesh.visible = true;
   }
 
@@ -1127,7 +1209,7 @@ function createEngine(ctx) {
   function placeArrow(mesh, TW, idx, f, sb) {
     const r = TW.ring[idx];
     const b = sb != null ? sb : r.sb;
-    mesh.position.set(r.x, ringY(f), r.z);
+    mesh.position.set(r.x, ringY(TW, f), r.z);
     mesh.rotation.set(0, Math.atan2(Math.sin(b * DEG), -Math.cos(b * DEG)), 0);
     mesh.visible = true;
   }
@@ -1186,7 +1268,7 @@ function createEngine(ctx) {
     updateFacingUI();
     needsRender = true;
     lastInteract = performance.now();
-    if (source === 'user') emit('nl:facing', { floor: selected.floor, heightM: heightOf(selected.floor), bearing: b, unit: facing.unit, toward: facing.toward, tower: TW.id });
+    if (source === 'user') emit('nl:facing', { floor: selected.floor, heightM: heightOf(selected.tower, selected.floor), bearing: b, unit: facing.unit, toward: facing.toward, tower: TW.id });
     return b;
   }
   function setFacingBearing(b, source, toward) {
@@ -1225,15 +1307,16 @@ function createEngine(ctx) {
   function pickFacing(clientX, clientY, towerHit) {
     if (!selected || !selected.pinned) return -1;
     const TW = selected.tower, f = selected.floor;
-    if (towerHit && towerHit.tower === TW && Math.abs(towerHit.point.y - (floorLevel(f) + FH / 2)) < FH * 0.75) {
+    const fh = TW.lv[f + 1] - TW.lv[f];
+    if (towerHit && towerHit.tower === TW && Math.abs(towerHit.point.y - (TW.lv[f] + fh / 2)) < fh * 0.75) {
       return nearestIdx(TW, towerHit.point.x, towerHit.point.z, true).idx;
     }
     setRay(clientX, clientY);
-    ringPlane.constant = -ringY(f);
+    ringPlane.constant = -ringY(TW, f);
     if (!raycaster.ray.intersectPlane(ringPlane, planeHit)) return -1;
     const near = nearestIdx(TW, planeHit.x, planeHit.z, false);
     const r = TW.ring[near.idx];
-    const a = projectToStage(tmpV.set(r.x, ringY(f), r.z));
+    const a = projectToStage(tmpV.set(r.x, ringY(TW, f), r.z));
     const rect = canvas.getBoundingClientRect();
     const tol = pointer.type === 'touch' ? 34 : 22;
     if (Math.hypot(rect.left + a.x - clientX, rect.top + a.y - clientY) > tol && near.dist > 3) return -1;
@@ -1277,7 +1360,7 @@ function createEngine(ctx) {
     if (k === 'ArrowUp' || k === 'ArrowDown' || k === 'PageUp' || k === 'PageDown') {
       e.preventDefault();
       const step = (k === 'ArrowUp' || k === 'PageUp') ? 1 : -1;
-      const next = pinned ? Math.min(FLOORS, Math.max(1, selected.floor + step)) : 25;
+      const next = pinned ? Math.min(selected.tower.floors, Math.max(1, selected.floor + step)) : Math.min(25, lastTower.floors);
       if (!pinned || next !== selected.floor) selectFloor(next, 'user', pinned ? selected.tower : lastTower);
     } else if ((k === 'ArrowLeft' || k === 'ArrowRight') && pinned) {
       e.preventDefault();
@@ -1285,9 +1368,10 @@ function createEngine(ctx) {
       if (facing) setFacingBearing(Math.round(facing.bearing / step) * step + (k === 'ArrowRight' ? step : -step), 'user');
       else setFacingBearing(Math.round(bearingTowardCamera() / step) * step, 'user');
     } else if ((k === 't' || k === 'T') && pinned) {
-      // the other tower, the same floor
+      // the next building, the same floor (or its top one)
       e.preventDefault();
-      selectFloor(selected.floor, 'user', selected.tower === TOWERS[0] ? TOWERS[1] : TOWERS[0]);
+      const nx = TOWERS[(TOWERS.indexOf(selected.tower) + 1) % TOWERS.length];
+      selectFloor(Math.min(selected.floor, nx.floors), 'user', nx);
     } else if (k === 'Enter' && selected) {
       e.preventDefault();
       emitCta();
@@ -1304,7 +1388,7 @@ function createEngine(ctx) {
   for (const id of Object.keys(actBtns || {})) {
     on(actBtns[id], 'click', () => {
       if (!selected || fresh()) return;
-      emit('nl:floor-action', { action: id, floor: selected.floor, heightM: heightOf(selected.floor), bearing: facing ? facing.bearing : null, unit: facing ? facing.unit : null, tower: selected.tower.id });
+      emit('nl:floor-action', { action: id, floor: selected.floor, heightM: heightOf(selected.tower, selected.floor), bearing: facing ? facing.bearing : null, unit: facing ? facing.unit : null, tower: selected.tower.id });
     });
   }
   on(labelClose, 'click', () => clearFloor());
@@ -1381,7 +1465,7 @@ function createEngine(ctx) {
     const auto = !facing && !skipAuto && UNITS && opts.autoFacing ? UNITS.sides.find((x) => x.id === opts.autoFacing) : null;
     if (auto) facing = { idx: idxForFacing(TW, auto.bearing, auto.id), bearing: round1(auto.bearing), sb: normDeg(auto.bearing - offset), unit: `${TW.id}-${f}-${auto.id}`, toward: null, auto: true };
     for (const X of TOWERS) X.ringGroup.visible = X === TW;
-    TW.ringGroup.position.y = ringY(f);
+    TW.ringGroup.position.y = ringY(TW, f);
     dimTarget = 1;
     if (reduced) U.uDim.value = 1;
     U.uHiGlow.value = 0.5;
@@ -1399,8 +1483,8 @@ function createEngine(ctx) {
     frameFloor(TW, f, prev, prevT);
     lastInteract = performance.now();
     if (source === 'user') {
-      emit('nl:floor', { floor: f, heightM: heightOf(f), tower: TW.id, towerName: TW.name });
-      if (facing) emit('nl:facing', { floor: f, heightM: heightOf(f), bearing: facing.bearing, unit: facing.unit, tower: TW.id });
+      emit('nl:floor', { floor: f, heightM: heightOf(TW, f), tower: TW.id, towerName: TW.name });
+      if (facing) emit('nl:facing', { floor: f, heightM: heightOf(TW, f), bearing: facing.bearing, unit: facing.unit, tower: TW.id });
     }
   }
   function showFloor(TW, f, pinned) {
@@ -1408,11 +1492,12 @@ function createEngine(ctx) {
     selected = { tower: TW, floor: f, pinned };
     U.uHiFloor.value = f;
     U.uHiTower.value = TW.k;
+    U.uHiYa.value = TW.lv[f];
+    U.uHiYb.value = TW.lv[f + 1];
     labelKick.textContent = TW.name;
     labelTitle.textContent = T.floor(f);
     const note = typeof opts.floorNote === 'function' ? opts.floorNote(f, TW.id) : null;
-    const top = FLOORS - (opts.penthouseFloors || 0);
-    labelLine.textContent = note ? String(note) : (opts.penthouseFloors && f > top ? T.penthouse : (f >= opts.highFloorsFrom ? T.high : T.low));
+    labelLine.textContent = note ? String(note) : TW.line(f);
     labelFacing.hidden = !pinned;
     label.classList.add('is-on');
     labelBox.w = 0;
@@ -1428,6 +1513,8 @@ function createEngine(ctx) {
     for (const X of TOWERS) X.ringGroup.visible = false;
     U.uHiFloor.value = -100;
     U.uHiTower.value = 0;
+    U.uHiYa.value = -1e4;
+    U.uHiYb.value = -1e4;
     U.uHiGlow.value = 0.22;
     dimTarget = 0;
     if (reduced) U.uDim.value = 0;
@@ -1498,7 +1585,7 @@ function createEngine(ctx) {
   function floorFrame(TW, f) {
     const vf = camera.fov * DEG, hf = 2 * Math.atan(Math.tan(vf / 2) * camera.aspect);
     const r = Math.max(28 / Math.tan(vf / 2), 42 / Math.tan(hf / 2));
-    const y = floorLevel(f) + EYE_M;
+    const y = TW.lv[f] + EYE_M;
     // low floors are seen from a little higher, so the retail buildings and the lobby do not hide them
     const elev = y < 40 ? Math.min(40, Math.max(9, Math.atan2(40 - y, 30) / DEG)) : 9;
     // a phone: the card docks at the bottom of the stage, so the picked floor is framed in the upper third
@@ -1532,14 +1619,14 @@ function createEngine(ctx) {
     camRight.y = 0;
     camRight.normalize().multiplyScalar(side);
     supportPoint(TW, camRight, tmpV);
-    tmpV.y = floorLevel(f) + 0.6;
+    tmpV.y = TW.lv[f] + 0.6;
     return projectToStage(tmpV);
   }
   function arrowTip() {
     if (!facing || !selected) return null;
     const r = selected.tower.ring[facing.idx], L = ARROW_LEN + 1.4;
     const dx = Math.sin(facing.sb * DEG), dz = -Math.cos(facing.sb * DEG);
-    return projectToStage(tmpV.set(r.x + dx * L, ringY(selected.floor), r.z + dz * L));
+    return projectToStage(tmpV.set(r.x + dx * L, ringY(selected.tower, selected.floor), r.z + dz * L));
   }
   function placeLabel() {
     if (!selected) return;
@@ -1581,12 +1668,6 @@ function createEngine(ctx) {
       // on a narrow stage)
       x = labelSide === 1 ? stageW - lw - 14 : 14;
       y = Math.min(Math.max(14, a.y - lh / 2), stageH - lh - 64);
-      // StageFacilities v95: never under the facilities pill in the stage's top corner
-      const pill = root.parentElement && root.parentElement.parentElement ? root.parentElement.parentElement.querySelector('.nlps-facbtn') : null;
-      if (pill) {
-        const pr = pill.getBoundingClientRect(), sr = root.getBoundingClientRect();
-        if (x < pr.right - sr.left && x + lw > pr.left - sr.left && y < pr.bottom - sr.top + 8) y = Math.round(pr.bottom - sr.top + 8);
-      }
       shift.tx = cardMin ? 0 : Math.round((lw + 28) / 2) * labelSide;
       shift.ty = 0;
       shift.tk = cardMin ? 1 : Math.max(0.62, Math.min(1, (stageW - lw - 28) / stageW));
@@ -1623,10 +1704,10 @@ function createEngine(ctx) {
 
   /* the quarter's pins: over each mass and place; hidden behind the camera or off the stage, fainter far away */
   const qv = new THREE.Vector3(), qdir = new THREE.Vector3();
-  let framedPhase = false;
+  const setFog = () => { U.uFogDensity.value = (trans ? U.uFogDensity.value : cur.fog * (framedPhase ? 0.3 : 1)); };
   const frameCam = camera.clone();
   function frameGroup(k) {
-    const tw = localToWorld(MID.x, 0, MID.z);
+    const tw = localToWorld(SITE_C.x, 0, SITE_C.z);
     const pts = [];
     for (const TW of TOWERS) for (const c of TW.cornersW) pts.push(new THREE.Vector3(c.x, 0, c.z), new THREE.Vector3(c.x, TW.top, c.z));
     const centres = [];
@@ -1659,19 +1740,8 @@ function createEngine(ctx) {
     glideTo(c, hi, phi, th, 1.2);
   }
   function facilityPoint(an, out) {
-    const ph = /^ph:([NS])$/.exec(an);
-    if (ph && TOWER_BY[ph[1]]) {
-      const pp = phPools(TOWER_BY[ph[1]])[0]; // floor 49's pool on its terrace (illustration)
-      return localToWorld(pp.cx + pp.nx * 1.2, floorLevel(pp.f) + 2.2, pp.cz + pp.nz * 1.2, out);
-    }
-    const zMid = (LOBBY[0][1] + LOBBY[3][1]) / 2;
-    if (an === 'deck:pool') return localToWorld(POOL.cx, DECK_Y + 1.6, POOL.cz + 6, out);
-    if (an === 'lobby') return localToWorld(LOBBY[0][0] - 1.0, PLOT.h + 2.4, zMid - 7, out);
-    // the wellness complex, the gym and the club: the floor is not published; at the north tower's base (illustration)
-    if (an === 'club') { const TW = TOWERS[0]; return localToWorld(TW.poly[0][0] - 1.5, PLOT.h + 3.2, TW.cz - 4, out); }
-    if (an === 'court') return localToWorld((COURT.x0 + COURT.x1) / 2, PLOT.h + 1.6, (COURT.z0 + COURT.z1) / 2, out);
-    if (an === 'parking') return localToWorld(-2.0, PLOT.h + 1.2, 40, out);
-    return null;
+    const p = anchorOf(an); // the project's own places for its facilities (site-local metres), or null
+    return p ? localToWorld(p[0], p[1], p[2], out) : null;
   }
   function towerRects() {
     // each tower on screen (and a band above its crown): no quarter pin may sit on it, in front of it or behind it
@@ -1726,9 +1796,7 @@ function createEngine(ctx) {
     const kept = [];
     {
       const rr = root.getBoundingClientRect();
-      // StageFacilities v95: and the facilities pill in the stage's top corner (it lives in the page's section, outside root)
-      const facbtn = root.parentElement && root.parentElement.parentElement ? root.parentElement.parentElement.querySelector('.nlps-facbtn') : null;
-      for (const u of [hint, root.querySelector('.rbs-presets'), root.querySelector('.rbs-caption'), label.classList.contains('is-on') ? label : null, qcard && qcard.classList.contains('is-on') ? qcard : null, facbtn]) {
+      for (const u of [hint, root.querySelector('.rbs-presets'), root.querySelector('.rbs-caption'), label.classList.contains('is-on') ? label : null, qcard && qcard.classList.contains('is-on') ? qcard : null]) {
         if (!u || (u === hint && u.classList.contains('is-gone'))) continue;
         const b = u.getBoundingClientRect();
         if (b.width > 0 && b.height > 0) kept.push({ x: b.left - rr.left - 4, y: b.top - rr.top - 4, w: b.width + 8, h: b.height + 8, chrome: true });
@@ -1737,11 +1805,7 @@ function createEngine(ctx) {
     const hits = (s) => kept.some((k) => s.x < k.x + k.w + 4 && k.x < s.x + s.w + 4 && s.y < k.y + k.h + 2 && k.y < s.y + s.h + 2);
     for (const s of shown) {
       if (!s.p.hero && !s.p.fac && onTower(s)) { s.p.el.style.visibility = 'hidden'; continue; }
-      if (s.p.fac) {
-        const y0 = s.y;
-        for (let t = 0; t < 4 && hits(s); t++) s.y -= s.h + 6;
-        if (hits(s) || s.y < 4) { s.y = y0; for (let t = 0; t < 4 && hits(s); t++) s.y += s.h + 6; }
-      }
+      if (s.p.fac) { for (let t = 0; t < 4 && hits(s); t++) s.y -= s.h + 6; }
       if (hits(s) || s.y < 4) { s.p.el.style.visibility = 'hidden'; continue; }
       kept.push(s);
       const fade = framedPhase || s.p.fac ? 1 : Math.min(1, Math.max(0.35, 1.25 - s.d / 2600)) * (pinned ? 0.6 : 1);
@@ -1756,15 +1820,16 @@ function createEngine(ctx) {
       localToWorld(m.x, m.y, m.z, qv);
       const a = projectToStage(qv);
       if (a.behind || a.x < 10 || a.x > stageW - 10 || a.y < 14 || a.y > stageH - 30) { m.el.style.visibility = 'hidden'; continue; }
-      if (m.kind === 'street') {
-        // a street behind a tower is not named on the tower
+      {
+        // a name behind a building is not written on that building (a tower's own name is not hidden by itself)
         qdir.subVectors(qv, camera.position);
         const dd = qdir.length();
         raycaster.set(camera.position, qdir.normalize());
         raycaster.far = dd;
-        const behindTower = raycaster.intersectObjects(world.towerProxies, false).length > 0;
+        const occ = world.occluders ? world.towerProxies.concat(world.occluders) : world.towerProxies;
+        const behind = raycaster.intersectObjects(m.tw ? occ.filter((o) => o.userData.tower !== m.tw) : occ, false).length > 0;
         raycaster.far = Infinity;
-        if (behindTower) { m.el.style.visibility = 'hidden'; continue; }
+        if (behind) { m.el.style.visibility = 'hidden'; continue; }
       }
       if (!m.w && m.el.offsetWidth) { m.w = m.el.offsetWidth; m.h = m.el.offsetHeight; }
       const w = m.w || 70, h = m.h || 20;
@@ -1895,7 +1960,7 @@ function createEngine(ctx) {
         gtao.updateGtaoMaterial({ radius: 4.0, distanceExponent: 1.4, thickness: 5.0, scale: 1.6, samples: 16, distanceFallOff: 1.0, screenSpaceRadius: false });
         gtao.updatePdMaterial({ lumaPhi: 10, depthPhi: 2, normalPhi: 3, radius: 7, radiusExponent: 1.5, rings: 3, samples: 16 });
         // AO only on DUO's own lot and its street edges: the city, the far sea and the horizon stay clean
-        gtao.setSceneClipBox(new THREE.Box3(new THREE.Vector3(-120, -8, -120), new THREE.Vector3(120, TOP + 12, 120)));
+        gtao.setSceneClipBox(new THREE.Box3(new THREE.Vector3(-140, -8, -140), new THREE.Vector3(140, TOP + 12, 140)));
         const blendMat = new THREE.ShaderMaterial({
           uniforms: { tAO: { value: gtao.gtaoMap }, uStrength: { value: 0 } },
           vertexShader: 'varying vec2 vUv; void main() { vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }',
@@ -1917,7 +1982,7 @@ function createEngine(ctx) {
       perf.times.length = 0;
       needsRender = true;
     } catch (err) {
-      console.warn('[duo-stage] AO unavailable', err);
+      console.warn('[project-stage] AO unavailable', err);
       aoBlocked = true;
     } finally { aoLoading = false; }
   }
@@ -2117,9 +2182,10 @@ function createEngine(ctx) {
     },
     selectFloor(n, tower) {
       const f = Math.round(Number(n));
-      if (!(f >= 1 && f <= FLOORS)) return;
+      const TW = towerOf(tower) || (selected && selected.pinned ? selected.tower : lastTower);
+      if (!(f >= 1 && f <= TW.floors)) return;
       if (phase === 'intro') endIntro();
-      selectFloor(f, 'api', towerOf(tower));
+      selectFloor(f, 'api', TW);
       kick();
     },
     clearFloor() { clearFloor(); kick(); },
@@ -2138,20 +2204,22 @@ function createEngine(ctx) {
       for (const p of fpins) p.off = !facMode;
       if (facMode) {
         for (const p of qpins) if (!p.hero) p.off = true;
+        // the project alone: the neighbours' schematic masses step aside while its facilities are shown
+        for (const g in (world.qGroups || {})) for (const m of world.qGroups[g]) m.visible = false;
         if (qcard) qcard.classList.remove('is-on');
         framedPhase = false;
         if (selected && selected.pinned) clearFloor();
         // the whole project in view from a little higher, from the south-west (the pool deck faces west): the deck, the
         // courtyard, the lobby and the penthouse terraces at once
-        // the whole project, the towers' tops (the penthouses' pools) to the courtyard, from the south-west and a little higher
-        const narrow = camera.aspect < 1;
-        const tgt = localToWorld(MID.x - 10, TOP * 0.5, MID.z + 2, new THREE.Vector3());
+        // the whole project in view, from the project's own facilities angle (SCENE.fac)
+        const narrow = camera.aspect < 1, FV = SCENE.fac;
+        const tgt = localToWorld(FV.target[0], FV.target[1], FV.target[2], new THREE.Vector3());
         const vf = camera.fov * DEG, hf = 2 * Math.atan(Math.tan(vf / 2) * camera.aspect);
-        const r = Math.max((TOP * 0.5 + 38) / Math.tan(vf / 2), (narrow ? 58 : 112) / Math.tan(hf / 2));
+        const r = Math.max(FV.halfH / Math.tan(vf / 2), FV.halfW[narrow ? 0 : 1] / Math.tan(hf / 2));
         const dir = new THREE.Vector3();
-        viewFromBearing(236, 22, 1, new THREE.Vector3(), dir);
+        viewFromBearing(FV.bearing, FV.elev, 1, new THREE.Vector3(), dir);
         const theta = Math.atan2(dir.x, dir.z);
-        glideTo(tgt, r, (90 - 22) * DEG, theta, 1.1);
+        glideTo(tgt, r, (90 - FV.elev) * DEG, theta, 1.1);
         placeQuarter();
         kick();
         return 'facilities';
@@ -2169,8 +2237,10 @@ function createEngine(ctx) {
       if (k && k !== 'today' && world.qGroups && world.qGroups[k]) {
         frameGroup(k);
         framedPhase = true;
+        setFog();
       } else if (!k && framedPhase) {
         framedPhase = false;
+        setFog();
         glideTo(heroTarget, heroDistance(), (90 - HERO.elev) * DEG, camSpherical().theta, 1.0, () => {
           controls.maxDistance = Math.max(1400, heroDistance() * 2.2);
         });
@@ -2195,11 +2265,11 @@ function createEngine(ctx) {
     project: (p) => projectPoint(p),
     /* an example apartment: "N-25-w" (tower, floor, side) or "25-w" (the current tower); returns its id or null */
     selectUnit(id, source) {
-      const m = /^(?:([NSns])-)?(\d+)-([a-z]+)$/.exec(String(id || ''));
+      const m = /^(?:([A-Za-z][A-Za-z0-9]*)-)?(\d+)-([a-z]+)$/.exec(String(id || ''));
       if (!m || !UNITS) return null;
       const TW = m[1] ? towerOf(m[1]) : (selected && selected.pinned ? selected.tower : lastTower);
       const f = Number(m[2]); const side = UNITS.sides.find((x) => x.id === m[3]);
-      if (!TW || !side || !(f >= 1 && f <= FLOORS)) return null;
+      if (!TW || !side || !(f >= 1 && f <= TW.floors)) return null;
       if (phase === 'intro') endIntro();
       skipAuto = true;
       try { selectFloor(f, source === 'user' ? 'user' : 'api', TW); } finally { skipAuto = false; }
@@ -2209,7 +2279,7 @@ function createEngine(ctx) {
     },
     getSelection() {
       if (!(selected && selected.pinned)) return null;
-      return { tower: selected.tower.id, floor: selected.floor, heightM: heightOf(selected.floor), bearing: facing ? facing.bearing : null, unit: facing ? facing.unit : null };
+      return { tower: selected.tower.id, floor: selected.floor, heightM: heightOf(selected.tower, selected.floor), bearing: facing ? facing.bearing : null, unit: facing ? facing.unit : null };
     },
     getNorth() {
       const n = staticNorth(offset);
@@ -2234,10 +2304,10 @@ function createEngine(ctx) {
     // dev helpers used by the checks
     _ringScreenPoint(bearing, f, tower) {
       const TW = towerOf(tower) || (selected ? selected.tower : TOWERS[0]);
-      const fl = f || (selected ? selected.floor : 20);
+      const fl = Math.min(f || (selected ? selected.floor : 20), TW.floors);
       const side = unitFor(bearing);
       const r = TW.ring[idxForFacing(TW, bearing, side ? side.id : null)];
-      const a = projectToStage(tmpV.set(r.x, ringY(fl), r.z));
+      const a = projectToStage(tmpV.set(r.x, ringY(TW, fl), r.z));
       const rect = canvas.getBoundingClientRect();
       return { x: rect.left + a.x, y: rect.top + a.y, behind: a.behind };
     },
@@ -2247,7 +2317,7 @@ function createEngine(ctx) {
       const toCam = new THREE.Vector3().subVectors(camera.position, TW.centerW).setY(0).normalize();
       const idx = idxByAngle(TW, sceneBearing(toCam.x, toCam.z));
       const r = TW.ring[idx];
-      tmpV.set(r.fx + (r.x - r.fx) * 0.15, floorLevel(f) + FH * 0.5, r.fz + (r.z - r.fz) * 0.15);
+      tmpV.set(r.fx + (r.x - r.fx) * 0.15, TW.lv[f] + (TW.lv[f + 1] - TW.lv[f]) * 0.5, r.fz + (r.z - r.fz) * 0.15);
       const a = projectToStage(tmpV);
       const rc = canvas.getBoundingClientRect();
       return { x: rc.left + a.x, y: rc.top + a.y, behind: a.behind };
@@ -2427,7 +2497,7 @@ varying vec2 vRbsUv;
 uniform float uTime;
 ${SKY_PARS}
 uniform float uFogDensity;
-uniform float uHiFloor; uniform float uHiTower; uniform vec3 uHiColor; uniform float uFloorY0; uniform float uFloorH;
+uniform float uHiFloor; uniform float uHiTower; uniform vec3 uHiColor; uniform float uHiYa; uniform float uHiYb;
 uniform float uDim; uniform float uHiGlow;
 #ifdef RBS_WATER
 uniform vec4 uWater;
@@ -2460,7 +2530,7 @@ float rbsHi = 0.0;
 vec3 rbsNW = vec3(0.0, 1.0, 0.0);
 #ifdef RBS_FLOOR
   {
-    // DUO: a band's aFloor is tower * 100 + floor (the north tower 101-154, the south 201-254); -1 elsewhere
+    // a band's aFloor is building * 100 + floor (101..., 201...); -1 elsewhere
     float rbsTw = floor(vRbsF / 100.0 + 0.001);
     float rbsFl = vRbsF - rbsTw * 100.0;
     if (rbsTw > 0.5 && abs(rbsTw - uHiTower) < 0.5 && abs(rbsFl - uHiFloor) < 0.5) rbsHi = 1.0;
@@ -2479,9 +2549,8 @@ vec3 rbsNW = vec3(0.0, 1.0, 0.0);
     diffuseColor.rgb *= pane < 0.5 ? 0.9 : 1.0;
     diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.93, 0.92, 0.89), line * fadeL * 0.55);
     if (vRbsF > 0.5) {
-      // DUO: a tower's glass carries its tower (1 north, 2 south); the floor comes from the height
-      float fl = floor((vRbsW.y - uFloorY0) / uFloorH) + 1.0;
-      if (abs(vRbsF - uHiTower) < 0.5 && abs(fl - uHiFloor) < 0.5) rbsHi = 0.62;
+      // a building's glass carries its number; the picked floor is its band in height (floor heights vary)
+      if (abs(vRbsF - uHiTower) < 0.5 && vRbsW.y >= uHiYa && vRbsW.y < uHiYb) rbsHi = 0.62;
       else diffuseColor.rgb *= 1.0 - 0.35 * uDim;
     }
   }
@@ -2604,7 +2673,7 @@ function makeMaterials(U) {
   patchMaterial(pool, 'pool', { water: true, local: { uWater: { value: new THREE.Vector4(2.6, 0.55, 250, 900) } } }, U);
   const sea = std('#245A6E', 0.06);
   patchMaterial(sea, 'sea', { water: true, sea: true, local: { uWater: { value: new THREE.Vector4(1.0, 0.7, 250, 1100) } } }, U);
-  // DUO: the crown's screen and the facade's pilasters, a warm champagne bronze (the site's gold-brown, #8A6A2E, lifted)
+  // the crown's screen, a warm champagne bronze (the site's gold-brown, #8A6A2E, lifted)
   const bronze = std('#C2B292', 0.42, { metalness: 0.28 });
   patchMaterial(bronze, 'bronze', {}, U);
 
@@ -2971,22 +3040,6 @@ function mulberry32(seed) {
 /* World                                                                                       */
 /* ------------------------------------------------------------------------------------------ */
 
-/* the penthouse terraces' private pools (licensing decision 21.9.2025: "the private pools moved on 49-50"): which terrace
-   is not public; here floor 49 at the north-west corner and floor 50 at the south-west corner of each tower (illustration) */
-function phPools(TW) {
-  const P = TW.poly.slice().sort((a, b) => a[0] - b[0]);
-  const w2 = [P[0], P[1]].sort((a, b) => a[1] - b[1]);
-  const NW = w2[0], SW = w2[1];
-  const L = Math.hypot(SW[0] - NW[0], SW[1] - NW[1]);
-  const tx = (SW[0] - NW[0]) / L, tz = (SW[1] - NW[1]) / L;
-  let nx = tz, nz = -tx;
-  if (nx > 0) { nx = -nx; nz = -nz; } // the west face's outward normal
-  return [
-    { f: 49, cx: NW[0] + tx * 4.0, cz: NW[1] + tz * 4.0, ux: tx, uz: tz, nx, nz },
-    { f: 50, cx: SW[0] - tx * 4.0, cz: SW[1] - tz * 4.0, ux: tx, uz: tz, nx, nz },
-  ];
-}
-
 function buildWorld(site, M, U, quarter, city) {
   const col = (h) => new THREE.Color(h);
   const C = {
@@ -2994,10 +3047,9 @@ function buildWorld(site, M, U, quarter, city) {
     outline: col('#B7AE9F'), lawn: col('#BCC6AE'), park: col('#C5CDB7'), green: col('#C0C9AF'), sand: col('#EADDC3'),
     prom: col('#E8E2D6'), tree: col('#BEC6B5'), treeDark: col('#AEB8A6'), planter: col('#4A6651'), trunk: col('#C8C0B2'),
     roofGarden: col('#A9B597'), deck: col('#E6DAC6'), court: col('#E4DED3'), step: col('#EBE6DD'), stone: col('#E9E4DA'),
-    lounger: col('#F4F0E8'),
+    lounger: col('#F4F0E8'), soft: col('#D9C9A8'), dark: col('#5E5A54'), fence: col('#F2EEE6'),
   };
   const rnd = mulberry32(20260928);
-
   const white = newAcc({ fl: true });
   const glass = newAcc({ uv: true, fl: true });
   const bronze = newAcc();
@@ -3014,32 +3066,33 @@ function buildWorld(site, M, U, quarter, city) {
   const Y = PLOT.h;
   const planterSpots = [];
   const trees0 = [];
+  const holes = (SCENE.holes || []).map((h) => h.poly);
 
-  /* ---------- the coast (city.json: a straight fit through the city's beach polygons' sea edge) ---------- */
-  const cst = city && city.coast && Number.isFinite(Number(city.coast.x0)) ? { x0: Number(city.coast.x0), k: Number(city.coast.k) || 0 } : { x0: -1422, k: -0.053 };
+  /* ---------- the coast: OpenStreetMap's shore (city.json) where given, else a straight line ---------- */
+  const cst = city && city.coast && Number.isFinite(Number(city.coast.x0)) ? { x0: Number(city.coast.x0), k: Number(city.coast.k) || 0 } : { x0: -900, k: -0.13 };
   const xc = (z) => cst.x0 + cst.k * z;
   const ZA = -7000, ZB = 7000;
+  const line = city && city.coast && Array.isArray(city.coast.line) && city.coast.line.length > 3 ? city.coast.line.map((p) => [Number(p[0]), Number(p[1])]).sort((a, b) => a[1] - b[1]) : [];
+  const shore = (d) => [[xc(ZA) + d, ZA], ...line.map(([x, z]) => [x + d, z]), [xc(ZB) + d, ZB]];
 
-  /* ---------- ground: the land (with the sunken courtyard cut out), the beach, the promenade and the sea ---------- */
+  /* ---------- ground: the land (holes cut out), the beach, the promenade and the sea ---------- */
   setCol(ground, C.base);
-  const courtHole = [[COURT.x0, COURT.z0], [COURT.x1, COURT.z0], [COURT.x1, COURT.z1], [COURT.x0, COURT.z1]];
-  addPolyCap(ground, [[xc(ZA), ZA], [7000, ZA], [7000, ZB], [xc(ZB), ZB]], [courtHole], 0);
+  addPolyCap(ground, [...shore(0), [7000, ZB], [7000, ZA]], holes, 0);
   const strip = (d0, d1, y, c) => {
     setCol(ground, c);
-    addPolyCap(ground, [[xc(ZA) + d0, ZA], [xc(ZA) + d1, ZA], [xc(ZB) + d1, ZB], [xc(ZB) + d0, ZB]], [], y);
-    const b2 = ground.n;
-    V(ground, xc(ZA) + d0, 0, ZA, -1, 0, 0); V(ground, xc(ZA) + d0, y, ZA, -1, 0, 0); V(ground, xc(ZB) + d0, y, ZB, -1, 0, 0); V(ground, xc(ZB) + d0, 0, ZB, -1, 0, 0);
-    quad(ground, b2, b2 + 1, b2 + 2, b2 + 3);
+    const a = shore(d0), b = shore(d1);
+    addPolyCap(ground, [...a, ...b.reverse()], [], y);
+    for (let i = 0; i + 1 < a.length; i++) {
+      const b2 = ground.n;
+      V(ground, a[i][0], 0, a[i][1], -1, 0, 0); V(ground, a[i][0], y, a[i][1], -1, 0, 0); V(ground, a[i + 1][0], y, a[i + 1][1], -1, 0, 0); V(ground, a[i + 1][0], 0, a[i + 1][1], -1, 0, 0);
+      quad(ground, b2, b2 + 1, b2 + 2, b2 + 3);
+    }
   };
-  strip(0, 42, 0.12, C.sand);
-  strip(42, 56, 0.45, C.prom);
-  {
-    const b = sea.n;
-    V(sea, -12000, -0.3, -12000, 0, 1, 0); V(sea, xc(-12000) + 6, -0.3, -12000, 0, 1, 0); V(sea, xc(12000) + 6, -0.3, 12000, 0, 1, 0); V(sea, -12000, -0.3, 12000, 0, 1, 0);
-    quad(sea, b, b + 1, b + 2, b + 3);
-  }
+  strip(0, 40, 0.12, C.sand);
+  strip(40, 54, 0.45, C.prom);
+  addPolyCap(sea, [[-12000, -12000], [xc(-12000) + 6, -12000], ...shore(6), [xc(12000) + 6, 12000], [-12000, 12000]], [], -0.3);
 
-  /* ---------- the city as it stands (city.json): plan lots, green areas, streets, buildings, trees ---------- */
+  /* ---------- the city as it stands (city.json) ---------- */
   const ptsOf = (a, k) => { const P = []; for (let i = k; i + 1 < a.length; i += 2) P.push([a[i], a[i + 1]]); return P; };
   const inPoly = (x, z, L) => {
     let c = false;
@@ -3051,68 +3104,64 @@ function buildWorld(site, M, U, quarter, city) {
   };
   const planLots = [];
   if (city) {
-    for (const s of city.s || []) {                       // streets: the city's axes, a drawing width by road class
+    for (const s of city.s || []) {
       const P = ptsOf(s, 2);
       if (P.length < 2) continue;
       setCol(ground, C.road);
       addRibbon(ground, P, Number(s[0]) || 10, 0.05);
     }
-    for (const l of city.lots || []) {                    // the Somail plans' lots (GIS 837)
+    for (const l of city.lots || []) {
       const poly = ptsOf(l, 2);
       if (poly.length < 3) continue;
       setCol(ground, l[0] === 'park' ? C.park : C.plate);
       addSlab(ground, poly, 0, l[0] === 'park' ? 0.22 : 0.3);
       planLots.push(poly);
     }
-    for (const g of city.g || []) {                       // green areas (GIS 503)
+    for (const g of city.g || []) {
       const poly = ptsOf(g, 1);
       if (poly.length < 3) continue;
       setCol(ground, C.green);
       addSlab(ground, poly, 0, 0.26);
     }
-    for (const b of city.b || []) {                       // the buildings standing today (GIS 513), at their heights
+    for (const b of city.b || []) {
       const poly = ptsOf(b, 3);
       if (poly.length >= 3 && b[0] > 0) addSlab(ghosts, poly, 0, b[0]);
     }
-    const f = city.f || [];                               // the far city, each building as its box, to the sea
+    const f = city.f || [];
     for (let i = 0; i + 5 < f.length; i += 6) addBox(farAcc, f[i], f[i + 1], Math.max(2, f[i + 2]), Math.max(2, f[i + 3]), 0, f[i + 5], f[i + 4] * DEG);
   }
   // our other projects nearby (quarter.json): pale schematic masses at their floors' height (the card says so)
-  const qProj = [];
   if (quarter && Array.isArray(quarter.projects)) {
     const cg = Math.cos(GRID_ANGLE), sg = Math.sin(GRID_ANGLE);
     for (const p of quarter.projects) {
       const X = Number(p.x) || 0, Z = Number(p.z) || 0;
-      qProj.push({ lx: X * cg - Z * sg, lz: X * sg + Z * cg, floors: Number(p.floors) || 10, phase: String(p.phase || 'permit') });
+      const q = { lx: X * cg - Z * sg, lz: X * sg + Z * cg, floors: Number(p.floors) || 10, phase: String(p.phase || 'permit') };
+      const h = Math.max(12, q.floors * 3.3 + 4);
+      if (!planLots.some((L) => inPoly(q.lx, q.lz, L))) { setCol(ground, C.plate); addSlab(ground, roundRectPoly(q.lx, q.lz, 64, 52, 8, 6), 0, 0.55); }
+      const qa = qmassBy[q.phase] || qmassBy.permit;
+      if (q.floors >= 20) { addBox(qa, q.lx, q.lz, 26, 26, 0.55, h, 0); addBox(qa, q.lx - 4, q.lz + 16, 44, 14, 0.55, 14, 0); }
+      else addBox(qa, q.lx, q.lz, 44, 26, 0.55, h, 0);
     }
   }
-  for (const q of qProj) {
-    const h = Math.max(12, q.floors * 3.3 + 4);
-    if (!planLots.some((L) => inPoly(q.lx, q.lz, L))) { setCol(ground, C.plate); addSlab(ground, roundRectPoly(q.lx, q.lz, 64, 52, 8, 6), 0, 0.55); }
-    const qa = qmassBy[q.phase] || qmassBy.permit;
-    if (q.floors >= 20) { addBox(qa, q.lx, q.lz, 25, 25, 0.55, h, 0); addBox(qa, q.lx - 6, q.lz + 16, 40, 13, 0.55, 20, 0); }
-    else addBox(qa, q.lx, q.lz, 44, 26, 0.55, h, 0);
-  }
 
-  /* ---------- DUO's lot: the plinth (the courtyard cut out), its engraved line, the paving ---------- */
+  /* ---------- the project's lot: the plinth (holes cut out), its engraved line, the paving ---------- */
   const lotPoly = easeCorners(LOT_OUTLINE, 1.6, 6);
   setCol(ground, C.plinth);
   {
     const loop = loopFromPoly(lotPoly);
     addWallFlat(ground, loop, 0, Y);
-    addPolyCap(ground, lotPoly, [courtHole], Y);
+    addPolyCap(ground, lotPoly, holes, Y);
     setCol(ground, C.outline);
     addLoopRibbon(ground, offsetLoop(loop, -0.9), 0.26, Y + 0.012);
   }
-  // paving joints every 6 m across the plaza (clipped to the lot, left off over the courtyard)
   setCol(ground, C.paving);
   {
-    const inCourt = (x, z) => x > COURT.x0 - 0.2 && x < COURT.x1 + 0.2 && z > COURT.z0 - 0.2 && z < COURT.z1 + 0.2;
-    const segs = (fixed, along) => { // a line x = fixed (along z) or z = fixed (along x), split into inside runs
+    const inHole = (x, z) => holes.some((H) => inPoly(x, z, H));
+    const segs = (fixed, along) => {
       const out = []; let cur = null;
-      for (let t = -60; t <= 60; t += 0.5) {
+      for (let t = -75; t <= 75; t += 0.5) {
         const x = along === 'z' ? fixed : t, z = along === 'z' ? t : fixed;
-        const ok = inPoly(x, z, LOT_OUTLINE) && !inCourt(x, z);
+        const ok = inPoly(x, z, LOT_OUTLINE) && !inHole(x, z);
         if (ok && !cur) cur = [t, t];
         else if (ok) cur[1] = t;
         else if (cur) { out.push(cur); cur = null; }
@@ -3120,222 +3169,33 @@ function buildWorld(site, M, U, quarter, city) {
       if (cur) out.push(cur);
       return out;
     };
-    for (let x = -39; x <= 42; x += 6) for (const [a, b] of segs(x, 'z')) if (b - a > 1) addRibbon(ground, [[x, a + 0.6], [x, b - 0.6]], 0.09, Y + 0.011);
-    for (let z = -45; z <= 48; z += 6) for (const [a, b] of segs(z, 'x')) if (b - a > 1) addRibbon(ground, [[a + 0.6, z], [b - 0.6, z]], 0.09, Y + 0.011);
+    for (let x = -72; x <= 72; x += 6) for (const [a, b] of segs(x, 'z')) if (b - a > 1) addRibbon(ground, [[x, a + 0.6], [x, b - 0.6]], 0.09, Y + 0.011);
+    for (let z = -72; z <= 72; z += 6) for (const [a, b] of segs(z, 'x')) if (b - a > 1) addRibbon(ground, [[a + 0.6, z], [b - 0.6, z]], 0.09, Y + 0.011);
   }
 
-  /* ---------- the sunken courtyard (west half; its shape and place an illustration) ---------- */
-  {
-    const F = COURT.floor;
-    setCol(ground, C.court);
-    addPolyCap(ground, courtHole, [], F);
-    // the stone walls, facing into the courtyard
-    const inward = loopFromPoly(courtHole);
-    for (const p of inward.pts) { p.nx = -p.nx; p.nz = -p.nz; }
-    white.f = -1;
-    addWallFlat(white, inward, F, Y);
-    // the lower level's shop fronts (glass), on the long sides, just in front of the stone
-    const g0 = loopFromPoly([[COURT.x0 + 0.12, COURT.z0 + 0.12], [COURT.x1 - 0.12, COURT.z0 + 0.12], [COURT.x1 - 0.12, COURT.z1 - 0.12], [COURT.x0 + 0.12, COURT.z1 - 0.12]]);
-    for (const p of g0.pts) { p.nx = -p.nx; p.nz = -p.nz; }
-    glass.f = 0;
-    addWallFlat(glass, g0, F + 0.3, Y - 1.1);
-    // a canopy ledge over the shop fronts, and a glass balustrade around the edge up top
-    addBox(white, COURT.x0 + 0.55, (COURT.z0 + COURT.z1) / 2, 1.1, COURT.z1 - COURT.z0, Y - 1.25, Y - 0.95, 0);
-    addBox(white, COURT.x1 - 0.55, (COURT.z0 + COURT.z1) / 2, 1.1, COURT.z1 - COURT.z0, Y - 1.25, Y - 0.95, 0);
-    const rail = offsetLoop(loopFromPoly(courtHole), 0.3);
-    glass.f = 0;
-    addWall(glass, rail, Y, Y + 1.05);
-    addBand(white, rail, Y + 1.0, () => 0.02, { Hp: 0.06, Ts: 0.06, tp: 0.08, rb: 0.02, noFloor: true, inset: 0 });
-    // wide steps down at the south end, and two escalators beside them (the plan names escalators around the patio)
-    const n = 26, rise = (Y - F) / n, run = 0.34, sx0 = COURT.x0 + 1.5, sw = 7.5;
-    setCol(ground, C.step);
-    for (let i = 0; i < n; i++) {
-      const zz = COURT.z1 - (n - i) * run;
-      addBox(ground, sx0 + sw / 2, (zz + COURT.z1) / 2, sw, COURT.z1 - zz, F, F + (i + 1) * rise, 0);
-    }
-    const len = Math.hypot(n * run, Y - F), ang = Math.atan2(Y - F, n * run);
-    const esc = new THREE.BoxGeometry(1.25, 0.55, len);
-    for (const ex of [sx0 + sw + 1.1, sx0 + sw + 2.8]) {
-      const m = new THREE.Matrix4().makeTranslation(ex, (F + Y) / 2 + 0.25, COURT.z1 - (n * run) / 2).multiply(new THREE.Matrix4().makeRotationX(-ang));
-      addGeometry(white, esc, m);
-    }
-    esc.dispose();
-    // planters with trees on the courtyard floor
-    for (const [px, pz] of [[-13, -15], [-20, -3], [-11, 5], [-19, 12]]) {
-      addBox(white, px, pz, 2.6, 2.6, F, F + 0.55, 0);
-      setCol(ground, C.roofGarden); addBox(ground, px, pz, 2.2, 2.2, F + 0.55, F + 0.6, 0);
-      trees0.push({ x: px, z: pz, y: F + 0.6, r: 1.9 + rnd() * 0.5, dark: rnd() < 0.4 });
-    }
-  }
-
-  /* ---------- the two towers ---------- */
-  const bandProf = { Ts: 0.46, rb: 0.1 };
-  for (const TW of TOWERS) {
-    const fp = easeCorners(TW.poly, 1.4, 5);
-    const loop = resampleLoop(fp, 136, 4);
-    const lobbyL = offsetLoop(loop, -1.7);
-    const pentL = offsetLoop(loop, -2.2);
-    const techL = offsetLoop(loop, -3.2);
-    // balconies (the marketing's "wide sun balconies"; their layout is not public): deep around the corners, a sun balcony in
-    // the middle of the west and east faces, a slab edge elsewhere
-    const xs = TW.poly.map((p) => p[0]).slice().sort((a, b) => a - b);
-    const wMid = { x: (xs[0] + xs[1]) / 2, z: TW.cz }, eMid = { x: (xs[2] + xs[3]) / 2, z: TW.cz };
-    const D = loop.pts.map((p) => {
-      let dc = 1e9;
-      for (const c of TW.poly) dc = Math.min(dc, Math.hypot(p.x - c[0], p.z - c[1]));
-      const corner = 1 - smooth(5.8, 8.6, dc);
-      const onWE = Math.abs(p.nx) > 0.85;
-      const dm = onWE ? Math.min(Math.hypot(p.x - wMid.x, p.z - wMid.z), Math.hypot(p.x - eMid.x, p.z - eMid.z)) : 1e9;
-      const mid = 1 - smooth(4.2, 5.6, dm);
-      return 0.42 + 1.95 * Math.max(corner, mid * 0.82);
-    });
-    const Dp = D.map((d) => d + 2.2);
-    // the ground floor: tall recessed glass (the lobby, about 7 m) behind slim columns
-    glass.f = 0;
-    addWall(glass, lobbyL, Y, Y0);
-    {
-      const colG = new THREE.CylinderGeometry(0.42, 0.42, Y0 - Y - 0.45, 12, 1, true);
-      const step = Math.max(1, Math.round(loop.pts.length / 18));
-      for (let i = 0; i < loop.pts.length; i += step) {
-        const p = loop.pts[i];
-        addGeometry(white, colG, new THREE.Matrix4().makeTranslation(p.x - p.nx * 0.2, (Y + Y0 - 0.45) / 2, p.z - p.nz * 0.2));
-      }
-      colG.dispose();
-    }
-    // the residential floors: a curtain wall with glass balustrades on every floor plate
-    glass.f = TW.k;
-    addWall(glass, loop, Y0 - 0.5, floorLevel(PH_FROM));
-    addWall(glass, pentL, floorLevel(PH_FROM) - 0.5, TW.roof);
-    for (let f = 1; f <= FLOORS; f++) {
-      const ph = f >= PH_FROM;
-      white.f = TW.k * 100 + f;
-      addPlate(white, glass, ph ? pentL : loop, floorLevel(f), ph ? Dp : D, bandProf, 1.05);
-    }
-    // the roof of floor 50, the technical floors 51-52 set back, and a crown screen of bronze fins at the glass line
-    white.f = TW.k * 100 + 51;
-    addPlate(white, glass, pentL, TW.roof, Dp.map((d) => d * 0.35 + 0.4), { Ts: 0.6, rb: 0.12 }, 0);
-    white.f = -1;
-    addWall(white, techL, TW.roof, TW.roof + 2 * TECH_H);
-    addCap(white, techL, TW.roof + 2 * TECH_H, true);
-    {
-      const finG = new THREE.BoxGeometry(0.16, TW.top - TW.roof - 0.4, 0.95);
-      const per = loop.perimeter, nF = Math.round(per / 1.25);
-      for (let k = 0; k < nF; k++) {
-        const p = loop.pts[Math.floor((k / nF) * loop.pts.length)];
-        const m = new THREE.Matrix4().makeRotationY(Math.atan2(p.nx, p.nz));
-        m.setPosition(p.x + p.nx * 0.2, (TW.roof + TW.top) / 2 + 0.2, p.z + p.nz * 0.2);
-        addGeometry(bronze, finG, m);
-      }
-      finG.dispose();
-      addBand(white, offsetLoop(loop, 0.35), TW.top - 0.5, () => 0.3, { Hp: 0.5, Ts: 0.4, tp: 0.26, rb: 0.1, inset: 0, noFloor: true });
-    }
-    // the private pools on the penthouse terraces (floors 49 and 50)
-    for (const pp of phPools(TW)) {
-      const y = floorLevel(pp.f) + 0.02;
-      const rot = Math.atan2(pp.uz, pp.ux);
-      addPoolRot(water, white, pp.cx, pp.cz, 4.0, 2.2, 0.4, y, rot);
-    }
-    // a soft contact shadow under the tower
-    decal(TW.cx, TW.cz, 44, 46, 0, Y + 0.02);
-  }
-
-  /* ---------- the lobby building between the towers and the pool deck on its roof ---------- */
-  {
-    const L = LOBBY;
-    const xW = Math.min(L[0][0], L[3][0]), xE = Math.max(L[1][0], L[2][0]), zN = Math.max(L[0][1], L[1][1]), zS = Math.min(L[2][1], L[3][1]);
-    glass.f = 0;
-    const gl = loopFromPoly([[xW + 0.8, zN], [xE - 0.8, zN], [xE - 0.8, zS], [xW + 0.8, zS]]);
-    addWallFlat(glass, gl, Y, DECK_Y - 1.0);
-    // the roof slab with a thin overhang, the deck on top
-    white.f = -1;
-    addSlab(white, [[xW - 0.6, zN], [xE + 0.6, zN], [xE + 0.6, zS], [xW - 0.6, zS]], DECK_Y - 1.0, DECK_Y);
-    setCol(ground, C.deck);
-    addSlab(ground, [[xW - 0.4, zN + 0.2], [xE + 0.4, zN + 0.2], [xE + 0.4, zS - 0.2], [xW - 0.4, zS - 0.2]], DECK_Y, DECK_Y + 0.06);
-    // glass balustrades along the open west and east edges
-    for (const x of [xW - 0.45, xE + 0.45]) {
-      const bl = { pts: [{ x, z: zN + 0.3, s: 0, nx: x < 10 ? -1 : 1, nz: 0 }, { x, z: zS - 0.3, s: 1, nx: x < 10 ? -1 : 1, nz: 0 }], perimeter: zS - zN };
-      addWallOpen(glass, bl, DECK_Y + 0.06, DECK_Y + 1.15);
-      addBox(white, x, (zN + zS) / 2, 0.12, zS - zN - 0.6, DECK_Y + 1.1, DECK_Y + 1.2, 0);
-    }
-    // the infinity pool along the west edge (its edge open to the west), the toddler pool, loungers, a shade pergola
-    addPoolEdge(water, white, POOL.cx, POOL.cz, POOL.w, POOL.d, 0.5, DECK_Y + 0.07, 'w');
-    addPoolEdge(water, white, KIDPOOL.cx, KIDPOOL.cz, KIDPOOL.w, KIDPOOL.d, 0.8, DECK_Y + 0.07, '');
-    setCol(ground, C.lounger);
-    for (let z = POOL.cz - POOL.d / 2 + 1.5; z <= POOL.cz + POOL.d / 2 - 1.2; z += 2.35) {
-      addBox(ground, POOL.cx + POOL.w / 2 + 2.3, z, 1.9, 0.78, DECK_Y + 0.06, DECK_Y + 0.42, 0);
-    }
-    {
-      const px0 = 21.5, px1 = 29.8, pz0 = -3.5, pz1 = 12.5, top = DECK_Y + 3.3;
-      white.f = -1;
-      for (let x = px0; x <= px1 + 0.01; x += 0.75) addBox(white, x, (pz0 + pz1) / 2, 0.14, pz1 - pz0, top - 0.3, top, 0);
-      for (const [x, z] of [[px0, pz0], [px1, pz0], [px0, pz1], [px1, pz1], [px0, (pz0 + pz1) / 2], [px1, (pz0 + pz1) / 2]]) addBox(white, x, z, 0.26, 0.26, DECK_Y + 0.06, top - 0.3, 0);
-      addBox(white, (px0 + px1) / 2, pz0, px1 - px0 + 0.3, 0.2, top - 0.5, top - 0.3, 0);
-      addBox(white, (px0 + px1) / 2, pz1, px1 - px0 + 0.3, 0.2, top - 0.5, top - 0.3, 0);
-      setCol(ground, C.lounger);
-      for (let z = pz0 + 2; z < pz1 - 1; z += 3.2) { addBox(ground, 24.2, z, 1.6, 1.6, DECK_Y + 0.06, DECK_Y + 0.8, 0); addBox(ground, 27.4, z, 1.6, 1.6, DECK_Y + 0.06, DECK_Y + 0.8, 0); }
-    }
-    // planters on the deck's north and south ends, by the towers
-    for (const z of [zN + 1.6, zS - 1.6]) for (let x = xW + 3; x < xE - 2; x += 3.2) planterSpots.push({ x, z, y: DECK_Y + 0.06, nx: 0, nz: z < 0 ? -1 : 1, big: false, roof: true });
-    decal((xW + xE) / 2, (zN + zS) / 2, xE - xW + 8, zS - zN + 6, 0, Y + 0.02);
-  }
-
-  /* ---------- the three commercial buildings in the west half (their shapes and places an illustration) ---------- */
-  for (const R of RETAIL) {
-    const fp = easeCorners(R.poly, 1.2, 4);
-    const loop = resampleLoop(fp, 64, 3);
-    const hTop = Y + R.floors * RETAIL_FH;
-    glass.f = 0;
-    addWall(glass, offsetLoop(loop, -1.4), Y, Y + RETAIL_FH);          // shop fronts under the first floor's overhang
-    addWall(glass, loop, Y + RETAIL_FH - 0.3, hTop - 0.2);
-    white.f = -1;
-    for (let f = 2; f <= R.floors; f++) addBand(white, loop, Y + (f - 1) * RETAIL_FH, () => 0.55, { Hp: 0.95, Ts: 0.55, tp: 0.2, rb: 0.1 });
-    // vertical fins on the upper floors (a commercial rhythm)
-    {
-      const finG = new THREE.BoxGeometry(0.14, hTop - Y - RETAIL_FH - 0.6, 0.6);
-      const nF = Math.round(loop.perimeter / 2.4);
-      for (let k = 0; k < nF; k++) {
-        const p = loop.pts[Math.floor((k / nF) * loop.pts.length)];
-        const m = new THREE.Matrix4().makeRotationY(Math.atan2(p.nx, p.nz));
-        m.setPosition(p.x + p.nx * 0.2, (Y + RETAIL_FH + hTop) / 2 + 0.3, p.z + p.nz * 0.2);
-        addGeometry(white, finG, m);
-      }
-      finG.dispose();
-    }
-    addBand(white, loop, hTop, () => 0.35, { Hp: 0.9, Ts: 0.6, tp: 0.26, rb: 0.12 });
-    addCap(white, loop, hTop + 0.02, true);
-    const garden = offsetLoop(loop, -2.2);
-    setCol(ground, C.roofGarden);
-    addWall(ground, garden, hTop, hTop + 0.3);
-    addCap(ground, garden, hTop + 0.3, true);
-    if (R.roof) { addBox(white, (R.poly[0][0] + R.poly[1][0]) / 2, 0, 5.2, 16, hTop, hTop + 3.2, 0); }
-    for (let k = 0; k < 6; k++) {
-      const p = garden.pts[Math.floor(((k + 0.5) / 6) * garden.pts.length)];
-      planterSpots.push({ x: p.x, z: p.z, y: hTop + 0.3, nx: p.nx, nz: p.nz, big: false, roof: true });
-    }
-    const cx = R.poly.reduce((s, p) => s + p[0], 0) / 4, cz = R.poly.reduce((s, p) => s + p[1], 0) / 4;
-    const w = Math.abs(R.poly[1][0] - R.poly[0][0]), d = Math.abs(R.poly[2][1] - R.poly[1][1]);
-    decal(cx, cz, w + 8, d + 8, 0, Y + 0.02);
-  }
+  /* ---------- the project's buildings, courtyard and details (the project's SCENE.build) ---------- */
+  const occ = [];   // the low buildings as occluders for the names over the model (never picked)
+  const ctx = { white, glass, bronze, ground, foliage, water, C, Y, rnd, planterSpots, trees: trees0, decal, occ };
+  SCENE.build(ctx);
 
   /* ---------- planters ---------- */
   {
     const bush = new THREE.IcosahedronGeometry(1, 1);
     const m = new THREE.Matrix4(), q = new THREE.Quaternion(), s = new THREE.Vector3(), p = new THREE.Vector3();
     for (const sp of planterSpots) {
-      setCol(foliage, C.planter);
+      setCol(foliage, sp.c || C.planter);
       q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), Math.atan2(sp.nx, sp.nz));
-      s.set(sp.big ? 1.8 : 1.3, sp.big ? 0.75 : 0.6, sp.big ? 1.1 : 0.85);
-      p.set(sp.x, sp.y + 0.5, sp.z);
+      const k = sp.k || 1;
+      s.set((sp.big ? 1.8 : 1.3) * k, (sp.big ? 0.75 : 0.6) * k, (sp.big ? 1.1 : 0.85) * k);
+      p.set(sp.x, sp.y + 0.5 * k, sp.z);
       m.compose(p, q, s);
       addGeometry(foliage, bush, m);
     }
     bush.dispose();
   }
 
-  /* ---------- trees: the city's own (GIS 628, real positions) and a few on the plaza (illustration) ---------- */
+  /* ---------- trees: the city's own (GIS 628) and the project's (illustration) ---------- */
   const trees = trees0;
-  for (let z = -22; z <= 22; z += 7.3) trees.push({ x: -3.2, z, y: Y, r: 2.0 + rnd() * 0.5, dark: rnd() < 0.3 });
-  for (let z = -40; z <= 44; z += 9.4) trees.push({ x: 40.6, z, y: Y, r: 1.9 + rnd() * 0.5, dark: rnd() < 0.3 });
   if (city && Array.isArray(city.t)) {
     for (let i = 0; i + 1 < city.t.length; i += 2) trees.push({ x: city.t[i], z: city.t[i + 1], y: 0.05, r: 2.0 + rnd() * 1.3, dark: rnd() < 0.45 });
   }
@@ -3394,12 +3254,13 @@ function buildWorld(site, M, U, quarter, city) {
   site.updateMatrixWorld(true);
   meshes.forEach((m) => m.updateMatrix());
 
-  // picking proxies, one per tower (layer 1 only, never rendered): the residential floors, a little outside the balconies
+  // picking proxies, one per pickable building (layer 1 only, never rendered): its homes' floors, outside the balconies
   const towerProxies = [];
   for (const TW of TOWERS) {
     const acc = newAcc();
-    const P = TW.poly.map(([x, z]) => { const dx = x - TW.cx, dz = z - TW.cz, l = Math.hypot(dx, dz) || 1; return [x + (dx / l) * 3.2, z + (dz / l) * 3.2]; });
-    addSlab(acc, P, Y0 - 0.6, TW.roof + 0.4);
+    const R = TW.ringPoly || TW.poly;
+    const P = R.map(([x, z]) => { const dx = x - TW.cx, dz = z - TW.cz, l = Math.hypot(dx, dz) || 1; return [x + (dx / l) * 3.0, z + (dz / l) * 3.0]; });
+    addSlab(acc, P, TW.lv[1] - 0.6, TW.lv[TW.floors + 1] + 0.3);
     const mesh = new THREE.Mesh(toGeom(acc), new THREE.MeshBasicMaterial({ side: THREE.DoubleSide }));
     mesh.layers.set(1);
     mesh.userData.tower = TW;
@@ -3408,11 +3269,21 @@ function buildWorld(site, M, U, quarter, city) {
     towerProxies.push(mesh);
   }
 
+  const occluders = [];
+  for (const o of occ) {
+    const acc = newAcc();
+    addSlab(acc, o.poly, 0, o.h);
+    const mesh = new THREE.Mesh(toGeom(acc), new THREE.MeshBasicMaterial({ side: THREE.DoubleSide }));
+    mesh.layers.set(1);
+    site.add(mesh);
+    mesh.updateMatrixWorld(true);
+    occluders.push(mesh);
+  }
+
   let triangles = 0;
   for (const m of meshes) triangles += m.geometry.index.count / 3;
-  return { towerProxies, triangles, meshCount: meshes.length, qGroups, coast: cst, labels: city && Array.isArray(city.labels) ? city.labels : [] };
+  return { towerProxies, occluders, triangles, meshCount: meshes.length, qGroups, coast: cst, labels: city && Array.isArray(city.labels) ? city.labels : [] };
 
-  /* local helpers (hoisted) */
   function decal(cx, cz, w, d, rot, y) {
     const c = Math.cos(rot), s = Math.sin(rot), b = decals.n;
     for (const [u, v] of [[-1, -1], [1, -1], [1, 1], [-1, 1]]) {
@@ -3424,7 +3295,211 @@ function buildWorld(site, M, U, quarter, city) {
   }
 }
 
-/* a flat cap over a polygon, with holes (the land around the courtyard, the plinth) */
+/* ------------------------------------------------------------------------------------------ */
+/* Builders shared by the projects                                                             */
+/* ------------------------------------------------------------------------------------------ */
+
+/* which face of a building a point of its loop belongs to, by its outward normal in the grid frame */
+function faceOf(p) {
+  const ax = Math.abs(p.nx), az = Math.abs(p.nz);
+  return ax >= az ? (p.nx > 0 ? 'e' : 'w') : (p.nz > 0 ? 's' : 'n');
+}
+/* a loop moved in by fn(p) metres at each point (a ground floor stepping back into a colonnade on some faces) */
+function insetLoop(loop, fn) {
+  const pts = loop.pts.map((p) => { const d = fn(p); return { x: p.x - p.nx * d, z: p.z - p.nz * d, s: p.s, nx: p.nx, nz: p.nz }; });
+  return { pts, perimeter: perimeterOf(pts) };
+}
+function polyArea(P) { let a = 0; for (let i = 0; i < P.length; i++) { const p = P[i], q = P[(i + 1) % P.length]; a += p[0] * q[1] - q[0] * p[1]; } return Math.abs(a) / 2; }
+function centroidOf(P) { return [P.reduce((s, p) => s + p[0], 0) / P.length, P.reduce((s, p) => s + p[1], 0) / P.length]; }
+/* balconies deep around the corners and in the middle of each face, a slab edge elsewhere (the tower's depth <= dmax) */
+function cornerMid(poly, dmax) {
+  const mids = poly.map((a, i) => { const b = poly[(i + 1) % poly.length]; return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]; });
+  return (face, p) => {
+    let dc = 1e9, dm = 1e9;
+    for (const c of poly) dc = Math.min(dc, Math.hypot(p.x - c[0], p.z - c[1]));
+    for (const m of mids) dm = Math.min(dm, Math.hypot(p.x - m[0], p.z - m[1]));
+    const corner = 1 - smooth(5.5, 8.4, dc), mid = 1 - smooth(4.2, 5.8, dm);
+    return dmax * Math.max(corner, mid * 0.82);
+  };
+}
+/* a pool on a terrace near a corner of a building (the private pools of the top floors; their places are illustrations) */
+function cornerPool(poly, corner, f, lv, off) {
+  const P = poly.slice();
+  const cx = P.reduce((s, p) => s + p[0], 0) / P.length, cz = P.reduce((s, p) => s + p[1], 0) / P.length;
+  const want = { nw: [-1, -1], ne: [1, -1], sw: [-1, 1], se: [1, 1] }[corner];
+  let best = P[0], bd = -1e9;
+  for (const p of P) { const d = (p[0] - cx) * want[0] + (p[1] - cz) * want[1]; if (d > bd) { bd = d; best = p; } }
+  // along the west or east face (x), 4 m from the corner; outward by off (m) from the glass line
+  const sx = want[0], sz = want[1];
+  return { f, cx: best[0] + sx * (off || 0), cz: best[1] - sz * 4.2, len: 4.0, wid: 2.0, rot: Math.PI / 2, y: lv[f] + 0.02 };
+}
+
+/* A tower (or a mid-rise): a curtain wall with floor plates and glass balustrades, a colonnade where the ground floor
+   steps back, an optional base (podium) under the plate, the top floors set back, the technical floor and a crown.
+   st: { plate, base: { poly, upTo }, groundRecess: { n, e, s, w }, balcony(face, p, i, f, loop) -> m, green, phFrom,
+   phSet, pools: [...], techH, techInset, crown: 'fins' | 'white-fins', liftStrip: 'e' } */
+function buildTower(c, TW, st) {
+  const { white, glass, bronze, foliage, water, ground } = c;
+  const Y = c.Y, lv = TW.lv, F = TW.floors;
+  const plateL = resampleLoop(easeCorners(st.plate || TW.poly, 1.2, 5), st.samples || 136, 4);
+  const baseL = st.base ? resampleLoop(easeCorners(st.base.poly, 1.0, 4), 128, 4) : null;
+  const upTo = st.base ? st.base.upTo : 0;
+  const g0 = baseL || plateL;
+  const rec = st.groundRecess || {};
+  const recOf = (p) => (rec[faceOf(p)] != null ? rec[faceOf(p)] : 1.4);
+  glass.f = 0;
+  addWall(glass, insetLoop(g0, recOf), Y, lv[1]);
+  {
+    const colG = new THREE.CylinderGeometry(0.4, 0.4, lv[1] - Y - 0.45, 12, 1, true);
+    let run = 0;
+    for (let i = 0; i < g0.pts.length; i++) {
+      const p = g0.pts[i], q = g0.pts[(i + 1) % g0.pts.length];
+      if (recOf(p) >= 3 && run <= 0) { addGeometry(white, colG, new THREE.Matrix4().makeTranslation(p.x - p.nx * 0.6, (Y + lv[1] - 0.45) / 2, p.z - p.nz * 0.6)); run = 6.4; }
+      run -= Math.hypot(q.x - p.x, q.z - p.z);
+    }
+    colG.dispose();
+  }
+  const phFrom = st.phFrom || (F + 1), phSet = st.phSet || 0;
+  const phL = phSet ? offsetLoop(plateL, -phSet) : plateL;
+  SLICE[TW.id] = { TW, plateL, baseL, upTo, phL, phFrom, phSet, st }; // FloorSlice v87
+  glass.f = TW.k;
+  if (baseL) addWall(glass, baseL, lv[1] - 0.5, lv[upTo + 1]);
+  addWall(glass, plateL, lv[upTo + 1] - (baseL ? 0.05 : 0.5), lv[Math.min(phFrom, F + 1)]);
+  if (phFrom <= F) addWall(glass, phL, lv[phFrom] - 0.5, lv[F + 1]);
+  for (let f = 1; f <= F; f++) {
+    const L = f <= upTo ? baseL : (f >= phFrom ? phL : plateL);
+    const extra = f >= phFrom ? phSet : 0;
+    const D = L.pts.map((p, i) => 0.42 + extra + Math.max(0, st.balcony(faceOf(p), p, i, f, L)));
+    white.f = TW.k * 100 + f; glass.f = TW.k;
+    const out = addPlate(white, glass, L, lv[f], D, { Ts: 0.46, rb: 0.1 }, st.hb != null ? st.hb : 1.05);
+    if (st.green) {
+      // the developer's "green envelope": planters on the deep balconies (their plants an illustration)
+      for (let i = f % 4; i < out.length; i += 4) {
+        if (D[i] - extra < 1.2) continue;
+        const o = out[i];
+        c.planterSpots.push({ x: o.x - o.nx * 0.55, z: o.z - o.nz * 0.55, y: lv[f] + 0.05, nx: o.nx, nz: o.nz, big: false, k: 0.62 });
+      }
+    }
+  }
+  // the podium's roof: a garden around the tower's plate
+  if (baseL) {
+    white.f = -1;
+    addBand(white, baseL, lv[upTo + 1], () => 0.42, { Hp: 1.0, Ts: 0.46, tp: 0.2, rb: 0.1 });
+    setCol(ground, c.C.roofGarden);
+    addPolyCap(ground, baseL.pts.map((p) => [p.x - p.nx * 1.4, p.z - p.nz * 1.4]), [plateL.pts.map((p) => [p.x + p.nx * 2.6, p.z + p.nz * 2.6])], lv[upTo + 1] + 0.06);
+  }
+  // the roof of the top floor, the technical floor(s) set back, the crown
+  white.f = TW.k * 100 + F + 1;
+  addPlate(white, glass, phL, lv[F + 1], phL.pts.map(() => 0.5), { Ts: 0.6, rb: 0.12 }, 0);
+  white.f = -1;
+  const techL = offsetLoop(phL, -(st.techInset || 3.0));
+  const techTop = lv[F + 1] + st.techH;
+  addWall(white, techL, lv[F + 1], techTop);
+  addCap(white, techL, techTop, true);
+  if (st.crown) {
+    const acc = st.crown === 'white-fins' ? white : bronze;
+    const finG = new THREE.BoxGeometry(0.16, TW.top - lv[F + 1] - 0.4, 0.9);
+    const nF = Math.round(phL.perimeter / (st.crown === 'white-fins' ? 1.0 : 1.25));
+    for (let k = 0; k < nF; k++) {
+      const p = phL.pts[Math.floor((k / nF) * phL.pts.length)];
+      const m = new THREE.Matrix4().makeRotationY(Math.atan2(p.nx, p.nz));
+      m.setPosition(p.x + p.nx * 0.2, (lv[F + 1] + TW.top) / 2 + 0.2, p.z + p.nz * 0.2);
+      addGeometry(acc, finG, m);
+    }
+    finG.dispose();
+    addBand(white, offsetLoop(phL, 0.35), TW.top - 0.5, () => 0.3, { Hp: 0.5, Ts: 0.4, tp: 0.26, rb: 0.1, inset: 0, noFloor: true });
+  }
+  for (const pl of st.pools || []) addPoolRot(water, white, pl.cx, pl.cz, pl.len, pl.wid, 0.4, pl.y, pl.rot);
+  // a glazed lift facade splitting a face (Ashira's east facade, the design plan): a slim glass volume, full height
+  if (st.liftStrip) {
+    const P = st.plate || TW.poly;
+    const xs = P.map((p) => p[0]), zs = P.map((p) => p[1]);
+    const x0 = Math.min(...xs), x1 = Math.max(...xs), z0 = Math.min(...zs), z1 = Math.max(...zs);
+    const y0 = lv[upTo + 1], y1 = techTop;
+    const at = st.liftStrip === 'e' ? [x1 + 0.9, (z0 + z1) / 2, 1.8, 6.4] : [x0 - 0.9, (z0 + z1) / 2, 1.8, 6.4];
+    glass.f = 0;
+    const lp = loopFromPoly([[at[0] - at[2] / 2, at[1] - at[3] / 2], [at[0] + at[2] / 2, at[1] - at[3] / 2], [at[0] + at[2] / 2, at[1] + at[3] / 2], [at[0] - at[2] / 2, at[1] + at[3] / 2]]);
+    addWallFlat(glass, lp, y0, y1);
+    white.f = -1;
+    for (const dz of [-at[3] / 2, at[3] / 2]) addBox(white, at[0], at[1] + dz, at[2] + 0.3, 0.3, y0, y1 + 0.4, 0);
+    addBox(white, at[0], at[1], at[2] + 0.3, at[3] + 0.3, y1, y1 + 0.4, 0);
+  }
+  const P = st.base ? st.base.poly : (st.plate || TW.poly);
+  const cc = centroidOf(P), w = Math.max(...P.map((p) => p[0])) - Math.min(...P.map((p) => p[0])), d = Math.max(...P.map((p) => p[1])) - Math.min(...P.map((p) => p[1]));
+  c.decal(cc[0], cc[1], w + 14, d + 14, 0, Y + 0.02);
+  return { plateL, baseL, techTop };
+}
+
+/* A textural (low) building: glass behind white floor bands with parapets (the boutique language of the quarter), the
+   ground floor stepping back into a colonnade on some faces, balconies by face, an upper part set back, a roof garden.
+   B: { poly, lv, floors, groundRecess, bal: { n, e, s, w }, upper: { from, poly }, techH, tech: [[x, z, w, d, h], ...] } */
+function buildBlock(c, B) {
+  const { white, glass, ground } = c;
+  const Y = c.Y, lv = B.lv, F = B.floors;
+  const L0 = resampleLoop(easeCorners(B.poly, 0.9, 4), B.samples || 84, 3);
+  const Lu = B.upper ? resampleLoop(easeCorners(B.upper.poly, 0.9, 4), 72, 3) : null;
+  const from = B.upper ? B.upper.from : F + 1;
+  const rec = B.groundRecess || {};
+  const recOf = (p) => (rec[faceOf(p)] != null ? rec[faceOf(p)] : 0.9);
+  glass.f = 0;
+  addWall(glass, insetLoop(L0, recOf), Y, lv[1]);
+  {
+    const colG = new THREE.CylinderGeometry(0.36, 0.36, lv[1] - Y - 0.4, 12, 1, true);
+    let run = 0;
+    for (let i = 0; i < L0.pts.length; i++) {
+      const p = L0.pts[i], q = L0.pts[(i + 1) % L0.pts.length];
+      if (recOf(p) >= 3 && run <= 0) { addGeometry(white, colG, new THREE.Matrix4().makeTranslation(p.x - p.nx * 0.5, (Y + lv[1] - 0.4) / 2, p.z - p.nz * 0.5)); run = 6.0; }
+      run -= Math.hypot(q.x - p.x, q.z - p.z);
+    }
+    colG.dispose();
+  }
+  addWall(glass, L0, lv[1] - 0.4, lv[Math.min(from, F + 1)] - 0.1);
+  if (Lu) addWall(glass, Lu, lv[from] - 0.4, lv[F + 1] - 0.1);
+  const bal = B.bal || {};
+  const prof = { Hp: 1.0, Ts: 0.42, tp: 0.22, rb: 0.1 };
+  white.f = -1;
+  for (let f = 1; f <= F; f++) {
+    const L = f >= from ? Lu : L0;
+    const D = L.pts.map((p) => 0.45 + (bal[faceOf(p)] || 0));
+    addBand(white, L, lv[f], (s, i) => D[i], prof);
+  }
+  // the lower roof where the upper part steps back
+  if (Lu) {
+    addBand(white, L0, lv[from], () => 0.35, { Hp: 1.0, Ts: 0.42, tp: 0.22, rb: 0.1 });
+    setCol(ground, c.C.roofGarden);
+    addPolyCap(ground, L0.pts.map((p) => [p.x - p.nx * 1.2, p.z - p.nz * 1.2]), [Lu.pts.map((p) => [p.x + p.nx * 0.4, p.z + p.nz * 0.4])], lv[from] + 0.06);
+  }
+  const top = Lu || L0, roofY = lv[F + 1];
+  addBand(white, top, roofY, () => 0.35, { Hp: 1.0, Ts: 0.5, tp: 0.24, rb: 0.12 });
+  addCap(white, top, roofY + 0.02, true);
+  if (B.garden !== false) {
+    const garden = offsetLoop(top, -2.0);
+    setCol(ground, c.C.roofGarden);
+    addWall(ground, garden, roofY, roofY + 0.3);
+    addCap(ground, garden, roofY + 0.3, true);
+    for (let k = 0; k < 6; k++) {
+      const p = garden.pts[Math.floor(((k + 0.5) / 6) * garden.pts.length)];
+      c.planterSpots.push({ x: p.x, z: p.z, y: roofY + 0.3, nx: p.nx, nz: p.nz, big: false });
+    }
+  }
+  for (const t of B.tech || []) addBox(white, t[0], t[1], t[2], t[3], roofY, roofY + t[4], 0);
+  const cc = centroidOf(B.poly), w = Math.max(...B.poly.map((p) => p[0])) - Math.min(...B.poly.map((p) => p[0])), d = Math.max(...B.poly.map((p) => p[1])) - Math.min(...B.poly.map((p) => p[1]));
+  c.decal(cc[0], cc[1], w + 9, d + 9, 0, Y + 0.02);
+  if (c.occ) c.occ.push({ poly: B.poly, h: roofY + 1 });
+  return { L0, Lu, roofY };
+}
+
+/* lawns, paths and trees in a courtyard (their layout an illustration) */
+function courtyard(c, lawns, paths, trees) {
+  const Y = c.Y;
+  setCol(c.ground, c.C.lawn);
+  for (const L of lawns) addSlab(c.ground, roundRectPoly(L[0], L[1], L[2], L[3], Math.min(3, L[2] / 3, L[3] / 3), 8), Y, Y + 0.16);
+  setCol(c.ground, c.C.stone);
+  for (const P of paths) addRibbon(c.ground, P[0], P[1], Y + 0.03);
+  for (const t of trees) c.trees.push({ x: t[0], z: t[1], y: Y + 0.16, r: t[2] || 2.0 + c.rnd() * 0.6, dark: c.rnd() < 0.35 });
+}
+
+/* a flat cap over a polygon, with holes */
 function addPolyCap(a, P, holes, y) {
   const contour = P.map(([x, z]) => new THREE.Vector2(x, z));
   const hs = (holes || []).map((H) => H.map(([x, z]) => new THREE.Vector2(x, z)));
@@ -3486,7 +3561,7 @@ function addPlate(white, glassAcc, loop, y, D, prof, hb) {
   }
   return out;
 }
-/* a pool whose coping is left off along one side (the infinity edge): 'w' leaves the west side open */
+/* a pool whose coping is left off along one side (the infinity edge): 'w' | 'e' | 's' | 'n' */
 function addPoolEdge(water, white, cx, cz, w, d, r, y, edge) {
   const poly = roundRectPoly(cx, cz, w, d, r, 8);
   const loop = loopFromPoly(poly);
@@ -3499,9 +3574,10 @@ function addPoolEdge(water, white, cx, cz, w, d, r, y, edge) {
     V(white, p.x, y + 0.09, p.z, 0, 1, 0);
     V(white, o.x, y + 0.09, o.z, 0, 1, 0);
   }
+  const open = (p) => (edge === 'w' && p.x < cx - w / 2 + 0.35) || (edge === 'e' && p.x > cx + w / 2 - 0.35) || (edge === 's' && p.z > cz + d / 2 - 0.35) || (edge === 'n' && p.z < cz - d / 2 + 0.35);
   for (let i = 0; i < n; i++) {
     const j = (i + 1) % n;
-    if (edge === 'w' && loop.pts[i].x < cx - w / 2 + 0.35 && loop.pts[j].x < cx - w / 2 + 0.35) continue;
+    if (open(loop.pts[i]) && open(loop.pts[j])) continue;
     quad(white, base + 2 * i, base + 2 * j, base + 2 * j + 1, base + 2 * i + 1);
   }
   const wallBase = white.n;
@@ -3512,7 +3588,7 @@ function addPoolEdge(water, white, cx, cz, w, d, r, y, edge) {
   }
   for (let i = 0; i < n; i++) { const j = (i + 1) % n; quad(white, wallBase + 2 * i, wallBase + 2 * j, wallBase + 2 * j + 1, wallBase + 2 * i + 1); }
 }
-/* a small pool turned with its terrace (the penthouses' private pools) */
+/* a small pool turned with its terrace (the private pools) */
 function addPoolRot(water, white, cx, cz, len, wid, r, y, rot) {
   const P = rotatePoly(roundRectPoly(cx, cz, wid, len, r, 6), cx, cz, rot + Math.PI / 2);
   const loop = loopFromPoly(P);
@@ -3522,6 +3598,20 @@ function addPoolRot(water, white, cx, cz, len, wid, r, y, rot) {
   white.f = -1;
   for (let i = 0; i < n; i++) { const p = loop.pts[i], o = outer.pts[i]; V(white, p.x, y + 0.1, p.z, 0, 1, 0); V(white, o.x, y + 0.1, o.z, 0, 1, 0); }
   for (let i = 0; i < n; i++) { const j = (i + 1) % n; quad(white, base + 2 * i, base + 2 * j, base + 2 * j + 1, base + 2 * i + 1); }
+}
+/* loungers in a row */
+function loungers(c, x0, z0, dx, dz, n, y, rot) {
+  setCol(c.ground, c.C.lounger);
+  for (let i = 0; i < n; i++) addBox(c.ground, x0 + dx * i, z0 + dz * i, 0.78, 1.9, y, y + 0.36, rot || 0);
+}
+/* a shade pergola: slats on posts */
+function pergola(c, x0, z0, x1, z1, y, h) {
+  const top = y + h;
+  c.white.f = -1;
+  for (let x = x0; x <= x1 + 0.01; x += 0.75) addBox(c.white, x, (z0 + z1) / 2, 0.14, z1 - z0, top - 0.3, top, 0);
+  for (const [x, z] of [[x0, z0], [x1, z0], [x0, z1], [x1, z1]]) addBox(c.white, x, z, 0.26, 0.26, y, top - 0.3, 0);
+  addBox(c.white, (x0 + x1) / 2, z0, x1 - x0 + 0.3, 0.2, top - 0.5, top - 0.3, 0);
+  addBox(c.white, (x0 + x1) / 2, z1, x1 - x0 + 0.3, 0.2, top - 0.5, top - 0.3, 0);
 }
 
 /* ribbon along an open polyline (paths) */

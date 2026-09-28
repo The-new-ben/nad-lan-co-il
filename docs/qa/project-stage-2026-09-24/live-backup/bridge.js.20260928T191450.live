@@ -394,7 +394,7 @@ async function boot() {
     const b = e.target && e.target.closest ? e.target.closest('[data-nlps-phase]') : null;
     if (!b || !stage || typeof stage.focusPhase !== 'function') return;
     const on = b.getAttribute('aria-pressed') !== 'true';
-    document.querySelectorAll('[data-nlps-phase]').forEach((x) => x.setAttribute('aria-pressed', on && x.getAttribute('data-nlps-phase') === b.getAttribute('data-nlps-phase') ? 'true' : 'false'));
+    document.querySelectorAll('[data-nlps-phase]').forEach((x) => x.setAttribute('aria-pressed', x === b && on ? 'true' : 'false'));
     const ph = on ? b.getAttribute('data-nlps-phase') : null;
     ga('quarter_legend', { phase: ph || 'all', project: cfg.name });
     Promise.resolve(stage.ready).then(() => stage.focusPhase(ph)).catch(() => {});
