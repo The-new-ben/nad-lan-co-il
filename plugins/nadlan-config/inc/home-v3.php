@@ -402,6 +402,159 @@ if ( ! function_exists( 'nadlan_hp_band_listings' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_hp_lareas' ) ) {
+	/** The places that have real listings (ListingsBand v54): cities by count, then each city's neighbourhoods with two
+	 *  listings or more. A seeded demo listing is never counted. Cached for an hour; a saved listing clears it. */
+	function nadlan_hp_lareas() {
+		$hit = get_transient( 'nadlan_hp_lareas_v1' );
+		if ( is_array( $hit ) ) { return $hit; }
+		$ids = get_posts( array( 'post_type' => 'nadlan_property', 'post_status' => 'publish', 'posts_per_page' => 500, 'no_found_rows' => true, 'fields' => 'ids',
+			'meta_query' => array( nadlan_pl_nodemo() ) ) );
+		$city = array();
+		$hood = array();
+		foreach ( $ids as $id ) {
+			$c = nadlan_meta_norm( get_post_meta( $id, 'city', true ) );
+			if ( '' === $c ) { continue; }
+			$city[ $c ] = ( $city[ $c ] ?? 0 ) + 1;
+			// "צוקי אביב, מגדלי נאמן" counts in צוקי אביב: the first name is the neighbourhood the search finds
+			$h = trim( (string) strtok( nadlan_meta_norm( get_post_meta( $id, 'neighborhood', true ) ), ',' ) );
+			if ( '' !== $h && $h !== $c ) { $hood[ $c ][ $h ] = ( $hood[ $c ][ $h ] ?? 0 ) + 1; }
+		}
+		arsort( $city );
+		$out = array();
+		foreach ( array_slice( $city, 0, 6, true ) as $c => $n ) {
+			$out[] = array( $c, $n, false );
+			if ( isset( $hood[ $c ] ) ) {
+				arsort( $hood[ $c ] );
+				foreach ( array_slice( $hood[ $c ], 0, 3, true ) as $h => $m ) { if ( $m >= 2 ) { $out[] = array( $h, $m, true ); } }
+			}
+		}
+		set_transient( 'nadlan_hp_lareas_v1', $out, HOUR_IN_SECONDS );
+		return $out;
+	}
+}
+add_action( 'save_post_nadlan_property', function () { delete_transient( 'nadlan_hp_lareas_v1' ); } );
+
+if ( ! function_exists( 'nadlan_hp_band_lst' ) ) {
+	/** The listings band (design system ListingsBand v54): the four newest real listings for sale and for rent on the
+	 *  listings page's own card, the home's band head, tabs with real counts, "לפי אזור" only for places with listings.
+	 *  '' when a piece is missing or there is nothing to show: the caller then prints the old band. */
+	function nadlan_hp_band_lst() {
+		if ( ! function_exists( 'nadlan_plist_card' ) || ! function_exists( 'nadlan_pl_nodemo' ) || ! function_exists( 'nadlan_pl_count' ) || ! function_exists( 'nadlan_pl_css' ) ) { return ''; }
+		$grab = function ( $deal ) {
+			return get_posts( array( 'post_type' => 'nadlan_property', 'post_status' => 'publish', 'posts_per_page' => 4, 'no_found_rows' => true, 'fields' => 'ids',
+				'meta_query' => array( array( 'key' => 'listing_type', 'value' => $deal ), nadlan_pl_nodemo() ) ) );
+		};
+		$sale = $grab( 'sale' );
+		$rent = $grab( 'rent' );
+		if ( ! $sale && ! $rent ) { return ''; }
+		$n     = array( 'all' => nadlan_pl_count( '' ), 'sale' => nadlan_pl_count( 'sale' ), 'rent' => nadlan_pl_count( 'rent' ) );
+		$first = $sale ? 'sale' : 'rent';
+		$tab   = function ( $deal, $label ) use ( $n, $first ) {
+			$on = $deal === $first;
+			return '<button type="button" role="tab" id="nlhl-t-' . $deal . '" aria-controls="nlhl-' . $deal . '" aria-selected="' . ( $on ? 'true' : 'false' ) . '"' . ( $on ? '' : ' tabindex="-1"' ) . '>' . $label . ' <i>' . number_format( (int) $n[ $deal ] ) . '</i></button>';
+		};
+		$pane = function ( $deal, $ids ) use ( $first ) {
+			$html = implode( '', array_map( 'nadlan_plist_card', $ids ) );
+			// below the fold: the home's picture rule (H1.2), a sized medium_large file at low priority
+			$html = preg_replace_callback( '~<img src="([^"]+)"~', function ( $m ) {
+				$t = function_exists( 'nadlan_hp_thumb' ) ? nadlan_hp_thumb( html_entity_decode( $m[1] ) ) : array( html_entity_decode( $m[1] ), 0, 0 );
+				return '<img fetchpriority="low" src="' . esc_url( $t[0] ) . '"' . ( $t[1] ? ' width="' . (int) $t[1] . '" height="' . (int) $t[2] . '"' : '' );
+			}, $html );
+			return '<div class="nlhl-grid" id="nlhl-' . $deal . '" role="tabpanel" aria-labelledby="nlhl-t-' . $deal . '"' . ( $deal === $first ? '' : ' hidden' ) . '>' . $html . '</div>';
+		};
+		$areas = '';
+		foreach ( nadlan_hp_lareas() as $a ) {
+			$areas .= '<a' . ( $a[2] ? ' class="is-sub"' : '' ) . ' href="' . esc_url( home_url( '/properties/?city=' . rawurlencode( $a[0] ) ) ) . '">' . esc_html( $a[0] ) . ' <i>' . number_format( (int) $a[1] ) . '</i></a>';
+		}
+		$card_css = '';
+		foreach ( explode( "\n", nadlan_pl_css() ) as $l ) {
+			// the card's rules only; never the demo card's (a demo listing never reaches the home)
+			if ( preg_match( '/^\.nlpl-(card|media|deal|body|kicker|title|price|specs|amen|foot|by|go)\b/', $l ) && false === strpos( $l, '--demo' ) ) { $card_css .= $l . "\n"; }
+		}
+		return '<section class="nlhp-band nlhp-lband" aria-labelledby="nlhp-list-h">'
+			. nadlan_hp_head( 'דירות למכירה ולהשכרה', 'מודעות חדשות באתר', 'nlhp-list-h', 'לכל ' . number_format( (int) $n['all'] ) . ' המודעות', home_url( '/properties/' ) )
+			. '<div class="nlhl-bar"><div class="nlhl-tabs" role="tablist" aria-label="סוג עסקה">' . ( $sale ? $tab( 'sale', 'למכירה' ) : '' ) . ( $rent ? $tab( 'rent', 'להשכרה' ) : '' ) . '</div>'
+			. ( '' !== $areas ? '<nav class="nlhl-areas" aria-label="מודעות לפי אזור"><span>לפי אזור</span>' . $areas . '</nav>' : '' ) . '</div>'
+			. ( $sale ? $pane( 'sale', $sale ) : '' ) . ( $rent ? $pane( 'rent', $rent ) : '' )
+			. '<div class="nlhp-postline"><div><b>מפרסמים דירה?</b> <span>פרסום מודעה חינם, עם עוזר חכם לניסוח המודעה.</span></div><a class="nlhp-btn" href="' . esc_url( home_url( '/post-listing/' ) ) . '">פרסום מודעה</a></div>'
+			. '<style id="nadlan-hp-lband-css">' . $card_css . nadlan_hp_lband_css() . '</style>'
+			. '<script id="nadlan-hp-lband-js">' . nadlan_hp_lband_js() . '</script>'
+			. '</section>';
+	}
+}
+
+if ( ! function_exists( 'nadlan_hp_lband_css' ) ) {
+	function nadlan_hp_lband_css() {
+		return <<<'CSS'
+/* ListingsBand (design system HomePage v54): the home's listings band on the listings page's own card */
+#nlhp-page .nlhp-lband{background:#EFEAE0;border-radius:22px;padding:30px 28px 26px}
+.nlhl-bar{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;margin:0 0 16px}
+.nlhl-tabs{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px #E3E1DA}
+.nlhl-tabs button{display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 18px;border:0;border-radius:999px;background:transparent;color:#14212B;font:700 14.5px/1 Assistant,Heebo,Arial,sans-serif;cursor:pointer}
+.nlhl-tabs button i{font-style:normal;font-size:12.5px;font-weight:700;color:#6B7680;font-variant-numeric:tabular-nums}
+.nlhl-tabs button[aria-selected="true"]{background:#14212B;color:#fff}
+.nlhl-tabs button[aria-selected="true"] i{color:#BFD6DE}
+.nlhl-tabs button:focus-visible{outline:2px solid #2F6F86;outline-offset:2px}
+.nlhl-areas{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0}
+.nlhl-areas>span{flex:none;white-space:nowrap;font:600 13px/1 Assistant,Heebo,Arial,sans-serif;color:#57534B;margin-inline-end:4px}
+.nlhl-areas a{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;background:#fff;border:1px solid #E3E1DA;color:#14212B!important;text-decoration:none!important;font:600 13.5px/1 Assistant,Heebo,Arial,sans-serif;white-space:nowrap;transition:border-color .15s}
+.nlhl-areas a i{font-style:normal;font-size:12px;color:#2F6F86;font-weight:700;font-variant-numeric:tabular-nums}
+.nlhl-areas a.is-sub{background:transparent}
+.nlhl-areas a:hover{border-color:#2F6F86}
+.nlhl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.nlhl-grid[hidden]{display:none}
+.nlhl-grid .nlpl-title{font-size:16px}
+.nlhl-grid .nlpl-price strong{font-size:19px}
+.nlhl-grid .nlpl-by b{background:#EEF4F6;color:#2F6F86}
+#nlhp-page .nlhp-lband .nlhp-postline{margin-top:18px}
+@media(max-width:1180px){.nlhl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){
+#nlhp-page .nlhp-lband{padding:22px 16px 18px;border-radius:16px}
+.nlhl-bar{display:block}
+.nlhl-tabs{display:flex}
+.nlhl-tabs button{flex:1;justify-content:center;height:42px}
+.nlhl-areas{flex-wrap:nowrap;overflow-x:auto;margin:12px -16px 0;padding:0 16px 4px;scrollbar-width:none}
+.nlhl-areas::-webkit-scrollbar{display:none}
+.nlhl-areas a{height:36px}
+.nlhl-grid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:2px 16px 6px;scrollbar-width:none}
+.nlhl-grid::-webkit-scrollbar{display:none}
+.nlhl-grid .nlpl-card{flex:0 0 80%;scroll-snap-align:start}
+.nlhl-grid .nlpl-media{aspect-ratio:16/11}
+}
+@media(prefers-reduced-motion:reduce){.nlhl-grid .nlpl-card{transition:none}.nlhl-grid .nlpl-card:hover{transform:none}}
+CSS;
+	}
+}
+
+if ( ! function_exists( 'nadlan_hp_lband_js' ) ) {
+	function nadlan_hp_lband_js() {
+		return <<<'JS'
+(function(){
+	/* ListingsBand (HomePage v54): sale / rent tabs, arrow keys between them, the rail back to its start on a switch */
+	var tabs=document.querySelectorAll(".nlhl-tabs [role=tab]");
+	if(!tabs.length)return;
+	function pick(t,focus){
+		tabs.forEach(function(b){
+			var on=b===t,p=document.getElementById(b.getAttribute("aria-controls"));
+			b.setAttribute("aria-selected",on?"true":"false");b.tabIndex=on?0:-1;
+			if(p){p.hidden=!on;if(on){p.scrollLeft=0}}
+		});
+		if(focus){t.focus()}
+	}
+	tabs.forEach(function(b,i){
+		b.addEventListener("click",function(){pick(b)});
+		b.addEventListener("keydown",function(e){
+			var k=e.key,n=tabs.length,rtl=document.documentElement.dir==="rtl",j=-1;
+			if(k==="ArrowLeft"){j=rtl?(i+1)%n:(i-1+n)%n}else if(k==="ArrowRight"){j=rtl?(i-1+n)%n:(i+1)%n}else if(k==="Home"){j=0}else if(k==="End"){j=n-1}
+			if(j>-1){e.preventDefault();pick(tabs[j],true)}
+		});
+	});
+})();
+JS;
+	}
+}
+
 if ( ! function_exists( 'nadlan_hp_band_prices' ) ) {
 	function nadlan_hp_band_prices() {
 		$d   = nadlan_hp_cbs();
@@ -582,7 +735,7 @@ if ( ! function_exists( 'nadlan_hp_body' ) ) {
 		};
 		return nadlan_hp_band_film()
 			. nadlan_hp_band_projects()
-			. nadlan_hp_band_listings( $cap( 'nadlan_hv2_band_listings' ) )
+			. ( '' !== ( $nadlan_lb = nadlan_hp_band_lst() ) ? $nadlan_lb : nadlan_hp_band_listings( $cap( 'nadlan_hv2_band_listings' ) ) )
 			. nadlan_hp_band_prices()
 			. nadlan_hp_band_cities()
 			. nadlan_hp_band_map()

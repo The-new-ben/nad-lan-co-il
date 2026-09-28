@@ -1,0 +1,13 @@
+{
+  "released": "1.72.308",
+  "from": "1.72.307",
+  "at": "2026-09-28 04:40:43",
+  "files": {
+    "inc/home-v3.php": "c0f7fbcb51001f367afe40421eb07883",
+    "nadlan-config.php": "815f1f93700e7719361b69303ae6d2ed"
+  },
+  "live_before": {
+    "inc/home-v3.php": "c899972382d5c2442ac27ab97dc04fc2",
+    "nadlan-config.php": "07fb194e19566abfb4eb6b0b20d8ea12"
+  }
+}
