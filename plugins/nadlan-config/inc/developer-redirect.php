@@ -83,6 +83,6 @@ add_action( 'wp_enqueue_scripts', function () {
 		'font-family:Heebo,system-ui,sans-serif;font-size:13.5px}' .
 		'.nl-devlink span{color:#4B4639;font-weight:600}' .
 		'.nl-devlink a{background:transparent;border:1px solid #9C7A3C;color:#6D5A2E;text-decoration:none;' .
-		'font-weight:700;border-radius:8px;padding:7px 14px}'
+		'font-weight:700;border-radius:8px;padding:9px 14px}'
 	);
 }, 22 );

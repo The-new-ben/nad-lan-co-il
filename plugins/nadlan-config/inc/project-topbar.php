@@ -80,12 +80,12 @@ if ( ! function_exists( 'nadlan_ptop_render' ) ) {
 				. 'margin:0 0 14px;padding:9px 12px;background:#FBF7EC;border:1px solid #E2DCD0;border-radius:12px;'
 				. 'font:500 13px/1.5 Heebo,system-ui,sans-serif}'
 				. '.nlptop-c{display:flex;align-items:center;gap:7px;min-width:0}'
-				. '.nlptop-c a{color:#6B4E1E;text-decoration:none}.nlptop-c a:hover{text-decoration:underline}'
+				. '.nlptop-c a{color:#6B4E1E;text-decoration:none;display:inline-block;padding:14px 3px 10px;margin:-14px -3px -10px}.nlptop-c a:hover{text-decoration:underline}'
 				. '.nlptop-c i{color:#B7AE9C;font-style:normal}'
 				. '.nlptop-c b{color:#1B1A17;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}'
 				. '.nlptop-l{display:flex;gap:4px}'
 				. '.nlptop-l a,.nlptop-l b{padding:3px 9px;border-radius:999px;text-decoration:none;font-weight:700;font-size:12px}'
-				. '.nlptop-l a{color:#6B4E1E;border:1px solid #D9D2C4;background:#fff}'
+				. '.nlptop-l a{color:#6B4E1E;border:1px solid #D9D2C4;background:#fff;position:relative}.nlptop-l a::after{content:"";position:absolute;inset:0 -2px -18px}'
 				. '.nlptop-l b{color:#F6F1E6;background:#1B1A17}</style>';
 		}
 		return $css . '<nav class="nlptop" aria-label="breadcrumbs">' . $crumbs . $langs . '</nav>' . $content;

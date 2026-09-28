@@ -124,7 +124,7 @@ add_filter( 'wp_nav_menu_items', function ( $items, $args ) {
 add_action( 'wp_footer', function () {
 	if ( is_admin() || is_front_page() ) { return; } // front page: mega footer owns this (v2)
 	echo '<div class="nadlan-nav-foot" style="text-align:center;padding:14px;background:#FBF9F5;border-top:1px solid rgba(27,26,23,.06);font-family:var(--font-sans,Heebo,sans-serif);font-size:12.5px;direction:rtl">'
-		. '<a href="' . esc_url( home_url( '/site-map/' ) ) . '" style="color:#9C7A3C;text-decoration:none;font-weight:600">מפת האתר המלאה: כל הכלים, המדריכים והמאגרים ←</a>'
+		. '<a href="' . esc_url( home_url( '/site-map/' ) ) . '" style="display:inline-block;padding:14px 6px;margin:-14px -6px;color:#9C7A3C;text-decoration:none;font-weight:600">מפת האתר המלאה: כל הכלים, המדריכים והמאגרים ←</a>'
 		. '</div>';
 }, 99 );
 

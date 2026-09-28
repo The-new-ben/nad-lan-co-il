@@ -184,7 +184,7 @@ add_action( 'wp_enqueue_scripts', function () {
 		. '.nlfc-ic{display:inline-flex;color:#9C7A3C;flex:none}'
 		. '.nlfc-ic svg{width:13px;height:13px;display:block}'
 		. '.nlfc-hero{margin:10px 0 14px}'
-		. '.nlfc-hero .nlfc-chip{font-size:12.5px;padding:7px 13px}'
+		. '.nlfc-hero .nlfc{row-gap:10px}.nlfc-hero .nlfc-chip{font-size:12.5px;padding:8.5px 13px;position:relative}.nlfc-hero .nlfc-chip::after{content:"";position:absolute;inset:-5px 0}'
 		. '.nlfc-hero .nlfc-ic svg{width:15px;height:15px}'
 		. '.nlfc-oncard{margin:4px 0 2px}'
 	);

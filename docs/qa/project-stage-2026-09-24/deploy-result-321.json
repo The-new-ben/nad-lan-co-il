@@ -1,0 +1,23 @@
+{
+  "released": "1.72.321",
+  "from": "1.72.320",
+  "at": "2026-09-28 07:55:01",
+  "files": {
+    "inc/project-topbar.php": "04d705c485a71d4a2a29d79a0b6e0a59",
+    "inc/facility-chips.php": "0a49166d4415c090fd6076e5a30ed17e",
+    "inc/developer-redirect.php": "c55d1ad6ab598af4992c825602e0f895",
+    "inc/sdedov-teaser.php": "99aebd0284a51a8d277ba9abc2c608e4",
+    "inc/glossary-autolink.php": "808f1df08afc70c6e832a6d3678e8a36",
+    "inc/project-experience.php": "7953cbf332c45542b5ed8b50b024dc0c",
+    "nadlan-config.php": "7910dca91fce4c5361d0e9fe9a01c3f6"
+  },
+  "live_before": {
+    "inc/project-topbar.php": "71fcb4771c33e8c90fa457b02a1e268a",
+    "inc/facility-chips.php": "0cf9aeebedd377b093ea64b7179dd725",
+    "inc/developer-redirect.php": "23b6515359cbf5d17fb1c3d68cdfc52c",
+    "inc/sdedov-teaser.php": "049d0e7cc7600d5ab7aba90bbcf9f2bf",
+    "inc/glossary-autolink.php": "edff8ff1ee472ce92d0128efbd37f045",
+    "inc/project-experience.php": "3ccb34a8f019614b896ad35c17b7682a",
+    "nadlan-config.php": "9c1d37c12562d408d7fe4d4e48ca0c85"
+  }
+}

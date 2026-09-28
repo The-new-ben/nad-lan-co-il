@@ -408,6 +408,10 @@ if ( ! function_exists( 'nadlan_pjx_assets' ) ) {
 .nlpjx-comps th{font-size:11.5px;color:#6D665C;font-weight:600;background:#FAF8F3}
 .nlpjx-comps tr:last-child td{border-bottom:0}
 .nlpjx-comps a{color:#1B1A17;text-decoration:none;font-weight:600}
+/* TouchTargets v66: the prices list, the map note and the mortgage estimate link get an invisible 44px touch area; Ashira source rows get room */
+.nlpjx-comps a,.nlpjx-price-mapnote a,.nlpjx-fin-est a{display:inline-block;padding:13px 0;margin:-13px 0}
+html body .nlv2-source-list > li{padding-block:4px !important}
+.nlv2-source-list a{display:inline-block;padding:8px 0;margin:-8px 0}
 .nlpjx-comps a:hover{color:#9C7A3C}
 #nlpjx-unimap{height:440px;border-radius:12px;border:1px solid #E2DCD0;background:#F3EEE3}
 #nlpjx-map.nl-adopted-map{max-width:1240px;margin:0 auto 20px;box-sizing:border-box}
