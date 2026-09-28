@@ -57,10 +57,7 @@ export function openTour(o) {
   hint.textContent = o.hint || 'גררו כדי להסתכל מסביב';
   const cap = document.createElement('p');
   cap.className = 'nlat-viewer__cap';
-  // design styles (design system ApartmentStyles v80): 'bare' is the room as delivered, the scene's own picture
-  let style = 'bare';
-  const styleOf = (sc) => (style !== 'bare' && Array.isArray(sc.styles) ? sc.styles.find((st) => st.id === style) : null) || null;
-  const setCaption = () => { cap.textContent = [o.caption || '', styleOf(cur) ? (o.styleNote || 'רעיון עיצוב להמחשה, לא המפרט של היזם.') : '', cur.note || ''].filter(Boolean).join(' '); };
+  const setCaption = () => { cap.textContent = [o.caption || '', cur.note || ''].filter(Boolean).join(' '); };
   setCaption();
   const stage = document.createElement('div');
   stage.className = 'nlat-viewer__stage';
@@ -91,47 +88,6 @@ export function openTour(o) {
   const spotBtns = spots.length > 1 ? makeBar('nlat-viewer__spots', o.spotLabel || 'איפה עומדים', spots, (id) => show(pick(cur.dir, id))) : null;
   const dirBtns = dirs.length > 1 ? makeBar('nlat-viewer__dirs', o.barLabel || 'כיוון הדירה', dirs, (id) => show(pick(id, cur.spot))) : null;
   bottom.appendChild(cap);
-  /* the design styles panel: at the inline end on wide screens, a strip over the switches on phones; only where the scene
-     has styles (today floor 25, the living room, toward the sea) */
-  const stylesBox = document.createElement('div');
-  stylesBox.className = 'nlat-viewer__styles';
-  stylesBox.setAttribute('role', 'group');
-  stylesBox.setAttribute('aria-label', o.stylesLabel || 'עיצוב הדירה');
-  stylesBox.hidden = true;
-  const stylesHead = document.createElement('p');
-  stylesHead.className = 'nlat-viewer__styles-h';
-  const stylesHeadB = document.createElement('span');
-  stylesHeadB.textContent = o.stylesLabel || 'עיצוב הדירה';
-  const stylesHeadS = document.createElement('small');
-  stylesHeadS.textContent = o.stylesSub || 'רעיון להמחשה';
-  stylesHead.append(stylesHeadB, stylesHeadS);
-  const styleBtns = new Map();
-  function buildStyles() {
-    const list = Array.isArray(cur.styles) ? cur.styles : [];
-    styleBtns.clear();
-    stylesBox.replaceChildren(stylesHead);
-    for (const st of list) {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'nlat-style';
-      if (st.thumb) { const im = document.createElement('img'); im.src = st.thumb; im.alt = ''; im.loading = 'lazy'; im.width = 64; im.height = 40; b.appendChild(im); }
-      const tx = document.createElement('span');
-      const nm = document.createElement('b'); nm.textContent = st.label || st.id;
-      const sub = document.createElement('small'); sub.textContent = st.sub || '';
-      tx.append(nm, sub);
-      b.appendChild(tx);
-      b.addEventListener('click', () => applyStyle(st.id));
-      styleBtns.set(st.id, b);
-      stylesBox.appendChild(b);
-      ctrls.push(b);
-    }
-    stylesBox.hidden = list.length < 2;
-    markStyles();
-  }
-  function markStyles() { for (const [id, b] of styleBtns) b.setAttribute('aria-pressed', id === style ? 'true' : 'false'); }
-  const phoneMq = window.matchMedia ? window.matchMedia('(max-width: 900px)') : null;
-  const placeStyles = () => { if (phoneMq && phoneMq.matches) bottom.insertBefore(stylesBox, bottom.firstChild); else root.appendChild(stylesBox); };
-  if (phoneMq && phoneMq.addEventListener) phoneMq.addEventListener('change', placeStyles);
   if (dirBtns) root.classList.add('has-dirs');
   if (spotBtns) root.classList.add('has-spots');
   function markBars() {
@@ -142,8 +98,6 @@ export function openTour(o) {
     }
   }
   markBars();
-  placeStyles();
-  buildStyles();
   document.body.appendChild(root);
   document.documentElement.classList.add('nlat-open');
 
@@ -164,7 +118,7 @@ export function openTour(o) {
   // the shared viewing room: a glide to a look set from outside, and a throttled nl:view while the visitor looks around
   let tween = null, viewAt = 0, viewT = 0;
   const reducedMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  const getView = () => ({ mode: 'inside', scene: cur.id, dir: cur.dir, spot: cur.spot, floor: cur.floor != null ? Number(cur.floor) : null, style,
+  const getView = () => ({ mode: 'inside', scene: cur.id, dir: cur.dir, spot: cur.spot, floor: cur.floor != null ? Number(cur.floor) : null,
     yaw: +yaw.toFixed(4), pitch: +Math.max(-1.45, Math.min(1.45, pitch)).toFixed(4), fov: +fov.toFixed(2) });
   function sendView() { viewT = 0; if (!alive) return; viewAt = performance.now(); window.dispatchEvent(new CustomEvent('nl:view', { detail: Object.assign(getView(), { source: 'user' }) })); }
   function userView() { const w = 100 - (performance.now() - viewAt); if (w <= 0) sendView(); else if (!viewT) viewT = setTimeout(sendView, w); }
@@ -208,7 +162,6 @@ export function openTour(o) {
     mat.needsUpdate = true;
     if (old) old.dispose();
     root.classList.add('is-ready');
-    root.classList.remove('is-swapping');
     kick();
   };
   let loadId = 0;
@@ -216,18 +169,15 @@ export function openTour(o) {
     const id = ++loadId;
     const fresh = () => alive && id === loadId; // a later switch wins over a slower picture
     root.classList.remove('is-error');
-    const st = styleOf(sc), small = st ? (st.small || st.src) : sc.small, full = st ? st.src : sc.src;
-    load(small || full).then((t) => {
+    load(sc.small || sc.src).then((t) => {
       if (!fresh()) { t.dispose(); return null; }
       useTex(t);
-      return small && full && full !== small ? load(full) : null;
+      return sc.small && sc.src && sc.src !== sc.small ? load(sc.src) : null;
     }).then((t) => { if (t) { if (fresh()) useTex(t); else t.dispose(); } }).catch(() => { if (fresh()) root.classList.add('is-error'); });
   }
   function show(sc, src) {
     if (sc === cur) return;
     cur = sc;
-    if (style !== 'bare' && !styleOf(sc)) style = 'bare'; // a scene without this style shows the room as delivered
-    buildStyles();
     title.textContent = sc.title || '';
     root.setAttribute('aria-label', sc.title || '');
     setCaption();
@@ -239,18 +189,6 @@ export function openTour(o) {
     kick();
   }
   loadScene(cur);
-  /* a style: the same room and the same look, another picture (a short dim while it loads) */
-  function applyStyle(id, src) {
-    if (!alive || id === style) return false;
-    if (id !== 'bare' && !(Array.isArray(cur.styles) && cur.styles.some((st) => st.id === id))) return false;
-    style = id;
-    markStyles();
-    setCaption();
-    root.classList.add('is-swapping');
-    loadScene(cur);
-    if (src !== 'api') { if (typeof o.onStyle === 'function') o.onStyle(id); userView(); }
-    return true;
-  }
 
   // looking around: drag (one pointer), pinch (two), the wheel, the arrow keys
   const pts = new Map();
@@ -352,7 +290,6 @@ export function openTour(o) {
   function setView(v, dur) {
     if (!alive || !v) return false;
     if (v.scene && v.scene !== cur.id) { const sc = scenes.find((x2) => x2.id === v.scene); if (sc) show(sc, 'api'); }
-    if (v.style && v.style !== style) applyStyle(String(v.style), 'api');
     const y1 = Number(v.yaw), p1 = Number(v.pitch), f1 = Number(v.fov);
     const Y = Number.isFinite(y1) ? y1 : yaw;
     const P = Number.isFinite(p1) ? Math.max(-1.45, Math.min(1.45, p1)) : pitch;
@@ -382,7 +319,7 @@ export function openTour(o) {
     return { yaw: +Math.atan2(projV.z, -projV.x).toFixed(4), pitch: +Math.asin(Math.max(-1, Math.min(1, projV.y))).toFixed(4) };
   }
   const api = { close, show: (id) => { const sc = scenes.find((x2) => x2.id === id); if (sc) show(sc); }, get scene() { return cur.id; },
-    get yaw() { return yaw; }, get pitch() { return pitch; }, get fov() { return fov; }, get style() { return style; }, setStyle: (id) => applyStyle(id),
+    get yaw() { return yaw; }, get pitch() { return pitch; }, get fov() { return fov; },
     getView, setView, project, pick: pickLook, get scenes() { return scenes.map((sc) => ({ id: sc.id, dir: sc.dir, spot: sc.spot, floor: sc.floor })); } };
   root.nlTour = api; // for the page's checks (scripts/project-stage/pagejourney.py)
   window.__nlTour = api; // the shared viewing room

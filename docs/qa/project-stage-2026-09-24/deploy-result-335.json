@@ -1,0 +1,37 @@
+{
+  "released": "1.72.335",
+  "from": "1.72.334",
+  "at": "2026-09-28 12:02:02",
+  "files": {
+    "assets/project-stage/rainbow/tour/living-25w-warm.jpg": "97c9eedf816f138d03657cc3af4505be",
+    "assets/project-stage/rainbow/tour/living-25w-warm-2k.jpg": "76bacb4ae2961b91ebbebf8b75a0f05b",
+    "assets/project-stage/rainbow/tour/living-25w-light.jpg": "1eaea3dc14dcd3ae14a23132aee1b13f",
+    "assets/project-stage/rainbow/tour/living-25w-light-2k.jpg": "bd328402a1280d7abd517995124a3d11",
+    "assets/project-stage/rainbow/tour/living-25w-stone.jpg": "b05f8d8b75e8bc1133bdebf59b7d0016",
+    "assets/project-stage/rainbow/tour/living-25w-stone-2k.jpg": "ab65f67b6217e0398b983be4d84a711f",
+    "assets/project-stage/rainbow/tour/living-25w-bare-thumb.jpg": "9223a9599b8bffddec5636fc9bf6524d",
+    "assets/project-stage/rainbow/tour/living-25w-warm-thumb.jpg": "206c7c95c9b2fa2784681664420a6f25",
+    "assets/project-stage/rainbow/tour/living-25w-light-thumb.jpg": "1a81982891f6c460db5f5d9d4f170b5b",
+    "assets/project-stage/rainbow/tour/living-25w-stone-thumb.jpg": "f9492d9f894bbb0013985cf888613f41",
+    "assets/project-stage/tour.js": "3d2f65add57807a8e48272ade6c22658",
+    "assets/project-stage/tour.css": "c8c03b5e0e3f2fd783e29ac7f01fba4b",
+    "inc/project-stage.php": "82dbc4c24c144fe75a8283c21aa072c1",
+    "nadlan-config.php": "a0dae812126510d9c66f8c71ab5ff3d9"
+  },
+  "live_before": {
+    "assets/project-stage/rainbow/tour/living-25w-warm.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25w-warm-2k.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25w-light.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25w-light-2k.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25w-stone.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25w-stone-2k.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25w-bare-thumb.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25w-warm-thumb.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25w-light-thumb.jpg": "missing",
+    "assets/project-stage/rainbow/tour/living-25w-stone-thumb.jpg": "missing",
+    "assets/project-stage/tour.js": "66c84bb1c143c3138b3fdd908352e416",
+    "assets/project-stage/tour.css": "4106c76fb231e546034bd203f08dd8ce",
+    "inc/project-stage.php": "ca93cddd082ee64a2474438c8dc5d613",
+    "nadlan-config.php": "14c82f1332c64e6fa65e05d691ad8eb0"
+  }
+}

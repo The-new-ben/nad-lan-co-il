@@ -473,17 +473,6 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 						continue;
 					}
 					$bal      = $bal || 'balcony' === $sp[0];
-					// ApartmentStyles v80: the design styles rendered for this room (Blender, scripts/interior/render_styles.py)
-					$sts = array();
-					foreach ( array( array( 'warm', 'עץ חם', 'פרקט אלון, מטבח אגוז, פשתן' ), array( 'light', 'בהיר', 'אלון לבן, מטבח מרווה' ), array( 'stone', 'אבן', 'אבן אפורה, עור קוניאק' ) ) as $st ) {
-						$sb = $sp[0] . '-' . $fl . $dd[0] . '-' . $st[0];
-						if ( is_readable( dirname( __DIR__ ) . '/' . $tdir . $sb . '.jpg' ) ) {
-							$sts[] = array( 'id' => $st[0], 'label' => $st[1], 'sub' => $st[2], 'src' => $turl . $sb . '.jpg' . $tv, 'small' => $turl . $sb . '-2k.jpg' . $tv, 'thumb' => $turl . $sb . '-thumb.jpg' . $tv );
-						}
-					}
-					if ( $sts ) {
-						array_unshift( $sts, array( 'id' => 'bare', 'label' => 'כמו במסירה', 'sub' => 'ריק, אריחים בהירים', 'thumb' => $turl . $sp[0] . '-' . $fl . $dd[0] . '-bare-thumb.jpg' . $tv ) );
-					}
 					$scenes[] = array(
 						'id'        => $dd[0] . ( 'living' === $sp[0] ? '' : '-' . $sp[0] ),
 						'dir'       => $dd[0],
@@ -495,7 +484,6 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 						'small'     => $turl . $sp[0] . '-' . $fl . $dd[0] . '-2k.jpg' . $tv,
 						'note'      => trim( ( 'balcony' === $sp[0] ? $balnote . ' ' : '' ) . $dd[3] ),
 						'floor'     => $fl,
-						'styles'    => $sts,
 					);
 				}
 			}
