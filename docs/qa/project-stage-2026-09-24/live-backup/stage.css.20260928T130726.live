@@ -304,10 +304,3 @@
 .rbs--narrow .rbs-qcard-page.rbs-qcard-wa { min-height: 44px; }
 :root body .nlds .qp-dot--facilities { background: #1F4B5C !important; }
 :root body .rbs a.rbs-qcard-page.rbs-qcard-wa, :root body .rbs a.rbs-qcard-page.rbs-qcard-wa:hover { color: #fff !important; text-decoration: none !important; }
-
-/* FacilityRooms v83: the facility card's "כניסה ב־360°" (outlined deep sea, a 360° badge, 44 px) */
-:root body .rbs button.rbs-qcard-360 { display: flex !important; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 44px;
-  margin: 8px 0 0; padding: 0 14px; border-radius: 12px; border: 1px solid #1F4B5C !important; background: #fff !important; color: #1F4B5C !important;
-  font: 700 14.5px/1.2 Assistant, Heebo, Arial, sans-serif !important; cursor: pointer; box-shadow: none; }
-:root body .rbs .rbs-qcard-360b { display: inline-block; padding: 3px 7px; border-radius: 6px; background: #1F4B5C; color: #fff; font: 800 12px/1.2 Assistant, Heebo, Arial, sans-serif; }
-:root body .rbs button.rbs-qcard-360:focus-visible { outline: 3px solid #C2563A; outline-offset: 2px; }

@@ -1,78 +1,96 @@
 {
-  "note": "FacilityHotspots v72 (28.9.2026). Sources: the approved design plan for lot 111 (Tel Aviv local committee, 10.5.2023; docs/research/2026-09-24-rainbow-run/rainbow-facts.md) and the developer's pages (Israel Canada, rainbowtlv.com). Places the plan does not fix are illustrations, and the card says so.",
-  "facilities": [
-    {
-      "id": "pools",
-      "name": "שתי בריכות על הגגות",
-      "pin": "בריכות",
-      "icon": "pool",
-      "anchors": [
-        "roof:3",
-        "roof:5"
-      ],
-      "ask": "הבריכות",
-      "lines": [
-        "לפי תכנית העיצוב שאושרה ב־10.5.2023: שתי בריכות שחייה על גגות של שני בנייני בוטיק.",
-        "אתר הפרויקט מתאר בריכת אינפיניטי על הגג, בריכת ילדים ובריכה למבוגרים בלבד."
-      ],
-      "note": "איזה שני גגות לא פורסם, והמיקום בדגם להמחשה. מקורות: תכנית העיצוב, אתר הפרויקט."
-    },
-    {
-      "id": "club",
-      "name": "Rainbow Club, מועדון הדיירים",
-      "pin": "מועדון דיירים",
-      "icon": "club",
-      "anchors": [
-        "tower:court"
-      ],
-      "ask": "מועדון הדיירים",
-      "lines": [
-        "לפי היזם: חדר כושר, סטודיו, ספא, סאונות ואמבטיות קרח, מרכז עסקים, מועדון ילדים ובית קפה פרטי.",
-        "לפי תכנית העיצוב: 960 מ״ר לשימוש הדיירים בקומת הקרקע ובקומת הבסיס של המגדל."
-      ],
-      "note": "מקורות: אתר ישראל קנדה, תכנית העיצוב (10.5.2023)."
-    },
-    {
-      "id": "lobby",
-      "name": "לובי בכל בניין",
-      "pin": "לובי",
-      "icon": "lobby",
-      "anchors": [
-        "tower:lobby"
-      ],
-      "ask": "הלובי",
-      "lines": [
-        "לפי תכנית העיצוב: לכל בניין לובי משלו, עם חזית לרחוב וחזית לחצר."
-      ],
-      "note": "הלובי המסומן בדגם הוא של המגדל, להמחשה. מקור: תכנית העיצוב."
-    },
-    {
-      "id": "retail",
-      "name": "מסחר בקומת הקרקע",
-      "pin": "מסחר",
-      "icon": "retail",
-      "anchors": [
-        "tower:street"
-      ],
-      "ask": "המסחר בפרויקט",
-      "lines": [
-        "לפי תכנית העיצוב: קומת קרקע מסחרית, בגובה של עד 4.5 מטרים."
-      ],
-      "note": "המיקום בדגם להמחשה. מקור: תכנית העיצוב."
-    },
-    {
-      "id": "parking",
-      "name": "חניון תת־קרקעי",
-      "pin": "חניון",
-      "icon": "parking",
-      "anchors": [
-        "court"
-      ],
-      "ask": "החניון",
-      "lines": [
-        "לפי פרסומי היזם: חניון תת־קרקעי מתחת למתחם."
-      ],
-      "note": "מקור: אתר ישראל קנדה."
-    }
-  ]
+ "note": "FacilityHotspots v72 (28.9.2026). Sources: the approved design plan for lot 111 (Tel Aviv local committee, 10.5.2023; docs/research/2026-09-24-rainbow-run/rainbow-facts.md) and the developer's pages (Israel Canada, rainbowtlv.com). Places the plan does not fix are illustrations, and the card says so. FacilityRooms v83 (28.9.2026): the pools, the club and the lobby open a 360 room (scripts/interior/rainbow_facility.py; illustration).",
+ "facilities": [
+  {
+   "id": "pools",
+   "name": "שתי בריכות על הגגות",
+   "pin": "בריכות",
+   "icon": "pool",
+   "anchors": [
+    "roof:3",
+    "roof:5"
+   ],
+   "ask": "הבריכות",
+   "lines": [
+    "לפי תכנית העיצוב שאושרה ב־10.5.2023: שתי בריכות שחייה על גגות של שני בנייני בוטיק.",
+    "אתר הפרויקט מתאר בריכת אינפיניטי על הגג, בריכת ילדים ובריכה למבוגרים בלבד."
+   ],
+   "note": "איזה שני גגות לא פורסם, והמיקום בדגם להמחשה. מקורות: תכנית העיצוב, אתר הפרויקט.",
+   "tour": {
+    "src": "fac-roofpool.jpg",
+    "small": "fac-roofpool-2k.jpg",
+    "label": "כניסה לבריכה",
+    "title": "בריכה על גג של בניין בוטיק · הדמיה"
+   }
+  },
+  {
+   "id": "club",
+   "name": "Rainbow Club, מועדון הדיירים",
+   "pin": "מועדון דיירים",
+   "icon": "club",
+   "anchors": [
+    "tower:court"
+   ],
+   "ask": "מועדון הדיירים",
+   "lines": [
+    "לפי היזם: חדר כושר, סטודיו, ספא, סאונות ואמבטיות קרח, מרכז עסקים, מועדון ילדים ובית קפה פרטי.",
+    "לפי תכנית העיצוב: 960 מ״ר לשימוש הדיירים בקומת הקרקע ובקומת הבסיס של המגדל."
+   ],
+   "note": "מקורות: אתר ישראל קנדה, תכנית העיצוב (10.5.2023).",
+   "tour": {
+    "src": "fac-club.jpg",
+    "small": "fac-club-2k.jpg",
+    "label": "כניסה למועדון",
+    "title": "מועדון הדיירים וחדר הכושר · הדמיה"
+   }
+  },
+  {
+   "id": "lobby",
+   "name": "לובי בכל בניין",
+   "pin": "לובי",
+   "icon": "lobby",
+   "anchors": [
+    "tower:lobby"
+   ],
+   "ask": "הלובי",
+   "lines": [
+    "לפי תכנית העיצוב: לכל בניין לובי משלו, עם חזית לרחוב וחזית לחצר."
+   ],
+   "note": "הלובי המסומן בדגם הוא של המגדל, להמחשה. מקור: תכנית העיצוב.",
+   "tour": {
+    "src": "fac-lobby.jpg",
+    "small": "fac-lobby-2k.jpg",
+    "label": "כניסה ללובי",
+    "title": "הלובי במגדל · הדמיה"
+   }
+  },
+  {
+   "id": "retail",
+   "name": "מסחר בקומת הקרקע",
+   "pin": "מסחר",
+   "icon": "retail",
+   "anchors": [
+    "tower:street"
+   ],
+   "ask": "המסחר בפרויקט",
+   "lines": [
+    "לפי תכנית העיצוב: קומת קרקע מסחרית, בגובה של עד 4.5 מטרים."
+   ],
+   "note": "המיקום בדגם להמחשה. מקור: תכנית העיצוב."
+  },
+  {
+   "id": "parking",
+   "name": "חניון תת־קרקעי",
+   "pin": "חניון",
+   "icon": "parking",
+   "anchors": [
+    "court"
+   ],
+   "ask": "החניון",
+   "lines": [
+    "לפי פרסומי היזם: חניון תת־קרקעי מתחת למתחם."
+   ],
+   "note": "מקור: אתר ישראל קנדה."
+  }
+ ]
 }

@@ -1,0 +1,31 @@
+{
+  "released": "1.72.337",
+  "from": "1.72.336",
+  "at": "2026-09-28 13:09:24",
+  "files": {
+    "assets/project-stage/rainbow/tour/fac-roofpool.jpg": "6a4a31b1954601b351f4a8b682298d55",
+    "assets/project-stage/rainbow/tour/fac-roofpool-2k.jpg": "854b9dbb0bdde6eb87122198a006f11b",
+    "assets/project-stage/rainbow/tour/fac-lobby.jpg": "c31157288abbad60177b5c2bc814a48a",
+    "assets/project-stage/rainbow/tour/fac-lobby-2k.jpg": "b872dfe29726865b749efc25a09b6ff7",
+    "assets/project-stage/rainbow/tour/fac-club.jpg": "91efec18a630b425b90a69b7584c15aa",
+    "assets/project-stage/rainbow/tour/fac-club-2k.jpg": "9913a589e80812d8f020f48fefb87f77",
+    "assets/project-stage/rainbow/stage.js": "ba0cda065bce153e6b696142329fdecf",
+    "assets/project-stage/rainbow/stage.css": "642084211f8403be3c65bce0a1c7f9be",
+    "assets/project-stage/bridge.js": "ac85d67964aaeae5e7d5605236e4811a",
+    "assets/project-stage/rainbow/facilities.json": "5275656a29861df868e05ea56ee6d032",
+    "nadlan-config.php": "bc8ed687943c05df5f18ab7a7f593fc9"
+  },
+  "live_before": {
+    "assets/project-stage/rainbow/tour/fac-roofpool.jpg": "missing",
+    "assets/project-stage/rainbow/tour/fac-roofpool-2k.jpg": "missing",
+    "assets/project-stage/rainbow/tour/fac-lobby.jpg": "missing",
+    "assets/project-stage/rainbow/tour/fac-lobby-2k.jpg": "missing",
+    "assets/project-stage/rainbow/tour/fac-club.jpg": "missing",
+    "assets/project-stage/rainbow/tour/fac-club-2k.jpg": "missing",
+    "assets/project-stage/rainbow/stage.js": "b598a7aa60158b15c7589d9f71de1b83",
+    "assets/project-stage/rainbow/stage.css": "ec6944353b74c06d7cd5b1b34f85e066",
+    "assets/project-stage/bridge.js": "783cfe52db5aed5652454bebf6963fdd",
+    "assets/project-stage/rainbow/facilities.json": "c36cd34877d49921d63f1965dc98b5c8",
+    "nadlan-config.php": "597a7ece8c7bb05b3dafd1b164719311"
+  }
+}
