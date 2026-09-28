@@ -31,7 +31,8 @@ EXACT = [
     # the header (theme parts/header.html) and the skip link
     row("לדלג לתוכן", "Skip to content", "Aller au contenu", "Перейти к содержимому", "تخطَّ إلى المحتوى"),
     row("דלג לתוכן", "Skip to content", "Aller au contenu", "Перейти к содержимому", "تخطَّ إلى المحتوى"),
-    row("נדל״ן לפני שפונים ליזם", "Real estate - before you approach the developer", "L'immobilier - avant de contacter le promoteur", "Недвижимость - до обращения к застройщику", "عقارات - قبل التوجه إلى المطوّر"),
+    # the header's tagline has about 30 characters of room (1.72.338 cut "Real estate - before you approa..."), so it is short
+    row("נדל״ן לפני שפונים ליזם", "Before you call the developer", "Avant d'appeler le promoteur", "До звонка застройщику", "قبل التوجه إلى المطوّر"),
     row("פרויקטים", "Projects", "Projets", "Проекты", "مشاريع"),
     row("קטלוג תלת ממד", "3D catalogue", "Catalogue 3D", "3D-каталог", "كتالوج ثلاثي الأبعاد"),
     row("אזורי ביקוש", "Top areas", "Quartiers prisés", "Востребованные районы", "مناطق مطلوبة"),
