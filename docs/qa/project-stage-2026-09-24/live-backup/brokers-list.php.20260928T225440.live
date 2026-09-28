@@ -13,9 +13,6 @@
  *    system's v44 (28.9.2026) it is the directory's card (ProfessionalCard v41: the initials and the profession's mark,
  *    one role line, one licence line), printed by nadlan_ds_procard() for this page and the recommendations page;
  *    BrokersList v44: three per row, a dense row on a phone, the cities in one scrolling row, a real "more" button.
- *    Design system v99 (28.9.2026): the network card of ProNetwork v98 (nadlan_dir_card) with the recommendations count in
- *    its foot; one row per city (three on a desktop, a swipe row on a phone), the rest behind "עוד".
- *    (The owner, 28.9: "circle and a letter ... a social network".)
  * The page's own offer for brokers (the free site and the join form) stays below it; its H1 steps down to an H2 so
  * the page keeps exactly one H1. Hebrew page only (id 7645); the English, Russian and French pages are unchanged.
  * Off switch: option nadlan_brokers_list = '0'.
@@ -127,12 +124,36 @@ if ( ! function_exists( 'nadlan_ds_procard' ) ) {
 	 * the design system (/brokers/, the recommendations page).
 	 */
 	function nadlan_ds_procard( $id, $foot = '' ) {
-		// design system v99 (28.9.2026): the design system's pages print the network card itself (ProNetwork v98,
-		// nadlan_dir_card in inc/directory.php): one card across the directory, /brokers/ and /firgun/
-		if ( function_exists( 'nadlan_dir_card' ) ) {
-			return nadlan_dir_card( (int) $id, array( 'foot' => $foot ) );
+		$key   = (string) get_post_meta( $id, 'profession', true );
+		$pm    = function_exists( 'nadlan_dir_prof_meta' ) ? nadlan_dir_prof_meta( $key ) : array( 'color' => '#9C7A3C', 'soft' => '#FBF6EE', 'icon' => 'profession-broker' );
+		$title = trim( wp_strip_all_tags( html_entity_decode( get_the_title( $id ), ENT_QUOTES, 'UTF-8' ) ) );
+		$parts = preg_split( '/\s+·\s+/u', $title, 2 );
+		$pname = $parts[0];
+		$biz   = isset( $parts[1] ) ? $parts[1] : '';
+		$words = preg_split( '/\s+/u', trim( preg_replace( '/[^\p{L}\s]/u', ' ', $pname ) ) );
+		$ini   = mb_substr( (string) ( $words[0] ?? '' ), 0, 1 ) . ( isset( $words[1] ) && '' !== $words[1] ? '.' . mb_substr( $words[1], 0, 1 ) : '' );
+		$role  = function_exists( 'nadlan_dir_prof_label' ) ? nadlan_dir_prof_label( $key, $id ) : 'תיווך נדל״ן';
+		$city  = trim( (string) get_post_meta( $id, 'city', true ) );
+		$reg   = trim( (string) get_post_meta( $id, 'registry_number', true ) );
+		$lic   = '';
+		if ( 'metavech' === $key ) {
+			$ln  = trim( (string) get_post_meta( $id, 'license_number', true ) );
+			$ln  = '' !== $ln ? $ln : $reg;
+			$lic = '' !== $ln ? 'רישיון תיווך ' . $ln : '';
+		} elseif ( '' !== $reg ) {
+			$lic = ( 'kablan' === $key ? 'רשם הקבלנים ' : 'מספר רישום ' ) . $reg;
 		}
-		return '';
+		$demo  = (bool) get_post_meta( $id, 'is_demo', true );
+		$icon  = function_exists( 'nlds_asset_url' ) ? nlds_asset_url( 'icons/' . $pm['icon'] . '.svg' ) : '';
+		$face  = has_post_thumbnail( $id ) ? get_the_post_thumbnail( $id, 'thumbnail', array( 'class' => 'nlds-procard__photo', 'alt' => '', 'loading' => 'lazy', 'decoding' => 'async' ) ) : esc_html( $ini );
+		return '<a class="nlds-procard' . ( $demo ? ' nlds-procard--demo' : '' ) . '" href="' . esc_url( get_permalink( $id ) ) . '" style="--pc:' . esc_attr( $pm['color'] ) . ';--ps:' . esc_attr( $pm['soft'] ) . '">'
+			. '<div class="nlds-procard__top"><span class="nlds-procard__av" aria-hidden="true">' . $face
+			. ( '' !== $icon ? '<i class="nlds-procard__mark"><img src="' . esc_url( $icon ) . '" alt="" width="13" height="13"></i>' : '' ) . '</span>'
+			. '<div class="nlds-procard__id"><h3 class="nlds-procard__name">' . esc_html( $pname ) . '</h3>' . ( '' !== $biz ? '<p class="nlds-procard__biz">' . esc_html( $biz ) . '</p>' : '' ) . '</div></div>'
+			. ( $demo ? '<span class="nlds-procard__sample">פרופיל לדוגמה</span>' : '' )
+			. '<p class="nlds-procard__role"><b>' . esc_html( $role ) . '</b>' . ( '' !== $city ? ' · ' . esc_html( $city ) : '' ) . '</p>'
+			. ( '' !== $lic ? '<span class="nlds-procard__lic"><i>✓</i>' . esc_html( $lic ) . '</span>' : '' )
+			. '<div class="nlds-procard__foot">' . $foot . '<span class="nlds-procard__go">לפרופיל ←</span></div></a>';
 	}
 }
 
@@ -164,10 +185,10 @@ if ( ! function_exists( 'nadlan_bl_html' ) ) {
 	<?php foreach ( $b['rest'] as $c => $list ) : ?>
 	<section class="nlds-citysec" id="<?php echo esc_attr( $slug( $c ) ); ?>" aria-label="<?php echo esc_attr( 'מתווכים ב' . $c ); ?>">
 		<h2 class="nlds-citysec__title">מתווכים ב<?php echo esc_html( $c ); ?> <span class="nlds-num"><?php echo count( $list ); ?></span></h2>
-		<div class="nlds-dgrid"><?php foreach ( array_slice( $list, 0, 3 ) as $id ) { echo nadlan_bl_card( $id ); } // phpcs:ignore ?></div>
-		<?php if ( count( $list ) > 3 ) : /* v99: one row of the network card per city (three on a desktop, a swipe row on a phone), the rest open in place; all of them stay in the page */ ?>
-		<details class="nlds-more"><summary><span class="nlds-more__open"><?php echo esc_html( 'עוד ' . ( count( $list ) - 3 ) . ' מתווכים ב' . $c ); ?></span><span class="nlds-more__less">פחות</span></summary>
-			<div class="nlds-dgrid"><?php foreach ( array_slice( $list, 3 ) as $id ) { echo nadlan_bl_card( $id ); } // phpcs:ignore ?></div>
+		<div class="nlds-dgrid"><?php foreach ( array_slice( $list, 0, 6 ) as $id ) { echo nadlan_bl_card( $id ); } // phpcs:ignore ?></div>
+		<?php if ( count( $list ) > 6 ) : /* six per city, the rest open in place (the page ran 34,000px on a phone); all of them stay in the page */ ?>
+		<details class="nlds-more"><summary><span class="nlds-more__open"><?php echo esc_html( 'עוד ' . ( count( $list ) - 6 ) . ' מתווכים ב' . $c ); ?></span><span class="nlds-more__less">פחות</span></summary>
+			<div class="nlds-dgrid"><?php foreach ( array_slice( $list, 6 ) as $id ) { echo nadlan_bl_card( $id ); } // phpcs:ignore ?></div>
 		</details>
 		<?php endif; ?>
 	</section>

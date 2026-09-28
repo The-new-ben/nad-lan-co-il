@@ -208,8 +208,7 @@ if ( ! function_exists( 'nadlan_dir_query' ) ) {
  * Card renderer  -  the ONE place a professional card is built
  * ------------------------------------------------------------------------- */
 if ( ! function_exists( 'nadlan_dir_card' ) ) {
-	function nadlan_dir_card( $id, $args = array() ) {
-		// $args['foot']: extra HTML under the trust labels (v99: the recommendations count on /brokers/, a quality on /firgun/)
+	function nadlan_dir_card( $id ) {
 		// design system ProCard v98 (28.9.2026): a card of the professionals' network - a cover with the profession's
 		// architectural pattern, a portrait or a designed monogram, the strongest register fact, separate trust labels and
 		// two actions (open the profile, save). The facts and labels come from inc/pro-card.php; nothing is invented.
@@ -261,7 +260,6 @@ if ( ! function_exists( 'nadlan_dir_card' ) ) {
 		<?php if ( $fact ) : ?><p class="nlpn-fact"><small><?php echo esc_html( $fact[0] ); ?></small><?php echo esc_html( $fact[1] ); ?></p><?php endif; ?>
 		<?php if ( $trust ) : ?><ul class="nlpn-trust"><?php foreach ( $trust as $t ) : ?><li<?php echo $t[1] ? ' class="' . esc_attr( $t[1] ) . '"' : ''; ?>><?php echo wp_kses( $t[0], array( 'b' => array() ) ); ?></li><?php endforeach; ?></ul><?php endif; ?>
 		<?php echo $stars; // phpcs:ignore ?>
-		<?php if ( ! empty( $args['foot'] ) ) : ?><div class="nlpn-foot"><?php echo $args['foot']; // phpcs:ignore -- built from escaped parts by the caller ?></div><?php endif; ?>
 		<div class="nlpn-act">
 			<a class="nlpn-go" href="<?php echo esc_url( $url ); ?>" tabindex="-1" aria-hidden="true">לפרופיל</a>
 			<button type="button" class="nlpn-save" aria-pressed="false" aria-label="שמירה" data-id="<?php echo (int) $id; ?>" data-name="<?php echo esc_attr( $pname ); ?>" data-url="<?php echo esc_url( $url ); ?>" data-role="<?php echo esc_attr( $role ); ?>"><?php echo nadlan_pc_save_icon(); // phpcs:ignore ?></button>

@@ -74,12 +74,3 @@
 .nldir-results:has(>.nlpn){grid-template-columns:repeat(auto-fill,minmax(232px,1fr))!important;align-items:stretch!important}
 /* one card per row on a phone (the old directory rule allowed two 160px columns) */
 @media (max-width:600px){.nldir-results:has(>.nlpn){grid-template-columns:minmax(0,1fr)!important;gap:12px!important}}
-/* v99 (28.9.2026): the card on the design system's pages (/brokers/, /firgun/): the foot (recommendations, a quality) and,
-   on a phone, each city of /brokers/ as a swipe row of cards instead of a column (the page ran 15,000px on a phone) */
-.nlpn-foot{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
-.nlpn-foot .nlds-reccount,.nlpn-foot .nlds-chip{margin:0!important}
-@media (max-width:600px){
-  :root body .nlds .nlds-citysec .nlds-dgrid:has(>.nlpn){display:grid!important;grid-auto-flow:column!important;grid-template-columns:none!important;grid-auto-columns:82%!important;
-    gap:12px!important;overflow-x:auto!important;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding:2px 2px 10px!important;margin-inline:-2px;scrollbar-width:thin}
-  :root body .nlds .nlds-citysec .nlds-dgrid:has(>.nlpn)>.nlpn{scroll-snap-align:start}
-}
