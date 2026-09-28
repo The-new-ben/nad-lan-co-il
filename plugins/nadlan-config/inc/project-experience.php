@@ -432,6 +432,19 @@ if ( ! function_exists( 'nadlan_pjx_assets' ) ) {
 .nlpjx-pro b{display:block;font-size:13.5px;line-height:1.2}
 .nlpjx-pro span{font-size:11px;color:#6D665C}
 .nlpjx-world span{font-size:12px;color:#6D665C}
+/* ProjectFrame v63 (design system, 28.9.2026): one frame for every project page. The layout override of 1.69.68 made
+   every block of the page content 100% wide with no side margin: cards met the screen edge on phones, 1440px cards and
+   lines on desktops. The frame is 12px from each edge on phones, 20px from 768px, at most 1400px; the Rainbow stage
+   page keeps its own identical frame; the article is a 780px reading column, 28px from the edge on phones. */
+html body.nlpc-project-page .nlpc-main .wp-block-post-content.is-layout-constrained > *{box-sizing:border-box;max-width:min(1400px, calc(100% - 24px)) !important;margin-inline:auto !important}
+html body.nlpc-project-page .nlpc-main .wp-block-post-content.is-layout-constrained > .nlps-page{max-width:100% !important}
+html body.nlpc-project-page .nlpc-main .wp-block-post-content.is-layout-constrained > .nadlan-project-article{max-width:min(812px, calc(100% - 24px)) !important;padding-inline:16px !important}
+@media (min-width:768px){
+html body.nlpc-project-page .nlpc-main .wp-block-post-content.is-layout-constrained > *{max-width:min(1400px, calc(100% - 40px)) !important}
+html body.nlpc-project-page .nlpc-main .wp-block-post-content.is-layout-constrained > .nlps-page{max-width:100% !important}
+html body.nlpc-project-page .nlpc-main .wp-block-post-content.is-layout-constrained > .nadlan-project-article{max-width:min(812px, calc(100% - 40px)) !important}
+}
+@media (max-width:767px){html body.nlpc-project-page .nlpc-main .wp-block-post-content.is-layout-constrained > :is(.nlcard,.nlpe){width:auto !important}}
 ' );
 		wp_register_script( 'nadlan-pjx-js', false, $has_map ? array( 'leaflet' ) : array(), '1.69.85', true );
 		wp_enqueue_script( 'nadlan-pjx-js' );
