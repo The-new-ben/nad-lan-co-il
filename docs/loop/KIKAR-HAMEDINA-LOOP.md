@@ -25,6 +25,13 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **30.9, turn 2** (web search: [development sales sites 2026](https://vinode.io/), [unit finders](https://archicgi.com/interactive-real-estate-platform/), [3D visualization ROI 2026](https://intwopixel.com/blog/3d-real-estate-visualization-complete-guide), [the twist technique](https://medium.com/@crazypixel/geometry-manipulation-in-three-js-twisting-c53782c38bb) and [Cayan Tower's 1.2° per floor](https://en.wikipedia.org/wiki/Cayan_Tower)). The best off-plan sites in the world go tower → floor → unit, with view corridors, SUNLIGHT and distance to amenities.
+  - **NEW for Kikar:**
+    - **(1) Sun and shade per floor and facing.** The real sun path for Tel Aviv (32.09°N) by season and hour, on the turning towers. None of our pages has it; no Israeli competitor has it.
+    - **(2) Performance budget.** Text and CTAs paint in under 1 s on a phone (a sub-second load is cited at 2× conversion). The 3D world loads after, on intent.
+    - **(3) Twist geometry.** Each floor is a separate slab rotated 1.25° around the core. This is the Cayan method, and the floor slice and the 360 read the same angle.
+  - **Not copied:** live availability and prices. They appear only where a source publishes them, since we never invent inventory.
+
 - **30.9, turn 1.** The bar for the area world was raised: from "maps and places" to true-height buildings from the municipality's GIS (free), with photoreal options costed for the owner.
   - Next notch: the parcel geometry from govmap and the square's renewal plan.
 
@@ -87,7 +94,33 @@ Every turn does ALL of these, not only the current phase:
 
 ## The phases (tick with evidence; the first unchecked is the next step)
 
-- [ ] **P0, Recon of everything we built.**
+- [x] **P0 DONE 30.9: `docs/research/2026-09-30-kikar-hamedina/feature-inventory.md`** (83 features in 11 groups, "forgotten or partial" list, a 17-step build recipe). What it means for the build:
+  - **(a) No stage can turn a floor.** Each project's stage.js is a 164-182 KB copy of the same engine.
+    - Kikar's 1.25° per floor touches the tower geometry, `floorPlan()`, the bearings, `nadlan_ps_unit_resolve()`, the slice, the sight lines and the 360.
+    - A twist formula exists in `docs/playbooks/glb-gen-toha2-v2.py`.
+    - Decision at P4: extract ONE shared stage engine rather than a fifth copy (engine.js stays frozen; this is the per-project stage layer).
+  - **(b) Bearings are per project today.** Kikar needs a bearing per tower AND per floor, and direction words per tower.
+  - **(c) The free world, option (a) of Q1, already exists.**
+    - `build_city_*.py` reads Tel Aviv's building-height layer.
+    - DUO's places.json already names the square's school, community centre and shops.
+    - Option (b), Google photoreal through Cesium, exists as `inc/earth-experience.php`, but `/earth/` answers 401.
+  - **(d) Rainbow text leaks when a config key is missing.** Tour words, `view_src`, `poster_alt`, `src_line`, the hard-coded 360 floors 25/10/36, the `living-25w-card.jpg` gate and `'25-'`: every key must be set for Kikar.
+  - **(e) Adding a project is manual.** Edit the lists in `build_places.py`, `measure_eyes.py`, `stage_harvest.py`, `content_first_check.py`, `source_audit.py` and `nadlan_ps_unit_resolve()`.
+    - Write the missing `project-page-factory` skill while doing it.
+  - **(f) No price until it is sourced.** The deals table needs at least 2 sourced deals tied to a floor.
+  - **(g) SEO specifics:**
+    - the answer paragraph is the first paragraph of the content with 100+ characters;
+    - the article goes in `nadlan-project-article`;
+    - the FAQ schema comes only from a visible `<h2>שאלות נפוצות`;
+    - language pages need `_nl_faq_schema`;
+    - check read-only whether a Kikar catalogue post already exists.
+  - **(h) Unreleased branch work Kikar depends on:** the docked card, the map landing, "מחיר מוערך", the per-unit request, `nadlan_ps_unit_resolve`, and bridge.js v101.2.
+    - On the LIVE site the WhatsApp source line cannot carry the floor yet: only the unreleased bridge.js sets `window.__nlpsPick`.
+  - **(i) The selling path stops at WhatsApp.**
+    - There is no LiveKit key, so the shared room has no video.
+    - The basket is Hebrew only; payments were never proven; a lost response duplicates a lead.
+    - These are sales items for P7 and P9.
+- [x] **P0 (the original task text) Recon of everything we built.**
   - Inventory every feature on Rainbow, DUO, Dimri, Ashira and H Infinity:
     - the stage, the floor slice, the building walk, the 360 rooms, the facilities pill and hotspots;
     - AreaLife maps with walking minutes and the view per floor band from real eye heights;
@@ -100,7 +133,7 @@ Every turn does ALL of these, not only the current phase:
   - Official sources: the developers and landowners, Ashtrom, Electra, the architect's site, the Tel Aviv municipality (the square's renewal plan and the plan numbers), govmap for the parcel, Globes, Calcalist, TheMarker, Wikipedia.
   - Collect: unit mix and typologies, floors per tower, lobby and facilities, the commercial ring, the public park and lake, the parking split, the timeline, the marketing status, and published prices with dates.
   - Output: `facts.md`, with a source URL and date for every line and conflicts listed.
-- [ ] **P2, The area.**
+- [ ] **P2, The area.** (turn 2: running as a sub-agent; output lands in docs/research/2026-09-30-kikar-hamedina/)
   - Run the place registry (`scripts/project-stage/build_places.py`: findplace.co.il + OpenStreetMap + Mapbox walking) for Kikar Hamedina.
   - Include: the square and its shops (the luxury ring), the parks (HaYarkon, the square's own park), schools and kindergartens, transport (roads, the light rail, buses), health, culture, sport, and cafés.
   - Add sight lines per floor band per tower, using real eye heights.
