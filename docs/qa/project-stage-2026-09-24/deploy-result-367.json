@@ -1,0 +1,13 @@
+{
+  "released": "1.72.367",
+  "from": "1.72.366",
+  "at": "2026-09-30 00:23:25",
+  "files": {
+    "inc/cta-sheet.php": "b7b65bded94e8d9eca6ff6dde1aa0ce5",
+    "nadlan-config.php": "c23bfa7dba27575ac72ad425c2d016cf"
+  },
+  "live_before": {
+    "inc/cta-sheet.php": "8ceda87ce4f1d5b56a71c4df768093b7",
+    "nadlan-config.php": "55e3c28f606026f3f063e98140e7745f"
+  }
+}

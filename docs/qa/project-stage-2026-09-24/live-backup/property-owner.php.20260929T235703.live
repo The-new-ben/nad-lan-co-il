@@ -119,8 +119,8 @@ add_action( 'wp', function () {
 	$id = (int) get_queried_object_id();
 	if ( $listing ? ! nadlan_property_is_owned( $id ) : ! nadlan_property_owner( $id ) ) { return; }
 
-	// WhatsAppBarEverywhere (design system v103, 29.9.2026, owner order): the site's "ייעוץ חינם" bar stays on the owner's page
-	// too, next to the owner's own buttons (the site number used to be emptied here, which left 24 pages without the bar)
+	// the portal's floating WhatsApp pill: the owner's page carries the owner's own buttons
+	add_filter( 'pre_option_nadlan_owner_whatsapp', '__return_empty_string' );
 	if ( ! $listing ) { return; }
 
 	// the portal layers on the listing are not printed at all

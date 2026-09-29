@@ -112,12 +112,25 @@ def urban_block(token):
 def transform_html(body, path, lang, applied, strict=True):
     """the branch's PHP output applied to a live page (shared by this preview and serve_journey.py)"""
     is_project = "/projects/" in path and path.split("?")[0].strip("/") != "projects"
-    # the pill + sheet: printed only where the live page prints the site pill (broker and owner pages keep theirs)
+    # the pill + sheet. WhatsAppBarEverywhere (v103): broker and owner pages get it too. The live page printed there only the
+    # "nlcta-owned" style and the GA helper (inc/conversion-cta.php, no number), which the branch's PHP no longer prints there.
     s = body.find('<div id="nlcta"')
+    if s < 0:
+        o = body.find('<style id="nlcta-owned">')
+        if o > 0:
+            oe = body.find("</script>", o) + len("</script>")
+            body = body[:o] + '<div id="nlcta"></div><script></script>' + body[oe:]
+            applied.append("owned page: the site number is no longer emptied (inc/property-owner.php)")
+        else:
+            b = body.rfind("</body>")
+            body = body[:b] + '<div id="nlcta"></div><script></script>' + body[b:]
+            applied.append("no pill on the live page: printed at the foot of the body")
+        s = body.find('<div id="nlcta"')
+        body = body.replace('<div id="nlcta"></div>', '<div id="nlcta" data-wa="' + os.environ.get("NL_SITE_WA", "") + '"></div>', 1)
     if s > 0:
         e = body.find("</script>", s) + len("</script>")
         review = "לא מטעם היזם" in body[s:e] or "הסקירה" in body[s:e] or "review" in body[s:e].lower()
-        m = re.search(r"wa\.me/(\d{8,15})", body[s:e])
+        m = re.search(r"wa\.me/(\d{8,15})", body[s:e]) or re.search(r'data-wa="(\d{8,15})"', body[s:e])
         body = body[:s] + php_block("review" if (is_project and review) else "plain", lang, m.group(1) if m else "") + body[e:]
         applied.append("site pill + ConsultSheet (PHP)")
     # the urban renewal map's first view (inc/urban-map.php)

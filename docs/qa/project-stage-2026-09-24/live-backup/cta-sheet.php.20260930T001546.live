@@ -134,7 +134,7 @@ if ( ! function_exists( 'nadlan_cta_sheet_html' ) ) {
 	var C={};try{C=JSON.parse(d.getAttribute('data-cfg')||'{}')}catch(e){}
 	var T=C.t||{},msg=d.querySelector('.nlcs-msg'),note=d.querySelector('.nlcs-note'),go=d.querySelector('.nlcs-go'),ctxEl=d.querySelector('.nlcs-ctx'),ed=d.querySelector('.nlcs-edited');
 	var isProj=!!document.getElementById('nlps')||document.body.classList.contains('single-nadlan_project');
-	/* v101.1 (29.9): one draft per unit. A message the buyer edited for 13-east stays with 13-east; choosing 25-west
+	/* v101.1 (Codex QA 29.9): one draft per unit. A message the buyer edited for 13-east stays with 13-east; choosing 25-west
 	   opens 25-west's own draft (or a fresh one), so the header, the text and the link always name the same apartment */
 	var drafts={},cur=null,key='page';
 	function pick(){var p=window.__nlpsPick;return (isProj&&p&&p.floor!=null&&p.floor!=='')?p:null}

@@ -1,0 +1,21 @@
+{
+  "released": "1.72.366",
+  "from": "1.72.365",
+  "at": "2026-09-30 00:08:21",
+  "files": {
+    "inc/cta-sheet.php": "8ceda87ce4f1d5b56a71c4df768093b7",
+    "assets/tours/designer-tour.html": "4a65c5a4b76247f34af781574bc759b1",
+    "inc/conversion-cta.php": "e26d1230b9222c7ab3d59c1662413bac",
+    "inc/i18n.php": "758dc8da3e67a93dea320a47f8d08238",
+    "inc/property-owner.php": "200ae2a197934855ae9496dcae39ce79",
+    "nadlan-config.php": "55e3c28f606026f3f063e98140e7745f"
+  },
+  "live_before": {
+    "inc/cta-sheet.php": "missing",
+    "assets/tours/designer-tour.html": "missing",
+    "inc/conversion-cta.php": "bcfc6378d1dec4a26b42e38927a2bb92",
+    "inc/i18n.php": "d44037c6df0ea7968ee2540549a5612b",
+    "inc/property-owner.php": "2812af096ec6b3d27a998f9f55db1a14",
+    "nadlan-config.php": "cff9ec10e31fe3137b1f3755584f3c4d"
+  }
+}

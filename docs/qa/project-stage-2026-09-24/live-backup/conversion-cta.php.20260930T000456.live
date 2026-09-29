@@ -59,12 +59,11 @@ add_action( 'wp_footer', function () {
 		$rv_lang = function_exists( 'nadlan_project_self_lang' ) ? nadlan_project_self_lang() : '';
 		if ( '' === $rv_lang ) { $rv_lang = 'he'; }
 		$rv = array(
-			// ApartmentExperience-1 (v101, 29.9.2026): "ייעוץ חינם" on every page; the independence stays in the small line
-			'he' => array( "ייעוץ חינם", "לא מטעם היזם · מענה בוואטסאפ", "וואטסאפ · ייעוץ חינם על הפרויקט", "שלום, יש לי שאלה על הפרויקט." ),
-			'en' => array( "Free consultation", "Not the developer · on WhatsApp", "WhatsApp: free consultation on the project", "Hi, I have a question about this project." ),
-			'fr' => array( "Conseil gratuit", "Pas le promoteur · sur WhatsApp", "WhatsApp : conseil gratuit sur le projet", "Bonjour, j'ai une question sur ce projet." ),
-			'ru' => array( "Бесплатная консультация", "Не от застройщика · в WhatsApp", "WhatsApp: бесплатная консультация по проекту", "Здравствуйте, у меня вопрос по проекту." ),
-			'ar' => array( "استشارة مجانية", "ليست من المطور · على واتساب", "واتساب · استشارة مجانية حول المشروع", "مرحبا، لدي سؤال حول المشروع." ),
+			'he' => array( "שאלות על הסקירה הזו?", "עונים עצמאית, לא מטעם היזם", "וואטסאפ · שאלה על הסקירה", "שלום, יש לי שאלה על סקירת הפרויקט באתר." ),
+			'en' => array( "Questions about this review?", "Independent answers, not the developer", "WhatsApp: ask about this review", "Hi, I have a question about this project review." ),
+			'fr' => array( "Des questions sur cette revue ?", "Réponses indépendantes, pas le promoteur", "WhatsApp : question sur la revue", "Bonjour, j'ai une question sur cette revue de projet." ),
+			'ru' => array( "Вопросы по обзору?", "Независимые ответы, не от застройщика", "WhatsApp: вопрос об обзоре", "Здравствуйте, у меня вопрос по обзору проекта." ),
+			'ar' => array( "أسئلة حول هذه المراجعة؟", "إجابات مستقلة، ليست من المطور", "واتساب · سؤال عن المراجعة", "مرحبا، لدي سؤال حول مراجعة المشروع." ),
 		);
 		$rv_v = isset( $rv[ $rv_lang ] ) ? $rv[ $rv_lang ] : $rv['he'];
 		$cta_b = $rv_v[0]; $cta_s = $rv_v[1]; $cta_aria = $rv_v[2]; $cta_msg = $rv_v[3];
@@ -81,13 +80,6 @@ add_action( 'wp_footer', function () {
 		<span class="nlcta-brand" aria-hidden="true"><svg viewBox="0 0 64 64" width="30" height="30"><rect width="64" height="64" rx="14" fill="#F7F6F2"/><rect x="10" y="30" width="11" height="22" rx="1.5" fill="#1F4B5C" opacity=".72"/><rect x="26.5" y="14" width="11" height="38" rx="1.5" fill="#1F4B5C"/><rect x="43" y="24" width="11" height="28" rx="1.5" fill="#1F4B5C" opacity=".86"/><rect x="8" y="55" width="48" height="2.6" rx="1.3" fill="#1F4B5C"/></svg></span>
 	</a>
 </div>
-<?php
-	// ConsultSheet (v101): a click on the pill opens a short message sheet (inc/cta-sheet.php); without it the pill is a plain link
-	if ( function_exists( 'nadlan_cta_sheet_html' ) ) {
-		$cs_lang = function_exists( 'nadlan_current_lang' ) ? (string) nadlan_current_lang() : 'he';
-		echo nadlan_cta_sheet_html( $wa, $cta_rtl, in_array( $cs_lang, array( 'he', 'en', 'fr', 'ru', 'ar' ), true ) ? $cs_lang : 'he' ); // phpcs:ignore -- escaped inside
-	}
-?>
 <style>
 #nlcta{position:fixed;bottom:20px;inset-inline-end:20px;z-index:99989;font-family:var(--font-sans,Heebo,system-ui,sans-serif)}
 /* 24.9.2026, from the design system (Button, wa-green): a deep WhatsApp green. White on #25D366 read at 1.98:1 and
@@ -108,34 +100,26 @@ body.nl-skin-a #nlcta .nlcta-wa{box-shadow:0 10px 24px rgba(15,122,99,.30)!impor
    (overrides showroom.css body.nl-has-engine #nlcta{display:none}) */
 body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 @media(max-width:760px){body.nl-has-engine #nlcta{bottom:calc(env(safe-area-inset-bottom,0px) + 148px)!important}}
-/* ApartmentExperience-1 (design system v101, 29.9.2026): the pill stays wide on every width and at every scroll: the NadLan
-   mark, WhatsApp and "ייעוץ חינם". The round 54px button after 120px of scrolling (PublishPage v48-69) is gone. It still never
-   hides, and over a form button or the stage's floor card it moves up instead (v69, v91). */
-@media(max-width:520px){.nlcta-wa{max-width:min(72vw,280px)}}
-@media(max-width:600px){html body #nlcta.is-clear{bottom:calc(env(safe-area-inset-bottom,0px) + var(--nlcta-lift,150px))!important}}
-/* v101.2: above the area map's cone, on every width (the script below sets is-cone and the lift) */
-html body #nlcta.is-cone{bottom:calc(env(safe-area-inset-bottom,0px) + var(--nlcta-lift,150px))!important}
-/* WhatsAppBarEverywhere (design system v103, 29.9.2026, owner order): the site's "ייעוץ חינם" bar is on EVERY page, broker
-   and owner pages included, even where the page has its own WhatsApp. Broker pages are built once with
-   ".nlcta-wa{display:none!important}" baked into their styles (broker-drop.php); this stronger rule brings the bar back.
-   On wide screens the broker's own WhatsApp still floats in the same corner, now ABOVE the site bar (bottom 88px), never
-   under it. On phones the broker's bottom bar stays, and the site bar rises above it (the script's collision list). */
-html body #nlcta .nlcta-wa{display:flex!important}
-@media (min-width:721px){html body .nlb .nlb-mbar{display:block;position:fixed;bottom:88px;inset-inline-end:20px;z-index:9990;padding:0;background:none;border:0}html body .nlb .nlb-mbar > :not(:first-child){display:none}html body .nlb .nlb-mbar .nlb-btn{min-height:54px;padding:0 22px;border-radius:999px;box-shadow:0 10px 24px rgba(20,33,43,.28)}}
-@media (min-width:761px){html body .nlx .nlx-mbar{display:block;position:fixed;bottom:88px;inset-inline-end:20px;z-index:9990;padding:0;background:none}html body .nlx .nlx-mbar > :not(:first-child){display:none}html body .nlx .nlx-mbar .nlx-btn{min-height:54px;padding:0 22px;border-radius:999px;box-shadow:0 10px 24px rgba(20,33,43,.28)}}
+/* PublishPage v48-69 (28.9.2026): full at the top of the page, a round 54px button once the reader scrolls. v69 (owner
+   order): the pill never hides - not for logged-in visitors, not on a 3D stage, not while typing; over a form button it
+   moves up instead. The link, its label and tracking unchanged. */
+@media(max-width:600px){#nlcta.is-mini .nlcta-wa{width:54px;height:54px;min-height:54px;max-width:none;padding:0;justify-content:center;border-radius:50%}#nlcta.is-mini .nlcta-txt,#nlcta.is-mini .nlcta-brand{display:none}#nlcta.is-mini .nlcta-glyph{width:40px;height:40px}html body #nlcta.is-clear{bottom:calc(env(safe-area-inset-bottom,0px) + var(--nlcta-lift,150px))!important}}
+/* PublishPage v70 (28.9.2026): on broker sites and broker listing pages the site pill steps aside (the lead is the broker's);
+   on wide screens the broker's own WhatsApp floats in the same corner. Here, not only in the engine, because broker pages
+   are built once and keep their styles. */
+@media (min-width:721px){html body .nlb .nlb-mbar{display:block;position:fixed;bottom:20px;inset-inline-end:20px;z-index:9990;padding:0;background:none;border:0}html body .nlb .nlb-mbar > :not(:first-child){display:none}html body .nlb .nlb-mbar .nlb-btn{min-height:54px;padding:0 22px;border-radius:999px;box-shadow:0 10px 24px rgba(20,33,43,.28)}}
+@media (min-width:761px){html body .nlx .nlx-mbar{display:block;position:fixed;bottom:20px;inset-inline-end:20px;z-index:9990;padding:0;background:none}html body .nlx .nlx-mbar > :not(:first-child){display:none}html body .nlx .nlx-mbar .nlx-btn{min-height:54px;padding:0 22px;border-radius:999px;box-shadow:0 10px 24px rgba(20,33,43,.28)}}
 </style>
 <script>
 (function(){
 	window.dataLayer=window.dataLayer||[];
 	window.nadlanGA=window.nadlanGA||function(n,p){try{window.dataLayer.push(Object.assign({event:n},p||{}));}catch(e){}};
 	var wa=document.querySelector('.nlcta-wa');
-	// with the sheet, the click that counts is the sheet's own "open in WhatsApp" (inc/cta-sheet.php); the pill alone stays a link
-	if(wa&&!document.getElementById('nlcta-sheet'))wa.addEventListener('click',function(){window.nadlanGA('whatsapp_click');});
+	if(wa)wa.addEventListener('click',function(){window.nadlanGA('whatsapp_click');});
 	var box=document.getElementById('nlcta');
 	if(box&&window.matchMedia){
 		var mq=window.matchMedia('(max-width:600px)'),tick=false,back=0;
-		// v103: the broker's and the owner's bottom bars count too, so the site bar rises above them instead of covering them
-		var subs=[].slice.call(document.querySelectorAll('form button,form input[type=submit],.nlow button,.nlb-mbar,.nlx-mbar'));
+		var subs=[].slice.call(document.querySelectorAll('form button,form input[type=submit],.nlow button'));
 		/* StagePillClear v91 (28.9.2026): the 3D stage's floor card opens at the foot of the phone's screen with its buttons in
 		   the pill's corner ("לקבלת תוכניות ומחירים" half under the circle); a stage button in that corner lifts the pill too.
 		   Only the pill's own column counts, and its column does not move when it is lifted, so it never flickers. */
@@ -143,49 +127,31 @@ html body #nlcta .nlcta-wa{display:flex!important}
 		var wa0=box.querySelector('.nlcta-wa');
 		var stageHit=function(h){
 			if(!wa0)return 0;
-			var p=wa0.getBoundingClientRect(),els=document.querySelectorAll('#nlps button,#nlps a,#nlps-pick button,#nlps-pick a,.nlps-steps button,.nlps-steps a,#nlps-view-cta button,#nlps-view-cta a');
+			var p=wa0.getBoundingClientRect(),els=document.querySelectorAll('#nlps button,#nlps a,.nlps-steps button,.nlps-steps a,#nlps-view-cta button,#nlps-view-cta a');
 			for(var i=0;i<els.length;i++){
 				var r=els[i].getBoundingClientRect();
 				if(r.height>0&&r.bottom>h-110&&r.top<h&&r.left<p.right+8&&r.right>p.left-8){
 					var c=els[i];
-					while(c.parentElement&&c.parentElement.id!=='nlps'&&c.parentElement.id!=='nlps-pick'&&c.parentElement.getBoundingClientRect().height<h*0.55){c=c.parentElement;}
+					while(c.parentElement&&c.parentElement.id!=='nlps'&&c.parentElement.getBoundingClientRect().height<h*0.55){c=c.parentElement;}
 					return Math.min(Math.round(h-c.getBoundingClientRect().top+10),Math.round(h*0.7));
 				}
 			}
 			return 0;
 		};
-		/* ApartmentMapLanding (design system v101.2, 29.9.2026): the pill never covers the direction the buyer chose. When the
-		   area map's cone (bridge.js, on stage pages) meets the pill's resting place, the pill rises 10px above it, on every
-		   width, and comes back once the cone has passed. The test is against the resting place (data-rest: its top, counted
-		   from the screen's foot, measured whenever it rests), so the pill does not flicker. bridge.js reads data-rest too, to
-		   land the map above it. */
-		var coneHit=function(h){
-			var w=document.querySelector('.nlps-cone path'),rest=Number(box.getAttribute('data-rest'))||0;
-			if(!w||!wa0||!rest)return 0;
-			var r=w.getBoundingClientRect(),m=w.closest('.mapboxgl-map'),p=wa0.getBoundingClientRect();
-			if(!r.height)return 0;
-			if(m){var mr=m.getBoundingClientRect();if(r.bottom<mr.top||r.top>mr.bottom)return 0;}
-			var top=h-rest;
-			if(r.bottom>top-8&&r.top<top+p.height+8&&r.left<p.right+8&&r.right>p.left-8)return Math.min(Math.round(h-r.top+10),Math.round(h*0.7));
-			return 0;
-		};
 		var fit=function(){
 			tick=false;
-			var h=window.innerHeight||0;
-			if(wa0&&!box.classList.contains('is-clear')&&!box.classList.contains('is-cone')&&!box.classList.contains('is-typing')){var t0=wa0.getBoundingClientRect();if(t0.height>0)box.setAttribute('data-rest',Math.round(h-t0.top));}
-			var lift=mq.matches?stageHit(h):0,cone=coneHit(h),clash=subs.some(function(el){var r=el.getBoundingClientRect();return r.height>0&&r.bottom>h-110&&r.top<h;})||lift>0;
-			if(cone>lift){lift=cone;}
+			var h=window.innerHeight||0,lift=mq.matches?stageHit(h):0,clash=subs.some(function(el){var r=el.getBoundingClientRect();return r.height>0&&r.bottom>h-110&&r.top<h;})||lift>0;
 			if(lift>0){box.style.setProperty('--nlcta-lift',lift+'px');}else{box.style.removeProperty('--nlcta-lift');}
+			box.classList.toggle('is-mini',mq.matches&&(window.scrollY||0)>120);
 			box.classList.toggle('is-clear',mq.matches&&clash);
-			box.classList.toggle('is-cone',cone>0);
 		};
 		var ask=function(){if(!tick){tick=true;window.requestAnimationFrame(fit);}};
 		window.addEventListener('scroll',ask,{passive:true});
 		window.addEventListener('resize',ask);
 		if(mq.addEventListener){mq.addEventListener('change',fit);}
 		// the stage's card opens and closes without a scroll: look again after a tap on the stage and on its floor events
-		document.addEventListener('click',function(e){if(e.target&&e.target.closest&&e.target.closest('#nlps,#nlps-pick,.nlps-steps,#nlps-view-cta')){setTimeout(ask,350);}},true);
-		['nl:floor','nl:facing'].forEach(function(n){window.addEventListener(n,function(){setTimeout(ask,350);setTimeout(ask,1100);});});
+		document.addEventListener('click',function(e){if(e.target&&e.target.closest&&e.target.closest('#nlps,.nlps-steps,#nlps-view-cta')){setTimeout(ask,350);}},true);
+		['nl:floor','nl:facing'].forEach(function(n){window.addEventListener(n,function(){setTimeout(ask,350);});});
 		fit();
 		var typing=function(t){return t&&t.matches&&t.matches('textarea,select,input:not([type=checkbox]):not([type=radio]):not([type=button]):not([type=submit]):not([type=hidden])');};
 		document.addEventListener('focusin',function(e){if(typing(e.target)){clearTimeout(back);box.classList.add('is-typing');}});
@@ -289,13 +255,7 @@ add_action( 'rest_api_init', function () {
 				'consent_recorded'  => ! empty( $p['consent'] ) ? current_time( 'mysql', true ) : '',
 			);
 			if ( function_exists( 'nadlan_lead_e2e_enabled' ) && nadlan_lead_e2e_enabled() && function_exists( 'nadlan_lead_e2e_capture' ) ) {
-				$cap = nadlan_lead_e2e_capture( $lead_payload, $card_id, 'rest' );
-				// the test-mode path gets the same key, for the lead as persisted (Codex LEAD-E2E-UNIT-CONTRACT)
-				if ( is_array( $cap ) && ! empty( $cap['lead_id'] ) && function_exists( 'nadlan_rfp_lead_key_for' ) ) {
-					$k = nadlan_rfp_lead_key_for( $cap['lead_id'], $lead_payload['project_slug'], $lead_payload['unit'] );
-					if ( '' !== $k ) { $cap['lead_key'] = $k; }
-				}
-				return $cap;
+				return nadlan_lead_e2e_capture( $lead_payload, $card_id, 'rest' );
 			}
 			$lid = wp_insert_post( array(
 				'post_type'    => 'nadlan_lead',
@@ -327,14 +287,7 @@ add_action( 'rest_api_init', function () {
 				$body .= "ניהול: " . admin_url( 'post.php?post=' . $lid . '&action=edit' );
 				wp_mail( $admin, '[נדלן] ליד חדש - ' . $name, $body );
 			}
-			$out = array( 'ok' => true, 'lead_id' => $lid );
-			// UnitDesignRequest v102 (inc/rfp.php): a lead that names a project and a unit gets a key; only its holder can attach
-			// the request document to it (a bare lead id no longer links anything)
-			if ( function_exists( 'nadlan_rfp_lead_key_for' ) ) {
-				$k = nadlan_rfp_lead_key_for( $lid, $lead_payload['project_slug'], $lead_payload['unit'] );
-				if ( '' !== $k ) { $out['lead_key'] = $k; }
-			}
-			return $out;
+			return array( 'ok' => true, 'lead_id' => $lid );
 		},
 	) );
 } );
