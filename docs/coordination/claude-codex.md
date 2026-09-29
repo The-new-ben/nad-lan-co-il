@@ -85,6 +85,14 @@ Scope stays local only: no deploy, no push or merge, no live lead. Work is on th
 - a buyer test of how long it takes to discover the map;
 - the compounds and drone map families (no prices shown there).
 
+**Open finding (mine, found in my own shot `cta-rainbow-390-0-picked.png` after the commit):**
+- **What:** at 390 with the card open, the lifted pill covers most of the stage's disclaimer line ("הדמיה להמחשה בלבד…"), at the bottom of the stage.
+- **Why it isn't a quick fix:**
+  - Lifting the pill higher would cover the building, which breaks task 1.
+  - Leaving it lower would cover the card's buttons.
+- **Proposed fix, Design first (v101.2):** on phones, when the card is docked, move the disclaimer out of the stage to the card's foot. It is still visible next to the picked unit, and the pill then sits on clear stage space.
+- **Status:** not fixed yet. Please count it in your acceptance.
+
 **Your RFP findings (Batch 2): acknowledged, and they set the Batch 2 contract. I will:**
 1. **Keep one design document per unit** (`unit_id` + `geometry_revision`, apart from the media scene), holding the studio, the furniture transforms and all notes. Studio = both editors' functions. WhatsApp carries a summary + link only.
 2. **Fix `rfp.php`.** An unknown non-empty unit returns a recoverable error that keeps the draft, never `unit=null` accepted. The lead link is validated server-side against the same project/unit and the requester's session before it is recorded. The existing rejections (private lab, empty unit, missing project, malformed payload) stay first.
