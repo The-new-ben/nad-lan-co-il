@@ -34,7 +34,8 @@
       next1: "הפנייה התקבלה במערכת", next2: "תיאום מול היזם", next3: "הצעה מרוכזת אליך",
       err: "השליחה נכשלה, נסו שוב או חייגו אלינו", close: "סגירה", back: "חזרה", cont: "המשך",
       unit: "דירה", floor: "קומה", skip: "דלגו, רק חברו אותי ליזם",
-      est: "כל הנתונים הם אומדן בלבד ואינם הצעת מחיר מחייבת"
+      est: "כל הנתונים הם אומדן בלבד ואינם הצעת מחיר מחייבת",
+      doc_fail: "הפנייה התקבלה, אבל מסמך הבקשה לא נוצר. לא ניצור פנייה נוספת.", doc_retry: "ליצור את המסמך שוב", doc_pending: "המסמך בהכנה…", st2_wait: "מכינים את מסמך הבקשה"
     },
     en: {
       title: "Build me an offer", sub: "Free, no commitment, no payment required",
@@ -56,7 +57,8 @@
       next1: "Request received", next2: "Coordination with the developer", next3: "A consolidated proposal to you",
       err: "Sending failed, try again or call us", close: "Close", back: "Back", cont: "Continue",
       unit: "Apartment", floor: "Floor", skip: "Skip, just connect me to the developer",
-      est: "All figures are estimates only and not a binding quote"
+      est: "All figures are estimates only and not a binding quote",
+      doc_fail: "Your request was received, but the request document was not created. We will not create a second request.", doc_retry: "Create the document again", doc_pending: "The document is being prepared…", st2_wait: "Preparing the request document"
     },
     fr: {
       title: "Preparez-moi une offre", sub: "Gratuit, sans engagement, aucun paiement requis",
@@ -78,7 +80,8 @@
       next1: "Demande recue", next2: "Coordination avec le promoteur", next3: "Une proposition consolidee pour vous",
       err: "Echec de l'envoi, reessayez", close: "Fermer", back: "Retour", cont: "Continuer",
       unit: "Logement", floor: "Etage", skip: "Passer, connectez-moi au promoteur",
-      est: "Tous les chiffres sont des estimations, pas un devis contractuel"
+      est: "Tous les chiffres sont des estimations, pas un devis contractuel",
+      doc_fail: "Votre demande est recue, mais le document n'a pas ete cree. Aucune seconde demande ne sera creee.", doc_retry: "Creer le document a nouveau", doc_pending: "Le document est en preparation…", st2_wait: "Preparation du document"
     },
     ru: {
       title: "Подготовьте мне предложение", sub: "Бесплатно, без обязательств, без оплаты",
@@ -100,7 +103,8 @@
       next1: "Запрос получен", next2: "Координация с застройщиком", next3: "Консолидированное предложение вам",
       err: "Отправка не удалась, попробуйте снова", close: "Закрыть", back: "Назад", cont: "Далее",
       unit: "Квартира", floor: "Этаж", skip: "Пропустить, просто свяжите с застройщиком",
-      est: "Все цифры - только оценка, не обязывающая цена"
+      est: "Все цифры - только оценка, не обязывающая цена",
+      doc_fail: "Запрос получен, но документ не создан. Второй запрос не будет создан.", doc_retry: "Создать документ снова", doc_pending: "Документ готовится…", st2_wait: "Готовим документ запроса"
     },
     ar: {
       title: "جهزوا لي عرضا", sub: "مجانا، بدون التزام، لا حاجة للدفع",
@@ -122,7 +126,8 @@
       next1: "استلم الطلب", next2: "تنسيق مع المطور", next3: "عرض موحد اليك",
       err: "فشل الارسال، حاولوا مجددا", close: "اغلاق", back: "رجوع", cont: "متابعة",
       unit: "شقة", floor: "طابق", skip: "تخطي، فقط اوصلوني بالمطور",
-      est: "كل الارقام تقديرية فقط وليست عرض سعر ملزم"
+      est: "كل الارقام تقديرية فقط وليست عرض سعر ملزم",
+      doc_fail: "استلمنا طلبك، لكن مستند الطلب لم ينشأ. لن ننشئ طلبا ثانيا.", doc_retry: "انشاء المستند مجددا", doc_pending: "المستند قيد التحضير…", st2_wait: "نحضر مستند الطلب"
     }
   };
   var T = T_ALL[LANG] || T_ALL.he;
@@ -138,7 +143,13 @@
   }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
 
-  var state = { step: 1, unit: null, finish: "std", extras: {}, busy: false };
+  /* UnitDesignRequest (design system v102, HAD-346 Batch 2): one request per unit. client_ref is made once per request; the
+     lead is created once (its id and key kept); the document can be retried alone with the same client_ref (the server
+     returns the same receipt, never a second document); the studio design is frozen when the buyer presses send. An answer
+     that arrives for an older request never changes the screen of a newer one. */
+  function ref() { var a = new Uint8Array(12); (window.crypto || {}).getRandomValues ? window.crypto.getRandomValues(a) : a.forEach(function (_, i) { a[i] = Math.random() * 256; }); return "b" + Array.prototype.map.call(a, function (x) { return ("0" + x.toString(16)).slice(-2); }).join(""); }
+  function fresh(unit) { return { step: 1, unit: unit, finish: "std", extras: {}, busy: false, clientRef: ref(), leadId: 0, leadKey: "", design: null, doc: "", docUrl: "", docRef: "" }; }
+  var state = fresh(null);
 
   var EXTRAS = [
     ["designer", "ex_designer", "ex_designer_d"],
@@ -194,7 +205,9 @@
         return '<div class="nlbuy__stage" data-i="' + i + '"><span class="dot"></span><span>' + esc(s) + "</span></div>";
       }).join("") + "</div>";
     } else {
-      var docBtn = state.docUrl ? '<a class="nlbuy__btn nlbuy__btn--accent" style="display:block;text-decoration:none;text-align:center;margin-bottom:9px;box-sizing:border-box" href="' + esc(state.docUrl) + '" target="_blank" rel="noopener">' + esc(T.doc_view) + "</a>" : "";
+      var docBtn = state.doc === "ok" && state.docUrl ? '<a class="nlbuy__btn nlbuy__btn--accent" style="display:block;text-decoration:none;text-align:center;margin-bottom:9px;box-sizing:border-box" href="' + esc(state.docUrl) + '" target="_blank" rel="noopener">' + esc(T.doc_view) + "</a>"
+        : state.doc === "failed" ? '<p class="nlbuy__err" role="alert" style="display:block">' + esc(T.doc_fail) + '</p><button class="nlbuy__btn nlbuy__btn--accent" data-buy="docretry" style="margin-bottom:9px"' + (state.busy ? " disabled" : "") + ">" + esc(state.busy ? T.sending : T.doc_retry) + "</button>"
+        : state.doc === "pending" ? '<p class="nlbuy__note">' + esc(T.doc_pending) + "</p>" : "";
       body = '<div class="nlbuy__done"><h4>' + esc(T.done_t) + "</h4><p>" + esc(T.done_p) + "</p>" +
         '<ol class="nlbuy__next"><li class="on">' + esc(T.next1) + "</li><li>" + esc(T.next2) + "</li><li>" + esc(T.next3) + "</li></ol>" +
         docBtn +
@@ -207,20 +220,47 @@
     var inp = document.getElementById("nlbuy-name");
     if (inp) inp.focus();
   }
-  function close() { var el = document.getElementById("nlbuy"); if (el) el.classList.remove("is-open"); }
+  var opener = null; // the button that opened the dialog: the focus goes back to it
+  function close() {
+    var el = document.getElementById("nlbuy"); if (el) el.classList.remove("is-open");
+    if (opener && document.contains(opener)) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
+  }
 
-  function playStages(thenDone) {
-    var i = 0;
+  function playStages(thenDone, mine) {
+    var i = 0, waited = 0;
     function tick() {
+      if (state.clientRef !== mine) return; // another request took the screen
       var rows = document.querySelectorAll("#nlbuy-stages .nlbuy__stage");
+      // the second stage says "the request document is ready": it waits for the server's answer, and is never shown for a
+      // document that failed
+      if (i === 1 && state.doc === "pending" && waited < 12000) { waited += 300; setTimeout(tick, 300); return; }
+      if (i === 1 && state.doc !== "ok") { setTimeout(thenDone, 300); return; }
       if (i < rows.length) { rows[i].classList.add("on"); i++; setTimeout(tick, 1100); }
       else { setTimeout(thenDone, 500); }
     }
     setTimeout(tick, 350);
   }
+  function makeDoc(mine) {
+    var p = project(), u = state.unit || {};
+    state.doc = "pending";
+    return fetch(SR.config.lead_endpoint.replace(/lead$/, "rfp"), {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        project: p ? p.slug.replace(/-(en|fr|ru|ar)$/, "") : "", unit: u.id || "",
+        finish: state.finish, extras: Object.keys(state.extras).filter(function (k) { return state.extras[k]; }), lang: LANG,
+        name: state.name || "", lead_id: state.leadId || 0, lead_key: state.leadKey || "",
+        client_ref: mine, design: state.design
+      })
+    }).then(function (r2) { return r2.json().then(function (d2) { return { ok: r2.ok, d: d2 }; }); }).then(function (x) {
+      if (state.clientRef !== mine) return; // a late answer for an older request: not this screen's
+      if (x.ok && x.d && x.d.ok && x.d.url) { state.doc = "ok"; state.docUrl = x.d.url; state.docRef = x.d.ref || ""; }
+      else { state.doc = "failed"; }
+    }).catch(function () { if (state.clientRef === mine) state.doc = "failed"; });
+  }
 
   function send() {
     if (state.busy) return;
+    if (state.leadId) { docRetry(); return; } // the lead exists: never a second one
     var name = (document.getElementById("nlbuy-name") || {}).value || "";
     var phone = (document.getElementById("nlbuy-phone") || {}).value || "";
     var consent = (document.getElementById("nlbuy-consent") || {}).checked;
@@ -230,12 +270,18 @@
       return;
     }
     state.busy = true;
-    var btn = document.getElementById("nlbuy-send"); if (btn) btn.textContent = T.sending;
+    var btn = document.getElementById("nlbuy-send"); if (btn) { btn.textContent = T.sending; btn.disabled = true; }
     var p = project(), u = state.unit || {};
     var extras = Object.keys(state.extras).filter(function (k) { return state.extras[k]; });
+    var mine = state.clientRef;
+    state.name = name.trim();
+    // the studio design as it is NOW, frozen for this request (a later edit in the studio does not change it)
+    state.design = (window.NLStudio && p) ? window.NLStudio.exportFor(p.slug, u.id || "") : null;
     var payload = {
       name: name.trim(), phone: phone.trim(),
       source: "rfp-v1",
+      // the lead names its project and unit, so the server hands back the key that links the document to it
+      project_slug: p ? p.slug.replace(/-(en|fr|ru|ar)$/, "") : "", unit: u.id || "", consent: consent ? 1 : 0,
       context: (p ? p.slug : "") + " " + (u.id || ""),
       message: JSON.stringify({
         kind: "rfp-v1", project: p ? p.slug : "", unit: u.id || "", label: u.label || "",
@@ -243,37 +289,35 @@
         finish: state.finish, extras: extras, lang: LANG, url: location.href,
         // apartment-studio design travels inside the RFP so the contractor
         // sees the buyer's furniture plan, clearances and special requests
-        studio: (window.NLStudio && p ? window.NLStudio.exportFor(p.slug, u.id || "") : null)
+        studio: state.design
       })
     };
     fetch(SR.config.lead_endpoint, {
       method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload)
     }).then(function (r) { return r.json(); }).then(function (d) {
+      if (state.clientRef !== mine) return;
       state.busy = false;
       if (d && d.ok) {
+        state.leadId = d.lead_id || 0; state.leadKey = d.lead_key || "";
         state.step = 4; render();
-        // phase 2: the real RFP document, generated server-side while the
-        // dispatch stages play; the done screen links it when it is ready.
-        try {
-          fetch(SR.config.lead_endpoint.replace(/lead$/, "rfp"), {
-            method: "POST", headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              project: p ? p.slug.replace(/-(en|fr|ru|ar)$/, "") : "", unit: u.id || "",
-              finish: state.finish, extras: extras, lang: LANG,
-              name: name.trim(), lead_id: d.lead_id || 0
-            })
-          }).then(function (r2) { return r2.json(); }).then(function (d2) {
-            if (d2 && d2.ok && d2.url) { state.docUrl = d2.url; if (state.step === 5) render(); }
-          }).catch(function () {});
-        } catch (e2) {}
-        playStages(function () { state.step = 5; render(); });
+        // phase 2: the real RFP document, generated server-side while the dispatch stages play; the done screen says
+        // what really happened to it: ready (a link), still being prepared, or failed (with a retry that makes no new lead)
+        makeDoc(mine).then(function () { if (state.clientRef === mine && state.step === 5) render(); });
+        playStages(function () { if (state.clientRef === mine) { state.step = 5; render(); } }, mine);
       }
-      else if (err) { err.hidden = false; }
+      else { if (err) err.hidden = false; if (btn) { btn.textContent = T.send; btn.disabled = false; } }
     }).catch(function () {
+      if (state.clientRef !== mine) return;
       state.busy = false;
       if (err) err.hidden = false;
-      if (btn) btn.textContent = T.send;
+      if (btn) { btn.textContent = T.send; btn.disabled = false; }
     });
+  }
+  function docRetry() {
+    if (state.busy) return;
+    var mine = state.clientRef;
+    state.busy = true; render();
+    makeDoc(mine).then(function () { if (state.clientRef !== mine) return; state.busy = false; render(); });
   }
 
   function onClick(e) {
@@ -286,14 +330,22 @@
     else if (act === "skipnext") { state.extras = {}; state.step = 3; render(); }
     else if (act === "back") { state.step = Math.max(1, state.step - 1); render(); }
     else if (act === "send") { send(); }
+    else if (act === "docretry") { docRetry(); }
   }
 
   document.addEventListener("click", function (e) {
     var n = e.target.closest('[data-act="rfp"]');
     if (!n) return;
     e.preventDefault();
-    state = { step: 1, unit: unitOf(n.dataset.id), finish: "std", extras: {}, busy: false };
+    opener = n;
+    state = fresh(unitOf(n.dataset.id));
     render();
   });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  // Escape closes the dialog and ends there: the engine's own Escape (which clears the selected unit) never sees it
+  window.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    var el = document.getElementById("nlbuy");
+    if (!el || !el.classList.contains("is-open")) return;
+    e.stopPropagation(); close();
+  }, true);
 })();

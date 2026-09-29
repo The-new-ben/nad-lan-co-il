@@ -38,13 +38,56 @@
     { id: "door80", w: 80, d: 12, a11y: true, icon: "🚪" }
   ];
 
-  var S = { ctx: null, items: [], notes: "", scale: 1, sel: null, drag: null, plan: null, undo: [] };
+  /* UnitDesignRequest (design system v102, 29.9.2026, HAD-346 Batch 2): the plan belongs to ONE document, project + unit +
+     geometry revision, and so do its undo and redo. Codex reproduced the old leak (STUDIO-STATE-03): A -> sofa -> bed ->
+     close -> empty B -> undo copied A's sofa into B and saved it, because one S.undo outlived open(ctx). Now every document
+     has its own history, kept while the page is open, and an undo only ever touches the open document. */
+  var S = { ctx: null, doc: "", items: [], notes: "", scale: 1, sel: null, drag: null, plan: null, hist: {}, saveErr: false, corrupt: false,
+    mem: {}, memAt: {}, saved: {}, tick: 0 };
 
   function t(k, vars) { return S.ctx && S.ctx.t ? S.ctx.t(k, vars) : k; }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
-  function key() { return "nlstudio:" + S.ctx.projectKey + ":" + S.ctx.unit.id; }
-  function save() { try { localStorage.setItem(key(), JSON.stringify({ v: 1, items: S.items, notes: S.notes })); } catch (e) {} }
-  function load() { try { return JSON.parse(localStorage.getItem(key())) || null; } catch (e) { return null; } }
+  /* the schematic plan is drawn from the unit's rooms and sqm (planRooms, drawPlan): those ARE its geometry revision */
+  function geomRev(u) { return "schematic-v1:" + (Math.max(1, Math.min(8, parseFloat(u.rooms) || 4))) + ":" + Math.max(30, parseInt(u.sqm, 10) || 85); }
+  function docKeyOf(projectKey, unitId, rev) { return "nlstudio:" + projectKey + ":" + unitId + ":" + rev; }
+  function key() { return docKeyOf(S.ctx.projectKey, S.ctx.unit.id, geomRev(S.ctx.unit)); }
+  function hist() { if (!S.hist[S.doc]) S.hist[S.doc] = { undo: [], redo: [] }; return S.hist[S.doc]; }
+  /* the CURRENT state of every document opened on this page, whatever the storage did (Codex STUDIO-B2-EXPORT-STALE: after a
+     failed save the export re-read the storage and sent the old plan); the storage result is kept apart, per document */
+  function remember() {
+    if (!S.ctx || S.doc !== key()) return;
+    S.mem[S.doc] = JSON.stringify({ items: S.items, notes: S.notes });
+    S.memAt[S.doc] = ++S.tick;
+  }
+  function save() {
+    if (!S.ctx || S.doc !== key()) return false;
+    remember();
+    var ok = true;
+    try { localStorage.setItem(S.doc, JSON.stringify({ v: 2, project: S.ctx.projectKey, unit: S.ctx.unit.id, rev: geomRev(S.ctx.unit), items: S.items, notes: S.notes })); }
+    catch (e) { ok = false; }
+    S.saved[S.doc] = ok;
+    S.saveErr = !ok; status();
+    return ok;
+  }
+  function load() {
+    var raw = null;
+    try { raw = localStorage.getItem(key()); } catch (e) { return null; }
+    // the plan saved before revisions existed (nlstudio:<project>:<unit>) is read once, never deleted
+    if (raw == null) { try { raw = localStorage.getItem("nlstudio:" + S.ctx.projectKey + ":" + S.ctx.unit.id); } catch (e) { raw = null; } }
+    if (raw == null) return null;
+    try { var d = JSON.parse(raw); return d && Array.isArray(d.items) ? d : null; }
+    catch (e) {
+      // a draft that cannot be read is set aside, not deleted
+      try { localStorage.setItem(key() + ":unreadable:" + Date.now(), raw); } catch (e2) {}
+      S.corrupt = true; return null;
+    }
+  }
+  function status() {
+    var el = document.getElementById("nlst-save");
+    if (!el) return;
+    el.textContent = S.saveErr ? t("nlst_save_failed") : (S.corrupt ? t("nlst_corrupt") : t("nlst_saved"));
+    el.className = "nlst-save" + (S.saveErr || S.corrupt ? " is-bad" : "");
+  }
 
   /* schematic envelope from real sqm: rooms packed in two bands, like the
      walk-inside generator - an honest illustration, not a sale plan. */
@@ -66,22 +109,36 @@
   }
 
   function open(ctx) {
+    // the document still open is written away first (its active note included), under its own key
+    if (S.ctx && S.doc && document.getElementById("nlst")) { finishNotes(); save(); }
     S.ctx = ctx;
-    var st = load();
+    S.doc = key();
+    S.corrupt = false; S.saveErr = S.saved[S.doc] === false;
+    // this page's own latest state of the document comes first: it is newer than the storage when a save failed
+    var st = S.mem[S.doc] ? JSON.parse(S.mem[S.doc]) : load();
     S.items = (st && st.items) || [];
     S.notes = (st && st.notes) || "";
-    S.sel = null;
+    S.sel = null; S.drag = null;
+    var a = document.activeElement;
+    if (a && !(a.closest && a.closest("#nlst"))) S.opener = a;
     render();
     document.body.classList.add("nlst-lock");
   }
+  function unmount() { var el = document.getElementById("nlst"); if (el) el.remove(); }
+  /* closing gives the focus back to the button that opened the studio (the unit's card keeps its place) */
   function close() {
-    var el = document.getElementById("nlst");
-    if (el) el.remove();
+    unmount();
     document.body.classList.remove("nlst-lock");
+    if (S.opener && document.contains(S.opener)) { try { S.opener.focus({ preventScroll: true }); } catch (e) {} }
   }
+  // Escape closes the studio (its notes kept) and ends there: the engine's own Escape never clears the unit behind it
+  window.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape" || !document.getElementById("nlst")) return;
+    e.stopPropagation(); finishNotes(); save(); close();
+  }, true);
 
   function render() {
-    close();
+    unmount();
     var u = S.ctx.unit;
     var pal = CATALOG.map(function (c) {
       return '<button class="nlst-pi' + (c.a11y ? " nlst-pi--a11y" : "") + '" data-add="' + c.id + '" type="button">' +
@@ -106,6 +163,7 @@
           '<div class="nlst-tools">' +
             '<button data-st="auto" type="button" class="nlst-auto" title="' + esc(t("nlst_auto_note")) + '">' + esc(t("nlst_auto")) + "</button>" +
             '<button data-st="undo" type="button">' + esc(t("nlst_undo")) + "</button>" +
+            '<button data-st="redo" type="button">' + esc(t("nlst_redo")) + "</button>" +
             '<button data-st="rotate" type="button">' + esc(t("nlst_rotate")) + "</button>" +
             '<button data-st="note" type="button">' + esc(t("nlst_note")) + "</button>" +
             '<button data-st="del" type="button">' + esc(t("nlst_delete")) + "</button>" +
@@ -117,11 +175,13 @@
         '<a class="nl-btn nlst-wa" data-st="wa" href="#" target="_blank" rel="noopener">' + esc(t("nlst_send_wa")) + "</a>" +
         '<button class="nl-btn" data-st="video" type="button">' + esc(t("nlst_video")) + "</button>" +
         '<span class="nlst-count" id="nlst-count"></span>' +
+        '<span class="nlst-save" id="nlst-save" role="status"></span>' +
       "</div>";
     document.body.appendChild(el);
     drawPlan();
     S.items.forEach(placeItem);
     count();
+    status();
     wire(el);
   }
 
@@ -215,8 +275,11 @@
     document.querySelectorAll(".nlst-it").forEach(function (n) { n.classList.toggle("is-sel", n.dataset.uid === S.sel); });
   }
   function item(uid) { return S.items.filter(function (i) { return i.uid === uid; })[0]; }
-  function snapshot() { S.undo.push(JSON.stringify(S.items)); if (S.undo.length > 30) S.undo.shift(); }
-  function undo() { if (!S.undo.length) return; S.items = JSON.parse(S.undo.pop()); S.sel = null; redraw(); }
+  function state() { return JSON.stringify({ items: S.items, notes: S.notes }); }
+  function snapshot() { finishNotes(); var h = hist(); h.undo.push(state()); if (h.undo.length > 30) h.undo.shift(); h.redo = []; }
+  function restore(json) { var d = JSON.parse(json); S.items = d.items; S.notes = d.notes; S.sel = null; var n = document.getElementById("nlst-notes"); if (n) n.value = S.notes; redraw(); }
+  function undo() { finishNotes(); var h = hist(); if (!h.undo.length) return; h.redo.push(state()); restore(h.undo.pop()); }
+  function redo() { finishNotes(); var h = hist(); if (!h.redo.length) return; h.undo.push(state()); restore(h.redo.pop()); }
 
   function addItem(type) {
     var c = cat(type); if (!c) return;
@@ -301,11 +364,12 @@
         else if (a === "del" && S.sel) { snapshot(); S.items = S.items.filter(function (i) { return i.uid !== S.sel; }); S.sel = null; redraw(); }
         else if (a === "clear") { snapshot(); S.items = []; S.sel = null; redraw(); }
         else if (a === "undo") { undo(); }
+        else if (a === "redo") { redo(); }
         else if (a === "auto") { autoArrange(); }
         else if (a === "note" && S.sel) {
           var it2 = item(S.sel);
           var v = window.prompt(t("nlst_note_ph"), it2.note || "");
-          if (v !== null) { it2.note = String(v).slice(0, 200); redraw(); }
+          if (v !== null) { snapshot(); it2.note = String(v).slice(0, 200); redraw(); }
         }
         else if (a === "rfp") { finishNotes(); save(); close(); var b = document.querySelector('[data-act="rfp"][data-id="' + S.ctx.unit.id.replace(/["\\]/g, "\\$&") + '"]'); if (b) b.click(); }
         else if (a === "video") {
@@ -328,7 +392,7 @@
       wa.addEventListener("touchstart", function () { finishNotes(); wa.href = "https://wa.me/?text=" + encodeURIComponent(summaryText()); }, { passive: true });
     }
     var notesEl = root.querySelector("#nlst-notes");
-    if (notesEl) notesEl.addEventListener("change", function () { S.notes = notesEl.value; save(); });
+    if (notesEl) notesEl.addEventListener("change", function () { save(); });
     // dragging (pointer events; keeps items inside the plan)
     var plan = root.querySelector("#nlst-plan");
     plan.addEventListener("pointerdown", function (e) {
@@ -366,22 +430,55 @@
     ["pointerup", "pointercancel"].forEach(function (ev) {
       plan.addEventListener(ev, function () { if (S.drag) { if (S.drag.badge) S.drag.badge.remove(); S.drag = null; save(); } });
     });
-    root.addEventListener("keydown", function (e) { if ((e.ctrlKey || e.metaKey) && e.key === "z") { e.preventDefault(); undo(); } });
+    root.addEventListener("keydown", function (e) {
+      if (!(e.ctrlKey || e.metaKey) || (e.target && e.target.id === "nlst-notes")) return;
+      if ((e.key === "z" || e.key === "Z") && !e.shiftKey) { e.preventDefault(); undo(); }
+      else if (e.key === "y" || e.key === "Y" || ((e.key === "z" || e.key === "Z") && e.shiftKey)) { e.preventDefault(); redo(); }
+    });
     root.tabIndex = -1; root.focus();
     window.addEventListener("resize", function () { if (document.getElementById("nlst")) redraw(); });
   }
   function finishNotes() { var n = document.getElementById("nlst-notes"); if (n) S.notes = n.value; }
 
-  /* what buyflow reads to attach the design to the RFP */
+  /* what buyflow reads to attach the design to the RFP: a frozen copy of ONE unit's document, with its identity. The open
+     document is written first (its active note too); a request built from it never changes when the studio does later. */
   function exportFor(projectKey, unitId) {
-    try {
-      var raw = localStorage.getItem("nlstudio:" + projectKey + ":" + unitId);
-      if (!raw) return null;
-      var st = JSON.parse(raw);
-      if (!st || (!st.items.length && !st.notes)) return null;
-      return st;
-    } catch (e) { return null; }
+    var raw = null, rev = "", k = "", persisted = true;
+    // 1. the open document, as it is now (its active note included); 2. a document of this unit opened earlier on this page,
+    // as it was left; 3. only then the storage (a document never opened on this page)
+    if (S.ctx && S.ctx.projectKey === projectKey && S.ctx.unit && S.ctx.unit.id === unitId) { if (document.getElementById("nlst")) finishNotes(); save(); k = S.doc; }
+    if (!k) {
+      var pre = "nlstudio:" + projectKey + ":" + unitId + ":", at = -1;
+      Object.keys(S.mem).forEach(function (mk) { if (mk.indexOf(pre) === 0 && S.memAt[mk] > at) { at = S.memAt[mk]; k = mk; } });
+    }
+    if (k && S.mem[k]) { raw = S.mem[k]; persisted = S.saved[k] !== false; }
+    else {
+      try {
+        var pre2 = "nlstudio:" + projectKey + ":" + unitId + ":schematic-v1:", best = "";
+        for (var i = 0; i < localStorage.length; i++) { var kk = localStorage.key(i); if (kk && kk.indexOf(pre2) === 0 && kk.indexOf(":unreadable:") < 0 && kk > best) best = kk; }
+        k = best || "nlstudio:" + projectKey + ":" + unitId;
+        raw = localStorage.getItem(k);
+      } catch (e) { return null; }
+    }
+    rev = k.split(":").slice(3).join(":");
+    if (!raw) return null;
+    var st;
+    try { st = JSON.parse(raw); } catch (e) { return null; }
+    if (!st || !Array.isArray(st.items) || (!st.items.length && !st.notes)) return null;
+    var tr = function (k2) { return S.ctx && S.ctx.t ? S.ctx.t(k2) : k2; };
+    var notes = [];
+    if (st.notes) notes.push({ target: { kind: "general", id: "" }, label: "", text: String(st.notes) });
+    st.items.forEach(function (it) { if (it.note) notes.push({ target: { kind: "item", id: it.uid }, label: tr("nlst_it_" + it.type), text: String(it.note) }); });
+    return JSON.parse(JSON.stringify({
+      schema: "nadlan-unit-design", v: 1, project: projectKey, unit_id: unitId, geometry_revision: rev || "schematic-v1", source: "studio-2d",
+      // whether this browser also kept it (reported apart; the request carries the current plan either way)
+      persisted: persisted,
+      layers: { plan2d: { units: "cm", origin: "top-left", rot: "deg", items: st.items.map(function (it) { return { uid: it.uid, type: it.type, label: tr("nlst_it_" + it.type), x: it.x, y: it.y, rot: it.rot, note: it.note || "" }; }) } },
+      notes: notes
+    }));
   }
+  // the active note is kept when the page goes away
+  window.addEventListener("pagehide", function () { if (S.ctx && document.getElementById("nlst")) { finishNotes(); save(); } });
 
   window.NLStudio = { open: open, exportFor: exportFor };
 })();

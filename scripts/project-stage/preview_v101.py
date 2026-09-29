@@ -109,6 +109,41 @@ def urban_block(token):
     return h[a:b]
 
 
+def transform_html(body, path, lang, applied, strict=True):
+    """the branch's PHP output applied to a live page (shared by this preview and serve_journey.py)"""
+    is_project = "/projects/" in path and path.split("?")[0].strip("/") != "projects"
+    # the pill + sheet: printed only where the live page prints the site pill (broker and owner pages keep theirs)
+    s = body.find('<div id="nlcta"')
+    if s > 0:
+        e = body.find("</script>", s) + len("</script>")
+        review = "לא מטעם היזם" in body[s:e] or "הסקירה" in body[s:e] or "review" in body[s:e].lower()
+        m = re.search(r"wa\.me/(\d{8,15})", body[s:e])
+        body = body[:s] + php_block("review" if (is_project and review) else "plain", lang, m.group(1) if m else "") + body[e:]
+        applied.append("site pill + ConsultSheet (PHP)")
+    # the urban renewal map's first view (inc/urban-map.php)
+    us = body.find("<style>" + chr(10) + "#nlurm-map{")
+    if us > 0:
+        ue = body.find("</script>", us) + len("</script>")
+        tk = re.search(r'accessToken="(pk\.[A-Za-z0-9._-]+)"', body[us:ue])
+        body = body[:us] + urban_block(tk.group(1) if tk else "") + body[ue:]
+        body = body.replace('<p class="nlurm-note">', '<p class="nlurm-sum" id="nlurm-sum" hidden></p><div class="nlurm-top" id="nlurm-top" hidden></div><p class="nlurm-note">', 1)
+        applied.append("urban map first view (PHP)")
+    # a language page's stage dictionary (inc/project-stage.php prints it from i18n/*.json)
+    ds = body.find('<script type="application/json" id="nadlan-stage-i18n">')
+    if ds > 0:
+        de = body.find("</script>", ds)
+        lm = re.search(r'"lang":"([a-z]{2})"', body[ds:de])
+        if lm:
+            body = body[:ds] + '<script type="application/json" id="nadlan-stage-i18n">' + stage_dict(lm.group(1)) + body[de:]
+            applied.append("stage dictionary " + lm.group(1) + " (PHP)")
+    for label, old, new, req in patches(path, lang, is_project):
+        if old in body:
+            body = body.replace(old, new, 1); applied.append(label)
+        elif req:
+            sys.exit("patch no longer matches the live page: " + label)
+    return body
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("path"); ap.add_argument("--w", type=int, default=1440); ap.add_argument("--h", type=int, default=900)
@@ -123,37 +158,8 @@ def main():
     applied = []
 
     def page_route(route):
-        r = route.fetch(); body = r.text()
-        is_project = "/projects/" in a.path and a.path.strip("/") != "projects"
-        # the pill + sheet: printed only where the live page prints the site pill (broker and owner pages keep theirs)
-        s = body.find('<div id="nlcta"')
-        if s > 0:
-            e = body.find("</script>", s) + len("</script>")
-            review = "לא מטעם היזם" in body[s:e] or "הסקירה" in body[s:e] or "review" in body[s:e].lower()
-            m = re.search(r"wa\.me/(\d{8,15})", body[s:e])
-            body = body[:s] + php_block("review" if (is_project and review) else "plain", lang, m.group(1) if m else "") + body[e:]
-            applied.append("site pill + ConsultSheet (PHP)")
-        # the urban renewal map's first view (inc/urban-map.php)
-        us = body.find("<style>" + chr(10) + "#nlurm-map{")
-        if us > 0:
-            ue = body.find("</script>", us) + len("</script>")
-            tk = re.search(r'accessToken="(pk\.[A-Za-z0-9._-]+)"', body[us:ue])
-            body = body[:us] + urban_block(tk.group(1) if tk else "") + body[ue:]
-            body = body.replace('<p class="nlurm-note">', '<p class="nlurm-sum" id="nlurm-sum" hidden></p><div class="nlurm-top" id="nlurm-top" hidden></div><p class="nlurm-note">', 1)
-            applied.append("urban map first view (PHP)")
-        # a language page's stage dictionary (inc/project-stage.php prints it from i18n/*.json)
-        ds = body.find('<script type="application/json" id="nadlan-stage-i18n">')
-        if ds > 0:
-            de = body.find("</script>", ds)
-            lm = re.search(r'"lang":"([a-z]{2})"', body[ds:de])
-            if lm:
-                body = body[:ds] + '<script type="application/json" id="nadlan-stage-i18n">' + stage_dict(lm.group(1)) + body[de:]
-                applied.append("stage dictionary " + lm.group(1) + " (PHP)")
-        for label, old, new, req in patches(a.path, lang, is_project):
-            if old in body:
-                body = body.replace(old, new, 1); applied.append(label)
-            elif req:
-                sys.exit("patch no longer matches the live page: " + label)
+        r = route.fetch()
+        body = transform_html(r.text(), a.path, lang, applied)
         route.fulfill(response=r, body=body, headers={**r.headers, "content-type": "text/html; charset=UTF-8"})
 
     def asset_route(route):
@@ -187,7 +193,7 @@ def main():
         pg.wait_for_timeout(4000)
         probe = None
         if a.probe:
-            ns = {}
+            ns = {"__file__": os.path.abspath(a.probe), "__name__": "probe"}
             exec(compile(io.open(a.probe, encoding="utf-8").read(), a.probe, "exec"), ns)
             probe = ns["run"](pg, a.w, a.h, mob)
         if a.shot:

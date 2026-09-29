@@ -592,13 +592,23 @@ async function boot() {
     window.scrollTo({ top: root.getBoundingClientRect().top + window.scrollY - headBottom() - 8, behavior: smooth() });
   });
   const DESIGNER = '/tour/designer/';
+  /* UnitDesignRequest (design system v102): the designer opens for THIS unit (project, unit id and the card's words), so the
+     design is kept for it and the request names it; with no unit picked it stays the demonstration */
+  const designerUrl = () => {
+    const pk = window.__nlpsPick;
+    const slug = ((location.pathname.match(/\/projects\/([^/]+)/) || [])[1] || '').replace(/-(en|fr|ru|ar)$/, '');
+    if (!pk || !pk.unit || !slug) return DESIGNER;
+    const kick = document.querySelector('#nlps-pick .dus-label-kick');
+    const ul = 'קומה ' + pk.floor + (pk.facing ? ' · ' + pk.facing : '') + (kick && kick.textContent.trim() ? ' · ' + kick.textContent.trim() : '');
+    return DESIGNER + '?project=' + encodeURIComponent(slug) + '&unit=' + encodeURIComponent(pk.unit) + '&pn=' + encodeURIComponent(String(cfg.name || '')) + '&ul=' + encodeURIComponent(ul);
+  };
   /* the floor card's actions (design system ProjectStage version 33) */
   window.addEventListener('nl:floor-action', (e) => {
     const d = e.detail || {};
     ga('floor_action', { action: d.action || '', floor: d.floor, project: cfg.name });
     if (d.action === 'inside') openTourAt(d.floor, d.unit ? String(d.unit).split('-').pop() : 'w', null);
     else if (d.action === 'view') toBelow();
-    else if (d.action === 'design') location.href = DESIGNER;
+    else if (d.action === 'design') location.href = designerUrl();
   });
   /* the button says which floor's pictures open, when they are not the picked floor's */
   const insideLabel = (f) => {
@@ -617,7 +627,7 @@ async function boot() {
     const k = b.getAttribute('data-nlps-step');
     ga('stage_step', { step: k, project: cfg.name });
     if (k === 'floor') { root.scrollIntoView({ behavior: smooth(), block: 'center' }); return; }
-    if (k === 'design') { location.href = DESIGNER; return; }
+    if (k === 'design') { location.href = designerUrl(); return; }
     if (k === 'inside') { openTourAt(selFloor() || 25, selSide() || 'w', b); return; }
     if (k === 'view') {
       // nothing picked yet: floor 25's sea-side example apartment first, so the view and the beam have something to show

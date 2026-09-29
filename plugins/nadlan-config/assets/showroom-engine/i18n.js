@@ -156,6 +156,8 @@
     nlst_pros: "אדריכלים ומעצבים מהמאגר",
     nlst_rotate: "סיבוב",
     nlst_undo: "ביטול פעולה",
+    // UnitDesignRequest v102: redo, and the save state of this unit's plan
+    nlst_redo: "החזרת פעולה", nlst_saved: "נשמר בדפדפן לדירה הזו", nlst_save_failed: "השמירה בדפדפן נכשלה. התכנון עדיין פתוח כאן; צרפו אותו לבקשת הצעה כדי לשמור אותו.", nlst_corrupt: "טיוטה קודמת שלא נקראה נשמרה בצד ולא נמחקה",
     nlst_note: "הערה לפריט",
     nlst_delete: "מחיקה",
     nlst_clear: "ניקוי הכל",
@@ -364,6 +366,7 @@
     nlst_pros: "Architects and designers from our directory",
     nlst_rotate: "Rotate",
     nlst_undo: "Undo",
+    nlst_redo: "Redo", nlst_saved: "Saved in this browser for this apartment", nlst_save_failed: "Saving in this browser failed. The plan is still open here; attach it to an offer request to keep it.", nlst_corrupt: "An earlier draft that could not be read was set aside, not deleted",
     nlst_note: "Item note",
     nlst_delete: "Delete",
     nlst_clear: "Clear all",

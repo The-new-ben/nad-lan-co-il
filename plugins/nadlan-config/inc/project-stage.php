@@ -333,6 +333,48 @@ if ( ! function_exists( 'nadlan_ps_poster_set' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_ps_unit_resolve' ) ) {
+	/**
+	 * UnitDesignRequest (design system v102, 29.9.2026): a stage's example apartment, resolved on the server so a request
+	 * never stands for a unit that does not exist. The ids are the stages' own: '<floor>-<side>' on a one-tower stage (Rainbow)
+	 * and '<tower>-<floor>-<side>' where there are several (DUO, Dimri Yama, Ashira). The floors per tower are the stages'
+	 * (stage.js TOWER.floors / FLOORS / TOWERS[].floors); the sides and their bearings are the config's 'units'. Case is kept
+	 * (N-25-w stays N-25-w). Returns null for anything outside that space: no nearest unit is guessed.
+	 */
+	function nadlan_ps_unit_resolve( $slug, $unit_id ) {
+		$slug = preg_replace( '/-(en|fr|ru|ar)$/', '', (string) $slug );
+		$all  = function_exists( 'nadlan_ps_config' ) ? nadlan_ps_config() : array();
+		if ( ! isset( $all[ $slug ] ) || empty( $all[ $slug ]['units'] ) ) { return null; }
+		$space = array(
+			'rainbow' => array( '' => 39 ),
+			'duo'     => array( 'N' => 50, 'S' => 50 ),
+			'dimri'   => array( 'A' => 38, 'C' => 15 ),
+			'ashira'  => array( 'S1' => 34, 'N2' => 15 ),
+		);
+		$dir = (string) ( $all[ $slug ]['dir'] ?? '' );
+		if ( ! isset( $space[ $dir ] ) ) { return null; }
+		if ( ! preg_match( '/^(?:([A-Za-z][A-Za-z0-9]{0,2})-)?([0-9]{1,3})-([a-z])$/', (string) $unit_id, $m ) ) { return null; }
+		$tower = strtoupper( (string) $m[1] );
+		$floor = (int) $m[2];
+		$side  = $m[3];
+		if ( ! isset( $space[ $dir ][ $tower ] ) || $floor < 1 || $floor > $space[ $dir ][ $tower ] ) { return null; }
+		$bearing = null;
+		foreach ( (array) $all[ $slug ]['units'] as $u ) {
+			if ( is_array( $u ) && isset( $u[0] ) && $u[0] === $side ) { $bearing = (float) $u[1]; }
+		}
+		if ( null === $bearing ) { return null; }
+		return array(
+			'id'      => ( '' !== $tower ? $tower . '-' : '' ) . $floor . '-' . $side,
+			'label'   => ( '' !== $tower ? $tower . ' · ' : '' ) . $floor . '-' . $side,
+			'floor'   => $floor,
+			'tower'   => $tower,
+			'side'    => $side,
+			'bearing' => $bearing,
+			'example' => true,
+		);
+	}
+}
+
 if ( ! function_exists( 'nadlan_ps_current' ) ) {
 	function nadlan_ps_current() {
 		static $memo = false;

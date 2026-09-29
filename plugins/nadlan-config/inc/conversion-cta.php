@@ -285,7 +285,13 @@ add_action( 'rest_api_init', function () {
 				'consent_recorded'  => ! empty( $p['consent'] ) ? current_time( 'mysql', true ) : '',
 			);
 			if ( function_exists( 'nadlan_lead_e2e_enabled' ) && nadlan_lead_e2e_enabled() && function_exists( 'nadlan_lead_e2e_capture' ) ) {
-				return nadlan_lead_e2e_capture( $lead_payload, $card_id, 'rest' );
+				$cap = nadlan_lead_e2e_capture( $lead_payload, $card_id, 'rest' );
+				// the test-mode path gets the same key, for the lead as persisted (Codex LEAD-E2E-UNIT-CONTRACT)
+				if ( is_array( $cap ) && ! empty( $cap['lead_id'] ) && function_exists( 'nadlan_rfp_lead_key_for' ) ) {
+					$k = nadlan_rfp_lead_key_for( $cap['lead_id'], $lead_payload['project_slug'], $lead_payload['unit'] );
+					if ( '' !== $k ) { $cap['lead_key'] = $k; }
+				}
+				return $cap;
 			}
 			$lid = wp_insert_post( array(
 				'post_type'    => 'nadlan_lead',
@@ -317,7 +323,14 @@ add_action( 'rest_api_init', function () {
 				$body .= "ניהול: " . admin_url( 'post.php?post=' . $lid . '&action=edit' );
 				wp_mail( $admin, '[נדלן] ליד חדש - ' . $name, $body );
 			}
-			return array( 'ok' => true, 'lead_id' => $lid );
+			$out = array( 'ok' => true, 'lead_id' => $lid );
+			// UnitDesignRequest v102 (inc/rfp.php): a lead that names a project and a unit gets a key; only its holder can attach
+			// the request document to it (a bare lead id no longer links anything)
+			if ( function_exists( 'nadlan_rfp_lead_key_for' ) ) {
+				$k = nadlan_rfp_lead_key_for( $lid, $lead_payload['project_slug'], $lead_payload['unit'] );
+				if ( '' !== $k ) { $out['lead_key'] = $k; }
+			}
+			return $out;
 		},
 	) );
 } );
