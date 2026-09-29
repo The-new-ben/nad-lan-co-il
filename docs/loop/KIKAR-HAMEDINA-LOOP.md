@@ -25,6 +25,13 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **30.9, turn 5** (the prototype looked at; MYS read; Hebrew occupancy search: [Ashtrom](https://www.ashtrom.co.il/en/projects/kikar-hamedina), [Mako](https://www.mako.co.il/finances-real-estate/Article-cdd2b05daf37a91026.htm), [project-tlv](https://project-tlv.info/buildings/kikar-hamedina/kikar-hamedina-project/)).
+  - **(1) The towers look like the real ones.** White slabs and white curtain walls per the architect, instead of a gold box. Gold now means "you chose this".
+  - **(2) Hours of direct sun per facing.** Ray-tested against the real city blocks and shown per floor. No site in Israel shows this.
+  - **(3) The phone's window view is framed on the view.** The prototype's phone frame was mostly sky.
+  - **(4) The WhatsApp line carries tower and floor from the world**, through `window.__nlpsPick`.
+  - **To verify next turn:** the dog park (Mako), and project-tlv's building timeline.
+
 - **30.9, turn 3** (P1 facts, 82 sources; P3 live SERP with DataForSEO, about $0.01).
   - **(1) Win the AI Overview.** Google puts an AI Overview on top in Hebrew and English. The page states each fact as a short, sourced bullet or table row with the names Google uses. The FAQ answers the 7 People-Also-Ask questions word for word.
   - **(2) Deals table, sourced by floor and date.** The three Globes deals (floors 38-39) plus the area's ₪/m² for comparison. No competitor shows deals.
@@ -212,7 +219,19 @@ Every turn does ALL of these, not only the current phase:
   - GSC for the last 28 days, and DataForSEO within $5: keywords, People Also Ask, competitor page structure, intent.
   - Run the URL word audit and choose the slug.
   - Output: `serp-dna.md` and the slug decision.
-- [ ] **P4, IN PROGRESS (turn 4, 30.9).**
+- [x] **P4 DONE 30.9: Claude Design v104 "KikarHamedinaWorld" published** (artifact L9Nqz7Viv7K3MYeZrBc9s8, version 136) and looked at.
+  - It holds the page order on a phone, the four ways into the world with real prototype renders, the twist, sun and shade, the sourced fact table, deals and prices, "when is it ready?", the FAQ and the honest labels.
+  - The spec is copied at `docs/design/kikar-hamedina/KikarHamedinaWorld-v104-README.md`.
+  - The prototype (`docs/research/2026-09-30-kikar-hamedina/prototype/`) holds:
+    - 9,079 real buildings with heights;
+    - 11,669 tree crowns from the city's 2024 canopy layer;
+    - the towers built floor by floor with 1.25°;
+    - the real sun, checked: sunsets 19:51 in June and 16:41 in December; shadows of 286 m at 13:00 on 21.12.
+  - **Fixes carried to P5:**
+    - The facade is WHITE slabs and white curtain walls per MYS (m-y-s.com/Kikar-Hamedina, read 30.9: "a repetitive system of floor slabs and white curtain walls", "each residential floor … sets back from the floor beneath and rotates in a circular movement"). Gold is the selection highlight only.
+    - The phone's window view is framed on the view, not the empty sky.
+    - Labels are bigger on phones.
+- [x] **P4 (turn 4 note) IN PROGRESS (30.9).**
   - The spec is written: design system component `KikarHamedinaWorld/README.md`, v104. It covers:
     - the page order;
     - the world's four modes: aerial, walk, tower with the sun clock, places;
@@ -230,7 +249,14 @@ Every turn does ALL of these, not only the current phase:
   - the sales path (WhatsApp, the representative, the basket);
   - Hebrew and English.
   - Publish it and look at it.
-- [ ] **P5, The models.**
+- [ ] **P5, IN PROGRESS (turn 5, 30.9).** A sub-agent is building the SHARED world module locally:
+  - `assets/project-stage/world/world.js` and `world.css`, with the API `mountWorld(el, {dataUrl, placesUrl, lang, i18n, onPick})`. It sets `window.__nlpsPick` so the WhatsApp source line carries tower and floor.
+  - The four modes: aerial, walk (joystick and WASD, collisions), tower (floor, facing, window view, sun clock, hours of direct sun per facing), places.
+  - `assets/project-stage/hamedina/world.json`, built by `scripts/project-stage/build_world_hamedina.py`, about 1.5 MB loaded on intent.
+  - A poster image; a test harness with screenshots at 1440 and 390; fps and bytes.
+  - It does NOT touch engine.js, the existing stages or PHP.
+- [ ] **P6, IN PROGRESS (turn 5).** A sub-agent writes `prompt-he.md` and `prompt-en.md`: marketing and positive per the owner, sourced, with the 7 People-Also-Ask questions as the FAQ, and internal links checked for 200.
+- [ ] **P5 (the original task text) The models.**
   - The three towers with the 1.25° turn per floor, heights 160/157 m, on the official parcel.
   - The square's ring and the park with the lake.
   - The surrounding blocks at the right heights (OSM heights, else floors × 3.2 m, labelled).
