@@ -59,11 +59,12 @@ add_action( 'wp_footer', function () {
 		$rv_lang = function_exists( 'nadlan_project_self_lang' ) ? nadlan_project_self_lang() : '';
 		if ( '' === $rv_lang ) { $rv_lang = 'he'; }
 		$rv = array(
-			'he' => array( "שאלות על הסקירה הזו?", "עונים עצמאית, לא מטעם היזם", "וואטסאפ · שאלה על הסקירה", "שלום, יש לי שאלה על סקירת הפרויקט באתר." ),
-			'en' => array( "Questions about this review?", "Independent answers, not the developer", "WhatsApp: ask about this review", "Hi, I have a question about this project review." ),
-			'fr' => array( "Des questions sur cette revue ?", "Réponses indépendantes, pas le promoteur", "WhatsApp : question sur la revue", "Bonjour, j'ai une question sur cette revue de projet." ),
-			'ru' => array( "Вопросы по обзору?", "Независимые ответы, не от застройщика", "WhatsApp: вопрос об обзоре", "Здравствуйте, у меня вопрос по обзору проекта." ),
-			'ar' => array( "أسئلة حول هذه المراجعة؟", "إجابات مستقلة، ليست من المطور", "واتساب · سؤال عن المراجعة", "مرحبا، لدي سؤال حول مراجعة المشروع." ),
+			// ApartmentExperience-1 (v101, 29.9.2026): "ייעוץ חינם" on every page; the independence stays in the small line
+			'he' => array( "ייעוץ חינם", "לא מטעם היזם · מענה בוואטסאפ", "וואטסאפ · ייעוץ חינם על הפרויקט", "שלום, יש לי שאלה על הפרויקט." ),
+			'en' => array( "Free consultation", "Not the developer · on WhatsApp", "WhatsApp: free consultation on the project", "Hi, I have a question about this project." ),
+			'fr' => array( "Conseil gratuit", "Pas le promoteur · sur WhatsApp", "WhatsApp : conseil gratuit sur le projet", "Bonjour, j'ai une question sur ce projet." ),
+			'ru' => array( "Бесплатная консультация", "Не от застройщика · в WhatsApp", "WhatsApp: бесплатная консультация по проекту", "Здравствуйте, у меня вопрос по проекту." ),
+			'ar' => array( "استشارة مجانية", "ليست من المطور · على واتساب", "واتساب · استشارة مجانية حول المشروع", "مرحبا، لدي سؤال حول المشروع." ),
 		);
 		$rv_v = isset( $rv[ $rv_lang ] ) ? $rv[ $rv_lang ] : $rv['he'];
 		$cta_b = $rv_v[0]; $cta_s = $rv_v[1]; $cta_aria = $rv_v[2]; $cta_msg = $rv_v[3];
@@ -80,6 +81,13 @@ add_action( 'wp_footer', function () {
 		<span class="nlcta-brand" aria-hidden="true"><svg viewBox="0 0 64 64" width="30" height="30"><rect width="64" height="64" rx="14" fill="#F7F6F2"/><rect x="10" y="30" width="11" height="22" rx="1.5" fill="#1F4B5C" opacity=".72"/><rect x="26.5" y="14" width="11" height="38" rx="1.5" fill="#1F4B5C"/><rect x="43" y="24" width="11" height="28" rx="1.5" fill="#1F4B5C" opacity=".86"/><rect x="8" y="55" width="48" height="2.6" rx="1.3" fill="#1F4B5C"/></svg></span>
 	</a>
 </div>
+<?php
+	// ConsultSheet (v101): a click on the pill opens a short message sheet (inc/cta-sheet.php); without it the pill is a plain link
+	if ( function_exists( 'nadlan_cta_sheet_html' ) ) {
+		$cs_lang = function_exists( 'nadlan_current_lang' ) ? (string) nadlan_current_lang() : 'he';
+		echo nadlan_cta_sheet_html( $wa, $cta_rtl, in_array( $cs_lang, array( 'he', 'en', 'fr', 'ru', 'ar' ), true ) ? $cs_lang : 'he' ); // phpcs:ignore -- escaped inside
+	}
+?>
 <style>
 #nlcta{position:fixed;bottom:20px;inset-inline-end:20px;z-index:99989;font-family:var(--font-sans,Heebo,system-ui,sans-serif)}
 /* 24.9.2026, from the design system (Button, wa-green): a deep WhatsApp green. White on #25D366 read at 1.98:1 and
@@ -100,10 +108,11 @@ body.nl-skin-a #nlcta .nlcta-wa{box-shadow:0 10px 24px rgba(15,122,99,.30)!impor
    (overrides showroom.css body.nl-has-engine #nlcta{display:none}) */
 body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 @media(max-width:760px){body.nl-has-engine #nlcta{bottom:calc(env(safe-area-inset-bottom,0px) + 148px)!important}}
-/* PublishPage v48-69 (28.9.2026): full at the top of the page, a round 54px button once the reader scrolls. v69 (owner
-   order): the pill never hides - not for logged-in visitors, not on a 3D stage, not while typing; over a form button it
-   moves up instead. The link, its label and tracking unchanged. */
-@media(max-width:600px){#nlcta.is-mini .nlcta-wa{width:54px;height:54px;min-height:54px;max-width:none;padding:0;justify-content:center;border-radius:50%}#nlcta.is-mini .nlcta-txt,#nlcta.is-mini .nlcta-brand{display:none}#nlcta.is-mini .nlcta-glyph{width:40px;height:40px}html body #nlcta.is-clear{bottom:calc(env(safe-area-inset-bottom,0px) + var(--nlcta-lift,150px))!important}}
+/* ApartmentExperience-1 (design system v101, 29.9.2026): the pill stays wide on every width and at every scroll: the NadLan
+   mark, WhatsApp and "ייעוץ חינם". The round 54px button after 120px of scrolling (PublishPage v48-69) is gone. It still never
+   hides, and over a form button or the stage's floor card it moves up instead (v69, v91). */
+@media(max-width:520px){.nlcta-wa{max-width:min(72vw,280px)}}
+@media(max-width:600px){html body #nlcta.is-clear{bottom:calc(env(safe-area-inset-bottom,0px) + var(--nlcta-lift,150px))!important}}
 /* PublishPage v70 (28.9.2026): on broker sites and broker listing pages the site pill steps aside (the lead is the broker's);
    on wide screens the broker's own WhatsApp floats in the same corner. Here, not only in the engine, because broker pages
    are built once and keep their styles. */
@@ -115,7 +124,8 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 	window.dataLayer=window.dataLayer||[];
 	window.nadlanGA=window.nadlanGA||function(n,p){try{window.dataLayer.push(Object.assign({event:n},p||{}));}catch(e){}};
 	var wa=document.querySelector('.nlcta-wa');
-	if(wa)wa.addEventListener('click',function(){window.nadlanGA('whatsapp_click');});
+	// with the sheet, the click that counts is the sheet's own "open in WhatsApp" (inc/cta-sheet.php); the pill alone stays a link
+	if(wa&&!document.getElementById('nlcta-sheet'))wa.addEventListener('click',function(){window.nadlanGA('whatsapp_click');});
 	var box=document.getElementById('nlcta');
 	if(box&&window.matchMedia){
 		var mq=window.matchMedia('(max-width:600px)'),tick=false,back=0;
@@ -127,12 +137,12 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 		var wa0=box.querySelector('.nlcta-wa');
 		var stageHit=function(h){
 			if(!wa0)return 0;
-			var p=wa0.getBoundingClientRect(),els=document.querySelectorAll('#nlps button,#nlps a,.nlps-steps button,.nlps-steps a,#nlps-view-cta button,#nlps-view-cta a');
+			var p=wa0.getBoundingClientRect(),els=document.querySelectorAll('#nlps button,#nlps a,#nlps-pick button,#nlps-pick a,.nlps-steps button,.nlps-steps a,#nlps-view-cta button,#nlps-view-cta a');
 			for(var i=0;i<els.length;i++){
 				var r=els[i].getBoundingClientRect();
 				if(r.height>0&&r.bottom>h-110&&r.top<h&&r.left<p.right+8&&r.right>p.left-8){
 					var c=els[i];
-					while(c.parentElement&&c.parentElement.id!=='nlps'&&c.parentElement.getBoundingClientRect().height<h*0.55){c=c.parentElement;}
+					while(c.parentElement&&c.parentElement.id!=='nlps'&&c.parentElement.id!=='nlps-pick'&&c.parentElement.getBoundingClientRect().height<h*0.55){c=c.parentElement;}
 					return Math.min(Math.round(h-c.getBoundingClientRect().top+10),Math.round(h*0.7));
 				}
 			}
@@ -142,7 +152,6 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 			tick=false;
 			var h=window.innerHeight||0,lift=mq.matches?stageHit(h):0,clash=subs.some(function(el){var r=el.getBoundingClientRect();return r.height>0&&r.bottom>h-110&&r.top<h;})||lift>0;
 			if(lift>0){box.style.setProperty('--nlcta-lift',lift+'px');}else{box.style.removeProperty('--nlcta-lift');}
-			box.classList.toggle('is-mini',mq.matches&&(window.scrollY||0)>120);
 			box.classList.toggle('is-clear',mq.matches&&clash);
 		};
 		var ask=function(){if(!tick){tick=true;window.requestAnimationFrame(fit);}};
@@ -150,7 +159,7 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 		window.addEventListener('resize',ask);
 		if(mq.addEventListener){mq.addEventListener('change',fit);}
 		// the stage's card opens and closes without a scroll: look again after a tap on the stage and on its floor events
-		document.addEventListener('click',function(e){if(e.target&&e.target.closest&&e.target.closest('#nlps,.nlps-steps,#nlps-view-cta')){setTimeout(ask,350);}},true);
+		document.addEventListener('click',function(e){if(e.target&&e.target.closest&&e.target.closest('#nlps,#nlps-pick,.nlps-steps,#nlps-view-cta')){setTimeout(ask,350);}},true);
 		['nl:floor','nl:facing'].forEach(function(n){window.addEventListener(n,function(){setTimeout(ask,350);});});
 		fit();
 		var typing=function(t){return t&&t.matches&&t.matches('textarea,select,input:not([type=checkbox]):not([type=radio]):not([type=button]):not([type=submit]):not([type=hidden])');};

@@ -283,6 +283,12 @@ EXACT = [
     row("מתקן בפרויקט", "Facility in the project", "Équipement du projet", "Объект в проекте", "مرفق في المشروع"),
     row("מתקנים בפרויקט", "Facilities in the project", "Équipements du projet", "Инфраструктура проекта", "مرافق المشروع"),
     row("מתקן לדוגמה", "Example facility", "Équipement témoin", "Пример объекта", "مرفق نموذجي"),
+    # --- ApartmentExperience-1 (v101, 29.9.2026): the zoom buttons and the wheel hint on the stage, the film's sound line
+    row("זום על הדגם", "Zoom the model", "Zoom sur la maquette", "Масштаб модели", "تكبير النموذج"),
+    row("להתקרב", "Zoom in", "Zoom avant", "Приблизить", "تكبير"),
+    row("להתרחק", "Zoom out", "Zoom arrière", "Отдалить", "تصغير"),
+    row("Ctrl + גלגלת: זום על הדגם", "Ctrl + scroll: zoom the model", "Ctrl + molette : zoom sur la maquette", "Ctrl + колесо: масштаб модели", "Ctrl + عجلة الفأرة: تكبير النموذج"),
+    row("⌘ + גלגלת: זום על הדגם", "⌘ + scroll: zoom the model", "⌘ + molette : zoom sur la maquette", "⌘ + колесо: масштаб модели", "⌘ + عجلة الفأرة: تكبير النموذج"),
     # --- AreaLife v97 (1.72.361): the groups, the planned station, the sources
     row("פארקים, חוף וספורט", "Parks, beach and sport", "Parcs, plage et sport", "Парки, пляж и спорт", "حدائق وشاطئ ورياضة"),
     row("קניות וסידורים", "Shops and errands", "Commerces et services", "Магазины и услуги", "تسوق وخدمات"),

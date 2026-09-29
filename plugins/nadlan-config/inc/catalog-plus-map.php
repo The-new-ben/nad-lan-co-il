@@ -38,7 +38,7 @@ if ( ! function_exists( 'nadlan_cp_map_thumb_html' ) ) {
 		return '<a class="nlcp-mapthumb" id="nlcp-mapthumb" href="#map" data-center="34.88,32.02" data-zoom="7.15" data-w="240" data-h="240" aria-label="פתיחת מפת הפרויקטים והמחירים">'
 			. '<img src="' . esc_url( $src ) . '" alt="מפת פרויקטים חדשים ומחיר למ״ר לפי עיר" width="240" height="240" loading="eager" decoding="async" referrerpolicy="no-referrer-when-downgrade">'
 			. '<span class="nlcp-mapthumb__chips" aria-hidden="true"></span>'
-			. '<span class="nlcp-mapthumb__cta"><b>מפת מחירים ופרויקטים</b><small>מחיר למ״ר על כל פרויקט · לחיצה פותחת</small></span>'
+			. '<span class="nlcp-mapthumb__cta"><b>מפת מחירים ופרויקטים</b><small>בערים: ממוצע עסקאות למ״ר · בפרויקטים: מחיר מוערך</small></span>'
 			. '<span class="nlcp-mapthumb__near"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>פרויקטים לידי</span></a>';
 	}
 }
@@ -103,6 +103,7 @@ if ( ! function_exists( 'nadlan_cp_map_assets' ) ) {
 /* escaping: Code Snippets strips one slash level, the PHP heredoc another; write \\n here to get 
  in JS. never set position on .nlcp-pin/.nlcp-cluster: Mapbox positions markers with position:absolute + transform; a relative pin lands hundreds of px off its coordinate */
 .nlcp-pin::after{content:"";position:absolute;left:50%;bottom:-6px;width:8px;height:8px;background:var(--sa-deep,#1F4B5C);transform:translateX(-50%) rotate(45deg)}
+.nlcp-pin__est{display:block;font:600 10px/1.2 Assistant,Heebo,sans-serif;opacity:.85}
 .nlcp-pin.is-featured{background:var(--sa-sea,#2F6F86)}.nlcp-pin.is-featured::after{background:var(--sa-sea,#2F6F86)}
 .nlcp-pin.is-city{background:#fff;color:var(--sa-deep,#1F4B5C);border-color:var(--sa-deep,#1F4B5C)}.nlcp-pin.is-city::after{background:#fff}
 .nlcp-pin.is-active{background:#C2563A}.nlcp-pin.is-active::after{background:#C2563A}
@@ -123,7 +124,7 @@ body.nlcp-map-open{overflow:hidden}
 	function placeChips(){var c=thumb.dataset.center.split(',').map(Number),z=+thumb.dataset.zoom,W=+thumb.dataset.w,H=+thumb.dataset.h;var box=thumb.getBoundingClientRect();var sx=box.width/W,sy=box.height/H;var cen=proj(c[0],c[1],z);var host=thumb.querySelector('.nlcp-mapthumb__chips');host.innerHTML='';
 		var max=Math.max.apply(null,CITIES.map(function(x){return x.psqm||0;}));
 		var placed=[];
-		CITIES.filter(function(x){return x.psqm>0;}).slice(0,14).forEach(function(x){var p=proj(x.lng,x.lat,z);var px=(W/2+(p[0]-cen[0]))*sx,py=(H/2+(p[1]-cen[1]))*sy;if(px<36||py<44||px>box.width-36||py>box.height-66)return;if(placed.some(function(q){return Math.abs(q[0]-px)<70&&Math.abs(q[1]-py)<18;}))return;placed.push([px,py]);var el=document.createElement('span');el.className='nlcp-chip'+(x.psqm>=max*.8?' nlcp-chip--hot':'');el.style.left=px+'px';el.style.top=py+'px';el.textContent=x.name+' '+Math.round(x.psqm/1000)+'K';host.appendChild(el);});}
+		CITIES.filter(function(x){return x.psqm>0;}).slice(0,14).forEach(function(x){var p=proj(x.lng,x.lat,z);var px=(W/2+(p[0]-cen[0]))*sx,py=(H/2+(p[1]-cen[1]))*sy;if(px<36||py<44||px>box.width-36||py>box.height-66)return;if(placed.some(function(q){return Math.abs(q[0]-px)<70&&Math.abs(q[1]-py)<18;}))return;placed.push([px,py]);var el=document.createElement('span');el.className='nlcp-chip'+(x.psqm>=max*.8?' nlcp-chip--hot':'');el.style.left=px+'px';el.style.top=py+'px';el.textContent=x.name+' ₪'+Math.round(x.psqm/1000)+'K';host.appendChild(el);});}
 	placeChips();window.addEventListener('resize',placeChips);
 	/* --- full map --- */
 	var map=null,markers={},loaded=false,active=null,cardEl=document.getElementById('nlcp-map-card'),catalogState=function(){try{return new URLSearchParams(location.search).get('city')||'';}catch(e){return '';}};
@@ -147,11 +148,11 @@ body.nlcp-map-open{overflow:hidden}
 	function addHeat(){
 		map.addSource('nlcp-cities',{type:'geojson',data:{type:'FeatureCollection',features:CITIES.filter(function(c){return c.psqm>0;}).map(function(c){return {type:'Feature',properties:{name:c.name,psqm:c.psqm,n:c.n,color:color(c.psqm),r:Math.max(10,Math.min(34,6+Math.sqrt(c.n)*2.6))},geometry:{type:'Point',coordinates:[c.lng,c.lat]}};})}});
 		map.addLayer({id:'nlcp-city-heat',type:'circle',source:'nlcp-cities',paint:{'circle-color':['get','color'],'circle-radius':['interpolate',['linear'],['zoom'],6,['get','r'],11,['*',['get','r'],2.2],13,1],'circle-opacity':['interpolate',['linear'],['zoom'],6,.55,11,.35,12.5,0],'circle-blur':.6}});
-		map.addLayer({id:'nlcp-city-label',type:'symbol',source:'nlcp-cities',minzoom:6.5,maxzoom:12,layout:{'text-field':['concat',['get','name'],'\\n',['number-format',['get','psqm'],{'locale':'he','max-fraction-digits':0}],' ₪'],'text-size':11,'text-offset':[0,0],'text-font':['DIN Pro Medium','Arial Unicode MS Regular']},paint:{'text-color':'#14212B','text-halo-color':'#fff','text-halo-width':1.2}});
+		map.addLayer({id:'nlcp-city-label',type:'symbol',source:'nlcp-cities',minzoom:6.5,maxzoom:12,layout:{'text-field':['concat',['get','name'],'\\n',['number-format',['get','psqm'],{'locale':'he','max-fraction-digits':0}],' ₪ למ״ר'],'text-size':11,'text-offset':[0,1.9],'text-anchor':'top','text-font':['DIN Pro Medium','Arial Unicode MS Regular']},paint:{'text-color':'#14212B','text-halo-color':'#fff','text-halo-width':1.2}});
 		if(CFG.hoods){map.addSource('nlcp-hoods',{type:'geojson',data:CFG.hoods});
 			map.addLayer({id:'nlcp-hoods-fill',type:'fill',source:'nlcp-hoods',minzoom:10.5,paint:{'fill-color':['case',['>',['coalesce',['get','psqm'],0],0],['interpolate',['linear'],['get','psqm'],20000,'#DCEBF0',30000,'#9CC4D1',45000,'#5F98AB',60000,'#2F6F86',75000,'#1F4B5C'],'#EEE9DD'],'fill-opacity':.42}},'nlcp-city-heat');
 			map.addLayer({id:'nlcp-hoods-line',type:'line',source:'nlcp-hoods',minzoom:10.5,paint:{'line-color':'#fff','line-width':1}});
-			map.addLayer({id:'nlcp-hoods-label',type:'symbol',source:'nlcp-hoods',minzoom:12,layout:{'text-field':['case',['>',['coalesce',['get','psqm'],0],0],['concat',['get','name'],'\\n',['number-format',['get','psqm'],{'locale':'he','max-fraction-digits':0}],' ₪'],['get','name']],'text-size':11,'text-font':['DIN Pro Medium','Arial Unicode MS Regular']},paint:{'text-color':'#14212B','text-halo-color':'#fff','text-halo-width':1.4}});
+			map.addLayer({id:'nlcp-hoods-label',type:'symbol',source:'nlcp-hoods',minzoom:12,layout:{'text-field':['case',['>',['coalesce',['get','psqm'],0],0],['concat',['get','name'],'\\n',['number-format',['get','psqm'],{'locale':'he','max-fraction-digits':0}],' ₪ למ״ר'],['get','name']],'text-size':11,'text-font':['DIN Pro Medium','Arial Unicode MS Regular']},paint:{'text-color':'#14212B','text-halo-color':'#fff','text-halo-width':1.4}});
 			map.on('click','nlcp-hoods-fill',function(e){var p=e.features[0].properties;if(!p.psqm)return;new mapboxgl.Popup({closeButton:true,offset:6}).setLngLat(e.lngLat).setHTML('<div style="font:13px Assistant,Heebo,sans-serif;direction:rtl"><b>'+p.name+'</b><br>מחיר למ״ר: <b>'+nis(p.psqm)+'</b><br><small>'+p.deals_24m+' עסקאות, '+p.period_from+' עד '+p.period_to+(p.price_4r?'<br>דירת 4 חדרים, חציון: '+nis(p.price_4r):'')+'</small></div>').addTo(map);});}
 		var heat=document.getElementById('nlcp-map-heat');heat.addEventListener('change',function(){var v=heat.checked?'visible':'none';['nlcp-city-heat','nlcp-city-label','nlcp-hoods-fill','nlcp-hoods-line','nlcp-hoods-label'].forEach(function(id){if(map.getLayer(id))map.setLayoutProperty(id,'visibility',v);});});
 	}
@@ -164,11 +165,11 @@ body.nlcp-map-open{overflow:hidden}
 	function sync(){if(!map.getSource('nlcp-proj')||!map.isSourceLoaded('nlcp-proj'))return;var feats=map.querySourceFeatures('nlcp-proj');var keep={};
 		feats.forEach(function(f){var p=f.properties,id=p.cluster?'c'+p.cluster_id:'p'+p.id;keep[id]=1;if(markers[id])return;var el=document.createElement('div');
 			if(p.cluster){el.className='nlcp-cluster';el.textContent=p.point_count;el.addEventListener('click',function(){map.getSource('nlcp-proj').getClusterExpansionZoom(p.cluster_id,function(err,z){if(err)return;map.easeTo({center:f.geometry.coordinates,zoom:z+.4});});});}
-			else{el.className='nlcp-pin'+(p.featured?' is-featured':'')+(p.own?'':' is-city is-dot');el.innerHTML=p.own?('<b>'+Math.round(p.psqm/1000)+'K</b> ₪/מ״ר'):'';el.title=p.title;el.addEventListener('click',function(){showCard(f);});}
+			else{el.className='nlcp-pin'+(p.featured?' is-featured':'')+(p.own?'':' is-city is-dot');el.innerHTML=p.own?('<small class=nlcp-pin__est>מחיר מוערך</small><b>'+Math.round(p.psqm/1000)+'K</b> ₪/מ״ר'):'';el.title=p.title;el.addEventListener('click',function(){showCard(f);});}
 			markers[id]=new mapboxgl.Marker({element:el,anchor:(p.cluster||!p.own)?'center':'bottom'}).setLngLat(f.geometry.coordinates).addTo(map);});
 		Object.keys(markers).forEach(function(id){if(!keep[id]){markers[id].remove();delete markers[id];}});}
 	function showCard(f){var p=f.properties;active=p.id;document.querySelectorAll('.nlcp-pin.is-active').forEach(function(e){e.classList.remove('is-active');});var m=markers['p'+p.id];if(m)m.getElement().classList.add('is-active');
-		var c=cityOf(p.city);var ctx=p.own?('מחיר למ״ר בפרויקט, לפי היזם: <b>'+nis(p.psqm)+'</b>'+(c&&c.psqm?'<br>בעיר: '+nis(c.psqm):'')):(c&&c.psqm?'מחיר למ״ר ב'+c.name+': <b>'+nis(c.psqm)+'</b><br><small>'+c.deals.toLocaleString('he-IL')+' עסקאות, '+c.period+' · רשות המסים</small>':'');
+		var c=cityOf(p.city);var ctx=p.own?('מחיר מוערך למ״ר בפרויקט, לפי היזם: <b>'+nis(p.psqm)+'</b>'+(c&&c.psqm?'<br>בעיר: '+nis(c.psqm):'')):(c&&c.psqm?'ממוצע עסקאות למ״ר ב'+c.name+': <b>'+nis(c.psqm)+'</b><br><small>'+c.deals.toLocaleString('he-IL')+' עסקאות, '+c.period+' · רשות המסים</small>':'');
 		cardEl.innerHTML='<button type="button" class="x" aria-label="סגירה">×</button>'+(p.img?'<img src="'+p.img+'" alt="">':'')+'<div class="in"><h3>'+p.title+'</h3><div class="meta">'+(p.city?'<span>'+p.city+'</span>':'')+(p.units?'<span>'+p.units+' יח״ד</span>':'')+'</div>'+(ctx?'<div class="ctx">'+ctx+'</div>':'')+'<a class="go" href="'+p.url+'">לעמוד הפרויקט</a></div>';
 		cardEl.hidden=false;cardEl.querySelector('.x').addEventListener('click',function(){cardEl.hidden=true;});map.easeTo({center:f.geometry.coordinates,offset:[0,60]});}
 	function pulseIn(bounds){setTimeout(function(){Object.keys(markers).forEach(function(id){if(id[0]!=='p')return;var ll=markers[id].getLngLat();if(bounds.contains(ll))markers[id].getElement().classList.add('is-pulse');});setTimeout(function(){document.querySelectorAll('.nlcp-pin.is-pulse').forEach(function(e){e.classList.remove('is-pulse');});},4500);},700);}

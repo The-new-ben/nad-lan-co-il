@@ -39,6 +39,57 @@ document.addEventListener('click', (e) => {
   else if (ev === 'slot') ga('pro_slot_click', { source: 'project-rail' });
 });
 
+/* ApartmentExperience-1 (v101): the docked floor card, the + / − buttons and the wheel hint, for every stage (one place) */
+function pickCss() {
+  if (document.getElementById('nlps-v101')) return;
+  const st = document.createElement('style');
+  st.id = 'nlps-v101';
+  st.textContent = ''
+    + '.rbs-cardhost{--rbs-paper:#F7F6F2;--rbs-ink:#14212B;--rbs-sea:#2F6F86;--rbs-deep:#1F4B5C;--rbs-sand:#EEE9DD;--rbs-line:#E3E1DA;'
+    + 'margin:10px 0 0;font-family:Assistant,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--rbs-ink)}'
+    + '.rbs-cardhost:not(:has(.rbs-label.is-on)){display:none}'
+    + ':root body .rbs-cardhost .rbs-label--docked{position:relative;left:auto;top:auto;transform:none!important;width:auto;max-width:none;'
+    + 'display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:8px;row-gap:0;align-items:center;'
+    + 'padding:10px 14px 12px;border-radius:14px;box-shadow:0 2px 10px rgba(20,33,43,.07);will-change:auto}'
+    // desktop: the floor and its facts on one line, the four actions in one band under it (about 120px, so the card sits
+    // inside the first screen under the stage: at 1440x900 the stage ends at ~736px)
+    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-top{grid-column:1/-1;align-items:center}'
+    + ':root body .rbs-cardhost .rbs-label--docked .rbs-label-title{font-size:20px!important;line-height:1.2!important}'
+    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-line,:root body .rbs-cardhost .rbs-label--docked>.rbs-label-facing,:root body .rbs-cardhost .rbs-label--docked>.rbs-label-more{grid-column:1/-1;margin:2px 0 0!important;font-size:13.5px!important;line-height:1.35!important;max-width:none!important}'
+    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-line{grid-column:1/3;grid-row:2}:root body .rbs-cardhost .rbs-label--docked>.rbs-label-facing{grid-column:4/5;grid-row:2;text-align:end}:root body .rbs-cardhost .rbs-label--docked>.rbs-label-more{display:none!important}'
+    // a project with several towers names the tower on the same line (DUO, Dimri Yama, Ashira)
+    + ':root body .rbs-cardhost .rbs-label--docked>.dus-label-kick{grid-column:3/4;grid-row:2;margin:2px 0 0!important;font-size:13.5px!important;line-height:1.35!important;text-align:end}'
+    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-top{grid-row:1}:root body .rbs-cardhost .rbs-label--docked>.rbs-label-acts{grid-row:3}:root body .rbs-cardhost .rbs-label--docked>.rbs-label-cta{grid-row:3}'
+    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-acts{grid-column:1/4;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0 0}'
+    + ':root body .rbs-cardhost .rbs-label--docked .rbs-act{grid-column:auto;min-height:44px;margin:0!important;padding:4px 10px;font-size:14px!important;line-height:1.2!important}'
+    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-cta{grid-column:4;align-self:end;min-height:44px;margin:10px 0 0!important;padding:6px 12px;line-height:1.2!important}'
+    + ':root body .rbs-cardhost .rbs-label--docked.is-min{display:flex;width:auto;max-width:none;padding:8px 14px;cursor:pointer}'
+    // v101.1 (Codex QA): the fold and close buttons are 44px targets (the old card measured 22-28px)
+    + ':root body .rbs-cardhost .rbs-label--docked .rbs-label-min,:root body .rbs-cardhost .rbs-label--docked .rbs-label-close{width:44px;height:44px;min-width:44px;min-height:44px;margin:-6px 0;display:inline-grid;place-items:center;font-size:20px;line-height:1}'
+    // phones: a short block right under the stage (title, one line, three actions in a row, the main button)
+    + '@media (max-width:640px){:root body .rbs-cardhost .rbs-label--docked{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:6px;padding:8px 12px 10px}'
+    + ':root body .rbs-cardhost .rbs-label--docked .rbs-label-title{font-size:19px!important}'
+    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-more{display:none!important}'
+    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-line,:root body .rbs-cardhost .rbs-label--docked>.rbs-label-facing,:root body .rbs-cardhost .rbs-label--docked>.dus-label-kick{grid-column:1/-1;grid-row:auto;text-align:start;font-size:13px!important}'
+    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-top,:root body .rbs-cardhost .rbs-label--docked>.rbs-label-acts,:root body .rbs-cardhost .rbs-label--docked>.rbs-label-cta{grid-row:auto}'
+    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-acts{grid-column:1/-1;gap:6px;margin-top:8px}'
+    + ':root body .rbs-cardhost .rbs-label--docked .rbs-act{padding:2px 6px;font-size:13px!important}'
+    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-cta{grid-column:1/-1;margin-top:6px!important;white-space:normal}}'
+    + '.rbs-zoom{position:absolute;inset-inline-end:12px;top:50%;transform:translateY(-50%);z-index:4;display:flex;flex-direction:column;gap:6px}'
+    + '.rbs-zoom button{width:44px;height:44px;border-radius:12px;border:1px solid rgba(20,33,43,.14);background:rgba(250,247,241,.94);color:#14212B;'
+    + 'font:600 22px/1 Assistant,system-ui,sans-serif;cursor:pointer;box-shadow:0 2px 8px rgba(20,33,43,.10);padding:0}'
+    + '.rbs-zoom button:hover{background:#fff}.rbs-zoom button:focus-visible{outline:2px solid #2F6F86;outline-offset:2px}'
+    + '.rbs-zhint{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;padding:10px 16px;border-radius:12px;background:rgba(20,33,43,.82);'
+    + 'color:#fff;font:600 15px/1.3 Assistant,system-ui,sans-serif;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none}'
+    + '.rbs-zhint.is-on{opacity:1}'
+    // the stage's own stylesheet loads after this one and gives its UI layer's children pointer events: the hint must never take
+    // the wheel (it sat over the model's centre and swallowed Ctrl + wheel)
+    + '.rbs .rbs-ui .rbs-zhint{pointer-events:none!important}.rbs .rbs-ui .rbs-zoom{pointer-events:auto}'
+    + '@media (hover:none){.rbs-zhint{display:none}}'
+    + '@media (prefers-reduced-motion:reduce){.rbs-zhint{transition:none}}';
+  document.head.appendChild(st);
+}
+
 if (root) boot();
 
 async function boot() {
@@ -64,9 +115,17 @@ async function boot() {
   const units = Array.isArray(cfg.units) && cfg.units.length
     ? { sides: cfg.units.map((u) => ({ id: String(u[0]), bearing: Number(u[1]) })), half: 180 / cfg.units.length, label: 'דירה לדוגמה', chip: 'לדוגמה' }
     : null;
+  // ApartmentExperience-1 (design system v101, 29.9.2026): the floor card's place in the page, right under the stage and above
+  // the steps: the building stays whole and in place, and the page scrolls on past it to the view and the map
+  const pickHost = document.createElement('div');
+  pickHost.className = 'rbs-cardhost';
+  pickHost.id = 'nlps-pick';
+  root.insertAdjacentElement('afterend', pickHost);
+  pickCss();
   try {
     const mod = await import(cfg.stage);
     window.__nlpsStage = mod[cfg.mount](stageEl, {
+      cardHost: pickHost,
       preset: 'sunset',
       poster: cfg.poster || null, // versioned, so a new poster is never hidden behind a cached one
       bearingOffset: Number(cfg.bearingOffset) || 0,
@@ -259,6 +318,8 @@ async function boot() {
     const d = e.detail || {};
     if (d.floor == null || d.bearing == null) return;
     last = d;
+    // ConsultSheet (v101): the site pill's message offers this floor and direction (inc/cta-sheet.php reads it; nothing is sent)
+    window.__nlpsPick = { floor: d.floor, facing: facingWords(d.bearing), unit: d.unit || '', example: !!units, name: String(cfg.name || '') };
     ga('stage_facing', { floor: d.floor, facing: facingWords(d.bearing), project: cfg.name, unit: d.unit || '', toward: d.toward || '' });
     if (hint) hint.hidden = true;
     setTitle(d);

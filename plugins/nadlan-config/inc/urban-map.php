@@ -209,6 +209,8 @@ add_shortcode( 'nadlan_ur_map', function () {
 	ob_start(); ?>
 <div class="nlurm" dir="rtl">
 	<div id="nlurm-map"></div>
+	<p class="nlurm-sum" id="nlurm-sum" hidden></p>
+	<div class="nlurm-top" id="nlurm-top" hidden></div>
 	<p class="nlurm-note">המפה מציגה ריכוזי מתחמים מוכרזים לפי עיר, מתוך המאגר הרשמי (data.gov.il). מיקום מדויק לכל מתחם יתווסף בהמשך; הקישו על עיר לרשימת המתחמים בה.</p>
 	<div id="nlurm-list" aria-live="polite"></div>
 	<?php
@@ -224,6 +226,16 @@ add_shortcode( 'nadlan_ur_map', function () {
 #nlurm-map{height:520px;border-radius:16px;overflow:hidden;border:1px solid #E2DCD0;background:#14130F}
 .nlurm-note{font:400 12.5px/1.6 Heebo,sans-serif;color:#6D665C;margin:10px 0}
 .nlurm-pin{background:#9C7A3C;color:#FAF7F1;border:2px solid #FAF7F1;border-radius:999px;padding:6px 11px;font:700 12px Heebo,sans-serif;cursor:pointer;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,.35)}
+/* ApartmentExperience-1 (design system v101, 29.9.2026): useful at the first view, without zooming: a summary, the cities
+   with the most compounds as buttons, and chips that never pile up (the smaller cities that would overlap a larger one show
+   as a dot until the map is zoomed in) */
+.nlurm-pin.is-dot{width:12px;height:12px;min-width:0;padding:0;font-size:0;border-width:2px;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.nlurm-pin{z-index:2}.nlurm-pin.is-dot{z-index:1}
+.nlurm-sum{margin:10px 0 6px;font:600 14.5px/1.5 Heebo,sans-serif;color:#14212B}
+.nlurm-top{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 6px}
+.nlurm-top button{min-height:40px;padding:0 12px;border-radius:999px;border:1px solid #D9D2C3;background:#fff;color:#14212B;font:600 13.5px/1 Heebo,sans-serif;cursor:pointer}
+.nlurm-top button b{color:#9C7A3C;margin-inline-start:4px}
+.nlurm-top button:focus-visible,.nlurm-pin:focus-visible{outline:3px solid #C2563A;outline-offset:2px}
 #nlurm-list .nlur-hit{background:#fff;border:1px solid #E2DCD0;border-radius:10px;padding:12px 14px;margin-top:8px;font:400 13.5px/1.6 Heebo,sans-serif}
 </style>
 <script>
@@ -246,11 +258,23 @@ add_shortcode( 'nadlan_ur_map', function () {
 				locale:{"CooperativeGesturesHandler.WindowsHelpText":"לחצו Ctrl וגללו כדי להתקרב במפה","CooperativeGesturesHandler.MacHelpText":"לחצו ⌘ וגללו כדי להתקרב במפה","TouchPanBlocker.Message":"הזיזו את המפה בשתי אצבעות"}});
 		}catch(e){fail();return}
 		map.addControl(new mapboxgl.NavigationControl());
+		var pins=[];
+		// the smaller city that would overlap a larger one shows as a dot at this zoom (never a pile of chips)
+		function declutter(){var boxes=[];pins.slice().sort(function(a,b){return b.c.count-a.c.count}).forEach(function(p){
+			var pt=map.project(p.c.lnglat),w=p.w||90,h=30,bx=[pt.x-w/2,pt.y-h,pt.x+w/2,pt.y];
+			var hit=boxes.some(function(q){return bx[0]<q[2]+4&&bx[2]>q[0]-4&&bx[1]<q[3]+2&&bx[3]>q[1]-2});
+			p.el.classList.toggle("is-dot",hit);p.el.setAttribute("aria-label",p.c.city+" · "+p.c.count);if(!hit)boxes.push(bx);})}
 		fetch("<?php echo $rest; // phpcs:ignore ?>").then(function(r){return r.json()}).then(function(d){
-			(d.cities||[]).forEach(function(c){
-				if(!c.lnglat)return;
+			var cities=(d.cities||[]).filter(function(c){return c.lnglat});
+			// the first view: how much there is, and the cities with the most compounds, one tap each
+			var total=cities.reduce(function(a,c){return a+(+c.count||0)},0),sum=document.getElementById("nlurm-sum"),top=document.getElementById("nlurm-top");
+			if(sum&&cities.length){sum.textContent=total.toLocaleString("he-IL")+" מתחמים מוכרזים ב־"+cities.length+" ערים. הערים עם הכי הרבה מתחמים:";sum.hidden=false}
+			if(top){cities.slice().sort(function(a,b){return b.count-a.count}).slice(0,8).forEach(function(c){var b=document.createElement("button");b.type="button";b.innerHTML="";b.append(c.city);var n=document.createElement("b");n.textContent=c.count;b.append(n);
+				b.addEventListener("click",function(){map.flyTo({center:c.lnglat,zoom:Math.max(map.getZoom(),11)});var pn=pins.find(function(p){return p.c===c});if(pn)pn.el.click()});top.appendChild(b)});top.hidden=!cities.length}
+			cities.forEach(function(c){
 				var el=document.createElement("button");el.className="nlurm-pin";el.type="button";
 				el.textContent=c.city+" · "+c.count;
+				pins.push({c:c,el:el,w:0});
 				el.addEventListener("click",function(){
 					var list=document.getElementById("nlurm-list");
 					list.innerHTML='<div class="nlur-hit">טוענים את מתחמי '+c.city+'...</div>';
@@ -264,6 +288,8 @@ add_shortcode( 'nadlan_ur_map', function () {
 				});
 				new mapboxgl.Marker({element:el,anchor:"bottom"}).setLngLat(c.lnglat).addTo(map);
 			});
+			pins.forEach(function(p){p.w=p.el.offsetWidth||90});
+			declutter();map.on("moveend",declutter);map.on("zoomend",declutter);
 		});
 	}
 	if(window.mapboxgl){boot();return}

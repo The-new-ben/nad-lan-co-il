@@ -317,13 +317,22 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 			if ( substr( get_post_field( 'post_name', $id ), -3 ) === '-' . $ml ) { $mlang = $ml; }
 		}
 		$MT = array(
-			'he' => array( 'aria' => 'מפה חיה של הסביבה', 'h' => 'הכל על מפה אחת: מחירים, סביבה, תוכניות עתידיות', 'layers' => 'שכבות מפה', 'comps' => '₪ מחירים בסביבה', 'schools' => 'חינוך', 'parks' => 'פארקים', 'food' => 'קפה ומסעדות', 'transit' => 'תחבורה', 'shops' => 'קניות', 'health' => 'בריאות', 'plans' => '◆ תוכניות עתידיות', 'd3' => 'תלת ממד', 'sat' => 'לוויין', 'cap' => 'לחצו על כל סימון לקבלת פרטים. תגי המחיר הם אומדן לא מחייב למ״ר בפרויקטים סמוכים.', 'purple' => '◆ סגול = תוכניות התחדשות ופרויקטים עתידיים' ),
-			'en' => array( 'aria' => 'Live area map', 'h' => 'Everything on one map: prices, surroundings, future plans', 'layers' => 'Map layers', 'comps' => '₪ Nearby prices', 'schools' => 'Education', 'parks' => 'Parks', 'food' => 'Cafes', 'transit' => 'Transit', 'shops' => 'Shopping', 'health' => 'Health', 'plans' => '◆ Future plans', 'd3' => '3D', 'sat' => 'Satellite', 'cap' => 'Click any marker for details. Price tags are non-binding per-sqm estimates in nearby projects.', 'purple' => '◆ purple = urban renewal and future projects' ),
-			'fr' => array( 'aria' => 'Carte interactive du quartier', 'h' => 'Tout sur une seule carte: prix, environnement, plans futurs', 'layers' => 'Couches de carte', 'comps' => '₪ Prix a proximite', 'schools' => 'Education', 'parks' => 'Parcs', 'food' => 'Cafes', 'transit' => 'Transports', 'shops' => 'Commerces', 'health' => 'Sante', 'plans' => '◆ Plans futurs', 'd3' => '3D', 'sat' => 'Satellite', 'cap' => 'Cliquez sur un marqueur pour les details. Les etiquettes de prix sont des estimations indicatives au m2 dans les projets voisins.', 'purple' => '◆ violet = renouvellement urbain et projets futurs' ),
-			'ru' => array( 'aria' => 'Живая карта района', 'h' => 'Все на одной карте: цены, окружение, будущие проекты', 'layers' => 'Слои карты', 'comps' => '₪ Цены рядом', 'schools' => 'Образование', 'parks' => 'Парки', 'food' => 'Кафе', 'transit' => 'Транспорт', 'shops' => 'Магазины', 'health' => 'Здоровье', 'plans' => '◆ Будущие проекты', 'd3' => '3D', 'sat' => 'Спутник', 'cap' => 'Нажмите на любой маркер для подробностей. Ценовые метки - необязывающая оценка за кв.м в соседних проектах.', 'purple' => '◆ фиолетовый = городское обновление и будущие проекты' ),
-			'ar' => array( 'aria' => 'خريطة حية للمنطقة', 'h' => 'كل شيء على خريطة واحدة: الأسعار والمحيط والخطط المستقبلية', 'layers' => 'طبقات الخريطة', 'comps' => '₪ الأسعار القريبة', 'schools' => 'التعليم', 'parks' => 'حدائق', 'food' => 'مقاهي', 'transit' => 'المواصلات', 'shops' => 'التسوق', 'health' => 'الصحة', 'plans' => '◆ الخطط المستقبلية', 'd3' => 'ثلاثي الأبعاد', 'sat' => 'قمر صناعي', 'cap' => 'انقر على أي علامة للتفاصيل. علامات الأسعار تقديرات غير ملزمة للمتر المربع في المشاريع المجاورة.', 'purple' => '◆ البنفسجي = التجديد الحضري والمشاريع المستقبلية' ),
+			'he' => array( 'aria' => 'מפה חיה של הסביבה', 'h' => 'הכל על מפה אחת: מחירים, סביבה, תוכניות עתידיות', 'layers' => 'שכבות מפה', 'comps' => '₪ מחירים מוערכים בסביבה', 'schools' => 'חינוך', 'parks' => 'פארקים', 'food' => 'קפה ומסעדות', 'transit' => 'תחבורה', 'shops' => 'קניות', 'health' => 'בריאות', 'plans' => '◆ תוכניות עתידיות', 'd3' => 'תלת ממד', 'sat' => 'לוויין', 'cap' => 'לחצו על כל סימון לקבלת פרטים. תגי המחיר הם אומדן לא מחייב למ״ר בפרויקטים סמוכים.', 'purple' => '◆ סגול = תוכניות התחדשות ופרויקטים עתידיים' ),
+			'en' => array( 'aria' => 'Live area map', 'h' => 'Everything on one map: prices, surroundings, future plans', 'layers' => 'Map layers', 'comps' => '₪ Estimated prices nearby', 'schools' => 'Education', 'parks' => 'Parks', 'food' => 'Cafes', 'transit' => 'Transit', 'shops' => 'Shopping', 'health' => 'Health', 'plans' => '◆ Future plans', 'd3' => '3D', 'sat' => 'Satellite', 'cap' => 'Click any marker for details. Price tags are non-binding per-sqm estimates in nearby projects.', 'purple' => '◆ purple = urban renewal and future projects' ),
+			'fr' => array( 'aria' => 'Carte interactive du quartier', 'h' => 'Tout sur une seule carte: prix, environnement, plans futurs', 'layers' => 'Couches de carte', 'comps' => '₪ Prix estimés à proximité', 'schools' => 'Education', 'parks' => 'Parcs', 'food' => 'Cafes', 'transit' => 'Transports', 'shops' => 'Commerces', 'health' => 'Sante', 'plans' => '◆ Plans futurs', 'd3' => '3D', 'sat' => 'Satellite', 'cap' => 'Cliquez sur un marqueur pour les details. Les etiquettes de prix sont des estimations indicatives au m2 dans les projets voisins.', 'purple' => '◆ violet = renouvellement urbain et projets futurs' ),
+			'ru' => array( 'aria' => 'Живая карта района', 'h' => 'Все на одной карте: цены, окружение, будущие проекты', 'layers' => 'Слои карты', 'comps' => '₪ Оценка цен рядом', 'schools' => 'Образование', 'parks' => 'Парки', 'food' => 'Кафе', 'transit' => 'Транспорт', 'shops' => 'Магазины', 'health' => 'Здоровье', 'plans' => '◆ Будущие проекты', 'd3' => '3D', 'sat' => 'Спутник', 'cap' => 'Нажмите на любой маркер для подробностей. Ценовые метки - необязывающая оценка за кв.м в соседних проектах.', 'purple' => '◆ фиолетовый = городское обновление и будущие проекты' ),
+			'ar' => array( 'aria' => 'خريطة حية للمنطقة', 'h' => 'كل شيء على خريطة واحدة: الأسعار والمحيط والخطط المستقبلية', 'layers' => 'طبقات الخريطة', 'comps' => '₪ أسعار تقديرية قريبة', 'schools' => 'التعليم', 'parks' => 'حدائق', 'food' => 'مقاهي', 'transit' => 'المواصلات', 'shops' => 'التسوق', 'health' => 'الصحة', 'plans' => '◆ الخطط المستقبلية', 'd3' => 'ثلاثي الأبعاد', 'sat' => 'قمر صناعي', 'cap' => 'انقر على أي علامة للتفاصيل. علامات الأسعار تقديرات غير ملزمة للمتر المربع في المشاريع المجاورة.', 'purple' => '◆ البنفسجي = التجديد الحضري والمشاريع المستقبلية' ),
 		);
 		$mt = $MT[ $mlang ];
+		// ApartmentExperience-1 (design system v101, 29.9.2026): every estimated price on the map says so, with its unit
+		$MTP = array(
+			'he' => array( 'est' => 'מחיר מוערך', 'sqm' => 'למ״ר', 'nb' => 'לא מחייב' ),
+			'en' => array( 'est' => 'Estimated price', 'sqm' => 'per m²', 'nb' => 'not binding' ),
+			'fr' => array( 'est' => 'Prix estimé', 'sqm' => 'le m²', 'nb' => 'non contractuel' ),
+			'ru' => array( 'est' => 'Оценка цены', 'sqm' => 'за м²', 'nb' => 'не обязывает' ),
+			'ar' => array( 'est' => 'سعر تقديري', 'sqm' => 'للمتر²', 'nb' => 'غير ملزم' ),
+		);
+		$mtp = $MTP[ $mlang ];
 	?>
 	<?php $unimap = function_exists( 'nadlan_mapbox_token' ) ? nadlan_mapbox_token() : ''; ?>
 	<section id="nlpjx-map" class="nlpjx-sec" aria-label="<?php echo esc_attr( $mt['aria'] ); ?>">
@@ -355,7 +364,7 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 		<?php else : ?>
 		<div id="nlpjx-leaflet" data-lat="<?php echo esc_attr( $lat ); ?>" data-lng="<?php echo esc_attr( $lng ); ?>" data-title="<?php echo esc_attr( get_the_title( $id ) ); ?>"></div>
 		<?php endif; ?>
-		<script>window.NLPJX_POIS=<?php echo $poi_json ?: '{}'; // phpcs:ignore ?>;window.NLPJX_PLANS=<?php echo wp_json_encode( $near ); // phpcs:ignore ?>;</script>
+		<script>window.NLPJX_POIS=<?php echo $poi_json ?: '{}'; // phpcs:ignore ?>;window.NLPJX_PLANS=<?php echo wp_json_encode( $near ); // phpcs:ignore ?>;window.NLPJX_PRICE=<?php echo wp_json_encode( $mtp, JSON_UNESCAPED_UNICODE ); // phpcs:ignore ?>;</script>
 		<p class="nlpjx-cap"><?php echo esc_html( $mt['cap'] ); ?> <b style="color:#6B4FA0"><?php echo esc_html( $mt['purple'] ); ?></b>.</p>
 	</section>
 	<?php endif; ?>
@@ -648,8 +657,10 @@ document.addEventListener("DOMContentLoaded",function(){
 				comps.forEach(function(c){
 					if(!c.lat||!c.lng){return}
 					var el=document.createElement("div");el.style.cssText="min-width:46px;padding:4px 8px;border-radius:8px;background:#1B1A17;color:#E6D4AE;font:700 11.5px/1.3 Heebo,sans-serif;text-align:center;border:1px solid #9C7A3C;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.3)";
-					el.textContent="₪"+Math.round(c.ppsqm/1000)+"K";
-					groups.comps.push(new mapboxgl.Marker({element:el}).setLngLat([c.lng,c.lat]).setPopup(pop("<b>"+c.name+"</b><br>אומדן ~"+Number(c.ppsqm).toLocaleString()+" ₪/מ\"ר · לא מחייב<br><a href=\""+c.url+"\">לעמוד הפרויקט ←</a>")));
+					// v101: the chip says what the number is (an estimate) and its unit
+					var PR=window.NLPJX_PRICE||{est:"מחיר מוערך",sqm:"למ״ר",nb:"לא מחייב"};
+					el.innerHTML="<small style=\"display:block;font:600 10px/1.25 Heebo,sans-serif;color:#E6D4AE;opacity:.85\">"+PR.est+"</small>₪"+Math.round(c.ppsqm/1000)+"K "+PR.sqm;
+					groups.comps.push(new mapboxgl.Marker({element:el}).setLngLat([c.lng,c.lat]).setPopup(pop("<b>"+c.name+"</b><br>"+PR.est+": ~"+Number(c.ppsqm).toLocaleString()+" ₪ "+PR.sqm+" · "+PR.nb+"<br><a href=\""+c.url+"\">לעמוד הפרויקט ←</a>")));
 				});
 				// POIs by layer
 				var P=window.NLPJX_AREALIFE?{}:(window.NLPJX_POIS||{}); // AreaMap v97 (assets/arealife/areamap.js) draws them

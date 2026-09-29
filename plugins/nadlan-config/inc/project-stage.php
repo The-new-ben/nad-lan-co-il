@@ -81,6 +81,10 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 					'wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/09/rainbow-tel-aviv-film-wide.mp4', 'tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/09/rainbow-tel-aviv-film-tall.mp4',
 					'poster_wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/09/rainbow-tel-aviv-film-wide-poster.jpg', 'poster_tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/09/rainbow-tel-aviv-film-tall-poster.jpg',
 					'secs' => 49, 'date' => '2026-09-28', 'date_he' => '28.9.2026',
+					// ApartmentExperience-1 (v101, 29.9.2026): these files have no sound track (MP4 boxes: a video handler only,
+					// checked 29.9); the narrated cut (scripts/project-video/out/*_narrated_web.mp4) goes in 'voice' once uploaded and
+					// switches on with the option nadlan_film_voice_on = '1', after the owner approves the voice
+					'audio' => false,
 					'desc' => 'סרטון של 49 שניות על Rainbow תל אביב של ישראל קנדה ברובע שדה דב: המיקום, המגדל בן 39 הקומות ובנייני הבוטיק, 459 הדירות, המחירים והמכירות שדווחו, המתקנים והנוף המשוער מהקומות. הדמיה להמחשה.',
 				),
 				// the floor card's line where no sold apartment is known: what the developer said about that height (Bizportal
@@ -531,7 +535,7 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 				// VideoCall v73: a video call with NadLan's team, booked in the scheduler's band at the page's end
 				. ( function_exists( 'nadlan_sched_on' ) && nadlan_sched_on() && '1' !== get_post_meta( $id, 'nadlan_sched_off', true ) ? '<a class="nlds-btn nlds-btn--secondary nlps-hero__video" href="#nlsch" data-nlps-ev="hero-video"><span>שיחת וידאו עם נציג</span></a>' : '' )
 				// ProjectFilm v79: the film opens in a dialog (printed in the footer); nothing loads until it is pressed
-				. ( ! empty( $ps['film']['wide'] ) ? '<a class="nlds-btn nlds-btn--secondary nlps-hero__film" href="#nlfilm" data-nlps-ev="hero-film" aria-haspopup="dialog"><span class="nlps-film__pl" aria-hidden="true"></span><span>סרטון הפרויקט <small>· ' . (int) $ps['film']['secs'] . ' שניות</small></span></a>' : '' )
+				. ( ! empty( $ps['film']['wide'] ) ? '<a class="nlds-btn nlds-btn--secondary nlps-hero__film" href="#nlfilm" data-nlps-ev="hero-film" aria-haspopup="dialog"><span class="nlps-film__pl" aria-hidden="true"></span><span>סרטון הפרויקט <small>· ' . (int) $ps['film']['secs'] . ' שניות' . ( nadlan_ps_film_media( $ps['film'] )['audio'] ? '' : ' · ללא קול' ) . '</small></span></a>' : '' )
 				. '</div></div>';
 		}
 		$rail = '';
@@ -956,6 +960,10 @@ add_action( 'wp_head', function () {
 		. ':root body .nlps-page>.nlps-below{grid-area:below;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:stretch;margin-top:10px!important}'
 		. '.nlps-below--solo{grid-template-columns:minmax(0,1fr)!important}'
 		. '.nlps-below>#nlpjx-map{margin:0!important;min-width:0;max-width:none!important}'
+		// ApartmentExperience-1 (v101.1, Codex's measurement 29.9: the map with the beam sat ~1,900px under the stage on a phone,
+		// behind the floor view and its lists): in one column the area map comes first and the view from the floor follows;
+		// side by side on a desktop as before. The page's order stays stage, then the view and the map.
+		. '@media(max-width:1099px){:root body .nlps-page>.nlps-below>#nlpjx-map{order:-1}}'
 		. '.nlps-stage{position:relative;width:100%;height:clamp(520px,calc(100svh - 240px),700px);border-radius:16px;overflow:hidden;background:var(--nlds-sa-paper,#F7F6F2);border:1px solid var(--nlds-sa-line,#E3E1DA);margin:0}'
 		. '.nlps-stage__mount{position:absolute;inset:0}'
 		. ':root body .nlps-stage .nlps-ssr-poster{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover;object-position:44% 50%;display:block;border:0;margin:0!important;border-radius:0!important;box-shadow:none!important}'
@@ -970,7 +978,9 @@ add_action( 'wp_head', function () {
 		. ':root body .nlps-rail .nlds .nlbslot{min-height:0!important}'
 		. '@media(max-width:1279px){:root body .nlps-page{grid-template-columns:minmax(280px,360px) minmax(0,1fr);grid-template-areas:"hero stage" "lead stage" "cta stage" "below below" "facts facts" "tour tour" "deals deals" "rail rail"}:root body .nlps-page>.nlps-rail{grid-template-columns:repeat(2,minmax(0,300px));margin-top:6px!important}}'
 		. '@media(max-width:1099px){:root body .nlps-page{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"hero" "lead" "cta" "stage" "below" "facts" "tour" "deals" "rail";column-gap:0}:root body .nlps-page>.nlps-below{grid-template-columns:minmax(0,1fr)}:root body .nlps-page>.nlps-rail{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nlps-stage{height:62svh;min-height:380px}}'
-		. '@media(max-width:600px){.nlps-stage{height:70svh;min-height:360px}:root body .nlps-page{padding:0 12px!important;row-gap:12px}:root body .nlps-page>.nlps-rail{gap:12px}:root body .nlps-page>.nl-lead>p{font-size:16px!important}}'
+		// ApartmentExperience-1 (v101, 29.9.2026): on a phone the stage keeps one fixed height (60svh, was 70svh) so the floor
+		// card, now in the page under the stage, opens inside the first screen; the building never moves for the card
+		. '@media(max-width:600px){.nlps-stage{height:60svh;min-height:340px}:root body .nlps-page{padding:0 12px!important;row-gap:12px}:root body .nlps-page>.nlps-rail{gap:12px}:root body .nlps-page>.nl-lead>p{font-size:16px!important}}'
 		. ':root body .bottom-line[data-nl-lead]{display:none!important}' // StageDuo v81: the article's bottom line is the paragraph above
 		. '</style>' . "\n";
 }, 999 );
@@ -1003,22 +1013,43 @@ add_action( 'wp_head', function () {
 		. '.nlfilm-bar b{color:#1B1A17;font-weight:700}'
 		. '.nlfilm-x{position:absolute;top:-56px;inset-inline-end:0;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:rgba(250,247,241,.95);color:#1B1A17;font:700 20px/44px Heebo,sans-serif;cursor:pointer;padding:0}'
 		. '@media(max-width:700px){dialog.nlfilm{width:min(420px,calc(100vw - 24px))}.nlfilm-bar{font-size:13px}}'
+		. '.nlfilm.is-silent .nlfilm-v::-webkit-media-controls-mute-button,.nlfilm.is-silent .nlfilm-v::-webkit-media-controls-volume-slider,.nlfilm.is-silent .nlfilm-v::-webkit-media-controls-volume-control-container{display:none!important}'
+		. '.nlfilm-play{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;border:0;background:rgba(250,247,241,.95);box-shadow:0 12px 30px rgba(0,0,0,.4);cursor:pointer;z-index:2}'
+		. '.nlfilm-play::before{content:"";position:absolute;left:34px;top:26px;border-style:solid;border-width:16px 0 16px 26px;border-color:transparent transparent transparent #1F4B5C}'
+		. '.nlfilm-play[hidden],.nlfilm-err[hidden]{display:none}'
+		. '.nlfilm-err{position:absolute;inset-inline:16px;top:16px;margin:0;padding:12px 14px;border-radius:12px;background:#FAF7F1;color:#14212B;font:600 14px/1.4 Heebo,sans-serif;z-index:2}'
+		. '.nlfilm-err button{margin-inline-start:8px;min-height:40px;padding:0 14px;border:0;border-radius:999px;background:#1F4B5C;color:#fff;font:700 14px/1 Heebo,sans-serif;cursor:pointer}'
 		. '</style>' . "\n";
 }, 998 );
+if ( ! function_exists( 'nadlan_ps_film_media' ) ) {
+	/** ApartmentExperience-1 (v101): the film's files and whether they have sound: the narrated cut only when uploaded and switched on. */
+	function nadlan_ps_film_media( $f ) {
+		$voice = ! empty( $f['voice']['wide'] ) && ! empty( $f['voice']['tall'] ) && '1' === (string) get_option( 'nadlan_film_voice_on', '0' );
+		return array( 'wide' => $voice ? $f['voice']['wide'] : $f['wide'], 'tall' => $voice ? $f['voice']['tall'] : $f['tall'], 'audio' => $voice || ! empty( $f['audio'] ) );
+	}
+}
 add_action( 'wp_footer', function () {
 	$ps = nadlan_ps_current();
 	if ( ! $ps || empty( $ps['film']['wide'] ) ) { return; }
 	$f = $ps['film'];
-	echo '<dialog id="nlfilm" class="nlfilm" dir="rtl" lang="he" aria-label="' . esc_attr( 'סרטון הפרויקט: ' . $ps['name'] ) . '"'
-		. ' data-wide="' . esc_url( $f['wide'] ) . '" data-tall="' . esc_url( $f['tall'] ) . '" data-pw="' . esc_url( $f['poster_wide'] ) . '" data-pt="' . esc_url( $f['poster_tall'] ) . '">'
+	$fm = nadlan_ps_film_media( $f );
+	echo '<dialog id="nlfilm" class="nlfilm' . ( $fm['audio'] ? '' : ' is-silent' ) . '" dir="rtl" lang="he" aria-label="' . esc_attr( 'סרטון הפרויקט: ' . $ps['name'] ) . '"'
+		. ' data-wide="' . esc_url( $fm['wide'] ) . '" data-tall="' . esc_url( $fm['tall'] ) . '" data-pw="' . esc_url( $f['poster_wide'] ) . '" data-pt="' . esc_url( $f['poster_tall'] ) . '">'
 		. '<button type="button" class="nlfilm-x" aria-label="סגירה">&#10005;</button><div class="nlfilm-box">'
 		. '<video class="nlfilm-v" controls playsinline preload="none"></video>'
-		. '<div class="nlfilm-bar"><span><b>' . esc_html( $ps['name'] ) . '</b> · סרטון הפרויקט · ' . (int) $f['secs'] . ' שניות · עודכן ' . esc_html( $f['date_he'] ) . '</span><span>הדמיה להמחשה. כל נתון עם המקור שלו.</span></div>'
+		. '<div class="nlfilm-bar"><span><b>' . esc_html( $ps['name'] ) . '</b> · סרטון הפרויקט · ' . (int) $f['secs'] . ' שניות · ' . ( $fm['audio'] ? 'עם קריינות בעברית' : 'ללא קול' ) . ' · עודכן ' . esc_html( $f['date_he'] ) . '</span><span>הדמיה להמחשה. כל נתון עם המקור שלו.</span></div>'
 		. '</div></dialog>'
 		. '<script id="nadlan-ps-film-js">(function(){var d=document.getElementById("nlfilm");if(!d||!d.showModal)return;var v=d.querySelector("video");'
+		// v101: the browser may refuse to start the film (no click behind it, as with the #nlfilm link): a play button shows instead
+		// of nothing; a file that fails to load says so, with a retry
+		. 'var bx=d.querySelector(".nlfilm-box"),pb=document.createElement("button");pb.type="button";pb.className="nlfilm-play";pb.setAttribute("aria-label","הפעלת הסרטון");pb.hidden=true;bx.appendChild(pb);'
+		. 'var er=document.createElement("p");er.className="nlfilm-err";er.hidden=true;er.innerHTML="הסרטון לא נטען. <button type=button class=nlfilm-retry>לנסות שוב</button>";bx.appendChild(er);'
+		. 'function tryPlay(){pb.hidden=true;var p=v.play();if(p&&p.catch)p.catch(function(){if(!v.error)pb.hidden=false;});}'
+		. 'pb.addEventListener("click",tryPlay);v.addEventListener("error",function(){er.hidden=false;pb.hidden=true;});'
+		. 'er.querySelector("button").addEventListener("click",function(){er.hidden=true;v.load();tryPlay();});'
 		. 'function open(e){if(e)e.preventDefault();var tall=window.matchMedia("(max-width:700px)").matches;var src=d.getAttribute(tall?"data-tall":"data-wide");'
 		. 'if(v.getAttribute("src")!==src){v.setAttribute("poster",d.getAttribute(tall?"data-pt":"data-pw"));v.setAttribute("src",src);}'
-		. 'd.showModal();var p=v.play();if(p&&p.catch)p.catch(function(){});}'
+		. 'd.showModal();tryPlay();}'
 		. 'document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("[data-nlps-ev=hero-film]"):null;if(a)open(e);});'
 		. 'd.querySelector(".nlfilm-x").addEventListener("click",function(){d.close();});'
 		. 'd.addEventListener("click",function(e){if(e.target===d)d.close();});'
