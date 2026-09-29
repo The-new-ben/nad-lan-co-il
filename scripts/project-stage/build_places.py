@@ -4,7 +4,7 @@ area map, the view from the floor and the 360 windows (Codex consult 28.9: one l
 source). The owner, 28.9: "the maps are not rich enough ... they don't want to see white buildings, they want to know
 what's in the neighbourhood".
 
-  python scripts/project-stage/build_places.py rainbow|dimri|ashira|duo [--no-walk]
+  python scripts/project-stage/build_places.py rainbow|dimri|ashira|duo|kikar [--no-walk]
 
 Output: plugins/nadlan-config/assets/project-stage/<dir>/places.json (the fields: see build_places_rainbow.py's first
 version, the same schema), plus v100:
@@ -23,13 +23,19 @@ PROJECTS = {
     "dimri": {"dir": "dimri", "page": "dimri-yama-sde-dov", "name": "Dimri Yama", "he": "דמרי ימה"},
     "ashira": {"dir": "ashira", "page": "ashira-sde-dov", "name": "Ashira", "he": "אשירה"},
     "duo": {"dir": "duo", "page": "duo-tel-aviv", "name": "DUO", "he": "DUO"},
+    # Kikar Hamedina (P2, 30.9.2026): no live page yet, so it reads and writes the research folder, not assets/ (release is
+    # P7); the public Mapbox token is read from DUO's live page; the eyes are PROVISIONAL (formula) until the stage exists
+    "kikar": {"dir": "kikar", "page": "kikar-hamedina", "name": "Kikar Hamedina", "he": "כיכר המדינה",
+              "root": "docs/research/2026-09-30-kikar-hamedina/kikar-stage", "out": "docs/research/2026-09-30-kikar-hamedina/places.json",
+              "token_page": "duo-tel-aviv", "eye": "docs/research/2026-09-30-kikar-hamedina/eye-kikar-provisional.json",
+              "from": "the plot centre (provisional)"},
 }
 PK = next((a for a in sys.argv[1:] if not a.startswith("--")), "rainbow")
 if PK not in PROJECTS:
-    sys.exit("usage: build_places.py rainbow|dimri|ashira|duo [--no-walk]")
+    sys.exit("usage: build_places.py rainbow|dimri|ashira|duo|kikar [--no-walk]")
 PJ = PROJECTS[PK]
-RB = os.path.join(REPO, "plugins", "nadlan-config", "assets", "project-stage", PJ["dir"])
-OUT = os.path.join(RB, "places.json")
+RB = os.path.join(REPO, *PJ["root"].split("/")) if PJ.get("root") else os.path.join(REPO, "plugins", "nadlan-config", "assets", "project-stage", PJ["dir"])
+OUT = os.path.join(REPO, *PJ["out"].split("/")) if PJ.get("out") else os.path.join(RB, "places.json")
 CACHE = os.path.join(REPO, "scripts", "project-stage", "_cache", "places-" + PK)
 os.makedirs(CACHE, exist_ok=True)
 _Q = json.load(io.open(os.path.join(RB, "quarter.json"), encoding="utf-8"))
@@ -39,7 +45,7 @@ RADIUS = 1500
 if PK == "rainbow":   # measured 28.9 by the formula of the stage (y0 7.2, 3.75 a floor, the eye 1.6)
     FLOORS = {10: 7.2 + 9 * 3.75 + 1.6, 25: 7.2 + 24 * 3.75 + 1.6, 36: 7.2 + 35 * 3.75 + 1.6}
 else:                 # the eye above the street on each band, from the live stage's floorHeight() (measure_eyes.py)
-    _E = json.load(io.open(os.path.join(REPO, "scripts", "project-stage", "data", "eye-%s.json" % PK), encoding="utf-8"))
+    _E = json.load(io.open(os.path.join(REPO, *PJ["eye"].split("/")) if PJ.get("eye") else os.path.join(REPO, "scripts", "project-stage", "data", "eye-%s.json" % PK), encoding="utf-8"))
     FLOORS = {int(k): float(v) for k, v in _E["eye"].items()}
 M_LAT = 111320.0
 M_LNG = 111320.0 * math.cos(math.radians(LOT[0]))
@@ -57,7 +63,7 @@ def dist_bearing(lat, lng):
 
 def token():
     """the site's public Mapbox token (pk.), as every project page prints it; read from the page, never stored"""
-    html = urllib.request.urlopen(urllib.request.Request("https://nad-lan.co.il/projects/%s/?pl=1" % PJ["page"], headers={"User-Agent": "NadLan-places/1.0"}), timeout=60).read().decode("utf-8", "replace")
+    html = urllib.request.urlopen(urllib.request.Request("https://nad-lan.co.il/projects/%s/?pl=1" % PJ.get("token_page", PJ["page"]), headers={"User-Agent": "NadLan-places/1.0"}), timeout=60).read().decode("utf-8", "replace")
     m = re.search(r"pk\.[A-Za-z0-9._-]{40,}", html)
     return m.group(0) if m else None
 
@@ -386,9 +392,9 @@ def main():
         "v": 1, "generated_at": time.strftime("%Y-%m-%d"),
         "note": ("AreaLife v97/v100: the places around %s. findplace.co.il's frozen discovery file (Tel Aviv-Yafo municipality open "
                 "data + OpenStreetMap, 27.8.2026, sha256 2909a0c2...), then OpenStreetMap (ODbL, (c) OpenStreetMap contributors) via Overpass, "
-                "%s; walking minutes: Mapbox Directions, walking profile, from the tower; what the windows see: the city's buildings "
+                "%s; walking minutes: Mapbox Directions, walking profile, from %s; what the windows see: the city's buildings "
                 "layer (GIS 513) with a straight sight line, the new projects around not included. Landmarks: quarter.json (find-place: "
-                "TLV OpenData + OSM)." % (PJ["name"], time.strftime("%d.%m.%Y"))) + (" findplace covers north Tel Aviv only (north of lat 32.0845): south of it OpenStreetMap only." if LOT[0] < 32.1 else ""),
+                "TLV OpenData + OSM)." % (PJ["name"], time.strftime("%d.%m.%Y"), PJ.get("from", "the tower"))) + (" findplace covers north Tel Aviv only (north of lat 32.0845): south of it OpenStreetMap only." if LOT[0] < 32.1 else ""),
         "src": {"osm": "OpenStreetMap, %s" % (time.strftime("%-m.%Y") if os.name != "nt" else time.strftime("%#m.%Y")),
                 "tlv": "עיריית תל אביב-יפו, מידע פתוח, 8.2026", "fp": "findplace.co.il",
                 "walk": "Mapbox, מסלול הליכה", "sight": "שכבת המבנים של עיריית תל אביב-יפו"},

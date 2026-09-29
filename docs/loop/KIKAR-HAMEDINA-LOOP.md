@@ -172,7 +172,33 @@ Every turn does ALL of these, not only the current phase:
   - Official sources: the developers and landowners, Ashtrom, Electra, the architect's site, the Tel Aviv municipality (the square's renewal plan and the plan numbers), govmap for the parcel, Globes, Calcalist, TheMarker, Wikipedia.
   - Collect: unit mix and typologies, floors per tower, lobby and facilities, the commercial ring, the public park and lake, the parking split, the timeline, the marketing status, and published prices with dates.
   - Output: `facts.md`, with a source URL and date for every line and conflicts listed.
-- [ ] **P2, The area.** (turn 2: running as a sub-agent; output lands in docs/research/2026-09-30-kikar-hamedina/)
+- [x] **P2 DONE 30.9.** Files: `places.json`, `city-blocks.json`, `sight-landmarks.json`, `area.md`, `eye-kikar-provisional.json`, `kikar-stage/quarter.json`, `kikar-stage/city.json`, and the build scripts `build_area_kikar.py` and `enrich_places_kikar.py`. `build_places.py` gained a `kikar` entry, and the four existing projects are unchanged.
+  - **The plot centre** is 32.086758, 34.789776: the area-weighted centre of plan 2500ב's lots 101, 201-208 and 303 (47,846 m², municipal lots layer). OSM way 727196846 lies 11 m away.
+  - **The towers**, from the municipal building layer:
+    - A is 78 m south-west of the centre, B 78 m south-east, C 75 m north-east.
+    - Permit addresses: ה' באייר 25, 45 and 65.
+    - **NEW FACT:** the city's building-site record says the FRAME WAS COMPLETED on 23.4.2026.
+    - **NEW CONFLICT:** the city lists all three at 40 floors and 160/158.2/160 m. The permit record notes 2 added floors for B. Wikipedia and Ashtrom say B has 37 floors and 157 m. Carry this into facts.md, and model B with the source shown.
+  - **Places:** 1,245 within 1.5 km with walking minutes (182 within 5 minutes, 463 within 10, 843 within 15).
+  - **Buildings:** 1,102 within 700 m with heights (1,075 from the city's 2019 survey, 23 from its surface model, 4 estimated and labelled).
+  - **Also:** 95 towers of 70 m or more within 2 km, 349 street lines, 108 green areas, 20 landmarks and 68 skyline buildings of 100 m or more.
+  - **Transport:**
+    - Purple line, planned 2028: Ichilov station 350 m, about 2 minutes' walk.
+    - Red line, running since 18.8.2023: Arlozorov 859 m.
+    - Savidor rail station 852 m.
+    - Green line (Ibn Gabirol) planned 2030.
+    - 53 bus lines within 5 minutes (Ministry of Transport GTFS 8.9.2026).
+  - **Distances:**
+    - Weizmann 139 m, Namir 526 m, Ibn Gabirol 718 m, the Ayalon 804 m.
+    - Ichilov 0.7-0.85 km.
+    - Park HaYarkon's nearest edge 1,020 m, 13 minutes.
+  - **Public buildings (municipal design decision 4.8.2021):** the north one is the school and the south one the community centre. OSM labels them differently.
+  - **Provisional until P5:**
+    - Walks start from the ring road, because the lobby doors are unknown.
+    - Sight lines are computed from the plot centre, with eye height (floor − 1) × 4 + 1.6 m, and the towers are not yet obstacles.
+  - **Not found:** the lake's outline, Park HaYarkon's gates, and the M1 metro stations.
+  - **Defect found in the LIVE maps:** Rainbow, DUO, Dimri and Ashira compare unrotated places against buildings rotated 10-11°, so their "seen/hidden" labels are probably wrong. This is **HAD-376**, a separate task, offered to the owner as a one-click task.
+- [x] **P2 (the original task text) The area.**
   - Run the place registry (`scripts/project-stage/build_places.py`: findplace.co.il + OpenStreetMap + Mapbox walking) for Kikar Hamedina.
   - Include: the square and its shops (the luxury ring), the parks (HaYarkon, the square's own park), schools and kindergartens, transport (roads, the light rail, buses), health, culture, sport, and cafés.
   - Add sight lines per floor band per tower, using real eye heights.

@@ -1,0 +1,70 @@
+{
+ "generated_at": "2026-09-30",
+ "origin": {
+  "lat": 32.086758,
+  "lng": 34.789776
+ },
+ "tower": {
+  "lat": 32.086758,
+  "lng": 34.789776,
+  "note": "the plot centre (PROVISIONAL view point): the three towers stand 67-90 m from it; per-tower view points come in P5"
+ },
+ "towers": [
+  {
+   "name": "מגדל A",
+   "floors": 40,
+   "h": 160.0,
+   "h_src": "DSM mean (dsm_mean)",
+   "lat": 32.08616,
+   "lng": 34.789337,
+   "dist": 78,
+   "bearing": 211.9
+  },
+  {
+   "name": "מגדל B",
+   "floors": 40,
+   "h": 158.2,
+   "h_src": "DSM mean (dsm_mean)",
+   "lat": 32.086348,
+   "lng": 34.790444,
+   "dist": 78,
+   "bearing": 125.9
+  },
+  {
+   "name": "מגדל C",
+   "floors": 40,
+   "h": 160.0,
+   "h_src": "DSM mean (dsm_mean)",
+   "lat": 32.08733,
+   "lng": 34.790202,
+   "dist": 75,
+   "bearing": 32.3
+  }
+ ],
+ "note": "research copy for build_places.py (P2); the stage's own quarter.json is written in P5/P7",
+ "projects": [],
+ "places": [
+  {
+   "kind": "civic",
+   "name": "בית הספר כיכר המדינה",
+   "pin": "בית הספר כיכר המדינה",
+   "status": "מבנה ציבור, 5 קומות, 2026",
+   "x": -67.2,
+   "z": -48.3,
+   "dist": 83,
+   "bearing": 305.7,
+   "src": "שכבת המבנים של עיריית תל אביב-יפו (513), oid 43143; השם: שכבת בתי הספר של העירייה (769: כיכר המדינה, יסודי; מאיר שלו, חט\"ב; ה' באייר 75), שכבת מוסדות הקהילה (553: מרכז קהילתי כיכר המדינה) ו-OSM (way 1560991906)"
+  },
+  {
+   "kind": "civic",
+   "name": "מרכז קהילתי",
+   "pin": "מרכז קהילתי",
+   "status": "מבנה ציבור, 5 קומות, 2025",
+   "x": -85.1,
+   "z": 23.4,
+   "dist": 88,
+   "bearing": 254.6,
+   "src": "שכבת המבנים של עיריית תל אביב-יפו (513), oid 43109; השם: שכבת המבנים (513); סתירה: OSM (way 1560991907) קורא לו תיכון עירוני כ\"ה ע\"ש מאיר שלו, ושכבת מוסדות הקהילה (553) מציבה את המרכז הקהילתי בבניין הצפון-מערבי"
+  }
+ ]
+}

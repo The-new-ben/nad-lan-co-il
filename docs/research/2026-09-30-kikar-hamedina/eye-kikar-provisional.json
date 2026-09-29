@@ -1,0 +1,12 @@
+{
+ "project": "kikar",
+ "measured": null,
+ "computed": "2026-09-30",
+ "provisional": true,
+ "source": "CALC, provisional: (floor - 1) x 4.0 m + 1.6 m; 4.0 m = 160 m / 40 floors from the city's GIS 513 (towers A, C). Replace with the stage's floorHeight() in P5 (scripts/project-stage/measure_eyes.py).",
+ "eye": {
+  "10": 37.6,
+  "25": 97.6,
+  "37": 145.6
+ }
+}
