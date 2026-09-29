@@ -25,6 +25,13 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **30.9, turn 3** (P1 facts, 82 sources; P3 live SERP with DataForSEO, about $0.01).
+  - **(1) Win the AI Overview.** Google puts an AI Overview on top in Hebrew and English. The page states each fact as a short, sourced bullet or table row with the names Google uses. The FAQ answers the 7 People-Also-Ask questions word for word.
+  - **(2) Deals table, sourced by floor and date.** The three Globes deals (floors 38-39) plus the area's ₪/m² for comparison. No competitor shows deals.
+  - **(3) "When will it be ready?", answered honestly.** A dated table of what each party said (Ashtrom, Electra, Bareket, Globes, Bizportal), instead of one made-up date.
+  - **(4) Our own construction timeline.** Dated milestones from public sources: the permit 12.2022, the first concrete 18.12.2022, the cores' rate, financing 9.2025, the school opening. This answers the video pack's "progress" intent.
+  - **(5) Sales path.** A resale market of up to about 250 owners means the page leads with "for sale / for rent in the towers" (the Madlan intent) and routes to WhatsApp and brokers.
+
 - **30.9, turn 2** (web search: [development sales sites 2026](https://vinode.io/), [unit finders](https://archicgi.com/interactive-real-estate-platform/), [3D visualization ROI 2026](https://intwopixel.com/blog/3d-real-estate-visualization-complete-guide), [the twist technique](https://medium.com/@crazypixel/geometry-manipulation-in-three-js-twisting-c53782c38bb) and [Cayan Tower's 1.2° per floor](https://en.wikipedia.org/wiki/Cayan_Tower)). The best off-plan sites in the world go tower → floor → unit, with view corridors, SUNLIGHT and distance to amenities.
   - **NEW for Kikar:**
     - **(1) Sun and shade per floor and facing.** The real sun path for Tel Aviv (32.09°N) by season and hour, on the turning towers. None of our pages has it; no Israeli competitor has it.
@@ -129,7 +136,39 @@ Every turn does ALL of these, not only the current phase:
     - the film and its player, the deals and price line, the official lot.
   - Read `docs/loop/FORGOTTEN-2026-09-28.md`, the Codex open items, and HAD-346.
   - Output: `docs/research/2026-09-30-kikar-hamedina/feature-inventory.md`, listing every feature with where it lives and "reuse / improve / new for Kikar".
-- [ ] **P1, Facts, deep.**
+- [x] **P1 DONE 30.9: `docs/research/2026-09-30-kikar-hamedina/facts.md`** (82 sources, 21 conflicts with both sides, gaps listed). What it means for the page:
+  - **Sales reality.** There is no developer sales campaign: about 250 landowners resell through brokers, and at most 200-250 units are expected on the market.
+    - The page sells through us (WhatsApp) and the brokers, never presenting the site as the broker (Brokers Law exemption).
+  - **Sourced price material.**
+    - Deals (Globes 2.5.2025): three 4-room 140 m² apartments on floors 38-39, ₪9.58M (4.2024), ₪9.59M (5.2024), ₪10.63M (12.2024, ₪75,913/m²). This is at least 2 deals tied to floors, so the deals table can go up.
+    - Asks, dated and attributed: a floor-39 penthouse 258+57 m² at ₪43M; 168 m² at ₪13.7M (29.1.2026); 154 m² on floor 35 at ₪14.5M.
+    - Area averages: ₪67,747/m² (Madlan via ynet 19.7.2025); deals near the square at ₪63K-66K/m² (Tax Authority via ICE 28.4.2026).
+  - **The plan.**
+    - תא/מק/2500/א (in force 24.6.2013): 77.743 dunam, block 6213, 28.94 dunam housing.
+    - 507-0193490 (30.3.2018): traffic changes, the underground road cancelled.
+  - **The team.** Architect MYS (competition, 2000); project management WXG; landscape T.M.A; structure Ben-Avraham.
+    - Financing: Bareket with Clal and Migdal, about ₪2.05B (Globes 25.9.2025).
+    - Execution: Electra and Ashtrom, ₪1.4B.
+  - **The park.** About 40 dunam, a 1 m deep ecological pond, 560 new trees plus 36 kept, a 750 m running track, ₪150M of public works due by the end of 2027 (Mako 24.9.2026).
+    - An 18-class school plus 6 special-education classes, an underground sports hall and a community centre. Mako says the school opened this school year.
+  - **Commerce.** The project's own is only 3-4 kiosks; the 8,500 m² figure is the EXISTING shop ring around the square.
+  - **The delivery date: shown as sourced statements, never one invented date.**
+    - Ashtrom: 2026
+    - Globes 2023: 12.2026
+    - Electra and Wikipedia: 4.2027
+    - Bareket's CEO, 9.2025: "within two years"
+    - Bizportal: end of 2028
+  - **Key conflicts that the model and the text must respect:**
+    - Floors: 40/40/37 vs 42.
+    - Heights: 160/160/157 vs 156.
+    - Twist: 1.25° vs 2.5°. Use 1.25° (Wikipedia, WXG, MYS) and log the other.
+    - Park size and lake size.
+  - **Gaps:**
+    - Units per tower and per floor, and the official unit mix.
+    - Ceiling heights; floor plans; green standard; Form 4; an official marketer.
+    - So there are no per-unit facts, and every interior is "דירה לדוגמה".
+  - **Image rights.** No stock image (Alamy) on a sales page. Official renders only with permission.
+- [x] **P1 (the original task text) Facts, deep.**
   - Official sources: the developers and landowners, Ashtrom, Electra, the architect's site, the Tel Aviv municipality (the square's renewal plan and the plan numbers), govmap for the parcel, Globes, Calcalist, TheMarker, Wikipedia.
   - Collect: unit mix and typologies, floors per tower, lobby and facilities, the commercial ring, the public park and lake, the parking split, the timeline, the marketing status, and published prices with dates.
   - Output: `facts.md`, with a source URL and date for every line and conflicts listed.
@@ -138,7 +177,12 @@ Every turn does ALL of these, not only the current phase:
   - Include: the square and its shops (the luxury ring), the parks (HaYarkon, the square's own park), schools and kindergartens, transport (roads, the light rail, buses), health, culture, sport, and cafés.
   - Add sight lines per floor band per tower, using real eye heights.
   - Output: `assets/project-stage/kikar/places.json` and `area.md`.
-- [ ] **P3, SERP and competitor DNA.**
+- [x] **P3 DONE 30.9: `docs/research/2026-09-30-kikar-hamedina/serp-dna.md`.**
+  - **AI Overviews** lead both the Hebrew and the English results and cite short, sourced fact bullets.
+  - **7 People-Also-Ask questions** become the FAQ; 12 related searches become sections.
+  - **Titles** are decided, and so is the H1.
+  - **URL** (url_word_audit 30.9): `/projects/hamedina/` and `/projects/hamedina-en/`. "kikar" and "towers" are taken; "hamedina" is free.
+- [x] **P3 (the original task text) SERP and competitor DNA.**
   - GSC for the last 28 days, and DataForSEO within $5: keywords, People Also Ask, competitor page structure, intent.
   - Run the URL word audit and choose the slug.
   - Output: `serp-dna.md` and the slug decision.
