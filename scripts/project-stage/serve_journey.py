@@ -204,13 +204,24 @@ def manifest():
 
 
 def extract(rev, into):
+    """the revision's committed files (git archive), extracted into a folder that is used only once it is complete (a
+    .complete marker, written last, then an atomic rename); the repository's index and working tree are never touched"""
     repo = os.path.dirname(os.path.dirname(HERE))
     full = subprocess.run(["git", "-C", repo, "rev-parse", rev], capture_output=True, text=True, check=True).stdout.strip()
     dest = os.path.join(into, "src-" + full[:12])
-    if not os.path.isdir(dest):
-        tar = subprocess.run(["git", "-C", repo, "archive", "--format=tar", full, "plugins/nadlan-config", "scripts/project-stage", "scripts/i18n"], capture_output=True, check=True).stdout
-        with tarfile.open(fileobj=io.BytesIO(tar)) as t:
-            t.extractall(dest)
+    if os.path.isfile(os.path.join(dest, ".complete")):
+        return full, dest
+    import shutil
+    tmp = dest + ".part-%d" % os.getpid()
+    shutil.rmtree(tmp, ignore_errors=True); os.makedirs(tmp)
+    tar = os.path.join(tmp, ".src.tar")
+    subprocess.run(["git", "-C", repo, "archive", "--format=tar", "-o", tar, full, "plugins/nadlan-config", "scripts/project-stage", "scripts/i18n"], check=True)
+    with tarfile.open(tar) as t:
+        t.extractall(tmp)
+    os.remove(tar)
+    open(os.path.join(tmp, ".complete"), "w").write(full)
+    shutil.rmtree(dest, ignore_errors=True)
+    os.replace(tmp, dest)
     return full, dest
 
 
