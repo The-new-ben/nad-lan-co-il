@@ -82,10 +82,8 @@ add_action( 'wp_footer', function () {
 	</a>
 </div>
 <?php
-	// ConsultSheet (v101): a click on the pill opens a short message sheet (inc/cta-sheet.php); without it the pill is a plain link.
-	// v103.1 (30.9.2026, owner): "one button, one click... don't put obstacles" - the pill opens WhatsApp directly with a ready
-	// message (wa-source.php adds the page). The sheet stays in the code, off; the filter turns it back on.
-	if ( apply_filters( 'nadlan_cta_sheet_on', false ) && function_exists( 'nadlan_cta_sheet_html' ) ) {
+	// ConsultSheet (v101): a click on the pill opens a short message sheet (inc/cta-sheet.php); without it the pill is a plain link
+	if ( function_exists( 'nadlan_cta_sheet_html' ) ) {
 		$cs_lang = function_exists( 'nadlan_current_lang' ) ? (string) nadlan_current_lang() : 'he';
 		echo nadlan_cta_sheet_html( $wa, $cta_rtl, in_array( $cs_lang, array( 'he', 'en', 'fr', 'ru', 'ar' ), true ) ? $cs_lang : 'he' ); // phpcs:ignore -- escaped inside
 	}

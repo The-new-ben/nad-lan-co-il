@@ -35,24 +35,10 @@ add_action( 'wp_footer', function () {
 		var labels=["מקור","Source","Источник","المصدر"];
 		var stamped=labels.some(function(s){return href.indexOf(s+":")>-1||href.indexOf(encodeURIComponent(s+":"))>-1});
 		if(stamped)return;
-		/* v103.1 (30.9.2026, owner): one tap, zero friction, and the message says where the visitor came from in a SHORT line:
-		   the page's own name (its h1), what kind of page it is, the floor chosen on a project stage, and a link only when it is
-		   short and readable (a Hebrew address becomes a long %-string, so it is left out). On a broker's or an owner's page
-		   the site bar's message says the listing is theirs, never as if the site owned it. */
 		var L=(document.documentElement.lang||"he").slice(0,2);
-		var W=({he:{s:"מקור",pr:"פרויקט",li:"נכס",bl:"מודעה של מתווך",bs:"אתר של מתווך",pro:"איש מקצוע",fl:"קומה"},
-			en:{s:"Source",pr:"project",li:"listing",bl:"a broker's listing",bs:"a broker's site",pro:"professional",fl:"floor"},
-			fr:{s:"Source",pr:"projet",li:"bien",bl:"annonce d'un agent",bs:"site d'un agent",pro:"professionnel",fl:"étage"},
-			ru:{s:"Источник",pr:"проект",li:"объект",bl:"объявление брокера",bs:"сайт брокера",pro:"специалист",fl:"этаж"},
-			ar:{s:"المصدر",pr:"مشروع",li:"عقار",bl:"إعلان وسيط",bs:"موقع وسيط",pro:"مهني",fl:"طابق"}})[L]||null;
-		if(!W){W={s:"מקור",pr:"פרויקט",li:"נכס",bl:"מודעה של מתווך",bs:"אתר של מתווך",pro:"איש מקצוע",fl:"קומה"};}
-		var SRC=W.s,bc=document.body.className||"",own=a.matches&&a.matches(".nlcta-wa");
-		var h1=document.querySelector("h1");
-		var title=((h1&&h1.textContent)||(document.title||"").split("|")[0]).replace(/\s+/g," ").trim().slice(0,60);
-		var kind=own&&document.querySelector(".nlx")?W.bl:own&&document.querySelector(".nlb")?W.bs:/\bsingle-nadlan_project\b/.test(bc)?W.pr:/\bsingle-nadlan_property\b/.test(bc)?W.li:/\bsingle-nadlan_professional\b/.test(bc)?W.pro:"";
-		var pk=window.__nlpsPick,fl=(pk&&pk.floor!=null&&pk.floor!=="")?" · "+W.fl+" "+pk.floor:"";
-		var path=location.pathname,link=(path.length<=45&&/^[A-Za-z0-9\/._-]*$/.test(path))?"\n"+location.host+path:"";
-		var stamp="\n\n"+SRC+": "+title+(kind?" · "+kind:"")+fl+link;
+		var SRC=({he:"מקור",en:"Source",fr:"Source",ru:"Источник",ar:"المصدر"})[L]||"מקור";
+		var title=(document.title||"").split("|")[0].trim().slice(0,70);
+		var stamp="\n\n"+SRC+": "+title+"\n"+location.origin+location.pathname+location.search;
 		try{
 			var u=new URL(href,location.origin);
 			var t=u.searchParams.get("text")||"";
