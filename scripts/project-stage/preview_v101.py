@@ -13,7 +13,7 @@ How it works: a real Chrome opens the LIVE page (so the site's origin, fonts, up
      form, no analytics write).
 This is the live HTML plus the branch's changes, not a WordPress install: a PHP change outside PHP_PATCHES is not shown.
 
-  python scripts/project-stage/preview_v101.py /projects/rainbow-tel-aviv/ [--w 390 --h 844] [--headed] [--shot out.png]
+  python scripts/project-stage/preview_v101.py /projects/rainbow-tel-aviv/ [--w 390 --h 844] [--headed] [--shot out.png] [--probe p.py]
   (a receipt with the SHA-256 of every local file served is printed at the end)"""
 import argparse, hashlib, io, json, os, re, subprocess, sys, time
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
@@ -79,6 +79,24 @@ def patches(path, lang, is_project):
     return P
 
 
+def stage_dict(lang):
+    """the browser dictionary for a language page, built from the branch's i18n/lang-pages.json + i18n/stage-dict.json exactly
+    as inc/project-stage.php prints it (the #nadlan-stage-i18n JSON)"""
+    out = {"lang": lang, "exact": {}, "names": {}, "patterns": []}
+    for f in ("lang-pages.json", "stage-dict.json"):
+        try:
+            d = json.load(io.open(os.path.join(PN, "i18n", f), encoding="utf-8"))
+        except Exception:
+            continue
+        for he, tr in (d.get("exact") or {}).items():
+            if lang in tr: out["exact"][he] = str(tr[lang])
+        for he, tr in (d.get("names") or {}).items():
+            if lang in tr: out["names"][he] = str(tr[lang])
+        for pt in d.get("patterns") or []:
+            if pt.get("re") and lang in pt: out["patterns"].append({"re": str(pt["re"]), "tr": str(pt[lang])})
+    return json.dumps(out, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003C").replace(">", "\\u003E")
+
+
 def urban_block(token):
     """the urban map's style + script from the branch (inc/urban-map.php, WordPress stubbed in preview_v101_urban.php), with
     the page's own public map key"""
@@ -95,6 +113,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("path"); ap.add_argument("--w", type=int, default=1440); ap.add_argument("--h", type=int, default=900)
     ap.add_argument("--headed", action="store_true"); ap.add_argument("--shot", default="")
+    ap.add_argument("--init", default="", help="a JavaScript file added as an init script before the page's own scripts (diagnostics)")
+    ap.add_argument("--probe", default="", help="a Python file with run(pg, W, H, mob) -> dict, run after the page loads (its result joins the receipt)")
     a = ap.parse_args()
     lang = "he"
     for l in ("en", "fr", "ru", "ar"):
@@ -121,6 +141,14 @@ def main():
             body = body[:us] + urban_block(tk.group(1) if tk else "") + body[ue:]
             body = body.replace('<p class="nlurm-note">', '<p class="nlurm-sum" id="nlurm-sum" hidden></p><div class="nlurm-top" id="nlurm-top" hidden></div><p class="nlurm-note">', 1)
             applied.append("urban map first view (PHP)")
+        # a language page's stage dictionary (inc/project-stage.php prints it from i18n/*.json)
+        ds = body.find('<script type="application/json" id="nadlan-stage-i18n">')
+        if ds > 0:
+            de = body.find("</script>", ds)
+            lm = re.search(r'"lang":"([a-z]{2})"', body[ds:de])
+            if lm:
+                body = body[:ds] + '<script type="application/json" id="nadlan-stage-i18n">' + stage_dict(lm.group(1)) + body[de:]
+                applied.append("stage dictionary " + lm.group(1) + " (PHP)")
         for label, old, new, req in patches(a.path, lang, is_project):
             if old in body:
                 body = body.replace(old, new, 1); applied.append(label)
@@ -151,10 +179,17 @@ def main():
         ctx.route(re.compile(r"https://nad-lan\.co\.il/wp-content/plugins/nadlan-config/.*"), asset_route)
         url = ORIGIN + a.path + ("&" if "?" in a.path else "?") + "pv101=%d" % time.time()
         ctx.route(re.compile(re.escape(ORIGIN + a.path.split("?")[0]) + r"\?.*pv101=.*"), page_route)
+        if a.init:
+            ctx.add_init_script(path=a.init)
         pg = ctx.new_page(); errs = []
-        pg.on("pageerror", lambda e: errs.append(str(e)[:200]))
+        pg.on("pageerror", lambda e: errs.append((str(e)[:200] + " | " + " / ".join(l.strip() for l in (getattr(e, "stack", "") or "").splitlines()[1:4]))[:500]))
         pg.goto(url, wait_until="domcontentloaded", timeout=90000)
         pg.wait_for_timeout(4000)
+        probe = None
+        if a.probe:
+            ns = {}
+            exec(compile(io.open(a.probe, encoding="utf-8").read(), a.probe, "exec"), ns)
+            probe = ns["run"](pg, a.w, a.h, mob)
         if a.shot:
             pg.screenshot(path=a.shot, full_page=True)
         if a.headed:
@@ -163,7 +198,7 @@ def main():
                 pg.wait_for_event("close", timeout=0)
             except Exception:
                 pass
-        receipt = {"path": a.path, "viewport": [a.w, a.h], "lang": lang, "php_changes_applied": applied, "local_files_served": served, "page_errors": errs[:5],
+        receipt = {"path": a.path, "viewport": [a.w, a.h], "lang": lang, "php_changes_applied": applied, "local_files_served": served, "page_errors": errs[:5], "probe": probe,
                    "branch": subprocess.run(["git", "-C", REPO, "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True).stdout.strip(),
                    "head": subprocess.run(["git", "-C", REPO, "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()}
         print(json.dumps(receipt, ensure_ascii=False, indent=1))

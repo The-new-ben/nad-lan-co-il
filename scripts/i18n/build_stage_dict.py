@@ -289,6 +289,9 @@ EXACT = [
     row("להתרחק", "Zoom out", "Zoom arrière", "Отдалить", "تصغير"),
     row("Ctrl + גלגלת: זום על הדגם", "Ctrl + scroll: zoom the model", "Ctrl + molette : zoom sur la maquette", "Ctrl + колесо: масштаб модели", "Ctrl + عجلة الفأرة: تكبير النموذج"),
     row("⌘ + גלגלת: זום על הדגם", "⌘ + scroll: zoom the model", "⌘ + molette : zoom sur la maquette", "⌘ + колесо: масштаб модели", "⌘ + عجلة الفأرة: تكبير النموذج"),
+    # --- ApartmentMapLanding (v101.2, 29.9.2026): the unit line over the area map
+    row("האלומה במפה: הכיוון מהדירה", "The beam on the map: the direction from the apartment", "Le faisceau sur la carte : la direction depuis l’appartement", "Луч на карте: направление из квартиры", "الشعاع على الخريطة: الاتجاه من الشقة"),
+    row("חזרה לבניין", "Back to the building", "Retour à l’immeuble", "Назад к зданию", "العودة إلى المبنى"),
     # --- AreaLife v97 (1.72.361): the groups, the planned station, the sources
     row("פארקים, חוף וספורט", "Parks, beach and sport", "Parcs, plage et sport", "Парки, пляж и спорт", "حدائق وشاطئ ورياضة"),
     row("קניות וסידורים", "Shops and errands", "Commerces et services", "Магазины и услуги", "تسوق وخدمات"),

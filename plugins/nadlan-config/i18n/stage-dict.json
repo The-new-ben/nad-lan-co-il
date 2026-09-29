@@ -673,6 +673,18 @@
    "ru": "⌘ + колесо: масштаб модели",
    "ar": "⌘ + عجلة الفأرة: تكبير النموذج"
   },
+  "האלומה במפה: הכיוון מהדירה": {
+   "en": "The beam on the map: the direction from the apartment",
+   "fr": "Le faisceau sur la carte : la direction depuis l’appartement",
+   "ru": "Луч на карте: направление из квартиры",
+   "ar": "الشعاع على الخريطة: الاتجاه من الشقة"
+  },
+  "חזרה לבניין": {
+   "en": "Back to the building",
+   "fr": "Retour à l’immeuble",
+   "ru": "Назад к зданию",
+   "ar": "العودة إلى المبنى"
+  },
   "פארקים, חוף וספורט": {
    "en": "Parks, beach and sport",
    "fr": "Parcs, plage et sport",

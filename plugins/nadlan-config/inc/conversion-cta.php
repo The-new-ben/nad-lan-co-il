@@ -113,6 +113,8 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
    hides, and over a form button or the stage's floor card it moves up instead (v69, v91). */
 @media(max-width:520px){.nlcta-wa{max-width:min(72vw,280px)}}
 @media(max-width:600px){html body #nlcta.is-clear{bottom:calc(env(safe-area-inset-bottom,0px) + var(--nlcta-lift,150px))!important}}
+/* v101.2: above the area map's cone, on every width (the script below sets is-cone and the lift) */
+html body #nlcta.is-cone{bottom:calc(env(safe-area-inset-bottom,0px) + var(--nlcta-lift,150px))!important}
 /* PublishPage v70 (28.9.2026): on broker sites and broker listing pages the site pill steps aside (the lead is the broker's);
    on wide screens the broker's own WhatsApp floats in the same corner. Here, not only in the engine, because broker pages
    are built once and keep their styles. */
@@ -148,11 +150,30 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 			}
 			return 0;
 		};
+		/* ApartmentMapLanding (design system v101.2, 29.9.2026): the pill never covers the direction the buyer chose. When the
+		   area map's cone (bridge.js, on stage pages) meets the pill's resting place, the pill rises 10px above it, on every
+		   width, and comes back once the cone has passed. The test is against the resting place (data-rest: its top, counted
+		   from the screen's foot, measured whenever it rests), so the pill does not flicker. bridge.js reads data-rest too, to
+		   land the map above it. */
+		var coneHit=function(h){
+			var w=document.querySelector('.nlps-cone path'),rest=Number(box.getAttribute('data-rest'))||0;
+			if(!w||!wa0||!rest)return 0;
+			var r=w.getBoundingClientRect(),m=w.closest('.mapboxgl-map'),p=wa0.getBoundingClientRect();
+			if(!r.height)return 0;
+			if(m){var mr=m.getBoundingClientRect();if(r.bottom<mr.top||r.top>mr.bottom)return 0;}
+			var top=h-rest;
+			if(r.bottom>top-8&&r.top<top+p.height+8&&r.left<p.right+8&&r.right>p.left-8)return Math.min(Math.round(h-r.top+10),Math.round(h*0.7));
+			return 0;
+		};
 		var fit=function(){
 			tick=false;
-			var h=window.innerHeight||0,lift=mq.matches?stageHit(h):0,clash=subs.some(function(el){var r=el.getBoundingClientRect();return r.height>0&&r.bottom>h-110&&r.top<h;})||lift>0;
+			var h=window.innerHeight||0;
+			if(wa0&&!box.classList.contains('is-clear')&&!box.classList.contains('is-cone')&&!box.classList.contains('is-typing')){var t0=wa0.getBoundingClientRect();if(t0.height>0)box.setAttribute('data-rest',Math.round(h-t0.top));}
+			var lift=mq.matches?stageHit(h):0,cone=coneHit(h),clash=subs.some(function(el){var r=el.getBoundingClientRect();return r.height>0&&r.bottom>h-110&&r.top<h;})||lift>0;
+			if(cone>lift){lift=cone;}
 			if(lift>0){box.style.setProperty('--nlcta-lift',lift+'px');}else{box.style.removeProperty('--nlcta-lift');}
 			box.classList.toggle('is-clear',mq.matches&&clash);
+			box.classList.toggle('is-cone',cone>0);
 		};
 		var ask=function(){if(!tick){tick=true;window.requestAnimationFrame(fit);}};
 		window.addEventListener('scroll',ask,{passive:true});
@@ -160,7 +181,7 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 		if(mq.addEventListener){mq.addEventListener('change',fit);}
 		// the stage's card opens and closes without a scroll: look again after a tap on the stage and on its floor events
 		document.addEventListener('click',function(e){if(e.target&&e.target.closest&&e.target.closest('#nlps,#nlps-pick,.nlps-steps,#nlps-view-cta')){setTimeout(ask,350);}},true);
-		['nl:floor','nl:facing'].forEach(function(n){window.addEventListener(n,function(){setTimeout(ask,350);});});
+		['nl:floor','nl:facing'].forEach(function(n){window.addEventListener(n,function(){setTimeout(ask,350);setTimeout(ask,1100);});});
 		fit();
 		var typing=function(t){return t&&t.matches&&t.matches('textarea,select,input:not([type=checkbox]):not([type=radio]):not([type=button]):not([type=submit]):not([type=hidden])');};
 		document.addEventListener('focusin',function(e){if(typing(e.target)){clearTimeout(back);box.classList.add('is-typing');}});
