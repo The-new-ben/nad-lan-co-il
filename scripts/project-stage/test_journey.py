@@ -124,8 +124,8 @@ def main():
     allres = [journey(a.base, int(w.split("x")[0]), int(w.split("x")[1]), a.out) for w in a.widths.split(",")]
     failed = [(r["viewport"], k) for r in allres for k, v in r["checks"].items() if not v]
     manifest2 = json.loads(urllib.request.urlopen(a.base + "/__manifest.json").read().decode("utf-8"))
-    print(json.dumps({"mode": "the loopback preview (serve_journey.py): the branch's pages, files and /lead + /rfp callbacks; nothing sent", "head": manifest2["head"],
-                      "uncommitted": manifest2["uncommitted"], "served_branch_files": manifest2["served_branch_files"], "failed": failed, "results": allres}, ensure_ascii=False, indent=1))
+    print(json.dumps({"mode": "the loopback preview (serve_journey.py): the branch's pages, files and /lead + /rfp callbacks; nothing sent",
+                      "manifest": manifest2, "failed": failed, "results": allres}, ensure_ascii=False, indent=1))
     sys.exit(1 if failed else 0)
 
 
