@@ -212,7 +212,16 @@ Every turn does ALL of these, not only the current phase:
   - GSC for the last 28 days, and DataForSEO within $5: keywords, People Also Ask, competitor page structure, intent.
   - Run the URL word audit and choose the slug.
   - Output: `serp-dna.md` and the slug decision.
-- [ ] **P4, Claude Design "KikarHamedinaWorld"**, a new design system version. It covers:
+- [ ] **P4, IN PROGRESS (turn 4, 30.9).**
+  - The spec is written: design system component `KikarHamedinaWorld/README.md`, v104. It covers:
+    - the page order;
+    - the world's four modes: aerial, walk, tower with the sun clock, places;
+    - the shared engine module `assets/project-stage/world/`;
+    - the selling path, prices (sourced only), "when is it ready?", the FAQ and SEO.
+  - A sub-agent is building a LOCAL 3D prototype from the real data, with renders at 1440 and 390: aerial, street, window views, sun and shade, the twist. It lives in `docs/research/2026-09-30-kikar-hamedina/prototype/`.
+  - Next: the preview.html with the renders, then publish design system v104, then look at it.
+  - To verify: a "dog park" in the square's park (search 30.9, Mako article), and project-tlv.info's building page as a timeline source.
+- [ ] **P4 (the original task text) Claude Design "KikarHamedinaWorld"**, a new design system version. It covers:
   - the page order per the checklist;
   - the walkable area world (walk and fly, and every place clickable with an info card);
   - the three turning towers on the real lot;
