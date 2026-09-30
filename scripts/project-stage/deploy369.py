@@ -845,7 +845,7 @@ WANT_LIVE = "1.72.368"  # the checks name ?ver=1.72.369: this runner is for the 
 PIN = {
     "inc/project-stage.php": "e6c9fc1c7f4df378588c974ef3305892",
     "inc/wa-source.php": "7a7bbbd9ebc24cc96097057c6b733876",
-    "assets/project-stage/world/world.js": "bdfc9cb55895fd6421a2cbeda4bd7f88",
+    "assets/project-stage/world/world.js": "f27621bd009e769a26ac49a9b80d45b6",
     "assets/project-stage/world/world.css": "8be58f350cf8968646a436cdd62e4c39",
     "assets/project-stage/hamedina/world.json": "b866d72a288b4791ce0cfb24bc1cba02",
     "assets/project-stage/hamedina/places.json": "1e1ddd71ecddd8fc26abe9f29b452918",

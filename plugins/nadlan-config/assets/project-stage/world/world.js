@@ -475,6 +475,9 @@ export function mountWorld(host, opts = {}) {
     ui.cap = el('div', 'nlw-cap', esc(T.caption));
     ui.eye = el('div', 'nlw-eye'); ui.eye.hidden = true;
     root.append(top, ui.eye, ui.panel, ui.card, ui.joy, ui.compass, ui.scale, ui.cap);
+    // the site's WhatsApp bar (inc/conversion-cta.php) lifts over stage buttons in its column, but only re-measures on scroll,
+    // resize and stage events: tell it the world's buttons now exist, so it never sits on the mode tabs
+    window.requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
   }
 
   // ---------------------------------------------------------------- state
