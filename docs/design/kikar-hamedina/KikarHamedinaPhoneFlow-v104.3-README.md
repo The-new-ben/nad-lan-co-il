@@ -162,3 +162,16 @@ Measured locally against the live 1.72.374 (the same script, `v1045_check.py`).
   - Implementation: a symbol layer placed above the places, and a transparent reserve for the 20 px HTML dot.
   - It is the same label on every project page with an area map (the fleet), in the page's language (the page title).
 - **Unchanged:** the dot itself, its popup, the prices, the plans and the beam.
+
+## v104.7 (1.10, loop turn 15): the long world card, organized (progressive disclosure)
+
+- **Why:**
+  - Codex's QA: the tower card ran 1,065-1,402 px on a phone.
+  - [NN/G: bottom sheets](https://www.nngroup.com/articles/bottom-sheet/) and [IxDF: progressive disclosure](https://ixdf.org/literature/topics/progressive-disclosure): the key facts and the main action first, details on request.
+- **The design:**
+  - The card opens with the tower's own facts, "בחרו מגדל", and the WhatsApp consult.
+  - The seven facts about all three towers, each with its source, sit in a fold "על שלושת המגדלים". It is closed in the phone's dock and open on wide screens.
+  - The ring building's facts get the same fold, "על טבעת הבניינים".
+  - Nothing is deleted; one tap opens the fold.
+- **Measured (390, he):** the card is 1,077 → 489 px, with all 9 facts still in it.
+- **Fixed on the way:** the green WhatsApp button in the dock showed the theme's dark, underlined link text. The dock sits outside `.nlw`, so the button's white text is restated there. This regressed in 1.72.373.

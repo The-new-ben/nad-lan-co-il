@@ -119,7 +119,7 @@ const I18N = {
     street: 'רחוב', green: 'שטח ירוק ציבורי', water: 'מים', tree: 'עץ',
     treeLine: 'עצי העיר לפי חופות העצים שמיפתה העירייה ב-2024; גובה העץ בתמונה להמחשה.',
     park: 'הפארק בכיכר', pond: 'האגם האקולוגי', road: 'טבעת ה׳ באייר', ringBld: 'בנייני הטבעת של הכיכר', square: 'כיכר המדינה',
-    towersAll: 'מגדלי כיכר המדינה',
+    towersAll: 'מגדלי כיכר המדינה', aboutAll: 'על שלושת המגדלים', aboutRing: 'על טבעת הבניינים',
     mark: 'נקודת ציון', markDist: (d) => `${d} מהמגדלים`,
     askWa: (k, f) => (f ? `ייעוץ חינם על קומה ${f} במגדל ${k}` : `ייעוץ חינם על מגדל ${k}`),
     askPlace: 'ייעוץ חינם על החיים בכיכר',
@@ -208,7 +208,7 @@ const I18N = {
     street: 'Street', green: 'Public green space', water: 'Water', tree: 'Tree',
     treeLine: 'Trees from the tree canopies mapped by the city in 2024; the tree height shown is an illustration.',
     park: 'The park in the square', pond: 'The ecological pond', road: 'The He Be’Iyar ring road', ringBld: 'The square\'s ring of buildings', square: 'Kikar Hamedina',
-    towersAll: 'Kikar Hamedina Towers',
+    towersAll: 'Kikar Hamedina Towers', aboutAll: 'About the three towers', aboutRing: 'About the ring of buildings',
     mark: 'Landmark', markDist: (d) => `${d} from the towers`,
     askWa: (k, f) => (f ? `Free advice on floor ${f} of tower ${k}` : `Free advice on tower ${k}`),
     askPlace: 'Free advice on living at the square',
@@ -302,7 +302,7 @@ const I18N = {
     street: 'Rue', green: 'Espace vert public', water: 'Eau', tree: 'Arbre',
     treeLine: 'Les arbres de la ville, d’après la canopée relevée par la municipalité en 2024 ; la hauteur de l’arbre est indicative.',
     park: 'Le parc de la place', pond: 'L’étang écologique', road: 'La rue circulaire He Be’Iyar', ringBld: 'L’anneau d’immeubles de la place', square: 'Kikar Hamedina',
-    towersAll: 'Tours Kikar Hamedina',
+    towersAll: 'Tours Kikar Hamedina', aboutAll: 'À propos des trois tours', aboutRing: 'À propos de l’anneau d’immeubles',
     mark: 'Point de repère', markDist: (d) => `À ${d} des tours`,
     askWa: (k, f) => (f ? `Conseil gratuit sur l’étage ${f} de la tour ${k}` : `Conseil gratuit sur la tour ${k}`),
     askPlace: 'Conseil gratuit sur la vie à Kikar Hamedina',
@@ -392,7 +392,7 @@ const I18N = {
     street: 'Улица', green: 'Общественный сквер', water: 'Вода', tree: 'Дерево',
     treeLine: 'Деревья города по карте крон, снятой муниципалитетом в 2024 году; высота дерева условная.',
     park: 'Парк на площади', pond: 'Экологический пруд', road: 'Кольцевая улица площади', ringBld: 'Кольцо зданий вокруг площади', square: 'Кикар ха-Медина',
-    towersAll: 'Башни Кикар ха-Медина',
+    towersAll: 'Башни Кикар ха-Медина', aboutAll: 'О трёх башнях', aboutRing: 'О кольце зданий',
     mark: 'Ориентир', markDist: (d) => `${d} от башен`,
     askWa: (k, f) => (f ? `Бесплатная консультация: этаж ${f}, башня ${k}` : `Бесплатная консультация по башне ${k}`),
     askPlace: 'Бесплатная консультация о жизни на площади',
@@ -482,7 +482,7 @@ const I18N = {
     street: 'شارع', green: 'مساحة خضراء عامة', water: 'مياه', tree: 'شجرة',
     treeLine: 'أشجار المدينة وفق خريطة تيجان الأشجار التي أعدّتها البلدية عام 2024؛ ارتفاع الشجرة توضيحي.',
     park: 'الحديقة في الميدان', pond: 'البركة البيئية', road: 'الشارع الدائري حول الميدان', ringBld: 'حلقة مباني الميدان', square: 'كيكار همدينا',
-    towersAll: 'أبراج كيكار همدينا',
+    towersAll: 'أبراج كيكار همدينا', aboutAll: 'عن الأبراج الثلاثة', aboutRing: 'عن حلقة المباني',
     mark: 'معلم', markDist: (d) => `على بعد ${d} من الأبراج`,
     askWa: (k, f) => (f ? `استشارة مجانية حول الطابق ${f} في البرج ${k}` : `استشارة مجانية حول البرج ${k}`),
     askPlace: 'استشارة مجانية حول الحياة في الميدان',
@@ -2359,6 +2359,9 @@ export function mountWorld(host, opts = {}) {
     return `<span class="nlw-src">${esc(T.source)}: ${parts.join(' · ')}</span>`;
   };
   const factList = (lines) => `<ul class="nlw-facts">${(lines || []).map((l) => `<li>${esc(tx(l))}${srcHtml(l.src)}</li>`).join('')}</ul>`;
+  // v104.7 (loop turn 15, Codex's QA: the card ran 1,065-1,402 px on a phone): the facts that are not about the thing tapped sit in a
+  // fold, closed in the phone's dock and open on wide screens. Nothing is deleted; one tap opens them.
+  const factFold = (label, lines) => `<details class="nlw-notes nlw-more"${docked ? '' : ' open'}><summary>${esc(label)}</summary>${factList(lines)}</details>`;
   const notesHtml = () => `<details class="nlw-notes"><summary>${esc(T.notesSum)}</summary><ul>${(W.model.notes || []).map((n) => `<li>${esc(tx(n))}</li>`).join('')}</ul></details>`;
   let cardOpener = null; // v104.5: the focus returns to what opened the card
   function openCard(c) {
@@ -2404,7 +2407,7 @@ export function mountWorld(host, opts = {}) {
     const X = TW[k];
     const html = eyebrow(T.towersAll) + title(T.towerN(k)) + factList(W.facts.tower[k]) +
       `<button class="nlw-btn nlw-btn--go" type="button" data-act="go">${esc(T.goTower)} ${esc(k)}</button>` + waBtn(T.askWa(k), T.towerN(k)) +
-      `<div class="nlw-sec">${factList(W.facts.towers)}</div>` + notesHtml();
+      factFold(T.aboutAll, W.facts.towers) + notesHtml();
     return { html, acts: { go: () => { closeCard(); pickTower(k, 'user'); } }, pick: { kind: 'tower', tower: k, floors: X.N, height: X.t.h } };
   }
   function featureCard(key) {
@@ -2438,7 +2441,7 @@ export function mountWorld(host, opts = {}) {
     const where = T.fromTowers(T.km(Math.hypot(b.cx, b.cz)));
     let html = eyebrow(b.flags & 4 ? T.ringBld : bn ? kindName : where) + title(ttl) + `<div class="nlw-kv">${kv.join('')}</div>` +
       `<div class="nlw-note">${esc(T.hSrc[hs])}${b.flags & 4 || bn ? ' · ' + esc(where) : ''}</div>` + srcHtml(['tlv_513']);
-    if (b.flags & 4) html += `<div class="nlw-sec">${factList(W.facts.ring)}</div>`;
+    if (b.flags & 4) html += factFold(T.aboutRing, W.facts.ring);
     return { html, pick: { kind: 'block', index: b.i, h: b.h, floors: b.floors } };
   }
   function groundCard(hit) {

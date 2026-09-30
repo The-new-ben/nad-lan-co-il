@@ -359,3 +359,12 @@ html body .nlw--full a.nlw-wafull span { color: #fff !important; text-decoration
 @media (pointer: coarse) {
   .nlw-pin .t::after { content: ''; position: absolute; inset: -7px -3px; }
 }
+
+/* v104.7 (loop turn 15): a fold of facts (the card's "about the three towers") keeps the facts' own layout, not the notes' indent */
+.nlw-more .nlw-facts { padding: 0; margin-top: 4px; }
+.nlw-more .nlw-facts li { margin: 0; line-height: 1.45; }
+.nlw-more summary { color: var(--nlw-ink); font-size: 14px; }
+/* v104.7: the card and the panel in the phone's dock sit outside .nlw, so the WhatsApp button's white text is restated there
+   (since 1.72.373 the theme's link colours showed through on the green button in the dock) */
+html body .nlw-dock a.nlw-btn--wa, html body .nlw-dock a.nlw-btn--wa:visited, html body .nlw-dock a.nlw-btn--wa:hover,
+html body .nlw-dock a.nlw-btn--wa span { color: #fff !important; text-decoration: none !important; }

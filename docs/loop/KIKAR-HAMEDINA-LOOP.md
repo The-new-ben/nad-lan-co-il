@@ -101,6 +101,23 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **1.10, turn 15.**
+  - **Web:**
+    - [NN/G, bottom sheets](https://www.nngroup.com/articles/bottom-sheet/), [IxDF, progressive disclosure](https://ixdf.org/literature/topics/progressive-disclosure), [Lollypop, progressive disclosure 2026](https://lollypop.design/blog/2025/may/progressive-disclosure/);
+    - prices: [Bizportal 20015974](https://www.bizportal.co.il/realestates/news/article/20015974), already in facts.md (S20); [Globes 1001481134](https://www.globes.co.il/news/article.aspx?did=1001481134), already there.
+    - **Re-check:** no new fact contradicts the page.
+  - **NOTCH (v104.7 → 1.72.378):** the long world card, organized.
+    - The tower's own facts and the two actions come first. The facts about all three towers sit in a fold, closed on phones and open on desktop. Nothing is deleted.
+    - Measured: the card is 1,077 → 489 px.
+  - **FOUND ON THE WAY (a regression of 373, fixed here):** the green WhatsApp button in the phone's dock showed dark, underlined link text. The white-text rule was scoped to `.nlw`, and the dock sits outside it.
+  - **Maya:** the owner is actively using the ChatGPT app (another thread), so the app was not driven. The update waits in claude-codex.md.
+  - **NEXT NOTCH:**
+    - (1) more named places at 320 px;
+    - (2) generic en/ar names from OSM name:en/name:ar;
+    - (3) a scan for other `.nlw`-scoped rules the dock may lose (done: only this one).
+  - **Finding (live 378, element shot):** the floating accessibility button can sit on the card's last fold ("מה בתמונה להמחשה") in the dock at some scroll positions. P9c's corner script guards the world's controls, not the dock's. Next round: count the dock's summaries and buttons as controls.
+  - **Transient:** 1 × HTTP 502 on /projects/ashira-sde-dov-en/ during 378's first check round; purge + second round OK; 3 × 200 after.
+
 - **30.9 night, turn 14** (Opus 5.5).
   - **Web:**
     - [ynetnews: top Tel Aviv deals concentrate at District 4 / Kikar Hamedina and Sde Dov](https://www.ynetnews.com/real-estate/article/b11jju011zx) (context only);
