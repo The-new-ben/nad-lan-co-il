@@ -49,6 +49,15 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **30.9, turn 9** (web: [Globes 1001481134](https://www.globes.co.il/news/article.aspx?did=1001481134), [ip-tlv](https://ip-tlv.com/properties/kikar-ha-medina-towers-project/?lang=en), [Evenis Group, a French agency](https://www.evenisgroup.com/en/property/ref-gs-18539-for-sale-4-rooms-kikar-hamedina-tel-aviv/), [Israel Property Hub](https://israelpropertyhub.com/property/for-sale-kikar-hamedina-tel-aviv-premium-apartment-in-a-new-luxury-project)).
+  - **NEW FACT (Globes, data of 6.2024):** 148 units were sold in the neighbourhood over one year, at an average of ₪68,000/m², with an average deal of ₪5.66M. It goes into the area price line with its date.
+  - **A MARKETING CLAIM, attributed only:** ip-tlv says "offered at about ₪55,000/m² vs a market of about ₪80,000/m²". Show it as their claim, or not at all.
+  - **French demand exists:** a French-speaking agency lists 4-room apartments in the towers. That means P8 fr is worth the work.
+  - **P8 started as a sub-agent:**
+    - fr/ru/ar posts with a cultural rewrite, world strings in 5 languages, and SERP notes per language;
+    - the P7.1 fixes (WhatsApp refit on load, verify_kh order);
+    - a resilient runner 370 that writes its record as soon as the writes succeed and always takes the bridge down.
+
 - **30.9, turn 6** (web: [Mako/N12 on the new square](https://www.mako.co.il/news-money/real_estate/Article-1b24331b3cec0a1026.htm), [tlvonline on the square's renewal](https://tlvonline.co.il/%D7%A9%D7%93%D7%A8%D7%95%D7%92-%D7%9B%D7%99%D7%9B%D7%A8-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/), [project-tlv's timeline](https://project-tlv.info/buildings/kikar-hamedina/kikar-hamedina-project/)).
   - **VERIFIED (dog park):** the park has a dog garden, a play garden, lawns and tables, the ecological pond with paths and bridges, a boulevard with a bicycle path, three rows of trees including heritage trees, a running track and kiosks.
   - **The school (north):** fan-shaped, 3 upper floors, a green roof, an underground sports hall, and a field open to the public in the afternoons. It opened this school year.
@@ -345,7 +354,7 @@ Every turn does ALL of these, not only the current phase:
   - The stage `kikar/`, the places, the facilities JSON, the tour.
   - SEO: title, description, schema, FAQ, hreflang.
   - Check locally at 390 and 1440, then release through the runner. Run the content-first, source, WhatsApp and live-eyes checks.
-- [ ] **P8, fr, ru, ar** (Arabic titles in English, per the owner's decisions of 28.9).
+- [ ] **P8, IN PROGRESS (turn 9: a sub-agent prepares the fr/ru/ar posts, world strings, SERP notes, runner 370 with the P7.1 fixes).** fr, ru, ar (Arabic titles in English, per the owner's decisions of 28.9).
 - [ ] **P9, The masterpiece pass.** Every hotspot, every click, and every width, looked at. Then compare with every competitor page, and fix what is weaker.
 
 ## Tracking
