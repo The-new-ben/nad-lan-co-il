@@ -71,6 +71,15 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **30.9, turn 11** (web: [R2U interactive floor plans 2026](https://r2u.io/en/blog/interactive-floor-plan-real-estate/), [a luxury tower site with views at three times of day](https://www.6sqft.com/manhattan-view-condo-launches-full-website-touting-luxury-amenities-and-far-reaching-views/), [Madlan: 86 listings at the square](https://www.madlan.co.il/for-sale/%D7%9B%D7%99%D7%9B%D7%A8-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C), [a Sotheby's high-floor 5-room listing](https://www.israelsir.co.il/property/5-room-apartment-kikar-hamedina-towers-tel-aviv/)).
+  - The best 2026 sites render the actual sightline per floor, and show views at three times of day.
+  - **NEW notches:**
+    - (1) A day, sunset and night switch in the floor view, with night windows labelled as illustration (P9a).
+    - (2) Example apartments whose window shows the REAL city from the world at the real height and facing. The twist means the same apartment faces a slightly different way on every floor, and the page SHOWS it (P9b).
+  - **P9 started as two sub-agents:**
+    - **P9a:** the small fixes (°1.25 bidi, "Mediterranean Sea" twice, a Cyrillic font), the phone's first screen (the bar vs the third hero button), the night view, and runner 371 prepared.
+    - **P9b:** the interiors plan and a high-quality prototype of tower C, floor 30, facing west.
+
 - **30.9, turn 9** (web: [Globes 1001481134](https://www.globes.co.il/news/article.aspx?did=1001481134), [ip-tlv](https://ip-tlv.com/properties/kikar-ha-medina-towers-project/?lang=en), [Evenis Group, a French agency](https://www.evenisgroup.com/en/property/ref-gs-18539-for-sale-4-rooms-kikar-hamedina-tel-aviv/), [Israel Property Hub](https://israelpropertyhub.com/property/for-sale-kikar-hamedina-tel-aviv-premium-apartment-in-a-new-luxury-project)).
   - **NEW FACT (Globes, data of 6.2024):** 148 units were sold in the neighbourhood over one year, at an average of ₪68,000/m², with an average deal of ₪5.66M. It goes into the area price line with its date.
   - **A MARKETING CLAIM, attributed only:** ip-tlv says "offered at about ₪55,000/m² vs a market of about ₪80,000/m²". Show it as their claim, or not at all.
@@ -384,7 +393,7 @@ Every turn does ALL of these, not only the current phase:
     - The page top: `hamedina_ps_patch370.py` (369's live text + 4 hunks); `ps_identity_proof370.py`: every existing page byte for byte the same.
     - P7.1: the pill measures again on load; `verify_kh` in the real C7 order for all five pages; the runner writes its record at once and always ends with the bridge down. Extra: the card's Hebrew source line now translates on language pages (`lang-pages.json`), the Russian pill no longer pushes its mark off a 360-390 px screen, Arabic degrees as a word.
     - Preview: `preview_hamedina.py --p8`, shots in `p8-shots/`, C3/C4 pass at 390, 412 (Googlebot) and 1440.
-- [ ] **P9, The masterpiece pass.** Every hotspot, every click, and every width, looked at. Then compare with every competitor page, and fix what is weaker.
+- [ ] **P9, IN PROGRESS (turn 11: P9a fixes + phone first screen + night view; P9b interiors). The masterpiece pass.** Every hotspot, every click, and every width, looked at. Then compare with every competitor page, and fix what is weaker.
 
 ## Tracking
 
