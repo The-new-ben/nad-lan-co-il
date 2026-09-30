@@ -26,6 +26,9 @@
  * window.__nlpsPick = { tower, floor, facing, ... } after a pick, so the site's WhatsApp line names them (inc/wa-source.php
  * prints `floor`, inc/cta-sheet.php prints `floor` and `facing`): `floor` is the floor number followed by the tower's name.
  *
+ * Languages (P8, 1.72.370): he, en, fr, ru, ar. The words are I18N below; the world data's texts come in he and en, and
+ * world-i18n.json (beside world.json, keyed by the English text) gives fr, ru and ar. A name known only in Hebrew is left out.
+ *
  * Honesty: every fact line in a card comes from the world data with its source; the towers are an illustration (the municipal
  * footprint + the published 1.25° turn); what is provisional is labelled in the card and in the data (model.notes).
  */
@@ -37,6 +40,11 @@ let mergeGeometries = null;
 const DEG = Math.PI / 180;
 const HEB = /[֐-׿]/;
 const MODES = ['aerial', 'walk', 'tower', 'places'];
+
+// P8 (1.72.370): numbers and plurals for the French, Russian and Arabic words (a decimal comma; Russian and Arabic counting forms)
+const frNum = (x) => String(x).replace('.', ',');
+const ruN = (n, one, few, many) => { const a = Math.abs(n) % 100, b = a % 10; return a > 10 && a < 20 ? many : b === 1 ? one : b > 1 && b < 5 ? few : many; };
+const arN = (n, one, two, few, many) => (n === 1 ? one : n === 2 ? two : n >= 3 && n <= 10 ? `${n} ${few}` : `${n} ${many}`);
 
 const I18N = {
   he: {
@@ -132,7 +140,7 @@ const I18N = {
     full: 'Full screen', unfull: 'Exit full screen', close: 'Close', north: 'North up',
     aerialTitle: 'The square, the park and the neighbourhood',
     aerialIntro: 'Choose a tower, a garden, a building or a place to see its details.',
-    goTower: 'Choose a tower',
+    goTower: 'Choose tower', // P8: the card's button reads 'Choose tower C'
     walkTitle: 'Walk around the square',
     walkIntro: 'At eye level, on the ה\' באייר ring and the park paths.',
     walkKeysDesk: 'Drag to look · <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or the arrows to walk · <kbd>Shift</kbd> faster',
@@ -209,12 +217,271 @@ const I18N = {
       health: 'Health services', dentist: 'Dentist', doctors: 'Doctors', community: 'Community centre', culture: 'Culture', worship: 'Synagogue',
     },
   },
+  // P8 (1.72.370): French, Russian and Arabic, written for each reader (not word for word from English). Names: the square
+  // and the places keep the names their sources give in that language (places.json names, the fleet's dictionaries); a place
+  // with no name in the page's language shows its English name, and a place known only in Hebrew is left out.
+  fr: {
+    region: 'Les tours Kikar Hamedina et le quartier autour, en illustration',
+    eyebrow: 'Tours Kikar Hamedina · Tel Aviv',
+    modes: { aerial: 'Vue du ciel', walk: 'Promenade', tower: 'Étage et vue', places: 'À proximité' },
+    enter: 'Explorer la place',
+    loading: 'Chargement de la place',
+    full: 'Plein écran', unfull: 'Quitter le plein écran', close: 'Fermer', north: 'Nord en haut',
+    aerialTitle: 'La place, le parc et le quartier',
+    aerialIntro: 'Choisissez une tour, un jardin, un immeuble ou un lieu pour voir ses détails.',
+    goTower: 'Choisir la tour',
+    walkTitle: 'Promenade autour de la place',
+    walkIntro: 'À hauteur des yeux, sur la rue circulaire de la place et les allées du parc.',
+    walkKeysDesk: 'Glissez pour regarder · <kbd>Z</kbd><kbd>Q</kbd><kbd>S</kbd><kbd>D</kbd> ou les flèches pour avancer · <kbd>Maj</kbd> plus vite',
+    walkKeysTouch: 'Glissez pour regarder · le bouton rond pour avancer',
+    spots: { ring: 'La rue circulaire', park: 'Le cœur du parc', towers: 'Entre les tours', school: 'Près de l’école' },
+    towerTitle: (k, f) => (f ? `Tour ${k} · étage ${f}` : `Tour ${k}`),
+    tower: 'Tour', towerN: (k) => `Tour ${k}`,
+    floor: 'Étage', floorN: (f) => `Étage ${f}`,
+    floorsN: (n) => (n > 1 ? `${n} étages` : `${n} étage`),
+    meters: (m) => `${m} m`,
+    eye: (h) => `Regard à environ ${frNum(h)} m`,
+    facingLbl: 'Orientation',
+    dirs: ['nord', 'nord-est', 'est', 'sud-est', 'sud', 'sud-ouest', 'ouest', 'nord-ouest'],
+    dirsShort: ['Nord', 'NE', 'Est', 'SE', 'Sud', 'SO', 'Ouest', 'NO'],
+    sunOpen: 'Horloge solaire',
+    illusSpot: 'Emplacement indicatif',
+    notesSum: 'Ce qui est illustré',
+    towersHere: 'Tours Kikar Hamedina',
+    floorTag: (f) => `Étage ${f}`,
+    srcNames: { osm: 'OpenStreetMap', tlv: 'Municipalité de Tel Aviv-Jaffa, données ouvertes', gis: 'Municipalité de Tel Aviv-Jaffa, données géographiques ouvertes', 'tlv-gis': 'Municipalité de Tel Aviv-Jaffa, données géographiques ouvertes', gtfs: 'Ministère des Transports', fp: 'findplace.co.il', walk: 'Mapbox, temps de marche', lines: 'Open Bus Stride, ministère des Transports' },
+    faces: (w) => `Orientation ${w}`,
+    viewOut: 'La tour', viewWin: 'Vue de la fenêtre',
+    pickFacing: 'Choisissez une orientation pour voir la vue depuis la fenêtre',
+    sun: 'Soleil et ombre',
+    seasons: { 3: '21/03', 6: '21/06', 9: '21/09', 12: '21/12' }, // one row of chips (the long dates are in the sentences)
+    seasonsLong: { 3: '21 mars', 6: '21 juin', 9: '21 septembre', 12: '21 décembre' },
+    hour: 'Heure',
+    sunNow: (alt, az) => `Soleil à ${alt}° de hauteur, venant de ${az}°`,
+    sunDown: 'Le soleil est sous l’horizon',
+    riseSet: (r, s) => `Lever ${r} · coucher ${s}`,
+    sunHours: (h, d) => `Environ ${frNum(h)} heures de soleil direct sur cette fenêtre le ${d}`,
+    sunNone: (d) => `Pas de soleil direct sur cette orientation le ${d}`,
+    sunOnNow: 'Le soleil entre par la fenêtre à cette heure', sunOffNow: 'La fenêtre est à l’ombre à cette heure',
+    sunNote: 'D’après la course du soleil au-dessus de Tel Aviv et la hauteur des immeubles alentour ; arbres, balcons et stores non comptés.',
+    hoursShort: (h) => `${frNum(h)} h`,
+    placesTitle: 'À proximité',
+    placesIntro: 'Les temps de marche sont mesurés depuis la rue circulaire de la place, du côté tourné vers le lieu.',
+    cats: { transport: 'Transports', education: 'Écoles', outdoors: 'Parcs et sport', food: 'Cafés et restaurants', essentials: 'Commerces et services', health: 'Santé', community: 'Vie locale et culture' },
+    catCount: (n, m) => `${n} lieux à moins de ${m} min à pied`,
+    walkMin: (m) => `${m} min à pied`,
+    fromRing: 'depuis la place',
+    km: (m) => (m >= 1000 ? `${frNum((m / 1000).toFixed(1))} km` : `${Math.round(m / 10) * 10} m`),
+    fromTowers: (d) => `À environ ${d} du centre de l’ensemble`,
+    routeNote: 'L’itinéraire tracé est une estimation sur les axes des rues de la ville. Temps de marche : Mapbox.',
+    routeAir: 'Une ligne droite jusqu’au lieu ; temps de marche : Mapbox.',
+    lines: 'Lignes',
+    source: 'Source',
+    illus: 'Illustration indicative',
+    caption: 'Illustration indicative · immeubles, hauteurs, rues, jardins et arbres : municipalité de Tel Aviv-Jaffa · les tours : le contour municipal, tourné de 1,25° à chaque étage',
+    block: 'Immeuble', blockPublic: 'Bâtiment public', blockBuilding: 'En construction',
+    hSrc: ['Hauteur selon le relevé de la ville, 2019', 'Hauteur selon les données de la ville', 'Hauteur selon le modèle de surface de la ville', 'Hauteur estimée d’après le nombre d’étages'],
+    heightAbout: (h) => `Environ ${h} m de haut`,
+    built: (y) => `Construit en ${y}`,
+    street: 'Rue', green: 'Espace vert public', water: 'Eau', tree: 'Arbre',
+    treeLine: 'Les arbres de la ville, d’après la canopée relevée par la municipalité en 2024 ; la hauteur de l’arbre est indicative.',
+    park: 'Le parc de la place', pond: 'L’étang écologique', road: 'La rue circulaire He Be’Iyar', ringBld: 'L’anneau d’immeubles de la place', square: 'Kikar Hamedina',
+    towersAll: 'Tours Kikar Hamedina',
+    mark: 'Point de repère', markDist: (d) => `À ${d} des tours`,
+    askWa: (k, f) => (f ? `Conseil gratuit sur l’étage ${f} de la tour ${k}` : `Conseil gratuit sur la tour ${k}`),
+    askPlace: 'Conseil gratuit sur la vie à Kikar Hamedina',
+    opens: { 'פועל מאז 18.8.2023': 'En service depuis le 18 août 2023', 'מתוכנן להיפתח ב-2028': 'Ouverture prévue en 2028', 'מתוכנן להיפתח עד 2030 (הקטע בתל אביב)': 'Ouverture prévue d’ici 2030 (le tronçon de Tel Aviv)' },
+    pickLabel: (f, k) => `${f} · tour ${k}`,
+    notes: 'Ce qui est illustré',
+    collapse: 'Réduire', expand: 'Agrandir',
+    kinds: {
+      bus_stop: 'Arrêt de bus', station: 'Gare', subway_entrance: 'Entrée de station du tramway', tram_stop: 'Arrêt du tramway',
+      school: 'École', kindergarten: 'Jardin d’enfants', daycare: 'Crèche', library: 'Bibliothèque', college: 'Établissement supérieur',
+      park: 'Jardin public', garden: 'Jardin', playground: 'Aire de jeux', dog_park: 'Parc à chiens', sport: 'Équipement sportif', gym: 'Salle de sport',
+      fitness_centre: 'Club de remise en forme', pitch: 'Terrain de sport', sports_centre: 'Centre sportif', swimming_pool: 'Piscine',
+      cafe: 'Café', restaurant: 'Restaurant', bar: 'Bar', pub: 'Pub', fast_food: 'Restauration rapide', ice_cream: 'Glacier', bakery: 'Boulangerie',
+      supermarket: 'Supermarché', convenience: 'Épicerie', shopping: 'Boutique', mall: 'Centre commercial', pharmacy: 'Pharmacie', chemist: 'Droguerie',
+      bank: 'Banque', atm: 'Distributeur', post_office: 'Bureau de poste', greengrocer: 'Primeur', clinic: 'Centre médical', hospital: 'Hôpital',
+      health: 'Services de santé', dentist: 'Dentiste', doctors: 'Médecins', community: 'Centre communautaire', culture: 'Culture', worship: 'Synagogue',
+    },
+  },
+  ru: {
+    region: 'Башни Кикар ха-Медина и район вокруг них, иллюстрация',
+    eyebrow: 'Башни Кикар ха-Медина · Тель-Авив',
+    modes: { aerial: 'Сверху', walk: 'Прогулка', tower: 'Этаж и вид', places: 'Рядом' },
+    enter: 'Осмотреть площадь',
+    loading: 'Загружаем площадь',
+    full: 'Во весь экран', unfull: 'Выйти из полноэкранного режима', close: 'Закрыть', north: 'Север сверху',
+    aerialTitle: 'Площадь, парк и район',
+    aerialIntro: 'Выберите башню, сквер, здание или место, чтобы увидеть подробности.',
+    goTower: 'Выбрать башню',
+    walkTitle: 'Прогулка по площади',
+    walkIntro: 'На уровне глаз: по кольцевой улице площади и дорожкам парка.',
+    walkKeysDesk: 'Перетаскивайте, чтобы осмотреться · <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> или стрелки, чтобы идти · <kbd>Shift</kbd> быстрее',
+    walkKeysTouch: 'Ведите пальцем, чтобы осмотреться · круглая кнопка, чтобы идти',
+    spots: { ring: 'Кольцевая улица', park: 'Центр парка', towers: 'Между башнями', school: 'У школы' },
+    towerTitle: (k, f) => (f ? `Башня ${k} · этаж ${f}` : `Башня ${k}`),
+    tower: 'Башня', towerN: (k) => `Башня ${k}`,
+    floor: 'Этаж', floorN: (f) => `Этаж ${f}`,
+    floorsN: (n) => `${n} ${ruN(n, 'этаж', 'этажа', 'этажей')}`,
+    meters: (m) => `${m} м`,
+    eye: (h) => `Уровень глаз около ${frNum(h)} м`,
+    facingLbl: 'Сторона света',
+    dirs: ['север', 'северо-восток', 'восток', 'юго-восток', 'юг', 'юго-запад', 'запад', 'северо-запад'],
+    dirsShort: ['Север', 'СВ', 'Восток', 'ЮВ', 'Юг', 'ЮЗ', 'Запад', 'СЗ'],
+    sunOpen: 'Солнечные часы',
+    illusSpot: 'Место показано условно',
+    notesSum: 'Что показано условно',
+    towersHere: 'Башни Кикар ха-Медина',
+    floorTag: (f) => `Этаж ${f}`,
+    srcNames: { osm: 'OpenStreetMap', tlv: 'Муниципалитет Тель-Авива-Яффо, открытые данные', gis: 'Муниципалитет Тель-Авива-Яффо, открытые геоданные', 'tlv-gis': 'Муниципалитет Тель-Авива-Яффо, открытые геоданные', gtfs: 'Министерство транспорта', fp: 'findplace.co.il', walk: 'Mapbox, время пешком', lines: 'Open Bus Stride, Министерство транспорта' },
+    faces: (w) => `Окна на ${w}`,
+    viewOut: 'Башня снаружи', viewWin: 'Вид из окна',
+    pickFacing: 'Выберите сторону, чтобы увидеть вид из окна',
+    sun: 'Солнце и тень',
+    seasons: { 3: '21.03', 6: '21.06', 9: '21.09', 12: '21.12' }, // one row of chips (the long dates are in the sentences)
+    seasonsLong: { 3: '21 марта', 6: '21 июня', 9: '21 сентября', 12: '21 декабря' },
+    hour: 'Время',
+    sunNow: (alt, az) => `Солнце на высоте ${alt}°, с направления ${az}°`,
+    sunDown: 'Солнце за горизонтом',
+    riseSet: (r, s) => `Восход ${r} · закат ${s}`,
+    sunHours: (h, d) => `Около ${frNum(h)} ч прямого солнца в этом окне ${d}`,
+    sunNone: (d) => `${d} прямое солнце на эту сторону не попадает`,
+    sunOnNow: 'В это время солнце в окне', sunOffNow: 'В это время окно в тени',
+    sunNote: 'По движению солнца над Тель-Авивом и высоте окружающих зданий; деревья, балконы и жалюзи не учтены.',
+    hoursShort: (h) => `${frNum(h)} ч`,
+    placesTitle: 'Что рядом',
+    placesIntro: 'Время пешком измерено от кольцевой улицы площади, с той стороны, что обращена к месту.',
+    cats: { transport: 'Транспорт', education: 'Образование', outdoors: 'Парки и спорт', food: 'Кафе и рестораны', essentials: 'Магазины и услуги', health: 'Здоровье', community: 'Общество и культура' },
+    catCount: (n, m) => `Мест в пределах ${m} мин пешком: ${n}`,
+    walkMin: (m) => `${m} мин пешком`,
+    fromRing: 'от площади',
+    km: (m) => (m >= 1000 ? `${frNum((m / 1000).toFixed(1))} км` : `${Math.round(m / 10) * 10} м`),
+    fromTowers: (d) => `Около ${d} от центра комплекса`,
+    routeNote: 'Маршрут на карте приблизительный, по осям улиц муниципалитета. Время пешком: Mapbox.',
+    routeAir: 'Прямая линия до места; время пешком: Mapbox.',
+    lines: 'Маршруты',
+    source: 'Источник',
+    illus: 'Иллюстрация',
+    caption: 'Иллюстрация · здания, высоты, улицы, скверы и деревья: муниципалитет Тель-Авива-Яффо · башни: контур из данных муниципалитета с поворотом 1,25° на каждом этаже',
+    block: 'Здание', blockPublic: 'Общественное здание', blockBuilding: 'Строится',
+    hSrc: ['Высота по съёмке муниципалитета, 2019', 'Высота по данным муниципалитета', 'Высота по модели поверхности муниципалитета', 'Высота оценена по числу этажей'],
+    heightAbout: (h) => `Высота около ${h} м`,
+    built: (y) => `Построено в ${y} году`,
+    street: 'Улица', green: 'Общественный сквер', water: 'Вода', tree: 'Дерево',
+    treeLine: 'Деревья города по карте крон, снятой муниципалитетом в 2024 году; высота дерева условная.',
+    park: 'Парк на площади', pond: 'Экологический пруд', road: 'Кольцевая улица площади', ringBld: 'Кольцо зданий вокруг площади', square: 'Кикар ха-Медина',
+    towersAll: 'Башни Кикар ха-Медина',
+    mark: 'Ориентир', markDist: (d) => `${d} от башен`,
+    askWa: (k, f) => (f ? `Бесплатная консультация: этаж ${f}, башня ${k}` : `Бесплатная консультация по башне ${k}`),
+    askPlace: 'Бесплатная консультация о жизни на площади',
+    opens: { 'פועל מאז 18.8.2023': 'Работает с 18.08.2023', 'מתוכנן להיפתח ב-2028': 'Открытие запланировано на 2028 год', 'מתוכנן להיפתח עד 2030 (הקטע בתל אביב)': 'Открытие запланировано к 2030 году (участок в Тель-Авиве)' },
+    pickLabel: (f, k) => `${f} · башня ${k}`,
+    notes: 'Что показано условно',
+    collapse: 'Свернуть', expand: 'Развернуть',
+    kinds: {
+      bus_stop: 'Автобусная остановка', station: 'Железнодорожная станция', subway_entrance: 'Вход на станцию лёгкого метро', tram_stop: 'Остановка лёгкого метро',
+      school: 'Школа', kindergarten: 'Детский сад', daycare: 'Ясли', library: 'Библиотека', college: 'Колледж',
+      park: 'Общественный сад', garden: 'Сад', playground: 'Детская площадка', dog_park: 'Площадка для собак', sport: 'Спортивная площадка', gym: 'Тренажёрный зал',
+      fitness_centre: 'Фитнес-центр', pitch: 'Спортивное поле', sports_centre: 'Спортивный центр', swimming_pool: 'Бассейн',
+      cafe: 'Кафе', restaurant: 'Ресторан', bar: 'Бар', pub: 'Паб', fast_food: 'Фастфуд', ice_cream: 'Мороженое', bakery: 'Пекарня',
+      supermarket: 'Супермаркет', convenience: 'Продукты', shopping: 'Магазин', mall: 'Торговый центр', pharmacy: 'Аптека', chemist: 'Аптека-магазин',
+      bank: 'Банк', atm: 'Банкомат', post_office: 'Почта', greengrocer: 'Овощи и фрукты', clinic: 'Поликлиника', hospital: 'Больница',
+      health: 'Медицинские услуги', dentist: 'Стоматолог', doctors: 'Врачи', community: 'Общинный центр', culture: 'Культура', worship: 'Синагога',
+    },
+  },
+  ar: {
+    region: 'أبراج كيكار همدينا والحي من حولها، رسم توضيحي',
+    eyebrow: 'أبراج كيكار همدينا · تل أبيب',
+    modes: { aerial: 'من الأعلى', walk: 'جولة سيراً', tower: 'الطابق والإطلالة', places: 'بالجوار' },
+    enter: 'استكشفوا الميدان',
+    loading: 'جارٍ تحميل الميدان',
+    full: 'ملء الشاشة', unfull: 'الخروج من ملء الشاشة', close: 'إغلاق', north: 'الشمال للأعلى',
+    aerialTitle: 'الميدان والحديقة والحي',
+    aerialIntro: 'اختاروا برجاً أو حديقة أو مبنى أو مكاناً لرؤية التفاصيل.',
+    goTower: 'اختيار البرج',
+    walkTitle: 'جولة سيراً في الميدان',
+    walkIntro: 'على مستوى النظر، على الشارع الدائري حول الميدان وفي ممرات الحديقة.',
+    walkKeysDesk: 'اسحبوا للنظر حولكم · <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> أو الأسهم للمشي · <kbd>Shift</kbd> أسرع',
+    walkKeysTouch: 'اسحبوا للنظر حولكم · الزر الدائري للمشي',
+    spots: { ring: 'الشارع الدائري', park: 'قلب الحديقة', towers: 'بين الأبراج', school: 'قرب المدرسة' },
+    towerTitle: (k, f) => (f ? `البرج ${k} · الطابق ${f}` : `البرج ${k}`),
+    tower: 'البرج', towerN: (k) => `البرج ${k}`,
+    floor: 'الطابق', floorN: (f) => `الطابق ${f}`,
+    floorsN: (n) => arN(n, 'طابق واحد', 'طابقان', 'طوابق', 'طابقاً'),
+    meters: (m) => `${m} م`,
+    eye: (h) => `ارتفاع النظر نحو ${h} م`,
+    facingLbl: 'الاتجاه',
+    dirs: ['الشمال', 'الشمال الشرقي', 'الشرق', 'الجنوب الشرقي', 'الجنوب', 'الجنوب الغربي', 'الغرب', 'الشمال الغربي'],
+    dirsShort: ['شمال', 'شمال شرق', 'شرق', 'جنوب شرق', 'جنوب', 'جنوب غرب', 'غرب', 'شمال غرب'],
+    sunOpen: 'ساعة الشمس',
+    illusSpot: 'موقع توضيحي',
+    notesSum: 'ما هو توضيحي',
+    towersHere: 'أبراج كيكار همدينا',
+    floorTag: (f) => `الطابق ${f}`,
+    srcNames: { osm: 'OpenStreetMap', tlv: 'بلدية تل أبيب يافا، بيانات مفتوحة', gis: 'بلدية تل أبيب يافا، بيانات جغرافية مفتوحة', 'tlv-gis': 'بلدية تل أبيب يافا، بيانات جغرافية مفتوحة', gtfs: 'وزارة المواصلات', fp: 'findplace.co.il', walk: 'Mapbox، مدة المشي', lines: 'Open Bus Stride، وزارة المواصلات' },
+    faces: (w) => `باتجاه ${w}`,
+    viewOut: 'البرج من الخارج', viewWin: 'الإطلالة من النافذة',
+    pickFacing: 'اختاروا اتجاهاً لرؤية الإطلالة من النافذة',
+    sun: 'الشمس والظل',
+    seasons: { 3: '21.3', 6: '21.6', 9: '21.9', 12: '21.12' },
+    seasonsLong: { 3: '21 آذار', 6: '21 حزيران', 9: '21 أيلول', 12: '21 كانون الأول' },
+    hour: 'الساعة',
+    sunNow: (alt, az) => `الشمس على ارتفاع ${alt} درجة من اتجاه ${az} درجة`,
+    sunDown: 'الشمس تحت الأفق',
+    riseSet: (r, s) => `الشروق ${r} · الغروب ${s}`,
+    sunHours: (h, d) => `نحو ${h} ساعة من الشمس المباشرة على هذه النافذة في ${d}`,
+    sunNone: (d) => `لا تصل الشمس المباشرة إلى هذا الاتجاه في ${d}`,
+    sunOnNow: 'الشمس على النافذة في هذه الساعة', sunOffNow: 'النافذة في الظل في هذه الساعة',
+    sunNote: 'وفق مسار الشمس فوق تل أبيب وارتفاع المباني المحيطة؛ دون احتساب الأشجار والشرفات والستائر.',
+    hoursShort: (h) => `${h} س`,
+    placesTitle: 'ما في الجوار',
+    placesIntro: 'قيست مدة المشي من الشارع الدائري للميدان، من الجهة المقابلة للمكان.',
+    cats: { transport: 'المواصلات', education: 'التعليم', outdoors: 'الحدائق والرياضة', food: 'المقاهي والمطاعم', essentials: 'المتاجر والخدمات', health: 'الصحة', community: 'المجتمع والثقافة' },
+    catCount: (n, m) => `أماكن على بعد حتى ${m} دقيقة سيراً: ${n}`,
+    walkMin: (m) => `${arN(m, 'دقيقة واحدة', 'دقيقتان', 'دقائق', 'دقيقة')} سيراً`,
+    fromRing: 'من الميدان',
+    km: (m) => (m >= 1000 ? `${(m / 1000).toFixed(1)} كم` : `${Math.round(m / 10) * 10} م`),
+    fromTowers: (d) => `على بعد نحو ${d} من مركز المجمع`,
+    routeNote: 'المسار المرسوم تقديري على محاور شوارع البلدية. مدة المشي: Mapbox.',
+    routeAir: 'خط مستقيم إلى المكان؛ مدة المشي: Mapbox.',
+    lines: 'الخطوط',
+    source: 'المصدر',
+    illus: 'رسم توضيحي فقط',
+    caption: 'رسم توضيحي فقط · المباني والارتفاعات والشوارع والحدائق والأشجار: بلدية تل أبيب يافا · الأبراج: مخطط المبنى لدى البلدية مع دوران بمقدار 1.25 درجة في كل طابق',
+    block: 'مبنى', blockPublic: 'مبنى عام', blockBuilding: 'قيد البناء',
+    hSrc: ['الارتفاع وفق مسح البلدية، 2019', 'الارتفاع وفق بيانات البلدية', 'الارتفاع وفق نموذج السطح لدى البلدية', 'ارتفاع تقديري وفق عدد الطوابق'],
+    heightAbout: (h) => `بارتفاع نحو ${h} م`,
+    built: (y) => `بُني عام ${y}`,
+    street: 'شارع', green: 'مساحة خضراء عامة', water: 'مياه', tree: 'شجرة',
+    treeLine: 'أشجار المدينة وفق خريطة تيجان الأشجار التي أعدّتها البلدية عام 2024؛ ارتفاع الشجرة توضيحي.',
+    park: 'الحديقة في الميدان', pond: 'البركة البيئية', road: 'الشارع الدائري حول الميدان', ringBld: 'حلقة مباني الميدان', square: 'كيكار همدينا',
+    towersAll: 'أبراج كيكار همدينا',
+    mark: 'معلم', markDist: (d) => `على بعد ${d} من الأبراج`,
+    askWa: (k, f) => (f ? `استشارة مجانية حول الطابق ${f} في البرج ${k}` : `استشارة مجانية حول البرج ${k}`),
+    askPlace: 'استشارة مجانية حول الحياة في الميدان',
+    opens: { 'פועל מאז 18.8.2023': 'يعمل منذ 18.8.2023', 'מתוכנן להיפתח ב-2028': 'من المخطط افتتاحه عام 2028', 'מתוכנן להיפתח עד 2030 (הקטע בתל אביב)': 'من المخطط افتتاحه حتى 2030 (المقطع في تل أبيب)' },
+    pickLabel: (f, k) => `${f} · البرج ${k}`,
+    notes: 'ما هو توضيحي',
+    collapse: 'تصغير', expand: 'تكبير',
+    kinds: {
+      bus_stop: 'موقف حافلات', station: 'محطة قطار', subway_entrance: 'مدخل محطة القطار الخفيف', tram_stop: 'محطة القطار الخفيف',
+      school: 'مدرسة', kindergarten: 'روضة أطفال', daycare: 'حضانة', library: 'مكتبة', college: 'كلية',
+      park: 'حديقة عامة', garden: 'حديقة', playground: 'ملعب أطفال', dog_park: 'حديقة للكلاب', sport: 'منشأة رياضية', gym: 'نادٍ رياضي',
+      fitness_centre: 'مركز لياقة', pitch: 'ملعب رياضي', sports_centre: 'مركز رياضي', swimming_pool: 'بركة سباحة',
+      cafe: 'مقهى', restaurant: 'مطعم', bar: 'بار', pub: 'حانة', fast_food: 'وجبات سريعة', ice_cream: 'بوظة', bakery: 'مخبز',
+      supermarket: 'سوبرماركت', convenience: 'بقالة', shopping: 'متجر', mall: 'مركز تجاري', pharmacy: 'صيدلية', chemist: 'متجر أدوية',
+      bank: 'بنك', atm: 'صراف آلي', post_office: 'مكتب بريد', greengrocer: 'خضار وفواكه', clinic: 'عيادة', hospital: 'مستشفى',
+      health: 'خدمات صحية', dentist: 'طبيب أسنان', doctors: 'أطباء', community: 'مركز جماهيري', culture: 'ثقافة', worship: 'كنيس',
+    },
+  },
 };
 
 const DEFAULTS = {
   dataUrl: null,
   placesUrl: null,
-  lang: 'he',
+  dataI18nUrl: null,     // P8: the world data's texts in fr/ru/ar (default: world-i18n.json beside dataUrl)
+  lang: 'he',            // 'he' | 'en' | 'fr' | 'ru' | 'ar'
   i18n: null,
   onPick: null,
   poster: null,          // { src, srcset, sizes } or a URL: painted at once, before any 3D
@@ -402,9 +669,15 @@ const plateRadius = (half, n, phi) => half / Math.pow(Math.pow(Math.abs(Math.cos
 // ================================================================================================= mountWorld
 export function mountWorld(host, opts = {}) {
   const o = { ...DEFAULTS, ...opts };
-  const lang = String(o.lang || 'he').slice(0, 2) === 'en' ? 'en' : 'he';
+  // P8 (1.72.370): five languages (he, en, fr, ru, ar); any other code gets the English words
+  const lang0 = String(o.lang || 'he').slice(0, 2);
+  const lang = I18N[lang0] ? lang0 : 'en';
   const T = deepMerge(I18N[lang], o.i18n ? (o.i18n[lang] || o.i18n) : null);
-  const rtl = lang === 'he';
+  const rtl = lang === 'he' || lang === 'ar';
+  // a text of the world data in the page's language: its own, else the English (every language but Hebrew), else the Hebrew
+  const tx = (x) => (!x ? '' : x[lang] || (lang !== 'he' && x.en) || x.he || '');
+  // a name that exists only in Hebrew is left out on the other languages' pages (never half translated, never invented)
+  const heOnly = (s) => lang !== 'he' && HEB.test(s || '');
   const reduced = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
   const coarse = typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches;
 
@@ -554,13 +827,15 @@ export function mountWorld(host, opts = {}) {
     loadEl.hidden = false;
     const bar = loadEl.querySelector('.nlw-bar i');
     const dataP = fetchWithProgress(o.dataUrl, (f) => { if (bar) bar.style.width = Math.round(f * 80) + '%'; });
-    const [three, oc, bgu, data] = await Promise.all([
-      import('three'), import('three/addons/controls/OrbitControls.js'), import('three/addons/utils/BufferGeometryUtils.js'), dataP]);
+    const wordsP = lang === 'he' || lang === 'en' ? Promise.resolve(null) : loadWords();
+    const [three, oc, bgu, data, words] = await Promise.all([
+      import('three'), import('three/addons/controls/OrbitControls.js'), import('three/addons/utils/BufferGeometryUtils.js'), dataP, wordsP]);
     if (destroyed) return;
     THREE = three; OrbitControls = oc.OrbitControls; mergeGeometries = bgu.mergeGeometries;
     if (bar) bar.style.width = '88%';
     await new Promise((r) => requestAnimationFrame(r));
     W = decode(data);
+    overlayWords(W, words);
     buildScene();
     if (bar) bar.style.width = '100%';
     isReady = true;
@@ -574,6 +849,25 @@ export function mountWorld(host, opts = {}) {
     renderNow();
     loop();
     readyCbs.forEach((f) => f(api));
+  }
+
+  // P8: the world data's texts in French, Russian or Arabic (world-i18n.json beside world.json: English text -> that language).
+  // Keyed by the English text, so a line the data changes falls back to English, never to a wrong translation.
+  function loadWords() {
+    const u = o.dataI18nUrl || (o.dataUrl ? String(o.dataUrl).replace(/world\.json(?=\?|$)/, 'world-i18n.json') : '');
+    if (!u || u === o.dataUrl) return Promise.resolve(null);
+    return fetch(u, { credentials: 'same-origin' }).then((r) => (r.ok ? r.json() : null)).then((d) => (d && d[lang]) || null).catch(() => null);
+  }
+  function overlayWords(W2, words) {
+    if (!words) return;
+    const put = (x) => { if (typeof x.en === 'string' && !x[lang] && words[x.en]) x[lang] = words[x.en]; };
+    const walk = (v) => {
+      if (Array.isArray(v)) { v.forEach(walk); return; }
+      if (!v || typeof v !== 'object') return;
+      put(v);
+      for (const k in v) if (k !== 'src' && v[k] && typeof v[k] === 'object') walk(v[k]);
+    };
+    [W2.civic, W2.features, W2.marks, W2.pins, W2.model && W2.model.notes, W2.facts, W2.sources].forEach(walk);
   }
 
   async function fetchWithProgress(url, cb) {
@@ -1571,8 +1865,8 @@ export function mountWorld(host, opts = {}) {
     try {
       const d = await loadPlaces();
       if (places) return;
-      // P7: on the English page a place shows only with a name in English or in Latin letters (the fleet's AreaLife rule)
-      const list = (d.places || []).filter((p) => p.walk != null && !p.generic && !(lang === 'en' && !(p.names && p.names.en) && HEB.test(p.name || '')));
+      // P7/P8: on a language page a place shows only with a name in that language, in English or in Latin letters (AreaLife's rule)
+      const list = (d.places || []).filter((p) => p.walk != null && !p.generic && !heOnly(placeName(p)));
       const byId = {}; list.forEach((p) => { byId[p.id] = p; });
       places = { doc: d, list, byId, shown: [] };
       // the 5 / 10 / 15 minute areas (Mapbox walking, from the ring road; places.json "iso")
@@ -1748,19 +2042,19 @@ export function mountWorld(host, opts = {}) {
       for (const k in TW) { if (k === S.tower) continue; const X = TW[k]; add({ id: 't' + k, kind: 'tower', name: T.towerN(k), meta: tDesc(k), pos: new THREE.Vector3(X.t.cx, X.height + 5, X.t.cz), prio: 3, click: () => openCard(towerCard(k)) }); }
     }
     if (m === 'aerial' || m === 'walk' || m === 'tower') {
-      for (const c of W.civic) add({ id: 'c' + c.key, kind: 'civic', name: lang2 === 'en' ? c.en : c.he, meta: '', pos: new THREE.Vector3(c.x, 22, c.z), prio: 20, click: () => openCard(civicCard(c.key)) });
+      for (const c of W.civic) add({ id: 'c' + c.key, kind: 'civic', name: tx(c), meta: '', pos: new THREE.Vector3(c.x, 22, c.z), prio: 20, click: () => openCard(civicCard(c.key)) });
       if (W.pond) add({ id: 'pond', kind: 'water', name: T.pond, meta: T.illus, pos: new THREE.Vector3(W.pondC[0], 0.5, W.pondC[1]), prio: 25, click: () => openCard(simpleCard('pond')) });
       if (W.park && m !== 'walk') add({ id: 'park', kind: 'green', name: T.park, meta: '', pos: new THREE.Vector3(-30, 0.5, 40), prio: 30, click: () => openCard(simpleCard('park')) });
     }
     if (m === 'aerial' || m === 'walk' || (m === 'places' && S.cat === 'outdoors')) {
-      for (const f of W.features) add({ id: 'f' + f.key, kind: 'feature', name: lang === 'en' ? f.en : f.he, meta: m === 'walk' || m === 'places' ? T.illusSpot : '', pos: new THREE.Vector3(f.x, 0.6, f.z), prio: m === 'places' ? 60 : 70, dotOnly: m === 'aerial' && narrow(), click: () => openCard(featureCard(f.key)) });
+      for (const f of W.features) add({ id: 'f' + f.key, kind: 'feature', name: tx(f), meta: m === 'walk' || m === 'places' ? T.illusSpot : '', pos: new THREE.Vector3(f.x, 0.6, f.z), prio: m === 'places' ? 60 : 70, dotOnly: m === 'aerial' && narrow(), click: () => openCard(featureCard(f.key)) });
     }
     if (m === 'aerial' || (fp && fp.window)) {
       const keysA = ['sea', 'port', 'reading_lighthouse', 'sportek', 'azrieli_center', 'ramat_aviv', 'tau', 'reading', 'city_hall', 'habima', 'azrieli_sarona', 'moshe_aviv', 'savidor', 'ichilov'];
       for (const mk of W.marks) {
         if (m === 'aerial' && !['sea', 'port', 'reading_lighthouse', 'sportek'].includes(mk.key)) continue;
         if (!keysA.includes(mk.key)) continue;
-        add({ id: 'm' + mk.key, kind: 'mark', name: lang2 === 'en' ? mk.en : mk.he, meta: T.km(mk.dist), pos: new THREE.Vector3(mk.x, mk.key === 'sea' ? 1 : Math.max(20, mk.h || 30), mk.z), prio: 60 + mk.dist / 100, click: () => openCard(markCard(mk)) });
+        add({ id: 'm' + mk.key, kind: 'mark', name: tx(mk), meta: T.km(mk.dist), pos: new THREE.Vector3(mk.x, mk.key === 'sea' ? 1 : Math.max(20, mk.h || 30), mk.z), prio: 60 + mk.dist / 100, click: () => openCard(markCard(mk)) });
       }
     }
     if (fp && fp.window && W.sea) {
@@ -1769,7 +2063,7 @@ export function mountWorld(host, opts = {}) {
         const x = fp.x + d.x * r, z = fp.z + d.z * r;
         if (x >= W.sea.bb[0] && x <= W.sea.bb[2] && z >= W.sea.bb[1] && z <= W.sea.bb[3] && pip(W.sea.P, x, z)) {
           const tw = W.marks.find((mk) => mk.key === 'sea');
-          add({ id: 'seaview', kind: 'mark', name: tw ? (lang === 'en' ? tw.en : tw.he) : T.water, meta: T.km(Math.hypot(x - (TW[S.tower] ? TW[S.tower].t.cx : 0), z - (TW[S.tower] ? TW[S.tower].t.cz : 0))), pos: new THREE.Vector3(x, 1, z), prio: 45, click: () => tw && openCard(markCard(tw)) });
+          add({ id: 'seaview', kind: 'mark', name: tw ? tx(tw) : T.water, meta: T.km(Math.hypot(x - (TW[S.tower] ? TW[S.tower].t.cx : 0), z - (TW[S.tower] ? TW[S.tower].t.cz : 0))), pos: new THREE.Vector3(x, 1, z), prio: 45, click: () => tw && openCard(markCard(tw)) });
           break;
         }
       }
@@ -1778,7 +2072,7 @@ export function mountWorld(host, opts = {}) {
       for (const pn of W.pins) {
         const p = placesIndex[pn.id]; if (!p) continue;
         if (m === 'aerial' && pn.tier !== 1) continue;
-        add({ id: 'p' + pn.id, kind: 'pin', name: lang2 === 'en' ? pn.en : p.name, meta: opensOf(p) || T.walkMin(p.walk), pos: new THREE.Vector3(p.x, 1.5, p.z), prio: 100 + pn.tier * 50 + p.dist / 20, click: () => openCard(placeCard(p)) });
+        add({ id: 'p' + pn.id, kind: 'pin', name: lang2 === 'he' ? p.name : (pn[lang2] || (p.names && p.names[lang2]) || pn.en), meta: opensOf(p) || T.walkMin(p.walk), pos: new THREE.Vector3(p.x, 1.5, p.z), prio: 100 + pn.tier * 50 + p.dist / 20, click: () => openCard(placeCard(p)) });
       }
     }
     if (m === 'places' && places) {
@@ -1823,8 +2117,8 @@ export function mountWorld(host, opts = {}) {
     return false;
   }
   let placesIndex = null;
-  const placeName = (p) => (lang === 'en' && p.names && p.names.en ? p.names.en : p.name);
-  const opensOf = (p) => (!p.opens ? '' : lang === 'en' ? ((T.opens && T.opens[p.opens]) || '') : p.opens);
+  const placeName = (p) => (lang === 'he' ? p.name : (p.names && (p.names[lang] || p.names.en)) || p.name);
+  const opensOf = (p) => (!p.opens ? '' : lang !== 'he' ? ((T.opens && T.opens[p.opens]) || '') : p.opens);
   function labelEl(c) {
     let e = labelPool.get(c.id);
     if (!e) {
@@ -1923,11 +2217,11 @@ export function mountWorld(host, opts = {}) {
   // ================================================================================================ cards
   const srcHtml = (keys) => {
     if (!keys || !keys.length) return '';
-    const parts = keys.map((k) => { const s = W.sources[k]; if (!s) return esc(k); const t = esc(s[lang] || s.he); return s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener nofollow">${t}</a>` : t; });
+    const parts = keys.map((k) => { const s = W.sources[k]; if (!s) return esc(k); const t = esc(tx(s)); return s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener nofollow">${t}</a>` : t; });
     return `<span class="nlw-src">${esc(T.source)}: ${parts.join(' · ')}</span>`;
   };
-  const factList = (lines) => `<ul class="nlw-facts">${(lines || []).map((l) => `<li>${esc(l[lang] || l.he)}${srcHtml(l.src)}</li>`).join('')}</ul>`;
-  const notesHtml = () => `<details class="nlw-notes"><summary>${esc(T.notesSum)}</summary><ul>${(W.model.notes || []).map((n) => `<li>${esc(n[lang] || n.he)}</li>`).join('')}</ul></details>`;
+  const factList = (lines) => `<ul class="nlw-facts">${(lines || []).map((l) => `<li>${esc(tx(l))}${srcHtml(l.src)}</li>`).join('')}</ul>`;
+  const notesHtml = () => `<details class="nlw-notes"><summary>${esc(T.notesSum)}</summary><ul>${(W.model.notes || []).map((n) => `<li>${esc(tx(n))}</li>`).join('')}</ul></details>`;
   function openCard(c) {
     if (!c || !ui.card) return;
     root.classList.add('has-card');
@@ -1968,12 +2262,12 @@ export function mountWorld(host, opts = {}) {
   function featureCard(key) {
     const f = W.features.find((x) => x.key === key);
     if (!f) return null;
-    const html = eyebrow(T.park) + title(lang === 'en' ? f.en : f.he) + factList(f.lines) + `<div class="nlw-note">${esc(T.illusSpot)}</div>`;
+    const html = eyebrow(T.park) + title(tx(f)) + factList(f.lines) + `<div class="nlw-note">${esc(T.illusSpot)}</div>`;
     return { html, pick: { kind: 'feature', key } };
   }
   function civicCard(key) {
     const c = W.civic.find((x) => x.key === key);
-    const html = eyebrow(T.square) + title(lang === 'en' ? c.en : c.he) + factList(W.facts[key]);
+    const html = eyebrow(T.square) + title(tx(c)) + factList(W.facts[key]);
     return { html, pick: { kind: 'civic', key } };
   }
   function simpleCard(kind) {
@@ -1987,35 +2281,36 @@ export function mountWorld(host, opts = {}) {
     const kindName = (b.flags & 32) ? T.blockBuilding : (b.flags & 1) ? T.blockPublic : T.block;
     if (b.flags & 8) return civicCard('school');
     if (b.flags & 16) return civicCard('centre');
-    const ttl = b.name || kindName;
+    const bn = heOnly(b.name) ? '' : b.name; // P8: a Hebrew-only building name stays off the other languages' cards
+    const ttl = bn || kindName;
     const kv = [];
     if (b.floors > 0) kv.push(`<b>${esc(T.floorsN(b.floors))}</b>`);
     kv.push(`<span>${esc(T.heightAbout(Math.round(b.h)))}</span>`);
     if (b.year > 1800) kv.push(`<span>${esc(T.built(b.year))}</span>`);
     const where = T.fromTowers(T.km(Math.hypot(b.cx, b.cz)));
-    let html = eyebrow(b.flags & 4 ? T.ringBld : b.name ? kindName : where) + title(ttl) + `<div class="nlw-kv">${kv.join('')}</div>` +
-      `<div class="nlw-note">${esc(T.hSrc[hs])}${b.flags & 4 || b.name ? ' · ' + esc(where) : ''}</div>` + srcHtml(['tlv_513']);
+    let html = eyebrow(b.flags & 4 ? T.ringBld : bn ? kindName : where) + title(ttl) + `<div class="nlw-kv">${kv.join('')}</div>` +
+      `<div class="nlw-note">${esc(T.hSrc[hs])}${b.flags & 4 || bn ? ' · ' + esc(where) : ''}</div>` + srcHtml(['tlv_513']);
     if (b.flags & 4) html += `<div class="nlw-sec">${factList(W.facts.ring)}</div>`;
     return { html, pick: { kind: 'block', index: b.i, h: b.h, floors: b.floors } };
   }
   function groundCard(hit) {
     if (hit.kind === 'park' || hit.kind === 'pond' || hit.kind === 'road') return simpleCard(hit.kind);
-    if (hit.kind === 'street') return { html: eyebrow(T.street) + title(hit.street.name || T.street) + `<div class="nlw-note">${esc(T.fromTowers(T.km(Math.hypot(hit.x, hit.z))))}</div>` + srcHtml(['tlv_507']), pick: { kind: 'street', name: hit.street.name } };
-    if (hit.kind === 'green') return { html: eyebrow(T.green) + title(hit.green.name || T.green) + `<div class="nlw-note">${esc(T.fromTowers(T.km(Math.hypot(hit.x, hit.z))))}</div>` + srcHtml(['tlv_503']), pick: { kind: 'green', name: hit.green.name } };
-    if (hit.kind === 'water') return { html: eyebrow(T.water) + title(hit.water.name || T.water) + srcHtml(['tlv_504']), pick: { kind: 'water', name: hit.water.name } };
+    if (hit.kind === 'street') return { html: eyebrow(T.street) + title((!heOnly(hit.street.name) && hit.street.name) || T.street) + `<div class="nlw-note">${esc(T.fromTowers(T.km(Math.hypot(hit.x, hit.z))))}</div>` + srcHtml(['tlv_507']), pick: { kind: 'street', name: hit.street.name } };
+    if (hit.kind === 'green') return { html: eyebrow(T.green) + title((!heOnly(hit.green.name) && hit.green.name) || T.green) + `<div class="nlw-note">${esc(T.fromTowers(T.km(Math.hypot(hit.x, hit.z))))}</div>` + srcHtml(['tlv_503']), pick: { kind: 'green', name: hit.green.name } };
+    if (hit.kind === 'water') return { html: eyebrow(T.water) + title((!heOnly(hit.water.name) && hit.water.name) || T.water) + srcHtml(['tlv_504']), pick: { kind: 'water', name: hit.water.name } };
     if (hit.kind === 'lot') return simpleCard('square');
     return null;
   }
   function markCard(mk) {
-    return { html: eyebrow(T.mark) + title(lang === 'en' ? mk.en : mk.he) + `<div class="nlw-kv"><b>${esc(T.markDist(T.km(mk.dist)))}</b></div>` + `<span class="nlw-src">${esc(T.source)}: OpenStreetMap</span>`, pick: { kind: 'mark', key: mk.key } };
+    return { html: eyebrow(T.mark) + title(tx(mk)) + `<div class="nlw-kv"><b>${esc(T.markDist(T.km(mk.dist)))}</b></div>` + `<span class="nlw-src">${esc(T.source)}: OpenStreetMap</span>`, pick: { kind: 'mark', key: mk.key } };
   }
   function placeCard(p, air) {
     const kind = T.kinds[p.k] || T.cats[p.g] || '';
     const kv = [`<b>${esc(T.walkMin(p.walk))}</b>`, `<span>${esc(T.fromRing)}</span>`, `<span>${esc(T.km(p.dist))}</span>`];
     let html = eyebrow(`${T.cats[p.g] || ''}${kind && kind !== T.cats[p.g] ? ' · ' + kind : ''}`) + title(placeName(p)) + `<div class="nlw-kv">${kv.join('')}</div>`;
     const lines = [];
-    if (p.addr && !(lang === 'en' && HEB.test(p.addr))) lines.push(esc(p.addr));
-    if (p.info && p.info !== kind && !(lang === 'en' && HEB.test(p.info))) lines.push(esc(p.info));
+    if (p.addr && !heOnly(p.addr)) lines.push(esc(p.addr));
+    if (p.info && p.info !== kind && !heOnly(p.info)) lines.push(esc(p.info));
     if (opensOf(p)) lines.push(esc(opensOf(p)));
     if (p.lines && p.lines.length) lines.push(`${esc(T.lines)}: <bdi>${esc(p.lines.slice(0, 16).join(', '))}</bdi>`);
     if (lines.length) html += `<ul class="nlw-facts">${lines.map((l) => `<li>${l}</li>`).join('')}</ul>`;
@@ -2120,7 +2415,7 @@ export function mountWorld(host, opts = {}) {
     if (S.facing == null) return '';
     const b = facingBearing(S.tower, S.floor, S.facing);
     const h = sunHoursFor(S.tower, S.floor, b, S.season);
-    return `<div class="nlw-sub">${esc(T.faces(dirWord(b)))} · ${Math.round(b)}° · ${esc(T.eye(eyeH(S.floor).toFixed(1)))}</div>` +
+    return `<div class="nlw-sub">${esc(T.faces(dirWord(b)))} · <bdi dir="ltr">${Math.round(b)}°</bdi> · ${esc(T.eye(eyeH(S.floor).toFixed(1)))}</div>` +
       `<div class="nlw-line nlw-sun-line ${h ? '' : 'is-none'}">${esc(h ? T.sunHours(h.toString(), T.seasonsLong[S.season]) : T.sunNone(T.seasonsLong[S.season]))}</div>`;
   }
   function facesHtml() {

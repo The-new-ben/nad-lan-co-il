@@ -1,0 +1,283 @@
+{
+ "when": "2026-09-30 06:32",
+ "release_copy_md5": "ae0966a44f5a671cd91ae4bc9b8ef61d",
+ "pages": {
+  "fr-390": {
+   "probe": {
+    "h1": 207,
+    "h1n": 1,
+    "lead": 342,
+    "cta": 868,
+    "stage": 1032,
+    "map": 1862,
+    "facts": 4217,
+    "faq": 14069,
+    "stacked": true,
+    "vh": 844
+   },
+   "C3": true,
+   "C4": true,
+   "world_ready": true,
+   "pick": {
+    "tower": "C",
+    "floor": "30 · tour C",
+    "facing": "ouest",
+    "floorNum": 30,
+    "towerKey": "C",
+    "bearing": 266,
+    "unit": "",
+    "example": false,
+    "name": "Tours Kikar Hamedina"
+   },
+   "card_whatsapp": {
+    "bg": "rgb(15, 122, 99)",
+    "text": "Bonjour, je souhaite un conseil gratuit sur les Tours Kikar Hamedina (nad-lan.co.il) · Tour C\n\nSource: Tours Kikar Hamedina, Tel Aviv · projet · étage 30 · tour C · ouest\nnad-lan.co.il/projects/hamedina-fr/"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "fr-1440": {
+   "probe": {
+    "h1": 209,
+    "h1n": 1,
+    "lead": 364,
+    "cta": 908,
+    "stage": 209,
+    "map": 1108,
+    "facts": 2749,
+    "faq": 8970,
+    "stacked": false,
+    "vh": 900
+   },
+   "C3": true,
+   "C4": true,
+   "world_ready": true,
+   "pick": {
+    "tower": "C",
+    "floor": "30 · tour C",
+    "facing": "ouest",
+    "floorNum": 30,
+    "towerKey": "C",
+    "bearing": 266,
+    "unit": "",
+    "example": false,
+    "name": "Tours Kikar Hamedina"
+   },
+   "card_whatsapp": {
+    "bg": "rgb(15, 122, 99)",
+    "text": "Bonjour, je souhaite un conseil gratuit sur les Tours Kikar Hamedina (nad-lan.co.il) · Tour C\n\nSource: Tours Kikar Hamedina, Tel Aviv · projet · étage 30 · tour C · ouest\nnad-lan.co.il/projects/hamedina-fr/"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "fr-412g": {
+   "probe": {
+    "h1": 207,
+    "h1n": 1,
+    "lead": 342,
+    "cta": 840,
+    "stage": 1004,
+    "map": 1885,
+    "facts": 4195,
+    "faq": 13753,
+    "stacked": true,
+    "vh": 915
+   },
+   "C3": true,
+   "C4": true
+  },
+  "ru-390": {
+   "probe": {
+    "h1": 207,
+    "h1n": 1,
+    "lead": 342,
+    "cta": 868,
+    "stage": 1032,
+    "map": 1862,
+    "facts": 4311,
+    "faq": 14535,
+    "stacked": true,
+    "vh": 844
+   },
+   "C3": true,
+   "C4": true,
+   "world_ready": true,
+   "pick": {
+    "tower": "C",
+    "floor": "30 · башня C",
+    "facing": "запад",
+    "floorNum": 30,
+    "towerKey": "C",
+    "bearing": 266,
+    "unit": "",
+    "example": false,
+    "name": "Башни Кикар ха-Медина"
+   },
+   "card_whatsapp": {
+    "bg": "rgb(15, 122, 99)",
+    "text": "Здравствуйте, хочу бесплатную консультацию по проекту «Башни Кикар ха-Медина» (nad-lan.co.il) · Башня C\n\nИсточник: Башни Кикар ха-Медина, Тель-Авив · проект · этаж 30 · башня C · запад\nnad-lan.co.il/projects/hamedina-ru/"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "ru-1440": {
+   "probe": {
+    "h1": 209,
+    "h1n": 1,
+    "lead": 407,
+    "cta": 951,
+    "stage": 209,
+    "map": 1151,
+    "facts": 2792,
+    "faq": 9113,
+    "stacked": false,
+    "vh": 900
+   },
+   "C3": true,
+   "C4": true,
+   "world_ready": true,
+   "pick": {
+    "tower": "C",
+    "floor": "30 · башня C",
+    "facing": "запад",
+    "floorNum": 30,
+    "towerKey": "C",
+    "bearing": 266,
+    "unit": "",
+    "example": false,
+    "name": "Башни Кикар ха-Медина"
+   },
+   "card_whatsapp": {
+    "bg": "rgb(15, 122, 99)",
+    "text": "Здравствуйте, хочу бесплатную консультацию по проекту «Башни Кикар ха-Медина» (nad-lan.co.il) · Башня C\n\nИсточник: Башни Кикар ха-Медина, Тель-Авив · проект · этаж 30 · башня C · запад\nnad-lan.co.il/projects/hamedina-ru/"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "ru-412g": {
+   "probe": {
+    "h1": 207,
+    "h1n": 1,
+    "lead": 342,
+    "cta": 840,
+    "stage": 1004,
+    "map": 1885,
+    "facts": 4211,
+    "faq": 13977,
+    "stacked": true,
+    "vh": 915
+   },
+   "C3": true,
+   "C4": true
+  },
+  "ar-390": {
+   "probe": {
+    "h1": 207,
+    "h1n": 1,
+    "lead": 318,
+    "cta": 704,
+    "stage": 814,
+    "map": 1602,
+    "facts": 3799,
+    "faq": 11934,
+    "stacked": true,
+    "vh": 844
+   },
+   "C3": true,
+   "C4": true,
+   "world_ready": true,
+   "pick": {
+    "tower": "C",
+    "floor": "30 · البرج C",
+    "facing": "الغرب",
+    "floorNum": 30,
+    "towerKey": "C",
+    "bearing": 266,
+    "unit": "",
+    "example": false,
+    "name": "أبراج كيكار همدينا"
+   },
+   "card_whatsapp": {
+    "bg": "rgb(15, 122, 99)",
+    "text": "مرحباً، أود الحصول على استشارة مجانية حول أبراج كيكار همدينا (nad-lan.co.il) · البرج C\n\nالمصدر: Kikar Hamedina Towers, Tel Aviv · مشروع · طابق 30 · البرج C · الغرب\nnad-lan.co.il/projects/hamedina-ar/"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "ar-1440": {
+   "probe": {
+    "h1": 209,
+    "h1n": 1,
+    "lead": 340,
+    "cta": 740,
+    "stage": 209,
+    "map": 1060,
+    "facts": 2596,
+    "faq": 8218,
+    "stacked": false,
+    "vh": 900
+   },
+   "C3": true,
+   "C4": true,
+   "world_ready": true,
+   "pick": {
+    "tower": "C",
+    "floor": "30 · البرج C",
+    "facing": "الغرب",
+    "floorNum": 30,
+    "towerKey": "C",
+    "bearing": 266,
+    "unit": "",
+    "example": false,
+    "name": "أبراج كيكار همدينا"
+   },
+   "card_whatsapp": {
+    "bg": "rgb(15, 122, 99)",
+    "text": "مرحباً، أود الحصول على استشارة مجانية حول أبراج كيكار همدينا (nad-lan.co.il) · البرج C\n\nالمصدر: Kikar Hamedina Towers, Tel Aviv · مشروع · طابق 30 · البرج C · الغرب\nnad-lan.co.il/projects/hamedina-ar/"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "ar-412g": {
+   "probe": {
+    "h1": 207,
+    "h1n": 1,
+    "lead": 318,
+    "cta": 704,
+    "stage": 814,
+    "map": 1653,
+    "facts": 3823,
+    "faq": 11828,
+    "stacked": true,
+    "vh": 915
+   },
+   "C3": true,
+   "C4": true
+  }
+ },
+ "local_files_served": {
+  "assets/project-stage/hamedina/poster-800.webp": "487e70708ceabe67",
+  "assets/nlds/nlds.css": "51bb81e52d33b089",
+  "assets/arealife/areamap.js": "597129ca97783798",
+  "assets/showroom-engine/mv-ux.js": "645721814809bd3b",
+  "assets/project-stage/hamedina/places.json": "fa2c7837bafc7f68",
+  "assets/branding/favicon.svg": "3983279f7c7823ef",
+  "assets/project-stage/world/world.js": "6395f279f0add1e8",
+  "assets/project-stage/world/world.css": "825815926ae67ff8",
+  "assets/project-stage/hamedina/world.json": "f73687164839d711",
+  "assets/project-stage/hamedina/world-i18n.json": "ea5bf49be4678d03",
+  "assets/project-stage/hamedina/poster-1600.webp": "f84af9300908fc59"
+ }
+}

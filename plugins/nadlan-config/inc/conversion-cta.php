@@ -114,6 +114,9 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
    mark, WhatsApp and "ייעוץ חינם". The round 54px button after 120px of scrolling (PublishPage v48-69) is gone. It still never
    hides, and over a form button or the stage's floor card it moves up instead (v69, v91). */
 @media(max-width:520px){.nlcta-wa{max-width:min(72vw,280px)}}
+/* P8 (1.72.370): the Russian words ("Бесплатная консультация", 201px) pushed the NadLan mark past the pill and off a 360-390px
+   screen; on Russian pages the pill may take a little more width and the words a slightly smaller size (measured: fits at 360) */
+@media(max-width:520px){html[lang^="ru"] #nlcta .nlcta-wa{max-width:min(80vw,292px)}html[lang^="ru"] #nlcta .nlcta-txt b{font-size:13.5px;letter-spacing:-.1px}}
 @media(max-width:600px){html body #nlcta.is-clear{bottom:calc(env(safe-area-inset-bottom,0px) + var(--nlcta-lift,150px))!important}}
 /* v101.2: above the area map's cone, on every width (the script below sets is-cone and the lift) */
 html body #nlcta.is-cone{bottom:calc(env(safe-area-inset-bottom,0px) + var(--nlcta-lift,150px))!important}
@@ -184,6 +187,8 @@ html body #nlcta .nlcta-wa{display:flex!important}
 		var ask=function(){if(!tick){tick=true;window.requestAnimationFrame(fit);}};
 		window.addEventListener('scroll',ask,{passive:true});
 		window.addEventListener('resize',ask);
+		// P7.1 (1.72.370): measure again once the page has loaded (fonts, the first picture, a stage's own bar): on a phone's first screen the pill sat on the controls until the first scroll
+		window.addEventListener('load',ask);
 		if(mq.addEventListener){mq.addEventListener('change',fit);}
 		// the stage's card opens and closes without a scroll: look again after a tap on the stage and on its floor events
 		document.addEventListener('click',function(e){if(e.target&&e.target.closest&&e.target.closest('#nlps,#nlps-pick,.nlps-steps,#nlps-view-cta')){setTimeout(ask,350);}},true);

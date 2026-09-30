@@ -34,6 +34,9 @@ WATCHLIST = [
     "https://nad-lan.co.il/projects/duo-tel-aviv/",
     "https://nad-lan.co.il/projects/hamedina/",      # Kikar Hamedina (P7, 1.72.369), the world module
     "https://nad-lan.co.il/projects/hamedina-en/",
+    "https://nad-lan.co.il/projects/hamedina-fr/",   # Kikar Hamedina P8 (1.72.370): fr, ru, ar
+    "https://nad-lan.co.il/projects/hamedina-ru/",
+    "https://nad-lan.co.il/projects/hamedina-ar/",
     "https://nad-lan.co.il/projects/einstein-tower/",
     "https://nad-lan.co.il/echo-city/",
     "https://nad-lan.co.il/tours/",

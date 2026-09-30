@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""The two Kikar Hamedina posts (P7a), as data: slug, title, content, SEO and meta. One source for deploy369.py (through
+"""The Kikar Hamedina posts (P7a he/en; P8 fr/ru/ar), as data: slug, title, content, SEO and meta. One source for deploy369.py (through
 gen_deploy369.py), preview_hamedina.py and scripts/seo/project_meta.py.
 
 - The content is docs/research/2026-09-30-kikar-hamedina/post-he.html / post-en.html, stored as ONE line (no whitespace between
@@ -68,6 +68,82 @@ POSTS = {
             "project_mode": "review",
         },
     },
+    # P8 (1.72.370): the French, Russian and Arabic siblings, culturally rewritten (serp-fr.md, serp-ru.md, serp-ar.md). The
+    # meta follows the English page's (city, neighbourhood and status in Hebrew: inc/lang-pages.php translates them on the page);
+    # developer_name fits the notice's sentence in each language ("le site officiel de %s", "официальным сайтом %s", "لـ%s").
+    "fr": {
+        "slug": "hamedina-fr",
+        "title": "Tours Kikar Hamedina, Tel Aviv",
+        "file": "post-fr.html",
+        "seo_title": "Tours Kikar Hamedina à Tel Aviv : appartements, prix et 3D",
+        "seo_desc": "Tours Kikar Hamedina à Tel Aviv : 3 tours torsadées, 453 appartements, ventes de 9,58 à 10,63 M₪, livraison, le parc et la vue de chaque étage.",
+        "faq_h2": "Questions fréquentes",
+        "meta": {
+            "lat": LAT, "lng": LNG,
+            "developer_name": "la société des propriétaires fonciers de Kikar Hamedina",
+            "contractor_name": "Electra Construction et Ashtrom",
+            "architect_name": "Yaski Mor Sivan Architectes",
+            "city": "תל אביב יפו",
+            "neighborhood": "הצפון החדש, סביבת כיכר המדינה",
+            "address": "Rue He Be’Iyar, Kikar Hamedina",
+            "gush": "6213",
+            "project_type": "new_build",
+            "project_status": "בבנייה",
+            "num_units": 453, "num_buildings": 3, "num_floors": 40,
+            "amenities": "Piscine, Salle de sport, Spa, Salles de soins, Salles polyvalentes, Parking souterrain, Parc public avec étang",
+            "source": "Ashtrom, Electra, Globes, Calcalist, Mako, municipalité de Tel Aviv-Jaffa",
+            "project_mode": "review",
+        },
+    },
+    "ru": {
+        "slug": "hamedina-ru",
+        "title": "Башни Кикар ха-Медина, Тель-Авив",
+        "file": "post-ru.html",
+        "seo_title": "Башни Кикар ха-Медина, Тель-Авив: цены, сделки, карта и 3D",
+        "seo_desc": "Башни Кикар ха-Медина в Тель-Авиве: 3 закрученные башни, 453 квартиры, сделки от 9,58 до 10,63 млн ₪, сроки заселения, парк и вид с каждого этажа.",
+        "faq_h2": "Частые вопросы",
+        "meta": {
+            "lat": LAT, "lng": LNG,
+            "developer_name": "компании владельцев земли на Кикар ха-Медина",
+            "contractor_name": "Electra Construction и Ashtrom",
+            "architect_name": "Yaski Mor Sivan Architects",
+            "city": "תל אביב יפו",
+            "neighborhood": "הצפון החדש, סביבת כיכר המדינה",
+            "address": "He Be’Iyar, Кикар ха-Медина",
+            "gush": "6213",
+            "project_type": "new_build",
+            "project_status": "בבנייה",
+            "num_units": 453, "num_buildings": 3, "num_floors": 40,
+            "amenities": "Бассейн, Тренажёрный зал, Спа, Процедурные кабинеты, Многофункциональные залы, Подземная парковка, Общественный парк с прудом",
+            "source": "Ashtrom, Electra, Globes, Calcalist, Mako, муниципалитет Тель-Авива-Яффо",
+            "project_mode": "review",
+        },
+    },
+    "ar": {
+        "slug": "hamedina-ar",
+        # the owner's ruling of 28.9.2026: the Arabic pages' titles in English; the page itself speaks Arabic
+        "title": "Kikar Hamedina Towers, Tel Aviv",
+        "file": "post-ar.html",
+        "seo_title": "Kikar Hamedina Towers, Tel Aviv: Prices, Deals & 3D Map",
+        "seo_desc": "أبراج كيكار همدينا في تل أبيب: 3 أبراج ملتفّة و453 شقة، صفقات بين 9.58 و10.63 مليون ₪، مواعيد السكن، الحديقة والإطلالة من كل طابق.",
+        "faq_h2": "أسئلة شائعة",
+        "meta": {
+            "lat": LAT, "lng": LNG,
+            "developer_name": "شركة أصحاب الأرض في كيكار همدينا",
+            "contractor_name": "Electra Construction وAshtrom",
+            "architect_name": "Yaski Mor Sivan للهندسة المعمارية",
+            "city": "תל אביב יפו",
+            "neighborhood": "הצפון החדש, סביבת כיכר המדינה",
+            "address": "He Be’Iyar، كيكار همدينا",
+            "gush": "6213",
+            "project_type": "new_build",
+            "project_status": "בבנייה",
+            "num_units": 453, "num_buildings": 3, "num_floors": 40,
+            "amenities": "بركة سباحة, نادٍ رياضي, سبا, غرف علاج, قاعات متعددة الاستخدامات, موقف سيارات تحت الأرض, حديقة عامة مع بركة",
+            "source": "Ashtrom, Electra, Globes, Calcalist, Mako, بلدية تل أبيب يافا",
+            "project_mode": "review",
+        },
+    },
 }
 for _l, _p in POSTS.items():
     assert len(_p["seo_title"]) <= 66, (_l, len(_p["seo_title"]))
@@ -104,8 +180,8 @@ def meta(lang):
     m = dict(POSTS[lang]["meta"])
     m["_yoast_wpseo_title"] = POSTS[lang]["seo_title"]
     m["_yoast_wpseo_metadesc"] = POSTS[lang]["seo_desc"]
-    if lang == "en":
-        m["_nl_faq_schema"] = base64.b64encode(faq_json("en").encode("utf-8")).decode("ascii")
+    if lang != "he":  # the language pages carry their FAQPage as meta (inc/schema-meta.php); the Hebrew page builds its own
+        m["_nl_faq_schema"] = base64.b64encode(faq_json(lang).encode("utf-8")).decode("ascii")
     return m
 
 

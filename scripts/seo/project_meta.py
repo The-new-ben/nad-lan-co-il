@@ -37,6 +37,20 @@ META = {
         "title": "Kikar Hamedina Towers Tel Aviv: Prices, Deals, Map & 3D",
         "desc": "Kikar Hamedina Towers, Tel Aviv: 3 twisting towers, 453 apartments, deals at ₪9.58M to ₪10.63M, occupancy dates, the park and the view from every floor.",
     },
+    # P8 (1.72.370): the French, Russian and Arabic siblings (deploy370.py writes them when it creates the posts; the Arabic title
+    # is English by the owner's ruling of 28.9.2026)
+    "hamedina-fr": {
+        "title": "Tours Kikar Hamedina à Tel Aviv\xa0: appartements, prix et 3D",
+        "desc": "Tours Kikar Hamedina à Tel Aviv\xa0: 3 tours torsadées, 453 appartements, ventes de 9,58 à 10,63\xa0M₪, livraison, le parc et la vue de chaque étage.",
+    },
+    "hamedina-ru": {
+        "title": "Башни Кикар ха-Медина, Тель-Авив: цены, сделки, карта и 3D",
+        "desc": "Башни Кикар ха-Медина в Тель-Авиве: 3 закрученные башни, 453 квартиры, сделки от 9,58 до 10,63\xa0млн\xa0₪, сроки заселения, парк и вид с каждого этажа.",
+    },
+    "hamedina-ar": {
+        "title": "Kikar Hamedina Towers, Tel Aviv: Prices, Deals & 3D Map",
+        "desc": "أبراج كيكار همدينا في تل أبيب: 3 أبراج ملتفّة و453 شقة، صفقات بين 9.58 و10.63 مليون ₪، مواعيد السكن، الحديقة والإطلالة من كل طابق.",
+    },
     "h-infinity-somail-tel-aviv": {
         "desc": "אייץ' אינפיניטי (H Infinity) של קבוצת חג'ג', אבן גבירול 128 במתחם סומייל: מגדל של 53 קומות ובניין בוטיק, כ-278 דירות של 2 עד 6 חדרים. נתונים, מפה וסביבה.",
     },
@@ -48,7 +62,7 @@ for k, v in META.items():
 PIDS = {}
 for slug in list(META):
     s, d = req("GET", "/wp-json/wp/v2/nadlan_project?slug=%s&_fields=id" % slug)
-    if not d:  # not created yet (the Kikar Hamedina pages come with deploy369.py)
+    if not d:  # not created yet (the Kikar Hamedina pages come with deploy369.py / deploy370.py)
         print("[skip] %s: no published post yet" % slug)
         META.pop(slug)
         continue

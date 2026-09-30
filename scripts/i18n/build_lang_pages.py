@@ -191,6 +191,9 @@ PATTERNS = [
     (r"^היזם: (.+)$", "Developer: {1}", "Promoteur : {1}", "Застройщик: {1}", "المطوّر: {1}"),
     (r"^בעלי מקצוע ב(.+)$", "Professionals in {1}", "Professionnels à {1}", "Специалисты в городе {1}", "مختصون في {1}"),
     (r"^מדרגות (\d{4}) ומחשבון ←$", "The {1} brackets and a calculator →", "Les tranches {1} et un simulateur →", "Ставки {1} и калькулятор →", "شرائح {1} والحاسبة ←"),
+    # Kikar Hamedina P8 (1.72.370): the project card's source line (inc/cards-render.php) on a language page whose "source" meta
+    # is in that language; a Hebrew source stays as it was (a capture with Hebrew the dictionary does not know keeps the line)
+    (r"^המקור: (.+) · עודכן (\d{2}/\d{2}/\d{4})$", "Source: {1} · updated {2}", "Source : {1} · mis à jour le {2}", "Источник: {1} · обновлено {2}", "المصدر: {1} · حُدّث في {2}"),
 ]
 
 # names: developers, places, streets, the nearby projects' titles (the Latin brand is kept as the developer writes it)
