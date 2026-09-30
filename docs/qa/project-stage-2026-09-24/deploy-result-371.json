@@ -1,0 +1,32 @@
+{
+  "released": "1.72.371",
+  "from": "1.72.370",
+  "live_before": {
+    "inc/project-stage.php": "ae0966a44f5a671cd91ae4bc9b8ef61d",
+    "inc/conversion-cta.php": "2075bc38da9ca5251b34349fce30e4da",
+    "assets/project-stage/world/world.js": "022c8899976deb8275ee5e212c331a95",
+    "nadlan-config.php": "ee9af429a9084f21976cce30d7904d40"
+  },
+  "post_before": {
+    "hamedina": "adf16d0e3e02fea805bf30322ab4e1bd"
+  },
+  "state": "released and verified",
+  "at": "2026-09-30 08:45:07",
+  "files": {
+    "inc/project-stage.php": "ab9442860d0b6b22420ced51afbf02f0",
+    "inc/conversion-cta.php": "9abb283ff4e09e10a531bbadb34a3eb1",
+    "assets/project-stage/world/world.js": "4f411185a86be766a7ecf65d1fabe078",
+    "nadlan-config.php": "320333c35cc0a5fddf8ea5b6a1d77748"
+  },
+  "post_after": {
+    "hamedina": "fc147918f96834e1d40e661f849d2817"
+  },
+  "posts": {
+    "hamedina": {
+      "id": 8113,
+      "created": 0,
+      "link": "https://nad-lan.co.il/projects/hamedina/"
+    }
+  },
+  "checks": "verify_pages + verify_order + verify_home_order + verify_kh (with the first-screen markers): OK"
+}

@@ -23,6 +23,36 @@ Every turn does ALL of these, not only the current phase:
 
 **No compromise:** no placeholder is shipped as final, no "good enough", no generic model passed off as the real one. What is not ready yet waits, labelled, and stays on the list.
 
+## P9a (30.9, turn 12): LIVE as 1.72.371 (Design v104.1)
+
+- **Runner 371, clean:**
+  - 309 page checks OK; `[kh]` OK on all 5 pages;
+  - the Hebrew post updated (its content-drift check matched 369's md5);
+  - the record was written as it went; the bridge came down.
+- **Live proof:**
+  - `kh_first_screen_check.py` at 390, scroll 0 / 300 / 700, in 5 languages: **RESULT OK, the bar covers no button and no tab** (15 of 15 measures).
+  - `content_first_check`: 0 failed across the fleet.
+  - `source_audit`: GREEN. The diffs are explained: about 2.2 KB more on every page from the bar's new script, and the Russian page +1 style from the Cyrillic font link.
+  - Looked at: he, ar, en and ru first screens.
+- **New P9 items found by looking:**
+  - (a) In Arabic, the bar rises above the three buttons and now sits over the lead's last lines. That is text, not a control, but it is the answer paragraph.
+  - (b) The accessibility button (bottom corner) sits on the world's first tab in en and ru.
+
+(the earlier plan, kept for the record:)
+
+- **Design:** Claude Design v104.1 "KikarHamedinaFirstScreen" (artifact version 137), with before and after at 390, looked at.
+- **What P9a prepared locally** (commit 6fc520c6):
+  - **The phone's first screen.** The WhatsApp bar treats the hero buttons as controls and takes the nearest free place. The Kikar world starts 50 px lower, which leaves a 73 px lane for the bar.
+    - Kikar, 5 languages: 10 overlaps (35,437 px²) → 0.
+    - The fleet's pages: 12 → 0.
+  - **The fixes:**
+    - "1.25 מעלות" is written in words in Hebrew; a bidi isolate did not fix it in Chrome.
+    - One "Mediterranean Sea" label instead of two.
+    - Cyrillic from each font's own family, on the Russian page only.
+    - "He Be'Iyar" in English.
+  - **Day, sunset and night** in the floor view: night windows are labelled as illustration; draw calls unchanged; night is faster.
+- **Runner 371:** it writes 3 files plus the Hebrew post's content, after a content drift check against 369's md5. The dry run was clean, and the release runs in the background.
+
 ## P8 RESULT (30.9, turn 10): LIVE as 1.72.370, fr/ru/ar
 
 - **The pages:** /projects/hamedina-fr/ (post 8116), /projects/hamedina-ru/ (8117), /projects/hamedina-ar/ (8118). The Arabic title is in English, per the owner's 28.9 decision.
