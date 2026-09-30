@@ -914,13 +914,17 @@ for _sg in ("SIGTERM", "SIGBREAK"):
 def sweep(when):
     """every temporary release bridge (x-tmp-*-ops-*) still on the site is switched off and deleted (bridge_sweep.py's rule)"""
     s, lst = snip("GET", "")
-    rows = [x for x in (lst if s == 200 and isinstance(lst, list) else []) if re.match(r"x-tmp-[a-z0-9]+-ops-", str(x.get("name", "")))]
+    # only ACTIVE bridges matter (an inactive snippet runs no code); the ~270 inactive leftovers answer DELETE with 500 and
+    # only slowed the run (30.9, the 370 dry run)
+    rows = [x for x in (lst if s == 200 and isinstance(lst, list) else []) if re.match(r"x-tmp-[a-z0-9]+-ops-", str(x.get("name", ""))) and x.get("active")]
+    if BR is not None:
+        rows = [x for x in rows if x.get("id") != BR or when == "end"]
     for x in rows:
-        a = snip("PUT", f"/{x['id']}/deactivate", {})[0] if x.get("active") else "-"
+        a = snip("PUT", f"/{x['id']}/deactivate", {})[0]
         d = snip("DELETE", f"/{x['id']}", None)[0]
-        print(f"[sweep {when}] bridge {x['id']} {x['name']}: deactivate {a}, delete {d}")
+        print(f"[sweep {when}] active bridge {x['id']} {x['name']}: deactivate {a}, delete {d}")
     if not rows:
-        print(f"[sweep {when}] no temporary bridge left (http {s})")
+        print(f"[sweep {when}] no active temporary bridge left (http {s})")
 
 
 def restore_state():

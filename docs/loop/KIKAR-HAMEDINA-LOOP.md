@@ -371,6 +371,18 @@ Every turn does ALL of these, not only the current phase:
 
 ## Waiting for the owner
 
+- **Q3, 30.9: who answers WhatsApp messages written in French, Russian and Arabic?** The fr/ru/ar pages send their visitors to the same number, and each message says which page it came from.
+
+## P9 list (the masterpiece pass), gathered so far
+
+- **"1.25°" shows as "°1.25"** in right-to-left text on the live Hebrew page. Wrap it in `<bdi>` or put the degree sign inside an LTR span.
+- **The window view names "Mediterranean Sea" twice**, in every language, the live pages included.
+- **Cyrillic in the world falls back to system fonts**, because the site's fonts have no Cyrillic. Add a Cyrillic subset.
+- **On an Arabic phone's first screen, the WhatsApp pill covers the third hero button.** Its avoid list does not include hero buttons; this needs a design decision.
+- **Interiors and 360 per facing**, labelled "דירה לדוגמה", in the higher quality the owner asked for (28.9).
+- **The article** from the owner's ChatGPT run.
+- **The shared viewing room and the video call** are not wired to the world yet.
+
 - **Q2, 30.9: the two article files** (`prompt-he.md`, `prompt-en.md`, sent to him in chat) run in ChatGPT Pro. He pastes the results back.
   - The page can go live without the article: the world, the sourced lead, facts, deals, "when is it ready?" and the FAQ are real content, not placeholders.
   - The article joins in the next release the moment it arrives.

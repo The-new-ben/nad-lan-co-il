@@ -472,3 +472,15 @@ S79 https://www.tel-aviv.gov.il/Pages/MainItemPage.aspx?WebID=3af57d92-807c-43c5
 S80 Search snippets only (not opened): TheMarker 5.8.2003 https://www.themarker.com/law/2003-08-05/ty-article/0000017f-f17b-d8a1-a5ff-f1fbf1d60000 ; TheMarker 17.10.2004 https://www.themarker.com/misc/2004-10-17/ty-article/0000017f-e641-da9b-a1ff-ee6f48bd0000 ; Moovit stop page (URL in section 3, Transport) ; https://herzliyatoday.co.il/p7083/ ; https://he.wikipedia.org/wiki/יסקי_מור_סיון_אדריכלים ; https://he.wikipedia.org/wiki/פארק_צמרת
 S81 https://www.immobilier.co.il/en/city/telaviv/new-projects?quartier=kikar-hamedina&type=1&pieces_min=3 (read 30.9.2026)
 S82 http://luxury-realestate-israel.com/?id=226&location[]=153&deal_type=for_sale (read 30.9.2026)
+
+## Additions, loop turn 9 (30.9.2026)
+
+- The neighbourhood's resale market (data as of 6.2024): 148 units sold over one year, at an average of ₪68,000/m², with an average deal of ₪5.66M.
+  - Source: Globes, "כיכר המדינה בת"א עובר מתיחת פנים. כמה יעלו הדירות החדשות?", https://www.globes.co.il/news/article.aspx?did=1001481134 (read through a search result 30.9.2026).
+  - Use: the area price line, with its date.
+- MARKETING CLAIM (not a fact): ip-tlv says apartments in the towers are "offered at about ₪55,000 per m², while market prices are about ₪80,000 per m²".
+  - Source: https://ip-tlv.com/properties/kikar-ha-medina-towers-project/?lang=en (read 30.9.2026).
+  - Use only as "לפי ip-tlv", or not at all.
+- A French-speaking agency (Evenis Group) lists a 4-room apartment in the towers for sale (REF GS 18539).
+  - Source: https://www.evenisgroup.com/en/property/ref-gs-18539-for-sale-4-rooms-kikar-hamedina-tel-aviv/ (30.9.2026).
+  - This is evidence of French-speaking demand.
