@@ -1,0 +1,361 @@
+﻿kind,id,name,group,generic,dist_m,bearing,lat,lng,floor_10,floor_22,floor_32
+landmark,,בית הספר כוכב הצפון,school,0,460,192.1,,,street -> hidden,street -> hidden,street -> hidden
+landmark,,"תחנת רידינג, הרכבת הקלה",rail,0,833,216.3,,,street -> hidden,street -> hidden,street -> hidden
+place,fp:10286,גלידוש,essentials,0,241,98.7,32.10515,34.78999,hidden,street -> hidden,street -> hidden
+place,fp:10393,סופר אפטר,essentials,0,241,98.7,32.10515,34.78999,hidden,street -> hidden,street -> hidden
+place,fp:10954,יין בעיר,essentials,0,241,98.7,32.10515,34.78999,hidden,street -> hidden,street -> hidden
+place,fp:7986,אפטר תשע,food,0,241,98.7,32.10515,34.78999,hidden,street -> hidden,street -> hidden
+place,fp:osm-node-2577660799,מינימרקט חן-לי,essentials,0,244,98.9,32.10514,34.79002,hidden,street -> hidden,street -> hidden
+place,fp:osm-node-2577660825,מכבי שירותי בריאות,health,0,245,93.9,32.10533,34.79006,hidden -> roof,hidden -> roof,street -> roof
+place,fp:osm-node-2577660906,לחם הארץ,food,0,255,93.7,32.10533,34.79016,hidden -> roof,hidden -> roof,street -> roof
+place,fp:13745,אפטר/יהודה בורלא,transport,0,257,100.4,32.10506,34.79015,roof -> hidden,roof -> hidden,roof -> hidden
+place,fp:osm-node-2577660846,מתקני כושר,outdoors,0,257,49.8,32.10697,34.78955,hidden -> street,hidden -> street,roof -> street
+place,fp:osm-node-1700723089,בנק הפועלים,essentials,0,260,96.9,32.1052,34.7902,hidden,street -> hidden,street -> roof
+place,fp:osm-way-99661624,גן ז'ילבר,outdoors,0,262,48.5,32.10704,34.78955,hidden -> street,roof -> street,roof -> street
+place,osm:node/2577660815,גן משחקים,outdoors,1,308,43.0,32.107505,34.789698,street -> hidden,street -> hidden,street
+place,fp:696-266,ז`ילבר פייר,outdoors,0,315,56.1,32.10706,34.79024,hidden -> street,hidden -> street,hidden -> street
+place,fp:13746,ביה''ס ארן/יהודה בורלא,transport,0,338,64.8,32.10677,34.79071,hidden,hidden,street -> hidden
+place,fp:586-101,גן זילבר,outdoors,0,341,47.9,32.10753,34.79015,hidden -> street,street,street
+place,fp:696-4,ארן חצר טיבעית,education,0,368,38.6,32.10806,34.7899,street -> hidden,street -> hidden,street
+place,fp:3111,קרן,education,0,369,106.3,32.10455,34.79122,hidden,hidden,street -> hidden
+place,fp:3111,תו,education,0,369,106.3,32.10455,34.79122,hidden,hidden,street -> hidden
+place,fp:3111,סול,education,0,369,106.3,32.10455,34.79122,hidden,hidden,street -> hidden
+place,fp:624-34,ויצו ל ' - בורלא,education,0,369,106.3,32.10455,34.79122,hidden,hidden,street -> hidden
+place,fp:21055,כחל,education,0,370,102.0,32.10479,34.7913,hidden,hidden -> roof,street -> roof
+place,fp:osm-way-99661618,בית-ספר ארן,education,0,373,40.6,32.10802,34.79004,street -> hidden,street,street
+place,fp:938-35,"ביה""ס ארן",outdoors,0,378,37.2,32.10818,34.78989,street -> hidden,street -> hidden,street -> hidden
+place,fp:5557,קאנטרי ל,outdoors,0,395,54.1,32.10756,34.79086,hidden -> roof,hidden -> roof,hidden -> roof
+place,fp:22616,ארן,education,0,396,41.8,32.10813,34.79026,street -> hidden,street -> roof,street -> roof
+place,fp:osm-way-99661617,מרכז קניות - בראלי,essentials,0,430,110.9,32.1041,34.79173,hidden,hidden -> roof,hidden -> roof
+place,fp:osm-node-2577660826,עוף צלוחס,food,0,431,109.9,32.10416,34.79176,hidden,hidden,hidden -> roof
+place,fp:563-26,למד,health,0,435,39.4,32.1085,34.7904,hidden,hidden,hidden -> roof
+place,fp:osm-way-251561042,"קופ""ח, טיפת חלב",health,0,440,38.3,32.10858,34.79036,hidden,hidden,hidden -> roof
+place,fp:30031,כוכב הצפון,education,0,458,192.9,32.10147,34.78638,street -> hidden,street -> hidden,street -> hidden
+place,fp:961-60,בראלי,community,0,458,116.7,32.10363,34.7918,street -> hidden,street -> hidden,street -> hidden
+place,osm:way/251642447,גן משחקים,outdoors,1,465,115.5,32.103678,34.791914,street -> hidden,street -> hidden,street -> hidden
+place,fp:937-51,קאנטרי ל',outdoors,0,469,33.5,32.10899,34.79021,roof -> hidden,roof,roof
+place,fp:745-51,ספריית כוכב הצפון,education,0,472,192.9,32.10135,34.78635,street -> hidden,street -> hidden,street -> hidden
+place,fp:939-13,קאנטרי ל',outdoors,0,477,32.8,32.10908,34.79021,roof -> hidden,roof,roof
+place,osm:way/203941710,פארק,outdoors,1,477,145.0,32.10197,34.790365,street -> hidden,street -> hidden,street -> hidden
+place,osm:way/1029330160,פארק,outdoors,1,480,173.3,32.101194,34.788059,hidden -> street,hidden -> street,hidden -> street
+place,fp:12465,דלק מנטה קמעונאות דרכים ב,food,0,486,99.1,32.10479,34.79256,hidden,hidden -> street,hidden -> street
+place,fp:13748,ביה''ס ארן/יהודה בורלא,transport,0,489,36.8,32.109,34.79057,hidden,hidden -> street,hidden -> street
+place,fp:984,אדמונית,education,0,492,339.3,32.10961,34.78562,hidden -> roof,hidden -> roof,hidden -> roof
+place,fp:984,אוכמנית,education,0,492,339.3,32.10961,34.78562,hidden -> roof,hidden -> roof,hidden -> roof
+place,fp:984,מנטה,education,0,492,339.3,32.10961,34.78562,hidden -> roof,hidden -> roof,hidden -> roof
+place,fp:984,אגמון,education,0,492,339.3,32.10961,34.78562,hidden -> roof,hidden -> roof,hidden -> roof
+place,fp:984,תות יער,education,0,492,339.3,32.10961,34.78562,hidden -> roof,hidden -> roof,hidden -> roof
+place,fp:osm-node-5026524386,ארומה,food,0,493,94.6,32.10512,34.79268,hidden,street -> hidden,street
+place,fp:11341,קופי ביסטרו,food,0,496,32.9,32.10922,34.79032,hidden,hidden -> roof,hidden -> roof
+place,fp:553-12,'קאנטרי ל,community,0,496,32.9,32.10922,34.79032,hidden,hidden -> roof,hidden -> roof
+place,fp:osm-node-512887205,Pizza Hut,food,0,500,96.2,32.10499,34.79274,hidden -> roof,hidden -> roof,street -> roof
+place,fp:osm-node-1104533478,AM:PM,essentials,0,503,97.6,32.10488,34.79275,hidden,hidden -> street,street
+place,fp:696-441,קרני יהודה,outdoors,0,512,84.6,32.10591,34.79287,hidden,roof -> hidden,roof -> street
+place,fp:24659,סמינר הקיבוצים/ש''י עגנון,transport,0,514,121.4,32.10307,34.79212,hidden,hidden -> street,hidden -> street
+place,fp:12851,שד' לוי אשכול/דב האוזנר,transport,0,515,15.3,32.10994,34.78891,hidden -> street,hidden -> street,hidden -> street
+place,fp:14127,דלק מנטה קמעונאות דרכים ב,essentials,0,515,98.1,32.10483,34.79287,hidden,hidden -> roof,street -> roof
+place,fp:938-97,כוכב הצפון,outdoors,0,520,188.6,32.10086,34.78664,street -> hidden,street -> hidden,street -> roof
+place,fp:39046,שדרות לוי אשכול/כיכר מאיר יערי,transport,0,527,161.0,32.101,34.78929,roof -> street,roof -> street,roof -> street
+place,fp:29710,בננה,education,0,533,197.0,32.1009,34.78581,hidden,hidden -> roof,hidden -> roof
+place,fp:29710,תות,education,0,533,197.0,32.1009,34.78581,hidden,hidden -> roof,hidden -> roof
+place,fp:29710,הדרים,education,0,533,197.0,32.1009,34.78581,hidden,hidden -> roof,hidden -> roof
+place,fp:29710,שקמים,education,0,533,197.0,32.1009,34.78581,hidden,hidden -> roof,hidden -> roof
+place,fp:29710,חופש,education,0,533,197.0,32.1009,34.78581,hidden,hidden -> roof,hidden -> roof
+place,fp:29710,חירות,education,0,533,197.0,32.1009,34.78581,hidden,hidden -> roof,hidden -> roof
+place,fp:29710,דובדבן,education,0,533,197.0,32.1009,34.78581,hidden,hidden -> roof,hidden -> roof
+place,fp:29710,דובשנית,education,0,533,197.0,32.1009,34.78581,hidden,hidden -> roof,hidden -> roof
+place,fp:586-73,גינת שטרן איזק,outdoors,0,539,337.3,32.10995,34.78526,hidden -> street,hidden -> street,roof -> street
+place,fp:15313,נופים,education,0,542,84.2,32.10597,34.79318,hidden,hidden -> roof,hidden -> roof
+place,fp:15313,שמש,education,0,542,84.2,32.10597,34.79318,hidden,hidden -> roof,hidden -> roof
+place,fp:20774,חצי שקל,essentials,0,548,135.3,32.10198,34.79155,hidden -> roof,hidden -> roof,hidden -> roof
+place,fp:13749,יהודה בורלא/דב האוזנר,transport,0,551,33.7,32.1096,34.79071,hidden,hidden,hidden -> street
+place,fp:961-61,קרני,community,0,554,85.1,32.1059,34.79332,hidden,hidden -> street,hidden -> street
+place,osm:way/95215754,פארק,outdoors,1,558,130.1,32.10225,34.791991,hidden,hidden -> street,hidden -> street
+place,fp:13703,ש''י עגנון/אבן גבירול,transport,0,576,227.3,32.10197,34.78297,hidden -> street,hidden -> street,hidden -> street
+place,fp:osm-way-691455578,G כוכב הצפון,essentials,0,577,176.3,32.10031,34.78786,hidden,hidden -> roof,hidden -> roof
+place,fp:10115,אבו חלווה,essentials,0,585,176.0,32.10024,34.7879,hidden,hidden -> roof,hidden -> roof
+place,fp:10125,דליקטסן כוכב הצפון,food,0,585,176.0,32.10024,34.7879,hidden,hidden -> roof,hidden -> roof
+place,fp:10431,בבקה,essentials,0,585,176.0,32.10024,34.7879,hidden,hidden -> roof,hidden -> roof
+place,fp:10899,שופרסל,essentials,0,585,176.0,32.10024,34.7879,hidden,hidden -> roof,hidden -> roof
+place,fp:10969,מקדונלד'ס,food,0,585,176.0,32.10024,34.7879,hidden,hidden -> roof,hidden -> roof
+place,fp:21521,M32,food,0,585,176.0,32.10024,34.7879,hidden,hidden -> roof,hidden -> roof
+place,fp:21636,חומוס כספי,food,0,585,176.0,32.10024,34.7879,hidden,hidden -> roof,hidden -> roof
+place,fp:21683,עולם המתנות,essentials,0,585,176.0,32.10024,34.7879,hidden,hidden -> roof,hidden -> roof
+place,fp:21891,חממה מלוינסקי,essentials,0,585,176.0,32.10024,34.7879,hidden,hidden -> roof,hidden -> roof
+place,fp:21940,שמו הקונדיטוריה,food,0,585,176.0,32.10024,34.7879,hidden,hidden -> roof,hidden -> roof
+place,fp:22201,טעם הפרי,essentials,0,585,176.0,32.10024,34.7879,hidden,hidden -> roof,hidden -> roof
+place,fp:osm-node-1700723084,בנק לאומי,essentials,0,596,23.7,32.11038,34.79001,hidden,street -> hidden,street -> hidden
+place,fp:696-419,לבנון חיים 1,outdoors,0,599,116.3,32.10309,34.79316,street -> hidden,street,street
+place,fp:10349,גלידות פלדמן,essentials,0,606,22.7,32.1105,34.78994,hidden,street -> hidden,street -> hidden
+place,fp:9454,פינת הבורקס,food,0,606,22.7,32.1105,34.78994,hidden,street -> hidden,street -> hidden
+place,osm:way/95215506,סמינר הקיבוצים,education,0,607,144.9,32.101017,34.791168,street -> hidden,street -> hidden,street -> hidden
+place,fp:8326,גילה,education,0,623,62.0,32.10811,34.7933,hidden,hidden -> roof,hidden -> roof
+place,fp:8326,תזמורת,education,0,623,62.0,32.10811,34.7933,hidden,hidden -> roof,hidden -> roof
+place,fp:osm-node-2079222859,שופרסל אקספרס,essentials,0,627,218.0,32.10104,34.78337,street -> hidden,street -> hidden,street -> hidden
+place,fp:624-58,מיחא,education,0,630,80.8,32.10638,34.79406,hidden,hidden -> roof,hidden -> roof
+place,fp:10482,וגה,food,0,633,217.6,32.10097,34.78337,street -> hidden,street -> hidden,street -> hidden
+place,fp:11159,טרה,food,0,633,217.6,32.10097,34.78337,street -> hidden,street -> hidden,street -> hidden
+place,fp:16962,לוקנטה,food,0,633,217.6,32.10097,34.78337,street -> hidden,street -> hidden,street -> hidden
+place,fp:18537,סופר כוכב הצפון,essentials,0,633,217.6,32.10097,34.78337,street -> hidden,street -> hidden,street -> hidden
+place,fp:938-60,"ביה""ס אורנים ( חט""ב אליאנס)",outdoors,0,639,62.8,32.1081,34.79349,hidden,roof -> hidden,roof -> hidden
+place,fp:osm-way-416509341,גינת החבלים,outdoors,0,679,73.1,32.10725,34.79436,hidden,street -> hidden,street -> hidden
+place,fp:18218,דו רה מי,education,0,694,28.8,32.11094,34.79101,hidden,hidden -> roof,hidden -> roof
+place,fp:18218,אורגן,education,0,694,28.8,32.11094,34.79101,hidden,hidden -> roof,hidden -> roof
+place,fp:10237,טיב טעם רשתות,essentials,0,710,359.4,32.11186,34.78739,hidden -> roof,hidden -> roof,hidden -> roof
+place,fp:21857,סופר ג'ינג'י,essentials,0,710,359.4,32.11186,34.78739,hidden -> roof,hidden -> roof,hidden -> roof
+place,fp:696-14,רדינג חצר טיבעית,outdoors,0,714,68.8,32.1078,34.79452,hidden,roof -> street,roof -> street
+place,fp:696-235,רדינג 33,outdoors,0,714,68.8,32.1078,34.79452,hidden,roof -> street,roof -> street
+place,fp:osm-node-951616800,קפסולת הזמן הישראלית,community,0,720,125.6,32.10171,34.79367,hidden,hidden -> street,hidden -> street
+place,fp:osm-way-99661610,בית הכנסת וואהל,community,0,726,29.0,32.11118,34.7912,hidden,hidden -> roof,hidden -> roof
+place,fp:21012,"נדל""ן איי אל א א",food,0,730,109.9,32.10325,34.79475,hidden,hidden,hidden -> street
+place,fp:osm-way-81824306,גינת משל יותם,outdoors,0,747,122.5,32.10187,34.79415,hidden,hidden -> street,hidden -> street
+place,fp:area-118,"שצ""פ בריכה לימודית",outdoors,0,761,101.9,32.10407,34.79536,hidden,street -> hidden,street -> hidden
+place,osm:way/98520937,פארק,outdoors,1,767,210.3,32.099531,34.783357,hidden,hidden,hidden -> street
+place,fp:osm-way-81848379,בית הבד,community,0,781,125.4,32.10142,34.79422,hidden,hidden -> street,hidden -> street
+place,fp:40055,"אליאנס כי""ח - חט""ב",education,0,785,74.2,32.1074,34.79548,hidden,hidden -> street,hidden -> street
+place,fp:553-38,מרכז ספורט אביב אליאנס,community,0,785,74.2,32.1074,34.79548,hidden,hidden -> street,hidden -> street
+place,fp:67454,אליאנס,education,0,785,74.2,32.1074,34.79548,hidden,hidden -> street,hidden -> street
+place,fp:939-12,בריכה לימודית,outdoors,0,786,104.7,32.10369,34.79553,hidden,street -> hidden,street -> hidden
+place,fp:5665,מפגש החורשה,food,0,789,60.0,32.10902,34.79471,hidden,street -> hidden,street -> hidden
+place,osm:node/9837967048,גן משחקים,outdoors,1,798,65.5,32.108449,34.795173,hidden,hidden -> street,hidden -> street
+place,fp:553-54,הבריכה הלימודית,community,0,807,105.7,32.10352,34.79571,hidden,street -> hidden,street
+place,fp:3885,הבריכה הלימודית,outdoors,0,818,105.4,32.10353,34.79583,hidden,street -> hidden,street
+place,fp:osm-way-219712418,תיכון כל ישראל חברים (אליאנס),education,0,822,78.7,32.10693,34.79601,hidden,hidden -> street,hidden -> street
+place,fp:961-64,קפה גרונימן,community,0,823,59.3,32.10925,34.79497,hidden,street -> hidden,street
+place,fp:osm-way-34333834,ספורטק צפון,outdoors,0,834,172.4,32.09805,34.78863,hidden,hidden,hidden -> street
+place,fp:21,רידינג,transport,0,837,216.1,32.0994,34.78224,street -> hidden,street -> hidden,street -> hidden
+place,fp:943-352,ספורטק צפון,outdoors,0,864,172.2,32.09779,34.78871,hidden,hidden,hidden -> street
+place,fp:943-362,מגרש בית ספר נופי ים,outdoors,0,871,345.7,32.11306,34.78518,hidden,hidden,hidden -> street
+place,fp:943-114,ספורטק צפון מגרש מזרחי,outdoors,0,875,181.1,32.09762,34.78729,hidden,hidden,hidden -> street
+place,fp:17701,אחוזות החוף,outdoors,0,883,214.4,32.09893,34.78218,hidden,hidden,street -> hidden
+place,osm:way/1230474165,גינה ציבורית,outdoors,1,886,123.6,32.101073,34.795291,hidden,hidden -> street,hidden -> street
+place,fp:osm-way-98095059,מרכז ספורט עירוני אביב - אליאנס,outdoors,0,890,76.5,32.10734,34.79665,hidden,hidden -> street,street
+place,osm:way/98702936,פארק,outdoors,1,890,17.6,32.113104,34.790318,hidden,hidden,street -> hidden
+place,fp:15511,נוף,education,0,892,349.4,32.11336,34.78573,hidden,hidden,hidden -> street
+place,fp:938-17,מרכז ספורט אביב אליאנס,outdoors,0,894,76.9,32.1073,34.7967,hidden,hidden -> street,street
+place,osm:way/1230472176,גינה ציבורית,outdoors,1,894,127.0,32.10065,34.795039,hidden -> street,street,street
+place,fp:osm-way-98284690,טחנת קמח,community,0,905,125.1,32.10081,34.79532,hidden,hidden -> street,hidden -> street
+place,fp:9415,קשת,education,0,909,96.2,32.1046,34.79705,hidden,street -> hidden,street
+place,fp:9415,פעמון,education,0,909,96.2,32.1046,34.79705,hidden,street -> hidden,street
+place,fp:osm-node-2288503813,קפיטריה,food,0,909,75.1,32.10758,34.79678,hidden,hidden -> street,hidden -> street
+place,fp:osm-way-91610421,אייקליימב תל-אביב,outdoors,0,909,160.6,32.09778,34.79067,hidden -> street,hidden -> street,street
+place,fp:osm-way-98284692,תיאטרון פתוח,community,0,922,111.0,32.10251,34.79659,hidden -> street,street,street
+place,fp:area-42,"תל קסילה - בוסתן מוז""א",outdoors,0,923,116.7,32.10175,34.79621,street -> hidden,street,street
+place,fp:osm-node-2288503811,M25,food,0,923,80.6,32.10683,34.79712,street -> hidden,street,street
+place,fp:10,נמיר,transport,0,924,31.1,32.11258,34.79253,hidden,street -> hidden,street
+place,fp:30064,נופי ים,education,0,929,347.6,32.11363,34.78535,hidden,hidden -> street,hidden -> street
+place,fp:1,איינשטיין,transport,0,932,337.0,32.11318,34.7836,hidden -> street,street,street
+place,fp:943-328,רוקח 67,outdoors,0,950,122.2,32.10093,34.79599,hidden,hidden -> street,hidden -> street
+place,osm:way/1230209096,גינה ציבורית,outdoors,1,952,110.7,32.102462,34.796915,hidden -> street,street,street
+place,fp:area-59,נחל ירקון מקטע ספורטק,outdoors,0,957,172.6,32.09695,34.78877,hidden,hidden,hidden -> street
+place,fp:10461,ברשל,food,0,962,75.1,32.1077,34.79732,hidden -> street,hidden -> street,street
+place,fp:10046,כל בו עידית,essentials,0,973,74.6,32.1078,34.79741,hidden,hidden -> street,street
+place,fp:10184,חמניה ברודצקי,essentials,0,973,74.6,32.1078,34.79741,hidden,hidden -> street,street
+place,fp:10420,גיא דגים,essentials,0,973,74.6,32.1078,34.79741,hidden,hidden -> street,street
+place,fp:11101,זליג,food,0,973,74.6,32.1078,34.79741,hidden,hidden -> street,street
+place,fp:11957,הפינה,food,0,973,74.6,32.1078,34.79741,hidden,hidden -> street,street
+place,fp:20396,בית חנה,food,0,973,74.6,32.1078,34.79741,hidden,hidden -> street,street
+place,fp:21201,לחמים,essentials,0,973,74.6,32.1078,34.79741,hidden,hidden -> street,street
+place,fp:21993,ניצת הדובדבן,essentials,0,973,74.6,32.1078,34.79741,hidden,hidden -> street,street
+place,fp:22017,At Papa's,food,0,973,74.6,32.1078,34.79741,hidden,hidden -> street,street
+place,fp:3616,AM:PM,essentials,0,973,74.6,32.1078,34.79741,hidden,hidden -> street,street
+place,fp:4220,ביתא קפה,food,0,973,74.6,32.1078,34.79741,hidden,hidden -> street,street
+place,fp:5997,ציון פירות וירקות,essentials,0,973,74.6,32.1078,34.79741,hidden,hidden -> street,street
+place,fp:746,m25,food,0,973,74.6,32.1078,34.79741,hidden,hidden -> street,street
+place,fp:9831,מג'יק מיט,essentials,0,973,74.6,32.1078,34.79741,hidden,hidden -> street,street
+place,fp:9884,פיצה האט,food,0,973,74.6,32.1078,34.79741,hidden,hidden -> street,street
+place,fp:943-372,רוקח 67,outdoors,0,974,117.4,32.10145,34.79663,street -> hidden,street,street
+place,osm:way/98105403,פארק,outdoors,1,974,91.6,32.105229,34.79779,hidden -> street,street,street
+place,fp:938-96,נופי ים,outdoors,0,980,347.7,32.11408,34.78525,hidden,hidden -> street,hidden -> street
+place,fp:osm-node-2288503759,Beta Caffe,food,0,981,74.5,32.10783,34.79749,hidden,hidden -> street,street
+place,fp:osm-node-2288503808,המכולת של פעם,essentials,0,982,77.1,32.10745,34.79762,hidden,hidden -> street,street
+place,fp:696-78,הגוש הגדול,outdoors,0,989,351.1,32.11426,34.78585,hidden,hidden,hidden -> street
+place,fp:osm-node-2288503807,browny,food,0,994,75.6,32.1077,34.79768,hidden -> street,street,street
+place,fp:5009,קפה בגרונימן,food,0,999,89.9,32.1055,34.79806,street -> hidden,street,street
+place,fp:osm-node-3688239225,קפה גרונימן 8,food,0,1012,88.7,32.10569,34.7982,street -> hidden,street,street
+place,osm:way/1230453020,גינה ציבורית,outdoors,1,1016,104.0,32.103265,34.797915,hidden -> street,street,street
+place,fp:osm-way-81848361,טניס תל אביב,outdoors,0,1024,116.9,32.10132,34.79715,street -> hidden,street,street
+place,fp:26211,רקיע,education,0,1030,349.6,32.11458,34.78549,hidden,hidden -> street,street
+place,fp:26211,שחק,education,0,1030,349.6,32.11458,34.78549,hidden,hidden -> street,street
+place,fp:26211,שמים,education,0,1030,349.6,32.11458,34.78549,hidden,hidden -> street,street
+place,fp:26211,זריחה,education,0,1030,349.6,32.11458,34.78549,hidden,hidden -> street,street
+place,fp:26211,סהר,education,0,1030,349.6,32.11458,34.78549,hidden,hidden -> street,street
+place,fp:624-16,פשר נופי ים,education,0,1030,349.6,32.11458,34.78549,hidden,hidden -> street,street
+place,fp:osm-node-2288503809,קופת חולים כללית,health,0,1033,73.8,32.10807,34.79799,hidden,hidden -> street,street
+place,fp:586-105,גשר בר יהודה,outdoors,0,1034,199.6,32.09673,34.78379,street -> hidden,street -> hidden,street
+place,fp:osm-node-340382877,גן הבנים,outdoors,0,1036,212.2,32.0976,34.78161,hidden,hidden -> street,street
+place,osm:way/1177973720,גינה ציבורית,outdoors,1,1039,0.7,32.114809,34.787606,hidden,hidden,hidden -> street
+place,fp:osm-way-104701145,שבט החורש,community,0,1040,164.1,32.09649,34.79049,hidden,hidden -> street,street
+place,osm:way/1177973721,גינה ציבורית,outdoors,1,1043,2.0,32.114842,34.787854,hidden,street -> hidden,street
+place,osm:way/100126797,פארק,outdoors,1,1044,14.1,32.114574,34.790166,hidden -> street,hidden -> street,street
+place,fp:17175,בוטיק סנטרל,food,0,1049,19.8,32.11434,34.79124,hidden,street -> hidden,street
+place,fp:19602,שופרסל,essentials,0,1053,18.9,32.11443,34.79109,hidden,street -> hidden,street
+place,fp:osm-node-5773162304,שופרסל אקספרס,essentials,0,1055,18.7,32.11445,34.79106,hidden,street -> hidden,street
+place,osm:node/2671075694,גן משחקים,outdoors,1,1060,182.3,32.095966,34.787012,hidden,hidden,hidden -> street
+place,fp:367,מפגש שירי,essentials,0,1063,76.3,32.10774,34.79842,hidden -> street,street,street
+place,osm:way/1180288817,גן משחקים,outdoors,1,1064,157.0,32.096677,34.791876,hidden -> street,street,street
+place,fp:938-28,"ביה""ס אילנות",outdoors,0,1077,81.1,32.10697,34.79875,street -> hidden,street,street
+place,osm:way/1177973718,פארק,outdoors,1,1078,3.1,32.115146,34.788092,hidden,street -> hidden,street
+place,fp:osm-way-1180759522,רנסנס מועדון ספורט,outdoors,0,1079,1.0,32.11517,34.78766,hidden,hidden,hidden -> street
+place,fp:937-8,אוקסיג'ן,outdoors,0,1083,45.8,32.11226,34.7957,hidden,hidden -> street,hidden -> street
+place,osm:node/6467510287,גן ילדים,education,1,1084,75.9,32.107845,34.79862,hidden -> street,street,street
+place,fp:30106,אילנות,education,0,1087,84.5,32.10642,34.79894,street -> hidden,street,street
+place,fp:osm-node-11009454698,גן חללי הטרור,outdoors,0,1095,219.3,32.09787,34.78011,street -> hidden,street,street
+place,osm:way/100126792,פארק,outdoors,1,1096,14.1,32.115024,34.7903,hidden -> street,street,street
+place,fp:osm-node-6467510286,מירפה,health,0,1100,76.3,32.10782,34.7988,hidden -> street,street,street
+place,fp:586-55,גינת בני דן,outdoors,0,1102,191.6,32.09578,34.78512,hidden,street -> hidden,street
+place,osm:way/1183058440,גינה ציבורית,outdoors,1,1104,154.1,32.096561,34.792584,hidden,hidden,street -> hidden
+place,osm:way/299734965,גן משחקים,outdoors,1,1114,353.3,32.115421,34.786087,hidden,street -> hidden,street
+place,osm:way/182788745,פארק,outdoors,1,1116,351.5,32.115396,34.785707,hidden,hidden -> street,street
+place,osm:relation/16951156,גינה ציבורית,outdoors,1,1123,45.0,32.112619,34.795887,hidden,hidden -> street,hidden -> street
+place,fp:943-266,מגרש כדורסל כפול,outdoors,0,1125,142.3,32.09748,34.79476,hidden,hidden -> street,hidden -> street
+place,fp:961-59,ברודצקי,community,0,1128,81.2,32.10703,34.79929,street -> hidden,street,street
+place,fp:osm-node-11009457423,קונכיה,community,0,1135,121.0,32.10023,34.79779,hidden,hidden -> street,street
+place,fp:943-255,מגרש כדורסל,outdoors,0,1139,191.4,32.09545,34.78508,hidden,street -> hidden,street
+place,osm:way/98701964,פארק,outdoors,1,1144,17.3,32.115293,34.791074,hidden,street -> hidden,street
+place,fp:938-27,"ביה""ס מרון",outdoors,0,1145,172.7,32.09528,34.789,hidden,hidden -> street,street
+place,fp:32409,מירון,education,0,1150,173.4,32.09522,34.78887,hidden,hidden -> street,street
+place,fp:19388,מזנון בית החיל,essentials,0,1152,159.5,32.09579,34.79175,hidden -> street,hidden -> street,street
+place,fp:938-69,"ביה""ס עירוני ד'",outdoors,0,1152,159.0,32.09582,34.79184,hidden -> street,hidden -> street,street
+place,fp:osm-way-91610412,האקדמיה לטניס,outdoors,0,1152,216.3,32.09714,34.78023,street -> hidden,street,street
+place,fp:4463,קפה נטו,food,0,1154,65.3,32.10981,34.79858,street -> hidden,street,street
+place,fp:osm-way-1185183422,הפינה של רוז,outdoors,0,1154,127.3,32.0992,34.79721,hidden -> street,street,street
+place,fp:10511,פאן סיטי,essentials,0,1157,2.3,32.11586,34.78795,hidden,street -> hidden,street
+place,fp:943-91,רוקח 4,outdoors,0,1159,216.7,32.09713,34.78012,street -> hidden,street,street
+place,fp:147,שלום,education,0,1163,193.5,32.09532,34.78459,hidden,street -> hidden,street
+place,fp:147,יחד,education,0,1163,193.5,32.09532,34.78459,hidden,street -> hidden,street
+place,fp:5444,טנא,education,0,1163,193.5,32.09532,34.78459,hidden,street -> hidden,street
+place,fp:5444,אדמה,education,0,1163,193.5,32.09532,34.78459,hidden,street -> hidden,street
+place,fp:553-40,דניאל לחתירה,community,0,1164,224.5,32.09802,34.77882,street -> hidden,street -> hidden,street
+place,fp:osm-way-727986714,"צהרוני ""ניצני יובל""",education,0,1166,192.7,32.09526,34.78474,hidden,street -> hidden,street
+place,fp:osm-node-1127659185,המוזיאון הישראלי,community,0,1169,104.3,32.10289,34.79948,hidden -> street,street,street
+place,fp:624-28,בובליק,education,0,1172,174.1,32.09501,34.78875,hidden,hidden -> street,street
+place,fp:osm-way-1183060171,עירוני ד' סניף,education,0,1176,159.4,32.09559,34.79185,hidden -> street,hidden -> street,street
+place,fp:961-62,יאשה חפץ,community,0,1183,351.5,32.11599,34.78561,hidden,hidden -> street,street
+place,fp:12826,ילו הירקון,food,0,1190,146.9,32.09652,34.79436,street -> hidden,street,street
+place,fp:6111,קטיף,education,0,1192,174.1,32.09483,34.78877,hidden,hidden -> street,street
+place,fp:6111,נבט,education,0,1192,174.1,32.09483,34.78877,hidden,hidden -> street,street
+place,fp:6111,אלומה,education,0,1192,174.1,32.09483,34.78877,hidden,hidden -> street,street
+place,fp:6120,נחלה,education,0,1192,174.1,32.09483,34.78877,hidden,hidden -> street,street
+place,fp:6120,חריש,education,0,1192,174.1,32.09483,34.78877,hidden,hidden -> street,street
+place,fp:6120,גדיד,education,0,1192,174.1,32.09483,34.78877,hidden,hidden -> street,street
+place,fp:osm-node-1309308421,מפגש הירקון,food,0,1197,146.7,32.09649,34.79443,street -> hidden,street,street
+place,fp:19642,מכון כושר וסאונה יבשה,outdoors,0,1204,219.3,32.09711,34.77937,street -> hidden,street,street
+place,osm:way/1177973731,גינה ציבורית,outdoors,1,1211,358.5,32.116351,34.787129,hidden,street -> hidden,street
+place,fp:18285,מכון כושר וסאונה יבשה,outdoors,0,1213,216.2,32.09669,34.77986,street -> hidden,street,street
+place,fp:40303,"עירוני ד - חט""ב",education,0,1213,159.7,32.09526,34.79193,hidden -> street,hidden -> street,street
+place,fp:osm-way-149245465,בית דוד,community,0,1217,195.4,32.09494,34.78403,hidden,street -> hidden,street
+place,fp:19522,מכון כושר וסאונה יבשה,outdoors,0,1225,225.5,32.09776,34.7782,street -> hidden,street,street
+place,fp:55,ירקון - מרכז דניאל לחתירה,outdoors,0,1226,218.6,32.09687,34.77935,street -> hidden,street,street
+place,osm:way/34719781,פארק,outdoors,1,1227,158.9,32.095198,34.792157,hidden -> street,hidden -> street,street
+place,fp:937-50,מרכז דניאל לחתירה,outdoors,0,1231,219.6,32.09696,34.77914,street -> hidden,street,street
+place,fp:area-48,חוף תל ברוך,outdoors,0,1231,334.8,32.11548,34.7819,hidden -> street,street,street
+place,fp:943-344,בית ספר עמוס עוז,outdoors,0,1232,352.1,32.11644,34.78568,hidden,hidden -> street,street
+place,fp:20825,פיצה הגוש,food,0,1235,2.9,32.11656,34.78814,hidden,street -> hidden,street
+place,fp:21021,המוציא לחם,essentials,0,1235,2.9,32.11656,34.78814,hidden,street -> hidden,street
+place,fp:area-58,נחל ירקון מקטע בבלי,outdoors,0,1235,125.7,32.09901,34.7981,hidden,hidden -> street,hidden -> street
+place,osm:node/1207710669,גן משחקים,outdoors,1,1241,130.5,32.098241,34.797472,hidden,street -> hidden,street
+place,fp:20889,הצרכניה שלי,essentials,0,1245,1.8,32.11666,34.78789,hidden,street -> hidden,street
+place,fp:22012,רון,education,0,1245,66.7,32.10991,34.79959,street -> hidden,street,street
+place,fp:22012,זמר,education,0,1245,66.7,32.10991,34.79959,street -> hidden,street,street
+place,fp:22012,מקהלה,education,0,1245,66.7,32.10991,34.79959,street -> hidden,street,street
+place,fp:osm-node-4263469840,Breakfast at Riverside,food,0,1245,217.5,32.09661,34.77942,street -> hidden,street,street
+place,osm:way/98701971,פארק,outdoors,1,1245,16.3,32.116217,34.791172,hidden -> street,street,street
+place,fp:563-9,סלע,health,0,1250,195.7,32.09467,34.78388,hidden,street -> hidden,street
+place,fp:696-163,זינגר,outdoors,0,1262,153.2,32.09536,34.79349,hidden,street -> hidden,street -> hidden
+place,fp:624-52,נעמת איילון,education,0,1276,143.5,32.09627,34.79552,hidden,hidden -> street,hidden -> street
+place,fp:21414,Boost כל מה שטוב,essentials,0,1282,3.0,32.11698,34.78817,hidden,street -> hidden,street
+place,fp:9906,ג'קו דגים,essentials,0,1282,3.0,32.11698,34.78817,hidden,street -> hidden,street
+place,fp:624-39,"ויצו אוניברסיטת ת""א (גפני)",education,0,1284,85.7,32.10634,34.80105,street -> hidden,street,street
+place,fp:19988,מעדני יהודה המכבי,essentials,0,1288,178.3,32.09391,34.78787,hidden,hidden -> street,street
+place,osm:way/163144194,פארק,outdoors,1,1289,104.8,32.10253,34.800686,hidden -> street,street,street
+place,fp:osm-node-1717771204,בנק הפועלים,essentials,0,1294,186.3,32.09392,34.78597,hidden,street -> hidden,street
+place,fp:12914,אפרסמון,education,0,1297,172.5,32.09393,34.78927,hidden,hidden -> street,street
+place,fp:12914,פומלית,education,0,1297,172.5,32.09393,34.78927,hidden,hidden -> street,street
+place,fp:696-231,ברודצקי 4 6,outdoors,0,1298,56.7,32.11189,34.79897,hidden,street -> hidden,street
+place,fp:osm-node-11009457424,עצים בתשליל,community,0,1299,108.4,32.1018,34.80054,street -> hidden,street,street
+place,fp:20808,הממתק של סמי,food,0,1300,187.9,32.09391,34.78556,hidden,street -> hidden,street
+place,fp:21604,חומוס לבלבי,food,0,1300,187.9,32.09391,34.78556,hidden,street -> hidden,street
+place,fp:osm-node-1717768352,יודה,food,0,1301,194.6,32.09417,34.78398,hidden,street -> hidden,street
+place,fp:6854,פרומז׳רי וחברים,food,0,1302,189.6,32.09395,34.78517,hidden,street -> hidden,street
+place,fp:22095,הקולה בעיר כיכר מילאנו,essentials,0,1304,194.9,32.09416,34.7839,hidden,street -> hidden,street
+place,fp:295,דוידס סיגרים,essentials,0,1304,194.9,32.09416,34.7839,hidden,street -> hidden,street
+place,fp:8480,בשר נטו,essentials,0,1304,194.9,32.09416,34.7839,hidden,street -> hidden,street
+place,fp:osm-way-163143586,"ביה""ס למדעי הנפט ואסטרטגיה",education,0,1304,89.6,32.10557,34.80129,street -> hidden,street,street
+place,fp:66,תל ברוך דרום,outdoors,0,1315,330.2,32.11573,34.78053,hidden -> street,street,street
+place,fp:13,ברושים,transport,0,1317,80.5,32.10744,34.80124,street -> hidden,street,street
+place,fp:938-92,מרכז קהילתי רמת אביב,outdoors,0,1323,74.9,32.10858,34.80101,hidden -> street,street,street
+place,fp:28514,גלים,education,0,1326,15.5,32.11696,34.79122,hidden -> street,street,street
+place,fp:28514,צבי ים,education,0,1326,15.5,32.11696,34.79122,hidden -> street,street,street
+place,fp:28514,כוכב ים,education,0,1326,15.5,32.11696,34.79122,hidden -> street,street,street
+place,fp:19400,קפה זוריק,food,0,1327,188.8,32.0937,34.78531,hidden,street -> hidden,street
+place,fp:2079,אס מילנו,food,0,1327,188.8,32.0937,34.78531,hidden,street -> hidden,street
+place,fp:3567,אורי בייקרי השקעות,food,0,1328,176.8,32.09357,34.78826,hidden,hidden -> street,street
+place,fp:7101,ג'ונו,food,0,1328,189.1,32.0937,34.78525,hidden,street -> hidden,street
+place,fp:osm-node-1717768353,זוריק,food,0,1329,189.7,32.09371,34.78508,hidden,street -> hidden,street
+place,fp:553-8,מרכז קהילתי רמת אביב,community,0,1334,75.7,32.10844,34.80117,hidden -> street,street,street
+place,fp:21037,טיב טעם רשתות,essentials,0,1340,161.4,32.09407,34.79199,hidden -> street,street,street
+place,fp:10218,מרכז הפרי והירק,essentials,0,1342,189.4,32.09359,34.78513,hidden,street -> hidden,street
+place,fp:13878,אנוטקה,food,0,1342,189.4,32.09359,34.78513,hidden,street -> hidden,street
+place,fp:21911,אביעד רשת חנויות גלידה בע,essentials,0,1342,160.9,32.09409,34.79213,hidden -> street,street,street
+place,fp:5275,גאיה רינר,food,0,1342,160.9,32.09409,34.79213,hidden -> street,street,street
+place,fp:6442,לחם ארז,essentials,0,1342,160.9,32.09409,34.79213,hidden -> street,street,street
+place,fp:9195,מכולת בשכונה,essentials,0,1345,146.5,32.0954,34.79534,street -> hidden,street,street
+place,fp:osm-node-1700723076,בנק דיסקונט,essentials,0,1345,161.4,32.09403,34.79202,hidden -> street,street,street
+place,fp:51060,עירוני יא מחט,education,0,1348,178.6,32.09337,34.78782,hidden,hidden -> street,street
+place,fp:8725,קיוסק כל בו הנרי,essentials,0,1349,138.0,32.09647,34.79703,hidden -> street,hidden -> street,hidden -> street
+place,fp:10870,האחים בבלי,essentials,0,1350,137.5,32.09653,34.79713,hidden -> street,hidden -> street,hidden -> street
+place,fp:21846,ניצת הדובדבן,essentials,0,1350,158.7,32.09418,34.79266,hidden -> street,street,street
+place,fp:9044,שופרסל,essentials,0,1352,158.3,32.0942,34.79277,hidden -> street,street,street
+place,osm:way/35418850,פארק,outdoors,1,1353,56.2,32.112239,34.799396,hidden,street -> hidden,street
+place,osm:way/1554261978,תיכון עמוס עוז,education,0,1355,355.6,32.117618,34.786361,hidden,street -> hidden,street
+place,fp:8861,שי דגים,essentials,0,1357,156.2,32.09432,34.79327,hidden -> street,street,street
+place,fp:943-335,מגרש בית ספר ניצנים,outdoors,0,1362,45.2,32.11411,34.79771,hidden,hidden -> street,street
+place,fp:943-206,"ביה""ס אביב",outdoors,0,1365,13.9,32.11738,34.79095,hidden -> street,street,street
+place,fp:osm-node-3461420324,מגה בעיר,essentials,0,1368,161.6,32.09382,34.79205,hidden -> street,street,street
+place,fp:16474,בית טבע צפון,essentials,0,1369,161.3,32.09383,34.79213,hidden -> street,street,street
+place,fp:osm-way-1183060379,"עירוני י""א",education,0,1371,179.4,32.09316,34.78761,hidden,hidden -> street,street
+place,osm:way/98289493,בית הספר להנדסאים,education,0,1373,80.4,32.107536,34.801824,street -> hidden,street,street
+place,fp:1413,לה בוצ'ר,essentials,0,1376,159.0,32.09394,34.7927,hidden -> street,street,street
+place,fp:4598,נקודת טבע,essentials,0,1376,159.5,32.0939,34.79258,hidden -> street,street,street
+place,fp:30601,בבלי-ירושלמי,education,0,1380,142.8,32.09561,34.79632,hidden,hidden -> street,hidden -> street
+place,fp:565-31,מרפאת עין טל ספטולב,health,0,1380,181.8,32.09309,34.787,hidden,hidden -> street,street
+place,fp:943-254,מגרש כדורסל,outdoors,0,1380,219.9,32.09597,34.77808,street -> hidden,street,street
+place,fp:12642,טוליפ,essentials,0,1381,157.2,32.09404,34.79314,hidden -> street,street,street
+place,fp:56,ירקון - צופי ים תל אביב,outdoors,0,1382,223.7,32.09651,34.77734,street -> hidden,street,street
+place,fp:20186,ירקניה,essentials,0,1388,156.0,32.09409,34.79345,hidden -> street,street,street
+place,fp:4319,בריו 66,food,0,1388,156.0,32.09409,34.79345,hidden -> street,street,street
+place,fp:osm-way-1181227521,צופי ים תל אביב,community,0,1388,223.6,32.09645,34.77732,street -> hidden,street,street
+place,fp:9,נופי ים,transport,0,1391,354.0,32.11791,34.78592,hidden,street -> hidden,street
+place,fp:808,מיקי שמו קונדטוריה,essentials,0,1393,157.3,32.09393,34.79316,hidden -> street,street,street
+place,fp:11805,יאשקה יהודה המכבי,food,0,1397,156.8,32.09395,34.79331,hidden -> street,street,street
+place,fp:83,לוטוס,education,0,1397,221.1,32.09602,34.77773,street -> hidden,street,street
+place,fp:9613,מטמון,education,0,1397,221.1,32.09602,34.77773,street -> hidden,street,street
+place,fp:4967,דלי קואסו,essentials,0,1398,156.4,32.09397,34.79339,hidden -> street,street,street
+place,fp:5176,זולו,essentials,0,1398,156.4,32.09397,34.79339,hidden -> street,street,street
+place,fp:osm-node-1309308439,בנק לאומי,essentials,0,1398,153.1,32.09428,34.79417,hidden,street -> hidden,street -> hidden
+place,fp:938-36,"ביה""ס בבלי",outdoors,0,1408,142.2,32.09549,34.79662,hidden,hidden -> street,hidden -> street
+place,fp:938-13,מרכז ספורט אלון רונן,outdoors,0,1410,14.6,32.11774,34.79123,hidden -> street,street,street
+place,fp:9704,ס.ש.ק ניהול והפעלת בתי או,essentials,0,1425,83.1,32.10701,34.80247,street -> hidden,street,street
+place,osm:way/1231380762,גן משחקים,outdoors,1,1425,83.9,32.106836,34.802493,street -> hidden,street,street
+place,fp:osm-node-654058033,סופר באבא,essentials,0,1428,216.4,32.09515,34.77849,street -> hidden,street,street
+place,osm:way/1183957965,גינה ציבורית,outdoors,1,1432,109.8,32.101122,34.801756,street -> hidden,street,street
+place,fp:3116,סופר יודה,essentials,0,1437,216.0,32.09504,34.7785,street -> hidden,street,street
+place,fp:10338,בלאק סטור,food,0,1452,81.3,32.10745,34.80269,street -> hidden,street,street
+place,fp:20905,בורגרים,food,0,1452,81.3,32.10745,34.80269,street -> hidden,street,street
+place,fp:21392,סבן אקספרס,food,0,1452,81.3,32.10745,34.80269,street -> hidden,street,street
+place,fp:osm-node-947440457,הנביאים,food,0,1459,215.8,32.09485,34.77841,street -> hidden,street,street
+place,fp:11897,חומוס אשכרה,food,0,1462,217.9,32.09511,34.77795,street -> hidden,street,street
+place,fp:13482,מיץ,essentials,0,1462,217.9,32.09511,34.77795,street -> hidden,street,street
+place,fp:5051,עוף בגריל,essentials,0,1468,216.6,32.0949,34.77818,street -> hidden,street,street
+place,fp:osm-node-947438231,עדנה,food,0,1471,217.0,32.09492,34.77808,street -> hidden,street,street
+place,fp:74344,נוה הדר-רווחה,education,0,1478,209.8,32.09396,34.77967,hidden -> street,street,street
+place,fp:19042,סוף הדרך,essentials,0,1484,225.5,32.09614,34.77624,street -> hidden,street,street
+place,fp:926,המקום של חני,essentials,0,1487,217.3,32.09485,34.77791,street -> hidden,street,street
+place,fp:22008,בייבי אייס,essentials,0,1490,218.9,32.09506,34.77755,street -> hidden,street,street
+place,fp:7380,תפוח 2000,essentials,0,1491,219.3,32.09511,34.77745,street -> hidden,street,street
+place,fp:osm-node-1975875693,הסינית האדומה,food,0,1494,225.0,32.09599,34.77626,street -> hidden,street,street
+place,fp:586-102,חוף תל ברוך הדרומי,outdoors,0,1495,336.6,32.1178,34.78117,hidden -> street,street,street
+place,fp:2410,דליה,education,0,1497,222.5,32.09557,34.77674,street -> hidden,street,street
+place,fp:2410,לוטם,education,0,1497,222.5,32.09557,34.77674,street -> hidden,street,street
+place,fp:osm-node-10279205510,MDK,essentials,0,1499,226.7,32.09625,34.77589,street -> hidden,street,street

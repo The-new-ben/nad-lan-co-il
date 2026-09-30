@@ -1,0 +1,522 @@
+{
+ "rainbow": [
+  {
+   "name": "ויצו כוכב הצפון",
+   "g": "education",
+   "lat": 32.10136,
+   "lng": 34.78567,
+   "dist": 261,
+   "bearing": 158.6,
+   "gis": {
+    "oid": 36306,
+    "floors": null,
+    "year": null,
+    "height": 0.0,
+    "type": "מבנה רגיל"
+   },
+   "new_frame_building": null,
+   "old_frame_building": null,
+   "new_matches_gis": false,
+   "sight_before": {
+    "10": null,
+    "25": null,
+    "36": null
+   },
+   "sight_after": {
+    "10": "street",
+    "25": "street",
+    "36": "street"
+   }
+  },
+  {
+   "name": "וגה",
+   "g": "food",
+   "lat": 32.10097,
+   "lng": 34.78337,
+   "dist": 311,
+   "bearing": 203.0,
+   "gis": {
+    "oid": 24723,
+    "floors": 1,
+    "year": 1991,
+    "height": 9.1,
+    "type": "מבנה רגיל"
+   },
+   "new_frame_building": {
+    "h": 9.0,
+    "floors": 1,
+    "year": 1991
+   },
+   "old_frame_building": null,
+   "new_matches_gis": true,
+   "sight_before": {
+    "10": null,
+    "25": null,
+    "36": null
+   },
+   "sight_after": {
+    "10": null,
+    "25": null,
+    "36": "roof"
+   }
+  },
+  {
+   "name": "שופרסל אקספרס",
+   "g": "essentials",
+   "lat": 32.10104,
+   "lng": 34.78337,
+   "dist": 304,
+   "bearing": 203.6,
+   "gis": {
+    "oid": 24723,
+    "floors": 1,
+    "year": 1991,
+    "height": 9.1,
+    "type": "מבנה רגיל"
+   },
+   "new_frame_building": {
+    "h": 9.0,
+    "floors": 1,
+    "year": 1991
+   },
+   "old_frame_building": null,
+   "new_matches_gis": true,
+   "sight_before": {
+    "10": null,
+    "25": null,
+    "36": null
+   },
+   "sight_after": {
+    "10": null,
+    "25": null,
+    "36": "roof"
+   }
+  },
+  {
+   "name": "כוכב הצפון",
+   "g": "outdoors",
+   "lat": 32.10086,
+   "lng": 34.78664,
+   "dist": 352,
+   "bearing": 148.0,
+   "gis": {
+    "oid": 43309,
+    "floors": 1,
+    "year": 2018,
+    "height": 13.1,
+    "type": "מבנה רגיל"
+   },
+   "new_frame_building": {
+    "h": 13.0,
+    "floors": 1,
+    "year": 2018
+   },
+   "old_frame_building": null,
+   "new_matches_gis": true,
+   "sight_before": {
+    "10": "street",
+    "25": "street",
+    "36": "street"
+   },
+   "sight_after": {
+    "10": "roof",
+    "25": "roof",
+    "36": "roof"
+   }
+  }
+ ],
+ "duo": [
+  {
+   "name": "מגדל המאה",
+   "g": "health",
+   "lat": 32.08705,
+   "lng": 34.78232,
+   "dist": 169,
+   "bearing": 336.7,
+   "gis": {
+    "oid": 20127,
+    "floors": 18,
+    "year": 1944,
+    "height": 74.7,
+    "type": "מבנה רגיל"
+   },
+   "new_frame_building": {
+    "h": 74.5,
+    "floors": 18,
+    "year": 1944
+   },
+   "old_frame_building": null,
+   "new_matches_gis": true,
+   "sight_before": {
+    "10": null,
+    "25": null,
+    "45": null
+   },
+   "sight_after": {
+    "10": "roof",
+    "25": "roof",
+    "45": "roof"
+   }
+  },
+  {
+   "name": "ערבה",
+   "g": "education",
+   "lat": 32.08697,
+   "lng": 34.78317,
+   "dist": 147,
+   "bearing": 5.3,
+   "gis": {
+    "oid": 40141,
+    "floors": 25,
+    "year": 2024,
+    "height": 80.0,
+    "type": "מבנה ציבור"
+   },
+   "new_frame_building": {
+    "h": 80.0,
+    "floors": 25,
+    "year": 2024
+   },
+   "old_frame_building": null,
+   "new_matches_gis": true,
+   "sight_before": {
+    "10": null,
+    "25": null,
+    "45": null
+   },
+   "sight_after": {
+    "10": "roof",
+    "25": "roof",
+    "45": "roof"
+   }
+  },
+  {
+   "name": "סביח מחסן",
+   "g": "food",
+   "lat": 32.08602,
+   "lng": 34.7817,
+   "dist": 131,
+   "bearing": 287.8,
+   "gis": {
+    "oid": 13389,
+    "floors": 4,
+    "year": 1955,
+    "height": 13.8,
+    "type": "מבנה רגיל"
+   },
+   "new_frame_building": {
+    "h": 14.0,
+    "floors": 4,
+    "year": 1955
+   },
+   "old_frame_building": {
+    "h": 10.5,
+    "floors": 2,
+    "year": 0
+   },
+   "new_matches_gis": true,
+   "sight_before": {
+    "10": "street",
+    "25": "street",
+    "45": "street"
+   },
+   "sight_after": {
+    "10": "roof",
+    "25": "roof",
+    "45": "roof"
+   }
+  },
+  {
+   "name": "עמנואל הרומי",
+   "g": "community",
+   "lat": 32.0868,
+   "lng": 34.7809,
+   "dist": 237,
+   "bearing": 302.4,
+   "gis": {
+    "oid": 20234,
+    "floors": 1,
+    "year": 1980,
+    "height": 4.7,
+    "type": "מבנה רגיל"
+   },
+   "new_frame_building": {
+    "h": 4.5,
+    "floors": 1,
+    "year": 1980
+   },
+   "old_frame_building": null,
+   "new_matches_gis": true,
+   "sight_before": {
+    "10": null,
+    "25": null,
+    "45": "street"
+   },
+   "sight_after": {
+    "10": null,
+    "25": "roof",
+    "45": "roof"
+   }
+  }
+ ],
+ "dimri": [
+  {
+   "name": "מכבי שירותי בריאות",
+   "g": "health",
+   "lat": 32.10533,
+   "lng": 34.79006,
+   "dist": 572,
+   "bearing": 78.8,
+   "gis": {
+    "oid": 24133,
+    "floors": 2,
+    "year": 1994,
+    "height": 12.9,
+    "type": "מבנה רגיל"
+   },
+   "new_frame_building": {
+    "h": 13.0,
+    "floors": 2,
+    "year": 1994
+   },
+   "old_frame_building": null,
+   "new_matches_gis": true,
+   "sight_before": {
+    "10": null,
+    "25": null,
+    "36": null
+   },
+   "sight_after": {
+    "10": "roof",
+    "25": "roof",
+    "36": "roof"
+   }
+  },
+  {
+   "name": "כוכב הצפון",
+   "g": "education",
+   "lat": 32.10147,
+   "lng": 34.78638,
+   "dist": 384,
+   "bearing": 146.2,
+   "gis": {
+    "oid": 40185,
+    "floors": 1,
+    "year": 2020,
+    "height": 11.1,
+    "type": "מבנה ציבור"
+   },
+   "new_frame_building": {
+    "h": 11.0,
+    "floors": 1,
+    "year": 2020
+   },
+   "old_frame_building": null,
+   "new_matches_gis": true,
+   "sight_before": {
+    "10": null,
+    "25": null,
+    "36": null
+   },
+   "sight_after": {
+    "10": "roof",
+    "25": "roof",
+    "36": "roof"
+   }
+  },
+  {
+   "name": "אפטר תשע",
+   "g": "food",
+   "lat": 32.10515,
+   "lng": 34.78999,
+   "dist": 562,
+   "bearing": 80.7,
+   "gis": {
+    "oid": 24133,
+    "floors": 2,
+    "year": 1994,
+    "height": 12.9,
+    "type": "מבנה רגיל"
+   },
+   "new_frame_building": {
+    "h": 13.0,
+    "floors": 2,
+    "year": 1994
+   },
+   "old_frame_building": null,
+   "new_matches_gis": true,
+   "sight_before": {
+    "10": "street",
+    "25": "street",
+    "36": "street"
+   },
+   "sight_after": {
+    "10": null,
+    "25": null,
+    "36": null
+   }
+  },
+  {
+   "name": "\"יופיטר\"",
+   "g": "essentials",
+   "lat": 32.0995,
+   "lng": 34.78399,
+   "dist": 538,
+   "bearing": 181.2,
+   "gis": {
+    "oid": 37009,
+    "floors": null,
+    "year": 1997,
+    "height": 10.1,
+    "type": null
+   },
+   "new_frame_building": {
+    "h": 10.0,
+    "floors": 0,
+    "year": 1997
+   },
+   "old_frame_building": null,
+   "new_matches_gis": true,
+   "sight_before": {
+    "10": null,
+    "25": null,
+    "36": null
+   },
+   "sight_after": {
+    "10": "roof",
+    "25": "roof",
+    "36": "roof"
+   }
+  }
+ ],
+ "ashira": [
+  {
+   "name": "מכבי שירותי בריאות",
+   "g": "health",
+   "lat": 32.10533,
+   "lng": 34.79006,
+   "dist": 245,
+   "bearing": 93.9,
+   "gis": {
+    "oid": 24133,
+    "floors": 2,
+    "year": 1994,
+    "height": 12.9,
+    "type": "מבנה רגיל"
+   },
+   "new_frame_building": {
+    "h": 13.0,
+    "floors": 2,
+    "year": 1994
+   },
+   "old_frame_building": null,
+   "new_matches_gis": true,
+   "sight_before": {
+    "10": null,
+    "22": null,
+    "32": "street"
+   },
+   "sight_after": {
+    "10": "roof",
+    "22": "roof",
+    "32": "roof"
+   }
+  },
+  {
+   "name": "קרן",
+   "g": "education",
+   "lat": 32.10455,
+   "lng": 34.79122,
+   "dist": 369,
+   "bearing": 106.3,
+   "gis": {
+    "oid": 37485,
+    "floors": null,
+    "year": 1980,
+    "height": 12.6,
+    "type": null
+   },
+   "new_frame_building": {
+    "h": 12.5,
+    "floors": 0,
+    "year": 1980
+   },
+   "old_frame_building": null,
+   "new_matches_gis": true,
+   "sight_before": {
+    "10": null,
+    "22": null,
+    "32": "street"
+   },
+   "sight_after": {
+    "10": null,
+    "22": null,
+    "32": null
+   }
+  },
+  {
+   "name": "אפטר תשע",
+   "g": "food",
+   "lat": 32.10515,
+   "lng": 34.78999,
+   "dist": 241,
+   "bearing": 98.7,
+   "gis": {
+    "oid": 24133,
+    "floors": 2,
+    "year": 1994,
+    "height": 12.9,
+    "type": "מבנה רגיל"
+   },
+   "new_frame_building": {
+    "h": 13.0,
+    "floors": 2,
+    "year": 1994
+   },
+   "old_frame_building": null,
+   "new_matches_gis": true,
+   "sight_before": {
+    "10": null,
+    "22": "street",
+    "32": "street"
+   },
+   "sight_after": {
+    "10": null,
+    "22": null,
+    "32": null
+   }
+  },
+  {
+   "name": "'קאנטרי ל",
+   "g": "community",
+   "lat": 32.10922,
+   "lng": 34.79032,
+   "dist": 496,
+   "bearing": 32.9,
+   "gis": {
+    "oid": 24027,
+    "floors": 2,
+    "year": 1990,
+    "height": 11.0,
+    "type": "מבנה רגיל"
+   },
+   "new_frame_building": {
+    "h": 11.0,
+    "floors": 2,
+    "year": 1990
+   },
+   "old_frame_building": null,
+   "new_matches_gis": true,
+   "sight_before": {
+    "10": null,
+    "22": null,
+    "32": null
+   },
+   "sight_after": {
+    "10": null,
+    "22": "roof",
+    "32": "roof"
+   }
+  }
+ ]
+}

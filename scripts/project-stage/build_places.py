@@ -194,6 +194,28 @@ for b in CITY["b"]:
     xs, zs = [p[0] for p in poly], [p[1] for p in poly]
     BLD.append((h, poly, (min(xs), min(zs), max(xs), max(zs))))
 
+# the city layer's own frame, as its builder declares it in city.json "origin" (docs/research/2026-09-28-stages/
+# stage-geometry.md 0.2): e = (lng - lng0) cos(lat0) 111320, n = (lat - lat0) m_lat (110574 unless the layer says otherwise),
+# X = e, Z = -n (north up), then turned by -grid_deg: x = grid east, z = grid south. Every sight line is drawn in this frame.
+# HAD-376 (30.9.2026): until 1.72.372 the places went in north up (xz() above) and the landmarks as quarter.json's north-up
+# x/z, against buildings turned 10-11 degrees, so a place 500 m out was compared with a building about 90 m away from it.
+# xz() still gives each place's x/z field (north up, as before); nothing on the pages reads it.
+_F = CITY.get("origin") or {}
+if not all(k in _F for k in ("lat", "lng", "grid_deg")):
+    sys.exit("city.json declares no frame (\"origin\": lat, lng, grid_deg): the sight lines cannot place anything in it")
+F_LAT, F_LNG = float(_F["lat"]), float(_F["lng"])
+F_KE, F_KN = 111320.0 * math.cos(math.radians(F_LAT)), float(_F.get("m_lat", 110574.0))
+F_C, F_S = math.cos(math.radians(-float(_F["grid_deg"]))), math.sin(math.radians(-float(_F["grid_deg"])))
+
+
+def turn(X, Z):
+    """north-up metres from the layer's origin (x east, z south; quarter.json's x/z) to the layer's frame"""
+    return X * F_C - Z * F_S, X * F_S + Z * F_C
+
+
+def city_xz(lat, lng):
+    return turn((lng - F_LNG) * F_KE, -(lat - F_LAT) * F_KN)
+
 
 def inside(poly, x, z):
     c = False
@@ -250,9 +272,9 @@ def visible(eye, target, skip=None):
 
 
 def sight(x, z):
-    """per floor: 'street' (the place itself), 'roof' (only its building's top), or None (hidden)"""
+    """per floor: 'street' (the place itself), 'roof' (only its building's top), or None (hidden); x, z in the layer's frame"""
     hb = host(x, z)
-    tx, tz = xz(*TOWER)
+    tx, tz = city_xz(*TOWER)
     out = {}
     for fl, eh in FLOORS.items():
         # the eye stands at the tower's glass on the side facing the place (half the tower's width out, about 12 m)
@@ -295,7 +317,25 @@ def isochrones(tok):
     return sorted(out, key=lambda r: r["min"])
 
 
+def resight():
+    """--resight: the sight lines again on the registry already built, and nothing else (no fetch, no new date): the file must
+    read back to its own bytes first, so the rewrite can only change the "sight" fields"""
+    raw = io.open(OUT, encoding="utf-8", newline="").read()
+    d = json.loads(raw)
+    if json.dumps(d, ensure_ascii=False, separators=(",", ":")) + "\n" != raw:
+        sys.exit("places.json does not read back to its own bytes: a sight-only rewrite could change more than the sight lines")
+    for p in d["places"]:
+        p["sight"] = sight(*city_xz(p["lat"], p["lng"]))
+    for lm in d.get("landmarks", []):
+        lm["sight"] = sight(*turn(lm["x"], lm["z"]))
+    io.open(OUT, "w", encoding="utf-8", newline="\n").write(json.dumps(d, ensure_ascii=False, separators=(",", ":")) + "\n")
+    for fl in [str(k) for k in sorted(FLOORS)]:
+        print("floor", fl, "street", sum(1 for p in d["places"] if p["sight"][fl] == "street"), "roof", sum(1 for p in d["places"] if p["sight"][fl] == "roof"))
+
+
 def main():
+    if "--resight" in sys.argv:
+        return resight()
     no_walk = "--no-walk" in sys.argv
     tok = None if no_walk else token()
     raw = cached_json("overpass.json", overpass)
@@ -379,14 +419,14 @@ def main():
         spots.add(key); keep.append(p)
     places = sorted([p for p in keep if clean(p)], key=lambda p: p["dist"])
     for p in places:
-        p["sight"] = sight(p["x"], p["z"])
+        p["sight"] = sight(*city_xz(p["lat"], p["lng"]))
         if tok:
             p["walk"], p["route_m"] = walk_minutes(tok, p["lat"], p["lng"])
     q = _Q
     landmarks = []
     for it in q.get("places", []):
         lm = {k: it[k] for k in ("kind", "name", "pin", "status", "x", "z", "dist", "bearing", "walk", "src") if k in it}
-        lm["sight"] = sight(it["x"], it["z"])
+        lm["sight"] = sight(*turn(it["x"], it["z"]))
         landmarks.append(lm)
     out = {
         "v": 1, "generated_at": time.strftime("%Y-%m-%d"),

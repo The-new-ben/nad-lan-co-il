@@ -160,6 +160,8 @@ def main():
     out = {"v": 1, "generated_at": time.strftime("%Y-%m-%d"),
            "source": "עיריית תל אביב-יפו, שכבת המבנים (GIS 513), " + time.strftime("%-m.%Y" if os.name != "nt" else "%#m.%Y"),
            "note": "הבניינים הקיימים היום, לפי שכבת המבנים של העירייה: קו הבניין, הגובה, הקומות ושנת הבנייה.",
+           # the layer's frame, for build_places.py's sight lines (HAD-376), as the other stages' city.json declare it
+           "origin": {"lat": ORIGIN[0], "lng": ORIGIN[1], "grid_deg": round(-math.degrees(GRID))},
            "lots_source": "עיריית תל אביב-יפו, שכבת התוכניות: מגרשים עם תכנית עיצוב מאושרת (27.8.2026)",
            "b": kept, "lots": lots}
     io.open(OUT, "w", encoding="utf-8", newline="\n").write(json.dumps(out, ensure_ascii=False, separators=(",", ":")))

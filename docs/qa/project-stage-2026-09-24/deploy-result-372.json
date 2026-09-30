@@ -1,0 +1,23 @@
+{
+  "released": "1.72.372",
+  "from": "1.72.371",
+  "live_before": {
+    "assets/project-stage/rainbow/places.json": "419b216b7a69681f73fc7ffe9136deb6",
+    "assets/project-stage/duo/places.json": "3591dff4f26ef3bcb9aa44c435a894fa",
+    "assets/project-stage/dimri/places.json": "543786ab6ddadc0be42a89750224192a",
+    "assets/project-stage/ashira/places.json": "163952cdac179d1b205ad9faef33c885",
+    "assets/project-stage/rainbow/city.json": "7c67069bc8a292d38ebb34d4e75b7d36",
+    "nadlan-config.php": "320333c35cc0a5fddf8ea5b6a1d77748"
+  },
+  "state": "released and verified",
+  "at": "2026-09-30 21:48:50",
+  "files": {
+    "assets/project-stage/rainbow/places.json": "06f9493e03e736ccd33632b4f0cc6222",
+    "assets/project-stage/duo/places.json": "2e5b10e173bf9c31dd7162aa38ff38ab",
+    "assets/project-stage/dimri/places.json": "8855c6e6442188c55fbb1469ecb00f08",
+    "assets/project-stage/ashira/places.json": "c15c12d8149380253921ae8e77a04838",
+    "assets/project-stage/rainbow/city.json": "576e633682e86215681f6168814fee29",
+    "nadlan-config.php": "ef68933340dbc4c61ad87a00e5f86f0a"
+  },
+  "checks": "verify_pages + served_exact (the five files at ?ver=1.72.372, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

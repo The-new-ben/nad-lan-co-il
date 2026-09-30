@@ -1,0 +1,98 @@
+{
+ "rainbow": {
+  "places": 860,
+  "landmarks": 5,
+  "changed": 529,
+  "changed_named": 481,
+  "changed_landmarks": 2,
+  "bands": [
+   "10",
+   "25",
+   "36"
+  ],
+  "transitions": {
+   "street -> hidden": 374,
+   "hidden -> street": 243,
+   "hidden -> roof": 200,
+   "street -> roof": 146,
+   "roof -> hidden": 54,
+   "roof -> street": 11
+  },
+  "shown_or_hidden_flips": {
+   "now shown": 443,
+   "now hidden": 428
+  }
+ },
+ "duo": {
+  "places": 1391,
+  "landmarks": 3,
+  "changed": 798,
+  "changed_named": 713,
+  "changed_landmarks": 1,
+  "bands": [
+   "10",
+   "25",
+   "45"
+  ],
+  "transitions": {
+   "street -> hidden": 394,
+   "hidden -> roof": 385,
+   "hidden -> street": 315,
+   "roof -> hidden": 89,
+   "street -> roof": 64,
+   "roof -> street": 14
+  },
+  "shown_or_hidden_flips": {
+   "now shown": 700,
+   "now hidden": 483
+  }
+ },
+ "dimri": {
+  "places": 835,
+  "landmarks": 5,
+  "changed": 324,
+  "changed_named": 282,
+  "changed_landmarks": 2,
+  "bands": [
+   "10",
+   "25",
+   "36"
+  ],
+  "transitions": {
+   "street -> hidden": 218,
+   "hidden -> street": 204,
+   "hidden -> roof": 40,
+   "roof -> hidden": 9,
+   "street -> roof": 8,
+   "roof -> street": 3
+  },
+  "shown_or_hidden_flips": {
+   "now shown": 244,
+   "now hidden": 227
+  }
+ },
+ "ashira": {
+  "places": 791,
+  "landmarks": 5,
+  "changed": 360,
+  "changed_named": 324,
+  "changed_landmarks": 2,
+  "bands": [
+   "10",
+   "22",
+   "32"
+  ],
+  "transitions": {
+   "hidden -> street": 201,
+   "street -> hidden": 200,
+   "hidden -> roof": 100,
+   "roof -> street": 12,
+   "street -> roof": 9,
+   "roof -> hidden": 8
+  },
+  "shown_or_hidden_flips": {
+   "now hidden": 208,
+   "now shown": 301
+  }
+ }
+}

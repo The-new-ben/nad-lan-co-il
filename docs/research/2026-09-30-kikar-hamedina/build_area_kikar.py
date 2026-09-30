@@ -324,7 +324,7 @@ def main():
     p = os.path.join(HERE, "city-blocks.json")
     io.open(p, "w", encoding="utf-8", newline="\n").write(json.dumps(out, ensure_ascii=False, separators=(",", ":")) + "\n")
     io.open(os.path.join(STAGE, "city.json"), "w", encoding="utf-8", newline="\n").write(
-        json.dumps({"v": 1, "generated_at": TODAY, "source": out["source"], "origin": {"lat": O[0], "lng": O[1], "grid_deg": 0},
+        json.dumps({"v": 1, "generated_at": TODAY, "source": out["source"], "origin": {"lat": O[0], "lng": O[1], "grid_deg": 0, "m_lat": KZ},
                     "note": "only 'b', for build_places.py's sight lines (a copy of city-blocks.json's b)", "b": b},
                    ensure_ascii=False, separators=(",", ":")) + "\n")
     print("buildings within %d m: %d (with height %d) | b %d | notable %d | left out %s" % (R_B, len(blds), out["counts"]["with_height"], len(b), len(notable), why))
