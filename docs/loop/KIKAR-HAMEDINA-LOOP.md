@@ -101,6 +101,19 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **1.10, turn 18.**
+  - **Web:**
+    - [mako 24.9.2026](https://www.mako.co.il/news-money/real_estate/Article-1b24331b3cec0a1026.htm), [RMD Kwikform case study 5.2026](https://www.rmdkwikform.com/wp-content/uploads/2026/05/Altrad-RMDK_Case-Study-Kikar-Hamedina_Israel.pdf) (S36) and [biyar](https://biyar.co.il/?p=2138&lang=en) (S59), all already in facts.md.
+    - **Re-check:** nothing new contradicts the page. The twist's DIRECTION is still stated nowhere, so it stays "unverified" and is never guessed.
+  - **CORRECTION to turn 17:** the 1.72.380 measurement was pessimistic. A bare `scrollTo` jump under-fires the floating buttons' scroll logic.
+    - Re-measured with a scroll event per jump, as a finger's scroll fires: the a11y button over a fold heading 15 → **2**; the bar 10 → **7** (he 390; en the same).
+    - The 380 fix works for the a11y button.
+  - **NOTCH:** the verification ladder gains `tools/fold_obscure_check.py` (WCAG 2.2 SC 2.4.11; `--before` rewrites the page to the old lists for a baseline). Run it after every world or floating-button release.
+  - **NEXT NOTCH:**
+    - (1) The WhatsApp bar's remaining 7 positions: its stageHit groups each control into its container (parents under 55% of vh), so a fold heading under the card counts as the whole card. Study it before touching it; the bar is the conversion control and must never hide.
+    - (2) 320 px world labels.
+    - (3) An owner-bar evening interior.
+
 - **1.10, turn 17.**
   - **Web:** [TabNav, WCAG 2.2 SC 2.4.11 "Focus Not Obscured"](https://tabnav.com/academy/wcag/success-criterion-2.4.11) and [Vispero, the new WCAG 2.2 criteria](https://vispero.com/resources/new-success-criteria-in-wcag22/): floating widgets are the usual offenders.
     - No new project facts this turn; the delivery conflict (Electra 4.2027 vs Ashtrom 2026) is unchanged and already on the page.
