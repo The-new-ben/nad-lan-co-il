@@ -1,0 +1,845 @@
+{
+ "rainbow-1440": {
+  "ok": true,
+  "live_places_request": [
+   [
+    "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/rainbow/places.json?ver=1.72.372",
+    200
+   ]
+  ],
+  "focused": "CANVAS",
+  "facings": [
+   {
+    "unit": "20-w",
+    "floor": 20,
+    "band": 25,
+    "bearing": 270,
+    "before": [],
+    "after": [
+     "פארק רידינג12 דק׳",
+     "המגדלור12 דק׳",
+     "גן שעשועים קטן18 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [],
+    "new": [
+     "פארק רידינג12 דק׳",
+     "המגדלור12 דק׳",
+     "גן שעשועים קטן18 דק׳"
+    ]
+   },
+   {
+    "unit": "20-n",
+    "floor": 20,
+    "band": 25,
+    "bearing": 0,
+    "before": [
+     "ים תל ברוך28 דק׳"
+    ],
+    "after": [
+     "מנטה22 דק׳",
+     "ים תל ברוך28 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [],
+    "new": [
+     "מנטה22 דק׳"
+    ]
+   },
+   {
+    "unit": "20-e",
+    "floor": 20,
+    "band": 25,
+    "bearing": 90,
+    "before": [
+     "כחל14 דק׳",
+     "קשת20 דק׳",
+     "בוסתן מוז\"א16 דק׳",
+     "ביה\"ס אליאנס24 דק׳",
+     "תירוש26 דק׳"
+    ],
+    "after": [
+     "בראלי מול 0 111 דק׳",
+     "מיחא19 דק׳",
+     "למד13 דק׳",
+     "קשת20 דק׳",
+     "טניס תל אביב23 דק׳",
+     "תירוש26 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "כחל14 דק׳",
+     "בוסתן מוז\"א16 דק׳",
+     "ביה\"ס אליאנס24 דק׳"
+    ],
+    "new": [
+     "בראלי מול 0 111 דק׳",
+     "מיחא19 דק׳",
+     "למד13 דק׳",
+     "טניס תל אביב23 דק׳"
+    ]
+   },
+   {
+    "unit": "20-s",
+    "floor": 20,
+    "band": 25,
+    "bearing": 180,
+    "before": [
+     "בננה6 דק׳",
+     "שלום14 דק׳",
+     "גן הבנים11 דק׳",
+     "אפרסמון22 דק׳",
+     "ממלכת אור22 דק׳"
+    ],
+    "after": [
+     "ויצו כוכב הצפון6 דק׳",
+     "יהודה המכבימתוכננת",
+     "\"יופיטר\"9 דק׳",
+     "גן הבנים11 דק׳",
+     "מירון19 דק׳",
+     "ממלכת אור22 דק׳",
+     "גן נורי21 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "בננה6 דק׳",
+     "שלום14 דק׳",
+     "אפרסמון22 דק׳"
+    ],
+    "new": [
+     "ויצו כוכב הצפון6 דק׳",
+     "יהודה המכבימתוכננת",
+     "\"יופיטר\"9 דק׳",
+     "מירון19 דק׳",
+     "גן נורי21 דק׳"
+    ]
+   }
+  ]
+ },
+ "rainbow-390": {
+  "ok": true,
+  "live_places_request": [
+   [
+    "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/rainbow/places.json?ver=1.72.372",
+    200
+   ]
+  ],
+  "focused": "CANVAS",
+  "facings": [
+   {
+    "unit": "20-w",
+    "floor": 20,
+    "band": 25,
+    "bearing": 270,
+    "before": [],
+    "after": [
+     "פארק רידינג12 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [],
+    "new": [
+     "פארק רידינג12 דק׳"
+    ]
+   },
+   {
+    "unit": "20-n",
+    "floor": 20,
+    "band": 25,
+    "bearing": 0,
+    "before": [],
+    "after": [],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [],
+    "new": []
+   },
+   {
+    "unit": "20-e",
+    "floor": 20,
+    "band": 25,
+    "bearing": 90,
+    "before": [
+     "כחל14 דק׳"
+    ],
+    "after": [
+     "בראלי מול 0 111 דק׳",
+     "זליג25 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "כחל14 דק׳"
+    ],
+    "new": [
+     "בראלי מול 0 111 דק׳",
+     "זליג25 דק׳"
+    ]
+   },
+   {
+    "unit": "20-s",
+    "floor": 20,
+    "band": 25,
+    "bearing": 180,
+    "before": [
+     "בננה6 דק׳",
+     "שלום14 דק׳",
+     "מגיד22 דק׳"
+    ],
+    "after": [
+     "יהודה המכבימתוכננת"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "בננה6 דק׳",
+     "שלום14 דק׳",
+     "מגיד22 דק׳"
+    ],
+    "new": [
+     "יהודה המכבימתוכננת"
+    ]
+   }
+  ]
+ },
+ "duo-1440": {
+  "ok": true,
+  "live_places_request": [
+   [
+    "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/duo/places.json?ver=1.72.372",
+    200
+   ]
+  ],
+  "focused": "CANVAS",
+  "facings": [
+   {
+    "unit": "N-25-w",
+    "floor": 25,
+    "band": 25,
+    "bearing": 280,
+    "before": [],
+    "after": [],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [],
+    "new": []
+   },
+   {
+    "unit": "N-25-n",
+    "floor": 25,
+    "band": 25,
+    "bearing": 10,
+    "before": [
+     "טבע שוק5 דק׳",
+     "עירוני י\"א14 דק׳",
+     "עטרת צבי9 דק׳",
+     "צהרוני \"ניצני יובל\"15 דק׳",
+     "פארק הירקון17 דק׳"
+    ],
+    "after": [
+     "ארנון6 דק׳",
+     "בבאנג בנג5 דק׳",
+     "מזנון תאילנדי7 דק׳",
+     "המזג8 דק׳",
+     "עירוני י\"א14 דק׳",
+     "אוסישקין15 דק׳",
+     "שלום15 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "טבע שוק5 דק׳",
+     "עטרת צבי9 דק׳",
+     "צהרוני \"ניצני יובל\"15 דק׳",
+     "פארק הירקון17 דק׳"
+    ],
+    "new": [
+     "ארנון6 דק׳",
+     "בבאנג בנג5 דק׳",
+     "מזנון תאילנדי7 דק׳",
+     "המזג8 דק׳",
+     "אוסישקין15 דק׳",
+     "שלום15 דק׳"
+    ]
+   },
+   {
+    "unit": "N-25-e",
+    "floor": 25,
+    "band": 25,
+    "bearing": 100,
+    "before": [
+     "קרינה ורחל7 דק׳",
+     "ארלוזורוב17 דק׳",
+     "כללית9 דק׳",
+     "טבת17 דק׳",
+     "מרקט אקספרס8 דק׳",
+     "קינמון16 דק׳"
+    ],
+    "after": [
+     "גן חדרה 17 דק׳",
+     "ארלוזורוב17 דק׳",
+     "נוצי סושי אנד בר8 דק׳",
+     "בית לחם8 דק׳",
+     "קינמון16 דק׳",
+     "א.קאשי11 דק׳",
+     "רמות13 דק׳",
+     "Vicenza20 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "קרינה ורחל7 דק׳",
+     "כללית9 דק׳",
+     "טבת17 דק׳",
+     "מרקט אקספרס8 דק׳"
+    ],
+    "new": [
+     "גן חדרה 17 דק׳",
+     "נוצי סושי אנד בר8 דק׳",
+     "בית לחם8 דק׳",
+     "א.קאשי11 דק׳",
+     "רמות13 דק׳",
+     "Vicenza20 דק׳"
+    ]
+   },
+   {
+    "unit": "N-25-s",
+    "floor": 25,
+    "band": 25,
+    "bearing": 190,
+    "before": [
+     "עגבניה7 דק׳",
+     "גינת דובנוב15 דק׳",
+     "סופר-פארם10 דק׳",
+     "ארומה16 דק׳"
+    ],
+    "after": [
+     "עגבניה7 דק׳",
+     "גוד פארם7 דק׳",
+     "סביח פרישמן10 דק׳",
+     "גינת דובנוב15 דק׳",
+     "סילביה באמפר14 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "סופר-פארם10 דק׳",
+     "ארומה16 דק׳"
+    ],
+    "new": [
+     "גוד פארם7 דק׳",
+     "סביח פרישמן10 דק׳",
+     "סילביה באמפר14 דק׳"
+    ]
+   }
+  ]
+ },
+ "duo-390": {
+  "ok": true,
+  "live_places_request": [
+   [
+    "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/duo/places.json?ver=1.72.372",
+    200
+   ]
+  ],
+  "focused": "CANVAS",
+  "facings": [
+   {
+    "unit": "N-25-w",
+    "floor": 25,
+    "band": 25,
+    "bearing": 280,
+    "before": [],
+    "after": [
+     "גרץ11 דק׳",
+     "עדי10 דק׳",
+     "בן נון6 דק׳",
+     "אלונית18 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [],
+    "new": [
+     "גרץ11 דק׳",
+     "עדי10 דק׳",
+     "בן נון6 דק׳",
+     "אלונית18 דק׳"
+    ]
+   },
+   {
+    "unit": "N-25-n",
+    "floor": 25,
+    "band": 25,
+    "bearing": 10,
+    "before": [
+     "עירוני י\"א14 דק׳",
+     "גן הבנים19 דק׳"
+    ],
+    "after": [
+     "ארנון6 דק׳",
+     "בבאנג בנג5 דק׳",
+     "דומינוס פיצה7 דק׳",
+     "עירוני י\"א14 דק׳",
+     "אוסישקין15 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "גן הבנים19 דק׳"
+    ],
+    "new": [
+     "ארנון6 דק׳",
+     "בבאנג בנג5 דק׳",
+     "דומינוס פיצה7 דק׳",
+     "אוסישקין15 דק׳"
+    ]
+   },
+   {
+    "unit": "N-25-e",
+    "floor": 25,
+    "band": 25,
+    "bearing": 100,
+    "before": [
+     "קרינה ורחל7 דק׳",
+     "ארלוזורוב17 דק׳",
+     "כללית9 דק׳",
+     "טבת17 דק׳"
+    ],
+    "after": [
+     "גן חדרה 17 דק׳",
+     "ארלוזורוב17 דק׳",
+     "רמות13 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "קרינה ורחל7 דק׳",
+     "כללית9 דק׳",
+     "טבת17 דק׳"
+    ],
+    "new": [
+     "גן חדרה 17 דק׳",
+     "רמות13 דק׳"
+    ]
+   },
+   {
+    "unit": "N-25-s",
+    "floor": 25,
+    "band": 25,
+    "bearing": 190,
+    "before": [
+     "עגבניה7 דק׳",
+     "סופר-פארם10 דק׳"
+    ],
+    "after": [
+     "עגבניה7 דק׳",
+     "סביח פרישמן10 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "סופר-פארם10 דק׳"
+    ],
+    "new": [
+     "סביח פרישמן10 דק׳"
+    ]
+   }
+  ]
+ },
+ "dimri-1440": {
+  "ok": true,
+  "live_places_request": [
+   [
+    "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/dimri/places.json?ver=1.72.372",
+    200
+   ]
+  ],
+  "focused": "CANVAS",
+  "facings": [
+   {
+    "unit": "A-25-w",
+    "floor": 25,
+    "band": 25,
+    "bearing": 281,
+    "before": [],
+    "after": [],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [],
+    "new": []
+   },
+   {
+    "unit": "A-25-n",
+    "floor": 25,
+    "band": 25,
+    "bearing": 11,
+    "before": [
+     "פרלוק 3 127 דק׳",
+     "פיצה הגוש28 דק׳"
+    ],
+    "after": [
+     "אדמונית23 דק׳",
+     "פרלוק 3 127 דק׳",
+     "פיצה הגוש28 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [],
+    "new": [
+     "אדמונית23 דק׳"
+    ]
+   },
+   {
+    "unit": "A-25-e",
+    "floor": 25,
+    "band": 25,
+    "bearing": 101,
+    "before": [
+     "כחל14 דק׳",
+     "סמינר הקיבוצים13 דק׳",
+     "מיחא20 דק׳",
+     "בראלי12 דק׳",
+     "קשת20 דק׳",
+     "רוקח 6723 דק׳"
+    ],
+    "after": [
+     "בראלי מול 0 111 דק׳",
+     "נופים20 דק׳",
+     "לחם הארץ13 דק׳",
+     "לבנון חיים 115 דק׳",
+     "ברושים23 דק׳",
+     "מכבי צפון23 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "כחל14 דק׳",
+     "סמינר הקיבוצים13 דק׳",
+     "מיחא20 דק׳",
+     "בראלי12 דק׳",
+     "קשת20 דק׳",
+     "רוקח 6723 דק׳"
+    ],
+    "new": [
+     "בראלי מול 0 111 דק׳",
+     "נופים20 דק׳",
+     "לחם הארץ13 דק׳",
+     "לבנון חיים 115 דק׳",
+     "ברושים23 דק׳",
+     "מכבי צפון23 דק׳"
+    ]
+   },
+   {
+    "unit": "A-25-s",
+    "floor": 25,
+    "band": 25,
+    "bearing": 191,
+    "before": [
+     "יהודה המכבימתוכננת",
+     "גן הבנים11 דק׳",
+     "לוטוס16 דק׳",
+     "נוה הדר-רווחה20 דק׳",
+     "גן נורי21 דק׳"
+    ],
+    "after": [
+     "יהודה המכבימתוכננת",
+     "\"יופיטר\"9 דק׳",
+     "גן הבנים11 דק׳",
+     "לוטוס16 דק׳",
+     "נוה הדר-רווחה20 דק׳",
+     "גן נורי21 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [],
+    "new": [
+     "\"יופיטר\"9 דק׳"
+    ]
+   }
+  ]
+ },
+ "dimri-390": {
+  "ok": true,
+  "live_places_request": [
+   [
+    "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/dimri/places.json?ver=1.72.372",
+    200
+   ]
+  ],
+  "focused": "CANVAS",
+  "facings": [
+   {
+    "unit": "A-25-w",
+    "floor": 25,
+    "band": 25,
+    "bearing": 281,
+    "before": [],
+    "after": [],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [],
+    "new": []
+   },
+   {
+    "unit": "A-25-n",
+    "floor": 25,
+    "band": 25,
+    "bearing": 11,
+    "before": [],
+    "after": [],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [],
+    "new": []
+   },
+   {
+    "unit": "A-25-e",
+    "floor": 25,
+    "band": 25,
+    "bearing": 101,
+    "before": [
+     "כחל14 דק׳"
+    ],
+    "after": [
+     "בראלי מול 0 111 דק׳",
+     "קשת20 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "כחל14 דק׳"
+    ],
+    "new": [
+     "בראלי מול 0 111 דק׳",
+     "קשת20 דק׳"
+    ]
+   },
+   {
+    "unit": "A-25-s",
+    "floor": 25,
+    "band": 25,
+    "bearing": 191,
+    "before": [
+     "יהודה המכבימתוכננת",
+     "עדנה19 דק׳"
+    ],
+    "after": [
+     "יהודה המכבימתוכננת",
+     "עדנה19 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [],
+    "new": []
+   }
+  ]
+ },
+ "ashira-1440": {
+  "ok": true,
+  "live_places_request": [
+   [
+    "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/ashira/places.json?ver=1.72.372",
+    200
+   ]
+  ],
+  "focused": "CANVAS",
+  "facings": [
+   {
+    "unit": "S1-25-w",
+    "floor": 25,
+    "band": 22,
+    "bearing": 281,
+    "before": [],
+    "after": [],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [],
+    "new": []
+   },
+   {
+    "unit": "S1-25-n",
+    "floor": 25,
+    "band": 22,
+    "bearing": 11,
+    "before": [
+     "נמירמתוכננת",
+     "קאנטרי ל'7 דק׳",
+     "חופית14 דק׳",
+     "בנק לאומי8 דק׳",
+     "פיצה הגוש16 דק׳"
+    ],
+    "after": [
+     "דו רה מי10 דק׳",
+     "קאנטרי ל'7 דק׳",
+     "חופית14 דק׳",
+     "יחדיו22 דק׳",
+     "מרק שגאל פ.מהלר20 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "נמירמתוכננת",
+     "בנק לאומי8 דק׳",
+     "פיצה הגוש16 דק׳"
+    ],
+    "new": [
+     "דו רה מי10 דק׳",
+     "יחדיו22 דק׳",
+     "מרק שגאל פ.מהלר20 דק׳"
+    ]
+   },
+   {
+    "unit": "S1-25-e",
+    "floor": 25,
+    "band": 22,
+    "bearing": 101,
+    "before": [
+     "ברושיםמתוכננת",
+     "קרני יהודה15 דק׳",
+     "לבנון חיים 111 דק׳",
+     "בראלי7 דק׳",
+     "קשת16 דק׳",
+     "ביה\"ס אליאנס17 דק׳",
+     "תל קסילה - בוסתן מוז\"א14 דק׳"
+    ],
+    "after": [
+     "כחל5 דק׳",
+     "נופים16 דק׳",
+     "ברושיםמתוכננת",
+     "לבנון חיים 111 דק׳",
+     "AM:PM11 דק׳",
+     "ביה\"ס אליאנס17 דק׳",
+     "תל קסילה - בוסתן מוז\"א14 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "קרני יהודה15 דק׳",
+     "בראלי7 דק׳",
+     "קשת16 דק׳"
+    ],
+    "new": [
+     "כחל5 דק׳",
+     "נופים16 דק׳",
+     "AM:PM11 דק׳"
+    ]
+   },
+   {
+    "unit": "S1-25-s",
+    "floor": 25,
+    "band": 22,
+    "bearing": 191,
+    "before": [
+     "יהודה המכבימתוכננת",
+     "עירוני ד25 דק׳",
+     "צפון26 דק׳",
+     "אוסישקין 1123 דק׳"
+    ],
+    "after": [
+     "יהודה המכבימתוכננת",
+     "M329 דק׳",
+     "מירון23 דק׳",
+     "אוסישקין 1123 דק׳",
+     "פרש23 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "עירוני ד25 דק׳",
+     "צפון26 דק׳"
+    ],
+    "new": [
+     "M329 דק׳",
+     "מירון23 דק׳",
+     "פרש23 דק׳"
+    ]
+   }
+  ]
+ },
+ "ashira-390": {
+  "ok": true,
+  "live_places_request": [
+   [
+    "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/ashira/places.json?ver=1.72.372",
+    200
+   ]
+  ],
+  "focused": "CANVAS",
+  "facings": [
+   {
+    "unit": "S1-25-w",
+    "floor": 25,
+    "band": 22,
+    "bearing": 281,
+    "before": [],
+    "after": [],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [],
+    "new": []
+   },
+   {
+    "unit": "S1-25-n",
+    "floor": 25,
+    "band": 22,
+    "bearing": 11,
+    "before": [],
+    "after": [],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [],
+    "new": []
+   },
+   {
+    "unit": "S1-25-e",
+    "floor": 25,
+    "band": 22,
+    "bearing": 101,
+    "before": [
+     "ברושיםמתוכננת",
+     "קרני יהודה15 דק׳",
+     "לבנון חיים 111 דק׳",
+     "גולפיטק23 דק׳"
+    ],
+    "after": [
+     "כחל5 דק׳",
+     "ברושיםמתוכננת",
+     "לבנון חיים 111 דק׳",
+     "גולפיטק23 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "קרני יהודה15 דק׳"
+    ],
+    "new": [
+     "כחל5 דק׳"
+    ]
+   },
+   {
+    "unit": "S1-25-s",
+    "floor": 25,
+    "band": 22,
+    "bearing": 191,
+    "before": [
+     "צפון26 דק׳"
+    ],
+    "after": [
+     "מירון23 דק׳"
+    ],
+    "after_all_seen_in_new": true,
+    "before_all_seen_in_old": true,
+    "gone": [
+     "צפון26 דק׳"
+    ],
+    "new": [
+     "מירון23 דק׳"
+    ]
+   }
+  ]
+ }
+}
