@@ -1,0 +1,28 @@
+{
+ "v": 1,
+ "about": "Kikar Hamedina example apartments (design system v104.2, P9c, HAD-375): the pictures beside this file, rendered with Blender Cycles from the world's data (docs/research/2026-09-30-kikar-hamedina/interiors-plan.md, interiors-proto/README.md; cut by scripts/interior/cut_kikar_tour.py). Every picture is an illustration: the layout, finishes and furniture are not published. Read by assets/project-stage/world/example.js only after the visitor presses the button.",
+ "examples": [
+  {
+   "id": "c30w",
+   "tower": "C",
+   "floor": 30,
+   "fh": 4,
+   "bearing": 265.61,
+   "size": { "rooms": 4, "sqm": 140, "src": "Globes 2.5.2025 (did=1001508911): three 4-room 140 m2 deals on floors 38-39" },
+   "pano": { "base": "living360-c30w-sunset", "room": "living", "time": "sunset", "hour": "17:36", "facing": 265.6 },
+   "stills": [
+    { "base": "living-c30w-day", "room": "living", "time": "day", "hour": "14:30", "facing": 287.6 },
+    { "base": "living-c30w-sunset", "room": "living", "time": "sunset", "hour": "17:36", "facing": 263.6 },
+    { "base": "living-c30w-evening", "room": "living", "time": "evening", "hour": "19:06", "facing": 263.6 },
+    { "base": "bedroom-c30nw-day", "room": "bedroom", "time": "day", "hour": "14:30", "facing": 295.6 },
+    { "base": "balcony-c30w-sunset", "room": "balcony", "time": "sunset", "hour": "17:36", "facing": 217.6 }
+   ],
+   "twist": [
+    { "base": "twist-c20w-day", "floor": 20, "bearing": 278.1, "hour": "14:30" },
+    { "base": "twist-c30w-day", "floor": 30, "bearing": 265.6, "hour": "14:30" },
+    { "base": "twist-c38w-day", "floor": 38, "bearing": 255.6, "hour": "14:30" }
+   ],
+   "rendered": "30.9.2026, the sun of 21.9.2026 (Israel daylight time) over 32.087N 34.790E; tower C's floor plate turned 29 x 1.25 degrees counter-clockwise (the direction is not published)"
+  }
+ ]
+}

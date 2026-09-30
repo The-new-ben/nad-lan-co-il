@@ -26,6 +26,13 @@ P9a (1.72.371): all five pages on the release copy deploy371 writes (hamedina_ps
 rule) and world module (day / sunset / night): the phone's first screen measured at scroll 0, 300 and 700 (the bar against the three
 page-top buttons and the world's tabs), the floor view at the three times of day, the Russian page's fonts (CDP):
   python scripts/project-stage/preview_hamedina.py --p9a       (he, en, fr, ru, ar -> p9a-shots/; NL_P9A_LANGS=he,ar for a subset)
+
+P9c (1.72.375, design system v104.2): all five pages on the release copy deploy375 writes (hamedina_ps_patch375.py), the branch's
+world module with the example apartment (world/example.js, the fleet's tour.js with its language options, hamedina/tour/): the
+floor view's new button, the album (the picture at the floor view's time of day, the evening, the twist on floor 20), the 360 in
+the fleet's viewer, what loads before and after the press (bytes), the phone's first screen at 0/300/700 (kh_first_screen_check's
+MEASURE: the bar, the answer paragraph, the accessibility button), and the accessibility button swept over the world's tabs:
+  python scripts/project-stage/preview_hamedina.py --p9c       (he, en, fr, ru, ar -> p9c-shots/; NL_P9C_LANGS=he,ar for a subset)
 """
 import hashlib, io, json, os, re, subprocess, sys, tempfile, time, urllib.request, urllib.parse
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
@@ -36,17 +43,22 @@ import hamedina_ps_patch as PATCH  # noqa: E402
 import hamedina_page_data as DATA  # noqa: E402
 import hamedina_ps_patch370 as PATCH370  # noqa: E402
 import hamedina_ps_patch371 as PATCH371  # noqa: E402
+import hamedina_ps_patch375 as PATCH375  # noqa: E402
+import kh_first_screen_check as KFS  # noqa: E402  the first screen's MEASURE (the bar, the lead, the accessibility button)
 
 P8 = "--p8" in sys.argv[1:]
 P9A = "--p9a" in sys.argv[1:]  # P9a (1.72.371): all five pages on the 371 release copy, the phone first screen measured
-VER = "1.72.371" if P9A else "1.72.370" if P8 else "1.72.369"
-LANGS = ("he", "en", "fr", "ru", "ar") if P9A else ("fr", "ru", "ar") if P8 else ("he", "en")
+P9C = "--p9c" in sys.argv[1:]  # P9c (1.72.375): the example apartment, the Arabic first screen, the accessibility corner
+VER = "1.72.375" if P9C else "1.72.371" if P9A else "1.72.370" if P8 else "1.72.369"
+LANGS = ("he", "en", "fr", "ru", "ar") if (P9A or P9C) else ("fr", "ru", "ar") if P8 else ("he", "en")
 if P9A and os.environ.get("NL_P9A_LANGS"):  # a quicker run on some of the five (e.g. NL_P9A_LANGS=he,ar)
     LANGS = tuple(l for l in LANGS if l in os.environ["NL_P9A_LANGS"].split(","))
+if P9C and os.environ.get("NL_P9C_LANGS"):
+    LANGS = tuple(l for l in LANGS if l in os.environ["NL_P9C_LANGS"].split(","))
 
 PN = os.path.join(REPO, "plugins", "nadlan-config")
 RES = os.path.join(REPO, "docs", "research", "2026-09-30-kikar-hamedina")
-OUT = os.path.join(RES, "p9a-shots" if P9A else "p8-shots" if P8 else "p7-shots")
+OUT = os.path.join(RES, "p9c-shots" if P9C else "p9a-shots" if P9A else "p8-shots" if P8 else "p7-shots")
 ORIGIN = "https://nad-lan.co.il"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) NadLan-P7a-preview/1.0"
 LAT, LNG = "32.086758", "34.789776"
@@ -98,7 +110,7 @@ def build_pre(lang, rel_copy):
     # the head: title, description, hreflang, the stage's head pieces become the world page's
     html = re.sub(r"<title>.*?</title>", "<title>" + SEO[lang]["title"].replace("&", "&amp;") + "</title>", html, count=1, flags=re.S)
     html = re.sub(r'<meta name="description" content="[^"]*"', '<meta name="description" content="' + SEO[lang]["desc"] + '"', html, count=1)
-    fam = ("he", "en", "fr", "ru", "ar") if (P8 or P9A) else ("he", "en")
+    fam = ("he", "en", "fr", "ru", "ar") if (P8 or P9A or P9C) else ("he", "en")
     alt = "".join('<link rel="alternate" hreflang="%s" href="https://nad-lan.co.il/projects/hamedina%s/" />\n' % (l, "" if l == "he" else "-" + l) for l in fam)
     html = re.sub(r'(<link rel="alternate" hreflang="[^"]+" href="[^"]+" />\n?)+',
                   alt + '<link rel="alternate" hreflang="x-default" href="https://nad-lan.co.il/projects/hamedina/" />\n', html, count=1)
@@ -335,7 +347,9 @@ def main():
     from playwright.sync_api import sync_playwright
     os.makedirs(OUT, exist_ok=True)
     rel_copy = os.path.join(tempfile.mkdtemp(prefix="kh-rel-"), "project-stage.php")
-    if P9A:  # what deploy371 writes: what 1.72.370 wrote (md5-checked) + the P9a hunks
+    if P9C:  # what deploy375 writes: what 1.72.371 wrote (md5-checked; 1.72.372, 373 and 374 do not write it) + the P9c hunks
+        io.open(rel_copy, "w", encoding="utf-8", newline="").write(PATCH375.release_text())
+    elif P9A:  # what deploy371 writes: what 1.72.370 wrote (md5-checked) + the P9a hunks
         io.open(rel_copy, "w", encoding="utf-8", newline="").write(PATCH371.release_text())
     elif P8:  # what deploy370 writes: what 1.72.369 wrote (md5-checked) + the P8 hunks
         io.open(rel_copy, "w", encoding="utf-8", newline="").write(PATCH370.release_text())
@@ -364,6 +378,9 @@ def main():
             return route.abort()
         return route.fallback()
 
+    if P9C:
+        import preview_p9c
+        return preview_p9c.shots(pages, asset, guard, served, receipt, LANGS, OUT, ORIGIN)
     if P9A:
         return p9a_shots(pages, asset, guard, served, receipt)
     with sync_playwright() as p:

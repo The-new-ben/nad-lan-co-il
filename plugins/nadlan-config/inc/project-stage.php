@@ -316,7 +316,7 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 			// KikarHamedinaWorld v104 (30.9.2026, HAD-375): Kikar Hamedina Towers on the SHARED world module
 			// (assets/project-stage/world/world.js, mountWorld), not a stage.js copy: one walkable scene of the whole area
 			// (docs/design/kikar-hamedina/KikarHamedinaWorld-v104-README.md). Every fact below is in
-			// docs/research/2026-09-30-kikar-hamedina/facts.md or area.md with its source. No interiors ship yet: no 'units', no
+			// docs/research/2026-09-30-kikar-hamedina/facts.md or area.md with its source. P9c: one example apartment ('examples'): no 'units', no
 			// 360, no tour words (the world branch never prints Rainbow's). The URL word law: "hamedina" is owned by this page.
 			'hamedina' => array(
 				'dir'            => 'hamedina',
@@ -328,6 +328,13 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 					'season' => 9,
 					'hour'   => 10,
 					'pond'   => true, // the pond is sourced (Mako 24.9.2026: 1 m deep); its outline is drawn and labelled "הדמיה להמחשה בלבד"
+					// P9c (design system v104.2): the example apartment that has pictures (Blender Cycles from the world's data,
+					// docs/research/2026-09-30-kikar-hamedina/interiors-plan.md): tower C, floor 30, the side that faces 265.61° there;
+					// it turns with the tower, so floors 27-33 show the same apartment (the album says the pictures are from floor 30).
+					// Its files and times are in assets/project-stage/hamedina/tour/examples.json, read only on the button's press.
+					'examples' => array(
+						array( 'id' => 'c30w', 'tower' => 'C', 'floor' => 30, 'band' => array( 27, 33 ), 'bearing' => 265.61 ),
+					),
 				),
 				'bearing_offset' => 0,
 				'name'           => 'מגדלי כיכר המדינה',
@@ -999,8 +1006,8 @@ if ( ! function_exists( 'nadlan_ps_compose' ) ) {
    is one walkable scene of the whole area with four ways in (the aerial view, a walk, a tower's floor and view with the sun,
    what is nearby). Everything here runs only for a config with 'world' (Kikar Hamedina today): the four stage projects never
    reach it, so their pages stay byte for byte as they were. There is no bridge.js on these pages: the world draws its own view
-   from the floor and sets window.__nlpsPick for the WhatsApp source line. No interiors ship yet, so there is no 360, no
-   example apartment and no steps row. */
+   from the floor and sets window.__nlpsPick for the WhatsApp source line. The example apartment (P9c, design system v104.2)
+   opens from the world's floor view (world/example.js and the fleet's 360 viewer, loaded on the press); there is no steps row. */
 if ( ! function_exists( 'nadlan_ps_world_words' ) ) {
 	/** The page top's own words in the page's language: Hebrew, English, French, Russian and Arabic (P8, 1.72.370). */
 	function nadlan_ps_world_words( $lang ) {
@@ -1111,6 +1118,9 @@ if ( ! function_exists( 'nadlan_ps_world_parts' ) ) {
 			'season' => (int) ( $pw['season'] ?? 9 ),
 			'hour'   => (int) ( $pw['hour'] ?? 10 ),
 			'pond'   => ! array_key_exists( 'pond', $pw ) || ! empty( $pw['pond'] ),
+			// P9c (v104.2): which tower, floors and side have an example apartment; its manifest loads only on the press
+			'examples' => ! empty( $pw['examples'] ) && is_readable( dirname( __DIR__ ) . '/' . $base . 'tour/examples.json' )
+				? array( 'url' => plugins_url( $base . 'tour/examples.json', dirname( __FILE__ ) ) . $v, 'list' => array_values( (array) $pw['examples'] ) ) : null,
 			'poster' => array( 'src' => $m['jpg'], 'srcset' => $m['tall'] . ' ' . $m['tw'] . 'w, ' . $m['wide'] . ' ' . $m['w'] . 'w', 'sizes' => '(max-width:700px) 100vw, 70vw', 'alt' => $alt ),
 		);
 		$hero = '';
@@ -1188,7 +1198,7 @@ function mount() {
   if (P) return P;
   P = import(c.world).then((m) => {
     const w = m.mountWorld(host, { dataUrl: c.data, placesUrl: c.places || null, lang: c.lang, name: c.name, wa: c.wa || null, poster: c.poster,
-      intent: 'visible', mode: c.mode, season: c.season, hour: c.hour, pond: c.pond !== false });
+      intent: 'visible', mode: c.mode, season: c.season, hour: c.hour, pond: c.pond !== false, examples: c.examples || null });
     window.__nlpsWorld = w;
     // the page's own first picture steps aside once the world's copy of it (the same files) is painted
     const own = host.querySelector('.nlps-ssr-pic'), wp = host.querySelector('.nlw-poster');
@@ -1215,6 +1225,46 @@ if (root && host && c.world) {
   if (c.wa) for (const a of document.querySelectorAll('a[href="#nlws-wa"]')) { a.href = c.wa; a.target = '_blank'; a.rel = 'noopener'; }
   addEventListener('nl:floor', (e) => { const d = e.detail || {}; if (d.source === 'user') ga('stage_floor', { tower: d.tower, floor: d.floor }); });
   addEventListener('nl:facing', (e) => { const d = e.detail || {}; if (d.source === 'user') ga('stage_facing', { tower: d.tower, floor: d.floor, facing: d.facing }); });
+  addEventListener('nl:example', (e) => { const d = e.detail || {}; if (d.open) ga('stage_example', { tower: d.tower, floor: d.floor, facing: d.facing, example: d.id }); });
+  /* AccessibleCorner (design system v104.2, P9c): the accessibility button (inc/accessibility.php) keeps its bottom corner (the
+     owner, 25.9.2026). On this page the world's tab bar and sheet, and the page top's buttons, pass under that corner as the
+     visitor scrolls (the first tab "מבט על" on the Hebrew phone's first screen); there the button takes the nearest free place
+     above its corner, in its own column, and comes back when the corner is free. It never moves onto the answer paragraph: with no
+     free place clear of it, it stays in its corner. It measures from its corner (its own lift is taken out), so it never
+     flickers; while its panel is open it does not move. */
+  (() => {
+    const box = document.getElementById('nla11y'), btn = document.getElementById('nla11y-btn');
+    if (!box || !btn) return;
+    const CTRL = '.nlps-hero__cta a,#nlps .nlw-top button,#nlps .nlw-panel button,#nlps .nlw-panel input,#nlps .nlw-panel a,#nlps .nlw-card button,#nlps .nlw-card a,#nlps .nlw-compass button,#nlps .nlw-enter';
+    let lift = 0, raf = 0;
+    const fit = () => {
+      raf = 0;
+      const pan = document.getElementById('nla11y-panel');
+      if (pan && !pan.hidden) return;
+      if (document.querySelector('#nlps .nlw--full')) return; // the world fills the screen above the page: nothing to clear
+      const r = btn.getBoundingClientRect();
+      if (!r.width) return;
+      const h = r.height, t0 = r.top + lift, l = r.left - 6, rr = r.right + 6, vh = innerHeight;
+      const col = (q) => q.height && q.right > l && q.left < rr && q.bottom > 0 && q.top < vh;
+      const hard = [...document.querySelectorAll(CTRL)].map((e) => e.getBoundingClientRect()).filter(col).map((q) => [q.top - 8, q.bottom + 8]);
+      const soft = [...document.querySelectorAll('.nl-lead')].map((e) => e.getBoundingClientRect()).filter(col).map((q) => [q.top - 4, q.bottom + 4]);
+      const hit = (t, L) => L.some(([a, b]) => t < b && t + h > a);
+      let best = 0;
+      if (hit(t0, hard)) {
+        best = 0;
+        for (let d = 4; d <= vh * 0.5; d += 4) { const t = t0 - d; if (t < 76) break; if (!hit(t, hard)) { best = hit(t, soft) ? 0 : d; break; } }
+      }
+      if (best !== lift) { lift = best; box.style.transform = lift ? 'translateY(' + (-lift) + 'px)' : ''; }
+    };
+    const ask = () => { if (!raf) raf = requestAnimationFrame(fit); };
+    box.style.transition = matchMedia('(prefers-reduced-motion: reduce)').matches ? '' : 'transform .18s ease';
+    addEventListener('scroll', ask, { passive: true });
+    addEventListener('resize', ask);
+    for (const ev of ['nl:floor', 'nl:facing', 'nl:example', 'load']) addEventListener(ev, ask);
+    document.addEventListener('click', () => setTimeout(ask, 80), true);
+    setTimeout(ask, 1200); setTimeout(ask, 3000);
+    ask();
+  })();
 }
 NLWJS;
 		return "\n" . '<script type="module" id="nadlan-ps-world">' . "\n" . $js . '</script>' . "\n";
@@ -1244,6 +1294,10 @@ add_action( 'wp_head', function () {
 		// its resting place, instead of rising onto the third button ("סיור וירטואלי בכיכר"); conversion-cta.php counts the page
 		// top's buttons as controls and takes the free place nearest the bar's resting place
 		. '@media(max-width:600px){:root body .nlps-page--world>.nlps-stagebox{margin-top:50px!important}}'
+		// ArabicFirstScreen (design system v104.2, P9c): the Arabic answer paragraph is about three lines longer, so on a phone its
+		// buttons sat where the WhatsApp bar rests and the bar rose onto the paragraph's last lines. A 50px lane above the buttons:
+		// the bar, blocked by them, parks between the paragraph and the buttons, clear of both
+		. '@media(max-width:600px){:root body .nlps-page--world .nlps-ctawrap[lang="ar"]{margin-top:50px!important}}'
 		// the text sections: a reading column, tables as spec sheets with the source under each value, the timeline, the FAQ
 		. $pc . '{max-width:min(880px,calc(100% - 24px))!important;margin:0 auto 36px!important;padding:0 16px!important;box-sizing:border-box}'
 		. ':root body .nlws h2{margin:0 0 10px!important;font:600 clamp(22px,2.4vw,28px)/1.25 "Noto Serif Hebrew","Frank Ruhl Libre",Georgia,serif!important;color:#1B1A17!important;text-wrap:balance}'

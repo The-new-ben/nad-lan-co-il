@@ -1,0 +1,1768 @@
+{
+"he-390": [
+{
+"y": 0,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-tab:מבט על",
+"px2": 1328
+}
+]
+},
+{
+"y": 20,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-tab:מבט על",
+"px2": 1636
+}
+]
+},
+{
+"y": 40,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-tab:מבט על",
+"px2": 856
+}
+]
+},
+{
+"y": 60,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-tab:מבט על",
+"px2": 76
+}
+]
+},
+{
+"y": 440,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:מגדל A",
+"px2": 210
+}
+]
+},
+{
+"y": 460,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:מגדל A",
+"px2": 990
+}
+]
+},
+{
+"y": 480,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:מגדל A",
+"px2": 1716
+}
+]
+},
+{
+"y": 500,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:מגדל A",
+"px2": 1194
+}
+]
+},
+{
+"y": 520,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:מגדל A",
+"px2": 414
+}
+]
+}
+],
+"en-390": [
+{
+"y": 0,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Free advice",
+"px2": 2288
+}
+]
+},
+{
+"y": 20,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Free advice",
+"px2": 1554
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Apartments for sal",
+"px2": 631
+}
+]
+},
+{
+"y": 40,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Free advice",
+"px2": 514
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Apartments for sal",
+"px2": 1671
+}
+]
+},
+{
+"y": 60,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Apartments for sal",
+"px2": 2282
+}
+]
+},
+{
+"y": 80,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Apartments for sal",
+"px2": 1242
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Virtual tour of th",
+"px2": 943
+}
+]
+},
+{
+"y": 100,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Apartments for sal",
+"px2": 202
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Virtual tour of th",
+"px2": 1983
+}
+]
+},
+{
+"y": 120,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Virtual tour of th",
+"px2": 1970
+}
+]
+},
+{
+"y": 140,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Virtual tour of th",
+"px2": 930
+}
+]
+},
+{
+"y": 200,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-tab:Aerial",
+"px2": 668
+}
+]
+},
+{
+"y": 220,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-tab:Aerial",
+"px2": 1448
+}
+]
+},
+{
+"y": 240,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-tab:Aerial",
+"px2": 1516
+}
+]
+},
+{
+"y": 260,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-tab:Aerial",
+"px2": 736
+}
+]
+},
+{
+"y": 460,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "t:The park in the sq",
+"px2": 584
+}
+]
+},
+{
+"y": 480,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "t:The park in the sq",
+"px2": 1086
+}
+]
+},
+{
+"y": 500,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "t:The park in the sq",
+"px2": 942
+}
+]
+},
+{
+"y": 520,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "t:The park in the sq",
+"px2": 208
+}
+]
+},
+{
+"y": 660,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:Tower A",
+"px2": 330
+}
+]
+},
+{
+"y": 680,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:Tower A",
+"px2": 1110
+}
+]
+},
+{
+"y": 700,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:Tower A",
+"px2": 1716
+}
+]
+},
+{
+"y": 720,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:Tower A",
+"px2": 1074
+}
+]
+},
+{
+"y": 740,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:Tower A",
+"px2": 294
+}
+]
+}
+],
+"fr-390": [
+{
+"y": 40,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Conseil gratuit",
+"px2": 111
+}
+]
+},
+{
+"y": 60,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Conseil gratuit",
+"px2": 1151
+}
+]
+},
+{
+"y": 80,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Conseil gratuit",
+"px2": 2191
+}
+]
+},
+{
+"y": 100,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Conseil gratuit",
+"px2": 1762
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Appartements à ven",
+"px2": 423
+}
+]
+},
+{
+"y": 120,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Conseil gratuit",
+"px2": 722
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Appartements à ven",
+"px2": 1463
+}
+]
+},
+{
+"y": 140,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Appartements à ven",
+"px2": 2288
+}
+]
+},
+{
+"y": 160,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Appartements à ven",
+"px2": 1450
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Visite virtuelle d",
+"px2": 735
+}
+]
+},
+{
+"y": 180,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Appartements à ven",
+"px2": 410
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Visite virtuelle d",
+"px2": 1775
+}
+]
+},
+{
+"y": 200,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Visite virtuelle d",
+"px2": 2178
+}
+]
+},
+{
+"y": 220,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Visite virtuelle d",
+"px2": 1138
+}
+]
+},
+{
+"y": 240,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Visite virtuelle d",
+"px2": 98
+}
+]
+},
+{
+"y": 280,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-tab:Vue du ciel",
+"px2": 512
+}
+]
+},
+{
+"y": 300,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-tab:Vue du ciel",
+"px2": 1292
+}
+]
+},
+{
+"y": 320,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-tab:Vue du ciel",
+"px2": 1672
+}
+]
+},
+{
+"y": 340,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-tab:Vue du ciel",
+"px2": 892
+}
+]
+},
+{
+"y": 360,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-tab:Vue du ciel",
+"px2": 112
+}
+]
+},
+{
+"y": 540,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "t:Le parc de la plac",
+"px2": 18
+}
+]
+},
+{
+"y": 560,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "t:Le parc de la plac",
+"px2": 287
+}
+]
+},
+{
+"y": 580,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "t:Le parc de la plac",
+"px2": 398
+}
+]
+},
+{
+"y": 600,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "t:Le parc de la plac",
+"px2": 273
+}
+]
+},
+{
+"y": 620,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "t:Le parc de la plac",
+"px2": 4
+}
+]
+},
+{
+"y": 740,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:Tour A",
+"px2": 174
+}
+]
+},
+{
+"y": 760,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:Tour A",
+"px2": 954
+}
+]
+},
+{
+"y": 780,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:Tour A",
+"px2": 1716
+}
+]
+},
+{
+"y": 800,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:Tour A",
+"px2": 1230
+}
+]
+},
+{
+"y": 820,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:Tour A",
+"px2": 450
+}
+]
+}
+],
+"ru-390": [
+{
+"y": 40,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Бесплатная консуль",
+"px2": 111
+}
+]
+},
+{
+"y": 60,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Бесплатная консуль",
+"px2": 1151
+}
+]
+},
+{
+"y": 80,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Бесплатная консуль",
+"px2": 2191
+}
+]
+},
+{
+"y": 100,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Бесплатная консуль",
+"px2": 1762
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Квартиры на продаж",
+"px2": 423
+}
+]
+},
+{
+"y": 120,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Бесплатная консуль",
+"px2": 722
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Квартиры на продаж",
+"px2": 1463
+}
+]
+},
+{
+"y": 140,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Квартиры на продаж",
+"px2": 2288
+}
+]
+},
+{
+"y": 160,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Квартиры на продаж",
+"px2": 1450
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Виртуальная прогул",
+"px2": 735
+}
+]
+},
+{
+"y": 180,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Квартиры на продаж",
+"px2": 410
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Виртуальная прогул",
+"px2": 1775
+}
+]
+},
+{
+"y": 200,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Виртуальная прогул",
+"px2": 2178
+}
+]
+},
+{
+"y": 220,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Виртуальная прогул",
+"px2": 1138
+}
+]
+},
+{
+"y": 240,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Виртуальная прогул",
+"px2": 98
+}
+]
+},
+{
+"y": 280,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-tab:Сверху",
+"px2": 512
+}
+]
+},
+{
+"y": 300,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-tab:Сверху",
+"px2": 1292
+}
+]
+},
+{
+"y": 320,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-tab:Сверху",
+"px2": 1672
+}
+]
+},
+{
+"y": 340,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-tab:Сверху",
+"px2": 892
+}
+]
+},
+{
+"y": 360,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-tab:Сверху",
+"px2": 112
+}
+]
+},
+{
+"y": 540,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "t:Парк на площади",
+"px2": 19
+}
+]
+},
+{
+"y": 560,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "t:Парк на площади",
+"px2": 312
+}
+]
+},
+{
+"y": 580,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "t:Парк на площади",
+"px2": 433
+}
+]
+},
+{
+"y": 600,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "t:Парк на площади",
+"px2": 296
+}
+]
+},
+{
+"y": 620,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "t:Парк на площади",
+"px2": 4
+}
+]
+},
+{
+"y": 740,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:Башня A",
+"px2": 174
+}
+]
+},
+{
+"y": 760,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:Башня A",
+"px2": 954
+}
+]
+},
+{
+"y": 780,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:Башня A",
+"px2": 1716
+}
+]
+},
+{
+"y": 800,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:Башня A",
+"px2": 1230
+}
+]
+},
+{
+"y": 820,
+"A": {
+"t": 778,
+"l": 14
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:Башня A",
+"px2": 450
+}
+]
+}
+],
+"ar-390": [
+{
+"y": 0,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:جولة افتراضية في ا",
+"px2": 1242
+}
+]
+},
+{
+"y": 20,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:جولة افتراضية في ا",
+"px2": 202
+}
+]
+},
+{
+"y": 60,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-tab:من الأعلى",
+"px2": 434
+}
+]
+},
+{
+"y": 80,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-tab:من الأعلى",
+"px2": 1214
+}
+]
+},
+{
+"y": 100,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-tab:من الأعلى",
+"px2": 1716
+}
+]
+},
+{
+"y": 120,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-tab:من الأعلى",
+"px2": 970
+}
+]
+},
+{
+"y": 140,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-tab:من الأعلى",
+"px2": 190
+}
+]
+},
+{
+"y": 520,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:البرج A",
+"px2": 96
+}
+]
+},
+{
+"y": 540,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:البرج A",
+"px2": 876
+}
+]
+},
+{
+"y": 560,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:البرج A",
+"px2": 1656
+}
+]
+},
+{
+"y": 580,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:البرج A",
+"px2": 1308
+}
+]
+},
+{
+"y": 600,
+"A": {
+"t": 778,
+"l": 324
+},
+"out": [
+{
+"w": "nlw-chip nlw-tw:البرج A",
+"px2": 528
+}
+]
+}
+],
+"he-1440": [],
+"en-1440": [
+{
+"y": 0,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Free advice",
+"px2": 2361
+}
+]
+},
+{
+"y": 20,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Free advice",
+"px2": 1321
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Apartments for sal",
+"px2": 863
+}
+]
+},
+{
+"y": 40,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Free advice",
+"px2": 281
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Apartments for sal",
+"px2": 1903
+}
+]
+},
+{
+"y": 60,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Apartments for sal",
+"px2": 2465
+}
+]
+},
+{
+"y": 80,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Apartments for sal",
+"px2": 1425
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Virtual tour of th",
+"px2": 759
+}
+]
+},
+{
+"y": 100,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Apartments for sal",
+"px2": 385
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Virtual tour of th",
+"px2": 1799
+}
+]
+},
+{
+"y": 120,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Virtual tour of th",
+"px2": 2569
+}
+]
+},
+{
+"y": 140,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Virtual tour of th",
+"px2": 1529
+}
+]
+},
+{
+"y": 160,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Virtual tour of th",
+"px2": 489
+}
+]
+}
+],
+"fr-1440": [
+{
+"y": 40,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Conseil gratuit",
+"px2": 622
+}
+]
+},
+{
+"y": 60,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Conseil gratuit",
+"px2": 1662
+}
+]
+},
+{
+"y": 80,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Conseil gratuit",
+"px2": 2702
+}
+]
+},
+{
+"y": 100,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Conseil gratuit",
+"px2": 1666
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Appartements à ven",
+"px2": 518
+}
+]
+},
+{
+"y": 120,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Conseil gratuit",
+"px2": 626
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Appartements à ven",
+"px2": 1558
+}
+]
+},
+{
+"y": 140,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Appartements à ven",
+"px2": 2598
+}
+]
+},
+{
+"y": 160,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Appartements à ven",
+"px2": 1770
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Visite virtuelle d",
+"px2": 414
+}
+]
+},
+{
+"y": 180,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Appartements à ven",
+"px2": 730
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Visite virtuelle d",
+"px2": 1454
+}
+]
+},
+{
+"y": 200,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Visite virtuelle d",
+"px2": 2494
+}
+]
+},
+{
+"y": 220,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Visite virtuelle d",
+"px2": 1874
+}
+]
+},
+{
+"y": 240,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Visite virtuelle d",
+"px2": 834
+}
+]
+}
+],
+"ru-1440": [
+{
+"y": 40,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Бесплатная консуль",
+"px2": 622
+}
+]
+},
+{
+"y": 60,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Бесплатная консуль",
+"px2": 1662
+}
+]
+},
+{
+"y": 80,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Бесплатная консуль",
+"px2": 2702
+}
+]
+},
+{
+"y": 100,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Бесплатная консуль",
+"px2": 1666
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Квартиры на продаж",
+"px2": 518
+}
+]
+},
+{
+"y": 120,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--primary:Бесплатная консуль",
+"px2": 626
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Квартиры на продаж",
+"px2": 1558
+}
+]
+},
+{
+"y": 140,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Квартиры на продаж",
+"px2": 2598
+}
+]
+},
+{
+"y": 160,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Квартиры на продаж",
+"px2": 1770
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Виртуальная прогул",
+"px2": 414
+}
+]
+},
+{
+"y": 180,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Квартиры на продаж",
+"px2": 730
+},
+{
+"w": "nlds-btn nlds-btn--secondary:Виртуальная прогул",
+"px2": 1454
+}
+]
+},
+{
+"y": 200,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Виртуальная прогул",
+"px2": 2494
+}
+]
+},
+{
+"y": 220,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Виртуальная прогул",
+"px2": 1874
+}
+]
+},
+{
+"y": 240,
+"A": {
+"t": 828,
+"l": 20
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:Виртуальная прогул",
+"px2": 834
+}
+]
+}
+],
+"ar-1440": [
+{
+"y": 0,
+"A": {
+"t": 828,
+"l": 1368
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:جولة افتراضية في ا",
+"px2": 1334
+}
+]
+},
+{
+"y": 20,
+"A": {
+"t": 828,
+"l": 1368
+},
+"out": [
+{
+"w": "nlds-btn nlds-btn--secondary:جولة افتراضية في ا",
+"px2": 294
+}
+]
+}
+]
+}

@@ -1,0 +1,334 @@
+{
+ "release": {
+  "before": "371 live (md5 ab9442860d0b6b22420ced51afbf02f0)",
+  "after": "375 release (md5 600441a486d8ce28fd7e3966020cec54)",
+  "ok": true,
+  "rows": [
+   {
+    "slug": "rainbow-tel-aviv",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "rainbow-tel-aviv-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "duo-tel-aviv",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "duo-tel-aviv-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "dimri-yama-sde-dov",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "dimri-yama-sde-dov-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "ashira-sde-dov",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "ashira-sde-dov-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "hamedina",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "composed",
+     "wp_head@1000#0",
+     "wp_footer@60#0"
+    ],
+    "kikar": true,
+    "shows": {
+     "lane_ar": true,
+     "examples_cfg": true,
+     "mount": true,
+     "a11y": true
+    }
+   },
+   {
+    "slug": "hamedina-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "composed",
+     "wp_head@1000#0",
+     "wp_footer@60#0"
+    ],
+    "kikar": true,
+    "shows": {
+     "lane_ar": true,
+     "examples_cfg": true,
+     "mount": true,
+     "a11y": true
+    }
+   },
+   {
+    "slug": "hamedina-fr",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "composed",
+     "wp_head@1000#0",
+     "wp_footer@60#0"
+    ],
+    "kikar": true,
+    "shows": {
+     "lane_ar": true,
+     "examples_cfg": true,
+     "mount": true,
+     "a11y": true
+    }
+   },
+   {
+    "slug": "hamedina-ru",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "composed",
+     "wp_head@1000#0",
+     "wp_footer@60#0"
+    ],
+    "kikar": true,
+    "shows": {
+     "lane_ar": true,
+     "examples_cfg": true,
+     "mount": true,
+     "a11y": true
+    }
+   },
+   {
+    "slug": "hamedina-ar",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "composed",
+     "wp_head@1000#0",
+     "wp_footer@60#0"
+    ],
+    "kikar": true,
+    "shows": {
+     "lane_ar": true,
+     "examples_cfg": true,
+     "mount": true,
+     "a11y": true
+    }
+   }
+  ]
+ },
+ "branch": {
+  "before": "the working file without the P9c hunks",
+  "after": "working file",
+  "ok": true,
+  "rows": [
+   {
+    "slug": "rainbow-tel-aviv",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "rainbow-tel-aviv-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "duo-tel-aviv",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "duo-tel-aviv-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "dimri-yama-sde-dov",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "dimri-yama-sde-dov-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "ashira-sde-dov",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "ashira-sde-dov-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false,
+    "shows": {}
+   },
+   {
+    "slug": "hamedina",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "composed",
+     "wp_head@1000#0",
+     "wp_footer@60#0"
+    ],
+    "kikar": true,
+    "shows": {
+     "lane_ar": true,
+     "examples_cfg": true,
+     "mount": true,
+     "a11y": true
+    }
+   },
+   {
+    "slug": "hamedina-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "composed",
+     "wp_head@1000#0",
+     "wp_footer@60#0"
+    ],
+    "kikar": true,
+    "shows": {
+     "lane_ar": true,
+     "examples_cfg": true,
+     "mount": true,
+     "a11y": true
+    }
+   },
+   {
+    "slug": "hamedina-fr",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "composed",
+     "wp_head@1000#0",
+     "wp_footer@60#0"
+    ],
+    "kikar": true,
+    "shows": {
+     "lane_ar": true,
+     "examples_cfg": true,
+     "mount": true,
+     "a11y": true
+    }
+   },
+   {
+    "slug": "hamedina-ru",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "composed",
+     "wp_head@1000#0",
+     "wp_footer@60#0"
+    ],
+    "kikar": true,
+    "shows": {
+     "lane_ar": true,
+     "examples_cfg": true,
+     "mount": true,
+     "a11y": true
+    }
+   },
+   {
+    "slug": "hamedina-ar",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "composed",
+     "wp_head@1000#0",
+     "wp_footer@60#0"
+    ],
+    "kikar": true,
+    "shows": {
+     "lane_ar": true,
+     "examples_cfg": true,
+     "mount": true,
+     "a11y": true
+    }
+   }
+  ]
+ }
+}

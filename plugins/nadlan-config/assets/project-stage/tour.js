@@ -47,8 +47,11 @@ export function openTour(o) {
   const prevFocus = o.opener || document.activeElement; // back to the button that opened it (Safari does not focus a clicked button)
   const root = document.createElement('div');
   root.className = 'nlds nlat-viewer';
-  root.dir = 'rtl';
-  root.lang = 'he';
+  // P9c (design system v104.2): a language page's viewer speaks its language (o.lang, o.dir, o.errorText); without them it is
+  // the fleet's Hebrew viewer, exactly as before
+  root.dir = o.dir === 'ltr' ? 'ltr' : 'rtl';
+  root.lang = o.lang || 'he';
+  if (o.errorText) root.dataset.err = o.errorText;
   root.setAttribute('role', 'dialog');
   root.setAttribute('aria-modal', 'true');
   root.setAttribute('aria-label', cur.title || '');

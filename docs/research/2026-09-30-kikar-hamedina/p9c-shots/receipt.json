@@ -1,0 +1,3098 @@
+{
+ "when": "2026-09-30 22:31",
+ "release_copy_md5": "600441a486d8ce28fd7e3966020cec54",
+ "pages": {},
+ "first_screen": {
+  "he": [
+   {
+    "y": 0,
+    "vh": 844,
+    "pill": {
+     "l": 12,
+     "r": 251,
+     "t": 729,
+     "b": 779
+    },
+    "lift": "65px",
+    "lifted": true,
+    "lead": {
+     "l": 12,
+     "r": 378,
+     "t": 291,
+     "b": 599
+    },
+    "leadPx2": 0,
+    "leadLifted": false,
+    "leadAtRest": false,
+    "a11y": {
+     "l": 324,
+     "r": 376,
+     "t": 734,
+     "b": 786
+    },
+    "a11yLift": "translateY(-44px)",
+    "a11yHits": [],
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 200,
+      "r": 378,
+      "t": 621,
+      "b": 665
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 190,
+      "t": 621,
+      "b": 665
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 675,
+      "b": 719
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "מבט על",
+      "l": 281,
+      "r": 363,
+      "t": 796,
+      "b": 840
+     },
+     {
+      "txt": "סיור ברגל",
+      "l": 196,
+      "r": 279,
+      "t": 796,
+      "b": 840
+     },
+     {
+      "txt": "קומה ונוף",
+      "l": 112,
+      "r": 194,
+      "t": 796,
+      "b": 840
+     },
+     {
+      "txt": "מה בסביבה",
+      "l": 27,
+      "r": 110,
+      "t": 796,
+      "b": 840
+     },
+     {
+      "txt": "full",
+      "l": 23,
+      "r": 67,
+      "t": 850,
+      "b": 894
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 300,
+    "vh": 844,
+    "pill": {
+     "l": 12,
+     "r": 251,
+     "t": 716,
+     "b": 766
+    },
+    "lift": "",
+    "lifted": false,
+    "lead": {
+     "l": 12,
+     "r": 378,
+     "t": -9,
+     "b": 299
+    },
+    "leadPx2": 0,
+    "leadLifted": false,
+    "leadAtRest": false,
+    "a11y": {
+     "l": 324,
+     "r": 376,
+     "t": 778,
+     "b": 830
+    },
+    "a11yLift": "",
+    "a11yHits": [],
+    "cls": "",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 200,
+      "r": 378,
+      "t": 321,
+      "b": 365
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 190,
+      "t": 321,
+      "b": 365
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 375,
+      "b": 419
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "מבט על",
+      "l": 281,
+      "r": 363,
+      "t": 496,
+      "b": 540
+     },
+     {
+      "txt": "סיור ברגל",
+      "l": 196,
+      "r": 279,
+      "t": 496,
+      "b": 540
+     },
+     {
+      "txt": "קומה ונוף",
+      "l": 112,
+      "r": 194,
+      "t": 496,
+      "b": 540
+     },
+     {
+      "txt": "מה בסביבה",
+      "l": 27,
+      "r": 110,
+      "t": 496,
+      "b": 540
+     },
+     {
+      "txt": "full",
+      "l": 23,
+      "r": 67,
+      "t": 550,
+      "b": 594
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 700,
+    "vh": 844,
+    "pill": {
+     "l": 12,
+     "r": 251,
+     "t": 776,
+     "b": 826
+    },
+    "lift": "18px",
+    "lifted": true,
+    "lead": {
+     "l": 12,
+     "r": 378,
+     "t": -409,
+     "b": -101
+    },
+    "leadPx2": 0,
+    "leadLifted": false,
+    "leadAtRest": false,
+    "a11y": {
+     "l": 324,
+     "r": 376,
+     "t": 778,
+     "b": 830
+    },
+    "a11yLift": "",
+    "a11yHits": [],
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 200,
+      "r": 378,
+      "t": -79,
+      "b": -35
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 190,
+      "t": -79,
+      "b": -35
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": -25,
+      "b": 19
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "מבט על",
+      "l": 281,
+      "r": 363,
+      "t": 96,
+      "b": 140
+     },
+     {
+      "txt": "סיור ברגל",
+      "l": 196,
+      "r": 279,
+      "t": 96,
+      "b": 140
+     },
+     {
+      "txt": "קומה ונוף",
+      "l": 112,
+      "r": 194,
+      "t": 96,
+      "b": 140
+     },
+     {
+      "txt": "מה בסביבה",
+      "l": 27,
+      "r": 110,
+      "t": 96,
+      "b": 140
+     },
+     {
+      "txt": "full",
+      "l": 23,
+      "r": 67,
+      "t": 150,
+      "b": 194
+     }
+    ],
+    "hits": []
+   }
+  ],
+  "en": [
+   {
+    "y": 0,
+    "vh": 844,
+    "pill": {
+     "l": 123,
+     "r": 378,
+     "t": 716,
+     "b": 766
+    },
+    "lift": "",
+    "lifted": false,
+    "lead": {
+     "l": 12,
+     "r": 378,
+     "t": 342,
+     "b": 762
+    },
+    "leadPx2": 11730,
+    "leadLifted": false,
+    "leadAtRest": true,
+    "a11y": {
+     "l": 14,
+     "r": 66,
+     "t": 778,
+     "b": 830
+    },
+    "a11yLift": "",
+    "a11yHits": [
+     {
+      "with": "hero:hero-wa",
+      "px2": 2288
+     }
+    ],
+    "cls": "",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 784,
+      "b": 828
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 838,
+      "b": 882
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 892,
+      "b": 936
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Aerial",
+      "l": 27,
+      "r": 110,
+      "t": 1013,
+      "b": 1057
+     },
+     {
+      "txt": "Walk",
+      "l": 112,
+      "r": 194,
+      "t": 1013,
+      "b": 1057
+     },
+     {
+      "txt": "Floor view",
+      "l": 196,
+      "r": 279,
+      "t": 1013,
+      "b": 1057
+     },
+     {
+      "txt": "Nearby",
+      "l": 281,
+      "r": 363,
+      "t": 1013,
+      "b": 1057
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 1067,
+      "b": 1111
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 300,
+    "vh": 844,
+    "pill": {
+     "l": 123,
+     "r": 378,
+     "t": 649,
+     "b": 699
+    },
+    "lift": "145px",
+    "lifted": true,
+    "lead": {
+     "l": 12,
+     "r": 378,
+     "t": 42,
+     "b": 462
+    },
+    "leadPx2": 0,
+    "leadLifted": false,
+    "leadAtRest": false,
+    "a11y": {
+     "l": 14,
+     "r": 66,
+     "t": 778,
+     "b": 830
+    },
+    "a11yLift": "",
+    "a11yHits": [],
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 484,
+      "b": 528
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 538,
+      "b": 582
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 592,
+      "b": 636
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Aerial",
+      "l": 27,
+      "r": 110,
+      "t": 713,
+      "b": 757
+     },
+     {
+      "txt": "Walk",
+      "l": 112,
+      "r": 194,
+      "t": 713,
+      "b": 757
+     },
+     {
+      "txt": "Floor view",
+      "l": 196,
+      "r": 279,
+      "t": 713,
+      "b": 757
+     },
+     {
+      "txt": "Nearby",
+      "l": 281,
+      "r": 363,
+      "t": 713,
+      "b": 757
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 767,
+      "b": 811
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 700,
+    "vh": 844,
+    "pill": {
+     "l": 123,
+     "r": 378,
+     "t": 716,
+     "b": 766
+    },
+    "lift": "",
+    "lifted": false,
+    "lead": {
+     "l": 12,
+     "r": 378,
+     "t": -358,
+     "b": 62
+    },
+    "leadPx2": 0,
+    "leadLifted": false,
+    "leadAtRest": false,
+    "a11y": {
+     "l": 14,
+     "r": 66,
+     "t": 778,
+     "b": 830
+    },
+    "a11yLift": "",
+    "a11yHits": [],
+    "cls": "",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 84,
+      "b": 128
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 138,
+      "b": 182
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 192,
+      "b": 236
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Aerial",
+      "l": 27,
+      "r": 110,
+      "t": 313,
+      "b": 357
+     },
+     {
+      "txt": "Walk",
+      "l": 112,
+      "r": 194,
+      "t": 313,
+      "b": 357
+     },
+     {
+      "txt": "Floor view",
+      "l": 196,
+      "r": 279,
+      "t": 313,
+      "b": 357
+     },
+     {
+      "txt": "Nearby",
+      "l": 281,
+      "r": 363,
+      "t": 313,
+      "b": 357
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 367,
+      "b": 411
+     }
+    ],
+    "hits": []
+   }
+  ],
+  "fr": [
+   {
+    "y": 0,
+    "vh": 844,
+    "pill": {
+     "l": 125,
+     "r": 378,
+     "t": 716,
+     "b": 766
+    },
+    "lift": "",
+    "lifted": false,
+    "lead": {
+     "l": 12,
+     "r": 378,
+     "t": 342,
+     "b": 846
+    },
+    "leadPx2": 12650,
+    "leadLifted": false,
+    "leadAtRest": true,
+    "a11y": {
+     "l": 14,
+     "r": 66,
+     "t": 778,
+     "b": 830
+    },
+    "a11yLift": "",
+    "a11yHits": [],
+    "cls": "",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 868,
+      "b": 912
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 922,
+      "b": 966
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 976,
+      "b": 1020
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Vue du ciel",
+      "l": 27,
+      "r": 110,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "Promenade",
+      "l": 112,
+      "r": 194,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "Étage et vue",
+      "l": 196,
+      "r": 279,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "À proximité",
+      "l": 281,
+      "r": 363,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 1151,
+      "b": 1195
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 300,
+    "vh": 844,
+    "pill": {
+     "l": 125,
+     "r": 378,
+     "t": 730,
+     "b": 780
+    },
+    "lift": "64px",
+    "lifted": true,
+    "lead": {
+     "l": 12,
+     "r": 378,
+     "t": 42,
+     "b": 546
+    },
+    "leadPx2": 0,
+    "leadLifted": false,
+    "leadAtRest": false,
+    "a11y": {
+     "l": 14,
+     "r": 66,
+     "t": 734,
+     "b": 786
+    },
+    "a11yLift": "translateY(-44px)",
+    "a11yHits": [],
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 568,
+      "b": 612
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 622,
+      "b": 666
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 676,
+      "b": 720
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Vue du ciel",
+      "l": 27,
+      "r": 110,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "Promenade",
+      "l": 112,
+      "r": 194,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "Étage et vue",
+      "l": 196,
+      "r": 279,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "À proximité",
+      "l": 281,
+      "r": 363,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 851,
+      "b": 895
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 700,
+    "vh": 844,
+    "pill": {
+     "l": 125,
+     "r": 378,
+     "t": 716,
+     "b": 766
+    },
+    "lift": "",
+    "lifted": false,
+    "lead": {
+     "l": 12,
+     "r": 378,
+     "t": -358,
+     "b": 146
+    },
+    "leadPx2": 0,
+    "leadLifted": false,
+    "leadAtRest": false,
+    "a11y": {
+     "l": 14,
+     "r": 66,
+     "t": 778,
+     "b": 830
+    },
+    "a11yLift": "",
+    "a11yHits": [],
+    "cls": "",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 168,
+      "b": 212
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 222,
+      "b": 266
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 276,
+      "b": 320
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Vue du ciel",
+      "l": 27,
+      "r": 110,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "Promenade",
+      "l": 112,
+      "r": 194,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "Étage et vue",
+      "l": 196,
+      "r": 279,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "À proximité",
+      "l": 281,
+      "r": 363,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 451,
+      "b": 495
+     }
+    ],
+    "hits": []
+   }
+  ],
+  "ru": [
+   {
+    "y": 0,
+    "vh": 844,
+    "pill": {
+     "l": 113,
+     "r": 378,
+     "t": 716,
+     "b": 766
+    },
+    "lift": "",
+    "lifted": false,
+    "lead": {
+     "l": 12,
+     "r": 378,
+     "t": 342,
+     "b": 846
+    },
+    "leadPx2": 13250,
+    "leadLifted": false,
+    "leadAtRest": true,
+    "a11y": {
+     "l": 14,
+     "r": 66,
+     "t": 778,
+     "b": 830
+    },
+    "a11yLift": "",
+    "a11yHits": [],
+    "cls": "",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 868,
+      "b": 912
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 922,
+      "b": 966
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 976,
+      "b": 1020
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Сверху",
+      "l": 27,
+      "r": 110,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "Прогулка",
+      "l": 112,
+      "r": 194,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "Этаж и вид",
+      "l": 196,
+      "r": 279,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "Рядом",
+      "l": 281,
+      "r": 363,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 1151,
+      "b": 1195
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 300,
+    "vh": 844,
+    "pill": {
+     "l": 113,
+     "r": 378,
+     "t": 730,
+     "b": 780
+    },
+    "lift": "64px",
+    "lifted": true,
+    "lead": {
+     "l": 12,
+     "r": 378,
+     "t": 42,
+     "b": 546
+    },
+    "leadPx2": 0,
+    "leadLifted": false,
+    "leadAtRest": false,
+    "a11y": {
+     "l": 14,
+     "r": 66,
+     "t": 734,
+     "b": 786
+    },
+    "a11yLift": "translateY(-44px)",
+    "a11yHits": [],
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 568,
+      "b": 612
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 622,
+      "b": 666
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 676,
+      "b": 720
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Сверху",
+      "l": 27,
+      "r": 110,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "Прогулка",
+      "l": 112,
+      "r": 194,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "Этаж и вид",
+      "l": 196,
+      "r": 279,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "Рядом",
+      "l": 281,
+      "r": 363,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 851,
+      "b": 895
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 700,
+    "vh": 844,
+    "pill": {
+     "l": 113,
+     "r": 378,
+     "t": 716,
+     "b": 766
+    },
+    "lift": "",
+    "lifted": false,
+    "lead": {
+     "l": 12,
+     "r": 378,
+     "t": -358,
+     "b": 146
+    },
+    "leadPx2": 0,
+    "leadLifted": false,
+    "leadAtRest": false,
+    "a11y": {
+     "l": 14,
+     "r": 66,
+     "t": 778,
+     "b": 830
+    },
+    "a11yLift": "",
+    "a11yHits": [],
+    "cls": "",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 168,
+      "b": 212
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 222,
+      "b": 266
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 276,
+      "b": 320
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Сверху",
+      "l": 27,
+      "r": 110,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "Прогулка",
+      "l": 112,
+      "r": 194,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "Этаж и вид",
+      "l": 196,
+      "r": 279,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "Рядом",
+      "l": 281,
+      "r": 363,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 451,
+      "b": 495
+     }
+    ],
+    "hits": []
+   }
+  ],
+  "ar": [
+   {
+    "y": 0,
+    "vh": 844,
+    "pill": {
+     "l": 12,
+     "r": 258,
+     "t": 694,
+     "b": 744
+    },
+    "lift": "100px",
+    "lifted": true,
+    "lead": {
+     "l": 12,
+     "r": 378,
+     "t": 318,
+     "b": 682
+    },
+    "leadPx2": 0,
+    "leadLifted": false,
+    "leadAtRest": false,
+    "a11y": {
+     "l": 324,
+     "r": 376,
+     "t": 690,
+     "b": 742
+    },
+    "a11yLift": "translateY(-88px)",
+    "a11yHits": [],
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 200,
+      "r": 378,
+      "t": 754,
+      "b": 798
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 190,
+      "t": 754,
+      "b": 798
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 808,
+      "b": 852
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "من الأعلى",
+      "l": 281,
+      "r": 363,
+      "t": 929,
+      "b": 973
+     },
+     {
+      "txt": "جولة سيراً",
+      "l": 196,
+      "r": 279,
+      "t": 929,
+      "b": 973
+     },
+     {
+      "txt": "الطابق والإطلالة",
+      "l": 112,
+      "r": 194,
+      "t": 929,
+      "b": 973
+     },
+     {
+      "txt": "بالجوار",
+      "l": 27,
+      "r": 110,
+      "t": 929,
+      "b": 973
+     },
+     {
+      "txt": "full",
+      "l": 23,
+      "r": 67,
+      "t": 983,
+      "b": 1027
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 300,
+    "vh": 844,
+    "pill": {
+     "l": 12,
+     "r": 258,
+     "t": 565,
+     "b": 615
+    },
+    "lift": "229px",
+    "lifted": true,
+    "lead": {
+     "l": 12,
+     "r": 378,
+     "t": 18,
+     "b": 382
+    },
+    "leadPx2": 0,
+    "leadLifted": false,
+    "leadAtRest": false,
+    "a11y": {
+     "l": 324,
+     "r": 376,
+     "t": 778,
+     "b": 830
+    },
+    "a11yLift": "",
+    "a11yHits": [],
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 200,
+      "r": 378,
+      "t": 454,
+      "b": 498
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 190,
+      "t": 454,
+      "b": 498
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 508,
+      "b": 552
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "من الأعلى",
+      "l": 281,
+      "r": 363,
+      "t": 629,
+      "b": 673
+     },
+     {
+      "txt": "جولة سيراً",
+      "l": 196,
+      "r": 279,
+      "t": 629,
+      "b": 673
+     },
+     {
+      "txt": "الطابق والإطلالة",
+      "l": 112,
+      "r": 194,
+      "t": 629,
+      "b": 673
+     },
+     {
+      "txt": "بالجوار",
+      "l": 27,
+      "r": 110,
+      "t": 629,
+      "b": 673
+     },
+     {
+      "txt": "full",
+      "l": 23,
+      "r": 67,
+      "t": 683,
+      "b": 727
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 700,
+    "vh": 844,
+    "pill": {
+     "l": 12,
+     "r": 258,
+     "t": 644,
+     "b": 694
+    },
+    "lift": "150px",
+    "lifted": true,
+    "lead": {
+     "l": 12,
+     "r": 378,
+     "t": -382,
+     "b": -18
+    },
+    "leadPx2": 0,
+    "leadLifted": false,
+    "leadAtRest": false,
+    "a11y": {
+     "l": 324,
+     "r": 376,
+     "t": 710,
+     "b": 762
+    },
+    "a11yLift": "translateY(-68px)",
+    "a11yHits": [],
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 200,
+      "r": 378,
+      "t": 54,
+      "b": 98
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 190,
+      "t": 54,
+      "b": 98
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 108,
+      "b": 152
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "من الأعلى",
+      "l": 281,
+      "r": 363,
+      "t": 229,
+      "b": 273
+     },
+     {
+      "txt": "جولة سيراً",
+      "l": 196,
+      "r": 279,
+      "t": 229,
+      "b": 273
+     },
+     {
+      "txt": "الطابق والإطلالة",
+      "l": 112,
+      "r": 194,
+      "t": 229,
+      "b": 273
+     },
+     {
+      "txt": "بالجوار",
+      "l": 27,
+      "r": 110,
+      "t": 229,
+      "b": 273
+     },
+     {
+      "txt": "full",
+      "l": 23,
+      "r": 67,
+      "t": 283,
+      "b": 327
+     }
+    ],
+    "hits": []
+   }
+  ]
+ },
+ "a11y": {
+  "he-390": {
+   "scrolls_with_overlap": [],
+   "tab_shot_scroll": 20,
+   "on_tabs": [],
+   "samples": [],
+   "a11y_on_lead_px2_max": 0
+  },
+  "he-1440": {
+   "scrolls_with_overlap": [],
+   "tab_shot_scroll": null,
+   "on_tabs": [],
+   "samples": [],
+   "a11y_on_lead_px2_max": 0
+  },
+  "en-390": {
+   "scrolls_with_overlap": [
+    0,
+    20,
+    40,
+    60,
+    80,
+    100,
+    120,
+    140,
+    540,
+    560,
+    580,
+    600,
+    620
+   ],
+   "tab_shot_scroll": 240,
+   "on_tabs": [],
+   "samples": [
+    {
+     "y": 0,
+     "A": {
+      "t": 778,
+      "b": 830
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Free advice",
+       "px2": 2288
+      }
+     ],
+     "onLead": 0
+    },
+    {
+     "y": 20,
+     "A": {
+      "t": 778,
+      "b": 830
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Free advice",
+       "px2": 1554
+      },
+      {
+       "w": "nlds-btn:Apartments for sal",
+       "px2": 631
+      }
+     ],
+     "onLead": 0
+    },
+    {
+     "y": 40,
+     "A": {
+      "t": 778,
+      "b": 830
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Free advice",
+       "px2": 514
+      },
+      {
+       "w": "nlds-btn:Apartments for sal",
+       "px2": 1671
+      }
+     ],
+     "onLead": 0
+    },
+    {
+     "y": 60,
+     "A": {
+      "t": 778,
+      "b": 830
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Apartments for sal",
+       "px2": 2282
+      }
+     ],
+     "onLead": 0
+    }
+   ],
+   "a11y_on_lead_px2_max": 0
+  },
+  "en-1440": {
+   "scrolls_with_overlap": [
+    0,
+    20,
+    40,
+    60,
+    80,
+    100,
+    120,
+    140,
+    160
+   ],
+   "tab_shot_scroll": null,
+   "on_tabs": [],
+   "samples": [
+    {
+     "y": 0,
+     "A": {
+      "t": 828,
+      "b": 880
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Free advice",
+       "px2": 2361
+      }
+     ],
+     "onLead": 0
+    },
+    {
+     "y": 20,
+     "A": {
+      "t": 828,
+      "b": 880
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Free advice",
+       "px2": 1321
+      },
+      {
+       "w": "nlds-btn:Apartments for sal",
+       "px2": 863
+      }
+     ],
+     "onLead": 0
+    },
+    {
+     "y": 40,
+     "A": {
+      "t": 828,
+      "b": 880
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Free advice",
+       "px2": 281
+      },
+      {
+       "w": "nlds-btn:Apartments for sal",
+       "px2": 1903
+      }
+     ],
+     "onLead": 0
+    },
+    {
+     "y": 60,
+     "A": {
+      "t": 828,
+      "b": 880
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Apartments for sal",
+       "px2": 2465
+      }
+     ],
+     "onLead": 0
+    }
+   ],
+   "a11y_on_lead_px2_max": 0
+  },
+  "fr-390": {
+   "scrolls_with_overlap": [
+    40,
+    60,
+    80,
+    100,
+    120,
+    140,
+    160,
+    180,
+    200,
+    220,
+    240,
+    620,
+    640,
+    660,
+    680,
+    700
+   ],
+   "tab_shot_scroll": 320,
+   "on_tabs": [],
+   "samples": [
+    {
+     "y": 40,
+     "A": {
+      "t": 778,
+      "b": 830
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Conseil gratuit",
+       "px2": 111
+      }
+     ],
+     "onLead": 1450
+    },
+    {
+     "y": 60,
+     "A": {
+      "t": 778,
+      "b": 830
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Conseil gratuit",
+       "px2": 1151
+      }
+     ],
+     "onLead": 410
+    },
+    {
+     "y": 80,
+     "A": {
+      "t": 778,
+      "b": 830
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Conseil gratuit",
+       "px2": 2191
+      }
+     ],
+     "onLead": 0
+    },
+    {
+     "y": 100,
+     "A": {
+      "t": 778,
+      "b": 830
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Conseil gratuit",
+       "px2": 1762
+      },
+      {
+       "w": "nlds-btn:Appartements à ven",
+       "px2": 423
+      }
+     ],
+     "onLead": 0
+    }
+   ],
+   "a11y_on_lead_px2_max": 1450
+  },
+  "fr-1440": {
+   "scrolls_with_overlap": [
+    40,
+    60,
+    80,
+    100,
+    120,
+    140,
+    160,
+    180,
+    200,
+    220,
+    240
+   ],
+   "tab_shot_scroll": null,
+   "on_tabs": [],
+   "samples": [
+    {
+     "y": 40,
+     "A": {
+      "t": 828,
+      "b": 880
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Conseil gratuit",
+       "px2": 622
+      }
+     ],
+     "onLead": 834
+    },
+    {
+     "y": 60,
+     "A": {
+      "t": 828,
+      "b": 880
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Conseil gratuit",
+       "px2": 1662
+      }
+     ],
+     "onLead": 0
+    },
+    {
+     "y": 80,
+     "A": {
+      "t": 828,
+      "b": 880
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Conseil gratuit",
+       "px2": 2702
+      }
+     ],
+     "onLead": 0
+    },
+    {
+     "y": 100,
+     "A": {
+      "t": 828,
+      "b": 880
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Conseil gratuit",
+       "px2": 1666
+      },
+      {
+       "w": "nlds-btn:Appartements à ven",
+       "px2": 518
+      }
+     ],
+     "onLead": 0
+    }
+   ],
+   "a11y_on_lead_px2_max": 834
+  },
+  "ru-390": {
+   "scrolls_with_overlap": [
+    40,
+    60,
+    80,
+    100,
+    120,
+    140,
+    160,
+    180,
+    200,
+    220,
+    240,
+    620,
+    640,
+    660,
+    680,
+    700
+   ],
+   "tab_shot_scroll": 320,
+   "on_tabs": [],
+   "samples": [
+    {
+     "y": 40,
+     "A": {
+      "t": 778,
+      "b": 830
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Бесплатная консуль",
+       "px2": 111
+      }
+     ],
+     "onLead": 1450
+    },
+    {
+     "y": 60,
+     "A": {
+      "t": 778,
+      "b": 830
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Бесплатная консуль",
+       "px2": 1151
+      }
+     ],
+     "onLead": 410
+    },
+    {
+     "y": 80,
+     "A": {
+      "t": 778,
+      "b": 830
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Бесплатная консуль",
+       "px2": 2191
+      }
+     ],
+     "onLead": 0
+    },
+    {
+     "y": 100,
+     "A": {
+      "t": 778,
+      "b": 830
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Бесплатная консуль",
+       "px2": 1762
+      },
+      {
+       "w": "nlds-btn:Квартиры на продаж",
+       "px2": 423
+      }
+     ],
+     "onLead": 0
+    }
+   ],
+   "a11y_on_lead_px2_max": 1450
+  },
+  "ru-1440": {
+   "scrolls_with_overlap": [
+    40,
+    60,
+    80,
+    100,
+    120,
+    140,
+    160,
+    180,
+    200,
+    220,
+    240
+   ],
+   "tab_shot_scroll": null,
+   "on_tabs": [],
+   "samples": [
+    {
+     "y": 40,
+     "A": {
+      "t": 828,
+      "b": 880
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Бесплатная консуль",
+       "px2": 622
+      }
+     ],
+     "onLead": 834
+    },
+    {
+     "y": 60,
+     "A": {
+      "t": 828,
+      "b": 880
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Бесплатная консуль",
+       "px2": 1662
+      }
+     ],
+     "onLead": 0
+    },
+    {
+     "y": 80,
+     "A": {
+      "t": 828,
+      "b": 880
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Бесплатная консуль",
+       "px2": 2702
+      }
+     ],
+     "onLead": 0
+    },
+    {
+     "y": 100,
+     "A": {
+      "t": 828,
+      "b": 880
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:Бесплатная консуль",
+       "px2": 1666
+      },
+      {
+       "w": "nlds-btn:Квартиры на продаж",
+       "px2": 518
+      }
+     ],
+     "onLead": 0
+    }
+   ],
+   "a11y_on_lead_px2_max": 834
+  },
+  "ar-390": {
+   "scrolls_with_overlap": [],
+   "tab_shot_scroll": 140,
+   "on_tabs": [],
+   "samples": [],
+   "a11y_on_lead_px2_max": 0
+  },
+  "ar-1440": {
+   "scrolls_with_overlap": [
+    0,
+    20
+   ],
+   "tab_shot_scroll": null,
+   "on_tabs": [],
+   "samples": [
+    {
+     "y": 0,
+     "A": {
+      "t": 828,
+      "b": 880
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:جولة افتراضية في ا",
+       "px2": 1334
+      }
+     ],
+     "onLead": 0
+    },
+    {
+     "y": 20,
+     "A": {
+      "t": 828,
+      "b": 880
+     },
+     "lift": "",
+     "out": [
+      {
+       "w": "nlds-btn:جولة افتراضية في ا",
+       "px2": 294
+      }
+     ],
+     "onLead": 0
+    }
+   ],
+   "a11y_on_lead_px2_max": 0
+  }
+ },
+ "example": {
+  "he-390": {
+   "link": "דירה לדוגמה: מגדל C, קומה 30, פונה מערבה",
+   "button": "היכנסו לדירה לדוגמה",
+   "button_box": {
+    "x": 30,
+    "y": 508.0625,
+    "width": 330,
+    "height": 46
+   },
+   "state": {
+    "mode": "tower",
+    "tower": "C",
+    "floor": 30,
+    "facing": 265.61,
+    "season": 9,
+    "hour": 18.333333333333332,
+    "tod": "sunset",
+    "view": "window",
+    "cat": "transport"
+   },
+   "album": {
+    "shown": {
+     "kind": "still",
+     "room": "living",
+     "time": "sunset",
+     "floor": null,
+     "base": "living-c30w-sunset"
+    },
+    "tod": "sunset",
+    "pick": {
+     "tower": "C",
+     "floor": "30 · מגדל C",
+     "facing": "מערבה · דירה לדוגמה",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": true,
+     "name": "מגדלי כיכר המדינה"
+    },
+    "label": "דירה לדוגמההתוכנית להמחשה, חלוקת הדירות לא פורסמה",
+    "chipOnPicture": true,
+    "title": "דירה לדוגמה, 4 חדרים",
+    "eyebrow": "מגדל C · קומה 30 · פונה מערבה",
+    "cap": "הסלון בשקיעה · 21 בספטמבר, 17:36",
+    "wa": "שלום, אשמח לייעוץ חינם על מגדלי כיכר המדינה (nad-lan.co.il) · דירה לדוגמה · מגדל C",
+    "dir": "rtl",
+    "lang": "he",
+    "focus": "nlex__x"
+   },
+   "world_tod_after_album_evening": "night",
+   "viewer": {
+    "dir": "rtl",
+    "lang": "he",
+    "title": "הסלון בשקיעה · מגדל C · קומה 30",
+    "chip": "דירה לדוגמה",
+    "cap": "התוכנית להמחשה, חלוקת הדירות לא פורסמה. הסלון מקומה 30, 21 בספטמבר, 17:36. הריהוט והגמרים להמחשה.",
+    "hint": "גררו כדי להסתכל מסביב",
+    "scene": "living360-c30w-sunset"
+   },
+   "after_escape_1": {
+    "viewer": false,
+    "album": true,
+    "focus": "nlex__go360"
+   },
+   "after_escape_2": {
+    "album": false,
+    "pick": {
+     "tower": "C",
+     "floor": "30 · מגדל C",
+     "facing": "מערבה",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": false,
+     "name": "מגדלי כיכר המדינה"
+    },
+    "focus": "c30w"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "he-1440": {
+   "link": "דירה לדוגמה: מגדל C, קומה 30, פונה מערבה",
+   "button": "היכנסו לדירה לדוגמה",
+   "button_box": {
+    "x": 682,
+    "y": 671.375,
+    "width": 306,
+    "height": 46
+   },
+   "state": {
+    "mode": "tower",
+    "tower": "C",
+    "floor": 30,
+    "facing": 265.61,
+    "season": 9,
+    "hour": 18.333333333333332,
+    "tod": "sunset",
+    "view": "window",
+    "cat": "transport"
+   },
+   "album": {
+    "shown": {
+     "kind": "still",
+     "room": "living",
+     "time": "sunset",
+     "floor": null,
+     "base": "living-c30w-sunset"
+    },
+    "tod": "sunset",
+    "pick": {
+     "tower": "C",
+     "floor": "30 · מגדל C",
+     "facing": "מערבה · דירה לדוגמה",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": true,
+     "name": "מגדלי כיכר המדינה"
+    },
+    "label": "דירה לדוגמההתוכנית להמחשה, חלוקת הדירות לא פורסמה",
+    "chipOnPicture": true,
+    "title": "דירה לדוגמה, 4 חדרים",
+    "eyebrow": "מגדל C · קומה 30 · פונה מערבה",
+    "cap": "הסלון בשקיעה · 21 בספטמבר, 17:36",
+    "wa": "שלום, אשמח לייעוץ חינם על מגדלי כיכר המדינה (nad-lan.co.il) · דירה לדוגמה · מגדל C",
+    "dir": "rtl",
+    "lang": "he",
+    "focus": "nlex__x"
+   },
+   "world_tod_after_album_evening": "night",
+   "viewer": {
+    "dir": "rtl",
+    "lang": "he",
+    "title": "הסלון בשקיעה · מגדל C · קומה 30",
+    "chip": "דירה לדוגמה",
+    "cap": "התוכנית להמחשה, חלוקת הדירות לא פורסמה. הסלון מקומה 30, 21 בספטמבר, 17:36. הריהוט והגמרים להמחשה.",
+    "hint": "גררו כדי להסתכל מסביב",
+    "scene": "living360-c30w-sunset"
+   },
+   "after_escape_1": {
+    "viewer": false,
+    "album": true,
+    "focus": "nlex__go360"
+   },
+   "after_escape_2": {
+    "album": false,
+    "pick": {
+     "tower": "C",
+     "floor": "30 · מגדל C",
+     "facing": "מערבה",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": false,
+     "name": "מגדלי כיכר המדינה"
+    },
+    "focus": "c30w"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "en-390": {
+   "link": "Example apartment: tower C, floor 30, facing west",
+   "button": "Step inside an example apartment",
+   "button_box": {
+    "x": 30,
+    "y": -1402.015625,
+    "width": 330,
+    "height": 46
+   },
+   "state": {
+    "mode": "tower",
+    "tower": "C",
+    "floor": 30,
+    "facing": 265.61,
+    "season": 9,
+    "hour": 18.333333333333332,
+    "tod": "sunset",
+    "view": "window",
+    "cat": "transport"
+   },
+   "album": {
+    "shown": {
+     "kind": "still",
+     "room": "living",
+     "time": "sunset",
+     "floor": null,
+     "base": "living-c30w-sunset"
+    },
+    "tod": "sunset",
+    "pick": {
+     "tower": "C",
+     "floor": "30 · tower C",
+     "facing": "west · example apartment",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": true,
+     "name": "Kikar Hamedina Towers"
+    },
+    "label": "Example apartmentThe layout is an illustration; the apartment mix has not been published",
+    "chipOnPicture": true,
+    "title": "An example 4-room apartment",
+    "eyebrow": "Tower C · floor 30 · facing west",
+    "cap": "The living room · sunset · 21 September, 17:36",
+    "wa": "Hello, I would like free advice on Kikar Hamedina Towers (nad-lan.co.il) · example apartment · Tower C",
+    "dir": "ltr",
+    "lang": "en",
+    "focus": "nlex__x"
+   },
+   "world_tod_after_album_evening": "night",
+   "viewer": {
+    "dir": "ltr",
+    "lang": "en",
+    "title": "The living room at sunset · tower C · floor 30",
+    "chip": "Example apartment",
+    "cap": "The layout is an illustration; the apartment mix has not been published. The living room on floor 30, 21 September, 17:36. Furniture and finishes are an illustration.",
+    "hint": "Drag to look around",
+    "scene": "living360-c30w-sunset"
+   },
+   "after_escape_1": {
+    "viewer": false,
+    "album": true,
+    "focus": "nlex__go360"
+   },
+   "after_escape_2": {
+    "album": false,
+    "pick": {
+     "tower": "C",
+     "floor": "30 · tower C",
+     "facing": "west",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": false,
+     "name": "Kikar Hamedina Towers"
+    },
+    "focus": "c30w"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "en-1440": {
+   "link": "Example apartment: tower C, floor 30, facing west",
+   "button": "Step inside an example apartment",
+   "button_box": {
+    "x": 452,
+    "y": 671.375,
+    "width": 306,
+    "height": 46
+   },
+   "state": {
+    "mode": "tower",
+    "tower": "C",
+    "floor": 30,
+    "facing": 265.61,
+    "season": 9,
+    "hour": 18.333333333333332,
+    "tod": "sunset",
+    "view": "window",
+    "cat": "transport"
+   },
+   "album": {
+    "shown": {
+     "kind": "still",
+     "room": "living",
+     "time": "sunset",
+     "floor": null,
+     "base": "living-c30w-sunset"
+    },
+    "tod": "sunset",
+    "pick": {
+     "tower": "C",
+     "floor": "30 · tower C",
+     "facing": "west · example apartment",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": true,
+     "name": "Kikar Hamedina Towers"
+    },
+    "label": "Example apartmentThe layout is an illustration; the apartment mix has not been published",
+    "chipOnPicture": true,
+    "title": "An example 4-room apartment",
+    "eyebrow": "Tower C · floor 30 · facing west",
+    "cap": "The living room · sunset · 21 September, 17:36",
+    "wa": "Hello, I would like free advice on Kikar Hamedina Towers (nad-lan.co.il) · example apartment · Tower C",
+    "dir": "ltr",
+    "lang": "en",
+    "focus": "nlex__x"
+   },
+   "world_tod_after_album_evening": "night",
+   "viewer": {
+    "dir": "ltr",
+    "lang": "en",
+    "title": "The living room at sunset · tower C · floor 30",
+    "chip": "Example apartment",
+    "cap": "The layout is an illustration; the apartment mix has not been published. The living room on floor 30, 21 September, 17:36. Furniture and finishes are an illustration.",
+    "hint": "Drag to look around",
+    "scene": "living360-c30w-sunset"
+   },
+   "after_escape_1": {
+    "viewer": false,
+    "album": true,
+    "focus": "nlex__go360"
+   },
+   "after_escape_2": {
+    "album": false,
+    "pick": {
+     "tower": "C",
+     "floor": "30 · tower C",
+     "facing": "west",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": false,
+     "name": "Kikar Hamedina Towers"
+    },
+    "focus": "c30w"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "fr-390": {
+   "button": "Visiter un appartement témoin",
+   "button_box": {
+    "x": 30,
+    "y": 574.984375,
+    "width": 330,
+    "height": 46
+   },
+   "state": {
+    "mode": "tower",
+    "tower": "C",
+    "floor": 30,
+    "facing": 265.61,
+    "season": 9,
+    "hour": 18.333333333333332,
+    "tod": "sunset",
+    "view": "window",
+    "cat": "transport"
+   },
+   "album": {
+    "shown": {
+     "kind": "still",
+     "room": "living",
+     "time": "sunset",
+     "floor": null,
+     "base": "living-c30w-sunset"
+    },
+    "tod": "sunset",
+    "pick": {
+     "tower": "C",
+     "floor": "30 · tour C",
+     "facing": "ouest · appartement témoin",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": true,
+     "name": "Tours Kikar Hamedina"
+    },
+    "label": "Appartement témoinPlan à titre d’illustration ; la répartition des appartements n’a pas été publiée",
+    "chipOnPicture": true,
+    "title": "Un appartement témoin de 4 pièces",
+    "eyebrow": "Tour C · étage 30 · orientation ouest",
+    "cap": "Le séjour · coucher du soleil · 21 septembre, 17 h 36",
+    "wa": "Bonjour, je souhaite un conseil gratuit sur les Tours Kikar Hamedina (nad-lan.co.il) · appartement témoin · Tour C",
+    "dir": "ltr",
+    "lang": "fr",
+    "focus": "nlex__x"
+   },
+   "world_tod_after_album_evening": "night",
+   "viewer": {
+    "dir": "ltr",
+    "lang": "fr",
+    "title": "Le séjour au coucher du soleil · tour C · 30e étage",
+    "chip": "Appartement témoin",
+    "cap": "Plan à titre d’illustration ; la répartition des appartements n’a pas été publiée. Le séjour au 30e étage, 21 septembre, 17 h 36. Mobilier et finitions à titre d’illustration.",
+    "hint": "Glissez pour regarder autour",
+    "scene": "living360-c30w-sunset"
+   },
+   "after_escape_1": {
+    "viewer": false,
+    "album": true,
+    "focus": "nlex__go360"
+   },
+   "after_escape_2": {
+    "album": false,
+    "pick": {
+     "tower": "C",
+     "floor": "30 · tour C",
+     "facing": "ouest",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": false,
+     "name": "Tours Kikar Hamedina"
+    },
+    "focus": "c30w"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "fr-1440": {
+   "link": "Appartement témoin : tour C, 30e étage, orientation ouest",
+   "button": "Visiter un appartement témoin",
+   "button_box": {
+    "x": 452,
+    "y": 671.375,
+    "width": 306,
+    "height": 46
+   },
+   "state": {
+    "mode": "tower",
+    "tower": "C",
+    "floor": 30,
+    "facing": 265.61,
+    "season": 9,
+    "hour": 18.333333333333332,
+    "tod": "sunset",
+    "view": "window",
+    "cat": "transport"
+   },
+   "album": {
+    "shown": {
+     "kind": "still",
+     "room": "living",
+     "time": "sunset",
+     "floor": null,
+     "base": "living-c30w-sunset"
+    },
+    "tod": "sunset",
+    "pick": {
+     "tower": "C",
+     "floor": "30 · tour C",
+     "facing": "ouest · appartement témoin",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": true,
+     "name": "Tours Kikar Hamedina"
+    },
+    "label": "Appartement témoinPlan à titre d’illustration ; la répartition des appartements n’a pas été publiée",
+    "chipOnPicture": true,
+    "title": "Un appartement témoin de 4 pièces",
+    "eyebrow": "Tour C · étage 30 · orientation ouest",
+    "cap": "Le séjour · coucher du soleil · 21 septembre, 17 h 36",
+    "wa": "Bonjour, je souhaite un conseil gratuit sur les Tours Kikar Hamedina (nad-lan.co.il) · appartement témoin · Tour C",
+    "dir": "ltr",
+    "lang": "fr",
+    "focus": "nlex__x"
+   },
+   "world_tod_after_album_evening": "night",
+   "viewer": {
+    "dir": "ltr",
+    "lang": "fr",
+    "title": "Le séjour au coucher du soleil · tour C · 30e étage",
+    "chip": "Appartement témoin",
+    "cap": "Plan à titre d’illustration ; la répartition des appartements n’a pas été publiée. Le séjour au 30e étage, 21 septembre, 17 h 36. Mobilier et finitions à titre d’illustration.",
+    "hint": "Glissez pour regarder autour",
+    "scene": "living360-c30w-sunset"
+   },
+   "after_escape_1": {
+    "viewer": false,
+    "album": true,
+    "focus": "nlex__go360"
+   },
+   "after_escape_2": {
+    "album": false,
+    "pick": {
+     "tower": "C",
+     "floor": "30 · tour C",
+     "facing": "ouest",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": false,
+     "name": "Tours Kikar Hamedina"
+    },
+    "focus": "c30w"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "ru-390": {
+   "button": "Зайти в пример квартиры",
+   "button_box": {
+    "x": 30,
+    "y": 621.984375,
+    "width": 330,
+    "height": 46
+   },
+   "state": {
+    "mode": "tower",
+    "tower": "C",
+    "floor": 30,
+    "facing": 265.61,
+    "season": 9,
+    "hour": 18.333333333333332,
+    "tod": "sunset",
+    "view": "window",
+    "cat": "transport"
+   },
+   "album": {
+    "shown": {
+     "kind": "still",
+     "room": "living",
+     "time": "sunset",
+     "floor": null,
+     "base": "living-c30w-sunset"
+    },
+    "tod": "sunset",
+    "pick": {
+     "tower": "C",
+     "floor": "30 · башня C",
+     "facing": "запад · пример квартиры",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": true,
+     "name": "Башни Кикар ха-Медина"
+    },
+    "label": "Пример квартирыПланировка условная; состав квартир не опубликован",
+    "chipOnPicture": true,
+    "title": "Пример 4-комнатной квартиры",
+    "eyebrow": "Башня C · этаж 30 · окна на запад",
+    "cap": "Гостиная · закат · 21 сентября, 17:36",
+    "wa": "Здравствуйте, хочу бесплатную консультацию по проекту «Башни Кикар ха-Медина» (nad-lan.co.il) · пример квартиры · Башня C",
+    "dir": "ltr",
+    "lang": "ru",
+    "focus": "nlex__x"
+   },
+   "world_tod_after_album_evening": "night",
+   "viewer": {
+    "dir": "ltr",
+    "lang": "ru",
+    "title": "Гостиная на закате · башня C · этаж 30",
+    "chip": "Пример квартиры",
+    "cap": "Планировка условная; состав квартир не опубликован. Гостиная на 30-м этаже, 21 сентября, 17:36. Мебель и отделка условны.",
+    "hint": "Ведите пальцем, чтобы осмотреться",
+    "scene": "living360-c30w-sunset"
+   },
+   "after_escape_1": {
+    "viewer": false,
+    "album": true,
+    "focus": "nlex__go360"
+   },
+   "after_escape_2": {
+    "album": false,
+    "pick": {
+     "tower": "C",
+     "floor": "30 · башня C",
+     "facing": "запад",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": false,
+     "name": "Башни Кикар ха-Медина"
+    },
+    "focus": "c30w"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "ru-1440": {
+   "link": "Пример квартиры: башня C, этаж 30, окна на запад",
+   "button": "Зайти в пример квартиры",
+   "button_box": {
+    "x": 452,
+    "y": 671.375,
+    "width": 306,
+    "height": 46
+   },
+   "state": {
+    "mode": "tower",
+    "tower": "C",
+    "floor": 30,
+    "facing": 265.61,
+    "season": 9,
+    "hour": 18.333333333333332,
+    "tod": "sunset",
+    "view": "window",
+    "cat": "transport"
+   },
+   "album": {
+    "shown": {
+     "kind": "still",
+     "room": "living",
+     "time": "sunset",
+     "floor": null,
+     "base": "living-c30w-sunset"
+    },
+    "tod": "sunset",
+    "pick": {
+     "tower": "C",
+     "floor": "30 · башня C",
+     "facing": "запад · пример квартиры",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": true,
+     "name": "Башни Кикар ха-Медина"
+    },
+    "label": "Пример квартирыПланировка условная; состав квартир не опубликован",
+    "chipOnPicture": true,
+    "title": "Пример 4-комнатной квартиры",
+    "eyebrow": "Башня C · этаж 30 · окна на запад",
+    "cap": "Гостиная · закат · 21 сентября, 17:36",
+    "wa": "Здравствуйте, хочу бесплатную консультацию по проекту «Башни Кикар ха-Медина» (nad-lan.co.il) · пример квартиры · Башня C",
+    "dir": "ltr",
+    "lang": "ru",
+    "focus": "nlex__x"
+   },
+   "world_tod_after_album_evening": "night",
+   "viewer": {
+    "dir": "ltr",
+    "lang": "ru",
+    "title": "Гостиная на закате · башня C · этаж 30",
+    "chip": "Пример квартиры",
+    "cap": "Планировка условная; состав квартир не опубликован. Гостиная на 30-м этаже, 21 сентября, 17:36. Мебель и отделка условны.",
+    "hint": "Ведите пальцем, чтобы осмотреться",
+    "scene": "living360-c30w-sunset"
+   },
+   "after_escape_1": {
+    "viewer": false,
+    "album": true,
+    "focus": "nlex__go360"
+   },
+   "after_escape_2": {
+    "album": false,
+    "pick": {
+     "tower": "C",
+     "floor": "30 · башня C",
+     "facing": "запад",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": false,
+     "name": "Башни Кикар ха-Медина"
+    },
+    "focus": "c30w"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "ar-390": {
+   "button": "ادخلوا إلى شقة نموذجية",
+   "button_box": {
+    "x": 30,
+    "y": 491.984375,
+    "width": 330,
+    "height": 46
+   },
+   "state": {
+    "mode": "tower",
+    "tower": "C",
+    "floor": 30,
+    "facing": 265.61,
+    "season": 9,
+    "hour": 18.333333333333332,
+    "tod": "sunset",
+    "view": "window",
+    "cat": "transport"
+   },
+   "album": {
+    "shown": {
+     "kind": "still",
+     "room": "living",
+     "time": "sunset",
+     "floor": null,
+     "base": "living-c30w-sunset"
+    },
+    "tod": "sunset",
+    "pick": {
+     "tower": "C",
+     "floor": "30 · البرج C",
+     "facing": "الغرب · شقة نموذجية",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": true,
+     "name": "أبراج كيكار همدينا"
+    },
+    "label": "شقة نموذجيةالمخطط للتوضيح، ولم يُنشر توزيع الشقق",
+    "chipOnPicture": true,
+    "title": "شقة نموذجية من 4 غرف",
+    "eyebrow": "البرج C · الطابق 30 · باتجاه الغرب",
+    "cap": "الصالون · غروب · 21 أيلول، 17:36",
+    "wa": "مرحباً، أود الحصول على استشارة مجانية حول أبراج كيكار همدينا (nad-lan.co.il) · شقة نموذجية · البرج C",
+    "dir": "rtl",
+    "lang": "ar",
+    "focus": "nlex__x"
+   },
+   "world_tod_after_album_evening": "night",
+   "viewer": {
+    "dir": "rtl",
+    "lang": "ar",
+    "title": "الصالون عند الغروب · البرج C · الطابق 30",
+    "chip": "شقة نموذجية",
+    "cap": "المخطط للتوضيح، ولم يُنشر توزيع الشقق. الصالون في الطابق 30، 21 أيلول، 17:36. الأثاث والتشطيبات للتوضيح.",
+    "hint": "اسحبوا للنظر حولكم",
+    "scene": "living360-c30w-sunset"
+   },
+   "after_escape_1": {
+    "viewer": false,
+    "album": true,
+    "focus": "nlex__go360"
+   },
+   "after_escape_2": {
+    "album": false,
+    "pick": {
+     "tower": "C",
+     "floor": "30 · البرج C",
+     "facing": "الغرب",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": false,
+     "name": "أبراج كيكار همدينا"
+    },
+    "focus": "c30w"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "ar-1440": {
+   "link": "شقة نموذجية: البرج C، الطابق 30، باتجاه الغرب",
+   "button": "ادخلوا إلى شقة نموذجية",
+   "button_box": {
+    "x": 682,
+    "y": 671.375,
+    "width": 306,
+    "height": 46
+   },
+   "state": {
+    "mode": "tower",
+    "tower": "C",
+    "floor": 30,
+    "facing": 265.61,
+    "season": 9,
+    "hour": 18.333333333333332,
+    "tod": "sunset",
+    "view": "window",
+    "cat": "transport"
+   },
+   "album": {
+    "shown": {
+     "kind": "still",
+     "room": "living",
+     "time": "sunset",
+     "floor": null,
+     "base": "living-c30w-sunset"
+    },
+    "tod": "sunset",
+    "pick": {
+     "tower": "C",
+     "floor": "30 · البرج C",
+     "facing": "الغرب · شقة نموذجية",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": true,
+     "name": "أبراج كيكار همدينا"
+    },
+    "label": "شقة نموذجيةالمخطط للتوضيح، ولم يُنشر توزيع الشقق",
+    "chipOnPicture": true,
+    "title": "شقة نموذجية من 4 غرف",
+    "eyebrow": "البرج C · الطابق 30 · باتجاه الغرب",
+    "cap": "الصالون · غروب · 21 أيلول، 17:36",
+    "wa": "مرحباً، أود الحصول على استشارة مجانية حول أبراج كيكار همدينا (nad-lan.co.il) · شقة نموذجية · البرج C",
+    "dir": "rtl",
+    "lang": "ar",
+    "focus": "nlex__x"
+   },
+   "world_tod_after_album_evening": "night",
+   "viewer": {
+    "dir": "rtl",
+    "lang": "ar",
+    "title": "الصالون عند الغروب · البرج C · الطابق 30",
+    "chip": "شقة نموذجية",
+    "cap": "المخطط للتوضيح، ولم يُنشر توزيع الشقق. الصالون في الطابق 30، 21 أيلول، 17:36. الأثاث والتشطيبات للتوضيح.",
+    "hint": "اسحبوا للنظر حولكم",
+    "scene": "living360-c30w-sunset"
+   },
+   "after_escape_1": {
+    "viewer": false,
+    "album": true,
+    "focus": "nlex__go360"
+   },
+   "after_escape_2": {
+    "album": false,
+    "pick": {
+     "tower": "C",
+     "floor": "30 · البرج C",
+     "facing": "الغرب",
+     "floorNum": 30,
+     "towerKey": "C",
+     "bearing": 266,
+     "unit": "",
+     "example": false,
+     "name": "أبراج كيكار همدينا"
+    },
+    "focus": "c30w"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  }
+ },
+ "bytes": {
+  "he-390": {
+   "before_press": [],
+   "album_files": [
+    "balcony-c30w-sunset-thumb.webp",
+    "bedroom-c30nw-day-thumb.webp",
+    "example.css",
+    "example.js",
+    "examples.json",
+    "living-c30w-sunset-card.webp",
+    "living-c30w-sunset-thumb.webp",
+    "living360-c30w-sunset-thumb.webp",
+    "twist-c20w-day-thumb.webp",
+    "twist-c30w-day-thumb.webp",
+    "twist-c38w-day-thumb.webp"
+   ],
+   "album_bytes": 163670,
+   "viewer_files": [
+    "living360-c30w-sunset-2k.webp",
+    "living360-c30w-sunset.webp",
+    "tour.css",
+    "tour.js"
+   ],
+   "viewer_bytes": 299837
+  },
+  "he-1440": {
+   "before_press": [],
+   "album_files": [
+    "balcony-c30w-sunset-thumb.webp",
+    "bedroom-c30nw-day-thumb.webp",
+    "example.css",
+    "example.js",
+    "examples.json",
+    "living-c30w-sunset-card.webp",
+    "living-c30w-sunset-thumb.webp",
+    "living360-c30w-sunset-thumb.webp",
+    "twist-c20w-day-thumb.webp",
+    "twist-c30w-day-thumb.webp",
+    "twist-c38w-day-thumb.webp"
+   ],
+   "album_bytes": 163670,
+   "viewer_files": [
+    "living360-c30w-sunset-2k.webp",
+    "living360-c30w-sunset.webp",
+    "tour.css",
+    "tour.js"
+   ],
+   "viewer_bytes": 299837
+  },
+  "en-390": {
+   "before_press": [],
+   "album_files": [
+    "balcony-c30w-sunset-thumb.webp",
+    "bedroom-c30nw-day-thumb.webp",
+    "example.css",
+    "example.js",
+    "examples.json",
+    "living-c30w-sunset-card.webp",
+    "living-c30w-sunset-thumb.webp",
+    "living360-c30w-sunset-thumb.webp",
+    "twist-c20w-day-thumb.webp",
+    "twist-c30w-day-thumb.webp",
+    "twist-c38w-day-thumb.webp"
+   ],
+   "album_bytes": 163670,
+   "viewer_files": [
+    "living360-c30w-sunset-2k.webp",
+    "living360-c30w-sunset.webp",
+    "tour.css",
+    "tour.js"
+   ],
+   "viewer_bytes": 299837
+  },
+  "en-1440": {
+   "before_press": [],
+   "album_files": [
+    "balcony-c30w-sunset-thumb.webp",
+    "bedroom-c30nw-day-thumb.webp",
+    "example.css",
+    "example.js",
+    "examples.json",
+    "living-c30w-sunset-card.webp",
+    "living-c30w-sunset-thumb.webp",
+    "living360-c30w-sunset-thumb.webp",
+    "twist-c20w-day-thumb.webp",
+    "twist-c30w-day-thumb.webp",
+    "twist-c38w-day-thumb.webp"
+   ],
+   "album_bytes": 163670,
+   "viewer_files": [
+    "living360-c30w-sunset-2k.webp",
+    "living360-c30w-sunset.webp",
+    "tour.css",
+    "tour.js"
+   ],
+   "viewer_bytes": 299837
+  },
+  "fr-390": {
+   "before_press": [],
+   "album_files": [
+    "balcony-c30w-sunset-thumb.webp",
+    "bedroom-c30nw-day-thumb.webp",
+    "example.css",
+    "example.js",
+    "examples.json",
+    "living-c30w-sunset-card.webp",
+    "living-c30w-sunset-thumb.webp",
+    "living360-c30w-sunset-thumb.webp",
+    "twist-c20w-day-thumb.webp",
+    "twist-c30w-day-thumb.webp",
+    "twist-c38w-day-thumb.webp"
+   ],
+   "album_bytes": 163670,
+   "viewer_files": [
+    "living360-c30w-sunset-2k.webp",
+    "living360-c30w-sunset.webp",
+    "tour.css",
+    "tour.js"
+   ],
+   "viewer_bytes": 299837
+  },
+  "fr-1440": {
+   "before_press": [],
+   "album_files": [
+    "balcony-c30w-sunset-thumb.webp",
+    "bedroom-c30nw-day-thumb.webp",
+    "example.css",
+    "example.js",
+    "examples.json",
+    "living-c30w-sunset-card.webp",
+    "living-c30w-sunset-thumb.webp",
+    "living360-c30w-sunset-thumb.webp",
+    "twist-c20w-day-thumb.webp",
+    "twist-c30w-day-thumb.webp",
+    "twist-c38w-day-thumb.webp"
+   ],
+   "album_bytes": 163670,
+   "viewer_files": [
+    "living360-c30w-sunset-2k.webp",
+    "living360-c30w-sunset.webp",
+    "tour.css",
+    "tour.js"
+   ],
+   "viewer_bytes": 299837
+  },
+  "ru-390": {
+   "before_press": [],
+   "album_files": [
+    "balcony-c30w-sunset-thumb.webp",
+    "bedroom-c30nw-day-thumb.webp",
+    "example.css",
+    "example.js",
+    "examples.json",
+    "living-c30w-sunset-card.webp",
+    "living-c30w-sunset-thumb.webp",
+    "living360-c30w-sunset-thumb.webp",
+    "twist-c20w-day-thumb.webp",
+    "twist-c30w-day-thumb.webp",
+    "twist-c38w-day-thumb.webp"
+   ],
+   "album_bytes": 163670,
+   "viewer_files": [
+    "living360-c30w-sunset-2k.webp",
+    "living360-c30w-sunset.webp",
+    "tour.css",
+    "tour.js"
+   ],
+   "viewer_bytes": 299837
+  },
+  "ru-1440": {
+   "before_press": [],
+   "album_files": [
+    "balcony-c30w-sunset-thumb.webp",
+    "bedroom-c30nw-day-thumb.webp",
+    "example.css",
+    "example.js",
+    "examples.json",
+    "living-c30w-sunset-card.webp",
+    "living-c30w-sunset-thumb.webp",
+    "living360-c30w-sunset-thumb.webp",
+    "twist-c20w-day-thumb.webp",
+    "twist-c30w-day-thumb.webp",
+    "twist-c38w-day-thumb.webp"
+   ],
+   "album_bytes": 163670,
+   "viewer_files": [
+    "living360-c30w-sunset-2k.webp",
+    "living360-c30w-sunset.webp",
+    "tour.css",
+    "tour.js"
+   ],
+   "viewer_bytes": 299837
+  },
+  "ar-390": {
+   "before_press": [],
+   "album_files": [
+    "balcony-c30w-sunset-thumb.webp",
+    "bedroom-c30nw-day-thumb.webp",
+    "example.css",
+    "example.js",
+    "examples.json",
+    "living-c30w-sunset-card.webp",
+    "living-c30w-sunset-thumb.webp",
+    "living360-c30w-sunset-thumb.webp",
+    "twist-c20w-day-thumb.webp",
+    "twist-c30w-day-thumb.webp",
+    "twist-c38w-day-thumb.webp"
+   ],
+   "album_bytes": 163670,
+   "viewer_files": [
+    "living360-c30w-sunset-2k.webp",
+    "living360-c30w-sunset.webp",
+    "tour.css",
+    "tour.js"
+   ],
+   "viewer_bytes": 299837
+  },
+  "ar-1440": {
+   "before_press": [],
+   "album_files": [
+    "balcony-c30w-sunset-thumb.webp",
+    "bedroom-c30nw-day-thumb.webp",
+    "example.css",
+    "example.js",
+    "examples.json",
+    "living-c30w-sunset-card.webp",
+    "living-c30w-sunset-thumb.webp",
+    "living360-c30w-sunset-thumb.webp",
+    "twist-c20w-day-thumb.webp",
+    "twist-c30w-day-thumb.webp",
+    "twist-c38w-day-thumb.webp"
+   ],
+   "album_bytes": 163670,
+   "viewer_files": [
+    "living360-c30w-sunset-2k.webp",
+    "living360-c30w-sunset.webp",
+    "tour.css",
+    "tour.js"
+   ],
+   "viewer_bytes": 299837
+  }
+ },
+ "local_files_served": {
+  "assets/project-stage/hamedina/poster-800.webp": "487e70708ceabe67",
+  "assets/nlds/nlds.css": "51bb81e52d33b089",
+  "assets/basket/basket.css": "42b9aeac088ace63",
+  "assets/arealife/place-icons.js": "813f2a81b3dded4d",
+  "assets/arealife/areamap.js": "02fbd6b5b7f30f91",
+  "assets/showroom-engine/mv-ux.js": "645721814809bd3b",
+  "assets/basket/basket.js": "371135927d2422f6",
+  "assets/project-stage/hamedina/places.json": "fa2c7837bafc7f68",
+  "assets/branding/favicon.svg": "3983279f7c7823ef",
+  "assets/project-stage/world/world.js": "b55389e00c1ee474",
+  "assets/project-stage/world/world.css": "ff6d001f1e7caa61",
+  "assets/project-stage/hamedina/world.json": "f73687164839d711",
+  "assets/project-stage/world/example.js": "e9099aac948560a9",
+  "assets/project-stage/world/example.css": "b69a09686869faa9",
+  "assets/project-stage/hamedina/tour/examples.json": "9a620788d97dda69",
+  "assets/project-stage/hamedina/tour/living360-c30w-sunset-thumb.webp": "168625cd498a55e5",
+  "assets/project-stage/hamedina/tour/living-c30w-sunset-thumb.webp": "1b3e42f39026404e",
+  "assets/project-stage/hamedina/tour/bedroom-c30nw-day-thumb.webp": "e5767c7028872222",
+  "assets/project-stage/hamedina/tour/balcony-c30w-sunset-thumb.webp": "f93c8d21c4570434",
+  "assets/project-stage/hamedina/tour/living-c30w-sunset-card.webp": "52942474bb67d599",
+  "assets/project-stage/hamedina/tour/twist-c20w-day-thumb.webp": "3c9450d7081ec82b",
+  "assets/project-stage/hamedina/tour/twist-c30w-day-thumb.webp": "15856262e8f1a496",
+  "assets/project-stage/hamedina/tour/twist-c38w-day-thumb.webp": "517c87603098225e",
+  "assets/project-stage/hamedina/tour/living-c30w-evening-thumb.webp": "05e749a4793b936e",
+  "assets/project-stage/hamedina/tour/living-c30w-evening-card.webp": "36491b1ab608e1bc",
+  "assets/project-stage/hamedina/tour/twist-c20w-day-card.webp": "3280375eb26bfc7e",
+  "assets/project-stage/tour.js": "18730d19351fcf35",
+  "assets/project-stage/tour.css": "398317cdc68442de",
+  "assets/project-stage/hamedina/tour/living360-c30w-sunset-2k.webp": "869a7b27ee7d0121",
+  "assets/project-stage/hamedina/tour/living360-c30w-sunset.webp": "d000151c0f62d4e2",
+  "assets/project-stage/hamedina/poster-1600.webp": "f84af9300908fc59",
+  "assets/project-stage/hamedina/world-i18n.json": "ea5bf49be4678d03"
+ }
+}

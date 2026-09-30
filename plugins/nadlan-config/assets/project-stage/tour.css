@@ -67,6 +67,7 @@ html.nlat-open, html.nlat-open body { overflow: hidden !important; }
   content: 'התמונה לא נטענה. נסו שוב מאוחר יותר.'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
   color: #fff; font: 600 15px/1.4 'Assistant', system-ui, sans-serif;
 }
+.nlat-viewer[data-err].is-error .nlat-viewer__stage::after { content: attr(data-err); } /* P9c: a language page's own words */
 @media (prefers-reduced-motion: reduce) { .nlat-viewer__hint { transition: none; } }
 
 /* design styles (design system ApartmentStyles v80): a panel at the inline end, a strip over the switches on phones */
