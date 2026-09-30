@@ -42,6 +42,10 @@
     community: '<path d="M2.5 6.2 8 2.8l5.5 3.4M3.6 6.6v6.2M6.5 6.6v6.2M9.5 6.6v6.2M12.4 6.6v6.2M2.2 13.6h11.6"/>',
   };
   var svg = function (g, stroke) { return '<svg viewBox="0 0 16 16" fill="none" stroke="' + (stroke || 'currentColor') + '" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' + PATH[g] + '</svg>'; };
+  /* v104.3 (30.9): a place shows the icon of its KIND (assets/arealife/place-icons.js, loaded before this file): a school is a
+     school, a café a cup, a bus stop a bus. The seven group icons above stay for the group chips and as the fallback. */
+  var PI = function () { return window.NLPlaceIcons || null; };
+  var kindSvg = function (p, stroke) { var I = PI(); return I ? I.svg(p.k, p.g, stroke, 2.2) : svg(p.g, stroke); };
   var hasHe = function (s) { return /[֐-׿]/.test(s || ''); };
   var fmtM = function (m) { return m < 1000 ? (Math.round(m / 10) * 10) + ' ' + T.m : (Math.round(m / 100) / 10) + ' ' + T.km; };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
@@ -202,7 +206,7 @@
     list.slice(0, shownN).forEach(function (p) {
       var li = document.createElement('li'), b = document.createElement('button'); b.type = 'button';
       var when = p.future ? T.planned : (REG && p.walk ? p.walk + ' ' + T.min : fmtM(p.dist));
-      b.innerHTML = '<i style="background:' + COLOR[p.g] + '">' + svg(p.g) + '</i><span><b><bdi>' + esc(nameOf(p)) + '</bdi></b><small>' + esc(T.g[p.g]) + (p.addr && LANG === 'he' ? ' · ' + esc(p.addr) : '') + '</small></span><em>' + esc(when) + '</em>';
+      b.innerHTML = '<i style="background:' + COLOR[p.g] + '">' + kindSvg(p) + '</i><span><b><bdi>' + esc(nameOf(p)) + '</bdi></b><small>' + esc(T.g[p.g]) + (p.addr && LANG === 'he' ? ' · ' + esc(p.addr) : '') + '</small></span><em>' + esc(when) + '</em>';
       b.addEventListener('click', function () { focus(p); });
       li.appendChild(b); listEl.appendChild(li);
     });
@@ -232,7 +236,7 @@
   }
   function fc() {
     return { type: 'FeatureCollection', features: visible().map(function (p, i) {
-      return { type: 'Feature', id: i, geometry: { type: 'Point', coordinates: [p.lng, p.lat] }, properties: { i: PLACES.indexOf(p), g: p.g, name: nameOf(p), rank: (REG ? (p.walk || 99) : p.dist / 80) } };
+      return { type: 'Feature', id: i, geometry: { type: 'Point', coordinates: [p.lng, p.lat] }, properties: { i: PLACES.indexOf(p), g: p.g, ic: iconId(p), name: nameOf(p), rank: (REG ? (p.walk || 99) : p.dist / 80) } };
     }) };
   }
   function setData() { if (MAP && MAP.getSource('nlam')) MAP.getSource('nlam').setData(fc()); if (MAP && MAP.getLayer('nlam-iso')) isoFilter(); }
@@ -241,13 +245,24 @@
     MAP.setFilter('nlam-iso', R.all ? ['<=', ['get', 'min'], 0] : ['==', ['get', 'min'], R.v]);
     MAP.setFilter('nlam-iso-line', R.all ? ['<=', ['get', 'min'], 0] : ['==', ['get', 'min'], R.v]);
   }
+  /* v104.3: the map pin of a place = the icon of its kind in its group colour. Codex (30.9) found the old pins painted black:
+     the regex stripped the <svg> wrapper together with fill="none" stroke="#fff". The <g> below carries them. */
+  function iconId(p) { var I = PI(); return 'nlpi-' + (I ? I.glyph(p.k, p.g) : 'g') + '-' + p.g; }
+  function pinSrc(p) {
+    var I = PI();
+    if (I) return I.pinSvg(p.k, p.g, 52);
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52"><circle cx="26" cy="26" r="23" fill="' + COLOR[p.g] + '" stroke="#FAF7F1" stroke-width="3"/>'
+      + '<g transform="translate(14 14) scale(1.5)" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' + PATH[p.g] + '</g></svg>';
+  }
   function icons(map) {
-    return Promise.all(ORDER.map(function (g) {
+    var need = {};
+    PLACES.forEach(function (p) { var id = iconId(p); if (!need[id]) need[id] = p; });
+    return Promise.all(Object.keys(need).map(function (id) {
       return new Promise(function (res) {
-        var img = new Image(48, 48);
-        img.onload = function () { try { if (!map.hasImage('nlam-' + g)) map.addImage('nlam-' + g, img, { pixelRatio: 2 }); } catch (e) {} res(); };
+        var img = new Image(52, 52);
+        img.onload = function () { try { if (!map.hasImage(id)) map.addImage(id, img, { pixelRatio: 2 }); } catch (e) {} res(); };
         img.onerror = function () { res(); };
-        img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21" fill="' + COLOR[g] + '" stroke="#fff" stroke-width="4"/><g transform="translate(12 12) scale(1.5)">' + svg(g, '#fff').replace(/^<svg[^>]*>|<\/svg>$/g, '') + '</g></svg>');
+        img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(pinSrc(need[id]));
       });
     }));
   }
@@ -260,12 +275,18 @@
         map.addLayer({ id: 'nlam-iso-line', type: 'line', source: 'nlam-iso', paint: { 'line-color': '#1F4B5C', 'line-width': 1.6, 'line-dasharray': [2, 1.5], 'line-opacity': 0.7 } });
       }
       map.addSource('nlam', { type: 'geojson', data: fc() });
+      // v104.3: every place that has room shows its icon AND its name, as one unit (Codex: never an orphan icon); the nearest
+      // wins a collision (sort key = walking minutes), the far ones step back instead of piling up. Below zoom 14 the icons
+      // alone (no names yet at that scale); every place stays in the list under the map.
       map.addLayer({ id: 'nlam-pin', type: 'symbol', source: 'nlam', layout: {
-        'icon-image': ['concat', 'nlam-', ['get', 'g']], 'icon-size': ['interpolate', ['linear'], ['zoom'], 13, 0.62, 16, 0.9], 'icon-allow-overlap': true,
+        'icon-image': ['get', 'ic'], 'icon-size': ['interpolate', ['linear'], ['zoom'], 12, 0.72, 14, 0.88, 16, 1],
+        'icon-allow-overlap': false, 'icon-padding': 1,
         'symbol-sort-key': ['get', 'rank'],
-        'text-field': ['step', ['zoom'], '', 15.2, ['get', 'name']], 'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'], 'text-size': 12,
-        'text-offset': [0, 1.35], 'text-anchor': 'top', 'text-optional': true, 'text-max-width': 9 },
-        paint: { 'text-color': '#14212B', 'text-halo-color': 'rgba(250,247,241,.95)', 'text-halo-width': 1.6 } });
+        'text-field': ['step', ['zoom'], '', 14, ['get', 'name']], 'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
+        'text-size': ['interpolate', ['linear'], ['zoom'], 14, 12, 17, 13.5],
+        'text-variable-anchor': RTL ? ['right', 'left', 'top', 'bottom'] : ['left', 'right', 'top', 'bottom'],
+        'text-radial-offset': 1.2, 'text-justify': 'auto', 'text-optional': false, 'icon-optional': false, 'text-max-width': 9, 'text-padding': 2 },
+        paint: { 'text-color': '#14212B', 'text-halo-color': 'rgba(250,247,241,.96)', 'text-halo-width': 1.8 } });
       if (ISO.length) isoFilter();
       map.on('click', 'nlam-pin', function (e) { var f = e.features && e.features[0]; if (f) focus(PLACES[f.properties.i]); });
       map.on('mouseenter', 'nlam-pin', function () { map.getCanvas().style.cursor = 'pointer'; });

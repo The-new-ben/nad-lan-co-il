@@ -1,0 +1,81 @@
+{
+ "lang": "he",
+ "live": false,
+ "world": {
+  "canvas": true,
+  "touchAction": "pan-y",
+  "inlineTA": "",
+  "worldH": 490,
+  "docked": true,
+  "dockH": 1065,
+  "sectionH": 1556
+ },
+ "world_swipe_px": 335,
+ "panel": {
+  "top": 275.46875,
+  "bottom": 762.25,
+  "h": 486,
+  "sh": 486,
+  "overflowY": "visible",
+  "overscroll": "auto",
+  "inDock": true
+ },
+ "panel_swipe_px": 432,
+ "panel_scrollTop": 0,
+ "nested_scrollers": [],
+ "world_pins": {
+  "visible": 16,
+  "withIcon": 13,
+  "bareDots": 0,
+  "kinds": [
+   "k-tower",
+   "k-water",
+   "k-green",
+   "k-feature",
+   "k-mark",
+   "k-pin"
+  ]
+ },
+ "map": {
+  "layer": true,
+  "placed": 25,
+  "zoom": 15.3,
+  "allowOverlap": false,
+  "images": 36,
+  "kinds": [
+   "nlpi-trees-outdoors",
+   "nlpi-x-slide-outdoors",
+   "nlpi-school-education",
+   "nlpi-dog-outdoors",
+   "nlpi-bus-transport",
+   "nlpi-coffee-food",
+   "nlpi-volleyball-outdoors",
+   "nlpi-graduation-cap-education",
+   "nlpi-toy-brick-education",
+   "nlpi-utensils-food"
+  ]
+ },
+ "walk_full": {
+  "full": true,
+  "mode": "walk",
+  "pill": {
+   "w": 108,
+   "h": 44,
+   "top": 68
+  },
+  "pillOnTop": true,
+  "panelInRoot": true,
+  "text": "ייעוץ חינם"
+ },
+ "after_exit": {
+  "full": false,
+  "mode": "aerial",
+  "docked": true
+ },
+ "errors": [],
+ "served_local": [
+  "/assets/arealife/areamap.js",
+  "/assets/project-stage/world/world.css",
+  "/assets/project-stage/world/world.js"
+ ]
+}

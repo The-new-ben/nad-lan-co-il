@@ -1,0 +1,104 @@
+{
+ "world_swipe": {
+  "entered": true,
+  "scroll_before": 661,
+  "scroll_after": 661,
+  "page_moved_px": 0
+ },
+ "panel_swipes": [
+  {
+   "scroll_before": 661,
+   "scroll_after": 661,
+   "page_moved_px": 0,
+   "panel_scrollTop": 165
+  },
+  {
+   "scroll_before": 661,
+   "scroll_after": 661,
+   "page_moved_px": 0,
+   "panel_scrollTop": 165
+  },
+  {
+   "scroll_before": 661,
+   "scroll_after": 661,
+   "page_moved_px": 0,
+   "panel_scrollTop": 165
+  }
+ ],
+ "panel": {
+  "top": 411.6875,
+  "bottom": 726.625,
+  "h": 314,
+  "sh": 480
+ },
+ "map": {
+  "top": 148.15625,
+  "bottom": 588.15625,
+  "h": 440,
+  "cls": "mapboxgl-map",
+  "markers": 19,
+  "markerKinds": [
+   {
+    "cls": "mapboxgl-marker-anchor-center",
+    "text": "",
+    "w": 20,
+    "h": 20,
+    "hasIcon": false
+   },
+   {
+    "cls": "mapboxgl-marker-anchor-center",
+    "text": "₪90K",
+    "w": 50,
+    "h": 25,
+    "hasIcon": false
+   },
+   {
+    "cls": "mapboxgl-marker-anchor-center",
+    "text": "₪82K",
+    "w": 50,
+    "h": 25,
+    "hasIcon": false
+   },
+   {
+    "cls": "mapboxgl-marker-anchor-center",
+    "text": "₪75K",
+    "w": 50,
+    "h": 25,
+    "hasIcon": false
+   },
+   {
+    "cls": "mapboxgl-marker-anchor-center",
+    "text": "₪75K",
+    "w": 50,
+    "h": 25,
+    "hasIcon": false
+   },
+   {
+    "cls": "mapboxgl-marker-anchor-center",
+    "text": "₪54K",
+    "w": 50,
+    "h": 25,
+    "hasIcon": false
+   },
+   {
+    "cls": "mapboxgl-marker-anchor-center",
+    "text": "₪75K",
+    "w": 50,
+    "h": 25,
+    "hasIcon": false
+   },
+   {
+    "cls": "mapboxgl-marker-anchor-center",
+    "text": "",
+    "w": 17,
+    "h": 17,
+    "hasIcon": false
+   }
+  ]
+ },
+ "map_swipe": {
+  "scroll_before": 1759,
+  "scroll_after": 2137,
+  "page_moved_px": 378
+ }
+}

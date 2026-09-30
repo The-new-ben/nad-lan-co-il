@@ -1,0 +1,79 @@
+{
+ "lang": "en",
+ "live": false,
+ "world": {
+  "canvas": true,
+  "touchAction": "pan-y",
+  "inlineTA": "",
+  "worldH": 490,
+  "docked": true,
+  "dockH": 1180,
+  "sectionH": 1672
+ },
+ "world_swipe_px": 335,
+ "panel": {
+  "top": 275.390625,
+  "bottom": 762.171875,
+  "h": 486,
+  "sh": 486,
+  "overflowY": "visible",
+  "overscroll": "auto",
+  "inDock": true
+ },
+ "panel_swipe_px": 432,
+ "panel_scrollTop": 0,
+ "nested_scrollers": [],
+ "world_pins": {
+  "visible": 15,
+  "withIcon": 13,
+  "bareDots": 0,
+  "kinds": [
+   "k-tower",
+   "k-water",
+   "k-green",
+   "k-feature",
+   "k-mark",
+   "k-pin"
+  ]
+ },
+ "map": {
+  "layer": true,
+  "placed": 21,
+  "zoom": 15.3,
+  "allowOverlap": false,
+  "images": 36,
+  "kinds": [
+   "nlpi-trees-outdoors",
+   "nlpi-bus-transport",
+   "nlpi-coffee-food",
+   "nlpi-school-education",
+   "nlpi-toy-brick-education",
+   "nlpi-dog-outdoors",
+   "nlpi-baby-education",
+   "nlpi-utensils-food"
+  ]
+ },
+ "walk_full": {
+  "full": true,
+  "mode": "walk",
+  "pill": {
+   "w": 122,
+   "h": 44,
+   "top": 68
+  },
+  "pillOnTop": true,
+  "panelInRoot": true,
+  "text": "Free advice"
+ },
+ "after_exit": {
+  "full": false,
+  "mode": "aerial",
+  "docked": true
+ },
+ "errors": [],
+ "served_local": [
+  "/assets/arealife/areamap.js",
+  "/assets/project-stage/world/world.css",
+  "/assets/project-stage/world/world.js"
+ ]
+}

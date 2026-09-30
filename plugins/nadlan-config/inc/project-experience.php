@@ -609,7 +609,9 @@ html body.nlpc-project-page .nadlan-project-article .nlfs-article .nlfs-table :i
 ' );
 		}
 		if ( $has_map ) { // AreaMap v97: the area map's places, named, filtered, listed (runs before the lazy map boots)
-			wp_enqueue_script( 'nadlan-areamap', plugins_url( 'assets/arealife/areamap.js', dirname( __FILE__ ) ), array(), NADLAN_CONFIG_VERSION, true );
+			// v104.3 (30.9): the icon of each kind of place, shared by the area map, its list and the 3D world
+			wp_enqueue_script( 'nadlan-place-icons', plugins_url( 'assets/arealife/place-icons.js', dirname( __FILE__ ) ), array(), NADLAN_CONFIG_VERSION, true );
+			wp_enqueue_script( 'nadlan-areamap', plugins_url( 'assets/arealife/areamap.js', dirname( __FILE__ ) ), array( 'nadlan-place-icons' ), NADLAN_CONFIG_VERSION, true );
 		}
 		wp_register_script( 'nadlan-pjx-js', false, $has_map ? array( 'leaflet' ) : array(), '1.69.85', true );
 		wp_enqueue_script( 'nadlan-pjx-js' );
