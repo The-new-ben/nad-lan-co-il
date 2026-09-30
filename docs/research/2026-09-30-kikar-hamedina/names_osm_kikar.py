@@ -11,7 +11,7 @@ Why: on the en/fr/ru/ar pages the area map (arealife/areamap.js nameOf: names[LA
 letters || the kind) shows a place whose name exists only in Hebrew by its kind ("School", "Café"). OpenStreetMap often
 carries the real name in other languages (name:en, name:ar, name:ru, name:fr). Nothing is translated, transliterated or
 invented here: a value is written only when it is the tag of the one OSM feature that carries the same Hebrew name within
-80 m.
+80 m AND that feature is the place's own (the strict rule, owner's law "no invented facts", 1.10.2026: see strict()).
 
 Method
   1. Overpass (names-osm/overpass.json, the raw answer; --fetch asks again, otherwise the saved answer is reused, so the
@@ -21,7 +21,11 @@ Method
   2. Targets: every non-generic place whose name has Hebrew letters and that has no names.en.
   3. A match needs ALL of: the Hebrew name identical to the feature's `name` or `name:he` after normalising whitespace,
      geresh/gershayim variants and hyphens (norm() below); the distance <= 80 m (the feature's node or its centre); exactly
-     one such feature. Two or more features -> the place is skipped and listed (ambiguous).
+     one such feature. Two or more features -> the place is skipped and listed (ambiguous; counted over ALL same-name
+     features, before the strict rule, so a street next to a shop of the same name still makes the place ambiguous).
+  3b. The strict rule on that one feature: NEVER a name from highway=* (a bus stop excepted), amenity=parking, place=*,
+     landuse=*, boundary=* or a building with no POI tags (this wins even over (a)); then (a) the place id carries the
+     element's OSM id, or (b) the feature is a POI whose kind fits the place's group (COMPAT). Otherwise rejected and listed.
   4. Each value must be in its language's script (ar: Arabic letters, ru: Cyrillic, en/fr: Latin) and carry no Hebrew
      letters and no letters of the other scripts; a value that fails is dropped and listed.
   5. Only the missing languages are written into "names" (never an existing value); a new "names" object goes right before
@@ -132,24 +136,81 @@ def features(d):
         kind = next(("%s=%s" % (k, t[k]) for k in ("amenity", "shop", "leisure", "tourism", "healthcare", "office", "railway",
                                                   "public_transport", "highway", "building", "landuse", "place", "craft",
                                                   "historic", "man_made", "sport", "club") if t.get(k)), "")
-        out.append({"ref": "%s/%s" % (e["type"], e["id"]), "lat": la, "lng": ln, "keys": keys, "tags": t, "kind": kind,
-                    "street": street_or_area(t)})
+        out.append({"ref": "%s/%s" % (e["type"], e["id"]), "lat": la, "lng": ln, "keys": keys, "tags": t, "kind": kind})
     return out
 
 
-def street_or_area(t):
-    """a street / road / path (not a bus stop or platform) or a named area (place=*, landuse=*, boundary=*): its name is the
-    street's or the neighbourhood's, which the city's layers sometimes give a place (a playground called by its street). A
-    feature that is also a thing (a park that is a square, a sports ground with a landuse) is the thing, not an area."""
-    if any(t.get(k) for k in THING):
-        return False
-    if t.get("highway") and t.get("highway") != "bus_stop":
-        return True
-    return bool(t.get("place") or t.get("landuse") or t.get("boundary"))
+# ---------------------------------------------------------------- the strict rule (owner's law: no invented facts)
+# The one same-name feature within 80 m names the place only when it is the place's OWN feature:
+#   NEVER  highway=* (a bus stop excepted), amenity=parking, place=*, landuse=*, boundary=*, a building with no POI tags
+#          (checked first: it wins even over (a));
+#   (a)    the place id carries that OSM element's id (osm:node/N, fp:osm-node-N ...), or
+#   (b)    the feature is a POI (amenity / shop / leisure / tourism / office / healthcare / a railway station / a
+#          public_transport platform / a bus stop, a building only when it carries one of these) of a kind that fits the
+#          place's group (COMPAT).
+POI_KEYS = ("amenity", "shop", "leisure", "tourism", "office", "healthcare")
+TRANSIT = {"railway": {"station", "halt", "tram_stop", "subway_entrance", "platform"},
+           "public_transport": {"platform", "station", "stop_position"}, "highway": {"bus_stop"}}
+COMPAT = {
+    "education": {"amenity": {"school", "college", "university", "kindergarten", "childcare", "library", "language_school",
+                              "music_school", "prep_school", "dancing_school"}},
+    "food": {"amenity": {"cafe", "restaurant", "fast_food", "bar", "pub", "ice_cream", "biergarten", "food_court"},
+             "shop": {"bakery", "pastry", "confectionery", "deli", "coffee", "chocolate"}},
+    "transport": {"highway": {"bus_stop"}, "public_transport": {"platform", "station", "stop_position"},
+                  "railway": {"station", "halt", "tram_stop", "subway_entrance", "platform"}, "amenity": {"bus_station"}},
+    "health": {"amenity": {"clinic", "doctors", "hospital", "pharmacy", "dentist"}, "healthcare": "*"},
+    "essentials": {"shop": "*", "amenity": {"pharmacy", "bank", "atm", "post_office", "bureau_de_change", "marketplace"},
+                   "healthcare": {"pharmacy"}},
+    "outdoors": {"leisure": {"park", "playground", "garden", "pitch", "sports_centre", "sports_hall", "fitness_centre",
+                             "fitness_station", "swimming_pool", "dog_park", "stadium", "track", "recreation_ground", "ice_rink"}},
+    "community": {"amenity": {"community_centre", "place_of_worship", "theatre", "arts_centre", "cinema", "social_centre",
+                              "library", "townhall", "social_facility", "events_venue", "exhibition_centre", "music_venue",
+                              "conference_centre"},
+                  "tourism": {"museum", "gallery"}, "office": {"ngo", "association", "religion", "charity"}},
+}
 
 
-THING = ("amenity", "leisure", "shop", "tourism", "building", "healthcare", "office", "railway", "public_transport", "historic",
-         "craft", "club", "sport", "man_made", "emergency")
+def poi_tags(t):
+    out = [(k, t[k]) for k in POI_KEYS if t.get(k)]
+    out += [(k, t[k]) for k, vals in TRANSIT.items() if t.get(k) in vals]
+    return out
+
+
+def never(t):
+    """the reason the feature can never name a place, or ''"""
+    if t.get("highway") and t["highway"] != "bus_stop":
+        return "highway=%s" % t["highway"]
+    if t.get("amenity") == "parking":
+        return "amenity=parking"
+    for k in ("place", "landuse", "boundary"):
+        if t.get(k):
+            return "%s=%s" % (k, t[k])
+    if t.get("building") and not poi_tags(t):
+        return "building=%s with no POI tags" % t["building"]
+    return ""
+
+
+def compatible(g, t):
+    """the POI tag that fits the place's group, or ''"""
+    for k, v in poi_tags(t):
+        ok = COMPAT.get(g, {}).get(k)
+        if ok == "*" or (ok and v in ok):
+            return "%s=%s" % (k, v)
+    return ""
+
+
+def strict(p, f, own):
+    """(rule, reason): rule 'a' / 'b' when the match may name the place, '' with the reason when it may not"""
+    t = f["tags"]
+    nv = never(t)
+    if nv:
+        return "", "never: " + nv
+    if own and own == f["ref"]:
+        return "a", "own OSM element"
+    c = compatible(p["g"], t)
+    if c:
+        return "b", "%s <-> %s" % (p["g"], c)
+    return "", "no POI kind that fits the group %s (%s)" % (p["g"], f["kind"] or "no kind tag")
 
 
 def own_osm_ref(pid):
@@ -214,12 +275,9 @@ def main():
     F = features(d)
     print("OSM features with a Hebrew name and another language:", len(F), "of", len(d["elements"]), "elements;",
           "osm_base", (d.get("osm3s") or {}).get("timestamp_osm_base"))
-    if "--no-streets" in sys.argv:        # the stricter reading: a street's or a neighbourhood's name never names a place
-        F = [f for f in F if not f["street"]]
-        print("--no-streets: streets and named areas left out,", len(F), "features")
-
     rows, stats = [], {l: 0 for l in LANGS}
-    stats.update({"targets": 0, "targets_w10": 0, "matched": 0, "matched_nothing_new": 0, "ambiguous": 0, "no_match": 0, "dropped": 0,
+    stats.update({"targets": 0, "targets_w10": 0, "unique_same_name": 0, "rejected_strict": 0, "matched": 0, "matched_rule_a": 0,
+                  "matched_rule_b": 0, "matched_nothing_new": 0, "ambiguous": 0, "no_match": 0, "dropped": 0,
                   "places_changed": 0, "places_changed_w10": 0, "kept_existing_conflict": 0})
     for i, p in enumerate(P):
         if p.get("generic") or not HE_ANY.search(p["name"]) or (p.get("names") or {}).get("en"):
@@ -236,7 +294,7 @@ def main():
                     cands.append((m, f))
         cands.sort(key=lambda c: c[0])
         row = {"idx": i, "id": p["id"], "name_he": p["name"], "g": p["g"], "k": p["k"], "walk_min": p.get("walk"),
-               "own_osm_ref": own_osm_ref(p["id"]), "status": "", "osm_ref": "", "osm_kind": "", "street_or_area": "",
+               "own_osm_ref": own_osm_ref(p["id"]), "status": "", "osm_ref": "", "osm_kind": "", "rule": "", "strict": "",
                "osm_name": "", "osm_name_he": "", "dist_m": "", "same_osm_id": "", "candidates": "",
                "en": "", "ru": "", "fr": "", "ar": "", "written": "", "dropped": "", "kept_existing": "", "near_miss": ""}
         if not cands:
@@ -273,11 +331,21 @@ def main():
             continue
         m, f = cands[0]
         t = f["tags"]
-        row.update({"status": "matched", "osm_ref": f["ref"], "osm_kind": f["kind"], "street_or_area": "yes" if f["street"] else "",
+        rule, why = strict(p, f, row["own_osm_ref"])
+        row.update({"status": "matched", "osm_ref": f["ref"], "osm_kind": f["kind"], "rule": rule, "strict": why,
                     "osm_name": t.get("name", ""),
                     "osm_name_he": t.get("name:he", ""), "dist_m": "%.1f" % m,
                     "same_osm_id": ("yes" if row["own_osm_ref"] == f["ref"] else "no") if row["own_osm_ref"] else ""})
+        stats["unique_same_name"] += 1
+        if not rule:
+            stats["rejected_strict"] += 1
+            row["status"] = "rejected-strict"
+            for l in LANGS:
+                row[l] = (t.get("name:" + l) or "").strip()
+            rows.append(row)
+            continue
         stats["matched"] += 1
+        stats["matched_rule_" + rule] += 1
         good, dropped, kept = {}, [], []
         have = p.get("names") or {}
         for l in LANGS:
@@ -318,8 +386,9 @@ def main():
         return sum(1 for p in P if not p.get("generic") and HE_ANY.search(p["name"]) and not (p.get("names") or {}).get(lang)
                    and not (p.get("names") or {}).get("en") and (not w10_only or (p.get("walk") is not None and p["walk"] <= 10)))
     stats["left_no_en_w10"] = left_w10
-    stats["changed_from_street_or_area"] = sum(1 for r in rows if r["written"] and r["street_or_area"])
     stats["changed_same_osm_id"] = sum(1 for r in rows if r["written"] and r["same_osm_id"] == "yes")
+    stats["rejected_strict_list"] = ["%s %s -> %s (%s)" % (r["id"], r["name_he"], r["osm_ref"], r["strict"]) for r in rows
+                                     if r["status"] == "rejected-strict"]
     from collections import Counter
     stats["osm_features_serving_2plus_places"] = {k: v for k, v in Counter(r["osm_ref"] for r in rows if r["written"]).items() if v > 1}
     stats["shown_by_kind_w10"] = {l: kind_shown(l, True) for l in LANGS}
@@ -331,7 +400,7 @@ def main():
     with io.open(CSV_OUT, "w", encoding="utf-8-sig", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()) if rows else ["idx"])
         w.writeheader()
-        order = {"matched": 0, "matched-nothing-new": 1, "ambiguous": 2, "no-match": 3}
+        order = {"matched": 0, "matched-nothing-new": 1, "rejected-strict": 2, "ambiguous": 3, "no-match": 4}
         for r in sorted(rows, key=lambda r: (order[r["status"]], r["walk_min"] if r["walk_min"] is not None else 99, r["idx"])):
             w.writerow(r)
     io.open(os.path.join(EV, "stats.json"), "w", encoding="utf-8", newline="\n").write(json.dumps(stats, ensure_ascii=False, indent=1) + "\n")

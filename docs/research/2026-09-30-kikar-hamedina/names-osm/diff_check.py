@@ -3,7 +3,8 @@
 
   python docs/research/2026-09-30-kikar-hamedina/names-osm/diff_check.py [OLD_REV] [NEW_FILE]
 
-OLD: the registry as committed at OLD_REV (default HEAD; read as the raw git blob, so line endings are the committed ones).
+OLD: the registry as committed at OLD_REV (default e6861c65, the last commit before any names step; read as the raw git
+blob, so line endings are the committed ones).
 NEW: the working file (default plugins/nadlan-config/assets/project-stage/hamedina/places.json).
 Checks
   1. both files read back to their own bytes (compact JSON, ensure_ascii off, one final LF), so comparing parsed data is
@@ -21,7 +22,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(HERE))))
 REL = "plugins/nadlan-config/assets/project-stage/hamedina/places.json"
 RES_REL = "docs/research/2026-09-30-kikar-hamedina/places.json"
-rev = sys.argv[1] if len(sys.argv) > 1 else "HEAD"
+rev = sys.argv[1] if len(sys.argv) > 1 else "e6861c65"   # the registry before names_osm_kikar.py
 new_path = sys.argv[2] if len(sys.argv) > 2 else os.path.join(REPO, *REL.split("/"))
 
 old_raw = subprocess.run(["git", "-C", REPO, "cat-file", "blob", "%s:%s" % (rev, REL)], capture_output=True, check=True).stdout.decode("utf-8")
