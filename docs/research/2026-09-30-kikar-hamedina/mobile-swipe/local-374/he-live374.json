@@ -1,0 +1,77 @@
+{
+ "lang": "he",
+ "live": true,
+ "world": {
+  "canvas": true,
+  "touchAction": "pan-y",
+  "inlineTA": "",
+  "worldH": 490,
+  "docked": true,
+  "dockH": 1065,
+  "sectionH": 1556
+ },
+ "world_swipe_px": 498,
+ "world_tilt_change": 0.0,
+ "panel": {
+  "top": 112.46875,
+  "bottom": 599.25,
+  "h": 486,
+  "sh": 486,
+  "overflowY": "visible",
+  "overscroll": "auto",
+  "inDock": true
+ },
+ "panel_swipe_px": 655,
+ "panel_scrollTop": 0,
+ "nested_scrollers": [],
+ "world_pins": {
+  "visible": 9,
+  "withIcon": 6,
+  "bareDots": 0,
+  "kinds": [
+   "k-tower",
+   "k-water",
+   "k-feature",
+   "k-mark",
+   "k-pin"
+  ]
+ },
+ "map": {
+  "layer": true,
+  "placed": 25,
+  "zoom": 15.3,
+  "allowOverlap": false,
+  "images": 36,
+  "kinds": [
+   "nlpi-trees-outdoors",
+   "nlpi-x-slide-outdoors",
+   "nlpi-school-education",
+   "nlpi-dog-outdoors",
+   "nlpi-bus-transport",
+   "nlpi-coffee-food",
+   "nlpi-volleyball-outdoors",
+   "nlpi-graduation-cap-education",
+   "nlpi-toy-brick-education",
+   "nlpi-utensils-food"
+  ]
+ },
+ "walk_full": {
+  "full": true,
+  "mode": "walk",
+  "pill": {
+   "w": 108,
+   "h": 44,
+   "top": 68
+  },
+  "pillOnTop": true,
+  "panelInRoot": true,
+  "text": "ייעוץ חינם"
+ },
+ "after_exit": {
+  "full": false,
+  "mode": "aerial",
+  "docked": true
+ },
+ "errors": [],
+ "served_local": []
+}

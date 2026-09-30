@@ -110,3 +110,16 @@ Evidence: `docs/research/2026-09-30-kikar-hamedina/mobile-swipe/` (he-live.json,
   - every badge shows its glyph in white (pixel check: not a black blob).
 - The world, aerial view on a phone: every tier-1 pin shows a badge, and none is a bare dot.
 - Screenshots in he, en and ar (RTL, LTR, RTL) at 390x844, before and after.
+
+## v104.4 (30.9 night): Codex's QA of the live 1.72.373
+
+Codex (Maya) tested the live page, read-only, and found two things. Both are now measured and fixed in world.js.
+
+1. **A vertical swipe scrolled the page but also tilted the camera.**
+   - Measured: the camera's height went 564 → 388 after one swipe.
+   - Why: OrbitControls got the first touch moves before the browser took the pan, and it applies them with damping even after the finger lifts.
+   - The fix: in the page (docked), a one-finger move that is mostly vertical is stopped in the capture phase on the world. It never reaches the camera; the browser still scrolls the page. Sideways moves still turn the model, with the tilt held until the damping settles.
+   - Measured after: tilt change 0.0; page moved 474 px; a sideways swipe turns the model and does not scroll.
+2. **Place icons overlapped each other and covered names in the world.**
+   - The fix: an icon that would sit on a higher-priority icon, name or control now steps back.
+   - The aerial view shows fewer icons, each clear, and none on top of another.

@@ -2320,7 +2320,9 @@ export function mountWorld(host, opts = {}) {
       if (c.kind === 'iso') { const r = { x0: x - 30, x1: x + 30, y0: y - 10, y1: y + 10 }; if (hitAny(r, reserved) || hitAny(r, placed)) e.style.display = 'none'; else placed.push(r); continue; }
       if (!e._size) e._size = [e._t.offsetWidth, e._t.offsetHeight];
       if (c.kind === 'floor') { const tw0 = e._size[0]; const r = rtl ? { x0: x - tw0 - 8, x1: x, y0: y - 12, y1: y + 12 } : { x0: x, x1: x + tw0 + 8, y0: y - 12, y1: y + 12 }; if (hitAny(r, reserved)) e.style.display = 'none'; else placed.push(r); continue; }
-      if (c.dotOnly) { e.classList.add('is-dot'); continue; }
+      // v104.4 (Codex's QA): an icon never sits on a higher-priority icon, name or control; it steps back instead
+      if (e._ik) { const br = { x0: x - 13, x1: x + 13, y0: y - 13, y1: y + 13 }; if (hitAny(br, placed) || hitAny(br, reserved)) { e.style.display = 'none'; continue; } }
+      if (c.dotOnly) { e.classList.add('is-dot'); if (e._ik) placed.push({ x0: x - 12, x1: x + 12, y0: y - 12, y1: y + 12 }); continue; }
       const tw = e._size[0], th = e._size[1];
       const stems = c.kind === 'tower' ? [12, 30] : [16, 34, 56, 80];
       const off = Math.max(0, tw / 2 - 12);
@@ -2689,10 +2691,32 @@ export function mountWorld(host, opts = {}) {
   // ================================================================================================ input
   function bindInput(cv) {
     let down = null;
+    // v104.4 (Codex's QA of 1.72.373): in the page (docked) a touch never tilts the camera. The browser takes the vertical
+    // pan a few moves late; those first moves used to tip the orbit. The polar angle is held for the gesture.
+    let tiltLock = null, tiltT = 0;
+    // (a mode change in between sets its own limits: then the held ones are simply dropped, never written back)
+    const unlockNow = () => { if (tiltLock) { if (controls.minPolarAngle === controls.maxPolarAngle) { controls.minPolarAngle = tiltLock[0]; controls.maxPolarAngle = tiltLock[1]; } tiltLock = null; } };
+    // v104.4b: OrbitControls applies the finger's moves with damping after the finger lifts: hold the tilt until that settles
+    const unlockTilt = () => { clearTimeout(tiltT); tiltT = setTimeout(unlockNow, 1000); };
+    on(window, 'pointerup', unlockTilt); on(window, 'pointercancel', unlockTilt);
+    // v104.4b: in the page, a one-finger move that is mostly vertical belongs to the page's scroll, never to the camera. Stopped in
+    // the capture phase on the world, before the canvas's own listeners (OrbitControls, the window view); the pan itself is the
+    // browser's (touch-action: pan-y), so the page still scrolls.
+    const gest = new Map();
+    on(root, 'pointerdown', (e) => { if (e.pointerType === 'touch') gest.set(e.pointerId, { x: e.clientX, y: e.clientY, v: null }); }, true);
+    on(root, 'pointermove', (e) => {
+      if (!docked || e.pointerType !== 'touch' || gest.size !== 1) return;
+      const g = gest.get(e.pointerId); if (!g) return;
+      if (g.v === null) { const dx = Math.abs(e.clientX - g.x), dy = Math.abs(e.clientY - g.y); if (dx + dy < 4) return; g.v = dy > dx; }
+      if (g.v) e.stopPropagation();
+    }, true);
+    const gEnd = (e) => { gest.delete(e.pointerId); };
+    on(window, 'pointerup', gEnd); on(window, 'pointercancel', gEnd);
     on(cv, 'pointerdown', (e) => {
-      down = { x: e.clientX, y: e.clientY, t: performance.now(), id: e.pointerId, yaw: fp ? fp.yaw : 0, tilt: fp ? fp.tilt : 0 };
+      down = { x: e.clientX, y: e.clientY, t: performance.now(), id: e.pointerId, yaw: fp ? fp.yaw : 0, tilt: fp ? fp.tilt : 0, touch: e.pointerType === 'touch' };
       controls.enableZoom = true; // engaged: the wheel may zoom now
       if (e.pointerType === 'touch') gestureHint();
+      if (e.pointerType === 'touch' && docked && !fp) { clearTimeout(tiltT); if (!tiltLock) { const a = controls.getPolarAngle(); tiltLock = [controls.minPolarAngle, controls.maxPolarAngle]; controls.minPolarAngle = a; controls.maxPolarAngle = a; } }
       if (fp) { cv.setPointerCapture(e.pointerId); }
     });
     on(cv, 'pointermove', (e) => {
@@ -2701,7 +2725,7 @@ export function mountWorld(host, opts = {}) {
       const k = (fp.top - fp.bottom) / Math.max(200, root.clientHeight);
       fp.yaw = norm360(down.yaw - dx * k * (rtl ? 1 : 1));
       if (fp.window) { const d0 = ((fp.yaw - fp.yaw0 + 540) % 360) - 180; fp.yaw = norm360(fp.yaw0 + clamp(d0, -80, 80)); }
-      fp.tilt = clamp(down.tilt + dy * k, fp.window ? -25 : -20, fp.window ? 30 : 35);
+      if (!(docked && down.touch)) fp.tilt = clamp(down.tilt + dy * k, fp.window ? -25 : -20, fp.window ? 30 : 35); // v104.4
       anim = null;
       applyFp();
       if (fp.window) applySunFocusLazy();
