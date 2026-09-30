@@ -13,7 +13,6 @@
    "stills": [
     { "base": "living-c30w-day", "room": "living", "time": "day", "hour": "14:30", "facing": 287.6 },
     { "base": "living-c30w-sunset", "room": "living", "time": "sunset", "hour": "17:36", "facing": 263.6 },
-    { "base": "living-c30w-evening", "room": "living", "time": "evening", "hour": "19:06", "facing": 263.6 },
     { "base": "bedroom-c30nw-day", "room": "bedroom", "time": "day", "hour": "14:30", "facing": 295.6 },
     { "base": "balcony-c30w-sunset", "room": "balcony", "time": "sunset", "hour": "17:36", "facing": 217.6 }
    ],

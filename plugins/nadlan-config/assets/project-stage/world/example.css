@@ -118,6 +118,9 @@ html.nlex-open, html.nlex-open body { overflow: hidden !important; }
   box-shadow: 0 8px 20px rgba(15, 122, 99, .22); text-align: center;
 }
 .nlex__wa svg { width: 20px; height: 20px; flex: none; }
+/* the Russian words are the longest: one line on every phone (280 px of text at 15 px, measured in the page's Cyrillic) */
+.nlex[lang='ru'] a.nlex__wa { white-space: nowrap; padding: 0 12px; }
+@media (max-width: 380px) { .nlex[lang='ru'] a.nlex__wa { font-size: 14px; } }
 .nlex__twist { border-top: 1px solid var(--ex-hair); padding-top: 12px; display: flex; flex-direction: column; gap: 10px; }
 .nlex__h { font: 600 17px/1.3 'Noto Serif Hebrew', 'Frank Ruhl Libre', Georgia, serif; color: var(--ex-ink); }
 .nlex__tws { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }

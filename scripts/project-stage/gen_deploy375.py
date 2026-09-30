@@ -13,7 +13,7 @@ record, the bridge always down), with no post written, plus:
       o.errorText; the fleet's viewer unchanged without them): checked here by taking the hunk out again and landing on the md5
       the last release recorded;
     - NEW: assets/project-stage/world/example.js and example.css (the album, loaded on the press), and
-      assets/project-stage/hamedina/tour/ (examples.json + 35 pictures, cut by scripts/interior/cut_kikar_tour.py);
+      assets/project-stage/hamedina/tour/ (examples.json + 31 pictures, cut by scripts/interior/cut_kikar_tour.py);
     - NOT written: world/world.js and world.css. The main session's releases (373, 374) wrote them with the example hooks already
       in (inert until this release puts 'examples' in the page config); before any write the runner reads the served world.js
       for those hooks, and the checks read it again after.

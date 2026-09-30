@@ -8,14 +8,11 @@
   "bedroom-c30nw-day-card.jpg": 90272,
   "bedroom-c30nw-day-card.webp": 47202,
   "bedroom-c30nw-day-thumb.webp": 10704,
+  "examples.json": 1743,
   "living-c30w-day-2k.webp": 71708,
   "living-c30w-day-card.jpg": 74224,
   "living-c30w-day-card.webp": 34566,
   "living-c30w-day-thumb.webp": 8366,
-  "living-c30w-evening-2k.webp": 80896,
-  "living-c30w-evening-card.jpg": 83295,
-  "living-c30w-evening-card.webp": 39422,
-  "living-c30w-evening-thumb.webp": 8988,
   "living-c30w-sunset-2k.webp": 76466,
   "living-c30w-sunset-card.jpg": 81132,
   "living-c30w-sunset-card.webp": 35452,
@@ -37,21 +34,23 @@
   "twist-c38w-day-thumb.webp": 13048
  },
  "budget_bytes": {
-  "album_open_phone": 132424,
-  "album_open_desktop_hero_2k": 173438,
+  "album_open_images": 115070,
+  "album_open_with_code": 163443,
   "viewer_360_first": 64870,
   "viewer_360_sharp": 246286,
-  "every_file_on_disk": 2615071
+  "viewer_with_code": 299837,
+  "every_file_on_disk": 2404213,
+  "files": 32
  },
  "sources": {
   "living-c30w-sunset": "final-living-sunset.png",
   "living-c30w-day": "final-living-day.png",
-  "living-c30w-evening": "final-living-evening.png",
   "bedroom-c30nw-day": "final-bedroom-day.png",
   "balcony-c30w-sunset": "final-balcony-sunset.png",
   "twist-c20w-day": "final-twist-floor20.png",
   "twist-c30w-day": "final-twist-floor30.png",
   "twist-c38w-day": "final-twist-floor38.png",
   "living360-c30w-sunset": "final-living360-sunset.png"
- }
+ },
+ "note": "P9c review (30.9): the evening picture (living-c30w-evening) is not shipped; its far towers' lit windows read as a mosaic, below the owner's bar"
 }

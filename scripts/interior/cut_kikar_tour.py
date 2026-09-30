@@ -8,7 +8,7 @@ naming and sizes, in plugins/nadlan-config/assets/project-stage/hamedina/tour/:
   <room>-<tower><floor><side>-<time>[-2k|-card|-thumb].<jpg|webp>
     room  living, bedroom, balcony, living360 (the 360 panorama), twist (the same window on another floor)
     side  w = the side of the plate that faces west on floor 30 (it turns with the tower), nw = the corner beside it
-    time  day (21.9, 14:30), sunset (17:36), evening (19:06)
+    time  day (21.9, 14:30), sunset (17:36) (the evening render, 19:06, is not shipped: see STILLS)
   the 360: 4096 x 2048 (no suffix) and 2048 x 1024 (-2k), JPG like the fleet's tours + WebP (what the page's viewer loads);
            -card is the fleet's straight view through the window (cut_tour.py's projection), 1200 x 675, and -thumb its 480 px
   a still: -2k 2048 x 1152 (WebP), -card 1200 x 675 (JPG + WebP), -thumb 480 x 270 (WebP)
@@ -29,7 +29,8 @@ PROTO = os.path.join(REPO, "docs", "research", "2026-09-30-kikar-hamedina", "int
 OUT = os.path.join(REPO, "plugins", "nadlan-config", "assets", "project-stage", "hamedina", "tour")
 
 # the prototype's name -> the release name (tower C, floor 30; the twist frames on floors 20 / 30 / 38, the same window)
-STILLS = [("living-sunset", "living-c30w-sunset"), ("living-day", "living-c30w-day"), ("living-evening", "living-c30w-evening"),
+# P9c review (30.9): the evening render is not shipped: its far towers' lit windows read as a mosaic, below the owner's bar
+STILLS = [("living-sunset", "living-c30w-sunset"), ("living-day", "living-c30w-day"),
           ("bedroom-day", "bedroom-c30nw-day"), ("balcony-sunset", "balcony-c30w-sunset")]
 TWIST = [("twist-floor20", "twist-c20w-day"), ("twist-floor30", "twist-c30w-day"), ("twist-floor38", "twist-c38w-day")]
 PANO = ("living360-sunset", "living360-c30w-sunset")

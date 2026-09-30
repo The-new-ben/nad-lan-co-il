@@ -7,8 +7,8 @@ writes, served locally (no WordPress, nothing sent). Per language, at 390x844 (a
      pass its corner;
   3. the floor view, tower C, floor 30, facing west, the window view: the button "היכנסו לדירה לדוגמה" (and on another facing the
      quiet link that leads to it);
-  4. a real click on the button: the album at the floor view's time of day (sunset), then the evening, then the same window on
-     floor 20, then the end of the album;
+  4. a real click on the button: the album at the floor view's time of day (sunset), then day, then the same window on floor 20,
+     then the end of the album; and, closed and opened again with the world at night, the album at sunset (its switch says so);
   5. the 360 in the fleet's viewer (tour.js), from the album's button; Escape back to the album, Escape out;
   6. what loaded, and when: nothing of the example before the press; the bytes at the album and at the 360.
 Receipt: p9c-shots/receipt.json. Shots: WebP."""
@@ -32,7 +32,10 @@ def shots(pages, asset, guard, served, receipt, langs, out, origin):
     from PIL import Image
     import kh_first_screen_check as KFS
     receipt.update({"first_screen": {}, "a11y": {}, "example": {}, "bytes": {}})
-    sizes = lambda urls: sum(os.path.getsize(os.path.join(PLUG, *u.split("/wp-content/plugins/nadlan-config/", 1)[1].split("?")[0].split("/"))) for u in urls)
+    local = lambda u: os.path.join(PLUG, *u.split("/wp-content/plugins/nadlan-config/", 1)[1].split("?")[0].split("/"))
+    # a request for a file that does not exist is a bug in the album, reported (not a crash of the preview)
+    sizes = lambda urls: sum(os.path.getsize(local(u)) for u in urls if os.path.isfile(local(u)))
+    missing = lambda urls: sorted({u.split("?")[0].rsplit("/", 1)[1] for u in urls if not os.path.isfile(local(u))})
     with sync_playwright() as p:
         b = p.chromium.launch(channel="chrome", headless=True, args=["--use-angle=d3d11", "--ignore-gpu-blocklist", "--enable-unsafe-swiftshader"])
         for lang in langs:
@@ -136,12 +139,16 @@ def shots(pages, asset, guard, served, receipt, langs, out, origin):
                                  focus: document.activeElement && document.activeElement.className }; }""")
                     album_reqs = reqs[reqs_before:]
                     rec["album"] = album
-                    receipt["bytes"][pre] = {"before_press": before_press, "album_files": sorted(set(u.split("?")[0].rsplit("/", 1)[1] for u in album_reqs)), "album_bytes": sizes(sorted(set(album_reqs)))}
-                    # the evening, then the same window on floor 20
-                    pg.locator('.nlex [data-tod="evening"]').click()
+                    receipt["bytes"][pre] = {"before_press": before_press, "album_files": sorted(set(u.split("?")[0].rsplit("/", 1)[1] for u in album_reqs)), "album_bytes": sizes(sorted(set(album_reqs))),
+                                             "album_missing": missing(album_reqs)}
+                    if receipt["bytes"][pre]["album_missing"]:
+                        errs.append("album asked for missing files: " + ", ".join(receipt["bytes"][pre]["album_missing"]))
+                    # the day, then the same window on floor 20
+                    pg.locator('.nlex [data-tod="day"]').click()
                     pg.wait_for_timeout(1600)
-                    pg.screenshot(path=os.path.join(out, f"{pre}-album-evening.png"))
-                    rec["world_tod_after_album_evening"] = pg.evaluate("window.__nlpsWorld.getState().tod")
+                    pg.screenshot(path=os.path.join(out, f"{pre}-album-day.png"))
+                    rec["world_tod_after_album_day"] = pg.evaluate("window.__nlpsWorld.getState().tod")
+                    rec["album_after_day"] = pg.evaluate("({ shown: window.__nlExample.shown, pressed: [...document.querySelectorAll('.nlex [data-tod]')].filter((b) => b.getAttribute('aria-pressed') === 'true').map((b) => b.dataset.tod), times: [...document.querySelectorAll('.nlex [data-tod]')].map((b) => b.dataset.tod) })")
                     pg.locator('.nlex [data-twist="20"]').click()
                     pg.wait_for_timeout(1600)
                     pg.screenshot(path=os.path.join(out, f"{pre}-album-twist20.png"))
@@ -172,9 +179,23 @@ def shots(pages, asset, guard, served, receipt, langs, out, origin):
                     pg.keyboard.press("Escape")
                     pg.wait_for_timeout(600)
                     rec["after_escape_2"] = pg.evaluate("({ album: !!document.querySelector('.nlex'), pick: window.__nlpsPick, focus: document.activeElement && (document.activeElement.dataset.example || document.activeElement.className) })")
+                    # the world at night: the album opens at sunset, its switch says sunset, and the world follows it there
+                    pg.evaluate("window.__nlpsWorld.setSun({tod:'night'})")
+                    pg.wait_for_timeout(900)
+                    rec["night_world_before"] = pg.evaluate("window.__nlpsWorld.getState().tod")
+                    pg.locator("#nlps [data-example]").first.click()
+                    try:
+                        pg.wait_for_function("document.querySelector('.nlex .nlex__pic img') && document.querySelector('.nlex .nlex__pic img').complete", timeout=30000)
+                    except Exception as e:
+                        errs.append("album (night) not ready: " + str(e)[:100])
+                    pg.wait_for_timeout(1200)
+                    rec["night_album"] = pg.evaluate("({ shown: window.__nlExample.shown, tod: window.__nlExample.tod, pressed: [...document.querySelectorAll('.nlex [data-tod]')].filter((b) => b.getAttribute('aria-pressed') === 'true').map((b) => b.dataset.tod), world: window.__nlpsWorld.getState().tod })")
+                    pg.screenshot(path=os.path.join(out, f"{pre}-album-from-night.png"))
+                    pg.keyboard.press("Escape")
+                    pg.wait_for_timeout(500)
                 rec["errors"] = errs[:12]
                 receipt["example"][pre] = rec
-                print(pre, json.dumps({k: rec.get(k) for k in ("button", "album", "viewer", "after_escape_1", "after_escape_2", "errors")}, ensure_ascii=False)[:900])
+                print(pre, json.dumps({k: rec.get(k) for k in ("button", "album_after_day", "night_album", "viewer", "after_escape_1", "after_escape_2", "errors")}, ensure_ascii=False)[:1100])
                 print(pre, "bytes", json.dumps(receipt["bytes"].get(pre), ensure_ascii=False)[:500])
                 ctx.close()
         b.close()
