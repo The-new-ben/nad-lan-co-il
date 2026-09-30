@@ -1,0 +1,14 @@
+{
+ "endpoint": "https://overpass-api.de/api/interpreter",
+ "fetched_at": "2026-10-01T01:09:59+0300",
+ "user_agent": "nadlan-config/2.0 (nad-lan.co.il)",
+ "bbox_swne": [
+  32.072869,
+  34.773155,
+  32.100415,
+  34.8063
+ ],
+ "bytes": 1345962,
+ "sha256": "5fb5abdf7e920ea3a8421dbf339fc8ef13acf679459866fca24b1adfd3a32dc4",
+ "osm_base": "2026-09-30T22:08:25Z"
+}

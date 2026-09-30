@@ -24,6 +24,8 @@ front end ignores: "info", "lines", "rides", "line", "opens", "layer"):
      lines for everything added.
   6. sight-landmarks.json: the landmarks a high floor may see, by direction, with coordinates and heights where sourced.
      Visibility itself is NOT computed yet (the towers' model and eye heights come in P5).
+Then (1.10.2026, HAD-375): names_osm_kikar.py, step 4: other-language names from OpenStreetMap for the Hebrew-only places
+(it writes the research registry and the assets copy; evidence and method in names-osm/README.md).
 """
 import hashlib, io, json, math, os, re, sys, time, urllib.parse, urllib.request
 
