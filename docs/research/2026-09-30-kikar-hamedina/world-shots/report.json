@@ -1,0 +1,1554 @@
+{
+ "when": "2026-09-30 03:48",
+ "files": {
+  "world/world.js": {
+   "bytes": 139893,
+   "gzip": 42696
+  },
+  "world/world.css": {
+   "bytes": 18136,
+   "gzip": 4272
+  },
+  "hamedina/world.json": {
+   "bytes": 865359,
+   "gzip": 333620
+  },
+  "hamedina/places.json": {
+   "bytes": 368150,
+   "gzip": 65709
+  }
+ },
+ "shots": {
+  "aerial-desktop": {
+   "stats": {
+    "drawCalls": 60,
+    "triangles": 802292,
+    "lines": 173243,
+    "points": 0,
+    "geometries": 61,
+    "textures": 3,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 172.17,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "aerial"
+   },
+   "ready_ms": 1562,
+   "wall_s": 3.0,
+   "picks": [],
+   "events": [],
+   "pick": null
+  },
+  "aerial-card-tower-B-desktop": {
+   "stats": {
+    "drawCalls": 60,
+    "triangles": 802292,
+    "lines": 173243,
+    "points": 0,
+    "geometries": 61,
+    "textures": 3,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 36.96,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "aerial"
+   },
+   "ready_ms": 671,
+   "wall_s": 2.1,
+   "picks": [
+    {
+     "kind": "tower",
+     "tower": "B",
+     "floors": 37,
+     "height": 157
+    }
+   ],
+   "events": [],
+   "pick": null
+  },
+  "aerial-card-ring-building-desktop": {
+   "stats": {
+    "drawCalls": 60,
+    "triangles": 802292,
+    "lines": 173243,
+    "points": 0,
+    "geometries": 61,
+    "textures": 3,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 138.96,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "aerial"
+   },
+   "ready_ms": 1603,
+   "wall_s": 3.7,
+   "picks": [
+    {
+     "kind": "block",
+     "index": 6,
+     "h": 26.200000000000003,
+     "floors": 6
+    }
+   ],
+   "events": [],
+   "pick": null
+  },
+  "walk-ring-desktop": {
+   "stats": {
+    "drawCalls": 52,
+    "triangles": 737723,
+    "lines": 127013,
+    "points": 0,
+    "geometries": 57,
+    "textures": 3,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 59.75,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "walk"
+   },
+   "ready_ms": 702,
+   "wall_s": 2.0,
+   "picks": [],
+   "events": [],
+   "pick": null
+  },
+  "walk-park-desktop": {
+   "stats": {
+    "drawCalls": 52,
+    "triangles": 661937,
+    "lines": 72266,
+    "points": 0,
+    "geometries": 60,
+    "textures": 3,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 46.42,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "walk"
+   },
+   "ready_ms": 627,
+   "wall_s": 1.9,
+   "picks": [],
+   "events": [],
+   "pick": null
+  },
+  "aerial-card-dog-garden-desktop": {
+   "stats": {
+    "drawCalls": 60,
+    "triangles": 802292,
+    "lines": 173243,
+    "points": 0,
+    "geometries": 61,
+    "textures": 3,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 38.92,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "aerial"
+   },
+   "ready_ms": 652,
+   "wall_s": 2.0,
+   "picks": [
+    {
+     "kind": "feature",
+     "key": "dog"
+    }
+   ],
+   "events": [],
+   "pick": null
+  },
+  "aerial-card-school-desktop": {
+   "stats": {
+    "drawCalls": 60,
+    "triangles": 802292,
+    "lines": 173243,
+    "points": 0,
+    "geometries": 61,
+    "textures": 3,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 44.3,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "aerial"
+   },
+   "ready_ms": 654,
+   "wall_s": 2.1,
+   "picks": [
+    {
+     "kind": "civic",
+     "key": "school"
+    }
+   ],
+   "events": [],
+   "pick": null
+  },
+  "tower-C-floor30-out-desktop": {
+   "stats": {
+    "drawCalls": 59,
+    "triangles": 731829,
+    "lines": 122090,
+    "points": 0,
+    "geometries": 61,
+    "textures": 3,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 47.94,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "tower"
+   },
+   "ready_ms": 678,
+   "wall_s": 2.0,
+   "picks": [
+    {
+     "kind": "floor",
+     "tower": "C",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "floor",
+     "tower": "C",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "floor",
+     "tower": "C",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    }
+   ],
+   "events": [
+    {
+     "type": "nl:floor",
+     "detail": {
+      "tower": "C",
+      "floor": 30,
+      "heightM": 117.6,
+      "source": "api"
+     }
+    },
+    {
+     "type": "nl:floor",
+     "detail": {
+      "tower": "C",
+      "floor": 30,
+      "heightM": 117.6,
+      "source": "api"
+     }
+    }
+   ],
+   "pick": {
+    "tower": "C",
+    "floor": "30 · מגדל C",
+    "facing": "",
+    "floorNum": 30,
+    "towerKey": "C",
+    "bearing": null,
+    "unit": "",
+    "example": false,
+    "name": "מגדלי כיכר המדינה"
+   }
+  },
+  "tower-C-floor30-window-west-desktop": {
+   "stats": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "lines": 133763,
+    "points": 0,
+    "geometries": 60,
+    "textures": 3,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 41.6,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "tower"
+   },
+   "ready_ms": 640,
+   "wall_s": 1.9,
+   "picks": [
+    {
+     "kind": "floor",
+     "tower": "C",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "floor",
+     "tower": "C",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "facing",
+     "tower": "C",
+     "floor": 30,
+     "heightM": 117.6,
+     "bearing": 266,
+     "facing": "מערבה",
+     "source": "api"
+    }
+   ],
+   "events": [
+    {
+     "type": "nl:floor",
+     "detail": {
+      "tower": "C",
+      "floor": 30,
+      "heightM": 117.6,
+      "source": "api"
+     }
+    },
+    {
+     "type": "nl:facing",
+     "detail": {
+      "tower": "C",
+      "floor": 30,
+      "heightM": 117.6,
+      "bearing": 266,
+      "facing": "מערבה",
+      "source": "api"
+     }
+    }
+   ],
+   "pick": {
+    "tower": "C",
+    "floor": "30 · מגדל C",
+    "facing": "מערבה",
+    "floorNum": 30,
+    "towerKey": "C",
+    "bearing": 266,
+    "unit": "",
+    "example": false,
+    "name": "מגדלי כיכר המדינה"
+   }
+  },
+  "tower-A-floor30-window-north-dec13-desktop": {
+   "stats": {
+    "drawCalls": 42,
+    "triangles": 668860,
+    "lines": 84285,
+    "points": 0,
+    "geometries": 60,
+    "textures": 3,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 41.52,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "tower"
+   },
+   "ready_ms": 663,
+   "wall_s": 2.0,
+   "picks": [
+    {
+     "kind": "floor",
+     "tower": "A",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "floor",
+     "tower": "A",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "facing",
+     "tower": "A",
+     "floor": 30,
+     "heightM": 117.6,
+     "bearing": 352,
+     "facing": "צפונה",
+     "source": "api"
+    }
+   ],
+   "events": [
+    {
+     "type": "nl:floor",
+     "detail": {
+      "tower": "A",
+      "floor": 30,
+      "heightM": 117.6,
+      "source": "api"
+     }
+    },
+    {
+     "type": "nl:facing",
+     "detail": {
+      "tower": "A",
+      "floor": 30,
+      "heightM": 117.6,
+      "bearing": 352,
+      "facing": "צפונה",
+      "source": "api"
+     }
+    }
+   ],
+   "pick": {
+    "tower": "A",
+    "floor": "30 · מגדל A",
+    "facing": "צפונה",
+    "floorNum": 30,
+    "towerKey": "A",
+    "bearing": 352,
+    "unit": "",
+    "example": false,
+    "name": "מגדלי כיכר המדינה"
+   }
+  },
+  "tower-B-floor12-out-shade-dec15-desktop": {
+   "stats": {
+    "drawCalls": 60,
+    "triangles": 752629,
+    "lines": 136738,
+    "points": 0,
+    "geometries": 65,
+    "textures": 3,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 46.36,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "tower"
+   },
+   "ready_ms": 630,
+   "wall_s": 2.0,
+   "picks": [
+    {
+     "kind": "floor",
+     "tower": "B",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "floor",
+     "tower": "B",
+     "floor": 12,
+     "heightM": 45.6,
+     "source": "api"
+    },
+    {
+     "kind": "facing",
+     "tower": "B",
+     "floor": 12,
+     "heightM": 45.6,
+     "bearing": 196,
+     "facing": "דרומה",
+     "source": "api"
+    }
+   ],
+   "events": [
+    {
+     "type": "nl:floor",
+     "detail": {
+      "tower": "B",
+      "floor": 12,
+      "heightM": 45.6,
+      "source": "api"
+     }
+    },
+    {
+     "type": "nl:facing",
+     "detail": {
+      "tower": "B",
+      "floor": 12,
+      "heightM": 45.6,
+      "bearing": 196,
+      "facing": "דרומה",
+      "source": "api"
+     }
+    }
+   ],
+   "pick": {
+    "tower": "B",
+    "floor": "12 · מגדל B",
+    "facing": "דרומה",
+    "floorNum": 12,
+    "towerKey": "B",
+    "bearing": 196,
+    "unit": "",
+    "example": false,
+    "name": "מגדלי כיכר המדינה"
+   }
+  },
+  "places-transport-desktop": {
+   "stats": {
+    "drawCalls": 64,
+    "triangles": 802292,
+    "lines": 173606,
+    "points": 27,
+    "geometries": 65,
+    "textures": 4,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 49.52,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "places"
+   },
+   "ready_ms": 664,
+   "wall_s": 2.4,
+   "picks": [],
+   "events": [],
+   "pick": null
+  },
+  "places-route-ichilov-station-desktop": {
+   "stats": {
+    "drawCalls": 59,
+    "triangles": 783272,
+    "lines": 169667,
+    "points": 27,
+    "geometries": 66,
+    "textures": 4,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 32.82,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "places"
+   },
+   "ready_ms": 645,
+   "wall_s": 2.8,
+   "picks": [
+    {
+     "kind": "place",
+     "id": "tlv:766/16"
+    },
+    {
+     "kind": "place",
+     "id": "tlv:766/16",
+     "name": "תחנת איכילוב, הקו הסגול",
+     "walk": 2
+    }
+   ],
+   "events": [],
+   "pick": null
+  },
+  "places-education-route-gymnasium-desktop": {
+   "stats": {
+    "drawCalls": 62,
+    "triangles": 783128,
+    "lines": 159811,
+    "points": 94,
+    "geometries": 66,
+    "textures": 4,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 34.75,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "places"
+   },
+   "ready_ms": 661,
+   "wall_s": 2.7,
+   "picks": [
+    {
+     "kind": "place",
+     "id": "fp:osm-way-405360284"
+    },
+    {
+     "kind": "place",
+     "id": "fp:osm-way-405360284",
+     "name": "הגימנסיה העברית הרצליה",
+     "walk": 6
+    }
+   ],
+   "events": [],
+   "pick": null
+  },
+  "en-aerial-desktop": {
+   "stats": {
+    "drawCalls": 60,
+    "triangles": 802292,
+    "lines": 173243,
+    "points": 0,
+    "geometries": 61,
+    "textures": 3,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 45.55,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "aerial"
+   },
+   "ready_ms": 621,
+   "wall_s": 2.0,
+   "picks": [],
+   "events": [],
+   "pick": null
+  },
+  "en-tower-A-floor36-window-west-desktop": {
+   "stats": {
+    "drawCalls": 31,
+    "triangles": 714005,
+    "lines": 123734,
+    "points": 0,
+    "geometries": 60,
+    "textures": 3,
+    "dpr": 1,
+    "size": [
+     1440,
+     900
+    ],
+    "renderMs": 41.02,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "tower"
+   },
+   "ready_ms": 626,
+   "wall_s": 1.9,
+   "picks": [
+    {
+     "kind": "floor",
+     "tower": "A",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "floor",
+     "tower": "A",
+     "floor": 36,
+     "heightM": 141.6,
+     "source": "api"
+    },
+    {
+     "kind": "facing",
+     "tower": "A",
+     "floor": 36,
+     "heightM": 141.6,
+     "bearing": 255,
+     "facing": "west",
+     "source": "api"
+    }
+   ],
+   "events": [
+    {
+     "type": "nl:floor",
+     "detail": {
+      "tower": "A",
+      "floor": 36,
+      "heightM": 141.6,
+      "source": "api"
+     }
+    },
+    {
+     "type": "nl:facing",
+     "detail": {
+      "tower": "A",
+      "floor": 36,
+      "heightM": 141.6,
+      "bearing": 255,
+      "facing": "west",
+      "source": "api"
+     }
+    }
+   ],
+   "pick": {
+    "tower": "A",
+    "floor": "36 · tower A",
+    "facing": "west",
+    "floorNum": 36,
+    "towerKey": "A",
+    "bearing": 255,
+    "unit": "",
+    "example": false,
+    "name": "Kikar Hamedina Towers"
+   }
+  },
+  "aerial-mobile": {
+   "stats": {
+    "drawCalls": 52,
+    "triangles": 691964,
+    "lines": 94043,
+    "points": 0,
+    "geometries": 57,
+    "textures": 3,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 39.72,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "aerial"
+   },
+   "ready_ms": 1011,
+   "wall_s": 2.4,
+   "picks": [],
+   "events": [],
+   "pick": null
+  },
+  "aerial-card-tower-B-mobile": {
+   "stats": {
+    "drawCalls": 52,
+    "triangles": 691964,
+    "lines": 94043,
+    "points": 0,
+    "geometries": 57,
+    "textures": 3,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 29.34,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "aerial"
+   },
+   "ready_ms": 645,
+   "wall_s": 2.0,
+   "picks": [
+    {
+     "kind": "tower",
+     "tower": "B",
+     "floors": 37,
+     "height": 157
+    }
+   ],
+   "events": [],
+   "pick": null
+  },
+  "aerial-card-ring-building-mobile": {
+   "stats": {
+    "drawCalls": 52,
+    "triangles": 691964,
+    "lines": 94043,
+    "points": 0,
+    "geometries": 57,
+    "textures": 3,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 30.64,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "aerial"
+   },
+   "ready_ms": 1057,
+   "wall_s": 2.8,
+   "picks": [
+    {
+     "kind": "block",
+     "index": 6,
+     "h": 26.200000000000003,
+     "floors": 6
+    }
+   ],
+   "events": [],
+   "pick": null
+  },
+  "walk-ring-mobile": {
+   "stats": {
+    "drawCalls": 50,
+    "triangles": 684231,
+    "lines": 88504,
+    "points": 0,
+    "geometries": 56,
+    "textures": 3,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 44.88,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "walk"
+   },
+   "ready_ms": 635,
+   "wall_s": 2.0,
+   "picks": [],
+   "events": [],
+   "pick": null
+  },
+  "walk-park-mobile": {
+   "stats": {
+    "drawCalls": 48,
+    "triangles": 647183,
+    "lines": 61820,
+    "points": 0,
+    "geometries": 58,
+    "textures": 3,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 31.92,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "walk"
+   },
+   "ready_ms": 610,
+   "wall_s": 1.9,
+   "picks": [],
+   "events": [],
+   "pick": null
+  },
+  "aerial-card-dog-garden-mobile": {
+   "stats": {
+    "drawCalls": 52,
+    "triangles": 691964,
+    "lines": 94043,
+    "points": 0,
+    "geometries": 57,
+    "textures": 3,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 30.82,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "aerial"
+   },
+   "ready_ms": 616,
+   "wall_s": 2.0,
+   "picks": [
+    {
+     "kind": "feature",
+     "key": "dog"
+    }
+   ],
+   "events": [],
+   "pick": null
+  },
+  "aerial-card-school-mobile": {
+   "stats": {
+    "drawCalls": 52,
+    "triangles": 691964,
+    "lines": 94043,
+    "points": 0,
+    "geometries": 57,
+    "textures": 3,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 35.88,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "aerial"
+   },
+   "ready_ms": 602,
+   "wall_s": 1.9,
+   "picks": [
+    {
+     "kind": "civic",
+     "key": "school"
+    }
+   ],
+   "events": [],
+   "pick": null
+  },
+  "tower-C-floor30-out-mobile": {
+   "stats": {
+    "drawCalls": 55,
+    "triangles": 692732,
+    "lines": 94043,
+    "points": 0,
+    "geometries": 59,
+    "textures": 3,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 34.72,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "tower"
+   },
+   "ready_ms": 632,
+   "wall_s": 2.0,
+   "picks": [
+    {
+     "kind": "floor",
+     "tower": "C",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "floor",
+     "tower": "C",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "floor",
+     "tower": "C",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    }
+   ],
+   "events": [
+    {
+     "type": "nl:floor",
+     "detail": {
+      "tower": "C",
+      "floor": 30,
+      "heightM": 117.6,
+      "source": "api"
+     }
+    },
+    {
+     "type": "nl:floor",
+     "detail": {
+      "tower": "C",
+      "floor": 30,
+      "heightM": 117.6,
+      "source": "api"
+     }
+    }
+   ],
+   "pick": {
+    "tower": "C",
+    "floor": "30 · מגדל C",
+    "facing": "",
+    "floorNum": 30,
+    "towerKey": "C",
+    "bearing": null,
+    "unit": "",
+    "example": false,
+    "name": "מגדלי כיכר המדינה"
+   }
+  },
+  "tower-C-floor30-window-west-mobile": {
+   "stats": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "lines": 130651,
+    "points": 0,
+    "geometries": 59,
+    "textures": 3,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 32.08,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "tower"
+   },
+   "ready_ms": 616,
+   "wall_s": 2.0,
+   "picks": [
+    {
+     "kind": "floor",
+     "tower": "C",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "floor",
+     "tower": "C",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "facing",
+     "tower": "C",
+     "floor": 30,
+     "heightM": 117.6,
+     "bearing": 266,
+     "facing": "מערבה",
+     "source": "api"
+    }
+   ],
+   "events": [
+    {
+     "type": "nl:floor",
+     "detail": {
+      "tower": "C",
+      "floor": 30,
+      "heightM": 117.6,
+      "source": "api"
+     }
+    },
+    {
+     "type": "nl:facing",
+     "detail": {
+      "tower": "C",
+      "floor": 30,
+      "heightM": 117.6,
+      "bearing": 266,
+      "facing": "מערבה",
+      "source": "api"
+     }
+    }
+   ],
+   "pick": {
+    "tower": "C",
+    "floor": "30 · מגדל C",
+    "facing": "מערבה",
+    "floorNum": 30,
+    "towerKey": "C",
+    "bearing": 266,
+    "unit": "",
+    "example": false,
+    "name": "מגדלי כיכר המדינה"
+   }
+  },
+  "tower-A-floor30-window-north-dec13-mobile": {
+   "stats": {
+    "drawCalls": 43,
+    "triangles": 673621,
+    "lines": 89944,
+    "points": 0,
+    "geometries": 58,
+    "textures": 3,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 32.26,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "tower"
+   },
+   "ready_ms": 606,
+   "wall_s": 1.9,
+   "picks": [
+    {
+     "kind": "floor",
+     "tower": "A",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "floor",
+     "tower": "A",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "facing",
+     "tower": "A",
+     "floor": 30,
+     "heightM": 117.6,
+     "bearing": 352,
+     "facing": "צפונה",
+     "source": "api"
+    }
+   ],
+   "events": [
+    {
+     "type": "nl:floor",
+     "detail": {
+      "tower": "A",
+      "floor": 30,
+      "heightM": 117.6,
+      "source": "api"
+     }
+    },
+    {
+     "type": "nl:facing",
+     "detail": {
+      "tower": "A",
+      "floor": 30,
+      "heightM": 117.6,
+      "bearing": 352,
+      "facing": "צפונה",
+      "source": "api"
+     }
+    }
+   ],
+   "pick": {
+    "tower": "A",
+    "floor": "30 · מגדל A",
+    "facing": "צפונה",
+    "floorNum": 30,
+    "towerKey": "A",
+    "bearing": 352,
+    "unit": "",
+    "example": false,
+    "name": "מגדלי כיכר המדינה"
+   }
+  },
+  "tower-B-floor12-out-shade-dec15-mobile": {
+   "stats": {
+    "drawCalls": 58,
+    "triangles": 739035,
+    "lines": 127119,
+    "points": 0,
+    "geometries": 65,
+    "textures": 3,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 32.16,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "tower"
+   },
+   "ready_ms": 626,
+   "wall_s": 2.0,
+   "picks": [
+    {
+     "kind": "floor",
+     "tower": "B",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "floor",
+     "tower": "B",
+     "floor": 12,
+     "heightM": 45.6,
+     "source": "api"
+    },
+    {
+     "kind": "facing",
+     "tower": "B",
+     "floor": 12,
+     "heightM": 45.6,
+     "bearing": 196,
+     "facing": "דרומה",
+     "source": "api"
+    }
+   ],
+   "events": [
+    {
+     "type": "nl:floor",
+     "detail": {
+      "tower": "B",
+      "floor": 12,
+      "heightM": 45.6,
+      "source": "api"
+     }
+    },
+    {
+     "type": "nl:facing",
+     "detail": {
+      "tower": "B",
+      "floor": 12,
+      "heightM": 45.6,
+      "bearing": 196,
+      "facing": "דרומה",
+      "source": "api"
+     }
+    }
+   ],
+   "pick": {
+    "tower": "B",
+    "floor": "12 · מגדל B",
+    "facing": "דרומה",
+    "floorNum": 12,
+    "towerKey": "B",
+    "bearing": 196,
+    "unit": "",
+    "example": false,
+    "name": "מגדלי כיכר המדינה"
+   }
+  },
+  "places-transport-mobile": {
+   "stats": {
+    "drawCalls": 64,
+    "triangles": 802292,
+    "lines": 173606,
+    "points": 27,
+    "geometries": 65,
+    "textures": 4,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 27.12,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "places"
+   },
+   "ready_ms": 614,
+   "wall_s": 2.4,
+   "picks": [],
+   "events": [],
+   "pick": null
+  },
+  "places-route-ichilov-station-mobile": {
+   "stats": {
+    "drawCalls": 63,
+    "triangles": 800676,
+    "lines": 172779,
+    "points": 27,
+    "geometries": 66,
+    "textures": 4,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 22.33,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "places"
+   },
+   "ready_ms": 580,
+   "wall_s": 2.7,
+   "picks": [
+    {
+     "kind": "place",
+     "id": "tlv:766/16"
+    },
+    {
+     "kind": "place",
+     "id": "tlv:766/16",
+     "name": "תחנת איכילוב, הקו הסגול",
+     "walk": 2
+    }
+   ],
+   "events": [],
+   "pick": null
+  },
+  "places-education-route-gymnasium-mobile": {
+   "stats": {
+    "drawCalls": 44,
+    "triangles": 754771,
+    "lines": 154344,
+    "points": 94,
+    "geometries": 66,
+    "textures": 4,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 24.04,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "places"
+   },
+   "ready_ms": 559,
+   "wall_s": 2.7,
+   "picks": [
+    {
+     "kind": "place",
+     "id": "fp:osm-way-405360284"
+    },
+    {
+     "kind": "place",
+     "id": "fp:osm-way-405360284",
+     "name": "הגימנסיה העברית הרצליה",
+     "walk": 6
+    }
+   ],
+   "events": [],
+   "pick": null
+  },
+  "en-aerial-mobile": {
+   "stats": {
+    "drawCalls": 52,
+    "triangles": 691964,
+    "lines": 94043,
+    "points": 0,
+    "geometries": 57,
+    "textures": 3,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 39.35,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "aerial"
+   },
+   "ready_ms": 625,
+   "wall_s": 2.1,
+   "picks": [],
+   "events": [],
+   "pick": null
+  },
+  "en-tower-A-floor36-window-west-mobile": {
+   "stats": {
+    "drawCalls": 29,
+    "triangles": 700411,
+    "lines": 114115,
+    "points": 0,
+    "geometries": 59,
+    "textures": 3,
+    "dpr": 1.5,
+    "size": [
+     390,
+     844
+    ],
+    "renderMs": 32.34,
+    "blocks": 9079,
+    "trees": 11669,
+    "mode": "tower"
+   },
+   "ready_ms": 610,
+   "wall_s": 1.9,
+   "picks": [
+    {
+     "kind": "floor",
+     "tower": "A",
+     "floor": 30,
+     "heightM": 117.6,
+     "source": "api"
+    },
+    {
+     "kind": "floor",
+     "tower": "A",
+     "floor": 36,
+     "heightM": 141.6,
+     "source": "api"
+    },
+    {
+     "kind": "facing",
+     "tower": "A",
+     "floor": 36,
+     "heightM": 141.6,
+     "bearing": 255,
+     "facing": "west",
+     "source": "api"
+    }
+   ],
+   "events": [
+    {
+     "type": "nl:floor",
+     "detail": {
+      "tower": "A",
+      "floor": 36,
+      "heightM": 141.6,
+      "source": "api"
+     }
+    },
+    {
+     "type": "nl:facing",
+     "detail": {
+      "tower": "A",
+      "floor": 36,
+      "heightM": 141.6,
+      "bearing": 255,
+      "facing": "west",
+      "source": "api"
+     }
+    }
+   ],
+   "pick": {
+    "tower": "A",
+    "floor": "36 · tower A",
+    "facing": "west",
+    "floorNum": 36,
+    "towerKey": "A",
+    "bearing": 255,
+    "unit": "",
+    "example": false,
+    "name": "Kikar Hamedina Towers"
+   }
+  }
+ },
+ "bench": {
+  "aerial-desktop": {
+   "frames": 116,
+   "fps": 38.5,
+   "p95ms": 36.4,
+   "drawCalls": 58,
+   "triangles": 784128
+  },
+  "walk-ring-desktop": {
+   "frames": 158,
+   "fps": 52.1,
+   "p95ms": 35.9,
+   "drawCalls": 54,
+   "triangles": 769142
+  },
+  "tower-C-floor30-window-west-desktop": {
+   "frames": 154,
+   "fps": 50.8,
+   "p95ms": 36,
+   "drawCalls": 34,
+   "triangles": 699630
+  },
+  "places-transport-desktop": {
+   "frames": 134,
+   "fps": 44.4,
+   "p95ms": 36.1,
+   "drawCalls": 64,
+   "triangles": 802292
+  },
+  "aerial-mobile": {
+   "frames": 168,
+   "fps": 55.7,
+   "p95ms": 18.1,
+   "drawCalls": 56,
+   "triangles": 766389
+  },
+  "walk-ring-mobile": {
+   "frames": 168,
+   "fps": 55.8,
+   "p95ms": 18.1,
+   "drawCalls": 49,
+   "triangles": 735987
+  },
+  "tower-C-floor30-window-west-mobile": {
+   "frames": 169,
+   "fps": 55.8,
+   "p95ms": 18.1,
+   "drawCalls": 28,
+   "triangles": 621557
+  },
+  "places-transport-mobile": {
+   "frames": 169,
+   "fps": 55.9,
+   "p95ms": 18.1,
+   "drawCalls": 64,
+   "triangles": 802292
+  }
+ },
+ "load": {
+  "desktop": {
+   "decoded": {
+    "world-test.html": 3574,
+    "world.js": 139893,
+    "world.css": 18136,
+    "world.json": 865359,
+    "css2": 8703,
+    "OrbitControls.js": 32134,
+    "fonts (woff2)": 165248,
+    "BufferGeometryUtils.js": 31768,
+    "three.module.js": 1314681,
+    "places.json": 368150
+   },
+   "decoded_total": 2947646,
+   "wire": {
+    "world-test.html": 3574,
+    "world.js": 139893,
+    "world.css": 18136,
+    "world.json": 865359,
+    "css2": 1111,
+    "OrbitControls.js": 7709,
+    "fonts (woff2)": 165362,
+    "BufferGeometryUtils.js": 7340,
+    "three.module.js": 263538,
+    "places.json": 368150
+   },
+   "wire_total": 1840172,
+   "note": "wire = bytes on the network (the CDN compresses three.js and the fonts; the local test server does not compress, so for our own files see files.*.gzip)"
+  },
+  "mobile": {
+   "decoded": {
+    "world-test.html": 3574,
+    "world.js": 139893,
+    "world.css": 18136,
+    "world.json": 865359,
+    "css2": 8703,
+    "OrbitControls.js": 32134,
+    "BufferGeometryUtils.js": 31768,
+    "fonts (woff2)": 165248,
+    "three.module.js": 1314681,
+    "places.json": 368150
+   },
+   "decoded_total": 2947646,
+   "wire": {
+    "world-test.html": 3574,
+    "world.js": 139893,
+    "world.css": 18136,
+    "world.json": 865359,
+    "css2": 1111,
+    "OrbitControls.js": 7352,
+    "BufferGeometryUtils.js": 7340,
+    "fonts (woff2)": 165362,
+    "three.module.js": 263895,
+    "places.json": 368150
+   },
+   "wire_total": 1840172,
+   "note": "wire = bytes on the network (the CDN compresses three.js and the fonts; the local test server does not compress, so for our own files see files.*.gzip)"
+  }
+ },
+ "destroy_desktop": {
+  "root": false,
+  "canvas": false
+ },
+ "console_errors_desktop": [],
+ "gpu": "ANGLE (AMD, AMD Radeon (TM) Graphics (0x000015E7) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+ "destroy_mobile": {
+  "root": false,
+  "canvas": false
+ },
+ "console_errors_mobile": []
+}

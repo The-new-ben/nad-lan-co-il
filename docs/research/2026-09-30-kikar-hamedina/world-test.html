@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kikar Hamedina world test</title>
+<link rel="icon" href="data:,">
+<!--
+  LOCAL test harness for the shared world module (P5). Serve the repo root and open this page:
+    python -m http.server 8765        (from C:\Users\777\nad-lan\nad-lan-co-il)
+    http://localhost:8765/docs/research/2026-09-30-kikar-hamedina/world-test.html?mode=aerial
+  URL: mode=aerial|walk|tower|places · lang=he|en · tower=A|B|C · floor=N · facing=<bearing> · view=out|window
+       season=3|6|9|12 · hour=5..20 · cat=<places group> · place=<places id> · spot=ring|park|towers|school
+       show=<kind>:<id> (open a card) · collapsed=1 · clean=1 (canvas + labels only: the poster) · motion=1 (animate)
+-->
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<style>
+  html, body { margin: 0; height: 100%; background: #FAF7F1; }
+  #world { position: fixed; inset: 0; }
+</style>
+</head>
+<body>
+<div id="world"></div>
+<script type="module">
+  const Q = new URLSearchParams(location.search);
+  const BASE = '/plugins/nadlan-config/assets/project-stage/';
+  const lang = Q.get('lang') || 'he';
+  document.documentElement.lang = lang; document.documentElement.dir = lang === 'en' ? 'ltr' : 'rtl';
+  const t0 = performance.now();
+  const { mountWorld } = await import(BASE + 'world/world.js');
+  const clean = Q.get('clean') === '1';
+  const w = mountWorld(document.getElementById('world'), {
+    dataUrl: BASE + 'hamedina/world.json',
+    placesUrl: BASE + 'hamedina/places.json',
+    lang, intent: 'now', mode: Q.get('mode') || 'aerial',
+    season: +(Q.get('season') || 9), hour: +(Q.get('hour') || 10),
+    motion: Q.get('motion') === '1', chrome: !clean, labels: Q.get('labels') !== '0',
+    preserve: true, forceJoystick: Q.get('joy') === '1', wa: Q.get('wa') ? '#whatsapp' : null,
+    logDepth: Q.get('logdepth') !== '0', softShadows: Q.get('soft') !== '0', maxDpr: Q.get('dpr') ? +Q.get('dpr') : null,
+    name: lang === 'en' ? 'Kikar Hamedina Towers' : 'מגדלי כיכר המדינה',
+    onPick: (p) => { (window.__picks = window.__picks || []).push(p); },
+  });
+  window.__world = w;
+  window.__events = [];
+  for (const ev of ['nl:floor', 'nl:facing']) window.addEventListener(ev, (e) => window.__events.push({ type: ev, detail: e.detail }));
+  await w.ready;
+  window.__tReady = performance.now() - t0;
+  const mode = Q.get('mode') || 'aerial';
+  if (Q.get('tower')) w.pickTower(Q.get('tower'));
+  if (Q.get('floor')) w.setFloor(+Q.get('floor'));
+  if (Q.get('facing')) w.setFacing(+Q.get('facing'));
+  if (Q.get('view')) w.setView(Q.get('view'));
+  if (Q.get('cat')) w.setCategory(Q.get('cat'));
+  if (Q.get('spot')) w.walkTo(Q.get('spot'));
+  if (Q.get('collapsed')) w.collapse(Q.get('collapsed') === '1');
+  if (mode === 'places') { await new Promise((r) => setTimeout(r, 400)); if (Q.get('cat')) w.setCategory(Q.get('cat')); }
+  if (Q.get('place')) { await new Promise((r) => setTimeout(r, 300)); await w.pickPlace(Q.get('place')); }
+  if (Q.get('show')) { const [k, id] = Q.get('show').split(':'); await w.show(k, id); }
+  if (Q.get('yaw')) w.look && w.look(+Q.get('yaw'));
+  await new Promise((r) => setTimeout(r, 350));
+  await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+  window.__ready = true;
+</script>
+</body>
+</html>
