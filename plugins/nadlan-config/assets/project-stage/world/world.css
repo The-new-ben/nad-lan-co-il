@@ -11,6 +11,7 @@
   --nlw-ink-3: #6E695F;
   --nlw-gold: #9C7A3C;
   --nlw-terra: #C2563A;
+  --nlw-wa: #0F7A63;      /* WhatsApp green for the consult buttons (P7): terracotta stays for money CTAs only */
   --nlw-hair: #E2DCD0;
   --nlw-shadow: 0 2px 14px rgba(27, 26, 23, 0.10);
   --nlw-r: 6px;
@@ -143,7 +144,9 @@
 .nlw-chip.nlw-tw { font-family: 'Noto Serif Hebrew', 'Assistant', serif; font-size: 15.5px; }
 .nlw-chip.nlw-tw[aria-pressed='true'] { background: var(--nlw-gold); border-color: var(--nlw-gold); color: #fff; }
 .nlw-btn--go { background: var(--nlw-ink); color: var(--nlw-paper); border-color: var(--nlw-ink); width: 100%; margin-top: 12px; }
-.nlw-btn--wa { background: var(--nlw-terra); color: #fff; border-color: var(--nlw-terra); width: 100%; margin-top: 10px; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+.nlw-btn--wa { background: var(--nlw-wa); color: #fff; border-color: var(--nlw-wa); width: 100%; margin-top: 10px; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+/* P7: on the site the theme colours and underlines every link; the consult button keeps white text */
+.nlw a.nlw-btn--wa, .nlw a.nlw-btn--wa:visited, .nlw a.nlw-btn--wa:hover { color: #fff !important; text-decoration: none !important; }
 .nlw-seg { display: inline-flex; border: 1px solid var(--nlw-hair); border-radius: 999px; padding: 2px; background: #FFFDF8; }
 .nlw-seg .nlw-chip { border: 0; min-height: 40px; background: transparent; }
 .nlw-seg .nlw-chip[aria-pressed='true'] { background: var(--nlw-ink); }

@@ -27,6 +27,16 @@ META = {
         "title": "דמרי ימה שדה דב (DIMRI YAMA) | י.ח דמרי | מחירים ודירות | נדלן",
         "desc": "דמרי ימה (DIMRI YAMA) של י.ח דמרי ברובע שדה דב: מגדל של 40 קומות, 458 דירות וכ-70 חדרי מלון, כ-700 מ׳ מהים. מחיר הפתיחה שפורסם: מ-3.75 מיליון ₪.",
     },
+    # Kikar Hamedina (P7, 30.9.2026): the same texts as scripts/project-stage/hamedina_page_data.py (deploy369.py writes them when
+    # it creates the two posts; kept here so a later run of this script keeps them)
+    "hamedina": {
+        "title": "מגדלי כיכר המדינה תל אביב: מחירים, עסקאות, מפה ותלת ממד",
+        "desc": "מגדלי כיכר המדינה בתל אביב: 3 מגדלים מסתובבים ו-453 דירות, עסקאות ב-9.58 עד 10.63 מיליון ₪, מועדי האכלוס, הפארק והאגם, והנוף מכל קומה.",
+    },
+    "hamedina-en": {
+        "title": "Kikar Hamedina Towers Tel Aviv: Prices, Deals, Map & 3D",
+        "desc": "Kikar Hamedina Towers, Tel Aviv: 3 twisting towers, 453 apartments, deals at ₪9.58M to ₪10.63M, occupancy dates, the park and the view from every floor.",
+    },
     "h-infinity-somail-tel-aviv": {
         "desc": "אייץ' אינפיניטי (H Infinity) של קבוצת חג'ג', אבן גבירול 128 במתחם סומייל: מגדל של 53 קומות ובניין בוטיק, כ-278 דירות של 2 עד 6 חדרים. נתונים, מפה וסביבה.",
     },
@@ -36,8 +46,12 @@ for k, v in META.items():
     assert "title" not in v or len(v["title"]) <= 66, (k, len(v["title"]))
 
 PIDS = {}
-for slug in META:
+for slug in list(META):
     s, d = req("GET", "/wp-json/wp/v2/nadlan_project?slug=%s&_fields=id" % slug)
+    if not d:  # not created yet (the Kikar Hamedina pages come with deploy369.py)
+        print("[skip] %s: no published post yet" % slug)
+        META.pop(slug)
+        continue
     PIDS[slug] = int(d[0]["id"])
 TOKEN = secrets.token_hex(24)
 NS = "nadlan-pmeta-" + TOKEN[:8]

@@ -1,0 +1,196 @@
+{
+ "when": "2026-09-30 04:48",
+ "release_copy_md5": "e6c9fc1c7f4df378588c974ef3305892",
+ "pages": {
+  "he-390": {
+   "probe": {
+    "h1": 160,
+    "h1n": 1,
+    "lead": 261,
+    "cta": 591,
+    "stage": 701,
+    "map": 1490,
+    "facts": 4689,
+    "faq": 12069,
+    "stacked": true,
+    "vh": 844
+   },
+   "C3": true,
+   "C4": true,
+   "world_ready": true,
+   "pick": {
+    "tower": "C",
+    "floor": "30 · מגדל C",
+    "facing": "מערבה",
+    "floorNum": 30,
+    "towerKey": "C",
+    "bearing": 266,
+    "unit": "",
+    "example": false,
+    "name": "מגדלי כיכר המדינה"
+   },
+   "card_whatsapp": {
+    "bg": "rgb(15, 122, 99)",
+    "text": "שלום, אשמח לייעוץ חינם על מגדלי כיכר המדינה (nad-lan.co.il) · מגדל C\n\nמקור: מגדלי כיכר המדינה, תל אביב Kikar Hamedina Towers · פרויקט · קומה 30 · מגדל C · מערבה\nnad-lan.co.il/projects/hamedina/"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "he-1440": {
+   "probe": {
+    "h1": 204,
+    "h1n": 1,
+    "lead": 359,
+    "cta": 701,
+    "stage": 204,
+    "map": 1055,
+    "facts": 3238,
+    "faq": 7919,
+    "stacked": false,
+    "vh": 900
+   },
+   "C3": true,
+   "C4": true,
+   "world_ready": true,
+   "pick": {
+    "tower": "C",
+    "floor": "30 · מגדל C",
+    "facing": "מערבה",
+    "floorNum": 30,
+    "towerKey": "C",
+    "bearing": 266,
+    "unit": "",
+    "example": false,
+    "name": "מגדלי כיכר המדינה"
+   },
+   "card_whatsapp": {
+    "bg": "rgb(15, 122, 99)",
+    "text": "שלום, אשמח לייעוץ חינם על מגדלי כיכר המדינה (nad-lan.co.il) · מגדל C\n\nמקור: מגדלי כיכר המדינה, תל אביב Kikar Hamedina Towers · פרויקט · קומה 30 · מגדל C · מערבה\nnad-lan.co.il/projects/hamedina/"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "he-412g": {
+   "probe": {
+    "h1": 160,
+    "h1n": 1,
+    "lead": 261,
+    "cta": 563,
+    "stage": 673,
+    "map": 1494,
+    "facts": 4641,
+    "faq": 11761,
+    "stacked": true,
+    "vh": 915
+   },
+   "C3": true,
+   "C4": true
+  },
+  "en-390": {
+   "probe": {
+    "h1": 207,
+    "h1n": 1,
+    "lead": 342,
+    "cta": 784,
+    "stage": 948,
+    "map": 1778,
+    "facts": 3811,
+    "faq": 12651,
+    "stacked": true,
+    "vh": 844
+   },
+   "C3": true,
+   "C4": true,
+   "world_ready": true,
+   "pick": {
+    "tower": "C",
+    "floor": "30 · tower C",
+    "facing": "west",
+    "floorNum": 30,
+    "towerKey": "C",
+    "bearing": 266,
+    "unit": "",
+    "example": false,
+    "name": "Kikar Hamedina Towers"
+   },
+   "card_whatsapp": {
+    "bg": "rgb(15, 122, 99)",
+    "text": "Hello, I would like free advice on Kikar Hamedina Towers (nad-lan.co.il) · Tower C\n\nSource: Kikar Hamedina Towers, Tel Aviv · project · floor 30 · tower C · west\nnad-lan.co.il/projects/hamedina-en/"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "en-1440": {
+   "probe": {
+    "h1": 209,
+    "h1n": 1,
+    "lead": 364,
+    "cta": 821,
+    "stage": 209,
+    "map": 1102,
+    "facts": 2539,
+    "faq": 7946,
+    "stacked": false,
+    "vh": 900
+   },
+   "C3": true,
+   "C4": true,
+   "world_ready": true,
+   "pick": {
+    "tower": "C",
+    "floor": "30 · tower C",
+    "facing": "west",
+    "floorNum": 30,
+    "towerKey": "C",
+    "bearing": 266,
+    "unit": "",
+    "example": false,
+    "name": "Kikar Hamedina Towers"
+   },
+   "card_whatsapp": {
+    "bg": "rgb(15, 122, 99)",
+    "text": "Hello, I would like free advice on Kikar Hamedina Towers (nad-lan.co.il) · Tower C\n\nSource: Kikar Hamedina Towers, Tel Aviv · project · floor 30 · tower C · west\nnad-lan.co.il/projects/hamedina-en/"
+   },
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "en-412g": {
+   "probe": {
+    "h1": 207,
+    "h1n": 1,
+    "lead": 342,
+    "cta": 756,
+    "stage": 866,
+    "map": 1729,
+    "facts": 3761,
+    "faq": 12258,
+    "stacked": true,
+    "vh": 915
+   },
+   "C3": true,
+   "C4": true
+  }
+ },
+ "local_files_served": {
+  "assets/project-stage/hamedina/poster-800.webp": "487e70708ceabe67",
+  "assets/nlds/nlds.css": "51bb81e52d33b089",
+  "assets/basket/basket.css": "42b9aeac088ace63",
+  "assets/arealife/areamap.js": "597129ca97783798",
+  "assets/showroom-engine/mv-ux.js": "645721814809bd3b",
+  "assets/basket/basket.js": "371135927d2422f6",
+  "assets/project-stage/hamedina/places.json": "fa2c7837bafc7f68",
+  "assets/branding/favicon.svg": "3983279f7c7823ef",
+  "assets/project-stage/world/world.js": "aa956d8a68d7fda4",
+  "assets/project-stage/world/world.css": "825815926ae67ff8",
+  "assets/project-stage/hamedina/world.json": "f73687164839d711",
+  "assets/project-stage/hamedina/poster-1600.webp": "f84af9300908fc59"
+ }
+}

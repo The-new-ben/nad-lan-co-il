@@ -50,7 +50,10 @@ add_action( 'wp_footer', function () {
 		var h1=document.querySelector("h1");
 		var title=((h1&&h1.textContent)||(document.title||"").split("|")[0]).replace(/\s+/g," ").trim().slice(0,60);
 		var kind=own&&document.querySelector(".nlx")?W.bl:own&&document.querySelector(".nlb")?W.bs:/\bsingle-nadlan_project\b/.test(bc)?W.pr:/\bsingle-nadlan_property\b/.test(bc)?W.li:/\bsingle-nadlan_professional\b/.test(bc)?W.pro:"";
-		var pk=window.__nlpsPick,fl=(pk&&pk.floor!=null&&pk.floor!=="")?" · "+W.fl+" "+pk.floor:"";
+		/* P7 (30.9.2026): the facing chosen on the stage joins the floor on the same line ("קומה 30 · מגדל C · מערבה"); only with
+		   a floor, and short (the stages' own words: a sector such as "לכיוון הים", or the world's "מערבה") */
+		var pk=window.__nlpsPick,fc=(pk&&typeof pk.facing==="string")?pk.facing.replace(/\s+/g," ").trim().slice(0,40):"",
+			fl=(pk&&pk.floor!=null&&pk.floor!=="")?" · "+W.fl+" "+pk.floor+(fc?" · "+fc:""):"";
 		var path=location.pathname,link=(path.length<=45&&/^[A-Za-z0-9\/._-]*$/.test(path))?"\n"+location.host+path:"";
 		var stamp="\n\n"+SRC+": "+title+(kind?" · "+kind:"")+fl+link;
 		try{

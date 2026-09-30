@@ -35,6 +35,7 @@ let OrbitControls = null;
 let mergeGeometries = null;
 
 const DEG = Math.PI / 180;
+const HEB = /[֐-׿]/;
 const MODES = ['aerial', 'walk', 'tower', 'places'];
 
 const I18N = {
@@ -192,6 +193,8 @@ const I18N = {
     mark: 'Landmark', markDist: (d) => `${d} from the towers`,
     askWa: (k, f) => (f ? `Free advice on floor ${f} of tower ${k}` : `Free advice on tower ${k}`),
     askPlace: 'Free advice on living at the square',
+    // P7: the registry's opening lines are Hebrew; the English page says them in English (anything else is left out)
+    opens: { 'פועל מאז 18.8.2023': 'Running since 18.8.2023', 'מתוכנן להיפתח ב-2028': 'Planned to open in 2028', 'מתוכנן להיפתח עד 2030 (הקטע בתל אביב)': 'Planned to open by 2030 (the Tel Aviv section)' },
     pickLabel: (f, k) => `${f} · tower ${k}`,
     notes: 'What is illustrated',
     collapse: 'Collapse', expand: 'Expand',
@@ -1462,7 +1465,7 @@ export function mountWorld(host, opts = {}) {
 
   // ---------------------------------------------------------------- walk
   const SPOTS = {
-    ring: { r: 108, b: 350, look: 158, lookP: 148 },
+    ring: { r: 138, b: 172, look: 352, lookP: 356 }, // P7: the south side by Weizmann, C framed between A and B (was 72 m from C)
     park: { x: -62, z: 48, look: 62 },
     towers: { x: 10, z: 12, look: 330 },
     school: { x: -128, z: -18, look: 96 },
@@ -1565,7 +1568,8 @@ export function mountWorld(host, opts = {}) {
     try {
       const d = await loadPlaces();
       if (places) return;
-      const list = (d.places || []).filter((p) => p.walk != null && !p.generic);
+      // P7: on the English page a place shows only with a name in English or in Latin letters (the fleet's AreaLife rule)
+      const list = (d.places || []).filter((p) => p.walk != null && !p.generic && !(lang === 'en' && !(p.names && p.names.en) && HEB.test(p.name || '')));
       const byId = {}; list.forEach((p) => { byId[p.id] = p; });
       places = { doc: d, list, byId, shown: [] };
       // the 5 / 10 / 15 minute areas (Mapbox walking, from the ring road; places.json "iso")
@@ -1771,7 +1775,7 @@ export function mountWorld(host, opts = {}) {
       for (const pn of W.pins) {
         const p = placesIndex[pn.id]; if (!p) continue;
         if (m === 'aerial' && pn.tier !== 1) continue;
-        add({ id: 'p' + pn.id, kind: 'pin', name: lang2 === 'en' ? pn.en : p.name, meta: p.opens ? p.opens : T.walkMin(p.walk), pos: new THREE.Vector3(p.x, 1.5, p.z), prio: 100 + pn.tier * 50 + p.dist / 20, click: () => openCard(placeCard(p)) });
+        add({ id: 'p' + pn.id, kind: 'pin', name: lang2 === 'en' ? pn.en : p.name, meta: opensOf(p) || T.walkMin(p.walk), pos: new THREE.Vector3(p.x, 1.5, p.z), prio: 100 + pn.tier * 50 + p.dist / 20, click: () => openCard(placeCard(p)) });
       }
     }
     if (m === 'places' && places) {
@@ -1817,6 +1821,7 @@ export function mountWorld(host, opts = {}) {
   }
   let placesIndex = null;
   const placeName = (p) => (lang === 'en' && p.names && p.names.en ? p.names.en : p.name);
+  const opensOf = (p) => (!p.opens ? '' : lang === 'en' ? ((T.opens && T.opens[p.opens]) || '') : p.opens);
   function labelEl(c) {
     let e = labelPool.get(c.id);
     if (!e) {
@@ -1940,11 +1945,20 @@ export function mountWorld(host, opts = {}) {
   }
   const eyebrow = (s) => `<div class="nlw-eyebrow">${esc(s)}</div>`;
   const title = (s) => `<div class="nlw-title">${esc(s)}</div>`;
-  const waBtn = (label) => (o.wa ? `<a class="nlw-btn nlw-btn--wa" href="${esc(o.wa)}" target="_blank" rel="noopener">${esc(label)}</a>` : '');
+  // P7 (30.9.2026): the card's WhatsApp message names what the card is about (the tower, the place), on the same line as the
+  // page's own message; the site's interceptor (inc/wa-source.php) adds the source line with the floor and the facing when chosen
+  const waHref = (what) => {
+    if (!what) return o.wa;
+    try {
+      const u = new URL(o.wa, location.href); const t = u.searchParams.get('text') || ''; u.searchParams.delete('text');
+      const b = u.toString(); return b + (b.indexOf('?') > -1 ? '&' : '?') + 'text=' + encodeURIComponent((t ? t + ' · ' : '') + what);
+    } catch (e) { return o.wa; }
+  };
+  const waBtn = (label, what) => (o.wa ? `<a class="nlw-btn nlw-btn--wa" href="${esc(waHref(what))}" target="_blank" rel="noopener">${esc(label)}</a>` : '');
   function towerCard(k) {
     const X = TW[k];
     const html = eyebrow(T.towersAll) + title(T.towerN(k)) + factList(W.facts.tower[k]) +
-      `<button class="nlw-btn nlw-btn--go" type="button" data-act="go">${esc(T.goTower)} ${esc(k)}</button>` + waBtn(T.askWa(k)) +
+      `<button class="nlw-btn nlw-btn--go" type="button" data-act="go">${esc(T.goTower)} ${esc(k)}</button>` + waBtn(T.askWa(k), T.towerN(k)) +
       `<div class="nlw-sec">${factList(W.facts.towers)}</div>` + notesHtml();
     return { html, acts: { go: () => { closeCard(); pickTower(k, 'user'); } }, pick: { kind: 'tower', tower: k, floors: X.N, height: X.t.h } };
   }
@@ -1997,9 +2011,9 @@ export function mountWorld(host, opts = {}) {
     const kv = [`<b>${esc(T.walkMin(p.walk))}</b>`, `<span>${esc(T.fromRing)}</span>`, `<span>${esc(T.km(p.dist))}</span>`];
     let html = eyebrow(`${T.cats[p.g] || ''}${kind && kind !== T.cats[p.g] ? ' · ' + kind : ''}`) + title(placeName(p)) + `<div class="nlw-kv">${kv.join('')}</div>`;
     const lines = [];
-    if (p.addr) lines.push(esc(p.addr));
-    if (p.info && p.info !== kind) lines.push(esc(p.info));
-    if (p.opens) lines.push(esc(p.opens));
+    if (p.addr && !(lang === 'en' && HEB.test(p.addr))) lines.push(esc(p.addr));
+    if (p.info && p.info !== kind && !(lang === 'en' && HEB.test(p.info))) lines.push(esc(p.info));
+    if (opensOf(p)) lines.push(esc(opensOf(p)));
     if (p.lines && p.lines.length) lines.push(`${esc(T.lines)}: <bdi>${esc(p.lines.slice(0, 16).join(', '))}</bdi>`);
     if (lines.length) html += `<ul class="nlw-facts">${lines.map((l) => `<li>${l}</li>`).join('')}</ul>`;
     const srcMap = T.srcNames;
@@ -2009,7 +2023,7 @@ export function mountWorld(host, opts = {}) {
     if (p.lines && p.lines.length && !srcs.includes(srcMap.lines)) srcs.push(srcMap.lines);
     html += `<span class="nlw-src">${esc(T.source)}: ${srcs.filter(Boolean).map(esc).join(' · ')}</span>`;
     if (S.mode === 'places') html += `<div class="nlw-note">${esc(air ? T.routeAir : T.routeNote)}</div>`;
-    html += waBtn(T.askPlace);
+    html += waBtn(T.askPlace, placeName(p));
     return { html, pick: { kind: 'place', id: p.id } };
   }
 

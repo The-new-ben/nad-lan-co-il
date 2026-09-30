@@ -1,0 +1,390 @@
+{
+ "branch": {
+  "before": "git HEAD",
+  "after": "working file",
+  "ok": true,
+  "rows": [
+   {
+    "slug": "rainbow-tel-aviv",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 78901,
+    "md5": {
+     "config": "6677a8f9d0d0e44d8c9a5ef2278776e9",
+     "current": "21fb9177ed244226b319d55a5003b0a9",
+     "composed": "989d5cd10b94a588321a6557132231f2",
+     "wp_head@1#0": "c3d5b8f2c2e859338ea91f72c9499185",
+     "wp_head@998#0": "c909c22da5da1f8ee182deae7f9a3758",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "55ac789ec67decca4a249ca8c0730d9f",
+     "wp_footer@5#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@50#0": "4a9f84f905e23dd2f2f77e79a72f60a6",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   },
+   {
+    "slug": "rainbow-tel-aviv-en",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 72698,
+    "md5": {
+     "config": "6677a8f9d0d0e44d8c9a5ef2278776e9",
+     "current": "9e4dfb5c597050cfa795442d843fa010",
+     "composed": "5bb71c4e42ffb4f741d7c15ab4c089ea",
+     "wp_head@1#0": "c3d5b8f2c2e859338ea91f72c9499185",
+     "wp_head@998#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "d2326d7226919e31b8ab1dadb10c7fb4",
+     "wp_footer@5#0": "0210ed1533950e668a7efd930ba8099f",
+     "wp_footer@50#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   },
+   {
+    "slug": "duo-tel-aviv",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 37414,
+    "md5": {
+     "config": "a58e400136639f587457c066c3196e07",
+     "current": "84f0182a990334cd10129a27ca5118d4",
+     "composed": "93c7756fcf9149893b4fee6327974798",
+     "wp_head@1#0": "bd984fef9d27df7ec1a966ea9e1d3a20",
+     "wp_head@998#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "55ac789ec67decca4a249ca8c0730d9f",
+     "wp_footer@5#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@50#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   },
+   {
+    "slug": "duo-tel-aviv-en",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 31975,
+    "md5": {
+     "config": "a58e400136639f587457c066c3196e07",
+     "current": "96c969c4a9be700e6f83c56961dac5e2",
+     "composed": "db5ec19b6708d7f7622dc9fd87214ba7",
+     "wp_head@1#0": "bd984fef9d27df7ec1a966ea9e1d3a20",
+     "wp_head@998#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "d2326d7226919e31b8ab1dadb10c7fb4",
+     "wp_footer@5#0": "0210ed1533950e668a7efd930ba8099f",
+     "wp_footer@50#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   },
+   {
+    "slug": "dimri-yama-sde-dov",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 32263,
+    "md5": {
+     "config": "074bd74839b152ed36b3d25b97219433",
+     "current": "7741900772672700b49047c69c76a417",
+     "composed": "d51755fe95070905ae23316f4686e36b",
+     "wp_head@1#0": "8da76d33ca8a893ac15f66c362b5ef5b",
+     "wp_head@998#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "55ac789ec67decca4a249ca8c0730d9f",
+     "wp_footer@5#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@50#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   },
+   {
+    "slug": "dimri-yama-sde-dov-en",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 31439,
+    "md5": {
+     "config": "074bd74839b152ed36b3d25b97219433",
+     "current": "8927e26a37fb06332ea54861d43ce98d",
+     "composed": "cfef11941296875d543692c5b5939db2",
+     "wp_head@1#0": "8da76d33ca8a893ac15f66c362b5ef5b",
+     "wp_head@998#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "d2326d7226919e31b8ab1dadb10c7fb4",
+     "wp_footer@5#0": "0210ed1533950e668a7efd930ba8099f",
+     "wp_footer@50#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   },
+   {
+    "slug": "ashira-sde-dov",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 30785,
+    "md5": {
+     "config": "0599b45992e6711965e3f83c5f00e903",
+     "current": "d3c984aa93a095eb2e0d8eaa1b836ca6",
+     "composed": "96cdab21f80bda2817f2b69f49098c0e",
+     "wp_head@1#0": "cf3ec081c4054596bbca40ce7ea01a65",
+     "wp_head@998#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "55ac789ec67decca4a249ca8c0730d9f",
+     "wp_footer@5#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@50#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   },
+   {
+    "slug": "ashira-sde-dov-en",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 29923,
+    "md5": {
+     "config": "0599b45992e6711965e3f83c5f00e903",
+     "current": "60ea2e44d19ffd25f39e24fb7f9e947e",
+     "composed": "486d33ce4a1454afdf0d222f7684de87",
+     "wp_head@1#0": "cf3ec081c4054596bbca40ce7ea01a65",
+     "wp_head@998#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "d2326d7226919e31b8ab1dadb10c7fb4",
+     "wp_footer@5#0": "0210ed1533950e668a7efd930ba8099f",
+     "wp_footer@50#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   }
+  ]
+ },
+ "release": {
+  "before": "65af09be (live, md5 9e03f25743da9fcc2c6ad6fe2ecd7421)",
+  "after": "65af09be + hunks (md5 e6c9fc1c7f4df378588c974ef3305892)",
+  "ok": true,
+  "rows": [
+   {
+    "slug": "rainbow-tel-aviv",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 78884,
+    "md5": {
+     "config": "6cccd2f89694a0115285b9f1526c7b72",
+     "current": "999fadeea2c0e545fa4286342a27b8e5",
+     "composed": "d61daadfd5f587c641d00ddee0ef8bb4",
+     "wp_head@1#0": "c3d5b8f2c2e859338ea91f72c9499185",
+     "wp_head@998#0": "521ee800f7f87aae595f5565516e7dc7",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "59b980addbcb2dfb6c798e2c3edb1f8b",
+     "wp_footer@5#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@50#0": "5544a84d9b044864ed8d3305f775a0b1",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   },
+   {
+    "slug": "rainbow-tel-aviv-en",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 72698,
+    "md5": {
+     "config": "6cccd2f89694a0115285b9f1526c7b72",
+     "current": "9e4dfb5c597050cfa795442d843fa010",
+     "composed": "5bb71c4e42ffb4f741d7c15ab4c089ea",
+     "wp_head@1#0": "c3d5b8f2c2e859338ea91f72c9499185",
+     "wp_head@998#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "78c6ddfb9523d9d6b7116861eb1f0ad1",
+     "wp_footer@5#0": "0210ed1533950e668a7efd930ba8099f",
+     "wp_footer@50#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   },
+   {
+    "slug": "duo-tel-aviv",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 37414,
+    "md5": {
+     "config": "a58e400136639f587457c066c3196e07",
+     "current": "84f0182a990334cd10129a27ca5118d4",
+     "composed": "93c7756fcf9149893b4fee6327974798",
+     "wp_head@1#0": "bd984fef9d27df7ec1a966ea9e1d3a20",
+     "wp_head@998#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "59b980addbcb2dfb6c798e2c3edb1f8b",
+     "wp_footer@5#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@50#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   },
+   {
+    "slug": "duo-tel-aviv-en",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 31975,
+    "md5": {
+     "config": "a58e400136639f587457c066c3196e07",
+     "current": "96c969c4a9be700e6f83c56961dac5e2",
+     "composed": "db5ec19b6708d7f7622dc9fd87214ba7",
+     "wp_head@1#0": "bd984fef9d27df7ec1a966ea9e1d3a20",
+     "wp_head@998#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "78c6ddfb9523d9d6b7116861eb1f0ad1",
+     "wp_footer@5#0": "0210ed1533950e668a7efd930ba8099f",
+     "wp_footer@50#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   },
+   {
+    "slug": "dimri-yama-sde-dov",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 32263,
+    "md5": {
+     "config": "074bd74839b152ed36b3d25b97219433",
+     "current": "7741900772672700b49047c69c76a417",
+     "composed": "d51755fe95070905ae23316f4686e36b",
+     "wp_head@1#0": "8da76d33ca8a893ac15f66c362b5ef5b",
+     "wp_head@998#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "59b980addbcb2dfb6c798e2c3edb1f8b",
+     "wp_footer@5#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@50#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   },
+   {
+    "slug": "dimri-yama-sde-dov-en",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 31439,
+    "md5": {
+     "config": "074bd74839b152ed36b3d25b97219433",
+     "current": "8927e26a37fb06332ea54861d43ce98d",
+     "composed": "cfef11941296875d543692c5b5939db2",
+     "wp_head@1#0": "8da76d33ca8a893ac15f66c362b5ef5b",
+     "wp_head@998#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "78c6ddfb9523d9d6b7116861eb1f0ad1",
+     "wp_footer@5#0": "0210ed1533950e668a7efd930ba8099f",
+     "wp_footer@50#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   },
+   {
+    "slug": "ashira-sde-dov",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 30785,
+    "md5": {
+     "config": "0599b45992e6711965e3f83c5f00e903",
+     "current": "d3c984aa93a095eb2e0d8eaa1b836ca6",
+     "composed": "96cdab21f80bda2817f2b69f49098c0e",
+     "wp_head@1#0": "cf3ec081c4054596bbca40ce7ea01a65",
+     "wp_head@998#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "59b980addbcb2dfb6c798e2c3edb1f8b",
+     "wp_footer@5#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@50#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   },
+   {
+    "slug": "ashira-sde-dov-en",
+    "identical": true,
+    "new_hooks_silent": true,
+    "pieces": 10,
+    "composed_bytes": 29923,
+    "md5": {
+     "config": "0599b45992e6711965e3f83c5f00e903",
+     "current": "60ea2e44d19ffd25f39e24fb7f9e947e",
+     "composed": "486d33ce4a1454afdf0d222f7684de87",
+     "wp_head@1#0": "cf3ec081c4054596bbca40ce7ea01a65",
+     "wp_head@998#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_head@999#1": "78c6ddfb9523d9d6b7116861eb1f0ad1",
+     "wp_footer@5#0": "0210ed1533950e668a7efd930ba8099f",
+     "wp_footer@50#0": "d41d8cd98f00b204e9800998ecf8427e",
+     "wp_footer@60#0": "82c359e1cff42a81c306cba715b6ff51"
+    },
+    "diff": [],
+    "extra": [
+     "wp_head@1000#0"
+    ]
+   }
+  ]
+ },
+ "hamedina": {
+  "he_composed_bytes": 11557,
+  "en_composed_bytes": 6894,
+  "he_has_world": true,
+  "en_has_world": true
+ }
+}
