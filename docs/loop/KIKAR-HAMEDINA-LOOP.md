@@ -256,7 +256,28 @@ Every turn does ALL of these, not only the current phase:
   - the sales path (WhatsApp, the representative, the basket);
   - Hebrew and English.
   - Publish it and look at it.
-- [ ] **P5, IN PROGRESS (turn 5, 30.9).** A sub-agent is building the SHARED world module locally:
+- [x] **P5 DONE 30.9: the shared world module, local commits be03ba1e and 2be12a5d.**
+  - **The files:**
+    - `assets/project-stage/world/world.js` (140 KB, 43 KB gzip) and `world.css`.
+    - `assets/project-stage/hamedina/world.json` (865 KB, 334 KB gzip), `places.json`, and posters (webp/jpg at 1600 and 800).
+    - `scripts/project-stage/build_world_hamedina.py` and `poster_world_hamedina.py`.
+    - A harness and 32 screenshots in `docs/research/2026-09-30-kikar-hamedina/world-shots/`.
+  - **The API:** `mountWorld(el,{dataUrl,placesUrl,lang,i18n,onPick,poster,intent})`, with setMode, pickTower, setFloor, setFacing, setSun, sunHours, walkTo and more.
+    - Events: `nl:floor` and `nl:facing`.
+    - It sets `window.__nlpsPick`, so the WhatsApp line reads "קומה 30 · מגדל C".
+  - **Performance:** 34-64 draw calls; 38-52 fps on desktop and 56 fps on the emulated phone (real phones not measured); ready in 1.0-1.6 s; about 0.73 MB on the wire, loaded on intent only.
+  - **The world:**
+    - 8 park hotspots with sources, marked "מיקום להמחשה".
+    - Tower cards with both of B's versions.
+    - Direct-sun hours for each of the 8 facings.
+    - Window views naming the landmarks; street routes; Hebrew and English.
+  - **Looked at, 30.9:** the quality is high.
+  - **Fixes carried to P7:**
+    - (1) The card's "ייעוץ חינם על מגדל X" button uses the WhatsApp green (#0F7A63), not terracotta, which is for money CTAs.
+    - (2) The walk's start point: the near tower fills too much of the frame.
+    - (3) `wa-source.php` should also print the facing (one line).
+  - **Still open:** interiors and 360 per facing ("דירה לדוגמה"); which tower the Globes deals are in (unpublished); fr/ru/ar strings; a real-phone test.
+- [x] **P5 (turn 5 note) IN PROGRESS.** A sub-agent is building the SHARED world module locally:
   - `assets/project-stage/world/world.js` and `world.css`, with the API `mountWorld(el, {dataUrl, placesUrl, lang, i18n, onPick})`. It sets `window.__nlpsPick` so the WhatsApp source line carries tower and floor.
   - The four modes: aerial, walk (joystick and WASD, collisions), tower (floor, facing, window view, sun clock, hours of direct sun per facing), places.
   - `assets/project-stage/hamedina/world.json`, built by `scripts/project-stage/build_world_hamedina.py`, about 1.5 MB loaded on intent.
@@ -299,6 +320,10 @@ Every turn does ALL of these, not only the current phase:
 - Notion row: https://app.notion.com/p/3eaab55be7a18104afcbdf82347fe085
 
 ## Waiting for the owner
+
+- **Q2, 30.9: the two article files** (`prompt-he.md`, `prompt-en.md`, sent to him in chat) run in ChatGPT Pro. He pastes the results back.
+  - The page can go live without the article: the world, the sourced lead, facts, deals, "when is it ready?" and the FAQ are real content, not placeholders.
+  - The article joins in the next release the moment it arrives.
 
 - **Q1, 30.9: how photorealistic should the area world be?** The default is (a). (b) and (c) need his word because they cost money. The loop continues with (a).
   - **(a) Free, the default.** Tel Aviv municipality open GIS: building footprints and heights for every building ([opendata.tel-aviv.gov.il](https://opendata.tel-aviv.gov.il/en/Pages/Category.aspx); [OSM forum on the height layer](https://community.openstreetmap.org/t/using-gis-tel-aviv-for-buildings-heights/85546)). We build the blocks ourselves, in the house style, true to height.
