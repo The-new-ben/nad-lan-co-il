@@ -1,0 +1,21 @@
+{
+  "released": "1.72.376",
+  "from": "1.72.375",
+  "live_before": {
+    "assets/project-stage/world/world.js": "821cf7eb47796ceecd05decf61e687a9",
+    "assets/project-stage/world/world.css": "6ab163f2a0904af9317ed9c3df45e5c5",
+    "assets/arealife/areamap.js": "d65b86264b152e82f12703eb413523e6",
+    "nadlan-config.php": "50fe7af438d1f44c085b27abd989fda6",
+    "inc/conversion-cta.php": "9abb283ff4e09e10a531bbadb34a3eb1"
+  },
+  "state": "released and verified",
+  "at": "2026-09-30 23:32:38",
+  "files": {
+    "assets/project-stage/world/world.js": "1057d296225d32c28af0e40feb2aff34",
+    "assets/project-stage/world/world.css": "065fcd4f43d1840885a9def5e37e98a8",
+    "assets/arealife/areamap.js": "8b743213507dbe125ba7c2b60f09031c",
+    "nadlan-config.php": "b2441410afff24f569512b10ca2daad3",
+    "inc/conversion-cta.php": "8423eb62742289923a90d35fbae9ebf8"
+  },
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (the three files at ?ver=1.72.376, byte for byte) + icons_first + verify_order + verify_home_order + verify_kh: OK"
+}

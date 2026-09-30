@@ -722,7 +722,7 @@ CHECKS = [
     ('/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/world.json?ver=1.72.376', ['"towers":', '"park_features":'], [], []),
     ('/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/places.json?ver=1.72.376', ['"places":[', '"iso":['], [], []),
     ('/wp-content/plugins/nadlan-config/assets/project-stage/hamedina/world-i18n.json?ver=1.72.376', ['"fr":{', '"ru":{', '"ar":{', '"Kikar HaMedina school":"École Kikar Hamedina"'], [], []),
-    ('/glossary/?t371=1', ['id="nadlan-wa-source"', 'fc?" · "+fc:""', '(path.length<=45&&', "window.addEventListener('load',ask);", "'.nlps-hero__cta,#nlps button,#nlps a,#nlps-pick button", "e.closest('.nlw-labels')"], ['id="nlcta-sheet"'], []),
+    ('/glossary/?t371=1', ['id="nadlan-wa-source"', 'fc?" · "+fc:""', '(path.length<=45&&', "window.addEventListener('load',ask);", "'.nlps-hero__cta,#nlps button,#nlps a,#nlps input,#nlps-pick button", "e.closest('.nlw-labels')"], ['id="nlcta-sheet"'], []),
 ]
 
 # 1.72.376 (v104.3): the icons load before the area map on project pages with a map; the shipped files carry the phone flow
@@ -731,7 +731,7 @@ CHECKS += [
     ("/projects/hamedina-en/", ['assets/arealife/place-icons.js?ver=1.72.376', 'assets/arealife/areamap.js?ver=1.72.376'], []),
     ("/projects/hamedina-ar/", ['assets/arealife/place-icons.js?ver=1.72.376', 'assets/arealife/areamap.js?ver=1.72.376'], []),
     (RB, ['assets/arealife/place-icons.js?ver=1.72.376', 'assets/arealife/areamap.js?ver=1.72.376'], []),
-    ("/wp-content/plugins/nadlan-config/assets/project-stage/world/world.js?ver=1.72.376", ["cv.style.removeProperty('touch-action')", 'function placeChrome()', 'ui.waFull', 'function gestureHint()', 'FEAT_K'], []),
+    ("/wp-content/plugins/nadlan-config/assets/project-stage/world/world.js?ver=1.72.376", ["cv.style.removeProperty('touch-action')", 'function placeChrome()', 'ui.waFull', 'function gestureHint(kind)', 'FEAT_K'], []),
     ("/wp-content/plugins/nadlan-config/assets/project-stage/world/world.css?ver=1.72.376", ['.nlw.nlw--docked', '.nlw-dock .nlw-panel, .nlw-dock .nlw-card', '.nlw--full .nlw-wafull', '.nlw-pin.has-i .i'], []),
     ("/wp-content/plugins/nadlan-config/assets/arealife/areamap.js?ver=1.72.376", ["'icon-allow-overlap': false", 'function iconId(p)', "'text-optional': false"], ["'icon-allow-overlap': true"]),
     ("/wp-content/plugins/nadlan-config/assets/arealife/place-icons.js?ver=1.72.376", ['window.NLPlaceIcons', 'Lucide 1.49.0', 'pinSvg'], []),
@@ -768,7 +768,7 @@ KH_ORDER = {p: KH_BASE + (['class="nlpd"'] if l == "he" else []) + KH_TAIL for l
 KH_HREFLANG = [f'<link rel="alternate" hreflang="{l}" href="https://nad-lan.co.il{p}" />' for l, p in KH_PAGES.items()] + \
     ['<link rel="alternate" hreflang="x-default" href="https://nad-lan.co.il/projects/hamedina/" />']
 KH_LANE = '@media(max-width:600px){:root body .nlps-page--world>.nlps-stagebox{margin-top:50px!important}}'
-KH_PILL = "'.nlps-hero__cta,#nlps button,#nlps a,#nlps-pick button"
+KH_PILL = "'.nlps-hero__cta,#nlps button,#nlps a,#nlps input,#nlps-pick button"
 KH_HERO = re.compile(r'<a class="nlds-btn[^>]*data-nlps-ev="hero-(wa|sale|world)"')
 KH_WA = {"he": "<b>ייעוץ חינם</b>", "en": "<b>Free consultation</b>", "fr": "<b>Conseil gratuit</b>", "ru": "<b>Бесплатная консультация</b>", "ar": "<b>استشارة مجانية</b>"}
 

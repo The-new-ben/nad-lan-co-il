@@ -51,7 +51,18 @@ rep('''t = must_replace(t, "			$kh_write = array(); // 1.72.372 writes data file
     '''t = must_replace(t, "			$kh_write = array(); // 1.72.374 writes no post", "			$kh_write = array(); // 1.72.376 writes no post")''')
 rep('''n_ver = checks.count("1.72.372")
 checks = checks.replace("1.72.372", V)''', '''n_ver = checks.count("1.72.374")
-checks = checks.replace("1.72.374", V)''')
+checks = checks.replace("1.72.374", V)
+# 1.72.376 changes two strings older checks pinned (first run rolled back on them): the bar's control list gains #nlps input,
+# and the hint function takes a kind
+for a, b in (("'.nlps-hero__cta,#nlps button,#nlps a,#nlps-pick button", "'.nlps-hero__cta,#nlps button,#nlps a,#nlps input,#nlps-pick button"),
+             ("'function gestureHint()'", "'function gestureHint(kind)'")):
+    if a not in checks:
+        raise SystemExit("FATAL generator: stale check string not found: " + a)
+    checks = checks.replace(a, b)
+t_kh = 'KH_PILL = "\\'.nlps-hero__cta,#nlps button,#nlps a,#nlps-pick button"'
+if t.count(t_kh) != 1:
+    raise SystemExit("FATAL generator: KH_PILL x" + str(t.count(t_kh)))
+t = t.replace(t_kh, 'KH_PILL = "\\'.nlps-hero__cta,#nlps button,#nlps a,#nlps input,#nlps-pick button"')''')
 start = s.index("extra = f'''# 1.72.373 (v104.3)")
 end = s.index("'''\n", start) + 4
 s = s[:start] + '''extra = f\'\'\'# 1.72.376 (v104.5): the WhatsApp bar counts the stage's inputs; the shipped files carry the QA round

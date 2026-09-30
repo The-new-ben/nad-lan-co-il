@@ -1,0 +1,69 @@
+{
+ "lang": "en",
+ "live": true,
+ "w": 320,
+ "M15": {
+  "zoom": 14.4,
+  "rendered": 35,
+  "textField": "[\"to-string\",[\"get\",\"name\"]]",
+  "textOptional": false,
+  "names": [
+   "Park",
+   "Kindergarten",
+   "Café",
+   "Restaurant",
+   "School",
+   "Kindergarten",
+   "Kindergarten",
+   "Dog park",
+   "Didoo Cafe",
+   "Sports ground"
+  ]
+ },
+ "M17": {
+  "visible": 2,
+  "named": 2,
+  "withIcon": 1,
+  "iconWithoutName": 0,
+  "tapOverlaps": 0,
+  "iconOverlaps": 0,
+  "ariaHidden": 2
+ },
+ "bar_on_slider_positions": 0,
+ "errors_phone": [],
+ "M24_wheel": {
+  "page_px": 260,
+  "camera_moved": false
+ },
+ "M24_ctrl_wheel": {
+  "page_px": 0,
+  "camera_moved": true
+ },
+ "hint": {
+  "hidden": true,
+  "text": "Zoom: Ctrl + scroll · ⤢ full screen"
+ },
+ "M19_tabs": [
+  [
+   112,
+   112,
+   44
+  ],
+  [
+   100,
+   100,
+   44
+  ],
+  [
+   173,
+   173,
+   44
+  ],
+  [
+   131,
+   131,
+   44
+  ]
+ ],
+ "errors_desktop": []
+}
