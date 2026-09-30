@@ -25,6 +25,13 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **30.9, turn 6** (web: [Mako/N12 on the new square](https://www.mako.co.il/news-money/real_estate/Article-1b24331b3cec0a1026.htm), [tlvonline on the square's renewal](https://tlvonline.co.il/%D7%A9%D7%93%D7%A8%D7%95%D7%92-%D7%9B%D7%99%D7%9B%D7%A8-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/), [project-tlv's timeline](https://project-tlv.info/buildings/kikar-hamedina/kikar-hamedina-project/)).
+  - **VERIFIED (dog park):** the park has a dog garden, a play garden, lawns and tables, the ecological pond with paths and bridges, a boulevard with a bicycle path, three rows of trees including heritage trees, a running track and kiosks.
+  - **The school (north):** fan-shaped, 3 upper floors, a green roof, an underground sports hall, and a field open to the public in the afternoons. It opened this school year.
+  - **The community centre (south):** 5 floors, with a dance studio, art rooms, lecture halls and a multi-purpose hall.
+  - All of these were sent to the world builder as clickable hotspots with sources.
+  - **Timeline additions (project-tlv):** plan published 2013, approved 2015, permit application 2017, excavation permit 2018, tree transplanting 2019, committee approval 2021, permit 2022.
+
 - **30.9, turn 5** (the prototype looked at; MYS read; Hebrew occupancy search: [Ashtrom](https://www.ashtrom.co.il/en/projects/kikar-hamedina), [Mako](https://www.mako.co.il/finances-real-estate/Article-cdd2b05daf37a91026.htm), [project-tlv](https://project-tlv.info/buildings/kikar-hamedina/kikar-hamedina-project/)).
   - **(1) The towers look like the real ones.** White slabs and white curtain walls per the architect, instead of a gold box. Gold now means "you chose this".
   - **(2) Hours of direct sun per facing.** Ray-tested against the real city blocks and shown per floor. No site in Israel shows this.
@@ -255,7 +262,20 @@ Every turn does ALL of these, not only the current phase:
   - `assets/project-stage/hamedina/world.json`, built by `scripts/project-stage/build_world_hamedina.py`, about 1.5 MB loaded on intent.
   - A poster image; a test harness with screenshots at 1440 and 390; fps and bytes.
   - It does NOT touch engine.js, the existing stages or PHP.
-- [ ] **P6, IN PROGRESS (turn 5).** A sub-agent writes `prompt-he.md` and `prompt-en.md`: marketing and positive per the owner, sourced, with the 7 People-Also-Ask questions as the FAQ, and internal links checked for 200.
+- [x] **P6 DONE 30.9: `prompt-he.md` (110 KB) and `prompt-en.md` (86 KB).**
+  - **The structure:**
+    - 15 H2s in each language.
+    - About 190 facts, 103 table rows and 23 conflicts, stated calmly.
+    - A positive "איך קונים" section in 7 steps.
+    - 12 FAQ entries: the first 7 are Google's People-Also-Ask questions, word for word.
+    - Internal links: 28 in Hebrew and 23 in English, every one checked 200 and indexable on 30.9.
+  - **The owner runs them:** attach the file in ChatGPT Pro, then paste the result back.
+  - **Titles:** "ותלת ממד" / "& 3D" stay in the SEO titles. The site already uses "תלת ממד" in its menus; the body text keeps the language rules.
+  - **Flags:**
+    - The tax rules are copied from the verified H Infinity list and marked [לאישור הבעלים].
+    - "Benini" has no source, so ChatGPT verifies it or says nothing.
+    - No kashrut data: the text says to check the certificate at the place.
+- [x] **P6 (turn 5 note) IN PROGRESS.** A sub-agent writes `prompt-he.md` and `prompt-en.md`: marketing and positive per the owner, sourced, with the 7 People-Also-Ask questions as the FAQ, and internal links checked for 200.
 - [ ] **P5 (the original task text) The models.**
   - The three towers with the 1.25° turn per floor, heights 160/157 m, on the official parcel.
   - The square's ring and the park with the lake.
