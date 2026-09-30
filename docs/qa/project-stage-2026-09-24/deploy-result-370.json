@@ -1,0 +1,40 @@
+{
+  "released": "1.72.370",
+  "from": "1.72.369",
+  "live_before": {
+    "inc/project-stage.php": "e6c9fc1c7f4df378588c974ef3305892",
+    "inc/conversion-cta.php": "142e1c1c64ecc3cc7d66cd2090e90d2e",
+    "i18n/lang-pages.json": "36ffe6dfd8ff247a8b541d482b86686e",
+    "assets/project-stage/world/world.js": "f27621bd009e769a26ac49a9b80d45b6",
+    "assets/project-stage/hamedina/world-i18n.json": "missing",
+    "nadlan-config.php": "77106b7ea2f5692f6e63867926337707"
+  },
+  "state": "released and verified",
+  "at": "2026-09-30 06:47:32",
+  "files": {
+    "inc/project-stage.php": "ae0966a44f5a671cd91ae4bc9b8ef61d",
+    "inc/conversion-cta.php": "2075bc38da9ca5251b34349fce30e4da",
+    "i18n/lang-pages.json": "ffdff1b841826c370bb6ed0a9c14ff50",
+    "assets/project-stage/world/world.js": "022c8899976deb8275ee5e212c331a95",
+    "assets/project-stage/hamedina/world-i18n.json": "16480665f19c7741d4189954afa0dbc8",
+    "nadlan-config.php": "ee9af429a9084f21976cce30d7904d40"
+  },
+  "posts": {
+    "hamedina-fr": {
+      "id": 8116,
+      "created": 1,
+      "link": "https://nad-lan.co.il/projects/hamedina-fr/"
+    },
+    "hamedina-ru": {
+      "id": 8117,
+      "created": 1,
+      "link": "https://nad-lan.co.il/projects/hamedina-ru/"
+    },
+    "hamedina-ar": {
+      "id": 8118,
+      "created": 1,
+      "link": "https://nad-lan.co.il/projects/hamedina-ar/"
+    }
+  },
+  "checks": "verify_pages + verify_order + verify_home_order + verify_kh: OK"
+}

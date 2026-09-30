@@ -110,7 +110,10 @@ def analyze(url, html):
     notice = html.find('<aside class="nl-projnotice"')
     article = html.find('class="nadlan-project-article')
     c["notice_count"] = html.count('<aside class="nl-projnotice"')
-    c["notice_below_article_head"] = (notice < 0) or (article > 0 and notice >= article - 400)
+    # the notice must sit directly above the article: measured from the notice's END (30.9.2026: the French notice is longer
+    # than 400 bytes, so a start-based window flagged a notice that was right above the article)
+    notice_end = html.find("</aside>", notice) + len("</aside>") if notice >= 0 else -1
+    c["notice_below_article_head"] = (notice < 0) or (article > 0 and notice < article and article - notice_end <= 200)
     c["ecocity_render_leak"] = html.count("ecocity-render")
     c["secret_tokens"] = len(SECRET_TOKEN_RE.findall(html))
     return c

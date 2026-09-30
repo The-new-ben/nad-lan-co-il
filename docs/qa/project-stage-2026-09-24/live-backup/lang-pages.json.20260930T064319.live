@@ -1,0 +1,812 @@
+{
+ "note": "LanguagePages v84 (28.9.2026): the words outside the article on a project's language page. Built by scripts/i18n/build_lang_pages.py; read by inc/lang-pages.php. Keys are the exact Hebrew the site prints.",
+ "exact": {
+  "לדלג לתוכן": {
+   "en": "Skip to content",
+   "fr": "Aller au contenu",
+   "ru": "Перейти к содержимому",
+   "ar": "تخطَّ إلى المحتوى"
+  },
+  "דלג לתוכן": {
+   "en": "Skip to content",
+   "fr": "Aller au contenu",
+   "ru": "Перейти к содержимому",
+   "ar": "تخطَّ إلى المحتوى"
+  },
+  "נדל״ן לפני שפונים ליזם": {
+   "en": "Before you call the developer",
+   "fr": "Avant d'appeler le promoteur",
+   "ru": "До звонка застройщику",
+   "ar": "قبل التوجه إلى المطوّر"
+  },
+  "פרויקטים": {
+   "en": "Projects",
+   "fr": "Projets",
+   "ru": "Проекты",
+   "ar": "مشاريع"
+  },
+  "קטלוג תלת ממד": {
+   "en": "3D catalogue",
+   "fr": "Catalogue 3D",
+   "ru": "3D-каталог",
+   "ar": "كتالوج ثلاثي الأبعاد"
+  },
+  "אזורי ביקוש": {
+   "en": "Top areas",
+   "fr": "Quartiers",
+   "ru": "Районы",
+   "ar": "مناطق مطلوبة"
+  },
+  "מחשבונים": {
+   "en": "Calculators",
+   "fr": "Simulateurs",
+   "ru": "Калькуляторы",
+   "ar": "حاسبات"
+  },
+  "נדל\"ן בחו\"ל": {
+   "en": "Property abroad",
+   "fr": "À l'étranger",
+   "ru": "За рубежом",
+   "ar": "عقارات في الخارج"
+  },
+  "נדל״ן בחו״ל": {
+   "en": "Property abroad",
+   "fr": "Immobilier à l'étranger",
+   "ru": "Недвижимость за рубежом",
+   "ar": "عقارات في الخارج"
+  },
+  "אנשי מקצוע": {
+   "en": "Professionals",
+   "fr": "Professionnels",
+   "ru": "Специалисты",
+   "ar": "مختصون"
+  },
+  "מתווכים": {
+   "en": "Brokers",
+   "fr": "Agents",
+   "ru": "Риелторы",
+   "ar": "وسطاء عقاريون"
+  },
+  "מדריכים": {
+   "en": "Guides",
+   "fr": "Guides",
+   "ru": "Гиды",
+   "ar": "أدلة"
+  },
+  "בחרו פרויקט": {
+   "en": "Choose a project",
+   "fr": "Choisir un projet",
+   "ru": "Выбрать проект",
+   "ar": "اختر مشروعاً"
+  },
+  "פתיחת תפריט ניווט": {
+   "en": "Open the navigation menu",
+   "fr": "Ouvrir le menu de navigation",
+   "ru": "Открыть меню навигации",
+   "ar": "فتح قائمة التنقل"
+  },
+  "ניווט ראשי": {
+   "en": "Main navigation",
+   "fr": "Navigation principale",
+   "ru": "Главная навигация",
+   "ar": "التنقل الرئيسي"
+  },
+  "קישורי אתר": {
+   "en": "Site links",
+   "fr": "Liens du site",
+   "ru": "Ссылки сайта",
+   "ar": "روابط الموقع"
+  },
+  "נגישות": {
+   "en": "Accessibility",
+   "fr": "Accessibilité",
+   "ru": "Доступность",
+   "ar": "إمكانية الوصول"
+  },
+  "הגדרות נגישות": {
+   "en": "Accessibility settings",
+   "fr": "Paramètres d'accessibilité",
+   "ru": "Настройки доступности",
+   "ar": "إعدادات إمكانية الوصول"
+  },
+  "תפריט נגישות": {
+   "en": "Accessibility menu",
+   "fr": "Menu d'accessibilité",
+   "ru": "Меню доступности",
+   "ar": "قائمة إمكانية الوصول"
+  },
+  "גופן קריא": {
+   "en": "Readable font",
+   "fr": "Police lisible",
+   "ru": "Удобочитаемый шрифт",
+   "ar": "خط سهل القراءة"
+  },
+  "הגדלת טקסט": {
+   "en": "Larger text",
+   "fr": "Agrandir le texte",
+   "ru": "Увеличить текст",
+   "ar": "تكبير النص"
+  },
+  "הדגשת קישורים": {
+   "en": "Highlight links",
+   "fr": "Surligner les liens",
+   "ru": "Выделить ссылки",
+   "ar": "إبراز الروابط"
+  },
+  "ניגודיות גבוהה": {
+   "en": "High contrast",
+   "fr": "Contraste élevé",
+   "ru": "Высокий контраст",
+   "ar": "تباين عالٍ"
+  },
+  "עצירת אנימציות": {
+   "en": "Stop animations",
+   "fr": "Arrêter les animations",
+   "ru": "Остановить анимацию",
+   "ar": "إيقاف الحركة"
+  },
+  "איפוס": {
+   "en": "Reset",
+   "fr": "Réinitialiser",
+   "ru": "Сбросить",
+   "ar": "إعادة الضبط"
+  },
+  "סגירה": {
+   "en": "Close",
+   "fr": "Fermer",
+   "ru": "Закрыть",
+   "ar": "إغلاق"
+  },
+  "פרויקטים, דירות, אזורים וכלי בדיקה": {
+   "en": "Projects, homes, areas and checking tools",
+   "fr": "Projets, logements, quartiers et outils de vérification",
+   "ru": "Проекты, квартиры, районы и инструменты проверки",
+   "ar": "مشاريع وشقق ومناطق وأدوات فحص"
+  },
+  "מידע נדל״ן, פרויקטים חדשים, סביבת מגורים וכלים לבדיקת עסקה לפני שמתקדמים לפנייה.": {
+   "en": "Property information, new projects, the neighbourhood and tools to check a deal before you make an enquiry.",
+   "fr": "Informations immobilières, projets neufs, cadre de vie et outils pour vérifier une transaction avant de prendre contact.",
+   "ru": "Информация о недвижимости, новые проекты, район и инструменты для проверки сделки до обращения.",
+   "ar": "معلومات عقارية ومشاريع جديدة وبيئة السكن وأدوات لفحص الصفقة قبل التواصل."
+  },
+  "כל הפרויקטים": {
+   "en": "All projects",
+   "fr": "Tous les projets",
+   "ru": "Все проекты",
+   "ar": "كل المشاريع"
+  },
+  "בדיקה לפני קנייה": {
+   "en": "Check before you buy",
+   "fr": "Vérifier avant d'acheter",
+   "ru": "Проверка перед покупкой",
+   "ar": "الفحص قبل الشراء"
+  },
+  "מחשבון משכנתא": {
+   "en": "Mortgage calculator",
+   "fr": "Simulateur de prêt",
+   "ru": "Ипотечный калькулятор",
+   "ar": "حاسبة الرهن العقاري"
+  },
+  "מס רכישה": {
+   "en": "Purchase tax",
+   "fr": "Taxe d'acquisition",
+   "ru": "Налог на покупку",
+   "ar": "ضريبة الشراء"
+  },
+  "מדריך קנייה": {
+   "en": "Buying guide",
+   "fr": "Guide d'achat",
+   "ru": "Руководство покупателя",
+   "ar": "دليل الشراء"
+  },
+  "בדיקה משפטית": {
+   "en": "Legal check",
+   "fr": "Vérification juridique",
+   "ru": "Юридическая проверка",
+   "ar": "الفحص القانوني"
+  },
+  "מערכת NadLan": {
+   "en": "The NadLan platform",
+   "fr": "La plateforme NadLan",
+   "ru": "Платформа NadLan",
+   "ar": "منصة NadLan"
+  },
+  "רובע שדה דב": {
+   "en": "Sde Dov quarter",
+   "fr": "Quartier de Sde Dov",
+   "ru": "Район Сде-Дов",
+   "ar": "حي سديه دوف"
+  },
+  "אודות": {
+   "en": "About",
+   "fr": "À propos",
+   "ru": "О нас",
+   "ar": "من نحن"
+  },
+  "צור קשר": {
+   "en": "Contact",
+   "fr": "Contact",
+   "ru": "Контакты",
+   "ar": "اتصل بنا"
+  },
+  "המידע באתר אינו ייעוץ משפטי, פיננסי או שמאי. יש לבדוק כל נתון מול הגורמים המוסמכים.": {
+   "en": "The information on this site is not legal, financial or valuation advice. Check every figure with the competent bodies.",
+   "fr": "Les informations de ce site ne constituent pas un conseil juridique, financier ou d'évaluation. Vérifiez chaque donnée auprès des instances compétentes.",
+   "ru": "Информация на сайте не является юридической, финансовой или оценочной консультацией. Проверяйте каждую цифру в уполномоченных органах.",
+   "ar": "المعلومات في الموقع ليست استشارة قانونية أو مالية أو تقييمية. يجب التحقق من كل معطى لدى الجهات المختصة."
+  },
+  "תנאי שימוש": {
+   "en": "Terms of use",
+   "fr": "Conditions d'utilisation",
+   "ru": "Условия использования",
+   "ar": "شروط الاستخدام"
+  },
+  "מדיניות פרטיות": {
+   "en": "Privacy policy",
+   "fr": "Politique de confidentialité",
+   "ru": "Политика конфиденциальности",
+   "ar": "سياسة الخصوصية"
+  },
+  "הצהרת נגישות": {
+   "en": "Accessibility statement",
+   "fr": "Déclaration d'accessibilité",
+   "ru": "Заявление о доступности",
+   "ar": "بيان إمكانية الوصول"
+  },
+  "מפת האתר המלאה: כל הכלים, המדריכים והמאגרים ←": {
+   "en": "The full site map: every tool, guide and database →",
+   "fr": "Le plan complet du site : tous les outils, guides et bases de données →",
+   "ru": "Полная карта сайта: все инструменты, руководства и базы данных →",
+   "ar": "خريطة الموقع الكاملة: كل الأدوات والأدلة وقواعد البيانات ←"
+  },
+  "מחירי הסביבה": {
+   "en": "Local prices",
+   "fr": "Prix du quartier",
+   "ru": "Цены в районе",
+   "ar": "أسعار المنطقة"
+  },
+  "בפרויקט, לפי היזם": {
+   "en": "In the project, per the developer",
+   "fr": "Dans le projet, selon le promoteur",
+   "ru": "В проекте, по данным застройщика",
+   "ar": "في المشروع، بحسب المطوّر"
+  },
+  "לא מחייב": {
+   "en": "Non-binding",
+   "fr": "Non contractuel",
+   "ru": "Не является обязательством",
+   "ar": "غير ملزم"
+  },
+  "יד שנייה וחדש": {
+   "en": "Resale and new",
+   "fr": "Ancien et neuf",
+   "ru": "Вторичное и новое жильё",
+   "ar": "مستعمل وجديد"
+  },
+  "המחירים הם של הסביבה, לא של הדירות בפרויקט. מחיר הדירה נקבע מול היזם.": {
+   "en": "These are local prices, not the prices of the project's apartments. An apartment's price is set with the developer.",
+   "fr": "Ce sont les prix du quartier, pas ceux des appartements du projet. Le prix d'un appartement se fixe avec le promoteur.",
+   "ru": "Это цены в районе, а не цены квартир в проекте. Цена квартиры устанавливается с застройщиком.",
+   "ar": "هذه أسعار المنطقة وليست أسعار شقق المشروع. يُحدَّد سعر الشقة مع المطوّر."
+  },
+  "כל הפרויקטים החדשים": {
+   "en": "All new projects",
+   "fr": "Tous les projets neufs",
+   "ru": "Все новые проекты",
+   "ar": "كل المشاريع الجديدة"
+  },
+  "איפה הפרויקט עומד": {
+   "en": "Where the project stands",
+   "fr": "Où en est le projet",
+   "ru": "На каком этапе проект",
+   "ar": "أين يقف المشروع"
+  },
+  "תכנון": {
+   "en": "Planning",
+   "fr": "Planification",
+   "ru": "Проектирование",
+   "ar": "التخطيط"
+  },
+  "היתר בנייה": {
+   "en": "Building permit",
+   "fr": "Permis de construire",
+   "ru": "Разрешение на строительство",
+   "ar": "رخصة البناء"
+  },
+  "שיווק ומכירות": {
+   "en": "Marketing and sales",
+   "fr": "Commercialisation et ventes",
+   "ru": "Маркетинг и продажи",
+   "ar": "التسويق والمبيعات"
+  },
+  "בנייה": {
+   "en": "Construction",
+   "fr": "Construction",
+   "ru": "Строительство",
+   "ar": "البناء"
+  },
+  "השלב כפי שדווח לפרויקט; לוחות הזמנים באחריות היזם.": {
+   "en": "The stage as reported for the project; timelines are the developer's responsibility.",
+   "fr": "L'étape telle que déclarée pour le projet ; les délais relèvent du promoteur.",
+   "ru": "Этап указан по данным проекта; за сроки отвечает застройщик.",
+   "ar": "المرحلة كما أُبلغ عنها للمشروع؛ الجداول الزمنية من مسؤولية المطوّر."
+  },
+  "בבנייה": {
+   "en": "Under construction",
+   "fr": "En construction",
+   "ru": "Строится",
+   "ar": "قيد البناء"
+  },
+  "בשיווק": {
+   "en": "On sale",
+   "fr": "En commercialisation",
+   "ru": "В продаже",
+   "ar": "في مرحلة التسويق"
+  },
+  "בהקמה": {
+   "en": "Under development",
+   "fr": "En cours de réalisation",
+   "ru": "В стадии реализации",
+   "ar": "قيد الإنشاء"
+  },
+  "בהיתר בנייה": {
+   "en": "At the building-permit stage",
+   "fr": "Au stade du permis de construire",
+   "ru": "На стадии разрешения на строительство",
+   "ar": "في مرحلة رخصة البناء"
+  },
+  "הושלם": {
+   "en": "Completed",
+   "fr": "Achevé",
+   "ru": "Завершён",
+   "ar": "مكتمل"
+  },
+  "באכלוס": {
+   "en": "Being occupied",
+   "fr": "En cours de livraison",
+   "ru": "Заселяется",
+   "ar": "قيد الإسكان"
+  },
+  "מחיר: איפה הפרויקט עומד מול הסביבה": {
+   "en": "Price: where the project stands against its area",
+   "fr": "Prix : où se situe le projet par rapport au quartier",
+   "ru": "Цена: как проект соотносится с районом",
+   "ar": "السعر: أين يقف المشروع مقارنة بالمنطقة"
+  },
+  "מחירים והשוואה": {
+   "en": "Prices and comparison",
+   "fr": "Prix et comparaison",
+   "ru": "Цены и сравнение",
+   "ar": "الأسعار والمقارنة"
+  },
+  "מחיר ממוצע למ״ר בפרויקט. אומדן לא מחייב.": {
+   "en": "Average price per m² in the project. A non-binding estimate.",
+   "fr": "Prix moyen au m² dans le projet. Estimation non contractuelle.",
+   "ru": "Средняя цена за м² в проекте. Необязывающая оценка.",
+   "ar": "متوسط سعر المتر المربع في المشروع. تقدير غير ملزم."
+  },
+  "פרויקטים סמוכים להשוואה · מבוסס על קטלוג נדלן": {
+   "en": "Nearby projects to compare · based on the NadLan catalogue",
+   "fr": "Projets voisins à comparer · d'après le catalogue NadLan",
+   "ru": "Соседние проекты для сравнения · по каталогу NadLan",
+   "ar": "مشاريع مجاورة للمقارنة · بحسب كتالوج NadLan"
+  },
+  "פרויקט": {
+   "en": "Project",
+   "fr": "Projet",
+   "ru": "Проект",
+   "ar": "المشروع"
+  },
+  "₪/מ״ר": {
+   "en": "₪/m²",
+   "fr": "₪/m²",
+   "ru": "₪/м²",
+   "ar": "₪/م²"
+  },
+  "מרחק": {
+   "en": "Distance",
+   "fr": "Distance",
+   "ru": "Расстояние",
+   "ar": "المسافة"
+  },
+  "כל המחירים, המוסדות והתוכניות - על המפה החיה למטה ←": {
+   "en": "Every price, institution and plan on the area map below →",
+   "fr": "Tous les prix, établissements et plans sur la carte du quartier ci-dessous →",
+   "ru": "Все цены, учреждения и планы на карте района ниже →",
+   "ar": "كل الأسعار والمؤسسات والمخططات على خريطة المنطقة أدناه ←"
+  },
+  "כל המחירים, המוסדות והתוכניות על מפת האזור ←": {
+   "en": "Every price, institution and plan on the area map →",
+   "fr": "Tous les prix, établissements et plans sur la carte du quartier →",
+   "ru": "Все цены, учреждения и планы на карте района →",
+   "ar": "كل الأسعار والمؤسسات والمخططات على خريطة المنطقة ←"
+  },
+  "האומדנים מבוססים על נתונים גלויים בקטלוג נדלן ואינם מחייבים. יש לאמת מחירים מול היזם.": {
+   "en": "The estimates are based on public data in the NadLan catalogue and are not binding. Verify prices with the developer.",
+   "fr": "Les estimations reposent sur des données publiques du catalogue NadLan et ne sont pas contractuelles. Vérifiez les prix auprès du promoteur.",
+   "ru": "Оценки основаны на открытых данных каталога NadLan и не являются обязательством. Проверяйте цены у застройщика.",
+   "ar": "التقديرات مبنية على بيانات علنية في كتالوج NadLan وهي غير ملزمة. يجب التحقق من الأسعار لدى المطوّر."
+  },
+  "מימון, ייעוץ ועיצוב - הכל במקום אחד": {
+   "en": "Financing, advice and design, all in one place",
+   "fr": "Financement, conseil et design, tout au même endroit",
+   "ru": "Финансирование, консультации и дизайн в одном месте",
+   "ar": "التمويل والاستشارة والتصميم في مكان واحد"
+  },
+  "מימון וליווי": {
+   "en": "Financing and support",
+   "fr": "Financement et accompagnement",
+   "ru": "Финансирование и сопровождение",
+   "ar": "التمويل والمرافقة"
+  },
+  "לחישוב אישי במחשבון המשכנתא ←": {
+   "en": "Your own figure in the mortgage calculator →",
+   "fr": "Votre calcul personnel dans le simulateur de prêt →",
+   "ru": "Личный расчёт в ипотечном калькуляторе →",
+   "ar": "حساب شخصي في حاسبة الرهن العقاري ←"
+  },
+  "כל מה שסביב הפרויקט": {
+   "en": "Everything around the project",
+   "fr": "Tout autour du projet",
+   "ru": "Всё вокруг проекта",
+   "ar": "كل ما يحيط بالمشروع"
+  },
+  "כל המידע סביב הפרויקט": {
+   "en": "All the information around the project",
+   "fr": "Toutes les informations autour du projet",
+   "ru": "Вся информация вокруг проекта",
+   "ar": "كل المعلومات حول المشروع"
+  },
+  "פרופיל, רישום ופרויקטים נוספים ←": {
+   "en": "Profile, registration and other projects →",
+   "fr": "Profil, immatriculation et autres projets →",
+   "ru": "Профиль, регистрация и другие проекты →",
+   "ar": "الملف والتسجيل ومشاريع أخرى ←"
+  },
+  "בעלי מקצוע": {
+   "en": "Professionals",
+   "fr": "Professionnels",
+   "ru": "Специалисты",
+   "ar": "مختصون"
+  },
+  "עו״ד מקרקעין, שמאים, בדק בית ←": {
+   "en": "Property lawyers, appraisers, home inspection →",
+   "fr": "Avocats en immobilier, experts, inspection du logement →",
+   "ru": "Юристы по недвижимости, оценщики, осмотр жилья →",
+   "ar": "محامو عقارات ومثمّنون وفحص المنزل ←"
+  },
+  "כמה תשלמו בחודש ←": {
+   "en": "What you will pay each month →",
+   "fr": "Ce que vous paierez chaque mois →",
+   "ru": "Сколько вы будете платить в месяц →",
+   "ar": "كم ستدفعون شهرياً ←"
+  },
+  "מדריך קנייה מקבלן": {
+   "en": "Guide: buying from a developer",
+   "fr": "Guide : acheter auprès d'un promoteur",
+   "ru": "Руководство: покупка у застройщика",
+   "ar": "دليل الشراء من المطوّر"
+  },
+  "שלב-אחר-שלב, ערבויות חוק מכר ←": {
+   "en": "Step by step, Sale Law guarantees →",
+   "fr": "Étape par étape, garanties de la loi sur la vente →",
+   "ru": "Шаг за шагом, гарантии по Закону о продаже →",
+   "ar": "خطوة بخطوة، ضمانات قانون البيع ←"
+  },
+  "מילון מונחים": {
+   "en": "Glossary",
+   "fr": "Glossaire",
+   "ru": "Словарь терминов",
+   "ar": "معجم المصطلحات"
+  },
+  "תמ״א, פינוי-בינוי, הערת אזהרה ←": {
+   "en": "TAMA, Pinui-Binui, warning note →",
+   "fr": "TAMA, Pinouï-Binouï, note d'avertissement →",
+   "ru": "ТАМА, «Пинуй-Бинуй», предупредительная запись →",
+   "ar": "تاما، الإخلاء والبناء، ملاحظة تحذيرية ←"
+  },
+  "עיר": {
+   "en": "City",
+   "fr": "Ville",
+   "ru": "Город",
+   "ar": "المدينة"
+  },
+  "יזם": {
+   "en": "Developer",
+   "fr": "Promoteur",
+   "ru": "Застройщик",
+   "ar": "المطوّر"
+  },
+  "קבלן": {
+   "en": "Contractor",
+   "fr": "Entrepreneur",
+   "ru": "Подрядчик",
+   "ar": "المقاول"
+  },
+  "סוג פרויקט": {
+   "en": "Project type",
+   "fr": "Type de projet",
+   "ru": "Тип проекта",
+   "ar": "نوع المشروع"
+  },
+  "סטטוס": {
+   "en": "Status",
+   "fr": "Statut",
+   "ru": "Статус",
+   "ar": "الحالة"
+  },
+  "יחידות דיור": {
+   "en": "Housing units",
+   "fr": "Logements",
+   "ru": "Жилых единиц",
+   "ar": "وحدات سكنية"
+  },
+  "יח\"ד קיימות": {
+   "en": "Existing units",
+   "fr": "Logements existants",
+   "ru": "Существующих квартир",
+   "ar": "وحدات قائمة"
+  },
+  "יח\"ד נוספות": {
+   "en": "Added units",
+   "fr": "Logements ajoutés",
+   "ru": "Дополнительных квартир",
+   "ar": "وحدات إضافية"
+  },
+  "מספר תוכנית": {
+   "en": "Plan number",
+   "fr": "Numéro du plan",
+   "ru": "Номер плана",
+   "ar": "رقم المخطط"
+  },
+  "שנת תוקף": {
+   "en": "Completion year",
+   "fr": "Année d'achèvement",
+   "ru": "Год завершения",
+   "ar": "سنة الإنجاز"
+  },
+  "אתר": {
+   "en": "Website",
+   "fr": "Site web",
+   "ru": "Сайт",
+   "ar": "الموقع الإلكتروني"
+  },
+  "בנייה חדשה": {
+   "en": "New build",
+   "fr": "Construction neuve",
+   "ru": "Новостройка",
+   "ar": "بناء جديد"
+  },
+  "משרדים ומסחר": {
+   "en": "Offices and retail",
+   "fr": "Bureaux et commerces",
+   "ru": "Офисы и торговля",
+   "ar": "مكاتب وتجارة"
+  },
+  "פרויקטים חדשים, דירות, אנשי מקצוע ומחשבונים - רואים הכל לפני שקונים": {
+   "en": "New projects, apartments, professionals and calculators - see everything before you buy",
+   "fr": "Projets neufs, appartements, professionnels et calculateurs - tout voir avant d'acheter",
+   "ru": "Новые проекты, квартиры, специалисты и калькуляторы - всё видно до покупки",
+   "ar": "مشاريع جديدة وشقق ومختصون وحاسبات - كل شيء أمامكم قبل الشراء"
+  }
+ },
+ "patterns": [
+  {
+   "re": "^כמה עולה דירה ב(.+)\\?$",
+   "en": "What does an apartment cost in {1}?",
+   "fr": "Combien coûte un appartement à {1} ?",
+   "ru": "Сколько стоит квартира в городе {1}?",
+   "ar": "كم يبلغ سعر شقة في {1}؟"
+  },
+  {
+   "re": "^עסקאות שדווחו לרשות המסים, ([\\d.]+) עד ([\\d.]+?)\\. חציון של דירות בבתי קומות\\. מ[־-]?(\\d{4}) עד (\\d{4}): ([+\\-−]?\\d+%) במחיר למ[״\"]ר בעיר\\.$",
+   "en": "Deals reported to the Tax Authority, {1} to {2}. The median of apartments in multi-storey buildings. {3} to {4}: {5} in the city's price per m².",
+   "fr": "Transactions déclarées à l'administration fiscale, de {1} à {2}. Médiane des appartements en immeubles collectifs. De {3} à {4} : {5} sur le prix au m² de la ville.",
+   "ru": "Сделки, заявленные в Налоговое управление, с {1} по {2}. Медиана по квартирам в многоквартирных домах. С {3} по {4}: {5} к цене за м² в городе.",
+   "ar": "صفقات أُبلغت بها سلطة الضرائب، من {1} حتى {2}. الوسيط لشقق في مبانٍ متعددة الطوابق. من {3} حتى {4}: {5} في سعر المتر المربع في المدينة."
+  },
+  {
+   "re": "^מחיר למ[״\"]ר ב(.+)$",
+   "en": "Price per m² in {1}",
+   "fr": "Prix au m² à {1}",
+   "ru": "Цена за м² в городе {1}",
+   "ar": "سعر المتر المربع في {1}"
+  },
+  {
+   "re": "^([\\d,]+) עסקאות$",
+   "en": "{1} deals",
+   "fr": "{1} transactions",
+   "ru": "Сделок: {1}",
+   "ar": "عدد الصفقات: {1}"
+  },
+  {
+   "re": "^([\\d,]+) ₪ למ[״\"]ר$",
+   "en": "{1} ₪ per m²",
+   "fr": "{1} ₪ le m²",
+   "ru": "{1} ₪ за м²",
+   "ar": "{1} ₪ للمتر المربع"
+  },
+  {
+   "re": "^דירת (\\d+) חדרים ב(.+), חציון$",
+   "en": "{1}-room apartment in {2}, median",
+   "fr": "Appartement de {1} pièces à {2}, médiane",
+   "ru": "{1}-комнатная квартира в городе {2}, медиана",
+   "ar": "شقة من {1} غرف في {2}، الوسيط"
+  },
+  {
+   "re": "^ברחוב (.+)$",
+   "en": "On {1} Street",
+   "fr": "Rue {1}",
+   "ru": "Улица {1}",
+   "ar": "في شارع {1}"
+  },
+  {
+   "re": "^עוד פרויקטים חדשים ב(.+)$",
+   "en": "More new projects in {1}",
+   "fr": "Autres projets neufs à {1}",
+   "ru": "Другие новые проекты в городе {1}",
+   "ar": "مشاريع جديدة أخرى في {1}"
+  },
+  {
+   "re": "^טופס (\\d+) ומסירה$",
+   "en": "Form {1} and handover",
+   "fr": "Formulaire {1} et livraison",
+   "ru": "Форма {1} и сдача",
+   "ar": "النموذج {1} والتسليم"
+  },
+  {
+   "re": "^~([\\d,]+) ₪/מ[״\"]ר$",
+   "en": "~{1} ₪/m²",
+   "fr": "~{1} ₪/m²",
+   "ru": "~{1} ₪/м²",
+   "ar": "~{1} ₪/م²"
+  },
+  {
+   "re": "^מחיר ממוצע למ[״\"]ר בפרויקט, דירות (\\d+)-(\\d+) מ[״\"]ר\\. אומדן לא מחייב\\.$",
+   "en": "Average price per m² in the project, apartments of {1}-{2} m². A non-binding estimate.",
+   "fr": "Prix moyen au m² dans le projet, appartements de {1} à {2} m². Estimation non contractuelle.",
+   "ru": "Средняя цена за м² в проекте, квартиры {1}-{2} м². Необязывающая оценка.",
+   "ar": "متوسط سعر المتر المربع في المشروع، شقق من {1} إلى {2} م². تقدير غير ملزم."
+  },
+  {
+   "re": "^([\\d.,]+) מ[׳']$",
+   "en": "{1} m",
+   "fr": "{1} m",
+   "ru": "{1} м",
+   "ar": "{1} م"
+  },
+  {
+   "re": "^([\\d.,]+) ק[״\"]מ$",
+   "en": "{1} km",
+   "fr": "{1} km",
+   "ru": "{1} км",
+   "ar": "{1} كم"
+  },
+  {
+   "re": "^סדר גודל של החזר חודשי לדירת ~(\\d+) מ[״\"]ר\\. אומדן לא מחייב, תלוי במסלול ובריבית\\.$",
+   "en": "The order of magnitude of the monthly repayment for a ~{1} m² apartment. A non-binding estimate that depends on the loan track and the rate.",
+   "fr": "Ordre de grandeur de la mensualité pour un appartement d'environ {1} m². Estimation non contractuelle, selon le type de prêt et le taux.",
+   "ru": "Примерный ежемесячный платёж за квартиру ~{1} м². Необязывающая оценка, зависит от программы и ставки.",
+   "ar": "حجم تقريبي للقسط الشهري لشقة بمساحة ~{1} م². تقدير غير ملزم، يعتمد على المسار والفائدة."
+  },
+  {
+   "re": "^היזם: (.+)$",
+   "en": "Developer: {1}",
+   "fr": "Promoteur : {1}",
+   "ru": "Застройщик: {1}",
+   "ar": "المطوّر: {1}"
+  },
+  {
+   "re": "^בעלי מקצוע ב(.+)$",
+   "en": "Professionals in {1}",
+   "fr": "Professionnels à {1}",
+   "ru": "Специалисты в городе {1}",
+   "ar": "مختصون في {1}"
+  },
+  {
+   "re": "^מדרגות (\\d{4}) ומחשבון ←$",
+   "en": "The {1} brackets and a calculator →",
+   "fr": "Les tranches {1} et un simulateur →",
+   "ru": "Ставки {1} и калькулятор →",
+   "ar": "شرائح {1} والحاسبة ←"
+  }
+ ],
+ "names": {
+  "תל אביב יפו": {
+   "en": "Tel Aviv-Yafo",
+   "fr": "Tel Aviv-Jaffa",
+   "ru": "Тель-Авив-Яффо",
+   "ar": "تل أبيب يافا"
+  },
+  "תל אביב-יפו": {
+   "en": "Tel Aviv-Yafo",
+   "fr": "Tel Aviv-Jaffa",
+   "ru": "Тель-Авив-Яффо",
+   "ar": "تل أبيب يافا"
+  },
+  "בני ברק": {
+   "en": "Bnei Brak",
+   "fr": "Bnei Brak",
+   "ru": "Бней-Брак",
+   "ar": "بني براك"
+  },
+  "אבן גבירול": {
+   "en": "Ibn Gabirol",
+   "fr": "Ibn Gabirol",
+   "ru": "Ибн Гвироль",
+   "ar": "ابن جبيرول"
+  },
+  "ישראל קנדה": {
+   "en": "Israel Canada",
+   "fr": "Israel Canada",
+   "ru": "Israel Canada",
+   "ar": "Israel Canada"
+  },
+  "י.ח דמרי": {
+   "en": "Y.H. Dimri",
+   "fr": "Y.H. Dimri",
+   "ru": "Y.H. Dimri",
+   "ar": "Y.H. Dimri"
+  },
+  "אפריקה ישראל מגורים": {
+   "en": "Africa Israel Residences",
+   "fr": "Africa Israel Residences",
+   "ru": "Africa Israel Residences",
+   "ar": "Africa Israel Residences"
+  },
+  "אמות השקעות ואלייד נדל\"ן": {
+   "en": "Amot Investments and Allied Real Estate",
+   "fr": "Amot Investments et Allied Real Estate",
+   "ru": "Amot Investments и Allied Real Estate",
+   "ar": "Amot Investments وAllied Real Estate"
+  },
+  "אמות השקעות וגב-ים": {
+   "en": "Amot Investments and Gav-Yam",
+   "fr": "Amot Investments et Gav-Yam",
+   "ru": "Amot Investments и Gav-Yam",
+   "ar": "Amot Investments وGav-Yam"
+  },
+  "Rainbow Tel Aviv - ריינבו תל אביב": {
+   "en": "Rainbow Tel Aviv",
+   "fr": "Rainbow Tel Aviv",
+   "ru": "Rainbow Tel Aviv",
+   "ar": "Rainbow Tel Aviv"
+  },
+  "ZOHI זוהי שדה דב - לוינשטין מבנה אלייד": {
+   "en": "ZOHI Sde Dov",
+   "fr": "ZOHI Sde Dov",
+   "ru": "ZOHI Sde Dov",
+   "ar": "ZOHI Sde Dov"
+  },
+  "DIMRI YAMA שדה דב - י.ח דמרי": {
+   "en": "DIMRI YAMA Sde Dov",
+   "fr": "DIMRI YAMA Sde Dov",
+   "ru": "DIMRI YAMA Sde Dov",
+   "ar": "DIMRI YAMA Sde Dov"
+  },
+  "GINDI VOGUE שדה דב - פרוייקט גינדי ווג": {
+   "en": "GINDI VOGUE Sde Dov",
+   "fr": "GINDI VOGUE Sde Dov",
+   "ru": "GINDI VOGUE Sde Dov",
+   "ar": "GINDI VOGUE Sde Dov"
+  },
+  "ASHIRA - פרויקט אשירה שדה דב תל אביב מחיר": {
+   "en": "ASHIRA Sde Dov",
+   "fr": "ASHIRA Sde Dov",
+   "ru": "ASHIRA Sde Dov",
+   "ar": "ASHIRA Sde Dov"
+  },
+  "FIRST שדה דב - קבוצת חג'ג'": {
+   "en": "FIRST Sde Dov",
+   "fr": "FIRST Sde Dov",
+   "ru": "FIRST Sde Dov",
+   "ar": "FIRST Sde Dov"
+  },
+  "הרברט סמואל SIX-8 תל אביב - דירות יוקרה בקו הראשון לים": {
+   "en": "SIX-8 Herbert Samuel Tel Aviv",
+   "fr": "SIX-8 Herbert Samuel Tel Aviv",
+   "ru": "SIX-8 Herbert Samuel Tel Aviv",
+   "ar": "SIX-8 Herbert Samuel Tel Aviv"
+  }
+ }
+}
