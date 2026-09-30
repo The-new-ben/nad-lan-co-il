@@ -232,6 +232,7 @@ const DEFAULTS = {
   adaptive: true,        // lower the pixel ratio (to 75% at most) when frames get slow
   logDepth: false,       // a logarithmic depth buffer (off: tighter far planes and per-layer offsets keep the ground clean)
   softShadows: true,
+  pond: true,            // false: the park's pond is not drawn (its outline and place are an illustration, not published)
 };
 
 const C = {
@@ -614,7 +615,7 @@ export function mountWorld(host, opts = {}) {
     out.trees = new Float32Array(tA.length); for (let i = 0; i < tA.length; i++) out.trees[i] = tA[i] * tq;
     out.ring = (d.ring.parts || []).map((p) => unpack(p, 0, p.length / 2, d.ring.q));
     out.park = d.park && d.park.p ? unpack(d.park.p, 0, d.park.p.length / 2, d.park.q) : null;
-    out.pond = d.pond && d.pond.p ? unpack(d.pond.p, 0, d.pond.p.length / 2, d.pond.q) : null;
+    out.pond = o.pond !== false && d.pond && d.pond.p ? unpack(d.pond.p, 0, d.pond.p.length / 2, d.pond.q) : null; // an illustration (no published outline)
     if (out.pond) { const bb = bboxOf(out.pond); out.pondC = [(bb[0] + bb[2]) / 2, (bb[1] + bb[3]) / 2]; }
     if (out.park) out.parkBB = bboxOf(out.park);
     out.lots = (d.lots.list || []).map((l) => ({ lot: l.lot, use: l.use, P: unpack(l.p, 0, l.p.length / 2, d.lots.q) }));

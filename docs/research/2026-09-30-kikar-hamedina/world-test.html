@@ -11,7 +11,8 @@
     http://localhost:8765/docs/research/2026-09-30-kikar-hamedina/world-test.html?mode=aerial
   URL: mode=aerial|walk|tower|places · lang=he|en · tower=A|B|C · floor=N · facing=<bearing> · view=out|window
        season=3|6|9|12 · hour=5..20 · cat=<places group> · place=<places id> · spot=ring|park|towers|school
-       show=<kind>:<id> (open a card) · collapsed=1 · clean=1 (canvas + labels only: the poster) · motion=1 (animate)
+       show=<kind>:<id> (open a card) · collapsed=1 · clean=1 (canvas only: the poster) · motion=1 (animate)
+       pond=0 (hide the illustrated pond) · logdepth=1 · soft=0 · dpr=<cap> (performance A/B)
 -->
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
 <style>
@@ -36,7 +37,7 @@
     season: +(Q.get('season') || 9), hour: +(Q.get('hour') || 10),
     motion: Q.get('motion') === '1', chrome: !clean, labels: Q.get('labels') !== '0',
     preserve: true, forceJoystick: Q.get('joy') === '1', wa: Q.get('wa') ? '#whatsapp' : null,
-    logDepth: Q.get('logdepth') !== '0', softShadows: Q.get('soft') !== '0', maxDpr: Q.get('dpr') ? +Q.get('dpr') : null,
+    logDepth: Q.get('logdepth') === '1', softShadows: Q.get('soft') !== '0', maxDpr: Q.get('dpr') ? +Q.get('dpr') : null, pond: Q.get('pond') !== '0',
     name: lang === 'en' ? 'Kikar Hamedina Towers' : 'מגדלי כיכר המדינה',
     onPick: (p) => { (window.__picks = window.__picks || []).push(p); },
   });
