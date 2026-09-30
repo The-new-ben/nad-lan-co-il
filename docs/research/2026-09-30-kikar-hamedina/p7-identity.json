@@ -1,6 +1,6 @@
 {
  "branch": {
-  "before": "git HEAD",
+  "before": "6286d747a2e8749821246045d0b0441d8527497d",
   "after": "working file",
   "ok": true,
   "rows": [

@@ -4,7 +4,7 @@
 For Rainbow, DUO, Dimri Yama and Ashira, in Hebrew and on the English sibling, it renders with ps_render_harness.php (WordPress
 stubbed, the plugin's real assets) everything inc/project-stage.php prints: the stage config, nadlan_ps_current(), the
 composed page top, and every wp_head / wp_footer piece. Two pairs are compared:
-  branch:  git HEAD's file (before)            vs the working file (after, the hunks applied)
+  branch:  the branch file before P7a (before) vs the working file (after, the hunks applied)
   release: 65af09be's file (the live base)     vs 65af09be + the hunks (the file deploy369 would write)
 Every piece must match exactly; a hook the new file adds must print nothing on these pages. Kikar Hamedina itself is rendered
 too (after only), to show it composes. Writes docs/research/2026-09-30-kikar-hamedina/p7-identity.json.
@@ -71,19 +71,20 @@ def compare(before_path, after_path, label):
 
 def main():
     tmp = tempfile.mkdtemp(prefix="ps-ident-")
-    head = os.path.join(tmp, "branch-before.php"); open(head, "wb").write(git_show("HEAD"))
+    # "before" on the branch: the newest commit of the file that carries none of the hunks (HEAD before P7a was committed)
+    revs = subprocess.run(["git", "-C", REPO, "rev-list", "HEAD", "--", REL], capture_output=True, text=True).stdout.split()
+    before_rev = next(r for r in revs if not any(P.carries(git_show(r).decode("utf-8")).values()))
+    print("branch before =", before_rev[:10])
+    head = os.path.join(tmp, "branch-before.php"); open(head, "wb").write(git_show(before_rev))
     live = os.path.join(tmp, "live-base.php"); open(live, "wb").write(git_show(P.BASE_COMMIT))
     rel_copy = os.path.join(tmp, "release-after.php")
     open(rel_copy, "wb").write(P.apply(git_show(P.BASE_COMMIT).decode("utf-8"), P.BASE_COMMIT).encode("utf-8"))
     work = os.path.join(REPO, *REL.split("/"))
-    head_txt = open(head, "rb").read().decode("utf-8")
-    if all(P.carries(head_txt).values()):
-        raise SystemExit("HEAD already carries the hunks: commit came first; compare against HEAD~1 instead")
     ok1, r1 = compare(head, work, "branch ")
     ok2, r2 = compare(live, rel_copy, "release")
     kh = render(work, "hamedina")
     khe = render(work, "hamedina-en")
-    res = {"branch": {"before": "git HEAD", "after": "working file", "ok": ok1, "rows": r1},
+    res = {"branch": {"before": before_rev, "after": "working file", "ok": ok1, "rows": r1},
            "release": {"before": P.BASE_COMMIT + " (live, md5 " + hashlib.md5(open(live, 'rb').read()).hexdigest() + ")",
                        "after": "65af09be + hunks (md5 " + hashlib.md5(open(rel_copy, 'rb').read()).hexdigest() + ")", "ok": ok2, "rows": r2},
            "hamedina": {"he_composed_bytes": len((kh.get("composed") or "").encode("utf-8")), "en_composed_bytes": len((khe.get("composed") or "").encode("utf-8")),
