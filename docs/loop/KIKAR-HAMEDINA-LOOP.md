@@ -101,6 +101,17 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **30.9 evening, turn 13** (new session, Opus 5.5). Web: [Ashtrom Industries on the project](https://www.ashtromindustries.co.il/en/projects/kikar-hamedina-industries), [the Ashtrom base-pile page](https://basepile.ashtromconstruction.co.il/en/projects/kikar-hamedina-base-pile), [ynetnews on the square's works](https://www.ynetnews.com/real-estate/article/r1w0etf111e) (background only, not page material), [off-plan 360 tours 2026](https://archeyes.com/off-plans-360-virtual-tours-how-it-can-help-to-market-pre-built-properties/).
+  - **P9b's prototype is committed (3fc7f966).** It is an example apartment in tower C, floor 30, in Blender Cycles, with the real view at 117 m. It shows the twist on floors 20/30/38: the same window faces 278.1°, 265.6° and 255.6°.
+  - **NEXT NOTCH (P9c):**
+    - "היכנסו לדירה לדוגמה" inside the floor view, in the fleet's 360 viewer, with a gallery that follows the time of day, and the twist strip.
+    - The Arabic first screen: the bar goes off the lead.
+    - The accessibility button comes off the world's first tab.
+    - Design v104.2 material; runner 373 chained after 372.
+  - **Coordination:**
+    - The parallel HAD-376 session was told to chain from 371 and report. Its message is queued.
+    - Codex got a full status sync on HAD-373 and in the coordination file. Its scope ACK is pending.
+
 - **30.9, turn 11** (web: [R2U interactive floor plans 2026](https://r2u.io/en/blog/interactive-floor-plan-real-estate/), [a luxury tower site with views at three times of day](https://www.6sqft.com/manhattan-view-condo-launches-full-website-touting-luxury-amenities-and-far-reaching-views/), [Madlan: 86 listings at the square](https://www.madlan.co.il/for-sale/%D7%9B%D7%99%D7%9B%D7%A8-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C), [a Sotheby's high-floor 5-room listing](https://www.israelsir.co.il/property/5-room-apartment-kikar-hamedina-towers-tel-aviv/)).
   - The best 2026 sites render the actual sightline per floor, and show views at three times of day.
   - **NEW notches:**
