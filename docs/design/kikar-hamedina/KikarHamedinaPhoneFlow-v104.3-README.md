@@ -150,3 +150,15 @@ Measured locally against the live 1.72.374 (the same script, `v1045_check.py`).
 - **M19:** with enlarged text, the tabs wrap to two lines instead of clipping. The notes' fold is 44 px tall.
 - **The card:** the focus returns to what opened it.
 - **The WhatsApp bar** (a finding from the P9c agent): its list of controls now includes `#nlps input`, so the floor slider in the dock counts as a control.
+
+## v104.6 (30.9, loop turn 14): the project is a REQUIRED mark on the area map
+
+- **Why:**
+  - Codex's QA: "the central dot stays without a visible name."
+  - Google's collision model: a *required* marker always shows, and optional ones yield to it ([Google Maps collision behavior](https://developers.google.com/maps/documentation/android-sdk/advanced-markers/collision-behavior)).
+- **The design:**
+  - Under the page's own dot, the project's name appears as a label: ink text with a cream halo, 13.5 px, at every zoom.
+  - The dot and its name are reserved space. The places' icons and names make room around them instead of covering them.
+  - Implementation: a symbol layer placed above the places, and a transparent reserve for the 20 px HTML dot.
+  - It is the same label on every project page with an area map (the fleet), in the page's language (the page title).
+- **Unchanged:** the dot itself, its popup, the prices, the plans and the beam.

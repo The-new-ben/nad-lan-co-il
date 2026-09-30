@@ -289,6 +289,33 @@
         'text-radial-offset': 1.2, 'text-justify': 'auto', 'text-optional': false, 'icon-optional': false, 'text-max-width': 9, 'text-padding': 2 },
         paint: { 'text-color': '#14212B', 'text-halo-color': 'rgba(250,247,241,.96)', 'text-halo-width': 1.8 } });
       if (ISO.length) isoFilter();
+      // v104.6: the project is a REQUIRED mark (Google's collision term): its name under the page's own dot, placed before the
+      // places (this layer sits above them), and a transparent reserve for the 20 px dot, so the places make room instead of covering it
+      var hlat = parseFloat(host.getAttribute('data-lat')), hlng = parseFloat(host.getAttribute('data-lng')), htitle = (host.getAttribute('data-title') || '').split(/\s[-–|]\s/)[0].trim(); // the name before an SEO tail ("מגדלי DUO תל אביב - ...")
+      if (isFinite(hlat) && isFinite(hlng) && htitle) {
+        try {
+          if (!map.hasImage('nlam-reserve')) map.addImage('nlam-reserve', { width: 56, height: 56, data: new Uint8Array(56 * 56 * 4) }, { pixelRatio: 2 });
+          map.addSource('nlam-home', { type: 'geojson', data: { type: 'Feature', geometry: { type: 'Point', coordinates: [hlng, hlat] }, properties: { name: htitle } } });
+          map.addLayer({ id: 'nlam-home', type: 'symbol', source: 'nlam-home', layout: {
+            'icon-image': 'nlam-reserve', 'icon-allow-overlap': true, 'icon-ignore-placement': false,
+            'text-field': ['get', 'name'], 'text-font': ['DIN Pro Bold', 'Arial Unicode MS Bold'], 'text-size': 13.5, 'text-anchor': 'top',
+            'text-offset': [0, 1.15], 'text-max-width': 12, 'text-allow-overlap': true, 'text-ignore-placement': false },
+            paint: { 'text-color': '#1B1A17', 'text-halo-color': 'rgba(250,247,241,.98)', 'text-halo-width': 2.2 } });
+          // the page's HTML chips (prices, plans) sit above the map and outside its collision: where one covers the name's box, the
+          // name steps back (the dot's own popup still names the project); checked after every move
+          var homeCheck = function () {
+            if (!map.getLayer('nlam-home')) return;
+            var c = map.getContainer(), bx = c.getBoundingClientRect(), p = map.project([hlng, hlat]);
+            var w = Math.min(162, htitle.length * 7.6), r = { l: p.x - w / 2, r: p.x + w / 2, t: p.y + 14, b: p.y + 38 }, hit = false;
+            c.querySelectorAll('.mapboxgl-marker').forEach(function (m) {
+              var q = m.getBoundingClientRect(), x0 = q.left - bx.left, y0 = q.top - bx.top;
+              if (q.width && x0 < r.r && x0 + q.width > r.l && y0 < r.b && y0 + q.height > r.t) hit = true;
+            });
+            map.setLayoutProperty('nlam-home', 'visibility', hit ? 'none' : 'visible');
+          };
+          map.on('moveend', homeCheck); setTimeout(homeCheck, 900);
+        } catch (e) {}
+      }
       // v104.5 (Codex's QA, M15): the right-to-left text plugin loads lazily, and the tiles laid out before it lands keep their
       // Hebrew and Arabic labels EMPTY (Latin text showed at zoom 14.4, Hebrew did not). Once it is loaded, the places and the
       // basemap's name labels are laid out again (an equivalent expression: an identical one would be a no-op).
@@ -298,6 +325,7 @@
         if (st === 'unavailable' || st === 'error') return;
         if (st !== 'loaded') { if (++tries < 60) setTimeout(relayout, 400); return; }
         try { map.setLayoutProperty('nlam-pin', 'text-field', ['to-string', ['get', 'name']]); } catch (e) {}
+        try { if (map.getLayer('nlam-home')) map.setLayoutProperty('nlam-home', 'text-field', ['to-string', ['get', 'name']]); } catch (e) {}
         try {
           (map.getStyle().layers || []).forEach(function (l) {
             var tf = l.type === 'symbol' && l.id !== 'nlam-pin' ? map.getLayoutProperty(l.id, 'text-field') : null;

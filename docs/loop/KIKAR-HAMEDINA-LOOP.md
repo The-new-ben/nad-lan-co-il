@@ -101,6 +101,34 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **30.9 night, turn 14** (Opus 5.5).
+  - **Web:**
+    - [ynetnews: top Tel Aviv deals concentrate at District 4 / Kikar Hamedina and Sde Dov](https://www.ynetnews.com/real-estate/article/b11jju011zx) (context only);
+    - [immobilier.co.il, Tel Aviv](https://www.immobilier.co.il/en/city/telaviv): asking prices of 4 rooms at ₪6.2-6.5M. These are ADS, not deals: never page facts;
+    - [Tel Aviv Online on the renewed square](https://tlvonline.co.il/%D7%A9%D7%93%D7%A8%D7%95%D7%92-%D7%9B%D7%99%D7%9B%D7%A8-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91/): 560 new trees and heritage trees kept, already in facts.md from mako;
+    - [Google Maps collision behavior](https://developers.google.com/maps/documentation/android-sdk/advanced-markers/collision-behavior): REQUIRED vs OPTIONAL markers;
+    - [Mapbox label placement](https://docs.mapbox.com/help/dive-deeper/optimize-map-label-placement/).
+    - The search engine's summary claims "occupancy early 2026"; it is unsourced and NOT used (facts.md keeps its sourced conflicts).
+  - **Releases since turn 13, all live and verified:**
+    - **1.72.373** (v104.3): one scroll on the phone, place icons, with Codex/Maya.
+    - **1.72.374** (v104.4): Maya's QA fixes: no camera tilt, no icon overlap.
+    - **1.72.375** (P9c, v104.2): the example apartment. The evening render was REJECTED as below the bar.
+    - **1.72.376** (v104.5): the rest of Maya's QA:
+      - map names from the opening zoom (the lazy RTL plugin);
+      - world name+icon units with 44 px taps;
+      - the desktop wheel;
+      - the bar clears the floor slider.
+      - The first run rolled back on stale pinned checks; the second passed.
+  - **NEW NOTCH (this turn, v104.6 → 1.72.377):** the project becomes a REQUIRED mark on every area map (Google's collision model).
+    - Its name shows under the page's own dot, and the places make room.
+    - Where an HTML price chip covers it (Rainbow), the name steps back.
+    - SEO tails are cut ("מגדלי DUO תל אביב").
+    - Measured locally: Kikar and DUO show the name, Rainbow hides it (chips); 0 errors.
+  - **NEXT NOTCH:**
+    - (1) The long world card, 1,065-1,402 px on a phone (Maya): a summary with the main action first, then details by topic. Nothing deleted; Design first.
+    - (2) The world's labels at 320 px: smarter placement (below, and to the side) so more places keep their names.
+    - (3) Data: generic "School"/"مدرسة"/"Open" names in en/ar. Take names from OSM name:en/name:ar where they exist; never invent.
+
 - **30.9 evening, turn 13** (new session, Opus 5.5). Web: [Ashtrom Industries on the project](https://www.ashtromindustries.co.il/en/projects/kikar-hamedina-industries), [the Ashtrom base-pile page](https://basepile.ashtromconstruction.co.il/en/projects/kikar-hamedina-base-pile), [ynetnews on the square's works](https://www.ynetnews.com/real-estate/article/r1w0etf111e) (background only, not page material), [off-plan 360 tours 2026](https://archeyes.com/off-plans-360-virtual-tours-how-it-can-help-to-market-pre-built-properties/).
   - **P9b's prototype is committed (3fc7f966).** It is an example apartment in tower C, floor 30, in Blender Cycles, with the real view at 117 m. It shows the twist on floors 20/30/38: the same window faces 278.1°, 265.6° and 255.6°.
   - **NEXT NOTCH (P9c):**
@@ -446,6 +474,23 @@ Every turn does ALL of these, not only the current phase:
 - **Q3, 30.9: who answers WhatsApp messages written in French, Russian and Arabic?** The fr/ru/ar pages send their visitors to the same number, and each message says which page it came from.
 
 ## P9 list (the masterpiece pass), gathered so far
+
+- **Status 30.9 night.** DONE and live:
+  - the phone flow (373/374/376);
+  - place icons and names (373/376/377);
+  - the example apartment by day and at sunset (375);
+  - the degrees bidi, the sea named once and Cyrillic (371);
+  - the Arabic first screen and the a11y corner (375).
+- **OPEN, in order:**
+  - (a) the long world card, organized, nothing deleted;
+  - (b) 320 px label density;
+  - (c) en/ar generic place names (data);
+  - (d) M04/M05, two pointers and page pinch;
+  - (e) a real-device check (the owner's iPhone);
+  - (f) an evening interior at the owner's bar (a new render, not the rejected one);
+  - (g) the twist's direction, from a source;
+  - (h) the shared viewing room and the video call wired to the world;
+  - (i) the article (the owner's ChatGPT run).
 
 - **"1.25°" shows as "°1.25"** in right-to-left text on the live Hebrew page. Wrap it in `<bdi>` or put the degree sign inside an LTR span.
 - **The window view names "Mediterranean Sea" twice**, in every language, the live pages included.

@@ -1,0 +1,15 @@
+{
+  "released": "1.72.377",
+  "from": "1.72.376",
+  "live_before": {
+    "assets/arealife/areamap.js": "8b743213507dbe125ba7c2b60f09031c",
+    "nadlan-config.php": "b2441410afff24f569512b10ca2daad3"
+  },
+  "state": "released and verified",
+  "at": "2026-09-30 23:48:37",
+  "files": {
+    "assets/arealife/areamap.js": "da75cb11d3b995487ace2d07762f5916",
+    "nadlan-config.php": "d6abb57a329106d329bf265a7bcc2b35"
+  },
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.377, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
