@@ -1,0 +1,1849 @@
+{
+ "when": "2026-09-30 08:31",
+ "release_copy_md5": "ab9442860d0b6b22420ced51afbf02f0",
+ "pages": {
+  "he-390": {
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "he-1440": {
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "en-390": {
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "en-1440": {
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "fr-390": {
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "fr-1440": {
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "ru-390": {
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "ru-1440": {
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "ar-390": {
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  "ar-1440": {
+   "errors": [
+    "console error: Failed to load resource: net::ERR_FAILED",
+    "console error: Failed to load resource: net::ERR_FAILED"
+   ]
+  }
+ },
+ "first_screen": {
+  "he": [
+   {
+    "y": 0,
+    "vh": 844,
+    "pill": {
+     "l": 12,
+     "r": 251,
+     "t": 729,
+     "b": 779
+    },
+    "lift": "65px",
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 200,
+      "r": 378,
+      "t": 621,
+      "b": 665
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 190,
+      "t": 621,
+      "b": 665
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 675,
+      "b": 719
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "מבט על",
+      "l": 281,
+      "r": 363,
+      "t": 796,
+      "b": 840
+     },
+     {
+      "txt": "סיור ברגל",
+      "l": 196,
+      "r": 279,
+      "t": 796,
+      "b": 840
+     },
+     {
+      "txt": "קומה ונוף",
+      "l": 112,
+      "r": 194,
+      "t": 796,
+      "b": 840
+     },
+     {
+      "txt": "מה בסביבה",
+      "l": 27,
+      "r": 110,
+      "t": 796,
+      "b": 840
+     },
+     {
+      "txt": "full",
+      "l": 23,
+      "r": 67,
+      "t": 850,
+      "b": 894
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 300,
+    "vh": 844,
+    "pill": {
+     "l": 12,
+     "r": 251,
+     "t": 716,
+     "b": 766
+    },
+    "lift": "",
+    "cls": "",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 200,
+      "r": 378,
+      "t": 321,
+      "b": 365
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 190,
+      "t": 321,
+      "b": 365
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 375,
+      "b": 419
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "מבט על",
+      "l": 281,
+      "r": 363,
+      "t": 496,
+      "b": 540
+     },
+     {
+      "txt": "סיור ברגל",
+      "l": 196,
+      "r": 279,
+      "t": 496,
+      "b": 540
+     },
+     {
+      "txt": "קומה ונוף",
+      "l": 112,
+      "r": 194,
+      "t": 496,
+      "b": 540
+     },
+     {
+      "txt": "מה בסביבה",
+      "l": 27,
+      "r": 110,
+      "t": 496,
+      "b": 540
+     },
+     {
+      "txt": "full",
+      "l": 23,
+      "r": 67,
+      "t": 550,
+      "b": 594
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 700,
+    "vh": 844,
+    "pill": {
+     "l": 12,
+     "r": 251,
+     "t": 716,
+     "b": 766
+    },
+    "lift": "",
+    "cls": "",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 200,
+      "r": 378,
+      "t": -79,
+      "b": -35
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 190,
+      "t": -79,
+      "b": -35
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": -25,
+      "b": 19
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "מבט על",
+      "l": 281,
+      "r": 363,
+      "t": 96,
+      "b": 140
+     },
+     {
+      "txt": "סיור ברגל",
+      "l": 196,
+      "r": 279,
+      "t": 96,
+      "b": 140
+     },
+     {
+      "txt": "קומה ונוף",
+      "l": 112,
+      "r": 194,
+      "t": 96,
+      "b": 140
+     },
+     {
+      "txt": "מה בסביבה",
+      "l": 27,
+      "r": 110,
+      "t": 96,
+      "b": 140
+     },
+     {
+      "txt": "full",
+      "l": 23,
+      "r": 67,
+      "t": 150,
+      "b": 194
+     }
+    ],
+    "hits": []
+   }
+  ],
+  "en": [
+   {
+    "y": 0,
+    "vh": 844,
+    "pill": {
+     "l": 123,
+     "r": 378,
+     "t": 716,
+     "b": 766
+    },
+    "lift": "",
+    "cls": "",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 784,
+      "b": 828
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 838,
+      "b": 882
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 892,
+      "b": 936
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Aerial",
+      "l": 27,
+      "r": 110,
+      "t": 1013,
+      "b": 1057
+     },
+     {
+      "txt": "Walk",
+      "l": 112,
+      "r": 194,
+      "t": 1013,
+      "b": 1057
+     },
+     {
+      "txt": "Floor view",
+      "l": 196,
+      "r": 279,
+      "t": 1013,
+      "b": 1057
+     },
+     {
+      "txt": "Nearby",
+      "l": 281,
+      "r": 363,
+      "t": 1013,
+      "b": 1057
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 1067,
+      "b": 1111
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 300,
+    "vh": 844,
+    "pill": {
+     "l": 123,
+     "r": 378,
+     "t": 649,
+     "b": 699
+    },
+    "lift": "145px",
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 484,
+      "b": 528
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 538,
+      "b": 582
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 592,
+      "b": 636
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Aerial",
+      "l": 27,
+      "r": 110,
+      "t": 713,
+      "b": 757
+     },
+     {
+      "txt": "Walk",
+      "l": 112,
+      "r": 194,
+      "t": 713,
+      "b": 757
+     },
+     {
+      "txt": "Floor view",
+      "l": 196,
+      "r": 279,
+      "t": 713,
+      "b": 757
+     },
+     {
+      "txt": "Nearby",
+      "l": 281,
+      "r": 363,
+      "t": 713,
+      "b": 757
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 767,
+      "b": 811
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 700,
+    "vh": 844,
+    "pill": {
+     "l": 123,
+     "r": 378,
+     "t": 633,
+     "b": 683
+    },
+    "lift": "161px",
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 84,
+      "b": 128
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 138,
+      "b": 182
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 192,
+      "b": 236
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Aerial",
+      "l": 27,
+      "r": 110,
+      "t": 313,
+      "b": 357
+     },
+     {
+      "txt": "Walk",
+      "l": 112,
+      "r": 194,
+      "t": 313,
+      "b": 357
+     },
+     {
+      "txt": "Floor view",
+      "l": 196,
+      "r": 279,
+      "t": 313,
+      "b": 357
+     },
+     {
+      "txt": "Nearby",
+      "l": 281,
+      "r": 363,
+      "t": 313,
+      "b": 357
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 367,
+      "b": 411
+     }
+    ],
+    "hits": []
+   }
+  ],
+  "fr": [
+   {
+    "y": 0,
+    "vh": 844,
+    "pill": {
+     "l": 125,
+     "r": 378,
+     "t": 716,
+     "b": 766
+    },
+    "lift": "",
+    "cls": "",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 868,
+      "b": 912
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 922,
+      "b": 966
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 976,
+      "b": 1020
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Vue du ciel",
+      "l": 27,
+      "r": 110,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "Promenade",
+      "l": 112,
+      "r": 194,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "Étage et vue",
+      "l": 196,
+      "r": 279,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "À proximité",
+      "l": 281,
+      "r": 363,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 1151,
+      "b": 1195
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 300,
+    "vh": 844,
+    "pill": {
+     "l": 125,
+     "r": 378,
+     "t": 730,
+     "b": 780
+    },
+    "lift": "64px",
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 568,
+      "b": 612
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 622,
+      "b": 666
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 676,
+      "b": 720
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Vue du ciel",
+      "l": 27,
+      "r": 110,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "Promenade",
+      "l": 112,
+      "r": 194,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "Étage et vue",
+      "l": 196,
+      "r": 279,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "À proximité",
+      "l": 281,
+      "r": 363,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 851,
+      "b": 895
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 700,
+    "vh": 844,
+    "pill": {
+     "l": 125,
+     "r": 378,
+     "t": 716,
+     "b": 766
+    },
+    "lift": "",
+    "cls": "",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 168,
+      "b": 212
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 222,
+      "b": 266
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 276,
+      "b": 320
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Vue du ciel",
+      "l": 27,
+      "r": 110,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "Promenade",
+      "l": 112,
+      "r": 194,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "Étage et vue",
+      "l": 196,
+      "r": 279,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "À proximité",
+      "l": 281,
+      "r": 363,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 451,
+      "b": 495
+     }
+    ],
+    "hits": []
+   }
+  ],
+  "ru": [
+   {
+    "y": 0,
+    "vh": 844,
+    "pill": {
+     "l": 113,
+     "r": 378,
+     "t": 716,
+     "b": 766
+    },
+    "lift": "",
+    "cls": "",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 868,
+      "b": 912
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 922,
+      "b": 966
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 976,
+      "b": 1020
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Сверху",
+      "l": 27,
+      "r": 110,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "Прогулка",
+      "l": 112,
+      "r": 194,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "Этаж и вид",
+      "l": 196,
+      "r": 279,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "Рядом",
+      "l": 281,
+      "r": 363,
+      "t": 1097,
+      "b": 1141
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 1151,
+      "b": 1195
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 300,
+    "vh": 844,
+    "pill": {
+     "l": 113,
+     "r": 378,
+     "t": 730,
+     "b": 780
+    },
+    "lift": "64px",
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 568,
+      "b": 612
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 622,
+      "b": 666
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 676,
+      "b": 720
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Сверху",
+      "l": 27,
+      "r": 110,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "Прогулка",
+      "l": 112,
+      "r": 194,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "Этаж и вид",
+      "l": 196,
+      "r": 279,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "Рядом",
+      "l": 281,
+      "r": 363,
+      "t": 797,
+      "b": 841
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 851,
+      "b": 895
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 700,
+    "vh": 844,
+    "pill": {
+     "l": 113,
+     "r": 378,
+     "t": 716,
+     "b": 766
+    },
+    "lift": "",
+    "cls": "",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 12,
+      "r": 378,
+      "t": 168,
+      "b": 212
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 378,
+      "t": 222,
+      "b": 266
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 276,
+      "b": 320
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "Сверху",
+      "l": 27,
+      "r": 110,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "Прогулка",
+      "l": 112,
+      "r": 194,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "Этаж и вид",
+      "l": 196,
+      "r": 279,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "Рядом",
+      "l": 281,
+      "r": 363,
+      "t": 397,
+      "b": 441
+     },
+     {
+      "txt": "full",
+      "l": 323,
+      "r": 367,
+      "t": 451,
+      "b": 495
+     }
+    ],
+    "hits": []
+   }
+  ],
+  "ar": [
+   {
+    "y": 0,
+    "vh": 844,
+    "pill": {
+     "l": 12,
+     "r": 258,
+     "t": 644,
+     "b": 694
+    },
+    "lift": "150px",
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 200,
+      "r": 378,
+      "t": 704,
+      "b": 748
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 190,
+      "t": 704,
+      "b": 748
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 758,
+      "b": 802
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "من الأعلى",
+      "l": 281,
+      "r": 363,
+      "t": 879,
+      "b": 923
+     },
+     {
+      "txt": "جولة سيراً",
+      "l": 196,
+      "r": 279,
+      "t": 879,
+      "b": 923
+     },
+     {
+      "txt": "الطابق والإطلالة",
+      "l": 112,
+      "r": 194,
+      "t": 879,
+      "b": 923
+     },
+     {
+      "txt": "بالجوار",
+      "l": 27,
+      "r": 110,
+      "t": 879,
+      "b": 923
+     },
+     {
+      "txt": "full",
+      "l": 23,
+      "r": 67,
+      "t": 933,
+      "b": 977
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 300,
+    "vh": 844,
+    "pill": {
+     "l": 12,
+     "r": 258,
+     "t": 737,
+     "b": 787
+    },
+    "lift": "57px",
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 200,
+      "r": 378,
+      "t": 404,
+      "b": 448
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 190,
+      "t": 404,
+      "b": 448
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 458,
+      "b": 502
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "من الأعلى",
+      "l": 281,
+      "r": 363,
+      "t": 579,
+      "b": 623
+     },
+     {
+      "txt": "جولة سيراً",
+      "l": 196,
+      "r": 279,
+      "t": 579,
+      "b": 623
+     },
+     {
+      "txt": "الطابق والإطلالة",
+      "l": 112,
+      "r": 194,
+      "t": 579,
+      "b": 623
+     },
+     {
+      "txt": "بالجوار",
+      "l": 27,
+      "r": 110,
+      "t": 579,
+      "b": 623
+     },
+     {
+      "txt": "full",
+      "l": 23,
+      "r": 67,
+      "t": 633,
+      "b": 677
+     }
+    ],
+    "hits": []
+   },
+   {
+    "y": 700,
+    "vh": 844,
+    "pill": {
+     "l": 12,
+     "r": 258,
+     "t": 522,
+     "b": 572
+    },
+    "lift": "272px",
+    "cls": "is-clear",
+    "btns": [
+     {
+      "ev": "hero-wa",
+      "l": 200,
+      "r": 378,
+      "t": 4,
+      "b": 48
+     },
+     {
+      "ev": "hero-sale",
+      "l": 12,
+      "r": 190,
+      "t": 4,
+      "b": 48
+     },
+     {
+      "ev": "hero-world",
+      "l": 12,
+      "r": 378,
+      "t": 58,
+      "b": 102
+     }
+    ],
+    "tabs": [
+     {
+      "txt": "من الأعلى",
+      "l": 281,
+      "r": 363,
+      "t": 179,
+      "b": 223
+     },
+     {
+      "txt": "جولة سيراً",
+      "l": 196,
+      "r": 279,
+      "t": 179,
+      "b": 223
+     },
+     {
+      "txt": "الطابق والإطلالة",
+      "l": 112,
+      "r": 194,
+      "t": 179,
+      "b": 223
+     },
+     {
+      "txt": "بالجوار",
+      "l": 27,
+      "r": 110,
+      "t": 179,
+      "b": 223
+     },
+     {
+      "txt": "full",
+      "l": 23,
+      "r": 67,
+      "t": 233,
+      "b": 277
+     }
+    ],
+    "hits": []
+   }
+  ]
+ },
+ "fonts_ru": {
+  "390": {
+   "h1": [
+    [
+     "Noto Serif",
+     26
+    ],
+    [
+     "Noto Serif Hebrew",
+     6
+    ]
+   ],
+   ".nl-lead p": [
+    [
+     "Source Sans 3 ExtraLight",
+     511
+    ],
+    [
+     "Assistant ExtraLight",
+     244
+    ]
+   ],
+   ".nlps-hero__cta a": [
+    [
+     "Source Sans 3 ExtraLight",
+     22
+    ],
+    [
+     "Assistant ExtraLight",
+     1
+    ]
+   ],
+   ".nlpf__v": [
+    [
+     "Noto Serif",
+     21
+    ],
+    [
+     "Noto Serif Hebrew",
+     4
+    ]
+   ],
+   ".nlpf__k": [
+    [
+     "Source Sans 3 ExtraLight",
+     5
+    ]
+   ],
+   "section.nlws h2": [
+    [
+     "Noto Serif",
+     39
+    ],
+    [
+     "Noto Serif Hebrew",
+     7
+    ]
+   ],
+   "section.nlws p": [
+    [
+     "Roboto",
+     13
+    ],
+    [
+     "Heebo",
+     2
+    ]
+   ],
+   "section.nlws table td": [
+    [
+     "Source Sans 3 ExtraLight",
+     104
+    ],
+    [
+     "Assistant ExtraLight",
+     61
+    ]
+   ],
+   "#nlcta .nlcta-txt b": [
+    [
+     "Source Sans 3 ExtraLight",
+     22
+    ],
+    [
+     "Assistant ExtraLight",
+     1
+    ]
+   ],
+   "#nlps .nlw-tab": [
+    [
+     "Source Sans 3 ExtraLight",
+     6
+    ]
+   ],
+   "#nlps .nlw-panel": [
+    [
+     "Source Sans 3 ExtraLight",
+     26
+    ],
+    [
+     "Noto Serif",
+     9
+    ],
+    [
+     "Assistant ExtraLight",
+     28
+    ],
+    [
+     "Assistant ExtraLight",
+     11
+    ],
+    [
+     "Assistant ExtraLight",
+     7
+    ],
+    [
+     "Source Sans 3 ExtraLight",
+     64
+    ],
+    [
+     "Noto Serif Hebrew",
+     8
+    ],
+    [
+     "Source Sans 3 ExtraLight",
+     59
+    ]
+   ],
+   "#nlps .nlw-title": [
+    [
+     "Noto Serif",
+     9
+    ],
+    [
+     "Noto Serif Hebrew",
+     8
+    ]
+   ],
+   "#nlps .nlw-cap": [],
+   ".nl-projnotice": [
+    [
+     "Roboto",
+     15
+    ],
+    [
+     "Heebo",
+     1
+    ],
+    [
+     "Source Sans 3 ExtraLight",
+     243
+    ],
+    [
+     "Assistant ExtraLight",
+     44
+    ]
+   ]
+  },
+  "1440": {
+   "h1": [
+    [
+     "Noto Serif",
+     26
+    ],
+    [
+     "Noto Serif Hebrew",
+     6
+    ]
+   ],
+   ".nl-lead p": [
+    [
+     "Source Sans 3 ExtraLight",
+     511
+    ],
+    [
+     "Assistant ExtraLight",
+     245
+    ]
+   ],
+   ".nlps-hero__cta a": [
+    [
+     "Source Sans 3 ExtraLight",
+     22
+    ],
+    [
+     "Assistant ExtraLight",
+     1
+    ]
+   ],
+   ".nlpf__v": [
+    [
+     "Noto Serif",
+     21
+    ],
+    [
+     "Noto Serif Hebrew",
+     4
+    ]
+   ],
+   ".nlpf__k": [
+    [
+     "Source Sans 3 ExtraLight",
+     5
+    ]
+   ],
+   "section.nlws h2": [
+    [
+     "Noto Serif",
+     39
+    ],
+    [
+     "Noto Serif Hebrew",
+     7
+    ]
+   ],
+   "section.nlws p": [
+    [
+     "Roboto",
+     13
+    ],
+    [
+     "Heebo",
+     2
+    ]
+   ],
+   "section.nlws table td": [
+    [
+     "Source Sans 3 ExtraLight",
+     104
+    ],
+    [
+     "Assistant ExtraLight",
+     62
+    ]
+   ],
+   "#nlcta .nlcta-txt b": [
+    [
+     "Source Sans 3 ExtraLight",
+     22
+    ],
+    [
+     "Assistant ExtraLight",
+     1
+    ]
+   ],
+   "#nlps .nlw-tab": [
+    [
+     "Source Sans 3 ExtraLight",
+     6
+    ]
+   ],
+   "#nlps .nlw-panel": [
+    [
+     "Assistant ExtraLight",
+     7
+    ],
+    [
+     "Source Sans 3 ExtraLight",
+     26
+    ],
+    [
+     "Noto Serif",
+     9
+    ],
+    [
+     "Noto Serif Hebrew",
+     8
+    ]
+   ],
+   "#nlps .nlw-title": [
+    [
+     "Noto Serif",
+     9
+    ],
+    [
+     "Noto Serif Hebrew",
+     8
+    ]
+   ],
+   "#nlps .nlw-cap": [
+    [
+     "Source Sans 3 ExtraLight",
+     149
+    ],
+    [
+     "Assistant ExtraLight",
+     39
+    ]
+   ],
+   ".nl-projnotice": [
+    [
+     "Roboto",
+     15
+    ],
+    [
+     "Heebo",
+     1
+    ],
+    [
+     "Source Sans 3 ExtraLight",
+     243
+    ],
+    [
+     "Assistant ExtraLight",
+     49
+    ]
+   ]
+  }
+ },
+ "world": {
+  "he-390": {
+   "day": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "hour": 10,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "day"
+    ],
+    "note": "",
+    "cap": "הדמיה להמחשה בלבד · בניינים, גבהים, רחובות, גנים ועצים: עיריית תל אביב-יפו · המגדלים: קונטור הבניין במאגר העירייה וסיבוב של 1.25 מעלות בכל קומה"
+   },
+   "sunset": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "hour": 18.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "sunset"
+    ],
+    "note": "השקיעה ב-18:42 ב-21 בספטמבר, לפי מסלול השמש מעל תל אביב",
+    "cap": "הדמיה להמחשה בלבד · בניינים, גבהים, רחובות, גנים ועצים: עיריית תל אביב-יפו · המגדלים: קונטור הבניין במאגר העירייה וסיבוב של 1.25 מעלות בכל קומה"
+   },
+   "night": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "hour": 20.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "night"
+    ],
+    "note": "לילה: האורות בחלונות הם הדמיה להמחשה בלבד, לא מידע על דיירים",
+    "cap": "הדמיה להמחשה בלבד · בניינים, גבהים, רחובות, גנים ועצים: עיריית תל אביב-יפו · המגדלים: קונטור הבניין במאגר העירייה וסיבוב של 1.25 מעלות בכל קומה · האורות בחלונות: הדמיה להמחשה"
+   }
+  },
+  "he-1440": {
+   "day": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "hour": 10,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "day"
+    ],
+    "note": "",
+    "cap": "הדמיה להמחשה בלבד · בניינים, גבהים, רחובות, גנים ועצים: עיריית תל אביב-יפו · המגדלים: קונטור הבניין במאגר העירייה וסיבוב של 1.25 מעלות בכל קומה"
+   },
+   "sunset": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "hour": 18.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "sunset"
+    ],
+    "note": "השקיעה ב-18:42 ב-21 בספטמבר, לפי מסלול השמש מעל תל אביב",
+    "cap": "הדמיה להמחשה בלבד · בניינים, גבהים, רחובות, גנים ועצים: עיריית תל אביב-יפו · המגדלים: קונטור הבניין במאגר העירייה וסיבוב של 1.25 מעלות בכל קומה"
+   },
+   "night": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "hour": 20.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "night"
+    ],
+    "note": "לילה: האורות בחלונות הם הדמיה להמחשה בלבד, לא מידע על דיירים",
+    "cap": "הדמיה להמחשה בלבד · בניינים, גבהים, רחובות, גנים ועצים: עיריית תל אביב-יפו · המגדלים: קונטור הבניין במאגר העירייה וסיבוב של 1.25 מעלות בכל קומה · האורות בחלונות: הדמיה להמחשה"
+   }
+  },
+  "en-390": {
+   "day": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "hour": 10,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "day"
+    ],
+    "note": "",
+    "cap": "Illustration only · buildings, heights, streets, gardens and trees: Tel Aviv-Yafo municipality · the towers: the municipal footprint turned 1.25° every floor"
+   },
+   "sunset": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "hour": 18.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "sunset"
+    ],
+    "note": "Sunset at 18:42 on 21 September, from the sun’s path over Tel Aviv",
+    "cap": "Illustration only · buildings, heights, streets, gardens and trees: Tel Aviv-Yafo municipality · the towers: the municipal footprint turned 1.25° every floor"
+   },
+   "night": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "hour": 20.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "night"
+    ],
+    "note": "Night: the lit windows are an illustration only, not information about residents",
+    "cap": "Illustration only · buildings, heights, streets, gardens and trees: Tel Aviv-Yafo municipality · the towers: the municipal footprint turned 1.25° every floor · lit windows: illustration"
+   }
+  },
+  "en-1440": {
+   "day": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "hour": 10,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "day"
+    ],
+    "note": "",
+    "cap": "Illustration only · buildings, heights, streets, gardens and trees: Tel Aviv-Yafo municipality · the towers: the municipal footprint turned 1.25° every floor"
+   },
+   "sunset": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "hour": 18.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "sunset"
+    ],
+    "note": "Sunset at 18:42 on 21 September, from the sun’s path over Tel Aviv",
+    "cap": "Illustration only · buildings, heights, streets, gardens and trees: Tel Aviv-Yafo municipality · the towers: the municipal footprint turned 1.25° every floor"
+   },
+   "night": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "hour": 20.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "night"
+    ],
+    "note": "Night: the lit windows are an illustration only, not information about residents",
+    "cap": "Illustration only · buildings, heights, streets, gardens and trees: Tel Aviv-Yafo municipality · the towers: the municipal footprint turned 1.25° every floor · lit windows: illustration"
+   }
+  },
+  "fr-390": {
+   "day": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "hour": 10,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "day"
+    ],
+    "note": "",
+    "cap": "Illustration indicative · immeubles, hauteurs, rues, jardins et arbres : municipalité de Tel Aviv-Jaffa · les tours : le contour municipal, tourné de 1,25° à chaque étage"
+   },
+   "sunset": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "hour": 18.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "sunset"
+    ],
+    "note": "Coucher du soleil à 18:42 le 21 septembre, d’après la course du soleil au-dessus de Tel Aviv",
+    "cap": "Illustration indicative · immeubles, hauteurs, rues, jardins et arbres : municipalité de Tel Aviv-Jaffa · les tours : le contour municipal, tourné de 1,25° à chaque étage"
+   },
+   "night": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "hour": 20.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "night"
+    ],
+    "note": "Nuit : les fenêtres éclairées sont une illustration, pas une information sur les habitants",
+    "cap": "Illustration indicative · immeubles, hauteurs, rues, jardins et arbres : municipalité de Tel Aviv-Jaffa · les tours : le contour municipal, tourné de 1,25° à chaque étage · fenêtres éclairées : illustration"
+   }
+  },
+  "fr-1440": {
+   "day": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "hour": 10,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "day"
+    ],
+    "note": "",
+    "cap": "Illustration indicative · immeubles, hauteurs, rues, jardins et arbres : municipalité de Tel Aviv-Jaffa · les tours : le contour municipal, tourné de 1,25° à chaque étage"
+   },
+   "sunset": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "hour": 18.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "sunset"
+    ],
+    "note": "Coucher du soleil à 18:42 le 21 septembre, d’après la course du soleil au-dessus de Tel Aviv",
+    "cap": "Illustration indicative · immeubles, hauteurs, rues, jardins et arbres : municipalité de Tel Aviv-Jaffa · les tours : le contour municipal, tourné de 1,25° à chaque étage"
+   },
+   "night": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "hour": 20.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "night"
+    ],
+    "note": "Nuit : les fenêtres éclairées sont une illustration, pas une information sur les habitants",
+    "cap": "Illustration indicative · immeubles, hauteurs, rues, jardins et arbres : municipalité de Tel Aviv-Jaffa · les tours : le contour municipal, tourné de 1,25° à chaque étage · fenêtres éclairées : illustration"
+   }
+  },
+  "ru-390": {
+   "day": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "hour": 10,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "day"
+    ],
+    "note": "",
+    "cap": "Иллюстрация · здания, высоты, улицы, скверы и деревья: муниципалитет Тель-Авива-Яффо · башни: контур из данных муниципалитета с поворотом 1,25° на каждом этаже"
+   },
+   "sunset": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "hour": 18.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "sunset"
+    ],
+    "note": "Закат в 18:42, 21 сентября, по траектории солнца над Тель-Авивом",
+    "cap": "Иллюстрация · здания, высоты, улицы, скверы и деревья: муниципалитет Тель-Авива-Яффо · башни: контур из данных муниципалитета с поворотом 1,25° на каждом этаже"
+   },
+   "night": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "hour": 20.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "night"
+    ],
+    "note": "Ночь: освещённые окна показаны как иллюстрация, это не данные о жильцах",
+    "cap": "Иллюстрация · здания, высоты, улицы, скверы и деревья: муниципалитет Тель-Авива-Яффо · башни: контур из данных муниципалитета с поворотом 1,25° на каждом этаже · освещённые окна: иллюстрация"
+   }
+  },
+  "ru-1440": {
+   "day": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "hour": 10,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "day"
+    ],
+    "note": "",
+    "cap": "Иллюстрация · здания, высоты, улицы, скверы и деревья: муниципалитет Тель-Авива-Яффо · башни: контур из данных муниципалитета с поворотом 1,25° на каждом этаже"
+   },
+   "sunset": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "hour": 18.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "sunset"
+    ],
+    "note": "Закат в 18:42, 21 сентября, по траектории солнца над Тель-Авивом",
+    "cap": "Иллюстрация · здания, высоты, улицы, скверы и деревья: муниципалитет Тель-Авива-Яффо · башни: контур из данных муниципалитета с поворотом 1,25° на каждом этаже"
+   },
+   "night": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "hour": 20.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "night"
+    ],
+    "note": "Ночь: освещённые окна показаны как иллюстрация, это не данные о жильцах",
+    "cap": "Иллюстрация · здания, высоты, улицы, скверы и деревья: муниципалитет Тель-Авива-Яффо · башни: контур из данных муниципалитета с поворотом 1,25° на каждом этаже · освещённые окна: иллюстрация"
+   }
+  },
+  "ar-390": {
+   "day": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "hour": 10,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "day"
+    ],
+    "note": "",
+    "cap": "رسم توضيحي فقط · المباني والارتفاعات والشوارع والحدائق والأشجار: بلدية تل أبيب يافا · الأبراج: مخطط المبنى لدى البلدية مع دوران بمقدار 1.25 درجة في كل طابق"
+   },
+   "sunset": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "hour": 18.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "sunset"
+    ],
+    "note": "الغروب عند 18:42 في 21 أيلول، وفق مسار الشمس فوق تل أبيب",
+    "cap": "رسم توضيحي فقط · المباني والارتفاعات والشوارع والحدائق والأشجار: بلدية تل أبيب يافا · الأبراج: مخطط المبنى لدى البلدية مع دوران بمقدار 1.25 درجة في كل طابق"
+   },
+   "night": {
+    "drawCalls": 36,
+    "triangles": 720857,
+    "hour": 20.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "night"
+    ],
+    "note": "ليلاً: النوافذ المضاءة رسم توضيحي فقط، وليست معلومات عن السكان",
+    "cap": "رسم توضيحي فقط · المباني والارتفاعات والشوارع والحدائق والأشجار: بلدية تل أبيب يافا · الأبراج: مخطط المبنى لدى البلدية مع دوران بمقدار 1.25 درجة في كل طابق · النوافذ المضاءة: رسم توضيحي"
+   }
+  },
+  "ar-1440": {
+   "day": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "hour": 10,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "day"
+    ],
+    "note": "",
+    "cap": "رسم توضيحي فقط · المباني والارتفاعات والشوارع والحدائق والأشجار: بلدية تل أبيب يافا · الأبراج: مخطط المبنى لدى البلدية مع دوران بمقدار 1.25 درجة في كل طابق"
+   },
+   "sunset": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "hour": 18.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "sunset"
+    ],
+    "note": "الغروب عند 18:42 في 21 أيلول، وفق مسار الشمس فوق تل أبيب",
+    "cap": "رسم توضيحي فقط · المباني والارتفاعات والشوارع والحدائق والأشجار: بلدية تل أبيب يافا · الأبراج: مخطط المبنى لدى البلدية مع دوران بمقدار 1.25 درجة في كل طابق"
+   },
+   "night": {
+    "drawCalls": 40,
+    "triangles": 738261,
+    "hour": 20.333333333333332,
+    "sea_labels": 1,
+    "tod_pressed": [
+     "night"
+    ],
+    "note": "ليلاً: النوافذ المضاءة رسم توضيحي فقط، وليست معلومات عن السكان",
+    "cap": "رسم توضيحي فقط · المباني والارتفاعات والشوارع والحدائق والأشجار: بلدية تل أبيب يافا · الأبراج: مخطط المبنى لدى البلدية مع دوران بمقدار 1.25 درجة في كل طابق · النوافذ المضاءة: رسم توضيحي"
+   }
+  }
+ },
+ "local_files_served": {
+  "assets/project-stage/hamedina/poster-800.webp": "487e70708ceabe67",
+  "assets/nlds/nlds.css": "51bb81e52d33b089",
+  "assets/basket/basket.css": "42b9aeac088ace63",
+  "assets/arealife/areamap.js": "597129ca97783798",
+  "assets/showroom-engine/mv-ux.js": "645721814809bd3b",
+  "assets/basket/basket.js": "371135927d2422f6",
+  "assets/project-stage/hamedina/places.json": "fa2c7837bafc7f68",
+  "assets/branding/favicon.svg": "3983279f7c7823ef",
+  "assets/project-stage/world/world.js": "c8dd4c3ad81cfbc2",
+  "assets/project-stage/world/world.css": "825815926ae67ff8",
+  "assets/project-stage/hamedina/world.json": "f73687164839d711",
+  "assets/project-stage/hamedina/poster-1600.webp": "f84af9300908fc59",
+  "assets/project-stage/hamedina/world-i18n.json": "ea5bf49be4678d03"
+ }
+}

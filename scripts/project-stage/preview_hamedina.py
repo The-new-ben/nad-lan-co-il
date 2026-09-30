@@ -21,6 +21,11 @@ Shots: docs/research/2026-09-30-kikar-hamedina/p7-shots/ ; the receipt (content-
 P8 (1.72.370): the French, Russian and Arabic pages on the release copy deploy370 writes (hamedina_ps_patch370.py), each on the
 live Dimri Yama sibling in the same language (-fr, -ru, -ar: the site's header, footer and WhatsApp bar in that language):
   python scripts/project-stage/preview_hamedina.py --p8        (fr, ru, ar -> p8-shots/)
+
+P9a (1.72.371): all five pages on the release copy deploy371 writes (hamedina_ps_patch371.py), the branch's WhatsApp pill (its slot
+rule) and world module (day / sunset / night): the phone's first screen measured at scroll 0, 300 and 700 (the bar against the three
+page-top buttons and the world's tabs), the floor view at the three times of day, the Russian page's fonts (CDP):
+  python scripts/project-stage/preview_hamedina.py --p9a       (he, en, fr, ru, ar -> p9a-shots/; NL_P9A_LANGS=he,ar for a subset)
 """
 import hashlib, io, json, os, re, subprocess, sys, tempfile, time, urllib.request, urllib.parse
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
@@ -30,14 +35,18 @@ sys.path.insert(0, HERE)
 import hamedina_ps_patch as PATCH  # noqa: E402
 import hamedina_page_data as DATA  # noqa: E402
 import hamedina_ps_patch370 as PATCH370  # noqa: E402
+import hamedina_ps_patch371 as PATCH371  # noqa: E402
 
 P8 = "--p8" in sys.argv[1:]
-VER = "1.72.370" if P8 else "1.72.369"
-LANGS = ("fr", "ru", "ar") if P8 else ("he", "en")
+P9A = "--p9a" in sys.argv[1:]  # P9a (1.72.371): all five pages on the 371 release copy, the phone first screen measured
+VER = "1.72.371" if P9A else "1.72.370" if P8 else "1.72.369"
+LANGS = ("he", "en", "fr", "ru", "ar") if P9A else ("fr", "ru", "ar") if P8 else ("he", "en")
+if P9A and os.environ.get("NL_P9A_LANGS"):  # a quicker run on some of the five (e.g. NL_P9A_LANGS=he,ar)
+    LANGS = tuple(l for l in LANGS if l in os.environ["NL_P9A_LANGS"].split(","))
 
 PN = os.path.join(REPO, "plugins", "nadlan-config")
 RES = os.path.join(REPO, "docs", "research", "2026-09-30-kikar-hamedina")
-OUT = os.path.join(RES, "p8-shots" if P8 else "p7-shots")
+OUT = os.path.join(RES, "p9a-shots" if P9A else "p8-shots" if P8 else "p7-shots")
 ORIGIN = "https://nad-lan.co.il"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) NadLan-P7a-preview/1.0"
 LAT, LNG = "32.086758", "34.789776"
@@ -89,7 +98,7 @@ def build_pre(lang, rel_copy):
     # the head: title, description, hreflang, the stage's head pieces become the world page's
     html = re.sub(r"<title>.*?</title>", "<title>" + SEO[lang]["title"].replace("&", "&amp;") + "</title>", html, count=1, flags=re.S)
     html = re.sub(r'<meta name="description" content="[^"]*"', '<meta name="description" content="' + SEO[lang]["desc"] + '"', html, count=1)
-    fam = ("he", "en", "fr", "ru", "ar") if P8 else ("he", "en")
+    fam = ("he", "en", "fr", "ru", "ar") if (P8 or P9A) else ("he", "en")
     alt = "".join('<link rel="alternate" hreflang="%s" href="https://nad-lan.co.il/projects/hamedina%s/" />\n' % (l, "" if l == "he" else "-" + l) for l in fam)
     html = re.sub(r'(<link rel="alternate" hreflang="[^"]+" href="[^"]+" />\n?)+',
                   alt + '<link rel="alternate" hreflang="x-default" href="https://nad-lan.co.il/projects/hamedina/" />\n', html, count=1)
@@ -192,11 +201,143 @@ def probe_js():
            facts: R('#nlws-facts'), faq: R('#nlws-faq'), stacked, vh: innerHeight }; })()"""
 
 
+# ------------------------------------------------------------------------------------------------ P9a (1.72.371)
+FIRST_SCREEN_JS = r"""() => {
+  const R = (e) => { if (!e) return null; const r = e.getBoundingClientRect(); if (!r.height) return null; return { l: Math.round(r.left), r: Math.round(r.right), t: Math.round(r.top), b: Math.round(r.bottom) }; };
+  const pill = R(document.querySelector('#nlcta .nlcta-wa'));
+  const btns = [...document.querySelectorAll('.nlps-hero__cta a, .nlps-hero__cta button')].map((e) => ({ ev: e.getAttribute('data-nlps-ev'), ...R(e) }));
+  const tabs = [...document.querySelectorAll('#nlps .nlw-top .nlw-tab, #nlps .nlw-fullbtn')].map((e) => ({ txt: e.textContent.trim().slice(0, 24) || 'full', ...R(e) }));
+  const ov = (a, b) => (a && b && b.t != null ? Math.max(0, Math.min(a.r, b.r) - Math.max(a.l, b.l)) * Math.max(0, Math.min(a.b, b.b) - Math.max(a.t, b.t)) : 0);
+  const hits = [];
+  for (const b of btns) { const o = ov(pill, b); if (o > 0) hits.push({ with: 'hero:' + b.ev, px2: o }); }
+  for (const t of tabs) { const o = ov(pill, t); if (o > 0) hits.push({ with: 'tab:' + t.txt, px2: o }); }
+  const box = document.getElementById('nlcta');
+  return { y: Math.round(scrollY), vh: innerHeight, pill, lift: box && box.style.getPropertyValue('--nlcta-lift'), cls: box && box.className, btns, tabs, hits };
+}"""
+PHONE_UA = "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Mobile Safari/537.36"
+
+
+def p9a_shots(pages, asset, guard, served, receipt):
+    """P9a: the phone's first screen measured at scroll 0, 300 and 700 (the WhatsApp bar against the page top's three buttons and the
+    world's tabs, getBoundingClientRect), the floor view at day / sunset / night, and the Russian page's typography (the fonts the
+    browser really used, CDP). Shots in p9a-shots/, the numbers in p9a-shots/receipt.json."""
+    from playwright.sync_api import sync_playwright
+    receipt["first_screen"], receipt["fonts_ru"], receipt["world"] = {}, {}, {}
+    with sync_playwright() as p:
+        b = p.chromium.launch(channel="chrome", headless=True, args=["--use-angle=d3d11", "--ignore-gpu-blocklist", "--enable-unsafe-swiftshader"])
+        for lang in LANGS:
+            path = "/projects/hamedina" + ("" if lang == "he" else "-" + lang) + "/"
+            for size, w, h, mob in (("390", 390, 844, True), ("1440", 1440, 900, False)):
+                ctx = b.new_context(viewport={"width": w, "height": h}, is_mobile=mob, has_touch=mob, device_scale_factor=2 if mob else 1,
+                                    **({"user_agent": PHONE_UA} if mob else {}), locale={"he": "he-IL", "en": "en-US", "fr": "fr-FR", "ru": "ru-RU", "ar": "ar"}[lang])
+                ctx.route("**/*", guard)
+                ctx.route(re.compile(r"https://nad-lan\.co\.il/wp-content/plugins/nadlan-config/.*"), asset)
+                def serve_page(body):
+                    def f(route):
+                        route.fulfill(status=200, body=body, content_type="text/html; charset=utf-8")
+                    return f
+                ctx.route(re.compile(re.escape(ORIGIN + path) + r"\?pv=.*"), serve_page(pages[lang]))
+                pg = ctx.new_page()
+                errs = []
+                pg.on("pageerror", lambda e: errs.append(str(e)[:240]))
+                pg.on("console", lambda m: errs.append("console " + m.type + ": " + m.text[:200]) if m.type == "error" else None)
+                pg.goto(ORIGIN + path + "?pv=%d" % time.time(), wait_until="load", timeout=120000)
+                pg.wait_for_timeout(2500)
+                pre = f"{lang}-{size}"
+                if mob:
+                    rows = []
+                    for y in (0, 300, 700):
+                        pg.evaluate(f"window.scrollTo({{top:{y},behavior:'instant'}})")
+                        pg.wait_for_timeout(1000)
+                        m = pg.evaluate(FIRST_SCREEN_JS)
+                        rows.append(m)
+                        pg.screenshot(path=os.path.join(OUT, f"{pre}-first-y{y}.png"))
+                        print(pre, "y", m["y"], "pill", m["pill"], "lift", m["lift"], "hits", m["hits"])
+                    receipt["first_screen"][lang] = rows
+                else:
+                    pg.screenshot(path=os.path.join(OUT, f"{pre}-first-y0.png"))
+                # the world: the floor view (tower C, floor 30, facing west, the view from the window) at day, sunset and night
+                pg.evaluate("document.getElementById('nlps').scrollIntoView({block:'center'})")
+                try:
+                    pg.wait_for_function("window.__nlpsWorld && document.querySelector('.nlw-poster.is-gone')", timeout=90000)
+                except Exception as e:
+                    errs.append("world not ready: " + str(e)[:100])
+                pg.wait_for_timeout(1000)
+                pg.evaluate("(async()=>{const w=window.__nlpsWorld; w.setMode('tower','user'); w.pickTower('C','user'); w.setFloor(30,'user'); w.setFacing(270,'user'); w.setView('window');})()")  # on a phone the sheet folds on a facing (the switch is in it)
+                pg.wait_for_timeout(2600)
+                pg.evaluate("document.getElementById('nlps').scrollIntoView({block:'end'})")
+                wrec = {}
+                for tod in ("day", "sunset", "night"):
+                    # a real tap on the switch, as a visitor (the WhatsApp bar re-measures after a tap on the stage)
+                    pg.locator(f'#nlps [data-tod="{tod}"]').first.click()
+                    pg.wait_for_timeout(1500)
+                    pg.locator("#nlps").screenshot(path=os.path.join(OUT, f"{pre}-floor-C30-west-{tod}.png"))
+                    wrec[tod] = pg.evaluate("""() => { const w = window.__nlpsWorld, s = w.stats(), st = w.getState();
+                        const seas = [...document.querySelectorAll('#nlps .nlw-pin')].filter((e) => e.style.display !== 'none' && /Mediterranean|הים התיכון|Méditerranée|Средиземное|المتوسط/.test(e.textContent)).length;
+                        const pressed = [...document.querySelectorAll('#nlps [data-tod]')].filter((e) => e.getAttribute('aria-pressed') === 'true').map((e) => e.dataset.tod);
+                        return { drawCalls: s.drawCalls, triangles: s.triangles, hour: st.hour, sea_labels: seas, tod_pressed: pressed,
+                                 note: (document.querySelector('#nlps .nlw-todnote') || {}).textContent || '', cap: (document.querySelector('#nlps .nlw-cap') || {}).textContent || '' }; }""")
+                receipt["world"][pre] = wrec
+                print(pre, "world", json.dumps(wrec, ensure_ascii=False)[:400])
+                # the facts (the Hebrew degrees as a word) and, on the Russian page, the typography
+                for sid, nm in (("nlws-facts", "facts"),):
+                    if pg.locator("#" + sid).count():
+                        pg.evaluate(f"(()=>{{const e=document.getElementById('{sid}');window.scrollTo({{top:e.getBoundingClientRect().top+scrollY-90,behavior:'instant'}});}})()")
+                        pg.wait_for_timeout(900)
+                        pg.screenshot(path=os.path.join(OUT, f"{pre}-{nm}.png"))
+                pg.evaluate("window.scrollTo({top:0,behavior:'instant'})")
+                pg.wait_for_timeout(600)
+                if lang == "he":
+                    pg.locator(".nlpf").first.screenshot(path=os.path.join(OUT, f"{pre}-quickfacts-degrees.png"))
+                if lang == "ru":
+                    cdp = ctx.new_cdp_session(pg)
+                    cdp.send("DOM.enable"); cdp.send("CSS.enable")
+                    doc = cdp.send("DOM.getDocument", {"depth": -1})
+                    fonts = {}
+                    for sel in ("h1", ".nl-lead p", ".nlps-hero__cta a", ".nlpf__v", ".nlpf__k", "section.nlws h2", "section.nlws p", "section.nlws table td",
+                                "#nlcta .nlcta-txt b", "#nlps .nlw-tab", "#nlps .nlw-panel", "#nlps .nlw-title", "#nlps .nlw-cap", ".nl-projnotice"):
+                        r = cdp.send("DOM.querySelector", {"nodeId": doc["root"]["nodeId"], "selector": sel})
+                        if not r.get("nodeId"):
+                            continue
+                        f = cdp.send("CSS.getPlatformFontsForNode", {"nodeId": r["nodeId"]})
+                        fonts[sel] = [(x["familyName"], x["glyphCount"]) for x in f["fonts"]]
+                    receipt["fonts_ru"][size] = fonts
+                    print(pre, "fonts", json.dumps(fonts, ensure_ascii=False)[:600])
+                    pg.screenshot(path=os.path.join(OUT, f"{pre}-typography-top.png"))
+                    if pg.locator("#nlws-when").count():
+                        pg.evaluate("(()=>{const e=document.getElementById('nlws-when');window.scrollTo({top:e.getBoundingClientRect().top+scrollY-90,behavior:'instant'});})()")
+                        pg.wait_for_timeout(900)
+                        pg.screenshot(path=os.path.join(OUT, f"{pre}-typography-section.png"))
+                    pg.evaluate("window.scrollTo({top:0,behavior:'instant'})")
+                receipt["pages"][pre] = {"errors": errs[:12]}
+                ctx.close()
+        b.close()
+    # the shots as WebP (quality 88): the repository keeps them small
+    from PIL import Image
+    for f in sorted(os.listdir(OUT)):
+        if f.endswith(".png"):
+            Image.open(os.path.join(OUT, f)).convert("RGB").save(os.path.join(OUT, f[:-4] + ".webp"), "WEBP", quality=88, method=6)
+            os.remove(os.path.join(OUT, f))
+    keep = os.environ.get("NL_KEEP_PAGES")
+    for f in ["_page-%s.html" % l for l in LANGS]:  # the rendered pages carry the site's public map token: not kept in the repository
+        if os.path.exists(os.path.join(OUT, f)):
+            if keep:
+                os.makedirs(keep, exist_ok=True)
+                os.replace(os.path.join(OUT, f), os.path.join(keep, f))
+            else:
+                os.remove(os.path.join(OUT, f))
+    receipt["local_files_served"] = served
+    io.open(os.path.join(OUT, "receipt.json"), "w", encoding="utf-8").write(json.dumps(receipt, ensure_ascii=False, indent=1))
+    print("shots in", OUT)
+
+
 def main():
     from playwright.sync_api import sync_playwright
     os.makedirs(OUT, exist_ok=True)
     rel_copy = os.path.join(tempfile.mkdtemp(prefix="kh-rel-"), "project-stage.php")
-    if P8:  # what deploy370 writes: what 1.72.369 wrote (md5-checked) + the P8 hunks
+    if P9A:  # what deploy371 writes: what 1.72.370 wrote (md5-checked) + the P9a hunks
+        io.open(rel_copy, "w", encoding="utf-8", newline="").write(PATCH371.release_text())
+    elif P8:  # what deploy370 writes: what 1.72.369 wrote (md5-checked) + the P8 hunks
         io.open(rel_copy, "w", encoding="utf-8", newline="").write(PATCH370.release_text())
     else:
         base = subprocess.run(["git", "-C", REPO, "show", PATCH.BASE_COMMIT + ":" + PATCH.REL], capture_output=True).stdout.decode("utf-8")
@@ -223,6 +364,8 @@ def main():
             return route.abort()
         return route.fallback()
 
+    if P9A:
+        return p9a_shots(pages, asset, guard, served, receipt)
     with sync_playwright() as p:
         b = p.chromium.launch(channel="chrome", headless=True, args=["--use-angle=d3d11", "--ignore-gpu-blocklist", "--enable-unsafe-swiftshader"])
         for lang in LANGS:

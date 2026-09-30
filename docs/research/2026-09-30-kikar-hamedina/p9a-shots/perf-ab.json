@@ -1,0 +1,108 @@
+{
+ "what": "fps while the camera turns (world.bench 3000 ms after a 1500 ms warm-up), the released world.js (1.72.370, git HEAD) and the P9a world.js alternating, 3 rounds each, median; world-test.html, pixel ratio 1; local Chrome (ANGLE, D3D11) on this PC, headless: an emulated phone, not a real one",
+ "draw_calls_static": {
+  "aerial desktop": 60,
+  "C30 window desktop": 40,
+  "aerial phone": 52,
+  "C30 window phone": 36,
+  "note": "the same before and after, and the same at day, sunset and night (one uniform, no new mesh)"
+ },
+ "fps": {
+  "aerial-desktop-before-day": {
+   "fps": [
+    24.1,
+    24.6,
+    24.7
+   ],
+   "median": 24.6
+  },
+  "aerial-desktop-after-day": {
+   "fps": [
+    24.7,
+    24.3,
+    24.4
+   ],
+   "median": 24.4
+  },
+  "aerial-desktop-after-night": {
+   "fps": [
+    38.9,
+    38.4,
+    39
+   ],
+   "median": 38.9
+  },
+  "C30-west-desktop-before-day": {
+   "fps": [
+    39.5,
+    39.9,
+    39.9
+   ],
+   "median": 39.9
+  },
+  "C30-west-desktop-after-day": {
+   "fps": [
+    38.5,
+    38.3,
+    38.9
+   ],
+   "median": 38.5
+  },
+  "C30-west-desktop-after-night": {
+   "fps": [
+    50.2,
+    50.2,
+    51.2
+   ],
+   "median": 50.2
+  },
+  "aerial-mobile-before-day": {
+   "fps": [
+    49.9,
+    50.9,
+    49.2
+   ],
+   "median": 49.9
+  },
+  "aerial-mobile-after-day": {
+   "fps": [
+    49.8,
+    49.2,
+    48.3
+   ],
+   "median": 49.2
+  },
+  "aerial-mobile-after-night": {
+   "fps": [
+    55.9,
+    55.8,
+    55.8
+   ],
+   "median": 55.8
+  },
+  "C30-west-mobile-before-day": {
+   "fps": [
+    55.8,
+    55.9,
+    55.9
+   ],
+   "median": 55.9
+  },
+  "C30-west-mobile-after-day": {
+   "fps": [
+    55.8,
+    56,
+    55.8
+   ],
+   "median": 55.8
+  },
+  "C30-west-mobile-after-night": {
+   "fps": [
+    55.9,
+    55.9,
+    55.8
+   ],
+   "median": 55.9
+  }
+ }
+}

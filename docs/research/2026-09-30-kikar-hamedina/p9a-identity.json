@@ -1,0 +1,240 @@
+{
+ "release": {
+  "before": "370 live (md5 ae0966a44f5a671cd91ae4bc9b8ef61d)",
+  "after": "371 release (md5 ab9442860d0b6b22420ced51afbf02f0)",
+  "ok": true,
+  "rows": [
+   {
+    "slug": "rainbow-tel-aviv",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "rainbow-tel-aviv-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "duo-tel-aviv",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "duo-tel-aviv-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "dimri-yama-sde-dov",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "dimri-yama-sde-dov-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "ashira-sde-dov",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "ashira-sde-dov-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "hamedina",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "composed",
+     "wp_head@1000#0"
+    ],
+    "kikar": true
+   },
+   {
+    "slug": "hamedina-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "wp_head@1000#0"
+    ],
+    "kikar": true
+   },
+   {
+    "slug": "hamedina-fr",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "wp_head@1000#0"
+    ],
+    "kikar": true
+   },
+   {
+    "slug": "hamedina-ru",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "wp_head@1000#0"
+    ],
+    "kikar": true
+   },
+   {
+    "slug": "hamedina-ar",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "wp_head@1000#0"
+    ],
+    "kikar": true
+   }
+  ]
+ },
+ "branch": {
+  "before": "the branch file without the P9a hunks",
+  "after": "working file",
+  "ok": true,
+  "rows": [
+   {
+    "slug": "rainbow-tel-aviv",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "rainbow-tel-aviv-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "duo-tel-aviv",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "duo-tel-aviv-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "dimri-yama-sde-dov",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "dimri-yama-sde-dov-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "ashira-sde-dov",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "ashira-sde-dov-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [],
+    "kikar": false
+   },
+   {
+    "slug": "hamedina",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "composed",
+     "wp_head@1000#0"
+    ],
+    "kikar": true
+   },
+   {
+    "slug": "hamedina-en",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "wp_head@1000#0"
+    ],
+    "kikar": true
+   },
+   {
+    "slug": "hamedina-fr",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "wp_head@1000#0"
+    ],
+    "kikar": true
+   },
+   {
+    "slug": "hamedina-ru",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "wp_head@1000#0"
+    ],
+    "kikar": true
+   },
+   {
+    "slug": "hamedina-ar",
+    "ok": true,
+    "pieces": 11,
+    "changed_pieces": [
+     "config",
+     "current",
+     "wp_head@1000#0"
+    ],
+    "kikar": true
+   }
+  ]
+ }
+}

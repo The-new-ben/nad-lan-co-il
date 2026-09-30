@@ -337,13 +337,13 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 				'place'          => 'כיכר המדינה, צפון תל אביב',
 				'rail'           => array(),
 				'poster_alt'     => 'הדמיה של מגדלי כיכר המדינה בתל אביב: שלושה מגדלים מסתובבים סביב הפארק והאגם, בלב טבעת הבניינים של הכיכר ובתוך העיר עד הים',
-				'src_line'       => 'מקורות ההדמיה: הבניינים, הגבהים, הרחובות, הגנים והעצים לפי עיריית <span>תל אביב-יפו</span> (מידע גאוגרפי פתוח, 9.2026); המגדלים לפי קונטור הבניין במאגר העירייה והסיבוב שפורסם, 1.25° בכל קומה. מיקום האגם והמתקנים בפארק להמחשה בלבד.',
+				'src_line'       => 'מקורות ההדמיה: הבניינים, הגבהים, הרחובות, הגנים והעצים לפי עיריית <span>תל אביב-יפו</span> (מידע גאוגרפי פתוח, 9.2026); המגדלים לפי קונטור הבניין במאגר העירייה והסיבוב שפורסם, 1.25 מעלות בכל קומה. מיקום האגם והמתקנים בפארק להמחשה בלבד.',
 				// ProjectFacts: six quick facts, each with its source (facts.md 1.4, 1.5, 1.8; area.md 1)
 				'facts'          => array(
 					array( 'מיקום', 'כיכר המדינה, תל אביב', 'על טבעת רחוב ה׳ באייר, צפון העיר' ),
 					array( 'מגדלים', '3 מגדלים מסתובבים', '40, 40 ו-37 קומות, לפי ויקיפדיה ואשטרום' ),
 					array( 'דירות', '453', 'לפי אשטרום וגלובס' ),
-					array( 'הסיבוב', '1.25° בכל קומה', 'כ-50° לאורך מגדל של 40 קומות, לפי ויקיפדיה' ),
+					array( 'הסיבוב', '1.25 מעלות בכל קומה', 'כ-50 מעלות לאורך מגדל של 40 קומות, לפי ויקיפדיה' ),
 					array( 'הפארק', 'כ-40 דונם', 'עם אגם אקולוגי, בית ספר ומרכז קהילתי, לפי גלובס ומאקו' ),
 					array( 'מצב', 'השלד הושלם', 'ב-23.4.2026, לפי רישום אתר הבנייה בעירייה' ),
 				),
@@ -1239,6 +1239,11 @@ add_action( 'wp_head', function () {
 		. ':root body .nlps-page--world #nlps-t,:root body section.nlws{scroll-margin-top:120px}'
 		. '@media(max-width:1099px){:root body .nlps-page.nlps-page--world{grid-template-columns:minmax(0,1fr);grid-template-areas:"hero" "lead" "cta" "stage" "below" "facts" "deals" "rail"}:root body .nlps-page--world .nlps-stage--world{height:68svh;min-height:440px}}'
 		. '@media(max-width:600px){:root body .nlps-page--world .nlps-stage--world{height:72svh;min-height:460px}}'
+		// PhoneFirstScreen (design system v104.1, P9a): on phones a landing lane (50px + the grid's gap) between the page top's
+		// buttons and the world. The WhatsApp bar (50px, 10px clear on each side of it) parks there while the world's tab bar passes
+		// its resting place, instead of rising onto the third button ("סיור וירטואלי בכיכר"); conversion-cta.php counts the page
+		// top's buttons as controls and takes the free place nearest the bar's resting place
+		. '@media(max-width:600px){:root body .nlps-page--world>.nlps-stagebox{margin-top:50px!important}}'
 		// the text sections: a reading column, tables as spec sheets with the source under each value, the timeline, the FAQ
 		. $pc . '{max-width:min(880px,calc(100% - 24px))!important;margin:0 auto 36px!important;padding:0 16px!important;box-sizing:border-box}'
 		. ':root body .nlws h2{margin:0 0 10px!important;font:600 clamp(22px,2.4vw,28px)/1.25 "Noto Serif Hebrew","Frank Ruhl Libre",Georgia,serif!important;color:#1B1A17!important;text-wrap:balance}'
@@ -1276,6 +1281,28 @@ add_action( 'wp_head', function () {
 		. ':root body .nlws table thead{display:none!important}'
 		. ':root body .nlws p{font-size:15.5px!important}}'
 		. '</style>' . "\n";
+	// P9a (1.72.371): the Russian page's Cyrillic in the house type. The site's faces have no Cyrillic, so Russian fell back to the
+	// system's (Segoe UI, Georgia, Arial). Each family gains the Cyrillic of its own design family: Assistant's Latin is Source Sans,
+	// Noto Serif Hebrew's is Noto Serif, Heebo's is Roboto; Frank Ruhl Libre takes Noto Serif too (Google Fonts, SIL Open Font
+	// License). The same weights the site declares (a weight the site does not declare would take the Latin with it); only the
+	// Cyrillic range is fetched, and only when Cyrillic is on screen (unicode-range); only on this page; font-display swap.
+	if ( 'ru' === (string) ( $ps['lang'] ?? '' ) ) {
+		$cyr = 'U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116';
+		$gs  = 'https://fonts.gstatic.com/s/';
+		$fam = array(
+			'Assistant'         => array( $gs . 'sourcesans3/v19/nwpStKy2OAdR1K-IwhWudF-R3wsaZfrc.woff2', array( 300, 400, 600, 700 ) ),
+			'Noto Serif Hebrew' => array( $gs . 'notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYf-D33Esw.woff2', array( 500, 600, 700 ) ),
+			'Heebo'             => array( $gs . 'roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3iUBGEe.woff2', array( 300, 400, 500, 700 ) ),
+			'Frank Ruhl Libre'  => array( $gs . 'notoserif/v33/ga6daw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTYf-D33Esw.woff2', array( 400, 500, 700, 900 ) ),
+		);
+		$css = '';
+		foreach ( $fam as $name => $f ) {
+			foreach ( $f[1] as $wt ) {
+				$css .= "@font-face{font-family:'" . $name . "';font-style:normal;font-weight:" . (int) $wt . ';font-display:swap;src:url(' . $f[0] . ") format('woff2');unicode-range:" . $cyr . '}';
+			}
+		}
+		echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n" . '<style id="nadlan-ps-world-cyr">' . $css . '</style>' . "\n";
+	}
 }, 1000 );
 
 /* The visible H1 of a project page without a stage (design system ProjectTitle, version 39; Linear HAD-332; checklist C1).

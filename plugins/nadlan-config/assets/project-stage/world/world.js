@@ -40,6 +40,7 @@ let mergeGeometries = null;
 const DEG = Math.PI / 180;
 const HEB = /[֐-׿]/;
 const MODES = ['aerial', 'walk', 'tower', 'places'];
+const HOUR_MAX = 22; // P9a (1.72.371): the sun clock runs into the evening (sunset and the night view), 5:00-22:00
 
 // P8 (1.72.370): numbers and plurals for the French, Russian and Arabic words (a decimal comma; Russian and Arabic counting forms)
 const frNum = (x) => String(x).replace('.', ',');
@@ -84,9 +85,14 @@ const I18N = {
     seasons: { 3: '21.3', 6: '21.6', 9: '21.9', 12: '21.12' },
     seasonsLong: { 3: '21 במרץ', 6: '21 ביוני', 9: '21 בספטמבר', 12: '21 בדצמבר' },
     hour: 'שעה',
-    sunNow: (alt, az) => `השמש בגובה ${alt}° מכיוון ${az}°`,
+    // P9a (1.72.371): a degree value in Hebrew text is written as a word ("1.25 מעלות"); the sign next to a Hebrew word read as "°1.25"
+    sunNow: (alt, az) => `השמש בגובה ${alt} מעלות, מכיוון ${az} מעלות`,
     sunDown: 'השמש מתחת לאופק',
     riseSet: (r, s) => `זריחה ${r} · שקיעה ${s}`,
+    todLbl: 'שעות היום', tod: { day: 'יום', sunset: 'שקיעה', night: 'לילה' },
+    todSunset: (t, d) => `השקיעה ב-${t} ב-${d}, לפי מסלול השמש מעל תל אביב`,
+    todNight: 'לילה: האורות בחלונות הם הדמיה להמחשה בלבד, לא מידע על דיירים',
+    capNight: 'האורות בחלונות: הדמיה להמחשה',
     sunHours: (h, d) => `כ-${h} שעות שמש ישירה בחלון הזה ב-${d}`,
     sunNone: (d) => `בכיוון הזה אין שמש ישירה ב-${d}`,
     sunOnNow: 'השמש על החלון בשעה הזו', sunOffNow: 'החלון בצל בשעה הזו',
@@ -105,7 +111,7 @@ const I18N = {
     lines: 'קווים',
     source: 'מקור',
     illus: 'הדמיה להמחשה בלבד',
-    caption: 'הדמיה להמחשה בלבד · בניינים, גבהים, רחובות, גנים ועצים: עיריית תל אביב-יפו · המגדלים: קונטור הבניין במאגר העירייה וסיבוב של 1.25° בכל קומה',
+    caption: 'הדמיה להמחשה בלבד · בניינים, גבהים, רחובות, גנים ועצים: עיריית תל אביב-יפו · המגדלים: קונטור הבניין במאגר העירייה וסיבוב של 1.25 מעלות בכל קומה',
     block: 'בניין', blockPublic: 'מבנה ציבור', blockBuilding: 'בבנייה',
     hSrc: ['גובה לפי מדידת העירייה, 2019', 'גובה לפי מאגר העירייה', 'גובה לפי מדידת פני השטח של העירייה', 'גובה משוער לפי מספר הקומות'],
     heightAbout: (h) => `גובה כ-${h} מ׳`,
@@ -142,7 +148,7 @@ const I18N = {
     aerialIntro: 'Choose a tower, a garden, a building or a place to see its details.',
     goTower: 'Choose tower', // P8: the card's button reads 'Choose tower C'
     walkTitle: 'Walk around the square',
-    walkIntro: 'At eye level, on the ה\' באייר ring and the park paths.',
+    walkIntro: 'At eye level, on the He Be’Iyar ring road and the park paths.', // P9a: no Hebrew inside the English world
     walkKeysDesk: 'Drag to look · <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or the arrows to walk · <kbd>Shift</kbd> faster',
     walkKeysTouch: 'Drag to look · the round pad to walk',
     spots: { ring: 'The ring road', park: 'The park', towers: 'Between the towers', school: 'By the school' },
@@ -171,6 +177,10 @@ const I18N = {
     sunNow: (alt, az) => `Sun ${alt}° high, from ${az}°`,
     sunDown: 'The sun is below the horizon',
     riseSet: (r, s) => `Sunrise ${r} · sunset ${s}`,
+    todLbl: 'Time of day', tod: { day: 'Day', sunset: 'Sunset', night: 'Night' },
+    todSunset: (t, d) => `Sunset at ${t} on ${d}, from the sun’s path over Tel Aviv`,
+    todNight: 'Night: the lit windows are an illustration only, not information about residents',
+    capNight: 'lit windows: illustration',
     sunHours: (h, d) => `About ${h} hours of direct sun on this window on ${d}`,
     sunNone: (d) => `No direct sun on this facing on ${d}`,
     sunOnNow: 'Sun on the window at this time', sunOffNow: 'The window is in shade at this time',
@@ -196,7 +206,7 @@ const I18N = {
     built: (y) => `Built in ${y}`,
     street: 'Street', green: 'Public green space', water: 'Water', tree: 'Tree',
     treeLine: 'Trees from the tree canopies mapped by the city in 2024; the tree height shown is an illustration.',
-    park: 'The park in the square', pond: 'The ecological pond', road: 'The ה\' באייר ring', ringBld: 'The square\'s ring of buildings', square: 'Kikar Hamedina',
+    park: 'The park in the square', pond: 'The ecological pond', road: 'The He Be’Iyar ring road', ringBld: 'The square\'s ring of buildings', square: 'Kikar Hamedina',
     towersAll: 'Kikar Hamedina Towers',
     mark: 'Landmark', markDist: (d) => `${d} from the towers`,
     askWa: (k, f) => (f ? `Free advice on floor ${f} of tower ${k}` : `Free advice on tower ${k}`),
@@ -260,6 +270,10 @@ const I18N = {
     sunNow: (alt, az) => `Soleil à ${alt}° de hauteur, venant de ${az}°`,
     sunDown: 'Le soleil est sous l’horizon',
     riseSet: (r, s) => `Lever ${r} · coucher ${s}`,
+    todLbl: 'Moment de la journée', tod: { day: 'Jour', sunset: 'Coucher du soleil', night: 'Nuit' },
+    todSunset: (t, d) => `Coucher du soleil à ${t} le ${d}, d’après la course du soleil au-dessus de Tel Aviv`,
+    todNight: 'Nuit : les fenêtres éclairées sont une illustration, pas une information sur les habitants',
+    capNight: 'fenêtres éclairées : illustration',
     sunHours: (h, d) => `Environ ${frNum(h)} heures de soleil direct sur cette fenêtre le ${d}`,
     sunNone: (d) => `Pas de soleil direct sur cette orientation le ${d}`,
     sunOnNow: 'Le soleil entre par la fenêtre à cette heure', sunOffNow: 'La fenêtre est à l’ombre à cette heure',
@@ -345,6 +359,10 @@ const I18N = {
     sunNow: (alt, az) => `Солнце на высоте ${alt}°, с направления ${az}°`,
     sunDown: 'Солнце за горизонтом',
     riseSet: (r, s) => `Восход ${r} · закат ${s}`,
+    todLbl: 'Время суток', tod: { day: 'День', sunset: 'Закат', night: 'Ночь' },
+    todSunset: (t, d) => `Закат в ${t}, ${d}, по траектории солнца над Тель-Авивом`,
+    todNight: 'Ночь: освещённые окна показаны как иллюстрация, это не данные о жильцах',
+    capNight: 'освещённые окна: иллюстрация',
     sunHours: (h, d) => `Около ${frNum(h)} ч прямого солнца в этом окне ${d}`,
     sunNone: (d) => `${d} прямое солнце на эту сторону не попадает`,
     sunOnNow: 'В это время солнце в окне', sunOffNow: 'В это время окно в тени',
@@ -430,6 +448,10 @@ const I18N = {
     sunNow: (alt, az) => `الشمس على ارتفاع ${alt} درجة من اتجاه ${az} درجة`,
     sunDown: 'الشمس تحت الأفق',
     riseSet: (r, s) => `الشروق ${r} · الغروب ${s}`,
+    todLbl: 'وقت اليوم', tod: { day: 'نهار', sunset: 'غروب', night: 'ليل' },
+    todSunset: (t, d) => `الغروب عند ${t} في ${d}، وفق مسار الشمس فوق تل أبيب`,
+    todNight: 'ليلاً: النوافذ المضاءة رسم توضيحي فقط، وليست معلومات عن السكان',
+    capNight: 'النوافذ المضاءة: رسم توضيحي',
     sunHours: (h, d) => `نحو ${h} ساعة من الشمس المباشرة على هذه النافذة في ${d}`,
     sunNone: (d) => `لا تصل الشمس المباشرة إلى هذا الاتجاه في ${d}`,
     sunOnNow: 'الشمس على النافذة في هذه الساعة', sunOffNow: 'النافذة في الظل في هذه الساعة',
@@ -674,8 +696,11 @@ export function mountWorld(host, opts = {}) {
   const lang = I18N[lang0] ? lang0 : 'en';
   const T = deepMerge(I18N[lang], o.i18n ? (o.i18n[lang] || o.i18n) : null);
   const rtl = lang === 'he' || lang === 'ar';
+  // P9a (1.72.371): a degree sign beside a Hebrew word reads backwards ("ב-°1.25"; a bidi isolate does not change that in Hebrew,
+  // measured): in Hebrew a degree value from the data is written as a word, "1.25 מעלות" (Arabic has written "درجة" since P8)
+  const heDeg = (s) => (lang === 'he' && typeof s === 'string' ? s.replace(/(\d+(?:\.\d+)?)°/g, '$1 מעלות') : s);
   // a text of the world data in the page's language: its own, else the English (every language but Hebrew), else the Hebrew
-  const tx = (x) => (!x ? '' : x[lang] || (lang !== 'he' && x.en) || x.he || '');
+  const tx = (x) => heDeg(!x ? '' : x[lang] || (lang !== 'he' && x.en) || x.he || '');
   // a name that exists only in Hebrew is left out on the other languages' pages (never half translated, never invented)
   const heOnly = (s) => lang !== 'he' && HEB.test(s || '');
   const reduced = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -757,7 +782,7 @@ export function mountWorld(host, opts = {}) {
   const S = {
     mode: MODES.includes(o.mode) ? o.mode : 'aerial',
     tower: null, floor: null, facing: null, view: 'out',
-    season: SEASONS[o.season] ? o.season : 9, hour: clamp(+o.hour || 10, 5, 20),
+    season: SEASONS[o.season] ? o.season : 9, hour: clamp(+o.hour || 10, 5, HOUR_MAX),
     cat: 'transport', place: null, sunOpen: false, collapsed: false,
   };
   let W = null;                 // decoded world
@@ -797,7 +822,7 @@ export function mountWorld(host, opts = {}) {
     show: whenReady((kind, id) => showThing(kind, id)),
     closeCard: whenReady(() => closeCard()),
     project: (x, y, z) => { if (!camera) return null; const v = new THREE.Vector3(x, y, z).project(camera); return { x: (v.x * 0.5 + 0.5) * root.clientWidth, y: (-v.y * 0.5 + 0.5) * root.clientHeight, front: v.z < 1 }; },
-    getState: () => ({ mode: S.mode, tower: S.tower, floor: S.floor, facing: S.facing != null ? facingBearing(S.tower, S.floor, S.facing) : null, season: S.season, hour: S.hour, view: S.view, cat: S.cat }),
+    getState: () => ({ mode: S.mode, tower: S.tower, floor: S.floor, facing: S.facing != null ? facingBearing(S.tower, S.floor, S.facing) : null, season: S.season, hour: S.hour, tod: S.sun ? todOf(S.sun.alt, S.hour) : null, view: S.view, cat: S.cat }),
     stats: () => stats(),
     bench: (ms) => bench(ms),
     _debug: () => ({ scene, renderer, camera, W, TW, route: (sx, sz, tx, tz) => { const r = route(sx, sz, tx, tz); return r ? { len: r.len, n: r.path.length, nodes: graph.adj.length } : { none: true }; } }),
@@ -961,9 +986,10 @@ export function mountWorld(host, opts = {}) {
 
     // sky: a quiet gradient, paper at the horizon
     const skyMat = new THREE.ShaderMaterial({
-      uniforms: { c0: { value: new THREE.Color(C.sky0) }, c1: { value: new THREE.Color(C.sky1) }, c2: { value: new THREE.Color('#E8E2D6') } },
+      uniforms: { c0: { value: new THREE.Color(C.sky0) }, c1: { value: new THREE.Color(C.sky1) }, c2: { value: new THREE.Color('#E8E2D6') },
+        sd: { value: new THREE.Vector3(0, 1, 0) }, sg: { value: new THREE.Color('#F6B27A') }, sk: { value: 0 } },
       vertexShader: 'varying vec3 vP; void main(){ vP = normalize(position); gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
-      fragmentShader: 'uniform vec3 c0; uniform vec3 c1; uniform vec3 c2; varying vec3 vP; void main(){ float y = vP.y; vec3 c = y > 0.0 ? mix(c0, c1, smoothstep(0.0, 0.5, y)) : mix(c0, c2, smoothstep(0.0, -0.2, y)); gl_FragColor = vec4(c, 1.0);\n#include <colorspace_fragment>\n}',
+      fragmentShader: 'uniform vec3 c0; uniform vec3 c1; uniform vec3 c2; uniform vec3 sd; uniform vec3 sg; uniform float sk; varying vec3 vP; void main(){ float y = vP.y; vec3 c = y > 0.0 ? mix(c0, c1, smoothstep(0.0, 0.5, y)) : mix(c0, c2, smoothstep(0.0, -0.2, y)); float g = pow(max(dot(normalize(vP), sd), 0.0), 5.0) * (1.0 - smoothstep(0.0, 0.45, y)); c = mix(c, sg, clamp(g * sk, 0.0, 1.0)); gl_FragColor = vec4(c, 1.0);\n#include <colorspace_fragment>\n}',
       side: THREE.BackSide, depthWrite: false, depthTest: false, fog: false,
     });
     sky = new THREE.Mesh(new THREE.SphereGeometry(10000, 32, 16), skyMat); // follows the camera (inside every far plane)
@@ -1071,6 +1097,7 @@ export function mountWorld(host, opts = {}) {
       g2.computeVertexNormals();
       const mesh = new THREE.Mesh(g2, groundMat(C.street, {}, 2));
       mesh.position.y = 0.06; mesh.receiveShadow = true;
+      W.streetMat = mesh.material; // P9a: the night view lights the streets (an illustration)
       scene.add(mesh);
     }
     // the plot of plan 2500ב: the residential lot as pale stone, the private open space as a light green wash
@@ -1142,10 +1169,30 @@ export function mountWorld(host, opts = {}) {
       }
     }
     const blockMat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.92, metalness: 0 });
+    // P9a (1.72.371): at night about a third of the windows glow, floor by floor (3.2 m) and every 3.1 m along each wall; the
+    // pattern is a hash, an ILLUSTRATION (the panel and the caption say so), never information about the residents. Far away
+    // the single windows melt into their average glow, so nothing shimmers. One uniform: no extra draw call.
+    const uNight = { value: 0 };
+    W.uNight = uNight;
     blockMat.onBeforeCompile = (sh) => {
-      sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying float vWY; varying float vWall;')
-        .replace('#include <begin_vertex>', '#include <begin_vertex>\nvWY = (modelMatrix * vec4(transformed, 1.0)).y; vWall = 1.0 - abs(normal.y);');
-      sh.fragmentShader = sh.fragmentShader.replace('#include <common>', '#include <common>\nvarying float vWY; varying float vWall;')
+      sh.uniforms.uNight = uNight;
+      sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying float vWY; varying float vWall; varying vec3 vWP; varying vec3 vWN;')
+        .replace('#include <begin_vertex>', '#include <begin_vertex>\nvWY = (modelMatrix * vec4(transformed, 1.0)).y; vWall = 1.0 - abs(normal.y); vWP = (modelMatrix * vec4(transformed, 1.0)).xyz; vWN = normalize(mat3(modelMatrix) * normal);');
+      sh.fragmentShader = sh.fragmentShader.replace('#include <common>', '#include <common>\nvarying float vWY; varying float vWall; varying vec3 vWP; varying vec3 vWN; uniform float uNight;')
+        .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
+          if (uNight > 0.002) {
+            float wallN = step(0.5, 1.0 - abs(vWN.y));
+            vec2 tg = normalize(vec2(-vWN.z, vWN.x) + 1e-5);
+            vec2 uv2 = vec2(dot(vWP.xz, tg) / 3.1, vWP.y / 3.2);
+            vec2 cell = floor(uv2), f = fract(uv2), fw = fwidth(uv2);
+            float plane = floor(dot(vWP.xz, vWN.xz) * 0.5 + 0.5);
+            float hs = fract(sin(dot(vec3(cell, plane), vec3(12.9898, 78.233, 37.719))) * 43758.5453);
+            float pane = smoothstep(0.2, 0.2 + fw.x, f.x) * (1.0 - smoothstep(0.8 - fw.x, 0.8, f.x)) * smoothstep(0.3, 0.3 + fw.y, f.y) * (1.0 - smoothstep(0.78 - fw.y, 0.78, f.y));
+            float nearW = 1.0 - smoothstep(0.22, 0.6, max(fw.x, fw.y));
+            float glow = mix(0.11, pane * step(0.64, hs), nearW);
+            vec3 warm = mix(vec3(1.0, 0.8, 0.55), mix(vec3(1.0, 0.72, 0.4), vec3(1.0, 0.9, 0.7), fract(hs * 7.31)), nearW);
+            totalEmissiveRadiance += uNight * wallN * step(3.0, vWP.y) * glow * warm * 1.3;
+          }`)
         .replace('#include <color_fragment>', `#include <color_fragment>
           { float fl = vWY / 3.2; float fw = fwidth(fl); float d = abs(fract(fl + 0.5) - 0.5);
             float band = (1.0 - smoothstep(0.0, max(fw * 1.2, 0.012), d)) * (1.0 - smoothstep(0.08, 0.3, fw));
@@ -1153,6 +1200,7 @@ export function mountWorld(host, opts = {}) {
     };
     const nearLine = new THREE.LineBasicMaterial({ color: C.edge, transparent: true, opacity: 0.34 });
     const farLine = new THREE.LineBasicMaterial({ color: C.edge, transparent: true, opacity: 0.15 });
+    W.blockLines = [nearLine, farLine]; // P9a: at night the edges turn a soft blue-grey, so the blocks still read
     W.blockMeshes = [];
     for (const [key, t] of tiles) {
       const g = new THREE.BufferGeometry();
@@ -1226,7 +1274,7 @@ export function mountWorld(host, opts = {}) {
     const glassMat = new THREE.MeshStandardMaterial({ color: '#FFFFFF', map: gTex, metalness: 0.45, roughness: 0.1, envMap: envTex, envMapIntensity: 1.1 });
     const lineMat = new THREE.LineBasicMaterial({ color: C.edge, transparent: true, opacity: 0.2 });
     const helixMat = new THREE.LineBasicMaterial({ color: C.edge, transparent: true, opacity: 0.32 });
-    W.towerMats = { lineMat, helixMat };
+    W.towerMats = { lineMat, helixMat, glassMat };
     for (const t of W.towers) {
       const N = t.floors, half = t.side / 2, gHalf = half - SLAB_OUT;
       const plateAt = (f) => t.base_bearing + DIR * TWIST * (clamp(f, 1, N) - 1);
@@ -1733,7 +1781,8 @@ export function mountWorld(host, opts = {}) {
   }
   function setSun(s = {}) {
     if (s.season && SEASONS[s.season]) S.season = +s.season;
-    if (s.hour != null) S.hour = clamp(+s.hour, 5, 20);
+    if (s.hour != null) S.hour = clamp(+s.hour, 5, HOUR_MAX);
+    if (s.tod && T.tod[s.tod]) S.hour = todHour(s.tod);
     applySun();
     renderPanel(true);
   }
@@ -1825,24 +1874,66 @@ export function mountWorld(host, opts = {}) {
   }
 
   // ================================================================================================ sun and light
+  // P9a (1.72.371): day, sunset and night are moments of the same sun clock, read from the sun's height at the chosen hour
+  // (the real path over the plot, suncalc), never a separate switch that could disagree with the clock
+  const sstep = (a, b, x) => { const k = clamp((x - a) / (b - a), 0, 1); return k * k * (3 - 2 * k); };
+  const todOf = (alt, hour) => (alt <= -4 ? 'night' : alt <= 7 && hour >= 12 ? 'sunset' : 'day');
+  function todHour(k) {
+    const rs = riseSet(S.season, W.origin.lat, W.origin.lng);
+    if (k === 'sunset' && rs.set) return clamp(Math.round((rs.set - 20) / 5) * 5 / 60, 5, HOUR_MAX);   // 20 minutes before the sun sets
+    if (k === 'night' && rs.set) return clamp(Math.round((rs.set + 100) / 5) * 5 / 60, 5, HOUR_MAX);   // an hour and 40 minutes after
+    return S.dayHour || clamp(+o.hour || 10, 5, HOUR_MAX);
+  }
+  function setTod(k) {
+    if (!T.tod[k]) return;
+    S.hour = todHour(k);
+    applySun();
+    renderPanel(true);
+  }
+  // horizon, zenith, below the horizon, the hemisphere's sky and ground (made once three.js is loaded)
+  const SKYHEX = {
+    day: [C.sky0, C.sky1, '#E8E2D6', '#FFFBF3', '#E4DCCB'],
+    gold: ['#EFCBB0', '#C9CEDF', '#D8C6B4', '#DCD9EA', '#CDBBA6'],
+    night: ['#28324C', '#0B1122', '#151A27', '#8C9BC2', '#1B1F2C'],
+  };
+  let SKY = null, _k = null, _k2 = null;
+  const mix3 = (i, g, n) => {
+    if (!SKY) { SKY = {}; for (const k in SKYHEX) SKY[k] = SKYHEX[k].map((h) => new THREE.Color(h)); _k = new THREE.Color(); _k2 = new THREE.Color(); }
+    return _k.copy(SKY.day[i]).lerp(SKY.gold[i], g).lerp(_k2.copy(SKY.night[i]), n);
+  };
   function applySun() {
     const s = sunAt(S.season, S.hour, W.origin.lat, W.origin.lng);
     const up = s.alt > 0;
+    const kN = sstep(3, -7, s.alt);                              // 0 by day .. 1 at night
+    const kG = sstep(16, 3, s.alt) * (1 - sstep(-1, -7, s.alt)); // the low, warm sun around sunset (and sunrise)
     const d = dirOf(s.bearing), ca = Math.cos(Math.max(s.alt, 0.5) * DEG);
     const dir = new THREE.Vector3(d.x * ca, Math.sin(Math.max(s.alt, 0.5) * DEG), d.z * ca).normalize();
     const focus = shadowFocus();
-    sunLight.position.copy(focus.c).addScaledVector(dir, 3000);
+    // below the horizon a faint cool light from the south-east (an illustration of the night sky's light), with no shadows
+    const moon = dirOf(135), night = !up;
+    const ldir = night ? new THREE.Vector3(moon.x * 0.75, 0.66, moon.z * 0.75).normalize() : dir;
+    sunLight.position.copy(focus.c).addScaledVector(ldir, 3000);
     sunLight.target.position.copy(focus.c); sunLight.target.updateMatrixWorld();
     const cam = sunLight.shadow.camera;
     cam.left = -focus.half; cam.right = focus.half; cam.top = focus.half; cam.bottom = -focus.half; cam.near = 100; cam.far = 6500; cam.updateProjectionMatrix();
     sunLight.castShadow = up && !!o.shadows;
     const low = clamp(1 - s.alt / 45, 0, 1);
-    sunLight.intensity = up ? 1.75 + 0.55 * (1 - low) : 0;
-    sunLight.color.set(up ? new THREE.Color('#FFF6E8').lerp(new THREE.Color('#FFD7A0'), low * 0.6) : '#000000');
-    hemi.intensity = up ? 1.75 : 1.15;
-    hemi.color.set(up ? '#FFFBF3' : '#D7DCE6');
-    renderer.toneMappingExposure = up ? 1.0 : 1.08;
-    S.sun = s;
+    sunLight.intensity = up ? 1.75 + 0.55 * (1 - low) + 0.35 * kG : 0.13 * kN;
+    sunLight.color.set(up ? new THREE.Color('#FFF6E8').lerp(new THREE.Color('#FFD7A0'), low * 0.6).lerp(new THREE.Color('#FFA766'), kG * 0.8) : new THREE.Color('#D7DCE6').lerp(new THREE.Color('#8FA2D4'), kN));
+    hemi.intensity = up ? 1.75 - 0.8 * kG : 1.15 - 0.72 * kN;
+    hemi.color.copy(mix3(3, kG, kN)); hemi.groundColor.copy(mix3(4, kG, kN));
+    const su = sky.material.uniforms;
+    su.c0.value.copy(mix3(0, kG, kN)); su.c1.value.copy(mix3(1, kG, kN)); su.c2.value.copy(mix3(2, kG, kN));
+    su.sd.value.set(d.x, Math.max(0.02, Math.sin(s.alt * DEG)), d.z).normalize(); su.sk.value = 0.9 * kG;
+    fog.color.copy(su.c0.value);
+    if (W.uNight) W.uNight.value = kN;
+    if (W.streetMat) W.streetMat.emissive.set('#6E5634').multiplyScalar(0.3 * kN);
+    if (W.blockLines) { W.blockLines[0].color.set(C.edge).lerp(new THREE.Color('#7F8AA8'), kN); W.blockLines[1].color.set(C.edge).lerp(new THREE.Color('#59627C'), kN); }
+    if (W.towerMats && W.towerMats.glassMat) W.towerMats.glassMat.envMapIntensity = 1.1 * (1 - 0.75 * kN);
+    renderer.toneMappingExposure = up ? 1.0 : 1.08 + 0.12 * kN;
+    if (ui.cap) ui.cap.textContent = T.caption + (kN > 0.5 ? ' · ' + T.capNight : '');
+    if (todOf(s.alt, S.hour) === 'day') S.dayHour = S.hour;
+    S.sun = s; S.kN = kN;
     renderer.shadowMap.needsUpdate = true;
     invalidate();
   }
@@ -2064,6 +2155,10 @@ export function mountWorld(host, opts = {}) {
         if (x >= W.sea.bb[0] && x <= W.sea.bb[2] && z >= W.sea.bb[1] && z <= W.sea.bb[3] && pip(W.sea.P, x, z)) {
           const tw = W.marks.find((mk) => mk.key === 'sea');
           add({ id: 'seaview', kind: 'mark', name: tw ? tx(tw) : T.water, meta: T.km(Math.hypot(x - (TW[S.tower] ? TW[S.tower].t.cx : 0), z - (TW[S.tower] ? TW[S.tower].t.cz : 0))), pos: new THREE.Vector3(x, 1, z), prio: 45, click: () => tw && openCard(markCard(tw)) });
+          // P9a (1.72.371): the sea is named once. Where the window's line of sight meets the water, that label (with its real
+          // distance) replaces the landmark's fixed point, which named the same sea a second time ("Mediterranean Sea" x2)
+          const dup = L.findIndex((c) => c.id === 'msea');
+          if (dup > -1) L.splice(dup, 1);
           break;
         }
       }
@@ -2331,6 +2426,10 @@ export function mountWorld(host, opts = {}) {
     const rs = riseSet(S.season, W.origin.lat, W.origin.lng);
     const s = S.sun || sunAt(S.season, S.hour, W.origin.lat, W.origin.lng);
     const seasons = [3, 6, 9, 12].map((k) => chip(T.seasons[k], S.season === k, `data-season="${k}"`)).join('');
+    // P9a: day / sunset / night, three moments of the same clock (the chip that matches the hour is pressed)
+    const tod = todOf(s.alt, S.hour);
+    const todRow = todRowHtml(tod);
+    const todNote = `<div class="nlw-note nlw-todnote"${tod === 'day' ? ' hidden' : ''}>${esc(todLine(tod, rs))}</div>`;
     let hoursLine = '';
     if (withHours && S.tower && S.floor && S.facing != null) {
       const b = facingBearing(S.tower, S.floor, S.facing);
@@ -2341,12 +2440,19 @@ export function mountWorld(host, opts = {}) {
     }
     return `<div class="nlw-sec nlw-sun">
       <div class="nlw-sechead"><span class="nlw-eyebrow">${esc(T.sun)}</span>${open ? '' : chip(T.sunOpen, false, 'data-sunopen="1"')}</div>
-      ${open ? `<div class="nlw-row" role="group" aria-label="${esc(T.sun)}">${seasons}</div>
+      ${open ? `${todRow}<div class="nlw-row" role="group" aria-label="${esc(T.sun)}">${seasons}</div>
       <label class="nlw-lbl"><span>${esc(T.hour)}</span><b>${hhmm(S.hour * 60)}</b></label>
-      <input class="nlw-range" type="range" min="5" max="20" step="0.25" value="${S.hour}" data-hour aria-label="${esc(T.hour)}">
+      <input class="nlw-range" type="range" min="5" max="${HOUR_MAX}" step="0.25" value="${S.hour}" data-hour aria-label="${esc(T.hour)}">
       <div class="nlw-note">${esc(s.alt > 0 ? T.sunNow(s.alt.toFixed(0), s.bearing.toFixed(0)) : T.sunDown)} · ${esc(T.riseSet(hhmm(rs.rise), hhmm(rs.set)))}</div>
-      ${hoursLine}` : (withHours && hoursLine ? hoursLine : '')}
+      ${hoursLine}${todNote}` : (withHours ? todRow + todNote + hoursLine : '')}
     </div>`;
+  }
+  const todRowHtml = (tod) => `<div class="nlw-row nlw-tod" role="group" aria-label="${esc(T.todLbl)}">${['day', 'sunset', 'night'].map((k) => chip(T.tod[k], tod === k, `data-tod="${k}"`)).join('')}</div>`;
+  // the line under the switch: the sunset's time (the sun's path over the plot), or what the night view shows and what it does not
+  function todLine(tod, rs) {
+    if (tod === 'sunset') return T.todSunset(hhmm(rs.set), T.seasonsLong[S.season]);
+    if (tod === 'night') return T.todNight;
+    return '';
   }
   let panelLight = false;
   function renderPanel(light) {
@@ -2375,6 +2481,10 @@ export function mountWorld(host, opts = {}) {
           if (notes[1]) notes[1].textContent = `${sunOnWindowNow(S.tower, S.floor, b) ? T.sunOnNow : T.sunOffNow} · ${T.sunNote}`;
         }
         sun.querySelectorAll('[data-season]').forEach((x) => x.setAttribute('aria-pressed', +x.dataset.season === S.season ? 'true' : 'false'));
+        const tod = todOf(s.alt, S.hour);
+        sun.querySelectorAll('[data-tod]').forEach((x) => x.setAttribute('aria-pressed', x.dataset.tod === tod ? 'true' : 'false'));
+        const tn = sun.querySelector('.nlw-todnote'); if (tn) { tn.textContent = todLine(tod, rs); tn.hidden = tod === 'day'; }
+        const hr = sun.querySelector('[data-hour]'); if (hr && Math.abs(+hr.value - S.hour) > 0.01) hr.value = S.hour;
       }
       return;
     }
@@ -2415,15 +2525,23 @@ export function mountWorld(host, opts = {}) {
     if (S.facing == null) return '';
     const b = facingBearing(S.tower, S.floor, S.facing);
     const h = sunHoursFor(S.tower, S.floor, b, S.season);
-    return `<div class="nlw-sub">${esc(T.faces(dirWord(b)))} · <bdi dir="ltr">${Math.round(b)}°</bdi> · ${esc(T.eye(eyeH(S.floor).toFixed(1)))}</div>` +
-      `<div class="nlw-line nlw-sun-line ${h ? '' : 'is-none'}">${esc(h ? T.sunHours(h.toString(), T.seasonsLong[S.season]) : T.sunNone(T.seasonsLong[S.season]))}</div>`;
+    // P9a: on a phone the window view keeps its sheet small; the time of day sits right under the title (it changes the whole
+    // view, and the site's accessibility button covers the sheet's lowest corner), its line last when it is not day
+    const s = S.sun || sunAt(S.season, S.hour, W.origin.lat, W.origin.lng), tod = todOf(s.alt, S.hour);
+    return todRowHtml(tod) +
+      `<div class="nlw-sub">${esc(T.faces(dirWord(b)))} · ${degHtml(Math.round(b))} · ${esc(T.eye(eyeH(S.floor).toFixed(1)))}</div>` +
+      `<div class="nlw-line nlw-sun-line ${h ? '' : 'is-none'}">${esc(h ? T.sunHours(h.toString(), T.seasonsLong[S.season]) : T.sunNone(T.seasonsLong[S.season]))}</div>` +
+      (tod === 'day' ? '' : `<div class="nlw-note nlw-todnote">${esc(todLine(tod, riseSet(S.season, W.origin.lat, W.origin.lng)))}</div>`);
   }
+  // a bearing inside a sentence: a word in Hebrew and Arabic (the sign beside an RTL word reads "°266"), the sign in an LTR isolate
+  // elsewhere; alone in its chip the sign stays (nothing beside it to read backwards)
+  const degHtml = (n) => (lang === 'he' ? `${n} מעלות` : lang === 'ar' ? `${n} درجة` : `<bdi dir="ltr">${n}°</bdi>`);
   function facesHtml() {
     const list = facingBearings(S.tower, S.floor);
     const hours = list.map((b) => sunHoursFor(S.tower, S.floor, b, S.season));
     const maxH = Math.max(1, ...hours);
     return `<div class="nlw-faces" role="group" aria-label="${esc(T.facingLbl)}">${list.map((b, i) => `<button class="nlw-face" type="button" data-face="${i}" aria-pressed="${S.facing === i ? 'true' : 'false'}" aria-label="${esc(T.faces(dirWord(b)))} ${Math.round(b)}°, ${esc(T.hoursShort(hours[i]))}">
-      <span class="nlw-fw">${esc(T.dirsShort[Math.round(norm360(b) / 45) % 8])}</span><small><bdi>${Math.round(b)}°</bdi></small><span class="nlw-sunb"><i style="width:${Math.round(100 * hours[i] / maxH)}%"></i></span><small class="nlw-fh">${esc(T.hoursShort(hours[i]))}</small></button>`).join('')}</div>`;
+      <span class="nlw-fw">${esc(T.dirsShort[Math.round(norm360(b) / 45) % 8])}</span><small><bdi dir="ltr">${Math.round(b)}°</bdi></small><span class="nlw-sunb"><i style="width:${Math.round(100 * hours[i] / maxH)}%"></i></span><small class="nlw-fh">${esc(T.hoursShort(hours[i]))}</small></button>`).join('')}</div>`;
   }
   function bindFaces() {
     ui.panel.querySelectorAll('[data-face]').forEach((b) => b.addEventListener('click', () => setFacing({ index: +b.dataset.face }, 'user')));
@@ -2436,6 +2554,7 @@ export function mountWorld(host, opts = {}) {
     p.querySelectorAll('[data-view]').forEach((b) => b.addEventListener('click', () => setTowerView(b.dataset.view)));
     p.querySelectorAll('[data-season]').forEach((b) => b.addEventListener('click', () => { S.season = +b.dataset.season; applySun(); renderPanel(true); }));
     p.querySelectorAll('[data-sunopen]').forEach((b) => b.addEventListener('click', () => { S.sunOpen = true; renderPanel(); }));
+    p.querySelectorAll('[data-tod]').forEach((b) => b.addEventListener('click', () => setTod(b.dataset.tod)));
     const col = p.querySelector('[data-collapse]'); if (col) col.addEventListener('click', () => { S.collapsed = !S.collapsed; renderPanel(); invalidate(); });
     const hr = p.querySelector('[data-hour]'); if (hr) hr.addEventListener('input', () => { S.hour = +hr.value; applySun(); renderPanel(true); });
     const fl = p.querySelector('[data-floor]');

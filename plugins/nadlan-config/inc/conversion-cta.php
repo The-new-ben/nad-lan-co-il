@@ -146,18 +146,42 @@ html body #nlcta .nlcta-wa{display:flex!important}
 		   Only the pill's own column counts, and its column does not move when it is lifted, so it never flickers. */
 		// the lift clears the whole card (its top + 10px), not a fixed 150px that left the circle on the card's next button
 		var wa0=box.querySelector('.nlcta-wa');
+		/* PhoneFirstScreen (design system v104.1, P9a, 30.9.2026): the pill finds a free place in its own column. The page top's
+		   buttons (.nlps-hero__cta, as one block) join the stage's controls (each climbed to its card, as v91) as places the pill
+		   never covers; it takes the free place NEAREST its resting place, a little lower or higher, never closer than 16px to the
+		   screen's foot and at most 70% up. Before, it rose over the world's tabs straight onto the third hero button, and on a
+		   lift below its resting place it could drop onto the tabs. A world's map labels (.nlw-labels) move with the camera: the
+		   pill floats over the map as over a picture instead of chasing them. Nothing here depends on where the pill itself is,
+		   so it never flickers. */
+		var safeB=null,safe=function(){
+			if(null===safeB){safeB=0;try{var sp=document.createElement('div');sp.style.cssText='position:fixed;left:0;bottom:0;width:1px;height:0;visibility:hidden;pointer-events:none;padding-bottom:env(safe-area-inset-bottom,0px)';document.body.appendChild(sp);safeB=sp.offsetHeight||0;sp.parentNode.removeChild(sp);}catch(e){safeB=0;}}
+			return safeB;
+		};
+		window.addEventListener('resize',function(){safeB=null;});
 		var stageHit=function(h){
 			if(!wa0)return 0;
-			var p=wa0.getBoundingClientRect(),els=document.querySelectorAll('#nlps button,#nlps a,#nlps-pick button,#nlps-pick a,.nlps-steps button,.nlps-steps a,#nlps-view-cta button,#nlps-view-cta a');
+			var rest=Number(box.getAttribute('data-rest'))||0,p=wa0.getBoundingClientRect(),ph=p.height;
+			if(!rest||!ph)return 0;
+			var top0=h-rest,obs=[],seen=[],els=document.querySelectorAll('.nlps-hero__cta,#nlps button,#nlps a,#nlps-pick button,#nlps-pick a,.nlps-steps button,.nlps-steps a,#nlps-view-cta button,#nlps-view-cta a');
 			for(var i=0;i<els.length;i++){
-				var r=els[i].getBoundingClientRect();
-				if(r.height>0&&r.bottom>h-110&&r.top<h&&r.left<p.right+8&&r.right>p.left-8){
-					var c=els[i];
-					while(c.parentElement&&c.parentElement.id!=='nlps'&&c.parentElement.id!=='nlps-pick'&&c.parentElement.getBoundingClientRect().height<h*0.55){c=c.parentElement;}
-					return Math.min(Math.round(h-c.getBoundingClientRect().top+10),Math.round(h*0.7));
-				}
+				var e=els[i];
+				if(e.closest&&e.closest('.nlw-labels'))continue;
+				var r=e.getBoundingClientRect();
+				if(!r.height||r.bottom<h*0.25||r.top>h||r.left>=p.right+8||r.right<=p.left-8)continue;
+				var c=e;
+				if(!e.classList.contains('nlps-hero__cta')){while(c.parentElement&&c.parentElement.id!=='nlps'&&c.parentElement.id!=='nlps-pick'&&c.parentElement.getBoundingClientRect().height<h*0.55){c=c.parentElement;}}
+				if(seen.indexOf(c)>-1)continue;
+				seen.push(c);
+				var q=c.getBoundingClientRect();
+				obs.push([q.top-10,q.bottom+10]);
 			}
-			return 0;
+			var free=function(t){for(var k=0;k<obs.length;k++){if(obs[k][1]>t&&obs[k][0]<t+ph)return false;}return true;};
+			if(free(top0))return 0;
+			var lo=Math.round(h*0.3),hi=Math.round(h-ph-Math.max(16,safe()+8)),best=null,cand=[];
+			for(var j=0;j<obs.length;j++){cand.push(obs[j][0]-ph,obs[j][1]);}
+			for(var n=0;n<cand.length;n++){var t=cand[n];if(t<lo||t>hi||!free(t))continue;if(null===best||Math.abs(t-top0)<Math.abs(best-top0))best=t;}
+			if(null===best)best=lo;
+			return Math.max(1,Math.round(h-best-ph-safe()));
 		};
 		/* ApartmentMapLanding (design system v101.2, 29.9.2026): the pill never covers the direction the buyer chose. When the
 		   area map's cone (bridge.js, on stage pages) meets the pill's resting place, the pill rises 10px above it, on every
@@ -189,6 +213,8 @@ html body #nlcta .nlcta-wa{display:flex!important}
 		window.addEventListener('resize',ask);
 		// P7.1 (1.72.370): measure again once the page has loaded (fonts, the first picture, a stage's own bar): on a phone's first screen the pill sat on the controls until the first scroll
 		window.addEventListener('load',ask);
+		// P9a (1.72.371): and twice more after it: a stage paints its own buttons after the page's load (DUO's card on the first screen)
+		window.addEventListener('load',function(){setTimeout(ask,1200);setTimeout(ask,3000);});
 		if(mq.addEventListener){mq.addEventListener('change',fit);}
 		// the stage's card opens and closes without a scroll: look again after a tap on the stage and on its floor events
 		document.addEventListener('click',function(e){if(e.target&&e.target.closest&&e.target.closest('#nlps,#nlps-pick,.nlps-steps,#nlps-view-cta')){setTimeout(ask,350);}},true);
