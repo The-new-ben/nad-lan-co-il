@@ -349,3 +349,13 @@ html body .nlw--full a.nlw-wafull span { color: #fff !important; text-decoration
 }
 .nlw[dir='ltr'] .nlw-hint { transform: translateX(-50%); }
 .nlw-hint[hidden] { display: none; }
+
+/* ---------------------------------------------------------------- v104.5 (Codex's QA of 1.72.373/374)
+   M19: with enlarged text the tabs wrap to two lines instead of clipping; the notes' fold is a 44 px target.
+   M17: on touch screens a place's name chip is a 44 px tap area (the collision in world.js keeps those areas apart). */
+.nlw-tabs { align-items: stretch; }
+.nlw-tab { white-space: normal; line-height: 1.1; padding-block: 4px; text-wrap: balance; }
+.nlw-notes summary { min-height: 44px; }
+@media (pointer: coarse) {
+  .nlw-pin .t::after { content: ''; position: absolute; inset: -7px -3px; }
+}

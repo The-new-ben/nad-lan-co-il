@@ -123,7 +123,7 @@ const I18N = {
     mark: 'נקודת ציון', markDist: (d) => `${d} מהמגדלים`,
     askWa: (k, f) => (f ? `ייעוץ חינם על קומה ${f} במגדל ${k}` : `ייעוץ חינם על מגדל ${k}`),
     askPlace: 'ייעוץ חינם על החיים בכיכר',
-    consult: 'ייעוץ חינם', hint: 'החלקה לצדדים מסובבת · שתי אצבעות לזום · ⤢ למסך מלא',
+    consult: 'ייעוץ חינם', hint: 'החלקה לצדדים מסובבת · שתי אצבעות לזום · ⤢ למסך מלא', wheelHint: 'זום: Ctrl + גלגלת · ⤢ למסך מלא',
     pickLabel: (f, k) => `${f} · מגדל ${k}`,
     notes: 'מה להמחשה',
     collapse: 'הקטנה', expand: 'הגדלה',
@@ -212,7 +212,7 @@ const I18N = {
     mark: 'Landmark', markDist: (d) => `${d} from the towers`,
     askWa: (k, f) => (f ? `Free advice on floor ${f} of tower ${k}` : `Free advice on tower ${k}`),
     askPlace: 'Free advice on living at the square',
-    consult: 'Free advice', hint: 'Swipe sideways to turn · two fingers to zoom · ⤢ full screen',
+    consult: 'Free advice', hint: 'Swipe sideways to turn · two fingers to zoom · ⤢ full screen', wheelHint: 'Zoom: Ctrl + scroll · ⤢ full screen',
     // P7: the registry's opening lines are Hebrew; the English page says them in English (anything else is left out)
     opens: { 'פועל מאז 18.8.2023': 'Running since 18.8.2023', 'מתוכנן להיפתח ב-2028': 'Planned to open in 2028', 'מתוכנן להיפתח עד 2030 (הקטע בתל אביב)': 'Planned to open by 2030 (the Tel Aviv section)' },
     pickLabel: (f, k) => `${f} · tower ${k}`,
@@ -306,7 +306,7 @@ const I18N = {
     mark: 'Point de repère', markDist: (d) => `À ${d} des tours`,
     askWa: (k, f) => (f ? `Conseil gratuit sur l’étage ${f} de la tour ${k}` : `Conseil gratuit sur la tour ${k}`),
     askPlace: 'Conseil gratuit sur la vie à Kikar Hamedina',
-    consult: 'Conseil gratuit', hint: 'Glissez sur le côté pour tourner · deux doigts pour zoomer · ⤢ plein écran',
+    consult: 'Conseil gratuit', hint: 'Glissez sur le côté pour tourner · deux doigts pour zoomer · ⤢ plein écran', wheelHint: 'Zoom : Ctrl + molette · ⤢ plein écran',
     opens: { 'פועל מאז 18.8.2023': 'En service depuis le 18 août 2023', 'מתוכנן להיפתח ב-2028': 'Ouverture prévue en 2028', 'מתוכנן להיפתח עד 2030 (הקטע בתל אביב)': 'Ouverture prévue d’ici 2030 (le tronçon de Tel Aviv)' },
     pickLabel: (f, k) => `${f} · tour ${k}`,
     notes: 'Ce qui est illustré',
@@ -396,7 +396,7 @@ const I18N = {
     mark: 'Ориентир', markDist: (d) => `${d} от башен`,
     askWa: (k, f) => (f ? `Бесплатная консультация: этаж ${f}, башня ${k}` : `Бесплатная консультация по башне ${k}`),
     askPlace: 'Бесплатная консультация о жизни на площади',
-    consult: 'Бесплатная консультация', hint: 'Проведите вбок, чтобы повернуть · двумя пальцами масштаб · ⤢ во весь экран',
+    consult: 'Бесплатная консультация', hint: 'Проведите вбок, чтобы повернуть · двумя пальцами масштаб · ⤢ во весь экран', wheelHint: 'Масштаб: Ctrl + колесо · ⤢ во весь экран',
     opens: { 'פועל מאז 18.8.2023': 'Работает с 18.08.2023', 'מתוכנן להיפתח ב-2028': 'Открытие запланировано на 2028 год', 'מתוכנן להיפתח עד 2030 (הקטע בתל אביב)': 'Открытие запланировано к 2030 году (участок в Тель-Авиве)' },
     pickLabel: (f, k) => `${f} · башня ${k}`,
     notes: 'Что показано условно',
@@ -486,7 +486,7 @@ const I18N = {
     mark: 'معلم', markDist: (d) => `على بعد ${d} من الأبراج`,
     askWa: (k, f) => (f ? `استشارة مجانية حول الطابق ${f} في البرج ${k}` : `استشارة مجانية حول البرج ${k}`),
     askPlace: 'استشارة مجانية حول الحياة في الميدان',
-    consult: 'استشارة مجانية', hint: 'اسحب جانبًا للتدوير · بإصبعين للتكبير · ⤢ ملء الشاشة',
+    consult: 'استشارة مجانية', hint: 'اسحب جانبًا للتدوير · بإصبعين للتكبير · ⤢ ملء الشاشة', wheelHint: 'التكبير: Ctrl + عجلة الفأرة · ⤢ ملء الشاشة',
     opens: { 'פועל מאז 18.8.2023': 'يعمل منذ 18.8.2023', 'מתוכנן להיפתח ב-2028': 'من المخطط افتتاحه عام 2028', 'מתוכנן להיפתח עד 2030 (הקטע בתל אביב)': 'من المخطط افتتاحه حتى 2030 (المقطع في تل أبيب)' },
     pickLabel: (f, k) => `${f} · البرج ${k}`,
     notes: 'ما هو توضيحي',
@@ -751,7 +751,7 @@ export function mountWorld(host, opts = {}) {
   root.append(enterBtn, loadEl);
 
   const ui = {};
-  let docked = false, autoFull = false, hintShown = false; // v104.3: the phone dock, the walk's own full screen, the hint
+  let docked = false, autoFull = false, hintShown = {}, hintT = 0; // v104.3: the phone dock, the walk's own full screen; v104.5: a hint per kind
   if (o.chrome) buildChrome();
 
   function buildChrome() {
@@ -2170,7 +2170,7 @@ export function mountWorld(host, opts = {}) {
       if (W.park && m !== 'walk') add({ id: 'park', kind: 'green', k: 'park', g: 'outdoors', name: T.park, meta: '', pos: new THREE.Vector3(-30, 0.5, 40), prio: 30, click: () => openCard(simpleCard('park')) });
     }
     if (m === 'aerial' || m === 'walk' || (m === 'places' && S.cat === 'outdoors')) {
-      for (const f of W.features) add({ id: 'f' + f.key, kind: 'feature', k: FEAT_K[f.key], g: 'outdoors', name: tx(f), meta: m === 'walk' || m === 'places' ? T.illusSpot : '', pos: new THREE.Vector3(f.x, 0.6, f.z), prio: m === 'places' ? 60 : 70, dotOnly: m === 'aerial' && narrow(), click: () => openCard(featureCard(f.key)) });
+      for (const f of W.features) add({ id: 'f' + f.key, kind: 'feature', k: FEAT_K[f.key], g: 'outdoors', name: tx(f), meta: m === 'walk' || m === 'places' ? T.illusSpot : '', pos: new THREE.Vector3(f.x, 0.6, f.z), prio: m === 'places' ? 60 : 70, click: () => openCard(featureCard(f.key)) }); // v104.5: named like every place (no icon-only spot)
     }
     if (m === 'aerial' || (fp && fp.window)) {
       const keysA = ['sea', 'port', 'reading_lighthouse', 'sportek', 'azrieli_center', 'ramat_aviv', 'tau', 'reading', 'city_hall', 'habima', 'azrieli_sarona', 'moshe_aviv', 'savidor', 'ichilov'];
@@ -2250,7 +2250,7 @@ export function mountWorld(host, opts = {}) {
     let e = labelPool.get(c.id);
     if (!e) {
       e = el('div', 'nlw-pin');
-      e.innerHTML = '<span class="d"></span><span class="s"></span><button class="t" type="button"><span class="n"></span><span class="m"></span></button><span class="i"></span>';
+      e.innerHTML = '<span class="d"></span><span class="s"></span><button class="t" type="button"><span class="n"></span><span class="m"></span></button><span class="i" aria-hidden="true"></span>';
       e._t = e.querySelector('.t'); e._s = e.querySelector('.s'); e._n = e.querySelector('.n'); e._m = e.querySelector('.m'); e._i = e.querySelector('.i');
       e._i.addEventListener('click', (ev) => { ev.stopPropagation(); if (e._click) e._click(); });
       e._t.addEventListener('click', (ev) => { ev.stopPropagation(); if (e._click) e._click(); });
@@ -2324,6 +2324,7 @@ export function mountWorld(host, opts = {}) {
       if (e._ik) { const br = { x0: x - 13, x1: x + 13, y0: y - 13, y1: y + 13 }; if (hitAny(br, placed) || hitAny(br, reserved)) { e.style.display = 'none'; continue; } }
       if (c.dotOnly) { e.classList.add('is-dot'); if (e._ik) placed.push({ x0: x - 12, x1: x + 12, y0: y - 12, y1: y + 12 }); continue; }
       const tw = e._size[0], th = e._size[1];
+      const hp = coarse ? 7 : 0; // v104.5: on touch the name chip's tap area is 44 px; the collision keeps those areas apart
       const stems = c.kind === 'tower' ? [12, 30] : [16, 34, 56, 80];
       const off = Math.max(0, tw / 2 - 12);
       const shifts = c.kind === 'tower' ? [0] : [0, off, -off];
@@ -2334,15 +2335,18 @@ export function mountWorld(host, opts = {}) {
       for (const { s, dx, below } of opts2) {
         const r = below ? { x0: x + dx - tw / 2 - 3, x1: x + dx + tw / 2 + 3, y0: y + s - 2, y1: y + s + th + 3 } : { x0: x + dx - tw / 2 - 3, x1: x + dx + tw / 2 + 3, y0: y - s - th - 3, y1: y - s + 2 };
         if (r.x0 < 4 || r.x1 > w - 4 || r.y0 < 4 || r.y1 > h - 4) continue;
-        if (hitAny(r, placed) || hitAny(r, reserved) || (c.kind !== 'tower' && hitAny(r, towerRects))) continue;
-        placed.push(r);
+        const rp = hp ? { x0: r.x0, x1: r.x1, y0: r.y0 - hp, y1: r.y1 + hp } : r;
+        if (hitAny(rp, placed) || hitAny(rp, reserved) || (c.kind !== 'tower' && hitAny(r, towerRects))) continue;
+        placed.push(rp);
         e._s.style.height = s + 'px'; e._s.style.top = below ? '0px' : (-s) + 'px';
         e._t.style.top = below ? s + 'px' : (-s) + 'px';
         e._t.style.transform = below ? (rtl ? 'translate(50%, 0)' : 'translate(50%, 0)') : '';
         e._t.style.right = (-dx).toFixed(1) + 'px';
         ok = true; break;
       }
-      if (!ok) { if (c.kind === 'mark' || c.kind === 'tower' || c.kind === 'civic') e.style.display = 'none'; else e.classList.add('is-dot'); }
+      // v104.5 (Codex's QA, M17): a place with an icon and no room for its name steps back entirely (it stays in the list and the
+      // cards); an icon never stands without its name
+      if (!ok) { if (e._ik || c.kind === 'mark' || c.kind === 'tower' || c.kind === 'civic') { e.style.display = 'none'; continue; } e.classList.add('is-dot'); }
       const rd = e._ik ? 12 : 6; const dot = { x0: x - rd, x1: x + rd, y0: y - rd, y1: y + rd }; placed.push(dot);
     }
     for (const [id, e] of labelPool) if (!used.has(id)) e.style.display = 'none';
@@ -2356,8 +2360,10 @@ export function mountWorld(host, opts = {}) {
   };
   const factList = (lines) => `<ul class="nlw-facts">${(lines || []).map((l) => `<li>${esc(tx(l))}${srcHtml(l.src)}</li>`).join('')}</ul>`;
   const notesHtml = () => `<details class="nlw-notes"><summary>${esc(T.notesSum)}</summary><ul>${(W.model.notes || []).map((n) => `<li>${esc(tx(n))}</li>`).join('')}</ul></details>`;
+  let cardOpener = null; // v104.5: the focus returns to what opened the card
   function openCard(c) {
     if (!c || !ui.card) return;
+    if (ui.card.hidden) cardOpener = document.activeElement;
     root.classList.add('has-card'); if (ui.dock) ui.dock.classList.add('has-card');
     ui.card.innerHTML = `<button class="nlw-x" type="button" aria-label="${esc(T.close)}"><svg viewBox="0 0 20 20" stroke="currentColor" stroke-width="1.8"><path d="M4 4l12 12M16 4L4 16"/></svg></button>` + c.html;
     ui.card.hidden = false;
@@ -2367,7 +2373,15 @@ export function mountWorld(host, opts = {}) {
     afterSheet();
     invalidate();
   }
-  function closeCard() { root.classList.remove('has-card'); if (ui.dock) ui.dock.classList.remove('has-card'); if (ui.card && !ui.card.hidden) { ui.card.hidden = true; ui.card.innerHTML = ''; afterSheet(); invalidate(); } }
+  function closeCard() {
+    root.classList.remove('has-card'); if (ui.dock) ui.dock.classList.remove('has-card');
+    if (ui.card && !ui.card.hidden) {
+      const back = cardOpener; cardOpener = null;
+      const had = ui.card.contains(document.activeElement);
+      ui.card.hidden = true; ui.card.innerHTML = ''; afterSheet(); invalidate();
+      if (had && back && back.isConnected && back.offsetParent !== null) { try { back.focus({ preventScroll: true }); } catch (e) {} }
+    }
+  }
   function afterSheet() {
     if (!camera || !narrow()) return;
     if (!fp) applyProjection();
@@ -2702,6 +2716,14 @@ export function mountWorld(host, opts = {}) {
     // v104.4b: in the page, a one-finger move that is mostly vertical belongs to the page's scroll, never to the camera. Stopped in
     // the capture phase on the world, before the canvas's own listeners (OrbitControls, the window view); the pan itself is the
     // browser's (touch-action: pan-y), so the page still scrolls.
+    // v104.5 (Codex's QA, M24): a click on the stage no longer hands the wheel to the camera. In the page the wheel scrolls the page;
+    // zoom = Ctrl/⌘ + wheel (a trackpad pinch sends the same), in full screen or while walking. Decided in the capture phase on the
+    // world, before OrbitControls' own wheel listener on the canvas.
+    on(root, 'wheel', (e) => {
+      const z = root.classList.contains('nlw--full') || e.ctrlKey || e.metaKey || !!(fp && fp.walk);
+      controls.enableZoom = z;
+      if (!z) gestureHint('wheel');
+    }, { capture: true, passive: true });
     const gest = new Map();
     on(root, 'pointerdown', (e) => { if (e.pointerType === 'touch') gest.set(e.pointerId, { x: e.clientX, y: e.clientY, v: null }); }, true);
     on(root, 'pointermove', (e) => {
@@ -2714,7 +2736,6 @@ export function mountWorld(host, opts = {}) {
     on(window, 'pointerup', gEnd); on(window, 'pointercancel', gEnd);
     on(cv, 'pointerdown', (e) => {
       down = { x: e.clientX, y: e.clientY, t: performance.now(), id: e.pointerId, yaw: fp ? fp.yaw : 0, tilt: fp ? fp.tilt : 0, touch: e.pointerType === 'touch' };
-      controls.enableZoom = true; // engaged: the wheel may zoom now
       if (e.pointerType === 'touch') gestureHint();
       if (e.pointerType === 'touch' && docked && !fp) { clearTimeout(tiltT); if (!tiltLock) { const a = controls.getPolarAngle(); tiltLock = [controls.minPolarAngle, controls.maxPolarAngle]; controls.minPolarAngle = a; controls.maxPolarAngle = a; } }
       if (fp) { cv.setPointerCapture(e.pointerId); }
@@ -2808,12 +2829,14 @@ export function mountWorld(host, opts = {}) {
     if (W) renderPanel();
     window.requestAnimationFrame(() => window.dispatchEvent(new Event('resize'))); // the site's WhatsApp bar re-measures
   }
-  function gestureHint() {
-    if (hintShown || !ui.hint || !docked) return;
-    hintShown = true;
-    try { if (sessionStorage.getItem('nlw-hint')) return; sessionStorage.setItem('nlw-hint', '1'); } catch (e) {}
+  function gestureHint(kind) {
+    const k = kind || 'touch';
+    if (!ui.hint || hintShown[k] || (k === 'touch' && !docked)) return;
+    hintShown[k] = true;
+    try { if (sessionStorage.getItem('nlw-hint-' + k)) return; sessionStorage.setItem('nlw-hint-' + k, '1'); } catch (e) {}
+    ui.hint.textContent = k === 'wheel' ? T.wheelHint : T.hint;
     ui.hint.hidden = false;
-    setTimeout(() => { if (ui.hint) ui.hint.hidden = true; }, 3500);
+    clearTimeout(hintT); hintT = setTimeout(() => { if (ui.hint) ui.hint.hidden = true; }, 3500);
   }
   function toggleFull(force) {
     const onF = force != null ? force : !root.classList.contains('nlw--full');

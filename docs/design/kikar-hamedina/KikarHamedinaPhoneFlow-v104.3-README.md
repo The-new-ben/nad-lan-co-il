@@ -123,3 +123,30 @@ Codex (Maya) tested the live page, read-only, and found two things. Both are now
 2. **Place icons overlapped each other and covered names in the world.**
    - The fix: an icon that would sit on a higher-priority icon, name or control now steps back.
    - The aerial view shows fewer icons, each clear, and none on top of another.
+
+## v104.5 (30.9 night): the rest of Codex's QA (docs/coordination/codex-qa-373-2026-09-30.md)
+
+Measured locally against the live 1.72.374 (the same script, `v1045_check.py`).
+
+| Check | Live 374 | v104.5 |
+|---|---|---|
+| **M15**, the area map at its opening zoom (14.4) | 61 icons, no name | 30-38 places, **each with its name** |
+| **M17**, world: icons without a name | 4 | **0** |
+| **M17**, world: tap areas overlapping | 2 | **0** |
+| **M24**, desktop: wheel after a click on the stage | page 0 px, the camera zooms | **page 260 px, camera still** |
+| Ctrl+wheel | - | zooms |
+| The WhatsApp bar on the floor slider | 7 positions | **0** |
+
+- **M15, the map.**
+  - **Why the names were missing:** the right-to-left text plugin loads lazily. Tiles laid out before it arrives keep their Hebrew and Arabic labels empty; Latin text rendered, Hebrew did not.
+  - **The fix:** once the plugin is loaded, the places and the basemap's name labels are laid out again.
+  - The place name now shows at every zoom. The icon and its name are one unit: a place with no room steps back, and it stays in the list.
+- **M17, the world** (Maya's option a):
+  - A place is its name and its icon together. A place with no room steps back entirely, and it stays in the list and the cards. An icon never stands alone.
+  - On touch screens the name chip is a 44 px tap area, and the collision keeps those areas apart.
+  - The icon is aria-hidden; the button with the name is the control.
+  - On a 320 px phone the aerial view shows fewer names, each readable.
+- **M24, desktop:** in the page, the wheel scrolls the page. Zoom is Ctrl or ⌘ plus the wheel (a trackpad pinch sends the same), in full screen, or while walking. A one-time hint says so.
+- **M19:** with enlarged text, the tabs wrap to two lines instead of clipping. The notes' fold is 44 px tall.
+- **The card:** the focus returns to what opened it.
+- **The WhatsApp bar** (a finding from the P9c agent): its list of controls now includes `#nlps input`, so the floor slider in the dock counts as a control.

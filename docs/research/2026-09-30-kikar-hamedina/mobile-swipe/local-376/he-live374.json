@@ -1,0 +1,69 @@
+{
+ "lang": "he",
+ "live": true,
+ "w": 390,
+ "M15": {
+  "zoom": 14.4,
+  "rendered": 61,
+  "textField": "[\"step\",[\"zoom\"],\"\",14,[\"get\",\"name\"]]",
+  "textOptional": false,
+  "names": [
+   "יהודה המכבי",
+   "אלעזר החורני",
+   "בשמת",
+   "נעמת חמניה",
+   "תיכון עירוני יא",
+   "בית יד לבנים",
+   "מרשל לואי",
+   "עירוני ד",
+   "שי",
+   "ת. רכבת תל אביב - סבידור/דרך נמיר"
+  ]
+ },
+ "M17": {
+  "visible": 9,
+  "named": 5,
+  "withIcon": 6,
+  "iconWithoutName": 4,
+  "tapOverlaps": 2,
+  "iconOverlaps": 0,
+  "ariaHidden": 0
+ },
+ "bar_on_slider_positions": 7,
+ "errors_phone": [],
+ "M24_wheel": {
+  "page_px": 0,
+  "camera_moved": true
+ },
+ "M24_ctrl_wheel": {
+  "page_px": 0,
+  "camera_moved": true
+ },
+ "hint": {
+  "hidden": true,
+  "text": "החלקה לצדדים מסובבת · שתי אצבעות לזום · ⤢ למסך מלא"
+ },
+ "M19_tabs": [
+  [
+   128,
+   128,
+   44
+  ],
+  [
+   149,
+   149,
+   44
+  ],
+  [
+   148,
+   148,
+   44
+  ],
+  [
+   170,
+   170,
+   44
+  ]
+ ],
+ "errors_desktop": []
+}

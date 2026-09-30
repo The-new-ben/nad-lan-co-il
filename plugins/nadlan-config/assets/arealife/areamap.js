@@ -276,18 +276,35 @@
       }
       map.addSource('nlam', { type: 'geojson', data: fc() });
       // v104.3: every place that has room shows its icon AND its name, as one unit (Codex: never an orphan icon); the nearest
-      // wins a collision (sort key = walking minutes), the far ones step back instead of piling up. Below zoom 14 the icons
-      // alone (no names yet at that scale); every place stays in the list under the map.
+      // wins a collision (sort key = walking minutes), the far ones step back instead of piling up. At every zoom a
+      // place shows with its name or not at all; every place stays in the list under the map.
       map.addLayer({ id: 'nlam-pin', type: 'symbol', source: 'nlam', layout: {
         'icon-image': ['get', 'ic'], 'icon-size': ['interpolate', ['linear'], ['zoom'], 12, 0.72, 14, 0.88, 16, 1],
         'icon-allow-overlap': false, 'icon-padding': 1,
         'symbol-sort-key': ['get', 'rank'],
-        'text-field': ['step', ['zoom'], '', 14, ['get', 'name']], 'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
+        // v104.5 (Codex's QA, M15): names from the first frame; the collision thins, never an anonymous icon
+        'text-field': ['get', 'name'], 'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
         'text-size': ['interpolate', ['linear'], ['zoom'], 14, 12, 17, 13.5],
         'text-variable-anchor': RTL ? ['right', 'left', 'top', 'bottom'] : ['left', 'right', 'top', 'bottom'],
         'text-radial-offset': 1.2, 'text-justify': 'auto', 'text-optional': false, 'icon-optional': false, 'text-max-width': 9, 'text-padding': 2 },
         paint: { 'text-color': '#14212B', 'text-halo-color': 'rgba(250,247,241,.96)', 'text-halo-width': 1.8 } });
       if (ISO.length) isoFilter();
+      // v104.5 (Codex's QA, M15): the right-to-left text plugin loads lazily, and the tiles laid out before it lands keep their
+      // Hebrew and Arabic labels EMPTY (Latin text showed at zoom 14.4, Hebrew did not). Once it is loaded, the places and the
+      // basemap's name labels are laid out again (an equivalent expression: an identical one would be a no-op).
+      var tries = 0;
+      (function relayout() {
+        var st = window.mapboxgl && window.mapboxgl.getRTLTextPluginStatus ? window.mapboxgl.getRTLTextPluginStatus() : 'loaded';
+        if (st === 'unavailable' || st === 'error') return;
+        if (st !== 'loaded') { if (++tries < 60) setTimeout(relayout, 400); return; }
+        try { map.setLayoutProperty('nlam-pin', 'text-field', ['to-string', ['get', 'name']]); } catch (e) {}
+        try {
+          (map.getStyle().layers || []).forEach(function (l) {
+            var tf = l.type === 'symbol' && l.id !== 'nlam-pin' ? map.getLayoutProperty(l.id, 'text-field') : null;
+            if (Array.isArray(tf) && tf[0] === 'coalesce' && JSON.stringify(tf).indexOf('"name') > -1) map.setLayoutProperty(l.id, 'text-field', ['to-string', tf]);
+          });
+        } catch (e) {}
+      })();
       map.on('click', 'nlam-pin', function (e) { var f = e.features && e.features[0]; if (f) focus(PLACES[f.properties.i]); });
       map.on('mouseenter', 'nlam-pin', function () { map.getCanvas().style.cursor = 'pointer'; });
       map.on('mouseleave', 'nlam-pin', function () { map.getCanvas().style.cursor = ''; });

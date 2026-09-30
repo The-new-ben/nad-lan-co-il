@@ -1,0 +1,69 @@
+{
+ "lang": "he",
+ "live": false,
+ "w": 390,
+ "M15": {
+  "zoom": 14.4,
+  "rendered": 38,
+  "textField": "[\"to-string\",[\"get\",\"name\"]]",
+  "textOptional": false,
+  "names": [
+   "תל אביב סבידור מרכז",
+   "בשמת",
+   "לואי",
+   "תיכון עירוני יא",
+   "עירוני ד",
+   "בית פנימיית בית הילד",
+   "התיכון החדש ע\"ש יצחק רבין",
+   "דרוויש נורי",
+   "בית יד לבנים",
+   "קרם פרש"
+  ]
+ },
+ "M17": {
+  "visible": 5,
+  "named": 5,
+  "withIcon": 3,
+  "iconWithoutName": 0,
+  "tapOverlaps": 0,
+  "iconOverlaps": 0,
+  "ariaHidden": 5
+ },
+ "bar_on_slider_positions": 0,
+ "errors_phone": [],
+ "M24_wheel": {
+  "page_px": 260,
+  "camera_moved": false
+ },
+ "M24_ctrl_wheel": {
+  "page_px": 0,
+  "camera_moved": true
+ },
+ "hint": {
+  "hidden": true,
+  "text": "זום: Ctrl + גלגלת · ⤢ למסך מלא"
+ },
+ "M19_tabs": [
+  [
+   128,
+   128,
+   44
+  ],
+  [
+   149,
+   149,
+   44
+  ],
+  [
+   148,
+   148,
+   44
+  ],
+  [
+   170,
+   170,
+   44
+  ]
+ ],
+ "errors_desktop": []
+}
