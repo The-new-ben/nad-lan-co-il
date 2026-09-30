@@ -175,3 +175,16 @@ Measured locally against the live 1.72.374 (the same script, `v1045_check.py`).
   - Nothing is deleted; one tap opens the fold.
 - **Measured (390, he):** the card is 1,077 → 489 px, with all 9 facts still in it.
 - **Fixed on the way:** the green WhatsApp button in the dock showed the theme's dark, underlined link text. The dock sits outside `.nlw`, so the button's white text is restated there. This regressed in 1.72.373.
+
+## v104.8 (1.10, loop turn 16): places named in the page's language, from OpenStreetMap only
+
+- **Why:**
+  - Codex's QA: on the en and ar pages, places showed as a generic "School" or "مدرسة".
+  - OSM's own practice for localized maps is `name:<lang>`, then `name:en`, then `name` ([OSM Wiki: Names](https://wiki.openstreetmap.org/wiki/Names)).
+- **The rule (strict, never translated or transliterated):**
+  - A place takes `name:en/ar/ru/fr` only from its own OSM element, or from a POI of a compatible kind.
+  - The Hebrew name must be identical, and the match must be within 80 m and unique.
+  - A name is never taken from a street, a parking lot, a square or neighbourhood, land use, or a building with no POI tags.
+- **The result:** 30 places now carry their real name in other languages: en 30, ru 3, ar 3. 12 of them are within a 10-minute walk.
+- **Dropped and ambiguous:** 20 matches were dropped as a different object (streets, bare buildings), and 9 ambiguous ones were skipped.
+- **What is unchanged:** all other place fields are byte-identical. Where there is no sourced name, the kind is still shown ("School"), as before.

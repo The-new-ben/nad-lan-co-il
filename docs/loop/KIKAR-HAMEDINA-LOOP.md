@@ -101,6 +101,24 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **1.10, turn 16.**
+  - **Web:**
+    - [Electra: completion April 2027](https://www.electra.co.il/en/electra_building/projects/kikar_hamedina_towers) and [Ashtrom: 2026](https://www.ashtromconstruction.co.il/en/projects/kikar-hamedina), both already in facts.md as a conflict;
+    - [Globes EN 1001522524](https://en.globes.co.il/en/article-tel-avivs-kikar-hamedina-undergoes-transformation-1001522524), already there;
+    - [OSM Wiki, Names](https://wiki.openstreetmap.org/wiki/Names): localized maps use name:<lang>, then name:en, then name.
+    - **Re-check:** no contradiction.
+  - **NOTCH (v104.8 → 1.72.379):** places named in the page's language from OpenStreetMap only.
+    - The STRICT rule: the place's own OSM element, or a same-kind POI. Never a street, a parking lot, an area or a bare building. Never translated.
+    - 30 places named (en 30, ru 3, ar 3), 12 of them within 10 minutes. 20 matches dropped as a different object, 9 ambiguous skipped.
+    - Evidence: names-osm/ (README, matches.csv, the raw Overpass answer).
+    - Live en: the transport, education and food names appear; the essentials and community names appear when those groups are switched on. 0 errors.
+  - **Honest limit:** 304 places within 10 minutes still have Hebrew-only names (no name in any source). They keep their kind ("School").
+  - **Deferred, with its reason:** `#nlps summary` in the a11y corner's and the WhatsApp bar's control lists. It is a 2-PHP-file live-text edit with pinned checks; it goes into the next PHP round.
+  - **NEXT NOTCH:**
+    - (1) 320 px world label density;
+    - (2) the PHP round (`#nlps summary`, and the lead as a soft obstacle for the bar at 360 px);
+    - (3) an owner-bar evening interior (a new render).
+
 - **1.10, turn 15.**
   - **Web:**
     - [NN/G, bottom sheets](https://www.nngroup.com/articles/bottom-sheet/), [IxDF, progressive disclosure](https://ixdf.org/literature/topics/progressive-disclosure), [Lollypop, progressive disclosure 2026](https://lollypop.design/blog/2025/may/progressive-disclosure/);
