@@ -188,3 +188,11 @@ Measured locally against the live 1.72.374 (the same script, `v1045_check.py`).
 - **The result:** 30 places now carry their real name in other languages: en 30, ru 3, ar 3. 12 of them are within a 10-minute walk.
 - **Dropped and ambiguous:** 20 matches were dropped as a different object (streets, bare buildings), and 9 ambiguous ones were skipped.
 - **What is unchanged:** all other place fields are byte-identical. Where there is no sourced name, the kind is still shown ("School"), as before.
+
+## v104.9 (1.10, loop turn 17): the fold headings are controls too (WCAG 2.2 SC 2.4.11)
+
+- **Why:** WCAG 2.2 SC 2.4.11, "Focus Not Obscured": a focused control must not be hidden by author content, and floating buttons are the usual offenders ([TabNav, SC 2.4.11](https://tabnav.com/academy/wcag/success-criterion-2.4.11), [Vispero, WCAG 2.2](https://vispero.com/resources/new-success-criteria-in-wcag22/)). On the live 378 the accessibility button could sit on the dock card's last fold.
+- **The design:**
+  - Both floating buttons count the world's fold headings (`<summary>`) as controls: the site's WhatsApp bar (conversion-cta.php) and the accessibility corner (project-stage.php).
+  - They lift into the nearest free place, exactly as they already do for the world's buttons and sliders.
+  - `#nlps summary` is appended at the end of each list, so every existing rule is unchanged.

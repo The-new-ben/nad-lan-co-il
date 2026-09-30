@@ -162,7 +162,7 @@ html body #nlcta .nlcta-wa{display:flex!important}
 			if(!wa0)return 0;
 			var rest=Number(box.getAttribute('data-rest'))||0,p=wa0.getBoundingClientRect(),ph=p.height;
 			if(!rest||!ph)return 0;
-			var top0=h-rest,obs=[],seen=[],els=document.querySelectorAll('.nlps-hero__cta,#nlps button,#nlps a,#nlps input,#nlps-pick button,#nlps-pick a,.nlps-steps button,.nlps-steps a,#nlps-view-cta button,#nlps-view-cta a');
+			var top0=h-rest,obs=[],seen=[],els=document.querySelectorAll('.nlps-hero__cta,#nlps button,#nlps a,#nlps input,#nlps-pick button,#nlps-pick a,.nlps-steps button,.nlps-steps a,#nlps-view-cta button,#nlps-view-cta a,#nlps summary');
 			for(var i=0;i<els.length;i++){
 				var e=els[i];
 				if(e.closest&&e.closest('.nlw-labels'))continue;

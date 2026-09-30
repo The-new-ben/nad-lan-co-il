@@ -101,6 +101,20 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **1.10, turn 17.**
+  - **Web:** [TabNav, WCAG 2.2 SC 2.4.11 "Focus Not Obscured"](https://tabnav.com/academy/wcag/success-criterion-2.4.11) and [Vispero, the new WCAG 2.2 criteria](https://vispero.com/resources/new-success-criteria-in-wcag22/): floating widgets are the usual offenders.
+    - No new project facts this turn; the delivery conflict (Electra 4.2027 vs Ashtrom 2026) is unchanged and already on the page.
+  - **NOTCH (v104.9 → 1.72.380):** `#nlps summary` is appended at the END of both floating-button control lists: the WhatsApp bar (conversion-cta.php) and the a11y corner (project-stage.php). Both are edited on the LIVE text by a new multi-PHP runner (make_gen380.py: a list of edits, each anchored exactly once).
+  - **Measured live, honestly:** positions where a floating button covers a fold heading while scrolling through the open tower card (75 positions, he 390):
+    - the a11y button, 10 → 8;
+    - the bar, 10 → 7;
+    - en is the same.
+    - It is a partial fix. The rest are positions where the whole column is controls with no free place; both buttons are built to stay in their corner then, and never hide.
+  - **NEXT NOTCH:**
+    - (1) A design decision for "no free place in the column": the a11y button moves to the other bottom corner (it is not a conversion control; the WhatsApp bar never moves off its column).
+    - (2) 320 px world label density.
+    - (3) An owner-bar evening interior.
+
 - **1.10, turn 16.**
   - **Web:**
     - [Electra: completion April 2027](https://www.electra.co.il/en/electra_building/projects/kikar_hamedina_towers) and [Ashtrom: 2026](https://www.ashtromconstruction.co.il/en/projects/kikar-hamedina), both already in facts.md as a conflict;

@@ -1235,7 +1235,7 @@ if (root && host && c.world) {
   (() => {
     const box = document.getElementById('nla11y'), btn = document.getElementById('nla11y-btn');
     if (!box || !btn) return;
-    const CTRL = '.nlps-hero__cta a,#nlps .nlw-top button,#nlps .nlw-panel button,#nlps .nlw-panel input,#nlps .nlw-panel a,#nlps .nlw-card button,#nlps .nlw-card a,#nlps .nlw-compass button,#nlps .nlw-enter';
+    const CTRL = '.nlps-hero__cta a,#nlps .nlw-top button,#nlps .nlw-panel button,#nlps .nlw-panel input,#nlps .nlw-panel a,#nlps .nlw-card button,#nlps .nlw-card a,#nlps .nlw-compass button,#nlps .nlw-enter,#nlps summary';
     let lift = 0, raf = 0;
     const fit = () => {
       raf = 0;

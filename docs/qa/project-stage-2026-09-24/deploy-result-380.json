@@ -1,0 +1,17 @@
+{
+  "released": "1.72.380",
+  "from": "1.72.379",
+  "live_before": {
+    "nadlan-config.php": "95d3d383217ab2b44db5db981cd1ed30",
+    "inc/conversion-cta.php": "8423eb62742289923a90d35fbae9ebf8",
+    "inc/project-stage.php": "600441a486d8ce28fd7e3966020cec54"
+  },
+  "state": "released and verified",
+  "at": "2026-10-01 02:01:25",
+  "files": {
+    "nadlan-config.php": "7cd64c540a9e549d0efe4bb9d51fc2bc",
+    "inc/conversion-cta.php": "98cbc70c9a86b94e21031156a279f9a9",
+    "inc/project-stage.php": "c627c869e2a9fa36828eea498f3d3b94"
+  },
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (the three files at ?ver=1.72.380, byte for byte) + icons_first + verify_order + verify_home_order + verify_kh: OK"
+}
