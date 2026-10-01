@@ -809,6 +809,7 @@ export function mountWorld(host, opts = {}) {
   let TW = {};                  // towers
   let dirty = true, raf = 0, destroyed = false, visible = true;
   let anim = null;              // camera flight
+  let panelShift = 0;           // v104.15: the lens shift that frames the aerial city below the floating panel (NDC units)
   let fp = null;                // first-person rig { x, y, z, yaw, tilt, top, bottom }
   let proj = { top: 20, bottom: -20 };
   const curTarget = { v: null };
@@ -1610,8 +1611,36 @@ export function mountWorld(host, opts = {}) {
     const hw = (t - b) * camera.aspect / 2;
     camera.projectionMatrix.makePerspective(-hw, hw, t, b, n, camera.far, THREE.WebGLCoordinateSystem);
     if (!fp && narrow()) camera.projectionMatrix.elements[9] -= sheetFrac() * 0.92;
+    if (!fp && panelShift) camera.projectionMatrix.elements[9] += panelShift; // v104.15: the city below the floating panel
     camera.projectionMatrixInverse.copy(camera.projectionMatrix).invert();
     camera.fov = proj.top - proj.bottom;
+  }
+  // v104.15 (loop turn 24): on a stage of 720 px or wider the panel floats over the city (top right on he/ar, top left on LTR).
+  // In the aerial view the lens shifts down just enough that the roofs under the panel clear it by 30 px, never pushing the towers'
+  // bases off the stage (48 px). Computed when the camera arrives and on resize, never while the user orbits (tablet 768: tower
+  // C's roof sat under the panel, unnamed). A lens shift: the camera does not move; raycasts and labels use the same matrix.
+  // (panelShift is declared beside `anim`, before anything can call applyProjection)
+  function fitPanel() {
+    const prev = panelShift;
+    panelShift = 0;
+    if (!fp && !docked && !narrow() && S.mode === 'aerial' && !anim && ui.panel && !ui.panel.hidden && ui.panel.offsetParent) {
+      applyProjection(); camera.updateMatrixWorld(); camera.matrixWorldInverse.copy(camera.matrixWorld).invert();
+      const w = root.clientWidth, h = root.clientHeight, rr = root.getBoundingClientRect(), pr = ui.panel.getBoundingClientRect();
+      const px0 = pr.left - rr.left - 30, px1 = pr.right - rr.left + 30, pyB = pr.bottom - rr.top + 30; // the badge's half + the panel's pad
+      let topY = Infinity, baseY = -Infinity;
+      const v = new THREE.Vector3();
+      for (const k in TW) {
+        const X = TW[k];
+        v.set(X.t.cx, X.height + 5, X.t.cz).project(camera); // the roof label's own anchor
+        const sx = (v.x * 0.5 + 0.5) * w, sy = (-v.y * 0.5 + 0.5) * h;
+        if (sx > px0 && sx < px1) topY = Math.min(topY, sy);
+        v.set(X.t.cx, 0, X.t.cz).project(camera);
+        baseY = Math.max(baseY, (-v.y * 0.5 + 0.5) * h);
+      }
+      if (topY < pyB) { const dy = Math.min(pyB - topY, Math.max(0, h - 48 - baseY)); if (dy > 1) panelShift = 2 * dy / h; }
+    }
+    // the measurement above ran on the unshifted lens: always re-apply (a repeat call with the same value used to leave it unshifted)
+    if (panelShift !== prev || panelShift) { applyProjection(); invalidate(); }
   }
   const portrait = () => root.clientWidth / Math.max(1, root.clientHeight) < 0.85;
   let sheetCache = 0;
@@ -1633,7 +1662,7 @@ export function mountWorld(host, opts = {}) {
   function flyTo(pose, ms = 1100) {
     const from = { pos: camera.position.clone(), target: curTarget.v ? curTarget.v.clone() : pose.target.clone(), top: proj.top, bottom: proj.bottom };
     if (reduced || !o.motion || ms <= 0 || !isReady || !anim && from.pos.lengthSq() === 0) {
-      setPose(pose); anim = null; return;
+      setPose(pose); anim = null; if (pose.done) pose.done(); return; // v104.15: done() on an instant pose too
     }
     anim = { from, to: pose, t0: performance.now(), ms };
     invalidate();
@@ -1685,7 +1714,8 @@ export function mountWorld(host, opts = {}) {
     frame.hidden = true;
     if (ui.eye) ui.eye.hidden = true;
     if (m !== 'walk' && prev === 'walk') { S.collapsed = false; if (autoFull) { autoFull = false; toggleFull(false); } }
-    if (m === 'aerial') { orbitMode(true); setOrbitLimits('aerial'); flyTo(aerialPose(), prev === m ? 0 : 1300); }
+    if (m !== 'aerial' && panelShift) fitPanel(); // v104.15: other views have no lens shift
+    if (m === 'aerial') { orbitMode(true); setOrbitLimits('aerial'); const ap = aerialPose(); ap.done = fitPanel; flyTo(ap, prev === m ? 0 : 1300); }
     if (m === 'walk') { enterWalk(); }
     if (m === 'tower') {
       if (!S.tower) S.tower = 'C';
@@ -2945,6 +2975,7 @@ export function mountWorld(host, opts = {}) {
     renderer.setSize(w, h, false);
     applyProjection();
     if (fp) applyFp();
+    fitPanel(); // v104.15
     invalidate();
   }
   let lastT = 0;

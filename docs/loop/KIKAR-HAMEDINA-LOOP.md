@@ -101,6 +101,31 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **1.10, turn 24.**
+  - **Web:**
+    - [Bizportal 802786](https://www.bizportal.co.il/realestates/news/article/802786) and [Globes 1001481134](https://www.globes.co.il/news/article.aspx?did=1001481134): price articles already in facts.md.
+    - A search summary's "deal at Hankin 3, ₪17.6M for 188 m²" is NOT the towers (another address): not used.
+    - Technique: [three.js setViewOffset](https://github.com/mrdoob/three.js/pull/12158/files) and ["frame the 3D stage on the free area"](https://github.com/WoutDeSutter/Portfolio/pull/5). The canvas runs behind the panel and the projection frames the free area.
+  - **FOUND (live 1.72.385, tablet 768 × 1024):** the floating panel covered tower C's roof, so C had no name and no letter.
+  - **NOTCH (design v104.15, DS version 154 → LIVE 1.72.386):** on a stage of 720 px or wider, in the aerial view, the lens shifts down just enough that the roofs under the panel clear it by 30 px, never pushing the towers' bases off the stage.
+    - It uses the same off-axis term as the phone's sheet. The camera, the orbit and the zoom do not move.
+    - It is computed when the camera arrives and on resize, never during an orbit.
+    - Two bugs were caught before release: a repeated measurement left the lens unshifted, and the roof was measured 5 m below its label's anchor.
+    - Runner 386: 341 page checks OK.
+  - **Measured live (1.72.386):**
+    - tablet 768: towers named 2 → 3;
+    - a real click on each tower's body opens THAT tower's card (A, B, C);
+    - tablet 1024 and desktop 1440: all three, unchanged;
+    - he 390: every tower identified (unchanged);
+    - M17: 0/0/0. M15: 37. Wheel 260, camera still. Slider 0.
+    - Swipe: 335 / tilt 0.0 / nested 0 / walk full + pill.
+    - Fold headings: bar 0, a11y 2. 0 errors.
+    - Source audit: Kikar and Rainbow GREEN, H Infinity YELLOW.
+  - **NEXT NOTCH:**
+    - (1) en/ar names from new sources only (the remaining Hebrew-only places).
+    - (2) The evening at full size: window detail on the near towers and street lamps, then a -2k.
+    - (3) The places tab on tablets: the same panel check for its pins.
+
 - **1.10, turn 23.**
   - **Web:**
     - [mako 24.9.2026](https://www.mako.co.il/news-money/real_estate/Article-1b24331b3cec0a1026.htm), read in full this turn:
