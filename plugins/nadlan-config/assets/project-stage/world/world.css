@@ -379,3 +379,17 @@ html body .nlw--full a.nlw-wafull span { color: #fff !important; text-decoration
    (since 1.72.373 the theme's link colours showed through on the green button in the dock) */
 html body .nlw-dock a.nlw-btn--wa, html body .nlw-dock a.nlw-btn--wa:visited, html body .nlw-dock a.nlw-btn--wa:hover,
 html body .nlw-dock a.nlw-btn--wa span { color: #fff !important; text-decoration: none !important; }
+
+/* v104.17 (V1): the panel and the cards beside the 3D on a wide stage (in the page's own scroll, the 3D sticky), never inside it */
+:root body .nlps-stage--world:has(.nlw-dock--side) .nlps-stage__mount { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 14px; align-items: start; }
+.nlw.nlw--docked.nlw--side { position: sticky; top: 72px; height: clamp(540px, calc(100svh - 96px), 760px); }
+.nlw-dock.nlw-dock--side { margin: 0; padding-top: 0; }
+.nlw-dock.nlw-dock--side .nlw-panel .nlw-intro { display: block; }
+/* the directions: a 4 x 2 grid at every width, never a sideways strip */
+.nlw-dock .nlw-panel .nlw-faces { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); overflow: visible; }
+.nlw-dock .nlw-panel .nlw-face { flex: none; min-width: 0; }
+/* the numbered steps of the floor view */
+.nlw-step { display: flex; align-items: center; gap: 8px; margin: 12px 0 6px; font-weight: 700; font-size: 14px; color: var(--nlw-ink); }
+.nlw-step b { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--nlw-ink); color: var(--nlw-paper); font-size: 12.5px; }
+.nlw-lbl .nlw-step { margin: 0; }
+.nlw-lbl .nlw-step b { color: var(--nlw-paper); font-size: 12.5px; }

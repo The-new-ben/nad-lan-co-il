@@ -15,7 +15,7 @@ Every loop turn reads this file first, takes the first unchecked item, does it e
 
 Every turn takes the first open item. Each item is ticked with evidence (live, real presses, phone + PC).
 
-- [ ] **V1. Opens on choosing an apartment.**
+- [x] **V1 DONE, LIVE 1.72.388 (v104.17, 1.10).** Opens on choosing an apartment (steps 1 tower, 2 floor, 3 apartment by direction). The panel and cards sit beside the 3D on a wide stage and under it on narrow ones: 0 nested scrollers in every state on phone and PC (live). The directions are a 4 x 2 grid without sun hours; the sun is a closed fold; the floor view labels only the towers and the floor; a floating card in full screen fades after 8 s. Was: **V1. Opens on choosing an apartment.**
   - The flow: tower → floor → apartment by direction → plan, price, 360.
   - No scroll-in-scroll on the phone OR the PC. The fewest elements over the 3D. Cards fade after a few seconds.
   - The sun and the time of day move to the side, and never pop up on a floor pick.
@@ -140,6 +140,32 @@ Every turn does ALL of these, not only the current phase:
   - **(c) `verify_kh`** as above.
 
 ## Scale-up ledger (newest on top)
+
+- **1.10, V2 loop turn 1 (item V1).**
+  - **Web:**
+    - [Rendimension 2026](https://rendimension.com/blog/best-3d-floor-plan-companies-san-francisco/): the sales-site standard is a clickable unit selector → its layout → its floor-specific view.
+    - [R2U 2026](https://r2u.io/en/blog/zillow-matterport-removal-developer-guide/) and [Lens Collective 2026](https://www.lens-collective.com/journal/zillow-vs-matterport-3d-virtual-tours):
+      - Zillow dropped Matterport tours on 20.10.2025 and now runs its own 3D Home with interactive floor plans;
+      - pre-construction is moving to 3D sales platforms, AR staging and Vision Pro walkthroughs.
+    - The owner named [Simplex 3D](https://www.simplex3d.com/he/), an Israeli competitor, for V5.
+  - **FOUND (live 1.72.387):**
+    - on the PC the floating panel scrolled inside the stage (803 px in 638), and so did the card (933 px);
+    - on the phone the eight directions were a sideways strip;
+    - half the floor panel was sun and shade;
+    - the direction cards showed sun hours.
+  - **NOTCH (v104.17, DS version 158 → LIVE 1.72.388):** V1 done (see the V2 list).
+    - Runner 388: 345 page checks OK.
+    - Live, phone and PC: opens in the floor view; 0 nested scrollers in every state (first view, floor view, places tab, tower card).
+    - M17 0/0/0; wheel 260, camera still; slider 0; M15 37.
+    - Swipe 335 / tilt 0.0 / walk full + pill.
+    - Every tower identified at 1440, 1024 and 768 (768 now names all three, because the panel no longer covers the 3D).
+    - Fold headings: a11y 2 → 1, bar 0.
+    - The example apartment opens from the new panel (a real press).
+    - Source audit: Kikar and Rainbow GREEN, H Infinity YELLOW.
+  - **NEXT (V2):** apartments by direction from computed plans.
+    - Four apartments per floor from the plate geometry and the published 140-170 m² deals.
+    - Each apartment gets its direction, size and view.
+    - Research the plate first (the architect's site, Simplex3D, listing plans); then design, then build.
 
 - **1.10, turn 24.**
   - **Web:**

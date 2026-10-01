@@ -178,3 +178,28 @@ A visible `<h2>שאלות נפוצות` plus FAQPage schema.
   - The counts are now the same in every language.
   - Two places that share a kind word are told apart by their Hebrew names, so two different kindergartens nearby are never merged as one.
 - **Real names in other languages** come only from sources: OpenStreetMap name tags (v104.8), and now a Wikidata step (a separate data notch, in progress).
+
+## v104.17 (1.10, V2 loop turn 1, item V1): the page opens on choosing an apartment, and nothing scrolls inside the 3D
+
+**The owner's order (1.10 evening):** open straight on choosing an apartment. No scroll-in-scroll on the phone or the PC. Cards that fade. The sun goes to the side. As few elements as possible over the 3D.
+
+**Measured on live 1.72.387 (phone 390, PC 1440):**
+- On the PC, the floating panel scrolls inside the stage (638 px tall, 803 px of content). The card does the same (933 px).
+- Half of the floor panel is "sun and shade": day, sunset, night, four dates and an hour slider.
+- On the phone, the eight directions are a strip that scrolls sideways inside the page.
+- The direction cards carry sun hours, not apartment information.
+- The floor view also labels the school, the lake and the park on the building's surroundings.
+
+**The design:**
+1. **The panel and the cards never float over the 3D, at any width (except full screen).**
+   - On a stage of 900 px or wider they sit BESIDE the 3D, in a 340 px column.
+   - That column belongs to the page's own scroll. The 3D stays sticky, so it stays in view while the page scrolls through the panel.
+   - Below 900 px they sit under the 3D, as the phone dock already does.
+   - Nothing scrolls inside anything.
+2. **The world opens in the floor view** when it has apartments to show (today Kikar Hamedina), as numbered steps: **1 tower, 2 floor, 3 apartment by direction**. Then the example apartment (plan, 360, album). Prices and plans per apartment are V2 and V3.
+3. **The directions are a grid,** four by two, at every width. No sideways strip. Each card shows the direction and its bearing, without sun hours.
+4. **The sun goes to the side:** a closed fold, "שמש ושעות היום", at the end of the panel. It never opens by itself.
+5. **The floor view labels only the towers and the floor.** The places stay in the aerial view and in "מה בסביבה".
+6. **Cards that fade:** in full screen, where a card still floats over the 3D, it closes after 8 seconds without a touch, a hover or the keyboard inside it.
+
+**Not changed:** the 3D engine, the tabs, the example apartment, the area map, the WhatsApp bar (its wording is V9, last).

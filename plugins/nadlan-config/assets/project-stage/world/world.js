@@ -70,6 +70,7 @@ const I18N = {
     meters: (m) => `${m} מ׳`,
     eye: (h) => `גובה העיניים כ-${h} מ׳`,
     facingLbl: 'כיוון המבט',
+    steps: ['בחרו מגדל', 'בחרו קומה', 'בחרו דירה לפי כיוון'], // v104.17
     dirs: ['צפונה', 'צפון-מזרחה', 'מזרחה', 'דרום-מזרחה', 'דרומה', 'דרום-מערבה', 'מערבה', 'צפון-מערבה'],
     dirsShort: ['צפון', 'צפון-מזרח', 'מזרח', 'דרום-מזרח', 'דרום', 'דרום-מערב', 'מערב', 'צפון-מערב'],
     sunOpen: 'שעון השמש',
@@ -160,6 +161,7 @@ const I18N = {
     meters: (m) => `${m} m`,
     eye: (h) => `Eye height about ${h} m`,
     facingLbl: 'Facing',
+    steps: ['Choose a tower', 'Choose a floor', 'Choose an apartment by its direction'], // v104.17
     dirs: ['north', 'north-east', 'east', 'south-east', 'south', 'south-west', 'west', 'north-west'],
     dirsShort: ['North', 'NE', 'East', 'SE', 'South', 'SW', 'West', 'NW'],
     sunOpen: 'Sun clock',
@@ -255,6 +257,7 @@ const I18N = {
     meters: (m) => `${m} m`,
     eye: (h) => `Regard à environ ${frNum(h)} m`,
     facingLbl: 'Orientation',
+    steps: ['Choisissez une tour', 'Choisissez un étage', 'Choisissez un appartement selon son orientation'], // v104.17
     dirs: ['nord', 'nord-est', 'est', 'sud-est', 'sud', 'sud-ouest', 'ouest', 'nord-ouest'],
     dirsShort: ['Nord', 'NE', 'Est', 'SE', 'Sud', 'SO', 'Ouest', 'NO'],
     sunOpen: 'Horloge solaire',
@@ -346,6 +349,7 @@ const I18N = {
     meters: (m) => `${m} м`,
     eye: (h) => `Уровень глаз около ${frNum(h)} м`,
     facingLbl: 'Сторона света',
+    steps: ['Выберите башню', 'Выберите этаж', 'Выберите квартиру по стороне света'], // v104.17
     dirs: ['север', 'северо-восток', 'восток', 'юго-восток', 'юг', 'юго-запад', 'запад', 'северо-запад'],
     dirsShort: ['Север', 'СВ', 'Восток', 'ЮВ', 'Юг', 'ЮЗ', 'Запад', 'СЗ'],
     sunOpen: 'Солнечные часы',
@@ -437,6 +441,7 @@ const I18N = {
     meters: (m) => `${m} م`,
     eye: (h) => `ارتفاع النظر نحو ${h} م`,
     facingLbl: 'الاتجاه',
+    steps: ['اختاروا البرج', 'اختاروا الطابق', 'اختاروا الشقة حسب اتجاهها'], // v104.17
     dirs: ['الشمال', 'الشمال الشرقي', 'الشرق', 'الجنوب الشرقي', 'الجنوب', 'الجنوب الغربي', 'الغرب', 'الشمال الغربي'],
     dirsShort: ['شمال', 'شمال شرق', 'شرق', 'جنوب شرق', 'جنوب', 'جنوب غرب', 'غرب', 'شمال غرب'],
     sunOpen: 'ساعة الشمس',
@@ -802,7 +807,8 @@ export function mountWorld(host, opts = {}) {
 
   // ---------------------------------------------------------------- state
   const S = {
-    mode: MODES.includes(o.mode) ? o.mode : 'aerial',
+    // v104.17 (V1): a world with apartments to show opens on choosing one (the floor view), unless the page asks for another view
+    mode: o.mode === 'aerial' && o.examples && o.examples.url ? 'tower' : (MODES.includes(o.mode) ? o.mode : 'aerial'),
     tower: null, floor: null, facing: null, view: 'out',
     season: SEASONS[o.season] ? o.season : 9, hour: clamp(+o.hour || 10, 5, HOUR_MAX),
     cat: 'transport', place: null, sunOpen: false, collapsed: false,
@@ -2198,7 +2204,7 @@ export function mountWorld(host, opts = {}) {
     } else {
       for (const k in TW) { if (k === S.tower) continue; const X = TW[k]; add({ id: 't' + k, kind: 'tower', name: T.towerN(k), meta: tDesc(k), soft: true, pos: new THREE.Vector3(X.t.cx, X.height + 5, X.t.cz), prio: 3, click: () => openCard(towerCard(k)) }); }
     }
-    if (m === 'aerial' || m === 'walk' || m === 'tower') {
+    if (m === 'aerial' || m === 'walk') { // v104.17: the floor view labels only the towers and the floor
       for (const c of W.civic) add({ id: 'c' + c.key, kind: 'civic', k: CIVIC_K[c.key], g: CIVIC_K[c.key] === 'school' ? 'education' : 'community', name: tx(c), meta: '', pos: new THREE.Vector3(c.x, 22, c.z), prio: 20, click: () => openCard(civicCard(c.key)) });
       if (W.pond) add({ id: 'pond', kind: 'water', k: 'pond', g: 'water', name: T.pond, meta: T.illus, pos: new THREE.Vector3(W.pondC[0], 0.5, W.pondC[1]), prio: 25, click: () => openCard(simpleCard('pond')) });
       if (W.park && m !== 'walk') add({ id: 'park', kind: 'green', k: 'park', g: 'outdoors', name: T.park, meta: '', pos: new THREE.Vector3(-30, 0.5, 40), prio: 30, click: () => openCard(simpleCard('park')) });
@@ -2500,8 +2506,17 @@ export function mountWorld(host, opts = {}) {
     if (o.onPick && c.pick) o.onPick(c.pick);
     afterSheet();
     invalidate();
+    armCardFade();
+  }
+  // v104.17 (V1): a card that floats over the 3D (full screen only) fades after 8 s unless a finger, the mouse or the keyboard is in it
+  let cardFadeT = 0;
+  function armCardFade() {
+    clearTimeout(cardFadeT);
+    if (docked || !ui.card || ui.card.hidden) return;
+    cardFadeT = setTimeout(() => { if (ui.card && !ui.card.hidden && !ui.card.matches(':hover') && !ui.card.contains(document.activeElement)) closeCard(); }, 8000);
   }
   function closeCard() {
+    clearTimeout(cardFadeT);
     root.classList.remove('has-card'); if (ui.dock) ui.dock.classList.remove('has-card');
     if (ui.card && !ui.card.hidden) {
       const back = cardOpener; cardOpener = null;
@@ -2689,12 +2704,14 @@ export function mountWorld(host, opts = {}) {
       const X = TW[S.tower];
       html = eyebrow(T.eyebrow) + title(T.towerTitle(S.tower, S.floor)) +
         (S.collapsed ? collapsedTowerLine() : (
+          `<div class="nlw-step"><b>1</b>${esc(T.steps[0])}</div>` +
           `<div class="nlw-row">${['A', 'B', 'C'].map((k) => chip(T.towerN(k), k === S.tower, `data-tower="${k}"`, 'nlw-tw')).join('')}</div>` +
+          `<div class="nlw-step"><b>2</b>${esc(T.steps[1])}</div>` +
           `<label class="nlw-lbl"><span data-floorlbl>${esc(T.floorN(S.floor))}</span><b data-eye>${esc(T.eye(eyeH(S.floor).toFixed(1)))}</b></label>` +
           `<input class="nlw-range" type="range" min="1" max="${X.N}" step="1" value="${S.floor}" data-floor aria-label="${esc(T.floor)}">` +
-          `<div class="nlw-lbl"><span>${esc(T.facingLbl)}</span>${S.facing != null ? `<span class="nlw-seg">${chip(T.viewOut, S.view === 'out', 'data-view="out"')}${chip(T.viewWin, S.view === 'window', 'data-view="window"')}</span>` : ''}</div>` +
+          `<div class="nlw-lbl"><span class="nlw-step"><b>3</b>${esc(T.steps[2])}</span>${S.facing != null ? `<span class="nlw-seg">${chip(T.viewOut, S.view === 'out', 'data-view="out"')}${chip(T.viewWin, S.view === 'window', 'data-view="window"')}</span>` : ''}</div>` +
           facesHtml() + (S.facing == null && !nar ? `<div class="nlw-note">${esc(T.pickFacing)}</div>` : '') + exampleHtml() +
-          sunSection(!nar || S.sunOpen, true) + notesHtml()));
+          sunSection(S.sunOpen, S.sunOpen) + notesHtml())); // v104.17: the sun is a closed fold, never opened by itself
     } else if (S.mode === 'places') {
       html = eyebrow(T.eyebrow) + title(T.placesTitle) +
         `<div class="nlw-row nlw-scroll" role="group">${Object.keys(T.cats).map((c) => chip(T.cats[c], c === S.cat, `data-cat="${c}"`)).join('')}</div>` +
@@ -2723,10 +2740,8 @@ export function mountWorld(host, opts = {}) {
   const degHtml = (n) => (lang === 'he' ? `${n} מעלות` : lang === 'ar' ? `${n} درجة` : `<bdi dir="ltr">${n}°</bdi>`);
   function facesHtml() {
     const list = facingBearings(S.tower, S.floor);
-    const hours = list.map((b) => sunHoursFor(S.tower, S.floor, b, S.season));
-    const maxH = Math.max(1, ...hours);
-    return `<div class="nlw-faces" role="group" aria-label="${esc(T.facingLbl)}">${list.map((b, i) => `<button class="nlw-face" type="button" data-face="${i}" aria-pressed="${S.facing === i ? 'true' : 'false'}" aria-label="${esc(T.faces(dirWord(b)))} ${Math.round(b)}°, ${esc(T.hoursShort(hours[i]))}">
-      <span class="nlw-fw">${esc(T.dirsShort[Math.round(norm360(b) / 45) % 8])}</span><small><bdi dir="ltr">${Math.round(b)}°</bdi></small><span class="nlw-sunb"><i style="width:${Math.round(100 * hours[i] / maxH)}%"></i></span><small class="nlw-fh">${esc(T.hoursShort(hours[i]))}</small></button>`).join('')}</div>`;
+    return `<div class="nlw-faces" role="group" aria-label="${esc(T.facingLbl)}">${list.map((b, i) => `<button class="nlw-face" type="button" data-face="${i}" aria-pressed="${S.facing === i ? 'true' : 'false'}" aria-label="${esc(T.faces(dirWord(b)))} ${Math.round(b)}°">
+      <span class="nlw-fw">${esc(T.dirsShort[Math.round(norm360(b) / 45) % 8])}</span><small><bdi dir="ltr">${Math.round(b)}°</bdi></small></button>`).join('')}</div>`; // v104.17: the sun hours went to the sun's fold
   }
   function bindFaces() {
     ui.panel.querySelectorAll('[data-face]').forEach((b) => b.addEventListener('click', () => setFacing({ index: +b.dataset.face }, 'user')));
@@ -2950,7 +2965,13 @@ export function mountWorld(host, opts = {}) {
   // the page's flow, with no height limit and no inner scroll. In full screen and on wider screens: over the canvas, as before.
   function placeChrome() {
     if (!ui.dock || !o.chrome) return;
-    const want = root.clientWidth > 0 && root.clientWidth < 720 && !root.classList.contains('nlw--full');
+    // v104.17 (V1): the panel and the cards never float over the 3D: under it below 900 px, BESIDE it from 900 px (the stage's own
+    // width, read on the mount so the side column does not feed back), in the page's own scroll; only full screen floats them
+    const hostW = (root.parentElement && root.parentElement.clientWidth) || root.clientWidth;
+    const want = hostW > 0 && !root.classList.contains('nlw--full');
+    const side = want && hostW >= 900;
+    if (ui.dock) ui.dock.classList.toggle('nlw-dock--side', side);
+    root.classList.toggle('nlw--side', side);
     if (want === docked) return;
     docked = want;
     root.classList.toggle('nlw--docked', want);
