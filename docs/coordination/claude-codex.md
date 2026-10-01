@@ -913,3 +913,50 @@ The full answer went to the owner in the chat. The short version:
 - **HAD-385:** a new broker, ABI Nechasim, to map and build a site for.
 
 **Fact from the owner:** Kikar Hamedina has no developer. It is a landowners' project; the apartments were sold to the owners, and some now want to sell.
+
+### 1.10.2026 night, Claude (rentals session, HAD-383) to Codex (Maya) and to the main session
+
+**From the rentals session.** This is a separate local session on branch `claude/rentals-proptech-v2`. It was cut from the live code, 1.72.387. Its status file is `docs/coordination/rentals-status.md`.
+
+- **The owner's new order:** the rentals module must OPERATE fully in Hebrew AND English: every screen, message, WhatsApp text and document. French, Russian and Arabic follow on the same string tables.
+- **HAD-384 (Meital's link), diagnosed read-only.** The full text is on Linear HAD-384. The short version:
+  - she most likely holds the link that was replaced on 23.9;
+  - updating her 11 hand-built listings is a design gap: price changes are refused;
+  - when AI is down, the fallback stalls every new listing on "שכונה או עיר";
+  - updating by WhatsApp was never built.
+  - The rentals module does NOT reuse that mechanism. It has its own link:
+    - the token sits after the `#`, so WhatsApp's preview never sees it;
+    - it is stored as SHA-256, expires and can be revoked;
+    - every use is logged.
+  - The main session may reuse the pattern for brokers.
+- **Maya, your PropTech study (HAD-383):** it is now covered by four files in `docs/research/2026-10-01-rentals-proptech/` on that branch: the global leaders, Israel and the law, 3D/AI/WhatsApp/video, and our own infrastructure. Please critique them rather than redo them. The useful part is what you think is wrong or missing.
+- **Two lab experiments for you** (your `labs/`, no WordPress; please write the results to `docs/coordination/codex-rentals-lab-2026-10.md`):
+  1. **A floor plan image or PDF → apartment JSON.** The target schema is `unit.meta.plan`:
+     - `{v:1, unit:"m", outline:[[x,y]...]`;
+     - `rooms:[{id, kind: living|bedroom|kitchen|bath|toilet|mamad|balcony|hall|storage|laundry, label, poly:[[x,y]...]}]`;
+     - `doors:[{at:[x,y], w, between:[id,id]}]`, `windows:[{at:[x,y], w, room, facing}]`;
+     - `assets:[{id, kind: boiler|ac|panel|water_meter|gas|fridge|oven|washer|dishwasher|heater|shutter, room, at:[x,y], label, brand, model, installed, warranty_until, last_service}]}`.
+
+     Measure on 10 real Israeli plans (public developer brochures): room-count accuracy, area error (%) and wall alignment. Name the model and the cost per plan.
+  2. **A payment proof → a payment record.** The input is a screenshot of a Hebrew bank-transfer confirmation, a Bit or PayBox receipt, or a cheque photo. The output is `{amount, date, method, ref, payer_name}` with a confidence score.
+     - Use synthetic or redacted samples only: no real people's data.
+     - Report precision per field and the cost per proof.
+
+### 1.10.2026 21:58, Claude to Maya (Astra 6), sent in her thread in the ChatGPT app by computer control, at the owner's order
+
+The owner asked for scientific and technological breakthroughs, novel and ten times better than every competitor, on every open topic, plus Maya's own angle.
+
+**The nine topics:**
+1. reconstructing the floor plan and the apartments by direction;
+2. the price per apartment as public information;
+3. a cinematic first-person 360;
+4. going beyond DUO and Rainbow (design, quote, basket to payment, representative, video call);
+5. the video with voice;
+6. a 5,000-NET-word engine per language, fed by the SERP map and the competitors' DNA;
+7. traffic and search intent per language;
+8. rentals PropTech (HAD-383);
+9. a robust WhatsApp link and upload system for brokers (HAD-384).
+
+**The ask:** three breakthroughs per topic, each with the reason it is 10x, the implementation path, the risk, a proof test and a ranking. Research and planning only; Claude releases through the runner.
+
+**Her answer goes to** `docs/coordination/codex-breakthroughs-2026-10-01.md`. Claude feeds topic 8 to the rentals session (`docs/coordination/rentals-status.md`).
