@@ -2330,14 +2330,24 @@ export function mountWorld(host, opts = {}) {
       const shifts = c.kind === 'tower' ? [0] : [0, off, -off];
       const opts2 = [];
       for (const s of stems) for (const dx of shifts) opts2.push({ s, dx, below: false });
+      // v104.11 (loop turn 20): beside its icon too (the 8-position model: sides as well as above and below), vertically centred
+      if (e._ik && c.kind !== 'tower') for (const side of (rtl ? ['l', 'r'] : ['r', 'l'])) opts2.push({ s: 0, dx: 0, below: false, side });
       if (c.kind !== 'tower') for (const s of [14, 32]) for (const dx of shifts) opts2.push({ s, dx, below: true });
       let ok = false;
-      for (const { s, dx, below } of opts2) {
-        const r = below ? { x0: x + dx - tw / 2 - 3, x1: x + dx + tw / 2 + 3, y0: y + s - 2, y1: y + s + th + 3 } : { x0: x + dx - tw / 2 - 3, x1: x + dx + tw / 2 + 3, y0: y - s - th - 3, y1: y - s + 2 };
+      const gap = 16;
+      for (const { s, dx, below, side } of opts2) {
+        const r = side ? (side === 'r' ? { x0: x + gap - 2, x1: x + gap + tw + 3, y0: y - th / 2 - 2, y1: y + th / 2 + 2 } : { x0: x - gap - tw - 3, x1: x - gap + 2, y0: y - th / 2 - 2, y1: y + th / 2 + 2 })
+          : below ? { x0: x + dx - tw / 2 - 3, x1: x + dx + tw / 2 + 3, y0: y + s - 2, y1: y + s + th + 3 } : { x0: x + dx - tw / 2 - 3, x1: x + dx + tw / 2 + 3, y0: y - s - th - 3, y1: y - s + 2 };
         if (r.x0 < 4 || r.x1 > w - 4 || r.y0 < 4 || r.y1 > h - 4) continue;
         const rp = hp ? { x0: r.x0, x1: r.x1, y0: r.y0 - hp, y1: r.y1 + hp } : r;
         if (hitAny(rp, placed) || hitAny(rp, reserved) || (c.kind !== 'tower' && hitAny(r, towerRects))) continue;
         placed.push(rp);
+        if (side) { // beside the icon: no stem; the chip's near edge `gap` px from the anchor, centred on it
+          e._s.style.height = '0px'; e._t.style.top = '0px';
+          e._t.style.transform = side === 'r' ? 'translate(100%, -50%)' : 'translate(0, -50%)';
+          e._t.style.right = (side === 'r' ? -gap : gap) + 'px';
+          ok = true; break;
+        }
         e._s.style.height = s + 'px'; e._s.style.top = below ? '0px' : (-s) + 'px';
         e._t.style.top = below ? s + 'px' : (-s) + 'px';
         e._t.style.transform = below ? (rtl ? 'translate(50%, 0)' : 'translate(50%, 0)') : '';

@@ -101,6 +101,20 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **1.10, turn 20.**
+  - **Web:**
+    - [MERL TR94-12, an empirical study of point-feature label placement](https://merl.com/publications/docs/TR94-12.pdf);
+    - [arXiv 2407.11996, perceptual prioritization of label positions](https://arxiv.org/pdf/2407.11996);
+    - [ice.co.il on the square](https://www.ice.co.il/realestate/news/article/963320): a financing figure of ₪2.05B surfaced with no clear source; it is NOT used (facts.md keeps its sourced financing line).
+  - **NOTCH (v104.11 → 1.72.382):** a world place's name may sit beside its icon (the 8-position model), with the left side first on RTL pages.
+    - Live he 390: 6 named places in the aerial view (5 before), 0 icons without a name, 0 overlaps.
+    - Regression set live: swipe 335 / tilt 0.0 / panel 498 / nested 0 / walk-full + pill on top / map 37 named at the opening zoom / wheel 260 px / slider 0 / fold headings: bar 0, a11y 2 / 0 errors. Runner: 332 page checks OK.
+  - **Honest limit:** at 320 px the aerial view still names 2-3. The square's own spots cluster around the towers, and the decluttering keeps the most important one.
+  - **NEXT NOTCH:**
+    - (1) An owner-bar evening interior: a new Blender render with clean city lights. Heavy, so it goes to a sub-agent, with the P9b prototype as its base.
+    - (2) The 320 px aerial framing: is a closer default camera on narrow portraits worth it? Design first.
+    - (3) en/ar names from new sources only.
+
 - **1.10, turn 19.**
   - **Research:** the ledger's sources from turns 15-18 still stand (no new fact appeared in this turn's searches).
   - **The cause, measured:** the WhatsApp bar's no-free-place fallback was a FIXED 30% of the screen height (top 253 px, lift 541 px), so it landed on whatever was there, in the open tower card a fold heading.
