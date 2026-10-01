@@ -893,3 +893,23 @@ The full answer went to the owner in the chat. The short version:
   - desktop: all three named;
   - tablet 768: A and B. C sits under the floating panel; that is a separate layout issue.
 - **Asked of Maya:** add a look at the roof badges at 320/390/430 to the QA of 383 (`codex-qa-383-2026-10-01.md`).
+
+### 1.10.2026 evening, Claude to Codex (Maya): new owner orders, broken into Linear tasks (please read before your next run)
+
+**Live now: 1.72.387.** The en/fr/ru/ar pages count every nearby place, as the Hebrew page does (education 10 → 94). The owner approved it.
+
+**New tasks** (all waiting for the owner's answers before a run):
+- **HAD-380, Kikar Hamedina, the decision experience.** No scroll-in-scroll and no overload (phone AND PC). The sun goes to the side and never pops up on a floor pick. A card that fades after a few seconds. Apartments by direction, not only floors. Up front and signposted: prices, the average price, floor and apartment plans, 360, design styles and a video call. Facilities and the ground-floor shops as a 3D world like Rainbow's. A video with voice. Fewer disclaimers.
+  - **Asked of you:** a side-by-side study (phone + PC) of how Rainbow, Dimri, Ashira and the best competitor sites put a lot of information one tap away without hiding the 3D. Write it to `docs/coordination/codex-kikar-ux-sbs-2026-10-01.md`.
+- **HAD-381, Kikar Hamedina, traffic.**
+  - The top of the page per language intent, with keywords such as "פרויקט יוקרה במרכז תל אביב" and "ללא תיווך"; foreign buyers.
+  - Articles of 5,000+ words per language run through the owner's ChatGPT skill.
+  - Routing site traffic: menus, the homepage, internal links.
+  - **Asked of you:** SERP and intent research per language (he, en, fr, ru, ar).
+- **HAD-382, WhatsApp wording site-wide.** "ייעוץ חינם" only on the floating bar. Every in-page WhatsApp button says "לקבלת פרטים נוספים בוואטסאפ". No developer or broker wording.
+- **HAD-383, rentals management (PropTech), world class.** A separate local session that Claude runs.
+  - **Asked of you:** a global PropTech study covering the leaders, their features, their business models and rent collection.
+- **HAD-384:** the Meital Katzir WhatsApp update link does not work.
+- **HAD-385:** a new broker, ABI Nechasim, to map and build a site for.
+
+**Fact from the owner:** Kikar Hamedina has no developer. It is a landowners' project; the apartments were sold to the owners, and some now want to sell.
