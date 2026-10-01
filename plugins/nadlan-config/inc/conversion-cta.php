@@ -180,7 +180,7 @@ html body #nlcta .nlcta-wa{display:flex!important}
 			var lo=Math.round(h*0.3),hi=Math.round(h-ph-Math.max(16,safe()+8)),best=null,cand=[];
 			for(var j=0;j<obs.length;j++){cand.push(obs[j][0]-ph,obs[j][1]);}
 			for(var n=0;n<cand.length;n++){var t=cand[n];if(t<lo||t>hi||!free(t))continue;if(null===best||Math.abs(t-top0)<Math.abs(best-top0))best=t;}
-			if(null===best)best=lo;
+			if(null===best){var raw=[];for(var i2=0;i2<els.length;i2++){var e2=els[i2];if(e2.closest&&e2.closest('.nlw-labels'))continue;var r2=e2.getBoundingClientRect();if(!r2.height||r2.left>=p.right+8||r2.right<=p.left-8)continue;raw.push([r2.top-6,r2.bottom+6]);}var ov=function(t){var s=0;for(var k=0;k<raw.length;k++){s+=Math.max(0,Math.min(raw[k][1],t+ph)-Math.max(raw[k][0],t));}return s;},bo=null;cand.push(top0,lo);for(var k2=0;k2<raw.length;k2++){cand.push(raw[k2][0]-ph,raw[k2][1]);}for(var n2=0;n2<cand.length;n2++){var t2=Math.min(Math.max(cand[n2],lo),Math.max(lo,hi));var v=ov(t2);if(null===bo||v<bo-0.5||(Math.abs(v-bo)<=0.5&&Math.abs(t2-top0)<Math.abs(best-top0))){bo=v;best=t2;}}}
 			return Math.max(1,Math.round(h-best-ph-safe()));
 		};
 		/* ApartmentMapLanding (design system v101.2, 29.9.2026): the pill never covers the direction the buyer chose. When the

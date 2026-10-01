@@ -101,6 +101,20 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **1.10, turn 19.**
+  - **Research:** the ledger's sources from turns 15-18 still stand (no new fact appeared in this turn's searches).
+  - **The cause, measured:** the WhatsApp bar's no-free-place fallback was a FIXED 30% of the screen height (top 253 px, lift 541 px), so it landed on whatever was there, in the open tower card a fold heading.
+  - **NOTCH (v104.10 → 1.72.381):** with no free place, the bar takes the place of LEAST overlap with the stage's actual controls. Candidates are its resting place and the controls' edges; on a tie, the nearest. It never hides.
+    - Tested first with the release's text injected into the live page, then live after the release:
+      - Kikar he: a11y over a fold heading 0, bar over a fold heading 7 → 0, bar over any stage control 24 → 3;
+      - Kikar en: bar over any stage control 1;
+      - Rainbow and DUO: 0 → 0 (the fallback never fires there).
+    - Runner: 331 page checks OK. A new runner pattern: make_gen381 rewrites the existing PHP_RELS line.
+  - **NEXT NOTCH:**
+    - (1) 320 px world label density;
+    - (2) an owner-bar evening interior;
+    - (3) en/ar names for the remaining Hebrew-only places: only from new sources (findplace en pages?), never translated.
+
 - **1.10, turn 18.**
   - **Web:**
     - [mako 24.9.2026](https://www.mako.co.il/news-money/real_estate/Article-1b24331b3cec0a1026.htm), [RMD Kwikform case study 5.2026](https://www.rmdkwikform.com/wp-content/uploads/2026/05/Altrad-RMDK_Case-Study-Kikar-Hamedina_Israel.pdf) (S36) and [biyar](https://biyar.co.il/?p=2138&lang=en) (S59), all already in facts.md.
