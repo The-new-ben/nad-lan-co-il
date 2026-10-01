@@ -172,7 +172,7 @@ the sun's path and the published turn; the turn's direction is not published (de
   hour (21.9, 17:36: warm, 43 units; 14:30: white, 54 units).
 - **Aerial perspective:** every outside surface fades into the sky's own horizon colour in the direction it is seen
   (reach 6.5-7.5 km; 16 km for the sea), as the far city pales into the sky over Tel Aviv.
-- **Three times:** day (21.9, 14:30), sunset (21.9, 17:36), evening (21.9, 19:06, the sun 5.7° below the horizon: the
+- **Three times:** day (21.9, 14:30), sunset (21.9, 17:36), evening (21.9, 19:06, the sun 6.33° below the horizon by the world's suncalc, corrected 1.10.2026 from 5.7°; the evening v2 render uses 19:00, 5.06° below: the
   blue hour, a share of the windows lit, the street glow).
 - **The window pull.** Real-estate photography exposes the room and the view separately and blends them. The render does
   the same, physically inside Cycles: only what the camera sees THROUGH the curtain wall is darkened (x0.26 by day, x0.38

@@ -3,7 +3,7 @@
 
   blender -b --factory-startup --python scripts/interior/kikar_interior.py -- <out.png> <shot> <tod> [width] [height]
           [samples] [threads]
-  shot: living | bedroom | balcony | living360 | view   tod: day | sunset | evening
+  shot: living | bedroom | balcony | living360 | view | living_eve   tod: day | sunset | evening
 
 REAL (the same numbers as the shared web world, kikar_world.py): the tower's place and size (the municipal footprint), the
 floor's height (floor 30: 116 m to the slab, the floor finish at 116.47 m, provisional 4.0 m a floor), the facing (floor 30's
@@ -52,12 +52,12 @@ KW.sky_params(TODN)
 KW.load_world()
 NIGHT = TODN == "evening"
 DUSK = TODN in ("sunset", "evening")
-INSIDE = SHOT in ("living", "living3q", "bedroom", "living360", "view")
+INSIDE = SHOT in ("living", "living3q", "bedroom", "living360", "view", "living_eve")
 # the "window pull" of real-estate photography, done in the render: only what the camera sees THROUGH the curtain wall is
 # darker (the light entering the room is untouched), so the view keeps its colour while the room is exposed for itself
 PULL = float(os.environ.get("KH_PULL", {"day": 0.26, "sunset": 0.38, "evening": 1.0}[TODN])) if INSIDE else 1.0
 # a shot seen from the room's dark back corner gets more exposure and, to keep the view the same, a stronger pull
-SHOT_EXP = {("living3q", "day"): (0.8, 0.15)}
+SHOT_EXP = {("living3q", "day"): (0.8, 0.15), ("living_eve", "evening"): (0.2, 1.0)}
 if (SHOT, TODN) in SHOT_EXP and "KH_PULL" not in os.environ:
     PULL = SHOT_EXP[(SHOT, TODN)][1]
 
@@ -505,6 +505,33 @@ def make_materials():
     emit_mat("lamp_warm", (1.0, 0.72, 0.45), 6.0 if NIGHT else (2.0 if DUSK else 0.0))
     emit_mat("cove", (1.0, 0.75, 0.50), 5.0 if NIGHT else 0.0)
     emit_mat("downlight_emit", (1.0, 0.80, 0.60), 3.5 if NIGHT else (3.0 if DUSK else 0.0))
+    if NIGHT:
+        shade_lit_mat()
+        emit_mat("pend_glow", (1.0, 0.70, 0.42), EVE["pend_diff"])     # the linear pendant's diffuser, softer than a bulb
+
+
+# evening v2 (1.10.2026): the night-only pieces (the day and sunset pictures never build them)
+EVE = {"shade_glow": 0.5, "lamp_sofa": 26.0, "pend": 45.0, "pend_diff": 1.6, "cove_light": 60.0, "fill": 30.0,
+       "downs": 12.0, "wb": 5200.0}
+EVE["fill"] = float(os.environ.get("KH_FILL", EVE["fill"]))
+
+
+def shade_lit_mat():
+    """a linen lampshade with the lamp on: the light comes through the weave (translucent) and the shade glows warm"""
+    m, nt, b, out = _mat("shade_lit")
+    tc = b.n("ShaderNodeTexCoord")
+    ob = tc.outputs["Object"]
+    nz = b.noise(ob, 300.0, 3.0, 0.6)
+    df = b.n("ShaderNodeBsdfDiffuse", {"Color": (0.84, 0.80, 0.72)})
+    tl = b.n("ShaderNodeBsdfTranslucent", {"Color": (0.90, 0.58, 0.32)})
+    sh = b.mixs(0.42, df.outputs[0], tl.outputs[0])
+    # brighter toward the middle of the shade's height, where the bulb is; the weave in the glow
+    z = b.sep(ob)[2]
+    g = b.m("SUBTRACT", 1.0, b.m("MULTIPLY", b.m("ABSOLUTE", b.m("SUBTRACT", b.m("FRACT", b.m("MULTIPLY", z, 1.0)), 0.97)), 3.0), clamp=True)
+    g = b.m("MULTIPLY", b.m("ADD", 0.55, b.m("MULTIPLY", g, 0.45)), b.m("ADD", 0.9, b.m("MULTIPLY", nz.outputs["Fac"], 0.2)))
+    em = b.n("ShaderNodeEmission", {"Color": (1.0, 0.58, 0.28), "Strength": b.m("MULTIPLY", g, EVE["shade_glow"])})
+    nt.links.new(b.addsh(sh, em.outputs[0]), out.inputs["Surface"])
+    return m
 
 
 # ============================================================================================ geometry helpers
@@ -586,6 +613,17 @@ def cyl(name, cx, cy, z0, z1, r, mat, seg=48, bev=0.0, r_top=None):
     if bev:
         bevel(ob, bev, 3)
     return ob
+
+
+def open_bottom(ob):
+    """removes a cylinder's bottom cap (cyl() makes it as the first face)"""
+    bm = bmesh.new()
+    bm.from_mesh(ob.data)
+    bm.faces.ensure_lookup_table()
+    zmin = min(v.co.z for v in bm.verts)
+    bmesh.ops.delete(bm, geom=[f for f in bm.faces if all(abs(v.co.z - zmin) < 1e-5 for v in f.verts)], context="FACES_ONLY")
+    bm.to_mesh(ob.data)
+    bm.free()
 
 
 def sphere(name, cx, cy, cz, r, mat, sx=1.0, sy=1.0, sz=1.0, seg=24):
@@ -1208,7 +1246,7 @@ def pendant_linear(cs, cd, length=1.7, z=2.02):
     for k in (-0.6, 0.6):
         tube("pend_wire", [(cs, cy + k * length / 2, z + 0.03), (cs, cy + k * length / 2, CEIL)], 0.0015, "blacksteel", 6)
     box("pend_body", cs, cy, z, 0.07, length, 0.05, "brass", 0, bev=0.012)
-    box("pend_diff", cs, cy, z - 0.004, 0.05, length - 0.04, 0.006, "lamp_warm", 0)
+    box("pend_diff", cs, cy, z - 0.004, 0.05, length - 0.04, 0.006, "pend_glow" if NIGHT else "lamp_warm", 0)
 
 
 def kitchen():
@@ -1270,7 +1308,9 @@ def living():
     # a side table and lamp by the sofa's end
     cyl("side", -0.45, -3.1, 0.0, 0.52, 0.22, "walnut", 40, bev=0.01)
     cyl("lamp_base", -0.45, -3.1, 0.52, 0.86, 0.07, "ceramic_clay", 32, r_top=0.05)
-    cyl("lamp_shade", -0.45, -3.1, 0.86, 1.10, 0.19, "linen_cream", 40, r_top=0.15)
+    shade = cyl("lamp_shade", -0.45, -3.1, 0.86, 1.10, 0.19, "shade_lit" if NIGHT else "linen_cream", 40, r_top=0.15)
+    if NIGHT:
+        open_bottom(shade)            # a lampshade is open below: the lamp's light pools on the table and the floor
     cyl("lamp_bulb", -0.45, -3.1, 0.90, 1.05, 0.05, "lamp_warm", 16)
     # the console and the canvas on the left partition
     sbox("console", PART_L + 0.08, PART_L + 0.50, 2.2, 4.4, 0.12, 0.70, "walnut", bev=0.006)
@@ -1348,7 +1388,9 @@ def master_bedroom():
         ns = bc + sgn * 1.32
         sbox("nightstand", ns - 0.26, ns + 0.26, head - 0.48, head - 0.02, 0.12, 0.52, "walnut", bev=0.006)
         cyl("ns_lamp_b", ns, -(head - 0.25), 0.52, 0.80, 0.06, "ceramic_white", 32, r_top=0.045)
-        cyl("ns_lamp_s", ns, -(head - 0.25), 0.80, 0.98, 0.15, "linen_cream", 40, r_top=0.12)
+        nsh = cyl("ns_lamp_s", ns, -(head - 0.25), 0.80, 0.98, 0.15, "shade_lit" if NIGHT else "linen_cream", 40, r_top=0.12)
+        if NIGHT:
+            open_bottom(nsh)
         cyl("ns_lamp_bulb", ns, -(head - 0.25), 0.82, 0.95, 0.04, "lamp_warm", 16)
     box("bed_rug", bc, -(head - 1.3), 0.0, 3.0, 2.6, 0.012, "rug", 0, bev=0.004)
     sbox("bench", bc - 0.7, bc + 0.7, head - 2.72, head - 2.32, 0.30, 0.45, "boucle", bev=0.04)
@@ -1436,7 +1478,7 @@ def lights(downs):
     portal("portal_living", -0.15, 0.25, 9.6, 3.1)
     portal("portal_bed1", 7.2, 0.5, 4.8, 3.1, 0)
     portal("portal_bed2", 11.11, 1.545, 3.7, 3.1, -27.9)
-    power = 16.0 if NIGHT else (3.0 if TODN == "sunset" else 0.0)
+    power = EVE["downs"] if NIGHT else (3.0 if TODN == "sunset" else 0.0)
     if power:
         for k, (s, d) in enumerate(downs):
             ld = bpy.data.lights.new("dl%d" % k, "SPOT")
@@ -1452,13 +1494,79 @@ def lights(downs):
         for nm, (s, d, z, e) in {"lamp_sofa": (-0.45, 3.1, 0.97, 18.0), "pend": (2.75, 2.4, 1.98, 30.0),
                                   "ns1": (6.03, 4.93, 0.9, 10.0), "ns2": (8.67, 4.93, 0.9, 10.0)}.items():
             ld = bpy.data.lights.new(nm, "POINT")
-            ld.energy = e * (2.0 if NIGHT else 0.5)
+            ld.energy = EVE.get(nm, e * 2.0) if NIGHT else e * 0.5
             ld.color = (1.0, 0.72, 0.46)
             ld.shadow_soft_size = 0.05
             ob = bpy.data.objects.new(nm, ld)
             KW.link(ob)
             own(ob)
             ob.location = (s, -d, z)
+    if NIGHT:
+        evening_lights()
+
+
+def evening_lights():
+    """evening v2: the LED cove in the curtain pocket washes the sheers and the glass's frame (a long, narrow area light
+    pointing down); an optional soft fill from behind the camera (EVE['fill'], a photographic choice like a bounce flash;
+    invisible to the camera and in reflections)"""
+    ld = bpy.data.lights.new("cove_light", "AREA")
+    ld.shape = "RECTANGLE"
+    ld.size, ld.size_y = 9.4, 0.06
+    ld.energy = EVE["cove_light"]
+    ld.color = (1.0, 0.70, 0.42)
+    ld.spread = 100 * DEG
+    ob = bpy.data.objects.new("cove_light", ld)
+    KW.link(ob)
+    own(ob)
+    ob.location = (-0.15, -0.30, CEIL - 0.03)
+    ob.visible_camera = False
+    ob.visible_glossy = False
+    if EVE["fill"] > 0:
+        add_fill(EVE["fill"])
+
+
+def add_fill(energy):
+    ld = bpy.data.lights.new("fill", "AREA")
+    ld.shape = "RECTANGLE"
+    ld.size, ld.size_y = 3.0, 1.6
+    ld.energy = energy
+    ld.color = (1.0, 0.82, 0.64)
+    ob = bpy.data.objects.new("fill", ld)
+    KW.link(ob)
+    own(ob)
+    ob.location = (0.2, -(BACK_D - 0.25), 2.3)
+    ob.rotation_euler = (70 * DEG, 0, 0)           # facing the glass (+Y), tipped 20 degrees down
+    ob.visible_camera = False
+    ob.visible_glossy = False
+    return ob
+
+
+def no_lamps_in_the_glass():
+    """evening v2: a twilight photographer keeps the room's lamps out of the window's reflection (the old picture had the
+    downlights as 'stars' in the sky and the pendant as a streak). Light linking: every lamp and every glowing surface
+    of the apartment lights everything except the curtain-wall glass, so the glass still mirrors the lit room faintly,
+    but not the lamps themselves"""
+    coll = bpy.data.collections.new("not_the_glass")
+    for nm in ("glass", "bal_glass"):
+        g = bpy.data.objects.get(nm)
+        if g:
+            coll.objects.link(g)
+    for co in coll.collection_objects:
+        co.light_linking.link_state = "EXCLUDE"
+    glowing = {"lamp_warm", "cove", "downlight_emit", "shade_lit", "pend_glow"}
+    n = 0
+    for ob in bpy.data.objects:
+        if ob.parent is not APT:
+            continue
+        if ob.type == "LIGHT" and ob.data.type != "AREA" or ob.name.startswith(("cove_light", "fill")):
+            pass
+        elif ob.type == "MESH" and any(ms and ms.name in glowing for ms in ob.data.materials):
+            pass
+        else:
+            continue
+        ob.light_linking.receiver_collection = coll
+        n += 1
+    print("EVENING light linking: %d lamps and glowing surfaces kept out of the glass" % n)
 
 
 def camera(s, d, z, yaw=0.0, pitch=0.0, hfov=80.0, pano=False, shift_y=0.0):
@@ -1512,6 +1620,8 @@ def build():
     herringbone(bed, "hb_bed")
     lights(downs)
     KW.build_sun()
+    if NIGHT:
+        no_lamps_in_the_glass()
 
 
 SHOTS = {
@@ -1522,6 +1632,8 @@ SHOTS = {
     "balcony": dict(s=2.6, d=-0.3, z=1.55, yaw=-48.0, pitch=-4.0, hfov=84.0, shift=0.0),       # tower A turning, the city, the sea
     "living360": dict(s=0.35, d=3.9, z=1.5, yaw=0.0, pitch=0.0, hfov=0, shift=0.0),
     "view": dict(s=0.0, d=1.2, z=1.5, yaw=0.0, pitch=-4.0, hfov=70.0, shift=0.0),              # the same frame on every floor (the twist)
+    # evening v2 (1.10.2026): the same window and axis as "living", framed for the blue hour (see the README)
+    "living_eve": dict(s=0.1, d=6.9, z=1.45, yaw=-5.0, pitch=0.0, hfov=78.0, shift=-0.06),
 }
 
 build()
@@ -1535,10 +1647,13 @@ if os.environ.get("KH_CAMS"):
     base = os.path.splitext(OUT)[0]
     for item in os.environ["KH_CAMS"].split(";"):
         nm, vals = item.split(":")
-        sv, dv, zv, yv, pv, fv = [float(x) for x in vals.split(",")]
-        camera(sv, dv, zv, yv, pv, fv)
+        vv = [float(x) for x in vals.split(",")]
+        camera(*vv[:6], shift_y=vv[6] if len(vv) > 6 else 0.0)
         sc.view_settings.exposure = {("in", "day"): -1.5, ("in", "sunset"): -1.7, ("in", "evening"): 0.1,
                                      ("out", "day"): -3.4, ("out", "sunset"): -2.9, ("out", "evening"): -1.2}[("in" if INSIDE else "out", TODN)] + float(os.environ.get("KH_EXP", "0"))
+        if NIGHT:
+            sc.view_settings.use_white_balance = True
+            sc.view_settings.white_balance_temperature = float(os.environ.get("KH_WB", EVE["wb"]))
         if not os.environ.get("KH_NOGLARE"):
             KW.add_glare(3.5 / 2 ** sc.view_settings.exposure, float(os.environ.get("KH_GLARE", "0.22")))
         sc.render.filepath = base + "-" + nm + ".png"
@@ -1551,6 +1666,10 @@ sc = bpy.context.scene
 EXPO = {("in", "day"): -1.5, ("in", "sunset"): -1.7, ("in", "evening"): 0.85,
         ("out", "day"): -3.4, ("out", "sunset"): -2.9, ("out", "evening"): -1.2}
 sc.view_settings.exposure = EXPO[("in" if INSIDE else "out", TODN)] + SHOT_EXP.get((SHOT, TODN), (0.0, 0))[0] + float(os.environ.get("KH_EXP", "0"))
+if NIGHT:
+    # evening v2: the photographer's white balance for the blue hour (the lamps read warm-white, the sky stays blue)
+    sc.view_settings.use_white_balance = True
+    sc.view_settings.white_balance_temperature = float(os.environ.get("KH_WB", EVE["wb"]))
 if not os.environ.get("KH_NOGLARE"):
     KW.add_glare(3.5 / 2 ** sc.view_settings.exposure, float(os.environ.get("KH_GLARE", "0.22")))
 sc.render.filepath = OUT

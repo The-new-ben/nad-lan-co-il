@@ -63,7 +63,9 @@ def sun_at(month, day, hour, utc_off=3):
 TIMES = {
     "day": dict(m=9, d=21, h=14.5, label="21.9 · 14:30"),
     "sunset": dict(m=9, d=21, h=17.6, label="21.9 · 17:36"),
-    "evening": dict(m=9, d=21, h=19.1, label="21.9 · 19:06"),
+    # evening v2 (1.10.2026): 19:00, the sun 5.06 degrees below the horizon (this file's suncalc); 19:06 (the first evening
+    # render) is 6.33 below, past civil twilight: the western afterglow is gone and the room outshines the view
+    "evening": dict(m=9, d=21, h=19.0, label="21.9 · 19:00"),
 }
 
 
@@ -373,6 +375,9 @@ SKY_FILL_DESAT = 0.30    # and how much of its blue is taken out
 
 def sky_params(tod):
     t = TIMES[tod]
+    if tod == "evening" and os.environ.get("KH_EVE_H"):       # previews of the blue hour at another minute
+        hh = float(os.environ["KH_EVE_H"])
+        t = dict(t, h=hh, label="21.9 · %02d:%02d" % (int(hh), round(hh % 1 * 60)))
     b, a = sun_at(t["m"], t["d"], t["h"])
     TOD.update(name=tod, bearing=b, alt=a, label=t["label"])
     # coastal September air: humid, a little dusty; the haze's reach in metres (the far city fades into the sky)
@@ -555,6 +560,120 @@ def add_glare(threshold, strength=0.3, size=0.6):
 # ============================================================================================ exterior materials
 MAT = {}
 
+# evening v2 (1.10.2026): the lit windows of the city at the blue hour. Emission per window = a room behind the glass, found
+# by INTERIOR MAPPING (Joost van Dongen, "Interior Mapping", CGI 2008,
+# https://www.proun-game.com/Oogst3D/CODING/InteriorMapping/InteriorMapping.pdf; the idea as a three.js port:
+# https://github.com/codedgar/three-fenestra): the view ray is cast, inside the shader, against the virtual floor, ceiling,
+# side walls and back wall of a room behind each window cell, and the surface it meets is shaded by one lamp in that room.
+# The rooms, which ones are lit, their lamps, curtains and colours are an ILLUSTRATION (random per building, floor and room).
+NIGHT_LIT = {"tall": 0.30, "low": 0.42}       # the share of apartments with a light on (x 0.82 of their rooms + a few singles)
+NIGHT_K = {"tall": 0.60, "low": 1.20}         # emission at the lamp's peak (the room's radiance is shaded below it)
+
+
+def _vmath(b, op, a, c=None, out="Vector"):
+    nd = b.n("ShaderNodeVectorMath", operation=op)
+    b.put(nd.inputs[0], a)
+    if c is not None:
+        b.put(nd.inputs[1], c)
+    return nd.outputs[out]
+
+
+def night_windows(b, geo, u, v, s, tall, glasstower, fh, bay, cu, cv, fu, fv, gl):
+    """the city's lit windows at night, as rooms (interior mapping). Returns (emission colour, emission strength).
+    Towers (btall): rooms 3.0 / 4.5 / 6.0 m wide on the 1.5 m mullion grid, 2-3 rooms an apartment, lit in runs along a floor;
+    glass towers keep a dark slab band (floor edge + spandrel) between the floors. Low-rise: each window bay is a room, three
+    bays an apartment. About 25-30% of the windows lit: warm 2700-3800 K, a few cool white, a few TV-blue; some sheers half
+    drawn, some blinds half down; each lit room has a back wall, a ceiling, a floor and side walls lit by its own lamp."""
+    m = b.m
+    I = geo.outputs["Incoming"]
+    N = geo.outputs["Normal"]
+    T = _vmath(b, "NORMALIZE", _vmath(b, "CROSS_PRODUCT", (0.0, 0.0, 1.0), N))   # along the wall (+u), the walls are vertical
+    du = m("MULTIPLY", _vmath(b, "DOT_PRODUCT", I, T, "Value"), -1.0)             # the ray into the room, in the wall's frame
+    dv = m("MULTIPLY", b.sep(I)[2], -1.0)
+    dn = m("MAXIMUM", _vmath(b, "DOT_PRODUCT", I, N, "Value"), 0.03)
+    # the room grid
+    wt = m("MULTIPLY", 1.5, m("ADD", 2.0, m("FLOOR", m("MULTIPLY", m("FRACT", m("MULTIPLY", s, 11.3)), 2.999))))
+    nat = m("ADD", 2.0, m("FLOOR", m("MULTIPLY", m("FRACT", m("MULTIPLY", s, 5.9)), 1.999)))
+    rit = m("FLOOR", m("DIVIDE", u, wt))
+    Wr = b.mixf(tall, bay, wt)
+    px = b.mixf(tall, m("MULTIPLY", fu, bay), m("MULTIPLY", m("FRACT", m("DIVIDE", u, wt)), wt))
+    ri = b.mixf(tall, cu, rit)
+    ap = b.mixf(tall, m("FLOOR", m("DIVIDE", cu, 3.0)), m("FLOOR", m("DIVIDE", rit, nat)))
+    Hr = fh
+    py = m("MULTIPLY", fv, fh)
+    # per room: three randoms and a fourth; per apartment: is anybody home
+    wn = b.n("ShaderNodeTexWhiteNoise", noise_dimensions="3D")
+    b.put(wn.inputs["Vector"], b.combine(ri, cv, m("ADD", m("MULTIPLY", s, 91.0), m("MULTIPLY", tall, 7.0))))
+    r1, r2, r3 = b.sep(wn.outputs["Color"])
+    r4 = wn.outputs["Value"]
+    ra = b.white(b.combine(ap, cv, m("MULTIPLY", s, 57.0)))
+    rq = b.white(b.combine(ri, cv, m("ADD", m("MULTIPLY", s, 23.0), 5.0)))
+    homeA = m("LESS_THAN", ra, b.mixf(tall, NIGHT_LIT["low"], NIGHT_LIT["tall"]))
+    lit = m("MAXIMUM", m("MULTIPLY", homeA, m("LESS_THAN", rq, 0.82)), m("LESS_THAN", rq, 0.035))
+    # a dim glow (a light left on in the hall, deeper in the flat) in some of the other rooms
+    lit = m("MAXIMUM", lit, m("MULTIPLY", m("GREATER_THAN", rq, 0.90), 0.16))
+    Dr = m("ADD", 3.2, m("MULTIPLY", r2, 3.0))
+    # interior mapping: the distance along the ray to the side wall, the floor or ceiling, and the back wall ahead of it
+    gx = m("GREATER_THAN", du, 0.0)
+    tx = m("DIVIDE", m("ADD", px, m("MULTIPLY", gx, m("SUBTRACT", Wr, m("MULTIPLY", px, 2.0)))), m("ADD", m("ABSOLUTE", du), 1e-4))
+    gy = m("GREATER_THAN", dv, 0.0)
+    ty = m("DIVIDE", m("ADD", py, m("MULTIPLY", gy, m("SUBTRACT", Hr, m("MULTIPLY", py, 2.0)))), m("ADD", m("ABSOLUTE", dv), 1e-4))
+    tz = m("DIVIDE", Dr, dn)
+    txy = m("MINIMUM", tx, ty)
+    t = m("MINIMUM", txy, tz)
+    hx = m("ADD", px, m("MULTIPLY", du, t))
+    hy = m("ADD", py, m("MULTIPLY", dv, t))
+    hz = m("MULTIPLY", dn, t)
+    back = m("LESS_THAN", tz, txy)
+    side = m("MULTIPLY", m("SUBTRACT", 1.0, back), m("LESS_THAN", tx, ty))
+    # what it meets: a pale back wall (or a darker wardrobe, a picture wall), side walls, a white ceiling, a wooden floor
+    alb = b.mixf(back, b.mixf(side, b.mixf(gy, 0.26, 0.72), 0.55), m("ADD", 0.38, m("MULTIPLY", r3, 0.47)))
+    # the room's lamp: a ceiling light or a standing lamp, somewhere in the room; light falls off with distance
+    lx = m("MULTIPLY", Wr, m("ADD", 0.2, m("MULTIPLY", r1, 0.6)))
+    lz = m("MULTIPLY", Dr, m("ADD", 0.3, m("MULTIPLY", m("FRACT", m("MULTIPLY", r1, 7.7)), 0.45)))
+    ly = b.mixf(m("GREATER_THAN", r2, 0.5), 1.25, m("SUBTRACT", Hr, 0.35))
+    d2 = m("ADD", m("ADD", m("POWER", m("SUBTRACT", hx, lx), 2.0), m("POWER", m("SUBTRACT", hy, ly), 2.0)),
+           m("POWER", m("SUBTRACT", hz, lz), 2.0))
+    E = m("ADD", 0.10, m("DIVIDE", 1.6, m("ADD", 1.0, m("MULTIPLY", d2, 0.9))))
+    # the light's colour: mostly warm (2700-3800 K), some cool white; a few rooms lit only by a television
+    tk = m("FRACT", m("MULTIPLY", r3, 3.7))
+    tint = b.ramp(tk, [(0.0, (1.0, 0.36, 0.10)), (0.30, (1.0, 0.47, 0.17)), (0.55, (1.0, 0.56, 0.26)), (0.80, (1.0, 0.68, 0.44)),
+                       (0.90, (0.90, 0.90, 0.96))], "LINEAR")
+    tv = m("GREATER_THAN", m("FRACT", m("MULTIPLY", r2, 9.1)), 0.93)
+    tint = b.mix(tv, tint, (0.30, 0.45, 1.0))
+    E = m("MULTIPLY", E, b.mixf(tv, 1.0, 0.45))
+    room = b.n("ShaderNodeMix", data_type="RGBA", blend_type="MULTIPLY")
+    b.put(room.inputs["Factor"], 1.0)
+    b.put(room.inputs[6], tint)
+    ae = m("MULTIPLY", alb, E)
+    b.put(room.inputs[7], b.combine(ae, ae, ae))
+    room = room.outputs[2]
+    # curtains just behind the glass: open (42%), sheers drawn in from the sides (36%), blinds down from the top (22%)
+    tc = m("DIVIDE", 0.2, dn)
+    xn = m("DIVIDE", m("ADD", px, m("MULTIPLY", du, tc)), Wr)
+    yn = m("DIVIDE", m("ADD", py, m("MULTIPLY", dv, tc)), Hr)
+    is_sheer = m("MULTIPLY", m("GREATER_THAN", r4, 0.42), m("LESS_THAN", r4, 0.78))
+    is_blind = m("GREATER_THAN", r4, 0.78)
+    cwl = m("ADD", 0.08, m("MULTIPLY", m("FRACT", m("MULTIPLY", r4, 7.3)), 0.42))
+    cwr = m("ADD", 0.08, m("MULTIPLY", m("FRACT", m("MULTIPLY", r4, 13.1)), 0.42))
+    sheer = m("MULTIPLY", is_sheer, m("MAXIMUM", m("LESS_THAN", xn, cwl), m("GREATER_THAN", xn, m("SUBTRACT", 1.0, cwr))))
+    bl = m("ADD", 0.15, m("MULTIPLY", m("FRACT", m("MULTIPLY", r4, 5.7)), 0.6))
+    blind = m("MULTIPLY", is_blind, m("GREATER_THAN", yn, m("SUBTRACT", 1.0, bl)))
+    slat = m("ADD", 0.72, m("MULTIPLY", m("LESS_THAN", m("FRACT", m("MULTIPLY", yn, 14.0)), 0.55), 0.28))
+    glow = m("MULTIPLY", m("ADD", 0.28, m("MULTIPLY", r3, 0.22)), b.mixf(blind, 0.9, m("MULTIPLY", slat, 0.55)))
+    ccol = b.n("ShaderNodeMix", data_type="RGBA", blend_type="MULTIPLY")
+    b.put(ccol.inputs["Factor"], 1.0)
+    b.put(ccol.inputs[6], tint)
+    b.put(ccol.inputs[7], b.combine(glow, glow, glow))
+    cov = m("MAXIMUM", m("MULTIPLY", sheer, 0.82), m("MULTIPLY", blind, 0.96))
+    col = b.mix(cov, room, ccol.outputs[2])
+    # where light can come out: the glass (gl: reveals, shutters and mullions already dark); glass towers keep a slab band
+    band = b.mixf(glasstower, 1.0, m("MULTIPLY", m("GREATER_THAN", fv, 0.10), m("LESS_THAN", fv, 0.93)))
+    k = b.mixf(tall, NIGHT_K["low"], NIGHT_K["tall"])
+    k = m("MULTIPLY", k, m("ADD", 0.45, m("MULTIPLY", m("POWER", m("FRACT", m("MULTIPLY", r2, 3.3)), 1.6), 1.25)))
+    estr = m("MULTIPLY", m("MULTIPLY", m("MULTIPLY", lit, gl), band), k)
+    return col, estr
+
 
 def facade_material():
     """the city's buildings: plaster in the tones of Tel Aviv's streets, rows of windows, some roller shutters half down,
@@ -655,6 +774,17 @@ def facade_material():
     p = b.principled(Base_Color=col, Roughness=rough)
     b.put(p.inputs["Specular IOR Level"], spec)
     b.put(p.inputs["Metallic"], b.m("MULTIPLY", tglass, 0.45))
+    if TOD.get("night"):
+        # night (evening v2): every lit window is a room seen through the glass (interior mapping), see night_windows()
+        ecol, estr = night_windows(b, geo, u, v, s, tall, glasstower, fh, bay, cu, cv, fu, fv, gl)
+        shop = b.m("MULTIPLY", b.m("MULTIPLY", ground, b.m("LESS_THAN", rw, 0.45)), 0.9)
+        shopcol = b.mix(b.m("GREATER_THAN", rw, 0.85), (1.0, 0.60, 0.30), (0.85, 0.88, 1.0))
+        ecol = b.mix(ground, ecol, shopcol)
+        b.put(p.inputs["Emission Color"], ecol)
+        b.put(p.inputs["Emission Strength"], b.m("ADD", estr, b.m("MULTIPLY", shop, lowrise)))
+        haze(b, out, p.outputs[0])
+        MAT["facade"] = m
+        return m
     # night: some windows lit (warm and a few cool), shops lit on the ground floor
     # towers: windows lit in runs along a floor (an apartment), not a random mosaic of single panes
     rwt = b.white(b.combine(cv, b.m("FLOOR", b.m("DIVIDE", cu, 4.0)), b.m("MULTIPLY", s, 71.0)))
@@ -713,7 +843,7 @@ def street_material():
     b.put(p.inputs["Specular IOR Level"], 0.12)
     if TOD.get("night"):
         b.put(p.inputs["Emission Color"], (1.0, 0.62, 0.30))
-        b.put(p.inputs["Emission Strength"], 0.10)
+        b.put(p.inputs["Emission Strength"], 0.20)        # evening v2: the street lights (was 0.10)
     haze(b, out, p.outputs[0])
     MAT["street"] = m
     return m

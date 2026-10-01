@@ -30,7 +30,8 @@ ALL = [
     ("bedroom-day", "bedroom", "day", 2048, 1152, S_STILL, {}),
     ("balcony-sunset", "balcony", "sunset", 2048, 1152, S_STILL, {}),
     ("living-day", "living3q", "day", 2048, 1152, S_STILL, {}),
-    ("living-evening", "living", "evening", 2048, 1152, S_STILL, {}),
+    # evening v2 (1.10.2026) replaces "living-evening" (19:06, rejected; its files stay as they were)
+    ("living-evening-v2", "living_eve", "evening", 2048, 1152, S_STILL, {}),
     ("living360-sunset", "living360", "sunset", 4096, 2048, S_360, {}),
     ("twist-floor20", "view", "day", 1280, 720, "48", {"KH_FLOOR": "20"}),
     ("twist-floor30", "view", "day", 1280, 720, "48", {"KH_FLOOR": "30"}),
