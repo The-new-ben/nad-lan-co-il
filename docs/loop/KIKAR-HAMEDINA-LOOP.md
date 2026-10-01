@@ -11,6 +11,46 @@
 
 Every loop turn reads this file first, takes the first unchecked item, does it end to end, ticks it with its evidence, and writes the next step. Linear issue: see "Tracking" below.
 
+## V2: THE DECISION MASTERPIECE (owner order 1.10.2026 evening; Linear HAD-380, HAD-381; the memory nadlan-owner-decisions-2026-10-01)
+
+Every turn takes the first open item. Each item is ticked with evidence (live, real presses, phone + PC).
+
+- [ ] **V1. Opens on choosing an apartment.**
+  - The flow: tower → floor → apartment by direction → plan, price, 360.
+  - No scroll-in-scroll on the phone OR the PC. The fewest elements over the 3D. Cards fade after a few seconds.
+  - The sun and the time of day move to the side, and never pop up on a floor pick.
+- [ ] **V2. Apartments by direction, from computed floor plans.**
+  - Four apartments per floor, from the sold 140 m² deals and the plate geometry. Research first.
+  - ChatGPT or Astra 6 (Codex, Maya's session) if needed.
+- [ ] **V3. Prices.** The deals' average and range, labeled "מידע גלוי". No source names on the page.
+- [ ] **V4. Parity, proven in a feature table, with everything DUO (the buying journey up to payment) and Rainbow offer:**
+  - designing the apartment;
+  - a price quote;
+  - the basket up to payment;
+  - a representative and a video call;
+  - plans;
+  - a cinematic first-person 360 through the apartment, the lobby, the pool, the gym, the parking, the ground-floor shops and the cafés outside.
+- [ ] **V5. Competitors side by side.**
+  - World: Zillow, Matterport, Compass, Houzz.
+  - Israel: every competitor, plus "Simplex" (to identify).
+  - How they put decision information one tap away without hiding the 3D.
+- [ ] **V6. The video with voice.**
+  - Our own, recommending the project and its apartments, covering everything around.
+  - The municipality's footage may be embedded, with no credit.
+  - Codex/Maya and DaVinci; take over the computer to watch the municipality video.
+- [ ] **V7. 5,000 NET words per language** on every project page (he, en, fr, ru, ar).
+  - ChatGPT skill, fed with the SERP map and the competitors' DNA.
+  - Claude runs ChatGPT / Astra 6.
+- [ ] **V8. Traffic.**
+  - The top of the page per language intent ("פרויקט יוקרה במרכז תל אביב", "ללא תיווך", foreign buyers).
+  - Menus, the homepage, internal links.
+- [ ] **V9. LAST: WhatsApp wording site-wide (HAD-382).** "ייעוץ חינם" only on the floating bar; "לקבלת פרטים נוספים בוואטסאפ" everywhere else.
+
+**Rules (on top of the laws below):**
+- Fewer disclaimers, credits and source names on the page. Facts stay true.
+- Searches, not hours of research, in every turn.
+- Scale up every turn.
+
 ## The recursive scaling rule (the owner, 30.9.2026: "recursive researching scaling up... non-compromising... web search every looping")
 
 Every turn does ALL of these, not only the current phase:
