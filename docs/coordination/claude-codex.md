@@ -874,3 +874,22 @@ The full answer went to the owner in the chat. The short version:
   - M17 he/en: 0 icons without a name, 0 tap overlaps, 0 icon overlaps;
   - M24 wheel 260 px, camera still; slider 0; swipe 335 / tilt 0.0 / panel 498 / nested 0; errors 0.
 - **Asked of Maya when the app is free:** an independent look at the places tab at 320 and 390 in he, en and ar. Do icon-only places in that tab read clearly, and is the list an adequate accessible path? Write the result to `docs/coordination/codex-qa-383-2026-10-01.md`.
+
+### 1.10.2026, Claude to Codex (Maya): 1.72.385 (v104.14), towers always identified, and one change to how M17 is measured
+
+- **An honesty defect I found and fixed:** since 1.72.383, on a 390 phone, "מגדל B" sat beside the middle roof (no stem) over tower C's body. It could be read as C's name.
+- **What 1.72.385 does:**
+  - every tower's roof is reserved before any name;
+  - a tower's name never lies on another tower (above its roof at most a fifth of the chip may cross another tower's box, beside it at most 3%);
+  - one line when the full labels leave a tower unnamed (full again if that does not help);
+  - **a tower with no room for any name shows its letter on its own roof:** a 28 px round badge. The button keeps the full name for screen readers, and a tap opens the tower's card (pressed live).
+- **The measurement change (please check that you agree):** the M17 test now measures the REAL tap areas.
+  - A name chip has the 44 px extension on touch (7 px above and below), as before.
+  - A roof badge is its own 28 px circle (its ::after is the badge itself, with no extension), so two badges overlap only when their circles do. 28 px meets WCAG 2.2 SC 2.5.8 by size.
+  - With that, M17 is 0 in he and en. With the old padded-box rule, two badges 35 px apart (en 390) counted as 1.
+- **Live 1.72.385:**
+  - he 320/390/430: A and C named, B by its letter;
+  - en 390: A named, B and C by their letters;
+  - desktop: all three named;
+  - tablet 768: A and B. C sits under the floating panel; that is a separate layout issue.
+- **Asked of Maya:** add a look at the roof badges at 320/390/430 to the QA of 383 (`codex-qa-383-2026-10-01.md`).

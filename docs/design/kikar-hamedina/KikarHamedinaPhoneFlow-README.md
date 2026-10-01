@@ -250,3 +250,25 @@ Measured locally against the live 1.72.374 (the same script, `v1045_check.py`).
     - The WebGL dot layer remains only as a fallback, if the icon set fails to load.
   - **The aerial view, the walk and the window:** tiers A and B only. The M17 decision with Codex stands there: a name and its icon are one unit, and a place with no room for its name steps back.
 - **Not changed:** the camera, the order of importance, the tap areas of names (44 px), the tower picking, and every collision rule against controls.
+
+## v104.14 (1.10, loop turn 23): every tower is identified, and a tower's name never sits on another tower
+
+- **Two findings (live 1.72.384):**
+  1. In the aerial view the towers' full labels left tower C without a name on every phone measured (320 to 430).
+  2. **An honesty defect, live since 1.72.383:** on 390, "מגדל B" sat beside the middle roof with no stem, over tower C's body. A buyer could read it as tower C's name.
+- **The design:**
+  - **Roofs first.** Every tower's roof is reserved before any name is placed: the place of its letter, with the touch padding. No other name covers a roof.
+  - **Never on another tower.** A tower's name above its roof (with a stem) may cross another tower's box by at most a fifth of the chip. Beside its roof (no stem) the limit is 3%, a brush of the outline.
+  - **One line when needed.** When the full labels leave a tower unnamed, every tower's name switches to one line ("מגדל A"). This holds until the view's mode or size changes. If that does not help, the full labels come back.
+  - **The letter on the roof.** A tower with no room for any name shows its letter on its own roof: a 28 px round badge in the tower's colour (gold when selected). The button keeps the full name for screen readers.
+  - Three identified towers beat one tower with its floors and height. Those stay in the tower's card, one tap away.
+- **Measured locally (the live page with the local world.js):**
+  - Phones:
+    - 320 and 360: A and C named, B with its letter.
+    - 390 and 430: the same.
+    - Before: 2 towers named, C with nothing; on 390 B's name sat on tower C.
+  - Desktop 1440: all three named (A and B full, C on one line). Tablet landscape 1024: all three on one line.
+  - Tablet portrait 768: A and B. C is under the floating panel, which is a separate layout issue logged for a later notch.
+  - Touch-area overlaps: 0 (M17). Icon without name: 0.
+- **Why not a width threshold:** a fixed "under 360" rule missed 390, and "under 400" missed 430.
+- **Not changed:** the places, their tiers and icons, the 44 px name tap areas, and every other collision rule.

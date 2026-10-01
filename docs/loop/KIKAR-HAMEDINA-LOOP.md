@@ -101,6 +101,38 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **1.10, turn 23.**
+  - **Web:**
+    - [mako 24.9.2026](https://www.mako.co.il/news-money/real_estate/Article-1b24331b3cec0a1026.htm), read in full this turn:
+      - NO occupancy yet (a search summary had claimed residents);
+      - three kiosks, and the public works end by the end of 2027;
+      - deals in the project averaged about ₪65,000/m² (already in facts.md with its date).
+      - A "160 shops / 82 luxury" line in a search summary is from an old plan: not used.
+    - [Times of Israel](https://www.timesofisrael.com/irans-tiny-tel-aviv-outpost-the-surprising-owners-of-a-city-playground/): background only.
+    - Label collision: a single pass from the highest priority down is the standard real-time method ([Google patent CA2582988C](https://patents.google.com/patent/CA2582988C/en)). That is how the world works.
+  - **FOUND live (1.72.384):**
+    - (1) On every phone (320 to 430) tower C had no name in the aerial view.
+    - (2) **An honesty defect since 1.72.383:** on 390, "מגדל B" sat beside the middle roof over tower C's body, so it could be read as C's name.
+  - **NOTCH (design v104.14, DS version 153 → LIVE 1.72.385):**
+    - The roofs are reserved first.
+    - A tower's name never lies on another tower: at most a fifth of the chip above its roof, at most 3% beside it.
+    - One line when the full labels leave a tower unnamed; full again if that does not help.
+    - A tower with no room shows its letter on its own roof: a 28 px badge. The button keeps the full name, and a tap opens the card.
+    - The M17 test now measures real tap areas: chips get +7 px on touch; badges are their own circle.
+    - Runner 385: 340 page checks OK.
+  - **Measured live:**
+    - he 320/390/430: A and C named, B by its letter. en 390: A named, B and C by letters.
+    - A real tap on the "B" badge opens tower B's card.
+    - M17: 0/0/0. M15: 37. Wheel 260, camera still. Slider 0.
+    - Swipe: 335 / tilt 0.0 / nested 0 / walk full + pill.
+    - Fold headings: bar 0, a11y 2. 0 errors.
+    - Source audit: Kikar and Rainbow GREEN, H Infinity YELLOW (old description length).
+    - Desktop: all three named. Tablet 768: A and B; C sits under the floating panel (pre-existing, logged).
+  - **NEXT NOTCH:**
+    - (1) Tablet 768: the floating panel covers towers B and C. Design first: a narrower panel, or the camera framed to the left of it.
+    - (2) en/ar names from new sources only.
+    - (3) The evening at full size.
+
 - **1.10, turn 22.**
   - **Web:**
     - [Bizportal 19.4.2025](https://www.bizportal.co.il/realestates/news/article/20015974): prices and the "end of 2028" line are already in facts.md with their date.
@@ -632,7 +664,7 @@ Every turn does ALL of these, not only the current phase:
   - the Arabic first screen and the a11y corner (375).
 - **OPEN, in order:**
   - (a) the long world card, organized, nothing deleted;
-  - (b) 320 px label density: PARTLY DONE in 1.72.383 (tower B named; the places tab shows icons, not dots); tower C at 320 is still open;
+  - (b) 320 px label density: DONE in 1.72.383 + 1.72.385 (the places tab shows icons; every tower identified on every phone, never on another tower); the 768 tablet panel over towers B/C is a new item;
   - (c) en/ar generic place names (data);
   - (d) M04/M05, two pointers and page pinch;
   - (e) a real-device check (the owner's iPhone);

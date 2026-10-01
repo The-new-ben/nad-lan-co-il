@@ -2269,9 +2269,15 @@ export function mountWorld(host, opts = {}) {
     e._click = c.click;
     return e;
   }
+  // v104.14 (loop turn 23): towers' names on one line once the full labels left a tower unnamed, for this mode and size; back
+  // to the full labels if one line did not name it either (tablet 768: tower C has no room at all, A and B keep their floors)
+  let towersOneLine = false, towersGaveUp = false, towersKey = '';
   function layoutLabels() {
     if (!o.labels) return;
     const w = root.clientWidth, h = root.clientHeight;
+    const tKey = S.mode + '|' + w + 'x' + h;
+    if (tKey !== towersKey) { towersKey = tKey; towersOneLine = false; towersGaveUp = false; }
+    let towerMissed = false;
     const cands = labelCandidates();
     const used = new Set();
     const camDir = _v(); camera.getWorldDirection(camDir);
@@ -2295,7 +2301,7 @@ export function mountWorld(host, opts = {}) {
         const sx = (v.x * 0.5 + 0.5) * w, sy = (-v.y * 0.5 + 0.5) * h;
         x0 = Math.min(x0, sx); x1 = Math.max(x1, sx); y0 = Math.min(y0, sy); y1 = Math.max(y1, sy);
       }
-      if (ok) towerRects.push({ x0: x0 + 2, x1: x1 - 2, y0: y0 + 16, y1 });
+      if (ok) towerRects.push({ x0: x0 + 2, x1: x1 - 2, y0: y0 + 16, y1, k });
     }
     const placed = [];
     const hitAny = (r, list) => list.some((q) => !(r.x1 < q.x0 || r.x0 > q.x1 || r.y1 < q.y0 || r.y0 > q.y1));
@@ -2317,9 +2323,23 @@ export function mountWorld(host, opts = {}) {
     // second place on the map, every remaining place's icon that fits is placed (never on another icon, a name placed before, or a control); then the
     // place names follow, and they never cover an icon. hitAnyX skips the place's own icon.
     const pinsFirst = S.mode === 'places' && !!window.NLPlaceIcons;
+    // v104.14: a tower's name may not lie on ANOTHER tower. Above its roof (a stem shows whose it is) at most a fifth of the chip
+    // may cross another tower's box; beside its roof (no stem) at most 3%, a brush of the outline (he 390: "מגדל B" beside the
+    // middle roof crossed tower C's body by 8% and read as C's name; tablet 768: B's name brushed tower A's box by 1 px, fine)
+    const onOtherTower = (r, id, f) => towerRects.some((q) => 't' + q.k !== id && Math.max(0, Math.min(r.x1, q.x1) - Math.max(r.x0, q.x0)) * Math.max(0, Math.min(r.y1, q.y1) - Math.max(r.y0, q.y0)) > f * (r.x1 - r.x0) * (r.y1 - r.y0));
     const hitAnyX = (r, list, skip) => list.some((q) => q !== skip && !(r.x1 < q.x0 || r.x0 > q.x1 || r.y1 < q.y0 || r.y0 > q.y1));
     // the nearest place on the map keeps the old order (its name first: "1 min" is what a buyer reads first), then the icons
     // (measured, he 390: two names first left 5 icons on the map, one name first 11, none 13 with the nearest place unnamed)
+    // v104.14: every tower's roof is reserved first (the place of its letter, with the touch padding): no other name covers a roof,
+    // and a tower without room for its name still shows its letter there (he 390: A's name moved up a step, B shows its letter)
+    const roofs = new Map();
+    for (const { c, x, y } of pts) {
+      if (c.kind !== 'tower' || !TW[c.id.slice(1)]) continue;
+      const rb = { x0: x - 15, x1: x + 15, y0: y - 15 - (coarse ? 7 : 0), y1: y + 15 + (coarse ? 7 : 0), cx: x, cy: y };
+      // the badge's tap area is the 28 px circle itself (no 44 px extension): two roofs only need their circles apart
+      if (hitAny(rb, reserved) || [...roofs.values()].some((q) => Math.hypot(q.cx - x, q.cy - y) < 30)) continue;
+      roofs.set(c.id, rb); placed.push(rb);
+    }
     let preDone = false, plRank = 0;
     for (let pi = 0; pi < pts.length; pi++) {
       const { c, x, y } = pts[pi];
@@ -2339,7 +2359,7 @@ export function mountWorld(host, opts = {}) {
       used.add(c.id);
       e.style.display = 'block';
       e.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
-      e.classList.remove('is-dot', 'is-b', 'is-c');
+      e.classList.remove('is-dot', 'is-b', 'is-c', 'is-roof');
       if (c.kind === 'iso') { const r = { x0: x - 30, x1: x + 30, y0: y - 10, y1: y + 10 }; if (hitAny(r, reserved) || hitAny(r, placed)) e.style.display = 'none'; else placed.push(r); continue; }
       if (!e._size) e._size = [e._t.offsetWidth, e._t.offsetHeight];
       if (c.kind === 'floor') { const tw0 = e._size[0]; const r = rtl ? { x0: x - tw0 - 8, x1: x, y0: y - 12, y1: y + 12 } : { x0: x, x1: x + tw0 + 8, y0: y - 12, y1: y + 12 }; if (hitAny(r, reserved)) e.style.display = 'none'; else placed.push(r); continue; }
@@ -2351,12 +2371,15 @@ export function mountWorld(host, opts = {}) {
       // v104.12 (loop turn 21): label tiers. A = the name and its second line; B = the name alone (one line) when A has no room
       // anywhere and the second line is soft (walk time, distance, floors); an honesty line ("planned", "illustration") never drops
       const tiers = [e._size];
+      let bAt = -1; // the index of tier B in this list
       if (c.soft && c.meta) {
         if (!e._sizeB) { e.classList.add('is-b'); e._sizeB = [e._t.offsetWidth, e._t.offsetHeight]; e.classList.remove('is-b'); }
-        tiers.push(e._sizeB);
+        tiers.push(e._sizeB); bAt = 1;
+        // v104.14: three named towers beat one tower with its floors and height (which stay in its card)
+        if (c.kind === 'tower' && towersOneLine) { tiers.shift(); bAt = 0; }
       }
       const hp = coarse ? 7 : 0; // v104.5: on touch the name chip's tap area is 44 px; the collision keeps those areas apart
-      const stems = c.kind === 'tower' ? [12, 30] : [16, 34, 56, 80];
+      const stems = c.kind === 'tower' ? [12, 30, 52, 74] : [16, 34, 56, 80];
       let ok = false;
       const gap = c.kind === 'tower' ? 26 : 16; // v104.12: a tower's name beside its top clears the tower's own width
       for (let ti = 0; ti < tiers.length && !ok; ti++) {
@@ -2374,9 +2397,9 @@ export function mountWorld(host, opts = {}) {
           : below ? { x0: x + dx - tw / 2 - 3, x1: x + dx + tw / 2 + 3, y0: y + s - 2, y1: y + s + th + 3 } : { x0: x + dx - tw / 2 - 3, x1: x + dx + tw / 2 + 3, y0: y - s - th - 3, y1: y - s + 2 };
         if (r.x0 < 4 || r.x1 > w - 4 || r.y0 < 4 || r.y1 > h - 4) continue;
         const rp = hp ? { x0: r.x0, x1: r.x1, y0: r.y0 - hp, y1: r.y1 + hp } : r;
-        if (hitAnyX(rp, placed, pre ? e._br : null) || hitAny(rp, reserved) || (c.kind !== 'tower' && hitAny(r, towerRects))) continue;
+        if (hitAnyX(rp, placed, pre ? e._br : (roofs.get(c.id) || null)) || hitAny(rp, reserved) || (c.kind !== 'tower' ? hitAny(r, towerRects) : onOtherTower(r, c.id, side ? 0.03 : 0.2))) continue;
         placed.push(rp);
-        if (ti) e.classList.add('is-b');
+        if (ti === bAt) e.classList.add('is-b');
         if (side) { // beside the icon: no stem; the chip's near edge `gap` px from the anchor, centred on it
           e._s.style.height = '0px'; e._t.style.top = '0px';
           e._t.style.transform = side === 'r' ? 'translate(100%, -50%)' : 'translate(0, -50%)';
@@ -2395,11 +2418,23 @@ export function mountWorld(host, opts = {}) {
       if (!ok && e._ik && c.kind === 'place') { e.classList.add('is-c'); ok = true; }
       // v104.5 (Codex's QA, M17): a place with an icon and no room for its name steps back entirely (it stays in the list and the
       // cards); an icon never stands without its name (the aerial view, the walk and the window)
+      if (!ok && c.kind === 'tower') {
+        towerMissed = true;
+        // v104.14: tier C for a tower, its letter on its own roof (a 28 px badge; the button keeps the full name for screen readers);
+        // the roof was reserved before any name was placed, with the touch padding, so the badge never touches another tap area
+        if (roofs.has(c.id)) {
+          e.classList.add('is-roof'); e._t.dataset.l = c.id.slice(1);
+          e._s.style.height = '0px'; e._t.style.top = '0px'; e._t.style.right = '0px'; e._t.style.transform = 'translate(50%, -50%)';
+          ok = true; continue;
+        }
+      }
       if (!ok) { if (e._ik || c.kind === 'mark' || c.kind === 'tower' || c.kind === 'civic') { e.style.display = 'none'; continue; } e.classList.add('is-dot'); }
       if (pre) continue; // its icon is already in the list
       const rd = e._ik ? 12 : 6; const dot = { x0: x - rd, x1: x + rd, y0: y - rd, y1: y + rd }; placed.push(dot);
     }
     for (const [id, e] of labelPool) if (!used.has(id)) e.style.display = 'none';
+    if (towerMissed && !towersOneLine && !towersGaveUp) { towersOneLine = true; invalidate(); } // the next frame: towers on one line
+    else if (towerMissed && towersOneLine) { towersOneLine = false; towersGaveUp = true; invalidate(); } // it did not help: full again
   }
 
   // ================================================================================================ cards

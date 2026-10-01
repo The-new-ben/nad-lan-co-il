@@ -115,6 +115,13 @@
 .nlw-pin.is-b .m { display: none !important; }
 .nlw-pin.is-c .t, .nlw-pin.is-c .s { display: none; }
 
+/* v104.14 (loop turn 23): a tower with no room for its name shows its letter on its own roof; the name stays in the button */
+.nlw-pin.k-tower.is-roof .s { display: none; }
+.nlw-pin.k-tower.is-roof .t { width: 28px; height: 28px; padding: 0; border-radius: 50% !important; top: 0 !important; right: 0 !important; transform: translate(50%, -50%) !important; box-shadow: 0 0 0 2px var(--nlw-paper), 0 1px 4px rgba(27, 26, 23, .3); }
+.nlw-pin.k-tower.is-roof .n, .nlw-pin.k-tower.is-roof .m { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
+/* the letter fills the badge exactly (the same ::after is the 44 px tap area elsewhere on touch screens: here it is the badge) */
+.nlw-pin.k-tower.is-roof .t::after { content: attr(data-l); position: absolute; inset: 0; display: grid; place-items: center; font: 700 14px/1 'Noto Serif Hebrew', 'Assistant', serif; color: var(--nlw-paper); }
+
 /* the top bar: the four ways in */
 .nlw-top { position: absolute; z-index: 5; top: 12px; inset-inline: 12px; display: flex; gap: 8px; align-items: flex-start; pointer-events: none; }
 .nlw-tabs {
