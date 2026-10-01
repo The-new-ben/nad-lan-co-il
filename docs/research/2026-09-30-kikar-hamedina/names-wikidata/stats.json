@@ -1,0 +1,108 @@
+{
+ "script_audit": {
+  "values_scanned": 442,
+  "failing": 1,
+  "removed": 1,
+  "listed_only": 0,
+  "list": [
+   "fp:osm-way-283357822 צמרת G en=צמרת G (contains hebrew letters; removed)"
+  ]
+ },
+ "targets": 1020,
+ "targets_by_group": {
+  "essentials": 297,
+  "food": 247,
+  "outdoors": 170,
+  "education": 152,
+  "community": 82,
+  "health": 41,
+  "transport": 31
+ },
+ "targets_missing_by_lang": {
+  "en": 729,
+  "ru": 984,
+  "fr": 1019,
+  "ar": 988
+ },
+ "targets_lacking_en": 729,
+ "targets_w10": 401,
+ "outcome": {
+  "no-match": 725,
+  "no-wikidata-tag": 232,
+  "rejected-strict": 24,
+  "he-mismatch": 17,
+  "ambiguous": 11,
+  "matched-nothing-new": 10,
+  "filled": 1
+ },
+ "path_A_own_element": 236,
+ "places_filled": 1,
+ "places_filled_w10": 0,
+ "values_filled_by_lang": {
+  "en": 1,
+  "ru": 0,
+  "fr": 0,
+  "ar": 0
+ },
+ "values_filled": 1,
+ "filled_by_group": {
+  "community": {
+   "en": 1,
+   "ru": 0,
+   "fr": 0,
+   "ar": 0
+  }
+ },
+ "dropped_by_script_check": 0,
+ "kept_existing_conflict": 5,
+ "skipped_by_reason": {
+  "no-match": 725,
+  "no-wikidata-tag": 232,
+  "ambiguous": 11,
+  "matched-nothing-new": 10,
+  "rejected-strict": 24,
+  "he-mismatch": 17
+ },
+ "features_with_wikidata_in_answer": 327,
+ "wikidata_ids_fetched": 26,
+ "wikidata_items_serving_2plus_places": {},
+ "he_mismatch_list": [
+  "fp:osm-way-405360284 הגימנסיה העברית הרצליה -> way/405360284 Q1592883 (he=הגימנסיה העברית \"הרצליה\", hewiki=הגימנסיה העברית \"הרצליה\")",
+  "fp:osm-way-1153886763 שבט דיזנגוף - תנועת הצופים העבריים בישראל -> way/1153886763 Q7211053 (he=הצופים העבריים, hewiki=הצופים העבריים)",
+  "fp:osm-way-140917803 בית ספר עירוני ד' -> way/140917803 Q6924946 (he=תיכון עירוני ד', hewiki=תיכון עירוני ד')",
+  "osm:way/26599740 בי\"ח איכילוב -> way/26599740 Q2561450 (he=המרכז הרפואי תל אביב ע\"ש סוראסקי, hewiki=המרכז הרפואי תל אביב ע\"ש סוראסקי)",
+  "osm:node/2930618402 תל אביב סבידור מרכז -> node/2930618402 Q2915697 (he=תחנת הרכבת תל אביב – סבידור מרכז, hewiki=תחנת הרכבת תל אביב – סבידור מרכז)",
+  "osm:node/11124786622 תחנת ארלוזרוב, הקו האדום -> node/11124786622 Q41992304 (he=תחנת ארלוזורוב, hewiki=תחנת ארלוזורוב)",
+  "osm:relation/15020537 קניון גן העיר -> relation/15020537 Q7190035 (he=גן העיר (תל אביב), hewiki=גן העיר (תל אביב))",
+  "osm:relation/16022802#n פארק הירקון (גני יהושע), ליד בני דן -> relation/16022802 Q1683522 (he=פארק הירקון, hewiki=פארק הירקון)",
+  "osm:way/96838152 גן הפסלים ע\"ש לולה אבנר -> way/96838152 Q139575 (he=גן הפסלים ע\"ש לולה בר-אבנר, hewiki=גן הפסלים ע\"ש לולה בר-אבנר)",
+  "osm:node/11124793538 תחנת שאול המלך, הקו האדום -> node/11124793538 Q31197774 (he=תחנת שאול המלך, hewiki=תחנת שאול המלך)",
+  "tlv:745/36 בית אריאלה -> way/96837834 Q4263244 (he=ספריית בית אריאלה, hewiki=ספריית בית אריאלה)",
+  "osm:way/96837834 ספריית שער ציון – בית אריאלה -> way/96837834 Q4263244 (he=ספריית בית אריאלה, hewiki=ספריית בית אריאלה)",
+  "osm:way/382072592 אבא הלל -> way/382072592 Q25494925 (he=תחנת אבא הלל, hewiki=תחנת אבא הלל)",
+  "osm:node/11133775519 אבא הלל -> node/11133775519 Q25494925 (he=תחנת אבא הלל, hewiki=תחנת אבא הלל)",
+  "fp:osm-way-1181231038 מועדון השייטים תל-אביב -> way/1181231038 Q7695561 (he=מועדון השייטים תל אביב, hewiki=מועדון השייטים תל אביב)",
+  "osm:node/1643304667 זמנהוף -> node/1643304667 Q7027396 (he=מרפאת זמנהוף, hewiki=מרפאת זמנהוף)",
+  "osm:way/130626671 הלונדון מיניסטורס -> way/130626671 Q7214716 (he=לונדון מיניסטורס, hewiki=לונדון מיניסטורס)"
+ ],
+ "rejected_strict_with_wikidata": [
+  "fp:961-45 גימנסיה הרצליה -> way/405360284 Q1592883 (no POI kind that fits the group community (amenity=school))",
+  "tlv:745/95 בית שלום עליכם -> way/203814211 Q2906196 (never: building=yes with no POI tags)",
+  "tlv:745/31 המשכן לאמנויות הבמה -> way/96838151 Q555356 (never: building=yes with no POI tags)",
+  "fp:564-25 בבלי -> way/803479640 Q2919369 (never: place=suburb)",
+  "osm:way/1019796256 ככר מסריק -> way/24893732 Q2776314 (never: place=square)",
+  "osm:way/24893732 ככר מסריק -> way/24893732 Q2776314 (never: place=square)"
+ ],
+ "shown_by_kind_w10": {
+  "en": 304,
+  "ru": 303,
+  "fr": 304,
+  "ar": 304
+ },
+ "shown_by_kind_all": {
+  "en": 728,
+  "ru": 727,
+  "fr": 728,
+  "ar": 728
+ }
+}

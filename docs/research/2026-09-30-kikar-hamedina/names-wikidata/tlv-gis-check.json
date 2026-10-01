@@ -1,0 +1,52 @@
+{
+ "checked_at": "2026-10-01T09:54:11+0300",
+ "service": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer",
+ "rule": "a field counts as an English name when its name or alias says English (eng / english / אנגל / לועז)",
+ "layers": [
+  {
+   "layer": 769,
+   "name": "בתי ספר תשפז",
+   "fields": 51,
+   "english_name_fields": []
+  },
+  {
+   "layer": 768,
+   "name": "גני ילדים תשפז",
+   "fields": 52,
+   "english_name_fields": []
+  },
+  {
+   "layer": 624,
+   "name": "מעונות מוכרים לגיל הרך",
+   "fields": 18,
+   "english_name_fields": []
+  },
+  {
+   "layer": 553,
+   "name": "מוסדות קהילה",
+   "fields": 23,
+   "english_name_fields": []
+  },
+  {
+   "layer": 745,
+   "name": "מוסדות תרבות",
+   "fields": 24,
+   "english_name_fields": [
+    {
+     "name": "NAME_ENG",
+     "alias": "שם באנגלית",
+     "records_total": 136,
+     "records_not_null": 0,
+     "records_not_empty": 0
+    }
+   ]
+  },
+  {
+   "layer": 568,
+   "name": "בתי כנסת",
+   "fields": 18,
+   "english_name_fields": []
+  }
+ ],
+ "verdict": "No usable English field: education (769 schools, 768 kindergartens, 624 daycares), community (553) and synagogues (568) have no English name field; culture (745) has NAME_ENG (alias 'שם באנגלית') but it is empty in every record city-wide. Nothing was taken from the city's GIS."
+}

@@ -1,0 +1,42 @@
+{
+ "api": "https://www.wikidata.org/w/api.php",
+ "user_agent": "nadlan-config/2.0 (https://nad-lan.co.il; research, read-only)",
+ "fetched_at": "2026-10-01T09:51:16+0300",
+ "ids": 26,
+ "batches": [
+  {
+   "file": "batch-01.json",
+   "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q139575%7CQ1592883%7CQ1683522%7CQ2561450%7CQ2915697%7CQ2920379%7CQ4263244%7CQ5311048%7CQ6609253%7CQ6924946%7CQ7027396%7CQ7043115%7CQ7190035%7CQ7190171%7CQ7211053%7CQ7214716%7CQ7217370%7CQ7695561%7CQ12407537%7CQ12410852%7CQ25494925%7CQ31197774%7CQ41992304%7CQ67441585%7CQ80273779%7CQ112624938&props=labels%7Csitelinks&languages=en%7Car%7Cfr%7Cru%7Che&format=json",
+   "ids": [
+    "Q139575",
+    "Q1592883",
+    "Q1683522",
+    "Q2561450",
+    "Q2915697",
+    "Q2920379",
+    "Q4263244",
+    "Q5311048",
+    "Q6609253",
+    "Q6924946",
+    "Q7027396",
+    "Q7043115",
+    "Q7190035",
+    "Q7190171",
+    "Q7211053",
+    "Q7214716",
+    "Q7217370",
+    "Q7695561",
+    "Q12407537",
+    "Q12410852",
+    "Q25494925",
+    "Q31197774",
+    "Q41992304",
+    "Q67441585",
+    "Q80273779",
+    "Q112624938"
+   ],
+   "bytes": 21572,
+   "sha256": "f25d830354ad67b23e3c1bec31ef035dfd25dd562891d5b719e781ee0da6e3a1"
+  }
+ ]
+}

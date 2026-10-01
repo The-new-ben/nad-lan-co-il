@@ -151,3 +151,30 @@ A visible `<h2>שאלות נפוצות` plus FAQPage schema.
 - **Two bugs caught before release:**
   - a repeated measurement left the lens unshifted;
   - the roof was measured at the tower's height instead of its label's anchor, 5 m higher, which put tower C's letter 3 px into the panel's padding.
+
+## v104.16 (1.10, loop turn 25): on the en/fr/ru/ar pages "what's nearby" counts every place, as the Hebrew page does
+
+- **The finding (live 1.72.386, computed with the world's own rules from places.json):** on the language pages the world LEFT OUT every place whose name exists only in Hebrew. So "N places within 12 minutes" understated what is around the towers:
+
+| Category | he | en, fr, ru, ar (before) |
+|---|---|---|
+| Education | 94 | 10 |
+| Community | 49 | 5 |
+| Health | 35 | 6 |
+| Parks and sport | 77 | 23 |
+| Cafés and dining | 139 | 53 |
+| Shops and services | 198 | 61 |
+| Transport | 27 | 25 |
+
+  The area map on the same page already counted them all, naming a Hebrew-only place by its kind ("School"). Two parts of one page disagreed.
+- **The design: one name rule for the whole page, the area map's.** A place's name is chosen in this order:
+  1. its name in the page's language;
+  2. its English name;
+  3. a name with no Hebrew letters;
+  4. its kind in the page's language ("School", "École", "Школа", "مدرسة").
+
+  Nothing is translated or transliterated.
+  - The card of a place named by its kind shows its real name too: "Name in Hebrew: כיכר המדינה". It is set right-to-left, so a buyer can match it to the sign in the street.
+  - The counts are now the same in every language.
+  - Two places that share a kind word are told apart by their Hebrew names, so two different kindergartens nearby are never merged as one.
+- **Real names in other languages** come only from sources: OpenStreetMap name tags (v104.8), and now a Wikidata step (a separate data notch, in progress).

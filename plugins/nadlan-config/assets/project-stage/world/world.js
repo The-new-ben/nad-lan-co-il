@@ -192,6 +192,7 @@ const I18N = {
     cats: { transport: 'Transport', education: 'Education', outdoors: 'Parks & sport', food: 'Cafés & dining', essentials: 'Shops & services', health: 'Health', community: 'Community & culture' },
     catCount: (n, m) => `${n} places within a ${m}-minute walk`,
     walkMin: (m) => `${m} min walk`,
+    heName: 'Name in Hebrew', // v104.16
     fromRing: 'from the ring road',
     km: (m) => (m >= 1000 ? `${(m / 1000).toFixed(1)} km` : `${Math.round(m / 10) * 10} m`),
     fromTowers: (d) => `About ${d} from the compound's centre`,
@@ -286,6 +287,7 @@ const I18N = {
     cats: { transport: 'Transports', education: 'Écoles', outdoors: 'Parcs et sport', food: 'Cafés et restaurants', essentials: 'Commerces et services', health: 'Santé', community: 'Vie locale et culture' },
     catCount: (n, m) => `${n} lieux à moins de ${m} min à pied`,
     walkMin: (m) => `${m} min à pied`,
+    heName: 'Nom en hébreu', // v104.16
     fromRing: 'depuis la place',
     km: (m) => (m >= 1000 ? `${frNum((m / 1000).toFixed(1))} km` : `${Math.round(m / 10) * 10} m`),
     fromTowers: (d) => `À environ ${d} du centre de l’ensemble`,
@@ -376,6 +378,7 @@ const I18N = {
     cats: { transport: 'Транспорт', education: 'Образование', outdoors: 'Парки и спорт', food: 'Кафе и рестораны', essentials: 'Магазины и услуги', health: 'Здоровье', community: 'Общество и культура' },
     catCount: (n, m) => `Мест в пределах ${m} мин пешком: ${n}`,
     walkMin: (m) => `${m} мин пешком`,
+    heName: 'Название на иврите', // v104.16
     fromRing: 'от площади',
     km: (m) => (m >= 1000 ? `${frNum((m / 1000).toFixed(1))} км` : `${Math.round(m / 10) * 10} м`),
     fromTowers: (d) => `Около ${d} от центра комплекса`,
@@ -466,6 +469,7 @@ const I18N = {
     cats: { transport: 'المواصلات', education: 'التعليم', outdoors: 'الحدائق والرياضة', food: 'المقاهي والمطاعم', essentials: 'المتاجر والخدمات', health: 'الصحة', community: 'المجتمع والثقافة' },
     catCount: (n, m) => `أماكن على بعد حتى ${m} دقيقة سيراً: ${n}`,
     walkMin: (m) => `${arN(m, 'دقيقة واحدة', 'دقيقتان', 'دقائق', 'دقيقة')} سيراً`,
+    heName: 'الاسم بالعبرية', // v104.16
     fromRing: 'من الميدان',
     km: (m) => (m >= 1000 ? `${(m / 1000).toFixed(1)} كم` : `${Math.round(m / 10) * 10} م`),
     fromTowers: (d) => `على بعد نحو ${d} من مركز المجمع`,
@@ -2241,8 +2245,9 @@ export function mountWorld(host, opts = {}) {
       for (const p of places.shown.slice(0, 80)) {
         if (p === S.place) continue;
         const nm = placeName(p);
-        if (seen.some((q) => q.nm === nm && Math.hypot(q.x - p.x, q.z - p.z) < 160)) continue;
-        seen.push({ nm, x: p.x, z: p.z });
+        // v104.16: the same place twice (a stop on both sides of a street) is told by its own name, not by a kind word
+        if (seen.some((q) => q.he === p.name && Math.hypot(q.x - p.x, q.z - p.z) < 160)) continue;
+        seen.push({ he: p.name, x: p.x, z: p.z });
         if (k2++ >= n) break;
         add({ id: 'q' + p.id, kind: 'place', k: p.k, g: p.g, name: nm, meta: T.walkMin(p.walk), soft: true, pos: new THREE.Vector3(p.x, 1.2, p.z), prio: 100 + k2, click: () => selectPlace(p) });
       }
@@ -2276,7 +2281,12 @@ export function mountWorld(host, opts = {}) {
     return false;
   }
   let placesIndex = null;
-  const placeName = (p) => (lang === 'he' ? p.name : (p.names && (p.names[lang] || p.names.en)) || p.name);
+  // v104.16 (loop turn 25): the area map's rule, so one page never disagrees with itself: the name in the page's language, else the
+  // English name, else a name with no Hebrew letters, else the kind in the page's language (never translated, never left out).
+  // A "name in another language" that is itself in Hebrew (bad source data: "צמרת G" as names.en) counts as no name.
+  const otherName = (p) => { const n = p.names || {}; const v = n[lang] || n.en; return v && !heOnly(v) ? v : (n.en && !heOnly(n.en) ? n.en : ''); };
+  const kindName = (p) => lang !== 'he' && !otherName(p) && heOnly(p.name);
+  const placeName = (p) => (lang === 'he' ? p.name : otherName(p) || (kindName(p) ? (T.kinds[p.k] || T.cats[p.g] || p.name) : p.name));
   const opensOf = (p) => (!p.opens ? '' : lang !== 'he' ? ((T.opens && T.opens[p.opens]) || '') : p.opens);
   function labelEl(c) {
     let e = labelPool.get(c.id);
@@ -2573,8 +2583,10 @@ export function mountWorld(host, opts = {}) {
   function placeCard(p, air) {
     const kind = T.kinds[p.k] || T.cats[p.g] || '';
     const kv = [`<b>${esc(T.walkMin(p.walk))}</b>`, `<span>${esc(T.fromRing)}</span>`, `<span>${esc(T.km(p.dist))}</span>`];
-    let html = eyebrow(`${T.cats[p.g] || ''}${kind && kind !== T.cats[p.g] ? ' · ' + kind : ''}`) + title(placeName(p)) + `<div class="nlw-kv">${kv.join('')}</div>`;
+    const byKind = kindName(p); // v104.16: named by its kind here; its own name, in Hebrew, is the first line
+    let html = eyebrow(`${T.cats[p.g] || ''}${kind && kind !== T.cats[p.g] && !byKind ? ' · ' + kind : ''}`) + title(placeName(p)) + `<div class="nlw-kv">${kv.join('')}</div>`;
     const lines = [];
+    if (byKind && T.heName) lines.push(`${esc(T.heName)}: <bdi lang="he" dir="rtl">${esc(p.name)}</bdi>`);
     if (p.addr && !heOnly(p.addr)) lines.push(esc(p.addr));
     if (p.info && p.info !== kind && !heOnly(p.info)) lines.push(esc(p.info));
     if (opensOf(p)) lines.push(esc(opensOf(p)));
