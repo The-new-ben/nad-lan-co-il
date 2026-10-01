@@ -128,7 +128,10 @@ Every turn does ALL of these, not only the current phase:
     - source audit: Kikar and Rainbow GREEN, H Infinity YELLOW (old description length).
   - **Coordination:** a note to Codex/Maya in `docs/coordination/claude-codex.md` (the places tab is a scoped exception to M17). QA is asked for in `codex-qa-383-2026-10-01.md`.
   - **NEXT NOTCH:**
-    - (1) The evening interior: the render agent is working (interior mapping for the lit towers). Judge its v2 against `living-sunset`; ship only if it reaches the bar (P9c gallery, Design first).
+    - (1) The evening interior v2 is RENDERED and committed locally (442d654c): interior mapping for the lit towers, a clean sky, lamps on, 19:00 (sun 5.06° below).
+      - **Verdict (release gate):** at gallery size it is a premium blue-hour picture next to the sunset hero. At full size the far windows read procedural and the shade top is near white.
+      - **Next turn:** the P9c gallery design step (day · sunset · evening, "דירה לדוגמה", the time stamp), then ship it as the evening option, shown at card/1200 size only.
+      - The README and plan are corrected: at 19:06 the sun is 6.33° below, not 5.7°.
     - (2) Tower C at 320 (the last tower without a name there).
     - (3) en/ar names from new sources only.
 
