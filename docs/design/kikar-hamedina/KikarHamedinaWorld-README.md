@@ -233,3 +233,32 @@ A visible `<h2>שאלות נפוצות` plus FAQPage schema.
 **Not changed:** the 3D engine and the beam; steps 1 and 2; the album; the area map; the WhatsApp bar (V9, last). The eight-direction grid stays for any world without a plan.
 
 **Next (V3):** prices per apartment, from the deals' average and range, labeled "מידע גלוי".
+
+## v104.19 (1.10, V2 loop turn 3, item V3): prices as public information, no source names on the page
+
+**The owner's order (1.10):**
+- Prices are the deals' average and range, labelled "מידע גלוי", with no source names.
+- "מספיק עם הקרדיטים ומספיק עם המקורות" — enough credits and enough sources.
+
+**Measured on live 1.72.389:**
+- The page named news sources dozens of times (Globes, Mako, Bizportal and others): in the lead, in the price section ("לפי גלובס", a "המקור והתאריך" column) and in the sale section.
+- The 3D panel showed no price for the chosen apartment.
+
+**The design:**
+1. **The 3D panel, once an apartment is chosen:** a block under the floor plan, headed by the "מידע גלוי" pill and "עסקאות בפרויקט".
+   - The big line is the deals' range, "9.58–10.63 מיליון ₪", with "ממוצע 9.93 מיליון ₪" beside it.
+   - Under it: "3 עסקאות · 4 חדרים, 140 מ״ר · קומות 38–39 · כ-71,000 ₪ למ״ר".
+   - Then the towers' average: "כ-65,000 ₪ למ״ר · בקומות הגבוהות ובפנטהאוזים 80,000–150,000 ₪ למ״ר".
+   - Numbers use each language's own format. Every number range keeps its reading order in RTL.
+   - The data is in world.json `model.plan.deals`.
+   - The sizes line loses its own pill; one "מידע גלוי" heads the block.
+2. **The page (all five posts):**
+   - **The lead:** no source in parentheses, and no "לפי רישום אתר הבנייה". Its last sentence is the page's new flow: "כאן בוחרים מגדל, קומה ודירה לפי כיוון, ורואים בהדמיה את הנוף מהחלונות שלה". The sun hours are no longer promised.
+   - **The price section:** "מחירים ועסקאות · מידע גלוי". One paragraph gives the range, the average, the price per m² and the towers' average. The tables keep a "מתי" (date) column and no source column. One closing note: all prices are published public information, and an asking price is not a deal.
+   - **The sale section:** its two inline source names are removed; the facts are unchanged.
+3. **The sources stay in the repository** (facts.md), never on the page.
+
+**Not changed:**
+- The facts table's per-row source lines (the article rewrite, V7, replaces them).
+- The FAQ.
+- The WhatsApp wording (V9, last).

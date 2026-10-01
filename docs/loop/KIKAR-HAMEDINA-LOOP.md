@@ -48,7 +48,7 @@ Every turn takes the first open item. Each item is ticked with evidence (live, r
 - **V7 (C1-C3):** every number in the 5,000 words has a claim ID and a source. The 5,000 are counted inside the article only. A competitor map per language, not a translation.
 - **V8 (T1):** the "no Arabic demand" conclusion in serp-ar.md is not proven; reopen it.
 - **HAD-384 first** (B1, B2): a fixed entry address plus a renewable code; every update gets a receipt.
-- [ ] **V3. Prices.** The deals' average and range, labeled "מידע גלוי". No source names on the page.
+- [x] **V3 DONE, LIVE 1.72.390 (v104.19, DS version 163, 1.10).** The chosen apartment shows the deals in the project as "מידע גלוי": ₪9.58-10.63M, average ₪9.93M, ~₪71,000/m², and the towers' ~₪65,000/m² (₪80-150K high up). The five posts' lead, price and sale sections have no source names; the price tables show dates only. Runner 390: 356 checks OK (after one self-rollback on over-broad checks). Live, real presses, he/ru × 390/1440: OK, nested 0, errors 0; M17 0; wheel 260; content-first 0 failed; language pages 0 Hebrew. Was: **V3. Prices.** The deals' average and range, labeled "מידע גלוי". No source names on the page.
 - [ ] **V4. Parity, proven in a feature table, with everything DUO (the buying journey up to payment) and Rainbow offer:**
   - designing the apartment;
   - a price quote;
@@ -166,6 +166,40 @@ Every turn does ALL of these, not only the current phase:
   - **(c) `verify_kh`** as above.
 
 ## Scale-up ledger (newest on top)
+
+- **1.10, V2 loop turn 3 (item V3).**
+  - **Web (1.10):**
+    - [Calcalist: the most expensive December deal](https://www.calcalist.co.il/real-estate/article/hjbu38f00t) is a ₪14.59M penthouse in Biltmore 3 NEAR the square, not in the towers. Not used.
+    - [ice 28.4.2026](https://www.ice.co.il/realestate/news/article/1110810): the area's ₪60-80K/m² range, already in facts.md.
+    - No new tower deal was published after the three 140 m² deals.
+  - **FOUND (live 1.72.389):**
+    - The Hebrew page named news sources 59 times on screen: the lead, the price section (a "המקור והתאריך" column, "לפי גלובס"), the sale section, the facts table, the timeline and the FAQ.
+    - The 3D panel had no price for the chosen apartment.
+    - The lead still promised "שעות השמש מהחלון".
+  - **NOTCH (v104.19, DS version 163; runner 390):**
+    - **The panel:** the chosen apartment shows "מידע גלוי · עסקאות בפרויקט":
+      - ₪9.58-10.63M, average ₪9.93M;
+      - 3 deals · 4 rooms, 140 m² · floors 38-39 · about ₪71,000/m²;
+      - the towers' ~₪65,000/m², upper floors and penthouses ₪80-150K.
+      - The data is in world.json `model.plan.deals`. Numbers use each language's format; ranges are LTR-isolated in RTL.
+    - **The five posts:**
+      - the lead has no sources and states the new flow ("דירה לפי כיוון… הנוף מהחלונות שלה");
+      - the price section is "מידע גלוי", with the range, the average, per-m² figures and date-only tables;
+      - the sale section has no sources.
+      - Measured on the pages: the Hebrew page's visible source names dropped 59 → 47; the price sections have 0 in all 5 languages.
+    - **Runner 390, first run:** ROLLED BACK by its own checks. My forbidden strings also appear in untouched sections (facts and FAQ). Files and posts were restored exactly (drift md5 equal on the re-run). The record is kept as deploy-result-390-rolledback.json.
+      - Lesson: a forbidden string in CHECKS must be unique to the changed text. Test it against a page captured from the release.
+    - Re-run with narrowed checks: released and verified (356 checks). The source audit is GREEN on he/en/fr/ar and Rainbow; ru is YELLOW for one em dash in my new note. It is fixed locally and ships with 391.
+    - On the phone the deals table shows "38" without "קומה": add the label in 391.
+  - **NEXT NOTCH (first, the owner's law):** a source-free pass on the rest of the page, in 5 languages:
+    - facts table: 13 names;
+    - FAQ: 9;
+    - timeline: 7;
+    - "when": 5;
+    - park and square: 3;
+    - the PHP blocks: nlpd (7) and nlpf (3);
+    - the stage's intro line, which still promises sun hours.
+    - Then the personal `#` link.
 
 - **1.10, V2 loop turn 2 (item V2).**
   - **Codex:** Maya's (Astra 6) breakthrough research arrived: `docs/coordination/codex-breakthroughs-2026-10-01.md`, 627 lines, nine topics plus her own angle. It is folded into the V list above. Her rentals and HAD-384 parts were sent to the rentals session, which adopted R1 (an append-only ledger) and B2 (`client_ref`).

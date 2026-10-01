@@ -73,6 +73,9 @@ const I18N = {
     steps: ['בחרו מגדל', 'בחרו קומה', 'בחרו דירה לפי כיוון'], // v104.17
     aptName: (i) => `דירה פינתית ${['צפונית', 'צפון-מזרחית', 'מזרחית', 'דרום-מזרחית', 'דרומית', 'דרום-מערבית', 'מערבית', 'צפון-מערבית'][i]}`, // v104.18
     aptViews: 'הנוף מהדירה', aptPick: 'הקישו על דירה בתוכנית הקומה', pubTag: 'מידע גלוי',
+    dealsH: 'עסקאות בפרויקט', money: (x) => `${x} מיליון ₪`, avgM: (x) => `ממוצע ${x} מיליון ₪`, // v104.19
+    dealsWhat: (n, r, a, f0, f1) => `${n} עסקאות · ${r} חדרים, ${a} מ״ר · קומות ${f0}–${f1}`, ppm: (x) => `כ-${x} ₪ למ״ר`,
+    towersAvg: (a, lo, hi) => `ממוצע העסקאות במגדלים כ-${a} ₪ למ״ר · בקומות הגבוהות ובפנטהאוזים ${lo}–${hi} ₪ למ״ר`,
     aptSize: (s, r) => ['דירות בפרויקט:', `${s[0]}–${s[1]} מ״ר`, `${r[0]}–${r[1]} חדרים`],
     planLbl: 'תוכנית הקומה', planN: 'צ',
     planNote: 'תוכנית סכמטית: 4 דירות פינתיות בקומה טיפוסית',
@@ -170,6 +173,9 @@ const I18N = {
     steps: ['Choose a tower', 'Choose a floor', 'Choose an apartment by its direction'], // v104.17
     aptName: (i) => `${['North', 'North-east', 'East', 'South-east', 'South', 'South-west', 'West', 'North-west'][i]} corner apartment`, // v104.18
     aptViews: 'Views from the apartment', aptPick: 'Tap an apartment on the floor plan', pubTag: 'Public information',
+    dealsH: 'Deals in the project', money: (x) => `₪${x}M`, avgM: (x) => `average ₪${x}M`, // v104.19
+    dealsWhat: (n, r, a, f0, f1) => `${n} deals · ${r} rooms, ${a} m² · floors ${f0}–${f1}`, ppm: (x) => `about ₪${x} per m²`,
+    towersAvg: (a, lo, hi) => `Deals in the towers average about ₪${a} per m² · upper floors and penthouses ₪${lo}–${hi} per m²`,
     aptSize: (s, r) => ['Apartments here:', `${s[0]}–${s[1]} m²`, `${r[0]}–${r[1]} rooms`],
     planLbl: 'Floor plan', planN: 'N',
     planNote: 'Schematic plan: 4 corner apartments on a typical floor',
@@ -272,6 +278,9 @@ const I18N = {
     steps: ['Choisissez une tour', 'Choisissez un étage', 'Choisissez un appartement selon son orientation'], // v104.17
     aptName: (i) => `Appartement d’angle ${['nord', 'nord-est', 'est', 'sud-est', 'sud', 'sud-ouest', 'ouest', 'nord-ouest'][i]}`, // v104.18
     aptViews: 'Les vues de l’appartement', aptPick: 'Touchez un appartement sur le plan de l’étage', pubTag: 'Information publique',
+    dealsH: 'Ventes dans le projet', money: (x) => `${x} M₪`, avgM: (x) => `moyenne ${x} M₪`, // v104.19
+    dealsWhat: (n, r, a, f0, f1) => `${n} ventes · ${r} pièces, ${a} m² · étages ${f0}–${f1}`, ppm: (x) => `environ ${x} ₪ le m²`,
+    towersAvg: (a, lo, hi) => `Moyenne des ventes dans les tours : environ ${a} ₪ le m² · étages élevés et penthouses ${lo}–${hi} ₪ le m²`,
     aptSize: (s, r) => ['Appartements du projet :', `${s[0]}–${s[1]} m²`, `${r[0]}–${r[1]} pièces`],
     planLbl: 'Plan de l’étage', planN: 'N',
     planNote: 'Plan schématique : 4 appartements d’angle par étage courant',
@@ -370,6 +379,9 @@ const I18N = {
     steps: ['Выберите башню', 'Выберите этаж', 'Выберите квартиру по стороне света'], // v104.17
     aptName: (i) => `Угловая квартира: ${['север', 'северо-восток', 'восток', 'юго-восток', 'юг', 'юго-запад', 'запад', 'северо-запад'][i]}`, // v104.18
     aptViews: 'Виды из квартиры', aptPick: 'Нажмите на квартиру на плане этажа', pubTag: 'Открытые данные',
+    dealsH: 'Сделки в проекте', money: (x) => `${x} млн ₪`, avgM: (x) => `в среднем ${x} млн ₪`, // v104.19
+    dealsWhat: (n, r, a, f0, f1) => `${n} сделки · ${r} комнаты, ${a} м² · этажи ${f0}–${f1}`, ppm: (x) => `около ${x} ₪ за м²`,
+    towersAvg: (a, lo, hi) => `Средняя цена сделок в башнях около ${a} ₪ за м² · верхние этажи и пентхаусы ${lo}–${hi} ₪ за м²`,
     aptSize: (s, r) => ['Квартиры в проекте:', `${s[0]}–${s[1]} м²`, `${r[0]}–${r[1]} комнат`],
     planLbl: 'План этажа', planN: 'С',
     planNote: 'Схема: 4 угловые квартиры на типовом этаже',
@@ -468,6 +480,9 @@ const I18N = {
     steps: ['اختاروا البرج', 'اختاروا الطابق', 'اختاروا الشقة حسب اتجاهها'], // v104.17
     aptName: (i) => `شقة زاوية باتجاه ${['الشمال', 'الشمال الشرقي', 'الشرق', 'الجنوب الشرقي', 'الجنوب', 'الجنوب الغربي', 'الغرب', 'الشمال الغربي'][i]}`, // v104.18
     aptViews: 'الإطلالات من الشقة', aptPick: 'اضغطوا على شقة في مخطط الطابق', pubTag: 'معلومات منشورة',
+    dealsH: 'صفقات في المشروع', money: (x) => `${x} مليون ₪`, avgM: (x) => `المتوسط ${x} مليون ₪`, // v104.19
+    dealsWhat: (n, r, a, f0, f1) => `${n} صفقات · ${r} غرف، ${a} م² · الطوابق ${f0}–${f1}`, ppm: (x) => `نحو ${x} ₪ للمتر المربع`,
+    towersAvg: (a, lo, hi) => `متوسط الصفقات في الأبراج نحو ${a} ₪ للمتر المربع · الطوابق العليا والبنتهاوس ${lo}–${hi} ₪ للمتر المربع`,
     aptSize: (s, r) => ['شقق المشروع:', `${s[0]}–${s[1]} م²`, `${r[0]}–${r[1]} غرف`],
     planLbl: 'مخطط الطابق', planN: 'ش',
     planNote: 'مخطط تخطيطي: 4 شقق زاوية في الطابق النموذجي',
@@ -2877,16 +2892,28 @@ export function mountWorld(host, opts = {}) {
     const P = PLAN(), f = S.floor, u = S.apt, top = f > TW[S.tower].N - (P.top_floors || 0);
     const sz = T.aptSize(P.sqm, P.rooms);
     // a number range reads in order in Hebrew and Arabic too (an en dash between numbers turns them around in an RTL line)
-    const rng = (t) => esc(t).replace(/(\d+–\d+)/g, '<bdi dir="ltr">$1</bdi>');
+    const rng = (t) => esc(t).replace(/(\d[\d.,\u00a0\u202f]*–\d[\d.,\u00a0\u202f]*\d|\d+–\d+)/g, '<bdi dir="ltr">$1</bdi>'); // v104.19: decimals and thousands
     const info = u == null ? `<div class="nlw-note">${esc(T.aptPick)}</div>` :
       `<div class="nlw-aptname">${esc(aptName(S.tower, f, u)).replace(/(\S+-\S+)/g, '<span class="nlw-nw">$1</span>')}</div>` +
-      `<div class="nlw-aptsize"><span class="nlw-pub">${esc(T.pubTag)}</span> ${esc(sz[0])} <span class="nlw-nw">${rng(sz[1])}</span> · <span class="nlw-nw">${rng(sz[2])}</span></div>`;
+      `<div class="nlw-aptsize">${esc(sz[0])} <span class="nlw-nw">${rng(sz[1])}</span> · <span class="nlw-nw">${rng(sz[2])}</span></div>`;
     const views = u == null ? '' :
       `<div class="nlw-aptviews" role="group" aria-label="${esc(T.aptViews)}"><span class="nlw-eyebrow">${esc(T.aptViews)}</span>` +
       `<div class="nlw-row">${aptFacings(S.tower, f, u).map((i) => chip(T.dirsShort[Math.round(norm360(facingBearing(S.tower, f, i)) / 45) % 8], S.facing === i, `data-face="${i}"`)).join('')}</div></div>`;
     const seg = S.facing != null ? `<div class="nlw-row nlw-seg nlw-planseg">${chip(T.viewWin, S.view === 'window', 'data-view="window"')}${chip(T.viewOut, S.view === 'out', 'data-view="out"')}</div>` : '';
-    return `<div class="nlw-planwrap"><div class="nlw-plan">${planSvg()}<div class="nlw-planinfo">${info}</div></div>${views}${seg}` +
+    return `<div class="nlw-planwrap"><div class="nlw-plan">${planSvg()}<div class="nlw-planinfo">${info}</div></div>${u == null ? '' : dealsHtml(rng)}${views}${seg}` +
       `<div class="nlw-note nlw-plannote">${esc(top ? T.planTop : T.planNote)}</div></div>`;
+  }
+  // v104.19 (V3): the deals in the project and the towers' average, as public information (world.json model.plan.deals; the sources
+  // stay in facts.md, never named on the page); numbers in the language's own format
+  const nfmt = (n) => Number(n).toLocaleString(lang === 'fr' ? 'fr-FR' : lang === 'ru' ? 'ru-RU' : 'en-US');
+  const mfmt = (x) => (lang === 'fr' || lang === 'ru' ? String(x).replace('.', ',') : String(x));
+  function dealsHtml(rng) {
+    const Dl = PLAN().deals;
+    if (!Dl) return '';
+    return `<div class="nlw-deals"><div class="nlw-deals__h"><span class="nlw-pub">${esc(T.pubTag)}</span> ${esc(T.dealsH)}</div>` +
+      `<div class="nlw-deals__v">${rng(T.money(`${mfmt(Dl.m[0])}–${mfmt(Dl.m[1])}`))} <small>· ${esc(T.avgM(mfmt(Dl.avg)))}</small></div>` +
+      `<div class="nlw-deals__s">${rng(T.dealsWhat(Dl.n, Dl.rooms, Dl.sqm, Dl.floors[0], Dl.floors[1]))} · ${esc(T.ppm(nfmt(Dl.ppsqm)))}</div>` +
+      `<div class="nlw-deals__s">${rng(T.towersAvg(nfmt(Dl.towers_ppsqm), nfmt(Dl.top_ppsqm[0]), nfmt(Dl.top_ppsqm[1])))}</div></div>`;
   }
   function bindPlan() {
     if (!ui.panel) return;

@@ -419,3 +419,10 @@ html body .nlw-dock a.nlw-btn--wa span { color: #fff !important; text-decoration
 .nlw-nw { white-space: nowrap; }
 .nlw-plannote { margin-top: 6px; }
 @media (max-width: 380px) { .nlw-plan { grid-template-columns: 124px minmax(0, 1fr); } .nlw-plansvg { width: 124px; height: 124px; } }
+
+/* v104.19 (V3): the deals in the project, public information, under the floor plan */
+.nlw-deals { margin-top: 12px; padding: 10px 12px; border: 1px solid var(--nlw-hair); border-radius: 10px; background: #FBF8F2; display: grid; gap: 4px; }
+.nlw-deals__h { font-size: 13px; font-weight: 700; color: var(--nlw-ink); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.nlw-deals__v { font-size: 19px; font-weight: 800; color: var(--nlw-ink); line-height: 1.3; }
+.nlw-deals__v small { font-size: 13px; font-weight: 600; color: var(--nlw-ink-2); }
+.nlw-deals__s { font-size: 12.5px; line-height: 1.45; color: var(--nlw-ink-2); }

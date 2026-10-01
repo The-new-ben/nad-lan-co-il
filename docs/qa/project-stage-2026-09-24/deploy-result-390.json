@@ -1,0 +1,33 @@
+{
+  "released": "1.72.390",
+  "from": "1.72.389",
+  "live_before": {
+    "assets/project-stage/world/world.js": "157e98c4555e3f07fa24e24ff551800a",
+    "assets/project-stage/world/world.css": "230b0188e8e4b2dfd07a69b719024b4f",
+    "assets/project-stage/hamedina/world.json": "daec5e31a4791678a68136829e2f8f7a",
+    "nadlan-config.php": "e421188e0d8f091e69cb00f07ba0de27"
+  },
+  "post_before": {
+    "hamedina": "fc147918f96834e1d40e661f849d2817",
+    "hamedina-en": "267fc34b8b2e2809d574d0842c589957",
+    "hamedina-fr": "fbc017f38405e07756dcdb1f2e696f95",
+    "hamedina-ru": "c2272434c051e93f84c849554b5202ea",
+    "hamedina-ar": "45cc60d5bebbab9892ede6eee29bf485"
+  },
+  "state": "released and verified",
+  "at": "2026-10-01 23:32:22",
+  "files": {
+    "assets/project-stage/world/world.js": "bb702872de4ef97bc56fa824707bc4dc",
+    "assets/project-stage/world/world.css": "bd1edfb49fb8e925d3bd5025f12f40f5",
+    "assets/project-stage/hamedina/world.json": "4fad05cabdb76beb7e89c05b0b33e0c9",
+    "nadlan-config.php": "c9f1f47526009abde5cc84b87be6adb6"
+  },
+  "post_after": {
+    "hamedina": "b12941a38d954a2efe27f19bdee2eb7f",
+    "hamedina-en": "6d7df1237c7916465b08f9f1a15bf3e2",
+    "hamedina-fr": "ab34f12ac5127af1b6670ec0b441c954",
+    "hamedina-ru": "635e7dba7c018e0dac705c10206270d6",
+    "hamedina-ar": "04fb3a62f21a443879ed8beb07398fd4"
+  },
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.390, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
