@@ -19,7 +19,7 @@ Every turn takes the first open item. Each item is ticked with evidence (live, r
   - The flow: tower → floor → apartment by direction → plan, price, 360.
   - No scroll-in-scroll on the phone OR the PC. The fewest elements over the 3D. Cards fade after a few seconds.
   - The sun and the time of day move to the side, and never pop up on a floor pick.
-- [ ] **V2. Apartments by direction, from computed floor plans.** (turn 2: v104.18 built and checked locally in 5 languages; runner 389)
+- [x] **V2 DONE, LIVE 1.72.389 (v104.18, DS version 161, 1.10, commit 3600f019).** Step 3 is the floor's key plan: four corner apartments, north up and turned with the floor. A real tap chooses one: its view, its glass gold in the 3D, its name, its sizes as "מידע גלוי" and its three windows. The WhatsApp line names it. Live, real presses, he/ar × 390/1440: OK; nested 0; errors 0; M17 0; wheel 260. Was: **V2. Apartments by direction, from computed floor plans.**
   - Four apartments per floor, from the sold 140 m² deals and the plate geometry. Research first.
   - ChatGPT or Astra 6 (Codex, Maya's session) if needed.
   - **The computation (1.10):**
@@ -173,7 +173,7 @@ Every turn does ALL of these, not only the current phase:
     - [Israel Hayom](https://www.israelhayom.co.il/tech/tech-news/article/18154141) and [Simplex REALS](https://www.simplex3d.com/reals/) (1.10): each buyer gets a personal interactive link with the apartment, its view, light and points of interest chosen in the sales meeting. It is in use at 3 Israeli projects.
     - [SalesWise 2026](https://www.saleswise.ai/blog/interactive-floor-plans) and [ArchiCGI](https://archicgi.com/interactive-real-estate-platform/): the standard is a selectable unit object carrying layout, area, price, availability and orientation.
     - Searching for a published Kikar typical-floor plan found none, so the plan is computed.
-  - **NOTCH (v104.18, DS version 161; runner 389):** step 3 is the floor's key plan.
+  - **NOTCH (v104.18, DS version 161 → LIVE 1.72.389, runner 389 released and verified; 345 checks):** step 3 is the floor's key plan.
     - Four corner apartments; north up and turned with the floor.
     - A real tap chooses one; its glass glows gold in the 3D.
     - Beside it: its name, the project's sizes as "מידע גלוי" (ranges kept in reading order in RTL), its three windows.
