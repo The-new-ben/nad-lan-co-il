@@ -393,3 +393,29 @@ html body .nlw-dock a.nlw-btn--wa span { color: #fff !important; text-decoration
 .nlw-step b { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--nlw-ink); color: var(--nlw-paper); font-size: 12.5px; }
 .nlw-lbl .nlw-step { margin: 0; }
 .nlw-lbl .nlw-step b { color: var(--nlw-paper); font-size: 12.5px; }
+
+/* v104.18 (V2): the floor plan in step 3: a key plan (north up, turned with the floor) beside the chosen apartment */
+.nlw-planwrap { margin-top: 6px; }
+.nlw-plan { display: grid; grid-template-columns: 148px minmax(0, 1fr); gap: 12px; align-items: center; }
+.nlw-plansvg { display: block; width: 148px; height: 148px; overflow: visible; }
+.nlw-apt { cursor: pointer; outline: none; }
+.nlw-apt path { fill: var(--nlw-paper); stroke: var(--nlw-ink); stroke-width: 1.1; stroke-linejoin: round; transition: fill .15s; }
+.nlw-apt text { font: 700 8.6px/1 Heebo, Assistant, sans-serif; fill: var(--nlw-ink); pointer-events: none; }
+.nlw-apt:hover path { fill: #F6EEDD; }
+.nlw-apt.is-on path { fill: #E9D9B3; stroke: var(--nlw-gold); stroke-width: 1.8; }
+.nlw-apt:focus-visible path { stroke: var(--nlw-ink); stroke-width: 2.4; }
+.nlw-plansvg .nlw-core { fill: var(--nlw-hair); stroke: var(--nlw-ink); stroke-width: 0.8; }
+.nlw-plansvg .nlw-look { fill: var(--nlw-gold); }
+.nlw-north path { fill: var(--nlw-ink); }
+.nlw-north text { font: 700 8px/1 Heebo, Assistant, sans-serif; fill: var(--nlw-ink); }
+.nlw-planinfo { display: grid; gap: 6px; min-width: 0; }
+.nlw-aptname { font-weight: 800; font-size: 15px; line-height: 1.3; color: var(--nlw-ink); }
+.nlw-aptsize { font-size: 13px; line-height: 1.45; color: var(--nlw-ink-2); }
+.nlw-pub { display: inline-block; padding: 1px 7px; border-radius: 999px; background: #F3EEE3; border: 1px solid var(--nlw-hair); font-size: 11.5px; font-weight: 700; color: var(--nlw-ink); }
+.nlw-aptviews { margin-top: 10px; }
+.nlw-aptviews .nlw-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 4px; }
+.nlw-aptviews .nlw-chip, .nlw-planseg .nlw-chip { min-width: 0; padding-inline: 6px; justify-content: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nlw-planseg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
+.nlw-nw { white-space: nowrap; }
+.nlw-plannote { margin-top: 6px; }
+@media (max-width: 380px) { .nlw-plan { grid-template-columns: 124px minmax(0, 1fr); } .nlw-plansvg { width: 124px; height: 124px; } }

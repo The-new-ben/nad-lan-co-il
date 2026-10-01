@@ -19,9 +19,35 @@ Every turn takes the first open item. Each item is ticked with evidence (live, r
   - The flow: tower → floor → apartment by direction → plan, price, 360.
   - No scroll-in-scroll on the phone OR the PC. The fewest elements over the 3D. Cards fade after a few seconds.
   - The sun and the time of day move to the side, and never pop up on a floor pick.
-- [ ] **V2. Apartments by direction, from computed floor plans.**
+- [ ] **V2. Apartments by direction, from computed floor plans.** (turn 2: v104.18 built and checked locally in 5 languages; runner 389)
   - Four apartments per floor, from the sold 140 m² deals and the plate geometry. Research first.
   - ChatGPT or Astra 6 (Codex, Maya's session) if needed.
+  - **The computation (1.10):**
+    - The plate inside the glass is 852-902 m² per tower. Four corner apartments of 130-170 m² fill it round a round core; three or five do not.
+    - 453 / 117 floors = 3.9 a floor. The 15 missing from 468 are most likely the penthouse floors (floor 39: 258 m² + 57 m²).
+    - The listings' directions (floor 35 south-east, a high floor north-west) fall on the plan's corners at those floors.
+    - The data is world.json `model.plan`; the page says once that the plan is schematic.
+
+**Maya's (Astra 6) breakthroughs of 1.10, folded into the V items** (full file: docs/coordination/codex-breakthroughs-2026-10-01.md):
+- **Corrections:**
+  - 468 ≠ 453, so "4 per floor" is for a typical floor only.
+  - The facilities are on a basement floor.
+  - The three 140 m² deals average ~₪71K/m² (68.4-75.9K). Show them apart from the area's ~₪65K. This is for V3.
+- **V2/V4 (G1 + G3):**
+  - The plan is an inference with a candidate identity (`candidate_id`), never an official unit number. The WhatsApp line names the corner apartment, not a unit.
+  - Next: the Design-to-Deal pair (D1: a need → two layouts → BOM delta → RFP) on the C30 north-west apartment.
+- **V3 (P1-P2):**
+  - The price range comes from the deals with an honest interval.
+  - A "what do you get for the difference" comparison between two apartments: floor, direction, view, price.
+- **V4 (W1, D2):**
+  - One continuous path: apartment → corridor → lobby → basement facilities → street. Returning keeps the choice.
+  - The video call shares the same selection and window (TogetherRoom).
+- **V6 (V1-V3):**
+  - The film is rendered from the world itself, from a shot manifest; 90 s; a chapter button drops you into the same apartment.
+  - The municipality video stays an embed.
+- **V7 (C1-C3):** every number in the 5,000 words has a claim ID and a source. The 5,000 are counted inside the article only. A competitor map per language, not a translation.
+- **V8 (T1):** the "no Arabic demand" conclusion in serp-ar.md is not proven; reopen it.
+- **HAD-384 first** (B1, B2): a fixed entry address plus a renewable code; every update gets a receipt.
 - [ ] **V3. Prices.** The deals' average and range, labeled "מידע גלוי". No source names on the page.
 - [ ] **V4. Parity, proven in a feature table, with everything DUO (the buying journey up to payment) and Rainbow offer:**
   - designing the apartment;
@@ -140,6 +166,23 @@ Every turn does ALL of these, not only the current phase:
   - **(c) `verify_kh`** as above.
 
 ## Scale-up ledger (newest on top)
+
+- **1.10, V2 loop turn 2 (item V2).**
+  - **Codex:** Maya's (Astra 6) breakthrough research arrived: `docs/coordination/codex-breakthroughs-2026-10-01.md`, 627 lines, nine topics plus her own angle. It is folded into the V list above. Her rentals and HAD-384 parts were sent to the rentals session, which adopted R1 (an append-only ledger) and B2 (`client_ref`).
+  - **Web:**
+    - [Israel Hayom](https://www.israelhayom.co.il/tech/tech-news/article/18154141) and [Simplex REALS](https://www.simplex3d.com/reals/) (1.10): each buyer gets a personal interactive link with the apartment, its view, light and points of interest chosen in the sales meeting. It is in use at 3 Israeli projects.
+    - [SalesWise 2026](https://www.saleswise.ai/blog/interactive-floor-plans) and [ArchiCGI](https://archicgi.com/interactive-real-estate-platform/): the standard is a selectable unit object carrying layout, area, price, availability and orientation.
+    - Searching for a published Kikar typical-floor plan found none, so the plan is computed.
+  - **NOTCH (v104.18, DS version 161; runner 389):** step 3 is the floor's key plan.
+    - Four corner apartments; north up and turned with the floor.
+    - A real tap chooses one; its glass glows gold in the 3D.
+    - Beside it: its name, the project's sizes as "מידע גלוי" (ranges kept in reading order in RTL), its three windows.
+    - The floor and the tower keep the apartment. The WhatsApp line names it. The example apartment is the north-west one.
+    - Checked locally (the live page with the new files swapped in), he/en/fr/ru/ar × 390/1440, every one OK: a real tap lands on the apartment; nested scrollers 0; errors 0.
+  - **NEXT NOTCH:**
+    - (1) V3: a price range per apartment from the deals (the three 140 m² deals at ₪68.4-75.9K/m², apart from the area's ~₪65K), labelled "מידע גלוי".
+    - (2) A personal link that opens exactly the chosen tower, floor, apartment and window (a `#` token, no new URL). This is Simplex's REALS link and Maya's T2.
+    - (3) Rooms inside the plan of the chosen apartment (a schematic layout of 4-5 rooms), toward D1.
 
 - **1.10, V2 loop turn 1 (item V1).**
   - **Web:**

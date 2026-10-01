@@ -203,3 +203,33 @@ A visible `<h2>שאלות נפוצות` plus FAQPage schema.
 6. **Cards that fade:** in full screen, where a card still floats over the 3D, it closes after 8 seconds without a touch, a hover or the keyboard inside it.
 
 **Not changed:** the 3D engine, the tabs, the example apartment, the area map, the WhatsApp bar (its wording is V9, last).
+
+## v104.18 (1.10, V2 loop turn 2, item V2): apartments by direction, from a computed floor plan
+
+**The owner's order (1.10 evening):** choose an apartment by its direction, not only a floor. Compute the floor plan from the published deals ("four apartments are possible"). Decision information, few disclaimers, no source names on the page.
+
+**Measured on live 1.72.388:** step 3 was eight compass buttons (a 4 x 2 grid). A buyer chose a direction, not an apartment. Nothing on the page showed how a floor divides, which apartment a window belongs to, or what size the apartments are.
+
+**The computation:** world.json `model.plan`, kind "corner4". It says once on the page that it is schematic.
+- The plate inside the glass line is about 850-900 m², taken from the municipal footprint (`model.plate`).
+- 453 units over 117 floors is 3.9 a floor.
+- The published sizes are 132-170 m², with 4-5 rooms. Four apartments of that size fill the plate round a round core; three or five do not.
+- The listings' directions fall on this plan's corners at their floors: floor 35 "south-east" and a high floor "north-west". The plate turns 1.25° a floor, so the corners point to the cardinal directions low down and to the diagonals high up.
+- The top floors hold larger penthouses (floor 39: 258 m² plus 57 m² outside). No official floor plan is public.
+
+**The design:**
+1. **Step 3 is the floor's plan.** It is a 148 px key plan, north up, turned with the floor: dragging the floor slider turns the plan. It shows four corner apartments round the spiral core, each quarter tappable and keyboard-reachable, with its direction in two short lines.
+2. **A tap chooses the apartment.** The view from its corner opens; a small gold cone on the plan shows which way the window looks. In the 3D, "המגדל מבחוץ" shows only that apartment's glass on that floor in gold.
+3. **Beside the plan:**
+   - the apartment's name ("דירה פינתית צפון-מערבית");
+   - the project's apartment sizes, labeled "מידע גלוי" (130–170 m² · 4–5 rooms), with the ranges kept in reading order in RTL;
+   - under the plan, the three windows it looks out of (its two sides and its corner), as one row;
+   - the window / outside switch as one row.
+4. **The floor and the tower keep the apartment** nearest the same corner, and a window inside it.
+5. **The WhatsApp source line names the apartment:** "… · דירה פינתית צפון-מערבית · מערבה". No unit number is ever invented.
+6. **The example apartment (c30w) is the north-west corner apartment.** Its button shows on any of its three windows. The album says the side its pictures face.
+7. **One line under the plan:** "תוכנית סכמטית: 4 דירות פינתיות בקומה טיפוסית". On the top two floors it reads "בקומות העליונות: דירות פנטהאוז גדולות יותר". The full basis is in "מה בתמונה להמחשה".
+
+**Not changed:** the 3D engine and the beam; steps 1 and 2; the album; the area map; the WhatsApp bar (V9, last). The eight-direction grid stays for any world without a plan.
+
+**Next (V3):** prices per apartment, from the deals' average and range, labeled "מידע גלוי".
