@@ -348,11 +348,11 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 				// ProjectFacts: six quick facts, each with its source (facts.md 1.4, 1.5, 1.8; area.md 1)
 				'facts'          => array(
 					array( 'מיקום', 'כיכר המדינה, תל אביב', 'על טבעת רחוב ה׳ באייר, צפון העיר' ),
-					array( 'מגדלים', '3 מגדלים מסתובבים', '40, 40 ו-37 קומות, לפי ויקיפדיה ואשטרום' ),
-					array( 'דירות', '453', 'לפי אשטרום וגלובס' ),
-					array( 'הסיבוב', '1.25 מעלות בכל קומה', 'כ-50 מעלות לאורך מגדל של 40 קומות, לפי ויקיפדיה' ),
-					array( 'הפארק', 'כ-40 דונם', 'עם אגם אקולוגי, בית ספר ומרכז קהילתי, לפי גלובס ומאקו' ),
-					array( 'מצב', 'השלד הושלם', 'ב-23.4.2026, לפי רישום אתר הבנייה בעירייה' ),
+					array( 'מגדלים', '3 מגדלים מסתובבים', '40, 40 ו-37 קומות' ),
+					array( 'דירות', '453', 'בממוצע כ-150 מ״ר לדירה' ),
+					array( 'הסיבוב', '1.25 מעלות בכל קומה', 'כ-50 מעלות לאורך מגדל של 40 קומות' ),
+					array( 'הפארק', 'כ-40 דונם', 'עם אגם אקולוגי, בית ספר ומרכז קהילתי' ),
+					array( 'מצב', 'השלד הושלם', 'ב-23.4.2026' ),
 				),
 				// ProjectProgress: the plan in force 24.6.2013, the permit 12.2022 (Globes), the frame 23.4.2026 (TLV GIS 499); the
 				// delivery is not one date: the statements are a dated table in the page's text (Ashtrom 2026 ... Bizportal end of 2028)
@@ -361,11 +361,14 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 					array( 'היתר בנייה', '12.2022', 'done' ),
 					array( 'השלד הושלם', '4.2026', 'done' ),
 					array( 'בבנייה', 'עכשיו', 'now' ),
-					array( 'אכלוס', 'לפי המקורות, 2026 עד 2028', 'next' ),
+					array( 'אכלוס', '2026 עד 2028', 'next' ),
 				),
 				// ProjectDeals: the three deals the press tied to a floor (Globes 2.5.2025, did=1001508911); which tower was not
 				// published, so no row opens a floor (n = 0). No buyer is named.
-				'deals_intro'    => 'שלוש העסקאות במגדלים שפורסמו עם הקומה שלהן, כולן דירות 4 חדרים של 140 מ״ר, לפי גלובס (2.5.2025). באיזה מגדל נמכרה כל דירה לא פורסם, ולא כל העסקאות פורסמו.',
+				'deals_intro'    => 'מידע גלוי: שלוש העסקאות במגדלים שפורסמו עם הקומה שלהן, כולן דירות 4 חדרים של 140 מ״ר. באיזה מגדל נמכרה כל דירה לא פורסם, ולא כל העסקאות פורסמו.',
+				'deals_nosrc'    => true, // 1.72.391: no source column on this page (the sources stay in facts.md)
+				// 1.72.391 (V4): the basket's price hint (BasketOne v86: shown, never multiplied into a price), public information
+				'basket_hint'    => 'מידע גלוי: דירות 4 חדרים של 140 מ״ר בקומות 38 ו-39 נמכרו ב-9.58 עד 10.63 מיליון ₪, כ-71,000 ₪ למ״ר. המחיר של דירה מסוימת מהנציג.',
 				'deals'          => array(
 					array( 'floor' => '38', 'n' => 0, 'bld' => 'המגדל לא פורסם', 'apt' => '4 חדרים · 140 מ״ר', 'price' => '10.63 מיליון ₪', 'psqm' => 'כ-75,900 ₪', 'date' => '12.2024', 'src' => 'גלובס', 'url' => 'https://www.globes.co.il/news/article.aspx?did=1001508911', 'via' => '' ),
 					array( 'floor' => '39', 'n' => 0, 'bld' => 'המגדל לא פורסם', 'apt' => '4 חדרים · 140 מ״ר', 'price' => '9.59 מיליון ₪', 'psqm' => 'כ-68,500 ₪', 'date' => '5.2024', 'src' => 'גלובס', 'url' => 'https://www.globes.co.il/news/article.aspx?did=1001508911', 'via' => '' ),
@@ -373,9 +376,9 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 				),
 				// the area price line (facts.md 1.14 and 3): the towers' average per the press, the Tax Authority's deals around the square
 				'deals_sum'      => array(
-					array( '9.58 עד 10.63 מיליון ₪', 'שלוש דירות 4 חדרים בקומות 38 ו-39, 4.2024 עד 12.2024, לפי גלובס' ),
-					array( 'כ-65,000 ₪ למ״ר', 'ממוצע העסקאות במגדלים, ובקומות הגבוהות ובפנטהאוזים 80,000 עד 150,000 ₪ למ״ר, לפי מאקו (24.9.2026)' ),
-					array( '63,000 עד 66,000 ₪ למ״ר', 'רוב העסקאות סביב כיכר המדינה בשנה האחרונה, לפי נתוני רשות המסים (ice, 28.4.2026)' ),
+					array( '9.58 עד 10.63 מיליון ₪', 'שלוש דירות 4 חדרים בקומות 38 ו-39, 4.2024 עד 12.2024' ),
+					array( 'כ-65,000 ₪ למ״ר', 'ממוצע העסקאות במגדלים, ובקומות הגבוהות ובפנטהאוזים 80,000 עד 150,000 ₪ למ״ר' ),
+					array( '63,000 עד 66,000 ₪ למ״ר', 'רוב העסקאות סביב כיכר המדינה בשנה האחרונה' ),
 				),
 				// the plot centre (area.md 1: the area-weighted centre of plan 2500ב's lots 101, 201-208 and 303, TLV GIS 837)
 				'tower_lat'      => 32.086758,
@@ -400,18 +403,18 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 						'src_line'   => 'Sources of the illustration: buildings, heights, streets, gardens and trees from the <span>Tel Aviv-Yafo</span> municipality (open GIS data, 9.2026); the towers from the municipal building outline and the published turn of 1.25° per floor. The places of the pond and of the park’s features are illustrative.',
 						'facts'      => array(
 							array( 'Location', 'Kikar Hamedina, Tel Aviv', 'On the He Be’Iyar ring road, north Tel Aviv' ),
-							array( 'Towers', '3 twisting towers', '40, 40 and 37 floors, per Wikipedia and Ashtrom' ),
-							array( 'Apartments', '453', 'Per Ashtrom and Globes' ),
-							array( 'The twist', '1.25° per floor', 'About 50° over a 40-floor tower, per Wikipedia' ),
-							array( 'The park', 'About 40 dunams', 'With an ecological pond, a school and a community centre, per Globes and Mako' ),
-							array( 'Status', 'Frame completed', 'On 23.4.2026, per the municipal building-site record' ),
+							array( 'Towers', '3 twisting towers', '40, 40 and 37 floors' ),
+							array( 'Apartments', '453', 'About 150 m² on average' ),
+							array( 'The twist', '1.25° per floor', 'About 50° over a 40-floor tower' ),
+							array( 'The park', 'About 40 dunams', 'With an ecological pond, a school and a community centre' ),
+							array( 'Status', 'Frame completed', 'On 23.4.2026' ),
 						),
 						'progress'   => array(
 							array( 'Plan', '6.2013', 'done' ),
 							array( 'Building permit', '12.2022', 'done' ),
 							array( 'Frame completed', '4.2026', 'done' ),
 							array( 'Construction', 'now', 'now' ),
-							array( 'Occupancy', 'per the sources, 2026 to 2028', 'next' ),
+							array( 'Occupancy', '2026 to 2028', 'next' ),
 						),
 					),
 					// P8 (1.72.370): the French, Russian and Arabic pages (/projects/hamedina-fr/, -ru, -ar). The same facts as the
@@ -424,18 +427,18 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 						'src_line'   => 'Sources de l’illustration : immeubles, hauteurs, rues, jardins et arbres d’après la municipalité de <span>Tel Aviv-Jaffa</span> (données géographiques ouvertes, 09/2026) ; les tours d’après leur contour dans les données municipales et la rotation publiée de 1,25° par étage. L’emplacement de l’étang et des équipements du parc est indicatif.',
 						'facts'      => array(
 							array( 'Adresse', 'Kikar Hamedina, Tel Aviv', 'Sur la rue circulaire He Be’Iyar, nord de Tel Aviv' ),
-							array( 'Tours', '3 tours torsadées', '40, 40 et 37 étages, selon Wikipédia et Ashtrom' ),
-							array( 'Appartements', '453', 'Selon Ashtrom et Globes' ),
-							array( 'La torsion', '1,25° par étage', 'Environ 50° sur une tour de 40 étages, selon Wikipédia' ),
-							array( 'Le parc', 'Environ 4 hectares', 'Avec un étang écologique, une école et un centre communautaire, selon Globes et Mako' ),
-							array( 'Avancement', 'Gros œuvre achevé', 'Le 23 avril 2026, selon le registre des chantiers de la municipalité' ),
+							array( 'Tours', '3 tours torsadées', '40, 40 et 37 étages' ),
+							array( 'Appartements', '453', 'Environ 150 m² en moyenne' ),
+							array( 'La torsion', '1,25° par étage', 'Environ 50° sur une tour de 40 étages' ),
+							array( 'Le parc', 'Environ 4 hectares', 'Avec un étang écologique, une école et un centre communautaire' ),
+							array( 'Avancement', 'Gros œuvre achevé', 'Le 23 avril 2026' ),
 						),
 						'progress'   => array(
 							array( 'Plan', '06/2013', 'done' ),
 							array( 'Permis de construire', '12/2022', 'done' ),
 							array( 'Gros œuvre achevé', '04/2026', 'done' ),
 							array( 'En construction', 'aujourd’hui', 'now' ),
-							array( 'Livraison', 'selon les sources, de 2026 à 2028', 'next' ),
+							array( 'Livraison', 'de 2026 à 2028', 'next' ),
 						),
 					),
 					'ru' => array(
@@ -446,18 +449,18 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 						'src_line'   => 'Источники иллюстрации: здания, высоты, улицы, скверы и деревья по данным муниципалитета <span>Тель-Авива-Яффо</span> (открытые геоданные, 09.2026); башни по контуру из данных муниципалитета и опубликованному повороту 1,25° на каждом этаже. Места пруда и объектов парка показаны условно.',
 						'facts'      => array(
 							array( 'Адрес', 'Кикар ха-Медина, Тель-Авив', 'На кольцевой улице площади, север города' ),
-							array( 'Башни', '3 закрученные башни', '40, 40 и 37 этажей, по данным Википедии и Ashtrom' ),
-							array( 'Квартиры', '453', 'По данным Ashtrom и Globes' ),
-							array( 'Поворот', '1,25° на этаж', 'Около 50° на башню в 40 этажей, по данным Википедии' ),
-							array( 'Парк', 'Около 40 дунамов', 'С экологическим прудом, школой и общинным центром, по данным Globes и Mako' ),
-							array( 'Статус', 'Каркас завершён', '23.04.2026, по реестру стройплощадок муниципалитета' ),
+							array( 'Башни', '3 закрученные башни', '40, 40 и 37 этажей' ),
+							array( 'Квартиры', '453', 'В среднем около 150 м²' ),
+							array( 'Поворот', '1,25° на этаж', 'Около 50° на башню в 40 этажей' ),
+							array( 'Парк', 'Около 40 дунамов', 'С экологическим прудом, школой и общинным центром' ),
+							array( 'Статус', 'Каркас завершён', '23.04.2026' ),
 						),
 						'progress'   => array(
 							array( 'План', '06.2013', 'done' ),
 							array( 'Разрешение на строительство', '12.2022', 'done' ),
 							array( 'Каркас завершён', '04.2026', 'done' ),
 							array( 'Строительство', 'сейчас', 'now' ),
-							array( 'Заселение', 'по данным источников, с 2026 по 2028 год', 'next' ),
+							array( 'Заселение', 'с 2026 по 2028 год', 'next' ),
 						),
 					),
 					'ar' => array(
@@ -468,18 +471,18 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 						'src_line'   => 'مصادر الرسم التوضيحي: المباني والارتفاعات والشوارع والحدائق والأشجار وفق بلدية <span>تل أبيب يافا</span> (بيانات جغرافية مفتوحة، 9.2026)؛ الأبراج وفق مخطط المبنى لدى البلدية والدوران المنشور بمقدار 1.25 درجة في كل طابق. موقع البركة ومرافق الحديقة توضيحي.',
 						'facts'      => array(
 							array( 'الموقع', 'كيكار همدينا، تل أبيب', 'على الشارع الدائري حول الميدان، شمال المدينة' ),
-							array( 'الأبراج', '3 أبراج ملتفّة', '40 و40 و37 طابقاً، وفق ويكيبيديا وAshtrom' ),
-							array( 'الشقق', '453', 'وفق Ashtrom وGlobes' ),
-							array( 'الدوران', '1.25 درجة في كل طابق', 'نحو 50 درجة على امتداد برج من 40 طابقاً، وفق ويكيبيديا' ),
-							array( 'الحديقة', 'نحو 40 دونماً', 'مع بركة بيئية ومدرسة ومركز جماهيري، وفق Globes وMako' ),
-							array( 'الوضع', 'اكتمل الهيكل', 'في 23.4.2026، وفق سجل مواقع البناء في البلدية' ),
+							array( 'الأبراج', '3 أبراج ملتفّة', '40 و40 و37 طابقاً' ),
+							array( 'الشقق', '453', 'بمتوسط نحو 150 م² للشقة' ),
+							array( 'الدوران', '1.25 درجة في كل طابق', 'نحو 50 درجة على امتداد برج من 40 طابقاً' ),
+							array( 'الحديقة', 'نحو 40 دونماً', 'مع بركة بيئية ومدرسة ومركز جماهيري' ),
+							array( 'الوضع', 'اكتمل الهيكل', 'في 23.4.2026' ),
 						),
 						'progress'   => array(
 							array( 'المخطط', '6.2013', 'done' ),
 							array( 'رخصة البناء', '12.2022', 'done' ),
 							array( 'اكتمال الهيكل', '4.2026', 'done' ),
 							array( 'قيد البناء', 'الآن', 'now' ),
-							array( 'السكن', 'وفق المصادر، بين 2026 و2028', 'next' ),
+							array( 'السكن', 'بين 2026 و2028', 'next' ),
 						),
 					),
 				),
@@ -656,13 +659,14 @@ if ( ! function_exists( 'nadlan_ps_deals' ) ) {
 			foreach ( (array) $ps['deals_sum'] as $t ) { $h .= '<li><b>' . esc_html( $t[0] ) . '</b><span>' . esc_html( $t[1] ) . '</span></li>'; }
 			$h .= '</ul>';
 		}
-		$h .= '<table class="nlpd__table"><thead><tr><th scope="col">קומה</th><th scope="col">הדירה</th><th scope="col">מחיר</th><th scope="col">למ״ר</th><th scope="col">מועד</th><th scope="col">מקור</th><th scope="col"><span class="nlpd__sr">בבמה</span></th></tr></thead><tbody>';
+		$nosrc = ! empty( $ps['deals_nosrc'] ); // 1.72.391: a page that names no sources (Kikar Hamedina) drops the column
+		$h .= '<table class="nlpd__table"><thead><tr><th scope="col">קומה</th><th scope="col">הדירה</th><th scope="col">מחיר</th><th scope="col">למ״ר</th><th scope="col">מועד</th>' . ( $nosrc ? '' : '<th scope="col">מקור</th>' ) . '<th scope="col"><span class="nlpd__sr">בבמה</span></th></tr></thead><tbody>';
 		foreach ( $rows as $d ) {
 			$n   = (int) ( $d['n'] ?? 0 );
 			$src = '<a href="' . esc_url( $d['url'] ) . '" target="_blank" rel="noopener">' . esc_html( $d['src'] ) . '</a>' . ( ! empty( $d['via'] ) ? ', ' . esc_html( $d['via'] ) : '' );
 			$h  .= '<tr><td class="nlpd__floor"><b>' . esc_html( $d['floor'] ) . '</b><span>' . esc_html( $d['bld'] ) . '</span></td>'
 				. '<td>' . esc_html( $d['apt'] ) . '</td><td>' . esc_html( $d['price'] ) . '</td><td>' . esc_html( $d['psqm'] ) . '</td>'
-				. '<td>' . esc_html( $d['date'] ) . '</td><td class="nlpd__src">' . $src . '</td>'
+				. '<td>' . esc_html( $d['date'] ) . '</td>' . ( $nosrc ? '' : '<td class="nlpd__src">' . $src . '</td>' )
 				. '<td>' . ( $n > 0 ? '<button class="nlpd__go" type="button" data-nlps-floor="' . $n . '" aria-label="' . esc_attr( 'קומה ' . $n . ' במגדל, בבמה' ) . '">לקומה במגדל</button>' : '' ) . '</td></tr>';
 		}
 		$h .= '</tbody></table><p class="nlpd__note">המחיר למ״ר מחושב: המחיר שפורסם חלקי שטח הדירה, בלי המרפסת והחניה.</p></section></div>';
@@ -1018,7 +1022,7 @@ if ( ! function_exists( 'nadlan_ps_world_words' ) ) {
 				'sale'  => 'דירות למכירה במגדלים',
 				'tour'  => 'סיור וירטואלי בכיכר',
 				'stage' => 'סיור וירטואלי ב%s: המגדלים, הקומות והנוף',
-				'hint'  => 'בחרו מגדל, קומה וכיוון, וראו בהדמיה את הנוף ואת שעות השמש מהחלון. אפשר גם לצאת לסיור ברגל בכיכר ובפארק, ולגלות מה נמצא במרחק הליכה.',
+				'hint'  => 'בחרו מגדל, קומה ודירה לפי כיוון, וראו את תוכנית הקומה, את מחירי העסקאות ואת הנוף מהחלונות. אפשר גם לצאת לסיור ברגל בכיכר ובפארק, ולגלות מה נמצא במרחק הליכה.',
 				'facts' => 'עובדות בקצרה',
 				'prog'  => 'שלב הפרויקט',
 				'rail'  => 'אנשי מקצוע באזור',
@@ -1029,7 +1033,7 @@ if ( ! function_exists( 'nadlan_ps_world_words' ) ) {
 				'sale'  => 'Apartments for sale in the towers',
 				'tour'  => 'Virtual tour of the square',
 				'stage' => 'Virtual tour of %s: the towers, the floors and the view',
-				'hint'  => 'Choose a tower, a floor and a facing to see an illustration of the view and the hours of sun from the window. Or take a walk around the square and the park, and discover what lies within walking distance.',
+				'hint'  => 'Choose a tower, a floor and an apartment by its direction to see the floor plan, the deal prices and the view from its windows. Or take a walk around the square and the park, and discover what lies within walking distance.',
 				'facts' => 'Key facts',
 				'prog'  => 'Project stage',
 				'rail'  => 'Professionals in the area',
@@ -1041,7 +1045,7 @@ if ( ! function_exists( 'nadlan_ps_world_words' ) ) {
 				'sale'  => 'Appartements à vendre dans les tours',
 				'tour'  => 'Visite virtuelle de la place',
 				'stage' => 'Visite virtuelle des %s : les tours, les étages et la vue',
-				'hint'  => 'Choisissez une tour, un étage et une orientation pour voir en illustration la vue et les heures de soleil depuis la fenêtre. Promenez-vous aussi sur la place et dans le parc, et découvrez tout ce qui se trouve à quelques pas.',
+				'hint'  => 'Choisissez une tour, un étage et un appartement selon son orientation pour voir le plan de l’étage, les prix des ventes et la vue depuis ses fenêtres. Promenez-vous aussi sur la place et dans le parc, et découvrez tout ce qui se trouve à quelques pas.',
 				'facts' => 'En bref',
 				'prog'  => 'Avancement du projet',
 				'rail'  => 'Professionnels du quartier',
@@ -1052,7 +1056,7 @@ if ( ! function_exists( 'nadlan_ps_world_words' ) ) {
 				'sale'  => 'Квартиры на продажу в башнях',
 				'tour'  => 'Виртуальная прогулка по площади',
 				'stage' => 'Виртуальная прогулка: %s, этажи и вид из окон',
-				'hint'  => 'Выберите башню, этаж и сторону света, чтобы увидеть на иллюстрации вид и часы солнца из окна. Можно также прогуляться по площади и парку и узнать, что находится в шаговой доступности.',
+				'hint'  => 'Выберите башню, этаж и квартиру по стороне света, чтобы увидеть план этажа, цены сделок и вид из её окон. Можно также прогуляться по площади и парку и узнать, что находится в шаговой доступности.',
 				'facts' => 'Коротко о проекте',
 				'prog'  => 'Этап проекта',
 				'rail'  => 'Специалисты района',
@@ -1063,7 +1067,7 @@ if ( ! function_exists( 'nadlan_ps_world_words' ) ) {
 				'sale'  => 'شقق للبيع في الأبراج',
 				'tour'  => 'جولة افتراضية في الميدان',
 				'stage' => 'جولة افتراضية في %s: الأبراج والطوابق والإطلالة',
-				'hint'  => 'اختاروا برجاً وطابقاً واتجاهاً لتروا في رسم توضيحي الإطلالة وساعات الشمس من النافذة. ويمكنكم أيضاً التجول سيراً في الميدان والحديقة واكتشاف كل ما يقع على مسافة قريبة.',
+				'hint'  => 'اختاروا برجاً وطابقاً وشقة حسب اتجاهها لتروا مخطط الطابق وأسعار الصفقات والإطلالة من نوافذها. ويمكنكم أيضاً التجول سيراً في الميدان والحديقة واكتشاف كل ما يقع على مسافة قريبة.',
 				'facts' => 'باختصار',
 				'prog'  => 'مرحلة المشروع',
 				'rail'  => 'مختصون في المنطقة',

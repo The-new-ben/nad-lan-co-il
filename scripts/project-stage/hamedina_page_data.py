@@ -40,7 +40,7 @@ POSTS = {
             "num_units": 453, "num_buildings": 3, "num_floors": 40,
             "amenities": "בריכה, חדר כושר, ספא, חדרי טיפולים, אולמות רב תכליתיים, חניון תת-קרקעי, פארק ציבורי ואגם",
             "project_facilities": "בריכה, ספא, חדר כושר, חניון",
-            "source": "אשטרום, אלקטרה, גלובס, כלכליסט, מאקו, עיריית תל אביב-יפו",
+            "source": "kikar_hamedina",  # 1.72.391: a machine key, so the card prints no source line (the owner, 1.10: no source names on the page)
             "project_mode": "review",
         },
     },
@@ -64,7 +64,7 @@ POSTS = {
             "project_status": "בבנייה",
             "num_units": 453, "num_buildings": 3, "num_floors": 40,
             "amenities": "Pool, Gym, Spa, Treatment rooms, Multi-purpose halls, Underground parking, Public park with a pond",
-            "source": "Ashtrom, Electra, Globes, Calcalist, Mako, Tel Aviv-Yafo municipality",
+            "source": "kikar_hamedina",  # 1.72.391: a machine key, so the card prints no source line (the owner, 1.10: no source names on the page)
             "project_mode": "review",
         },
     },
@@ -91,7 +91,7 @@ POSTS = {
             "project_status": "בבנייה",
             "num_units": 453, "num_buildings": 3, "num_floors": 40,
             "amenities": "Piscine, Salle de sport, Spa, Salles de soins, Salles polyvalentes, Parking souterrain, Parc public avec étang",
-            "source": "Ashtrom, Electra, Globes, Calcalist, Mako, municipalité de Tel Aviv-Jaffa",
+            "source": "kikar_hamedina",  # 1.72.391: a machine key, so the card prints no source line (the owner, 1.10: no source names on the page)
             "project_mode": "review",
         },
     },
@@ -115,7 +115,7 @@ POSTS = {
             "project_status": "בבנייה",
             "num_units": 453, "num_buildings": 3, "num_floors": 40,
             "amenities": "Бассейн, Тренажёрный зал, Спа, Процедурные кабинеты, Многофункциональные залы, Подземная парковка, Общественный парк с прудом",
-            "source": "Ashtrom, Electra, Globes, Calcalist, Mako, муниципалитет Тель-Авива-Яффо",
+            "source": "kikar_hamedina",  # 1.72.391: a machine key, so the card prints no source line (the owner, 1.10: no source names on the page)
             "project_mode": "review",
         },
     },
@@ -140,7 +140,7 @@ POSTS = {
             "project_status": "בבנייה",
             "num_units": 453, "num_buildings": 3, "num_floors": 40,
             "amenities": "بركة سباحة, نادٍ رياضي, سبا, غرف علاج, قاعات متعددة الاستخدامات, موقف سيارات تحت الأرض, حديقة عامة مع بركة",
-            "source": "Ashtrom, Electra, Globes, Calcalist, Mako, بلدية تل أبيب يافا",
+            "source": "kikar_hamedina",  # 1.72.391: a machine key, so the card prints no source line (the owner, 1.10: no source names on the page)
             "project_mode": "review",
         },
     },

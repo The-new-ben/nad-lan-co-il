@@ -75,6 +75,7 @@ const I18N = {
     aptViews: 'הנוף מהדירה', aptPick: 'הקישו על דירה בתוכנית הקומה', pubTag: 'מידע גלוי',
     dealsH: 'עסקאות בפרויקט', money: (x) => `${x} מיליון ₪`, avgM: (x) => `ממוצע ${x} מיליון ₪`, // v104.19
     dealsWhat: (n, r, a, f0, f1) => `${n} עסקאות · ${r} חדרים, ${a} מ״ר · קומות ${f0}–${f1}`, ppm: (x) => `כ-${x} ₪ למ״ר`,
+    basket: 'לסל הדירה: המחיר המלא, הצוות והנציג', // v104.20 (the basket runs on the Hebrew pages only)
     towersAvg: (a, lo, hi) => `ממוצע העסקאות במגדלים כ-${a} ₪ למ״ר · בקומות הגבוהות ובפנטהאוזים ${lo}–${hi} ₪ למ״ר`,
     aptSize: (s, r) => ['דירות בפרויקט:', `${s[0]}–${s[1]} מ״ר`, `${r[0]}–${r[1]} חדרים`],
     planLbl: 'תוכנית הקומה', planN: 'צ',
@@ -1953,6 +1954,7 @@ export function mountWorld(host, opts = {}) {
     if (!S.tower || !S.floor || S.facing == null) return;
     const b = facingBearing(S.tower, S.floor, S.facing);
     const detail = { tower: S.tower, floor: S.floor, heightM: +eyeH(S.floor).toFixed(1), bearing: Math.round(b), facing: dirWord(b), source };
+    if (S.apt != null && PLAN()) detail.label = aptName(S.tower, S.floor, S.apt); // v104.20: the basket names it
     setPick();
     window.dispatchEvent(new CustomEvent('nl:facing', { detail }));
     if (o.onPick) o.onPick({ kind: 'facing', ...detail });
@@ -2900,7 +2902,7 @@ export function mountWorld(host, opts = {}) {
       `<div class="nlw-aptviews" role="group" aria-label="${esc(T.aptViews)}"><span class="nlw-eyebrow">${esc(T.aptViews)}</span>` +
       `<div class="nlw-row">${aptFacings(S.tower, f, u).map((i) => chip(T.dirsShort[Math.round(norm360(facingBearing(S.tower, f, i)) / 45) % 8], S.facing === i, `data-face="${i}"`)).join('')}</div></div>`;
     const seg = S.facing != null ? `<div class="nlw-row nlw-seg nlw-planseg">${chip(T.viewWin, S.view === 'window', 'data-view="window"')}${chip(T.viewOut, S.view === 'out', 'data-view="out"')}</div>` : '';
-    return `<div class="nlw-planwrap"><div class="nlw-plan">${planSvg()}<div class="nlw-planinfo">${info}</div></div>${u == null ? '' : dealsHtml(rng)}${views}${seg}` +
+    return `<div class="nlw-planwrap"><div class="nlw-plan">${planSvg()}<div class="nlw-planinfo">${info}</div></div>${u == null ? '' : dealsHtml(rng) + basketHtml()}${views}${seg}` +
       `<div class="nlw-note nlw-plannote">${esc(top ? T.planTop : T.planNote)}</div></div>`;
   }
   // v104.19 (V3): the deals in the project and the towers' average, as public information (world.json model.plan.deals; the sources
@@ -2915,8 +2917,11 @@ export function mountWorld(host, opts = {}) {
       `<div class="nlw-deals__s">${rng(T.dealsWhat(Dl.n, Dl.rooms, Dl.sqm, Dl.floors[0], Dl.floors[1]))} · ${esc(T.ppm(nfmt(Dl.ppsqm)))}</div>` +
       `<div class="nlw-deals__s">${rng(T.towersAvg(nfmt(Dl.towers_ppsqm), nfmt(Dl.top_ppsqm[0]), nfmt(Dl.top_ppsqm[1])))}</div></div>`;
   }
+  // v104.20 (V4): the apartment's basket (assets/basket/basket.js): the full price, a team and the representative
+  const basketHtml = () => (T.basket && window.__nlBasket ? `<button class="nlw-btn nlw-btn--bk" type="button" data-basket><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h14l-1.4 8.2a1.5 1.5 0 0 1-1.5 1.3H5.9a1.5 1.5 0 0 1-1.5-1.3L3 6Z"/><path d="M7 6V4.8a3 3 0 0 1 6 0V6"/></svg><span>${esc(T.basket)}</span></button>` : '');
   function bindPlan() {
     if (!ui.panel) return;
+    ui.panel.querySelectorAll('[data-basket]').forEach((b) => b.addEventListener('click', () => { if (window.__nlBasket) { emitFacing('user'); window.__nlBasket.open(b); } }));
     ui.panel.querySelectorAll('[data-apt]').forEach((g) => {
       g.addEventListener('click', () => pickApt(+g.dataset.apt));
       g.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pickApt(+g.dataset.apt); } });

@@ -262,3 +262,31 @@ A visible `<h2>שאלות נפוצות` plus FAQPage schema.
 - The facts table's per-row source lines (the article rewrite, V7, replaces them).
 - The FAQ.
 - The WhatsApp wording (V9, last).
+
+## v104.20 (2.10, V2 loop turn 4): the basket from the 3D world, and a page with no source names
+
+**V4's first parity step: the basket.**
+- The fleet's basket (BasketOne v86) was loaded on the Kikar page and heard the world's floor and direction, but it had no way in. Its button mounts on the fleet stage's steps and view band, which the world page lacks.
+- Now, once an apartment is chosen, a terracotta button "לסל הדירה: המחיר המלא, הצוות והנציג" sits under its deals. Terracotta is the money action.
+- The button opens the basket:
+  - the apartment, named ("דירה לדוגמה · קומה 30 · דירה פינתית צפון-מערבית");
+  - the steps;
+  - a team of real professionals from the directory;
+  - the full price with purchase tax, with a "מידע גלוי" price hint;
+  - then the representative on WhatsApp, or the shared viewing room.
+- Hebrew only, where the basket runs.
+
+**The owner's law on the rest of the page: no source names.**
+- **The quick facts** keep the facts and lose the "לפי ויקיפדיה ואשטרום" lines. The apartments' tile says the average size instead.
+- **The deals block** has no source column on this page; its intro opens with "מידע גלוי". Every other project keeps its column.
+- **The project card** no longer prints its "המקור: …" line.
+- **The facts table, the timeline, the FAQ and the park and square sections** (all five languages) keep every fact and lose their attributions. When two figures were published, both remain, worded neutrally.
+- **The stage's hint line** describes the page's flow (the floor plan, the deal prices, the view from the windows). It no longer promises the sun hours.
+- **Kept:** the illustration's data line (the municipality's open GIS layers), as the data licence's attribution.
+
+**The parity table** with DUO and Rainbow is in docs/loop/KIKAR-HAMEDINA-LOOP.md (V4). **Next gaps:**
+- design styles inside the C30 album;
+- the lobby and the basement pool and gym in 360, as labelled concepts;
+- the building walk;
+- parking (missing everywhere);
+- the film.

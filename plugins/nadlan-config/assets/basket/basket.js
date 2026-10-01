@@ -34,7 +34,8 @@
     }
     return '';
   };
-  const unitLine = (u) => u ? ('קומה ' + u.floor + (u.bearing != null && words(u.bearing) ? ' · ' + words(u.bearing) : '')) : '';
+  // 1.72.391: a world page's own words for the apartment (its label) come before the sectors' direction words
+  const unitLine = (u) => u ? ('קומה ' + u.floor + (u.label ? ' · ' + u.label : (u.bearing != null && words(u.bearing) ? ' · ' + words(u.bearing) : ''))) : '';
   const count = () => (S.unit ? 1 : 0) + (S.style && S.style !== 'bare' ? 1 : 0) + Object.keys(S.team || {}).length;
 
   /* ---------------- what the page reports ---------------- */
@@ -47,7 +48,7 @@
   window.addEventListener('nl:facing', (e) => {
     const d = e.detail || {};
     if (!(Number(d.floor) > 0)) return;
-    S.unit = { floor: Number(d.floor), bearing: d.bearing != null ? Math.round(Number(d.bearing)) : null, unit: d.unit || null };
+    S.unit = { floor: Number(d.floor), bearing: d.bearing != null ? Math.round(Number(d.bearing)) : null, unit: d.unit || null, label: d.label ? String(d.label).slice(0, 60) : null };
     save();
   });
   window.addEventListener('nl:view', (e) => {

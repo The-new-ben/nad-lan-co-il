@@ -56,6 +56,25 @@ Every turn takes the first open item. Each item is ticked with evidence (live, r
   - a representative and a video call;
   - plans;
   - a cinematic first-person 360 through the apartment, the lobby, the pool, the gym, the parking, the ground-floor shops and the cafés outside.
+  - **The parity table (turn 4, 2.10.2026):**
+    - Measured on the live pages: the `data-nlps-ev` actions, `#nlsch`, together, `#nlps-tour`, the basket. Also the inventory (feature-inventory.md) and the code.
+    - ✓ = live, ✗ = missing.
+
+    | The owner's V4 item | DUO | Rainbow | Kikar | Gap → plan |
+    |---|---|---|---|---|
+    | Design the apartment | ✓ styles in the 360 tour; the studio and designer link | ✓ styles in the 360 tour | ✗ the C30 album (renders and a 360 living room), no styles | Render the fleet's 4 styles for C30's living room (studio_kit); a style switch in the album; the basket's "העיצוב" step |
+    | Price | ✓ deals table + basket price with purchase tax | ✓ same | ✓ deals as "מידע גלוי" in the card (v104.19) + the deals table | — |
+    | Basket up to the representative | ✓ BasketOne | ✓ BasketOne | ✗ → **1.72.391**: "לסל הדירה" in the apartment card; the basket names the apartment | — |
+    | Payment | Morning products for SERVICES only; the apartment itself is never paid on the site (Sale Law escrow) | same | same | Which service is sold first: the owner's business choice (Maya: one revenue model first) |
+    | Representative + video call | ✓ hero "שיחת וידאו עם נציג", `#nlsch`, the shared room | ✓ | ✓ the same three (live) | Test that the shared room carries the world's selection (Maya D2) |
+    | Plans | ✓ floor slice | ✓ floor slice | ✓ key plan, 4 corner apartments (v104.18) | Room level inside the apartment (D1) |
+    | 360 of the apartment | ✓ per floor and direction | ✓ | ✓ C30 west: living 360 + 5 stills | More floors and directions |
+    | Lobby | ✓ fac-lobby 360 | ✓ | ✗ | Concept lobby render, labelled |
+    | Pool, gym, spa | ✓ pool and wellness 360 | ✓ club, roof pool | ✗ (they are in a basement, per the builder) | Concept basement pool and gym, labelled, never on a roof |
+    | Parking | ✗ | ✗ | ✗ | A fleet-wide gap: parking 360 (1,626 spaces are sourced) |
+    | Building walk (door → lift → lobby → facility) | ✓ v96 | ✓ v96 | ✗ | Maya's W1: one continuous path, back to the same choice |
+    | Shops and cafés outside | the area map | the area map | ✓ the walk on the square + the places tab with cafés | Street-level 360 at the square's cafés (the "We Love You Too" café) |
+    | Film | ✗ | ✓ 49 s | ✗ | V6 |
 - [ ] **V5. Competitors side by side.**
   - World: Zillow, Matterport, Compass, Houzz.
   - Israel: every competitor, plus "Simplex" (to identify).
@@ -166,6 +185,31 @@ Every turn does ALL of these, not only the current phase:
   - **(c) `verify_kh`** as above.
 
 ## Scale-up ledger (newest on top)
+
+- **2.10, V2 loop turn 4 (V4 step 1 + the owner's law on sources).** LIVE 1.72.391 (v104.20, DS version 164).
+  - **Web (2.10):**
+    - [R2U 2026: 3D sales platform](https://r2u.io/en/blog/3d-sales-platform-real-estate-guide/) and [R2U digital twin](https://r2u.io/en/blog/digital-twin-real-estate-sales-guide/): the 2026 standard is choose a unit → swap finishes live in the same model → the real view from the floor → reserve through a connected CRM.
+    - Our gaps against that: design styles inside the apartment, and reservation.
+  - **FOUND:** the fleet's basket was loaded on Kikar and heard the world's events, but had no way in (it mounts on the fleet stage's steps and view band).
+  - **NOTCH:**
+    - **The basket:** "לסל הדירה" under the chosen apartment's deals opens BasketOne with the apartment named (basket.js `label`), the team, the full price with purchase tax and the "מידע גלוי" hint.
+    - **No source names on any Kikar page:**
+      - a helper agent cleaned the five posts' facts, timeline, FAQ, park and square (`kikar_sources_391.py`; every fact kept, structure PASS);
+      - the PHP blocks are cleaned on the live text (`kikar_php_391.py`, 41 hunks);
+      - the card's source line is hidden through a machine-key meta;
+      - the language pages' FAQ schema was rebuilt;
+      - the stage's hint describes the plan, the prices and the view.
+      - Measured: visible source names on the five pages are 0 (the Hebrew page had 59 two releases ago). DUO keeps its source column (the PHP flag is per page).
+  - **Runner 391:**
+    - The first run rolled back on the 1.72.370 checks that REQUIRED the card's "Source: Ashtrom, Electra" line. The line went on purpose; those checks were replaced with a "never". The restore was exact.
+    - The re-run: 364 checks OK.
+  - **Live:**
+    - The basket: a real tap at 390 and 1440 opens it and names the apartment; Esc closes it; nested 0; errors 0.
+    - Arabic plan OK. M17 0; wheel 260.
+    - Language pages: 0 Hebrew.
+    - content_first: 0 failed on a re-run (the first run had 1 transient).
+    - Source audit GREEN on all 5 Kikar pages + DUO + Rainbow; ru went YELLOW → GREEN.
+  - **NEXT (V4 step 2):** design styles in the C30 album (render the 4 styles of the fleet's studio_kit for the living room), then the basket's "העיצוב" step. Then the lobby and basement facilities in 360.
 
 - **1.10, V2 loop turn 3 (item V3).**
   - **Web (1.10):**
