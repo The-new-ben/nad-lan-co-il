@@ -111,6 +111,10 @@
 .nlw-pin.has-i.is-sel .i { width: 30px; height: 30px; margin: -15px 0 0 -15px; box-shadow: 0 0 0 2px var(--nlw-ink), 0 2px 8px rgba(27, 26, 23, .35); }
 .nlw-pin.has-i.is-sel .i svg { width: 16px; height: 16px; }
 
+/* v104.12 (loop turn 21): label tiers. B = the name alone, one line; C = the icon alone (the places tab only) */
+.nlw-pin.is-b .m { display: none !important; }
+.nlw-pin.is-c .t, .nlw-pin.is-c .s { display: none; }
+
 /* the top bar: the four ways in */
 .nlw-top { position: absolute; z-index: 5; top: 12px; inset-inline: 12px; display: flex; gap: 8px; align-items: flex-start; pointer-events: none; }
 .nlw-tabs {

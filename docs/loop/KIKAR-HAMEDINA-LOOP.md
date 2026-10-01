@@ -101,6 +101,37 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **1.10, turn 21.**
+  - **Web:**
+    - The towers: [Globes EN 25.9.2025](https://en.globes.co.il/en/article-tel-avivs-kikar-hamedina-undergoes-transformation-1001522524), the Electra page ("April 2027") and the Ashtrom page ("2026") are all already in facts.md with their conflicts. No new dated delivery statement.
+    - The ynetnews line that occupancy may lower prices nearby stays background only (not page material).
+    - Techniques:
+      - [interior mapping, van Dongen CGI 2008](https://www.proun-game.com/Oogst3D/CODING/InteriorMapping/InteriorMapping.pdf) and [three-fenestra](https://github.com/codedgar/three-fenestra): fake rooms behind lit windows; handed to the evening-render agent;
+      - Google Maps search results (every result a pin with its category icon, names where they fit);
+      - [WCAG 2.2 SC 2.5.8 target size](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html).
+  - **FOUND (live 1.72.382, real touch):** the "מה בסביבה" tab drew every place as a bare black WebGL dot.
+    - 320: transport showed 27 places, 1 name and about 20 dots. 390: 2 names.
+    - That is the owner's "not dots" complaint, still open in this tab.
+    - Also in the aerial view at 320: towers B and C had no names.
+  - **NOTCH (design v104.12, DS version 151 → LIVE 1.72.383):**
+    - Label tiers: A = name + line; B = the name alone (a soft line drops; an honesty line never does); C = the icon alone, places tab only.
+    - In the places tab: the nearest place's name first, then every icon that fits (24 px targets, 24 px apart), then names that never cover an icon. The WebGL dots remain only as a fallback.
+    - A tower's name may sit beside its top, 26 px out.
+    - Runner 383: 334 page checks OK. The first run refused cleanly because world.js changed after pinning; regenerated and ran again.
+  - **Measured live (1.72.383):**
+    - places tab, he 390: about 20 dots → 11 icons + 2 names, 0 dots;
+    - places tab, he 320: 6 icons + 2 names, 0 dots;
+    - aerial he 320: 4 → 5 named (tower B); aerial he 390: 6 → 7;
+    - a real tap on an icon-only stop opens it (camera, name, card with its lines and sources);
+    - M17: 0 icons without a name, 0 overlaps; M15: 37; wheel 260 px, camera still; slider 0;
+    - swipe 335 / tilt 0.0 / panel 498 / nested 0 / walk full + pill on top; fold headings: bar 0, a11y 2; 0 errors;
+    - source audit: Kikar and Rainbow GREEN, H Infinity YELLOW (old description length).
+  - **Coordination:** a note to Codex/Maya in `docs/coordination/claude-codex.md` (the places tab is a scoped exception to M17). QA is asked for in `codex-qa-383-2026-10-01.md`.
+  - **NEXT NOTCH:**
+    - (1) The evening interior: the render agent is working (interior mapping for the lit towers). Judge its v2 against `living-sunset`; ship only if it reaches the bar (P9c gallery, Design first).
+    - (2) Tower C at 320 (the last tower without a name there).
+    - (3) en/ar names from new sources only.
+
 - **1.10, turn 20.**
   - **Web:**
     - [MERL TR94-12, an empirical study of point-feature label placement](https://merl.com/publications/docs/TR94-12.pdf);
@@ -573,7 +604,7 @@ Every turn does ALL of these, not only the current phase:
   - the Arabic first screen and the a11y corner (375).
 - **OPEN, in order:**
   - (a) the long world card, organized, nothing deleted;
-  - (b) 320 px label density;
+  - (b) 320 px label density: PARTLY DONE in 1.72.383 (tower B named; the places tab shows icons, not dots); tower C at 320 is still open;
   - (c) en/ar generic place names (data);
   - (d) M04/M05, two pointers and page pinch;
   - (e) a real-device check (the owner's iPhone);

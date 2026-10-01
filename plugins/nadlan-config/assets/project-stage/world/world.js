@@ -1678,7 +1678,7 @@ export function mountWorld(host, opts = {}) {
     root.dataset.mode = m;
     if (ui.tabs) for (const k in ui.tabs) ui.tabs[k].setAttribute('aria-pressed', k === m ? 'true' : 'false');
     closeCard();
-    placeDots.visible = m === 'places';
+    placeDots.visible = m === 'places' && !window.NLPlaceIcons; // v104.12: the icons replace the dots
     routeMesh.visible = m === 'places' && !!S.place;
     isoLines.visible = m === 'places';
     if (ui.joy) ui.joy.hidden = m !== 'walk' || !coarse && !o.forceJoystick;
@@ -2010,7 +2010,7 @@ export function mountWorld(host, opts = {}) {
     const pos = []; places.shown.forEach((p) => pos.push(p.x, 1.2, p.z));
     placeDots.geometry.dispose();
     placeDots.geometry = new THREE.BufferGeometry(); placeDots.geometry.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-    placeDots.visible = S.mode === 'places';
+    placeDots.visible = S.mode === 'places' && !window.NLPlaceIcons;
     places.maxWalk = maxWalk;
     invalidate();
   }
@@ -2159,10 +2159,10 @@ export function mountWorld(host, opts = {}) {
       }
       for (const k in TW) {
         const X = TW[k];
-        add({ id: 't' + k, kind: 'tower', name: T.towerN(k), meta: tDesc(k), pos: new THREE.Vector3(X.t.cx, X.height + 5, X.t.cz), prio: 1, on: k === S.tower && m === 'tower', click: () => (m === 'tower' ? pickTower(k, 'user') : openCard(towerCard(k))) });
+        add({ id: 't' + k, kind: 'tower', name: T.towerN(k), meta: tDesc(k), soft: true, pos: new THREE.Vector3(X.t.cx, X.height + 5, X.t.cz), prio: 1, on: k === S.tower && m === 'tower', click: () => (m === 'tower' ? pickTower(k, 'user') : openCard(towerCard(k))) });
       }
     } else {
-      for (const k in TW) { if (k === S.tower) continue; const X = TW[k]; add({ id: 't' + k, kind: 'tower', name: T.towerN(k), meta: tDesc(k), pos: new THREE.Vector3(X.t.cx, X.height + 5, X.t.cz), prio: 3, click: () => openCard(towerCard(k)) }); }
+      for (const k in TW) { if (k === S.tower) continue; const X = TW[k]; add({ id: 't' + k, kind: 'tower', name: T.towerN(k), meta: tDesc(k), soft: true, pos: new THREE.Vector3(X.t.cx, X.height + 5, X.t.cz), prio: 3, click: () => openCard(towerCard(k)) }); }
     }
     if (m === 'aerial' || m === 'walk' || m === 'tower') {
       for (const c of W.civic) add({ id: 'c' + c.key, kind: 'civic', k: CIVIC_K[c.key], g: CIVIC_K[c.key] === 'school' ? 'education' : 'community', name: tx(c), meta: '', pos: new THREE.Vector3(c.x, 22, c.z), prio: 20, click: () => openCard(civicCard(c.key)) });
@@ -2177,7 +2177,7 @@ export function mountWorld(host, opts = {}) {
       for (const mk of W.marks) {
         if (m === 'aerial' && !['sea', 'port', 'reading_lighthouse', 'sportek'].includes(mk.key)) continue;
         if (!keysA.includes(mk.key)) continue;
-        add({ id: 'm' + mk.key, kind: 'mark', name: tx(mk), meta: T.km(mk.dist), pos: new THREE.Vector3(mk.x, mk.key === 'sea' ? 1 : Math.max(20, mk.h || 30), mk.z), prio: 60 + mk.dist / 100, click: () => openCard(markCard(mk)) });
+        add({ id: 'm' + mk.key, kind: 'mark', name: tx(mk), meta: T.km(mk.dist), soft: true, pos: new THREE.Vector3(mk.x, mk.key === 'sea' ? 1 : Math.max(20, mk.h || 30), mk.z), prio: 60 + mk.dist / 100, click: () => openCard(markCard(mk)) });
       }
     }
     if (fp && fp.window && W.sea) {
@@ -2186,7 +2186,7 @@ export function mountWorld(host, opts = {}) {
         const x = fp.x + d.x * r, z = fp.z + d.z * r;
         if (x >= W.sea.bb[0] && x <= W.sea.bb[2] && z >= W.sea.bb[1] && z <= W.sea.bb[3] && pip(W.sea.P, x, z)) {
           const tw = W.marks.find((mk) => mk.key === 'sea');
-          add({ id: 'seaview', kind: 'mark', name: tw ? tx(tw) : T.water, meta: T.km(Math.hypot(x - (TW[S.tower] ? TW[S.tower].t.cx : 0), z - (TW[S.tower] ? TW[S.tower].t.cz : 0))), pos: new THREE.Vector3(x, 1, z), prio: 45, click: () => tw && openCard(markCard(tw)) });
+          add({ id: 'seaview', kind: 'mark', name: tw ? tx(tw) : T.water, meta: T.km(Math.hypot(x - (TW[S.tower] ? TW[S.tower].t.cx : 0), z - (TW[S.tower] ? TW[S.tower].t.cz : 0))), soft: true, pos: new THREE.Vector3(x, 1, z), prio: 45, click: () => tw && openCard(markCard(tw)) });
           // P9a (1.72.371): the sea is named once. Where the window's line of sight meets the water, that label (with its real
           // distance) replaces the landmark's fixed point, which named the same sea a second time ("Mediterranean Sea" x2)
           const dup = L.findIndex((c) => c.id === 'msea');
@@ -2199,11 +2199,13 @@ export function mountWorld(host, opts = {}) {
       for (const pn of W.pins) {
         const p = placesIndex[pn.id]; if (!p) continue;
         if (m === 'aerial' && pn.tier !== 1) continue;
-        add({ id: 'p' + pn.id, kind: 'pin', k: p.k, g: p.g, name: lang2 === 'he' ? p.name : (pn[lang2] || (p.names && p.names[lang2]) || pn.en), meta: opensOf(p) || T.walkMin(p.walk), pos: new THREE.Vector3(p.x, 1.5, p.z), prio: 100 + pn.tier * 50 + p.dist / 20, click: () => openCard(placeCard(p)) });
+        add({ id: 'p' + pn.id, kind: 'pin', k: p.k, g: p.g, name: lang2 === 'he' ? p.name : (pn[lang2] || (p.names && p.names[lang2]) || pn.en), meta: opensOf(p) || T.walkMin(p.walk), soft: !opensOf(p), pos: new THREE.Vector3(p.x, 1.5, p.z), prio: 100 + pn.tier * 50 + p.dist / 20, click: () => openCard(placeCard(p)) });
       }
     }
     if (m === 'places' && places) {
-      const n = narrow() ? 14 : 26;
+      // v104.12 (loop turn 21): with the icon set every place of the category is a candidate (named where a name fits, its icon
+      // otherwise); without it, the old count over the WebGL dots
+      const n = window.NLPlaceIcons ? 60 : (narrow() ? 14 : 26);
       const seen = [];
       let k2 = 0;
       for (const p of places.shown.slice(0, 80)) {
@@ -2212,9 +2214,9 @@ export function mountWorld(host, opts = {}) {
         if (seen.some((q) => q.nm === nm && Math.hypot(q.x - p.x, q.z - p.z) < 160)) continue;
         seen.push({ nm, x: p.x, z: p.z });
         if (k2++ >= n) break;
-        add({ id: 'q' + p.id, kind: 'place', k: p.k, g: p.g, name: nm, meta: T.walkMin(p.walk), pos: new THREE.Vector3(p.x, 1.2, p.z), prio: 100 + k2, click: () => selectPlace(p) });
+        add({ id: 'q' + p.id, kind: 'place', k: p.k, g: p.g, name: nm, meta: T.walkMin(p.walk), soft: true, pos: new THREE.Vector3(p.x, 1.2, p.z), prio: 100 + k2, click: () => selectPlace(p) });
       }
-      if (S.place) add({ id: 'q' + S.place.id, kind: 'place', k: S.place.k, g: S.place.g, name: placeName(S.place), meta: T.walkMin(S.place.walk), pos: new THREE.Vector3(S.place.x, 1.2, S.place.z), prio: 0, sel: true, click: () => selectPlace(S.place) });
+      if (S.place) add({ id: 'q' + S.place.id, kind: 'place', k: S.place.k, g: S.place.g, name: placeName(S.place), meta: T.walkMin(S.place.walk), soft: true, pos: new THREE.Vector3(S.place.x, 1.2, S.place.z), prio: 0, sel: true, click: () => selectPlace(S.place) });
       for (const l of isoLines.children) add({ id: 'iso' + l.userData.min, kind: 'iso', name: T.walkMin(l.userData.min), meta: '', pos: l.userData.top.clone(), prio: 50 });
     }
     if (m === 'walk' && fp) {
@@ -2262,8 +2264,8 @@ export function mountWorld(host, opts = {}) {
     const ik = ic ? ic.glyph(c.k, c.g) + '|' + c.g : '';
     if (e._ik !== ik) { e._ik = ik; e._i.innerHTML = ic ? ic.svg(c.k, c.g, '#fff', 2.3) : ''; e._i.style.background = ic ? (ic.COLOR[c.g] || '#4A4740') : ''; }
     e.className = 'nlw-pin k-' + c.kind + (c.on ? ' is-on' : '') + (c.sel ? ' is-sel' : '') + (ic ? ' has-i' : '');
-    if (e._name !== c.name) { e._n.textContent = c.name; e._name = c.name; e._size = null; }
-    if (e._meta !== c.meta) { e._m.textContent = c.meta || ''; e._m.style.display = c.meta ? '' : 'none'; e._meta = c.meta; e._size = null; }
+    if (e._name !== c.name) { e._n.textContent = c.name; e._name = c.name; e._size = e._sizeB = null; }
+    if (e._meta !== c.meta) { e._m.textContent = c.meta || ''; e._m.style.display = c.meta ? '' : 'none'; e._meta = c.meta; e._size = e._sizeB = null; }
     e._click = c.click;
     return e;
   }
@@ -2311,37 +2313,70 @@ export function mountWorld(host, opts = {}) {
       pts.push({ c, x, y });
     }
     pts.sort((a, b) => a.c.prio - b.c.prio);
-    for (const { c, x, y } of pts) {
+    // v104.12 (loop turn 21): in the places tab, pins first, names second (a map's search results). When the order reaches the
+    // second place on the map, every remaining place's icon that fits is placed (never on another icon, a name placed before, or a control); then the
+    // place names follow, and they never cover an icon. hitAnyX skips the place's own icon.
+    const pinsFirst = S.mode === 'places' && !!window.NLPlaceIcons;
+    const hitAnyX = (r, list, skip) => list.some((q) => q !== skip && !(r.x1 < q.x0 || r.x0 > q.x1 || r.y1 < q.y0 || r.y0 > q.y1));
+    // the nearest place on the map keeps the old order (its name first: "1 min" is what a buyer reads first), then the icons
+    // (measured, he 390: two names first left 5 icons on the map, one name first 11, none 13 with the nearest place unnamed)
+    let preDone = false, plRank = 0;
+    for (let pi = 0; pi < pts.length; pi++) {
+      const { c, x, y } = pts[pi];
+      const isPl = pinsFirst && c.kind === 'place' && !c.sel;
+      const pre = isPl && plRank >= 1; // counts only places whose icon is on the map (below)
+      if (pre && !preDone) {
+        preDone = true;
+        for (let pj = pi; pj < pts.length; pj++) {
+          const q = pts[pj]; if (q.c.kind !== 'place' || q.c.sel) continue;
+          const eq = labelEl(q.c);
+          const br = { x0: q.x - 13, x1: q.x + 13, y0: q.y - 13, y1: q.y + 13 };
+          if (!eq._ik || hitAny(br, placed) || hitAny(br, reserved)) { eq._br = false; continue; }
+          placed.push(br); eq._br = br;
+        }
+      }
       const e = labelEl(c);
       used.add(c.id);
       e.style.display = 'block';
       e.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
-      e.classList.remove('is-dot');
+      e.classList.remove('is-dot', 'is-b', 'is-c');
       if (c.kind === 'iso') { const r = { x0: x - 30, x1: x + 30, y0: y - 10, y1: y + 10 }; if (hitAny(r, reserved) || hitAny(r, placed)) e.style.display = 'none'; else placed.push(r); continue; }
       if (!e._size) e._size = [e._t.offsetWidth, e._t.offsetHeight];
       if (c.kind === 'floor') { const tw0 = e._size[0]; const r = rtl ? { x0: x - tw0 - 8, x1: x, y0: y - 12, y1: y + 12 } : { x0: x, x1: x + tw0 + 8, y0: y - 12, y1: y + 12 }; if (hitAny(r, reserved)) e.style.display = 'none'; else placed.push(r); continue; }
       // v104.4 (Codex's QA): an icon never sits on a higher-priority icon, name or control; it steps back instead
-      if (e._ik) { const br = { x0: x - 13, x1: x + 13, y0: y - 13, y1: y + 13 }; if (hitAny(br, placed) || hitAny(br, reserved)) { e.style.display = 'none'; continue; } }
+      if (pre) { if (!e._br) { e.style.display = 'none'; continue; } } // v104.12: its icon was placed (or not) with the others
+      else if (e._ik) { const br = { x0: x - 13, x1: x + 13, y0: y - 13, y1: y + 13 }; if (hitAny(br, placed) || hitAny(br, reserved)) { e.style.display = 'none'; continue; } }
+      if (isPl && !pre) plRank++;
       if (c.dotOnly) { e.classList.add('is-dot'); if (e._ik) placed.push({ x0: x - 12, x1: x + 12, y0: y - 12, y1: y + 12 }); continue; }
-      const tw = e._size[0], th = e._size[1];
+      // v104.12 (loop turn 21): label tiers. A = the name and its second line; B = the name alone (one line) when A has no room
+      // anywhere and the second line is soft (walk time, distance, floors); an honesty line ("planned", "illustration") never drops
+      const tiers = [e._size];
+      if (c.soft && c.meta) {
+        if (!e._sizeB) { e.classList.add('is-b'); e._sizeB = [e._t.offsetWidth, e._t.offsetHeight]; e.classList.remove('is-b'); }
+        tiers.push(e._sizeB);
+      }
       const hp = coarse ? 7 : 0; // v104.5: on touch the name chip's tap area is 44 px; the collision keeps those areas apart
       const stems = c.kind === 'tower' ? [12, 30] : [16, 34, 56, 80];
+      let ok = false;
+      const gap = c.kind === 'tower' ? 26 : 16; // v104.12: a tower's name beside its top clears the tower's own width
+      for (let ti = 0; ti < tiers.length && !ok; ti++) {
+      const tw = tiers[ti][0], th = tiers[ti][1];
       const off = Math.max(0, tw / 2 - 12);
       const shifts = c.kind === 'tower' ? [0] : [0, off, -off];
       const opts2 = [];
       for (const s of stems) for (const dx of shifts) opts2.push({ s, dx, below: false });
       // v104.11 (loop turn 20): beside its icon too (the 8-position model: sides as well as above and below), vertically centred
-      if (e._ik && c.kind !== 'tower') for (const side of (rtl ? ['l', 'r'] : ['r', 'l'])) opts2.push({ s: 0, dx: 0, below: false, side });
+      // v104.12: a tower's name may sit beside its top too, after the positions above (he 320: tower B named, it had none)
+      if (e._ik || c.kind === 'tower') for (const side of (rtl ? ['l', 'r'] : ['r', 'l'])) opts2.push({ s: 0, dx: 0, below: false, side });
       if (c.kind !== 'tower') for (const s of [14, 32]) for (const dx of shifts) opts2.push({ s, dx, below: true });
-      let ok = false;
-      const gap = 16;
       for (const { s, dx, below, side } of opts2) {
         const r = side ? (side === 'r' ? { x0: x + gap - 2, x1: x + gap + tw + 3, y0: y - th / 2 - 2, y1: y + th / 2 + 2 } : { x0: x - gap - tw - 3, x1: x - gap + 2, y0: y - th / 2 - 2, y1: y + th / 2 + 2 })
           : below ? { x0: x + dx - tw / 2 - 3, x1: x + dx + tw / 2 + 3, y0: y + s - 2, y1: y + s + th + 3 } : { x0: x + dx - tw / 2 - 3, x1: x + dx + tw / 2 + 3, y0: y - s - th - 3, y1: y - s + 2 };
         if (r.x0 < 4 || r.x1 > w - 4 || r.y0 < 4 || r.y1 > h - 4) continue;
         const rp = hp ? { x0: r.x0, x1: r.x1, y0: r.y0 - hp, y1: r.y1 + hp } : r;
-        if (hitAny(rp, placed) || hitAny(rp, reserved) || (c.kind !== 'tower' && hitAny(r, towerRects))) continue;
+        if (hitAnyX(rp, placed, pre ? e._br : null) || hitAny(rp, reserved) || (c.kind !== 'tower' && hitAny(r, towerRects))) continue;
         placed.push(rp);
+        if (ti) e.classList.add('is-b');
         if (side) { // beside the icon: no stem; the chip's near edge `gap` px from the anchor, centred on it
           e._s.style.height = '0px'; e._t.style.top = '0px';
           e._t.style.transform = side === 'r' ? 'translate(100%, -50%)' : 'translate(0, -50%)';
@@ -2354,9 +2389,14 @@ export function mountWorld(host, opts = {}) {
         e._t.style.right = (-dx).toFixed(1) + 'px';
         ok = true; break;
       }
+      }
+      // v104.12: tier C, ONLY in the places tab (a search-results layer: the category is on the panel and the list names every
+      // place): the icon alone, a full 24 px target (WCAG 2.2 SC 2.5.8); its box already cleared every name, icon and control above
+      if (!ok && e._ik && c.kind === 'place') { e.classList.add('is-c'); ok = true; }
       // v104.5 (Codex's QA, M17): a place with an icon and no room for its name steps back entirely (it stays in the list and the
-      // cards); an icon never stands without its name
+      // cards); an icon never stands without its name (the aerial view, the walk and the window)
       if (!ok) { if (e._ik || c.kind === 'mark' || c.kind === 'tower' || c.kind === 'civic') { e.style.display = 'none'; continue; } e.classList.add('is-dot'); }
+      if (pre) continue; // its icon is already in the list
       const rd = e._ik ? 12 : 6; const dot = { x0: x - rd, x1: x + rd, y0: y - rd, y1: y + rd }; placed.push(dot);
     }
     for (const [id, e] of labelPool) if (!used.has(id)) e.style.display = 'none';

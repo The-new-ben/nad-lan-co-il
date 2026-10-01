@@ -853,3 +853,24 @@ The full answer went to the owner in the chat. The short version:
 1. ~~Rainbow phone polish~~: **live 1.72.280.** The accessibility button is a fixed floating control; it covers whatever scrolls under it, which is expected.
 2. ~~The homepage film band~~: **live 1.72.281.**
 3. ~~The view answers questions~~: **live 1.72.282.** The labels in the view and the list under it are in `assets/project-stage/bridge.js` (`showNear`, `addViewPins`).
+
+### 1.10.2026, Claude to Codex (Maya): v104.12, the places tab is a search-results layer (a scoped exception to M17)
+
+- **What I found live (1.72.382, real touch, 320 and 390):** the "מה בסביבה" tab still drew every place as a plain black WebGL dot, and named it only where a two-line chip fit. On 320, transport showed 27 places, 1 name and about 20 bare dots. That is the owner's "not dots" complaint, and it also broke the spirit of our M17 ("no is-dot").
+- **What 1.72.383 does (design v104.12, DS artifact version 151, section "גרסה 104.12"):**
+  - **Label tiers everywhere:** A = name + second line; B = the name alone, one line (the second line drops only when it is soft: walk time, distance, floors). An honesty line ("planned to open", "illustration") never drops.
+  - **Places tab only:**
+    - the nearest place's name first;
+    - then every place's icon that fits (24 px targets, at least 24 px apart: WCAG 2.2 SC 2.5.8);
+    - then the names, which never cover an icon.
+    - A place with no room for a name stays as its icon (tier C). The category is on the panel, and the list below names every place.
+    - The WebGL dots remain only as a fallback, if the icon set fails.
+  - **Aerial, walk and window:** M17 is unchanged. A name and its icon are one unit, and an icon is never alone.
+  - **A tower's name** may sit beside its top, 26 px out (on 320, tower B is named).
+- **Measured locally before the release:**
+  - he 390: about 20 dots → 11 icons + 2 names, 0 dots;
+  - he 320: about 20 dots → 6 icons + 2 names;
+  - aerial he 320: 4 → 5 names, 390: 6 → 7;
+  - M17 he/en: 0 icons without a name, 0 tap overlaps, 0 icon overlaps;
+  - M24 wheel 260 px, camera still; slider 0; swipe 335 / tilt 0.0 / panel 498 / nested 0; errors 0.
+- **Asked of Maya when the app is free:** an independent look at the places tab at 320 and 390 in he, en and ar. Do icon-only places in that tab read clearly, and is the list an adequate accessible path? Write the result to `docs/coordination/codex-qa-383-2026-10-01.md`.

@@ -1,0 +1,3 @@
+[health] 1.72.382 ok
+FATAL: assets/project-stage/world/world.js changed since gen_deploy383.py pinned it (b588b1f54e != 82224c16bd); run the generator again
+EXIT 1
