@@ -31,7 +31,10 @@
   "twist-c30w-day-thumb.webp": 14286,
   "twist-c38w-day-card.jpg": 101611,
   "twist-c38w-day-card.webp": 53688,
-  "twist-c38w-day-thumb.webp": 13048
+  "twist-c38w-day-thumb.webp": 13048,
+  "living-c30w-evening-card.jpg": 95090,
+  "living-c30w-evening-card.webp": 44644,
+  "living-c30w-evening-thumb.webp": 10522
  },
  "budget_bytes": {
   "album_open_images": 115070,
@@ -50,7 +53,8 @@
   "twist-c20w-day": "final-twist-floor20.png",
   "twist-c30w-day": "final-twist-floor30.png",
   "twist-c38w-day": "final-twist-floor38.png",
-  "living360-c30w-sunset": "final-living360-sunset.png"
+  "living360-c30w-sunset": "final-living360-sunset.png",
+  "living-c30w-evening": "final-living-evening-v2.png"
  },
- "note": "P9c review (30.9): the evening picture (living-c30w-evening) is not shipped; its far towers' lit windows read as a mosaic, below the owner's bar"
+ "note": "v104.13 (1.10.2026): the evening v2 (living-c30w-evening) ships at card size only (1200w, no -2k); the first evening render (30.9) stays unshipped"
 }

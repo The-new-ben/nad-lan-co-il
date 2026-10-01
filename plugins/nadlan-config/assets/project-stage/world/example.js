@@ -3,16 +3,17 @@
  *
  * Opened by the world's "היכנסו לדירה לדוגמה" (world.js, openExampleApt): nothing here, and none of its pictures, loads before
  * that press. An album over the page (a dialog, full screen on a phone): the living room at the time of day the floor view shows
- * (by day or at sunset), the corner bedroom, the balcony, the 360 of the living room in the fleet's viewer (../tour.js, the
+ * (by day, at sunset or in the evening), the corner bedroom, the balcony, the 360 of the living room in the fleet's viewer (../tour.js, the
  * same viewer as Rainbow's and DUO's rooms), and the twist strip: the same window on floors 20, 30 and 38. Every picture is an
  * illustration and says so: the chip "דירה לדוגמה" and the line "התוכנית להמחשה, חלוקת הדירות לא פורסמה" are always on screen.
  *
  *   const h = openExample({ url, id, lang, tower, floor, bearing, facing, tod, wa, opener, onTod, onClose });
- *   h.setTod('day' | 'sunset' | 'night'); h.close();
+ *   h.setTod('day' | 'sunset' | 'night'); h.close();   (the world's night is the album's evening)
  *
  * url: the manifest (hamedina/tour/examples.json, its files beside it); id: the example (e.g. 'c30w'); floor / facing: what the
  * visitor chose in the world (the pictures say which floor they are from when it differs); tod: the floor view's time of day
- * (at 'night' the album opens at sunset and says so: its evening picture was not up to the bar); wa: the world's WhatsApp link (the site's interceptor adds the source line); onTod(k):
+ * (v104.13: at 'night' the album opens at evening, the 19:00 picture, shown at card size only; a manifest without an evening
+ * opens at sunset as before); wa: the world's WhatsApp link (the site's interceptor adds the source line); onTod(k):
  * the album's own time switch tells the world, so the two never disagree.
  *
  * Words: he, en, fr, ru, ar (each written for its reader). No <p>/<h*> inside: the theme's !important rules on those leak in.
@@ -44,7 +45,7 @@ const WORDS = {
     size: (rooms, sqm, src) => `בגודל שפורסם בעסקאות במגדלים: ${rooms} חדרים, ${sqm} מ״ר (${src})`,
     sizeSrc: 'גלובס, 2.5.2025',
     from: (f0, f) => `התמונות מקומה ${f0}; בחרתם קומה ${f}, והנוף ממנה דומה מאוד`,
-    todLbl: 'שעות היום', tod: { day: 'יום', sunset: 'שקיעה' },
+    todLbl: 'שעות היום', tod: { day: 'יום', sunset: 'שקיעה', evening: 'ערב' },
     tile: { living: (t) => `הסלון · ${t}`, bedroom: 'חדר השינה', balcony: 'המרפסת', pano: 'סיור 360 בסלון' },
     date: '21 בספטמבר',
     cap: {
@@ -81,7 +82,7 @@ const WORDS = {
     size: (rooms, sqm, src) => `The size of the published deals in the towers: ${rooms} rooms, ${sqm} m² (${src})`,
     sizeSrc: 'Globes, 2.5.2025',
     from: (f0, f) => `The pictures are from floor ${f0}; you chose floor ${f}, and its view is very close`,
-    todLbl: 'Time of day', tod: { day: 'Day', sunset: 'Sunset' },
+    todLbl: 'Time of day', tod: { day: 'Day', sunset: 'Sunset', evening: 'Evening' },
     tile: { living: (t) => `Living room · ${t.toLowerCase()}`, bedroom: 'Bedroom', balcony: 'Balcony', pano: '360° living room' },
     date: '21 September',
     cap: {
@@ -118,7 +119,7 @@ const WORDS = {
     size: (rooms, sqm, src) => `À la taille des ventes publiées dans les tours : ${rooms} pièces, ${sqm} m² (${src})`,
     sizeSrc: 'Globes, 02/05/2025',
     from: (f0, f) => `Les images sont prises au ${f0}e étage ; vous avez choisi le ${f}e, dont la vue est très proche`,
-    todLbl: 'Moment de la journée', tod: { day: 'Jour', sunset: 'Coucher du soleil' },
+    todLbl: 'Moment de la journée', tod: { day: 'Jour', sunset: 'Coucher du soleil', evening: 'Soir' },
     tile: { living: (t) => `Séjour · ${t.toLowerCase()}`, bedroom: 'Chambre', balcony: 'Balcon', pano: 'Séjour à 360°' },
     date: '21 septembre',
     cap: {
@@ -155,7 +156,7 @@ const WORDS = {
     size: (rooms, sqm, src) => `Площадь как в опубликованных сделках в башнях: ${rooms} комнаты, ${sqm} м² (${src})`,
     sizeSrc: 'Globes, 02.05.2025',
     from: (f0, f) => `Снимки с ${f0}-го этажа; вы выбрали ${f}-й, вид с него почти такой же`,
-    todLbl: 'Время суток', tod: { day: 'День', sunset: 'Закат' },
+    todLbl: 'Время суток', tod: { day: 'День', sunset: 'Закат', evening: 'Вечер' },
     tile: { living: (t) => `Гостиная · ${t.toLowerCase()}`, bedroom: 'Спальня', balcony: 'Балкон', pano: 'Гостиная 360°' },
     date: '21 сентября',
     cap: {
@@ -192,7 +193,7 @@ const WORDS = {
     size: (rooms, sqm, src) => `بمساحة الصفقات المنشورة في الأبراج: ${rooms} غرف، ${sqm} م² (${src})`,
     sizeSrc: 'غلوبس، 2.5.2025',
     from: (f0, f) => `الصور من الطابق ${f0}؛ اخترتم الطابق ${f}، والإطلالة منه قريبة جداً`,
-    todLbl: 'وقت اليوم', tod: { day: 'نهار', sunset: 'غروب' },
+    todLbl: 'وقت اليوم', tod: { day: 'نهار', sunset: 'غروب', evening: 'مساء' },
     tile: { living: (t) => `الصالون · ${t}`, bedroom: 'غرفة النوم', balcony: 'الشرفة', pano: 'جولة 360 في الصالون' },
     date: '21 أيلول',
     cap: {
@@ -223,10 +224,10 @@ const WORDS = {
   },
 };
 
-// the album has day and sunset (P9c review: the evening render's lit-window towers were below the owner's bar); a world at night
-// opens the album at sunset, its switch says sunset, and the world follows it there
-const TOD_OF_WORLD = { day: 'day', sunset: 'sunset', night: 'sunset' };
-const WORLD_OF_TOD = { day: 'day', sunset: 'sunset' };
+// v104.13 (loop turn 22): the album has day, sunset and evening (the evening v2: interior mapping for the lit towers, 19:00).
+// The world's night opens it at evening and its evening sets the world to night; a manifest without an evening opens at sunset
+const TOD_OF_WORLD = { day: 'day', sunset: 'sunset', night: 'evening' };
+const WORLD_OF_TOD = { day: 'day', sunset: 'sunset', evening: 'night' };
 const ICON360 = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><ellipse cx="12" cy="12" rx="9.5" ry="4.2"/><path d="M12 3.2v1.6M16.2 7.9l1.6-1.4M7.8 7.9 6.2 6.5"/><path d="m15.4 17.6 2.3-1.2-1.1-2.3"/></svg>';
 const ICONX = '<svg viewBox="0 0 20 20" aria-hidden="true" stroke="currentColor" stroke-width="1.8"><path d="M4 4l12 12M16 4L4 16"/></svg>';
 const ICONWA = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.3 21.7l5-1.3A9.7 9.7 0 1 0 12 2.2Zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.9 2c0 1.2.9 2.4 1 2.5.1.2 1.7 2.6 4.2 3.7 1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.5Z"/></svg>';
@@ -277,8 +278,9 @@ export function openExample(o) {
 
   const timeOf = (s) => (s && s.time) || 'day';
   const still = (room, t) => ex.stills.find((s) => s.room === room && s.time === t);
-  const picHtml = (base, kind, alt, sizes, eager) => {
-    const ws = kind === 'still' ? `${U(base + '-thumb.webp')} 480w, ${U(base + '-card.webp')} 1200w, ${U(base + '-2k.webp')} 2048w`
+  // v104.13: a still marked "max": 1200 in the manifest has no -2k (the evening: premium at card size, computed-looking at 2048)
+  const picHtml = (base, kind, alt, sizes, eager, max) => {
+    const ws = kind === 'still' && !(+max && +max <= 1200) ? `${U(base + '-thumb.webp')} 480w, ${U(base + '-card.webp')} 1200w, ${U(base + '-2k.webp')} 2048w`
       : `${U(base + '-thumb.webp')} 480w, ${U(base + '-card.webp')} 1200w`;
     return `<picture><source type="image/webp" srcset="${esc(ws)}" sizes="${esc(sizes)}"><img src="${esc(U(base + '-card.jpg'))}" width="1200" height="675" alt="${esc(alt)}" decoding="async"${eager ? ' fetchpriority="high"' : ''}></picture>`;
   };
@@ -292,7 +294,8 @@ export function openExample(o) {
   function build() {
     const size = ex.size || {};
     const fromLine = +ex.floor !== +o.floor ? `<div class="nlex__from">${esc(T.from(ex.floor, o.floor))}</div>` : '';
-    const living = ['day', 'sunset'].filter((t) => still('living', t));
+    if (!still('living', tod)) tod = still('living', 'sunset') ? 'sunset' : 'day'; // v104.13: a manifest without this time
+    const living = ['day', 'sunset', 'evening'].filter((t) => still('living', t));
     root.querySelector('.nlex__title').textContent = T.title(size.rooms || 4);
     const tiles = [
       `<button class="nlex__tile nlex__tile--360" type="button" data-pano><span class="nlex__thumb"><img src="${esc(U(ex.pano.base + '-thumb.webp'))}" width="480" height="270" alt="" decoding="async"><b class="nlex__360b">${ICON360}<span dir="ltr">360°</span></b></span><span class="nlex__tl">${esc(T.tile.pano)}</span></button>`,
@@ -342,7 +345,7 @@ export function openExample(o) {
     const first = !pic.firstChild;
     const next = document.createElement('div');
     next.className = 'nlex__picin' + (first ? '' : ' is-wait');
-    next.innerHTML = picHtml(base, kind, capOf(it), '(max-width: 899px) 100vw, 760px', eager);
+    next.innerHTML = picHtml(base, kind, capOf(it), '(max-width: 899px) 100vw, 760px', eager, it.max);
     const img = next.querySelector('img');
     const done = () => {
       if (!alive) return;

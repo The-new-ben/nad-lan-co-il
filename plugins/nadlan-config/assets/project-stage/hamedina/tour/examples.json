@@ -13,6 +13,7 @@
    "stills": [
     { "base": "living-c30w-day", "room": "living", "time": "day", "hour": "14:30", "facing": 287.6 },
     { "base": "living-c30w-sunset", "room": "living", "time": "sunset", "hour": "17:36", "facing": 263.6 },
+    { "base": "living-c30w-evening", "room": "living", "time": "evening", "hour": "19:00", "facing": 260.6, "max": 1200 },
     { "base": "bedroom-c30nw-day", "room": "bedroom", "time": "day", "hour": "14:30", "facing": 295.6 },
     { "base": "balcony-c30w-sunset", "room": "balcony", "time": "sunset", "hour": "17:36", "facing": 217.6 }
    ],
@@ -21,7 +22,7 @@
     { "base": "twist-c30w-day", "floor": 30, "bearing": 265.6, "hour": "14:30" },
     { "base": "twist-c38w-day", "floor": 38, "bearing": 255.6, "hour": "14:30" }
    ],
-   "rendered": "30.9.2026, the sun of 21.9.2026 (Israel daylight time) over 32.087N 34.790E; tower C's floor plate turned 29 x 1.25 degrees counter-clockwise (the direction is not published)"
+   "rendered": "30.9.2026 (the evening 1.10.2026, interior mapping for the lit towers; card size only), the sun of 21.9.2026 (Israel daylight time) over 32.087N 34.790E (19:00: 5.06 degrees below the horizon); tower C's floor plate turned 29 x 1.25 degrees counter-clockwise (the direction is not published)"
   }
  ]
 }

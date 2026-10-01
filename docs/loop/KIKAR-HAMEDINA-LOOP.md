@@ -101,6 +101,31 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **1.10, turn 22.**
+  - **Web:**
+    - [Bizportal 19.4.2025](https://www.bizportal.co.il/realestates/news/article/20015974): prices and the "end of 2028" line are already in facts.md with their date.
+    - [Madlan](https://www.madlan.co.il/listings/V7ChX8x8Z7m): a 4-room, 134 m² listing at ₪10.49M. It is an AD, not a deal, so it is never a page fact.
+    - [Globes EN](https://en.globes.co.il/en/article-tel-avivs-kikar-hamedina-undergoes-transformation-1001522524): the park and lake; nothing new.
+    - Twilight real-estate photography ([pixflows](https://www.pixflows.com/photo-tips/real-estate-photo-tips/the-complete-guide-to-twilight-photography-in-real-estate), [therealtyphotographer 2026](https://therealtyphotographer.com/twilight-real-estate-photography/)):
+      - the window is the first 20-30 minutes after sunset, with interior lamps at 2700-3000 K;
+      - our evening at 19:00 (about 20 minutes after sunset, the sun 5.06° below) is inside it.
+      - A possible later tweak: a warmer white balance (the guides' 3500-4500 K vs our 5200 K) for a deeper blue sky.
+  - **NOTCH (design v104.13, DS version 152 → LIVE 1.72.384):** the evening joins the example apartment's album.
+    - The new picture (interior mapping for the lit towers) ships at CARD SIZE ONLY: the manifest has `"max": 1200`, there is no -2k file, and the runner's gate forbids one.
+    - The switch reads יום · שקיעה · ערב in five languages. The world's night opens the album at evening, and the album's evening sets the world to night.
+    - New runner pattern: make_gen384 narrows the places-count gate to places.json and the CRLF gate to text files, and ships new pictures as NEWFILES.
+    - Runner 384: 338 page checks OK; all five files served byte-exact.
+  - **Measured live (1.72.384), real presses on a 390 phone, he/en/ar/fr/ru:**
+    - the world at night → the album opens at evening ("הסלון בערב · 21 בספטמבר, 19:00"; "Le séjour · soir · 21 septembre, 19 h 00"; ...);
+    - the srcset stops at 1200w;
+    - sunset → the world goes to sunset; evening → the world goes to night;
+    - 0 errors.
+    - Source audit: Kikar and Rainbow GREEN, H Infinity YELLOW (old description length).
+  - **NEXT NOTCH:**
+    - (1) Tower C at 320: the last tower without a name there.
+    - (2) en/ar names from new sources only.
+    - (3) The evening at full size: lit-window detail on the nearest towers, street lamps and car lights. Only then a -2k.
+
 - **1.10, turn 21.**
   - **Web:**
     - The towers: [Globes EN 25.9.2025](https://en.globes.co.il/en/article-tel-avivs-kikar-hamedina-undergoes-transformation-1001522524), the Electra page ("April 2027") and the Ashtrom page ("2026") are all already in facts.md with their conflicts. No new dated delivery statement.
@@ -611,7 +636,7 @@ Every turn does ALL of these, not only the current phase:
   - (c) en/ar generic place names (data);
   - (d) M04/M05, two pointers and page pinch;
   - (e) a real-device check (the owner's iPhone);
-  - (f) an evening interior at the owner's bar (a new render, not the rejected one);
+  - (f) an evening interior at the owner's bar: DONE in 1.72.384 at card size (v2, interior mapping); full size is still open;
   - (g) the twist's direction, from a source;
   - (h) the shared viewing room and the video call wired to the world;
   - (i) the article (the owner's ChatGPT run).

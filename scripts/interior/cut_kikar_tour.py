@@ -8,7 +8,7 @@ naming and sizes, in plugins/nadlan-config/assets/project-stage/hamedina/tour/:
   <room>-<tower><floor><side>-<time>[-2k|-card|-thumb].<jpg|webp>
     room  living, bedroom, balcony, living360 (the 360 panorama), twist (the same window on another floor)
     side  w = the side of the plate that faces west on floor 30 (it turns with the tower), nw = the corner beside it
-    time  day (21.9, 14:30), sunset (17:36) (the evening render, 19:06, is not shipped: see STILLS)
+    time  day (21.9, 14:30), sunset (17:36), evening (19:00; v2 of 1.10.2026, card size only: see STILLS_CARD)
   the 360: 4096 x 2048 (no suffix) and 2048 x 1024 (-2k), JPG like the fleet's tours + WebP (what the page's viewer loads);
            -card is the fleet's straight view through the window (cut_tour.py's projection), 1200 x 675, and -thumb its 480 px
   a still: -2k 2048 x 1152 (WebP), -card 1200 x 675 (JPG + WebP), -thumb 480 x 270 (WebP)
@@ -16,7 +16,9 @@ naming and sizes, in plugins/nadlan-config/assets/project-stage/hamedina/tour/:
 
 Nothing on the page loads any of these until the visitor presses "היכנסו לדירה לדוגמה".
 
-  python scripts/interior/cut_kikar_tour.py        (writes the files and prints the byte budget)
+  python scripts/interior/cut_kikar_tour.py              (writes the files and prints the byte budget)
+  python scripts/interior/cut_kikar_tour.py --card-only  (only the card-size stills, merged into p9c-assets.json; the other
+                                                          files are not touched, so the live ones keep their bytes)
 """
 import io, json, math, os, subprocess, sys
 from PIL import Image
@@ -32,6 +34,9 @@ OUT = os.path.join(REPO, "plugins", "nadlan-config", "assets", "project-stage", 
 # P9c review (30.9): the evening render is not shipped: its far towers' lit windows read as a mosaic, below the owner's bar
 STILLS = [("living-sunset", "living-c30w-sunset"), ("living-day", "living-c30w-day"),
           ("bedroom-day", "bedroom-c30nw-day"), ("balcony-sunset", "balcony-c30w-sunset")]
+# v104.13 (1.10.2026): the evening v2 (interior mapping for the lit towers; 19:00, the sun 5.06 deg below the horizon) ships at
+# CARD SIZE ONLY (1200w, no -2k): the release gate's verdict, premium at card size, the far windows read computed at 2048 px
+STILLS_CARD = [("living-evening-v2", "living-c30w-evening")]
 TWIST = [("twist-floor20", "twist-c20w-day"), ("twist-floor30", "twist-c30w-day"), ("twist-floor38", "twist-c38w-day")]
 PANO = ("living360-sunset", "living360-c30w-sunset")
 Q_JPG, Q_WEBP, Q_WEBP_PANO = 84, 80, 78
@@ -57,9 +62,32 @@ def webp(im, path, q=Q_WEBP):
     im.save(path, "WEBP", quality=q, method=6)
 
 
+def card_only(made, srcs):
+    for pname, rname in STILLS_CARD:
+        im, s = source(pname, 2048)
+        srcs[rname] = s
+        card = fit(im, 1200)
+        jpg(card, os.path.join(OUT, rname + "-card.jpg"))
+        webp(card, os.path.join(OUT, rname + "-card.webp"))
+        webp(fit(im, 480), os.path.join(OUT, rname + "-thumb.webp"), 78)
+        made += [rname + x for x in ("-card.jpg", "-card.webp", "-thumb.webp")]
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     made, srcs = [], {}
+    if "--card-only" in sys.argv:
+        card_only(made, srcs)
+        jp = os.path.join(REPO, "docs", "research", "2026-09-30-kikar-hamedina", "p9c-assets.json")
+        d = json.load(io.open(jp, encoding="utf-8"))
+        for f in made:
+            d["files_bytes"][f] = os.path.getsize(os.path.join(OUT, f))
+        d["sources"].update(srcs)
+        d["note"] = "v104.13 (1.10.2026): the evening v2 (living-c30w-evening) ships at card size only (1200w, no -2k); the first evening render (30.9) stays unshipped"
+        io.open(jp, "w", encoding="utf-8").write(json.dumps(d, ensure_ascii=False, indent=1))
+        print(json.dumps({f: d["files_bytes"][f] for f in made}, indent=1), srcs)
+        return
+    card_only(made, srcs)
     for pname, rname in STILLS:
         im, s = source(pname, 2048)
         srcs[rname] = s

@@ -1,0 +1,237 @@
+# KikarHamedinaWorld v104.2: the example apartment inside the world
+
+**Design system version 104.2 (30.9.2026, P9c of the Kikar Hamedina loop, HAD-375).** It builds on v104 (`KikarHamedinaWorld-v104-README.md`) and v104.1 (`v104.1-phone-first-screen.md`). The coordinator publishes it as Claude Design v104.2 BEFORE the release. The release is **1.72.375**. The main session's phone work ships first: v104.3 as 1.72.373 and v104.4 as 1.72.374.
+
+**What it adds:**
+1. **"היכנסו לדירה לדוגמה"** in the world's floor view. It opens an example apartment rendered from the world's own data: the living room at the time of day the floor view shows, the corner bedroom, the balcony, a 360 of the living room in the fleet's own viewer, and the same window on floors 20, 30 and 38.
+2. **The Arabic phone's first screen.** The WhatsApp bar no longer rises onto the answer paragraph.
+3. **The accessibility button's corner on the world pages.** It no longer sits on the world's first tab.
+
+Evidence: `docs/research/2026-09-30-kikar-hamedina/p9c-shots/` (the shots named below, `receipt.json`, `before-live372-*`).
+
+## 1. The example apartment
+
+### Which combinations have pictures (said honestly)
+
+| | What exists |
+|---|---|
+| **Tower** | C only (the tower the world opens on) |
+| **Floor** | 30. The button shows on floors 27 to 33, where the album says "התמונות מקומה 30" |
+| **Side** | the side of the plate that faces 265.6° on floor 30 (west, to the sea). It turns with the tower, so on floor 27 it is 269.4° and on floor 33 it is 261.9°; the button follows that same side |
+| **Pictures** | the living room by day (14:30) and at sunset (17:36), the corner bedroom by day, the balcony at sunset, a 360 of the living room at sunset, and the same window on floors 20, 30 and 38 (all on 21 September) |
+| **Everything else** | no pictures. In the floor view a quiet link, "דירה לדוגמה: מגדל C, קומה 30, פונה מערבה", takes the visitor to that tower, floor and side in one tap, and then the button appears |
+
+The renders are the P9b prototype (Blender Cycles from the world's data): `docs/research/2026-09-30-kikar-hamedina/interiors-plan.md` and `interiors-proto/README.md`.
+
+### The flow
+
+| Step | Phone (390) | Desktop (1440) |
+|---|---|---|
+| The floor view, tower C, floor 30, the window view: the button under the facings | `he-390-floor-C30-west-button.webp` | `he-1440-floor-C30-west-button.webp` |
+| Another facing: the quiet link | `he-390-floor-C30-north-link.webp` | `he-1440-floor-C30-north-link.webp` |
+| The press: the album at the floor view's time of day (sunset) | `he-390-album.webp` | `he-1440-album.webp` |
+| The album's day | `he-390-album-day.webp` | `he-1440-album-day.webp` |
+| The world at night: the album opens at sunset and says so | `he-390-album-from-night.webp` | `he-1440-album-from-night.webp` |
+| The same window on floor 20 | `he-390-album-twist20.webp` | `he-1440-album-twist20.webp` |
+| The notes, opened | `he-390-album-end.webp` | `he-1440-album-end.webp` |
+| The 360 in the fleet's viewer | `he-390-360.webp` | `he-1440-360.webp` |
+
+The same shots exist for en, fr, ru and ar (`<lang>-390-*`, `<lang>-1440-*`).
+
+### The album
+
+- **A dialog over the page.** On a phone it is full screen, one column, the picture first. On a wide screen it is a centred sheet of up to 1,180 px: the picture and its switches on the start side, and on the end side what it is, the consult button, the twist strip and the notes.
+- **The picture.** It is the living room at the floor view's own time of day: day → day, sunset → sunset.
+  - At night the album opens at sunset, its switch says "שקיעה", and the world follows it to sunset, so the picture and the switch always agree.
+  - The album's switch "יום · שקיעה" moves the world's switch with it, and the other way round.
+  - The bedroom (day) and the balcony (sunset) exist at one time only; choosing one of them sets the switch to that time.
+- **The label, always on screen.** The chip "דירה לדוגמה" sits on the picture. Under it, in a box: "דירה לדוגמה · התוכנית להמחשה, חלוקת הדירות לא פורסמה". The size line gives its source: "בגודל שפורסם בעסקאות במגדלים: 4 חדרים, 140 מ״ר (גלובס, 2.5.2025)".
+- **The 360.** "להסתכל מסביב בסלון · 360°" on the picture and the first tile of the strip open the fleet's viewer (`tour.js`, the same viewer as Rainbow's and DUO's rooms), over the album.
+  - The viewer's title: "הסלון בשקיעה · מגדל C · קומה 30", with the same chip. Its caption: the label, then "הסלון מקומה 30, 21 בספטמבר, 17:36. הריהוט והגמרים להמחשה."
+  - Escape (or ×) closes the viewer back to the album; the next Escape closes the album back to the floor view's button.
+- **The twist strip.** "אותו חלון בקומות 20, 30 ו-38": three pictures with their floor and bearing (278, 266 and 256 מעלות).
+  - The caption: "כל קומה במגדל מסתובבת 1.25 מעלות ביחס לקומה שמתחתיה, ולכן אותו חלון פונה בכל קומה לכיוון מעט אחר, והנוף זז איתו."
+  - A tap shows that window large.
+- **WhatsApp.** "ייעוץ חינם על דירה כזו" is the WhatsApp green (#0F7A63), one tap.
+  - While the album is open, the site's source line says so: "קומה 30 · מגדל C · מערבה · דירה לדוגמה".
+  - Like the fleet's 360 viewer, the album covers the site's WhatsApp bar while it is open. That is why it carries its own consult button. The bar returns when the album closes.
+- **The notes (a fold, small):** "מה בתמונות להמחשה".
+  - The layout, finishes and furniture are an illustration; the floor plans and the apartment mix are not published.
+  - Where the size comes from.
+  - The view comes from the municipality's data, from eye height on floor 30.
+  - The sun and the hour of each picture.
+  - The turn of 1.25° a floor is published; its direction is not, and the illustration turns counter-clockwise like the virtual tour.
+  - Pictures exist for one apartment so far.
+- **The accessibility button stays above the album**, and the album keeps 88 px free at its end, so nothing stays under it.
+
+### Why there is no evening picture (the main session's review, 30.9)
+
+- The P9b prototype also rendered the living room in the evening (19:06, the blue hour).
+- In it, the far towers' lit windows read as a mosaic of squares: below the owner's bar for interiors (28.9: "far higher quality").
+- So the album offers day and sunset only, and the evening file is not shipped.
+- The world's own night view stays as it is (its lit windows are labelled an illustration).
+- An evening picture comes back only with a lit-window model per floor band (the P9b README's open item).
+
+### The words, in five languages (each written for its reader)
+
+| | עברית | English | Français | Русский | العربية |
+|---|---|---|---|---|---|
+| **button** | היכנסו לדירה לדוגמה | Step inside an example apartment | Visiter un appartement témoin | Зайти в пример квартиры | ادخلوا إلى شقة نموذجية |
+| **chip** | דירה לדוגמה | Example apartment | Appartement témoin | Пример квартиры | شقة نموذجية |
+| **label** | התוכנית להמחשה, חלוקת הדירות לא פורסמה | The layout is an illustration; the apartment mix has not been published | Plan à titre d'illustration ; la répartition des appartements n'a pas été publiée | Планировка условная; состав квартир не опубликован | المخطط للتوضيح، ولم يُنشر توزيع الشقق |
+| **time** | יום · שקיעה | Day · Sunset | Jour · Coucher du soleil | День · Закат | نهار · غروب |
+| **360** | להסתכל מסביב בסלון | Look around the living room | Regarder tout autour du séjour | Осмотреть гостиную | تجوّلوا بنظركم في الصالون |
+| **consult** | ייעוץ חינם על דירה כזו | Free advice on an apartment like this | Conseil gratuit sur ce type de bien | Бесплатная консультация по квартире | استشارة مجانية حول شقة كهذه |
+
+- The Russian consult words are the longest (280 px at 15 px, measured in the page's Cyrillic): they stay on one line (no wrap, 12 px side padding, 14 px under 380 px wide), still 48 px tall.
+- The Hebrew passes the language-DNA blacklist: no "מודל", "סימולציה", "הדגמה", "טכנולוגיה" and no long dash.
+- A bearing inside a sentence is a word in Hebrew and Arabic (v104.1). "360°" sits in its own left-to-right span, so it never reads "°360".
+
+### What loads, and when
+
+Nothing of the example loads with the page, and nothing loads in the floor view before the press. The preview's receipt: `before_press: []` on every page.
+
+| On the press | Files | Bytes |
+|---|---|---|
+| The album (the picture at its time, 1,200 px WebP; the 4 tiles and the 3 twist pictures at 480 px; the manifest; the album's code) | example.js, example.css, examples.json, 1 card + 7 thumbnails | **160 KB** (about 132 KB on the wire: the code is gzipped) |
+| The 360 (the fleet's viewer; the 2,048 px panorama first, then the 4,096 px one) | tour.js, tour.css, 2 WebP panoramas | **293 KB** (the 2,048 px panorama, 63 KB, paints first; the 4,096 px one, 177 KB, sharpens it) |
+
+- **The budget in the plan:** under 700 KB before the first view, and under 3 MB per scene fully sharp.
+- **On disk:** 32 files, 2.3 MB, in `assets/project-stage/hamedina/tour/`, in the fleet's naming: `<room>-<tower><floor><side>-<time>[-2k|-card|-thumb]`.
+  - `-2k` is 2,048 px wide, `-card` 1,200 px, `-thumb` 480 px.
+  - The 360 is 4,096 × 2,048 (no suffix) and `-2k`, in JPG like the fleet's tours and in WebP, which is what the viewer loads.
+  - The pictures are cut from the Cycles finals by `scripts/interior/cut_kikar_tour.py`.
+
+### Three ways considered for the album
+
+| Option | Verdict |
+|---|---|
+| (a) The button opens the 360 at once | **Rejected.** The 360 is sunset only. The floor view's time switch would then have nothing to choose, and on a phone the label would be one line under a moving picture. |
+| (b) The stills and the twist strip inside the fleet's viewer (`tour.js`) | **Rejected.** It would be a second, flat viewer inside the 360 viewer, and a larger change to a file that Rainbow and DUO use. |
+| (c) An album that opens on the still of the floor view's own time, with the 360 one tap away in the fleet's viewer | **Chosen.** The 360 is still the fleet's viewer, with no second viewer written. `tour.js` gains only a language option (o.lang, o.dir, o.errorText), and without it the fleet's viewer is byte for byte the same in behaviour. |
+
+## 2. The Arabic phone's first screen
+
+**The problem (live 1.72.371 / 372, 390x844, scroll 0).**
+- The Arabic answer paragraph is about three lines longer than the Hebrew.
+- Its buttons sat where the WhatsApp bar rests (704-802).
+- So the bar rose 150 px and parked on the paragraph's last two lines: 9,348 px² (`before-live372-ar-390-y0.webp`).
+
+**Three ways considered:**
+
+| Option | Verdict |
+|---|---|
+| (a) Smaller type or tighter lines for the Arabic paragraph | **Rejected.** It would need 34 px, which is three or four lines of type. It is fragile per phone font and per width, and it trades reading comfort. |
+| (b) The paragraph as a second obstacle in the bar's own rule (`inc/conversion-cta.php`, site-wide) | **Deferred to v104.3.** A site-wide change needs the fleet check again (v104.1 measured 12 → 0 with the current rule). It is listed below with the one more case it would close. |
+| (c) A 50 px lane above the buttons, on Arabic phones only | **Chosen.** The bar, blocked by the buttons, takes the nearest free place: between the paragraph and the buttons, clear of both, 12 px under the paragraph. The same composition as the English, French and Russian pages at scroll 0 (paragraph → bar → buttons). |
+
+**After (local release copy, the same measure):** see the table in section 4.
+
+## 3. The accessibility button's corner
+
+**The problem (live, 390x844).**
+- The accessibility button lives in the bottom corner (the owner, 25.9.2026). That is the start side: right in Hebrew and Arabic, left in English, French and Russian.
+- The world's tab bar passes under that corner as one scrolls:
+  - **Hebrew at scroll 0:** it sits on "מבט על" (1,328 px²), right on the phone's first screen.
+  - **French and Russian at scroll 300:** it sits on "Vue du ciel" and "Сверху".
+- The live sweep, every 20 px of scroll, is in `before-live-a11y-scroll-sweep.json`:
+  - he: 9 positions;
+  - en: 21;
+  - fr and ru: 26 each;
+  - ar: 12.
+  - These are the tabs, the sheet's tower chips and the page top's buttons.
+
+**Three ways considered:**
+
+| Option | Verdict |
+|---|---|
+| (a) Move the world's tab row, or reserve the corner's width in it | **Rejected.** The four tabs need the full width on a phone. With 62 px reserved, the French and Russian tabs do not fit in one row. |
+| (b) Another corner for the button | **Rejected.** It breaks the owner's decision, and the WhatsApp bar holds the other corner. |
+| (c) AccessibleCorner: on a world page, the button keeps its corner | **Chosen.** When a control passes under it (the page top's buttons, the world's tabs, sheet and card), it takes the nearest free place just above, in its own column, and glides back when the corner is free (0.18 s; still for reduced motion). |
+
+**The rules of (c):**
+- It never moves onto the answer paragraph: with no free place clear of it, it stays in its corner.
+- It measures from its corner, so it never flickers.
+- It does not move while its panel is open.
+- The site-wide button (`inc/accessibility.php`) is not changed. This is a small script printed only on the world pages.
+
+## 4. Before and after, measured
+
+`scripts/project-stage/kh_first_screen_check.py` (extended in P9c) measures three things at 390x844, 2x, with a phone's user agent, at scroll 0 / 300 / 700.
+- **(1) The bar on a button or a tab.** FAIL.
+- **(2) The bar lifted onto the answer paragraph.** FAIL. At its resting place the bar floats over whatever scrolls under it, as on any page: that is reported as a note, not a failure.
+- **(3) The accessibility button on a world tab.** FAIL. On a page-top button it is a note.
+
+| Page · scroll | Before (live 1.72.372) | After (local release copy of 1.72.375) |
+|---|---|---|
+| he · 0 | **FAIL**: accessibility button on the first tab "מבט על" | clear: it takes the lane beside the bar (734-786), the tab free |
+| he · 300 / 700 | clear | clear |
+| en · 0 | note: bar at rest over the paragraph's last lines; a11y at rest on "Free advice" | the same notes (no free place clear of the paragraph) |
+| en · 300 / 700 | clear | clear |
+| fr · 0 | note: bar at rest over the paragraph | the same note |
+| fr · 300 | **FAIL**: a11y on the first tab "Vue du ciel" | clear (734-786, beside the bar) |
+| fr · 700 | clear | clear |
+| ru · 0 | note: bar at rest over the paragraph | the same note |
+| ru · 300 | **FAIL**: a11y on the first tab "Сверху" | clear (734-786, beside the bar) |
+| ru · 700 | clear | clear |
+| ar · 0 | **FAIL**: bar lifted onto the paragraph (644-694, 9,348 px²) | clear: the bar in the new lane (694-744), the a11y button beside it (690-742), the paragraph and the buttons free |
+| ar · 300 / 700 | clear | clear |
+| **Total** | **4 FAILs** | **0 FAILs** |
+
+**The accessibility button swept over the whole page top and the world** (every 20 px of scroll down to 2,600 px, at 390 and 1440, in 5 languages):
+- **Before (live):** it sat on a world control or a page-top button at he 9, en 21, fr 26, ru 26 and ar 12 scroll positions on the phone.
+- **After:** **0 positions on any world control** (tab, chip, sheet, card) in every language and width.
+  - What is left is the page top's buttons, at the first 100 to 300 px of scroll in en, fr and ru (phone: 13, 16 and 16 positions; desktop: 9, 11 and 11) and on the Arabic desktop (2).
+  - There the only free place above the corner is the answer paragraph, so the button stays in its corner by rule.
+- The receipts: `before-live-a11y-scroll-sweep.json`, and `receipt-run1-5lang.json` → `a11y` (all five languages).
+- In the review re-run (he, ar, ru; `receipt.json`), the only other things under the corner are the world's moving map labels ("שדרה ושביל אופניים"). The corner ignores those on purpose, like the WhatsApp bar does since v104.1: they move with the camera, and the button floats over the map as over a picture.
+
+**The example apartment, all 10 pages (5 languages x 390/1440, `receipt-run1-5lang.json` → `example`; re-run after the review for he, ar and ru, `receipt.json`):**
+- The button is in the floor view on tower C, floor 30, west.
+- The press opens the album at the floor view's time.
+- The album's "day" moves the world to day; a world at night opens the album at sunset (its switch pressed on sunset) and the world follows it there.
+- The 360 opens in the fleet's viewer, in the page's language and direction.
+- Escape goes back to the album, then to the button (focus returns to it).
+- The WhatsApp source line carries "דירה לדוגמה" (in each language) while the album is open.
+- There are no console errors other than the two blocked analytics requests every preview run has.
+
+**What is left, measured (notes, not failures):**
+- At scroll 0 in English, French and Russian the paragraph fills the phone's first screen down to the buttons. The bar at rest covers its last lines, as before; they scroll up from under it.
+- The accessibility button stays at rest on the English "Free advice" button's empty end at scroll 0. The only free place above it is the paragraph.
+
+## 5. What changed, file by file
+
+| File | Change |
+|---|---|
+| `assets/project-stage/world/world.js` | + the `examples` option. The button (or the quiet link) under the facings, in the open sheet and in the folded one; the album's import on the press; `nl:example`; the time of day passed both ways; " · דירה לדוגמה" on the WhatsApp source line while the album is open. It shipped in 1.72.373 with the main session's phone fix (v104.4 in 374 keeps it), inert until 375 puts `examples` in the page config. |
+| `assets/project-stage/world/world.css` | + `.nlw-btn--ex` (the button: ink, a gold house icon, 46 px) and `.nlw-exlink` (the quiet link: sand, a dashed hairline, a gold dot). It shipped in 373. |
+| `assets/project-stage/world/example.js`, `example.css` (new) | the album |
+| `assets/project-stage/tour.js`, `tour.css` | the viewer's language (o.lang, o.dir, o.errorText); the fleet's viewer unchanged without them |
+| `assets/project-stage/hamedina/tour/` (new) | `examples.json` + 31 pictures |
+| `inc/project-stage.php` | `hamedina_ps_patch375.py`, 7 hunks, all inside Kikar Hamedina's own code: the 'examples' config and page config, the mount, the analytics line, AccessibleCorner, the Arabic lane. `ps_identity_proof375.py`: Rainbow, DUO, Dimri and Ashira, he and en, byte for byte the same. |
+
+## 6. Open, for the next notches
+
+- **(1) v104.3.** The paragraph as a soft obstacle in the bar's own rule, site-wide. It closes one more case measured here: Hebrew at 360 px wide at scroll 0, where the bar still rises onto the paragraph's last line. The live measure is in the P9c report.
+- **(2) More example apartments,** per the plan's render matrix: towers A and B, the other sides, three floor bands. About 41 hours on this laptop, or 2-3 hours on a rented GPU (the owner's question).
+- **(3) The turn's direction** (clockwise or counter-clockwise). It moves every facing and the twist strip. Verify it from a photo before more renders.
+- **(4) CC0 furniture** (the owner's OK to download): the largest step up for close-ups.
+
+## 7. v104.13 (1.10, loop turn 22): the evening joins the album
+
+- **Why:** the album had day and sunset only. A world at night opened it at sunset. The first evening render was rejected: its far towers were a checkerboard mosaic.
+- **The new evening picture** (`interiors-proto/living-evening-v2.jpg`, committed 442d654c):
+  - Blender Cycles, the same scene;
+  - the lit windows rendered by interior mapping (van Dongen, CGI 2008): rooms with depth behind each window, warm and varied, lit in runs along a floor, with the dark structure between them;
+  - no downlight reflections in the glass; the lamps on, and a cove light;
+  - **21 September, 19:00**, the sun 5.06° below the horizon by the world's own sun calculation;
+  - the camera 45 cm to the side of the day/sunset one, still facing the sea (260.6°).
+- **The release gate's verdict:** at card size (1200 px) it is a premium blue-hour picture next to the sunset hero. At 2048 px the far windows still read as computed.
+  - So the evening ships at **card size only**: its srcset stops at 1200w (no -2k file).
+  - The manifest marks it with `"max": 1200`, and the album honours that.
+- **The design:**
+  - The time switch reads **יום · שקיעה · ערב** (Day · Sunset · Evening; Jour · Coucher du soleil · Soir; День · Закат · Вечер; نهار · غروب · مساء). These are the plan's words (interiors-plan.md, the words table).
+  - The living-room tile and the caption follow the switch: "הסלון בערב · 21 בספטמבר, 19:00".
+  - The world and the album stay in step: the world's night opens the album at evening, and the album's evening sets the world to night.
+  - The chip "דירה לדוגמה" and the illustration line stay on screen, as for every picture.
+- **Not changed:** the 360 (sunset), the bedroom (day), the balcony (sunset), the twist strip (day), the buttons and the WhatsApp line.

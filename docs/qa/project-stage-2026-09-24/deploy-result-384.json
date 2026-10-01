@@ -1,0 +1,20 @@
+{
+  "released": "1.72.384",
+  "from": "1.72.383",
+  "live_before": {
+    "assets/project-stage/world/example.js": "7112c7bdb153c7494d16e73b8428837e",
+    "assets/project-stage/hamedina/tour/examples.json": "9495cde2cdd81d289d60290f53e3b239",
+    "nadlan-config.php": "13d11a2dad36a8c800afa608a26fbac3"
+  },
+  "state": "released and verified",
+  "at": "2026-10-01 06:42:50",
+  "files": {
+    "assets/project-stage/world/example.js": "bd7881063cb7c2f9286af4786fa44a35",
+    "assets/project-stage/hamedina/tour/examples.json": "a035ee8ff4b7e9e7ad1b594e2f8b823c",
+    "assets/project-stage/hamedina/tour/living-c30w-evening-card.jpg": "beffa7fa26c0f50e656966103426069e",
+    "assets/project-stage/hamedina/tour/living-c30w-evening-card.webp": "c8f8d5a8044c0edf952d6dfb7f05ee59",
+    "assets/project-stage/hamedina/tour/living-c30w-evening-thumb.webp": "e0de18d3340048f4f1e10dcf1bdcf198",
+    "nadlan-config.php": "5816091dc0f35b6abc39688b5573f742"
+  },
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.384, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
