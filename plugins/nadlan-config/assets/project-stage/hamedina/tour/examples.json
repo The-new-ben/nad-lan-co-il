@@ -93,7 +93,22 @@
      "hour": "14:30"
     }
    ],
-   "rendered": "30.9.2026 (the evening 1.10.2026, interior mapping for the lit towers; card size only), the sun of 21.9.2026 (Israel daylight time) over 32.087N 34.790E (19:00: 5.06 degrees below the horizon); tower C's floor plate turned 29 x 1.25 degrees counter-clockwise (the direction is not published)"
+   "rendered": "30.9.2026 (the evening 1.10.2026, interior mapping for the lit towers; card size only), the sun of 21.9.2026 (Israel daylight time) over 32.087N 34.790E (19:00: 5.06 degrees below the horizon); tower C's floor plate turned 29 x 1.25 degrees counter-clockwise (the direction is not published)",
+   "facilities": [
+    {
+     "id": "lobby",
+     "base": "fac-lobby-c"
+    },
+    {
+     "id": "pool",
+     "base": "fac-pool-c"
+    },
+    {
+     "id": "gym",
+     "base": "fac-gym-c"
+    }
+   ],
+   "facilities_note": "v104.22 (2.10.2026): illustrations rendered from the Kikar world by scripts/interior/kikar_facility.py; the builder puts the pool, gym and spa on a basement level (no window); the lobby is tower C's ground floor over the real square"
   }
  ]
 }

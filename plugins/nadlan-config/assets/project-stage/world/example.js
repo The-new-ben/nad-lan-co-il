@@ -45,6 +45,9 @@ const WORDS = {
     size: (rooms, sqm) => `בגודל של דירות שנמכרו במגדלים: ${rooms} חדרים, ${sqm} מ״ר`, // v104.21: no source name
     styleNames: { bare: 'העיצוב המקורי', warm: 'עץ חם', light: 'בהיר', stone: 'אבן' }, stylesLabel: 'עיצוב הדירה', stylesSub: 'רעיון להמחשה',
     styleNote: 'רעיון עיצוב להמחשה.', stylesN: (n) => `${n} סגנונות עיצוב`, // v104.21
+    inBuilding: 'בבניין', aptPlace: 'הדירה', facChip: 'מתקן לדוגמה', facCap: 'הדמיה להמחשה', // v104.22
+    fac: { lobby: ['הלובי', 'הלובי במגדל C', 'לובי בקומת הכניסה, עם עמדת שמירה.'], pool: ['הבריכה', 'הבריכה בקומת המרתף', 'הבריכה, חדר הכושר והספא נמצאים באחת מקומות המרתף.'],
+      gym: ['חדר הכושר', 'חדר הכושר בקומת המרתף', 'באחת מקומות המרתף, ליד הבריכה והספא.'] },
     sizeSrc: 'גלובס, 2.5.2025',
     from: (f0, f) => `התמונות מקומה ${f0}; בחרתם קומה ${f}, והנוף ממנה דומה מאוד`,
     todLbl: 'שעות היום', tod: { day: 'יום', sunset: 'שקיעה', evening: 'ערב' },
@@ -84,6 +87,9 @@ const WORDS = {
     size: (rooms, sqm) => `The size of apartments sold in the towers: ${rooms} rooms, ${sqm} m²`, // v104.21: no source name
     styleNames: { bare: 'Original design', warm: 'Warm wood', light: 'Light', stone: 'Stone' }, stylesLabel: 'Design the apartment', stylesSub: 'An idea, for illustration',
     styleNote: 'A design idea, for illustration.', stylesN: (n) => `${n} design styles`, // v104.21
+    inBuilding: 'In the building', aptPlace: 'The apartment', facChip: 'Example facility', facCap: 'An illustration', // v104.22
+    fac: { lobby: ['Lobby', 'The lobby of tower C', 'The entrance-floor lobby, with a concierge desk.'], pool: ['Pool', 'The pool on a basement level', 'The pool, the gym and the spa are on one of the basement levels.'],
+      gym: ['Gym', 'The gym on a basement level', 'On one of the basement levels, beside the pool and the spa.'] },
     sizeSrc: 'Globes, 2.5.2025',
     from: (f0, f) => `The pictures are from floor ${f0}; you chose floor ${f}, and its view is very close`,
     todLbl: 'Time of day', tod: { day: 'Day', sunset: 'Sunset', evening: 'Evening' },
@@ -123,6 +129,9 @@ const WORDS = {
     size: (rooms, sqm) => `À la taille des appartements vendus dans les tours : ${rooms} pièces, ${sqm} m²`, // v104.21: no source name
     styleNames: { bare: 'Design d’origine', warm: 'Bois chaleureux', light: 'Clair', stone: 'Pierre' }, stylesLabel: 'Aménager l’appartement', stylesSub: 'Une idée, à titre d’illustration',
     styleNote: 'Une idée d’aménagement, à titre d’illustration.', stylesN: (n) => `${n} styles d’aménagement`, // v104.21
+    inBuilding: 'Dans l’immeuble', aptPlace: 'L’appartement', facChip: 'Équipement à titre d’exemple', facCap: 'Illustration', // v104.22
+    fac: { lobby: ['Hall', 'Le hall de la tour C', 'Le hall d’entrée, avec un poste d’accueil.'], pool: ['Piscine', 'La piscine au sous-sol', 'La piscine, la salle de sport et le spa sont à l’un des niveaux de sous-sol.'],
+      gym: ['Salle de sport', 'La salle de sport au sous-sol', 'À l’un des niveaux de sous-sol, près de la piscine et du spa.'] },
     sizeSrc: 'Globes, 02/05/2025',
     from: (f0, f) => `Les images sont prises au ${f0}e étage ; vous avez choisi le ${f}e, dont la vue est très proche`,
     todLbl: 'Moment de la journée', tod: { day: 'Jour', sunset: 'Coucher du soleil', evening: 'Soir' },
@@ -162,6 +171,9 @@ const WORDS = {
     size: (rooms, sqm) => `Площадь как у проданных квартир в башнях: ${rooms} комнаты, ${sqm} м²`, // v104.21: no source name
     styleNames: { bare: 'Исходный дизайн', warm: 'Тёплое дерево', light: 'Светлый', stone: 'Камень' }, stylesLabel: 'Дизайн квартиры', stylesSub: 'Идея, для иллюстрации',
     styleNote: 'Идея дизайна, для иллюстрации.', stylesN: (n) => `${n} стиля дизайна`, // v104.21
+    inBuilding: 'В здании', aptPlace: 'Квартира', facChip: 'Пример', facCap: 'Иллюстрация', // v104.22
+    fac: { lobby: ['Лобби', 'Лобби башни C', 'Лобби на входном этаже, с постом охраны.'], pool: ['Бассейн', 'Бассейн на подземном этаже', 'Бассейн, тренажёрный зал и спа находятся на одном из подземных этажей.'],
+      gym: ['Тренажёрный зал', 'Тренажёрный зал на подземном этаже', 'На одном из подземных этажей, рядом с бассейном и спа.'] },
     sizeSrc: 'Globes, 02.05.2025',
     from: (f0, f) => `Снимки с ${f0}-го этажа; вы выбрали ${f}-й, вид с него почти такой же`,
     todLbl: 'Время суток', tod: { day: 'День', sunset: 'Закат', evening: 'Вечер' },
@@ -201,6 +213,9 @@ const WORDS = {
     size: (rooms, sqm) => `بمساحة الشقق المبيعة في الأبراج: ${rooms} غرف، ${sqm} م²`, // v104.21: no source name
     styleNames: { bare: 'التصميم الأصلي', warm: 'خشب دافئ', light: 'فاتح', stone: 'حجر' }, stylesLabel: 'تصميم الشقة', stylesSub: 'فكرة للتوضيح',
     styleNote: 'فكرة تصميم للتوضيح.', stylesN: (n) => `${n} أنماط تصميم`, // v104.21
+    inBuilding: 'في المبنى', aptPlace: 'الشقة', facChip: 'مرفق للتوضيح', facCap: 'رسم توضيحي', // v104.22
+    fac: { lobby: ['الردهة', 'ردهة البرج C', 'ردهة طابق الدخول، مع مكتب حراسة.'], pool: ['المسبح', 'المسبح في الطابق السفلي', 'المسبح والنادي الرياضي والسبا في أحد الطوابق السفلية.'],
+      gym: ['النادي الرياضي', 'النادي الرياضي في الطابق السفلي', 'في أحد الطوابق السفلية، بجانب المسبح والسبا.'] },
     sizeSrc: 'غلوبس، 2.5.2025',
     from: (f0, f) => `الصور من الطابق ${f0}؛ اخترتم الطابق ${f}، والإطلالة منه قريبة جداً`,
     todLbl: 'وقت اليوم', tod: { day: 'نهار', sunset: 'غروب', evening: 'مساء' },
@@ -311,10 +326,12 @@ export function openExample(o) {
     const tiles = [
       `<button class="nlex__tile nlex__tile--360" type="button" data-pano><span class="nlex__thumb"><img src="${esc(U(ex.pano.base + '-thumb.webp'))}" width="480" height="270" alt="" decoding="async"><b class="nlex__360b">${ICON360}<span dir="ltr">360°</span></b></span><span class="nlex__tl">${esc(T.tile.pano)}${Array.isArray(ex.pano.styles) && ex.pano.styles.length ? ` · ${esc(T.stylesN(ex.pano.styles.length))}` : ''}</span></button>`,
       `<button class="nlex__tile" type="button" data-room="living" aria-pressed="false"><span class="nlex__thumb"><img data-living src="${esc(U((still('living', tod) || still('living', 'sunset')).base + '-thumb.webp'))}" width="480" height="270" alt="" decoding="async"></span><span class="nlex__tl" data-living-l>${esc(T.tile.living(T.tod[tod]))}</span></button>`,
+      // v104.22: the building's rooms (360), after the apartment's own pictures
       ...['bedroom', 'balcony'].filter((r) => ex.stills.some((s) => s.room === r)).map((r) => {
         const s = ex.stills.find((x) => x.room === r);
         return `<button class="nlex__tile" type="button" data-room="${r}" aria-pressed="false"><span class="nlex__thumb"><img src="${esc(U(s.base + '-thumb.webp'))}" width="480" height="270" alt="" decoding="async"></span><span class="nlex__tl">${esc(T.tile[r])}</span></button>`;
       }),
+      ...(Array.isArray(ex.facilities) ? ex.facilities : []).filter((f) => T.fac[f.id]).map((f) => `<button class="nlex__tile nlex__tile--360" type="button" data-fac="fac-${esc(f.id)}"><span class="nlex__thumb"><img src="${esc(U(f.base + '-thumb.webp'))}" width="480" height="270" alt="" decoding="async" loading="lazy"><b class="nlex__360b">${ICON360}<span dir="ltr">360°</span></b></span><span class="nlex__tl">${esc(T.fac[f.id][0])}</span></button>`),
     ].join('');
     const twist = (ex.twist || []).map((w) => `<button class="nlex__tw" type="button" data-twist="${+w.floor}" aria-pressed="false"><span class="nlex__thumb"><img src="${esc(U(w.base + '-thumb.webp'))}" width="480" height="270" alt="" decoding="async" loading="lazy"><b class="nlex__fl">${esc(T.twistItem(w.floor))}</b></span><span class="nlex__tl">${deg(lang, Math.round(w.bearing))}</span></button>`).join('');
     body.innerHTML = `<div class="nlex__main">
@@ -340,6 +357,7 @@ export function openExample(o) {
         <details class="nlex__notes"><summary>${esc(T.notesSum)}</summary><ul>${T.notes(eyeH()).map((n) => `<li>${esc(n)}</li>`).join('')}<li>${esc(T.renders)}</li></ul></details>
       </div>`;
     for (const b of body.querySelectorAll('[data-pano]')) b.addEventListener('click', () => open360(b));
+    for (const b of body.querySelectorAll('[data-fac]')) b.addEventListener('click', () => open360(b, b.dataset.fac)); // v104.22
     for (const b of body.querySelectorAll('[data-room]')) b.addEventListener('click', () => showRoom(b.dataset.room));
     for (const b of body.querySelectorAll('[data-tod]')) b.addEventListener('click', () => { setTod(b.dataset.tod, true); });
     for (const b of body.querySelectorAll('[data-twist]')) b.addEventListener('click', () => showTwist(+b.dataset.twist));
@@ -404,17 +422,23 @@ export function openExample(o) {
   }
 
   // ------------------------------------------------------------------ the 360: the fleet's viewer (tour.js), over the album
-  function open360(btn) {
+  function open360(btn, startId) {
     if (!ex || !ex.pano) return;
     const p = ex.pano;
+    // v104.22: the building's rooms (the lobby, the basement pool and gym), illustrations, as 'fac' scenes of the same viewer
+    const facs = (Array.isArray(ex.facilities) ? ex.facilities : []).filter((f) => T.fac[f.id]);
+    const facScenes = facs.map((f) => ({ id: 'fac-' + f.id, group: 'fac', dir: 'fac-' + f.id, spot: 'fac', title: T.fac[f.id][1], note: T.fac[f.id][2],
+      src: U(f.base + '.webp'), small: U(f.base + '-2k.webp'), chip: T.facChip, caption: T.facCap + '.' }));
+    const places = facs.length ? [{ apt: true, label: T.aptPlace, floor: +ex.floor, dir: 'w' }].concat(facs.map((f) => ({ to: 'fac-' + f.id, label: T.fac[f.id][0] }))) : undefined;
     import(new URL('../tour.js' + new URL(import.meta.url).search, import.meta.url).href).then((m) => {
       if (!alive) return;
       viewer = m.openTour({
-        scenes: [{ id: p.base, dir: 'w', spot: 'living', title: T.panoTitle(o.tower, ex.floor), src: U(p.base + '.webp'), small: U(p.base + '-2k.webp'),
+        start: startId || p.base, places, placesLabel: T.inBuilding,
+        scenes: [{ id: p.base, dir: 'w', spot: 'living', floor: +ex.floor, title: T.panoTitle(o.tower, ex.floor), src: U(p.base + '.webp'), small: U(p.base + '-2k.webp'),
           note: T.panoNote(ex.floor, p.hour), chip: T.chip,
           // v104.21: the design styles (studio kit), the same room and the same look in another picture; "bare" is the original design as rendered (furnished: never "as delivered")
           styles: Array.isArray(p.styles) && p.styles.length ? [{ id: 'bare', label: T.styleNames.bare, thumb: U(p.base + '-thumb.webp') }].concat(p.styles.map((st) => ({
-            id: st.id, label: T.styleNames[st.id] || st.id, thumb: U(st.base + '-thumb.webp'), src: U(st.base + '.webp'), small: U(st.base + '-2k.webp') }))) : undefined }],
+            id: st.id, label: T.styleNames[st.id] || st.id, thumb: U(st.base + '-thumb.webp'), src: U(st.base + '.webp'), small: U(st.base + '-2k.webp') }))) : undefined }].concat(facScenes),
         stylesLabel: T.stylesLabel, stylesSub: T.stylesSub, styleNote: T.styleNote,
         chip: T.chip, caption: T.label + '.', hint: T.drag, close: T.close, lang, dir: rtl ? 'rtl' : 'ltr', errorText: T.error, opener: btn || o.opener,
         onClose: () => { viewer = null; },

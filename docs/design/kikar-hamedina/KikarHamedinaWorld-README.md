@@ -308,3 +308,25 @@ A visible `<h2>שאלות נפוצות` plus FAQPage schema.
    - On a world page, "להיכנס לדירה ולבחור סגנון" takes the buyer to the example apartment and opens its 360 at once.
    - The chosen style returns to the basket ("העיצוב": "עץ חם, נבחר בתוך הדירה ב־360°").
 4. **The album's size line** names no source.
+
+## v104.22 (2.10, V2 loop turn 6, V4 step 3): the building's rooms in the example apartment's 360
+
+**The gap (the parity table):** DUO and Rainbow walk from the apartment to the lobby and the facilities in one 360 viewer. Kikar showed the apartment only. Israeli competitors (Ashira, the shoreline towers) list long amenity menus but show no 360 of them.
+
+**What is true:**
+- The builder places the pool, the gym, the spa, the treatment rooms and the multi-purpose halls on one of the BASEMENT levels. So those rooms are drawn underground, with architectural light only: no window, no sky, never a roof pool.
+- A lobby with a concierge desk is published. Tower C's ground floor sits in the renewed square, with the park and the pond around it.
+- Everything else is an illustration, labelled once per room: the plans, the sizes, the finishes, the equipment.
+
+**The design:**
+1. **The album's gallery strip** gets one 360 tile per room after the apartment's pictures: "הלובי", "הבריכה", "חדר הכושר".
+2. **The fleet's viewer (BuildingWalk v96) opens them as one building:**
+   - the living room is "הדירה · קומה 30";
+   - the rooms are its "בבניין" bar, so a tap walks between them;
+   - a tile opens the viewer at its own room;
+   - each room carries the "מתקן לדוגמה" chip and one line, e.g. "הבריכה, חדר הכושר והספא נמצאים באחת מקומות המרתף".
+3. **Five languages.**
+
+**Next:**
+- the doors in the picture and the lift between floors (the full building walk, Maya's W1);
+- parking, missing fleet-wide.

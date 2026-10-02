@@ -1,0 +1,54 @@
+2026-10-02 06:12:01 start: lobby,pool,gym, 4096 x 2048, 96 samples, 12 threads
+2026-10-02 06:49:58 fac-lobby-c: rendered in 2276 s (96 samples)
+2026-10-02 06:49:58    | SUN bearing 262.8 alt 12.71 E 43.541 rgb [1.0, 0.669, 0.299]
+2026-10-02 06:49:58    | REPORT lobby: tower C's ground floor, double height (an illustration); the floor 0.47 m above the street, ceiling 7.05 m clear, eye 2.07 m above the street; 21.9 · 17:36 | panorama centre bearing 211.9 | eye 1.60 m above the room's floor (floor 0.47 m)
+2026-10-02 06:49:58    | REPORT    the pond (its centroid, the world's outline) yaw    -5.6 pitch  -1.7 dist   65.5 m bearing  206.3
+2026-10-02 06:49:58    | REPORT    tower A (its axis, 20 m up)              yaw    -0.1 pitch  +7.2 dist  146.2 m bearing  211.8
+2026-10-02 06:49:58    | REPORT    tower B (its axis, 20 m up)              yaw   -47.2 pitch  +9.8 dist  107.7 m bearing  164.7
+2026-10-02 06:49:58    | REPORT    the concierge desk                       yaw  -107.0 pitch  -3.8 dist    8.9 m bearing  104.9
+2026-10-02 06:49:58    | REPORT    the lounge (the coffee table)            yaw   -69.3 pitch  -9.9 dist    7.3 m bearing  142.5
+2026-10-02 06:49:58    | REPORT    the sun (21.9 · 17:36, 12.7 deg high)    yaw   +50.9 pitch +12.7 dist  102.5 m bearing  262.8
+2026-10-02 06:49:58    | DOOR lobby_main_entrance yaw +106.4 pitch -0.8 dist 14.86 m bearing 318.2
+2026-10-02 06:49:58    | DOOR lobby_lift_1 yaw -145.2 pitch -3.4 dist 5.11 m bearing 66.6
+2026-10-02 06:49:58    | DOOR lobby_lift_2 yaw -168.5 pitch -4.6 dist 3.78 m bearing 43.4
+2026-10-02 06:49:58    | DOOR lobby_lift_3 yaw +161.5 pitch -3.9 dist 4.42 m bearing 13.4
+2026-10-02 06:49:58    | RENDER lobby | 4096 x 2048, 96 samples, 12 threads, exposure -1.55 | objects 1536
+2026-10-02 06:50:05 fac-lobby-c: cut ok
+2026-10-02 07:23:22 fac-pool-c: rendered in 1997 s (96 samples)
+2026-10-02 07:23:22    | REPORT pool: the residents' pool on a basement level (the builder: 'on one of the basement levels'), level -1 and its place an illustration; pool 7.5 x 20.0 m, 1.4 m deep; hall 15 x 28 m, 4.8 m clear; no window | panorama centre bearing 211.9 | eye 1.60 m above the room's floor (floor -6.00 m)
+2026-10-02 07:23:22    | REPORT    the onyx wall (its middle)               yaw    +0.0 pitch  +1.8 dist   25.4 m bearing  211.9
+2026-10-02 07:23:22    | REPORT    the pool's far end                       yaw    +0.0 pitch  -4.3 dist   21.5 m bearing  211.9
+2026-10-02 07:23:22    | REPORT    the loungers (the middle pair)           yaw   +28.2 pitch  -5.5 dist   12.5 m bearing  240.1
+2026-10-02 07:23:22    | REPORT    the stone bench                          yaw   -32.3 pitch  -4.8 dist   13.5 m bearing  179.6
+2026-10-02 07:23:22    | DOOR pool_entrance yaw +121.8 pitch -2.9 dist 5.89 m bearing 333.7
+2026-10-02 07:23:22    | RENDER pool | 4096 x 2048, 96 samples, 12 threads, exposure -0.60 | objects 948
+2026-10-02 07:23:29 fac-pool-c: cut ok
+2026-10-02 07:46:55 fac-gym-c: rendered in 1405 s (96 samples)
+2026-10-02 07:46:55    | REPORT gym: the residents' gym on a basement level (the builder: 'on one of the basement levels'), level -1 and its place an illustration; room 11 x 18 m, 3.6 m clear; no window | panorama centre bearing 211.9 | eye 1.60 m above the room's floor (floor -6.00 m)
+2026-10-02 07:46:55    | REPORT    the power rack                           yaw    +0.0 pitch  -1.9 dist   12.0 m bearing  211.9
+2026-10-02 07:46:55    | REPORT    the treadmills (their middle)            yaw   -47.7 pitch  -7.7 dist    4.5 m bearing  164.1
+2026-10-02 07:46:55    | REPORT    the dumbbell rack                        yaw   +52.7 pitch  -7.5 dist    6.2 m bearing  264.5
+2026-10-02 07:46:55    | REPORT    the moss wall (its middle)               yaw   -44.5 pitch  +1.5 dist    7.9 m bearing  167.4
+2026-10-02 07:46:55    | REPORT    the mirror wall (its middle)             yaw   +45.0 pitch  -0.7 dist    7.8 m bearing  256.9
+2026-10-02 07:46:55    | DOOR gym_entrance yaw -135.0 pitch -3.0 dist 5.66 m bearing 76.9
+2026-10-02 07:46:55    | RENDER gym | 4096 x 2048, 96 samples, 12 threads, exposure -0.30 | objects 583
+2026-10-02 07:47:02 fac-gym-c: cut ok
+2026-10-02 07:47:02 done: lobby,pool,gym
+2026-10-02 07:47:21 note: the lobby is rendered again: the canopy's trees within 320 m of the eye are now built leaf by leaf (crown variants, the world's places and radii); the first lobby render showed kikar_world's ball crowns at eye level
+2026-10-02 07:47:21 start: lobby, 4096 x 2048, 96 samples, 12 threads
+2026-10-02 08:26:05 fac-lobby-c: rendered in 2324 s (96 samples)
+2026-10-02 08:26:05    | SUN bearing 262.8 alt 12.71 E 43.541 rgb [1.0, 0.669, 0.299]
+2026-10-02 08:26:05    | REPORT lobby: tower C's ground floor, double height (an illustration); the floor 0.47 m above the street, ceiling 7.05 m clear, eye 2.07 m above the street; 21.9 · 17:36 | panorama centre bearing 211.9 | eye 1.60 m above the room's floor (floor 0.47 m)
+2026-10-02 08:26:05    | REPORT    the pond (its centroid, the world's outline) yaw    -5.6 pitch  -1.7 dist   65.5 m bearing  206.3
+2026-10-02 08:26:05    | REPORT    tower A (its axis, 20 m up)              yaw    -0.1 pitch  +7.2 dist  146.2 m bearing  211.8
+2026-10-02 08:26:05    | REPORT    tower B (its axis, 20 m up)              yaw   -47.2 pitch  +9.8 dist  107.7 m bearing  164.7
+2026-10-02 08:26:05    | REPORT    the concierge desk                       yaw  -107.0 pitch  -3.8 dist    8.9 m bearing  104.9
+2026-10-02 08:26:05    | REPORT    the lounge (the coffee table)            yaw   -69.3 pitch  -9.9 dist    7.3 m bearing  142.5
+2026-10-02 08:26:05    | REPORT    the sun (21.9 · 17:36, 12.7 deg high)    yaw   +50.9 pitch +12.7 dist  102.5 m bearing  262.8
+2026-10-02 08:26:05    | DOOR lobby_main_entrance yaw +106.4 pitch -0.8 dist 14.86 m bearing 318.2
+2026-10-02 08:26:05    | DOOR lobby_lift_1 yaw -145.2 pitch -3.4 dist 5.11 m bearing 66.6
+2026-10-02 08:26:05    | DOOR lobby_lift_2 yaw -168.5 pitch -4.6 dist 3.78 m bearing 43.4
+2026-10-02 08:26:05    | DOOR lobby_lift_3 yaw +161.5 pitch -3.9 dist 4.42 m bearing 13.4
+2026-10-02 08:26:05    | RENDER lobby | 4096 x 2048, 96 samples, 12 threads, exposure -1.55 | objects 2988
+2026-10-02 08:26:12 fac-lobby-c: cut ok
+2026-10-02 08:26:12 done: lobby

@@ -69,8 +69,8 @@ Every turn takes the first open item. Each item is ticked with evidence (live, r
     | Representative + video call | ✓ hero "שיחת וידאו עם נציג", `#nlsch`, the shared room | ✓ | ✓ the same three (live) | Test that the shared room carries the world's selection (Maya D2) |
     | Plans | ✓ floor slice | ✓ floor slice | ✓ key plan, 4 corner apartments (v104.18) | Room level inside the apartment (D1) |
     | 360 of the apartment | ✓ per floor and direction | ✓ | ✓ C30 west: living 360 + 5 stills | More floors and directions |
-    | Lobby | ✓ fac-lobby 360 | ✓ | ✗ | Concept lobby render, labelled |
-    | Pool, gym, spa | ✓ pool and wellness 360 | ✓ club, roof pool | ✗ (they are in a basement, per the builder) | Concept basement pool and gym, labelled, never on a roof |
+    | Lobby | ✓ fac-lobby 360 | ✓ | ✓ **1.72.393**: tower C's double-height lobby over the real square (illustration) | Doors and the lift in the picture (the building walk) |
+    | Pool, gym, spa | ✓ pool and wellness 360 | ✓ club, roof pool | ✓ **1.72.393**: the basement pool and gym, no window, as published (illustration) | A spa room |
     | Parking | ✗ | ✗ | ✗ | A fleet-wide gap: parking 360 (1,626 spaces are sourced) |
     | Building walk (door → lift → lobby → facility) | ✓ v96 | ✓ v96 | ✗ | Maya's W1: one continuous path, back to the same choice |
     | Shops and cafés outside | the area map | the area map | ✓ the walk on the square + the places tab with cafés | Street-level 360 at the square's cafés (the "We Love You Too" café) |
@@ -185,6 +185,23 @@ Every turn does ALL of these, not only the current phase:
   - **(c) `verify_kh`** as above.
 
 ## Scale-up ledger (newest on top)
+
+- **2.10, V2 loop turn 6 (V4 step 3): the building's rooms in the example apartment's 360.** LIVE 1.72.393 (v104.22, DS version 166).
+  - **Web (2.10):** [ynet: Ashira's wellness and balance complexes](https://www.ynet.co.il/article/sy93umhg0) and the shoreline luxury towers list long amenity menus but show none of them in 360. Ours walks into them.
+  - **Renders:** a helper agent wrote scripts/interior/kikar_facility.py (reusing kikar_world's data) and render_kikar_facilities.py.
+    - The lobby (tower C's double-height ground floor, the real square, park, pond and tower A beyond the glass; the near canopy rebuilt leaf by leaf after the first render showed ball trees): 2,324 s.
+    - The basement pool (20 × 7.5 m, no window, backlit onyx): 1,997 s.
+    - The gym (no window): 1,405 s.
+    - 18 web files. Door yaws recorded for the walk.
+  - **Wiring:**
+    - example.js passes the rooms as 'fac' scenes of the fleet viewer, with a "בבניין" bar (הדירה · הלובי · הבריכה · חדר הכושר) and one 360 tile per room.
+    - Notes: "הבריכה, חדר הכושר והספא נמצאים באחת מקומות המרתף". The chip: "מתקן לדוגמה".
+  - **Runner 393:** 370 checks OK, first run.
+  - **Live, real taps at 390 and 1440:** the tiles open the rooms; the bar walks lobby → pool → apartment (floor 30, with its 4 styles). The styles and basket regression OK. Errors 0. Source audit GREEN.
+  - **NEXT:**
+    - V4 step 4: the building walk. The apartment door → lift → lobby/basement, using the recorded door yaws (BuildingWalk v96 doors + lift panel).
+    - Then parking (missing fleet-wide) and a spa room.
+    - Then V4 closes with the full table re-measured, and V5 begins.
 
 - **2.10, V2 loop turn 5 (V4 step 2): design styles inside the example apartment.** LIVE 1.72.392 (v104.21, DS version 165).
   - **Web (2.10):**
