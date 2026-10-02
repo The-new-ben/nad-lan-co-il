@@ -1,0 +1,60 @@
+# Kikar Hamedina film: frames pack progress (V6)
+
+One line per clip: time, folder, frames, status. Written by the capture scripts as each clip lands.
+
+- 20:37:21 | window-album-day-16x9 | 135 frames | done, png sequence %04d.png
+- 20:37:46 | window-album-day-9x16 | 135 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:38:13 | window-album-sunset-16x9 | 135 frames | done, png sequence %04d.png
+- 20:38:32 | pick-16x9 | 330 frames | done, png sequence %04d.png
+- 20:38:34 | fly-in-16x9 | 270 frames | done, png sequence %04d.png
+- 20:38:40 | window-album-sunset-9x16 | 135 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:39:08 | window-album-evening-16x9 | 135 frames | done, png sequence %04d.png
+- 20:39:20 | window-day-16x9 | 135 frames | done, png sequence %04d.png
+- 20:39:37 | window-album-evening-9x16 | 135 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:40:04 | window-sunset-16x9 | 135 frames | done, png sequence %04d.png
+- 20:40:27 | fly-in-9x16 | 270 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:40:47 | around-outdoors-16x9 | 210 frames | done, png sequence %04d.png
+- 20:40:57 | window-evening-16x9 | 135 frames | done, png sequence %04d.png
+- 20:42:10 | styles-original-16x9 | 120 frames | done, png sequence %04d.png
+- 20:42:38 | pick-9x16 | 330 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:42:41 | around-food-16x9 | 210 frames | done, png sequence %04d.png
+- 20:43:11 | styles-warm-wood-16x9 | 120 frames | done, png sequence %04d.png
+- 20:43:26 | window-day-9x16 | 135 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- note: around-outdoors-16x9 / around-food-16x9 (with name cards) renamed to around-*-names-16x9 (extras: business names visible); the main around clips are re-shot icons-only
+- 20:44:07 | styles-light-16x9 | 120 frames | done, png sequence %04d.png
+- 20:44:11 | window-sunset-9x16 | 135 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:45:08 | window-evening-9x16 | 135 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:45:13 | styles-stone-16x9 | 120 frames | done, png sequence %04d.png
+- 20:46:04 | pick-16x9 | 330 frames | done, png sequence %04d.png
+- 20:46:15 | building-lobby-16x9 | 120 frames | done, png sequence %04d.png
+- 20:47:23 | around-outdoors-9x16 | 210 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:47:35 | building-pool-16x9 | 120 frames | done, png sequence %04d.png
+- 20:48:16 | around-outdoors-16x9 | 210 frames | done, png sequence %04d.png
+- 20:48:41 | building-gym-16x9 | 120 frames | done, png sequence %04d.png
+- 20:49:31 | around-food-9x16 | 210 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:49:42 | building-spa-16x9 | 120 frames | done, png sequence %04d.png
+- 20:50:18 | around-food-16x9 | 210 frames | done, png sequence %04d.png
+- 20:50:21 | building-parking-16x9 | 120 frames | done, png sequence %04d.png
+- 20:50:38 | styles-original-9x16 | 120 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:51:36 | styles-warm-wood-9x16 | 120 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:52:24 | pick-en-16x9 | 330 frames | done, png sequence %04d.png
+- 20:52:29 | styles-light-9x16 | 120 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:53:23 | styles-stone-9x16 | 120 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:54:15 | building-lobby-9x16 | 120 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:54:16 | around-outdoors-en-16x9 | 210 frames | done, png sequence %04d.png
+- 20:55:20 | building-pool-9x16 | 120 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:55:59 | around-food-en-16x9 | 210 frames | done, png sequence %04d.png
+- 20:56:19 | building-gym-9x16 | 120 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:56:55 | building-spa-9x16 | 120 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:57:28 | building-parking-9x16 | 120 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 20:59:19 | pick-9x16 | 330 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 21:01:09 | around-outdoors-9x16 | 210 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 21:02:50 | around-food-9x16 | 210 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 21:04:41 | pick-en-9x16 | 330 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 21:06:30 | around-outdoors-en-9x16 | 210 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 21:08:19 | around-food-en-9x16 | 210 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 21:10:42 | styles-original-9x16 | 120 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 21:11:31 | styles-warm-wood-9x16 | 120 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 21:12:17 | styles-light-9x16 | 120 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 21:13:00 | styles-stone-9x16 | 120 frames | done, H.264 mp4 (CRF 12, yuv420p) + poster.png (middle frame)
+- 21:13:49 | pack complete: 46 clip folders (24 x 16x9 PNG, 22 x 9x16 mp4), manifest.json, durations.txt, contact-sheet.jpg

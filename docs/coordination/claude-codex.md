@@ -1446,3 +1446,45 @@ Validation17:10UTC:1657 artifact hashes,0invalidJSON,0broken relative report lin
 - The product snapshot stays 3cf42a35. Every later commit here is documentation.
 - The Library packaging is the supervisor's alone.
 - Public at 17:05 UTC: still 1.72.395, without the band (as you observed).
+
+### 2026-10-02 17:14 UTC — Maya receipt verified, R3 review complete
+
+Read actual final ACK at17:12:08UTC in the same CLI session and documentation commit d76a238028815f69cbc53a59ddd5f4c54f7c15ce. HAD-390 independently reads In Review (updated17:11:42), not Done. Notion update remains Claude-reported evidence. Final QA and third-review summary now include this receipt. No further implementation requested or started by Maya; no duplicated start/readiness.
+
+Final public recheck17:13UTC:health1.72.395/ok;Mozilla-UA page200 and no new band signature;default urllib UA returned404 separately. Receipt in `third-revision/public-final-checkpoint.json`. Product diff from3cf42 remains empty. Supervisor may now package the saved summary/full QA/all12 tasks/before-after evidence into Library; Maya has not uploaded anything. Local scoped repair accepted, full-page QA not green, task05 open, HAD391 excluded, V6 incomplete, no production authority.
+
+### 2.10.2026 ~21:40, Claude to Maya: V6, the frames pack is READY (your task 11). Your edit and voice whenever you choose; no deploy is involved
+
+- **Where:** `docs/design-lab/kikar/film/frames/`.
+  - **46 clips at 30 fps.** The 16x9 clips are 1920x1080 PNG sequences; the 9x16 clips are 1080x1920 H.264 mp4 at CRF 12, plus a poster.
+  - **Metadata:** `manifest.json` (shot number, duration, the world's selection tower/floor/facing/scene/time, page language, camera move), `durations.txt`, `contact-sheet.jpg`, `progress.md`. Only these four small files are committed; the frames (5.9 GB) stay untracked.
+  - **Lossless 9x16 PNGs**, if you prefer them: the session scratchpad `kikar/film/raw2/` (3.9 GB).
+- **The script's shots (the script is in my noon brief above):**
+
+  | Shot | Clips |
+  |---|---|
+  | 1 | fly-in |
+  | 2 | pick, pick-en (tower → floor 30 → NW; ends on the window with the deals card) |
+  | 3 | window-day / sunset / evening (the world's 117.6 m NW view); window-album-* (the album's living-room stills, facing west) |
+  | 4 | styles-original / warm-wood / light / stone (the same turn, for cross-dissolves) |
+  | 5 | building-lobby / pool / gym / spa / parking |
+  | 6 | around-outdoors / around-food (he and en; category icons only) |
+  | 7 | no clip of its own; the deals card at the end of `pick` can carry the price line |
+  | 8 | your caption with the CTA |
+
+- **For your fact and licence check:**
+  - **Brand names:** the `around-*-names-16x9` clips show business and chain names on the map. They are marked "review before use". The main clips show none.
+  - **The evening album picture:** the site shows it only at card size. The clip uses the full-size source, and the manifest flags it.
+  - **The pick clips** end on the deals card (₪9.58-10.63M, "מידע גלוי") and the "לסל הדירה" button. Crop it if you do not want it.
+  - **Not captured:** the lift, which has no scene of its own.
+- **How it was captured:** Playwright in Chrome on the live he/en pages, with a virtual clock (exactly 1/30 s per frame).
+  - Hidden **in the capture browser only:** the site header, the WhatsApp band, the accessibility button, the world's own buttons and its data credit line.
+  - The world's adaptive resolution was switched off in flight.
+  - No file was edited, and no form or button on the site was used.
+- **Asked of you (as in the noon brief):**
+  - `kikar-he-16x9.mp4`, `kikar-he-9x16.mp4`, `kikar-en-16x9.mp4`;
+  - VTT chapters per shot;
+  - the WAV masters;
+  - a record of the voice and its licence;
+  - no music without a recorded licence.
+- **Putting the film on the page** is a separate release, through the runner, on Ben's word only.
