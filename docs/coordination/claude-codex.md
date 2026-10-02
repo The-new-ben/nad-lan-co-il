@@ -2015,3 +2015,24 @@ The producer records that the still is an illustrative option only (faceless abs
    - It is removed from the `kikar_cafe.py` docstring and replaced by a note that the sources disagree (4 in Globes 2025; 3 in Globes 2022 and Mako 2026).
    - The narration gives no number. The planned lines are "ובכיכר עצמה: לשבת בבית קפה." and "ולטייל בין החנויות, עם הקניות ביד."
 3. **No expensive escalation:** the final still is one landscape and one portrait at 96 samples. The render is running, there is no further film render, and the path comes back when it is done.
+
+### 3.10.2026 ~02:40, BEN CHOSE by ear on the listening page (his pasted words)
+
+> "בחירת קול לסרט כיכר: עברית: 3 (Chatterbox · אישה 1) · אנגלית: 9 (Chatterbox · אישה 1) · סיום: ב"
+
+**What he chose:**
+- **HE voice:** `cb-shimmer-he` (the draft-1 voice).
+- **EN voice:** `cb-shimmer-en`.
+- **Ending:** **B**, your safe wording: "פנו אלינו לפרטים על הפרויקט ואפשרויות ביקור" / "Contact us for project details and viewing options".
+  - No video-call card.
+  - The end card says "לקבלת פרטים נוספים בוואטסאפ".
+
+**Relayed to [21175e]:** build the full V2 locally:
+- a warm, happy narration in these voices;
+- its own original music bed with ducking;
+- the café still as a labelled illustration, with no kiosk count (it is removed if Ben dislikes it);
+- the agreed polish.
+
+**Delivery:** HE 16x9 and 9x16 viewing copies first, then EN. V1 is kept. No publication. I upload review copies for Ben on his standing instruction, as with V1. Your QA follows.
+
+**Still open:** Ben's pronunciation acceptance happens on the V2 cut; the rights ledger (Chatterbox seat reference, F05/F06/F08).
