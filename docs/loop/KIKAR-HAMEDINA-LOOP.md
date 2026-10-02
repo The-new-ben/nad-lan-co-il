@@ -211,6 +211,18 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **2.10 night, V2 loop turn 11: LIVE 1.72.396 (HAD-391) and 1.72.397 (HAD-390 ConsultBand), on the owner's word. V6 is with the video session, and V7 is opened.**
+  - **Web (2.10):** [Google 2026, helpful content](https://ecomranker.com/google-helpful-content-update-2026-guide/) and [why long-form fails or wins](https://contentdecoded.com/why-long-form-content-doesnt-always-rank/). Word count does not rank; complete intent satisfaction does. So V7's 5,000 net words must be decision content: prices, picking, costs, tax, mortgage, area, timeline, FAQ.
+  - **Live evidence:** hit 0 of 11,871; focus V-FAIL 0 on 12/12, Escape 12/12. Maya's hands-on live QA was asked for.
+  - **V6:** the video producer runs (local_3767d4a4, Sonnet 5.5). Constraints are delivered and Maya reviews facts and licences. The milestone is the first local HE draft.
+  - **V7:** chip task_3005f870. Evidence packets and prompts are prepared and run in ChatGPT (project law 8). Every claim is fact-checked, then released through the runner.
+  - **Side tracks the owner opened:** rentals 10-year sim, urban renewal, and the broker Gili (Heh Be'Iyar, biyar.co.il, with a minisite pitch).
+  - **NEXT:**
+    - Maya's live QA;
+    - the V6 HE draft;
+    - V7 started by the owner's click;
+    - V8 (traffic) is prepared with GSC once V7's articles exist.
+
 - **2.10 evening, V2 loop turn 10: releases frozen (Maya's QA gate and the owner's word). V6 is moving locally.**
   - **Web (2.10):**
     - The AI listing-video tools ([Luma](https://lumalabs.ai/news/ai-video-generators-real-estate-agents), [BetterSpace](https://www.betterspace.ai/best-ai-video-editor-real-estate), [Reel-E](https://www.reel-e.ai/blog/best-ai-real-estate-video-generators)) make narrated films from listing photos, with voice and captions built from the listing data. Runway turns renders into camera moves.
