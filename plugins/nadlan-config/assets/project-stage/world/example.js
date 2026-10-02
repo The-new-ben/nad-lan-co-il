@@ -46,6 +46,7 @@ const WORDS = {
     styleNames: { bare: 'העיצוב המקורי', warm: 'עץ חם', light: 'בהיר', stone: 'אבן' }, stylesLabel: 'עיצוב הדירה', stylesSub: 'רעיון להמחשה',
     styleNote: 'רעיון עיצוב להמחשה.', stylesN: (n) => `${n} סגנונות עיצוב`, // v104.21
     inBuilding: 'בבניין', aptPlace: 'הדירה', facChip: 'מתקן לדוגמה', facCap: 'הדמיה להמחשה', // v104.22
+    walk: { exit: 'יציאה מהדירה', exitSub: 'למעלית', toLift: 'למעלית', title: 'לאן?', note: 'מעבר להמחשה', close: 'סגירה', here: 'אתם כאן', back: 'חזרה', floorN: (f) => `קומה ${f}`, aptSub: 'דירה לדוגמה', lobbySub: 'קומת הכניסה', baseSub: 'קומת המרתף' }, // v104.23
     fac: { lobby: ['הלובי', 'הלובי במגדל C', 'לובי בקומת הכניסה, עם עמדת שמירה.'], pool: ['הבריכה', 'הבריכה בקומת המרתף', 'הבריכה, חדר הכושר והספא נמצאים באחת מקומות המרתף.'],
       gym: ['חדר הכושר', 'חדר הכושר בקומת המרתף', 'באחת מקומות המרתף, ליד הבריכה והספא.'] },
     sizeSrc: 'גלובס, 2.5.2025',
@@ -88,6 +89,7 @@ const WORDS = {
     styleNames: { bare: 'Original design', warm: 'Warm wood', light: 'Light', stone: 'Stone' }, stylesLabel: 'Design the apartment', stylesSub: 'An idea, for illustration',
     styleNote: 'A design idea, for illustration.', stylesN: (n) => `${n} design styles`, // v104.21
     inBuilding: 'In the building', aptPlace: 'The apartment', facChip: 'Example facility', facCap: 'An illustration', // v104.22
+    walk: { exit: 'Leave the apartment', exitSub: 'to the lift', toLift: 'To the lift', title: 'Where to?', note: 'An illustrated move', close: 'Close', here: 'You are here', back: 'Back', floorN: (f) => `Floor ${f}`, aptSub: 'Example apartment', lobbySub: 'Entrance floor', baseSub: 'Basement level' }, // v104.23
     fac: { lobby: ['Lobby', 'The lobby of tower C', 'The entrance-floor lobby, with a concierge desk.'], pool: ['Pool', 'The pool on a basement level', 'The pool, the gym and the spa are on one of the basement levels.'],
       gym: ['Gym', 'The gym on a basement level', 'On one of the basement levels, beside the pool and the spa.'] },
     sizeSrc: 'Globes, 2.5.2025',
@@ -130,6 +132,7 @@ const WORDS = {
     styleNames: { bare: 'Design d’origine', warm: 'Bois chaleureux', light: 'Clair', stone: 'Pierre' }, stylesLabel: 'Aménager l’appartement', stylesSub: 'Une idée, à titre d’illustration',
     styleNote: 'Une idée d’aménagement, à titre d’illustration.', stylesN: (n) => `${n} styles d’aménagement`, // v104.21
     inBuilding: 'Dans l’immeuble', aptPlace: 'L’appartement', facChip: 'Équipement à titre d’exemple', facCap: 'Illustration', // v104.22
+    walk: { exit: 'Sortir de l’appartement', exitSub: 'vers l’ascenseur', toLift: 'Vers l’ascenseur', title: 'Où aller ?', note: 'Déplacement illustré', close: 'Fermer', here: 'Vous êtes ici', back: 'Retour', floorN: (f) => `${f}e étage`, aptSub: 'Appartement témoin', lobbySub: 'Rez-de-chaussée', baseSub: 'Sous-sol' }, // v104.23
     fac: { lobby: ['Hall', 'Le hall de la tour C', 'Le hall d’entrée, avec un poste d’accueil.'], pool: ['Piscine', 'La piscine au sous-sol', 'La piscine, la salle de sport et le spa sont à l’un des niveaux de sous-sol.'],
       gym: ['Salle de sport', 'La salle de sport au sous-sol', 'À l’un des niveaux de sous-sol, près de la piscine et du spa.'] },
     sizeSrc: 'Globes, 02/05/2025',
@@ -172,6 +175,7 @@ const WORDS = {
     styleNames: { bare: 'Исходный дизайн', warm: 'Тёплое дерево', light: 'Светлый', stone: 'Камень' }, stylesLabel: 'Дизайн квартиры', stylesSub: 'Идея, для иллюстрации',
     styleNote: 'Идея дизайна, для иллюстрации.', stylesN: (n) => `${n} стиля дизайна`, // v104.21
     inBuilding: 'В здании', aptPlace: 'Квартира', facChip: 'Пример', facCap: 'Иллюстрация', // v104.22
+    walk: { exit: 'Выйти из квартиры', exitSub: 'к лифту', toLift: 'К лифту', title: 'Куда?', note: 'Условный переход', close: 'Закрыть', here: 'Вы здесь', back: 'Назад', floorN: (f) => `${f}-й этаж`, aptSub: 'Пример квартиры', lobbySub: 'Входной этаж', baseSub: 'Подземный этаж' }, // v104.23
     fac: { lobby: ['Лобби', 'Лобби башни C', 'Лобби на входном этаже, с постом охраны.'], pool: ['Бассейн', 'Бассейн на подземном этаже', 'Бассейн, тренажёрный зал и спа находятся на одном из подземных этажей.'],
       gym: ['Тренажёрный зал', 'Тренажёрный зал на подземном этаже', 'На одном из подземных этажей, рядом с бассейном и спа.'] },
     sizeSrc: 'Globes, 02.05.2025',
@@ -214,6 +218,7 @@ const WORDS = {
     styleNames: { bare: 'التصميم الأصلي', warm: 'خشب دافئ', light: 'فاتح', stone: 'حجر' }, stylesLabel: 'تصميم الشقة', stylesSub: 'فكرة للتوضيح',
     styleNote: 'فكرة تصميم للتوضيح.', stylesN: (n) => `${n} أنماط تصميم`, // v104.21
     inBuilding: 'في المبنى', aptPlace: 'الشقة', facChip: 'مرفق للتوضيح', facCap: 'رسم توضيحي', // v104.22
+    walk: { exit: 'الخروج من الشقة', exitSub: 'إلى المصعد', toLift: 'إلى المصعد', title: 'إلى أين؟', note: 'انتقال توضيحي', close: 'إغلاق', here: 'أنتم هنا', back: 'رجوع', floorN: (f) => `الطابق ${f}`, aptSub: 'شقة نموذجية', lobbySub: 'طابق الدخول', baseSub: 'الطابق السفلي' }, // v104.23
     fac: { lobby: ['الردهة', 'ردهة البرج C', 'ردهة طابق الدخول، مع مكتب حراسة.'], pool: ['المسبح', 'المسبح في الطابق السفلي', 'المسبح والنادي الرياضي والسبا في أحد الطوابق السفلية.'],
       gym: ['النادي الرياضي', 'النادي الرياضي في الطابق السفلي', 'في أحد الطوابق السفلية، بجانب المسبح والسبا.'] },
     sizeSrc: 'غلوبس، 2.5.2025',
@@ -428,13 +433,19 @@ export function openExample(o) {
     // v104.22: the building's rooms (the lobby, the basement pool and gym), illustrations, as 'fac' scenes of the same viewer
     const facs = (Array.isArray(ex.facilities) ? ex.facilities : []).filter((f) => T.fac[f.id]);
     const facScenes = facs.map((f) => ({ id: 'fac-' + f.id, group: 'fac', dir: 'fac-' + f.id, spot: 'fac', title: T.fac[f.id][1], note: T.fac[f.id][2],
-      src: U(f.base + '.webp'), small: U(f.base + '-2k.webp'), chip: T.facChip, caption: T.facCap + '.' }));
+      src: U(f.base + '.webp'), small: U(f.base + '-2k.webp'), chip: T.facChip, caption: T.facCap + '.',
+      doors: Array.isArray(f.door) ? [{ to: 'lift', at: f.door, label: T.walk.toLift }] : undefined })); // v104.23
     const places = facs.length ? [{ apt: true, label: T.aptPlace, floor: +ex.floor, dir: 'w' }].concat(facs.map((f) => ({ to: 'fac-' + f.id, label: T.fac[f.id][0] }))) : undefined;
     import(new URL('../tour.js' + new URL(import.meta.url).search, import.meta.url).href).then((m) => {
       if (!alive) return;
       viewer = m.openTour({
         start: startId || p.base, places, placesLabel: T.inBuilding,
+        // v104.23 (BuildingWalk): the lift's stops: the example apartment's floor, the lobby, the basement's rooms
+        lift: facs.length ? { title: T.walk.title, note: T.walk.note, stops: [{ floor: +ex.floor, label: T.walk.floorN(ex.floor), sub: T.walk.aptSub }].concat(
+          facs.map((f) => ({ to: 'fac-' + f.id, label: T.fac[f.id][0], sub: f.id === 'lobby' ? T.walk.lobbySub : T.walk.baseSub }))) } : undefined,
+        liftClose: T.walk.close, hereLabel: T.walk.here, backLabel: T.walk.back, floorN: T.walk.floorN,
         scenes: [{ id: p.base, dir: 'w', spot: 'living', floor: +ex.floor, title: T.panoTitle(o.tower, ex.floor), src: U(p.base + '.webp'), small: U(p.base + '-2k.webp'),
+          doors: facs.length && Array.isArray(p.door) ? [{ to: 'lift', at: p.door, label: T.walk.exit, sub: T.walk.exitSub }] : undefined, // v104.23
           note: T.panoNote(ex.floor, p.hour), chip: T.chip,
           // v104.21: the design styles (studio kit), the same room and the same look in another picture; "bare" is the original design as rendered (furnished: never "as delivered")
           styles: Array.isArray(p.styles) && p.styles.length ? [{ id: 'bare', label: T.styleNames.bare, thumb: U(p.base + '-thumb.webp') }].concat(p.styles.map((st) => ({

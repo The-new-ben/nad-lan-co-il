@@ -330,3 +330,16 @@ A visible `<h2>שאלות נפוצות` plus FAQPage schema.
 **Next:**
 - the doors in the picture and the lift between floors (the full building walk, Maya's W1);
 - parking, missing fleet-wide.
+
+## v104.23 (2.10, V2 loop turn 7, V4 step 4): the building walk
+
+**The gap:** DUO and Rainbow walk from the apartment's door to the lift and its floors. Kikar's rooms were reached only by a bar or a tile.
+
+**The design (the fleet's BuildingWalk v96, every connection an illustration):**
+1. **In the living room's 360**, "יציאה מהדירה · למעלית" stands in the picture at the hall door. The door was located in the render itself: yaw −128.2°, pitch −2.75°. The door is flush and painted like the wall, so the button is what shows where it is.
+2. **The lift panel "לאן?"** (with "מעבר להמחשה") lists:
+   - floor 30 (the example apartment, marked "אתם כאן" when you are in it);
+   - the lobby (the entrance floor);
+   - the pool and the gym (the basement level).
+3. **In the lobby, the pool and the gym,** "למעלית" stands at their lift or entrance (located in their renders), so the walk goes both ways.
+4. **Every word of the viewer is in the page's language:** the lift, "אתם כאן", "חזרה", and the floor on the apartment's place ("The apartment · Floor 30"). The shared viewer's Hebrew stays the default for DUO and Rainbow.

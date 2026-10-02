@@ -184,7 +184,9 @@ export function openTour(o) {
     for (const { p, b } of placeBtns) {
       const here = p.apt ? cur.group === 'apt' : cur.id === p.to;
       b.setAttribute('aria-current', here ? 'location' : 'false');
-      if (p.apt) b.textContent = (p.label || 'הדירה') + (cur.group === 'apt' && cur.floor != null ? ' · קומה ' + cur.floor : (lastFloor != null ? ' · קומה ' + lastFloor : ''));
+      // 1.72.394: the floor's word in the page's language (o.floorN; Hebrew stays the default)
+      const fN = (f) => (typeof o.floorN === 'function' ? o.floorN(f) : 'קומה ' + f);
+      if (p.apt) b.textContent = (p.label || 'הדירה') + (cur.group === 'apt' && cur.floor != null ? ' · ' + fN(cur.floor) : (lastFloor != null ? ' · ' + fN(lastFloor) : ''));
       // on a phone the row scrolls: the place one stands in comes into view
       if (here && placesBar.scrollWidth > placesBar.clientWidth + 1) {
         const r = b.getBoundingClientRect(), pr = placesBar.getBoundingClientRect();

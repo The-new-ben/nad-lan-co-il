@@ -72,7 +72,7 @@ Every turn takes the first open item. Each item is ticked with evidence (live, r
     | Lobby | ✓ fac-lobby 360 | ✓ | ✓ **1.72.393**: tower C's double-height lobby over the real square (illustration) | Doors and the lift in the picture (the building walk) |
     | Pool, gym, spa | ✓ pool and wellness 360 | ✓ club, roof pool | ✓ **1.72.393**: the basement pool and gym, no window, as published (illustration) | A spa room |
     | Parking | ✗ | ✗ | ✗ | A fleet-wide gap: parking 360 (1,626 spaces are sourced) |
-    | Building walk (door → lift → lobby → facility) | ✓ v96 | ✓ v96 | ✗ | Maya's W1: one continuous path, back to the same choice |
+    | Building walk (door → lift → lobby → facility) | ✓ v96 | ✓ v96 | ✓ **1.72.394**: the hall door → "לאן?" lift (floor 30, lobby, basement pool and gym) → "למעלית" back; the doors located in the renders | Out to the street (the world's walk on the square) |
     | Shops and cafés outside | the area map | the area map | ✓ the walk on the square + the places tab with cafés | Street-level 360 at the square's cafés (the "We Love You Too" café) |
     | Film | ✗ | ✓ 49 s | ✗ | V6 |
 - [ ] **V5. Competitors side by side.**
@@ -185,6 +185,23 @@ Every turn does ALL of these, not only the current phase:
   - **(c) `verify_kh`** as above.
 
 ## Scale-up ledger (newest on top)
+
+- **2.10, V2 loop turn 7 (V4 step 4): the building walk.** LIVE 1.72.394 (v104.23, DS version 167).
+  - **Doors located in the renders:**
+    - the living room's hall door: yaw −128.2°, pitch −2.75°, through kikar_interior.py's KH_DIAG hook (no script change);
+    - the lobby's lift portal, the pool's and the gym's entrances: from kikar_facility.py's KF_LOCATE.
+  - **example.js** gives the fleet viewer (BuildingWalk v96):
+    - the doors ("יציאה מהדירה · למעלית", "למעלית");
+    - the lift ("לאן?": floor 30 / the lobby / the pool / the gym);
+    - every viewer word in the page's language.
+  - **tour.js:** the apartment place's floor word goes through o.floorN. Before, the English page read "The apartment · קומה 30". Hebrew stays the default.
+    - The branch file equalled the live one (line endings only), so the release changed exactly these lines.
+  - **Runner 394:** 373 checks OK, first run.
+  - **Live, real taps (he 390 and 1440, en 390):** door → lift (4 stops) → pool → "למעלית" → floor 30. "The apartment · Floor 30". Rainbow's tour unchanged ("הדירה · קומה 25"). Errors 0.
+  - **NEXT:**
+    - the parking 360 (missing fleet-wide; 1,620-1,626 spaces on 3 basement levels are sourced) and a spa room;
+    - then V4 closes: re-measure the whole table on the live pages;
+    - then V5 (competitors side by side).
 
 - **2.10, V2 loop turn 6 (V4 step 3): the building's rooms in the example apartment's 360.** LIVE 1.72.393 (v104.22, DS version 166).
   - **Web (2.10):** [ynet: Ashira's wellness and balance complexes](https://www.ynet.co.il/article/sy93umhg0) and the shoreline luxury towers list long amenity menus but show none of them in 360. Ours walks into them.
