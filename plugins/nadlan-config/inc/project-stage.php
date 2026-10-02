@@ -1244,7 +1244,7 @@ if (root && host && c.world) {
     const fit = () => {
       raf = 0;
       const pan = document.getElementById('nla11y-panel');
-      if (pan && !pan.hidden) return; if (getComputedStyle(document.body).getPropertyValue('--nlcta-band').trim() === '1') { if (lift) { lift = 0; box.style.transform = ''; } return; } // ConsultBand (v104.25): the band at the foot holds the button
+      if (pan && !pan.hidden) return;
       if (document.querySelector('#nlps .nlw--full')) return; // the world fills the screen above the page: nothing to clear
       const r = btn.getBoundingClientRect();
       if (!r.width) return;

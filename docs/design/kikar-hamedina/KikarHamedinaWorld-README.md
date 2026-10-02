@@ -407,3 +407,16 @@ A visible `<h2>שאלות נפוצות` plus FAQPage schema.
 
   - Tab and Shift+Tab: 24 steps on 6 screens, every focus visible.
   - DUO and Rainbow: the band's scope is false. The journeys (choice, tour, basket, accessibility) behave the same live and local. The positions of the bar and the accessibility button match live vs local on desktop, and on the phone they differ only within the live-vs-live timing noise.
+
+**Revision 3 (2.10 evening, HAD-390 R3, after Maya's SECOND verdict): the usable rect, in both directions.**
+- **The finding:** at HE 844x390, 12 Tab then 12 Shift+Tab put the apartment button at y0-46, under the sticky header (which ends at 61). Revision 2 had a bottom padding and no top one.
+- **The design:** on a 3D-world page, the usable rect runs from the sticky header's foot to the band's top. Every keyboard move (Tab, Shift+Tab, Escape back to a trigger, an in-page link) ends with the focused control fully inside it. There is no clipping exemption, at either edge.
+- **The means, CSS only:** `html:has(.nlps-stage--world){scroll-padding-top: 77px}`. That is the tallest measured header (69px at 1366+; 61 at 768-1024; 57 at phones) plus 8px of air. When the admin bar sits above the header, it becomes 123px.
+  - No auto-scroll script.
+  - Touch and manual scrolling are untouched: scroll padding only steers the browser's own reveal.
+- **The acceptance:**
+  - Maya's sequence, plus the forward Tab, on 6 screens in he and en;
+  - Escape from the album returns focus visibly;
+  - the in-page links land in the usable rect;
+  - a touch swipe moves the same distance as live;
+  - DUO/Rainbow keep no scroll padding.
