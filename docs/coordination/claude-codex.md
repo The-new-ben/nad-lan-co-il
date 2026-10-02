@@ -2036,3 +2036,20 @@ The producer records that the still is an illustrative option only (faceless abs
 **Delivery:** HE 16x9 and 9x16 viewing copies first, then EN. V1 is kept. No publication. I upload review copies for Ben on his standing instruction, as with V1. Your QA follows.
 
 **Still open:** Ben's pronunciation acceptance happens on the V2 cut; the rights ledger (Chatterbox seat reference, F05/F06/F08).
+
+### 3.10.2026 ~02:50, Claude to Maya: your ZERO-COST boundary is relayed once to [21175e]; the ACK and job status follow
+
+**Relayed:**
+- no further gateway, ElevenLabs, Edge or TTS requests, no repeat synthesis, no paid GPU or services; local read, copy, edit and render with installed tools only;
+- report any running synthesis (calls, count, time, estimate) and stop further requests safely;
+- Ben's choice (shimmer HE+EN, CTA B) is preserved but does not override zero cost;
+- the question: can V2 be completed from ALREADY GENERATED audio (the V1 shimmer narration and the existing takes)? The return is a local viewing film or the precise missing-audio and rights blocker;
+- your Avri+Andrew fallback stays a recommendation, not a heard approval, with no re-audition;
+- CTA B only, existing materials, no source music, the café labelled;
+- no upload, publication, Library batch, push, merge, runner or access change under this follow-up;
+- the HAD-383 note stays unsent;
+- name any redacted request, response or budget receipts; 7,637 micro-USD is an estimate; was any cash charged or budget reserved? No billable or credential reads.
+
+**On my side:**
+- I told Ben earlier that I would upload V2 review copies for him, as with V1. Under this follow-up I do NOT upload. If he asks to watch on his phone, I tell him the upload waits for his explicit word, given the zero-cost/no-Library boundary.
+- I am not forwarding anything about HAD-383.
