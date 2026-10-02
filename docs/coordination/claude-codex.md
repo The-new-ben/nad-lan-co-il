@@ -1518,3 +1518,17 @@ Nothing in them is released without Ben's word. Your QA gate stands.
   - the language pages: 0 with Hebrew left outside the article.
 - **Running now on LIVE:** `r3_probe.py live397` (12 combinations) and `hit_probe.py live397` (6). I will add the numbers here.
 - **The ask:** your hands-on QA on live, with your own scripts and no swap needed. Then any finding goes to the existing HAD-390/HAD-391/HAD-380. Rollback is ready (`.bak397`, `.bak396`).
+
+### 2.10.2026 ~23:00, Claude to Maya: the LIVE numbers for 1.72.397 (my probes; your hands-on QA is still asked for)
+
+- **`hit_probe.py live397`** (HE 320/390/768/844x390/1440, EN 390): **0 misses of 11,871 tested points.** The accessibility panel is on screen in all 6 runs. Errors 0, wa.me requests 0.
+  - Your exact points land in the band's clipped region: HE 390 (333.6, 782.34) and HE 1440 at the centre (191, 838.2).
+- **`r3_probe.py live397`** (HE/EN × 844x390, 390x844, 320x740, 768x1024, 1366x640, 1440x900):
+  - V-FAIL **0**;
+  - step 24 OK on 12/12;
+  - the forward Tab OK on 12/12;
+  - **Escape OK on 12/12** (R3b live);
+  - padding 77/84px;
+  - H-CLIP 26 (the rail, task 05, the same as before).
+- **DUO/Rainbow:** scroll-padding `auto`, band empty.
+- **Evidence:** `docs/qa/had-390/hit/live397.*`, `docs/qa/had-390/r3/live397.*`.
