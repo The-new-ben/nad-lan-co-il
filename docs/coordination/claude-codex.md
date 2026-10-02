@@ -2207,3 +2207,33 @@ RELEASE IN PROGRESS 1.72.404 by rentals HAD-383 [951153], start 01:47
 - **Honesty note for your review:** the tower behind the café and shops is ONE round banded tower, not the three Kikar towers. It is labelled as an illustration, but a viewer may read it as Kikar. I flag it, not block it.
 
 **Plan:** once 1.72.404 is DONE, these four go to the media library as review copies for Ben's morning, on his direct "upload everything". V1 stays on the page. The page changes only on his choice.
+
+
+### 3.10.2026 ~02:00, Claude (the video session) to Maya: rentals TUTORIAL film, three local silent drafts (zero new cost; LOCAL ONLY)
+
+Requested by the HAD-383 rentals session (script `docs/rentals/film-script.md`, branch claude/rentals-proptech-v2; every "Voice" line approved by them word for word as a caption). Folder: `C:/Users/777/nad-lan/nad-lan-co-il/docs/design-lab/films/rentals/tutorial/` (README.md, facts.md, film-manifest.json, licence-record.json).
+
+| file | size | duration / frames | bytes | SHA-256 | viewing copy bytes |
+|---|---|---|---|---|---|
+| `rentals-tutorial-he-16x9.mp4` | 1920x1080 | 90.0 s / 2700 | 26,071,802 | `bd49f8ac0daded87b4300301360841766f9b1951695adb3d3dc4b91ef827adb5` | 6,344,675 |
+| `rentals-tutorial-he-9x16.mp4` | 1080x1920 | 90.0 s / 2700 | 15,514,006 | `f479c520a68f982a261105ca4b500b672866f0f394690f694a03412171e51a8f` | 4,432,147 |
+| `rentals-tutorial-en-16x9.mp4` | 1920x1080 | 90.0 s / 2700 | 33,567,031 | `5c56a5eb23cbd002efefb467918fdebfef192d43f7d4b6ba97bac1cae34b8437` | 7,600,652 |
+
+- SILENT: no synthesis (zero-cost boundary). Words are captions + VTT (he, en). Sound = an excerpt of our own generated pad (seed 20261003), about -22 LUFS.
+- Pictures = the rentals session's screenshots read in place (demo data, labelled in the product). The product is not live (administrators first, release 1.72.404 coming); the corner tag on every frame says "internal draft, not for publication".
+- Left out per the script: rent collection by the site, any price, "artificial intelligence" (facts.md lists each caption's evidence).
+- Evidence class: code (frame counts, loudness measured) + eyes (frames pulled from the finished HE 16:9 and HE 9:16 films looked at; EN 16:9 looked at as stills of the same renderer). Not heard by a human (it has no voice).
+- Open: narration (boundary), the owner's word before any publication.
+RELEASE ROLLED BACK 1.72.404 run 1 (a test check bug; live 1.72.403 ok) - rerun by rentals HAD-383 [951153], start 01:58
+RELEASE DONE 1.72.404 (rentals HAD-383 [951153], released and verified 02:06; live 1.72.404 = WANT_LIVE for the next runner; 405 is the Kikar loop's). Rentals v2.2 for administrators only; visitors keep v1. Fleet first round had 2 transient 502s (/professionals/, rainbow t361), clean after the purge.
+
+### 3.10.2026 ~02:10, root: the V2 review copies are in the media library for Ben's morning (his direct "upload everything")
+
+- **Uploaded after RELEASE DONE 1.72.404**, all byte-identical faststart remuxes of the decoded viewing copies above:
+  - 8130: v2-he-16x9 (15,082,209 B)
+  - 8131: v2-he-9x16
+  - 8132: v2-en-16x9
+  - 8133: v2-en-9x16
+  - 8134-8137: posters
+- **Check:** all four stream (HTTP 206 video/mp4).
+- **Not changed:** no page changed. The pages still show V1 (1.72.401/402). Which film stays on the page, and whether Hebrew carries two, is Ben's decision in the morning.

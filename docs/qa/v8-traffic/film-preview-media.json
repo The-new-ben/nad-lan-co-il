@@ -22,21 +22,61 @@
  "kikar-hamedina-film-en-16x9-preview.mp4": {
   "id": 8126,
   "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-en-16x9-preview.mp4",
-  "bytes": 15620962
+  "existing": true
  },
  "kikar-hamedina-film-en-9x16-preview.mp4": {
   "id": 8127,
   "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-en-9x16-preview.mp4",
-  "bytes": 10142035
+  "existing": true
  },
  "kikar-hamedina-film-en-16x9-preview-poster.jpg": {
   "id": 8128,
   "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-en-16x9-preview-poster.jpg",
-  "bytes": 175489
+  "existing": true
  },
  "kikar-hamedina-film-en-9x16-preview-poster.jpg": {
   "id": 8129,
   "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-en-9x16-preview-poster.jpg",
-  "bytes": 109294
+  "existing": true
+ },
+ "kikar-hamedina-film-v2-he-16x9-preview.mp4": {
+  "id": 8130,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-he-16x9-preview.mp4",
+  "bytes": 15082209
+ },
+ "kikar-hamedina-film-v2-he-9x16-preview.mp4": {
+  "id": 8131,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-he-9x16-preview.mp4",
+  "bytes": 9685360
+ },
+ "kikar-hamedina-film-v2-en-16x9-preview.mp4": {
+  "id": 8132,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-en-16x9-preview.mp4",
+  "bytes": 15218996
+ },
+ "kikar-hamedina-film-v2-en-9x16-preview.mp4": {
+  "id": 8133,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-en-9x16-preview.mp4",
+  "bytes": 9739361
+ },
+ "kikar-hamedina-film-v2-he-16x9-preview-poster.jpg": {
+  "id": 8134,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-he-16x9-preview-poster.jpg",
+  "bytes": 179448
+ },
+ "kikar-hamedina-film-v2-he-9x16-preview-poster.jpg": {
+  "id": 8135,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-he-9x16-preview-poster.jpg",
+  "bytes": 107145
+ },
+ "kikar-hamedina-film-v2-en-16x9-preview-poster.jpg": {
+  "id": 8136,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-en-16x9-preview-poster.jpg",
+  "bytes": 182842
+ },
+ "kikar-hamedina-film-v2-en-9x16-preview-poster.jpg": {
+  "id": 8137,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-en-9x16-preview-poster.jpg",
+  "bytes": 109066
  }
 }

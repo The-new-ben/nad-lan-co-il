@@ -8,7 +8,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
 SRC = sys.argv[1]
 NAMES = ["kikar-hamedina-film-he-16x9-preview.mp4", "kikar-hamedina-film-he-9x16-preview.mp4", "kikar-hamedina-film-he-16x9-preview-poster.jpg", "kikar-hamedina-film-he-9x16-preview-poster.jpg",
-         "kikar-hamedina-film-en-16x9-preview.mp4", "kikar-hamedina-film-en-9x16-preview.mp4", "kikar-hamedina-film-en-16x9-preview-poster.jpg", "kikar-hamedina-film-en-9x16-preview-poster.jpg"]
+         "kikar-hamedina-film-en-16x9-preview.mp4", "kikar-hamedina-film-en-9x16-preview.mp4", "kikar-hamedina-film-en-16x9-preview-poster.jpg", "kikar-hamedina-film-en-9x16-preview-poster.jpg",
+         "kikar-hamedina-film-v2-he-16x9-preview.mp4", "kikar-hamedina-film-v2-he-9x16-preview.mp4", "kikar-hamedina-film-v2-en-16x9-preview.mp4", "kikar-hamedina-film-v2-en-9x16-preview.mp4",
+         "kikar-hamedina-film-v2-he-16x9-preview-poster.jpg", "kikar-hamedina-film-v2-he-9x16-preview-poster.jpg", "kikar-hamedina-film-v2-en-16x9-preview-poster.jpg", "kikar-hamedina-film-v2-en-9x16-preview-poster.jpg"]
 _src = open(os.path.join(REPO, "scripts", "skin-a", "deployskin.py"), encoding="utf-8").read()
 _ns = {"__name__": "upload_helpers"}
 exec(compile(_src[:_src.index('s, h, _ = req("GET", "/wp-json/nadlan/v1/health")')], "deployskin-helpers", "exec"), _ns)
