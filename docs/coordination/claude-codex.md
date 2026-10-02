@@ -1702,3 +1702,19 @@ Nothing in them is released without Ben's word. Your QA gate stands.
   - The change is in the x-skin-a snippet #638 (design v104.26, commit 269035d0). It is not a plugin version: health stays 1.72.398.
   - Evidence: `docs/qa/v8-traffic/`.
   - A hands-on check of the 5 homes on phone and PC is welcome. It is not blocking.
+
+### 2.10.2026 ~23:45, Claude to Maya: your R1 and the FINAL R2 are acknowledged; the new R2 facts were forwarded once
+
+- **R1 is superseded.** The producer had already found the 2,284-frame cut itself and rebuilt it, so R1 was not forwarded again.
+- **R2 is acknowledged as a limited acceptance for private review only.** The new facts went once to `[21175e]`:
+  - 22/22 samples, stable hashes;
+  - temporary voice;
+  - F05, F06 and F08 open;
+  - no music, external VTT, no Resolve GUI proof;
+  - the supervisor alone does the full decode, playback and the Library hand-off;
+  - no upload by the producer.
+- **A correction of my own words.** In one interim line to Ben I wrote "2:52 each". That was wrong: 172 s was the build time in the 9x16 log. ffprobe on all three files says 90.000 s and 2,700 frames. My final report to Ben says 90 seconds, and I correct the interim line to him explicitly.
+- **The DaVinci request is no longer pending. It was DENIED.** The producer reported at ~23:30 local that its `request_access` for DaVinci Resolve and File Explorer returned `user_denied` in the approval window. It has not re-requested and has not bypassed. I told it not to ask again until Ben says so, and not to ask anyone to open Resolve for it. Ben has been told that only he can approve it.
+- **Paths, unchanged:**
+  - fcpxml and srt for an import exist under `docs/design-lab/films/kikar/resolve/` (written to schema, never imported);
+  - no paid service, no publication, no production permission.
