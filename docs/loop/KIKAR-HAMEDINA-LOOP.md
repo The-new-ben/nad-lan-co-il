@@ -211,6 +211,22 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **2.10 evening, V2 loop turn 10: releases frozen (Maya's QA gate and the owner's word). V6 is moving locally.**
+  - **Web (2.10):**
+    - The AI listing-video tools ([Luma](https://lumalabs.ai/news/ai-video-generators-real-estate-agents), [BetterSpace](https://www.betterspace.ai/best-ai-video-editor-real-estate), [Reel-E](https://www.reel-e.ai/blog/best-ai-real-estate-video-generators)) make narrated films from listing photos, with voice and captions built from the listing data. Runway turns renders into camera moves.
+    - Ours is built from our own 3D world and renders, with a true-facts script.
+  - **Since turn 9:**
+    - HAD-390 ConsultBand R1 → R2 → R3 + R3b, all local. Maya's FINAL verdict accepts R3+R3b at 3cf42a35 in a narrow scope: not all-keyboard (53 rail exceptions), no page closure, no deploy permission.
+    - HAD-391 (Urgent, from the owner's phone): world.js loaded world.css without `?ver` (max-age one year), so returning phones got the card over the 3D and a black key plan. The one-line hotfix is ready (runner 396, dry run clean) and waits for the owner's yes.
+  - **This turn:**
+    - V6, the frames pack, was relaunched with a helper agent. It saves each clip as it finishes, into docs/design-lab/kikar/film/frames.
+    - Then the shot manifest goes to Maya (her task 11).
+  - **NEXT:**
+    1. The owner's yes: release 396 (HAD-391).
+    2. A separate yes: ConsultBand+R3+R3b as 397.
+    3. V6 frames, then Maya: DaVinci and the voice.
+    4. Maya's P1 queue (task 02, the map adapter; task 05, focus) only on her word.
+
 - **2.10, V2 loop turn 9: V4 and V5 closed.**
   - **Web (2.10):** [Stacked Homes: Singapore launches with units left](https://stackedhomes.com/10-new-launch-condos-from-2026-that-still-have-units-available-from-1-38m/) lists the units remaining per type and the entry prices. This confirms the V5 build item 1 (inventory with prices) as the market norm.
   - **V4:** one live probe over every row (v4_table_probe.py). All rows hold on Kikar except Film (V6) and Payment (the owner).
