@@ -1,0 +1,593 @@
+{
+ "he-320x740": {
+  "before": {
+   "steps": 93,
+   "tested": 813,
+   "clipped": 26,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 98,
+   "tested": 919,
+   "clipped": 28,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "album_opened": true,
+  "album_closed": true,
+  "after_modal": {
+   "steps": 14,
+   "tested": 390,
+   "clipped": 13,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    334,
+    670
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "he-360x800": {
+  "before": {
+   "steps": 82,
+   "tested": 819,
+   "clipped": 23,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 84,
+   "tested": 928,
+   "clipped": 22,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "album_opened": true,
+  "album_closed": true,
+  "after_modal": {
+   "steps": 14,
+   "tested": 388,
+   "clipped": 11,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    394,
+    730
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "he-390x844": {
+  "before": {
+   "steps": 75,
+   "tested": 808,
+   "clipped": 20,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 77,
+   "tested": 913,
+   "clipped": 26,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "exact_333.6_782.34": {
+   "hit": "WHATSAPP-BAND/BAR",
+   "exRect": [
+    30,
+    759,
+    360,
+    805
+   ],
+   "bandTop": 777,
+   "scrollY": 1300
+  },
+  "album_opened": true,
+  "album_closed": true,
+  "after_modal": {
+   "steps": 14,
+   "tested": 401,
+   "clipped": 10,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    438,
+    774
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "he-412x915": {
+  "before": {
+   "steps": 67,
+   "tested": 821,
+   "clipped": 22,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 68,
+   "tested": 949,
+   "clipped": 21,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "album_opened": true,
+  "album_closed": true,
+  "after_modal": {
+   "steps": 14,
+   "tested": 407,
+   "clipped": 11,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    509,
+    845
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "he-768x1024": {
+  "before": {
+   "steps": 43,
+   "tested": 842,
+   "clipped": 18,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 45,
+   "tested": 975,
+   "clipped": 19,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    618,
+    954
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "he-1440x900": {
+  "before": {
+   "steps": 45,
+   "tested": 834,
+   "clipped": 22,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 46,
+   "tested": 924,
+   "clipped": 27,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "exact_ex_centre": {
+   "hit": "WHATSAPP-BAND/BAR",
+   "exRect": [
+    38,
+    815,
+    344,
+    861
+   ],
+   "bandTop": 829,
+   "scrollY": 224,
+   "point": [
+    191,
+    838.2
+   ]
+  },
+  "exact_y815": {
+   "hit": "nlw-btn--ex",
+   "exRect": [
+    38,
+    815,
+    344,
+    861
+   ],
+   "bandTop": 829,
+   "scrollY": 224
+  },
+  "album_opened": true,
+  "album_closed": true,
+  "after_modal": {
+   "steps": 12,
+   "tested": 470,
+   "clipped": 11,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    494,
+    830
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "he-844x390": {
+  "before": {
+   "steps": 106,
+   "tested": 669,
+   "clipped": 54,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 115,
+   "tested": 753,
+   "clipped": 61,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    40,
+    320
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "he-1366x640": {
+  "before": {
+   "steps": 64,
+   "tested": 821,
+   "clipped": 25,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 65,
+   "tested": 898,
+   "clipped": 30,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    234,
+    570
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "en-320x740": {
+  "before": {
+   "steps": 100,
+   "tested": 891,
+   "clipped": 18,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 105,
+   "tested": 986,
+   "clipped": 36,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "album_opened": true,
+  "album_closed": true,
+  "after_modal": {
+   "steps": 14,
+   "tested": 357,
+   "clipped": 14,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    334,
+    670
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "en-360x800": {
+  "before": {
+   "steps": 85,
+   "tested": 887,
+   "clipped": 30,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 89,
+   "tested": 972,
+   "clipped": 25,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "album_opened": true,
+  "album_closed": true,
+  "after_modal": {
+   "steps": 14,
+   "tested": 368,
+   "clipped": 15,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    394,
+    730
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "en-390x844": {
+  "before": {
+   "steps": 76,
+   "tested": 895,
+   "clipped": 21,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 80,
+   "tested": 993,
+   "clipped": 28,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "album_opened": true,
+  "album_closed": true,
+  "after_modal": {
+   "steps": 14,
+   "tested": 367,
+   "clipped": 10,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    438,
+    774
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "en-412x915": {
+  "before": {
+   "steps": 71,
+   "tested": 894,
+   "clipped": 22,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 72,
+   "tested": 1005,
+   "clipped": 25,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "album_opened": true,
+  "album_closed": true,
+  "after_modal": {
+   "steps": 14,
+   "tested": 387,
+   "clipped": 16,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    509,
+    845
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "en-768x1024": {
+  "before": {
+   "steps": 43,
+   "tested": 919,
+   "clipped": 31,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 44,
+   "tested": 1005,
+   "clipped": 24,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    618,
+    954
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "en-1440x900": {
+  "before": {
+   "steps": 45,
+   "tested": 897,
+   "clipped": 19,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 46,
+   "tested": 1000,
+   "clipped": 18,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "album_opened": true,
+  "album_closed": true,
+  "after_modal": {
+   "steps": 12,
+   "tested": 490,
+   "clipped": 10,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    494,
+    830
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "en-844x390": {
+  "before": {
+   "steps": 106,
+   "tested": 848,
+   "clipped": 60,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 114,
+   "tested": 932,
+   "clipped": 67,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    40,
+    320
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "en-1366x640": {
+  "before": {
+   "steps": 64,
+   "tested": 895,
+   "clipped": 28,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "picked": true,
+  "after": {
+   "steps": 65,
+   "tested": 980,
+   "clipped": 37,
+   "fails": [],
+   "band": true,
+   "fail_count": 0
+  },
+  "a11y_open": {
+   "panel": [
+    234,
+    570
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "_applied": {
+  "css": 1,
+  "js": 1,
+  "a11y": 1
+ },
+ "_whatsapp_requests": 0
+}

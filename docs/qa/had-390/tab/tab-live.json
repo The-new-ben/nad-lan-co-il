@@ -1,0 +1,190 @@
+{
+ "he-390x844": {
+  "state": {
+   "exTop": 759,
+   "exBottom": 805,
+   "scrollY": 1300
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-btn.nlw-btn--ex",
+   "text": "היכנסו לדירה לדוגמה",
+   "top": 759,
+   "bottom": 805,
+   "usableTop": 57,
+   "usableBottom": 844,
+   "chrome": false,
+   "ok": true,
+   "scrollY": 1300,
+   "is_example": true
+  },
+  "steps_bad": [],
+  "steps_n": 24,
+  "errors": []
+ },
+ "en-390x844": {
+  "state": {
+   "exTop": 759,
+   "exBottom": 805,
+   "scrollY": 1479
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-btn.nlw-btn--ex",
+   "text": "Step inside an example apa",
+   "top": 759,
+   "bottom": 805,
+   "usableTop": 0,
+   "usableBottom": 844,
+   "chrome": false,
+   "ok": true,
+   "scrollY": 1479,
+   "is_example": true
+  },
+  "steps_bad": [
+   {
+    "el": "BUTTON.",
+    "text": "Education64",
+    "top": 800,
+    "bottom": 844,
+    "usableTop": 0,
+    "usableBottom": 778,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 1981
+   }
+  ],
+  "steps_n": 24,
+  "errors": []
+ },
+ "he-1440x900": {
+  "state": {
+   "exTop": 815,
+   "exBottom": 861,
+   "scrollY": 224
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-btn.nlw-btn--ex",
+   "text": "היכנסו לדירה לדוגמה",
+   "top": 815,
+   "bottom": 861,
+   "usableTop": 69,
+   "usableBottom": 826,
+   "chrome": false,
+   "ok": false,
+   "scrollY": 224,
+   "is_example": true
+  },
+  "steps_bad": [
+   {
+    "el": "BUTTON.nlw-chip.",
+    "text": "שעון השמש",
+    "top": 856,
+    "bottom": 900,
+    "usableTop": 69,
+    "usableBottom": 826,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 252
+   }
+  ],
+  "steps_n": 24,
+  "errors": []
+ },
+ "en-1440x900": {
+  "state": {
+   "exTop": 815,
+   "exBottom": 861,
+   "scrollY": 173
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-btn.nlw-btn--ex",
+   "text": "Step inside an example apa",
+   "top": 815,
+   "bottom": 861,
+   "usableTop": 0,
+   "usableBottom": 826,
+   "chrome": false,
+   "ok": false,
+   "scrollY": 173,
+   "is_example": true
+  },
+  "steps_bad": [
+   {
+    "el": "BUTTON.nlw-chip.",
+    "text": "Sun clock",
+    "top": 856,
+    "bottom": 900,
+    "usableTop": 0,
+    "usableBottom": 826,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 201
+   }
+  ],
+  "steps_n": 24,
+  "errors": []
+ },
+ "he-320x740": {
+  "state": {
+   "exTop": 660,
+   "exBottom": 706,
+   "scrollY": 1490
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-btn.nlw-btn--ex",
+   "text": "היכנסו לדירה לדוגמה",
+   "top": 660,
+   "bottom": 706,
+   "usableTop": 57,
+   "usableBottom": 740,
+   "chrome": false,
+   "ok": true,
+   "scrollY": 1490,
+   "is_example": true
+  },
+  "steps_bad": [],
+  "steps_n": 24,
+  "errors": []
+ },
+ "he-768x1024": {
+  "state": {
+   "exTop": 930,
+   "exBottom": 974,
+   "scrollY": 926
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-exlink",
+   "text": "דירה לדוגמה: מגדל C, קומה ",
+   "top": 930,
+   "bottom": 974,
+   "usableTop": 61,
+   "usableBottom": 950,
+   "chrome": false,
+   "ok": false,
+   "scrollY": 926,
+   "is_example": true
+  },
+  "steps_bad": [
+   {
+    "el": "BUTTON.nlw-chip.",
+    "text": "שעון השמש",
+    "top": 980,
+    "bottom": 1024,
+    "usableTop": 61,
+    "usableBottom": 950,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 943
+   }
+  ],
+  "steps_n": 24,
+  "errors": []
+ },
+ "_applied": {},
+ "_whatsapp_requests": 0
+}

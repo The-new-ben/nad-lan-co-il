@@ -1,0 +1,327 @@
+{
+ "he-390x844": {
+  "state": {
+   "exTop": 759,
+   "exBottom": 805,
+   "scrollY": 1300
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-btn.nlw-btn--ex",
+   "text": "היכנסו לדירה לדוגמה",
+   "top": 714,
+   "bottom": 760,
+   "usableTop": 57,
+   "usableBottom": 777,
+   "chrome": false,
+   "ok": true,
+   "scrollY": 1345,
+   "is_example": true
+  },
+  "steps_bad": [
+   {
+    "el": "A.nlbslot__cta",
+    "text": "לפרטים ולהצטרפות",
+    "top": 906,
+    "bottom": 929,
+    "usableTop": 57,
+    "usableBottom": 777,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 4532
+   },
+   {
+    "el": "SUMMARY.",
+    "text": "מה בתמונה להמחשה",
+    "top": 4,
+    "bottom": 48,
+    "usableTop": 57,
+    "usableBottom": 777,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2189
+   }
+  ],
+  "steps_n": 24,
+  "errors": []
+ },
+ "en-390x844": {
+  "state": {
+   "exTop": 759,
+   "exBottom": 805,
+   "scrollY": 1479
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-btn.nlw-btn--ex",
+   "text": "Step inside an example apa",
+   "top": 714,
+   "bottom": 760,
+   "usableTop": 0,
+   "usableBottom": 777,
+   "chrome": false,
+   "ok": true,
+   "scrollY": 1524,
+   "is_example": true
+  },
+  "steps_bad": [],
+  "steps_n": 24,
+  "errors": []
+ },
+ "he-1440x900": {
+  "state": {
+   "exTop": 815,
+   "exBottom": 861,
+   "scrollY": 224
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-btn.nlw-btn--ex",
+   "text": "היכנסו לדירה לדוגמה",
+   "top": 770,
+   "bottom": 816,
+   "usableTop": 69,
+   "usableBottom": 829,
+   "chrome": false,
+   "ok": true,
+   "scrollY": 269,
+   "is_example": true
+  },
+  "steps_bad": [],
+  "steps_n": 24,
+  "errors": []
+ },
+ "en-1440x900": {
+  "state": {
+   "exTop": 815,
+   "exBottom": 861,
+   "scrollY": 173
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-btn.nlw-btn--ex",
+   "text": "Step inside an example apa",
+   "top": 770,
+   "bottom": 816,
+   "usableTop": 0,
+   "usableBottom": 829,
+   "chrome": false,
+   "ok": true,
+   "scrollY": 218,
+   "is_example": true
+  },
+  "steps_bad": [],
+  "steps_n": 24,
+  "errors": []
+ },
+ "he-320x740": {
+  "state": {
+   "exTop": 660,
+   "exBottom": 706,
+   "scrollY": 1490
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-btn.nlw-btn--ex",
+   "text": "היכנסו לדירה לדוגמה",
+   "top": 305,
+   "bottom": 351,
+   "usableTop": 57,
+   "usableBottom": 673,
+   "chrome": false,
+   "ok": true,
+   "scrollY": 1845,
+   "is_example": true
+  },
+  "steps_bad": [
+   {
+    "el": "A.nlbslot__cta",
+    "text": "לפרטים ולהצטרפות",
+    "top": 1015,
+    "bottom": 1038,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 4783
+   },
+   {
+    "el": "BUTTON.",
+    "text": "חינוך64",
+    "top": -64,
+    "bottom": -20,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2737
+   },
+   {
+    "el": "BUTTON.",
+    "text": "פארקים וספורט60",
+    "top": 0,
+    "bottom": 44,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2673
+   },
+   {
+    "el": "BUTTON.",
+    "text": "תחבורה24",
+    "top": 0,
+    "bottom": 44,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2673
+   },
+   {
+    "el": "BUTTON.",
+    "text": "קפה ומסעדות91",
+    "top": 0,
+    "bottom": 44,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2673
+   },
+   {
+    "el": "BUTTON.",
+    "text": "קניות וסידורים140",
+    "top": 0,
+    "bottom": 44,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2673
+   },
+   {
+    "el": "BUTTON.",
+    "text": "בריאות22",
+    "top": 0,
+    "bottom": 44,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2673
+   },
+   {
+    "el": "BUTTON.",
+    "text": "קהילה ותרבות33",
+    "top": 0,
+    "bottom": 44,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2673
+   },
+   {
+    "el": "BUTTON.",
+    "text": "קהילה ותרבות33",
+    "top": 0,
+    "bottom": 44,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2673
+   },
+   {
+    "el": "BUTTON.",
+    "text": "בריאות22",
+    "top": 0,
+    "bottom": 44,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2673
+   },
+   {
+    "el": "BUTTON.",
+    "text": "קניות וסידורים140",
+    "top": 0,
+    "bottom": 44,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2673
+   },
+   {
+    "el": "BUTTON.",
+    "text": "קפה ומסעדות91",
+    "top": 0,
+    "bottom": 44,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2673
+   },
+   {
+    "el": "BUTTON.",
+    "text": "תחבורה24",
+    "top": 0,
+    "bottom": 44,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2673
+   },
+   {
+    "el": "BUTTON.",
+    "text": "פארקים וספורט60",
+    "top": 0,
+    "bottom": 44,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2673
+   },
+   {
+    "el": "BUTTON.",
+    "text": "חינוך64",
+    "top": 0,
+    "bottom": 44,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2673
+   },
+   {
+    "el": "SUMMARY.",
+    "text": "מה בתמונה להמחשה",
+    "top": -197,
+    "bottom": -153,
+    "usableTop": 57,
+    "usableBottom": 673,
+    "chrome": false,
+    "ok": false,
+    "scrollY": 2481
+   }
+  ],
+  "steps_n": 24,
+  "errors": []
+ },
+ "he-768x1024": {
+  "skipped": "no [data-example]: the apartment was not chosen (True)",
+  "errors": []
+ },
+ "_applied": {
+  "css": 1,
+  "js": 1,
+  "a11y": 1
+ },
+ "_whatsapp_requests": 0
+}

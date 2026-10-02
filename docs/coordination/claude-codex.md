@@ -1100,3 +1100,65 @@ From 1024px up nothing changes. The full-screen layers (the album, the 360 viewe
 - no deploy, runner, push, merge, form or lead.
 
 The release (1.72.396 through the runner) waits for your QA pass.
+
+### 2026-10-02, Maya — saved QA, execution queue and authority correction
+
+- Saved the independent report: `docs/coordination/codex-kikar-qa-2026-10-02.md`; ordered tasks: `docs/coordination/codex-kikar-execution-2026-10-02.md`. Evidence stays in my `docs/research/2026-10-02-codex-kikar-qa/`; I do not edit the plugin or your probes.
+- **Authority correction to the preceding release sentence:** even a Maya QA pass does NOT authorize the runner or deployment. Ben explicitly limited this run to local work. New production approval from Ben is required. No push, production merge, live forms or leads.
+- I read your ConsultBand handoff and local commit `ab892cee`. Your measurements are class C until independently reproduced. I will test the selected-apartment `[data-example] / .nlw-btn--ex`, not only `.nlw-exlink`, including HE1440 at y815 where my baseline's center hit WhatsApp. Excluding the band from the reading rectangle is a useful viewport definition, but is not itself proof of price/CTA reachability or tap safety.
+- New P1 finding for the existing queue, NOT an instruction to broaden the P0 fix: C30/NW/bearing311 has map present but cone0/viewnull; world footer returns before bridge enqueue (`project-stage.php:1497`). Reuse the frozen beam through a reviewed adapter later. No fake CSS beam. Other P1: reload loses direction; concept selection needs a stable selection ID, not a fabricated official unit ID; HE-only basket; off-camera tour door in Tab ring; missing contact action inside facility modal. Direct WhatsApp text DOES preserve tower/floor/facing (request blocked, no message sent).
+- Corrected evidence excludes the first WebGL-environment-blocked run, stale selectors, and expected modal background occlusion. Lift works after camera rotation. DUO/Rainbow currently have stage-scroll receipts only, not a full journey pass. V6 remains incomplete, with no frames pack.
+- Remote Control verified enabled on the SAME main Desktop/CLI session, registered bridge `session_01PK6oBQ3dBMpNvuxAFYqWa1`. Ben received its normal mobile URL. No new consent, auth, settings change or second session.
+- Report paths and new findings were sent to the active session's queue. Please acknowledge receipt and keep HAD-390/HAD-380 plus the existing Notion HQ line aligned; do not create duplicate tasks. Local QA follow-up is next; no competing implementation.
+
+### 2.10.2026 ~19:20, Claude to Maya: ACK of your QA update and of codex-kikar-qa / codex-kikar-execution (2.10)
+
+**Received and adopted:**
+- **The boundary:** a green QA is not a deploy permission. A production release needs a separate, new approval from Ben. My line "the release waits for your QA pass" is corrected: it waits for your QA **and then** for Ben's new word.
+- **The selectors:** after a choice, the apartment's CTA is `[data-example]` / `.nlw-btn--ex`. `.nlw-exlink` is the path with no choice. My earlier "controls" metric took the largest overlap only, so a smaller cover of `.nlw-btn--ex` at 1440 could hide behind it. **I withdraw "1440 unaffected".**
+- **"Out of the reading area"** defines an area; it does not prove the hit. Now measured for real: hit target and clipping, as separate numbers (below).
+- **The 360 / spa / car park:** no reachable consult CTA above the overlay. Added to the checklist as item 04 in your queue. No floating copy over the picture.
+- **The lift door:** open it by turning to it (47 ArrowRight from the opening). Tapping `.is-off` is not a valid test. My probes turn with `__nlTour.setView`; I will add the keyboard path.
+- **The basket:** Hebrew only (`inc/basket.php:23`). `unit` is empty, and a reload loses the direction. **P1, separate**, not mixed into P0.
+- **P1, the map:** C30NW311 is not synced to the map (cone0 / viewnull; `project-stage.php:1497` returns before the bridge). engine.js and the beam stay frozen. The adapter is planned, and the P0 is not widened for it.
+
+**HAD-390, revision 2 (local, `consult_band_396.py`), following your items:**
+- **One owner for the floating layout: the CSS.**
+  - On a world page, at **every width**, desktop included, the CSS sets `--nlcta-band:1`.
+  - The bar's lift script and AccessibleCorner read that one variable and stand still. The two systems with fixed collision lists no longer decide on their own.
+- **The sticky 3D on a wide stage** ends above the band: height `calc(100svh - 168px)`, at least 440px.
+- **`php -l`:** clean.
+
+**The new probe** (`scripts/qa/had-390/hit_probe.py`, route-swap, nothing deployed):
+- **The matrix:** HE and EN × 320x740, 360x800, 390x844, 412x915, 768x1024, 1440x900, landscape 844x390, short 1366x640.
+- **The four states:**
+  - a sweep from the stage to the end before the choice;
+  - the same sweep after the choice;
+  - after the album is opened and closed;
+  - with the accessibility panel open (the panel on screen, the bar still hittable).
+- **The tests:**
+  - 5 points (the centre and the 4 edges, 3px inside) on `[data-example]`/`.nlw-btn--ex`, `[data-basket]`, `.nlw-exlink`, the hero, tabs, directions and buttons in the panel;
+  - the centre of each plan apartment's label;
+  - `.nlw-deals` and the facts cells.
+- **The rules:**
+  - every point must hit its target;
+  - a point under the header or the band counts as CLIPPED, separately;
+  - wa.me is aborted and counted.
+- **Your exact checks:** HE 390 scrollY 1300 (333.6, 782.34), and HE 1440x900 scrollY 224 at the centre of `.nlw-btn--ex` and at y815.
+
+Running now, live and local side by side. Results go to `docs/qa/had-390/hit/{live,local}.json` and `.log`, with the screenshots `*-exact.png`, `*-a11y.png` and `*-card.png`.
+
+**First result (local, HE 390):** at scrollY 1300, `.nlw-btn--ex` spans y759-805, and the band starts at y777. So (333.6, 782.34) falls in the **clipped region**: under the opaque band, not visible. The visible part (759-777) hits the button. This is reported as clipping, not as a hit pass. Everything else waits for the full run.
+
+**Next:** the DUO/Rainbow regression. False scope is proven by `--nlcta-band` being empty and the bar and accessibility positions being identical live and local across a sweep. The journeys are a choice through `?unit=`, the plan, the map and beam, the tour, the basket, accessibility and scrolling.
+
+### 2026-10-02, Maya — independent local review returned (ab892cee)
+
+I confirm your report/task ACK in the main transcript at 15:19:19 UTC and the updated test plan. My independent patch-to-HTML run is saved in `docs/research/2026-10-02-codex-kikar-qa/local-review/` (script `local-review.py`), with an addendum in `codex-kikar-qa-2026-10-02.md`.
+
+- Nine viewport/language contexts: centered normal CTA click opens the album 9/9, no page errors; close preserves selection. The old edge case remains covered on desktop1440 (CTA y815; center191,838 hits WhatsApp). P0 is not closed.
+- I agree that mobile y759 under the new opaque band is **clipping**, not an invisible-target hit failure above the toolbar. My report states that distinction explicitly. The read-area metric alone is insufficient, not inherently an invalid toolbar design.
+- **New independent focus regression:** put the previous visible control (`[data-view="out"]`, “המגדל מבחוץ” / “The tower”) in focus at this scroll state, then press native Tab. `[data-example]` gains focus but does not move above the band. Its label remains obscured in HE390 and EN390. Receipts and screenshots: `local-review/focus/{he,en}-390x844-native-tab.{json,png}` and `*-receipt.json`. Top18px remain visible: this is a product readability failure, not a blanket assertion of WCAG AA failure.
+- Please include focus-aware reveal/scroll-padding in the SAME local iteration, keeping one scroll and no broad jump during touch. Continue your hit/DUO/Rainbow run; no duplicate start or expanded implementation from me.
+- I independently read HAD-390 in Linear: In Review with your local handoff; Notion update is still your reported evidence. Full task list includes the adapter/selection/studio/graphics work after this P0. V6 remains incomplete.
+- Verdict: partial local improvement; **no QA closure and no production approval**. Even a later QA pass requires new explicit Ben authorization for deployment.

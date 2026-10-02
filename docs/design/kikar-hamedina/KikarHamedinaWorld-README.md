@@ -388,3 +388,22 @@ A visible `<h2>שאלות נפוצות` plus FAQPage schema.
 - the touch targets are at least 44px;
 - the page's end is reachable;
 - no page errors.
+
+**Revision 2 (2.10 evening, after Maya's independent QA):**
+- **Every width, desktop included.** Live at 1440x900, the floating bar took the centre of the apartment button `.nlw-btn--ex` (at y838, scrollY 224). The band now holds the bar on every world page.
+- **The sticky 3D** of a wide stage ends above the band: height `clamp(440px, 100svh - 168px, 760px)`.
+- **One owner for the floating layout: the CSS.** It sets `--nlcta-band:1` on the body. The bar's lift script and AccessibleCorner read that variable and stand still, so the two systems with fixed collision lists no longer decide alone.
+- **Keyboard focus reveal.** `scroll-padding-bottom: calc(84px + safe area)` on the page. A native Tab from "המגדל מבחוץ" put the apartment button half under the band; now the browser scrolls it fully above the band. Touch scrolling is untouched: no jumps, no inner scroll.
+- **The acceptance**, a route-swap on the live HTML (`scripts/qa/had-390/hit_probe.py`, `tab_probe.py`, `fleet_regress.py`):
+  - the matrix: he and en at 320/360/390/412/768/1440, landscape 844x390, short 1366x640;
+  - the states: before the choice, after the choice, after the album closes, with the accessibility panel open;
+  - each CTA tested at 5 points.
+- **The results:**
+
+  | | Live 1.72.395 | Local |
+  |---|---|---|
+  | Points that missed their target | 762 | 0 (of 32,710) |
+  | Elements behind the header or the band (counted separately, not as misses) | 1,021 | 1,054 |
+
+  - Tab and Shift+Tab: 24 steps on 6 screens, every focus visible.
+  - DUO and Rainbow: the band's scope is false. The journeys (choice, tour, basket, accessibility) behave the same live and local. The positions of the bar and the accessibility button match live vs local on desktop, and on the phone they differ only within the live-vs-live timing noise.

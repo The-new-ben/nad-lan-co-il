@@ -1,0 +1,177 @@
+{
+ "he-390x844": {
+  "before": {
+   "steps": 75,
+   "tested": 849,
+   "clipped": 22,
+   "fails": [
+    {
+     "k": "facts",
+     "n": "t",
+     "x": 274.5,
+     "y": 776.7,
+     "who": "WHATSAPP",
+     "el": "4.2024",
+     "scrollY": 7890
+    }
+   ],
+   "band": true,
+   "fail_count": 1
+  },
+  "picked": true,
+  "after": {
+   "steps": 77,
+   "tested": 957,
+   "clipped": 27,
+   "fails": [
+    {
+     "k": "apt",
+     "n": "l",
+     "x": 284.9,
+     "y": 529.9,
+     "who": "path.",
+     "el": "צפוןמזרח",
+     "scrollY": 1059
+    },
+    {
+     "k": "apt",
+     "n": "l",
+     "x": 284.9,
+     "y": 276.9,
+     "who": "path.",
+     "el": "צפוןמזרח",
+     "scrollY": 1312
+    },
+    {
+     "k": "facts",
+     "n": "c",
+     "x": 195,
+     "y": 776.3,
+     "who": "WHATSAPP",
+     "el": "453 דירות, בממוצע כ-150 ",
+     "scrollY": 6625
+    },
+    {
+     "k": "facts",
+     "n": "l",
+     "x": 46,
+     "y": 776.3,
+     "who": "WHATSAPP",
+     "el": "453 דירות, בממוצע כ-150 ",
+     "scrollY": 6625
+    },
+    {
+     "k": "facts",
+     "n": "r",
+     "x": 344,
+     "y": 776.3,
+     "who": "WHATSAPP",
+     "el": "453 דירות, בממוצע כ-150 ",
+     "scrollY": 6625
+    },
+    {
+     "k": "facts",
+     "n": "b",
+     "x": 274.5,
+     "y": 776.5,
+     "who": "WHATSAPP",
+     "el": "5.2024",
+     "scrollY": 8143
+    }
+   ],
+   "band": true,
+   "fail_count": 6
+  },
+  "exact_333.6_782.34": {
+   "hit": "WHATSAPP-BAND/BAR",
+   "exRect": [
+    30,
+    759,
+    360,
+    805
+   ],
+   "bandTop": 777,
+   "scrollY": 1300
+  },
+  "album_opened": true,
+  "album_closed": true,
+  "after_modal": {
+   "steps": 14,
+   "tested": 491,
+   "clipped": 10,
+   "fails": [
+    {
+     "k": "apt",
+     "n": "l",
+     "x": 284.9,
+     "y": 729.9,
+     "who": "path.",
+     "el": "צפוןמזרח",
+     "scrollY": 859
+    },
+    {
+     "k": "apt",
+     "n": "l",
+     "x": 284.9,
+     "y": 603.9,
+     "who": "path.",
+     "el": "צפוןמזרח",
+     "scrollY": 985
+    },
+    {
+     "k": "apt",
+     "n": "l",
+     "x": 284.9,
+     "y": 477.9,
+     "who": "path.",
+     "el": "צפוןמזרח",
+     "scrollY": 1111
+    },
+    {
+     "k": "apt",
+     "n": "l",
+     "x": 284.9,
+     "y": 351.9,
+     "who": "path.",
+     "el": "צפוןמזרח",
+     "scrollY": 1237
+    },
+    {
+     "k": "apt",
+     "n": "l",
+     "x": 284.9,
+     "y": 225.9,
+     "who": "path.",
+     "el": "צפוןמזרח",
+     "scrollY": 1363
+    },
+    {
+     "k": "apt",
+     "n": "l",
+     "x": 284.9,
+     "y": 99.9,
+     "who": "path.",
+     "el": "צפוןמזרח",
+     "scrollY": 1489
+    }
+   ],
+   "band": true,
+   "fail_count": 6
+  },
+  "a11y_open": {
+   "panel": [
+    438,
+    774
+   ],
+   "inView": true,
+   "barStillHittable": true
+  },
+  "errors": []
+ },
+ "_applied": {
+  "css": 1,
+  "js": 1,
+  "a11y": 1
+ },
+ "_whatsapp_requests": 0
+}

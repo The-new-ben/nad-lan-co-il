@@ -1,0 +1,146 @@
+{
+ "he-390x844": {
+  "state": {
+   "exTop": 759,
+   "exBottom": 805,
+   "scrollY": 1300
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-btn.nlw-btn--ex",
+   "text": "היכנסו לדירה לדוגמה",
+   "top": 714,
+   "bottom": 760,
+   "usableTop": 57,
+   "usableBottom": 777,
+   "chrome": false,
+   "ok": true,
+   "scrollY": 1345,
+   "is_example": true
+  },
+  "steps_bad": [],
+  "steps_n": 24,
+  "errors": []
+ },
+ "en-390x844": {
+  "state": {
+   "exTop": 759,
+   "exBottom": 805,
+   "scrollY": 1479
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-btn.nlw-btn--ex",
+   "text": "Step inside an example apa",
+   "top": 714,
+   "bottom": 760,
+   "usableTop": 0,
+   "usableBottom": 777,
+   "chrome": false,
+   "ok": true,
+   "scrollY": 1524,
+   "is_example": true
+  },
+  "steps_bad": [],
+  "steps_n": 24,
+  "errors": []
+ },
+ "he-1440x900": {
+  "state": {
+   "exTop": 815,
+   "exBottom": 861,
+   "scrollY": 224
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-btn.nlw-btn--ex",
+   "text": "היכנסו לדירה לדוגמה",
+   "top": 770,
+   "bottom": 816,
+   "usableTop": 69,
+   "usableBottom": 829,
+   "chrome": false,
+   "ok": true,
+   "scrollY": 269,
+   "is_example": true
+  },
+  "steps_bad": [],
+  "steps_n": 24,
+  "errors": []
+ },
+ "en-1440x900": {
+  "state": {
+   "exTop": 815,
+   "exBottom": 861,
+   "scrollY": 173
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-btn.nlw-btn--ex",
+   "text": "Step inside an example apa",
+   "top": 770,
+   "bottom": 816,
+   "usableTop": 0,
+   "usableBottom": 829,
+   "chrome": false,
+   "ok": true,
+   "scrollY": 218,
+   "is_example": true
+  },
+  "steps_bad": [],
+  "steps_n": 24,
+  "errors": []
+ },
+ "he-320x740": {
+  "state": {
+   "exTop": 660,
+   "exBottom": 706,
+   "scrollY": 1490
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-btn.nlw-btn--ex",
+   "text": "היכנסו לדירה לדוגמה",
+   "top": 305,
+   "bottom": 351,
+   "usableTop": 57,
+   "usableBottom": 673,
+   "chrome": false,
+   "ok": true,
+   "scrollY": 1845,
+   "is_example": true
+  },
+  "steps_bad": [],
+  "steps_n": 24,
+  "errors": []
+ },
+ "he-768x1024": {
+  "state": {
+   "exTop": 930,
+   "exBottom": 974,
+   "scrollY": 926
+  },
+  "from_found": true,
+  "tab_to_example": {
+   "el": "BUTTON.nlw-exlink",
+   "text": "דירה לדוגמה: מגדל C, קומה ",
+   "top": 896,
+   "bottom": 940,
+   "usableTop": 61,
+   "usableBottom": 953,
+   "chrome": false,
+   "ok": true,
+   "scrollY": 960,
+   "is_example": true
+  },
+  "steps_bad": [],
+  "steps_n": 24,
+  "errors": []
+ },
+ "_applied": {
+  "css": 1,
+  "js": 1,
+  "a11y": 1
+ },
+ "_whatsapp_requests": 0
+}
