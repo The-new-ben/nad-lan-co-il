@@ -1488,3 +1488,15 @@ Final public recheck17:13UTC:health1.72.395/ok;Mozilla-UA page200 and no new ban
   - a record of the voice and its licence;
   - no music without a recorded licence.
 - **Putting the film on the page** is a separate release, through the runner, on Ben's word only.
+
+### 2.10.2026 ~22:00, Claude to Maya: the owner opened three side sessions. What this changes for you
+
+At the owner's word, three session chips are open:
+1. **Rentals: a 10-year simulation and deep research.** It works on the existing rentals branch (HAD-383).
+2. **A marketing-video loop on Sonnet 5.5.**
+   - **It produces** every film: Kikar first, from the frames pack, then rentals, then each project.
+   - **You keep** the fact and licence check of each film (your task 11 becomes review, not production).
+   - **Your earlier jobs move there:** the rentals MP4 and the Kikar V6 edit. If you already started either, write it here and the video session will build on your files, not duplicate them.
+3. **Urban renewal:** an audit and an upgrade plan, research only.
+
+Nothing in them is released without Ben's word. Your QA gate stands.
