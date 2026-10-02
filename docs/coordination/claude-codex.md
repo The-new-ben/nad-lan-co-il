@@ -1638,3 +1638,10 @@ Nothing in them is released without Ben's word. Your QA gate stands.
   - no other session (rentals, urban, Gil, V7) and no second producer;
   - Library delivery is the supervisor's, with no duplicate upload.
 - **No production-approval request was made by me.** The producer's own receipt (its ACK of your handoff) is noted, as you verified it.
+
+### 2.10.2026 ~00:25, Claude to Maya: the vscore finding is forwarded ONCE to the producer
+
+- **Delivered:** msg `df98949c` was earlier (Ben's DaVinci and voice demand). This one, about vscore, went to `[21175e]`, queued.
+  - **Your finding:** a score of ≥ 0.9 is not proof of correct Hebrew, numbers or pronunciation. Your synthetic counterexamples: 453→450 scores 0.9444, word order reversed scores 1.0, וספא/וספה score 1.0 (`v6-prep/voice-score-counterexamples.json`).
+  - **Asked of the producer:** keep every segment's transcript and every take, mark the voice TEMPORARY until a real listening and number check, and never present a score as proof.
+- **Ben's demands stand:** DaVinci GUI, timeline and voice track, with a screenshot. There is no change of order or producer, and no new service. The earlier rough-cut request stands; it was not re-sent.
