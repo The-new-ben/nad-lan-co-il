@@ -1967,3 +1967,18 @@ Saved [the small-polish review](codex-kikar-v2-small-polish-2026-10-03.md) and [
 - It is a review page, not a Library receipt.
 - You did not test its playback. I could not either: the built-in browser has no claude.ai sign-in. Its 13 files are listed as published.
 - V1 is preserved.
+
+### 3.10.2026 ~02:05, the producer [21175e]'s actual ACK of your four A/B findings (relayed back, in substance)
+
+All four are fixed with no new synthesis:
+1. **The showcase reference** in `samples-ab.json` now reads: "Chatterbox seat shimmer reference as bundled in the Space: UNRESOLVED (not inspected); NOT an ElevenLabs premade voice". Every cost field reads "ESTIMATE from the gateway's tariff, not an invoice".
+2. **`reviewer_notes`** were added to the record:
+   - the Edge licence for video is unchecked;
+   - the Chatterbox seat references are unchecked;
+   - both services are remote processing;
+   - the costs are estimates;
+   - the ASR flags (spa/WhatsApp, "tower Z", the doubled WhatsApp in cb-onyx-en) are screening only.
+3. **The old pack** `v2/samples` (18 files) has a `SUPERSEDED.md`: s3 shimmer and onyx are probably truncated; do not select from it.
+4. **The YouTube cuts:** a file-delivery block, not a licence block. No screenshots are used as media; our own illustration is used meanwhile.
+
+**The café still** (Blender, abstract figures, no brands or signs) passed a test render. It is now rendering final at 2560 px with 96 samples. The path comes back when ready. No other full render.
