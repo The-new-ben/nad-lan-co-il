@@ -1,0 +1,26 @@
+{
+ "390": {
+  "css_requests": [
+   "world.css"
+  ],
+  "plan": {
+   "w": 330,
+   "h": 330,
+   "fill": "rgb(0, 0, 0)"
+  },
+  "overlap_panel_on_3d": 0,
+  "errors": []
+ },
+ "1440": {
+  "css_requests": [
+   "world.css"
+  ],
+  "plan": {
+   "w": 962,
+   "h": 962,
+   "fill": "rgb(0, 0, 0)"
+  },
+  "overlap_panel_on_3d": 0,
+  "errors": []
+ }
+}

@@ -770,7 +770,7 @@ export function mountWorld(host, opts = {}) {
   // ---------------------------------------------------------------- DOM
   if (o.injectCss && !document.querySelector('link[data-nlw-css]')) {
     const l = document.createElement('link');
-    l.rel = 'stylesheet'; l.href = new URL('./world.css', import.meta.url).href; l.setAttribute('data-nlw-css', '1');
+    l.rel = 'stylesheet'; l.href = new URL('./world.css' + new URL(import.meta.url).search, import.meta.url).href; l.setAttribute('data-nlw-css', '1'); // 1.72.396: with the module's ?ver, as example.css; without it a phone kept a year-old world.css (max-age 1 year) under the new world.js
     document.head.appendChild(l);
   }
   if (o.injectFonts && !document.querySelector('link[href*="family=Assistant"]')) {
