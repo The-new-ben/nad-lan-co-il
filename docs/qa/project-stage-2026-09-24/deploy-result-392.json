@@ -1,0 +1,41 @@
+{
+  "released": "1.72.392",
+  "from": "1.72.391",
+  "live_before": {
+    "assets/project-stage/world/world.js": "dad2f2129bbc6da0539117f09da49fa0",
+    "assets/project-stage/world/example.js": "bd7881063cb7c2f9286af4786fa44a35",
+    "assets/basket/basket.js": "7ff3521ac2f7afa015f162be684b4ae5",
+    "assets/project-stage/hamedina/tour/examples.json": "a035ee8ff4b7e9e7ad1b594e2f8b823c",
+    "nadlan-config.php": "6afa9b75ed085fbdd7e51fc1857c3532"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-02 04:47:45",
+  "files": {
+    "assets/project-stage/world/world.js": "c1295e229010b47db3e517e93622637e",
+    "assets/project-stage/world/example.js": "dbd1408d1b550e2ca191f1a7972ad538",
+    "assets/basket/basket.js": "84bf558e7b0f6bbd7ec64e7ce384ae90",
+    "assets/project-stage/hamedina/tour/examples.json": "0fac43f3545b0a244387e5f5af91ef56",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-warm.jpg": "69ddbc8861833af0b0e39feb891bb9ed",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-warm.webp": "6b9358b3cf40061e777b8396b47ca9b9",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-warm-2k.jpg": "1ab13083cee9895af633c82a726c1aca",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-warm-2k.webp": "97358114bb71203db763c26be6715dd2",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-warm-card.jpg": "c293b15e554194826e99e69f100b739d",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-warm-thumb.webp": "b06f412858223165f454401968c7145f",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-light.jpg": "57fbc3d32ffc80b461ea50bf4ec7fe92",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-light.webp": "e643ff579d5d955e0c440b16773af9e9",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-light-2k.jpg": "10f10284cb80e38acad9e9610130733c",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-light-2k.webp": "b021baa15a960d4d06fbaad88d175135",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-light-card.jpg": "21074674b8e6c45c21668c39413ccd37",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-light-thumb.webp": "704f14dacdfcaad1a9dc30ce87c4a879",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-stone.jpg": "2f9158f07b86526314a6617db9f5bb3b",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-stone.webp": "1ce7c53804b881475964b155d4bcf9c4",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-stone-2k.jpg": "0435ac83bd2231fabfd6e047ba50365c",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-stone-2k.webp": "c965f335ecbb7c9ed478430d271094c6",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-stone-card.jpg": "213bfe09deff0fe90ac185b0b3558d64",
+    "assets/project-stage/hamedina/tour/living360-c30w-sunset-stone-thumb.webp": "0c573f78a27851d9cd86cc7b97d33610",
+    "nadlan-config.php": "219e381034c9dbfa9d7c20ff2a590d4b"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.392, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

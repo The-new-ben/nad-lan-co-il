@@ -290,3 +290,21 @@ A visible `<h2>שאלות נפוצות` plus FAQPage schema.
 - the building walk;
 - parking (missing everywhere);
 - the film.
+
+## v104.21 (2.10, V2 loop turn 5, V4 step 2): design styles inside the example apartment
+
+**The gap (the parity table):**
+- DUO and Rainbow let a buyer switch design styles inside the 360. Kikar's C30 album had one look.
+- The basket's "העיצוב" step said "הדירה מבפנים עוד לא זמינה בפרויקט הזה".
+- Competitors in 2026: Zillow Showcase restyles rooms in curated styles and swipes between staged and unstaged views; Matterport is building the same into its 3D models.
+
+**The design:**
+1. **The living room's 360 offers the fleet's styles:** "כמו במסירה" (the room as rendered), "עץ חם", "בהיר" and "אבן".
+   - They are rendered from the same Kikar scene, so the same window, the same sea and the same sun appear in each. Only the finishes and furnishing change (the studio kit).
+   - The fleet's viewer shows its style panel: at the inline end on a wide screen, a strip over the switches on a phone.
+   - Each style says "רעיון עיצוב להמחשה". No developer wording.
+2. **The album's 360 tile** says how many styles it has ("סיור 360 בסלון · 3 סגנונות עיצוב").
+3. **The basket:**
+   - On a world page, "להיכנס לדירה ולבחור סגנון" takes the buyer to the example apartment and opens its 360 at once.
+   - The chosen style returns to the basket ("העיצוב": "עץ חם, נבחר בתוך הדירה ב־360°").
+4. **The album's size line** names no source.

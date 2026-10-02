@@ -131,10 +131,12 @@
     const t = document.getElementById('nlps') || document.getElementById('nlps-t');
     if (t) t.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
   }
+  // 1.72.392: a world page (the shared 3D world) offers its own way inside (window.__nlInsideGo: the example apartment's 360)
+  const insideOk = () => !!document.querySelector('.nlat__go') || typeof window.__nlInsideGo === 'function';
   function goInside() {
     close();
     const b = document.querySelector('.nlat__go');
-    if (b) b.click();
+    if (b) b.click(); else if (typeof window.__nlInsideGo === 'function') window.__nlInsideGo();
   }
 
   function renderUnit() {
@@ -161,8 +163,9 @@
 
   function renderStyle() {
     const s = sec('העיצוב', 'רעיון עיצוב להמחשה בדירה לדוגמה, לא המפרט של היזם.');
-    const has = !!document.querySelector('.nlat__go');
-    if (S.style) {
+    const has = insideOk();
+    // 1.72.392: on a world page "bare" is the original rendered design (furnished), not a design choice
+    if (S.style && !(S.style === 'bare' && typeof window.__nlInsideGo === 'function')) {
       const row = h('div', 'nlbk__item');
       row.appendChild(h('span', 'nlbk__sw nlbk__sw--' + S.style, null, { 'aria-hidden': 'true' }));
       const tx = h('div', 'nlbk__itx');

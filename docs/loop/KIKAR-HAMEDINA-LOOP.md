@@ -62,9 +62,9 @@ Every turn takes the first open item. Each item is ticked with evidence (live, r
 
     | The owner's V4 item | DUO | Rainbow | Kikar | Gap → plan |
     |---|---|---|---|---|
-    | Design the apartment | ✓ styles in the 360 tour; the studio and designer link | ✓ styles in the 360 tour | ✗ the C30 album (renders and a 360 living room), no styles | Render the fleet's 4 styles for C30's living room (studio_kit); a style switch in the album; the basket's "העיצוב" step |
+    | Design the apartment | ✓ styles in the 360 tour; the studio and designer link | ✓ styles in the 360 tour | ✓ **1.72.392**: the C30 living-room 360 in the original design + עץ חם / בהיר / אבן; the choice goes to the basket | The studio (furniture planning) for a Kikar plan (D1) |
     | Price | ✓ deals table + basket price with purchase tax | ✓ same | ✓ deals as "מידע גלוי" in the card (v104.19) + the deals table | — |
-    | Basket up to the representative | ✓ BasketOne | ✓ BasketOne | ✗ → **1.72.391**: "לסל הדירה" in the apartment card; the basket names the apartment | — |
+    | Basket up to the representative | ✓ BasketOne | ✓ BasketOne | ✓ **1.72.391**: "לסל הדירה" in the apartment card; the basket names the apartment and (1.72.392) opens the 360 to choose a style | — |
     | Payment | Morning products for SERVICES only; the apartment itself is never paid on the site (Sale Law escrow) | same | same | Which service is sold first: the owner's business choice (Maya: one revenue model first) |
     | Representative + video call | ✓ hero "שיחת וידאו עם נציג", `#nlsch`, the shared room | ✓ | ✓ the same three (live) | Test that the shared room carries the world's selection (Maya D2) |
     | Plans | ✓ floor slice | ✓ floor slice | ✓ key plan, 4 corner apartments (v104.18) | Room level inside the apartment (D1) |
@@ -185,6 +185,23 @@ Every turn does ALL of these, not only the current phase:
   - **(c) `verify_kh`** as above.
 
 ## Scale-up ledger (newest on top)
+
+- **2.10, V2 loop turn 5 (V4 step 2): design styles inside the example apartment.** LIVE 1.72.392 (v104.21, DS version 165).
+  - **Web (2.10):**
+    - [Zillow Showcase AI staging, Boston Globe 27.8.2026](https://www.bostonglobe.com/2026/08/27/real-estate/zillow-ai-staging-redecorating-tool/): buyers restyle rooms in 7 curated styles and swipe staged and unstaged.
+    - [Matterport generative design](https://matterport.com/blog/generative-ai-interior-design): Project Genesis restyles digital twins.
+    - Ours: 3 styles + the original design, inside a true 360 of the right floor, with the real view.
+  - **Renders:** a helper agent added a `style` argument to kikar_interior.py (studio_kit palettes; "bare" proven pixel-identical to before) and `--pano` to cut_kikar_tour.py, plus render_kikar_styles.py.
+    - warm, light and stone at 4096×2048, 96 samples: 2,661, 2,894 and 1,946 s.
+    - 18 web files. The window, sea and sun are identical across all four (window diff 1.1-3.3 of 255).
+    - Looked at: styles-sheet.jpg.
+  - **Wiring:**
+    - example.js passes pano.styles to the fleet viewer. The base look is "העיצוב המקורי": the base 360 is furnished, so "כמו במסירה" would be untrue (the helper caught this).
+    - The 360 tile names "3 סגנונות עיצוב". The album's size line names no source.
+    - world.js `__nlInsideGo` + the basket's "להיכנס לדירה ולבחור סגנון" open the 360 at once. On a world page "bare" is no design choice.
+  - **Runner 392:** 368 checks OK, first run.
+  - **Live, real taps at 390 and 1440:** the album, the tile, 4 styles, "עץ חם" loads its picture, nl:view warm, the basket says "עץ חם, נבחר בתוך הדירה ב־360°", the go-inside opens the 360. Errors 0. M17 0. Source audit GREEN.
+  - **NEXT (V4 step 3):** the lobby and the basement pool and gym as labelled concept 360s, reached from the album and the building's facilities. Then the building walk (door → lift → lobby → basement → street) and parking.
 
 - **2.10, V2 loop turn 4 (V4 step 1 + the owner's law on sources).** LIVE 1.72.391 (v104.20, DS version 164).
   - **Web (2.10):**

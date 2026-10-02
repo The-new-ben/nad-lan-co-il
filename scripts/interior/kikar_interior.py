@@ -2,8 +2,11 @@
 """Kikar Hamedina (P9b prototype): "דירה לדוגמה", an example apartment inside tower C, floor 30, facing west to the sea.
 
   blender -b --factory-startup --python scripts/interior/kikar_interior.py -- <out.png> <shot> <tod> [width] [height]
-          [samples] [threads]
+          [samples] [threads] [style]
   shot: living | bedroom | balcony | living360 | view | living_eve   tod: day | sunset | evening
+  style: bare (default: the room exactly as it was rendered before styles existed) | warm | light | stone (studio_kit.py's
+         palettes, the same three design styles as Rainbow's 360 rooms: only the apartment's finishes and furnishing
+         materials change, see apply_style())
 
 REAL (the same numbers as the shared web world, kikar_world.py): the tower's place and size (the municipal footprint), the
 floor's height (floor 30: 116 m to the slab, the floor finish at 116.47 m, provisional 4.0 m a floor), the facing (floor 30's
@@ -41,6 +44,10 @@ WIDTH = int(A[3]) if len(A) > 3 else 960
 HEIGHT = int(A[4]) if len(A) > 4 else 540
 SAMPLES = int(A[5]) if len(A) > 5 else 64
 THREADS = int(A[6]) if len(A) > 6 else 14
+# a design style (studio_kit.STYLES; design system v104.21 "design the apartment"): bare = no style, the scene as before
+STYLE = A[7] if len(A) > 7 else "bare"
+if STYLE not in ("bare", "warm", "light", "stone"):
+    raise SystemExit("kikar_interior: style must be bare | warm | light | stone, not %r" % STYLE)
 TOWER = os.environ.get("KH_TOWER", "C")
 FLOOR = int(os.environ.get("KH_FLOOR", "30"))
 PHI_C = float(os.environ.get("KH_SIDE", "270"))       # the plate-local side the apartment faces (270 = its west side on floor 30)
@@ -151,9 +158,10 @@ def principled_mat(name, color, rough=0.5, metal=0.0, spec=0.5, coat=0.0, sheen=
     return m
 
 
-def oak_floor_mat():
-    """oiled oak planks: grain along each plank, a tone per plank, a 1.5 mm rounded edge"""
-    m, nt, b, out = _mat("oak_floor")
+def oak_floor_mat(name="oak_floor", tones=None):
+    """oiled oak planks: grain along each plank, a tone per plank, a 1.5 mm rounded edge. tones = a design style's oak
+    (studio_kit: the darker and the lighter plank tone); None = the oiled oak as rendered before styles"""
+    m, nt, b, out = _mat(name)
     uv = b.n("ShaderNodeUVMap", uv_map="grain")
     u, v, _ = b.sep(uv.outputs[0])
     pr = b.attr("prand").outputs["Fac"]
@@ -165,14 +173,21 @@ def oak_floor_mat():
     wave.inputs["Distortion"].default_value = 2.5
     wave.inputs["Detail"].default_value = 2.0
     grain = b.m("ADD", b.m("MULTIPLY", wave.outputs["Fac"], 0.35), b.m("MULTIPLY", g1.outputs["Fac"], 0.65))
-    base = b.ramp(grain, [(0.2, (0.385, 0.255, 0.14)), (0.55, (0.44, 0.30, 0.17)), (0.85, (0.475, 0.335, 0.195))])
+    if tones:
+        c0, c1 = tones
+        stops = [(0.2, tuple(c0)), (0.55, tuple((a + b_) / 2 for a, b_ in zip(c0, c1))), (0.85, tuple(c1))]
+        fleck_col = tuple(min(1.0, c * 1.22 + 0.02) for c in c1)
+    else:
+        stops = [(0.2, (0.385, 0.255, 0.14)), (0.55, (0.44, 0.30, 0.17)), (0.85, (0.475, 0.335, 0.195))]
+        fleck_col = (0.58, 0.44, 0.28)
+    base = b.ramp(grain, stops)
     tone = b.ramp(pr, [(0.0, (0.80, 0.78, 0.76)), (0.3, (0.93, 0.92, 0.90)), (0.6, (1.0, 1.0, 1.0)), (1.0, (1.12, 1.07, 1.0))])
     col = b.n("ShaderNodeMix", data_type="RGBA", blend_type="MULTIPLY")
     b.put(col.inputs["Factor"], 1.0)
     b.put(col.inputs[6], base)
     b.put(col.inputs[7], tone)
     fleck = b.m("GREATER_THAN", g2.outputs["Fac"], 0.66)
-    col2 = b.mix(b.m("MULTIPLY", fleck, 0.25), col.outputs[2], (0.58, 0.44, 0.28))
+    col2 = b.mix(b.m("MULTIPLY", fleck, 0.25), col.outputs[2], fleck_col)
     rough = b.m("ADD", 0.30, b.m("MULTIPLY", grain, 0.18))
     p = b.principled(Base_Color=col2, Roughness=rough)
     b.put(p.inputs["Specular IOR Level"], 0.45)
@@ -212,8 +227,10 @@ def wood_mat(name, c0, c1, scale=18.0, rough=0.42, along="Z", coat=0.0):
     return m
 
 
-def marble_mat(name="marble", base=(0.86, 0.85, 0.83), vein=(0.40, 0.38, 0.35), gold=(0.62, 0.52, 0.38)):
-    """a honed white marble with grey and warm veins (the listings' "designer marble" is a claim; this is an illustration)"""
+def marble_mat(name="marble", base=(0.86, 0.85, 0.83), vein=(0.40, 0.38, 0.35), gold=(0.62, 0.52, 0.38),
+               cloud_col=(0.80, 0.79, 0.76)):
+    """a honed white marble with grey and warm veins (the listings' "designer marble" is a claim; this is an illustration);
+    cloud_col is the soft clouding mixed into the base (a design style's darker counter needs a darker one)"""
     m, nt, b, out = _mat(name)
     tc = b.n("ShaderNodeTexCoord")
     ob = tc.outputs["Object"]
@@ -236,7 +253,7 @@ def marble_mat(name="marble", base=(0.86, 0.85, 0.83), vein=(0.40, 0.38, 0.35), 
     b.put(cl.inputs[7], v2)
     vf = b.sep(cl.outputs[2])[0]
     cloud = b.noise(ob, 0.8, 4.0, 0.55)
-    base2 = b.mix(b.m("MULTIPLY", cloud.outputs["Fac"], 0.35), base, (0.80, 0.79, 0.76))
+    base2 = b.mix(b.m("MULTIPLY", cloud.outputs["Fac"], 0.35), base, cloud_col)
     veincol = b.mix(b.m("GREATER_THAN", nz.outputs["Fac"], 0.55), vein, gold)
     col = b.mix(b.m("SUBTRACT", 1.0, vf), base2, veincol)
     p = b.principled(Base_Color=col, Roughness=0.16)
@@ -249,8 +266,9 @@ def marble_mat(name="marble", base=(0.86, 0.85, 0.83), vein=(0.40, 0.38, 0.35), 
     return m
 
 
-def travertine_mat():
-    m, nt, b, out = _mat("travertine")
+def travertine_mat(name="travertine", tone=None):
+    """a honed, filled travertine; tone = a design style's stone colour (the middle of its bands), None = as before"""
+    m, nt, b, out = _mat(name)
     tc = b.n("ShaderNodeTexCoord")
     ob = tc.outputs["Object"]
     wv = b.n("ShaderNodeTexWave", wave_type="BANDS", bands_direction="Z")
@@ -258,13 +276,19 @@ def travertine_mat():
     wv.inputs["Scale"].default_value = 6.0
     wv.inputs["Distortion"].default_value = 3.0
     wv.inputs["Detail"].default_value = 6.0
-    col = b.ramp(wv.outputs["Fac"], [(0.2, (0.66, 0.57, 0.45)), (0.5, (0.78, 0.71, 0.60)), (0.85, (0.72, 0.64, 0.52))])
+    if tone:
+        bands = [(0.2, tuple(c * 0.85 for c in tone)), (0.5, tuple(tone)), (0.85, tuple(c * 0.92 for c in tone))]
+        pit_col = tuple(c * 0.52 for c in tone)
+    else:
+        bands = [(0.2, (0.66, 0.57, 0.45)), (0.5, (0.78, 0.71, 0.60)), (0.85, (0.72, 0.64, 0.52))]
+        pit_col = (0.42, 0.35, 0.26)
+    col = b.ramp(wv.outputs["Fac"], bands)
     vo = b.n("ShaderNodeTexVoronoi", feature="F1")
     b.put(vo.inputs["Vector"], ob)
     vo.inputs["Scale"].default_value = 60.0
     nz = b.noise(ob, 30.0, 4.0, 0.6)
     pit = b.m("MULTIPLY", b.m("LESS_THAN", vo.outputs["Distance"], 0.12), b.m("GREATER_THAN", nz.outputs["Fac"], 0.55))
-    col = b.mix(b.m("MULTIPLY", pit, 0.7), col, (0.42, 0.35, 0.26))
+    col = b.mix(b.m("MULTIPLY", pit, 0.7), col, pit_col)
     p = b.principled(Base_Color=col, Roughness=0.42)
     bev = b.n("ShaderNodeBevel", {"Radius": 0.004})
     b.put(p.inputs["Normal"], b.bump(b.m("SUBTRACT", 1.0, pit), 0.25, 0.2, bev.outputs[0]))
@@ -336,8 +360,9 @@ def wall_mat(name="wall", color=(0.80, 0.78, 0.74)):
     return m
 
 
-def rug_mat():
-    m, nt, b, out = _mat("rug")
+def rug_mat(name="rug", color=None):
+    """color = a design style's rug (studio_kit), None = the wool rug as before"""
+    m, nt, b, out = _mat(name)
     tc = b.n("ShaderNodeTexCoord")
     ob = tc.outputs["Object"]
     nz = b.noise(ob, 700.0, 3.0, 0.7)
@@ -347,8 +372,14 @@ def rug_mat():
     bx = b.m("GREATER_THAN", b.m("ABSOLUTE", x), 1.62)
     by = b.m("GREATER_THAN", b.m("ABSOLUTE", y), 1.22)
     border = b.m("MAXIMUM", bx, by)
-    col = b.mix(b.m("MULTIPLY", cn.outputs["Fac"], 0.4), (0.74, 0.70, 0.62), (0.66, 0.62, 0.55))
-    col = b.mix(b.m("MULTIPLY", border, 0.8), col, (0.52, 0.47, 0.40))
+    if color:
+        c_a, c_b = tuple(color), tuple(c * 0.89 for c in color)
+        # the border a shade darker on a light rug, a shade lighter on a dark one
+        c_border = tuple(c * 0.70 for c in color) if sum(color) / 3 > 0.35 else tuple(min(1.0, c * 1.5 + 0.03) for c in color)
+    else:
+        c_a, c_b, c_border = (0.74, 0.70, 0.62), (0.66, 0.62, 0.55), (0.52, 0.47, 0.40)
+    col = b.mix(b.m("MULTIPLY", cn.outputs["Fac"], 0.4), c_a, c_b)
+    col = b.mix(b.m("MULTIPLY", border, 0.8), col, c_border)
     p = b.principled(Base_Color=col, Roughness=1.0)
     b.put(p.inputs["Sheen Weight"], 1.0)
     b.put(p.inputs["Sheen Roughness"], 0.6)
@@ -406,14 +437,21 @@ def emit_mat(name, color, strength):
     return m
 
 
-def art_mat():
-    """an abstract canvas in warm earth tones (an illustration)"""
-    m, nt, b, out = _mat("art")
+def art_mat(name="art", cols=None):
+    """an abstract canvas in warm earth tones (an illustration); cols = a design style's art (studio_kit: the field colour,
+    the ground, the second field), None = as before"""
+    m, nt, b, out = _mat(name)
     tc = b.n("ShaderNodeTexCoord")
     ob = tc.outputs["Object"]
     nz = b.noise(ob, 1.3, 2.0, 0.5)
-    col = b.ramp(nz.outputs["Fac"], [(0.30, (0.78, 0.72, 0.62)), (0.45, (0.62, 0.36, 0.22)), (0.55, (0.80, 0.74, 0.64)),
-                                      (0.66, (0.28, 0.33, 0.29)), (0.74, (0.84, 0.79, 0.70))], "CONSTANT")
+    if cols:
+        f1, gr, f2 = cols
+        stops = [(0.30, tuple(gr)), (0.45, tuple(f1)), (0.55, tuple(min(1.0, c * 1.03) for c in gr)), (0.66, tuple(f2)),
+                 (0.74, tuple(min(1.0, c * 1.07) for c in gr))]
+    else:
+        stops = [(0.30, (0.78, 0.72, 0.62)), (0.45, (0.62, 0.36, 0.22)), (0.55, (0.80, 0.74, 0.64)),
+                 (0.66, (0.28, 0.33, 0.29)), (0.74, (0.84, 0.79, 0.70))]
+    col = b.ramp(nz.outputs["Fac"], stops, "CONSTANT")
     fine = b.noise(ob, 140.0, 4.0, 0.6)
     p = b.principled(Base_Color=col, Roughness=0.8)
     b.put(p.inputs["Normal"], b.bump(fine.outputs["Fac"], 0.2, 0.05))
@@ -453,6 +491,28 @@ def tile_mat():
     col = b.mix(j, col, (0.30, 0.29, 0.27))
     p = b.principled(Base_Color=col, Roughness=0.6)
     b.put(p.inputs["Normal"], b.bump(b.m("SUBTRACT", 1.0, j), 0.2, 0.05))
+    nt.links.new(p.outputs[0], out.inputs["Surface"])
+    return m
+
+
+def stone_floor_mat(name, color, size=1.2):
+    """a design style's stone floor (studio_kit 'stone', as Rainbow's: 120 x 120 cm): honed large-format tiles, a tone per
+    tile, soft clouding, 3 mm joints (2 mm read as no joints at all in the 4096 px 360; an illustration)"""
+    m, nt, b, out = _mat(name)
+    tc = b.n("ShaderNodeTexCoord")
+    ob = tc.outputs["Object"]
+    x, y, z = b.sep(ob)
+    jw = 0.003 / size
+    j = b.m("MAXIMUM", b.m("LESS_THAN", b.m("FRACT", b.m("DIVIDE", x, size)), jw),
+            b.m("LESS_THAN", b.m("FRACT", b.m("DIVIDE", y, size)), jw))
+    rw = b.white(b.combine(b.m("FLOOR", b.m("DIVIDE", x, size)), b.m("FLOOR", b.m("DIVIDE", y, size)), 0.0))
+    cloud = b.noise(ob, 1.6, 8.0, 0.6)
+    col = b.mix(b.m("MULTIPLY", cloud.outputs["Fac"], 0.8), tuple(c * 0.90 for c in color), tuple(min(1.0, c * 1.10) for c in color))
+    col = b.mix(b.m("MULTIPLY", rw, 0.5), col, tuple(c * 0.91 for c in color))
+    col = b.mix(j, col, tuple(c * 0.55 for c in color))
+    p = b.principled(Base_Color=col, Roughness=b.m("ADD", 0.30, b.m("MULTIPLY", rw, 0.06)))
+    b.put(p.inputs["Specular IOR Level"], 0.5)
+    b.put(p.inputs["Normal"], b.bump(b.m("SUBTRACT", 1.0, j), 0.15, 0.02))
     nt.links.new(p.outputs[0], out.inputs["Surface"])
     return m
 
@@ -1591,6 +1651,98 @@ def camera(s, d, z, yaw=0.0, pitch=0.0, hfov=80.0, pano=False, shift_y=0.0):
     return cam
 
 
+# ============================================================================================ design styles (studio kit)
+def _style_role(n, mn):
+    """which part of a design style a piece of the apartment takes: n = the object's name (without Blender's .001), mn = its
+    material as built for the bare room. None = the piece keeps its material"""
+    if mn == "oak_floor":
+        return "floor"
+    if mn == "oak_veneer":                                    # the tall run on the back wall / the island's body
+        return "upper" if n.startswith("tall") else ("run" if n.startswith("island") else None)
+    if mn == "linen_taupe":                                   # the dining chairs (not the bed's base)
+        return "chair" if n.startswith(("dc_seat", "dc_back")) else None
+    if mn == "leather":                                       # the lounge chairs (armchairs) and the bar stools
+        return "armchair" if n.startswith("lc_") else ("chair" if n.startswith("stool_seat") else None)
+    if mn == "blacksteel":                                    # the stools' frames take the style's metal; door levers, the
+        return "metal" if n.startswith(("stool_leg", "stool_ring")) else None   # track and the wires stay black
+    if mn == "walnut":                                        # the side table by the sofa is a table; the console, the
+        return "table" if n == "side" else "dining"           # chairs' frames, the nightstands are the furniture wood
+    if mn == "oak_light":                                     # the dining table, its chairs' legs (the board stays)
+        return None if n == "board" else "dining"
+    if mn == "stone_planter":                                 # the indoor olives' planters (the balcony's stays)
+        return "pot" if n in ("olive_pot", "olive_b_pot") else None
+    if mn == "brass":                                         # the pendant and the tap take the style's metal; the pull
+        return None if n == "door_pull" else "metal"          # of the curtain wall's balcony door is the window's own
+    return {"wall": "wall", "marble": "counter", "boucle": "sofa", "travertine": "table", "rug": "rug", "art": "art",
+            "linen_rust": "accent", "linen_sage": "accent2"}.get(mn)
+
+
+def apply_style(style):
+    """a design style for the example apartment (studio_kit.STYLES, the fleet's palettes; Rainbow's 360 rooms use the same
+    three), applied after the bare room is built: the same room, the same furniture, the same light and the same camera;
+    only the finishes (floor, walls, kitchen fronts, counter) and the furnishing materials (sofa, armchairs, chairs, rug,
+    dining wood, tables, metal accents, cushions, the canvas) change. Nothing outside the apartment's frame (the building,
+    the curtain wall, the city, the sea, the sun) is read or changed. An illustration of a design idea ("דירה לדוגמה"),
+    not the developer's specification."""
+    import studio_kit
+    st = studio_kit.STYLES[style]
+    k = "_" + style
+    R = {}
+    fl = st["floor"]
+    R["floor"] = oak_floor_mat("oak_floor" + k, (fl[1], fl[2])) if fl[0] == "oak" else stone_floor_mat("stone_floor" + k, fl[1])
+    R["wall"] = wall_mat("wall" + k, st["wall"])
+
+    def kit(spec, name, scale=20.0, rough=0.40):
+        kind = spec[0]
+        if kind in ("wood", "oak"):
+            return wood_mat(name, spec[1], spec[2], scale, rough)
+        if kind == "fabric":
+            return fabric_mat(name, spec[1], "linen")
+        if kind == "leather":
+            return leather_mat(name, spec[1])
+        if kind == "stone":
+            return travertine_mat(name, spec[1])
+        return principled_mat(name, spec[1], 0.45)        # paint: a satin lacquer
+
+    R["run"] = kit(st["run"], "run" + k, 26.0, 0.42)
+    R["upper"] = kit(st["upper"], "upper" + k, 26.0, 0.42)
+    c = st["counter"]
+    if sum(c) / 3 < 0.5:      # a dark stone counter with pale veins
+        R["counter"] = marble_mat("counter" + k, c, (0.66, 0.64, 0.60), (0.55, 0.45, 0.32), tuple(x * 0.88 for x in c))
+    else:                     # a white counter with soft grey veins
+        R["counter"] = marble_mat("counter" + k, c, (0.58, 0.57, 0.55), (0.70, 0.62, 0.50), tuple(x * 0.94 for x in c))
+    so = st["sofa"]
+    R["sofa"] = fabric_mat("sofa" + k, so[1], "boucle") if so[0] == "fabric" else leather_mat("sofa" + k, so[1])
+    R["accent"] = fabric_mat("accent" + k, st["accent"][1], "linen")
+    # the second scatter cushion: the canvas's second field (on the stone style's cognac sofa, the rug's charcoal)
+    R["accent2"] = fabric_mat("accent2" + k, st["rug"] if style == "stone" else st["art"][2], "linen")
+    R["chair"] = kit(st["chair"], "chair" + k)
+    R["armchair"] = R["chair"] if st["chair"][0] != "leather" else R["sofa"]     # as studio_kit's armchair
+    R["dining"] = kit(st["dining"], "dining" + k, 20.0, 0.40)
+    R["table"] = kit(st["table"], "table" + k, 20.0, 0.40)
+    R["metal"] = M["brass"] if st["metal"] == "brass" else M["blacksteel"]
+    R["rug"] = rug_mat("rug" + k, st["rug"])
+    R["art"] = art_mat("art" + k, st["art"])
+    if style == "stone":      # as studio_kit: a dark planter
+        R["pot"] = principled_mat("planter" + k, (0.15, 0.15, 0.15), 0.7, bump=True, bump_scale=30.0, bump_strength=0.15)
+    swapped = {}
+    for ob in bpy.data.objects:
+        if ob.parent is not APT or ob.type != "MESH":
+            continue
+        n = ob.name.split(".")[0]
+        for i, ms in enumerate(ob.data.materials):
+            role = _style_role(n, ms.name) if ms else None
+            if role in R:
+                ob.data.materials[i] = R[role]
+                swapped[role] = swapped.get(role, 0) + 1
+    if fl[0] != "oak":
+        # a stone floor: large-format tiles on the floor's base (the same level, 1 mm under the parquet's top) instead of
+        # the herringbone planks
+        for nm in ("hb_living", "hb_bed"):
+            bpy.data.objects[nm].hide_render = True
+    print("STYLE %s: %s" % (style, ", ".join("%s %d" % kv for kv in sorted(swapped.items()))))
+
+
 # ============================================================================================ build
 def build():
     KW.build_sky(TODN)
@@ -1637,6 +1789,8 @@ SHOTS = {
 }
 
 build()
+if STYLE != "bare":
+    apply_style(STYLE)
 for nm in [x for x in os.environ.get("KH_HIDE", "").split(",") if x]:
     for ob in bpy.data.objects:
         if ob.name.startswith(nm):

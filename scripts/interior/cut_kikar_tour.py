@@ -19,6 +19,10 @@ Nothing on the page loads any of these until the visitor presses "היכנסו �
   python scripts/interior/cut_kikar_tour.py              (writes the files and prints the byte budget)
   python scripts/interior/cut_kikar_tour.py --card-only  (only the card-size stills, merged into p9c-assets.json; the other
                                                           files are not touched, so the live ones keep their bytes)
+  python scripts/interior/cut_kikar_tour.py --pano <render.png> <name> [--out <folder>]
+        (one more 360 panorama, e.g. a design style's living360-c30w-sunset-warm: the bare 360's exact set, cuts and
+         qualities: <name>.jpg + .webp 4096 x 2048, -2k.jpg + -2k.webp 2048 x 1024, -card.jpg 1200 x 675, -thumb.webp
+         480 x 270; nothing else is written, p9c-assets.json neither. --out defaults to the tour folder)
 """
 import io, json, math, os, subprocess, sys
 from PIL import Image
@@ -73,7 +77,29 @@ def card_only(made, srcs):
         made += [rname + x for x in ("-card.jpg", "-card.webp", "-thumb.webp")]
 
 
+def pano_only(png, rname, out):
+    """one 360 panorama, cut exactly as main() cuts the bare living360 from its render (cut_tour.py's JPGs and card, then
+    the WebPs at Q_WEBP_PANO and the thumb from the card)"""
+    os.makedirs(out, exist_ok=True)
+    r = subprocess.run([sys.executable, os.path.join(HERE, "cut_tour.py"), png, out, rname], capture_output=True, text=True)
+    if r.returncode:
+        raise SystemExit("cut_tour: " + r.stderr[-400:])
+    pano = Image.open(png).convert("RGB")
+    webp(pano, os.path.join(out, rname + ".webp"), Q_WEBP_PANO)
+    webp(pano.resize((pano.width // 2, pano.height // 2), Image.LANCZOS), os.path.join(out, rname + "-2k.webp"), Q_WEBP_PANO)
+    card = Image.open(os.path.join(out, rname + "-card.jpg")).convert("RGB")
+    webp(fit(card, 480), os.path.join(out, rname + "-thumb.webp"), 78)
+    made = [rname + x for x in (".jpg", "-2k.jpg", "-card.jpg", ".webp", "-2k.webp", "-thumb.webp")]
+    print(json.dumps({f: os.path.getsize(os.path.join(out, f)) for f in made}, indent=1))
+
+
 def main():
+    if "--pano" in sys.argv:
+        i = sys.argv.index("--pano")
+        png, rname = sys.argv[i + 1], sys.argv[i + 2]
+        out = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv else OUT
+        pano_only(png, rname, out)
+        return
     os.makedirs(OUT, exist_ok=True)
     made, srcs = [], {}
     if "--card-only" in sys.argv:

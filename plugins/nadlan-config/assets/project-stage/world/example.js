@@ -42,7 +42,9 @@ const WORDS = {
     label: 'התוכנית להמחשה, חלוקת הדירות לא פורסמה',
     title: (rooms) => `דירה לדוגמה, ${rooms} חדרים`,
     eyebrow: (k, f, dir) => `מגדל ${k} · קומה ${f} · פונה ${dir}`,
-    size: (rooms, sqm, src) => `בגודל שפורסם בעסקאות במגדלים: ${rooms} חדרים, ${sqm} מ״ר (${src})`,
+    size: (rooms, sqm) => `בגודל של דירות שנמכרו במגדלים: ${rooms} חדרים, ${sqm} מ״ר`, // v104.21: no source name
+    styleNames: { bare: 'העיצוב המקורי', warm: 'עץ חם', light: 'בהיר', stone: 'אבן' }, stylesLabel: 'עיצוב הדירה', stylesSub: 'רעיון להמחשה',
+    styleNote: 'רעיון עיצוב להמחשה.', stylesN: (n) => `${n} סגנונות עיצוב`, // v104.21
     sizeSrc: 'גלובס, 2.5.2025',
     from: (f0, f) => `התמונות מקומה ${f0}; בחרתם קומה ${f}, והנוף ממנה דומה מאוד`,
     todLbl: 'שעות היום', tod: { day: 'יום', sunset: 'שקיעה', evening: 'ערב' },
@@ -79,7 +81,9 @@ const WORDS = {
     label: 'The layout is an illustration; the apartment mix has not been published',
     title: (rooms) => `An example ${rooms}-room apartment`,
     eyebrow: (k, f, dir) => `Tower ${k} · floor ${f} · facing ${dir}`,
-    size: (rooms, sqm, src) => `The size of the published deals in the towers: ${rooms} rooms, ${sqm} m² (${src})`,
+    size: (rooms, sqm) => `The size of apartments sold in the towers: ${rooms} rooms, ${sqm} m²`, // v104.21: no source name
+    styleNames: { bare: 'Original design', warm: 'Warm wood', light: 'Light', stone: 'Stone' }, stylesLabel: 'Design the apartment', stylesSub: 'An idea, for illustration',
+    styleNote: 'A design idea, for illustration.', stylesN: (n) => `${n} design styles`, // v104.21
     sizeSrc: 'Globes, 2.5.2025',
     from: (f0, f) => `The pictures are from floor ${f0}; you chose floor ${f}, and its view is very close`,
     todLbl: 'Time of day', tod: { day: 'Day', sunset: 'Sunset', evening: 'Evening' },
@@ -116,7 +120,9 @@ const WORDS = {
     label: 'Plan à titre d’illustration ; la répartition des appartements n’a pas été publiée',
     title: (rooms) => `Un appartement témoin de ${rooms} pièces`,
     eyebrow: (k, f, dir) => `Tour ${k} · étage ${f} · orientation ${dir}`,
-    size: (rooms, sqm, src) => `À la taille des ventes publiées dans les tours : ${rooms} pièces, ${sqm} m² (${src})`,
+    size: (rooms, sqm) => `À la taille des appartements vendus dans les tours : ${rooms} pièces, ${sqm} m²`, // v104.21: no source name
+    styleNames: { bare: 'Design d’origine', warm: 'Bois chaleureux', light: 'Clair', stone: 'Pierre' }, stylesLabel: 'Aménager l’appartement', stylesSub: 'Une idée, à titre d’illustration',
+    styleNote: 'Une idée d’aménagement, à titre d’illustration.', stylesN: (n) => `${n} styles d’aménagement`, // v104.21
     sizeSrc: 'Globes, 02/05/2025',
     from: (f0, f) => `Les images sont prises au ${f0}e étage ; vous avez choisi le ${f}e, dont la vue est très proche`,
     todLbl: 'Moment de la journée', tod: { day: 'Jour', sunset: 'Coucher du soleil', evening: 'Soir' },
@@ -153,7 +159,9 @@ const WORDS = {
     label: 'Планировка условная; состав квартир не опубликован',
     title: (rooms) => `Пример ${rooms}-комнатной квартиры`,
     eyebrow: (k, f, dir) => `Башня ${k} · этаж ${f} · окна на ${dir}`,
-    size: (rooms, sqm, src) => `Площадь как в опубликованных сделках в башнях: ${rooms} комнаты, ${sqm} м² (${src})`,
+    size: (rooms, sqm) => `Площадь как у проданных квартир в башнях: ${rooms} комнаты, ${sqm} м²`, // v104.21: no source name
+    styleNames: { bare: 'Исходный дизайн', warm: 'Тёплое дерево', light: 'Светлый', stone: 'Камень' }, stylesLabel: 'Дизайн квартиры', stylesSub: 'Идея, для иллюстрации',
+    styleNote: 'Идея дизайна, для иллюстрации.', stylesN: (n) => `${n} стиля дизайна`, // v104.21
     sizeSrc: 'Globes, 02.05.2025',
     from: (f0, f) => `Снимки с ${f0}-го этажа; вы выбрали ${f}-й, вид с него почти такой же`,
     todLbl: 'Время суток', tod: { day: 'День', sunset: 'Закат', evening: 'Вечер' },
@@ -190,7 +198,9 @@ const WORDS = {
     label: 'المخطط للتوضيح، ولم يُنشر توزيع الشقق',
     title: (rooms) => `شقة نموذجية من ${rooms} غرف`,
     eyebrow: (k, f, dir) => `البرج ${k} · الطابق ${f} · باتجاه ${dir}`,
-    size: (rooms, sqm, src) => `بمساحة الصفقات المنشورة في الأبراج: ${rooms} غرف، ${sqm} م² (${src})`,
+    size: (rooms, sqm) => `بمساحة الشقق المبيعة في الأبراج: ${rooms} غرف، ${sqm} م²`, // v104.21: no source name
+    styleNames: { bare: 'التصميم الأصلي', warm: 'خشب دافئ', light: 'فاتح', stone: 'حجر' }, stylesLabel: 'تصميم الشقة', stylesSub: 'فكرة للتوضيح',
+    styleNote: 'فكرة تصميم للتوضيح.', stylesN: (n) => `${n} أنماط تصميم`, // v104.21
     sizeSrc: 'غلوبس، 2.5.2025',
     from: (f0, f) => `الصور من الطابق ${f0}؛ اخترتم الطابق ${f}، والإطلالة منه قريبة جداً`,
     todLbl: 'وقت اليوم', tod: { day: 'نهار', sunset: 'غروب', evening: 'مساء' },
@@ -274,6 +284,7 @@ export function openExample(o) {
     ex = (d.examples || []).find((e) => e.id === o.id) || (d.examples || [])[0];
     if (!ex) throw new Error('no example');
     build();
+    if (o.start === 'pano' && ex.pano) open360(null); // v104.21: the basket's "להיכנס לדירה ולבחור סגנון"
   }).catch(() => { if (alive) body.innerHTML = `<div class="nlex__loading nlex__loading--err" role="alert">${esc(T.error)}</div>`; });
 
   const timeOf = (s) => (s && s.time) || 'day';
@@ -298,7 +309,7 @@ export function openExample(o) {
     const living = ['day', 'sunset', 'evening'].filter((t) => still('living', t));
     root.querySelector('.nlex__title').textContent = T.title(size.rooms || 4);
     const tiles = [
-      `<button class="nlex__tile nlex__tile--360" type="button" data-pano><span class="nlex__thumb"><img src="${esc(U(ex.pano.base + '-thumb.webp'))}" width="480" height="270" alt="" decoding="async"><b class="nlex__360b">${ICON360}<span dir="ltr">360°</span></b></span><span class="nlex__tl">${esc(T.tile.pano)}</span></button>`,
+      `<button class="nlex__tile nlex__tile--360" type="button" data-pano><span class="nlex__thumb"><img src="${esc(U(ex.pano.base + '-thumb.webp'))}" width="480" height="270" alt="" decoding="async"><b class="nlex__360b">${ICON360}<span dir="ltr">360°</span></b></span><span class="nlex__tl">${esc(T.tile.pano)}${Array.isArray(ex.pano.styles) && ex.pano.styles.length ? ` · ${esc(T.stylesN(ex.pano.styles.length))}` : ''}</span></button>`,
       `<button class="nlex__tile" type="button" data-room="living" aria-pressed="false"><span class="nlex__thumb"><img data-living src="${esc(U((still('living', tod) || still('living', 'sunset')).base + '-thumb.webp'))}" width="480" height="270" alt="" decoding="async"></span><span class="nlex__tl" data-living-l>${esc(T.tile.living(T.tod[tod]))}</span></button>`,
       ...['bedroom', 'balcony'].filter((r) => ex.stills.some((s) => s.room === r)).map((r) => {
         const s = ex.stills.find((x) => x.room === r);
@@ -318,7 +329,7 @@ export function openExample(o) {
       </div>
       <div class="nlex__side">
         <div class="nlex__label"><span class="nlex__chip nlex__chip--in">${esc(T.chip)}</span><span>${esc(T.label)}</span></div>
-        <div class="nlex__size">${esc(T.size(size.rooms || 4, size.sqm || 140, T.sizeSrc))}</div>
+        <div class="nlex__size">${esc(T.size(size.rooms || 4, size.sqm || 140))}</div>
         ${fromLine}
         ${o.wa ? `<a class="nlex__wa" href="${esc(o.wa)}" target="_blank" rel="noopener">${ICONWA}<span>${esc(T.wa)}</span></a>` : ''}
         <div class="nlex__twist">
@@ -400,8 +411,12 @@ export function openExample(o) {
       if (!alive) return;
       viewer = m.openTour({
         scenes: [{ id: p.base, dir: 'w', spot: 'living', title: T.panoTitle(o.tower, ex.floor), src: U(p.base + '.webp'), small: U(p.base + '-2k.webp'),
-          note: T.panoNote(ex.floor, p.hour), chip: T.chip }],
-        chip: T.chip, caption: T.label + '.', hint: T.drag, close: T.close, lang, dir: rtl ? 'rtl' : 'ltr', errorText: T.error, opener: btn,
+          note: T.panoNote(ex.floor, p.hour), chip: T.chip,
+          // v104.21: the design styles (studio kit), the same room and the same look in another picture; "bare" is the original design as rendered (furnished: never "as delivered")
+          styles: Array.isArray(p.styles) && p.styles.length ? [{ id: 'bare', label: T.styleNames.bare, thumb: U(p.base + '-thumb.webp') }].concat(p.styles.map((st) => ({
+            id: st.id, label: T.styleNames[st.id] || st.id, thumb: U(st.base + '-thumb.webp'), src: U(st.base + '.webp'), small: U(st.base + '-2k.webp') }))) : undefined }],
+        stylesLabel: T.stylesLabel, stylesSub: T.stylesSub, styleNote: T.styleNote,
+        chip: T.chip, caption: T.label + '.', hint: T.drag, close: T.close, lang, dir: rtl ? 'rtl' : 'ltr', errorText: T.error, opener: btn || o.opener,
         onClose: () => { viewer = null; },
       });
     }).catch(() => { /* the album stays; the viewer's own error line covers a failed picture */ });

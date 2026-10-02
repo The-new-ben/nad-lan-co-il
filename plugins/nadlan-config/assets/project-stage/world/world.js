@@ -949,6 +949,8 @@ export function mountWorld(host, opts = {}) {
     renderNow();
     loop();
     readyCbs.forEach((f) => f(api));
+    // v104.21 (V4): the basket's way inside: to the example apartment's tower, floor and side, and straight into its 360
+    if (exList().length) window.__nlInsideGo = () => { const x = exList()[0]; goExample(x.id); openExampleApt(x.id, null, 'pano'); };
   }
 
   // P8: the world data's texts in French, Russian or Arabic (world-i18n.json beside world.json: English text -> that language).
@@ -2998,7 +3000,7 @@ export function mountWorld(host, opts = {}) {
     const b = ui.panel && ui.panel.querySelector('[data-example]');
     if (b) b.focus({ preventScroll: true });
   }
-  function openExampleApt(id, opener) {
+  function openExampleApt(id, opener, start) { // v104.21: start 'pano' opens the 360 at once
     const x = exList().find((e) => e.id === id);
     if (!x || exBusy) return;
     exBusy = true;
@@ -3010,7 +3012,7 @@ export function mountWorld(host, opts = {}) {
       exBusy = false;
       exApi = m.openExample({
         url: o.examples.url, id, lang, tower: S.tower, floor: S.floor, bearing: b, facing: dirWord(b), tod: detail.time,
-        wa: o.wa ? waHref(`${XW.chip} · ${T.towerN(S.tower)}`) : null, opener,
+        wa: o.wa ? waHref(`${XW.chip} · ${T.towerN(S.tower)}`) : null, opener, start,
         onTod: (k) => setTod(k),
         onClose: () => { exApi = null; pickExample(false); window.dispatchEvent(new CustomEvent('nl:example', { detail: { open: false, ...detail } })); },
       });
