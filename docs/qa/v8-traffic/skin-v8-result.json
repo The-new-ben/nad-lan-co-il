@@ -1,0 +1,16 @@
+{
+ "release": "skin x-skin-a v104.26 (Kikar V8)",
+ "at": "20261002T201851Z",
+ "snippet": 638,
+ "live_before_md5": "a8d344b8d7d217d67cdc7c43423cf5e1",
+ "new_md5": "6d895f541d602cc20f86d5b105d9f00e",
+ "backup": "docs\\qa\\v8-traffic\\x-skin-a-638.20261002T201851Z.live.php",
+ "checks_before_bad": [
+  "/",
+  "/en/",
+  "/fr/",
+  "/ru/",
+  "/ar/"
+ ],
+ "ok": true
+}

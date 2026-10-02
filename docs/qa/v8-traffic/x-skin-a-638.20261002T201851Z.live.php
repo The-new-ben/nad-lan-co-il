@@ -1,4 +1,3 @@
-<?php
 /* x-skin-a v1.4 (3.9.2026: concept page availability chip hidden; original product bands kept on the new home; /en /fr /ru /ar homes share the renderer through a string table; 2.9.2026, owner GO "לך") - Direction A skin behind a switch.
  * Preview: ?skin=a sets cookie nl_skin=a (7 days); ?skin=off clears. Global: option nadlan_skin_a = 'all'.
  * Skinned responses are never page-cached (LiteSpeed no-cache) until the global switch is on.
@@ -196,9 +195,7 @@ if ( ! function_exists( 'nadlan_skin_a_projects' ) ) {
 	 *  Language homes: first the projects that have a language sibling (/projects/<slug>-<lang>/, its title and link),
 	 *  then projects whose title carries a Latin brand name (shown alone, never a Hebrew line on a foreign page). */
 	function nadlan_skin_a_projects( $lang = 'he' ) {
-		/* v104.26 (2.10.2026, Kikar V8): Kikar Hamedina leads every home's projects band, Hebrew and the four languages
-		   (its own language page); the rest in the order of their Search Console impressions. */
-		$prefer = array( 'hamedina', 'rainbow-tel-aviv', 'h-infinity-somail-tel-aviv', 'ashira-sde-dov', 'dimri-yama-sde-dov', 'six-8-herbert-samuel-tel-aviv', 'einstein-tower' );
+		$prefer = array( 'rainbow-tel-aviv', 'h-infinity-somail-tel-aviv', 'six-8-herbert-samuel-tel-aviv', 'dimri-yama-sde-dov', 'ashira-sde-dov', 'einstein-tower' );
 		$base = array();
 		foreach ( $prefer as $slug ) {
 			$p = get_page_by_path( $slug, OBJECT, 'nadlan_project' );

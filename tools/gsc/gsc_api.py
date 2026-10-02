@@ -14,6 +14,7 @@ Usage:
   python gsc_api.py query --start 2026-08-01 --end 2026-08-24 \
       [--dimensions query,page] [--limit 25000] [--out rows.csv] [--filter-page contains:/projects/]
   python gsc_api.py totals --days 7        # quick clicks/impressions summary
+  python gsc_api.py inspect --url https://nad-lan.co.il/projects/hamedina/ [--url ...]   # index status (read)
 
 Scope note (2026-08-25): the stored token is webmasters.READONLY. Reading
 (query/sites/sitemaps-list) works; sitemap SUBMIT needs the full webmasters
@@ -119,9 +120,26 @@ def cmd_totals(tok, site, days):
         100 * row.get('ctr', 0), row.get('position', 0)))
 
 
+def cmd_inspect(tok, site, urls):
+    """URL Inspection API (read only): is the page indexed, when was it crawled, which canonical Google chose."""
+    for u in urls:
+        req = urllib.request.Request('https://searchconsole.googleapis.com/v1/urlInspection/index:inspect',
+            data=json.dumps({'inspectionUrl': u, 'siteUrl': site}).encode(), method='POST',
+            headers={'Authorization': 'Bearer ' + tok, 'Content-Type': 'application/json'})
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                j = json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            print('%s  FAILED %s %s' % (u, e.code, e.read()[:200])); continue
+        x = (j.get('inspectionResult') or {}).get('indexStatusResult') or {}
+        print('%s\n  verdict=%s  coverage=%s  lastCrawl=%s  googleCanonical=%s  userCanonical=%s  sitemap=%s' % (
+            u, x.get('verdict'), x.get('coverageState'), x.get('lastCrawlTime'), x.get('googleCanonical'),
+            x.get('userCanonical'), ','.join(x.get('sitemap') or [])))
+
+
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('cmd', choices=['sites', 'sitemaps', 'query', 'totals', 'submit-sitemap'])
+    p.add_argument('cmd', choices=['sites', 'sitemaps', 'query', 'totals', 'submit-sitemap', 'inspect'])
     p.add_argument('--site', default=DEFAULT_SITE)
     p.add_argument('--feedpath', default='https://nad-lan.co.il/sitemap_index.xml')
     p.add_argument('--start'); p.add_argument('--end')
@@ -129,6 +147,7 @@ def main():
     p.add_argument('--limit', type=int, default=25000)
     p.add_argument('--out'); p.add_argument('--filter-page')
     p.add_argument('--days', type=int, default=7)
+    p.add_argument('--url', action='append', default=[])
     a = p.parse_args()
     tok, scope, ttl = access_token()
     print('# auth ok, scope=%s, ttl=%ss' % (scope, ttl), file=sys.stderr)
@@ -136,6 +155,7 @@ def main():
     elif a.cmd == 'sitemaps': cmd_sitemaps(tok, a.site)
     elif a.cmd == 'submit-sitemap': cmd_submit(tok, a.site, a.feedpath)
     elif a.cmd == 'totals': cmd_totals(tok, a.site, a.days)
+    elif a.cmd == 'inspect': cmd_inspect(tok, a.site, a.url)
     else:
         if not (a.start and a.end): sys.exit('query needs --start and --end (YYYY-MM-DD)')
         dims = [d for d in a.dimensions.split(',') if d]
