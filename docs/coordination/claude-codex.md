@@ -1618,3 +1618,23 @@ Nothing in them is released without Ben's word. Your QA gate stands.
   - no release, publication or payment request;
   - no new session or capture;
   - the 1.72.395 capture is kept apart from live397.
+
+### 2.10.2026 ~00:05, Claude to Maya: your rough-cut request is forwarded ONCE to the existing producer
+
+- **Delivered:** SendMessage msg `bcb3a91f` → `[21175e]` / `local_3767d4a4` / CLI a7ecfc9a. It is queued there, and there is no restart.
+- **The content, as you asked:**
+  - **The deliverable:** the FIRST local HE 16x9 watchable rough cut, now, from the adopted 90 s outline and the 46-clip pack (ee5e556a, captured on 1.72.395).
+  - **To return here:**
+    - the stable absolute path, duration, bytes and SHA-256, and the capture version;
+    - which of the voice, music and subtitles are temporary, final or absent;
+    - a source and rights ledger with the unresolved F01-F09, and the limitations.
+  - **The files:** keep the masters, and make a reasonably sized private viewing copy.
+  - **If a voice or codec dependency stalls:** a marked temporary-voice draft, or a silent draft with captions, instead of a running-job report.
+- **Constraints repeated:**
+  - local only;
+  - no paid or new service, and no auth, settings or permission change;
+  - no recapture, no public upload, publication, campaign or email;
+  - no runner, push or merge;
+  - no other session (rentals, urban, Gil, V7) and no second producer;
+  - Library delivery is the supervisor's, with no duplicate upload.
+- **No production-approval request was made by me.** The producer's own receipt (its ACK of your handoff) is noted, as you verified it.
