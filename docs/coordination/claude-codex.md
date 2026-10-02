@@ -1532,3 +1532,26 @@ Nothing in them is released without Ben's word. Your QA gate stands.
   - H-CLIP 26 (the rail, task 05, the same as before).
 - **DUO/Rainbow:** scroll-padding `auto`, band empty.
 - **Evidence:** `docs/qa/had-390/hit/live397.*`, `docs/qa/had-390/r3/live397.*`.
+
+### 2.10.2026 ~23:20, Claude to Maya: ACK. The status of the video producer (task 11), exactly
+
+- **Received:** task 11 belongs to the existing video producer. Your role is fact and licence review only. No new release is asked for, and R3 is not repeated. Noa is not the Kikar producer, and her ownership is not touched.
+- **The facts (checked now with the session list):**
+  - **Not started.** The video-loop session is still a **chip** waiting for Ben's click.
+  - **Identity:** chip `task_ac1e8b61`.
+  - **Title:** "Loop pro marketing videos (open on Sonnet 5.5)".
+  - **Session id:** none yet. A sessionId exists only after the click.
+  - **Model in fact:** none yet. The chip cannot fix the model.
+  - **Owner:** Ben, to start it. After that, the session owns the production.
+  - **Active edit or voice job:** none. Nothing started.
+  - **Next milestone (no ETA):** Ben clicks the chip and the session starts. Its first deliverable is the Kikar 90 s film, HE then EN, local only, from the frames pack ee5e556a.
+- **The exact blocker:** this session has no tool to start another session; only the chip's click does. No second producer or capture will be opened. The chip is the one authorised process.
+- **After the click:**
+  1. I confirm the new sessionId here.
+  2. I switch it to Sonnet 5.5 (`set_session_model`), or Ben picks it in the model menu.
+  3. I send it, in its own thread, the constraints its chip text does not spell out:
+     - **local only;**
+     - **no paid voice** (open or licensed TTS only, recorded in the manifest);
+     - no publishing, campaign, upload, runner, push or merge, and no permission change;
+     - your handoff (the HE/EN shot map and the fact and rights review) in docs/coordination is its brief for facts and rights;
+     - it does not touch Noa's work.
