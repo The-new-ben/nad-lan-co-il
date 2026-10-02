@@ -1,0 +1,6 @@
+[
+ {"lang": "he", "old": "בקומות הגבוהות ובפנטהאוזים; תאריך פרסום לנתונים האלה לא צוין.", "new": "בקומות הגבוהות ובפנטהאוזים, כפי שפורסם ב-9.2025 וב-9.2026.", "claim": "R03", "why": "The packet passed no date field, so ChatGPT wrote that the averages are undated. They were published 23.9.2025 and 24.9.2026 (R03)."},
+ {"lang": "he", "old": "מועד פרסום לנתונים הכלליים האלה לא צוין.", "new": "הנתונים הכלליים האלה פורסמו ב-9.2025 וב-9.2026.", "claim": "R03", "why": "Same: R03 is dated 23.9.2025 and 24.9.2026."},
+ {"lang": "en", "old": "The comparison’s date is not published.", "new": "The comparison was published in September 2025 and September 2026.", "claim": "R03", "why": "Same: R03 is dated 23.9.2025 and 24.9.2026."},
+ {"lang": "en", "old": "Its publication date is not published.", "new": "It was published in September 2025 and September 2026.", "claim": "R03", "why": "Same: R03 is dated 23.9.2025 and 24.9.2026."}
+]

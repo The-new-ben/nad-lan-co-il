@@ -1,0 +1,43 @@
+{
+ "released": "1.72.403",
+ "from": "1.72.402",
+ "live_before": {
+  "nadlan-config.php": "ce63e7fad674ec49d79efbbb4fea0a20"
+ },
+ "post_before": {
+  "hamedina": "de353d175fe779847aef8c7437386555",
+  "hamedina-en": "b6cc10d2f9ded53c05b88c1eb70e015b",
+  "hamedina-fr": "b757fbdb16d145609b95b081341b6cdf",
+  "hamedina-ru": "772e6a9dfb4cd459487148eb6f79dae7",
+  "hamedina-ar": "faeaeb12126959ef9c9e91598c94582a"
+ },
+ "state": "released and verified (re-check)",
+ "at": "2026-10-03 01:25:51",
+ "files": {
+  "nadlan-config.php": "22d20d0d3ff898322b34865e2ca09113"
+ },
+ "post_after": {
+  "hamedina": "8cce174551327a71f8d855a2148e11a6",
+  "hamedina-en": "24284c4d38195dbd71fa49c2cd72d2f8",
+  "hamedina-fr": "2e43e7bbc331c2543f179b7eb973536e",
+  "hamedina-ru": "3f3f765bea17eae062dece4d4d302e89",
+  "hamedina-ar": "76c204ec12ee9cafaedd1ce9f4ccd02d"
+ },
+ "history": [
+  {
+   "t": "2026-10-03T01:46:22",
+   "state": "written, checks pending"
+  }
+ ],
+ "recheck": {
+  "when": "2026-10-03T01:46:22",
+  "results": {
+   "verify_pages": [],
+   "served_exact": true,
+   "verify_order": true,
+   "verify_home_order": true,
+   "verify_kh": true
+  },
+  "why": "the first run failed only on inherited checks that required the old articles' sentences (removed by make_gen403.py) and a passing 502; its rollback could not reach its bridge (removed by a concurrent dry run's sweep), so the new posts stayed live; this pass runs the whole regenerated check chain, read-only"
+ }
+}

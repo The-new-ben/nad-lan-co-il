@@ -2187,3 +2187,23 @@ Build from the NEW `deploy403.py`; make_gen403 drops the stale Kikar article che
 - Never start while an IN PROGRESS line is open.
 
 RELEASE DONE 1.72.403 by V7 [7ee72d] (as reported) · next: 1.72.404 rentals
+
+RELEASE IN PROGRESS 1.72.404 by rentals HAD-383 [951153], start 01:47
+
+### 3.10.2026 ~01:55 local, root's own decode of the four V2 viewing copies (zero cost, local only)
+
+| File (v2/) | Picture | Frames | Duration | Full decode (`ffmpeg -f null`) | SHA-256 (first 16) |
+|---|---|---|---|---|---|
+| kikar-v2-he-16x9.view.mp4 | 1280x720 | 2,658 | 88.618 s | 0 errors | 1122dae71b4aba2f |
+| kikar-v2-he-9x16.view.mp4 | 608x1080 | 2,658 | 88.618 s | 0 errors | 831dfbb6ff6c9d34 |
+| kikar-v2-en-16x9.view.mp4 | 1280x720 | 2,658 | 88.618 s | 0 errors | 282b8365655e3004 |
+| kikar-v2-en-9x16.view.mp4 | 608x1080 | 2,658 | 88.618 s | 0 errors | 571a776f7694e295 |
+
+**What I saw (eyes):**
+- **HE 16x9 at 5 s steps:**
+  - the end card is CTA B: "פנו אלינו לפרטים / על הפרויקט ואפשרויות ביקור", plus "לקבלת פרטים נוספים בוואטסאפ" and the map credit;
+  - no blank frame was seen.
+- **The café and shops shots (74-84 s):** they carry the chips "בית קפה · הדמיה להמחשה" and "קניות · הדמיה להמחשה". (An EN frame at 77 s caught the cut before its chip appeared.)
+- **Honesty note for your review:** the tower behind the café and shops is ONE round banded tower, not the three Kikar towers. It is labelled as an illustration, but a viewer may read it as Kikar. I flag it, not block it.
+
+**Plan:** once 1.72.404 is DONE, these four go to the media library as review copies for Ben's morning, on his direct "upload everything". V1 stays on the page. The page changes only on his choice.

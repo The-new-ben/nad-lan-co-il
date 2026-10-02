@@ -484,3 +484,39 @@ S82 http://luxury-realestate-israel.com/?id=226&location[]=153&deal_type=for_sal
 - A French-speaking agency (Evenis Group) lists a 4-room apartment in the towers for sale (REF GS 18539).
   - Source: https://www.evenisgroup.com/en/property/ref-gs-18539-for-sale-4-rooms-kikar-hamedina-tel-aviv/ (30.9.2026).
   - This is evidence of French-speaking demand.
+
+## Additions, V7 (3.10.2026): buying costs (national rules, not facts about the project)
+
+These are Israeli rules that every buyer in the towers meets. They were added for the V7 articles (5,000 net words per language),
+whose brief asks for purchase costs, tax and mortgage. Each line has its source and date. Examples marked "(derived)" are our own
+arithmetic on these rules.
+
+- Purchase tax, an Israeli resident buying a single (only) apartment, from 16.1.2024: 0% up to ₪1,978,745; 3.5% up to ₪2,347,040;
+  5% up to ₪6,055,070; 8% up to ₪20,183,565; 10% above.
+  - Source: Tax Authority execution directive 2/2024 (מיסוי מקרקעין), as reproduced by https://www.bshcpa.co.il/מס-רכישה-2024/ (read 3.10.2026).
+  - The site's own purchase-tax calculator uses the same brackets (`plugins/nadlan-config/inc/calculators.php`, checked 28.9.2026).
+- Purchase tax, an additional apartment, and a foreign resident (תושב חוץ): 8% up to ₪6,055,070; 10% above.
+  - A foreign resident pays by the additional-apartment brackets: the reduced brackets are for an Israeli resident only (section 9 of
+    the Real Estate Taxation Law).
+  - Source: https://www.capitax.co.il/content/2/print/3108 and the search summary of it (read 3.10.2026).
+- The brackets were frozen (no annual indexation) by the Economic Efficiency Law for the 2025 budget, published 26.12.2024.
+  - So the 16.1.2024 amounts still apply in 2026.
+  - Source: https://www.capitax.co.il/content/2/3183 ; https://www.ice.co.il/consumerism/news/article/1033008 (read 3.10.2026).
+  - The sources differ on the freeze's end ("through 2026" against "tax years 2025-2027"). Both cover October 2026.
+- New immigrants (עולים) have a separate, reduced purchase-tax track under conditions set by law.
+  - Source: https://www.bshcpa.co.il/מס-רכישה-עולה-חדש/ (read 3.10.2026). The rates are not stated on the page; write only that
+    a relief exists and is checked with a tax advisor.
+- Examples (derived) for a ₪10,000,000 apartment:
+  - single apartment, Israeli resident: about ₪513,886 (0 + 12,890 + 185,402 + 315,594);
+  - additional apartment or a foreign resident: about ₪878,899 (484,406 + 394,493).
+- Mortgage loan-to-value limits (Bank of Israel, in force since 1.11.2012):
+  - up to 75% for a buyer of a first (single) home;
+  - up to 70% for an upgrader (replacement home);
+  - up to 50% for an investment / additional apartment, and for an apartment bought by a non-resident.
+  - Source: https://en.globes.co.il/en/article-1000794095 (29.10.2012); Bank of Israel Proper Conduct of Banking Business
+    Directive 329 (the 50% non-resident rule, per the BoI circulars found 3.10.2026).
+  - Examples (derived) for ₪10,000,000: equity of at least ₪2.5M at 75%, ₪3M at 70%, ₪5M at 50%.
+- Broker's fee: a broker is entitled to a fee only if he holds a licence, received a signed written order from the client, and was
+  the effective cause of the deal.
+  - Source: the Real Estate Brokers Law, 5756-1996, section 9.
+  - No legal cap on the fee is stated here; the fee is what the written order says.
