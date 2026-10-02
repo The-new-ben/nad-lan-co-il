@@ -108,7 +108,7 @@ Every turn takes the first open item. Each item is ticked with evidence (live, r
   - Our own, recommending the project and its apartments, covering everything around.
   - The municipality's footage may be embedded, with no credit.
   - Codex/Maya and DaVinci; take over the computer to watch the municipality video.
-- [ ] **V7. 5,000 NET words per language** on every project page (he, en, fr, ru, ar).
+- [x] **V7. 5,000 NET words per language** on every project page (he, en, fr, ru, ar). **DONE 3.10.2026, LIVE 1.72.403:** he 7,264 · en 7,359 · fr 7,463 · ru 7,390 · ar 7,249 net words; ChatGPT Pro from 84 claims; 1,758 numbers, 0 unmatched; verify403 green (docs/research/2026-10-kikar-v7/README.md, HAD-380).
   - ChatGPT skill, fed with the SERP map and the competitors' DNA.
   - Claude runs ChatGPT / Astra 6.
 - [ ] **V8. Traffic.**
