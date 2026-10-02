@@ -302,7 +302,7 @@ export function openExample(o) {
   document.documentElement.classList.add('nlex-open');
   const body = root.querySelector('.nlex__body');
   const xBtn = root.querySelector('.nlex__x');
-  xBtn.focus();
+  xBtn.focus({ preventScroll: true }); // R3b (HAD-390, 2.10): before example.css has loaded the album sits in the page's flow at its end; a plain focus() scrolled the page to its foot behind the album, and Escape then returned focus to a trigger 17,000px away
 
   // ------------------------------------------------------------------ the manifest, then the album
   const mu = new URL(o.url, location.href);

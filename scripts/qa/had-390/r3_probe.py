@@ -16,7 +16,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 from playwright.sync_api import sync_playwright
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
-TAG = sys.argv[1]; LOCAL = "--local" in sys.argv
+TAG = sys.argv[1]; LOCAL = "--local" in sys.argv; WITH_EX = "--with-example" in sys.argv  # R3b: also swap world/example.js from the working tree
 ONLY = sys.argv[sys.argv.index("--only") + 1].split(",") if "--only" in sys.argv else None
 OUT = os.path.join(REPO, "docs", "qa", "had-390", "r3"); os.makedirs(OUT, exist_ok=True)
 HUNKS = []
@@ -37,6 +37,8 @@ def route(r):
         return r.abort()
     if "/world/world.js" in u:
         WJS.append("live")  # world.js always comes from the live site here (no HAD-391 swap)
+    if WITH_EX and "/world/example.js" in u:
+        return r.fulfill(status=200, body=open(os.path.join(REPO, "plugins", "nadlan-config", "assets", "project-stage", "world", "example.js"), "rb").read(), headers={"content-type": "application/javascript"})
     if LOCAL and r.request.resource_type == "document" and "nad-lan.co.il" in u:
         resp = r.fetch(); body = resp.text()
         for name, old, new in HUNKS:
