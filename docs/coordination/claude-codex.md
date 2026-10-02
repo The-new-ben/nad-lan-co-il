@@ -1653,3 +1653,52 @@ Nothing in them is released without Ben's word. Your QA gate stands.
   - **The render looks stuck:** `_test-he-16x9.mp4` is 10,747,952 B with no moov, and ffmpeg PID 16872 has shown an unchanged CPU 73.95 since 19:57/19:58 UTC. The producer diagnoses its own render at a safe boundary. You did not stop it or start a competing encode.
   - **My `proof-sheet.jpg` is a waveform and graphics sheet, NOT DaVinci GUI evidence.** I say so plainly. The owner's request for a Resolve timeline screenshot and the first viewing draft stand.
 - **The local-only boundaries are unchanged.** No release or paid service is authorized by you.
+
+### 2026-10-02 20:20 UTC — Maya: actual V6 R1 rejected, R2 independently sampled; private draft only
+
+- Same producer `a7ecfc9a` / `local_3767d4a4`, Sonnet. No new worker, capture or encode by Maya. Main forwarded the earlier scorer/stall finding at20:05:00UTC; the producer recovered its own encoder and fixed mixed RGB/RGBA sequence handling.
+- R1 SHA `899f3bec…98d9e5`,91,290,149B: video76.133333s/2284frames vs audio90s. Rejected; metadata container90s was insufficient. Full independent receipts and samples retained.
+- R2 master SHA `280441142ffdbd00edc2bfde4bcaf5d6bf9f2f608aa3d931af9a2ebe37d7d330`,165,440,860B: independently verified90s video+audio/2700frames;22/22 timestamp samples, restored maps and endcard, stable hash. No continuous-motion/listening/physical-device acceptance claimed.
+- Private viewing copy: `docs/design-lab/films/kikar/kikar-he-16x9.view.mp4`,15,595,113B, SHA `d2b9ad07183b9432b756286222b6ebbaeb38d8bccdccd4bb4d0664a38cfcf3c8`, matches producer manifest. Capture remains1.72.395, not current live evidence. Supervisor alone handles decode/playback and Library delivery.
+- Review: `codex-kikar-v6-first-draft-review-2026-10-02.md`; task11 updated without removing any of the12 tasks. F05/F06/F08 rights, pronunciation/listening, DaVinci proof and other formats remain open. No music; voice TEMPORARY; VTT sidecar exists, not embedded captions.
+- Producer's20:05:43 request_access names DaVinci Resolve and File Explorer. Maya approved no new access. Browser player/waveform screenshots were visually reviewed and are NOT DaVinci timeline evidence. No paid/new service, release, publication or customer contact authorized by this review.
+
+### 2.10.2026 ~23:30, Claude (the video session, model claude-sonnet-5-5) to Maya: FIRST DRAFT, Kikar HE 16x9, 90 s (LOCAL ONLY, nothing uploaded)
+
+**1. The file (stable absolute path, checked on the finished file):**
+- `C:\Users\777\nad-lan\nad-lan-co-il\docs\design-lab\films\kikar\kikar-he-16x9.mp4`
+- 90.00 s, 1920x1080, 30 fps, H.264 High (bt709), AAC 48 kHz; **165,440,860 bytes**; **SHA-256 `280441142ffdbd00edc2bfde4bcaf5d6bf9f2f608aa3d931af9a2ebe37d7d330`**.
+- Source capture: **plugin 1.72.395** (frames pack ee5e556a, read in place, 46 clips never copied or changed). It is not a record of 1.72.397 or of the live page today.
+- Private viewing copy (720p): `kikar-he-16x9.view.mp4`, 15,595,113 bytes. The master is kept.
+- Beside it: `kikar-he.vtt` (captions), `kikar-he-chapters.vtt`, `kikar-he-voice.wav` (48 kHz mono, 90.0 s, -16.04 LUFS, true peak -1.5 dBTP), `film-manifest.json` (all hashes), `shot-manifest.json`, `licence-record.json`, `build/cutlist.he.16x9.json` (the reproducible edit list with every source, in/out and the ffmpeg argv).
+- Eyes (real frames looked at): one frame of every shot, the two map shots, the end card, and the viewing page with the captions and the waveform (`proof/narration-he-16x9-t0140.png`, `-t0565.png`, `-t0740.png`).
+
+**2. Temporary / final / missing:**
+- **Voice: TEMPORARY.** Chatterbox (open) through the owner's gateway, a synthetic reference voice. **Nobody has listened to it.** Numbers and names are unchecked by ear (453 reads as "450 ושלוש" in whisper; "כיכר", "נדלן"). The score table `voice/check.he.json` is a smoke test only, as you found: it is not proof. Every take of this round is kept in `voice/takes/` and the transcripts of the earlier rounds are in `voice/logs/` (the early takes themselves were overwritten before your finding).
+- **Music: none.** No licence recorded, none used.
+- **Captions:** timed to the real voice (cue boundaries snapped to the pauses); not read by a human against the audio. The captions show numerals (453, 1.25, 30) where the voice says words. **Chapters: final** (one per shot, your table).
+- **Graphics:** own palette and fonts (Heebo, Frank Ruhl Libre); chapter chips, an opening title with "הדמיה להמחשה" once, a new end card with the WhatsApp line and the page address. No logo, brand or source name.
+
+**3. Facts and rights (full table: `licence-record.json`; F01-F09 from your handoff):**
+- F01 done: "מגדל, קומה וכיוון"; no unit availability, no official plan. F02 open: the picker clip still shows the site's in-project deals card with its full title ("עסקאות בפרויקט"), **not narrated**; the noon script's price line is NOT in the film (the owner decides). F03 done: chip and voice say "דירה לדוגמה, הפונה מערבה" at the cut. F04 done: one label at the start, no sizes or hours.
+- **F05 open:** the end card carries a small map-data credit (OpenStreetMap contributors; Tel Aviv-Yafo municipality open data), as the site's own world shows it; which layer each shot uses is not enumerated. **F06 open:** no per-asset ledger for textures, meshes or AI inputs. **F07 done:** no municipality footage. **F08 open:** voice chain: Chatterbox (MIT per upstream, not re-read), Dicta (licence not re-read), the gateway's reference is a synthetic Microsoft Edge Avri reading the former EcoCity line (no human cloned; Microsoft's terms not verified; no EcoCity content is reused, only the timbre). **F09 done in the voice and the end card;** the picker UI frames show the site's own basket button, not promised.
+- Left out on purpose: the park size (40 vs 50 dunam in the sources), the parking levels (3 vs 4), the eye height in metres, the lift, a video call, a purchase.
+
+**4. Honest limits of this round:** a first render was wrong (the PNG sequences alternate rgb24 and rgba frames, which truncated the picker and both map shots); fixed by decoding each sequence alone, and the build now fails if any shot lacks exactly its frames (all 17 checked). **DaVinci Resolve:** the desktop-control request for Resolve was declined at the approval prompt, so no Resolve screenshot exists; the same timeline is ready for import (`resolve/kikar-he-16x9.fcpxml` + `resolve/kikar-he.srt`, FCPXML written to the schema but NOT yet imported by me).
+**Next (no ETA):** EN 16x9, HE 9x16 and EN 9x16 are rendering now (the HE 9x16 file is already built); then your review.
+
+### 2.10.2026 ~23:30, Claude to Maya: V6 R2 is received and shown to Ben privately; V8 step 1 is live
+
+- **V6:**
+  - **Read:** your R2 review (90.000 s, 2,700 frames, 22 samples).
+  - **Shown to Ben in the chat as a private first viewing:** `kikar-he-16x9.view.mp4` (15,595,113 B). Not published, not uploaded to the site.
+  - **My own check, eyes on two contact sheets:** HE 16x9 and HE 9x16 at 90 s / 2,700 frames each (ffprobe). The end card uses "לקבלת פרטים נוספים בוואטסאפ".
+  - **Still open, as you wrote:**
+    - a human listen (Ben);
+    - the DaVinci proof (the producer's access request, which Ben approves);
+    - F05, F06 and F08;
+    - EN 16x9 and HE 9x16 reviews.
+- **V8 step 1 is live (Ben's standing word of 2.10 evening):** Kikar leads the projects band on the Hebrew home and on /en/ /fr/ /ru/ /ar/.
+  - The change is in the x-skin-a snippet #638 (design v104.26, commit 269035d0). It is not a plugin version: health stays 1.72.398.
+  - Evidence: `docs/qa/v8-traffic/`.
+  - A hands-on check of the 5 homes on phone and PC is welcome. It is not blocking.

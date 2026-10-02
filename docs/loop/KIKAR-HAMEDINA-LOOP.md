@@ -114,6 +114,8 @@ Every turn takes the first open item. Each item is ticked with evidence (live, r
 - [ ] **V8. Traffic.**
   - The top of the page per language intent ("פרויקט יוקרה במרכז תל אביב", "ללא תיווך", foreign buyers).
   - Menus, the homepage, internal links.
+  - [x] **Step 1, live 2.10 (design v104.26, commit 269035d0):** Kikar leads the projects band on the Hebrew home and on /en/ /fr/ /ru/ /ar/, each language linking to its own page. Evidence: docs/qa/v8-traffic.
+  - [ ] **Step 2:** links from DUO, Rainbow, Einstein and /north-tel-aviv/. Then the main menu ("פרויקטים חדשים"). Re-inspect the EN and RU pages a week later (`gsc_api.py inspect`).
 - [ ] **V9. LAST: WhatsApp wording site-wide (HAD-382).** "ייעוץ חינם" only on the floating bar; "לקבלת פרטים נוספים בוואטסאפ" everywhere else.
 
 **Rules (on top of the laws below):**
@@ -210,6 +212,28 @@ Every turn does ALL of these, not only the current phase:
   - **(c) `verify_kh`** as above.
 
 ## Scale-up ledger (newest on top)
+
+- **2.10 night, V2 loop turn 12: V8 step 1 LIVE (no plugin version: the x-skin-a snippet). The V6 first Hebrew draft is built and shown to the owner privately.**
+  - **Measured (eyes and code):**
+    - **URL Inspection** (new: `tools/gsc/gsc_api.py inspect`, read only): HE, FR and AR are indexed. RU is "Discovered, not indexed". **EN is unknown to Google.**
+    - **Internal links:** only /projects/ linked to Kikar. The home page, the 4 language homes, DUO, Rainbow, Einstein, /tel-aviv/ and /north-tel-aviv/ had 0 links.
+    - **Monthly demand (DataForSEO, Israel):**
+      - כיכר המדינה 5,400; כיכר המדינה תל אביב 390; מגדלי כיכר המדינה 260; פרויקט כיכר המדינה 170 (CPC ₪6.25); כיכר המדינה מגדלים 110;
+      - hamedina square 1,000; kikar hamedina towers 320 (880 in July 2026); kikar hamedina 260; kikar hamedina tel aviv 140.
+    - The titles and H1s already carry these names. **The gap was discovery, not words.**
+  - **Done:**
+    - **The home band order** (in the x-skin-a snippet #638, via `scripts/skin-a/skin_kikar_v8.py`): Kikar, Rainbow, H Infinity, Ashira, Dimri, Six-8, Einstein. The order follows Search Console impressions.
+    - **Eyes:** 1440 HE and EN, a 375 rail, and a real click to /projects/hamedina/.
+    - **Source audit:** 15 GREEN, 1 YELLOW before the release.
+  - **V6:** HE 16x9 (90.000 s, 2,700 frames, 1080p and a 720p viewing copy), HE 9x16 (90 s), and the EN voice done. Maya's R2 says "fit for a first private viewing, not publication". Still open:
+    - a human listen (only the owner can);
+    - DaVinci proof: the producer asked for computer access at 20:05 UTC, and the owner approves it in that session;
+    - the rights ledger, F05, F06 and F08.
+  - **Scale-up notch:** every project page can now be inspected for indexing in one command. The skill's step 10 now opens with "inspect + count the internal links + the home order". Home order changes go through the snippet runner, never the plugin runner.
+  - **Found, not touched:**
+    - the language homes still say "New in the system" (Hebrew fixed it in v31);
+    - DUO (930 impressions) is not linked from the home page.
+  - **NEXT:** V8 step 2 (neighbour project pages + /north-tel-aviv/, design first), then V7 when the owner clicks the chip.
 
 - **2.10 night, V2 loop turn 11: LIVE 1.72.396 (HAD-391) and 1.72.397 (HAD-390 ConsultBand), on the owner's word. V6 is with the video session, and V7 is opened.**
   - **Web (2.10):** [Google 2026, helpful content](https://ecomranker.com/google-helpful-content-update-2026-guide/) and [why long-form fails or wins](https://contentdecoded.com/why-long-form-content-doesnt-always-rank/). Word count does not rank; complete intent satisfaction does. So V7's 5,000 net words must be decision content: prices, picking, costs, tax, mortgage, area, timeline, FAQ.
