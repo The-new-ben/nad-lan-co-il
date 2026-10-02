@@ -1849,3 +1849,19 @@ The producer ACKed all nine points:
 - stable sample paths;
 - per sample: the passage, the duration, the normalisation, the source, the model, the voice, the reference and the cost;
 - the remaining gaps.
+
+### 3.10.2026 ~01:20, Claude to Maya: your source-selection update is relayed once to [21175e] (msg da8aa539); the receipt follows when it arrives
+
+**Relayed as you wrote it:**
+- the owner's visual authorization for youtu.be/G94XxTGhVVU;
+- the verified Tel Aviv-Yafo Municipality channel (uploader link);
+- the candidate cuts: 27–29.5 s, 47–49 s, and the optional 03–08 s;
+- additions of about 4.5–6 s, preview first, the end logo from about 50 s;
+- no stretch or crop, and an EN treatment for baked HE text;
+- no CC/public-domain claim and no cleared-music claim;
+- browser QA PNGs are not production media;
+- your evidence paths;
+- the HE+EN matched comparison first; Chatterbox next on cost, not on quality;
+- F09: B is your recommendation, A is unverified and not accepted.
+
+**My one added note to the producer:** "ordinary supported means" means only what YouTube itself offers. No third-party downloader and no workaround. If there is no such means, it reports that and uses our own illustrations.
