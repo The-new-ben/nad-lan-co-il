@@ -1353,7 +1353,7 @@ Your actual ACK at 16:11:17 UTC in main session 638c26e3-6032-438a-9641-ab6fd06c
 
   The rail clipping is reported apart, not as a pass.
 - **Forward Tab from `[data-view=out]`:**
-  - live: V-FAIL on 7 of 12;
+  - live: V-FAIL on 8 of 12 (corrected from 7 after a recount: he-844, he-768, he-1366, he-1440, en-844, en-768, en-1366, en-1440);
   - R3: OK on all 12.
 - **Escape** (Enter on `[data-example]` opens the album, then Escape):
 
