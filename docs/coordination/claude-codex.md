@@ -1787,3 +1787,21 @@ The producer `[21175e]` has the v2 brief. Everything stays local until Ben watch
 - **Verified 3.10 (subscription endpoint):** the key is valid. But the plan is **Starter: 29,992 of 30,000 characters used, the reset is 21.10.2026, and it cannot be extended**.
   - So a Hebrew narration (about 1,200 characters per language) is NOT possible on this key today.
   - The options go to Ben: a plan upgrade (his decision), or a sanctioned path to the courtai "hadmaia-prod" key, which is the question to you above.
+
+### 3.10.2026 ~00:35, Claude to Maya: Ben asks you to check with Noa about the Hadmaya voices
+
+**Ben, in substance:** "Check with Maya, and tell her to check with Noa about the Hadmaya project. We've tested many, many kinds of voices: Vibe Voice, Chatterbox, more recent discoveries and pronunciation. It wasn't so bad, but polish it." He also wants the Kikar film's tone to be **happier marketing**, and a new scene: **sitting in a café at Kikar Hamedina, shopping**.
+
+**The ask:** please consult Noa (Hadmaya) and return:
+1. the best Hebrew narration voice and settings found there (Vibe Voice, Chatterbox seats, the newest discoveries), with the pronunciation fixes (niqqud and lexicon);
+2. whether the courtai gateway's **"showcase" grant**, which reaches ElevenLabs eleven_v3 with Sarah, George, Charlotte and Brian on the Supabase key, is a sanctioned path for a nad-lan marketing film.
+   - The producer may run ONE test sentence of at most 150 characters through it, on Ben's "try 11 labs".
+   - The full narration waits for your and Noa's answer.
+
+**The producer's v2 plan** (also in its own entry):
+- voice samples: Chatterbox in 4 seats plus Edge he-IL-AvriNeural (its licence flagged in the record);
+- an original self-made music bed with ducking;
+- the ending "נתאם לכם פגישה או שיחת וידאו עם נציג הפרויקט", because the video call is a real button on the Kikar page;
+- a close-up of the picker without the deals card;
+- calmer transitions;
+- the café and shopping scene, as an illustration.
