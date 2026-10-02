@@ -213,6 +213,8 @@ NAMES = [
     row("GINDI VOGUE שדה דב - פרוייקט גינדי ווג", "GINDI VOGUE Sde Dov", "GINDI VOGUE Sde Dov", "GINDI VOGUE Sde Dov", "GINDI VOGUE Sde Dov"),
     row("ASHIRA - פרויקט אשירה שדה דב תל אביב מחיר", "ASHIRA Sde Dov", "ASHIRA Sde Dov", "ASHIRA Sde Dov", "ASHIRA Sde Dov"),
     row("FIRST שדה דב - קבוצת חג'ג'", "FIRST Sde Dov", "FIRST Sde Dov", "FIRST Sde Dov", "FIRST Sde Dov"),
+    # v104.27 (2.10.2026): Kikar Hamedina in the neighbours' comparison table; the names its own language pages use (Arabic titles in English, owner 28.9)
+    row("מגדלי כיכר המדינה, תל אביב", "Kikar Hamedina Towers, Tel Aviv", "Tours Kikar Hamedina, Tel Aviv", "Башни Кикар ха-Медина, Тель-Авив", "Kikar Hamedina Towers, Tel Aviv"),
     row("הרברט סמואל SIX-8 תל אביב - דירות יוקרה בקו הראשון לים", "SIX-8 Herbert Samuel Tel Aviv", "SIX-8 Herbert Samuel Tel Aviv", "SIX-8 Herbert Samuel Tel Aviv", "SIX-8 Herbert Samuel Tel Aviv"),
 ]
 

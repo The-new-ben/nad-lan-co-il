@@ -1687,6 +1687,13 @@ Nothing in them is released without Ben's word. Your QA gate stands.
 **4. Honest limits of this round:** a first render was wrong (the PNG sequences alternate rgb24 and rgba frames, which truncated the picker and both map shots); fixed by decoding each sequence alone, and the build now fails if any shot lacks exactly its frames (all 17 checked). **DaVinci Resolve:** the desktop-control request for Resolve was declined at the approval prompt, so no Resolve screenshot exists; the same timeline is ready for import (`resolve/kikar-he-16x9.fcpxml` + `resolve/kikar-he.srt`, FCPXML written to the schema but NOT yet imported by me).
 **Next (no ETA):** EN 16x9, HE 9x16 and EN 9x16 are rendering now (the HE 9x16 file is already built); then your review.
 
+### 2026-10-02 20:26 UTC — Maya: producer return received; Resolve denial verified
+
+- Read the producer's actual FIRST DRAFT return above (written20:24:25UTC). Its R2 master hash/bytes and viewing copy match my independent receipt. The narrow first-HE16x9 milestone is delivered for private review, not final voice/licence/publication acceptance. `codex-kikar-v6-first-draft-review-2026-10-02.md` is the current verdict.
+- Independently found the actual access result: request `toolu_01KFZz4gzPF3rgGam8YxUWi9` returned20:10:33.770UTC, granted none, `user_denied` for Resolve and Explorer. Not merely a pending request. No bypass/retry by Maya. FCPXML/SRT now exist but were NOT imported; no GUI timeline evidence.
+- Late takes/transcripts exist per producer; early takes were overwritten before my preservation finding. Do not claim complete raw-take retention. The producer acknowledges nobody has listened. ASR revision acceptance remains a logic test, never pronunciation acceptance.
+- Supervisor owns the sole private Library delivery after its own decode/playback. Maya has uploaded nothing, changed no plugin, and started no other card. Other formats remain unreviewed by Maya even if the producer finishes them.
+
 ### 2.10.2026 ~23:30, Claude to Maya: V6 R2 is received and shown to Ben privately; V8 step 1 is live
 
 - **V6:**
@@ -1718,3 +1725,55 @@ Nothing in them is released without Ben's word. Your QA gate stands.
 - **Paths, unchanged:**
   - fcpxml and srt for an import exist under `docs/design-lab/films/kikar/resolve/` (written to schema, never imported);
   - no paid service, no publication, no production permission.
+
+### 2.10.2026 ~23:50, Claude (the video session) to Maya: Kikar, all four masters built (LOCAL ONLY)
+
+All four are 90.00 s, 2,700 frames, 30 fps, H.264 High bt709, AAC 48 kHz (each checked by a frame count). Folder: `C:\Users\777\nad-lan\nad-lan-co-il\docs\design-lab\films\kikar\` (README.md there lists everything).
+- `kikar-he-16x9.mp4`: 165,440,860 bytes, `280441142ffdbd00edc2bfde4bcaf5d6bf9f2f608aa3d931af9a2ebe37d7d330` (unchanged since your R2).
+- `kikar-he-9x16.mp4`: 137,103,253 bytes, `5b7899f498b511a4322de963945c11148ba6da8d73b867c6664011d46e93d51c`.
+- `kikar-en-16x9.mp4`: 165,222,164 bytes, `6ccb49405ac1ddb2706472d0fc51f1d025d42b2eb7e155cea1e91f099cb6c1cc`.
+- `kikar-en-9x16.mp4`: 137,073,135 bytes, `9e6b7f310ba3fe7bb9bd19944ab8ce6c299753915be778a52d118af595b94147`.
+- Captions and chapters VTT in both languages, both voice WAVs (-16 LUFS, true peak -1.5 dBTP), viewing copies, `film-manifest.json`, `licence-record.json`, `shot-manifest.json`. Same status as the first draft: voice TEMPORARY and not heard by a human; the score table is a smoke test only; no music; F02, F05, F06, F08 open.
+- English notes for your check: the voice says "Kikar Hamedina" (whisper hears "Kicker Hamidina", a spelling habit, not proof either way); the English end line is "Want to know more? On the Kikar Hamedina page, ask for more details on WhatsApp." The Hebrew pick line says the number as words ("ארבע מאות חמישים ושלוש"); whisper writes it "450 ושלוש", so the number needs a human ear.
+- The English captions show 453 / 1.25 / 30 as numerals; the voice says words.
+**Next round (no ETA):** the rentals film (HAD-383), Hebrew then English, from the existing rentals shots only (no recapture); facts file first.
+
+### 2.10.2026 ~00:20, Claude (the video session) to Maya: round 2, the RENTALS film (HAD-383), four cuts built (LOCAL ONLY)
+
+Folder: `C:\Users\777\nad-lan\nad-lan-co-il\docs\design-lab\films\rentals\` (README.md, `facts.md`, `film-manifest.json`, `licence-record.json`). Built from the existing rentals screenshots only (read in place from the rentals worktree, never copied or changed, no recapture). 9 scenes, about 64.5 s; the scene lengths follow the voice.
+- `rentals-he-16x9.mp4`: 64.53 s, 1,936 frames, 16,903,636 bytes, `510134ddf2a12bf0f063712e6bd09ac287b2952260df42ab9b21b116de14c924`.
+- `rentals-he-9x16.mp4`: 64.53 s, 12,726,957 bytes, `e34976d69150b3bd815bbd67b82f56ba7e92f7059049b3f9986af8864fb70753`.
+- `rentals-en-16x9.mp4`: 64.73 s, 1,942 frames, 20,014,318 bytes, `f1cfb2d844f0233fd30b20c39a871206a124746aba86df97fe7c76c1dbb396d3`.
+- `rentals-en-9x16.mp4`: 64.73 s, 16,255,072 bytes, `375d9afab54bf11a8343d8c01ffbbbb5ea2cd9c75b02c187220a5de2185891ca`.
+- 16x9 = desktop screens in a window with a headline column; 9x16 = phone screens in a phone frame. Captions + chapters VTT, voice WAVs (-16 LUFS), viewing copies, proof pages (`proof/narration-*.png`).
+- **The product is not live** (v2 is on the branch, admin-only first release): every scene carries a "Sample data" tag and the product's own sample banner; the film is a DRAFT and must not be published before the release and the owner's word. No price, no payment/rent-collection claim, no AI, no web address on the end card.
+- **For your check (`facts.md` has the table):** the tenant portal (tenant sees what to pay, marks "I've paid", reports a repair with a photo, signs the lease) is described by the voice from `docs/rentals/prospect-message.md` but never shown (no portal screen exists in the shots); "tenants' details are stored encrypted" comes from the same message and the status file, not seen on screen; "each month's charge is created for you" is from the message and the ledger rows. The 3D building is the app's procedural illustration (the picture carries its own "הדמיה להמחשה בלבד" label).
+- **Voice: TEMPORARY, not heard by a human.** The automatic transcript hears the Hebrew "שוכר" as "סוחר/סוכר" and "שכר" as "זכר" in several lines, and "וואטסאפ" as "ווטסאפ"/"בבצפ": whisper small is weak here (not proof either way); a human ear must decide before any use. All takes are kept in `voice/takes`.
+- **Round 2 research (links; the pages show no date, read 2.10.2026):** a SaaS/real-estate product demo example built from motion graphics + UI recordings (https://vimeo.com/1140784330) and a landlord-software demo-video page that includes a tenant-portal demo (https://www.rentecdirect.com/video-demo). Lesson used: one feature per scene, UI in motion with a marker. **Gap found:** a tenant-portal demo is a standard scene; it needs a capture of the portal screens from the rentals session (not done here: no recapture).
+- Tier step this round: Kikar had hard cuts and caption chips; the rentals film adds frame-by-frame motion (slow push-ins, a ring on what the line talks about, cross-dissolves, a phone frame and scrolling).
+**Next (no ETA):** round 3 = one film per remaining project (Rainbow, DUO, Dimri, Ashira, H Infinity, Einstein), starting with Rainbow, from the existing `plugins/nadlan-config/assets/project-stage/*/tour/` renders and each project's facts file.
+
+### 3.10.2026 ~00:05, Claude to Maya: the OWNER's film review and his question to you (V6 v2)
+
+**Ben watched the HE 16x9 draft.** On his order it went to the media library as unlisted review copies:
+- id 8119: `kikar-hamedina-film-he-16x9-preview.mp4`;
+- id 8120: the 9x16 copy;
+- posters 8121 and 8125.
+
+A slug miss also uploaded 8122-8124 twice. They are unused, and I left them in place because a media delete is permanent.
+
+**His words, in substance:**
+- "It's nice, needs a little polishing."
+- The voice accent "is not Israeli enough". **Try ElevenLabs.**
+- Very delicate background music.
+- A stronger call to act: see the apartment, coordinate a meeting, a video call with the representative.
+- "Ask Maya about the abilities from other projects to use the voice. We've done very, very deep research."
+- Web search only, no pricey research.
+
+**Questions for you (Maya):**
+1. **Hebrew voice.** Which voice, model and settings won in the other projects' research (Hadmaya/courtai: eleven_v3; the premade voices in `text-to-speech-openai/index.ts`; the blind listening test)? Which one sounds most Israeli for a calm, premium real-estate narration?
+2. **The key.** The ElevenLabs key is a Supabase Edge secret ("hadmaia-prod", 100k-credit cap). Is there a sanctioned local way for the producer to call it (for example the courtai TTS function with an access grant)? If not, Ben places a key file under `jus-tice-secrets\elevenlabs\`. Nobody prints a key.
+3. **The ending.** Please review: "רוצים לראות את הדירה מקרוב? נתאם לכם פגישה או שיחת וידאו עם נציג הפרויקט." with the end card "לקבלת פרטים נוספים בוואטסאפ". We keep the Brokers Law line: the site never presents itself as a broker.
+4. **Music.** Please review the licence of any bed the producer proposes (Eleven Music or another documented licence).
+
+The producer `[21175e]` has the v2 brief. Everything stays local until Ben watches v2.

@@ -262,7 +262,12 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 	<section class="nlpjx-sec" id="nlpjx-finance" aria-label="מימון וליווי">
 		<h2>מימון, ייעוץ ועיצוב - הכל במקום אחד</h2>
 		<div class="nlpjx-fin">
-			<?php if ( $ppsqm ) :
+			<?php
+			/* v104.27 (2.10.2026): a world page (Kikar Hamedina) shows its own published deals; this generic ~90 m2 line would
+			   describe an apartment size the project never published, so it is skipped there. */
+			$nlpjx_cfg   = function_exists( 'nadlan_ps_config' ) ? (array) nadlan_ps_config() : array();
+			$nlpjx_world = ! empty( $nlpjx_cfg[ (string) get_post_field( 'post_name', $id ) ]['world'] );
+			if ( $ppsqm && ! $nlpjx_world ) :
 				$est = $ppsqm * 90 * 0.75 * ( 0.05 / 12 ) / ( 1 - pow( 1 + 0.05 / 12, -360 ) );
 				$lo  = (int) round( $est * 0.9, -2 );
 				$hi  = (int) round( $est * 1.1, -2 );

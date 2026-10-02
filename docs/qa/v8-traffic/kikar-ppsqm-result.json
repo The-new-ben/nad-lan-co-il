@@ -1,0 +1,21 @@
+{
+ "release": "Kikar V8 step 2b: project_3d_avg_price_per_sqm 65000 (design v104.27)",
+ "at": "20261002T205014Z",
+ "before": {
+  "id": 8113,
+  "slug": "hamedina",
+  "status": "publish",
+  "exists": false,
+  "value": ""
+ },
+ "after": {
+  "id": 8113,
+  "slug": "hamedina",
+  "status": "publish",
+  "cleared": 380,
+  "purged": 1,
+  "exists": true,
+  "value": "65000"
+ },
+ "ok": true
+}
