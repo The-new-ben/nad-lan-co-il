@@ -18,5 +18,25 @@
   "id": 8125,
   "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-he-9x16-preview-poster.jpg",
   "existing": true
+ },
+ "kikar-hamedina-film-en-16x9-preview.mp4": {
+  "id": 8126,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-en-16x9-preview.mp4",
+  "bytes": 15620962
+ },
+ "kikar-hamedina-film-en-9x16-preview.mp4": {
+  "id": 8127,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-en-9x16-preview.mp4",
+  "bytes": 10142035
+ },
+ "kikar-hamedina-film-en-16x9-preview-poster.jpg": {
+  "id": 8128,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-en-16x9-preview-poster.jpg",
+  "bytes": 175489
+ },
+ "kikar-hamedina-film-en-9x16-preview-poster.jpg": {
+  "id": 8129,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-en-9x16-preview-poster.jpg",
+  "bytes": 109294
  }
 }
