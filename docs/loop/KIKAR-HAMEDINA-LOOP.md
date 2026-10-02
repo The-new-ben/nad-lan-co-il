@@ -115,7 +115,8 @@ Every turn takes the first open item. Each item is ticked with evidence (live, r
   - The top of the page per language intent ("פרויקט יוקרה במרכז תל אביב", "ללא תיווך", foreign buyers).
   - Menus, the homepage, internal links.
   - [x] **Step 1, live 2.10 (design v104.26, commit 269035d0):** Kikar leads the projects band on the Hebrew home and on /en/ /fr/ /ru/ /ar/, each language linking to its own page. Evidence: docs/qa/v8-traffic.
-  - [ ] **Step 2:** links from DUO, Rainbow, Einstein and /north-tel-aviv/. Then the main menu ("פרויקטים חדשים"). Re-inspect the EN and RU pages a week later (`gsc_api.py inspect`).
+  - [x] **Step 2, live 3.10 (1.72.399 + data + 1.72.400, design v104.27):** Kikar is in the neighbours' comparison table (DUO's first row at 663 m; Rainbow's 6th), at 65,000/m² (the towers' published average). The ~90 m² finance line skips world pages. Kikar's name reads in each language on the 60 language pages. Einstein: 6 projects are nearer.
+  - [ ] **Step 3:** /north-tel-aviv/ hub and the main menu ("פרויקטים חדשים"). Re-inspect the EN and RU pages about 9.10 (`gsc_api.py inspect`).
 - [ ] **V9. LAST: WhatsApp wording site-wide (HAD-382).** "ייעוץ חינם" only on the floating bar; "לקבלת פרטים נוספים בוואטסאפ" everywhere else.
 
 **Rules (on top of the laws below):**
@@ -212,6 +213,24 @@ Every turn does ALL of these, not only the current phase:
   - **(c) `verify_kh`** as above.
 
 ## Scale-up ledger (newest on top)
+
+- **3.10 night, V2 loop turn 13: V8 step 2 LIVE (1.72.399, the data step, 1.72.400). The owner watched the film and gave v2 notes. The ElevenLabs key has one home.**
+  - **Web (3.10):** [heygen real-estate ads](https://www.heygen.com/blog/real-estate-ads), [gisteo video scripts](https://gisteo.com/blogs/video-production/real-estate-video-script/), [estatepass 2026 guide](https://www.estatepass.ai/tools/video-script/guide/). The rule: one CTA, one next step; luxury pacing is slower. Also [internal linking for project pages](https://realestateseoservices.in/internal-linking-real-estate-seo/): project pages link to nearby projects and locality pages.
+  - **Owner on the film:** "nice, a little polishing". He wants:
+    - a voice with a more Israeli accent (try ElevenLabs);
+    - delicate music;
+    - a CTA to meet or video-call;
+    - a café and shopping scene;
+    - a happier marketing tone;
+    - Maya to consult Noa (Hadmaya voices).
+  - **Maya's V2 rules:** A/B samples before any full render. F09 means two endings, with the owner choosing.
+  - **Key:** `jus-tice-secrets\elevenlabs\elevenlabs-api-key.txt`, registered in TOOLS-AND-KEYS. Starter: 8 characters left until 21.10.
+  - **Scale-up notch:**
+    - `scripts/project-stage/live_read.py` (read-only fetch of any live plugin file; the repo runs ahead of live on some files);
+    - `kikar_ppsqm_v8.py` (a guarded meta write with a cache clear and rollback);
+    - checks that look for forbidden Hebrew target the visible element, never the whole body.
+  - **Found, not touched:** Six-8 shows ~200,000/m² in the comps; DUO has no average per m², so it is absent from others' tables.
+  - **NEXT:** the film's A/B voice samples to the owner's ear; V8 step 3 (/north-tel-aviv/ and the menu). The background sessions the owner started (V7 articles, rentals, urban renewal, Gili) report back.
 
 - **2.10 night, V2 loop turn 12: V8 step 1 LIVE (no plugin version: the x-skin-a snippet). The V6 first Hebrew draft is built and shown to the owner privately.**
   - **Measured (eyes and code):**
