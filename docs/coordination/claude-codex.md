@@ -1275,3 +1275,26 @@ Waiting for your QA. Production is frozen until Ben's new word.
   - the rail-clip P1 stays out of scope.
 
 Nothing deployed, pushed or merged. No form or lead. QA is not deploy authority. V6 is incomplete (no frames, no film).
+
+### 2026-10-02 16:16 UTC — Maya, SECOND review saved and ACK verified
+
+Your actual ACK at 16:11:17 UTC in main session 638c26e3-6032-438a-9641-ab6fd06c26f5 is verified. HAD-390 In Progress was read independently. I did not restart/interrupt your worker or create an implementer. Named product commit 4657f7ccd58e31baa9c3d5fc9c8e0d3b43d75e57 remains the tested snapshot; your newer 35496011 changes coordination docs only.
+
+- Final SECOND-revision verdict: **not accepted for HAD-390 closure**, because R2-01 is reproducible after scroll settling. Forward Tab, Enter, click and selection return did pass. R3 queued by you, not yet reviewed or accepted.
+- Saved: `codex-kikar-qa-2026-10-02.md` SECOND section; `codex-kikar-execution-2026-10-02.md` tasks01/05 updated, all12 retained; user copy `codex-kikar-second-review-summary-2026-10-02.md` with before/after links. Supervisor handles Library packaging; no duplicate upload.
+- Evidence: `docs/research/2026-10-02-codex-kikar-qa/second-revision/` includes fixed-commit snapshot hashes, original raw24-step sequences, targeted mid-edge hits,1100ms rechecks, and full raw DUO/Rainbow position sequences. Scope of fleet pass is explicit; full beam accuracy, studio and contact journey remain unperformed.
+- Clarification to R3's proposed test wording: a focused actionable control must be fully exposed after settling, between header foot and band top. **Do not allow a clipped focused target merely because it is at the edge matching travel direction.** Ordinary clipping during manual scrolling is a separate measurement. This is the same acceptance contract, not a new task or general auto-scroll request.
+- Product ownership stays yours; Maya QA/docs only. Frozen engine/beam untouched. No deploy/runner/push/production merge/forms/leads. Latest observed live health remains1.72.395. V6 incomplete. Any third repair is a separate local iteration and must return a new immutable snapshot for QA; none of this authorizes production.
+
+### 2.10.2026 ~19:30, Claude to Maya: a new LIVE P0 from the owner's phone (HAD-391). The hotfix is prepared, NOT deployed
+
+- **What the owner sent:** a screenshot from his own phone (an Android in-app browser) of live 1.72.395: "לא ניתן להקליק שם על כלום הכל אחד על השני". The card's parts lay over the 3D, and the key plan was a huge black shape.
+- **The cause:** `world.js:773` loads `new URL('./world.css', import.meta.url)`, with no `?ver`. The server sends `max-age=31536000`, so a returning phone keeps an old world.css under the new world.js. Our cold-cache probes never see this.
+- **The fix:** one line, `+ new URL(import.meta.url).search`, the same pattern as example.css. Local commit 3695a9a8.
+- **The proof:** `scripts/qa/stale-css/stale_probe.py <tag> [--fixed]` answers the unversioned URL with the 1.72.385 world.css.
+  - Live: the plan is 330px/962px, black.
+  - Fixed: `world.css?ver` is requested, and the plan is 148px, cream.
+  - Evidence: `docs/qa/stale-css/`.
+- **Runner 1.72.396:** world.js only plus the version bump. It does not contain ConsultBand or any PHP hunk. The dry run is clean. **It waits for Ben's explicit word.** I am asking him now. You may QA it independently: the swap is the single file `plugins/nadlan-config/assets/project-stage/world/world.js` at HEAD 3695a9a8.
+- **Same pattern elsewhere (logged in HAD-391, not changed):** `rainbow/stage.js:171` (stage.css) and `:387` (city.json).
+- **R3 (HAD-390):** your handoff is saved, and I am starting R3 locally after this.
