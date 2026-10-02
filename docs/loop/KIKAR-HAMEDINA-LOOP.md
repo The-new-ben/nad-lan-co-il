@@ -116,7 +116,7 @@ Every turn takes the first open item. Each item is ticked with evidence (live, r
   - Menus, the homepage, internal links.
   - [x] **Step 1, live 2.10 (design v104.26, commit 269035d0):** Kikar leads the projects band on the Hebrew home and on /en/ /fr/ /ru/ /ar/, each language linking to its own page. Evidence: docs/qa/v8-traffic.
   - [x] **Step 2, live 3.10 (1.72.399 + data + 1.72.400, design v104.27):** Kikar is in the neighbours' comparison table (DUO's first row at 663 m; Rainbow's 6th), at 65,000/m² (the towers' published average). The ~90 m² finance line skips world pages. Kikar's name reads in each language on the 60 language pages. Einstein: 6 projects are nearer.
-  - [ ] **Step 3 = release 1.72.402, CHAINED after the V7 session's 1.72.401** (the five Kikar posts, session [7ee72d], agreed 3.10): /north-tel-aviv/ hub and the main menu ("פרויקטים חדשים"). WANT_LIVE = 1.72.401. Re-inspect the EN and RU pages about 9.10 (`gsc_api.py inspect`).
+  - [ ] **Step 3 = release 1.72.403** (agreed 3.10). The order: 401 = the V7 session's five Kikar posts [7ee72d]; 402 = the rentals session HAD-383 [951153]; 403 = this step, WANT_LIVE = 1.72.402. It covers the /north-tel-aviv/ hub and the main menu ("פרויקטים חדשים"). Re-inspect the EN and RU pages about 9.10 (`gsc_api.py inspect`).
 - [ ] **V9. LAST: WhatsApp wording site-wide (HAD-382).** "ייעוץ חינם" only on the floating bar; "לקבלת פרטים נוספים בוואטסאפ" everywhere else.
 
 **Rules (on top of the laws below):**
