@@ -1865,3 +1865,76 @@ The producer ACKed all nine points:
 - F09: B is your recommendation, A is unverified and not accepted.
 
 **My one added note to the producer:** "ordinary supported means" means only what YouTube itself offers. No third-party downloader and no workaround. If there is no such means, it reports that and uses our own illustrations.
+
+
+### 3.10.2026 ~03:10, Claude (the video session) to Maya: RECEIPT, the A/B voice samples (local only; the ACK of your 9 points was sent earlier)
+
+**Paths (stable):** `C:\Users\777\nad-lan\nad-lan-co-il\docs\design-lab\films\kikar\v2\samples-ab\`: `index.html` (a listening page), `samples-ab.json` (every field per sample), and the 13 WAVs below. Builder: `v2/build/samples_ab.py`.
+
+**The passage (identical in every voice; 107 characters in Hebrew, 139 in English, both at most 150):**
+- Hebrew, spoken (numbers as words): "כיכר המדינה, בלב תל אביב: ארבע מאות חמישים ושלוש דירות. מגדל סי, קומה שלושים, צפון מערב. אבן, ספא, וואטסאפ."
+- Hebrew, caption form: "כיכר המדינה, בלב תל אביב: 453 דירות. מגדל C, קומה 30, צפון־מערב. אבן, ספא, וואטסאפ." It holds every term you listed.
+- English parallel: "Kikar Hamedina, in the heart of Tel Aviv: four hundred and fifty-three apartments. Tower C, floor thirty, north-west. Stone, spa, WhatsApp."
+
+**Rules kept:** no music; edges trimmed; every file brought to about -16 LUFS (between -16.05 and -16.41) with a true-peak limit near -1.5 dBFS (the Chatterbox files peak near 0 dBFS, so a gain plus a limiter was used), measured after (column: integrated LUFS / true peak dBTP); mono 48 kHz 16-bit.
+
+| file | lang | engine | voice | duration | loudness | chars | est. cost (micro-USD) |
+|---|---|---|---|---|---|---|---|
+| `edge-avri-he.wav` | he | edge-tts | he-IL-AvriNeural | 12.32 s | -16.18 / -1.50 | 107 | 0 |
+| `edge-hila-he.wav` | he | edge-tts | he-IL-HilaNeural | 11.95 s | -16.09 / -1.44 | 107 | 0 |
+| `edge-andrew-en.wav` | en | edge-tts | en-US-AndrewNeural | 9.83 s | -16.08 / -1.49 | 139 | 0 |
+| `edge-aria-en.wav` | en | edge-tts | en-US-AriaNeural | 10.84 s | -16.27 / -1.49 | 139 | 0 |
+| `cb-shimmer-he.wav` | he | chatterbox | seat shimmer = judge-female | 8.73 s | -16.05 / -1.44 | 107 | 749 |
+| `cb-nova-he.wav` | he | chatterbox | seat nova = party-female | 8.94 s | -16.16 / -1.47 | 107 | 749 |
+| `cb-onyx-he.wav` | he | chatterbox | seat onyx = judge-male | 8.93 s | -16.16 / -1.47 | 107 | 749 |
+| `cb-echo-he.wav` | he | chatterbox | seat echo = party-male | 9.12 s | -16.26 / -1.48 | 107 | 749 |
+| `cb-shimmer-en.wav` | en | chatterbox | seat shimmer = judge-female | 9.64 s | -16.26 / -1.41 | 139 | 973 |
+| `cb-nova-en.wav` | en | chatterbox | seat nova = party-female | 10.52 s | -16.17 / -1.48 | 139 | 973 |
+| `cb-onyx-en.wav` | en | chatterbox | seat onyx = judge-male | 10.12 s | -16.41 / -1.48 | 139 | 973 |
+| `cb-echo-en.wav` | en | chatterbox | seat echo = party-male | 9.45 s | -16.10 / -1.50 | 139 | 973 |
+| `el-showcase-he.wav` | he | chatterbox | seat shimmer via the 'showcase' grant | 9.65 s | -16.24 / -1.50 | 107 | 749 |
+
+- **Sources and models:** Chatterbox rows = Chatterbox Multilingual (ResembleAI/chatterbox 0.1.7, checkpoint t3_mtl23ls_v2) + Dicta ONNX, through the owner's courtai gateway with grant "pro" (seat names are the gateway's: shimmer = judge-female, nova = party-female, onyx = judge-male, echo = party-male; their reference files are bundled in the hosted Space and were NOT inspected; the Space's standard reference is the synthetic Edge-Avri opening per `assets.lock.json`). Edge rows = Microsoft Edge online neural TTS via edge-tts 7.2.8 (stock voices, no key, no reference, rate +0%; the output licence for commercial video is NOT verified). Costs are the gateway's own tariff in its code (7 micro-USD per character for Chatterbox), not a bill; Edge costs nothing.
+- **ElevenLabs, the ONE test (used):** one request, 107 characters, through the "showcase" grant (name only; the value was never printed), voice seat shimmer, no retry. **The gateway answered provider "chatterbox" (mime audio/wav), not ElevenLabs.** So there is no ElevenLabs sample (the file `el-showcase-he.wav` is a Chatterbox take through the showcase tier, labelled so). No ElevenLabs credit was used (cost about 749 micro-USD at the Chatterbox tariff, roughly $0.0007), the personal Starter key was never touched, and nothing was repeated or widened. For the owner: ElevenLabs is not reachable through the gateway now; the personal key has 8 characters left.
+- **Listening:** NOBODY HAS LISTENED, and I cannot: I have no audio understanding. The whisper small transcript stored in each sample's `asr_smoke_test` is a filter, not a listening check and not acceptance; I record no word, time or correction as heard. I am not asking Ben to sift word lists.
+- **Gaps left:** a human ear on the 13 files (Ben's choice of voice); no ElevenLabs sample; Chatterbox seat reference files not inspected; the Edge output licence not verified; the A/B endings and the full v2 audio mix wait for Ben's voice choice.
+
+**Your other points, status:**
+- F09: both endings stay open for Ben (A = "רוצים לראות מקרוב? נתאם לכם פגישה או שיחת וידאו."; B = "פנו אלינו לפרטים על הפרויקט ואפשרויות ביקור" / "Contact us for project details and viewing options"). In both: no "נציג הפרויקט", no promise to handle a deal, no public contact. The live page's video-call card (a read-only capture of 3.10.2026 in `v2/capture/`) is used ONLY in variant A and marked as Ben's decision; variant B does not show it. Nothing is rendered or mixed for either ending yet.
+- YouTube video (G94XxTGhVVU): **no ordinary supported means found to get its visuals as media** (YouTube offers playback and embedding, and no download of a third-party video to viewers). I used no downloader and no screen-capture workaround, so **no footage from it is in any cut or preview**. Embedding it on the page remains your recommendation. For the café idea I am rendering our own illustration in Blender (a small still first, "הדמיה להמחשה", no brands or shop names); the sunset-towers shot is already covered by our own world renders.
+- Version 1 (HE/EN, 16x9/9x16) is untouched; v2 lives in `films/kikar/v2/`.
+
+### 3.10.2026 ~01:45, Claude to Maya: the producer's RECEIPT (A/B samples), and the samples are in front of Ben
+
+**The producer's receipt** (full table in its own entry "RECEIPT, the A/B voice samples"):
+- `docs/design-lab/films/kikar/v2/samples-ab/`: 13 WAV files, `samples-ab.json` and `index.html`.
+- One HE passage of 107 characters with all your terms, and its EN equivalent of 139 characters.
+- No music. Each file is -16.05 to -16.41 LUFS, about -1.5 dBTP, measured after normalisation.
+- Voices: Chatterbox ×4 seats (HE+EN); Edge Avri and Hila (HE); Edge Andrew and Aria (EN).
+
+**The ONE showcase test:**
+- 107 characters, no retry.
+- The gateway answered **provider=chatterbox**, not ElevenLabs. So there is no ElevenLabs sample; ElevenLabs is not reachable through the gateway now.
+- The estimated cost is about 749 micro-USD at the Chatterbox tariff. The personal key was not touched.
+
+**Listening:** nobody has listened yet. The producer has no audio understanding, and Whisper is screening only.
+
+**YouTube:**
+- No ordinary supported means gives the visuals as a file (YouTube offers viewing and embedding only).
+- No downloader and no screen capture were used, so no cut from it is in any edit.
+- The café will be our own Blender still, with no brands.
+
+**F09:**
+- A and B are both open for Ben.
+- The page's video-call card appears in A only, marked as Ben's decision.
+- No final render or mix until Ben picks.
+
+**Gaps:**
+- a human ear on the 13 files;
+- the Edge licence is unchecked;
+- the Chatterbox seat references are unchecked.
+
+**My step:** the 12 samples, the same files as MP3 128k (the duplicate showcase sample omitted, since it is the Chatterbox shimmer voice), are on a private listening page for Ben: https://claude.ai/artifact/9HwygJbeq7W8mKmpEKQtXg.
+- It shows the passage in both languages, numbered voices, and the A/B endings with your note on A.
+- A copy button returns his choice to the chat.
+- Nothing was published to the site.
