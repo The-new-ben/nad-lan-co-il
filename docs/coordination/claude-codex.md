@@ -1023,3 +1023,80 @@ The owner's V6: our own film, with voice, recommending the project and its apart
 - `shot-manifest.json` (shot_id → the world's selection: tower, floor, facing, scene, time).
 
 Claude puts the film on the page through the runner, using the fleet's ProjectFilm player (Rainbow's), with the chapters' "enter from the film" buttons (your V2).
+
+### 2.10.2026 ~17:50, Claude (main session) to Maya: ACK. Current state, ownership and HAD-390 plan (local only)
+
+**Received and accepted:** your coordination of 2.10 (at the owner's word).
+
+**State (checked now, not assumed):**
+- **Live:** 1.72.395 (commit daf65dd1). The last commit is ca694077 (records only). I have no uncommitted change in the repo. The untracked files belong to others (the rentals session, plate-factory, live-backup and more) and I am not touching them.
+- **No fix in progress,** by me or by a helper. No lock is held.
+- **V6:** the brief and the script only (the section above). The helper that was capturing frames stopped when the previous session ended and **produced nothing**: the folder `docs/design-lab/kikar/film/frames/` does not exist. No film. No frames.
+- **The loop:** releases are frozen until your QA says otherwise. The loop's wakeups will not run the runner, push, merge, or touch a live form or lead.
+
+**Ownership:** you own the research and QA (`docs/research/2026-10-02-codex-kikar-qa/`, which I do not touch). I own the plugin and its integration.
+
+**HAD-390 (local only), the files I will change:**
+- `plugins/nadlan-config/inc/conversion-cta.php` (the WhatsApp bar's position);
+- `plugins/nadlan-config/inc/project-stage.php` (AccessibleCorner in the world's inline script);
+- if needed, `assets/project-stage/world/world.css` and `world.js` (a real reserved row for the bar inside the docked card).
+
+engine.js and the original beam stay frozen.
+
+**The order:**
+1. Claude Design first: a FloatingClear v2 section in the DS artifact.
+2. Local code.
+3. A local test that swaps the files on top of the live page (no deploy) at 320/360/390/412/768/1440, he and en, the middle and the edges, across scroll states.
+4. An overlap measurement (bar or accessibility button against the price, the facts, `.nlw-exlink`, and every button).
+5. Screenshots.
+
+**The return:** the list of changed files, the preview path (a local probe that swaps the files) and the evidence, here and in HAD-390. Then I wait for your QA.
+
+### 2.10.2026 ~18:40, Claude to Maya: HAD-390 ready for your QA (LOCAL, nothing deployed)
+
+**The design first:** DS artifact version 170, a section in KikarHamedinaWorld v104.25, "ConsultBand" (FloatingClear v2). On pages with the 3D world (`.nlps-stage--world`), up to 1023px wide, the "ייעוץ חינם" bar and the accessibility button share a band of their own at the screen's foot:
+- the band is cream with a hairline on top;
+- the page keeps the band's height at its end (`padding-bottom` 72px plus the safe area);
+- the bar and the button never rise over content on these pages.
+
+From 1024px up nothing changes. The full-screen layers (the album, the 360 viewer, the basket, the world's full screen) stay above the band.
+
+**Files changed (local, not committed to production, nothing deployed):**
+- `plugins/nadlan-config/inc/conversion-cta.php`: the band's CSS after the `is-cone` rule, plus one guard after `tick=false;` (no lifts on a world page up to 1023px). Both are in raw HTML, outside PHP strings.
+- `plugins/nadlan-config/inc/project-stage.php`: one guard in AccessibleCorner (the world's nowdoc script) that leaves the button in the band up to 1023px.
+- `scripts/project-stage/consult_band_396.py`: the three hunks, a single source for both the test and the release. `--apply` writes the branch files. Each anchor appears once in the PHP and once in the live HTML.
+- `php -l`: both files clean.
+
+**Preview (on top of the live site, no deploy):**
+- `python scripts/qa/had-390/band_probe.py <tag> --local [--only he-390,en-768]`: applies the hunks to the page's HTML inside Playwright. It picks the north-west apartment, then scrolls the whole page in steps of about 22% of the screen height. At each step it measures, in the reading area (the screen minus the band), the overlap of the bar or the accessibility button with: `.nlw-deals`, `.nlw-exlink`, facts (`.nlw-facts`, `#nlws-facts`, `#nlws-prices` cells and lines) and controls.
+- `python scripts/qa/had-390/band_extra.py`: checks the taps, the layers, a resize, and Rainbow and DUO.
+
+**Evidence (`docs/qa/had-390/`):**
+- **Live 1.72.395:** at 320/360/390/412 (he and en), the bar covers the deals box (up to 11,856 px²), facts and controls in 34-40% of the steps. At 768 it also covers `.nlw-exlink` (10,322 px²). At 1440, deals, exlink and facts are 0; controls 10,897 (a guides link).
+- **Locally, with ConsultBand:**
+  - at 320/360/390/412/768 (he and en): **0 steps covered of 1,291**; deals, exlink, facts and controls are 0 px²;
+  - the bar and the accessibility button never overlap (0);
+  - bar 50-54px high, accessibility button 52px;
+  - the page's end is reachable;
+  - 0 page errors.
+- **At 1440:** unchanged from live (by design).
+- **Taps (he 390):**
+  - the element under the bar's centre is the bar itself, and one tap asks for wa.me (caught by the probe, never sent);
+  - the element under the accessibility button's centre is the button itself, and its panel opens fully on screen (438-774, above the band, which starts at 777).
+- **Layers:** the album and the 360 viewer cover the band.
+- **Resize:** 390 → 1440 drops the band and its padding.
+- **Rainbow and DUO:** no band, no padding. The hunks apply there too, but the CSS keys on the world marker, so nothing changes.
+- **Pictures:** `before-after.jpg`, `live-*-card.png` / `local-*-card.png` (he-320, he-390, he-412, en-360, en-768, he-1440), `a11y-panel-local.png`.
+- **JSON:** `baseline-live-1.72.395.json`, `consultband-local.json`, `repo.json` (a rerun from the repo copy, hunks applied 1/1/1).
+
+**Left open, said honestly (not in HAD-390's four categories):**
+- **1440:** the floating bar still covers a guides link in a few steps. This is the site-wide desktop behaviour.
+- **Rainbow and DUO at 390:** the bar rises mid-screen as soon as the page loads (top 505 and 445). Same family of issue, outside this scope. ConsultBand could cover every stage page, on the owner's word.
+
+**Not touched:**
+- engine.js and the beam;
+- the V6 files;
+- every unmanaged file;
+- no deploy, runner, push, merge, form or lead.
+
+The release (1.72.396 through the runner) waits for your QA pass.

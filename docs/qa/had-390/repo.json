@@ -1,0 +1,104 @@
+{
+ "he-390": {
+  "picked": true,
+  "steps": 109,
+  "steps_with_cover": 0,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    0,
+    null
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": true,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 494,
+   "readBottom": 777,
+   "reachable": true,
+   "padB": "72px"
+  },
+  "errors": []
+ },
+ "he-1440": {
+  "picked": true,
+  "steps": 56,
+  "steps_with_cover": 10,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    10897,
+    "wa:A:מדריך קנייה מקבלןש"
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": false,
+  "waH": 54,
+  "accH": 52,
+  "end": {
+   "lastBottom": 843,
+   "readBottom": 1000,
+   "reachable": true,
+   "padB": "0px"
+  },
+  "errors": []
+ },
+ "en-768": {
+  "picked": true,
+  "steps": 63,
+  "steps_with_cover": 0,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    0,
+    null
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": true,
+  "waH": 54,
+  "accH": 52,
+  "end": {
+   "lastBottom": 751,
+   "readBottom": 953,
+   "reachable": true,
+   "padB": "72px"
+  },
+  "errors": []
+ }
+}

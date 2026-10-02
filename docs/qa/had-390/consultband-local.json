@@ -1,0 +1,410 @@
+{
+ "he-320": {
+  "picked": true,
+  "steps": 182,
+  "steps_with_cover": 0,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    0,
+    null
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": true,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 225,
+   "readBottom": 501,
+   "reachable": true,
+   "padB": "72px"
+  },
+  "errors": []
+ },
+ "he-360": {
+  "picked": true,
+  "steps": 119,
+  "steps_with_cover": 0,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    0,
+    null
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": true,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 451,
+   "readBottom": 733,
+   "reachable": true,
+   "padB": "72px"
+  },
+  "errors": []
+ },
+ "he-390": {
+  "picked": true,
+  "steps": 109,
+  "steps_with_cover": 0,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    0,
+    null
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": true,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 494,
+   "readBottom": 777,
+   "reachable": true,
+   "padB": "72px"
+  },
+  "errors": []
+ },
+ "he-412": {
+  "picked": true,
+  "steps": 96,
+  "steps_with_cover": 0,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    0,
+    null
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": true,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 565,
+   "readBottom": 848,
+   "reachable": true,
+   "padB": "72px"
+  },
+  "errors": []
+ },
+ "he-768": {
+  "picked": true,
+  "steps": 63,
+  "steps_with_cover": 0,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    0,
+    null
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": true,
+  "waH": 54,
+  "accH": 52,
+  "end": {
+   "lastBottom": 773,
+   "readBottom": 953,
+   "reachable": true,
+   "padB": "72px"
+  },
+  "errors": []
+ },
+ "he-1440": {
+  "picked": true,
+  "steps": 56,
+  "steps_with_cover": 10,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    10897,
+    "wa:A:מדריך קנייה מקבלןש"
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": false,
+  "waH": 54,
+  "accH": 52,
+  "end": {
+   "lastBottom": 843,
+   "readBottom": 1000,
+   "reachable": true,
+   "padB": "0px"
+  },
+  "errors": []
+ },
+ "en-320": {
+  "picked": true,
+  "steps": 196,
+  "steps_with_cover": 0,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    0,
+    null
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": true,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 111,
+   "readBottom": 501,
+   "reachable": true,
+   "padB": "72px"
+  },
+  "errors": []
+ },
+ "en-360": {
+  "picked": true,
+  "steps": 126,
+  "steps_with_cover": 0,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    0,
+    null
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": true,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 384,
+   "readBottom": 733,
+   "reachable": true,
+   "padB": "72px"
+  },
+  "errors": []
+ },
+ "en-390": {
+  "picked": true,
+  "steps": 115,
+  "steps_with_cover": 0,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    0,
+    null
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": true,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 451,
+   "readBottom": 777,
+   "reachable": true,
+   "padB": "72px"
+  },
+  "errors": []
+ },
+ "en-412": {
+  "picked": true,
+  "steps": 102,
+  "steps_with_cover": 0,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    0,
+    null
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": true,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 522,
+   "readBottom": 848,
+   "reachable": true,
+   "padB": "72px"
+  },
+  "errors": []
+ },
+ "en-768": {
+  "picked": true,
+  "steps": 63,
+  "steps_with_cover": 0,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    0,
+    null
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": true,
+  "waH": 54,
+  "accH": 52,
+  "end": {
+   "lastBottom": 751,
+   "readBottom": 953,
+   "reachable": true,
+   "padB": "72px"
+  },
+  "errors": []
+ },
+ "en-1440": {
+  "picked": true,
+  "steps": 56,
+  "steps_with_cover": 9,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    8662,
+    "wa:A:Guide: buying from"
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": false,
+  "waH": 54,
+  "accH": 52,
+  "end": {
+   "lastBottom": 821,
+   "readBottom": 1000,
+   "reachable": true,
+   "padB": "0px"
+  },
+  "errors": []
+ }
+}

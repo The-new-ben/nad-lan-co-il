@@ -1,0 +1,410 @@
+{
+ "he-320": {
+  "picked": true,
+  "steps": 182,
+  "steps_with_cover": 68,
+  "worst": {
+   "deals": [
+    7335,
+    "wa:nlw-deals:מידע גלוי עסקאות ב"
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    7435,
+    "wa:P:שלוש דירות 4 חדרים"
+   ],
+   "controls": [
+    7135,
+    "wa:A:בעלי מקצוע בתל אבי"
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": false,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 268,
+   "readBottom": 568,
+   "reachable": true,
+   "padB": "0px"
+  },
+  "errors": []
+ },
+ "he-360": {
+  "picked": true,
+  "steps": 118,
+  "steps_with_cover": 45,
+  "worst": {
+   "deals": [
+    7335,
+    "wa:nlw-deals:מידע גלוי עסקאות ב"
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    7435,
+    "wa:P:שלוש דירות 4 חדרים"
+   ],
+   "controls": [
+    7135,
+    "wa:A:מס רכישהמדרגות 202"
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": false,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 523,
+   "readBottom": 800,
+   "reachable": true,
+   "padB": "0px"
+  },
+  "errors": []
+ },
+ "he-390": {
+  "picked": true,
+  "steps": 108,
+  "steps_with_cover": 41,
+  "worst": {
+   "deals": [
+    11034,
+    "wa:nlw-deals:מידע גלוי עסקאות ב"
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    11088,
+    "wa:P:הנתונים המרכזיים ע"
+   ],
+   "controls": [
+    10834,
+    "wa:A:היזם: חברת בעלי הק"
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": false,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 566,
+   "readBottom": 844,
+   "reachable": true,
+   "padB": "0px"
+  },
+  "errors": []
+ },
+ "he-412": {
+  "picked": true,
+  "steps": 96,
+  "steps_with_cover": 38,
+  "worst": {
+   "deals": [
+    11034,
+    "wa:nlw-deals:מידע גלוי עסקאות ב"
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    11134,
+    "wa:P:שלוש דירות 4 חדרים"
+   ],
+   "controls": [
+    9173,
+    "wa:BUTTON:כיכר המדינה/וייצמן"
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": false,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 637,
+   "readBottom": 915,
+   "reachable": true,
+   "padB": "0px"
+  },
+  "errors": []
+ },
+ "he-768": {
+  "picked": true,
+  "steps": 63,
+  "steps_with_cover": 21,
+  "worst": {
+   "deals": [
+    2009,
+    "acc:nlw-deals:מידע גלוי עסקאות ב"
+   ],
+   "exlink": [
+    10266,
+    "wa:nlw-exlink:דירה לדוגמה: מגדל "
+   ],
+   "facts": [
+    12402,
+    "wa:TD:פארק ציבורי של כ-4"
+   ],
+   "controls": [
+    12437,
+    "wa:BUTTON:מאיר שלו - חט\"בחינ"
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": false,
+  "waH": 54,
+  "accH": 52,
+  "end": {
+   "lastBottom": 845,
+   "readBottom": 1024,
+   "reachable": true,
+   "padB": "0px"
+  },
+  "errors": []
+ },
+ "he-1440": {
+  "picked": true,
+  "steps": 56,
+  "steps_with_cover": 10,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    10897,
+    "wa:A:מדריך קנייה מקבלןש"
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": false,
+  "waH": 54,
+  "accH": 52,
+  "end": {
+   "lastBottom": 843,
+   "readBottom": 1000,
+   "reachable": true,
+   "padB": "0px"
+  },
+  "errors": []
+ },
+ "en-320": {
+  "picked": true,
+  "steps": 195,
+  "steps_with_cover": 70,
+  "worst": {
+   "deals": [
+    10089,
+    "wa:nlw-deals:Public information"
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    10189,
+    "wa:P:Three 4-room apart"
+   ],
+   "controls": [
+    9939,
+    "wa:BUTTON:OpenCafés & food1 "
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": false,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 201,
+   "readBottom": 568,
+   "reachable": true,
+   "padB": "0px"
+  },
+  "errors": []
+ },
+ "en-360": {
+  "picked": true,
+  "steps": 126,
+  "steps_with_cover": 48,
+  "worst": {
+   "deals": [
+    10089,
+    "wa:nlw-deals:Public information"
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    10189,
+    "wa:P:Three 4-room apart"
+   ],
+   "controls": [
+    9939,
+    "wa:BUTTON:Kikar HaMedina/Wei"
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": false,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 456,
+   "readBottom": 800,
+   "reachable": true,
+   "padB": "0px"
+  },
+  "errors": []
+ },
+ "en-390": {
+  "picked": true,
+  "steps": 114,
+  "steps_with_cover": 43,
+  "worst": {
+   "deals": [
+    11856,
+    "wa:nlw-deals:Public information"
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    11956,
+    "wa:P:Three 4-room apart"
+   ],
+   "controls": [
+    11706,
+    "wa:BUTTON:HaMedina Square/Ar"
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": false,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 523,
+   "readBottom": 844,
+   "reachable": true,
+   "padB": "0px"
+  },
+  "errors": []
+ },
+ "en-412": {
+  "picked": true,
+  "steps": 101,
+  "steps_with_cover": 39,
+  "worst": {
+   "deals": [
+    5054,
+    "wa:nlw-deals:Public information"
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    11956,
+    "wa:P:The key figures on"
+   ],
+   "controls": [
+    11656,
+    "wa:A:Professionals in T"
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": false,
+  "waH": 50,
+  "accH": 52,
+  "end": {
+   "lastBottom": 594,
+   "readBottom": 915,
+   "reachable": true,
+   "padB": "0px"
+  },
+  "errors": []
+ },
+ "en-768": {
+  "picked": true,
+  "steps": 63,
+  "steps_with_cover": 23,
+  "worst": {
+   "deals": [
+    13487,
+    "wa:nlw-deals:Public information"
+   ],
+   "exlink": [
+    10322,
+    "wa:nlw-exlink:Example apartment:"
+   ],
+   "facts": [
+    13291,
+    "wa:TD:Each floor is turn"
+   ],
+   "controls": [
+    13325,
+    "wa:BUTTON:Training RoomParks"
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": false,
+  "waH": 54,
+  "accH": 52,
+  "end": {
+   "lastBottom": 823,
+   "readBottom": 1024,
+   "reachable": true,
+   "padB": "0px"
+  },
+  "errors": []
+ },
+ "en-1440": {
+  "picked": true,
+  "steps": 56,
+  "steps_with_cover": 9,
+  "worst": {
+   "deals": [
+    0,
+    null
+   ],
+   "exlink": [
+    0,
+    null
+   ],
+   "facts": [
+    0,
+    null
+   ],
+   "controls": [
+    8662,
+    "wa:A:Guide: buying from"
+   ]
+  },
+  "wa_acc_overlap": 0,
+  "band": false,
+  "waH": 54,
+  "accH": 52,
+  "end": {
+   "lastBottom": 821,
+   "readBottom": 1000,
+   "reachable": true,
+   "padB": "0px"
+  },
+  "errors": []
+ }
+}

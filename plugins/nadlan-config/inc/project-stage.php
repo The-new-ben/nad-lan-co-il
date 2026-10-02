@@ -1244,7 +1244,7 @@ if (root && host && c.world) {
     const fit = () => {
       raf = 0;
       const pan = document.getElementById('nla11y-panel');
-      if (pan && !pan.hidden) return;
+      if (pan && !pan.hidden) return; if (innerWidth <= 1023) { if (lift) { lift = 0; box.style.transform = ''; } return; } // ConsultBand (v104.25): the band holds the button
       if (document.querySelector('#nlps .nlw--full')) return; // the world fills the screen above the page: nothing to clear
       const r = btn.getBoundingClientRect();
       if (!r.width) return;

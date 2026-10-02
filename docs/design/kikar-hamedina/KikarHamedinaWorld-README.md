@@ -356,3 +356,35 @@ A visible `<h2>שאלות נפוצות` plus FAQPage schema.
 2. **The walk reaches both rooms.** The lift panel now has six stops: floor 30, the lobby, the pool, the gym, the spa and the car park, whose sub-line reads "קומות החניה". In each room, "למעלית" stands at the room's door (located in the render: spa +135.0° / −3.0°, car park −138.4° / −4.7°). There is no inner scroll in the panel, on phone or PC.
 3. **The album never leaves one tile alone on a row.** Nine tiles (4 of the apartment and 5 rooms) are laid out as three full rows of three, not 4 + 4 + 1. The rule is in example.js `stripCols`: use 3 columns when 4 would leave a single orphan and 3 would not.
 4. **All five languages:** Spa / Parking, Spa / Parking, Спа / Паркинг, السبا / موقف السيارات.
+
+## v104.25 (2.10, HAD-390, with Maya's QA; LOCAL until her QA passes): ConsultBand, the WhatsApp bar's own reserved space (FloatingClear v2)
+
+**The gap (measured on the live 1.72.395, the apartment chosen, the whole page scrolled in steps):**
+- **Phones (320 to 412, he and en):** the floating "ייעוץ חינם" bar covered:
+  - the "מידע גלוי" deals box, up to 11,856 px²;
+  - facts lines, up to 11,956 px²;
+  - buttons and links, up to 11,706 px².
+
+  The bar or the accessibility button covered something in 35 to 40% of the scroll steps.
+- **768:** it also covered `.nlw-exlink` (10,322 px²) and facts cells.
+- **1440:** the deals, the facts and `.nlw-exlink` are clean (0); a guides link is covered at a few steps.
+- **Why the old rule failed:** it lifts the bar over the nearest free slot between buttons. Text is not an obstacle, so it parked on the price. A local try that made the price and the plan obstacles pushed the bar onto half of "היכנסו לדירה לדוגמה", where it would steal the tap. Rejected.
+
+**The design: ConsultBand.** On pages with the 3D world (`#nlps .nlw`), up to 1023px wide:
+1. **A band of its own at the foot of the screen.**
+   - Full width, cream #FAF7F1, a hairline #E2DCD0 on top, a soft shadow upward. Its height is the bar's height plus 8px above and below, plus the phone's safe area.
+   - Content passes under it as under a toolbar. Nothing sits on top of the reading area.
+2. **The wide bar is unchanged:** green, the NadLan mark, "ייעוץ חינם" and its line, one tap to WhatsApp. It holds the band's end side, as wide as before and never wider than 360px.
+3. **The accessibility button** sits in the band's start corner (its corner since 25.9), centred in the band height. It never rises over content, and the two never overlap.
+4. **The page keeps the band's height at its end** (body padding), so the last line is always reachable above the band.
+5. **No lifts on these pages.** The bar and the accessibility button never move up over content.
+6. **The full-screen layers stay above the band as before:** the world's full screen, the album, the 360 viewer and the basket.
+7. **From 1024px up:** unchanged. The bar floats in its corner (measured clean against the price, the facts and the example link).
+
+**The acceptance test** (`band_probe.py`, Maya's matrix: 320/360/390/412/768/1440, he and en, with the apartment chosen):
+- the whole page is scrolled from top to bottom;
+- in the reading area (the screen above the band), the bar and the accessibility button cover 0 px² of the deals, `.nlw-exlink`, facts and controls;
+- the bar and the accessibility button never overlap each other;
+- the touch targets are at least 44px;
+- the page's end is reachable;
+- no page errors.

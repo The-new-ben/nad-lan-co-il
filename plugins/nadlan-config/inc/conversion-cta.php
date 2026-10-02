@@ -120,6 +120,11 @@ body.nl-has-engine #nlcta{display:block!important;bottom:92px!important}
 @media(max-width:600px){html body #nlcta.is-clear{bottom:calc(env(safe-area-inset-bottom,0px) + var(--nlcta-lift,150px))!important}}
 /* v101.2: above the area map's cone, on every width (the script below sets is-cone and the lift) */
 html body #nlcta.is-cone{bottom:calc(env(safe-area-inset-bottom,0px) + var(--nlcta-lift,150px))!important}
+/* ConsultBand (design system v104.25, HAD-390, 2.10.2026): on a 3D-world page (.nlps-stage--world) up to 1023px, the bar and
+   the accessibility button share a band of their own at the foot of the screen: the bar held its corner by rising over the nearest
+   free slot between buttons, and text is no obstacle, so it parked on the price, the facts and the example link. The page keeps
+   the height of the band at its end; nothing rises over the reading area; from 1024px the bar floats in its corner as before. */
+@media(max-width:1023px){body:has(.nlps-stage--world){padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))!important}html body:has(.nlps-stage--world) #nlcta,html body:has(.nlps-stage--world) #nlcta.is-clear,html body:has(.nlps-stage--world) #nlcta.is-cone{left:0!important;right:0!important;bottom:0!important;display:flex;justify-content:flex-end;align-items:center;box-sizing:border-box;padding:8px 14px calc(8px + env(safe-area-inset-bottom,0px));padding-inline-start:80px;background:#FAF7F1;border-top:1px solid #E2DCD0;box-shadow:0 -6px 18px rgba(27,26,23,.07)}html body:has(.nlps-stage--world) #nlcta .nlcta-wa{max-width:min(100%,360px)!important;box-shadow:none}html body:has(.nlps-stage--world) #nla11y{bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;transform:none!important}}
 /* WhatsAppBarEverywhere (design system v103, 29.9.2026, owner order): the site's "ייעוץ חינם" bar is on EVERY page, broker
    and owner pages included, even where the page has its own WhatsApp. Broker pages are built once with
    ".nlcta-wa{display:none!important}" baked into their styles (broker-drop.php); this stronger rule brings the bar back.
@@ -199,7 +204,7 @@ html body #nlcta .nlcta-wa{display:flex!important}
 			return 0;
 		};
 		var fit=function(){
-			tick=false;
+			tick=false;if(window.innerWidth<=1023&&document.querySelector('.nlps-stage--world')){box.classList.remove('is-clear','is-cone');box.style.removeProperty('--nlcta-lift');return;}/* ConsultBand v104.25: a world page up to 1023px keeps the bar in its own band, no lifts */
 			var h=window.innerHeight||0;
 			if(wa0&&!box.classList.contains('is-clear')&&!box.classList.contains('is-cone')&&!box.classList.contains('is-typing')){var t0=wa0.getBoundingClientRect();if(t0.height>0)box.setAttribute('data-rest',Math.round(h-t0.top));}
 			var lift=mq.matches?stageHit(h):0,cone=coneHit(h),clash=subs.some(function(el){var r=el.getBoundingClientRect();return r.height>0&&r.bottom>h-110&&r.top<h;})||lift>0;
