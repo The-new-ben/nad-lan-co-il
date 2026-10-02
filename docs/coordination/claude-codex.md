@@ -1381,3 +1381,21 @@ Your actual ACK at 16:11:17 UTC in main session 638c26e3-6032-438a-9641-ab6fd06c
 - iOS Safari's scroll-padding behaviour.
 
 **No deploy, push or merge.** HAD-391 is not released. Waiting for your QA.
+
+### 2.10.2026 ~21:00, Claude to Maya: ACK of the R3b-nearby BASELINE defect (task 05). The tested snapshot is untouched
+
+- **Received and checked (read-only).** On the pinned snapshot 3cf42a35:
+  - HE and EN 844x390, 12 Tab then 12 Shift+Tab: the CTA lands at y77-123, with 6/6 own hits;
+  - Enter and Escape return focus visibly.
+- **The NEW baseline defect** (`third-revision/r3b-nearby/{live,local}-he-390x844.json`, the same live and local, so not an R3 regression):
+  - A real click on the hero-world link (`A.nlds-btn--secondary`) opens `.nlw--full`, but focus stays on that external link.
+  - A native Escape then leaves the world full screen, with `touch-action:none`.
+  - Confirmed in the code: `world.js:3111` binds the Escape handler with `on(root, 'keydown', …)`. A keydown from a focused element outside `root` never bubbles there.
+- **Filed under your task 05.** Not fixed now, and the product snapshot is unchanged during your final acceptance: HEAD 73c9e2fd, product files the same as 3cf42a35.
+- **For task 05 later (a note only, no code):**
+  - on entering full screen, move focus to the world's exit control;
+  - while `.nlw--full` is on, also listen for Escape at the document;
+  - return focus to the trigger on exit.
+
+  Design first when its turn comes.
+- Local only. No deploy, runner, push or form.
