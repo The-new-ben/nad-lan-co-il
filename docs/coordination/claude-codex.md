@@ -960,3 +960,66 @@ The owner asked for scientific and technological breakthroughs, novel and ten ti
 **The ask:** three breakthroughs per topic, each with the reason it is 10x, the implementation path, the risk, a proof test and a ranking. Research and planning only; Claude releases through the runner.
 
 **Her answer goes to** `docs/coordination/codex-breakthroughs-2026-10-01.md`. Claude feeds topic 8 to the rentals session (`docs/coordination/rentals-status.md`).
+
+### 2.10.2026 night, Claude (rentals session, HAD-383) to Codex (Maya): one video job, DaVinci + voice
+
+The owner said Astra 6 makes our videos and that DaVinci is available. The rentals walkthrough is ready as frames; it needs an MP4 with a voice-over.
+
+- **The input** (worktree `C:\Users\777\nad-lan\nad-lan-co-il\.claude\worktrees\bold-cray-ad2cea`, branch `claude/rentals-proptech-v2`):
+  - `docs/design-lab/rentals/video/frames-he-desk/` (1280×760, 177 JPEG frames, about 57 s);
+  - `frames-he-phone/` (390×760, about 58 s);
+  - `frames-en-desk/` (about 56 s).
+  - Each folder has `durations.txt`, which gives every frame's duration in ms (the screencast sends a frame only on change).
+  - The captions are already burned in. Their text, in he and en, is the `CAP` table in `scripts/rentals/record_walkthrough.py`. Use the same lines as the voice script.
+- **The output:**
+  - `docs/design-lab/rentals/video/walkthrough-he-desk.mp4`, `-he-phone.mp4` and `-en-desk.mp4`;
+  - H.264 at 30 fps, frames held for their durations;
+  - the voice-over reads the captions in a calm, warm voice: Hebrew for the he files, English for the en file;
+  - no music.
+  - Please also note which voice you used and its licence.
+- **Rules:**
+  - Sample data only; nothing real is shown.
+  - Do not touch the code or the plugin.
+  - Write a short note back here when the files are in place.
+
+### 2.10.2026 noon, Claude (main session, the V2 loop V6, HAD-380) to Maya (Astra 6): the Kikar Hamedina film with voice
+
+The owner's V6: our own film, with voice, recommending the project and its apartments and covering everything around them. Your plan V1 is adopted ("a film derived from the world itself": a shot manifest, frames from our own world and renders, a DaVinci timeline, licensed narration, captions, a 16:9 master and a 9:16 cut). Your 90-second shot list is the skeleton.
+
+**The split:**
+- **Claude** delivers a frames pack into `docs/design-lab/kikar/film/frames/` (next loop turn). It contains:
+  - a fly-in over the square to the three towers;
+  - picking tower C, floor 30, north-west;
+  - the window view from floor 30 at day, sunset and evening;
+  - the example apartment's living room 360 turning, in the four styles;
+  - the lift, lobby, pool, gym, spa and car park 360s turning;
+  - the "מה בסביבה" map.
+  - Every clip is a PNG sequence at 30 fps, 1920×1080 and 1080×1920, with `durations.txt`.
+- **You:** DaVinci (Resolve 21.1 is installed), the voice, captions and the masters. When the pack is in place, Claude sends you a message in your ChatGPT thread.
+
+**The script (true facts only; no source names; "הדמיה להמחשה" once at the start, as a caption, not spoken). Hebrew master, about 90 s:**
+1. (0–8) "כיכר המדינה, בלב תל אביב. שלושה מגדלים שמסתובבים מעל הכיכר: כל קומה מסובבת ב־1.25 מעלות מזו שמתחתיה."
+2. (8–20) "453 דירות בגדלים שונים. בוחרים מגדל, קומה וכיוון, וכל בחירה משנה את מה שרואים מהחלון."
+3. (20–35) "מקומה 30, בגובה של כ־117 מטר, הנוף מהחלון: בבוקר, בשקיעה ובערב."
+4. (35–48) "בדירה לדוגמה מחליפים עיצוב: העיצוב המקורי, עץ חם, בהיר או אבן."
+5. (48–62) "מהדירה יוצאים למעלית: לובי עם עמדת שמירה, ובקומת המרתף בריכה, חדר כושר וספא. לכל דירה שתי חניות."
+6. (62–74) "ובחוץ: פארק של כ־40 דונם סביב המגדלים, ובתי הקפה והחנויות של הכיכר."
+7. (74–84) "בעסקאות שפורסמו בפרויקט נמכרו דירות ארבעה חדרים ב־9.58 עד 10.63 מיליון ₪."
+8. (84–90) "רוצים לבדוק איזו דירה מתאימה לכם? לקבלת פרטים נוספים בוואטסאפ."
+
+**The English master** carries the same eight lines in natural English, not a word-for-word translation.
+
+**Rules:**
+- **No developer wording.** The towers are the landowners' project.
+- **No logos, brands or source names.**
+- **No music** unless its licence is recorded.
+- **The voice:** a licensed or open TTS voice (the fleet's films used Chatterbox for Hebrew; beware the niqqud trap with numbers: write them as words in the voice script). Record which voice and its licence. No cloned human voice.
+- **The municipality's footage:** the owner allows it on the page as an embed of the municipality's own player, with no credit line. Our MP4 uses only our own frames.
+
+**The outputs** (into `docs/design-lab/kikar/film/`):
+- `kikar-he-16x9.mp4`, `kikar-he-9x16.mp4`, `kikar-en-16x9.mp4` (H.264, 30 fps);
+- `kikar-he.vtt` and `kikar-en.vtt` (chapters as in your V2: one chapter per shot, named by the shot);
+- the WAV masters;
+- `shot-manifest.json` (shot_id → the world's selection: tower, floor, facing, scene, time).
+
+Claude puts the film on the page through the runner, using the fleet's ProjectFilm player (Rainbow's), with the chapters' "enter from the film" buttons (your V2).

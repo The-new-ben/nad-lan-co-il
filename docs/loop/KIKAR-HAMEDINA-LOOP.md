@@ -49,7 +49,19 @@ Every turn takes the first open item. Each item is ticked with evidence (live, r
 - **V8 (T1):** the "no Arabic demand" conclusion in serp-ar.md is not proven; reopen it.
 - **HAD-384 first** (B1, B2): a fixed entry address plus a renewable code; every update gets a receipt.
 - [x] **V3 DONE, LIVE 1.72.390 (v104.19, DS version 163, 1.10).** The chosen apartment shows the deals in the project as "מידע גלוי": ₪9.58-10.63M, average ₪9.93M, ~₪71,000/m², and the towers' ~₪65,000/m² (₪80-150K high up). The five posts' lead, price and sale sections have no source names; the price tables show dates only. Runner 390: 356 checks OK (after one self-rollback on over-broad checks). Live, real presses, he/ru × 390/1440: OK, nested 0, errors 0; M17 0; wheel 260; content-first 0 failed; language pages 0 Hebrew. Was: **V3. Prices.** The deals' average and range, labeled "מידע גלוי". No source names on the page.
-- [ ] **V4. Parity, proven in a feature table, with everything DUO (the buying journey up to payment) and Rainbow offer:**
+- [x] **V4 DONE (2.10, turn 9): re-measured live, row by row, by one probe** (scratchpad kikar/v4_table_probe.py, he 390 + 1440, real taps).
+  - Live 1.72.395 results:
+    - key plan: 4 apartments;
+    - the card's "מידע גלוי": ₪9.58-10.63M;
+    - the basket opens and names "דירה לדוגמה · קומה 30 · דירה פינתית צפון-מערבית";
+    - the album: 9 tiles; rooms lobby / pool / gym / spa / car park;
+    - the 360: 4 styles (העיצוב המקורי, עץ חם, בהיר, אבן), 7 places, the door to the lift;
+    - the square walk: "סיור ברגל" pressed, full screen on phone and docked on PC;
+    - "מה בסביבה": 25 places;
+    - #nlsch (video call with a rep) present; errors 0.
+  - DUO and Rainbow live: video, scheduler, 360 tour, basket and deals present (DUO 4 tour scenes, Rainbow 24 plus the film).
+  - Left open, each with an owner: Film → V6; Payment → the owner's business choice; a video-call entry near the top (DUO and Rainbow have "שיחת וידאו עם נציג" in the hero, Kikar has it lower on the page) → the V5 build list item 7; HAD-390 (on a phone the floating pill and the accessibility button cover the deals box) → design, with V9.
+  - Was: **V4. Parity, proven in a feature table, with everything DUO (the buying journey up to payment) and Rainbow offer:**
   - designing the apartment;
   - a price quote;
   - the basket up to payment;
@@ -75,7 +87,20 @@ Every turn takes the first open item. Each item is ticked with evidence (live, r
     | Building walk (door → lift → lobby → facility) | ✓ v96 | ✓ v96 | ✓ **1.72.394**: the hall door → "לאן?" lift → "למעלית" back; **1.72.395**: six stops (floor 30, lobby, pool, gym, spa, car park "קומות החניה") | Out to the street (the world's walk on the square) |
     | Shops and cafés outside | the area map | the area map | ✓ the walk on the square + the places tab with cafés | Street-level 360 at the square's cafés (the "We Love You Too" café) |
     | Film | ✗ | ✓ 49 s | ✗ | V6 |
-- [ ] **V5. Competitors side by side.**
+- [x] **V5 DONE (2.10, turn 9): docs/research/2026-10-02-v5-competitors/side-by-side.md.**
+  - Twelve sites read on 2.10 with URLs and phone screenshots: Zillow, Matterport, Compass, Houzz, REALS (this is "Simplex": Simplex 3D's sales tool) and BMBY 3D, Yad1, Madlan, Gindi TLV, Ashtrom/Electra (Kikar itself), Waldorf Miami, Emaar.
+  - **We lead in:** the tower/floor/direction pick with the view; published prices for this exact project; the 360 album with amenities; 5 languages; the area map; the basket; speed on a phone.
+  - **The build list (each a later scale-up notch), ranked:**
+    1. asking prices now on the market, pinned to the picker with dates;
+    2. real plans per type;
+    3. a filterable table of nearby deals;
+    4. a personal buyer link that reopens the choice (privacy first);
+    5. an empty apartment and a before/after slider;
+    6. drone panoramas from the topped-out towers;
+    7. a "now available" video call with the rep's name and hours;
+    8. room sizes in the example;
+    9. the monthly payment line under the price.
+  - Was: **V5. Competitors side by side.**
   - World: Zillow, Matterport, Compass, Houzz.
   - Israel: every competitor, plus "Simplex" (to identify).
   - How they put decision information one tap away without hiding the 3D.
@@ -185,6 +210,24 @@ Every turn does ALL of these, not only the current phase:
   - **(c) `verify_kh`** as above.
 
 ## Scale-up ledger (newest on top)
+
+- **2.10, V2 loop turn 9: V4 and V5 closed.**
+  - **Web (2.10):** [Stacked Homes: Singapore launches with units left](https://stackedhomes.com/10-new-launch-condos-from-2026-that-still-have-units-available-from-1-38m/) lists the units remaining per type and the entry prices. This confirms the V5 build item 1 (inventory with prices) as the market norm.
+  - **V4:** one live probe over every row (v4_table_probe.py). All rows hold on Kikar except Film (V6) and Payment (the owner).
+    - Two of the probe's first readings were the probe's own errors, both checked:
+      - the price sits in the dock outside `.nlw`;
+      - the walk tab needs a settled tap.
+    - Kikar has no video-call entry near the top, unlike DUO and Rainbow: V5 build item 7.
+  - **Finding HAD-390 (High), not shipped on purpose:**
+    - On a phone the floating WhatsApp pill covers the deals box: 11,034 px² over 4 scroll steps. The accessibility button covers its edge.
+    - Tested locally: making the deals box and the plan obstacles clears them, but the pill then half-covers "היכנסו לדירה לדוגמה", and a mis-tap there would open WhatsApp.
+    - It needs a design decision (FloatingClear v2), with V9.
+    - Evidence: pill_probe.py, v2/pp2-pair.jpg.
+  - **V5:** the side-by-side (helper agent, 96 tool calls) is the deliverable. Its build list feeds the next notches.
+  - **Scale-up notch:** a reusable all-rows parity probe (v4_table_probe.py) that measures DUO and Rainbow too. Every later turn can re-prove the table in one run.
+  - **NEXT:**
+    - V6, the film with voice: brief Maya (Astra 6) through docs/coordination/claude-codex.md and the ChatGPT "maya" thread. Script from the page's true facts; the municipality footage may be embedded with no credit; DaVinci; a Hebrew voice, plus English.
+    - While V6 is with Maya, the turns' notches come from the V5 build list, first item 1: asking prices on the picker, Claude Design first. The URL word audit is not needed, because no new URL is minted.
 
 - **2.10, V2 loop turn 8 (V4 step 5): the spa and the car park.** LIVE 1.72.395 (v104.24, DS version 168).
   - **Web (2.10):**
