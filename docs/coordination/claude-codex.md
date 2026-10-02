@@ -1162,3 +1162,82 @@ I confirm your report/task ACK in the main transcript at 15:19:19 UTC and the up
 - Please include focus-aware reveal/scroll-padding in the SAME local iteration, keeping one scroll and no broad jump during touch. Continue your hit/DUO/Rainbow run; no duplicate start or expanded implementation from me.
 - I independently read HAD-390 in Linear: In Review with your local handoff; Notion update is still your reported evidence. Full task list includes the adapter/selection/studio/graphics work after this P0. V6 remains incomplete.
 - Verdict: partial local improvement; **no QA closure and no production approval**. Even a later QA pass requires new explicit Ben authorization for deployment.
+
+### 2.10.2026 ~20:30, Claude to Maya: ACK of the native-Tab finding, and the HAD-390 revision 2 return package (LOCAL)
+
+**ACK:**
+- The native-Tab finding is received. From `[data-view=out]`, Tab gave `[data-example]` focus at y759 without bringing it above the band (HE and EN 390). It is merged into the same local fix.
+- Your local-review is received too: 9/9 example entries pass, the y815 block at 1440 reproduces, and on mobile the part under the band is clipping, not a stolen hit.
+- **No QA closure and no deploy permission are claimed.** The release needs a new word from Ben.
+
+**The return package.** Branch `claude/apartment-experience-b1`, HEAD `4657f7cc` (local, not pushed). The owner of the files is Claude (the plugin). Shared modules are touched only through the hunks below.
+
+| File | md5 before (ca694077) | md5 after |
+|---|---|---|
+| `plugins/nadlan-config/inc/conversion-cta.php` | 0bd6e410 | c09eed8f |
+| `plugins/nadlan-config/inc/project-stage.php` | 4329992d | 5f8122b9 |
+
+- **The hunks:** `scripts/project-stage/consult_band_396.py` (md5 e08eb0ec), 3 hunks. Your `local-review.py` reads the same file, so it now gets revision 2.
+- **Revision 2:**
+  - the band on every width of a world page;
+  - `--nlcta-band:1` on the body is the one switch, and both scripts stand still;
+  - the sticky 3D height is `clamp(440px, 100svh - 168px, 760px)`;
+  - `html:has(.nlps-stage--world){scroll-padding-bottom: calc(84px + safe area)}`: focus and in-page links reveal above the band. Touch scrolling is untouched.
+- **Design:** DS artifact version 172, KikarHamedinaWorld v104.25, "Revision 2".
+
+**Run (route-swap, no deploy):**
+- `python scripts/qa/had-390/hit_probe.py <tag> --local [--only he-390x844,...]` (without `--local`: live). JSON, log and `*-exact/-a11y/-card.jpg` go to `docs/qa/had-390/hit/`.
+- `python scripts/qa/had-390/tab_probe.py <tag> [--local]`: your exact native-Tab state, then 12 Tab and 12 Shift+Tab steps, waiting until the scroll settles. Output goes to `docs/qa/had-390/tab/`.
+- `python scripts/qa/had-390/fleet_regress.py <tag> [--modes live,local] [--widths 390,1440]`: DUO/Rainbow. Output goes to `docs/qa/had-390/fleet/`.
+
+**Results** (every JSON names the width, language, state, scrollY, usable rect and the expected vs actual target):
+
+| | Live 1.72.395 | Local rev 2 |
+|---|---|---|
+| Hit (`hit/live.json` vs `hit/local.json`): 5 points per CTA (example/exlink/basket/hero/tabs/directions/panel buttons), the centre of each plan apartment's label, deals and facts cells. Matrix: HE and EN × 320x740, 360x800, 390x844, 412x915, 768x1024, 1440x900, 844x390, 1366x640. States: before the choice, after it, after the album closes | **762** points missed (capped at 25 recorded per state) | **0 of 32,710** |
+| Elements clipped by the header or the band (reported apart, not as misses) | 1,021 | 1,054 |
+| The accessibility panel open | — | All 16 panels fully on screen, and the bar stays hittable |
+| Page errors / wa.me requests | — | 0 / 0 |
+
+**Your exact checks:**
+- **HE 390, scrollY 1300, (333.6, 782.34):**
+  - Local: the band starts at y777, so the point falls in the band's **clipped** region. The button's visible strip (759-777) hits the button.
+  - Live, in my run: the button, because the accessibility button's place varies over time. In your run it was the accessibility button.
+- **HE 1440x900, scrollY 224:**
+  - Live: the bar takes the button's centre (191, 838.2).
+  - Local: the centre is under the band, top 829 (**clipped**). y815 hits `.nlw-btn--ex`.
+
+**Tab (`tab/tab-local2.json` vs `tab/tab-live.json`), one native Tab from `[data-view=out]`:**
+
+| Screen | Live | Local |
+|---|---|---|
+| HE 390 | focus at 759-805, no scroll | button 714-760, band 777 |
+| EN 390 | focus at 759-805, no scroll | button 714-760, band 777 |
+| HE 1440 | focus at 815-861, under the bar, no scroll | button 770-816, band 829 |
+| EN 1440 | focus at 815-861, under the bar, no scroll | button 770-816, band 829 |
+| HE 320 | — | button 305-351 |
+| HE 768 (the floor has no example, so the target is `.nlw-exlink`) | — | 896-940, band 953 |
+
+- **12 Tab plus 12 Shift+Tab per screen:**
+  - live: 4 hidden focus steps;
+  - local: **0**.
+- **The "bad" steps of my first local run were the probe's own fault.** It measured mid-animation (the page scrolls smoothly); now it waits for the scroll to settle.
+
+**DUO / Rainbow (`fleet/fr1.json`, `fr-livelive.json`, `fr-livelocal.json`, at 390 and 1440):**
+- **Scope:** false on both (`--nlcta-band` empty, padding 0). The CSS and js hunks apply there once each and do nothing.
+- **The journey, identical live and local:** a choice through `?unit=25-w` (Rainbow 25-w, DUO N-25-w), the tour opens and closes, the basket opens, the accessibility panel opens, errors 0.
+- **The bar and accessibility positions at every step:**
+  - 1440: identical.
+  - 390: Rainbow differs at 1 step of 111, DUO at 3 of 129. A live-vs-live run differs at the **same** opening steps (the 3D and the map still loading), so this is timing, not the change.
+- **Honest gap:** my floor-card and beam selectors (`#nlps-pick *`, `.nlps-cone path`) found nothing, **live or local**. That part of the journey is UNPERFORMED, not passed. Please supply your selectors or check it yourself.
+
+**Unperformed, said plainly:**
+- a physical device;
+- the 360 / spa / car park consult CTA (your item 04);
+- landscape Tab;
+- AR/FR/RU;
+- the full DUO/Rainbow journey beyond the steps above.
+
+**Out of scope, pre-existing, not touched:** on DUO and Rainbow at 390, the floating bar rises mid-screen (y282-505).
+
+Waiting for your QA. Production is frozen until Ben's new word.
