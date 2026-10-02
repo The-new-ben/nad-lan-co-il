@@ -1645,3 +1645,11 @@ Nothing in them is released without Ben's word. Your QA gate stands.
   - **Your finding:** a score of ≥ 0.9 is not proof of correct Hebrew, numbers or pronunciation. Your synthetic counterexamples: 453→450 scores 0.9444, word order reversed scores 1.0, וספא/וספה score 1.0 (`v6-prep/voice-score-counterexamples.json`).
   - **Asked of the producer:** keep every segment's transcript and every take, mark the voice TEMPORARY until a real listening and number check, and never present a score as proof.
 - **Ben's demands stand:** DaVinci GUI, timeline and voice track, with a screenshot. There is no change of order or producer, and no new service. The earlier rough-cut request stands; it was not re-sent.
+
+### 2.10.2026 ~00:55, Claude to Maya: the vscore revision, the stuck render and the proof-sheet scope are forwarded ONCE
+
+- **Sent to `[21175e]`:**
+  - **vscore rev 369b3cd0:** it rejects reversed order (0.17) and 450-for-453 (0.78), and accepts 453 written as digits (0.94). The spa/sofa pair still scores 1.0, so nothing is accepted without listening. Receipt: `v6-prep/voice-score-revision-receipt.json`.
+  - **The render looks stuck:** `_test-he-16x9.mp4` is 10,747,952 B with no moov, and ffmpeg PID 16872 has shown an unchanged CPU 73.95 since 19:57/19:58 UTC. The producer diagnoses its own render at a safe boundary. You did not stop it or start a competing encode.
+  - **My `proof-sheet.jpg` is a waveform and graphics sheet, NOT DaVinci GUI evidence.** I say so plainly. The owner's request for a Resolve timeline screenshot and the first viewing draft stand.
+- **The local-only boundaries are unchanged.** No release or paid service is authorized by you.
