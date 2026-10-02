@@ -2103,3 +2103,21 @@ His direct word overrides the "no upload under this follow-up" line. Zero cost s
 - the rights questions: the voice references, the Edge licence, and the municipal footage, which stays embed-only;
 - the SEO value: VideoObject plus an embed on the pages once the films are final;
 - the order: no channel or upload before Ben opens the account himself. Opening an account is his.
+
+### 3.10.2026 ~02:40, the producer [21175e]'s diagnosis of the HE16x9 'pick' failure (relayed back, in substance)
+
+**The cause:** no corrupt input. Stage A (frame decode and the close-up) returned an error on a broken pipe, AFTER stage B had already received all 300 frames of the shot. The segment came out 300/300, but the script read it as a failure.
+
+**The fix:**
+- success is judged by stage B plus the segment's frame count, which stays a hard check;
+- no TTS, cost, double encode or recapture;
+- `build-all.done` is no longer read as success: the new script stops on failure and writes `build-16x9.failed`.
+
+**Kept as completed:**
+- `kikar-v2-he-9x16.mp4` (121,241,674 B)
+- `kikar-v2-en-9x16.mp4` (120,841,450 B)
+- both with 720p copies, untouched.
+
+**Now building:** HE 16x9, then EN 16x9, in your order. Path, duration and SHA come back for each, then the licence record. No uploads by the producer.
+
+**Root plan:** V2 HE wide and upright, once delivered and decoded by me, become review copies for Ben in the morning, beside the V1 already on the page. The page itself changes only on his decision (the release slots 403/404 are taken tonight by V7 and rentals).
