@@ -168,7 +168,7 @@ function ensureCss() {
   if (cssInjected || document.querySelector('link[data-rbs-css]')) { cssInjected = true; return; }
   const l = document.createElement('link');
   l.rel = 'stylesheet';
-  l.href = new URL('./stage.css', import.meta.url).href;
+  l.href = new URL('./stage.css' + new URL(import.meta.url).search, import.meta.url).href; // 1.72.398 (HAD-391 follow-up): with the module's ?ver, else a returning phone keeps a year-old stage.css
   l.setAttribute('data-rbs-css', '');
   document.head.appendChild(l);
   cssInjected = true;
@@ -384,7 +384,7 @@ export function mountRainbowStage(container, options = {}) {
   let cityData;
   function loadCity() {
     if (cityData !== undefined || opts.city === false) return Promise.resolve(cityData || null);
-    return fetch(new URL('./city.json', import.meta.url).href)
+    return fetch(new URL('./city.json' + new URL(import.meta.url).search, import.meta.url).href)
       .then((r) => (r.ok ? r.json() : null))
       .catch(() => null)
       .then((d) => { cityData = d && (Array.isArray(d.b) || Array.isArray(d.lots)) ? d : null; return cityData; });

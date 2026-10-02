@@ -1,0 +1,17 @@
+{
+  "released": "1.72.398",
+  "from": "1.72.397",
+  "live_before": {
+    "assets/project-stage/rainbow/stage.js": "8dee853f810f1ed3412b8be84e2e3711",
+    "nadlan-config.php": "f4ad1e5c4a596f82ae6467e0f1a866b1"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-02 23:03:51",
+  "files": {
+    "assets/project-stage/rainbow/stage.js": "1954e6cc3fcace4cf0d0ada9d6bf6aba",
+    "nadlan-config.php": "6e24fbae93caabfae2e37a30607f4c56"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.398, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
