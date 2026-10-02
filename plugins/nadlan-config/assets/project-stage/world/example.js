@@ -46,9 +46,11 @@ const WORDS = {
     styleNames: { bare: 'העיצוב המקורי', warm: 'עץ חם', light: 'בהיר', stone: 'אבן' }, stylesLabel: 'עיצוב הדירה', stylesSub: 'רעיון להמחשה',
     styleNote: 'רעיון עיצוב להמחשה.', stylesN: (n) => `${n} סגנונות עיצוב`, // v104.21
     inBuilding: 'בבניין', aptPlace: 'הדירה', facChip: 'מתקן לדוגמה', facCap: 'הדמיה להמחשה', // v104.22
-    walk: { exit: 'יציאה מהדירה', exitSub: 'למעלית', toLift: 'למעלית', title: 'לאן?', note: 'מעבר להמחשה', close: 'סגירה', here: 'אתם כאן', back: 'חזרה', floorN: (f) => `קומה ${f}`, aptSub: 'דירה לדוגמה', lobbySub: 'קומת הכניסה', baseSub: 'קומת המרתף' }, // v104.23
+    walk: { exit: 'יציאה מהדירה', exitSub: 'למעלית', toLift: 'למעלית', title: 'לאן?', note: 'מעבר להמחשה', close: 'סגירה', here: 'אתם כאן', back: 'חזרה', floorN: (f) => `קומה ${f}`, aptSub: 'דירה לדוגמה', lobbySub: 'קומת הכניסה', baseSub: 'קומת המרתף', parkSub: 'קומות החניה' }, // v104.23 + v104.24 parkSub
     fac: { lobby: ['הלובי', 'הלובי במגדל C', 'לובי בקומת הכניסה, עם עמדת שמירה.'], pool: ['הבריכה', 'הבריכה בקומת המרתף', 'הבריכה, חדר הכושר והספא נמצאים באחת מקומות המרתף.'],
-      gym: ['חדר הכושר', 'חדר הכושר בקומת המרתף', 'באחת מקומות המרתף, ליד הבריכה והספא.'] },
+      gym: ['חדר הכושר', 'חדר הכושר בקומת המרתף', 'באחת מקומות המרתף, ליד הבריכה והספא.'],
+      spa: ['הספא', 'הספא בקומת המרתף', 'ספא וחדרי טיפולים, באחת מקומות המרתף, ליד הבריכה וחדר הכושר.'],
+      parking: ['החניון', 'החניון התת־קרקעי', 'קומות החניה מתחת לקרקע; שתי חניות לכל דירה.'] }, // v104.24
     sizeSrc: 'גלובס, 2.5.2025',
     from: (f0, f) => `התמונות מקומה ${f0}; בחרתם קומה ${f}, והנוף ממנה דומה מאוד`,
     todLbl: 'שעות היום', tod: { day: 'יום', sunset: 'שקיעה', evening: 'ערב' },
@@ -89,9 +91,11 @@ const WORDS = {
     styleNames: { bare: 'Original design', warm: 'Warm wood', light: 'Light', stone: 'Stone' }, stylesLabel: 'Design the apartment', stylesSub: 'An idea, for illustration',
     styleNote: 'A design idea, for illustration.', stylesN: (n) => `${n} design styles`, // v104.21
     inBuilding: 'In the building', aptPlace: 'The apartment', facChip: 'Example facility', facCap: 'An illustration', // v104.22
-    walk: { exit: 'Leave the apartment', exitSub: 'to the lift', toLift: 'To the lift', title: 'Where to?', note: 'An illustrated move', close: 'Close', here: 'You are here', back: 'Back', floorN: (f) => `Floor ${f}`, aptSub: 'Example apartment', lobbySub: 'Entrance floor', baseSub: 'Basement level' }, // v104.23
+    walk: { exit: 'Leave the apartment', exitSub: 'to the lift', toLift: 'To the lift', title: 'Where to?', note: 'An illustrated move', close: 'Close', here: 'You are here', back: 'Back', floorN: (f) => `Floor ${f}`, aptSub: 'Example apartment', lobbySub: 'Entrance floor', baseSub: 'Basement level', parkSub: 'Parking levels' }, // v104.23 + v104.24 parkSub
     fac: { lobby: ['Lobby', 'The lobby of tower C', 'The entrance-floor lobby, with a concierge desk.'], pool: ['Pool', 'The pool on a basement level', 'The pool, the gym and the spa are on one of the basement levels.'],
-      gym: ['Gym', 'The gym on a basement level', 'On one of the basement levels, beside the pool and the spa.'] },
+      gym: ['Gym', 'The gym on a basement level', 'On one of the basement levels, beside the pool and the spa.'],
+      spa: ['Spa', 'The spa on a basement level', 'A spa and treatment rooms, on one of the basement levels, beside the pool and the gym.'],
+      parking: ['Parking', 'The underground car park', 'The parking levels are underground; two spaces per apartment.'] }, // v104.24
     sizeSrc: 'Globes, 2.5.2025',
     from: (f0, f) => `The pictures are from floor ${f0}; you chose floor ${f}, and its view is very close`,
     todLbl: 'Time of day', tod: { day: 'Day', sunset: 'Sunset', evening: 'Evening' },
@@ -132,9 +136,11 @@ const WORDS = {
     styleNames: { bare: 'Design d’origine', warm: 'Bois chaleureux', light: 'Clair', stone: 'Pierre' }, stylesLabel: 'Aménager l’appartement', stylesSub: 'Une idée, à titre d’illustration',
     styleNote: 'Une idée d’aménagement, à titre d’illustration.', stylesN: (n) => `${n} styles d’aménagement`, // v104.21
     inBuilding: 'Dans l’immeuble', aptPlace: 'L’appartement', facChip: 'Équipement à titre d’exemple', facCap: 'Illustration', // v104.22
-    walk: { exit: 'Sortir de l’appartement', exitSub: 'vers l’ascenseur', toLift: 'Vers l’ascenseur', title: 'Où aller ?', note: 'Déplacement illustré', close: 'Fermer', here: 'Vous êtes ici', back: 'Retour', floorN: (f) => `${f}e étage`, aptSub: 'Appartement témoin', lobbySub: 'Rez-de-chaussée', baseSub: 'Sous-sol' }, // v104.23
+    walk: { exit: 'Sortir de l’appartement', exitSub: 'vers l’ascenseur', toLift: 'Vers l’ascenseur', title: 'Où aller ?', note: 'Déplacement illustré', close: 'Fermer', here: 'Vous êtes ici', back: 'Retour', floorN: (f) => `${f}e étage`, aptSub: 'Appartement témoin', lobbySub: 'Rez-de-chaussée', baseSub: 'Sous-sol', parkSub: 'Niveaux de parking' }, // v104.23 + v104.24 parkSub
     fac: { lobby: ['Hall', 'Le hall de la tour C', 'Le hall d’entrée, avec un poste d’accueil.'], pool: ['Piscine', 'La piscine au sous-sol', 'La piscine, la salle de sport et le spa sont à l’un des niveaux de sous-sol.'],
-      gym: ['Salle de sport', 'La salle de sport au sous-sol', 'À l’un des niveaux de sous-sol, près de la piscine et du spa.'] },
+      gym: ['Salle de sport', 'La salle de sport au sous-sol', 'À l’un des niveaux de sous-sol, près de la piscine et du spa.'],
+      spa: ['Spa', 'Le spa au sous-sol', 'Un spa et des salles de soins, à l’un des niveaux de sous-sol, près de la piscine et de la salle de sport.'],
+      parking: ['Parking', 'Le parking souterrain', 'Les niveaux de parking sont en sous-sol ; deux places par appartement.'] }, // v104.24
     sizeSrc: 'Globes, 02/05/2025',
     from: (f0, f) => `Les images sont prises au ${f0}e étage ; vous avez choisi le ${f}e, dont la vue est très proche`,
     todLbl: 'Moment de la journée', tod: { day: 'Jour', sunset: 'Coucher du soleil', evening: 'Soir' },
@@ -175,9 +181,11 @@ const WORDS = {
     styleNames: { bare: 'Исходный дизайн', warm: 'Тёплое дерево', light: 'Светлый', stone: 'Камень' }, stylesLabel: 'Дизайн квартиры', stylesSub: 'Идея, для иллюстрации',
     styleNote: 'Идея дизайна, для иллюстрации.', stylesN: (n) => `${n} стиля дизайна`, // v104.21
     inBuilding: 'В здании', aptPlace: 'Квартира', facChip: 'Пример', facCap: 'Иллюстрация', // v104.22
-    walk: { exit: 'Выйти из квартиры', exitSub: 'к лифту', toLift: 'К лифту', title: 'Куда?', note: 'Условный переход', close: 'Закрыть', here: 'Вы здесь', back: 'Назад', floorN: (f) => `${f}-й этаж`, aptSub: 'Пример квартиры', lobbySub: 'Входной этаж', baseSub: 'Подземный этаж' }, // v104.23
+    walk: { exit: 'Выйти из квартиры', exitSub: 'к лифту', toLift: 'К лифту', title: 'Куда?', note: 'Условный переход', close: 'Закрыть', here: 'Вы здесь', back: 'Назад', floorN: (f) => `${f}-й этаж`, aptSub: 'Пример квартиры', lobbySub: 'Входной этаж', baseSub: 'Подземный этаж', parkSub: 'Уровни паркинга' }, // v104.23 + v104.24 parkSub
     fac: { lobby: ['Лобби', 'Лобби башни C', 'Лобби на входном этаже, с постом охраны.'], pool: ['Бассейн', 'Бассейн на подземном этаже', 'Бассейн, тренажёрный зал и спа находятся на одном из подземных этажей.'],
-      gym: ['Тренажёрный зал', 'Тренажёрный зал на подземном этаже', 'На одном из подземных этажей, рядом с бассейном и спа.'] },
+      gym: ['Тренажёрный зал', 'Тренажёрный зал на подземном этаже', 'На одном из подземных этажей, рядом с бассейном и спа.'],
+      spa: ['Спа', 'Спа на подземном этаже', 'Спа и процедурные кабинеты на одном из подземных этажей, рядом с бассейном и тренажёрным залом.'],
+      parking: ['Паркинг', 'Подземный паркинг', 'Уровни паркинга находятся под землёй; два места на квартиру.'] }, // v104.24
     sizeSrc: 'Globes, 02.05.2025',
     from: (f0, f) => `Снимки с ${f0}-го этажа; вы выбрали ${f}-й, вид с него почти такой же`,
     todLbl: 'Время суток', tod: { day: 'День', sunset: 'Закат', evening: 'Вечер' },
@@ -218,9 +226,11 @@ const WORDS = {
     styleNames: { bare: 'التصميم الأصلي', warm: 'خشب دافئ', light: 'فاتح', stone: 'حجر' }, stylesLabel: 'تصميم الشقة', stylesSub: 'فكرة للتوضيح',
     styleNote: 'فكرة تصميم للتوضيح.', stylesN: (n) => `${n} أنماط تصميم`, // v104.21
     inBuilding: 'في المبنى', aptPlace: 'الشقة', facChip: 'مرفق للتوضيح', facCap: 'رسم توضيحي', // v104.22
-    walk: { exit: 'الخروج من الشقة', exitSub: 'إلى المصعد', toLift: 'إلى المصعد', title: 'إلى أين؟', note: 'انتقال توضيحي', close: 'إغلاق', here: 'أنتم هنا', back: 'رجوع', floorN: (f) => `الطابق ${f}`, aptSub: 'شقة نموذجية', lobbySub: 'طابق الدخول', baseSub: 'الطابق السفلي' }, // v104.23
+    walk: { exit: 'الخروج من الشقة', exitSub: 'إلى المصعد', toLift: 'إلى المصعد', title: 'إلى أين؟', note: 'انتقال توضيحي', close: 'إغلاق', here: 'أنتم هنا', back: 'رجوع', floorN: (f) => `الطابق ${f}`, aptSub: 'شقة نموذجية', lobbySub: 'طابق الدخول', baseSub: 'الطابق السفلي', parkSub: 'طوابق الموقف' }, // v104.23 + v104.24 parkSub
     fac: { lobby: ['الردهة', 'ردهة البرج C', 'ردهة طابق الدخول، مع مكتب حراسة.'], pool: ['المسبح', 'المسبح في الطابق السفلي', 'المسبح والنادي الرياضي والسبا في أحد الطوابق السفلية.'],
-      gym: ['النادي الرياضي', 'النادي الرياضي في الطابق السفلي', 'في أحد الطوابق السفلية، بجانب المسبح والسبا.'] },
+      gym: ['النادي الرياضي', 'النادي الرياضي في الطابق السفلي', 'في أحد الطوابق السفلية، بجانب المسبح والسبا.'],
+      spa: ['السبا', 'السبا في الطابق السفلي', 'سبا وغرف علاج في أحد الطوابق السفلية، بجانب المسبح والنادي الرياضي.'],
+      parking: ['موقف السيارات', 'موقف السيارات تحت الأرض', 'طوابق الموقف تحت الأرض؛ موقفان لكل شقة.'] }, // v104.24
     sizeSrc: 'غلوبس، 2.5.2025',
     from: (f0, f) => `الصور من الطابق ${f0}؛ اخترتم الطابق ${f}، والإطلالة منه قريبة جداً`,
     todLbl: 'وقت اليوم', tod: { day: 'نهار', sunset: 'غروب', evening: 'مساء' },
@@ -322,6 +332,12 @@ export function openExample(o) {
     return T.cap[it.room](it.hour);
   };
 
+  // v104.24: never one tile alone on a row (9 tiles: 3 full rows of 3, not 4 + 4 + 1)
+  function stripCols(html) {
+    const n = (html.match(/class="nlex__tile[ "]/g) || []).length;
+    return n > 4 && n % 4 === 1 && n % 3 !== 1 ? 3 : 4;
+  }
+
   function build() {
     const size = ex.size || {};
     const fromLine = +ex.floor !== +o.floor ? `<div class="nlex__from">${esc(T.from(ex.floor, o.floor))}</div>` : '';
@@ -347,7 +363,7 @@ export function openExample(o) {
         </div>
         <div class="nlex__cap" data-cap aria-live="polite"></div>
         <div class="nlex__todrow"><span class="nlex__lbl">${esc(T.todLbl)}</span><span class="nlex__seg" role="group" aria-label="${esc(T.todLbl)}">${living.map((t) => `<button type="button" data-tod="${t}" aria-pressed="false">${esc(T.tod[t])}</button>`).join('')}</span></div>
-        <div class="nlex__strip" role="group" aria-label="${esc(T.gallery)}">${tiles}</div>
+        <div class="nlex__strip${stripCols(tiles) === 3 ? ' nlex__strip--3' : ''}" role="group" aria-label="${esc(T.gallery)}">${tiles}</div>
       </div>
       <div class="nlex__side">
         <div class="nlex__label"><span class="nlex__chip nlex__chip--in">${esc(T.chip)}</span><span>${esc(T.label)}</span></div>
@@ -442,7 +458,7 @@ export function openExample(o) {
         start: startId || p.base, places, placesLabel: T.inBuilding,
         // v104.23 (BuildingWalk): the lift's stops: the example apartment's floor, the lobby, the basement's rooms
         lift: facs.length ? { title: T.walk.title, note: T.walk.note, stops: [{ floor: +ex.floor, label: T.walk.floorN(ex.floor), sub: T.walk.aptSub }].concat(
-          facs.map((f) => ({ to: 'fac-' + f.id, label: T.fac[f.id][0], sub: f.id === 'lobby' ? T.walk.lobbySub : T.walk.baseSub }))) } : undefined,
+          facs.map((f) => ({ to: 'fac-' + f.id, label: T.fac[f.id][0], sub: f.id === 'lobby' ? T.walk.lobbySub : f.id === 'parking' ? (T.walk.parkSub || T.walk.baseSub) : T.walk.baseSub }))) } : undefined, // v104.24 parkSub
         liftClose: T.walk.close, hereLabel: T.walk.here, backLabel: T.walk.back, floorN: T.walk.floorN,
         scenes: [{ id: p.base, dir: 'w', spot: 'living', floor: +ex.floor, title: T.panoTitle(o.tower, ex.floor), src: U(p.base + '.webp'), small: U(p.base + '-2k.webp'),
           doors: facs.length && Array.isArray(p.door) ? [{ to: 'lift', at: p.door, label: T.walk.exit, sub: T.walk.exitSub }] : undefined, // v104.23

@@ -343,3 +343,16 @@ A visible `<h2>שאלות נפוצות` plus FAQPage schema.
    - the pool and the gym (the basement level).
 3. **In the lobby, the pool and the gym,** "למעלית" stands at their lift or entrance (located in their renders), so the walk goes both ways.
 4. **Every word of the viewer is in the page's language:** the lift, "אתם כאן", "חזרה", and the floor on the apartment's place ("The apartment · Floor 30"). The shared viewer's Hebrew stays the default for DUO and Rainbow.
+
+## v104.24 (2.10, V2 loop turn 8, V4 step 5): the spa and the car park
+
+**The gap:** the published facilities include a spa with treatment rooms (one of the basement levels, with the pool and the gym) and the residents' underground parking, two spaces per apartment. Kikar's 360 had only the lobby, the pool and the gym, so the V4 table's "parking" row was empty on every page of the fleet.
+
+**The design (illustrations, the same viewer, the same walk):**
+1. **Two more rooms** in the example apartment's 360, rendered in the same design family as the pool and the gym (scripts/interior/kikar_facility.py, scenes spa and parking):
+   - **הספא** ("ספא וחדרי טיפולים, באחת מקומות המרתף, ליד הבריכה וחדר הכושר"): a reception counter, loungers, treatment-room doors, a sauna's glass front, no window.
+   - **החניון** ("קומות החניה מתחת לקרקע; שתי חניות לכל דירה"): a clean residents' level with a bronze-framed glass lift vestibule, storage-room doors, a few generic cars (no make, no plate, no number).
+   - The number of parking levels is not stated, because the sources disagree (3 or 4).
+2. **The walk reaches both rooms.** The lift panel now has six stops: floor 30, the lobby, the pool, the gym, the spa and the car park, whose sub-line reads "קומות החניה". In each room, "למעלית" stands at the room's door (located in the render: spa +135.0° / −3.0°, car park −138.4° / −4.7°). There is no inner scroll in the panel, on phone or PC.
+3. **The album never leaves one tile alone on a row.** Nine tiles (4 of the apartment and 5 rooms) are laid out as three full rows of three, not 4 + 4 + 1. The rule is in example.js `stripCols`: use 3 columns when 4 would leave a single orphan and 3 would not.
+4. **All five languages:** Spa / Parking, Spa / Parking, Спа / Паркинг, السبا / موقف السيارات.

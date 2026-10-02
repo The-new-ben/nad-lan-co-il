@@ -70,9 +70,9 @@ Every turn takes the first open item. Each item is ticked with evidence (live, r
     | Plans | ✓ floor slice | ✓ floor slice | ✓ key plan, 4 corner apartments (v104.18) | Room level inside the apartment (D1) |
     | 360 of the apartment | ✓ per floor and direction | ✓ | ✓ C30 west: living 360 + 5 stills | More floors and directions |
     | Lobby | ✓ fac-lobby 360 | ✓ | ✓ **1.72.393**: tower C's double-height lobby over the real square (illustration) | Doors and the lift in the picture (the building walk) |
-    | Pool, gym, spa | ✓ pool and wellness 360 | ✓ club, roof pool | ✓ **1.72.393**: the basement pool and gym, no window, as published (illustration) | A spa room |
-    | Parking | ✗ | ✗ | ✗ | A fleet-wide gap: parking 360 (1,626 spaces are sourced) |
-    | Building walk (door → lift → lobby → facility) | ✓ v96 | ✓ v96 | ✓ **1.72.394**: the hall door → "לאן?" lift (floor 30, lobby, basement pool and gym) → "למעלית" back; the doors located in the renders | Out to the street (the world's walk on the square) |
+    | Pool, gym, spa | ✓ pool and wellness 360 | ✓ club, roof pool | ✓ **1.72.393**: the basement pool and gym, no window, as published (illustration); **1.72.395**: the spa ("ספא וחדרי טיפולים", beside the pool and gym) | — |
+    | Parking | ✗ | ✗ | ✓ **1.72.395**: the residents' underground car park (two spaces per apartment; the level count is not stated, the sources say 3 or 4) with the lift vestibule (illustration). **Kikar leads the fleet here.** | The same room for DUO and Rainbow (their own scenes) |
+    | Building walk (door → lift → lobby → facility) | ✓ v96 | ✓ v96 | ✓ **1.72.394**: the hall door → "לאן?" lift → "למעלית" back; **1.72.395**: six stops (floor 30, lobby, pool, gym, spa, car park "קומות החניה") | Out to the street (the world's walk on the square) |
     | Shops and cafés outside | the area map | the area map | ✓ the walk on the square + the places tab with cafés | Street-level 360 at the square's cafés (the "We Love You Too" café) |
     | Film | ✗ | ✓ 49 s | ✗ | V6 |
 - [ ] **V5. Competitors side by side.**
@@ -185,6 +185,30 @@ Every turn does ALL of these, not only the current phase:
   - **(c) `verify_kh`** as above.
 
 ## Scale-up ledger (newest on top)
+
+- **2.10, V2 loop turn 8 (V4 step 5): the spa and the car park.** LIVE 1.72.395 (v104.24, DS version 168).
+  - **Web (2.10):**
+    - [Una Brickell](https://www.condoblackbook.com/blog/february-2026-miami-new-development-and-pre-construction-condo-update) sells its garage ("three stories below sea level") as an amenity, but nobody shows the parking in 360.
+    - [Matterport's Defurnish](https://matterport.com/blog/matterports-winter-2025-release-productivity-multiplied) empties a scanned room. Our "העיצוב המקורי" plus 3 styles cover the same need on a building not yet delivered.
+    - V5 groundwork, done early by a helper agent: docs/research/2026-10-02-v5-competitors/side-by-side.md. Top gaps:
+      - a live list of apartments for sale with asking prices ([Compass](https://www.compass.com/building/the-henry-manhattan-ny/1633466331737096645/));
+      - a real plan per unit ([Una](https://www.unaresidencesmiami.com/));
+      - a filterable deals table ([Madlan](https://www.madlan.co.il/));
+      - a personal buyer link (REALS/BMBY, from their marketing);
+      - more styles plus an empty room (Zillow "Stage this home").
+    - Where we lead: picking by tower, floor and direction with the window view; published deal prices; the 360 album plus the amenities in 5 languages.
+  - **Renders (helper agent):** kikar_facility.py scenes spa (level −1, the pool's design family) and parking (level −2, bronze lift vestibule, generic cars, no number or brand). 4096×2048, 96 samples, about 37 minutes each.
+    - The existing three scenes are proven unchanged (pixel-identical gym and pool, identical scene hashes).
+    - The KF_LOCATE camera refresh was fixed.
+    - The doors: spa +135.0°/−3.0°, car park −138.4°/−4.7°.
+  - **example.js:** the words in 5 languages; the car park's lift stop says "קומות החניה". **Scale-up notch:** the album never leaves one tile alone (stripCols: 9 tiles → 3×3, not 4+4+1), seen and fixed before the release.
+  - **Runner 395:** 15 files (12 new), all served at their md5; 5 Kikar pages in order; first run.
+  - **Live, real taps (he 390 and 1440, en 390, ar 390):** 5 room tiles → the spa → its door → the lift (6 stops, inner scroll 0) → the car park → its door → floor 30. Errors 0.
+    - Source audit GREEN on the 5 Kikar pages and Rainbow (H Infinity keeps its old YELLOW: a 168-character description). Content-first 0 failed; language pages 0 Hebrew.
+    - Rainbow and DUO open their 360 on a phone tap (the walk's doors present). An earlier "dead button" reading was the probe tapping during the page's smooth scroll: no site bug.
+  - **NEXT:**
+    - V4 closes: one live probe re-measures every row of the table (actions, #nlsch, the shared room, the basket, the 360 rooms, the walk), then V4 is ticked.
+    - Then V5: from side-by-side.md, build the first "where we trail" item: published asking prices pinned to the tower/floor/direction picker, with date (Compass/Emaar parity), after Claude Design.
 
 - **2.10, V2 loop turn 7 (V4 step 4): the building walk.** LIVE 1.72.394 (v104.23, DS version 167).
   - **Doors located in the renders:**

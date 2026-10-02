@@ -1,0 +1,33 @@
+{
+  "released": "1.72.395",
+  "from": "1.72.394",
+  "live_before": {
+    "assets/project-stage/world/example.js": "dbadfaf00b31c6b6d64b3044d05850f1",
+    "assets/project-stage/world/example.css": "978d3a23da2cb7469599acb2b68ca327",
+    "assets/project-stage/hamedina/tour/examples.json": "1e054bb8ad3bb466e41e5c6335f040d0",
+    "nadlan-config.php": "92198521c3ded10aa841fe6528efaa36"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-02 12:25:31",
+  "files": {
+    "assets/project-stage/world/example.js": "a82fa8cd692cca3c4a425ba8b7a44070",
+    "assets/project-stage/world/example.css": "6ba2f885bd2f03cef4f7a14bba555d5c",
+    "assets/project-stage/hamedina/tour/examples.json": "b9e9b233e5e28c9560f82245777785fe",
+    "assets/project-stage/hamedina/tour/fac-spa-c.jpg": "a47cd75e3cf9b336058f26676c468b88",
+    "assets/project-stage/hamedina/tour/fac-spa-c.webp": "4df70d5e381d659a2df0550c580f1804",
+    "assets/project-stage/hamedina/tour/fac-spa-c-2k.jpg": "63fee781cdd37796d161709cf618fbe0",
+    "assets/project-stage/hamedina/tour/fac-spa-c-2k.webp": "d633658199d55cffb8fb88f5fd96a136",
+    "assets/project-stage/hamedina/tour/fac-spa-c-card.jpg": "f5ebc57f3f637be09329846db16ce945",
+    "assets/project-stage/hamedina/tour/fac-spa-c-thumb.webp": "922e35c178d84efade8a85a02041ebea",
+    "assets/project-stage/hamedina/tour/fac-parking-c.jpg": "03c6c40d2a15e7c6c4c6345234094cf3",
+    "assets/project-stage/hamedina/tour/fac-parking-c.webp": "4e3b0856482f73b5b7ac3af378c4ef46",
+    "assets/project-stage/hamedina/tour/fac-parking-c-2k.jpg": "8818a19d791f91e7ce02d174520d13b8",
+    "assets/project-stage/hamedina/tour/fac-parking-c-2k.webp": "7a1e50c3b1696a659dfab6b9b91120ba",
+    "assets/project-stage/hamedina/tour/fac-parking-c-card.jpg": "a02086f151d5caf686b4f75845752a4e",
+    "assets/project-stage/hamedina/tour/fac-parking-c-thumb.webp": "c633ed308277ff900941fa2fd7e6a7d2",
+    "nadlan-config.php": "731b4f90e653136e3b562c3d32b3215d"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.395, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

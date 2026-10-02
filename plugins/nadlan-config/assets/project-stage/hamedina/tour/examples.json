@@ -122,6 +122,22 @@
       -135.0,
       -3.0
      ]
+    },
+    {
+     "id": "spa",
+     "base": "fac-spa-c",
+     "door": [
+      135.0,
+      -3.0
+     ]
+    },
+    {
+     "id": "parking",
+     "base": "fac-parking-c",
+     "door": [
+      -138.4,
+      -4.7
+     ]
     }
    ],
    "facilities_note": "v104.22 (2.10.2026): illustrations rendered from the Kikar world by scripts/interior/kikar_facility.py; the builder puts the pool, gym and spa on a basement level (no window); the lobby is tower C's ground floor over the real square",

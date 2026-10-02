@@ -179,3 +179,5 @@ html.nlex-open, html.nlex-open body { overflow: hidden !important; }
   .nlex__bar i { animation: none; }
   .nlex__picin, .nlex__thumb img { transition: none; }
 }
+/* v104.24: the album never leaves one tile alone on a row (example.js stripCols) */
+.nlex__strip.nlex__strip--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }

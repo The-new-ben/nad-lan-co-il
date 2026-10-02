@@ -52,3 +52,36 @@
 2026-10-02 08:26:05    | RENDER lobby | 4096 x 2048, 96 samples, 12 threads, exposure -1.55 | objects 2988
 2026-10-02 08:26:12 fac-lobby-c: cut ok
 2026-10-02 08:26:12 done: lobby
+2026-10-02 10:52:35 note: two rooms added to kikar_facility.py: parking (the residents' private level -2: columns, bays, the lift vestibule at the round core, storage doors, four generic cars) and spa (level -1 beside the pool hall: reception, loungers, treatment-room doors, sauna); lobby/pool/gym unchanged (scene hash identical to the 1.10 script; gym and pool pixel-identical at 512 px)
+2026-10-02 10:52:36 start: parking,spa, 4096 x 2048, 96 samples, 12 threads
+2026-10-02 11:29:56 fac-parking-c: rendered in 2239 s (96 samples)
+2026-10-02 11:29:56    | REPORT parking: the residents' private parking (1,620 spaces on 3 underground levels, the builder; 906 private + 720 public, Globes/Mako), level -2 and everything in it an illustration; floor 9.6 m below the street, 3.1 m to the soffit, aisle 6 m, bays 2.5 x 5.0 m, columns every 8.1 m; 76 LED battens; 4 generic cars; no window, no sign, no number | panorama centre bearing 211.9 | eye 1.60 m above the room's floor (floor -9.60 m)
+2026-10-02 11:29:56    | REPORT    the aisle's far wall (its middle)        yaw    -0.0 pitch  -0.1 dist   54.9 m bearing  211.9
+2026-10-02 11:29:56    | REPORT    the storage doors on the end wall (the middle) yaw  -180.0 pitch  -2.5 dist   11.6 m bearing   31.9
+2026-10-02 11:29:56    | REPORT    the round core (its face beside the vestibule) yaw   -95.6 pitch  -0.9 dist    6.4 m bearing  116.3
+2026-10-02 11:29:56    | REPORT    car a (sedan)                            yaw   -17.1 pitch  -2.5 dist   18.4 m bearing  194.8
+2026-10-02 11:29:56    | REPORT    car b (suv)                              yaw   +17.1 pitch  -2.5 dist   18.4 m bearing  229.0
+2026-10-02 11:29:56    | REPORT    car c (suv)                              yaw   -13.0 pitch  -1.9 dist   23.8 m bearing  198.8
+2026-10-02 11:29:56    | REPORT    car d (sedan)                            yaw    +9.8 pitch  -1.4 dist   31.7 m bearing  221.7
+2026-10-02 11:29:56    | DOOR park_lift_vestibule yaw -138.4 pitch -4.7 dist 4.83 m bearing 73.5
+2026-10-02 11:29:56    | DOOR park_lift_1 yaw -112.5 pitch -3.6 dist 6.33 m bearing 99.4
+2026-10-02 11:29:56    | DOOR park_lift_2 yaw -129.4 pitch -3.0 dist 7.56 m bearing 82.5
+2026-10-02 11:29:56    | DOOR park_storage_end_wall yaw -180.0 pitch -2.5 dist 11.61 m bearing 31.9
+2026-10-02 11:29:56    | DOOR park_storage_right_wall yaw +133.5 pitch -2.6 dist 11.05 m bearing 345.4
+2026-10-02 11:29:56    | RENDER parking | 4096 x 2048, 96 samples, 12 threads, exposure -0.50 | objects 961
+2026-10-02 11:30:02 fac-parking-c: cut ok
+2026-10-02 12:06:50 fac-spa-c: rendered in 2207 s (96 samples)
+2026-10-02 12:06:50    | REPORT spa: the residents' spa and treatment rooms on a basement level (the builder: 'on one of the basement levels'), level -1 beside the pool hall and its place an illustration; room 11 x 16 m, 3.4 m clear; sauna 4.4 x 2.5 m; no window | panorama centre bearing 211.9 | eye 1.60 m above the room's floor (floor -6.00 m)
+2026-10-02 12:06:50    | REPORT    the sauna's glass front (its middle)     yaw    +0.0 pitch  -1.9 dist   12.0 m bearing  211.9
+2026-10-02 12:06:50    | REPORT    the loungers (their middle)              yaw   +38.9 pitch  -9.0 dist    6.4 m bearing  250.7
+2026-10-02 12:06:50    | REPORT    the planter's olives (its middle)        yaw   -17.6 pitch  -1.1 dist    5.1 m bearing  194.3
+2026-10-02 12:06:50    | REPORT    the reception counter                    yaw  -125.1 pitch  -9.5 dist    3.3 m bearing   86.7
+2026-10-02 12:06:50    | REPORT    the backlit onyx                         yaw  -146.0 pitch  +1.2 dist    4.8 m bearing   65.9
+2026-10-02 12:06:50    | DOOR spa_entrance yaw +135.0 pitch -3.0 dist 5.66 m bearing 346.9
+2026-10-02 12:06:50    | DOOR spa_treatment_room_1 yaw -72.8 pitch -3.0 dist 5.76 m bearing 139.0
+2026-10-02 12:06:50    | DOOR spa_treatment_room_2 yaw -47.2 pitch -2.3 dist 7.51 m bearing 164.7
+2026-10-02 12:06:50    | DOOR spa_treatment_room_3 yaw -32.9 pitch -1.7 dist 10.13 m bearing 179.0
+2026-10-02 12:06:50    | DOOR spa_sauna_door yaw +7.9 pitch -1.9 dist 12.12 m bearing 219.8
+2026-10-02 12:06:50    | RENDER spa | 4096 x 2048, 96 samples, 12 threads, exposure -0.35 | objects 793
+2026-10-02 12:06:57 fac-spa-c: cut ok
+2026-10-02 12:06:57 done: parking,spa

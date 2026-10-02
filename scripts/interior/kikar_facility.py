@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-"""Kikar Hamedina's shared facilities as 360 panoramas: the lobby of tower C, the residents' pool and the gym (all
-ILLUSTRATIONS, "המקום להמחשה"), for the project page's 360 viewer (assets/project-stage/world/example.js 'fac' scenes).
+"""Kikar Hamedina's shared facilities as 360 panoramas: the lobby of tower C, the residents' pool, the gym, the spa and the
+residents' parking level (all ILLUSTRATIONS, "המקום להמחשה"), for the project page's 360 viewer
+(assets/project-stage/world/example.js 'fac' scenes).
 
-  blender -b --factory-startup --python scripts/interior/kikar_facility.py -- <out.png> <lobby|pool|gym> [width 4096]
-          [samples 96] [threads 12]
+  blender -b --factory-startup --python scripts/interior/kikar_facility.py -- <out.png> <lobby|pool|gym|spa|parking>
+          [width 4096] [samples 96] [threads 12]
   (an equirectangular 360, height = width / 2; Cycles on the CPU, FIXED threads: other renders share this machine)
 Env: KF_TOD=day|sunset (the lobby's hour, kikar_world.TIMES; default sunset), KF_EXP (an exposure offset), KF_PULL (the
 lobby glass's window pull), KF_EYE="x,y,z" (moves the eye, room-local metres). Diagnostics, no render:
@@ -49,7 +50,30 @@ What the panoramas show (yaw = degrees right of the panorama's centre, pitch up;
          entrance's glass door +121.8.
   gym    the eye 1.6 m above the rubber floor, 4.0 m from the door wall; the centre looks down the turf lane (211.9) to the
          power rack on its platform (yaw 0); the treadmills facing the moss wall on the left (-48), the dumbbells before the
-         mirror wall on the right (+53); DOOR: the entrance's glass door -135.0."""
+         mirror wall on the right (+53); DOOR: the entrance's glass door -135.0.
+  spa    (added 2.10.2026) the eye 1.6 m above the stone floor, 4.0 m from the door wall; the centre looks down the room
+         (211.9) to the sauna's glass front in the far wall (yaw 0); the relaxation loungers before the basalt wall on the
+         right, the planter of olives in the middle, the treatment rooms' doors along the oak wall on the left, the
+         reception's counter and backlit onyx behind (left). The REPORT and DOOR lines give the yaws.
+  parking (added 2.10.2026) the eye 1.6 m above the slab, in the drive aisle 2.4 m past the vestibule's pedestrian
+         crossing; the centre looks down the aisle (211.9) between the columns and the marked bays to four generic parked
+         cars (18-32 m); the lift vestibule's glass doors behind on the left, the storage rooms' doors on the walls behind.
+         The REPORT and DOOR lines give the yaws.
+
+The spa and the parking level (2.10.2026), SOURCED (facts.md 1.6, 1.9):
+  - the spa: "מתחם ספא, חדרי טיפולים" on one of the basement levels, with the pool and the gym (Ashtrom); so it is a
+    basement room like them: no window, no daylight, every light artificial;
+  - the parking: 1,620 spaces on 3 underground levels (Ashtrom); 1,626 = 906 private for the apartment owners + 720
+    public (Globes 14.12.2022, Mako 24.9.2026); two private spaces per unit and a storage room (ICE 2022, listings). So the
+    level shown is the RESIDENTS' private parking (no sign, label or number says so or says anything else): underground,
+    artificial light, columns, marked bays, a lift vestibule with glass doors at tower C's round core, storage-room doors.
+  ILLUSTRATED (nothing of these rooms is published): the spa's place (beside the pool hall, opposite the gym, on the
+  same level -1, the gym's plan mirrored), its size (11 x 16 m, 3.4 m clear), plan, the reception, the loungers, the
+  planter, the three treatment-room doors, the sauna and every finish, fitting and light. The parking's level (-2; a search
+  snippet, source unidentified, says levels -1 and -2 are private), its floor 9.6 m below the street (3.6 m under level
+  -1's), its 3.1 m soffit, the column grid (8.1 m), the bays (2.5 x 5.0 m), the 6 m aisle, the vestibule, the storage
+  doors and every finish and light; the four parked cars are generic shapes (no make, no badge, no plate), no EV charger,
+  no sign, no number anywhere."""
 import math
 import os
 import random
@@ -69,11 +93,11 @@ SCENE = ARGS[1] if len(ARGS) > 1 else "lobby"
 WIDTH = int(ARGS[2]) if len(ARGS) > 2 else 4096
 SAMPLES = int(ARGS[3]) if len(ARGS) > 3 else 96
 THREADS = int(ARGS[4]) if len(ARGS) > 4 else 12
-if SCENE not in ("lobby", "pool", "gym"):
-    raise SystemExit("kikar_facility: scene must be lobby | pool | gym, not %r" % SCENE)
+if SCENE not in ("lobby", "pool", "gym", "spa", "parking"):
+    raise SystemExit("kikar_facility: scene must be lobby | pool | gym | spa | parking, not %r" % SCENE)
 TODN = os.environ.get("KF_TOD", "sunset")
 DEG = math.pi / 180.0
-rnd = random.Random({"lobby": 11, "pool": 22, "gym": 33}[SCENE])
+rnd = random.Random({"lobby": 11, "pool": 22, "gym": 33, "spa": 55, "parking": 44}[SCENE])
 
 KW.init(WIDTH, WIDTH // 2, SAMPLES, THREADS)
 KW.sky_params(TODN)
@@ -90,7 +114,8 @@ FWD, RIGHT = KW.dirv(FACE), KW.dirv(FACE + 90.0)
 RC = 5.2                                         # the round core's radius (kikar_interior.py; not published)
 FF = MOD["slab_t"] + 0.02                        # the lobby's finished floor: floor 1's slab top + the stone (0.47 m)
 BASE_Z = -6.0                                    # the basement level's floor (an illustration)
-Z0 = FF if SCENE == "lobby" else BASE_Z
+PARK_Z = -9.6                                    # the parking level -2's floor (an illustration: 3.6 m under level -1's)
+Z0 = FF if SCENE == "lobby" else (PARK_Z if SCENE == "parking" else BASE_Z)
 
 # the room's frame: X to the right of the facing, Y along the facing (bearing FACE), Z up from the room's floor
 FR = bpy.data.objects.new("ROOM", None)
@@ -1229,7 +1254,8 @@ def diagnostics():
         raise SystemExit(0)
     probe = os.environ.get("KF_PROBE")
     if probe:
-        dg = bpy.context.evaluated_depsgraph_get()
+        bpy.context.view_layer.update()             # the parented camera's and objects' world matrices (only the lobby's
+        dg = bpy.context.evaluated_depsgraph_get()  # build updates them itself); a diagnostic run only, never a render
         cw = CAM.matrix_world
         for item in probe.split(","):
             yw, pt = (math.radians(float(v)) for v in item.split(":"))
@@ -1246,6 +1272,7 @@ def diagnostics():
         raise SystemExit(0)
     locate = os.environ.get("KF_LOCATE")
     if locate:
+        bpy.context.view_layer.update()             # as KF_PROBE: fresh world matrices (a diagnostic run only)
         inv = CAM.matrix_world.inverted()
         for name in locate.split(","):
             ob = bpy.data.objects.get(name)
@@ -2222,12 +2249,821 @@ def build_gym():
            "place an illustration; room %.0f x %.0f m, %.1f m clear; no window" % (GX1 - GX0, GY1 - GY0, GCEIL), marks, doors)
 
 
+# ============================================================================================ shared by the spa and the parking
+def catmull(pts, k=6):
+    """a Catmull-Rom curve through 2D points, k points per span"""
+    out = []
+    Q = [pts[0]] + list(pts) + [pts[-1]]
+    for i in range(1, len(Q) - 2):
+        p0, p1, p2, p3 = Q[i - 1], Q[i], Q[i + 1], Q[i + 2]
+        for s in range(k):
+            t = s / k
+            t2, t3 = t * t, t * t * t
+            out.append(tuple(0.5 * (2 * p1[d] + (-p0[d] + p2[d]) * t + (2 * p0[d] - 5 * p1[d] + 4 * p2[d] - p3[d]) * t2
+                                    + (-p0[d] + 3 * p1[d] - 3 * p2[d] + p3[d]) * t3) for d in range(2)))
+    out.append(tuple(pts[-1]))
+    return out
+
+
+def prof_normal(prof, i):
+    """the left normal (up for a profile running +x) of a side profile at point i"""
+    (xa, za), (xb, zb) = prof[max(i - 1, 0)], prof[min(i + 1, len(prof) - 1)]
+    tl = math.hypot(xb - xa, zb - za) or 1.0
+    return -(zb - za) / tl, (xb - xa) / tl
+
+
+def sweep(name, prof, width, th, mat, cx, cy, rot, soft=0.03):
+    """a slab th thick swept along a side profile [(x, z)] (local x along rot, the slab grows along the profile's left
+    normal), width across; soft: a bevel and a subdivision for an upholstered or eased edge"""
+    P = Pr(cx, cy, rot)
+    V, F = [], []
+    n = len(prof)
+    for i, (x, z) in enumerate(prof):
+        nx, nz = prof_normal(prof, i)
+        for (dy, dt) in ((-width / 2, 0.0), (width / 2, 0.0), (width / 2, th), (-width / 2, th)):
+            wx, wy = P(x + nx * dt, dy)
+            V.append((wx, wy, z + nz * dt))
+    for i in range(n - 1):
+        a, c = 4 * i, 4 * (i + 1)
+        for k in range(4):
+            F.append((a + k, a + (k + 1) % 4, c + (k + 1) % 4, c + k))
+    F.append((0, 3, 2, 1))
+    F.append((4 * (n - 1), 4 * (n - 1) + 1, 4 * (n - 1) + 2, 4 * (n - 1) + 3))
+    ob = fix_normals(obj(name, V, F, mat))
+    if soft:
+        bv = ob.modifiers.new("bevel", "BEVEL")
+        bv.width = soft
+        bv.segments = 4
+        bv.limit_method = "ANGLE"
+        bv.angle_limit = 50 * DEG
+        bv.profile = 0.62
+        sb = ob.modifiers.new("sub", "SUBSURF")
+        sb.subdivision_type = "SIMPLE"
+        sb.levels = sb.render_levels = 2
+    for p in ob.data.polygons:
+        p.use_smooth = True
+    return ob
+
+
+def towel_cabinet(nm, x0, x1, yb, face=1):
+    """the pool's towel cabinet (oak, an open niche of rolled towels lit from above) against a wall at y = yb, facing +Y
+    (face 1) or -Y (face -1)"""
+    d = 0.55 * face
+    ya, yz = (yb, yb + d) if face > 0 else (yb + d, yb)
+    gbox(nm + "_low", x0, x1, ya, yz, 0.0, 1.0, "oak", bev=0.004)
+    gbox(nm + "_top", x0, x1, ya, yz, 1.8, 2.2, "oak", bev=0.004)
+    for xx in (x0, x1 - 0.15):
+        gbox(nm + "_side", xx, xx + 0.15, ya, yz, 1.0, 1.8, "oak", bev=0.003)
+    gbox(nm + "_back", x0 + 0.15, x1 - 0.15, yb, yb + 0.04 * face, 1.0, 1.8, "walnut")
+    n = int((x1 - x0 - 0.3) / 0.48)
+    for k in range(n):
+        xc = x0 + 0.15 + (x1 - x0 - 0.3) * (k + 0.5) / n
+        for r_ in range(2):
+            rod(nm + "_roll", (xc, yb + 0.06 * face, 1.095 + r_ * 0.18), (xc, yb + 0.50 * face, 1.095 + r_ * 0.18), 0.088,
+                "towel" if (k + r_) % 2 else "towel_grey", 20)
+    gbox(nm + "_led", x0 + 0.15, x1 - 0.15, yb + 0.44 * face, yb + 0.48 * face, 1.795, 1.8, "strip_led")
+    light(nm + "_l", "AREA", ((x0 + x1) / 2, yb + 0.42 * face, 1.78), 12.0, (1.0, 0.84, 0.66), x1 - x0 - 0.3, 0.04, aim=(0, 0, -1),
+          spread=140)
+
+
+# ============================================================================================ 4. the spa (basement)
+SCEIL = 3.4
+SX = -15.0                                       # the spa's middle (X): the pool hall's other side, the gym mirrored
+SX0, SX1, SY0, SY1 = SX - 5.5, SX + 5.5, 6.5, 22.5
+SAU_X0, SAU_X1, SAU_D, SAU_H = SX - 2.2, SX + 2.2, 2.5, 2.3     # the sauna, behind the far wall's glass
+TREAT_Y = (12.2, 15.6, 19.0)                     # the treatment rooms' doors on the left wall
+
+
+def plank(name, c0, c1, along="X", stack="Z", pitch=0.095, rough=0.55):
+    """a sauna's softwood panelling (an illustration): planks along one axis stacked along another, a tone per plank,
+    a fine grain, the tongue-and-groove joints"""
+    m, nt, b, out = _mat(name)
+    ob = b.n("ShaderNodeTexCoord").outputs["Object"]
+    x, y, z = b.sep(ob)
+    ax = {"X": x, "Y": y, "Z": z}
+    row = b.m("FLOOR", b.m("DIVIDE", ax[stack], pitch))
+    rw = b.white(b.combine(row, 0.0, 5.0))
+    sc = {k: (0.9 if k == along else 30.0) for k in "XYZ"}
+    vec = b.combine(b.m("ADD", b.m("MULTIPLY", x, sc["X"]), b.m("MULTIPLY", rw, 17.0)),
+                    b.m("ADD", b.m("MULTIPLY", y, sc["Y"]), b.m("MULTIPLY", rw, 11.0)), b.m("MULTIPLY", z, sc["Z"]))
+    nz = b.noise(vec, 1.0, 6.0, 0.6)
+    col = b.ramp(nz.outputs["Fac"], [(0.3, c0), (0.72, c1)])
+    col = b.mix(b.m("MULTIPLY", rw, 0.45), col, tuple(c * 0.84 for c in c0))
+    j = b.m("LESS_THAN", b.m("FRACT", b.m("DIVIDE", ax[stack], pitch)), 0.06)
+    col = b.mix(j, col, tuple(c * 0.42 for c in c0))
+    p = b.principled(Base_Color=col, Roughness=rough)
+    b.put(p.inputs["Specular IOR Level"], 0.35)
+    b.put(p.inputs["Normal"], b.bump(b.m("ADD", b.m("SUBTRACT", 1.0, j), b.m("MULTIPLY", nz.outputs["Fac"], 0.1)), 0.3, 0.01))
+    nt.links.new(p.outputs[0], out.inputs["Surface"])
+    return m
+
+
+def pebble_bed(name):
+    """a bed of pale river pebbles (an illustration): rounded cells in stone tones, dark gaps between them"""
+    if name in M:
+        return M[name]
+    m, nt, b, out = _mat(name)
+    ob = b.n("ShaderNodeTexCoord").outputs["Object"]
+    vo = b.n("ShaderNodeTexVoronoi", feature="F1")
+    b.put(vo.inputs["Vector"], ob)
+    vo.inputs["Scale"].default_value = 24.0
+    rr = b.sep(vo.outputs["Color"])[0]
+    col = b.ramp(rr, [(0.0, (0.40, 0.39, 0.37)), (0.45, (0.62, 0.60, 0.56)), (1.0, (0.80, 0.78, 0.74))])
+    gap = b.m("GREATER_THAN", vo.outputs["Distance"], 0.52)
+    col = b.mix(gap, col, (0.16, 0.15, 0.14))
+    p = b.principled(Base_Color=col, Roughness=0.55)
+    b.put(p.inputs["Normal"], b.bump(b.m("SUBTRACT", 1.0, vo.outputs["Distance"]), 0.8, 0.02))
+    nt.links.new(p.outputs[0], out.inputs["Surface"])
+    return m
+
+
+def relax_lounger(name, cx, cy, rot, cush="linen_sand", shell="walnut"):
+    """a spa relaxation lounger (an illustration): a walnut shell on a recessed plinth, an upholstered mattress along its
+    curve, a bolster at the head, a rolled towel at the foot; with rot 0 its head is toward +X"""
+    L = 1.95
+    base = catmull([(0.00, 0.40), (0.35, 0.37), (0.80, 0.33), (1.08, 0.36), (1.36, 0.51), (1.60, 0.72), (1.80, 0.92),
+                    (1.95, 1.03)], 6)
+    prof = [(x - L / 2, z) for (x, z) in base]
+    TH = 0.11
+    sweep(name + "_shell", [(x, z - 0.035) for (x, z) in prof], 0.74, 0.035, shell, cx, cy, rot, soft=0.008)
+    sweep(name + "_mat", prof, 0.70, TH, cush, cx, cy, rot, soft=0.04)
+    P = Pr(cx, cy, rot)
+    x, y = P(-0.17, 0)
+    box(name + "_plinth", x, y, 0.0, 0.80, 0.42, 0.30, shell, rot, bev=0.01)
+    # the bolster: on the mattress where the back rises
+    i = min(range(len(prof)), key=lambda k: abs(prof[k][0] - (L / 2 - 0.24)))
+    nx, nz = prof_normal(prof, i)
+    rb = 0.075
+    bx, bz = prof[i][0] + nx * (TH + rb - 0.01), prof[i][1] + nz * (TH + rb - 0.01)
+    p0, p1 = P(bx, -0.30), P(bx, 0.30)
+    rod(name + "_bolster", (p0[0], p0[1], bz), (p1[0], p1[1], bz), rb, "linen_cream", 24, bev=0.02)
+    # a rolled towel at the foot
+    i = min(range(len(prof)), key=lambda k: abs(prof[k][0] - (-L / 2 + 0.30)))
+    nx, nz = prof_normal(prof, i)
+    tx, tz = prof[i][0] + nx * (TH + 0.06), prof[i][1] + nz * (TH + 0.06)
+    p0, p1 = P(tx, -0.24), P(tx, 0.24)
+    rod(name + "_towel", (p0[0], p0[1], tz), (p1[0], p1[1], tz), 0.068, "towel", 20)
+
+
+def build_sauna():
+    """the sauna behind the far wall's glass (an illustration): softwood panelling, two tiers of slatted benches lit
+    from beneath, a backrest with a light behind it, a stove with its stones behind a slatted guard, a bucket"""
+    x0, x1, y0, y1, H = SAU_X0, SAU_X1, SY1, SY1 + SAU_D, SAU_H
+    gbox("sauna_floor", x0 - 0.1, x1 + 0.1, y0, y1, -0.05, 0.0, "spa_floor")
+    gbox("sauna_back", x0, x1, y1, y1 + 0.1, 0.0, H, "sauna_wall_x")
+    gbox("sauna_side_l", x0 - 0.1, x0, y0, y1 + 0.1, 0.0, H, "sauna_wall_y")
+    gbox("sauna_side_r", x1, x1 + 0.1, y0, y1 + 0.1, 0.0, H, "sauna_wall_y")
+    gbox("sauna_ceil", x0 - 0.1, x1 + 0.1, y0, y1 + 0.1, H, H + 0.08, "sauna_ceil")
+    UB0, LB0 = y1 - 0.62, y1 - 1.22
+
+    def slats(nm, ya, yb, z):
+        y = ya + 0.04
+        while y < yb - 0.02:
+            gbox(nm, x0 + 0.01, x1 - 0.01, y - 0.034, y + 0.034, z - 0.03, z, "sauna_bench", bev=0.004)
+            y += 0.085
+
+    slats("sauna_ub", UB0, y1, 0.95)
+    slats("sauna_lb", LB0, UB0, 0.47)
+    gbox("sauna_ub_skirt", x0, x1, UB0 + 0.07, UB0 + 0.10, 0.47, 0.92, "sauna_wall_x")
+    gbox("sauna_lb_skirt", x0, x1, LB0 + 0.07, LB0 + 0.10, 0.0, 0.44, "sauna_wall_x")
+    for (yy, zz, e) in ((UB0 + 0.05, 0.915, 16.0), (LB0 + 0.05, 0.435, 12.0)):
+        gbox("sauna_led", x0 + 0.05, x1 - 0.05, yy - 0.01, yy + 0.01, zz - 0.004, zz, "sauna_led")
+        light("sauna_bench_l", "AREA", ((x0 + x1) / 2, yy, zz - 0.01), e, (1.0, 0.62, 0.30), x1 - x0 - 0.2, 0.03, aim=(0, -0.25, -1),
+              spread=150)
+    for zz in (1.24, 1.42):
+        gbox("sauna_backrest", x0 + 0.15, x1 - 0.15, y1 - 0.05, y1, zz - 0.045, zz + 0.045, "sauna_bench", bev=0.006)
+    gbox("sauna_back_led", x0 + 0.2, x1 - 0.2, y1 - 0.02, y1 - 0.01, 1.47, 1.474, "sauna_led")
+    light("sauna_back_l", "AREA", ((x0 + x1) / 2, y1 - 0.06, 1.48), 9.0, (1.0, 0.62, 0.30), x1 - x0 - 0.4, 0.03, aim=(0, 0.35, 1),
+          spread=150)
+    # the stove (front left), its stones, a slatted guard
+    sx_, sy_ = x0 + 0.42, y0 + 0.55
+    box("sauna_stove", sx_, sy_, 0.08, 0.44, 0.40, 0.52, "blacksteel", bev=0.01)
+    for (dx, dy) in ((-0.2, -0.18), (0.2, -0.18), (0.2, 0.18), (-0.2, 0.18)):
+        box("sauna_stove_foot", sx_ + dx * 0.9, sy_ + dy * 0.9, 0.0, 0.04, 0.04, 0.08, "blacksteel")
+    rs = random.Random(5)
+    for k in range(46):
+        r = rs.uniform(0.035, 0.055)
+        sphere("sauna_stone", sx_ + rs.uniform(-0.17, 0.17), sy_ + rs.uniform(-0.15, 0.15), 0.60 + r * 0.7 + rs.uniform(0, 0.08),
+               r, "sauna_stone", 1.0, rs.uniform(0.8, 1.1), 0.72, 10)
+    for k in range(7):
+        xx = sx_ - 0.30 + k * 0.10
+        gbox("sauna_guard", xx - 0.025, xx + 0.025, sy_ - 0.32, sy_ - 0.30, 0.10, 0.92, "sauna_bench", bev=0.004)
+    for k in range(6):
+        yy = sy_ - 0.25 + k * 0.10
+        gbox("sauna_guard", sx_ + 0.30, sx_ + 0.32, yy - 0.025, yy + 0.025, 0.10, 0.92, "sauna_bench", bev=0.004)
+    # a bucket and a ladle on the lower bench
+    bx, by = x1 - 0.65, LB0 + 0.32
+    cyl("sauna_bucket", bx, by, 0.47, 0.68, 0.12, "sauna_bench", 32, r_top=0.135)
+    for zz in (0.51, 0.64):
+        cyl("sauna_bucket_band", bx, by, zz, zz + 0.012, 0.128 + (zz - 0.47) * 0.07, "steel", 32)
+    rod("sauna_ladle", (bx, by, 0.55), (bx + 0.18, by + 0.08, 0.92), 0.012, "sauna_bench", 8)
+    # the glass front: a fixed pane, a mullion, the door (its wooden handle), a fixed strip; bronze frame around
+    DXa, DXb = x1 - 0.95, x1 - 0.12
+    obj("spa_sauna_glass", [(x0 + 0.02, y0, 0.02), (DXa - 0.03, y0, 0.02), (DXa - 0.03, y0, H - 0.02), (x0 + 0.02, y0, H - 0.02)],
+        [(0, 1, 2, 3)], "sauna_glass")
+    obj("spa_sauna_door_glass", [(DXa + 0.01, y0 - 0.012, 0.02), (DXb - 0.01, y0 - 0.012, 0.02), (DXb - 0.01, y0 - 0.012, 2.08),
+                                  (DXa + 0.01, y0 - 0.012, 2.08)], [(0, 1, 2, 3)], "sauna_glass")
+    obj("spa_sauna_transom", [(DXa - 0.03, y0, 2.12), (x1 - 0.02, y0, 2.12), (x1 - 0.02, y0, H - 0.02), (DXa - 0.03, y0, H - 0.02)],
+        [(0, 1, 2, 3)], "sauna_glass")
+    obj("spa_sauna_strip", [(DXb + 0.01, y0, 0.02), (x1 - 0.02, y0, 0.02), (x1 - 0.02, y0, 2.08), (DXb + 0.01, y0, 2.08)],
+        [(0, 1, 2, 3)], "sauna_glass")
+    gbox("sauna_mull", DXa - 0.03, DXa, y0 - 0.02, y0 + 0.02, 0.0, H, "bronze")
+    gbox("sauna_mull", DXb, DXb + 0.012, y0 - 0.02, y0 + 0.02, 0.0, 2.10, "bronze")
+    gbox("sauna_door_head", DXa, x1, y0 - 0.02, y0 + 0.02, 2.08, 2.12, "bronze")
+    for k, (hx, hy) in enumerate(((DXb - 0.06, 0.35), (DXb - 0.06, 1.75))):
+        gbox("sauna_hinge", hx - 0.03, hx + 0.03, y0 - 0.03, y0 + 0.006, hy, hy + 0.11, "bronze", bev=0.004)
+    hx = DXa + 0.12
+    gbox("sauna_handle", hx - 0.02, hx + 0.02, y0 - 0.085, y0 - 0.045, 0.85, 1.55, "sauna_bench", bev=0.008)
+    for zz in (0.92, 1.48):
+        rod("sauna_handle_post", (hx, y0 - 0.05, zz), (hx, y0 - 0.012, zz), 0.008, "bronze", 8)
+    gbox("sauna_frame_t", x0 - 0.12, x1 + 0.12, y0 - 0.03, y0 + 0.02, H - 0.04, H + 0.10, "bronze")
+    for xx in (x0 - 0.12, x1):
+        gbox("sauna_frame_s", xx, xx + 0.12, y0 - 0.03, y0 + 0.02, 0.0, H + 0.10, "bronze")
+    gbox("sauna_sill", x0, x1, y0 - 0.03, y0 + 0.03, 0.0, 0.012, "bronze")
+
+
+def build_spa():
+    bpy.context.scene.world = _black_world()
+    deck = stone_tiles("spa_floor", (0.55, 0.51, 0.45), 1.2, 0.6, 0.003, 0.34, "XY", 0.7, 0.45, 0.62)    # the pool deck's
+    basalt = stone_tiles("basalt_wall", (0.17, 0.162, 0.152), 1.2, 2.4, 0.003, 0.36, "YZ", 0.6, 0.35, 0.4)
+    basalt_x = stone_tiles("basalt_far", (0.17, 0.162, 0.152), 1.2, 2.4, 0.003, 0.36, "XZ", 0.6, 0.35, 0.4)
+    plaster("spa_ceiling", (0.82, 0.81, 0.78))
+    travertine("desk_trav", (0.80, 0.73, 0.62), flute=("X", 0.045), rough=0.38)
+    travertine("travertine", (0.78, 0.71, 0.60))
+    onyx("onyx", (1.0, 0.70, 0.40), 2.0, "XZ")
+    emit("cove_led", (1.0, 0.80, 0.58), 16.0)
+    emit("strip_led", (1.0, 0.84, 0.66), 24.0)
+    emit("sauna_led", (1.0, 0.62, 0.30), 14.0)
+    glass_clear("door_glass")
+    glass_clear("sauna_glass", (0.91, 0.88, 0.83), 0.08)
+    pmat("opal", (0.95, 0.93, 0.90), 0.3, emission=((1.0, 0.82, 0.60), 5.0), subsurf=0.2)
+    pmat("sauna_stone", (0.21, 0.205, 0.20), 0.9, bump=0.6, bump_scale=30.0)
+    wood("walnut_door", (0.12, 0.07, 0.042), (0.23, 0.14, 0.08), 22.0, 0.36, along="Z", coat=0.15)
+    plank("sauna_wall_x", (0.56, 0.40, 0.25), (0.68, 0.51, 0.33), "X", "Z")
+    plank("sauna_wall_y", (0.56, 0.40, 0.25), (0.68, 0.51, 0.33), "Y", "Z")
+    plank("sauna_ceil", (0.52, 0.37, 0.23), (0.64, 0.48, 0.31), "X", "Y")
+    plank("sauna_bench", (0.60, 0.44, 0.28), (0.72, 0.55, 0.36), "X", "Y", 10.0, 0.6)     # separate slats: no joint lines
+    # the room: the floor, the ceiling, the walls
+    gbox("spa_floor", SX0, SX1, SY0, SY1, -0.05, 0.0, deck)
+    # the near wall: oak slats (the pool's and the gym's), over the entrance door they start at its head
+    DX0, DX1 = SX + 3.35, SX + 4.65
+    gbox("spa_wall_b_back", SX0, SX1, SY0 - 0.2, SY0 - 0.04, 0.0, SCEIL, "shadowgap")
+    x = SX0 + 0.06
+    while x < SX1 - 0.03:
+        z_from = 2.62 if DX0 - 0.1 < x < DX1 + 0.1 else 0.0
+        gbox("spa_slat_b", x - 0.026, x + 0.026, SY0 - 0.04, SY0 + 0.005, z_from, SCEIL, "oak_slat")
+        x += 0.11
+    obj("spa_entrance_glass", [(DX0 + 0.05, SY0 - 0.02, 0.02), (DX1 - 0.05, SY0 - 0.02, 0.02), (DX1 - 0.05, SY0 - 0.02, 2.5),
+                               (DX0 + 0.05, SY0 - 0.02, 2.5)], [(0, 1, 2, 3)], "door_glass")
+    gbox("spa_door_frame_l", DX0, DX0 + 0.05, SY0 - 0.05, SY0 + 0.01, 0.0, 2.55, "bronze")
+    gbox("spa_door_frame_r", DX1 - 0.05, DX1, SY0 - 0.05, SY0 + 0.01, 0.0, 2.55, "bronze")
+    gbox("spa_door_frame_t", DX0, DX1, SY0 - 0.05, SY0 + 0.01, 2.5, 2.62, "bronze")
+    rod("spa_door_pull", (DX0 + 0.2, SY0 + 0.07, 0.8), (DX0 + 0.2, SY0 + 0.07, 1.9), 0.015, "bronze", 12)
+    gbox("spa_corridor", DX0 - 0.4, DX1 + 0.4, SY0 - 2.5, SY0 - 0.2, 0.0, 0.01, deck)
+    # the left wall: oak slats, the three treatment rooms' doors (walnut, bronze frames and pulls)
+    gbox("spa_wall_l_back", SX0 - 0.2, SX0 - 0.04, SY0, SY1, 0.0, SCEIL, "shadowgap")
+    y = SY0 + 0.06
+    while y < SY1 - 0.03:
+        z_from = 2.62 if any(abs(y - ty) < 0.62 for ty in TREAT_Y) else 0.0
+        gbox("spa_slat_l", SX0 - 0.04, SX0 + 0.005, y - 0.026, y + 0.026, z_from, SCEIL, "oak_slat")
+        y += 0.11
+    for k, ty in enumerate(TREAT_Y):
+        gbox("spa_treat_door%d" % k, SX0 - 0.03, SX0 + 0.005, ty - 0.5, ty + 0.5, 0.0, 2.52, "walnut_door", bev=0.003)
+        gbox("spa_treat_back%d" % k, SX0 - 0.2, SX0 - 0.03, ty - 0.55, ty + 0.55, 0.0, 2.6, "shadowgap")
+        for yy in (ty - 0.55, ty + 0.51):
+            gbox("spa_treat_jamb", SX0 - 0.03, SX0 + 0.03, yy, yy + 0.04, 0.0, 2.6, "bronze")
+        gbox("spa_treat_head", SX0 - 0.03, SX0 + 0.03, ty - 0.55, ty + 0.55, 2.52, 2.62, "bronze")
+        rod("spa_treat_pull%d" % k, (SX0 + 0.07, ty + 0.34, 0.85), (SX0 + 0.07, ty + 0.34, 1.75), 0.014, "bronze", 12)
+        for zz in (0.95, 1.65):
+            rod("spa_treat_post", (SX0 + 0.005, ty + 0.34, zz), (SX0 + 0.07, ty + 0.34, zz), 0.007, "bronze", 8)
+    # the right wall: basalt (the pool's), grazed from above
+    gbox("spa_wall_r", SX1, SX1 + 0.2, SY0, SY1, 0.0, SCEIL, basalt)
+    # the far wall: basalt around the sauna's glass front
+    gbox("spa_wall_f_l", SX0, SAU_X0 - 0.1, SY1, SY1 + 0.2, 0.0, SCEIL, basalt_x)
+    gbox("spa_wall_f_r", SAU_X1 + 0.1, SX1, SY1, SY1 + 0.2, 0.0, SCEIL, basalt_x)
+    gbox("spa_wall_f_t", SAU_X0 - 0.1, SAU_X1 + 0.1, SY1, SY1 + 0.2, SAU_H + 0.08, SCEIL, basalt_x)
+    build_sauna()
+    # the reception (near left): a backlit onyx panel in bronze on the slats, a fluted travertine counter, a walnut ledge
+    OX0, OX1 = SX0 + 1.0, SX0 + 4.6
+    gbox("spa_onyx", OX0, OX1, SY0 + 0.04, SY0 + 0.07, 0.45, 2.95, "onyx")
+    gbox("spa_onyx_frame_b", OX0 - 0.05, OX1 + 0.05, SY0 + 0.0, SY0 + 0.09, 0.40, 0.45, "bronze")
+    gbox("spa_onyx_frame_t", OX0 - 0.05, OX1 + 0.05, SY0 + 0.0, SY0 + 0.09, 2.95, 3.00, "bronze")
+    for xx in (OX0 - 0.05, OX1):
+        gbox("spa_onyx_frame_s", xx, xx + 0.05, SY0 + 0.0, SY0 + 0.09, 0.40, 3.00, "bronze")
+    CX0, CX1, CY0, CY1 = OX0 + 0.2, OX1 - 0.2, SY0 + 1.75, SY0 + 2.45
+    gbox("spa_counter", CX0, CX1, CY0, CY1 - 0.06, 0.08, 1.05, "desk_trav", bev=0.004)
+    gbox("spa_counter_plinth", CX0 + 0.06, CX1 - 0.06, CY0 + 0.06, CY1 - 0.12, 0.0, 0.08, "shadowgap")
+    gbox("spa_counter_ledge", CX0 - 0.04, CX1 + 0.04, CY0 - 0.06, CY1, 1.05, 1.10, "walnut", bev=0.006)
+    gbox("spa_counter_brass", CX0, CX1, CY1 - 0.066, CY1 - 0.06, 0.08, 0.10, "brass")
+    gbox("spa_counter_work", CX0 + 0.05, CX1 - 0.05, CY0 - 0.40, CY0, 0.74, 0.78, "walnut", bev=0.005)
+    branches_vase("spa_vase", CX0 + 0.45, CY0 + 0.32, 1.10, 0.30, 0.07, "ceramic_white", 5, 0.25)
+    cyl("spa_bowl", CX1 - 0.6, CY0 + 0.30, 1.10, 1.17, 0.15, "ceramic_clay", 40, r_top=0.18)
+    for k in range(3):
+        rod("spa_desk_towel", (CX1 - 1.25 + k * 0.17, CY0 + 0.12, 1.155), (CX1 - 1.25 + k * 0.17, CY0 + 0.46, 1.155), 0.05, "towel", 16)
+    for k, xx in enumerate((CX0 + 0.8, CX1 - 0.8)):
+        sphere("spa_pendant%d" % k, xx, (CY0 + CY1) / 2, 2.35, 0.15, "opal")
+        cyl("spa_pendant_cord", xx, (CY0 + CY1) / 2, 2.50, SCEIL, 0.004, "brass", 6)
+        cyl("spa_pendant_canopy", xx, (CY0 + CY1) / 2, SCEIL - 0.02, SCEIL, 0.06, "brass", 24)
+        light("spa_pendant_l%d" % k, "POINT", (xx, (CY0 + CY1) / 2, 2.30), 9.0, (1.0, 0.80, 0.58), 0.1)
+    # the towel cabinet beside the entrance
+    towel_cabinet("spa_towels", SX + 0.4, SX + 2.95, SY0, 1)
+    # the relaxation loungers before the basalt wall (heads to the wall), side tables between them
+    LYS = (12.0, 14.25, 16.5, 18.75)
+    for k, ly in enumerate(LYS):
+        relax_lounger("spa_lounger%d" % k, SX1 - 1.55, ly, 0.0, "linen_sand" if k % 2 == 0 else "boucle")
+    for k, ty in enumerate(((LYS[0] + LYS[1]) / 2, (LYS[2] + LYS[3]) / 2)):
+        cyl("spa_side%d" % k, SX1 - 0.75, ty, 0.0, 0.46, 0.21, "travertine", 48, bev=0.01)
+        if k == 0:
+            cyl("spa_carafe", SX1 - 0.80, ty - 0.05, 0.46, 0.70, 0.048, "door_glass", 24)
+            cyl("spa_glass", SX1 - 0.68, ty + 0.08, 0.46, 0.56, 0.032, "door_glass", 20)
+        else:
+            box("spa_folded", SX1 - 0.75, ty, 0.46, 0.26, 0.20, 0.05, "towel", 8.0, bev=0.015)
+            cyl("spa_cup", SX1 - 0.70, ty + 0.05, 0.51, 0.58, 0.04, "ceramic_white", 24)
+    # the planter down the middle: travertine, pale pebbles, two olive trees
+    QX0, QX1, QY0, QY1 = SX - 2.2, SX - 0.9, 11.6, 19.2
+    for nm, a in (("l", (QX0, QX0 + 0.07, QY0, QY1)), ("r", (QX1 - 0.07, QX1, QY0, QY1)), ("n", (QX0 + 0.07, QX1 - 0.07, QY0, QY0 + 0.07)),
+                  ("f", (QX0 + 0.07, QX1 - 0.07, QY1 - 0.07, QY1))):
+        gbox("spa_planter_" + nm, a[0], a[1], a[2], a[3], 0.0, 0.42, "travertine", bev=0.006)
+    gbox("spa_planter_bed", QX0 + 0.07, QX1 - 0.07, QY0 + 0.07, QY1 - 0.07, 0.0, 0.355, pebble_bed("pebble_bed"))
+    pmat("pebble", (0.70, 0.68, 0.64), 0.55, bump=0.2, bump_scale=60.0)
+    pmat("pebble_d", (0.46, 0.45, 0.43), 0.55, bump=0.2, bump_scale=60.0)
+    rp = random.Random(41)
+    for k in range(140):
+        r = rp.uniform(0.03, 0.055)
+        sphere("spa_pebble", rp.uniform(QX0 + 0.09, QX1 - 0.09), rp.uniform(QY0 + 0.09, QY1 - 0.09), 0.355 + r * 0.32, r,
+               "pebble" if rp.random() < 0.7 else "pebble_d", 1.0, rp.uniform(0.7, 1.0), 0.5, 10)
+    olive_tree("spa_olive_a", (QX0 + QX1) / 2, 13.4, 2.6, seed=43, pot_r=0.28, pot_h=0.35, leaves=15000, pot_mat="pebble_bed")
+    olive_tree("spa_olive_b", (QX0 + QX1) / 2, 17.4, 2.4, seed=47, pot_r=0.28, pot_h=0.35, leaves=14000, pot_mat="pebble_bed")
+    # a wool runner along the treatment rooms' doors
+    RX0, RX1, RY0, RY1 = SX0 + 0.45, SX0 + 1.75, 10.6, 20.6
+    box("spa_runner", (RX0 + RX1) / 2, (RY0 + RY1) / 2, 0.0, RX1 - RX0, RY1 - RY0, 0.012,
+        rug("spa_runner", (0.30, 0.26, 0.22), (RX0 + RX1) / 2, (RY0 + RY1) / 2, (RX1 - RX0) / 2, (RY1 - RY0) / 2), 0, bev=0.004)
+    # two tall ceramic vessels flanking the sauna
+    for k, xx in enumerate((SAU_X0 - 1.1, SAU_X1 + 1.1)):
+        cyl("spa_vessel%d" % k, xx, SY1 - 0.55, 0.0, 0.95, 0.24, "ceramic_clay", 48, bev=0.02, r_top=0.15)
+    # the ceiling: plaster, a raised coffer over the lounge with a hidden cove (the pool's), a wash slot along the doors
+    KX0, KX1, KY0, KY1 = SX - 3.4, SX + 3.0, 10.8, 20.4
+    CC = SCEIL + 0.35
+    for nm, a in (("l", (SX0, KX0, SY0, SY1)), ("r", (KX1, SX1, SY0, SY1)), ("n", (KX0, KX1, SY0, KY0)), ("f", (KX0, KX1, KY1, SY1))):
+        gbox("spa_ceil_" + nm, a[0], a[1], a[2], a[3], SCEIL, SCEIL + 0.05, "spa_ceiling")
+    gbox("spa_coffer", KX0, KX1, KY0, KY1, CC, CC + 0.05, "spa_ceiling")
+    for nm, a in (("l", (KX0 - 0.03, KX0, KY0, KY1)), ("r", (KX1, KX1 + 0.03, KY0, KY1)), ("n", (KX0, KX1, KY0 - 0.03, KY0)),
+                  ("f", (KX0, KX1, KY1, KY1 + 0.03))):
+        gbox("spa_coffer_side_" + nm, a[0], a[1], a[2], a[3], SCEIL, CC, "spa_ceiling")
+    for nm, a in (("l", (KX0, KX0 + 0.13, KY0, KY1)), ("r", (KX1 - 0.13, KX1, KY0, KY1)), ("n", (KX0, KX1, KY0, KY0 + 0.13)),
+                  ("f", (KX0, KX1, KY1 - 0.13, KY1))):
+        gbox("spa_coffer_ledge_" + nm, a[0], a[1], a[2], a[3], SCEIL + 0.10, SCEIL + 0.13, "spa_ceiling")
+    for nm, a in (("l", (KX0 + 0.08, KX0 + 0.11, KY0 + 0.1, KY1 - 0.1)), ("r", (KX1 - 0.11, KX1 - 0.08, KY0 + 0.1, KY1 - 0.1)),
+                  ("n", (KX0 + 0.1, KX1 - 0.1, KY0 + 0.08, KY0 + 0.11)), ("f", (KX0 + 0.1, KX1 - 0.1, KY1 - 0.11, KY1 - 0.08))):
+        gbox("spa_coffer_led_" + nm, a[0], a[1], a[2], a[3], SCEIL + 0.13, SCEIL + 0.132, "cove_led")
+    for k, (x, y, w, h) in enumerate(((KX0 + 0.095, (KY0 + KY1) / 2, 0.05, KY1 - KY0 - 0.4), (KX1 - 0.095, (KY0 + KY1) / 2, 0.05, KY1 - KY0 - 0.4),
+                                      ((KX0 + KX1) / 2, KY0 + 0.095, KX1 - KX0 - 0.4, 0.05), ((KX0 + KX1) / 2, KY1 - 0.095, KX1 - KX0 - 0.4, 0.05))):
+        light("spa_cove%d" % k, "AREA", (x, y, SCEIL + 0.15), 75.0 if h > w else 52.0, (1.0, 0.82, 0.62), w, h, aim=(0, 0, 1), spread=150)
+    xl = SX0 + 0.28
+    gbox("spa_wash_slot", xl - 0.10, xl + 0.10, SY0 + 1.0, SY1 - 1.0, SCEIL - 0.004, SCEIL, "shadowgap")
+    gbox("spa_wash_led", xl - 0.03, xl + 0.03, SY0 + 1.05, SY1 - 1.05, SCEIL - 0.006, SCEIL - 0.004, "strip_led")
+    light("spa_wash", "AREA", (xl, (SY0 + SY1) / 2, SCEIL - 0.02), 190.0, (1.0, 0.84, 0.66), 0.06, SY1 - SY0 - 2.1, aim=(0, 0, -1), spread=110)
+    for k in range(6):
+        y = SY0 + 3.3 + k * 2.1
+        light("spa_graze%d" % k, "SPOT", (SX1 - 0.35, y, SCEIL - 0.08), 70.0, (1.0, 0.82, 0.62), 0.02, aim=(0.38, 0, -1), spot=36.0, blend=0.4)
+        cyl("spa_graze_rim%d" % k, SX1 - 0.35, y, SCEIL - 0.006, SCEIL - 0.001, 0.05, "downlight_rim", 20)
+        cyl("spa_graze_em%d" % k, SX1 - 0.35, y, SCEIL - 0.007, SCEIL - 0.006, 0.035, "downlight_emit", 16)
+    for k, x in enumerate((SAU_X0 - 1.6, SAU_X0 - 0.6, SAU_X1 + 0.6, SAU_X1 + 1.6)):
+        light("spa_fgraze%d" % k, "SPOT", (x, SY1 - 0.35, SCEIL - 0.08), 55.0, (1.0, 0.82, 0.62), 0.02, aim=(0, 0.38, -1), spot=36.0, blend=0.4)
+        cyl("spa_fgraze_rim%d" % k, x, SY1 - 0.35, SCEIL - 0.006, SCEIL - 0.001, 0.05, "downlight_rim", 20)
+        cyl("spa_fgraze_em%d" % k, x, SY1 - 0.35, SCEIL - 0.007, SCEIL - 0.006, 0.035, "downlight_emit", 16)
+    for k, (x, y) in enumerate(((SX + 1.7, SY0 + 1.6), (SX + 4.0, SY0 + 1.6), (SX - 0.5, SY0 + 2.6), (SX - 2.0, SY1 - 1.2),
+                                (SX + 2.0, SY1 - 1.2))):
+        downlight("spa_dl%d" % k, x, y, SCEIL, 26.0, 60.0)
+    camera(SX, SY0 + 4.0, 1.6)
+    marks = [("the sauna's glass front (its middle)", (SX, SY1, 1.2)), ("the loungers (their middle)", (SX1 - 1.55, 15.4, 0.6)),
+             ("the planter's olives (its middle)", ((QX0 + QX1) / 2, 15.4, 1.5)),
+             ("the reception counter", ((CX0 + CX1) / 2, (CY0 + CY1) / 2, 1.05)), ("the backlit onyx", ((OX0 + OX1) / 2, SY0, 1.7))]
+    doors = [("spa_entrance", ((DX0 + DX1) / 2, SY0, 1.3))]
+    for k, ty in enumerate(TREAT_Y):
+        doors.append(("spa_treatment_room_%d" % (k + 1), (SX0, ty, 1.3)))
+    doors.append(("spa_sauna_door", ((SAU_X1 - 0.95 + SAU_X1 - 0.12) / 2, SY1, 1.2)))
+    report("spa: the residents' spa and treatment rooms on a basement level (the builder: 'on one of the basement levels'), "
+           "level -1 beside the pool hall and its place an illustration; room %.0f x %.0f m, %.1f m clear; sauna %.1f x %.1f m; "
+           "no window" % (SX1 - SX0, SY1 - SY0, SCEIL, SAU_X1 - SAU_X0, SAU_D), marks, doors)
+
+
+# ============================================================================================ 5. the parking (basement level -2)
+PCL = 3.1                                        # the slab's soffit, room-local
+XA0, XA1 = 7.6, 13.6                             # the drive aisle (6 m), along the facing
+XB0, XB1 = 2.6, 18.6                             # the bays' back walls (5 m bays on each side)
+PY_END, PY_FAR = -8.0, 58.5                      # the end wall behind the eye, the far wall
+VX, VY, VCEIL = 7.4, 3.3, 2.7                    # the lift vestibule: its glass front, half width, ceiling
+COLS_Y = [-7.2 + 8.1 * k for k in range(9)]      # the column lines: 8.1 m, three 2.5 m bays between
+EYE_PK = (10.6, 3.6, 1.6)                       # in the aisle, past the crossing
+
+
+def epoxy(name, color, rough=0.26, joint=6.0):
+    """a car park's epoxy-coated slab: a soft mottle, tyre-worn patches in the gloss, the slab's saw-cut joints every 6 m"""
+    m, nt, b, out = _mat(name)
+    ob = b.n("ShaderNodeTexCoord").outputs["Object"]
+    x, y, z = b.sep(ob)
+    n1 = b.noise(ob, 0.25, 5.0, 0.6)
+    n2 = b.noise(ob, 2.5, 4.0, 0.6)
+    n3 = b.noise(ob, 40.0, 3.0, 0.6)
+    col = b.mix(b.m("MULTIPLY", n1.outputs["Fac"], 0.9), tuple(c * 0.90 for c in color), tuple(min(1, c * 1.07) for c in color))
+    col = b.mix(b.m("MULTIPLY", n2.outputs["Fac"], 0.25), col, tuple(c * 0.92 for c in color))
+    j = b.m("MAXIMUM", b.m("LESS_THAN", b.m("FRACT", b.m("DIVIDE", x, joint)), 0.006 / joint),
+            b.m("LESS_THAN", b.m("FRACT", b.m("DIVIDE", y, joint)), 0.006 / joint))
+    col = b.mix(b.m("MULTIPLY", j, 0.8), col, tuple(c * 0.45 for c in color))
+    p = b.principled(Base_Color=col, Roughness=b.m("ADD", rough, b.m("MULTIPLY", n2.outputs["Fac"], 0.18)))
+    b.put(p.inputs["Coat Weight"], 0.35)
+    b.put(p.inputs["Coat Roughness"], b.m("ADD", 0.06, b.m("MULTIPLY", n1.outputs["Fac"], 0.12)))
+    b.put(p.inputs["Normal"], b.bump(b.m("ADD", b.m("SUBTRACT", 1.0, j), b.m("MULTIPLY", n3.outputs["Fac"], 0.15)), 0.2, 0.01))
+    nt.links.new(p.outputs[0], out.inputs["Surface"])
+    return m
+
+
+def banded(name, top, band, band_h=1.05, rough=0.8, line=(0.40, 0.29, 0.18)):
+    """a painted wall or column: a warm white above, a charcoal band below, a thin bronze-tone line between"""
+    m, nt, b, out = _mat(name)
+    ob = b.n("ShaderNodeTexCoord").outputs["Object"]
+    x, y, z = b.sep(ob)
+    nz = b.noise(ob, 1.5, 5.0, 0.6)
+    col = b.mix(b.m("MULTIPLY", nz.outputs["Fac"], 0.10), top, tuple(c * 0.94 for c in top))
+    lo = b.m("LESS_THAN", z, band_h)
+    ln = b.m("MULTIPLY", b.m("GREATER_THAN", z, band_h), b.m("LESS_THAN", z, band_h + 0.03))
+    col = b.mix(lo, col, band)
+    col = b.mix(ln, col, line)
+    p = b.principled(Base_Color=col, Roughness=b.mixf(lo, rough, 0.45))
+    b.put(p.inputs["Specular IOR Level"], 0.35)
+    fine = b.noise(ob, 90.0, 3.0, 0.6)
+    b.put(p.inputs["Normal"], b.bump(fine.outputs["Fac"], 0.012, 0.1))
+    nt.links.new(p.outputs[0], out.inputs["Surface"])
+    return m
+
+
+def hatch_mat(name, color, pitch=0.7, frac=0.32):
+    """painted diagonal hatching (a no-parking area): paint stripes, the floor showing between them"""
+    m, nt, b, out = _mat(name)
+    ob = b.n("ShaderNodeTexCoord").outputs["Object"]
+    x, y, z = b.sep(ob)
+    s = b.m("LESS_THAN", b.m("FRACT", b.m("DIVIDE", b.m("ADD", x, y), pitch)), frac)
+    p = b.principled(Base_Color=color, Roughness=0.5)
+    tr = b.n("ShaderNodeBsdfTransparent", {"Color": (1, 1, 1)})
+    nt.links.new(b.mixs(s, tr.outputs[0], p.outputs[0]), out.inputs["Surface"])
+    return m
+
+
+def car(name, cx, cy, rot, paint, kind="sedan"):
+    """a generic parked car, no make (an illustration): a body lofted from 16-point sections along its length (its plan's
+    rounded corners, the wheel arches cut into its underside, a glasshouse over the belt line), dark glass, black trim,
+    lamp lenses (off), four wheels; no badge, no plate, no lettering. With rot 0 its nose points +X"""
+    P = Pr(cx, cy, rot)
+    if kind == "suv":
+        L, Wd, R, FO, WB = 4.70, 1.90, 0.37, 0.92, 2.80
+        prof = [(0.0, 0.92), (0.03, 1.06), (0.07, 1.14), (0.10, 1.50), (0.16, 1.66), (0.60, 1.68), (0.71, 1.40), (0.79, 1.16),
+                (0.90, 1.08), (0.97, 0.99), (1.0, 0.84)]
+        belt_r, belt_f, zb0, b_pillar = 1.13, 1.08, 0.25, (0.45, 0.48)
+    else:
+        L, Wd, R, FO, WB = 4.80, 1.84, 0.33, 0.95, 2.85
+        prof = [(0.0, 0.80), (0.03, 0.94), (0.10, 1.01), (0.21, 1.03), (0.30, 1.24), (0.39, 1.42), (0.60, 1.44), (0.70, 1.20),
+                (0.78, 1.00), (0.92, 0.92), (0.98, 0.84), (1.0, 0.70)]
+        belt_r, belt_f, zb0, b_pillar = 1.01, 0.96, 0.20, (0.485, 0.51)
+
+    def top(t):
+        for (t0, z0_), (t1, z1) in zip(prof, prof[1:]):
+            if t <= t1:
+                return z0_ + (z1 - z0_) * (t - t0) / (t1 - t0)
+        return prof[-1][1]
+
+    axles = (L / 2 - FO, L / 2 - FO - WB)
+
+    def bottom(x, t):
+        zb = zb0 + 0.10 * max(0.0, abs(2 * t - 1) - 0.82) / 0.18
+        for xw in axles:
+            d, ra = abs(x - xw), R + 0.07
+            if d < ra:
+                zb = max(zb, R + math.sqrt(ra * ra - d * d))
+        return zb
+
+    CR = 0.50
+
+    def half_w(x):
+        d = L / 2 - abs(x)
+        return Wd / 2 if d >= CR else Wd / 2 - CR + math.sqrt(max(0.0, CR * CR - (CR - d) ** 2))
+
+    def gl(t):
+        return max(0.0, min(1.0, (top(t) - (belt_r + (belt_f - belt_r) * t)) / 0.22))
+
+    NS = 84
+    ts = [0.5 - 0.5 * math.cos(math.pi * i / (NS - 1)) for i in range(NS)]
+    V, F, MI = [], [], []
+    for t in ts:
+        x = -L / 2 + t * L
+        w = half_w(x)
+        zt = top(t)
+        zbl = min(belt_r + (belt_f - belt_r) * t, zt)
+        g = gl(t)
+        zb = bottom(x, t)
+        lp = lambda a, c: a + (c - a) * g
+        half = [(0.0, zb), (0.80 * w, zb), (0.97 * w, zb + 0.07), (w, (zb + 0.07 + zbl - 0.10) / 2), (w, zbl - 0.10), (0.975 * w, zbl),
+                (lp(0.93 * w, 0.80 * w), lp(zbl + 0.012, zbl + 0.85 * (zt - zbl))), (lp(0.62 * w, 0.68 * w), lp(zbl + 0.03, zt)),
+                (0.0, lp(zbl + 0.04, zt + 0.012))]
+        for (yy, zz) in half + [(-yy, zz) for (yy, zz) in half[-2:0:-1]]:
+            px, py = P(x, yy)
+            V.append((px, py, zz))
+    for i in range(NS - 1):
+        tm = (ts[i] + ts[i + 1]) / 2
+        gm = gl(tm)
+        steep = abs(top(ts[i + 1]) - top(ts[i])) / max(1e-6, (ts[i + 1] - ts[i]) * L) > 0.45
+        for j in range(16):
+            a, c = i * 16 + j, (i + 1) * 16 + j
+            F.append((a, i * 16 + (j + 1) % 16, (i + 1) * 16 + (j + 1) % 16, c))
+            e = j if j < 8 else 15 - j
+            mi = 0
+            if e in (0, 1):
+                mi = 2
+            elif e in (5, 6) and gm > 0.55:
+                mi = 2 if b_pillar[0] < tm < b_pillar[1] else 1
+            elif e == 7 and gm > 0.55 and steep:
+                mi = 1
+            elif e == 2 and tm > 0.975:
+                mi = 2
+            elif e in (3, 4) and tm > 0.955:
+                mi = 3
+            elif e == 4 and tm < 0.035:
+                mi = 4
+            MI.append(mi)
+    F.append(tuple(range(16))[::-1])
+    MI.append(0)
+    F.append(tuple((NS - 1) * 16 + k for k in range(16)))
+    MI.append(0)
+    me = bpy.data.meshes.new(name)
+    me.from_pydata(V, [], F)
+    me.update()
+    for mt in (paint, "car_glass", "car_trim", "car_head", "car_tail"):
+        me.materials.append(M[mt])
+    me.polygons.foreach_set("material_index", MI)
+    crease = {2: 0.55, 14: 0.55, 5: 0.8, 11: 0.8, 7: 0.6, 9: 0.6}
+    ca = me.attributes.new("crease_edge", "FLOAT", "EDGE")
+    vals = []
+    for ed in me.edges:
+        v0, v1 = ed.vertices
+        same = v0 % 16 == v1 % 16 and abs(v0 // 16 - v1 // 16) == 1
+        vals.append(crease.get(v0 % 16, 0.0) if same else 0.0)
+    ca.data.foreach_set("value", vals)
+    ob = bpy.data.objects.new(name, me)
+    KW.link(ob)
+    own(ob)
+    fix_normals(ob)
+    sb = ob.modifiers.new("sub", "SUBSURF")
+    sb.levels = sb.render_levels = 2
+    for p in me.polygons:
+        p.use_smooth = True
+    # the side mirrors
+    tmir = 0.70 if kind != "suv" else 0.72
+    xm = -L / 2 + tmir * L
+    for s in (-1, 1):
+        mx, my = P(xm, s * (half_w(xm) + 0.07))
+        box(name + "_mirror", mx, my, belt_r + (belt_f - belt_r) * tmir + 0.05, 0.20, 0.14, 0.12, paint, rot, bev=0.03)
+    # the wheels: a tyre, a dark disc, a rim lip, five spokes, a hub
+    for xw in axles:
+        for s in (-1, 1):
+            yo, yi = s * (Wd / 2 - 0.035), s * (Wd / 2 - 0.27)
+            q = lambda lx, ly, lz: (P(lx, ly)[0], P(lx, ly)[1], lz)
+            rod(name + "_tyre", q(xw, yi, R), q(xw, yo, R), R, "rubber_black", 40, bev=0.05)
+            rod(name + "_disc", q(xw, yo - s * 0.01, R), q(xw, yo + s * 0.004, R), R * 0.66, "car_trim", 36)
+            ring = [q(xw + R * 0.63 * math.cos(2 * math.pi * k / 36), yo + s * 0.006, R + R * 0.63 * math.sin(2 * math.pi * k / 36)) for k in range(37)]
+            tube(name + "_lip", ring, 0.02, "car_rim", 8)
+            for k in range(5):
+                an = 2 * math.pi * k / 5 + 0.3
+                rod(name + "_spoke", q(xw + 0.05 * math.cos(an), yo + s * 0.008, R + 0.05 * math.sin(an)),
+                    q(xw + R * 0.61 * math.cos(an), yo + s * 0.008, R + R * 0.61 * math.sin(an)), 0.026, "car_rim", 10)
+            rod(name + "_hub", q(xw, yo, R), q(xw, yo + s * 0.016, R), 0.065, "car_rim", 20)
+    return ob
+
+
+def park_core():
+    """the round slip-formed core (published) at level -2: fair-faced concrete from the slab to the soffit, two lift
+    portals in bronze (the lobby's) on its face toward the aisle, inside the vestibule"""
+    T_, DH = 0.35, 2.35
+    ops = (76.0, 104.0)
+    ha = math.degrees(0.70 / RC)
+    edges = [e for a in ops for e in (a - ha, a + ha)]
+    for i, (a0, a1) in enumerate(((edges[1], edges[2]), (edges[3], 360.0 + edges[0]))):
+        sector("pcore_low%d" % i, a0, a1, RC - T_, RC, -0.05, DH, "core_concrete")
+    ring_prism("pcore_high", circle(RC, 180), circle(RC - T_, 180), DH, PCL + 0.05, "core_concrete")
+    lifts = []
+    for i, a in enumerate(ops):
+        n_ = Vector((math.sin(a * DEG), math.cos(a * DEG), 0))
+        t_ = Vector((math.cos(a * DEG), -math.sin(a * DEG), 0))
+        rot = math.degrees(math.atan2(t_.y, t_.x))
+        c = n_ * (RC - 0.29)
+        for s in (-1, 1):
+            p = c + t_ * (s * 0.275)
+            box("park_lift%d_leaf%d" % (i + 1, s), p.x, p.y, 0.0, 0.545, 0.03, 2.12, "bronze", rot, bev=0.003)
+        p = c - n_ * 0.03
+        box("park_lift%d_back" % (i + 1), p.x, p.y, 0.0, 1.40, 0.02, DH, "shadowgap", rot)
+        for s in (-1, 1):
+            p = n_ * (RC - 0.15) + t_ * (s * 0.69)
+            box("park_lift%d_jamb" % (i + 1), p.x, p.y, 0.0, 0.02, 0.30, DH, "bronze", rot)
+        p = n_ * (RC - 0.15)
+        box("park_lift%d_head" % (i + 1), p.x, p.y, 2.12, 1.40, 0.30, DH - 2.12, "bronze", rot)
+        lifts.append((c.x, c.y, 1.2))
+    box("park_lift_call", RC + 0.006, 0.0, 1.02, 0.012, 0.075, 0.22, "steel", 0.0, bev=0.003)
+    return lifts
+
+
+def storage_door(nm, cx, cy, rot):
+    """a storage room's door (an illustration): a painted steel leaf in a frame, a lever, a louvred vent; no number"""
+    P = Pr(cx, cy, rot)
+    x, y = P(0, 0.0)
+    box(nm, x, y, 0.0, 0.95, 0.05, 2.12, "store_door", rot, bev=0.004)
+    for s in (-1, 1):
+        x, y = P(s * 0.51, 0.0)
+        box(nm + "_jamb", x, y, 0.0, 0.07, 0.07, 2.19, "store_frame", rot, bev=0.004)
+    x, y = P(0, 0.0)
+    box(nm + "_head", x, y, 2.12, 1.09, 0.07, 0.07, "store_frame", rot, bev=0.004)
+    x, y = P(0, 0.03)
+    box(nm + "_vent", x, y, 0.14, 0.50, 0.012, 0.26, "car_trim", rot)
+    for k in range(6):
+        box(nm + "_louvre", x, y + 0.0, 0.16 + k * 0.04, 0.48, 0.02, 0.012, "store_door", rot)
+    a, b_ = P(0.34, 0.04), P(0.34, 0.075)
+    rod(nm + "_lever_post", (a[0], a[1], 1.02), (b_[0], b_[1], 1.02), 0.012, "steel", 10)
+    a, b_ = P(0.34, 0.075), P(0.20, 0.075)
+    rod(nm + "_lever", (a[0], a[1], 1.02), (b_[0], b_[1], 1.02), 0.011, "steel", 10)
+    x, y = P(0.34, 0.03)
+    box(nm + "_rose", x, y, 0.95, 0.05, 0.012, 0.16, "steel", rot, bev=0.002)
+
+
+def build_parking():
+    bpy.context.scene.world = _black_world()
+    epoxy("park_floor", (0.30, 0.295, 0.283), 0.20)
+    pmat("paint_line", (0.80, 0.79, 0.75), 0.5, spec=0.4)
+    hatch_mat("paint_hatch", (0.80, 0.79, 0.75))
+    banded("park_wall", (0.80, 0.785, 0.75), (0.075, 0.075, 0.08), 1.05)
+    banded("park_col", (0.82, 0.81, 0.78), (0.075, 0.075, 0.08), 1.05)
+    plaster("park_soffit", (0.74, 0.735, 0.71), 0.92)
+    plaster("vest_wall", (0.80, 0.78, 0.74))
+    pmat("store_door", (0.20, 0.19, 0.18), 0.42, spec=0.5, coat=0.15)
+    pmat("store_frame", (0.11, 0.105, 0.10), 0.45)
+    pmat("pipe_paint", (0.80, 0.80, 0.78), 0.45)
+    pmat("fan_body", (0.62, 0.63, 0.64), 0.32, metal=0.7)
+    pmat("mat_coir", (0.10, 0.085, 0.065), 1.0, bump=0.8, bump_scale=300.0)
+    emit("batten_led", (1.0, 0.93, 0.84), 30.0)
+    emit("cove_led", (1.0, 0.80, 0.58), 16.0)
+    stone_tiles("vest_floor", (0.66, 0.61, 0.53), 1.2, 0.6, 0.003, 0.24, "XY", 0.9, 0.5, 0.5)   # the lobby's stone
+    concrete("core_concrete", (0.50, 0.48, 0.445))
+    plaster("vest_ceiling", (0.84, 0.83, 0.80))
+    glass_clear("vest_glass")
+    pmat("car_white", (0.78, 0.78, 0.76), 0.22, coat=1.0, coat_rough=0.03)
+    pmat("car_graphite", (0.055, 0.06, 0.065), 0.32, metal=0.6, coat=1.0, coat_rough=0.03)
+    pmat("car_silver", (0.56, 0.57, 0.58), 0.34, metal=0.8, coat=1.0, coat_rough=0.03)
+    pmat("car_slate", (0.07, 0.085, 0.10), 0.34, metal=0.6, coat=1.0, coat_rough=0.03)
+    pmat("car_sand", (0.42, 0.38, 0.32), 0.34, metal=0.6, coat=1.0, coat_rough=0.03)
+    pmat("car_glass", (0.010, 0.012, 0.014), 0.03, spec=0.9, coat=0.6, coat_rough=0.02)
+    pmat("car_trim", (0.022, 0.022, 0.024), 0.5)
+    pmat("car_head", (0.50, 0.52, 0.53), 0.06, metal=0.6, coat=1.0, coat_rough=0.02)
+    pmat("car_tail", (0.22, 0.012, 0.010), 0.08, coat=1.0, coat_rough=0.02)
+    pmat("car_rim", (0.55, 0.56, 0.57), 0.28, metal=1.0)
+    # the slab, the soffit, the walls
+    gbox("park_floor", XB0 - 0.3, XB1 + 0.3, PY_END - 0.3, PY_FAR + 0.3, -0.3, 0.0, "park_floor")
+    gbox("park_soffit", XB0 - 0.3, XB1 + 0.3, PY_END - 0.3, PY_FAR + 0.3, PCL, PCL + 0.3, "park_soffit")
+    gbox("park_wall_r", XB1, XB1 + 0.25, PY_END, PY_FAR, 0.0, PCL, "park_wall")
+    gbox("park_wall_far", XB0, XB1, PY_FAR, PY_FAR + 0.25, 0.0, PCL, "park_wall")
+    gbox("park_wall_end", XB0 - 0.25, XB1, PY_END - 0.25, PY_END, 0.0, PCL, "park_wall")
+    gbox("park_wall_l", XB0 - 0.25, XB0, 4.3, PY_FAR, 0.0, PCL, "park_wall")
+    gbox("park_wall_l2", XB0 - 0.25, XB0, PY_END, -4.3, 0.0, PCL, "park_wall")
+    # the round core and the lift vestibule: a glazed front on the aisle in bronze, double glass doors, the lobby's stone
+    lifts = park_core()
+    for s in (-1, 1):
+        y0_, y1_ = (VY, VY + 0.2) if s > 0 else (-VY - 0.2, -VY)
+        gbox("park_vest_side", 3.6, VX + 0.06, y0_, y1_, 0.0, PCL, "park_wall")
+        yi = (VY - 0.02, VY) if s > 0 else (-VY, -VY + 0.02)
+        gbox("park_vest_side_in", 3.6, VX - 0.02, yi[0] - 0.0001 * s, yi[1] - 0.0001 * s, 0.0, VCEIL, "vest_wall")
+    gbox("park_vest_floor", 3.2, VX, -VY, VY, 0.0, 0.008, "vest_floor")
+    gbox("park_vest_ceiling", 3.2, VX - 0.02, -VY, VY, VCEIL, VCEIL + 0.05, "vest_ceiling")
+    VD = 1.0
+    for nm, (ya, yb, za, zb) in (("park_vest_side_l", (-VY + 0.06, -VD - 0.06, 0.02, 2.53)), ("park_vest_side_r", (VD + 0.06, VY - 0.06, 0.02, 2.53)),
+                                 ("park_vest_transom", (-VD, VD, 2.42, 2.53))):
+        obj(nm, [(VX, ya, za), (VX, yb, za), (VX, yb, zb), (VX, ya, zb)], [(0, 1, 2, 3)], "vest_glass")
+    xd = VX + 0.02
+    obj("park_vestibule_doors", [(xd, -VD + 0.05, 0.03), (xd, -0.03, 0.03), (xd, -0.03, 2.33), (xd, -VD + 0.05, 2.33),
+                                 (xd, 0.03, 0.03), (xd, VD - 0.05, 0.03), (xd, VD - 0.05, 2.33), (xd, 0.03, 2.33)],
+        [(0, 1, 2, 3), (4, 5, 6, 7)], "vest_glass")
+    for t in (-1, 1):
+        lc = t * VD / 2
+        for (ya, yb) in ((lc - VD / 2, lc - VD / 2 + 0.05), (lc + VD / 2 - 0.05, lc + VD / 2)):
+            gbox("park_door_stile", xd - 0.025, xd + 0.025, ya, yb, 0.0, 2.36, "bronze")
+        gbox("park_door_rail_b", xd - 0.025, xd + 0.025, lc - VD / 2, lc + VD / 2, 0.0, 0.10, "bronze")
+        gbox("park_door_rail_t", xd - 0.025, xd + 0.025, lc - VD / 2, lc + VD / 2, 2.30, 2.36, "bronze")
+        rod("park_door_pull%d" % t, (xd + 0.09, t * 0.15, 0.75), (xd + 0.09, t * 0.15, 1.95), 0.016, "bronze", 12)
+        for zz in (0.85, 1.85):
+            rod("park_door_pull_post", (xd + 0.02, t * 0.15, zz), (xd + 0.09, t * 0.15, zz), 0.008, "bronze", 8)
+    gbox("park_vest_head", VX - 0.04, VX + 0.06, -VD - 0.06, VD + 0.06, 2.36, 2.42, "bronze")
+    for yy in (-VY, -VD - 0.06, VD, VY - 0.06):
+        gbox("park_vest_mullion", VX - 0.05, VX + 0.06, yy, yy + 0.06, 0.0, 2.55, "bronze")
+    gbox("park_vest_fascia", VX - 0.06, VX + 0.10, -VY - 0.2, VY + 0.2, 2.53, 2.74, "bronze")
+    gbox("park_vest_above", VX - 0.06, VX + 0.06, -VY - 0.2, VY + 0.2, 2.74, PCL, "park_wall")
+    gbox("park_vest_sill", VX - 0.06, VX + 0.08, -VY, VY, 0.0, 0.012, "bronze")
+    gbox("park_vest_mat", 5.6, VX - 0.15, -1.1, 1.1, 0.008, 0.02, "mat_coir", bev=0.004)
+    for k, yy in enumerate((-1.9, 0.0, 1.9)):
+        downlight("park_vest_dl%d" % k, 6.6, yy, VCEIL, 18.0, 70.0)
+    for (lx, ly, lz) in lifts:
+        p = Vector((lx, ly, 0)) * ((RC + 0.75) / (RC - 0.29))
+        light("park_vest_graze", "SPOT", (p.x, p.y, VCEIL - 0.03), 30.0, (1.0, 0.80, 0.58), 0.02, aim=(lx - p.x, ly - p.y, 1.1 - VCEIL),
+              spot=38.0, blend=0.4)
+    gbox("park_vest_cove", VX - 0.30, VX - 0.24, -VY + 0.1, VY - 0.1, VCEIL - 0.004, VCEIL, "cove_led")
+    light("park_vest_cove_l", "AREA", (VX - 0.27, 0.0, VCEIL - 0.02), 22.0, (1.0, 0.80, 0.58), 0.05, 2 * VY - 0.3, aim=(0, 0, -1), spread=120)
+    for yy in (-2.4, 2.4):
+        cyl("park_bollard", VX + 0.45, yy, 0.0, 0.9, 0.08, "steel", 32, bev=0.01)
+        cyl("park_bollard_band", VX + 0.45, yy, 0.72, 0.78, 0.0805, "car_trim", 32)
+    # the columns, the drop panels over them
+    for yc in COLS_Y:
+        for xc in ((6.8, 14.4) if yc > 8.0 else (14.4,)):
+            box("park_col", xc, yc, 0.0, 0.60, 0.60, PCL, "park_col", bev=0.025)
+            gbox("park_drop", xc - 1.2, xc + 1.2, yc - 1.2, yc + 1.2, PCL - 0.22, PCL, "park_soffit")
+    # the bays: white lines, three 2.5 m bays between the columns; the aisle and its crossing
+    for k in range(len(COLS_Y) - 1):
+        ya, yb = COLS_Y[k] + 0.3, COLS_Y[k + 1] - 0.3
+        sides = (((XA1, XB1),) if COLS_Y[k] > 0.0 else ()) + (((XB0, XA0),) if COLS_Y[k] > 8.0 else ())
+        for side in sides:
+            for j in range(4):
+                yl = ya + (yb - ya) * j / 3
+                gbox("park_line", side[0], side[1], yl - 0.05, yl + 0.05, 0.0, 0.003, "paint_line")
+    for k in range(7):
+        x = XA0 + 0.25 + k * 0.85
+        gbox("park_crossing", x, x + 0.45, -1.2, 1.2, 0.0, 0.003, "paint_line")
+    gbox("park_hatch", XB0, XA0, 4.7, COLS_Y[2] - 0.35, 0.0, 0.003, "paint_hatch")
+    for (a, b_, c, d) in ((XB0, XA0, 4.7, 4.8), (XB0, XA0, COLS_Y[2] - 0.45, COLS_Y[2] - 0.35), (XA0 - 0.1, XA0, 4.7, COLS_Y[2] - 0.35)):
+        gbox("park_hatch_edge", a, b_, c, d, 0.0, 0.0035, "paint_line")
+    # the storage rooms' doors: along the end wall behind the eye and the right wall beside it
+    for k, x in enumerate((3.9, 6.5, 9.3, 11.9, 14.7, 17.3)):
+        storage_door("park_storage_e%d" % k, x, PY_END + 0.025, 0.0)
+    for k, y in enumerate((-5.4, -2.6)):
+        storage_door("park_storage_r%d" % k, XB1 - 0.025, y, 90.0)
+    # the light: linear LED battens under the soffit, over the aisle's edges and over the bays
+    nl = 0
+    rows = [(8.6, 2.7), (12.6, 2.7), (16.1, 4.05), (5.1, 4.05)]
+    for (xr, step) in rows:
+        y = PY_END + 1.4
+        while y < PY_FAR - 0.8:
+            if not (xr < 8.0 and y < COLS_Y[2] - 0.5):
+                zb = PCL - 0.10
+                box("park_batten", xr, y, zb, 0.08, 1.5, 0.06, "alu_white", bev=0.006)
+                gbox("park_batten_led", xr - 0.03, xr + 0.03, y - 0.72, y + 0.72, zb - 0.002, zb, "batten_led")
+                light("park_batten_l", "AREA", (xr, y, zb - 0.01), 42.0, (1.0, 0.93, 0.84), 0.05, 1.42, aim=(0, 0, -1), spread=150)
+                for s in (-1, 1):
+                    rod("park_batten_rod", (xr, y + s * 0.6, zb + 0.06), (xr, y + s * 0.6, PCL), 0.004, "steel", 6)
+                nl += 1
+            y += step
+    # the sprinkler main and branches (painted), the heads; two jet fans over the aisle
+    xm = 11.5
+    rod("park_sprinkler_main", (xm, PY_END + 0.3, PCL - 0.30), (xm, PY_FAR - 0.3, PCL - 0.30), 0.05, "pipe_paint", 16)
+    y = PY_END + 2.0
+    while y < PY_FAR - 1.0:
+        rod("park_hanger", (xm, y, PCL - 0.25), (xm, y, PCL), 0.006, "steel", 6)
+        y += 4.0
+    for k in range(len(COLS_Y) - 1):
+        yb_ = (COLS_Y[k] + COLS_Y[k + 1]) / 2
+        xs_ = VX + 0.06 if abs(yb_) < VY + 0.3 else XB0 + 0.4
+        rod("park_branch", (xs_, yb_, PCL - 0.15), (XB1 - 0.4, yb_, PCL - 0.15), 0.025, "pipe_paint", 12)
+        rod("park_branch_drop", (xm, yb_, PCL - 0.25), (xm, yb_, PCL - 0.15), 0.025, "pipe_paint", 12)
+        for x in (XB0 + 1.5, XB0 + 4.5, XA0 + 1.5, XA1 - 1.5, XA1 + 1.5, XB1 - 1.5):
+            if x < 8.0 and COLS_Y[k] < 8.0:
+                continue
+            cyl("park_head", x, yb_, PCL - 0.22, PCL - 0.15, 0.012, "steel", 10)
+            cyl("park_head_def", x, yb_, PCL - 0.225, PCL - 0.218, 0.03, "steel", 16)
+    for k, yf in enumerate((COLS_Y[3] + 4.05, COLS_Y[6] + 4.05)):
+        xf, zf = 9.6, PCL - 0.42
+        rod("park_fan%d" % k, (xf, yf - 0.8, zf), (xf, yf + 0.8, zf), 0.27, "fan_body", 40, bev=0.01)
+        for s in (-1, 1):
+            rod("park_fan_mouth", (xf, yf + s * 0.79, zf), (xf, yf + s * 0.805, zf), 0.24, "car_trim", 32)
+            for r_ in (0.10, 0.17, 0.235):
+                ring = [(xf + r_ * math.cos(2 * math.pi * q / 32), yf + s * 0.81, zf + r_ * math.sin(2 * math.pi * q / 32)) for q in range(33)]
+                tube("park_fan_grille", ring, 0.004, "steel", 6)
+            gbox("park_fan_bracket", xf - 0.18, xf + 0.18, yf + s * 0.5 - 0.03, yf + s * 0.5 + 0.03, zf + 0.22, PCL, "steel")
+    # a few generic parked cars (no make, badge or plate)
+    cars = [("park_car_a", 5.20, 21.15, 0.0, "car_graphite", "sedan"), ("park_car_b", 16.0, 21.15, 180.0, "car_slate", "suv"),
+            ("park_car_c", 5.25, 26.75, 180.0, "car_white", "suv"), ("park_car_d", 16.0, 34.85, 0.0, "car_sand", "sedan")]
+    for (nm, x, y, r, pt, kd) in cars:
+        car(nm, x, y, r, pt, kd)
+    camera(*EYE_PK)
+    marks = [("the aisle's far wall (its middle)", (EYE_PK[0], PY_FAR, 1.5)), ("the storage doors on the end wall (the middle)", (10.6, PY_END, 1.1)),
+             ("the round core (its face beside the vestibule)", (RC * math.sin(55 * DEG), RC * math.cos(55 * DEG), 1.5))]
+    marks += [("car %s (%s)" % (nm[-1], kd), (x, y, 0.8)) for (nm, x, y, r, pt, kd) in cars]
+    doors = [("park_lift_vestibule", (VX, 0.0, 1.2))]
+    for i, (x, y, z) in enumerate(lifts):
+        doors.append(("park_lift_%d" % (i + 1), (x, y, z)))
+    doors += [("park_storage_end_wall", (10.6, PY_END, 1.1)), ("park_storage_right_wall", (XB1, -4.0, 1.1))]
+    report("parking: the residents' private parking (1,620 spaces on 3 underground levels, the builder; 906 private + 720 "
+           "public, Globes/Mako), level -2 and everything in it an illustration; floor %.1f m below the street, %.1f m to "
+           "the soffit, aisle %.0f m, bays 2.5 x 5.0 m, columns every 8.1 m; %d LED battens; %d generic cars; no window, no "
+           "sign, no number" % (-PARK_Z, PCL, XA1 - XA0, nl, len(cars)), marks, doors)
+
+
 # ============================================================================================ build and render
 common_materials()
-{"lobby": build_lobby, "pool": build_pool, "gym": build_gym}[SCENE]()
+{"lobby": build_lobby, "pool": build_pool, "gym": build_gym, "spa": build_spa, "parking": build_parking}[SCENE]()
 diagnostics()
 sc = bpy.context.scene
-EXPO = {"lobby": {"sunset": -1.55, "day": -1.4}.get(TODN, -1.5), "pool": -0.6, "gym": -0.3}[SCENE]
+EXPO = {"lobby": {"sunset": -1.55, "day": -1.4}.get(TODN, -1.5), "pool": -0.6, "gym": -0.3, "spa": -0.35, "parking": -0.5}[SCENE]
 sc.view_settings.exposure = EXPO + float(os.environ.get("KF_EXP", "0"))
 if not os.environ.get("KF_NOGLARE"):
     KW.add_glare(3.5 / 2 ** sc.view_settings.exposure, float(os.environ.get("KF_GLARE", "0.18")))
