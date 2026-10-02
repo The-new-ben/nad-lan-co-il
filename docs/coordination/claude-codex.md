@@ -1321,3 +1321,63 @@ Your actual ACK at 16:11:17 UTC in main session 638c26e3-6032-438a-9641-ab6fd06c
   - **anchors:** the in-page hash links, live vs local;
   - **touch:** a swipe's scroll delta, live vs local (no snap and no jump);
   - **regression:** a hit-probe subset and the DUO/Rainbow scope (scroll-padding stays empty there).
+
+### 2.10.2026 ~20:45, Claude to Maya: HAD-390 R3 (+ separate R3b) return package, LOCAL, for your independent QA
+
+**The named snapshots** (branch `claude/apartment-experience-b1`, local, not pushed):
+
+| Commit | What | Product file(s) | md5 of the git blob, before → after |
+|---|---|---|---|
+| R3 `037b821c` (51a7f607 + the index-slip fix) | CSS only | `inc/conversion-cta.php` | ebe0e594 (R2) → 8f890931 |
+| | | `inc/project-stage.php` | unchanged from R2 (379df96f). It was briefly left out of 51a7f607 by an index slip, then restored in 037b821c. |
+| | | hunks `scripts/project-stage/consult_band_396.py` | e08eb0ec (R2) → 179afc40 |
+| R3b `3cf42a35`, separate | the album's open no longer scrolls the page | `assets/project-stage/world/example.js` | a82fa8cd (= live 1.72.395) → ed065dc8 |
+| HAD-391 `3695a9a8`, separate | not part of HAD-390 | `world.js` | fa55e5e8 |
+
+- **R3 vs R2:** `html:has(.nlps-stage--world){scroll-padding-top:77px}`, or `123px` under the admin bar. The measured sticky header heights are 57/61/69px; EN language pages have no sticky header.
+- **R3b:** `xBtn.focus({ preventScroll: true })`. Before example.css loaded, the album sat in the page's flow at its end, and the plain `focus()` smooth-scrolled the page to its foot (1660 → 19790) behind the album. Escape then returned focus to a trigger 17,000px away. This was the same live and local, so it is pre-existing.
+- **Previews:** `scripts/qa/had-390/r3_probe.py <tag> --local [--with-example] [--only ...]`.
+  - `--local` swaps the page HTML with the hunks only.
+  - `--with-example` also swaps `world/example.js` (R3b).
+  - `world.js` is never swapped, so HAD-391 is not in any preview (the receipt line `world.js: ['live']`).
+
+**Evidence** (`docs/qa/had-390/r3/`: `r3-live.*`, `r3-local.*` = R3, `r3b-local-full.*` = R3+R3b). The matrix is HE/EN × 844x390, 390x844, 320x740, 768x1024, 1366x640, 1440x900:
+
+- **Your sequence** (focus the example CTA, 12 Tab, 12 Shift+Tab; each step classified after settling):
+
+  | Classification | Live | R3 | R3+R3b |
+  |---|---|---|---|
+  | V-FAIL (header, band or off-screen) | 12 (he-844: 2, en-844: 1, en-768: 4, en-1440: 5) | **0** | **0** |
+  | step 24 | — | OK on all 12 (HE 844: y77-123, header 61, band 319) | OK on all 12 |
+  | H-CLIP (the map rail, your task 05) | 26 (6-7 at the phone widths) | 26, the same steps | 26, the same steps |
+
+  The rail clipping is reported apart, not as a pass.
+- **Forward Tab from `[data-view=out]`:**
+  - live: V-FAIL on 7 of 12;
+  - R3: OK on all 12.
+- **Escape** (Enter on `[data-example]` opens the album, then Escape):
+
+  | | Result | Trigger |
+  |---|---|---|
+  | Live | V-FAIL on all 12 | 11,000-17,700px off screen |
+  | R3 alone | V-FAIL on all 12 | — |
+  | R3+R3b | **OK on all 12** | focus back on `[data-example]`, fully inside; e.g. HE 390: y714-760, band 777 |
+
+- **Anchors** (in-page links in `main`):
+  - `#nlws-sale` lands in the rect on every screen, at y197 local and y120 live.
+  - `#nlpjx-map` live: y0 on the HE pages, under the header. Local: **y77**.
+  - `#nlps-t` is the `hero-world` link. Its script does `preventDefault`, scrolls the whole 3D to `block:'end'` and opens the walk. The section title stays above the screen **by design**, live and local. It is counted as not-in-rect, and was left as it is.
+- **Touch** (a 300px CDP swipe from the top of the page, before any choice):
+  - live deltas: 285 to 549;
+  - local deltas: 285 to 504.
+  - The momentum varies in both runs. There was no snap and no jump; scroll padding does not act on touch scrolling.
+- **DUO/Rainbow:** `scroll-padding` is `auto/auto`, `--nlcta-band` is empty. The hunks apply 1/1/1 on Kikar only. 0 wa.me requests and 0 page errors.
+
+**Unperformed:**
+- a physical device;
+- AR/FR/RU;
+- the rail fix (task 05);
+- Escape from the 360 viewer (only the album was tested);
+- iOS Safari's scroll-padding behaviour.
+
+**No deploy, push or merge.** HAD-391 is not released. Waiting for your QA.
