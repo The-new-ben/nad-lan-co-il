@@ -145,7 +145,7 @@ if ( ! function_exists( 'nadlan_hp_header' ) ) {
 		$menus  = nadlan_hp_panel( 'פרויקטים חדשים', array(
 			array( array( 'פרויקטים חדשים לפי עיר', $pcity ) ),
 			array( array( 'לפי סוג', array( array( 'כל הפרויקטים', $u( '/projects/' ), $fmt( $c['projects'] ) ), array( 'פינוי־בינוי', $u( '/projects/?project_type=pinui_binui' ) ), array( 'תמ״א 38', $u( '/projects/?project_type=tama38' ) ), array( 'נדל״ן מסחרי', $u( '/commercial-real-estate/' ) ) ) ),
-				array( 'אזורי ביקוש', array( array( 'רובע שדה דב', $u( '/sde-dov/' ) ), array( 'כיכר המדינה', $u( '/projects/hamedina/' ) ), array( 'התחדשות עירונית', $u( '/urban-renewal/' ) ) ) ) ), // v104.29: + Kikar
+				array( 'אזורי ביקוש', array( array( 'רובע שדה דב', $u( '/sde-dov/' ) ), array( 'התחדשות עירונית', $u( '/urban-renewal/' ) ) ) ) ),
 			array( array( 'סיורים וירטואליים', array( array( 'סיור ברובע שדה דב', $u( '/tour/sde-dov/' ) ), array( 'סיור במתחם סומייל', $u( '/tour/somail/' ) ), array( 'כל הסיורים', $u( '/tours/' ) ), array( $all_p, $u( '/projects/' ), '', 1 ) ) ) ),
 		), $promo );
 		$menus .= nadlan_hp_panel( 'דירות למכירה', array_values( array_filter( array(
@@ -163,7 +163,7 @@ if ( ! function_exists( 'nadlan_hp_header' ) ) {
 			array( array( 'מחשבונים', array( array( 'מחשבון משכנתא', $u( '/mortgage-calculator/' ) ), array( 'מחשבון מס רכישה', $u( '/purchase-tax-calculator/' ) ), array( 'עלות עסקה מלאה', $u( '/apartment-purchase-cost-calculator/' ) ), array( 'כמה שווה הדירה שלי', $u( '/property-value-estimator/' ) ) ) ) ),
 		) );
 		$menus .= nadlan_hp_panel( 'סיורים וירטואליים', array(
-			array( array( 'סיורים וירטואליים', array( array( 'כל הסיורים', $u( '/tours/' ) ), array( 'סיור רובע שדה דב', $u( '/tour/sde-dov/' ) ), array( 'סיור מתחם סומייל', $u( '/tour/somail/' ) ), array( 'סיור במגדלי כיכר המדינה', $u( '/projects/hamedina/' ) ), array( 'מעצב הדירות', $u( '/tour/designer/' ) ) ) ) ), // v104.29: + Kikar
+			array( array( 'סיורים וירטואליים', array( array( 'כל הסיורים', $u( '/tours/' ) ), array( 'סיור רובע שדה דב', $u( '/tour/sde-dov/' ) ), array( 'סיור מתחם סומייל', $u( '/tour/somail/' ) ), array( 'מעצב הדירות', $u( '/tour/designer/' ) ) ) ) ),
 			array( array( 'מהאוויר', array( array( 'הליקופטר שדה דב · צילום אמיתי', $u( '/earth/sde-dov/' ) ), array( 'הליקופטר סומייל', $u( '/earth/somail/' ) ), array( 'קטלוג הסיורים הווירטואליים', $u( '/premium/' ) ) ) ) ),
 		), $promo );
 		$menus .= nadlan_hp_panel( 'מגזין נדל״ן', array(

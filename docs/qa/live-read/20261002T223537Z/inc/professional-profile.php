@@ -1,0 +1,505 @@
+<?php
+/**
+ * nadlan-config - World-class professional profile layer (v1.69.82)
+ *
+ * Owner directive 2026-07-02: single professional pages were "very basic".
+ * This module adds a Zillow-agent/Houzz-class rich profile on top of the
+ * existing directory (2,711 gov.il-verified records, ratings, tiers, claim):
+ *   1. Profile hero: brand monogram portrait (parametric SVG - elegant, honest,
+ *      no fake photos), name, profession pill, city, gov.il verified badge,
+ *      rating, years/projects stats, tier-aware contact CTAs.
+ *   2. Expertise band: specialties + languages chips, service areas.
+ *   3. WIRED TO EVERYTHING: their projects (developer/contractor name match),
+ *      colleagues nearby (same profession/city), profession-matched guides,
+ *      calculators - hub-spoke in both directions.
+ *   4. Extends the profession taxonomy: designers, engineers, accountants,
+ *      surveyors, property managers, urban planners (the "go for all" ask).
+ *   5. Demo premium profiles supported: is_demo flag → visible "לדוגמה" tag +
+ *      noindex (same honest pattern as demo listings).
+ */
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
+/* ---------------- extra professions (merge into the directory taxonomy) ---------------- */
+add_filter( 'nadlan_dir_professions', function ( $p ) { return $p; } ); // future-proof hook
+if ( ! function_exists( 'nadlan_prof_extra_professions' ) ) {
+	function nadlan_prof_extra_professions() {
+		return array(
+			'interior_designer' => array( 'label' => 'מעצב/ת פנים',      'color' => '#9F6F54', 'soft' => '#F8F0EA', 'icon' => 'profession-architect' ),
+			'engineer'          => array( 'label' => 'מהנדס/ת בניין',    'color' => '#183C3C', 'soft' => '#EFF4F4', 'icon' => 'profession-inspector' ),
+			'accountant'        => array( 'label' => 'רו״ח מיסוי נדל״ן', 'color' => '#11110F', 'soft' => '#EFEDE7', 'icon' => 'profession-lawyer' ),
+			'surveyor'          => array( 'label' => 'מודד/ת מוסמך',     'color' => '#334236', 'soft' => '#F1F4EE', 'icon' => 'profession-appraiser' ),
+			'property_manager'  => array( 'label' => 'ניהול נכסים',      'color' => '#9C7A3C', 'soft' => '#FBF6EE', 'icon' => 'profession-broker' ),
+			'urban_planner'     => array( 'label' => 'מתכנן/ת ערים',     'color' => '#2E2B26', 'soft' => '#F3EEE3', 'icon' => 'profession-architect' ),
+		);
+	}
+}
+
+if ( ! function_exists( 'nadlan_prof_meta_of' ) ) {
+	function nadlan_prof_meta_of( $key ) {
+		$all = function_exists( 'nadlan_dir_professions' ) ? nadlan_dir_professions() : array();
+		$all = array_merge( $all, nadlan_prof_extra_professions() );
+		return isset( $all[ $key ] ) ? $all[ $key ] : array( 'label' => $key ?: 'בעל/ת מקצוע', 'color' => '#1B1A17', 'soft' => '#F3EEE3', 'icon' => 'profession-contractor' );
+	}
+}
+
+/* ---------------- extra profile meta ---------------- */
+if ( ! function_exists( 'nadlan_prof_register_meta' ) ) {
+	function nadlan_prof_register_meta() {
+		foreach ( array( 'specialties_csv' => 'string', 'languages_csv' => 'string', 'bio' => 'string', 'response_time' => 'string', 'meeting_url' => 'string', 'calendar_url' => 'string', 'nl_video' => 'string', 'lat' => 'number', 'lng' => 'number', 'profile_views' => 'integer' ) as $k => $t ) {
+			register_post_meta( 'nadlan_professional', $k, array(
+				'show_in_rest' => true, 'single' => true, 'type' => $t,
+				'auth_callback' => function ( $a, $m, $pid ) { return current_user_can( 'edit_post', (int) $pid ); },
+			) );
+		}
+	}
+}
+add_action( 'init', 'nadlan_prof_register_meta', 15 );
+
+/* ---------------- the professional's own booking page (owner, 24.9.2026: "תיאום מועד ביומן, אולי Calendly") ----------------
+ * Checked that day: Calendly's booking page has no Hebrew (English plus seven languages); Google Calendar's booking page
+ * is free with a Gmail account and shows in the visitor's own language, Hebrew included. So any https booking link is
+ * accepted, Google recommended. With a link, "תיאום סיור" opens it (counted as a tour request in the private insights);
+ * without one, the button stays on WhatsApp. The portal's own date band stays off on a broker's card (HAD-249). */
+if ( ! function_exists( 'nadlan_prof_calendar_url' ) ) {
+	function nadlan_prof_calendar_url( $id ) {
+		$u = trim( (string) get_post_meta( (int) $id, 'calendar_url', true ) );
+		return ( '' !== $u && 0 === strpos( $u, 'https://' ) && wp_http_validate_url( $u ) ) ? $u : '';
+	}
+}
+if ( ! function_exists( 'nadlan_prof_video_html' ) ) {
+	/**
+	 * ListingsVideo (design system, 24.9.2026; owner: "שלכל מתווך יהיה וידאו על כל הנכסים שלו"): the broker's listings in
+	 * one video, from meta nl_video, a JSON object {tall, wide, poster_tall, poster_wide, count, secs, date}. Nothing without
+	 * both videos. No autoplay, and nothing downloads until play is pressed (preload none): the upright file shows on
+	 * phones, the wide one elsewhere. The count and the date are the video's own, so an older video says how old it is.
+	 */
+	function nadlan_prof_video_html( $id, $person ) {
+		$v = json_decode( (string) get_post_meta( (int) $id, 'nl_video', true ), true );
+		if ( ! is_array( $v ) ) { return ''; }
+		$url = function ( $k ) use ( $v ) {
+			$u = isset( $v[ $k ] ) ? esc_url( (string) $v[ $k ] ) : '';
+			return 0 === strpos( $u, 'https://' ) ? $u : '';
+		};
+		if ( '' === $url( 'tall' ) || '' === $url( 'wide' ) ) { return ''; }
+		$meta = array();
+		if ( ! empty( $v['count'] ) ) { $meta[] = '<span class="nlds-num">' . (int) $v['count'] . '</span> נכסים'; }
+		if ( ! empty( $v['secs'] ) ) { $meta[] = '<span class="nlds-num">' . (int) $v['secs'] . '</span> שניות'; }
+		if ( ! empty( $v['date'] ) && preg_match( '/^(\d{4})-(\d{2})-(\d{2})$/', (string) $v['date'], $d ) ) {
+			$meta[] = 'עודכן <span class="nlds-num">' . (int) $d[3] . '.' . (int) $d[2] . '.' . $d[1] . '</span>';
+		}
+		$vid = function ( $cls, $src, $poster ) {
+			return '<video class="nlds-video__v ' . $cls . '" controls playsinline preload="none"' . ( '' !== $poster ? ' poster="' . $poster . '"' : '' ) . '><source src="' . $src . '" type="video/mp4"></video>';
+		};
+		// the design system styles what sits inside a .nlds wrapper, so the component is not the wrapper itself
+		return '<div class="nlds nlpp-video" dir="rtl" lang="he"><section class="nlds-video" aria-label="' . esc_attr( 'סרטון הנכסים של ' . $person ) . '">'
+			. '<h2 class="nlds-video__title">סרטון הנכסים</h2>'
+			. '<div class="nlds-video__frame">' . $vid( 'nlds-video__v--wide', $url( 'wide' ), $url( 'poster_wide' ) ) . $vid( 'nlds-video__v--tall', $url( 'tall' ), $url( 'poster_tall' ) ) . '</div>'
+			. ( $meta ? '<p class="nlds-video__meta">בסרטון: ' . implode( ' · ', $meta ) . '</p>' : '' )
+			. '</section></div>';
+	}
+}
+
+add_action( 'add_meta_boxes_nadlan_professional', function () {
+	add_meta_box( 'nlpp_calendar_box', 'יומן לתיאום סיור', function ( $post ) {
+		wp_nonce_field( 'nlpp_calendar_save', 'nlpp_calendar_nonce' );
+		echo '<p><input type="url" name="nlpp_calendar_url" value="' . esc_attr( (string) get_post_meta( $post->ID, 'calendar_url', true ) ) . '" style="width:100%;direction:ltr" placeholder="https://calendar.app.google/..."></p>';
+		echo '<p class="description">הקישור לדף ההזמנה ביומן של בעל המקצוע. מומלץ דף ההזמנה של יומן Google: חינם, ומוצג בשפה של המבקר, גם בעברית. אפשר גם Calendly, שאין בו עברית ומתאים למשקיעים מחו״ל. בלי קישור, "תיאום סיור" נשאר בוואטסאפ.</p>';
+	}, 'nadlan_professional', 'side', 'default' );
+} );
+add_action( 'save_post_nadlan_professional', function ( $post_id ) {
+	if ( ! isset( $_POST['nlpp_calendar_nonce'] ) || ! wp_verify_nonce( (string) $_POST['nlpp_calendar_nonce'], 'nlpp_calendar_save' ) ) { return; }
+	if ( ! current_user_can( 'edit_post', $post_id ) || wp_is_post_revision( $post_id ) ) { return; }
+	$u = esc_url_raw( trim( wp_unslash( (string) ( $_POST['nlpp_calendar_url'] ?? '' ) ) ), array( 'https' ) );
+	if ( '' === $u ) { delete_post_meta( $post_id, 'calendar_url' ); } else { update_post_meta( $post_id, 'calendar_url', $u ); }
+} );
+
+/* ---------------- brand monogram portrait (design-consistent "generic picture") ---------------- */
+if ( ! function_exists( 'nadlan_prof_monogram_svg' ) ) {
+	function nadlan_prof_monogram_svg( $name, $color ) {
+		// design system ProNetwork v98: the same designed monogram as the network card (a rounded square, two letters in the
+		// heading face, a thin gold frame), not a coloured circle with initials
+		$pname = preg_split( '/\s+·\s+/u', trim( wp_strip_all_tags( (string) $name ) ), 2 )[0];
+		if ( function_exists( 'nadlan_pc_mono' ) ) {
+			$ini = nadlan_pc_mono( $pname );
+		} else {
+			$parts = preg_split( '/\s+/u', $pname );
+			$ini   = mb_substr( $parts[0] ?? '', 0, 1 ) . ( isset( $parts[1] ) ? mb_substr( $parts[1], 0, 1 ) : '' );
+		}
+		return '<svg class="nlpp-avatar nlpp-mono" viewBox="0 0 96 96" role="img" aria-label="' . esc_attr( $pname ) . '">'
+			. '<rect x="1.5" y="1.5" width="93" height="93" rx="24" fill="#FFFDFC" stroke="' . esc_attr( $color ) . '" stroke-opacity=".3" stroke-width="1.5"/>'
+			. '<rect x="1.5" y="1.5" width="93" height="93" rx="24" fill="' . esc_attr( $color ) . '" fill-opacity=".08"/>'
+			. '<rect x="11" y="11" width="74" height="74" rx="16" fill="none" stroke="#9C7A3C" stroke-opacity=".55" stroke-width="1.2"/>'
+			. '<text x="48" y="59" text-anchor="middle" font-family="Frank Ruhl Libre,Noto Serif Hebrew,serif" font-size="31" font-weight="600" fill="' . esc_attr( $color ) . '" style="fill:' . esc_attr( $color ) . '!important">' . esc_html( $ini ) . '</text>' /* skin-a.css paints .nlpp-avatar text near-white with !important (the old circle's letters) */
+			. '</svg>';
+	}
+}
+
+/* ---------------- brokers: buttons straight to the broker (HAD-249, 24.9.2026) ----------------
+ * The published broker offer (/brokers/) promises: "the WhatsApp and call buttons lead straight to
+ * your phone; nad-lan does not pass the enquiries on". So on a broker's card the buttons go to the
+ * broker on every plan, "תיאום סיור" replaces "הצעת מחיר", and the portal's date-booking band (which
+ * books with the portal, in project wording) stays off. */
+if ( ! function_exists( 'nadlan_prof_wa_digits' ) ) {
+	/** An Israeli phone as wa.me digits (972...), '' when it is not a usable number. */
+	function nadlan_prof_wa_digits( $phone ) {
+		$d = preg_replace( '/\D+/', '', (string) $phone );
+		if ( '' !== $d && '0' === $d[0] ) { $d = '972' . substr( $d, 1 ); }
+		return ( strlen( $d ) >= 11 && 0 === strpos( $d, '972' ) ) ? $d : '';
+	}
+}
+if ( ! function_exists( 'nadlan_prof_person_name' ) ) {
+	/** The person's name without the brand ("מיטל קציר · נדל״ן על הים" -> "מיטל קציר"). */
+	function nadlan_prof_person_name( $id ) {
+		$n = trim( (string) get_post_meta( $id, 'nl_name_he', true ) );
+		if ( '' === $n ) {
+			$parts = preg_split( '/\s+[·|\-]\s+/u', (string) get_the_title( $id ) );
+			$n     = trim( (string) $parts[0] );
+		}
+		return $n;
+	}
+}
+add_action( 'wp', function () {
+	if ( is_admin() || ! is_singular( 'nadlan_professional' ) ) { return; }
+	$id = (int) get_queried_object_id();
+	if ( 'metavech' === (string) get_post_meta( $id, 'profession', true ) && '' !== nadlan_prof_wa_digits( get_post_meta( $id, 'phone', true ) ) ) {
+		add_filter( 'pre_option_nadlan_feature_scheduler', function () { return '0'; } );
+	}
+} );
+
+/* ---------------- profession → guide/calculator wiring map ---------------- */
+if ( ! function_exists( 'nadlan_prof_related_links' ) ) {
+	function nadlan_prof_related_links( $prof ) {
+		$map = array(
+			'lawyer'     => array( array( '/real-estate-lawyer/', 'מתי חובה עורך דין בעסקה' ), array( '/purchase-tax-calculator/', 'מחשבון מס רכישה' ) ),
+			'shamai'     => array( array( '/real-estate-appraiser/', 'מה שמאי בודק ולמה' ), array( '/property-value/', 'איך מעריכים שווי דירה' ) ),
+			'mashkanta'  => array( array( '/mortgage-calculator/', 'מחשבון משכנתא' ), array( '/mortgage-advisor/', 'האם צריך יועץ משכנתאות' ) ),
+			'bedek_bait' => array( array( '/home-inspection/', 'בדק בית - המדריך' ), array( '/buying-apartment/', 'מדריך קניית דירה' ) ),
+			'kablan'     => array( array( '/projects/', 'פרויקטים חדשים' ), array( '/buying-apartment/', 'קנייה מקבלן - הזכויות שלכם' ) ),
+			'metavech'   => array( array( '/real-estate-broker/', 'עבודה נכונה עם מתווך' ), array( '/properties/', 'דירות למכירה ולהשכרה' ) ),
+		);
+		$base = isset( $map[ $prof ] ) ? $map[ $prof ] : array( array( '/buying-apartment/', 'מדריך קניית דירה' ), array( '/glossary/', 'מילון מונחי נדל״ן' ) );
+		return $base;
+	}
+}
+
+/* ---------------- the rich profile (renders ABOVE the legacy facts card) ---------------- */
+if ( ! function_exists( 'nadlan_prof_render' ) ) {
+	function nadlan_prof_render( $content ) {
+		if ( ! is_singular( 'nadlan_professional' ) || ! in_the_loop() || ! is_main_query() ) { return $content; }
+		$id = get_the_ID();
+		$g  = function ( $k ) use ( $id ) { return get_post_meta( $id, $k, true ); };
+		$pm   = nadlan_prof_meta_of( (string) $g( 'profession' ) );
+		$name = get_the_title( $id );
+		$city = (string) $g( 'city' );
+		// stars only from real, verified reviews (ProNetwork v98: the seeded ratings are not shown)
+		$rating = $g( 'reviews_verified' ) ? (float) $g( 'rating' ) : 0.0; $reviews = (int) $g( 'reviews_count' );
+		$years  = (int) $g( 'years_active' ); $projects_n = (int) $g( 'project_count' );
+		$demo   = (bool) $g( 'is_demo' );
+		$is_broker    = ( 'metavech' === (string) $g( 'profession' ) );
+		$show_contact = function_exists( 'nadlan_tier_can_show' ) ? nadlan_tier_can_show( $id, 'phone' ) : false;
+		$phone  = ( $show_contact || $is_broker ) ? (string) $g( 'phone' ) : '';
+		// a private person from a public register who has not taken over the profile: no phone (ProNetwork v98)
+		if ( function_exists( 'nadlan_pc_is_private' ) && nadlan_pc_is_private( $id ) ) { $phone = ''; }
+		$wa     = preg_replace( '/\D+/', '', (string) get_option( 'nadlan_whatsapp_e164', '' ) );
+		$own_wa = $is_broker ? nadlan_prof_wa_digits( $phone ) : '';
+		$person = nadlan_prof_person_name( $id );
+		$label  = function_exists( 'nadlan_dir_prof_label' ) ? nadlan_dir_prof_label( (string) $g( 'profession' ), $id ) : $pm['label'];
+		$lic    = trim( (string) $g( 'license_number' ) );
+		$in_reg = function_exists( 'nadlan_dir_registry_verified' ) ? nadlan_dir_registry_verified( $id ) : false;
+
+		// their projects: developer/contractor name match (real wiring, cached)
+		$their = get_transient( 'nlpp_projects_' . $id );
+		if ( ! is_array( $their ) ) {
+			$their = array();
+			if ( mb_strlen( $name ) > 3 ) {
+				$q = new WP_Query( array(
+					'post_type' => 'nadlan_project', 'post_status' => 'publish', 'posts_per_page' => 4,
+					'no_found_rows' => true, 'fields' => 'ids',
+					'meta_query' => array( 'relation' => 'OR',
+						array( 'key' => 'developer_name', 'value' => $name, 'compare' => 'LIKE' ),
+						array( 'key' => 'contractor_name', 'value' => $name, 'compare' => 'LIKE' ),
+					),
+				) );
+				foreach ( $q->posts as $pid ) { $their[] = array( 'title' => get_the_title( $pid ), 'url' => get_permalink( $pid ) ); }
+			}
+			set_transient( 'nlpp_projects_' . $id, $their, 12 * HOUR_IN_SECONDS );
+		}
+
+		// live view counter (debounced per IP, real FOMO surface)
+		$ipk = 'nlppv_' . md5( ( $_SERVER['REMOTE_ADDR'] ?? 'x' ) . $id );
+		if ( ! get_transient( $ipk ) ) {
+			set_transient( $ipk, 1, 6 * HOUR_IN_SECONDS );
+			update_post_meta( $id, 'profile_views', (int) $g( 'profile_views' ) + 1 );
+		}
+		$views   = (int) $g( 'profile_views' );
+		$tier    = (string) $g( 'paid_tier' );
+		$premium = in_array( $tier, array( 'pro', 'premier' ), true ) || $demo;
+		$meeting = (string) $g( 'meeting_url' );
+		$plat = (float) $g( 'lat' ); $plng = (float) $g( 'lng' );
+		$ai_on = function_exists( 'nadlan_ai_enabled' ) && nadlan_ai_enabled();
+		$specialties = array_filter( array_map( 'trim', explode( ',', (string) $g( 'specialties_csv' ) ) ) );
+		$langs       = array_filter( array_map( 'trim', explode( ',', (string) $g( 'languages_csv' ) ) ) );
+		$areas       = array_filter( array_map( 'trim', explode( ',', (string) $g( 'areas_served' ) ) ) );
+		$links       = nadlan_prof_related_links( (string) $g( 'profession' ) );
+
+		ob_start(); ?>
+<div class="nlpp" dir="rtl" style="--pc:<?php echo esc_attr( $pm['color'] ); ?>;--ps:<?php echo esc_attr( $pm['soft'] ); ?>">
+	<?php if ( $demo ) : ?><div class="nlpp-demo">פרופיל לדוגמה - כך נראה פרופיל פרימיום. <a href="<?php echo esc_url( home_url( '/advertise/' ) ); ?>">בעלי מקצוע: הצטרפו ←</a></div><?php endif; ?>
+
+	<header class="nlpp-hero">
+		<?php /* one header, one H1 (owner 24.9.2026: "two headings on a professional card, not good"); a real portrait when the card has one, the monogram otherwise */
+		echo has_post_thumbnail( $id ) ? get_the_post_thumbnail( $id, 'medium', array( 'class' => 'nlpp-avatar nlpp-photo', 'alt' => wp_strip_all_tags( $name ), 'loading' => 'eager' ) ) : nadlan_prof_monogram_svg( $name, $pm['color'] ); // phpcs:ignore ?>
+		<div class="nlpp-id">
+			<span class="nlpp-pill"><?php echo esc_html( $label ); ?></span>
+			<?php $nlpp_np = preg_split( '/\s+·\s+/u', (string) $name, 2 ); /* v42: the words search engines know stay; the office reads as a second line */ ?>
+			<h1 class="nlpp-name"><?php echo esc_html( $nlpp_np[0] ); ?><?php if ( isset( $nlpp_np[1] ) && '' !== $nlpp_np[1] ) : ?> <span class="nlpp-office">· <?php echo esc_html( $nlpp_np[1] ); ?></span><?php endif; ?></h1>
+			<div class="nlpp-sub">
+				<?php if ( $city ) : ?><span><?php echo esc_html( $city ); ?></span><?php endif; ?>
+				<?php /* The badge says "checked", so it needs a recorded check (verified_at) or a card imported from the official register.
+				   A filled registry or licence field alone is only what someone typed (HAD-249). */
+				if ( $is_broker && '' !== $lic ) : ?><span class="<?php echo $in_reg ? 'nlpp-ver' : 'nlpp-lic'; ?>"><?php echo $in_reg ? '✓ ' : ''; ?>רישיון תיווך <span class="nlpp-num"><?php echo esc_html( $lic ); ?></span><?php echo $in_reg ? ', מאומת בפנקס המתווכים' : ''; ?></span>
+				<?php elseif ( $in_reg && 'pinkas_hakablanim' === (string) $g( 'source' ) && '' !== trim( (string) $g( 'registry_number' ) ) ) : ?><?php $nlpp_rf = function_exists( 'nadlan_pc_facts' ) ? nadlan_pc_facts( $id ) : null; /* v98: the year from the register */ ?><span class="nlpp-ver">✓ רשום בפנקס הקבלנים<?php echo ! empty( $nlpp_rf['y'] ) ? ' מאז ' . (int) $nlpp_rf['y'] : ''; ?>, מספר <span class="nlpp-num"><?php echo esc_html( trim( (string) $g( 'registry_number' ) ) ); ?></span></span><?php if ( ! empty( $nlpp_rf['r'] ) ) : ?><span class="nlpp-lic">מוכר לעבודות ממשלתיות</span><?php endif; ?>
+				<?php elseif ( $in_reg ) : ?><span class="nlpp-ver">✓ מאומת ברשם (gov.il)</span><?php endif; ?>
+				<?php $nlpp_cls = 'pinkas_hakablanim' === (string) $g( 'source' ) ? trim( (string) $g( 'classification' ) ) : ''; /* v43: with its grades, shown once (the stat box no longer repeats it) */ if ( '' !== $nlpp_cls ) : ?><span class="nlpp-cls"><?php echo esc_html( 'תחומי רישום: ' . str_replace( ' · ', ', ', $nlpp_cls ) ); ?></span><?php endif; ?>
+				<?php /* how many recommendations other professionals gave (owner 24.9.2026: a thumbs up, a challenge); a count, not a score */
+				$nlpp_recs = function_exists( 'nadlan_endorse_counts' ) ? ( nadlan_endorse_counts( array( (int) $id ) )[ (int) $id ] ?? 0 ) : 0;
+				if ( $nlpp_recs > 0 ) : ?><span class="nlds nlpp-recwrap"><a href="#nlfg-recv" style="text-decoration:none"><?php echo nadlan_endorse_count_html( $nlpp_recs ); // phpcs:ignore ?></a></span><?php endif; ?>
+				<?php if ( $rating > 0 ) : ?><span class="nlpp-stars" aria-label="דירוג <?php echo esc_attr( $rating ); ?>">★ <?php echo esc_html( number_format( $rating, 1 ) ); ?><?php echo $reviews ? ' (' . (int) $reviews . ')' : ''; ?></span><?php endif; ?>
+			</div>
+		</div>
+		<div class="nlpp-ctas">
+			<?php if ( $own_wa ) : /* a broker: straight to the broker, never through the portal */ ?>
+				<?php $nlpp_cal = nadlan_prof_calendar_url( $id ); if ( '' !== $nlpp_cal ) : /* the broker's own booking page */ ?><a class="nlpp-btn nlpp-tel" target="_blank" rel="noopener" href="<?php echo esc_url( $nlpp_cal ); ?>" data-nl-ev="tour">תיאום סיור</a>
+				<?php else : ?><a class="nlpp-btn nlpp-tel" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $own_wa ); ?>?text=<?php echo rawurlencode( 'שלום ' . $person . ', אשמח לתאם סיור באחד הנכסים שלך (nad-lan.co.il)' ); ?>">תיאום סיור</a><?php endif; ?>
+				<a class="nlpp-btn nlpp-wa" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $own_wa ); ?>?text=<?php echo rawurlencode( 'שלום ' . $person . ', הגעתי מהכרטיס שלך ב-nad-lan ואשמח לדבר' ); ?>">וואטסאפ</a>
+				<a class="nlpp-btn nlpp-call" href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>">חיוג</a>
+			<?php else : ?>
+				<?php if ( $wa ) : ?><a class="nlpp-btn nlpp-wa" target="_blank" rel="noopener" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo rawurlencode( 'היי, אשמח לחיבור אל ' . $name . ' דרך האתר' ); ?>">פנייה בוואטסאפ</a><?php endif; ?>
+				<?php if ( $phone ) : ?><a class="nlpp-btn nlpp-tel" href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>">התקשרו</a>
+				<?php elseif ( ! $is_broker ) : /* the quote request the directory header already runs (the old #nlcard-claim anchor led nowhere) */ ?><button type="button" class="nlpp-btn nlpp-tel" data-nadlan-professional-quote data-partner-id="<?php echo (int) $id; ?>" data-partner-title="<?php echo esc_attr( $name ); ?>">קבלו הצעת מחיר</button><?php endif; ?>
+			<?php endif; ?>
+			<?php if ( $premium && ( $meeting || ! $is_broker ) ) : ?>
+				<?php if ( $meeting ) : ?><a class="nlpp-btn nlpp-vid" target="_blank" rel="noopener" href="<?php echo esc_url( $meeting ); ?>">פגישת וידאו</a>
+				<?php else : ?><button type="button" class="nlpp-btn nlpp-vid" data-nlpp-meet>תיאום שיחת וידאו</button><?php endif; ?>
+			<?php endif; ?>
+		</div>
+	</header>
+
+	<div class="nlpp-stats">
+		<?php /* years_active holds a founding year on some cards ("1963+ שנות ניסיון" was printed) */ if ( $years > 1800 && $years <= (int) gmdate( 'Y' ) ) : ?><div><b><?php echo (int) $years; ?></b><span>פעילה מאז</span></div><?php elseif ( $years > 0 && $years < 120 ) : ?><div><b><?php echo (int) $years; ?>+</b><span>שנות ניסיון</span></div><?php endif; ?>
+		<?php if ( $projects_n ) : ?><div><b><?php echo number_format( $projects_n ); ?></b><span>פרויקטים</span></div><?php endif; ?>
+		<?php if ( $g( 'classification' ) && 'pinkas_hakablanim' !== (string) $g( 'source' ) ) : /* a register contractor's classification stands in the header (v43) */ ?><div><b><?php echo esc_html( $g( 'classification' ) ); ?></b><span>סיווג רשמי</span></div><?php endif; ?>
+		<?php if ( $g( 'response_time' ) ) : ?><div><b><?php echo esc_html( $g( 'response_time' ) ); ?></b><span>זמן מענה ממוצע</span></div><?php endif; ?>
+	</div>
+
+	<?php if ( $g( 'bio' ) ) : ?><p class="nlpp-bio"><?php echo esc_html( $g( 'bio' ) ); ?></p><?php endif; ?>
+
+	<?php if ( $specialties || $langs || $areas ) : /* v42: the chips in named groups */ ?>
+	<div class="nlpp-groups">
+		<?php if ( $specialties ) : ?><div class="nlpp-group"><p class="nlpp-group-h">התמחויות</p><div class="nlpp-chips"><?php foreach ( $specialties as $sp ) : ?><a class="nlpp-chip" href="<?php echo esc_url( home_url( '/professionals/?q=' . rawurlencode( $sp ) ) ); ?>"><?php echo esc_html( $sp ); ?></a><?php endforeach; ?></div></div><?php endif; ?>
+		<?php if ( $langs ) : ?><div class="nlpp-group"><p class="nlpp-group-h">שפות</p><div class="nlpp-chips"><?php foreach ( $langs as $l ) : ?><span class="nlpp-chip nlpp-lang"><?php echo esc_html( $l ); ?></span><?php endforeach; ?></div></div><?php endif; ?>
+		<?php if ( $areas ) : ?><div class="nlpp-group"><p class="nlpp-group-h">אזורי פעילות</p><div class="nlpp-chips"><?php foreach ( array_slice( $areas, 0, 6 ) as $a ) : ?><span class="nlpp-chip nlpp-area"><?php if ( function_exists( 'nlds_asset_url' ) ) : ?><img class="nlpp-pin" src="<?php echo esc_url( nlds_asset_url( 'icons/card-pin.svg' ) ); ?>" alt="" width="14" height="14"><?php endif; ?><?php echo esc_html( $a ); ?></span><?php endforeach; ?></div></div><?php endif; ?>
+	</div>
+	<?php endif; ?>
+
+	<?php /* the views are counted (profile_views) but never shown to the public: the owner's rule, no public traffic numbers (design system ProfileHeader v42) */ ?>
+
+	<?php echo nadlan_prof_video_html( $id, $person ); // phpcs:ignore -- built from escaped parts ?>
+
+	<?php echo function_exists( 'nadlan_fg_strip' ) ? nadlan_fg_strip( $id, $person ) : ''; // phpcs:ignore -- the professionals network (inc/firgun.php) ?>
+
+	<?php if ( $premium && ! $meeting && ! $is_broker ) : ?>
+	<form class="nlpp-meet" id="nlpp-meet" hidden data-rest="<?php echo esc_attr( rest_url( 'nadlan/v1/lead' ) ); ?>" data-prof="<?php echo esc_attr( $name ); ?>">
+		<b>תיאום שיחת וידאו עם <?php echo esc_html( $name ); ?></b>
+		<div class="nlpp-meet-row">
+			<input type="text" name="name" placeholder="שם" required>
+			<input type="tel" name="phone" placeholder="טלפון" required>
+			<input type="text" name="slot" placeholder="מועד מועדף (למשל: מחר 17:00)">
+		</div>
+		<input type="text" name="company" class="nlpp-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+		<button type="submit" class="nlpp-btn nlpp-vid">שלחו בקשה</button>
+		<span class="nlpp-meet-msg" aria-live="polite"></span>
+	</form>
+	<?php endif; ?>
+
+	<?php if ( $plat && $plng ) : ?>
+	<section class="nlpp-sec"><h3>אזור פעילות</h3>
+		<div id="nlpp-map" data-lat="<?php echo esc_attr( $plat ); ?>" data-lng="<?php echo esc_attr( $plng ); ?>" data-title="<?php echo esc_attr( $name ); ?>"></div>
+	</section>
+	<?php endif; ?>
+
+	<?php if ( $premium && $ai_on ) : ?>
+	<section class="nlpp-sec nlpp-ai" data-rest="<?php echo esc_attr( rest_url( 'nadlan/v1/concierge' ) ); ?>" data-prof="<?php echo esc_attr( $pm['label'] ); ?>">
+		<h3>שאלו את ה-AI על <?php echo esc_html( $pm['label'] ); ?></h3>
+		<p class="nlpp-ai-hint">למשל: מה בודקים לפני שסוגרים עם <?php echo esc_html( $pm['label'] ); ?>? כמה זה עולה בדרך כלל?</p>
+		<div class="nlpp-ai-row"><input type="text" id="nlpp-ai-q" placeholder="שאלה חופשית..."><button type="button" class="nlpp-btn nlpp-tel" id="nlpp-ai-send">שאלו</button></div>
+		<div class="nlpp-ai-a" id="nlpp-ai-a" hidden aria-live="polite"></div>
+	</section>
+	<?php endif; ?>
+
+	<?php if ( $their ) : ?>
+	<section class="nlpp-sec"><h3>פרויקטים באתר</h3>
+		<ul class="nlpp-list"><?php foreach ( $their as $t ) : ?><li><a href="<?php echo esc_url( $t['url'] ); ?>"><?php echo esc_html( $t['title'] ); ?> ←</a></li><?php endforeach; ?></ul>
+	</section>
+	<?php endif; ?>
+
+	<section class="nlpp-sec"><h3>כלים ומדריכים רלוונטיים</h3>
+		<ul class="nlpp-list"><?php foreach ( $links as $l ) : ?><li><a href="<?php echo esc_url( home_url( $l[0] ) ); ?>"><?php echo esc_html( $l[1] ); ?> ←</a></li><?php endforeach; ?></ul>
+	</section>
+</div>
+<?php
+		return nadlan_pp_shield( ob_get_clean() ) . $content; // shielded from wpautop, put back at 11
+	}
+}
+add_filter( 'the_content', 'nadlan_prof_render', 6 );
+
+/* A shield from wpautop (priority 10) for the markup printed earlier on a professional's page (the profile at 6, the
+   similar professionals at 5): WordPress was cutting the header, the cards and even the directory's <style> with stray
+   </p>, <p> and <br /> (found 28.9.2026 on a contractor's page). The markup waits as a comment where it belongs and is
+   put back, untouched, right after wpautop, so the page keeps its order. */
+if ( ! function_exists( 'nadlan_pp_shield' ) ) {
+	function nadlan_pp_shield( $html ) {
+		if ( ! isset( $GLOBALS['nadlan_pp_shield'] ) ) { $GLOBALS['nadlan_pp_shield'] = array(); }
+		$k = 'NLPPSHIELD' . count( $GLOBALS['nadlan_pp_shield'] ) . 'X' . wp_rand( 1000, 9999 );
+		$GLOBALS['nadlan_pp_shield'][ $k ] = (string) $html;
+		return "\n\n<!--" . $k . "-->\n\n";
+	}
+}
+add_filter( 'the_content', function ( $content ) {
+	if ( empty( $GLOBALS['nadlan_pp_shield'] ) || ! is_string( $content ) ) { return $content; }
+	foreach ( $GLOBALS['nadlan_pp_shield'] as $k => $html ) {
+		$n = 0;
+		$content = preg_replace_callback( '#(?:<p>\s*)?<!--' . preg_quote( $k, '#' ) . '-->(?:\s*</p>)?#', function () use ( $html ) { return $html; }, $content, 1, $n );
+		if ( ! $n ) { $content .= $html; } // never lose it
+	}
+	$GLOBALS['nadlan_pp_shield'] = array();
+	return $content;
+}, 11 );
+
+/* demo profiles: honest tag above + keep out of Google (extends the listings pattern) */
+add_filter( 'wp_robots', function ( $robots ) {
+	if ( is_singular( 'nadlan_professional' ) && get_post_meta( get_queried_object_id(), 'is_demo', true ) ) {
+		$robots['noindex'] = true; $robots['follow'] = true;
+	}
+	return $robots;
+}, 20 );
+
+/* ---------------- styles ---------------- */
+if ( ! function_exists( 'nadlan_prof_assets' ) ) {
+	function nadlan_prof_assets() {
+		if ( ! is_singular( 'nadlan_professional' ) ) { return; }
+		$pid = get_queried_object_id();
+		if ( get_post_meta( $pid, 'lat', true ) && get_post_meta( $pid, 'lng', true ) ) {
+			wp_enqueue_style( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', array(), '1.9.4' );
+			wp_enqueue_script( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js', array(), '1.9.4', true );
+		}
+		wp_register_style( 'nadlan-nlpp', false );
+		wp_enqueue_style( 'nadlan-nlpp' );
+		wp_add_inline_style( 'nadlan-nlpp', '
+.nlpp{--ink:#1B1A17;--warm:#6D665C;--gold:#9C7A3C;--line:#E2DCD0;font-family:var(--font-sans,Heebo,system-ui,sans-serif);color:var(--ink);margin-bottom:26px}
+.nlpp-demo{background:#F3EEE3;border:1px solid var(--line);border-inline-start:3px solid var(--gold);border-radius:8px;padding:10px 14px;font-size:13.5px;margin-bottom:16px}
+.nlpp-demo a{color:var(--gold);font-weight:700;text-decoration:none}
+.nlpp-hero{display:flex;align-items:center;gap:18px;flex-wrap:wrap;border:1px solid var(--line);border-radius:14px;background:#FFFDFC;padding:22px;box-shadow:0 1px 2px rgba(17,17,15,.04)}
+.nlpp-avatar{width:88px;height:88px;flex-shrink:0}.nlpp-photo{border-radius:22px;object-fit:cover;object-position:50% 22%;border:2px solid var(--pc,#2F6F86);background:#fff}.nlpp-cls{flex-basis:100%;font-size:.86rem;color:#6B7680}
+.nlpp-id{flex:1;min-width:200px}
+.nlpp-pill{display:inline-block;font-size:11.5px;font-weight:700;color:#fff;background:var(--pc,var(--ink));border-radius:999px;padding:4px 12px}
+.nlpp-name{font-family:var(--font-serif,"Frank Ruhl Libre",serif);font-size:1.7rem;margin:8px 0 6px;line-height:1.15}
+.nlpp-sub{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--warm)}
+.nlpp-ver{color:#334236;font-weight:700}
+.nlpp-stars{color:var(--gold);font-weight:700}
+.nlpp-ctas{display:flex;gap:8px;flex-wrap:wrap}
+.nlpp-btn{font-size:13.5px;font-weight:700;border-radius:10px;padding:11px 18px;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.nlpp-wa{background:#1f8a4c;color:#fff}.nlpp-tel{background:var(--ink);color:#fff}
+button.nlpp-tel{border:0;cursor:pointer;font-family:inherit}
+.nlpp-call{background:#fff;color:var(--ink);border:1.5px solid var(--ink)}
+.nlpp-lic{color:var(--warm);font-weight:600}
+.nlpp-num{direction:ltr;unicode-bidi:isolate;display:inline-block;font-variant-numeric:tabular-nums lining-nums}
+.nlpp-vid{background:var(--pc,#183C3C);color:#fff;border:0;cursor:pointer;font-family:inherit}
+.nlpp-fomo{font-size:12.5px;color:var(--warm);margin:0 0 14px}
+.nlpp-meet{border:1px solid var(--line);border-radius:12px;background:#FAF8F3;padding:16px;margin-bottom:14px}
+.nlpp-meet-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.nlpp-meet input{flex:1;min-width:130px;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:#fff}
+.nlpp-hp{position:absolute!important;left:-9999px}
+.nlpp-meet-msg{display:block;margin-top:8px;font-size:13px;color:#334236}
+#nlpp-map{height:200px;border-radius:10px;border:1px solid var(--line)}
+.nlpp-ai-row{display:flex;gap:8px}
+.nlpp-ai-row input{flex:1;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:#fff}
+.nlpp-ai-hint{font-size:12.5px;color:var(--warm);margin:0 0 10px}
+.nlpp-ai-a{margin-top:12px;background:#FAF8F3;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px;line-height:1.65}
+a.nlpp-chip{text-decoration:none;color:var(--ink)}a.nlpp-chip:hover{border-color:var(--gold);color:var(--gold)}
+.nlpp-stats{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.nlpp-stats>div{flex:1;min-width:120px;text-align:center;border:1px solid var(--line);border-radius:10px;background:#FAF8F3;padding:12px 8px}
+.nlpp-stats b{display:block;font-size:1.25rem;font-family:var(--font-serif,serif)}
+.nlpp-stats span{font-size:11.5px;color:var(--warm)}
+.nlpp-bio{font-size:15px;line-height:1.7;background:#FFFDFC;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 14px}
+.nlpp-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.nlpp-chip{font-size:12.5px;border:1px solid var(--line);background:#FFFDFC;border-radius:999px;padding:5px 12px}
+.nlpp-sec{border:1px solid var(--line);border-radius:12px;background:#FFFDFC;padding:16px 18px;margin-bottom:14px}
+:root body .nlds.nlpp-video{margin-block:6px 18px!important}
+:root body .nlds.nlpp-network{display:grid!important;gap:var(--nlds-space-22)!important;margin-block:6px 18px!important}
+:root body .nlds .nlfg-more summary{list-style:none;cursor:pointer}
+:root body .nlds .nlfg-more summary::-webkit-details-marker{display:none}
+:root body .nlds .nlfg-more[open] summary{margin-bottom:12px}
+.nlpp-pin{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-inline-end:4px}
+.nlpp-sec h3{font-family:var(--font-serif,serif);font-size:1.1rem;margin:0 0 10px}
+.nlpp-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.nlpp-list a{color:var(--ink);text-decoration:none;font-size:14px}
+.nlpp-list a:hover{color:var(--gold)}
+@media(max-width:560px){.nlpp-hero{padding:16px}.nlpp-name{font-size:1.4rem}.nlpp-ctas{width:100%}.nlpp-btn{flex:1;justify-content:center}}
+/* design system ProfileHeader v42 (28.9.2026): one portrait, the office on its own line, the actions stacked, the chips in groups, a wider page */
+body.single-nadlan_professional .wp-block-post-featured-image{display:none!important}
+:root body.single-nadlan_professional .entry-content>.nlpp,:root body.single-nadlan_professional .entry-content>.nldir-similar{max-width:1040px!important;width:100%;margin-inline:auto!important}
+.nlpp .nlpp-hero{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(200px,230px);align-items:center;gap:22px;padding:24px;border-radius:16px}
+.nlpp .nlpp-avatar{width:104px;height:104px}.nlpp .nlpp-photo{border:3px solid #FAF8F3;box-shadow:0 0 0 1px var(--line)}
+.nlpp .nlpp-pill{background:#EFE9DC;color:#14212b;border:1px solid var(--line)}
+.nlpp .nlpp-name{font-size:34px;margin:6px 0 8px}
+.nlpp .nlpp-office{display:block;font-size:18px;font-weight:500;color:#57534B;margin-top:4px}
+.nlpp .nlpp-ctas{display:grid;gap:8px}
+.nlpp .nlpp-btn{width:100%;justify-content:center;box-sizing:border-box}
+.nlpp .nlpp-ctas .nlpp-btn{background:#fff;color:#14212b;border:1.5px solid var(--line)}
+.nlpp .nlpp-ctas>.nlpp-btn:first-child{background:#2F6F86;color:#fff;border-color:#2F6F86}
+.nlpp .nlpp-bio{max-width:none!important;font-size:16px;line-height:1.75}
+.nlpp-groups{display:grid;gap:12px;margin:0 0 18px}
+.nlpp-group{display:grid;grid-template-columns:110px minmax(0,1fr);align-items:start;gap:10px}
+.nlpp-group-h{margin:0;padding-top:6px;font-size:12.5px;font-weight:700;color:#57534B;letter-spacing:.02em}
+.nlpp-group .nlpp-chips{margin:0}
+@media(max-width:560px){.nlpp .nlpp-hero{grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px}.nlpp .nlpp-avatar{width:80px;height:80px}.nlpp .nlpp-name{font-size:25px}.nlpp .nlpp-office{font-size:15px}.nlpp .nlpp-ctas{grid-column:1/-1;grid-template-columns:1fr 1fr}.nlpp .nlpp-ctas>:first-child{grid-column:1/-1}.nlpp-group{grid-template-columns:minmax(0,1fr);gap:6px}}
+' );
+		wp_register_script( 'nadlan-nlpp-js', false, array(), '1.69.83', true );
+		wp_enqueue_script( 'nadlan-nlpp-js' );
+		wp_add_inline_script( 'nadlan-nlpp-js', '
+(function(){document.addEventListener("DOMContentLoaded",function(){
+	var mb=document.querySelector("[data-nlpp-meet]"),mf=document.getElementById("nlpp-meet");
+	if(mb&&mf){mb.addEventListener("click",function(){mf.hidden=!mf.hidden;if(!mf.hidden){mf.querySelector("input").focus()}});
+		mf.addEventListener("submit",function(e){e.preventDefault();
+			var msg=mf.querySelector(".nlpp-meet-msg"),fd=new FormData(mf);
+			if(fd.get("company")){return}
+			fetch(mf.dataset.rest,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+				name:fd.get("name"),phone:fd.get("phone"),topic:"video-meeting",source:"professional-profile",
+				message:"בקשת שיחת וידאו עם "+mf.dataset.prof+(fd.get("slot")?" | מועד: "+fd.get("slot"):"")
+			})}).then(function(r){msg.textContent=r.ok?"✓ הבקשה נשלחה - נחזור אליכם לתיאום":"שגיאה, נסו שוב";})
+			.catch(function(){msg.textContent="שגיאה, נסו שוב"});
+		});}
+	var m=document.getElementById("nlpp-map");
+	if(m&&window.L){var la=parseFloat(m.dataset.lat),ln=parseFloat(m.dataset.lng);
+		var map=L.map(m,{scrollWheelZoom:false,zoomControl:false}).setView([la,ln],13);
+		L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"&copy; OSM"}).addTo(map);
+		L.circle([la,ln],{radius:2200,color:"#9C7A3C",weight:1.5,fillColor:"#E6D4AE",fillOpacity:.25}).addTo(map);
+		L.marker([la,ln]).addTo(map).bindPopup(m.dataset.title||"");}
+	var ai=document.querySelector(".nlpp-ai");
+	if(ai){var send=document.getElementById("nlpp-ai-send"),q=document.getElementById("nlpp-ai-q"),a=document.getElementById("nlpp-ai-a");
+		function ask(){var t=q.value.trim();if(t.length<4){return}
+			send.disabled=true;send.textContent="חושב...";a.hidden=false;a.textContent="";
+			fetch(ai.dataset.rest,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+				messages:[{role:"user",content:"בהקשר של "+ai.dataset.prof+" בנדל\"ן בישראל: "+t}]
+			})}).then(function(r){return r.json()}).then(function(j){
+				a.textContent=(j.answer||j.reply||j.message||"לא הצלחתי לענות כרגע, נסו לנסח אחרת.");
+			}).catch(function(){a.textContent="השירות לא זמין כרגע."})
+			.finally(function(){send.disabled=false;send.textContent="שאלו"});}
+		send.addEventListener("click",ask);q.addEventListener("keydown",function(e){if(e.key==="Enter"){ask()}});}
+});})();
+' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'nadlan_prof_assets' );

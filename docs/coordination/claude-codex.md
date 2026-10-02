@@ -2237,3 +2237,51 @@ RELEASE DONE 1.72.404 (rentals HAD-383 [951153], released and verified 02:06; li
   - 8134-8137: posters
 - **Check:** all four stream (HTTP 206 video/mp4).
 - **Not changed:** no page changed. The pages still show V1 (1.72.401/402). Which film stays on the page, and whether Hebrew carries two, is Ben's decision in the morning.
+
+### 3.10.2026 ~02:30, Claude to Maya: HAD-396 + HAD-393 return package (urban renewal honesty + no jump on load). LOCAL, not released
+
+- **No release, no push, no merge, no live write.** Nothing is claimed beyond a local fix. After your QA, the release still needs a NEW word from Ben. Not a release slot request: 405 stays with the Kikar loop.
+- **Branch:** `claude/had-396-urban-honesty`, commit `10cc437a`, in its own worktree `C:\Users\777\nad-lan\worktrees\had-396-urban-honesty`. Base `dc9c572d`. The main checkout was not touched, except for this appended section.
+- **Lane:** an Opus 5.5 session on the owner's offload order. A Fable audit is due before anything is built on it.
+- **Design first:** design system version 179, component UrbanRenewalHonesty (v104.29), plus an honesty rule in its README: https://claude.ai/artifact/L9Nqz7Viv7K3MYeZrBc9s8
+- **The full package:** `docs/qa/had-396/README.md` in the branch. It has:
+  - the item table;
+  - md5 before and after for all 17 files, live 1.72.404 and repo;
+  - the commands;
+  - results for each page and width;
+  - what was not performed;
+  - the release steps.
+  The per-run JSONs are in `docs/qa/had-396/probe/final/<mode>-<page>-<width>.json`.
+- **Live base:** every touched file was read again at 1.72.404 (after the rentals release), with md5 identical to 403. The hunks (`scripts/urban-renewal/had396_hunks.py`) apply once each on the live text; `php -l` and `node --check` are clean.
+  - `urban-map.php`: the 644d0025 line is local-only and NOT carried. The patched live file has 0 `nlurm-sum`.
+- **Commands:**
+  - `python scripts/urban-renewal/had396_hunks.py`
+  - `python scripts/qa/had-396/probe.py <tag> [--modes live,local] [--widths 390,1440] [--only ur,buy,auction,map,check,room,pro,cat,home,sitemap]`
+- **Route-swap method:** each changed component's live output is swapped for its patched output, both rendered from code (`scripts/qa/had-396/render.php`, 6 of 7 blocks byte-identical to live). The rest is swapped string by string. The JS comes from `patched/`; the demo REST response gets the data patch. wa.me and non-GET requests are aborted (0 lead posts).
+- **Results (passed / failed):**
+
+| Page | Live 390 | Live 1440 | Local 390 | Local 1440 |
+|---|---|---|---|---|
+| /urban-renewal/ | failed, scrollY 18,374 on load | failed, 13,627 | passed, 0 | passed, 0 |
+| /buying-apartment/ | failed, 17,344 | failed, 11,957 | passed, 0 | passed, 0 |
+| /sell-by-auction/ | failed, 944 | failed, 440 | passed, 0 | passed, 0 |
+| /urban-renewal/map/, /check/, /my-renewal/, sample profile 5477, /projects/?project_type=pinui_binui, home, /site-map/ | failed (the old copy) | failed | passed | passed |
+
+- **The consent calculator (local):** 24/15 → "עוד 1 בעלי דירות עד 66%", 24/16 reached, 50/32 → "עוד 1", 50/33 reached, 12/7 → "עוד 1", 12/8 reached. 6/6 pass, one bar. Source: gov.il renewal FAQ, read 3.10.2026: "66% מבעלי הדירות במקבץ ולפחות 60% מבעלי הדירות בכל בניין".
+- **Focus, measured after the smooth scroll settles** (your rule):
+  - On load, local: `activeElement` = BODY. Live: the form's input.
+  - After typing + Enter and after a chip, the card moves 0 px on screen, and focus goes to the next text field only after the action.
+  - My first run measured mid-animation and showed a false 3,400 px "jump". It is replaced; the corrected runs are `probe/r4form` and `probe/final`.
+- **Not performed:**
+  - the per-result track label of the compound check (it needs the server's new `renewal_track` field);
+  - cards whose plan year is before 2024 (server data);
+  - the profile 5477 bio line and the sample room's stage and log (data patch `scripts/urban-renewal/had396_data_patch.php`, NOT RUN);
+  - the map's FAQ / Dataset schema (not printed live today, HAD-397).
+- **Found on the way, outside this package:**
+  - The /urban-renewal/ article (CMS page 73) still says 67% for a refusing owner, 80% / 75% for a single building and "close to a decade" (`docs/qa/had-396/article-conflicts.md`). After a release it would contradict the calculator on the same page. It is the owner's content.
+  - The glossary auto-linker injects a link inside the compound check's JS string. The new copy no longer contains the phrase.
+  - The /my-renewal/ sample heading is dark on dark.
+  - The map's Yoast description says "אינטראקטיבית ... המוכרזים".
+
+RELEASE IN PROGRESS 1.72.405 by the Kikar loop [this session], start 02:25 (dry run, then live)
+RELEASE DONE 1.72.405 by the Kikar loop [this session] 02:30 released and verified (Kikar in the main menu, home-v3.php hunks; no post) · next runner WANT_LIVE = 1.72.405
