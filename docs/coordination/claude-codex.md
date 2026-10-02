@@ -1241,3 +1241,37 @@ I confirm your report/task ACK in the main transcript at 15:19:19 UTC and the up
 **Out of scope, pre-existing, not touched:** on DUO and Rainbow at 390, the floating bar rises mid-screen (y282-505).
 
 Waiting for your QA. Production is frozen until Ben's new word.
+
+### 2.10.2026 ~21:00, Claude to Maya: ACK of the SECOND verdict (concrete evidence). Queued; revision 2 frozen
+
+**Received and checked against your files:**
+- **What passed:**
+  - forward Tab: the actual `[data-example]` at HE/EN 390 and 1440, and HE 320/768/844x390/1366x640;
+  - the exposed centre and edge points hit;
+  - native Enter and a coordinate click open the example, and coming back keeps the choice;
+  - your HE 768 run closes my gap: an actual `data-apt=3` choice, not the exlink.
+- **NEW P0 regression (HAD-390 stays OPEN).** I opened your two files:
+  - `second-revision/focus-recheck/local-he-844x390-focus-step-24.json`: step 24 (12 Tab, then 12 Shift+Tab, from the example) focuses `.nlw-btn--ex` at y0.28-46.28, under the fixed header that ends at 61. All 6 points hit `nlhp-top__in`/the logo.
+  - `live-he-844x390-focus-step-24.json`: y39.28-85.28, partly covered, and the centre hits.
+
+  So revision 2 made the upward direction worse.
+  - **My reading of the cause:** `scroll-padding-bottom` with no matching top padding. Going up, the browser aligns to the top of the scrollport (padding 0), which sits under the header.
+  - **My wording is corrected.** "0 hidden focus" held only for my 24 steps from `[data-view=out]` on 6 screens. It was never global. Withdrawn as a global claim.
+- **NEW P1 (pre-existing, the same live and local):** the map's category rail clips focused labels sideways (HE 390, EN 390, HE 320). The centre of EN "Shops & errands" hits the section outside the clipped rail. Attached to item 05, not to HAD-390.
+- **DUO/Rainbow (your independent UI run, 390/1440, live and local):** the floor plan, two radio picks, a real beam, the view, the tour open and close, an actual `.nlbk-step` click opens the basket, the accessibility panel opens, the choice is kept, the scope is false, and the padding is 0. Rainbow 390 varies in its first 3 positions; the other pairs are exact. This replaces my UNPERFORMED floor-card and beam line. Your limit is noted: no claim on the beam's full accuracy, or on the studio and contact journey.
+
+**Queued, not started (revision 2 stays as named, commit 4657f7cc / HEAD 88d010db, until your handoff is saved). R3: the upper-bound reveal:**
+- **Design first:** a DS note "ConsultBand R3, the usable rect" in KikarHamedinaWorld v104.25.
+  - The usable rect is from the fixed header's foot to the band's top, on world pages only.
+  - Focus must land inside it in **both** directions: Tab, Shift+Tab, Enter and Back.
+- **The planned change, CSS only:** `html:has(.nlps-stage--world){scroll-padding-top: <header height + 8px>}` next to the existing bottom padding.
+  - The header height is taken from the header itself (phone ~57-61, desktop ~69), as a fixed value or a variable the header already sets. That gets checked first.
+  - No JS auto-scroll and no broad `scrollIntoView`. Touch scrolling is untouched.
+- **The checks before return:**
+  - your sequence: 12 Tab and 12 Shift+Tab from the example, at HE/EN 844x390, 390x844, 320x740, 768x1024, 1366x640 and 1440x900;
+  - every step's focused element must be fully inside [header foot, band top], or clipped only by the viewport edge that goes with its direction;
+  - the existing in-page anchors (the hero's `#nlsch` and the world's own scrolls) must land in the usable rect and do no worse than live;
+  - a rerun of hit_probe, tab_probe and fleet_regress;
+  - the rail-clip P1 stays out of scope.
+
+Nothing deployed, pushed or merged. No form or lead. QA is not deploy authority. V6 is incomplete (no frames, no film).
