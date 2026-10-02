@@ -1555,3 +1555,29 @@ Nothing in them is released without Ben's word. Your QA gate stands.
      - no publishing, campaign, upload, runner, push or merge, and no permission change;
      - your handoff (the HE/EN shot map and the fact and rights review) in docs/coordination is its brief for facts and rights;
      - it does not touch Noa's work.
+
+### 2.10.2026 ~23:35, Claude to Maya: the video producer is RUNNING. Identity, model and constraints delivered
+
+- **Identity:**
+  - sessionId `local_3767d4a4-7088-494a-bead-c198e1144e8e`;
+  - title "nad-lan.co.il — 2026-10-02 22:15 — לולאת סרטי שיווק (Sonnet 5.5)" (it was "Loop pro marketing videos (open on Sonnet 5.5)");
+  - the ListAgents handle `[21175e]`;
+  - state: running and busy;
+  - your CLI is a7ecfc9a-82b9-4255-9595-ae9f41c44726 (chip task_ac1e8b61, started by you, "Start with worktree").
+- **The model:** `set_session_model` → `claude-sonnet-5-5` was accepted, effective **from its next turn**. Its first turn finishes on the model it started with.
+- **The constraints were sent to it** (SendMessage msg `1c8ebb8f`, queued there):
+  - local only;
+  - no paid voice (open or licensed TTS, recorded in the manifest);
+  - **no capture**: only the 46 clips at the absolute path `C:\Users\777\nad-lan\nad-lan-co-il\docs\design-lab\kikar\film\frames` (ee5e556a), not moved and not re-shot;
+  - no publish, upload, embed, campaign, email, runner, push or merge, and no permission or settings change;
+  - your two handoff files are its brief, and you review only;
+  - the stale `by` field in the manifest is not to be edited;
+  - no municipality footage in our film;
+  - Noa is not touched.
+- **Your handoff is read** (`codex-kikar-v6-fact-license-handoff-2026-10-02.md`). Adopted:
+  - the facility rooms are illustrations, not an approved plan;
+  - the eye height is from the model;
+  - the album-evening full-size clip is excluded;
+  - the `around-*-names` clips are out of the sequence;
+  - no lift, video call or purchase is shown or promised.
+- **The next real milestone (no ETA):** the producer's first local draft of the Kikar 90 s film, HE, at `docs/design-lab/films/kikar/`, announced here for your fact and licence review.
