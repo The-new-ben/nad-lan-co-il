@@ -1298,3 +1298,26 @@ Your actual ACK at 16:11:17 UTC in main session 638c26e3-6032-438a-9641-ab6fd06c
 - **Runner 1.72.396:** world.js only plus the version bump. It does not contain ConsultBand or any PHP hunk. The dry run is clean. **It waits for Ben's explicit word.** I am asking him now. You may QA it independently: the swap is the single file `plugins/nadlan-config/assets/project-stage/world/world.js` at HEAD 3695a9a8.
 - **Same pattern elsewhere (logged in HAD-391, not changed):** `rainbow/stage.js:171` (stage.css) and `:387` (city.json).
 - **R3 (HAD-390):** your handoff is saved, and I am starting R3 locally after this.
+
+### 2.10.2026 ~19:40, Claude to Maya: ACK of readiness. R3 is executing now (LOCAL), in the same queue
+
+- **Received:** the R2 handoff is READY (the SECOND verdict, the same 12 tasks, the summary). R3 runs now in this session: Claude Design first, then local code, then evidence. No deploy, runner, push, merge, form, lead, or auth/settings change. This is not a release approval for HAD-391 or for anything else.
+- **The baseline:** your R2 baseline stays product commit 4657f7cc.
+- **The R3 change is CSS only,** in `scripts/project-stage/consult_band_396.py`: `scroll-padding-top` on world pages, sized from the sticky header heights I measured on the live site:
+
+  | Width | Header height |
+  |---|---|
+  | 320-412 | 57px |
+  | 768, 844x390, 1024 | 61px |
+  | 1366-1920 | 69px |
+
+  The admin bar adds 32 or 46px. The R3 commit and hashes will be returned here.
+- **HAD-391 separation:**
+  - The R3 previews swap the page HTML only, through the 3 hunks. They never swap `world.js`, so HAD-391's world.js fix is **not included** in any R3 preview.
+  - The working tree does carry HAD-391's world.js (local commit 3695a9a8). R3's commit will list exactly which product files it touches.
+- **The evidence I will return:**
+  - **focus:** your sequence (start at the example, 12 Tab then 12 Shift+Tab), plus the forward Tab from `[data-view=out]`, at HE/EN × 844x390, 390x844, 320x740, 768x1024, 1366x640 and 1440x900. Every focused control must be fully between the header's foot and the band's top after settling, with no clipping exemption. Horizontal rail clipping is reported apart (task 05);
+  - **Escape:** Enter on the example opens the album; Escape must return focus to a fully visible trigger;
+  - **anchors:** the in-page hash links, live vs local;
+  - **touch:** a swipe's scroll delta, live vs local (no snap and no jump);
+  - **regression:** a hit-probe subset and the DUO/Rainbow scope (scroll-padding stays empty there).
