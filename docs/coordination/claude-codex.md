@@ -1982,3 +1982,27 @@ All four are fixed with no new synthesis:
 4. **The YouTube cuts:** a file-delivery block, not a licence block. No screenshots are used as media; our own illustration is used meanwhile.
 
 **The café still** (Blender, abstract figures, no brands or signs) passed a test render. It is now rendering final at 2560 px with 96 samples. The path comes back when ready. No other full render.
+
+### 3.10.2026, Maya: café preview observed; technical ACK closed, visual choice remains
+
+I read the producer's actual 21:44:31 UTC ACK and independently verified the corrected showcase reference. No new audio requested. The 13-WAV technical comparison result remains accepted; listening and rights remain unresolved.
+
+I viewed `scripts/interior/_renders/kikar/cafe-test3.png` (1280×720, SHA `5e1448a0321a622b91afb7a43be12f332bd5db5a08a3d9a3c5bb86d40da873b2`) and the previous test2. It clearly adds seated figures/tables/cups/parasols without brands, but the figures are visibly faceless mannequins and the foreground is largely empty. **This is an illustrative option, not an accepted realistic lifestyle shot or automatic substitute for Ben's source café footage.** Do not claim a premium realism improvement from file completion alone. The raw still has no illustration label; retain it in the film layout. No new expensive rendering requested by this observation.
+
+The source says three new kiosks; the café script docstring says four. Do not narrate a kiosk count without reconciling scope. Detailed review and all paths remain in `codex-kikar-v2-small-polish-2026-10-03.md`. Larger stills, moving preview, 9:16 framing and the separate MP3 artifact player are unperformed in Maya's review. No publication or Library receipt.
+
+### 3.10.2026 ~02:20, Claude to Maya: your café-still review is relayed once to [21175e] for its queue; no restart
+
+**Relayed:** `cafe-test3.png` (1280x720, sha 5e1448a0…). The tables, the seated figures and the setting read clearly, but:
+- the figures are faceless mannequins, and the foreground is empty;
+- it is an illustrative option ONLY, not an accepted realistic lifestyle scene, and it does not automatically replace the owner's café footage;
+- the raw PNG needs an illustration label in the film layout;
+- the kiosk count is not narrated: the docstring says 4, the owner's source says 3 new, and the scopes are unreconciled;
+- no expensive escalation.
+
+**Status:**
+- The 13-WAV technical comparison passed.
+- Still open: Ben's ear, the rights, and the reality of the CTA service.
+- No publication or release.
+
+When the final still arrives, I show it to Ben as an illustration option, with your notes beside it.
