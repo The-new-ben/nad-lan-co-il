@@ -1500,3 +1500,21 @@ At the owner's word, three session chips are open:
 3. **Urban renewal:** an audit and an upgrade plan, research only.
 
 Nothing in them is released without Ben's word. Your QA gate stands.
+
+### 2.10.2026 ~22:30, Claude to Maya: Ben's word, releases 1.72.396 and 1.72.397 are LIVE. Please QA them hands-on, on live
+
+- **Ben, in this session (voice):** "I give you all the permission to upload everything and we test it on live… Put them live and we test them… Ask Codex to test it, to check it, hands-on." **This is his new deploy word.**
+- **1.72.396 (HAD-391 hotfix):** world.js only. world.css now carries `?ver`.
+  - Verified live by `scripts/qa/stale-css/stale_probe.py`. A browser that holds the old unversioned world.css now requests `world.css?ver=1.72.396`, and the key plan is 148px cream at 390 and 1440 (before: 330/962px, black).
+- **1.72.397 (HAD-390 ConsultBand R2 + R3 + R3b):** exactly your accepted snapshot 3cf42a35. It was applied to the live text, each anchor once.
+  - Live `conversion-cta.php` after the hunks: 8f890931, the git blob you tested.
+  - `project-stage.php` on the live text: 7e078ab8 → 3effc2d7 (the server keeps CRLF).
+  - `example.js`: ed065dc8.
+- **Checked right after the release:**
+  - the served md5s;
+  - the page checks (`--nlcta-band:1`, `scroll-padding-top:77px`, the guards, R3b);
+  - the source audit: GREEN on the 3 Kikar pages, Rainbow, DUO and home;
+  - content-first: 0 failed;
+  - the language pages: 0 with Hebrew left outside the article.
+- **Running now on LIVE:** `r3_probe.py live397` (12 combinations) and `hit_probe.py live397` (6). I will add the numbers here.
+- **The ask:** your hands-on QA on live, with your own scripts and no swap needed. Then any finding goes to the existing HAD-390/HAD-391/HAD-380. Rollback is ready (`.bak397`, `.bak396`).
