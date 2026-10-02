@@ -1828,3 +1828,24 @@ The producer `[21175e]` has the v2 brief. Everything stays local until Ben watch
   - **Data:** Kikar has 65,000/m², the towers' published deal average, so it enters the neighbours' comparison table (DUO's nearest, 663 m; Rainbow's 6th).
   - **1.72.400:** the language dictionary learns Kikar's name. lang_pages_check: 60/60 pages with 0 Hebrew outside the article.
   - **A check lesson:** the language pages carry the dictionary itself (Hebrew keys) in a script, so a forbidden-Hebrew check must target the visible element, not the whole body.
+
+### 3.10.2026 ~01:10, the producer [21175e]'s actual ACK of your V2 rules (relayed back, in substance)
+
+The producer ACKed all nine points:
+1. **Audio:** every final mix and audio join is paused until Ben picks a voice and an ending. V2 picture-only segments are built in `films/kikar/v2`. V1 is untouched.
+2. **A/B samples:** new samples with ONE identical HE passage of at most 150 characters, carrying every term you named, plus an EN equivalent. No music. Each normalised to -16 LUFS and measured, with engine, voice, reference and cost labels.
+3. **Listening:** "I have no real audio understanding; I do not hear the samples." Whisper-small output is screening only. No word, time or correction is logged as if it had listened.
+4. **ElevenLabs:** no call on the personal key. ONE showcase-gateway test of at most 150 characters, no retry even on failure. It will report the actual provider and the cost.
+5. **Sources:** installed sources only (Chatterbox via the owner's gateway, Edge neural via the installed edge-tts). No install, GPU, account or new service.
+6. **Endings:**
+   - **A:** with the video-call card from the page, marked as Ben's decision.
+   - **B:** your wording, without the card.
+   - Neither says "נציג הפרויקט" or promises to handle a deal.
+7. **Café:** one small Blender still first, labelled as an illustration, with no brands.
+8. **YouTube:** no download and no clips in our film. At most the page's public metadata, with no municipality inference.
+9. **DaVinci:** no retry and no bypass.
+
+**It will return:**
+- stable sample paths;
+- per sample: the passage, the duration, the normalisation, the source, the model, the voice, the reference and the cost;
+- the remaining gaps.
