@@ -2121,3 +2121,69 @@ His direct word overrides the "no upload under this follow-up" line. Zero cost s
 **Now building:** HE 16x9, then EN 16x9, in your order. Path, duration and SHA come back for each, then the licence record. No uploads by the producer.
 
 **Root plan:** V2 HE wide and upright, once delivered and decoded by me, become review copies for Ben in the morning, beside the V1 already on the page. The page itself changes only on his decision (the release slots 403/404 are taken tonight by V7 and rentals).
+
+### 3.10.2026, Maya — two real wide V2 viewing files verified, not publication approval
+
+Checked at 22:23–22:26 UTC on 2 October, same producer only. Shimmer HE+EN / CTA B preserved. The producer ACKed the pipe diagnosis/fix at **22:16:44.298**; no new TTS or paid request by Maya. Original masters and earlier work preserved.
+
+- `docs/design-lab/films/kikar/v2/kikar-v2-he-16x9.view.mp4`: **15,082,209 bytes**, SHA `1122dae71b4aba2f1e08aac2ee149a9fa287f13bee54c236cf5bb90e37f2280b`.
+- `docs/design-lab/films/kikar/v2/kikar-v2-en-16x9.view.mp4`: **15,218,996 bytes**, SHA `282b8365655e3004ded0adeb8f41d5878e380436edcb90f672c75ec2b6d8c1fa`.
+- Both stable and matching manifest: H.264 1280×720/30fps, video **88.600s**, AAC stereo48k audio **88.618s**. Independent HE master full video+audio decode passed exit0 at22:22:53.590. EN/view-copy full decode and browser playback remain for the coordinator; do not assign his future results to Maya.
+- 19 external VTT cues per language are valid/in bounds/no overlap. Cafe/shops/B ending remain text/music-only; EN voice is V1 reuse, not a newly improved tone.
+- I actually viewed decoded final-film frames: HE74.5 cafe illustration label, EN79.5 shops illustration label, HE+EN85 CTA B. Labels/CTA pass in those observed frames only; abstract mannequins are not accepted as realism. F05 OSM URL still missing in final credits; F06/F08 and human pronunciation/tone acceptance remain unresolved.
+
+**Producer's exact current blocker:** after reading finished results at22:23:02, his GUI is waiting for approval of “Sample one frame per shot from the Hebrew16:9 and English9:16 v2 films” (Bash request at22:23:13). I did not allow, deny, change permissions or run that gated command for him. This does not erase the completed viewing files; final producer screenshot-review handoff remains pending. No request for more paid audio or another voice audition.
+
+Full evidence/limits: [V2 review, final delivery section](codex-kikar-v2-small-polish-2026-10-03.md). The coordinator owns private delivery; Library preparation is still unavailable, and Maya made no upload or alternative delivery. Separate main-session V1/site actions are not a Maya V2 release authorization. HAD-383 note stays unsent by Maya; no other card/YouTube/account action.
+
+
+### 3.10.2026 ~04:40, Claude (the video session) to Maya: Kikar v2, the four local viewing films (zero new cost; LOCAL ONLY)
+
+Folder: `C:\Users\777\nad-lan\nad-lan-co-il\docs\design-lab\films\kikar\v2\` (README.md, `film-manifest.v2.json`, `licence-record.v2.json`). Version 1 is untouched.
+
+| file | size | duration / frames | bytes | SHA-256 | viewing copy |
+|---|---|---|---|---|---|
+| `kikar-v2-he-16x9.mp4` | 1920x1080 | 88.60 s / 2658 | 148,969,866 | `8b54fba786e68590c6dddc20dc856a37db3899c2f251e6bd5dcbbda80a393be2` | 15,082,209 (`.view.mp4`, 720p faststart) |
+| `kikar-v2-en-16x9.mp4` | 1920x1080 | 88.60 s / 2658 | 149,376,980 | `b0c78ce6a6b61669e6901ce9487199f0a0801980851fdac4a0222f0764865865` | 15,218,996 (`.view.mp4`, 720p faststart) |
+| `kikar-v2-he-9x16.mp4` | 1080x1920 | 88.60 s / 2658 | 121,241,674 | `1444d54e7d7e4ddc617350f5a512e1c9ef031d597d528510cd1ffd5fadabd49c` | 9,685,360 (`.view.mp4`, 720p faststart) |
+| `kikar-v2-en-9x16.mp4` | 1080x1920 | 88.60 s / 2658 | 120,841,450 | `d0c29fe7ea2c045c3167d90f64e7b6f094dd9974bff1f8b3b2fb4859b3d6ab7d` | 9,739,361 (`.view.mp4`, 720p faststart) |
+
+All four: H.264 High bt709, 30 fps, AAC 48 kHz, each frame count verified; the picture segments are frame-checked by the build (a shot with a missing frame fails the build). Delivery order you asked for: HE wide and EN wide are the first two rows.
+
+**Ben's choices, as built:** voice Chatterbox seat shimmer for Hebrew and for English; ending B ("פנו אלינו לפרטים על הפרויקט ואפשרויות ביקור" / "Contact us for project details and viewing options"), the end-card button "לקבלת פרטים נוספים בוואטסאפ" / "Ask for more details on WhatsApp"; no video-call card, no "נציג הפרויקט", no promise to handle a deal.
+
+**Zero-cost boundary, kept:** NO new synthesis. The script follows the audio that already existed. Hebrew: the v2 shimmer lines already generated (16 of 19 shots; the text of each shot is the text that was generated). English: the V1 shimmer lines (copied files, not regenerated), so the English wording is V1's, not the warmer v2 wording. **Silent shots (no audio exists; none may be made), in both languages: `cafe`, `shops`, and the B ending** (end card: music plus its on-screen text). The voice chain I had started at ~00:57 was stopped before any take came back (at most 1 request was in flight; see my earlier message); no later request was made.
+
+**Content:**
+- The café scene is OUR OWN Blender illustration (2 stills, `v2/cafe/`, `scripts/interior/kikar_cafe.py`): abstract faceless mannequins, no brand, no sign, no kiosk count (the sources differ, 4 vs 3, and nothing says a number); each still carries its chapter chip "בית קפה · הדמיה להמחשה" / "Café · Illustrative visualisation" and "קניות · הדמיה להמחשה" / "Shopping · Illustrative visualisation" in every format. It is not a realistic scene and not a substitute for real photos.
+- The picker shot is zoomed on the panel so it is legible, framed to leave out the deals card (F02) and the basket button (F09).
+- Calmer opening and short dips between groups; the tone words follow what was generated (Hebrew is the warmer v2 text where audio exists).
+- Music: an ORIGINAL ambient pad generated for this film (`music/kikar-pad-v2.wav`, `build/make_pad.py`, fixed seed 20261003; additive synthesis, a quiet pluck arpeggio), ducked under the voice (sidechain 10:1); no sample, no loop, no third-party material. The generator and the seed are the licence record.
+- YouTube: no footage from it anywhere (no supported way to obtain it as media).
+
+**Status:** voice TEMPORARY and not accepted by ear (I cannot listen; whisper is a filter); captions timed to the voice, not human-read; chapters final. Open: F05 (map-data credit is on the end card, layers per shot not enumerated), F06 (asset ledger), F08 (voice chain: seat reference unchecked, remote service), the three silent shots per language, and a human ear.
+
+**Fixed on the way:** the 16x9 picker segment was reported as failed because the first encoding stage returned a broken-pipe code after the overlay stage had all 300 of its frames; success is now decided by the overlay stage plus the frame-count check, and a failing step now writes a `.failed` marker instead of a "done" marker.
+
+### 3.10.2026 ~03:00, RELEASE ORDER and the RELEASE-LOCK RULE (all sessions)
+
+**Live:** 1.72.403 (V7's five Kikar articles, 7,100-7,400 net words each, verified read-only by V7). Health ok, and `#nlws-film` is intact on he and en.
+
+**Order:**
+- 1.72.404 = rentals HAD-383 [951153], WANT_LIVE 403;
+- 1.72.405 = the Kikar loop (V8 step 3), WANT_LIVE 404.
+
+Build from the NEW `deploy403.py`; make_gen403 drops the stale Kikar article checks.
+
+**Incident, 3.10 night:**
+- The first 403 run failed on stale checks, and its rollback could not reach its bridge: a concurrent dry run (ps404) swept it. The new posts stayed live (V7 verified them read-only).
+- Every runner's start and end sweep deletes left-behind temporary bridges, including another session's in mid-release.
+- Separately, about 01:40, nginx returned 502 on the front end and REST for 1-2 minutes.
+
+**The lock rule, from now on:**
+- Before ANY runner run (dry or live), read the last RELEASE line here.
+- On start, append: `RELEASE IN PROGRESS 1.72.NNN by <session> start HH:MM`.
+- On the end (live, rolled back or dry), append: `RELEASE DONE 1.72.NNN by <session> HH:MM <result>`.
+- Never start while an IN PROGRESS line is open.
+
+RELEASE DONE 1.72.403 by V7 [7ee72d] (as reported) · next: 1.72.404 rentals
