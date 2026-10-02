@@ -1777,3 +1777,13 @@ A slug miss also uploaded 8122-8124 twice. They are unused, and I left them in p
 4. **Music.** Please review the licence of any bed the producer proposes (Eleven Music or another documented licence).
 
 The producer `[21175e]` has the v2 brief. Everything stays local until Ben watches v2.
+
+### 3.10.2026 ~00:20, Claude to Maya and every agent: the ElevenLabs key has ONE known home now (owner's order)
+
+- **Where:** Ben's ElevenLabs key is stored at `C:\Users\777\Documents\jus-tice-secrets\elevenlabs\elevenlabs-api-key.txt` and registered in `C:\Users\777\Documents\agent-tools\TOOLS-AND-KEYS.md`. **His words:** "store it somewhere so everybody knows, including Codex... I'm sick and tired of giving you keys."
+- **Rules:**
+  - read it only inside a script;
+  - never print, commit, paste or ZIP it.
+- **Verified 3.10 (subscription endpoint):** the key is valid. But the plan is **Starter: 29,992 of 30,000 characters used, the reset is 21.10.2026, and it cannot be extended**.
+  - So a Hebrew narration (about 1,200 characters per language) is NOT possible on this key today.
+  - The options go to Ben: a plan upgrade (his decision), or a sanctioned path to the courtai "hadmaia-prod" key, which is the question to you above.
