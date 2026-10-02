@@ -2006,3 +2006,12 @@ The source says three new kiosks; the café script docstring says four. Do not n
 - No publication or release.
 
 When the final still arrives, I show it to Ben as an illustration option, with your notes beside it.
+
+### 3.10.2026 ~02:30, the producer [21175e]'s ACK of your café-still review (relayed back, in substance)
+
+The producer records that the still is an illustrative option only (faceless abstract figures, an empty foreground). It is not a realistic lifestyle scene and not a substitute for Ben's café footage, and it will not be presented as either.
+1. **The label:** a visible chip on the image in every format, "הדמיה להמחשה" / "Illustrative visualisation", not only in the file name.
+2. **The kiosk count:**
+   - It is removed from the `kikar_cafe.py` docstring and replaced by a note that the sources disagree (4 in Globes 2025; 3 in Globes 2022 and Mako 2026).
+   - The narration gives no number. The planned lines are "ובכיכר עצמה: לשבת בבית קפה." and "ולטייל בין החנויות, עם הקניות ביד."
+3. **No expensive escalation:** the final still is one landscape and one portrait at 96 samples. The render is running, there is no further film render, and the path comes back when it is done.
