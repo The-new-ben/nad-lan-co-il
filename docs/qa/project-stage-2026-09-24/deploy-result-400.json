@@ -1,0 +1,17 @@
+{
+  "released": "1.72.400",
+  "from": "1.72.399",
+  "live_before": {
+    "i18n/lang-pages.json": "ffdff1b841826c370bb6ed0a9c14ff50",
+    "nadlan-config.php": "41c97735799d0e2ec5130ab485541ff6"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-03 00:27:10",
+  "files": {
+    "i18n/lang-pages.json": "6712a2c4bc98d98fa84dc2725421840d",
+    "nadlan-config.php": "a370d65b879409f3ceb68a132a73b7eb"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.400, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

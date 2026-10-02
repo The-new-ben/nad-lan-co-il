@@ -1,0 +1,3583 @@
+{
+ "note": "StageDict (HAD-361, 28.9.2026): the project stage's words on a project's language page (the 3D stage, its 360 room, its floor slice, the facility and place cards, the view panel and the stage's server-printed parts). Built by scripts/i18n/build_stage_dict.py; read with i18n/lang-pages.json by assets/project-stage/i18n-dom.js (the browser) and inc/lang-pages.php (the server). Keys are the exact Hebrew the stage prints.",
+ "exact": {
+  "הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר.": {
+   "en": "Interior illustration only: the layout, the finishes and the view are estimates and are not based on a sale plan.",
+   "fr": "Illustration intérieure uniquement : l'agencement, les finitions et la vue sont estimés et ne reposent pas sur un plan de vente.",
+   "ru": "Только иллюстрация интерьера: планировка, отделка и вид приблизительны и не основаны на плане продажи.",
+   "ar": "تصور داخلي توضيحي فقط: التقسيم والتشطيبات والإطلالة تقديرية وليست بحسب مخطط البيع."
+  },
+  "רעיון עיצוב להמחשה, לא המפרט של היזם.": {
+   "en": "A design idea for illustration, not the developer's specification.",
+   "fr": "Une idée de décoration à titre indicatif, pas le descriptif du promoteur.",
+   "ru": "Идея дизайна для иллюстрации, а не спецификация застройщика.",
+   "ar": "فكرة تصميم للتوضيح، وليست مواصفات المطوّر."
+  },
+  "הנפחים השקופים הם פרויקטים מתוכננים ברובע, בגובה לפי מספר הקומות.": {
+   "en": "The transparent volumes are planned projects in the quarter, with heights by their number of floors.",
+   "fr": "Les volumes transparents sont des projets prévus dans le quartier, à une hauteur fonction de leur nombre d'étages.",
+   "ru": "Прозрачные объёмы — проектируемые здания в районе, высотой по числу этажей.",
+   "ar": "الكتل الشفافة هي مشاريع مخطط لها في الحي، بارتفاع بحسب عدد طوابقها."
+  },
+  "הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם.": {
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر."
+  },
+  "הדמיה להמחשה בלבד, על בסיס מקורות פומביים. אינה תוכנית מכר.": {
+   "en": "Illustration only, based on public sources. Not a sale plan.",
+   "fr": "Illustration uniquement, d'après des sources publiques. Ce n'est pas un plan de vente.",
+   "ru": "Только иллюстрация на основе открытых источников. Не является планом продажи.",
+   "ar": "تصور توضيحي فقط، استناداً إلى مصادر علنية. ليس مخطط بيع."
+  },
+  "הדמיה להמחשה בלבד, על בסיס מקורות פומביים. חלוקת הקומה לדירות היא לדוגמה, ואינה לפי תוכנית מכר.": {
+   "en": "Illustration only, based on public sources. The division of the floor into apartments is an example and is not based on a sale plan.",
+   "fr": "Illustration uniquement, d'après des sources publiques. La répartition de l'étage en appartements est un exemple et ne repose pas sur un plan de vente.",
+   "ru": "Только иллюстрация на основе открытых источников. Деление этажа на квартиры — пример и не основано на плане продажи.",
+   "ar": "تصور توضيحي فقط، استناداً إلى مصادر علنية. تقسيم الطابق إلى شقق هو مثال وليس بحسب مخطط البيع."
+  },
+  "חתך להמחשה: קו החזית והמרפסות לפי הדגם של הבמה; הגרעין והחלוקה לדירות משוערים ואינם תוכנית מכר.": {
+   "en": "An illustrative section: the facade line and the balconies follow the 3D model; the core and the division into apartments are estimates and are not a sale plan.",
+   "fr": "Coupe indicative : la ligne de façade et les balcons suivent la maquette 3D ; le noyau et la répartition en appartements sont estimés et ne constituent pas un plan de vente.",
+   "ru": "Условный разрез: линия фасада и балконы — по 3D-модели; ядро и деление на квартиры приблизительны и не являются планом продажи.",
+   "ar": "مقطع توضيحي: خط الواجهة والشرفات بحسب النموذج ثلاثي الأبعاد؛ النواة وتقسيم الشقق تقديريان وليسا مخطط بيع."
+  },
+  "דירה לדוגמה": {
+   "en": "Example apartment",
+   "fr": "Appartement témoin",
+   "ru": "Пример квартиры",
+   "ar": "شقة نموذجية"
+  },
+  "לדוגמה": {
+   "en": "Example",
+   "fr": "Témoin",
+   "ru": "Пример",
+   "ar": "نموذجية"
+  },
+  "הנוף מהדירה לדוגמה": {
+   "en": "The view from the example apartment",
+   "fr": "La vue depuis l'appartement témoin",
+   "ru": "Вид из квартиры-примера",
+   "ar": "الإطلالة من الشقة النموذجية"
+  },
+  "הנוף מהקומה": {
+   "en": "The view from the floor",
+   "fr": "La vue depuis l'étage",
+   "ru": "Вид с этажа",
+   "ar": "الإطلالة من الطابق"
+  },
+  "לצד אחר: הקישו על הטבעת": {
+   "en": "Another side: tap the ring",
+   "fr": "Autre côté : touchez l'anneau",
+   "ru": "Другая сторона: нажмите на кольцо",
+   "ar": "جهة أخرى: انقروا على الحلقة"
+  },
+  "בחרו דירה לדוגמה בטבעת הקומה": {
+   "en": "Choose an example apartment on the floor's ring",
+   "fr": "Choisissez un appartement témoin sur l'anneau de l'étage",
+   "ru": "Выберите квартиру-пример на кольце этажа",
+   "ar": "اختاروا شقة نموذجية على حلقة الطابق"
+  },
+  "להיכנס לדירה · 360°": {
+   "en": "Enter the apartment · 360°",
+   "fr": "Entrer dans l'appartement · 360°",
+   "ru": "Войти в квартиру · 360°",
+   "ar": "الدخول إلى الشقة · 360°"
+  },
+  "הנוף והמפה": {
+   "en": "The view and the map",
+   "fr": "La vue et la carte",
+   "ru": "Вид и карта",
+   "ar": "الإطلالة والخريطة"
+  },
+  "לעצב את הדירה": {
+   "en": "Design the apartment",
+   "fr": "Aménager l'appartement",
+   "ru": "Оформить квартиру",
+   "ar": "صمّموا الشقة"
+  },
+  "לקבלת תוכניות ומחירים": {
+   "en": "Get plans and prices",
+   "fr": "Recevoir plans et prix",
+   "ru": "Получить планировки и цены",
+   "ar": "احصلوا على المخططات والأسعار"
+  },
+  "לקבלת פרטים על הקומה": {
+   "en": "Get details on this floor",
+   "fr": "Recevoir les détails de cet étage",
+   "ru": "Узнать подробности об этаже",
+   "ar": "احصلوا على تفاصيل الطابق"
+  },
+  "סיור וירטואלי בפרויקט": {
+   "en": "Virtual tour of the project",
+   "fr": "Visite virtuelle du projet",
+   "ru": "Виртуальный тур по проекту",
+   "ar": "جولة افتراضية في المشروع"
+  },
+  "בחרו קומה במגדל": {
+   "en": "Choose a floor in the tower",
+   "fr": "Choisissez un étage de la tour",
+   "ru": "Выберите этаж в башне",
+   "ar": "اختاروا طابقاً في البرج"
+  },
+  "בחרו מגדל וקומה": {
+   "en": "Choose a tower and a floor",
+   "fr": "Choisissez une tour et un étage",
+   "ru": "Выберите башню и этаж",
+   "ar": "اختاروا برجاً وطابقاً"
+  },
+  "בחרו כיוון סביב הקומה": {
+   "en": "Choose a direction around the floor",
+   "fr": "Choisissez une direction autour de l'étage",
+   "ru": "Выберите направление вокруг этажа",
+   "ar": "اختاروا اتجاهاً حول الطابق"
+  },
+  "שקיעה": {
+   "en": "Sunset",
+   "fr": "Coucher de soleil",
+   "ru": "Закат",
+   "ar": "الغروب"
+  },
+  "צהריים": {
+   "en": "Noon",
+   "fr": "Midi",
+   "ru": "Полдень",
+   "ar": "الظهيرة"
+  },
+  "תאורה": {
+   "en": "Lighting",
+   "fr": "Éclairage",
+   "ru": "Освещение",
+   "ar": "الإضاءة"
+  },
+  "פונה": {
+   "en": "Facing",
+   "fr": "Orienté",
+   "ru": "Ориентация",
+   "ar": "باتجاه"
+  },
+  "צפונה": {
+   "en": "north",
+   "fr": "nord",
+   "ru": "север",
+   "ar": "الشمال"
+  },
+  "צפון מזרחה": {
+   "en": "north-east",
+   "fr": "nord-est",
+   "ru": "северо-восток",
+   "ar": "الشمال الشرقي"
+  },
+  "מזרחה": {
+   "en": "east",
+   "fr": "est",
+   "ru": "восток",
+   "ar": "الشرق"
+  },
+  "דרום מזרחה": {
+   "en": "south-east",
+   "fr": "sud-est",
+   "ru": "юго-восток",
+   "ar": "الجنوب الشرقي"
+  },
+  "דרומה": {
+   "en": "south",
+   "fr": "sud",
+   "ru": "юг",
+   "ar": "الجنوب"
+  },
+  "דרום מערבה": {
+   "en": "south-west",
+   "fr": "sud-ouest",
+   "ru": "юго-запад",
+   "ar": "الجنوب الغربي"
+  },
+  "מערבה": {
+   "en": "west",
+   "fr": "ouest",
+   "ru": "запад",
+   "ar": "الغرب"
+  },
+  "צפון מערבה": {
+   "en": "north-west",
+   "fr": "nord-ouest",
+   "ru": "северо-запад",
+   "ar": "الشمال الغربي"
+  },
+  "צפון": {
+   "en": "North",
+   "fr": "Nord",
+   "ru": "Север",
+   "ar": "شمال"
+  },
+  "מזרח": {
+   "en": "East",
+   "fr": "Est",
+   "ru": "Восток",
+   "ar": "شرق"
+  },
+  "דרום": {
+   "en": "South",
+   "fr": "Sud",
+   "ru": "Юг",
+   "ar": "جنوب"
+  },
+  "מערב": {
+   "en": "West",
+   "fr": "Ouest",
+   "ru": "Запад",
+   "ar": "غرب"
+  },
+  "מגדל צפוני": {
+   "en": "North tower",
+   "fr": "Tour nord",
+   "ru": "Северная башня",
+   "ar": "البرج الشمالي"
+  },
+  "מגדל דרומי": {
+   "en": "South tower",
+   "fr": "Tour sud",
+   "ru": "Южная башня",
+   "ar": "البرج الجنوبي"
+  },
+  "צפוני": {
+   "en": "North",
+   "fr": "Nord",
+   "ru": "Северная",
+   "ar": "الشمالي"
+  },
+  "דרומי": {
+   "en": "South",
+   "fr": "Sud",
+   "ru": "Южная",
+   "ar": "الجنوبي"
+  },
+  "המגדל": {
+   "en": "The tower",
+   "fr": "La tour",
+   "ru": "Башня",
+   "ar": "البرج"
+  },
+  "המגדלון": {
+   "en": "The mid-rise",
+   "fr": "La petite tour",
+   "ru": "Малая башня",
+   "ar": "البرج الصغير"
+  },
+  "מסחר מערבי": {
+   "en": "West retail",
+   "fr": "Commerces ouest",
+   "ru": "Западный торговый корпус",
+   "ar": "المتاجر الغربية"
+  },
+  "מסחר צפוני": {
+   "en": "North retail",
+   "fr": "Commerces nord",
+   "ru": "Северный торговый корпус",
+   "ar": "المتاجر الشمالية"
+  },
+  "מסחר דרומי": {
+   "en": "South retail",
+   "fr": "Commerces sud",
+   "ru": "Южный торговый корпус",
+   "ar": "المتاجر الجنوبية"
+  },
+  "קומות הפנטהאוז": {
+   "en": "penthouse floors",
+   "fr": "étages des penthouses",
+   "ru": "этажи пентхаусов",
+   "ar": "طوابق البنتهاوس"
+  },
+  "קומות הפנטהאוז, לפי פרסומי השיווק": {
+   "en": "Penthouse floors, per the marketing materials",
+   "fr": "Étages des penthouses, selon les supports commerciaux",
+   "ru": "Этажи пентхаусов, по маркетинговым материалам",
+   "ar": "طوابق البنتهاوس، بحسب المواد التسويقية"
+  },
+  "הדמיה של פרויקט ריינבו תל אביב, מגדל ובנייני בוטיק סביב גינה": {
+   "en": "Illustration of the Rainbow Tel Aviv project: a tower and boutique buildings around a garden",
+   "fr": "Illustration du projet Rainbow Tel Aviv : une tour et des immeubles boutique autour d'un jardin",
+   "ru": "Иллюстрация проекта Rainbow Tel Aviv: башня и бутик-дома вокруг сада",
+   "ar": "تصور لمشروع Rainbow Tel Aviv: برج ومبانٍ بوتيك حول حديقة"
+  },
+  "הדמיה של פרויקט DUO תל אביב: שני מגדלי מגורים ומתחם מסחר, בין אבן גבירול, ארלוזורוב ובן סרוק": {
+   "en": "Illustration of the DUO Tel Aviv project: two residential towers and a retail complex, between Ibn Gabirol, Arlozorov and Ben Saruk",
+   "fr": "Illustration du projet DUO Tel Aviv : deux tours résidentielles et un complexe commercial, entre Ibn Gabirol, Arlozorov et Ben Saruk",
+   "ru": "Иллюстрация проекта DUO Tel Aviv: две жилые башни и торговый комплекс между улицами Ибн Гвироль, Арлозоров и Бен-Сарук",
+   "ar": "تصور لمشروع DUO Tel Aviv: برجا سكن ومجمّع تجاري، بين ابن جبيرول وأرلوزوروف وبن ساروك"
+  },
+  "הדמיה של מגדלי דואו תל אביב: שני מגדלי מגורים, מבנה הלובי ביניהם ומבני המסחר במתחם": {
+   "en": "Illustration of DUO Tel Aviv: two residential towers, the lobby building between them and the complex's retail buildings",
+   "fr": "Illustration de DUO Tel Aviv : deux tours résidentielles, le bâtiment du hall entre elles et les bâtiments commerciaux de l'ensemble",
+   "ru": "Иллюстрация DUO Tel Aviv: две жилые башни, здание лобби между ними и торговые корпуса комплекса",
+   "ar": "تصور لـ DUO Tel Aviv: برجا سكن ومبنى الردهة بينهما ومباني المتاجر في المجمّع"
+  },
+  "המגרש וקווי המגדלים לפי עיריית תל אביב-יפו; הגבהים (3.3 מ׳ לקומה), הלובי והמסחר להמחשה.": {
+   "en": "The lot and the towers' outlines per the Tel Aviv-Yafo Municipality; the heights (3.3 m per floor), the lobby and the retail are an illustration.",
+   "fr": "Le terrain et l'emprise des tours selon la municipalité de Tel Aviv-Jaffa ; les hauteurs (3.3 m par étage), le hall et les commerces sont indicatifs.",
+   "ru": "Участок и контуры башен — по данным муниципалитета Тель-Авива-Яффо; высоты (3.3 м на этаж), лобби и торговые площади условны.",
+   "ar": "القسيمة وخطوط البرجين بحسب بلدية تل أبيب يافا؛ الارتفاعات (3.3 م للطابق) والردهة والمتاجر للتوضيح."
+  },
+  "המגרש לפי עיריית תל אביב-יפו; הבניינים, הקומות והגבהים לפי תכנית העיצוב (5.2023) בקירוב; החזיתות להמחשה.": {
+   "en": "The lot per the Tel Aviv-Yafo Municipality; the buildings, the floors and the heights approximately per the design plan (5.2023); the facades are an illustration.",
+   "fr": "Le terrain selon la municipalité de Tel Aviv-Jaffa ; les immeubles, les étages et les hauteurs approximativement selon le plan d'aménagement (5.2023) ; les façades sont indicatives.",
+   "ru": "Участок — по данным муниципалитета Тель-Авива-Яффо; здания, этажи и высоты — приблизительно по архитектурному плану (5.2023); фасады условны.",
+   "ar": "القسيمة بحسب بلدية تل أبيب يافا؛ المباني والطوابق والارتفاعات بحسب مخطط التصميم (5.2023) تقريباً؛ الواجهات للتوضيح."
+  },
+  "מה יש לכיוון הזה": {
+   "en": "What lies in this direction",
+   "fr": "Ce qui se trouve dans cette direction",
+   "ru": "Что находится в этом направлении",
+   "ar": "ما الذي يقع في هذا الاتجاه"
+  },
+  "אין בכיוון הזה מקומות מסומנים בקובץ הרובע.": {
+   "en": "No places are marked in this direction in the quarter's data.",
+   "fr": "Aucun lieu n'est signalé dans cette direction dans les données du quartier.",
+   "ru": "В данных района в этом направлении нет отмеченных мест.",
+   "ar": "لا توجد أماكن مُعلَّمة في هذا الاتجاه في بيانات الحي."
+  },
+  "עכשיו בחרו דירה לדוגמה בטבעת הקומה, והנוף ממנה יופיע כאן.": {
+   "en": "Now choose an example apartment on the floor's ring, and its view will appear here.",
+   "fr": "Choisissez maintenant un appartement témoin sur l'anneau de l'étage, et sa vue apparaîtra ici.",
+   "ru": "Теперь выберите квартиру-пример на кольце этажа, и вид из неё появится здесь.",
+   "ar": "الآن اختاروا شقة نموذجية على حلقة الطابق، وستظهر إطلالتها هنا."
+  },
+  "עכשיו בחרו נקודה בטבעת הקומה, והנוף לכיוון הזה יופיע כאן.": {
+   "en": "Now choose a point on the floor's ring, and the view in that direction will appear here.",
+   "fr": "Choisissez maintenant un point sur l'anneau de l'étage, et la vue dans cette direction apparaîtra ici.",
+   "ru": "Теперь выберите точку на кольце этажа, и вид в этом направлении появится здесь.",
+   "ar": "الآن اختاروا نقطة على حلقة الطابق، وستظهر الإطلالة في هذا الاتجاه هنا."
+  },
+  "בחרו קומה ודירה לדוגמה": {
+   "en": "Choose a floor and an example apartment",
+   "fr": "Choisissez un étage et un appartement témoin",
+   "ru": "Выберите этаж и квартиру-пример",
+   "ar": "اختاروا طابقاً وشقة نموذجية"
+  },
+  "בחרו קומה וכיוון": {
+   "en": "Choose a floor and a direction",
+   "fr": "Choisissez un étage et une direction",
+   "ru": "Выберите этаж и направление",
+   "ar": "اختاروا طابقاً واتجاهاً"
+  },
+  "בחרו קומה במגדל ודירה לדוגמה בטבעת שלה, והנוף מהדירה יופיע כאן.": {
+   "en": "Choose a floor in the tower and an example apartment on its ring, and the view from the apartment will appear here.",
+   "fr": "Choisissez un étage de la tour et un appartement témoin sur son anneau, et la vue depuis l'appartement apparaîtra ici.",
+   "ru": "Выберите этаж в башне и квартиру-пример на его кольце, и вид из квартиры появится здесь.",
+   "ar": "اختاروا طابقاً في البرج وشقة نموذجية على حلقته، وستظهر الإطلالة من الشقة هنا."
+  },
+  "בחרו קומה במגדל ונקודה בטבעת שלה, והנוף מהגובה ומהכיוון האלה יופיע כאן.": {
+   "en": "Choose a floor in the tower and a point on its ring, and the view from that height and direction will appear here.",
+   "fr": "Choisissez un étage de la tour et un point sur son anneau, et la vue depuis cette hauteur et dans cette direction apparaîtra ici.",
+   "ru": "Выберите этаж в башне и точку на его кольце, и вид с этой высоты в этом направлении появится здесь.",
+   "ar": "اختاروا طابقاً في البرج ونقطة على حلقته، وستظهر الإطلالة من هذا الارتفاع وفي هذا الاتجاه هنا."
+  },
+  "מבט משוער מהקומה לכיוון שנבחר": {
+   "en": "Estimated view from the floor in the chosen direction",
+   "fr": "Vue estimée depuis l'étage dans la direction choisie",
+   "ru": "Примерный вид с этажа в выбранном направлении",
+   "ar": "إطلالة تقديرية من الطابق في الاتجاه المختار"
+  },
+  "הכיוון על המפה": {
+   "en": "The direction on the map",
+   "fr": "La direction sur la carte",
+   "ru": "Направление на карте",
+   "ar": "الاتجاه على الخريطة"
+  },
+  "הזיזו את המפה בשתי אצבעות": {
+   "en": "Move the map with two fingers",
+   "fr": "Déplacez la carte avec deux doigts",
+   "ru": "Двигайте карту двумя пальцами",
+   "ar": "حرّكوا الخريطة بإصبعين"
+  },
+  "קיים": {
+   "en": "Existing",
+   "fr": "Existant",
+   "ru": "Существует",
+   "ar": "قائم"
+  },
+  "בהליכי היתר": {
+   "en": "In the permit process",
+   "fr": "Permis en cours",
+   "ru": "В процессе получения разрешения",
+   "ar": "في إجراءات الترخيص"
+  },
+  "מאושרת, עוד לא פועלת": {
+   "en": "Approved, not yet running",
+   "fr": "Approuvée, pas encore en service",
+   "ru": "Утверждена, ещё не работает",
+   "ar": "مُصادَق عليها، لم تعمل بعد"
+  },
+  "שטח ציבורי פתוח": {
+   "en": "Public open space",
+   "fr": "Espace public ouvert",
+   "ru": "Открытое общественное пространство",
+   "ar": "مساحة عامة مفتوحة"
+  },
+  "מבנה ציבור, 25 קומות": {
+   "en": "Public building, 25 floors",
+   "fr": "Bâtiment public, 25 étages",
+   "ru": "Общественное здание, 25 этажей",
+   "ar": "مبنى عام، 25 طابقاً"
+  },
+  "תחנה תת־קרקעית": {
+   "en": "Underground station",
+   "fr": "Station souterraine",
+   "ru": "Подземная станция",
+   "ar": "محطة تحت الأرض"
+  },
+  "לכיוון": {
+   "en": "towards",
+   "fr": "vers",
+   "ru": "в сторону",
+   "ar": "باتجاه"
+  },
+  "לכיוון הים": {
+   "en": "towards the sea",
+   "fr": "vers la mer",
+   "ru": "в сторону моря",
+   "ar": "باتجاه البحر"
+  },
+  "הים": {
+   "en": "the sea",
+   "fr": "la mer",
+   "ru": "моря",
+   "ar": "البحر"
+  },
+  "לכיוון תל ברוך והרצליה": {
+   "en": "towards Tel Baruch and Herzliya",
+   "fr": "vers Tel Baruch et Herzliya",
+   "ru": "в сторону Тель-Баруха и Герцлии",
+   "ar": "باتجاه تل باروخ وهرتسليا"
+  },
+  "תל ברוך והרצליה": {
+   "en": "Tel Baruch and Herzliya",
+   "fr": "Tel Baruch et Herzliya",
+   "ru": "Тель-Баруха и Герцлии",
+   "ar": "تل باروخ وهرتسليا"
+  },
+  "לכיוון רמת אביב והאוניברסיטה": {
+   "en": "towards Ramat Aviv and the university",
+   "fr": "vers Ramat Aviv et l'université",
+   "ru": "в сторону Рамат-Авива и университета",
+   "ar": "باتجاه رمات أفيف والجامعة"
+  },
+  "רמת אביב והאוניברסיטה": {
+   "en": "Ramat Aviv and the university",
+   "fr": "Ramat Aviv et l'université",
+   "ru": "Рамат-Авива и университета",
+   "ar": "رمات أفيف والجامعة"
+  },
+  "לכיוון פארק הירקון": {
+   "en": "towards the Yarkon Park",
+   "fr": "vers le parc HaYarkon",
+   "ru": "в сторону парка Яркон",
+   "ar": "باتجاه حديقة اليركون"
+  },
+  "פארק הירקון": {
+   "en": "the Yarkon Park",
+   "fr": "le parc HaYarkon",
+   "ru": "парка Яркон",
+   "ar": "حديقة اليركون"
+  },
+  "לכיוון מגדלי העיר": {
+   "en": "towards the city's towers",
+   "fr": "vers les tours de la ville",
+   "ru": "в сторону городских башен",
+   "ar": "باتجاه أبراج المدينة"
+  },
+  "מגדלי העיר": {
+   "en": "the city's towers",
+   "fr": "les tours de la ville",
+   "ru": "городских башен",
+   "ar": "أبراج المدينة"
+  },
+  "לכיוון הצפון הישן": {
+   "en": "towards the Old North",
+   "fr": "vers le Vieux Nord",
+   "ru": "в сторону Старого Севера",
+   "ar": "باتجاه الشمال القديم"
+  },
+  "הצפון הישן": {
+   "en": "the Old North",
+   "fr": "le Vieux Nord",
+   "ru": "Старого Севера",
+   "ar": "الشمال القديم"
+  },
+  "לכיוון נמל תל אביב והירקון": {
+   "en": "towards the Tel Aviv Port and the Yarkon",
+   "fr": "vers le port de Tel Aviv et le Yarkon",
+   "ru": "в сторону Тель-Авивского порта и Яркона",
+   "ar": "باتجاه ميناء تل أبيب واليركون"
+  },
+  "נמל תל אביב והירקון": {
+   "en": "the Tel Aviv Port and the Yarkon",
+   "fr": "le port de Tel Aviv et le Yarkon",
+   "ru": "Тель-Авивского порта и Яркона",
+   "ar": "ميناء تل أبيب واليركون"
+  },
+  "לכיוון כיכר המדינה": {
+   "en": "towards Kikar HaMedina",
+   "fr": "vers la place HaMedina",
+   "ru": "в сторону площади Кикар-ха-Медина",
+   "ar": "باتجاه ساحة همدينا"
+  },
+  "כיכר המדינה": {
+   "en": "Kikar HaMedina",
+   "fr": "la place HaMedina",
+   "ru": "площади Кикар-ха-Медина",
+   "ar": "ساحة همدينا"
+  },
+  "לכיוון מגדלי עזריאלי ושרונה": {
+   "en": "towards the Azrieli towers and Sarona",
+   "fr": "vers les tours Azrieli et Sarona",
+   "ru": "в сторону башен Азриэли и Сароны",
+   "ar": "باتجاه أبراج عزرائيلي وسارونا"
+  },
+  "מגדלי עזריאלי ושרונה": {
+   "en": "the Azrieli towers and Sarona",
+   "fr": "les tours Azrieli et Sarona",
+   "ru": "башен Азриэли и Сароны",
+   "ar": "أبراج عزرائيلي وسارونا"
+  },
+  "לכיוון כיכר רבין ומרכז העיר": {
+   "en": "towards Rabin Square and the city centre",
+   "fr": "vers la place Rabin et le centre-ville",
+   "ru": "в сторону площади Рабина и центра города",
+   "ar": "باتجاه ساحة رابين ومركز المدينة"
+  },
+  "כיכר רבין ומרכז העיר": {
+   "en": "Rabin Square and the city centre",
+   "fr": "la place Rabin et le centre-ville",
+   "ru": "площади Рабина и центра города",
+   "ar": "ساحة رابين ومركز المدينة"
+  },
+  "מריינבו": {
+   "en": "from Rainbow",
+   "fr": "de Rainbow",
+   "ru": "от Rainbow",
+   "ar": "من Rainbow"
+  },
+  "מ־DUO": {
+   "en": "from DUO",
+   "fr": "de DUO",
+   "ru": "от DUO",
+   "ar": "من DUO"
+  },
+  "מדמרי ימה": {
+   "en": "from Dimri Yama",
+   "fr": "de Dimri Yama",
+   "ru": "от Dimri Yama",
+   "ar": "من Dimri Yama"
+  },
+  "מאשירה": {
+   "en": "from Ashira",
+   "fr": "d'Ashira",
+   "ru": "от Ashira",
+   "ar": "من Ashira"
+  },
+  "מקום ברובע": {
+   "en": "A place in the quarter",
+   "fr": "Un lieu du quartier",
+   "ru": "Место в районе",
+   "ar": "مكان في الحي"
+  },
+  "פרויקט ברובע": {
+   "en": "A project in the quarter",
+   "fr": "Un projet du quartier",
+   "ru": "Проект в районе",
+   "ar": "مشروع في الحي"
+  },
+  "מקום בסביבה": {
+   "en": "A place nearby",
+   "fr": "Un lieu à proximité",
+   "ru": "Место поблизости",
+   "ar": "مكان في المحيط"
+  },
+  "פרויקט בסביבה": {
+   "en": "A project nearby",
+   "fr": "Un projet à proximité",
+   "ru": "Проект поблизости",
+   "ar": "مشروع في المحيط"
+  },
+  "לעמוד הפרויקט": {
+   "en": "To the project's page",
+   "fr": "Vers la page du projet",
+   "ru": "На страницу проекта",
+   "ar": "إلى صفحة المشروع"
+  },
+  "מסה סכמטית לפי מספר הקומות בעמוד הפרויקט; המיקום לפי המגרש. הדמיה להמחשה בלבד.": {
+   "en": "A schematic mass by the number of floors on the project's page; the position by the lot. An illustration only.",
+   "fr": "Volume schématique selon le nombre d'étages indiqué sur la page du projet ; l'emplacement selon le terrain. Illustration uniquement.",
+   "ru": "Схематический объём по числу этажей на странице проекта; расположение — по участку. Только иллюстрация.",
+   "ar": "كتلة تخطيطية بحسب عدد الطوابق في صفحة المشروع؛ الموقع بحسب القسيمة. تصور توضيحي فقط."
+  },
+  "עמוד הפרויקט באתר": {
+   "en": "The project's page on the site",
+   "fr": "La page du projet sur le site",
+   "ru": "Страница проекта на сайте",
+   "ar": "صفحة المشروع في الموقع"
+  },
+  "שכבת הקו הירוק של עיריית תל אביב-יפו (תחנות)": {
+   "en": "The Tel Aviv-Yafo Municipality's Green Line layer (stations)",
+   "fr": "La couche de la ligne verte de la municipalité de Tel Aviv-Jaffa (stations)",
+   "ru": "Слой Зелёной линии муниципалитета Тель-Авива-Яффо (станции)",
+   "ar": "طبقة الخط الأخضر في بلدية تل أبيب يافا (المحطات)"
+  },
+  "מתקן בפרויקט": {
+   "en": "Facility in the project",
+   "fr": "Équipement du projet",
+   "ru": "Объект в проекте",
+   "ar": "مرفق في المشروع"
+  },
+  "מתקנים בפרויקט": {
+   "en": "Facilities in the project",
+   "fr": "Équipements du projet",
+   "ru": "Инфраструктура проекта",
+   "ar": "مرافق المشروع"
+  },
+  "מתקן לדוגמה": {
+   "en": "Example facility",
+   "fr": "Équipement témoin",
+   "ru": "Пример объекта",
+   "ar": "مرفق نموذجي"
+  },
+  "פארקים, חוף וספורט": {
+   "en": "Parks, beach and sport",
+   "fr": "Parcs, plage et sport",
+   "ru": "Парки, пляж и спорт",
+   "ar": "حدائق وشاطئ ورياضة"
+  },
+  "קניות וסידורים": {
+   "en": "Shops and errands",
+   "fr": "Commerces et services",
+   "ru": "Магазины и услуги",
+   "ar": "تسوق وخدمات"
+  },
+  "קהילה ותרבות": {
+   "en": "Community and culture",
+   "fr": "Vie locale et culture",
+   "ru": "Сообщество и культура",
+   "ar": "المجتمع والثقافة"
+  },
+  "מתוכננת": {
+   "en": "planned",
+   "fr": "prévue",
+   "ru": "планируется",
+   "ar": "مخطط لها"
+  },
+  "מקומות: findplace.co.il (עיריית תל אביב-יפו, מידע פתוח, ו-OpenStreetMap). זמני הליכה לפי מסלול הליכה של Mapbox, מהבניין; מרחק בקו אווירי.": {
+   "en": "Places: findplace.co.il (Tel Aviv-Yafo open data, and OpenStreetMap). Walking times by Mapbox walking routes from the building; distance in a straight line.",
+   "fr": "Lieux : findplace.co.il (données ouvertes de Tel Aviv-Jaffa, et OpenStreetMap). Temps de marche selon les itinéraires piétons Mapbox depuis l'immeuble ; distance à vol d'oiseau.",
+   "ru": "Места: findplace.co.il (открытые данные Тель-Авива-Яффо и OpenStreetMap). Время пешком по пешеходным маршрутам Mapbox от здания; расстояние по прямой.",
+   "ar": "الأماكن: findplace.co.il (بيانات تل أبيب-يافا المفتوحة وOpenStreetMap). أوقات السير وفق مسارات المشي من Mapbox من المبنى؛ المسافة بخط مستقيم."
+  },
+  "השמות בחלון: findplace ו-OpenStreetMap, בכיוון ובמרחק האמיתיים מהבניין; מה שבניין מסתיר לא מסומן.": {
+   "en": "The names in the window: findplace and OpenStreetMap, at their true direction and distance from the building; what a building hides is not marked.",
+   "fr": "Les noms dans la fenêtre : findplace et OpenStreetMap, à leur direction et distance réelles depuis l'immeuble ; ce qu'un bâtiment cache n'est pas indiqué.",
+   "ru": "Названия в окне: findplace и OpenStreetMap, в реальном направлении и на реальном расстоянии от здания; то, что закрывает здание, не отмечено.",
+   "ar": "الأسماء في النافذة: findplace وOpenStreetMap، باتجاهها ومسافتها الحقيقيين من المبنى؛ ما يحجبه مبنى لا يُشار إليه."
+  },
+  "המתקנים בפרויקט": {
+   "en": "The project's facilities",
+   "fr": "Les équipements du projet",
+   "ru": "Объекты проекта",
+   "ar": "مرافق المشروع"
+  },
+  "הסלון בדירה לדוגמה בקומה 25 במגדלי דואו, מבט מערבה לכיוון הים (הדמיה)": {
+   "en": "The living room of the example apartment on floor 25 at DUO, looking west toward the sea (illustration)",
+   "fr": "Le séjour de l'appartement témoin au 25e étage de DUO, vue vers l'ouest et la mer (illustration)",
+   "ru": "Гостиная квартиры-примера на 25-м этаже в DUO, вид на запад, к морю (иллюстрация)",
+   "ar": "صالون الشقة النموذجية في الطابق 25 في DUO، إطلالة غربًا نحو البحر (تصوير توضيحي)"
+  },
+  "סלון ומטבח פתוח כמו במסירה, בלי ריהוט, בגובה של כ־89 מ׳: מול הים, נמל תל אביב, כיכר המדינה ומרכז העיר. הנוף בחלון בנוי מהבניינים הקיימים לפי שכבת המבנים של העירייה ומקו החוף.": {
+   "en": "A living room with an open kitchen, as delivered, without furniture, at about 89 m: facing the sea, Tel Aviv Port, Kikar HaMedina and the city centre. The view in the window is built from the existing buildings, by the municipality's buildings layer and the coastline.",
+   "fr": "Un séjour avec cuisine ouverte, tel que livré, sans mobilier, à environ 89 m : face à la mer, au port de Tel Aviv, à la place HaMedina et au centre-ville. La vue par la fenêtre est construite à partir des bâtiments existants, selon la couche des bâtiments de la municipalité et le trait de côte.",
+   "ru": "Гостиная с открытой кухней, как при сдаче, без мебели, на высоте около 89 м: вид на море, порт Тель-Авива, площадь Ха-Медина и центр города. Вид из окна построен по существующим зданиям, по слою зданий муниципалитета и береговой линии.",
+   "ar": "صالون مع مطبخ مفتوح كما يُسلَّم، بلا أثاث، على ارتفاع نحو 89 م: مقابل البحر وميناء تل أبيب وساحة همدينا ومركز المدينة. الإطلالة من النافذة مبنية من المباني القائمة وفق طبقة المباني في البلدية وخط الساحل."
+  },
+  "בבניין": {
+   "en": "In the building",
+   "fr": "Dans l'immeuble",
+   "ru": "В здании",
+   "ar": "في المبنى"
+  },
+  "חזרה": {
+   "en": "Back",
+   "fr": "Retour",
+   "ru": "Назад",
+   "ar": "رجوع"
+  },
+  "לאן?": {
+   "en": "Where to?",
+   "fr": "Où aller ?",
+   "ru": "Куда?",
+   "ar": "إلى أين؟"
+  },
+  "מעבר להמחשה": {
+   "en": "An illustrative move",
+   "fr": "Passage indicatif",
+   "ru": "Условный переход",
+   "ar": "انتقال توضيحي"
+  },
+  "מעבר בין הדמיות, לא לפי תוכנית": {
+   "en": "A move between illustrations, not by a plan",
+   "fr": "Passage entre illustrations, pas selon un plan",
+   "ru": "Переход между иллюстрациями, не по плану",
+   "ar": "انتقال بين صور توضيحية، لا وفق مخطط"
+  },
+  "הדמיות; המעברים להמחשה": {
+   "en": "Illustrations; the moves are indicative",
+   "fr": "Illustrations ; les passages sont indicatifs",
+   "ru": "Иллюстрации; переходы условные",
+   "ar": "صور توضيحية؛ الانتقالات للتوضيح"
+  },
+  "אתם כאן": {
+   "en": "You are here",
+   "fr": "Vous êtes ici",
+   "ru": "Вы здесь",
+   "ar": "أنتم هنا"
+  },
+  "הדירה": {
+   "en": "The apartment",
+   "fr": "L'appartement",
+   "ru": "Квартира",
+   "ar": "الشقة"
+  },
+  "יציאה מהדירה": {
+   "en": "Leave the apartment",
+   "fr": "Sortir de l'appartement",
+   "ru": "Выйти из квартиры",
+   "ar": "الخروج من الشقة"
+  },
+  "לובי, מועדון, בריכה": {
+   "en": "Lobby, club, pool",
+   "fr": "Hall, club, piscine",
+   "ru": "Лобби, клуб, бассейн",
+   "ar": "الردهة، النادي، المسبح"
+  },
+  "הלובי": {
+   "en": "The lobby",
+   "fr": "Le hall",
+   "ru": "Лобби",
+   "ar": "الردهة"
+  },
+  "המועדון": {
+   "en": "The club",
+   "fr": "Le club",
+   "ru": "Клуб",
+   "ar": "النادي"
+  },
+  "הבריכה על הגג": {
+   "en": "The rooftop pool",
+   "fr": "La piscine sur le toit",
+   "ru": "Бассейн на крыше",
+   "ar": "المسبح على السطح"
+  },
+  "קומת הכניסה של המגדל": {
+   "en": "The tower's entrance floor",
+   "fr": "Le niveau d'entrée de la tour",
+   "ru": "Входной этаж башни",
+   "ar": "طابق مدخل البرج"
+  },
+  "בבסיס המגדל, לפי תכנית העיצוב": {
+   "en": "At the tower's base, by the design plan",
+   "fr": "À la base de la tour, selon le plan de conception",
+   "ru": "В основании башни, по плану дизайна",
+   "ar": "في قاعدة البرج، وفق مخطط التصميم"
+  },
+  "על גג של בניין בוטיק": {
+   "en": "On a boutique building's roof",
+   "fr": "Sur le toit d'un immeuble boutique",
+   "ru": "На крыше бутик-здания",
+   "ar": "على سطح مبنى بوتيك"
+  },
+  "המעליות": {
+   "en": "The lifts",
+   "fr": "Les ascenseurs",
+   "ru": "Лифты",
+   "ar": "المصاعد"
+  },
+  "לדירה, למועדון, לבריכה": {
+   "en": "To the apartment, the club, the pool",
+   "fr": "Vers l'appartement, le club, la piscine",
+   "ru": "К квартире, клубу, бассейну",
+   "ar": "إلى الشقة، النادي، المسبح"
+  },
+  "לחצר ולבריכה": {
+   "en": "To the courtyard and the pool",
+   "fr": "Vers la cour et la piscine",
+   "ru": "Во двор и к бассейну",
+   "ar": "إلى الفناء والمسبح"
+  },
+  "יציאה מהמועדון": {
+   "en": "Leave the club",
+   "fr": "Sortir du club",
+   "ru": "Выйти из клуба",
+   "ar": "الخروج من النادي"
+  },
+  "לובי, דירה, בריכה": {
+   "en": "Lobby, apartment, pool",
+   "fr": "Hall, appartement, piscine",
+   "ru": "Лобби, квартира, бассейн",
+   "ar": "الردهة، الشقة، المسبح"
+  },
+  "יציאה מהגג": {
+   "en": "Leave the roof",
+   "fr": "Quitter le toit",
+   "ru": "Уйти с крыши",
+   "ar": "الخروج من السطح"
+  },
+  "לובי, מועדון, דירה": {
+   "en": "Lobby, club, apartment",
+   "fr": "Hall, club, appartement",
+   "ru": "Лобби, клуб, квартира",
+   "ar": "الردهة، النادي، الشقة"
+  },
+  "לובי, וולנס, בריכה": {
+   "en": "Lobby, wellness, pool",
+   "fr": "Hall, bien-être, piscine",
+   "ru": "Лобби, велнес, бассейн",
+   "ar": "الردهة، العافية، المسبح"
+  },
+  "הוולנס": {
+   "en": "The wellness centre",
+   "fr": "L'espace bien-être",
+   "ru": "Велнес-центр",
+   "ar": "مركز العافية"
+  },
+  "מחבר בין שני המגדלים, לפי אתר היזם": {
+   "en": "Connects the two towers, per the developer's site",
+   "fr": "Relie les deux tours, selon le site du promoteur",
+   "ru": "Соединяет две башни, по сайту застройщика",
+   "ar": "يربط بين البرجين، وفق موقع المطوّر"
+  },
+  "כניסה ישירה מהלובי, לפי אתר היזם": {
+   "en": "Direct entry from the lobby, per the developer's site",
+   "fr": "Accès direct depuis le hall, selon le site du promoteur",
+   "ru": "Прямой вход из лобби, по сайту застройщика",
+   "ar": "دخول مباشر من الردهة، وفق موقع المطوّر"
+  },
+  "המגדל הצפוני": {
+   "en": "The north tower",
+   "fr": "La tour nord",
+   "ru": "Северная башня",
+   "ar": "البرج الشمالي"
+  },
+  "המגדל הדרומי": {
+   "en": "The south tower",
+   "fr": "La tour sud",
+   "ru": "Южная башня",
+   "ar": "البرج الجنوبي"
+  },
+  "ללובי": {
+   "en": "To the lobby",
+   "fr": "Vers le hall",
+   "ru": "В лобби",
+   "ar": "إلى الردهة"
+  },
+  "כניסה ישירה, לפי אתר היזם": {
+   "en": "Direct entry, per the developer's site",
+   "fr": "Accès direct, selon le site du promoteur",
+   "ru": "Прямой вход, по сайту застройщика",
+   "ar": "دخول مباشر، وفق موقع المطوّر"
+  },
+  "שאלה על המתקן בוואטסאפ": {
+   "en": "Ask about this facility on WhatsApp",
+   "fr": "Question sur cet équipement par WhatsApp",
+   "ru": "Спросить об этом объекте в WhatsApp",
+   "ar": "اسألوا عن هذا المرفق عبر واتساب"
+  },
+  "כניסה ב־360°": {
+   "en": "Step inside in 360°",
+   "fr": "Entrer en 360°",
+   "ru": "Войти в 360°",
+   "ar": "الدخول بزاوية 360°"
+  },
+  "כניסה לבריכה": {
+   "en": "Step into the pool area",
+   "fr": "Entrer dans l'espace piscine",
+   "ru": "Войти в зону бассейна",
+   "ar": "الدخول إلى المسبح"
+  },
+  "כניסה למועדון": {
+   "en": "Step into the club",
+   "fr": "Entrer dans le club",
+   "ru": "Войти в клуб",
+   "ar": "الدخول إلى النادي"
+  },
+  "כניסה ללובי": {
+   "en": "Step into the lobby",
+   "fr": "Entrer dans le hall",
+   "ru": "Войти в лобби",
+   "ar": "الدخول إلى الردهة"
+  },
+  "בריכה על גג של בניין בוטיק · הדמיה": {
+   "en": "A pool on the roof of a boutique building · illustration",
+   "fr": "Piscine sur le toit d'un immeuble boutique · illustration",
+   "ru": "Бассейн на крыше бутик-дома · иллюстрация",
+   "ar": "مسبح على سطح مبنى بوتيك · تصور توضيحي"
+  },
+  "מועדון הדיירים וחדר הכושר · הדמיה": {
+   "en": "The residents' club and the gym · illustration",
+   "fr": "Le club des résidents et la salle de sport · illustration",
+   "ru": "Клуб жильцов и тренажёрный зал · иллюстрация",
+   "ar": "نادي السكان والصالة الرياضية · تصور توضيحي"
+  },
+  "הלובי במגדל · הדמיה": {
+   "en": "The tower's lobby · illustration",
+   "fr": "Le hall de la tour · illustration",
+   "ru": "Лобби башни · иллюстрация",
+   "ar": "ردهة البرج · تصور توضيحي"
+  },
+  "כניסה למתחם הוולנס": {
+   "en": "Step into the wellness area",
+   "fr": "Entrer dans l'espace bien-être",
+   "ru": "Войти в велнес-зону",
+   "ar": "الدخول إلى منطقة العافية"
+  },
+  "הבריכה על גג מבנה הלובי · הדמיה": {
+   "en": "The pool on the roof of the lobby building · illustration",
+   "fr": "La piscine sur le toit du bâtiment du hall · illustration",
+   "ru": "Бассейн на крыше здания лобби · иллюстрация",
+   "ar": "المسبح على سطح مبنى الردهة · تصور توضيحي"
+  },
+  "הלובי בגובה של כ־7 מטרים · הדמיה": {
+   "en": "The lobby, about 7 metres high · illustration",
+   "fr": "Le hall d'environ 7 mètres de haut · illustration",
+   "ru": "Лобби высотой около 7 метров · иллюстрация",
+   "ar": "الردهة بارتفاع نحو 7 أمتار · تصور توضيحي"
+  },
+  "מתחם הוולנס וחדר הכושר · הדמיה": {
+   "en": "The wellness area and the gym · illustration",
+   "fr": "L'espace bien-être et la salle de sport · illustration",
+   "ru": "Велнес-зона и тренажёрный зал · иллюстрация",
+   "ar": "منطقة العافية والصالة الرياضية · تصور توضيحي"
+  },
+  "שתי בריכות על הגגות": {
+   "en": "Two pools on the roofs",
+   "fr": "Deux piscines sur les toits",
+   "ru": "Два бассейна на крышах",
+   "ar": "مسبحان على الأسطح"
+  },
+  "בריכות": {
+   "en": "Pools",
+   "fr": "Piscines",
+   "ru": "Бассейны",
+   "ar": "مسابح"
+  },
+  "Rainbow Club, מועדון הדיירים": {
+   "en": "Rainbow Club, the residents' club",
+   "fr": "Rainbow Club, le club des résidents",
+   "ru": "Rainbow Club, клуб жильцов",
+   "ar": "Rainbow Club، نادي السكان"
+  },
+  "מועדון דיירים": {
+   "en": "Residents' club",
+   "fr": "Club des résidents",
+   "ru": "Клуб жильцов",
+   "ar": "نادي السكان"
+  },
+  "לובי בכל בניין": {
+   "en": "A lobby in every building",
+   "fr": "Un hall dans chaque immeuble",
+   "ru": "Лобби в каждом здании",
+   "ar": "ردهة في كل مبنى"
+  },
+  "לובי": {
+   "en": "Lobby",
+   "fr": "Hall",
+   "ru": "Лобби",
+   "ar": "الردهة"
+  },
+  "מסחר בקומת הקרקע": {
+   "en": "Retail on the ground floor",
+   "fr": "Commerces en rez-de-chaussée",
+   "ru": "Торговля на первом этаже",
+   "ar": "متاجر في الطابق الأرضي"
+  },
+  "מסחר": {
+   "en": "Retail",
+   "fr": "Commerces",
+   "ru": "Торговля",
+   "ar": "متاجر"
+  },
+  "חניון תת־קרקעי": {
+   "en": "Underground car park",
+   "fr": "Parking souterrain",
+   "ru": "Подземный паркинг",
+   "ar": "موقف سيارات تحت الأرض"
+  },
+  "חניון": {
+   "en": "Car park",
+   "fr": "Parking",
+   "ru": "Паркинг",
+   "ar": "موقف السيارات"
+  },
+  "בריכת אינפיניטי על גג מבנה הלובי": {
+   "en": "An infinity pool on the roof of the lobby building",
+   "fr": "Piscine à débordement sur le toit du bâtiment du hall",
+   "ru": "Инфинити-бассейн на крыше здания лобби",
+   "ar": "مسبح إنفينيتي على سطح مبنى الردهة"
+  },
+  "בריכה": {
+   "en": "Pool",
+   "fr": "Piscine",
+   "ru": "Бассейн",
+   "ar": "المسبح"
+  },
+  "לובי בגובה של כ־7 מטרים": {
+   "en": "A lobby about 7 metres high",
+   "fr": "Un hall d'environ 7 mètres de haut",
+   "ru": "Лобби высотой около 7 метров",
+   "ar": "ردهة بارتفاع نحو 7 أمتار"
+  },
+  "מתחם וולנס, חדר כושר ומועדון דיירים": {
+   "en": "A wellness area, a gym and a residents' club",
+   "fr": "Espace bien-être, salle de sport et club des résidents",
+   "ru": "Велнес-зона, тренажёрный зал и клуб жильцов",
+   "ar": "منطقة عافية وصالة رياضية ونادٍ للسكان"
+  },
+  "וולנס וכושר": {
+   "en": "Wellness and gym",
+   "fr": "Bien-être et sport",
+   "ru": "Велнес и фитнес",
+   "ar": "العافية والرياضة"
+  },
+  "בריכות פרטיות בפנטהאוזים": {
+   "en": "Private pools in the penthouses",
+   "fr": "Piscines privées dans les penthouses",
+   "ru": "Частные бассейны в пентхаусах",
+   "ar": "مسابح خاصة في البنتهاوسات"
+  },
+  "בריכות פרטיות": {
+   "en": "Private pools",
+   "fr": "Piscines privées",
+   "ru": "Частные бассейны",
+   "ar": "مسابح خاصة"
+  },
+  "מתחם מסחר וחצר שקועה": {
+   "en": "A retail complex and a sunken courtyard",
+   "fr": "Complexe commercial et cour en contrebas",
+   "ru": "Торговый комплекс и заглублённый двор",
+   "ar": "مجمّع تجاري وساحة غائرة"
+  },
+  "בריכות על גג מבנה המלון": {
+   "en": "Pools on the roof of the hotel building",
+   "fr": "Piscines sur le toit du bâtiment de l'hôtel",
+   "ru": "Бассейны на крыше здания отеля",
+   "ar": "مسابح على سطح مبنى الفندق"
+  },
+  "בריכות פרטיות בקומות העליונות": {
+   "en": "Private pools on the top floors",
+   "fr": "Piscines privées aux derniers étages",
+   "ru": "Частные бассейны на верхних этажах",
+   "ar": "مسابح خاصة في الطوابق العليا"
+  },
+  "ספא, חדרי כושר וסטודיו": {
+   "en": "A spa, gyms and a studio",
+   "fr": "Spa, salles de sport et studio",
+   "ru": "Спа, тренажёрные залы и студия",
+   "ar": "سبا وصالات رياضية واستوديو"
+  },
+  "ספא וכושר": {
+   "en": "Spa and gym",
+   "fr": "Spa et sport",
+   "ru": "Спа и фитнес",
+   "ar": "سبا ورياضة"
+  },
+  "מלון ומגורים במבנה הדרום מזרחי": {
+   "en": "A hotel and homes in the south-eastern building",
+   "fr": "Hôtel et logements dans le bâtiment sud-est",
+   "ru": "Отель и квартиры в юго-восточном здании",
+   "ar": "فندق ومساكن في المبنى الجنوبي الشرقي"
+  },
+  "מלון": {
+   "en": "Hotel",
+   "fr": "Hôtel",
+   "ru": "Отель",
+   "ar": "الفندق"
+  },
+  "מסחר וקולונדה ברחובות": {
+   "en": "Retail and a colonnade on the streets",
+   "fr": "Commerces et colonnade sur les rues",
+   "ru": "Торговля и колоннада вдоль улиц",
+   "ar": "متاجر ورواق أعمدة على الشوارع"
+  },
+  "גינה פנימית עם מעבר ציבורי": {
+   "en": "An inner garden with a public passage",
+   "fr": "Jardin intérieur avec passage public",
+   "ru": "Внутренний сад с общественным проходом",
+   "ar": "حديقة داخلية مع ممر عام"
+  },
+  "גינה": {
+   "en": "Garden",
+   "fr": "Jardin",
+   "ru": "Сад",
+   "ar": "الحديقة"
+  },
+  "בריכה וחדרי כושר בקומת המרתף": {
+   "en": "A pool and gyms on the basement floor",
+   "fr": "Piscine et salles de sport au sous-sol",
+   "ru": "Бассейн и тренажёрные залы на подземном этаже",
+   "ar": "مسبح وصالات رياضية في طابق القبو"
+  },
+  "בריכה וכושר": {
+   "en": "Pool and gym",
+   "fr": "Piscine et sport",
+   "ru": "Бассейн и фитнес",
+   "ar": "مسبح ورياضة"
+  },
+  "שלושה מועדוני דיירים": {
+   "en": "Three residents' clubs",
+   "fr": "Trois clubs de résidents",
+   "ru": "Три клуба для жильцов",
+   "ar": "ثلاثة نوادٍ للسكان"
+  },
+  "הכניסות והלובי": {
+   "en": "The entrances and the lobby",
+   "fr": "Les entrées et le hall",
+   "ru": "Входы и лобби",
+   "ar": "المداخل والردهة"
+  },
+  "גן ילדים ומבנה ציבור": {
+   "en": "A kindergarten and a public building",
+   "fr": "Jardin d'enfants et bâtiment public",
+   "ru": "Детский сад и общественное здание",
+   "ar": "روضة أطفال ومبنى عام"
+  },
+  "גן ילדים": {
+   "en": "Kindergarten",
+   "fr": "Jardin d'enfants",
+   "ru": "Детский сад",
+   "ar": "روضة أطفال"
+  },
+  "מסחר וקולונדה בחזית הדרומית": {
+   "en": "Retail and a colonnade on the southern front",
+   "fr": "Commerces et colonnade sur la façade sud",
+   "ru": "Торговля и колоннада на южном фасаде",
+   "ar": "متاجر ورواق أعمدة على الواجهة الجنوبية"
+  },
+  "חצר משותפת עם מעבר ציבורי": {
+   "en": "A shared courtyard with a public passage",
+   "fr": "Cour commune avec passage public",
+   "ru": "Общий двор с общественным проходом",
+   "ar": "ساحة مشتركة مع ممر عام"
+  },
+  "חצר": {
+   "en": "Courtyard",
+   "fr": "Cour",
+   "ru": "Двор",
+   "ar": "الساحة"
+  },
+  "אתר הפרויקט מתאר בריכת אינפיניטי על הגג, בריכת ילדים ובריכה למבוגרים בלבד.": {
+   "en": "The project's site describes a rooftop infinity pool, a children's pool and an adults-only pool.",
+   "fr": "Le site du projet décrit une piscine à débordement sur le toit, une pataugeoire et une piscine réservée aux adultes.",
+   "ru": "Сайт проекта описывает инфинити-бассейн на крыше, детский бассейн и бассейн только для взрослых.",
+   "ar": "يصف موقع المشروع مسبح إنفينيتي على السطح ومسبحاً للأطفال ومسبحاً للبالغين فقط."
+  },
+  "איזה שני גגות לא פורסם, והמיקום בדגם להמחשה. מקורות: תכנית העיצוב, אתר הפרויקט.": {
+   "en": "Which two roofs they are has not been published, and the position in the model is an illustration. Sources: the design plan, the project's site.",
+   "fr": "Les deux toits concernés n'ont pas été rendus publics, et l'emplacement dans la maquette est indicatif. Sources : le plan d'aménagement, le site du projet.",
+   "ru": "Какие именно две крыши, не опубликовано, а расположение на модели условное. Источники: архитектурный план, сайт проекта.",
+   "ar": "لم يُنشر أيّ السطحين، والموقع في النموذج للتوضيح. المصادر: مخطط التصميم، موقع المشروع."
+  },
+  "לפי היזם: חדר כושר, סטודיו, ספא, סאונות ואמבטיות קרח, מרכז עסקים, מועדון ילדים ובית קפה פרטי.": {
+   "en": "Per the developer: a gym, a studio, a spa, saunas and ice baths, a business centre, a kids' club and a private café.",
+   "fr": "Selon le promoteur : salle de sport, studio, spa, saunas et bains glacés, centre d'affaires, club enfants et café privé.",
+   "ru": "По данным застройщика: тренажёрный зал, студия, спа, сауны и ледяные ванны, бизнес-центр, детский клуб и частное кафе.",
+   "ar": "بحسب المطوّر: صالة رياضية واستوديو وسبا وساونا وأحواض ثلج ومركز أعمال ونادٍ للأطفال ومقهى خاص."
+  },
+  "לפי תכנית העיצוב: לכל בניין לובי משלו, עם חזית לרחוב וחזית לחצר.": {
+   "en": "Per the design plan: each building has its own lobby, with a front to the street and a front to the courtyard.",
+   "fr": "Selon le plan d'aménagement : chaque immeuble a son propre hall, avec une façade sur rue et une façade sur cour.",
+   "ru": "По архитектурному плану: у каждого здания своё лобби, с фасадом на улицу и фасадом во двор.",
+   "ar": "بحسب مخطط التصميم: لكل مبنى ردهة خاصة به، بواجهة على الشارع وواجهة على الساحة."
+  },
+  "הלובי המסומן בדגם הוא של המגדל, להמחשה. מקור: תכנית העיצוב.": {
+   "en": "The lobby marked in the model is the tower's, for illustration. Source: the design plan.",
+   "fr": "Le hall signalé sur la maquette est celui de la tour, à titre indicatif. Source : le plan d'aménagement.",
+   "ru": "Отмеченное на модели лобби — лобби башни, для иллюстрации. Источник: архитектурный план.",
+   "ar": "الردهة المُعلَّمة في النموذج هي ردهة البرج، للتوضيح. المصدر: مخطط التصميم."
+  },
+  "המיקום בדגם להמחשה. מקור: תכנית העיצוב.": {
+   "en": "The position in the model is an illustration. Source: the design plan.",
+   "fr": "L'emplacement dans la maquette est indicatif. Source : le plan d'aménagement.",
+   "ru": "Расположение на модели условное. Источник: архитектурный план.",
+   "ar": "الموقع في النموذج للتوضيح. المصدر: مخطط التصميم."
+  },
+  "לפי פרסומי היזם: חניון תת־קרקעי מתחת למתחם.": {
+   "en": "Per the developer's publications: an underground car park beneath the complex.",
+   "fr": "Selon les publications du promoteur : un parking souterrain sous l'ensemble.",
+   "ru": "По публикациям застройщика: подземный паркинг под комплексом.",
+   "ar": "بحسب منشورات المطوّر: موقف سيارات تحت الأرض أسفل المجمّع."
+  },
+  "לפי אתר היזם: בריכת אינפיניטי חיצונית ובריכת פעוטות, על גג מבנה הלובי שבין שני מגדלי המגורים.": {
+   "en": "Per the developer's site: an outdoor infinity pool and a toddlers' pool, on the roof of the lobby building between the two residential towers.",
+   "fr": "Selon le site du promoteur : une piscine extérieure à débordement et une pataugeoire, sur le toit du bâtiment du hall entre les deux tours résidentielles.",
+   "ru": "По данным сайта застройщика: открытый инфинити-бассейн и бассейн для малышей на крыше здания лобби между двумя жилыми башнями.",
+   "ar": "بحسب موقع المطوّر: مسبح إنفينيتي خارجي ومسبح للأطفال الصغار، على سطح مبنى الردهة بين برجي السكن."
+  },
+  "צורת מבנה הלובי בדגם להמחשה. מקור: אתר DUO.": {
+   "en": "The lobby building's shape in the model is an illustration. Source: the DUO site.",
+   "fr": "La forme du bâtiment du hall dans la maquette est indicative. Source : le site DUO.",
+   "ru": "Форма здания лобби на модели условна. Источник: сайт DUO.",
+   "ar": "شكل مبنى الردهة في النموذج للتوضيح. المصدر: موقع DUO."
+  },
+  "לפי אתר היזם: מתחם וולנס עם כניסה ישירה מהלובי, חדר כושר מתקדם ומועדון דיירים.": {
+   "en": "Per the developer's site: a wellness area with direct access from the lobby, an advanced gym and a residents' club.",
+   "fr": "Selon le site du promoteur : un espace bien-être avec accès direct depuis le hall, une salle de sport moderne et un club des résidents.",
+   "ru": "По данным сайта застройщика: велнес-зона со входом прямо из лобби, современный тренажёрный зал и клуб жильцов.",
+   "ar": "بحسب موقع المطوّر: منطقة عافية بمدخل مباشر من الردهة، وصالة رياضية متطورة، ونادٍ للسكان."
+  },
+  "לפי אתר היזם: מתחם וולנס עם כניסה ישירה מהלובי, חדר כושר יוצא דופן בגודלו ומועדון דיירים.": {
+   "en": "Per the developer's site: a wellness area with direct access from the lobby, an exceptionally large gym and a residents' club.",
+   "fr": "Selon le site du promoteur : un espace bien-être avec accès direct depuis le hall, une salle de sport d'une taille exceptionnelle et un club des résidents.",
+   "ru": "По данным сайта застройщика: велнес-зона со входом прямо из лобби, тренажёрный зал исключительно большого размера и клуб жильцов.",
+   "ar": "بحسب موقع المطوّر: منطقة عافية بمدخل مباشر من الردهة، وصالة رياضية بحجم استثنائي، ونادٍ للسكان."
+  },
+  "הקומה לא פורסמה, והמיקום בדגם להמחשה. מקור: אתר DUO.": {
+   "en": "The floor has not been published, and the position in the model is an illustration. Source: the DUO site.",
+   "fr": "L'étage n'a pas été rendu public, et l'emplacement dans la maquette est indicatif. Source : le site DUO.",
+   "ru": "Этаж не опубликован, а расположение на модели условное. Источник: сайт DUO.",
+   "ar": "لم يُنشر الطابق، والموقع في النموذج للتوضيح. المصدر: موقع DUO."
+  },
+  "לפי החלטת רשות הרישוי: בחלקו המערבי של המגרש שלושה מבני מסחר, פיתוח שטח וחצר שקועה.": {
+   "en": "Per the licensing authority's decision: in the western part of the lot, three retail buildings, landscaping and a sunken courtyard.",
+   "fr": "Selon la décision de l'autorité d'octroi des permis : dans la partie ouest du terrain, trois bâtiments commerciaux, des aménagements extérieurs et une cour en contrebas.",
+   "ru": "По решению органа выдачи разрешений: в западной части участка — три торговых корпуса, благоустройство и заглублённый двор.",
+   "ar": "بحسب قرار سلطة الترخيص: في الجزء الغربي من القسيمة ثلاثة مبانٍ تجارية وتطوير للموقع وساحة غائرة."
+  },
+  "לפי פרסומי היזם: בריכת אינפיניטי בקומת הגג ובריכה חצי אולימפית מקורה.": {
+   "en": "Per the developer's publications: an infinity pool on the roof floor and a covered semi-Olympic pool.",
+   "fr": "Selon les publications du promoteur : une piscine à débordement sur le toit et une piscine semi-olympique couverte.",
+   "ru": "По публикациям застройщика: инфинити-бассейн на крыше и крытый полуолимпийский бассейн.",
+   "ar": "بحسب منشورات المطوّر: مسبح إنفينيتي في طابق السطح ومسبح نصف أولمبي مغطى."
+  },
+  "לפי תכנית העיצוב: הקומה התשיעית של מבנה המלון היא קומת שירותים לדיירים, משותפת לאורחי המלון.": {
+   "en": "Per the design plan: the hotel building's ninth floor is a services floor for the residents, shared with the hotel's guests.",
+   "fr": "Selon le plan d'aménagement : le neuvième étage du bâtiment de l'hôtel est un étage de services pour les résidents, partagé avec les clients de l'hôtel.",
+   "ru": "По архитектурному плану: девятый этаж здания отеля — сервисный этаж для жильцов, общий с гостями отеля.",
+   "ar": "بحسب مخطط التصميم: الطابق التاسع في مبنى الفندق طابق خدمات للسكان، مشترك مع نزلاء الفندق."
+  },
+  "לפי פרסומי היזם: ספא, חדרי כושר, סטודיו ליוגה, ספרייה, חדר ילדים וחדר יין.": {
+   "en": "Per the developer's publications: a spa, gyms, a yoga studio, a library, a children's room and a wine room.",
+   "fr": "Selon les publications du promoteur : spa, salles de sport, studio de yoga, bibliothèque, salle pour enfants et cave à vin.",
+   "ru": "По публикациям застройщика: спа, тренажёрные залы, студия йоги, библиотека, детская комната и винная комната.",
+   "ar": "بحسب منشورات المطوّر: سبا وصالات رياضية واستوديو يوغا ومكتبة وغرفة أطفال وغرفة نبيذ."
+  },
+  "מה מהשירותים נמצא בקומה התשיעית לא פורסם; המיקום בדגם להמחשה. מקורות: תכנית העיצוב, פרסומי היזם.": {
+   "en": "Which of the services are on the ninth floor has not been published; the position in the model is an illustration. Sources: the design plan, the developer's publications.",
+   "fr": "Les services situés au neuvième étage n'ont pas été rendus publics ; l'emplacement dans la maquette est indicatif. Sources : le plan d'aménagement, les publications du promoteur.",
+   "ru": "Какие из услуг находятся на девятом этаже, не опубликовано; расположение на модели условное. Источники: архитектурный план, публикации застройщика.",
+   "ar": "لم يُنشر أيّ الخدمات في الطابق التاسع؛ الموقع في النموذج للتوضيح. المصادر: مخطط التصميم، منشورات المطوّر."
+  },
+  "לפי תכנית העיצוב: לכל בניין לובי מגורים בקומת הקרקע; לובי המלון במבנה הדרום מזרחי, בכניסה מדרום ומהחצר.": {
+   "en": "Per the design plan: each building has a residential lobby on the ground floor; the hotel lobby is in the south-eastern building, entered from the south and from the courtyard.",
+   "fr": "Selon le plan d'aménagement : chaque immeuble a un hall résidentiel au rez-de-chaussée ; le hall de l'hôtel est dans le bâtiment sud-est, avec une entrée par le sud et par la cour.",
+   "ru": "По архитектурному плану: в каждом здании жилое лобби на первом этаже; лобби отеля — в юго-восточном здании, со входом с юга и со двора.",
+   "ar": "بحسب مخطط التصميم: لكل مبنى ردهة سكنية في الطابق الأرضي؛ ردهة الفندق في المبنى الجنوبي الشرقي، بمدخل من الجنوب ومن الساحة."
+  },
+  "לפי אתר היזם: בריכה חצי אולימפית מקורה, בריכת ילדים, ג׳קוזי וספא עם סאונה יבשה ורטובה וחדר מלח.": {
+   "en": "Per the developer's site: a covered semi-Olympic pool, a children's pool, a jacuzzi and a spa with a dry and a wet sauna and a salt room.",
+   "fr": "Selon le site du promoteur : une piscine semi-olympique couverte, une pataugeoire, un jacuzzi et un spa avec sauna sec et humide et salle de sel.",
+   "ru": "По данным сайта застройщика: крытый полуолимпийский бассейн, детский бассейн, джакузи и спа с сухой и влажной сауной и соляной комнатой.",
+   "ar": "بحسب موقع المطوّر: مسبح نصف أولمبي مغطى ومسبح للأطفال وجاكوزي وسبا مع ساونا جافة ورطبة وغرفة ملح."
+  },
+  "לפי תכנית העיצוב: שלושה מועדוני דיירים, בקומות הקרקע של המגדל, של המגדלון ושל הבניין הדרום מזרחי.": {
+   "en": "Per the design plan: three residents' clubs, on the ground floors of the tower, of the mid-rise and of the south-eastern building.",
+   "fr": "Selon le plan d'aménagement : trois clubs de résidents, aux rez-de-chaussée de la tour, de la petite tour et du bâtiment sud-est.",
+   "ru": "По архитектурному плану: три клуба для жильцов — на первых этажах башни, малой башни и юго-восточного здания.",
+   "ar": "بحسب مخطط التصميم: ثلاثة نوادٍ للسكان، في الطوابق الأرضية للبرج والبرج الصغير والمبنى الجنوبي الشرقي."
+  },
+  "לפי אתר היזם: לאונג׳ עם בר, קולנוע ואזור ילדים.": {
+   "en": "Per the developer's site: a lounge with a bar, a cinema and a children's area.",
+   "fr": "Selon le site du promoteur : un lounge avec bar, un cinéma et un espace enfants.",
+   "ru": "По данным сайта застройщика: лаунж с баром, кинозал и детская зона.",
+   "ar": "بحسب موقع المطوّر: صالة جلوس مع بار وسينما ومنطقة للأطفال."
+  },
+  "לפי תכנית העיצוב: לבניינים שבמזרח נכנסים מרחוב לוי אשכול, למגדל נכנסים מהחצר המשותפת, ולבניין הצפון מערבי מהמערב.": {
+   "en": "Per the design plan: the eastern buildings are entered from Levi Eshkol Street, the tower from the shared courtyard, and the north-western building from the west.",
+   "fr": "Selon le plan d'aménagement : on entre dans les immeubles de l'est par la rue Levi Eshkol, dans la tour par la cour commune, et dans l'immeuble nord-ouest par l'ouest.",
+   "ru": "По архитектурному плану: в восточные здания входят с улицы Леви Эшколя, в башню — из общего двора, а в северо-западное здание — с запада.",
+   "ar": "بحسب مخطط التصميم: يُدخل إلى المباني الشرقية من شارع ليفي أشكول، وإلى البرج من الساحة المشتركة، وإلى المبنى الشمالي الغربي من الغرب."
+  },
+  "לפי תכנית העיצוב: חצר במרכז המגרש, עם זיקת הנאה למעבר הציבור מצפון לדרום וממזרח למערב.": {
+   "en": "Per the design plan: a courtyard in the middle of the lot, with a public right of way from north to south and from east to west.",
+   "fr": "Selon le plan d'aménagement : une cour au centre du terrain, avec une servitude de passage public du nord au sud et d'est en ouest.",
+   "ru": "По архитектурному плану: двор в центре участка с правом общественного прохода с севера на юг и с востока на запад.",
+   "ar": "بحسب مخطط التصميم: ساحة في وسط القسيمة، مع حق مرور للجمهور من الشمال إلى الجنوب ومن الشرق إلى الغرب."
+  },
+  "חתך הקומה": {
+   "en": "Floor section",
+   "fr": "Coupe de l'étage",
+   "ru": "Разрез этажа",
+   "ar": "مقطع الطابق"
+  },
+  "חתך הקומה · להמחשה": {
+   "en": "Floor section · illustration",
+   "fr": "Coupe de l'étage · illustration",
+   "ru": "Разрез этажа · иллюстрация",
+   "ar": "مقطع الطابق · للتوضيح"
+  },
+  "סגירת החתך": {
+   "en": "Close the section",
+   "fr": "Fermer la coupe",
+   "ru": "Закрыть разрез",
+   "ar": "إغلاق المقطع"
+  },
+  "קומה": {
+   "en": "Floor",
+   "fr": "Étage",
+   "ru": "Этаж",
+   "ar": "الطابق"
+  },
+  "קומה למעלה": {
+   "en": "Floor up",
+   "fr": "Étage au-dessus",
+   "ru": "Этаж выше",
+   "ar": "طابق للأعلى"
+  },
+  "קומה למטה": {
+   "en": "Floor down",
+   "fr": "Étage en dessous",
+   "ru": "Этаж ниже",
+   "ar": "طابق للأسفل"
+  },
+  "גרעין": {
+   "en": "Core",
+   "fr": "Noyau",
+   "ru": "Ядро",
+   "ar": "النواة"
+  },
+  "לסל הדירה": {
+   "en": "Add to the apartment basket",
+   "fr": "Ajouter au panier de l'appartement",
+   "ru": "Добавить в корзину квартиры",
+   "ar": "أضيفوا إلى سلة الشقة"
+  },
+  "קו החזית והמרפסות כמו בדגם שעל הבמה": {
+   "en": "the facade line and the balconies as in the 3D model",
+   "fr": "ligne de façade et balcons comme sur la maquette 3D",
+   "ru": "линия фасада и балконы как на 3D-модели",
+   "ar": "خط الواجهة والشرفات كما في النموذج ثلاثي الأبعاد"
+  },
+  "הקומה נסוגה מקו החזית, והמרפסות עמוקות יותר": {
+   "en": "the floor is set back from the facade line, and the balconies are deeper",
+   "fr": "l'étage est en retrait de la façade, et les balcons sont plus profonds",
+   "ru": "этаж отступает от линии фасада, а балконы глубже",
+   "ar": "الطابق متراجع عن خط الواجهة، والشرفات أعمق"
+  },
+  "גררו כדי להסתכל מסביב": {
+   "en": "Drag to look around",
+   "fr": "Faites glisser pour regarder autour",
+   "ru": "Потяните, чтобы осмотреться",
+   "ar": "اسحبوا للنظر حولكم"
+  },
+  "איפה עומדים": {
+   "en": "Where you stand",
+   "fr": "Votre position",
+   "ru": "Точка обзора",
+   "ar": "نقطة المشاهدة"
+  },
+  "כיוון הדירה": {
+   "en": "The apartment's direction",
+   "fr": "Orientation de l'appartement",
+   "ru": "Направление квартиры",
+   "ar": "اتجاه الشقة"
+  },
+  "בסלון": {
+   "en": "In the living room",
+   "fr": "Dans le salon",
+   "ru": "В гостиной",
+   "ar": "في الصالون"
+  },
+  "במרפסת": {
+   "en": "On the balcony",
+   "fr": "Sur le balcon",
+   "ru": "На балконе",
+   "ar": "على الشرفة"
+  },
+  "עיצוב הדירה": {
+   "en": "The apartment's design",
+   "fr": "Décoration de l'appartement",
+   "ru": "Дизайн квартиры",
+   "ar": "تصميم الشقة"
+  },
+  "רעיון להמחשה": {
+   "en": "An idea, for illustration",
+   "fr": "Une idée, à titre indicatif",
+   "ru": "Идея для иллюстрации",
+   "ar": "فكرة للتوضيح"
+  },
+  "כמו במסירה": {
+   "en": "As handed over",
+   "fr": "Comme à la livraison",
+   "ru": "Как при сдаче",
+   "ar": "كما عند التسليم"
+  },
+  "ריק, אריחים בהירים": {
+   "en": "Empty, light tiles",
+   "fr": "Vide, carrelage clair",
+   "ru": "Без мебели, светлая плитка",
+   "ar": "دون أثاث، بلاط فاتح"
+  },
+  "עץ חם": {
+   "en": "Warm wood",
+   "fr": "Bois chaleureux",
+   "ru": "Тёплое дерево",
+   "ar": "خشب دافئ"
+  },
+  "פרקט אלון, מטבח אגוז, פשתן": {
+   "en": "Oak parquet, walnut kitchen, linen",
+   "fr": "Parquet en chêne, cuisine en noyer, lin",
+   "ru": "Дубовый паркет, кухня из ореха, лён",
+   "ar": "باركيه بلوط، مطبخ جوز، كتان"
+  },
+  "בהיר": {
+   "en": "Light",
+   "fr": "Clair",
+   "ru": "Светлый",
+   "ar": "فاتح"
+  },
+  "אלון לבן, מטבח מרווה": {
+   "en": "White oak, sage kitchen",
+   "fr": "Chêne blanc, cuisine vert sauge",
+   "ru": "Белый дуб, кухня цвета шалфея",
+   "ar": "بلوط أبيض، مطبخ بلون المريمية"
+  },
+  "אבן": {
+   "en": "Stone",
+   "fr": "Pierre",
+   "ru": "Камень",
+   "ar": "حجر"
+  },
+  "אבן אפורה, עור קוניאק": {
+   "en": "Grey stone, cognac leather",
+   "fr": "Pierre grise, cuir cognac",
+   "ru": "Серый камень, кожа цвета коньяка",
+   "ar": "حجر رمادي، جلد بلون الكونياك"
+  },
+  "הדירה לדוגמה מבפנים": {
+   "en": "The example apartment from the inside",
+   "fr": "L'appartement témoin de l'intérieur",
+   "ru": "Квартира-пример изнутри",
+   "ar": "الشقة النموذجية من الداخل"
+  },
+  "· רובע שדה דב, צפון תל אביב": {
+   "en": "· Sde Dov quarter, North Tel Aviv",
+   "fr": "· Quartier de Sde Dov, nord de Tel Aviv",
+   "ru": "· Район Сде-Дов, север Тель-Авива",
+   "ar": "· حي سديه دوف، شمال تل أبيب"
+  },
+  "· אבן גבירול פינת ארלוזורוב, מתחם סומייל": {
+   "en": "· Ibn Gabirol corner of Arlozorov, the Sumail compound",
+   "fr": "· Angle Ibn Gabirol et Arlozorov, complexe Sumail",
+   "ru": "· Угол улиц Ибн Гвироль и Арлозоров, комплекс Сумейль",
+   "ar": "· زاوية ابن جبيرول وأرلوزوروف، مجمّع سُميل"
+  },
+  "· מתחם אשכול, רובע שדה דב": {
+   "en": "· The Eshkol compound, Sde Dov quarter",
+   "fr": "· Complexe Eshkol, quartier de Sde Dov",
+   "ru": "· Комплекс Эшколь, район Сде-Дов",
+   "ar": "· مجمّع أشكول، حي سديه دوف"
+  },
+  "רובע שדה דב, צפון תל אביב": {
+   "en": "Sde Dov quarter, North Tel Aviv",
+   "fr": "Quartier de Sde Dov, nord de Tel Aviv",
+   "ru": "Район Сде-Дов, север Тель-Авива",
+   "ar": "حي سديه دوف، شمال تل أبيب"
+  },
+  "אבן גבירול פינת ארלוזורוב, מתחם סומייל": {
+   "en": "Ibn Gabirol corner of Arlozorov, the Sumail compound",
+   "fr": "Angle Ibn Gabirol et Arlozorov, complexe Sumail",
+   "ru": "Угол улиц Ибн Гвироль и Арлозоров, комплекс Сумейль",
+   "ar": "زاوية ابن جبيرول وأرلوزوروف، مجمّع سُميل"
+  },
+  "מתחם אשכול, רובע שדה דב": {
+   "en": "The Eshkol compound, Sde Dov quarter",
+   "fr": "Complexe Eshkol, quartier de Sde Dov",
+   "ru": "Комплекс Эшколь, район Сде-Дов",
+   "ar": "مجمّع أشكول، حي سديه دوف"
+  },
+  "אבן גבירול פינת ארלוזורוב": {
+   "en": "Ibn Gabirol corner of Arlozorov",
+   "fr": "Angle Ibn Gabirol et Arlozorov",
+   "ru": "Угол улиц Ибн Гвироль и Арлозоров",
+   "ar": "زاوية ابن جبيرول وأرلوزوروف"
+  },
+  "מתחם סומייל, תל אביב": {
+   "en": "The Sumail compound, Tel Aviv",
+   "fr": "Complexe Sumail, Tel Aviv",
+   "ru": "Комплекс Сумейль, Тель-Авив",
+   "ar": "مجمّع سُميل، تل أبيب"
+  },
+  "לבחירת קומה": {
+   "en": "Choose a floor",
+   "fr": "Choisir un étage",
+   "ru": "Выбрать этаж",
+   "ar": "اختيار طابق"
+  },
+  "שיחת וידאו עם נציג": {
+   "en": "Video call with a representative",
+   "fr": "Appel vidéo avec un conseiller",
+   "ru": "Видеозвонок с представителем",
+   "ar": "مكالمة فيديو مع ممثل"
+  },
+  "סיור וירטואלי: הקומות והנוף": {
+   "en": "Virtual tour: the floors and the view",
+   "fr": "Visite virtuelle : les étages et la vue",
+   "ru": "Виртуальный тур: этажи и вид",
+   "ar": "جولة افتراضية: الطوابق والإطلالة"
+  },
+  "בוחרים קומה": {
+   "en": "Pick a floor",
+   "fr": "Choisir l'étage",
+   "ru": "Выбираем этаж",
+   "ar": "نختار طابقاً"
+  },
+  "נכנסים לדירה": {
+   "en": "Step inside",
+   "fr": "Entrer dans l'appartement",
+   "ru": "Входим в квартиру",
+   "ar": "ندخل إلى الشقة"
+  },
+  "מעצבים את הדירה": {
+   "en": "Design the apartment",
+   "fr": "Aménager l'appartement",
+   "ru": "Оформляем квартиру",
+   "ar": "نصمّم الشقة"
+  },
+  "קיים היום": {
+   "en": "Standing today",
+   "fr": "Existant aujourd'hui",
+   "ru": "Уже построено",
+   "ar": "قائم اليوم"
+  },
+  "בשלב ההיתר": {
+   "en": "At the permit stage",
+   "fr": "Au stade du permis",
+   "ru": "На стадии разрешения",
+   "ar": "في مرحلة الترخيص"
+  },
+  "מקורות הבמה: קו המגרש והבניינים הקיימים סביבו לפי עיריית": {
+   "en": "3D model sources: the lot line and the existing buildings around it, per the Municipality of",
+   "fr": "Sources du modèle 3D : le tracé du terrain et les immeubles existants alentour, selon la municipalité de",
+   "ru": "Источники 3D-модели: граница участка и существующие здания вокруг — по данным муниципалитета города",
+   "ar": "مصادر النموذج ثلاثي الأبعاد: حدود القسيمة والمباني القائمة حولها بحسب بلدية"
+  },
+  "מקורות הבמה: קו המגרש, קווי המגדלים והבניינים הקיימים סביבם לפי עיריית": {
+   "en": "3D model sources: the lot line, the towers' outlines and the existing buildings around them, per the Municipality of",
+   "fr": "Sources du modèle 3D : le tracé du terrain, l'emprise des tours et les immeubles existants alentour, selon la municipalité de",
+   "ru": "Источники 3D-модели: граница участка, контуры башен и существующие здания вокруг — по данным муниципалитета города",
+   "ar": "مصادر النموذج ثلاثي الأبعاد: حدود القسيمة وخطوط البرجين والمباني القائمة حولها بحسب بلدية"
+  },
+  "מיקום": {
+   "en": "Location",
+   "fr": "Emplacement",
+   "ru": "Расположение",
+   "ar": "الموقع"
+  },
+  "בניינים": {
+   "en": "Buildings",
+   "fr": "Immeubles",
+   "ru": "Здания",
+   "ar": "المباني"
+  },
+  "דירות": {
+   "en": "Apartments",
+   "fr": "Appartements",
+   "ru": "Квартиры",
+   "ar": "الشقق"
+  },
+  "תמהיל": {
+   "en": "Unit mix",
+   "fr": "Typologies",
+   "ru": "Состав квартир",
+   "ar": "تشكيلة الشقق"
+  },
+  "מחיר ממוצע": {
+   "en": "Average price",
+   "fr": "Prix moyen",
+   "ru": "Средняя цена",
+   "ar": "متوسط السعر"
+  },
+  "מחיר": {
+   "en": "Price",
+   "fr": "Prix",
+   "ru": "Цена",
+   "ar": "السعر"
+  },
+  "מצב": {
+   "en": "Status",
+   "fr": "Statut",
+   "ru": "Статус",
+   "ar": "الوضع"
+  },
+  "חניה": {
+   "en": "Parking",
+   "fr": "Stationnement",
+   "ru": "Парковка",
+   "ar": "موقف السيارات"
+  },
+  "גובה המגדל": {
+   "en": "Tower height",
+   "fr": "Hauteur de la tour",
+   "ru": "Высота башни",
+   "ar": "ارتفاع البرج"
+  },
+  "מתקנים": {
+   "en": "Facilities",
+   "fr": "Équipements",
+   "ru": "Инфраструктура",
+   "ar": "المرافق"
+  },
+  "ופנטהאוזים, לפי השיווק": {
+   "en": "and penthouses, per the marketing",
+   "fr": "et penthouses, selon la commercialisation",
+   "ru": "и пентхаусы, по маркетинговым данным",
+   "ar": "وبنتهاوسات، بحسب التسويق"
+  },
+  "לפי היתר הבנייה": {
+   "en": "Per the building permit",
+   "fr": "Selon le permis de construire",
+   "ru": "По разрешению на строительство",
+   "ar": "بحسب رخصة البناء"
+  },
+  "על גג מבנה הלובי": {
+   "en": "On the roof of the lobby building",
+   "fr": "Sur le toit du bâtiment du hall",
+   "ru": "На крыше здания лобби",
+   "ar": "على سطح مبنى الردهة"
+  },
+  "בין שני המגדלים, לפי אתר היזם": {
+   "en": "Between the two towers, per the developer's site",
+   "fr": "Entre les deux tours, selon le site du promoteur",
+   "ru": "Между двумя башнями, по данным сайта застройщика",
+   "ar": "بين البرجين، بحسب موقع المطوّر"
+  },
+  "לפי תכנית העיצוב": {
+   "en": "Per the design plan",
+   "fr": "Selon le plan d'aménagement",
+   "ru": "По архитектурному плану",
+   "ar": "بحسب مخطط التصميم"
+  },
+  "מחיר הפתיחה שפורסם": {
+   "en": "The published starting price",
+   "fr": "Le prix de lancement publié",
+   "ru": "Опубликованная стартовая цена",
+   "ar": "سعر الافتتاح المنشور"
+  },
+  "המכירה המוקדמת והבנייה החלו, לפי הפרסומים": {
+   "en": "The pre-sale and the construction have started, per the publications",
+   "fr": "La prévente et la construction ont commencé, selon les publications",
+   "ru": "Предпродажа и строительство начались, по публикациям",
+   "ar": "بدأ البيع المسبق والبناء، بحسب المنشورات"
+  },
+  "בריכה וחדרי כושר": {
+   "en": "A pool and gyms",
+   "fr": "Piscine et salles de sport",
+   "ru": "Бассейн и тренажёрные залы",
+   "ar": "مسبح وصالات رياضية"
+  },
+  "עכשיו": {
+   "en": "Now",
+   "fr": "Maintenant",
+   "ru": "Сейчас",
+   "ar": "الآن"
+  },
+  "אכלוס": {
+   "en": "Occupancy",
+   "fr": "Livraison",
+   "ru": "Заселение",
+   "ar": "الإسكان"
+  },
+  "תכנית": {
+   "en": "Plan",
+   "fr": "Plan",
+   "ru": "План",
+   "ar": "المخطط"
+  },
+  "השלמה": {
+   "en": "Completion",
+   "fr": "Achèvement",
+   "ru": "Завершение",
+   "ar": "الإنجاز"
+  },
+  "תכנית עיצוב": {
+   "en": "Design plan",
+   "fr": "Plan d'aménagement",
+   "ru": "Архитектурный план",
+   "ar": "مخطط التصميم"
+  },
+  "דמרי רכשה את הפרויקט": {
+   "en": "Dimri bought the project",
+   "fr": "Dimri a racheté le projet",
+   "ru": "Dimri купила проект",
+   "ar": "اشترت Dimri المشروع"
+  },
+  "שיווק ובנייה": {
+   "en": "Sales and construction",
+   "fr": "Commercialisation et construction",
+   "ru": "Продажи и строительство",
+   "ar": "التسويق والبناء"
+  },
+  "יסודות": {
+   "en": "Foundations",
+   "fr": "Fondations",
+   "ru": "Фундамент",
+   "ar": "الأساسات"
+  },
+  "עובדות בקצרה": {
+   "en": "Facts at a glance",
+   "fr": "L'essentiel en bref",
+   "ru": "Коротко о главном",
+   "ar": "حقائق باختصار"
+  },
+  "שלב הפרויקט": {
+   "en": "Project stage",
+   "fr": "Étape du projet",
+   "ru": "Этап проекта",
+   "ar": "مرحلة المشروع"
+  },
+  "הכל על מפה אחת: מחירים, סביבה, תוכניות עתידיות": {
+   "en": "Everything on one map: prices, surroundings, future plans",
+   "fr": "Tout sur une seule carte : prix, environs, projets futurs",
+   "ru": "Всё на одной карте: цены, окрестности, будущие планы",
+   "ar": "كل شيء على خريطة واحدة: الأسعار والمحيط والمخططات المستقبلية"
+  },
+  "₪ מחירים בסביבה": {
+   "en": "₪ Local prices",
+   "fr": "₪ Prix du quartier",
+   "ru": "₪ Цены в районе",
+   "ar": "₪ أسعار المنطقة"
+  },
+  "חינוך": {
+   "en": "Education",
+   "fr": "Éducation",
+   "ru": "Образование",
+   "ar": "التعليم"
+  },
+  "פארקים": {
+   "en": "Parks",
+   "fr": "Parcs",
+   "ru": "Парки",
+   "ar": "الحدائق"
+  },
+  "תחבורה": {
+   "en": "Transport",
+   "fr": "Transports",
+   "ru": "Транспорт",
+   "ar": "المواصلات"
+  },
+  "קניות": {
+   "en": "Shopping",
+   "fr": "Commerces",
+   "ru": "Магазины",
+   "ar": "التسوق"
+  },
+  "בריאות": {
+   "en": "Health",
+   "fr": "Santé",
+   "ru": "Здоровье",
+   "ar": "الصحة"
+  },
+  "קפה ומסעדות": {
+   "en": "Cafés and restaurants",
+   "fr": "Cafés et restaurants",
+   "ru": "Кафе и рестораны",
+   "ar": "مقاهٍ ومطاعم"
+  },
+  "◆ תוכניות עתידיות": {
+   "en": "◆ Future plans",
+   "fr": "◆ Plans futurs",
+   "ru": "◆ Будущие планы",
+   "ar": "◆ مخططات مستقبلية"
+  },
+  "תלת ממד": {
+   "en": "3D",
+   "fr": "3D",
+   "ru": "3D",
+   "ar": "ثلاثي الأبعاد"
+  },
+  "לוויין": {
+   "en": "Satellite",
+   "fr": "Satellite",
+   "ru": "Спутник",
+   "ar": "قمر صناعي"
+  },
+  "לחצו על כל סימון לקבלת פרטים. תגי המחיר הם אומדן לא מחייב למ״ר בפרויקטים סמוכים.": {
+   "en": "Click any marker for details. The price tags are a non-binding estimate per m² in nearby projects.",
+   "fr": "Cliquez sur un repère pour les détails. Les étiquettes de prix sont une estimation non contractuelle au m² dans les projets voisins.",
+   "ru": "Нажмите на любую метку, чтобы узнать подробности. Ценники — необязывающая оценка за м² в соседних проектах.",
+   "ar": "انقروا على أي علامة للتفاصيل. بطاقات السعر تقدير غير ملزم للمتر المربع في المشاريع المجاورة."
+  },
+  "◆ סגול = תוכניות התחדשות ופרויקטים עתידיים": {
+   "en": "◆ Purple = urban renewal plans and future projects",
+   "fr": "◆ Violet = plans de renouvellement urbain et projets futurs",
+   "ru": "◆ Фиолетовый = планы обновления и будущие проекты",
+   "ar": "◆ البنفسجي = مخططات تجديد عمراني ومشاريع مستقبلية"
+  },
+  "מפה חיה של הסביבה": {
+   "en": "Live map of the area",
+   "fr": "Carte interactive du quartier",
+   "ru": "Интерактивная карта района",
+   "ar": "خريطة حية للمنطقة"
+  },
+  "שכבות מפה": {
+   "en": "Map layers",
+   "fr": "Couches de la carte",
+   "ru": "Слои карты",
+   "ar": "طبقات الخريطة"
+  },
+  "מה אפשר לעשות כאן": {
+   "en": "What you can do here",
+   "fr": "Ce que vous pouvez faire ici",
+   "ru": "Что можно сделать здесь",
+   "ar": "ما الذي يمكن فعله هنا"
+  },
+  "אנשי מקצוע באזור": {
+   "en": "Professionals in the area",
+   "fr": "Professionnels du quartier",
+   "ru": "Специалисты в районе",
+   "ar": "مختصون في المنطقة"
+  },
+  "מה קורה מסביב": {
+   "en": "What's happening nearby",
+   "fr": "Ce qui se passe autour",
+   "ru": "Что происходит вокруг",
+   "ar": "ما الذي يحدث في المحيط"
+  },
+  "הסביבה של הפרויקט": {
+   "en": "The project's surroundings",
+   "fr": "Les environs du projet",
+   "ru": "Окрестности проекта",
+   "ar": "محيط المشروع"
+  },
+  "מה שקיים ומה שמתוכנן במרחק הליכה: תחבורה, חינוך, פארקים, בנייה ותוכניות. מקור: find-place, שכבות מידע עירוניות וממשלתיות.": {
+   "en": "What exists and what is planned within walking distance: transport, education, parks, construction and plans. Source: find-place, municipal and government data layers.",
+   "fr": "Ce qui existe et ce qui est prévu à distance de marche : transports, éducation, parcs, chantiers et plans. Source : find-place, couches de données municipales et gouvernementales.",
+   "ru": "Что есть и что планируется в пешей доступности: транспорт, образование, парки, строительство и планы. Источник: find-place, муниципальные и государственные слои данных.",
+   "ar": "ما هو قائم وما هو مخطط على مسافة سير: المواصلات والتعليم والحدائق والبناء والمخططات. المصدر: find-place، طبقات بيانات بلدية وحكومية."
+  },
+  "פתיחת המפה עם המחירים מסביב": {
+   "en": "Open the map with the prices around",
+   "fr": "Ouvrir la carte avec les prix alentour",
+   "ru": "Открыть карту с ценами вокруг",
+   "ar": "افتحوا الخريطة مع الأسعار في المحيط"
+  },
+  "רכבת קלה": {
+   "en": "Light rail",
+   "fr": "Tramway",
+   "ru": "Лёгкое метро",
+   "ar": "القطار الخفيف"
+  },
+  "בתי ספר במרחק הליכה": {
+   "en": "Schools within walking distance",
+   "fr": "Écoles à distance de marche",
+   "ru": "Школы в пешей доступности",
+   "ar": "مدارس على مسافة سير"
+  },
+  "גני ילדים": {
+   "en": "Kindergartens",
+   "fr": "Jardins d'enfants",
+   "ru": "Детские сады",
+   "ar": "رياض الأطفال"
+  },
+  "פארקים וחופים": {
+   "en": "Parks and beaches",
+   "fr": "Parcs et plages",
+   "ru": "Парки и пляжи",
+   "ar": "حدائق وشواطئ"
+  },
+  "בנייה מסביב": {
+   "en": "Construction around",
+   "fr": "Chantiers alentour",
+   "ru": "Стройки вокруг",
+   "ar": "البناء في المحيط"
+  },
+  "תכנון עתידי": {
+   "en": "Future planning",
+   "fr": "Urbanisme futur",
+   "ru": "Будущая застройка",
+   "ar": "التخطيط المستقبلي"
+  },
+  "בתוקף": {
+   "en": "In force",
+   "fr": "En vigueur",
+   "ru": "Действует",
+   "ar": "سارٍ"
+  },
+  "מאושרת": {
+   "en": "Approved",
+   "fr": "Approuvé",
+   "ru": "Утверждён",
+   "ar": "مُصادَق عليه"
+  },
+  "בהפקדה": {
+   "en": "Deposited for objections",
+   "fr": "Mis en dépôt",
+   "ru": "Опубликован для возражений",
+   "ar": "قيد الإيداع"
+  },
+  "בתהליך": {
+   "en": "In process",
+   "fr": "En cours",
+   "ru": "В процессе",
+   "ar": "قيد الإجراء"
+  },
+  "מוצעת": {
+   "en": "Proposed",
+   "fr": "Proposé",
+   "ru": "Предложен",
+   "ar": "مقترح"
+  },
+  "· הפרויקט בתחום התוכנית": {
+   "en": "· the project is within the plan",
+   "fr": "· le projet est dans le périmètre du plan",
+   "ru": "· проект находится в границах плана",
+   "ar": "· المشروع ضمن حدود المخطط"
+  },
+  "הפרויקט בתחום התוכנית": {
+   "en": "the project is within the plan",
+   "fr": "le projet est dans le périmètre du plan",
+   "ru": "проект находится в границах плана",
+   "ar": "المشروع ضمن حدود المخطط"
+  },
+  "לפנייה ישירה ליזם": {
+   "en": "Contact the developer directly",
+   "fr": "Contacter directement le promoteur",
+   "ru": "Связаться с застройщиком напрямую",
+   "ar": "التواصل مباشرة مع المطوّر"
+  },
+  "הכלים שלנו לבדיקת הפרויקט": {
+   "en": "Our tools for checking the project",
+   "fr": "Nos outils pour vérifier le projet",
+   "ru": "Наши инструменты для проверки проекта",
+   "ar": "أدواتنا لفحص المشروع"
+  },
+  "מעצב הדירות שלנו": {
+   "en": "Our apartment designer",
+   "fr": "Notre outil d'aménagement",
+   "ru": "Наш дизайнер квартир",
+   "ar": "مصمّم الشقق لدينا"
+  },
+  "בודקים ריהוט, מידות ומרחקים": {
+   "en": "Check furniture, sizes and distances",
+   "fr": "Vérifiez mobilier, dimensions et distances",
+   "ru": "Проверяем мебель, размеры и расстояния",
+   "ar": "نفحص الأثاث والمقاسات والمسافات"
+  },
+  "סיור תלת ממדי ברובע": {
+   "en": "A 3D tour of the quarter",
+   "fr": "Visite 3D du quartier",
+   "ru": "3D-тур по району",
+   "ar": "جولة ثلاثية الأبعاد في الحي"
+  },
+  "הסביבה של הפרויקט, בהפקת נדלן": {
+   "en": "The project's surroundings, produced by NadLan",
+   "fr": "Les environs du projet, réalisés par NadLan",
+   "ru": "Окрестности проекта, в исполнении NadLan",
+   "ar": "محيط المشروع، من إنتاج NadLan"
+  },
+  "טיסה מעל האזור": {
+   "en": "Fly over the area",
+   "fr": "Survol du quartier",
+   "ru": "Полёт над районом",
+   "ar": "تحليق فوق المنطقة"
+  },
+  "הדמיית כדור הארץ שלנו": {
+   "en": "Our globe view",
+   "fr": "Notre globe 3D",
+   "ru": "Наш 3D-глобус",
+   "ar": "مجسّم الكرة الأرضية لدينا"
+  },
+  "אתר עצמאי": {
+   "en": "Independent site",
+   "fr": "Site indépendant",
+   "ru": "Независимый сайт",
+   "ar": "موقع مستقل"
+  },
+  "כלי הבדיקה של נדלן": {
+   "en": "NadLan's checking tools",
+   "fr": "Les outils de vérification de NadLan",
+   "ru": "Инструменты проверки NadLan",
+   "ar": "أدوات الفحص من NadLan"
+  },
+  "הנפח הבהיר הוא אייץ׳ אינפיניטי, שנמצא בבנייה, בגובה לפי מספר הקומות.": {
+   "en": "The pale mass is H Infinity, under construction, drawn to its number of floors.",
+   "fr": "La masse claire est H Infinity, en construction, dessinée selon son nombre d'étages.",
+   "ru": "Светлый объём — H Infinity, он строится и показан по числу этажей.",
+   "ar": "الكتلة الفاتحة هي H Infinity قيد البناء، مرسومة حسب عدد طوابقها."
+  },
+  "הדירה הזו במגדל הדרומי: החזית הדרומית של המגדל הצפוני פונה אל המגדל הדרומי.": {
+   "en": "This apartment is in the south tower: the north tower's south face looks onto the south tower.",
+   "fr": "Cet appartement est dans la tour sud : la façade sud de la tour nord fait face à la tour sud.",
+   "ru": "Эта квартира в южной башне: южный фасад северной башни обращён к южной башне.",
+   "ar": "هذه الشقة في البرج الجنوبي: الواجهة الجنوبية للبرج الشمالي تطل على البرج الجنوبي."
+  },
+  "הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר. הנפחים השקופים הם פרויקטים מתוכננים ברובע, בגובה לפי מספר הקומות.": {
+   "en": "Interior illustration only: the layout, the finishes and the view are estimates and are not based on a sale plan. The transparent volumes are planned projects in the quarter, with heights by their number of floors.",
+   "fr": "Illustration intérieure uniquement : l'agencement, les finitions et la vue sont estimés et ne reposent pas sur un plan de vente. Les volumes transparents sont des projets prévus dans le quartier, à une hauteur fonction de leur nombre d'étages.",
+   "ru": "Только иллюстрация интерьера: планировка, отделка и вид приблизительны и не основаны на плане продажи. Прозрачные объёмы — проектируемые здания в районе, высотой по числу этажей.",
+   "ar": "تصور داخلي توضيحي فقط: التقسيم والتشطيبات والإطلالة تقديرية وليست بحسب مخطط البيع. الكتل الشفافة هي مشاريع مخطط لها في الحي، بارتفاع بحسب عدد طوابقها."
+  },
+  "הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר. רעיון עיצוב להמחשה, לא המפרט של היזם. הנפחים השקופים הם פרויקטים מתוכננים ברובע, בגובה לפי מספר הקומות.": {
+   "en": "Interior illustration only: the layout, the finishes and the view are estimates and are not based on a sale plan. A design idea for illustration, not the developer's specification. The transparent volumes are planned projects in the quarter, with heights by their number of floors.",
+   "fr": "Illustration intérieure uniquement : l'agencement, les finitions et la vue sont estimés et ne reposent pas sur un plan de vente. Une idée de décoration à titre indicatif, pas le descriptif du promoteur. Les volumes transparents sont des projets prévus dans le quartier, à une hauteur fonction de leur nombre d'étages.",
+   "ru": "Только иллюстрация интерьера: планировка, отделка и вид приблизительны и не основаны на плане продажи. Идея дизайна для иллюстрации, а не спецификация застройщика. Прозрачные объёмы — проектируемые здания в районе, высотой по числу этажей.",
+   "ar": "تصور داخلي توضيحي فقط: التقسيم والتشطيبات والإطلالة تقديرية وليست بحسب مخطط البيع. فكرة تصميم للتوضيح، وليست مواصفات المطوّر. الكتل الشفافة هي مشاريع مخطط لها في الحي، بارتفاع بحسب عدد طوابقها."
+  },
+  "הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר. רעיון עיצוב להמחשה, לא המפרט של היזם.": {
+   "en": "Interior illustration only: the layout, the finishes and the view are estimates and are not based on a sale plan. A design idea for illustration, not the developer's specification.",
+   "fr": "Illustration intérieure uniquement : l'agencement, les finitions et la vue sont estimés et ne reposent pas sur un plan de vente. Une idée de décoration à titre indicatif, pas le descriptif du promoteur.",
+   "ru": "Только иллюстрация интерьера: планировка, отделка и вид приблизительны и не основаны на плане продажи. Идея дизайна для иллюстрации, а не спецификация застройщика.",
+   "ar": "تصور داخلي توضيحي فقط: التقسيم والتشطيبات والإطلالة تقديرية وليست بحسب مخطط البيع. فكرة تصميم للتوضيح، وليست مواصفات المطوّر."
+  }
+ },
+ "patterns": [
+  {
+   "re": "^הדירה · קומה (\\d+)$",
+   "en": "The apartment · floor {1}",
+   "fr": "L'appartement · étage {1}",
+   "ru": "Квартира · этаж {1}",
+   "ar": "الشقة · الطابق {1}"
+  },
+  {
+   "re": "^המגדל הצפוני · קומה (\\d+)$",
+   "en": "The north tower · floor {1}",
+   "fr": "La tour nord · étage {1}",
+   "ru": "Северная башня · этаж {1}",
+   "ar": "البرج الشمالي · الطابق {1}"
+  },
+  {
+   "re": "^המגדל הדרומי · קומה (\\d+)$",
+   "en": "The south tower · floor {1}",
+   "fr": "La tour sud · étage {1}",
+   "ru": "Южная башня · этаж {1}",
+   "ar": "البرج الجنوبي · الطابق {1}"
+  },
+  {
+   "re": "^המעליות · לדירה בקומה (\\d+)$",
+   "en": "The lifts · to the apartment on floor {1}",
+   "fr": "Les ascenseurs · vers l'appartement au {1}e étage",
+   "ru": "Лифты · к квартире на {1}-м этаже",
+   "ar": "المصاعد · إلى الشقة في الطابق {1}"
+  },
+  {
+   "re": "^(\\d+) בכיוון הזה$",
+   "en": "{1} this way",
+   "fr": "{1} dans cette direction",
+   "ru": "{1} в этом направлении",
+   "ar": "{1} في هذا الاتجاه"
+  },
+  {
+   "re": "^(\\d+) דק׳ הליכה$",
+   "en": "{1} min walk",
+   "fr": "{1} min à pied",
+   "ru": "{1} мин пешком",
+   "ar": "{1} دقيقة سيرًا"
+  },
+  {
+   "re": "^(\\d+) דק׳$",
+   "en": "{1} min",
+   "fr": "{1} min",
+   "ru": "{1} мин",
+   "ar": "{1} د"
+  },
+  {
+   "re": "^קומה (\\d+)$",
+   "en": "Floor {1}",
+   "fr": "Étage {1}",
+   "ru": "Этаж {1}",
+   "ar": "الطابق {1}"
+  },
+  {
+   "re": "^להיכנס לדירה · מקומה (\\d+)$",
+   "en": "Enter the apartment · from floor {1}",
+   "fr": "Entrer dans l'appartement · depuis l'étage {1}",
+   "ru": "Войти в квартиру · с {1}-го этажа",
+   "ar": "الدخول إلى الشقة · من الطابق {1}"
+  },
+  {
+   "re": "^פונה (.+) ·$",
+   "en": "Facing {1} ·",
+   "fr": "Orienté {1} ·",
+   "ru": "Ориентация: {1} ·",
+   "ar": "باتجاه {1} ·"
+  },
+  {
+   "re": "^בקומות עד (\\d+) בערך יש גם דירות (\\d+) חדרים, לפי היזם$",
+   "en": "Up to about floor {1} there are also {2}-room apartments, per the developer",
+   "fr": "Jusqu'à l'étage {1} environ, il y a aussi des appartements de {2} pièces, selon le promoteur",
+   "ru": "Примерно до {1}-го этажа есть и {2}-комнатные квартиры, по данным застройщика",
+   "ar": "حتى الطابق {1} تقريباً توجد أيضاً شقق من {2} غرف، بحسب المطوّر"
+  },
+  {
+   "re": "^בפרויקט דירות (\\d+) עד (\\d+) חדרים, לפי פרסומי השיווק$",
+   "en": "The project has {1}- to {2}-room apartments, per the marketing materials",
+   "fr": "Le projet compte des appartements de {1} à {2} pièces, selon les supports commerciaux",
+   "ru": "В проекте квартиры от {1} до {2} комнат, по маркетинговым материалам",
+   "ar": "في المشروع شقق من {1} إلى {2} غرف، بحسب المواد التسويقية"
+  },
+  {
+   "re": "^דירות (\\d+) עד (\\d+) חדרים ופנטהאוזים, לפי אתר הפרויקט$",
+   "en": "{1}- to {2}-room apartments and penthouses, per the project's site",
+   "fr": "Appartements de {1} à {2} pièces et penthouses, selon le site du projet",
+   "ru": "Квартиры от {1} до {2} комнат и пентхаусы, по данным сайта проекта",
+   "ar": "شقق من {1} إلى {2} غرف وبنتهاوسات، بحسب موقع المشروع"
+  },
+  {
+   "re": "^קומות הפנטהאוזים \\((\\d+) עד (\\d+)\\), עם בריכות פרטיות בקומות (\\d+) ו־(\\d+), לפי החלטת רשות הרישוי \\(([\\d.]+)\\)$",
+   "en": "Penthouse floors ({1} to {2}), with private pools on floors {3} and {4}, per the licensing authority's decision ({5})",
+   "fr": "Étages des penthouses ({1} à {2}), avec piscines privées aux étages {3} et {4}, selon la décision de l'autorité d'octroi des permis ({5})",
+   "ru": "Этажи пентхаусов (с {1} по {2}), с частными бассейнами на {3}-м и {4}-м этажах, по решению органа выдачи разрешений ({5})",
+   "ar": "طوابق البنتهاوس ({1} إلى {2})، مع مسابح خاصة في الطابقين {3} و{4}، بحسب قرار سلطة الترخيص ({5})"
+  },
+  {
+   "re": "^בפרויקט (\\d+) דירות, לפי פרסומי היזם$",
+   "en": "{1} apartments in the project, per the developer's publications",
+   "fr": "{1} appartements dans le projet, selon les publications du promoteur",
+   "ru": "Квартир в проекте: {1}, по публикациям застройщика",
+   "ar": "عدد الشقق في المشروع: {1}، بحسب منشورات المطوّر"
+  },
+  {
+   "re": "^שתי הקומות העליונות, עם בריכות פרטיות, לפי תכנית העיצוב \\(([\\d.]+)\\)$",
+   "en": "The two top floors, with private pools, per the design plan ({1})",
+   "fr": "Les deux derniers étages, avec piscines privées, selon le plan d'aménagement ({1})",
+   "ru": "Два верхних этажа, с частными бассейнами, по архитектурному плану ({1})",
+   "ar": "الطابقان العلويان، مع مسابح خاصة، بحسب مخطط التصميم ({1})"
+  },
+  {
+   "re": "^המגדלון: (\\d+) קומות עם קומת הקרקע, מעל רמפת החניון, לפי תכנית העיצוב$",
+   "en": "The mid-rise: {1} floors including the ground floor, above the car park ramp, per the design plan",
+   "fr": "La petite tour : {1} étages rez-de-chaussée compris, au-dessus de la rampe du parking, selon le plan d'aménagement",
+   "ru": "Малая башня: {1} эт. с учётом первого, над рампой паркинга, по архитектурному плану",
+   "ar": "البرج الصغير: {1} طابقاً مع الطابق الأرضي، فوق منحدر موقف السيارات، بحسب مخطط التصميم"
+  },
+  {
+   "re": "^שתי הקומות העליונות במגדלון, עם בריכות פרטיות, לפי תכנית העיצוב \\(([\\d.]+)\\)$",
+   "en": "The mid-rise's two top floors, with private pools, per the design plan ({1})",
+   "fr": "Les deux derniers étages de la petite tour, avec piscines privées, selon le plan d'aménagement ({1})",
+   "ru": "Два верхних этажа малой башни, с частными бассейнами, по архитектурному плану ({1})",
+   "ar": "الطابقان العلويان في البرج الصغير، مع مسابح خاصة، بحسب مخطط التصميم ({1})"
+  },
+  {
+   "re": "^קומות הפנטהאוזים, בגובה של כ־([\\d.,]+) מ׳, לפי תכנית העיצוב \\(([\\d.]+)\\)$",
+   "en": "The penthouse floors, about {1} m high, per the design plan ({2})",
+   "fr": "Les étages des penthouses, d'environ {1} m de haut, selon le plan d'aménagement ({2})",
+   "ru": "Этажи пентхаусов высотой около {1} м, по архитектурному плану ({2})",
+   "ar": "طوابق البنتهاوس، بارتفاع نحو {1} م، بحسب مخطط التصميم ({2})"
+  },
+  {
+   "re": "^במגדל (\\d+) דירות: (\\d+) קטנות, (\\d+) בינוניות ו־(\\d+) גדולות, לפי תכנית העיצוב \\(([\\d.]+)\\)$",
+   "en": "{1} apartments in the tower: {2} small, {3} medium and {4} large, per the design plan ({5})",
+   "fr": "{1} appartements dans la tour : {2} petits, {3} moyens et {4} grands, selon le plan d'aménagement ({5})",
+   "ru": "Квартир в башне: {1} — маленьких {2}, средних {3} и больших {4}, по архитектурному плану ({5})",
+   "ar": "عدد الشقق في البرج: {1}، منها {2} صغيرة و{3} متوسطة و{4} كبيرة، بحسب مخطط التصميم ({5})"
+  },
+  {
+   "re": "^הבסיס המרקמי של הבניין; בבניין (\\d+) דירות, לפי תכנית העיצוב \\(([\\d.]+)\\)$",
+   "en": "The building's street-scale base; {1} apartments in the building, per the design plan ({2})",
+   "fr": "La base de l'immeuble à l'échelle de la rue ; {1} appartements dans l'immeuble, selon le plan d'aménagement ({2})",
+   "ru": "Малоэтажное основание здания; квартир в здании: {1}, по архитектурному плану ({2})",
+   "ar": "القاعدة المنخفضة للمبنى؛ عدد الشقق في المبنى: {1}، بحسب مخطط التصميم ({2})"
+  },
+  {
+   "re": "^קומות המגדלון; בבניין (\\d+) דירות, לפי תכנית העיצוב \\(([\\d.]+)\\)$",
+   "en": "The mid-rise floors; {1} apartments in the building, per the design plan ({2})",
+   "fr": "Les étages de la petite tour ; {1} appartements dans l'immeuble, selon le plan d'aménagement ({2})",
+   "ru": "Этажи малой башни; квартир в здании: {1}, по архитектурному плану ({2})",
+   "ar": "طوابق البرج الصغير؛ عدد الشقق في المبنى: {1}، بحسب مخطط التصميم ({2})"
+  },
+  {
+   "re": "^בקומה הזו בבניין השני נמכרה במכירה המוקדמת דירת (\\d+) חדרים, כ-([\\d.,]+) מ״ר, בכ-([\\d.,]+) מיליון ₪ \\(([\\d.]+)\\)$",
+   "en": "On this floor of the second building, a {1}-room apartment of about {2} m² was sold in the pre-sale for about {3} million ₪ ({4})",
+   "fr": "À cet étage du second immeuble, un appartement de {1} pièces d'environ {2} m² a été vendu en prévente pour environ {3} millions ₪ ({4})",
+   "ru": "На этом этаже второго здания в предпродаже продана {1}-комнатная квартира площадью около {2} м² примерно за {3} млн ₪ ({4})",
+   "ar": "في هذا الطابق من المبنى الثاني بيعت في البيع المسبق شقة من {1} غرف، نحو {2} م²، بنحو {3} مليون ₪ ({4})"
+  },
+  {
+   "re": "^בקומה הזו נמכרה דירת (\\d+) חדרים, ([\\d.,]+) מ״ר, ביותר מ-([\\d.,]+) מיליון ₪ \\(([\\d.]+)\\)$",
+   "en": "On this floor, a {1}-room apartment of {2} m² was sold for more than {3} million ₪ ({4})",
+   "fr": "À cet étage, un appartement de {1} pièces de {2} m² a été vendu plus de {3} millions ₪ ({4})",
+   "ru": "На этом этаже продана {1}-комнатная квартира площадью {2} м² более чем за {3} млн ₪ ({4})",
+   "ar": "في هذا الطابق بيعت شقة من {1} غرف، {2} م²، بأكثر من {3} مليون ₪ ({4})"
+  },
+  {
+   "re": "^בקומה הזו נמכרה דירת (\\d+) חדרים, ([\\d.,]+) מ״ר, ב-([\\d.,]+) מיליון ₪ \\(([\\d.]+)\\)$",
+   "en": "On this floor, a {1}-room apartment of {2} m² was sold for {3} million ₪ ({4})",
+   "fr": "À cet étage, un appartement de {1} pièces de {2} m² a été vendu {3} millions ₪ ({4})",
+   "ru": "На этом этаже продана {1}-комнатная квартира площадью {2} м² за {3} млн ₪ ({4})",
+   "ar": "في هذا الطابق بيعت شقة من {1} غرف، {2} م²، بـ{3} مليون ₪ ({4})"
+  },
+  {
+   "re": "^בקומה הזו נמכרה דירת חדר, ([\\d.,]+) מ״ר, ב-([\\d.,]+) מיליון ₪ \\(([\\d.]+)\\)$",
+   "en": "On this floor, a one-room apartment of {1} m² was sold for {2} million ₪ ({3})",
+   "fr": "À cet étage, un studio de {1} m² a été vendu {2} millions ₪ ({3})",
+   "ru": "На этом этаже продана однокомнатная квартира площадью {1} м² за {2} млн ₪ ({3})",
+   "ar": "في هذا الطابق بيعت شقة من غرفة واحدة، {1} م²، بـ{2} مليون ₪ ({3})"
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: מבט משוער מגובה של כ־([\\d.,]+) מ׳, לפי מפה\\. אינו צילום מהדירה\\.$",
+   "en": "Illustration only: an estimated view from a height of about {1} m, based on a map. Not a photo from the apartment.",
+   "fr": "Illustration uniquement : vue estimée depuis une hauteur d'environ {1} m, d'après une carte. Ce n'est pas une photo prise depuis l'appartement.",
+   "ru": "Только иллюстрация: примерный вид с высоты около {1} м, по карте. Это не фотография из квартиры.",
+   "ar": "تصور توضيحي فقط: إطلالة تقديرية من ارتفاع نحو {1} م، بحسب الخريطة. ليست صورة من الشقة."
+  },
+  {
+   "re": "^מרחק בקו אווירי מהבניין, לפי המפה; זמן ההליכה משוער\\. מקור: נתוני עיריית תל אביב-יפו ו-OpenStreetMap, ([\\d.]+); הפרויקטים לפי העמודים שלהם באתר\\.$",
+   "en": "Straight-line distance from the building, per the map; the walking time is an estimate. Source: Tel Aviv-Yafo Municipality data and OpenStreetMap, {1}; the projects per their pages on the site.",
+   "fr": "Distance à vol d'oiseau depuis l'immeuble, d'après la carte ; le temps de marche est estimé. Source : données de la municipalité de Tel Aviv-Jaffa et OpenStreetMap, {1} ; les projets d'après leurs pages sur le site.",
+   "ru": "Расстояние по прямой от здания, по карте; время в пути пешком приблизительное. Источник: данные муниципалитета Тель-Авива-Яффо и OpenStreetMap, {1}; проекты — по их страницам на сайте.",
+   "ar": "المسافة بخط مستقيم من المبنى، بحسب الخريطة؛ مدة المشي تقديرية. المصدر: بيانات بلدية تل أبيب يافا وOpenStreetMap، {1}؛ المشاريع بحسب صفحاتها في الموقع."
+  },
+  {
+   "re": "^כ־([\\d.,]+) דק׳ הליכה · (.+)$",
+   "en": "About {1} min walk · {2}",
+   "fr": "Environ {1} min à pied · {2}",
+   "ru": "Около {1} мин пешком · {2}",
+   "ar": "نحو {1} د مشياً · {2}"
+  },
+  {
+   "re": "^כ־([\\d.,]+) דק׳ הליכה$",
+   "en": "About {1} min walk",
+   "fr": "Environ {1} min à pied",
+   "ru": "Около {1} мин пешком",
+   "ar": "نحو {1} د مشياً"
+  },
+  {
+   "re": "^([\\d.,]+) ק״מ$",
+   "en": "{1} km",
+   "fr": "{1} km",
+   "ru": "{1} км",
+   "ar": "{1} كم"
+  },
+  {
+   "re": "^([\\d.,]+) מ׳ (מ.+?), כ-([\\d.,]+) דקות הליכה, (.+)$",
+   "en": "{1} m {2}, about {3} min walk, {4}",
+   "fr": "À {1} m {2}, environ {3} min à pied, {4}",
+   "ru": "{1} м {2}, около {3} мин пешком, {4}",
+   "ar": "على بعد {1} م {2}، نحو {3} د مشياً، {4}"
+  },
+  {
+   "re": "^([\\d.,]+) מ׳ (מ.+?), כ-([\\d.,]+) דקות הליכה$",
+   "en": "{1} m {2}, about {3} min walk",
+   "fr": "À {1} m {2}, environ {3} min à pied",
+   "ru": "{1} м {2}, около {3} мин пешком",
+   "ar": "على بعد {1} م {2}، نحو {3} د مشياً"
+  },
+  {
+   "re": "^([\\d.,]+) מ׳ (מ.+?), (.+)$",
+   "en": "{1} m {2}, {3}",
+   "fr": "À {1} m {2}, {3}",
+   "ru": "{1} м {2}, {3}",
+   "ar": "على بعد {1} م {2}، {3}"
+  },
+  {
+   "re": "^([\\d.,]+) מ׳ (מ.+)$",
+   "en": "{1} m {2}",
+   "fr": "À {1} m {2}",
+   "ru": "{1} м {2}",
+   "ar": "على بعد {1} م {2}"
+  },
+  {
+   "re": "^מה רואים מ־(.+) לכיוונו$",
+   "en": "The view from {1} towards it",
+   "fr": "La vue depuis {1} dans sa direction",
+   "ru": "Вид из {1} в эту сторону",
+   "ar": "الإطلالة من {1} باتجاهه"
+  },
+  {
+   "re": "^מה רואים מ(.+) לכיוונו$",
+   "en": "The view from {1} towards it",
+   "fr": "La vue depuis {1} dans sa direction",
+   "ru": "Вид из {1} в эту сторону",
+   "ar": "الإطلالة من {1} باتجاهه"
+  },
+  {
+   "re": "^(\\d+) קומות · (\\d+) דירות$",
+   "en": "{1} floors · {2} apartments",
+   "fr": "{1} étages · {2} appartements",
+   "ru": "Этажей: {1} · квартир: {2}",
+   "ar": "الطوابق: {1} · الشقق: {2}"
+  },
+  {
+   "re": "^(\\d+) קומות$",
+   "en": "{1} floors",
+   "fr": "{1} étages",
+   "ru": "Этажей: {1}",
+   "ar": "الطوابق: {1}"
+  },
+  {
+   "re": "^(\\d+) דירות$",
+   "en": "{1} apartments",
+   "fr": "{1} appartements",
+   "ru": "Квартир: {1}",
+   "ar": "الشقق: {1}"
+  },
+  {
+   "re": "^אכלוס צפוי (\\d+), לפי עמוד הפרויקט$",
+   "en": "Occupancy expected in {1}, per the project's page",
+   "fr": "Livraison prévue en {1}, selon la page du projet",
+   "ru": "Заселение ожидается в {1} году, по странице проекта",
+   "ar": "الإسكان متوقع في {1}، بحسب صفحة المشروع"
+  },
+  {
+   "re": "^find-place, נתוני עיריית תל אביב-יפו ו-OpenStreetMap, ([\\d.]+)$",
+   "en": "find-place, Tel Aviv-Yafo Municipality data and OpenStreetMap, {1}",
+   "fr": "find-place, données de la municipalité de Tel Aviv-Jaffa et OpenStreetMap, {1}",
+   "ru": "find-place, данные муниципалитета Тель-Авива-Яффо и OpenStreetMap, {1}",
+   "ar": "find-place، بيانات بلدية تل أبيب يافا وOpenStreetMap، {1}"
+  },
+  {
+   "re": "^גבול המגרש מצפון לפי החלטת רשות הרישוי \\(([\\d.]+)\\); השטח לפי שכבת המגרשים של העירייה \\(תכנית (\\d+)\\)$",
+   "en": "The lot's northern boundary per the licensing authority's decision ({1}); the area per the municipality's lots layer (plan {2})",
+   "fr": "La limite nord du terrain selon la décision de l'autorité d'octroi des permis ({1}) ; la surface selon la couche des terrains de la municipalité (plan {2})",
+   "ru": "Северная граница участка — по решению органа выдачи разрешений ({1}); территория — по слою участков муниципалитета (план {2})",
+   "ar": "الحد الشمالي للقسيمة بحسب قرار سلطة الترخيص ({1})؛ المساحة بحسب طبقة القسائم في البلدية (المخطط {2})"
+  },
+  {
+   "re": "^שכבת המבנים של עיריית תל אביב-יפו \\(מבנה ציבור, (\\d+) קומות, (\\d+)\\); החיבור אליו במרתף לפי החלטת רשות הרישוי \\(([\\d.]+)\\)$",
+   "en": "The Tel Aviv-Yafo Municipality's buildings layer (public building, {1} floors, {2}); the basement link to it per the licensing authority's decision ({3})",
+   "fr": "La couche des bâtiments de la municipalité de Tel Aviv-Jaffa (bâtiment public, {1} étages, {2}) ; la liaison en sous-sol selon la décision de l'autorité d'octroi des permis ({3})",
+   "ru": "Слой зданий муниципалитета Тель-Авива-Яффо (общественное здание, этажей: {1}, {2}); подземный переход к нему — по решению органа выдачи разрешений ({3})",
+   "ar": "طبقة المباني في بلدية تل أبيب يافا (مبنى عام، {1} طابقاً، {2})؛ الربط به في القبو بحسب قرار سلطة الترخيص ({3})"
+  },
+  {
+   "re": "^עמוד הפרויקט באתר; המגרש לפי עיריית תל אביב-יפו \\(מגרש (\\d+)\\)$",
+   "en": "The project's page on the site; the lot per the Tel Aviv-Yafo Municipality (lot {1})",
+   "fr": "La page du projet sur le site ; le terrain selon la municipalité de Tel Aviv-Jaffa (lot {1})",
+   "ru": "Страница проекта на сайте; участок — по данным муниципалитета Тель-Авива-Яффо (участок {1})",
+   "ar": "صفحة المشروع في الموقع؛ القسيمة بحسب بلدية تل أبيب يافا (القسيمة {1})"
+  },
+  {
+   "re": "^לפי תכנית העיצוב שאושרה ב־([\\d.]+): שתי בריכות שחייה על גגות של שני בנייני בוטיק\\.$",
+   "en": "Per the design plan approved on {1}: two swimming pools on the roofs of two boutique buildings.",
+   "fr": "Selon le plan d'aménagement approuvé le {1} : deux piscines sur les toits de deux immeubles boutique.",
+   "ru": "По архитектурному плану, утверждённому {1}: два плавательных бассейна на крышах двух бутик-домов.",
+   "ar": "بحسب مخطط التصميم المصادق عليه في {1}: مسبحان على سطحي مبنيين من مباني البوتيك."
+  },
+  {
+   "re": "^לפי תכנית העיצוב: ([\\d.,]+) מ״ר לשימוש הדיירים בקומת הקרקע ובקומת הבסיס של המגדל\\.$",
+   "en": "Per the design plan: {1} m² for the residents' use on the ground floor and the tower's base floor.",
+   "fr": "Selon le plan d'aménagement : {1} m² à l'usage des résidents au rez-de-chaussée et au niveau de socle de la tour.",
+   "ru": "По архитектурному плану: {1} м² для жильцов на первом этаже и на этаже основания башни.",
+   "ar": "بحسب مخطط التصميم: {1} م² لاستخدام السكان في الطابق الأرضي وطابق القاعدة في البرج."
+  },
+  {
+   "re": "^לפי תכנית העיצוב: קומת קרקע מסחרית, בגובה של עד ([\\d.,]+) מטרים\\.$",
+   "en": "Per the design plan: a commercial ground floor, up to {1} metres high.",
+   "fr": "Selon le plan d'aménagement : un rez-de-chaussée commercial, d'une hauteur allant jusqu'à {1} mètres.",
+   "ru": "По архитектурному плану: торговый первый этаж высотой до {1} метров.",
+   "ar": "بحسب مخطط التصميم: طابق أرضي تجاري بارتفاع يصل إلى {1} أمتار."
+  },
+  {
+   "re": "^לפי החלטת רשות הרישוי \\(([\\d.]+)\\): בקומה (\\d+) למגורים שטחי הדיירים, בריכת הפעוטות ופרגולת הצללה לבריכה\\.$",
+   "en": "Per the licensing authority's decision ({1}): on residential floor {2}, the residents' areas, the toddlers' pool and a shading pergola for the pool.",
+   "fr": "Selon la décision de l'autorité d'octroi des permis ({1}) : au niveau résidentiel {2}, les espaces des résidents, la pataugeoire et une pergola d'ombrage pour la piscine.",
+   "ru": "По решению органа выдачи разрешений ({1}): на {2}-м жилом этаже — помещения для жильцов, бассейн для малышей и затеняющая пергола для бассейна.",
+   "ar": "بحسب قرار سلطة الترخيص ({1}): في الطابق السكني {2} مساحات السكان ومسبح الأطفال الصغار وعريشة تظليل للمسبح."
+  },
+  {
+   "re": "^לפי אתר היזם: לובי ראשי בגובה של כ־([\\d.,]+) מטרים, המחבר בין שני המגדלים כמו רחוב פנימי, ולובי בכל קומה\\.$",
+   "en": "Per the developer's site: a main lobby about {1} metres high, connecting the two towers like an inner street, and a lobby on every floor.",
+   "fr": "Selon le site du promoteur : un hall principal d'environ {1} mètres de haut, qui relie les deux tours comme une rue intérieure, et un hall à chaque étage.",
+   "ru": "По данным сайта застройщика: главное лобби высотой около {1} метров, соединяющее две башни, как внутренняя улица, и лобби на каждом этаже.",
+   "ar": "بحسب موقع المطوّر: ردهة رئيسية بارتفاع نحو {1} أمتار، تربط بين البرجين كشارع داخلي، وردهة في كل طابق."
+  },
+  {
+   "re": "^לפי החלטת רשות הרישוי \\(([\\d.]+)\\): קומות הפנטהאוזים הן (\\d+) עד (\\d+), והבריכות הפרטיות בקומות (\\d+) ו־(\\d+)\\.$",
+   "en": "Per the licensing authority's decision ({1}): the penthouse floors are {2} to {3}, and the private pools are on floors {4} and {5}.",
+   "fr": "Selon la décision de l'autorité d'octroi des permis ({1}) : les étages des penthouses vont du {2} au {3}, et les piscines privées sont aux étages {4} et {5}.",
+   "ru": "По решению органа выдачи разрешений ({1}): этажи пентхаусов — с {2} по {3}, а частные бассейны — на {4}-м и {5}-м этажах.",
+   "ar": "بحسب قرار سلطة الترخيص ({1}): طوابق البنتهاوس من {2} إلى {3}، والمسابح الخاصة في الطابقين {4} و{5}."
+  },
+  {
+   "re": "^לפי דוח החברה: מתחם מסחרי בן (\\d+) קומות\\.$",
+   "en": "Per the company's report: a {1}-storey retail complex.",
+   "fr": "Selon le rapport de la société : un complexe commercial de {1} niveaux.",
+   "ru": "По отчёту компании: {1}-этажный торговый комплекс.",
+   "ar": "بحسب تقرير الشركة: مجمّع تجاري من {1} طوابق."
+  },
+  {
+   "re": "^לפי החלטת רשות הרישוי: (\\d+) קומות מרתף מתחת למגרש\\.$",
+   "en": "Per the licensing authority's decision: {1} basement floors beneath the lot.",
+   "fr": "Selon la décision de l'autorité d'octroi des permis : {1} niveaux de sous-sol sous le terrain.",
+   "ru": "По решению органа выдачи разрешений: подземных этажей под участком — {1}.",
+   "ar": "بحسب قرار سلطة الترخيص: {1} طوابق تحت الأرض أسفل القسيمة."
+  },
+  {
+   "re": "^לפי תכנית העיצוב \\(([\\d.]+)\\): בריכות השחייה ימוקמו על גג מבנה המלון או בתת הקרקע מתחתיו, והקומה התשיעית של המבנה היא קומת שירותי הדיירים עם בריכה\\.$",
+   "en": "Per the design plan ({1}): the swimming pools will be on the roof of the hotel building or underground beneath it, and the building's ninth floor is the residents' services floor, with a pool.",
+   "fr": "Selon le plan d'aménagement ({1}) : les piscines seront sur le toit du bâtiment de l'hôtel ou en sous-sol en dessous, et le neuvième étage du bâtiment est l'étage des services aux résidents, avec une piscine.",
+   "ru": "По архитектурному плану ({1}): плавательные бассейны разместятся на крыше здания отеля или под землёй под ним, а девятый этаж здания — сервисный этаж для жильцов с бассейном.",
+   "ar": "بحسب مخطط التصميم ({1}): ستقام المسابح على سطح مبنى الفندق أو تحت الأرض أسفله، والطابق التاسع من المبنى هو طابق خدمات السكان مع مسبح."
+  },
+  {
+   "re": "^לפי תכנית העיצוב: בשתי הקומות העליונות של המגדל ושל המגדלון בריכות פרטיות, וגובה הקומות האלה עד ([\\d.,]+) מ׳\\.$",
+   "en": "Per the design plan: private pools on the two top floors of the tower and of the mid-rise, and these floors are up to {1} m high.",
+   "fr": "Selon le plan d'aménagement : des piscines privées aux deux derniers étages de la tour et de la petite tour, et ces étages ont une hauteur allant jusqu'à {1} m.",
+   "ru": "По архитектурному плану: частные бассейны на двух верхних этажах башни и малой башни, а высота этих этажей — до {1} м.",
+   "ar": "بحسب مخطط التصميم: مسابح خاصة في الطابقين العلويين للبرج وللبرج الصغير، وارتفاع هذين الطابقين حتى {1} م."
+  },
+  {
+   "re": "^לפי תכנית העיצוב: המבנה הדרום מזרחי, (\\d+) קומות, משלב מלון ודירות, ולובי המלון בכניסה מדרום דרך קולונדה\\.$",
+   "en": "Per the design plan: the south-eastern building, {1} floors, combines a hotel and apartments, and the hotel lobby is entered from the south through a colonnade.",
+   "fr": "Selon le plan d'aménagement : le bâtiment sud-est, de {1} étages, associe un hôtel et des logements, et on entre dans le hall de l'hôtel par le sud, sous une colonnade.",
+   "ru": "По архитектурному плану: юго-восточное здание ({1} этажей) сочетает отель и квартиры, а вход в лобби отеля — с юга, через колоннаду.",
+   "ar": "بحسب مخطط التصميم: المبنى الجنوبي الشرقي، {1} طوابق، يجمع بين فندق وشقق، ومدخل ردهة الفندق من الجنوب عبر رواق أعمدة."
+  },
+  {
+   "re": "^לפי פרסומי היזם: כ־([\\d.,]+) חדרי מלון\\.$",
+   "en": "Per the developer's publications: about {1} hotel rooms.",
+   "fr": "Selon les publications du promoteur : environ {1} chambres d'hôtel.",
+   "ru": "По публикациям застройщика: около {1} гостиничных номеров.",
+   "ar": "بحسب منشورات المطوّر: نحو {1} غرفة فندقية."
+  },
+  {
+   "re": "^לפי תכנית העיצוב: מסחר בקומת הקרקע של המגדל, המגדלון ומבנה המלון, וקולונדה ברוחב ([\\d.,]+) מ׳ ובגובה ([\\d.,]+) מ׳ לאורך הרחובות במזרח ובדרום\\.$",
+   "en": "Per the design plan: retail on the ground floor of the tower, the mid-rise and the hotel building, and a colonnade {1} m wide and {2} m high along the streets on the east and the south.",
+   "fr": "Selon le plan d'aménagement : des commerces au rez-de-chaussée de la tour, de la petite tour et du bâtiment de l'hôtel, et une colonnade de {1} m de large et {2} m de haut le long des rues à l'est et au sud.",
+   "ru": "По архитектурному плану: торговля на первом этаже башни, малой башни и здания отеля, и колоннада шириной {1} м и высотой {2} м вдоль улиц на востоке и юге.",
+   "ar": "بحسب مخطط التصميم: متاجر في الطابق الأرضي للبرج والبرج الصغير ومبنى الفندق، ورواق أعمدة بعرض {1} م وارتفاع {2} م على امتداد الشوارع في الشرق والجنوب."
+  },
+  {
+   "re": "^לפי פרסומי היזם: כ־([\\d.,]+) מ״ר מסחר\\.$",
+   "en": "Per the developer's publications: about {1} m² of retail.",
+   "fr": "Selon les publications du promoteur : environ {1} m² de commerces.",
+   "ru": "По публикациям застройщика: около {1} м² торговых площадей.",
+   "ar": "بحسب منشورات المطوّر: نحو {1} م² من المتاجر."
+  },
+  {
+   "re": "^לפי תכנית העיצוב: ([\\d.,]+) מ״ר שטח פתוח עם זיקת הנאה למעבר הציבור (\\d+) שעות ביממה, בחיבור לשטחים הפתוחים השכנים\\.$",
+   "en": "Per the design plan: {1} m² of open space with a public right of way {2} hours a day, connected to the neighbouring open spaces.",
+   "fr": "Selon le plan d'aménagement : {1} m² d'espace ouvert avec une servitude de passage public {2} heures sur 24, reliés aux espaces ouverts voisins.",
+   "ru": "По архитектурному плану: {1} м² открытого пространства с правом общественного прохода {2} часа в сутки, в связке с соседними открытыми пространствами.",
+   "ar": "بحسب مخطط التصميم: {1} م² من المساحة المفتوحة مع حق مرور للجمهور {2} ساعة يومياً، متصلة بالمساحات المفتوحة المجاورة."
+  },
+  {
+   "re": "^לפי תכנית העיצוב: (\\d+) קומות מרתף וגלריית אופניים; הרמפה נכנסת מהרחוב במזרח, מתחת למגדלון\\. (\\d+) מקומות חניה בתקן (\\d+:\\d+)\\.$",
+   "en": "Per the design plan: {1} basement floors and a bicycle gallery; the ramp enters from the street on the east, under the mid-rise. {2} parking spaces at a {3} standard.",
+   "fr": "Selon le plan d'aménagement : {1} niveaux de sous-sol et une galerie à vélos ; la rampe part de la rue à l'est, sous la petite tour. {2} places de stationnement selon la norme {3}.",
+   "ru": "По архитектурному плану: подземные этажи ({1}) и галерея для велосипедов; рампа ведёт с улицы на востоке, под малой башней. Машино-мест: {2}, по норме {3}.",
+   "ar": "بحسب مخطط التصميم: {1} طوابق تحت الأرض ورواق للدراجات؛ يدخل المنحدر من الشارع في الشرق، تحت البرج الصغير. {2} موقفاً للسيارات بمعيار {3}."
+  },
+  {
+   "re": "^לפי תכנית העיצוב: בתת הקרקע בריכת שחייה וחדרי כושר, וחצר אנגלית של עד ([\\d.,]+) מ״ר וברוחב של עד ([\\d.,]+) מ׳ מכניסה אליהם אור\\.$",
+   "en": "Per the design plan: underground, a swimming pool and gyms, and a sunken light court of up to {1} m² and up to {2} m wide lets daylight into them.",
+   "fr": "Selon le plan d'aménagement : en sous-sol, une piscine et des salles de sport, éclairées par une cour anglaise de {1} m² au plus et de {2} m de large au plus.",
+   "ru": "По архитектурному плану: под землёй — плавательный бассейн и тренажёрные залы, а английский дворик площадью до {1} м² и шириной до {2} м даёт им дневной свет.",
+   "ar": "بحسب مخطط التصميم: تحت الأرض مسبح وصالات رياضية، وفناء غائر بمساحة تصل إلى {1} م² وبعرض يصل إلى {2} م يُدخل إليها الضوء."
+  },
+  {
+   "re": "^לפי תכנית העיצוב: בקומת הקרקע של הבניין הצפון מערבי גן ילדים של (\\d+) כיתות ושטח קהילתי, ([\\d.,]+) מ״ר בסך הכול, עם חצר מגודרת ומוצללת של ([\\d.,]+) מ״ר\\.$",
+   "en": "Per the design plan: on the ground floor of the north-western building, a kindergarten of {1} classes and a community space, {2} m² in all, with a fenced and shaded yard of {3} m².",
+   "fr": "Selon le plan d'aménagement : au rez-de-chaussée de l'immeuble nord-ouest, un jardin d'enfants de {1} classes et un espace communautaire, {2} m² au total, avec une cour clôturée et ombragée de {3} m².",
+   "ru": "По архитектурному плану: на первом этаже северо-западного здания — детский сад (групп: {1}) и общественное помещение, всего {2} м², с огороженным затенённым двором площадью {3} м².",
+   "ar": "بحسب مخطط التصميم: في الطابق الأرضي من المبنى الشمالي الغربي روضة أطفال (عدد الصفوف: {1}) ومساحة مجتمعية، {2} م² في المجموع، مع ساحة مسيّجة ومظللة مساحتها {3} م²."
+  },
+  {
+   "re": "^לפי תכנית העיצוב: חזית מסחרית במערב ובדרום, וקולונדה של ([\\d.,]+) מ׳ לאורך כל החזית הדרומית; החנויות פונות בעיקר ללוי אשכול ולרחוב החדש\\.$",
+   "en": "Per the design plan: a retail front on the west and the south, and a {1} m colonnade along the whole southern front; the shops face mainly Levi Eshkol and the new street.",
+   "fr": "Selon le plan d'aménagement : une façade commerciale à l'ouest et au sud, et une colonnade de {1} m sur toute la façade sud ; les boutiques donnent surtout sur Levi Eshkol et sur la nouvelle rue.",
+   "ru": "По архитектурному плану: торговый фронт на западе и юге и колоннада шириной {1} м вдоль всего южного фасада; магазины выходят в основном на Леви Эшколя и на новую улицу.",
+   "ar": "بحسب مخطط التصميم: واجهة تجارية في الغرب والجنوب، ورواق أعمدة بعرض {1} م على طول الواجهة الجنوبية كلها؛ المتاجر تطل أساساً على ليفي أشكول والشارع الجديد."
+  },
+  {
+   "re": "^לפי תכנית העיצוב: קומות מרתף על ([\\d.,]+)% משטח המגרש, והרמפה נפתחת בחזית הבניין הצפון מערבי, בתוך הבניין\\. מספר קומות המרתף לא פורסם בטקסט שנקרא\\.$",
+   "en": "Per the design plan: basement floors under {1}% of the lot's area, and the ramp opens in the front of the north-western building, inside the building. The number of basement floors was not published in the text that was read.",
+   "fr": "Selon le plan d'aménagement : des niveaux de sous-sol sous {1} % de la surface du terrain, et la rampe s'ouvre sur la façade de l'immeuble nord-ouest, à l'intérieur de l'immeuble. Le nombre de niveaux de sous-sol n'est pas publié dans le texte consulté.",
+   "ru": "По архитектурному плану: подземные этажи под {1}% площади участка, а рампа открывается на фасаде северо-западного здания, внутри здания. Число подземных этажей в прочитанном тексте не опубликовано.",
+   "ar": "بحسب مخطط التصميم: طوابق تحت الأرض على {1}% من مساحة القسيمة، ويُفتح المنحدر في واجهة المبنى الشمالي الغربي، داخل المبنى. لم يُنشر عدد الطوابق تحت الأرض في النص الذي قُرئ."
+  },
+  {
+   "re": "^חניון: (\\d+) קומות מרתף$",
+   "en": "Car park: {1} basement floors",
+   "fr": "Parking : {1} niveaux de sous-sol",
+   "ru": "Паркинг: подземных этажей — {1}",
+   "ar": "موقف السيارات: {1} طوابق تحت الأرض"
+  },
+  {
+   "re": "^גובה העין כ־([\\d.,]+) מ׳ מהרחוב · (.+)$",
+   "en": "Eye level about {1} m above the street · {2}",
+   "fr": "Hauteur des yeux à environ {1} m au-dessus de la rue · {2}",
+   "ru": "Уровень глаз — около {1} м над улицей · {2}",
+   "ar": "مستوى النظر نحو {1} م فوق الشارع · {2}"
+  },
+  {
+   "re": "^תוכנית להמחשה של קומה (\\d+)$",
+   "en": "Illustrative plan of floor {1}",
+   "fr": "Plan indicatif de l'étage {1}",
+   "ru": "Условный план {1}-го этажа",
+   "ar": "مخطط توضيحي للطابق {1}"
+  },
+  {
+   "re": "^קומה (\\d+) · (.+) · קומות הפנטהאוז$",
+   "en": "Floor {1} · {2} · penthouse floors",
+   "fr": "Étage {1} · {2} · étages des penthouses",
+   "ru": "Этаж {1} · {2} · этажи пентхаусов",
+   "ar": "الطابق {1} · {2} · طوابق البنتهاوس"
+  },
+  {
+   "re": "^קומה (\\d+) · במרפסת, (.+)$",
+   "en": "Floor {1} · on the balcony, {2}",
+   "fr": "Étage {1} · sur le balcon, {2}",
+   "ru": "Этаж {1} · на балконе, {2}",
+   "ar": "الطابق {1} · على الشرفة، {2}"
+  },
+  {
+   "re": "^קומות ([\\d, ]+) ו־(\\d+), בארבעת הכיוונים$",
+   "en": "Floors {1} and {2}, in all four directions",
+   "fr": "Étages {1} et {2}, dans les quatre directions",
+   "ru": "Этажи {1} и {2}, во всех четырёх направлениях",
+   "ar": "الطوابق {1} و{2}، في الاتجاهات الأربعة"
+  },
+  {
+   "re": "^קומה (\\d+), בארבעת הכיוונים$",
+   "en": "Floor {1}, in all four directions",
+   "fr": "Étage {1}, dans les quatre directions",
+   "ru": "Этаж {1}, во всех четырёх направлениях",
+   "ar": "الطابق {1}، في الاتجاهات الأربعة"
+  },
+  {
+   "re": "^קומות ([\\d, ]+) ו־(\\d+) · (.+)$",
+   "en": "Floors {1} and {2} · {3}",
+   "fr": "Étages {1} et {2} · {3}",
+   "ru": "Этажи {1} и {2} · {3}",
+   "ar": "الطوابق {1} و{2} · {3}"
+  },
+  {
+   "re": "^הסלון בדירה לדוגמה בקומה (\\d+), מבט אל הים \\(הדמיה\\)$",
+   "en": "The living room of the example apartment on floor {1}, looking out to sea (illustration)",
+   "fr": "Le salon de l'appartement témoin au {1}e étage, vue sur la mer (illustration)",
+   "ru": "Гостиная квартиры-примера на {1}-м этаже, вид на море (иллюстрация)",
+   "ar": "صالون الشقة النموذجية في الطابق {1}، إطلالة على البحر (تصور توضيحي)"
+  },
+  {
+   "re": "^המצב של כל פרויקט לפי העמוד שלו באתר, ([\\d.]+)\\. שנת אכלוס מוצגת רק כשהעמוד נותן אותה\\.$",
+   "en": "Each project's status per its page on the site, {1}. An occupancy year is shown only when the page gives one.",
+   "fr": "Le statut de chaque projet d'après sa page sur le site, {1}. L'année de livraison n'est indiquée que si la page la donne.",
+   "ru": "Статус каждого проекта — по его странице на сайте, {1}. Год заселения показан, только если он указан на странице.",
+   "ar": "حالة كل مشروع بحسب صفحته في الموقع، {1}. تُعرض سنة الإسكان فقط عندما تذكرها الصفحة."
+  },
+  {
+   "re": "^\\(שכבות התוכניות והמבנים, ([\\d.]+)\\); הפרויקטים ברובע לפי העמודים שלהם באתר\\.$",
+   "en": "(the plans and buildings layers, {1}); the quarter's projects per their pages on the site.",
+   "fr": "(couches des plans et des bâtiments, {1}) ; les projets du quartier d'après leurs pages sur le site.",
+   "ru": "(слои планов и зданий, {1}); проекты района — по их страницам на сайте.",
+   "ar": "(طبقات المخططات والمباني، {1})؛ مشاريع الحي بحسب صفحاتها في الموقع."
+  },
+  {
+   "re": "^\\(שכבות המגרשים, המבנים, הרחובות, השטחים הירוקים והעצים, ([\\d.]+)\\)\\. הגבהים, החזית ומיקום המתקנים להמחשה\\.$",
+   "en": "(the lots, buildings, streets, green areas and trees layers, {1}). The heights, the facade and the facilities' positions are an illustration.",
+   "fr": "(couches des terrains, bâtiments, rues, espaces verts et arbres, {1}). Les hauteurs, la façade et l'emplacement des équipements sont indicatifs.",
+   "ru": "(слои участков, зданий, улиц, зелёных зон и деревьев, {1}). Высоты, фасад и расположение объектов условны.",
+   "ar": "(طبقات القسائم والمباني والشوارع والمساحات الخضراء والأشجار، {1}). الارتفاعات والواجهة ومواقع المرافق للتوضيح."
+  },
+  {
+   "re": "^\\(שכבות המגרשים, המבנים, הרחובות, השטחים הירוקים והעצים, ([\\d.]+)\\); הבניינים במגרש, הקומות והגבהים לפי תכנית העיצוב \\(([\\d.]+)\\); קו החוף לפי OpenStreetMap\\. החזיתות ומיקום המתקנים להמחשה\\.$",
+   "en": "(the lots, buildings, streets, green areas and trees layers, {1}); the buildings on the lot, the floors and the heights per the design plan ({2}); the shoreline per OpenStreetMap. The facades and the facilities' positions are an illustration.",
+   "fr": "(couches des terrains, bâtiments, rues, espaces verts et arbres, {1}) ; les immeubles du terrain, les étages et les hauteurs selon le plan d'aménagement ({2}) ; le littoral selon OpenStreetMap. Les façades et l'emplacement des équipements sont indicatifs.",
+   "ru": "(слои участков, зданий, улиц, зелёных зон и деревьев, {1}); здания на участке, этажи и высоты — по архитектурному плану ({2}); береговая линия — по OpenStreetMap. Фасады и расположение объектов условны.",
+   "ar": "(طبقات القسائم والمباني والشوارع والمساحات الخضراء والأشجار، {1})؛ المباني في القسيمة والطوابق والارتفاعات بحسب مخطط التصميم ({2})؛ خط الساحل بحسب OpenStreetMap. الواجهات ومواقع المرافق للتوضيح."
+  },
+  {
+   "re": "^([\\d.,]+) בניינים$",
+   "en": "{1} buildings",
+   "fr": "{1} immeubles",
+   "ru": "зданий: {1}",
+   "ar": "{1} مبنى"
+  },
+  {
+   "re": "^צפון תל אביב, כ-([\\d.,]+) מ׳ מהים$",
+   "en": "North Tel Aviv, about {1} m from the sea",
+   "fr": "Nord de Tel Aviv, à environ {1} m de la mer",
+   "ru": "Север Тель-Авива, около {1} м от моря",
+   "ar": "شمال تل أبيب، على بعد نحو {1} م من البحر"
+  },
+  {
+   "re": "^מגרש (\\d+), כ-([\\d.,]+) מ׳ מהים$",
+   "en": "Lot {1}, about {2} m from the sea",
+   "fr": "Lot {1}, à environ {2} m de la mer",
+   "ru": "Участок {1}, около {2} м от моря",
+   "ar": "القسيمة {1}، على بعد نحو {2} م من البحر"
+  },
+  {
+   "re": "^מגרש (\\d+), על רחוב לוי אשכול$",
+   "en": "Lot {1}, on Levi Eshkol Street",
+   "fr": "Lot {1}, rue Levi Eshkol",
+   "ru": "Участок {1}, на улице Леви Эшколя",
+   "ar": "القسيمة {1}، على شارع ليفي أشكول"
+  },
+  {
+   "re": "^מגדל (\\d+) קומות$",
+   "en": "A {1}-floor tower",
+   "fr": "Une tour de {1} étages",
+   "ru": "{1}-этажная башня",
+   "ar": "برج من {1} طابقاً"
+  },
+  {
+   "re": "^מגדל של (\\d+) קומות$",
+   "en": "A {1}-floor tower",
+   "fr": "Une tour de {1} étages",
+   "ru": "{1}-этажная башня",
+   "ar": "برج من {1} طابقاً"
+  },
+  {
+   "re": "^ובנייני בוטיק בני (\\d+) קומות$",
+   "en": "and {1}-floor boutique buildings",
+   "fr": "et des immeubles boutique de {1} étages",
+   "ru": "и {1}-этажные бутик-дома",
+   "ar": "ومبانٍ بوتيك بارتفاع {1} طوابق"
+  },
+  {
+   "re": "^(\\d+) מגדלים של (\\d+) קומות$",
+   "en": "{1} towers of {2} floors",
+   "fr": "{1} tours de {2} étages",
+   "ru": "Башен: {1} · этажей в каждой: {2}",
+   "ar": "عدد الأبراج: {1}، في كل منها {2} طابقاً"
+  },
+  {
+   "re": "^(\\d+) קומות מגורים בכל מגדל$",
+   "en": "{1} residential floors in each tower",
+   "fr": "{1} étages résidentiels par tour",
+   "ru": "Жилых этажей в каждой башне: {1}",
+   "ar": "{1} طابقاً سكنياً في كل برج"
+  },
+  {
+   "re": "^מגדלון של (\\d+) ושני מבנים של (\\d+), לפי תכנית העיצוב$",
+   "en": "A {1}-floor mid-rise and two {2}-floor buildings, per the design plan",
+   "fr": "Une petite tour de {1} étages et deux bâtiments de {2} étages, selon le plan d'aménagement",
+   "ru": "{1}-этажная малая башня и два {2}-этажных здания, по архитектурному плану",
+   "ar": "برج صغير من {1} طابقاً ومبنيان من {2} طوابق، بحسب مخطط التصميم"
+  },
+  {
+   "re": "^מגדלון של (\\d+) ושני בניינים של (\\d+), לפי תכנית העיצוב$",
+   "en": "A {1}-floor mid-rise and two {2}-floor buildings, per the design plan",
+   "fr": "Une petite tour de {1} étages et deux immeubles de {2} étages, selon le plan d'aménagement",
+   "ru": "{1}-этажная малая башня и два {2}-этажных здания, по архитектурному плану",
+   "ar": "برج صغير من {1} طابقاً ومبنيان من {2} طوابق، بحسب مخطط التصميم"
+  },
+  {
+   "re": "^([\\d.,]+) מהן נמכרו עד ([\\d.]+), לפי דוחות היזם$",
+   "en": "{1} of them sold by {2}, per the developer's reports",
+   "fr": "Dont {1} vendus au {2}, selon les rapports du promoteur",
+   "ru": "Из них продано {1} на {2}, по отчётам застройщика",
+   "ar": "بيع منها {1} حتى {2}، بحسب تقارير المطوّر"
+  },
+  {
+   "re": "^([\\d.,]+) במגדל ו-([\\d.,]+) בשלושת הבניינים האחרים, לפי תכנית העיצוב$",
+   "en": "{1} in the tower and {2} in the three other buildings, per the design plan",
+   "fr": "{1} dans la tour et {2} dans les trois autres immeubles, selon le plan d'aménagement",
+   "ru": "{1} в башне и {2} в трёх других зданиях, по архитектурному плану",
+   "ar": "{1} في البرج و{2} في المباني الثلاثة الأخرى، بحسب مخطط التصميم"
+  },
+  {
+   "re": "^(\\d+) עד (\\d+) חדרים$",
+   "en": "{1} to {2} rooms",
+   "fr": "{1} à {2} pièces",
+   "ru": "От {1} до {2} комнат",
+   "ar": "من {1} إلى {2} غرف"
+  },
+  {
+   "re": "^כ-([\\d.,]+) ₪ למ״ר$",
+   "en": "About {1} ₪ per m²",
+   "fr": "Environ {1} ₪ le m²",
+   "ru": "Около {1} ₪ за м²",
+   "ar": "نحو {1} ₪ للمتر المربع"
+  },
+  {
+   "re": "^דוחות היזם, עד ([\\d.]+)$",
+   "en": "The developer's reports, up to {1}",
+   "fr": "Rapports du promoteur, jusqu'au {1}",
+   "ru": "Отчёты застройщика, до {1}",
+   "ar": "تقارير المطوّر، حتى {1}"
+  },
+  {
+   "re": "^וכ-([\\d.,]+) חדרי מלון, לפי היזם$",
+   "en": "and about {1} hotel rooms, per the developer",
+   "fr": "et environ {1} chambres d'hôtel, selon le promoteur",
+   "ru": "и около {1} гостиничных номеров, по данным застройщика",
+   "ar": "ونحو {1} غرفة فندقية، بحسب المطوّر"
+  },
+  {
+   "re": "^(\\d+) קומות מרתף$",
+   "en": "{1} basement floors",
+   "fr": "{1} niveaux de sous-sol",
+   "ru": "Подземных этажей: {1}",
+   "ar": "{1} طوابق تحت الأرض"
+  },
+  {
+   "re": "^לפי החלטת רשות הרישוי, ([\\d.]+)$",
+   "en": "Per the licensing authority's decision, {1}",
+   "fr": "Selon la décision de l'autorité d'octroi des permis, {1}",
+   "ru": "По решению органа выдачи разрешений, {1}",
+   "ar": "بحسب قرار سلطة الترخيص، {1}"
+  },
+  {
+   "re": "^השלמה מתוכננת ב-(\\d+), לפי דוח החברה$",
+   "en": "Completion planned for {1}, per the company's report",
+   "fr": "Achèvement prévu en {1}, selon le rapport de la société",
+   "ru": "Завершение запланировано на {1} год, по отчёту компании",
+   "ar": "الإنجاز مخطط له في {1}، بحسب تقرير الشركة"
+  },
+  {
+   "re": "^בקומת המרתף, ו-(\\d+) מועדוני דיירים, לפי תכנית העיצוב$",
+   "en": "On the basement floor, and {1} residents' clubs, per the design plan",
+   "fr": "Au sous-sol, et {1} clubs de résidents, selon le plan d'aménagement",
+   "ru": "На подземном этаже, а также клубы для жильцов ({1}), по архитектурному плану",
+   "ar": "في طابق القبو، و{1} نوادٍ للسكان، بحسب مخطط التصميم"
+  },
+  {
+   "re": "^יסודות באביב (\\d+), יעד השלמה ב-(\\d+), לפי הפרסומים$",
+   "en": "Foundations in spring {1}, completion targeted for {2}, per the publications",
+   "fr": "Fondations au printemps {1}, achèvement visé en {2}, selon les publications",
+   "ru": "Фундамент весной {1} года, завершение намечено на {2} год, по публикациям",
+   "ar": "الأساسات في ربيع {1}، والإنجاز مستهدف في {2}، بحسب المنشورات"
+  },
+  {
+   "re": "^אכלוס צפוי ב-(\\d+)$",
+   "en": "Occupancy expected in {1}",
+   "fr": "Livraison prévue en {1}",
+   "ru": "Заселение ожидается в {1} году",
+   "ar": "الإسكان متوقع في {1}"
+  },
+  {
+   "re": "^צפוי ב-(\\d+)$",
+   "en": "Expected in {1}",
+   "fr": "Prévue en {1}",
+   "ru": "Ожидается в {1} году",
+   "ar": "متوقع في {1}"
+  },
+  {
+   "re": "^מתוכננת ב-(\\d+)$",
+   "en": "Planned for {1}",
+   "fr": "Prévu en {1}",
+   "ru": "Запланировано на {1} год",
+   "ar": "مخطط له في {1}"
+  },
+  {
+   "re": "^אביב (\\d+)$",
+   "en": "Spring {1}",
+   "fr": "Printemps {1}",
+   "ru": "Весна {1}",
+   "ar": "ربيع {1}"
+  },
+  {
+   "re": "^יעד (\\d+)$",
+   "en": "Target {1}",
+   "fr": "Objectif {1}",
+   "ru": "Цель: {1}",
+   "ar": "الهدف {1}"
+  },
+  {
+   "re": "^מ-([\\d.,]+) מיליון ₪$",
+   "en": "From {1} million ₪",
+   "fr": "À partir de {1} millions ₪",
+   "ru": "От {1} млн ₪",
+   "ar": "من {1} مليون ₪"
+  },
+  {
+   "re": "^כ-([\\d.,]+) מ׳$",
+   "en": "About {1} m",
+   "fr": "Environ {1} m",
+   "ru": "Около {1} м",
+   "ar": "نحو {1} م"
+  },
+  {
+   "re": "^עד ([\\d.,]+) מ׳$",
+   "en": "Up to {1} m",
+   "fr": "Jusqu'à {1} m",
+   "ru": "До {1} м",
+   "ar": "حتى {1} م"
+  },
+  {
+   "re": "^מאושרת, ([\\d.,]+) מ׳$",
+   "en": "Approved, {1} m",
+   "fr": "Approuvée, {1} m",
+   "ru": "Утверждена, {1} м",
+   "ar": "مُصادَق عليها، {1} م"
+  },
+  {
+   "re": "^פעילה, ([\\d.,]+) מ׳ הליכה$",
+   "en": "Running, {1} m walk",
+   "fr": "En service, {1} m à pied",
+   "ru": "Работает, {1} м пешком",
+   "ar": "تعمل، {1} م مشياً"
+  },
+  {
+   "re": "^(\\d+) עד ([\\d.,]+) מ׳$",
+   "en": "{1} within {2} m",
+   "fr": "{1} à moins de {2} m",
+   "ru": "{1} в радиусе {2} м",
+   "ar": "{1} ضمن {2} م"
+  },
+  {
+   "re": "^([\\d.,]+) מ׳ לקרוב$",
+   "en": "{1} m to the nearest",
+   "fr": "{1} m pour le plus proche",
+   "ru": "{1} м до ближайшего",
+   "ar": "{1} م إلى الأقرب"
+  },
+  {
+   "re": "^(\\d+) אתרים פעילים$",
+   "en": "{1} active sites",
+   "fr": "{1} chantiers actifs",
+   "ru": "Активных площадок: {1}",
+   "ar": "مواقع نشطة: {1}"
+  },
+  {
+   "re": "^ברדיוס ([\\d.,]+) מ׳ · הקרוב: אתר בנייה ב(.+), היתר ([\\d ,]+), ([\\d.,]+) מ׳$",
+   "en": "Within {1} m · the nearest: a construction site in {2}, permit {3}, {4} m",
+   "fr": "Dans un rayon de {1} m · le plus proche : un chantier à {2}, permis {3}, {4} m",
+   "ru": "В радиусе {1} м · ближайшая: стройплощадка в {2}, разрешение {3}, {4} м",
+   "ar": "ضمن دائرة {1} م · الأقرب: موقع بناء في {2}، الرخصة {3}، {4} م"
+  },
+  {
+   "re": "^ברדיוס ([\\d.,]+) מ׳ · הקרוב: אתר הבנייה ב(.+) (\\d+), ([\\d.,]+) מ׳$",
+   "en": "Within {1} m · the nearest: the construction site at {2} {3}, {4} m",
+   "fr": "Dans un rayon de {1} m · le plus proche : le chantier au {3} {2}, {4} m",
+   "ru": "В радиусе {1} м · ближайшая: стройплощадка на {2}, {3}, {4} м",
+   "ar": "ضمن دائرة {1} م · الأقرب: موقع البناء في {2} {3}، {4} م"
+  },
+  {
+   "re": "^ברדיוס ([\\d.,]+) מ׳ · הקרוב: (.+), ([\\d.,]+) מ׳$",
+   "en": "Within {1} m · the nearest: {2}, {3} m",
+   "fr": "Dans un rayon de {1} m · le plus proche : {2}, {3} m",
+   "ru": "В радиусе {1} м · ближайшая: {2}, {3} м",
+   "ar": "ضمن دائرة {1} م · الأقرب: {2}، {3} م"
+  },
+  {
+   "re": "^תוכנית (\\d+): (.+)$",
+   "en": "Plan {1}: {2}",
+   "fr": "Plan {1} : {2}",
+   "ru": "План {1}: {2}",
+   "ar": "المخطط {1}: {2}"
+  },
+  {
+   "re": "^(.+) · הפרויקט בתחום התוכנית$",
+   "en": "{1} · the project is within the plan",
+   "fr": "{1} · le projet est dans le périmètre du plan",
+   "ru": "{1} · проект находится в границах плана",
+   "ar": "{1} · المشروع ضمن حدود المخطط"
+  },
+  {
+   "re": "^הסביבה: (.+)$",
+   "en": "The area: {1}",
+   "fr": "Le quartier : {1}",
+   "ru": "Район: {1}",
+   "ar": "المنطقة: {1}"
+  },
+  {
+   "re": "^מפת הסביבה של (.+), (.+)$",
+   "en": "Map of the area around {1}, {2}",
+   "fr": "Carte des environs du projet {1}, {2}",
+   "ru": "Карта окрестностей {1}, {2}",
+   "ar": "خريطة محيط {1}، {2}"
+  },
+  {
+   "re": "^מפת הסביבה של (.+)$",
+   "en": "Map of the area around {1}",
+   "fr": "Carte des environs du projet {1}",
+   "ru": "Карта окрестностей {1}",
+   "ar": "خريطة محيط {1}"
+  },
+  {
+   "re": "^לעמוד הרשמי של (.+)$",
+   "en": "To the official page of {1}",
+   "fr": "Vers la page officielle de la société {1}",
+   "ru": "На официальную страницу {1}",
+   "ar": "إلى الصفحة الرسمية لـ {1}"
+  },
+  {
+   "re": "^עמוד זה אינו האתר הרשמי של (.+) ואינו מופעל מטעמה\\. נדל״ן היא פלטפורמת מידע עצמאית, ללא קשר מסחרי עם היזם\\. הפרטים נאספו ממקורות גלויים ויש לאמת אותם מול היזם\\.$",
+   "en": "This page is not the official website of {1} and is not operated on its behalf. NadLan is an independent information platform with no commercial connection to the developer. The details were gathered from public sources and should be verified with the developer.",
+   "fr": "Cette page n'est pas le site officiel de la société {1} et n'est pas exploitée en son nom. NadLan est une plateforme d'information indépendante, sans lien commercial avec le promoteur. Les informations proviennent de sources publiques et doivent être vérifiées auprès du promoteur.",
+   "ru": "Эта страница не является официальным сайтом {1} и не управляется от её имени. NadLan — независимая информационная платформа без коммерческой связи с застройщиком. Сведения собраны из открытых источников и должны быть проверены у застройщика.",
+   "ar": "هذه الصفحة ليست الموقع الرسمي لـ {1} ولا تُدار نيابةً عنها. NadLan منصة معلومات مستقلة، دون أي علاقة تجارية بالمطوّر. جُمعت التفاصيل من مصادر علنية ويجب التحقق منها لدى المطوّر."
+  },
+  {
+   "re": "^הדמיה של דמרי ימה ברובע שדה דב: מגדל, מגדלון ושני מבנים נמוכים סביב גינה, על מגרש (\\d+)$",
+   "en": "Illustration of Dimri Yama in the Sde Dov quarter: a tower, a mid-rise and two low buildings around a garden, on lot {1}",
+   "fr": "Illustration de Dimri Yama dans le quartier de Sde Dov : une tour, une petite tour et deux bâtiments bas autour d'un jardin, sur le lot {1}",
+   "ru": "Иллюстрация Dimri Yama в районе Сде-Дов: башня, малая башня и два низких здания вокруг сада, на участке {1}",
+   "ar": "تصور لـ Dimri Yama في حي سديه دوف: برج وبرج صغير ومبنيان منخفضان حول حديقة، على القسيمة {1}"
+  },
+  {
+   "re": "^הדמיה של פרויקט דמרי ימה ברובע שדה דב: מגדל, מגדלון ושני מבנים נמוכים סביב גינה, על מגרש (\\d+)$",
+   "en": "Illustration of the Dimri Yama project in the Sde Dov quarter: a tower, a mid-rise and two low buildings around a garden, on lot {1}",
+   "fr": "Illustration du projet Dimri Yama dans le quartier de Sde Dov : une tour, une petite tour et deux bâtiments bas autour d'un jardin, sur le lot {1}",
+   "ru": "Иллюстрация проекта Dimri Yama в районе Сде-Дов: башня, малая башня и два низких здания вокруг сада, на участке {1}",
+   "ar": "تصور لمشروع Dimri Yama في حي سديه دوف: برج وبرج صغير ومبنيان منخفضان حول حديقة، على القسيمة {1}"
+  },
+  {
+   "re": "^הדמיה של פרויקט אשירה ברובע שדה דב: מגדל, מגדלון ושני בניינים נמוכים סביב חצר, על מגרש (\\d+)$",
+   "en": "Illustration of the Ashira project in the Sde Dov quarter: a tower, a mid-rise and two low buildings around a courtyard, on lot {1}",
+   "fr": "Illustration du projet Ashira dans le quartier de Sde Dov : une tour, une petite tour et deux immeubles bas autour d'une cour, sur le lot {1}",
+   "ru": "Иллюстрация проекта Ashira в районе Сде-Дов: башня, малая башня и два низких здания вокруг двора, на участке {1}",
+   "ar": "تصور لمشروع Ashira في حي سديه دوف: برج وبرج صغير ومبنيان منخفضان حول ساحة، على القسيمة {1}"
+  },
+  {
+   "re": "^מקורות: אתר (.+), תכנית העיצוב \\(([\\d.]+)\\)\\.$",
+   "en": "Sources: the {1} site, the design plan ({2}).",
+   "fr": "Sources : le site {1}, le plan d'aménagement ({2}).",
+   "ru": "Источники: сайт {1}, архитектурный план ({2}).",
+   "ar": "المصادر: موقع {1}، مخطط التصميم ({2})."
+  },
+  {
+   "re": "^צורת הבריכה ומקומה על הגג בדגם להמחשה\\. מקורות: אתר DUO, החלטת רשות הרישוי ([\\d-]+)\\.$",
+   "en": "The pool's shape and its place on the roof in the model are an illustration. Sources: the DUO site, the licensing authority's decision {1}.",
+   "fr": "La forme de la piscine et sa place sur le toit dans la maquette sont indicatives. Sources : le site DUO, la décision de l'autorité d'octroi des permis {1}.",
+   "ru": "Форма бассейна и его место на крыше на модели условны. Источники: сайт DUO, решение органа выдачи разрешений {1}.",
+   "ar": "شكل المسبح وموقعه على السطح في النموذج للتوضيح. المصادر: موقع DUO، قرار سلطة الترخيص {1}."
+  },
+  {
+   "re": "^צורת הבריכה ומקומה על הגג בדגם להמחשה\\. מקורות: תכנית העיצוב למגרש (\\d+), פרסומי היזם\\.$",
+   "en": "The pool's shape and its place on the roof in the model are an illustration. Sources: the design plan for lot {1}, the developer's publications.",
+   "fr": "La forme de la piscine et sa place sur le toit dans la maquette sont indicatives. Sources : le plan d'aménagement du lot {1}, les publications du promoteur.",
+   "ru": "Форма бассейна и его место на крыше на модели условны. Источники: архитектурный план участка {1}, публикации застройщика.",
+   "ar": "شكل المسبح وموقعه على السطح في النموذج للتوضيح. المصادر: مخطط التصميم للقسيمة {1}، منشورات المطوّر."
+  },
+  {
+   "re": "^באיזו מרפסת כל בריכה לא פורסם; המיקום בדגם להמחשה\\. מקור: החלטת רשות הרישוי ([\\d-]+)\\.$",
+   "en": "Which balcony each pool is on has not been published; the position in the model is an illustration. Source: the licensing authority's decision {1}.",
+   "fr": "Le balcon de chaque piscine n'a pas été rendu public ; l'emplacement dans la maquette est indicatif. Source : la décision de l'autorité d'octroi des permis {1}.",
+   "ru": "На каком балконе какой бассейн, не опубликовано; расположение на модели условное. Источник: решение органа выдачи разрешений {1}.",
+   "ar": "لم يُنشر على أيّ شرفة يقع كل مسبح؛ الموقع في النموذج للتوضيح. المصدر: قرار سلطة الترخيص {1}."
+  },
+  {
+   "re": "^צורת המבנים ומקומם בחצי המערבי להמחשה\\. מקורות: החלטת רשות הרישוי ([\\d-]+), דוח (.+)\\.$",
+   "en": "The buildings' shape and their place in the western half are an illustration. Sources: the licensing authority's decision {1}, the {2} report.",
+   "fr": "La forme des bâtiments et leur place dans la moitié ouest sont indicatives. Sources : la décision de l'autorité d'octroi des permis {1}, rapport {2}.",
+   "ru": "Форма зданий и их место в западной половине условны. Источники: решение органа выдачи разрешений {1}, отчёт {2}.",
+   "ar": "شكل المباني وموقعها في النصف الغربي للتوضيح. المصادر: قرار سلطة الترخيص {1}، تقرير {2}."
+  },
+  {
+   "re": "^מקום הכניסה לחניון לא פורסם; הסימון בדגם להמחשה\\. מקור: החלטת רשות הרישוי ([\\d-]+)\\.$",
+   "en": "The car park entrance's location has not been published; the marking in the model is an illustration. Source: the licensing authority's decision {1}.",
+   "fr": "L'emplacement de l'entrée du parking n'a pas été rendu public ; le repère dans la maquette est indicatif. Source : la décision de l'autorité d'octroi des permis {1}.",
+   "ru": "Место въезда в паркинг не опубликовано; отметка на модели условна. Источник: решение органа выдачи разрешений {1}.",
+   "ar": "لم يُنشر موقع مدخل موقف السيارات؛ العلامة في النموذج للتوضيح. المصدر: قرار سلطة الترخيص {1}."
+  },
+  {
+   "re": "^באילו מרפסות הבריכות לא פורסם; המיקום בדגם להמחשה\\. מקור: תכנית העיצוב למגרש (\\d+)\\.$",
+   "en": "Which balconies the pools are on has not been published; the position in the model is an illustration. Source: the design plan for lot {1}.",
+   "fr": "Les balcons des piscines n'ont pas été rendus publics ; l'emplacement dans la maquette est indicatif. Source : le plan d'aménagement du lot {1}.",
+   "ru": "На каких балконах бассейны, не опубликовано; расположение на модели условное. Источник: архитектурный план участка {1}.",
+   "ar": "لم يُنشر على أيّ الشرفات تقع المسابح؛ الموقع في النموذج للتوضيح. المصدر: مخطط التصميم للقسيمة {1}."
+  },
+  {
+   "re": "^מקורות: תכנית העיצוב למגרש (\\d+), פרסומי היזם\\.$",
+   "en": "Sources: the design plan for lot {1}, the developer's publications.",
+   "fr": "Sources : le plan d'aménagement du lot {1}, les publications du promoteur.",
+   "ru": "Источники: архитектурный план участка {1}, публикации застройщика.",
+   "ar": "المصادر: مخطط التصميم للقسيمة {1}، منشورات المطوّر."
+  },
+  {
+   "re": "^מקום הכניסות בדגם להמחשה\\. מקור: תכנית העיצוב למגרש (\\d+)\\.$",
+   "en": "The entrances' position in the model is an illustration. Source: the design plan for lot {1}.",
+   "fr": "L'emplacement des entrées dans la maquette est indicatif. Source : le plan d'aménagement du lot {1}.",
+   "ru": "Расположение входов на модели условное. Источник: архитектурный план участка {1}.",
+   "ar": "موقع المداخل في النموذج للتوضيح. المصدر: مخطط التصميم للقسيمة {1}."
+  },
+  {
+   "re": "^עיצוב הגינה בדגם להמחשה\\. מקור: תכנית העיצוב למגרש (\\d+)\\.$",
+   "en": "The garden's design in the model is an illustration. Source: the design plan for lot {1}.",
+   "fr": "Le dessin du jardin dans la maquette est indicatif. Source : le plan d'aménagement du lot {1}.",
+   "ru": "Оформление сада на модели условное. Источник: архитектурный план участка {1}.",
+   "ar": "تصميم الحديقة في النموذج للتوضيح. المصدر: مخطط التصميم للقسيمة {1}."
+  },
+  {
+   "re": "^מקום פתח הרמפה בדגם להמחשה\\. מקור: תכנית העיצוב למגרש (\\d+)\\.$",
+   "en": "The ramp opening's position in the model is an illustration. Source: the design plan for lot {1}.",
+   "fr": "L'emplacement de l'ouverture de la rampe dans la maquette est indicatif. Source : le plan d'aménagement du lot {1}.",
+   "ru": "Расположение въезда на рампу на модели условное. Источник: архитектурный план участка {1}.",
+   "ar": "موقع فتحة المنحدر في النموذج للتوضيح. المصدر: مخطط التصميم للقسيمة {1}."
+  },
+  {
+   "re": "^מקום החצר האנגלית בדגם להמחשה\\. מקורות: תכנית העיצוב למגרש (\\d+), אתר היזם\\.$",
+   "en": "The sunken light court's position in the model is an illustration. Sources: the design plan for lot {1}, the developer's site.",
+   "fr": "L'emplacement de la cour anglaise dans la maquette est indicatif. Sources : le plan d'aménagement du lot {1}, le site du promoteur.",
+   "ru": "Расположение английского дворика на модели условное. Источники: архитектурный план участка {1}, сайт застройщика.",
+   "ar": "موقع الفناء الغائر في النموذج للتوضيح. المصادر: مخطط التصميم للقسيمة {1}، موقع المطوّر."
+  },
+  {
+   "re": "^המקום בקומת הקרקע של כל בניין בדגם להמחשה\\. מקורות: תכנית העיצוב למגרש (\\d+), אתר היזם\\.$",
+   "en": "The place on each building's ground floor in the model is an illustration. Sources: the design plan for lot {1}, the developer's site.",
+   "fr": "L'emplacement au rez-de-chaussée de chaque immeuble dans la maquette est indicatif. Sources : le plan d'aménagement du lot {1}, le site du promoteur.",
+   "ru": "Место на первом этаже каждого здания на модели условное. Источники: архитектурный план участка {1}, сайт застройщика.",
+   "ar": "المكان في الطابق الأرضي لكل مبنى في النموذج للتوضيح. المصادر: مخطط التصميم للقسيمة {1}، موقع المطوّر."
+  },
+  {
+   "re": "^מקום החצר בדגם להמחשה\\. מקור: תכנית העיצוב למגרש (\\d+)\\.$",
+   "en": "The yard's position in the model is an illustration. Source: the design plan for lot {1}.",
+   "fr": "L'emplacement de la cour dans la maquette est indicatif. Source : le plan d'aménagement du lot {1}.",
+   "ru": "Расположение двора на модели условное. Источник: архитектурный план участка {1}.",
+   "ar": "موقع الساحة في النموذج للتوضيح. المصدر: مخطط التصميم للقسيمة {1}."
+  },
+  {
+   "re": "^עיצוב החצר בדגם להמחשה\\. מקור: תכנית העיצוב למגרש (\\d+)\\.$",
+   "en": "The courtyard's design in the model is an illustration. Source: the design plan for lot {1}.",
+   "fr": "Le dessin de la cour dans la maquette est indicatif. Source : le plan d'aménagement du lot {1}.",
+   "ru": "Оформление двора на модели условное. Источник: архитектурный план участка {1}.",
+   "ar": "تصميم الساحة في النموذج للتوضيح. المصدر: مخطط التصميم للقسيمة {1}."
+  },
+  {
+   "re": "^מקור: תכנית העיצוב למגרש (\\d+)\\.$",
+   "en": "Source: the design plan for lot {1}.",
+   "fr": "Source : le plan d'aménagement du lot {1}.",
+   "ru": "Источник: архитектурный план участка {1}.",
+   "ar": "المصدر: مخطط التصميم للقسيمة {1}."
+  },
+  {
+   "re": "^מקור: אתר (.+)\\.$",
+   "en": "Source: the {1} site.",
+   "fr": "Source : le site {1}.",
+   "ru": "Источник: сайт {1}.",
+   "ar": "المصدر: موقع {1}."
+  },
+  {
+   "re": "^הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר\\. עומק המרפסת בציור להמחשה בלבד: לפי תכנית העיצוב \\(([\\d.]+)\\), מרפסות המגדל בולטות עד ([\\d.,]+) מ׳\\. הנפחים השקופים הם פרויקטים מתוכננים ברובע, בגובה לפי מספר הקומות\\.$",
+   "en": "Interior illustration only: the layout, the finishes and the view are estimates and are not based on a sale plan. The balcony depth in the drawing is an illustration only: per the design plan ({1}), the tower's balconies project up to {2} m. The transparent volumes are planned projects in the quarter, with heights by their number of floors.",
+   "fr": "Illustration intérieure uniquement : l'agencement, les finitions et la vue sont estimés et ne reposent pas sur un plan de vente. La profondeur du balcon sur le dessin est purement indicative : selon le plan d'aménagement ({1}), les balcons de la tour avancent jusqu'à {2} m. Les volumes transparents sont des projets prévus dans le quartier, à une hauteur fonction de leur nombre d'étages.",
+   "ru": "Только иллюстрация интерьера: планировка, отделка и вид приблизительны и не основаны на плане продажи. Глубина балкона на рисунке условна: по архитектурному плану ({1}) балконы башни выступают не более чем на {2} м. Прозрачные объёмы — проектируемые здания в районе, высотой по числу этажей.",
+   "ar": "تصور داخلي توضيحي فقط: التقسيم والتشطيبات والإطلالة تقديرية وليست بحسب مخطط البيع. عمق الشرفة في الرسم للتوضيح فقط: بحسب مخطط التصميم ({1})، تبرز شرفات البرج حتى {2} م. الكتل الشفافة هي مشاريع مخطط لها في الحي، بارتفاع بحسب عدد طوابقها."
+  },
+  {
+   "re": "^הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר\\. עומק המרפסת בציור להמחשה בלבד: לפי תכנית העיצוב \\(([\\d.]+)\\), מרפסות המגדל בולטות עד ([\\d.,]+) מ׳\\.$",
+   "en": "Interior illustration only: the layout, the finishes and the view are estimates and are not based on a sale plan. The balcony depth in the drawing is an illustration only: per the design plan ({1}), the tower's balconies project up to {2} m.",
+   "fr": "Illustration intérieure uniquement : l'agencement, les finitions et la vue sont estimés et ne reposent pas sur un plan de vente. La profondeur du balcon sur le dessin est purement indicative : selon le plan d'aménagement ({1}), les balcons de la tour avancent jusqu'à {2} m.",
+   "ru": "Только иллюстрация интерьера: планировка, отделка и вид приблизительны и не основаны на плане продажи. Глубина балкона на рисунке условна: по архитектурному плану ({1}) балконы башни выступают не более чем на {2} м.",
+   "ar": "تصور داخلي توضيحي فقط: التقسيم والتشطيبات والإطلالة تقديرية وليست بحسب مخطط البيع. عمق الشرفة في الرسم للتوضيح فقط: بحسب مخطط التصميم ({1})، تبرز شرفات البرج حتى {2} م."
+  },
+  {
+   "re": "^הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר\\. רעיון עיצוב להמחשה, לא המפרט של היזם\\. עומק המרפסת בציור להמחשה בלבד: לפי תכנית העיצוב \\(([\\d.]+)\\), מרפסות המגדל בולטות עד ([\\d.,]+) מ׳\\. הנפחים השקופים הם פרויקטים מתוכננים ברובע, בגובה לפי מספר הקומות\\.$",
+   "en": "Interior illustration only: the layout, the finishes and the view are estimates and are not based on a sale plan. A design idea for illustration, not the developer's specification. The balcony depth in the drawing is an illustration only: per the design plan ({1}), the tower's balconies project up to {2} m. The transparent volumes are planned projects in the quarter, with heights by their number of floors.",
+   "fr": "Illustration intérieure uniquement : l'agencement, les finitions et la vue sont estimés et ne reposent pas sur un plan de vente. Une idée de décoration à titre indicatif, pas le descriptif du promoteur. La profondeur du balcon sur le dessin est purement indicative : selon le plan d'aménagement ({1}), les balcons de la tour avancent jusqu'à {2} m. Les volumes transparents sont des projets prévus dans le quartier, à une hauteur fonction de leur nombre d'étages.",
+   "ru": "Только иллюстрация интерьера: планировка, отделка и вид приблизительны и не основаны на плане продажи. Идея дизайна для иллюстрации, а не спецификация застройщика. Глубина балкона на рисунке условна: по архитектурному плану ({1}) балконы башни выступают не более чем на {2} м. Прозрачные объёмы — проектируемые здания в районе, высотой по числу этажей.",
+   "ar": "تصور داخلي توضيحي فقط: التقسيم والتشطيبات والإطلالة تقديرية وليست بحسب مخطط البيع. فكرة تصميم للتوضيح، وليست مواصفات المطوّر. عمق الشرفة في الرسم للتوضيح فقط: بحسب مخطط التصميم ({1})، تبرز شرفات البرج حتى {2} م. الكتل الشفافة هي مشاريع مخطط لها في الحي، بارتفاع بحسب عدد طوابقها."
+  },
+  {
+   "re": "^הדמיית פנים להמחשה בלבד: החלוקה, הגמרים והנוף משוערים ואינם לפי תוכנית מכר\\. רעיון עיצוב להמחשה, לא המפרט של היזם\\. עומק המרפסת בציור להמחשה בלבד: לפי תכנית העיצוב \\(([\\d.]+)\\), מרפסות המגדל בולטות עד ([\\d.,]+) מ׳\\.$",
+   "en": "Interior illustration only: the layout, the finishes and the view are estimates and are not based on a sale plan. A design idea for illustration, not the developer's specification. The balcony depth in the drawing is an illustration only: per the design plan ({1}), the tower's balconies project up to {2} m.",
+   "fr": "Illustration intérieure uniquement : l'agencement, les finitions et la vue sont estimés et ne reposent pas sur un plan de vente. Une idée de décoration à titre indicatif, pas le descriptif du promoteur. La profondeur du balcon sur le dessin est purement indicative : selon le plan d'aménagement ({1}), les balcons de la tour avancent jusqu'à {2} m.",
+   "ru": "Только иллюстрация интерьера: планировка, отделка и вид приблизительны и не основаны на плане продажи. Идея дизайна для иллюстрации, а не спецификация застройщика. Глубина балкона на рисунке условна: по архитектурному плану ({1}) балконы башни выступают не более чем на {2} м.",
+   "ar": "تصور داخلي توضيحي فقط: التقسيم والتشطيبات والإطلالة تقديرية وليست بحسب مخطط البيع. فكرة تصميم للتوضيح، وليست مواصفات المطوّر. عمق الشرفة في الرسم للتوضيح فقط: بحسب مخطط التصميم ({1})، تبرز شرفات البرج حتى {2} م."
+  },
+  {
+   "re": "^חתך להמחשה: קו החזית והמרפסות לפי הדגם של הבמה; הגרעין והחלוקה לדירות משוערים ואינם תוכנית מכר\\. בקומה (\\d+) עד (\\d+) דירות, לפי היזם \\(ביזפורטל, ([\\d.]+)\\)\\.$",
+   "en": "An illustrative section: the facade line and the balconies follow the 3D model; the core and the division into apartments are estimates and are not a sale plan. {1} to {2} apartments per floor, per the developer (Bizportal, {3}).",
+   "fr": "Coupe indicative : la ligne de façade et les balcons suivent la maquette 3D ; le noyau et la répartition en appartements sont estimés et ne constituent pas un plan de vente. {1} à {2} appartements par étage, selon le promoteur (Bizportal, {3}).",
+   "ru": "Условный разрез: линия фасада и балконы — по 3D-модели; ядро и деление на квартиры приблизительны и не являются планом продажи. От {1} до {2} квартир на этаже, по данным застройщика (Bizportal, {3}).",
+   "ar": "مقطع توضيحي: خط الواجهة والشرفات بحسب النموذج ثلاثي الأبعاد؛ النواة وتقسيم الشقق تقديريان وليسا مخطط بيع. من {1} إلى {2} شقق في الطابق، بحسب المطوّر (Bizportal، {3})."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. מקורות: אתר (.+), תכנית העיצוב \\(([\\d.]+)\\)\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. Sources: the {1} site, the design plan ({2}).",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. Sources : le site {1}, le plan d'aménagement ({2}).",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. Источники: сайт {1}, архитектурный план ({2}).",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. المصادر: موقع {1}، مخطط التصميم ({2})."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. צורת הבריכה ומקומה על הגג בדגם להמחשה\\. מקורות: אתר DUO, החלטת רשות הרישוי ([\\d-]+)\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. The pool's shape and its place on the roof in the model are an illustration. Sources: the DUO site, the licensing authority's decision {1}.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. La forme de la piscine et sa place sur le toit dans la maquette sont indicatives. Sources : le site DUO, la décision de l'autorité d'octroi des permis {1}.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. Форма бассейна и его место на крыше на модели условны. Источники: сайт DUO, решение органа выдачи разрешений {1}.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. شكل المسبح وموقعه على السطح في النموذج للتوضيح. المصادر: موقع DUO، قرار سلطة الترخيص {1}."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. צורת הבריכה ומקומה על הגג בדגם להמחשה\\. מקורות: תכנית העיצוב למגרש (\\d+), פרסומי היזם\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. The pool's shape and its place on the roof in the model are an illustration. Sources: the design plan for lot {1}, the developer's publications.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. La forme de la piscine et sa place sur le toit dans la maquette sont indicatives. Sources : le plan d'aménagement du lot {1}, les publications du promoteur.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. Форма бассейна и его место на крыше на модели условны. Источники: архитектурный план участка {1}, публикации застройщика.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. شكل المسبح وموقعه على السطح في النموذج للتوضيح. المصادر: مخطط التصميم للقسيمة {1}، منشورات المطوّر."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. באיזו מרפסת כל בריכה לא פורסם; המיקום בדגם להמחשה\\. מקור: החלטת רשות הרישוי ([\\d-]+)\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. Which balcony each pool is on has not been published; the position in the model is an illustration. Source: the licensing authority's decision {1}.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. Le balcon de chaque piscine n'a pas été rendu public ; l'emplacement dans la maquette est indicatif. Source : la décision de l'autorité d'octroi des permis {1}.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. На каком балконе какой бассейн, не опубликовано; расположение на модели условное. Источник: решение органа выдачи разрешений {1}.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. لم يُنشر على أيّ شرفة يقع كل مسبح؛ الموقع في النموذج للتوضيح. المصدر: قرار سلطة الترخيص {1}."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. צורת המבנים ומקומם בחצי המערבי להמחשה\\. מקורות: החלטת רשות הרישוי ([\\d-]+), דוח (.+)\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. The buildings' shape and their place in the western half are an illustration. Sources: the licensing authority's decision {1}, the {2} report.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. La forme des bâtiments et leur place dans la moitié ouest sont indicatives. Sources : la décision de l'autorité d'octroi des permis {1}, rapport {2}.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. Форма зданий и их место в западной половине условны. Источники: решение органа выдачи разрешений {1}, отчёт {2}.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. شكل المباني وموقعها في النصف الغربي للتوضيح. المصادر: قرار سلطة الترخيص {1}، تقرير {2}."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. מקום הכניסה לחניון לא פורסם; הסימון בדגם להמחשה\\. מקור: החלטת רשות הרישוי ([\\d-]+)\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. The car park entrance's location has not been published; the marking in the model is an illustration. Source: the licensing authority's decision {1}.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. L'emplacement de l'entrée du parking n'a pas été rendu public ; le repère dans la maquette est indicatif. Source : la décision de l'autorité d'octroi des permis {1}.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. Место въезда в паркинг не опубликовано; отметка на модели условна. Источник: решение органа выдачи разрешений {1}.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. لم يُنشر موقع مدخل موقف السيارات؛ العلامة في النموذج للتوضيح. المصدر: قرار سلطة الترخيص {1}."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. באילו מרפסות הבריכות לא פורסם; המיקום בדגם להמחשה\\. מקור: תכנית העיצוב למגרש (\\d+)\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. Which balconies the pools are on has not been published; the position in the model is an illustration. Source: the design plan for lot {1}.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. Les balcons des piscines n'ont pas été rendus publics ; l'emplacement dans la maquette est indicatif. Source : le plan d'aménagement du lot {1}.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. На каких балконах бассейны, не опубликовано; расположение на модели условное. Источник: архитектурный план участка {1}.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. لم يُنشر على أيّ الشرفات تقع المسابح؛ الموقع في النموذج للتوضيح. المصدر: مخطط التصميم للقسيمة {1}."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. מקורות: תכנית העיצוב למגרש (\\d+), פרסומי היזם\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. Sources: the design plan for lot {1}, the developer's publications.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. Sources : le plan d'aménagement du lot {1}, les publications du promoteur.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. Источники: архитектурный план участка {1}, публикации застройщика.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. المصادر: مخطط التصميم للقسيمة {1}، منشورات المطوّر."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. מקום הכניסות בדגם להמחשה\\. מקור: תכנית העיצוב למגרש (\\d+)\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. The entrances' position in the model is an illustration. Source: the design plan for lot {1}.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. L'emplacement des entrées dans la maquette est indicatif. Source : le plan d'aménagement du lot {1}.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. Расположение входов на модели условное. Источник: архитектурный план участка {1}.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. موقع المداخل في النموذج للتوضيح. المصدر: مخطط التصميم للقسيمة {1}."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. עיצוב הגינה בדגם להמחשה\\. מקור: תכנית העיצוב למגרש (\\d+)\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. The garden's design in the model is an illustration. Source: the design plan for lot {1}.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. Le dessin du jardin dans la maquette est indicatif. Source : le plan d'aménagement du lot {1}.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. Оформление сада на модели условное. Источник: архитектурный план участка {1}.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. تصميم الحديقة في النموذج للتوضيح. المصدر: مخطط التصميم للقسيمة {1}."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. מקום פתח הרמפה בדגם להמחשה\\. מקור: תכנית העיצוב למגרש (\\d+)\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. The ramp opening's position in the model is an illustration. Source: the design plan for lot {1}.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. L'emplacement de l'ouverture de la rampe dans la maquette est indicatif. Source : le plan d'aménagement du lot {1}.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. Расположение въезда на рампу на модели условное. Источник: архитектурный план участка {1}.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. موقع فتحة المنحدر في النموذج للتوضيح. المصدر: مخطط التصميم للقسيمة {1}."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. מקום החצר האנגלית בדגם להמחשה\\. מקורות: תכנית העיצוב למגרש (\\d+), אתר היזם\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. The sunken light court's position in the model is an illustration. Sources: the design plan for lot {1}, the developer's site.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. L'emplacement de la cour anglaise dans la maquette est indicatif. Sources : le plan d'aménagement du lot {1}, le site du promoteur.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. Расположение английского дворика на модели условное. Источники: архитектурный план участка {1}, сайт застройщика.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. موقع الفناء الغائر في النموذج للتوضيح. المصادر: مخطط التصميم للقسيمة {1}، موقع المطوّر."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. המקום בקומת הקרקע של כל בניין בדגם להמחשה\\. מקורות: תכנית העיצוב למגרש (\\d+), אתר היזם\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. The place on each building's ground floor in the model is an illustration. Sources: the design plan for lot {1}, the developer's site.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. L'emplacement au rez-de-chaussée de chaque immeuble dans la maquette est indicatif. Sources : le plan d'aménagement du lot {1}, le site du promoteur.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. Место на первом этаже каждого здания на модели условное. Источники: архитектурный план участка {1}, сайт застройщика.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. المكان في الطابق الأرضي لكل مبنى في النموذج للتوضيح. المصادر: مخطط التصميم للقسيمة {1}، موقع المطوّر."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. מקום החצר בדגם להמחשה\\. מקור: תכנית העיצוב למגרש (\\d+)\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. The yard's position in the model is an illustration. Source: the design plan for lot {1}.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. L'emplacement de la cour dans la maquette est indicatif. Source : le plan d'aménagement du lot {1}.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. Расположение двора на модели условное. Источник: архитектурный план участка {1}.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. موقع الساحة في النموذج للتوضيح. المصدر: مخطط التصميم للقسيمة {1}."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. עיצוב החצר בדגם להמחשה\\. מקור: תכנית העיצוב למגרש (\\d+)\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. The courtyard's design in the model is an illustration. Source: the design plan for lot {1}.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. Le dessin de la cour dans la maquette est indicatif. Source : le plan d'aménagement du lot {1}.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. Оформление двора на модели условное. Источник: архитектурный план участка {1}.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. تصميم الساحة في النموذج للتوضيح. المصدر: مخطط التصميم للقسيمة {1}."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. מקור: תכנית העיצוב למגרש (\\d+)\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. Source: the design plan for lot {1}.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. Source : le plan d'aménagement du lot {1}.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. Источник: архитектурный план участка {1}.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. المصدر: مخطط التصميم للقسيمة {1}."
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. מקור: אתר (.+)\\.$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. Source: the {1} site.",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. Source : le site {1}.",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. Источник: сайт {1}.",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. المصدر: موقع {1}."
+  },
+  {
+   "re": "^סלון ומטבח פתוח כמו במסירה, בלי ריהוט, בקומות ([\\d, ]+) ו־(\\d+): מול הים, תל ברוך, רמת אביב ומגדלי העיר, מהסלון ומהמרפסת\\. הנוף בחלון בנוי מהבניינים הקיימים לפי שכבת המבנים של העירייה, מהפרויקטים המתוכננים ברובע כנפחים שקופים, מקו החוף ומהים\\.$",
+   "en": "A living room and open kitchen as handed over, unfurnished, on floors {1} and {2}: facing the sea, Tel Baruch, Ramat Aviv and the city's towers, from the living room and from the balcony. The view in the window is built from the existing buildings per the municipality's buildings layer, the quarter's planned projects as transparent volumes, the shoreline and the sea.",
+   "fr": "Un salon et une cuisine ouverte comme à la livraison, sans meubles, aux étages {1} et {2} : face à la mer, Tel Baruch, Ramat Aviv et les tours de la ville, depuis le salon et depuis le balcon. La vue à la fenêtre est construite à partir des immeubles existants selon la couche des bâtiments de la municipalité, des projets prévus dans le quartier en volumes transparents, du littoral et de la mer.",
+   "ru": "Гостиная и открытая кухня как при сдаче, без мебели, на этажах {1} и {2}: с видом на море, Тель-Барух, Рамат-Авив и городские башни, из гостиной и с балкона. Вид в окне построен по существующим зданиям из слоя зданий муниципалитета, по проектируемым в районе зданиям в виде прозрачных объёмов, по линии берега и морю.",
+   "ar": "صالون ومطبخ مفتوح كما عند التسليم، دون أثاث، في الطوابق {1} و{2}: مقابل البحر وتل باروخ ورمات أفيف وأبراج المدينة، من الصالون ومن الشرفة. الإطلالة في النافذة مبنية من المباني القائمة بحسب طبقة المباني في البلدية، ومن المشاريع المخطط لها في الحي ككتل شفافة، ومن خط الساحل والبحر."
+  },
+  {
+   "re": "^סלון ומטבח פתוח כמו במסירה, בלי ריהוט, בקומות ([\\d, ]+) ו־(\\d+): מול הים, תל ברוך, רמת אביב ומגדלי העיר\\. הנוף בחלון בנוי מהבניינים הקיימים לפי שכבת המבנים של העירייה, מהפרויקטים המתוכננים ברובע כנפחים שקופים, מקו החוף ומהים\\.$",
+   "en": "A living room and open kitchen as handed over, unfurnished, on floors {1} and {2}: facing the sea, Tel Baruch, Ramat Aviv and the city's towers. The view in the window is built from the existing buildings per the municipality's buildings layer, the quarter's planned projects as transparent volumes, the shoreline and the sea.",
+   "fr": "Un salon et une cuisine ouverte comme à la livraison, sans meubles, aux étages {1} et {2} : face à la mer, Tel Baruch, Ramat Aviv et les tours de la ville. La vue à la fenêtre est construite à partir des immeubles existants selon la couche des bâtiments de la municipalité, des projets prévus dans le quartier en volumes transparents, du littoral et de la mer.",
+   "ru": "Гостиная и открытая кухня как при сдаче, без мебели, на этажах {1} и {2}: с видом на море, Тель-Барух, Рамат-Авив и городские башни. Вид в окне построен по существующим зданиям из слоя зданий муниципалитета, по проектируемым в районе зданиям в виде прозрачных объёмов, по линии берега и морю.",
+   "ar": "صالون ومطبخ مفتوح كما عند التسليم، دون أثاث، في الطوابق {1} و{2}: مقابل البحر وتل باروخ ورمات أفيف وأبراج المدينة. الإطلالة في النافذة مبنية من المباني القائمة بحسب طبقة المباني في البلدية، ومن المشاريع المخطط لها في الحي ككتل شفافة، ومن خط الساحل والبحر."
+  },
+  {
+   "re": "^סלון ומטבח פתוח כמו במסירה, בלי ריהוט, בקומה (\\d+): מול הים, תל ברוך, רמת אביב ומגדלי העיר, מהסלון ומהמרפסת\\. הנוף בחלון בנוי מהבניינים הקיימים לפי שכבת המבנים של העירייה, מהפרויקטים המתוכננים ברובע כנפחים שקופים, מקו החוף ומהים\\.$",
+   "en": "A living room and open kitchen as handed over, unfurnished, on floor {1}: facing the sea, Tel Baruch, Ramat Aviv and the city's towers, from the living room and from the balcony. The view in the window is built from the existing buildings per the municipality's buildings layer, the quarter's planned projects as transparent volumes, the shoreline and the sea.",
+   "fr": "Un salon et une cuisine ouverte comme à la livraison, sans meubles, au {1}e étage : face à la mer, Tel Baruch, Ramat Aviv et les tours de la ville, depuis le salon et depuis le balcon. La vue à la fenêtre est construite à partir des immeubles existants selon la couche des bâtiments de la municipalité, des projets prévus dans le quartier en volumes transparents, du littoral et de la mer.",
+   "ru": "Гостиная и открытая кухня как при сдаче, без мебели, на {1}-м этаже: с видом на море, Тель-Барух, Рамат-Авив и городские башни, из гостиной и с балкона. Вид в окне построен по существующим зданиям из слоя зданий муниципалитета, по проектируемым в районе зданиям в виде прозрачных объёмов, по линии берега и морю.",
+   "ar": "صالون ومطبخ مفتوح كما عند التسليم، دون أثاث، في الطابق {1}: مقابل البحر وتل باروخ ورمات أفيف وأبراج المدينة، من الصالون ومن الشرفة. الإطلالة في النافذة مبنية من المباني القائمة بحسب طبقة المباني في البلدية، ومن المشاريع المخطط لها في الحي ككتل شفافة، ومن خط الساحل والبحر."
+  },
+  {
+   "re": "^סלון ומטבח פתוח כמו במסירה, בלי ריהוט, בקומה (\\d+): מול הים, תל ברוך, רמת אביב ומגדלי העיר\\. הנוף בחלון בנוי מהבניינים הקיימים לפי שכבת המבנים של העירייה, מהפרויקטים המתוכננים ברובע כנפחים שקופים, מקו החוף ומהים\\.$",
+   "en": "A living room and open kitchen as handed over, unfurnished, on floor {1}: facing the sea, Tel Baruch, Ramat Aviv and the city's towers. The view in the window is built from the existing buildings per the municipality's buildings layer, the quarter's planned projects as transparent volumes, the shoreline and the sea.",
+   "fr": "Un salon et une cuisine ouverte comme à la livraison, sans meubles, au {1}e étage : face à la mer, Tel Baruch, Ramat Aviv et les tours de la ville. La vue à la fenêtre est construite à partir des immeubles existants selon la couche des bâtiments de la municipalité, des projets prévus dans le quartier en volumes transparents, du littoral et de la mer.",
+   "ru": "Гостиная и открытая кухня как при сдаче, без мебели, на {1}-м этаже: с видом на море, Тель-Барух, Рамат-Авив и городские башни. Вид в окне построен по существующим зданиям из слоя зданий муниципалитета, по проектируемым в районе зданиям в виде прозрачных объёмов, по линии берега и морю.",
+   "ar": "صالون ومطبخ مفتوح كما عند التسليم، دون أثاث، في الطابق {1}: مقابل البحر وتل باروخ ورمات أفيف وأبراج المدينة. الإطلالة في النافذة مبنية من المباني القائمة بحسب طبقة المباني في البلدية، ومن المشاريع المخطط لها في الحي ككتل شفافة، ومن خط الساحل والبحر."
+  },
+  {
+   "re": "^(.+) · ([\\d.,]+) ק״מ$",
+   "en": "{1} · {2} km",
+   "fr": "{1} · {2} km",
+   "ru": "{1} · {2} км",
+   "ar": "{1} · {2} كم"
+  },
+  {
+   "re": "^(.+) · ([\\d.,]+) מ׳$",
+   "en": "{1} · {2} m",
+   "fr": "{1} · {2} m",
+   "ru": "{1} · {2} м",
+   "ar": "{1} · {2} م"
+  },
+  {
+   "re": "^קומה (\\d+) · (.+)$",
+   "en": "Floor {1} · {2}",
+   "fr": "Étage {1} · {2}",
+   "ru": "Этаж {1} · {2}",
+   "ar": "الطابق {1} · {2}"
+  },
+  {
+   "re": "^(.+) · בשיווק$",
+   "en": "{1} · On sale",
+   "fr": "{1} · En commercialisation",
+   "ru": "{1} · В продаже",
+   "ar": "{1} · في مرحلة التسويق"
+  },
+  {
+   "re": "^(.+) · בבנייה$",
+   "en": "{1} · Under construction",
+   "fr": "{1} · En construction",
+   "ru": "{1} · Строится",
+   "ar": "{1} · قيد البناء"
+  },
+  {
+   "re": "^(.+) · בהיתר בנייה$",
+   "en": "{1} · At the building-permit stage",
+   "fr": "{1} · Au stade du permis de construire",
+   "ru": "{1} · На стадии разрешения на строительство",
+   "ar": "{1} · في مرحلة رخصة البناء"
+  },
+  {
+   "re": "^(.+) · בהליכי היתר$",
+   "en": "{1} · In the permit process",
+   "fr": "{1} · Permis en cours",
+   "ru": "{1} · В процессе получения разрешения",
+   "ar": "{1} · في إجراءات الترخيص"
+  },
+  {
+   "re": "^(.+) · הושלם$",
+   "en": "{1} · Completed",
+   "fr": "{1} · Achevé",
+   "ru": "{1} · Завершён",
+   "ar": "{1} · مكتمل"
+  },
+  {
+   "re": "^(₪ מחירים בסביבה|חינוך|פארקים|תחבורה|קניות|בריאות|קפה ומסעדות|◆ תוכניות עתידיות) \\((\\d+)\\)$",
+   "en": "{1} ({2})",
+   "fr": "{1} ({2})",
+   "ru": "{1} ({2})",
+   "ar": "{1} ({2})"
+  },
+  {
+   "re": "^לכיוון (.+)$",
+   "en": "towards {1}",
+   "fr": "vers {1}",
+   "ru": "в сторону {1}",
+   "ar": "باتجاه {1}"
+  },
+  {
+   "re": "^מה סביב (.+)$",
+   "en": "What is around {1}",
+   "fr": "Autour du projet {1}",
+   "ru": "Что вокруг {1}",
+   "ar": "ما حول {1}"
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד, על בסיס מקורות פומביים\\. אינה תוכנית מכר\\. (.+)$",
+   "en": "Illustration only, based on public sources. Not a sale plan. {1}",
+   "fr": "Illustration uniquement, d'après des sources publiques. Ce n'est pas un plan de vente. {1}",
+   "ru": "Только иллюстрация на основе открытых источников. Не является планом продажи. {1}",
+   "ar": "تصور توضيحي فقط، استناداً إلى مصادر علنية. ليس مخطط بيع. {1}"
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד, על בסיס מקורות פומביים\\. חלוקת הקומה לדירות היא לדוגמה, ואינה לפי תוכנית מכר\\. (.+)$",
+   "en": "Illustration only, based on public sources. The division of the floor into apartments is an example and is not based on a sale plan. {1}",
+   "fr": "Illustration uniquement, d'après des sources publiques. La répartition de l'étage en appartements est un exemple et ne repose pas sur un plan de vente. {1}",
+   "ru": "Только иллюстрация на основе открытых источников. Деление этажа на квартиры — пример и не основано на плане продажи. {1}",
+   "ar": "تصور توضيحي فقط، استناداً إلى مصادر علنية. تقسيم الطابق إلى شقق هو مثال وليس بحسب مخطط البيع. {1}"
+  },
+  {
+   "re": "^חתך להמחשה: קו החזית והמרפסות לפי הדגם של הבמה; הגרעין והחלוקה לדירות משוערים ואינם תוכנית מכר\\. (.+)$",
+   "en": "An illustrative section: the facade line and the balconies follow the 3D model; the core and the division into apartments are estimates and are not a sale plan. {1}",
+   "fr": "Coupe indicative : la ligne de façade et les balcons suivent la maquette 3D ; le noyau et la répartition en appartements sont estimés et ne constituent pas un plan de vente. {1}",
+   "ru": "Условный разрез: линия фасада и балконы — по 3D-модели; ядро и деление на квартиры приблизительны и не являются планом продажи. {1}",
+   "ar": "مقطع توضيحي: خط الواجهة والشرفات بحسب النموذج ثلاثي الأبعاد؛ النواة وتقسيم الشقق تقديريان وليسا مخطط بيع. {1}"
+  },
+  {
+   "re": "^הדמיה להמחשה בלבד: המיקום, החלוקה והריהוט משוערים ואינם לפי תוכנית היזם\\. (.+)$",
+   "en": "Illustration only: the location, the layout and the furniture are estimates and are not based on the developer's plan. {1}",
+   "fr": "Illustration uniquement : l'emplacement, l'agencement et le mobilier sont estimés et ne reposent pas sur le plan du promoteur. {1}",
+   "ru": "Только иллюстрация: расположение, планировка и мебель приблизительны и не основаны на плане застройщика. {1}",
+   "ar": "تصور توضيحي فقط: الموقع والتقسيم والأثاث تقديرية وليست بحسب مخطط المطوّر. {1}"
+  }
+ ],
+ "names": {
+  "ריינבו": {
+   "en": "Rainbow",
+   "fr": "Rainbow",
+   "ru": "Rainbow",
+   "ar": "Rainbow"
+  },
+  "ריינבו תל אביב": {
+   "en": "Rainbow Tel Aviv",
+   "fr": "Rainbow Tel Aviv",
+   "ru": "Rainbow Tel Aviv",
+   "ar": "Rainbow Tel Aviv"
+  },
+  "מגדלי דואו תל אביב": {
+   "en": "DUO Tel Aviv",
+   "fr": "DUO Tel Aviv",
+   "ru": "DUO Tel Aviv",
+   "ar": "DUO Tel Aviv"
+  },
+  "דמרי ימה": {
+   "en": "Dimri Yama",
+   "fr": "Dimri Yama",
+   "ru": "Dimri Yama",
+   "ar": "Dimri Yama"
+  },
+  "דמרי ימה שדה דב": {
+   "en": "Dimri Yama Sde Dov",
+   "fr": "Dimri Yama Sde Dov",
+   "ru": "Dimri Yama Sde Dov",
+   "ar": "Dimri Yama Sde Dov"
+  },
+  "אשירה": {
+   "en": "Ashira",
+   "fr": "Ashira",
+   "ru": "Ashira",
+   "ar": "Ashira"
+  },
+  "פרויקט אשירה שדה דב": {
+   "en": "Ashira Sde Dov",
+   "fr": "Ashira Sde Dov",
+   "ru": "Ashira Sde Dov",
+   "ar": "Ashira Sde Dov"
+  },
+  "זוהי": {
+   "en": "ZOHI",
+   "fr": "ZOHI",
+   "ru": "ZOHI",
+   "ar": "ZOHI"
+  },
+  "אוטופיה": {
+   "en": "Utopia",
+   "fr": "Utopia",
+   "ru": "Utopia",
+   "ar": "Utopia"
+  },
+  "גינדי ווג": {
+   "en": "GINDI VOGUE",
+   "fr": "GINDI VOGUE",
+   "ru": "GINDI VOGUE",
+   "ar": "GINDI VOGUE"
+  },
+  "מגדל איינשטיין": {
+   "en": "Einstein Tower",
+   "fr": "Einstein Tower",
+   "ru": "Einstein Tower",
+   "ar": "Einstein Tower"
+  },
+  "פירסט": {
+   "en": "FIRST",
+   "fr": "FIRST",
+   "ru": "FIRST",
+   "ar": "FIRST"
+  },
+  "שיכון ובינוי": {
+   "en": "Shikun & Binui",
+   "fr": "Shikun & Binui",
+   "ru": "Shikun & Binui",
+   "ar": "Shikun & Binui"
+  },
+  "שיכון ובינוי, מגרש 109": {
+   "en": "Shikun & Binui, lot 109",
+   "fr": "Shikun & Binui, lot 109",
+   "ru": "Shikun & Binui, участок 109",
+   "ar": "Shikun & Binui، القسيمة 109"
+  },
+  "לוינשטין, מבנה ואלייד נדל״ן": {
+   "en": "Levinstein, Mivne and Allied Real Estate",
+   "fr": "Levinstein, Mivne et Allied Real Estate",
+   "ru": "Levinstein, Mivne и Allied Real Estate",
+   "ar": "Levinstein وMivne وAllied Real Estate"
+  },
+  "קבוצת חג'ג'": {
+   "en": "Hagag Group",
+   "fr": "Hagag Group",
+   "ru": "Hagag Group",
+   "ar": "Hagag Group"
+  },
+  "גינדי החזקות": {
+   "en": "Gindi Holdings",
+   "fr": "Gindi Holdings",
+   "ru": "Gindi Holdings",
+   "ar": "Gindi Holdings"
+  },
+  "קבוצת נחמיאס": {
+   "en": "Nachmias Group",
+   "fr": "Nachmias Group",
+   "ru": "Nachmias Group",
+   "ar": "Nachmias Group"
+  },
+  "אביסרור משה ובניו": {
+   "en": "Avisror Moshe & Sons",
+   "fr": "Avisror Moshe & Sons",
+   "ru": "Avisror Moshe & Sons",
+   "ar": "Avisror Moshe & Sons"
+  },
+  "תחנת רידינג": {
+   "en": "Reading station",
+   "fr": "Station Reading",
+   "ru": "Станция «Рединг»",
+   "ar": "محطة ريدينغ"
+  },
+  "תחנת רידינג, הרכבת הקלה": {
+   "en": "Reading station, light rail",
+   "fr": "Station Reading, tramway",
+   "ru": "Станция «Рединг», лёгкое метро",
+   "ar": "محطة ريدينغ، القطار الخفيف"
+  },
+  "בית הספר כוכב הצפון": {
+   "en": "Kochav HaTzafon school",
+   "fr": "École Kochav HaTzafon",
+   "ru": "Школа «Кохав-ха-Цафон»",
+   "ar": "مدرسة كوخاف هتسافون"
+  },
+  "גן כוכב הצפון": {
+   "en": "Kochav HaTzafon Park",
+   "fr": "Parc Kochav HaTzafon",
+   "ru": "Парк «Кохав-ха-Цафон»",
+   "ar": "حديقة كوخاف هتسافون"
+  },
+  "כוכב הצפון": {
+   "en": "Kochav HaTzafon",
+   "fr": "Kochav HaTzafon",
+   "ru": "«Кохав-ха-Цафон»",
+   "ar": "كوخاف هتسافون"
+  },
+  "ארן": {
+   "en": "Aran",
+   "fr": "Aran",
+   "ru": "«Аран»",
+   "ar": "أران"
+  },
+  "אלומות": {
+   "en": "Alumot",
+   "fr": "Alumot",
+   "ru": "«Алумот»",
+   "ar": "ألوموت"
+  },
+  "חוף רידינג": {
+   "en": "Reading Beach",
+   "fr": "Plage Reading",
+   "ru": "Пляж Рединг",
+   "ar": "شاطئ ريدينغ"
+  },
+  "שפך נחל הירקון": {
+   "en": "Yarkon River mouth",
+   "fr": "Embouchure du Yarkon",
+   "ru": "Устье реки Яркон",
+   "ar": "مصب نهر اليركون"
+  },
+  "גבעת המורה": {
+   "en": "Givat HaMoreh",
+   "fr": "Givat HaMoreh",
+   "ru": "Гиват-ха-Море",
+   "ar": "جفعات همورية"
+  },
+  "בניין העירייה החדש": {
+   "en": "The new municipality building",
+   "fr": "Le nouveau bâtiment de la municipalité",
+   "ru": "Новое здание муниципалитета",
+   "ar": "مبنى البلدية الجديد"
+  },
+  "תחנת ארלוזורוב": {
+   "en": "Arlozorov station",
+   "fr": "Station Arlozorov",
+   "ru": "Станция «Арлозоров»",
+   "ar": "محطة أرلوزوروف"
+  },
+  "תחנת ארלוזורוב, הקו הירוק": {
+   "en": "Arlozorov station, Green Line",
+   "fr": "Station Arlozorov, ligne verte",
+   "ru": "Станция «Арлозоров», Зелёная линия",
+   "ar": "محطة أرلوزوروف، الخط الأخضر"
+  },
+  "תחנת זהרה לביטוב": {
+   "en": "Zohara Levitov station",
+   "fr": "Station Zohara Levitov",
+   "ru": "Станция «Зохара Левитов»",
+   "ar": "محطة زوهارا ليفيتوف"
+  },
+  "ארלוזורוב": {
+   "en": "Arlozorov",
+   "fr": "Arlozorov",
+   "ru": "Арлозоров",
+   "ar": "أرلوزوروف"
+  },
+  "בן סרוק": {
+   "en": "Ben Saruk",
+   "fr": "Ben Saruk",
+   "ru": "Бен-Сарук",
+   "ar": "بن ساروك"
+  },
+  "ישראל גלילי": {
+   "en": "Israel Galili",
+   "fr": "Israel Galili",
+   "ru": "Исраэль Галили",
+   "ar": "يسرائيل جليلي"
+  },
+  "יעקב אפטר": {
+   "en": "Yaakov Apter",
+   "fr": "Yaakov Apter",
+   "ru": "Яаков Аптер",
+   "ar": "يعقوب أبتر"
+  },
+  "לוי אשכול": {
+   "en": "Levi Eshkol",
+   "fr": "Levi Eshkol",
+   "ru": "Леви Эшколь",
+   "ar": "ليفي أشكول"
+  },
+  "אשכול לוי": {
+   "en": "Levi Eshkol",
+   "fr": "Levi Eshkol",
+   "ru": "Леви Эшколь",
+   "ar": "ليفي أشكول"
+  },
+  "שדה דב": {
+   "en": "Sde Dov",
+   "fr": "Sde Dov",
+   "ru": "Сде-Дов",
+   "ar": "سديه دوف"
+  },
+  "תל אביב": {
+   "en": "Tel Aviv",
+   "fr": "Tel Aviv",
+   "ru": "Тель-Авив",
+   "ar": "تل أبيب"
+  },
+  "תכנית ל'": {
+   "en": "Tochnit Lamed",
+   "fr": "Tochnit Lamed",
+   "ru": "Тохнит-Ламед",
+   "ar": "تخنيت لامد"
+  }
+ }
+}

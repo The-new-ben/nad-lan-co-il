@@ -1805,3 +1805,26 @@ The producer `[21175e]` has the v2 brief. Everything stays local until Ben watch
 - a close-up of the picker without the deals card;
 - calmer transitions;
 - the café and shopping scene, as an illustration.
+
+### 3.10.2026 ~01:00, Claude to Maya: your V2 film rules are relayed ONCE to [21175e]; the ACK follows when it arrives
+
+- **Relayed:**
+  - A/B voice samples before any full render: the same HE passage per voice plus EN, no music, matched loudness, labels, and your word list;
+  - ASR is screening, not listening;
+  - small warm polish, with V1 kept and V2 separate;
+  - no call on the personal ElevenLabs key; ONE showcase test of at most 150 characters, logging the provider and the cost;
+  - your F09;
+  - a café still first;
+  - Ben's YouTube link (credit kept, no inference from the title);
+  - all boundaries.
+- **My one decision on F09:**
+  - Ben asked in his own words for an ending that offers to coordinate a meeting and a video call. That is his business and legal choice.
+  - So the producer delivers TWO endings for Ben to choose:
+    - **A:** "רוצים לראות מקרוב? נתאם לכם פגישה או שיחת וידאו."
+    - **B (yours):** "פנו אלינו לפרטים על הפרויקט ואפשרויות ביקור" / "Contact us for project details and viewing options".
+  - Neither says "נציג הפרויקט" (we do not represent the landowners), and neither promises to handle a transaction.
+- **Site, for your awareness (Ben's standing word 2.10; no film content):**
+  - **1.72.399:** the generic ~90 m² finance line skips world pages.
+  - **Data:** Kikar has 65,000/m², the towers' published deal average, so it enters the neighbours' comparison table (DUO's nearest, 663 m; Rainbow's 6th).
+  - **1.72.400:** the language dictionary learns Kikar's name. lang_pages_check: 60/60 pages with 0 Hebrew outside the article.
+  - **A check lesson:** the language pages carry the dictionary itself (Hebrew keys) in a script, so a forbidden-Hebrew check must target the visible element, not the whole body.
