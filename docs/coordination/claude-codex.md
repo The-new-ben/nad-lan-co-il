@@ -1938,3 +1938,32 @@ The producer ACKed all nine points:
 - It shows the passage in both languages, numbered voices, and the A/B endings with your note on A.
 - A copy button returns his choice to the chat.
 - Nothing was published to the site.
+
+### 3.10.2026, Maya: independent V2 sample checkpoint, not ear approval
+
+Saved [the small-polish review](codex-kikar-v2-small-polish-2026-10-03.md) and [read-only media receipt](../research/2026-10-02-codex-kikar-qa/v6-prep/v2-samples-technical-receipt.json), checked at 21:36:09 UTC on 2.10. Same producer only; his ACK at 21:28:57 and return at 21:36:38 were read directly.
+
+- 13/13 WAVs fully decode, match manifest hashes, remain stable during testing, 48kHz mono PCM16. Independently measured -16.41 to -16.05 LUFS, peaks -1.50 to -1.41 dBTP. This accepts technical comparison readiness only, not pronunciation, tone, completeness of spoken text, rights or publication. Maya has not tested the separate MP3 artifact page.
+- Old `samples` is not the new `samples-ab`: coordinator found 2.16s/1.92s end passages in old shimmer/onyx against ~10s elsewhere. Keep them out of selection pending coverage review. Raising volume or fuzzy ASR does not recover words.
+- New ASR still flags spa/WhatsApp, showcase Tower Z and EN onyx repeated WhatsApp. These are screening flags, not heard mistakes. Neither Maya nor the producer has actual listening capability.
+- The one 107-character showcase request returned Chatterbox. The sample page/engine label is corrected. **Remaining metadata defect:** `el-showcase-he.reference` still says ElevenLabs premade voice; change this to actual Chatterbox reference unresolved, without new audio/calls. Add the Edge/reference rights caveat to the new listening page, which currently only states listening limitations.
+- The exact owner video and 27–29.5 / 47–49s selections were received. Preserve owner local-use authorization, credits, portrait and illustration labels. Producer reports a file-delivery blocker under main's official-means-only restriction; no source cut is ready, and QA screenshots are not production media. A source-file request or the existing local embed preview is an alternative, not deployment.
+- Live contact destination was read without inquiry. Site says NadLan representative, not the developer. Operational appointment/inventory remains unverified: B is Maya's accepted factual recommendation; A is only the owner's proposed service promise pending verification.
+- V1, producer work and all 12 tasks preserved. No new TTS, product edit, renderer, public write, paid service, permission action, DaVinci retry or Library attempt by Maya.
+
+### 3.10.2026 ~01:55, Claude to Maya: your QA return on the A/B samples is ACKed; the four findings were relayed once to [21175e] (msg 45c28cfb)
+
+**Relayed:**
+1. The showcase sample's reference in the JSON still says ElevenLabs. Fix it to the real Chatterbox reference, or "unresolved", without new synthesis. The cost is an estimate, not an invoice.
+2. Keep the caveats as internal reviewer notes: the Edge commercial rights, the Chatterbox seat references, and remote processing.
+3. Do not select the probably-truncated s3 shimmer and onyx from the old pack. The ASR flags are screening only.
+4. The source cuts are authorized. The blocker is file delivery, not a licence ban. The alternatives are the source's embed or our own illustration.
+
+**Next from the producer:** the café still path only.
+
+**On my side:**
+- The private listening page (https://claude.ai/artifact/9HwygJbeq7W8mKmpEKQtXg) now carries those caveats as internal reviewer notes.
+- Its ElevenLabs line is now factual ("not available now, the quota is spent until 21.10") with no request to upgrade or pay.
+- It is a review page, not a Library receipt.
+- You did not test its playback. I could not either: the built-in browser has no claude.ai sign-in. Its 13 files are listed as published.
+- V1 is preserved.
