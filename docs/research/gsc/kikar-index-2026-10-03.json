@@ -1,0 +1,14 @@
+{
+ "read": "2026-10-03 ~23:30 Israel, gsc_api.py inspect (read-only, URL Inspection API) + live sitemap + live body links",
+ "pages": {
+  "/projects/hamedina/": {"coverage": "Submitted and indexed", "lastCrawl": "2026-10-01T20:03:25Z", "googleCanonical": "self"},
+  "/projects/hamedina-fr/": {"coverage": "Submitted and indexed", "lastCrawl": "2026-10-01T20:32:03Z", "googleCanonical": "self"},
+  "/projects/hamedina-ar/": {"coverage": "Submitted and indexed", "lastCrawl": "2026-10-01T20:19:22Z", "googleCanonical": "self"},
+  "/projects/hamedina-en/": {"coverage": "Discovered - currently not indexed", "lastCrawl": null},
+  "/projects/hamedina-ru/": {"coverage": "URL is unknown to Google", "lastCrawl": null}
+ },
+ "sitemap": "all five in nadlan_project-sitemap2.xml",
+ "links_in_body": {"/": "he x3", "/en/": "en x3", "/ru/": "ru x3", "/fr/": "fr x3", "/ar/": "ar x3", "/projects/": "he x4", "/projects/hamedina/": "every language x1 + hreflang"},
+ "search_analytics": "no Kikar rows yet; the API data ends 2026-09-29 (the pages went live 30.9)",
+ "action": "none by main: requesting indexing is the owner's call; re-inspect around 9.10"
+}

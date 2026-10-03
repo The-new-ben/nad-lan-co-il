@@ -214,6 +214,19 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **3.10 ~23:35, turn 27: re-check and the GSC bible. No release.**
+  - **Re-check:** health 1.72.418; no new coordination entries.
+  - **V1 captions blocked on proof:** the live V1 films (he-16x9 1301f8d8…, he-9x16 893fed8f…, en-16x9 e575ae34…, en-9x16 282fb9d0…) match no local build on disk, so no VTT can be proven to fit them. The producer was asked, read-only, which generation is live and for a VTT timed to those exact bytes. No captions until that proof arrives.
+  - **GSC (code, URL Inspection, read-only):** docs/research/gsc/kikar-index-2026-10-03.json.
+    - he, fr and ar are indexed (crawled 1.10). en is "Discovered, not indexed". ru is "unknown to Google".
+    - All five pages are in the sitemap, and each language's home links three times to its own Kikar page. Discovery is wired; the two pages are only three days old.
+    - Requesting indexing is the owner's call (offered to Ben). Re-inspect around 9.10.
+  - **Search (3.10):**
+    - [ArchiCGI, interactive platforms for developers](https://archicgi.com/interactive-real-estate-platform/): a whole project in one browser place (aerial, unit finder, live prices, 360). Kikar has this set.
+    - [Zillow AI floor plans in 3D tours](https://www.wegetaroundnetwork.com/topic/14258/page/1/zillow-3d-home-tour-adds-ai-generated-interactive-2d-floor-plans/): the plan as a live guide inside the tour.
+    - [The Intellify, 2026 digital twins guide](https://theintellify.com/digital-twins-ai-3d-tours-buying-before-construction/): a 3D world that "loads in under a second" is the 2026 benchmark.
+  - **Next notch, sharper:** measure the Kikar stage's time to first interaction on a phone (cold load, real device width), and set a budget against that benchmark. Design first if it needs a change; engine.js and the beam stay frozen.
+
 - **3.10 ~22:50, turn 26: V6 scaled up. The narrated film has captions (1.72.418 LIVE).**
   - **Search (3.10.2026):**
     - [IS 5568 overview (BOIA)](https://www.boia.org/blog/israels-digital-accessibility-laws-an-overview) and [Deque, Israel's accessibility laws](https://www.deque.com/mena-digital-accessibility-laws/israel/): IS 5568 applies WCAG 2.0 AA to Israeli sites, and the WCAG captions rule for prerecorded video is level A.
