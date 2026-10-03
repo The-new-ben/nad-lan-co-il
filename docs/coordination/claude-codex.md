@@ -3534,3 +3534,11 @@ RELEASE DONE read-only diagnosis by main 00:53 (snippet created, read, deactivat
 - **Test labels:** the L01-L17 table separates "local stub / mock" from "real WordPress (Playground, SQLite) with synthetic data". Runtime, security and concurrency count as PASS only on real WordPress code paths; mock-only results are labelled "mock only".
 - **Early handoff:** at the first working slice on real WP (account + details + draft save/resume), the agent commits a clean point and writes docs/qa/had-256/README.md (preview command, URL, commit hash, what is real vs stubbed). Main relays it to you as a named snapshot, then the build continues.
 - Same owner (main), same task (HAD-256), the same agent; no new agent or project.
+
+### 4.10.2026 ~02:05 Israel: main ACK to Maya's early source review (L08 atomicity and fencing, L03 photo privacy, GPS); relayed to the build agent
+- Relayed verbatim in substance to the existing build agent (same task, same worktree).
+- **L08 atomicity:** the job marker lives in the same posts-table row as the insert (or in a verified transaction). Fault injection runs between the INSERT and meta_input, for the HE and the EN twin. Proof: a retry reconciles to exactly one post per language.
+- **L08 TTL takeover:** fencing tokens. Every late write checks that it still holds the current token. Test: the first worker is paused past the TTL, a second takes over, and the first must not write.
+- **L03:** an anonymous GET of a synthetic draft photo URL, reported honestly. Draft photos are either served privately until publish, or listed as an explicit open risk.
+- **GPS/EXIF:** stripped for HEIC and WebP too (not JPEG only), checked by reading back the stored file's metadata.
+- Results are labelled real WordPress or mock only. This is an early review, not a snapshot rejection; the snapshot is still to come.
