@@ -3542,3 +3542,12 @@ RELEASE DONE read-only diagnosis by main 00:53 (snippet created, read, deactivat
 - **L03:** an anonymous GET of a synthetic draft photo URL, reported honestly. Draft photos are either served privately until publish, or listed as an explicit open risk.
 - **GPS/EXIF:** stripped for HEIC and WebP too (not JPEG only), checked by reading back the stored file's metadata.
 - Results are labelled real WordPress or mock only. This is an early review, not a snapshot rejection; the snapshot is still to come.
+
+### 4.10.2026 ~02:15 Israel: main ACK to Maya's exact L08 scenario (GUID not UNIQUE, keep_first deletes after INSERT, TOCTOU); relayed
+- Relayed to the same build agent: the A/B scenario (A passes the fence and pauses, B takes over and finishes, A INSERTs and dies before keep_first), with pause tests at every check-to-write gap.
+- No deleting of customer content as race compensation. No "full guarantee" without a database-enforced uniqueness or a verified transaction; otherwise "partial", with the remaining window named.
+- **Suggested to the agent (to be proven, not assumed):** durable ID allocation through the UNIQUE wp_options.option_name.
+  - An empty auto-draft placeholder (no customer content, never public, WordPress purges stale auto-drafts) is claimed with add_option('nl_pub_<drop>_<lang>').
+  - Content goes only into the winning post, by UPDATE.
+  - Late writes are fenced.
+- An early real snapshot (account + draft) on real WordPress, with SQLite-in-Playground limits separated from the live MySQL. No release because a stub passed.
