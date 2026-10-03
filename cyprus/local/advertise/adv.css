@@ -1,0 +1,10 @@
+.cy-nav-links a.cyadv-nav{border:1px solid rgba(251,248,242,.45);padding:8px 14px;border-radius:5px}
+.cy-nav-links a.cyadv-nav:hover,.cy-nav-links a.cyadv-nav[aria-current=page]{border-color:var(--cy-teal-light,#2FA79A);color:var(--cy-teal-light,#2FA79A)}
+.cyadv-line{margin:14px 0 0;color:var(--cy-muted,#5A6B76);font-size:15px;line-height:1.6}
+body .cyadv-line a{color:var(--cy-navy,#12293E);font-weight:700;text-decoration:underline;text-underline-offset:4px}
+body .cyadv-line a:hover{color:var(--cy-terracotta,#B85C38)}
+.cyadv-band{margin:36px 0 8px;padding:22px clamp(18px,3vw,30px);border:1px solid var(--cy-line,#E3DCCE);border-radius:8px;background:var(--cy-surface,#FBF8F2);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px}
+.cyadv-band p{margin:0;font-size:16px;line-height:1.7;color:var(--cy-ink,#1B2833);max-width:720px}
+.cyadv-band strong{color:var(--cy-navy,#12293E)}
+body .cyadv-band a.cyadv-band-link{display:inline-flex;align-items:center;min-height:46px;padding:0 20px;border-radius:6px;border:1px solid var(--cy-navy,#12293E);color:var(--cy-navy,#12293E);font-weight:700;text-decoration:none;white-space:nowrap}
+body .cyadv-band a.cyadv-band-link:hover{background:var(--cy-navy,#12293E);color:#fff}
