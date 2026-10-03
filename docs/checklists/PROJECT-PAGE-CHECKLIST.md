@@ -40,6 +40,11 @@ Technical things (a 3D stage, maps, code) never come before the answer paragraph
 | C7 | The non-affiliation notice opens the article section, out of the snippet zone (the owner, 29.8.2026) | `tools/source_audit.py` (the notice light) |
 | C8 | One map on the page; one `FAQPage`; one `BreadcrumbList` | the runner and the audit |
 
+## C10: a film or clip on a project page (Kikar 1.72.414, 3.10.2026)
+| # | Check | Evidence |
+|---|---|---|
+| C10 | Only a cut whose every asset is cleared goes on the page; an open licence keeps the long cut off and ships the clean slice. The label is ABOVE the player, read before play, in the page's language (an illustrative visualisation, not footage, not an official specification, not a full tour). Posters are frames of that clip. controls playsinline preload="none", no autoplay, no media request before Play. Every uploaded file is downloaded back and SHA-256-matched; the page uses the exact uploaded URLs (WordPress may add "-1"). No VideoObject while the film is a draft | the release's page checks (label, poster and file names per language), a real press on Play with currentTime advancing, the byte-check log |
+
 ## After every release (the evidence)
 
 - `python tools/source_audit.py`, before and after. An unexplained difference is a finding.

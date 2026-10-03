@@ -214,6 +214,18 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **3.10 ~14:10, turn 18 (every V-item done in its approved scope):**
+  - **Re-check (iron law 4):** content_first_check after 412/414: 20/20 OK, failed 0 (Kikar he/en/fr/ru/ar + the fleet, phone and desktop). Kikar on a phone: h1 190, lead 291, stage 725.
+  - **HAD-396 closed on live:** Maya's independent closure, urban's re-probe, Linear Done.
+  - **Web (3.10):** [Matterport July 2026 update](https://matterport.com/blog/refreshing-the-way-to-explore-your-digital-twins): measuring rooms, guided tours, switching floor plans, removing furniture. Kikar has plans, 4 styles and the guided walk; room measuring is the gap. A candidate for a future notch (labelled illustrative).
+  - **Scale-up:** PROJECT-PAGE-CHECKLIST gains C10, the film/clip rule (cleared cut only, label before play, posters from the clip, preload none, byte-check, exact uploaded URLs).
+  - **NEXT:**
+    - the 77.6 s film = Ben's A/C;
+    - HAD-406 (our own walking areas; the chip is waiting);
+    - HAD-407/408/409 (urban's area: the wording, two H1s, the dark h2), one small release with design first;
+    - re-inspect Kikar EN/RU in GSC around 9.10;
+    - room measuring in the example apartment (design first).
+
 - **3.10 ~14:00, turn 17: V6 DONE in the scope Ben approved (option B). The 77.6 s cut stays his A/C question.**
   - **V6 evidence:** 1.72.414 is LIVE, the 19.7 s facilities clip under the film (V1 kept).
     - The label is above the player, before play, in each page's language.
