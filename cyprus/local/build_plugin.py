@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.join(HERE, 'advertise'))
 import plugin_parts  # noqa: E402  (the "Advertise with us" page, button and assets)
 
 SLUG = 'cy-project-experience'
-VERSION = '1.1.0'
+VERSION = '1.3.0'
 BUNDLE = 'villas-aa'
 IMAGES = {  # local web-media name -> published name, and the plan-data key it replaces
     'agios-athanasios-villas-site-plan.webp': ('site-plan.webp', '/media/site.png'),
@@ -32,10 +32,12 @@ COLOURS = [('#c3a3745c', '#B85C3852'), ('#c3a37433', '#B85C3829'), ('#c3a374', '
            ('#efede5', '#F6F1E8'), ('#a8ada0', '#C9BFAD'), ('#bbc1b3', '#D5CCBB'), ('#fbfaf6', 'var(--cy-surface,#FBF8F2)'),
            ('#15261ed9', '#0C1C2Bd9'), ('#f5f2ebb8', '#FBF8F2c4'), ('#f5f2eb', 'var(--cy-surface,#FBF8F2)'), ('#636b60', 'var(--cy-muted,#5A6B76)')]
 
-# The long-form article is printed by the server (search engines read it without JavaScript): it goes in before the
-# page's own WhatsApp card, or before </main>. If neither marker is there, the page is left exactly as it was.
-ARTICLE_PHP = """
-/* ------------------------------------------------------------------ the long-form article on mapped project pages */
+# The area section and the long-form article are printed by the server (search engines read them without JavaScript).
+# The area section goes in before the page's map, the article before the page's own WhatsApp card; each falls back to the
+# next marker and then to </main>. Markers are matched by class token, so attribute order does not matter; if none is
+# found, the page is left exactly as it was.
+ARTICLE_PHP = r"""
+/* ------------------------------------------------------- the area section and the long-form article on mapped project pages */
 
 add_action(
 	'template_redirect',
@@ -48,17 +50,29 @@ add_action(
 		if ( '' === $slug || empty( $bundles[ $slug ] ) ) {
 			return;
 		}
-		$file = plugin_dir_path( __FILE__ ) . 'assets/' . $bundles[ $slug ] . '/article-' . cypx_lang() . '.html';
-		if ( ! file_exists( $file ) ) {
+		$dir   = plugin_dir_path( __FILE__ ) . 'assets/' . $bundles[ $slug ] . '/';
+		$lang  = cypx_lang();
+		$map   = '/<div\b[^>]*\bclass="[^"]*\batlas-map-wrap\b/';
+		$wa    = '/<div\b[^>]*\bclass="[^"]*\batlas-wa-wrap\b/';
+		$main  = '/<\/main>/';
+		$parts = array();
+		foreach ( array( 'area-' . $lang . '.html' => array( $map, $wa, $main ), 'article-' . $lang . '.html' => array( $wa, $main ) ) as $file => $markers ) {
+			if ( file_exists( $dir . $file ) ) {
+				$parts[] = array( (string) file_get_contents( $dir . $file ), $markers ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+			}
+		}
+		if ( empty( $parts ) ) {
 			return;
 		}
-		$article = (string) file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions
 		ob_start(
-			function ( $html ) use ( $article ) {
-				foreach ( array( '<div class="atlas-wa-wrap"', '</main>' ) as $marker ) {
-					$at = strpos( $html, $marker );
-					if ( false !== $at ) {
-						return substr( $html, 0, $at ) . $article . substr( $html, $at );
+			function ( $html ) use ( $parts ) {
+				foreach ( $parts as $part ) {
+					foreach ( $part[1] as $marker ) {
+						if ( preg_match( $marker, $html, $m, PREG_OFFSET_CAPTURE ) ) {
+							$at   = $m[0][1];
+							$html = substr( $html, 0, $at ) . $part[0] . substr( $html, $at );
+							break;
+						}
 					}
 				}
 				return $html;
@@ -89,6 +103,8 @@ def main():
     ap.add_argument('--place-slug', required=True, help='the atlas slug of the project page, e.g. semi-detached-villas')
     ap.add_argument('--out', required=True, help='folder that receives the plugin folder and the zip')
     ap.add_argument('--articles-dir', help='folder with article-he.md / article-en.md (the long-form body, rendered server-side)')
+    ap.add_argument('--world-dir', help='the walkable 3D area folder (cyprus/local/world3d); adds the 3D card and full-screen tour')
+    ap.add_argument('--area-dir', help='the private area research folder (places.geojson + drive-osrm.json); adds the server-rendered "what is close" section')
     a = ap.parse_args()
     packet = project_packet(__import__('pathlib').Path(a.register))
     for k in ('name', 'district', 'languages', 'contactEnabled', 'geometryMode', 'availabilityMode'):
@@ -161,7 +177,7 @@ def main():
             "const wa=(document.querySelector('a.atlas-wa')||{}).href||'';\n"
             "const CFG={wa:(wa.match(/wa\\.me\\/(\\d+)/)||[])[1]||'972525101555',title:((document.querySelector('#atlas-main h1')||{}).textContent||'').trim(),packet:"
             + json.dumps(packet, ensure_ascii=False) + "};\n")
-    script = "(function(){'use strict';\n" + head + plans + '\n' + js + '\n})();\n'
+    script = "(function(){'use strict';\n" + head + plans + '\n' + js + '\n/*W3*/\n})();\n'
 
     # ---------- style ----------
     css = scope_css(read('style.css'), ids)
@@ -243,11 +259,26 @@ add_action(
     bdir = os.path.join(root_dir, 'assets', BUNDLE)
     os.makedirs(bdir)
     io.open(os.path.join(root_dir, SLUG + '.php'), 'w', encoding='utf-8', newline='\n').write(php)
+    if a.world_dir:
+        import world_embed
+        launcher, card_css = world_embed.pack(a.world_dir, bdir)
+        script, css = script.replace('/*W3*/', launcher), css + card_css
+    else:
+        script = script.replace('/*W3*/', '')
     io.open(os.path.join(bdir, 'app.js'), 'w', encoding='utf-8', newline='\n').write(script)
     io.open(os.path.join(bdir, 'app.css'), 'w', encoding='utf-8', newline='\n').write(css)
     for src, (dst, _) in IMAGES.items():
         shutil.copyfile(os.path.join(a.media_dir, src), os.path.join(bdir, dst))
     plugin_parts.write_assets(root_dir, HERE)
+    if a.area_dir:
+        import area_html
+        for lang, frag in area_html.build(os.path.join(a.area_dir, 'places.geojson'), os.path.join(a.area_dir, 'drive-osrm.json')).items():
+            io.open(os.path.join(bdir, f'area-{lang}.html'), 'w', encoding='utf-8', newline='\n').write(frag)
+        css += area_html.AREA_CSS
+        io.open(os.path.join(bdir, 'app.css'), 'w', encoding='utf-8', newline='\n').write(css)
+        end = script.rindex('})();')
+        script = script[:end] + area_html.AREA_JS + script[end:]
+        io.open(os.path.join(bdir, 'app.js'), 'w', encoding='utf-8', newline='\n').write(script)
     if a.articles_dir:
         from article_html import to_html
         labels = {'he': ('rtl', 'מדריך מלא: וילות למכירה באגיוס אתנסיוס'), 'en': ('ltr', 'Full guide: villas for sale in Agios Athanasios')}
@@ -261,7 +292,7 @@ add_action(
         for f in files:
             p = os.path.join(dirpath, f)
             low = (f + (io.open(p, encoding='utf-8').read() if f.endswith(('.php', '.js', '.css', '.html')) else '')).lower()
-            for banned in ('dune', 'mansions', '/media/', '127.0.0.1', 'localhost', 'register', 'brochureid'):
+            for banned in ('dune', 'mansions', '/media/', '127.0.0.1', 'localhost', 'units-source-register', 'brochureid', 'coveredaream2'):
                 if banned in low:
                     raise SystemExit(f'build_plugin: banned text "{banned}" in {p}')
     zpath = os.path.join(a.out, f'{SLUG}-{VERSION}.zip')
