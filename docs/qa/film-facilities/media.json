@@ -1,0 +1,66 @@
+{
+ "kikar-hamedina-facilities-he-16x9.mp4": {
+  "id": 8140,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-he-16x9-1.mp4",
+  "bytes": 1528380,
+  "sha256": "8ff417b65c59a3d43b668ca1f4a92cbee302b6cc9dd4ff491778b6485382933f",
+  "bytes_live": 1528380,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-facilities-he-16x9-poster.jpg": {
+  "id": 8141,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-he-16x9-poster.jpg",
+  "bytes": 70099,
+  "sha256": "1e1382cf6ad8c494406334061aebd592ad3b6f2bd8be1461fe2f9c0bb5521697",
+  "bytes_live": 70099,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-facilities-he-9x16.mp4": {
+  "id": 8142,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-he-9x16-1.mp4",
+  "bytes": 996659,
+  "sha256": "95eed3a47c71d69ade08e11246c1239de244a01ddc1cfcc4d09c217322b16d28",
+  "bytes_live": 996659,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-facilities-he-9x16-poster.jpg": {
+  "id": 8143,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-he-9x16-poster.jpg",
+  "bytes": 42958,
+  "sha256": "8d4816cb5321f8026a742ec4eb2832426af5c231b100dfd6689c32836d56ac3a",
+  "bytes_live": 42958,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-facilities-en-16x9.mp4": {
+  "id": 8144,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-en-16x9-1.mp4",
+  "bytes": 1536847,
+  "sha256": "22eedd390778ab63556f901168da7e6c32e7db2188c6a2f0af7e12910a57a2aa",
+  "bytes_live": 1536847,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-facilities-en-16x9-poster.jpg": {
+  "id": 8145,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-en-16x9-poster.jpg",
+  "bytes": 70219,
+  "sha256": "b1e0921ac105326c82e3f606d546eba9b8bec2d83d72663a09ce9c2aa3ac627f",
+  "bytes_live": 70219,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-facilities-en-9x16.mp4": {
+  "id": 8146,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-en-9x16-1.mp4",
+  "bytes": 1001866,
+  "sha256": "dfc6a674ea2d2790c0251f403c3b504970b246cac17b55d0ff9a24d923081bbd",
+  "bytes_live": 1001866,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-facilities-en-9x16-poster.jpg": {
+  "id": 8147,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-en-9x16-poster.jpg",
+  "bytes": 42680,
+  "sha256": "54edbc14820a7fc1dd22745afa6f49fa1599dc47333707d556b2aa844c825629",
+  "bytes_live": 42680,
+  "byte_check": "OK"
+ }
+}

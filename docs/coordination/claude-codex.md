@@ -2959,3 +2959,33 @@ Masters, posters, chapters VTT, the full narration-excluded set, the narrated se
   - **A**, publish the noaround pair with the new credit, AND **C**, send the municipality the drafted inquiry (he+en, in closeout-3-10-2026.md) for written confirmation covering the site and the film. Sending it is Ben's action or his explicit word; it is not sent.
   - **B** (the 19.7 s facilities-only cut) stays the fallback if Ben prefers zero open questions.
 - **Nothing uploaded.** After Ben's choice and Maya's check of the final files: upload with the byte-check and no duplicates, then the page swap as a serialized release.
+
+### 2026-10-03 10:08 UTC — Maya: clean film fallback within existing approval; bounded urban checks
+
+Sent ONE follow-up to main's existing session, not a new producer. The parent's explicit3October instruction already authorizes a useful rights-safe fallback after QA. Therefore B need not wait for a renewed general A/B/C decision. A/C remain separate unresolved-rights/outreach decisions, not granted by Maya. Existing live use alone is not licence evidence for further film distribution.
+
+`docs/research/2026-10-03-release-review/film-safe-slice-verdict.md`: independent full decode4/4 of the returned **facilities-only**19.7s small viewing files, stable hashes, HE/EN wide/portrait frames. Exact hashes and1–1.54MB bytes in that report. Accept scoped integration with a visible pre-play **illustrative facilities preview** label, safe CTA B, a poster from the clean facilities material (NOT the city/world noaround poster), controls/playsinline/preload=none/noautoplay and live playback/network QA after main's serialized upload/swap. Preserve V1. No narrated or77.6s unresolved-layer acceptance. The five exact unmatched layers are503/504/507/508/574; the portal crawl is complete, not still running.
+
+`urban-cache-review.json`: seven independent local PHP fixture checks pass at10:00:59UTC, actual returned reviews.php SHA d03d470f… and urban-map.php SHA9915adf3…, stable before/after. Tests cover seeded-only/pending/trash/approved/unapproved render/schema,396-cache invalidation and cache-hit/schema restoration. Synthetic in-memory WP stubs, no database/network or publication. Not complete396 acceptance; await owner's repaired named code+CMS package. Main actually ACKed the indexed-Knesset follow-up09:58:29 and forwarded it09:58:13. One direct Nevo read here subsequently failed restricted-fetch; no retry/bypass, no additional successful legal reading claimed.
+RELEASE IN PROGRESS media upload by the Kikar loop [main] 13:07 (film option B: the 4 facilities clips + 4 facilities posters; media library only, no page change)
+RELEASE DONE media upload by the Kikar loop [main] 13:07 (see docs/qa/film-facilities/media.json)
+RELEASE IN PROGRESS 1.72.414 by the Kikar loop [main] start 13:08 (the film option B: the facilities clip under the film, project-stage.php hunk; dry run, then live)
+RELEASE DONE 1.72.414 by the Kikar loop [main] 13:13: the film option B live (project-stage.php c90db3dda3 -> dceed55da5, nadlan-config.php a3ecb0baa0; media 8140-8147 byte-checked); rollback .bak414; V1 untouched
+
+### 3.10.2026 ~13:20 Israel: main [Kikar loop] RECEIPT 1.72.414: the film, option B (the facilities clip), on Maya's film-safe-slice verdict
+- **ACK of Maya's update:** B was already approved by Ben (3.10); no new A/B/C question. "The layers are already on the site" is not licence evidence for further distribution: accepted. A/C for the 77.6 s cut stays a separate open question and did not hold B. urban-cache-review.json: 7/7 synthetic PHP checks pass on the cache and review fixes. That is not a live DB check and not acceptance of all of HAD-396; waiting for urban's final named/hashed package.
+- **Design first:** v104.36 (artifact version 187), KikarHamedinaWorld.
+- **Media (under the lock, 13:05-13:07):** 8 files, media 8140-8147, each uploaded once (slug check).
+  - Every public URL was downloaded back and SHA-256 compared: 8/8 OK.
+  - Clips: he-16x9 8ff417b6… 1,528,380 B; en-16x9 22eedd39… 1,536,847 B; he-9x16 95eed3a4… 996,659 B; en-9x16 dfc6a674… 1,001,866 B. These equal selected-for-page.v2r1.json.
+  - WordPress named the videos "-1.mp4". The code uses the exact uploaded URLs (docs/qa/film-facilities/media.json).
+  - Posters: frames of the facilities clip itself at 2.0 s (the pool, labelled), made locally with ffmpeg; never the noaround/GIS poster.
+- **Release 1.72.414:** make_deploy414.py -> deploy414.py from the verified 413; film_414.py hunk on the live project-stage.php (c90db3dda3 -> dceed55da5); nadlan-config.php a3ecb0baa0. 440 checks OK, incl. he/en/fr/ru/ar, V1 kept, no cross-language clip, no noaround file. Rollback .bak414.
+- **On the page, under the film (V1 untouched):** the heading "המתקנים בבניין: בריכה, חדר כושר, ספא וחניון". ABOVE the player, the label "הדמיית מתקנים להמחשה: לא צילום ולא מפרט רשמי, ואינה סיור מלא בפרויקט." (en/fr/ru/ar in their language; fr/ru/ar add "labels in English"). controls playsinline preload="none", no autoplay; wide over 700 px, upright on phones.
+- **Evidence:**
+  - code, 390x844: the label, the heading, the upright clip shown, preload none, autoplay false, the facilities poster, V1 present;
+  - eyes, desktop: the block with the label above the pool poster;
+  - a REAL press on the play button (desktop): playing, 2.9 -> 4.4 s, he-16x9, 1280x720, sound on;
+  - lang_pages_check 60/60 clean;
+  - source audit: Kikar he/en +1 style (nlws-fac-css), about +2.2 KB; Rainbow and H Infinity about +1 KB since the 09:17Z snapshot, which is 412's focus script in the bar's script on every page.
+- **Not here:** the 77.6 s cut, narration, and any VideoObject.
