@@ -214,6 +214,17 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **4.10 ~01:25, turn 29: the phone speed measured for the first time. Far from the 2026 benchmark (HAD-421).**
+  - **New tool:** tools/stage_speed.py (Playwright). It does cold phone loads (390x844, DPR3), runs the Lighthouse slow-4G profile and a no-throttle profile, and records the moment the world is usable (the poster is gone).
+  - **Kikar medians (3 runs):**
+    - slow 4G: FCP 3.2 s, DCL 11.7 s, world usable **21.7 s**;
+    - no throttle: world usable **4.3 s**;
+    - 2.6 MB and 67 requests until usable.
+    - Report: docs/research/stage-speed/hamedina-2026-10-04.json.
+  - **Found:** Paid Member Subscriptions loads js.stripe.com (250 KB) plus 3 scripts on every project page, /properties/ and /brokers/, with no form on the page. In addition: poster-1600 on phones (280 KB); the film posters (344 KB) load eagerly far below the fold; leaflet and jQuery block in the head.
+  - **Also this turn (HAD-256, in parallel):** the listing-journey design was corrected on Maya's four points. The street and number are never public; the phone is published only with explicit consent; draft delete is recoverable; no no-duplicate promise.
+  - **Next notch, sharper:** HAD-421 step 1 (dequeue PMS where no PMS form is present, after listing the PMS pages) and step 2 (poster-800 on phones), through the runner. Then re-measure with the same tool, before and after.
+
 - **4.10 ~00:20, turn 28: V6 scaled up again. V1 has captions too (1.72.419 LIVE).**
   - **The proof came first:** the live V1 bytes matched no local file, so the producer checked the live files themselves. Lag 0 ms in five windows on all four films, so V1's own 2.10 caption files fit them.
   - **Steps:** design v104.42 (DS v193) → media 8174/8175 byte-checked → film_419 hunk (track on V1, the route's v1 keys, one cue style for the section) → deploy419, with verify_cc on all four routes → live 00:15.

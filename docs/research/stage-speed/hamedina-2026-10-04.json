@@ -1,0 +1,307 @@
+{
+ "url": "https://nad-lan.co.il/projects/hamedina/",
+ "at": "2026-10-03T21:16:20Z",
+ "runs": 3,
+ "profiles": {
+  "slow4g": {
+   "median": {
+    "ttfb": 680,
+    "fcp": 3220,
+    "lcp": 3220,
+    "dcl": 11729,
+    "load": 11732,
+    "world_loading": 13521,
+    "world_ready": 21673,
+    "kb_to_ready": 2637,
+    "requests_to_ready": 67
+   },
+   "runs": [
+    {
+     "ttfb": 758,
+     "fcp": 3324,
+     "lcp": 3324,
+     "dcl": 11834,
+     "load": 11837,
+     "world_loading": 13521,
+     "world_ready": 21673,
+     "kb_to_ready": 2637,
+     "requests_to_ready": 67,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       18459
+      ],
+      [
+       "nadlan-config/assets/project-stage/hamedina/poster-1600.webp",
+       280,
+       17937
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       17843
+      ],
+      [
+       "https://js.stripe.com/v3/",
+       250,
+       10696
+      ],
+      [
+       "nt/uploads/2026/10/kikar-hamedina-film-v2-he-16x9-poster.jpg",
+       176,
+       9490
+      ],
+      [
+       "loads/2026/10/kikar-hamedina-film-he-16x9-preview-poster.jpg",
+       168,
+       9961
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 21.9
+    },
+    {
+     "ttfb": 680,
+     "fcp": 3220,
+     "lcp": 3220,
+     "dcl": 11729,
+     "load": 11732,
+     "world_loading": 13412,
+     "world_ready": 21477,
+     "kb_to_ready": 2652,
+     "requests_to_ready": 67,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       18351
+      ],
+      [
+       "nadlan-config/assets/project-stage/hamedina/poster-1600.webp",
+       280,
+       17829
+      ],
+      [
+       "https://js.stripe.com/v3/",
+       265,
+       10666
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       17749
+      ],
+      [
+       "nt/uploads/2026/10/kikar-hamedina-film-v2-he-16x9-poster.jpg",
+       176,
+       9405
+      ],
+      [
+       "loads/2026/10/kikar-hamedina-film-he-16x9-preview-poster.jpg",
+       168,
+       9834
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 21.8
+    },
+    {
+     "ttfb": 653,
+     "fcp": 3160,
+     "lcp": 3160,
+     "dcl": 11710,
+     "load": 11714,
+     "world_loading": 13540,
+     "world_ready": 22218,
+     "kb_to_ready": 2637,
+     "requests_to_ready": 67,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       18462
+      ],
+      [
+       "nadlan-config/assets/project-stage/hamedina/poster-1600.webp",
+       280,
+       17941
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       17847
+      ],
+      [
+       "https://js.stripe.com/v3/",
+       250,
+       10542
+      ],
+      [
+       "nt/uploads/2026/10/kikar-hamedina-film-v2-he-16x9-poster.jpg",
+       176,
+       9501
+      ],
+      [
+       "loads/2026/10/kikar-hamedina-film-he-16x9-preview-poster.jpg",
+       168,
+       9909
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 22.8
+    }
+   ]
+  },
+  "none": {
+   "median": {
+    "ttfb": 665,
+    "fcp": 1420,
+    "lcp": 1420,
+    "dcl": 1809,
+    "load": 2176,
+    "world_loading": 2277,
+    "world_ready": 4252,
+    "kb_to_ready": 2652,
+    "requests_to_ready": 67
+   },
+   "runs": [
+    {
+     "ttfb": 692,
+     "fcp": 1420,
+     "lcp": 1420,
+     "dcl": 1621,
+     "load": 1976,
+     "world_loading": 2088,
+     "world_ready": 3823,
+     "kb_to_ready": 2652,
+     "requests_to_ready": 66,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       2161
+      ],
+      [
+       "nadlan-config/assets/project-stage/hamedina/poster-1600.webp",
+       280,
+       2121
+      ],
+      [
+       "https://js.stripe.com/v3/",
+       265,
+       967
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       2420
+      ],
+      [
+       "nt/uploads/2026/10/kikar-hamedina-film-v2-he-16x9-poster.jpg",
+       176,
+       781
+      ],
+      [
+       "loads/2026/10/kikar-hamedina-film-he-16x9-preview-poster.jpg",
+       168,
+       811
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 3.9
+    },
+    {
+     "ttfb": 664,
+     "fcp": 1352,
+     "lcp": 1352,
+     "dcl": 1823,
+     "load": 2176,
+     "world_loading": 2277,
+     "world_ready": 4252,
+     "kb_to_ready": 2652,
+     "requests_to_ready": 67,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       2521
+      ],
+      [
+       "nadlan-config/assets/project-stage/hamedina/poster-1600.webp",
+       280,
+       2381
+      ],
+      [
+       "https://js.stripe.com/v3/",
+       265,
+       1497
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       2743
+      ],
+      [
+       "nt/uploads/2026/10/kikar-hamedina-film-v2-he-16x9-poster.jpg",
+       176,
+       847
+      ],
+      [
+       "loads/2026/10/kikar-hamedina-film-he-16x9-preview-poster.jpg",
+       168,
+       908
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 4.3
+    },
+    {
+     "ttfb": 665,
+     "fcp": 1532,
+     "lcp": 1532,
+     "dcl": 1809,
+     "load": 2189,
+     "world_loading": 2317,
+     "world_ready": 4319,
+     "kb_to_ready": 2637,
+     "requests_to_ready": 67,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       2473
+      ],
+      [
+       "nadlan-config/assets/project-stage/hamedina/poster-1600.webp",
+       280,
+       2376
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       2732
+      ],
+      [
+       "https://js.stripe.com/v3/",
+       250,
+       1566
+      ],
+      [
+       "nt/uploads/2026/10/kikar-hamedina-film-v2-he-16x9-poster.jpg",
+       176,
+       992
+      ],
+      [
+       "loads/2026/10/kikar-hamedina-film-he-16x9-preview-poster.jpg",
+       168,
+       1077
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 4.4
+    }
+   ]
+  }
+ }
+}
