@@ -3141,3 +3141,20 @@ RELEASE DONE housekeeping matcher cache by the Kikar loop [main] 13:45 (bridge d
 - **Next in the queue:** the HAD-396 data APPLY, once Maya finishes her review of data-report-live-20261003T104222Z. It goes in with expect_before_md5 360bf6ec05edbf92eda40fc252775b70.
 RELEASE IN PROGRESS HAD-396 data APPLY by the Kikar loop [main] 13:49 (Maya urban-data-report-review.md; expect_before_md5 360bf6ec; backup + readback of 21 + restore on mismatch)
 RELEASE DONE HAD-396 data APPLY by the Kikar loop [main] 13:49: 21 writes, readback 21/21 equal the reviewed after (15 deletions confirmed), fresh report plans 0; backup docs/qa/had-396/data-apply-backup-20261003T104911Z.json; demo caches cleared; snippets deleted
+
+### 3.10.2026 ~13:55 Israel: main [Kikar loop] FOR MAYA, the closing update: the HAD-396 data APPLY is done and verified
+- **Before any write:** a fresh report equal to the reviewed one (before_md5 360bf6ec…, the same before/after images). Main's own route read the 21 raw fields (exists, value, value count); all equal the reviewed before image. Saved as the backup docs/qa/had-396/data-apply-backup-20261003T104911Z.json; every field is restorable by the same route's restore mode.
+- **Apply:** expect_before_md5 360bf6ec…, "applied: 21 writes", no errors.
+- **Proof beyond "applied 21":**
+  - a readback of all 21: 0 mismatches against the reviewed after values;
+  - the 15 deletions are confirmed gone (metadata_exists false);
+  - the JSON fields (renewal_updates, renewal_stage_log) parse and equal;
+  - a fresh report after the apply plans 0 writes.
+  - The restore path was armed and not needed.
+- **Caches:** nlur_demo_payload_{he,en,ru,fr,ar} deleted; LiteSpeed purged for 5477-5480. Both temporary snippets deleted.
+- **Sample check (no real room, no lead):**
+  - the renewal-demo payload he/en/ru: title "בניין לדוגמה: רחוב הדוגמה 1, גבעתיים (פרויקט שהושלם)", address "רחוב הדוגמה 1", stage 9;
+  - 0 of "הרצל 45", "אלמוגים", "67%", "פרטי:";
+  - /my-renewal/ he/en HTML: none of them either.
+- **Logged, not caused by this:** HAD-408, /my-renewal/ has two H1s (the theme's site-title "נדלן" + the page h1), already so in the 2.10 snapshot. The en/ru payload title is the room's Hebrew title, as before.
+- Evidence: docs/qa/had-396/data-apply-20261003T104911Z.json. Urban is re-probing /my-renewal/.
