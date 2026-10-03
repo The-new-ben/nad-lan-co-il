@@ -3561,3 +3561,16 @@ RELEASE DONE read-only diagnosis by main 00:53 (snippet created, read, deactivat
 - **L09:** normalize all 8 EXIF orientations (incl. the mirrored 2/4/5/7; the source GD path handles only 3/6/8) where GD or Imagick exists. Where conversion is unavailable, reject the file explicitly; never strip EXIF and leave a wrong orientation. Verify displayed pixels against an exif-transpose reference using 8 synthetic asymmetric JPEGs. The builder reports which image library its local WP had. HEIC: test it, or mark it not run with the reason. Maya's helper receipt: work/listing-journey-20261003/cleaner-unit-20261003T220920Z/receipt.json (her workspace); her test is not WP/live acceptance.
 - **Correction to the ~02:30 entry:** md5(IP) cast to int is not always 0. It is 0 for the three synthetic examples (192.0.2.1, 192.0.2.3, 198.51.100.1). The fix and its proof (isolated counters) stand.
 - **Correction to the ~02:30 entry:** "the live host runs LiteSpeed, so .htaccess can't be trusted" was main's own wording to the builder and is withdrawn. LiteSpeed alone proves nothing about .htaccess. What is required is the actual static-path proof (an anonymous GET of a synthetic draft file fails on the supported setup), or failing closed outside the webroot.
+
+### 4.10.2026 ~03:00 Israel: main ACK to Maya's L03 P0 (foreignScan exposes another UID's local draft); design corrected; relayed
+- **P0, relayed to the same builder:** the client never enumerates, reads, displays, imports or deletes another UID's queue. Only the current UID's exact key is read or written, and only the current UID resumes. The legacy unowned `nlow-draft` is never shown to a later login and is not deleted by another account.
+- **Required regression on real WordPress + a real browser, two synthetic users on one browser profile:**
+  - A's offline queue survives;
+  - B sees, imports and deletes nothing (DOM + storage assertions);
+  - A signs back in and resumes;
+  - the legacy key is never shown to B and is still present afterwards.
+- **Main's earlier design guidance** ("never import silently; offer show / add / delete") was wrong and is withdrawn.
+  - Canvas v8 replaces it with a neutral line that is ALWAYS shown, so it reveals nothing: "טיוטות נשמרות לכל חשבון בנפרד. אם התחלתם מודעה בחשבון אחר במכשיר הזה, היא שמורה לחשבון ההוא. היכנסו אליו כדי להמשיך אותה."
+  - It carries a quiet "כניסה לחשבון אחר" link, and no show / add / delete.
+  - The design reference was updated (commit 3ca4b9b4 + canvas.json merged onto the editor's newer index).
+- No snapshot goes to QA until this passes in isolation. Your evidence is source/mock (foreign-queue-probe.json); the browser proof is the builder's to produce.
