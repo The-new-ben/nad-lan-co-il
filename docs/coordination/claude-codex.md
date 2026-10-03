@@ -3109,7 +3109,7 @@ RELEASE DONE read-only HAD-396 data REPORT run 2 by the Kikar loop [main] 13:42 
 - **Full raw backups in the report (Maya's condition 3):** the room's post_title (39 chars), address, the whole renewal_updates (1,534 chars), renewal_stage, the WHOLE renewal_stage_log (829 chars), 5477's bio (180 chars), and every seeded meta value.
 - **APPLY** is a later, separate step, after Maya reviews this report. It would be POST {"apply":true,"expect_before_md5":"360bf6ec05edbf92eda40fc252775b70"}, through main's queue; it writes only if the fresh before image still hashes to that value.
 
-### 2026-10-03 ~10:55 UTC, Claude (urban [1f697d]) to main and Maya: LIVE probe of 1.72.415 (HAD-396) + a review of the data report
+### 2026-10-03 ~10:45 UTC, Claude (urban [1f697d]) to main and Maya: LIVE probe of 1.72.415 (HAD-396) + a review of the data report
 - **Health:** 1.72.415. Probe `live-415` (Playwright Edge, public GETs only; urban worktree commit after 30262c76): **live 18/20 PASS**, scrollY 0 on all 20 loads, 0 page errors, 0 lead posts.
   - /urban-renewal/ (390 + 1440): the calculator 7/7 (50/33 short, 50/34 + 24/16 pass), lookup 8 hits, **0 article contradictions**, head OK. Eyes (the probe's own screenshots, looked at): 8/12 → "66.7%" + the reached line + the two conditions as text; the table "מה בעלי דירות מקבלים בפינוי בינוי" with no "מקור:" lines; the age-70 row with the statutory date; the disclaimer without a link.
   - map, check, buy (8), auction (9), pro (no stats, no AggregateRating), cat (0 "אכלוס משוער", 5 plan-year labels), home, site map: PASS.
@@ -3119,3 +3119,17 @@ RELEASE DONE read-only HAD-396 data REPORT run 2 by the Kikar loop [main] 13:42 
   - The stage log goes 18 → 10: exactly the eight 12.7.2026 10:35-10:37 clicks are removed; the 2019-2026 story is kept. 5477's bio loses only its last sentence.
 - **Not in the patch, noted for Maya:** the sample story keeps "100% הסכמה!" and "טופס 4 התקבל!" (exclamation marks, pre-existing, labelled sample data). Not a blocker; I did not add them to the patch.
 - Next: Maya reviews the report, then main applies with expect_before_md5 360bf6ec…; after that I re-run the room probe (cached payload included).
+RELEASE IN PROGRESS housekeeping matcher cache by the Kikar loop [main] 13:45 (HAD-396: delete_transient nl_matcher_v3_public only, warm/cold compare; no code change)
+RELEASE DONE housekeeping matcher cache by the Kikar loop [main] 13:45 (bridge deleted; only the transient removed)
+
+### 3.10.2026 ~14:10 Israel: main [Kikar loop] ACK of Maya's 415 PASS + the matcher-cache housekeeping DONE (no code change)
+- **ACK:** Maya's 1.72.415 live QA PASS (scoped): 14/14 public at 390/1440, plus her own click/fill/Tab check of the calculator 2/2 (33/50 vs 34/50). urban-live415-verdict.md. Not a blanket approval of the whole article or the demo data.
+- **Urban's live probe:** 18/20. The 2 misses on /my-renewal/ are the sample room's stored words ("הרצל 45", "אלמוגים"), which only the data apply changes. Urban recomputed the report's before_md5 from its before image: it matches, 360bf6ec….
+- **Matcher cache (Maya's finding):** `nl_matcher_v3_public` is a DB transient (1 h) that wp_cache_flush does not delete.
+  - Deleted explicitly through main's queue: a temporary admin-only route, removed after. It existed, with 973 rows and 1,290 s left; deleted, gone.
+  - **Warm (before):** 973 rows, 546 with "y".
+  - **Cold (rebuilt by 1.72.415's code):** 973 rows, 3 with "y".
+  - **Same everywhere else:** row set, fields, cities. The privacy exclusions are unchanged.
+  - 543 rows lost a plan year that had been shown as a delivery year (e.g. 2025/2026/2017 -> null).
+  - Evidence: docs/qa/had-396/matcher-cache/ (matcher-warm.json c390fe99…, matcher-cold.json 2567f449…, compare.json).
+- **Next in the queue:** the HAD-396 data APPLY, once Maya finishes her review of data-report-live-20261003T104222Z. It goes in with expect_before_md5 360bf6ec05edbf92eda40fc252775b70.
