@@ -254,13 +254,10 @@
 </sc-if>
 
 <sc-if value="{{st.foreign}}" hint-placeholder-val="{{false}}">
-<div class="nlj-status nlj-status--warn" role="alert">
-<svg class="nlj-st-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M9.5 9.5h5M9.5 13h5"></path></svg>
-<div><b>{{t.foreignH}}</b>{{t.foreignTxt}}
-<div class="nlj-status-acts">
-<button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button" onClick="{{go.saved}}">{{t.foreignShow}}</button>
-<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.saved}}">{{t.foreignDrop}}</button>
-</div>
+<div class="nlj-note" role="note">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M3 20c.8-3.5 3.2-5.5 6-5.5s5.2 2 6 5.5M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14.5c1.4.8 2.3 2.7 2.5 5.5"></path></svg>
+<div><b style="display: block;">{{t.foreignH}}</b>{{t.foreignTxt}}
+<div class="nlj-status-acts"><button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.login}}" style="padding-inline: 0;">{{t.foreignSign}}</button></div>
 </div>
 </div>
 </sc-if>
@@ -640,7 +637,7 @@ class Component extends DCLogic {
       stDeviceH: "נשמר במכשיר הזה", stDevice: " עוד לא בחשבון. בלחיצה על המשך הפרטים יישמרו גם בחשבון.",
       stAccountH: "נשמר בחשבון", stAccount: " השמירה האחרונה ב־22:41. אפשר לעצור ולהמשיך מכל מכשיר.",
       stOfflineH: "אין חיבור לאינטרנט", stOffline: " מה שתכתבו נשמר במכשיר הזה ויישלח לחשבון כשהחיבור יחזור. אל תסגרו את הדף עד אז.",
-      foreignH: "נמצא במכשיר הזה טקסט מכניסה קודמת", foreignTxt: " הוא נכתב לפני שנכנסתם לחשבון הזה, ולכן לא נוסף לטיוטה שלכם. בחרו מה לעשות בו.", foreignShow: "להציג ולבחור מה להוסיף", foreignDrop: "למחוק אותו מהמכשיר",
+      foreignH: "טיוטות נשמרות לכל חשבון בנפרד", foreignTxt: "אם התחלתם מודעה בחשבון אחר במכשיר הזה, היא שמורה לחשבון ההוא. היכנסו אליו כדי להמשיך אותה.", foreignSign: "כניסה לחשבון אחר",
       sendingH: "מפרסמים את המודעה", sendingTxt: " מחכים לאישור מהשרת. אם החיבור נופל, בדקו במודעות שלי לפני ששולחים שוב.", sendingLabel: "מפרסמים…",
       stRetryH: "השמירה בחשבון לא הצליחה", stRetry: " הפרטים שמורים במכשיר הזה. ננסה שוב בעוד 10 שניות.", retryNow: "לנסות עכשיו",
       detH1: "פרטי הנכס", detLead: "כמה פרטים בסיסיים. אפשר לעצור בכל שלב ולהמשיך אחר כך מאותו מקום.",
@@ -716,7 +713,7 @@ class Component extends DCLogic {
       stDeviceH: "Saved on this device", stDevice: " Not in your account yet. When you continue, the details are saved to your account too.",
       stAccountH: "Saved in your account", stAccount: " Last saved at 22:41. You can stop and continue from any device.",
       stOfflineH: "No internet connection", stOffline: " What you type is kept on this device and sent to your account when the connection returns. Keep this page open until then.",
-      foreignH: "Text from an earlier sign-in was found on this device", foreignTxt: " It was typed before you signed in to this account, so it was not added to your draft. Choose what to do with it.", foreignShow: "Show it and choose what to add", foreignDrop: "Delete it from this device",
+      foreignH: "Drafts are kept per account", foreignTxt: "If you started a listing in another account on this device, it is saved to that account. Sign in to it to continue.", foreignSign: "Sign in to another account",
       sendingH: "Publishing your listing", sendingTxt: " Waiting for the server to confirm. If the connection drops, check My listings before you send again.", sendingLabel: "Publishing…",
       stRetryH: "Saving to your account failed", stRetry: " Your details are kept on this device. We will try again in 10 seconds.", retryNow: "Try now",
       detH1: "Property details", detLead: "A few basic details. You can stop at any step and continue later from the same place.",
