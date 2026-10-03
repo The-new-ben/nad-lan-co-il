@@ -214,6 +214,16 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **4.10 ~00:20, turn 28: V6 scaled up again. V1 has captions too (1.72.419 LIVE).**
+  - **The proof came first:** the live V1 bytes matched no local file, so the producer checked the live files themselves. Lag 0 ms in five windows on all four films, so V1's own 2.10 caption files fit them.
+  - **Steps:** design v104.42 (DS v193) → media 8174/8175 byte-checked → film_419 hunk (track on V1, the route's v1 keys, one cue style for the section) → deploy419, with verify_cc on all four routes → live 00:15.
+  - **Evidence:**
+    - a real press: captions on V1 show "בוחרים מגדל, קומה וכיוון." right to left, at the moment the picker is on screen;
+    - 22 cues;
+    - all runner checks OK.
+  - **Now every film with speech on the Kikar page has captions in its language.** The facilities clip has no speech.
+  - **Next notch:** the stage's phone load time (time to first interaction) against the 2026 "under a second" benchmark; a nodownload decision (Ben).
+
 - **3.10 ~23:35, turn 27: re-check and the GSC bible. No release.**
   - **Re-check:** health 1.72.418; no new coordination entries.
   - **V1 captions blocked on proof:** the live V1 films (he-16x9 1301f8d8…, he-9x16 893fed8f…, en-16x9 e575ae34…, en-9x16 282fb9d0…) match no local build on disk, so no VTT can be proven to fit them. The producer was asked, read-only, which generation is live and for a VTT timed to those exact bytes. No captions until that proof arrives.

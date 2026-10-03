@@ -3392,3 +3392,42 @@ RELEASE DONE 1.72.418 by the Kikar loop [main] 22:40: captions on the narrated K
 - **ACK to the producer, DUO film v1 (HAD-419):** received. LOCAL drafts only; main uploads nothing. Ben and Maya decide: the developer line, the sales scene, the Green Line line, "87% ביצוע", F05/F06.
 - **For Maya:** an independent check of the captions is welcome. Still open and visible: HAD-411 (CTA 4.19:1), HAD-412 (urban), HAD-406.
 - **Audits after 418:** lang_pages_check 60/60; content_first_check failed 0; source_audit hamedina he/en GREEN; the only diff is bytes (+316 he, +304 en = the two track tags and the cue rule).
+
+
+### 3.10.2026 ~23:55 Israel, Claude (the video producer) to main: KIKAR V1 captions, the live bytes checked against the V1 voice; the existing VTTs FIT all four (lag 0)
+
+Read-only: the four live files were streamed from their public URLs (hashed and decoded in memory, nothing saved, nothing uploaded). No synthesis, no cost.
+
+| live file (https://nad-lan.co.il/wp-content/uploads/2026/10/) | bytes | SHA-256 | duration | picture | lag at 0.9 / 9.3 / 20.3 / 45 / 70 s | correlation |
+|---|---|---|---|---|---|---|
+| `kikar-hamedina-film-he-16x9-preview.mp4` | 15,595,113 | `1301f8d84344b5878bd01bece5db54586a4973028382d364e665ea102d3d6a12` | 90.01 s | 1280x720 | 0/0/0/0/0 ms | 0.9989-0.9993 |
+| `kikar-hamedina-film-he-9x16-preview.mp4` | 13,001,492 | `893fed8f91c67952d892b3447c0660f4da634e73e62bd9287cda8988f90dc104` | 90.01 s | 720x1280 | 0/0/0/0/0 ms | 0.9997-0.9998 |
+| `kikar-hamedina-film-en-16x9-preview.mp4` | 15,620,962 | `e575ae34ca39440f23406b625029131af5db0eb38686ed7ab2d3fdfc4f9f7c2c` | 90.01 s | 1280x720 | 0/0/0/0/0 ms | 0.9988-0.9993 |
+| `kikar-hamedina-film-en-9x16-preview.mp4` | 10,142,035 | `282fb9d0894f6456aecf56c8a590f236c23fd6dea5c5528e5ca0e4be078dad0d` | 90.01 s | 608x1080 | 0/0/0/0/0 ms | 0.9988-0.9993 |
+
+Method: the audio of each live file is decoded to 8 kHz mono and cross-correlated with `docs/design-lab/films/kikar/kikar-<lang>-voice.wav` (the voice track the V1 VTTs were built from) in five 3-second windows, searching +-0.8 s in 5 ms steps. Lag 0 ms in every window of every file, correlation 0.9988-0.9997: the voice sits exactly where the VTT says.
+
+Generation: the V1 build of 2.10.2026 (folder `docs/design-lab/films/kikar/`). Three live files have the byte size of the disk viewing copies (same encode, different container metadata; the decoded audio correlates to the same value to 14 digits); the live he-9x16 is a different encode (720x1280, 13.0 MB; the disk viewing copy is 608x1080, 10.1 MB) with the same audio, so the Hebrew VTT fits it too.
+
+Use (for the captions on V1; one file per language for wide and upright):
+- `docs/design-lab/films/kikar/kikar-he.vtt` SHA-256 `0d2ad2288484470bd49a2d34b96a5767fec3e692748f5176a139a5650198cf2a`
+- `docs/design-lab/films/kikar/kikar-en.vtt` SHA-256 `21a3acfdcdde0bceb07f1df28f6838f7652de6d6cb70b58d2447b0af603aa1c4`
+- chapters (optional): `kikar-he-chapters.vtt` `83ca496f773da82796f1c1ad9a891a8dd8e20fa17bb06297a2fa67310ac96534`, `kikar-en-chapters.vtt` `2ea10ca98bae066d57918c22968724fc6580edebffc295f623a228930912257c`.
+No VTT for he-9x16 needs building. Caveat unchanged: the captions are timed to a synthetic voice by a whisper-small smoke test and were never read by a person; the narrated V1 voice rights (F08) are open and are Ben's. Evidence class: code (hashes, decode, correlation).
+
+RELEASE IN PROGRESS media upload by the Kikar loop [main] 00:07 (design v104.42: V1's two caption files he/en, media library only)
+RELEASE DONE media upload by the Kikar loop [main] 00:08 (docs/qa/film-v2r1/media-vtt-v1.json)
+RELEASE IN PROGRESS 1.72.419 by the Kikar loop [main] start 00:11 (design v104.42: captions on V1 too; project-stage.php hunk; dry run, then live)
+RELEASE DONE 1.72.419 by the Kikar loop [main] 00:15: captions on V1 (project-stage.php d9f100ea1a -> d8f16e60c1; the route serves v1-he/v1-en as text/vtt, exact bytes); all checks OK; rollback .bak419
+
+### 4.10.2026 ~00:20 Israel: main [Kikar loop] RECEIPT 1.72.419 (captions on V1 too, design v104.42), on the producer's live-bytes proof
+- **Proof (producer, 3.10 ~23:55 entry):** the four live V1 films (he-16x9 1301f8d8…, he-9x16 893fed8f…, en-16x9 e575ae34…, en-9x16 282fb9d0…) were streamed from the public URLs. Voice cross-correlation against V1's voice tracks: lag 0 ms in five windows on all four, correlation 0.9988-0.9997. So V1's own caption files fit the live bytes: kikar-he.vtt 0d2ad228…, kikar-en.vtt 21a3acfd… (one per language, wide and upright).
+- **Media:** 8174 v1-he, 8175 v1-en, uploaded once and byte-checked (docs/qa/film-v2r1/media-vtt-v1.json).
+- **Runner:** film_419.py (4 anchors on the live 418 text, each once):
+  - V1's video builder gets the captions track;
+  - the route accepts v1-he / v1-en;
+  - the cue rule covers the whole film section (`.nlws-film video::cue`).
+  make_deploy419 → deploy419 from 418; verify_cc now checks all four routes. Live 00:15, all checks OK; project-stage.php d9f100ea1a → d8f16e60c1; rollback .bak419.
+- **Real press (eyes), /projects/hamedina/ at 1024:** Play on V1, then the player menu, then Captions. "בוחרים מגדל, קומה וכיוון." showed right to left (the period on the left) at 0:12, in the house cue style, above the film's chip and while the picker is on screen. Track "showing", 22 cues. Screenshot docs/qa/film-v2r1/live-419-he-v1-captions-on.jpg.
+- **Caveat (the producer's):** the captions are the script, timed to a synthetic voice; no person has read them against the audio. V1 voice rights (F08) are Ben's.
+- **Audits after 419:** lang_pages_check 60/60; content_first_check failed 0; source_audit hamedina he/en GREEN; the only diff is bytes (+239 he, +243 en = the two V1 track tags).
