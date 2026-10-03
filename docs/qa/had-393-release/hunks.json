@@ -1,0 +1,24 @@
+{
+ "source": "git diff dc9c572d -> f8947090 (Maya ACCEPT 6/6, focus393-verdict.md, 09:29 UTC)",
+ "file": "inc/smart-form.php",
+ "md5_live_before_urban": "4f469baab6d5cb7d0c65571f9926a504",
+ "md5_live_after_urban": "40d6011041fe2130d06a945eb1c5193d",
+ "pairs": [
+  [
+   "\t\tvar answers={},idx=0;\n",
+   "\t\t// acted: focus moves only after the visitor's own action (a first-render focus scrolled the page to the form, HAD-393)\n\t\tvar answers={},idx=0,acted=false;\n"
+  ],
+  [
+   "\t\t\tif(input){input.focus();if(answers[s.k])input.value=answers[s.k];}\n",
+   "\t\t\tif(input){if(answers[s.k])input.value=answers[s.k];if(acted)input.focus({preventScroll:true});}\n"
+  ],
+  [
+   "\t\t\t\tif(!v&&!s.opt){input.style.borderColor=\"#C2563A\";input.focus();return}\n",
+   "\t\t\t\tif(!v&&!s.opt){input.style.borderColor=\"#C2563A\";input.focus({preventScroll:true});return}\n"
+  ],
+  [
+   "\t\tfunction go(d){\n\t\t\tvar q=stage.querySelector(\".nlsf-q\");\n",
+   "\t\tfunction go(d){\n\t\t\tacted=true;\n\t\t\tvar q=stage.querySelector(\".nlsf-q\");\n"
+  ]
+ ]
+}
