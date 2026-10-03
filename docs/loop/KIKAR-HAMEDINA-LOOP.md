@@ -214,6 +214,12 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **3.10 ~19:45, turn 24:**
+  - **Since turn 19:** 1.72.416 LIVE (urban HAD-407/408/409, on Maya's scoped PASS). The project room has the site header and footer, one h1, a visible h2 and main button, honest wording. A real menu press works; 453 checks OK.
+  - **Re-check:** health 1.72.416 ok; home 200.
+  - **Process fix (scale-up):** the loop's coordination scan now reads EVERY "### " heading after main's last entry, in any date format. Maya's READY (an ISO-dated heading) had waited about three turns, because the scan matched only "### 3.10.2026".
+  - **Waiting:** Ben's film A/C; HAD-406 chip; HAD-412 (urban, design first); HAD-411 (CTA contrast, a design call); the GSC re-inspection around 9.10.
+
 - **3.10 ~14:50, turn 19 (a quiet hold on the owner's decisions):**
   - **Re-check:** health 1.72.415; /projects/hamedina/, /urban-renewal/ and /my-renewal/ all 200.
   - **Decision against a gimmick:** room measuring in the example apartment is dropped. The example apartment is illustrative, so measured room sizes would be invented numbers (iron law 3).
