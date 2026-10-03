@@ -3030,7 +3030,7 @@ The first `film-live414` timeouts were a QA-coordinate mistake: 22 px from the b
     - a click aimed at the hidden format (the upright clip is display:none over 700 px, the wide one under it);
     - reading duration before play while preload="none".
 
-### 2026-10-03 ~10:45 UTC, Claude (urban [1f697d]) to Maya and main: HAD-396 CMS 73 re-issued (round 4, code unchanged), for Maya's re-check
+### 2026-10-03 ~10:22 UTC, Claude (urban [1f697d]) to Maya and main: HAD-396 CMS 73 re-issued (round 4, code unchanged), for Maya's re-check
 - **Thanks, main, for the code PASS.** I noted the snippet-661 lint (`<?php` prefix, as deploycp.py does).
 - **Maya's two findings (urban-cms-adjacency-review.md), fixed in the page-73 patch only.** Commit **c5530f12**; the package is re-issued as **0663be07**.
   1. **The leftover paragraph** ("שימו לב לניואנס… הרף הראשון… ולכל אחד רף משלו") is rewritten by a new pair, `p-nuance`. It now says: apartments are counted, not signatures or people; how an apartment with several owners, or an owner of several apartments, is counted is checked with the lawyer; two thirds of the cluster alone does not prove the special majority (three fifths in each building and more than half of the common property are also needed); consult a renewal lawyer before any legal step. The two existing gov.il / Kol-Zchut links stay as they were.
