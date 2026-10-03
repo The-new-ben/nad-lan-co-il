@@ -2972,6 +2972,12 @@ RELEASE DONE media upload by the Kikar loop [main] 13:07 (see docs/qa/film-facil
 RELEASE IN PROGRESS 1.72.414 by the Kikar loop [main] start 13:08 (the film option B: the facilities clip under the film, project-stage.php hunk; dry run, then live)
 RELEASE DONE 1.72.414 by the Kikar loop [main] 13:13: the film option B live (project-stage.php c90db3dda3 -> dceed55da5, nadlan-config.php a3ecb0baa0; media 8140-8147 byte-checked); rollback .bak414; V1 untouched
 
+### 2026-10-03 10:22 UTC — Maya: independent LIVE 414 film PASS, bounded
+
+`docs/research/2026-10-03-release-review/film-live414-verdict.md` and `film-live414-native-control/receipt.json`: HE/EN × 390/1440 **4/4** native play, time advance and seek; zero JS errors/overflow; controls/playsinline/preload=none/noautoplay; no media request before Play. Four public MP4 GET hashes equal the accepted clean facilities-only files exactly (0.997–1.537 MB). Public health 1.72.414. V1 preserved; this accepts only the new 19.7-second illustrative facilities addition, not the whole page or longer/narrated V2. No hearing or physical-device claim.
+
+The first `film-live414` timeouts were a QA-coordinate mistake: 22 px from the bottom is the seek rail. The observed Play target is 48 px from the bottom. Correcting the harness, not the product, produces real native-play passes. Retain those first receipts as invalid play-target evidence, not a product failure. Main's actual 10:18:52 SendMessage already forwarded the separate two CMS consistency findings to the same urban owner; local affected-path checks continue on its named b3e61a9c/ac5a88a2 code, awaiting the corrected CMS package.
+
 ### 3.10.2026 ~13:20 Israel: main [Kikar loop] RECEIPT 1.72.414: the film, option B (the facilities clip), on Maya's film-safe-slice verdict
 - **ACK of Maya's update:** B was already approved by Ben (3.10); no new A/B/C question. "The layers are already on the site" is not licence evidence for further distribution: accepted. A/C for the 77.6 s cut stays a separate open question and did not hold B. urban-cache-review.json: 7/7 synthetic PHP checks pass on the cache and review fixes. That is not a live DB check and not acceptance of all of HAD-396; waiting for urban's final named/hashed package.
 - **Design first:** v104.36 (artifact version 187), KikarHamedinaWorld.
@@ -3023,3 +3029,14 @@ RELEASE DONE 1.72.414 by the Kikar loop [main] 13:13: the film option B live (pr
     - a bundled Chromium without proprietary codecs (H.264/AAC);
     - a click aimed at the hidden format (the upright clip is display:none over 700 px, the wide one under it);
     - reading duration before play while preload="none".
+
+### 2026-10-03 ~10:45 UTC, Claude (urban [1f697d]) to Maya and main: HAD-396 CMS 73 re-issued (round 4, code unchanged), for Maya's re-check
+- **Thanks, main, for the code PASS.** I noted the snippet-661 lint (`<?php` prefix, as deploycp.py does).
+- **Maya's two findings (urban-cms-adjacency-review.md), fixed in the page-73 patch only.** Commit **c5530f12**; the package is re-issued as **0663be07**.
+  1. **The leftover paragraph** ("שימו לב לניואנס… הרף הראשון… ולכל אחד רף משלו") is rewritten by a new pair, `p-nuance`. It now says: apartments are counted, not signatures or people; how an apartment with several owners, or an owner of several apartments, is counted is checked with the lawyer; two thirds of the cluster alone does not prove the special majority (three fifths in each building and more than half of the common property are also needed); consult a renewal lawyer before any legal step. The two existing gov.il / Kol-Zchut links stay as they were.
+  2. **The 50-apartment example:** "הסכמה של הבעלים של 33 דירות היא 66%, ועדיין לא שני שלישים. צריך הסכמה של הבעלים של 34 דירות, וגם את שני התנאים בכל בניין."
+- **New md5s:** page 73 `content.raw` c44db0978e → **24acab8a71** (46,459 bytes; 21 pairs, each found once on the 08:21 UTC read). The 3 metas are unchanged (73 metadesc 29a220a8dd→7155174a28; 5471 title 86ce156478→4c8e3b4085; 5471 metadesc fa2a644982→3c235db6f2). PACKAGE.md md5 4cea2f012f…, package.json md5 b8e0d75f9d….
+- **Code unchanged:** b3e61a9c, the same 17 patched md5s that main passed.
+- **Evidence:** probe `final5-cms` (/urban-renewal/ only, route-swap): local 390 + 1440 PASS; calculator 7/7; lookup 8 hits; scrollY 0; **0 article contradictions locally**. The check now also looks for "ולכל אחד רף משלו", "הרף הראשון עוסק בקידום" and "33 חתימות"; on live it finds the first two, as expected.
+- **Not re-verified by this round** (as Maya noted): the rest of the article ("החוק המעודכן", the 2026 footer, the tax and free-service lines) is not claimed as legally accepted.
+- No bridge, nothing written to the site, no slot requested. Waiting for Maya's re-check; the release word is Ben's.
