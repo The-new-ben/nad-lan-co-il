@@ -32,6 +32,55 @@ COLOURS = [('#c3a3745c', '#B85C3852'), ('#c3a37433', '#B85C3829'), ('#c3a374', '
            ('#efede5', '#F6F1E8'), ('#a8ada0', '#C9BFAD'), ('#bbc1b3', '#D5CCBB'), ('#fbfaf6', 'var(--cy-surface,#FBF8F2)'),
            ('#15261ed9', '#0C1C2Bd9'), ('#f5f2ebb8', '#FBF8F2c4'), ('#f5f2eb', 'var(--cy-surface,#FBF8F2)'), ('#636b60', 'var(--cy-muted,#5A6B76)')]
 
+# The long-form article is printed by the server (search engines read it without JavaScript): it goes in before the
+# page's own WhatsApp card, or before </main>. If neither marker is there, the page is left exactly as it was.
+ARTICLE_PHP = """
+/* ------------------------------------------------------------------ the long-form article on mapped project pages */
+
+add_action(
+	'template_redirect',
+	function () {
+		if ( 'place' !== get_query_var( 'ca_view' ) ) {
+			return;
+		}
+		$slug    = sanitize_title( (string) get_query_var( 'ca_slug' ) );
+		$bundles = cypx_bundles();
+		if ( '' === $slug || empty( $bundles[ $slug ] ) ) {
+			return;
+		}
+		$file = plugin_dir_path( __FILE__ ) . 'assets/' . $bundles[ $slug ] . '/article-' . cypx_lang() . '.html';
+		if ( ! file_exists( $file ) ) {
+			return;
+		}
+		$article = (string) file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+		ob_start(
+			function ( $html ) use ( $article ) {
+				foreach ( array( '<div class="atlas-wa-wrap"', '</main>' ) as $marker ) {
+					$at = strpos( $html, $marker );
+					if ( false !== $at ) {
+						return substr( $html, 0, $at ) . $article . substr( $html, $at );
+					}
+				}
+				return $html;
+			}
+		);
+	}
+);
+"""
+ARTICLE_CSS = (
+    '.cyx-article{max-width:780px;margin:44px auto 36px;color:var(--cy-ink,#1B2833);font-family:var(--cy-font-body,"Assistant"),Arial,sans-serif;font-size:17.5px;line-height:1.85}'
+    '.cyx-article h2{font-family:var(--cy-font-display,"Frank Ruhl Libre"),Georgia,serif;color:var(--cy-navy,#12293E);font-size:clamp(24px,3vw,31px);line-height:1.3;margin:44px 0 14px}'
+    '.cyx-article h2:first-child{margin-top:0;padding-top:28px;border-top:1px solid var(--cy-line,#E3DCCE)}'
+    '.cyx-article h3{font-family:var(--cy-font-display,"Frank Ruhl Libre"),Georgia,serif;color:var(--cy-navy,#12293E);font-size:21px;line-height:1.35;margin:30px 0 10px}'
+    '.cyx-article p{margin:0 0 16px}.cyx-article ol{margin:0 0 18px;padding-inline-start:1.4em}.cyx-article li{margin-bottom:10px}'
+    'body .cyx-article a{color:var(--cy-teal,#178076);text-decoration:underline;text-underline-offset:4px}body .cyx-article a:hover{color:var(--cy-terracotta,#B85C38)}'
+    '.cyx-table{overflow-x:auto;margin:18px 0 26px;border:1px solid var(--cy-line,#E3DCCE);border-radius:6px}'
+    '.cyx-table table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.5}.cyx-table--wide table{min-width:620px}'
+    '.cyx-table th{background:var(--cy-cream,#F4EFE6);color:var(--cy-navy,#12293E);text-align:start;padding:10px 12px;font-weight:700}'
+    '.cyx-table td{padding:9px 12px;border-top:1px solid var(--cy-line,#E3DCCE);vertical-align:top}'
+    '@media(max-width:600px){.cyx-article{font-size:16.5px;margin-top:32px}.cyx-table table{font-size:14px}}'
+)
+
 
 def main():
     ap = argparse.ArgumentParser()
@@ -39,6 +88,7 @@ def main():
     ap.add_argument('--media-dir', required=True)
     ap.add_argument('--place-slug', required=True, help='the atlas slug of the project page, e.g. semi-detached-villas')
     ap.add_argument('--out', required=True, help='folder that receives the plugin folder and the zip')
+    ap.add_argument('--articles-dir', help='folder with article-he.md / article-en.md (the long-form body, rendered server-side)')
     a = ap.parse_args()
     packet = project_packet(__import__('pathlib').Path(a.register))
     for k in ('name', 'district', 'languages', 'contactEnabled', 'geometryMode', 'availabilityMode'):
@@ -131,7 +181,7 @@ def main():
             '.cyx .explorer{background:var(--cy-surface,#FBF8F2);border:1px solid var(--cy-line,#E3DCCE);padding-inline:20px}'
             '.cyx .cyx-wa-send{display:flex;justify-content:center;align-items:center;text-decoration:none;min-height:48px;background:var(--cy-teal,#178076);color:#fff!important;border:0}'
             '.cyx[lang=he] .eyebrow{letter-spacing:.5px}'
-            '@media(max-width:600px){.cyx .explorer{padding-inline:14px}}')
+            '@media(max-width:600px){.cyx .explorer{padding-inline:14px}}') + ARTICLE_CSS
 
     # ---------- PHP ----------
     php = f"""<?php
@@ -185,7 +235,7 @@ add_action(
 	}}
 );
 """
-    php += plugin_parts.adv_php() + plugin_parts.viewport_php()
+    php += ARTICLE_PHP + plugin_parts.adv_php() + plugin_parts.viewport_php()
     # ---------- write the plugin folder + zip ----------
     root_dir = os.path.join(a.out, SLUG)
     if os.path.isdir(root_dir):
@@ -198,6 +248,15 @@ add_action(
     for src, (dst, _) in IMAGES.items():
         shutil.copyfile(os.path.join(a.media_dir, src), os.path.join(bdir, dst))
     plugin_parts.write_assets(root_dir, HERE)
+    if a.articles_dir:
+        from article_html import to_html
+        labels = {'he': ('rtl', 'מדריך מלא: וילות למכירה באגיוס אתנסיוס'), 'en': ('ltr', 'Full guide: villas for sale in Agios Athanasios')}
+        for lang, (d, label) in labels.items():
+            src = os.path.join(a.articles_dir, f'article-{lang}.md')
+            if os.path.exists(src):
+                body = to_html(io.open(src, encoding='utf-8').read())
+                io.open(os.path.join(bdir, f'article-{lang}.html'), 'w', encoding='utf-8', newline='\n').write(
+                    f'<section class="cyx-article" lang="{lang}" dir="{d}" aria-label="{label}">\n{body}\n</section>\n')
     for dirpath, _, files in os.walk(root_dir):
         for f in files:
             p = os.path.join(dirpath, f)
