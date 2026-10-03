@@ -2805,3 +2805,100 @@ RELEASE DONE 1.72.413 by the Kikar loop [main] 12:42: urban HAD-393 focus-only l
   - Not part of it: HAD-396's legal/CMS items (no approval asked or implied).
 - **Correction (Maya):** my 411 notes said "no real-inventory project is newly flagged (H Infinity, Toha2, Aurelia, The Park)". Wrong framing. The rule only shows their units carry none of the illustrative words; a word filter is no provenance check and does not make them official inventory. Today none of them feeds a public number: no unit size with an average price per m², no unit price. Fixed in design v104.35 (artifact version 186).
 - **Queue now:** the film swap (noaround, after the producer's licence match and Maya), then HAD-406 (our own walking areas), as its own session.
+
+### 2026-10-03 ~09:50 UTC, Claude (urban [e87107]): LIVE probe of HAD-393 after RELEASE DONE 1.72.413. PASSED
+
+- **Read-only.** Playwright Edge headless against live 1.72.413 (health checked first). No bridge, no write; wa.me and every non-GET request aborted.
+- **Result:** `python scripts/qa/had-393/focus_package.py --live-only --out probe-live-1.72.413` (branch `claude/had-393-focus-only`, commit after `f8947090`), **6/6 PASS**:
+
+| Page | 390x844 | 1440x900 |
+|---|---|---|
+| /urban-renewal/ | scrollY 0 on load, BODY focused, the card 0 px after the tap + Enter + chip | same |
+| /buying-apartment/ | same | same |
+| /sell-by-auction/ | same | same |
+
+- Before the release (same probe, live 1.72.408): scrollY 18,374 / 17,344 / 944 on a phone, with the form's input focused.
+- **Code identity:** each live page prints the PATCHED smart-form render exactly once and the old render 0 times (render.php, byte-exact).
+- **Eyes:** `probe-live-1.72.413/live-ur-390-top.jpg`. The phone opens at the H1 and the answer paragraph.
+- 0 page errors. HAD-396 is untouched and waits on its own conditions.
+
+### 2026-10-03 ~10:05 UTC, Claude (urban [e87107]) to Main: the HAD-396 code-owner review list (as requested)
+
+Full list: branch `claude/had-396-urban-honesty`, commit `a3b588bc`, `docs/qa/had-396/code-owner-review/README.md` (one `.diff` per file, live → patched, in the same folder).
+
+- **Base:** live 1.72.413 per `docs/qa/had-396/live-read/live-1.72.413/BASE.md`, built without a bridge:
+  - 15 files = the 1.72.408 read (409-413 did not touch them, per your release notes);
+  - smart-form.php = your 413 text, md5 40d6011041;
+  - snippet 661 = the 08:31 read.
+  Please review against the TRUE live text. It supersedes my base.
+- **The hunks are rebased.** The 4 HAD-393 focus hunks are detected as ALREADY LIVE and never re-applied. One of them is an insertion whose anchor survives; it was double-inserted in my first rebase run, and I caught it before posting: the new-text check now comes first.
+- smart-form.php: live 40d6011041 → 19d2e2b5aa (the {n} question count only).
+- Every anchor appears once; lint clean.
+
+| File | Live → patched | LEGAL | COPY | CODE |
+|---|---|---|---|---|
+| inc/smart-form.php | 40d6011041 → 19d2e2b5aa | | x | x |
+| snippet x-catalog-plus 661 (inc/catalog-plus.php) | 4af575c452 → 763f1dfa2c | | x | x |
+| inc/matcher.php | 5820847079 → 52012f77fe | | | x |
+| inc/urban-map.php | 85cef4cb39 → 3ea27646d8 | | x | x |
+| inc/urban-hub.php | a52b8f4598 → da1cb2fdd7 | | x | x |
+| inc/urban-tools.php | b48b3b26c5 → 7163844eaa | **x** | x | x |
+| inc/urban-wizard.php | 0e8de572f9 → 97d02e5a82 | **x** (AI context) | x | |
+| inc/urban-space.php | ed8002eb62 → baf6f05d46 | **x** (to-do, stage actions he/en/ru) | x | x |
+| assets/urban/renewal-space.js | b85eddb243 → 5cc92acf19 | **x** (to-do fraction) | | x |
+| assets/urban/renewal-3d.js | 5e321f1c96 → 7dd004cdae | | x | |
+| inc/i18n.php | 758dc8da3e → 779e408c6c | | x | |
+| inc/site-map.php | 97de0f694d → 52e0f3e2be | | x | |
+| inc/reviews.php | 648744fffa → 1241a41732 | | | x |
+| inc/professional-profile.php | cdc598e504 → 9bfb9726b6 | | | x |
+| inc/cards-render.php | 3d58a85994 → d548c50b35 | | | x |
+| inc/directory.php | 9a3badfb08 → 7872da9b4d | | | x |
+| inc/auction.php | 31f97323af → c4e55f161c | | x | x |
+
+**Scope beyond the urban pages** (README §"attention"):
+- reviews.php: stars and AggregateRating need an approved review for EVERY target.
+- directory.php: header stars only with `reviews_verified`.
+- urban-space.php: the raw title for every room.
+- The snippet is released through Code Snippets, not as a plugin file.
+- The map transient bump: one cold render.
+
+CMS 73, the metas and the data patch stay "report first". No slot request.
+RELEASE IN PROGRESS read-only live_read + snippet_read by the Kikar loop [main] 12:48 (HAD-396 code-owner review: 16 plugin files + snippet 661; no writes)
+RELEASE DONE read-only live_read + snippet_read by the Kikar loop [main] 12:48 (bridge deleted; no writes)
+
+### 3.10.2026 ~13:15 Israel: main [Kikar loop] CODE-OWNER REVIEW of HAD-396 (urban, a3b588bc) + ACK of Maya's 09:55 UTC update
+**Base, checked against the TRUE live text:** a read-only live_read of the 16 plugin files plus a REST read of snippet 661, under the lock 12:47-12:48, saved in docs/qa/live-read/20261003T0948*. All 17 md5s equal urban's base exactly (smart-form 40d6011041, catalog-plus 661 4af575c452, matcher 5820847079, urban-map 85cef4cb39, … auction 31f97323af). The rebase is right.
+
+**MUST FIX before any slot (code):**
+1. **inc/urban-map.php line 203:** the copy is written with `set_transient( 'nadlan_ur_mapseo_v3', … )`, but line 136 reads `nadlan_ur_mapseo_v4`. The cache can never hit, so every render of the map page runs the SQL plus 12 WP_Query. Write v4.
+2. **inc/reviews.php, the recount on approval (~line 52):** it deletes `nadlan_reviews_block_` and `_1603_`, not the new `nadlan_reviews_block_396_`. A newly approved review stays hidden behind "היו הראשונים" for up to the 5-minute TTL. Add the 396 key.
+
+**SHOULD FIX (owner law):**
+3. **inc/urban-tools.php, the expectations table:** every row now prints a visible link "מקור: …". The owner's research law (3.10, 08:17 UTC) says research stays internal, with no citation clutter on the page; exact legal and product sources are kept in the repo. Drop the per-row links from the page and keep them in record.md. The statute's name inside the definition text is substance and may stay.
+
+**Pre-existing, not introduced (no-silent-gaps):**
+4. **inc/urban-hub.php lookup JS:** builds innerHTML from m.title, m.city, m.plan_number and m.project_status without escaping (registry data). Suggest wrapping them in an esc() on the way; small and safe.
+
+**Verified OK:**
+- the form's {n} = config steps + 2 = the JS counter (which adds name + phone);
+- auction's N reads the same config, with a fallback;
+- the gate's "3 שדות" (name, email, phone + a hidden trap);
+- the calculator's integer math: past = yes*den >= num*total; need = ceil(num*total/den) - yes, so 50 -> 34;
+- $pf_demo removed with its only use;
+- $demo defined (line 198);
+- the AggregateRating schema gated on $cnt > 0;
+- the room's raw title: sanitized at creation (sanitize_text_field), escaped at both JS prints, returned as REST JSON, not inlined into a script;
+- the matcher's 1 h transient not bumped: acceptable.
+
+**Release shape (per Maya):**
+- The plugin hunks and the CMS 73 article + metas go TOGETHER, or CMS first, so no window shows the new calculator beside a contradicting article. Then the data patch, report first.
+- Snippet 661 is updated through Code Snippets, md5-guarded (expect 4af575c452) with a server lint, the way deploycp.py does it.
+- Separate QA for the site-wide parts (reviews, directory, sample profiles, raw titles, cache), not inherited from the urban 10/10.
+
+**ACK of Maya's 09:55 UTC update:**
+- The list is complete, so there is no list blocker.
+- urban-final-source-gaps.md: the page-73 intro vs the 2023/2025 ledger; the li-refuser "גיל 70 + שנתיים" needs its exact statutory date, or the simple age test is omitted.
+- "LEGAL" in urban's README is NOT a legal opinion. Maya verified the arithmetic and the source subset only.
+- 413 is confirmed by her live 6/6.
+- The portrait noaround passed decode 2/2 with the 15 s CTA whole (film-portrait-r1b-review.md). There is no film publication on decode alone; the GIS licence match stays with the producer.
+- No new general approval from Ben is needed.
