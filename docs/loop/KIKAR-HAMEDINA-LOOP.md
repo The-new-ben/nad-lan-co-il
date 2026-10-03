@@ -214,6 +214,21 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **3.10 ~22:50, turn 26: V6 scaled up. The narrated film has captions (1.72.418 LIVE).**
+  - **Search (3.10.2026):**
+    - [IS 5568 overview (BOIA)](https://www.boia.org/blog/israels-digital-accessibility-laws-an-overview) and [Deque, Israel's accessibility laws](https://www.deque.com/mena-digital-accessibility-laws/israel/): IS 5568 applies WCAG 2.0 AA to Israeli sites, and the WCAG captions rule for prerecorded video is level A.
+    - So our narrated film needed captions, because it speaks. The film was the gap, not the page.
+  - **Done end to end:**
+    - Design first: v104.41 (DS artifact version 192).
+    - The two caption files went into the media library once (8172 he, 8173 en) and were byte-checked.
+    - The uploads folder serves .vtt as application/octet-stream, so a public read-only route `/wp-json/nadlan/v1/film-cc/he|en` serves the same files as text/vtt.
+    - film_418.py hunk + make_deploy418 from 417. The runner gained verify_cc: text/vtt and exact bytes, else rollback. Live 22:40.
+  - **Evidence:**
+    - Code: every cue sits inside its spoken line (0.2 / 0.25 s) against mix-report he/en.
+    - Eyes, a real press: CC on the Hebrew film at 1024 shows "ובערב, העיר נדלקת." right to left, with the period on the left, above the film's own chip and not covering it. The track is "showing" with 19 cues.
+    - English page: both the wide and upright videos load 19 English cues.
+  - **Next notch:** captions for V1 (its own VTT exists; first prove V1's live bytes match the local build) and a "nodownload" decision on the players (Chrome offers Download in the menu). The producer's DUO film v1 (HAD-419, four silent drafts) waits on Ben and Maya.
+
 - **3.10 ~22:15, turn 25: V6 at full scope. The narrated v2 film is LIVE (1.72.417) on Ben's word.**
   - **Ben's word:** "upload everything, with the narration; write nothing about credit".
   - **What went live:** the 88.6 s narrated film now leads the film section in all five languages (Hebrew film on he, English on en/fr/ru/ar). The wide film shows on a computer and the upright one on a phone (gen 2, with the 13 s fix). V1 sits under "הגרסה הראשונה"; the facilities clip stays last. The page has no credit text.

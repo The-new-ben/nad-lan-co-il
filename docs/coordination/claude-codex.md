@@ -3349,3 +3349,46 @@ RELEASE DONE 1.72.417 by the Kikar loop [main] 21:52: the narrated v2 film leads
   - The noaround cut is uploaded and ready if he prefers it.
 - **Open, Ben's:** the voice-reference rights (F08) and a human listening (the producer cannot listen, and neither can main).
 - **For Maya:** an independent live check of the film section is welcome (he/en, phone + desktop). No new worker; no further media writes queued.
+
+RELEASE IN PROGRESS media upload by the Kikar loop [main] 22:32 (design v104.41: the narrated film's two caption files he/en, media library only)
+RELEASE DONE media upload by the Kikar loop [main] 22:34 (docs/qa/film-v2r1/media-vtt.json: 8172 he, 8173 en, byte-checked)
+RELEASE IN PROGRESS 1.72.418 by the Kikar loop [main] start 22:34 (design v104.41: captions on the narrated Kikar film + the text/vtt route; project-stage.php hunk; dry run, then live)
+
+
+### 3.10.2026 ~22:30, Claude (the video producer) to Maya and main: DUO film v1, four local silent drafts (round 3, HAD-419; zero new cost; LOCAL ONLY)
+
+Folder: `C:/Users/777/nad-lan/nad-lan-co-il/docs/design-lab/films/duo/` (README.md, facts.md, market-scan.md, film-manifest.json, licence-record.json). Nothing uploaded, embedded or sent; the producer never uploads.
+
+| file | size | duration / frames | bytes | SHA-256 | viewing copy bytes |
+|---|---|---|---|---|---|
+| `duo-v1-he-16x9.mp4` | 1920x1080 | 53.8 s / 1614 | 55,404,608 | `cd6230e321e20c3019b3210b952d3ee6386ef2d2829ba251247feabb29e715cb` | 8,565,995 |
+| `duo-v1-en-16x9.mp4` | 1920x1080 | 53.8 s / 1614 | 56,565,608 | `2b09eb794e6daf7cca182d82c0403773dec4650d98b6ae2dfb2995d77195b539` | 8,657,627 |
+| `duo-v1-he-9x16.mp4` | 1080x1920 | 53.8 s / 1614 | 70,571,433 | `eb2bfa4b73d23648e3f7074a6fca2c70f6c8d5139241988dd35f7725a2670cd8` | 8,803,379 |
+| `duo-v1-en-9x16.mp4` | 1080x1920 | 53.8 s / 1614 | 71,081,444 | `898c525882af3ee149b989b6b1442487b3459b49cc890f37b9cf095d2d87126f` | 8,940,148 |
+
+- Footage = MOVING captures of the live 3D stage of DUO's public page (he and en pages; read-only; fake clock, exactly 1/30 s per frame) plus the page's own 3 example-apartment view cards. Every footage frame is labelled "הדמיה להמחשה" / "Illustrative visualisation"; view cards "... נוף משוער".
+- SILENT (zero-cost boundary, no synthesis); words on screen + VTT + chapters VTT; music = our own generated pad (seed 20261003).
+- Facts: the 28.9 data file and research note, re-checked against the live Hebrew and English pages (3.10.2026) and, for the status line, against the developer's Q2 2026 report itself (page 22: 668 / 510 / 372, 87% execution, completion 2027).
+- Edits against the 28.9 data (all listed in `build/build_shots.py` EDITS and facts.md): developer name and outlet/authority names out of the picture; the sales-and-price scene OFF; the video-call line replaced by the standard CTA; the Green Line line replaced by the planned-station line the page supports (the page says no independent source confirms the developer's "direct connection from level -1"); "87% ביצוע" is the report's own word; the penthouse private-pool pins hidden (the research note keeps them out); a views scene added.
+- Portrait: the facilities scene's text is at the top so it does not cover the facility pins at the base.
+- For you to decide: the developer line back on the title? the sales scene back? the Green Line line? "87% ביצוע" in or out? F05 (same world layers as Kikar; municipal terms matched for 513/837/579 only; the end-card credit is the Kikar wording) and F06 (view cards = our own renders).
+- Evidence class: code (frame counts, loudness measured, full decode) + eyes (stills and frames of the finished films looked at). No voice, so nothing heard.
+RELEASE DONE 1.72.418 by the Kikar loop [main] 22:40: captions on the narrated Kikar film (project-stage.php af8c3b68fb -> d9f100ea1a; route /wp-json/nadlan/v1/film-cc/he|en text/vtt, exact bytes); all checks OK; rollback .bak418
+
+### 3.10.2026 ~22:50 Israel: main [Kikar loop] RECEIPT 1.72.418 (captions on the narrated Kikar film, design v104.41) + ACK of the producer's DUO v1 note
+- **Why:** the narrated film speaks. IS 5568 = WCAG 2.0 AA, and WCAG 1.2.2 (captions, prerecorded) is level A.
+- **On the page, additive only:**
+  - one `<track kind="captions">` per video, in the narration's language: he "עברית" on he; en "English" on en/fr/ru/ar;
+  - off by default (the player's Captions menu);
+  - cue style: Heebo, ink 82%, cream text;
+  - no new words, no credit.
+- **Files:** the producer's v2r1 VTTs (narration script, timed to the voice). Media 8172 he / 8173 en, uploaded once, byte-checked (docs/qa/film-v2r1/media-vtt.json). Code check: every cue sits inside its spoken line (0.2 s start / 0.25 s end) against voice/chatterbox/mix-report he/en.
+- **The type fix:** the uploads folder serves .vtt as application/octet-stream, so a public read-only route `/wp-json/nadlan/v1/film-cc/he|en` serves the same media file as text/vtt.
+- **Runner:** film_418.py (the 1.72.417 function, replaced exactly once) and make_deploy418.py → deploy418.py from 417. New verify_cc step: both routes must answer text/vtt with the exact bytes, else rollback. Live 22:40, all checks OK (page checks he/en/fr/ru/ar, order, home order, kh, cc); project-stage.php af8c3b68fb → d9f100ea1a; rollback .bak418.
+- **Post-release, main:**
+  - **Real press (eyes):** on /projects/hamedina/ at 1024 I pressed Play, then opened the player menu and chose Captions. "ובערב, העיר נדלקת." showed right to left (the period on the left), just above the film's own chip and not covering it. Track mode "showing", 19 cues.
+  - **Code:** /projects/hamedina-en/ wide + upright both load 19 English cues.
+- **Times:** the lock lines above are Israel time (corrected; the shell printed UTC).
+- **ACK to the producer, DUO film v1 (HAD-419):** received. LOCAL drafts only; main uploads nothing. Ben and Maya decide: the developer line, the sales scene, the Green Line line, "87% ביצוע", F05/F06.
+- **For Maya:** an independent check of the captions is welcome. Still open and visible: HAD-411 (CTA 4.19:1), HAD-412 (urban), HAD-406.
+- **Audits after 418:** lang_pages_check 60/60; content_first_check failed 0; source_audit hamedina he/en GREEN; the only diff is bytes (+316 he, +304 en = the two track tags and the cue rule).

@@ -1,0 +1,20 @@
+{
+ "kikar-hamedina-film-v2-he.vtt": {
+  "id": 8172,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-he.vtt",
+  "bytes": 1456,
+  "served_type": "application/octet-stream",
+  "sha256": "6bb8eaf2ba801646ed85b214514f47f494e3c92584002e1300a29355e2c3f8ab",
+  "bytes_live": 1456,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-film-v2-en.vtt": {
+  "id": 8173,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-en.vtt",
+  "bytes": 1449,
+  "served_type": "application/octet-stream",
+  "sha256": "a3bc9b41b10079371f92fa5eba280fb4e5fc7f3a24644fd4ec6231c53d6932ad",
+  "bytes_live": 1449,
+  "byte_check": "OK"
+ }
+}
