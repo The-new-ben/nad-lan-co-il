@@ -16,7 +16,7 @@ a Playground (SQLite) run. Main is the only publisher.
 
 | Name | Commit | What is in it |
 |---|---|---|
-| slice-1 | (this commit, see `git log -1 -- docs/qa/had-256/README.md`) | account (open, existing email, sign in, recovery reply) + details + the draft saved in the account and resumed after a reload, on real WordPress |
+| slice-1 | `d2b8f349` | account (open, existing email, sign in, recovery reply) + details + the draft saved in the account and resumed after a reload, on real WordPress |
 
 ## What is real and what is stubbed
 
