@@ -1,0 +1,26 @@
+{
+ "stamp": "20261003T104911Z",
+ "report": "docs\\qa\\had-396\\data-report-live-20261003T104222Z.json",
+ "fingerprint": "360bf6ec05edbf92eda40fc252775b70",
+ "fresh_report": {
+  "ok": true,
+  "before_md5": "360bf6ec05edbf92eda40fc252775b70",
+  "planned": 21,
+  "mode": "report only: nothing written"
+ },
+ "backup": "docs\\qa\\had-396\\data-apply-backup-20261003T104911Z.json",
+ "apply": {
+  "ok": true,
+  "mode": "applied: 21 writes",
+  "errors": []
+ },
+ "readback": {
+  "checked": 21,
+  "mismatch": [],
+  "deleted": 15
+ },
+ "report_after": {
+  "ok": true,
+  "planned": 0
+ }
+}

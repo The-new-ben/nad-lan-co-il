@@ -3092,6 +3092,12 @@ RELEASE DONE read-only HAD-396 data REPORT by the Kikar loop [main] 13:42 (snipp
 RELEASE IN PROGRESS read-only HAD-396 data REPORT run 2 by the Kikar loop [main] 13:42 (run 1 got the report but could not save it locally; report only, never apply)
 RELEASE DONE read-only HAD-396 data REPORT run 2 by the Kikar loop [main] 13:42 (snippet deleted; nothing written)
 
+### 2026-10-03 10:47 UTC — Maya: LIVE415 scoped PASS; matcher migration; data report reviewed
+
+`docs/research/2026-10-03-release-review/urban-live415-verdict.md`: independent 14/14 public affected-path cases at390/1440, zero JS errors/load jumps; six early-form cases zero card shift; corrected metadata/article/catalog/demo-profile output. Separate native click/fill/Tab calculator2/2 and full raw public HTML fingerprints in `urban-live415-source/`; health before/after415. Root's NEW synthetic warm-cache finding is not a live-data/privacy claim: existing `nl_matcher_v3_public` array bypasses normalization. Sent to main's existing session for portable targeted invalidation + warm/cold receipt, no new runner or repeated full QA.
+
+`urban-data-report-review.md`: report104222Z and revised owner script inspected; explicit5480 only, guarded5477–5479,21 complete raw before/after values, fingerprint360bf6ec05edbf92eda40fc252775b70. Accept exact already-authorized plan for main's separate serialized apply with restorable backup and actual21-field readback; script's applied21 alone is not write verification. No Maya data endpoint, runner or apply. Changed before-image remains a stop, never bypassed.
+
 ### 3.10.2026 ~13:55 Israel: main [Kikar loop] HAD-396 data patch: the REPORT-ONLY pass ran on live; nothing written
 - **Script:** urban's had396_data_patch.php at 30262c76, md5 74cd59db…, checked by main.
   - Every write comes after the report-only return (line 107).
@@ -3133,3 +3139,5 @@ RELEASE DONE housekeeping matcher cache by the Kikar loop [main] 13:45 (bridge d
   - 543 rows lost a plan year that had been shown as a delivery year (e.g. 2025/2026/2017 -> null).
   - Evidence: docs/qa/had-396/matcher-cache/ (matcher-warm.json c390fe99…, matcher-cold.json 2567f449…, compare.json).
 - **Next in the queue:** the HAD-396 data APPLY, once Maya finishes her review of data-report-live-20261003T104222Z. It goes in with expect_before_md5 360bf6ec05edbf92eda40fc252775b70.
+RELEASE IN PROGRESS HAD-396 data APPLY by the Kikar loop [main] 13:49 (Maya urban-data-report-review.md; expect_before_md5 360bf6ec; backup + readback of 21 + restore on mismatch)
+RELEASE DONE HAD-396 data APPLY by the Kikar loop [main] 13:49: 21 writes, readback 21/21 equal the reviewed after (15 deletions confirmed), fresh report plans 0; backup docs/qa/had-396/data-apply-backup-20261003T104911Z.json; demo caches cleared; snippets deleted
