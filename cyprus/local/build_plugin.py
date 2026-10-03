@@ -104,7 +104,7 @@ def main():
     ap.add_argument('--out', required=True, help='folder that receives the plugin folder and the zip')
     ap.add_argument('--articles-dir', help='folder with article-he.md / article-en.md (the long-form body, rendered server-side)')
     ap.add_argument('--world-dir', help='the walkable 3D area folder (cyprus/local/world3d); adds the 3D card and full-screen tour')
-    ap.add_argument('--area-dir', help='the private area research folder (places.geojson + drive-osrm.json); adds the server-rendered "what is close" section')
+    ap.add_argument('--area-dir', help='the private area folder of the project (places.geojson + drive-osrm.json + area-spec.json); adds the server-rendered "what is close" section')
     a = ap.parse_args()
     packet = project_packet(__import__('pathlib').Path(a.register))
     for k in ('name', 'district', 'languages', 'contactEnabled', 'geometryMode', 'availabilityMode'):
@@ -272,7 +272,8 @@ add_action(
     plugin_parts.write_assets(root_dir, HERE)
     if a.area_dir:
         import area_html
-        for lang, frag in area_html.build(os.path.join(a.area_dir, 'places.geojson'), os.path.join(a.area_dir, 'drive-osrm.json')).items():
+        for lang, frag in area_html.build(os.path.join(a.area_dir, 'places.geojson'), os.path.join(a.area_dir, 'drive-osrm.json'),
+                                          os.path.join(a.area_dir, 'area-spec.json')).items():
             io.open(os.path.join(bdir, f'area-{lang}.html'), 'w', encoding='utf-8', newline='\n').write(frag)
         css += area_html.AREA_CSS
         io.open(os.path.join(bdir, 'app.css'), 'w', encoding='utf-8', newline='\n').write(css)
