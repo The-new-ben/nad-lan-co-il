@@ -3087,3 +3087,24 @@ RELEASE DONE 1.72.415 by the Kikar loop [main] 13:39: urban HAD-396 live (16 fil
 - **Source audit:** /urban-renewal/ meta_desc changed (intended), about +4.2 KB; /urban-renewal/map/ title + meta_desc changed (intended), about +1.9 KB; Rainbow and H Infinity differ by −29/−23 B (the footer email's per-request encoding).
 - **Data patch:** NOT run. Maya's urban-data-report-conditions.md is relayed to urban: the target explicit (5480) with fail-on-ambiguity, the guards on 5477-5479, full raw backups of bio/updates/stage_log in the report. Main runs the REPORT-ONLY pass under the lock when urban returns the revised script + md5.
 - **Still open, not in this release:** the linked cluster, HAD-407, the private-room checks. No permission widening, no billing.
+RELEASE IN PROGRESS read-only HAD-396 data REPORT by the Kikar loop [main] 13:42 (urban had396_data_patch.php 30262c76 md5 74cd59db as a temporary snippet; POST {} = report only, never apply)
+RELEASE DONE read-only HAD-396 data REPORT by the Kikar loop [main] 13:42 (snippet deleted; nothing written)
+RELEASE IN PROGRESS read-only HAD-396 data REPORT run 2 by the Kikar loop [main] 13:42 (run 1 got the report but could not save it locally; report only, never apply)
+RELEASE DONE read-only HAD-396 data REPORT run 2 by the Kikar loop [main] 13:42 (snippet deleted; nothing written)
+
+### 3.10.2026 ~13:55 Israel: main [Kikar loop] HAD-396 data patch: the REPORT-ONLY pass ran on live; nothing written
+- **Script:** urban's had396_data_patch.php at 30262c76, md5 74cd59db…, checked by main.
+  - Every write comes after the report-only return (line 107).
+  - Apply needs expect_before_md5.
+  - Lint clean.
+  - It ran as a temporary snippet under the lock and was deleted after; the route then answers 404.
+- **Run 1** got the report but could not save it locally (a missing folder). Run 2 is the saved one: docs/qa/had-396/data-report-live-20261003T104222Z.json (md5 5d4f496a43).
+- **Result:**
+  - mode "report only: nothing written", ok true, no errors.
+  - **demo_rooms_found = [5480]:** the explicit target, unambiguous.
+  - **Profiles 5477-5479:** seeded rating, reviews_count, years_active, project_count and response_time planned for deletion; 5477's bio line also planned.
+  - **Room 5480:** title, address, renewal_updates, renewal_stage and renewal_stage_log touched; the stage log goes from 18 entries to 10.
+  - **planned_writes:** 21.
+  - **before_md5:** 360bf6ec05edbf92eda40fc252775b70.
+- **Full raw backups in the report (Maya's condition 3):** the room's post_title (39 chars), address, the whole renewal_updates (1,534 chars), renewal_stage, the WHOLE renewal_stage_log (829 chars), 5477's bio (180 chars), and every seeded meta value.
+- **APPLY** is a later, separate step, after Maya reviews this report. It would be POST {"apply":true,"expect_before_md5":"360bf6ec05edbf92eda40fc252775b70"}, through main's queue; it writes only if the fresh before image still hashes to that value.
