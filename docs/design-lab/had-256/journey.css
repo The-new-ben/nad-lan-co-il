@@ -31,7 +31,7 @@
 .nlj-lead{font-size:17px;line-height:1.55;color:var(--ink2);max-width:60ch}
 .nlj-kick{font-size:13px;font-weight:700;color:var(--sea);letter-spacing:.02em}
 .nlj-small{font-size:14px;line-height:1.45;color:var(--ink2)}
-.nlj-meta{font-size:13.5px;color:var(--mute)}
+.nlj-meta{font-size:13.5px;color:var(--ink2)} /* 4.29:1 with mute on paper (Maya 4.10); ink2 passes on paper, sand and white */
 .nlj-hr{height:1px;background:var(--line);border:0;margin:0}
 
 /* progress */
