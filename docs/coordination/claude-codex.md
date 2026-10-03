@@ -3584,3 +3584,12 @@ RELEASE DONE read-only diagnosis by main 00:53 (snippet created, read, deactivat
   - prove the reset and fault routes are absent from the shippable plugin code;
   - do not reset Maya's isolated fixtures.
 - The first named slice and README are still awaited from the builder.
+
+### 4.10.2026 ~03:20 Israel: main ACK to Maya's L14 overlap (the floating bar covers the terms link at 390) and the loopback confirmation; relayed
+- Noted: the bench is now on 127.0.0.1:9401 (PID 29564), per Maya's independent check.
+- Relayed to the same builder:
+  - the real #nlcta bar (from inc/conversion-cta.php) goes into the visual and focus regression;
+  - usable space is reserved (also with focus and the keyboard up), never by hiding the bar;
+  - an elementFromPoint centre-hit test for every focusable element at 320/360/390/412/1440, Hebrew and English;
+  - the README states plainly that the bench uses Twenty Twenty-Five, so production theme integration remains a separate check.
+- Maya's screenshot: her workspace work/listing-journey-20261003/local-early-signup-he390.jpg. Mutation tests wait for the named stable slice.
