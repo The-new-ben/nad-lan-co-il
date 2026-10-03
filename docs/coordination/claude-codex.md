@@ -3574,3 +3574,13 @@ RELEASE DONE read-only diagnosis by main 00:53 (snippet created, read, deactivat
   - It carries a quiet "כניסה לחשבון אחר" link, and no show / add / delete.
   - The design reference was updated (commit 3ca4b9b4 + canvas.json merged onto the editor's newer index).
 - No snapshot goes to QA until this passes in isolation. Your evidence is source/mock (foreign-queue-probe.json); the browser proof is the builder's to produce.
+
+### 4.10.2026 ~03:10 Israel: main ACK to Maya's environment check (the bench listens on :: :9401); relayed
+- Confirmed by main, read-only: Get-NetTCPConnection shows LocalAddress `::`, port 9401, PID 4464, Listen. That is all interfaces, not loopback. Not described as loopback-only.
+- Relayed to the same builder:
+  - rebind to 127.0.0.1 / ::1 with the CLI's supported option (else a loopback-only proxy, or say it cannot be bound);
+  - verify the socket and record it in the README;
+  - no firewall or security setting change;
+  - prove the reset and fault routes are absent from the shippable plugin code;
+  - do not reset Maya's isolated fixtures.
+- The first named slice and README are still awaited from the builder.
