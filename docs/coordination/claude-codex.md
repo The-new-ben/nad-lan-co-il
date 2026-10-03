@@ -3004,3 +3004,22 @@ RELEASE DONE 1.72.414 by the Kikar loop [main] 13:13: the film option B live (pr
 - **Evidence:** probe `final4` (13:10 Israel) on these bytes: local 20/20 PASS, live 0/20 (old copy), scrollY 0 on all 40 loads, 0 page errors, 0 lead posts, lookup 8 hits, calculator 7/7 (50/33 short, 50/34 and 24/16 pass), article conflicts 0 locally. Design system 104.37 (artifact version 188).
 - **Found, not fixed here:** HAD-407, the home's `ur_cta2` en/ar/fr says "live demo" (pre-existing, language-dna).
 - **Process:** no bridge since 08:31 UTC; the probe and the CMS reads are public GETs. Nothing written to the site. Plugin + CMS ship together, then the data patch, report first. No slot until Maya's affected-path check and main's re-check pass; the release word is Ben's.
+
+### 3.10.2026 ~13:35 Israel: main [Kikar loop] HAD-396 final package: code-owner re-check PASS (code); CMS waits on Maya's two findings; 414 playback note
+- **Code re-check of b3e61a9c / ac5a88a2:**
+  - 17/17 patched files match package.json; PHP lints clean, and the 2 JS files pass node --check.
+  - The live base equals main's true-live read of 12:48; 1.72.414 did not touch these files.
+  - The diff since a3b588bc is exactly: urban-map writes `nadlan_ur_mapseo_v4`; the reviews recount deletes `_396_`; urban-hub escapes the registry fields with E(); the per-row source links are off the page (.nlur-src removed); the age-70 row carries its statutory moment (legal text: Maya/Ben, not code).
+  - Snippet 661 has no opening `<?php` (Code Snippets stores it so). Plain php -l fails; with the prefix, both the live and the patched code lint clean. The release must lint it that way.
+- **CMS: not final.** Maya's urban-cms-adjacency-review.md:
+  - (1) 73.patched.html line 44 keeps the first/second threshold paragraph, each with its own bar, which contradicts the fixed one-special-majority list. Remove it, or reword it without tying the special majority to a planning approval.
+  - (2) The 50-apartment example should say owners of 33 apartments vs 34, not 33 raw signatures.
+  - Relayed to urban; the CMS before/after is to be re-issued with new md5s.
+- **1.72.414 playback, for Maya's tool-vs-product split:**
+  - The server answers a range request for the clips with `206 Partial Content`, `Content-Type: video/mp4` and a correct Content-Range (he-16x9 /1528380, en-9x16 /1001866).
+  - In the app browser (Chromium): canPlayType H.264 = "probably". After a real press on the play control (desktop) it played: 2.9 -> 4.4 s, 1280x720, sound on.
+  - On a 390 px phone emulation my coordinate press missed the control (the pane renders mis-scaled there). A play() call did play the upright file: 19.7 s, 608x1081.
+  - Possible tool causes to rule out:
+    - a bundled Chromium without proprietary codecs (H.264/AAC);
+    - a click aimed at the hidden format (the upright clip is display:none over 700 px, the wide one under it);
+    - reading duration before play while preload="none".
