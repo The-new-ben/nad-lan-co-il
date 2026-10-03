@@ -2978,6 +2978,16 @@ RELEASE DONE 1.72.414 by the Kikar loop [main] 13:13: the film option B live (pr
 
 The first `film-live414` timeouts were a QA-coordinate mistake: 22 px from the bottom is the seek rail. The observed Play target is 48 px from the bottom. Correcting the harness, not the product, produces real native-play passes. Retain those first receipts as invalid play-target evidence, not a product failure. Main's actual 10:18:52 SendMessage already forwarded the separate two CMS consistency findings to the same urban owner; local affected-path checks continue on its named b3e61a9c/ac5a88a2 code, awaiting the corrected CMS package.
 
+### 2026-10-03 10:26 UTC — Maya: HAD-396 round 4 local acceptance for the existing release queue
+
+`docs/research/2026-10-03-release-review/urban-round4-verdict.md`: code b3e61a9c, CMS c5530f12, final package **0663be0741306f31f76bdea2f71fbf1033ee83e6**. Seventeen file SHA-256 values match. Fourteen affected-path preview cases pass, plus seven unchanged-code cache/review fixtures. During the first run the owner changed only the probe and CMS script, so Maya separately reran page73 at390/1440 on the final CMS: 2/2, zero changed files. Corrected article MD5 **24acab8a71f63383db6cdbb2842072f2**, SHA **02332f255434ed58a6196a349f41fc8506aacc34a0752da4da672f67655d4a58**. The stale three-threshold paragraph and signature/apartment confusion are resolved.
+
+This is scoped QA/source consistency acceptance, **not a legal opinion or blanket2026 statutory certification**. Exact fraction is only the count condition; building/common-property/date conditions remain explicit. Existing Ben publication authorization stands. Main alone must fresh-read before hashes, back up, release plugin/snippet+CMS/meta together with coordinated rollback, run data report first, then live checks. No Maya runner. Authenticated rooms/live review mutations/all language and fleet paths remain unperformed; linked cluster contradictions and HAD407 remain separate. No permission/billing expansion. Main actually ACKed the independent414 pass at10:22:52UTC.
+
+### 2026-10-03 10:33 UTC — Maya: data report boundary, for after the combined release
+
+`docs/research/2026-10-03-release-review/urban-data-report-conditions.md` records one exact-target check before applying data cleanup: the prepared script selects the first `is_demo=1` room, whereas the reviewed public report names **5480**. Main's report-first action must identify that room unambiguously; do not silently target a newer demo room. Back up full raw bio/room updates/stage log, not only the report's descriptions, before any approved cleanup. This does not block report-only or the already accepted code+CMS correction. No renewed general Ben approval is requested and Maya ran no data endpoint.
+
 ### 3.10.2026 ~13:20 Israel: main [Kikar loop] RECEIPT 1.72.414: the film, option B (the facilities clip), on Maya's film-safe-slice verdict
 - **ACK of Maya's update:** B was already approved by Ben (3.10); no new A/B/C question. "The layers are already on the site" is not licence evidence for further distribution: accepted. A/C for the 77.6 s cut stays a separate open question and did not hold B. urban-cache-review.json: 7/7 synthetic PHP checks pass on the cache and review fixes. That is not a live DB check and not acceptance of all of HAD-396; waiting for urban's final named/hashed package.
 - **Design first:** v104.36 (artifact version 187), KikarHamedinaWorld.
@@ -3051,3 +3061,29 @@ The first `film-live414` timeouts were a QA-coordinate mistake: 22 px from the b
 ### 3.10.2026 ~14:00 Israel: main [Kikar loop] ACK of Maya: 1.72.414 independently PASSES 4/4; HAD-396 code paths PASS, CMS read pending
 - **1.72.414 (the facilities clip):** Maya's independent live check 4/4 (HE/EN, 390/1440): her first click hit the seek rail, not Play; with the coordinate on the real Play button, the time advances and seeking works. No video.play(), no product change; 0 errors; preload none; no media request before Play. The 4 public SHA-256 equal the clean facilities set. Report: film-live414-verdict.md. No claim of listening, a physical device, or the 77 s cut.
 - **HAD-396:** her 14-path local protected check PASSES on the package code, including a real GET-only lookup and the calculator (50/33 FAIL, 50/34 PASS). She waits only to read the two new CMS fixes and the new hash (24acab8a71, the entry above); no general approval is asked.
+RELEASE IN PROGRESS 1.72.415 by the Kikar loop [main] start 13:32 (urban HAD-396, Maya round-4 ACCEPT, package 0663be07: 16 files + snippet 661 + page 73 + 3 metas; dry run, then live)
+RELEASE DONE 1.72.415 by the Kikar loop [main] 13:39: urban HAD-396 live (16 files + snippet 661 763f1dfa2c active + page 73 24acab8a71 + metas 7155174a28/4c8e3b4085/3c235db6f2); rollback .bak415 + snippet/page/meta before-values kept; the data patch NOT run (report first); Maya: live QA now
+
+### 3.10.2026 ~13:45 Israel: main [Kikar loop] RECEIPT 1.72.415: urban's HAD-396 (package 0663be07), on Maya's round-4 ACCEPT
+- **One release, as the package says:** the 16 plugin files + snippet 661 + page 73 + 3 Yoast metas; the data patch NOT run.
+- **Runner:** make_deploy415.py -> deploy415.py, from the verified 414, with ur_396.py. Every byte comes from `git show 0663be07:` and is checked against package.json; the 2 JS files pass node --check.
+  - Three new bridge ops, each guarded by an md5: lint_code (the snippet linted with "<?php" on the server), pcontent (page content), pmeta (Yoast keys only).
+  - Rollback undoes them in reverse order, then the .bak415 files.
+- **Dry run (13:31):** all 16 live files equal the package's base and become exactly its bytes; all PHP lints; the snippet lints on the server; page 73 and the 3 metas match their fresh before-hashes; the bump is 1.72.414 -> 1.72.415.
+- **Live (13:39), released and verified, 446 checks OK:**
+  - snippet 661 = 763f1dfa2c, active;
+  - page 73 = 24acab8a71;
+  - metas 73 metadesc 7155174a28, 5471 title 4c8e3b4085, 5471 metadesc 3c235db6f2;
+  - the files per package.json.
+- **New checks passed:**
+  - /urban-renewal/: the statute line, "המאגר כולל מתחמים מוכרזים וגם…", data-num 2/3, E(), "7 שאלות קצרות"; none of the 66%/67% lines, data-adv or .nlur-src;
+  - /urban-renewal/map/: the new title and h2, not the old h2;
+  - /sell-by-auction/: 9 questions; /buying-apartment/: 8;
+  - /projects/: the plan-year sentence;
+  - /professionals/demo-avnei-madad-shamai/: no .nlpp-stats.
+- **Press test (live, desktop):** typed 50 apartments and 33 consenting: "עוד 1 דירות עד שני שלישים מהדירות במקבץ". Typed 34: "מספר הדירות שהסכימו מגיע לשני שלישים מהדירות במקבץ. זה תנאי אחד: בדקו גם את שני התנאים שלמטה." The bar is past, at 68%.
+- **Copy nit for urban, not blocking:** for n=1, "עוד 1 דירות" should read "עוד דירה אחת".
+- **lang_pages_check:** 60/60 clean.
+- **Source audit:** /urban-renewal/ meta_desc changed (intended), about +4.2 KB; /urban-renewal/map/ title + meta_desc changed (intended), about +1.9 KB; Rainbow and H Infinity differ by −29/−23 B (the footer email's per-request encoding).
+- **Data patch:** NOT run. Maya's urban-data-report-conditions.md is relayed to urban: the target explicit (5480) with fail-on-ambiguity, the guards on 5477-5479, full raw backups of bio/updates/stage_log in the report. Main runs the REPORT-ONLY pass under the lock when urban returns the revised script + md5.
+- **Still open, not in this release:** the linked cluster, HAD-407, the private-room checks. No permission widening, no billing.
