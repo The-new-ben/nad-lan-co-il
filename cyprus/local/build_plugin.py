@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.join(HERE, 'advertise'))
 import plugin_parts  # noqa: E402  (the "Advertise with us" page, button and assets)
 
 SLUG = 'cy-project-experience'
-VERSION = '1.3.0'
+VERSION = '1.4.0'
 BUNDLE = 'villas-aa'
 IMAGES = {  # local web-media name -> published name, and the plan-data key it replaces
     'agios-athanasios-villas-site-plan.webp': ('site-plan.webp', '/media/site.png'),
@@ -104,8 +104,17 @@ def main():
     ap.add_argument('--out', required=True, help='folder that receives the plugin folder and the zip')
     ap.add_argument('--articles-dir', help='folder with article-he.md / article-en.md (the long-form body, rendered server-side)')
     ap.add_argument('--world-dir', help='the walkable 3D area folder (cyprus/local/world3d); adds the 3D card and full-screen tour')
+    ap.add_argument('--area-project', action='append', default=[], metavar='SLUG=DIR',
+                    help='another mapped project page that gets only the "what is close" section (atlas slug = its private area folder)')
     ap.add_argument('--area-dir', help='the private area folder of the project (places.geojson + drive-osrm.json + area-spec.json); adds the server-rendered "what is close" section')
     a = ap.parse_args()
+    extras = []  # (atlas slug, bundle folder, area folder) of the area-only project pages
+    for spec in a.area_project:
+        slug, _, adir = spec.partition('=')
+        if not re.fullmatch(r'[a-z0-9-]+', slug) or not os.path.isdir(adir):
+            raise SystemExit(f'build_plugin: bad --area-project {spec!r}')
+        extras.append((slug, 'p-' + slug[:40], adir))
+    bundles_php = ', '.join(f"'{sl}' => '{bd}'" for sl, bd in [(a.place_slug, BUNDLE)] + [(e[0], e[1]) for e in extras])
     packet = project_packet(__import__('pathlib').Path(a.register))
     for k in ('name', 'district', 'languages', 'contactEnabled', 'geometryMode', 'availabilityMode'):
         packet.pop(k, None)
@@ -203,7 +212,7 @@ def main():
     php = f"""<?php
 /**
  * Plugin Name: CY Project Experience
- * Description: Interactive site plan, floor plans and home comparison on selected Cyprus Atlas project pages (loaded only there), and the "Advertise with us" page and button.
+ * Description: Interactive site plan, floor plans and home comparison, the "what is close" section and long-form guides on selected Cyprus Atlas project pages (loaded only there), and the "Advertise with us" page and button.
  * Version: {VERSION}
  * Requires at least: 6.5
  * Requires PHP: 7.4
@@ -223,7 +232,7 @@ define( 'CYPX_VERSION', '{VERSION}' );
  * @return array<string,string>
  */
 function cypx_bundles() {{
-	return array( '{a.place_slug}' => '{BUNDLE}' );
+	return array( {bundles_php} );
 }}
 
 add_action(
@@ -280,6 +289,15 @@ add_action(
         end = script.rindex('})();')
         script = script[:end] + area_html.AREA_JS + script[end:]
         io.open(os.path.join(bdir, 'app.js'), 'w', encoding='utf-8', newline='\n').write(script)
+    for slug, bname, adir in extras:  # area-only bundles: the section, its style and the phone fold
+        import area_html
+        edir = os.path.join(root_dir, 'assets', bname)
+        os.makedirs(edir)
+        for lang, frag in area_html.build(os.path.join(adir, 'places.geojson'), os.path.join(adir, 'drive-osrm.json'),
+                                          os.path.join(adir, 'area-spec.json')).items():
+            io.open(os.path.join(edir, f'area-{lang}.html'), 'w', encoding='utf-8', newline='\n').write(frag)
+        io.open(os.path.join(edir, 'app.css'), 'w', encoding='utf-8', newline='\n').write(area_html.AREA_CSS)
+        io.open(os.path.join(edir, 'app.js'), 'w', encoding='utf-8', newline='\n').write("(function(){'use strict';" + area_html.AREA_JS + "})();\n")
     if a.articles_dir:
         from article_html import to_html
         labels = {'he': ('rtl', 'מדריך מלא: וילות למכירה באגיוס אתנסיוס'), 'en': ('ltr', 'Full guide: villas for sale in Agios Athanasios')}
