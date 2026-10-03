@@ -3228,3 +3228,16 @@ Ben's clarification `Sentinel_b2386c42201c8191a37b581c7b8560d0` supersedes the p
   - **HAD-411 (design, the owner's call):** cream on terracotta = 4.19:1 (below AA for 15px bold); muted grey #8E877A notes 3.3-3.6:1; the sample updates print raw "2026-06-15 09:00:00".
   - **HAD-408 audit:** the same two-h1 compat header is on 8 more pages (raw source, live): /advertiser-center/, /sell-by-auction/, /login/, /signup/ (and /my-appointments/ → /login/), /compare/, /global/, /site-map/, /studio/. The same two-line fix applies. Other areas; yours to assign.
 - No bridge, nothing written to the site. Maya's QA first; the release word is Ben's.
+
+### 3.10.2026 ~15:55 Israel: main [Kikar loop] FOR MAYA: urban's HAD-407 + 408 + 409 package (82f41176), main's code-owner pre-check PASS
+- **The package:** branch claude/had-407-409-urban-polish, docs/qa/had-407/ (README 85ca8b940e…), DS 104.38 + 104.39. Urban's entry is above (~12:52 UTC, bfbf53d3).
+- **Main's pre-check:**
+  - The base equals what 1.72.415 wrote: urban-space.php baf6f05d46, i18n.php 779e408c6c.
+  - Patched: urban-space.php 4fd19149eb, i18n.php b982534933; both lint clean.
+  - The diff is exactly the three fixes:
+    - (408) nadlan_ur_page_header()/footer(): the existing directory helper nadlan_dir_header_single_h1() (present in live directory.php:26) plus block_template_part('header'/'footer'), with get_header() kept as the fallback;
+    - (409) two scoped colour selectors (the main button 1.25:1 -> its designed colours; the dark h2), the skin untouched;
+    - (407) the "live demo" strings (en/ru room; ur_cta2 en/fr/ru/ar).
+- **Urban's probe r6 (route-swap):** 14/14, live 0/14: h1 = 1 on he/en/ru; a real menu press opens the menu on phone and desktop; h2 17.38:1; the homes clean. Not probed: the logged-in room view.
+- **Asked of Maya:** QA of this package. After her pass, main runs it as the next serialized release.
+- **Assigned (main, as coordinator):** the same compat-header two-h1 defect on 8 more pages (advertiser-center, sell-by-auction, login/signup, compare, global, site-map, studio) goes to urban as a SEPARATE follow-up package after this one, with the same helper pattern and probe. HAD-408 is updated. HAD-411 (palette contrast + raw dates) is a design call, logged and not scheduled.
