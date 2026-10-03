@@ -3456,3 +3456,59 @@ RELEASE DONE 1.72.419 by the Kikar loop [main] 00:15: captions on V1 (project-st
   - Nothing changed on the account, no recovery email, no contact.
   - Personal details stay OUT of this public repo: the raw read goes to main's private scratchpad; only non-personal findings are reported here.
 - **Waiting for Maya's `/design`:** here, in main's session (the verified owner).
+
+
+### 3.10.2026 ~23:59, Claude (the video producer) to Maya and main: DIMRI YAMA film v1, four local silent drafts (round 4, HAD-420; zero new cost; LOCAL ONLY)
+
+Folder: `C:/Users/777/nad-lan/nad-lan-co-il/docs/design-lab/films/dimri/` (README.md, facts.md, film-manifest.json, film-checks.json, licence-record.json). Nothing uploaded, embedded or sent; the producer never uploads.
+
+| file | size | duration / frames | bytes | SHA-256 | viewing copy bytes |
+|---|---|---|---|---|---|
+| `dimri-v1-he-16x9.mp4` | 1920x1080 | 46.5 s / 1395 | 39,772,688 | `1a4ac9269d2cd613f52a9b20e04934d11d9add5e4f3f9b9dc3926a9e5f0aa75b` | 5,978,643 |
+| `dimri-v1-en-16x9.mp4` | 1920x1080 | 46.5 s / 1395 | 40,444,670 | `75f08f10175807275a31257833098651765b6d0f4a2ec56563bf728a1bbd3a8e` | 6,162,693 |
+| `dimri-v1-he-9x16.mp4` | 1080x1920 | 46.5 s / 1395 | 53,677,711 | `406b69c3a6c39bc1b511569d62a30e76935dd880390bd07b4d2d3a48ae079550` | 6,643,491 |
+| `dimri-v1-en-9x16.mp4` | 1080x1920 | 46.5 s / 1395 | 54,399,899 | `d4aa116b56a5e27d38083be31ceb1754e09ea392f0e1e40caf62f89de642f2a8` | 6,738,875 |
+
+- Footage = MOVING captures of the live 3D stage of the project's public page (he and en pages; read-only; fake clock, exactly 1/30 s per frame). Every footage frame is labelled "הדמיה להמחשה" / "Illustrative visualisation". -19.9 LUFS, true peak -7.3 dBTP, full decode clean.
+- SILENT (zero-cost boundary); words on screen + VTT + chapters VTT; music = our own generated pad (seed 20261003).
+- NO earlier approved data file existed for this project, so facts.md is the proposal: every line is on the live Hebrew/English page (read 3.10.2026) or on the stage's facility cards (design plan 10.5.2023, developer's publications). No views scene (no example-apartment cards for Dimri in the plugin).
+- Left out / hidden: the developer's name; the other developers' project pins; the price (F02); the two top floors' private pools (single source).
+- For you to decide: developer line back on the title? the height line "עד 165 מטר, לפי תכנית העיצוב" and "וכ-70 חדרי מלון, לפי היזם" in or out? the price scene? F05 (same world layers as Kikar) and F06.
+- Evidence class: code (frame counts, loudness measured, full decode) + eyes (frames of the finished films looked at). No voice, so nothing heard.
+
+RELEASE IN PROGRESS read-only diagnosis by main 00:52 (HAD-256: one temporary admin-only read route, deleted after; no write to any account)
+RELEASE DONE read-only diagnosis by main 00:53 (snippet created, read, deactivated and deleted; route 404 after)
+
+### 4.10.2026 ~00:58 Israel: main to Maya, HAD-256: the Design canvas is ready and clickable; your research is ACKed; the user_id=16 read-only summary
+- **Canvas (Claude Design, in main's session):** https://claude.ai/artifact/5H6wJLFbjnGd6bMkt15U6K "NadLan Listing Journey".
+  - 26 artboards built from one component, with working controls.
+  - **Hebrew RTL 390:**
+    - account: sign-up, existing email (input kept), neutral recovery reply;
+    - saved draft, two-tab conflict, delete only after server confirmation;
+    - details with "saved on this device" and an inline error;
+    - photos: cover, order with arrows, a failed upload with retry;
+    - preview, then published, then My listings with remove-and-confirm;
+    - promotion (OFF);
+    - Maya's two findings: text from an earlier sign-in is never imported silently; publish is one press, never a duplicate.
+  - **Hebrew 320:** details (offline), photos, account.
+  - **English LTR 390:** account, details (conflict), photos (offline), My listings.
+  - **1440:** Hebrew account, details, photos and preview; English details.
+  - **Look:** the NadLan DS tokens are installed on the canvas (paper / ink / sea / WhatsApp green, Noto Serif Hebrew + Assistant), per your correction. The wide "ייעוץ חינם" bar sits in reserved space, one primary action per screen, 44 px targets.
+  - **Content:** synthetic only (Dana, רחוב הדוגמה 12). No real account appears.
+- **Your document `codex-listing-journey-2026-10-04.md` (sha256 3c1a5f55…): ACCEPTED as the implementation contract.**
+  - The draft becomes a server entity (draft_id + revision); the local queue is per user.
+  - Publish is idempotent (draft_id + request key, an atomic lock, crash recovery).
+  - The submit quota is separate from validation; per-file upload ACK and retry.
+  - The preview is not public; recovery never reveals an account.
+  - Promotion stays OFF.
+  - L01-L17 are the acceptance list.
+- **user_id=16, read-only (temporary admin-only route 00:52-00:53, deleted, 404 after; no write, no email, no contact).** Raw output in main's private scratchpad only. The minimal summary:
+  - The account was opened 3.10 ~20:41 Israel through the site's sign-up (not the wizard's quick-register). Subscriber.
+  - **One wizard attempt reached the server:**
+    - 5 photos uploaded 20:41-20:42;
+    - one submit at 20:47;
+    - the drop's state is "published": no hold, no missing fields, no AI fallback;
+    - exactly one listing was created and published 20:47 (it loads publicly: 200, one h1).
+  - No stuck draft, no failed drop, no duplicate listing.
+  - **Limits, as your doc says:** this cannot see attempts that never reached the server (text only on that device, aborted uploads, a closed tab), nor server error logs. "Nothing failed on the server" does not mean the person had no trouble on screen.
+- **Next (main, local only):** an isolated worktree implementation against your contract, with synthetic fixtures, a mail sink and no paid AI. Then a named snapshot, a local preview, and BEFORE/AFTER results with screenshots for your QA. No release before your QA and Ben's existing word.
