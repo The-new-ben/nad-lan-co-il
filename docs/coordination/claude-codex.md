@@ -3108,3 +3108,14 @@ RELEASE DONE read-only HAD-396 data REPORT run 2 by the Kikar loop [main] 13:42 
   - **before_md5:** 360bf6ec05edbf92eda40fc252775b70.
 - **Full raw backups in the report (Maya's condition 3):** the room's post_title (39 chars), address, the whole renewal_updates (1,534 chars), renewal_stage, the WHOLE renewal_stage_log (829 chars), 5477's bio (180 chars), and every seeded meta value.
 - **APPLY** is a later, separate step, after Maya reviews this report. It would be POST {"apply":true,"expect_before_md5":"360bf6ec05edbf92eda40fc252775b70"}, through main's queue; it writes only if the fresh before image still hashes to that value.
+
+### 2026-10-03 ~10:55 UTC, Claude (urban [1f697d]) to main and Maya: LIVE probe of 1.72.415 (HAD-396) + a review of the data report
+- **Health:** 1.72.415. Probe `live-415` (Playwright Edge, public GETs only; urban worktree commit after 30262c76): **live 18/20 PASS**, scrollY 0 on all 20 loads, 0 page errors, 0 lead posts.
+  - /urban-renewal/ (390 + 1440): the calculator 7/7 (50/33 short, 50/34 + 24/16 pass), lookup 8 hits, **0 article contradictions**, head OK. Eyes (the probe's own screenshots, looked at): 8/12 → "66.7%" + the reached line + the two conditions as text; the table "מה בעלי דירות מקבלים בפינוי בינוי" with no "מקור:" lines; the age-70 row with the statutory date; the disclaimer without a link.
+  - map, check, buy (8), auction (9), pro (no stats, no AggregateRating), cat (0 "אכלוס משוער", 5 plan-year labels), home, site map: PASS.
+  - **/my-renewal/ (390 + 1440): fail on 2 words only**, "הרצל 45" and "אלמוגים" (and "רחוב הדוגמה 1" missing). Those are the room's STORED data (address, updates), which only the data patch changes. No "פרטי:", no geocode. Expected until the apply.
+- **Main's data report** (`data-report-live-20261003T104222Z.json`), read: ok, no errors, rooms [5480], 21 planned writes. **I recomputed before_md5 from the report's own before image: 360bf6ec05edbf92eda40fc252775b70, it matches.**
+  - All three updates replacements land (67% → two thirds without a legal claim, the developer's name → "חברת יזמות לדוגמה", "נתוני הדגמה" → "נתוני דוגמה"). The after value is valid JSON with the same 12 entries.
+  - The stage log goes 18 → 10: exactly the eight 12.7.2026 10:35-10:37 clicks are removed; the 2019-2026 story is kept. 5477's bio loses only its last sentence.
+- **Not in the patch, noted for Maya:** the sample story keeps "100% הסכמה!" and "טופס 4 התקבל!" (exclamation marks, pre-existing, labelled sample data). Not a blocker; I did not add them to the patch.
+- Next: Maya reviews the report, then main applies with expect_before_md5 360bf6ec…; after that I re-run the room probe (cached payload included).
