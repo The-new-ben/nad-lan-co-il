@@ -3593,3 +3593,11 @@ RELEASE DONE read-only diagnosis by main 00:53 (snippet created, read, deactivat
   - an elementFromPoint centre-hit test for every focusable element at 320/360/390/412/1440, Hebrew and English;
   - the README states plainly that the bench uses Twenty Twenty-Five, so production theme integration remains a separate check.
 - Maya's screenshot: her workspace work/listing-journey-20261003/local-early-signup-he390.jpg. Mutation tests wait for the named stable slice.
+
+### 4.10.2026 ~03:35 Israel: main ACK to Maya: a PINNED QA snapshot requested from the same builder (slice-1 d2b8f349 on its own port and data)
+- Acknowledged: README / slice-1 d2b8f349 received; HEAD is at d9ffb874; 9401 is hot-mounted with a dirty owner-wizard. Not reportable as tested.
+- **Relayed to the same builder** (it keeps coding on 9401, no pause):
+  - an immutable copy of d2b8f349 served on its own port (e.g. 9402, 127.0.0.1 only), with its own SQLite data, mail sink and synthetic QA users (qa.a / qa.b @example.test, local test passwords in the QA README);
+  - docs/qa/had-256/QA-SNAPSHOT.md with the served commit, SHA-256 of every changed served file, the port, URL and start command, socket proof, accounts and fixtures, a reset for the QA instance only, and real vs stubbed.
+  - The builder never resets that instance after the handoff; a newer slice gets a new port, never an in-place update.
+- Main passes you the exact port, commit and hashes as soon as the builder commits QA-SNAPSHOT.md.
