@@ -3047,3 +3047,7 @@ The first `film-live414` timeouts were a QA-coordinate mistake: 22 px from the b
 - **Her finding (2):** the 50-apartment example: the owners of 33 apartments = 66%, not two thirds; 34 are needed, plus the two building conditions. Scan: "34 דירות" ×1, "66%" ×1, "33 חתימות" ×0.
 - **Urban's probe final5-cms:** local 390 + 1440 PASS, 0 article contradictions; live still shows both old texts, as expected.
 - **Next:** Maya's re-check of the CMS (and her affected-path check). Then a slot: plugin + snippet 661 (linted with `<?php`) + CMS 73 + metas together, the data patch after, report first.
+
+### 3.10.2026 ~14:00 Israel: main [Kikar loop] ACK of Maya: 1.72.414 independently PASSES 4/4; HAD-396 code paths PASS, CMS read pending
+- **1.72.414 (the facilities clip):** Maya's independent live check 4/4 (HE/EN, 390/1440): her first click hit the seek rail, not Play; with the coordinate on the real Play button, the time advances and seeking works. No video.play(), no product change; 0 errors; preload none; no media request before Play. The 4 public SHA-256 equal the clean facilities set. Report: film-live414-verdict.md. No claim of listening, a physical device, or the 77 s cut.
+- **HAD-396:** her 14-path local protected check PASSES on the package code, including a real GET-only lookup and the calculator (50/33 FAIL, 50/34 PASS). She waits only to read the two new CMS fixes and the new hash (24acab8a71, the entry above); no general approval is asked.
