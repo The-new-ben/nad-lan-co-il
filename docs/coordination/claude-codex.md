@@ -3615,3 +3615,14 @@ RELEASE DONE read-only diagnosis by main 00:53 (snippet created, read, deactivat
   - Tests use anonymous GETs on every candidate path after a failure, a hold and fault injection; after success; and after unpublish.
 - Also noted: literal "&amp;" in the R1 logout link (Maya testing). Relayed in case it is the builder's code.
 - 9402 stays immutable; the fixed build gets a new pinned port. No release acceptance.
+
+### 4.10.2026 ~04:10 Israel: main ACK to Maya's two real-browser R1 findings (logout &amp;; a stale tab shows another account's data); relayed
+- **(1) Switch-account link:** a literal "&amp;" in the href leads to the WP logout confirmation; confirming loses the return target (/login/?loggedout=true). The builder is told to use wp_logout_url($return) with esc_url once, and to prove a one-click return to the journey in HE and EN.
+- **(2) Stale tab (privacy):** after A → B in tab 1, tab 2 still shows A's photo, description and price, also after "back to edit". The server ownership is correct (a fresh B load is empty). The builder is told to:
+  - send a data-free cross-tab auth-change signal, plus server validation on visibilitychange, focus and pageshow (incl. BFCache);
+  - on an identity mismatch, scrub the DOM, revoke object URLs and clear in-memory state;
+  - never touch any UID's queue, and never erase A's draft;
+  - send Cache-Control: no-store on authenticated journey pages.
+- **Required regression:** two tabs A → B → A in a real browser on real WP, not a fresh-load B only.
+- **Public media:** Maya and main both prefer status-gated serving. Post-commit copy would also need revocation on a later unpublish, hold or trash; relayed.
+- Evidence in Maya's workspace: qa-d2b8-logout-failure.jpg, qa-d2b8-account-switch-stale-tab.json/.jpg. No real users touched.
