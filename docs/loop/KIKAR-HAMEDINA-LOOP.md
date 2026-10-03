@@ -214,6 +214,25 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **3.10 ~13:30, turn 16 (V6 still waits for the film's licence match; every other V-item done):**
+  - **Releases since turn 15, all on Maya's QA, eyes + presses:**
+    - 1.72.409: no monthly amount from a fixed 90 m².
+    - 1.72.410: rentals guide, rentals' slot.
+    - 1.72.411: no size range from illustrative units, SIX 8 + Dimri.
+    - 1.72.412: HAD-390 R4. On a phone the 3D, the tower step and the floor slider share one screen above the WhatsApp band; a real tap moved the floor 30 → 11 with no jump.
+    - 1.72.413: urban's HAD-393, no first-render focus jump.
+  - **Correction of turn 15:** "apartments 232-339 m²" on SIX 8 was NOT a published range. It came from two example units (each size sourced, the range not). Removed in 1.72.411; the design system records the correction.
+  - **Web (3.10):** [r2u 2026 masterplan guide](https://r2u.io/en/blog/interactive-masterplan-real-estate-guide/): the 2026 bar is live per-unit availability, per-apartment finish customisation, and Vision Pro walkthroughs. Kikar has the picker and 4 styles, and no availability, honestly (no official inventory). Its "31% faster" sales claim is marketing, not used.
+  - **Re-check (code):** live 1.72.413. /projects/hamedina/ he/en/ru: one h1, the film section, the R4 focus script. Hebrew: "מידע גלוי" ×4, the in-page WhatsApp wording ×3.
+  - **GSC (read, 3.10):**
+    - hamedina is indexed, last crawl 1.10 20:03.
+    - hamedina-ru: discovered, not indexed.
+    - hamedina-en: "URL is unknown". It IS in nadlan_project-sitemap2.xml with a self canonical and no robots block; the sitemap index was read 2.10 07:24.
+    - Re-inspect around 9.10. Requesting indexing is a GSC write, the owner's word.
+  - **Scale-up:** three failure modes added to the aesthetic-ownership skill: the fixed-bar focus law, the provenance law (a filter never proves inventory), the cache-key law.
+  - **Found:** HAD-406, Mapbox walking isochrones stored on 5 projects, against Mapbox's terms. A replacement from open data is offered as its own session.
+  - **NEXT:** the film swap (noaround), once the producer matches the IView2 layers to the municipal licence and Maya passes it. HAD-396 waits for urban's fixes. HAD-406 when its session runs.
+
 - **3.10 ~05:35, turn 15 (waiting on the owner for V6):**
   - **SIX 8 at ~200,000/m² is NOT a defect:** its own page attributes it ("לפי היזם 200,000 ₪ למ"ר", apartments 232-339 m²). Owner law: developer data as published, attributed. The finding is closed.
   - **New honesty finding:** the fleet-wide "~90 מ״ר" monthly-payment line shows on projects whose published units are far larger (SIX 8). It is logged as a Linear issue with a proposal (smallest published size, else hide). Kikar already skips it (1.72.399).

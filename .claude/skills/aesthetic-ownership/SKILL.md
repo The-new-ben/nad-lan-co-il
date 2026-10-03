@@ -159,4 +159,19 @@ traffic.
   326 KB photo raised phone LCP by 1.7 s until the `sizes` attribute was computed
   from the photo's real shown width. Every hero image gets sizes from its
   aspect ratio, not a flat `94vw`.
+- FIXED-BAR FOCUS LAW (HAD-390 R4, 3.10.2026): scroll-padding does NOT protect keyboard focus. Chrome never scrolls a
+  control that is already inside the window, so a control under a sticky header or a fixed bottom bar stays hidden when it
+  takes focus. A page with fixed chrome needs an explicit focus reveal: :focus-visible only, an INSTANT scrollBy, in a
+  0 ms timer, never on taps. And size the main tool so its essential controls share the free screen (the 3D + the floor
+  slider), instead of shrinking the bar. Measure with elementFromPoint at the control's centre, not with the box alone.
+  Test-pane trap: a hidden browser pane has document.hidden=true; requestAnimationFrame and smooth scroll never run there.
+  Take a screenshot to wake it before you trust a "nothing moved".
+- PROVENANCE LAW (HAD-403, 3.10.2026): a public number may come only from a sourced fact, never from illustrative or
+  example data. A RANGE built from two example units ("דירות 232-339 מ״ר") is a new claim, even when each unit's size is
+  sourced. A word filter (דוגמה/להמחשה/demo) can only REMOVE suspect data. It never proves the rest is official
+  inventory, so never write "real inventory" because a filter passed. When a filter changes what a page shows, survey the
+  whole fleet first (all projects, every language) and list exactly which pages change.
+- CACHE-KEY LAW (HAD-396 review, 3.10.2026): when a transient key is bumped, grep EVERY get_/set_/delete_transient of
+  that family. A bump on the read side alone means the cache never hits, and the heavy query runs on every render. A bump
+  without the invalidation hook means fresh content waits for the TTL.
 - EVERY TIME you learn a new failure mode, ADD IT HERE. This skill compounds.
