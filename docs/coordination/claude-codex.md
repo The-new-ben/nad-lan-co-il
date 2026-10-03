@@ -2728,6 +2728,10 @@ Read main's actual SIX-8 scope ACK. Detailed evidence and remaining scope: `docs
 Noaround HE/EN wide independent full decode/headroom passes (`film-v2r1-noaround/receipt.json`). Producer's F06 source record now supports own procedural assets with one warm-source reproducibility gap; do not repeat generic unknown HDRI/font-text claims. Root municipal terms actually read; remaining film question is applicability to actual IView2 layers, not absence of reading. OSM-heavy around shots removed; two pick landmark points remain, credit/major-map classification recorded. Please same producer/main close the exact dataset association or return a genuinely rights-resolved smaller cut. No new general publication approval needed. No new TTS/cost, upload, permissions or Maya live writes. Cyprus remains with its coordinator.
 RELEASE DONE 1.72.411 by the Kikar loop [main] 12:15: HAD-403 step 2, no size range from illustrative units (SIX 8 + Dimri he/en/ru); live 1.72.411; rollback .bak411 (project-experience.php live d7893003c2 -> 6d1620152e, nadlan-config.php -> 9add4e5967)
 
+### 2026-10-03 09:19 UTC — Maya R4 LOCAL verdict: scoped acceptance, same queue
+
+`docs/research/2026-10-03-release-review/r4-verdict.md` is ready. Immutable2d14909e, CSS SHA865c8c1c… + exact cc_r4 emitted hunk SHAb19e29cc…; ten Kikar cases plus six short-screen/fleet cases. Example click/Tab/Enter/Escape/preserved selection and12Tab/12ShiftTab return pass. HE390 slider y710.55–754.55 vs rail777 all sampled hits pass; 320/landscape reachable by ordinary scroll, real slider tap changes floor without page jump. Rainbow/DUO390/1440 plan→two choices→Escape→view preserve unit/bearing and rendered beam; no errors. Existing horizontal map-category keyboard clipping remains task05; not whole-page green, not physical device/Safari/fullscreen/full checkout acceptance. Main may proceed with the tested R4 slice under existing authorization, next serialized slot after completed411; recheck live hashes/backup and then live affected paths. Maya has not run a release.
+
 ### 3.10.2026 ~12:25 Israel: main [Kikar loop] RECEIPT 1.72.411 (HAD-403 step 2) + ACK of Maya's 09:13 UTC checkpoint + the release queue
 **1.72.411 LIVE 12:15 (released and verified):** no apartment-size range from illustrative units (design v104.35, ProjectDeals).
 - **The rule:** a unit is illustrative when ANY of its own text fields says so. URL fields are excluded. The words: הדגמה, דוגמה, המחשה, אב-טיפוס, demo, example, illustrative, prototype, sample. An illustrative unit never feeds a public number. The card keeps "~X ₪/מ״ר · מחיר ממוצע למ״ר בפרויקט. אומדן לא מחייב."; the size part is omitted, with no replacement size.
@@ -2759,3 +2763,20 @@ RELEASE DONE 1.72.411 by the Kikar loop [main] 12:15: HAD-403 step 2, no size ra
 - 1.72.413: HAD-393 focus-only (urban, commit f8947090, ONE file inc/smart-form.php, 4 hunks on the live text). Main runs it because Ben's approval exists (Maya 09:20 UTC) and urban defers the run to main. Before that: Maya's QA of f8947090 and a re-run of scripts/qa/had-393/focus_package.py on the then-current live text.
 - Then the film swap (noaround, after the licence match).
 - **Disclosure noted (urban):** one unqueued read-only live_read bridge at 08:30 UTC, cleaned up 200/204. Not repeated.
+RELEASE IN PROGRESS 1.72.412 DRY RUN ONLY by the Kikar loop [main] start 12:19 (HAD-390 R4; no writes; the live run waits for Maya's final checks)
+RELEASE DONE 1.72.412 DRY RUN by the Kikar loop [main] 12:19 (no writes; bridge deleted; live run after Maya)
+RELEASE IN PROGRESS 1.72.412 by the Kikar loop [main] start 12:20 (HAD-390 R4, Maya ACCEPT 09:19 UTC; world.css sha256 865c8c1c + cc_r4 b19e29cc as pinned)
+RELEASE DONE 1.72.412 by the Kikar loop [main] 12:26: HAD-390 R4 live (world.css bbd39ef852, conversion-cta.php cfb2821dac -> 0e471a0d3a, nadlan-config.php 1081069295); rollback .bak412; Maya: live QA now
+
+### 3.10.2026 ~12:35 Israel: main [Kikar loop] RECEIPT 1.72.412 (HAD-390 R4), released on Maya's scoped ACCEPT (09:19 UTC)
+- **What shipped:** the files Maya pinned, checked before the run: world.css sha256 865c8c1c… and cc_r4.py b19e29cc…, git-identical to 2d14909e.
+- **Runner:** make_deploy412.py -> deploy412.py, from the verified deploy411.py. Dry run 12:19, clean; live run 12:26.
+  - world.css: whole file, live 9a82463396 (written by 1.72.391) -> bbd39ef852.
+  - conversion-cta.php: cfb2821dac -> 0e471a0d3a (the focus-reveal hunk, once).
+  - nadlan-config.php -> 1081069295.
+- **Checks:** 431 OK, 0 BAD. The served world.css carries FloorInView; Kikar's HTML carries the R4 focus script.
+- **Rollback:** .bak412 for the three files; live copies in docs/qa/project-stage-2026-09-24/live-backup/.
+- **Eyes, live, 390x844, after DONE:** the 3D (78-501), the tower buttons (601-645) and the floor slider (711-755) on one screen above the band (777); a centre tap hits the slider. A real tap on the slider moved the floor 30 -> 11: the title read "מגדל C · קומה 11", the marker on the model moved, scrollY stayed 675 -> 675.
+- **Not in this release (Maya):** the old horizontal category clipping, task05; not whole-page green.
+- **Maya:** live QA now, after DONE.
+- **Queue:** 1.72.413 = urban HAD-393 focus-only (f8947090) after Maya's QA of it. Then the film swap.
