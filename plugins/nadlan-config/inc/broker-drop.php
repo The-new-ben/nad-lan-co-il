@@ -30,7 +30,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { return; }
 if ( defined( 'NL_DROP_VERSION' ) ) { return; }
-define( 'NL_DROP_VERSION', '1.1.3' );
+define( 'NL_DROP_VERSION', '1.1.4' );   // 1.1.4 (HAD-256): build lock, crash reconcile, nl_drop_pre_write
 define( 'NL_DROP_MAX_BYTES', 15728640 );
 define( 'NL_DROP_MAX_PHOTOS', 30 );
 
@@ -2023,7 +2023,207 @@ function nl_drop_usage_save( $post_id ) {
 	$GLOBALS['nl_drop_usage'] = null;
 }
 
+/* -----------------------------------------------------------------------------------------------------
+ * HAD-256 (4.10.2026): one build at a time per submission; one listing per submission and language, ever;
+ * a build that died half way is finished by the next one; a build that lost its lock stops writing.
+ *
+ *   The listing ID is allocated once, by a key the database itself keeps unique: wp_options.option_name.
+ *     A run inserts an empty placeholder post (post_status 'auto-draft': never public, no owner content) and claims
+ *     it with INSERT IGNORE INTO wp_options ( 'nl_pub_<drop>_<lang>', {post, tok} ). Exactly one claim exists per
+ *     drop and language; every later run reads it and works on that post. A run that loses the claim stops using
+ *     its placeholder, which stays an empty auto-draft that WordPress' own daily clean-up deletes after 7 days
+ *     (wp_delete_auto_drafts). Nothing with owner content is ever deleted to settle a race. (add_option() is not
+ *     used: it ends in INSERT ... ON DUPLICATE KEY UPDATE, which lets two callers both "win".)
+ *     A run that died after its INSERT left either an unclaimed empty auto-draft (harmless, cleaned by WordPress)
+ *     or a claimed post that the next run finishes. A 1.1.3 run that died after its insert is adopted through
+ *     its nl_drop_id meta when no claim exists yet.
+ *   The build lock is one row in wp_options, nl_drop_lock_<drop> (INSERT IGNORE), holding who took it, when, and a
+ *     fencing token: nl_fence on the drop, +1 on every acquisition (monotonic). A lock older than NL_DROP_LOCK_TTL
+ *     seconds (default 420: longer than the longest build, three model calls of 90 s plus the writing) is taken over:
+ *     the taker deletes exactly that row (compare-and-delete on its value) and inserts its own, with the next token.
+ *   Fencing: the old run may still be alive after a takeover.
+ *     - nl_result and nl_state, the commit of a build, are written by ONE UPDATE that also requires the run's own
+ *       lock row to be there (nl_drop_fenced_meta): a run that lost the lock cannot commit. Atomic.
+ *     - Every other write (the post's content and status, its meta, the language twins, the page) is checked first
+ *       (nl_drop_fence) and stops without writing when the lock is not the run's own. This is check-then-write:
+ *       a run paused right after its check and before its write, while another run takes the lock over (after the
+ *       TTL), can still make that one write. Its target is the single claimed post, with values from the same
+ *       submission; it cannot create a second listing. This window is documented in docs/qa/had-256/README.md.
+ *   Re-entrant inside one request (the owner journey takes the lock, then calls nl_drop_build).
+ *   state=writing is still accepted by the REST doors, but only a request that holds the lock builds.
+ *   do_action( 'nl_drop_checkpoint', $where, $drop_id ) marks the steps (locked, before_claim, claim_pending,
+ *     fenced:<step> right after each check); nothing listens on the live site. The local test bench (HAD-256)
+ *     pauses or kills the run there to prove the claims above.
+ * ----------------------------------------------------------------------------------------------------- */
+if ( ! defined( 'NL_DROP_LOCK_TTL' ) ) { define( 'NL_DROP_LOCK_TTL', 420 ); }
+if ( ! class_exists( 'NL_Drop_Fenced' ) ) {
+	class NL_Drop_Fenced extends Exception {}
+}
+
+function nl_drop_lock_ttl() {
+	return max( 1, (int) apply_filters( 'nl_drop_lock_ttl', NL_DROP_LOCK_TTL ) );
+}
+
+/** The lock row as stored, read past every cache: array( raw, who, t, tok ) or null. */
+function nl_drop_lock_read( $drop_id ) {
+	global $wpdb;
+	$raw = $wpdb->get_var( $wpdb->prepare( "SELECT option_value FROM {$wpdb->options} WHERE option_name = %s LIMIT 1", 'nl_drop_lock_' . (int) $drop_id ) );
+	if ( null === $raw ) { return null; }
+	$j = json_decode( (string) $raw, true );
+	return array( 'raw' => (string) $raw, 'who' => (string) ( $j['who'] ?? '' ), 't' => (int) ( $j['t'] ?? 0 ), 'tok' => (int) ( $j['tok'] ?? 0 ) );
+}
+
+/** Insert-if-absent on the unique option_name: true only for the request whose INSERT wrote the row. */
+function nl_drop_lock_insert( $name, $val ) {
+	global $wpdb;
+	$n = $wpdb->query( $wpdb->prepare( "INSERT IGNORE INTO {$wpdb->options} (option_name, option_value, autoload) VALUES (%s, %s, 'no')", $name, $val ) );
+	wp_cache_delete( $name, 'options' );
+	wp_cache_delete( 'notoptions', 'options' );
+	return 1 === (int) $n;
+}
+
+/** The next fencing token of the drop. Called only by the request that just won the lock row. */
+function nl_drop_fence_next( $drop_id ) {
+	global $wpdb;
+	$cur = (int) $wpdb->get_var( $wpdb->prepare( "SELECT meta_value FROM {$wpdb->postmeta} WHERE post_id = %d AND meta_key = 'nl_fence' ORDER BY meta_id ASC LIMIT 1", (int) $drop_id ) );
+	update_post_meta( (int) $drop_id, 'nl_fence', (string) ( $cur + 1 ) );
+	return $cur + 1;
+}
+
+/** True when this request holds the build lock of the drop (taken now, re-entered, or taken over from a dead run). */
+function nl_drop_lock_acquire( $drop_id, $who = '' ) {
+	$drop_id = (int) $drop_id;
+	if ( ! isset( $GLOBALS['nl_drop_locks'] ) || ! is_array( $GLOBALS['nl_drop_locks'] ) ) { $GLOBALS['nl_drop_locks'] = array(); }
+	if ( isset( $GLOBALS['nl_drop_locks'][ $drop_id ] ) ) { $GLOBALS['nl_drop_locks'][ $drop_id ]['depth']++; return true; }
+	global $wpdb;
+	$name = 'nl_drop_lock_' . $drop_id;
+	$seed = wp_json_encode( array( 'who' => (string) $who, 't' => time(), 'tok' => 0, 'r' => wp_generate_password( 12, false, false ) ) );
+	$got  = nl_drop_lock_insert( $name, $seed );
+	$cur  = null;
+	if ( ! $got ) {
+		$cur = nl_drop_lock_read( $drop_id );
+		if ( $cur && time() - $cur['t'] < nl_drop_lock_ttl() ) { return false; }
+		if ( $cur ) { $wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name = %s AND option_value = %s", $name, $cur['raw'] ) ); }
+		$got = nl_drop_lock_insert( $name, $seed );
+		if ( ! $got ) { return false; }
+	}
+	// the row is ours: stamp the next token into it (only the holder writes it)
+	$tok = nl_drop_fence_next( $drop_id );
+	$val = wp_json_encode( array( 'who' => (string) $who, 't' => time(), 'tok' => $tok, 'r' => wp_generate_password( 12, false, false ) ) );
+	$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->options} SET option_value = %s WHERE option_name = %s AND option_value = %s", $val, $name, $seed ) );
+	wp_cache_delete( $name, 'options' );
+	if ( $cur ) {
+		update_post_meta( $drop_id, 'nl_lock_takeover', wp_slash( wp_json_encode( array( 't' => time(), 'from' => $cur['who'], 'from_tok' => $cur['tok'], 'tok' => $tok, 'age' => time() - $cur['t'] ) ) ) );
+	}
+	$GLOBALS['nl_drop_locks'][ $drop_id ] = array( 'val' => $val, 'tok' => $tok, 'depth' => 1 );
+	return true;
+}
+
+/** Does this request still hold the lock with its own token? (Someone may have taken it over after the TTL.) */
+function nl_drop_fence_ok( $drop_id ) {
+	$drop_id = (int) $drop_id;
+	if ( empty( $GLOBALS['nl_drop_locks'][ $drop_id ] ) ) { return false; }
+	$cur = nl_drop_lock_read( $drop_id );
+	return $cur && $cur['raw'] === $GLOBALS['nl_drop_locks'][ $drop_id ]['val'];
+}
+
+/** Check-then-write fencing: stops the run, writing nothing more, when the lock is no longer this request's. */
+function nl_drop_fence( $drop_id, $where ) {
+	if ( ! nl_drop_fence_ok( $drop_id ) ) { throw new NL_Drop_Fenced( (string) $where ); }
+	do_action( 'nl_drop_checkpoint', 'fenced:' . $where, (int) $drop_id );
+}
+
+/** The commit writes (nl_result, nl_state): one UPDATE that succeeds only while the run's own lock row exists. */
+function nl_drop_fenced_meta( $drop_id, $key, $value ) {
+	global $wpdb;
+	$drop_id = (int) $drop_id;
+	$mine    = (string) ( $GLOBALS['nl_drop_locks'][ $drop_id ]['val'] ?? '' );
+	if ( $mine === '' ) { throw new NL_Drop_Fenced( 'meta_' . $key ); }
+	add_post_meta( $drop_id, $key, '', true );   // the row exists before the conditional UPDATE (no-op when it does)
+	$n = $wpdb->query( $wpdb->prepare(
+		"UPDATE {$wpdb->postmeta} SET meta_value = %s WHERE post_id = %d AND meta_key = %s AND EXISTS ( SELECT 1 FROM {$wpdb->options} WHERE option_name = %s AND option_value = %s )",
+		maybe_serialize( $value ), $drop_id, $key, 'nl_drop_lock_' . $drop_id, $mine
+	) );
+	wp_cache_delete( $drop_id, 'post_meta' );
+	if ( 1 !== (int) $n && ! nl_drop_fence_ok( $drop_id ) ) { throw new NL_Drop_Fenced( 'meta_' . $key ); }   // 0 rows and still ours = the same value
+}
+
+function nl_drop_lock_release( $drop_id ) {
+	$drop_id = (int) $drop_id;
+	if ( empty( $GLOBALS['nl_drop_locks'][ $drop_id ] ) ) { return; }
+	if ( --$GLOBALS['nl_drop_locks'][ $drop_id ]['depth'] > 0 ) { return; }
+	global $wpdb;
+	$name = 'nl_drop_lock_' . $drop_id;
+	$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name = %s AND option_value = %s", $name, $GLOBALS['nl_drop_locks'][ $drop_id ]['val'] ) );
+	wp_cache_delete( $name, 'options' );
+	unset( $GLOBALS['nl_drop_locks'][ $drop_id ] );
+}
+
+/** The post a drop's language owns, by its claim row: post id or 0. */
+function nl_drop_claim_read( $drop_id, $lang ) {
+	global $wpdb;
+	$raw = $wpdb->get_var( $wpdb->prepare( "SELECT option_value FROM {$wpdb->options} WHERE option_name = %s LIMIT 1", 'nl_pub_' . (int) $drop_id . '_' . nl_drop_L( $lang ) ) );
+	$j   = json_decode( (string) $raw, true );
+	return is_array( $j ) ? (int) ( $j['post'] ?? 0 ) : 0;
+}
+
+/** A 1.1.3 listing of this drop (written before claims existed): the oldest one. */
+function nl_drop_orphan( $drop_id ) {
+	$ids = get_posts( array(
+		'post_type'        => 'nadlan_property',
+		'post_status'      => array( 'publish', 'draft', 'pending', 'private', 'future' ),
+		'numberposts'      => 1,
+		'orderby'          => 'ID',
+		'order'            => 'ASC',
+		'fields'           => 'ids',
+		'no_found_rows'    => true,
+		'suppress_filters' => true,
+		'meta_query'       => array( array( 'key' => 'nl_drop_id', 'value' => (string) (int) $drop_id ) ),
+	) );
+	return $ids ? (int) $ids[0] : 0;
+}
+
+/**
+ * The one post of a drop and language: the claimed one, or a new empty placeholder that wins the claim.
+ * Returns array( id, fresh ) or WP_Error (a claimed post that was deleted is not brought back).
+ */
+function nl_drop_claim_post( $drop_id, $lang, $type, $parent = 0, $adopt = 0 ) {
+	$drop_id = (int) $drop_id;
+	$have    = nl_drop_claim_read( $drop_id, $lang );
+	if ( $have ) {
+		if ( ! get_post( $have ) ) { return new WP_Error( 'nl_drop_claim_lost', 'the claimed post is gone' ); }
+		return array( $have, get_post_status( $have ) === 'auto-draft' );
+	}
+	do_action( 'nl_drop_checkpoint', 'before_claim', $drop_id );
+	$ph = $adopt ? (int) $adopt : wp_insert_post( array( 'post_type' => $type, 'post_status' => 'auto-draft', 'post_title' => '', 'post_parent' => (int) $parent, 'post_author' => nl_drop_author() ), true );
+	if ( is_wp_error( $ph ) || ! $ph ) { return is_wp_error( $ph ) ? $ph : new WP_Error( 'nl_drop_insert', 'insert failed' ); }
+	do_action( 'nl_drop_checkpoint', 'claim_pending', $drop_id );
+	$tok = (int) ( $GLOBALS['nl_drop_locks'][ $drop_id ]['tok'] ?? 0 );
+	if ( nl_drop_lock_insert( 'nl_pub_' . $drop_id . '_' . nl_drop_L( $lang ), wp_json_encode( array( 'post' => (int) $ph, 'tok' => $tok, 't' => time() ) ) ) ) {
+		return array( (int) $ph, ! $adopt );
+	}
+	// another run claimed first: its post is the listing; this placeholder stays empty for WordPress' clean-up
+	$have = nl_drop_claim_read( $drop_id, $lang );
+	if ( ! $have || ! get_post( $have ) ) { return new WP_Error( 'nl_drop_claim_lost', 'the claimed post is gone' ); }
+	return array( $have, get_post_status( $have ) === 'auto-draft' );
+}
+
 function nl_drop_build( $drop_id, $b ) {
+	if ( ! nl_drop_lock_acquire( $drop_id, 'build:' . ( $b['kind'] ?? 'broker' ) ) ) {
+		return new WP_Error( 'nl_drop_busy', 'busy', array( 'status' => 409 ) );
+	}
+	try {
+		wp_cache_delete( (int) $drop_id, 'post_meta' );
+		do_action( 'nl_drop_checkpoint', 'locked', (int) $drop_id );
+		return nl_drop_build_locked( $drop_id, $b );
+	} catch ( NL_Drop_Fenced $e ) {
+		return new WP_Error( 'nl_drop_fenced', 'the build lock moved to another run (' . $e->getMessage() . ')', array( 'status' => 409 ) );
+	} finally {
+		nl_drop_lock_release( $drop_id );
+	}
+}
+
+function nl_drop_build_locked( $drop_id, $b ) {
 	$prev = get_post_meta( $drop_id, 'nl_result', true );
 	if ( is_array( $prev ) && ! empty( $prev['he_id'] ) ) { return $prev; }
 	$f      = json_decode( (string) get_post_meta( $drop_id, 'nl_facts', true ), true );
@@ -2034,7 +2234,9 @@ function nl_drop_build( $drop_id, $b ) {
 	$langs  = $owner ? array( 'he' ) : (array) ( $b['langs'] ?? array( 'he', 'en' ) );
 	update_post_meta( $drop_id, 'nl_state', 'writing' );
 	$err  = null;
-	$copy = nl_drop_write( $f, $text, $b, $err );
+	// HAD-256: a door that already holds the approved copy (the owner journey's preview) hands it in; no model call then
+	$copy = apply_filters( 'nl_drop_pre_write', null, $f, $text, $b, $drop_id );
+	if ( ! is_array( $copy ) || empty( $copy['he'] ) ) { $copy = nl_drop_write( $f, $text, $b, $err ); }
 	$xl   = array_values( array_intersect( array( 'ru', 'fr' ), $langs ) );
 	if ( $xl ) {
 		$terr = null;
@@ -2053,21 +2255,35 @@ function nl_drop_build( $drop_id, $b ) {
 	$author = $owner && ! empty( $b['user_id'] ) ? (int) $b['user_id'] : nl_drop_author();
 	$status = $b['auto'] ? 'publish' : 'draft';
 
-	$had   = nl_drop_kses_off();
-	$he_id = wp_insert_post( array(
-		'post_type'    => 'nadlan_property',
+	// HAD-256: the one listing of this drop: its claimed post (a dead run's included), or a new placeholder that wins
+	// the claim; the content goes into that post only (see the lock block above nl_drop_build)
+	nl_drop_fence( $drop_id, 'claim' );
+	$claim = nl_drop_claim_post( $drop_id, 'he', 'nadlan_property', 0, nl_drop_claim_read( $drop_id, 'he' ) ? 0 : nl_drop_orphan( $drop_id ) );
+	if ( is_wp_error( $claim ) ) { nl_drop_fenced_meta( $drop_id, 'nl_state', 'failed' ); return $claim; }
+	$he_id = (int) $claim[0];
+	$now   = (string) get_post_status( $he_id );
+	if ( $now !== 'auto-draft' ) {
+		// written before by a run that did not reach nl_result: it keeps its address and its status
+		$slug   = (string) get_post_field( 'post_name', $he_id ) !== '' ? (string) get_post_field( 'post_name', $he_id ) : $slug;
+		$status = $now;
+	}
+	nl_drop_fence( $drop_id, 'content' );
+	if ( $now !== 'auto-draft' ) { update_post_meta( $drop_id, 'nl_reconciled', (string) $he_id ); }
+	$had = nl_drop_kses_off();
+	$upd = wp_update_post( array(
+		'ID'           => $he_id,
 		'post_status'  => $status,
 		'post_title'   => nl_drop_fill( $copy['he']['title'], $f, 'he' ),
 		'post_name'    => $slug,
 		'post_excerpt' => nl_drop_fill( $copy['he']['dek'], $f, 'he' ),
-		'post_content' => '',
 		'post_author'  => $author,
 	), true );
 	nl_drop_kses_on( $had );
-	if ( is_wp_error( $he_id ) ) { update_post_meta( $drop_id, 'nl_state', 'failed' ); return $he_id; }
+	if ( is_wp_error( $upd ) || ! $upd ) { nl_drop_fenced_meta( $drop_id, 'nl_state', 'failed' ); return is_wp_error( $upd ) ? $upd : new WP_Error( 'nl_drop_update', 'update failed' ); }
 
 	$type_map = array( 'mini_penthouse' => 'penthouse', 'villa' => 'cottage' );
 	$ptype    = $f['property_type'] ? ( $type_map[ $f['property_type'] ] ?? $f['property_type'] ) : 'apartment';
+	nl_drop_fence( $drop_id, 'before_meta' );
 	$meta     = array(
 		'listing_type'   => $f['listing_type'],
 		'property_type'  => $ptype,
@@ -2123,18 +2339,30 @@ function nl_drop_build( $drop_id, $b ) {
 		if ( empty( $copy[ $l ] ) ) { continue; }
 		$site = nl_drop_site_ensure( $b, $l, $status );
 		if ( ! $site ) { continue; }
-		$had = nl_drop_kses_off();
-		$tid = wp_insert_post( array(
-			'post_type'    => 'page',
-			'post_status'  => $status,
-			'post_parent'  => $site,
-			'post_title'   => nl_drop_fill( $copy[ $l ]['title'], $f, $l ),
-			'post_name'    => $slug,
-			'post_excerpt' => nl_drop_fill( $copy[ $l ]['dek'], $f, $l ),
-			'post_content' => '',
-			'post_author'  => $author,
-		), true );
-		nl_drop_kses_on( $had );
+		// HAD-256: the language twin is claimed like the listing (one per drop and language), then written by update
+		nl_drop_fence( $drop_id, 'claim_' . $l );
+		$old = 0;
+		if ( ! nl_drop_claim_read( $drop_id, $l ) ) {
+			$tw  = get_posts( array( 'post_type' => 'page', 'post_status' => 'any', 'numberposts' => 1, 'fields' => 'ids', 'no_found_rows' => true, 'suppress_filters' => true, 'meta_query' => array( array( 'key' => 'nl_twin', 'value' => (string) $he_id ), array( 'key' => 'nl_lang', 'value' => $l ) ) ) );
+			$old = $tw ? (int) $tw[0] : 0;
+		}
+		$tc = nl_drop_claim_post( $drop_id, $l, 'page', $site, $old );
+		if ( is_wp_error( $tc ) ) { continue; }
+		$tid = (int) $tc[0];
+		if ( get_post_status( $tid ) === 'auto-draft' ) {
+			nl_drop_fence( $drop_id, 'twin_' . $l );
+			$had = nl_drop_kses_off();
+			$tid = wp_update_post( array(
+				'ID'           => $tid,
+				'post_status'  => $status,
+				'post_parent'  => $site,
+				'post_title'   => nl_drop_fill( $copy[ $l ]['title'], $f, $l ),
+				'post_name'    => $slug,
+				'post_excerpt' => nl_drop_fill( $copy[ $l ]['dek'], $f, $l ),
+				'post_author'  => $author,
+			), true );
+			nl_drop_kses_on( $had );
+		}
 		if ( is_wp_error( $tid ) || ! $tid ) { continue; }
 		update_post_meta( $tid, 'nl_broker_id', (string) $b['id'] );
 		update_post_meta( $tid, 'nl_twin', (string) $he_id );
@@ -2150,13 +2378,14 @@ function nl_drop_build( $drop_id, $b ) {
 		$fresh = nl_drop_broker( $b['id'] );
 		if ( $fresh ) { $b = $fresh; }
 	}
+	nl_drop_fence( $drop_id, 'before_render' );
 	nl_drop_render_all( $he_id, $b );
 	$urls = array( 'he' => (string) get_permalink( $he_id ) );
 	foreach ( $twins as $l => $tid ) { $urls[ $l ] = (string) get_permalink( $tid ); }
 	nl_drop_site_sync( $b );
 	nl_drop_purge( array_merge( array( $he_id ), array_values( $twins ), array( $b['site_he'] ?? 0, $b['site_en'] ?? 0, $b['site_ru'] ?? 0, $b['site_fr'] ?? 0 ) ) );
 	$res = array(
-		'state'  => $status === 'publish' ? 'published' : 'draft',
+		'state'  => get_post_status( $he_id ) === 'publish' ? 'published' : 'draft',
 		'he_id'  => (int) $he_id,
 		'en_id'  => (int) ( $twins['en'] ?? 0 ),
 		'url_he' => $urls['he'],
@@ -2165,8 +2394,9 @@ function nl_drop_build( $drop_id, $b ) {
 		'title'  => nl_drop_fill( $copy['he']['title'], $f, 'he' ),
 		'ai'     => $err ? 'fallback:' . $err : 'ok',
 	);
-	update_post_meta( $drop_id, 'nl_result', $res );
-	update_post_meta( $drop_id, 'nl_state', $res['state'] );
+	// the commit: written only while this run's own lock row exists (one UPDATE each)
+	nl_drop_fenced_meta( $drop_id, 'nl_result', $res );
+	nl_drop_fenced_meta( $drop_id, 'nl_state', $res['state'] );
 	nl_drop_usage_save( $drop_id );
 	return $res;
 }
@@ -2189,18 +2419,226 @@ function nl_drop_rest_broker( $req ) {
 	return $b;
 }
 
+/* -----------------------------------------------------------------------------------------------------
+ * HAD-256 (4.10.2026): location and camera data out of every photo before it is kept (1.1.3 cleaned only a JPEG
+ * that carried GPS, and only when the exif extension was there), and the photo stays the right way up.
+ *   Orientation: an EXIF orientation 2-8 (JPEG, PNG eXIf, WebP EXIF) is applied to the pixels first, all eight
+ *         cases (rotations and mirrors), by GD or else Imagick; the re-encode then carries no metadata at all.
+ *         When neither library can do it, the photo is refused ('orient'): cutting the EXIF alone would leave it
+ *         sideways or mirrored.
+ *   JPEG without an orientation to apply: the APP1 (EXIF, XMP), APP13 (IPTC) and COM segments are cut losslessly.
+ *   PNG:  the eXIf, tEXt, zTXt, iTXt and tIME chunks are cut (lossless).
+ *   WebP: the EXIF and XMP chunks are cut and the VP8X flags cleared (lossless).
+ *   HEIC/HEIF: converted to JPEG by Imagick (autoOrient, stripImage) when this server's Imagick reads HEIC; else
+ *         it cannot be cleaned here: 'heic' (the owner journey refuses the file; the broker door keeps 1.1.3's).
+ * Returns array( 'file', 'type', 'ext' ) of the clean file, or WP_Error (corrupt, heic, orient).
+ * ----------------------------------------------------------------------------------------------------- */
+
+/** The orientation tag (0x0112) in a TIFF block (EXIF without its "Exif\0\0" prefix); 1 when absent. */
+function nl_drop_tiff_orientation( $tiff ) {
+	$tiff = (string) $tiff;
+	if ( substr( $tiff, 0, 6 ) === "Exif\0\0" ) { $tiff = substr( $tiff, 6 ); }
+	$bo = substr( $tiff, 0, 2 );
+	if ( $bo !== 'II' && $bo !== 'MM' ) { return 1; }
+	$le  = $bo === 'II';
+	$u16 = function ( $o ) use ( $tiff, $le ) { $s = substr( $tiff, $o, 2 ); if ( strlen( $s ) < 2 ) { return 0; } $v = unpack( $le ? 'v' : 'n', $s ); return (int) $v[1]; };
+	$u32 = function ( $o ) use ( $tiff, $le ) { $s = substr( $tiff, $o, 4 ); if ( strlen( $s ) < 4 ) { return 0; } $v = unpack( $le ? 'V' : 'N', $s ); return (int) $v[1]; };
+	$ifd = $u32( 4 );
+	$n   = $u16( $ifd );
+	for ( $k = 0; $k < $n && $k < 300; $k++ ) {
+		$e = $ifd + 2 + $k * 12;
+		if ( $u16( $e ) === 0x0112 ) { $o = $u16( $e + 8 ); return ( $o >= 1 && $o <= 8 ) ? $o : 1; }
+	}
+	return 1;
+}
+
+/** The EXIF orientation of a JPEG, PNG or WebP file's bytes; 1 when there is none. */
+function nl_drop_exif_orientation( $bin, $type ) {
+	$bin = (string) $bin;
+	if ( $type === 'image/jpeg' ) {
+		$len = strlen( $bin );
+		$i   = 2;
+		while ( $i + 4 <= $len && ord( $bin[ $i ] ) === 0xFF ) {
+			$m   = ord( $bin[ $i + 1 ] );
+			$seg = ( ord( $bin[ $i + 2 ] ) << 8 ) | ord( $bin[ $i + 3 ] );
+			if ( $m === 0xDA || $seg < 2 ) { break; }
+			if ( $m === 0xE1 && substr( $bin, $i + 4, 6 ) === "Exif\0\0" ) { return nl_drop_tiff_orientation( substr( $bin, $i + 10, $seg - 8 ) ); }
+			$i += 2 + $seg;
+		}
+		return 1;
+	}
+	if ( $type === 'image/png' ) {
+		$len = strlen( $bin );
+		$i   = 8;
+		while ( $i + 12 <= $len ) {
+			$n = unpack( 'N', substr( $bin, $i, 4 ) );
+			$n = (int) $n[1];
+			if ( substr( $bin, $i + 4, 4 ) === 'eXIf' ) { return nl_drop_tiff_orientation( substr( $bin, $i + 8, $n ) ); }
+			$i += 12 + $n;
+		}
+		return 1;
+	}
+	if ( $type === 'image/webp' ) {
+		$len = strlen( $bin );
+		$i   = 12;
+		while ( $i + 8 <= $len ) {
+			$n = unpack( 'V', substr( $bin, $i + 4, 4 ) );
+			$n = (int) $n[1];
+			if ( substr( $bin, $i, 4 ) === 'EXIF' ) { return nl_drop_tiff_orientation( substr( $bin, $i + 8, $n ) ); }
+			$i += 8 + $n + ( $n & 1 );
+		}
+	}
+	return 1;
+}
+
+/** All eight EXIF orientations applied to a GD image (the same transforms as Pillow's ImageOps.exif_transpose). */
+function nl_drop_gd_orient( $im, $o ) {
+	switch ( (int) $o ) {
+		case 2: imageflip( $im, IMG_FLIP_HORIZONTAL ); return $im;
+		case 3: return imagerotate( $im, 180, 0 );
+		case 4: imageflip( $im, IMG_FLIP_VERTICAL ); return $im;
+		case 5: $im = imagerotate( $im, -90, 0 ); imageflip( $im, IMG_FLIP_HORIZONTAL ); return $im;   // transpose
+		case 6: return imagerotate( $im, -90, 0 );                                                     // 90 clockwise
+		case 7: $im = imagerotate( $im, 90, 0 ); imageflip( $im, IMG_FLIP_HORIZONTAL ); return $im;    // transverse
+		case 8: return imagerotate( $im, 90, 0 );                                                      // 90 counter-clockwise
+	}
+	return $im;
+}
+
+/** Turns the pixels upright and writes them back without any metadata: GD first, then Imagick. True when done. */
+function nl_drop_reorient( $file, $type, $o, $bin ) {
+	$gd_read = array( 'image/jpeg' => 'imagecreatefromjpeg', 'image/png' => 'imagecreatefrompng', 'image/webp' => 'imagecreatefromwebp' );
+	if ( function_exists( 'imagecreatefromstring' ) && function_exists( 'imageflip' ) && function_exists( $gd_read[ $type ] ?? '' ) ) {
+		$im = @imagecreatefromstring( $bin );
+		if ( ! $im ) { return new WP_Error( 'corrupt', 'decode failed' ); }
+		$im = nl_drop_gd_orient( $im, $o );
+		if ( $type === 'image/png' ) { imagesavealpha( $im, true ); $ok = imagepng( $im, $file, 6 ); }
+		elseif ( $type === 'image/webp' ) { $ok = function_exists( 'imagewebp' ) && imagewebp( $im, $file, 90 ); }
+		else { $ok = imagejpeg( $im, $file, 92 ); }
+		imagedestroy( $im );
+		if ( $ok ) { return true; }
+	}
+	if ( class_exists( 'Imagick' ) ) {
+		try {
+			$im = new Imagick();
+			$im->readImageBlob( $bin );
+			$im->autoOrient();
+			$im->stripImage();
+			$im->writeImage( $file );
+			$im->clear();
+			return true;
+		} catch ( Exception $e ) {
+			return new WP_Error( 'corrupt', 'imagick failed' );
+		}
+	}
+	return false;
+}
+
+function nl_drop_jpeg_strip( $bin ) {
+	if ( substr( $bin, 0, 2 ) !== "\xFF\xD8" ) { return null; }
+	$out = "\xFF\xD8";
+	$len = strlen( $bin );
+	$i   = 2;
+	while ( $i + 4 <= $len ) {
+		if ( ord( $bin[ $i ] ) !== 0xFF ) { return null; }
+		$m = ord( $bin[ $i + 1 ] );
+		if ( $m === 0xFF ) { $i++; continue; }
+		if ( $m === 0xDA ) { return $out . substr( $bin, $i ); }
+		$seg = ( ord( $bin[ $i + 2 ] ) << 8 ) | ord( $bin[ $i + 3 ] );
+		if ( $seg < 2 || $i + 2 + $seg > $len ) { return null; }
+		if ( ! in_array( $m, array( 0xE1, 0xED, 0xFE ), true ) ) { $out .= substr( $bin, $i, 2 + $seg ); }
+		$i += 2 + $seg;
+	}
+	return null;
+}
+
+function nl_drop_png_strip( $bin ) {
+	if ( substr( $bin, 0, 8 ) !== "\x89PNG\r\n\x1a\n" ) { return null; }
+	$out = substr( $bin, 0, 8 );
+	$len = strlen( $bin );
+	$i   = 8;
+	while ( $i + 12 <= $len ) {
+		$n    = unpack( 'N', substr( $bin, $i, 4 ) );
+		$n    = (int) $n[1];
+		$type = substr( $bin, $i + 4, 4 );
+		if ( $i + 12 + $n > $len ) { return null; }
+		if ( ! in_array( $type, array( 'eXIf', 'tEXt', 'zTXt', 'iTXt', 'tIME' ), true ) ) { $out .= substr( $bin, $i, 12 + $n ); }
+		$i += 12 + $n;
+		if ( $type === 'IEND' ) { return $out; }
+	}
+	return null;
+}
+
+function nl_drop_webp_strip( $bin ) {
+	if ( substr( $bin, 0, 4 ) !== 'RIFF' || substr( $bin, 8, 4 ) !== 'WEBP' ) { return null; }
+	$body = '';
+	$len  = strlen( $bin );
+	$i    = 12;
+	while ( $i + 8 <= $len ) {
+		$cc  = substr( $bin, $i, 4 );
+		$n   = unpack( 'V', substr( $bin, $i + 4, 4 ) );
+		$n   = (int) $n[1];
+		$pad = $n + ( $n & 1 );
+		if ( $i + 8 + $n > $len ) { return null; }
+		$chunk = substr( $bin, $i, 8 + $pad );
+		if ( $cc === 'VP8X' && $n >= 1 ) { $chunk[8] = chr( ord( $chunk[8] ) & ~0x0C ); }
+		if ( $cc !== 'EXIF' && $cc !== 'XMP ' ) { $body .= $chunk; }
+		$i += 8 + $pad;
+	}
+	return 'RIFF' . pack( 'V', 4 + strlen( $body ) ) . 'WEBP' . $body;
+}
+
+function nl_drop_clean_image( $file, $type ) {
+	$type = strtolower( (string) $type );
+	$bin  = @file_get_contents( $file );
+	if ( ! is_string( $bin ) || $bin === '' ) { return new WP_Error( 'corrupt', 'empty' ); }
+	if ( $type === 'image/heic' || $type === 'image/heif' ) {
+		$heic = false;
+		if ( class_exists( 'Imagick' ) ) {
+			try { $heic = (bool) array_intersect( array( 'HEIC', 'HEIF' ), (array) Imagick::queryFormats( 'HEI*' ) ); } catch ( Exception $e ) { $heic = false; }
+		}
+		if ( ! $heic ) { return new WP_Error( 'heic', 'this server cannot read HEIC' ); }
+		try {
+			$im = new Imagick( $file );
+			$im->autoOrient();
+			$im->stripImage();
+			$im->setImageFormat( 'jpeg' );
+			$im->setImageCompressionQuality( 90 );
+			$out = preg_replace( '/\.(heic|heif)$/i', '', $file ) . '.jpg';
+			$im->writeImage( $out );
+			$im->clear();
+			if ( $out !== $file ) { @unlink( $file ); }
+			return array( 'file' => $out, 'type' => 'image/jpeg', 'ext' => 'jpg' );
+		} catch ( Exception $e ) {
+			return new WP_Error( 'corrupt', 'heic decode failed' );
+		}
+	}
+	if ( ! in_array( $type, array( 'image/jpeg', 'image/png', 'image/webp' ), true ) ) { return new WP_Error( 'type', 'not an image' ); }
+	$o = nl_drop_exif_orientation( $bin, $type );
+	if ( $o !== 1 ) {
+		$r = nl_drop_reorient( $file, $type, $o, $bin );
+		if ( is_wp_error( $r ) ) { return $r; }
+		if ( ! $r ) { return new WP_Error( 'orient', 'this server cannot turn the photo upright' ); }
+		$bin = (string) @file_get_contents( $file );
+	}
+	if ( $type === 'image/jpeg' ) { $clean = nl_drop_jpeg_strip( $bin ); }
+	elseif ( $type === 'image/png' ) { $clean = nl_drop_png_strip( $bin ); }
+	else { $clean = nl_drop_webp_strip( $bin ); }
+	if ( null === $clean ) { return new WP_Error( 'corrupt', 'structure' ); }
+	file_put_contents( $file, $clean );
+	clearstatcache( true, $file );
+	$size = @getimagesize( $file );
+	if ( ! $size || empty( $size[0] ) ) { return new WP_Error( 'corrupt', 'does not open' ); }
+	if ( function_exists( 'imagecreatefromstring' ) && ! @imagecreatefromstring( $clean ) ) { return new WP_Error( 'corrupt', 'does not decode' ); }
+	$ext = array( 'image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp' );
+	return array( 'file' => $file, 'type' => $type, 'ext' => $ext[ $type ] );
+}
+
+/** 1.1.3's name, kept for its callers (the broker door): every type is cleaned now; a file that cannot be cleaned
+ *  (a HEIC this server cannot read, an orientation it cannot apply) stays as 1.1.3 kept it. */
 function nl_drop_strip_gps( $file, $type ) {
-	if ( $type !== 'image/jpeg' || ! function_exists( 'exif_read_data' ) || ! function_exists( 'imagecreatefromjpeg' ) ) { return; }
-	$ex = @exif_read_data( $file );
-	if ( ! is_array( $ex ) || empty( $ex['GPSLatitude'] ) ) { return; }
-	$im = @imagecreatefromjpeg( $file );
-	if ( ! $im ) { return; }
-	$o = (int) ( $ex['Orientation'] ?? 1 );
-	if ( $o === 3 ) { $im = imagerotate( $im, 180, 0 ); }
-	elseif ( $o === 6 ) { $im = imagerotate( $im, -90, 0 ); }
-	elseif ( $o === 8 ) { $im = imagerotate( $im, 90, 0 ); }
-	imagejpeg( $im, $file, 90 );
-	imagedestroy( $im );
+	if ( in_array( strtolower( (string) $type ), array( 'image/heic', 'image/heif' ), true ) ) { return; }
+	nl_drop_clean_image( $file, $type );
 }
 
 function nl_drop_rest_photo( WP_REST_Request $req ) {
@@ -2286,9 +2724,11 @@ function nl_drop_rest_build( WP_REST_Request $req ) {
 		return new WP_Error( 'nf', 'לא נמצא.', array( 'status' => 404 ) );
 	}
 	$state = (string) get_post_meta( $drop, 'nl_state', true );
+	// 'writing' stays a door state (a run that died), but only the request that gets the build lock builds (HAD-256)
 	if ( ! in_array( $state, array( 'ready', 'writing', 'published', 'draft' ), true ) ) { return new WP_Error( 'state', 'חסרים פרטים.', array( 'status' => 409 ) ); }
 	@set_time_limit( 170 );
 	$res = nl_drop_build( $drop, $b );
+	if ( is_wp_error( $res ) && $res->get_error_code() === 'nl_drop_busy' ) { return new WP_Error( 'busy', 'העמוד נבנה כרגע. בודקים שוב בעוד רגע.', array( 'status' => 409 ) ); }
 	if ( is_wp_error( $res ) ) { return new WP_Error( 'build', 'בניית העמוד נכשלה. אפשר לנסות שוב.', array( 'status' => 500 ) ); }
 	return $res;
 }

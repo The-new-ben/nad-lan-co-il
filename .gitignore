@@ -47,3 +47,6 @@ scripts/project-stage/_cache/
 
 # the contractors register extract (17,874 names, rebuilt by scripts/pros/build_register_facts.py); the plugin ships only business facts
 scripts/pros/data/
+
+# HAD-256 local bench: the Playground sites, extracted base code and scratch live here, never in git
+scripts/had-256/local/.runtime/

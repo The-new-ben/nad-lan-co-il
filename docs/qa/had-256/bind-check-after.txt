@@ -1,0 +1,15 @@
+HAD-256 bench bind check, 2026-10-04 01:18:34
+Get-NetTCPConnection -State Listen, every socket of the bench process (PID 29564):
+
+LocalAddress LocalPort OwningProcess
+------------ --------- -------------
+127.0.0.1        57325         29564
+127.0.0.1        57324         29564
+127.0.0.1        57323         29564
+127.0.0.1        57322         29564
+127.0.0.1        57320         29564
+127.0.0.1        57319         29564
+127.0.0.1         9401         29564
+
+From this machine's LAN address 192.168.0.143:9401 -> connection refused. From 127.0.0.1:9401 -> HTTP 200.
+

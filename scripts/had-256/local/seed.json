@@ -1,0 +1,20 @@
+{
+  "_note": "HAD-256 local bench only. Synthetic accounts for a WordPress Playground site on 127.0.0.1. Never used on any real site.",
+  "users": [
+    { "key": "dana",  "login": "dana_sample",  "email": "dana.sample@example.test",  "name": "דנה",  "password": "Sample-Dana-2026!", "role": "subscriber" },
+    { "key": "yoav",  "login": "yoav_sample",  "email": "yoav.sample@example.test",  "name": "יואב", "password": "Sample-Yoav-2026!", "role": "subscriber" },
+    { "key": "admin", "login": "bench_admin",  "email": "bench.admin@example.test",  "name": "Bench", "password": "Sample-Admin-2026!", "role": "administrator" }
+  ],
+  "whatsapp_stub": "972000000000",
+  "listing": {
+    "city": "תל אביב יפו",
+    "hood": "שכונת הדוגמה",
+    "rooms": "4",
+    "size": "96",
+    "floor": "3 מתוך 8",
+    "price": "3450000",
+    "desc": "דירה מוארת בקומה שלישית, שלושה כיווני אוויר, מרפסת שמש של 10 מ״ר לכיוון מערב. חניה בטאבו ומחסן. הבניין עם מעלית, קרוב לפארק ולתחבורה ציבורית.",
+    "cname": "דנה",
+    "phone": "050-0000000"
+  }
+}
