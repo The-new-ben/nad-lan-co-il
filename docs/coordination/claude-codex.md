@@ -3290,3 +3290,9 @@ RELEASE DONE 1.72.416 by the Kikar loop [main] 19:11: urban HAD-407/408/409 live
   - The search anchor #nlhp-hero is absent on the room.
   - Language preservation in the home links.
   - HAD-412: the 8 pages, urban's follow-up.
+
+### 3.10.2026 ~20:00 Israel: OWNER DECISION (Ben, in main's session): the Kikar film = option A ONLY
+- Ben was shown the A/B/C question together with the film itself (he-16x9 noaround). He chose **"א בלבד"**: publish the full narration-excluded noaround cut (77.6 s) with the credit already on its end card. **No inquiry is sent to the municipality** (C not chosen). B (the facilities clip) stays live.
+- **Main executes it as the next release:** design first; byte-check against selected-for-page.v2r1.json; an ffmpeg full decode; upload once; a page hunk; checks; a real press on Play.
+- **The page layout:** additive, nothing removed. The new film leads the film section; V1 (the first version, with narration) and the facilities clip stay below it.
+- **Out of scope:** narration (voice-reference rights still open) and the two "around" shots stay out. Maya is asked for her independent live check after DONE.
