@@ -214,6 +214,15 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **3.10 ~04:00, V2 loop turn 14: V8 step 3 (1.72.405, the menu) and V9 (1.72.407) are LIVE. Every V-item is done except V6, which waits for the owner.**
+  - **Re-check (code):** home and /en/ link to Kikar; the menu link is on /north-tel-aviv/; the film and the new WhatsApp wording are on he and en; DUO's comparison table links Kikar in he and en. All OK. Live is 1.72.408 (rentals).
+  - **V9 proof:** `tools/wa_wording_check.py --all-projects` covered 330 pages, 0 breaking, the bar on 330/330.
+  - **Scale-up:**
+    - the skill `project-masterpiece` learned the Kikar lessons (V8 levers, the film on the page, choosing a voice by ear, the V9 check, the release lock);
+    - the memory `nadlan-release-lock-lesson` holds the release lock rule.
+  - **Incident:** at 03:05 I ran the rentals runner by mistake, and its sweep comes before the version gate. Rentals finished 406 safely. The lock rule is now in the skill and in memory.
+  - **NEXT (owner):** film V1 or V2 (or both on Hebrew), the café tower, YouTube (HAD-398). Then (loop) re-inspect EN and RU in GSC about 9.10. After that, the next compound runs from the skill (Somail or Sde Dov, on the owner's word).
+
 - **3.10 night, V2 loop turn 13: V8 step 2 LIVE (1.72.399, the data step, 1.72.400). The owner watched the film and gave v2 notes. The ElevenLabs key has one home.**
   - **Web (3.10):** [heygen real-estate ads](https://www.heygen.com/blog/real-estate-ads), [gisteo video scripts](https://gisteo.com/blogs/video-production/real-estate-video-script/), [estatepass 2026 guide](https://www.estatepass.ai/tools/video-script/guide/). The rule: one CTA, one next step; luxury pacing is slower. Also [internal linking for project pages](https://realestateseoservices.in/internal-linking-real-estate-seo/): project pages link to nearby projects and locality pages.
   - **Owner on the film:** "nice, a little polishing". He wants:
