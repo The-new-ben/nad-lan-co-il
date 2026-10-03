@@ -276,3 +276,14 @@ them if you need to argue an approach.
   `skills/ACCUMULATION.md`.
 - Earlier — Initial AGENTS.md drafted with prime directive + read order. Kept
   in git history.
+
+## Page and article research law (owner, 3.10.2026, 08:17 UTC)
+Before ANY new or rewritten page, guide or article goes to ChatGPT or a writer:
+1. Declare 1-5 owned keyword intents and synonyms.
+2. Check URL ownership for cannibalization (`tools/gsc/url_word_audit.py`, GSC), and reuse or expand the owning page.
+3. Google manually in the target language and read the top 4-5 competitor pages IN FULL (record URLs and times).
+4. Record the related questions, suggestions, AI answers and the sources actually shown ("absent" if none).
+5. Write original, deep, conversational marketing prose with supported numbers and tables. No copying.
+6. Research stays internal (in the repo).
+
+It does not reopen already-published work.

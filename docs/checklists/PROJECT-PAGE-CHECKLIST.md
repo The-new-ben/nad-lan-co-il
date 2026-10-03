@@ -52,3 +52,8 @@ Technical things (a 3D stage, maps, code) never come before the answer paragraph
 - **In the design system:** ProjectStage README, the content-first law at its top.
 - **In WordPress:** the project edit screen shows this checklist in a box, so a person editing a project meets it too.
 - **With Codex:** `docs/coordination/claude-codex.md`.
+
+## C7: research before writing (owner law, 3.10.2026)
+| # | Check | Evidence |
+|---|---|---|
+| C7 | Before the brief goes to ChatGPT or a writer: 1-5 owned intents and synonyms; a URL-ownership/cannibalization check; manual Google in the target language; the top 4-5 competitor pages read in full (URLs and times); the questions, suggestions and AI answers actually shown ("absent" if none) | an internal research file `docs/research/<date>-<slug>/serp-<lang>.md` |
