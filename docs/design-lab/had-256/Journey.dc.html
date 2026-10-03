@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>Listing journey</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="journey.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&amp;family=Noto+Serif+Hebrew:wght@600;700&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="{{rootCls}}" dir="{{dir}}" lang="{{lang}}" style="background: #f7f6f2; color: #3b4753; font-family: Assistant, 'Segoe UI', Arial, sans-serif;">
+
+<header class="nlj-hdr">
+<a class="nlj-brand" href="#top" aria-label="{{t.brandAria}}">
+<span class="nlj-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V9l3-2v13M10.5 20V5l3-2v17M16 20v-8l3-2v10M3 20h18"></path></svg></span>
+<span>{{t.brand}}</span>
+</a>
+<nav class="nlj-hnav" aria-label="{{t.navAria}}">
+<sc-if value="{{signedIn}}" hint-placeholder-val="{{true}}">
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.mine}}">{{t.myListings}}</button>
+<span class="nlj-avatar" aria-label="{{t.acctAria}}">{{t.initial}}</span>
+</sc-if>
+<sc-if value="{{signedOut}}" hint-placeholder-val="{{false}}">
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.login}}">{{t.signInTop}}</button>
+</sc-if>
+</nav>
+</header>
+
+<main class="nlj-wrap" id="top">
+
+<!-- ============ 1. ACCOUNT: sign up / sign in / recovery ============ -->
+<sc-if value="{{s.auth}}" hint-placeholder-val="{{false}}">
+<div class="nlj-cols">
+<div class="nlj-main">
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<p class="nlj-kick">{{t.authKick}}</p>
+<h1>{{t.authH1}}</h1>
+<p class="nlj-lead">{{t.authLead}}</p>
+</div>
+<div class="nlj-card">
+<div class="nlj-tabs" role="group" aria-label="{{t.authTabsAria}}">
+<button class="nlj-tab" type="button" aria-pressed="{{a.signupTab}}" onClick="{{go.signup}}">{{t.tabSignup}}</button>
+<button class="nlj-tab" type="button" aria-pressed="{{a.loginTab}}" onClick="{{go.login}}">{{t.tabLogin}}</button>
+</div>
+
+<sc-if value="{{a.signup}}" hint-placeholder-val="{{true}}">
+<form class="nlj-form" onSubmit="{{noSubmit}}">
+<div class="nlj-field">
+<label class="nlj-label" for="j-name">{{t.firstName}}</label>
+<input class="nlj-input" id="j-name" autocomplete="given-name" defaultValue="{{t.sampleName}}">
+</div>
+<div class="nlj-field">
+<label class="nlj-label" for="j-mail">{{t.email}}</label>
+<input class="{{a.mailCls}}" id="j-mail" type="email" autocomplete="email" inputMode="email" defaultValue="dana.sample@example.com" aria-describedby="j-mail-err">
+<sc-if value="{{a.exists}}" hint-placeholder-val="{{false}}">
+<div class="nlj-err" id="j-mail-err" role="alert">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 16.5v.5"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<span>{{t.mailExists}}</span>
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.login}}" style="align-self: flex-start; padding-inline: 0;">{{t.mailExistsAct}}</button>
+</div>
+</div>
+</sc-if>
+</div>
+<div class="nlj-field">
+<label class="nlj-label" for="j-pw">{{t.password}}</label>
+<div class="nlj-pw">
+<input class="nlj-input" id="j-pw" type="password" autocomplete="new-password" defaultValue="sample-pass-01" aria-describedby="j-pw-hint">
+<button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button" aria-label="{{t.showPwAria}}">{{t.showPw}}</button>
+</div>
+<p class="nlj-hint" id="j-pw-hint">{{t.pwHint}}</p>
+</div>
+<p class="nlj-small">{{t.termsA}} <a href="#terms">{{t.terms}}</a> {{t.termsB}} <a href="#privacy">{{t.privacy}}</a>.</p>
+<div class="nlj-actions">
+<button class="nlj-btn nlj-btn--primary" type="button" onClick="{{go.details}}">{{t.signupCta}}</button>
+</div>
+</form>
+</sc-if>
+
+<sc-if value="{{a.login}}" hint-placeholder-val="{{false}}">
+<form class="nlj-form" onSubmit="{{noSubmit}}">
+<div class="nlj-field">
+<label class="nlj-label" for="j-mail2">{{t.email}}</label>
+<input class="nlj-input is-ltr" id="j-mail2" type="email" autocomplete="username" defaultValue="dana.sample@example.com">
+</div>
+<div class="nlj-field">
+<label class="nlj-label" for="j-pw2">{{t.password}}</label>
+<div class="nlj-pw">
+<input class="nlj-input" id="j-pw2" type="password" autocomplete="current-password" defaultValue="sample-pass-01">
+<button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button" aria-label="{{t.showPwAria}}">{{t.showPw}}</button>
+</div>
+</div>
+<div class="nlj-actions">
+<button class="nlj-btn nlj-btn--primary" type="button" onClick="{{go.draft}}">{{t.loginCta}}</button>
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.recover}}">{{t.forgot}}</button>
+</div>
+</form>
+</sc-if>
+
+<sc-if value="{{a.recover}}" hint-placeholder-val="{{false}}">
+<form class="nlj-form" onSubmit="{{noSubmit}}">
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<h2>{{t.recH}}</h2>
+<p class="nlj-small">{{t.recLead}}</p>
+</div>
+<div class="nlj-field">
+<label class="nlj-label" for="j-mail3">{{t.email}}</label>
+<input class="nlj-input is-ltr" id="j-mail3" type="email" autocomplete="email" defaultValue="dana.sample@example.com">
+</div>
+<sc-if value="{{a.sent}}" hint-placeholder-val="{{false}}">
+<div class="nlj-status nlj-status--ok" role="status">
+<svg class="nlj-st-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="m4 7 8 6 8-6"></path></svg>
+<div><b>{{t.recSentH}}</b>{{t.recSent}}</div>
+</div>
+</sc-if>
+<div class="nlj-actions">
+<button class="nlj-btn nlj-btn--primary" type="button" onClick="{{go.sent}}" disabled="{{a.sent}}">{{a.sendLabel}}</button>
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.login}}">{{t.backLogin}}</button>
+</div>
+</form>
+</sc-if>
+</div>
+<p class="nlj-small">{{t.brokerLine}} <a href="#brokers">{{t.brokerLink}}</a></p>
+</div>
+<sc-if value="{{desk}}" hint-placeholder-val="{{false}}">
+<aside class="nlj-aside" aria-label="{{t.howAria}}">
+<div class="nlj-card" style="background: #eee9dd; border-color: transparent;">
+<h2>{{t.howH}}</h2>
+<ol class="nlj-steps">
+<li><span class="nlj-dot">1</span>{{t.how1}}</li>
+<li><span class="nlj-dot">2</span>{{t.how2}}</li>
+<li><span class="nlj-dot">3</span>{{t.how3}}</li>
+</ol>
+<p class="nlj-small">{{t.howNote}}</p>
+</div>
+</aside>
+</sc-if>
+</div>
+</sc-if>
+
+<!-- ============ 2. SAVED DRAFT, continue ============ -->
+<sc-if value="{{s.draft}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 10px; max-width: 760px;">
+<p class="nlj-kick">{{t.draftKick}}</p>
+<h1>{{t.draftH1}}</h1>
+<p class="nlj-lead">{{t.draftLead}}</p>
+</div>
+<div class="nlj-card" style="max-width: 760px;">
+<div class="nlj-item-top">
+<div class="nlj-thumb"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40V18l16-10 16 10v22z"></path><path d="M19 40V28h10v12"></path></svg></div>
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0;">
+<span class="nlj-chip">{{t.chipDraft}}</span>
+<h2>{{t.sampleTitle}}</h2>
+<p class="nlj-small">{{t.sampleAddr}}</p>
+<p class="nlj-meta">{{t.draftSaved}}</p>
+</div>
+</div>
+<div class="nlj-prog5">
+<div class="nlj-prog5-top"><b>{{t.draftStep}}</b><span>{{t.draftNext}}</span></div>
+<div class="nlj-bars" aria-hidden="true"><i class="is-done"></i><i class="is-now"></i><i></i><i></i><i></i></div>
+</div>
+<sc-if value="{{conflict}}" hint-placeholder-val="{{false}}">
+<div class="nlj-status nlj-status--warn" role="status">
+<svg class="nlj-st-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="12" height="10" rx="2"></rect><rect x="9" y="9" width="12" height="10" rx="2"></rect></svg>
+<div><b>{{t.conflictH}}</b>{{t.conflictTxt}}
+<div class="nlj-status-acts">
+<button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button" onClick="{{go.saved}}">{{t.conflictLoad}}</button>
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.saved}}">{{t.conflictKeep}}</button>
+</div>
+</div>
+</div>
+</sc-if>
+<div class="nlj-actions">
+<button class="nlj-btn nlj-btn--primary" type="button" onClick="{{go.details}}">{{t.draftContinue}}</button>
+<button class="nlj-btn nlj-btn--secondary" type="button" onClick="{{go.details}}">{{t.draftNew}}</button>
+</div>
+<p class="nlj-hint">{{t.draftNewNote}}</p>
+<hr class="nlj-hr">
+<sc-if value="{{d.closed}}" hint-placeholder-val="{{true}}">
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.delAsk}}" style="align-self: flex-start; color: #b3261e;">{{t.draftDelete}}</button>
+</sc-if>
+<sc-if value="{{d.ask}}" hint-placeholder-val="{{false}}">
+<div class="nlj-confirm" role="group" aria-label="{{t.draftDelete}}">
+<b>{{t.delAskH}}</b>
+<p class="nlj-small" style="color: #14212b;">{{t.delAskTxt}}</p>
+<div class="nlj-item-acts">
+<button class="nlj-btn nlj-btn--danger nlj-btn--sm" type="button" onClick="{{go.delRun}}">{{t.delYes}}</button>
+<button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button" onClick="{{go.delNo}}">{{t.cancel}}</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{d.running}}" hint-placeholder-val="{{false}}">
+<div class="nlj-status" role="status">
+<svg class="nlj-st-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke-dasharray="40 20"></circle></svg>
+<div><b>{{t.delRunH}}</b>{{t.delRunTxt}}</div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<!-- ============ shared top for the four listing steps ============ -->
+<sc-if value="{{s.flow}}" hint-placeholder-val="{{true}}">
+<div class="nlj-cols">
+<div class="nlj-main">
+<div class="nlj-prog5" aria-label="{{t.progAria}}">
+<div class="nlj-prog5-top"><b>{{stepText}}</b><span>{{stepName}}</span></div>
+<div class="nlj-bars" aria-hidden="true">
+<sc-for list="{{bars}}" as="b" hint-placeholder-count="5"><i class="{{b.cls}}"></i></sc-for>
+</div>
+</div>
+
+<!-- the save status: what is really saved, and where -->
+<sc-if value="{{st.device}}" hint-placeholder-val="{{false}}">
+<div class="nlj-status" role="status">
+<svg class="nlj-st-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M11 18.5h2"></path></svg>
+<div><b>{{t.stDeviceH}}</b>{{t.stDevice}}</div>
+</div>
+</sc-if>
+<sc-if value="{{st.account}}" hint-placeholder-val="{{true}}">
+<div class="nlj-status nlj-status--ok" role="status">
+<svg class="nlj-st-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+<div><b>{{t.stAccountH}}</b>{{t.stAccount}}</div>
+</div>
+</sc-if>
+<sc-if value="{{st.offline}}" hint-placeholder-val="{{false}}">
+<div class="nlj-status nlj-status--warn" role="status">
+<svg class="nlj-st-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8.5a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0M12 19h.01M3 3l18 18"></path></svg>
+<div><b>{{t.stOfflineH}}</b>{{t.stOffline}}</div>
+</div>
+</sc-if>
+<sc-if value="{{st.retry}}" hint-placeholder-val="{{false}}">
+<div class="nlj-status nlj-status--bad" role="alert">
+<svg class="nlj-st-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5"></path></svg>
+<div><b>{{t.stRetryH}}</b>{{t.stRetry}}
+<div class="nlj-status-acts"><button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button" onClick="{{go.saved}}">{{t.retryNow}}</button></div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{st.conflict}}" hint-placeholder-val="{{false}}">
+<div class="nlj-status nlj-status--warn" role="alert">
+<svg class="nlj-st-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="12" height="10" rx="2"></rect><rect x="9" y="9" width="12" height="10" rx="2"></rect></svg>
+<div><b>{{t.conflictH}}</b>{{t.conflictTxt}}
+<div class="nlj-status-acts">
+<button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button" onClick="{{go.saved}}">{{t.conflictLoad}}</button>
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.saved}}">{{t.conflictKeep}}</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{st.foreign}}" hint-placeholder-val="{{false}}">
+<div class="nlj-status nlj-status--warn" role="alert">
+<svg class="nlj-st-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M9.5 9.5h5M9.5 13h5"></path></svg>
+<div><b>{{t.foreignH}}</b>{{t.foreignTxt}}
+<div class="nlj-status-acts">
+<button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button" onClick="{{go.saved}}">{{t.foreignShow}}</button>
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.saved}}">{{t.foreignDrop}}</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<!-- ============ 3. PROPERTY DETAILS ============ -->
+<sc-if value="{{s.details}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<h1>{{t.detH1}}</h1>
+<p class="nlj-lead">{{t.detLead}}</p>
+</div>
+<form class="nlj-card nlj-form" onSubmit="{{noSubmit}}" aria-label="{{t.detH1}}">
+<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+<legend class="nlj-label" style="padding: 0; margin-bottom: 8px;">{{t.dealType}}</legend>
+<div class="nlj-seg">
+<button class="nlj-pill" type="button" aria-pressed="{{deal.sale}}" onClick="{{go.sale}}">{{t.sale}}</button>
+<button class="nlj-pill" type="button" aria-pressed="{{deal.rent}}" onClick="{{go.rent}}">{{t.rent}}</button>
+</div>
+</fieldset>
+<div class="nlj-field">
+<label class="nlj-label" for="j-type">{{t.propType}}</label>
+<select class="nlj-input" id="j-type" defaultValue="apt">
+<option value="apt">{{t.ptApt}}</option>
+<option value="garden">{{t.ptGarden}}</option>
+<option value="ph">{{t.ptPh}}</option>
+<option value="duplex">{{t.ptDuplex}}</option>
+<option value="house">{{t.ptHouse}}</option>
+</select>
+</div>
+<div class="nlj-g2">
+<div class="nlj-field">
+<label class="nlj-label" for="j-city">{{t.city}}</label>
+<input class="nlj-input" id="j-city" autocomplete="address-level2" defaultValue="{{t.sampleCity}}">
+</div>
+<div class="nlj-field">
+<label class="nlj-label" for="j-hood">{{t.hood}}</label>
+<input class="nlj-input" id="j-hood" defaultValue="{{t.sampleHood}}">
+</div>
+</div>
+<p class="nlj-hint" style="margin-top: -10px;">{{t.addrHint}}</p>
+<div class="nlj-g3">
+<div class="nlj-field">
+<label class="nlj-label" for="j-rooms">{{t.rooms}}</label>
+<input class="nlj-input" id="j-rooms" inputMode="decimal" defaultValue="4">
+</div>
+<div class="nlj-field">
+<label class="nlj-label" for="j-size">{{t.size}}</label>
+<div class="nlj-affix"><input class="nlj-input" id="j-size" inputMode="numeric" defaultValue="96"><span>{{t.sqm}}</span></div>
+</div>
+<div class="nlj-field">
+<label class="nlj-label" for="j-floor">{{t.floor}} <span class="nlj-opt">{{t.optional}}</span></label>
+<input class="nlj-input" id="j-floor" inputMode="numeric" defaultValue="{{t.sampleFloor}}">
+</div>
+</div>
+<div class="nlj-field">
+<label class="nlj-label" for="j-price">{{priceLabel}}</label>
+<div class="nlj-affix"><input class="nlj-input" id="j-price" inputMode="numeric" defaultValue="{{priceVal}}"><span>₪</span></div>
+<p class="nlj-hint">{{t.priceHint}}</p>
+</div>
+<div class="nlj-field">
+<label class="nlj-label" for="j-desc">{{t.desc}}</label>
+<textarea class="nlj-input" id="j-desc" rows="6" defaultValue="{{t.sampleDesc}}" aria-describedby="j-desc-count j-desc-note"></textarea>
+<div class="nlj-counter" id="j-desc-count"><span>{{t.descHint}}</span><span class="nlj-num">{{t.descCount}}</span></div>
+<div class="nlj-note" id="j-desc-note">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7.5v.5"></path></svg>
+<span>{{t.fairNote}}</span>
+</div>
+</div>
+<hr class="nlj-hr">
+<h2>{{t.contactH}}</h2>
+<div class="nlj-g2">
+<div class="nlj-field">
+<label class="nlj-label" for="j-cname">{{t.contactName}}</label>
+<input class="nlj-input" id="j-cname" autocomplete="given-name" defaultValue="{{t.sampleName}}">
+</div>
+<div class="nlj-field">
+<label class="nlj-label" for="j-phone">{{t.phone}}</label>
+<input class="{{phoneCls}}" id="j-phone" type="tel" autocomplete="tel" inputMode="tel" defaultValue="{{phoneVal}}" aria-invalid="{{errors}}" aria-describedby="j-phone-err">
+<sc-if value="{{errors}}" hint-placeholder-val="{{false}}">
+<p class="nlj-err" id="j-phone-err" role="alert"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 16.5v.5"></path></svg><span>{{t.phoneErr}}</span></p>
+</sc-if>
+</div>
+</div>
+<label class="nlj-check"><input type="checkbox"><span>{{t.showPhone}}<small>{{t.showPhoneSub}}</small></span></label>
+<label class="nlj-check"><input type="checkbox" defaultChecked="{{yes}}"><span>{{t.ownerDecl}}<small>{{t.ownerDeclSub}}</small></span></label>
+<div class="nlj-actions">
+<button class="nlj-btn nlj-btn--primary" type="button" onClick="{{go.photos}}">{{t.toPhotos}}<svg class="nlj-fwd" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.draft}}">{{t.saveExit}}</button>
+</div>
+</form>
+</sc-if>
+
+<!-- ============ 4. PHOTOS ============ -->
+<sc-if value="{{s.photos}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<h1>{{t.phH1}}</h1>
+<p class="nlj-lead">{{t.phLead}}</p>
+</div>
+<div class="nlj-drop">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2f6f86" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><circle cx="9" cy="10" r="1.8"></circle><path d="m21 16-5-5-8 8"></path></svg>
+<button class="nlj-btn nlj-btn--secondary" type="button">{{t.addPhotos}}</button>
+<p class="nlj-hint">{{t.phDropHint}}</p>
+<p class="nlj-label"><span class="nlj-num">{{phCount}}</span></p>
+</div>
+<p class="nlj-hint">{{t.phOrderHint}}</p>
+<div class="nlj-ph" role="list" aria-label="{{t.phListAria}}">
+<sc-for list="{{photos}}" as="p" hint-placeholder-count="6">
+<div class="{{p.tileCls}}" role="listitem">
+<div class="nlj-img">
+<svg viewBox="0 0 96 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 56h84M14 56V22h28v34M50 56V12h32v44"></path><path d="M20 30h16v10H20zM56 20h20v12H56zM56 40h20v8H56z"></path></svg>
+<sc-if value="{{p.isCover}}" hint-placeholder-val="{{false}}"><span class="nlj-cover">{{t.coverBadge}}</span></sc-if>
+<span class="nlj-cap">{{p.label}}</span>
+</div>
+<sc-if value="{{p.isOk}}" hint-placeholder-val="{{true}}">
+<div class="nlj-tilebar">
+<div class="nlj-grp">
+<button class="nlj-ibtn" type="button" aria-label="{{p.earlierAria}}" disabled="{{p.first}}" onClick="{{p.earlier}}"><svg class="nlj-fwd" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
+<button class="nlj-ibtn" type="button" aria-label="{{p.laterAria}}" disabled="{{p.last}}" onClick="{{p.later}}"><svg class="nlj-fwd" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+</div>
+<div class="nlj-grp">
+<sc-if value="{{p.notCover}}" hint-placeholder-val="{{true}}">
+<button class="nlj-ibtn" type="button" aria-label="{{p.coverAria}}" onClick="{{p.cover}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.6 5.6 6 .6-4.5 4.1 1.3 6L12 16.4 6.6 19.3l1.3-6L3.4 9.2l6-.6z"></path></svg></button>
+</sc-if>
+<button class="nlj-ibtn" type="button" aria-label="{{p.removeAria}}" onClick="{{p.remove}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg></button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{p.isUp}}" hint-placeholder-val="{{false}}">
+<div class="nlj-up" role="status"><span>{{t.uploading}} <span class="nlj-num">{{p.pct}}</span></span><div class="nlj-bar"><i style="width: 64%;"></i></div></div>
+</sc-if>
+<sc-if value="{{p.isFail}}" hint-placeholder-val="{{false}}">
+<div class="nlj-fail" role="alert"><span>{{t.upFail}}</span>
+<div class="nlj-grp" style="display: flex; gap: 6px;">
+<button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button" onClick="{{p.retry}}">{{t.tryAgain}}</button>
+<button class="nlj-ibtn" type="button" aria-label="{{p.removeAria}}" onClick="{{p.remove}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg></button>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+<div class="nlj-actions">
+<button class="nlj-btn nlj-btn--primary" type="button" onClick="{{go.preview}}">{{t.toPreview}}<svg class="nlj-fwd" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.details}}">{{t.backDetails}}</button>
+</div>
+</sc-if>
+
+<!-- ============ 5. PREVIEW ============ -->
+<sc-if value="{{s.preview}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<h1>{{t.pvH1}}</h1>
+<p class="nlj-lead">{{t.pvLead}}</p>
+</div>
+<div class="nlj-banner" role="note"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>{{t.pvBanner}}</div>
+<article class="nlj-lcard" aria-label="{{t.pvAria}}">
+<div class="nlj-img">
+<svg viewBox="0 0 96 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 56h84M14 56V22h28v34M50 56V12h32v44"></path><path d="M20 30h16v10H20zM56 20h20v12H56zM56 40h20v8H56z"></path></svg>
+<span class="nlj-cap">{{t.pvCap}}</span>
+</div>
+<div class="nlj-lbody">
+<div style="display: flex; flex-wrap: wrap; gap: 8px;"><span class="nlj-chip nlj-chip--owner">{{t.fromOwner}}</span><span class="nlj-chip">{{dealChip}}</span></div>
+<h2 class="nlj-serif" style="font-size: 24px;">{{t.sampleTitle}}</h2>
+<p class="nlj-small">{{t.sampleAddr}}</p>
+<p class="nlj-price"><span class="nlj-num">{{priceShow}}</span></p>
+<div class="nlj-facts">
+<span class="nlj-fact">{{t.fRooms}}</span><span class="nlj-fact">{{t.fSize}}</span><span class="nlj-fact">{{t.fFloor}}</span>
+</div>
+<p style="font-size: 16px; line-height: 1.65; color: #3b4753;">{{t.sampleDesc}}</p>
+<div class="nlj-actions" style="flex-direction: row;">
+<button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button" disabled="{{yes}}">{{t.wa}}</button>
+<button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button" disabled="{{yes}}">{{t.call}}</button>
+</div>
+<p class="nlj-hint">{{t.pvBtnsNote}}</p>
+</div>
+</article>
+<div class="nlj-card">
+<p class="nlj-label">{{t.pvAddr}}</p>
+<div class="nlj-urlbox"><code>nad-lan.co.il/properties/4-rooms-sale-tel-aviv-yafo/</code></div>
+<p class="nlj-hint">{{t.pvAddrHint}}</p>
+<div class="nlj-actions">
+<button class="nlj-btn nlj-btn--primary" type="button" onClick="{{go.sending}}" disabled="{{sending}}" aria-busy="{{sending}}">{{publishLabel}}</button>
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.details}}">{{t.backEdit}}</button>
+</div>
+<sc-if value="{{sending}}" hint-placeholder-val="{{false}}">
+<div class="nlj-status" role="status">
+<svg class="nlj-st-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke-dasharray="40 20"></circle></svg>
+<div><b>{{t.sendingH}}</b>{{t.sendingTxt}}</div>
+</div>
+</sc-if>
+<p class="nlj-hint">{{t.publishNote}}</p>
+</div>
+</sc-if>
+
+</div>
+<sc-if value="{{desk}}" hint-placeholder-val="{{false}}">
+<aside class="nlj-aside" aria-label="{{t.asideAria}}">
+<div class="nlj-card">
+<h2>{{t.asideH}}</h2>
+<ol class="nlj-steps">
+<sc-for list="{{stepList}}" as="x" hint-placeholder-count="5"><li class="{{x.cls}}"><span class="nlj-dot">{{x.n}}</span>{{x.label}}</li></sc-for>
+</ol>
+</div>
+<div class="nlj-card" style="background: #eee9dd; border-color: transparent; gap: 10px;">
+<p class="nlj-kick">{{t.sumKick}}</p>
+<h3>{{t.sampleTitle}}</h3>
+<p class="nlj-small">{{t.sampleAddr}}</p>
+<p class="nlj-label"><span class="nlj-num">{{priceShow}}</span></p>
+<p class="nlj-meta" style="color: #3b4753;">{{t.sumPhotos}}</p>
+</div>
+</aside>
+</sc-if>
+</div>
+</sc-if>
+
+<!-- ============ 6. PUBLISHED ============ -->
+<sc-if value="{{s.published}}" hint-placeholder-val="{{false}}">
+<div class="nlj-card" style="max-width: 760px; align-items: flex-start;">
+<span class="nlj-okmark"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></span>
+<h1>{{t.doneH1}}</h1>
+<p class="nlj-lead">{{t.doneLead}}</p>
+<div class="nlj-urlbox" style="width: 100%;"><code>nad-lan.co.il/properties/4-rooms-sale-tel-aviv-yafo/</code><button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button">{{t.copyLink}}</button></div>
+<div class="nlj-actions" style="width: 100%;">
+<a class="nlj-btn nlj-btn--primary" href="#listing">{{t.toListing}}</a>
+<button class="nlj-btn nlj-btn--secondary" type="button">{{t.shareWa}}</button>
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.mine}}">{{t.myListings}}</button>
+</div>
+<hr class="nlj-hr" style="width: 100%;">
+<p class="nlj-small">{{t.doneManage}}</p>
+</div>
+</sc-if>
+
+<!-- ============ 7. MY LISTINGS: edit, price, sold, remove ============ -->
+<sc-if value="{{s.mine}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; justify-content: space-between;">
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<h1>{{t.mineH1}}</h1>
+<p class="nlj-small">{{t.mineCount}}</p>
+</div>
+<button class="nlj-btn nlj-btn--primary" type="button" onClick="{{go.details}}">{{t.newListing}}</button>
+</div>
+<div class="nlj-mine">
+<article class="nlj-item">
+<div class="nlj-item-top">
+<div class="nlj-thumb"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40V18l16-10 16 10v22z"></path><path d="M19 40V28h10v12"></path></svg></div>
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0; flex: 1;">
+<div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="nlj-chip nlj-chip--live">{{t.chipLive}}</span><span class="nlj-chip">{{t.sale}}</span></div>
+<h2 style="font-size: 19px;">{{t.sampleTitle}}</h2>
+<p class="nlj-small"><span class="nlj-num">{{t.samplePrice}}</span> · {{t.livedSince}}</p>
+</div>
+</div>
+<div class="nlj-item-acts">
+<button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button" onClick="{{go.details}}">{{t.edit}}</button>
+<button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button">{{t.editPrice}}</button>
+<button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button">{{t.markSold}}</button>
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.rmAsk}}" style="color: #b3261e;">{{t.removeLive}}</button>
+</div>
+<sc-if value="{{rmOpen}}" hint-placeholder-val="{{false}}">
+<div class="nlj-confirm" role="group" aria-label="{{t.removeLive}}">
+<b>{{t.rmH}}</b>
+<p class="nlj-small" style="color: #14212b;">{{t.rmTxt}}</p>
+<div class="nlj-item-acts">
+<button class="nlj-btn nlj-btn--danger nlj-btn--sm" type="button" onClick="{{go.rmNo}}">{{t.rmYes}}</button>
+<button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button" onClick="{{go.rmNo}}">{{t.cancel}}</button>
+</div>
+</div>
+</sc-if>
+</article>
+<article class="nlj-item">
+<div class="nlj-item-top">
+<div class="nlj-thumb"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40V18l16-10 16 10v22z"></path><path d="M19 40V28h10v12"></path></svg></div>
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0; flex: 1;">
+<div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="nlj-chip">{{t.chipDraft}}</span><span class="nlj-chip">{{t.rent}}</span></div>
+<h2 style="font-size: 19px;">{{t.sample2Title}}</h2>
+<p class="nlj-small">{{t.sample2Meta}}</p>
+</div>
+</div>
+<div class="nlj-item-acts">
+<button class="nlj-btn nlj-btn--primary nlj-btn--sm" type="button" onClick="{{go.photos}}">{{t.continueDraft}}</button>
+</div>
+</article>
+<article class="nlj-item" style="background: #f7f6f2;">
+<div class="nlj-item-top">
+<div class="nlj-thumb"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40V18l16-10 16 10v22z"></path><path d="M19 40V28h10v12"></path></svg></div>
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0; flex: 1;">
+<div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="nlj-chip nlj-chip--off">{{t.chipSold}}</span></div>
+<h2 style="font-size: 19px;">{{t.sample3Title}}</h2>
+<p class="nlj-small">{{t.sample3Meta}}</p>
+</div>
+</div>
+<div class="nlj-item-acts">
+<button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button">{{t.republish}}</button>
+</div>
+</article>
+</div>
+<div class="nlj-card" style="gap: 10px;">
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between;">
+<h2>{{t.promoH}}</h2><span class="nlj-chip nlj-chip--off">{{t.promoOff}}</span>
+</div>
+<p class="nlj-small">{{t.promoTeaser}}</p>
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.promote}}" style="align-self: flex-start; padding-inline: 0;">{{t.promoMore}}</button>
+</div>
+</sc-if>
+
+<!-- ============ 8. PROMOTION: prepared, switched off ============ -->
+<sc-if value="{{s.promote}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 8px; max-width: 760px;">
+<p class="nlj-kick">{{t.myListings}}</p>
+<h1>{{t.promoH}}</h1>
+<p class="nlj-lead">{{t.promoLead}}</p>
+</div>
+<div class="nlj-status nlj-status--warn" role="status" style="max-width: 760px;">
+<svg class="nlj-st-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7.5v.5"></path></svg>
+<div><b>{{t.promoOffH}}</b>{{t.promoOffTxt}}</div>
+</div>
+<div class="nlj-card" style="max-width: 760px; opacity: .72;" aria-disabled="true">
+<fieldset disabled="{{yes}}" style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px;">
+<legend class="nlj-label" style="padding: 0; margin-bottom: 8px;">{{t.promoPick}}</legend>
+<label class="nlj-check"><input type="radio" name="pl" defaultChecked="{{yes}}"><span>{{t.sampleTitle}}<small>{{t.chipLive}}</small></span></label>
+<div class="nlj-field">
+<span class="nlj-label">{{t.promoWhere}}</span>
+<div class="nlj-seg"><button class="nlj-pill" type="button" aria-pressed="{{yes}}">{{t.promoList}}</button><button class="nlj-pill" type="button" aria-pressed="{{no}}">{{t.promoCity}}</button></div>
+</div>
+<div class="nlj-field">
+<span class="nlj-label">{{t.promoPrice}}</span>
+<p class="nlj-hint">{{t.promoPriceTxt}}</p>
+</div>
+<button class="nlj-btn nlj-btn--primary" type="button" disabled="{{yes}}">{{t.promoBtn}}</button>
+</fieldset>
+</div>
+<button class="nlj-btn nlj-btn--quiet" type="button" onClick="{{go.mine}}" style="align-self: flex-start;">{{t.backMine}}</button>
+</sc-if>
+
+</main>
+
+<!-- the wide consult bar: the page above keeps 96px free, so it never covers the main action -->
+<div class="nlj-consult">
+<a class="nlj-wa" href="#whatsapp" aria-label="{{t.waAria}}">
+<span class="nlj-wa-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"></path><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.6-2-1-1 .8a4 4 0 0 1-1.7-1.7l.8-1-1-2z"></path></svg></span>
+<span class="nlj-wa-txt"><b>{{t.waBar}}</b><span>{{t.waSub}}</span></span>
+<span class="nlj-wa-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V9l3-2v13M10.5 20V5l3-2v17M16 20v-8l3-2v10M3 20h18"></path></svg></span>
+</a>
+</div>
+<div style="height: 16px;"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"lang":{"editor":"enum","options":["he","en"],"default":"he"},"screen":{"editor":"enum","options":["auth","draft","details","photos","preview","published","mine","promote"],"default":"auth"},"auth":{"editor":"enum","options":["signup","exists","login","recover","sent"],"default":"signup"},"save":{"editor":"enum","options":["device","account","offline","retry","conflict","foreign"],"default":"account"},"layout":{"editor":"enum","options":["phone","narrow","desk"],"default":"phone"},"errors":{"editor":"boolean","default":false},"confirm":{"editor":"boolean","default":false},"sending":{"editor":"boolean","default":false},"$preview":{"width":390,"height":1500}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  T() {
+    const he = {
+      brand: "נדל״ן", brandAria: "נדל״ן, לדף הבית", navAria: "החשבון שלי", acctAria: "מחוברים בתור דנה", initial: "ד",
+      myListings: "המודעות שלי", signInTop: "כניסה",
+      authKick: "פרסום מודעה מבעלים", authH1: "מפרסמים את הנכס שלכם",
+      authLead: "פותחים חשבון בשם ובמייל, ממלאים את פרטי הנכס ומעלים תמונות. המודעה עולה בכתובת משלה. בלי עמלה.",
+      authTabsAria: "פתיחת חשבון או כניסה", tabSignup: "פתיחת חשבון", tabLogin: "כבר יש לי חשבון",
+      firstName: "שם פרטי", email: "מייל", password: "סיסמה", showPw: "הצגה", showPwAria: "הצגת הסיסמה",
+      pwHint: "8 תווים לפחות. אפשר להחליף אותה בכל זמן.",
+      termsA: "בפתיחת החשבון אתם מסכימים ל", terms: "תנאי השימוש", termsB: "ול", privacy: "מדיניות הפרטיות",
+      signupCta: "פתיחת חשבון והמשך", mailExists: "המייל הזה כבר רשום אצלנו. השם והמייל שכתבתם נשמרו בטופס.", mailExistsAct: "כניסה עם המייל הזה",
+      loginCta: "כניסה", forgot: "שכחתי את הסיסמה",
+      recH: "איפוס סיסמה", recLead: "כתבו את המייל של החשבון. אם הוא רשום אצלנו, נשלח אליו קישור לבחירת סיסמה חדשה.",
+      recSend: "שליחת קישור לאיפוס", recWait: "אפשר לשלוח שוב בעוד 60 שניות", recSentH: "אם המייל רשום אצלנו, הקישור בדרך.", recSent: " הקישור תקף לזמן מוגבל. לא הגיע? בדקו גם בתיקיית הספאם.",
+      backLogin: "חזרה לכניסה", brokerLine: "מתווכים מפרסמים מהאתר שלהם.", brokerLink: "לאתר המתווכים שלכם",
+      howAria: "מה קורה אחרי ההרשמה", howH: "מה קורה אחר כך", how1: "פרטי הנכס, כמה דקות", how2: "עד 30 תמונות מהטלפון", how3: "תצוגה מקדימה ופרסום",
+      howNote: "אפשר לעצור בכל שלב. הטיוטה נשמרת בחשבון ומחכה לכם.",
+      draftKick: "ברוכים השבים, דנה", draftH1: "יש לכם טיוטה שמורה", draftLead: "המשיכו מהמקום שעצרתם. כל מה שמילאתם נשמר בחשבון.",
+      chipDraft: "טיוטה", sampleTitle: "דירת 4 חדרים בשכונת הדוגמה", sampleAddr: "שכונת הדוגמה, תל אביב יפו",
+      draftSaved: "נשמרה בחשבון ב־2.10.2026, 22:41", draftStep: "שלב 2 מתוך 5", draftNext: "הבא: תמונות",
+      draftContinue: "המשך מהמקום שעצרתם", draftNew: "מודעה חדשה", draftNewNote: "פתיחת מודעה חדשה לא מוחקת את הטיוטה הזו. היא נשארת ברשימה במודעות שלי.",
+      draftDelete: "מחיקת הטיוטה", delAskH: "למחוק את הטיוטה?", delAskTxt: "הטיוטה תעבור לפריטים שנמחקו ותיעלם מהרשימה. אפשר יהיה לשחזר אותה משם.",
+      delYes: "מחיקה", cancel: "ביטול", delRunH: "מוחקים את הטיוטה", delRunTxt: " היא נשארת כאן עד שהשרת מאשר את ההעברה. אם החיבור ייפול, שום דבר לא יימחק.",
+      conflictH: "הטיוטה פתוחה גם בלשונית אחרת", conflictTxt: " שם נשמר שינוי ב־22:43. כדי לא לדרוס אותו, בחרו עם איזו גרסה להמשיך.",
+      conflictLoad: "לטעון את הגרסה מהלשונית האחרת", conflictKeep: "להמשיך כאן ולשמור את הגרסה הזו",
+      progAria: "התקדמות הפרסום",
+      stDeviceH: "נשמר במכשיר הזה", stDevice: " עוד לא בחשבון. בלחיצה על המשך הפרטים יישמרו גם בחשבון.",
+      stAccountH: "נשמר בחשבון", stAccount: " השמירה האחרונה ב־22:41. אפשר לעצור ולהמשיך מכל מכשיר.",
+      stOfflineH: "אין חיבור לאינטרנט", stOffline: " מה שתכתבו נשמר במכשיר הזה ויישלח לחשבון כשהחיבור יחזור. אל תסגרו את הדף עד אז.",
+      foreignH: "נמצא במכשיר הזה טקסט מכניסה קודמת", foreignTxt: " הוא נכתב לפני שנכנסתם לחשבון הזה, ולכן לא נוסף לטיוטה שלכם. בחרו מה לעשות בו.", foreignShow: "להציג ולבחור מה להוסיף", foreignDrop: "למחוק אותו מהמכשיר",
+      sendingH: "מפרסמים את המודעה", sendingTxt: " מחכים לאישור מהשרת. אם החיבור נופל, בדקו במודעות שלי לפני ששולחים שוב.", sendingLabel: "מפרסמים…",
+      stRetryH: "השמירה בחשבון לא הצליחה", stRetry: " הפרטים שמורים במכשיר הזה. ננסה שוב בעוד 10 שניות.", retryNow: "לנסות עכשיו",
+      detH1: "פרטי הנכס", detLead: "כמה פרטים בסיסיים. אפשר לעצור בכל שלב ולהמשיך אחר כך מאותו מקום.",
+      dealType: "סוג העסקה", sale: "מכירה", rent: "השכרה", propType: "סוג הנכס",
+      ptApt: "דירה", ptGarden: "דירת גן", ptPh: "פנטהאוז", ptDuplex: "דופלקס", ptHouse: "בית פרטי",
+      city: "עיר", hood: "שכונה", sampleCity: "תל אביב יפו", sampleHood: "שכונת הדוגמה",
+      addrHint: "רחוב ומספר בית לא מתפרסמים. במודעה ובכתובת שלה מופיעות העיר והשכונה בלבד.",
+      rooms: "חדרים", size: "שטח", sqm: "מ״ר", floor: "קומה", optional: "(לא חובה)", sampleFloor: "3 מתוך 8",
+      priceSale: "מחיר מבוקש", priceRent: "שכר דירה לחודש", priceHint: "בספרות בלבד. אפשר לעדכן אותו אחר כך מהמודעות שלי.",
+      desc: "כמה מילים על הנכס", descHint: "מה חשוב לדעת: מרפסת, חניה, מעלית, מצב הדירה.", descCount: "182 / 1,500",
+      sampleDesc: "דירה מוארת בקומה שלישית, שלושה כיווני אוויר, מרפסת שמש של 10 מ״ר לכיוון מערב. חניה בטאבו ומחסן. הבניין עם מעלית, קרוב לפארק ולתחבורה ציבורית.",
+      fairNote: "ניסוח שמגביל לפי דת, מוצא, מוגבלות או מצב משפחתי עוצר את המודעה לבדיקה לפני פרסום.",
+      contactH: "איך פונים אליכם", contactName: "שם להצגה", sampleName: "דנה", phone: "טלפון",
+      phoneErr: "המספר קצר מדי. בדקו את הספרות. כל השאר שכתבתם נשמר.",
+      showPhone: "אני מסכים לפרסם את מספר הטלפון שלי במודעה", showPhoneSub: "המספר יוצג במודעה, וגם כפתורי הוואטסאפ והחיוג חושפים אותו למי שלוחץ. בלי סימון, המספר לא יופיע במודעה ולא יהיו בה כפתורי וואטסאפ וחיוג.",
+      ownerDecl: "אני בעל הנכס או מורשה לפרסם אותו", ownerDeclSub: "חובה לפני פרסום.",
+      toPhotos: "המשך לתמונות", saveExit: "שמירה ויציאה",
+      phH1: "תמונות", phLead: "עד 30 תמונות. התמונה הראשונה היא תמונת השער של המודעה.", addPhotos: "הוספת תמונות",
+      phDropHint: "מהטלפון או מהמחשב. JPG, PNG או HEIC, עד 15 מ״ב לתמונה.",
+      phOrderHint: "משנים סדר בחיצים, וקובעים תמונת שער בכוכב. הכפתורים עובדים גם מהמקלדת.",
+      phListAria: "התמונות של המודעה", coverBadge: "תמונת שער", uploading: "מעלים", upFail: "התמונה לא עלתה. בחרו לנסות שוב, או הסירו אותה.", tryAgain: "לנסות שוב",
+      toPreview: "המשך לתצוגה מקדימה", backDetails: "חזרה לפרטי הנכס",
+      pvH1: "תצוגה מקדימה", pvLead: "ככה המודעה תיראה באתר. בדקו את הפרטים לפני הפרסום.", pvBanner: "תצוגה מקדימה. המודעה עוד לא פורסמה.",
+      pvAria: "תצוגה מקדימה של המודעה", pvCap: "תמונת שער", fromOwner: "מבעלי הנכס", wa: "וואטסאפ", call: "חיוג",
+      fRooms: "4 חדרים", fSize: "96 מ״ר", fFloor: "קומה 3 מתוך 8", pvBtnsNote: "כפתורי הפנייה מופיעים רק אם הסכמתם לפרסם את המספר, ויעבדו אחרי הפרסום.",
+      pvAddr: "הכתובת של המודעה", pvAddrHint: "כתובת קבועה באותיות לטיניות: סוג העסקה, חדרים ועיר. בלי רחוב ובלי מספר.",
+      publish: "פרסום המודעה", backEdit: "חזרה לעריכה", publishNote: "אפשר לערוך, לעדכן מחיר או להסיר את המודעה בכל זמן מהמודעות שלי.",
+      doneH1: "המודעה באוויר", doneLead: "המודעה שלכם פורסמה ב־2.10.2026, 22:47.",
+      copyLink: "העתקה", toListing: "לעמוד המודעה", shareWa: "שיתוף בוואטסאפ",
+      doneManage: "נמכר או הושכר? מסמנים בלחיצה אחת מהמודעות שלי, ומשם גם מעדכנים מחיר.",
+      mineH1: "המודעות שלי", mineCount: "1 מתוך 5 מודעות פעילות · 1 טיוטה", newListing: "מודעה חדשה",
+      chipLive: "באוויר", chipSold: "נמכרה", livedSince: "באוויר מ־2.10.2026", samplePrice: "3,450,000 ₪",
+      edit: "עריכה", editPrice: "עדכון מחיר", markSold: "סימון כנמכרה", removeLive: "הסרה מהאתר",
+      rmH: "להסיר את המודעה מהאתר?", rmTxt: "המודעה תרד מהאתר מיד. הפרטים והתמונות יישארו ברשימה הזו, ואפשר לפרסם אותה שוב.", rmYes: "הסרה",
+      sample2Title: "דירת 2 חדרים להשכרה בשכונת הדוגמה", sample2Meta: "טיוטה · שלב 3 מתוך 5 · נשמרה ב־1.10.2026", continueDraft: "המשך עריכה",
+      sample3Title: "דירת 3 חדרים בשכונת הדוגמה", sample3Meta: "סומנה כנמכרה ב־15.9.2026 · לא מוצגת באתר", republish: "פרסום מחדש",
+      promoH: "קידום מודעה", promoOff: "לא פעיל כרגע", promoTeaser: "מקום בולט יותר ברשימות הנכסים. האפשרות עוד לא פעילה, ולא נגבה עליה תשלום.", promoMore: "מה זה יהיה",
+      promoLead: "כאן תוכלו לבחור מודעה שתוצג במקום בולט יותר ברשימות הנכסים.",
+      promoOffH: "האפשרות הזו עוד לא פעילה", promoOffTxt: " אין כאן תשלום ואין שמירה של פרטי תשלום. כשהיא תיפתח, המחיר והתנאים יוצגו לפני כל אישור.",
+      promoPick: "בחירת מודעה", promoWhere: "איפה", promoList: "רשימת הנכסים", promoCity: "עמוד העיר",
+      promoPrice: "מחיר", promoPriceTxt: "יוצג כאן לפני כל אישור.", promoBtn: "לא זמין כרגע", backMine: "חזרה למודעות שלי",
+      asideAria: "השלבים והמודעה שלכם", asideH: "השלבים", sumKick: "המודעה שלכם עד עכשיו", sumPhotos: "6 תמונות · שער: סלון",
+      waBar: "ייעוץ חינם", waSub: "מענה בוואטסאפ", waAria: "ייעוץ חינם בוואטסאפ",
+      stepNames: ["חשבון", "פרטי הנכס", "תמונות", "תצוגה מקדימה", "פרסום"], stepOf: (n) => "שלב " + n + " מתוך 5",
+      photoLabels: ["סלון", "מטבח", "חדר שינה", "מרפסת", "חדר רחצה", "הנוף מהמרפסת"],
+      earlier: "הזזה קדימה: ", later: "הזזה אחורה: ", makeCover: "קביעה כתמונת שער: ", remove: "הסרה: "
+    };
+    const en = {
+      brand: "NadLan", brandAria: "NadLan, home", navAria: "My account", acctAria: "Signed in as Dana", initial: "D",
+      myListings: "My listings", signInTop: "Sign in",
+      authKick: "List your property", authH1: "List your property, owner to buyer",
+      authLead: "Open an account with your name and email, fill in the property details and add photos. The listing goes live at its own address. No commission.",
+      authTabsAria: "Open an account or sign in", tabSignup: "Open an account", tabLogin: "I have an account",
+      firstName: "First name", email: "Email", password: "Password", showPw: "Show", showPwAria: "Show the password",
+      pwHint: "At least 8 characters. You can change it at any time.",
+      termsA: "By opening an account you agree to the", terms: "terms of use", termsB: "and the", privacy: "privacy policy",
+      signupCta: "Open an account and continue", mailExists: "This email already has an account. The name and email you typed are kept in the form.", mailExistsAct: "Sign in with this email",
+      loginCta: "Sign in", forgot: "I forgot my password",
+      recH: "Reset your password", recLead: "Type the account email. If it is registered, we will send it a link to choose a new password.",
+      recSend: "Send a reset link", recWait: "You can send again in 60 seconds", recSentH: "If the email is registered, the link is on its way.", recSent: " The link works for a limited time. Nothing arrived? Check the spam folder too.",
+      backLogin: "Back to sign in", brokerLine: "Brokers list from their own site.", brokerLink: "To your broker site",
+      howAria: "What happens after you sign up", howH: "What comes next", how1: "Property details, a few minutes", how2: "Up to 30 photos from your phone", how3: "Preview and publish",
+      howNote: "You can stop at any step. The draft waits for you in your account.",
+      draftKick: "Welcome back, Dana", draftH1: "You have a saved draft", draftLead: "Continue where you stopped. Everything you filled in is saved in your account.",
+      chipDraft: "Draft", sampleTitle: "4-room apartment in Sample Quarter", sampleAddr: "Sample Quarter, Tel Aviv-Yafo",
+      draftSaved: "Saved in your account on 2.10.2026, 22:41", draftStep: "Step 2 of 5", draftNext: "Next: photos",
+      draftContinue: "Continue where you stopped", draftNew: "New listing", draftNewNote: "Starting a new listing does not delete this draft. It stays under My listings.",
+      draftDelete: "Delete the draft", delAskH: "Delete the draft?", delAskTxt: "The draft moves to deleted items and leaves this list. You can restore it from there.",
+      delYes: "Delete", cancel: "Cancel", delRunH: "Deleting the draft", delRunTxt: " It stays here until the server confirms the move. If the connection drops, nothing is deleted.",
+      conflictH: "This draft is also open in another tab", conflictTxt: " A change was saved there at 22:43. Choose which version to continue with, so nothing is overwritten.",
+      conflictLoad: "Load the version from the other tab", conflictKeep: "Continue here and save this version",
+      progAria: "Listing progress",
+      stDeviceH: "Saved on this device", stDevice: " Not in your account yet. When you continue, the details are saved to your account too.",
+      stAccountH: "Saved in your account", stAccount: " Last saved at 22:41. You can stop and continue from any device.",
+      stOfflineH: "No internet connection", stOffline: " What you type is kept on this device and sent to your account when the connection returns. Keep this page open until then.",
+      foreignH: "Text from an earlier sign-in was found on this device", foreignTxt: " It was typed before you signed in to this account, so it was not added to your draft. Choose what to do with it.", foreignShow: "Show it and choose what to add", foreignDrop: "Delete it from this device",
+      sendingH: "Publishing your listing", sendingTxt: " Waiting for the server to confirm. If the connection drops, check My listings before you send again.", sendingLabel: "Publishing…",
+      stRetryH: "Saving to your account failed", stRetry: " Your details are kept on this device. We will try again in 10 seconds.", retryNow: "Try now",
+      detH1: "Property details", detLead: "A few basic details. You can stop at any step and continue later from the same place.",
+      dealType: "Deal type", sale: "For sale", rent: "For rent", propType: "Property type",
+      ptApt: "Apartment", ptGarden: "Garden apartment", ptPh: "Penthouse", ptDuplex: "Duplex", ptHouse: "House",
+      city: "City", hood: "Neighbourhood", sampleCity: "Tel Aviv-Yafo", sampleHood: "Sample Quarter",
+      addrHint: "The street and house number are never published. The listing and its address show the city and neighbourhood only.",
+      rooms: "Rooms", size: "Size", sqm: "m²", floor: "Floor", optional: "(optional)", sampleFloor: "3 of 8",
+      priceSale: "Asking price", priceRent: "Monthly rent", priceHint: "Digits only. You can update it later from My listings.",
+      desc: "A few words about the property", descHint: "What matters: balcony, parking, lift, condition.", descCount: "176 / 1,500",
+      sampleDesc: "A bright third-floor apartment with windows on three sides and a 10 m² west-facing sun balcony. Registered parking and a storage room. A building with a lift, near the park and public transport.",
+      fairNote: "Wording that limits by religion, origin, disability or family status holds the listing for review before it goes live.",
+      contactH: "How people reach you", contactName: "Display name", sampleName: "Dana", phone: "Phone",
+      phoneErr: "The number is too short. Check the digits. Everything else you typed is kept.",
+      showPhone: "I agree to publish my phone number on the listing", showPhoneSub: "The number shows on the listing, and the WhatsApp and call buttons reveal it to whoever taps them. Unchecked, the number is not on the listing and it has no WhatsApp or call buttons.",
+      ownerDecl: "I own the property or I am allowed to list it", ownerDeclSub: "Required before publishing.",
+      toPhotos: "Continue to photos", saveExit: "Save and exit",
+      phH1: "Photos", phLead: "Up to 30 photos. The first photo is the listing's cover.", addPhotos: "Add photos",
+      phDropHint: "From your phone or computer. JPG, PNG or HEIC, up to 15 MB each.",
+      phOrderHint: "Reorder with the arrows and set the cover with the star. The buttons work from the keyboard too.",
+      phListAria: "The listing's photos", coverBadge: "Cover", uploading: "Uploading", upFail: "This photo did not upload. Try again, or remove it.", tryAgain: "Try again",
+      toPreview: "Continue to preview", backDetails: "Back to property details",
+      pvH1: "Preview", pvLead: "This is how the listing will look on the site. Check the details before you publish.", pvBanner: "Preview. The listing is not live yet.",
+      pvAria: "Listing preview", pvCap: "Cover", fromOwner: "From the owner", wa: "WhatsApp", call: "Call",
+      fRooms: "4 rooms", fSize: "96 m²", fFloor: "Floor 3 of 8", pvBtnsNote: "The contact buttons appear only if you agreed to publish your number, and work once the listing is live.",
+      pvAddr: "The listing's address", pvAddrHint: "A permanent address in Latin letters: the deal, the rooms and the city. No street, no number.",
+      publish: "Publish the listing", backEdit: "Back to editing", publishNote: "You can edit, update the price or remove the listing at any time from My listings.",
+      doneH1: "Your listing is live", doneLead: "Published on 2.10.2026 at 22:47.",
+      copyLink: "Copy", toListing: "To the listing", shareWa: "Share on WhatsApp",
+      doneManage: "Sold or rented? Mark it in one tap from My listings, where you can also update the price.",
+      mineH1: "My listings", mineCount: "1 of 5 active listings · 1 draft", newListing: "New listing",
+      chipLive: "Live", chipSold: "Sold", livedSince: "Live since 2.10.2026", samplePrice: "₪3,450,000",
+      edit: "Edit", editPrice: "Update price", markSold: "Mark as sold", removeLive: "Remove from the site",
+      rmH: "Remove the listing from the site?", rmTxt: "It comes off the site at once. Its details and photos stay in this list, and you can publish it again.", rmYes: "Remove",
+      sample2Title: "2-room apartment for rent in Sample Quarter", sample2Meta: "Draft · step 3 of 5 · saved 1.10.2026", continueDraft: "Continue editing",
+      sample3Title: "3-room apartment in Sample Quarter", sample3Meta: "Marked as sold on 15.9.2026 · not shown on the site", republish: "Publish again",
+      promoH: "Promote a listing", promoOff: "Not active", promoTeaser: "A more prominent place in the property lists. Not active yet, and nothing is charged for it.", promoMore: "What it will be",
+      promoLead: "Here you will be able to choose a listing to show in a more prominent place in the property lists.",
+      promoOffH: "This option is not active yet", promoOffTxt: " There is no payment here and no payment details are stored. When it opens, the price and terms show before any confirmation.",
+      promoPick: "Choose a listing", promoWhere: "Where", promoList: "Property list", promoCity: "City page",
+      promoPrice: "Price", promoPriceTxt: "Shown here before any confirmation.", promoBtn: "Not available yet", backMine: "Back to My listings",
+      asideAria: "The steps and your listing", asideH: "The steps", sumKick: "Your listing so far", sumPhotos: "6 photos · cover: living room",
+      waBar: "Free consultation", waSub: "Reply on WhatsApp", waAria: "Free consultation on WhatsApp",
+      stepNames: ["Account", "Property details", "Photos", "Preview", "Publish"], stepOf: (n) => "Step " + n + " of 5",
+      photoLabels: ["Living room", "Kitchen", "Bedroom", "Balcony", "Bathroom", "View from the balcony"],
+      earlier: "Move earlier: ", later: "Move later: ", makeCover: "Set as cover: ", remove: "Remove: "
+    };
+    return { he: he, en: en };
+  }
+  renderVals() {
+    const p = this.props;
+    const lang = (this.state.lang || p.lang || "he") === "en" ? "en" : "he";
+    const t = this.T()[lang];
+    const screen = this.state.screen || p.screen || "auth";
+    const auth = this.state.auth || p.auth || "signup";
+    const save = this.state.save || p.save || "account";
+    const layout = p.layout || "phone";
+    const deal = this.state.deal || "sale";
+    const errors = this.state.errors !== undefined ? this.state.errors : !!p.errors;
+    const confirm = this.state.confirm !== undefined ? this.state.confirm : !!p.confirm;
+    const sending = this.state.sending !== undefined ? this.state.sending : !!p.sending;
+    const delState = this.state.del || (confirm && screen === "draft" ? "ask" : "closed");
+    const set = (o) => () => this.setState(o);
+    const order = this.state.order || [0, 1, 2, 3, 4, 5];
+    const status = this.state.ph || { 4: "up", 5: "fail" };
+    const stepIdx = { details: 2, photos: 3, preview: 4 }[screen] || 2;
+    const photos = order.map((id, i) => {
+      const label = t.photoLabels[id];
+      const stt = status[id] || "ok";
+      const move = (d) => () => { const o = order.slice(); const j = i + d; if (j < 0 || j >= o.length) return; const tmp = o[i]; o[i] = o[j]; o[j] = tmp; this.setState({ order: o }); };
+      return {
+        label: label, isCover: i === 0, notCover: i !== 0, isOk: stt === "ok", isUp: stt === "up", isFail: stt === "fail",
+        tileCls: "nlj-tile" + (stt === "fail" ? " is-fail" : ""), pct: "64%", first: i === 0, last: i === order.length - 1,
+        earlier: move(-1), later: move(1),
+        cover: () => { const o = order.slice(); o.splice(i, 1); o.unshift(id); this.setState({ order: o }); },
+        remove: () => { this.setState({ order: order.filter((x) => x !== id) }); },
+        retry: () => { const s2 = Object.assign({}, status); s2[id] = "ok"; this.setState({ ph: s2 }); },
+        earlierAria: t.earlier + label, laterAria: t.later + label, coverAria: t.makeCover + label, removeAria: t.remove + label
+      };
+    });
+    const flow = screen === "details" || screen === "photos" || screen === "preview";
+    return {
+      t: t, lang: lang, dir: lang === "he" ? "rtl" : "ltr", yes: true, no: false,
+      rootCls: "nlj" + (layout === "desk" ? " nlj--desk" : "") + (layout === "narrow" ? " nlj--narrow" : ""),
+      desk: layout === "desk", signedIn: screen !== "auth", signedOut: screen === "auth",
+      s: { auth: screen === "auth", draft: screen === "draft", flow: flow, details: screen === "details", photos: screen === "photos", preview: screen === "preview", published: screen === "published", mine: screen === "mine", promote: screen === "promote" },
+      a: {
+        signup: auth === "signup" || auth === "exists", exists: auth === "exists", login: auth === "login", recover: auth === "recover" || auth === "sent", sent: auth === "sent",
+        signupTab: auth === "signup" || auth === "exists", loginTab: auth !== "signup" && auth !== "exists",
+        mailCls: "nlj-input is-ltr" + (auth === "exists" ? " is-bad" : ""), sendLabel: auth === "sent" ? t.recWait : t.recSend
+      },
+      st: { device: save === "device", account: save === "account", offline: save === "offline", retry: save === "retry", conflict: save === "conflict", foreign: save === "foreign" },
+      sending: sending, publishLabel: sending ? t.sendingLabel : t.publish,
+      conflict: save === "conflict",
+      d: { closed: delState === "closed", ask: delState === "ask", running: delState === "running" },
+      deal: { sale: deal === "sale", rent: deal === "rent" },
+      dealChip: deal === "sale" ? t.sale : t.rent,
+      priceLabel: deal === "sale" ? t.priceSale : t.priceRent,
+      priceVal: deal === "sale" ? "3450000" : "9800",
+      priceShow: deal === "sale" ? (lang === "he" ? "3,450,000 ₪" : "₪3,450,000") : (lang === "he" ? "9,800 ₪ לחודש" : "₪9,800 a month"),
+      errors: errors, phoneCls: "nlj-input is-ltr" + (errors ? " is-bad" : ""), phoneVal: errors ? "050-12" : "050-000-0000",
+      stepText: t.stepOf(stepIdx), stepName: t.stepNames[stepIdx - 1],
+      bars: [1, 2, 3, 4, 5].map((n) => ({ cls: n < stepIdx ? "is-done" : n === stepIdx ? "is-now" : "" })),
+      stepList: t.stepNames.map((label, k) => ({ n: k + 1, label: label, cls: k + 1 < stepIdx ? "is-done" : k + 1 === stepIdx ? "is-now" : "" })),
+      photos: photos, phCount: (lang === "he" ? order.length + " מתוך 30" : order.length + " of 30"),
+      rmOpen: this.state.rm !== undefined ? this.state.rm : (confirm && screen === "mine"),
+      noSubmit: (e) => { if (e && e.preventDefault) e.preventDefault(); },
+      go: {
+        signup: set({ screen: "auth", auth: "signup" }), login: set({ screen: "auth", auth: "login" }), recover: set({ screen: "auth", auth: "recover" }), sent: set({ auth: "sent" }),
+        draft: set({ screen: "draft" }), details: set({ screen: "details" }), photos: set({ screen: "photos" }), preview: set({ screen: "preview" }),
+        published: set({ screen: "published", sending: false }), sending: () => { this.setState({ sending: true }); setTimeout(() => this.setState({ screen: "published", sending: false }), 1600); }, mine: set({ screen: "mine" }), promote: set({ screen: "promote" }),
+        saved: set({ save: "account" }), sale: set({ deal: "sale" }), rent: set({ deal: "rent" }),
+        delAsk: set({ del: "ask" }), delNo: set({ del: "closed" }), delRun: set({ del: "running" }),
+        rmAsk: set({ rm: true }), rmNo: set({ rm: false })
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

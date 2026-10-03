@@ -1,0 +1,298 @@
+{
+ "v": 3,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-10-03T21:06:07Z"
+ },
+ "title": "NadLan Listing Journey",
+ "launch": {
+  "view": "canvas"
+ },
+ "pages": [],
+ "boards": {
+  "Main.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 390,
+   "h": 1250,
+   "title": "עברית 390 · אב־טיפוס לחיץ, מתחיל בפתיחת חשבון",
+   "is_interactive": true
+  },
+  "He-Auth-Exists.dc.html": {
+   "x": 470,
+   "y": 0,
+   "w": 390,
+   "h": 1300,
+   "title": "עברית 390 · מייל קיים, הקלט נשמר",
+   "is_interactive": true
+  },
+  "He-Recover.dc.html": {
+   "x": 940,
+   "y": 0,
+   "w": 390,
+   "h": 1100,
+   "title": "עברית 390 · שחזור סיסמה, תשובה ניטרלית",
+   "is_interactive": true
+  },
+  "He-Draft-Conflict.dc.html": {
+   "x": 1410,
+   "y": 0,
+   "w": 390,
+   "h": 1300,
+   "title": "עברית 390 · טיוטה שמורה, התנגשות שתי לשוניות",
+   "is_interactive": true
+  },
+  "He-Draft-Delete.dc.html": {
+   "x": 1880,
+   "y": 0,
+   "w": 390,
+   "h": 1250,
+   "title": "עברית 390 · מחיקת טיוטה רק אחרי אישור",
+   "is_interactive": true
+  },
+  "He-Details-Errors.dc.html": {
+   "x": 2350,
+   "y": 0,
+   "w": 390,
+   "h": 2250,
+   "title": "עברית 390 · פרטי הנכס, נשמר במכשיר, שגיאה בשדה",
+   "is_interactive": true
+  },
+  "He-Photos-Retry.dc.html": {
+   "x": 2820,
+   "y": 0,
+   "w": 390,
+   "h": 2150,
+   "title": "עברית 390 · תמונות, שער, סדר, העלאה שנכשלה, ניסיון חוזר",
+   "is_interactive": true
+  },
+  "He-Preview.dc.html": {
+   "x": 3290,
+   "y": 0,
+   "w": 390,
+   "h": 2150,
+   "title": "עברית 390 · תצוגה מקדימה ופרסום",
+   "is_interactive": true
+  },
+  "He-Published.dc.html": {
+   "x": 3760,
+   "y": 0,
+   "w": 390,
+   "h": 1050,
+   "title": "עברית 390 · המודעה באוויר",
+   "is_interactive": true
+  },
+  "He-Mine-Remove.dc.html": {
+   "x": 4230,
+   "y": 0,
+   "w": 390,
+   "h": 1750,
+   "title": "עברית 390 · המודעות שלי, הסרה עם אישור",
+   "is_interactive": true
+  },
+  "He-Promote-Off.dc.html": {
+   "x": 4700,
+   "y": 0,
+   "w": 390,
+   "h": 1300,
+   "title": "עברית 390 · קידום מודעה, כבוי",
+   "is_interactive": true
+  },
+  "He320-Details.dc.html": {
+   "x": 0,
+   "y": 2650,
+   "w": 320,
+   "h": 2450,
+   "title": "עברית 320 · פרטי הנכס, אין חיבור",
+   "is_interactive": true
+  },
+  "He320-Photos.dc.html": {
+   "x": 400,
+   "y": 2650,
+   "w": 320,
+   "h": 2050,
+   "title": "עברית 320 · תמונות",
+   "is_interactive": true
+  },
+  "He320-Auth.dc.html": {
+   "x": 800,
+   "y": 2650,
+   "w": 320,
+   "h": 1350,
+   "title": "עברית 320 · פתיחת חשבון",
+   "is_interactive": true
+  },
+  "En-Auth.dc.html": {
+   "x": 0,
+   "y": 5500,
+   "w": 390,
+   "h": 1300,
+   "title": "English 390 · open an account",
+   "is_interactive": true
+  },
+  "En-Details-Conflict.dc.html": {
+   "x": 470,
+   "y": 5500,
+   "w": 390,
+   "h": 2400,
+   "title": "English 390 · details, two-tab conflict",
+   "is_interactive": true
+  },
+  "En-Photos.dc.html": {
+   "x": 940,
+   "y": 5500,
+   "w": 390,
+   "h": 2150,
+   "title": "English 390 · photos",
+   "is_interactive": true
+  },
+  "En-Mine.dc.html": {
+   "x": 1410,
+   "y": 5500,
+   "w": 390,
+   "h": 1700,
+   "title": "English 390 · My listings",
+   "is_interactive": true
+  },
+  "He-Desk-Auth.dc.html": {
+   "x": 0,
+   "y": 8300,
+   "w": 1440,
+   "h": 1150,
+   "title": "עברית 1440 · פתיחת חשבון",
+   "is_interactive": true
+  },
+  "He-Desk-Details.dc.html": {
+   "x": 1520,
+   "y": 8300,
+   "w": 1440,
+   "h": 1800,
+   "title": "עברית 1440 · פרטי הנכס",
+   "is_interactive": true
+  },
+  "He-Desk-Photos.dc.html": {
+   "x": 3040,
+   "y": 8300,
+   "w": 1440,
+   "h": 1500,
+   "title": "עברית 1440 · תמונות",
+   "is_interactive": true
+  },
+  "He-Desk-Preview.dc.html": {
+   "x": 4560,
+   "y": 8300,
+   "w": 1440,
+   "h": 2000,
+   "title": "עברית 1440 · תצוגה מקדימה",
+   "is_interactive": true
+  },
+  "En-Desk-Details.dc.html": {
+   "x": 6080,
+   "y": 8300,
+   "w": 1440,
+   "h": 1800,
+   "title": "English 1440 · details",
+   "is_interactive": true
+  },
+  "Journey.dc.html": {
+   "x": 5330,
+   "y": 0,
+   "w": 390,
+   "h": 1500,
+   "title": "Journey · הרכיב שכל המסכים בנויים ממנו",
+   "is_interactive": true
+  },
+  "He-Details-Foreign.dc.html": {
+   "x": 5800,
+   "y": 0,
+   "w": 390,
+   "h": 2300,
+   "title": "עברית 390 · טקסט מכניסה קודמת לא מיובא בשקט",
+   "is_interactive": true
+  },
+  "He-Preview-Sending.dc.html": {
+   "x": 6270,
+   "y": 0,
+   "w": 390,
+   "h": 2250,
+   "title": "עברית 390 · פרסום בלחיצה אחת, מחכים לאישור השרת",
+   "is_interactive": true
+  }
+ },
+ "order": [
+  "Main.dc.html",
+  "He-Auth-Exists.dc.html",
+  "He-Recover.dc.html",
+  "He-Draft-Conflict.dc.html",
+  "He-Draft-Delete.dc.html",
+  "He-Details-Errors.dc.html",
+  "He-Photos-Retry.dc.html",
+  "He-Preview.dc.html",
+  "He-Published.dc.html",
+  "He-Mine-Remove.dc.html",
+  "He-Promote-Off.dc.html",
+  "He320-Details.dc.html",
+  "He320-Photos.dc.html",
+  "He320-Auth.dc.html",
+  "En-Auth.dc.html",
+  "En-Details-Conflict.dc.html",
+  "En-Photos.dc.html",
+  "En-Mine.dc.html",
+  "He-Desk-Auth.dc.html",
+  "He-Desk-Details.dc.html",
+  "He-Desk-Photos.dc.html",
+  "He-Desk-Preview.dc.html",
+  "En-Desk-Details.dc.html",
+  "Journey.dc.html",
+  "He-Details-Foreign.dc.html",
+  "He-Preview-Sending.dc.html"
+ ],
+ "notes": {
+  "row1": {
+   "x": 0,
+   "y": -300,
+   "text": "עברית · טלפון 390 · מקצה לקצה",
+   "kind": "title1",
+   "maxW": 6660
+  },
+  "row2": {
+   "x": 0,
+   "y": 2350,
+   "text": "עברית · טלפון צר 320",
+   "kind": "title1",
+   "maxW": 1600
+  },
+  "row3": {
+   "x": 0,
+   "y": 5200,
+   "text": "English · LTR · phone 390",
+   "kind": "title1",
+   "maxW": 1800
+  },
+  "row4": {
+   "x": 0,
+   "y": 8000,
+   "text": "מחשב 1440 · עברית ו־English",
+   "kind": "title1",
+   "maxW": 7520
+  },
+  "truth": {
+   "x": -760,
+   "y": 0,
+   "w": 620,
+   "maxH": 1500,
+   "size": "m",
+   "fill": "teal",
+   "text": "חוקי האמת של המסע\n\n· כל התוכן כאן סינתטי (נתוני דוגמה): דנה, שכונת הדוגמה, מחירים ותאריכים. אין כאן אף משתמש אמיתי.\n· שורת השמירה אומרת רק מה שנכון: נשמר במכשיר הזה / נשמר בחשבון / אין חיבור / השמירה לא הצליחה + ניסיון חוזר / פתוח גם בלשונית אחרת.\n· שגיאה ליד השדה, והקלט נשאר.\n· טיוטה עוברת לפריטים שנמחקו (אפשר לשחזר), ורק אחרי אישור מהשרת; מודעה חדשה לא מוחקת טיוטה.\n· פרטיות: רחוב ומספר בית לא מתפרסמים, גם לא בכתובת המודעה, במטא, בסכמה או בטקסט חלופי; עיר ושכונה בלבד.\n· מספר הטלפון מתפרסם רק בהסכמה מפורשת. בלי הסכמה אין גם וואטסאפ וחיוג, כי הם חושפים את המספר.\n· אין הבטחת אי־כפילות לפני שהנעילה וההתאוששות נבדקו.\n· פעולה ראשית אחת בכל מסך; כפתור ייעוץ חינם רחב עם מקום שמור, לא מכסה את הפעולה.\n· 44px לכל לחיצה, פוקוס גלוי, מקלדת: חיצים לסדר תמונות, כוכב לשער.\n· קידום מודעה: הכנה כבויה, בלי מחיר, בלי גבייה, בלי הבטחת חשיפה.\n· עובדות המנוע הקיים (HAD-256): עד 30 תמונות, כתובת לטינית, וואטסאפ וחיוג לבעלים, הטלפון מוצג רק בהסכמה, הצהרת בעלים, עצירה לבדיקה רק על ניסוח מפלה, 5 מודעות פעילות."
+  }
+ },
+ "designSystems": [
+  {
+   "title": "NadLan",
+   "namespace": "nadlan",
+   "artifact": "https://claude.ai/artifact/L9Nqz7Viv7K3MYeZrBc9s8",
+   "version": "1791059758-3b1a",
+   "copiedAt": "2026-10-03T21:06:07Z"
+  }
+ ]
+}
