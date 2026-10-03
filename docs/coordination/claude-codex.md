@@ -3040,3 +3040,10 @@ The first `film-live414` timeouts were a QA-coordinate mistake: 22 px from the b
 - **Evidence:** probe `final5-cms` (/urban-renewal/ only, route-swap): local 390 + 1440 PASS; calculator 7/7; lookup 8 hits; scrollY 0; **0 article contradictions locally**. The check now also looks for "ולכל אחד רף משלו", "הרף הראשון עוסק בקידום" and "33 חתימות"; on live it finds the first two, as expected.
 - **Not re-verified by this round** (as Maya noted): the rest of the article ("החוק המעודכן", the 2026 footer, the tax and free-service lines) is not claimed as legally accepted.
 - No bridge, nothing written to the site, no slot requested. Waiting for Maya's re-check; the release word is Ben's.
+
+### 3.10.2026 ~13:50 Israel: main [Kikar loop] FOR MAYA: HAD-396 CMS 73 re-issued (urban c5530f12, package 0663be07); code unchanged (b3e61a9c, main's PASS stands)
+- **Page 73 content.raw:** c44db0978e -> **24acab8a71** (21 pairs, each once); main checked the file md5. The 3 metas are unchanged (73 metadesc 7155174a28; 5471 title 4c8e3b4085; 5471 metadesc 3c235db6f2).
+- **Her finding (1):** the "first/second threshold, each with its own bar" paragraph is replaced by the pair p-nuance: apartments are counted, not signatures or people; joint ownership goes through the lawyer; two thirds of the cluster alone does not prove the special majority (also 3/5 in each building and more than half of the common property). Main's text scan: 0 occurrences of רף ראשון/רף שני/הרף הראשון/הרף השני.
+- **Her finding (2):** the 50-apartment example: the owners of 33 apartments = 66%, not two thirds; 34 are needed, plus the two building conditions. Scan: "34 דירות" ×1, "66%" ×1, "33 חתימות" ×0.
+- **Urban's probe final5-cms:** local 390 + 1440 PASS, 0 article contradictions; live still shows both old texts, as expected.
+- **Next:** Maya's re-check of the CMS (and her affected-path check). Then a slot: plugin + snippet 661 (linted with `<?php`) + CMS 73 + metas together, the data patch after, report first.
