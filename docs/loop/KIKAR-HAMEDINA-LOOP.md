@@ -214,6 +214,12 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **3.10 ~14:50, turn 19 (a quiet hold on the owner's decisions):**
+  - **Re-check:** health 1.72.415; /projects/hamedina/, /urban-renewal/ and /my-renewal/ all 200.
+  - **Decision against a gimmick:** room measuring in the example apartment is dropped. The example apartment is illustrative, so measured room sizes would be invented numbers (iron law 3).
+  - **Moved forward:** HAD-407/408/409 asked of urban as one package (design first, Maya QA, main's queue).
+  - **Waiting:** Ben's A/C for the 77.6 s film; the HAD-406 chip; the GSC re-inspection around 9.10.
+
 - **3.10 ~14:10, turn 18 (every V-item done in its approved scope):**
   - **Re-check (iron law 4):** content_first_check after 412/414: 20/20 OK, failed 0 (Kikar he/en/fr/ru/ar + the fleet, phone and desktop). Kikar on a phone: h1 190, lead 291, stage 725.
   - **HAD-396 closed on live:** Maya's independent closure, urban's re-probe, Linear Done.
