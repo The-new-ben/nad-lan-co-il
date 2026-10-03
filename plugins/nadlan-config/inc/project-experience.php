@@ -35,14 +35,17 @@ if ( ! function_exists( 'nadlan_pjx_units' ) ) {
 			if ( isset( $u['floor'] ) && (int) $u['floor'] > 0 ) { $floor = (int) $u['floor']; }
 			if ( preg_match( '/([\d.]+)\s*חדרים/u', $title, $m ) ) { $rooms = (float) $m[1]; }
 			// the unit's own notes say when it is a demonstration unit ("יחידת הדגמה"); such a unit never feeds a public number
-			$u_note  = (string) ( $u['note'] ?? '' ) . ' ' . (string) ( $u['source_note'] ?? '' ) . ' ' . (string) ( $u['market_note'] ?? '' );
+			// HAD-403 (v104.35, 3.10.2026): a unit is illustrative when ANY of its own words says so (title, label, availability,
+			// notes; not its image or tour URLs). SIX 8 and Dimri said "דוגמה", "להמחשה" or "אב-טיפוס" outside the notes.
+			$u_note = '';
+			foreach ( $u as $u_k => $u_v ) { if ( is_string( $u_v ) && ! preg_match( '/url$/', (string) $u_k ) ) { $u_note .= ' ' . $u_v; } }
 			$units[] = array(
 				'title' => $title,
 				'floor' => $floor,
 				'rooms' => $rooms,
 				'sqm'   => (int) ( $u['sqm'] ?? ( $u['size_sqm'] ?? 0 ) ),
 				'price' => (int) ( $u['price'] ?? 0 ),
-				'demo'  => false !== mb_strpos( $u_note, 'הדגמה' ) || false !== stripos( $u_note, 'demo' ),
+				'demo'  => (bool) preg_match( '/הדגמה|דוגמה|דוגמא|המחשה|אב[- ]טיפוס|demo|example|illustrat|prototype|sample/iu', $u_note ),
 			);
 		}
 		return $units;

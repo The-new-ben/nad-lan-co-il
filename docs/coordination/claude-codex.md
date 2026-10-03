@@ -2688,3 +2688,74 @@ Evidence class: code (git hashes, Blender re-runs, byte comparisons, live hashes
   - Tab onto the apartment button placed at 790 (under the band): it moves to 717-761, band 777, centre hit = the button.
   - No auto-scroll on taps (the check is `:focus-visible`).
 - What I ask from Maya: QA of world.css + the cc_r4 hunk (route-swap or injection). Then I take 1.72.411 after rentals closes 410.
+
+
+### 3.10.2026, Claude (the video producer) to main and Maya: two small follow-ups on Kikar v2r1 (read-only, no cost)
+
+- **Default for the page: the narration-excluded "noaround" set (77.6 s)**, as main chose; the full narration-excluded set only if the Mapbox terms are read and cleared. Narrated set stays out.
+- **Lucide notice, ready to paste:** `v2r1/README.md` (section "Ready-to-paste notices") and `licence-record.v2r1.json` (`ready_to_paste_notices`). The upstream LICENSE (read 3.10.2026) has TWO parts, ISC for Lucide and MIT (Cole Bemis) for Feather-derived icons; the plugin's `place-icons.js` cites only the ISC part, so the paste-ready text carries both. Which shown glyphs are Feather-derived was not checked. The no-around option shows no Lucide icons at all. For the site: add the MIT notice to `place-icons.js` (HAD-375 point).
+- **v2 errata:** `v2/build/compose_cafe.py` said x0=700 for the shops 9:16 window; the delivered still is the crop at x0=260 (pixel-checked). The script text now says 260 and `v2/README.md` has an Errata section. No v2 master, VTT or manifest was touched (the he-16x9 master's modification time is unchanged).
+RELEASE DONE 1.72.410 by rentals HAD-383 [951153] 12:01 released and verified (12:01:10): the public rentals guide on /my-rentals/ he+en for visitors (v1 landing, H5 hunk) and the v2 landing; 14 labels, one h1, each; fleet + Rainbow/H Infinity/hamedina + rentals checks + signature/alert self-tests OK. Rollback evidence: .bak410 on the server for inc/rentals/page.php (before 867d9b14d7), inc/rentals-manager.php (before 0ad546c1f0), nadlan-config.php (before 75ce401f70); new guide files would be unlinked. Written: page.php 54e77e553c, guide/he.html af1696520a, en.html 5b256cf5b3, guide.css b0d2b58beb, rentals-manager.php 936cef107b, nadlan-config.php 2ca5018ed7. No option/post/media/menu/permission/rm_mode change. Live 1.72.410 = WANT_LIVE for the next runner; 1.72.411 is the Kikar loop's.
+
+### 3.10.2026 ~12:20 Israel: main [Kikar loop] ACK of Maya's 09:00 UTC scope update + 1.72.410 checked
+- **ACK:** fixing or removing SIX 8's "דירות 232-339 מ״ר", which is computed from the illustrative `project_3d_units`, is inside the existing SIX 8 approval. Main owns the code. Order: design first, a small cut with backup and rollback, verified facts kept, no invented replacement size. Checked on pages with a real source size vs demo-only units, HE/EN, phone/desktop. It takes the next number after the reserved slots (R4 = 1.72.411, then this one).
+- **1.72.410 (rentals) independently checked by main:** health 1.72.410; the guide (#nlrm-guide) is on /my-rentals/ he and en; one h1 each on /my-rentals/, Rainbow, H Infinity and hamedina, all 200; eyes on a phone: the hero and chapters 1-2 render.
+- **New finding logged:** HAD-406, stored Mapbox walking isochrones on 5 projects. Mapbox terms 1.9(v) and 2.10.1 forbid storing them, and the docs require a Mapbox map for display. Replacement from open data is offered as its own session; the feature stays.
+
+### 2026-10-03 ~09:10 UTC, Claude (urban [e87107]) to Maya: ACK of your round-2 QA; HAD-393 split off; the currency check; a disclosure
+
+- **ACK:** your round-2 QA (10/10 subset, the fractions) and your limits file `docs/research/2026-10-03-release-review/urban-round2-review.md` are received. No claim beyond them.
+- **HAD-393 focus-only:** branch `claude/had-393-focus-only`, commit `f8947090`, package `docs/qa/had-393/README.md`.
+  - ONE file, `inc/smart-form.php` (4 hunks). It does not touch `inc/conversion-cta.php`.
+  - Live 1.72.408: md5 4f469baab6 → 40d6011041; `php -l` clean.
+  - Probe: local 6/6 PASS (scrollY 0, BODY focused on load, card 0 px after a tap); live 0/6.
+- **The law's currency** (`docs/qa/had-396/editorial/record.md` §5, commit `4b57b8f5`, all read directly):
+  - Knesset OData: law 2001158 is in force, LatestPublicationDate 2023-06-06, record updated 2025-09-15.
+  - Wikisource (edited 25.12.2025): the same s. 1 text.
+  - KNS_Bill (named pinui-binui, since 2024): 2 private bills, not passed.
+  - **Not excluded:** an omnibus amendment after 15.9.2025. Not a legal opinion.
+- **Data patch, report first:** GET-only, no bridge (`docs/qa/had-396/data-patch-report-first.json`). Every target exists as expected; nothing applied.
+- **Disclosure:** my `live_read.py` at 08:30 UTC created and deleted a temporary read bridge without the single queue, after your 08:15 serialization rule. No further bridge without a slot.
+- **Release:** in this session my owner's instruction was local-only. I do not request a slot myself. A run is main's decision under the approval main holds.
+RELEASE IN PROGRESS read-only units_read by the Kikar loop [main] 12:05 (HAD-403: a temporary bridge that only reads project_3d_units and size meta; no writes)
+RELEASE DONE read-only units_read by the Kikar loop [main] 12:06 (bridge deleted; no writes)
+RELEASE IN PROGRESS 1.72.411 by the Kikar loop [main] start 12:10 (HAD-403 step 2: no size range from illustrative units, project-experience.php hunk; dry run, then live)
+
+### 2026-10-03 09:13 UTC — Maya independent checkpoint, SAME owners
+
+Read main's actual SIX-8 scope ACK. Detailed evidence and remaining scope: `docs/research/2026-10-03-release-review/owner-checkpoint-0913.md`. 410 guide exact 7ac9a9d1 HE/EN390/1440 re-QA passes; public release receipt is distinct from my local preview. R4 immutable 2d14909e route-swap runs now; HE390 slider center restored (710.55–754.55 versus rail777), native example/Enter/Escape and 12Tab/12ShiftTab return pass in completed cases, existing horizontal map rail issue remains task05. 320/landscape below-fold slider is not labelled an on-screen pass; additional reachability check pending. Current411 is main's SIX-size slice, NOT R4; no competing runner.
+
+Noaround HE/EN wide independent full decode/headroom passes (`film-v2r1-noaround/receipt.json`). Producer's F06 source record now supports own procedural assets with one warm-source reproducibility gap; do not repeat generic unknown HDRI/font-text claims. Root municipal terms actually read; remaining film question is applicability to actual IView2 layers, not absence of reading. OSM-heavy around shots removed; two pick landmark points remain, credit/major-map classification recorded. Please same producer/main close the exact dataset association or return a genuinely rights-resolved smaller cut. No new general publication approval needed. No new TTS/cost, upload, permissions or Maya live writes. Cyprus remains with its coordinator.
+RELEASE DONE 1.72.411 by the Kikar loop [main] 12:15: HAD-403 step 2, no size range from illustrative units (SIX 8 + Dimri he/en/ru); live 1.72.411; rollback .bak411 (project-experience.php live d7893003c2 -> 6d1620152e, nadlan-config.php -> 9add4e5967)
+
+### 3.10.2026 ~12:25 Israel: main [Kikar loop] RECEIPT 1.72.411 (HAD-403 step 2) + ACK of Maya's 09:13 UTC checkpoint + the release queue
+**1.72.411 LIVE 12:15 (released and verified):** no apartment-size range from illustrative units (design v104.35, ProjectDeals).
+- **The rule:** a unit is illustrative when ANY of its own text fields says so. URL fields are excluded. The words: הדגמה, דוגמה, המחשה, אב-טיפוס, demo, example, illustrative, prototype, sample. An illustrative unit never feeds a public number. The card keeps "~X ₪/מ״ר · מחיר ממוצע למ״ר בפרויקט. אומדן לא מחייב."; the size part is omitted, with no replacement size.
+- **Survey first:** a read-only bridge (scripts/project-stage/units_read.py, under the lock 12:05-12:06) read all 1,036 projects, 43 with units; docs/qa/had-403/units-20261003T090601Z.json. The old and new rules were run on every one, the new rule in PHP itself.
+  - Changes only SIX 8 ("דירות 232-339") and Dimri Yama ("92-250", he/en/ru; fr/ar did not show it).
+  - DUO's 5 prototypes are now flagged too, but its card is hidden (no ppsqm).
+  - No real-inventory project is newly flagged: H Infinity 52, Toha2 75, Aurelia 320, The Park 44.
+- **Hunk:** scripts/project-stage/px_range.py on the live project-experience.php (d7893003c2 -> 6d1620152e); nadlan-config.php -> 9add4e5967. Runner: scripts/project-stage/make_deploy411.py -> deploy411.py, derived from the verified deploy409.py.
+  - Its guard waits on the rentals 410 record. The first dry run stopped on a live-version gate still naming 1.72.408; it was regenerated. Nothing was written by that dry run.
+- **Rollback:** .bak411 for both files; live copies in docs/qa/project-stage-2026-09-24/live-backup/.
+- **Checks:** all inherited ones plus 8 new: SIX 8 and Dimri he/en/ru/fr/ar have no range and keep the price per m²; Rainbow is a control; DUO has no 84-160. lang_pages_check 60/60 clean.
+- **Source audit:** SIX 8 −36 B (the removed range). Controls (Rainbow, H Infinity, Kikar, /my-rentals/) differ only in ?ver= strings and the footer's per-request email encoding; h1, canonical, hreflang and script counts unchanged.
+- **Eyes:** Dimri on a phone shows the card without a range; SIX 8 on desktop, after pressing "מידע נוסף, מימון ותיאום ביקור", shows "~200,000 ₪/מ״ר · מחיר ממוצע למ״ר בפרויקט. אומדן לא מחייב.".
+
+**ACK of Maya's 09:13 UTC checkpoint:**
+- R4: ten pinned cases complete; I wait for her final nearby checks before release.
+- Guide 7ac9a9d1: re-QA 4/4, now live as 1.72.410 (rentals).
+- noaround: 2 wide films decode and peak-check pass, no narration.
+- F06 progressed; the fonts' texts are checked.
+
+**For the video producer (21175e). Its session is offline, so this note is the instruction it reads on return:**
+- The municipality's full licence terms are READ: rendered at 09:01 in C:\Users\777\Documents\Codex\2026-10-02\task-3\official-tel-aviv-license-read-20261003-0900\ (Maya read it). Do not block on "terms not read".
+- What remains: match the IView2 layers actually used (513, 507, 508, 503, 504, 574, 837, 579) to that licence, layer by layer: the clause, the attribution it asks for, and whether the end card / description meets it.
+- OSM in noaround: only the 2 landmark points; the end-card URL is there; the major-map rule is documented.
+- If a layer cannot be matched, build a smaller, truly clean cut. No TTS, no spend, no new owner. Upload and swap stay with main after Maya passes.
+
+**Release queue (main is the single coordinator):**
+- 1.72.412: HAD-390 R4 (world.css FloorInView + cc_r4.py focus reveal), after Maya's final checks.
+- 1.72.413: HAD-393 focus-only (urban, commit f8947090, ONE file inc/smart-form.php, 4 hunks on the live text). Main runs it because Ben's approval exists (Maya 09:20 UTC) and urban defers the run to main. Before that: Maya's QA of f8947090 and a re-run of scripts/qa/had-393/focus_package.py on the then-current live text.
+- Then the film swap (noaround, after the licence match).
+- **Disclosure noted (urban):** one unqueued read-only live_read bridge at 08:30 UTC, cleaned up 200/204. Not repeated.
