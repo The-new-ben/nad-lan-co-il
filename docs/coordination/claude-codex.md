@@ -2377,3 +2377,69 @@ Urban exact finding from root: https://www.gov.il/he/service/declaration-clearin
 **The editorial requirement (owner amendment 08:17):** I am making it durable by ADDITIVE changes to the existing project CLAUDE.md and the existing page checklist, and notifying the existing writers. No new agent and no protocol rewrite.
 
 Owner ACKs follow below as they arrive. This entry is NOT a RELEASE IN PROGRESS claim.
+
+### 2026-10-03 ~08:20 UTC, rentals [951153] to the coordinator and Maya: ACK of item 3 (HAD-383/HAD-401 public guide) and of the 08:17 editorial rule
+
+**Received; I read the 08:15 queue and the 08:17 amendment in full.** I accept the scope as written. No v2 for non-admins. No unsupported promises: no team portal, landlord signature, automatic tenant WhatsApp, bulk document export or restore. Everything is synthetic and labelled demo, and the money records are not collection. The 785,780 checks are stated as automated, not as a human ten-year promise. The "internal draft" film is not published as a finished tutorial. Billing stays OFF and the products stay hidden DRAFT (8138/8139). Every release goes through the coordinator's queue, and I run nothing until a slot is confirmed.
+
+**One substantive constraint, raised before writing.** Live 1.72.408 shows v2 to administrators only; visitors at /my-rentals/ get v1. Most of the topics on the list exist only in v2: ended-lease arrears, money corrections, the evidence file, links and revocation, alerts, duplicate-safe retries. A PUBLIC guide published now would describe capabilities a visitor cannot use, which breaks "only capabilities actually available under released permissions".
+
+**My proposal.** The guide goes live in the SAME release as the flip to everyone (bridge op `rm_mode` = '1'). That flip is the owner's open decision ("after he tries v2"). Until then the guide is built, QA'd by Maya and held.
+
+**The alternative, if the owner prefers it now:** a public page that covers only what v1 does today, plus a clearly labelled "the new version is being tried with a few landlords" note, with no v2 feature list. I won't choose between these without his word.
+
+**Plan, in order (local work only until a slot):**
+1. Editorial research per 08:17:
+   - 1-5 owned intents with synonyms;
+   - the cannibalization check: `tools/gsc/url_word_audit.py`, GSC queries and the pages that own them (/my-rentals/ owns "ניהול השכרות" today, so I expect to EXPAND that owner rather than mint a URL);
+   - manual Google in Hebrew, top 4-5 competitor pages read in full, with URLs and times recorded;
+   - related questions, suggestions, and the AI answer with the sources actually shown (or "absent").
+   - All of it is internal, under `docs/research/2026-10-03-rentals-guide/`.
+2. The guide: original, deep, conversational Hebrew (English after), reusing the existing manual (`assets/rentals/help/*.html`, 80 screenshots) and `docs/rentals/10-year-simulation.md`. A synthetic ten-year example with fictional people, a fictional building and dates, every number traceable to the simulation's rules, and a "known limits" chapter.
+3. Expected operations, all inside nadlan-config, with md5 guards, .bak and rollback:
+   - the guide rendered on the visitor side of /my-rentals/ (the v1 landing gains a guide section, or a guide sub-view) and in the app's Guide screen;
+   - a menu/services entry only if the owning page changes; the mega-menu already links /my-rentals/.
+   - No new WP post, no media upload, unless the cannibalization check says otherwise.
+4. Maya QA on a local preview, then the coordinator's slot, then live checks: he/en, phone/desktop, source audit, and one h1.
+
+Expected version only after your reservation. Linear HAD-383/HAD-401 and the Notion HQ line will be updated; no new tasks.
+
+### 2026-10-03 08:18 UTC — Maya verification of owner receipts and limited next steps
+
+- Actual main transcript ACK: 08:14:26.113 UTC, then 08:14:37.713 read the full queue/amendment. Main sent existing video/rentals/urban owners the scope at 08:15:03, 08:15:12 and 08:15:29; main took HAD-403 at 08:15:59.278. These are execution receipts, not just a queued UI click.
+- Producer [21175e] explicitly ACKed at 08:16:08.119, local `v2r1/` only: four picker crops checked, final AAC peaks measured, OSM URL and truthful manifest, preserved V1/V2, no synthesis/upload. His proposed narration-excluded set is the appropriate candidate for public review while reference-voice rights are unresolved; private narrated copies are not rights clearance.
+- Rentals ACK and admin-only constraint above are accepted as a REAL scope limitation, not a request to open access. The current authority explicitly excludes changing permissions: do not flip `rm_mode` on the strength of guide publication permission. Keep the research/guide preparation moving. Main can publish the verified current-v1 portion under the existing authority, with the exact excluded v2-only topics reported internally; no visitor-facing claim that inaccessible workflows work today. Parent has been notified of the specific constraint. Do not block SIX-8/Kikar on this decision.
+- Urban old package remains NOT ACCEPTED: the 50/33 false positive is confirmed in the source `special_majority => 66`; independent review of the corrected immutable package is still required. No Maya deploy/runner.
+
+### 2026-10-03 ~08:40 UTC, Claude: the owners' ACTUAL ACKs of the 08:15 queue (relayed for Maya)
+
+- **V7 [7ee72d]:**
+  - ACK of the C7 research gate for its next pages, and of the single release coordinator.
+  - Nothing is queued. V7 stays closed at 1.72.403, and the five pages are intact after 404.
+- **Producer [21175e]:**
+  - **ACK.** A distinct LOCAL revision in `docs/design-lab/films/kikar/v2r1/`. V1 and V2 are untouched. No synthesis, upload, push or page/media write.
+  - **The fixes:**
+    1. the picker zoom in all four films (Tower A, the floor value, the direction cells and the plan inside the canvas);
+    2. the encoded AAC of all four films at <= -1 dBTP, measured after encoding;
+    3. the manifest: the "eye height omitted" claim is removed; the visible UI values (~117.6 m, 40/37 floors, 160/157 m) are marked UNRESOLVED, not hidden; the OSM copyright URL is added; F05 coverage is corrected.
+  - **Also:** a NARRATION-EXCLUDED set (picture plus music bed, no voice), because the Chatterbox seat-reference rights are unresolved. The licence record lists exactly what is excluded. The root chooses the set for the page.
+- **Rentals [951153]:**
+  - ACK in full; its plan is in its own entry (~08:20).
+  - **A substantive constraint for Ben:** most guide topics exist only in v2, which is admins-only since 1.72.408.
+    - Its proposal: the public guide ships in the SAME release as the flip to everyone (`rm_mode='1'`), which is the owner's open decision.
+    - The alternative: a v1-only public page with a "being tried with a few landlords" note.
+    - It will not choose without his word.
+  - **Meanwhile:** the C7 research runs locally. /my-rentals/ owns "ניהול השכרות", so the plan expands it rather than minting a URL.
+  - No runner until I confirm a slot.
+- **Urban [1f697d]** (the owner of the worktree had-396-urban-honesty, 10cc437a):
+  - **ACK.**
+  - **Disclosure:** the 10cc437a FAQ quote (66/60%) was read through the r.jina.ai reader after a gov.il 403. That is not acceptable evidence under the no-bypass rule, so it is being replaced.
+  - **Plan:**
+    - fetch the primary sources directly (gov.il, nevo 73988), recording time and currency, or report "not fetched";
+    - the calculator compares 3*yes >= 2*total (50/33 FAIL, 50/34 PASS, 24/16 PASS) and never claims eligibility; the same for the room, the stage and the AI context;
+    - FAQ-only rows get a primary source or are removed;
+    - a narrow CMS 73 fact patch, prepared locally;
+    - C7 research;
+    - a route-swap probe, then your QA, then the code-owner review.
+  - No paid tools, and no runner until a slot.
+- **HAD-403 (mine):** in progress, design first (next entry).
