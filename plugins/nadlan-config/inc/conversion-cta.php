@@ -231,6 +231,9 @@ html body #nlcta .nlcta-wa{display:flex!important}
 		var typing=function(t){return t&&t.matches&&t.matches('textarea,select,input:not([type=checkbox]):not([type=radio]):not([type=button]):not([type=submit]):not([type=hidden])');};
 		document.addEventListener('focusin',function(e){if(typing(e.target)){clearTimeout(back);box.classList.add('is-typing');}});
 		document.addEventListener('focusout',function(e){if(typing(e.target)){clearTimeout(back);back=setTimeout(function(){box.classList.remove('is-typing');fit();},700);}});
+		// v104.34 (HAD-390 R4, Maya 3.10 08:34): on a 3D-world page a KEYBOARD focus that lands under the sticky header or under the band
+		// is moved into the free screen. Chrome leaves a control that is already inside the window where it is, scroll-padding or not; the jump is instant, as the browser's own focus scroll is.
+		if(document.querySelector('.nlps-stage--world')){document.addEventListener('focusin',function(e){var t=e.target;if(!t||!t.closest||t.closest('#nlcta,.nlw--full')){return;}var kb=false;try{kb=t.matches(':focus-visible');}catch(x){kb=false;}if(!kb){return;}setTimeout(function(){var r=t.getBoundingClientRect(),hd=document.querySelector('.nlhp-top'),top=hd?Math.max(0,hd.getBoundingClientRect().bottom):0,bot=box.getBoundingClientRect().top||window.innerHeight;if(r.top<top+8){window.scrollBy({top:r.top-top-16,left:0,behavior:'instant'});}else if(r.bottom>bot-8){window.scrollBy({top:r.bottom-bot+16,left:0,behavior:'instant'});}},0);});}
 	}
 })();
 </script>

@@ -267,12 +267,10 @@ if ( ! function_exists( 'nadlan_pjx_bottom' ) ) {
 			   describe an apartment size the project never published, so it is skipped there. */
 			$nlpjx_cfg   = function_exists( 'nadlan_ps_config' ) ? (array) nadlan_ps_config() : array();
 			$nlpjx_world = ! empty( $nlpjx_cfg[ (string) get_post_field( 'post_name', $id ) ]['world'] );
-			if ( $ppsqm && ! $nlpjx_world ) :
-				$est = $ppsqm * 90 * 0.75 * ( 0.05 / 12 ) / ( 1 - pow( 1 + 0.05 / 12, -360 ) );
-				$lo  = (int) round( $est * 0.9, -2 );
-				$hi  = (int) round( $est * 1.1, -2 );
+			if ( $ppsqm && ! $nlpjx_world ) : // HAD-403 (v104.32, 3.10.2026): no monthly amount. The units are illustrative examples,
+				// not published inventory, so there is no published size to compute from (the old line used a fixed 90 m2 everywhere).
 			?>
-			<div class="nlpjx-fin-est"><b><?php echo number_format( $lo ) . '-' . number_format( $hi ); ?> ₪</b><span>סדר גודל של החזר חודשי לדירת ~90 מ״ר. אומדן לא מחייב, תלוי במסלול ובריבית.</span>
+			<div class="nlpjx-fin-est">
 				<a href="<?php echo esc_url( home_url( '/mortgage-calculator/' ) ); ?>">לחישוב אישי במחשבון המשכנתא ←</a></div>
 			<?php endif; ?>
 			<?php

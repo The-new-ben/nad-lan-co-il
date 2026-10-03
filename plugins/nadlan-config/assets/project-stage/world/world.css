@@ -431,3 +431,11 @@ html body .nlw-dock a.nlw-btn--wa span { color: #fff !important; text-decoration
 .nlw-btn--bk { width: 100%; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--nlw-terra); color: #fff; border-color: var(--nlw-terra); min-height: 46px; font-weight: 700; }
 .nlw-btn--bk svg { width: 18px; height: 18px; flex: none; }
 .nlw-btn--bk:hover { filter: brightness(1.06); }
+
+/* ---------------------------------------------------------------- v104.34 (HAD-390 R4, Maya 3.10.2026 08:34, 390x844): FloorInView
+   Under the 3D on a phone, the floor slider lay under the WhatsApp band when the 3D was in view (490 + 255 px of choices > the free
+   screen). The band keeps its size; the 3D gives way, so the 3D, the tower step and the floor slider share the free screen between
+   the header (77 px, the band's scroll-padding-top) and the band (72 px + the safe area). 272 px = the panel's top to the slider's
+   foot (255 px, measured) plus air. Never under 260 px, never over the old 58svh. Side-by-side and full screen are untouched. */
+.nlw.nlw--docked:not(.nlw--side) { height: clamp(260px, min(58svh, calc(100svh - 77px - 72px - env(safe-area-inset-bottom, 0px) - 272px)), 540px); }
+:root body .nlps-stage--world:has(.nlw-dock:not(.nlw-dock--side)) .nlps-ssr-pic { height: clamp(260px, min(58svh, calc(100svh - 77px - 72px - env(safe-area-inset-bottom, 0px) - 272px)), 540px); }

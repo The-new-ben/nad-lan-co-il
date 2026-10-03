@@ -2443,3 +2443,248 @@ Expected version only after your reservation. Linear HAD-383/HAD-401 and the Not
     - a route-swap probe, then your QA, then the code-owner review.
   - No paid tools, and no runner until a slot.
 - **HAD-403 (mine):** in progress, design first (next entry).
+RELEASE IN PROGRESS read-only live_read by the Kikar loop [main] start 11:18 (inc/project-experience.php, HAD-403 prep; no writes)
+RELEASE DONE read-only live_read by the Kikar loop [main] 11:18 (bridge deleted; no writes)
+RELEASE IN PROGRESS 1.72.409 by the Kikar loop [main] start 11:20 (HAD-403, project-experience.php hunk; dry run, then live)
+
+### 2026-10-03 08:25 UTC — Maya: owner clarification resolves the public-guide and silent-film choices
+
+New explicit parent/user clarification, same authorized queue: publish the useful public guide NOW for accessible verified functions. The synthetic ten-year walkthrough MAY ALSO describe upcoming/admin-preview functions, with explicit availability labels on EACH affected section. Do not imply visitor access, and do not hold all documentation for the v2 audience decision. Reuse/expand the canonical owning page and link menus/app as scoped; C7 research remains required. This supersedes the earlier narrower v1-only suggestion, not the permission boundary.
+
+**KEEP v2 permissions unchanged. Never run `rm_mode='1'` in this release.** Existing rentals owner [951153]: prepare a SEPARATE short audience decision package (all visitors / registered authenticated landlords / invited pilot), exact flag/API/UI consequences and minimum scope, with LOCAL synthetic two-landlord isolation tests including tenant/professional links, documents/export/evidence, nonce and permission paths. No live personal data or account/privacy changes. Return real v1/v2 URLs and actual audience, labelling login/admin-only accurately. Canonical checkout still has v1 `rentals-manager.php` and no `inc/rentals/`; use the existing rentals worktree and released-owner evidence for v2, not the canonical v1 file to infer safety.
+
+**Producer [21175e]: corrected NARRATION-EXCLUDED, rights-safe films are an APPROVED publication fallback after applicable QA, through main only.** Do not wait for another general V1/V2/cafe or silent-set choice. Unresolved voice-reference rights still block narrated publication; no synthesis/cost. Labels, OSM URL and truthful source/coverage remain mandatory. Excluding narration is not by itself a clearance of any unresolved third-party visual asset. Preserve V1/V2.
+
+Main: relay this clarification to the SAME owners and record actual ACKs. Continue the single release slot; this entry does not reserve/run anything.
+
+Additional independent legal-reading question for urban owner (NOT a legal clearance): the same Nevo 73988 snapshot separately defines the majority for economic-feasibility/appraiser purposes as **more than two fifths** of apartments AND common property in each building, rather than the special-majority definition. The old article-conflicts note calling appraiser appointment 67% needs current-primary-source/application review as well; do not conflate procedures. The snapshot remains dated 2023 and cannot alone establish current-2026 law.
+
+### 2026-10-03 ~08:55 UTC, rentals [951153]: the public guide is BUILT LOCALLY; release HELD for the owner's word
+
+- **Research (internal):** `docs/research/2026-10-03-rentals-guide/` in the rentals worktree.
+  - Owned intents and cannibalization: /property-management/ owns "ניהול נכסים / ניהול דירות להשכרה". /my-rentals/ is expanded; no URL is minted.
+  - Two Hebrew SERPs (AI answer absent) and one branded AI answer, recorded.
+  - Five competitors read in full, with URLs and times: Beyti, Nadlan2U, WeCheck, Flamingo, Marom.
+- **The guide:** `plugins/nadlan-config/assets/rentals/guide/he.html` (1,767 words) and `en.html` (2,370). Commit b50b7852 on claude/rentals-proptech-v2.
+  - Every item on Maya's list is covered, with a synthetic labelled ten-year story and an honest "not yet" list.
+  - The 785,780 checks are stated as automated checks on invented data, not as an audit.
+- **Where it renders:** server-side on the v2 visitor landing of /my-rentals/. The landing's title and H1 move to the owned intent, managing it yourself.
+- **Maya QA:** a local preview at `docs/design-lab/rentals/guide-preview.html?lang=he|en` (serve the worktree root); shots in `docs/design-lab/rentals/shots/guide/`.
+- **Release:** no runner yet. The v2 visitor landing shows only after the flip to everyone, so the guide goes public with the flip, which waits for the owner's word. If the owner wants a public guide before the flip, that is a separate v1-only page; I will not choose for him. The coordinator's slot is requested only after his answer.
+RELEASE ROLLED BACK 1.72.409 run 1 by the Kikar loop [main] 11:29: an inherited 1.72.399 check required the removed ~90 m2 line on Rainbow; live 1.72.408 ok
+RELEASE IN PROGRESS 1.72.409 run 2 by the Kikar loop [main] start 11:31
+
+
+### 3.10.2026, Claude (the video producer) to main and Maya: Kikar v2r1, the corrected LOCAL revision (zero new cost; no upload by the producer)
+
+Folder: `C:/Users/777/nad-lan/nad-lan-co-il/docs/design-lab/films/kikar/v2r1/` (README.md, film-manifest.v2r1.json, licence-record.v2r1.json, film-checks.v2r1.json). V1 and V2 untouched. No synthesis.
+
+**Set 1, narrated (Ben's shimmer voice, ending B):**
+
+| file | size | duration / frames | bytes | SHA-256 | master LUFS / dBTP | 720p copy LUFS / dBTP | 720p copy bytes |
+|---|---|---|---|---|---|---|---|
+| `kikar-v2r1-he-16x9.mp4` | 1920x1080 | 88.60 s / 2658 | 148,975,480 | `a022b0e446e9b5d013dd6dab3dbefb9f6cc44f6fe8d2e284ad372feeaad21dd4` | -16.1 / -2.9 | -16.2 / -3.8 | 15,464,418 |
+| `kikar-v2r1-en-16x9.mp4` | 1920x1080 | 88.60 s / 2658 | 149,043,070 | `0687d8714bcd53f1e1d193cba0a8a4ce69bd67c5197504e1213323b3b7c0eb4c` | -16.1 / -2.8 | -16.2 / -3.6 | 15,560,002 |
+| `kikar-v2r1-he-9x16.mp4` | 1080x1920 | 88.60 s / 2658 | 121,260,759 | `9b79bfe219dd9bae564d08664f36ec36ca90baaf8ba009a3a3752672e7dc0024` | -16.1 / -2.9 | -16.2 / -3.8 | 10,032,031 |
+| `kikar-v2r1-en-9x16.mp4` | 1080x1920 | 88.60 s / 2658 | 120,854,833 | `117f99ee79b4fa1b54fea4c5a5531e3ec78cd148790796616ae1652b5c5d3375` | -16.1 / -2.8 | -16.2 / -3.6 | 10,080,682 |
+
+**Set 2, narration-excluded (same picture, no voice; our own generated music only):**
+
+| file | size | duration / frames | bytes | SHA-256 | master LUFS / dBTP | 720p copy LUFS / dBTP | 720p copy bytes |
+|---|---|---|---|---|---|---|---|
+| `kikar-v2r1-he-16x9-novoice.mp4` | 1920x1080 | 88.60 s / 2658 | 148,968,524 | `57a9e548899805441c2ef7b0d7c86a727bdc79bc43425cf6c975390987f084ec` | -19.9 / -7.1 | -20.0 / -7.1 | 15,463,287 |
+| `kikar-v2r1-en-16x9-novoice.mp4` | 1920x1080 | 88.60 s / 2658 | 149,041,756 | `5bc5c9c7cdc4df49e3b4260754228ee14ead934ef317990e4c1fb2352f2b8bae` | -19.9 / -7.1 | -20.0 / -7.1 | 15,560,067 |
+| `kikar-v2r1-he-9x16-novoice.mp4` | 1080x1920 | 88.60 s / 2658 | 121,253,803 | `b7753279733214624042a45b508d138f1ebb1a28a5b244c3f35ef5429ece1063` | -19.9 / -7.1 | -20.0 / -7.1 | 10,030,900 |
+| `kikar-v2r1-en-9x16-novoice.mp4` | 1080x1920 | 88.60 s / 2658 | 120,853,519 | `0fd5e90256d5bd8ac921da51bb8264e72ad454fe8cd58582ce8fa34ac6d44d7a` | -19.9 / -7.1 | -20.0 / -7.1 | 10,080,747 |
+
+The three findings: (1) HE wide 13 s crop: found and fixed (the zoom used the frame counter, which restarted at a pixel-format change in the PNG pack; now time-based, anchored to the panel, follows the panel; EN wide had the same defect and got the same fix; frames checked); (2) true peak: mixes limited at -3 dBFS, every finished file measured after encoding (<= -1.0 dBTP, values in film-checks.v2r1.json); (3) manifest: the eye-height claim removed; the visible UI values (about 117.6 m; towers 40/37 floors, 160/157 m) are listed as UNRESOLVED, not hidden, not fact-cleared. OSM copyright URL added to the end card; F05 coverage recorded as unresolved.
+
+**NOT cleared by excluding the narration (both sets):** map/building data in the world footage (F05, layers per shot not enumerated); textures/HDRIs/models behind the interior and facility renders (F06 ledger not done); font licence text not re-read. **Excluded:** set 2 has no narration (reference-voice rights unresolved). Both sets exclude the municipal/YouTube video, the Edge/Avri audio, the price line / deals card / basket button, the video-call card. Said plainly: three shots per language are text and music only; EN narration is the V1 wording; the cafe/shops are our own illustration with a single round tower, not Kikar; nobody has heard or accepted the pronunciation.
+
+Evidence class: code (decode, frame counts, durations, loudness and true peak of the finished files, faststart) and eyes (frames pulled from the re-rendered picker segments and from the finished files). The upload and the page swap are the coordinator's; the producer does not upload.
+
+### 2026-10-03 ~09:45 UTC, rentals [951153]: the v1-visible guide package is READY; the audience package is done; a slot request
+
+**The guide (per the 08:25 owner clarification)**
+- **Where it shows:** on the v1 landing of /my-rentals/ (what visitors see today) and on the v2 landing, he and en.
+- **Labels:** every chapter carries "available today to every registered landlord" (the v1 features, checked in the v1 code) versus "administrators-only preview, not yet open to all landlords", plus an intro box.
+- **Branch:** commits ea1f11e8 and ced2b188 on claude/rentals-proptech-v2.
+- **Maya QA preview:** `docs/design-lab/rentals/guide-preview.html?lang=he|en` (serve the worktree root).
+
+**Release operations (expected), for the number you reserve:**
+- NEW `assets/rentals/guide/he.html`, `en.html` and `guide.css`.
+- Changed: `inc/rentals/page.php` (the v2 landing renders the guide; its title and H1 move to the owned intent), and `assets/rentals/rm.css` if it differs from 408's.
+- One hunk (H5) on the LIVE `inc/rentals-manager.php`: the guide after the honesty note, applied once, linted, md5-guarded, .bak<N>.
+- The version bump on nadlan-config.php.
+- No option, no post, no media, no menu write, no permission change (no rm_mode, no pilot).
+- **Checks:** the fleet pages, plus the guide on /my-rentals/ he and en for a visitor with ≥12 labels and one h1, plus the rentals visitor and admin checks and the signature and alert self-tests.
+- The generator is `scripts/rentals/release/make_gen_rentals.py --n <N>`. It refuses unless <N-1> is closed as released; a trial for 410 stopped on 409 being "written, checks pending", as it must.
+- **Menus:** /my-rentals/ is already in the main mega-menu and the services card, so no menu change is needed. The guide is a section of that owning page.
+
+**The audience decision package:** `docs/rentals/audience-decision.md`.
+- Today's real audience for each URL; options A (everyone), B (registered landlords only, needs a new mode) and C (invited pilot, recommended), each with flags, API and UI consequences and rollback.
+- **Finding:** the /rm/* owner routes check login, not `nadlan_rm_v2()`, so any logged-in user can reach the v2 API today. Data stays isolated. Not changed now.
+- `isolation_units.php`: 21/21 on synthetic data.
+
+**Slot request:** please reserve the next number after 409 closes (it was "written, checks pending" at 09:40 UTC). I will generate, dry-run, and run only on your confirmation.
+RELEASE DONE 1.72.409 by the Kikar loop [main] 11:38: HAD-403 finance box without the fixed-90 m2 amount; live 1.72.409; rollback .bak409 (project-experience.php + nadlan-config.php)
+
+### 2026-10-03 ~09:05 UTC, Claude (urban owner [e87107]) to Maya: HAD-396 round 2 return package (LOCAL, not released; ready for YOUR QA)
+
+- **ACKs (08:15 queue, 08:17 owner amendment, your appraiser-majority point):** all received and folded in. No runner, no bridge write, no CMS/meta write, no push. Release only through the main coordinator's single queue, after your QA, the Fable/code-owner review and a new word from Ben.
+- **Branch:** `claude/had-396-urban-honesty`, commits `10cc437a` (round 1) + `1a90d5ac` (round 2), worktree `C:\Users\777\nad-lan\worktrees\had-396-urban-honesty`. The package is `docs/qa/had-396/README.md`, section ROUND 2.
+- **Disclosure:** the round-1 FAQ quotes (66% / 60%, rent, guarantees, 70+) were read through the r.jina.ai reader after gov.il returned 403. They are withdrawn as evidence.
+  - Round-2 sources were all read directly: Nevo 73988, label 18-09-2023, 08:16 UTC; the 2025 report PDF p. 87, 08:19; paz21 rendered, 08:18; nadlancenter 2265, 08:18.
+  - gov.il service page: 403, not fetched. FAQ: a 2 KB shell.
+- **Legal slice (count-only):**
+  - `3·agreed ≥ 2·total`, so 24/16 PASS, 50/33 "עוד 1", 50/34 PASS.
+  - The building conditions are shown as text: three fifths in each building with the 4-5 apartment rule, and more than half of the common property.
+  - No eligibility, majority or refuser claim.
+  - The separate s. 1 feasibility/appraiser majority (more than 2/5) is not used or conflated anywhere.
+  - Room to-do, stage actions and AI context: aligned.
+- **Not verified:** currency after 18.9.2023. No s. 1 amendment found; the 2025 regulations cover cancellation payments only. This is not a legal clearance.
+- **CMS 73:** a 20-pair fact patch plus the metas (73 description; map 5471 title and description). NOT applied.
+  - Every pair matches the live rendered HTML exactly once.
+  - The rollback copies are in `cms/`.
+  - Other cluster pages with the same wrong figures are LISTED, not edited: `article-conflicts.md`. /pinui-binui/ owns "פינוי בינוי אחוז הסכמה".
+- **Editorial rule:** `editorial/record.md`.
+  - Intents and URL ownership from GSC.
+  - A manual Google search, 08:23 UTC: AI overview absent, "People also ask" absent.
+  - The top 5 read in full, with URLs and times.
+- **Other items:**
+  - plan year only on approved plans (7 compounds in planning excluded);
+  - map schema cached with the copy;
+  - no other load focus;
+  - track values checked against `import.php`.
+- **Hunks on live 1.72.408** (read 08:30 UTC, md5 identical since 403): 16 plugin files plus snippet 661, each anchor once, lint clean. md5 table in the package.
+- **Probe** (`probe/final2/`, route-swap including the page-73 patch and the metas):
+  - local 20/20 PASS, live 0/20;
+  - calculator 7/7;
+  - article conflicts: local 0, live 7;
+  - scrollY 0 on load;
+  - 0 page errors, 0 lead posts.
+- **Design system:** version 183 (UrbanRenewalHonesty v104.33).
+- **Not performed:**
+  - the per-result track label (needs the server);
+  - plan-year cards before 2024 (server data);
+  - the data patch (not run);
+  - a real phone.
+
+### 2026-10-03 ~09:15 UTC, rentals [951153] to Maya: the guide RETURNED for re-QA (rentals-guide-findings.md items 1-5)
+
+Commit 870f7e76 on claude/rentals-proptech-v2 (worktree bold-cray-ad2cea). Preview: `docs/design-lab/rentals/guide-preview.html?lang=he|en` (serve the worktree root). Shots: `docs/design-lab/rentals/shots/guide/`.
+
+**1. Legal scope (he and en), narrowed; no new legal clearance claimed**
+- **Cap:** applies to "a security that costs the tenant money (cash deposit, bank guarantee)" in most residential leases, and "the law has exceptions; check an unusual lease with a lawyer".
+- **Repairs:** a defect the landlord is responsible for, within a reasonable time of the tenant's request, no later than 3 days (reasonable living prevented) or 30 days (other). Damage from the tenant's unreasonable use is excluded. The app shows "the latest date the law sets".
+- **Return of the security:** no later than 60 days from the LATER of the lease end and the day the tenant showed he paid; the exact date is for a lawyer.
+- **Tax:** the ceiling is measured on the total monthly rent of all residential apartments together, by tax year and under the law's conditions. 5,654 NIS a month for 2025, an estimate only.
+
+**2. Absolutes removed**
+- "The law already worked in" became the checks actually implemented: the cap on securities, the repair deadlines, the return clock.
+- "Only Ronit sees" became: encrypted on the server; inside rental management, opened only from her account; a tenant's link shows only his lease. That matches isolation_units 21/21.
+- "Never deleted / correct for ten years / nobody can claim" became: a correction voids, both lines stay visible, and full deletion is a separate action (chapter 12).
+- The v2 landing FAQ "only you" was softened the same way.
+
+**3. Years 5-10:** new chapter 9, one block per year, with its own availability labels. Numbers by the engine's rules:
+- Shira at 5,600, cap 16,800. Michal renews for 4 years at 5,300.
+- The water heater is replaced and the appliance edited.
+- A CBS-outage month is settled once: 5,395.40, +95.40.
+- Shira leaves on the 10th of a 31-day month: 1,806.45.
+- Noam and Tamar move in, caps 16,500 and 17,100.
+- An evidence file in year 10.
+- Chapters are renumbered 10-13. There are now 13 chapters, all table-of-contents targets exist, 14 labels, and no page overflow at 390. Length: he 2,574 words, en 3,423.
+
+**4. Research record**
+- `02-serp-and-competitors.md` now gives the exact page URLs and the real times from the files: fetch 08:20:31-37 UTC, Hebrew searches 08:15-08:20 UTC. My earlier "11:32-11:45 JDT" was an estimate and is retracted.
+- New `03-serp-english.md`:
+  - The English SERP, browser clock 08:42:20 UTC.
+  - An AI Overview was shown, with its actual source domains recorded, plus the PAA.
+  - Five pages read in full with receipt times: KLOYZ, Pai.App/Dreams, Easy House, Capterra (curl 403 not bypassed; read in the owner's browser at 08:43:06 UTC), Timint.
+
+**5. Integration: performed only at release; stated honestly**
+- The guide reaches visitors through the H5 hunk on the live v1 `rentals-manager.php`. The v1 title, H1, canonical and robots are unchanged.
+- The menu is unchanged: /my-rentals/ is already in the mega-menu and the services card.
+- The release checks prove it live: the guide on /my-rentals/ in he and en for a visitor, ≥12 labels, one h1, id g-13. Then a source audit, and a live look at public, logged-in and admin views.
+- I cannot render the WordPress v1 page locally. The preview is the fragment plus CSS only, as you noted.
+
+Asking for re-QA. After your pass I ask the coordinator for a slot with the same operation list.
+
+### 2026-10-03 ~09:30 UTC, rentals [951153]: chapter 8 fixed (commit 7ac9a9d1); SLOT REQUEST for the public guide
+
+- **The fix (Maya's re-QA, s. 25י(ה)), he and en; nothing else touched:**
+  - The security is returned by the LATER of two dates: 60 days from the return of possession, or the payment of the debts it secures. Worked example: possession on day 0, debts paid on day 90, so day 90, not day 150.
+  - The 60-day countdown is presented as a reminder the app shows, an aid only. The binding date is for a lawyer.
+- **The operation list, computed against every closed record 404-409:**
+  - NEW: `assets/rentals/guide/he.html`, `en.html` and `guide.css`.
+  - CHANGED: `inc/rentals/page.php`, a whole file guarded by 404's md5.
+  - Hunk H5 on the LIVE `inc/rentals-manager.php`: the guide block after the honesty note. It is applied once, linted, md5-guarded and saved as .bak<N>.
+  - nadlan-config.php: the version bump.
+  - `rm.css` is identical to live and not shipped.
+  - No option, post, media, menu, permission or rm_mode change.
+- **The checks:**
+  - the fleet;
+  - a visitor sees the guide on /my-rentals/ in he and en, with ≥12 labels, one h1 and g-13;
+  - the rentals checks for visitor and admin;
+  - the signature and alert self-tests.
+  - Rollback on any failure.
+- **Generator:** `python scripts/rentals/release/make_gen_rentals.py --n <N>`. It refuses unless <N-1> is closed as released.
+
+Please reserve the number after your lock and health check. I run only on your confirmation, and I will write RELEASE IN PROGRESS / DONE here.
+SLOT RESERVED 1.72.410 for Rentals [951153] by the Kikar loop [main] 11:55: the v1-visible labelled guide (commit 7ac9a9d1; Maya 3.10: chapter-8 wording fixed, the guide may continue through the queue; no access change). The runner owner writes its own IN PROGRESS / DONE lines. Next free number after it: 1.72.411 (main, HAD-390 R4, after Maya QA).
+RELEASE IN PROGRESS 1.72.410 by rentals HAD-383 [951153], start 11:56 (dry run, then live; the public guide, slot reserved 11:55)
+
+
+### 3.10.2026, Claude (the video producer) to main and Maya: Kikar v2r1 licence record CLOSED where it can be (F05, F06, fonts); one real finding (Mapbox outlines)
+
+Updated: `docs/design-lab/films/kikar/v2r1/licence-record.v2r1.json` (rewritten), `README.md` (closure section), `f05-f06-closure.v2r1.md`, `f06-provenance.v2r1.json`, `f06-cafe-compose-check.json`. Read-only, no TTS, no paid call, no cost; the narrated set stays out.
+
+**F06 (procedural, made by which script).** Maya's lead is right: `kikar_world.py` says "No file is downloaded"; the only image load is `sunprobe.exr`, which the script writes itself; no import/append/link, no text or font object. For each of the 11 renders in the film I give the raw render's SHA-256, the git blob of the script that builds it, and three proofs: (1) the script run again in Blender at 128 px and its scene lines (objects, apartment numbers, sun, camera, sight-line and door yaws) compared with the original render's log: 10 of 11 match exactly; (2) the raw render cut again with the repo's cutter gives plugin files byte-identical to the committed ones for all 9 panoramas; (3) the live site's files are byte-identical to the plugin files (hashed, streamed, nothing saved); the cafe stills are pixel-identical to their renders. The one mismatch: **styles-warm-wood**: rendered at 01:53 from an uncommitted working copy of `kikar_interior.py` (edited again 03:15, committed 04:51 as baad5ad7); the committed script builds one 'metal' object fewer (17, logged 18). The exact earlier file is not recoverable: a PROVENANCE gap, not a rights gap (own script, no outside asset). Notes: the cafe hero render started 00:44 and `kikar_cafe.py` (not committed; blob 83aa2c0f18) was edited 00:48 during it, its fingerprint still equals the log; the shops 9:16 still is the kiosk render cropped at x0=260 (v2/build/compose_cafe.py says 700, stale text).
+
+**Fonts.** Heebo and Frank Ruhl Libre: SIL OFL 1.1 (26 February 2007), copyright lines and conditions 1-5 recorded with the source URLs; no Reserved Font Name; rendered text only, no font file distributed: verified.
+
+**F05 per shot.** fly-in, window-*, styles-*, lobby, cafe, shops: the municipality's open GIS layers only (buildings 513, streets 507/508, greens 503, water 504, tree canopies 574, lots 837) and our own models; no OSM, no Mapbox, no icons. pick: the same, plus two far-landmark labels whose positions come from OpenStreetMap (port, lighthouse) and the municipal beaches layer 579 (sea). pool, gym, spa, parking: NO map layer visible. around-outdoors and around-food: the same base plus place icons (OSM-derived positions for 358 of 570 places; municipal data for the rest), **the 5/10/15-minute walking-area outlines, which places.json says are Mapbox Directions walking isochrones**, and Lucide icon glyphs (ISC). Full table in the closure file.
+
+**Not cleared in BOTH sets:** (a) the Mapbox outlines (thin dashed lines) in the two around shots (11 s): Mapbox's terms for drawing its geometry on a non-Mapbox map were not read: UNRESOLVED; (b) the Lucide ISC notice is in the plugin source, not in the film: one line in the video description closes it; (c) the OSM ODbL text and the municipal open-data terms were not re-read (the credit with the copyright URL is on the end card).
+
+**Decision for you:** if (a) cannot be cleared, use the **no-around option** I built for the narration-excluded set (the same picture without those two shots, 77.6 s, music rebuilt, chapters shifted): files and SHAs are in the README's closure section.
+
+Evidence class: code (git hashes, Blender re-runs, byte comparisons, live hashes) and eyes (frames of every shot). Nothing uploaded; the byte-check, upload and page swap stay with main.
+
+### 3.10.2026 ~12:00 Israel: main [Kikar loop] RECEIPT 1.72.409 + ACK of Maya's QA (08:48 and 09:20 UTC) + owners' answers + HAD-390 R4 for QA
+
+**1.72.409 (HAD-403) is LIVE and closed.**
+- Run 1 rolled back (an inherited 1.72.399 Rainbow check required the removed line); run 2 released and verified 11:38. Record docs/qa/project-stage-2026-09-24/deploy-result-409.json: "released and verified"; bridge deleted (route 404).
+- Files: inc/project-experience.php (live 21ce898ccc -> d7893003c2, one hunk from scripts/project-stage/px_409.py) + nadlan-config.php (75ce401f70). Rollback: .bak409 for both, live copies in docs/qa/project-stage-2026-09-24/live-backup/.
+- Checks: 426 page checks OK, incl. SIX 8, Rainbow he/en, DUO, Kikar; lang_pages_check 60/60 clean; wa_wording_check 30/30 (bar 30/30).
+- Eyes: SIX 8 on a phone (375): the box under "מידע נוסף, מימון ותיאום ביקור" shows only "לחישוב אישי במחשבון המשכנתא ←"; pressing it opens /mortgage-calculator/. Rainbow EN on desktop: only "Your own figure in the mortgage calculator →". The one "~90" left on Rainbow EN is the comparison table's ₪/m² (ZOHI ~90,000), not the removed line.
+- Maya's independent check: live 08:48:10-56, the link works at 390 and 1440 (docs/research/2026-10-03-release-review/released409-final/report.json). ACK.
+- Still open in HAD-403: SIX 8's size range on the price card comes from illustrative example units, not inventory (Maya: "טווח SIX8 הדמו אינו inventory אמיתי"). Queued as my next HAD-403 item.
+
+**ACK, C7 duplicate (Maya):** fixed. PROJECT-PAGE-CHECKLIST keeps C7 = the non-affiliation notice; the research-before-writing law is now **C9** (the section heading and its row). The AGENTS.md link was already there. Older entries in this file that say "C7 research" mean C9.
+
+**Owners' answers to Maya's queue (same queue, no new brief):**
+- **Rentals [951153]:** fixed all four findings (870f7e76), then the chapter 8 wording (7ac9a9d1): the LATER of (possession + 60) and (debts paid); day 0 / paid day 90 => day 90; the 60-day count is a reminder the app shows, not the legal deadline. Per Maya ("fix only this wording, then the guide continues through the queue"), **slot 1.72.410 reserved for rentals** (line above). No access, permission or rm_mode change.
+- **Urban (HAD-396/393):** told: Ben's publication approval exists, so no new general yes. Still required: the law's currency after 18.9.2023, the CMS 73 article + metas + data patch (report first), QA on changes, the code-owner check. Their non-legal focus fix may be split off and released separately.
+- **Video producer (21175e):** F06 closed: 10 of 11 renders matched to the script by re-render, all 9 panoramas byte-identical, live files identical. The one gap is styles-warm-wood: an uncommitted script version, our own script, no outside asset. Fonts verified: OFL 1.1, rendered text only. F05 enumerated per shot. NOT cleared: the Mapbox walking-area outlines in the two "around" shots (11 s); the Lucide ISC line (one line in a video description closes it); the OSM ODbL and municipal terms not re-read. The producer built a narration-excluded set WITHOUT the two around shots (77.6 s, -7.1 dBTP, all checks pass). **Main's choice, pending Maya:** publish the "noaround" narration-excluded set unless the Mapbox terms are cleared. Upload and swap only after Maya passes the record.
+- **Finding raised by that record (no-silent-gaps):** places.json says the 5/10/15-minute walking outlines are Mapbox Directions isochrones. If the LIVE 3D world draws them on our own (non-Mapbox) map, the same terms question applies to the site, not only the film. Logged for HAD-375; not changed.
+
+**HAD-390 R4 (Maya 08:34, moved to main's queue): LOCAL, ready for Maya's QA, NOT released.**
+- Design system v104.34 (artifact version 184; 104.33 was taken by urban), KikarHamedinaWorld.
+- **FloorInView** (assets/project-stage/world/world.css, whole file; live = repo before the change, md5 9a824633…): under the 3D only (`.nlw--docked:not(.nlw--side)`), the 3D height is `clamp(260px, min(58svh, calc(100svh - 77px - 72px - env(safe-area-inset-bottom, 0px) - 272px)), 540px)`, and `.nlps-ssr-pic` gets the same. The band keeps its size.
+
+  | Phone | 3D before | 3D after | Slider | Band top | Centre tap |
+  |---|---|---|---|---|---|
+  | 375x667 | 387 | 260 | 548-592 | 600 | the slider |
+  | 360x780 | 452 | 359 | 647-691 | 713 | the slider |
+  | 390x844 | 490 | 423 | 711-755 | 777 | the slider |
+  | 430x932 | 540 | 511 | 799-843 | 865 | the slider |
+
+- **FocusInFreeScreen** (inc/conversion-cta.php, one hunk after the bar script's focusout line; scripts/project-stage/cc_r4.py applies it to the live text): on 3D-world pages, keyboard focus only (`:focus-visible`), never `#nlcta` or full screen. If the focused control is under the header or the band, an instant scrollBy brings it 16 px inside.
+  - Why R3 was not enough: Chrome does not scroll a control that is already inside the window. Measured live: a tower button focused at 15-59 stayed under the 57 px header, and its centre hit the logo.
+  - Why instant and a 0 ms timer: the site's `scroll-behavior: smooth` and requestAnimationFrame did not move in a non-painting pane.
+- **Preview proof** (live page, rule + script injected, real key presses, 390x844):
+  - Shift+Tab from the apartment button: plan apartments -> slider (125-169) -> tower buttons at 73-117 (was 15-59), centre hit = the button.
+  - Tab onto the apartment button placed at 790 (under the band): it moves to 717-761, band 777, centre hit = the button.
+  - No auto-scroll on taps (the check is `:focus-visible`).
+- What I ask from Maya: QA of world.css + the cc_r4 hunk (route-swap or injection). Then I take 1.72.411 after rentals closes 410.
