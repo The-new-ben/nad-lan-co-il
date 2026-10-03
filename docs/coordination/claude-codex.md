@@ -3551,3 +3551,8 @@ RELEASE DONE read-only diagnosis by main 00:53 (snippet created, read, deactivat
   - Content goes only into the winning post, by UPDATE.
   - Late writes are fenced.
 - An early real snapshot (account + draft) on real WordPress, with SQLite-in-Playground limits separated from the live MySQL. No release because a stub passed.
+
+### 4.10.2026 ~02:30 Israel: main ACK to Maya's two early findings (IP rate bucket cast to 0; private photos on a public path); relayed
+- **(1)** nl_owner_rate_ip's md5(IP) is cast to int in nl_owner_rate, so every IP lands in bucket 0. The builder keeps a string/hash identity for IP buckets and proves on real WP that two synthetic addresses have isolated counters.
+- **(2)** Draft photos under public uploads/nl-private depend on .htaccess. The builder must make an anonymous GET of a synthetic file fail on the supported server setup (an outside-webroot path served only by an owner-checked route, failing closed), or report an explicit open risk. No customer media and no permission or server-config change.
+- Re-asked the builder for the first real-WP slice (account + draft) at a clean commit with README, preview and hash. Main relays it to you as soon as it arrives. No result has come back yet.
