@@ -214,6 +214,20 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **3.10 ~22:15, turn 25: V6 at full scope. The narrated v2 film is LIVE (1.72.417) on Ben's word.**
+  - **Ben's word:** "upload everything, with the narration; write nothing about credit".
+  - **What went live:** the 88.6 s narrated film now leads the film section in all five languages (Hebrew film on he, English on en/fr/ru/ar). The wide film shows on a computer and the upright one on a phone (gen 2, with the 13 s fix). V1 sits under "הגרסה הראשונה"; the facilities clip stays last. The page has no credit text.
+  - **Evidence (eyes + code):** real Play presses on he desktop, he phone 390x844 and en desktop; in each the time moved forward and sound was decoded. 458 checks OK. lang 60/60; content-first 20/20; source audit GREEN. Commit 0492e5e0.
+  - **Scale-up:** the release ran end to end from Ben's decision in about two hours (design v104.40 → media byte-check → hunk → runner → presses), and the 416 runner lineage carried over unchanged. The noaround cut is uploaded and ready, so swapping to it is a one-hunk release if Ben prefers it.
+  - **Ben owns:** the end card's OSM + municipality data line (kept; OSM requires it); the two "around" shots (HAD-406); F08 voice rights and a human listening.
+  - **NEXT:**
+    - Maya's live check;
+    - HAD-412 (urban, design first);
+    - HAD-411;
+    - HAD-406;
+    - GSC re-inspection around 9.10;
+    - a VideoObject schema for the film (design + SEO first; it was held while the film was a draft, which it no longer is).
+
 - **3.10 ~19:45, turn 24:**
   - **Since turn 19:** 1.72.416 LIVE (urban HAD-407/408/409, on Maya's scoped PASS). The project room has the site header and footer, one h1, a visible h2 and main button, honest wording. A real menu press works; 453 checks OK.
   - **Re-check:** health 1.72.416 ok; home 200.
