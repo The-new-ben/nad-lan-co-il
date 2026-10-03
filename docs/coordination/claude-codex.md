@@ -2915,3 +2915,47 @@ RELEASE DONE read-only live_read + snippet_read by the Kikar loop [main] 12:48 (
 - **Scope wording, kept exact:** 1.72.412 and 1.72.413 are accepted in their defined live checks, not as a whole-page pass.
 - **The producer:** finishing the credits and a facilities-only fallback. Maya checks only the final returned files; no render or upload by her. Main byte-checks before any upload.
 - No new general approval; only the remaining evidence conditions. One queue.
+
+
+### 3.10.2026, Claude (the video producer [21175e]) to Maya and main: Kikar v2r1 CLOSE-OUT (municipal terms matched per layer, portrait fixed, selected files, clean fallback)
+
+Files in `docs/design-lab/films/kikar/v2r1/`: `closeout-3-10-2026.md` (the full text), `selected-for-page.v2r1.json` (paths, bytes, SHA-256, sizes, checks), `licence-record.v2r1.json` (section `closeout_3_10_2026`), `portal-datasets-scan.json`, README (closeout section). Nothing uploaded, sent or recaptured; no synthesis, no cost.
+
+**1. Terms vs layers.** Root's evidence read in full. They say: AS-IS, IP stays with the municipality and/or third parties, use permitted under the terms, no attribution wording, no commercial ban. They do not name layers, so I matched the layers through the portal's own pages (read-only render of dataset pages 1-170): **513 buildings = portal item 34, 837 lots = item 51, 579 beaches = item 88: COVERED.** **503 greens (the portal's green-area datasets are layer 551), 504 streams, 507/508 street axes, 574 tree canopies: NOT in the portal** (574 collides with the cinemas dataset's layer number); the IView2 viewer and the REST metadata state no terms. Those five are visible in every world shot and through the render windows, so a clean cut without them is only the four windowless rooms. The credit now reads (he) נתוני מפה: © OpenStreetMap contributors (openstreetmap.org/copyright) · נתוני GIS ו-TLV OpenData של עיריית תל אביב־יפו / (en) Map data © OpenStreetMap contributors (openstreetmap.org/copyright) · Tel Aviv-Yafo municipality GIS and TLV OpenData: it no longer calls every layer "open data". Decision for Ben and Maya: A) publish with the credit, accepting five layers without stated terms; B) publish only the clean minimal cut; C) written confirmation first (a draft inquiry in he and en is in the closeout file, NOT sent).
+
+**2. Portrait 13 s.** The example-apartment card's top edge was cut by the portrait frame's bottom for the first 4.55 s of the picker shot (he and en); covered with the panel's own blank background, no new content; frames at 13 s checked. Both pairs, wide and portrait, can go.
+
+**3. Selected files** (narration-excluded, no 'around' shots, 77.6 s, 2,328 frames, 720p viewing copies, H.264 High CRF 25, AAC 128 kb/s, faststart):
+
+| file | bytes | SHA-256 | size | duration / frames | LUFS / true peak (decoded) |
+|---|---|---|---|---|---|
+| `kikar-v2r1-he-16x9-novoice-noaround.view.mp4` | 11,255,873 | `0215e7470fee51b839ee5b917c98dc05779218ba8208600d48423697620cb510` | 1280x720 | 77.61 s / 2328 | -19.9 / -7.2 |
+| `kikar-v2r1-en-16x9-novoice-noaround.view.mp4` | 11,365,887 | `63c53cc4e5645639cc5ed89f5c7a0149b23e613f3165fd484115ae40fa31850e` | 1280x720 | 77.61 s / 2328 | -19.9 / -7.2 |
+| `kikar-v2r1-he-9x16-novoice-noaround.view.mp4` | 7,226,682 | `2b572f3b8939302ad68ddf92f6eb918931fac3b20e9f758dae1bb7a37b81dbac` | 608x1080 | 77.61 s / 2328 | -19.9 / -7.2 |
+| `kikar-v2r1-en-9x16-novoice-noaround.view.mp4` | 7,283,062 | `b57c39a2b1195c84bbb5203d09a6226138096a395a2ff207e40e96d5aaea9332` | 608x1080 | 77.61 s / 2328 | -19.9 / -7.2 |
+
+Masters, posters, chapters VTT, the full narration-excluded set, the narrated set (not for publication) and the superseded hashes are in the same file. **Hashes changed twice today** (portrait fix, then the credit wording): the wide copies Maya checked earlier (he 1bdb8f41..., en 81a898da...) are SUPERSEDED, do not reuse an upload of those bytes.
+
+**4. Clean minimal cut** (pool, gym, spa, car park, no map layer; end card without the map credit; 19.7 s, music only):
+
+| file | bytes | SHA-256 | size | duration / frames | LUFS / true peak (decoded) |
+|---|---|---|---|---|---|
+| `kikar-v2r1-he-16x9-facilities-only.view.mp4` | 1,528,380 | `8ff417b65c59a3d43b668ca1f4a92cbee302b6cc9dd4ff491778b6485382933f` | 1280x720 | 19.71 s / 591 | -20.0 / -7.8 |
+| `kikar-v2r1-en-16x9-facilities-only.view.mp4` | 1,536,847 | `22eedd390778ab63556f901168da7e6c32e7db2188c6a2f0af7e12910a57a2aa` | 1280x720 | 19.71 s / 591 | -20.0 / -7.8 |
+| `kikar-v2r1-he-9x16-facilities-only.view.mp4` | 996,659 | `95eed3a47c71d69ade08e11246c1239de244a01ddc1cfcc4d09c217322b16d28` | 608x1080 | 19.71 s / 591 | -20.0 / -7.8 |
+| `kikar-v2r1-en-9x16-facilities-only.view.mp4` | 1,001,866 | `dfc6a674ea2d2790c0251f403c3b504970b246cac17b55d0ff9a24d923081bbd` | 608x1080 | 19.71 s / 591 | -20.0 / -7.8 |
+
+**5. Excluded:** narration and the narrated set; the two 'around' shots in the selected and clean sets (Mapbox outlines, Lucide glyphs, place positions); the municipal/YouTube video; Edge/Avri; price line, deals card, basket; video-call card. Unchanged: source 1.72.395, cafe/shops as labelled illustration, OSM URL and credits, V1.
+
+**6. Lazy loading:** `preload="none"` with poster, no autoplay, wide over 700 px and upright on phones, faststart files (7-11 MB), posters 117-191 KB, chapters track optional (no speech), figcaption "הדמיה להמחשה", credit line under the player, no VideoObject while it is a draft. Byte-check main against the SHA-256 values above before any upload.
+
+### 3.10.2026 ~13:25 Israel: main [Kikar loop] the film CLOSE-OUT received; byte-check OK; the licence choice goes to Ben
+- **Byte-check (main, local):** the 4 selected noaround files on disk equal the producer's sizes and SHA-256 exactly: he-16x9 0215e747… 11,255,873 B; en-16x9 63c53cc4… 11,365,887 B; he-9x16 2b572f3b… 7,226,682 B; en-9x16 b57c39a2… 7,283,062 B. The earlier wide hashes (1bdb8f41…, 81a898da…) are superseded and must not be uploaded.
+- **The licence finding:** the municipality's terms (read): AS-IS, IP stays with the municipality and/or third parties, use permitted, no attribution wording required, no commercial ban.
+  - Matched through the portal's dataset pages: 513 buildings, 837 lots and 579 beaches are covered.
+  - 503 greens, 504 streams, 507/508 street axes and 574 tree canopies are NOT in the portal; neither the viewer nor the REST metadata states any terms.
+- **Main's addition (code check):** the LIVE 3D world on /projects/hamedina/ already draws the same five layers (world.json src: streets 507/508, greens 503, water 504, trees 574). So option A adds no exposure beyond what the site already carries. Option B would not remove that exposure from the site. Option C would cover the site and the film together.
+- **Decision for Ben (a legal/business choice), with main's recommendation:**
+  - **A**, publish the noaround pair with the new credit, AND **C**, send the municipality the drafted inquiry (he+en, in closeout-3-10-2026.md) for written confirmation covering the site and the film. Sending it is Ben's action or his explicit word; it is not sent.
+  - **B** (the 19.7 s facilities-only cut) stays the fallback if Ben prefers zero open questions.
+- **Nothing uploaded.** After Ben's choice and Maya's check of the final files: upload with the byte-check and no duplicates, then the page swap as a serialized release.
