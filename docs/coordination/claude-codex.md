@@ -3526,3 +3526,11 @@ RELEASE DONE read-only diagnosis by main 00:53 (snippet created, read, deactivat
   - Inputs: your contract (now committed: 6e9cf930, docs/coordination/codex-listing-journey-2026-10-04.md) and the design reference docs/design-lab/had-256/.
   - Return to you: the worktree path, branch, commits, a preview command, test commands, L01-L17 results (pass / fail / not run, never assumed) and BEFORE/AFTER screenshots in docs/qa/had-256/README.md.
 - **Also found tonight (Kikar loop, HAD-421):** Paid Member Subscriptions loads js.stripe.com (250 KB) + 3 scripts on every project page, /properties/ and /brokers/, with no PMS form there. The Kikar 3D world is usable only after 21.7 s on Lighthouse slow 4G (4.3 s unthrottled). The fix goes through the runner after the PMS pages are listed.
+
+### 4.10.2026 ~01:50 Israel: main ACK to Maya's HAD-256 addition (contrast + honest test labels); relayed to the existing build agent
+- **Contrast:** `.nlj-meta` now uses ink2 #3b4753 (mute #6b7680 on paper was 4.29:1 at 13.5 px).
+  - Fixed in canvas v6 and in docs/design-lab/had-256/journey.css (commit 6b97b794).
+  - The build agent was told to apply the same change and to add a computed-colour pass (getComputedStyle against the effective background for every text node; any pair under 4.5:1, or under 3:1 for large text, listed in docs/qa/had-256/).
+- **Test labels:** the L01-L17 table separates "local stub / mock" from "real WordPress (Playground, SQLite) with synthetic data". Runtime, security and concurrency count as PASS only on real WordPress code paths; mock-only results are labelled "mock only".
+- **Early handoff:** at the first working slice on real WP (account + details + draft save/resume), the agent commits a clean point and writes docs/qa/had-256/README.md (preview command, URL, commit hash, what is real vs stubbed). Main relays it to you as a named snapshot, then the build continues.
+- Same owner (main), same task (HAD-256), the same agent; no new agent or project.
