@@ -3431,3 +3431,28 @@ RELEASE DONE 1.72.419 by the Kikar loop [main] 00:15: captions on V1 (project-st
 - **Real press (eyes), /projects/hamedina/ at 1024:** Play on V1, then the player menu, then Captions. "בוחרים מגדל, קומה וכיוון." showed right to left (the period on the left) at 0:12, in the house cue style, above the film's chip and while the picker is on screen. Track "showing", 22 cues. Screenshot docs/qa/film-v2r1/live-419-he-v1-captions-on.jpg.
 - **Caveat (the producer's):** the captions are the script, timed to a synthetic voice; no person has read them against the audio. V1 voice rights (F08) are Ben's.
 - **Audits after 419:** lang_pages_check 60/60; content_first_check failed 0; source_audit hamedina he/en GREEN; the only diff is bytes (+239 he, +243 en = the two V1 track tags).
+
+### 4.10.2026 ~00:05 Israel: main ACK to Maya, publishing flow for listings (nad-lan only, NOT Cyprus): ownership, sessions, locks, design. Nothing written yet.
+- **ACK** of Ben's request through Maya (relayed in main's session).
+  - **Approved scope:** sign-up / login / recovery; property details; draft and continue; photos; preview; publish and manage; phones and Hebrew. Synthetic end-to-end tests (offline/reconnect, refresh, two tabs, double submit, existing email, recovery, image failure, draft survival). A before/after comparison with Madlan, Homeless, OnMap, Komo and ad.
+  - **Paid promotion:** design and a capability that stays switched OFF only; no price, no billing.
+  - **Release:** live only after QA, through this queue, with backups and rollback. Main stays the single publisher; every runner / bridge / CMS write is serialized.
+  - **Boundaries:** no permission, privacy, payment or paid-service expansion.
+- **Ownership (verified, read-only):**
+  - **What is live:**
+    - `/post-listing/` = Code Snippets **707 `x-owner-wizard`** (active; v1.0.0 of 23.9; the account step is built in). Live code md5 3a7d9781be equals `plugins/nadlan-config/inc/owner-wizard.php` on both claude/production-truth-1.72.212 and HEAD. No drift.
+    - The broker sign-up = snippet **699 `x-broker-join`**.
+    - Site login / the account gate = plugin module `inc/auth.php` (plus `property-wizard.php`, the older listing wizard).
+  - **Builder:** HAD-256 (Done 23.9, "האשף /post-listing/ על מנוע המתווכים", commit 281cff7). Last code change: 1.72.299 / HAD-347 (28.9, the publish page "איך זה עובד" + the phone pill).
+  - **The 24.9 12:05 session** ("נכס של מתווך ככלל + מדריך אנשי מקצוע") is NOT handling it: not running, last activity 24.9 10:58 UTC. The same holds for the 24.9 12:07 session (HAD-247).
+  - **No other session holds it:**
+    - Every on-disk copy of owner-wizard.php across all worktrees (incl. the Cyprus fork cyprus-nadlan) is unchanged, with no uncommitted edits.
+    - The DUNE Cyprus session's transcript shows it touched the file today, but nothing differs from production.
+  - **Proposal: main is the verified owner** of the implementation (one owner, no new worker), in a dedicated local worktree off production truth. The work is tracked on the EXISTING HAD-256 (reopened as the follow-up, no duplicate task) and its Notion row.
+- **Locks:** none open. The last line is `RELEASE DONE 1.72.419` (main, 00:15). Live 1.72.419.
+- **Existing design:** DS artifact https://claude.ai/artifact/L9Nqz7Viv7K3MYeZrBc9s8, component **PublishPage** (v48 = /post-listing/ "איך זה עובד" + the pill rules; v68-71 the WhatsApp pill). There is no design yet for the account/recovery/draft/preview/manage screens. The new work starts there as PublishPage v72+ (or a sibling "PublishFlow"); design first, before any code.
+- **user_id=16:** read-only diagnosis next, via a temporary read-only admin route under the lock, deleted after.
+  - Checks: does a draft / attempt / error trace exist (posts by the author with draft status, the wizard's own meta, the account's roles / capabilities).
+  - Nothing changed on the account, no recovery email, no contact.
+  - Personal details stay OUT of this public repo: the raw read goes to main's private scratchpad; only non-personal findings are reported here.
+- **Waiting for Maya's `/design`:** here, in main's session (the verified owner).
