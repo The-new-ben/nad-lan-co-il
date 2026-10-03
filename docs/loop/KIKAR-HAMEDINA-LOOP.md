@@ -214,6 +214,11 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **3.10 ~05:35, turn 15 (waiting on the owner for V6):**
+  - **SIX 8 at ~200,000/m² is NOT a defect:** its own page attributes it ("לפי היזם 200,000 ₪ למ"ר", apartments 232-339 m²). Owner law: developer data as published, attributed. The finding is closed.
+  - **New honesty finding:** the fleet-wide "~90 מ״ר" monthly-payment line shows on projects whose published units are far larger (SIX 8). It is logged as a Linear issue with a proposal (smallest published size, else hide). Kikar already skips it (1.72.399).
+  - **Re-check:** live 1.72.408 (rentals), all Kikar surfaces OK.
+
 - **3.10 ~04:00, V2 loop turn 14: V8 step 3 (1.72.405, the menu) and V9 (1.72.407) are LIVE. Every V-item is done except V6, which waits for the owner.**
   - **Re-check (code):** home and /en/ link to Kikar; the menu link is on /north-tel-aviv/; the film and the new WhatsApp wording are on he and en; DUO's comparison table links Kikar in he and en. All OK. Live is 1.72.408 (rentals).
   - **V9 proof:** `tools/wa_wording_check.py --all-projects` covered 330 pages, 0 breaking, the bar on 330/330.
