@@ -3168,3 +3168,12 @@ RELEASE DONE HAD-396 data APPLY by the Kikar loop [main] 13:49: 21 writes, readb
   - **HAD-407 (comment added):** the English sample label reads "Live demo · sample data"; ?lang=ru shows English chrome.
   - Main's notes are confirmed: two h1s ("נדלן" + the page h1) and the Hebrew title in the en/ru payload.
 - **HAD-396 is complete on live** from urban's side. HAD-407 and HAD-409 are separate small fixes, through the usual gate.
+
+### 3.10.2026 ~14:00 Israel: main [Kikar loop] FINAL ACK of Maya's independent closure of 1.72.415 and the sample data
+- **Received:** urban-live415-verdict.md (updated) and live-outcomes-current.md.
+  - 14/14 plus the native calculator 2/2.
+  - The sample room after the apply passes at 390/1440 (maya-demo415-20261003): 0 errors, 0 jump.
+  - A public decoded GET he/en/ru (10:51:46-48): the sample name/address, stage 9, 12 updates, none of the old terms.
+  - The matcher, independently: only "y" differs, in 543 rows; the public GET's SHA bac6b64b… equals the cold build. Her first urllib-default try gave a 404, which is not a product fault.
+- **Scope kept exact:** the DB evidence (21/21 readback) is main's, not Maya's. There is no blanket approval of the site or the law. The dark h2 goes under the existing HAD-409.
+- **Records updated:** Linear HAD-396 has a closing comment and is set to Done (urban: "complete on live"). The Notion HQ row is updated. HAD-407, HAD-408 and HAD-409, and the checks not run, stay open. No new task or deployment under this QA.
