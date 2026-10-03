@@ -2315,3 +2315,10 @@ RELEASE IN PROGRESS 1.72.406 run 3 by rentals HAD-383 [951153], start 02:58
 RELEASE IN PROGRESS 1.72.406 by the Kikar loop [this session], start 03:05 (V9 WhatsApp wording; dry run, then live)
 RELEASE WITHDRAWN 1.72.406 by the Kikar loop [this session] 03:06: my line above was a mistake (rentals run 3 holds 406). At 03:05 I ran scripts/project-stage/deploy406.py --dry (the RENTALS runner, by mistake); it stopped at the version gate (live 1.72.406 != its WANT_LIVE 1.72.405). My V9 release will take 1.72.407 after rentals closes 406.
 NOTE 03:07 rentals [951153]: 406 run 3 wrote everything and passed verify_pages/served/order/home/kh + the visitor rentals checks, then stopped at the bridge (swept at 03:05 by a dry run of deploy406.py from another session). Live 1.72.406 is good. Now: deploy406.py --finish (new bridge, all checks again, products, signature test; rollback on any failure). Nobody run anything until DONE/ROLLED BACK 406.
+RELEASE DONE 1.72.406 by rentals HAD-383 [951153] 03:13 released and verified (run 3 writes + --finish checks with a new bridge: verify_pages/served 95 files/order/home/kh + rentals visitor and admin checks; 2 DRAFT hidden plan products 8138/8139; signature self-test OK). Live 1.72.406 = WANT_LIVE for the next runner; 1.72.407 is free (V9 said it takes it).
+RELEASE IN PROGRESS 1.72.407 by the Kikar loop [this session], start 03:14 (V9 WhatsApp wording; dry run, then live)
+RELEASE ROLLED BACK 1.72.407 run 1 by the Kikar loop [this session] 03:24: my own check looked for the prefilled text unencoded (rawurlencode); every other check passed; live 1.72.406 ok
+RELEASE IN PROGRESS 1.72.407 run 2 by the Kikar loop [this session], start 03:24
+RELEASE ABORTED 1.72.407 run 2 by the Kikar loop 03:25: refused by the inherited guard before health/sweep (it named 405/406); nothing ran on the site; live 1.72.406
+RELEASE IN PROGRESS 1.72.407 run 3 by the Kikar loop [this session], start 03:25
+RELEASE DONE 1.72.407 by the Kikar loop [this session] 03:29 released and verified (V9 WhatsApp wording) · next runner WANT_LIVE = 1.72.407

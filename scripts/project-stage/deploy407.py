@@ -98,19 +98,19 @@ def git_head(rel):
 
 
 # ---------------------------------------------------------------- the previous release must be closed (released or rolled back)
-_prev = os.path.join(QA, "deploy-result-405.json")
+_prev = os.path.join(QA, "deploy-result-406.json")
 if os.path.exists(_prev):
     _st = str(json.load(open(_prev, encoding="utf-8")).get("state", ""))
     if not (_st.startswith("released") or _st.startswith("rolled back")):
-        raise SystemExit("FATAL: release 1.72.405 is still in flight (its record says '" + _st + "'); wait until it is closed")
+        raise SystemExit("FATAL: release 1.72.406 is still in flight (its record says '" + _st + "'); wait until it is closed")
 for _f in sorted(os.listdir(QA)):
-    if _f.startswith("deploy-result-") and _f.endswith(".json") and _f > "deploy-result-406.json":
+    if _f.startswith("deploy-result-") and _f.endswith(".json") and _f > "deploy-result-407.json":
         raise SystemExit("FATAL: a later release record exists (" + _f + "); regenerate on top of it")
-_own = os.path.join(QA, "deploy-result-406.json")
+_own = os.path.join(QA, "deploy-result-407.json")
 if os.path.exists(_own) and "--finish" not in sys.argv[1:] and "--rollback" not in sys.argv[1:]:
     _st = str(json.load(open(_own, encoding="utf-8")).get("state", ""))
     if _st.startswith("files written") or _st.startswith("written"):
-        raise SystemExit("FATAL: release 1.72.406 itself is in flight (its record says '" + _st + "'): a second run would sweep its bridge; finish it (--finish) or roll it back (--rollback)")
+        raise SystemExit("FATAL: release 1.72.407 itself is in flight (its record says '" + _st + "'): a second run would sweep its bridge; finish it (--finish) or roll it back (--rollback)")
 
 # ---------------------------------------------------------------- health + bridge
 s, h = req("GET", "/wp-json/nadlan/v1/health", auth=False)
@@ -1011,7 +1011,7 @@ CHECKS += [
 CHECKS += [
     ("/wp-content/plugins/nadlan-config/assets/project-stage/world/world.js?ver=1.72.407", ["consult: 'דברו איתנו בוואטסאפ'", "askPlace: 'פרטים נוספים על החיים בכיכר'", "consult: 'Talk to us on WhatsApp'"], ["ייעוץ חינם על", "Free advice on"]),
     ("/wp-content/plugins/nadlan-config/assets/project-stage/world/example.js?ver=1.72.407", ["wa: 'פרטים נוספים על דירה כזו'", "wa: 'More details on an apartment like this'"], ["ייעוץ חינם על דירה"]),
-    ("/projects/hamedina/", ['<span>לקבלת פרטים נוספים בוואטסאפ</span>', '<b>ייעוץ חינם</b>', 'אשמח%20לפרטים%20נוספים'], ['<span>ייעוץ חינם</span>', 'לא מטעם היזם']),
+    ("/projects/hamedina/", ['<span>לקבלת פרטים נוספים בוואטסאפ</span>', '<b>ייעוץ חינם</b>', '%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D'], ['<span>ייעוץ חינם</span>', 'לא מטעם היזם']),
     ("/projects/hamedina-en/", ['<span>More details on WhatsApp</span>'], ['<span>Free advice</span>', 'Not the developer']),
     ("/projects/hamedina-fr/", ['<span>Plus de détails sur WhatsApp</span>'], ['Pas le promoteur']),
     ("/projects/hamedina-ru/", ['<span>Подробнее в WhatsApp</span>'], ['Не от застройщика']),

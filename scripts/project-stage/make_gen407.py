@@ -34,7 +34,7 @@ s = s[:start] + '''extra = f\'\'\'# 1.72.407 (V9, HAD-382, design v104.31): "י�
 CHECKS += [
     ("{ASSET}assets/project-stage/world/world.js?ver={V}", ["consult: 'דברו איתנו בוואטסאפ'", "askPlace: 'פרטים נוספים על החיים בכיכר'", "consult: 'Talk to us on WhatsApp'"], ["ייעוץ חינם על", "Free advice on"]),
     ("{ASSET}assets/project-stage/world/example.js?ver={V}", ["wa: 'פרטים נוספים על דירה כזו'", "wa: 'More details on an apartment like this'"], ["ייעוץ חינם על דירה"]),
-    ("/projects/hamedina/", ['<span>לקבלת פרטים נוספים בוואטסאפ</span>', '<b>ייעוץ חינם</b>', 'אשמח%20לפרטים%20נוספים'], ['<span>ייעוץ חינם</span>', 'לא מטעם היזם']),
+    ("/projects/hamedina/", ['<span>לקבלת פרטים נוספים בוואטסאפ</span>', '<b>ייעוץ חינם</b>', '%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D'], ['<span>ייעוץ חינם</span>', 'לא מטעם היזם']),
     ("/projects/hamedina-en/", ['<span>More details on WhatsApp</span>'], ['<span>Free advice</span>', 'Not the developer']),
     ("/projects/hamedina-fr/", ['<span>Plus de détails sur WhatsApp</span>'], ['Pas le promoteur']),
     ("/projects/hamedina-ru/", ['<span>Подробнее в WhatsApp</span>'], ['Не от застройщика']),
@@ -59,6 +59,12 @@ rep('n_ver = checks.count("1.72.406")',
     'n_ver = checks.count("1.72.406")')
 post = r'''
 # ---- 1.72.407: the WhatsApp wording (project-stage.php + conversion-cta.php, hunks on the live text) ----
+# the rentals guard (prev closed / no later record / own not in flight) names 405/406 in deploy406.py: point it at 406/407
+t = must_replace(t, '_own = os.path.join(QA, "deploy-result-406.json")', '_own = os.path.join(QA, "deploy-result-407.json")')
+t = must_replace(t, '"FATAL: release 1.72.406 itself is in flight', '"FATAL: release 1.72.407 itself is in flight')
+t = must_replace(t, '_f > "deploy-result-406.json"', '_f > "deploy-result-407.json"')
+t = must_replace(t, '_prev = os.path.join(QA, "deploy-result-405.json")', '_prev = os.path.join(QA, "deploy-result-406.json")')
+t = must_replace(t, '"FATAL: release 1.72.405 is still in flight', '"FATAL: release 1.72.406 is still in flight')
 t = must_replace(t, 'PHP_RELS = []  # 1.72.406: no PHP hunk on a live text (rest.php is a whole file pinned by md5)',
                  'PHP_RELS = ["inc/project-stage.php", "inc/conversion-cta.php"]  # 1.72.407: V9 hunks on the live text (v104.31), restored from .bak407 on rollback')
 t = must_replace(t, '    cur_main = live_get("nadlan-config.php")\n', """    import wa_406 as W406  # noqa: E402

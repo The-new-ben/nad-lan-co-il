@@ -117,7 +117,7 @@ Every turn takes the first open item. Each item is ticked with evidence (live, r
   - [x] **Step 1, live 2.10 (design v104.26, commit 269035d0):** Kikar leads the projects band on the Hebrew home and on /en/ /fr/ /ru/ /ar/, each language linking to its own page. Evidence: docs/qa/v8-traffic.
   - [x] **Step 2, live 3.10 (1.72.399 + data + 1.72.400, design v104.27):** Kikar is in the neighbours' comparison table (DUO's first row at 663 m; Rainbow's 6th), at 65,000/m² (the towers' published average). The ~90 m² finance line skips world pages. Kikar's name reads in each language on the 60 language pages. Einstein: 6 projects are nearer.
   - [x] **Step 3, live 3.10 as 1.72.405 (design v104.30):** Kikar is in the main menu on every Hebrew page. "כיכר המדינה" sits under "אזורי ביקוש", and "סיור במגדלי כיכר המדינה" sits under "סיורים וירטואליים", additive only. Verified: a click from /north-tel-aviv/ at 1440, and a tap in the phone sheet at 375. The EN and RU index status is re-inspected about 9.10.
-- [ ] **V9. LAST: WhatsApp wording site-wide (HAD-382).** "ייעוץ חינם" only on the floating bar; "לקבלת פרטים נוספים בוואטסאפ" everywhere else.
+- [x] **V9. LAST: WhatsApp wording site-wide (HAD-382).** Live 3.10 as 1.72.407 (design v104.31). The world hero, the world links, the full-screen button and the example apartment are reworded in five languages, and the bar's small line drops "לא מטעם היזם". `tools/wa_wording_check.py` (new) scanned 30 core pages: 0 breaking, bar present 30/30. Eyes at 375 on the Kikar page. "ייעוץ חינם" only on the floating bar; "לקבלת פרטים נוספים בוואטסאפ" everywhere else.
 
 **Rules (on top of the laws below):**
 - Fewer disclaimers, credits and source names on the page. Facts stay true.

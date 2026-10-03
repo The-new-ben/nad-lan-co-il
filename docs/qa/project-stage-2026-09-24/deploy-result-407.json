@@ -1,0 +1,23 @@
+{
+  "released": "1.72.407",
+  "from": "1.72.406",
+  "live_before": {
+    "assets/project-stage/world/world.js": "fa55e5e840cde4557a84f3bf7c73a982",
+    "assets/project-stage/world/example.js": "ed065dc8cbc3a36079981972124b6d1c",
+    "nadlan-config.php": "5976497b59dbbf693e0f230665287edd",
+    "inc/project-stage.php": "a2fbbc2562c218c6377e646f8a492e7a",
+    "inc/conversion-cta.php": "8f890931cd64a626fc83ce0e2276c871"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-03 03:29:11",
+  "files": {
+    "assets/project-stage/world/world.js": "bd3ad630ebb1197b6e8fbfa3fce893b5",
+    "assets/project-stage/world/example.js": "c03bf847185461b3dde26ad1f0739270",
+    "nadlan-config.php": "3ed6d2dc2fda472108c8de1385b43961",
+    "inc/project-stage.php": "c90db3dda3cc050d23f5f603d6fdfacf",
+    "inc/conversion-cta.php": "cfb2821dac7fdc427b2b9ea361423496"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.407, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
