@@ -214,6 +214,24 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **3.10 ~14:00, turn 17: V6 DONE in the scope Ben approved (option B). The 77.6 s cut stays his A/C question.**
+  - **V6 evidence:** 1.72.414 is LIVE, the 19.7 s facilities clip under the film (V1 kept).
+    - The label is above the player, before play, in each page's language.
+    - The posters are the facilities themselves; preload none.
+    - Media 8140-8147 byte-checked after upload.
+    - A real press on Play: playing. Maya's independent check 4/4 (her first run had clicked the seek rail).
+  - **Releases this turn window:** 1.72.415, urban's HAD-396, in one release: 16 files + snippet 661 + page 73 + 3 metas. Typed press test: 50 apartments / 33 consenting → "עוד 1 דירות"; 34 → two thirds, "תנאי אחד". The HAD-396 data patch ran REPORT-ONLY on live: nothing written, target 5480, before_md5 360bf6ec.
+  - **Web (3.10):** [propertycine, new-construction video](https://propertycine.com/blog/new-construction-video-marketing-real-estate-boosting-pre-sales): claims about future amenities should be realistic and backed by plans. This matches our label-before-play.
+  - **Scale-up:** the skill project-masterpiece learned two patterns.
+    - The film on a project page: a clean cut, a label before play, posters from the clip itself, a byte-check after upload, WordPress's "-1" file names.
+    - A release across code + snippet + page content + Yoast metas: md5-guarded bridge ops pcontent/pmeta/lint_code, undone in reverse.
+  - **NEXT:**
+    - the HAD-396 data APPLY (after Maya reviews the report, with expect_before_md5);
+    - the 77.6 s film = Ben's A/C;
+    - HAD-406 (our own walking areas);
+    - re-inspect the Kikar EN/RU index status around 9.10;
+    - then the next compound from the skill.
+
 - **3.10 ~13:30, turn 16 (V6 still waits for the film's licence match; every other V-item done):**
   - **Releases since turn 15, all on Maya's QA, eyes + presses:**
     - 1.72.409: no monthly amount from a fixed 90 m².

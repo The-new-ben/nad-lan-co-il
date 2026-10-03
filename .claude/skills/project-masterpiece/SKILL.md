@@ -123,3 +123,22 @@ description: Build or upgrade a whole project page on nad-lan.co.il A to Z from 
   - עברית אסורה נבדקת על האלמנט הנראה, כי דפי השפות נושאים את המילון בתוך script;
   - טקסט של קישור wa.me נבדק בצורה מקודדת (rawurlencode).
 - **מחולל חדש:** בונים מה-`gen_deploy` האחרון, ומכניסים את בלוק ה-PHP אחרי שינויי השמות של הגרסאות, כדי שהעוגנים לא ישתנו.
+
+
+## Lessons of 3.10.2026 (Kikar loop turns 16-17): the film on the page, and a release across surfaces
+- **The film on a project page:**
+  - Ship only a clean cut whose every asset is cleared. If a layer's licence is open, ship the clean slice (Kikar: the 19.7 s facilities-only clip) and leave the long cut to the owner's licence decision.
+  - The label sits ABOVE the player, read before play, in the page's language: an illustrative visualisation, not footage, not an official specification, not a full tour.
+  - Posters are frames of the clip itself, never a frame from a cut that is not published.
+  - controls playsinline preload="none", no autoplay; the wide clip over 700 px, the upright one on phones. The original film stays.
+  - Upload once (check by slug), then download every public URL and compare SHA-256 with the producer's table.
+  - WordPress may rename a video "-1.mp4": use the exact uploaded URLs, never assumed names.
+  - A test pane's first click can land on the seek rail; prove playback by currentTime advancing after a press on the real Play button.
+- **One release across code, a snippet, page content and SEO metas** (urban's HAD-396, 1.72.415):
+  - Pin every byte to the accepted package commit (`git show <commit>:`), with md5 per file.
+  - Plugin files: the live text must equal the package's base, and only then becomes the package bytes.
+  - Snippet: a fresh before-hash, a server lint with "<?php" (Code Snippets stores the body without it), PUT inactive, then activate, then read back.
+  - Page content and Yoast metas: bridge ops with an md5 expect (pcontent, pmeta limited to `_yoast_wpseo_*`).
+  - rollback() undoes the snippet, the page and the metas in reverse order, then restores the .bak files.
+  - Before generating, test every inherited check against the new sources (a must-text that exists in the old sources but not the new will roll the release back).
+- **Data patches:** report-only first, through the queue (a temporary snippet route, deleted after). The report carries the full raw before image and a before_md5. Apply is a later step that requires that md5.
