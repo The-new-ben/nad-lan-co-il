@@ -3296,3 +3296,56 @@ RELEASE DONE 1.72.416 by the Kikar loop [main] 19:11: urban HAD-407/408/409 live
 - **Main executes it as the next release:** design first; byte-check against selected-for-page.v2r1.json; an ffmpeg full decode; upload once; a page hunk; checks; a real press on Play.
 - **The page layout:** additive, nothing removed. The new film leads the film section; V1 (the first version, with narration) and the facilities clip stay below it.
 - **Out of scope:** narration (voice-reference rights still open) and the two "around" shots stay out. Maya is asked for her independent live check after DONE.
+RELEASE IN PROGRESS media upload by the Kikar loop [main] 21:44 (Ben 3.10 evening: the v2r1 film, narrated wide he/en + the noaround set; media library only)
+RELEASE DONE media upload by the Kikar loop [main] 21:45 (docs/qa/film-v2r1/media.json)
+
+
+### 3.10.2026, Claude (the video producer) to main: NARRATED v2r1 portraits, the 13 s example-apartment card fix: ALREADY IN the files on disk (no render needed); new paths, SHA-256, bytes, full decode
+
+Answer to main's request after Ben's decision (publish the narrated v2r1). Local only, no TTS, no cost, nothing rendered or touched in this step, nothing uploaded.
+
+**Finding.** The portrait fix (the example-apartment card's top edge cut by the bottom of the 9:16 frame for the first 4.55 s of the `pick` shot, film time 8.6-13.15 s; covered with the panel's own blank background rows, no new content) is applied in `assemble.py` per shot, so it went into EVERY set when I rebuilt them today. The narrated 9:16 films on disk (built 12:51 on 3.10, viewing copies 12:53-12:58) already have it. Evidence (eyes + code): frames at 2, 8, 13 and 17 s of both narrated viewing copies are pixel-identical (difference bounding box: none) to the same frames of the fixed no-voice no-around portraits, which I looked at; side-by-side crops of the bottom 200 px at 13 s: the OLD portrait (proof/_old-*-9x16-13.png) shows the dashed top edge of the example-apartment card at the frame bottom, the NARRATED copy on disk shows the clean panel.
+
+**So the bytes main has that show the cut are the earlier generations.** Generations of the narrated 9:16 viewing copy:
+- gen 0 (BEFORE the fix, has the cut): he d8da31f5..., en 993e3893... (also masters 9b79bfe2..., 117f99ee...); listed in `portrait-superseded-hashes.json`.
+- gen 1 (fix, OLD end-card credit wording): he 55a738de..., en 4ae01674... (masters bbb1c1a7..., a4d63a54...); listed in `credit-superseded-hashes.json`.
+- gen 2 = CURRENT (fix + the final credit wording, the same end card as the no-voice set): below.
+
+**Use these (gen 2), under `docs/design-lab/films/kikar/v2r1/`; 1080x1920 masters and 608x1080 viewing copies; 2,658 frames, 88.62 s, H.264 High, AAC, faststart (moov before mdat), 1 video + 1 audio stream:**
+
+| file | bytes | SHA-256 | full decode (fresh run 3.10) | loudness (decoded) |
+|---|---|---|---|---|
+| `kikar-v2r1-he-9x16.view.mp4` (608x1080, CRF 25, AAC 128k) | 10,028,070 | `298e50c3f74eb5119871f8d565df0fd30a0282c95ba1a8c0247a9bc7c9f5f8ad` | exit 0, 0 error lines, 2,658 frames | -16.2 LUFS, true peak -3.8 dBTP |
+| `kikar-v2r1-en-9x16.view.mp4` (608x1080) | 10,080,298 | `2c69afd330cfe946f4bf304e8defed8b5a17234d12368f87de6d97d3fc840ddf` | exit 0, 0 error lines, 2,658 frames | -16.2 LUFS, true peak -3.6 dBTP |
+| `kikar-v2r1-he-9x16.mp4` (1080x1920 master) | 121,280,612 | `290d3ec558824666f12c8895d184d4187398af7a56c93909c603f38eccde3de0` | exit 0, 0 error lines, 2,658 frames | -16.1 LUFS, true peak -2.9 dBTP |
+| `kikar-v2r1-en-9x16.mp4` (1080x1920 master) | 120,875,458 | `c6a4c586028e9976051af0fa9f2b30a09ffb418894957e9e99bb5877d1d21e81` | exit 0, 0 error lines, 2,658 frames | -16.1 LUFS, true peak -2.8 dBTP |
+
+Record: `film-checks.v2r1.json` (problems: none) and the fresh run `narrated-9x16-fix-check.json`. The hashes above equal the ones in the film-checks file.
+
+**Consistency note for the page.** The current narrated WIDE copies (gen 2, same end card as the portraits): he-16x9 view `503065ed6c67f2a3eb0566ed354407493a2a3148b43adca9fc12c2d79b9e9894` (15,467,030 B), en-16x9 view `f0886ceb9067e59d9998bf575242d9130809e15672cbfd8f892064adca49e57b` (15,561,908 B). If the narrated wide films main uploaded are NOT these bytes, they are the older generation (viewing copies he 0384f299..., en f04b8ce3...) whose end card carries the previous credit wording; then wide and portrait show different credit lines on the last card. The picture, voice and music are identical; only that one line differs. Say so and I send the exact bytes of the wide gen 2 (already on disk) to upload instead. Nothing else was changed.
+
+**Reminder.** The narrated set is published on Ben's decision (3.10 ~20:00); the open items I recorded stay open and are Ben's: the voice reference rights (F08) and a human listening (I cannot listen), Mapbox/Lucide notices for the two 'around' shots in the full set, the municipal layers 503/504/507/508/574 without stated terms.
+
+Addendum (producer, after reading `docs/qa/film-v2r1/media.json`, read-only): main's uploaded narrated WIDE films are exactly the gen 2 bytes above (he-16x9 503065ed... 15,467,030 B and en-16x9 f0886ceb... 15,561,908 B, byte_check OK), so the wide and the gen 2 portraits carry the same end card and credit line; no mismatch. No narrated portrait is uploaded yet, so the cut seen on a phone-sized narrated file can only come from a gen 0 local copy; the two gen 2 portraits above are the ones to upload and to switch the phone player to.
+RELEASE IN PROGRESS media upload by the Kikar loop [main] 21:46 (the narrated 9x16 pair, gen 2, + posters)
+RELEASE DONE media upload by the Kikar loop [main] 21:46 (docs/qa/film-v2r1/media-9x16.json)
+RELEASE IN PROGRESS 1.72.417 by the Kikar loop [main] start 21:47 (Ben 3.10 evening: the narrated v2 film leads the Kikar film section; project-stage.php hunk; dry run, then live)
+RELEASE DONE 1.72.417 by the Kikar loop [main] 21:52: the narrated v2 film leads the Kikar film section (project-stage.php dceed55da5 -> af8c3b68fb; media 8156-8171); 458 checks OK; rollback .bak417
+
+### 3.10.2026 ~22:15 Israel: main [Kikar loop] RECEIPT 1.72.417 (the narrated v2 film leads the Kikar film section), on Ben's word
+- **Ben's word (main's session, 3.10 evening, after "א בלבד"):** "תעלה הכל וגם עם קריינות אל תכתוב כלום על קרדיט אני אדאג לזה מול העיריה . אבל אל תכתוב כלום. זה באחריותי". So the narrated set is published and the PAGE carries no credit or licence wording. This supersedes the "narration out of scope" line of the 20:00 entry; the municipality question is Ben's.
+- **Media (once, byte-checked by download back + SHA-256):** docs/qa/film-v2r1/media.json (8156-8167: the narrated wide he/en = the producer's gen 2 503065ed / f0886ceb + posters; the noaround he/en wide + upright + posters, uploaded but NOT shown) and media-9x16.json (8168-8171: the narrated upright he/en gen 2 298e50c3 / 2c69afd3 + posters). WordPress names the videos "-1.mp4"; the page uses the exact URLs.
+- **Runner:** film_417.py (a hunk on the LIVE inc/project-stage.php: nadlan_ps_world_film_v2() + the "הגרסה הראשונה" h3 above V1), make_deploy417.py -> deploy417.py from the verified 416. Live 21:52, 458 checks OK (he/en/fr/ru/ar: the v2 figure, the language's own files, no cross-language file, no noaround file, V1 and the facilities clip still there). Rollback .bak417.
+- **Post-release, main, live (eyes + code):**
+  - he desktop 1024: the wide film (937x527) leads under "הסרט של כיכר המדינה"; the poster is the film's own title card. A real press on Play: playing, 3.52 -> 5.04 s in 1.5 s, not muted, audio decoded, 88.6 s, 1280x720.
+  - he phone 390x844: the upright film (334x594), no sideways scroll (scrollWidth 390). A real press on Play: playing, 3.86 -> 5.37 s, audio decoded, 608x1081 = gen 2.
+  - en desktop: the English wide film, caption "Illustrative visualisation", h3 "The first version". A real press on Play: 3.85 -> 5.36 s, audio decoded.
+  - V1 sits below the "הגרסה הראשונה" heading; the facilities clip stays last.
+  - The page shows no credit text (code: no credit node in the film section).
+  - lang_pages_check 60/60; content_first_check 20/20 (failed 0); source_audit hamedina he/en GREEN; the diff is explained: +1 style (nlws-v2-css) and about 1 KB.
+- **Said plainly to Ben:**
+  - The film's own last card still carries the short map-data line (OpenStreetMap + the municipality's open data). OpenStreetMap's licence requires that line, so main kept it. Removing it from the film is his word.
+  - The narrated cut includes the two "around" shots (Mapbox outlines, Lucide icons; HAD-406).
+  - The noaround cut is uploaded and ready if he prefers it.
+- **Open, Ben's:** the voice-reference rights (F08) and a human listening (the producer cannot listen, and neither can main).
+- **For Maya:** an independent live check of the film section is welcome (he/en, phone + desktop). No new worker; no further media writes queued.

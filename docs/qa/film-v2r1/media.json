@@ -1,0 +1,98 @@
+{
+ "kikar-hamedina-film-v2-he-16x9.mp4": {
+  "id": 8156,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-he-16x9-1.mp4",
+  "bytes": 15467030,
+  "sha256": "503065ed6c67f2a3eb0566ed354407493a2a3148b43adca9fc12c2d79b9e9894",
+  "bytes_live": 15467030,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-film-v2-he-16x9-poster.jpg": {
+  "id": 8157,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-he-16x9-poster.jpg",
+  "bytes": 179448,
+  "sha256": "e7f15e967fedf541d94bf2242801ec132fbec27614164efbaf6f0930983bab95",
+  "bytes_live": 179448,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-film-v2-en-16x9.mp4": {
+  "id": 8158,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-en-16x9-1.mp4",
+  "bytes": 15561908,
+  "sha256": "f0886ceb9067e59d9998bf575242d9130809e15672cbfd8f892064adca49e57b",
+  "bytes_live": 15561908,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-film-v2-en-16x9-poster.jpg": {
+  "id": 8159,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-en-16x9-poster.jpg",
+  "bytes": 182842,
+  "sha256": "c385d0a8b9b167375e42c412d4d96adc33d7334e8fb098d8fdddac62b3466e7e",
+  "bytes_live": 182842,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-film-v2-noaround-he-16x9.mp4": {
+  "id": 8160,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-noaround-he-16x9-1.mp4",
+  "bytes": 11255873,
+  "sha256": "0215e7470fee51b839ee5b917c98dc05779218ba8208600d48423697620cb510",
+  "bytes_live": 11255873,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-film-v2-noaround-he-16x9-poster.jpg": {
+  "id": 8161,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-noaround-he-16x9-poster.jpg",
+  "bytes": 187404,
+  "sha256": "77d6d72089b13b90e1b173dd4e10418e3c31f23e16e3ecd139006afa4fdf931d",
+  "bytes_live": 187404,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-film-v2-noaround-he-9x16.mp4": {
+  "id": 8162,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-noaround-he-9x16-1.mp4",
+  "bytes": 7226682,
+  "sha256": "2b572f3b8939302ad68ddf92f6eb918931fac3b20e9f758dae1bb7a37b81dbac",
+  "bytes_live": 7226682,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-film-v2-noaround-he-9x16-poster.jpg": {
+  "id": 8163,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-noaround-he-9x16-poster.jpg",
+  "bytes": 116761,
+  "sha256": "d137d0ffc82079ccb61802aa5be767dde147dacfcb62954a7674993342fd4931",
+  "bytes_live": 116761,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-film-v2-noaround-en-16x9.mp4": {
+  "id": 8164,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-noaround-en-16x9-1.mp4",
+  "bytes": 11365887,
+  "sha256": "63c53cc4e5645639cc5ed89f5c7a0149b23e613f3165fd484115ae40fa31850e",
+  "bytes_live": 11365887,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-film-v2-noaround-en-16x9-poster.jpg": {
+  "id": 8165,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-noaround-en-16x9-poster.jpg",
+  "bytes": 191045,
+  "sha256": "aea7c388c0ed78780539cf030e90f6634dfd3b7c4097fb1a23eee5d04e41f961",
+  "bytes_live": 191045,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-film-v2-noaround-en-9x16.mp4": {
+  "id": 8166,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-noaround-en-9x16-1.mp4",
+  "bytes": 7283062,
+  "sha256": "b57c39a2b1195c84bbb5203d09a6226138096a395a2ff207e40e96d5aaea9332",
+  "bytes_live": 7283062,
+  "byte_check": "OK"
+ },
+ "kikar-hamedina-film-v2-noaround-en-9x16-poster.jpg": {
+  "id": 8167,
+  "url": "https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-noaround-en-9x16-poster.jpg",
+  "bytes": 118842,
+  "sha256": "1a048bf8f679bdb8576b9ad6329ccb425f10f24021cc0b919df16513754a8cc2",
+  "bytes_live": 118842,
+  "byte_check": "OK"
+ }
+}
