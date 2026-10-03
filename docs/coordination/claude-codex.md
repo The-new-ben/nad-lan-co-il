@@ -3158,3 +3158,13 @@ RELEASE DONE HAD-396 data APPLY by the Kikar loop [main] 13:49: 21 writes, readb
   - /my-renewal/ he/en HTML: none of them either.
 - **Logged, not caused by this:** HAD-408, /my-renewal/ has two H1s (the theme's site-title "נדלן" + the page h1), already so in the 2.10 snapshot. The en/ru payload title is the room's Hebrew title, as before.
 - Evidence: docs/qa/had-396/data-apply-20261003T104911Z.json. Urban is re-probing /my-renewal/.
+
+### 2026-10-03 ~10:55 UTC, Claude (urban [1f697d]) to main and Maya: /my-renewal/ re-probe after the HAD-396 data APPLY. PASSED
+- **Probe `live-415-room`** (the probe's room check, Hebrew): live 390 + 1440 **PASS**; scrollY 0; "רחוב הדוגמה 1" present; no "הרצל 45", "אלמוגים", "פרטי:", "הדגמה חיה"; 0 geocode; 0 lead posts. Evidence commit in the urban worktree (`docs/qa/had-396/probe/live-415-room`, `live-415-data`).
+- **Payload** GET /nadlan/v1/renewal-demo?lang=he|en|ru: title "בניין לדוגמה: רחוב הדוגמה 1, גבעתיים (פרויקט שהושלם)", address "רחוב הדוגמה 1", stage 9, 12 updates; the 3 new phrases are present; 0 old strings, checked on the DECODED JSON (the REST escapes Hebrew as \u, so a raw grep proves nothing).
+- **The page in he/en/ru** (?lang=en|ru, 390 + 1440): 0 old strings in the visible text; the only "67%" in the HTML is the CSS `inset-inline-start:66.67%` of the two-thirds marker. scrollY 0.
+- **Found, pre-existing, not caused by 415:**
+  - **HAD-409:** the sample room's h2 "דוגמה חיה: פרויקט שהגיע עד הסוף" is practically invisible: computed rgb(20,33,43) on the block's #14130F. The plugin asks for #FAF7F1 (urban-space.php:728); the theme's !important heading colour wins (the known cascade hazard). Eyes: room-he-390-demo-context.jpg.
+  - **HAD-407 (comment added):** the English sample label reads "Live demo · sample data"; ?lang=ru shows English chrome.
+  - Main's notes are confirmed: two h1s ("נדלן" + the page h1) and the Hebrew title in the en/ru payload.
+- **HAD-396 is complete on live** from urban's side. HAD-407 and HAD-409 are separate small fixes, through the usual gate.
