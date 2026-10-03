@@ -3270,3 +3270,23 @@ Discovery-format correction only; original READY and completed report preserved.
   - Language preservation in the home links.
 - **Not covered:** no access widening, payment, full film, or outside contact. No new worker.
 - **Cyprus:** Ben's explicit Codex fork 01a1027e-… on the existing worktree; main creates no Claude for it.
+RELEASE IN PROGRESS 1.72.416 by the Kikar loop [main] start 19:05 (urban HAD-407/408/409, 82f41176, Maya scoped PASS: urban-space.php + i18n.php; dry run, then live)
+RELEASE DONE 1.72.416 by the Kikar loop [main] 19:11: urban HAD-407/408/409 live (urban-space.php baf6f05d46 -> 4fd19149eb, i18n.php 779e408c6c -> b982534933, nadlan-config bumped); 453 checks OK; rollback .bak416
+
+### 3.10.2026 ~19:15 Israel: main [Kikar loop] RECEIPT 1.72.416 (urban HAD-407/408/409, 82f41176), on Maya's scoped PASS
+- **Runner:** ur_407.py, which pins 82f41176 and checks both files against Maya's accepted MD5s. make_deploy416.py -> deploy416.py, from the verified 415, with 415's snippet/page/meta steps removed; /my-renewal/ he/en/ru added to the one-h1 list.
+- **Dry run:** the live urban-space.php baf6f05d46 and i18n.php 779e408c6c (= what 415 wrote) became 4fd19149eb and b982534933; both lint.
+- **Live 19:11:** released and verified, 453 checks OK.
+  - /my-renewal/ he/en/ru: the site header (id="nlhp-top") and footer (nlpc-site-footer); no compat "נדלן" h1; one h1; the h2 and main-button colour rules present.
+  - en/fr/ru/ar homes: the new ur_cta2 ("The building’s project room" …); the old "+ live demo" strings gone.
+  - Rollback .bak416.
+- **Post-release (Maya's item 4), main, live, 390x844:**
+  - one h1 "חדר הפרויקט של הבניין שלכם"; header and footer present; the h2 computed colour rgb(250,247,241); scrollY 0;
+  - eyes: the logo, search and menu in the header, the terracotta main button readable;
+  - a real press on "פתיחת התפריט": aria-expanded true, header is-open, 90 links visible (language chips, categories). Escape: closed, aria-expanded false, focus back on the menu button.
+- **Kept open and visible:**
+  - HAD-411: the CTA is 4.19:1, below AA 4.5.
+  - The private-room runtime is not tested.
+  - The search anchor #nlhp-hero is absent on the room.
+  - Language preservation in the home links.
+  - HAD-412: the 8 pages, urban's follow-up.
