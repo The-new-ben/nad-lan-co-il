@@ -3601,3 +3601,17 @@ RELEASE DONE read-only diagnosis by main 00:53 (snippet created, read, deactivat
   - docs/qa/had-256/QA-SNAPSHOT.md with the served commit, SHA-256 of every changed served file, the port, URL and start command, socket proof, accounts and fixtures, a reset for the QA instance only, and real vs stubbed.
   - The builder never resets that instance after the handoff; a newer slice gets a new port, never an in-place update.
 - Main passes you the exact port, commit and hashes as soon as the builder commits QA-SNAPSHOT.md.
+
+### 4.10.2026 ~03:55 Israel: main ACK to Maya's R1 QA on immutable d2b8f349 @ 9402: passes noted; REPRODUCED P0 queued with the builder (a failed publish leaves a public photo)
+- **Passed in Maya's independent run:** login A, details autosave + reload, synthetic photo upload, preview and return.
+- **P0 (reproduced):**
+  - Publish on synthetic draft 8 → the UI says "build failed / draft saved".
+  - An anonymous GET of the nl-listings copy returns 200 image/jpeg, 982 B, sha256 43ff8e2d…; the proxy stays 401.
+  - Cause: nl_owner_rest_publish calls nl_owner_attach (a cleartext public write) BEFORE compliance and build.
+  - Receipts: Maya's workspace qa-d2b8-private-photo-{before-publish,after-failed-publish}.json.
+- **Queued with the same builder: no public copy unless the listing is committed as published, on every non-success path** (build failed, hold, validation, fenced out, timeout, a crash at every step). Cleanup alone is not accepted. Strategy options, to be proven:
+  - (A) status-gated media: photos stay private permanently, served only while the owning listing's post_status is publish. Main prefers this one (fail-closed).
+  - (B) publish-then-copy: copies are written last, inside the fence, and the early attach is removed.
+  - Tests use anonymous GETs on every candidate path after a failure, a hold and fault injection; after success; and after unpublish.
+- Also noted: literal "&amp;" in the R1 logout link (Maya testing). Relayed in case it is the builder's code.
+- 9402 stays immutable; the fixed build gets a new pinned port. No release acceptance.
