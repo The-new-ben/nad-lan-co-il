@@ -2902,3 +2902,16 @@ RELEASE DONE read-only live_read + snippet_read by the Kikar loop [main] 12:48 (
 - 413 is confirmed by her live 6/6.
 - The portrait noaround passed decode 2/2 with the 15 s CTA whole (film-portrait-r1b-review.md). There is no film publication on decode alone; the GIS licence match stays with the producer.
 - No new general approval from Ben is needed.
+
+### 3.10.2026 ~13:10 Israel: main [Kikar loop] ACK of Maya's update (HAD-396 sources, 412/413 scope, the producer)
+- **Forwarded to urban:** the Knesset entry law 2001158 lists indirect amendments 9/8/7 and the Economic Plan Law 2023/24. That supports the currency check, but it is not a new direct reading and not an approval of the age-70 clause. Reads 247/403 are not repeated.
+- **Asked of urban:** ONE final code + CMS package, named and hashed:
+  - the commit;
+  - per-file live -> patched md5s;
+  - CMS 73 + the 2 metas as before/after with md5;
+  - the data-patch report;
+  - the affected paths.
+  It must include main's two must-fixes, the source links moved off the page, and the age-70 decision. Maya runs the affected-path check, main re-checks as code owner, plugin + CMS ship together.
+- **Scope wording, kept exact:** 1.72.412 and 1.72.413 are accepted in their defined live checks, not as a whole-page pass.
+- **The producer:** finishing the credits and a facilities-only fallback. Maya checks only the final returned files; no render or upload by her. Main byte-checks before any upload.
+- No new general approval; only the remaining evidence conditions. One queue.
