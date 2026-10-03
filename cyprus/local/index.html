@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>DUNE | Residences</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header><a class="brand" href="/" aria-label="Dune home">DUNE<span>R E S I D E N C E S</span></a><nav><a href="#residences" data-t="explore"></a><a href="#plans" data-t="plans"></a><a href="#compare" data-t="compare"></a></nav><div class="langs"><button data-lang="he" lang="he">עברית</button><button data-lang="en" lang="en">EN</button></div></header>
+<main>
+ <section class="intro"><div><p class="eyebrow" id="district"></p><h1>Dune<br><em>Residences.</em></h1></div><div class="intro-note"><span class="rule"></span><p data-t="intro"></p><a href="#residences" class="text-link" data-t="explore"></a></div></section>
+ <figure class="architecture"><img src="/media/architect-exterior.jpg" width="889" height="494" alt="" id="exterior"><figcaption data-t="exteriorNote"></figcaption></figure>
+ <section class="explorer" id="residences" aria-labelledby="explorer-title">
+  <div class="selector"><p class="eyebrow" data-t="collection"></p><h2 id="explorer-title" data-t="choose"></h2><div id="units"></div><p class="small" data-t="selectionNote"></p></div>
+  <div class="site-board"><div class="board-head"><span data-t="sitePlan"></span><span class="unit-code" id="board-id"></span></div><div class="site-canvas" id="site-canvas"></div><p class="small" data-t="siteHint"></p><div id="breakdown"></div></div>
+  <div class="details" aria-live="polite"><p class="eyebrow" data-t="residence"></p><h2 id="detail-id"></h2><div class="specs" id="specs"></div><button class="primary" id="save" data-t="save"></button><button class="secondary" id="prepare" data-t="prepare"></button><p class="small" data-t="areaNote"></p></div>
+ </section>
+ <section class="plan-section" id="plans" aria-labelledby="plans-title">
+  <div class="section-head"><div><p class="eyebrow" data-t="inside"></p><h2 id="plans-title" data-t="planTitle"></h2></div><bdi class="plan-unit" id="plan-unit"></bdi></div>
+  <div class="plan-toolbar"><div class="level-tabs" role="group" data-label="level"><button data-level="ground" data-t="ground"></button><button data-level="upper" data-t="upper"></button></div><button id="expand-plan" data-t="expand"></button></div>
+  <div class="plan-layout"><div class="plan-surface"><div id="plan-canvas" class="plan-canvas"></div><p class="small plan-credit" data-t="planNote"></p></div><aside class="room-inspector"><p class="eyebrow" data-t="roomExplore"></p><div id="room-buttons"></div><div id="room-details" aria-live="polite"></div></aside></div>
+ </section>
+ <section class="comparison" id="compare"><div class="section-head"><div><p class="eyebrow" data-t="sideBySide"></p><h2 data-t="comparisonTitle"></h2></div><span id="count"></span></div><div id="comparison-cards"></div></section>
+ <footer><span>DUNE RESIDENCES</span><p data-t="footer"></p></footer>
+</main>
+<dialog id="conversation" aria-labelledby="conversation-title"><div class="dialog-head"><h2 id="conversation-title" data-t="prepare"></h2><button id="close" data-label="close" autofocus>×</button></div><p data-t="prepareBody"></p><label for="brief" data-t="selectedDetails"></label><textarea id="brief" readonly rows="7"></textarea><button class="primary" id="copy" data-t="copy"></button><p class="small" data-t="noSend"></p></dialog>
+<dialog id="plan-dialog" aria-labelledby="large-plan-title"><div class="dialog-head"><h2 id="large-plan-title"></h2><button id="close-plan" data-label="close" autofocus>×</button></div><div class="zoom-toolbar"><button id="zoom-out" data-label="zoomOut">−</button><output id="zoom-value">100%</output><button id="zoom-in" data-label="zoomIn">+</button><button id="zoom-reset" data-t="reset"></button></div><p class="small" data-t="zoomHint"></p><div class="large-plan-scroll" id="large-plan-scroll"><div class="large-plan-frame" id="large-plan-frame"><img id="large-plan" alt=""><span class="veil" aria-hidden="true"></span></div></div><p class="small" data-t="planNote"></p></dialog>
+<p class="load-error" id="load-error" role="alert" hidden></p><div class="toast" role="status" id="toast"></div><script src="/plan-data.js"></script><script src="/app.js"></script>
+</body></html>
