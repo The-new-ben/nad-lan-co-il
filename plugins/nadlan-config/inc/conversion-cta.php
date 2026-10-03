@@ -60,11 +60,11 @@ add_action( 'wp_footer', function () {
 		if ( '' === $rv_lang ) { $rv_lang = 'he'; }
 		$rv = array(
 			// ApartmentExperience-1 (v101, 29.9.2026): "ייעוץ חינם" on every page; the independence stays in the small line
-			'he' => array( "ייעוץ חינם", "לא מטעם היזם · מענה בוואטסאפ", "וואטסאפ · ייעוץ חינם על הפרויקט", "שלום, יש לי שאלה על הפרויקט." ),
-			'en' => array( "Free consultation", "Not the developer · on WhatsApp", "WhatsApp: free consultation on the project", "Hi, I have a question about this project." ),
-			'fr' => array( "Conseil gratuit", "Pas le promoteur · sur WhatsApp", "WhatsApp : conseil gratuit sur le projet", "Bonjour, j'ai une question sur ce projet." ),
-			'ru' => array( "Бесплатная консультация", "Не от застройщика · в WhatsApp", "WhatsApp: бесплатная консультация по проекту", "Здравствуйте, у меня вопрос по проекту." ),
-			'ar' => array( "استشارة مجانية", "ليست من المطور · على واتساب", "واتساب · استشارة مجانية حول المشروع", "مرحبا، لدي سؤال حول المشروع." ),
+			'he' => array( "ייעוץ חינם", "מענה בוואטסאפ", "וואטסאפ · ייעוץ חינם על הפרויקט", "שלום, יש לי שאלה על הפרויקט." ),
+			'en' => array( "Free consultation", "Reply on WhatsApp", "WhatsApp: free consultation on the project", "Hi, I have a question about this project." ),
+			'fr' => array( "Conseil gratuit", "Réponse sur WhatsApp", "WhatsApp : conseil gratuit sur le projet", "Bonjour, j'ai une question sur ce projet." ),
+			'ru' => array( "Бесплатная консультация", "Ответ в WhatsApp", "WhatsApp: бесплатная консультация по проекту", "Здравствуйте, у меня вопрос по проекту." ),
+			'ar' => array( "استشارة مجانية", "رد على واتساب", "واتساب · استشارة مجانية حول المشروع", "مرحبا، لدي سؤال حول المشروع." ),
 		);
 		$rv_v = isset( $rv[ $rv_lang ] ) ? $rv[ $rv_lang ] : $rv['he'];
 		$cta_b = $rv_v[0]; $cta_s = $rv_v[1]; $cta_aria = $rv_v[2]; $cta_msg = $rv_v[3];

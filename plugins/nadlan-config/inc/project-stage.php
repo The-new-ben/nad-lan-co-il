@@ -1017,8 +1017,8 @@ if ( ! function_exists( 'nadlan_ps_world_words' ) ) {
 	function nadlan_ps_world_words( $lang ) {
 		$w = array(
 			'he' => array(
-				'wa'    => 'ייעוץ חינם',
-				'wa_tx' => 'שלום, אשמח לייעוץ חינם על %s (nad-lan.co.il)',
+				'wa'    => 'לקבלת פרטים נוספים בוואטסאפ', // v104.31 (HAD-382): "ייעוץ חינם" only on the floating bar
+				'wa_tx' => 'שלום, אשמח לפרטים נוספים על %s (nad-lan.co.il)',
 				'sale'  => 'דירות למכירה במגדלים',
 				'tour'  => 'סיור וירטואלי בכיכר',
 				'stage' => 'סיור וירטואלי ב%s: המגדלים, הקומות והנוף',
@@ -1028,8 +1028,8 @@ if ( ! function_exists( 'nadlan_ps_world_words' ) ) {
 				'rail'  => 'אנשי מקצוע באזור',
 			),
 			'en' => array(
-				'wa'    => 'Free advice',
-				'wa_tx' => 'Hello, I would like free advice on %s (nad-lan.co.il)',
+				'wa'    => 'More details on WhatsApp',
+				'wa_tx' => 'Hello, I would like more details on %s (nad-lan.co.il)',
 				'sale'  => 'Apartments for sale in the towers',
 				'tour'  => 'Virtual tour of the square',
 				'stage' => 'Virtual tour of %s: the towers, the floors and the view',
@@ -1040,8 +1040,8 @@ if ( ! function_exists( 'nadlan_ps_world_words' ) ) {
 			),
 			// P8 (1.72.370): written for each reader, not word for word from the English
 			'fr' => array(
-				'wa'    => 'Conseil gratuit',
-				'wa_tx' => 'Bonjour, je souhaite un conseil gratuit sur les %s (nad-lan.co.il)',
+				'wa'    => 'Plus de détails sur WhatsApp',
+				'wa_tx' => 'Bonjour, je souhaite plus de détails sur les %s (nad-lan.co.il)',
 				'sale'  => 'Appartements à vendre dans les tours',
 				'tour'  => 'Visite virtuelle de la place',
 				'stage' => 'Visite virtuelle des %s : les tours, les étages et la vue',
@@ -1051,8 +1051,8 @@ if ( ! function_exists( 'nadlan_ps_world_words' ) ) {
 				'rail'  => 'Professionnels du quartier',
 			),
 			'ru' => array(
-				'wa'    => 'Бесплатная консультация',
-				'wa_tx' => 'Здравствуйте, хочу бесплатную консультацию по проекту «%s» (nad-lan.co.il)',
+				'wa'    => 'Подробнее в WhatsApp',
+				'wa_tx' => 'Здравствуйте, хочу узнать подробнее о проекте «%s» (nad-lan.co.il)',
 				'sale'  => 'Квартиры на продажу в башнях',
 				'tour'  => 'Виртуальная прогулка по площади',
 				'stage' => 'Виртуальная прогулка: %s, этажи и вид из окон',
@@ -1062,8 +1062,8 @@ if ( ! function_exists( 'nadlan_ps_world_words' ) ) {
 				'rail'  => 'Специалисты района',
 			),
 			'ar' => array(
-				'wa'    => 'استشارة مجانية',
-				'wa_tx' => 'مرحباً، أود الحصول على استشارة مجانية حول %s (nad-lan.co.il)',
+				'wa'    => 'مزيد من التفاصيل عبر واتساب',
+				'wa_tx' => 'مرحباً، أود الحصول على مزيد من التفاصيل حول %s (nad-lan.co.il)',
 				'sale'  => 'شقق للبيع في الأبراج',
 				'tour'  => 'جولة افتراضية في الميدان',
 				'stage' => 'جولة افتراضية في %s: الأبراج والطوابق والإطلالة',

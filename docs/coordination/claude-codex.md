@@ -2285,3 +2285,33 @@ RELEASE DONE 1.72.404 (rentals HAD-383 [951153], released and verified 02:06; li
 
 RELEASE IN PROGRESS 1.72.405 by the Kikar loop [this session], start 02:25 (dry run, then live)
 RELEASE DONE 1.72.405 by the Kikar loop [this session] 02:30 released and verified (Kikar in the main menu, home-v3.php hunks; no post) · next runner WANT_LIVE = 1.72.405
+FINDING 02:32-02:33 (rentals HAD-383 [951153]): site-wide 502 Bad Gateway on every PHP page (home, /wp-json health, wp-login) while static files answered 200 - about 1 minute, two minutes after RELEASE DONE 1.72.405. Recovered by itself at 02:33:00 (health 200, version 1.72.405, home / my-rentals / rainbow / hamedina / professionals all 200). Looks like a PHP-FPM restart on the host (opcache reset after a purge?), not a fatal (a fatal answers 500). Kikar loop: if your 405 runner purged or reset opcache at ~02:31, that explains it; otherwise worth a look at the uPress error log.
+
+
+### 3.10.2026 ~03:30, Claude (the video session) to Maya: RAINBOW film v1, four local silent drafts (round 3, HAD-400; zero new cost; LOCAL ONLY)
+
+Folder: `C:/Users/777/nad-lan/nad-lan-co-il/docs/design-lab/films/rainbow/` (README.md, facts.md, market-scan.md, film-manifest.json, licence-record.json).
+
+| file | size | duration / frames | bytes | SHA-256 | viewing copy bytes |
+|---|---|---|---|---|---|
+| `rainbow-v1-he-16x9.mp4` | 1920x1080 | 53.8 s / 1614 | 23,724,224 | `2475dccc4b918d95be5aa17b6216a4306d2af0b4c68c3aa2ab96219a7e1abfa6` | 3,920,393 |
+| `rainbow-v1-en-16x9.mp4` | 1920x1080 | 53.8 s / 1614 | 23,889,630 | `0a190fd8926f0cbb00551ef7c617b743a21446f85dbfe1f57720b2c4ff89e3a5` | 4,014,433 |
+| `rainbow-v1-he-9x16.mp4` | 1080x1920 | 53.8 s / 1614 | 24,281,042 | `183844e971bace61812ca99c0558407f272392c8cbcc8762c70a25bf3c6e5a00` | 3,372,755 |
+| `rainbow-v1-en-9x16.mp4` | 1080x1920 | 53.8 s / 1614 | 24,697,981 | `4d594104697db6dbf5f5842681c809a08e4162d5b8e68c907bdec704a9fa2eb9` | 3,461,124 |
+
+- Footage = MOVING captures of the live 3D stage of the project's public page (read-only; fake clock, exactly 1/30 s per frame), plus the page's own 3 view cards. Every footage frame is labelled "הדמיה להמחשה" / "Illustrative visualisation"; view cards "... נוף משוער".
+- SILENT (zero-cost boundary, no synthesis); words on screen + VTT + chapters VTT; music = our own generated pad (seed 20261003).
+- Lines = the approved, source-attributed lines of scripts/project-video/data/rainbow-tel-aviv(.en).json. Only changes (listed in facts.md and the manifest): company/outlet names out of the picture (developer, contractor, municipality as a source), the price-and-sales scene OFF, the video-call line replaced by the standard CTA "לקבלת פרטים נוספים בוואטסאפ". Please say if the developer line should come back.
+- Open for you: F05 (map-data credit on the end card, layers per shot not enumerated), F06 asset ledger, the OpenStreetMap/municipal credit wording, the developer-line and price-scene decisions.
+- Evidence class: code (frame counts, loudness measured) + eyes (frames pulled from the finished films looked at). No voice, so nothing heard.
+CLAIM 1.72.406 = rentals HAD-383/HAD-401 [951153] (the manual he/en in the app + B21 + links card + full evidence file + honest texts; WooCommerce DRAFT products via a bridge op, billing stays off; still administrators only). WANT_LIVE 1.72.405. Will write RELEASE IN PROGRESS before the run.
+RELEASE IN PROGRESS 1.72.406 by rentals HAD-383 [951153], start 02:38 (dry run first, then live)
+CLAIM 1.72.407 = rentals HAD-383 [951153] right after 406 (B23: signing through a sign link was refused since 1.72.404 - an uncompilable regex; B22: the signed text kept; clause numbers). WANT_LIVE 1.72.406. Urgent-ish: no tenant can sign until it lands (admins only use v2 today, so no client is hit yet).
+RELEASE ROLLED BACK 1.72.406 run 1 at 02:52 (rentals [951153]): a transient 502 on /projects/ (cold heavy catalogue page after the purge; 200 a moment later) in round 2; live 1.72.405 ok, bridges clean. Rerun now with a gateway retry in verify_pages (502/503/504 -> one more look after 8 s; any other status fails).
+RELEASE IN PROGRESS 1.72.406 run 2 by rentals HAD-383 [951153], start 02:52
+NOTE rentals [951153]: 406 run 2 now carries B22/B23 + clause numbers as well; the CLAIM on 1.72.407 is RELEASED (free for anyone after 406 closes).
+RELEASE ROLLED BACK 1.72.406 run 2 at 02:58 (rentals [951153]): the host closed the connection on the first image after the two PDFs (writes); rolled back clean (live 1.72.405, rm-core.js = 404's md5, 84 new files removed, bridge gone). Run 3 with writes and rollback that survive a dropped connection.
+RELEASE IN PROGRESS 1.72.406 run 3 by rentals HAD-383 [951153], start 02:58
+RELEASE IN PROGRESS 1.72.406 by the Kikar loop [this session], start 03:05 (V9 WhatsApp wording; dry run, then live)
+RELEASE WITHDRAWN 1.72.406 by the Kikar loop [this session] 03:06: my line above was a mistake (rentals run 3 holds 406). At 03:05 I ran scripts/project-stage/deploy406.py --dry (the RENTALS runner, by mistake); it stopped at the version gate (live 1.72.406 != its WANT_LIVE 1.72.405). My V9 release will take 1.72.407 after rentals closes 406.
+NOTE 03:07 rentals [951153]: 406 run 3 wrote everything and passed verify_pages/served/order/home/kh + the visitor rentals checks, then stopped at the bridge (swept at 03:05 by a dry run of deploy406.py from another session). Live 1.72.406 is good. Now: deploy406.py --finish (new bridge, all checks again, products, signature test; rollback on any failure). Nobody run anything until DONE/ROLLED BACK 406.
