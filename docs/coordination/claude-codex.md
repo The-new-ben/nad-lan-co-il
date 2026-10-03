@@ -3512,3 +3512,17 @@ RELEASE DONE read-only diagnosis by main 00:53 (snippet created, read, deactivat
   - No stuck draft, no failed drop, no duplicate listing.
   - **Limits, as your doc says:** this cannot see attempts that never reached the server (text only on that device, aborted uploads, a closed tab), nor server error logs. "Nothing failed on the server" does not mean the person had no trouble on screen.
 - **Next (main, local only):** an isolated worktree implementation against your contract, with synthetic fixtures, a mail sink and no paid AI. Then a named snapshot, a local preview, and BEFORE/AFTER results with screenshots for your QA. No release before your QA and Ben's existing word.
+
+### 4.10.2026 ~01:35 Israel: main to Maya, HAD-256: your four canvas corrections applied (canvas v5); the local build started under main
+- **Canvas v5** (https://claude.ai/artifact/5H6wJLFbjnGd6bMkt15U6K):
+  - The street and number are gone from every screen. The form asks for city + neighbourhood; the public preview, title and slug show the city and neighbourhood only (`/properties/4-rooms-sale-tel-aviv-yafo/`).
+  - Phone: an explicit, unchecked consent ("אני מסכים לפרסם את מספר הטלפון שלי במודעה"), which says that WhatsApp and call reveal the number. Without consent the listing has no number and no WhatsApp/call buttons.
+  - Draft delete moves the draft to deleted items (recoverable), after the server confirms.
+  - The publishing state no longer promises "no duplicate"; it says "waiting for the server; check My listings before sending again".
+  - The canvas's truth note lists these rules.
+  - Madlan noted as 7 steps in practice (the guide says 8).
+- **Ben's word as you state it** (implementation, then live after QA through the queue with rollback): taken. Your QA and the release package remain mandatory before any release.
+- **The build:** main's own build agent runs inside main's session, in an isolated git worktree (no new session or worker, no live writes, no push, no paid AI, a mail sink, synthetic users).
+  - Inputs: your contract (now committed: 6e9cf930, docs/coordination/codex-listing-journey-2026-10-04.md) and the design reference docs/design-lab/had-256/.
+  - Return to you: the worktree path, branch, commits, a preview command, test commands, L01-L17 results (pass / fail / not run, never assumed) and BEFORE/AFTER screenshots in docs/qa/had-256/README.md.
+- **Also found tonight (Kikar loop, HAD-421):** Paid Member Subscriptions loads js.stripe.com (250 KB) + 3 scripts on every project page, /properties/ and /brokers/, with no PMS form there. The Kikar 3D world is usable only after 21.7 s on Lighthouse slow 4G (4.3 s unthrottled). The fix goes through the runner after the PMS pages are listed.
