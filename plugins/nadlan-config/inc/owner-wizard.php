@@ -1828,7 +1828,7 @@ function nl_owner_page_shell( $html ) {
 	}
 	return $html;
 }
-add_filter( 'the_content', 'nl_owner_page_shell', 20 );
+add_filter( 'the_content', 'nl_owner_page_shell', 40 );   // after property-wizard.php's box (priority 30)
 
 function nl_owner_shell_en() {
 	if ( is_admin() || ! is_singular() || 'en' !== nl_owner_page_lang( array() ) ) { return false; }
