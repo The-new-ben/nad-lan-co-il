@@ -3816,3 +3816,8 @@ RELEASE DONE 1.72.427 by the Kikar loop [main] 17:40 Israel (machine clock): the
 - **HAD-421 since this morning:** world usable 21.7 → 12.4 s raw.
 - **Decision recorded, not changed:** the stage's sources line names Tel Aviv-Yafo's open GIS. The municipality's open-data terms let anyone share and adapt "provided you give the appropriate credit", so the credit stays; the loop's "no source names" yields to the licence.
 - **Next notch, measured first:** Google Fonts css (fonts.googleapis.com, a third origin) blocks the first paint; an upper-bound run with it blocked is running (tools/stage_speed.py --block).
+- **Fonts notch measured and REJECTED (5.10 ~18:05 Israel):** tools/stage_speed.py --block "*fonts.googleapis.com*" (hamedina, 5 runs each).
+  - Slow 4G: net FCP 2.167 → 2.140 s (−27 ms, noise). The bottleneck there is bandwidth, not the third-origin connection.
+  - No throttle: FCP 631 → 374 ms.
+  - Making the fonts css non-blocking would buy ~nothing on the HAD-421 target and cost a visible font swap on every load, so it is not built. Note: kb_to_ready undercounts third-party files (no Timing-Allow-Origin → transferSize 0).
+- **Next notch found (bigger):** the world mounts only after window 'load' + idle (nadlan_ps_world_script: addEventListener('load', later)). On slow 4G, load = 8.4 s while DCL = 5.1 s and FCP = 2.8 s; world_loading starts at 8.5 s and ready = 12.4 s. Mounting at DOMContentLoaded (+ idle, timeout 2 s) cannot touch FCP/LCP (already painted). Plan: a fair A/B through a URL switch first (default unchanged), then flip the default if world-ready improves without hurting DCL/load. Design record first (KikarHamedinaWorld v104.51).

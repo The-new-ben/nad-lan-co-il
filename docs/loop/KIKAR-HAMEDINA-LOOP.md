@@ -221,7 +221,8 @@ Every turn does ALL of these, not only the current phase:
   - **Measured:** world usable 12.02 → 11.76 s net; −13 KB; −1 request.
   - **Since the morning:** 21.7 → 12.4 s raw.
   - **Licence:** the stage's sources line stays, since the Tel Aviv open-data terms require credit.
-  - **Next notch, sharper:** Google Fonts css off the critical path, only if the upper-bound run (fonts css blocked) shows a real FCP gain and the fallback swap does not jump the layout; then the world's scene-build CPU.
+  - **Fonts notch measured and rejected:** blocking fonts.googleapis.com gains 27 ms FCP on slow 4G (noise) and 257 ms unthrottled; not worth a visible font swap.
+  - **Next notch, sharper:** mount the world at DOMContentLoaded instead of after window load. On slow 4G, load is at 8.4 s, DCL at 5.1 s and FCP at 2.8 s, so world-ready could move 2-3 s earlier. Do it as an A/B through a URL switch first, then flip the default.
 
 - **5.10 ~17:30, turn 36: HAD-421 step 7 LIVE (1.72.426): no Leaflet on project pages that show the Mapbox map.**
   - **Measured (5 clean runs, net of server time):** DCL 5.58 → 4.47 s; world usable flat (12.0 s); 2 fewer requests.
