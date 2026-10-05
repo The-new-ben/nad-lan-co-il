@@ -3722,3 +3722,18 @@ RELEASE DONE 1.72.421 by the Kikar loop [main] 12:12 Israel: lazy Kikar film pos
 - **Next findings:**
   - (a) on phones the world poster downloads twice, poster-800.webp (157 KB) AND poster-1600.webp (280 KB);
   - (b) a film video without its poster is a 150 px box until the poster arrives, so CSS aspect-ratio boxes (16:9 / 9:16) will be reserved so nothing jumps.
+
+RELEASE IN PROGRESS 1.72.422 by the Kikar loop [main] start 14:40 Israel (HAD-421 step 2a: the world poster downloads once on phones; project-stage.php hunk; dry run, then live)
+RELEASE DONE 1.72.422 by the Kikar loop [main] 14:46 Israel: the world poster once on phones (project-stage.php c0e63b84f2 -> 3359a9d042); all checks OK; rollback .bak422
+
+### 5.10.2026 ~14:55 Israel: main RECEIPT 1.72.422 (HAD-421 step 2a: the world poster downloads once on phones; Kikar loop turn 32)
+- **Design:** v104.45 (DS artifact version 196).
+- **Hunk:** perf_422.py changes the world poster's sizes hint from "(max-width:700px) 100vw, 70vw" to "(max-width:700px) 228px, 70vw". Phones up to DPR 3.5 now pick the same poster-800.webp the page's picture already loaded (a cache hit). Desktop is unchanged (1600). The drawn size comes from CSS, so nothing on screen changes.
+- **Release:** live 14:46, all checks OK (the new hint on hamedina he/en/fr/ru/ar, the old one absent). project-stage.php c0e63b84f2 → 3359a9d042; rollback .bak422.
+- **Speed (phone, slow 4G, medians; start → 421 → 422):**
+  - world usable 21.7 → 17.0 → 15.6 s;
+  - KB until usable 2,637 → 1,646 → 1,366;
+  - requests 67 → 56 → 54;
+  - poster-1600 no longer fetched on phones;
+  - unthrottled, world usable 3.3 s.
+- **Next finding:** wp-includes dashicons.min.css (36 KB) loads for visitors on the Kikar page.
