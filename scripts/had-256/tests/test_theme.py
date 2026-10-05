@@ -5,9 +5,10 @@ Snippets on top of the real nadlan-config plugin and the real themes (nadlan-rev
 child's platform.css = the live public bytes), Hebrew RTL as on the live site. Per screen, language and width:
   page     exactly one visible H1 in the document; the site header (.nlhp-top) and footer (.nlpc-site-footer) present;
            the site's floating bar (#nlcta) and accessibility button (#nla11y-btn) present (their boxes recorded)
-  overlap  every focusable control of the journey is focused and scrolled as a keyboard user sees it; its box must not
-           intersect the box of #nlcta, #nla11y-btn or a sticky/fixed site header (stricter than a centre test), and
-           elementFromPoint at its centre must be the control (the L14 probe, with the overlay named)
+  overlap  every focusable control of the journey is focused, forward (Tab) and then backward (Shift+Tab), and measured
+           once the site's smooth scroll has settled: its own box must not intersect #nlcta, #nla11y-btn or a
+           sticky/fixed site header (stricter than a centre test; a checkbox's long label under an overlay is info),
+           elementFromPoint at its centre must be the control, and it must be inside the viewport
   layout   the L14 probe: no horizontal overflow, 44 px targets, a visible focus ring, contrast 4.5:1 (3:1 large) in the app
   page text contrast of the page's own text around the app (the H1, the paragraph, the plugin's "how it works" box)
   chrome   contrast of the header and footer text (site-wide, reported as info, not a HAD-256 gate)
@@ -16,16 +17,19 @@ Screenshots (full page, JPEG) at 390x844 and 1440x900 for he and en: docs/qa/had
     python test_theme.py 390 he
 """
 import json
+import os
 import sys
 
 from bench import Browser, record, clear, QA, REPO
 from screens import visit
 from test_layout import PROBE as L14_PROBE
 
-V = 'theme'
+V = 'theme'   # the bench (bench.PORTS['theme'] = NLJ_THEME_PORT, default 9405)
+TAG = os.environ.get('NLJ_THEME_TAG', '')   # e.g. "candidate-2.0.1" for another commit on another port: own rows, own folder
+RV = V + ('-' + TAG if TAG else '')
 WIDTHS = ['320', '390', '412', '1440']
 SHOT_W = {'390', '1440'}
-OUT = QA / 'theme'
+OUT = QA / 'theme' / TAG if TAG else QA / 'theme'
 
 _old = "(hit.closest('#nlcta') ? '#nlcta (the floating bar)' :"
 assert L14_PROBE.count(_old) == 1
@@ -44,7 +48,7 @@ async () => {
   const out = {h1: h1s, header: vis(hdr) ? (hdr.className || hdr.tagName) : null, footer: vis(ftr) ? (ftr.className || ftr.tagName) : null,
     bar: vis(bar) ? box(bar.querySelector('.nlcta-wa') || bar) : null, bar_text: bar ? bar.innerText.replace(/\s+/g, ' ').trim() : null,
     a11y: vis(a11y) ? box(a11y) : null, header_pos: hdr ? getComputedStyle(hdr).position : null,
-    html: {lang: document.documentElement.lang, dir: document.documentElement.dir}, app: null, overlap: [], centre: [], offscreen: [], checked: 0, smooth: getComputedStyle(document.documentElement).scrollBehavior, page_contrast: [], chrome_contrast: [], text_checked: 0,
+    html: {lang: document.documentElement.lang, dir: document.documentElement.dir}, app: null, overlap: [], label_overlap: [], centre: [], offscreen: [], checked: 0, smooth: getComputedStyle(document.documentElement).scrollBehavior, page_contrast: [], chrome_contrast: [], text_checked: 0,
     page_blocks: Array.from(document.querySelectorAll('main .entry-content > *')).filter(vis).map(e => e.tagName.toLowerCase() + (e.className ? '.' + String(e.className).split(' ')[0] : '') + (e.id ? '#' + e.id : '') + ' "' + (e.innerText || '').trim().replace(/\s+/g, ' ').slice(0, 60) + '"')};
   const app = document.getElementById('nlj-app');
   window.scrollTo({top: 0, left: 0, behavior: 'instant'});   // a plain scrollTo is smooth on this site: start from a still page
@@ -93,11 +97,14 @@ async () => {
       if (cy < 0 || cy > innerHeight || cx < 0 || cx > innerWidth) { out.offscreen.push(dir + ' ' + nm); continue; }
       const hit = document.elementFromPoint(cx, cy);
       if (!hit || !(hit === e || e.contains(hit) || (lab !== e && lab.contains(hit)))) { out.centre.push({dir, el: nm, covered_by: hit ? (hit.closest('#nlcta') ? '#nlcta' : hit.closest('#nla11y') ? '#nla11y' : hit.closest('.nlhp-top') ? '.nlhp-top' : hit.tagName.toLowerCase() + '.' + String(hit.className).split(' ')[0]) : null}); }
+      // the gate: the focused control's own box (for a checkbox the box itself); its label's box apart, as info
+      const own = e.getBoundingClientRect();
       for (const [name, o] of overlays) {
         if (!o || !vis(o)) continue;
         const q = o.getBoundingClientRect();
-        const ix = Math.max(0, Math.min(r.right, q.right) - Math.max(r.left, q.left)), iy = Math.max(0, Math.min(r.bottom, q.bottom) - Math.max(r.top, q.top));
-        if (ix * iy > 0.5) out.overlap.push({dir, el: e.tagName.toLowerCase() + (e.id ? '#' + e.id : '') + (e.getAttribute('data-act') ? '[' + e.getAttribute('data-act') + ']' : '') + ' "' + (e.innerText || e.value || e.getAttribute('aria-label') || '').trim().slice(0, 30) + '"', under: name, area: Math.round(ix * iy)});
+        const area = rr => Math.max(0, Math.min(rr.right, q.right) - Math.max(rr.left, q.left)) * Math.max(0, Math.min(rr.bottom, q.bottom) - Math.max(rr.top, q.top));
+        if (area(own) > 0.5) out.overlap.push({dir, el: nm, under: name, area: Math.round(area(own))});
+        else if (lab !== e && area(r) > 0.5) out.label_overlap.push({dir, el: nm, under: name, label_area: Math.round(area(r))});
       }
     }
     const a = document.activeElement; if (a && a.blur) a.blur();
@@ -180,22 +187,23 @@ def main(widths, langs):
                 con = {k: v['contrast'] for k, v in l14.items() if v['contrast']}
                 pcon = {k: v['page_contrast'] for k, v in pg.items() if v['page_contrast']}
                 rest = {k: v.get('rest_overlap') for k, v in pg.items() if v.get('rest_overlap')}
+                labels = {k: v.get('label_overlap') for k, v in pg.items() if v.get('label_overlap')}
                 ccon = {k: v['chrome_contrast'] for k, v in pg.items() if v['chrome_contrast']}
                 t = '(%s px, %s, real theme)' % (vp, lang)
-                record({'id': 'T4', 'variant': V, 'label': 'real-wp+theme+chrome', 'title': 'one H1, the site header, footer, floating bar and accessibility button on every screen ' + t,
+                record({'id': 'T4', 'variant': RV, 'label': 'real-wp+theme+chrome', 'title': 'one H1, the site header, footer, floating bar and accessibility button on every screen ' + t,
                         'status': 'pass' if not h1_bad and not chrome_missing else 'fail',
                         'evidence': {'screens': list(found), 'h1_not_one': h1_bad, 'missing': chrome_missing, 'h1_text': sorted({h for v in pg.values() for h in v['h1']}),
                                      'html': sorted({json.dumps(v['html']) for v in pg.values()}), 'app': sorted({json.dumps(v['app']) for v in pg.values()}),
                                      'bar_text': sorted({v['bar_text'] or '' for v in pg.values()}), 'bar_box': next(iter(pg.values()))['bar'], 'a11y_box': next(iter(pg.values()))['a11y'],
                                      'bar_a11y_overlap_px2': sorted({v.get('bar_a11y_overlap') for v in pg.values()}, key=str), 'header_position': next(iter(pg.values()))['header_pos'], 'shots': shots}})
-                record({'id': 'T4', 'variant': V, 'label': 'real-wp+theme+chrome', 'title': 'no journey control under the floating bar, the accessibility button or the header ' + t,
+                record({'id': 'T4', 'variant': RV, 'label': 'real-wp+theme+chrome', 'title': 'no journey control under the floating bar, the accessibility button or the header ' + t,
                         'status': 'pass' if not overlap and not covered and not off else 'fail',
-                        'evidence': {'controls_focused': sum(v['checked'] for v in pg.values()), 'scroll_behavior': sorted({v['smooth'] for v in pg.values()}), 'box_overlap': overlap, 'centre_covered': covered, 'outside_viewport_after_focus': off, 'first_screen_overlays_on_controls (info)': rest,
+                        'evidence': {'controls_focused': sum(v['checked'] for v in pg.values()), 'scroll_behavior': sorted({v['smooth'] for v in pg.values()}), 'box_overlap': overlap, 'centre_covered': covered, 'outside_viewport_after_focus': off, 'first_screen_overlays_on_controls (info)': rest, 'label_text_under_an_overlay_while_its_checkbox_is_clear (info)': labels,
                                      'instant_scroll_L14 (info)': {'centre_covered': covered_i, 'outside_viewport': off_i}}})
-                record({'id': 'T4', 'variant': V, 'label': 'real-wp+theme+chrome', 'title': 'no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 ' + t,
+                record({'id': 'T4', 'variant': RV, 'label': 'real-wp+theme+chrome', 'title': 'no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 ' + t,
                         'status': 'pass' if not ovf and not small and not nof and not errs and not con else 'fail',
                         'evidence': {'overflow': ovf, 'under_44px': small, 'no_focus_ring': nof, 'js_errors': errs, 'app_contrast_under': con, 'app_text_nodes': sum(v['checked']['text'] for v in l14.values())}})
-                record({'id': 'T4', 'variant': V, 'label': 'real-wp+theme+chrome', 'title': 'the page text around the app 4.5:1 (H1, paragraph, how-it-works) ' + t,
+                record({'id': 'T4', 'variant': RV, 'label': 'real-wp+theme+chrome', 'title': 'the page text around the app 4.5:1 (H1, paragraph, how-it-works) ' + t,
                         'status': 'pass' if not pcon else 'fail',
                         'evidence': {'under': pcon, 'page_blocks': next(iter(pg.values()))['page_blocks'], 'site_chrome_under (info, site-wide)': ccon}})
     finally:

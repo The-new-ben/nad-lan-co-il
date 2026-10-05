@@ -1,0 +1,33 @@
+HAD-256 theme bench on 9405, bind check, 2026-10-05 20:11:00
+Every listening socket of the bench process (PID 23644):
+LocalAddress LocalPort OwningProcess
+------------ --------- -------------
+127.0.0.1        64364         23644
+127.0.0.1        64363         23644
+127.0.0.1        64362         23644
+127.0.0.1        64361         23644
+127.0.0.1        64360         23644
+127.0.0.1        58984         23644
+127.0.0.1         9405         23644
+via 192.168.0.143:9405 -> refused: No connection could be made because the target machine actively refused it. [::ffff:192.168.0.143]:9405
+
+HAD-256 theme bench on 9406, bind check, 2026-10-05 20:11:02
+Every listening socket of the bench process (PID 20604):
+LocalAddress LocalPort OwningProcess
+------------ --------- -------------
+127.0.0.1        54714         20604
+127.0.0.1        54713         20604
+127.0.0.1        54712         20604
+127.0.0.1        54711         20604
+127.0.0.1        54710         20604
+127.0.0.1        54709         20604
+127.0.0.1         9406         20604
+via 192.168.0.143:9406 -> refused: No connection could be made because the target machine actively refused it. [::ffff:192.168.0.143]:9406
+
+QA benches 9401-9404 (not touched by this line):
+LocalAddress LocalPort OwningProcess
+------------ --------- -------------
+127.0.0.1         9404         21740
+127.0.0.1         9403          5528
+127.0.0.1         9402         21284
+127.0.0.1         9401         20096

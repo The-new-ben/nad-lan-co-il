@@ -4579,5 +4579,4545 @@
   },
   "notes": "the drill swaps the module files under one SQLite site; on the live site the rollback is the snippet text (707) and the plugin file, and main verifies the backup hashes first",
   "at": "2026-10-05 12:29:53"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (1440 px, en, real theme)",
+  "status": "fail",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {
+    "auth-signup": [
+     {
+      "dir": "back",
+      "el": "input#j-mail \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 30248
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "dir": "back",
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 32536
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "a[jump] \"Description\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 1418
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"Price\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 882
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "a[jump] \"Description\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 2017
+     }
+    ],
+    "my-listings": [
+     {
+      "dir": "back",
+      "el": "button[d-del] \"Delete the draft\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 5598
+     },
+     {
+      "dir": "back",
+      "el": "button[d-open] \"Continue editing\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 6489
+     }
+    ]
+   },
+   "centre_covered": {
+    "auth-signup": [
+     {
+      "dir": "back",
+      "el": "input#j-mail \"\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "dir": "back",
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "a[jump] \"Description\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"Price\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "a[jump] \"Description\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "my-listings": [
+     {
+      "dir": "back",
+      "el": "button[d-del] \"Delete the draft\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button[d-open] \"Continue editing\"",
+      "covered_by": ".nlhp-top"
+     }
+    ]
+   },
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "my-listings": [
+     {
+      "el": "button \"Edit\"",
+      "under": "#nlcta",
+      "area": 88,
+      "share": "3%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:29:11"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (1440 px, he, real theme)",
+  "status": "fail",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {
+    "auth-signup": [
+     {
+      "dir": "back",
+      "el": "input#j-mail \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 30248
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "dir": "back",
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 32536
+     }
+    ],
+    "details-empty": [
+     {
+      "dir": "back",
+      "el": "input#j-phone-ok \"on\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 484
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "select#j-type \"בחירה\nדירה\nדירת גן\nפנטהאוז\nדופ\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 30290
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"שכונה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 475
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"עיר\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 525
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "input#j-phone-ok \"on\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 484
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"תיאור\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 888
+     }
+    ],
+    "my-listings": [
+     {
+      "dir": "back",
+      "el": "a \"דירת 4 חדרים בשכונת הדוגמה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 8142
+     }
+    ]
+   },
+   "centre_covered": {
+    "auth-signup": [
+     {
+      "dir": "back",
+      "el": "input#j-mail \"\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "dir": "back",
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-empty": [
+     {
+      "dir": "back",
+      "el": "input#j-phone-ok \"on\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "select#j-type \"בחירה\nדירה\nדירת גן\nפנטהאוז\nדופ\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"עיר\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "input#j-phone-ok \"on\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"תיאור\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "my-listings": [
+     {
+      "dir": "back",
+      "el": "a \"דירת 4 חדרים בשכונת הדוגמה\"",
+      "covered_by": ".nlhp-top"
+     }
+    ]
+   },
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {},
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:18:39"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (320 px, en, real theme)",
+  "status": "fail",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {
+    "auth-signup": [
+     {
+      "dir": "back",
+      "el": "input#j-mail \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 6216
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "dir": "back",
+      "el": "button[exists-login] \"Sign in with this email\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4793
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "dir": "back",
+      "el": "input#j-mail3 \"dana.sample@example.test\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 7664
+     }
+    ],
+    "details-empty": [
+     {
+      "dir": "back",
+      "el": "input#j-floor \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 7645
+     },
+     {
+      "dir": "back",
+      "el": "input#j-hood \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 99
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "input#j-phone \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 7726
+     },
+     {
+      "dir": "back",
+      "el": "input#j-price \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 10775
+     },
+     {
+      "dir": "back",
+      "el": "input#j-size \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 5125
+     },
+     {
+      "dir": "back",
+      "el": "input#j-rooms \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 3682
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "input#j-phone \"050-0000000\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 7609
+     },
+     {
+      "dir": "back",
+      "el": "input#j-price \"3450000\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 7704
+     },
+     {
+      "dir": "back",
+      "el": "button \"For rent\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 2949
+     },
+     {
+      "dir": "back",
+      "el": "button \"For sale\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 2910
+     }
+    ],
+    "preview": [
+     {
+      "dir": "back",
+      "el": "button[back-edit] \"Back to editing\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 1751
+     },
+     {
+      "dir": "back",
+      "el": "button#j-publish[publish] \"Publish the listing\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 7835
+     }
+    ],
+    "my-listings": [
+     {
+      "dir": "back",
+      "el": "a \"דירת 4 חדרים בשכונת הדוגמה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 2725
+     }
+    ]
+   },
+   "centre_covered": {
+    "auth-signup": [
+     {
+      "dir": "back",
+      "el": "input#j-mail \"\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "dir": "back",
+      "el": "button[exists-login] \"Sign in with this email\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "dir": "back",
+      "el": "input#j-mail3 \"dana.sample@example.test\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-empty": [
+     {
+      "dir": "back",
+      "el": "input#j-floor \"\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "input#j-phone \"\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "input#j-price \"\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "input#j-size \"\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "input#j-rooms \"\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "input#j-phone \"050-0000000\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "input#j-price \"3450000\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button \"For rent\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button \"For sale\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "preview": [
+     {
+      "dir": "back",
+      "el": "button#j-publish[publish] \"Publish the listing\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "my-listings": [
+     {
+      "dir": "back",
+      "el": "a \"דירת 4 חדרים בשכונת הדוגמה\"",
+      "covered_by": ".nlhp-top"
+     }
+    ]
+   },
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "published": [
+     {
+      "el": "button \"Copy\"",
+      "under": "#nla11y-btn",
+      "area": 704,
+      "share": "22%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "a \"דירת 4 חדרים בשכונת הדוגמה\"",
+      "under": "#nla11y-btn",
+      "area": 13,
+      "share": "0%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {
+    "details-empty": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 4711
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 4744
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 1736
+     },
+     {
+      "dir": "fwd",
+      "el": "input#j-owner-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 3775
+     }
+    ]
+   },
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:20:44"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (320 px, he, real theme)",
+  "status": "fail",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {
+    "auth-signup": [
+     {
+      "dir": "back",
+      "el": "input#j-mail \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 3122
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "dir": "back",
+      "el": "button[exists-login] \"כניסה עם המייל הזה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 2130
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "dir": "back",
+      "el": "input#j-mail3 \"dana.sample@example.test\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 5506
+     }
+    ],
+    "details-empty": [
+     {
+      "dir": "back",
+      "el": "input#j-floor \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 7733
+     },
+     {
+      "dir": "back",
+      "el": "input#j-city \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 10790
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "input#j-phone \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 3601
+     },
+     {
+      "dir": "back",
+      "el": "input#j-price \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 7616
+     },
+     {
+      "dir": "back",
+      "el": "input#j-size \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 3717
+     },
+     {
+      "dir": "back",
+      "el": "input#j-rooms \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 3717
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"חדרים\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 278
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"שכונה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 772
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "input#j-price \"3450000\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4501
+     },
+     {
+      "dir": "back",
+      "el": "input#j-hood \"שכונת הדוגמה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 10833
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"חדרים\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 278
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"שכונה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 772
+     }
+    ],
+    "photos": [
+     {
+      "dir": "back",
+      "el": "button[ph-rm] \"הסרה: תמונה 2\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 1443
+     },
+     {
+      "dir": "back",
+      "el": "button[ph-cover] \"קביעה כתמונת שער: תמונה 2\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 1443
+     }
+    ],
+    "preview": [
+     {
+      "dir": "back",
+      "el": "button#j-publish[publish] \"פרסום המודעה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 7733
+     }
+    ],
+    "my-listings": [
+     {
+      "dir": "back",
+      "el": "button[L-rm] \"הסרה מהאתר\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 3446
+     },
+     {
+      "dir": "back",
+      "el": "button[L-mark] \"סימון כנמכרה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 3870
+     },
+     {
+      "dir": "back",
+      "el": "button[mine-new] \"מודעה חדשה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4373
+     }
+    ]
+   },
+   "centre_covered": {
+    "details-empty": [
+     {
+      "dir": "back",
+      "el": "input#j-floor \"\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "input#j-city \"\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "input#j-price \"\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "input#j-size \"\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "input#j-rooms \"\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"שכונה\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "input#j-hood \"שכונת הדוגמה\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"שכונה\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "photos": [
+     {
+      "dir": "back",
+      "el": "button[ph-rm] \"הסרה: תמונה 2\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button[ph-cover] \"קביעה כתמונת שער: תמונה 2\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "preview": [
+     {
+      "dir": "back",
+      "el": "button#j-publish[publish] \"פרסום המודעה\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "my-listings": [
+     {
+      "dir": "back",
+      "el": "button[L-rm] \"הסרה מהאתר\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button[L-mark] \"סימון כנמכרה\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button[mine-new] \"מודעה חדשה\"",
+      "covered_by": ".nlhp-top"
+     }
+    ]
+   },
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "button \"פתיחת חשבון\"",
+      "under": "#nla11y-btn",
+      "area": 805,
+      "share": "17%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "button \"פתיחת חשבון\"",
+      "under": "#nla11y-btn",
+      "area": 805,
+      "share": "17%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "button \"פתיחת חשבון\"",
+      "under": "#nla11y-btn",
+      "area": 805,
+      "share": "17%"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "button \"פתיחת חשבון\"",
+      "under": "#nla11y-btn",
+      "area": 805,
+      "share": "17%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:12:49"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (390 px, en, real theme)",
+  "status": "fail",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {
+    "auth-recovery-sent": [
+     {
+      "dir": "back",
+      "el": "button[tab-login] \"I have an account\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4478
+     },
+     {
+      "dir": "back",
+      "el": "button[tab-signup] \"Open an account\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4478
+     }
+    ],
+    "details-empty": [
+     {
+      "dir": "back",
+      "el": "input#j-owner-ok \"on\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 7
+     },
+     {
+      "dir": "back",
+      "el": "select#j-type \"Choose\nApartment\nGarden apartm\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4478
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "button \"For rent\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 2955
+     },
+     {
+      "dir": "back",
+      "el": "button \"For sale\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 2915
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"Neighbourhood\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 1873
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"City\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 559
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "input#j-phone \"050-0000000\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 3832
+     },
+     {
+      "dir": "back",
+      "el": "input#j-cname \"Dana\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 3832
+     },
+     {
+      "dir": "back",
+      "el": "input#j-floor \"3 of 8\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 13298
+     },
+     {
+      "dir": "back",
+      "el": "select#j-type \"Choose\nApartment\nGarden apartm\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4388
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"Size\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 579
+     }
+    ],
+    "photos": [
+     {
+      "dir": "back",
+      "el": "button[ph-down] \"Move later: Photo 2\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 1438
+     },
+     {
+      "dir": "back",
+      "el": "button[ph-up] \"Move earlier: Photo 2\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 1438
+     },
+     {
+      "dir": "back",
+      "el": "button[ph-down] \"Move later: Photo 1\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 1438
+     }
+    ],
+    "my-listings": [
+     {
+      "dir": "back",
+      "el": "button[mine-new] \"New listing\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4200
+     }
+    ]
+   },
+   "centre_covered": {
+    "auth-recovery-sent": [
+     {
+      "dir": "back",
+      "el": "button[tab-login] \"I have an account\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button[tab-signup] \"Open an account\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "button \"For rent\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button \"For sale\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"Neighbourhood\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"City\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "input#j-phone \"050-0000000\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "input#j-cname \"Dana\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "input#j-floor \"3 of 8\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"Size\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "photos": [
+     {
+      "dir": "back",
+      "el": "button[ph-down] \"Move later: Photo 2\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button[ph-up] \"Move earlier: Photo 2\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button[ph-down] \"Move later: Photo 1\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "my-listings": [
+     {
+      "dir": "back",
+      "el": "button[mine-new] \"New listing\"",
+      "covered_by": ".nlhp-top"
+     }
+    ]
+   },
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "button \"Open an account\"",
+      "under": "#nlcta",
+      "area": 2363,
+      "share": "39%"
+     },
+     {
+      "el": "input#j-name \"\"",
+      "under": "#nla11y-btn",
+      "area": 678,
+      "share": "5%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "button \"Open an account\"",
+      "under": "#nlcta",
+      "area": 2363,
+      "share": "39%"
+     },
+     {
+      "el": "input#j-name \"Dana\"",
+      "under": "#nla11y-btn",
+      "area": 678,
+      "share": "5%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "button \"Open an account\"",
+      "under": "#nlcta",
+      "area": 2363,
+      "share": "39%"
+     },
+     {
+      "el": "input#j-mail2 \"dana.sample@example.test\"",
+      "under": "#nla11y-btn",
+      "area": 678,
+      "share": "5%"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "button \"Open an account\"",
+      "under": "#nlcta",
+      "area": 2363,
+      "share": "39%"
+     }
+    ],
+    "details-errors": [
+     {
+      "el": "a \"Deal type\"",
+      "under": "#nlcta",
+      "area": 67,
+      "share": "5%"
+     }
+    ],
+    "details-filled": [
+     {
+      "el": "a \"Deal type\"",
+      "under": "#nlcta",
+      "area": 67,
+      "share": "5%"
+     }
+    ],
+    "published": [
+     {
+      "el": "a \"To the listing\"",
+      "under": "#nlcta",
+      "area": 545,
+      "share": "4%"
+     },
+     {
+      "el": "a \"To the listing\"",
+      "under": "#nla11y-btn",
+      "area": 539,
+      "share": "4%"
+     },
+     {
+      "el": "a \"Share on WhatsApp\"",
+      "under": "#nla11y-btn",
+      "area": 91,
+      "share": "1%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "button \"Remove from the site\"",
+      "under": "#nla11y-btn",
+      "area": 44,
+      "share": "1%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {
+    "details-filled": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 6652
+     },
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nla11y-btn",
+      "label_area": 712
+     }
+    ]
+   },
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:24:31"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (390 px, he, real theme)",
+  "status": "fail",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {
+    "auth-existing-email": [
+     {
+      "dir": "back",
+      "el": "input#j-name \"דנה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4833
+     },
+     {
+      "dir": "back",
+      "el": "button[tab-login] \"כניסה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 1790
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "button \"השכרה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 2648
+     },
+     {
+      "dir": "back",
+      "el": "button \"מכירה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 2474
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"סוג הנכס\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 1145
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "input#j-floor \"3 מתוך 8\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 9428
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"שטח\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 573
+     }
+    ],
+    "photos": [
+     {
+      "dir": "back",
+      "el": "button[ph-retry] \"לנסות שוב\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 868
+     }
+    ],
+    "my-listings": [
+     {
+      "dir": "back",
+      "el": "button[mine-new] \"מודעה חדשה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4365
+     }
+    ]
+   },
+   "centre_covered": {
+    "auth-existing-email": [
+     {
+      "dir": "back",
+      "el": "button[tab-login] \"כניסה\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "button \"השכרה\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button \"מכירה\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"סוג הנכס\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "input#j-floor \"3 מתוך 8\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"שטח\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "my-listings": [
+     {
+      "dir": "back",
+      "el": "button[mine-new] \"מודעה חדשה\"",
+      "covered_by": ".nlhp-top"
+     }
+    ]
+   },
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "input#j-name \"\"",
+      "under": "#nlcta",
+      "area": 1168,
+      "share": "8%"
+     },
+     {
+      "el": "input#j-name \"\"",
+      "under": "#nla11y-btn",
+      "area": 408,
+      "share": "3%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "input#j-name \"דנה\"",
+      "under": "#nlcta",
+      "area": 1168,
+      "share": "8%"
+     },
+     {
+      "el": "input#j-name \"דנה\"",
+      "under": "#nla11y-btn",
+      "area": 408,
+      "share": "3%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "input#j-mail2 \"dana.sample@example.test\"",
+      "under": "#nlcta",
+      "area": 1168,
+      "share": "8%"
+     },
+     {
+      "el": "input#j-mail2 \"dana.sample@example.test\"",
+      "under": "#nla11y-btn",
+      "area": 408,
+      "share": "3%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "button \"מכירה\"",
+      "under": "#nla11y-btn",
+      "area": 524,
+      "share": "16%"
+     }
+    ],
+    "published": [
+     {
+      "el": "a \"לעמוד המודעה\"",
+      "under": "#nlcta",
+      "area": 545,
+      "share": "4%"
+     },
+     {
+      "el": "a \"לעמוד המודעה\"",
+      "under": "#nla11y-btn",
+      "area": 539,
+      "share": "4%"
+     },
+     {
+      "el": "a \"שיתוף בוואטסאפ\"",
+      "under": "#nla11y-btn",
+      "area": 91,
+      "share": "1%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "a \"דירת 4 חדרים בשכונת הדוגמה\"",
+      "under": "#nlcta",
+      "area": 1109,
+      "share": "20%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:14:49"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (412 px, en, real theme)",
+  "status": "fail",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {
+    "auth-signup": [
+     {
+      "dir": "back",
+      "el": "input#j-name \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 6219
+     },
+     {
+      "dir": "back",
+      "el": "button[tab-login] \"Sign in\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 2191
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "dir": "back",
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 14434
+     }
+    ],
+    "auth-login": [
+     {
+      "dir": "back",
+      "el": "button[tab-login] \"I have an account\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4819
+     },
+     {
+      "dir": "back",
+      "el": "button[tab-signup] \"Open an account\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4819
+     }
+    ],
+    "details-empty": [
+     {
+      "dir": "back",
+      "el": "input#j-size \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4896
+     },
+     {
+      "dir": "back",
+      "el": "input#j-rooms \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4896
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "input#j-owner-ok \"on\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 484
+     },
+     {
+      "dir": "back",
+      "el": "input#j-floor \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 14488
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"Description\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 1637
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "input#j-floor \"3 of 8\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 8133
+     },
+     {
+      "dir": "back",
+      "el": "button \"For rent\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 2960
+     },
+     {
+      "dir": "back",
+      "el": "button \"For sale\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 2921
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"Property type\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 1958
+     }
+    ],
+    "my-listings": [
+     {
+      "dir": "back",
+      "el": "button[L-mark] \"Mark as sold\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 3887
+     },
+     {
+      "dir": "back",
+      "el": "button[L-price] \"Update price\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 3960
+     },
+     {
+      "dir": "back",
+      "el": "button[L-edit] \"Edit\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 2096
+     }
+    ]
+   },
+   "centre_covered": {
+    "auth-signup": [
+     {
+      "dir": "back",
+      "el": "button[tab-login] \"Sign in\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "dir": "back",
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "auth-login": [
+     {
+      "dir": "back",
+      "el": "button[tab-login] \"I have an account\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button[tab-signup] \"Open an account\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-empty": [
+     {
+      "dir": "back",
+      "el": "input#j-size \"\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "input#j-rooms \"\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "input#j-owner-ok \"on\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "input#j-floor \"\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"Description\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "input#j-floor \"3 of 8\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button \"For rent\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button \"For sale\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"Property type\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "my-listings": [
+     {
+      "dir": "back",
+      "el": "button[L-mark] \"Mark as sold\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button[L-price] \"Update price\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button[L-edit] \"Edit\"",
+      "covered_by": ".nlhp-top"
+     }
+    ]
+   },
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "input#j-name \"\"",
+      "under": "#nlcta",
+      "area": 6245,
+      "share": "42%"
+     },
+     {
+      "el": "input#j-mail \"\"",
+      "under": "#nla11y-btn",
+      "area": 308,
+      "share": "2%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "input#j-name \"Dana\"",
+      "under": "#nlcta",
+      "area": 6245,
+      "share": "42%"
+     },
+     {
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "under": "#nla11y-btn",
+      "area": 308,
+      "share": "2%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "input#j-mail2 \"dana.sample@example.test\"",
+      "under": "#nlcta",
+      "area": 6245,
+      "share": "42%"
+     },
+     {
+      "el": "button \"Show\"",
+      "under": "#nla11y-btn",
+      "area": 308,
+      "share": "9%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "button \"For sale\"",
+      "under": "#nlcta",
+      "area": 2412,
+      "share": "62%"
+     },
+     {
+      "el": "button \"For rent\"",
+      "under": "#nlcta",
+      "area": 974,
+      "share": "25%"
+     },
+     {
+      "el": "select#j-type \"Choose\nApartment\nGarden apartm\"",
+      "under": "#nla11y-btn",
+      "area": 606,
+      "share": "4%"
+     }
+    ],
+    "details-errors": [
+     {
+      "el": "a \"Deal type\"",
+      "under": "#nlcta",
+      "area": 5,
+      "share": "0%"
+     },
+     {
+      "el": "a \"Property type\"",
+      "under": "#nlcta",
+      "area": 1958,
+      "share": "100%"
+     },
+     {
+      "el": "a \"City\"",
+      "under": "#nlcta",
+      "area": 15,
+      "share": "3%"
+     }
+    ],
+    "details-filled": [
+     {
+      "el": "a \"Deal type\"",
+      "under": "#nlcta",
+      "area": 5,
+      "share": "0%"
+     },
+     {
+      "el": "a \"Property type\"",
+      "under": "#nlcta",
+      "area": 1958,
+      "share": "100%"
+     },
+     {
+      "el": "a \"City\"",
+      "under": "#nlcta",
+      "area": 15,
+      "share": "3%"
+     }
+    ],
+    "photos": [
+     {
+      "el": "button#j-add \"Add photos\"",
+      "under": "#nlcta",
+      "area": 907,
+      "share": "14%"
+     }
+    ],
+    "published": [
+     {
+      "el": "a \"To the listing\"",
+      "under": "#nlcta",
+      "area": 3729,
+      "share": "23%"
+     },
+     {
+      "el": "a \"Share on WhatsApp\"",
+      "under": "#nlcta",
+      "area": 1592,
+      "share": "10%"
+     },
+     {
+      "el": "a \"Share on WhatsApp\"",
+      "under": "#nla11y-btn",
+      "area": 420,
+      "share": "3%"
+     },
+     {
+      "el": "button \"My listings\"",
+      "under": "#nla11y-btn",
+      "area": 210,
+      "share": "2%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "button \"Edit\"",
+      "under": "#nlcta",
+      "area": 540,
+      "share": "19%"
+     },
+     {
+      "el": "button \"Update price\"",
+      "under": "#nlcta",
+      "area": 561,
+      "share": "10%"
+     },
+     {
+      "el": "button \"Remove from the site\"",
+      "under": "#nlcta",
+      "area": 4671,
+      "share": "64%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {
+    "details-filled": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 6652
+     },
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nla11y-btn",
+      "label_area": 408
+     }
+    ]
+   },
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:27:02"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (412 px, he, real theme)",
+  "status": "fail",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {
+    "auth-existing-email": [
+     {
+      "dir": "back",
+      "el": "button[tab-login] \"כבר יש לי חשבון\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 1827
+     },
+     {
+      "dir": "back",
+      "el": "button[tab-signup] \"פתיחת חשבון\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 1827
+     }
+    ],
+    "details-empty": [
+     {
+      "dir": "back",
+      "el": "input#j-size \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4968
+     },
+     {
+      "dir": "back",
+      "el": "input#j-rooms \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 4968
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "input#j-owner-ok \"on\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 464
+     },
+     {
+      "dir": "back",
+      "el": "input#j-floor \"\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 10380
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"תיאור\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 721
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "input#j-floor \"3 מתוך 8\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 557
+     },
+     {
+      "dir": "back",
+      "el": "button \"השכרה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 2653
+     },
+     {
+      "dir": "back",
+      "el": "button \"מכירה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 2479
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"סוג העסקה\"",
+      "under": ".nlhp-top (sticky header)",
+      "area": 401
+     }
+    ]
+   },
+   "centre_covered": {
+    "details-empty": [
+     {
+      "dir": "back",
+      "el": "input#j-size \"\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "input#j-rooms \"\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "back",
+      "el": "input#j-owner-ok \"on\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "input#j-floor \"\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "a[jump] \"תיאור\"",
+      "covered_by": ".nlhp-top"
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "back",
+      "el": "button \"השכרה\"",
+      "covered_by": ".nlhp-top"
+     },
+     {
+      "dir": "back",
+      "el": "button \"מכירה\"",
+      "covered_by": ".nlhp-top"
+     }
+    ]
+   },
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "input#j-mail \"\"",
+      "under": "#nlcta",
+      "area": 1509,
+      "share": "10%"
+     },
+     {
+      "el": "input#j-mail \"\"",
+      "under": "#nla11y-btn",
+      "area": 370,
+      "share": "2%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "under": "#nlcta",
+      "area": 1509,
+      "share": "10%"
+     },
+     {
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "under": "#nla11y-btn",
+      "area": 370,
+      "share": "2%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "input#j-pw2 \"\"",
+      "under": "#nlcta",
+      "area": 625,
+      "share": "6%"
+     },
+     {
+      "el": "input#j-pw2 \"\"",
+      "under": "#nla11y-btn",
+      "area": 370,
+      "share": "3%"
+     },
+     {
+      "el": "button \"הצגה\"",
+      "under": "#nlcta",
+      "area": 793,
+      "share": "24%"
+     },
+     {
+      "el": "button#j-login-go \"כניסה\"",
+      "under": "#nla11y-btn",
+      "area": 140,
+      "share": "1%"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "input#j-mail3 \"dana.sample@example.test\"",
+      "under": "#nla11y-btn",
+      "area": 176,
+      "share": "1%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "select#j-type \"בחירה\nדירה\nדירת גן\nפנטהאוז\nדופ\"",
+      "under": "#nla11y-btn",
+      "area": 589,
+      "share": "4%"
+     }
+    ],
+    "photos": [
+     {
+      "el": "button#j-add \"הוספת תמונות\"",
+      "under": "#nlcta",
+      "area": 2340,
+      "share": "32%"
+     }
+    ],
+    "published": [
+     {
+      "el": "a \"לעמוד המודעה\"",
+      "under": "#nlcta",
+      "area": 3729,
+      "share": "23%"
+     },
+     {
+      "el": "a \"שיתוף בוואטסאפ\"",
+      "under": "#nlcta",
+      "area": 1592,
+      "share": "10%"
+     },
+     {
+      "el": "a \"שיתוף בוואטסאפ\"",
+      "under": "#nla11y-btn",
+      "area": 420,
+      "share": "3%"
+     },
+     {
+      "el": "button \"המודעות שלי\"",
+      "under": "#nla11y-btn",
+      "area": 210,
+      "share": "2%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "button \"עדכון מחיר\"",
+      "under": "#nlcta",
+      "area": 59,
+      "share": "1%"
+     },
+     {
+      "el": "button \"סימון כנמכרה\"",
+      "under": "#nlcta",
+      "area": 5156,
+      "share": "100%"
+     },
+     {
+      "el": "button \"הסרה מהאתר\"",
+      "under": "#nla11y-btn",
+      "area": 740,
+      "share": "16%"
+     }
+    ],
+    "saved-draft": [
+     {
+      "el": "button \"המשך מהמקום שעצרתם\"",
+      "under": "#nla11y-btn",
+      "area": 374,
+      "share": "2%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:16:43"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 469
+  },
+  "at": "2026-10-05 20:29:11"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 467
+  },
+  "at": "2026-10-05 20:18:39"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 362
+  },
+  "at": "2026-10-05 20:20:44"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 361
+  },
+  "at": "2026-10-05 20:12:49"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 362
+  },
+  "at": "2026-10-05 20:24:31"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 361
+  },
+  "at": "2026-10-05 20:14:49"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 362
+  },
+  "at": "2026-10-05 20:27:02"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 361
+  },
+  "at": "2026-10-05 20:16:43"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 20,
+    "y": 826,
+    "w": 180,
+    "h": 54,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 1368,
+    "y": 828,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/en-1440/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/en-1440/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/en-1440/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/en-1440/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/en-1440/03-auth-login.jpg",
+    "docs/qa/had-256/theme/en-1440/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/en-1440/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/en-1440/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/en-1440/05-details-empty.jpg",
+    "docs/qa/had-256/theme/en-1440/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/en-1440/06-details-errors.jpg",
+    "docs/qa/had-256/theme/en-1440/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/en-1440/07-details-filled.jpg",
+    "docs/qa/had-256/theme/en-1440/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/en-1440/08-photos.jpg",
+    "docs/qa/had-256/theme/en-1440/08-photos-view.jpg",
+    "docs/qa/had-256/theme/en-1440/09-preview.jpg",
+    "docs/qa/had-256/theme/en-1440/09-preview-view.jpg",
+    "docs/qa/had-256/theme/en-1440/10-published.jpg",
+    "docs/qa/had-256/theme/en-1440/10-published-view.jpg",
+    "docs/qa/had-256/theme/en-1440/11-my-listings.jpg",
+    "docs/qa/had-256/theme/en-1440/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/en-1440/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/en-1440/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/en-1440/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/en-1440/13-saved-draft-view.jpg"
+   ]
+  },
+  "at": "2026-10-05 20:29:11"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 20,
+    "y": 826,
+    "w": 180,
+    "h": 54,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 1368,
+    "y": 828,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/he-1440/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/he-1440/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/he-1440/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/he-1440/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/he-1440/03-auth-login.jpg",
+    "docs/qa/had-256/theme/he-1440/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/he-1440/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/he-1440/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/he-1440/05-details-empty.jpg",
+    "docs/qa/had-256/theme/he-1440/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/he-1440/06-details-errors.jpg",
+    "docs/qa/had-256/theme/he-1440/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/he-1440/07-details-filled.jpg",
+    "docs/qa/had-256/theme/he-1440/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/he-1440/08-photos.jpg",
+    "docs/qa/had-256/theme/he-1440/08-photos-view.jpg",
+    "docs/qa/had-256/theme/he-1440/09-preview.jpg",
+    "docs/qa/had-256/theme/he-1440/09-preview-view.jpg",
+    "docs/qa/had-256/theme/he-1440/10-published.jpg",
+    "docs/qa/had-256/theme/he-1440/10-published-view.jpg",
+    "docs/qa/had-256/theme/he-1440/11-my-listings.jpg",
+    "docs/qa/had-256/theme/he-1440/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/he-1440/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/he-1440/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/he-1440/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/he-1440/13-saved-draft-view.jpg"
+   ]
+  },
+  "at": "2026-10-05 20:18:39"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 612,
+    "w": 165,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 254,
+    "y": 674,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": []
+  },
+  "at": "2026-10-05 20:20:44"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 612,
+    "w": 165,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 254,
+    "y": 674,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": []
+  },
+  "at": "2026-10-05 20:12:49"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 716,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 324,
+    "y": 778,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/en-390/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/en-390/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/en-390/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/en-390/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/en-390/03-auth-login.jpg",
+    "docs/qa/had-256/theme/en-390/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/en-390/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/en-390/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/en-390/05-details-empty.jpg",
+    "docs/qa/had-256/theme/en-390/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/en-390/06-details-errors.jpg",
+    "docs/qa/had-256/theme/en-390/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/en-390/07-details-filled.jpg",
+    "docs/qa/had-256/theme/en-390/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/en-390/08-photos.jpg",
+    "docs/qa/had-256/theme/en-390/08-photos-view.jpg",
+    "docs/qa/had-256/theme/en-390/09-preview.jpg",
+    "docs/qa/had-256/theme/en-390/09-preview-view.jpg",
+    "docs/qa/had-256/theme/en-390/10-published.jpg",
+    "docs/qa/had-256/theme/en-390/10-published-view.jpg",
+    "docs/qa/had-256/theme/en-390/11-my-listings.jpg",
+    "docs/qa/had-256/theme/en-390/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/en-390/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/en-390/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/en-390/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/en-390/13-saved-draft-view.jpg"
+   ]
+  },
+  "at": "2026-10-05 20:24:31"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 716,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 324,
+    "y": 778,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/he-390/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/he-390/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/he-390/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/he-390/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/he-390/03-auth-login.jpg",
+    "docs/qa/had-256/theme/he-390/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/he-390/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/he-390/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/he-390/05-details-empty.jpg",
+    "docs/qa/had-256/theme/he-390/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/he-390/06-details-errors.jpg",
+    "docs/qa/had-256/theme/he-390/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/he-390/07-details-filled.jpg",
+    "docs/qa/had-256/theme/he-390/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/he-390/08-photos.jpg",
+    "docs/qa/had-256/theme/he-390/08-photos-view.jpg",
+    "docs/qa/had-256/theme/he-390/09-preview.jpg",
+    "docs/qa/had-256/theme/he-390/09-preview-view.jpg",
+    "docs/qa/had-256/theme/he-390/10-published.jpg",
+    "docs/qa/had-256/theme/he-390/10-published-view.jpg",
+    "docs/qa/had-256/theme/he-390/11-my-listings.jpg",
+    "docs/qa/had-256/theme/he-390/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/he-390/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/he-390/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/he-390/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/he-390/13-saved-draft-view.jpg"
+   ]
+  },
+  "at": "2026-10-05 20:14:49"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 787,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 346,
+    "y": 849,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": []
+  },
+  "at": "2026-10-05 20:27:02"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 787,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 346,
+    "y": 849,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": []
+  },
+  "at": "2026-10-05 20:16:43"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"Sign in List your property List your property, owner to buye\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:29:11"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"כניסה פרסום מודעה מבעלים מפרסמים את הנכס שלכם פותחים חשבון ב\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:18:39"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"Sign in List your property List your property, owner to buye\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:20:44"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"כניסה פרסום מודעה מבעלים מפרסמים את הנכס שלכם פותחים חשבון ב\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:12:49"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"Sign in List your property List your property, owner to buye\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:24:31"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"כניסה פרסום מודעה מבעלים מפרסמים את הנכס שלכם פותחים חשבון ב\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:14:49"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"Sign in List your property List your property, owner to buye\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:27:02"
+ },
+ {
+  "id": "T4",
+  "variant": "theme",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"כניסה פרסום מודעה מבעלים מפרסמים את הנכס שלכם פותחים חשבון ב\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:16:43"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "my-listings": [
+     {
+      "el": "button \"Edit\"",
+      "under": "#nlcta",
+      "area": 88,
+      "share": "3%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:29:22"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {},
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:18:45"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "published": [
+     {
+      "el": "button \"Copy\"",
+      "under": "#nla11y-btn",
+      "area": 704,
+      "share": "22%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "a \"דירת 4 חדרים בשכונת הדוגמה\"",
+      "under": "#nla11y-btn",
+      "area": 13,
+      "share": "0%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {
+    "details-empty": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 6685
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 6685
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 5079
+     }
+    ]
+   },
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:20:51"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "button \"פתיחת חשבון\"",
+      "under": "#nla11y-btn",
+      "area": 805,
+      "share": "17%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "button \"פתיחת חשבון\"",
+      "under": "#nla11y-btn",
+      "area": 805,
+      "share": "17%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "button \"פתיחת חשבון\"",
+      "under": "#nla11y-btn",
+      "area": 805,
+      "share": "17%"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "button \"פתיחת חשבון\"",
+      "under": "#nla11y-btn",
+      "area": 805,
+      "share": "17%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {
+    "details-empty": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 2288
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 2254
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 2329
+     }
+    ]
+   },
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:12:53"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "button \"Open an account\"",
+      "under": "#nlcta",
+      "area": 2363,
+      "share": "39%"
+     },
+     {
+      "el": "input#j-name \"\"",
+      "under": "#nla11y-btn",
+      "area": 678,
+      "share": "5%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "button \"Open an account\"",
+      "under": "#nlcta",
+      "area": 2363,
+      "share": "39%"
+     },
+     {
+      "el": "input#j-name \"Dana\"",
+      "under": "#nla11y-btn",
+      "area": 678,
+      "share": "5%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "button \"Open an account\"",
+      "under": "#nlcta",
+      "area": 2363,
+      "share": "39%"
+     },
+     {
+      "el": "input#j-mail2 \"dana.sample@example.test\"",
+      "under": "#nla11y-btn",
+      "area": 678,
+      "share": "5%"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "button \"Open an account\"",
+      "under": "#nlcta",
+      "area": 2363,
+      "share": "39%"
+     }
+    ],
+    "details-errors": [
+     {
+      "el": "a \"Deal type\"",
+      "under": "#nlcta",
+      "area": 67,
+      "share": "5%"
+     }
+    ],
+    "details-filled": [
+     {
+      "el": "a \"Deal type\"",
+      "under": "#nlcta",
+      "area": 67,
+      "share": "5%"
+     }
+    ],
+    "published": [
+     {
+      "el": "a \"To the listing\"",
+      "under": "#nlcta",
+      "area": 545,
+      "share": "4%"
+     },
+     {
+      "el": "a \"To the listing\"",
+      "under": "#nla11y-btn",
+      "area": 539,
+      "share": "4%"
+     },
+     {
+      "el": "a \"Share on WhatsApp\"",
+      "under": "#nla11y-btn",
+      "area": 91,
+      "share": "1%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "button \"Remove from the site\"",
+      "under": "#nla11y-btn",
+      "area": 44,
+      "share": "1%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {
+    "details-empty": [
+     {
+      "dir": "fwd",
+      "el": "input#j-owner-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 123
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "fwd",
+      "el": "input#j-owner-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 89
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 6652
+     },
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nla11y-btn",
+      "label_area": 712
+     }
+    ]
+   },
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:24:36"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "input#j-name \"\"",
+      "under": "#nlcta",
+      "area": 1168,
+      "share": "8%"
+     },
+     {
+      "el": "input#j-name \"\"",
+      "under": "#nla11y-btn",
+      "area": 408,
+      "share": "3%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "input#j-name \"דנה\"",
+      "under": "#nlcta",
+      "area": 1168,
+      "share": "8%"
+     },
+     {
+      "el": "input#j-name \"דנה\"",
+      "under": "#nla11y-btn",
+      "area": 408,
+      "share": "3%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "input#j-mail2 \"dana.sample@example.test\"",
+      "under": "#nlcta",
+      "area": 1168,
+      "share": "8%"
+     },
+     {
+      "el": "input#j-mail2 \"dana.sample@example.test\"",
+      "under": "#nla11y-btn",
+      "area": 408,
+      "share": "3%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "button \"מכירה\"",
+      "under": "#nla11y-btn",
+      "area": 524,
+      "share": "16%"
+     }
+    ],
+    "published": [
+     {
+      "el": "a \"לעמוד המודעה\"",
+      "under": "#nlcta",
+      "area": 545,
+      "share": "4%"
+     },
+     {
+      "el": "a \"לעמוד המודעה\"",
+      "under": "#nla11y-btn",
+      "area": 539,
+      "share": "4%"
+     },
+     {
+      "el": "a \"שיתוף בוואטסאפ\"",
+      "under": "#nla11y-btn",
+      "area": 91,
+      "share": "1%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "a \"דירת 4 חדרים בשכונת הדוגמה\"",
+      "under": "#nlcta",
+      "area": 1109,
+      "share": "20%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:14:54"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "input#j-name \"\"",
+      "under": "#nlcta",
+      "area": 6245,
+      "share": "42%"
+     },
+     {
+      "el": "input#j-mail \"\"",
+      "under": "#nla11y-btn",
+      "area": 308,
+      "share": "2%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "input#j-name \"Dana\"",
+      "under": "#nlcta",
+      "area": 6245,
+      "share": "42%"
+     },
+     {
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "under": "#nla11y-btn",
+      "area": 308,
+      "share": "2%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "input#j-mail2 \"dana.sample@example.test\"",
+      "under": "#nlcta",
+      "area": 6245,
+      "share": "42%"
+     },
+     {
+      "el": "button \"Show\"",
+      "under": "#nla11y-btn",
+      "area": 308,
+      "share": "9%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "button \"For sale\"",
+      "under": "#nlcta",
+      "area": 2412,
+      "share": "62%"
+     },
+     {
+      "el": "button \"For rent\"",
+      "under": "#nlcta",
+      "area": 974,
+      "share": "25%"
+     },
+     {
+      "el": "select#j-type \"Choose\nApartment\nGarden apartm\"",
+      "under": "#nla11y-btn",
+      "area": 606,
+      "share": "4%"
+     }
+    ],
+    "details-errors": [
+     {
+      "el": "a \"Deal type\"",
+      "under": "#nlcta",
+      "area": 5,
+      "share": "0%"
+     },
+     {
+      "el": "a \"Property type\"",
+      "under": "#nlcta",
+      "area": 1958,
+      "share": "100%"
+     },
+     {
+      "el": "a \"City\"",
+      "under": "#nlcta",
+      "area": 15,
+      "share": "3%"
+     }
+    ],
+    "details-filled": [
+     {
+      "el": "a \"Deal type\"",
+      "under": "#nlcta",
+      "area": 5,
+      "share": "0%"
+     },
+     {
+      "el": "a \"Property type\"",
+      "under": "#nlcta",
+      "area": 1958,
+      "share": "100%"
+     },
+     {
+      "el": "a \"City\"",
+      "under": "#nlcta",
+      "area": 15,
+      "share": "3%"
+     }
+    ],
+    "photos": [
+     {
+      "el": "button#j-add \"Add photos\"",
+      "under": "#nlcta",
+      "area": 907,
+      "share": "14%"
+     }
+    ],
+    "published": [
+     {
+      "el": "a \"To the listing\"",
+      "under": "#nlcta",
+      "area": 3729,
+      "share": "23%"
+     },
+     {
+      "el": "a \"Share on WhatsApp\"",
+      "under": "#nlcta",
+      "area": 1592,
+      "share": "10%"
+     },
+     {
+      "el": "a \"Share on WhatsApp\"",
+      "under": "#nla11y-btn",
+      "area": 420,
+      "share": "3%"
+     },
+     {
+      "el": "button \"My listings\"",
+      "under": "#nla11y-btn",
+      "area": 210,
+      "share": "2%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "button \"Edit\"",
+      "under": "#nlcta",
+      "area": 540,
+      "share": "19%"
+     },
+     {
+      "el": "button \"Update price\"",
+      "under": "#nlcta",
+      "area": 561,
+      "share": "10%"
+     },
+     {
+      "el": "button \"Remove from the site\"",
+      "under": "#nlcta",
+      "area": 4671,
+      "share": "64%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {
+    "details-filled": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 6652
+     },
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nla11y-btn",
+      "label_area": 408
+     }
+    ]
+   },
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:27:11"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "input#j-mail \"\"",
+      "under": "#nlcta",
+      "area": 1509,
+      "share": "10%"
+     },
+     {
+      "el": "input#j-mail \"\"",
+      "under": "#nla11y-btn",
+      "area": 370,
+      "share": "2%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "under": "#nlcta",
+      "area": 1509,
+      "share": "10%"
+     },
+     {
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "under": "#nla11y-btn",
+      "area": 370,
+      "share": "2%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "input#j-pw2 \"\"",
+      "under": "#nlcta",
+      "area": 625,
+      "share": "6%"
+     },
+     {
+      "el": "input#j-pw2 \"\"",
+      "under": "#nla11y-btn",
+      "area": 370,
+      "share": "3%"
+     },
+     {
+      "el": "button \"הצגה\"",
+      "under": "#nlcta",
+      "area": 793,
+      "share": "24%"
+     },
+     {
+      "el": "button#j-login-go \"כניסה\"",
+      "under": "#nla11y-btn",
+      "area": 140,
+      "share": "1%"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "input#j-mail3 \"dana.sample@example.test\"",
+      "under": "#nla11y-btn",
+      "area": 176,
+      "share": "1%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "select#j-type \"בחירה\nדירה\nדירת גן\nפנטהאוז\nדופ\"",
+      "under": "#nla11y-btn",
+      "area": 589,
+      "share": "4%"
+     }
+    ],
+    "photos": [
+     {
+      "el": "button#j-add \"הוספת תמונות\"",
+      "under": "#nlcta",
+      "area": 2340,
+      "share": "32%"
+     }
+    ],
+    "published": [
+     {
+      "el": "a \"לעמוד המודעה\"",
+      "under": "#nlcta",
+      "area": 3729,
+      "share": "23%"
+     },
+     {
+      "el": "a \"שיתוף בוואטסאפ\"",
+      "under": "#nlcta",
+      "area": 1592,
+      "share": "10%"
+     },
+     {
+      "el": "a \"שיתוף בוואטסאפ\"",
+      "under": "#nla11y-btn",
+      "area": 420,
+      "share": "3%"
+     },
+     {
+      "el": "button \"המודעות שלי\"",
+      "under": "#nla11y-btn",
+      "area": 210,
+      "share": "2%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "button \"עדכון מחיר\"",
+      "under": "#nlcta",
+      "area": 59,
+      "share": "1%"
+     },
+     {
+      "el": "button \"סימון כנמכרה\"",
+      "under": "#nlcta",
+      "area": 5156,
+      "share": "100%"
+     },
+     {
+      "el": "button \"הסרה מהאתר\"",
+      "under": "#nla11y-btn",
+      "area": 740,
+      "share": "16%"
+     }
+    ],
+    "saved-draft": [
+     {
+      "el": "button \"המשך מהמקום שעצרתם\"",
+      "under": "#nla11y-btn",
+      "area": 374,
+      "share": "2%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   }
+  },
+  "at": "2026-10-05 20:16:48"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 469
+  },
+  "at": "2026-10-05 20:29:22"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 467
+  },
+  "at": "2026-10-05 20:18:45"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 362
+  },
+  "at": "2026-10-05 20:20:51"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 361
+  },
+  "at": "2026-10-05 20:12:53"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 362
+  },
+  "at": "2026-10-05 20:24:36"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 361
+  },
+  "at": "2026-10-05 20:14:54"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 362
+  },
+  "at": "2026-10-05 20:27:11"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 361
+  },
+  "at": "2026-10-05 20:16:48"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 20,
+    "y": 826,
+    "w": 180,
+    "h": 54,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 1368,
+    "y": 828,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/03-auth-login.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/05-details-empty.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/06-details-errors.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/07-details-filled.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/08-photos.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/08-photos-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/09-preview.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/09-preview-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/10-published.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/10-published-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/11-my-listings.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-1440/13-saved-draft-view.jpg"
+   ]
+  },
+  "at": "2026-10-05 20:29:22"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 20,
+    "y": 826,
+    "w": 180,
+    "h": 54,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 1368,
+    "y": 828,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/03-auth-login.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/05-details-empty.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/06-details-errors.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/07-details-filled.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/08-photos.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/08-photos-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/09-preview.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/09-preview-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/10-published.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/10-published-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/11-my-listings.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-1440/13-saved-draft-view.jpg"
+   ]
+  },
+  "at": "2026-10-05 20:18:45"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 612,
+    "w": 165,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 254,
+    "y": 674,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": []
+  },
+  "at": "2026-10-05 20:20:51"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 612,
+    "w": 165,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 254,
+    "y": 674,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": []
+  },
+  "at": "2026-10-05 20:12:53"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 716,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 324,
+    "y": 778,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/03-auth-login.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/05-details-empty.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/06-details-errors.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/07-details-filled.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/08-photos.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/08-photos-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/09-preview.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/09-preview-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/10-published.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/10-published-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/11-my-listings.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/en-390/13-saved-draft-view.jpg"
+   ]
+  },
+  "at": "2026-10-05 20:24:36"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 716,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 324,
+    "y": 778,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/03-auth-login.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/05-details-empty.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/06-details-errors.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/07-details-filled.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/08-photos.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/08-photos-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/09-preview.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/09-preview-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/10-published.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/10-published-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/11-my-listings.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.1/he-390/13-saved-draft-view.jpg"
+   ]
+  },
+  "at": "2026-10-05 20:14:54"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 787,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 346,
+    "y": 849,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": []
+  },
+  "at": "2026-10-05 20:27:11"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 787,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 346,
+    "y": 849,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": []
+  },
+  "at": "2026-10-05 20:16:48"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"Sign in List your property List your property, owner to buye\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:29:22"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"כניסה פרסום מודעה מבעלים מפרסמים את הנכס שלכם פותחים חשבון ב\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:18:45"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"Sign in List your property List your property, owner to buye\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:20:51"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"כניסה פרסום מודעה מבעלים מפרסמים את הנכס שלכם פותחים חשבון ב\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:12:53"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"Sign in List your property List your property, owner to buye\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:24:36"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"כניסה פרסום מודעה מבעלים מפרסמים את הנכס שלכם פותחים חשבון ב\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:14:54"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"Sign in List your property List your property, owner to buye\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:27:11"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.1",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והע\"",
+    "section.nlj#nlj-app \"כניסה פרסום מודעה מבעלים מפרסמים את הנכס שלכם פותחים חשבון ב\"",
+    "section.nlpub-how \"איך זה עובד 1 פותחים חשבון שם ומייל. בלי כרטיס אשראי ובלי לח\""
+   ],
+   "site_chrome_under (info, site-wide)": {}
+  },
+  "at": "2026-10-05 20:16:48"
  }
 ]

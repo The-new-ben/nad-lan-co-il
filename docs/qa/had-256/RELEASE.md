@@ -42,10 +42,11 @@ Generated from git by `scripts/had-256/make_release.py` (never edited by hand), 
   Output on 5.10: `x-broker-drop e7736ef75fdf -> fb081ee5e3a0 (8 hunks), snippet 707 f04dbbf8d99d -> 14acb521b9cf`.
 
 The 8 hunks (`git diff 6e9cf930 2ce0a741 -- plugins/nadlan-config/inc/broker-drop.php`): version 1.1.3 -> 1.1.4 (@30);
-the lock / fence / claim block and the `nl_drop_build` wrapper (@2023, +201); claim + `wp_update_post` instead of the
-listing insert (@2053); the twin claim, fences before meta and render (@2123); `nl_result` / `nl_state` through
-`nl_drop_fenced_meta` (@2150); the result state read from the post status (@2165); the photo cleaner block with
-`nl_drop_strip_gps` kept as a wrapper (@2189, +208); the busy answer 409 in `nl_drop_rest_build` (@2286).
+the lock / fence / claim block and the `nl_drop_build` wrapper, the old body renamed `nl_drop_build_locked` (@2023,
++201); the listing claimed and written by `wp_update_post` instead of inserted, fences before content and meta (@2053);
+the language twin claimed the same way (@2123); the fence before the page render and the result state read from the
+post status (@2150); `nl_result` / `nl_state` committed through `nl_drop_fenced_meta` (@2165); the photo cleaner block
+with `nl_drop_strip_gps` kept as a wrapper (@2189, +208); the busy answer 409 in `nl_drop_rest_build` (@2286).
 
 ## How main runs it (the deploy415 / deploydrop.py pattern; no runner was run by this line)
 
@@ -126,3 +127,35 @@ the auth salt makes unpublished draft photos unreadable (published photos are or
    `nl_att_*`, `nl_owner_ck_*`, sealed photos in the private folder. Nothing is deleted by a rollback.
 5. A fatal right after a write: Code Snippets' safe mode (`?snippets-safe-mode=1` in wp-admin) or the uPress file
    manager; then step 1-3.
+
+## Before the release: blockers and decisions (honest list)
+
+1. **Maya's QA of snapshot 3 has not run.** Nothing here is acceptance.
+2. **MySQL proof not run** (open item 1). The kit ran on the SQLite theme bench only (dry run: 44/44, clean-up 0,
+   anonymous 401, wrong token 403: `mysql-claim-check.sqlite-dryrun.json`). No local MySQL / MariaDB / Docker / WSL
+   exists on this machine, so the first MySQL run is main's, on the live database. Expect `same_value_update_rows` 0
+   there (MySQL counts changed rows; the code handles it) and `meta_value_compare_ignores_case` true (a `_ci` collation;
+   harmless, every save bumps `rev`).
+3. **Snapshot 3 fails the theme bench on Shift+Tab** (`THEME.md`): controls scrolled up to land under the live sticky
+   header (WCAG 2.4.11), every width, he and en. Fixed in candidate `e28df264` (owner-wizard 2.0.1, +12/-7 lines): the
+   same theme suite passes 32/32 on 127.0.0.1:9406 (2,448 focus events, none covered).
+   Releasing 2.0.1 instead: `python scripts/had-256/make_release.py --snap e28df264` rewrites the module pinned to it
+   (x-broker-drop is the same; snippet 707 body `0affcdd05fc0faf8af0cf3f0e6623a0d7479516a5e4f6ac698c9d0953f43846b`, file
+   `68609da31337ac832be825a7366bff06b510ebd664894d9d94c30b465ab20345`; proven by its self-check), and the need-strings read
+   `data-v="2.0.1"` / `"v":"2.0.1"`. Maya would then QA 2.0.1 (a fourth snapshot), not 3. main and Ben decide.
+4. **Page copy and the English wrapper** (`THEME.md`, "Seen on the screenshots"): "WhatsApp and call buttons" promised
+   unconditionally (page 4958 + the plugin's "how it works"), two "how it works" boxes, ?lang=en inside a Hebrew page.
+   Copy is Ben's; none of it is in this package.
+5. **The stale-write window** (README open risk 1): a run that stalls longer than the lock TTL (420 s, 7 minutes) right
+   after a fence check and then resumes can make ONE check-then-write on the single claimed post (title, meta, page
+   HTML or photo copies) with its own older revision. It can never create a second listing, change the status or commit
+   a result; the next save or publish rewrites it. Closing it fully needs every write fenced inside the database.
+6. **HEIC**: refused where Imagick cannot read HEIC (the bench's cannot); the live server's Imagick/GD were not probed.
+   A cheap pre-check for the runner: one bridge op returning `Imagick::queryFormats('HEI*')`, `gd_info()` and
+   `function_exists('sodium_crypto_secretbox')` (2.0 refuses rotated photos without GD/Imagick and needs libsodium to
+   seal; the healthcheck's `sealed` must be true).
+7. **Cached copies**: public photo copies are deleted before a listing leaves `publish` and purged from LiteSpeed;
+   a CDN or a browser may still hold one it already fetched. The signed-in page is `no-store`; the anonymous
+   `/post-listing/` stays cacheable (purge it after the write and after a rollback).
+8. **Recovery mail** depends on the live site's outbound mail (auth.php noted none on 12.7.2026): not verifiable here.
+9. **The 1.0 + 1.1.4 pair** exists for the seconds between the two writes; it was not drilled (see step 7 above).

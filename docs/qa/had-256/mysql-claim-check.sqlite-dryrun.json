@@ -1,0 +1,310 @@
+{
+ "note": "DRY RUN of docs/qa/had-256/mysql-claim-check.php on the SQLite theme bench (127.0.0.1:9405, WordPress Playground, mysql-on-sqlite). It exercises the kit code paths and its clean-up; it is NOT the MySQL proof (open item 1 stays open until main runs the kit on the live MySQL/MariaDB).",
+ "anonymous": [
+  401,
+  {
+   "code": "rest_forbidden",
+   "message": "Sorry, you are not allowed to do that.",
+   "data": {
+    "status": 401
+   }
+  }
+ ],
+ "admin_wrong_token": [
+  403,
+  {
+   "code": "forbidden",
+   "message": "token",
+   "data": {
+    "status": 403
+   }
+  }
+ ],
+ "run1_status": 200,
+ "run1": {
+  "kit": "had256-mysql-claim-check v1",
+  "snapshot": "2ce0a741",
+  "run": "fb734e9b07fb",
+  "at_gmt": "2026-10-05T17:08:22+00:00",
+  "checks": {
+   "index.option_name_unique": {
+    "got": true,
+    "want": true,
+    "pass": true,
+    "note": "INSERT IGNORE is a claim only on a UNIQUE option_name"
+   },
+   "setup.probe_post": {
+    "got": true,
+    "want": true,
+    "pass": true
+   },
+   "lock.insert_winner": {
+    "got": 1,
+    "want": 1,
+    "pass": true
+   },
+   "lock.insert_loser": {
+    "got": 0,
+    "want": 0,
+    "pass": true
+   },
+   "lock.row_is_winners": {
+    "got": true,
+    "want": true,
+    "pass": true,
+    "note": "broker-drop.php:2070 read"
+   },
+   "lock.stamp_own_seed": {
+    "got": 1,
+    "want": 1,
+    "pass": true
+   },
+   "lock.stamp_stale_seed": {
+    "got": 0,
+    "want": 0,
+    "pass": true,
+    "note": "the seed is gone: nothing written"
+   },
+   "lock.row_after_stamp": {
+    "got": true,
+    "want": true,
+    "pass": true
+   },
+   "fenced_meta.own_lock": {
+    "got": 1,
+    "want": 1,
+    "pass": true
+   },
+   "fenced_meta.same_value_own_lock": {
+    "got": 1,
+    "want": [
+     0,
+     1
+    ],
+    "pass": true,
+    "note": "MySQL counts changed rows: 0 here, so the code re-checks the fence (broker-drop.php:2148) and accepts; SQLite says 1"
+   },
+   "fenced_meta.stale_token": {
+    "got": 0,
+    "want": 0,
+    "pass": true,
+    "note": "a run holding an older lock value commits nothing"
+   },
+   "fenced_meta.value_kept": {
+    "got": true,
+    "want": true,
+    "pass": true
+   },
+   "takeover.delete_with_stale_value": {
+    "got": 0,
+    "want": 0,
+    "pass": true,
+    "note": "a taker that read an older value deletes nothing"
+   },
+   "takeover.delete_with_current_value": {
+    "got": 1,
+    "want": 1,
+    "pass": true
+   },
+   "takeover.insert": {
+    "got": 1,
+    "want": 1,
+    "pass": true
+   },
+   "takeover.second_taker_loses": {
+    "got": 0,
+    "want": 0,
+    "pass": true
+   },
+   "takeover.stamp": {
+    "got": 1,
+    "want": 1,
+    "pass": true
+   },
+   "fenced_meta.old_holder_after_takeover": {
+    "got": 0,
+    "want": 0,
+    "pass": true,
+    "note": "MUST be 0: the run that lost the lock cannot commit"
+   },
+   "fenced_meta.new_holder": {
+    "got": 1,
+    "want": 1,
+    "pass": true
+   },
+   "status.stale_token_first_publish_shape": {
+    "got": 0,
+    "want": 0,
+    "pass": true,
+    "note": "MUST be 0 (the $first shape with post_date)"
+   },
+   "status.stale_token_plain_shape": {
+    "got": 0,
+    "want": 0,
+    "pass": true,
+    "note": "MUST be 0"
+   },
+   "status.unchanged_after_stale": {
+    "got": "draft",
+    "want": "draft",
+    "pass": true
+   },
+   "status.own_lock_first_shape": {
+    "got": 1,
+    "want": 1,
+    "pass": true
+   },
+   "status.now": {
+    "got": "pending",
+    "want": "pending",
+    "pass": true
+   },
+   "claim.winner": {
+    "got": 1,
+    "want": 1,
+    "pass": true
+   },
+   "claim.loser": {
+    "got": 0,
+    "want": 0,
+    "pass": true
+   },
+   "claim.read_is_winners_post": {
+    "got": 111,
+    "want": 111,
+    "pass": true,
+    "note": "broker-drop.php:2165 read"
+   },
+   "cas.fresh_read": {
+    "got": 1,
+    "want": 1,
+    "pass": true
+   },
+   "cas.stale_read": {
+    "got": 0,
+    "want": 0,
+    "pass": true,
+    "note": "MUST be 0: the other tab saved first (409 + the server version)"
+   },
+   "cas.value_kept": {
+    "got": true,
+    "want": true,
+    "pass": true
+   },
+   "cas.case_only_difference": {
+    "got": 1,
+    "want": [
+     0,
+     1
+    ],
+    "pass": true,
+    "note": "1 = a *_ci collation: harmless here, a stale text always differs in its rev digits"
+   },
+   "cas.utf8mb4_emoji": {
+    "got": 1,
+    "want": 1,
+    "pass": true,
+    "note": "false here = the column is not utf8mb4: every save with an emoji would answer as a conflict"
+   },
+   "cas.utf8mb4_roundtrip": {
+    "got": true,
+    "want": true,
+    "pass": true
+   },
+   "cas.large_text": {
+    "got": 1,
+    "want": 1,
+    "pass": true,
+    "note": "23575 bytes"
+   },
+   "cas.large_text_stale": {
+    "got": 0,
+    "want": 0,
+    "pass": true
+   },
+   "create_key.winner": {
+    "got": 1,
+    "want": 1,
+    "pass": true
+   },
+   "create_key.double_tap": {
+    "got": 0,
+    "want": 0,
+    "pass": true
+   },
+   "create_key.resolve": {
+    "got": 1,
+    "want": 1,
+    "pass": true
+   },
+   "att.clear_unfinished_claim": {
+    "got": 1,
+    "want": 1,
+    "pass": true
+   },
+   "att.claim_winner": {
+    "got": 1,
+    "want": 1,
+    "pass": true
+   },
+   "att.finished_claim_kept": {
+    "got": 0,
+    "want": 0,
+    "pass": true
+   },
+   "att.claim_loser": {
+    "got": 0,
+    "want": 0,
+    "pass": true
+   },
+   "release.stale_value": {
+    "got": 0,
+    "want": 0,
+    "pass": true
+   },
+   "release.own_value": {
+    "got": 1,
+    "want": 1,
+    "pass": true
+   }
+  },
+  "info": {
+   "server_version": "8.0.38-mysql-on-sqlite-3.0.2",
+   "version_comment": "MySQL on SQLite",
+   "db_server_info": "8.0.38-mysql-on-sqlite-3.0.2",
+   "autocommit": "",
+   "isolation": "",
+   "sql_mode": "NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION",
+   "wpdb_charset": "utf8mb4 / ",
+   "ext_object_cache": false,
+   "engine_options": "InnoDB / utf8mb4_0900_ai_ci",
+   "engine_postmeta": "InnoDB / utf8mb4_0900_ai_ci",
+   "engine_posts": "InnoDB / utf8mb4_0900_ai_ci",
+   "col_option_value": "longtext / utf8mb4_0900_ai_ci",
+   "col_meta_value": "longtext / utf8mb4_0900_ai_ci",
+   "col_post_status": "varchar(20) / utf8mb4_0900_ai_ci",
+   "probe_post": 67,
+   "same_value_update_rows": 1,
+   "conn2": "no second connection (not MySQL, or it could not be opened); the single-connection checks still hold",
+   "meta_value_compare_ignores_case": true
+  },
+  "cleanup": {
+   "options_left": 0,
+   "postmeta_left": 0,
+   "posts_left": 0,
+   "probe_type_left_anywhere": 0
+  },
+  "failures": 0,
+  "all_pass": true,
+  "ms": 210
+ },
+ "run2_status": 200,
+ "run2_all_pass": true,
+ "run2_failures": 0,
+ "run2_cleanup": {
+  "options_left": 0,
+  "postmeta_left": 0,
+  "posts_left": 0,
+  "probe_type_left_anywhere": 0
+ }
+}

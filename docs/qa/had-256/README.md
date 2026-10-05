@@ -22,6 +22,12 @@ Playground (SQLite) run. Main is the only publisher. Results: `RESULTS.md` (gene
 | snapshot 2 (P0/P1 a-d fixed) | `c2e4cd31` | 9403 | `QA-SNAPSHOT-2.md` |
 | snapshot 3 (everything below) | see `QA-SNAPSHOT-3.md` | 9404 | `QA-SNAPSHOT-3.md` |
 | builder's latest | see `git log` | 9401 | not for QA |
+| theme bench, snapshot 3 in the real theme + plugin | `2ce0a741` | 9405 | `THEME.md` (5.10) |
+| theme bench, fix candidate owner-wizard 2.0.1 | `e28df264` | 9406 | `THEME.md` (not a QA snapshot) |
+
+Release package (main only): `RELEASE.md`, `scripts/project-stage/had256_release.py`. MySQL proof kit (open item 1):
+`mysql-claim-check.php` (dry run on the SQLite bench: `mysql-claim-check.sqlite-dryrun.json`, all 44 checks pass; the
+MySQL run itself is main's, once, on the live database).
 
 ## What was built
 
@@ -138,7 +144,10 @@ Every row was run on real WordPress (Playground) unless it says otherwise; no ro
 2. **Public photo revocation and caches.** Public copies are deleted before a listing leaves `publish` and the image
    URLs are purged from LiteSpeed; a CDN or a browser may still hold a copy it already fetched.
 3. **Recovery mail on the live site** depends on working outbound mail (see above). Not verifiable on the bench.
-4. **Theme integration** (header, footer, skin, page template) is not verified on the bench.
+4. **Theme integration**: run on 5.10 (`THEME.md`, 127.0.0.1:9405, the real themes, plugin and snippets): one H1,
+   header, footer, bar and accessibility button, contrast, targets, overflow all pass; **Shift+Tab puts controls under
+   the live sticky header on every width (snapshot 3 fails this)**: fixed in candidate 2.0.1 (`e28df264`), not in
+   snapshot 3. Copy and ?lang=en wrapper findings are listed there for Maya and Ben.
 5. **HEIC**: refused on any server whose Imagick cannot read HEIC (the bench's cannot); a real HEIC decode was not run.
 6. **The phone keyboard** (L14 on a device) and Safari were not run; headless Chrome only.
 7. **Snippet 699 / the broker sign-up** and the broker `/drop/<token>/` page UI were not run end to end; the broker
