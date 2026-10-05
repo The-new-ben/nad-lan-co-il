@@ -28,16 +28,6 @@ def adv_php():
 define( 'CYPX_ADV_SLUG', 'advertise' );
 
 /**
- * Hebrew by default; English for ?lang=en and the site's other non-Hebrew languages.
- *
- * @return string he|en
- */
-function cypx_lang() {
-	$l = isset( $_GET['lang'] ) ? sanitize_key( wp_unslash( $_GET['lang'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
-	return ( '' === $l || 'he' === $l ) ? 'he' : 'en';
-}
-
-/**
  * The advertiser page id (0 until it exists).
  *
  * @return int

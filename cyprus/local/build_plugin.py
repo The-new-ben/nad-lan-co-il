@@ -106,6 +106,8 @@ def main():
     ap.add_argument('--world-dir', help='the walkable 3D area folder (cyprus/local/world3d); adds the 3D card and full-screen tour')
     ap.add_argument('--area-project', action='append', default=[], metavar='SLUG=DIR',
                     help='another mapped project page that gets only the "what is close" section (atlas slug = its private area folder)')
+    ap.add_argument('--with-advertise', action='store_true',
+                    help='also ship the old "Advertise with us" page and button; OFF: since 4.10.2026 they live in the separate cyprus-advertisers plugin')
     ap.add_argument('--area-dir', help='the private area folder of the project (places.geojson + drive-osrm.json + area-spec.json); adds the server-rendered "what is close" section')
     a = ap.parse_args()
     extras = []  # (atlas slug, bundle folder, area folder) of the area-only project pages
@@ -212,7 +214,7 @@ def main():
     php = f"""<?php
 /**
  * Plugin Name: CY Project Experience
- * Description: Interactive site plan, floor plans and home comparison, the "what is close" section and long-form guides on selected Cyprus Atlas project pages (loaded only there), and the "Advertise with us" page and button.
+ * Description: Interactive site plan, floor plans and home comparison, the "what is close" section, the 3D area tour and long-form guides on selected Cyprus Atlas project pages (loaded only there).
  * Version: {VERSION}
  * Requires at least: 6.5
  * Requires PHP: 7.4
@@ -225,6 +227,16 @@ if ( ! defined( 'ABSPATH' ) ) {{
 }}
 
 define( 'CYPX_VERSION', '{VERSION}' );
+
+/**
+ * Hebrew by default; English for ?lang=en and the site's other non-Hebrew languages.
+ *
+ * @return string he|en
+ */
+function cypx_lang() {{
+	$l = isset( $_GET['lang'] ) ? sanitize_key( wp_unslash( $_GET['lang'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
+	return ( '' === $l || 'he' === $l ) ? 'he' : 'en';
+}}
 
 /**
  * Atlas project slug => bundle folder under assets/ (the slug is known before import; the id is not).
@@ -260,7 +272,7 @@ add_action(
 	}}
 );
 """
-    php += ARTICLE_PHP + plugin_parts.adv_php() + plugin_parts.viewport_php()
+    php += ARTICLE_PHP + (plugin_parts.adv_php() if a.with_advertise else '') + plugin_parts.viewport_php()
     # ---------- write the plugin folder + zip ----------
     root_dir = os.path.join(a.out, SLUG)
     if os.path.isdir(root_dir):
@@ -278,7 +290,8 @@ add_action(
     io.open(os.path.join(bdir, 'app.css'), 'w', encoding='utf-8', newline='\n').write(css)
     for src, (dst, _) in IMAGES.items():
         shutil.copyfile(os.path.join(a.media_dir, src), os.path.join(bdir, dst))
-    plugin_parts.write_assets(root_dir, HERE)
+    if a.with_advertise:
+        plugin_parts.write_assets(root_dir, HERE)
     if a.area_dir:
         import area_html
         for lang, frag in area_html.build(os.path.join(a.area_dir, 'places.geojson'), os.path.join(a.area_dir, 'drive-osrm.json'),
@@ -296,8 +309,17 @@ add_action(
         for lang, frag in area_html.build(os.path.join(adir, 'places.geojson'), os.path.join(adir, 'drive-osrm.json'),
                                           os.path.join(adir, 'area-spec.json')).items():
             io.open(os.path.join(edir, f'area-{lang}.html'), 'w', encoding='utf-8', newline='\n').write(frag)
-        io.open(os.path.join(edir, 'app.css'), 'w', encoding='utf-8', newline='\n').write(area_html.AREA_CSS)
-        io.open(os.path.join(edir, 'app.js'), 'w', encoding='utf-8', newline='\n').write("(function(){'use strict';" + area_html.AREA_JS + "})();\n")
+        ecss, ejs = area_html.AREA_CSS, area_html.AREA_JS
+        if a.world_dir and os.path.isdir(os.path.join(adir, 'world')):  # its own 3D world: the card after the facts, the tour on request
+            import world_embed
+            launcher, card_css = world_embed.pack(a.world_dir, edir, os.path.join(adir, 'world'))
+            ecss += card_css
+            ejs = ("\nconst A=(window.CYPX&&window.CYPX.assets)||'';\n"
+                   "const lang=(document.documentElement.lang||'he').toLowerCase().startsWith('he')?'he':'en';\n"
+                   "const root=document.querySelector('#atlas-main .atlas-facts');\n"
+                   "if(root){" + launcher + "}\n") + ejs
+        io.open(os.path.join(edir, 'app.css'), 'w', encoding='utf-8', newline='\n').write(ecss)
+        io.open(os.path.join(edir, 'app.js'), 'w', encoding='utf-8', newline='\n').write("(function(){'use strict';" + ejs + "})();\n")
     if a.articles_dir:
         from article_html import to_html
         labels = {'he': ('rtl', 'מדריך מלא: וילות למכירה באגיוס אתנסיוס'), 'en': ('ltr', 'Full guide: villas for sale in Agios Athanasios')}

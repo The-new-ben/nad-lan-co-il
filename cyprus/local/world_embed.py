@@ -74,10 +74,11 @@ def markup(index_html):
     return m
 
 
-def launcher_js(m):
-    """Appended inside the project bundle's IIFE (uses its A, root and lang)."""
+def launcher_js(m, copy=None, text=None):
+    """Appended inside the project bundle's IIFE (uses its A, root and lang). copy: the card's words per language;
+    text: the viewer's own words for this project (title, lead, posterAlt, region, note), handed over in window.CYPX_W3."""
     return ("\n// The walkable 3D area: a card on the page; the 3D opens full-screen over the page, loaded only on request.\n"
-            "(function(){const A3=A+'world/',W=" + json.dumps(COPY, ensure_ascii=False) + "[lang==='he'?'he':'en'];\n"
+            "(function(){const A3=A+'world/',W=" + json.dumps(copy or COPY, ensure_ascii=False) + "[lang==='he'?'he':'en'];\n"
             " const card=document.createElement('section');card.className='cypx-w3card';card.setAttribute('aria-label',W.title);\n"
             " card.innerHTML='<img src=\"'+A3+'poster.svg\" alt=\"'+W.alt+'\" loading=\"lazy\" decoding=\"async\" width=\"960\" height=\"960\">'\n"
             "  +'<div><p class=\"eyebrow\">'+W.eyebrow+'</p><h2>'+W.title+'</h2><p>'+W.lead+'</p><button type=\"button\" class=\"cypx-w3go\">'+W.go+'</button><p class=\"small\">'+W.note+'</p></div>';\n"
@@ -88,7 +89,7 @@ def launcher_js(m):
             "  dlg=document.createElement('dialog');dlg.className='cypx-w3dlg';dlg.setAttribute('aria-label',W.dlg);\n"
             "  dlg.innerHTML=" + json.dumps(m, ensure_ascii=False) + ".replace(/__W3__/g,A3)+'<button type=\"button\" class=\"cypx-w3close\">×</button>';\n"
             "  document.body.append(dlg);const x=dlg.querySelector('.cypx-w3close');x.setAttribute('aria-label',W.close);x.addEventListener('click',()=>dlg.close());\n"
-            "  dlg.showModal();window.CYPX_W3={base:A3};\n"
+            "  dlg.showModal();window.CYPX_W3={base:A3,text:" + json.dumps(text or None, ensure_ascii=False) + "};\n"
             "  try{await import(A3+'world3d.js');const go=document.getElementById('w3-enter');if(go)go.click();}catch(e){dlg.close();}\n"
             " });\n"
             "})();\n")
@@ -107,15 +108,21 @@ CARD_CSS = ('.cypx-w3card{display:grid;grid-template-columns:minmax(0,320px) min
             '@media(max-width:700px){.cypx-w3card{grid-template-columns:1fr;padding:16px}.cypx-w3go{width:100%;justify-content:center}}')
 
 
-def pack(world_dir, bundle_dir):
-    """Copies the data, writes the adapted viewer, returns (launcher js, card css)."""
+def pack(world_dir, bundle_dir, data_dir=None):
+    """Copies the data, writes the adapted viewer, returns (launcher js, card css).
+    world_dir holds the viewer (world3d.js/css, index.html); data_dir (default: world_dir) holds world.json, places.json,
+    poster.svg and, for a project other than the first, embed-text.json ({"card": {he, en}, "viewer": {he, en}})."""
+    data_dir = data_dir or world_dir
     out = os.path.join(bundle_dir, 'world')
     os.makedirs(out, exist_ok=True)
     for f in ('world.json', 'places.json', 'poster.svg'):
-        shutil.copyfile(os.path.join(world_dir, f), os.path.join(out, f))
+        shutil.copyfile(os.path.join(data_dir, f), os.path.join(out, f))
+    words = {}
+    if os.path.exists(os.path.join(data_dir, 'embed-text.json')):
+        words = json.load(io.open(os.path.join(data_dir, 'embed-text.json'), encoding='utf-8'))
     js = patch_js(io.open(os.path.join(world_dir, 'world3d.js'), encoding='utf-8').read())
     io.open(os.path.join(out, 'world3d.js'), 'w', encoding='utf-8', newline='\n').write(js)
     css = scope_css(io.open(os.path.join(world_dir, 'world3d.css'), encoding='utf-8').read())
     io.open(os.path.join(out, 'world3d.css'), 'w', encoding='utf-8', newline='\n').write(css)
     m = markup(io.open(os.path.join(world_dir, 'index.html'), encoding='utf-8').read())
-    return launcher_js(m), CARD_CSS
+    return launcher_js(m, words.get('card'), words.get('viewer')), CARD_CSS
