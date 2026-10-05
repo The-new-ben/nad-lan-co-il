@@ -3884,3 +3884,11 @@ TEMP BRIDGE by the Kikar loop [main] 20:32 Israel (machine clock): HAD-256 MySQL
   - **Proof of no harm:** after the attempts, 0 probe posts / 0 probe options / 0 probe locks (read-only count), and health, / and /post-listing/ all answer 200.
   - **Next:** a staged kit (stage 1 info only; stage 2 claims; stage 3 the second mysqli connection) to find the blocked step.
 - **HAD-256 is NOT released.** Gates: the DB proof, the mail (Ben), the copy decisions.
+TEMP BRIDGE by the Kikar loop [main] 20:45 Israel (machine clock): HAD-256 staged DB proof (199b8ad6), stages run one at a time, admin-only + token, each snippet deleted after
+- **5.10 ~20:50 Israel: the staged DB proof PASSED on live MariaDB 10.6.28** (snippets 1166-1170, each deleted):
+  - s1: info, show_errors off;
+  - s2: 43/43;
+  - s3: the second mysqli connection, 9/9;
+  - cleanup 0 every time; the site stayed 200.
+  - Results are in the builder worktree, commit 025cf41d. HAD-256 open item 1 is CLOSED.
+- **Next:** the sub-agent writes deploy_had256.py for 2.0.1 (dry / write / auto-rollback; private dir outside the web root) and the page-4958 copy fixes. Main runs the release.
