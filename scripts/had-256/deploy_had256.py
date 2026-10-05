@@ -46,6 +46,7 @@ PAGE = arg("--page")
 BENCH = arg("--bench")
 FAIL_CHECK = "--bench-fail-check" in ARGS   # rehearsal only: one need-string that cannot be there, to prove the automatic rollback
 CRASH = "--bench-crash-after-write" in ARGS   # rehearsal only: an error right after the engine is written
+FLAKE = {"left": 2 if "--bench-net-flake" in ARGS else 0}   # rehearsal only: the first two check fetches fail as on the live run
 if not ROLLBACK_DIR and PAGE not in ("A", "B", "keep"):
     raise SystemExit("usage: --page A|B|keep is required (A: no page paragraph; B: the truthful paragraph; keep: page 4958 untouched)")
 sha = lambda s: hashlib.sha256((s if isinstance(s, bytes) else s.encode("utf-8"))).hexdigest()
@@ -105,10 +106,41 @@ else:
         raise SystemExit("FATAL: deployskin.py's BASE is not the live site: " + BASE)
 
 
+import http.client, socket  # noqa: E402
+
+NET_ERRORS = (http.client.IncompleteRead, http.client.HTTPException, urllib.error.URLError, ConnectionError, TimeoutError, socket.timeout)
+
+
+def net(fn, what):
+    """A check's network call, tried up to 3 times on a NETWORK error (a cut answer, a reset, a timeout): main's live run
+    of 6.10 rolled back on one IncompleteRead. An HTTP status is an answer, not a network error, and is never retried here;
+    a content failure is judged by the check. Three network failures in a row = None (the check counts it as failed)."""
+    for i in range(3):
+        try:
+            if BENCH and FLAKE["left"]:
+                FLAKE["left"] -= 1
+                raise http.client.IncompleteRead(b"rehearsal", 1000)
+            return fn()
+        except urllib.error.HTTPError:
+            raise
+        except NET_ERRORS as e:
+            print(f"[net] {what}: {type(e).__name__} (try {i + 1} of 3)")
+            time.sleep(3)
+    return None
+
+
 def get_page(path, tag=None):
     url = path + (("&" if "?" in path else "?") + "nlv=" + tag if tag else "")
-    s, b, h = req("GET", url, raw=True, auth=False, timeout=90, headers={"Cache-Control": "no-cache"} if tag else None)
+    r = net(lambda: req("GET", url, raw=True, auth=False, timeout=90, headers={"Cache-Control": "no-cache"} if tag else None), "GET " + url)
+    if r is None:
+        return 0, ""
+    s, b, h = r
     return s, (b.decode("utf-8", "replace") if isinstance(b, (bytes, bytearray)) else json.dumps(b))
+
+
+def get_json(path):
+    r = net(lambda: req("GET", path, auth=False), "GET " + path)
+    return (0, {}) if r is None else (r[0], r[1])
 
 
 REC = {}
@@ -205,6 +237,33 @@ add_action( 'rest_api_init', function () {
 				}
 				$out['privdir'] = $o;
 			}
+			if ( ! empty( $b['ymeta'] ) && is_array( $b['ymeta'] ) ) {   // page 4958's Yoast texts (_yoast_wpseo_* only), written only over the expected value
+				$c  = $b['ymeta'];
+				$pg = get_page_by_path( (string) $c['path'], OBJECT, 'page' );
+				if ( ! $pg ) { return new WP_Error( 'page', 'no page ' . (string) $c['path'], array( 'status' => 404 ) ); }
+				if ( ! empty( $c['get'] ) ) {
+					$vals = array();
+					foreach ( (array) $c['get'] as $k ) {
+						$k = (string) $k;
+						if ( 0 !== strpos( $k, '_yoast_wpseo_' ) ) { continue; }
+						$v = (string) get_post_meta( $pg->ID, $k, true );
+						$vals[ $k ] = array( 'exists' => metadata_exists( 'post', $pg->ID, $k ), 'b64' => base64_encode( $v ), 'sha' => hash( 'sha256', $v ) );
+					}
+					$out['ymeta'] = array( 'id' => (int) $pg->ID, 'vals' => $vals );
+				} elseif ( ! empty( $c['set'] ) ) {
+					$k = (string) $c['set'];
+					if ( 0 !== strpos( $k, '_yoast_wpseo_' ) ) { return new WP_Error( 'key', 'only Yoast keys', array( 'status' => 400 ) ); }
+					$cur = (string) get_post_meta( $pg->ID, $k, true );
+					if ( empty( $c['force'] ) && hash( 'sha256', $cur ) !== (string) $c['expect'] ) { return new WP_Error( 'drift', 'meta changed: ' . hash( 'sha256', $cur ), array( 'status' => 409 ) ); }
+					$new = base64_decode( (string) $c['b64'], true );
+					if ( false === $new || hash( 'sha256', $new ) !== (string) $c['sha'] ) { return new WP_Error( 'sha', 'meta mismatch', array( 'status' => 400 ) ); }
+					update_post_meta( $pg->ID, $k, wp_slash( $new ) );
+					clean_post_cache( $pg->ID );
+					do_action( 'litespeed_purge_post', $pg->ID );
+					$now = (string) get_post_meta( $pg->ID, $k, true );
+					$out['ymeta'] = array( 'id' => (int) $pg->ID, 'key' => $k, 'sha' => hash( 'sha256', $now ) );
+				}
+			}
 			if ( ! empty( $b['purge'] ) ) {
 				if ( function_exists( 'opcache_reset' ) ) { $out['opcache'] = @opcache_reset(); }
 				do_action( 'litespeed_purge_all' );
@@ -299,12 +358,15 @@ CHECKS = [
 ]
 if PAGE == "B":
     CHECKS[0][1].append("בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו.")
+if PAGE in ("A", "B") and hasattr(R, "META_NEW"):
+    CHECKS[0][1].append(f'<meta name="description" content="{R.META_NEW}"')   # Yoast prints the page's new description
 if not BENCH:
     CHECKS[0][1].append("<meta name='robots' content='index, follow")   # indexing is the owner's: unchanged
 if FAIL_CHECK:
     CHECKS[0][1].append("had256-rehearsal-this-string-is-never-on-the-page")
 BROKER_PATHS = [] if BENCH else ["/brokers/meital-katzir/", "/en/brokers/meital-katzir/"]
-LISTING = None if BENCH else ("/properties/nofei-yam-3-rooms-balcony-for-rent/", ["3 חדרים עם מרפסת של 20 מ״ר ו-2 חניות, נופי ים", 'class="nlx-plate"', "wa.me/972523631582"])
+LISTING = None if BENCH else ("/properties/nofei-yam-3-rooms-balcony-for-rent/", ["3 חדרים עם מרפסת של 20 מ״ר ו-2 חניות, נופי ים", "wa.me/972523631582"],
+                               [r'class="(?:[^"]*\s)?nlx-plate(?:\s[^"]*)?"'])   # the class token (main, 6.10: the live attribute carries more names)
 
 
 def body_of(html):
@@ -339,19 +401,20 @@ def run_checks(tag, cards_before):
             bad.append(p)
     if LISTING:
         s, html = get_page(LISTING[0], tag)
-        miss = [x for x in LISTING[1] if x not in html]
+        miss = [x for x in LISTING[1] if x not in html] + [x for x in LISTING[2] if not re.search(x, html)]
         ok = s == 200 and not miss and len(re.findall(r"<h1[ >]", body_of(html))) == 1 and "Fatal error" not in html and ">nl-drop-" not in html
         print(f"[check] {'OK ' if ok else 'BAD'} {LISTING[0]}: {s}" + (f", missing {miss}" if miss else ""))
         if not ok:
             bad.append(LISTING[0])
-    s, hc, _ = req("GET", "/wp-json/nadlan/v1/healthcheck" + ("?nlv=" + tag if tag else ""), auth=False)
+    s, hc = get_json("/wp-json/nadlan/v1/healthcheck" + ("?nlv=" + tag if tag else ""))
     ow, bd = (hc or {}).get("owner_wizard") or {}, (hc or {}).get("broker_drop") or {}
     ok = s == 200 and ow.get("version") == V and ow.get("engine") is True and ow.get("sealed") is True and bd.get("version") == R.BROKER_VERSION
     print(f"[check] {'OK ' if ok else 'BAD'} healthcheck: owner {ow.get('version')} engine {ow.get('engine')} sealed {ow.get('sealed')}, engine {bd.get('version')}")
     if not ok:
         bad.append("healthcheck")
     for method, path, want in (("POST", "/wp-json/nadlan/v1/listing-submit", 410), ("POST", "/wp-json/nadlan/v1/owner/draft", 401), ("GET", "/drop/000000000000000000000000/", 404)):
-        s, _, _ = req(method, path, {} if method == "POST" else None, auth=False, raw=True)
+        r = net(lambda: req(method, path, {} if method == "POST" else None, auth=False, raw=True), method + " " + path)
+        s = 0 if r is None else r[0]
         print(f"[check] {'OK ' if s == want else 'BAD'} {method} {path}: {s} (want {want})")
         if s != want:
             bad.append(path)
@@ -372,7 +435,7 @@ def rollback_checks(tag, cards_before):
         print(f"[rollback-check] {'OK ' if ok else 'BAD'} {p}: {s}, {n} cards (before {want})")
         if not ok:
             bad.append(p)
-    s, hc, _ = req("GET", "/wp-json/nadlan/v1/healthcheck?nlv=" + tag, auth=False)
+    s, hc = get_json("/wp-json/nadlan/v1/healthcheck?nlv=" + tag)
     print(f"[rollback-check] healthcheck: {s}, owner {((hc or {}).get('owner_wizard') or {}).get('version')}, engine {((hc or {}).get('broker_drop') or {}).get('version')}")
     return bad
 
@@ -392,6 +455,15 @@ def restore(backup, page_written):
             must(*snip("PUT", f"/{m['id']}/activate", {}), f"reactivate {m['name']}")
         x = read_snippet(m["id"])
         print(f"[restore] {m['name']} (snippet {m['id']}): {sha(lf(x.get('code')))[:12]} (saved {m['sha256_lf'][:12]}), active {x.get('active')}")
+    yf = os.path.join(backup, "yoast-4958.json")
+    if page_written and os.path.exists(yf):
+        saved = json.load(open(yf, encoding="utf-8"))
+        cur = ops({"ymeta": {"path": R.PAGE_PATH, "get": list(saved["vals"])}}, "yoast read")["ymeta"]["vals"]
+        for k, v in saved["vals"].items():
+            if not v.get("exists") or cur.get(k, {}).get("sha") == v["sha"]:
+                continue
+            r = ops({"ymeta": {"path": R.PAGE_PATH, "set": k, "force": 1, "b64": v["b64"], "sha": v["sha"]}}, "yoast restore " + k)["ymeta"]
+            print(f"[restore] page {r['id']} {k}: {r['sha'][:12]} (saved {v['sha'][:12]})")
     pf = os.path.join(backup, "page-4958.html")
     if page_written and os.path.exists(pf):
         old = open(pf, "rb").read()
@@ -499,6 +571,15 @@ def main():
         if not BENCH and pg["id"] != R.PAGE_ID:
             raise SystemExit(f"FATAL: /{R.PAGE_PATH}/ is page {pg['id']}, not {R.PAGE_ID}")
         open(os.path.join(backup, "page-4958.html"), "wb").write(live_page)
+        meta_plan = {}
+        if PAGE in ("A", "B") and hasattr(R, "META_KEYS"):
+            ym = ops({"ymeta": {"path": R.PAGE_PATH, "get": list(R.META_KEYS)}}, "yoast read")["ymeta"]
+            json.dump({"id": ym["id"], "vals": ym["vals"]}, open(os.path.join(backup, "yoast-4958.json"), "w", encoding="utf-8"), indent=2)
+            for k, v in ym["vals"].items():
+                txt = base64.b64decode(v["b64"]).decode("utf-8")
+                if R.OLD_PROMISE in txt:
+                    meta_plan[k] = (v["sha"], R.apply("meta:4958:" + k, txt))   # FATAL unless it is the known old text
+            print("[yoast]", {k: (v["sha"][:12], "-> new " + sha(meta_plan[k][1])[:12] if k in meta_plan else ("kept" if v["exists"] else "absent")) for k, v in ym["vals"].items()})
         new_page = None
         if PAGE in ("A", "B"):
             new_page = R.apply("page:4958:" + PAGE, lf(live_page.decode("utf-8"))).encode("utf-8")
@@ -560,6 +641,13 @@ def main():
             if CRASH and BENCH:
                 raise RuntimeError("rehearsal: a crash right after the engine write")
             write_snippet(R.SNIPPET_707, "x-owner-wizard", new_own, R.OWNER_LIVE_SHA256, "x-owner-wizard " + V)
+            for k, (old_sha, new_txt) in meta_plan.items():
+                state["page"] = True   # from here the rollback also restores page 4958's Yoast texts and its content
+                nb = new_txt.encode("utf-8")
+                r = ops({"ymeta": {"path": R.PAGE_PATH, "set": k, "expect": old_sha, "b64": base64.b64encode(nb).decode(), "sha": sha(nb)}}, "yoast write " + k)["ymeta"]
+                if r["sha"] != sha(nb):
+                    raise SystemExit(f"FATAL: {k} after the write is {r['sha'][:12]}")
+                print(f"[write] page {r['id']} {k}: {r['sha'][:12]}")
             if new_page is not None:
                 state["page"] = True
                 r = ops({"page": {"path": R.PAGE_PATH, "expect": pg["sha"], "b64": base64.b64encode(new_page).decode(), "sha": sha(new_page)}}, "page write")["page"]

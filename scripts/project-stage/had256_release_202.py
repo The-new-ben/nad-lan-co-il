@@ -16,7 +16,7 @@ import re
 import subprocess
 
 SNAPSHOT = '40763157'
-SNAPSHOT_PAGES = '771abcf4'   # the commit that holds docs/qa/had-256/page-4958
+SNAPSHOT_PAGES = '9ecf8b87'   # the commit that holds docs/qa/had-256/page-4958
 BASE = '6e9cf930'
 RELS = ["snippet:x-broker-drop", "snippet:x-owner-wizard"]   # + "page:4958:A" / "page:4958:B" when main picks a copy variant
 SNIPPET_707 = 707   # x-owner-wizard (live-read 3.10.2026: docs/qa/live-read/20261003T205055Z/snippet-707.php)
@@ -37,6 +37,14 @@ PAGE_OLD_SHA256 = '7c130d7756181ff45f6dce40a3385d57e312bf4d634f4d7260b39e393d5c6
 PAGE_ANCHOR = '<!-- wp:paragraph -->\n<p>מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והעמוד עולה לאתר בתוך דקה: התמונות, העובדות והמחיר, בכתובת משלו, עם כפתורי וואטסאפ וחיוג אליכם. בלי עמלה ובלי כרטיס אשראי.</p>\n<!-- /wp:paragraph -->\n'
 PAGE_NEW = {"A": "", "B": '<!-- wp:paragraph -->\n<p>בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו.</p>\n<!-- /wp:paragraph -->\n'}
 PAGE_NEW_SHA256 = {"A": 'e53325b94dadfa74901f81460e14b763b5b42331c5088f689229cb7c5d39a26f', "B": 'f39acdb45dcb0d26cb253822cd9df3310f22c76a90f93ec4f783b3b74e2aae79'}   # from the old text
+# page 4958's Yoast description (meta description, og:description and the schema WebPage description all print it):
+# the live value (deploydrop.py --post-listing) still promises the WhatsApp and call buttons; the new value is the truthful one
+META_KEYS = ("_yoast_wpseo_metadesc", "_yoast_wpseo_opengraph-description", "_yoast_wpseo_twitter-description")
+META_OLD = 'מפרסמים דירה בעצמכם? תמונות וכמה שורות, והעמוד עולה בתוך דקה בכתובת משלו, עם כפתורי וואטסאפ וחיוג אליכם. בלי עמלה ובלי כרטיס אשראי.'
+META_NEW = 'מפרסמים דירה בעצמכם? פותחים חשבון, מוסיפים פרטים ותמונות, והמודעה עולה בכתובת משלה. בלי עמלה ובלי כרטיס אשראי, והטלפון מופיע רק אם תבחרו.'
+META_OLD_SHA256 = '20b22b5e268f67f7fa05be16cc6bea994ce436689a882e34314ca806e756a2d3'
+META_NEW_SHA256 = 'e04dd791cabb37f00378bf2620cdd9c722808a5324f7e460de664d745f48e15c'
+OLD_PROMISE = "עם כפתורי וואטסאפ וחיוג אליכם"   # never on /post-listing/ after the release (he and ?lang=en)
 # SHA-256 of the repo files as committed (with the opening tag, LF)
 FILE_SHA256 = {'plugins/nadlan-config/inc/owner-wizard.php': 'a6a34f257a0e0341c20741143965159a42768e6207acd537611111edc8c42c4a', 'plugins/nadlan-config/inc/broker-drop.php': 'dff44c897230e0699496d2fa6fac000ce9e80bf4bfb6238e0ea18c878cf6cacd'}
 
@@ -107,6 +115,12 @@ def apply(rel, txt):
         if n != 1:
             raise SystemExit("had256_release: page 4958 anchor (the old paragraph) is there " + str(n) + " times (drift: stop)")
         out = t.replace(PAGE_ANCHOR, PAGE_NEW[v])
+    elif rel.startswith("meta:4958:"):   # one Yoast text of page 4958 (META_KEYS); only the known old text is replaced
+        if t == META_NEW:
+            raise SystemExit("had256_release: " + rel + " already carries the new description")
+        if t != META_OLD:
+            raise SystemExit("had256_release: " + rel + " is not the known old description (drift: stop): " + _sha(t)[:12])
+        out = META_NEW
     elif rel == "snippet:x-broker-drop":
         if "define( 'NL_DROP_VERSION', '1.1.4' )" in t or "function nl_drop_lock_acquire(" in t:
             raise SystemExit("had256_release: x-broker-drop already carries the HAD-256 hunks")
@@ -138,7 +152,8 @@ if __name__ == "__main__":
             raise AssertionError("page " + v + ": a second apply did not stop")
         except SystemExit as e:
             assert "already" in str(e), e
-    for rel, txt in (("snippet:x-broker-drop", b), ("snippet:x-owner-wizard", o)):
+    assert apply("meta:4958:_yoast_wpseo_metadesc", META_OLD) == META_NEW and _sha(META_NEW) == META_NEW_SHA256 and OLD_PROMISE in META_OLD and OLD_PROMISE not in META_NEW
+    for rel, txt in (("snippet:x-broker-drop", b), ("snippet:x-owner-wizard", o), ("meta:4958:_yoast_wpseo_metadesc", META_NEW)):
         try:
             apply(rel, txt)
             raise AssertionError(rel + ": a second apply did not stop")
