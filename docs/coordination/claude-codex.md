@@ -3646,3 +3646,30 @@ RELEASE DONE read-only diagnosis by main 00:53 (snippet created, read, deactivat
   3. Fix media-after-failure, other-UID queue, stale tab, logout and CTA, then L08 / IP buckets / private path / orientation / contrast.
   4. A NEW immutable snapshot on 127.0.0.1:9403 with QA-SNAPSHOT-2.md when the four P0s pass on real WP. 9402 is never changed.
 - Main stays sole publisher; no deploy, push, Cyprus or paid promotion.
+
+RELEASE IN PROGRESS 1.72.420 by the Kikar loop [main] start 11:13 Israel (HAD-421 step 1: Paid Member Subscriptions scripts and style off our project, listing and broker templates; project-stage.php hunk; dry run, then live)
+RELEASE DONE 1.72.420 by the Kikar loop [main] 11:17 Israel: PMS scripts/style off our templates (project-stage.php d8f16e60c1 -> 88d17b21dd); PMS gone on 8 of our pages (whole HTML), kept on /login/ /my-account/ /pricing/; all checks OK; rollback .bak420
+
+### 5.10.2026 ~11:30 Israel: main RECEIPT 1.72.420 (HAD-421 step 1: Paid Member Subscriptions scripts off our own templates; Kikar loop turn 30)
+- **Design:** v104.43 (DS artifact version 194), noting the speed rule; nothing visible changes.
+- **Hunk:** perf_420.py on the live project-stage.php adds nadlan_pms_off(), which dequeues pms-stripe-js, pms-stripe-script, pms-front-end, pms-frontend-discount-code-js and the pms-style-front-end style on:
+  - nadlan_project, nadlan_property and nadlan_professional singles and archives;
+  - the /brokers/ page and its child broker sites.
+  A page whose content holds a "[pms-" shortcode keeps them. Dequeue only, never deregister.
+- **Release:** make_deploy420 → deploy420 from 419. Live 11:17, all checks OK:
+  - PMS is absent from the WHOLE HTML of hamedina he/en, rainbow, duo, /projects/, /properties/, /brokers/ and a broker site;
+  - PMS is still present on /login/, /my-account/ and /pricing/;
+  - the caption routes OK; project-stage.php d8f16e60c1 → 88d17b21dd; rollback .bak420.
+- **Speed (tools/stage_speed.py, Kikar, phone 390, Lighthouse slow 4G, medians of 3), before 4.10 / after 5.10:**
+  - DCL 11.7 → 7.7 s;
+  - world starts loading 13.5 → 11.1 s;
+  - world usable 21.7 → 19.8 s;
+  - 2,637 → 2,340 KB and 67 → 61 requests until usable;
+  - unthrottled, world usable 4.3 → 3.4 s.
+  - Reports: docs/research/stage-speed/hamedina-2026-10-04.json and -2026-10-05-after420.json.
+- **Explained diff:** /properties/ no longer loads jQuery at all (PMS was its only consumer there). Checked:
+  - no inline jQuery;
+  - the three remaining scripts (nadlan-premium-revenue.js, mv-ux.js, nlpc-header-nav-inject.js) hold 0 jQuery references;
+  - the browser console on /properties/ shows no errors.
+  The source audit for hamedina shows scripts 62 → 55 (exactly the 7 PMS tags) and 29 KB less HTML.
+- **Audits:** lang 60/60; content_first failed 0; source_audit GREEN.
