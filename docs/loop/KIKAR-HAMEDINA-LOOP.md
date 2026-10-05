@@ -214,6 +214,14 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **5.10 ~17:00, turn 34: HAD-421 step 5 LIVE (1.72.424): the world downloads early, quietly.**
+  - **Measured:** world usable 15.6 → 13.6 s; FCP +0.19 s (2.99 s). Kept by an explicit trade-off on record.
+  - **Lessons:**
+    - (1) a modulepreload must follow the import map;
+    - (2) a 3-run set with server-time noise can mislead, so judge net of TTFB over 5 clean runs.
+  - **Since the morning:** 21.7 → 13.6 s.
+  - **Next notch, sharper:** defer the non-critical head scripts to win the 0.2 s back; then the scene build itself (3.9 s of CPU on a throttled phone).
+
 - **5.10 ~16:40, turn 33: HAD-421 steps 2b + 3b LIVE (1.72.423) on the third run.**
   - **Rollbacks:** two automatic rollbacks taught two WordPress facts:
     - a core style (wp-jquery-ui-dialog) pulls dashicons back in;
