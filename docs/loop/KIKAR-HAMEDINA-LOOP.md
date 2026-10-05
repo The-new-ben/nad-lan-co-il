@@ -214,6 +214,16 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **5.10 ~12:30, turn 31: HAD-421 step 3 LIVE (1.72.421): lazy film posters.**
+  - **Measured** (slow 4G, phone, medians; start → 421): world usable 21.7 → 17.0 s; world starts loading 13.5 → 8.0 s; 2.64 → 1.65 MB until usable.
+  - **Verified in headless Chrome:** visible videos get their posters near the screen; hidden ones never fetch them; Play works. The browser pane was hidden, so its IntersectionObserver stalled. Lesson: verify lazy loading in a rendering browser, not in a hidden pane.
+  - **HAD-256 in parallel:** the builder delivered named snapshot 3 (2ce0a741 @ 9404), verified by main and handed to Maya.
+  - **Next notch, sharper:**
+    - (a) the world poster is fetched twice on phones (800 + 1600 webp), so the world should reuse the page's poster;
+    - (b) aspect-ratio boxes for the film videos;
+    - (c) defer the head scripts.
+    - Measure each before and after. world.js may change; engine.js and the beam stay frozen.
+
 - **5.10 ~11:30, turn 30: HAD-421 step 1 LIVE (1.72.420): measurably faster on phones.**
   - **What changed:** Paid Member Subscriptions' scripts (incl. js.stripe.com) and style left our project, listing and broker templates. They stay where PMS may be used. Design note v104.43.
   - **Measured with the same tool** (slow 4G, phone, medians): DCL 11.7 → 7.7 s; world usable 21.7 → 19.8 s; 2.64 → 2.34 MB; unthrottled 4.3 → 3.4 s.
