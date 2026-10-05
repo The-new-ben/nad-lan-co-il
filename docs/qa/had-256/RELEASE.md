@@ -53,9 +53,12 @@ with `nl_drop_strip_gps` kept as a wrapper (@2189, +208); the busy answer 409 in
 1. **Gates.** Release lock + in-flight guard as for every runner (`nadlan-release-concurrency`, `nadlan-runner-inflight-guard`);
    `GET /wp-json/nadlan/v1/health`; public-source audit before (`tools/source_audit.py` on `/post-listing/`,
    `/brokers/meital-katzir/`, `/properties/nofei-yam-3-rooms-balcony-for-rent/`).
-2. **MySQL proof first** (open item 1): `docs/qa/had-256/mysql-claim-check.php`, run once (its header says how: a
-   temporary token-gated, `manage_options` snippet, or the function inside the release bridge). Save the answer as
-   `docs/qa/had-256/mysql-claim-check.result.json`; **stop unless `"all_pass": true` and every `cleanup.*` is 0**.
+2. **MySQL proof first** (open item 1), STAGED since the one-piece kit answered an nginx 404 on live (5.10):
+   `claim-proof-stage1.php` (`/wp-json/nadlan-h256c/v1/s1`: `{"steps":["hello"]}` first, then all reads),
+   `claim-proof-stage2.php` (`/s2`, single connection, `"groups"` to bisect), `claim-proof-stage3.php` (`/s3`, the
+   second connection only), one temporary snippet at a time. Answers are one base64 field `b64` unless `"enc": 0`.
+   **Stop unless stage 2 says `"all_pass": true` with every `cleanup.*` 0.** Stage 3 is wanted, not required (see
+   the hypothesis in the 5.10 report: a host guard may refuse a raw second connection from snippet code).
 3. **Bridge up** (the usual `x-tmp-…-ops-<ts>` snippet with a fresh token; ops `lint_code` and `purge` as in deploy415).
 4. **Read live.** `GET /wp-json/code-snippets/v1/snippets` -> the row named `x-broker-drop` (its id); `GET /707`.
    Save both bodies to `docs/qa/had-256/live-backup/<name>.<stamp>.live` (the rollback source). Stop unless 707 is
