@@ -1,0 +1,68 @@
+{
+ "kit": "h256c-s3 v1",
+ "run": "ddc0ae2dad29",
+ "at_gmt": "2026-10-05T17:45:58+00:00",
+ "checks": {
+  "probe_row": {
+   "got": true,
+   "expect": true,
+   "pass": true
+  },
+  "conn2.first_writer": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  },
+  "conn1.second_writer": {
+   "got": 0,
+   "expect": 0,
+   "pass": true
+  },
+  "conn2.third_writer": {
+   "got": 0,
+   "expect": 0,
+   "pass": true
+  },
+  "conn1.reads_conn2_row": {
+   "got": "conn2",
+   "expect": "conn2",
+   "pass": true
+  },
+  "conn2.commit_old_token": {
+   "got": 0,
+   "expect": 0,
+   "pass": true,
+   "note": "MUST be 0"
+  },
+  "conn2.commit_own_token": {
+   "got": 1,
+   "expect": 1,
+   "pass": true,
+   "note": "the positive control"
+  },
+  "conn1.reads_conn2_commit": {
+   "got": "a:1:{s:3:\"run\";s:9:\"conn2-own\";}",
+   "expect": "a:1:{s:3:\"run\";s:9:\"conn2-own\";}",
+   "pass": true
+  },
+  "conn1.commit_old_token": {
+   "got": 0,
+   "expect": 0,
+   "pass": true,
+   "note": "MUST be 0"
+  }
+ },
+ "info": {
+  "conn2": "open"
+ },
+ "errors": [],
+ "cleanup": {
+  "options_left": 0,
+  "postmeta_left": 0,
+  "posts_left": 0,
+  "probe_type_anywhere": 0
+ },
+ "failures": 0,
+ "all_pass": true,
+ "ms": 8
+}

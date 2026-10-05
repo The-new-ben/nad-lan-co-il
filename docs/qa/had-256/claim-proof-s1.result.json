@@ -1,0 +1,43 @@
+{
+ "kit": "h256c-s1 v1",
+ "hello": "ok",
+ "at_gmt": "2026-10-05T17:45:31+00:00",
+ "php": "8.5.10",
+ "wp": "7.1.2",
+ "debug": {
+  "wp_debug": false,
+  "wp_debug_display": true,
+  "db_show_errors": false,
+  "ext_object_cache": false,
+  "charset": "utf8mb4",
+  "collate": "utf8mb4_unicode_520_ci"
+ },
+ "errors": [],
+ "vars": {
+  "autocommit": "ON",
+  "character_set_database": "utf8mb4",
+  "collation_database": "utf8mb4_unicode_520_ci",
+  "innodb_version": "10.6.28",
+  "lower_case_table_names": "0",
+  "sql_mode": "ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION",
+  "tx_isolation": "REPEATABLE-READ",
+  "version": "10.6.28-MariaDB",
+  "version_comment": "MariaDB Server"
+ },
+ "tables": {
+  "options": "InnoDB / utf8mb4_unicode_520_ci",
+  "postmeta": "InnoDB / utf8mb4_unicode_520_ci",
+  "posts": "InnoDB / utf8mb4_unicode_520_ci"
+ },
+ "cols": {
+  "option_name": "varchar(191) / utf8mb4 / utf8mb4_unicode_520_ci",
+  "option_value": "longtext / utf8mb4 / utf8mb4_unicode_520_ci",
+  "meta_value": "longtext / utf8mb4 / utf8mb4_unicode_520_ci",
+  "post_status": "varchar(20) / utf8mb4 / utf8mb4_unicode_520_ci"
+ },
+ "index": {
+  "option_name_unique": true,
+  "rows": 1
+ },
+ "ms": 8
+}

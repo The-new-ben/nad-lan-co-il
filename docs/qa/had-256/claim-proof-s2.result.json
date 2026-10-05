@@ -1,0 +1,263 @@
+{
+ "kit": "h256c-s2 v1",
+ "run": "b748f7ff6110",
+ "at_gmt": "2026-10-05T17:45:40+00:00",
+ "checks": {
+  "g0.probe_row": {
+   "got": true,
+   "expect": true,
+   "pass": true
+  },
+  "g1.first_writer": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  },
+  "g1.second_writer": {
+   "got": 0,
+   "expect": 0,
+   "pass": true
+  },
+  "g1.row_is_first": {
+   "got": true,
+   "expect": true,
+   "pass": true
+  },
+  "g1.stamp_own_seed": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  },
+  "g1.stamp_stale_seed": {
+   "got": 0,
+   "expect": 0,
+   "pass": true
+  },
+  "g1.row_after_stamp": {
+   "got": true,
+   "expect": true,
+   "pass": true
+  },
+  "g2.own_lock": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  },
+  "g2.same_value": {
+   "got": 0,
+   "expect": [
+    0,
+    1
+   ],
+   "pass": true,
+   "note": "MySQL/MariaDB count changed rows (0); the code then re-checks its fence"
+  },
+  "g2.stale_token": {
+   "got": 0,
+   "expect": 0,
+   "pass": true,
+   "note": "MUST be 0"
+  },
+  "g2.value_kept": {
+   "got": true,
+   "expect": true,
+   "pass": true
+  },
+  "g3.remove_with_old_value": {
+   "got": 0,
+   "expect": 0,
+   "pass": true
+  },
+  "g3.remove_with_current_value": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  },
+  "g3.taker_writes": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  },
+  "g3.second_taker": {
+   "got": 0,
+   "expect": 0,
+   "pass": true
+  },
+  "g3.taker_stamps": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  },
+  "g3.old_holder_commit": {
+   "got": 0,
+   "expect": 0,
+   "pass": true,
+   "note": "MUST be 0"
+  },
+  "g3.new_holder_commit": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  },
+  "g4.old_holder_first_shape": {
+   "got": 0,
+   "expect": 0,
+   "pass": true,
+   "note": "MUST be 0"
+  },
+  "g4.old_seed_plain_shape": {
+   "got": 0,
+   "expect": 0,
+   "pass": true,
+   "note": "MUST be 0"
+  },
+  "g4.still_draft": {
+   "got": "draft",
+   "expect": "draft",
+   "pass": true
+  },
+  "g4.holder_first_shape": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  },
+  "g4.now_pending": {
+   "got": "pending",
+   "expect": "pending",
+   "pass": true
+  },
+  "g5.first": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  },
+  "g5.second": {
+   "got": 0,
+   "expect": 0,
+   "pass": true
+  },
+  "g5.read_first_post": {
+   "got": 111,
+   "expect": 111,
+   "pass": true
+  },
+  "g6.fresh_text": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  },
+  "g6.stale_text": {
+   "got": 0,
+   "expect": 0,
+   "pass": true,
+   "note": "MUST be 0"
+  },
+  "g6.value_kept": {
+   "got": true,
+   "expect": true,
+   "pass": true
+  },
+  "g6.case_only_difference": {
+   "got": 1,
+   "expect": [
+    0,
+    1
+   ],
+   "pass": true,
+   "note": "1 = a _ci collation; harmless, every save bumps rev"
+  },
+  "g6.four_byte_char": {
+   "got": 1,
+   "expect": 1,
+   "pass": true,
+   "note": "refused = the column is not utf8mb4"
+  },
+  "g6.four_byte_roundtrip": {
+   "got": true,
+   "expect": true,
+   "pass": true
+  },
+  "g6.large_text": {
+   "got": 1,
+   "expect": 1,
+   "pass": true,
+   "note": "23575 bytes"
+  },
+  "g6.large_text_stale": {
+   "got": 0,
+   "expect": 0,
+   "pass": true
+  },
+  "g7.first": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  },
+  "g7.double_tap": {
+   "got": 0,
+   "expect": 0,
+   "pass": true
+  },
+  "g7.resolve": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  },
+  "g8.clear_unfinished": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  },
+  "g8.first": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  },
+  "g8.finished_kept": {
+   "got": 0,
+   "expect": 0,
+   "pass": true
+  },
+  "g8.second": {
+   "got": 0,
+   "expect": 0,
+   "pass": true
+  },
+  "g9.old_value": {
+   "got": 0,
+   "expect": 0,
+   "pass": true
+  },
+  "g9.own_value": {
+   "got": 1,
+   "expect": 1,
+   "pass": true
+  }
+ },
+ "info": {
+  "probe": 8202,
+  "same_value_rows": 0,
+  "compare_ignores_case": true
+ },
+ "errors": [],
+ "groups": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9
+ ],
+ "cleanup": {
+  "options_left": 0,
+  "postmeta_left": 0,
+  "posts_left": 0,
+  "probe_type_anywhere": 0
+ },
+ "failures": 0,
+ "all_pass": true,
+ "ms": 8
+}
