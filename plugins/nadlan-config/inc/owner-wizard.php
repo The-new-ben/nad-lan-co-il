@@ -1358,6 +1358,37 @@ function nl_owner_media_sweep() {
 }
 
 /**
+ * The listing's status, written by ONE UPDATE that succeeds only while this run's own lock row exists (the same fence
+ * as nl_drop_fenced_meta): a run that lost the lock can never publish, hold or unpublish the listing. Leaving
+ * 'publish' takes the public copies first (fail-closed). A first publish gets its date and a unique address in the
+ * same UPDATE. WordPress' transition hooks then run as for wp_update_post (the public copies for 'publish').
+ */
+function nl_owner_set_status( $drop_id, $he, $status ) {
+	global $wpdb;
+	$drop_id = (int) $drop_id;
+	$he      = (int) $he;
+	$old     = (string) get_post_status( $he );
+	if ( $old === $status ) { return; }
+	$mine = (string) ( $GLOBALS['nl_drop_locks'][ $drop_id ]['val'] ?? '' );
+	if ( $mine === '' ) { throw new NL_Drop_Fenced( 'status' ); }
+	if ( $old === 'publish' ) { nl_owner_media_withdraw( $he ); }
+	$post = get_post( $he );
+	$slug = $status === 'publish' ? wp_unique_post_slug( (string) $post->post_name, $he, 'publish', $post->post_type, (int) $post->post_parent ) : (string) $post->post_name;
+	$now  = current_time( 'mysql' );
+	$gmt  = current_time( 'mysql', true );
+	$first = $status === 'publish' && ( (string) $post->post_date_gmt === '' || (string) $post->post_date_gmt === '0000-00-00 00:00:00' );
+	do_action( 'nl_drop_checkpoint', 'owner_status_sql', $drop_id );
+	$n = $wpdb->query( $wpdb->prepare(
+		"UPDATE {$wpdb->posts} SET post_status = %s, post_name = %s, post_modified = %s, post_modified_gmt = %s" . ( $first ? ', post_date = %s, post_date_gmt = %s' : '' ) .
+		" WHERE ID = %d AND EXISTS ( SELECT 1 FROM {$wpdb->options} WHERE option_name = %s AND option_value = %s )",
+		array_merge( array( $status, $slug, $now, $gmt ), $first ? array( $now, $gmt ) : array(), array( $he, 'nl_drop_lock_' . $drop_id, $mine ) )
+	) );
+	clean_post_cache( $he );
+	if ( 1 !== (int) $n ) { throw new NL_Drop_Fenced( 'status' ); }
+	wp_transition_post_status( $status, $old, get_post( $he ) );
+}
+
+/**
  * The owner listing's own build (one drop, one Hebrew page), under the drop lock the caller holds:
  * claim the one post -> write it as a non-public draft (content, meta, page) -> commit the status (publish, or pending
  * on a fair-housing hold, or draft for an admin test) -> the public copies, only after 'publish' -> commit nl_result.
@@ -1382,7 +1413,7 @@ function nl_owner_build( $drop_id, $uid, $d, $b, $target ) {
 	if ( $edit && $now === 'publish' && $target !== 'publish' ) {
 		// an edit that must wait for review (or an admin test) leaves the site BEFORE its new words are written
 		nl_drop_fence( $drop_id, 'owner_unpublish' );
-		wp_update_post( array( 'ID' => $he, 'post_status' => $target ) );
+		nl_owner_set_status( $drop_id, $he, $target );
 		$now = $target;
 	}
 	nl_drop_fence( $drop_id, 'owner_content' );
@@ -1427,7 +1458,7 @@ function nl_owner_build( $drop_id, $uid, $d, $b, $target ) {
 	nl_drop_render_all( $he, $b );
 	// the status commit; the transition hook makes the public copies only for 'publish'
 	nl_drop_fence( $drop_id, 'owner_status' );
-	if ( get_post_status( $he ) !== $target ) { wp_update_post( array( 'ID' => $he, 'post_status' => $target ) ); }
+	nl_owner_set_status( $drop_id, $he, $target );
 	if ( $target === 'publish' ) {
 		do_action( 'nl_drop_checkpoint', 'owner_before_media', (int) $drop_id );
 		nl_owner_media_publish( $he );   // idempotent: repairs a run that died between the status and the copies
@@ -2584,6 +2615,7 @@ function photosHtml(){
  h+='<p class="nlj-hint">'+esc(T.phOrderHint)+'</p><div id="j-phmsg" role="status" aria-live="polite"></div>';
  h+='<ul class="nlj-ph" id="j-tiles" aria-label="'+esc(T.phListAria)+'"></ul>';
  h+='<div class="nlj-actions"><button class="nlj-btn nlj-btn--primary" type="button" data-act="to-preview" id="j-to-preview">'+esc(T.toPreview)+ICO.fwd+'</button><button class="nlj-btn nlj-btn--quiet" type="button" data-act="back-details">'+esc(T.backDetails)+'</button></div>';
+ h+=perAccount();
  return h;
 }
 function tileLabel(i){return T.photoN(i+1);}
@@ -2709,6 +2741,7 @@ function previewHtml(){
   else if(st.s==='error'){h+=statusBox('bad',ICO.retry,st.msg||T.genericErr,'','','alert');}
  }
  h+='<p class="nlj-hint">'+esc(T.publishNote)+'</p></div>';
+ h+=perAccount();
  return h;
 }
 function loadPreview(){
@@ -2778,6 +2811,7 @@ function renderMine(){
  if(m.deleted.length){h+='<details class="nlj-deleted nlj-card"><summary>'+esc(T.deletedH)+' ('+m.deleted.length+')</summary><p class="nlj-hint">'+esc(T.deletedNote)+'</p><ul class="nlj-mine">'+m.deleted.map(function(d){return '<li><article class="nlj-item nlj-item--off"><div class="nlj-item-top"><div class="nlj-thumb">'+ICO.house+'</div><div style="display:flex;flex-direction:column;gap:6px;min-width:0;flex:1"><h3 style="font-size:18px">'+esc(d.summary.title)+'</h3><p class="nlj-small">'+esc(d.summary.place||'')+'</p></div></div><div class="nlj-item-acts"><button class="nlj-btn nlj-btn--secondary nlj-btn--sm" type="button" data-act="d-restore" data-id="'+d.id+'">'+esc(T.restore)+'</button></div></article></li>';}).join('')+'</ul></details>';}
  var live=m.listings.filter(function(L){return L.state==='active';});
  h+='<div class="nlj-card" style="gap:10px"><div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between"><h3>'+esc(T.promoH)+'</h3><span class="nlj-chip nlj-chip--off">'+esc(T.promoOff)+'</span></div><p class="nlj-small">'+esc(T.promoTeaser)+'</p><button class="nlj-btn nlj-btn--quiet" type="button" data-act="go-promote" style="align-self:flex-start;padding-inline:0">'+esc(T.promoMore)+'</button></div>';
+ h+=perAccount();
  render.frame(h);
 }
 function chip(state){
@@ -2854,9 +2888,9 @@ function openDraft(id,screen,noUrl){
   D=newDraft();loadServer(x.j);D.id=x.j.id;
   (x.j.recovered||[]).forEach(function(p){P.push({k:++tileSeq,ref:p.ref,att:0,thumb:p.thumb,full:p.full,w:p.w,h:p.h,s:'ok'});});
   if((x.j.recovered||[]).length){touch();}
-  applyQueue();
+  applyQueue();if(dirty()&&S.save!=='conflict'){schedule(400);}
   S.preview=null;S.pub=null;
-  setSave(dirty()?'device':'account');
+  if(S.save!=='conflict'){setSave(dirty()?'device':'account');}
   go(screen||x.j.step||'details',{noUrl:!!noUrl,replace:!noUrl});
  });
 }

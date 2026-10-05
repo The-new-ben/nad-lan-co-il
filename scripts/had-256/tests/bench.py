@@ -57,7 +57,14 @@ def _json(raw):
 
 
 def bench(variant, path, body=None, method=None):
-    return http(method or ('POST' if body is not None else 'GET'), base(variant) + '/?rest_route=/nlj-test/v1' + path, body)
+    # a Playground worker sometimes answers the very first request after an idle spell without the bench mu-plugin's
+    # routes (rest_no_route); the call is repeated, and the flake is noted in the README
+    for i in range(4):
+        r = http(method or ('POST' if body is not None else 'GET'), base(variant) + '/?rest_route=/nlj-test/v1' + path, body)
+        if not (r[0] == 404 and isinstance(r[1], dict) and r[1].get('code') == 'rest_no_route'):
+            return r
+        time.sleep(0.5)
+    return r
 
 
 def reset(variant):
@@ -86,7 +93,34 @@ def shot(page, variant, name, full=True):
     return str(p.relative_to(REPO)).replace('\\', '/')
 
 
+class _Lock:
+    """a cross-process lock on results.json (several test scripts may record at the same time)"""
+    def __enter__(self):
+        self.p = str(RESULTS) + '.lock'
+        for _ in range(600):
+            try:
+                self.fd = os.open(self.p, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+                return self
+            except FileExistsError:
+                if time.time() - os.path.getmtime(self.p) > 30:
+                    try:
+                        os.remove(self.p)
+                    except OSError:
+                        pass
+                time.sleep(0.05)
+        raise RuntimeError('results.json lock')
+
+    def __exit__(self, *a):
+        os.close(self.fd)
+        os.remove(self.p)
+
+
 def record(row):
+    with _Lock():
+        _record(row)
+
+
+def _record(row):
     """row: id, title, variant, status (pass|fail|not run|info), label (real-wp|mock|n/a), evidence [], notes"""
     QA.mkdir(parents=True, exist_ok=True)
     rows = json.loads(RESULTS.read_text(encoding='utf-8')) if RESULTS.exists() else []
@@ -169,6 +203,11 @@ def fill_details(page, d=None, deal='sale', ptype='apartment', phone_ok=False):
 
 
 def clear(id_, variant=None, prefix=''):
+    with _Lock():
+        _clear(id_, variant, prefix)
+
+
+def _clear(id_, variant=None, prefix=''):
     """drops earlier rows of a test (so a renamed case does not linger in the table)"""
     if not RESULTS.exists():
         return

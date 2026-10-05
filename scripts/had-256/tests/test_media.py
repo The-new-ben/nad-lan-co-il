@@ -120,7 +120,7 @@ he, st = listing(d)
 hits, n = exposure(d, refs)
 rec("an admin's test run (stays a draft)", r[0] == 200 and st == 'draft' and not hits, {'publish': [r[0], r[1].get('state')], 'status': st, 'exposed': hits})
 
-for where in ('row', 'claim_pending', 'fenced:owner_claim', 'status_write:draft', 'fenced:owner_content', 'fenced:owner_meta', 'fenced:owner_render', 'fenced:owner_status', 'status_write:publish'):
+for where in ('row', 'claim_pending', 'fenced:owner_claim', 'status_write:draft', 'fenced:owner_content', 'fenced:owner_meta', 'fenced:owner_render', 'fenced:owner_status', 'owner_status_sql'):
     reset(V)
     s = Session(V).login('dana')
     d, rev, refs = new_draft(s, 2)

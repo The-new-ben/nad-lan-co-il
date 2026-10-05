@@ -78,6 +78,9 @@ add_filter( 'pre_wp_mail', function ( $null, $atts ) {
 	return true;
 }, 1, 2 );
 
+/* as on the live site: nadlan-config's inc/final-hardening.php turns wptexturize off everywhere (run_wptexturize false) */
+add_filter( 'run_wptexturize', '__return_false' );
+
 /* the toolbar stays off for owners, as on the live site */
 add_filter( 'show_admin_bar', function ( $show ) { return current_user_can( 'edit_posts' ) ? $show : false; } );
 
@@ -108,7 +111,7 @@ function nlj_setup_users() {
 }
 
 add_action( 'init', function () {
-	if ( get_option( 'nlj_setup' ) === '3' || ! file_exists( WP_CONTENT_DIR . '/nlj-seed.json' ) ) { return; }
+	if ( get_option( 'nlj_setup' ) === '4' || ! file_exists( WP_CONTENT_DIR . '/nlj-seed.json' ) ) { return; }
 	update_option( 'users_can_register', 1 );
 	update_option( 'default_role', 'subscriber' );
 	update_option( 'blogname', 'nad-lan bench (local)' );
@@ -117,14 +120,19 @@ add_action( 'init', function () {
 	nlj_setup_users();
 	$admin = get_user_by( 'email', 'bench.admin@example.test' );
 	if ( $admin ) { update_option( 'nl_drop_author', $admin->ID ); update_option( 'admin_email', 'bench.admin@example.test' ); }
-	if ( ! get_page_by_path( 'post-listing' ) ) {
-		wp_insert_post( array( 'post_type' => 'page', 'post_status' => 'publish', 'post_name' => 'post-listing', 'post_title' => 'פרסום נכס', 'post_content' => '<!-- wp:shortcode -->[nadlan_listing_wizard]<!-- /wp:shortcode -->' ) );
+	// the shortcode as plain text in the page (as a classic page holds it): the_content runs do_shortcode after
+	// wptexturize, so the 1.0 tool's inline script is not texturized (a shortcode BLOCK would be, and break it)
+	$pl = get_page_by_path( 'post-listing' );
+	if ( ! $pl ) {
+		wp_insert_post( array( 'post_type' => 'page', 'post_status' => 'publish', 'post_name' => 'post-listing', 'post_title' => 'פרסום נכס', 'post_content' => '[nadlan_listing_wizard]' ) );
+	} else {
+		wp_update_post( array( 'ID' => $pl->ID, 'post_content' => '[nadlan_listing_wizard]' ) );
 	}
 	foreach ( array( 'terms' => 'תנאי שימוש', 'privacy' => 'מדיניות פרטיות' ) as $slug => $t ) {
 		if ( ! get_page_by_path( $slug ) ) { wp_insert_post( array( 'post_type' => 'page', 'post_status' => 'publish', 'post_name' => $slug, 'post_title' => $t, 'post_content' => '(bench placeholder)' ) ); }
 	}
 	flush_rewrite_rules( false );
-	update_option( 'nlj_setup', '3' );
+	update_option( 'nlj_setup', '4' );
 }, 50 );
 
 /* ---------------- fault hooks (off unless a test sets them) ---------------- */
@@ -229,6 +237,36 @@ add_action( 'rest_api_init', function () {
 		update_post_meta( $drop, 'nl_state', 'ready' );
 		delete_post_meta( $drop, 'nl_missing' );
 		return array( 'ok' => true, 'drop' => $drop );
+	} ) );
+	/* a 1.x-style owner submission (what /owner/submit created before 2.0), ready to build: it exercises x-broker-drop's
+	   nl_drop_build through the 1.x door /owner/build/<drop>, which 2.0 keeps for drops created before the release */
+	register_rest_route( 'nlj-test/v1', '/legacy-drop', array( 'methods' => 'POST', 'permission_callback' => $local, 'callback' => function ( WP_REST_Request $r ) {
+		$u    = get_user_by( 'email', (string) $r->get_param( 'email' ) );
+		$text = 'למכירה, 4 חדרים, 96 מ״ר, קומה 3 מתוך 8. שכונת הדוגמה, תל אביב יפו. 3,450,000 ש״ח.';
+		$id   = wp_insert_post( array( 'post_type' => 'nadlan_drop', 'post_status' => 'private', 'post_title' => 'bench legacy drop', 'post_content' => $text, 'post_author' => nl_drop_author() ) );
+		update_post_meta( $id, 'nl_owner_user', (string) $u->ID );
+		update_post_meta( $id, 'nl_owner_contact', wp_slash( wp_json_encode( array( 'name' => 'דנה', 'phone' => '050-0000000' ), JSON_UNESCAPED_UNICODE ) ) );
+		update_post_meta( $id, 'nl_text', $text );
+		update_post_meta( $id, 'nl_photos', array() );
+		update_post_meta( $id, 'nl_door', 'wizard' );
+		$f = array( 'listing_type' => 'sale', 'property_type' => 'apartment', 'exclusive' => false, 'city_he' => 'תל אביב יפו', 'city_en' => 'Tel Aviv-Yafo', 'area_he' => 'שכונת הדוגמה', 'area_en' => null, 'street_he' => null, 'street_en' => null, 'rooms' => 4, 'size_sqm' => 96, 'balcony_sqm' => null, 'garden_sqm' => null, 'floor' => 3, 'total_floors' => 8, 'price' => 3450000, 'parking_count' => null, 'parking' => null, 'storage' => null, 'elevator' => null, 'protected_room' => null, 'ac' => null, 'furnished' => null, 'condition' => null, 'entry_he' => null, 'entry_en' => null, 'view_he' => null, 'view_en' => null, 'features_he' => array(), 'features_en' => array(), 'notes_he' => null, 'notes_en' => null );
+		update_post_meta( $id, 'nl_facts', wp_slash( wp_json_encode( $f, JSON_UNESCAPED_UNICODE ) ) );
+		update_post_meta( $id, 'nl_state', 'ready' );
+		return array( 'drop' => (int) $id );
+	} ) );
+	/* the image libraries this PHP really has (the photo cleaner depends on them) */
+	register_rest_route( 'nlj-test/v1', '/libs', array( 'methods' => 'GET', 'permission_callback' => $local, 'callback' => function () {
+		$gd = function_exists( 'gd_info' ) ? gd_info() : array();
+		$im = class_exists( 'Imagick' );
+		return array(
+			'php'      => PHP_VERSION,
+			'gd'       => $gd ? array( 'version' => $gd['GD Version'] ?? '', 'jpeg' => ! empty( $gd['JPEG Support'] ), 'png' => ! empty( $gd['PNG Support'] ), 'webp' => ! empty( $gd['WebP Support'] ), 'imageflip' => function_exists( 'imageflip' ) ) : false,
+			'imagick'  => $im ? array( 'heic' => (bool) array_intersect( array( 'HEIC', 'HEIF' ), (array) Imagick::queryFormats( 'HEI*' ) ) ) : false,
+			'exif_ext' => function_exists( 'exif_read_data' ),
+			'sodium'   => function_exists( 'sodium_crypto_secretbox' ),
+			'openssl_gcm' => function_exists( 'openssl_encrypt' ) && in_array( 'aes-256-gcm', (array) openssl_get_cipher_methods(), true ),
+			'wp_image_editor' => _wp_image_editor_choose( array( 'mime_type' => 'image/jpeg' ) ),
+		);
 	} ) );
 	register_rest_route( 'nlj-test/v1', '/user', array( 'methods' => 'GET', 'permission_callback' => $local, 'callback' => function ( WP_REST_Request $r ) {
 		$u = get_user_by( 'email', (string) $r->get_param( 'email' ) );
