@@ -4,8 +4,11 @@
 For every element of each page (headless Chrome, phone 390 and desktop 1366), records the element path and ~30 computed
 properties, then a sha256 per page and width. Run before and after a release and compare:
 
-  python tools/style_fingerprint.py --out before.json
-  python tools/style_fingerprint.py --out after.json --compare before.json
+  python tools/style_fingerprint.py --out <scratchpad>/before.json
+  python tools/style_fingerprint.py --out <scratchpad>/after.json --compare <scratchpad>/before.json
+
+Each full file is ~6 MB: write it to the scratchpad and commit only a summary of page hashes (see
+docs/research/style-fingerprint/427-summary.json).
 
 Elements inside animated or time-dependent parts (the 3D world, films, maps, carousels) are skipped, CSS transitions are
 frozen at their end values and opacity is not compared, so equal hashes mean equal styling, not equal timing."""

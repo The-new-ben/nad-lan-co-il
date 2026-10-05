@@ -1,0 +1,132 @@
+{
+ "what": "tools/style_fingerprint.py, 1.72.427 proof (HAD-421 step 8). Full rows were in commit 6b7842ad; only page hashes are kept here.",
+ "runs": {
+  "before427-a": {
+   "/@390": {
+    "n": 1148,
+    "sha": "63855acc1392f8c1"
+   },
+   "/brokers/@390": {
+    "n": 3434,
+    "sha": "aab22ac2c9237f92"
+   },
+   "/projects/@390": {
+    "n": 2295,
+    "sha": "8b8817a9666d3b1c"
+   },
+   "/projects/hamedina/@390": {
+    "n": 952,
+    "sha": "385a427a919c972f"
+   },
+   "/projects/rainbow-tel-aviv/@390": {
+    "n": 1244,
+    "sha": "10a83604d1f8c0ff"
+   },
+   "/@1366": {
+    "n": 1148,
+    "sha": "8a6fe23a42d06a93"
+   },
+   "/brokers/@1366": {
+    "n": 3434,
+    "sha": "1f7771297c3c951f"
+   },
+   "/projects/@1366": {
+    "n": 2294,
+    "sha": "424ac23fd3c05e34"
+   },
+   "/projects/hamedina/@1366": {
+    "n": 988,
+    "sha": "c7516d57b0c86f70"
+   },
+   "/projects/rainbow-tel-aviv/@1366": {
+    "n": 1280,
+    "sha": "72a6cf2a9f8c3c9a"
+   }
+  },
+  "before427-b": {
+   "/@390": {
+    "n": 1148,
+    "sha": "63855acc1392f8c1"
+   },
+   "/brokers/@390": {
+    "n": 3434,
+    "sha": "aab22ac2c9237f92"
+   },
+   "/projects/@390": {
+    "n": 2295,
+    "sha": "8b8817a9666d3b1c"
+   },
+   "/projects/hamedina/@390": {
+    "n": 952,
+    "sha": "385a427a919c972f"
+   },
+   "/projects/rainbow-tel-aviv/@390": {
+    "n": 1244,
+    "sha": "10a83604d1f8c0ff"
+   },
+   "/@1366": {
+    "n": 1148,
+    "sha": "8a6fe23a42d06a93"
+   },
+   "/brokers/@1366": {
+    "n": 3434,
+    "sha": "1f7771297c3c951f"
+   },
+   "/projects/@1366": {
+    "n": 2294,
+    "sha": "424ac23fd3c05e34"
+   },
+   "/projects/hamedina/@1366": {
+    "n": 988,
+    "sha": "c7516d57b0c86f70"
+   },
+   "/projects/rainbow-tel-aviv/@1366": {
+    "n": 1280,
+    "sha": "72a6cf2a9f8c3c9a"
+   }
+  },
+  "after427": {
+   "/@390": {
+    "n": 1148,
+    "sha": "63855acc1392f8c1"
+   },
+   "/brokers/@390": {
+    "n": 3434,
+    "sha": "aab22ac2c9237f92"
+   },
+   "/projects/@390": {
+    "n": 2295,
+    "sha": "8fdbab8af0da93cb"
+   },
+   "/projects/hamedina/@390": {
+    "n": 952,
+    "sha": "385a427a919c972f"
+   },
+   "/projects/rainbow-tel-aviv/@390": {
+    "n": 1244,
+    "sha": "10a83604d1f8c0ff"
+   },
+   "/@1366": {
+    "n": 1148,
+    "sha": "8a6fe23a42d06a93"
+   },
+   "/brokers/@1366": {
+    "n": 3434,
+    "sha": "1f7771297c3c951f"
+   },
+   "/projects/@1366": {
+    "n": 2294,
+    "sha": "424ac23fd3c05e34"
+   },
+   "/projects/hamedina/@1366": {
+    "n": 988,
+    "sha": "c7516d57b0c86f70"
+   },
+   "/projects/rainbow-tel-aviv/@1366": {
+    "n": 1280,
+    "sha": "72a6cf2a9f8c3c9a"
+   }
+  }
+ },
+ "result": "before-a = before-b on all 10; after = before-b on 9/10; /projects/@390 differs by the pre-existing .nlcp-herogrid 0/7 px flicker (HAD-426)"
+}
