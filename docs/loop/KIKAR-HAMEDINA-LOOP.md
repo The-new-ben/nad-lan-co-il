@@ -214,6 +214,16 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **5.10 ~16:40, turn 33: HAD-421 steps 2b + 3b LIVE (1.72.423) on the third run.**
+  - **Rollbacks:** two automatic rollbacks taught two WordPress facts:
+    - a core style (wp-jquery-ui-dialog) pulls dashicons back in;
+    - a plugin style enqueued late needs a dequeue at print time.
+  - **Results:** FCP 3.0 → 2.8 s; the film frames hold their size before the posters (no jump). Since the morning: world usable 21.7 → 15.6 s, 2.64 → 1.33 MB.
+  - **Next notch, sharper:**
+    - start the world earlier when the stage is in the first screen (modulepreload three.js + preload world.json);
+    - send less (world.json 378 KB);
+    - measure each step.
+
 - **5.10 ~14:55, turn 32: HAD-421 step 2a LIVE (1.72.422): the world poster once on phones.**
   - **Measured** (phone, slow 4G): world usable 17.0 → 15.6 s; 1.65 → 1.37 MB until usable. Since the start of HAD-421 this morning: 21.7 → 15.6 s and 2.64 → 1.37 MB.
   - **Next notch, sharper:**
