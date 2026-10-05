@@ -3892,3 +3892,4 @@ TEMP BRIDGE by the Kikar loop [main] 20:45 Israel (machine clock): HAD-256 stage
   - cleanup 0 every time; the site stayed 200.
   - Results are in the builder worktree, commit 025cf41d. HAD-256 open item 1 is CLOSED.
 - **Next:** the sub-agent writes deploy_had256.py for 2.0.1 (dry / write / auto-rollback; private dir outside the web root) and the page-4958 copy fixes. Main runs the release.
+CONTENT FIX by the Kikar loop [main] 22:17 Israel (machine clock): HAD-395 broker Pro price on /en/ /fr/ /ru/brokers/ (pages 7803/7888/7887): 149 -> 349 a month, 1,490 -> 3,490 a year (Ben 28.9); build price 1,490 unchanged; backup docs/qa/had-395/
