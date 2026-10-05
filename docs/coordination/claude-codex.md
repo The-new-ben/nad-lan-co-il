@@ -3823,3 +3823,12 @@ RELEASE DONE 1.72.427 by the Kikar loop [main] 17:40 Israel (machine clock): the
 - **Next notch found (bigger):** the world mounts only after window 'load' + idle (nadlan_ps_world_script: addEventListener('load', later)). On slow 4G, load = 8.4 s while DCL = 5.1 s and FCP = 2.8 s; world_loading starts at 8.5 s and ready = 12.4 s. Mounting at DOMContentLoaded (+ idle, timeout 2 s) cannot touch FCP/LCP (already painted). Plan: a fair A/B through a URL switch first (default unchanged), then flip the default if world-ready improves without hurting DCL/load. Design record first (KikarHamedinaWorld v104.51).
 RELEASE IN PROGRESS 1.72.428 by the Kikar loop [main] start 18:09 Israel (machine clock) (HAD-421 step 9, A/B: ?nlwboot=early world-boot switch, default unchanged; dry run, then live)
 RELEASE DONE 1.72.428 by the Kikar loop [main] 18:14 Israel (deploy record): ?nlwboot=early world-boot switch, default unchanged (project-stage.php c81e0b2e18 -> 66568fd44e); all checks OK; rollback .bak428
+
+### 5.10.2026 ~18:35 Israel (machine clock): main, the 1.72.428 A/B result: EARLY BOOT REJECTED, the default stays (HAD-421 step 9)
+- **Slow 4G, 5 clean runs each, net of TTFB:**
+  - the world starts loading at 5.3 s instead of 8.1 s, but is usable LATER: 12.22 s against 11.83 s (raw 12.88 s against 12.51 s);
+  - DCL 4.58 against 5.06 s; FCP 2.17 against 2.13 s.
+  - The phone's bandwidth and CPU are the bottleneck; mounting early only adds contention.
+- **No throttle:** clearly worse. Ready 5.63 s against 2.27 s; FCP 0.96 against 0.66 s; DCL 1.48 against 0.73 s (the early import runs before the first paint on a fast link).
+- **Decision:** no flip. ?nlwboot=early stays as a harmless, off-by-default switch for future A/B runs. Files: docs/research/stage-speed/hamedina-2026-10-05-428-A-load.json and -B-early.json.
+- **The speed track is close to exhausted:** what is left is the world's own CPU build (world.js internals), a bigger job. The owner asked at 18:20 whether the loop is just running; no new release until his word.

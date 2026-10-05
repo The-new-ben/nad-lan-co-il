@@ -214,6 +214,16 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **5.10 ~18:35, turn 38: A/B of the world's boot (1.72.428, v104.51): early boot REJECTED.**
+  - **Search (5.10):**
+    - [Zillow SkyTour uses Gaussian splats](https://lidarnews.com/zillow-3d-tours-with-gaussian-splatting/)
+    - [WebSplatter, WebGPU splats on phones](https://arxiv.org/pdf/2602.03207)
+    - The leaders stream a rough version first.
+  - **Measured on slow 4G:** mounting at parse starts the world 2.8 s earlier but finishes it 0.4 s later (12.2 against 11.8 s). Unthrottled, it is clearly worse (5.6 against 2.3 s). The default stays.
+  - **The owner asked (18:20)** whether the loop is just running. Honest answer given: 7/9 V-items are done; V6 and V8 wait on him and on Google; the speed track is near its end (21.7 → 12.4 s today).
+  - **No release until his word.**
+  - **Next, sharper:** stop the speed track. Spend loop time where he points: HAD-256 (Maya's QA), HAD-425 (12 pages without a map), or the DUO films.
+
 - **5.10 ~17:55, turn 37: HAD-421 step 8 LIVE (1.72.427): the theme stylesheet is printed once.**
   - **Found:** style.min.css and style.css (the same 287 rules) were both printed on every page.
   - **Change:** the earlier handle keeps its place without a file.

@@ -1,0 +1,488 @@
+{
+ "url": "https://nad-lan.co.il/projects/hamedina/?nlwboot=early",
+ "at": "2026-10-05T15:16:18Z",
+ "runs": 5,
+ "block": null,
+ "profiles": {
+  "slow4g": {
+   "median": {
+    "ttfb": 628,
+    "fcp": 2792,
+    "lcp": 2792,
+    "dcl": 5206,
+    "load": 8432,
+    "world_loading": 5996,
+    "world_ready": 12883,
+    "kb_to_ready": 1312,
+    "requests_to_ready": 48
+   },
+   "runs": [
+    {
+     "ttfb": 689,
+     "fcp": 2924,
+     "lcp": 2924,
+     "dcl": 5707,
+     "load": 8431,
+     "world_loading": 5996,
+     "world_ready": 12911,
+     "kb_to_ready": 1312,
+     "requests_to_ready": 48,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       9311
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       8426
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       6539
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       8113
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       5784
+      ],
+      [
+       "https://nad-lan.co.il/wp-includes/js/jquery/jquery.min.js",
+       35,
+       2106
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 13.0
+    },
+    {
+     "ttfb": 622,
+     "fcp": 2780,
+     "lcp": 2780,
+     "dcl": 5135,
+     "load": 8432,
+     "world_loading": 6039,
+     "world_ready": 12914,
+     "kb_to_ready": 1312,
+     "requests_to_ready": 48,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       9255
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       8369
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       6633
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       7736
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       5943
+      ],
+      [
+       "https://nad-lan.co.il/wp-includes/js/jquery/jquery.min.js",
+       35,
+       2047
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 13.0
+    },
+    {
+     "ttfb": 692,
+     "fcp": 2864,
+     "lcp": 2864,
+     "dcl": 5341,
+     "load": 8557,
+     "world_loading": 5951,
+     "world_ready": 12828,
+     "kb_to_ready": 1312,
+     "requests_to_ready": 48,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       9322
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       8425
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       6581
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       7923
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       5876
+      ],
+      [
+       "https://nad-lan.co.il/wp-includes/js/jquery/jquery.min.js",
+       35,
+       2113
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 12.9
+    },
+    {
+     "ttfb": 613,
+     "fcp": 2792,
+     "lcp": 2792,
+     "dcl": 4819,
+     "load": 8455,
+     "world_loading": 6032,
+     "world_ready": 12500,
+     "kb_to_ready": 1312,
+     "requests_to_ready": 49,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       9255
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       8355
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       6611
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       7601
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       5964
+      ],
+      [
+       "https://nad-lan.co.il/wp-includes/js/jquery/jquery.min.js",
+       35,
+       2055
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 12.6
+    },
+    {
+     "ttfb": 628,
+     "fcp": 2732,
+     "lcp": 2732,
+     "dcl": 5206,
+     "load": 8419,
+     "world_loading": 5964,
+     "world_ready": 12883,
+     "kb_to_ready": 1312,
+     "requests_to_ready": 48,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       9267
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       8354
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       6542
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       7805
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       5897
+      ],
+      [
+       "https://nad-lan.co.il/wp-includes/js/jquery/jquery.min.js",
+       35,
+       2066
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 13.0
+    }
+   ]
+  },
+  "none": {
+   "median": {
+    "ttfb": 667,
+    "fcp": 1592,
+    "lcp": 1592,
+    "dcl": 2108,
+    "load": 2858,
+    "world_loading": 2999,
+    "world_ready": 6258,
+    "kb_to_ready": 1312,
+    "requests_to_ready": 48
+   },
+   "runs": [
+    {
+     "ttfb": 667,
+     "fcp": 1492,
+     "lcp": 1492,
+     "dcl": 1627,
+     "load": 2067,
+     "world_loading": 2144,
+     "world_ready": 5047,
+     "kb_to_ready": 1312,
+     "requests_to_ready": 49,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       1023
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       1092
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       724
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       1539
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       954
+      ],
+      [
+       "https://nad-lan.co.il/wp-includes/js/jquery/jquery.min.js",
+       35,
+       746
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 5.1
+    },
+    {
+     "ttfb": 700,
+     "fcp": 1680,
+     "lcp": 1680,
+     "dcl": 2177,
+     "load": 2825,
+     "world_loading": 2976,
+     "world_ready": 6368,
+     "kb_to_ready": 1312,
+     "requests_to_ready": 48,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       1059
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       1065
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       756
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       2223
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       985
+      ],
+      [
+       "https://nad-lan.co.il/wp-includes/js/jquery/jquery.min.js",
+       35,
+       767
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 6.5
+    },
+    {
+     "ttfb": 721,
+     "fcp": 1700,
+     "lcp": 1700,
+     "dcl": 2236,
+     "load": 3030,
+     "world_loading": 3164,
+     "world_ready": 6434,
+     "kb_to_ready": 1312,
+     "requests_to_ready": 49,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       1111
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       1110
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       790
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       2292
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       1004
+      ],
+      [
+       "https://nad-lan.co.il/wp-includes/js/jquery/jquery.min.js",
+       35,
+       810
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 6.5
+    },
+    {
+     "ttfb": 633,
+     "fcp": 1592,
+     "lcp": 1592,
+     "dcl": 2108,
+     "load": 2879,
+     "world_loading": 3025,
+     "world_ready": 6258,
+     "kb_to_ready": 1312,
+     "requests_to_ready": 48,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       987
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       1048
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       693
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       2158
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       909
+      ],
+      [
+       "https://nad-lan.co.il/wp-includes/js/jquery/jquery.min.js",
+       35,
+       706
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 6.3
+    },
+    {
+     "ttfb": 628,
+     "fcp": 1576,
+     "lcp": 1576,
+     "dcl": 2094,
+     "load": 2858,
+     "world_loading": 2999,
+     "world_ready": 5225,
+     "kb_to_ready": 1312,
+     "requests_to_ready": 48,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       982
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       985
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       685
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       2135
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       897
+      ],
+      [
+       "https://nad-lan.co.il/wp-includes/js/jquery/jquery.min.js",
+       35,
+       702
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 5.3
+    }
+   ]
+  }
+ }
+}
