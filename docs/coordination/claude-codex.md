@@ -3832,3 +3832,21 @@ RELEASE DONE 1.72.428 by the Kikar loop [main] 18:14 Israel (deploy record): ?nl
 - **No throttle:** clearly worse. Ready 5.63 s against 2.27 s; FCP 0.96 against 0.66 s; DCL 1.48 against 0.73 s (the early import runs before the first paint on a fast link).
 - **Decision:** no flip. ?nlwboot=early stays as a harmless, off-by-default switch for future A/B runs. Files: docs/research/stage-speed/hamedina-2026-10-05-428-A-load.json and -B-early.json.
 - **The speed track is close to exhausted:** what is left is the world's own CPU build (world.js internals), a bigger job. The owner asked at 18:20 whether the loop is just running; no new release until his word.
+RELEASE IN PROGRESS 1.72.429 by the Kikar loop [main] start 18:41 Israel (machine clock) (ProjectFilm v80: the DUO, Rainbow and Dimri Yama films in five languages; Ben 5.10 "everything is approved"; dry run, then live)
+RELEASE DONE 1.72.429 by the Kikar loop [main] 18:48 Israel (deploy record): ProjectFilm v80, the DUO, Rainbow and Dimri Yama films in five languages (project-stage.php 66568fd44e -> d7e1cb235d); all checks OK; rollback .bak429
+
+### 5.10.2026 ~18:55 Israel (machine clock): main RECEIPT 1.72.429 (ProjectFilm v80: the DUO, Rainbow and Dimri Yama films live in five languages; Ben 5.10 "everything is approved, upload and then send links")
+- **Audit first (sub-agent, read-only):** no draft label in any of the 16 film files. The only badge is "הדמיה להמחשה". The end card carries the map-data credit (OpenStreetMap + Tel Aviv-Yafo GIS). No developer name, no price.
+- **Rentals film NOT published:**
+  - the product it shows (rentals v2) is still admins-only;
+  - the synthetic voice's reference script came from former EcoCity material (the owner's absolute EcoCity order).
+- **Upload:** 12 web copies (720p, 3-9 MB) + 12 posters (frame at 2.5 s), media 8177-8200, every file byte-checked (docs/qa/film-v1-projects/media.json). WordPress renamed the mp4 files with "-1"; the exact URLs are used.
+- **Code (film_429.py):**
+  - Rainbow's v79 film is replaced; DUO and Dimri get 'film' + 'film_en'.
+  - Language pages keep film_en (before: unset).
+  - nadlan_ps_film_t gives the button, the dialog direction/close/bar and the VideoObject name in he/en/fr/ru/ar.
+  - project-stage.php 66568fd44e → d7e1cb235d; design ProjectFilm v80 (DS artifact version 206).
+  - Three inherited checks the change removes were updated (t346 rainbow-en, t331 rainbow files, t331 duo); 15 new film checks.
+  - All checks OK on the first run; rollback .bak429.
+- **Real presses (headless Chrome):** 12/12 play. DUO he, DUO en, Rainbow he, Rainbow fr, Dimri he and Dimri ar, each on phone 390 and PC 1366. The phone gets the 9x16 file, the PC the 16x9; the bar and the direction are in the page's language; 0 page errors. Screenshots in docs/qa/film-v1-projects/live/.
+- **Defect found after the release (fixing next):** the accessibility button covers the start of the new film button on LTR language pages at 1366x900 and 1440x900 (rainbow-fr), and partly on the Hebrew Dimri page at 1280x720. AccessibleCorner exists only on world pages.
