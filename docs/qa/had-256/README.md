@@ -20,6 +20,7 @@ Playground (SQLite) run. Main is the only publisher. Results: `RESULTS.md` (gene
 |---|---|---|---|
 | slice-1 | `d2b8f349` | 9402 | `QA-SNAPSHOT.md` (restarted once after the usage-limit stop on its own unchanged data: `bind-check-qa-9402-restart.txt`) |
 | snapshot 2 (P0/P1 a-d fixed) | `c2e4cd31` | 9403 | `QA-SNAPSHOT-2.md` |
+| snapshot 3 (everything below) | see `QA-SNAPSHOT-3.md` | 9404 | `QA-SNAPSHOT-3.md` |
 | builder's latest | see `git log` | 9401 | not for QA |
 
 ## What was built
@@ -111,7 +112,20 @@ Every row was run on real WordPress (Playground) unless it says otherwise; no ro
 - Privacy: two accounts on one browser (B never touches A's queue or the 1.x text; recorder on every localStorage
   call), the stale tab (cleared by the ping alone while in the background, 0.02 s after focus), another account and
   anonymous against every door with real and guessed ids (72 requests, all refused, nothing leaked).
-- Layout (L14): bar / overflow / targets / focus / contrast at 320, 360, 390, 412, 1440, he and en: see RESULTS.md.
+- Layout (L14): 13 screens x 5 widths x 2 languages: 1,610 controls focused, none covered by the site's floating bar or
+  left off screen; 3,889 text nodes, none under 4.5:1 (3:1 large) on computed colours; no horizontal overflow, every
+  control 44 px, a visible focus ring, no JavaScript error (`CONTRAST.md`).
+- Rollback (L17): new code -> base code 6e9cf930 on the same data (the 1.0 tool works, the 2.0 listing renders, the 2.0
+  drafts are kept, no fatal) -> new code again (the open draft resumes with its photos).
+- Findings fixed along the way, on real WordPress: the publish exposed a public photo before a successful publish (P0,
+  Maya R1); a held listing lost its Latin address (WordPress empties a pending post's slug for a user who cannot
+  publish); on phones the site's bar lifted 150 px over the fields; browser-grey placeholders 4.41:1; failed photo tiles
+  clipped their buttons at 320 px; the 1.0 page's inline script broke under wptexturize on the bench only (the live site
+  turns texturize off; the bench now does too).
+- BEFORE findings (6e9cf930, same bench): a corrupt JPEG is accepted and stored; recovery on wp-login.php says "There is
+  no account with that username or email address" (enumeration); the text queue is one origin-wide key (another tab's
+  last keystroke wins silently; photos are lost on reload); there is no English page; the same listing sent twice is two
+  drops; 4 parallel builds of one drop are 4 public listings; validation failures spend the publish quota.
 
 ## Open risks and things not done (honest list)
 

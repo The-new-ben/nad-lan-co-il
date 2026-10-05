@@ -1,13 +1,626 @@
 {
+ "320-he": {
+  "screens": {
+   "auth-signup": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"תנאי השימוש\" 190x38",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 19
+    },
+    "bar_present": true
+   },
+   "auth-existing-email": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"תנאי השימוש\" 190x38",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 12,
+     "text": 21
+    },
+    "bar_present": true
+   },
+   "auth-login": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 8,
+     "text": 12
+    },
+    "bar_present": true
+   },
+   "auth-recovery-sent": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 15
+    },
+    "bar_present": true
+   },
+   "details-empty": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 19,
+     "text": 42
+    },
+    "bar_present": true
+   },
+   "details-errors": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 70
+    },
+    "bar_present": true
+   },
+   "details-filled": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 59
+    },
+    "bar_present": true
+   },
+   "photos": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 14,
+     "text": 22
+    },
+    "bar_present": true
+   },
+   "preview": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 32
+    },
+    "bar_present": true
+   },
+   "published": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 9
+    },
+    "bar_present": true
+   },
+   "my-listings": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 26
+    },
+    "bar_present": true
+   },
+   "promotion-off": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [
+     {
+      "text": "רשימת הנכסים",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "לא זמין כרגע",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ],
+    "checked": {
+     "focus": 6,
+     "text": 17
+    },
+    "bar_present": true
+   },
+   "saved-draft": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 17
+    },
+    "bar_present": true
+   }
+  },
+  "js_errors": []
+ },
+ "360-he": {
+  "screens": {
+   "auth-signup": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"תנאי השימוש\" 190x38",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 19
+    },
+    "bar_present": true
+   },
+   "auth-existing-email": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"תנאי השימוש\" 190x38",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 12,
+     "text": 21
+    },
+    "bar_present": true
+   },
+   "auth-login": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 8,
+     "text": 12
+    },
+    "bar_present": true
+   },
+   "auth-recovery-sent": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 15
+    },
+    "bar_present": true
+   },
+   "details-empty": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 19,
+     "text": 42
+    },
+    "bar_present": true
+   },
+   "details-errors": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 70
+    },
+    "bar_present": true
+   },
+   "details-filled": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 59
+    },
+    "bar_present": true
+   },
+   "photos": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 14,
+     "text": 22
+    },
+    "bar_present": true
+   },
+   "preview": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 32
+    },
+    "bar_present": true
+   },
+   "published": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 9
+    },
+    "bar_present": true
+   },
+   "my-listings": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 26
+    },
+    "bar_present": true
+   },
+   "promotion-off": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [
+     {
+      "text": "רשימת הנכסים",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "לא זמין כרגע",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ],
+    "checked": {
+     "focus": 6,
+     "text": 17
+    },
+    "bar_present": true
+   },
+   "saved-draft": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 202x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 17
+    },
+    "bar_present": true
+   }
+  },
+  "js_errors": []
+ },
  "390-he": {
   "screens": {
    "auth-signup": {
-    "bar": [
-     {
-      "el": "input#j-name \"\"",
-      "covered_by": "#nlcta (the floating bar)"
-     }
-    ],
+    "bar": [],
     "offscreen": [],
     "overflow": {
      "scrollWidth": 390,
@@ -83,19 +696,7 @@
     ],
     "nofocus": [],
     "contrast": [],
-    "contrast_exempt": [
-     {
-      "text": "אפשר לשלוח שוב בעוד 60 שניות",
-      "where": "button.nlj-btn",
-      "ratio": 3.12,
-      "need": 4.5,
-      "size": 16,
-      "bold": true,
-      "fg": "rgb(255, 255, 255)",
-      "bg": "rgb(47,111,134)",
-      "why": "disabled control"
-     }
-    ],
+    "contrast_exempt": [],
     "checked": {
      "focus": 7,
      "text": 15
@@ -115,18 +716,7 @@
      "a \"לאתר המתווכים שלכם\" 112x18"
     ],
     "nofocus": [],
-    "contrast": [
-     {
-      "text": "placeholder: 3 מתוך 8",
-      "where": "placeholder",
-      "ratio": 4.41,
-      "need": 4.5,
-      "size": 16,
-      "bold": false,
-      "fg": "rgb(117, 117, 117)",
-      "bg": "rgb(251,250,247)"
-     }
-    ],
+    "contrast": [],
     "contrast_exempt": [],
     "checked": {
      "focus": 19,
@@ -156,18 +746,7 @@
      "a \"לאתר המתווכים שלכם\" 112x18"
     ],
     "nofocus": [],
-    "contrast": [
-     {
-      "text": "placeholder: 3 מתוך 8",
-      "where": "placeholder",
-      "ratio": 4.41,
-      "need": 4.5,
-      "size": 16,
-      "bold": false,
-      "fg": "rgb(117, 117, 117)",
-      "bg": "rgb(251,250,247)"
-     }
-    ],
+    "contrast": [],
     "contrast_exempt": [],
     "checked": {
      "focus": 28,
@@ -227,17 +806,7 @@
    },
    "preview": {
     "bar": [],
-    "offscreen": [
-     "a \"\"",
-     "a \"\"",
-     "a \"\"",
-     "a \"\"",
-     "a \"\"",
-     "a \"\"",
-     "a \"\"",
-     "a \"\"",
-     "a \"\""
-    ],
+    "offscreen": [],
     "overflow": {
      "scrollWidth": 390,
      "innerWidth": 390
@@ -248,44 +817,10 @@
     ],
     "nofocus": [],
     "contrast": [],
-    "contrast_exempt": [
-     {
-      "text": "וואטסאפ",
-      "where": "button.nlj-btn",
-      "ratio": 3.25,
-      "need": 4.5,
-      "size": 15,
-      "bold": true,
-      "fg": "rgb(31, 75, 92)",
-      "bg": "rgb(255,255,255)",
-      "why": "disabled control"
-     },
-     {
-      "text": "חיוג",
-      "where": "button.nlj-btn",
-      "ratio": 3.25,
-      "need": 4.5,
-      "size": 15,
-      "bold": true,
-      "fg": "rgb(31, 75, 92)",
-      "bg": "rgb(255,255,255)",
-      "why": "disabled control"
-     },
-     {
-      "text": "050-0000000",
-      "where": "span.nlj-num",
-      "ratio": 3.25,
-      "need": 4.5,
-      "size": 15,
-      "bold": true,
-      "fg": "rgb(31, 75, 92)",
-      "bg": "rgb(255,255,255)",
-      "why": "disabled control"
-     }
-    ],
+    "contrast_exempt": [],
     "checked": {
-     "focus": 16,
-     "text": 86
+     "focus": 7,
+     "text": 32
     },
     "bar_present": true
    },
@@ -353,12 +888,12 @@
      {
       "text": "לא זמין כרגע",
       "where": "button.nlj-btn",
-      "ratio": 2.5,
+      "ratio": 4.28,
       "need": 4.5,
       "size": 16,
       "bold": true,
-      "fg": "rgb(255, 255, 255)",
-      "bg": "rgb(47,111,134)",
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
       "why": "disabled control"
      }
     ],
@@ -378,6 +913,2171 @@
     "small": [],
     "inline_small": [
      "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 17
+    },
+    "bar_present": true
+   }
+  },
+  "js_errors": []
+ },
+ "412-he": {
+  "screens": {
+   "auth-signup": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"תנאי השימוש\" 66x18",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 19
+    },
+    "bar_present": true
+   },
+   "auth-existing-email": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"תנאי השימוש\" 66x18",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 12,
+     "text": 21
+    },
+    "bar_present": true
+   },
+   "auth-login": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 8,
+     "text": 12
+    },
+    "bar_present": true
+   },
+   "auth-recovery-sent": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 15
+    },
+    "bar_present": true
+   },
+   "details-empty": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 268x38",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 19,
+     "text": 42
+    },
+    "bar_present": true
+   },
+   "details-errors": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 268x38",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 70
+    },
+    "bar_present": true
+   },
+   "details-filled": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 268x38",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 59
+    },
+    "bar_present": true
+   },
+   "photos": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 268x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 14,
+     "text": 22
+    },
+    "bar_present": true
+   },
+   "preview": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 268x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 32
+    },
+    "bar_present": true
+   },
+   "published": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 9
+    },
+    "bar_present": true
+   },
+   "my-listings": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 268x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 26
+    },
+    "bar_present": true
+   },
+   "promotion-off": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [
+     {
+      "text": "רשימת הנכסים",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "לא זמין כרגע",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ],
+    "checked": {
+     "focus": 6,
+     "text": 17
+    },
+    "bar_present": true
+   },
+   "saved-draft": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 17
+    },
+    "bar_present": true
+   }
+  },
+  "js_errors": []
+ },
+ "1440-he": {
+  "screens": {
+   "auth-signup": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"תנאי השימוש\" 66x18",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 27
+    },
+    "bar_present": true
+   },
+   "auth-existing-email": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"תנאי השימוש\" 66x18",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 12,
+     "text": 29
+    },
+    "bar_present": true
+   },
+   "auth-login": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 8,
+     "text": 20
+    },
+    "bar_present": true
+   },
+   "auth-recovery-sent": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 23
+    },
+    "bar_present": true
+   },
+   "details-empty": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 19,
+     "text": 56
+    },
+    "bar_present": true
+   },
+   "details-errors": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 84
+    },
+    "bar_present": true
+   },
+   "details-filled": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 75
+    },
+    "bar_present": true
+   },
+   "photos": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 14,
+     "text": 38
+    },
+    "bar_present": true
+   },
+   "preview": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 46
+    },
+    "bar_present": true
+   },
+   "published": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 9
+    },
+    "bar_present": true
+   },
+   "my-listings": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"דירת 4 חדרים בשכונת הדוגמה\" 231x23",
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 26
+    },
+    "bar_present": true
+   },
+   "promotion-off": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [
+     {
+      "text": "רשימת הנכסים",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "לא זמין כרגע",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ],
+    "checked": {
+     "focus": 6,
+     "text": 17
+    },
+    "bar_present": true
+   },
+   "saved-draft": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 17
+    },
+    "bar_present": true
+   }
+  },
+  "js_errors": []
+ },
+ "320-en": {
+  "screens": {
+   "auth-signup": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 221x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 19
+    },
+    "bar_present": true
+   },
+   "auth-existing-email": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 221x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 12,
+     "text": 21
+    },
+    "bar_present": true
+   },
+   "auth-login": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"To your broker site\" 221x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 8,
+     "text": 12
+    },
+    "bar_present": true
+   },
+   "auth-recovery-sent": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"To your broker site\" 221x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 15
+    },
+    "bar_present": true
+   },
+   "details-empty": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 223x38",
+     "a \"To your broker site\" 212x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 19,
+     "text": 42
+    },
+    "bar_present": true
+   },
+   "details-errors": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 223x38",
+     "a \"To your broker site\" 212x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 70
+    },
+    "bar_present": true
+   },
+   "details-filled": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 223x38",
+     "a \"To your broker site\" 212x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 59
+    },
+    "bar_present": true
+   },
+   "photos": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 223x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 14,
+     "text": 22
+    },
+    "bar_present": true
+   },
+   "preview": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 223x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 33
+    },
+    "bar_present": true
+   },
+   "published": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 9
+    },
+    "bar_present": true
+   },
+   "my-listings": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 223x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 26
+    },
+    "bar_present": true
+   },
+   "promotion-off": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [
+     {
+      "text": "Property list",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "Not available yet",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ],
+    "checked": {
+     "focus": 6,
+     "text": 17
+    },
+    "bar_present": true
+   },
+   "saved-draft": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 320,
+     "innerWidth": 320
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 17
+    },
+    "bar_present": true
+   }
+  },
+  "js_errors": []
+ },
+ "360-en": {
+  "screens": {
+   "auth-signup": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 221x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 19
+    },
+    "bar_present": true
+   },
+   "auth-existing-email": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 221x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 12,
+     "text": 21
+    },
+    "bar_present": true
+   },
+   "auth-login": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"To your broker site\" 221x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 8,
+     "text": 12
+    },
+    "bar_present": true
+   },
+   "auth-recovery-sent": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"To your broker site\" 221x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 15
+    },
+    "bar_present": true
+   },
+   "details-empty": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 212x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 19,
+     "text": 42
+    },
+    "bar_present": true
+   },
+   "details-errors": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 212x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 70
+    },
+    "bar_present": true
+   },
+   "details-filled": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 212x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 59
+    },
+    "bar_present": true
+   },
+   "photos": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 14,
+     "text": 22
+    },
+    "bar_present": true
+   },
+   "preview": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 33
+    },
+    "bar_present": true
+   },
+   "published": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 9
+    },
+    "bar_present": true
+   },
+   "my-listings": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 26
+    },
+    "bar_present": true
+   },
+   "promotion-off": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [
+     {
+      "text": "Property list",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "Not available yet",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ],
+    "checked": {
+     "focus": 6,
+     "text": 17
+    },
+    "bar_present": true
+   },
+   "saved-draft": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 360,
+     "innerWidth": 360
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 223x38"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 17
+    },
+    "bar_present": true
+   }
+  },
+  "js_errors": []
+ },
+ "390-en": {
+  "screens": {
+   "auth-signup": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 19
+    },
+    "bar_present": true
+   },
+   "auth-existing-email": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 12,
+     "text": 21
+    },
+    "bar_present": true
+   },
+   "auth-login": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 8,
+     "text": 12
+    },
+    "bar_present": true
+   },
+   "auth-recovery-sent": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 15
+    },
+    "bar_present": true
+   },
+   "details-empty": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 19,
+     "text": 42
+    },
+    "bar_present": true
+   },
+   "details-errors": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 70
+    },
+    "bar_present": true
+   },
+   "details-filled": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 59
+    },
+    "bar_present": true
+   },
+   "photos": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 14,
+     "text": 22
+    },
+    "bar_present": true
+   },
+   "preview": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 33
+    },
+    "bar_present": true
+   },
+   "published": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 9
+    },
+    "bar_present": true
+   },
+   "my-listings": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 26
+    },
+    "bar_present": true
+   },
+   "promotion-off": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [
+     {
+      "text": "Property list",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "Not available yet",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ],
+    "checked": {
+     "focus": 6,
+     "text": 17
+    },
+    "bar_present": true
+   },
+   "saved-draft": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 17
+    },
+    "bar_present": true
+   }
+  },
+  "js_errors": []
+ },
+ "412-en": {
+  "screens": {
+   "auth-signup": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"terms of use\" 274x38",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 19
+    },
+    "bar_present": true
+   },
+   "auth-existing-email": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"terms of use\" 274x38",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 12,
+     "text": 21
+    },
+    "bar_present": true
+   },
+   "auth-login": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 8,
+     "text": 12
+    },
+    "bar_present": true
+   },
+   "auth-recovery-sent": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 15
+    },
+    "bar_present": true
+   },
+   "details-empty": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 19,
+     "text": 42
+    },
+    "bar_present": true
+   },
+   "details-errors": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 70
+    },
+    "bar_present": true
+   },
+   "details-filled": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 59
+    },
+    "bar_present": true
+   },
+   "photos": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 14,
+     "text": 22
+    },
+    "bar_present": true
+   },
+   "preview": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 33
+    },
+    "bar_present": true
+   },
+   "published": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 9
+    },
+    "bar_present": true
+   },
+   "my-listings": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 26
+    },
+    "bar_present": true
+   },
+   "promotion-off": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [
+     {
+      "text": "Property list",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "Not available yet",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ],
+    "checked": {
+     "focus": 6,
+     "text": 17
+    },
+    "bar_present": true
+   },
+   "saved-draft": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 412,
+     "innerWidth": 412
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 17
+    },
+    "bar_present": true
+   }
+  },
+  "js_errors": []
+ },
+ "1440-en": {
+  "screens": {
+   "auth-signup": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 27
+    },
+    "bar_present": true
+   },
+   "auth-existing-email": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 12,
+     "text": 29
+    },
+    "bar_present": true
+   },
+   "auth-login": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 8,
+     "text": 20
+    },
+    "bar_present": true
+   },
+   "auth-recovery-sent": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 23
+    },
+    "bar_present": true
+   },
+   "details-empty": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 19,
+     "text": 56
+    },
+    "bar_present": true
+   },
+   "details-errors": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 84
+    },
+    "bar_present": true
+   },
+   "details-filled": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 75
+    },
+    "bar_present": true
+   },
+   "photos": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 14,
+     "text": 38
+    },
+    "bar_present": true
+   },
+   "preview": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 7,
+     "text": 48
+    },
+    "bar_present": true
+   },
+   "published": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 9
+    },
+    "bar_present": true
+   },
+   "my-listings": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"דירת 4 חדרים בשכונת הדוגמה\" 231x23",
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 26
+    },
+    "bar_present": true
+   },
+   "promotion-off": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [
+     {
+      "text": "Property list",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "Not available yet",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ],
+    "checked": {
+     "focus": 6,
+     "text": 17
+    },
+    "bar_present": true
+   },
+   "saved-draft": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 1440,
+     "innerWidth": 1440
+    },
+    "small": [],
+    "inline_small": [
+     "a \"Sign in to another account\" 641x38"
     ],
     "nofocus": [],
     "contrast": [],

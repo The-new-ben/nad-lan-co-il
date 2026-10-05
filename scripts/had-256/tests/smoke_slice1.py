@@ -65,4 +65,7 @@ c2.close()
 br.close()
 
 print('draft', draft, 'resume', ok_resume, vals, 'kept', kept, 'carried', mail_carried, 'generic', generic, 'js errors', errors)
+record({'id': 'L01', 'variant': V, 'label': 'real-wp+chrome', 'title': 'open an account; an existing email keeps the input and offers sign-in; a wrong password gets one neutral message', 'status': 'pass' if kept and mail_carried and 'אינם נכונים' in generic and not errors else 'fail',
+        'evidence': {'existing_email_input_kept': kept, 'email_carried_to_sign_in': mail_carried, 'wrong_password_message': generic, 'js_errors': errors}})
+record({'id': 'L04', 'variant': V, 'label': 'real-wp+chrome', 'title': 'a new account types details: saved to the account; a reload offers the saved draft and restores it', 'status': 'pass' if ok_resume else 'fail', 'evidence': {'restored': vals, 'draft': draft}})
 sys.exit(0 if ok_resume and kept and mail_carried and not errors else 1)

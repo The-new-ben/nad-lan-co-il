@@ -58,8 +58,33 @@ def main():
     for r in sorted(before, key=lambda r: (r['id'], r['title'])):
         ev = json.dumps(r.get('evidence', {}), ensure_ascii=False)
         out.append('- **%s** [%s] %s · `%s`  \n  %s' % (r['id'], r['status'].upper(), r['title'], r.get('label', ''), (ev[:600] + ('…' if len(ev) > 600 else ''))))
-    other = [r for r in rows if r.get('variant') not in ('after', 'before')]
     (QA / 'RESULTS.md').write_text('\n'.join(out) + '\n', encoding='utf-8')
+    # the contrast and floating-bar table, from the last layout probe (docs/qa/had-256/layout-probe.json)
+    lp = QA / 'layout-probe.json'
+    if lp.exists():
+        probe = json.loads(lp.read_text(encoding='utf-8'))
+        c = ['# HAD-256 · computed contrast and the floating bar, every screen (generated)', '',
+             "From `test_layout.py` on real WordPress + Chrome: every text node under the journey, its computed colour on the effective background (alpha-blended up the ancestors), 4.5:1 (3:1 for 24px+ or 18.66px+ bold), placeholders included; every focusable control focused and checked with `document.elementFromPoint` against the site's real floating bar `#nlcta`.", '',
+             '| Width, language | Screens | Text nodes | Under the ratio | Exempt (disabled controls, WCAG 1.4.3) | Controls focused | Covered or off screen | JS errors |', '|---|---|---|---|---|---|---|---|']
+        for combo, v in probe.items():
+            sc = v['screens']
+            texts = sum(x['checked']['text'] for x in sc.values())
+            focus = sum(x['checked']['focus'] for x in sc.values())
+            under = sum(len(x['contrast']) for x in sc.values())
+            ex = sum(len(x['contrast_exempt']) for x in sc.values())
+            cov = sum(len(x['bar']) + len(x['offscreen']) for x in sc.values())
+            c.append('| %s | %d | %d | %d | %d | %d | %d | %d |' % (combo, len(sc), texts, under, ex, focus, cov, len(v['js_errors'])))
+        c += ['', 'Exempt items (disabled controls; drawn solid and readable anyway):', '']
+        seen = set()
+        for combo, v in probe.items():
+            for name, x in v['screens'].items():
+                for e in x['contrast_exempt']:
+                    k = (name, e.get('text'), e.get('ratio'))
+                    if k in seen:
+                        continue
+                    seen.add(k)
+                    c.append('- %s, %s: "%s" %s:1 (%s)' % (combo, name, e.get('text'), e.get('ratio'), e.get('why')))
+        (QA / 'CONTRAST.md').write_text('\n'.join(c) + '\n', encoding='utf-8')
     print('written', QA / 'RESULTS.md', len(after), 'after rows', len(before), 'before rows')
 
 
