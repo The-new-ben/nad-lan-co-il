@@ -3850,3 +3850,11 @@ RELEASE DONE 1.72.429 by the Kikar loop [main] 18:48 Israel (deploy record): Pro
   - All checks OK on the first run; rollback .bak429.
 - **Real presses (headless Chrome):** 12/12 play. DUO he, DUO en, Rainbow he, Rainbow fr, Dimri he and Dimri ar, each on phone 390 and PC 1366. The phone gets the 9x16 file, the PC the 16x9; the bar and the direction are in the page's language; 0 page errors. Screenshots in docs/qa/film-v1-projects/live/.
 - **Defect found after the release (fixing next):** the accessibility button covers the start of the new film button on LTR language pages at 1366x900 and 1440x900 (rainbow-fr), and partly on the Hebrew Dimri page at 1280x720. AccessibleCorner exists only on world pages.
+CONTENT UPDATE page 5154 /en/buy-property-in-israel/ by the Kikar loop [main] 18:58 Israel (machine clock): HAD-429, the 6,008-word family-home article from Ben's package replaces the body; title + Yoast title/desc follow; backup docs/qa/page-5154/backup-20261005T155556Z.json; rollback = update_page_5154.py --rollback
+- **DONE, page 5154 live (5.10 ~19:05 Israel):** https://nad-lan.co.il/en/buy-property-in-israel/
+  - The body is the package article (sha256 ec08f4c7…), 6,031 net words counted on the live page with the contents list excluded; one H1 ("Buying a Family Home in Israel from Abroad"); the old H1 is gone.
+  - The page keeps its own .nlint design, plus h3, the contents box and tables that scroll on a phone (no sideways page scroll at 390).
+  - Title and Yoast title "Buying Property in Israel from Abroad: A Family Home Guide" (58 chars); description 144 chars. The canonical, the URL, the parent and the language fields are unchanged.
+  - Source audit YELLOW → GREEN. jsonld 2 → 1: the old body's FAQ schema left with it. The new FAQ gets its schema only after review (package rule), an open item.
+  - Checked before: the Bank of Israel "last updated on: 27/09/2026", as cited; the gov.il links open in a real browser.
+  - Read-back identical; rollback = update_page_5154.py --rollback.
