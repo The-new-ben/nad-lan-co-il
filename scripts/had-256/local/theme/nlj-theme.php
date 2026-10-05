@@ -19,7 +19,9 @@
  * Code Snippets itself, the consent-aware Hotjar loader. Their CSS is not loaded; THEME.md lists the effect.
  */
 if ( ! defined( 'ABSPATH' ) ) { return; }
-if ( strpos( (string) @file_get_contents( WP_CONTENT_DIR . '/nlj-variant.txt' ), 'theme' ) !== 0 ) { return; }
+$nlj_v = (string) @file_get_contents( WP_CONTENT_DIR . '/nlj-variant.txt' );
+if ( strpos( $nlj_v, 'theme' ) !== 0 && strpos( $nlj_v, 'rehearsal' ) !== 0 ) { return; }   // the theme bench, or the release rehearsal
+unset( $nlj_v );
 
 define( 'NLJ_THEME_BENCH', true );
 
@@ -35,6 +37,7 @@ if ( get_option( 'stylesheet' ) !== 'nadlan-platform-child' ) {
 
 /* the live Code Snippets, after every plugin, as Code Snippets runs them */
 add_action( 'plugins_loaded', function () {
+	if ( defined( 'NLJ_SNIPPET_EMU' ) ) { return; }   // the rehearsal: the Code Snippets stand-in runs the snippets
 	foreach ( array( 'x-skin-a-638.php', 'x-broker-drop.php', 'x-broker-join-699.php', 'x-owner-wizard-707.php' ) as $f ) {
 		$p = WP_CONTENT_DIR . '/nlj-snippets/' . $f;
 		if ( file_exists( $p ) ) { require_once $p; }

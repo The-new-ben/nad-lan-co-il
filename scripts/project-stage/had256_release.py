@@ -16,8 +16,9 @@ import re
 import subprocess
 
 SNAPSHOT = 'e28df264'
+SNAPSHOT_PAGES = '771abcf4'   # the commit that holds docs/qa/had-256/page-4958
 BASE = '6e9cf930'
-RELS = ["snippet:x-broker-drop", "snippet:x-owner-wizard"]
+RELS = ["snippet:x-broker-drop", "snippet:x-owner-wizard"]   # + "page:4958:A" / "page:4958:B" when main picks a copy variant
 SNIPPET_707 = 707   # x-owner-wizard (live-read 3.10.2026: docs/qa/live-read/20261003T205055Z/snippet-707.php)
 # SHA-256 of the snippet bodies (UTF-8, LF)
 BROKER_BASE_SHA256 = 'e7736ef75fdf176ee759273af2c2a74f31a39215c7dd0a29cccc595bb68232b9'   # x-broker-drop 1.1.3 = 6e9cf930
@@ -29,6 +30,13 @@ OWNER_VERSION = '2.0.1'
 BROKER_VERSION = '1.1.4'
 PRIVATE_DIR_EXPR = "dirname( ABSPATH ) . '/nl-private'"
 PRIVATE_PRELUDE = "/* HAD-256 release: owners' draft photos are kept outside the web root, beside the WordPress folder. A define in\n   wp-config.php wins; owner-wizard reads it only while serving a request. */\nif ( ! defined( 'NL_OWNER_PRIVATE_DIR' ) ) { define( 'NL_OWNER_PRIVATE_DIR', dirname( ABSPATH ) . '/nl-private' ); }\n"
+# page 4958 (/post-listing/): the copy variants (docs/qa/had-256/page-4958). The anchor is the old paragraph block, exactly once.
+PAGE_ID = 4958
+PAGE_PATH = "post-listing"
+PAGE_OLD_SHA256 = '7c130d7756181ff45f6dce40a3385d57e312bf4d634f4d7260b39e393d5c622d'   # the text deploydrop.py --post-listing wrote (scripts/broker-drop/pages/post-listing-he.html, LF)
+PAGE_ANCHOR = '<!-- wp:paragraph -->\n<p>מפרסמים בעצמכם? בוחרים תמונות, כותבים כמה שורות על הנכס, והעמוד עולה לאתר בתוך דקה: התמונות, העובדות והמחיר, בכתובת משלו, עם כפתורי וואטסאפ וחיוג אליכם. בלי עמלה ובלי כרטיס אשראי.</p>\n<!-- /wp:paragraph -->\n'
+PAGE_NEW = {"A": "", "B": '<!-- wp:paragraph -->\n<p>בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו.</p>\n<!-- /wp:paragraph -->\n'}
+PAGE_NEW_SHA256 = {"A": 'e53325b94dadfa74901f81460e14b763b5b42331c5088f689229cb7c5d39a26f', "B": 'f39acdb45dcb0d26cb253822cd9df3310f22c76a90f93ec4f783b3b74e2aae79'}   # from the old text
 # SHA-256 of the repo files as committed (with the opening tag, LF)
 FILE_SHA256 = {'plugins/nadlan-config/inc/owner-wizard.php': '68609da31337ac832be825a7366bff06b510ebd664894d9d94c30b465ab20345', 'plugins/nadlan-config/inc/broker-drop.php': 'dff44c897230e0699496d2fa6fac000ce9e80bf4bfb6238e0ea18c878cf6cacd'}
 
@@ -91,6 +99,14 @@ def apply(rel, txt):
         if _sha(t) != OWNER_BASE_SHA256:
             raise SystemExit("had256_release: snippet 707 is " + _sha(t)[:12] + ", not the 1.0.0 base " + OWNER_BASE_SHA256[:12] + " (drift: stop)")
         out = PRIVATE_PRELUDE + owner_code()
+    elif rel in ("page:4958:A", "page:4958:B"):
+        v = rel[-1]
+        if (v == "B" and PAGE_NEW["B"] in t) or (v == "A" and PAGE_ANCHOR not in t and "<!-- wp:paragraph -->" not in t and "[nadlan_listing_wizard]" in t):
+            raise SystemExit("had256_release: page 4958 already carries copy variant " + v)
+        n = t.count(PAGE_ANCHOR)
+        if n != 1:
+            raise SystemExit("had256_release: page 4958 anchor (the old paragraph) is there " + str(n) + " times (drift: stop)")
+        out = t.replace(PAGE_ANCHOR, PAGE_NEW[v])
     elif rel == "snippet:x-broker-drop":
         if "define( 'NL_DROP_VERSION', '1.1.4' )" in t or "function nl_drop_lock_acquire(" in t:
             raise SystemExit("had256_release: x-broker-drop already carries the HAD-256 hunks")
@@ -112,6 +128,16 @@ if __name__ == "__main__":
     assert _sha(b) == BROKER_NEW_SHA256, "x-broker-drop: base + 8 hunks != snapshot 3"
     o = apply("snippet:x-owner-wizard", _code(_show(BASE, 'plugins/nadlan-config/inc/owner-wizard.php')))
     assert _sha(o) == OWNER_LIVE_SHA256 and o.startswith(PRIVATE_PRELUDE) and _sha(o[len(PRIVATE_PRELUDE):]) == OWNER_NEW_SHA256
+    for v in ("A", "B"):
+        pg = _show(SNAPSHOT_PAGES, "docs/qa/had-256/page-4958/old.html").replace("\r\n", "\n")
+        assert _sha(pg) == PAGE_OLD_SHA256
+        n = apply("page:4958:" + v, pg)
+        assert _sha(n) == PAGE_NEW_SHA256[v], v
+        try:
+            apply("page:4958:" + v, n)
+            raise AssertionError("page " + v + ": a second apply did not stop")
+        except SystemExit as e:
+            assert "already" in str(e), e
     for rel, txt in (("snippet:x-broker-drop", b), ("snippet:x-owner-wizard", o)):
         try:
             apply(rel, txt)

@@ -101,15 +101,16 @@ function plan() {
     }
     return { name: 'qa-' + commit, port, root, site: path.join(root, 'site'), code: path.join(snap, 'plugins', 'nadlan-config', 'inc'), mu: path.join(snap, 'scripts', 'had-256', 'local', 'mu-plugins'), loop: path.join(snap, 'scripts', 'had-256', 'local', 'loopback.cjs'), seed: path.join(root, 'qa-seed.json'), label: 'pinned ' + commit, allowFresh: false };
   }
-  if (mode === 'theme') {
+  if (mode === 'theme' || mode === 'rehearsal') {
+    const reh = mode === 'rehearsal';
     // open item 4: the code of <commit> inside the site's REAL theme (nadlan-revenue + nadlan-platform-child) and the REAL
     // nadlan-config plugin, with the live Code Snippets (x-skin-a 638 as read live; x-broker-drop, x-broker-join 699 and
     // x-owner-wizard 707 from <commit>). A pinned git-archive copy, its own SQLite site; never ports 9401-9404.
     const commit = (args[1] || '2ce0a741').trim();
-    if (!/^[0-9a-f]{7,40}$/.test(commit)) { throw new Error('usage: start.mjs theme <commit> [port]'); }
+    if (!/^[0-9a-f]{7,40}$/.test(commit)) { throw new Error('usage: start.mjs theme|rehearsal <commit> [port]'); }
     const port = Number(args[2] || 9405);
     if (port >= 9401 && port <= 9404) { throw new Error('ports 9401-9404 are the pinned QA / builder benches; use 9405+'); }
-    const root = path.join(RUNTIME, 'theme-' + commit);
+    const root = path.join(RUNTIME, (reh ? 'rehearsal-' : 'theme-') + commit);
     const snap = path.join(root, 'snapshot');
     if (!fs.existsSync(path.join(snap, '.complete'))) {
       fs.rmSync(snap, { recursive: true, force: true });
@@ -150,15 +151,28 @@ function plan() {
       b = b.replace('<?php\n', '<?php\n/* DERIVED by start.mjs theme from nlj-bench.php of ' + commit + ': stubs, module loader and font link cut (the real plugin, snippets and skin are loaded). */\n');
       fs.writeFileSync(path.join(mu, 'nlj-bench.php'), b);
       fs.copyFileSync(path.join(HERE, 'theme', 'nlj-theme.php'), path.join(mu, 'nlj-theme.php'));
+      if (reh) {
+        // the release rehearsal: a Code Snippets stand-in seeded with the LIVE BASE bodies (x-skin-a as read live; the
+        // engine 1.1.3, x-broker-join and x-owner-wizard 1.0.0 of 6e9cf930), the opening tag removed as deploydrop.py does
+        fs.copyFileSync(path.join(HERE, 'theme', 'nlj-snippets-emu.php'), path.join(mu, 'nlj-snippets-emu.php'));
+        const es = path.join(snap, 'emu-seed');
+        fs.mkdirSync(es, { recursive: true });
+        const body = (t) => t.replace(/\r\n/g, '\n').replace(/^\s*<\?php\s*/, '');
+        const base = (f) => execFileSync('git', ['-C', REPO, 'show', `${BASE_COMMIT}:plugins/nadlan-config/inc/${f}`], { maxBuffer: 64 * 1024 * 1024 }).toString('utf8');
+        fs.writeFileSync(path.join(es, '638-x-skin-a.php'), body(fs.readFileSync(path.join(snap, 'docs', 'qa', 'v8-traffic', 'x-skin-a-638.20261002T201851Z.live.php'), 'utf8')));
+        fs.writeFileSync(path.join(es, '690-x-broker-drop.php'), body(base('broker-drop.php')));
+        fs.writeFileSync(path.join(es, '699-x-broker-join.php'), body(base('broker-join.php')));
+        fs.writeFileSync(path.join(es, '707-x-owner-wizard.php'), body(base('owner-wizard.php')));
+      }
       fs.writeFileSync(path.join(snap, '.complete'), new Date().toISOString() + ' ' + commit + '\n');
     }
     const site = path.join(root, 'site');
-    return { name: 'theme-' + commit, port, root, site, code: path.join(snap, 'plugins', 'nadlan-config', 'inc'), mu: path.join(snap, 'mu'), loop: path.join(snap, 'scripts', 'had-256', 'local', 'loopback.cjs'), seed: path.join(snap, 'scripts', 'had-256', 'local', 'seed.json'), label: 'theme bench ' + commit, allowFresh: true,
+    return { name: (reh ? 'rehearsal-' : 'theme-') + commit, port, root, site, code: path.join(snap, 'plugins', 'nadlan-config', 'inc'), mu: path.join(snap, 'mu'), loop: path.join(snap, 'scripts', 'had-256', 'local', 'loopback.cjs'), seed: path.join(snap, 'scripts', 'had-256', 'local', 'seed.json'), label: 'theme bench ' + commit, allowFresh: true,
       theme: { liveText: path.join(snap, 'scripts', 'broker-drop', 'pages', 'post-listing-he.html'), skin: path.join(snap, 'nadlan-revenue', 'assets', 'skin-a', 'skin-a.css') },
       extra: ['--mount-dir', fwd(path.join(snap, 'plugins', 'nadlan-config')), '/wordpress/wp-content/plugins/nadlan-config',
         '--mount-dir', fwd(path.join(snap, 'nadlan-revenue')), '/wordpress/wp-content/themes/nadlan-revenue',
         '--mount-dir', fwd(path.join(snap, 'themes', 'nadlan-platform-child')), '/wordpress/wp-content/themes/nadlan-platform-child',
-        '--mount-dir', fwd(path.join(snap, 'snippets')), '/wordpress/wp-content/nlj-snippets'] };
+        '--mount-dir', fwd(path.join(snap, reh ? 'emu-seed' : 'snippets')), reh ? '/wordpress/wp-content/nlj-emu-seed' : '/wordpress/wp-content/nlj-snippets'] };
   }
   throw new Error('mode: after | before | qa <commit> [port] | theme <commit> [port]');
 }
