@@ -3893,3 +3893,12 @@ TEMP BRIDGE by the Kikar loop [main] 20:45 Israel (machine clock): HAD-256 stage
   - Results are in the builder worktree, commit 025cf41d. HAD-256 open item 1 is CLOSED.
 - **Next:** the sub-agent writes deploy_had256.py for 2.0.1 (dry / write / auto-rollback; private dir outside the web root) and the page-4958 copy fixes. Main runs the release.
 CONTENT FIX by the Kikar loop [main] 22:17 Israel (machine clock): HAD-395 broker Pro price on /en/ /fr/ /ru/brokers/ (pages 7803/7888/7887): 149 -> 349 a month, 1,490 -> 3,490 a year (Ben 28.9); build price 1,490 unchanged; backup docs/qa/had-395/
+CONTENT PUBLISH by the Kikar loop [main] 22:29 Israel (machine clock): HAD-437 new Hebrew page /celebs-homes/ (EditorialArticle v1; verified facts with sources; Ben 5.10)
+- **DONE: /celebs-homes/ live, page 8207, 5.10 ~22:45 Israel** (HAD-437).
+  - **Content:** 3,136 words of article (~3,268 in the live body); one H1; 20 H2 ("איפה גר X?"); a 32-row table; 6 FAQ; 64 source links.
+  - **Internal links:** only the 6 allowed pages (hamedina, rainbow, ashira, utopia, h-infinity, /compound/sde-dov/).
+  - **Main's safety edits:** removed Yossi Cohen (security), the Ribo tax clause and the Zahavi seller detail.
+  - **Design:** EditorialArticle v1 (DS version 210).
+  - **Source audit:** YELLOW (duplicate FAQ ids) → fixed with a faq- prefix → GREEN.
+  - **Checks:** phone and PC fine, RTL, no sideways scroll, 0 errors.
+  - **Next:** a link to it from the Kikar hub (HAD-433).
