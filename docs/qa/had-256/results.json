@@ -9119,5 +9119,5834 @@
    "site_chrome_under (info, site-wide)": {}
   },
   "at": "2026-10-05 20:16:48"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 610,
+     "bottom": 658,
+     "in_view": true,
+     "under": []
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 610,
+     "bottom": 658,
+     "in_view": true,
+     "under": []
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 610,
+     "bottom": 658,
+     "in_view": true,
+     "under": []
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 786,
+     "bottom": 834,
+     "in_view": true,
+     "under": []
+    }
+   },
+   "under": {},
+   "applies": false,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:33:05"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 554,
+     "bottom": 602,
+     "in_view": true,
+     "under": []
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 554,
+     "bottom": 602,
+     "in_view": true,
+     "under": []
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 554,
+     "bottom": 602,
+     "in_view": true,
+     "under": []
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 696,
+     "bottom": 744,
+     "in_view": true,
+     "under": []
+    }
+   },
+   "under": {},
+   "applies": false,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:23:18"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (320 px, en, real theme)",
+  "status": "fail",
+  "evidence": {
+   "page_variant": "A",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 569,
+     "bottom": 617,
+     "in_view": true,
+     "under": [
+      "#nlcta 660px2"
+     ]
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 569,
+     "bottom": 617,
+     "in_view": true,
+     "under": [
+      "#nlcta 660px2"
+     ]
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 569,
+     "bottom": 617,
+     "in_view": true,
+     "under": [
+      "#nlcta 660px2"
+     ]
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 754,
+     "bottom": 802,
+     "in_view": false,
+     "under": []
+    }
+   },
+   "under": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 569,
+     "bottom": 617,
+     "in_view": true,
+     "under": [
+      "#nlcta 660px2"
+     ]
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 569,
+     "bottom": 617,
+     "in_view": true,
+     "under": [
+      "#nlcta 660px2"
+     ]
+    }
+   },
+   "applies": true,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 569,
+     "bottom": 617,
+     "in_view": true,
+     "under": [
+      "#nlcta 660px2"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:25:56"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 503,
+     "bottom": 551,
+     "in_view": true,
+     "under": []
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 503,
+     "bottom": 551,
+     "in_view": true,
+     "under": []
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 503,
+     "bottom": 551,
+     "in_view": true,
+     "under": []
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 689,
+     "bottom": 737,
+     "in_view": true,
+     "under": [
+      "#nla11y-btn 857px2"
+     ]
+    }
+   },
+   "under": {},
+   "applies": true,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 689,
+     "bottom": 737,
+     "in_view": true,
+     "under": [
+      "#nla11y-btn 857px2"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:17:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 511,
+     "bottom": 559,
+     "in_view": true,
+     "under": []
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 511,
+     "bottom": 559,
+     "in_view": true,
+     "under": []
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 511,
+     "bottom": 559,
+     "in_view": true,
+     "under": []
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 696,
+     "bottom": 744,
+     "in_view": true,
+     "under": [
+      "#nlcta 3700px2"
+     ]
+    }
+   },
+   "under": {},
+   "applies": true,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 696,
+     "bottom": 744,
+     "in_view": true,
+     "under": [
+      "#nlcta 3700px2"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:28:19"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 510,
+     "bottom": 558,
+     "in_view": true,
+     "under": []
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 510,
+     "bottom": 558,
+     "in_view": true,
+     "under": []
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 510,
+     "bottom": 558,
+     "in_view": true,
+     "under": []
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 668,
+     "bottom": 716,
+     "in_view": true,
+     "under": []
+    }
+   },
+   "under": {},
+   "applies": true,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:19:13"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 512,
+     "bottom": 560,
+     "in_view": true,
+     "under": []
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 512,
+     "bottom": 560,
+     "in_view": true,
+     "under": []
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 512,
+     "bottom": 560,
+     "in_view": true,
+     "under": []
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 670,
+     "bottom": 718,
+     "in_view": true,
+     "under": []
+    }
+   },
+   "under": {},
+   "applies": true,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:30:39"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 484,
+     "bottom": 532,
+     "in_view": true,
+     "under": []
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 484,
+     "bottom": 532,
+     "in_view": true,
+     "under": []
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 484,
+     "bottom": 532,
+     "in_view": true,
+     "under": []
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 642,
+     "bottom": 690,
+     "in_view": true,
+     "under": []
+    }
+   },
+   "under": {},
+   "applies": true,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:21:11"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {},
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:33:05"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {},
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:23:18"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "input#j-name \"\"",
+      "under": "#nlcta",
+      "area": 660,
+      "share": "6%"
+     },
+     {
+      "el": "input#j-mail \"\"",
+      "under": "#nla11y-btn",
+      "area": 861,
+      "share": "8%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "input#j-name \"Dana\"",
+      "under": "#nlcta",
+      "area": 660,
+      "share": "6%"
+     },
+     {
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "under": "#nla11y-btn",
+      "area": 861,
+      "share": "8%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "input#j-mail2 \"dana.sample@example.test\"",
+      "under": "#nlcta",
+      "area": 660,
+      "share": "6%"
+     },
+     {
+      "el": "button \"Show\"",
+      "under": "#nla11y-btn",
+      "area": 861,
+      "share": "24%"
+     }
+    ],
+    "published": [
+     {
+      "el": "a \"To the listing\"",
+      "under": "#nla11y-btn",
+      "area": 541,
+      "share": "4%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "a \"דירת 4 חדרים בשכונת הדוגמה\"",
+      "under": "#nlcta",
+      "area": 1741,
+      "share": "31%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {
+    "details-empty": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 6685
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 6685
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 4995
+     }
+    ]
+   },
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:25:56"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "input#j-mail \"\"",
+      "under": "#nlcta",
+      "area": 4538,
+      "share": "40%"
+     },
+     {
+      "el": "input#j-pw \"\"",
+      "under": "#nla11y-btn",
+      "area": 772,
+      "share": "10%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "under": "#nlcta",
+      "area": 4538,
+      "share": "40%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "input#j-pw2 \"\"",
+      "under": "#nlcta",
+      "area": 1893,
+      "share": "25%"
+     },
+     {
+      "el": "button \"הצגה\"",
+      "under": "#nlcta",
+      "area": 2374,
+      "share": "71%"
+     },
+     {
+      "el": "button#j-login-go \"כניסה\"",
+      "under": "#nla11y-btn",
+      "area": 965,
+      "share": "8%"
+     },
+     {
+      "el": "button \"שכחתי את הסיסמה\"",
+      "under": "#nla11y-btn",
+      "area": 1,
+      "share": "0%"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "input#j-mail3 \"dana.sample@example.test\"",
+      "under": "#nla11y-btn",
+      "area": 857,
+      "share": "8%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "button \"מכירה\"",
+      "under": "#nla11y-btn",
+      "area": 551,
+      "share": "17%"
+     },
+     {
+      "el": "button \"השכרה\"",
+      "under": "#nlcta",
+      "area": 502,
+      "share": "14%"
+     }
+    ],
+    "details-errors": [
+     {
+      "el": "a \"סוג העסקה\"",
+      "under": "#nla11y-btn",
+      "area": 4,
+      "share": "0%"
+     },
+     {
+      "el": "a \"סוג הנכס\"",
+      "under": "#nla11y-btn",
+      "area": 39,
+      "share": "3%"
+     }
+    ],
+    "details-filled": [
+     {
+      "el": "a \"סוג העסקה\"",
+      "under": "#nla11y-btn",
+      "area": 4,
+      "share": "0%"
+     },
+     {
+      "el": "a \"סוג הנכס\"",
+      "under": "#nla11y-btn",
+      "area": 39,
+      "share": "3%"
+     }
+    ],
+    "published": [
+     {
+      "el": "button \"העתקה\"",
+      "under": "#nlcta",
+      "area": 234,
+      "share": "6%"
+     },
+     {
+      "el": "a \"לעמוד המודעה\"",
+      "under": "#nla11y-btn",
+      "area": 728,
+      "share": "6%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "a \"דירת 4 חדרים בשכונת הדוגמה\"",
+      "under": "#nlcta",
+      "area": 1553,
+      "share": "28%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {
+    "details-empty": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 2296
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 2263
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 2338
+     }
+    ]
+   },
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:17:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "input#j-pw \"\"",
+      "under": "#nlcta",
+      "area": 4191,
+      "share": "42%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "button \"Sign in with this email\"",
+      "under": "#nlcta",
+      "area": 3052,
+      "share": "44%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "button#j-login-go \"Sign in\"",
+      "under": "#nlcta",
+      "area": 931,
+      "share": "6%"
+     },
+     {
+      "el": "button \"I forgot my password\"",
+      "under": "#nlcta",
+      "area": 4391,
+      "share": "35%"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "input#j-mail3 \"dana.sample@example.test\"",
+      "under": "#nlcta",
+      "area": 3700,
+      "share": "27%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "select#j-type \"Choose\nApartment\nGarden apartm\"",
+      "under": "#nlcta",
+      "area": 1927,
+      "share": "14%"
+     },
+     {
+      "el": "select#j-type \"Choose\nApartment\nGarden apartm\"",
+      "under": "#nla11y-btn",
+      "area": 323,
+      "share": "2%"
+     }
+    ],
+    "details-errors": [
+     {
+      "el": "a \"City\"",
+      "under": "#nlcta",
+      "area": 559,
+      "share": "100%"
+     },
+     {
+      "el": "a \"Neighbourhood\"",
+      "under": "#nlcta",
+      "area": 367,
+      "share": "16%"
+     }
+    ],
+    "details-filled": [
+     {
+      "el": "a \"City\"",
+      "under": "#nlcta",
+      "area": 559,
+      "share": "100%"
+     },
+     {
+      "el": "a \"Neighbourhood\"",
+      "under": "#nlcta",
+      "area": 367,
+      "share": "16%"
+     }
+    ],
+    "photos": [
+     {
+      "el": "button#j-add \"Add photos\"",
+      "under": "#nlcta",
+      "area": 562,
+      "share": "8%"
+     }
+    ],
+    "published": [
+     {
+      "el": "a \"Share on WhatsApp\"",
+      "under": "#nlcta",
+      "area": 6652,
+      "share": "44%"
+     },
+     {
+      "el": "button \"My listings\"",
+      "under": "#nla11y-btn",
+      "area": 660,
+      "share": "5%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "button \"Mark as sold\"",
+      "under": "#nlcta",
+      "area": 5247,
+      "share": "100%"
+     },
+     {
+      "el": "button \"Remove from the site\"",
+      "under": "#nlcta",
+      "area": 519,
+      "share": "7%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {
+    "details-empty": [
+     {
+      "dir": "fwd",
+      "el": "input#j-owner-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 131
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "fwd",
+      "el": "input#j-owner-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 98
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 6652
+     },
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nla11y-btn",
+      "label_area": 713
+     }
+    ]
+   },
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:28:19"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "input#j-pw \"\"",
+      "under": "#nlcta",
+      "area": 1691,
+      "share": "17%"
+     },
+     {
+      "el": "button \"הצגה\"",
+      "under": "#nlcta",
+      "area": 2146,
+      "share": "64%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "button \"כניסה עם המייל הזה\"",
+      "under": "#nlcta",
+      "area": 417,
+      "share": "7%"
+     },
+     {
+      "el": "input#j-pw \"Another-pass-1\"",
+      "under": "#nla11y-btn",
+      "area": 281,
+      "share": "3%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "button#j-login-go \"כניסה\"",
+      "under": "#nlcta",
+      "area": 823,
+      "share": "5%"
+     },
+     {
+      "el": "button \"שכחתי את הסיסמה\"",
+      "under": "#nlcta",
+      "area": 4499,
+      "share": "36%"
+     },
+     {
+      "el": "a \"לאתר המתווכים שלכם\"",
+      "under": "#nla11y-btn",
+      "area": 425,
+      "share": "4%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "select#j-type \"בחירה\nדירה\nדירת גן\nפנטהאוז\nדופ\"",
+      "under": "#nlcta",
+      "area": 2035,
+      "share": "15%"
+     },
+     {
+      "el": "select#j-type \"בחירה\nדירה\nדירת גן\nפנטהאוז\nדופ\"",
+      "under": "#nla11y-btn",
+      "area": 311,
+      "share": "2%"
+     }
+    ],
+    "photos": [
+     {
+      "el": "button#j-add \"הוספת תמונות\"",
+      "under": "#nlcta",
+      "area": 574,
+      "share": "8%"
+     }
+    ],
+    "published": [
+     {
+      "el": "a \"שיתוף בוואטסאפ\"",
+      "under": "#nlcta",
+      "area": 6652,
+      "share": "44%"
+     },
+     {
+      "el": "button \"המודעות שלי\"",
+      "under": "#nla11y-btn",
+      "area": 647,
+      "share": "5%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "button \"עדכון מחיר\"",
+      "under": "#nlcta",
+      "area": 834,
+      "share": "18%"
+     },
+     {
+      "el": "button \"סימון כנמכרה\"",
+      "under": "#nla11y-btn",
+      "area": 924,
+      "share": "18%"
+     }
+    ],
+    "saved-draft": [
+     {
+      "el": "button \"המשך מהמקום שעצרתם\"",
+      "under": "#nla11y-btn",
+      "area": 193,
+      "share": "1%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:19:13"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "a \"terms of use\"",
+      "under": "#nla11y-btn",
+      "area": 330,
+      "share": "2%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "input#j-pw \"Another-pass-1\"",
+      "under": "#nlcta",
+      "area": 464,
+      "share": "4%"
+     },
+     {
+      "el": "button \"Show\"",
+      "under": "#nla11y-btn",
+      "area": 488,
+      "share": "14%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "select#j-type \"Choose\nApartment\nGarden apartm\"",
+      "under": "#nlcta",
+      "area": 1815,
+      "share": "12%"
+     },
+     {
+      "el": "input#j-hood \"\"",
+      "under": "#nla11y-btn",
+      "area": 692,
+      "share": "10%"
+     }
+    ],
+    "details-errors": [
+     {
+      "el": "a \"Rooms\"",
+      "under": "#nlcta",
+      "area": 984,
+      "share": "100%"
+     }
+    ],
+    "details-filled": [
+     {
+      "el": "a \"Rooms\"",
+      "under": "#nlcta",
+      "area": 984,
+      "share": "100%"
+     }
+    ],
+    "published": [
+     {
+      "el": "button \"My listings\"",
+      "under": "#nlcta",
+      "area": 4802,
+      "share": "35%"
+     }
+    ],
+    "saved-draft": [
+     {
+      "el": "button \"Continue where you stopped\"",
+      "under": "#nlcta",
+      "area": 1925,
+      "share": "12%"
+     },
+     {
+      "el": "button \"Continue where you stopped\"",
+      "under": "#nla11y-btn",
+      "area": 383,
+      "share": "2%"
+     },
+     {
+      "el": "button \"New listing\"",
+      "under": "#nla11y-btn",
+      "area": 247,
+      "share": "2%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {
+    "details-filled": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 6652
+     },
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nla11y-btn",
+      "label_area": 409
+     }
+    ]
+   },
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:30:39"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "a \"תנאי השימוש\"",
+      "under": "#nlcta",
+      "area": 1618,
+      "share": "100%"
+     },
+     {
+      "el": "button#j-signup-go \"פתיחת חשבון והמשך\"",
+      "under": "#nla11y-btn",
+      "area": 312,
+      "share": "2%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "input#j-pw \"Another-pass-1\"",
+      "under": "#nlcta",
+      "area": 2547,
+      "share": "23%"
+     },
+     {
+      "el": "button \"הצגה\"",
+      "under": "#nlcta",
+      "area": 3232,
+      "share": "96%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "a \"לאתר המתווכים שלכם\"",
+      "under": "#nlcta",
+      "area": 2739,
+      "share": "100%"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "button \"חזרה לכניסה\"",
+      "under": "#nla11y-btn",
+      "area": 385,
+      "share": "3%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "input#j-city \"\"",
+      "under": "#nla11y-btn",
+      "area": 375,
+      "share": "5%"
+     },
+     {
+      "el": "input#j-hood \"\"",
+      "under": "#nlcta",
+      "area": 1459,
+      "share": "20%"
+     }
+    ],
+    "published": [
+     {
+      "el": "button \"המודעות שלי\"",
+      "under": "#nlcta",
+      "area": 4694,
+      "share": "34%"
+     }
+    ],
+    "saved-draft": [
+     {
+      "el": "button \"המשך מהמקום שעצרתם\"",
+      "under": "#nlcta",
+      "area": 4303,
+      "share": "27%"
+     },
+     {
+      "el": "button \"מודעה חדשה\"",
+      "under": "#nlcta",
+      "area": 1019,
+      "share": "6%"
+     },
+     {
+      "el": "button \"מודעה חדשה\"",
+      "under": "#nla11y-btn",
+      "area": 485,
+      "share": "3%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:21:11"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 461,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:33:05"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 459,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:23:18"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 386,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:25:56"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 385,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:17:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 386,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:28:19"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 385,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:19:13"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 386,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:30:39"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 385,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:21:11"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:33:05"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:23:18"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:25:56"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:17:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:28:19"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:19:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:30:39"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:21:11"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "List your property for sale or rent, free"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 20,
+    "y": 826,
+    "w": 180,
+    "h": 54,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 1368,
+    "y": 828,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/03-auth-login.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/05-details-empty.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/06-details-errors.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/07-details-filled.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/08-photos.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/08-photos-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/09-preview.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/09-preview-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/10-published.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/10-published-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/11-my-listings.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-1440/13-saved-draft-view.jpg"
+   ],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:33:05"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 20,
+    "y": 826,
+    "w": 180,
+    "h": 54,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 1368,
+    "y": 828,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/03-auth-login.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/05-details-empty.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/06-details-errors.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/07-details-filled.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/08-photos.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/08-photos-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/09-preview.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/09-preview-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/10-published.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/10-published-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/11-my-listings.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-1440/13-saved-draft-view.jpg"
+   ],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:23:18"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "List your property for sale or rent, free"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 612,
+    "w": 165,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 254,
+    "y": 674,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:25:56"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 612,
+    "w": 165,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 254,
+    "y": 674,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:17:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "List your property for sale or rent, free"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 716,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 324,
+    "y": 778,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/03-auth-login.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/05-details-empty.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/06-details-errors.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/07-details-filled.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/08-photos.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/08-photos-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/09-preview.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/09-preview-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/10-published.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/10-published-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/11-my-listings.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/en-390/13-saved-draft-view.jpg"
+   ],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:28:19"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 716,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 324,
+    "y": 778,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/03-auth-login.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/05-details-empty.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/06-details-errors.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/07-details-filled.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/08-photos.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/08-photos-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/09-preview.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/09-preview-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/10-published.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/10-published-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/11-my-listings.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-A/he-390/13-saved-draft-view.jpg"
+   ],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:19:13"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "List your property for sale or rent, free"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 787,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 346,
+    "y": 849,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:30:39"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 787,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 346,
+    "y": 849,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:21:11"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     []
+    ],
+    "details-empty": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     []
+    ],
+    "published": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     []
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:33:05"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     []
+    ],
+    "details-empty": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     []
+    ],
+    "published": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     []
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:23:19"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     []
+    ],
+    "details-empty": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     []
+    ],
+    "published": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     []
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:25:56"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     []
+    ],
+    "details-empty": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     []
+    ],
+    "published": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     []
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:17:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     []
+    ],
+    "details-empty": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     []
+    ],
+    "published": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     []
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:28:19"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     []
+    ],
+    "details-empty": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     []
+    ],
+    "published": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     []
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:19:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     []
+    ],
+    "details-empty": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     []
+    ],
+    "published": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     []
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:30:40"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "A",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     []
+    ],
+    "details-empty": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     []
+    ],
+    "published": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     []
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:21:11"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "div.nlj-shell \"List your property for sale or rent, free\"",
+    "section.nlj#nlj-app \"Sign in Open an account with your name and email, fill in th\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:33:05"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "section.nlj#nlj-app \"כניסה פותחים חשבון בשם ובמייל, ממלאים את פרטי הנכס ומעלים תמ\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:23:19"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "div.nlj-shell \"List your property for sale or rent, free\"",
+    "section.nlj#nlj-app \"Sign in Open an account with your name and email, fill in th\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:25:56"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "section.nlj#nlj-app \"כניסה פותחים חשבון בשם ובמייל, ממלאים את פרטי הנכס ומעלים תמ\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:17:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "div.nlj-shell \"List your property for sale or rent, free\"",
+    "section.nlj#nlj-app \"Sign in Open an account with your name and email, fill in th\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:28:19"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "section.nlj#nlj-app \"כניסה פותחים חשבון בשם ובמייל, ממלאים את פרטי הנכס ומעלים תמ\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:19:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "div.nlj-shell \"List your property for sale or rent, free\"",
+    "section.nlj#nlj-app \"Sign in Open an account with your name and email, fill in th\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:30:40"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-A",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "section.nlj#nlj-app \"כניסה פותחים חשבון בשם ובמייל, ממלאים את פרטי הנכס ומעלים תמ\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:21:11"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 697,
+     "bottom": 745,
+     "in_view": true,
+     "under": []
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 697,
+     "bottom": 745,
+     "in_view": true,
+     "under": []
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 697,
+     "bottom": 745,
+     "in_view": true,
+     "under": []
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 873,
+     "bottom": 921,
+     "in_view": false,
+     "under": []
+    }
+   },
+   "under": {},
+   "applies": false,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:15:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 588,
+     "bottom": 636,
+     "in_view": true,
+     "under": []
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 588,
+     "bottom": 636,
+     "in_view": true,
+     "under": []
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 588,
+     "bottom": 636,
+     "in_view": true,
+     "under": []
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 730,
+     "bottom": 778,
+     "in_view": true,
+     "under": []
+    }
+   },
+   "under": {},
+   "applies": false,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:07:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (320 px, en, real theme)",
+  "status": "fail",
+  "evidence": {
+   "page_variant": "B",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 670,
+     "bottom": 718,
+     "in_view": true,
+     "under": [
+      "#nla11y-btn 1005px2"
+     ]
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 670,
+     "bottom": 718,
+     "in_view": true,
+     "under": [
+      "#nla11y-btn 1005px2"
+     ]
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 670,
+     "bottom": 718,
+     "in_view": true,
+     "under": [
+      "#nla11y-btn 1005px2"
+     ]
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 855,
+     "bottom": 903,
+     "in_view": false,
+     "under": []
+    }
+   },
+   "under": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 670,
+     "bottom": 718,
+     "in_view": true,
+     "under": [
+      "#nla11y-btn 1005px2"
+     ]
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 670,
+     "bottom": 718,
+     "in_view": true,
+     "under": [
+      "#nla11y-btn 1005px2"
+     ]
+    }
+   },
+   "applies": true,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 670,
+     "bottom": 718,
+     "in_view": true,
+     "under": [
+      "#nla11y-btn 1005px2"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:09:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 558,
+     "bottom": 606,
+     "in_view": true,
+     "under": []
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 558,
+     "bottom": 606,
+     "in_view": true,
+     "under": []
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 558,
+     "bottom": 606,
+     "in_view": true,
+     "under": []
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 743,
+     "bottom": 791,
+     "in_view": false,
+     "under": []
+    }
+   },
+   "under": {},
+   "applies": true,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:01:25"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 611,
+     "bottom": 659,
+     "in_view": true,
+     "under": []
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 611,
+     "bottom": 659,
+     "in_view": true,
+     "under": []
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 611,
+     "bottom": 659,
+     "in_view": true,
+     "under": []
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 797,
+     "bottom": 845,
+     "in_view": false,
+     "under": [
+      "#nla11y-btn 502px2"
+     ]
+    }
+   },
+   "under": {},
+   "applies": true,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 797,
+     "bottom": 845,
+     "in_view": false,
+     "under": [
+      "#nla11y-btn 502px2"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:11:18"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 564,
+     "bottom": 612,
+     "in_view": true,
+     "under": []
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 564,
+     "bottom": 612,
+     "in_view": true,
+     "under": []
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 564,
+     "bottom": 612,
+     "in_view": true,
+     "under": []
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 722,
+     "bottom": 770,
+     "in_view": true,
+     "under": [
+      "#nlcta 5829px2"
+     ]
+    }
+   },
+   "under": {},
+   "applies": true,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 722,
+     "bottom": 770,
+     "in_view": true,
+     "under": [
+      "#nlcta 5829px2"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:03:23"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 585,
+     "bottom": 633,
+     "in_view": true,
+     "under": []
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 585,
+     "bottom": 633,
+     "in_view": true,
+     "under": []
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 585,
+     "bottom": 633,
+     "in_view": true,
+     "under": []
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 743,
+     "bottom": 791,
+     "in_view": true,
+     "under": [
+      "#nlcta 574px2"
+     ]
+    }
+   },
+   "under": {},
+   "applies": true,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 743,
+     "bottom": 791,
+     "in_view": true,
+     "under": [
+      "#nlcta 574px2"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:13:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "first screen: the first field is not under the floating bar or the accessibility button (phones) (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "first_field_at_rest": {
+    "auth-signup": {
+     "el": "j-name",
+     "top": 538,
+     "bottom": 586,
+     "in_view": true,
+     "under": []
+    },
+    "auth-existing-email": {
+     "el": "j-name",
+     "top": 538,
+     "bottom": 586,
+     "in_view": true,
+     "under": []
+    },
+    "auth-login": {
+     "el": "j-mail2",
+     "top": 538,
+     "bottom": 586,
+     "in_view": true,
+     "under": []
+    },
+    "auth-recovery-sent": {
+     "el": "j-mail3",
+     "top": 696,
+     "bottom": 744,
+     "in_view": true,
+     "under": []
+    }
+   },
+   "under": {},
+   "applies": true,
+   "gate": "landing screens only (auth-signup, auth-login), re-gated from the recorded evidence by regate_first_screen.py",
+   "info_tap_screens_under": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:05:21"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "my-listings": [
+     {
+      "el": "button \"Edit\"",
+      "under": "#nlcta",
+      "area": 198,
+      "share": "7%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:15:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {},
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:07:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "button \"Open an account\"",
+      "under": "#nlcta",
+      "area": 791,
+      "share": "15%"
+     },
+     {
+      "el": "button \"I have an account\"",
+      "under": "#nlcta",
+      "area": 98,
+      "share": "2%"
+     },
+     {
+      "el": "input#j-name \"\"",
+      "under": "#nla11y-btn",
+      "area": 1005,
+      "share": "9%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "button \"Open an account\"",
+      "under": "#nlcta",
+      "area": 791,
+      "share": "15%"
+     },
+     {
+      "el": "button \"I have an account\"",
+      "under": "#nlcta",
+      "area": 98,
+      "share": "2%"
+     },
+     {
+      "el": "input#j-name \"Dana\"",
+      "under": "#nla11y-btn",
+      "area": 1005,
+      "share": "9%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "button \"Open an account\"",
+      "under": "#nlcta",
+      "area": 791,
+      "share": "15%"
+     },
+     {
+      "el": "button \"I have an account\"",
+      "under": "#nlcta",
+      "area": 98,
+      "share": "2%"
+     },
+     {
+      "el": "input#j-mail2 \"dana.sample@example.test\"",
+      "under": "#nla11y-btn",
+      "area": 1005,
+      "share": "9%"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "button \"Open an account\"",
+      "under": "#nlcta",
+      "area": 791,
+      "share": "15%"
+     },
+     {
+      "el": "button \"I have an account\"",
+      "under": "#nlcta",
+      "area": 98,
+      "share": "2%"
+     }
+    ],
+    "published": [
+     {
+      "el": "button \"Copy\"",
+      "under": "#nla11y-btn",
+      "area": 704,
+      "share": "22%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "a \"דירת 4 חדרים בשכונת הדוגמה\"",
+      "under": "#nla11y-btn",
+      "area": 13,
+      "share": "0%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {
+    "details-empty": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 6685
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 6685
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 4962
+     }
+    ]
+   },
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:09:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "input#j-mail \"\"",
+      "under": "#nlcta",
+      "area": 1295,
+      "share": "12%"
+     },
+     {
+      "el": "input#j-mail \"\"",
+      "under": "#nla11y-btn",
+      "area": 605,
+      "share": "5%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "under": "#nlcta",
+      "area": 1295,
+      "share": "12%"
+     },
+     {
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "under": "#nla11y-btn",
+      "area": 605,
+      "share": "5%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "input#j-pw2 \"\"",
+      "under": "#nlcta",
+      "area": 540,
+      "share": "7%"
+     },
+     {
+      "el": "input#j-pw2 \"\"",
+      "under": "#nla11y-btn",
+      "area": 605,
+      "share": "8%"
+     },
+     {
+      "el": "button \"הצגה\"",
+      "under": "#nlcta",
+      "area": 678,
+      "share": "20%"
+     },
+     {
+      "el": "button#j-login-go \"כניסה\"",
+      "under": "#nla11y-btn",
+      "area": 177,
+      "share": "1%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "button \"מכירה\"",
+      "under": "#nla11y-btn",
+      "area": 406,
+      "share": "12%"
+     }
+    ],
+    "details-errors": [
+     {
+      "el": "a \"סוג העסקה\"",
+      "under": "#nla11y-btn",
+      "area": 71,
+      "share": "5%"
+     }
+    ],
+    "details-filled": [
+     {
+      "el": "a \"סוג העסקה\"",
+      "under": "#nla11y-btn",
+      "area": 71,
+      "share": "5%"
+     }
+    ],
+    "published": [
+     {
+      "el": "button \"העתקה\"",
+      "under": "#nlcta",
+      "area": 3024,
+      "share": "84%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "a \"דירת 4 חדרים בשכונת הדוגמה\"",
+      "under": "#nlcta",
+      "area": 3403,
+      "share": "61%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {
+    "details-empty": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 2346
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 2313
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 2254
+     }
+    ]
+   },
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:01:25"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "input#j-mail \"\"",
+      "under": "#nlcta",
+      "area": 5023,
+      "share": "36%"
+     },
+     {
+      "el": "button \"Show\"",
+      "under": "#nla11y-btn",
+      "area": 446,
+      "share": "12%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "input#j-mail \"dana.sample@example.test\"",
+      "under": "#nlcta",
+      "area": 5023,
+      "share": "36%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "input#j-pw2 \"\"",
+      "under": "#nlcta",
+      "area": 5023,
+      "share": "51%"
+     },
+     {
+      "el": "button#j-login-go \"Sign in\"",
+      "under": "#nla11y-btn",
+      "area": 686,
+      "share": "5%"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "input#j-mail3 \"dana.sample@example.test\"",
+      "under": "#nla11y-btn",
+      "area": 502,
+      "share": "4%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "button \"For sale\"",
+      "under": "#nlcta",
+      "area": 377,
+      "share": "10%"
+     },
+     {
+      "el": "button \"For rent\"",
+      "under": "#nlcta",
+      "area": 152,
+      "share": "4%"
+     }
+    ],
+    "details-errors": [
+     {
+      "el": "a \"Deal type\"",
+      "under": "#nlcta",
+      "area": 525,
+      "share": "39%"
+     }
+    ],
+    "details-filled": [
+     {
+      "el": "a \"Deal type\"",
+      "under": "#nlcta",
+      "area": 525,
+      "share": "39%"
+     }
+    ],
+    "published": [
+     {
+      "el": "a \"To the listing\"",
+      "under": "#nlcta",
+      "area": 1501,
+      "share": "10%"
+     },
+     {
+      "el": "a \"To the listing\"",
+      "under": "#nla11y-btn",
+      "area": 431,
+      "share": "3%"
+     },
+     {
+      "el": "a \"Share on WhatsApp\"",
+      "under": "#nla11y-btn",
+      "area": 199,
+      "share": "1%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "button \"Remove from the site\"",
+      "under": "#nla11y-btn",
+      "area": 151,
+      "share": "2%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {
+    "details-empty": [
+     {
+      "dir": "fwd",
+      "el": "input#j-owner-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 98
+     }
+    ],
+    "details-errors": [
+     {
+      "dir": "fwd",
+      "el": "input#j-owner-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 64
+     }
+    ],
+    "details-filled": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 6652
+     },
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nla11y-btn",
+      "label_area": 709
+     }
+    ]
+   },
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:11:18"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "input#j-pw \"\"",
+      "under": "#nlcta",
+      "area": 713,
+      "share": "7%"
+     },
+     {
+      "el": "input#j-pw \"\"",
+      "under": "#nla11y-btn",
+      "area": 346,
+      "share": "3%"
+     },
+     {
+      "el": "button \"הצגה\"",
+      "under": "#nlcta",
+      "area": 905,
+      "share": "27%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "button#j-login-go \"כניסה\"",
+      "under": "#nlcta",
+      "area": 5513,
+      "share": "37%"
+     },
+     {
+      "el": "button \"שכחתי את הסיסמה\"",
+      "under": "#nla11y-btn",
+      "area": 652,
+      "share": "5%"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "input#j-mail3 \"dana.sample@example.test\"",
+      "under": "#nlcta",
+      "area": 5829,
+      "share": "42%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "button \"השכרה\"",
+      "under": "#nlcta",
+      "area": 329,
+      "share": "9%"
+     },
+     {
+      "el": "select#j-type \"בחירה\nדירה\nדירת גן\nפנטהאוז\nדופ\"",
+      "under": "#nla11y-btn",
+      "area": 374,
+      "share": "3%"
+     }
+    ],
+    "photos": [
+     {
+      "el": "button#j-add \"הוספת תמונות\"",
+      "under": "#nlcta",
+      "area": 2244,
+      "share": "31%"
+     }
+    ],
+    "published": [
+     {
+      "el": "a \"לעמוד המודעה\"",
+      "under": "#nlcta",
+      "area": 5792,
+      "share": "39%"
+     },
+     {
+      "el": "a \"שיתוף בוואטסאפ\"",
+      "under": "#nla11y-btn",
+      "area": 653,
+      "share": "4%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "button \"עריכה\"",
+      "under": "#nla11y-btn",
+      "area": 924,
+      "share": "28%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:03:23"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "input#j-pw \"\"",
+      "under": "#nlcta",
+      "area": 4682,
+      "share": "43%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "button \"Sign in with this email\"",
+      "under": "#nlcta",
+      "area": 2701,
+      "share": "39%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "button#j-login-go \"Sign in\"",
+      "under": "#nlcta",
+      "area": 1422,
+      "share": "9%"
+     },
+     {
+      "el": "button \"I forgot my password\"",
+      "under": "#nlcta",
+      "area": 3900,
+      "share": "29%"
+     },
+     {
+      "el": "button \"I forgot my password\"",
+      "under": "#nla11y-btn",
+      "area": 40,
+      "share": "0%"
+     },
+     {
+      "el": "a \"To your broker site\"",
+      "under": "#nla11y-btn",
+      "area": 111,
+      "share": "4%"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "input#j-mail3 \"dana.sample@example.test\"",
+      "under": "#nlcta",
+      "area": 574,
+      "share": "4%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "select#j-type \"Choose\nApartment\nGarden apartm\"",
+      "under": "#nlcta",
+      "area": 1436,
+      "share": "10%"
+     },
+     {
+      "el": "select#j-type \"Choose\nApartment\nGarden apartm\"",
+      "under": "#nla11y-btn",
+      "area": 378,
+      "share": "3%"
+     }
+    ],
+    "details-errors": [
+     {
+      "el": "a \"Property type\"",
+      "under": "#nlcta",
+      "area": 83,
+      "share": "4%"
+     },
+     {
+      "el": "a \"City\"",
+      "under": "#nlcta",
+      "area": 559,
+      "share": "100%"
+     }
+    ],
+    "details-filled": [
+     {
+      "el": "a \"Property type\"",
+      "under": "#nlcta",
+      "area": 83,
+      "share": "4%"
+     },
+     {
+      "el": "a \"City\"",
+      "under": "#nlcta",
+      "area": 559,
+      "share": "100%"
+     }
+    ],
+    "published": [
+     {
+      "el": "a \"Share on WhatsApp\"",
+      "under": "#nlcta",
+      "area": 6166,
+      "share": "38%"
+     },
+     {
+      "el": "button \"My listings\"",
+      "under": "#nla11y-btn",
+      "area": 660,
+      "share": "5%"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "button \"Remove from the site\"",
+      "under": "#nlcta",
+      "area": 3620,
+      "share": "49%"
+     }
+    ],
+    "saved-draft": [
+     {
+      "el": "button \"Continue where you stopped\"",
+      "under": "#nla11y-btn",
+      "area": 74,
+      "share": "0%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {
+    "details-filled": [
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nlcta",
+      "label_area": 6652
+     },
+     {
+      "dir": "fwd",
+      "el": "input#j-phone-ok \"on\"",
+      "under": "#nla11y-btn",
+      "label_area": 402
+     }
+    ]
+   },
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:13:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no journey control under the floating bar, the accessibility button or the header (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "controls_focused": 306,
+   "scroll_behavior": [
+    "smooth"
+   ],
+   "box_overlap": {},
+   "centre_covered": {},
+   "outside_viewport_after_focus": {},
+   "first_screen_overlays_on_controls (info)": {
+    "auth-signup": [
+     {
+      "el": "a \"מדיניות הפרטיות\"",
+      "under": "#nla11y-btn",
+      "area": 80,
+      "share": "4%"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "input#j-pw \"Another-pass-1\"",
+      "under": "#nla11y-btn",
+      "area": 579,
+      "share": "5%"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "button \"שכחתי את הסיסמה\"",
+      "under": "#nlcta",
+      "area": 2328,
+      "share": "17%"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "select#j-type \"בחירה\nדירה\nדירת גן\nפנטהאוז\nדופ\"",
+      "under": "#nlcta",
+      "area": 6241,
+      "share": "42%"
+     },
+     {
+      "el": "input#j-city \"\"",
+      "under": "#nla11y-btn",
+      "area": 309,
+      "share": "4%"
+     }
+    ],
+    "published": [
+     {
+      "el": "a \"שיתוף בוואטסאפ\"",
+      "under": "#nlcta",
+      "area": 4744,
+      "share": "29%"
+     },
+     {
+      "el": "button \"המודעות שלי\"",
+      "under": "#nlcta",
+      "area": 578,
+      "share": "4%"
+     },
+     {
+      "el": "button \"המודעות שלי\"",
+      "under": "#nla11y-btn",
+      "area": 415,
+      "share": "3%"
+     }
+    ],
+    "saved-draft": [
+     {
+      "el": "button \"המשך מהמקום שעצרתם\"",
+      "under": "#nlcta",
+      "area": 2033,
+      "share": "13%"
+     },
+     {
+      "el": "button \"המשך מהמקום שעצרתם\"",
+      "under": "#nla11y-btn",
+      "area": 371,
+      "share": "2%"
+     },
+     {
+      "el": "button \"מודעה חדשה\"",
+      "under": "#nla11y-btn",
+      "area": 259,
+      "share": "2%"
+     }
+    ]
+   },
+   "label_text_under_an_overlay_while_its_checkbox_is_clear (info)": {},
+   "instant_scroll_L14 (info)": {
+    "centre_covered": {},
+    "outside_viewport": {}
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:05:21"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 461,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:15:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 459,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:07:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 386,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:09:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 385,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:01:25"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 386,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:11:18"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 385,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:03:23"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 386,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:13:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "no_focus_ring": {},
+   "js_errors": [],
+   "app_contrast_under": {},
+   "app_text_nodes": 385,
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:05:21"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:15:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:07:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:09:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:01:25"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:11:18"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:03:23"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "What comes next"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:13:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one \"how it works\" box (the journey's own on the visitor screens, no plugin box) (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "auth_screens": {
+    "auth-signup": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-existing-email": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-login": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    },
+    "auth-recovery-sent": {
+     "plugin_box": 0,
+     "plugin_box_in_html": 0,
+     "journey_box": 1,
+     "any_how_h2": [
+      "מה קורה אחר כך"
+     ]
+    }
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:05:21"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "List your property for sale or rent, free"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 20,
+    "y": 826,
+    "w": 180,
+    "h": 54,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 1368,
+    "y": 828,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/03-auth-login.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/05-details-empty.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/06-details-errors.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/07-details-filled.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/08-photos.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/08-photos-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/09-preview.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/09-preview-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/10-published.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/10-published-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/11-my-listings.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-1440/13-saved-draft-view.jpg"
+   ],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:15:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 20,
+    "y": 826,
+    "w": 180,
+    "h": 54,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 1368,
+    "y": 828,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/03-auth-login.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/05-details-empty.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/06-details-errors.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/07-details-filled.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/08-photos.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/08-photos-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/09-preview.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/09-preview-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/10-published.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/10-published-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/11-my-listings.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-1440/13-saved-draft-view.jpg"
+   ],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:07:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "List your property for sale or rent, free"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 612,
+    "w": 165,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 254,
+    "y": 674,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:09:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 612,
+    "w": 165,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 254,
+    "y": 674,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:01:25"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "List your property for sale or rent, free"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 716,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 324,
+    "y": 778,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/03-auth-login.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/05-details-empty.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/06-details-errors.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/07-details-filled.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/08-photos.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/08-photos-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/09-preview.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/09-preview-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/10-published.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/10-published-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/11-my-listings.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/en-390/13-saved-draft-view.jpg"
+   ],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:11:18"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 716,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 324,
+    "y": 778,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/01-auth-signup.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/01-auth-signup-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/02-auth-existing-email.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/02-auth-existing-email-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/03-auth-login.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/03-auth-login-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/04-auth-recovery-sent.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/04-auth-recovery-sent-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/05-details-empty.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/05-details-empty-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/06-details-errors.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/06-details-errors-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/07-details-filled.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/07-details-filled-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/08-photos.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/08-photos-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/09-preview.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/09-preview-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/10-published.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/10-published-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/11-my-listings.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/11-my-listings-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/12-promotion-off.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/12-promotion-off-view.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/13-saved-draft.jpg",
+    "docs/qa/had-256/theme/candidate-2.0.2-85fa0b67-B/he-390/13-saved-draft-view.jpg"
+   ],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:03:23"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "List your property for sale or rent, free"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"ltr\", \"lang\": \"en\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 787,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 346,
+    "y": 849,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:13:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "one H1, the site header, footer, floating bar and accessibility button on every screen (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ],
+   "h1_not_one": {},
+   "missing": {},
+   "h1_text": [
+    "פרסום נכס למכירה או להשכרה, בחינם"
+   ],
+   "html": [
+    "{\"lang\": \"he-IL\", \"dir\": \"rtl\"}"
+   ],
+   "app": [
+    "{\"dir\": \"rtl\", \"lang\": \"he\"}"
+   ],
+   "bar_text": [
+    "ייעוץ חינם מענה בוואטסאפ"
+   ],
+   "bar_box": {
+    "x": 12,
+    "y": 787,
+    "w": 172,
+    "h": 50,
+    "pos": "static"
+   },
+   "a11y_box": {
+    "x": 346,
+    "y": 849,
+    "w": 52,
+    "h": 52,
+    "pos": "static"
+   },
+   "bar_a11y_overlap_px2": [
+    0
+   ],
+   "header_position": "sticky",
+   "shots": [],
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:05:21"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free\n\nNo commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     [
+      "No commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     ]
+    ],
+    "details-empty": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free\n\nNo commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     [
+      "No commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     ]
+    ],
+    "published": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free\n\nNo commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     [
+      "No commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     ]
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:15:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     [
+      "בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו."
+     ]
+    ],
+    "details-empty": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     [
+      "בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו."
+     ]
+    ],
+    "published": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     [
+      "בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו."
+     ]
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:07:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free\n\nNo commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     [
+      "No commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     ]
+    ],
+    "details-empty": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free\n\nNo commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     [
+      "No commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     ]
+    ],
+    "published": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free\n\nNo commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     [
+      "No commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     ]
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:09:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     [
+      "בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו."
+     ]
+    ],
+    "details-empty": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     [
+      "בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו."
+     ]
+    ],
+    "published": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     [
+      "בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו."
+     ]
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:01:25"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free\n\nNo commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     [
+      "No commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     ]
+    ],
+    "details-empty": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free\n\nNo commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     [
+      "No commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     ]
+    ],
+    "published": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free\n\nNo commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     [
+      "No commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     ]
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:11:18"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     [
+      "בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו."
+     ]
+    ],
+    "details-empty": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     [
+      "בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו."
+     ]
+    ],
+    "published": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     [
+      "בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו."
+     ]
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:03:23"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free\n\nNo commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     [
+      "No commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     ]
+    ],
+    "details-empty": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free\n\nNo commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     [
+      "No commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     ]
+    ],
+    "published": [
+     {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free\n\nNo commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     },
+     [
+      "List your property for sale or rent, free"
+     ],
+     "List your property for sale or rent, free | nad-lan",
+     [
+      "No commission and no credit card. Your phone number appears in the listing only if you choose to publish it."
+     ]
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:13:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "page_variant": "B",
+   "bad": {},
+   "samples": {
+    "auth-signup": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     [
+      "בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו."
+     ]
+    ],
+    "details-empty": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     [
+      "בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו."
+     ]
+    ],
+    "published": [
+     null,
+     [
+      "פרסום נכס למכירה או להשכרה, בחינם"
+     ],
+     "פרסום נכס - nad-lan bench (local)",
+     [
+      "בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו."
+     ]
+    ]
+   },
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:05:21"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (1440 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "div.nlj-shell \"List your property for sale or rent, free No commission and \"",
+    "section.nlj#nlj-app \"Sign in Open an account with your name and email, fill in th\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:15:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (1440 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תב\"",
+    "section.nlj#nlj-app \"כניסה פותחים חשבון בשם ובמייל, ממלאים את פרטי הנכס ומעלים תמ\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:07:14"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (320 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "div.nlj-shell \"List your property for sale or rent, free No commission and \"",
+    "section.nlj#nlj-app \"Sign in Open an account with your name and email, fill in th\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:09:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (320 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תב\"",
+    "section.nlj#nlj-app \"כניסה פותחים חשבון בשם ובמייל, ממלאים את פרטי הנכס ומעלים תמ\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:01:25"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (390 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "div.nlj-shell \"List your property for sale or rent, free No commission and \"",
+    "section.nlj#nlj-app \"Sign in Open an account with your name and email, fill in th\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:11:18"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (390 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תב\"",
+    "section.nlj#nlj-app \"כניסה פותחים חשבון בשם ובמייל, ממלאים את פרטי הנכס ומעלים תמ\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:03:23"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (412 px, en, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "div.nlj-shell \"List your property for sale or rent, free No commission and \"",
+    "section.nlj#nlj-app \"Sign in Open an account with your name and email, fill in th\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:13:16"
+ },
+ {
+  "id": "T4",
+  "variant": "theme-candidate-2.0.2-85fa0b67-B",
+  "label": "real-wp+theme+chrome",
+  "title": "the page text around the app 4.5:1 (H1, paragraph, how-it-works) (412 px, he, real theme)",
+  "status": "pass",
+  "evidence": {
+   "under": {},
+   "page_blocks": [
+    "h1.wp-block-heading \"פרסום נכס למכירה או להשכרה, בחינם\"",
+    "p.wp-block-paragraph \"בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תב\"",
+    "section.nlj#nlj-app \"כניסה פותחים חשבון בשם ובמייל, ממלאים את פרטי הנכס ומעלים תמ\""
+   ],
+   "site_chrome_under (info, site-wide)": {},
+   "note": "interim 2.0.2 (85fa0b67); full-page shots dropped, first screens kept"
+  },
+  "at": "2026-10-05 21:05:21"
  }
 ]

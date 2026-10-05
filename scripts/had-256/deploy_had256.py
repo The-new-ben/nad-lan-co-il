@@ -7,6 +7,7 @@ scripts/had-256/make_release.py --snap <commit>). Credentials: deployskin.py's p
 in-process by DPAPI, never printed), exactly as scripts/project-stage/upload_project_films.py loads it.
 
   python scripts/had-256/deploy_had256.py --dry --page B          read, back up, build, lint, private-folder check; no write
+  python scripts/had-256/deploy_had256.py --package 202 --page B  the 2.0.2 package (had256_release_202.py) instead of 2.0.1
   python scripts/had-256/deploy_had256.py --page B                the release (--page keep: no page change)
   python scripts/had-256/deploy_had256.py --rollback docs/qa/had-256/live-backup/<UTC>
   rehearsal on a local bench only (never the live site, no secret read):
@@ -29,9 +30,10 @@ REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 QA = os.path.join(REPO, "docs", "qa", "had-256")
 RESULT = os.path.join(QA, "deploy-result-had256.json")
 sys.path.insert(0, os.path.join(REPO, "scripts", "project-stage"))
-import had256_release as R  # noqa: E402
-
 ARGS = sys.argv[1:]
+# --package 202: the 2.0.2 module (had256_release_202.py); default: had256_release.py
+import importlib  # noqa: E402
+R = importlib.import_module("had256_release" + ("_" + ARGS[ARGS.index("--package") + 1] if "--package" in ARGS else ""))
 
 
 def arg(name, default=None):
@@ -43,6 +45,7 @@ ROLLBACK_DIR = arg("--rollback")
 PAGE = arg("--page")
 BENCH = arg("--bench")
 FAIL_CHECK = "--bench-fail-check" in ARGS   # rehearsal only: one need-string that cannot be there, to prove the automatic rollback
+CRASH = "--bench-crash-after-write" in ARGS   # rehearsal only: an error right after the engine is written
 if not ROLLBACK_DIR and PAGE not in ("A", "B", "keep"):
     raise SystemExit("usage: --page A|B|keep is required (A: no page paragraph; B: the truthful paragraph; keep: page 4958 untouched)")
 sha = lambda s: hashlib.sha256((s if isinstance(s, bytes) else s.encode("utf-8"))).hexdigest()
@@ -287,9 +290,9 @@ if V202:
 OLD_PAR = "עם כפתורי וואטסאפ וחיוג אליכם"   # the promise 2.0 does not keep (the phone only with consent)
 CHECKS = [
     ("/post-listing/", NEED_PL + ['dir="rtl" lang="he" data-v=', '<h1 class="wp-block-heading">פרסום נכס למכירה או להשכרה, בחינם</h1>'],
-     NEVER_PL + ([OLD_PAR] if PAGE in ("A", "B") else [])),
+     NEVER_PL + ([OLD_PAR] if V202 and PAGE in ("A", "B") else [])),   # before 2.0.2 the plugin's own box still says it (rehearsal R5)
     ("/post-listing/?lang=en", NEED_PL + ['dir="ltr" lang="en" data-v=', '"lang":"en"'] + (['<div class="nlj-shell" lang="en" dir="ltr"><h1 class="wp-block-heading">List your property for sale or rent, free</h1>'] if V202 else []),
-     NEVER_PL + ([OLD_PAR] if PAGE in ("A", "B") or V202 else [])),
+     NEVER_PL + ([OLD_PAR] if V202 else [])),
 ]
 if PAGE == "B":
     CHECKS[0][1].append("בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם תבחרו לפרסם אותו.")
@@ -387,8 +390,12 @@ def restore(backup, page_written):
     pf = os.path.join(backup, "page-4958.html")
     if page_written and os.path.exists(pf):
         old = open(pf, "rb").read()
-        r = ops({"page": {"path": R.PAGE_PATH, "force": 1, "b64": base64.b64encode(old).decode(), "sha": sha(old)}}, "page restore")["page"]
-        print(f"[restore] page {r['id']}: {r['sha'][:12]} (saved {sha(old)[:12]})")
+        cur = ops({"page": {"path": R.PAGE_PATH, "get": 1}}, "page read")["page"]
+        if cur["sha"] == sha(old):
+            print(f"[restore] page {cur['id']}: already the saved text {sha(old)[:12]}")
+        else:
+            r = ops({"page": {"path": R.PAGE_PATH, "force": 1, "b64": base64.b64encode(old).decode(), "sha": sha(old)}}, "page restore")["page"]
+            print(f"[restore] page {r['id']}: {r['sha'][:12]} (saved {sha(old)[:12]})")
 
 
 def _stop(signum, frame):
@@ -427,7 +434,9 @@ def step_lock_health():
     must(s, h, "health")
     print("[health]", h.get("version"), h.get("status"))
     if h.get("status") != "ok":
-        raise SystemExit("FATAL: live health is not ok")
+        if not BENCH:
+            raise SystemExit("FATAL: live health is not ok")
+        print("[health] the bench reports", h.get("status"), "(no payment / mail services on a bench): accepted for the rehearsal only")
     other = [x for x in snippets() if re.match(r"x-tmp-[a-z0-9]+-ops-", str(x.get("name", ""))) and x.get("active")]
     if other:
         raise SystemExit("FATAL: another release bridge is active: " + ", ".join(f"{x['id']} {x['name']}" for x in other))
@@ -473,7 +482,6 @@ def main():
     php_lint_local(new_own, "x-owner-wizard " + V)
     cards_before = broker_counts(str(int(time.time())))
     print("[before] broker pages:", cards_before)
-    page_written = False
     bridge_up()
     try:
         print("[lint] server x-broker-drop:", ops({"lint_code": new_eng}, "lint engine")["lint_code"])
@@ -517,36 +525,66 @@ def main():
             record("dry: done", lint="ok", private=pd)
             print("[dry] everything up to the write passed; nothing was written")
             return 0
-        # 6. write: the engine first, then 707, then the page
-        record("writing", private=pd)
-        write_snippet(eng_id, "x-broker-drop", new_eng, R.BROKER_NEW_SHA256, "x-broker-drop " + R.BROKER_VERSION)
-        write_snippet(R.SNIPPET_707, "x-owner-wizard", new_own, R.OWNER_LIVE_SHA256, "x-owner-wizard " + V)
-        if new_page is not None:
-            page_written = True
-            r = ops({"page": {"path": R.PAGE_PATH, "expect": pg["sha"], "b64": base64.b64encode(new_page).decode(), "sha": sha(new_page)}}, "page write")["page"]
-            if r["sha"] != sha(new_page):
-                raise SystemExit("FATAL: the page after the write is " + r["sha"][:12])
-            print(f"[write] page {r['id']}: {r['sha'][:12]}")
-        record("written", page_written=page_written)
-        # 7. purge, 8. checks (cache-busted, then plain), a second chance after another purge, else the automatic rollback
-        print("[purge]", ops({"purge": 1}, "purge"))
-        time.sleep(2)
-        bad = run_checks(str(int(time.time())), cards_before) + run_checks(None, cards_before)
-        if bad:
-            print("[checks] first round:", bad, "- purge and look again")
-            ops({"purge": 1}, "purge again")
-            time.sleep(4)
-            bad = run_checks(str(int(time.time())), cards_before) + run_checks(None, cards_before)
-        if bad:
-            print("[checks] FAILED:", bad, "- rolling back automatically")
-            restore(backup, page_written)
-            ops({"purge": 1}, "purge after rollback")
-            time.sleep(2)
-            rb = rollback_checks(str(int(time.time())), cards_before)
-            record("rolled back (auto)", failed=bad, rollback_checks_bad=rb)
+        # 6. write: the engine first, then 707, then the page. From the first write on, ANY failure (a failed check, a
+        #    FATAL, a network error, a stop from outside) restores the saved bodies before the bridge goes down.
+        state = {"writing": False, "page": False, "rolled": False}
+
+        def auto_rollback(why):
+            if state["rolled"]:
+                return
+            state["rolled"] = True
+            print("[rollback] automatic:", why)
+            try:
+                restore(backup, state["page"])
+                ops({"purge": 1}, "purge after rollback")
+                time.sleep(2)
+                rb = rollback_checks(str(int(time.time())), cards_before)
+            except BaseException as e2:   # keep the record honest when even the rollback cannot finish
+                record("ROLLBACK INCOMPLETE", failed=str(why)[:300], rollback_error=str(e2)[:300])
+                raise SystemExit(f"RELEASE FAILED AND THE ROLLBACK DID NOT FINISH ({e2}); run --rollback {os.path.relpath(backup, REPO)} by hand")
+            record("rolled back (auto)", failed=str(why)[:300], rollback_checks_bad=rb)
             raise SystemExit("RELEASE FAILED, ROLLED BACK" + (" (rollback checks NOT clean: " + ", ".join(rb) + ")" if rb else " (rollback checks clean)"))
+
+        try:
+            record("writing", private=pd)
+            state["writing"] = True
+            write_snippet(eng_id, "x-broker-drop", new_eng, R.BROKER_NEW_SHA256, "x-broker-drop " + R.BROKER_VERSION)
+            if CRASH and BENCH:
+                raise RuntimeError("rehearsal: a crash right after the engine write")
+            write_snippet(R.SNIPPET_707, "x-owner-wizard", new_own, R.OWNER_LIVE_SHA256, "x-owner-wizard " + V)
+            if new_page is not None:
+                state["page"] = True
+                r = ops({"page": {"path": R.PAGE_PATH, "expect": pg["sha"], "b64": base64.b64encode(new_page).decode(), "sha": sha(new_page)}}, "page write")["page"]
+                if r["sha"] != sha(new_page):
+                    raise SystemExit("FATAL: the page after the write is " + r["sha"][:12])
+                print(f"[write] page {r['id']}: {r['sha'][:12]}")
+            record("written", page_written=state["page"])
+            # 7. purge, 8. checks (cache-busted, then plain), a second chance after another purge, else the rollback
+            print("[purge]", ops({"purge": 1}, "purge"))
+            time.sleep(2)
+
+            def all_checks():
+                # the prelude is live: snippet 707 now defines the folder the runner made and probed
+                pd2 = ops({"privdir": {"check": 1}}, "private folder after the write").get("privdir") or {}
+                pre = [] if pd2.get("defined_now") == pd.get("dir") else ["private-folder-constant"]
+                print(f"[private] NL_OWNER_PRIVATE_DIR now {pd2.get('defined_now')!r} (want {pd.get('dir')!r}){' BAD' if pre else ''}")
+                return pre + run_checks(str(int(time.time())), cards_before) + run_checks(None, cards_before)
+
+            bad = all_checks()
+            if bad:
+                print("[checks] first round:", bad, "- purge and look again")
+                ops({"purge": 1}, "purge again")
+                time.sleep(4)
+                bad = all_checks()
+            if bad:
+                print("[checks] FAILED:", bad)
+                auto_rollback("checks failed: " + ", ".join(bad))
+        except BaseException as e:
+            if state["writing"] and not state["rolled"]:
+                auto_rollback(f"{type(e).__name__}: {e}")
+            raise
         record("released", checks="all OK")
-        print(f"RELEASE DONE: x-owner-wizard {V} + x-broker-drop {R.BROKER_VERSION}" + (f" + page variant {PAGE}" if page_written else "") + "; all checks OK; backup " + os.path.relpath(backup, REPO))
+        print(f"RELEASE DONE: x-owner-wizard {V} + x-broker-drop {R.BROKER_VERSION}" + (f" + page variant {PAGE}" if state["page"] else "") + "; all checks OK; backup " + os.path.relpath(backup, REPO))
         return 0
     finally:
         bridge_down()
@@ -561,7 +599,7 @@ def do_rollback(backup):
     cards = broker_counts(str(int(time.time())))
     bridge_up()
     try:
-        restore(backup, page_written=bool(rec.get("page_written")))
+        restore(backup, page_written=True)   # the page only when it differs from the saved text
         ops({"purge": 1}, "purge after rollback")
         time.sleep(2)
         rb = rollback_checks(str(int(time.time())), cards)

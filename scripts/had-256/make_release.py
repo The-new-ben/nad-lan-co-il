@@ -22,7 +22,7 @@ BASE = '6e9cf930'
 PAGES_AT = subprocess.run(['git', '-C', os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..')), 'log', '-1', '--format=%h', '--', 'docs/qa/had-256/page-4958'], capture_output=True, check=True).stdout.decode().strip()
 SNAP = sys.argv[sys.argv.index('--snap') + 1] if '--snap' in sys.argv else '2ce0a741'
 BD, OW = 'plugins/nadlan-config/inc/broker-drop.php', 'plugins/nadlan-config/inc/owner-wizard.php'
-OUT = os.path.join(REPO, 'scripts', 'project-stage', 'had256_release.py')
+OUT = os.path.join(REPO, 'scripts', 'project-stage', sys.argv[sys.argv.index('--out') + 1] if '--out' in sys.argv else 'had256_release.py')
 
 
 def show(ref, path):
@@ -68,7 +68,7 @@ OWNER_VERSION, BROKER_VERSION = ver(snap_ow, 'NL_OWNER_VERSION'), ver(snap_bd, '
 # 707 body (read only at request time by nl_owner_private_base(); a wp-config.php define still wins)
 PRELUDE = ("/* HAD-256 release: owners' draft photos are kept outside the web root, beside the WordPress folder. A define in\n"
            "   wp-config.php wins; owner-wizard reads it only while serving a request. */\n"
-           "if ( ! defined( 'NL_OWNER_PRIVATE_DIR' ) ) { define( 'NL_OWNER_PRIVATE_DIR', dirname( ABSPATH ) . '/nl-private' ); }\n")
+           "if ( ! defined( 'NL_OWNER_PRIVATE_DIR' ) ) { define( 'NL_OWNER_PRIVATE_DIR', rtrim( dirname( ABSPATH ), '/' ) . '/nl-private' ); }\n")
 live_ow = PRELUDE + snap_ow
 PG = os.path.join(REPO, 'docs', 'qa', 'had-256', 'page-4958')
 pg = {n: io.open(os.path.join(PG, n), encoding='utf-8').read().replace('\r\n', '\n') for n in ('old.html', 'anchor.html', 'new-B-paragraph.html', 'new-A.html', 'new-B.html')}
@@ -107,7 +107,7 @@ w('OWNER_NEW_SHA256 = %r     # x-owner-wizard at %s (the repo file without its o
 w('OWNER_LIVE_SHA256 = %r    # what snippet 707 holds after the release: PRIVATE_PRELUDE + that body' % sha(live_ow))
 w('OWNER_VERSION = %r' % OWNER_VERSION)
 w('BROKER_VERSION = %r' % BROKER_VERSION)
-w('PRIVATE_DIR_EXPR = %r' % "dirname( ABSPATH ) . '/nl-private'")
+w('PRIVATE_DIR_EXPR = %r' % "rtrim( dirname( ABSPATH ), '/' ) . '/nl-private'")
 w('PRIVATE_PRELUDE = %r' % PRELUDE)
 w('# page 4958 (/post-listing/): the copy variants (docs/qa/had-256/page-4958). The anchor is the old paragraph block, exactly once.')
 w('PAGE_ID = 4958')

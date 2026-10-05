@@ -1,0 +1,18 @@
+[lock] C:/Users/777/AppData/Local/Temp/claude/C--Users-777-nad-lan/638c26e3-6032-438a-9641-ab6fd06c26f5/scratchpad/lock-done.md
+[lock] last line: RELEASE DONE 1.72.429 by the Kikar loop [main] 18:48 Israel (rehearsal copy of the lock line)
+[health] 1.72.372 degraded
+[health] the bench reports degraded (no payment / mail services on a bench): accepted for the rehearsal only
+[lock] lines for docs/coordination/claude-codex.md: RELEASE IN PROGRESS HAD-256 x-owner-wizard 2.0.1 + x-broker-drop 1.1.4 (page keep) by <session> start <time>
+[read] 707 x-owner-wizard f04dbbf8d99d active True | 690 x-broker-drop e7736ef75fdf active True
+[backup] docs\qa\had-256\live-backup\20261005T180444Z-bench
+[record] dry: backed up
+[lint] local php -l x-broker-drop 1.1.4: ok
+[lint] local php -l x-owner-wizard 2.0.1: ok
+[before] broker pages: {}
+[bridge] up, id 1000 | plugin 1.72.372 | PHP 8.3.33
+[lint] server x-broker-drop: ok 8.3.33
+[lint] server x-owner-wizard: ok 8.3.33
+[private] {"dir": "//nl-private", "exists": false, "writable": false, "parent_writable": true, "inside_abspath": false, "inside_docroot": false, "defined_now": null}
+[record] dry: done
+[dry] everything up to the write passed; nothing was written
+[bridge] deactivate 200, delete 200; route now 404 (want 404)

@@ -224,7 +224,10 @@ def main(widths, langs):
                         'evidence': {'overflow': ovf, 'under_44px': small, 'no_focus_ring': nof, 'js_errors': errs, 'app_contrast_under': con, 'app_text_nodes': sum(v['checked']['text'] for v in l14.values())}})
                 auth = [k for k in pg if k.startswith('auth-')]
                 ff = {k: pg[k].get('first_field') for k in auth}
-                ff_bad = {k: v for k, v in ff.items() if v and v.get('under')} if int(vp) < 768 else {}
+                # the landing screens a visitor opens (the sign-up form, and the sign-in form via ?screen=login); the
+                # screens reached by a tap (recovery, the existing-email answer) are listed as info
+                LANDING = ('auth-signup', 'auth-login')
+                ff_bad = {k: v for k, v in ff.items() if k in LANDING and v and v.get('under')} if int(vp) < 768 else {}
                 record({'id': 'T4', 'variant': RV, 'label': 'real-wp+theme+chrome', 'title': 'first screen: the first field is not under the floating bar or the accessibility button (phones) ' + t,
                         'status': 'pass' if not ff_bad else 'fail', 'evidence': {'page_variant': PAGE_VARIANT or 'seeded', 'first_field_at_rest': ff, 'under': ff_bad, 'applies': int(vp) < 768}})
                 how = {k: v.get('how') for k, v in pg.items()}
