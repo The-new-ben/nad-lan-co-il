@@ -3776,3 +3776,16 @@ RELEASE DONE 1.72.424 by the Kikar loop [main] 16:40 Israel: low-priority head h
 - **Decision:** KEPT. The world is the page's main content; the FCP cost is recorded, and one release reverses it.
 - **Next notch:** win the FCP back by deferring the non-critical head scripts (leaflet from unpkg, the hotjar loader, others), measured.
 - **HAD-421 since this morning** (phone, slow 4G): world usable 21.7 → 13.6 s; 2.64 → 1.33 MB until usable.
+RELEASE IN PROGRESS 1.72.425 by the Kikar loop [main] start 17:10 Israel (HAD-421 step 6: leaflet.css non-blocking on project pages; dry run, then live)
+RELEASE DONE 1.72.425 by the Kikar loop [main] 17:25 Israel: leaflet.css non-blocking on project pages (project-stage.php 28287f7761 -> 9f973a3475); all checks OK; rollback .bak425
+
+### 5.10.2026 ~17:50 Israel: main RECEIPT 1.72.425 (HAD-421 step 6: leaflet.css stops blocking the first paint on project pages; Kikar loop turn 35)
+- **Design:** v104.48 (DS artifact version 201).
+- **Hunk:** perf_425.py adds nadlan_leaflet_css_async (style_loader_tag). On nadlan_project singles the leaflet stylesheet (unpkg.com) is printed media="print" onload → all, plus a noscript copy; other templates are unchanged. project-stage.php 28287f7761 → 9f973a3475. Live 17:25, all checks OK (the async tag + noscript on hamedina he/en and rainbow; no blocking leaflet tag there). Rollback .bak425.
+- **Headless Chrome:** the stylesheet switches to media=all; no page errors.
+- **Finding (next notch):** NO Leaflet map exists on project pages at all. L is defined, but there are 0 .leaflet-container on hamedina and rainbow after a full scroll; areamap.js contains no Leaflet call. Leaflet (js + css from unpkg) is enqueued by project-experience.php (also by property-showroom and professional-profile), so on project pages it is dead weight. To be removed after a code check that nothing calls L there.
+- **Speed (phone, slow 4G, 5 runs; 2 had TTFB 1.8 s server noise, so compared net of TTFB and on the 3 clean runs):**
+  - FCP net 2.31 → 2.15 s (clean runs 2.81-2.89 s), so the 1.72.424 cost is mostly won back;
+  - DCL 7.2 → 6.3 s;
+  - world usable 13.6 → 12.8 s.
+- **HAD-421 since this morning (slow 4G):** world usable 21.7 → 12.8 s; FCP 3.2 → 2.85 s; 2.64 → 1.33 MB until usable.
