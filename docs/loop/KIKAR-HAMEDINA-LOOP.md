@@ -214,6 +214,13 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **5.10 ~11:30, turn 30: HAD-421 step 1 LIVE (1.72.420): measurably faster on phones.**
+  - **What changed:** Paid Member Subscriptions' scripts (incl. js.stripe.com) and style left our project, listing and broker templates. They stay where PMS may be used. Design note v104.43.
+  - **Measured with the same tool** (slow 4G, phone, medians): DCL 11.7 → 7.7 s; world usable 21.7 → 19.8 s; 2.64 → 2.34 MB; unthrottled 4.3 → 3.4 s.
+  - **Checked side effect:** /properties/ dropped jQuery with no consumer left and no console errors.
+  - **Also this turn (HAD-256):** the same build agent resumed after the weekly limit, ordered to restore Maya's pinned QA server 9402 first.
+  - **Next notch, sharper:** lazy film posters (344 KB) and deferred head scripts. The 3D world itself still needs about 8.7 s on slow 4G after it starts (world.json 378 KB + three.js 257 KB + the scene build): the next big lever is starting it earlier and sending less, measured each time.
+
 - **4.10 ~01:25, turn 29: the phone speed measured for the first time. Far from the 2026 benchmark (HAD-421).**
   - **New tool:** tools/stage_speed.py (Playwright). It does cold phone loads (390x844, DPR3), runs the Lighthouse slow-4G profile and a no-throttle profile, and records the moment the world is usable (the poster is gone).
   - **Kikar medians (3 runs):**
