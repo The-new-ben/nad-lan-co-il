@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.join(HERE, 'advertise'))
 import plugin_parts  # noqa: E402  (the "Advertise with us" page, button and assets)
 
 SLUG = 'cy-project-experience'
-VERSION = '1.6.0'
+VERSION = '1.6.1'
 BUNDLE = 'villas-aa'
 IMAGES = {  # local web-media name -> published name, and the plan-data key it replaces
     'agios-athanasios-villas-site-plan.webp': ('site-plan.webp', '/media/site.png'),
