@@ -3789,3 +3789,15 @@ RELEASE DONE 1.72.425 by the Kikar loop [main] 17:25 Israel: leaflet.css non-blo
   - DCL 7.2 → 6.3 s;
   - world usable 13.6 → 12.8 s.
 - **HAD-421 since this morning (slow 4G):** world usable 21.7 → 12.8 s; FCP 3.2 → 2.85 s; 2.64 → 1.33 MB until usable.
+RELEASE IN PROGRESS 1.72.426 by the Kikar loop [main] start 18:00 Israel (HAD-421 step 7: no Leaflet on project pages with the Mapbox map; dry run, then live)
+RELEASE DONE 1.72.426 by the Kikar loop [main] 18:15 Israel: no Leaflet on Mapbox project pages (project-stage.php 9f973a3475 -> f611d341b1); all checks OK; rollback .bak426
+
+### 5.10.2026 ~18:40 Israel: main RECEIPT 1.72.426 (HAD-421 step 7: no Leaflet on project pages that show the Mapbox map; Kikar loop turn 36)
+- **Design:** v104.49 (DS artifact version 203).
+- **Hunk:** perf_426.py adds nadlan_leaflet_off (wp_enqueue_scripts 9999). On nadlan_project singles, when nadlan_mapbox_token() is set, 'leaflet' is dropped from nadlan-pjx-js deps and the leaflet script + style are dequeued. Without a token nothing changes (the fallback keeps its library). project-stage.php 9f973a3475 → f611d341b1. Live 18:15, all checks OK on the first run; rollback .bak426.
+- **Checks replaced (the 409 lesson):** the 425 checks that required the async leaflet tag are replaced by never-checks on leaflet js + css on hamedina, hamedina-en, rainbow, duo.
+- **Headless Chrome (desktop 1366):** hamedina, rainbow, duo, einstein-tower, h-infinity-somail: the Mapbox map boots after scroll (canvas present, NLPJX_MAP set), window.L undefined, 0 page errors. Home unaffected (scoped to project singles).
+- **Fleet sweep (raw HTML, 240 Hebrew project pages):** 228 carry the Mapbox map, 0 still load Leaflet, 0 print the Leaflet fallback element. 12 pages have NO area map at all (no coordinates; not caused by this release, the element is printed by project-experience.php only with lat/lng): aurelia, utopia-sde-dov and 10 Hebrew-slug pages. Logged as a gap.
+- **Speed (phone, slow 4G, 5 runs, all clean, net of TTFB):** DCL 5.58 → 4.47 s; world usable 12.03 → 12.02 s (flat); FCP 2.14 → 2.19 s (noise); requests 51 → 49.
+- **HAD-421 since this morning (slow 4G):** world usable 21.7 → 12.7 s; DCL 7.2 → 5.1 s raw; FCP 3.2 → 2.83 s; 2.64 → 1.33 MB until usable.
+- **Next notch found:** the theme's style.css is loaded twice (style.min.css 50.5 KB + style.css 52.6 KB, the same 287 rules); dropping the EARLIER copy is cascade-neutral (the later identical copy always wins). Also: Google Fonts css (third origin) blocks the first paint; WooCommerce blockUI + js.cookie load on project pages.

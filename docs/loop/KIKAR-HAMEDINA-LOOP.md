@@ -214,6 +214,13 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **5.10 ~18:40, turn 36: HAD-421 step 7 LIVE (1.72.426): no Leaflet on project pages that show the Mapbox map.**
+  - **Measured (5 clean runs, net of server time):** DCL 5.58 → 4.47 s; world usable flat (12.0 s); 2 fewer requests.
+  - **Proven:** the Mapbox map boots on 5 project pages with 0 errors; fleet sweep 228/240 Hebrew pages carry the map, 0 load Leaflet.
+  - **Found:** 12 project pages have no area map at all (no coordinates), logged as a gap.
+  - **Since the morning:** world usable 21.7 → 12.7 s; DCL 7.2 → 5.1 s.
+  - **Next notch, sharper:** drop the duplicate theme stylesheet (style.min.css + style.css carry the same 287 rules; removing the earlier copy is cascade-neutral), then the Google Fonts css off the critical path on project pages, then the world's scene build (CPU).
+
 - **5.10 ~17:50, turn 35: HAD-421 step 6 LIVE (1.72.425): the third-origin leaflet.css no longer blocks the first paint.**
   - **Measured (clean runs):** FCP back to ~2.85 s; DCL 7.2 → 6.3 s; world usable 13.6 → 12.8 s.
   - **Found:** no Leaflet map exists on project pages at all (L loaded, 0 containers, areamap.js holds no Leaflet call), so Leaflet js + css are dead weight there.
