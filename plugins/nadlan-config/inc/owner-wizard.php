@@ -1785,9 +1785,12 @@ function nl_owner_footer() {
 
 function nl_owner_css() {
 	return <<<'NLJCSS'
-/* the site's floating "ייעוץ חינם" bar (#nlcta, inc/conversion-cta.php) sits fixed at the bottom: focus and scrollIntoView keep a
-   focused field, link or button above it (WCAG 2.4.11), and the page ends with room for it (the main action is never under it) */
-html:has(#nlj-app){scroll-padding-bottom:calc(112px + env(safe-area-inset-bottom,0px));scroll-padding-top:24px}
+/* the site's floating "ייעוץ חינם" bar (#nlcta, inc/conversion-cta.php) sits fixed in the bottom corner. On this page it stays
+   at its resting place (--nlcta-band: the site's own switch that stops its lifts, ConsultBand v104.25; a lift would put it over
+   the fields above a form button), the page keeps room for it below the last control, and a focused field, link or button is
+   scrolled above it (WCAG 2.4.11), also when a phone keyboard shrinks the screen. --nlj-bar-room is measured by the app. */
+body:has(#nlj-app){--nlcta-band:1}
+html:has(#nlj-app){scroll-padding-bottom:var(--nlj-bar-room,112px);scroll-padding-top:24px}
 .nlj{--paper:#f7f6f2;--surf:#fff;--ink:#14212b;--ink2:#3b4753;--mute:#6b7680;--line:#e3e1da;--sea:#2f6f86;--seah:#255c70;--deep:#1f4b5c;--sand:#eee9dd;--champ:#cfe3ea;--wa:#0f7a63;--field:#fbfaf7;--bad:#b3261e;--badg:#fbedec;--ok:#2e7d5b;--okg:#eaf4ef;
   font-family:Assistant,"Segoe UI",Arial,sans-serif;font-size:15px;line-height:1.5;color:var(--ink2);background:var(--paper);box-sizing:border-box;position:relative;max-width:none!important;margin-inline:0!important;width:100%}
 .nlj *,.nlj *::before,.nlj *::after{box-sizing:border-box}
@@ -1800,7 +1803,7 @@ html:has(#nlj-app){scroll-padding-bottom:calc(112px + env(safe-area-inset-bottom
 .nlj a{color:var(--sea);text-underline-offset:3px}
 .nlj a:hover{color:var(--seah)}
 .nlj-num{unicode-bidi:isolate;direction:ltr;display:inline-block}
-.nlj-wrap{max-width:1240px;margin-inline:auto;padding-inline:16px;padding-block:16px 120px;display:flex;flex-direction:column;gap:18px}
+.nlj-wrap{max-width:1240px;margin-inline:auto;padding-inline:16px;padding-block:16px calc(var(--nlj-bar-room,112px) + 24px);display:flex;flex-direction:column;gap:18px}
 .nlj-bar{display:flex;align-items:center;justify-content:flex-end;gap:8px;min-height:48px}
 .nlj-avatar{width:36px;height:36px;border-radius:999px;background:var(--deep);color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px;flex:none}
 .nlj-cols{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
@@ -1845,6 +1848,7 @@ html:has(#nlj-app){scroll-padding-bottom:calc(112px + env(safe-area-inset-bottom
 .nlj-opt{font-weight:400;color:var(--ink2)}
 .nlj-hint{font-size:13.5px;line-height:1.5;color:var(--ink2)}
 .nlj-input{width:100%;height:48px;border:1px solid #858c93;border-radius:10px;background:var(--field);padding-inline:14px;font:inherit;font-size:16px;color:var(--ink);margin:0}
+.nlj-input::placeholder{color:#59636d;opacity:1}
 .nlj-input:focus-visible,.nlj-input:focus{outline:3px solid var(--sea);outline-offset:1px;border-color:transparent}
 .nlj-input.is-bad{border-color:var(--bad);background:var(--surf)}
 .nlj-input.is-ltr{direction:ltr;text-align:end}
@@ -1885,7 +1889,7 @@ select.nlj-input{appearance:auto}
 .nlj-btn--danger{background:var(--surf);border-color:var(--bad);color:var(--bad)!important}
 .nlj-btn--bad{color:var(--bad)!important}
 .nlj-btn--sm{min-height:44px;font-size:15px;padding-inline:18px}
-.nlj-btn[disabled],.nlj-btn[aria-disabled="true"]{opacity:.6;cursor:not-allowed}
+.nlj-btn[disabled],.nlj-btn[aria-disabled="true"]{background:#e3e1da;border-color:#e3e1da;color:#3b4753!important;cursor:not-allowed}
 .nlj-btn:focus-visible,.nlj-pill:focus-visible,.nlj-tab:focus-visible,.nlj-ibtn:focus-visible,.nlj a:focus-visible,.nlj-check input:focus-visible,.nlj summary:focus-visible{outline:2px solid var(--sea);outline-offset:3px}
 .nlj-ibtn{width:44px;height:44px;border-radius:999px;border:1px solid #858c93;background:var(--surf);color:var(--deep);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}
 .nlj-ibtn[disabled]{opacity:.45;cursor:not-allowed}
@@ -1947,7 +1951,7 @@ select.nlj-input{appearance:auto}
 @media (max-width:480px){.nlj-g3{grid-template-columns:repeat(2,minmax(0,1fr))}.nlj-g3>:last-child{grid-column:1/-1}}
 @media (max-width:359px){.nlj .nlj-h1{font-size:27px}.nlj-g2{grid-template-columns:minmax(0,1fr)}.nlj-card{padding:16px}.nlj-wrap{padding-inline:12px}}
 @media (min-width:1024px){
- .nlj-wrap{padding-inline:32px;padding-block:28px 128px;gap:24px}
+ .nlj-wrap{padding-inline:32px;padding-block:28px calc(var(--nlj-bar-room,112px) + 32px);gap:24px}
  .nlj .nlj-h1{font-size:40px;line-height:1.1}
  .nlj-card{padding:28px;gap:22px}
  .nlj-actions{flex-direction:row;flex-wrap:wrap;align-items:center}
@@ -2994,6 +2998,20 @@ root.addEventListener('click',function(e){
   case 'd-restore':mineAct('/draft/'+id+'/restore',{},id,function(){S.mine=null;renderMine();var mm=$('nlj-mine-msg');if(mm){mm.textContent=T.restored;}});break;
  }
 });
+
+/* ---------------- the site's floating bar never covers a control ---------------- */
+function barRect(){var b=document.getElementById('nlcta');if(!b){return null;}var cs=getComputedStyle(b);if(cs.display==='none'||cs.visibility==='hidden'){return null;}var a=b.querySelector('a')||b,r=a.getBoundingClientRect();return r.height?r:null;}
+function fitBar(){var r=barRect(),room=r?Math.max(0,Math.round(window.innerHeight-r.top+16)):0;document.documentElement.style.setProperty('--nlj-bar-room',room+'px');}
+function clearBar(el){
+ if(!el||!root.contains(el)||!el.getBoundingClientRect){return;}
+ var r=barRect();if(!r){return;}
+ var e=el.getBoundingClientRect();
+ if(e.bottom>r.top-8&&e.top<r.bottom+8&&e.right>r.left-8&&e.left<r.right+8){window.scrollBy(0,Math.round(e.bottom-r.top+24));}
+}
+document.addEventListener('focusin',function(e){fitBar();clearBar(e.target);});
+window.addEventListener('resize',function(){fitBar();clearBar(document.activeElement);});
+window.addEventListener('load',fitBar);
+fitBar();setTimeout(fitBar,600);setTimeout(fitBar,2000);
 
 /* ---------------- start ---------------- */
 authPing();

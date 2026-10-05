@@ -32,7 +32,8 @@ PROBE = r"""
   out.overflow = {scrollWidth: document.documentElement.scrollWidth, innerWidth: window.innerWidth};
   out.bar_present = !!bar && getComputedStyle(bar).display !== 'none';
   const sel = 'a[href],button,input:not([type=hidden]):not(.nlj-file),select,textarea,summary,[tabindex]:not([tabindex="-1"])';
-  const els = Array.from(app.querySelectorAll(sel)).filter(e => { const r = e.getBoundingClientRect(); const cs = getComputedStyle(e); return (r.width > 0 && r.height > 0) && cs.visibility !== 'hidden' && !e.closest('[hidden]') && !e.closest('[aria-hidden="true"]'); });
+  const shut = e => { const d = e.closest('details'); return d && !d.open && !e.closest('summary'); };   // inside a closed <details>: not shown, not focusable
+  const els = Array.from(app.querySelectorAll(sel)).filter(e => { const r = e.getBoundingClientRect(); const cs = getComputedStyle(e); return (r.width > 0 && r.height > 0) && cs.visibility !== 'hidden' && !e.closest('[hidden]') && !e.closest('[aria-hidden="true"]') && !shut(e); });
   const name = e => (e.tagName.toLowerCase() + (e.id ? '#' + e.id : '') + (e.getAttribute('data-act') ? '[' + e.getAttribute('data-act') + ']' : '') + ' "' + (e.innerText || e.value || e.getAttribute('aria-label') || '').trim().slice(0, 40) + '"');
   for (const e of els) {
     out.checked.focus++;
@@ -98,7 +99,7 @@ PROBE = r"""
       if (el.closest('[disabled],[aria-disabled="true"],fieldset[disabled]')) { out.contrast_exempt.push(Object.assign(row, {why: 'disabled control'})); } else { out.contrast.push(row); }
     }
   };
-  let n; while ((n = walker.nextNode())) { const el = n.parentElement; check(el, n.nodeValue.trim(), getComputedStyle(el).color, el.tagName.toLowerCase() + (el.className ? '.' + String(el.className).split(' ')[0] : '')); }
+  let n; while ((n = walker.nextNode())) { const el = n.parentElement; if (shut(el)) continue; check(el, n.nodeValue.trim(), getComputedStyle(el).color, el.tagName.toLowerCase() + (el.className ? '.' + String(el.className).split(' ')[0] : '')); }
   for (const i of app.querySelectorAll('input[placeholder],textarea[placeholder]')) { if (!i.value && i.placeholder) check(i, 'placeholder: ' + i.placeholder, getComputedStyle(i, '::placeholder').color, 'placeholder'); }
   return out;
 }

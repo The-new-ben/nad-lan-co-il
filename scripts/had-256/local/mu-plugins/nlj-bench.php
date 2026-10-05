@@ -268,6 +268,15 @@ add_action( 'rest_api_init', function () {
 			'wp_image_editor' => _wp_image_editor_choose( array( 'mime_type' => 'image/jpeg' ) ),
 		);
 	} ) );
+	/* a synthetic broker with a live drop link (x-broker-drop), for the broker door regression */
+	register_rest_route( 'nlj-test/v1', '/broker-make', array( 'methods' => 'POST', 'permission_callback' => $local, 'callback' => function () {
+		$token = nl_drop_new_token();
+		$id    = wp_insert_post( array( 'post_type' => 'nadlan_professional', 'post_status' => 'publish', 'post_title' => 'מתווכת לדוגמה · נדל״ן לדוגמה' ) );
+		foreach ( array( '_nl_drop_token' => $token, 'nl_drop_on' => '1', 'nl_name_he' => 'מתווכת לדוגמה', 'license_number' => '0000000', 'phone' => '050-0000001', 'company_name' => 'נדל״ן לדוגמה', 'nl_gender' => 'f', 'nl_langs' => 'he' ) as $k => $v ) {
+			update_post_meta( $id, $k, $v );
+		}
+		return array( 'id' => (int) $id, 'token' => $token, 'license' => '0000000' );
+	} ) );
 	register_rest_route( 'nlj-test/v1', '/user', array( 'methods' => 'GET', 'permission_callback' => $local, 'callback' => function ( WP_REST_Request $r ) {
 		$u = get_user_by( 'email', (string) $r->get_param( 'email' ) );
 		return $u ? array( 'id' => $u->ID, 'login' => $u->user_login ) : array( 'id' => 0 );
@@ -276,7 +285,7 @@ add_action( 'rest_api_init', function () {
 
 function nlj_reset() {
 	global $wpdb;
-	foreach ( array( 'nadlan_drop', 'nadlan_property', 'attachment' ) as $t ) {
+	foreach ( array( 'nadlan_drop', 'nadlan_property', 'attachment', 'nadlan_professional' ) as $t ) {
 		foreach ( $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_type = %s", $t ) ) as $id ) { wp_delete_post( (int) $id, true ); }
 	}
 	foreach ( $wpdb->get_col( "SELECT ID FROM {$wpdb->posts} WHERE post_status = 'auto-draft'" ) as $id ) { wp_delete_post( (int) $id, true ); }
