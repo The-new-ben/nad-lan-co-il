@@ -1,0 +1,17 @@
+HAD-256 QA snapshot d2b8f349 RESTART bind check, 2026-10-05 10:55:55
+Restarted after the usage-limit stop, on the SAME data directory (not reset, not reseeded): .ht.sqlite 446464 bytes, last written 2026-10-05 10:55:39
+Snapshot file hashes re-checked: identical to QA-SNAPSHOT.md.
+Get-NetTCPConnection -State Listen, every socket of the QA bench process (PID 21284):
+
+LocalAddress LocalPort OwningProcess
+------------ --------- -------------
+127.0.0.1        50119         21284
+127.0.0.1        50118         21284
+127.0.0.1        50117         21284
+127.0.0.1        50116         21284
+127.0.0.1        50115         21284
+127.0.0.1        50100         21284
+127.0.0.1         9402         21284
+
+via 192.168.0.143:9402 -> refused: No connection could be made because the target machine actively refused it. (192.168.0.143:9402)
+

@@ -578,12 +578,6 @@ function nl_owner_b( $uid, $fl ) {
 	return nl_owner_pseudo( $uid, $fl['cname'], $phone );
 }
 
-/* The approved copy goes into the build as it is (x-broker-drop 1.1.4 nl_drop_pre_write): no model call, no new words. */
-add_filter( 'nl_drop_pre_write', function ( $copy, $f, $text, $b, $drop_id ) {
-	if ( (string) get_post_meta( (int) $drop_id, 'nl_draft_v', true ) !== '2' ) { return $copy; }
-	return nl_owner_copy( $f, $text );
-}, 10, 5 );
-
 /* ---------------- readiness: the same rules on the details step, the preview and the publish ---------------- */
 function nl_owner_desc_street( $s ) {
 	return (bool) preg_match( '/(?:^|[\s,.(])(?:ב?רחוב|ברח[\'׳’]?|רח[\'׳’]|שד[\'׳’]|ב?שדרות|ב?סמטת|ב?דרך|street|st\.|avenue|ave\.|road|rd\.|blvd\.?)\s+[\p{L}"״\'׳\- ]{2,30}?\s+\d{1,4}(?!\s*(?:חד|מ״ר|מ"ר|מטר|קומ|שנ|דק|rooms?|sqm|m²|floor|years?|min))/iu', (string) $s );
@@ -834,6 +828,17 @@ add_action( 'wp_ajax_nopriv_nl_owner_nonce', function () {
 	nocache_headers();
 	wp_send_json( array( 'nonce' => '', 'uid' => 0 ), 401 );
 } );
+
+/* The signed-in journey page is never stored by a browser or a page cache (another account's data must never come back
+   from a cache or the back-forward cache). */
+add_action( 'template_redirect', function () {
+	if ( ! is_user_logged_in() || ! is_singular() ) { return; }
+	$post = get_post( get_queried_object_id() );
+	if ( ! $post || ! has_shortcode( (string) $post->post_content, 'nadlan_listing_wizard' ) ) { return; }
+	do_action( 'litespeed_control_set_nocache', 'nadlan owner journey (signed in)' );
+	nocache_headers();
+	header( 'Cache-Control: no-store, no-cache, must-revalidate, max-age=0, private' );
+}, 1 );
 
 /* The owner's own draft photos, to the owner only, never cached. */
 function nl_owner_img_serve() {
@@ -1150,51 +1155,234 @@ function nl_owner_rest_photo( WP_REST_Request $req ) {
 	return nl_owner_nocache( nl_owner_photo_out( $d['id'], array( 'ref' => $ref ), $ups ) );
 }
 
-/**
- * A private photo becomes a media-library attachment at publish, once per ref: the same allocation as the listing
- * (x-broker-drop 1.1.4): an auto-draft attachment with its own copy of the file, claimed by INSERT IGNORE on the
- * unique option nl_att_<ref>. Only the claimed one becomes a real attachment; a loser keeps its auto-draft row and
- * its own file copy until WordPress' daily clean-up (auto-drafts older than 7 days). Nothing is deleted here.
- */
-function nl_owner_attach( $drop_id, $uid, $ref ) {
+/* ---------------- public photos follow the listing's status (HAD-256 P0, Maya's R1 on d2b8f349) ----------------
+ * A draft photo exists only sealed in private storage. A public copy (uploads/nl-listings/<ref>.<ext> + its media
+ * attachment and sizes) is written ONLY while the listing's post_status is 'publish', and only after that status is
+ * committed: the owner build writes the page as a non-public draft, commits 'publish', then copies (publish-then-copy).
+ * A failed, held (pending), test (draft), fenced-out or crashed publish leaves no public copy. When a listing leaves
+ * 'publish' (removed to the trash, sent back to pending or draft) its public copies are deleted (the sealed originals
+ * stay, so publishing again re-creates them). The same holds when an editor approves a held listing in wp-admin
+ * (transition_post_status). A crash between the 'publish' commit and the copy leaves a published listing with missing
+ * pictures (fail-closed), repaired by the retry of the same publish or by the next transition.
+ * Attachments are allocated like the listing: an auto-draft attachment WITHOUT a file, claimed by INSERT IGNORE on
+ * nl_att_<ref>; only the claimed one ever gets the file. A loser keeps an empty row for WordPress' daily clean-up. */
+
+/** The owner draft behind a listing (2.0 journey), or null. */
+function nl_owner_listing_draft( $he_id ) {
+	if ( get_post_type( $he_id ) !== 'nadlan_property' || (string) get_post_meta( $he_id, 'nl_owner', true ) !== '1' ) { return null; }
+	$drop = (int) get_post_meta( $he_id, 'nl_drop_id', true );
+	if ( ! $drop || (string) get_post_meta( $drop, 'nl_draft_v', true ) !== '2' ) { return null; }
+	$uid = (int) get_post_meta( $drop, 'nl_owner_user', true );
+	$d   = nl_owner_draft_get( $drop, $uid, true );
+	return $d ? array( 'drop' => $drop, 'uid' => $uid, 'd' => $d ) : null;
+}
+
+function nl_owner_att_claim( $ref ) {
 	global $wpdb;
-	$name = 'nl_att_' . $ref;
-	$read = function () use ( $wpdb, $name ) {
-		$j = json_decode( (string) $wpdb->get_var( $wpdb->prepare( "SELECT option_value FROM {$wpdb->options} WHERE option_name = %s LIMIT 1", $name ) ), true );
-		return is_array( $j ) ? (int) ( $j['att'] ?? 0 ) : 0;
-	};
-	$att = $read();
-	if ( ! $att ) {
-		$ups = nl_owner_uploads( $drop_id );
-		if ( empty( $ups[ $ref ] ) ) { return 0; }
-		$u   = $ups[ $ref ];
+	$j = json_decode( (string) $wpdb->get_var( $wpdb->prepare( "SELECT option_value FROM {$wpdb->options} WHERE option_name = %s LIMIT 1", 'nl_att_' . $ref ) ), true );
+	return is_array( $j ) ? (int) ( $j['att'] ?? 0 ) : 0;
+}
+
+/** The planned public address of a photo (the page is rendered with it before any file exists). */
+function nl_owner_public_url( $ref, $ext ) {
+	$ud = wp_upload_dir( null, false );
+	return untrailingslashit( $ud['baseurl'] ) . '/nl-listings/' . $ref . '.' . $ext;
+}
+
+/** The listing's photos as the page shows them: the attachment when it exists, else the planned address. */
+function nl_owner_page_photos( $drop_id, $d ) {
+	$ups = nl_owner_uploads( $drop_id );
+	$out = array();
+	foreach ( (array) $d['photos'] as $p ) {
+		$ref = (string) ( $p['ref'] ?? '' );
+		if ( $ref === '' || empty( $ups[ $ref ] ) ) { continue; }
+		$att = nl_owner_att_claim( $ref );
+		$m   = $att ? wp_get_attachment_metadata( $att ) : array();
+		$out[] = array( 'id' => $att && get_attached_file( $att ) ? $att : 0, 'url' => nl_owner_public_url( $ref, $ups[ $ref ]['ext'] ), 'w' => (int) ( $m['width'] ?? $ups[ $ref ]['w'] ), 'h' => (int) ( $m['height'] ?? $ups[ $ref ]['h'] ), 'ref' => $ref );
+	}
+	return $out;
+}
+
+/** One public copy and its attachment, for a listing that is published right now. Returns the attachment id or 0. */
+function nl_owner_attach( $drop_id, $uid, $ref, $he_id ) {
+	global $wpdb;
+	if ( get_post_status( $he_id ) !== 'publish' ) { return 0; }
+	$ups = nl_owner_uploads( $drop_id );
+	if ( empty( $ups[ $ref ] ) ) { return 0; }
+	$u   = $ups[ $ref ];
+	$att = nl_owner_att_claim( $ref );
+	if ( ! $att || get_post_type( $att ) !== 'attachment' ) {
+		$ph = wp_insert_attachment( array( 'post_mime_type' => $u['type'], 'post_title' => 'nadlan-owner-listing', 'post_status' => 'auto-draft', 'post_author' => (int) $uid, 'post_parent' => (int) $he_id ) );
+		if ( is_wp_error( $ph ) || ! $ph ) { return 0; }
+		do_action( 'nl_drop_checkpoint', 'attach_pending', (int) $drop_id );
+		$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name = %s AND option_value NOT LIKE %s", 'nl_att_' . $ref, '%"att":%' ) );
+		nl_drop_lock_insert( 'nl_att_' . $ref, wp_json_encode( array( 'att' => (int) $ph, 't' => time() ) ) );
+		$att = nl_owner_att_claim( $ref );
+		if ( ! $att ) { return 0; }
+	}
+	$file = get_attached_file( $att );
+	if ( ! $file || ! file_exists( $file ) ) {
+		nl_drop_fence( $drop_id, 'attach' );
+		if ( get_post_status( $he_id ) !== 'publish' ) { return 0; }   // the status decides, at the moment of the copy
 		$ud  = wp_upload_dir();
 		$dir = untrailingslashit( $ud['basedir'] ) . '/nl-listings';
 		wp_mkdir_p( $dir );
-		$tok = (int) ( $GLOBALS['nl_drop_locks'][ (int) $drop_id ]['tok'] ?? 0 );
-		$fn  = $ref . '-' . $tok . '.' . $u['ext'];
-		$dst = $dir . '/' . $fn;
+		$dst = $dir . '/' . $ref . '.' . $u['ext'];
 		if ( ! file_exists( $dst ) ) {
 			$bin = nl_owner_unseal( (string) @file_get_contents( nl_owner_private_dir( $uid ) . '/' . $ref . '.bin' ) );
 			if ( $bin === false || $bin === '' || false === @file_put_contents( $dst, $bin ) ) { return 0; }
 		}
-		nl_drop_fence( $drop_id, 'attach' );
-		$ph = wp_insert_attachment( array( 'guid' => esc_url_raw( untrailingslashit( $ud['baseurl'] ) . '/nl-listings/' . $fn ), 'post_mime_type' => $u['type'], 'post_title' => 'nadlan-owner-listing', 'post_status' => 'auto-draft', 'post_author' => (int) $uid ), $dst );
-		if ( is_wp_error( $ph ) || ! $ph ) { return 0; }
-		do_action( 'nl_drop_checkpoint', 'attach_pending', (int) $drop_id );
-		nl_drop_lock_insert( $name, wp_json_encode( array( 'att' => (int) $ph, 'tok' => $tok, 't' => time() ) ) );
-		$att = $read();
+		update_attached_file( $att, $dst );
+		$wpdb->update( $wpdb->posts, array( 'guid' => esc_url_raw( nl_owner_public_url( $ref, $u['ext'] ) ) ), array( 'ID' => $att ) );
+		clean_post_cache( $att );
 	}
-	if ( ! $att || get_post_type( $att ) !== 'attachment' ) { return 0; }
-	if ( get_post_status( $att ) === 'auto-draft' || ! wp_get_attachment_metadata( $att ) ) {
-		nl_drop_fence( $drop_id, 'attach_commit' );
-		if ( get_post_status( $att ) === 'auto-draft' ) { wp_update_post( array( 'ID' => $att, 'post_status' => 'inherit' ) ); }
+	if ( get_post_status( $att ) !== 'inherit' || (int) get_post_field( 'post_parent', $att ) !== (int) $he_id ) {
+		wp_update_post( array( 'ID' => $att, 'post_status' => 'inherit', 'post_parent' => (int) $he_id ) );
+	}
+	if ( ! wp_get_attachment_metadata( $att ) ) {
 		require_once ABSPATH . 'wp-admin/includes/image.php';
 		wp_update_attachment_metadata( $att, wp_generate_attachment_metadata( $att, get_attached_file( $att ) ) );
 	}
 	update_post_meta( $att, 'nl_owner_user', (string) $uid );
 	update_post_meta( $att, 'nl_owner_ref', $ref );
 	return (int) $att;
+}
+
+/** The public copies of a published listing: made for its current photos, removed for photos it no longer shows. */
+function nl_owner_media_publish( $he_id ) {
+	$x = nl_owner_listing_draft( $he_id );
+	if ( ! $x || get_post_status( $he_id ) !== 'publish' ) { return false; }
+	if ( ! nl_drop_lock_acquire( $x['drop'], 'media:' . $he_id ) ) { return false; }   // a build holds it; it copies itself
+	try {
+		$ids   = array();
+		$keep  = array();
+		$title = (string) get_the_title( $he_id );
+		foreach ( (array) $x['d']['photos'] as $p ) {
+			$ref = (string) ( $p['ref'] ?? '' );
+			if ( $ref === '' ) { continue; }
+			$keep[ $ref ] = true;
+			$att = nl_owner_attach( $x['drop'], $x['uid'], $ref, $he_id );
+			if ( $att ) { $ids[] = $att; }
+		}
+		foreach ( get_children( array( 'post_parent' => $he_id, 'post_type' => 'attachment', 'fields' => 'ids' ) ) as $old ) {
+			$r = (string) get_post_meta( $old, 'nl_owner_ref', true );
+			if ( $r !== '' && ! isset( $keep[ $r ] ) ) { nl_owner_media_drop( $old, $r ); }
+		}
+		nl_drop_fence( $x['drop'], 'media_meta' );
+		if ( $ids ) { set_post_thumbnail( $he_id, $ids[0] ); }
+		foreach ( $ids as $i => $att ) { update_post_meta( $att, '_wp_attachment_image_alt', wp_slash( $title . ( $i ? ' · ' . ( $i + 1 ) : '' ) ) ); }
+		$photos = nl_owner_page_photos( $x['drop'], $x['d'] );
+		update_post_meta( $he_id, 'nl_photos_json', wp_slash( wp_json_encode( $photos, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) ) );
+		update_post_meta( $he_id, 'photos_csv', implode( ',', wp_list_pluck( $photos, 'url' ) ) );
+		nl_drop_purge( array( $he_id ) );
+		return true;
+	} catch ( NL_Drop_Fenced $e ) {
+		return false;
+	} finally {
+		nl_drop_lock_release( $x['drop'] );
+	}
+}
+
+function nl_owner_media_drop( $att, $ref ) {
+	global $wpdb;
+	wp_delete_attachment( (int) $att, true );   // the public copy and its sizes; the sealed original stays private
+	$wpdb->delete( $wpdb->options, array( 'option_name' => 'nl_att_' . $ref ) );
+}
+
+/** A listing that leaves 'publish' takes its public copies with it. */
+function nl_owner_media_withdraw( $he_id ) {
+	foreach ( get_children( array( 'post_parent' => $he_id, 'post_type' => 'attachment', 'fields' => 'ids' ) ) as $att ) {
+		$ref = (string) get_post_meta( $att, 'nl_owner_ref', true );
+		if ( $ref !== '' ) { nl_owner_media_drop( $att, $ref ); }
+	}
+	delete_post_thumbnail( $he_id );
+	nl_drop_purge( array( $he_id ) );
+}
+
+add_action( 'transition_post_status', function ( $new, $old, $post ) {
+	if ( ! $post || $post->post_type !== 'nadlan_property' || $new === $old ) { return; }
+	if ( ! nl_owner_listing_draft( $post->ID ) ) { return; }
+	if ( $new === 'publish' ) { nl_owner_media_publish( $post->ID ); }
+	elseif ( $old === 'publish' ) { nl_owner_media_withdraw( $post->ID ); }
+}, 20, 3 );
+
+/**
+ * The owner listing's own build (one drop, one Hebrew page), under the drop lock the caller holds:
+ * claim the one post -> write it as a non-public draft (content, meta, page) -> commit the status (publish, or pending
+ * on a fair-housing hold, or draft for an admin test) -> the public copies, only after 'publish' -> commit nl_result.
+ * Every write that matters is fenced (x-broker-drop 1.1.4); the commit is the atomic fenced meta.
+ */
+function nl_owner_build( $drop_id, $uid, $d, $b, $target ) {
+	$fl   = $d['fields'];
+	$f    = nl_owner_facts( $fl );
+	$copy = nl_owner_copy( $f, $fl['desc'] );
+	$pub  = $f;
+	unset( $pub['street_he'], $pub['street_en'] );
+	nl_drop_fence( $drop_id, 'owner_claim' );
+	update_post_meta( $drop_id, 'nl_state', 'writing' );
+	$slug  = nl_drop_slug( $f, $b );
+	$claim = nl_drop_claim_post( $drop_id, 'he', 'nadlan_property', 0, 0 );
+	if ( is_wp_error( $claim ) ) { return $claim; }
+	$he   = (int) $claim[0];
+	$now  = (string) get_post_status( $he );
+	$edit = ! in_array( $now, array( 'auto-draft', 'draft' ), true );
+	if ( $now !== 'auto-draft' && (string) get_post_field( 'post_name', $he ) !== '' ) { $slug = (string) get_post_field( 'post_name', $he ); }   // a permanent address
+	$title = nl_drop_fill( $copy['he']['title'], $f, 'he' );
+	nl_drop_fence( $drop_id, 'owner_content' );
+	$had = nl_drop_kses_off();
+	$r   = wp_update_post( array(
+		'ID'           => $he,
+		'post_status'  => $edit ? $now : 'draft',   // never public before the page is complete
+		'post_title'   => $title,
+		'post_name'    => $slug,
+		'post_excerpt' => nl_drop_fill( $copy['he']['dek'], $f, 'he' ),
+		'post_author'  => (int) $uid,
+	), true );
+	nl_drop_kses_on( $had );
+	if ( is_wp_error( $r ) || ! $r ) { return is_wp_error( $r ) ? $r : new WP_Error( 'nl_owner_update', 'update failed' ); }
+	$ptype = array( 'garden' => 'garden', 'penthouse' => 'penthouse', 'duplex' => 'duplex', 'cottage' => 'cottage' );
+	$meta  = array(
+		'listing_type' => $f['listing_type'], 'property_type' => $ptype[ $f['property_type'] ] ?? 'apartment', 'price' => $f['price'], 'rooms' => $f['rooms'],
+		'floor' => $f['floor'], 'total_floors' => $f['total_floors'], 'size_sqm' => $f['size_sqm'], 'sqm' => $f['size_sqm'], 'city' => $f['city_he'], 'neighborhood' => $f['area_he'],
+	);
+	nl_drop_fence( $drop_id, 'owner_meta' );
+	foreach ( $meta as $k => $v ) {
+		if ( $v !== null && $v !== '' ) { update_post_meta( $he, $k, $v ); } else { delete_post_meta( $he, $k ); }
+	}
+	if ( ! $edit ) {
+		update_post_meta( $he, 'status', 'active' );
+		update_post_meta( $he, 'nl_status', 'active' );
+	}
+	update_post_meta( $he, 'claim_status', 'verified' );
+	update_post_meta( $he, 'nl_drop_id', (string) $drop_id );
+	update_post_meta( $he, 'source', 'owner_wizard' );
+	update_post_meta( $he, 'nl_owner', '1' );
+	update_post_meta( $he, 'owner_user_id', (int) $uid );
+	update_post_meta( $he, 'nl_owner_contact', wp_slash( wp_json_encode( array( 'name' => $b['name_he'], 'phone' => $b['phone'] ), JSON_UNESCAPED_UNICODE ) ) );
+	update_post_meta( $he, 'nl_facts', wp_slash( wp_json_encode( $pub, JSON_UNESCAPED_UNICODE ) ) );
+	update_post_meta( $he, 'nl_copy', wp_slash( wp_json_encode( $copy, JSON_UNESCAPED_UNICODE ) ) );
+	$photos = nl_owner_page_photos( $drop_id, $d );
+	update_post_meta( $he, 'nl_photos_json', wp_slash( wp_json_encode( $photos, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) ) );
+	update_post_meta( $he, 'photos_csv', implode( ',', wp_list_pluck( $photos, 'url' ) ) );
+	update_post_meta( $he, '_yoast_wpseo_title', wp_slash( nl_drop_fill( $copy['he']['seo_title'], $f, 'he' ) ) );
+	update_post_meta( $he, '_yoast_wpseo_metadesc', wp_slash( nl_drop_fill( $copy['he']['seo_desc'], $f, 'he' ) ) );
+	nl_drop_fence( $drop_id, 'owner_render' );
+	nl_drop_render_all( $he, $b );
+	// the status commit; the transition hook makes the public copies only for 'publish'
+	nl_drop_fence( $drop_id, 'owner_status' );
+	if ( get_post_status( $he ) !== $target ) { wp_update_post( array( 'ID' => $he, 'post_status' => $target ) ); }
+	if ( $target === 'publish' ) {
+		do_action( 'nl_drop_checkpoint', 'owner_before_media', (int) $drop_id );
+		nl_owner_media_publish( $he );   // idempotent: repairs a run that died between the status and the copies
+	} else {
+		nl_owner_media_withdraw( $he );
+	}
+	nl_drop_purge( array( $he ) );
+	$st  = (string) get_post_status( $he );
+	$res = array( 'state' => $st === 'publish' ? 'published' : ( $st === 'pending' ? 'pending' : 'draft' ), 'he_id' => $he, 'en_id' => 0, 'url_he' => (string) get_permalink( $he ), 'url_en' => '', 'urls' => array( 'he' => (string) get_permalink( $he ) ), 'title' => $title, 'ai' => 'off', 'updated' => $edit );
+	nl_drop_fenced_meta( $drop_id, 'nl_result', $res );
+	nl_drop_fenced_meta( $drop_id, 'nl_state', $res['state'] );
+	return $res;
 }
 
 /* ---------------- publish ---------------- */
@@ -1266,99 +1454,37 @@ function nl_owner_rest_publish( WP_REST_Request $req ) {
 			if ( ! $counted && count( nl_owner_pubs( $uid ) ) >= NL_OWNER_PUB_DAY ) { return nl_owner_err( 'quota', 429, $lang ); }
 		}
 		update_post_meta( $id, 'nl_pub_req', array( 'key' => $key, 'rev' => $rev, 'hash' => hash( 'sha256', $d['_raw'] ), 't' => time() ) );
-		// the private photos become the listing's attachments (the same ref always gives the same attachment)
-		$atts   = array();
-		$photos = array();
-		foreach ( $d['photos'] as $p ) {
-			$att = (int) ( $p['att'] ?? 0 );
-			if ( ! $att && ! empty( $p['ref'] ) ) { $att = nl_owner_attach( $id, $uid, (string) $p['ref'] ); }
-			if ( $att ) { $atts[] = $att; $photos[] = array_filter( array( 'ref' => (string) ( $p['ref'] ?? '' ), 'att' => $att ) ); }
-		}
-		if ( ! $atts ) { return nl_owner_err( 'invalid', 422, $lang, array( 'errors' => array( 'photos' => nl_owner_t( 'f_photos', $lang ) ) ) ); }
-		nl_drop_fence( $id, 'owner_meta' );
 		$fl   = $d['fields'];
 		$f    = nl_owner_facts( $fl );
 		$b    = nl_owner_b( $uid, $fl );
 		$hits = function_exists( 'nadlan_compliance_scan' ) ? nadlan_compliance_scan( $fl['desc'] ) : array();
+		nl_drop_fence( $id, 'owner_drop_meta' );
 		update_post_meta( $id, 'nl_facts', wp_slash( wp_json_encode( $f, JSON_UNESCAPED_UNICODE ) ) );
 		update_post_meta( $id, 'nl_text', wp_slash( $fl['desc'] ) );
-		update_post_meta( $id, 'nl_photos', $atts );
 		update_post_meta( $id, 'nl_owner_contact', wp_slash( wp_json_encode( array( 'name' => $fl['cname'], 'phone' => $b['phone'] ), JSON_UNESCAPED_UNICODE ) ) );
 		if ( $hits ) { update_post_meta( $id, 'nl_hold', wp_slash( wp_json_encode( $hits, JSON_UNESCAPED_UNICODE ) ) ); } else { delete_post_meta( $id, 'nl_hold' ); }
-		$hold = (bool) $hits;
-		if ( $hold ) { $b['auto'] = false; }
-		if ( (string) $req->get_param( 'test' ) === '1' && current_user_can( 'manage_options' ) ) { $b['auto'] = false; }   // the owner's own test runs stay drafts
+		$test   = (string) $req->get_param( 'test' ) === '1' && current_user_can( 'manage_options' );   // the owner's own test runs stay drafts
+		$target = $hits ? 'pending' : ( $test ? 'draft' : 'publish' );
 		@set_time_limit( 170 );
-		if ( $is_edit ) {
-			$r = nl_owner_apply_edit( $id, $he_id, $f, $fl, $atts, $b, $hold );
-		} else {
-			update_post_meta( $id, 'nl_state', 'ready' );
-			$r = nl_drop_build( $id, $b );
-		}
+		$r = nl_owner_build( $id, $uid, $d, $b, $target );
 		if ( is_wp_error( $r ) ) {
 			if ( in_array( $r->get_error_code(), array( 'nl_drop_fenced', 'nl_drop_busy' ), true ) ) {
 				return nl_owner_nocache( new WP_REST_Response( array( 'state' => 'building', 'message' => nl_owner_t( 'building', $lang ) ), 202 ) );
 			}
-			return nl_owner_err( 'build', 500, $lang );
+			nl_drop_fenced_meta( $id, 'nl_state', 'failed' );
+			return nl_owner_err( 'build', 500, $lang, array( 'detail' => $r->get_error_code() ) );
 		}
-		$he_id = (int) $r['he_id'];
-		nl_drop_fence( $id, 'owner_after' );
-		if ( $hold && get_post_status( $he_id ) !== 'publish' && get_post_status( $he_id ) !== 'pending' ) {
-			wp_update_post( array( 'ID' => $he_id, 'post_status' => 'pending' ) );
-			nl_drop_fenced_meta( $id, 'nl_state', 'pending' );
-			@wp_mail( get_option( 'admin_email' ), nl_owner_t( 'mail_hold', 'he' ), nl_owner_t( 'mail_hold_b', 'he' ) . admin_url( 'post.php?post=' . $he_id . '&action=edit' ) );
+		if ( $target === 'pending' ) {
+			@wp_mail( get_option( 'admin_email' ), nl_owner_t( 'mail_hold', 'he' ), nl_owner_t( 'mail_hold_b', 'he' ) . admin_url( 'post.php?post=' . (int) $r['he_id'] . '&action=edit' ) );
 		}
 		if ( ! $is_edit && ! $counted ) { nl_owner_pub_count( $uid, $id ); update_post_meta( $id, 'nl_counted', '1' ); }
 		nl_drop_fenced_meta( $id, 'nl_pub_rev', (string) $rev );
-		// the draft remembers which attachment each photo became, so an edit keeps them
-		$cur = nl_owner_draft_get( $id, $uid );
-		if ( $cur && (int) $cur['rev'] === $rev ) {
-			nl_owner_draft_cas( $id, $cur['_raw'], array( 'v' => 2, 'rev' => $rev, 'fields' => $cur['fields'], 'photos' => $photos, 'step' => 'preview', 'saved_at' => (int) $cur['saved_at'] ) );
-		}
 		return nl_owner_nocache( nl_owner_pub_out( $id, $lang, array( 'updated' => (bool) $is_edit ) ) );
 	} catch ( NL_Drop_Fenced $e ) {
 		return nl_owner_nocache( new WP_REST_Response( array( 'state' => 'building', 'message' => nl_owner_t( 'building', $lang ) ), 202 ) );
 	} finally {
 		nl_drop_lock_release( $id );
 	}
-}
-
-/** An edit of a live listing: the same page and address, the new facts, copy and photos, every cache. */
-function nl_owner_apply_edit( $drop_id, $he_id, $f, $fl, $atts, $b, $hold ) {
-	$copy   = nl_owner_copy( $f, $fl['desc'] );
-	$photos = nl_drop_photos( $atts, '' );
-	$title  = nl_drop_fill( $copy['he']['title'], $f, 'he' );
-	nl_drop_fence( $drop_id, 'edit' );
-	wp_update_post( array( 'ID' => $he_id, 'post_title' => $title ) );
-	$ptype = array( 'garden' => 'garden', 'penthouse' => 'penthouse', 'duplex' => 'duplex', 'cottage' => 'cottage' );
-	$meta  = array(
-		'listing_type' => $f['listing_type'], 'property_type' => $ptype[ $f['property_type'] ] ?? 'apartment', 'price' => $f['price'], 'rooms' => $f['rooms'],
-		'floor' => $f['floor'], 'total_floors' => $f['total_floors'], 'size_sqm' => $f['size_sqm'], 'sqm' => $f['size_sqm'], 'city' => $f['city_he'], 'neighborhood' => $f['area_he'],
-	);
-	foreach ( $meta as $k => $v ) {
-		if ( $v !== null && $v !== '' ) { update_post_meta( $he_id, $k, $v ); } else { delete_post_meta( $he_id, $k ); }
-	}
-	update_post_meta( $he_id, 'nl_facts', wp_slash( wp_json_encode( $f, JSON_UNESCAPED_UNICODE ) ) );
-	update_post_meta( $he_id, 'nl_copy', wp_slash( wp_json_encode( $copy, JSON_UNESCAPED_UNICODE ) ) );
-	update_post_meta( $he_id, 'nl_photos_json', wp_slash( wp_json_encode( $photos, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) ) );
-	update_post_meta( $he_id, 'photos_csv', implode( ',', wp_list_pluck( $photos, 'url' ) ) );
-	update_post_meta( $he_id, 'nl_owner_contact', wp_slash( wp_json_encode( array( 'name' => $b['name_he'], 'phone' => $b['phone'] ), JSON_UNESCAPED_UNICODE ) ) );
-	if ( $photos ) { set_post_thumbnail( $he_id, $photos[0]['id'] ); }
-	foreach ( $photos as $i => $p ) {
-		wp_update_post( array( 'ID' => $p['id'], 'post_parent' => $he_id ) );
-		update_post_meta( $p['id'], '_wp_attachment_image_alt', wp_slash( $title . ( $i ? ' · ' . ( $i + 1 ) : '' ) ) );
-	}
-	nl_drop_render_all( $he_id, $b );
-	$st = get_post_status( $he_id );
-	if ( $hold && $st === 'publish' ) { wp_update_post( array( 'ID' => $he_id, 'post_status' => 'pending' ) ); }
-	elseif ( ! $hold && $st === 'pending' && $b['auto'] ) { wp_update_post( array( 'ID' => $he_id, 'post_status' => 'publish' ) ); }
-	nl_drop_purge( array( $he_id ) );
-	$res = get_post_meta( $drop_id, 'nl_result', true );
-	$res = is_array( $res ) ? $res : array();
-	$res['title'] = $title;
-	nl_drop_fenced_meta( $drop_id, 'nl_result', $res );
-	nl_drop_fenced_meta( $drop_id, 'nl_state', get_post_status( $he_id ) === 'publish' ? 'published' : 'pending' );
-	return array( 'he_id' => $he_id );
 }
 
 /* ---------------- the 1.x doors ---------------- */
@@ -1409,11 +1535,16 @@ function nl_owner_rest_listings( WP_REST_Request $req ) {
 		$drop  = (int) get_post_meta( $p->ID, 'nl_drop_id', true );
 		$draft = $drop && (string) get_post_meta( $drop, 'nl_draft_v', true ) === '2' && (string) get_post_meta( $drop, 'nl_owner_user', true ) === (string) $uid ? $drop : 0;
 		$state = $p->post_status === 'trash' ? 'removed' : ( $p->post_status === 'pending' ? 'pending' : ( $p->post_status === 'publish' ? ( in_array( $st, array( 'sold', 'rented' ), true ) ? $st : 'active' ) : 'draft' ) );
+		$cover = (string) get_the_post_thumbnail_url( $p->ID, 'medium' );
+		if ( $cover === '' && $draft ) {
+			$dd = nl_owner_draft_get( $draft, $uid, true );
+			if ( $dd && ! empty( $dd['photos'][0]['ref'] ) ) { $cover = nl_owner_img_url( $draft, (string) $dd['photos'][0]['ref'], 't' ); }
+		}
 		$rows[] = array(
 			'id'       => (int) $p->ID,
 			'title'    => html_entity_decode( get_the_title( $p ), ENT_QUOTES, 'UTF-8' ),
 			'url'      => $p->post_status === 'publish' ? (string) get_permalink( $p ) : '',
-			'cover'    => (string) get_the_post_thumbnail_url( $p->ID, 'medium' ),
+			'cover'    => $cover,
 			'deal'     => $deal,
 			'state'    => $state,
 			'status'   => in_array( $st, array( 'sold', 'rented' ), true ) ? $st : 'active',
@@ -1539,7 +1670,8 @@ function nl_owner_shortcode( $atts = array() ) {
 		'brokers'   => esc_url_raw( home_url( '/brokers/#join' ) ),
 		'terms'     => esc_url_raw( home_url( '/terms/' ) ),
 		'privacy'   => esc_url_raw( home_url( '/privacy/' ) ),
-		'logout'    => $uid ? esc_url_raw( wp_logout_url( add_query_arg( 'lang', $lang, $page ) ) ) : '',
+		// wp_logout_url() returns an HTML-escaped URL (&amp;); the app escapes once, into the href
+		'logout'    => $uid ? html_entity_decode( wp_logout_url( add_query_arg( 'lang', $lang, $page ) ), ENT_QUOTES, 'UTF-8' ) : '',
 		'engine'    => nl_owner_engine_ok(),
 		'v'         => NL_OWNER_VERSION,
 	);
@@ -1565,6 +1697,9 @@ function nl_owner_footer() {
 
 function nl_owner_css() {
 	return <<<'NLJCSS'
+/* the site's floating "ייעוץ חינם" bar (#nlcta, inc/conversion-cta.php) sits fixed at the bottom: focus and scrollIntoView keep a
+   focused field, link or button above it (WCAG 2.4.11), and the page ends with room for it (the main action is never under it) */
+html:has(#nlj-app){scroll-padding-bottom:calc(112px + env(safe-area-inset-bottom,0px));scroll-padding-top:24px}
 .nlj{--paper:#f7f6f2;--surf:#fff;--ink:#14212b;--ink2:#3b4753;--mute:#6b7680;--line:#e3e1da;--sea:#2f6f86;--seah:#255c70;--deep:#1f4b5c;--sand:#eee9dd;--champ:#cfe3ea;--wa:#0f7a63;--field:#fbfaf7;--bad:#b3261e;--badg:#fbedec;--ok:#2e7d5b;--okg:#eaf4ef;
   font-family:Assistant,"Segoe UI",Arial,sans-serif;font-size:15px;line-height:1.5;color:var(--ink2);background:var(--paper);box-sizing:border-box;position:relative;max-width:none!important;margin-inline:0!important;width:100%}
 .nlj *,.nlj *::before,.nlj *::after{box-sizing:border-box}
@@ -1811,7 +1946,8 @@ var W={he:{
  promoPick:'בחירת מודעה',promoNone:'אין מודעה באוויר לבחירה.',promoWhere:'איפה',promoList:'רשימת הנכסים',promoCity:'עמוד העיר',promoPrice:'מחיר',promoPriceTxt:'יוצג כאן לפני כל אישור.',promoBtn:'לא זמין כרגע',backMine:'חזרה למודעות שלי',
  asideAria:'השלבים והמודעה שלכם',asideH:'השלבים',sumKick:'המודעה שלכם עד עכשיו',sumPhotos:function(n){return n===1?'תמונה אחת':n+' תמונות';},
  fn:{deal:'סוג העסקה',ptype:'סוג הנכס',city:'עיר',hood:'שכונה',rooms:'חדרים',size:'שטח',floor:'קומה',price:'מחיר',desc:'תיאור',cname:'שם להצגה',phone:'טלפון',phone_ok:'הסכמה לפרסום הטלפון',owner_ok:'הצהרת בעלות',photos:'תמונות'},
- yes:'כן',no:'לא',engineOff:'הפרסום לא זמין כרגע. מה שתכתבו נשמר.'
+ yes:'כן',no:'לא',engineOff:'הפרסום לא זמין כרגע. מה שתכתבו נשמר.',
+ switchedH:'החשבון במכשיר הזה השתנה',switchedTxt:'כדי לשמור על הפרטים של כל חשבון, הדף הזה נוקה. טיוטה שמורה בחשבון מחכה לבעליה, ואפשר להמשיך אותה אחרי כניסה.',switchedBtn:'לכניסה ולהמשך'
 },en:{
  myListings:'My listings',signInTop:'Sign in',navAria:'My account',acct:function(n){return 'Signed in as '+n;},
  authKick:'List your property',authH1:'List your property, owner to buyer',authLead:'Open an account with your name and email, fill in the property details and add photos. The listing goes live at its own address. No commission.',
@@ -1875,7 +2011,8 @@ var W={he:{
  promoPick:'Choose a listing',promoNone:'No live listing to choose.',promoWhere:'Where',promoList:'Property list',promoCity:'City page',promoPrice:'Price',promoPriceTxt:'Shown here before any confirmation.',promoBtn:'Not available yet',backMine:'Back to My listings',
  asideAria:'The steps and your listing',asideH:'The steps',sumKick:'Your listing so far',sumPhotos:function(n){return n===1?'1 photo':n+' photos';},
  fn:{deal:'Deal type',ptype:'Property type',city:'City',hood:'Neighbourhood',rooms:'Rooms',size:'Size',floor:'Floor',price:'Price',desc:'Description',cname:'Display name',phone:'Phone',phone_ok:'Consent to publish the phone',owner_ok:'Ownership statement',photos:'Photos'},
- yes:'yes',no:'no',engineOff:'Publishing is not available right now. What you type is kept.'
+ yes:'yes',no:'no',engineOff:'Publishing is not available right now. What you type is kept.',
+ switchedH:'The account on this device changed',switchedTxt:'To keep each account private, this page was cleared. A draft saved in an account waits for its owner and continues after signing in.',switchedBtn:'Sign in and continue'
 }};
 var T=W[LANG];
 
@@ -2025,7 +2162,7 @@ function flush(opt){
    return true;
   }
   again=false;
-  if(x.expired){setSave('expired');return false;}
+  if(x.expired){setSave('expired');checkIdentity(true);return false;}
   if(x.status===409&&x.j.code==='conflict'){showConflict(x.j.data&&x.j.data.server);return false;}
   if(x.status===409&&x.j.code==='publishing'){setSave('publishing');retryIn(8);return false;}
   if(x.status===404){setSave('gone');return false;}
@@ -2041,6 +2178,37 @@ window.addEventListener('offline',function(){if(C.uid&&S.screen&&['details','pho
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden'&&dirty()&&D.id){flush({keepalive:true});}});
 window.addEventListener('pagehide',function(){if(dirty()&&D.id){flush({keepalive:true});}});
 window.addEventListener('beforeunload',function(e){if(dirty()&&C.uid){queueWrite();e.preventDefault();e.returnValue='';}});
+
+/* ---------------- one account per page ----------------
+   Another tab signs in or out: this page asks the server who is signed in now (on focus, on becoming visible, on a
+   restore from the back-forward cache, and on an "auth changed" ping that carries no data). If it is not the account
+   the page was made for, everything the page shows or holds is dropped at once. No local queue is read, changed or
+   deleted here, and no draft is touched: its owner signs in again and continues it. */
+var authBc=null,scrubbed=false,checking=false,lastCheck=0;
+try{if('BroadcastChannel' in window){authBc=new BroadcastChannel('nlow-auth');}}catch(e){authBc=null;}
+function authPing(){try{if(authBc){authBc.postMessage(1);}}catch(e){}try{localStorage.setItem('nlow:auth-ping',String(Date.now()));}catch(e){}}
+function whoAmI(){return fetch(C.ajax+'?action=nl_owner_nonce&_='+Date.now(),{credentials:'same-origin',cache:'no-store'}).then(function(r){return r.json();}).then(function(j){return +((j&&j.uid)||0);}).catch(function(){return null;});}
+function checkIdentity(force){
+ if(!C.uid||scrubbed||checking){return;}
+ if(!force&&Date.now()-lastCheck<1500){return;}
+ checking=true;lastCheck=Date.now();
+ whoAmI().then(function(uid){checking=false;if(uid!==null&&uid!==+C.uid){scrub();}});
+}
+function scrub(){
+ scrubbed=true;
+ clearTimeout(saveTimer);clearTimeout(retryTimer);clearInterval(tick);
+ P.forEach(function(t){if(t.xhr){try{t.xhr.abort();}catch(e){}}if(t.preview){try{URL.revokeObjectURL(t.preview);}catch(e){}}});
+ C.nonce='';C.name='';C.prefill={};
+ P=[];D=newDraft();S.preview=null;S.pub=null;S.mine=null;S.drafts=[];S.conflict=null;S.stash=null;S.published=null;S.errors={};S.authName='';S.authMail='';
+ try{if(bc){bc.close();bc=null;}}catch(e){}
+ root.innerHTML='<div class="nlj-wrap"><div class="nlj-card" style="max-width:640px" role="alert"><div class="nlj-head" data-focus tabindex="-1"><h2 class="nlj-h1">'+esc(T.switchedH)+'</h2><p class="nlj-lead">'+esc(T.switchedTxt)+'</p></div><div class="nlj-actions"><a class="nlj-btn nlj-btn--primary" href="'+esc(C.page)+'">'+esc(T.switchedBtn)+'</a></div></div></div>';
+ var hd=root.querySelector('[data-focus]');if(hd){hd.focus();}
+}
+window.addEventListener('focus',function(){checkIdentity(false);});
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'){checkIdentity(false);}});
+window.addEventListener('pageshow',function(e){if(e.persisted){checkIdentity(true);}});
+window.addEventListener('storage',function(e){if(e.key==='nlow:auth-ping'){checkIdentity(true);}});
+if(authBc){authBc.onmessage=function(){checkIdentity(true);};}
 
 /* ---------------- two tabs ---------------- */
 var bc=null;
@@ -2225,7 +2393,7 @@ function authSubmit(kind){
   if(e.name||e.email||e.password){S.authErr=e;renderAuth();focusFirstErr();return;}
   btn=$('j-signup-go');btn.disabled=true;btn.textContent=T.signupBusy;
   pub('/account/signup',{name:S.authName.trim(),email:S.authMail.trim(),password:pw,website:($('j-web')||{}).value||''}).then(function(x){
-   if(x.ok){location.reload();return;}
+   if(x.ok){authPing();location.reload();return;}
    var f=(x.j.data&&x.j.data.field)||'',m=x.j.message||(x.net?T.netErr:T.genericErr),ee={};
    if(x.j.code==='acc_exists'){ee.email=m;ee.exists=true;}else if(f){ee[f]=m;}else{ee.form=m;}
    S.authErr=ee;renderAuth();var p=$('j-pw');if(p){p.value=pw;}focusFirstErr();
@@ -2234,7 +2402,7 @@ function authSubmit(kind){
   var pw2=$('j-pw2').value;
   btn=$('j-login-go');btn.disabled=true;btn.textContent=T.loginBusy;
   pub('/account/login',{email:S.authMail.trim(),password:pw2}).then(function(x){
-   if(x.ok){location.reload();return;}
+   if(x.ok){authPing();location.reload();return;}
    S.authErr={form:x.j.message||(x.net?T.netErr:T.genericErr)};renderAuth();var p=$('j-pw2');if(p){p.value=pw2;}focusFirstErr();
   });
  }else{
@@ -2269,7 +2437,8 @@ function renderHome(){
 }
 
 /* ---------------- 3-5. details, photos, preview ---------------- */
-function perAccount(){return '<p class="nlj-hint nlj-peracct">'+esc(T.perAccount)+(C.logout?' <a href="'+esc(C.logout)+'">'+esc(T.otherAccount)+'</a>':'')+'</p>';}
+function perAccount(){return '<p class="nlj-hint nlj-peracct">'+esc(T.perAccount)+(C.logout?' <a href="'+esc(C.logout)+'" data-signout="1">'+esc(T.otherAccount)+'</a>':'')+'</p>';}
+root.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-signout]');if(a){flush({keepalive:true});authPing();}},true);
 function renderFlow(){
  var s=S.screen,n={details:2,photos:3,preview:4}[s],h='<div class="nlj-cols"><div class="nlj-main">'+progress(n)+'<div id="nlj-st" aria-live="polite"></div>';
  if(s==='details'){h+=detailsHtml();}
@@ -2736,6 +2905,7 @@ root.addEventListener('click',function(e){
 });
 
 /* ---------------- start ---------------- */
+authPing();
 if(!C.uid){
  S.screen='auth';var u0=readUrl();if(u0.screen==='login'){S.auth='login';}
  renderAuth();

@@ -30,7 +30,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { return; }
 if ( defined( 'NL_DROP_VERSION' ) ) { return; }
-define( 'NL_DROP_VERSION', '1.1.4' );   // 1.1.4 (HAD-256): build lock, crash reconcile, nl_drop_pre_write
+define( 'NL_DROP_VERSION', '1.1.4' );   // 1.1.4 (HAD-256): build lock with fencing, one claimed listing per drop and language, photo cleaner
 define( 'NL_DROP_MAX_BYTES', 15728640 );
 define( 'NL_DROP_MAX_PHOTOS', 30 );
 
@@ -2195,7 +2195,8 @@ function nl_drop_claim_post( $drop_id, $lang, $type, $parent = 0, $adopt = 0 ) {
 		return array( $have, get_post_status( $have ) === 'auto-draft' );
 	}
 	do_action( 'nl_drop_checkpoint', 'before_claim', $drop_id );
-	$ph = $adopt ? (int) $adopt : wp_insert_post( array( 'post_type' => $type, 'post_status' => 'auto-draft', 'post_title' => '', 'post_parent' => (int) $parent, 'post_author' => nl_drop_author() ), true );
+	// the placeholder carries no owner content: a technical title only (WordPress refuses a post with nothing in it)
+	$ph = $adopt ? (int) $adopt : wp_insert_post( array( 'post_type' => $type, 'post_status' => 'auto-draft', 'post_title' => 'nl-drop-' . $drop_id . '-' . nl_drop_L( $lang ), 'post_parent' => (int) $parent, 'post_author' => nl_drop_author() ), true );
 	if ( is_wp_error( $ph ) || ! $ph ) { return is_wp_error( $ph ) ? $ph : new WP_Error( 'nl_drop_insert', 'insert failed' ); }
 	do_action( 'nl_drop_checkpoint', 'claim_pending', $drop_id );
 	$tok = (int) ( $GLOBALS['nl_drop_locks'][ $drop_id ]['tok'] ?? 0 );
@@ -2234,9 +2235,7 @@ function nl_drop_build_locked( $drop_id, $b ) {
 	$langs  = $owner ? array( 'he' ) : (array) ( $b['langs'] ?? array( 'he', 'en' ) );
 	update_post_meta( $drop_id, 'nl_state', 'writing' );
 	$err  = null;
-	// HAD-256: a door that already holds the approved copy (the owner journey's preview) hands it in; no model call then
-	$copy = apply_filters( 'nl_drop_pre_write', null, $f, $text, $b, $drop_id );
-	if ( ! is_array( $copy ) || empty( $copy['he'] ) ) { $copy = nl_drop_write( $f, $text, $b, $err ); }
+	$copy = nl_drop_write( $f, $text, $b, $err );
 	$xl   = array_values( array_intersect( array( 'ru', 'fr' ), $langs ) );
 	if ( $xl ) {
 		$terr = null;

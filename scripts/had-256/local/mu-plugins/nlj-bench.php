@@ -210,6 +210,17 @@ add_action( 'rest_api_init', function () {
 		foreach ( (array) glob( WP_CONTENT_DIR . '/mail-sink/*.json' ) as $f ) { $out[] = json_decode( (string) file_get_contents( $f ), true ) + array( 'file' => basename( $f ) ); }
 		return $out;
 	} ) );
+	/* stands in for the AI extraction of 1.0.0's free text (off on the bench): the facts a model would read, then 'ready' */
+	register_rest_route( 'nlj-test/v1', '/drop-ready', array( 'methods' => 'POST', 'permission_callback' => $local, 'callback' => function ( WP_REST_Request $r ) {
+		$drop = (int) $r->get_param( 'drop' );
+		$f    = json_decode( (string) get_post_meta( $drop, 'nl_facts', true ), true );
+		$f    = is_array( $f ) ? $f : array();
+		$f    = array_merge( $f, array( 'listing_type' => 'sale', 'city_he' => 'תל אביב יפו', 'city_en' => 'Tel Aviv-Yafo', 'area_he' => 'שכונת הדוגמה', 'rooms' => 4, 'size_sqm' => 96 ) );
+		update_post_meta( $drop, 'nl_facts', wp_slash( wp_json_encode( $f, JSON_UNESCAPED_UNICODE ) ) );
+		update_post_meta( $drop, 'nl_state', 'ready' );
+		delete_post_meta( $drop, 'nl_missing' );
+		return array( 'ok' => true, 'drop' => $drop );
+	} ) );
 	register_rest_route( 'nlj-test/v1', '/user', array( 'methods' => 'GET', 'permission_callback' => $local, 'callback' => function ( WP_REST_Request $r ) {
 		$u = get_user_by( 'email', (string) $r->get_param( 'email' ) );
 		return $u ? array( 'id' => $u->ID, 'login' => $u->user_login ) : array( 'id' => 0 );

@@ -1,0 +1,705 @@
+[
+ {
+  "id": "L08",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "10 publishes refused by validation, then a valid one (the publish quota is not spent)",
+  "status": "pass",
+  "evidence": {
+   "refused": [
+    422,
+    422,
+    422,
+    422,
+    422,
+    422,
+    422,
+    422,
+    422,
+    422
+   ],
+   "valid": [
+    200,
+    "published"
+   ]
+  },
+  "at": "2026-10-04 01:42:22"
+ },
+ {
+  "id": "L08",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "4 parallel publishes, different keys",
+  "status": "pass",
+  "evidence": {
+   "codes": [
+    200,
+    202,
+    202,
+    202
+   ],
+   "seconds": 7.1,
+   "final": [
+    200,
+    76
+   ],
+   "rows": {
+    "content": [
+     [
+      "76",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ]
+    ],
+    "auto_drafts": [],
+    "claims": [
+     "nl_pub_74_he"
+    ]
+   }
+  },
+  "at": "2026-10-04 01:37:56"
+ },
+ {
+  "id": "L08",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "4 parallel publishes, same key",
+  "status": "pass",
+  "evidence": {
+   "codes": [
+    202,
+    200,
+    202,
+    202
+   ],
+   "seconds": 7.47,
+   "final": [
+    200,
+    73
+   ],
+   "rows": {
+    "content": [
+     [
+      "73",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ]
+    ],
+    "auto_drafts": [],
+    "claims": [
+     "nl_pub_71_he"
+    ]
+   }
+  },
+  "at": "2026-10-04 01:37:35"
+ },
+ {
+  "id": "L08",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "double submit: the same key again, a new key, the same key with another revision",
+  "status": "pass",
+  "evidence": {
+   "first": 200,
+   "same_key": [
+    200,
+    true
+   ],
+   "new_key": [
+    200,
+    70
+   ],
+   "key_other_rev": [
+    409,
+    "key_reused"
+   ],
+   "rows": {
+    "content": [
+     [
+      "70",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ]
+    ],
+    "auto_drafts": [],
+    "claims": [
+     "nl_pub_67_he"
+    ]
+   }
+  },
+  "at": "2026-10-04 01:37:14"
+ },
+ {
+  "id": "L08",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "killed at claim_pending, retried after the lock TTL",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "claim_pending"
+   ],
+   "rows_after_kill": {
+    "content": [],
+    "auto_drafts": [
+     [
+      "83",
+      "nl-drop-81-he",
+      0
+     ]
+    ],
+    "claims": []
+   },
+   "retry": [
+    200,
+    84,
+    "published"
+   ],
+   "rows": {
+    "content": [
+     [
+      "84",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ]
+    ],
+    "auto_drafts": [
+     [
+      "83",
+      "nl-drop-81-he",
+      0
+     ]
+    ],
+    "claims": [
+     "nl_pub_81_he"
+    ]
+   },
+   "nl_result": 84,
+   "takeover": "{\"t\":1791067118,\"from\":\"owner:2:0163c3a3-3f9\",\"from_tok\":1,\"tok\":2,\"age\":8}",
+   "fence": "2"
+  },
+  "at": "2026-10-04 01:38:41"
+ },
+ {
+  "id": "L08",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "killed at fenced:before_render, retried after the lock TTL",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "fenced:before_render"
+   ],
+   "rows_after_kill": {
+    "content": [
+     [
+      "93",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ]
+    ],
+    "auto_drafts": [],
+    "claims": [
+     "nl_pub_91_he"
+    ]
+   },
+   "retry": [
+    200,
+    93,
+    "published"
+   ],
+   "rows": {
+    "content": [
+     [
+      "93",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ]
+    ],
+    "auto_drafts": [],
+    "claims": [
+     "nl_pub_91_he"
+    ]
+   },
+   "nl_result": 93,
+   "takeover": "{\"t\":1791067185,\"from\":\"owner:2:e174e82f-4a2\",\"from_tok\":1,\"tok\":2,\"age\":7}",
+   "fence": "2"
+  },
+  "at": "2026-10-04 01:39:48"
+ },
+ {
+  "id": "L08",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "killed at fenced:content, retried after the lock TTL",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "fenced:content"
+   ],
+   "rows_after_kill": {
+    "content": [],
+    "auto_drafts": [
+     [
+      "87",
+      "nl-drop-85-he",
+      0
+     ]
+    ],
+    "claims": [
+     "nl_pub_85_he"
+    ]
+   },
+   "retry": [
+    200,
+    87,
+    "published"
+   ],
+   "rows": {
+    "content": [
+     [
+      "87",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ]
+    ],
+    "auto_drafts": [],
+    "claims": [
+     "nl_pub_85_he"
+    ]
+   },
+   "nl_result": 87,
+   "takeover": "{\"t\":1791067140,\"from\":\"owner:2:5f67c653-9a4\",\"from_tok\":1,\"tok\":2,\"age\":8}",
+   "fence": "2"
+  },
+  "at": "2026-10-04 01:39:03"
+ },
+ {
+  "id": "L08",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "killed at row, retried after the lock TTL",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "row (post 79, status auto-draft)"
+   ],
+   "rows_after_kill": {
+    "content": [],
+    "auto_drafts": [
+     [
+      "79",
+      "nl-drop-77-he",
+      0
+     ]
+    ],
+    "claims": []
+   },
+   "retry": [
+    200,
+    80,
+    "published"
+   ],
+   "rows": {
+    "content": [
+     [
+      "80",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ]
+    ],
+    "auto_drafts": [
+     [
+      "79",
+      "nl-drop-77-he",
+      0
+     ]
+    ],
+    "claims": [
+     "nl_pub_77_he"
+    ]
+   },
+   "nl_result": 80,
+   "takeover": "{\"t\":1791067095,\"from\":\"owner:2:9d741005-147\",\"from_tok\":1,\"tok\":2,\"age\":7}",
+   "fence": "2"
+  },
+  "at": "2026-10-04 01:38:18"
+ },
+ {
+  "id": "L08",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "killed at row_meta, retried after the lock TTL",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "row_meta (post 90)"
+   ],
+   "rows_after_kill": {
+    "content": [
+     [
+      "90",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ]
+    ],
+    "auto_drafts": [],
+    "claims": [
+     "nl_pub_88_he"
+    ]
+   },
+   "retry": [
+    200,
+    90,
+    "published"
+   ],
+   "rows": {
+    "content": [
+     [
+      "90",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ]
+    ],
+    "auto_drafts": [],
+    "claims": [
+     "nl_pub_88_he"
+    ]
+   },
+   "nl_result": 90,
+   "takeover": "{\"t\":1791067163,\"from\":\"owner:2:e8593638-f68\",\"from_tok\":1,\"tok\":2,\"age\":8}",
+   "fence": "2"
+  },
+  "at": "2026-10-04 01:39:26"
+ },
+ {
+  "id": "L08",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "run A paused at claim_pending past the TTL, run B took over, A resumed",
+  "status": "pass",
+  "evidence": {
+   "A": [
+    202,
+    "building"
+   ],
+   "B": [
+    200,
+    100
+   ],
+   "final": [
+    200,
+    100
+   ],
+   "rows": {
+    "content": [
+     [
+      "100",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ]
+    ],
+    "auto_drafts": [
+     [
+      "99",
+      "nl-drop-97-he",
+      0
+     ]
+    ],
+    "claims": [
+     "nl_pub_97_he"
+    ]
+   },
+   "takeover": "{\"t\":1791067231,\"from\":\"owner:2:960ed38c-7e8\",\"from_tok\":1,\"tok\":2,\"age\":5}",
+   "fence": "2",
+   "log": [
+    "22:40:27 pid6 PAUSE 8s at claim_pending drop 97",
+    "22:40:35 pid6 RESUME at claim_pending drop 97"
+   ]
+  },
+  "at": "2026-10-04 01:40:39"
+ },
+ {
+  "id": "L08",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "run A paused at fenced:before_meta past the TTL, run B took over, A resumed",
+  "status": "pass",
+  "evidence": {
+   "A": [
+    202,
+    "building"
+   ],
+   "B": [
+    200,
+    106
+   ],
+   "final": [
+    200,
+    106
+   ],
+   "rows": {
+    "content": [
+     [
+      "106",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ]
+    ],
+    "auto_drafts": [],
+    "claims": [
+     "nl_pub_104_he"
+    ]
+   },
+   "takeover": "{\"t\":1791067278,\"from\":\"owner:2:cef59557-5fc\",\"from_tok\":1,\"tok\":2,\"age\":4}",
+   "fence": "2",
+   "log": [
+    "22:41:14 pid6 PAUSE 8s at fenced:before_meta drop 104",
+    "22:41:22 pid6 RESUME at fenced:before_meta drop 104"
+   ]
+  },
+  "at": "2026-10-04 01:41:26"
+ },
+ {
+  "id": "L08",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "run A paused at fenced:before_render past the TTL, run B took over, A resumed",
+  "status": "pass",
+  "evidence": {
+   "A": [
+    202,
+    "building"
+   ],
+   "B": [
+    200,
+    109
+   ],
+   "final": [
+    200,
+    109
+   ],
+   "rows": {
+    "content": [
+     [
+      "109",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ]
+    ],
+    "auto_drafts": [],
+    "claims": [
+     "nl_pub_107_he"
+    ]
+   },
+   "takeover": "{\"t\":1791067303,\"from\":\"owner:2:6a869925-8a4\",\"from_tok\":1,\"tok\":2,\"age\":5}",
+   "fence": "2",
+   "log": [
+    "22:41:39 pid6 PAUSE 8s at fenced:before_render drop 107",
+    "22:41:47 pid6 RESUME at fenced:before_render drop 107"
+   ]
+  },
+  "at": "2026-10-04 01:41:52"
+ },
+ {
+  "id": "L08",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "run A paused at fenced:claim past the TTL, run B took over, A resumed",
+  "status": "pass",
+  "evidence": {
+   "A": [
+    202,
+    "building"
+   ],
+   "B": [
+    200,
+    96
+   ],
+   "final": [
+    200,
+    96
+   ],
+   "rows": {
+    "content": [
+     [
+      "96",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ]
+    ],
+    "auto_drafts": [],
+    "claims": [
+     "nl_pub_94_he"
+    ]
+   },
+   "takeover": "{\"t\":1791067206,\"from\":\"owner:2:97c9b571-451\",\"from_tok\":1,\"tok\":2,\"age\":4}",
+   "fence": "2",
+   "log": [
+    "22:40:02 pid6 PAUSE 8s at fenced:claim drop 94",
+    "22:40:10 pid6 RESUME at fenced:claim drop 94"
+   ]
+  },
+  "at": "2026-10-04 01:40:14"
+ },
+ {
+  "id": "L08",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "run A paused at fenced:content past the TTL, run B took over, A resumed",
+  "status": "pass",
+  "evidence": {
+   "A": [
+    202,
+    "building"
+   ],
+   "B": [
+    200,
+    103
+   ],
+   "final": [
+    200,
+    103
+   ],
+   "rows": {
+    "content": [
+     [
+      "103",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ]
+    ],
+    "auto_drafts": [],
+    "claims": [
+     "nl_pub_101_he"
+    ]
+   },
+   "takeover": "{\"t\":1791067255,\"from\":\"owner:2:3e1df051-f34\",\"from_tok\":1,\"tok\":2,\"age\":5}",
+   "fence": "2",
+   "log": [
+    "22:40:51 pid6 PAUSE 8s at fenced:content drop 101",
+    "22:40:59 pid6 RESUME at fenced:content drop 101"
+   ]
+  },
+  "at": "2026-10-04 01:41:03"
+ },
+ {
+  "id": "L08",
+  "variant": "before",
+  "label": "real-wp",
+  "title": "4 parallel builds of one drop",
+  "status": "fail",
+  "evidence": {
+   "codes": [
+    200,
+    200,
+    200,
+    200
+   ],
+   "rows": {
+    "content": [
+     [
+      "36",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ],
+     [
+      "37",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale-3"
+     ],
+     [
+      "38",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale-4"
+     ],
+     [
+      "39",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale-2"
+     ]
+    ],
+    "auto_drafts": [],
+    "claims": []
+   }
+  },
+  "notes": "more than one row = the duplicate the contract warned about (broker-drop.php:2027/2057/2168). The AI reading of the text is replaced by the bench (drop-ready); the build is the real 1.1.3 code.",
+  "at": "2026-10-04 01:42:52"
+ },
+ {
+  "id": "L08",
+  "variant": "before",
+  "label": "real-wp",
+  "title": "8 sends refused by validation, then a valid one",
+  "status": "fail",
+  "evidence": {
+   "refused": [
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400
+   ],
+   "valid": [
+    429,
+    "rate"
+   ]
+  },
+  "notes": "429 on the valid send = validation failures spent the publish quota",
+  "at": "2026-10-04 01:43:23"
+ },
+ {
+  "id": "L08",
+  "variant": "before",
+  "label": "real-wp",
+  "title": "killed between the listing row and its meta, then built again",
+  "status": "fail",
+  "evidence": {
+   "killed": 500,
+   "retry": [
+    200,
+    43
+   ],
+   "rows": {
+    "content": [
+     [
+      "42",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale"
+     ],
+     [
+      "43",
+      "publish",
+      "tel-aviv-yafo-4-rooms-for-sale-2"
+     ]
+    ],
+    "auto_drafts": [],
+    "claims": []
+   }
+  },
+  "at": "2026-10-04 01:43:07"
+ },
+ {
+  "id": "L08",
+  "variant": "before",
+  "label": "real-wp",
+  "title": "the same send twice",
+  "status": "fail",
+  "evidence": {
+   "drops": [
+    31,
+    33
+   ]
+  },
+  "notes": "two submissions of the same listing: 1.0.0 creates a new drop on every submit",
+  "at": "2026-10-04 01:42:34"
+ }
+]
