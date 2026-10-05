@@ -3673,3 +3673,30 @@ RELEASE DONE 1.72.420 by the Kikar loop [main] 11:17 Israel: PMS scripts/style o
   - the browser console on /properties/ shows no errors.
   The source audit for hamedina shows scripts 62 → 55 (exactly the 7 PMS tags) and 29 KB less HTML.
 - **Audits:** lang 60/60; content_first failed 0; source_audit GREEN.
+
+### 5.10.2026 ~11:50 Israel: main to Maya, HAD-256: named snapshot 3 READY for your QA (qa-2ce0a741 @ 127.0.0.1:9404)
+- **Pinned snapshot:** commit `2ce0a741` on http://127.0.0.1:9404/post-listing/ (English `?lang=en`), with its own WP + SQLite, mail sink and qa.a / qa.b users.
+  - Doc: `docs/qa/had-256/QA-SNAPSHOT-3.md` in the builder worktree `.claude/worktrees/agent-a61b211e083144352` (branch `worktree-agent-a61b211e083144352`, doc commit ffc273e4).
+  - Served SHA-256: owner-wizard.php 2.0.0 `9fcafd9d…`, broker-drop.php 1.1.4 `dff44c89…`; funnel / auth / property-owner / conversion-cta unchanged.
+  - 9402 (d2b8f349) and 9403 (c2e4cd31) are untouched; 9402 was restarted on its own unchanged data (bind-check-qa-9402-restart.txt). A newer slice would get 9405.
+- **Verified by main** (not taken on the builder's word):
+  - the commits exist and the worktree is clean;
+  - Get-NetTCPConnection shows 9401/9402/9403/9404/9411 on 127.0.0.1 only;
+  - 9402-9404 answer 200;
+  - the bench REST namespace `nlj-test/v1` appears 0 times under plugins/ (it does not ship).
+- **Builder's results** (RESULTS.md, CONTRAST.md; real modules inside WordPress on SQLite, no stubs for these rows):
+  - PASS: L01, L02, L04-L07, L10-L13, L15, L17;
+  - L03 privacy (other account, anonymous, public photos, two users on one browser, stale tab): PASS, 21 checks;
+  - L08 (parallel and crash): PASS, 42 checks, each injected crash and pause confirmed;
+  - PARTIAL: L09 (HEIC not decoded here), L14 (no real phone keyboard or Safari; 10 width/language combos and 1,610 controls never under the bar), L16 (snippet 699 and the broker drop page not end to end).
+  - These are the builder's claims for you to test independently, not acceptance.
+- **Open before any release** (main's list from the builder):
+  1. MySQL confirmation of the atomic claim and conditional update on the live DB (all runs were SQLite).
+  2. A remaining window: a build stalled more than 7 minutes right after a lock check can make one late write of its own older values onto the single listing. It cannot create a second listing, change the status or record a result.
+  3. Recovery mail needs working outbound mail on live (auth.php noted none on 12.7.2026).
+  4. NadLan theme, header, footer and template integration not tested.
+  5. Ben: the owner journey makes no AI calls; AI wording could return later as an owner-approved suggestion.
+  6. The private photo folder on live (`NL_OWNER_PRIVATE_DIR`) is main's choice.
+  7. Servers without a HEIC or rotation library refuse instead of storing wrongly.
+  8. Already-cached copies (CDN/browser) after a listing leaves the site.
+- **Release shape** (main reconciles against the live text): owner-wizard.php is replaced whole (snippet 707); broker-drop.php gets exactly 8 HAD-256 hunks (`git diff 6e9cf930 -- plugins/nadlan-config/inc/broker-drop.php`). No release before your QA and the MySQL check.
