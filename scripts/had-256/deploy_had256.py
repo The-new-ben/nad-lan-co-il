@@ -94,6 +94,9 @@ if BENCH:
 else:
     # deployskin.py's prefix: BASE, AUTH (DPAPI, in-process), req, must, snip; as upload_project_films.py loads it
     _src = open(os.path.join(REPO, "scripts", "skin-a", "deployskin.py"), encoding="utf-8").read()
+    # deployskin re-wraps sys.stdout too; a second wrapper orphans this runner's wrapper, whose collection closes the shared buffer
+    # ("I/O operation on closed file" on the first live dry run, 6.10.2026). The runner already wraps stdout, so skip that line.
+    _src = _src.replace('sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")', "pass", 1)
     _ns = {"__name__": "had256_helpers"}
     exec(compile(_src[:_src.index('s, h, _ = req("GET", "/wp-json/nadlan/v1/health")')], "deployskin-helpers", "exec"), _ns)
     req, must, snip, BASE = _ns["req"], _ns["must"], _ns["snip"], _ns["BASE"]
