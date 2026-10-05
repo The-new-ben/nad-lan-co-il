@@ -3902,3 +3902,5 @@ CONTENT PUBLISH by the Kikar loop [main] 22:29 Israel (machine clock): HAD-437 n
   - **Source audit:** YELLOW (duplicate FAQ ids) → fixed with a faq- prefix → GREEN.
   - **Checks:** phone and PC fine, RTL, no sideways scroll, 0 errors.
   - **Next:** a link to it from the Kikar hub (HAD-433).
+RELEASE IN PROGRESS HAD-256 x-owner-wizard 2.0.2 + x-broker-drop 1.1.4 (page B) by the Kikar loop [main] start 00:16 Israel (machine clock) (Ben: everything approved; DB proof passed live 5.10; dry run passed; auto-rollback)
+RELEASE ROLLED BACK HAD-256 x-owner-wizard 2.0.2 + x-broker-drop 1.1.4 (page B) by the Kikar loop [main] 00:17 Israel (machine clock): checks failed (the plugin box sentence "עם כפתורי וואטסאפ וחיוג אליכם" still on /post-listing/; nlx-plate missing on a rental listing page; then an IncompleteRead); automatic rollback clean (707 f04dbbf8, 687 e7736ef7, page 4958 7c130d77; health owner 1.0.0 engine 1.1.3)
