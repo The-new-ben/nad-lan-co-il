@@ -1,0 +1,17 @@
+{
+  "released": "1.72.423",
+  "from": "1.72.422",
+  "live_before": {
+    "nadlan-config.php": "bb1f08175b170af3c3bb3cb7493bfd7c",
+    "inc/project-stage.php": "3359a9d04277909ae6262f59b4bf4853"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-05 15:10:53",
+  "files": {
+    "nadlan-config.php": "17139460cd5c28afb03d93fb043343b7",
+    "inc/project-stage.php": "faa3342bd77708699817ae022272b316"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.423, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

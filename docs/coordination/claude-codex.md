@@ -3737,3 +3737,26 @@ RELEASE DONE 1.72.422 by the Kikar loop [main] 14:46 Israel: the world poster on
   - poster-1600 no longer fetched on phones;
   - unthrottled, world usable 3.3 s.
 - **Next finding:** wp-includes dashicons.min.css (36 KB) loads for visitors on the Kikar page.
+
+RELEASE IN PROGRESS 1.72.423 by the Kikar loop [main] start 15:18 Israel (HAD-421 steps 2b + 3b: no dashicons for visitors on our templates; film frames reserved; project-stage.php hunk; dry run, then live)
+RELEASE DONE 1.72.423 by the Kikar loop [main] 15:30 Israel: ROLLED BACK by the runner itself (dashicons still printed on all 5 checked pages: another style depends on it); live back at 1.72.422, project-stage.php 3359a9d042 restored and verified
+RELEASE IN PROGRESS 1.72.423 (second run) by the Kikar loop [main] start 15:45 Israel (also dequeues wp-jquery-ui-dialog for visitors and the PMS block-theme stylesheet; dry run, then live)
+RELEASE DONE 1.72.423 (second run) by the Kikar loop [main] 16:05 Israel: ROLLED BACK by the runner (pms_block_themes stylesheet still printed on /properties/ and /brokers/; other lines truncated in main capture); live 1.72.422, project-stage.php 3359a9d042 restored
+RELEASE IN PROGRESS 1.72.423 (third run) by the Kikar loop [main] start 16:08 Israel (the same dequeues also at wp_print_styles and wp_print_footer_scripts; dry run, then live; full output kept)
+RELEASE DONE 1.72.423 (third run) by the Kikar loop [main] 16:25 Israel: no dashicons/dialog CSS for visitors and no PMS block stylesheet on our templates; film frames reserved (project-stage.php 3359a9d042 -> faa3342bd7); all checks OK; rollback .bak423
+
+### 5.10.2026 ~16:40 Israel: main RECEIPT 1.72.423 (HAD-421 steps 2b + 3b), third run; the first two rolled themselves back
+- **Design:** v104.46 + amendment (DS artifact versions 197 and 198).
+- **The hunk** (perf_423.py, live project-stage.php 3359a9d042 → faa3342bd7):
+  - (1) nadlan_dash_off(), on the same templates as nadlan_pms_off: the PMS block-theme stylesheet goes for everyone; for visitors who are not signed in, wp-jquery-ui-dialog and dashicons go too. It is hooked at wp_enqueue_scripts 9999, wp_print_styles 1 and wp_print_footer_scripts 1.
+  - (2) Film frames reserved: `.nlws-film__v--wide{aspect-ratio:auto 16/9}` and `.nlws-film__v--tall{aspect-ratio:auto 9/16}`.
+- **Runs:**
+  - run 1 rolled back by its own checks: dashicons was still printed, because the core wp-jquery-ui-dialog depends on it;
+  - run 2 rolled back: the PMS block-theme stylesheet is enqueued after wp_enqueue_scripts;
+  - run 3 released and verified (all checks, incl. dashicons / dialog / PMS-block absent on hamedina, rainbow, /projects/, /properties/, /brokers/, and the aspect rules present). Rollback .bak423.
+  - Each rollback restored 3359a9d042 and health 1.72.422 within seconds.
+- **Headless Chrome:**
+  - before any poster loads, the visible film frames are 334×594 (390 phone) and 1294×728 (1366), so nothing jumps;
+  - dashicons and dialog CSS are absent; no page errors.
+- **Speed (phone, slow 4G, medians; 422 → 423):** FCP 3.0 → 2.8 s; KB until usable 1,366 → 1,325; requests 54 → 52; world usable unchanged at 15.6 s. The unthrottled run is noisy (TTFB 1.6 s this time).
+- **HAD-421 since the morning (slow 4G):** world usable 21.7 → 15.6 s, FCP 3.2 → 2.8 s, 2.64 → 1.33 MB.
