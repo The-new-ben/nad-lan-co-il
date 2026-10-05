@@ -1,0 +1,1200 @@
+{
+ "1440-en": {
+  "screens": {
+   "auth-signup": {
+    "page": {
+     "h1": [
+      "List your property for sale or rent, free"
+     ],
+     "header": "nlhp-top wp-block-template-part",
+     "footer": "nlpc-site-footer",
+     "bar": {
+      "x": 20,
+      "y": 826,
+      "w": 180,
+      "h": 54,
+      "pos": "static"
+     },
+     "bar_text": "ייעוץ חינם מענה בוואטסאפ",
+     "a11y": {
+      "x": 1368,
+      "y": 828,
+      "w": 52,
+      "h": 52,
+      "pos": "static"
+     },
+     "header_pos": "sticky",
+     "html": {
+      "lang": "he-IL",
+      "dir": "rtl"
+     },
+     "app": {
+      "dir": "ltr",
+      "lang": "en"
+     },
+     "overlap": [],
+     "label_overlap": [],
+     "centre": [],
+     "offscreen": [],
+     "checked": 22,
+     "smooth": "smooth",
+     "page_contrast": [],
+     "chrome_contrast": [],
+     "text_checked": 36,
+     "page_blocks": [
+      "div.nlj-shell \"List your property for sale or rent, free\"",
+      "section.nlj#nlj-app \"Sign in Open an account, add the details and photos, and the\""
+     ],
+     "how": {
+      "plugin_box": 0,
+      "plugin_box_in_html": 0,
+      "journey_box": 1,
+      "any_how_h2": [
+       "What comes next"
+      ]
+     },
+     "shell": {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     "title": "List your property for sale or rent, free | nad-lan",
+     "page_text": [],
+     "bar_a11y_overlap": 0,
+     "disabled_skipped": 0,
+     "rest_overlap": [],
+     "first_field": {
+      "el": "j-name",
+      "top": 610,
+      "bottom": 658,
+      "in_view": true,
+      "under": []
+     }
+    },
+    "l14": {
+     "bar": [],
+     "offscreen": [],
+     "overflow": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440
+     },
+     "small": [],
+     "inline_small": [
+      "a \"terms of use\" 91x23",
+      "a \"privacy policy\" 102x23",
+      "a \"To your broker site\" 138x23"
+     ],
+     "nofocus": [],
+     "contrast": [],
+     "contrast_exempt": [],
+     "checked": {
+      "focus": 11,
+      "text": 25
+     },
+     "bar_present": true
+    }
+   },
+   "auth-existing-email": {
+    "page": {
+     "h1": [
+      "List your property for sale or rent, free"
+     ],
+     "header": "nlhp-top wp-block-template-part",
+     "footer": "nlpc-site-footer",
+     "bar": {
+      "x": 20,
+      "y": 826,
+      "w": 180,
+      "h": 54,
+      "pos": "static"
+     },
+     "bar_text": "ייעוץ חינם מענה בוואטסאפ",
+     "a11y": {
+      "x": 1368,
+      "y": 828,
+      "w": 52,
+      "h": 52,
+      "pos": "static"
+     },
+     "header_pos": "sticky",
+     "html": {
+      "lang": "he-IL",
+      "dir": "rtl"
+     },
+     "app": {
+      "dir": "ltr",
+      "lang": "en"
+     },
+     "overlap": [],
+     "label_overlap": [],
+     "centre": [],
+     "offscreen": [],
+     "checked": 24,
+     "smooth": "smooth",
+     "page_contrast": [],
+     "chrome_contrast": [],
+     "text_checked": 36,
+     "page_blocks": [
+      "div.nlj-shell \"List your property for sale or rent, free\"",
+      "section.nlj#nlj-app \"Sign in Open an account, add the details and photos, and the\""
+     ],
+     "how": {
+      "plugin_box": 0,
+      "plugin_box_in_html": 0,
+      "journey_box": 1,
+      "any_how_h2": [
+       "What comes next"
+      ]
+     },
+     "shell": {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     "title": "List your property for sale or rent, free | nad-lan",
+     "page_text": [],
+     "bar_a11y_overlap": 0,
+     "disabled_skipped": 0,
+     "rest_overlap": [],
+     "first_field": {
+      "el": "j-name",
+      "top": 610,
+      "bottom": 658,
+      "in_view": true,
+      "under": []
+     }
+    },
+    "l14": {
+     "bar": [],
+     "offscreen": [],
+     "overflow": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440
+     },
+     "small": [],
+     "inline_small": [
+      "a \"terms of use\" 91x23",
+      "a \"privacy policy\" 102x23",
+      "a \"To your broker site\" 138x23"
+     ],
+     "nofocus": [],
+     "contrast": [],
+     "contrast_exempt": [],
+     "checked": {
+      "focus": 12,
+      "text": 27
+     },
+     "bar_present": true
+    }
+   },
+   "auth-login": {
+    "page": {
+     "h1": [
+      "List your property for sale or rent, free"
+     ],
+     "header": "nlhp-top wp-block-template-part",
+     "footer": "nlpc-site-footer",
+     "bar": {
+      "x": 20,
+      "y": 826,
+      "w": 180,
+      "h": 54,
+      "pos": "static"
+     },
+     "bar_text": "ייעוץ חינם מענה בוואטסאפ",
+     "a11y": {
+      "x": 1368,
+      "y": 828,
+      "w": 52,
+      "h": 52,
+      "pos": "static"
+     },
+     "header_pos": "sticky",
+     "html": {
+      "lang": "he-IL",
+      "dir": "rtl"
+     },
+     "app": {
+      "dir": "ltr",
+      "lang": "en"
+     },
+     "overlap": [],
+     "label_overlap": [],
+     "centre": [],
+     "offscreen": [],
+     "checked": 16,
+     "smooth": "smooth",
+     "page_contrast": [],
+     "chrome_contrast": [],
+     "text_checked": 36,
+     "page_blocks": [
+      "div.nlj-shell \"List your property for sale or rent, free\"",
+      "section.nlj#nlj-app \"Open an account, add the details and photos, and the listing\""
+     ],
+     "how": {
+      "plugin_box": 0,
+      "plugin_box_in_html": 0,
+      "journey_box": 1,
+      "any_how_h2": [
+       "What comes next"
+      ]
+     },
+     "shell": {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     "title": "List your property for sale or rent, free | nad-lan",
+     "page_text": [],
+     "bar_a11y_overlap": 0,
+     "disabled_skipped": 0,
+     "rest_overlap": [],
+     "first_field": {
+      "el": "j-mail2",
+      "top": 610,
+      "bottom": 658,
+      "in_view": true,
+      "under": []
+     }
+    },
+    "l14": {
+     "bar": [],
+     "offscreen": [],
+     "overflow": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440
+     },
+     "small": [],
+     "inline_small": [
+      "a \"To your broker site\" 138x23"
+     ],
+     "nofocus": [],
+     "contrast": [],
+     "contrast_exempt": [],
+     "checked": {
+      "focus": 8,
+      "text": 18
+     },
+     "bar_present": true
+    }
+   },
+   "auth-recovery-sent": {
+    "page": {
+     "h1": [
+      "List your property for sale or rent, free"
+     ],
+     "header": "nlhp-top wp-block-template-part",
+     "footer": "nlpc-site-footer",
+     "bar": {
+      "x": 20,
+      "y": 826,
+      "w": 180,
+      "h": 54,
+      "pos": "static"
+     },
+     "bar_text": "ייעוץ חינם מענה בוואטסאפ",
+     "a11y": {
+      "x": 1368,
+      "y": 828,
+      "w": 52,
+      "h": 52,
+      "pos": "static"
+     },
+     "header_pos": "sticky",
+     "html": {
+      "lang": "he-IL",
+      "dir": "rtl"
+     },
+     "app": {
+      "dir": "ltr",
+      "lang": "en"
+     },
+     "overlap": [],
+     "label_overlap": [],
+     "centre": [],
+     "offscreen": [],
+     "checked": 12,
+     "smooth": "smooth",
+     "page_contrast": [],
+     "chrome_contrast": [],
+     "text_checked": 36,
+     "page_blocks": [
+      "div.nlj-shell \"List your property for sale or rent, free\"",
+      "section.nlj#nlj-app \"Sign in Open an account, add the details and photos, and the\""
+     ],
+     "how": {
+      "plugin_box": 0,
+      "plugin_box_in_html": 0,
+      "journey_box": 1,
+      "any_how_h2": [
+       "What comes next"
+      ]
+     },
+     "shell": {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     "title": "List your property for sale or rent, free | nad-lan",
+     "page_text": [],
+     "bar_a11y_overlap": 0,
+     "disabled_skipped": 1,
+     "rest_overlap": [],
+     "first_field": {
+      "el": "j-mail3",
+      "top": 786,
+      "bottom": 834,
+      "in_view": true,
+      "under": []
+     }
+    },
+    "l14": {
+     "bar": [],
+     "offscreen": [],
+     "overflow": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440
+     },
+     "small": [],
+     "inline_small": [
+      "a \"To your broker site\" 138x23"
+     ],
+     "nofocus": [],
+     "contrast": [],
+     "contrast_exempt": [],
+     "checked": {
+      "focus": 7,
+      "text": 21
+     },
+     "bar_present": true
+    }
+   },
+   "details-empty": {
+    "page": {
+     "h1": [
+      "List your property for sale or rent, free"
+     ],
+     "header": "nlhp-top wp-block-template-part",
+     "footer": "nlpc-site-footer",
+     "bar": {
+      "x": 20,
+      "y": 826,
+      "w": 180,
+      "h": 54,
+      "pos": "static"
+     },
+     "bar_text": "ייעוץ חינם מענה בוואטסאפ",
+     "a11y": {
+      "x": 1368,
+      "y": 828,
+      "w": 52,
+      "h": 52,
+      "pos": "static"
+     },
+     "header_pos": "sticky",
+     "html": {
+      "lang": "he-IL",
+      "dir": "rtl"
+     },
+     "app": {
+      "dir": "ltr",
+      "lang": "en"
+     },
+     "overlap": [],
+     "label_overlap": [],
+     "centre": [],
+     "offscreen": [],
+     "checked": 38,
+     "smooth": "smooth",
+     "page_contrast": [],
+     "chrome_contrast": [],
+     "text_checked": 36,
+     "page_blocks": [
+      "div.nlj-shell \"List your property for sale or rent, free\"",
+      "section.nlj#nlj-app \"My listings ד Step 2 of 5 Property details New draft Nothing\""
+     ],
+     "how": {
+      "plugin_box": 0,
+      "plugin_box_in_html": 0,
+      "journey_box": 0,
+      "any_how_h2": []
+     },
+     "shell": {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     "title": "List your property for sale or rent, free | nad-lan",
+     "page_text": [],
+     "bar_a11y_overlap": 0,
+     "disabled_skipped": 0,
+     "rest_overlap": [],
+     "first_field": {
+      "el": "j-city",
+      "top": 930,
+      "bottom": 978,
+      "in_view": false,
+      "under": []
+     }
+    },
+    "l14": {
+     "bar": [],
+     "offscreen": [],
+     "overflow": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440
+     },
+     "small": [],
+     "inline_small": [
+      "a \"Sign in to another account\" 195x23"
+     ],
+     "nofocus": [],
+     "contrast": [],
+     "contrast_exempt": [],
+     "checked": {
+      "focus": 19,
+      "text": 56
+     },
+     "bar_present": true
+    }
+   },
+   "details-errors": {
+    "page": {
+     "h1": [
+      "List your property for sale or rent, free"
+     ],
+     "header": "nlhp-top wp-block-template-part",
+     "footer": "nlpc-site-footer",
+     "bar": {
+      "x": 20,
+      "y": 826,
+      "w": 180,
+      "h": 54,
+      "pos": "static"
+     },
+     "bar_text": "ייעוץ חינם מענה בוואטסאפ",
+     "a11y": {
+      "x": 1368,
+      "y": 828,
+      "w": 52,
+      "h": 52,
+      "pos": "static"
+     },
+     "header_pos": "sticky",
+     "html": {
+      "lang": "he-IL",
+      "dir": "rtl"
+     },
+     "app": {
+      "dir": "ltr",
+      "lang": "en"
+     },
+     "overlap": [],
+     "label_overlap": [],
+     "centre": [],
+     "offscreen": [],
+     "checked": 56,
+     "smooth": "smooth",
+     "page_contrast": [],
+     "chrome_contrast": [],
+     "text_checked": 36,
+     "page_blocks": [
+      "div.nlj-shell \"List your property for sale or rent, free\"",
+      "section.nlj#nlj-app \"My listings ד Step 2 of 5 Property details Saved in your acc\""
+     ],
+     "how": {
+      "plugin_box": 0,
+      "plugin_box_in_html": 0,
+      "journey_box": 0,
+      "any_how_h2": []
+     },
+     "shell": {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     "title": "List your property for sale or rent, free | nad-lan",
+     "page_text": [],
+     "bar_a11y_overlap": 0,
+     "disabled_skipped": 0,
+     "rest_overlap": [],
+     "first_field": {
+      "el": "j-city",
+      "top": 1532,
+      "bottom": 1580,
+      "in_view": false,
+      "under": []
+     }
+    },
+    "l14": {
+     "bar": [],
+     "offscreen": [],
+     "overflow": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440
+     },
+     "small": [],
+     "inline_small": [
+      "a[jump] \"Deal type\" 72x23",
+      "a[jump] \"Property type\" 105x23",
+      "a[jump] \"City\" 30x23",
+      "a[jump] \"Neighbourhood\" 121x23",
+      "a[jump] \"Rooms\" 53x23",
+      "a[jump] \"Size\" 31x23",
+      "a[jump] \"Price\" 38x23",
+      "a[jump] \"Description\" 88x23",
+      "a[jump] \"Ownership statement\" 164x23",
+      "a \"Sign in to another account\" 195x23"
+     ],
+     "nofocus": [],
+     "contrast": [],
+     "contrast_exempt": [],
+     "checked": {
+      "focus": 28,
+      "text": 84
+     },
+     "bar_present": true
+    }
+   },
+   "details-filled": {
+    "page": {
+     "h1": [
+      "List your property for sale or rent, free"
+     ],
+     "header": "nlhp-top wp-block-template-part",
+     "footer": "nlpc-site-footer",
+     "bar": {
+      "x": 20,
+      "y": 826,
+      "w": 180,
+      "h": 54,
+      "pos": "static"
+     },
+     "bar_text": "ייעוץ חינם מענה בוואטסאפ",
+     "a11y": {
+      "x": 1368,
+      "y": 828,
+      "w": 52,
+      "h": 52,
+      "pos": "static"
+     },
+     "header_pos": "sticky",
+     "html": {
+      "lang": "he-IL",
+      "dir": "rtl"
+     },
+     "app": {
+      "dir": "ltr",
+      "lang": "en"
+     },
+     "overlap": [],
+     "label_overlap": [],
+     "centre": [],
+     "offscreen": [],
+     "checked": 56,
+     "smooth": "smooth",
+     "page_contrast": [],
+     "chrome_contrast": [],
+     "text_checked": 36,
+     "page_blocks": [
+      "div.nlj-shell \"List your property for sale or rent, free\"",
+      "section.nlj#nlj-app \"My listings ד Step 2 of 5 Property details Saved in your acc\""
+     ],
+     "how": {
+      "plugin_box": 0,
+      "plugin_box_in_html": 0,
+      "journey_box": 0,
+      "any_how_h2": []
+     },
+     "shell": {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     "title": "List your property for sale or rent, free | nad-lan",
+     "page_text": [],
+     "bar_a11y_overlap": 0,
+     "disabled_skipped": 0,
+     "rest_overlap": [],
+     "first_field": {
+      "el": "j-city",
+      "top": 1383,
+      "bottom": 1431,
+      "in_view": false,
+      "under": []
+     }
+    },
+    "l14": {
+     "bar": [],
+     "offscreen": [],
+     "overflow": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440
+     },
+     "small": [],
+     "inline_small": [
+      "a[jump] \"Deal type\" 72x23",
+      "a[jump] \"Property type\" 105x23",
+      "a[jump] \"City\" 30x23",
+      "a[jump] \"Neighbourhood\" 121x23",
+      "a[jump] \"Rooms\" 53x23",
+      "a[jump] \"Size\" 31x23",
+      "a[jump] \"Price\" 38x23",
+      "a[jump] \"Description\" 88x23",
+      "a[jump] \"Ownership statement\" 164x23",
+      "a \"Sign in to another account\" 195x23"
+     ],
+     "nofocus": [],
+     "contrast": [],
+     "contrast_exempt": [],
+     "checked": {
+      "focus": 28,
+      "text": 75
+     },
+     "bar_present": true
+    }
+   },
+   "photos": {
+    "page": {
+     "h1": [
+      "List your property for sale or rent, free"
+     ],
+     "header": "nlhp-top wp-block-template-part",
+     "footer": "nlpc-site-footer",
+     "bar": {
+      "x": 20,
+      "y": 826,
+      "w": 180,
+      "h": 54,
+      "pos": "static"
+     },
+     "bar_text": "ייעוץ חינם מענה בוואטסאפ",
+     "a11y": {
+      "x": 1368,
+      "y": 828,
+      "w": 52,
+      "h": 52,
+      "pos": "static"
+     },
+     "header_pos": "sticky",
+     "html": {
+      "lang": "he-IL",
+      "dir": "rtl"
+     },
+     "app": {
+      "dir": "ltr",
+      "lang": "en"
+     },
+     "overlap": [],
+     "label_overlap": [],
+     "centre": [],
+     "offscreen": [],
+     "checked": 26,
+     "smooth": "smooth",
+     "page_contrast": [],
+     "chrome_contrast": [],
+     "text_checked": 36,
+     "page_blocks": [
+      "div.nlj-shell \"List your property for sale or rent, free\"",
+      "section.nlj#nlj-app \"My listings ד Step 3 of 5 Photos Saved in your account Last \""
+     ],
+     "how": {
+      "plugin_box": 0,
+      "plugin_box_in_html": 0,
+      "journey_box": 0,
+      "any_how_h2": []
+     },
+     "shell": {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     "title": "List your property for sale or rent, free | nad-lan",
+     "page_text": [],
+     "bar_a11y_overlap": 0,
+     "disabled_skipped": 1,
+     "rest_overlap": []
+    },
+    "l14": {
+     "bar": [],
+     "offscreen": [],
+     "overflow": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440
+     },
+     "small": [],
+     "inline_small": [
+      "a \"Sign in to another account\" 195x23"
+     ],
+     "nofocus": [],
+     "contrast": [],
+     "contrast_exempt": [],
+     "checked": {
+      "focus": 14,
+      "text": 38
+     },
+     "bar_present": true
+    }
+   },
+   "preview": {
+    "page": {
+     "h1": [
+      "List your property for sale or rent, free"
+     ],
+     "header": "nlhp-top wp-block-template-part",
+     "footer": "nlpc-site-footer",
+     "bar": {
+      "x": 20,
+      "y": 826,
+      "w": 180,
+      "h": 54,
+      "pos": "static"
+     },
+     "bar_text": "ייעוץ חינם מענה בוואטסאפ",
+     "a11y": {
+      "x": 1368,
+      "y": 828,
+      "w": 52,
+      "h": 52,
+      "pos": "static"
+     },
+     "header_pos": "sticky",
+     "html": {
+      "lang": "he-IL",
+      "dir": "rtl"
+     },
+     "app": {
+      "dir": "ltr",
+      "lang": "en"
+     },
+     "overlap": [],
+     "label_overlap": [],
+     "centre": [],
+     "offscreen": [],
+     "checked": 10,
+     "smooth": "smooth",
+     "page_contrast": [],
+     "chrome_contrast": [],
+     "text_checked": 36,
+     "page_blocks": [
+      "div.nlj-shell \"List your property for sale or rent, free\"",
+      "section.nlj#nlj-app \"My listings ד Step 4 of 5 Preview Saved in your account Last\""
+     ],
+     "how": {
+      "plugin_box": 0,
+      "plugin_box_in_html": 0,
+      "journey_box": 0,
+      "any_how_h2": []
+     },
+     "shell": {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     "title": "List your property for sale or rent, free | nad-lan",
+     "page_text": [],
+     "bar_a11y_overlap": 0,
+     "disabled_skipped": 2,
+     "rest_overlap": []
+    },
+    "l14": {
+     "bar": [],
+     "offscreen": [],
+     "overflow": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440
+     },
+     "small": [],
+     "inline_small": [
+      "a \"Sign in to another account\" 195x23"
+     ],
+     "nofocus": [],
+     "contrast": [],
+     "contrast_exempt": [],
+     "checked": {
+      "focus": 7,
+      "text": 48
+     },
+     "bar_present": true
+    }
+   },
+   "published": {
+    "page": {
+     "h1": [
+      "List your property for sale or rent, free"
+     ],
+     "header": "nlhp-top wp-block-template-part",
+     "footer": "nlpc-site-footer",
+     "bar": {
+      "x": 20,
+      "y": 826,
+      "w": 180,
+      "h": 54,
+      "pos": "static"
+     },
+     "bar_text": "ייעוץ חינם מענה בוואטסאפ",
+     "a11y": {
+      "x": 1368,
+      "y": 828,
+      "w": 52,
+      "h": 52,
+      "pos": "static"
+     },
+     "header_pos": "sticky",
+     "html": {
+      "lang": "he-IL",
+      "dir": "rtl"
+     },
+     "app": {
+      "dir": "ltr",
+      "lang": "en"
+     },
+     "overlap": [],
+     "label_overlap": [],
+     "centre": [],
+     "offscreen": [],
+     "checked": 10,
+     "smooth": "smooth",
+     "page_contrast": [],
+     "chrome_contrast": [],
+     "text_checked": 36,
+     "page_blocks": [
+      "div.nlj-shell \"List your property for sale or rent, free\"",
+      "section.nlj#nlj-app \"My listings ד Your listing is live Published on ⁦5.10.2026, \""
+     ],
+     "how": {
+      "plugin_box": 0,
+      "plugin_box_in_html": 0,
+      "journey_box": 0,
+      "any_how_h2": []
+     },
+     "shell": {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     "title": "List your property for sale or rent, free | nad-lan",
+     "page_text": [],
+     "bar_a11y_overlap": 0,
+     "disabled_skipped": 0,
+     "rest_overlap": []
+    },
+    "l14": {
+     "bar": [],
+     "offscreen": [],
+     "overflow": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440
+     },
+     "small": [],
+     "inline_small": [],
+     "nofocus": [],
+     "contrast": [],
+     "contrast_exempt": [],
+     "checked": {
+      "focus": 5,
+      "text": 9
+     },
+     "bar_present": true
+    }
+   },
+   "my-listings": {
+    "page": {
+     "h1": [
+      "List your property for sale or rent, free"
+     ],
+     "header": "nlhp-top wp-block-template-part",
+     "footer": "nlpc-site-footer",
+     "bar": {
+      "x": 20,
+      "y": 826,
+      "w": 180,
+      "h": 54,
+      "pos": "static"
+     },
+     "bar_text": "ייעוץ חינם מענה בוואטסאפ",
+     "a11y": {
+      "x": 1368,
+      "y": 828,
+      "w": 52,
+      "h": 52,
+      "pos": "static"
+     },
+     "header_pos": "sticky",
+     "html": {
+      "lang": "he-IL",
+      "dir": "rtl"
+     },
+     "app": {
+      "dir": "ltr",
+      "lang": "en"
+     },
+     "overlap": [],
+     "label_overlap": [],
+     "centre": [],
+     "offscreen": [],
+     "checked": 22,
+     "smooth": "smooth",
+     "page_contrast": [],
+     "chrome_contrast": [],
+     "text_checked": 36,
+     "page_blocks": [
+      "div.nlj-shell \"List your property for sale or rent, free\"",
+      "section.nlj#nlj-app \"My listings ד My listings 1 of 5 active listings · 1 draft N\""
+     ],
+     "how": {
+      "plugin_box": 0,
+      "plugin_box_in_html": 0,
+      "journey_box": 0,
+      "any_how_h2": []
+     },
+     "shell": {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     "title": "List your property for sale or rent, free | nad-lan",
+     "page_text": [],
+     "bar_a11y_overlap": 0,
+     "disabled_skipped": 0,
+     "rest_overlap": []
+    },
+    "l14": {
+     "bar": [],
+     "offscreen": [],
+     "overflow": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440
+     },
+     "small": [],
+     "inline_small": [
+      "a \"דירת 4 חדרים בשכונת הדוגמה\" 263x31",
+      "a \"Sign in to another account\" 195x23"
+     ],
+     "nofocus": [],
+     "contrast": [],
+     "contrast_exempt": [],
+     "checked": {
+      "focus": 11,
+      "text": 26
+     },
+     "bar_present": true
+    }
+   },
+   "promotion-off": {
+    "page": {
+     "h1": [
+      "List your property for sale or rent, free"
+     ],
+     "header": "nlhp-top wp-block-template-part",
+     "footer": "nlpc-site-footer",
+     "bar": {
+      "x": 20,
+      "y": 826,
+      "w": 180,
+      "h": 54,
+      "pos": "static"
+     },
+     "bar_text": "ייעוץ חינם מענה בוואטסאפ",
+     "a11y": {
+      "x": 1368,
+      "y": 828,
+      "w": 52,
+      "h": 52,
+      "pos": "static"
+     },
+     "header_pos": "sticky",
+     "html": {
+      "lang": "he-IL",
+      "dir": "rtl"
+     },
+     "app": {
+      "dir": "ltr",
+      "lang": "en"
+     },
+     "overlap": [],
+     "label_overlap": [],
+     "centre": [],
+     "offscreen": [],
+     "checked": 4,
+     "smooth": "smooth",
+     "page_contrast": [],
+     "chrome_contrast": [],
+     "text_checked": 36,
+     "page_blocks": [
+      "div.nlj-shell \"List your property for sale or rent, free\"",
+      "section.nlj#nlj-app \"My listings ד My listings Promote a listing Here you will be\""
+     ],
+     "how": {
+      "plugin_box": 0,
+      "plugin_box_in_html": 0,
+      "journey_box": 0,
+      "any_how_h2": []
+     },
+     "shell": {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     "title": "List your property for sale or rent, free | nad-lan",
+     "page_text": [],
+     "bar_a11y_overlap": 0,
+     "disabled_skipped": 4,
+     "rest_overlap": []
+    },
+    "l14": {
+     "bar": [],
+     "offscreen": [],
+     "overflow": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440
+     },
+     "small": [],
+     "inline_small": [],
+     "nofocus": [],
+     "contrast": [],
+     "contrast_exempt": [
+      {
+       "text": "Property list",
+       "where": "button.nlj-pill",
+       "ratio": 4.13,
+       "need": 4.5,
+       "size": 15,
+       "bold": true,
+       "fg": "rgb(255, 255, 255)",
+       "bg": "rgb(47,111,134)",
+       "why": "disabled control"
+      },
+      {
+       "text": "Not available yet",
+       "where": "button.nlj-btn",
+       "ratio": 4.28,
+       "need": 4.5,
+       "size": 16,
+       "bold": true,
+       "fg": "rgb(59, 71, 83)",
+       "bg": "rgb(227,225,218)",
+       "why": "disabled control"
+      }
+     ],
+     "checked": {
+      "focus": 6,
+      "text": 17
+     },
+     "bar_present": true
+    }
+   },
+   "saved-draft": {
+    "page": {
+     "h1": [
+      "List your property for sale or rent, free"
+     ],
+     "header": "nlhp-top wp-block-template-part",
+     "footer": "nlpc-site-footer",
+     "bar": {
+      "x": 20,
+      "y": 826,
+      "w": 180,
+      "h": 54,
+      "pos": "static"
+     },
+     "bar_text": "ייעוץ חינם מענה בוואטסאפ",
+     "a11y": {
+      "x": 1368,
+      "y": 828,
+      "w": 52,
+      "h": 52,
+      "pos": "static"
+     },
+     "header_pos": "sticky",
+     "html": {
+      "lang": "he-IL",
+      "dir": "rtl"
+     },
+     "app": {
+      "dir": "ltr",
+      "lang": "en"
+     },
+     "overlap": [],
+     "label_overlap": [],
+     "centre": [],
+     "offscreen": [],
+     "checked": 10,
+     "smooth": "smooth",
+     "page_contrast": [],
+     "chrome_contrast": [],
+     "text_checked": 36,
+     "page_blocks": [
+      "div.nlj-shell \"List your property for sale or rent, free\"",
+      "section.nlj#nlj-app \"My listings ד Welcome back, דנה You have a saved draft Conti\""
+     ],
+     "how": {
+      "plugin_box": 0,
+      "plugin_box_in_html": 0,
+      "journey_box": 0,
+      "any_how_h2": []
+     },
+     "shell": {
+      "lang": "en",
+      "dir": "ltr",
+      "text": "List your property for sale or rent, free"
+     },
+     "title": "List your property for sale or rent, free | nad-lan",
+     "page_text": [],
+     "bar_a11y_overlap": 0,
+     "disabled_skipped": 0,
+     "rest_overlap": []
+    },
+    "l14": {
+     "bar": [],
+     "offscreen": [],
+     "overflow": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440
+     },
+     "small": [],
+     "inline_small": [
+      "a \"Sign in to another account\" 195x23"
+     ],
+     "nofocus": [],
+     "contrast": [],
+     "contrast_exempt": [],
+     "checked": {
+      "focus": 5,
+      "text": 17
+     },
+     "bar_present": true
+    }
+   }
+  },
+  "js_errors": [],
+  "shots": [
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/01-auth-signup.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/01-auth-signup-view.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/02-auth-existing-email.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/02-auth-existing-email-view.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/03-auth-login.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/03-auth-login-view.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/04-auth-recovery-sent.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/04-auth-recovery-sent-view.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/05-details-empty.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/05-details-empty-view.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/06-details-errors.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/06-details-errors-view.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/07-details-filled.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/07-details-filled-view.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/08-photos.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/08-photos-view.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/09-preview.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/09-preview-view.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/10-published.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/10-published-view.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/11-my-listings.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/11-my-listings-view.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/12-promotion-off.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/12-promotion-off-view.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/13-saved-draft.jpg",
+   "docs/qa/had-256/theme/candidate-2.0.2-B/en-1440/13-saved-draft-view.jpg"
+  ]
+ }
+}

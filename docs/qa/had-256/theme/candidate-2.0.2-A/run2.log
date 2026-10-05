@@ -1,0 +1,22 @@
+[page] variant A {'ok': True, 'variant': 'A', 'md5': 'd5a6d7d289bf11f64ae94d25e56d5416'}
+Traceback (most recent call last):
+  File "C:\Users\777\nad-lan\nad-lan-co-il\.claude\worktrees\agent-a61b211e083144352\scripts\had-256\tests\test_theme.py", line 258, in <module>
+    main(w, l)
+  File "C:\Users\777\nad-lan\nad-lan-co-il\.claude\worktrees\agent-a61b211e083144352\scripts\had-256\tests\test_theme.py", line 191, in main
+    errs = visit(br, lang, vp, on_screen, V=V)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\777\nad-lan\nad-lan-co-il\.claude\worktrees\agent-a61b211e083144352\scripts\had-256\tests\screens.py", line 109, in visit
+    walk(page, lang, on_screen, V)
+  File "C:\Users\777\nad-lan\nad-lan-co-il\.claude\worktrees\agent-a61b211e083144352\scripts\had-256\tests\screens.py", line 48, in walk
+    with page.expect_navigation():
+  File "C:\Users\777\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 85, in __exit__
+    self._event.value
+  File "C:\Users\777\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 59, in value
+    raise exception
+  File "C:\Users\777\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 264, in continuation
+    event = await waiter.result()
+            ^^^^^^^^^^^^^^^^^^^^^
+playwright._impl._errors.TimeoutError: Timeout 20000ms exceeded.
+=========================== logs ===========================
+waiting for navigation until 'load'
+============================================================

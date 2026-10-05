@@ -1,0 +1,8 @@
+[page] variant B {'ok': True, 'variant': 'B', 'md5': '523bb1f071bfb59902d397506786e60c'}
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome one H1, the site header, footer, floating bar and accessibility button on every screen (1440 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome no journey control under the floating bar, the accessibility button or the header (1440 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (1440 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome first screen: the first field is not under the floating bar or the accessibility button (phones) (1440 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome one "how it works" box (the journey's own on the visitor screens, no plugin box) (1440 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (1440 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome the page text around the app 4.5:1 (H1, paragraph, how-it-works) (1440 px, he, real theme)

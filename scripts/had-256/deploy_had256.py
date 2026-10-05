@@ -381,7 +381,9 @@ def restore(backup, page_written):
         m = meta[key]
         code = io.open(os.path.join(backup, m["file"]), encoding="utf-8", newline="").read()
         if sha(code) != m["sha256_raw"]:
-            raise SystemExit(f"FATAL: the backup {m['file']} is not the saved body")
+            if sha(lf(code)) != m["sha256_lf"]:   # a checkout may have turned LF into CRLF (core.autocrlf): the LF text is the body
+                raise SystemExit(f"FATAL: the backup {m['file']} is not the saved body")
+            code = lf(code)
         must(*snip("PUT", f"/{m['id']}", {"name": m["name"], "code": code, "scope": m.get("scope") or "global", "active": False}), f"restore {m['name']}")
         if m.get("active"):
             must(*snip("PUT", f"/{m['id']}/activate", {}), f"reactivate {m['name']}")
@@ -466,6 +468,9 @@ def main():
     # 3. the backup, before anything else
     backup = os.path.join(QA, "live-backup", UTC + ("-bench" if BENCH else ""))
     os.makedirs(backup, exist_ok=False)
+    ga = os.path.join(QA, "live-backup", ".gitattributes")
+    if not os.path.exists(ga):   # the saved bodies stay byte for byte in git (no end-of-line conversion)
+        open(ga, "w", encoding="utf-8").write("* -text" + chr(10))
     for x, fn in ((own, "x-owner-wizard-707.code.txt"), (eng, f"x-broker-drop-{eng_id}.code.txt")):
         io.open(os.path.join(backup, fn), "w", encoding="utf-8", newline="").write(x.get("code") or "")
     json.dump({"owner": {"id": R.SNIPPET_707, "name": own.get("name"), "active": bool(own.get("active")), "scope": own.get("scope"), "file": "x-owner-wizard-707.code.txt", "sha256_raw": sha(own_code), "sha256_lf": own_sha},

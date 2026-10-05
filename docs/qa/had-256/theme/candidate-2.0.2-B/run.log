@@ -1,0 +1,58 @@
+[page] variant B {'ok': True, 'variant': 'B', 'md5': '523bb1f071bfb59902d397506786e60c'}
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome one H1, the site header, footer, floating bar and accessibility button on every screen (320 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome no journey control under the floating bar, the accessibility button or the header (320 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (320 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome first screen: the first field is not under the floating bar or the accessibility button (phones) (320 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome one "how it works" box (the journey's own on the visitor screens, no plugin box) (320 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (320 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome the page text around the app 4.5:1 (H1, paragraph, how-it-works) (320 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome one H1, the site header, footer, floating bar and accessibility button on every screen (360 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome no journey control under the floating bar, the accessibility button or the header (360 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (360 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome first screen: the first field is not under the floating bar or the accessibility button (phones) (360 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome one "how it works" box (the journey's own on the visitor screens, no plugin box) (360 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (360 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome the page text around the app 4.5:1 (H1, paragraph, how-it-works) (360 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome one H1, the site header, footer, floating bar and accessibility button on every screen (390 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome no journey control under the floating bar, the accessibility button or the header (390 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (390 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome first screen: the first field is not under the floating bar or the accessibility button (phones) (390 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome one "how it works" box (the journey's own on the visitor screens, no plugin box) (390 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (390 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome the page text around the app 4.5:1 (H1, paragraph, how-it-works) (390 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome one H1, the site header, footer, floating bar and accessibility button on every screen (412 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome no journey control under the floating bar, the accessibility button or the header (412 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 (412 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome first screen: the first field is not under the floating bar or the accessibility button (phones) (412 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome one "how it works" box (the journey's own on the visitor screens, no plugin box) (412 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome the page around the journey speaks the journey's language (he: the page H1; en: an English shell, lang en) (412 px, he, real theme)
+[PASS] T4   theme-candidate-2.0.2-B real-wp+theme+chrome the page text around the app 4.5:1 (H1, paragraph, how-it-works) (412 px, he, real theme)
+Traceback (most recent call last):
+  File "C:\Users\777\nad-lan\nad-lan-co-il\.claude\worktrees\agent-a61b211e083144352\scripts\had-256\tests\test_theme.py", line 258, in <module>
+    main(w, l)
+  File "C:\Users\777\nad-lan\nad-lan-co-il\.claude\worktrees\agent-a61b211e083144352\scripts\had-256\tests\test_theme.py", line 191, in main
+    errs = visit(br, lang, vp, on_screen, V=V)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\777\nad-lan\nad-lan-co-il\.claude\worktrees\agent-a61b211e083144352\scripts\had-256\tests\screens.py", line 109, in visit
+    walk(page, lang, on_screen, V)
+  File "C:\Users\777\nad-lan\nad-lan-co-il\.claude\worktrees\agent-a61b211e083144352\scripts\had-256\tests\screens.py", line 35, in walk
+    page.wait_for_selector('#j-mail-err')
+  File "C:\Users\777\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 9033, in wait_for_selector
+    self._sync(
+  File "C:\Users\777\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\777\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_page.py", line 427, in wait_for_selector
+    return await self._main_frame.wait_for_selector(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\777\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 394, in wait_for_selector
+    await self._channel.send(
+  File "C:\Users\777\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\777\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.wait_for_selector: Timeout 20000ms exceeded.
+Call log:
+  - waiting for locator("#j-mail-err") to be visible
+

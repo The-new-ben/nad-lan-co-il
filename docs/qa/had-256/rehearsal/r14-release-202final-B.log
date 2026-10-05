@@ -1,0 +1,43 @@
+[lock] C:/Users/777/AppData/Local/Temp/claude/C--Users-777-nad-lan/638c26e3-6032-438a-9641-ab6fd06c26f5/scratchpad/lock-done.md
+[lock] last line: RELEASE DONE 1.72.429 by the Kikar loop [main] 18:48 Israel (rehearsal copy of the lock line)
+[health] 1.72.372 degraded
+[health] the bench reports degraded (no payment / mail services on a bench): accepted for the rehearsal only
+[lock] lines for docs/coordination/claude-codex.md: RELEASE IN PROGRESS HAD-256 x-owner-wizard 2.0.2 + x-broker-drop 1.1.4 (page B) by <session> start <time>
+[read] 707 x-owner-wizard f04dbbf8d99d active True | 690 x-broker-drop e7736ef75fdf active True
+[backup] docs\qa\had-256\live-backup\20261005T183856Z-bench
+[record] backed up
+[lint] local php -l x-broker-drop 1.1.4: ok
+[lint] local php -l x-owner-wizard 2.0.2: ok
+[before] broker pages: {}
+[bridge] up, id 1000 | plugin 1.72.372 | PHP 8.3.33
+[lint] server x-broker-drop: ok 8.3.33
+[lint] server x-owner-wizard: ok 8.3.33
+[page] 4 live 7c130d775618 (deploydrop's text 7c130d775618) -> variant B f39acdb45dcb
+[private] {"dir": "/nl-private", "exists": true, "writable": true, "parent_writable": true, "inside_abspath": false, "inside_docroot": false, "defined_now": null}
+[private] GET /nl-private/had256-http-probe-47295bf388b915a1.txt: 200 (not the test file)
+[private] GET /../nl-private/had256-http-probe-47295bf388b915a1.txt: 200 (not the test file)
+[private] GET /wp-content/nl-private/had256-http-probe-47295bf388b915a1.txt: 200 (not the test file)
+[private] GET /wp-content/uploads/nl-private/had256-http-probe-47295bf388b915a1.txt: 200 (not the test file)
+[private] test file removed: missing
+[record] writing
+[write] x-broker-drop 1.1.4 (snippet 690): fb081ee5e3a0, active, read back
+[write] x-owner-wizard 2.0.2 (snippet 707): d4a2e88d5e39, active, read back
+[write] page 4: f39acdb45dcb
+[record] written
+[purge] {'opcache': False, 'purged': 1}
+[private] NL_OWNER_PRIVATE_DIR now '/nl-private' (want '/nl-private')
+[check] OK  /post-listing/ (busted): 200, h1 1
+[check] OK  /post-listing/?lang=en (busted): 200, h1 1
+[check] OK  healthcheck: owner 2.0.2 engine True sealed True, engine 1.1.4
+[check] OK  POST /wp-json/nadlan/v1/listing-submit: 410 (want 410)
+[check] OK  POST /wp-json/nadlan/v1/owner/draft: 401 (want 401)
+[check] OK  GET /drop/000000000000000000000000/: 404 (want 404)
+[check] OK  /post-listing/ (plain): 200, h1 1
+[check] OK  /post-listing/?lang=en (plain): 200, h1 1
+[check] OK  healthcheck: owner 2.0.2 engine True sealed True, engine 1.1.4
+[check] OK  POST /wp-json/nadlan/v1/listing-submit: 410 (want 410)
+[check] OK  POST /wp-json/nadlan/v1/owner/draft: 401 (want 401)
+[check] OK  GET /drop/000000000000000000000000/: 404 (want 404)
+[record] released
+RELEASE DONE: x-owner-wizard 2.0.2 + x-broker-drop 1.1.4 + page variant B; all checks OK; backup docs\qa\had-256\live-backup\20261005T183856Z-bench
+[bridge] deactivate 200, delete 200; route now 404 (want 404)

@@ -24,10 +24,15 @@ Playground (SQLite) run. Main is the only publisher. Results: `RESULTS.md` (gene
 | builder's latest | see `git log` | 9401 | not for QA |
 | theme bench, snapshot 3 in the real theme + plugin | `2ce0a741` | 9405 | `THEME.md` (5.10) |
 | theme bench, fix candidate owner-wizard 2.0.1 | `e28df264` | 9406 | `THEME.md` (not a QA snapshot) |
+| theme benches, owner-wizard 2.0.2 (copy and layout round) + page 4958 variant B / A | `40763157` | 9407 / 9409 | `THEME.md` (not a QA snapshot) |
+| release rehearsal (Code Snippets stand-in seeded with the live bases) | `2c428852` | 9408 | `RELEASE.md`, `rehearsal/` |
 
-Release package (main only): `RELEASE.md`, `scripts/project-stage/had256_release.py`. MySQL proof kit (open item 1):
-`mysql-claim-check.php` (dry run on the SQLite bench: `mysql-claim-check.sqlite-dryrun.json`, all 44 checks pass; the
-MySQL run itself is main's, once, on the live database).
+Release (main only): `RELEASE.md`; the runner `scripts/had-256/deploy_had256.py`; the packages
+`scripts/project-stage/had256_release.py` (2.0.1) and `had256_release_202.py` (2.0.2). Open item 1 (the database
+proof) is CLOSED: the staged kit `claim-proof-stage{1,2,3}.php` passed on live MariaDB 10.6.28, run by main
+(`claim-proof-s{1,2,3}.result.json`, commit 025cf41d: s2 43/43, s3 the second connection, clean-up 0). The one-piece
+`mysql-claim-check.php` answered an nginx 404 on live; the cause was not isolated (likely its `@@transaction_isolation`,
+unknown on MariaDB 10.6, or its SQL-laden header text); the staged kit avoids both.
 
 ## What was built
 

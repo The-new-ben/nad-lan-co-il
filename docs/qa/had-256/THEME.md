@@ -73,6 +73,47 @@ LAN address refused; 9401-9404 still on their own PIDs).
    (`he-390/07-details-filled-view.jpg`); the same on the earlier bench (product behaviour, not the theme).
 7. Site-wide, outside HAD-256: the `nl-legal` note under the footer is light grey on cream (not measured here).
 
+## 2.0.2 (40763157): the copy and layout round (main, 5.10 evening)
+
+Asked: no promise of WhatsApp/call buttons the journey does not keep, ONE "how it works", an English shell for
+`?lang=en`, and on a phone the first field not under the WhatsApp bar on the first screen. Code (owner-wizard 2.0.2,
++71/-13 over snapshot 3, the 2.0.1 header fix kept):
+- under a page H1 the journey's first screen drops its own kicker and H2 and keeps its lead (one title, one intro);
+- one "how it works": the journey's own box, now also under the form on a phone; the plugin's 1.x box
+  (`inc/property-wizard.php`, priority 30, visitors only) is taken out of the page (a `the_content` filter at 40);
+- `?lang=en`: everything the page prints before the journey becomes `<div class="nlj-shell" lang="en" dir="ltr"><h1>List
+  your property for sale or rent, free</h1></div>`, plus an English title and description (also for Yoast's filters);
+  a one-line-shorter English lead. The site's header, footer and floating bar stay Hebrew (site chrome).
+Page text: `page-4958/` (variant A: no paragraph; B: "בלי עמלה ובלי כרטיס אשראי. הטלפון שלכם מופיע במודעה רק אם
+תבחרו לפרסם אותו."), switched on the bench by `POST /nlj-test/v1/page`.
+
+New gates in `test_theme.py`: the first field of the landing screens (sign-up, sign-in) at rest is not under the bar or
+the accessibility button on a phone; one how-it-works box (no plugin box, the journey's own on the visitor screens); the
+page around the journey speaks its language (he: the page H1; en: the English shell, lang en).
+
+| Run (13 screens each) | Result |
+|---|---|
+| **2.0.2 + page B**, 320 / 360 / 390 / 412 / 1440 x he / en (127.0.0.1:9407) | **70/70 pass**, 3,060 focus events, none covered |
+| **2.0.2 + page A**, the same (127.0.0.1:9409) | **70/70 pass**, 3,060 focus events, none covered |
+| interim 2.0.2 (`85fa0b67`), 320 / 390 / 412 / 1440 x he / en, A and B | everything passed except English at 320 x 740 (A: the first field 5 px under the bar; B: under the accessibility button, the English shell paragraph); fixed in 40763157 (the shell is the H1 only, a shorter English lead) |
+
+The first field on the sign-up screen at rest (top-bottom, px). The bar's measured top: 612 at 320 x 740, 652 at 360 x 780,
+716 at 390 x 844, 787 at 412 x 915 (the accessibility button 62 px lower, on the other side):
+
+| | 320 he | 320 en | 360 he | 360 en | 390 he | 390 en | 412 he | 412 en |
+|---|---|---|---|---|---|---|---|---|
+| B | 558-606 | 542-590 | 563-611 | 512-560 | 564-612 | 511-559 | 538-586 | 512-560 |
+| A | 503-551 | 542-590 | 508-556 | 512-560 | 510-558 | 511-559 | 484-532 | 512-560 |
+
+Both clear the bar everywhere. B has the least room in Hebrew at 320 x 740 (the field ends 6 px above the bar); A
+leaves 61 px there. English is the same in A and B (the shell is the H1 only).
+
+The 2.0.1 candidate is not enough for the honesty item: its page still has the plugin box, which says "בכתובת משלה, עם
+כפתורי וואטסאפ וחיוג אליכם" to every visitor whatever the page text says (the rehearsal's R5 check caught it).
+
+Screens: `theme/candidate-2.0.2-B/` and `theme/candidate-2.0.2-A/`, `<lang>-<390|1440>/NN-<screen>.jpg` (full page)
+and `-view.jpg` (the first screen).
+
 ## Screenshots
 
 `theme/he-390/`, `theme/he-1440/`, `theme/en-390/`, `theme/en-1440/`: for each of the 13 screens a full page

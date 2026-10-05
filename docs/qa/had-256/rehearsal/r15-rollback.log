@@ -1,0 +1,15 @@
+[lock] C:/Users/777/AppData/Local/Temp/claude/C--Users-777-nad-lan/638c26e3-6032-438a-9641-ab6fd06c26f5/scratchpad/lock-done.md
+[lock] last line: RELEASE DONE 1.72.429 by the Kikar loop [main] 18:48 Israel (rehearsal copy of the lock line)
+[health] 1.72.372 degraded
+[health] the bench reports degraded (no payment / mail services on a bench): accepted for the rehearsal only
+[lock] lines for docs/coordination/claude-codex.md: RELEASE IN PROGRESS HAD-256 x-owner-wizard 2.0.2 + x-broker-drop 1.1.4 (page None) by <session> start <time>
+[rollback] from docs\qa\had-256\live-backup\20261005T183856Z-bench | saved f04dbbf8d99d e7736ef75fdf
+[bridge] up, id 1000 | plugin 1.72.372 | PHP 8.3.33
+[restore] x-owner-wizard (snippet 707): f04dbbf8d99d (saved f04dbbf8d99d), active True
+[restore] x-broker-drop (snippet 690): e7736ef75fdf (saved e7736ef75fdf), active True
+[restore] page 4: 7c130d775618 (saved 7c130d775618)
+[rollback-check] OK  /post-listing/: 200, the 1.0 gate True, the 2.0 app False
+[rollback-check] healthcheck: 200, owner 1.0.0, engine 1.1.3
+[record] rolled back (--rollback)
+ROLLED BACK (rollback checks clean)
+[bridge] deactivate 200, delete 200; route now 404 (want 404)
