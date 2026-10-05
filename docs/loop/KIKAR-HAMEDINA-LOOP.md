@@ -214,6 +214,14 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **5.10 ~14:55, turn 32: HAD-421 step 2a LIVE (1.72.422): the world poster once on phones.**
+  - **Measured** (phone, slow 4G): world usable 17.0 → 15.6 s; 1.65 → 1.37 MB until usable. Since the start of HAD-421 this morning: 21.7 → 15.6 s and 2.64 → 1.37 MB.
+  - **Next notch, sharper:**
+    - dashicons.min.css (36 KB) for visitors;
+    - aspect-ratio boxes for the film videos;
+    - deferred head scripts;
+    - then the world itself: it starts at 8.1 s and needs 7.5 s more (world.json 378 KB + three.js 257 KB + scene build). Start earlier, send less.
+
 - **5.10 ~12:30, turn 31: HAD-421 step 3 LIVE (1.72.421): lazy film posters.**
   - **Measured** (slow 4G, phone, medians; start → 421): world usable 21.7 → 17.0 s; world starts loading 13.5 → 8.0 s; 2.64 → 1.65 MB until usable.
   - **Verified in headless Chrome:** visible videos get their posters near the screen; hidden ones never fetch them; Play works. The browser pane was hidden, so its IntersectionObserver stalled. Lesson: verify lazy loading in a rendering browser, not in a hidden pane.
