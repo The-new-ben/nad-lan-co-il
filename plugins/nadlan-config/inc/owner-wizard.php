@@ -13,7 +13,8 @@
  *   kicker and H2 (the page H1 is the title; the lead stays), so on a phone the first field is above the site's bar;
  *   one "how it works": the journey's own box, now also under the form on a phone, and the plugin's 1.x box
  *   (inc/property-wizard.php, visitors only) is taken out of the page; ?lang=en gets an English shell (the page's
- *   Hebrew heading and text replaced by an English H1, lang/dir en/ltr; English title and description).
+ *   Hebrew heading and text replaced by an English H1, lang/dir en/ltr; English title and description); a shorter
+ *   English lead (the first field clears the bar at 320 x 740 too).
  * 2.0.1 (5.10.2026, the theme bench): a control the page scrolls UP to lands below the site's sticky header (.nlhp-top),
  *   not under it (--nlj-head-room measured, the header cleared on focus). Nothing else changed.
  * 2.0.0 (HAD-256, owner-approved design v5 "NadLan Listing Journey", Maya's contract L01-L17):
@@ -290,7 +291,6 @@ function nl_owner_t( $k, $lang = 'he' ) {
 			'shell_h1'    => 'List your property for sale or rent, free',
 			'shell_title' => 'List your property for sale or rent, free | nad-lan',
 			'shell_desc'  => 'Owners list a home for sale or rent on nad-lan for free: open an account, add the details and photos, and the listing goes live at its own address. No commission.',
-			'shell_p'     => 'No commission and no credit card. Your phone number appears in the listing only if you choose to publish it.',
 		),
 	);
 	$lang = nl_owner_lang( $lang );
@@ -1801,7 +1801,7 @@ function nl_owner_shortcode( $atts = array() ) {
 		? '<p class="nlj-kick">פרסום מודעה מבעלים</p><h2 class="nlj-h1">מפרסמים את הנכס שלכם</h2>'
 		: '<p class="nlj-kick">List your property</p><h2 class="nlj-h1">List your property, owner to buyer</h2>' ) ) . ( $he
 		? '<p class="nlj-lead">פותחים חשבון בשם ובמייל, ממלאים את פרטי הנכס ומעלים תמונות. המודעה עולה בכתובת משלה. בלי עמלה.</p>'
-		: '<p class="nlj-lead">Open an account with your name and email, fill in the property details and add photos. The listing goes live at its own address. No commission.</p>' );
+		: '<p class="nlj-lead">Open an account, add the details and photos, and the listing goes live at its own address. No commission.</p>' );
 	$h  = '<style id="nlj-css">' . nl_owner_css() . '</style>';
 	$h .= '<section class="nlj alignfull" id="nlj-app" dir="' . ( $he ? 'rtl' : 'ltr' ) . '" lang="' . $lang . '" data-v="' . esc_attr( NL_OWNER_VERSION ) . '">';
 	$h .= '<div class="nlj-wrap"><div class="nlj-intro">' . $intro . '<noscript><p class="nlj-note">' . ( $he ? 'הפרסום עובד בדפדפן עם JavaScript פעיל.' : 'Publishing works in a browser with JavaScript on.' ) . '</p></noscript></div></div></section>';
@@ -1821,9 +1821,9 @@ function nl_owner_page_shell( $html ) {
 	if ( 'en' === nl_owner_page_lang( array() ) ) {
 		$cut = strpos( $html, '<style id="nlj-css">' );
 		if ( false !== $cut ) {
-			// the page's own text before the journey (its H1, and a paragraph when the page has one) in English
-			$para = false !== stripos( substr( $html, 0, $cut ), '<p' ) ? '<p class="wp-block-paragraph">' . esc_html( nl_owner_t( 'shell_p', 'en' ) ) . '</p>' : '';
-			$html = '<div class="nlj-shell" lang="en" dir="ltr"><h1 class="wp-block-heading">' . esc_html( nl_owner_t( 'shell_h1', 'en' ) ) . '</h1>' . $para . '</div>' . substr( $html, $cut );
+			// the page's own text before the journey becomes its English H1 (the journey's lead is the intro; a second
+			// paragraph put the first field under the site's bar at 320 x 740, theme bench 5.10)
+			$html = '<div class="nlj-shell" lang="en" dir="ltr"><h1 class="wp-block-heading">' . esc_html( nl_owner_t( 'shell_h1', 'en' ) ) . '</h1></div>' . substr( $html, $cut );
 		}
 	}
 	return $html;
@@ -2113,7 +2113,7 @@ var W={he:{
  switchedH:'החשבון במכשיר הזה השתנה',switchedTxt:'כדי לשמור על הפרטים של כל חשבון, הדף הזה נוקה. טיוטה שמורה בחשבון מחכה לבעליה, ואפשר להמשיך אותה אחרי כניסה.',switchedBtn:'לכניסה ולהמשך'
 },en:{
  myListings:'My listings',signInTop:'Sign in',navAria:'My account',acct:function(n){return 'Signed in as '+n;},
- authKick:'List your property',authH1:'List your property, owner to buyer',authLead:'Open an account with your name and email, fill in the property details and add photos. The listing goes live at its own address. No commission.',
+ authKick:'List your property',authH1:'List your property, owner to buyer',authLead:'Open an account, add the details and photos, and the listing goes live at its own address. No commission.',
  authTabsAria:'Open an account or sign in',tabSignup:'Open an account',tabLogin:'I have an account',firstName:'First name',email:'Email',password:'Password',showPw:'Show',hidePw:'Hide',showPwAria:'Show the password',
  pwHint:'At least 8 characters. You can change it at any time.',termsA:'By opening an account you agree to the',terms:'terms of use',termsB:'and the',privacy:'privacy policy',
  signupCta:'Open an account and continue',signupBusy:'Opening the account…',mailExistsAct:'Sign in with this email',loginCta:'Sign in',loginBusy:'Signing in…',forgot:'I forgot my password',
