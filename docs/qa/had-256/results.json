@@ -112,6 +112,79 @@
   "at": "2026-10-05 11:54:48"
  },
  {
+  "id": "L01",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "http: recovery gives one identical answer for a registered and an unknown email",
+  "status": "pass",
+  "evidence": {
+   "registered": [
+    200,
+    {
+     "ok": true,
+     "message": "אם המייל רשום אצלנו, הקישור בדרך."
+    }
+   ],
+   "unknown": [
+    200,
+    {
+     "ok": true,
+     "message": "אם המייל רשום אצלנו, הקישור בדרך."
+    }
+   ],
+   "seconds": [
+    1.86,
+    1.83
+   ],
+   "mails_in_sink": [
+    "dana.sample@example.test"
+   ]
+  },
+  "notes": "opening an account with an email that has one answers 409 \"exists\" (as the existing quick-register and auth-signup doors do): the design keeps that, so the journey does not claim blanket non-enumeration",
+  "at": "2026-10-05 12:04:02"
+ },
+ {
+  "id": "L01",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "rate limits per address: opening an account (5 an hour)",
+  "status": "pass",
+  "evidence": {
+   "192.0.2.1": [
+    409,
+    409,
+    409,
+    409,
+    409,
+    429
+   ],
+   "192.0.2.3": 409,
+   "198.51.100.1": 409
+  },
+  "notes": "409 = the email already has an account (counted); 429 = this address hit its limit; the other addresses are not affected",
+  "at": "2026-10-05 12:04:27"
+ },
+ {
+  "id": "L01",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "rate limits per address: password recovery (5 an hour)",
+  "status": "pass",
+  "evidence": {
+   "192.0.2.1": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    429
+   ],
+   "192.0.2.3": 200,
+   "198.51.100.1": 200
+  },
+  "at": "2026-10-05 12:04:40"
+ },
+ {
   "id": "L03",
   "variant": "after",
   "label": "real-wp",
@@ -120,13 +193,13 @@
   "evidence": {
    "sealed_files": [
     {
-     "path": "/wp-content/uploads/nl-private/d072361092bb09a09ffcd4e2935299fb/0408948349487d1136e6ad05801b710f-t.bin",
+     "path": "/wp-content/uploads/nl-private/d072361092bb09a09ffcd4e2935299fb/0650877326c24baf39f55064c76e917d-t.bin",
      "status": 200,
      "opens_as_image": false,
      "starts": "NLS1"
     },
     {
-     "path": "/wp-content/uploads/nl-private/d072361092bb09a09ffcd4e2935299fb/0408948349487d1136e6ad05801b710f.bin",
+     "path": "/wp-content/uploads/nl-private/d072361092bb09a09ffcd4e2935299fb/0650877326c24baf39f55064c76e917d.bin",
      "status": 200,
      "opens_as_image": false,
      "starts": "NLS1"
@@ -140,7 +213,7 @@
    "proxy_other_user": 404
   },
   "notes": "Playground serves static files with no .htaccess, so the sealed .bin answers 200 here: its bytes are ciphertext (NLS1 header) and do not open as an image. The live server is not assumed to honour the deny-all .htaccess.",
-  "at": "2026-10-05 11:17:45"
+  "at": "2026-10-05 12:12:25"
  },
  {
   "id": "L03",
@@ -187,7 +260,7 @@
     3
    ]
   },
-  "at": "2026-10-05 11:25:50"
+  "at": "2026-10-05 12:12:48"
  },
  {
   "id": "L03",
@@ -205,7 +278,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 11:10:54"
+  "at": "2026-10-05 12:06:08"
  },
  {
   "id": "L03",
@@ -218,7 +291,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 11:10:18"
+  "at": "2026-10-05 12:05:46"
  },
  {
   "id": "L03",
@@ -234,7 +307,7 @@
    "status": "draft",
    "exposed": []
   },
-  "at": "2026-10-05 11:11:12"
+  "at": "2026-10-05 12:06:20"
  },
  {
   "id": "L03",
@@ -255,7 +328,7 @@
    ],
    "exposed_after_retry": 8
   },
-  "at": "2026-10-05 11:15:21"
+  "at": "2026-10-05 12:10:07"
  },
  {
   "id": "L03",
@@ -272,7 +345,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 11:11:58"
+  "at": "2026-10-05 12:06:54"
  },
  {
   "id": "L03",
@@ -293,7 +366,7 @@
    ],
    "exposed_after_retry": 8
   },
-  "at": "2026-10-05 11:15:52"
+  "at": "2026-10-05 12:10:37"
  },
  {
   "id": "L03",
@@ -310,7 +383,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 11:12:22"
+  "at": "2026-10-05 12:07:16"
  },
  {
   "id": "L03",
@@ -327,7 +400,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 11:13:04"
+  "at": "2026-10-05 12:07:57"
  },
  {
   "id": "L03",
@@ -344,7 +417,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 11:13:24"
+  "at": "2026-10-05 12:08:14"
  },
  {
   "id": "L03",
@@ -361,7 +434,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 11:13:42"
+  "at": "2026-10-05 12:08:31"
  },
  {
   "id": "L03",
@@ -378,7 +451,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 11:14:00"
+  "at": "2026-10-05 12:08:48"
  },
  {
   "id": "L03",
@@ -393,14 +466,14 @@
    ],
    "status_after_kill": "publish",
    "exposed_after_kill (listing is published)": [
-    "/wp-content/uploads/nl-listings/7649b30bf20dbe37999bd054f062ed61-150x150.jpg",
-    "/wp-content/uploads/nl-listings/7649b30bf20dbe37999bd054f062ed61-300x225.jpg",
-    "/wp-content/uploads/nl-listings/7649b30bf20dbe37999bd054f062ed61-768x576.jpg",
-    "/wp-content/uploads/nl-listings/7649b30bf20dbe37999bd054f062ed61.jpg",
-    "/wp-content/uploads/nl-listings/a40d71692ed1bf82651afd372327797e-150x150.jpg",
-    "/wp-content/uploads/nl-listings/a40d71692ed1bf82651afd372327797e-300x225.jpg",
-    "/wp-content/uploads/nl-listings/a40d71692ed1bf82651afd372327797e-768x576.jpg",
-    "/wp-content/uploads/nl-listings/a40d71692ed1bf82651afd372327797e.jpg"
+    "/wp-content/uploads/nl-listings/3d68851085b0df930345d42da4608f16-150x150.jpg",
+    "/wp-content/uploads/nl-listings/3d68851085b0df930345d42da4608f16-300x225.jpg",
+    "/wp-content/uploads/nl-listings/3d68851085b0df930345d42da4608f16-768x576.jpg",
+    "/wp-content/uploads/nl-listings/3d68851085b0df930345d42da4608f16.jpg",
+    "/wp-content/uploads/nl-listings/5f0f8eff1ad4f53800bc897e0ad713e6-150x150.jpg",
+    "/wp-content/uploads/nl-listings/5f0f8eff1ad4f53800bc897e0ad713e6-300x225.jpg",
+    "/wp-content/uploads/nl-listings/5f0f8eff1ad4f53800bc897e0ad713e6-768x576.jpg",
+    "/wp-content/uploads/nl-listings/5f0f8eff1ad4f53800bc897e0ad713e6.jpg"
    ],
    "retry": [
     200,
@@ -408,7 +481,24 @@
    ],
    "exposed_after_retry": 8
   },
-  "at": "2026-10-05 11:14:50"
+  "at": "2026-10-05 12:09:36"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: killed at owner_status_sql (before the publish commit)",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "owner_status_sql"
+   ],
+   "status": "draft",
+   "exposed": [],
+   "checked": 8
+  },
+  "at": "2026-10-05 12:09:06"
  },
  {
   "id": "L03",
@@ -419,13 +509,13 @@
   "evidence": {
    "killed": [
     500,
-    "row (post 178, status auto-draft)"
+    "row (post 495, status auto-draft)"
    ],
    "status": "",
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 11:11:35"
+  "at": "2026-10-05 12:06:37"
  },
  {
   "id": "L03",
@@ -436,30 +526,13 @@
   "evidence": {
    "killed": [
     500,
-    "status_write (post 183 to draft)"
+    "status_write (post 500 to draft)"
    ],
    "status": "auto-draft",
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 11:12:43"
- },
- {
-  "id": "L03",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "public photos: killed at status_write:publish (before the publish commit)",
-  "status": "pass",
-  "evidence": {
-   "killed": [
-    500,
-    "status_write (post 193 to publish)"
-   ],
-   "status": "draft",
-   "exposed": [],
-   "checked": 8
-  },
-  "at": "2026-10-05 11:14:17"
+  "at": "2026-10-05 12:07:39"
  },
  {
   "id": "L03",
@@ -473,7 +546,7 @@
    "exposed_after_kill": [],
    "exposed_after_a_view (published)": 8
   },
-  "at": "2026-10-05 11:17:31"
+  "at": "2026-10-05 12:12:11"
  },
  {
   "id": "L03",
@@ -487,7 +560,7 @@
    "status": "publish",
    "exposed (published)": 4
   },
-  "at": "2026-10-05 11:16:16"
+  "at": "2026-10-05 12:11:00"
  },
  {
   "id": "L03",
@@ -517,7 +590,7 @@
     0
    ]
   },
-  "at": "2026-10-05 11:17:03"
+  "at": "2026-10-05 12:11:45"
  },
  {
   "id": "L03",
@@ -535,7 +608,7 @@
    "signed_in_page_cache_control": "no-store, no-cache, must-revalidate, max-age=0, private",
    "A_resumed_draft_intact": true
   },
-  "at": "2026-10-05 11:26:55"
+  "at": "2026-10-05 12:13:53"
  },
  {
   "id": "L04",
@@ -547,7 +620,65 @@
    "resumed_in_form": true,
    "on_server_after_resume": true
   },
-  "at": "2026-10-05 11:26:02"
+  "at": "2026-10-05 12:13:00"
+ },
+ {
+  "id": "L05",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "http: a draft created twice with the same key (an answer lost) is one draft",
+  "status": "pass",
+  "evidence": {
+   "first": [
+    201,
+    487
+   ],
+   "retry": [
+    200,
+    487,
+    true
+   ]
+  },
+  "at": "2026-10-05 12:03:54"
+ },
+ {
+  "id": "L07",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "http: 6 parallel saves from the same revision: one wins, five get 409",
+  "status": "pass",
+  "evidence": {
+   "codes": [
+    200,
+    409,
+    409,
+    409,
+    409,
+    409
+   ],
+   "server_rev": 2,
+   "winner": [
+    "4"
+   ],
+   "server_rooms": "4"
+  },
+  "at": "2026-10-05 12:03:51"
+ },
+ {
+  "id": "L07",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "http: two saves from the same revision: the second gets 409 with the server version; nothing is overwritten",
+  "status": "pass",
+  "evidence": {
+   "first": 200,
+   "second": [
+    409,
+    "conflict"
+   ],
+   "server_rooms": "4"
+  },
+  "at": "2026-10-05 12:03:46"
  },
  {
   "id": "L08",
@@ -2202,6 +2333,576 @@
   "at": "2026-10-04 01:42:34"
  },
  {
+  "id": "L09",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "JPEG: location/camera metadata removed and the displayed orientation kept (o1, o2, o3, o4, o5, o6, o7, o8)",
+  "status": "pass",
+  "evidence": {
+   "rows": [
+    {
+     "format": "JPEG",
+     "orientation": 1,
+     "upload": 200,
+     "stored_type": null,
+     "stored_size": [
+      240,
+      160
+     ],
+     "displayed_as_original": true,
+     "pixels": "mean diff per channel [0.0, 0.0, 0.0]",
+     "metadata_left": [],
+     "ok": true
+    },
+    {
+     "format": "JPEG",
+     "orientation": 2,
+     "upload": 200,
+     "stored_type": null,
+     "stored_size": [
+      240,
+      160
+     ],
+     "displayed_as_original": true,
+     "pixels": "mean diff per channel [0.02, 0.01, 0.03]",
+     "metadata_left": [],
+     "ok": true
+    },
+    {
+     "format": "JPEG",
+     "orientation": 3,
+     "upload": 200,
+     "stored_type": null,
+     "stored_size": [
+      240,
+      160
+     ],
+     "displayed_as_original": true,
+     "pixels": "mean diff per channel [0.02, 0.01, 0.03]",
+     "metadata_left": [],
+     "ok": true
+    },
+    {
+     "format": "JPEG",
+     "orientation": 4,
+     "upload": 200,
+     "stored_type": null,
+     "stored_size": [
+      240,
+      160
+     ],
+     "displayed_as_original": true,
+     "pixels": "mean diff per channel [0.02, 0.01, 0.03]",
+     "metadata_left": [],
+     "ok": true
+    },
+    {
+     "format": "JPEG",
+     "orientation": 5,
+     "upload": 200,
+     "stored_type": null,
+     "stored_size": [
+      160,
+      240
+     ],
+     "displayed_as_original": true,
+     "pixels": "mean diff per channel [0.01, 0.0, 0.05]",
+     "metadata_left": [],
+     "ok": true
+    },
+    {
+     "format": "JPEG",
+     "orientation": 6,
+     "upload": 200,
+     "stored_type": null,
+     "stored_size": [
+      160,
+      240
+     ],
+     "displayed_as_original": true,
+     "pixels": "mean diff per channel [0.01, 0.0, 0.05]",
+     "metadata_left": [],
+     "ok": true
+    },
+    {
+     "format": "JPEG",
+     "orientation": 7,
+     "upload": 200,
+     "stored_type": null,
+     "stored_size": [
+      160,
+      240
+     ],
+     "displayed_as_original": true,
+     "pixels": "mean diff per channel [0.01, 0.0, 0.05]",
+     "metadata_left": [],
+     "ok": true
+    },
+    {
+     "format": "JPEG",
+     "orientation": 8,
+     "upload": 200,
+     "stored_type": null,
+     "stored_size": [
+      160,
+      240
+     ],
+     "displayed_as_original": true,
+     "pixels": "mean diff per channel [0.01, 0.0, 0.05]",
+     "metadata_left": [],
+     "ok": true
+    }
+   ],
+   "php_image_libraries": {
+    "php": "8.3.33",
+    "gd": {
+     "version": "2.3.3",
+     "jpeg": true,
+     "png": true,
+     "webp": true,
+     "imageflip": true
+    },
+    "imagick": {
+     "heic": false
+    },
+    "exif_ext": true,
+    "sodium": true,
+    "openssl_gcm": true,
+    "wp_image_editor": "WP_Image_Editor_GD"
+   }
+  },
+  "at": "2026-10-05 12:05:24"
+ },
+ {
+  "id": "L09",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "PNG: location/camera metadata removed and the displayed orientation kept (o1, o3, o6)",
+  "status": "pass",
+  "evidence": {
+   "rows": [
+    {
+     "format": "PNG",
+     "orientation": 1,
+     "upload": 200,
+     "stored_type": null,
+     "stored_size": [
+      240,
+      160
+     ],
+     "displayed_as_original": true,
+     "pixels": "mean diff per channel [0.0, 0.0, 0.0]",
+     "metadata_left": [],
+     "ok": true
+    },
+    {
+     "format": "PNG",
+     "orientation": 3,
+     "upload": 200,
+     "stored_type": null,
+     "stored_size": [
+      240,
+      160
+     ],
+     "displayed_as_original": true,
+     "pixels": "mean diff per channel [0.0, 0.0, 0.0]",
+     "metadata_left": [],
+     "ok": true
+    },
+    {
+     "format": "PNG",
+     "orientation": 6,
+     "upload": 200,
+     "stored_type": null,
+     "stored_size": [
+      160,
+      240
+     ],
+     "displayed_as_original": true,
+     "pixels": "mean diff per channel [0.0, 0.0, 0.0]",
+     "metadata_left": [],
+     "ok": true
+    }
+   ],
+   "php_image_libraries": {
+    "php": "8.3.33",
+    "gd": {
+     "version": "2.3.3",
+     "jpeg": true,
+     "png": true,
+     "webp": true,
+     "imageflip": true
+    },
+    "imagick": {
+     "heic": false
+    },
+    "exif_ext": true,
+    "sodium": true,
+    "openssl_gcm": true,
+    "wp_image_editor": "WP_Image_Editor_GD"
+   }
+  },
+  "at": "2026-10-05 12:05:24"
+ },
+ {
+  "id": "L09",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "WEBP: location/camera metadata removed and the displayed orientation kept (o1, o3, o6)",
+  "status": "pass",
+  "evidence": {
+   "rows": [
+    {
+     "format": "WEBP",
+     "orientation": 1,
+     "upload": 200,
+     "stored_type": null,
+     "stored_size": [
+      240,
+      160
+     ],
+     "displayed_as_original": true,
+     "pixels": "mean diff per channel [0.0, 0.0, 0.0]",
+     "metadata_left": [],
+     "ok": true
+    },
+    {
+     "format": "WEBP",
+     "orientation": 3,
+     "upload": 200,
+     "stored_type": null,
+     "stored_size": [
+      240,
+      160
+     ],
+     "displayed_as_original": true,
+     "pixels": "mean diff per channel [0.13, 0.07, 0.22]",
+     "metadata_left": [],
+     "ok": true
+    },
+    {
+     "format": "WEBP",
+     "orientation": 6,
+     "upload": 200,
+     "stored_type": null,
+     "stored_size": [
+      160,
+      240
+     ],
+     "displayed_as_original": true,
+     "pixels": "mean diff per channel [0.14, 0.07, 0.23]",
+     "metadata_left": [],
+     "ok": true
+    }
+   ],
+   "php_image_libraries": {
+    "php": "8.3.33",
+    "gd": {
+     "version": "2.3.3",
+     "jpeg": true,
+     "png": true,
+     "webp": true,
+     "imageflip": true
+    },
+    "imagick": {
+     "heic": false
+    },
+    "exif_ext": true,
+    "sodium": true,
+    "openssl_gcm": true,
+    "wp_image_editor": "WP_Image_Editor_GD"
+   }
+  },
+  "at": "2026-10-05 12:05:24"
+ },
+ {
+  "id": "L09",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "bad files: too big 413, renamed text/executable 415, corrupt 422, HEIC 415; nothing stored",
+  "status": "pass",
+  "evidence": {
+   "rows": [
+    {
+     "case": "over 15 MB",
+     "status": 413,
+     "code": "big",
+     "message": "התמונה גדולה מ-15 מ״ב.",
+     "expected": 413,
+     "ok": true
+    },
+    {
+     "case": "a text file renamed .jpg",
+     "status": 415,
+     "code": "type",
+     "message": "הקובץ אינו תמונה שאפשר להעלות: JPG, PNG, WebP או HEIC.",
+     "expected": 415,
+     "ok": true
+    },
+    {
+     "case": "an executable renamed .jpg",
+     "status": 415,
+     "code": "type",
+     "message": "הקובץ אינו תמונה שאפשר להעלות: JPG, PNG, WebP או HEIC.",
+     "expected": 415,
+     "ok": true
+    },
+    {
+     "case": "a corrupt JPEG (right header, broken data)",
+     "status": 422,
+     "code": "corrupt",
+     "message": "הקובץ פגום ולא נפתח כתמונה.",
+     "expected": 422,
+     "ok": true
+    },
+    {
+     "case": "a HEIC file (this bench cannot decode HEIC)",
+     "status": 415,
+     "code": "heic",
+     "message": "את קובץ ה-HEIC הזה אי אפשר לנקות כאן מנתוני המיקום. שומרים אותו כ-JPG ומעלים שוב.",
+     "expected": 415,
+     "ok": true
+    }
+   ],
+   "stored_before": 14,
+   "stored_after": 14
+  },
+  "at": "2026-10-05 12:05:31"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "no horizontal overflow, 44 px targets, visible focus, no JS errors (390 px, he)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "inline_links_under_44px (exempt)": {
+    "auth-signup": [
+     "a \"תנאי השימוש\" 66x18",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "auth-existing-email": [
+     "a \"תנאי השימוש\" 66x18",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "auth-login": [
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "auth-recovery-sent": [
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "details-empty": [
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "details-errors": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "details-filled": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "photos": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "preview": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "my-listings": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "saved-draft": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ]
+   },
+   "no_focus_ring": {},
+   "js_errors": []
+  },
+  "at": "2026-10-05 12:07:44"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "text contrast 4.5:1 (3:1 large) on computed colours (390 px, he)",
+  "status": "fail",
+  "evidence": {
+   "text_nodes_checked": 415,
+   "under": {
+    "details-empty": [
+     {
+      "text": "placeholder: 3 מתוך 8",
+      "where": "placeholder",
+      "ratio": 4.41,
+      "need": 4.5,
+      "size": 16,
+      "bold": false,
+      "fg": "rgb(117, 117, 117)",
+      "bg": "rgb(251,250,247)"
+     }
+    ],
+    "details-errors": [
+     {
+      "text": "placeholder: 3 מתוך 8",
+      "where": "placeholder",
+      "ratio": 4.41,
+      "need": 4.5,
+      "size": 16,
+      "bold": false,
+      "fg": "rgb(117, 117, 117)",
+      "bg": "rgb(251,250,247)"
+     }
+    ]
+   },
+   "exempt": {
+    "auth-recovery-sent": [
+     {
+      "text": "אפשר לשלוח שוב בעוד 60 שניות",
+      "where": "button.nlj-btn",
+      "ratio": 3.12,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     }
+    ],
+    "preview": [
+     {
+      "text": "וואטסאפ",
+      "where": "button.nlj-btn",
+      "ratio": 3.25,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(31, 75, 92)",
+      "bg": "rgb(255,255,255)",
+      "why": "disabled control"
+     },
+     {
+      "text": "חיוג",
+      "where": "button.nlj-btn",
+      "ratio": 3.25,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(31, 75, 92)",
+      "bg": "rgb(255,255,255)",
+      "why": "disabled control"
+     },
+     {
+      "text": "050-0000000",
+      "where": "span.nlj-num",
+      "ratio": 3.25,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(31, 75, 92)",
+      "bg": "rgb(255,255,255)",
+      "why": "disabled control"
+     }
+    ],
+    "promotion-off": [
+     {
+      "text": "רשימת הנכסים",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "לא זמין כרגע",
+      "where": "button.nlj-btn",
+      "ratio": 2.5,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     }
+    ]
+   }
+  },
+  "at": "2026-10-05 12:07:44"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "the floating bar never covers a focused control (390 px, he)",
+  "status": "fail",
+  "evidence": {
+   "bar_on_every_screen": true,
+   "controls_focused": 170,
+   "covered": {
+    "auth-signup": [
+     {
+      "el": "input#j-name \"\"",
+      "covered_by": "#nlcta (the floating bar)"
+     }
+    ]
+   },
+   "outside_viewport_after_focus": {
+    "preview": [
+     "a \"\"",
+     "a \"\"",
+     "a \"\"",
+     "a \"\"",
+     "a \"\"",
+     "a \"\"",
+     "a \"\"",
+     "a \"\"",
+     "a \"\""
+    ]
+   },
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ]
+  },
+  "at": "2026-10-05 12:07:44"
+ },
+ {
   "id": "L15",
   "variant": "after",
   "label": "real-wp+chrome",
@@ -2214,6 +2915,44 @@
    "landed_en": "http://127.0.0.1:9401/post-listing/?lang=en",
    "en_signed_out_form": true
   },
-  "at": "2026-10-05 11:26:11"
+  "at": "2026-10-05 12:13:09"
+ },
+ {
+  "id": "L16",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "http: the 1.x doors answer 410, brokers are sent to /brokers/, the owner routes have no payment door",
+  "status": "pass",
+  "evidence": {
+   "first_wizard_doors": [
+    410,
+    410,
+    410
+   ],
+   "broker": {
+    "state": "broker",
+    "url": "http://127.0.0.1:9401/brokers/#join"
+   },
+   "owner_submit_1x": 410,
+   "owner_routes": [
+    "/nadlan/v1/owner/account/login",
+    "/nadlan/v1/owner/account/recover",
+    "/nadlan/v1/owner/account/signup",
+    "/nadlan/v1/owner/build/(?P<drop>\\d+)",
+    "/nadlan/v1/owner/draft",
+    "/nadlan/v1/owner/draft/(?P<id>\\d+)",
+    "/nadlan/v1/owner/draft/(?P<id>\\d+)/check",
+    "/nadlan/v1/owner/draft/(?P<id>\\d+)/delete",
+    "/nadlan/v1/owner/draft/(?P<id>\\d+)/preview",
+    "/nadlan/v1/owner/draft/(?P<id>\\d+)/publish",
+    "/nadlan/v1/owner/draft/(?P<id>\\d+)/restore",
+    "/nadlan/v1/owner/listings",
+    "/nadlan/v1/owner/photo",
+    "/nadlan/v1/owner/submit",
+    "/nadlan/v1/owner/update"
+   ],
+   "payment_like_routes": []
+  },
+  "at": "2026-10-05 12:04:14"
  }
 ]

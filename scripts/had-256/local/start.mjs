@@ -38,6 +38,14 @@ function plan() {
     const root = path.join(RUNTIME, 'after');
     return { name: 'after', port: 9401, root, site: path.join(root, 'site'), code: path.join(REPO, 'plugins', 'nadlan-config', 'inc'), mu: path.join(HERE, 'mu-plugins'), loop: path.join(HERE, 'loopback.cjs'), seed: path.join(HERE, 'seed.json'), label: 'this worktree (hot)', allowFresh: true };
   }
+  if (mode === 'private') {
+    // the new code with the draft photos OUTSIDE the web root: NL_OWNER_PRIVATE_DIR=/nl-private (a host folder mounted
+    // beside /wordpress, never under it, so no URL reaches it), its own site, 127.0.0.1:9431
+    const root = path.join(RUNTIME, 'private');
+    fs.mkdirSync(path.join(root, 'outside'), { recursive: true });
+    return { name: 'private', port: 9431, root, site: path.join(root, 'site'), code: path.join(REPO, 'plugins', 'nadlan-config', 'inc'), mu: path.join(HERE, 'mu-plugins'), loop: path.join(HERE, 'loopback.cjs'), seed: path.join(HERE, 'seed.json'), label: 'this worktree, private photos outside the web root', allowFresh: true,
+      extra: ['--mount-dir', fwd(path.join(root, 'outside')), '/nl-private', '--define', 'NL_OWNER_PRIVATE_DIR', '/nl-private'] };
+  }
   if (mode === 'before') {
     const root = path.join(RUNTIME, 'before');
     const code = path.join(root, 'code');
@@ -46,6 +54,21 @@ function plan() {
       fs.writeFileSync(path.join(code, m), execFileSync('git', ['-C', REPO, 'show', `${BASE_COMMIT}:plugins/nadlan-config/inc/${m}`], { maxBuffer: 64 * 1024 * 1024 }));
     }
     return { name: 'before', port: 9411, root, site: path.join(root, 'site'), code, mu: path.join(HERE, 'mu-plugins'), loop: path.join(HERE, 'loopback.cjs'), seed: path.join(HERE, 'seed.json'), label: BASE_COMMIT + ' (base)', allowFresh: true };
+  }
+  if (mode === 'roll') {
+    // L17 rollback drill: ONE site (its own data), started with the new code or with the base code of 6e9cf930
+    const codeOf = args[1] === 'before' ? 'before' : 'after';
+    const root = path.join(RUNTIME, 'roll');
+    fs.mkdirSync(root, { recursive: true });
+    let code = path.join(REPO, 'plugins', 'nadlan-config', 'inc');
+    if (codeOf === 'before') {
+      code = path.join(root, 'code-before');
+      fs.mkdirSync(code, { recursive: true });
+      for (const m of MODULES) {
+        fs.writeFileSync(path.join(code, m), execFileSync('git', ['-C', REPO, 'show', `${BASE_COMMIT}:plugins/nadlan-config/inc/${m}`], { maxBuffer: 64 * 1024 * 1024 }));
+      }
+    }
+    return { name: 'roll-' + codeOf, port: 9421, root, site: path.join(root, 'site'), code, mu: path.join(HERE, 'mu-plugins'), loop: path.join(HERE, 'loopback.cjs'), seed: path.join(HERE, 'seed.json'), label: codeOf === 'before' ? BASE_COMMIT + ' (rolled back)' : 'this worktree', allowFresh: true };
   }
   if (mode === 'qa') {
     const commit = (args[1] || '').trim();
@@ -105,7 +128,7 @@ const cliArgs = ['-y', CLI, 'server', '--port', String(p.port), '--php', '8.3', 
   '--wordpress-install-mode', installed ? 'install-from-existing-files-if-needed' : 'download-and-install',
   '--mount-dir-before-install', fwd(p.site), '/wordpress',
   '--mount-dir', fwd(p.mu), '/wordpress/wp-content/mu-plugins',
-  '--mount-dir', fwd(p.code), '/wordpress/wp-content/nlj-code'];
+  '--mount-dir', fwd(p.code), '/wordpress/wp-content/nlj-code'].concat(p.extra || []);
 const env = Object.assign({}, process.env, { NODE_OPTIONS: ((process.env.NODE_OPTIONS || '') + ' --require "' + fwd(p.loop) + '"').trim() });
 const child = spawn(process.platform === 'win32' ? 'npx.cmd' : 'npx', cliArgs, { cwd: REPO, env, stdio: ['ignore', 'pipe', 'pipe'], shell: process.platform === 'win32' });
 const onData = (buf) => {

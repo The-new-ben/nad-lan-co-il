@@ -1,0 +1,394 @@
+{
+ "390-he": {
+  "screens": {
+   "auth-signup": {
+    "bar": [
+     {
+      "el": "input#j-name \"\"",
+      "covered_by": "#nlcta (the floating bar)"
+     }
+    ],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"תנאי השימוש\" 66x18",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 19
+    },
+    "bar_present": true
+   },
+   "auth-existing-email": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"תנאי השימוש\" 66x18",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 12,
+     "text": 21
+    },
+    "bar_present": true
+   },
+   "auth-login": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 8,
+     "text": 12
+    },
+    "bar_present": true
+   },
+   "auth-recovery-sent": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [
+     {
+      "text": "אפשר לשלוח שוב בעוד 60 שניות",
+      "where": "button.nlj-btn",
+      "ratio": 3.12,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     }
+    ],
+    "checked": {
+     "focus": 7,
+     "text": 15
+    },
+    "bar_present": true
+   },
+   "details-empty": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [
+     {
+      "text": "placeholder: 3 מתוך 8",
+      "where": "placeholder",
+      "ratio": 4.41,
+      "need": 4.5,
+      "size": 16,
+      "bold": false,
+      "fg": "rgb(117, 117, 117)",
+      "bg": "rgb(251,250,247)"
+     }
+    ],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 19,
+     "text": 42
+    },
+    "bar_present": true
+   },
+   "details-errors": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [
+     {
+      "text": "placeholder: 3 מתוך 8",
+      "where": "placeholder",
+      "ratio": 4.41,
+      "need": 4.5,
+      "size": 16,
+      "bold": false,
+      "fg": "rgb(117, 117, 117)",
+      "bg": "rgb(251,250,247)"
+     }
+    ],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 70
+    },
+    "bar_present": true
+   },
+   "details-filled": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 28,
+     "text": 59
+    },
+    "bar_present": true
+   },
+   "photos": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 14,
+     "text": 22
+    },
+    "bar_present": true
+   },
+   "preview": {
+    "bar": [],
+    "offscreen": [
+     "a \"\"",
+     "a \"\"",
+     "a \"\"",
+     "a \"\"",
+     "a \"\"",
+     "a \"\"",
+     "a \"\"",
+     "a \"\"",
+     "a \"\""
+    ],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [
+     {
+      "text": "וואטסאפ",
+      "where": "button.nlj-btn",
+      "ratio": 3.25,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(31, 75, 92)",
+      "bg": "rgb(255,255,255)",
+      "why": "disabled control"
+     },
+     {
+      "text": "חיוג",
+      "where": "button.nlj-btn",
+      "ratio": 3.25,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(31, 75, 92)",
+      "bg": "rgb(255,255,255)",
+      "why": "disabled control"
+     },
+     {
+      "text": "050-0000000",
+      "where": "span.nlj-num",
+      "ratio": 3.25,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(31, 75, 92)",
+      "bg": "rgb(255,255,255)",
+      "why": "disabled control"
+     }
+    ],
+    "checked": {
+     "focus": 16,
+     "text": 86
+    },
+    "bar_present": true
+   },
+   "published": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 9
+    },
+    "bar_present": true
+   },
+   "my-listings": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 11,
+     "text": 26
+    },
+    "bar_present": true
+   },
+   "promotion-off": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [
+     {
+      "text": "רשימת הנכסים",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "לא זמין כרגע",
+      "where": "button.nlj-btn",
+      "ratio": 2.5,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     }
+    ],
+    "checked": {
+     "focus": 6,
+     "text": 17
+    },
+    "bar_present": true
+   },
+   "saved-draft": {
+    "bar": [],
+    "offscreen": [],
+    "overflow": {
+     "scrollWidth": 390,
+     "innerWidth": 390
+    },
+    "small": [],
+    "inline_small": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "nofocus": [],
+    "contrast": [],
+    "contrast_exempt": [],
+    "checked": {
+     "focus": 5,
+     "text": 17
+    },
+    "bar_present": true
+   }
+  },
+  "js_errors": []
+ }
+}
