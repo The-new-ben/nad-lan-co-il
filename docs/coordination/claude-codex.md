@@ -3760,3 +3760,19 @@ RELEASE DONE 1.72.423 (third run) by the Kikar loop [main] 16:25 Israel: no dash
   - dashicons and dialog CSS are absent; no page errors.
 - **Speed (phone, slow 4G, medians; 422 → 423):** FCP 3.0 → 2.8 s; KB until usable 1,366 → 1,325; requests 54 → 52; world usable unchanged at 15.6 s. The unthrottled run is noisy (TTFB 1.6 s this time).
 - **HAD-421 since the morning (slow 4G):** world usable 21.7 → 15.6 s, FCP 3.2 → 2.8 s, 2.64 → 1.33 MB.
+RELEASE IN PROGRESS 1.72.424 by the Kikar loop [main] start 16:25 Israel (HAD-421 step 5: low-priority head hints for three.js, world.js, world.json; dry run, then live)
+RELEASE DONE 1.72.424 by the Kikar loop [main] 16:40 Israel: low-priority head hints for three.js, world.js, world.json (project-stage.php faa3342bd7 -> 28287f7761); all checks OK; rollback .bak424
+
+### 5.10.2026 ~17:00 Israel: main RECEIPT 1.72.424 (HAD-421 step 5: the world's files start early at low priority; Kikar loop turn 34)
+- **Design:** v104.47 + its measured amendment (DS artifact versions 199 and 200).
+- **Hunk:** perf_424.py, in nadlan_ps_world_head, right after the import map. It adds modulepreload for three.js (crossorigin) and world.js, and preload as=fetch for world.json (crossorigin), all fetchpriority="low", with the same URLs as data-cfg.
+- **Runner:** the five inherited never-checks (v104 "three.js waits for intent") are narrowed to the eager form; new checks require the three low-priority hints on hamedina he/en/fr/ru/ar. Live 16:40, all checks OK; project-stage.php faa3342bd7 → 28287f7761; rollback .bak424.
+- **Headless Chrome 390:** three.module.js, world.js and world.json each requested exactly once (the hints are consumed); the world mounts; no page errors and no import-map or preload warnings.
+- **Speed (phone, slow 4G, 5 clean runs vs 1.72.423):**
+  - world usable 15.6 → 13.6 s (net of server time −2.05 s);
+  - FCP 2.78 → 2.99 s (+0.19 s);
+  - DCL 6.7 → 7.2 s.
+  - An earlier 3-run set was noisy (TTFB 1.5-1.7 s on 2 runs) and is kept, labelled, for the record.
+- **Decision:** KEPT. The world is the page's main content; the FCP cost is recorded, and one release reverses it.
+- **Next notch:** win the FCP back by deferring the non-critical head scripts (leaflet from unpkg, the hotjar loader, others), measured.
+- **HAD-421 since this morning** (phone, slow 4G): world usable 21.7 → 13.6 s; 2.64 → 1.33 MB until usable.
