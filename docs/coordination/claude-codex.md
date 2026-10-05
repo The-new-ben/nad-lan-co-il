@@ -3858,3 +3858,29 @@ CONTENT UPDATE page 5154 /en/buy-property-in-israel/ by the Kikar loop [main] 18
   - Source audit YELLOW → GREEN. jsonld 2 → 1: the old body's FAQ schema left with it. The new FAQ gets its schema only after review (package rule), an open item.
   - Checked before: the Bank of Israel "last updated on: 27/09/2026", as cited; the gov.il links open in a real browser.
   - Read-back identical; rollback = update_page_5154.py --rollback.
+READ-ONLY CHECK by the Kikar loop [main] 19:23 Israel (machine clock): HAD-256 environment (mail plugin, mail log counts, DB version, image support, private dir); one temporary admin-only read route, deleted after; no write to any account, no mail sent
+TEMP BRIDGE by the Kikar loop [main] 20:32 Israel (machine clock): HAD-256 MySQL proof kit run once on live (admin-only + token; only its own throwaway rows; snippet deleted after)
+
+### 5.10.2026 ~20:40 Israel (machine clock): main, HAD-256 pre-release state (Ben approved release; main is sole publisher)
+- **Sub-agent report (builder worktree, commits 1ff24912 / e28df264 / 3e82b46b):**
+  - **Theme bench 9405** runs the real nadlan-revenue + child theme (platform.css taken from live), the real nadlan-config and the live snippets.
+  - **Snapshot 3 FAILS the theme check on all 8 runs:** keyboard focus scrolls 7-16 controls under the 57 px sticky header (WCAG 2.4.11).
+  - **Candidate owner-wizard 2.0.1 (e28df264, bench 9406) passes 32/32** (2,448 focus moves, none covered). Main's pick for release is 2.0.1.
+  - **Release package:** docs/qa/had-256/RELEASE.md + scripts/project-stage/had256_release.py.
+  - **Copy findings (decisions, not code):**
+    - ?lang=en leaves the page shell Hebrew;
+    - the page text promises WhatsApp/call buttons while 2.0 shows the phone only with consent;
+    - two "how it works" boxes;
+    - on a phone the first field sits under the WhatsApp bar on the first screen.
+- **Live environment (main, read-only, snippets 1160/1165 deleted):**
+  - MariaDB 10.6.28, PHP 8.5.10;
+  - FluentSMTP active with 0 connections, and WP Mail SMTP mailer = PHP mail(); no mail log. Recovery-mail delivery is UNPROVEN: SMTP credentials and a test mail need Ben;
+  - Imagick without HEIC (refused by design); EXIF present;
+  - a private dir outside the web root is possible.
+- **MySQL proof kit, 4 attempts (snippets 1161-1164, each deleted):**
+  - The route answers nginx "404 Not Found" HTML in 0.6 s once the snippet is active.
+  - The same unknown routes without the snippet answer WordPress JSON, and an earlier read-only route of the same shape worked.
+  - It is not the URL word "mysql", not SQL words in the body, and not the response content (base64 did not help).
+  - **Proof of no harm:** after the attempts, 0 probe posts / 0 probe options / 0 probe locks (read-only count), and health, / and /post-listing/ all answer 200.
+  - **Next:** a staged kit (stage 1 info only; stage 2 claims; stage 3 the second mysqli connection) to find the blocked step.
+- **HAD-256 is NOT released.** Gates: the DB proof, the mail (Ben), the copy decisions.
