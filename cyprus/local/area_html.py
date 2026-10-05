@@ -19,12 +19,12 @@ MONTHS = {'he': ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי',
 TEXT = {
     'he': {'eyebrow': 'הסביבה', 'title': 'מה קרוב לבתים',
            'm': 'מ׳', 'km': 'ק״מ', 'walk': 'דק׳ הליכה', 'drive': 'דק׳ נסיעה', 'about': 'כ־', 'road': 'בכביש',
-           'note': 'המרחקים נמדדו בקו אוויר מהמגרש, ולמקומות הרחוקים לפי הדרך בכביש. זמני ההליכה מחושבים לפי רשת הרחובות בקצב רגיל על קרקע ישרה; ',
+           'from': 'מהמגרש', 'note': 'המרחקים נמדדו בקו אוויר {from}, ולמקומות הרחוקים לפי הדרך בכביש. זמני ההליכה מחושבים לפי רשת הרחובות בקצב רגיל על קרקע ישרה; ',
            'hilly': 'האזור גבעי, ובעלייה ההליכה ארוכה יותר. ',
            'note2': 'זמני הנסיעה הם לפי מסלול בכביש, בלי פקקים. המקורות: OpenStreetMap ומפת CY-PRUS, {month}.'},
     'en': {'eyebrow': 'The area', 'title': 'What is close to the homes',
            'm': 'm', 'km': 'km', 'walk': 'min walk', 'drive': 'min drive', 'about': '~', 'road': 'by road',
-           'note': 'Distances are straight lines from the plot, and by road for the far places. Walking times follow the street network at a normal pace on flat ground; ',
+           'from': 'from the plot', 'note': 'Distances are straight lines {from}, and by road for the far places. Walking times follow the street network at a normal pace on flat ground; ',
            'hilly': 'the area is hilly, so uphill walks take longer. ',
            'note2': 'Driving times follow the road route, without traffic. Sources: OpenStreetMap and the CY-PRUS map, {month}.'},
 }
@@ -63,7 +63,8 @@ def _note(t, spec, generated):
     d = datetime.date.fromisoformat(generated)
     lang = 'he' if t is TEXT['he'] else 'en'
     month = f'{MONTHS[lang][d.month - 1]} {d.year}'
-    return t['note'] + (t['hilly'] if spec.get('hilly', True) else '') + t['note2'].format(month=month)
+    origin = spec.get('from', {}).get(lang) or t['from']
+    return t['note'].format(**{'from': origin}) + (t['hilly'] if spec.get('hilly', True) else '') + t['note2'].format(month=month)
 
 
 def build(places_path, drive_path, spec_path):
@@ -100,7 +101,8 @@ def build(places_path, drive_path, spec_path):
             else:
                 tiles.append((_mins(drive[tile['drive']]['drive_min']), t['drive'], tile[lang]))
         h = [f'<section class="cyx-area" lang="{lang}" dir="{"rtl" if rtl else "ltr"}" aria-labelledby="cyx-area-h">',
-             f'<p class="cyx-area-eyebrow">{escape(t["eyebrow"])}</p><h2 id="cyx-area-h">{escape(t["title"])}</h2>',
+             f'<p class="cyx-area-eyebrow">{escape(spec.get("eyebrow", {}).get(lang) or t["eyebrow"])}</p>'
+             f'<h2 id="cyx-area-h">{escape(spec.get("title", {}).get(lang) or t["title"])}</h2>',
              f'<p class="cyx-area-lead">{escape(spec["lead"][lang])}</p>', '<ul class="cyx-area-keys">']
         for n, unit, label in tiles:
             h.append(f'<li><span class="cyx-area-n">{n}</span><span class="cyx-area-u">{escape(unit)}</span><span class="cyx-area-l">{escape(label)}</span></li>')

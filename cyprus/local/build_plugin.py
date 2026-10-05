@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.join(HERE, 'advertise'))
 import plugin_parts  # noqa: E402  (the "Advertise with us" page, button and assets)
 
 SLUG = 'cy-project-experience'
-VERSION = '1.4.0'
+VERSION = '1.5.0'
 BUNDLE = 'villas-aa'
 IMAGES = {  # local web-media name -> published name, and the plan-data key it replaces
     'agios-athanasios-villas-site-plan.webp': ('site-plan.webp', '/media/site.png'),
@@ -37,25 +37,118 @@ COLOURS = [('#c3a3745c', '#B85C3852'), ('#c3a37433', '#B85C3829'), ('#c3a374', '
 # next marker and then to </main>. Markers are matched by class token, so attribute order does not matter; if none is
 # found, the page is left exactly as it was.
 ARTICLE_PHP = r"""
+/* ------------------------------------------------------- the projects of an area (area pages), from the atlas itself */
+
+/**
+ * Point in polygon (ring of [lon, lat]).
+ *
+ * @param float $x   Longitude.
+ * @param float $y   Latitude.
+ * @param array $ring Outer ring.
+ * @return bool
+ */
+function cypx_in_ring( $x, $y, $ring ) {
+	$in = false;
+	$n  = count( $ring );
+	for ( $i = 0, $j = $n - 1; $i < $n; $j = $i++ ) {
+		$xi = (float) $ring[ $i ][0];
+		$yi = (float) $ring[ $i ][1];
+		$xj = (float) $ring[ $j ][0];
+		$yj = (float) $ring[ $j ][1];
+		$dy = $yj - $yi;
+		if ( ( $yi > $y ) !== ( $yj > $y ) && $x < ( $xj - $xi ) * ( $y - $yi ) / ( 0.0 == $dy ? 1e-12 : $dy ) + $xi ) { // phpcs:ignore Universal.Operators.StrictComparisons
+			$in = ! $in;
+		}
+	}
+	return $in;
+}
+
+/**
+ * The atlas project records inside the area boundary, as a list section (cached for an hour). '' when none or on error.
+ *
+ * @param array  $cfg  bbox [minLon, minLat, maxLon, maxLat], ring, text[he|en][eyebrow|title|lead].
+ * @param string $lang he|en.
+ * @return string
+ */
+function cypx_area_projects_html( $cfg, $lang ) {
+	if ( ! function_exists( 'rest_do_request' ) || empty( $cfg['bbox'] ) || empty( $cfg['ring'] ) || empty( $cfg['text'][ $lang ] ) ) {
+		return '';
+	}
+	$key   = 'cypx_ap_' . md5( wp_json_encode( $cfg['bbox'] ) . '|' . $lang . '|' . CYPX_VERSION );
+	$items = get_transient( $key );
+	if ( ! is_array( $items ) ) {
+		$items  = array();
+		$params = array( 'kind' => 'project', 'bbox' => implode( ',', array_map( 'floatval', $cfg['bbox'] ) ), 'limit' => 200 );
+		if ( 'en' === $lang ) {
+			$params['lang'] = 'en';
+		}
+		$req = new WP_REST_Request( 'GET', '/cyprus-atlas/v1/places' );
+		$req->set_query_params( $params );
+		$res = rest_do_request( $req );
+		if ( $res->is_error() ) {
+			return '';
+		}
+		$data = $res->get_data();
+		foreach ( ( isset( $data['features'] ) && is_array( $data['features'] ) ) ? $data['features'] : array() as $f ) {
+			$c = isset( $f['geometry']['coordinates'] ) ? $f['geometry']['coordinates'] : null;
+			$p = isset( $f['properties'] ) ? $f['properties'] : array();
+			if ( ! is_array( $c ) || count( $c ) < 2 || empty( $p['url'] ) || empty( $p['name'] ) || ! cypx_in_ring( (float) $c[0], (float) $c[1], $cfg['ring'] ) ) {
+				continue;
+			}
+			$items[] = array(
+				'name'  => (string) $p['name'],
+				'url'   => (string) $p['url'],
+				'stage' => isset( $p['stage'] ) ? (string) $p['stage'] : '',
+				'slug'  => isset( $p['slug'] ) ? (string) $p['slug'] : '',
+			);
+		}
+		set_transient( $key, $items, HOUR_IN_SECONDS );
+	}
+	if ( empty( $items ) ) {
+		return '';
+	}
+	// pages with a full project experience first, then the atlas order
+	$rich = cypx_bundles();
+	usort(
+		$items,
+		function ( $a, $b ) use ( $rich ) {
+			return (int) empty( $rich[ $a['slug'] ] ) - (int) empty( $rich[ $b['slug'] ] );
+		}
+	);
+	$t   = $cfg['text'][ $lang ];
+	$out = '<section class="cyx-projects" lang="' . esc_attr( $lang ) . '" dir="' . ( 'he' === $lang ? 'rtl' : 'ltr' ) . '" aria-labelledby="cyx-projects-h">'
+		. '<p class="cyx-area-eyebrow">' . esc_html( $t['eyebrow'] ) . '</p><h2 id="cyx-projects-h">' . esc_html( $t['title'] ) . '</h2>'
+		. '<p class="cyx-area-lead">' . esc_html( $t['lead'] ) . '</p><ul class="cyx-projects-list">';
+	foreach ( $items as $it ) {
+		$url  = 'en' === $lang ? add_query_arg( 'lang', 'en', $it['url'] ) : $it['url'];
+		$out .= '<li><a href="' . esc_url( $url ) . '"><span class="cyx-projects-name">' . esc_html( $it['name'] ) . '</span>'
+			. ( '' !== $it['stage'] ? '<span class="cyx-projects-stage">' . esc_html( $it['stage'] ) . '</span>' : '' ) . '</a></li>';
+	}
+	return $out . '</ul></section>' . "\n";
+}
+
 /* ------------------------------------------------------- the area section and the long-form article on mapped project pages */
 
 add_action(
 	'template_redirect',
 	function () {
-		if ( 'place' !== get_query_var( 'ca_view' ) ) {
+		$bundle = cypx_bundle();
+		if ( '' === $bundle ) {
 			return;
 		}
-		$slug    = sanitize_title( (string) get_query_var( 'ca_slug' ) );
-		$bundles = cypx_bundles();
-		if ( '' === $slug || empty( $bundles[ $slug ] ) ) {
-			return;
-		}
-		$dir   = plugin_dir_path( __FILE__ ) . 'assets/' . $bundles[ $slug ] . '/';
+		$dir   = plugin_dir_path( __FILE__ ) . 'assets/' . $bundle . '/';
 		$lang  = cypx_lang();
 		$map   = '/<div\b[^>]*\bclass="[^"]*\batlas-map-wrap\b/';
 		$wa    = '/<div\b[^>]*\bclass="[^"]*\batlas-wa-wrap\b/';
 		$main  = '/<\/main>/';
 		$parts = array();
+		if ( file_exists( $dir . 'projects-list.json' ) ) {
+			$cfg  = json_decode( (string) file_get_contents( $dir . 'projects-list.json' ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+			$list = is_array( $cfg ) ? cypx_area_projects_html( $cfg, $lang ) : '';
+			if ( '' !== $list ) {
+				$parts[] = array( $list, array( $map, $wa, $main ) );
+			}
+		}
 		foreach ( array( 'area-' . $lang . '.html' => array( $map, $wa, $main ), 'article-' . $lang . '.html' => array( $wa, $main ) ) as $file => $markers ) {
 			if ( file_exists( $dir . $file ) ) {
 				$parts[] = array( (string) file_get_contents( $dir . $file ), $markers ); // phpcs:ignore WordPress.WP.AlternativeFunctions
@@ -78,7 +171,8 @@ add_action(
 				return $html;
 			}
 		);
-	}
+	},
+	5 // before the atlas route (template_redirect, 10) includes its template and exits
 );
 """
 ARTICLE_CSS = (
@@ -93,6 +187,18 @@ ARTICLE_CSS = (
     '.cyx-table th{background:var(--cy-cream,#F4EFE6);color:var(--cy-navy,#12293E);text-align:start;padding:10px 12px;font-weight:700}'
     '.cyx-table td{padding:9px 12px;border-top:1px solid var(--cy-line,#E3DCCE);vertical-align:top}'
     '@media(max-width:600px){.cyx-article{font-size:16.5px;margin-top:32px}.cyx-table table{font-size:14px}}'
+)
+
+PROJECTS_CSS = (
+    '.cyx-projects{margin:36px 0 8px;color:var(--cy-ink,#1B2833);font-family:var(--cy-font-body,"Assistant"),Arial,sans-serif}'
+    'body .cyx-projects h2{font-family:var(--cy-font-display,"Frank Ruhl Libre"),Georgia,serif;color:var(--cy-navy,#12293E);font-size:clamp(24px,3vw,31px);line-height:1.25;margin:4px 0 10px}'
+    '.cyx-projects-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}'
+    'body .cyx-projects-list a{display:flex;flex-direction:column;gap:6px;height:100%;box-sizing:border-box;padding:14px 16px;background:#fff;'
+    'border:1px solid var(--cy-line,#E3DCCE);border-radius:6px;text-decoration:none;color:var(--cy-navy,#12293E)}'
+    'body .cyx-projects-list a:hover{border-color:var(--cy-teal,#178076)}'
+    '.cyx-projects-name{font-weight:700;font-size:17px;line-height:1.35}'
+    '.cyx-projects-stage{align-self:flex-start;padding:2px 9px;border-radius:12px;background:#E3F1EE;color:var(--cy-teal,#178076);font-size:13px;font-weight:700}'
+    '@media(max-width:700px){.cyx-projects-list{grid-template-columns:1fr}}'
 )
 
 
@@ -113,9 +219,9 @@ def main():
     extras = []  # (atlas slug, bundle folder, area folder) of the area-only project pages
     for spec in a.area_project:
         slug, _, adir = spec.partition('=')
-        if not re.fullmatch(r'[a-z0-9-]+', slug) or not os.path.isdir(adir):
+        if not re.fullmatch(r'[a-z0-9-]+|id:[0-9]+', slug) or not os.path.isdir(adir):
             raise SystemExit(f'build_plugin: bad --area-project {spec!r}')
-        extras.append((slug, 'p-' + slug[:40], adir))
+        extras.append((slug, 'p-' + slug.replace(':', '-')[:40], adir))
     bundles_php = ', '.join(f"'{sl}' => '{bd}'" for sl, bd in [(a.place_slug, BUNDLE)] + [(e[0], e[1]) for e in extras])
     packet = project_packet(__import__('pathlib').Path(a.register))
     for k in ('name', 'district', 'languages', 'contactEnabled', 'geometryMode', 'availabilityMode'):
@@ -239,7 +345,7 @@ function cypx_lang() {{
 }}
 
 /**
- * Atlas project slug => bundle folder under assets/ (the slug is known before import; the id is not).
+ * Atlas slug (known before import) or "id:<atlas id>" (for an existing page, e.g. an area) => bundle folder under assets/.
  *
  * @return array<string,string>
  */
@@ -247,25 +353,39 @@ function cypx_bundles() {{
 	return array( {bundles_php} );
 }}
 
+/**
+ * The bundle folder of the current atlas place page: by its id ("id:256") first, then by its slug; '' if none.
+ *
+ * @return string
+ */
+function cypx_bundle() {{
+	if ( 'place' !== get_query_var( 'ca_view' ) ) {{
+		return '';
+	}}
+	$bundles = cypx_bundles();
+	$id      = absint( get_query_var( 'ca_id' ) );
+	if ( $id && ! empty( $bundles[ 'id:' . $id ] ) ) {{
+		return $bundles[ 'id:' . $id ];
+	}}
+	$slug = sanitize_title( (string) get_query_var( 'ca_slug' ) );
+	return ( '' !== $slug && ! empty( $bundles[ $slug ] ) ) ? $bundles[ $slug ] : '';
+}}
+
 add_action(
 	'wp_enqueue_scripts',
 	function () {{
-		if ( 'place' !== get_query_var( 'ca_view' ) ) {{
+		$bundle = cypx_bundle();
+		if ( '' === $bundle ) {{
 			return;
 		}}
-		$slug    = sanitize_title( (string) get_query_var( 'ca_slug' ) );
-		$bundles = cypx_bundles();
-		if ( '' === $slug || empty( $bundles[ $slug ] ) ) {{
-			return;
-		}}
-		$dir  = 'assets/' . $bundles[ $slug ] . '/';
+		$dir  = 'assets/' . $bundle . '/';
 		$path = plugin_dir_path( __FILE__ ) . $dir;
 		$url  = plugin_dir_url( __FILE__ ) . $dir;
 		if ( ! file_exists( $path . 'app.js' ) || ! file_exists( $path . 'app.css' ) ) {{
 			return;
 		}}
 		$ver    = CYPX_VERSION . '-' . substr( md5( (string) filemtime( $path . 'app.js' ) . (string) filemtime( $path . 'app.css' ) ), 0, 8 );
-		$handle = 'cypx-' . $bundles[ $slug ];
+		$handle = 'cypx-' . $bundle;
 		wp_enqueue_style( $handle, $url . 'app.css', array(), $ver );
 		wp_enqueue_script( $handle, $url . 'app.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( $handle, 'window.CYPX=' . wp_json_encode( array( 'assets' => $url ) ) . ';', 'before' );
@@ -310,6 +430,9 @@ add_action(
                                           os.path.join(adir, 'area-spec.json')).items():
             io.open(os.path.join(edir, f'area-{lang}.html'), 'w', encoding='utf-8', newline='\n').write(frag)
         ecss, ejs = area_html.AREA_CSS, area_html.AREA_JS
+        if os.path.exists(os.path.join(adir, 'projects-list.json')):  # an area page: the atlas projects inside its boundary
+            shutil.copyfile(os.path.join(adir, 'projects-list.json'), os.path.join(edir, 'projects-list.json'))
+            ecss += PROJECTS_CSS
         if a.world_dir and os.path.isdir(os.path.join(adir, 'world')):  # its own 3D world: the card after the facts, the tour on request
             import world_embed
             launcher, card_css = world_embed.pack(a.world_dir, edir, os.path.join(adir, 'world'))
