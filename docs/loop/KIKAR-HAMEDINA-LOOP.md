@@ -214,6 +214,12 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
+- **5.10 ~17:50, turn 35: HAD-421 step 6 LIVE (1.72.425): the third-origin leaflet.css no longer blocks the first paint.**
+  - **Measured (clean runs):** FCP back to ~2.85 s; DCL 7.2 → 6.3 s; world usable 13.6 → 12.8 s.
+  - **Found:** no Leaflet map exists on project pages at all (L loaded, 0 containers, areamap.js holds no Leaflet call), so Leaflet js + css are dead weight there.
+  - **Since the morning:** world usable 21.7 → 12.8 s.
+  - **Next notch, sharper:** stop enqueuing Leaflet on project pages (project-experience.php), after a code search for any L.* use on those pages; then the scene build (3.9 s of throttled CPU).
+
 - **5.10 ~17:00, turn 34: HAD-421 step 5 LIVE (1.72.424): the world downloads early, quietly.**
   - **Measured:** world usable 15.6 → 13.6 s; FCP +0.19 s (2.99 s). Kept by an explicit trade-off on record.
   - **Lessons:**
