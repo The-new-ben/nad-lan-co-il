@@ -23,7 +23,14 @@ def inline(text):
     return re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', html)
 
 
-def to_html(md):
+PLACEHOLDER = re.compile(r'\[([^\]]+)\]\((\[[A-Z_]+\])([^)\s]*)\)')
+
+
+def to_html(md, links=None):
+    """links: {"[VILLAS_URL]": "https://cy-prus.co.il/...", ...} for pages whose address is known only after import.
+    A placeholder link with a known address becomes a normal link; without one it becomes plain text (its label)."""
+    links = links or {}
+    md = PLACEHOLDER.sub(lambda m: f'[{m.group(1)}]({links[m.group(2)]}{m.group(3)})' if links.get(m.group(2)) else m.group(1), md)
     md = re.sub(r'<!--.*?-->', '', md, flags=re.S)
     blocks, para, rows, items = [], [], [], []
 

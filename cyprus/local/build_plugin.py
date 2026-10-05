@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.join(HERE, 'advertise'))
 import plugin_parts  # noqa: E402  (the "Advertise with us" page, button and assets)
 
 SLUG = 'cy-project-experience'
-VERSION = '1.5.0'
+VERSION = '1.6.0'
 BUNDLE = 'villas-aa'
 IMAGES = {  # local web-media name -> published name, and the plan-data key it replaces
     'agios-athanasios-villas-site-plan.webp': ('site-plan.webp', '/media/site.png'),
@@ -441,6 +441,19 @@ add_action(
                    "const lang=(document.documentElement.lang||'he').toLowerCase().startsWith('he')?'he':'en';\n"
                    "const root=document.querySelector('#atlas-main .atlas-facts');\n"
                    "if(root){" + launcher + "}\n") + ejs
+        if any(os.path.exists(os.path.join(adir, f'article-{l}.md')) for l in ('he', 'en')):  # its own long-form article
+            from article_html import to_html
+            lab_path = os.path.join(adir, 'article-labels.json')
+            labs = json.load(io.open(lab_path, encoding='utf-8')) if os.path.exists(lab_path) else {'he': 'מדריך מלא', 'en': 'Full guide'}
+            links_path = os.path.join(adir, 'article-links.json')  # placeholder -> address, once the linked pages exist
+            plinks = json.load(io.open(links_path, encoding='utf-8')) if os.path.exists(links_path) else {}
+            for lang, d in (('he', 'rtl'), ('en', 'ltr')):
+                src = os.path.join(adir, f'article-{lang}.md')
+                if os.path.exists(src):
+                    body = to_html(io.open(src, encoding='utf-8').read(), plinks)
+                    io.open(os.path.join(edir, f'article-{lang}.html'), 'w', encoding='utf-8', newline='\n').write(
+                        f'<section class="cyx-article" lang="{lang}" dir="{d}" aria-label="{labs[lang]}">\n{body}\n</section>\n')
+            ecss += ARTICLE_CSS
         io.open(os.path.join(edir, 'app.css'), 'w', encoding='utf-8', newline='\n').write(ecss)
         io.open(os.path.join(edir, 'app.js'), 'w', encoding='utf-8', newline='\n').write("(function(){'use strict';" + ejs + "})();\n")
     if a.articles_dir:
