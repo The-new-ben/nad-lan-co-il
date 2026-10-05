@@ -166,3 +166,12 @@ def fill_details(page, d=None, deal='sale', ptype='apartment', phone_ok=False):
     if phone_ok:
         page.check('#j-phone-ok')
     page.check('#j-owner-ok')
+
+
+def clear(id_, variant=None, prefix=''):
+    """drops earlier rows of a test (so a renamed case does not linger in the table)"""
+    if not RESULTS.exists():
+        return
+    rows = json.loads(RESULTS.read_text(encoding='utf-8'))
+    rows = [r for r in rows if not (r['id'] == id_ and (variant is None or r.get('variant') == variant) and r.get('title', '').startswith(prefix))]
+    RESULTS.write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding='utf-8')

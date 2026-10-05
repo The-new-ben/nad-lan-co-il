@@ -184,6 +184,15 @@ add_action( 'wp_insert_post', function ( $id, $post, $update ) {
 	if ( $p && $p['where'] === 'row' && ! $update ) { nlj_fault_take( 'pause' ); nlj_log( 'PAUSE ' . (int) $p['secs'] . 's after insert ' . $id ); sleep( (int) $p['secs'] ); }
 }, 1, 3 );
 
+/* kill right before a listing's status row is written (after every wp_insert_post_data filter, the owner journey's
+   withdraw of public copies included) */
+add_filter( 'wp_insert_post_data', function ( $data, $postarr ) {
+	if ( ( $data['post_type'] ?? '' ) !== 'nadlan_property' || empty( $postarr['ID'] ) ) { return $data; }
+	$k = nlj_fault( 'kill' );
+	if ( $k && $k['where'] === 'status_write' && get_post_status( (int) $postarr['ID'] ) !== $data['post_status'] && ( empty( $k['to'] ) || $k['to'] === $data['post_status'] ) ) { nlj_fault_take( 'kill' ); nlj_kill( 'status_write (post ' . (int) $postarr['ID'] . ' to ' . $data['post_status'] . ')' ); }
+	return $data;
+}, 100, 2 );
+
 /* both variants: widen the window between reading nl_result and writing it (the 1.1.3 race) */
 add_action( 'save_post_nadlan_property', function () {
 	$s = nlj_fault( 'slow' );

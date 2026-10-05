@@ -1,5 +1,366 @@
 [
  {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "a draft photo: the sealed file (anonymous static GET) and the proxy (anonymous, owner, another user)",
+  "status": "pass",
+  "evidence": {
+   "sealed_files": [
+    {
+     "path": "/wp-content/uploads/nl-private/d072361092bb09a09ffcd4e2935299fb/0408948349487d1136e6ad05801b710f-t.bin",
+     "status": 200,
+     "opens_as_image": false,
+     "starts": "NLS1"
+    },
+    {
+     "path": "/wp-content/uploads/nl-private/d072361092bb09a09ffcd4e2935299fb/0408948349487d1136e6ad05801b710f.bin",
+     "status": 200,
+     "opens_as_image": false,
+     "starts": "NLS1"
+    }
+   ],
+   "proxy_anonymous": 401,
+   "proxy_owner": [
+    200,
+    true
+   ],
+   "proxy_other_user": 404
+  },
+  "notes": "Playground serves static files with no .htaccess, so the sealed .bin answers 200 here: its bytes are ciphertext (NLS1 header) and do not open as an image. The live server is not assumed to honour the deny-all .htaccess.",
+  "at": "2026-10-05 11:17:45"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: a fair-housing hold (pending)",
+  "status": "pass",
+  "evidence": {
+   "before_publish_exposed": [],
+   "publish": [
+    200,
+    "pending"
+   ],
+   "status": "pending",
+   "exposed": [],
+   "checked": 8
+  },
+  "at": "2026-10-05 11:10:54"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: a publish refused by validation (422)",
+  "status": "pass",
+  "evidence": {
+   "publish": 422,
+   "exposed": [],
+   "checked": 8
+  },
+  "at": "2026-10-05 11:10:18"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: an admin's test run (stays a draft)",
+  "status": "pass",
+  "evidence": {
+   "publish": [
+    200,
+    "draft"
+   ],
+   "status": "draft",
+   "exposed": []
+  },
+  "at": "2026-10-05 11:11:12"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: killed at attach_pending (after the publish commit), then the retry",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "attach_pending"
+   ],
+   "status_after_kill": "publish",
+   "exposed_after_kill (listing is published)": [],
+   "retry": [
+    200,
+    "published"
+   ],
+   "exposed_after_retry": 8
+  },
+  "at": "2026-10-05 11:15:21"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: killed at claim_pending (before the publish commit)",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "claim_pending"
+   ],
+   "status": "",
+   "exposed": [],
+   "checked": 8
+  },
+  "at": "2026-10-05 11:11:58"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: killed at fenced:attach (after the publish commit), then the retry",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "fenced:attach"
+   ],
+   "status_after_kill": "publish",
+   "exposed_after_kill (listing is published)": [],
+   "retry": [
+    200,
+    "published"
+   ],
+   "exposed_after_retry": 8
+  },
+  "at": "2026-10-05 11:15:52"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: killed at fenced:owner_claim (before the publish commit)",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "fenced:owner_claim"
+   ],
+   "status": "",
+   "exposed": [],
+   "checked": 8
+  },
+  "at": "2026-10-05 11:12:22"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: killed at fenced:owner_content (before the publish commit)",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "fenced:owner_content"
+   ],
+   "status": "auto-draft",
+   "exposed": [],
+   "checked": 8
+  },
+  "at": "2026-10-05 11:13:04"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: killed at fenced:owner_meta (before the publish commit)",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "fenced:owner_meta"
+   ],
+   "status": "draft",
+   "exposed": [],
+   "checked": 8
+  },
+  "at": "2026-10-05 11:13:24"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: killed at fenced:owner_render (before the publish commit)",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "fenced:owner_render"
+   ],
+   "status": "draft",
+   "exposed": [],
+   "checked": 8
+  },
+  "at": "2026-10-05 11:13:42"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: killed at fenced:owner_status (before the publish commit)",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "fenced:owner_status"
+   ],
+   "status": "draft",
+   "exposed": [],
+   "checked": 8
+  },
+  "at": "2026-10-05 11:14:00"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: killed at owner_before_media (after the publish commit), then the retry",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "owner_before_media"
+   ],
+   "status_after_kill": "publish",
+   "exposed_after_kill (listing is published)": [
+    "/wp-content/uploads/nl-listings/7649b30bf20dbe37999bd054f062ed61-150x150.jpg",
+    "/wp-content/uploads/nl-listings/7649b30bf20dbe37999bd054f062ed61-300x225.jpg",
+    "/wp-content/uploads/nl-listings/7649b30bf20dbe37999bd054f062ed61-768x576.jpg",
+    "/wp-content/uploads/nl-listings/7649b30bf20dbe37999bd054f062ed61.jpg",
+    "/wp-content/uploads/nl-listings/a40d71692ed1bf82651afd372327797e-150x150.jpg",
+    "/wp-content/uploads/nl-listings/a40d71692ed1bf82651afd372327797e-300x225.jpg",
+    "/wp-content/uploads/nl-listings/a40d71692ed1bf82651afd372327797e-768x576.jpg",
+    "/wp-content/uploads/nl-listings/a40d71692ed1bf82651afd372327797e.jpg"
+   ],
+   "retry": [
+    200,
+    "published"
+   ],
+   "exposed_after_retry": 8
+  },
+  "at": "2026-10-05 11:14:50"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: killed at row (before the publish commit)",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "row (post 178, status auto-draft)"
+   ],
+   "status": "",
+   "exposed": [],
+   "checked": 8
+  },
+  "at": "2026-10-05 11:11:35"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: killed at status_write:draft (before the publish commit)",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "status_write (post 183 to draft)"
+   ],
+   "status": "auto-draft",
+   "exposed": [],
+   "checked": 8
+  },
+  "at": "2026-10-05 11:12:43"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: killed at status_write:publish (before the publish commit)",
+  "status": "pass",
+  "evidence": {
+   "killed": [
+    500,
+    "status_write (post 193 to publish)"
+   ],
+   "status": "draft",
+   "exposed": [],
+   "checked": 8
+  },
+  "at": "2026-10-05 11:14:17"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: killed between the withdraw and the remove status write",
+  "status": "pass",
+  "evidence": {
+   "remove": 500,
+   "status_after_kill": "publish",
+   "exposed_after_kill": [],
+   "exposed_after_a_view (published)": 8
+  },
+  "at": "2026-10-05 11:17:31"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: run A paused at the status commit past the TTL, run B took over",
+  "status": "pass",
+  "evidence": {
+   "A": 202,
+   "B": 200,
+   "status": "publish",
+   "exposed (published)": 4
+  },
+  "at": "2026-10-05 11:16:16"
+ },
+ {
+  "id": "L03",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "public photos: served when published; revoked on remove and on a hold; restored on publishing again",
+  "status": "pass",
+  "evidence": {
+   "published": [
+    "publish",
+    8
+   ],
+   "sold (stays published with a notice)": [
+    "publish",
+    8
+   ],
+   "removed (trash)": [
+    "trash",
+    0
+   ],
+   "published again": [
+    "publish",
+    4
+   ],
+   "edited into a hold (pending)": [
+    "pending",
+    0
+   ]
+  },
+  "at": "2026-10-05 11:17:03"
+ },
+ {
   "id": "L08",
   "variant": "after",
   "label": "real-wp",

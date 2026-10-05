@@ -1235,6 +1235,7 @@ function nl_owner_attach( $drop_id, $uid, $ref, $he_id ) {
 		update_attached_file( $att, $dst );
 		$wpdb->update( $wpdb->posts, array( 'guid' => esc_url_raw( nl_owner_public_url( $ref, $u['ext'] ) ) ), array( 'ID' => $att ) );
 		clean_post_cache( $att );
+		do_action( 'litespeed_purge_url', nl_owner_public_url( $ref, $u['ext'] ) );   // a page cache may hold a 404 from an earlier withdraw
 	}
 	if ( get_post_status( $att ) !== 'inherit' || (int) get_post_field( 'post_parent', $att ) !== (int) $he_id ) {
 		wp_update_post( array( 'ID' => $att, 'post_status' => 'inherit', 'post_parent' => (int) $he_id ) );
@@ -1283,28 +1284,78 @@ function nl_owner_media_publish( $he_id ) {
 	}
 }
 
-function nl_owner_media_drop( $att, $ref ) {
+/** Every public file of one photo ref: its attachment (with its sizes) and the copy itself, even one a dead run left
+ *  without an attachment record. The sealed original stays private, so publishing again re-creates them. */
+function nl_owner_media_drop( $att, $ref, $ext = '' ) {
 	global $wpdb;
-	wp_delete_attachment( (int) $att, true );   // the public copy and its sizes; the sealed original stays private
+	$urls = array();
+	if ( $att && get_post_type( $att ) === 'attachment' ) {
+		$urls[] = (string) wp_get_attachment_url( $att );
+		wp_delete_attachment( (int) $att, true );
+	}
+	$ud = wp_upload_dir( null, false );
+	foreach ( (array) glob( untrailingslashit( $ud['basedir'] ) . '/nl-listings/' . $ref . '*' ) as $f ) {
+		if ( is_file( $f ) ) { $urls[] = untrailingslashit( $ud['baseurl'] ) . '/nl-listings/' . basename( $f ); @unlink( $f ); }
+	}
 	$wpdb->delete( $wpdb->options, array( 'option_name' => 'nl_att_' . $ref ) );
+	foreach ( array_filter( $urls ) as $u ) { do_action( 'litespeed_purge_url', $u ); }
 }
 
-/** A listing that leaves 'publish' takes its public copies with it. */
+/** A listing that leaves 'publish' takes every public copy of every photo its draft ever had with it. */
 function nl_owner_media_withdraw( $he_id ) {
-	foreach ( get_children( array( 'post_parent' => $he_id, 'post_type' => 'attachment', 'fields' => 'ids' ) ) as $att ) {
+	$x    = nl_owner_listing_draft( $he_id );
+	$refs = $x ? array_keys( nl_owner_uploads( $x['drop'] ) ) : array();
+	foreach ( get_children( array( 'post_parent' => $he_id, 'post_type' => 'attachment', 'post_status' => 'any', 'fields' => 'ids' ) ) as $att ) {
 		$ref = (string) get_post_meta( $att, 'nl_owner_ref', true );
-		if ( $ref !== '' ) { nl_owner_media_drop( $att, $ref ); }
+		if ( $ref !== '' ) { nl_owner_media_drop( $att, $ref ); $refs = array_diff( $refs, array( $ref ) ); }
 	}
+	foreach ( $refs as $ref ) { nl_owner_media_drop( nl_owner_att_claim( $ref ), $ref ); }
 	delete_post_thumbnail( $he_id );
 	nl_drop_purge( array( $he_id ) );
 }
+
+/* Leaving 'publish' (trash, pending, draft, private), from any door, wp-admin included: the public copies go FIRST,
+   before the status row changes (fail-closed: a crash in between leaves a published listing without pictures, which
+   the next view repairs, never an unpublished listing with public pictures). */
+add_filter( 'wp_insert_post_data', function ( $data, $postarr ) {
+	$id = (int) ( $postarr['ID'] ?? 0 );
+	if ( $id && ( $data['post_type'] ?? '' ) === 'nadlan_property' && ( $data['post_status'] ?? '' ) !== 'publish' && get_post_status( $id ) === 'publish' && nl_owner_listing_draft( $id ) ) {
+		nl_owner_media_withdraw( $id );
+	}
+	return $data;
+}, 99, 2 );
 
 add_action( 'transition_post_status', function ( $new, $old, $post ) {
 	if ( ! $post || $post->post_type !== 'nadlan_property' || $new === $old ) { return; }
 	if ( ! nl_owner_listing_draft( $post->ID ) ) { return; }
 	if ( $new === 'publish' ) { nl_owner_media_publish( $post->ID ); }
-	elseif ( $old === 'publish' ) { nl_owner_media_withdraw( $post->ID ); }
+	elseif ( $old === 'publish' ) { nl_owner_media_withdraw( $post->ID ); }   // a second pass (idempotent)
 }, 20, 3 );
+
+/* A published owner listing whose pictures a dead run did not finish is repaired on its next view. */
+add_action( 'template_redirect', function () {
+	if ( ! is_singular( 'nadlan_property' ) ) { return; }
+	$id = (int) get_queried_object_id();
+	if ( get_post_status( $id ) !== 'publish' || ! nl_owner_listing_draft( $id ) ) { return; }
+	$photos = json_decode( (string) get_post_meta( $id, 'nl_photos_json', true ), true );
+	$ud     = wp_upload_dir( null, false );
+	foreach ( (array) $photos as $p ) {
+		$rel = str_replace( untrailingslashit( $ud['baseurl'] ), '', (string) ( $p['url'] ?? '' ) );
+		if ( $rel !== '' && ! file_exists( untrailingslashit( $ud['basedir'] ) . $rel ) ) { nl_owner_media_publish( $id ); break; }
+	}
+}, 5 );
+
+/* The daily sweep (WordPress' wp_scheduled_delete): a public copy whose listing is not published goes. */
+add_action( 'wp_scheduled_delete', 'nl_owner_media_sweep' );
+function nl_owner_media_sweep() {
+	$ud = wp_upload_dir( null, false );
+	foreach ( (array) glob( untrailingslashit( $ud['basedir'] ) . '/nl-listings/*' ) as $f ) {
+		if ( ! is_file( $f ) || ! preg_match( '/^([a-f0-9]{32})/', basename( $f ), $m ) ) { continue; }
+		$att    = nl_owner_att_claim( $m[1] );
+		$parent = $att ? (int) get_post_field( 'post_parent', $att ) : 0;
+		if ( ! $parent || get_post_status( $parent ) !== 'publish' ) { nl_owner_media_drop( $att, $m[1] ); }
+	}
+}
 
 /**
  * The owner listing's own build (one drop, one Hebrew page), under the drop lock the caller holds:
@@ -1328,6 +1379,12 @@ function nl_owner_build( $drop_id, $uid, $d, $b, $target ) {
 	$edit = ! in_array( $now, array( 'auto-draft', 'draft' ), true );
 	if ( $now !== 'auto-draft' && (string) get_post_field( 'post_name', $he ) !== '' ) { $slug = (string) get_post_field( 'post_name', $he ); }   // a permanent address
 	$title = nl_drop_fill( $copy['he']['title'], $f, 'he' );
+	if ( $edit && $now === 'publish' && $target !== 'publish' ) {
+		// an edit that must wait for review (or an admin test) leaves the site BEFORE its new words are written
+		nl_drop_fence( $drop_id, 'owner_unpublish' );
+		wp_update_post( array( 'ID' => $he, 'post_status' => $target ) );
+		$now = $target;
+	}
 	nl_drop_fence( $drop_id, 'owner_content' );
 	$had = nl_drop_kses_off();
 	$r   = wp_update_post( array(
