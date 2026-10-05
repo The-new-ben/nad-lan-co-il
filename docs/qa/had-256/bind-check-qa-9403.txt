@@ -1,0 +1,20 @@
+HAD-256 QA snapshot 2 (c2e4cd31) bind check, 2026-10-05 12:15:31
+Get-NetTCPConnection -State Listen, every socket of the QA-2 bench process (PID 5528):
+
+LocalAddress LocalPort OwningProcess
+------------ --------- -------------
+127.0.0.1        61909          5528
+127.0.0.1        61908          5528
+127.0.0.1        61907          5528
+127.0.0.1        61906          5528
+127.0.0.1        61905          5528
+127.0.0.1        61904          5528
+127.0.0.1         9403          5528
+
+via 192.168.0.143:9403 -> refused: No connection could be made because the target machine actively refused it. (192.168.0.143:9403)
+9402 (snapshot 1, untouched) still listening on: 
+LocalAddress OwningProcess
+------------ -------------
+127.0.0.1            21284
+
+
