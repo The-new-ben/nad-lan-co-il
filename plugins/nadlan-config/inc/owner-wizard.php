@@ -1319,6 +1319,12 @@ function nl_owner_media_withdraw( $he_id ) {
    the next view repairs, never an unpublished listing with public pictures). */
 add_filter( 'wp_insert_post_data', function ( $data, $postarr ) {
 	$id = (int) ( $postarr['ID'] ?? 0 );
+	// WordPress empties the address of a pending post saved by a user who cannot publish (the owner): an owner listing
+	// keeps its Latin address, so an approval in wp-admin never falls back to an address made of the Hebrew title
+	if ( $id && ( $data['post_type'] ?? '' ) === 'nadlan_property' && ( $data['post_name'] ?? '' ) === '' && (string) get_post_meta( $id, 'nl_owner', true ) === '1' ) {
+		$keep = (string) get_post_field( 'post_name', $id );
+		if ( $keep !== '' ) { $data['post_name'] = $keep; }
+	}
 	if ( $id && ( $data['post_type'] ?? '' ) === 'nadlan_property' && ( $data['post_status'] ?? '' ) !== 'publish' && get_post_status( $id ) === 'publish' && nl_owner_listing_draft( $id ) ) {
 		nl_owner_media_withdraw( $id );
 	}
@@ -1363,7 +1369,7 @@ function nl_owner_media_sweep() {
  * 'publish' takes the public copies first (fail-closed). A first publish gets its date and a unique address in the
  * same UPDATE. WordPress' transition hooks then run as for wp_update_post (the public copies for 'publish').
  */
-function nl_owner_set_status( $drop_id, $he, $status ) {
+function nl_owner_set_status( $drop_id, $he, $status, $slug = '' ) {
 	global $wpdb;
 	$drop_id = (int) $drop_id;
 	$he      = (int) $he;
@@ -1373,7 +1379,8 @@ function nl_owner_set_status( $drop_id, $he, $status ) {
 	if ( $mine === '' ) { throw new NL_Drop_Fenced( 'status' ); }
 	if ( $old === 'publish' ) { nl_owner_media_withdraw( $he ); }
 	$post = get_post( $he );
-	$slug = $status === 'publish' ? wp_unique_post_slug( (string) $post->post_name, $he, 'publish', $post->post_type, (int) $post->post_parent ) : (string) $post->post_name;
+	$name = (string) $post->post_name !== '' ? (string) $post->post_name : (string) $slug;
+	$slug = $status === 'publish' ? wp_unique_post_slug( $name, $he, 'publish', $post->post_type, (int) $post->post_parent ) : $name;
 	$now  = current_time( 'mysql' );
 	$gmt  = current_time( 'mysql', true );
 	$first = $status === 'publish' && ( (string) $post->post_date_gmt === '' || (string) $post->post_date_gmt === '0000-00-00 00:00:00' );
@@ -1413,7 +1420,7 @@ function nl_owner_build( $drop_id, $uid, $d, $b, $target ) {
 	if ( $edit && $now === 'publish' && $target !== 'publish' ) {
 		// an edit that must wait for review (or an admin test) leaves the site BEFORE its new words are written
 		nl_drop_fence( $drop_id, 'owner_unpublish' );
-		nl_owner_set_status( $drop_id, $he, $target );
+		nl_owner_set_status( $drop_id, $he, $target, $slug );
 		$now = $target;
 	}
 	nl_drop_fence( $drop_id, 'owner_content' );
@@ -1428,6 +1435,13 @@ function nl_owner_build( $drop_id, $uid, $d, $b, $target ) {
 	), true );
 	nl_drop_kses_on( $had );
 	if ( is_wp_error( $r ) || ! $r ) { return is_wp_error( $r ) ? $r : new WP_Error( 'nl_owner_update', 'update failed' ); }
+	// WordPress empties the address of a pending post saved by a user who cannot publish (the owner); the listing
+	// keeps its Latin address, so an approval in wp-admin or the next publish never falls back to the Hebrew title
+	if ( (string) get_post_field( 'post_name', $he ) !== $slug ) {
+		global $wpdb;
+		$wpdb->update( $wpdb->posts, array( 'post_name' => $slug ), array( 'ID' => $he ) );
+		clean_post_cache( $he );
+	}
 	$ptype = array( 'garden' => 'garden', 'penthouse' => 'penthouse', 'duplex' => 'duplex', 'cottage' => 'cottage' );
 	$meta  = array(
 		'listing_type' => $f['listing_type'], 'property_type' => $ptype[ $f['property_type'] ] ?? 'apartment', 'price' => $f['price'], 'rooms' => $f['rooms'],
@@ -1458,7 +1472,7 @@ function nl_owner_build( $drop_id, $uid, $d, $b, $target ) {
 	nl_drop_render_all( $he, $b );
 	// the status commit; the transition hook makes the public copies only for 'publish'
 	nl_drop_fence( $drop_id, 'owner_status' );
-	nl_owner_set_status( $drop_id, $he, $target );
+	nl_owner_set_status( $drop_id, $he, $target, $slug );
 	if ( $target === 'publish' ) {
 		do_action( 'nl_drop_checkpoint', 'owner_before_media', (int) $drop_id );
 		nl_owner_media_publish( $he );   // idempotent: repairs a run that died between the status and the copies
@@ -1914,6 +1928,8 @@ select.nlj-input{appearance:auto}
 .nlj-upbar{height:6px;border-radius:999px;background:var(--line);overflow:hidden}
 .nlj-upbar i{display:block;height:100%;background:var(--sea);border-radius:999px;width:0;transition:width .2s}
 .nlj-fail{padding:10px 12px;display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--bad);font-weight:600}
+.nlj-fail .nlj-grp,.nlj-up .nlj-grp,.nlj-tilebar .nlj-grp{flex-wrap:wrap}
+.nlj-fail .nlj-btn{padding-inline:12px}
 .nlj-banner{display:flex;gap:10px;align-items:center;background:var(--champ);color:var(--ink);border-radius:12px;padding:12px 14px;font-size:14.5px;font-weight:600}
 .nlj-lcard{background:var(--surf);border:1px solid var(--line);border-radius:16px;overflow:hidden}
 .nlj-lbody{padding:18px;display:flex;flex-direction:column;gap:12px}

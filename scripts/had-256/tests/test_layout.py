@@ -40,7 +40,8 @@ PROBE = r"""
     e.focus({preventScroll: false});
     if (document.activeElement !== e) { e.scrollIntoView({block: 'nearest'}); }
     const r = e.getBoundingClientRect();
-    const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    const rs = e.getClientRects(); const r0 = rs.length > 1 ? rs[0] : r;   // a link that wraps: the centre of its first line box
+    const cx = r0.left + r0.width / 2, cy = r0.top + r0.height / 2;
     if (cy < 0 || cy > innerHeight || cx < 0 || cx > innerWidth) { out.offscreen.push(name(e)); continue; }
     const hit = document.elementFromPoint(cx, cy);
     const label = e.closest('label');

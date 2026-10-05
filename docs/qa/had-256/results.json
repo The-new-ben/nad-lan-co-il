@@ -185,6 +185,23 @@
   "at": "2026-10-05 12:04:40"
  },
  {
+  "id": "L02",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "recovery: WordPress' own reset link (mail sink), used once, refused when used again or expired; the mail leads back to the draft",
+  "status": "pass",
+  "evidence": {
+   "mail_has_reset_link": true,
+   "mail_has_way_back": true,
+   "reset_done": true,
+   "used_again": "http://127.0.0.1:9401/wp-login.php?action=lostpassword&error=invalidkey",
+   "refused": true,
+   "expired_link_url": true,
+   "draft_resumed_after_new_password": true
+  },
+  "at": "2026-10-05 12:27:37"
+ },
+ {
   "id": "L03",
   "variant": "after",
   "label": "real-wp",
@@ -614,13 +631,13 @@
   "id": "L04",
   "variant": "after",
   "label": "real-wp+chrome",
-  "title": "A signs back in on the same browser: the queued text is resumed and saved to the account",
+  "title": "autosave, reload: fields, photos, their order and the cover come back from the server; the status shows the server time",
   "status": "pass",
   "evidence": {
-   "resumed_in_form": true,
-   "on_server_after_resume": true
+   "order_after_reload_is_the_saved_order": true,
+   "status_line": "נשמר בחשבון\nהשמירה האחרונה ב־⁦12:18⁩. אפשר לעצור ולהמשיך מכל מכשיר."
   },
-  "at": "2026-10-05 12:13:00"
+  "at": "2026-10-05 12:18:10"
  },
  {
   "id": "L05",
@@ -640,6 +657,30 @@
    ]
   },
   "at": "2026-10-05 12:03:54"
+ },
+ {
+  "id": "L06",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "local storage blocked (SecurityError): no crash, the limit is shown, the account save still works",
+  "status": "pass",
+  "evidence": {
+   "status_text": "שומרים בחשבון…\n(השמירה במכשיר חסומה בדפדפן הזה, אז עד אז הם רק בדף הפתוח.)\nהשמירה במכשיר חסומה בדפדפן הזה\nהשינויים נשמרים רק בחשבון, כשיש חיבור. אל תסגרו את הדף לפני שמופיע ״נשמר בחשבון״.",
+   "js_errors": []
+  },
+  "at": "2026-10-05 12:18:38"
+ },
+ {
+  "id": "L06",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "local storage full (QuotaExceededError): no crash, the limit is shown, the account save still works",
+  "status": "pass",
+  "evidence": {
+   "status_text": "שומרים בחשבון…\n(השמירה במכשיר חסומה בדפדפן הזה, אז עד אז הם רק בדף הפתוח.)\nהשמירה במכשיר חסומה בדפדפן הזה\nהשינויים נשמרים רק בחשבון, כשיש חיבור. אל תסגרו את הדף לפני שמופיע ״נשמר בחשבון״.",
+   "js_errors": []
+  },
+  "at": "2026-10-05 12:18:47"
  },
  {
   "id": "L07",
@@ -2670,6 +2711,599 @@
   "at": "2026-10-05 12:05:31"
  },
  {
+  "id": "L10",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "a photo removed while uploading does not come back; a refresh during uploads keeps every photo the server took",
+  "status": "pass",
+  "evidence": {
+   "tiles_after_remove_during_upload (expected 2)": 2,
+   "tiles_after_refresh_during_upload (expected 3 or 4)": 3
+  },
+  "at": "2026-10-05 12:18:29"
+ },
+ {
+  "id": "L11",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "expired nonce, 5xx, 429, a session ended elsewhere: content kept, a way back, nothing published on its own",
+  "status": "pass",
+  "evidence": {
+   "nonce_refreshed": true,
+   "status_on_5xx": "השמירה בחשבון לא הצליחה\ndown הפרטים שמורים במכשיר הזה. ננסה שוב בעוד 0 שניות.\nלנסות עכשיו",
+   "status_on_429": "השמירה בחשבון לא הצליחה\nיותר מדי פעולות בזמן קצר. מה שכתבתם שמור; נסו שוב בעוד כמה דקות. הפרטים שמורים במכשיר הזה. ננסה שוב בעוד 6 שניות.\nלנסות עכשיו",
+   "page_cleared_when_signed_out_elsewhere": true,
+   "draft_back_after_sign_in (rooms 7)": true,
+   "listings_published": 0
+  },
+  "notes": "AI timeout: not applicable, the journey makes no model call (copy = the template + the owner's own words).",
+  "at": "2026-10-05 12:19:32"
+ },
+ {
+  "id": "L12",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "preview, fix price and place, publish: the page carries the approved values, nothing else; no phone without consent",
+  "status": "pass",
+  "evidence": {
+   "url": "http://127.0.0.1:9401/properties/ramat-gan-4-rooms-for-sale/",
+   "http": 200,
+   "price_and_city_on_page": [
+    true,
+    true
+   ],
+   "old_price_absent": true,
+   "owner_phone_whatsapp_call_or_number_on_page": [
+    false,
+    false,
+    false
+   ],
+   "note": "the site's own floating bar (#nlcta) carries the SITE's WhatsApp number; it is not the owner's"
+  },
+  "at": "2026-10-05 12:25:55"
+ },
+ {
+  "id": "L13",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "held, fixed, live, sold (the page says so, the contact buttons go), removed (gone), published again: the screen matches the server",
+  "status": "pass",
+  "evidence": {
+   "preview_warned_of_the_hold": true,
+   "published_screen_when_held": "המודעה נשמרה ותעלה אחרי בדיקה קצרה",
+   "anonymous_http": {
+    "held": 404,
+    "fixed": 200,
+    "sold": 200,
+    "removed": 404,
+    "published_again": 200
+   },
+   "my_listings_chip_when_held": "בבדיקה",
+   "sold_notice_on_page": true
+  },
+  "at": "2026-10-05 12:26:41"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "no horizontal overflow, 44 px targets, visible focus, no JS errors (1440 px, en)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "inline_links_under_44px (exempt)": {
+    "auth-signup": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "auth-existing-email": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "auth-login": [
+     "a \"To your broker site\" 106x18"
+    ],
+    "auth-recovery-sent": [
+     "a \"To your broker site\" 106x18"
+    ],
+    "details-empty": [
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "details-errors": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "details-filled": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "photos": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "preview": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "my-listings": [
+     "a \"דירת 4 חדרים בשכונת הדוגמה\" 231x23",
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "saved-draft": [
+     "a \"Sign in to another account\" 641x38"
+    ]
+   },
+   "no_focus_ring": {},
+   "js_errors": []
+  },
+  "at": "2026-10-05 12:24:23"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "no horizontal overflow, 44 px targets, visible focus, no JS errors (1440 px, he)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "inline_links_under_44px (exempt)": {
+    "auth-signup": [
+     "a \"תנאי השימוש\" 66x18",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "auth-existing-email": [
+     "a \"תנאי השימוש\" 66x18",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "auth-login": [
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "auth-recovery-sent": [
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "details-empty": [
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "details-errors": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "details-filled": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "photos": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "preview": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "my-listings": [
+     "a \"דירת 4 חדרים בשכונת הדוגמה\" 231x23",
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "saved-draft": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ]
+   },
+   "no_focus_ring": {},
+   "js_errors": []
+  },
+  "at": "2026-10-05 12:20:47"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "no horizontal overflow, 44 px targets, visible focus, no JS errors (320 px, en)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "inline_links_under_44px (exempt)": {
+    "auth-signup": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 221x38"
+    ],
+    "auth-existing-email": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 221x38"
+    ],
+    "auth-login": [
+     "a \"To your broker site\" 221x38"
+    ],
+    "auth-recovery-sent": [
+     "a \"To your broker site\" 221x38"
+    ],
+    "details-empty": [
+     "a \"Sign in to another account\" 223x38",
+     "a \"To your broker site\" 212x38"
+    ],
+    "details-errors": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 223x38",
+     "a \"To your broker site\" 212x38"
+    ],
+    "details-filled": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 223x38",
+     "a \"To your broker site\" 212x38"
+    ],
+    "photos": [
+     "a \"Sign in to another account\" 223x38"
+    ],
+    "preview": [
+     "a \"Sign in to another account\" 223x38"
+    ],
+    "my-listings": [
+     "a \"Sign in to another account\" 223x38"
+    ],
+    "saved-draft": [
+     "a \"Sign in to another account\" 144x18"
+    ]
+   },
+   "no_focus_ring": {},
+   "js_errors": []
+  },
+  "at": "2026-10-05 12:21:36"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "no horizontal overflow, 44 px targets, visible focus, no JS errors (320 px, he)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "inline_links_under_44px (exempt)": {
+    "auth-signup": [
+     "a \"תנאי השימוש\" 190x38",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "auth-existing-email": [
+     "a \"תנאי השימוש\" 190x38",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "auth-login": [
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "auth-recovery-sent": [
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "details-empty": [
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "details-errors": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "details-filled": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "photos": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "preview": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "my-listings": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "saved-draft": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ]
+   },
+   "no_focus_ring": {},
+   "js_errors": []
+  },
+  "at": "2026-10-05 12:17:42"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "no horizontal overflow, 44 px targets, visible focus, no JS errors (360 px, en)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "inline_links_under_44px (exempt)": {
+    "auth-signup": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 221x38"
+    ],
+    "auth-existing-email": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 221x38"
+    ],
+    "auth-login": [
+     "a \"To your broker site\" 221x38"
+    ],
+    "auth-recovery-sent": [
+     "a \"To your broker site\" 221x38"
+    ],
+    "details-empty": [
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 212x38"
+    ],
+    "details-errors": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 212x38"
+    ],
+    "details-filled": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 212x38"
+    ],
+    "photos": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "preview": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "my-listings": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "saved-draft": [
+     "a \"Sign in to another account\" 223x38"
+    ]
+   },
+   "no_focus_ring": {},
+   "js_errors": []
+  },
+  "at": "2026-10-05 12:22:16"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "no horizontal overflow, 44 px targets, visible focus, no JS errors (360 px, he)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "inline_links_under_44px (exempt)": {
+    "auth-signup": [
+     "a \"תנאי השימוש\" 190x38",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "auth-existing-email": [
+     "a \"תנאי השימוש\" 190x38",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "auth-login": [
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "auth-recovery-sent": [
+     "a \"לאתר המתווכים שלכם\" 203x38"
+    ],
+    "details-empty": [
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "details-errors": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "details-filled": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 90x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "photos": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "preview": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "my-listings": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ],
+    "saved-draft": [
+     "a \"כניסה לחשבון אחר\" 202x38"
+    ]
+   },
+   "no_focus_ring": {},
+   "js_errors": []
+  },
+  "at": "2026-10-05 12:18:27"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "no horizontal overflow, 44 px targets, visible focus, no JS errors (390 px, en)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "inline_links_under_44px (exempt)": {
+    "auth-signup": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "auth-existing-email": [
+     "a \"terms of use\" 70x18",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "auth-login": [
+     "a \"To your broker site\" 106x18"
+    ],
+    "auth-recovery-sent": [
+     "a \"To your broker site\" 106x18"
+    ],
+    "details-empty": [
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "details-errors": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "details-filled": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "photos": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "preview": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "my-listings": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "saved-draft": [
+     "a \"Sign in to another account\" 144x18"
+    ]
+   },
+   "no_focus_ring": {},
+   "js_errors": []
+  },
+  "at": "2026-10-05 12:22:59"
+ },
+ {
   "id": "L14",
   "variant": "after",
   "label": "real-wp+chrome",
@@ -2741,91 +3375,204 @@
    "no_focus_ring": {},
    "js_errors": []
   },
-  "at": "2026-10-05 12:07:44"
+  "at": "2026-10-05 12:19:14"
  },
  {
   "id": "L14",
   "variant": "after",
   "label": "real-wp+chrome",
-  "title": "text contrast 4.5:1 (3:1 large) on computed colours (390 px, he)",
-  "status": "fail",
+  "title": "no horizontal overflow, 44 px targets, visible focus, no JS errors (412 px, en)",
+  "status": "pass",
   "evidence": {
-   "text_nodes_checked": 415,
-   "under": {
+   "overflow": {},
+   "under_44px": {},
+   "inline_links_under_44px (exempt)": {
+    "auth-signup": [
+     "a \"terms of use\" 274x38",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "auth-existing-email": [
+     "a \"terms of use\" 274x38",
+     "a \"privacy policy\" 78x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "auth-login": [
+     "a \"To your broker site\" 106x18"
+    ],
+    "auth-recovery-sent": [
+     "a \"To your broker site\" 106x18"
+    ],
     "details-empty": [
-     {
-      "text": "placeholder: 3 מתוך 8",
-      "where": "placeholder",
-      "ratio": 4.41,
-      "need": 4.5,
-      "size": 16,
-      "bold": false,
-      "fg": "rgb(117, 117, 117)",
-      "bg": "rgb(251,250,247)"
-     }
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
     ],
     "details-errors": [
-     {
-      "text": "placeholder: 3 מתוך 8",
-      "where": "placeholder",
-      "ratio": 4.41,
-      "need": 4.5,
-      "size": 16,
-      "bold": false,
-      "fg": "rgb(117, 117, 117)",
-      "bg": "rgb(251,250,247)"
-     }
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "details-filled": [
+     "a[jump] \"Deal type\" 59x19",
+     "a[jump] \"Property type\" 86x19",
+     "a[jump] \"City\" 25x19",
+     "a[jump] \"Neighbourhood\" 99x19",
+     "a[jump] \"Rooms\" 43x19",
+     "a[jump] \"Size\" 25x19",
+     "a[jump] \"Price\" 31x19",
+     "a[jump] \"Description\" 72x19",
+     "a[jump] \"Ownership statement\" 135x19",
+     "a \"Sign in to another account\" 144x18",
+     "a \"To your broker site\" 106x18"
+    ],
+    "photos": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "preview": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "my-listings": [
+     "a \"Sign in to another account\" 144x18"
+    ],
+    "saved-draft": [
+     "a \"Sign in to another account\" 144x18"
     ]
    },
-   "exempt": {
+   "no_focus_ring": {},
+   "js_errors": []
+  },
+  "at": "2026-10-05 12:23:41"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "no horizontal overflow, 44 px targets, visible focus, no JS errors (412 px, he)",
+  "status": "pass",
+  "evidence": {
+   "overflow": {},
+   "under_44px": {},
+   "inline_links_under_44px (exempt)": {
+    "auth-signup": [
+     "a \"תנאי השימוש\" 66x18",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "auth-existing-email": [
+     "a \"תנאי השימוש\" 66x18",
+     "a \"מדיניות הפרטיות\" 85x18",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "auth-login": [
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
     "auth-recovery-sent": [
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "details-empty": [
+     "a \"כניסה לחשבון אחר\" 268x38",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "details-errors": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 268x38",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "details-filled": [
+     "a[jump] \"סוג העסקה\" 63x19",
+     "a[jump] \"סוג הנכס\" 50x19",
+     "a[jump] \"עיר\" 19x19",
+     "a[jump] \"שכונה\" 34x19",
+     "a[jump] \"חדרים\" 36x19",
+     "a[jump] \"שטח\" 27x19",
+     "a[jump] \"מחיר\" 28x19",
+     "a[jump] \"תיאור\" 32x19",
+     "a[jump] \"הצהרת בעלות\" 80x19",
+     "a \"כניסה לחשבון אחר\" 268x38",
+     "a \"לאתר המתווכים שלכם\" 112x18"
+    ],
+    "photos": [
+     "a \"כניסה לחשבון אחר\" 268x38"
+    ],
+    "preview": [
+     "a \"כניסה לחשבון אחר\" 268x38"
+    ],
+    "my-listings": [
+     "a \"כניסה לחשבון אחר\" 268x38"
+    ],
+    "saved-draft": [
+     "a \"כניסה לחשבון אחר\" 90x18"
+    ]
+   },
+   "no_focus_ring": {},
+   "js_errors": []
+  },
+  "at": "2026-10-05 12:20:01"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "text contrast 4.5:1 (3:1 large) on computed colours (1440 px, en)",
+  "status": "pass",
+  "evidence": {
+   "text_nodes_checked": 469,
+   "under": {},
+   "exempt": {
+    "promotion-off": [
      {
-      "text": "אפשר לשלוח שוב בעוד 60 שניות",
-      "where": "button.nlj-btn",
-      "ratio": 3.12,
+      "text": "Property list",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
       "need": 4.5,
-      "size": 16,
+      "size": 15,
       "bold": true,
       "fg": "rgb(255, 255, 255)",
       "bg": "rgb(47,111,134)",
       "why": "disabled control"
-     }
-    ],
-    "preview": [
-     {
-      "text": "וואטסאפ",
-      "where": "button.nlj-btn",
-      "ratio": 3.25,
-      "need": 4.5,
-      "size": 15,
-      "bold": true,
-      "fg": "rgb(31, 75, 92)",
-      "bg": "rgb(255,255,255)",
-      "why": "disabled control"
      },
      {
-      "text": "חיוג",
+      "text": "Not available yet",
       "where": "button.nlj-btn",
-      "ratio": 3.25,
+      "ratio": 4.28,
       "need": 4.5,
-      "size": 15,
+      "size": 16,
       "bold": true,
-      "fg": "rgb(31, 75, 92)",
-      "bg": "rgb(255,255,255)",
-      "why": "disabled control"
-     },
-     {
-      "text": "050-0000000",
-      "where": "span.nlj-num",
-      "ratio": 3.25,
-      "need": 4.5,
-      "size": 15,
-      "bold": true,
-      "fg": "rgb(31, 75, 92)",
-      "bg": "rgb(255,255,255)",
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
       "why": "disabled control"
      }
-    ],
+    ]
+   }
+  },
+  "at": "2026-10-05 12:24:23"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "text contrast 4.5:1 (3:1 large) on computed colours (1440 px, he)",
+  "status": "pass",
+  "evidence": {
+   "text_nodes_checked": 467,
+   "under": {},
+   "exempt": {
     "promotion-off": [
      {
       "text": "רשימת הנכסים",
@@ -2841,49 +3588,341 @@
      {
       "text": "לא זמין כרגע",
       "where": "button.nlj-btn",
-      "ratio": 2.5,
+      "ratio": 4.28,
       "need": 4.5,
       "size": 16,
       "bold": true,
-      "fg": "rgb(255, 255, 255)",
-      "bg": "rgb(47,111,134)",
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
       "why": "disabled control"
      }
     ]
    }
   },
-  "at": "2026-10-05 12:07:44"
+  "at": "2026-10-05 12:20:47"
  },
  {
   "id": "L14",
   "variant": "after",
   "label": "real-wp+chrome",
-  "title": "the floating bar never covers a focused control (390 px, he)",
+  "title": "text contrast 4.5:1 (3:1 large) on computed colours (320 px, en)",
+  "status": "pass",
+  "evidence": {
+   "text_nodes_checked": 362,
+   "under": {},
+   "exempt": {
+    "promotion-off": [
+     {
+      "text": "Property list",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "Not available yet",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ]
+   }
+  },
+  "at": "2026-10-05 12:21:36"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "text contrast 4.5:1 (3:1 large) on computed colours (320 px, he)",
+  "status": "pass",
+  "evidence": {
+   "text_nodes_checked": 361,
+   "under": {},
+   "exempt": {
+    "promotion-off": [
+     {
+      "text": "רשימת הנכסים",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "לא זמין כרגע",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ]
+   }
+  },
+  "at": "2026-10-05 12:17:42"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "text contrast 4.5:1 (3:1 large) on computed colours (360 px, en)",
+  "status": "pass",
+  "evidence": {
+   "text_nodes_checked": 362,
+   "under": {},
+   "exempt": {
+    "promotion-off": [
+     {
+      "text": "Property list",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "Not available yet",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ]
+   }
+  },
+  "at": "2026-10-05 12:22:16"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "text contrast 4.5:1 (3:1 large) on computed colours (360 px, he)",
+  "status": "pass",
+  "evidence": {
+   "text_nodes_checked": 361,
+   "under": {},
+   "exempt": {
+    "promotion-off": [
+     {
+      "text": "רשימת הנכסים",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "לא זמין כרגע",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ]
+   }
+  },
+  "at": "2026-10-05 12:18:27"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "text contrast 4.5:1 (3:1 large) on computed colours (390 px, en)",
+  "status": "pass",
+  "evidence": {
+   "text_nodes_checked": 362,
+   "under": {},
+   "exempt": {
+    "promotion-off": [
+     {
+      "text": "Property list",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "Not available yet",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ]
+   }
+  },
+  "at": "2026-10-05 12:22:59"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "text contrast 4.5:1 (3:1 large) on computed colours (390 px, he)",
+  "status": "pass",
+  "evidence": {
+   "text_nodes_checked": 361,
+   "under": {},
+   "exempt": {
+    "promotion-off": [
+     {
+      "text": "רשימת הנכסים",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "לא זמין כרגע",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ]
+   }
+  },
+  "at": "2026-10-05 12:19:14"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "text contrast 4.5:1 (3:1 large) on computed colours (412 px, en)",
+  "status": "pass",
+  "evidence": {
+   "text_nodes_checked": 362,
+   "under": {},
+   "exempt": {
+    "promotion-off": [
+     {
+      "text": "Property list",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "Not available yet",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ]
+   }
+  },
+  "at": "2026-10-05 12:23:41"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "text contrast 4.5:1 (3:1 large) on computed colours (412 px, he)",
+  "status": "pass",
+  "evidence": {
+   "text_nodes_checked": 361,
+   "under": {},
+   "exempt": {
+    "promotion-off": [
+     {
+      "text": "רשימת הנכסים",
+      "where": "button.nlj-pill",
+      "ratio": 4.13,
+      "need": 4.5,
+      "size": 15,
+      "bold": true,
+      "fg": "rgb(255, 255, 255)",
+      "bg": "rgb(47,111,134)",
+      "why": "disabled control"
+     },
+     {
+      "text": "לא זמין כרגע",
+      "where": "button.nlj-btn",
+      "ratio": 4.28,
+      "need": 4.5,
+      "size": 16,
+      "bold": true,
+      "fg": "rgb(59, 71, 83)",
+      "bg": "rgb(227,225,218)",
+      "why": "disabled control"
+     }
+    ]
+   }
+  },
+  "at": "2026-10-05 12:20:01"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "the floating bar never covers a focused control (1440 px, en)",
   "status": "fail",
   "evidence": {
    "bar_on_every_screen": true,
-   "controls_focused": 170,
+   "controls_focused": 161,
    "covered": {
-    "auth-signup": [
+    "saved-draft": [
      {
-      "el": "input#j-name \"\"",
-      "covered_by": "#nlcta (the floating bar)"
+      "el": "a \"Sign in to another account\"",
+      "covered_by": "p.nlj-hint nlj-peracct"
      }
     ]
    },
-   "outside_viewport_after_focus": {
-    "preview": [
-     "a \"\"",
-     "a \"\"",
-     "a \"\"",
-     "a \"\"",
-     "a \"\"",
-     "a \"\"",
-     "a \"\"",
-     "a \"\"",
-     "a \"\""
-    ]
-   },
+   "outside_viewport_after_focus": {},
    "screens": [
     "auth-signup",
     "auth-existing-email",
@@ -2900,22 +3939,546 @@
     "saved-draft"
    ]
   },
-  "at": "2026-10-05 12:07:44"
+  "at": "2026-10-05 12:24:23"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "the floating bar never covers a focused control (1440 px, he)",
+  "status": "pass",
+  "evidence": {
+   "bar_on_every_screen": true,
+   "controls_focused": 161,
+   "covered": {},
+   "outside_viewport_after_focus": {},
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ]
+  },
+  "at": "2026-10-05 12:20:47"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "the floating bar never covers a focused control (320 px, en)",
+  "status": "fail",
+  "evidence": {
+   "bar_on_every_screen": true,
+   "controls_focused": 161,
+   "covered": {
+    "auth-signup": [
+     {
+      "el": "a \"To your broker site\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "a \"To your broker site\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "a \"To your broker site\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "a \"To your broker site\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "a \"Sign in to another account\"",
+      "covered_by": "p.nlj-hint nlj-peracct"
+     },
+     {
+      "el": "a \"To your broker site\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "details-errors": [
+     {
+      "el": "a \"Sign in to another account\"",
+      "covered_by": "p.nlj-hint nlj-peracct"
+     },
+     {
+      "el": "a \"To your broker site\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "details-filled": [
+     {
+      "el": "a \"Sign in to another account\"",
+      "covered_by": "p.nlj-hint nlj-peracct"
+     },
+     {
+      "el": "a \"To your broker site\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "photos": [
+     {
+      "el": "a \"Sign in to another account\"",
+      "covered_by": "p.nlj-hint nlj-peracct"
+     }
+    ],
+    "preview": [
+     {
+      "el": "a \"Sign in to another account\"",
+      "covered_by": "p.nlj-hint nlj-peracct"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "a \"Sign in to another account\"",
+      "covered_by": "p.nlj-hint nlj-peracct"
+     }
+    ]
+   },
+   "outside_viewport_after_focus": {},
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ]
+  },
+  "at": "2026-10-05 12:21:36"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "the floating bar never covers a focused control (320 px, he)",
+  "status": "fail",
+  "evidence": {
+   "bar_on_every_screen": true,
+   "controls_focused": 161,
+   "covered": {
+    "auth-signup": [
+     {
+      "el": "a \"תנאי השימוש\"",
+      "covered_by": "p.nlj-small"
+     },
+     {
+      "el": "a \"לאתר המתווכים שלכם\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "a \"תנאי השימוש\"",
+      "covered_by": "a."
+     },
+     {
+      "el": "a \"לאתר המתווכים שלכם\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "a \"לאתר המתווכים שלכם\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "a \"לאתר המתווכים שלכם\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "photos": [
+     {
+      "el": "button[ph-rm] \"הסרה: תמונה 3\"",
+      "covered_by": "ul.nlj-ph"
+     }
+    ]
+   },
+   "outside_viewport_after_focus": {},
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ]
+  },
+  "at": "2026-10-05 12:17:42"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "the floating bar never covers a focused control (360 px, en)",
+  "status": "fail",
+  "evidence": {
+   "bar_on_every_screen": true,
+   "controls_focused": 161,
+   "covered": {
+    "auth-signup": [
+     {
+      "el": "a \"To your broker site\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "a \"To your broker site\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "a \"To your broker site\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "a \"To your broker site\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "details-empty": [
+     {
+      "el": "a \"To your broker site\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "details-errors": [
+     {
+      "el": "a \"To your broker site\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "details-filled": [
+     {
+      "el": "a \"To your broker site\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "saved-draft": [
+     {
+      "el": "a \"Sign in to another account\"",
+      "covered_by": "p.nlj-hint nlj-peracct"
+     }
+    ]
+   },
+   "outside_viewport_after_focus": {},
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ]
+  },
+  "at": "2026-10-05 12:22:16"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "the floating bar never covers a focused control (360 px, he)",
+  "status": "fail",
+  "evidence": {
+   "bar_on_every_screen": true,
+   "controls_focused": 161,
+   "covered": {
+    "auth-signup": [
+     {
+      "el": "a \"תנאי השימוש\"",
+      "covered_by": "p.nlj-small"
+     },
+     {
+      "el": "a \"לאתר המתווכים שלכם\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "a \"תנאי השימוש\"",
+      "covered_by": "a."
+     },
+     {
+      "el": "a \"לאתר המתווכים שלכם\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "auth-login": [
+     {
+      "el": "a \"לאתר המתווכים שלכם\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "auth-recovery-sent": [
+     {
+      "el": "a \"לאתר המתווכים שלכם\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "saved-draft": [
+     {
+      "el": "a \"כניסה לחשבון אחר\"",
+      "covered_by": "p.nlj-hint nlj-peracct"
+     }
+    ]
+   },
+   "outside_viewport_after_focus": {},
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ]
+  },
+  "at": "2026-10-05 12:18:27"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "the floating bar never covers a focused control (390 px, en)",
+  "status": "pass",
+  "evidence": {
+   "bar_on_every_screen": true,
+   "controls_focused": 161,
+   "covered": {},
+   "outside_viewport_after_focus": {},
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ]
+  },
+  "at": "2026-10-05 12:22:59"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "the floating bar never covers a focused control (390 px, he)",
+  "status": "pass",
+  "evidence": {
+   "bar_on_every_screen": true,
+   "controls_focused": 161,
+   "covered": {},
+   "outside_viewport_after_focus": {},
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ]
+  },
+  "at": "2026-10-05 12:19:14"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "the floating bar never covers a focused control (412 px, en)",
+  "status": "fail",
+  "evidence": {
+   "bar_on_every_screen": true,
+   "controls_focused": 161,
+   "covered": {
+    "auth-signup": [
+     {
+      "el": "a \"terms of use\"",
+      "covered_by": "p.nlj-small"
+     }
+    ],
+    "auth-existing-email": [
+     {
+      "el": "a \"terms of use\"",
+      "covered_by": "p.nlj-small"
+     }
+    ]
+   },
+   "outside_viewport_after_focus": {},
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ]
+  },
+  "at": "2026-10-05 12:23:41"
+ },
+ {
+  "id": "L14",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "the floating bar never covers a focused control (412 px, he)",
+  "status": "fail",
+  "evidence": {
+   "bar_on_every_screen": true,
+   "controls_focused": 161,
+   "covered": {
+    "details-empty": [
+     {
+      "el": "a \"כניסה לחשבון אחר\"",
+      "covered_by": "p.nlj-hint nlj-peracct"
+     }
+    ],
+    "details-errors": [
+     {
+      "el": "a \"כניסה לחשבון אחר\"",
+      "covered_by": "p.nlj-hint nlj-peracct"
+     }
+    ],
+    "details-filled": [
+     {
+      "el": "a \"כניסה לחשבון אחר\"",
+      "covered_by": "p.nlj-hint nlj-peracct"
+     }
+    ],
+    "photos": [
+     {
+      "el": "a \"כניסה לחשבון אחר\"",
+      "covered_by": "p.nlj-hint nlj-peracct"
+     }
+    ],
+    "preview": [
+     {
+      "el": "a \"כניסה לחשבון אחר\"",
+      "covered_by": "p.nlj-hint nlj-peracct"
+     }
+    ],
+    "my-listings": [
+     {
+      "el": "a \"כניסה לחשבון אחר\"",
+      "covered_by": "p.nlj-hint nlj-peracct"
+     }
+    ]
+   },
+   "outside_viewport_after_focus": {},
+   "screens": [
+    "auth-signup",
+    "auth-existing-email",
+    "auth-login",
+    "auth-recovery-sent",
+    "details-empty",
+    "details-errors",
+    "details-filled",
+    "photos",
+    "preview",
+    "published",
+    "my-listings",
+    "promotion-off",
+    "saved-draft"
+   ]
+  },
+  "at": "2026-10-05 12:20:01"
  },
  {
   "id": "L15",
   "variant": "after",
   "label": "real-wp+chrome",
-  "title": "the \"sign in to another account\" link: one click, signed out, back on the journey (he and en)",
+  "title": "back and forward between the steps keep the draft; the floating bar is on the page",
   "status": "pass",
   "evidence": {
-   "href_he": "http://127.0.0.1:9401/wp-login.php?action=logout&redirect_to=http%3A%2F%2F127.0.0.1%3A9401%2Fpost-listing%2F%3Flang%3Dhe&_wpnonce=...",
-   "landed_he": "http://127.0.0.1:9401/post-listing/?lang=he",
-   "href_en": "http://127.0.0.1:9401/wp-login.php?action=logout&redirect_to=http%3A%2F%2F127.0.0.1%3A9401%2Fpost-listing%2F%3Flang%3Den&_wpnonce=...",
-   "landed_en": "http://127.0.0.1:9401/post-listing/?lang=en",
-   "en_signed_out_form": true
+   "trail": [
+    [
+     "back",
+     "photos",
+     1
+    ],
+    [
+     "back",
+     "details",
+     "תל אביב יפו"
+    ],
+    [
+     "forward",
+     "photos",
+     1
+    ]
+   ],
+   "floating_bar_present": true
   },
-  "at": "2026-10-05 12:13:09"
+  "at": "2026-10-05 12:21:37"
  },
  {
   "id": "L16",

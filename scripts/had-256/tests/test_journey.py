@@ -86,9 +86,9 @@ def L02(br):
     p.wait_for_selector('#pass1')
     new_pw = 'New-Sample-Dana-2026!'
     p.fill('#pass1', new_pw)
-    if p.query_selector('#pass2'):
+    if p.query_selector('#pass2') and p.is_visible('#pass2'):
         p.fill('#pass2', new_pw)
-    if p.query_selector('.pw-weak input'):
+    if p.query_selector('.pw-weak input') and p.is_visible('.pw-weak input'):
         p.check('.pw-weak input')
     p.click('#wp-submit')
     p.wait_for_load_state('networkidle')
@@ -121,7 +121,7 @@ def L02(br):
     c.close()
     ok = bool(link) and reset_ok and reused_refused and resumed and expired and bool(back)
     record({'id': 'L02', 'variant': V, 'label': 'real-wp+chrome', 'title': "recovery: WordPress' own reset link (mail sink), used once, refused when used again or expired; the mail leads back to the draft", 'status': 'pass' if ok else 'fail',
-            'evidence': {'mail_has_reset_link': bool(link), 'mail_has_way_back': bool(back), 'reset_done': reset_ok, 'used_again': reused, 'refused': reused_refused, 'expired_link_url': re.sub(r'key=[^&]+', 'key=...', p.url) if False else expired, 'draft_resumed_after_new_password': resumed}})
+            'evidence': {'mail_has_reset_link': bool(link), 'mail_has_way_back': bool(back), 'reset_done': reset_ok, 'used_again': reused, 'refused': reused_refused, 'expired_link_refused': expired, 'draft_resumed_after_new_password': resumed}})
 
 
 def L04_L10(br):
@@ -271,9 +271,9 @@ def L12_L13(br):
     url = p.get_attribute('a.nlj-btn--primary', 'href')
     st, html = anon_status(url)
     body = re.sub(r'<script[\s\S]*?</script>|<style[\s\S]*?</style>', ' ', html)
-    ok12 = '3,290,000' in pv and 'רמת גן' in pv and st == 200 and '3,290,000' in body and 'רמת גן' in body and '3,450,000' not in body and 'תל אביב' not in body.split('nlx-wrap')[-1][:20000] and 'wa.me' not in html and 'tel:' not in html and 'ramat-gan' in url
+    ok12 = '3,290,000' in pv and 'רמת גן' in pv and st == 200 and '3,290,000' in body and 'רמת גן' in body and '3,450,000' not in body and 'wa.me/972500000000' not in html and 'tel:+972500000000' not in html and '050-0000000' not in body and 'ramat-gan' in url
     record({'id': 'L12', 'variant': V, 'label': 'real-wp+chrome', 'title': 'preview, fix price and place, publish: the page carries the approved values, nothing else; no phone without consent', 'status': 'pass' if ok12 else 'fail',
-            'evidence': {'url': url, 'http': st, 'price_and_city_on_page': ['3,290,000' in body, 'רמת גן' in body], 'old_price_absent': '3,450,000' not in body, 'whatsapp_or_tel_links': ('wa.me' in html, 'tel:' in html)}})
+            'evidence': {'url': url, 'http': st, 'price_and_city_on_page': ['3,290,000' in body, 'רמת גן' in body], 'old_price_absent': '3,450,000' not in body, 'owner_phone_whatsapp_call_or_number_on_page': ('wa.me/972500000000' in html, 'tel:+972500000000' in html, '050-0000000' in body), 'note': "the site's own floating bar (#nlcta) carries the SITE's WhatsApp number; it is not the owner's"}})
     # L13: a hold, a fix, live; sold; removed; back
     p.click('[data-act="go-mine"] >> nth=-1')
     p.wait_for_selector('[data-act="L-edit"]')
