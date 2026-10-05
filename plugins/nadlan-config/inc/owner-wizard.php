@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config · Owners publish on the same engine (x-owner-wizard) · v2.0.1 · 5.10.2026 (HAD-256)
+ * nadlan-config · Owners publish on the same engine (x-owner-wizard) · v2.0.2 · 5.10.2026 (HAD-256)
  *
  * Owner order 23.9.2026: "the old wizard moves to the same engine": /post-listing/ keeps its address and its
  * account, and everything after it is the broker engine (x-broker-drop): a Latin address
@@ -9,6 +9,11 @@
  * "My listings" on the same page: sold or let in one tap, a new price in two (reg. 19(c) spirit for owners too).
  * Brokers who reach this page are sent to their own free site (/brokers/#join) instead.
  *
+ * 2.0.2 (5.10.2026, the theme bench, main's copy and layout round): under a page H1 the first screen drops its own
+ *   kicker and H2 (the page H1 is the title; the lead stays), so on a phone the first field is above the site's bar;
+ *   one "how it works": the journey's own box, now also under the form on a phone, and the plugin's 1.x box
+ *   (inc/property-wizard.php, visitors only) is taken out of the page; ?lang=en gets an English shell (the page's
+ *   Hebrew heading and text replaced by an English H1, lang/dir en/ltr; English title and description).
  * 2.0.1 (5.10.2026, the theme bench): a control the page scrolls UP to lands below the site's sticky header (.nlhp-top),
  *   not under it (--nlj-head-room measured, the header cleared on focus). Nothing else changed.
  * 2.0.0 (HAD-256, owner-approved design v5 "NadLan Listing Journey", Maya's contract L01-L17):
@@ -40,7 +45,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { return; }
 if ( defined( 'NL_OWNER_VERSION' ) ) { return; }
-define( 'NL_OWNER_VERSION', '2.0.1' );
+define( 'NL_OWNER_VERSION', '2.0.2' );
 define( 'NL_OWNER_MAX_ACTIVE', 5 );
 define( 'NL_OWNER_MAX_DRAFTS', 10 );
 define( 'NL_OWNER_PUB_DAY', 8 );
@@ -213,6 +218,7 @@ function nl_owner_t( $k, $lang = 'he' ) {
 			'ground'      => 'קומת קרקע',
 			'sale'        => 'למכירה',
 			'rent'        => 'להשכרה',
+			'shell_h1'    => 'פרסום נכס למכירה או להשכרה, בחינם',
 		),
 		'en' => array(
 			'nf'          => 'Not found.',
@@ -281,6 +287,10 @@ function nl_owner_t( $k, $lang = 'he' ) {
 			'ground'      => 'Ground floor',
 			'sale'        => 'For sale',
 			'rent'        => 'For rent',
+			'shell_h1'    => 'List your property for sale or rent, free',
+			'shell_title' => 'List your property for sale or rent, free | nad-lan',
+			'shell_desc'  => 'Owners list a home for sale or rent on nad-lan for free: open an account, add the details and photos, and the listing goes live at its own address. No commission.',
+			'shell_p'     => 'No commission and no credit card. Your phone number appears in the listing only if you choose to publish it.',
 		),
 	);
 	$lang = nl_owner_lang( $lang );
@@ -1759,6 +1769,12 @@ function nl_owner_shortcode( $atts = array() ) {
 		if ( $phone === '' ) { $phone = (string) get_user_meta( $uid, 'phone', true ); }
 	}
 	$page = (string) get_permalink();
+	// 2.0.2: the page already has its own H1 above the journey (page 4958 does): the first screen then drops its own
+	// kicker and H2 and keeps its lead (one title, one intro; on a phone the first field clears the site's bar)
+	$post     = get_post();
+	$pc       = $post ? (string) $post->post_content : '';
+	$sc       = strpos( $pc, '[nadlan_listing_wizard' );
+	$under_h1 = false !== $sc && false !== stripos( substr( $pc, 0, $sc ), '<h1' );
 	$cfg  = array(
 		'api'       => esc_url_raw( rest_url( 'nadlan/v1/owner' ) ),
 		'nonce'     => wp_create_nonce( 'wp_rest' ),
@@ -1777,12 +1793,15 @@ function nl_owner_shortcode( $atts = array() ) {
 		// wp_logout_url() returns an HTML-escaped URL (&amp;); the app escapes once, into the href
 		'logout'    => $uid ? html_entity_decode( wp_logout_url( add_query_arg( 'lang', $lang, $page ) ), ENT_QUOTES, 'UTF-8' ) : '',
 		'engine'    => nl_owner_engine_ok(),
+		'underH1'   => $under_h1,
 		'v'         => NL_OWNER_VERSION,
 	);
 	// what a visitor without the app (or a crawler) sees: the screen's words, no form
-	$intro = $he
-		? '<p class="nlj-kick">פרסום מודעה מבעלים</p><h2 class="nlj-h1">מפרסמים את הנכס שלכם</h2><p class="nlj-lead">פותחים חשבון בשם ובמייל, ממלאים את פרטי הנכס ומעלים תמונות. המודעה עולה בכתובת משלה. בלי עמלה.</p>'
-		: '<p class="nlj-kick">List your property</p><h2 class="nlj-h1">List your property, owner to buyer</h2><p class="nlj-lead">Open an account with your name and email, fill in the property details and add photos. The listing goes live at its own address. No commission.</p>';
+	$intro = ( $under_h1 ? '' : ( $he
+		? '<p class="nlj-kick">פרסום מודעה מבעלים</p><h2 class="nlj-h1">מפרסמים את הנכס שלכם</h2>'
+		: '<p class="nlj-kick">List your property</p><h2 class="nlj-h1">List your property, owner to buyer</h2>' ) ) . ( $he
+		? '<p class="nlj-lead">פותחים חשבון בשם ובמייל, ממלאים את פרטי הנכס ומעלים תמונות. המודעה עולה בכתובת משלה. בלי עמלה.</p>'
+		: '<p class="nlj-lead">Open an account with your name and email, fill in the property details and add photos. The listing goes live at its own address. No commission.</p>' );
 	$h  = '<style id="nlj-css">' . nl_owner_css() . '</style>';
 	$h .= '<section class="nlj alignfull" id="nlj-app" dir="' . ( $he ? 'rtl' : 'ltr' ) . '" lang="' . $lang . '" data-v="' . esc_attr( NL_OWNER_VERSION ) . '">';
 	$h .= '<div class="nlj-wrap"><div class="nlj-intro">' . $intro . '<noscript><p class="nlj-note">' . ( $he ? 'הפרסום עובד בדפדפן עם JavaScript פעיל.' : 'Publishing works in a browser with JavaScript on.' ) . '</p></noscript></div></div></section>';
@@ -1791,6 +1810,39 @@ function nl_owner_shortcode( $atts = array() ) {
 	if ( ! has_action( 'wp_footer', 'nl_owner_footer' ) ) { add_action( 'wp_footer', 'nl_owner_footer', 20 ); }
 	return $h;
 }
+
+/* 2.0.2: the page around the journey. One "how it works" (the journey's own): the 1.x box that inc/property-wizard.php
+   appends for visitors is taken out wherever the journey is on the page. ?lang=en: the page's own Hebrew heading and text
+   (everything before the journey) become an English shell, an H1 in English (lang en, ltr), and the title and description
+   follow. The site's header and footer stay as they are. */
+function nl_owner_page_shell( $html ) {
+	if ( false === strpos( (string) $html, 'id="nlj-app"' ) ) { return $html; }
+	$html = (string) preg_replace( '#<section class="nlpub-how"[^>]*>.*?</section>\s*(?:<style id="nadlan-pub-css">.*?</style>)?#s', '', (string) $html );
+	if ( 'en' === nl_owner_page_lang( array() ) ) {
+		$cut = strpos( $html, '<style id="nlj-css">' );
+		if ( false !== $cut ) {
+			// the page's own text before the journey (its H1, and a paragraph when the page has one) in English
+			$para = false !== stripos( substr( $html, 0, $cut ), '<p' ) ? '<p class="wp-block-paragraph">' . esc_html( nl_owner_t( 'shell_p', 'en' ) ) . '</p>' : '';
+			$html = '<div class="nlj-shell" lang="en" dir="ltr"><h1 class="wp-block-heading">' . esc_html( nl_owner_t( 'shell_h1', 'en' ) ) . '</h1>' . $para . '</div>' . substr( $html, $cut );
+		}
+	}
+	return $html;
+}
+add_filter( 'the_content', 'nl_owner_page_shell', 20 );
+
+function nl_owner_shell_en() {
+	if ( is_admin() || ! is_singular() || 'en' !== nl_owner_page_lang( array() ) ) { return false; }
+	$post = get_post( get_queried_object_id() );
+	return $post && has_shortcode( (string) $post->post_content, 'nadlan_listing_wizard' );
+}
+add_filter( 'pre_get_document_title', function ( $t ) { return nl_owner_shell_en() ? nl_owner_t( 'shell_title', 'en' ) : $t; }, 20 );
+foreach ( array( 'wpseo_title', 'wpseo_opengraph_title', 'wpseo_twitter_title' ) as $nl_owner_f ) {
+	add_filter( $nl_owner_f, function ( $t ) { return nl_owner_shell_en() ? nl_owner_t( 'shell_title', 'en' ) : $t; }, 20 );
+}
+foreach ( array( 'wpseo_metadesc', 'wpseo_opengraph_desc', 'wpseo_twitter_description' ) as $nl_owner_f ) {
+	add_filter( $nl_owner_f, function ( $t ) { return nl_owner_shell_en() ? nl_owner_t( 'shell_desc', 'en' ) : $t; }, 20 );
+}
+unset( $nl_owner_f );
 
 function nl_owner_footer() {
 	if ( empty( $GLOBALS['nl_owner_cfg'] ) ) { return; }
@@ -1825,6 +1877,7 @@ html:has(#nlj-app){scroll-padding-bottom:var(--nlj-bar-room,112px);scroll-paddin
 .nlj-cols{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
 .nlj-main{flex:999 1 560px;min-width:0;display:flex;flex-direction:column;gap:18px}
 .nlj-aside{flex:1 1 320px;min-width:0;display:none;flex-direction:column;gap:16px}
+.nlj-aside--how{display:flex}
 .nlj-card{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:18px}
 .nlj-card--sand{background:var(--sand);border-color:transparent}
 .nlj-lead{font-size:17px;line-height:1.55;color:var(--ink2);max-width:60ch}
@@ -2457,7 +2510,7 @@ render.screen=function(){
 function fieldErr(id,msg){return msg?'<p class="nlj-err" id="'+id+'-err" role="alert">'+ICO.err+'<span>'+esc(msg)+'</span></p>':'';}
 function renderAuth(){
  var a=S.auth,e=S.authErr||{},h='';
- h+='<div class="nlj-cols"><div class="nlj-main"><div class="nlj-head" data-focus><p class="nlj-kick">'+esc(T.authKick)+'</p><h2 class="nlj-h1">'+esc(T.authH1)+'</h2><p class="nlj-lead">'+esc(T.authLead)+'</p></div><div class="nlj-card">';
+ h+='<div class="nlj-cols"><div class="nlj-main"><div class="nlj-head" data-focus>'+(C.underH1?'':'<p class="nlj-kick">'+esc(T.authKick)+'</p><h2 class="nlj-h1">'+esc(T.authH1)+'</h2>')+'<p class="nlj-lead">'+esc(T.authLead)+'</p></div><div class="nlj-card">';
  h+='<div class="nlj-tabs" role="group" aria-label="'+esc(T.authTabsAria)+'"><button class="nlj-tab" type="button" aria-pressed="'+(a==='signup')+'" data-act="tab-signup">'+esc(T.tabSignup)+'</button><button class="nlj-tab" type="button" aria-pressed="'+(a!=='signup')+'" data-act="tab-login">'+esc(T.tabLogin)+'</button></div>';
  if(a==='signup'){
   h+='<form class="nlj-form" id="nlj-signup" novalidate>';
@@ -2486,7 +2539,7 @@ function renderAuth(){
   h+='<div class="nlj-actions"><button class="nlj-btn nlj-btn--primary" type="submit" id="j-rec-go"'+(wait?' disabled':'')+'>'+esc(wait?T.recWait(wait):T.recSend)+'</button><button class="nlj-btn nlj-btn--quiet" type="button" data-act="tab-login">'+esc(T.backLogin)+'</button></div></form>';
  }
  h+='</div><p class="nlj-small">'+esc(T.brokerLine)+' <a href="'+esc(C.brokers)+'">'+esc(T.brokerLink)+'</a></p></div>';
- h+='<aside class="nlj-aside" aria-label="'+esc(T.howAria)+'"><div class="nlj-card nlj-card--sand"><h2>'+esc(T.howH)+'</h2><ol class="nlj-steps"><li><span class="nlj-dot">1</span>'+esc(T.how1)+'</li><li><span class="nlj-dot">2</span>'+esc(T.how2)+'</li><li><span class="nlj-dot">3</span>'+esc(T.how3)+'</li></ol><p class="nlj-small">'+esc(T.howNote)+'</p></div></aside></div>';
+ h+='<aside class="nlj-aside nlj-aside--how" aria-label="'+esc(T.howAria)+'"><div class="nlj-card nlj-card--sand"><h2>'+esc(T.howH)+'</h2><ol class="nlj-steps"><li><span class="nlj-dot">1</span>'+esc(T.how1)+'</li><li><span class="nlj-dot">2</span>'+esc(T.how2)+'</li><li><span class="nlj-dot">3</span>'+esc(T.how3)+'</li></ol><p class="nlj-small">'+esc(T.howNote)+'</p></div></aside></div>';
  render.frame(h);
  if(S.auth==='recover'&&S.recUntil>Date.now()){setTimeout(function(){if(S.screen==='auth'&&S.auth==='recover'){var b=$('j-rec-go'),w=Math.max(0,Math.ceil((S.recUntil-Date.now())/1000));if(b){b.disabled=w>0;b.textContent=w?T.recWait(w):T.recSend;}if(w>0){renderAuthTick();}}},1000);}
 }
