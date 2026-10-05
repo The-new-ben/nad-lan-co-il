@@ -3777,11 +3777,11 @@ RELEASE DONE 1.72.424 by the Kikar loop [main] 16:40 Israel: low-priority head h
 - **Next notch:** win the FCP back by deferring the non-critical head scripts (leaflet from unpkg, the hotjar loader, others), measured.
 - **HAD-421 since this morning** (phone, slow 4G): world usable 21.7 → 13.6 s; 2.64 → 1.33 MB until usable.
 RELEASE IN PROGRESS 1.72.425 by the Kikar loop [main] start 17:10 Israel (HAD-421 step 6: leaflet.css non-blocking on project pages; dry run, then live)
-RELEASE DONE 1.72.425 by the Kikar loop [main] 17:25 Israel: leaflet.css non-blocking on project pages (project-stage.php 28287f7761 -> 9f973a3475); all checks OK; rollback .bak425
+RELEASE DONE 1.72.425 by the Kikar loop [main] 16:34 Israel (time corrected from the deploy record; first written as 17:25): leaflet.css non-blocking on project pages (project-stage.php 28287f7761 -> 9f973a3475); all checks OK; rollback .bak425
 
 ### 5.10.2026 ~17:50 Israel: main RECEIPT 1.72.425 (HAD-421 step 6: leaflet.css stops blocking the first paint on project pages; Kikar loop turn 35)
 - **Design:** v104.48 (DS artifact version 201).
-- **Hunk:** perf_425.py adds nadlan_leaflet_css_async (style_loader_tag). On nadlan_project singles the leaflet stylesheet (unpkg.com) is printed media="print" onload → all, plus a noscript copy; other templates are unchanged. project-stage.php 28287f7761 → 9f973a3475. Live 17:25, all checks OK (the async tag + noscript on hamedina he/en and rainbow; no blocking leaflet tag there). Rollback .bak425.
+- **Hunk:** perf_425.py adds nadlan_leaflet_css_async (style_loader_tag). On nadlan_project singles the leaflet stylesheet (unpkg.com) is printed media="print" onload → all, plus a noscript copy; other templates are unchanged. project-stage.php 28287f7761 → 9f973a3475. Live 16:34 Israel (corrected), all checks OK (the async tag + noscript on hamedina he/en and rainbow; no blocking leaflet tag there). Rollback .bak425.
 - **Headless Chrome:** the stylesheet switches to media=all; no page errors.
 - **Finding (next notch):** NO Leaflet map exists on project pages at all. L is defined, but there are 0 .leaflet-container on hamedina and rainbow after a full scroll; areamap.js contains no Leaflet call. Leaflet (js + css from unpkg) is enqueued by project-experience.php (also by property-showroom and professional-profile), so on project pages it is dead weight. To be removed after a code check that nothing calls L there.
 - **Speed (phone, slow 4G, 5 runs; 2 had TTFB 1.8 s server noise, so compared net of TTFB and on the 3 clean runs):**
@@ -3789,15 +3789,30 @@ RELEASE DONE 1.72.425 by the Kikar loop [main] 17:25 Israel: leaflet.css non-blo
   - DCL 7.2 → 6.3 s;
   - world usable 13.6 → 12.8 s.
 - **HAD-421 since this morning (slow 4G):** world usable 21.7 → 12.8 s; FCP 3.2 → 2.85 s; 2.64 → 1.33 MB until usable.
-RELEASE IN PROGRESS 1.72.426 by the Kikar loop [main] start 18:00 Israel (HAD-421 step 7: no Leaflet on project pages with the Mapbox map; dry run, then live)
-RELEASE DONE 1.72.426 by the Kikar loop [main] 18:15 Israel: no Leaflet on Mapbox project pages (project-stage.php 9f973a3475 -> f611d341b1); all checks OK; rollback .bak426
+RELEASE IN PROGRESS 1.72.426 by the Kikar loop [main] start ~17:05 Israel (time corrected: first written as 18:00) (HAD-421 step 7: no Leaflet on project pages with the Mapbox map; dry run, then live)
+RELEASE DONE 1.72.426 by the Kikar loop [main] 17:16 Israel (time corrected from the deploy record; first written as 18:15): no Leaflet on Mapbox project pages (project-stage.php 9f973a3475 -> f611d341b1); all checks OK; rollback .bak426
 
-### 5.10.2026 ~18:40 Israel: main RECEIPT 1.72.426 (HAD-421 step 7: no Leaflet on project pages that show the Mapbox map; Kikar loop turn 36)
+### 5.10.2026 ~17:30 Israel: main RECEIPT 1.72.426 (HAD-421 step 7: no Leaflet on project pages that show the Mapbox map; Kikar loop turn 36)
 - **Design:** v104.49 (DS artifact version 203).
-- **Hunk:** perf_426.py adds nadlan_leaflet_off (wp_enqueue_scripts 9999). On nadlan_project singles, when nadlan_mapbox_token() is set, 'leaflet' is dropped from nadlan-pjx-js deps and the leaflet script + style are dequeued. Without a token nothing changes (the fallback keeps its library). project-stage.php 9f973a3475 → f611d341b1. Live 18:15, all checks OK on the first run; rollback .bak426.
+- **Hunk:** perf_426.py adds nadlan_leaflet_off (wp_enqueue_scripts 9999). On nadlan_project singles, when nadlan_mapbox_token() is set, 'leaflet' is dropped from nadlan-pjx-js deps and the leaflet script + style are dequeued. Without a token nothing changes (the fallback keeps its library). project-stage.php 9f973a3475 → f611d341b1. Live 17:16 Israel (deploy-result-426.json), all checks OK on the first run; rollback .bak426.
 - **Checks replaced (the 409 lesson):** the 425 checks that required the async leaflet tag are replaced by never-checks on leaflet js + css on hamedina, hamedina-en, rainbow, duo.
 - **Headless Chrome (desktop 1366):** hamedina, rainbow, duo, einstein-tower, h-infinity-somail: the Mapbox map boots after scroll (canvas present, NLPJX_MAP set), window.L undefined, 0 page errors. Home unaffected (scoped to project singles).
 - **Fleet sweep (raw HTML, 240 Hebrew project pages):** 228 carry the Mapbox map, 0 still load Leaflet, 0 print the Leaflet fallback element. 12 pages have NO area map at all (no coordinates; not caused by this release, the element is printed by project-experience.php only with lat/lng): aurelia, utopia-sde-dov and 10 Hebrew-slug pages. Logged as a gap.
 - **Speed (phone, slow 4G, 5 runs, all clean, net of TTFB):** DCL 5.58 → 4.47 s; world usable 12.03 → 12.02 s (flat); FCP 2.14 → 2.19 s (noise); requests 51 → 49.
 - **HAD-421 since this morning (slow 4G):** world usable 21.7 → 12.7 s; DCL 7.2 → 5.1 s raw; FCP 3.2 → 2.83 s; 2.64 → 1.33 MB until usable.
 - **Next notch found:** the theme's style.css is loaded twice (style.min.css 50.5 KB + style.css 52.6 KB, the same 287 rules); dropping the EARLIER copy is cascade-neutral (the later identical copy always wins). Also: Google Fonts css (third origin) blocks the first paint; WooCommerce blockUI + js.cookie load on project pages.
+RELEASE IN PROGRESS 1.72.427 by the Kikar loop [main] start 17:34 Israel (machine clock) (HAD-421 step 8: the theme base stylesheet printed once; dry run, then live)
+RELEASE DONE 1.72.427 by the Kikar loop [main] 17:40 Israel (machine clock): the theme base stylesheet printed once (project-stage.php f611d341b1 -> c81e0b2e18); all checks OK; rollback .bak427
+
+### 5.10.2026 ~17:55 Israel (machine clock): main RECEIPT 1.72.427 (HAD-421 step 8: the theme base stylesheet printed once; Kikar loop turn 37)
+- **Design:** v104.50 (DS artifact version 204).
+- **Found:** every page printed the theme's base stylesheet twice: 'nadlan-revenue-style' (style.min.css, 50.5 KB) early and the child theme's 'nlpc-parent-style' (style.css, 52.6 KB) later. Compared: the same 287 rules, 8 @media, 15 @font-face; the only differences are a space before !important, '*:focus' against ':focus' and one selector-list order.
+- **Hunk:** perf_427.py adds nadlan_theme_css_once (wp_print_styles 1). When nlpc-parent-style is enqueued and both sources are the expected files, nadlan-revenue-style keeps its handle (its dependents keep their order) with src=false, so it prints nothing. project-stage.php f611d341b1 → c81e0b2e18. Live 17:40 Israel (deploy-result-427.json), all checks OK on the first run; rollback .bak427.
+- **Proof that nothing changed on screen:** new tool tools/style_fingerprint.py (computed style of every element, ~45 properties, phone 390 + desktop 1366, transitions frozen, 3D/film/map parts skipped).
+  - Two runs before the release were identical.
+  - After vs before: 9 of 10 page-widths identical (/, /brokers/, /projects/, hamedina, rainbow).
+  - The 10th (/projects/@390) is a pre-existing flicker: .nlcp-herogrid gets 7 px side margins on about 1 load in 4 on the SAME version, so it is not this release. Logged as HAD-426.
+- **Speed (phone, slow 4G, 5 clean runs, net of TTFB):** FCP 2.19 → 2.17 s (noise); DCL 4.47 → 4.36 s; world usable 12.02 → 11.76 s (raw 12.39 s); 1325 → 1312 KB; requests 49 → 48.
+- **HAD-421 since this morning:** world usable 21.7 → 12.4 s raw.
+- **Decision recorded, not changed:** the stage's sources line names Tel Aviv-Yafo's open GIS. The municipality's open-data terms let anyone share and adapt "provided you give the appropriate credit", so the credit stays; the loop's "no source names" yields to the licence.
+- **Next notch, measured first:** Google Fonts css (fonts.googleapis.com, a third origin) blocks the first paint; an upper-bound run with it blocked is running (tools/stage_speed.py --block).

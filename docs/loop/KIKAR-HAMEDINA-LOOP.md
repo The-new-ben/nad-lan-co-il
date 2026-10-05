@@ -214,7 +214,16 @@ Every turn does ALL of these, not only the current phase:
 
 ## Scale-up ledger (newest on top)
 
-- **5.10 ~18:40, turn 36: HAD-421 step 7 LIVE (1.72.426): no Leaflet on project pages that show the Mapbox map.**
+- **5.10 ~17:55, turn 37: HAD-421 step 8 LIVE (1.72.427): the theme stylesheet is printed once.**
+  - **Found:** style.min.css and style.css (the same 287 rules) were both printed on every page.
+  - **Change:** the earlier handle keeps its place without a file.
+  - **Proven neutral** with the new tools/style_fingerprint.py: 9/10 page-widths identical. The 10th is a pre-existing flicker on /projects/ (HAD-426).
+  - **Measured:** world usable 12.02 → 11.76 s net; −13 KB; −1 request.
+  - **Since the morning:** 21.7 → 12.4 s raw.
+  - **Licence:** the stage's sources line stays, since the Tel Aviv open-data terms require credit.
+  - **Next notch, sharper:** Google Fonts css off the critical path, only if the upper-bound run (fonts css blocked) shows a real FCP gain and the fallback swap does not jump the layout; then the world's scene-build CPU.
+
+- **5.10 ~17:30, turn 36: HAD-421 step 7 LIVE (1.72.426): no Leaflet on project pages that show the Mapbox map.**
   - **Measured (5 clean runs, net of server time):** DCL 5.58 → 4.47 s; world usable flat (12.0 s); 2 fewer requests.
   - **Proven:** the Mapbox map boots on 5 project pages with 0 errors; fleet sweep 228/240 Hebrew pages carry the map, 0 load Leaflet.
   - **Found:** 12 project pages have no area map at all (no coordinates), logged as a gap.

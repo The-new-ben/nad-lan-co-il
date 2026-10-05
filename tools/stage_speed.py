@@ -7,7 +7,10 @@ slower) and "none" (no throttle). Per load it records, in ms from navigation sta
 the moment the world starts loading (its loader shows) and the moment it is usable (the poster is gone: world.js boot() done,
 the scene drawn and the controls live), plus the bytes and the request count up to that moment.
 
-  python tools/stage_speed.py https://nad-lan.co.il/projects/hamedina/ [--runs 3] [--out docs/research/stage-speed/x.json]"""
+  python tools/stage_speed.py https://nad-lan.co.il/projects/hamedina/ [--runs 3] [--out docs/research/stage-speed/x.json]
+
+--block "*fonts.googleapis.com*,*other*" blocks those URLs in the browser (CDP Network.setBlockedURLs): an upper bound on what
+making a resource non-blocking (or removing it) could win, measured before building the change (HAD-421, 5.10.2026)."""
 import json, os, statistics, sys, time
 
 PROFILES = {
@@ -16,7 +19,7 @@ PROFILES = {
 }
 
 
-def one(p, url, prof):
+def one(p, url, prof, block=None):
     b = p.chromium.launch(channel="chrome", headless=True)
     ctx = b.new_context(viewport={"width": 390, "height": 844}, device_scale_factor=3, is_mobile=True, has_touch=True,
                         user_agent="Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Mobile Safari/537.36 NadLan-Speed/1.0")
@@ -24,6 +27,8 @@ def one(p, url, prof):
     cdp = ctx.new_cdp_session(page)
     cdp.send("Network.enable")
     cdp.send("Network.setCacheDisabled", {"cacheDisabled": True})
+    if block:
+        cdp.send("Network.setBlockedURLs", {"urls": block})
     if prof:
         cdp.send("Network.emulateNetworkConditions", {"offline": False, "latency": prof["rtt"], "downloadThroughput": prof["down"], "uploadThroughput": prof["up"]})
         cdp.send("Emulation.setCPUThrottlingRate", {"rate": prof["cpu"]})
@@ -71,13 +76,14 @@ def main(argv):
     url = argv[0]
     runs = int(argv[argv.index("--runs") + 1]) if "--runs" in argv else 3
     out = argv[argv.index("--out") + 1] if "--out" in argv else None
-    rep = {"url": url, "at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "runs": runs, "profiles": {}}
+    block = [x for x in argv[argv.index("--block") + 1].split(",") if x] if "--block" in argv else None
+    rep = {"url": url, "at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "runs": runs, "block": block, "profiles": {}}
     with sync_playwright() as p:
         for name, prof in PROFILES.items():
             rows = []
             for i in range(runs):
                 sep = "&" if "?" in url else "?"
-                r = one(p, url + sep + f"nlspeed={int(time.time())}{i}", prof)
+                r = one(p, url + sep + f"nlspeed={int(time.time())}{i}", prof, block)
                 rows.append(r)
                 print(name, i + 1, {k: r[k] for k in ("ttfb", "fcp", "lcp", "dcl", "load", "world_loading", "world_ready", "kb_to_ready", "requests_to_ready")})
             med = {k: statistics.median([r[k] for r in rows]) for k in ("ttfb", "fcp", "lcp", "dcl", "load", "world_loading", "world_ready", "kb_to_ready", "requests_to_ready")}
