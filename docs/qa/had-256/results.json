@@ -1,6 +1,150 @@
 [
  {
   "id": "BA",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "after: the same scenarios (1440-he)",
+  "status": "pass",
+  "evidence": {
+   "existing_email": {
+    "message": "המייל הזה כבר רשום אצלנו. השם והמייל שכתבתם נשמרו בטופס.\nכניסה עם המייל הזה",
+    "input_kept": true
+   },
+   "recovery_unknown_email": "אם המייל רשום אצלנו, הקישור בדרך.\nהקישור תקף לזמן מוגבל. לא הגיע? בדקו גם בתיקיית הספאם.",
+   "offline_status": "אין חיבור לאינטרנט\nמה שתכתבו נשמר במכשיר הזה ויישלח לחשבון כשהחיבור יחזור. אל תסגרו את הדף עד אז.",
+   "back_online_status": "נשמר בחשבון\nהשמירה האחרונה ב־⁦12:47⁩. אפשר לעצור ולהמשיך מכל מכשיר.",
+   "after_reload": {
+    "text_kept": true,
+    "storage_keys": [
+     "nlow:auth-ping"
+    ]
+   },
+   "two_tabs": "הטיוטה פתוחה גם בלשונית אחרת\nשם נשמר שינוי ב־⁦12:47⁩. כדי לא לדרוס אותו, בחרו עם איזו גרסה להמשיך.\nלטעון את הגרסה מהלשונית האחרת\nלהמשיך כאן ולשמור את הגרסה הזו\n\nמה שונה:\n\nחדרים\n: כאן «4» · שם «5»\nשטח\n: כאן «120» · שם «96»",
+   "conflict_lists_rooms": true,
+   "two_tabs_result": {
+    "rooms": "4",
+    "size": "120"
+   },
+   "failed_photo": "תמונה 3\nהתמונה לא עלתה. תקלה בשרת. אפשר לנסות שוב.\nלנסות שוב",
+   "after_retry": {
+    "tiles": 3,
+    "failed": 0
+   },
+   "lost_answer": "החיבור נפל לפני שהגיעה תשובה\nייתכן שהמודעה כבר פורסמה. בדקו במודעות שלי, או בדקו שוב כאן: אותה בקשה נשלחת שוב.\nלבדוק שוב\nהמודעות שלי",
+   "published_rows": 1
+  },
+  "at": "2026-10-05 12:47:59"
+ },
+ {
+  "id": "BA",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "after: the same scenarios (320-he)",
+  "status": "pass",
+  "evidence": {
+   "existing_email": {
+    "message": "המייל הזה כבר רשום אצלנו. השם והמייל שכתבתם נשמרו בטופס.\nכניסה עם המייל הזה",
+    "input_kept": true
+   },
+   "recovery_unknown_email": "אם המייל רשום אצלנו, הקישור בדרך.\nהקישור תקף לזמן מוגבל. לא הגיע? בדקו גם בתיקיית הספאם.",
+   "offline_status": "אין חיבור לאינטרנט\nמה שתכתבו נשמר במכשיר הזה ויישלח לחשבון כשהחיבור יחזור. אל תסגרו את הדף עד אז.",
+   "back_online_status": "נשמר בחשבון\nהשמירה האחרונה ב־⁦12:45⁩. אפשר לעצור ולהמשיך מכל מכשיר.",
+   "after_reload": {
+    "text_kept": true,
+    "storage_keys": [
+     "nlow:auth-ping"
+    ]
+   },
+   "two_tabs": "הטיוטה פתוחה גם בלשונית אחרת\nשם נשמר שינוי ב־⁦12:45⁩. כדי לא לדרוס אותו, בחרו עם איזו גרסה להמשיך.\nלטעון את הגרסה מהלשונית האחרת\nלהמשיך כאן ולשמור את הגרסה הזו\n\nמה שונה:\n\nחדרים\n: כאן «4» · שם «5»\nשטח\n: כאן «120» · שם «96»",
+   "conflict_lists_rooms": true,
+   "two_tabs_result": {
+    "rooms": "4",
+    "size": "120"
+   },
+   "failed_photo": "תמונה 3\nהתמונה לא עלתה. תקלה בשרת. אפשר לנסות שוב.\nלנסות שוב",
+   "after_retry": {
+    "tiles": 3,
+    "failed": 0
+   },
+   "lost_answer": "החיבור נפל לפני שהגיעה תשובה\nייתכן שהמודעה כבר פורסמה. בדקו במודעות שלי, או בדקו שוב כאן: אותה בקשה נשלחת שוב.\nלבדוק שוב\nהמודעות שלי",
+   "published_rows": 1
+  },
+  "at": "2026-10-05 12:46:13"
+ },
+ {
+  "id": "BA",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "after: the same scenarios (390-en)",
+  "status": "pass",
+  "evidence": {
+   "existing_email": {
+    "message": "This email already has an account. The name and email you typed are kept in the form.\nSign in with this email",
+    "input_kept": true
+   },
+   "recovery_unknown_email": "If the email is registered, the link is on its way.\nThe link works for a limited time. Nothing arrived? Check the spam folder too.",
+   "offline_status": "No internet connection\nWhat you type is kept on this device and sent to your account when the connection returns. Keep this page open until then.",
+   "back_online_status": "Saved in your account\nLast saved at ⁦12:46⁩. You can stop and continue from any device.",
+   "after_reload": {
+    "text_kept": true,
+    "storage_keys": [
+     "nlow:auth-ping"
+    ]
+   },
+   "two_tabs": "This draft is also open in another tab\nA change was saved there at ⁦12:46⁩. Choose which version to continue with, so nothing is overwritten.\nLoad the version from the other tab\nContinue here and save this version\n\nWhat differs:\n\nRooms\n: here «4» · there «5»\nSize\n: here «120» · there «96»",
+   "conflict_lists_rooms": true,
+   "two_tabs_result": {
+    "rooms": "4",
+    "size": "120"
+   },
+   "failed_photo": "Photo 3\nThis photo did not upload. A server error. You can try again.\nTry again",
+   "after_retry": {
+    "tiles": 3,
+    "failed": 0
+   },
+   "lost_answer": "The connection dropped before an answer arrived\nThe listing may already be live. Check My listings, or check again here: the same request is sent again.\nCheck again\nMy listings",
+   "published_rows": 1
+  },
+  "at": "2026-10-05 12:47:06"
+ },
+ {
+  "id": "BA",
+  "variant": "after",
+  "label": "real-wp+chrome",
+  "title": "after: the same scenarios (390-he)",
+  "status": "pass",
+  "evidence": {
+   "existing_email": {
+    "message": "המייל הזה כבר רשום אצלנו. השם והמייל שכתבתם נשמרו בטופס.\nכניסה עם המייל הזה",
+    "input_kept": true
+   },
+   "recovery_unknown_email": "אם המייל רשום אצלנו, הקישור בדרך.\nהקישור תקף לזמן מוגבל. לא הגיע? בדקו גם בתיקיית הספאם.",
+   "offline_status": "אין חיבור לאינטרנט\nמה שתכתבו נשמר במכשיר הזה ויישלח לחשבון כשהחיבור יחזור. אל תסגרו את הדף עד אז.",
+   "back_online_status": "נשמר בחשבון\nהשמירה האחרונה ב־⁦12:44⁩. אפשר לעצור ולהמשיך מכל מכשיר.",
+   "after_reload": {
+    "text_kept": true,
+    "storage_keys": [
+     "nlow:auth-ping"
+    ]
+   },
+   "two_tabs": "הטיוטה פתוחה גם בלשונית אחרת\nשם נשמר שינוי ב־⁦12:44⁩. כדי לא לדרוס אותו, בחרו עם איזו גרסה להמשיך.\nלטעון את הגרסה מהלשונית האחרת\nלהמשיך כאן ולשמור את הגרסה הזו\n\nמה שונה:\n\nחדרים\n: כאן «4» · שם «5»\nשטח\n: כאן «120» · שם «96»",
+   "conflict_lists_rooms": true,
+   "two_tabs_result": {
+    "rooms": "4",
+    "size": "120"
+   },
+   "failed_photo": "תמונה 3\nהתמונה לא עלתה. תקלה בשרת. אפשר לנסות שוב.\nלנסות שוב",
+   "after_retry": {
+    "tiles": 3,
+    "failed": 0
+   },
+   "lost_answer": "החיבור נפל לפני שהגיעה תשובה\nייתכן שהמודעה כבר פורסמה. בדקו במודעות שלי, או בדקו שוב כאן: אותה בקשה נשלחת שוב.\nלבדוק שוב\nהמודעות שלי",
+   "published_rows": 1
+  },
+  "at": "2026-10-05 12:45:21"
+ },
+ {
+  "id": "BA",
   "variant": "before",
   "label": "real-wp+chrome",
   "title": "before (6e9cf930): the journey as it is (1440-he)",
@@ -133,15 +277,15 @@
     }
    ],
    "seconds": [
-    1.86,
-    1.83
+    1.41,
+    1.36
    ],
    "mails_in_sink": [
     "dana.sample@example.test"
    ]
   },
   "notes": "opening an account with an email that has one answers 409 \"exists\" (as the existing quick-register and auth-signup doors do): the design keeps that, so the journey does not claim blanket non-enumeration",
-  "at": "2026-10-05 12:04:02"
+  "at": "2026-10-05 12:30:43"
  },
  {
   "id": "L01",
@@ -162,7 +306,7 @@
    "198.51.100.1": 409
   },
   "notes": "409 = the email already has an account (counted); 429 = this address hit its limit; the other addresses are not affected",
-  "at": "2026-10-05 12:04:27"
+  "at": "2026-10-05 12:31:08"
  },
  {
   "id": "L01",
@@ -182,7 +326,7 @@
    "192.0.2.3": 200,
    "198.51.100.1": 200
   },
-  "at": "2026-10-05 12:04:40"
+  "at": "2026-10-05 12:31:20"
  },
  {
   "id": "L02",
@@ -196,10 +340,10 @@
    "reset_done": true,
    "used_again": "http://127.0.0.1:9401/wp-login.php?action=lostpassword&error=invalidkey",
    "refused": true,
-   "expired_link_url": true,
+   "expired_link_refused": true,
    "draft_resumed_after_new_password": true
   },
-  "at": "2026-10-05 12:27:37"
+  "at": "2026-10-05 12:41:09"
  },
  {
   "id": "L03",
@@ -210,13 +354,13 @@
   "evidence": {
    "sealed_files": [
     {
-     "path": "/wp-content/uploads/nl-private/d072361092bb09a09ffcd4e2935299fb/0650877326c24baf39f55064c76e917d-t.bin",
+     "path": "/wp-content/uploads/nl-private/d072361092bb09a09ffcd4e2935299fb/d1f65dd4b4e2cd9b2887b3453e305d94-t.bin",
      "status": 200,
      "opens_as_image": false,
      "starts": "NLS1"
     },
     {
-     "path": "/wp-content/uploads/nl-private/d072361092bb09a09ffcd4e2935299fb/0650877326c24baf39f55064c76e917d.bin",
+     "path": "/wp-content/uploads/nl-private/d072361092bb09a09ffcd4e2935299fb/d1f65dd4b4e2cd9b2887b3453e305d94.bin",
      "status": 200,
      "opens_as_image": false,
      "starts": "NLS1"
@@ -230,7 +374,7 @@
    "proxy_other_user": 404
   },
   "notes": "Playground serves static files with no .htaccess, so the sealed .bin answers 200 here: its bytes are ciphertext (NLS1 header) and do not open as an image. The live server is not assumed to honour the deny-all .htaccess.",
-  "at": "2026-10-05 12:12:25"
+  "at": "2026-10-05 12:38:50"
  },
  {
   "id": "L03",
@@ -277,7 +421,7 @@
     3
    ]
   },
-  "at": "2026-10-05 12:12:48"
+  "at": "2026-10-05 12:39:15"
  },
  {
   "id": "L03",
@@ -295,7 +439,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 12:06:08"
+  "at": "2026-10-05 12:32:41"
  },
  {
   "id": "L03",
@@ -308,7 +452,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 12:05:46"
+  "at": "2026-10-05 12:32:19"
  },
  {
   "id": "L03",
@@ -324,7 +468,7 @@
    "status": "draft",
    "exposed": []
   },
-  "at": "2026-10-05 12:06:20"
+  "at": "2026-10-05 12:32:54"
  },
  {
   "id": "L03",
@@ -345,7 +489,7 @@
    ],
    "exposed_after_retry": 8
   },
-  "at": "2026-10-05 12:10:07"
+  "at": "2026-10-05 12:36:31"
  },
  {
   "id": "L03",
@@ -362,7 +506,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 12:06:54"
+  "at": "2026-10-05 12:33:30"
  },
  {
   "id": "L03",
@@ -383,7 +527,7 @@
    ],
    "exposed_after_retry": 8
   },
-  "at": "2026-10-05 12:10:37"
+  "at": "2026-10-05 12:37:01"
  },
  {
   "id": "L03",
@@ -400,7 +544,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 12:07:16"
+  "at": "2026-10-05 12:33:47"
  },
  {
   "id": "L03",
@@ -417,7 +561,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 12:07:57"
+  "at": "2026-10-05 12:34:23"
  },
  {
   "id": "L03",
@@ -434,7 +578,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 12:08:14"
+  "at": "2026-10-05 12:34:40"
  },
  {
   "id": "L03",
@@ -451,7 +595,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 12:08:31"
+  "at": "2026-10-05 12:34:56"
  },
  {
   "id": "L03",
@@ -468,7 +612,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 12:08:48"
+  "at": "2026-10-05 12:35:14"
  },
  {
   "id": "L03",
@@ -483,14 +627,14 @@
    ],
    "status_after_kill": "publish",
    "exposed_after_kill (listing is published)": [
-    "/wp-content/uploads/nl-listings/3d68851085b0df930345d42da4608f16-150x150.jpg",
-    "/wp-content/uploads/nl-listings/3d68851085b0df930345d42da4608f16-300x225.jpg",
-    "/wp-content/uploads/nl-listings/3d68851085b0df930345d42da4608f16-768x576.jpg",
-    "/wp-content/uploads/nl-listings/3d68851085b0df930345d42da4608f16.jpg",
-    "/wp-content/uploads/nl-listings/5f0f8eff1ad4f53800bc897e0ad713e6-150x150.jpg",
-    "/wp-content/uploads/nl-listings/5f0f8eff1ad4f53800bc897e0ad713e6-300x225.jpg",
-    "/wp-content/uploads/nl-listings/5f0f8eff1ad4f53800bc897e0ad713e6-768x576.jpg",
-    "/wp-content/uploads/nl-listings/5f0f8eff1ad4f53800bc897e0ad713e6.jpg"
+    "/wp-content/uploads/nl-listings/3f07f5a0220958f06f4d9d16f92c5763-150x150.jpg",
+    "/wp-content/uploads/nl-listings/3f07f5a0220958f06f4d9d16f92c5763-300x225.jpg",
+    "/wp-content/uploads/nl-listings/3f07f5a0220958f06f4d9d16f92c5763-768x576.jpg",
+    "/wp-content/uploads/nl-listings/3f07f5a0220958f06f4d9d16f92c5763.jpg",
+    "/wp-content/uploads/nl-listings/d71fe00c2738920c7c31cf64b7d6915a-150x150.jpg",
+    "/wp-content/uploads/nl-listings/d71fe00c2738920c7c31cf64b7d6915a-300x225.jpg",
+    "/wp-content/uploads/nl-listings/d71fe00c2738920c7c31cf64b7d6915a-768x576.jpg",
+    "/wp-content/uploads/nl-listings/d71fe00c2738920c7c31cf64b7d6915a.jpg"
    ],
    "retry": [
     200,
@@ -498,7 +642,7 @@
    ],
    "exposed_after_retry": 8
   },
-  "at": "2026-10-05 12:09:36"
+  "at": "2026-10-05 12:36:01"
  },
  {
   "id": "L03",
@@ -515,7 +659,7 @@
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 12:09:06"
+  "at": "2026-10-05 12:35:31"
  },
  {
   "id": "L03",
@@ -526,13 +670,13 @@
   "evidence": {
    "killed": [
     500,
-    "row (post 495, status auto-draft)"
+    "row (post 618, status auto-draft)"
    ],
    "status": "",
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 12:06:37"
+  "at": "2026-10-05 12:33:13"
  },
  {
   "id": "L03",
@@ -543,13 +687,13 @@
   "evidence": {
    "killed": [
     500,
-    "status_write (post 500 to draft)"
+    "status_write (post 623 to draft)"
    ],
    "status": "auto-draft",
    "exposed": [],
    "checked": 8
   },
-  "at": "2026-10-05 12:07:39"
+  "at": "2026-10-05 12:34:06"
  },
  {
   "id": "L03",
@@ -563,7 +707,7 @@
    "exposed_after_kill": [],
    "exposed_after_a_view (published)": 8
   },
-  "at": "2026-10-05 12:12:11"
+  "at": "2026-10-05 12:38:36"
  },
  {
   "id": "L03",
@@ -577,7 +721,7 @@
    "status": "publish",
    "exposed (published)": 4
   },
-  "at": "2026-10-05 12:11:00"
+  "at": "2026-10-05 12:37:24"
  },
  {
   "id": "L03",
@@ -607,7 +751,7 @@
     0
    ]
   },
-  "at": "2026-10-05 12:11:45"
+  "at": "2026-10-05 12:38:09"
  },
  {
   "id": "L03",
@@ -619,13 +763,13 @@
    "tab2_showed_A_before": true,
    "tab2_cleared_by_the_ping_alone (background tab)": true,
    "tab2_scrubbed": true,
-   "seconds_to_scrub": 0.02,
+   "seconds_to_scrub": 0.01,
    "A_text_in_B_tab1": false,
    "A_price_in_tab2_after": false,
    "signed_in_page_cache_control": "no-store, no-cache, must-revalidate, max-age=0, private",
    "A_resumed_draft_intact": true
   },
-  "at": "2026-10-05 12:13:53"
+  "at": "2026-10-05 12:40:23"
  },
  {
   "id": "L04",
@@ -635,9 +779,9 @@
   "status": "pass",
   "evidence": {
    "order_after_reload_is_the_saved_order": true,
-   "status_line": "נשמר בחשבון\nהשמירה האחרונה ב־⁦12:18⁩. אפשר לעצור ולהמשיך מכל מכשיר."
+   "status_line": "נשמר בחשבון\nהשמירה האחרונה ב־⁦12:41⁩. אפשר לעצור ולהמשיך מכל מכשיר."
   },
-  "at": "2026-10-05 12:18:10"
+  "at": "2026-10-05 12:41:30"
  },
  {
   "id": "L05",
@@ -648,15 +792,15 @@
   "evidence": {
    "first": [
     201,
-    487
+    610
    ],
    "retry": [
     200,
-    487,
+    610,
     true
    ]
   },
-  "at": "2026-10-05 12:03:54"
+  "at": "2026-10-05 12:30:37"
  },
  {
   "id": "L06",
@@ -668,7 +812,7 @@
    "status_text": "שומרים בחשבון…\n(השמירה במכשיר חסומה בדפדפן הזה, אז עד אז הם רק בדף הפתוח.)\nהשמירה במכשיר חסומה בדפדפן הזה\nהשינויים נשמרים רק בחשבון, כשיש חיבור. אל תסגרו את הדף לפני שמופיע ״נשמר בחשבון״.",
    "js_errors": []
   },
-  "at": "2026-10-05 12:18:38"
+  "at": "2026-10-05 12:41:53"
  },
  {
   "id": "L06",
@@ -680,7 +824,7 @@
    "status_text": "שומרים בחשבון…\n(השמירה במכשיר חסומה בדפדפן הזה, אז עד אז הם רק בדף הפתוח.)\nהשמירה במכשיר חסומה בדפדפן הזה\nהשינויים נשמרים רק בחשבון, כשיש חיבור. אל תסגרו את הדף לפני שמופיע ״נשמר בחשבון״.",
    "js_errors": []
   },
-  "at": "2026-10-05 12:18:47"
+  "at": "2026-10-05 12:42:01"
  },
  {
   "id": "L07",
@@ -690,20 +834,20 @@
   "status": "pass",
   "evidence": {
    "codes": [
+    409,
+    409,
     200,
-    409,
-    409,
     409,
     409,
     409
    ],
    "server_rev": 2,
    "winner": [
-    "4"
+    "6"
    ],
-   "server_rooms": "4"
+   "server_rooms": "6"
   },
-  "at": "2026-10-05 12:03:51"
+  "at": "2026-10-05 12:30:35"
  },
  {
   "id": "L07",
@@ -719,1509 +863,7 @@
    ],
    "server_rooms": "4"
   },
-  "at": "2026-10-05 12:03:46"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "engine build (1.x door): 4 parallel requests, different keys",
-  "status": "pass",
-  "evidence": {
-   "codes": [
-    409,
-    409,
-    409,
-    200
-   ],
-   "seconds": 11.07,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "381",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_380_he"
-    ]
-   }
-  },
-  "at": "2026-10-05 11:44:41"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "engine build (1.x door): 4 parallel requests, same key",
-  "status": "pass",
-  "evidence": {
-   "codes": [
-    200,
-    409,
-    409,
-    409
-   ],
-   "seconds": 10.77,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "379",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_378_he"
-    ]
-   }
-  },
-  "at": "2026-10-05 11:44:24"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "engine build (1.x door): A paused right after the check at before_claim, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:58:03 pid3 PAUSE 8s at before_claim drop 469"
-   ],
-   "A": [
-    409,
-    "busy"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "470",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [
-     [
-      "471",
-      "nl-drop-469-he",
-      0
-     ]
-    ],
-    "claims": [
-     "nl_pub_469_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190688,\"from\":\"build:owner\",\"from_tok\":1,\"tok\":2,\"age\":5}",
-   "fence": "3"
-  },
-  "at": "2026-10-05 11:58:20"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "engine build (1.x door): A paused right after the check at claim_pending, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:58:30 pid6 PAUSE 8s at claim_pending drop 472"
-   ],
-   "A": [
-    409,
-    "busy"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "474",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [
-     [
-      "473",
-      "nl-drop-472-he",
-      0
-     ]
-    ],
-    "claims": [
-     "nl_pub_472_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190715,\"from\":\"build:owner\",\"from_tok\":1,\"tok\":2,\"age\":5}",
-   "fence": "3"
-  },
-  "at": "2026-10-05 11:58:47"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "engine build (1.x door): A paused right after the check at fenced:before_meta, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:59:20 pid4 PAUSE 8s at fenced:before_meta drop 477"
-   ],
-   "A": [
-    409,
-    "busy"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "478",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_477_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190765,\"from\":\"build:owner\",\"from_tok\":1,\"tok\":2,\"age\":5}",
-   "fence": "3"
-  },
-  "at": "2026-10-05 11:59:37"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "engine build (1.x door): A paused right after the check at fenced:before_render, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:59:45 pid3 PAUSE 8s at fenced:before_render drop 479"
-   ],
-   "A": [
-    409,
-    "busy"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "480",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_479_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190790,\"from\":\"build:owner\",\"from_tok\":1,\"tok\":2,\"age\":5}",
-   "fence": "3"
-  },
-  "at": "2026-10-05 12:00:01"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "engine build (1.x door): A paused right after the check at fenced:claim, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:57:37 pid4 PAUSE 8s at fenced:claim drop 467"
-   ],
-   "A": [
-    409,
-    "busy"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "468",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_467_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190662,\"from\":\"build:owner\",\"from_tok\":1,\"tok\":2,\"age\":5}",
-   "fence": "3"
-  },
-  "at": "2026-10-05 11:57:55"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "engine build (1.x door): A paused right after the check at fenced:content, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:58:55 pid5 PAUSE 8s at fenced:content drop 475"
-   ],
-   "A": [
-    409,
-    "busy"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "476",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_475_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190740,\"from\":\"build:owner\",\"from_tok\":1,\"tok\":2,\"age\":5}",
-   "fence": "3"
-  },
-  "at": "2026-10-05 11:59:11"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "engine build (1.x door): killed at claim_pending, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "claim_pending"
-   ],
-   "rows_after_kill": {
-    "content": [],
-    "empty_placeholders": [
-     [
-      "455",
-      "nl-drop-454-he",
-      0
-     ]
-    ],
-    "claims": []
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "456",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [
-     [
-      "455",
-      "nl-drop-454-he",
-      0
-     ]
-    ],
-    "claims": [
-     "nl_pub_454_he"
-    ]
-   },
-   "nl_result": 456,
-   "takeover": "{\"t\":1791190521,\"from\":\"build:owner\",\"from_tok\":1,\"tok\":2,\"age\":7}"
-  },
-  "at": "2026-10-05 11:55:29"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "engine build (1.x door): killed at fenced:before_meta, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "fenced:before_meta"
-   ],
-   "rows_after_kill": {
-    "content": [
-     [
-      "464",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_463_he"
-    ]
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "464",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_463_he"
-    ]
-   },
-   "nl_result": 464,
-   "takeover": "{\"t\":1791190621,\"from\":\"build:owner\",\"from_tok\":1,\"tok\":2,\"age\":6}"
-  },
-  "at": "2026-10-05 11:57:08"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "engine build (1.x door): killed at fenced:before_render, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "fenced:before_render"
-   ],
-   "rows_after_kill": {
-    "content": [
-     [
-      "466",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_465_he"
-    ]
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "466",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_465_he"
-    ]
-   },
-   "nl_result": 466,
-   "takeover": "{\"t\":1791190643,\"from\":\"build:owner\",\"from_tok\":1,\"tok\":2,\"age\":7}"
-  },
-  "at": "2026-10-05 11:57:29"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "engine build (1.x door): killed at fenced:claim, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "fenced:claim"
-   ],
-   "rows_after_kill": {
-    "content": [],
-    "empty_placeholders": [],
-    "claims": []
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "458",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_457_he"
-    ]
-   },
-   "nl_result": 458,
-   "takeover": "{\"t\":1791190548,\"from\":\"build:owner\",\"from_tok\":1,\"tok\":2,\"age\":7}"
-  },
-  "at": "2026-10-05 11:55:57"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "engine build (1.x door): killed at fenced:content, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "fenced:content"
-   ],
-   "rows_after_kill": {
-    "content": [],
-    "empty_placeholders": [
-     [
-      "460",
-      "nl-drop-459-he",
-      0
-     ]
-    ],
-    "claims": [
-     "nl_pub_459_he"
-    ]
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "460",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_459_he"
-    ]
-   },
-   "nl_result": 460,
-   "takeover": "{\"t\":1791190575,\"from\":\"build:owner\",\"from_tok\":1,\"tok\":2,\"age\":8}"
-  },
-  "at": "2026-10-05 11:56:23"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "engine build (1.x door): killed at row, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "row (post 452, status auto-draft)"
-   ],
-   "rows_after_kill": {
-    "content": [],
-    "empty_placeholders": [
-     [
-      "452",
-      "nl-drop-451-he",
-      0
-     ]
-    ],
-    "claims": []
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "453",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [
-     [
-      "452",
-      "nl-drop-451-he",
-      0
-     ]
-    ],
-    "claims": [
-     "nl_pub_451_he"
-    ]
-   },
-   "nl_result": 453,
-   "takeover": "{\"t\":1791190494,\"from\":\"build:owner\",\"from_tok\":1,\"tok\":2,\"age\":7}"
-  },
-  "at": "2026-10-05 11:55:03"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "engine build (1.x door): killed at row_meta, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "row_meta (post 462)"
-   ],
-   "rows_after_kill": {
-    "content": [
-     [
-      "462",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_461_he"
-    ]
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "462",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_461_he"
-    ]
-   },
-   "nl_result": 462,
-   "takeover": "{\"t\":1791190601,\"from\":\"build:owner\",\"from_tok\":1,\"tok\":2,\"age\":7}"
-  },
-  "at": "2026-10-05 11:56:47"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: 10 publishes refused by validation, then a valid one (the publish quota is not spent)",
-  "status": "pass",
-  "evidence": {
-   "refused": [
-    422,
-    422,
-    422,
-    422,
-    422,
-    422,
-    422,
-    422,
-    422,
-    422
-   ],
-   "valid": [
-    200,
-    "published"
-   ]
-  },
-  "at": "2026-10-05 11:43:27"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: 4 parallel requests, different keys",
-  "status": "pass",
-  "evidence": {
-   "codes": [
-    202,
-    200,
-    202,
-    202
-   ],
-   "seconds": 12.7,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "376",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_375_he"
-    ]
-   }
-  },
-  "at": "2026-10-05 11:44:08"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: 4 parallel requests, same key",
-  "status": "pass",
-  "evidence": {
-   "codes": [
-    202,
-    202,
-    200,
-    202
-   ],
-   "seconds": 12.77,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "373",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_372_he"
-    ]
-   }
-  },
-  "at": "2026-10-05 11:43:47"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: A paused right after the check at before_claim, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:50:24 pid3 PAUSE 8s at before_claim drop 425"
-   ],
-   "A": [
-    202,
-    "building"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "426",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [
-     [
-      "428",
-      "nl-drop-425-he",
-      0
-     ]
-    ],
-    "claims": [
-     "nl_pub_425_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190228,\"from\":\"owner:2:f1d9b86f-e2f\",\"from_tok\":1,\"tok\":2,\"age\":4}",
-   "fence": "2"
-  },
-  "at": "2026-10-05 11:50:39"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: A paused right after the check at claim_pending, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:50:57 pid1 PAUSE 8s at claim_pending drop 429"
-   ],
-   "A": [
-    202,
-    "building"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "431",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [
-     [
-      "430",
-      "nl-drop-429-he",
-      0
-     ]
-    ],
-    "claims": [
-     "nl_pub_429_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190261,\"from\":\"owner:2:29388561-2a1\",\"from_tok\":1,\"tok\":2,\"age\":5}",
-   "fence": "2"
-  },
-  "at": "2026-10-05 11:51:15"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: A paused right after the check at fenced:attach, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:53:49 pid1 PAUSE 8s at fenced:attach drop 445"
-   ],
-   "A": [
-    202,
-    "building"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "446",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_445_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190433,\"from\":\"owner:2:e773d2d9-066\",\"from_tok\":1,\"tok\":2,\"age\":4}",
-   "fence": "2"
-  },
-  "at": "2026-10-05 11:54:05"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: A paused right after the check at fenced:media_meta, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:54:17 pid6 PAUSE 8s at fenced:media_meta drop 448"
-   ],
-   "A": [
-    202,
-    "building"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "449",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_448_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190461,\"from\":\"owner:2:4411e289-939\",\"from_tok\":1,\"tok\":2,\"age\":5}",
-   "fence": "2"
-  },
-  "at": "2026-10-05 11:54:35"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: A paused right after the check at fenced:owner_claim, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:49:54 pid5 PAUSE 8s at fenced:owner_claim drop 422"
-   ],
-   "A": [
-    202,
-    "building"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "423",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_422_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190199,\"from\":\"owner:2:16dfe47c-36d\",\"from_tok\":1,\"tok\":2,\"age\":5}",
-   "fence": "2"
-  },
-  "at": "2026-10-05 11:50:13"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: A paused right after the check at fenced:owner_content, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:51:32 pid6 PAUSE 8s at fenced:owner_content drop 433"
-   ],
-   "A": [
-    202,
-    "building"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "434",
-      "draft",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_433_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190296,\"from\":\"owner:2:9891a28d-4b1\",\"from_tok\":1,\"tok\":2,\"age\":4}",
-   "fence": "2"
-  },
-  "at": "2026-10-05 11:51:53"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: A paused right after the check at fenced:owner_drop_meta, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:49:24 pid2 PAUSE 8s at fenced:owner_drop_meta drop 418"
-   ],
-   "A": [
-    202,
-    "building"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "419",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_418_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190168,\"from\":\"owner:2:7e8f6d45-025\",\"from_tok\":1,\"tok\":2,\"age\":4}",
-   "fence": "2"
-  },
-  "at": "2026-10-05 11:49:41"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: A paused right after the check at fenced:owner_meta, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:52:09 pid2 PAUSE 8s at fenced:owner_meta drop 436"
-   ],
-   "A": [
-    202,
-    "building"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "437",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_436_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190334,\"from\":\"owner:2:1909694b-378\",\"from_tok\":1,\"tok\":2,\"age\":5}",
-   "fence": "2"
-  },
-  "at": "2026-10-05 11:52:27"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: A paused right after the check at fenced:owner_render, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:52:41 pid5 PAUSE 8s at fenced:owner_render drop 439"
-   ],
-   "A": [
-    202,
-    "building"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "440",
-      "draft",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_439_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190365,\"from\":\"owner:2:9d2b5c5d-b04\",\"from_tok\":1,\"tok\":2,\"age\":4}",
-   "fence": "2"
-  },
-  "at": "2026-10-05 11:53:00"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: A paused right after the check at fenced:owner_status, past the TTL; B took over; A resumed",
-  "status": "pass",
-  "evidence": {
-   "pause_fired": [
-    "08:53:16 pid3 PAUSE 8s at fenced:owner_status drop 442"
-   ],
-   "A": [
-    202,
-    "building"
-   ],
-   "B": 200,
-   "final": 200,
-   "rows": {
-    "content": [
-     [
-      "443",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_442_he"
-    ]
-   },
-   "takeover": "{\"t\":1791190400,\"from\":\"owner:2:548d4eff-507\",\"from_tok\":1,\"tok\":2,\"age\":4}",
-   "fence": "2"
-  },
-  "at": "2026-10-05 11:53:35"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: killed at attach_pending, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "attach_pending"
-   ],
-   "rows_after_kill": {
-    "content": [
-     [
-      "415",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_414_he"
-    ]
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "415",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_414_he"
-    ]
-   },
-   "nl_result": 415,
-   "takeover": "{\"t\":1791190145,\"from\":\"owner:2:382fffb4-a10\",\"from_tok\":1,\"tok\":2,\"age\":8}"
-  },
-  "at": "2026-10-05 11:49:13"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: killed at before_claim, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "before_claim"
-   ],
-   "rows_after_kill": {
-    "content": [],
-    "empty_placeholders": [],
-    "claims": []
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "387",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_386_he"
-    ]
-   },
-   "nl_result": 387,
-   "takeover": "{\"t\":1791189920,\"from\":\"owner:2:05db9b54-390\",\"from_tok\":1,\"tok\":2,\"age\":6}"
-  },
-  "at": "2026-10-05 11:45:27"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: killed at claim_pending, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "claim_pending"
-   ],
-   "rows_after_kill": {
-    "content": [],
-    "empty_placeholders": [
-     [
-      "390",
-      "nl-drop-389-he",
-      0
-     ]
-    ],
-    "claims": []
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "391",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [
-     [
-      "390",
-      "nl-drop-389-he",
-      0
-     ]
-    ],
-    "claims": [
-     "nl_pub_389_he"
-    ]
-   },
-   "nl_result": 391,
-   "takeover": "{\"t\":1791189943,\"from\":\"owner:2:2b6cb4a9-43e\",\"from_tok\":1,\"tok\":2,\"age\":6}"
-  },
-  "at": "2026-10-05 11:45:50"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: killed at fenced:attach, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "fenced:attach"
-   ],
-   "rows_after_kill": {
-    "content": [
-     [
-      "412",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_411_he"
-    ]
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "412",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_411_he"
-    ]
-   },
-   "nl_result": 412,
-   "takeover": "{\"t\":1791190118,\"from\":\"owner:2:e9d13bae-927\",\"from_tok\":1,\"tok\":2,\"age\":7}"
-  },
-  "at": "2026-10-05 11:48:45"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: killed at fenced:owner_claim, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "fenced:owner_claim"
-   ],
-   "rows_after_kill": {
-    "content": [],
-    "empty_placeholders": [],
-    "claims": []
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "394",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_393_he"
-    ]
-   },
-   "nl_result": 394,
-   "takeover": "{\"t\":1791189966,\"from\":\"owner:2:d3b4fcb6-a8d\",\"from_tok\":1,\"tok\":2,\"age\":6}"
-  },
-  "at": "2026-10-05 11:46:13"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: killed at fenced:owner_content, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "fenced:owner_content"
-   ],
-   "rows_after_kill": {
-    "content": [],
-    "empty_placeholders": [
-     [
-      "397",
-      "nl-drop-396-he",
-      0
-     ]
-    ],
-    "claims": [
-     "nl_pub_396_he"
-    ]
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "397",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_396_he"
-    ]
-   },
-   "nl_result": 397,
-   "takeover": "{\"t\":1791189989,\"from\":\"owner:2:634b9a9a-928\",\"from_tok\":1,\"tok\":2,\"age\":6}"
-  },
-  "at": "2026-10-05 11:46:36"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: killed at fenced:owner_meta, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "fenced:owner_meta"
-   ],
-   "rows_after_kill": {
-    "content": [
-     [
-      "400",
-      "draft",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_399_he"
-    ]
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "400",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_399_he"
-    ]
-   },
-   "nl_result": 400,
-   "takeover": "{\"t\":1791190014,\"from\":\"owner:2:e17dc81b-bbf\",\"from_tok\":1,\"tok\":2,\"age\":7}"
-  },
-  "at": "2026-10-05 11:47:01"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: killed at fenced:owner_render, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "fenced:owner_render"
-   ],
-   "rows_after_kill": {
-    "content": [
-     [
-      "403",
-      "draft",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_402_he"
-    ]
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "403",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_402_he"
-    ]
-   },
-   "nl_result": 403,
-   "takeover": "{\"t\":1791190041,\"from\":\"owner:2:fb791d8e-c74\",\"from_tok\":1,\"tok\":2,\"age\":7}"
-  },
-  "at": "2026-10-05 11:47:30"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: killed at fenced:owner_status, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "fenced:owner_status"
-   ],
-   "rows_after_kill": {
-    "content": [
-     [
-      "406",
-      "draft",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_405_he"
-    ]
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "406",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_405_he"
-    ]
-   },
-   "nl_result": 406,
-   "takeover": "{\"t\":1791190071,\"from\":\"owner:2:ac86b895-2d7\",\"from_tok\":1,\"tok\":2,\"age\":7}"
-  },
-  "at": "2026-10-05 11:47:58"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: killed at owner_before_media, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "owner_before_media"
-   ],
-   "rows_after_kill": {
-    "content": [
-     [
-      "409",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_408_he"
-    ]
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "409",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [],
-    "claims": [
-     "nl_pub_408_he"
-    ]
-   },
-   "nl_result": 409,
-   "takeover": "{\"t\":1791190095,\"from\":\"owner:2:50e070c0-b1b\",\"from_tok\":1,\"tok\":2,\"age\":7}"
-  },
-  "at": "2026-10-05 11:48:21"
- },
- {
-  "id": "L08",
-  "variant": "after",
-  "label": "real-wp",
-  "title": "journey publish: killed at row, retried after the TTL",
-  "status": "pass",
-  "evidence": {
-   "kill_fired": true,
-   "killed_answer": [
-    500,
-    "row (post 383, status auto-draft)"
-   ],
-   "rows_after_kill": {
-    "content": [],
-    "empty_placeholders": [
-     [
-      "383",
-      "nl-drop-382-he",
-      0
-     ]
-    ],
-    "claims": []
-   },
-   "retry": 200,
-   "rows": {
-    "content": [
-     [
-      "384",
-      "publish",
-      "tel-aviv-yafo-4-rooms-for-sale"
-     ]
-    ],
-    "empty_placeholders": [
-     [
-      "383",
-      "nl-drop-382-he",
-      0
-     ]
-    ],
-    "claims": [
-     "nl_pub_382_he"
-    ]
-   },
-   "nl_result": 384,
-   "takeover": "{\"t\":1791189897,\"from\":\"owner:2:e99953f9-b98\",\"from_tok\":1,\"tok\":2,\"age\":6}"
-  },
-  "at": "2026-10-05 11:45:04"
+  "at": "2026-10-05 12:30:31"
  },
  {
   "id": "L08",
@@ -2237,7 +879,7 @@
    ],
    "new_key": [
     200,
-    367
+    699
    ],
    "key_other_rev": [
     409,
@@ -2246,18 +888,18 @@
    "rows": {
     "content": [
      [
-      "367",
+      "699",
       "publish",
       "tel-aviv-yafo-4-rooms-for-sale"
      ]
     ],
     "empty_placeholders": [],
     "claims": [
-     "nl_pub_366_he"
+     "nl_pub_698_he"
     ]
    }
   },
-  "at": "2026-10-05 11:43:06"
+  "at": "2026-10-05 12:48:14"
  },
  {
   "id": "L08",
@@ -2512,7 +1154,7 @@
     "wp_image_editor": "WP_Image_Editor_GD"
    }
   },
-  "at": "2026-10-05 12:05:24"
+  "at": "2026-10-05 12:31:57"
  },
  {
   "id": "L09",
@@ -2583,7 +1225,7 @@
     "wp_image_editor": "WP_Image_Editor_GD"
    }
   },
-  "at": "2026-10-05 12:05:24"
+  "at": "2026-10-05 12:31:57"
  },
  {
   "id": "L09",
@@ -2654,7 +1296,7 @@
     "wp_image_editor": "WP_Image_Editor_GD"
    }
   },
-  "at": "2026-10-05 12:05:24"
+  "at": "2026-10-05 12:31:57"
  },
  {
   "id": "L09",
@@ -2708,7 +1350,7 @@
    "stored_before": 14,
    "stored_after": 14
   },
-  "at": "2026-10-05 12:05:31"
+  "at": "2026-10-05 12:32:04"
  },
  {
   "id": "L10",
@@ -2720,7 +1362,7 @@
    "tiles_after_remove_during_upload (expected 2)": 2,
    "tiles_after_refresh_during_upload (expected 3 or 4)": 3
   },
-  "at": "2026-10-05 12:18:29"
+  "at": "2026-10-05 12:41:46"
  },
  {
   "id": "L11",
@@ -2731,13 +1373,13 @@
   "evidence": {
    "nonce_refreshed": true,
    "status_on_5xx": "השמירה בחשבון לא הצליחה\ndown הפרטים שמורים במכשיר הזה. ננסה שוב בעוד 0 שניות.\nלנסות עכשיו",
-   "status_on_429": "השמירה בחשבון לא הצליחה\nיותר מדי פעולות בזמן קצר. מה שכתבתם שמור; נסו שוב בעוד כמה דקות. הפרטים שמורים במכשיר הזה. ננסה שוב בעוד 6 שניות.\nלנסות עכשיו",
+   "status_on_429": "השמירה בחשבון לא הצליחה\nיותר מדי פעולות בזמן קצר. מה שכתבתם שמור; נסו שוב בעוד כמה דקות. הפרטים שמורים במכשיר הזה. ננסה שוב בעוד 7 שניות.\nלנסות עכשיו",
    "page_cleared_when_signed_out_elsewhere": true,
    "draft_back_after_sign_in (rooms 7)": true,
    "listings_published": 0
   },
   "notes": "AI timeout: not applicable, the journey makes no model call (copy = the template + the owner's own words).",
-  "at": "2026-10-05 12:19:32"
+  "at": "2026-10-05 12:42:36"
  },
  {
   "id": "L12",
@@ -2760,7 +1402,7 @@
    ],
    "note": "the site's own floating bar (#nlcta) carries the SITE's WhatsApp number; it is not the owner's"
   },
-  "at": "2026-10-05 12:25:55"
+  "at": "2026-10-05 12:43:06"
  },
  {
   "id": "L13",
@@ -2781,7 +1423,7 @@
    "my_listings_chip_when_held": "בבדיקה",
    "sold_notice_on_page": true
   },
-  "at": "2026-10-05 12:26:41"
+  "at": "2026-10-05 12:43:48"
  },
  {
   "id": "L14",
@@ -4478,7 +3120,42 @@
    ],
    "floating_bar_present": true
   },
-  "at": "2026-10-05 12:21:37"
+  "at": "2026-10-05 12:44:16"
+ },
+ {
+  "id": "L16",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "broker door /drop/<token>/: photo (cleaned), submit, 3 parallel builds + 1 more = one listing with the licence line",
+  "status": "pass",
+  "evidence": {
+   "photo": [
+    200,
+    "metadata left: []"
+   ],
+   "submit": [
+    200,
+    "held"
+   ],
+   "parallel_builds": [
+    409,
+    200,
+    409
+   ],
+   "final": [
+    200,
+    "published"
+   ],
+   "listings": [
+    [
+     "677",
+     "publish",
+     "tel-aviv-yafo-4-rooms-for-sale"
+    ]
+   ],
+   "licence_line_on_page": true
+  },
+  "at": "2026-10-05 12:44:27"
  },
  {
   "id": "L16",
@@ -4516,6 +3193,41 @@
    ],
    "payment_like_routes": []
   },
-  "at": "2026-10-05 12:04:14"
+  "at": "2026-10-05 12:30:52"
+ },
+ {
+  "id": "L17",
+  "variant": "after",
+  "label": "real-wp",
+  "title": "rollback drill: new code -> base code on the same data -> new code again; nothing lost, no fatal",
+  "status": "pass",
+  "evidence": {
+   "new_code": {
+    "published": [
+     200,
+     "http://127.0.0.1:9421/properties/tel-aviv-yafo-4-rooms-for-sale/"
+    ],
+    "open_draft": 11
+   },
+   "rolled_back": {
+    "listing_page_http_200": true,
+    "the_1_0_tool_loads": true,
+    "my_listings_1_0": [
+     "דירת 4 חדרים בשכונת הדוגמה"
+    ],
+    "2_0_drafts_kept": [
+     "8",
+     "11"
+    ],
+    "php_fatal": false
+   },
+   "rolled_forward": {
+    "open_draft_resumes": true,
+    "its_photo_opens_for_the_owner": 200,
+    "listing_page_http_200": true
+   }
+  },
+  "notes": "the drill swaps the module files under one SQLite site; on the live site the rollback is the snippet text (707) and the plugin file, and main verifies the backup hashes first",
+  "at": "2026-10-05 12:29:53"
  }
 ]
