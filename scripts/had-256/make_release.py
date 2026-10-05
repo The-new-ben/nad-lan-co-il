@@ -73,6 +73,8 @@ live_ow = PRELUDE + snap_ow
 PG = os.path.join(REPO, 'docs', 'qa', 'had-256', 'page-4958')
 pg = {n: io.open(os.path.join(PG, n), encoding='utf-8').read().replace('\r\n', '\n') for n in ('old.html', 'anchor.html', 'new-B-paragraph.html', 'new-A.html', 'new-B.html')}
 assert pg['old.html'].count(pg['anchor.html']) == 1
+ydesc = {n: io.open(os.path.join(PG, n), encoding='utf-8', newline='').read() for n in ('yoast-desc-old.txt', 'yoast-desc-new.txt')}
+assert 'עם כפתורי וואטסאפ וחיוג אליכם' in ydesc['yoast-desc-old.txt'] and 'עם כפתורי וואטסאפ' not in ydesc['yoast-desc-new.txt']
 assert pg['old.html'].replace(pg['anchor.html'], '') == pg['new-A.html'] and pg['old.html'].replace(pg['anchor.html'], pg['new-B-paragraph.html']) == pg['new-B.html']
 
 L = []
@@ -116,6 +118,14 @@ w('PAGE_OLD_SHA256 = %r   # the text deploydrop.py --post-listing wrote (scripts
 w('PAGE_ANCHOR = %r' % pg['anchor.html'])
 w('PAGE_NEW = {"A": "", "B": %r}' % pg['new-B-paragraph.html'])
 w('PAGE_NEW_SHA256 = {"A": %r, "B": %r}   # from the old text' % (sha(pg['new-A.html']), sha(pg['new-B.html'])))
+w('# page 4958\'s Yoast description (meta description, og:description and the schema WebPage description all print it):')
+w('# the live value (deploydrop.py --post-listing) still promises the WhatsApp and call buttons; the new value is the truthful one')
+w('META_KEYS = ("_yoast_wpseo_metadesc", "_yoast_wpseo_opengraph-description", "_yoast_wpseo_twitter-description")')
+w('META_OLD = %r' % ydesc['yoast-desc-old.txt'])
+w('META_NEW = %r' % ydesc['yoast-desc-new.txt'])
+w('META_OLD_SHA256 = %r' % sha(ydesc['yoast-desc-old.txt']))
+w('META_NEW_SHA256 = %r' % sha(ydesc['yoast-desc-new.txt']))
+w('OLD_PROMISE = "עם כפתורי וואטסאפ וחיוג אליכם"   # never on /post-listing/ after the release (he and ?lang=en)')
 w('# SHA-256 of the repo files as committed (with the opening tag, LF)')
 w('FILE_SHA256 = {%r: %r, %r: %r}' % (OW, sha(show(SNAP, OW).replace('\r\n', '\n')), BD, sha(show(SNAP, BD).replace('\r\n', '\n'))))
 w('')
@@ -166,6 +176,12 @@ w('        n = t.count(PAGE_ANCHOR)')
 w('        if n != 1:')
 w('            raise SystemExit("had256_release: page 4958 anchor (the old paragraph) is there " + str(n) + " times (drift: stop)")')
 w('        out = t.replace(PAGE_ANCHOR, PAGE_NEW[v])')
+w('    elif rel.startswith("meta:4958:"):   # one Yoast text of page 4958 (META_KEYS); only the known old text is replaced')
+w('        if t == META_NEW:')
+w('            raise SystemExit("had256_release: " + rel + " already carries the new description")')
+w('        if t != META_OLD:')
+w('            raise SystemExit("had256_release: " + rel + " is not the known old description (drift: stop): " + _sha(t)[:12])')
+w('        out = META_NEW')
 w('    elif rel == "snippet:x-broker-drop":')
 w('        if "define( \'NL_DROP_VERSION\', \'1.1.4\' )" in t or "function nl_drop_lock_acquire(" in t:')
 w('            raise SystemExit("had256_release: x-broker-drop already carries the HAD-256 hunks")')
@@ -197,7 +213,8 @@ w('            apply("page:4958:" + v, n)')
 w('            raise AssertionError("page " + v + ": a second apply did not stop")')
 w('        except SystemExit as e:')
 w('            assert "already" in str(e), e')
-w('    for rel, txt in (("snippet:x-broker-drop", b), ("snippet:x-owner-wizard", o)):')
+w('    assert apply("meta:4958:_yoast_wpseo_metadesc", META_OLD) == META_NEW and _sha(META_NEW) == META_NEW_SHA256 and OLD_PROMISE in META_OLD and OLD_PROMISE not in META_NEW')
+w('    for rel, txt in (("snippet:x-broker-drop", b), ("snippet:x-owner-wizard", o), ("meta:4958:_yoast_wpseo_metadesc", META_NEW)):')
 w('        try:')
 w('            apply(rel, txt)')
 w('            raise AssertionError(rel + ": a second apply did not stop")')

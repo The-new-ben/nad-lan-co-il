@@ -152,6 +152,8 @@ function plan() {
       b = b.replace('<?php\n', '<?php\n/* DERIVED by start.mjs theme from nlj-bench.php of ' + commit + ': stubs, module loader and font link cut (the real plugin, snippets and skin are loaded). */\n');
       fs.writeFileSync(path.join(mu, 'nlj-bench.php'), b);
       fs.copyFileSync(path.join(HERE, 'theme', 'nlj-theme.php'), path.join(mu, 'nlj-theme.php'));
+      // Yoast's head output (meta description, og:description, the schema WebPage description), as the live page prints it
+      fs.copyFileSync(path.join(HERE, 'theme', 'nlj-yoast-emu.php'), path.join(mu, 'nlj-yoast-emu.php'));
       if (reh) {
         // the release rehearsal: a Code Snippets stand-in seeded with the LIVE BASE bodies (x-skin-a as read live; the
         // engine 1.1.3, x-broker-join and x-owner-wizard 1.0.0 of 6e9cf930), the opening tag removed as deploydrop.py does
@@ -189,6 +191,9 @@ function afterInstall(p) {
     fs.copyFileSync(p.theme.liveText, path.join(wc, 'nlj-post-listing.html'));
     fs.mkdirSync(path.join(wc, 'uploads', 'nadlan-skin'), { recursive: true });
     fs.copyFileSync(p.theme.skin, path.join(wc, 'uploads', 'nadlan-skin', 'skin-a.css'));
+    // page 4958's live Yoast description, seeded once by the Yoast stand-in
+    const yd = path.join(REPO, 'docs', 'qa', 'had-256', 'page-4958', 'yoast-desc-old.txt');
+    if (fs.existsSync(yd)) { fs.copyFileSync(yd, path.join(wc, 'nlj-yoast-desc.txt')); }
     // the copy variants of page 4958 (docs/qa/had-256/page-4958): POST /nlj-test/v1/page {variant: old|A|B}
     for (const [v, f] of [['old', 'old.html'], ['A', 'new-A.html'], ['B', 'new-B.html']]) {
       const src = path.join(REPO, 'docs', 'qa', 'had-256', 'page-4958', f);
