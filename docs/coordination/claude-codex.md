@@ -3904,3 +3904,20 @@ CONTENT PUBLISH by the Kikar loop [main] 22:29 Israel (machine clock): HAD-437 n
   - **Next:** a link to it from the Kikar hub (HAD-433).
 RELEASE IN PROGRESS HAD-256 x-owner-wizard 2.0.2 + x-broker-drop 1.1.4 (page B) by the Kikar loop [main] start 00:16 Israel (machine clock) (Ben: everything approved; DB proof passed live 5.10; dry run passed; auto-rollback)
 RELEASE ROLLED BACK HAD-256 x-owner-wizard 2.0.2 + x-broker-drop 1.1.4 (page B) by the Kikar loop [main] 00:17 Israel (machine clock): checks failed (the plugin box sentence "עם כפתורי וואטסאפ וחיוג אליכם" still on /post-listing/; nlx-plate missing on a rental listing page; then an IncompleteRead); automatic rollback clean (707 f04dbbf8, 687 e7736ef7, page 4958 7c130d77; health owner 1.0.0 engine 1.1.3)
+RELEASE IN PROGRESS HAD-256 x-owner-wizard 2.0.2 + x-broker-drop 1.1.4 (page B + Yoast description of page 4958) by the Kikar loop [main] start 00:35 Israel (machine clock), second attempt (Ben: finish it, then stop)
+RELEASE DONE HAD-256 x-owner-wizard 2.0.2 + x-broker-drop 1.1.4 + page B + Yoast description (page 4958) by the Kikar loop [main] 00:37 Israel (machine clock): 707 f04dbbf8->d4a2e88d, 687 e7736ef7->fb081ee5, page 4958 7c130d77->f39acdb4, metadesc 20b22b5e->e04dd791; private dir outside the web root, HTTP probes 404/400; all checks OK in both rounds; backup docs/qa/had-256/live-backup/20261005T213537Z (builder worktree)
+
+### RECEIPT HAD-256, the listing journey, live 6.10.2026 (the Kikar loop session [main])
+- **What went live:** the owner listing wizard x-owner-wizard 2.0.2 (snippet 707), the broker engine x-broker-drop 1.1.4 (snippet 687), page 4958 (/post-listing/) text B, and page 4958's Yoast description (it no longer promises WhatsApp and call buttons).
+- **Runs:** the first run rolled itself back at 00:17. The old promise was still in three Yoast places, and an exact-class check failed falsely. The builder fixed both, plus 3 retries on network errors. The second run at 00:35 was DONE with all checks OK.
+- **Code:** branch claude/had-256-listing-journey (the builder worktree agent-a61b211e083144352), deploy record + backups commit 8d750ce4. Runner: scripts/had-256/deploy_had256.py. Backup: docs/qa/had-256/live-backup/20261005T213537Z.
+- **Live check after the release (headless Chrome, cache-busted, 390 phone and 1366 PC, he and ?lang=en):**
+  - 200, exactly one H1, 0 page errors, no sideways scroll.
+  - The old phrase is gone (0 times in the HTML).
+  - The Yoast description is the new one.
+  - A real press on "כניסה"/"Sign in" switched the form to the sign-in tab.
+  - Screenshots: docs/qa/had-256-live/. Evidence: eyes + code.
+- **Not done, on purpose:**
+  - No account was created on live.
+  - Mail is not proven (FluentSMTP is unconfigured), so the "forgot password" mail is not promised.
+- **Finding (logged in Linear):** on a phone, the floating "ייעוץ חינם" bar covers the sign-in button and the password row of the form, and the space between the lede and the form is large.
