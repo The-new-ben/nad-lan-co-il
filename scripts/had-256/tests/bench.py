@@ -19,7 +19,7 @@ QA = REPO / 'docs' / 'qa' / 'had-256'
 SHOTS = QA / 'shots'
 RESULTS = QA / 'results.json'
 SEED = json.loads((REPO / 'scripts' / 'had-256' / 'local' / 'seed.json').read_text(encoding='utf-8'))
-PORTS = {'after': int(os.environ.get('NLJ_AFTER_PORT', 9401)), 'before': 9411}
+PORTS = {'after': int(os.environ.get('NLJ_AFTER_PORT', 9401)), 'before': 9411, 'theme': int(os.environ.get('NLJ_THEME_PORT', 9405))}
 VIEWPORTS = {'390': {'width': 390, 'height': 844}, '320': {'width': 320, 'height': 740}, '412': {'width': 412, 'height': 915},
              '360': {'width': 360, 'height': 780}, '768': {'width': 768, 'height': 1024}, '1440': {'width': 1440, 'height': 900}}
 

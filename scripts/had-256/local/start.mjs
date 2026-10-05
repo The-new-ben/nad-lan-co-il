@@ -8,7 +8,10 @@
  *        an immutable `git archive` copy of that commit (plugin modules + bench mu-plugin + loopback preload),
  *        its own SQLite site, its own mail sink, its own QA accounts (qa.a / qa.b @example.test). Never updated in
  *        place: a newer slice gets a new port (9403, 9404, ...).
- *   add --fresh (after/before only) to throw the site away and install again
+ *   node scripts/had-256/local/start.mjs theme [commit] [port] # open item 4: <commit> (default 2ce0a741) inside the site's
+ *        REAL theme (nadlan-revenue + nadlan-platform-child, the child's platform.css = live bytes) and the REAL
+ *        nadlan-config plugin, with the live Code Snippets; default port 9405 (9401-9404 refused). See docs/qa/had-256/theme.
+ *   add --fresh (after/before/theme) to throw the site away and install again
  *
  * Nothing here touches nad-lan.co.il: the sites live under scripts/had-256/local/.runtime/ (git-ignored), every
  * outbound HTTP request from PHP is blocked, every email goes to wp-content/mail-sink/*.json, AI is off, and every
@@ -98,7 +101,66 @@ function plan() {
     }
     return { name: 'qa-' + commit, port, root, site: path.join(root, 'site'), code: path.join(snap, 'plugins', 'nadlan-config', 'inc'), mu: path.join(snap, 'scripts', 'had-256', 'local', 'mu-plugins'), loop: path.join(snap, 'scripts', 'had-256', 'local', 'loopback.cjs'), seed: path.join(root, 'qa-seed.json'), label: 'pinned ' + commit, allowFresh: false };
   }
-  throw new Error('mode: after | before | qa <commit> [port]');
+  if (mode === 'theme') {
+    // open item 4: the code of <commit> inside the site's REAL theme (nadlan-revenue + nadlan-platform-child) and the REAL
+    // nadlan-config plugin, with the live Code Snippets (x-skin-a 638 as read live; x-broker-drop, x-broker-join 699 and
+    // x-owner-wizard 707 from <commit>). A pinned git-archive copy, its own SQLite site; never ports 9401-9404.
+    const commit = (args[1] || '2ce0a741').trim();
+    if (!/^[0-9a-f]{7,40}$/.test(commit)) { throw new Error('usage: start.mjs theme <commit> [port]'); }
+    const port = Number(args[2] || 9405);
+    if (port >= 9401 && port <= 9404) { throw new Error('ports 9401-9404 are the pinned QA / builder benches; use 9405+'); }
+    const root = path.join(RUNTIME, 'theme-' + commit);
+    const snap = path.join(root, 'snapshot');
+    if (!fs.existsSync(path.join(snap, '.complete'))) {
+      fs.rmSync(snap, { recursive: true, force: true });
+      fs.mkdirSync(snap, { recursive: true });
+      const unpack = (dest, paths) => {
+        fs.mkdirSync(dest, { recursive: true });
+        const tar = path.join(dest, 'nlj-part.tar');
+        execFileSync('git', ['-C', REPO, '-c', 'core.autocrlf=false', 'archive', '--format=tar', '-o', tar, commit, '--', ...paths]);   // LF bytes, as committed (and as the live snippets hold them)
+        // relative names in the tar's own folder: GNU tar reads "C:\..." as a remote host
+        execFileSync('tar', ['-xf', 'nlj-part.tar'], { cwd: dest });
+        fs.rmSync(tar);
+      };
+      // the parent theme is the repo root (style.css "Theme Name: NadLan Revenue"); only its theme files
+      unpack(path.join(snap, 'nadlan-revenue'), ['style.css', 'style.min.css', 'functions.php', 'theme.json', 'screenshot.png', 'readme.txt', 'templates', 'parts', 'patterns', 'styles', 'assets']);
+      unpack(snap, ['plugins/nadlan-config', 'themes/nadlan-platform-child', 'scripts/had-256/local/mu-plugins', 'scripts/had-256/local/loopback.cjs', 'scripts/had-256/local/seed.json', 'scripts/broker-drop/pages/post-listing-he.html', 'docs/qa/v8-traffic/x-skin-a-638.20261002T201851Z.live.php']);
+      // the child's platform.css: the LIVE public bytes (the repo copy differs from live; docs/qa/had-256/theme/live-ref)
+      fs.copyFileSync(path.join(REPO, 'docs', 'qa', 'had-256', 'theme', 'live-ref', 'platform.css'), path.join(snap, 'themes', 'nadlan-platform-child', 'assets', 'css', 'platform.css'));
+      // the live Code Snippets (Code Snippets stores them without the opening tag; a required file needs it)
+      const sn = path.join(snap, 'snippets');
+      fs.mkdirSync(sn, { recursive: true });
+      const inc = path.join(snap, 'plugins', 'nadlan-config', 'inc');
+      fs.writeFileSync(path.join(sn, 'x-skin-a-638.php'), '<?php\n' + fs.readFileSync(path.join(snap, 'docs', 'qa', 'v8-traffic', 'x-skin-a-638.20261002T201851Z.live.php'), 'utf8'));
+      fs.copyFileSync(path.join(inc, 'broker-drop.php'), path.join(sn, 'x-broker-drop.php'));
+      fs.copyFileSync(path.join(inc, 'broker-join.php'), path.join(sn, 'x-broker-join-699.php'));
+      fs.copyFileSync(path.join(inc, 'owner-wizard.php'), path.join(sn, 'x-owner-wizard-707.php'));
+      // the bench helpers of <commit> without its stubs, its module loader and its font link (the real plugin, the real
+      // snippets and the skin load those here); every cut is anchored and checked
+      const mu = path.join(snap, 'mu');
+      fs.mkdirSync(mu, { recursive: true });
+      let b = fs.readFileSync(path.join(snap, 'scripts', 'had-256', 'local', 'mu-plugins', 'nlj-bench.php'), 'utf8');
+      const cut = (from, to) => {
+        const i = b.indexOf(from), j = b.indexOf(to, i + 1);
+        if (i < 0 || j < 0 || b.indexOf(from, i + 1) >= 0) { throw new Error('nlj-bench.php anchor not found once: ' + from.slice(0, 50)); }
+        b = b.slice(0, i) + b.slice(j);
+      };
+      cut('/* ---------------- stubs ---------------- */', '/* ---------------- nothing leaves the machine ---------------- */');
+      cut("/* the design system's two families", '/* ---------------- the synthetic site ---------------- */');
+      b = b.replace('<?php\n', '<?php\n/* DERIVED by start.mjs theme from nlj-bench.php of ' + commit + ': stubs, module loader and font link cut (the real plugin, snippets and skin are loaded). */\n');
+      fs.writeFileSync(path.join(mu, 'nlj-bench.php'), b);
+      fs.copyFileSync(path.join(HERE, 'theme', 'nlj-theme.php'), path.join(mu, 'nlj-theme.php'));
+      fs.writeFileSync(path.join(snap, '.complete'), new Date().toISOString() + ' ' + commit + '\n');
+    }
+    const site = path.join(root, 'site');
+    return { name: 'theme-' + commit, port, root, site, code: path.join(snap, 'plugins', 'nadlan-config', 'inc'), mu: path.join(snap, 'mu'), loop: path.join(snap, 'scripts', 'had-256', 'local', 'loopback.cjs'), seed: path.join(snap, 'scripts', 'had-256', 'local', 'seed.json'), label: 'theme bench ' + commit, allowFresh: true,
+      theme: { liveText: path.join(snap, 'scripts', 'broker-drop', 'pages', 'post-listing-he.html'), skin: path.join(snap, 'nadlan-revenue', 'assets', 'skin-a', 'skin-a.css') },
+      extra: ['--mount-dir', fwd(path.join(snap, 'plugins', 'nadlan-config')), '/wordpress/wp-content/plugins/nadlan-config',
+        '--mount-dir', fwd(path.join(snap, 'nadlan-revenue')), '/wordpress/wp-content/themes/nadlan-revenue',
+        '--mount-dir', fwd(path.join(snap, 'themes', 'nadlan-platform-child')), '/wordpress/wp-content/themes/nadlan-platform-child',
+        '--mount-dir', fwd(path.join(snap, 'snippets')), '/wordpress/wp-content/nlj-snippets'] };
+  }
+  throw new Error('mode: after | before | qa <commit> [port] | theme <commit> [port]');
 }
 
 function afterInstall(p) {
@@ -107,6 +169,12 @@ function afterInstall(p) {
   fs.writeFileSync(path.join(wc, 'nlj-variant.txt'), p.name);
   if (!fs.existsSync(path.join(wc, 'nlj-seed.json')) || p.allowFresh) { fs.copyFileSync(p.seed, path.join(wc, 'nlj-seed.json')); }
   fs.mkdirSync(path.join(wc, 'mail-sink'), { recursive: true });
+  if (p.theme) {
+    // the live page text of /post-listing/ (4958) and the skin's stylesheet where x-skin-a links it (uploads/nadlan-skin)
+    fs.copyFileSync(p.theme.liveText, path.join(wc, 'nlj-post-listing.html'));
+    fs.mkdirSync(path.join(wc, 'uploads', 'nadlan-skin'), { recursive: true });
+    fs.copyFileSync(p.theme.skin, path.join(wc, 'uploads', 'nadlan-skin', 'skin-a.css'));
+  }
   // PHP notices go to wp-content/debug.log, never to the page
   const cfg = path.join(p.site, 'wp-config.php');
   if (fs.existsSync(cfg)) {
