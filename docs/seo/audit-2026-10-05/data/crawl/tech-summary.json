@@ -1,0 +1,1828 @@
+{
+ "records": 4638,
+ "status": {
+  "200": 4555,
+  "404": 78,
+  "410": 3,
+  "302": 1,
+  "301": 1
+ },
+ "internal_link_targets_non200": {
+  "410": 3,
+  "404": 78,
+  "302": 1,
+  "301": 1
+ },
+ "internal_link_targets_non200_top": [
+  [
+   "/cities/תל-אביב-יפו/",
+   410,
+   45
+  ],
+  [
+   "/mortgage-ltv-ratio/",
+   404,
+   26
+  ],
+  [
+   "/city/תל-אביב-יפו/projects/",
+   410,
+   18
+  ],
+  [
+   "/mortgage-interest-rates/",
+   404,
+   10
+  ],
+  [
+   "/real-estate-lawyer/sale-deed-apartment/",
+   404,
+   6
+  ],
+  [
+   "/transfer-money-to-israel-property/",
+   404,
+   6
+  ],
+  [
+   "/apartment-sale-contract/",
+   404,
+   5
+  ],
+  [
+   "/reverse-mortgage/",
+   404,
+   4
+  ],
+  [
+   "/mortgage-repayment-capacity/",
+   404,
+   4
+  ],
+  [
+   "/tools/purchase-tax-calculator/",
+   404,
+   4
+  ],
+  [
+   "/tools/mortgage-calculator/",
+   404,
+   4
+  ],
+  [
+   "/apartments-for-investment/",
+   404,
+   3
+  ],
+  [
+   "/bank-guarantee-purchase/",
+   404,
+   3
+  ],
+  [
+   "/short-term-rentals-thailand/",
+   404,
+   3
+  ],
+  [
+   "/short-term-rentals-portugal/",
+   404,
+   3
+  ]
+ ],
+ "redirects": 2,
+ "redirect_chains_2plus": [],
+ "pages_with_http_links": 0,
+ "sitemap_urls": 4528,
+ "sitemap_non200": 0,
+ "sitemap_non200_sample": [],
+ "sitemap_not_fetched": 0,
+ "canonical_issues": {
+  "missing": 8
+ },
+ "noindex_pages": 27,
+ "noindex_in_sitemap": 22,
+ "sitemap_canonicalised_elsewhere": [],
+ "hreflang_pages": 1189,
+ "hreflang_issues": {
+  "target-not-crawled": 46
+ },
+ "indexable_html": 4528,
+ "onpage_issue_counts": {
+  "h1-mixed-he-en": 54,
+  "meta-long": 8,
+  "thin<250w": 29,
+  "title-long": 142,
+  "title-short": 149,
+  "meta-missing": 43,
+  "h1-multiple": 14,
+  "h1-duplicate": 156,
+  "title-duplicate": 32,
+  "meta-duplicate": 2
+ },
+ "onpage_by_section": {
+  "professionals": {
+   "h1-mixed-he-en": 3,
+   "h1-duplicate": 117,
+   "title-duplicate": 20,
+   "title-short": 3,
+   "title-long": 1,
+   "meta-duplicate": 2
+  },
+  "glossary": {
+   "title-short": 121,
+   "meta-missing": 1,
+   "thin<250w": 7,
+   "h1-mixed-he-en": 3,
+   "title-duplicate": 5,
+   "h1-duplicate": 5
+  },
+  "projects": {
+   "h1-mixed-he-en": 17,
+   "title-long": 96,
+   "thin<250w": 3,
+   "h1-duplicate": 2,
+   "meta-long": 1
+  },
+  "glossary-category": {
+   "meta-missing": 21,
+   "h1-mixed-he-en": 5,
+   "h1-duplicate": 10,
+   "title-short": 1
+  },
+  "global": {
+   "title-long": 9,
+   "h1-multiple": 9,
+   "h1-duplicate": 9,
+   "h1-mixed-he-en": 5
+  },
+  "tel-aviv-plans": {
+   "title-long": 8,
+   "meta-long": 1
+  },
+  "commercial-real-estate": {
+   "title-long": 1,
+   "h1-mixed-he-en": 7
+  },
+  "category": {
+   "meta-missing": 4,
+   "h1-mixed-he-en": 2,
+   "title-short": 2
+  },
+  "properties": {
+   "title-duplicate": 2,
+   "meta-missing": 2,
+   "h1-duplicate": 2,
+   "thin<250w": 1
+  },
+  "advertiser-center": {
+   "title-duplicate": 1,
+   "title-short": 1,
+   "meta-missing": 1,
+   "h1-multiple": 1,
+   "h1-duplicate": 1,
+   "thin<250w": 1,
+   "h1-mixed-he-en": 1
+  },
+  "studio": {
+   "title-duplicate": 1,
+   "title-short": 1,
+   "meta-missing": 1,
+   "h1-multiple": 1,
+   "h1-duplicate": 1,
+   "thin<250w": 1,
+   "h1-mixed-he-en": 1
+  },
+  "urban-renewal": {
+   "title-long": 4,
+   "thin<250w": 1,
+   "meta-long": 1
+  },
+  "profession": {
+   "title-short": 2,
+   "meta-missing": 2,
+   "h1-mixed-he-en": 2
+  },
+  "product": {
+   "thin<250w": 4,
+   "h1-mixed-he-en": 2
+  },
+  "compare": {
+   "title-duplicate": 1,
+   "title-short": 1,
+   "meta-missing": 1,
+   "h1-multiple": 1,
+   "h1-duplicate": 1,
+   "thin<250w": 1
+  }
+ },
+ "dup_titles_top": [
+  [
+   "עסקת קומבינציה - נדלן",
+   3
+  ],
+  [
+   "נדלן",
+   3
+  ],
+  [
+   "דירות למכירה ולהשכרה בישראל - לוח נדל\"ן | נדלן",
+   2
+  ],
+  [
+   "מדיניות פרטיות - נדלן",
+   2
+  ],
+  [
+   "פינוי בינוי - נדלן",
+   2
+  ],
+  [
+   "וקנין דוד: תיווך נדל״ן באילת | נדלן",
+   2
+  ],
+  [
+   "אגבאריה כמאל: קבלן בנייה באם אל-פחם | נדלן",
+   2
+  ],
+  [
+   "מחאמיד מוחמד: קבלן בנייה באם אל-פחם | נדלן",
+   2
+  ],
+  [
+   "דיאב עאדל: קבלן שיפוצים בטמרה | נדלן",
+   2
+  ],
+  [
+   "אגבאריה מוחמד: קבלן שיפוצים באם אל-פחם | נדלן",
+   2
+  ],
+  [
+   "נתיב אברהם: קבלן בנייה בראשון לציון | נדלן",
+   2
+  ],
+  [
+   "מחאמיד חוסין: קבלן בנייה באם אל-פחם | נדלן",
+   2
+  ],
+  [
+   "מחאמיד אימן: קבלן בנייה באם אל-פחם | נדלן",
+   2
+  ],
+  [
+   "גבארין מוהנד: קבלן שיפוצים במעלה עירון | נדלן",
+   2
+  ],
+  [
+   "נעאמנה רביע: קבלן בנייה בעראבה | נדלן",
+   2
+  ]
+ ],
+ "dup_h1_top": [
+  [
+   "נדלן",
+   14
+  ],
+  [
+   "מחאמיד מוחמד",
+   4
+  ],
+  [
+   "עסקת קומבינציה",
+   3
+  ],
+  [
+   "לוי משה",
+   3
+  ],
+  [
+   "כהן יצחק",
+   3
+  ],
+  [
+   "אגבאריה עימאד",
+   3
+  ],
+  [
+   "אגבאריה מוחמד",
+   3
+  ],
+  [
+   "כהן אברהם",
+   3
+  ],
+  [
+   "דירות למכירה ולהשכרה",
+   2
+  ],
+  [
+   "מדיניות פרטיות",
+   2
+  ],
+  [
+   "הצהרת נגישות",
+   2
+  ],
+  [
+   "Kikar Hamedina Towers, Tel Aviv",
+   2
+  ],
+  [
+   "פינוי בינוי",
+   2
+  ],
+  [
+   "מחבר: בן בטש",
+   2
+  ],
+  [
+   "וקנין דוד",
+   2
+  ]
+ ],
+ "orphans_in_sitemap": 1002,
+ "orphans_by_section": {
+  "projects": 893,
+  "professionals": 64,
+  "glossary-category": 11,
+  "commercial-real-estate": 5,
+  "north-tel-aviv": 3,
+  "real-estate-tax-advisor": 2,
+  "compound": 2,
+  "profession": 2,
+  "shop": 2,
+  "catalog": 1,
+  "construction-engineering-guide": 1,
+  "property-value": 1,
+  "buy-vs-rent": 1,
+  "herzliya-pituach-luxury": 1,
+  "en": 1
+ },
+ "orphans_top": [
+  [
+   "/catalog/",
+   "catalog",
+   710.0
+  ],
+  [
+   "/projects/הגפן-8-10-רג/",
+   "projects",
+   306.0
+  ],
+  [
+   "/north-tel-aviv/bavli/",
+   "north-tel-aviv",
+   212.0
+  ],
+  [
+   "/construction-engineering-guide/",
+   "construction-engineering-guide",
+   157.0
+  ],
+  [
+   "/property-value/luxury-apartments-tel-aviv/",
+   "property-value",
+   156.0
+  ],
+  [
+   "/projects/יפו/",
+   "projects",
+   137.0
+  ],
+  [
+   "/projects/צביה-ויצחק/",
+   "projects",
+   120.0
+  ],
+  [
+   "/real-estate-tax-advisor/gift-transfer-apartment/",
+   "real-estate-tax-advisor",
+   110.0
+  ],
+  [
+   "/north-tel-aviv/shchunat-lamed/",
+   "north-tel-aviv",
+   98.0
+  ],
+  [
+   "/projects/חיים-חביב-3/",
+   "projects",
+   89.0
+  ],
+  [
+   "/projects/מגדל-הים-רוטשילד-2/",
+   "projects",
+   82.0
+  ],
+  [
+   "/projects/מתחם-ביאליק-911/",
+   "projects",
+   79.0
+  ],
+  [
+   "/projects/רג-1851-פנחס-רוטנברג-79-81-83-85-התחדשות-עירונית/",
+   "projects",
+   76.0
+  ],
+  [
+   "/projects/גואטמלה-252729/",
+   "projects",
+   71.0
+  ],
+  [
+   "/projects/רח-השר-משה-58-60-62-ורח-הראובני-12-רמת-גן/",
+   "projects",
+   67.0
+  ],
+  [
+   "/projects/מתחם-טוביהו-הצבי/",
+   "projects",
+   67.0
+  ],
+  [
+   "/projects/פינוי-בינוי-מתחם-טרומן-c-קריית-חיים/",
+   "projects",
+   65.0
+  ],
+  [
+   "/projects/הרותם-פלדות/",
+   "projects",
+   65.0
+  ],
+  [
+   "/commercial-real-estate/shop-prices-netanya/",
+   "commercial-real-estate",
+   62.0
+  ],
+  [
+   "/commercial-real-estate/office-prices-hod-hasharon/",
+   "commercial-real-estate",
+   61.0
+  ],
+  [
+   "/commercial-real-estate/office-prices-ashdod/",
+   "commercial-real-estate",
+   58.0
+  ],
+  [
+   "/projects/סוקולוב-46/",
+   "projects",
+   55.0
+  ],
+  [
+   "/projects/רג-1811-קריניצי-109-111/",
+   "projects",
+   53.0
+  ],
+  [
+   "/buy-vs-rent/",
+   "buy-vs-rent",
+   51.0
+  ],
+  [
+   "/projects/ברגר-על-הפארק/",
+   "projects",
+   51.0
+  ]
+ ],
+ "depth_distribution": {
+  "0": 1,
+  "1": 70,
+  "2": 467,
+  "3": 231,
+  "4": 98,
+  "5": 217,
+  "6": 644,
+  "7": 1077,
+  "8": 556,
+  "9": 91,
+  "10": 11,
+  "11": 1,
+  "None": 1091
+ },
+ "deep_pages_with_impr": [
+  [
+   "/commercial-real-estate/commercial-real-estate-brokerage-fee/",
+   null,
+   992.0,
+   15
+  ],
+  [
+   "/catalog/",
+   null,
+   710.0,
+   0
+  ],
+  [
+   "/commercial-real-estate/commercial-property-management-fees/",
+   null,
+   562.0,
+   32
+  ],
+  [
+   "/property-value/building-rights-check/",
+   4,
+   444.0,
+   9
+  ],
+  [
+   "/michraz-dirot/",
+   null,
+   345.0,
+   2
+  ],
+  [
+   "/projects/הגפן-8-10-רג/",
+   null,
+   306.0,
+   0
+  ],
+  [
+   "/projects/ashdar-einstein/",
+   null,
+   228.0,
+   1
+  ],
+  [
+   "/real-estate-lawyer/partition-real-estate/",
+   4,
+   223.0,
+   1
+  ],
+  [
+   "/north-tel-aviv/bavli/",
+   null,
+   212.0,
+   0
+  ],
+  [
+   "/commercial-real-estate/ramat-gan-commercial-property-prices/",
+   null,
+   175.0,
+   2
+  ],
+  [
+   "/construction-engineering-guide/",
+   null,
+   157.0,
+   0
+  ],
+  [
+   "/property-value/luxury-apartments-tel-aviv/",
+   null,
+   156.0,
+   0
+  ],
+  [
+   "/projects/יפו/",
+   null,
+   137.0,
+   0
+  ],
+  [
+   "/buying-real-estate-israel-foreign-investor/",
+   4,
+   135.0,
+   3
+  ],
+  [
+   "/commercial-real-estate/commercial-property-prices-beer-sheva/",
+   null,
+   123.0,
+   5
+  ],
+  [
+   "/projects/צביה-ויצחק/",
+   null,
+   120.0,
+   0
+  ],
+  [
+   "/real-estate-tax-advisor/gift-transfer-apartment/",
+   null,
+   110.0,
+   0
+  ],
+  [
+   "/ramat-aviv/neve-avivim/",
+   4,
+   105.0,
+   5
+  ],
+  [
+   "/commercial-real-estate/commercial-property-prices-ashdod/",
+   null,
+   105.0,
+   5
+  ]
+ ],
+ "indexable_not_in_sitemap": 23,
+ "indexable_not_in_sitemap_top": [
+  [
+   "/site-map/",
+   "site-map",
+   341.0
+  ],
+  [
+   "/global/london/",
+   "global",
+   263.0
+  ],
+  [
+   "/global/",
+   "global",
+   258.0
+  ],
+  [
+   "/global/thailand/",
+   "global",
+   218.0
+  ],
+  [
+   "/global/italy/",
+   "global",
+   212.0
+  ],
+  [
+   "/global/miami/",
+   "global",
+   161.0
+  ],
+  [
+   "/global/cyprus/",
+   "global",
+   68.0
+  ],
+  [
+   "/global/dubai/",
+   "global",
+   65.0
+  ],
+  [
+   "/author/ben-betesh/page/2/",
+   "author",
+   47.0
+  ],
+  [
+   "/global/greece/",
+   "global",
+   39.0
+  ],
+  [
+   "/global/new-york/",
+   "global",
+   30.0
+  ],
+  [
+   "/glossary-category/standards-regulation/page/2/",
+   "glossary-category",
+   25.0
+  ],
+  [
+   "/my-renewal/",
+   "my-renewal",
+   14.0
+  ],
+  [
+   "/my-rentals/",
+   "my-rentals",
+   3.0
+  ],
+  [
+   "/advertiser-center/",
+   "advertiser-center",
+   3.0
+  ],
+  [
+   "/glossary-category/tools-hardware/page/2/",
+   "glossary-category",
+   3.0
+  ],
+  [
+   "/studio/",
+   "studio",
+   1.0
+  ],
+  [
+   "/sell-by-auction/",
+   "sell-by-auction",
+   1.0
+  ],
+  [
+   "/glossary-category/appraisal-investment/page/2/",
+   "glossary-category",
+   1.0
+  ],
+  [
+   "/properties/page/2/",
+   "properties",
+   0
+  ]
+ ],
+ "key_pages": [
+  [
+   "/",
+   200,
+   0,
+   4549,
+   "נדלן - דירות למכירה, פרויקטים חדשים ומחירי דירות בישראל",
+   "נדל״ן: פרויקטים חדשים, דירות למכירה ומחירי דירות",
+   1480,
+   [
+    [
+     "NadLan",
+     4380
+    ],
+    [
+     "NadLan Before you call the developer",
+     49
+    ],
+    [
+     "NadLan Avant d'appeler le promoteur",
+     36
+    ],
+    [
+     "NadLan До звонка застройщику",
+     36
+    ]
+   ]
+  ],
+  [
+   "/projects/",
+   200,
+   1,
+   4538,
+   "פרויקטים חדשים בישראל | דירות מקבלן לפי עיר ויזם | נדלן",
+   "פרויקטים חדשים בישראל",
+   3245,
+   [
+    [
+     "כל הפרויקטים976",
+     4386
+    ],
+    [
+     "Projects",
+     49
+    ],
+    [
+     "Projets",
+     36
+    ],
+    [
+     "Проекты",
+     36
+    ]
+   ]
+  ],
+  [
+   "/projects/hamedina/",
+   200,
+   1,
+   4398,
+   "מגדלי כיכר המדינה תל אביב: מחירים, עסקאות, מפה ותלת ממד",
+   "מגדלי כיכר המדינה, תל אביב Kikar Hamedina Towers",
+   8014,
+   [
+    [
+     "כיכר המדינה",
+     4386
+    ],
+    [
+     "עב",
+     4
+    ],
+    [
+     "Kikar Hamedina Towers, Tel Aviv",
+     4
+    ],
+    [
+     "Tours Kikar Hamedina, Tel Aviv",
+     2
+    ]
+   ]
+  ],
+  [
+   "/projects/hamedina-en/",
+   200,
+   2,
+   5,
+   "Kikar Hamedina Towers Tel Aviv: Prices, Deals, Map & 3D",
+   "Kikar Hamedina Towers, Tel Aviv",
+   8102,
+   [
+    [
+     "EN",
+     4
+    ],
+    [
+     "Artist's impression",
+     1
+    ]
+   ]
+  ],
+  [
+   "/projects/hamedina-fr/",
+   200,
+   2,
+   5,
+   "Tours Kikar Hamedina à Tel Aviv : appartements, prix et 3D",
+   "Tours Kikar Hamedina, Tel Aviv",
+   8473,
+   [
+    [
+     "FR",
+     4
+    ],
+    [
+     "Image d'illustration",
+     1
+    ]
+   ]
+  ],
+  [
+   "/projects/hamedina-ru/",
+   200,
+   2,
+   5,
+   "Башни Кикар ха-Медина, Тель-Авив: цены, сделки, карта и 3D",
+   "Башни Кикар ха-Медина, Тель-Авив",
+   8102,
+   [
+    [
+     "RU",
+     4
+    ],
+    [
+     "Визуализация",
+     1
+    ]
+   ]
+  ],
+  [
+   "/projects/hamedina-ar/",
+   200,
+   2,
+   5,
+   "Kikar Hamedina Towers, Tel Aviv: Prices, Deals & 3D Map",
+   "Kikar Hamedina Towers, Tel Aviv",
+   8006,
+   [
+    [
+     "AR",
+     4
+    ],
+    [
+     "صورة توضيحية",
+     1
+    ]
+   ]
+  ],
+  [
+   "/sde-dov/",
+   200,
+   1,
+   4536,
+   "שדה דב: כל הפרויקטים, המחירים והדירות למכירה | המדריך המלא",
+   "רובע שדה דב: המדריך השלם לרובע החדש של תל אביב",
+   5525,
+   [
+    [
+     "רובע שדה דב",
+     4386
+    ],
+    [
+     "Top areas",
+     49
+    ],
+    [
+     "Quartiers",
+     36
+    ],
+    [
+     "Районы",
+     36
+    ]
+   ]
+  ],
+  [
+   "/sde-dov/prices/",
+   200,
+   2,
+   7,
+   "מחירי דירות בשדה דב - מחיר למ״ר, טבלאות השוואה וסקירת שוק | נדל\"ן חכם",
+   "מחירי דירות בשדה דב",
+   4688,
+   [
+    [
+     "מחירי דירות בשדה דב",
+     6
+    ],
+    [
+     "מחירי דירות ומחיר למ״ר - סקירת שוק",
+     1
+    ]
+   ]
+  ],
+  [
+   "/sde-dov/merkaz/",
+   200,
+   2,
+   1,
+   "מתחם המרכז ברובע שדה דב תל אביב",
+   "מתחם המרכז ברובע שדה דב",
+   4112,
+   [
+    [
+     "מתחם המרכז - מדריך מלא",
+     1
+    ]
+   ]
+  ],
+  [
+   "/sde-dov-luxury-projects-2026/",
+   200,
+   2,
+   8,
+   "רובע שדה דב: הריביירה החדשה של תל אביב יוצאת לדרך - נדלן",
+   "רובע שדה דב: הריביירה החדשה של תל אביב יוצאת לדרך",
+   437,
+   [
+    [
+     "Sde Dov luxury quarter",
+     3
+    ],
+    [
+     "רובע שדה דב היוקרתי",
+     2
+    ],
+    [
+     "רובע שדה דב: הריביירה החדשה של תל אביב יוצאת לדרך",
+     2
+    ],
+    [
+     "",
+     1
+    ]
+   ]
+  ],
+  [
+   "/new-projects/new-projects-tel-aviv/",
+   200,
+   1,
+   12,
+   "פרויקטים חדשים בתל אביב: השוואת דירה מקבלן לפני חתימה | nad-lan",
+   "פרויקטים חדשים בתל אביב: איך להשוות דירה מקבלן לפני חתימה",
+   3400,
+   [
+    [
+     "פרויקטים חדשים בתל אביב",
+     7
+    ],
+    [
+     "New projects in Tel Aviv",
+     1
+    ],
+    [
+     "Projets neufs à Tel Aviv",
+     1
+    ],
+    [
+     "Новостройки в Тель-Авиве",
+     1
+    ]
+   ]
+  ],
+  [
+   "/new-projects/north-tel-aviv-new-projects/",
+   200,
+   2,
+   1,
+   "פרויקטים חדשים בצפון תל אביב: השוואת דירה מקבלן | nad-lan",
+   "פרויקטים חדשים בצפון תל אביב: איך להשוות דירה מקבלן לפני חתימה",
+   3901,
+   [
+    [
+     "פרויקטים חדשים בצפון תל אביב",
+     1
+    ]
+   ]
+  ],
+  [
+   "/property-value-estimator/",
+   200,
+   1,
+   4394,
+   "מחשבון שווי דירה - נדלן",
+   "מחשבון שווי דירה",
+   2311,
+   [
+    [
+     "כמה שווה הדירה שלי",
+     4386
+    ],
+    [
+     "What's my home worth",
+     1
+    ],
+    [
+     "Valeur de mon bien",
+     1
+    ],
+    [
+     "Сколько стоит моя квартира",
+     1
+    ]
+   ]
+  ],
+  [
+   "/investment/",
+   200,
+   1,
+   4391,
+   "נדל\"ן להשקעה בישראל | נדלן חכם",
+   "נדל\"ן להשקעה בישראל: המדריך המלא למשקיע 2026",
+   4248,
+   [
+    [
+     "נדל״ן להשקעה",
+     4386
+    ],
+    [
+     "Real-estate investment",
+     1
+    ],
+    [
+     "Investissement immobilier",
+     1
+    ],
+    [
+     "Инвестиции в недвижимость",
+     1
+    ]
+   ]
+  ],
+  [
+   "/investment/apartments-for-investment/",
+   200,
+   2,
+   24,
+   "דירות להשקעה בישראל: עיר, שכונה, תשואה וסיכון | nad-lan",
+   "דירות להשקעה בישראל: איך לבחור עיר, שכונה ונכס לפי תשואה וסיכון",
+   3876,
+   [
+    [
+     "דירות להשקעה",
+     14
+    ],
+    [
+     "דירות להשקעה בישראל",
+     6
+    ],
+    [
+     "דירות להשקעה, אילו דירות לקנות ואיפה",
+     1
+    ],
+    [
+     "המדריך לדירות להשקעה בישראל",
+     1
+    ]
+   ]
+  ],
+  [
+   "/real-estate-lawyer/",
+   200,
+   1,
+   4536,
+   "עורך דין מקרקעין: בדיקה משפטית לפני חתימת חוזה דירה - נדלן",
+   "בעסקת דירה, עורך הדין הוא קו ההגנה לפני הכסף הגדול",
+   2179,
+   [
+    [
+     "בדיקה משפטית",
+     4220
+    ],
+    [
+     "עורך דין מקרקעין",
+     82
+    ],
+    [
+     "Legal check",
+     45
+    ],
+    [
+     "Vérification juridique",
+     33
+    ]
+   ]
+  ],
+  [
+   "/real-estate-appraiser/",
+   200,
+   2,
+   35,
+   "שמאי מקרקעין: מתי צריך הערכת שווי לעסקה | nad-lan",
+   "שמאי מקרקעין עוזר להבין כמה הנכס באמת שווה, ומה עלול להשפיע על העסקה",
+   2357,
+   [
+    [
+     "שמאי מקרקעין",
+     28
+    ],
+    [
+     "שמאי מקרקעין: מתי צריך הערכת שווי לפני קנייה, מכירה או השקעה",
+     4
+    ],
+    [
+     "מה שמאי בודק ולמה ←",
+     2
+    ],
+    [
+     "מתי צריך שמאי",
+     1
+    ]
+   ]
+  ],
+  [
+   "/home-inspection/",
+   200,
+   2,
+   43,
+   "בדק בית לפני קניית דירה: מה בודקים, מחיר וליקויים 2026",
+   "בדק בית לפני קניית דירה: מה בודקים ואיך משתמשים בדוח",
+   1905,
+   [
+    [
+     "בדק בית",
+     9
+    ],
+    [
+     "בדק בית לפני קניית דירה: מה בודקים ואיך בוחרים מהנדס",
+     3
+    ],
+    [
+     "Hebrew home-inspection guide",
+     2
+    ],
+    [
+     "בדק בית בדירה חדשה",
+     1
+    ]
+   ]
+  ],
+  [
+   "/purchase-tax-calculator/",
+   200,
+   1,
+   4536,
+   "מחשבון מס רכישה 2026: דירה יחידה או משקיע | nad-lan",
+   "מחשבון מס רכישה: הערכת עלות לפני קניית דירה",
+   2182,
+   [
+    [
+     "מחשבון מס רכישה",
+     4387
+    ],
+    [
+     "Purchase tax",
+     32
+    ],
+    [
+     "Taxe d'acquisition",
+     20
+    ],
+    [
+     "Налог на покупку",
+     20
+    ]
+   ]
+  ],
+  [
+   "/mortgage-calculator/",
+   200,
+   1,
+   4544,
+   "מחשבון משכנתא 2026: החזר חודשי, ריבית ותמהיל | nad-lan",
+   "מחשבון משכנתא 2026: החזר חודשי ועלות כוללת",
+   2219,
+   [
+    [
+     "מחשבון משכנתא",
+     4387
+    ],
+    [
+     "Calculators",
+     49
+    ],
+    [
+     "Simulateurs",
+     36
+    ],
+    [
+     "Калькуляторы",
+     36
+    ]
+   ]
+  ],
+  [
+   "/urban-renewal/map/",
+   200,
+   2,
+   1,
+   "מפת התחדשות עירונית בישראל: מתחמי פינוי בינוי לפי עיר | נדלן",
+   "מפת ההתחדשות העירונית של ישראל",
+   703,
+   [
+    [
+     "מפת מתחמי ההתחדשות",
+     1
+    ]
+   ]
+  ],
+  [
+   "/projects/duo-tel-aviv/",
+   200,
+   2,
+   23,
+   "DUO תל אביב - מגדלי דואו, אבן גבירול | מחירים ודירות | נדלן",
+   "מגדלי דואו תל אביב DUO Tel Aviv",
+   5423,
+   [
+    [
+     "מגדלי DUO תל אביב - פרוייקט דואו אבן גבירול תל אביב",
+     5
+    ],
+    [
+     "DUO",
+     4
+    ],
+    [
+     "עב",
+     4
+    ],
+    [
+     "מגדלי DUO",
+     4
+    ]
+   ]
+  ],
+  [
+   "/projects/rainbow-tel-aviv/",
+   200,
+   1,
+   4536,
+   "ריינבו תל אביב Rainbow - ישראל קנדה, שדה דב | מחירים ודירות | נדלן",
+   "ריינבו תל אביב Rainbow Tel Aviv",
+   4150,
+   [
+    [
+     "סיור וירטואלי · הדמיה להמחשהריינבו תל אביב: בוחרים קומה ורואים את הנוף",
+     4386
+    ],
+    [
+     "Rainbow Tel Aviv",
+     141
+    ],
+    [
+     "עב",
+     4
+    ],
+    [
+     "Rainbow Tel Aviv - ריינבו תל אביב",
+     4
+    ]
+   ]
+  ],
+  [
+   "/projects/dimri-yama-sde-dov/",
+   200,
+   1,
+   4536,
+   "דמרי ימה שדה דב (DIMRI YAMA) | י.ח דמרי | מחירים ודירות | נדלן",
+   "דמרי ימה שדה דב Dimri Yama Sde Dov",
+   4050,
+   [
+    [
+     "Dimri Yama",
+     4425
+    ],
+    [
+     "DIMRI YAMA שדה דב - י.ח דמרי",
+     80
+    ],
+    [
+     "DIMRI YAMA Sde Dov",
+     16
+    ],
+    [
+     "עב",
+     4
+    ]
+   ]
+  ],
+  [
+   "/herzliya-projects/",
+   200,
+   3,
+   4,
+   "פרויקטים חדשים בהרצליה והמרינה - על הנייר ויוקרה | נדל״ן חכם",
+   "פרויקטים חדשים בהרצליה והמרינה - על הנייר, יוקרה ופיתוח",
+   4247,
+   [
+    [
+     "פרויקטים בהרצליה",
+     2
+    ],
+    [
+     "הרצליה",
+     1
+    ],
+    [
+     "פרויקטים חדשים בהרצליה והמרינה",
+     1
+    ]
+   ]
+  ],
+  [
+   "/tel-aviv-apartment-prices/",
+   200,
+   1,
+   4394,
+   "דירה בתל אביב: המחיר האמיתי בכל אזור, מ-45 אלף למ\"ר",
+   "מחירי דירות בתל אביב לפי אזורים ושכונות",
+   2106,
+   [
+    [
+     "מחירי דירות בתל אביב",
+     4386
+    ],
+    [
+     "Prices in Tel Aviv",
+     1
+    ],
+    [
+     "Prix à Tel Aviv",
+     1
+    ],
+    [
+     "Цены в Тель-Авиве",
+     1
+    ]
+   ]
+  ],
+  [
+   "/properties/",
+   200,
+   1,
+   158,
+   "דירות למכירה ולהשכרה בישראל - לוח נדל\"ן | נדלן",
+   "דירות למכירה ולהשכרה",
+   543,
+   [
+    [
+     "דירות למכירה ולהשכרה ←",
+     122
+    ],
+    [
+     "דירות",
+     20
+    ],
+    [
+     "the board",
+     3
+    ],
+    [
+     "בלוח הדירות",
+     2
+    ]
+   ]
+  ],
+  [
+   "/luxury-tel-aviv/",
+   200,
+   3,
+   17,
+   "דירות יוקרה בתל אביב - פארק בבלי ושוק היוקרה | נדל״ן חכם",
+   "פרויקטי היוקרה ודירות היוקרה בתל אביב",
+   3800,
+   [
+    [
+     "דירות יוקרה",
+     8
+    ],
+    [
+     "דירות יוקרה בתל אביב",
+     6
+    ],
+    [
+     "יוקרה בתל אביב",
+     3
+    ]
+   ]
+  ],
+  [
+   "/premium/",
+   200,
+   1,
+   4535,
+   "הקטלוג הפרימיום - פרויקטים עם בחירת דירה בתלת ממד | נדלן - נדלן",
+   "הקטלוג הפרימיום - פרויקטים עם בחירת דירה בתלת ממד",
+   603,
+   [
+    [
+     "קטלוג הסיורים הווירטואליים",
+     4386
+    ],
+    [
+     "3D catalogue",
+     49
+    ],
+    [
+     "Catalogue 3D",
+     36
+    ],
+    [
+     "3D-каталог",
+     36
+    ]
+   ]
+  ],
+  [
+   "/catalog/",
+   200,
+   null,
+   0,
+   "קטלוג נכסים - נדלן",
+   "קטלוג נכסים, פרויקטים ובעלי מקצוע",
+   418,
+   []
+  ],
+  [
+   "/site-map/",
+   200,
+   1,
+   4549,
+   "מפת האתר: כל המוצרים, הכלים והמדריכים | נדלן",
+   "נדלן",
+   422,
+   [
+    [
+     "מפת האתר המלאה: כל הכלים, המדריכים והמאגרים ←",
+     4399
+    ],
+    [
+     "The full site map: every tool, guide and database →",
+     49
+    ],
+    [
+     "Le plan complet du site : tous les outils, guides et bases de données →",
+     36
+    ],
+    [
+     "Полная карта сайта: все инструменты, руководства и базы данных →",
+     36
+    ]
+   ]
+  ],
+  [
+   "/sitemap/",
+   null,
+   null,
+   0,
+   "",
+   "",
+   null,
+   []
+  ]
+ ],
+ "thin_non_professional": 46,
+ "thin_top": [
+  [
+   "/glossary/dayar-sarvan/",
+   "glossary",
+   224,
+   240.0
+  ],
+  [
+   "/post-listing/",
+   "post-listing",
+   229,
+   237.0
+  ],
+  [
+   "/glossary/shamai-pinui-binui/",
+   "glossary",
+   268,
+   160.0
+  ],
+  [
+   "/projects/שער-צפון-מער-רמלה/",
+   "projects",
+   276,
+   138.0
+  ],
+  [
+   "/glossary/netzigut-dayarim/",
+   "glossary",
+   206,
+   72.0
+  ],
+  [
+   "/urban-renewal/check/",
+   "urban-renewal",
+   131,
+   56.0
+  ],
+  [
+   "/about/",
+   "about",
+   260,
+   55.0
+  ],
+  [
+   "/buy-vs-rent/",
+   "buy-vs-rent",
+   253,
+   51.0
+  ],
+  [
+   "/projects/ביאליק-שמעוני/",
+   "projects",
+   278,
+   39.0
+  ],
+  [
+   "/contact/",
+   "contact",
+   119,
+   24.0
+  ],
+  [
+   "/projects/אחד-העם-33-35/",
+   "projects",
+   276,
+   19.0
+  ],
+  [
+   "/glossary/iskat-combinatzia/",
+   "glossary",
+   210,
+   17.0
+  ],
+  [
+   "/projects/העצמאות-6/",
+   "projects",
+   279,
+   15.0
+  ],
+  [
+   "/glossary/tama-38-term/",
+   "glossary",
+   217,
+   15.0
+  ],
+  [
+   "/developers/",
+   "developers",
+   286,
+   13.0
+  ],
+  [
+   "/projects/נתיב-חבצלת/",
+   "projects",
+   274,
+   11.0
+  ],
+  [
+   "/projects/צאלים-האילנות/",
+   "projects",
+   276,
+   10.0
+  ],
+  [
+   "/projects/הסתדרות/",
+   "projects",
+   283,
+   10.0
+  ],
+  [
+   "/projects/הגנה-סלוודור/",
+   "projects",
+   272,
+   9.0
+  ],
+  [
+   "/projects/מעלה-געתון/",
+   "projects",
+   274,
+   7.0
+  ]
+ ],
+ "thin_professionals": 3,
+ "gsc_pages_90d_not200_or_uncrawled": 88,
+ "gsc_bad_top": [
+  [
+   "/city/תל אביב יפו/projects/",
+   "not-crawled",
+   1132.0,
+   2.0
+  ],
+  [
+   "/projects/?city=תל אביב-יפו",
+   "not-crawled",
+   1028.0,
+   0.0
+  ],
+  [
+   "/city/ראשון לציון/projects/",
+   "not-crawled",
+   759.0,
+   0.0
+  ],
+  [
+   "/projects/?city=באר שבע",
+   "not-crawled",
+   697.0,
+   2.0
+  ],
+  [
+   "/city/חיפה/projects/",
+   "not-crawled",
+   582.0,
+   2.0
+  ],
+  [
+   "/city/קרית אונו/projects/",
+   "not-crawled",
+   497.0,
+   0.0
+  ],
+  [
+   "/city/אשקלון/projects/",
+   "not-crawled",
+   477.0,
+   1.0
+  ],
+  [
+   "/projects/?city=נתניה",
+   "not-crawled",
+   387.0,
+   0.0
+  ],
+  [
+   "/city/רמת גן/projects/",
+   "not-crawled",
+   384.0,
+   1.0
+  ],
+  [
+   "/city/הרצליה/projects/",
+   "not-crawled",
+   372.0,
+   0.0
+  ],
+  [
+   "/projects/?city=בת ים",
+   "not-crawled",
+   353.0,
+   0.0
+  ],
+  [
+   "/city/בת-ים/projects/",
+   "not-crawled",
+   325.0,
+   0.0
+  ],
+  [
+   "/city/רמת-גן/projects/",
+   "not-crawled",
+   319.0,
+   1.0
+  ],
+  [
+   "/city/כפר סבא/projects/",
+   "not-crawled",
+   298.0,
+   0.0
+  ],
+  [
+   "/city/נתניה/projects/",
+   "not-crawled",
+   246.0,
+   0.0
+  ],
+  [
+   "/city/לוד/projects/",
+   "not-crawled",
+   225.0,
+   0.0
+  ],
+  [
+   "/city/יהוד/projects/",
+   "not-crawled",
+   222.0,
+   0.0
+  ],
+  [
+   "/city/ירושלים/projects/",
+   410,
+   211.0,
+   1.0
+  ],
+  [
+   "/site-map/?lang=en",
+   "not-crawled",
+   176.0,
+   1.0
+  ],
+  [
+   "/city/באר-שבע/projects/",
+   "not-crawled",
+   161.0,
+   0.0
+  ],
+  [
+   "/city/אשדוד/",
+   "not-crawled",
+   159.0,
+   0.0
+  ],
+  [
+   "/city/רמת-גן/",
+   "not-crawled",
+   122.0,
+   0.0
+  ],
+  [
+   "/city/נהריה/projects/",
+   "not-crawled",
+   117.0,
+   1.0
+  ],
+  [
+   "/city/נס-ציונה/projects/",
+   "not-crawled",
+   115.0,
+   0.0
+  ],
+  [
+   "/projects/stricker-13-brandeis-14/",
+   "not-crawled",
+   109.0,
+   2.0
+  ]
+ ],
+ "ttfb_median_ms": 853,
+ "slowest": [
+  [
+   "/professionals/ולדיסלבסקי-אלעד/",
+   55793,
+   227089
+  ],
+  [
+   "/professionals/בן-עמי-אייל-מוריס/",
+   28297,
+   224581
+  ],
+  [
+   "/professionals/מושקוביץ-יעקב/",
+   14627,
+   227003
+  ],
+  [
+   "/professionals/שליו-עופר/",
+   6240,
+   226758
+  ],
+  [
+   "/professionals/נחום-ניסים/",
+   5970,
+   226634
+  ],
+  [
+   "/professionals/אילון-אבטליון/",
+   5902,
+   226838
+  ],
+  [
+   "/projects/",
+   5216,
+   325259
+  ],
+  [
+   "/professionals/עיסא-מחמוד-2/",
+   3699,
+   226647
+  ],
+  [
+   "/commercial-real-estate/industrial-property-for-rent-center/",
+   3698,
+   237284
+  ],
+  [
+   "/commercial-real-estate/commercial-lease-agreement/",
+   3623,
+   238853
+  ]
+ ],
+ "html_bytes_median": 226535
+}

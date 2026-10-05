@@ -1,0 +1,64 @@
+2026-10-05 21:51:48,593 [6984] [main] INFO  - Persistent config file does not exist, C:\Users\777\.ScreamingFrogSEOSpider\proxy.config
+2026-10-05 21:51:48,866 [6984] [main] INFO  - Application Started
+2026-10-05 21:51:49,061 [6984] [main] INFO  - Persistent config file does not exist, C:\Users\777\.ScreamingFrogSEOSpider\proxy.config
+2026-10-05 21:51:49,068 [6984] [main] INFO  - Setting proxy: ProxySettings [mEnabled=false, mHost=, mPort=3128, mUseCredentials=false, userPresent=false, passwordPresent=false]
+2026-10-05 21:51:49,134 [6984] [main] INFO  - Running: Screaming Frog SEO Spider 24.3
+2026-10-05 21:51:49,134 [6984] [main] INFO  - Build: 3a23d41833e2e086e591308b65696bc633b3bd84
+2026-10-05 21:51:49,134 [6984] [main] INFO  - Platform Info: Name 'Windows 11' Version '10.0' Arch 'amd64'
+2026-10-05 21:51:49,135 [6984] [main] INFO  - Java Info: Vendor 'Eclipse Adoptium' URL 'https://adoptium.net/' Version '25.0.3' Home 'C:\Program Files (x86)\Screaming Frog SEO Spider\jre'
+2026-10-05 21:51:49,135 [6984] [main] INFO  - VM args: -enableassertions, --enable-native-access=ALL-UNNAMED, --sun-misc-unsafe-memory-access=allow, -XX:+UseG1GC, -XX:+UseStringDeduplication, -Djava.net.preferIPv4Stack=true, -Xmx2g, -XX:ErrorFile=C:\Users\777\.ScreamingFrogSEOSpider\hs_err_pid%p.log
+2026-10-05 21:51:49,135 [6984] [main] INFO  - Log File: C:\Users\777\.ScreamingFrogSEOSpider\trace.txt
+2026-10-05 21:51:49,135 [6984] [main] INFO  - Fatal Log File: C:\Users\777\.ScreamingFrogSEOSpider\crash.txt
+2026-10-05 21:51:49,135 [6984] [main] INFO  - Logging Status: OK
+2026-10-05 21:51:49,135 [6984] [main] INFO  - Memory: Physical=13.0GB, Used=75MB, Free=41MB, Total=117MB, Max=2048MB, Using 3%
+2026-10-05 21:51:49,135 [6984] [main] INFO  - Licence File: C:\Users\777\.ScreamingFrogSEOSpider\licence.txt
+2026-10-05 21:51:49,135 [6984] [main] INFO  - Licence Status: Missing.
+2026-10-05 21:51:49,136 [6984] [main] INFO  - Locale: en_US
+2026-10-05 21:51:49,136 [6984] [main] INFO  - Time Zone: Israel Standard Time, offset=10800000
+2026-10-05 21:51:49,153 [6984] [main] INFO  - Auditing C:\Users\777\.ScreamingFrogSEOSpider\instance_locks Lock Files (1):
+2026-10-05 21:51:49,155 [6984] [main] INFO  - C:\Users\777\.ScreamingFrogSEOSpider\instance_locks\bf96d018-2160-479d-9dd8-e08f669ea841.lck [this]
+2026-10-05 21:51:49,185 [6984] [AutomaticCrashReporter 1] INFO  - Taken ACR lock
+2026-10-05 21:51:49,187 [6984] [AutomaticCrashReporter 1] INFO  - Crash files found: 0
+2026-10-05 21:51:49,188 [6984] [AutomaticCrashReporter 1] INFO  - Releasing ACR lock
+2026-10-05 21:51:49,327 [6984] [main] INFO  - UsageEventService initialised
+2026-10-05 21:51:49,327 [6984] [main] INFO  - Raw arguments:
+2026-10-05 21:51:49,327 [6984] [main] INFO  - argument 0 = '--crawl'
+2026-10-05 21:51:49,328 [6984] [main] INFO  - argument 1 = 'https://nad-lan.co.il/'
+2026-10-05 21:51:49,328 [6984] [main] INFO  - argument 2 = '--headless'
+2026-10-05 21:51:49,328 [6984] [main] INFO  - argument 3 = '--save-crawl'
+2026-10-05 21:51:49,328 [6984] [main] INFO  - argument 4 = '--overwrite'
+2026-10-05 21:51:49,328 [6984] [main] INFO  - argument 5 = '--output-folder'
+2026-10-05 21:51:49,328 [6984] [main] INFO  - argument 6 = 'C:\Users\777\AppData\Local\Temp\claude\C--Users-777-nad-lan\638c26e3-6032-438a-9641-ab6fd06c26f5\scratchpad\sf1'
+2026-10-05 21:51:49,328 [6984] [main] INFO  - argument 7 = '--export-format'
+2026-10-05 21:51:49,328 [6984] [main] INFO  - argument 8 = 'csv'
+2026-10-05 21:51:49,328 [6984] [main] INFO  - argument 9 = '--export-tabs'
+2026-10-05 21:51:49,329 [6984] [main] INFO  - argument 10 = 'Internal:All,Response Codes:All,Page Titles:All,H1:All,Meta Description:All,Canonicals:All,Hreflang:All,Directives:All,Content:Low Content Pages,Content:Exact Duplicates'
+2026-10-05 21:51:49,329 [6984] [main] INFO  - argument 11 = '--save-report'
+2026-10-05 21:51:49,329 [6984] [main] INFO  - argument 12 = 'Crawl Overview,Issues Overview,Redirects:Redirect Chains,Hreflang:Missing Return Links,Hreflang:Non-200 hreflang URLs,Orphan Pages'
+2026-10-05 21:51:49,329 [6984] [main] INFO  - argument 13 = '--bulk-export'
+2026-10-05 21:51:49,329 [6984] [main] INFO  - argument 14 = 'Links:All Inlinks'
+2026-10-05 21:51:49,329 [6984] [main] INFO  - Parsed arguments:
+2026-10-05 21:51:49,335 [6984] [main] INFO  - --crawl https://nad-lan.co.il/
+2026-10-05 21:51:49,335 [6984] [main] INFO  - --headless 
+2026-10-05 21:51:49,335 [6984] [main] INFO  - --save-crawl 
+2026-10-05 21:51:49,335 [6984] [main] INFO  - --overwrite 
+2026-10-05 21:51:49,335 [6984] [main] INFO  - --output-folder C:\Users\777\AppData\Local\Temp\claude\C--Users-777-nad-lan\638c26e3-6032-438a-9641-ab6fd06c26f5\scratchpad\sf1
+2026-10-05 21:51:49,335 [6984] [main] INFO  - --export-format csv
+2026-10-05 21:51:49,336 [6984] [main] INFO  - --export-tabs Internal:All,Response Codes:All,Page Titles:All,H1:All,Meta Description:All,Canonicals:All,Hreflang:All,Directives:All,Content:Low Content Pages,Content:Exact Duplicates
+2026-10-05 21:51:49,336 [6984] [main] INFO  - --save-report Crawl Overview,Issues Overview,Redirects:Redirect Chains,Hreflang:Missing Return Links,Hreflang:Non-200 hreflang URLs,Orphan Pages
+2026-10-05 21:51:49,336 [6984] [main] INFO  - --bulk-export Links:All Inlinks
+2026-10-05 21:51:49,338 [6984] [main] FATAL - SeoSpider failed to start
+uk.co.screamingfrog.utils.c.id: Could not locate licence file, please check file exists and matches exact file path "C:\Users\777\.ScreamingFrogSEOSpider\licence.txt".
+	at uk.co.screamingfrog.utils.H.id1090655692.id281146822(SourceFile:32)
+	at uk.co.screamingfrog.utils.H.id70533838.id281146822(SourceFile:18)
+	at uk.co.screamingfrog.seospider.e.id1657863171.id281146822(SourceFile:2219)
+	at seo.spider.ui.id1222510205.id281146822(SourceFile:155)
+	at uk.co.screamingfrog.seospider.e.id1768309875.id281146822(SourceFile)
+	at uk.co.screamingfrog.seospider.SeoSpider.main(SourceFile:8147)
+2026-10-05 21:51:49,342 [6984] [ShutdownHook] INFO  - Shutting down: Usage Event Service
+2026-10-05 21:51:49,342 [6984] [ShutdownHook] INFO  - Shutting down: Crash Handler
+2026-10-05 21:51:49,342 [6984] [ShutdownHook] INFO  - Shutting down: One Instance Checker
+2026-10-05 21:51:49,342 [6984] [ShutdownHook] INFO  - Shutting down: Multiple Instance Checker
+2026-10-05 21:51:49,343 [6984] [ShutdownHook] INFO  - Shutting down: Shutdown
+2026-10-05 21:51:49,343 [6984] [ShutdownHook] INFO  - Application Exited
+2026-10-05 21:51:49,343 [6984] [ShutdownHook] INFO  - Shutting down: Logger

@@ -1,0 +1,3 @@
+url,status,hops,final,final_status
+/my-appointments/,302,1,/login/?redirect=/my-appointments/,200
+/investment/income-producing-properties/,301,1,/wp-content/uploads/2026/06/income-producing-properties.jpg,200

@@ -1,0 +1,459 @@
+== hamedina
+
+=== URLs holding token "hamedina" (5) ===
+  /projects/hamedina/
+  /projects/hamedina-en/
+  /projects/hamedina-fr/
+  /projects/hamedina-ru/
+  /projects/hamedina-ar/
+== kikar
+
+=== URLs holding token "kikar" (1) ===
+  /tel-aviv-plans/kikar-atarim/
+== tel
+
+=== URLs holding token "tel" (71) ===
+  /urban-renewal/pinui-binui-tel-aviv/
+  /urban-renewal/tama-38-tel-aviv/
+  /commercial-real-estate/office-for-sale-tel-aviv/
+  /commercial-real-estate/shops-for-sale-tel-aviv/
+  /commercial-real-estate/commercial-property-for-sale-tel-aviv/
+  /commercial-real-estate/income-property-for-sale-tel-aviv/
+  /commercial-real-estate/commercial-property-prices-tel-aviv/
+  /commercial-real-estate/building-for-sale-tel-aviv/
+  /commercial-real-estate/parking-lot-for-sale-tel-aviv/
+  /commercial-real-estate/commercial-property-for-rent-tel-aviv/
+  /commercial-real-estate/hotel-property-for-sale-tel-aviv/
+  /commercial-real-estate/office-for-rent-tel-aviv/
+== aviv
+
+=== URLs holding token "aviv" (83) ===
+  /urban-renewal/pinui-binui-tel-aviv/
+  /urban-renewal/tama-38-tel-aviv/
+  /commercial-real-estate/office-for-sale-tel-aviv/
+  /commercial-real-estate/shops-for-sale-tel-aviv/
+  /commercial-real-estate/commercial-property-for-sale-tel-aviv/
+  /commercial-real-estate/income-property-for-sale-tel-aviv/
+  /commercial-real-estate/commercial-property-prices-tel-aviv/
+  /commercial-real-estate/building-for-sale-tel-aviv/
+  /commercial-real-estate/parking-lot-for-sale-tel-aviv/
+  /commercial-real-estate/commercial-property-for-rent-tel-aviv/
+  /commercial-real-estate/hotel-property-for-sale-tel-aviv/
+  /commercial-real-estate/office-for-rent-tel-aviv/
+== projects
+
+=== URLs holding token "projects" (1050) ===
+  /sde-dov-luxury-projects-2026/
+  /new-projects/construction-input-index/
+  /new-projects/contractor-delay-compensation/
+  /new-projects/purchasing-group/
+  /new-projects/presale-apartment/
+  /en/new-projects/
+  /fr/new-projects/
+  /ru/new-projects/
+  /ar/new-projects/
+  /new-projects/
+  /herzliya-projects/
+  /new-projects/north-tel-aviv-new-projects/
+== new
+
+=== URLs holding token "new" (59) ===
+  /buying-new-apartment-developer-2026-negotiation/
+  /new-projects/construction-input-index/
+  /new-projects/contractor-delay-compensation/
+  /new-projects/purchasing-group/
+  /new-projects/presale-apartment/
+  /buying-apartment/new-vs-second-hand/
+  /guides/new-apartment-sale-specification/
+  /en/guides/new-apartment-sale-specification/
+  /fr/guides/new-apartment-sale-specification/
+  /ru/guides/new-apartment-sale-specification/
+  /ar/guides/new-apartment-sale-specification/
+  /en/new-projects/
+== apartments
+
+=== URLs holding token "apartments" (7) ===
+  /luxury-apartments-israel-guide/
+  /luxury-apartments-israel-guide-he/
+  /affordable-apartments-israel-2026/
+  /property-value/luxury-apartments-tel-aviv/
+  /real-estate-lawyer/sale-of-apartments-law/
+  /investment/apartments-for-investment/
+  /global/project/lion-apartments-paphos/
+== apartment
+
+=== URLs holding token "apartment" (106) ===
+  /buying-new-apartment-developer-2026-negotiation/
+  /3-room-apartment-690k-israel-2026/
+  /apartment-buying-checklist/
+  /investment-apartment/
+  /real-estate-tax-advisor/gift-transfer-apartment/
+  /new-projects/presale-apartment/
+  /selling-apartment/real-estate-auction-sale/
+  /mortgage-calculator/bridge-loan-apartment/
+  /real-estate-lawyer/apartment-memorandum/
+  /real-estate-lawyer/breach-apartment-sale-contract/
+  /investment/modiin-investment-apartment/
+  /investment/hod-hasharon-investment-apartment/
+== sale
+
+=== URLs holding token "sale" (34) ===
+  /selling-apartment/real-estate-auction-sale/
+  /real-estate-lawyer/breach-apartment-sale-contract/
+  /commercial-real-estate/office-for-sale-tel-aviv/
+  /commercial-real-estate/shops-for-sale-tel-aviv/
+  /commercial-real-estate/commercial-property-for-sale-tel-aviv/
+  /commercial-real-estate/office-for-sale-ramat-gan/
+  /commercial-real-estate/office-for-sale-bnei-brak/
+  /commercial-real-estate/office-for-sale-herzliya/
+  /commercial-real-estate/income-property-for-sale-bnei-brak/
+  /commercial-real-estate/income-property-for-sale-ramat-gan/
+  /commercial-real-estate/income-property-for-sale-tel-aviv/
+  /commercial-real-estate/commercial-property-for-sale-ramat-gan/
+== luxury
+
+=== URLs holding token "luxury" (8) ===
+  /sde-dov-luxury-projects-2026/
+  /luxury-apartments-israel-guide/
+  /luxury-apartments-israel-guide-he/
+  /luxury-tel-aviv/
+  /property-value/luxury-apartments-tel-aviv/
+  /herzliya-pituach-luxury/
+  /guides/luxury-residential-pool-spa/
+  /tel-aviv-luxury-apartment-prices/
+== penthouse
+
+=== URLs holding token "penthouse" (8) ===
+  /tel-aviv-penthouse-prices/
+  /en/brokers/meital-katzir/kochav-hatzafon-new-mini-penthouse-for-sale/
+  /en/brokers/meital-katzir/tzukei-aviv-double-height-mini-penthouse-for-rent/
+  /en/brokers/meital-katzir/nofei-yam-5-room-mini-penthouse-for-rent/
+  /glossary/penthouse/
+  /properties/kochav-hatzafon-new-mini-penthouse-for-sale/
+  /properties/tzukei-aviv-double-height-mini-penthouse-for-rent/
+  /properties/nofei-yam-mini-penthouse-5-rooms-for-rent/
+== prices
+
+=== URLs holding token "prices" (67) ===
+  /commercial-real-estate/bnei-brak-office-prices/
+  /commercial-real-estate/herzliya-office-prices/
+  /commercial-real-estate/ramat-gan-office-prices/
+  /commercial-real-estate/ramat-gan-commercial-property-prices/
+  /commercial-real-estate/commercial-property-prices-tel-aviv/
+  /commercial-real-estate/rishon-lezion-office-prices/
+  /commercial-real-estate/shop-prices-tel-aviv/
+  /commercial-real-estate/shop-prices-ramat-gan/
+  /commercial-real-estate/shop-prices-bnei-brak/
+  /commercial-real-estate/industrial-property-prices-holon-bat-yam/
+  /commercial-real-estate/office-prices-netanya/
+  /commercial-real-estate/office-prices-rehovot/
+== sde
+
+=== URLs holding token "sde" (45) ===
+  /sde-dov-luxury-projects-2026/
+  /sde-dov/employment/
+  /sde-dov/institutions/
+  /sde-dov/marina/
+  /sde-dov/transport/
+  /sde-dov/tzafon/
+  /sde-dov/hotels/
+  /sde-dov/eshkol/
+  /sde-dov/parks/
+  /sde-dov/prices/
+  /sde-dov/merkaz/
+  /sde-dov/
+== dov
+
+=== URLs holding token "dov" (45) ===
+  /sde-dov-luxury-projects-2026/
+  /sde-dov/employment/
+  /sde-dov/institutions/
+  /sde-dov/marina/
+  /sde-dov/transport/
+  /sde-dov/tzafon/
+  /sde-dov/hotels/
+  /sde-dov/eshkol/
+  /sde-dov/parks/
+  /sde-dov/prices/
+  /sde-dov/merkaz/
+  /sde-dov/
+== investment
+
+=== URLs holding token "investment" (42) ===
+  /investment-property-cashflow-calculator/
+  /investment-apartment/
+  /investment/modiin-investment-apartment/
+  /investment/hod-hasharon-investment-apartment/
+  /investment/kiryat-ono-investment-apartment/
+  /investment/rehovot-investment-apartment/
+  /investment/ashdod-investment-apartment/
+  /investment/jerusalem-investment-apartment/
+  /investment/residential-building-investment/
+  /investment/residential-land-investment/
+  /commercial-real-estate/office-building-investment/
+  /commercial-real-estate/industrial-land-investment/
+== mortgage
+
+=== URLs holding token "mortgage" (18) ===
+  /israel-mortgage-non-residents/
+  /mortgage-calculator/bridge-loan-apartment/
+  /mortgage-calculator/mortgage-for-any-purpose/
+  /mortgage-calculator/mortgage-refusal/
+  /mortgage-calculator/mortgage-pre-approval/
+  /mortgage-calculator/mortgage-porting/
+  /mortgage-calculator/mortgage-repayment-capacity/
+  /mortgage-calculator/mortgage-interest-rates/
+  /mortgage-calculator/mortgage-ltv-ratio/
+  /mortgage-advisor/
+  /mortgage-home-insurance/
+  /mortgage-refinance/
+== purchase
+
+=== URLs holding token "purchase" (7) ===
+  /israel-purchase-tax-foreign-residents/
+  /real-estate-lawyer/land-purchase-checklist/
+  /real-estate-tax-advisor/purchase-tax-investor/
+  /real-estate-tax-advisor/purchase-tax-first-home/
+  /investment/bank-guarantee-purchase/
+  /apartment-purchase-cost-calculator/
+  /purchase-tax-calculator/
+== capital
+
+=== URLs holding token "capital" (3) ===
+  /selling-apartment/reduced-capital-gains-sale/
+  /real-estate-tax-advisor/capital-gains-tax-guide/
+  /real-estate-tax-advisor/capital-gains-tax-exemption/
+== betterment
+
+=== URLs holding token "betterment" (2) ===
+  /real-estate-tax-advisor/betterment-levy-appeal/
+  /real-estate-tax-advisor/betterment-levy/
+== urban
+
+=== URLs holding token "urban" (13) ===
+  /urban-renewal/pinui-binui-tel-aviv/
+  /urban-renewal/tama-38-tel-aviv/
+  /urban-renewal/choosing-urban-renewal-developer/
+  /urban-renewal/tama-38-contract-checklist/
+  /urban-renewal/pinui-binui-tenant-guide/
+  /urban-renewal/tama-38-rights-obligations/
+  /urban-renewal/pinui-binui/
+  /urban-renewal/tama-38/
+  /urban-renewal/check/
+  /urban-renewal/map/
+  /urban-renewal/tama-38-alternatives/
+  /urban-renewal/english-guide/
+== renewal
+
+=== URLs holding token "renewal" (17) ===
+  /urban-renewal/pinui-binui-tel-aviv/
+  /urban-renewal/tama-38-tel-aviv/
+  /urban-renewal/choosing-urban-renewal-developer/
+  /urban-renewal/tama-38-contract-checklist/
+  /urban-renewal/pinui-binui-tenant-guide/
+  /urban-renewal/tama-38-rights-obligations/
+  /urban-renewal/pinui-binui/
+  /urban-renewal/tama-38/
+  /urban-renewal/check/
+  /urban-renewal/map/
+  /urban-renewal/tama-38-alternatives/
+  /urban-renewal/english-guide/
+== pinui
+
+=== URLs holding token "pinui" (6) ===
+  /urban-renewal/pinui-binui-tel-aviv/
+  /urban-renewal/pinui-binui-tenant-guide/
+  /urban-renewal/pinui-binui/
+  /glossary/pinui-binui/
+  /glossary/pinui-binui-term/
+  /glossary/shamai-pinui-binui/
+== tama
+
+=== URLs holding token "tama" (7) ===
+  /tama-38-expiry-may-2026-what-next/
+  /urban-renewal/tama-38-tel-aviv/
+  /urban-renewal/tama-38-contract-checklist/
+  /urban-renewal/tama-38-rights-obligations/
+  /urban-renewal/tama-38/
+  /urban-renewal/tama-38-alternatives/
+  /glossary/tama-38-term/
+== lawyer
+
+=== URLs holding token "lawyer" (16) ===
+  /real-estate-lawyer/
+  /real-estate-lawyer/partition-real-estate/
+  /real-estate-lawyer/combination-deal/
+  /real-estate-lawyer/land-purchase-checklist/
+  /real-estate-lawyer/apartment-memorandum/
+  /real-estate-lawyer/breach-apartment-sale-contract/
+  /real-estate-lawyer/construction-defects-lawsuit/
+  /real-estate-lawyer/when-real-estate-lawyer-required/
+  /real-estate-lawyer/building-permit-citizen-guide/
+  /real-estate-lawyer/form-4-occupancy-permit/
+  /real-estate-lawyer/option-period-real-estate/
+  /real-estate-lawyer/sale-of-apartments-law/
+== appraiser
+
+=== URLs holding token "appraiser" (2) ===
+  /real-estate-appraiser/
+  /professionals/demo-david-peretz-appraiser/
+== appraisal
+
+=== URLs holding token "appraisal" (1) ===
+  /glossary-category/appraisal-investment/
+== offices
+
+=== URLs holding token "offices" (0) ===
+== office
+
+=== URLs holding token "office" (21) ===
+  /commercial-real-estate/office-for-sale-tel-aviv/
+  /commercial-real-estate/office-for-sale-ramat-gan/
+  /commercial-real-estate/office-for-sale-bnei-brak/
+  /commercial-real-estate/bnei-brak-office-prices/
+  /commercial-real-estate/office-for-sale-herzliya/
+  /commercial-real-estate/herzliya-office-prices/
+  /commercial-real-estate/ramat-gan-office-prices/
+  /commercial-real-estate/office-for-rent-tel-aviv/
+  /commercial-real-estate/office-fit-out-cost-tel-aviv/
+  /commercial-real-estate/rishon-lezion-office-prices/
+  /commercial-real-estate/office-prices-netanya/
+  /commercial-real-estate/office-prices-rehovot/
+== rent
+
+=== URLs holding token "rent" (28) ===
+  /buy-vs-rent/
+  /commercial-real-estate/commercial-property-for-rent-tel-aviv/
+  /commercial-real-estate/logistics-warehouse-for-rent-gush-dan/
+  /commercial-real-estate/office-for-rent-tel-aviv/
+  /commercial-real-estate/logistics-warehouse-for-rent-modiin-shoham/
+  /commercial-real-estate/logistics-warehouse-for-rent-airport-city/
+  /commercial-real-estate/industrial-property-for-rent-center/
+  /commercial-real-estate/warehouse-for-rent-rishon-lezion-holon/
+  /commercial-real-estate/shop-for-rent-tel-aviv/
+  /commercial-real-estate/restaurant-property-for-rent-tel-aviv/
+  /commercial-real-estate/store-for-rent/
+  /commercial-real-estate/office-for-rent/
+== rental
+
+=== URLs holding token "rental" (0) ===
+== ramat
+
+=== URLs holding token "ramat" (17) ===
+  /commercial-real-estate/office-for-sale-ramat-gan/
+  /commercial-real-estate/ramat-gan-office-prices/
+  /commercial-real-estate/income-property-for-sale-ramat-gan/
+  /commercial-real-estate/commercial-property-for-sale-ramat-gan/
+  /commercial-real-estate/ramat-gan-commercial-property-prices/
+  /commercial-real-estate/shop-prices-ramat-gan/
+  /ramat-aviv/einstein/
+  /ramat-aviv/
+  /investment/ramat-hasharon-investment-apartment/
+  /investment/ramat-gan-investment-apartment/
+  /ramat-aviv/neve-avivim/
+  /ramat-aviv/ramat-aviv-mall/
+== gan
+
+=== URLs holding token "gan" (8) ===
+  /commercial-real-estate/office-for-sale-ramat-gan/
+  /commercial-real-estate/ramat-gan-office-prices/
+  /commercial-real-estate/income-property-for-sale-ramat-gan/
+  /commercial-real-estate/commercial-property-for-sale-ramat-gan/
+  /commercial-real-estate/ramat-gan-commercial-property-prices/
+  /commercial-real-estate/shop-prices-ramat-gan/
+  /investment/ramat-gan-investment-apartment/
+  /ramat-gan-apartment-prices/
+== herzliya
+
+=== URLs holding token "herzliya" (11) ===
+  /commercial-real-estate/office-for-sale-herzliya/
+  /commercial-real-estate/herzliya-office-prices/
+  /commercial-real-estate/commercial-property-prices-herzliya/
+  /investment/herzliya-investment-apartment/
+  /herzliya-pituach-luxury/
+  /herzliya-projects/
+  /herzliya-pituach-apartment-prices/
+  /en/brokers/meital-katzir/herzliya-pituach-private-estate-for-sale/
+  /herzliya-apartment-prices/
+  /properties/herzliya-pituach-private-estate-for-sale/
+  /projects/marina-towers-herzliya/
+== jerusalem
+
+=== URLs holding token "jerusalem" (5) ===
+  /jerusalem-green-line-light-rail-property-2026/
+  /commercial-real-estate/commercial-property-prices-jerusalem/
+  /commercial-real-estate/shop-prices-jerusalem/
+  /investment/jerusalem-investment-apartment/
+  /jerusalem-apartment-prices/
+== rishon
+
+=== URLs holding token "rishon" (4) ===
+  /commercial-real-estate/rishon-lezion-office-prices/
+  /commercial-real-estate/warehouse-for-rent-rishon-lezion-holon/
+  /investment/rishon-lezion-investment-apartment/
+  /rishon-lezion-apartment-prices/
+== value
+
+=== URLs holding token "value" (8) ===
+  /property-value/luxury-apartments-tel-aviv/
+  /property-value/building-rights-check/
+  /property-value/
+  /ru/property-value-estimator/
+  /fr/property-value-estimator/
+  /property-value-estimator/
+  /glossary/loan-to-value/
+  /glossary/value-engineering/
+== estimator
+
+=== URLs holding token "estimator" (3) ===
+  /ru/property-value-estimator/
+  /fr/property-value-estimator/
+  /property-value-estimator/
+== calculator
+
+=== URLs holding token "calculator" (13) ===
+  /investment-property-cashflow-calculator/
+  /mortgage-calculator/bridge-loan-apartment/
+  /mortgage-calculator/mortgage-for-any-purpose/
+  /mortgage-calculator/mortgage-refusal/
+  /mortgage-calculator/mortgage-pre-approval/
+  /mortgage-calculator/mortgage-porting/
+  /mortgage-calculator/mortgage-repayment-capacity/
+  /mortgage-calculator/mortgage-interest-rates/
+  /mortgage-calculator/mortgage-ltv-ratio/
+  /apartment-purchase-cost-calculator/
+  /mortgage-calculator/
+  /purchase-tax-calculator/
+== developer
+
+=== URLs holding token "developer" (4) ===
+  /buying-new-apartment-developer-2026-negotiation/
+  /urban-renewal/choosing-urban-renewal-developer/
+  /developer-deals/
+  /en/developer-deals/
+== developers
+
+=== URLs holding token "developers" (1) ===
+  /developers/
+== buyers
+
+=== URLs holding token "buyers" (2) ===
+  /israel-housing-market-buyers-2026/
+  /buy-property-israel-foreign-buyers/
+== foreign
+
+=== URLs holding token "foreign" (3) ===
+  /buying-real-estate-israel-foreign-investor/
+  /buy-property-israel-foreign-buyers/
+  /israel-purchase-tax-foreign-residents/
+== guide
+
+=== URLs holding token "guide" (8) ===
+  /luxury-apartments-israel-guide/
+  /luxury-apartments-israel-guide-he/
+  /real-estate-professionals-guide/
+  /real-estate-lawyer/building-permit-citizen-guide/
+  /urban-renewal/pinui-binui-tenant-guide/
+  /real-estate-tax-advisor/capital-gains-tax-guide/
+  /urban-renewal/english-guide/
+  /construction-engineering-guide/

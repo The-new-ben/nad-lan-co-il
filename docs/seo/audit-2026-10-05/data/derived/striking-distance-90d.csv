@@ -1,0 +1,303 @@
+query,clicks,impressions,avg_pos,main_page,pages_with_impr,ads_volume_IL,cpc_usd
+פרויקטים חדשים,0,1172,27.8,https://nad-lan.co.il/projects/,5,390,4.56
+פרויקטים חדשים בצפון הישן תל אביב,0,269,28.8,https://nad-lan.co.il/projects/,5,30,19.64
+יועץ איטום מוסמך,0,130,26.3,https://nad-lan.co.il/glossary/יועץ-איטום/,1,10,22.95
+פרויקט נדלן,0,302,23.9,https://nad-lan.co.il/projects/,8,110,9.17
+דירה חדשה מקבלן בתל אביב,0,82,28.1,https://nad-lan.co.il/new-projects/new-projects-tel-aviv/,5,10,26.96
+דירות למכירה בשדה דב,0,187,27.6,https://nad-lan.co.il/sde-dov/,3,40,11.73
+פרויקטים חדשים ברמת גן,0,293,24.4,https://nad-lan.co.il/city/רמת-גן/projects/,3,170,7.45
+פרויקט דירות,0,173,26.8,https://nad-lan.co.il/projects/,3,40,12.44
+דירות מקבלן,0,559,26.0,https://nad-lan.co.il/projects/,4,210,3.69
+בדיקות אל הרס,0,193,25.8,https://nad-lan.co.il/glossary/בדיקות-אל-הרס/,1,90,9.8
+פרוייקטים בבנייה,0,104,29.2,https://nad-lan.co.il/projects/,1,90,17.13
+פרויקטים חדשים ביהוד,0,120,29.3,https://nad-lan.co.il/city/יהוד/projects/,2,30,14.28
+שדה דב,1,340,19.5,https://nad-lan.co.il/sde-dov/,11,4400,4.92
+פרויקטים ברמת גן,0,132,29.8,https://nad-lan.co.il/city/רמת גן/projects/,3,90,8.11
+שדה דב דירות,0,82,27.6,https://nad-lan.co.il/sde-dov/,6,50,13.0
+פרוייקטים,0,64,30.4,https://nad-lan.co.il/projects/,1,210,15.99
+dimri yama,0,40,9.9,https://nad-lan.co.il/projects/dimri-yama-sde-dov/,4,70,24.53
+בדיקת אל הרס,0,97,29.1,https://nad-lan.co.il/glossary/בדיקות-אל-הרס/,1,90,9.8
+דירה למכירה בשדה דב,0,76,28.5,https://nad-lan.co.il/sde-dov/,2,40,11.73
+duo tel aviv,0,291,22.8,https://nad-lan.co.il/projects/duo-tel-aviv/,4,260,2.99
+duo תל אביב,0,280,24.5,https://nad-lan.co.il/projects/duo-tel-aviv/,2,210,3.1
+הערכת שווי נכס,4,484,20.9,https://nad-lan.co.il/property-value-estimator/,1,260,1.7
+פרויקטים בלוד,0,88,20.3,https://nad-lan.co.il/city/לוד/,2,40,9.24
+פרויקטים חדשים בפתח תקווה,0,129,29.2,https://nad-lan.co.il/projects/,3,260,6.12
+מפת התחדשות עירונית,1,272,16.0,https://nad-lan.co.il/urban-renewal/map/,2,260,2.83
+"""בדיקת משכנתא""",0,150,18.1,https://nad-lan.co.il/mortgage-calculator/,2,170,5.08
+דירה חדשה מקבלן,0,300,29.7,https://nad-lan.co.il/projects/,1,140,2.45
+פרויקטים חדשים באשקלון,0,97,27.7,https://nad-lan.co.il/city/אשקלון/projects/,3,170,7.36
+פרויקטים בראשון לציון,0,132,29.4,https://nad-lan.co.il/city/ראשון לציון/projects/,4,90,5.35
+"פרויקט נדל""ן",0,74,23.7,https://nad-lan.co.il/projects/,8,110,9.17
+rainbow tel aviv,0,104,17.6,https://nad-lan.co.il/projects/rainbow-tel-aviv/,2,170,6.27
+הערכת שווי דירה,2,496,21.1,https://nad-lan.co.il/property-value-estimator/,1,590,1.26
+דירות חדשות בבניה,0,95,22.4,https://nad-lan.co.il/new-projects/new-projects-tel-aviv/,7,10,6.5
+פרויקטים חדשים בבניה,0,81,30.4,https://nad-lan.co.il/projects/,7,10,7.17
+ריינבו קנדה ישראל,0,105,16.6,https://nad-lan.co.il/projects/rainbow-tel-aviv/,2,50,5.4
+rainbow תל אביב,0,101,13.3,https://nad-lan.co.il/projects/rainbow-tel-aviv/,1,110,5.57
+מחירון דקל,2,193,18.4,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,4400,2.84
+בניינים חדשים,0,207,25.5,https://nad-lan.co.il/projects/,1,50,2.64
+פרויקטים חדשים בלוד,0,65,24.6,https://nad-lan.co.il/city/לוד/projects/,3,50,8.37
+שמאות דירה,0,47,24.0,https://nad-lan.co.il/property-value-estimator/,1,170,11.36
+פרויקטי בניה חדשים,0,154,26.7,https://nad-lan.co.il/projects/,2,30,3.38
+דירה חדשה,0,117,26.4,https://nad-lan.co.il/projects/,5,110,4.38
+פרויקט ריינבו,0,96,15.2,https://nad-lan.co.il/projects/rainbow-tel-aviv/,1,170,5.32
+ריינבו תל-אביב,0,83,18.7,https://nad-lan.co.il/projects/rainbow-tel-aviv/,1,480,5.34
+פרויקטים בקרית אונו,0,43,24.3,https://nad-lan.co.il/city/קרית אונו/projects/,1,40,10.16
+בדיקת שווי נכס,0,173,19.6,https://nad-lan.co.il/property-value-estimator/,1,70,2.52
+דירות מקבלן תל אביב,0,52,27.0,https://nad-lan.co.il/projects/,1,10,8.36
+פרוייקטים חדשים,0,95,27.7,https://nad-lan.co.il/projects/,6,390,4.56
+פרויקטים בכפר סבא,0,112,22.0,https://nad-lan.co.il/city/כפר סבא/projects/,2,40,3.66
+בתים חדשים,0,102,21.8,https://nad-lan.co.il/projects/,1,40,4.0
+פרויקטים חדשים בכפר סבא,0,154,28.1,https://nad-lan.co.il/city/כפר סבא/projects/,3,70,2.64
+פרויקטים להשקעה,0,124,28.1,https://nad-lan.co.il/projects/,5,30,3.21
+פח מגולוון,0,223,22.7,https://nad-lan.co.il/glossary/פרופיל-פח-מגולוון/,1,320,1.76
+פרויקטים חדשים באר שבע,0,113,26.3,https://nad-lan.co.il/projects/?city=באר שבע,4,30,3.44
+פרויקטים חדשים בנס ציונה,0,67,26.3,https://nad-lan.co.il/city/נס-ציונה/projects/,3,90,5.71
+אדריכל רישוי,0,32,29.1,https://nad-lan.co.il/glossary/אדריכל-רשוי/,1,40,11.71
+פרויקטים עתידיים ברמת גן,0,38,27.0,https://nad-lan.co.il/city/רמת גן/projects/,2,10,9.69
+פרויקטים חדשים בחדרה,0,63,20.7,https://nad-lan.co.il/city/חדרה/,1,90,5.83
+פרויקטים חדשים בנהריה,0,82,22.9,https://nad-lan.co.il/city/נהריה/projects/,2,110,4.35
+מכוני בקרה,0,64,27.2,https://nad-lan.co.il/glossary/מכוני-בקרה/,1,390,5.31
+יועץ חשמל,0,48,28.7,https://nad-lan.co.il/glossary/יועץ-חשמל/,1,90,6.76
+עוגני קרקע,0,41,28.1,https://nad-lan.co.il/glossary/עוגני-קרקע/,1,90,7.88
+פרויקטים באשדוד,0,57,23.4,https://nad-lan.co.il/city/אשדוד/,1,70,5.59
+יועצי איטום,0,52,23.2,https://nad-lan.co.il/glossary/יועץ-איטום/,1,170,6.04
+פרויקטים חדשים פתח תקווה,0,73,24.4,https://nad-lan.co.il/projects/,2,30,4.2
+פרויקטים חדשים בקרית אונו,0,72,25.5,https://nad-lan.co.il/city/קרית אונו/projects/,2,40,4.09
+מהנדס יועץ איטום,0,45,21.3,https://nad-lan.co.il/glossary/יועץ-איטום/,1,10,6.48
+פרויקט תל אביב,0,42,28.1,https://nad-lan.co.il/projects/,3,260,6.62
+ריינבו שדה דב,1,45,11.0,https://nad-lan.co.il/projects/rainbow-tel-aviv/,2,90,5.98
+קרקע בשדה דב למכירה,0,30,29.1,https://nad-lan.co.il/sde-dov/,1,10,8.73
+עוגני קרקע קבועים,0,31,26.3,https://nad-lan.co.il/glossary/עוגני-קרקע/,2,20,8.23
+דירה מקבלן,0,64,30.3,https://nad-lan.co.il/projects/,2,210,3.69
+אשירה שדה דב,1,31,11.8,https://nad-lan.co.il/projects/ashira-sde-dov/,2,90,7.59
+פרויקטים חדשים ביבנה,0,53,26.5,https://nad-lan.co.il/city/יבנה/projects/,3,50,4.42
+פרויקטים בחדרה,0,40,23.4,https://nad-lan.co.il/city/חדרה/,1,170,5.85
+מחירון דקל חינם,0,39,22.0,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,70,5.91
+השקעות נדלן במיאמי,0,43,25.9,https://nad-lan.co.il/global/miami/,1,10,5.29
+פרויקטים בנהריה,0,50,21.3,https://nad-lan.co.il/city/נהריה/projects/,2,40,4.37
+"ת""י 466",1,140,9.0,https://nad-lan.co.il/glossary/תי-466/,5,40,1.55
+דירות חדשות בצפון תל אביב,0,37,25.2,https://nad-lan.co.il/projects/,2,10,5.82
+פיגום זקפים,0,67,25.2,https://nad-lan.co.il/glossary/פיגום-זקפים/,1,390,3.21
+תכנית מכר דירה,0,40,28.4,https://nad-lan.co.il/guides/new-apartment-sale-specification/,1,10,5.3
+פרוייקטים חדשים בראשון לציון,0,29,30.3,https://nad-lan.co.il/city/ראשון לציון/projects/,2,10,7.17
+פרויקטים חדשים בנעלה,0,70,22.3,https://nad-lan.co.il/projects/,2,10,2.77
+מחירון דקל להורדה חינם,0,48,23.3,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,480,4.03
+מתחמי פינוי בינוי,0,102,24.6,https://nad-lan.co.il/urban-renewal/map/,2,70,1.87
+דקל מחירון,0,52,19.4,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,2,1900,3.63
+פרויקטים ביבנה,0,47,23.1,https://nad-lan.co.il/city/יבנה/,2,50,3.99
+מחיר דקל,0,43,16.4,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,30,4.26
+פרסום דירה בחינם,0,43,29.2,https://nad-lan.co.il/post-listing/,1,30,4.25
+הערכת שווי דירה בחינם,0,134,30.4,https://nad-lan.co.il/property-value-estimator/,1,590,1.34
+תוכנית מכר,0,22,24.7,https://nad-lan.co.il/guides/new-apartment-sale-specification/,1,140,8.1
+יריעה ביטומנית,0,108,23.2,https://nad-lan.co.il/glossary/יריעה-ביטומנית/,1,1300,1.61
+ריינבו תל אביב,1,32,12.3,https://nad-lan.co.il/projects/rainbow-tel-aviv/,1,480,5.34
+פרויקטים עתידיים,0,58,26.7,https://nad-lan.co.il/projects/,1,20,2.92
+כלונסאות cfa,0,26,28.4,https://nad-lan.co.il/glossary/קידוח-כלונסאות-cfa/,1,40,6.45
+מחירון דקל הריסה ופינוי,0,69,24.1,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,10,2.41
+דואו,0,116,23.9,https://nad-lan.co.il/projects/duo-tel-aviv/,1,110,1.36
+מכונת חיתוך ברזל,0,85,20.0,https://nad-lan.co.il/glossary/מכונת-חיתוך-ברזל/,1,30,1.84
+הערכת שווי נכסים,0,91,29.6,https://nad-lan.co.il/property-value-estimator/,1,260,1.7
+אשירה שדה דב מחיר,1,26,14.2,https://nad-lan.co.il/projects/ashira-sde-dov/,5,20,5.74
+דקל מחירונים,0,41,15.7,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,2,1900,3.63
+פרויקטים חדשים בישראל,0,208,21.8,https://nad-lan.co.il/projects/,6,10,0.68
+גבס אדום,0,112,9.8,https://nad-lan.co.il/glossary/לוח-גבס-אדום/,1,110,1.25
+פרויקטים בתל אביב למכירה,0,29,28.5,https://nad-lan.co.il/projects/,4,10,4.79
+מחירון דקל מיזוג אוויר,0,35,20.3,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,20,3.96
+זכוכית בידודית,0,98,24.0,https://nad-lan.co.il/glossary/זכוכית-בידודית/,1,170,1.39
+פינוי בינוי באר שבע,0,62,29.3,https://nad-lan.co.il/projects/?city=באר שבע,1,260,2.19
+פרויקט ריינבו שדה דב,0,27,13.5,https://nad-lan.co.il/projects/rainbow-tel-aviv/,3,30,4.76
+שדה דוב,0,25,18.2,https://nad-lan.co.il/sde-dov/,1,4400,4.92
+דירות מקבלן באשדוד,0,26,27.9,https://nad-lan.co.il/city/אשדוד/,1,10,4.63
+נדל״ן בבת ים,0,30,27.0,https://nad-lan.co.il/city/בת-ים/projects/,2,10,3.89
+מרכז הנדלן,0,57,26.7,https://nad-lan.co.il/,3,9900,2.04
+פרויקט נדלן חדש,0,221,21.0,https://nad-lan.co.il/projects/,7,20,0.0
+מחירון דקל פרוץ,0,42,19.0,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,170,2.63
+מחירון דקל pdf,0,43,22.1,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,70,2.55
+מפה מצבית,0,41,18.7,https://nad-lan.co.il/glossary/מפה-מצבית/,1,110,2.59
+פרויקט duo תל אביב מחירים,1,30,10.0,https://nad-lan.co.il/projects/duo-tel-aviv/,2,50,3.48
+דקל תוכנה,0,175,9.4,https://nad-lan.co.il/glossary/דקל-תוכנה/,1,260,0.59
+פרויקטים חדשים למגורים,0,205,19.5,https://nad-lan.co.il/new-projects/new-projects-tel-aviv/,5,20,0.0
+פחים מגולוונים,0,58,14.5,https://nad-lan.co.il/glossary/פרופיל-פח-מגולוון/,1,320,1.76
+דקל מחירון בניה,0,36,16.9,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,10,2.83
+רובע שדה דב,1,84,11.8,https://nad-lan.co.il/sde-dov/,1,210,1.2
+בדיקת שווי דירה,0,83,17.5,https://nad-lan.co.il/property-value-estimator/,1,110,1.2
+מחירוני דקל,0,35,17.4,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,4400,2.84
+פרויקטים חדשים מחירים,0,197,22.4,https://nad-lan.co.il/projects/,8,10,0.0
+מתחמי התחדשות עירונית,0,74,20.8,https://nad-lan.co.il/urban-renewal/map/,1,70,1.32
+בדיקת הערת אזהרה בטאבו,0,100,22.2,https://nad-lan.co.il/tabu-extract-check/,1,70,0.97
+ספר דקל מחיר,0,42,17.8,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,20,2.23
+מחירון דקל גינון,0,36,21.3,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,20,2.57
+מחירון דקל עלויות בניה,0,38,15.6,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,30,2.43
+נדל״ן ברעננה,0,25,29.8,https://nad-lan.co.il/city/רעננה/,1,10,3.67
+הערכת מחיר דירה,0,88,20.4,https://nad-lan.co.il/property-value-estimator/,1,90,1.04
+מחירון דקל יציקת בטון,0,44,16.3,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,70,2.08
+תכנון מפורט,0,180,21.2,https://nad-lan.co.il/glossary/תכנית-מפורטת/,1,30,0.0
+הערכת שווי דירה למכירה,0,96,17.5,https://nad-lan.co.il/property-value-estimator/,1,10,0.93
+כמה עולה מחירון דקל,0,37,15.8,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,20,2.33
+מחירון דקל בניה,1,46,12.3,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,40,1.79
+נדל״ן בחיפה,0,28,25.0,https://nad-lan.co.il/city/חיפה/,1,70,2.93
+פרופיל מגולוון,0,29,22.7,https://nad-lan.co.il/glossary/פרופיל-פח-מגולוון/,1,90,2.54
+rainbow שדה דב,0,20,12.6,https://nad-lan.co.il/projects/rainbow-tel-aviv/,2,40,3.62
+הערכת שווי בית פרטי,0,55,17.3,https://nad-lan.co.il/property-value-estimator/,1,40,1.31
+דקל שיפוצים מחירון,0,30,19.9,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,10,2.38
+הערכת נכס,0,81,24.4,https://nad-lan.co.il/property-value-estimator/,2,30,0.84
+כיצד יודעים מה מחיר השיווק הנכון לדירה?,0,136,25.0,https://nad-lan.co.il/property-value-estimator/,1,,
+duo פרויקט,0,97,19.8,https://nad-lan.co.il/projects/duo-tel-aviv/,2,20,0.7
+נדל״ן ברמת גן,0,31,24.7,https://nad-lan.co.il/city/רמת-גן/,2,20,2.18
+מחירון דקל שיפוצים,0,32,24.1,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,170,2.11
+דירות קבלן,0,21,25.5,https://nad-lan.co.il/projects/,1,110,3.19
+בדיקת נכס,0,25,29.6,https://nad-lan.co.il/tabu-extract-check/,1,70,2.55
+דירות חדשות בישראל,0,125,29.8,https://nad-lan.co.il/projects/,3,,
+מחירון דקל אינסטלציה,0,32,14.1,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,50,1.88
+הגפן 8,0,119,9.7,https://nad-lan.co.il/projects/הגפן-8-10-רג/,1,20,0.0
+מפת פינוי בינוי,0,23,11.6,https://nad-lan.co.il/urban-renewal/map/,2,40,2.58
+דירות חדשות למכירה בדרום תל אביב,0,20,29.1,https://nad-lan.co.il/city/תל אביב יפו/projects/,2,10,2.95
+מדריך למכירת בית פרטי,0,117,23.5,https://nad-lan.co.il/selling-apartment/,1,,
+"נדל""ן בלונדון",0,54,21.5,https://nad-lan.co.il/global/london/,1,10,1.06
+מתחם התחדשות עירונית,0,112,29.2,https://nad-lan.co.il/urban-renewal/map/,1,10,0.0
+לוח פח מגולוון בעובי 0.6 מ מ,4,71,9.5,https://nad-lan.co.il/glossary/פרופיל-פח-מגולוון/,1,50,0.76
+איך יודעים מה מחיר השיווק הנכון לדירה?,0,107,21.0,https://nad-lan.co.il/property-value-estimator/,1,,
+אדריכל רשוי,0,106,16.8,https://nad-lan.co.il/glossary/אדריכל-רשוי/,1,50,0.0
+בדיקת נסח טאבו,0,65,26.4,https://nad-lan.co.il/tabu-extract-check/,2,110,0.7
+הערכת שווי נכס באינטרנט,0,91,22.5,https://nad-lan.co.il/property-value-estimator/,1,10,0.0
+תקן ישראלי 466,0,90,11.9,https://nad-lan.co.il/glossary/תי-466/,1,20,0.0
+מתחם סומייל,0,30,14.6,https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/,1,70,1.48
+פרויקטים בתכנון,0,24,25.6,https://nad-lan.co.il/projects/,2,20,1.83
+הערכת נכס באינטרנט,0,86,20.3,https://nad-lan.co.il/property-value-estimator/,1,0,0.0
+לוח גבס אדום,0,67,11.8,https://nad-lan.co.il/glossary/לוח-גבס-אדום/,1,20,0.63
+איך יודעים אם הגיע קונה רציני לנכס?,0,84,23.2,https://nad-lan.co.il/selling-apartment/,1,,
+כמה שווה הבית שלי,0,67,29.0,https://nad-lan.co.il/property-value-estimator/,1,170,0.62
+פרויקטים חדשים אכלוס מיידי תל אביב 2026,0,82,25.2,https://nad-lan.co.il/new-projects/new-projects-tel-aviv/,6,,
+dekel מחירון,0,34,14.9,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,50,1.2
+לוח גבס כתום,0,81,27.8,https://nad-lan.co.il/glossary/לוח-גבס-אדום/,1,10,0.0
+הערכת מחיר דירה בבת ים בחינם,0,80,21.9,https://nad-lan.co.il/property-value-estimator/,1,,
+גליל פח מגולוון,0,53,28.8,https://nad-lan.co.il/glossary/פרופיל-פח-מגולוון/,1,20,0.75
+מידע על נדלן בבקעת אונו,0,76,20.8,https://nad-lan.co.il/city/קרית אונו/projects/,3,10,0.0
+פרויקטים חדשים במרכז נדלן ישראל 2026 פרויקטים חדשים תל אביב רמת גן פתח תקווה,0,76,24.8,https://nad-lan.co.il/projects/,5,,
+תקן 466 חלק 2,0,75,21.0,https://nad-lan.co.il/glossary/תי-466/,1,10,0.0
+מחירון דקל שיפוצים pdf,0,21,30.2,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,210,1.75
+בטון מזוין,0,71,25.6,https://nad-lan.co.il/glossary/בטון-מזוין/,1,390,0.0
+מחירון דקל עבודות צבע,0,34,23.4,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,20,1.01
+יזם תמא 38 תל אביב,0,66,29.5,https://nad-lan.co.il/urban-renewal/tama-38-tel-aviv/,2,,
+כן,1,80,5.8,https://nad-lan.co.il/projects/duo-tel-aviv/,34,8100,0.41
+תכנית מפורטת,0,64,25.5,https://nad-lan.co.il/glossary/תכנית-מפורטת/,1,70,0.0
+יריעה ביטומנית בהדבקה,0,31,28.9,https://nad-lan.co.il/glossary/יריעה-ביטומנית/,1,30,1.01
+קניית דירה בלונדון,0,61,23.6,https://nad-lan.co.il/global/london/,1,10,0.0
+פח מגולוון דק,0,20,8.8,https://nad-lan.co.il/glossary/פרופיל-פח-מגולוון/,1,20,1.51
+איך מזהים קונה רציני לנכס,0,59,21.0,https://nad-lan.co.il/selling-apartment/,1,,
+פרויקטים חדשים במצליח,0,59,24.2,https://nad-lan.co.il/projects/,3,10,0.0
+פרויקטים חדשים במכמורת,0,58,26.8,https://nad-lan.co.il/projects/,3,10,0.0
+בורג קודח,0,120,22.2,https://nad-lan.co.il/glossary/בורג-קודח/,1,390,0.24
+"""חישוב החזר משכנתא""",0,26,23.8,https://nad-lan.co.il/mortgage-calculator/,1,480,1.09
+"""משכנתא לדירה להשקעה""",0,53,20.7,https://nad-lan.co.il/investment-property-mortgage/,1,70,0.0
+פרויקטים חדשים במרכז ישראל 2026,0,53,20.0,https://nad-lan.co.il/projects/,3,,
+מחירון דקל 2026,0,52,14.8,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,2,10,0.0
+מתחמי פינוי בינוי מאושרים,0,52,27.5,https://nad-lan.co.il/urban-renewal/map/,1,10,0.0
+פרויקטים חדשים באר שבע 2026,0,51,27.1,https://nad-lan.co.il/projects/?city=באר שבע,3,,
+בדיקת טאבו,0,33,23.9,https://nad-lan.co.il/tabu-extract-check/,1,140,0.76
+קומבינציה נדלן,0,50,27.1,https://nad-lan.co.il/glossary/kombinatzia/,1,,
+מפת מדידה מצבית,0,49,27.4,https://nad-lan.co.il/glossary/מפה-מצבית/,2,10,0.0
+פרויקטים חדשים בדרום 2026,0,49,29.1,https://nad-lan.co.il/projects/,6,,
+איך קובעים מחיר לנכס,0,48,21.5,https://nad-lan.co.il/property-value-estimator/,2,,
+יועץ איטום ובידוד,0,48,28.7,https://nad-lan.co.il/glossary/יועץ-איטום/,1,10,0.0
+כמה הדירה שלי שווה,0,21,28.8,https://nad-lan.co.il/property-value-estimator/,1,140,1.14
+מחירון דקל 2025,0,20,21.9,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,20,1.18
+התוספת השלישית לחוק התכנון והבניה,0,46,9.2,https://nad-lan.co.il/glossary/התוספת-השלישית-לחוק-התכנון-והבנייה/,1,170,0.0
+מדידות לייזר,0,45,16.1,https://nad-lan.co.il/glossary/מד-לייזר/,1,10,0.0
+שכונות מגורים ומרכזי מסחר,0,45,15.8,https://nad-lan.co.il/investment-apartment/tel-aviv-investment-neighborhoods/,1,,
+מחירון דקל להורדה,0,44,22.2,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,30,0.0
+פרויקטי חדשים בלוד,0,44,21.9,https://nad-lan.co.il/city/לוד/projects/,3,,
+הערכת שווי דירה נווה אביבים,0,43,15.9,https://nad-lan.co.il/property-value-estimator/,2,,
+טיח גבס מקצועי,0,42,16.1,https://nad-lan.co.il/glossary/טיח-גבס/,1,,
+מחיר דירה חדשה בתל אביב,0,42,23.9,https://nad-lan.co.il/projects/,3,10,0.0
+מחירון דקל אינטרנטי,0,42,17.4,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,30,0.0
+נדל ן קרית אונו,0,42,20.4,https://nad-lan.co.il/city/קרית אונו/projects/,1,90,0.49
+מידע בנושא נדלן בבקעת אונו,0,41,23.1,https://nad-lan.co.il/city/קרית אונו/projects/,3,10,0.0
+בדיקת מחיר דירה,0,21,19.7,https://nad-lan.co.il/property-value-estimator/,1,70,0.96
+הערכת שווי דירה למשכנתא,0,40,23.6,https://nad-lan.co.il/property-value-estimator/,1,,
+פח מגולבן,0,40,22.7,https://nad-lan.co.il/glossary/פרופיל-פח-מגולוון/,1,20,0.0
+פרויקט שכונות מגורים,0,40,30.3,https://nad-lan.co.il/professionals/azorim/,3,10,0.0
+מחירון דקל בנייה,0,39,14.4,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,10,0.0
+מידע נדל ן בבקעת אונו,0,39,18.5,https://nad-lan.co.il/city/קרית אונו/projects/,1,10,0.0
+תקנות המדידה 2016,0,39,8.9,https://nad-lan.co.il/glossary/תקנות-המדידות-מדידות-ומיפוי-תשעו-2016/,1,20,0.0
+אדריכל רשום ואדריכל רשוי,0,37,28.3,https://nad-lan.co.il/glossary/אדריכל-רשוי/,1,10,0.0
+הערכת שווי נכס לפני קניה,0,37,19.6,https://nad-lan.co.il/property-value-estimator/,2,,
+יחידות בשדה דב,0,37,20.8,https://nad-lan.co.il/sde-dov/,2,10,0.0
+נדלן בבקעת אונו,0,37,22.8,https://nad-lan.co.il/city/קרית אונו/projects/,1,10,0.0
+מגדלי יוקרה פינוי בינוי,0,35,18.2,https://nad-lan.co.il/projects/,2,,
+פרויקטים חדשים בהדר,0,35,27.0,https://nad-lan.co.il/projects/הדר-6/,3,,
+תוכנית מתאר מקומית,0,35,25.4,https://nad-lan.co.il/glossary/תכנית-מתאר-מקומית/,1,170,0.0
+מחירון דקל להורדה pdf,0,34,21.7,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,20,0.0
+פרויקטים חדשים באשדוד מחירים,0,33,23.3,https://nad-lan.co.il/city/אשדוד/,1,10,0.0
+פרויקטים חדשים ברחובות מחירים,0,33,26.2,https://nad-lan.co.il/projects/,1,10,0.0
+דירות למכירה בחרשת הזית,0,32,24.1,https://nad-lan.co.il/properties/,1,,
+מחירון דקל 2024,0,32,22.1,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,10,0.0
+אחוז תיווך מקובל,0,31,29.4,https://nad-lan.co.il/commercial-real-estate/commercial-real-estate-brokerage-fee/,1,10,0.0
+מקדח יהלום,0,50,23.7,https://nad-lan.co.il/glossary/מקדח-יהלום/,1,720,0.31
+פרופיל פח,3,30,8.0,https://nad-lan.co.il/glossary/פרופיל-פח-מגולוון/,1,20,0.0
+מידע נדל ן על קרית אונו,0,30,19.3,https://nad-lan.co.il/city/קרית אונו/projects/,2,,
+שמאות לדירה יד שניה,0,30,29.0,https://nad-lan.co.il/property-value-estimator/,1,,
+תקן 118,0,30,8.7,https://nad-lan.co.il/glossary/תי-118/,1,20,0.0
+תקנות התכנון והבניה 2016,0,30,14.8,https://nad-lan.co.il/glossary/תקנות-התכנון-והבנייה-רישוי-בנייה-תשע/,1,20,0.0
+תקנות התכנון והבניה רישוי,0,30,23.3,https://nad-lan.co.il/glossary/תקנות-התכנון-והבנייה-רישוי-בנייה-תשע/,1,90,0.0
+תקנות התכנון והבניה רישוי בניה,0,30,25.2,https://nad-lan.co.il/glossary/תקנות-התכנון-והבנייה-רישוי-בנייה-תשע/,1,210,0.0
+מאיר ביטון קבלן,2,29,6.3,https://nad-lan.co.il/professionals/ביטון-מאיר/,1,10,0.0
+זיהוי קונה רציני לדירה,0,29,26.0,https://nad-lan.co.il/property-value-estimator/,2,,
+לוח גבס/ לוחות גבס,0,29,28.4,https://nad-lan.co.il/glossary/לוח-גבס-ירוק/,1,,
+שיטת ברנוביץ בידוד,0,29,18.6,https://nad-lan.co.il/glossary/שיטת-ברנוביץ/,4,10,0.0
+שיעור היוון,0,29,27.9,https://nad-lan.co.il/glossary/נוסחת-שיעור-היוון/,2,50,0.0
+תקנות רישוי בניה,0,29,26.2,https://nad-lan.co.il/glossary/תקנות-התכנון-והבנייה-רישוי-בנייה-תשע/,1,390,0.0
+שווי רכוש,0,28,27.8,https://nad-lan.co.il/property-value-estimator/,1,10,0.0
+תקנות התכנון והבניה רישוי בניה​,0,28,24.4,https://nad-lan.co.il/glossary/תקנות-התכנון-והבנייה-רישוי-בנייה-תשע/,1,,
+תקנות התכנון והבנייה רישוי בנייה,0,28,22.3,https://nad-lan.co.il/glossary/תקנות-התכנון-והבנייה-רישוי-בנייה-תשע/,1,40,0.0
+גישת ההשוואה,0,27,18.5,https://nad-lan.co.il/glossary/גישת-ההשוואה/,1,10,0.0
+מפת מדידה להיתר,0,27,18.4,https://nad-lan.co.il/glossary/מפת-מדידה-להיתר/,1,30,0.0
+מרכז נדלן,0,27,29.2,https://nad-lan.co.il/,2,90,0.0
+"נדל""ן במילאנו",0,27,25.0,https://nad-lan.co.il/global/italy/,1,,
+תקנות התכנון והבנייה (רישוי בנייה),0,27,21.7,https://nad-lan.co.il/glossary/תקנות-התכנון-והבנייה-רישוי-בנייה-תשע/,1,40,0.0
+מאיר דוגה,1,26,9.8,https://nad-lan.co.il/professionals/דוגה-מאיר/,1,20,0.0
+דירות למכירה בתל אביב פרויקטים חדשים,0,26,28.0,https://nad-lan.co.il/projects/,2,,
+קידוח כלונסאות cfa​,0,26,30.2,https://nad-lan.co.il/glossary/קידוח-כלונסאות-cfa/,1,,
+תקנות רישוי בנייה,0,26,25.1,https://nad-lan.co.il/glossary/תקנות-התכנון-והבנייה-רישוי-בנייה-תשע/,1,70,0.0
+מחירון קבלנים,0,25,17.6,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,10,0.0
+פרויקטים חדשים קריית אונו,0,25,25.2,https://nad-lan.co.il/city/קרית אונו/projects/,1,,
+זמן ייבוש עוגן כימי,0,24,11.0,https://nad-lan.co.il/glossary/שרף-אפוקסי-לעיגון-כימי/,1,,
+מחיר שיווק לנכס,0,24,20.1,https://nad-lan.co.il/property-value-estimator/,2,,
+מחירון דקל לבניה,0,24,15.0,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,1,10,0.0
+פרויקטים חדשים בנצרת,0,24,27.3,https://nad-lan.co.il/projects/,1,10,0.0
+שכונות חדשות בתל אביב,0,24,27.7,https://nad-lan.co.il/projects/,1,,
+דירות למשקיעים באשדוד,0,23,23.3,https://nad-lan.co.il/investment/ashdod-investment-apartment/,1,,
+נדל ן בקעת אונו,0,23,22.0,https://nad-lan.co.il/city/קרית אונו/projects/,2,10,0.0
+"נדל""ן במיאמי",0,23,22.3,https://nad-lan.co.il/global/miami/,1,20,0.0
+תקן 466,0,23,9.8,https://nad-lan.co.il/glossary/תי-466/,1,40,0.0
+בורג בטון,0,85,25.1,https://nad-lan.co.il/glossary/בורג-עיגון-בטון/,1,260,0.13
+בדיקה תכנונית של נכס,0,22,22.1,https://nad-lan.co.il/property-value/building-rights-check/,1,10,0.0
+בקעת אונו נדלן,0,22,26.3,https://nad-lan.co.il/city/קרית אונו/projects/,2,10,0.0
+יישום שיטת ברנוביץ,0,22,27.6,https://nad-lan.co.il/glossary/שיטת-ברנוביץ/,1,,
+מפת מדידה להגשה לוועדה,0,22,13.9,https://nad-lan.co.il/glossary/מפת-מדידה-להיתר/,1,,
+פרויקטים בבנייה בתל אביב,0,22,20.9,https://nad-lan.co.il/projects/,1,,
+תקנות התכנון והבניה בקשה להיתר תנאיו ואגרות​,0,22,29.0,https://nad-lan.co.il/glossary/תקנות-התכנון-והבנייה-בקשה-להיתר-תנאיו/,1,,
+חוזק בטון ב 40,1,21,7.5,https://nad-lan.co.il/glossary/בטון-ב-40/,1,40,0.0
+גבס אדום חסין אש,0,21,22.8,https://nad-lan.co.il/glossary/לוח-גבס-אדום/,1,10,0.0
+יזמות שכונות מגורים,0,21,15.5,https://nad-lan.co.il/professionals/azorim/,2,,
+נציגות דיירים תל אביב,0,21,28.5,https://nad-lan.co.il/glossary/netzigut-dayarim/,1,,
+מחירון דקל בניית חומה,0,43,23.2,https://nad-lan.co.il/glossary/מחירון-דקל-לבנייה-ותשתיות/,2,20,0.24
+נצח מסילתי,1,20,6.9,https://nad-lan.co.il/professionals/מסילתי-נצח/,1,20,0.0
+שטריקר 13,1,20,9.0,https://nad-lan.co.il/projects/stricker-13-brandeis-14/,1,20,0.0
+[משכנתא לדירה להשקעה],0,20,28.9,https://nad-lan.co.il/investment-property-mortgage/,1,70,0.0
+בדיקות+משפטיות+לעסקאות,0,20,24.6,https://nad-lan.co.il/real-estate-lawyer/,1,,
+הערכת שווי לדירה,0,20,21.1,https://nad-lan.co.il/property-value-estimator/,1,,
+מפרטים טכניים,0,20,23.5,https://nad-lan.co.il/glossary/מפרט-טכני-מיוחד/,1,320,0.0
+קניית דירה במילאנו,0,20,24.8,https://nad-lan.co.il/global/italy/,1,,
+"ת""י 118",0,20,8.1,https://nad-lan.co.il/glossary/תי-118/,1,20,0.0
+תקנות המודדים,0,20,9.6,https://nad-lan.co.il/glossary/תקנות-המדידות-מדידות-ומיפוי-תשעו-2016/,1,40,0.0
+מחיר דירה,0,22,23.0,https://nad-lan.co.il/property-value-estimator/,3,1000,0.43
+טיח גבס,0,79,28.7,https://nad-lan.co.il/glossary/טיח-גבס/,1,1600,0.1
+בורג עיגון,0,52,8.0,https://nad-lan.co.il/glossary/בורג-עיגון-בטון/,1,90,0.06
+בלוק בטון,0,29,18.4,https://nad-lan.co.il/glossary/בלוק-בטון/,1,320,0.1
+מה זה עוגן כימי,0,22,8.7,https://nad-lan.co.il/glossary/עוגן-כימי/,1,10,0.13
+בטון ב 40,0,31,5.3,https://nad-lan.co.il/glossary/בטון-ב-40/,1,20,0.09
+שלאב,0,45,7.4,https://nad-lan.co.il/professionals/יאיר-שלאב/,1,20,0.03
+מדלן אזור אישי,0,34,17.3,https://nad-lan.co.il/,1,590,0.02

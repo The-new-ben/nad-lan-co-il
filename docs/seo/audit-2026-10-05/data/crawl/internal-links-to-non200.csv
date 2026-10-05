@@ -1,0 +1,84 @@
+target,status,final,n_linking_pages,examples
+/cities/תל-אביב-יפו/,410,/cities/תל-אביב-יפו/,45,/projects/shikun-binui-sde-dov-ar/ | /projects/gindi-vogue-sde-dov-ar/ | /projects/recanati-residence-fr/
+/mortgage-ltv-ratio/,404,/mortgage-ltv-ratio/,26,/investment/rehovot-investment-apartment/ | /kfar-saba-apartment-prices/ | /investment/ashkelon-investment-apartment/
+/city/תל-אביב-יפו/projects/,410,/city/תל-אביב-יפו/projects/,18,/tel-aviv-plans/hatikva-reparcelation/ | /tel-aviv-plans/florentin/ | /tel-aviv-plans/public-buildings/
+/mortgage-interest-rates/,404,/mortgage-interest-rates/,10,/eilat-apartment-prices/ | /mortgage-calculator/mortgage-repayment-capacity/ | /ashdod-apartment-prices/
+/real-estate-lawyer/sale-deed-apartment/,404,/real-estate-lawyer/sale-deed-apartment/,6,/real-estate-lawyer/sale-of-apartments-law/ | /real-estate-lawyer/when-real-estate-lawyer-required/ | /real-estate-lawyer/form-4-occupancy-permit/
+/transfer-money-to-israel-property/,404,/transfer-money-to-israel-property/,6,/author/ben-betesh/ | /buy-property-israel-foreign-buyers/ | /author/ben-betesh/page/2/
+/apartment-sale-contract/,404,/apartment-sale-contract/,5,/real-estate-lawyer/residential-lease-agreement/ | /real-estate-lawyer/ | /real-estate-lawyer/power-of-attorney-real-estate/
+/reverse-mortgage/,404,/reverse-mortgage/,4,/mortgage-calculator/mortgage-ltv-ratio/ | /mortgage-calculator/mortgage-interest-rates/ | /mortgage-calculator/
+/mortgage-repayment-capacity/,404,/mortgage-repayment-capacity/,4,/mortgage-calculator/mortgage-ltv-ratio/ | /mortgage-calculator/mortgage-interest-rates/ | /mortgage-calculator/
+/tools/purchase-tax-calculator/,404,/tools/purchase-tax-calculator/,4,/buying-real-estate-israel-foreign-investor/ | /author/ben-betesh/page/2/ | /category/uncategorized/
+/tools/mortgage-calculator/,404,/tools/mortgage-calculator/,4,/buying-real-estate-israel-foreign-investor/ | /author/ben-betesh/page/2/ | /category/uncategorized/
+/apartments-for-investment/,404,/apartments-for-investment/,3,/investment/ | /investment/real-estate-yield/ | /investment/bank-guarantee-purchase/
+/bank-guarantee-purchase/,404,/bank-guarantee-purchase/,3,/investment/ | /investment/real-estate-yield/ | /new-projects/north-tel-aviv-new-projects/
+/short-term-rentals-thailand/,404,/short-term-rentals-thailand/,3,/short-term-rentals-abroad/short-term-rentals-dubai/ | /short-term-rentals-abroad/short-term-rentals-portugal/ | /short-term-rentals-abroad/short-term-rentals-greece/
+/short-term-rentals-portugal/,404,/short-term-rentals-portugal/,3,/short-term-rentals-abroad/short-term-rentals-dubai/ | /short-term-rentals-abroad/short-term-rentals-thailand/ | /short-term-rentals-abroad/short-term-rentals-greece/
+/best-cities-israel-property-investment/,404,/best-cities-israel-property-investment/,3,/author/ben-betesh/page/2/ | /buy-property-israel-foreign-buyers/ | /category/english/
+/buying-new-construction-israel/,404,/buying-new-construction-israel/,3,/author/ben-betesh/page/2/ | /buy-property-israel-foreign-buyers/ | /category/english/
+/manage-rental-property-israel-abroad/,404,/manage-rental-property-israel-abroad/,3,/author/ben-betesh/page/2/ | /buy-property-israel-foreign-buyers/ | /category/english/
+/aliyah-housing-checklist/,404,/aliyah-housing-checklist/,3,/author/ben-betesh/page/2/ | /buy-property-israel-foreign-buyers/ | /category/english/
+/invest/foreign-buyers/,404,/invest/foreign-buyers/,3,/author/ben-betesh/page/2/ | /category/uncategorized/ | /investing-israel-real-estate-vs-dubai-cyprus/
+/pros/appraiser/,404,/pros/appraiser/,3,/author/ben-betesh/page/2/ | /category/uncategorized/ | /investing-israel-real-estate-vs-dubai-cyprus/
+/invest/,404,/invest/,3,/author/ben-betesh/page/2/ | /category/uncategorized/ | /buying-real-estate-israel-foreign-investor/
+/real-estate-yield/,404,/real-estate-yield/,2,/investment/ | /investment/bank-guarantee-purchase/
+/power-of-attorney-real-estate/,404,/power-of-attorney-real-estate/,2,/real-estate-lawyer/ | /real-estate-lawyer/residential-lease-agreement/
+/short-term-rentals-spain/,404,/short-term-rentals-spain/,2,/short-term-rentals-abroad/short-term-rentals-cyprus/ | /short-term-rentals-abroad/short-term-rentals-italy/
+/short-term-rentals-italy/,404,/short-term-rentals-italy/,2,/short-term-rentals-abroad/short-term-rentals-cyprus/ | /short-term-rentals-abroad/short-term-rentals-spain/
+/short-term-rentals-cyprus/,404,/short-term-rentals-cyprus/,2,/short-term-rentals-abroad/short-term-rentals-spain/ | /short-term-rentals-abroad/short-term-rentals-italy/
+/betterment-levy/,404,/betterment-levy/,2,/real-estate-lawyer/apartment-sale-contract/ | /real-estate-tax-advisor/capital-gains-tax-exemption/
+/capital-gains-tax-exemption/,404,/capital-gains-tax-exemption/,2,/real-estate-lawyer/apartment-sale-contract/ | /real-estate-tax-advisor/betterment-levy/
+/tel-aviv-office-prices/,404,/tel-aviv-office-prices/,1,/apartment-prices/
+/ramat-gan-office-prices/,404,/ramat-gan-office-prices/,1,/apartment-prices/
+/bnei-brak-office-prices/,404,/bnei-brak-office-prices/,1,/apartment-prices/
+/herzliya-office-prices/,404,/herzliya-office-prices/,1,/apartment-prices/
+/office-prices-petah-tikva/,404,/office-prices-petah-tikva/,1,/apartment-prices/
+/office-prices-netanya/,404,/office-prices-netanya/,1,/apartment-prices/
+/office-prices-raanana/,404,/office-prices-raanana/,1,/apartment-prices/
+/office-prices-kfar-saba/,404,/office-prices-kfar-saba/,1,/apartment-prices/
+/office-prices-hod-hasharon/,404,/office-prices-hod-hasharon/,1,/apartment-prices/
+/office-prices-rehovot/,404,/office-prices-rehovot/,1,/apartment-prices/
+/rishon-lezion-office-prices/,404,/rishon-lezion-office-prices/,1,/apartment-prices/
+/office-prices-ashdod/,404,/office-prices-ashdod/,1,/apartment-prices/
+/shop-prices-tel-aviv/,404,/shop-prices-tel-aviv/,1,/apartment-prices/
+/shop-prices-ramat-gan/,404,/shop-prices-ramat-gan/,1,/apartment-prices/
+/shop-prices-bnei-brak/,404,/shop-prices-bnei-brak/,1,/apartment-prices/
+/shop-prices-jerusalem/,404,/shop-prices-jerusalem/,1,/apartment-prices/
+/shop-prices-haifa/,404,/shop-prices-haifa/,1,/apartment-prices/
+/shop-prices-beer-sheva/,404,/shop-prices-beer-sheva/,1,/apartment-prices/
+/shop-prices-ashdod/,404,/shop-prices-ashdod/,1,/apartment-prices/
+/shop-prices-petah-tikva/,404,/shop-prices-petah-tikva/,1,/apartment-prices/
+/shop-prices-netanya/,404,/shop-prices-netanya/,1,/apartment-prices/
+/commercial-property-prices-tel-aviv/,404,/commercial-property-prices-tel-aviv/,1,/apartment-prices/
+/ramat-gan-commercial-property-prices/,404,/ramat-gan-commercial-property-prices/,1,/apartment-prices/
+/commercial-property-prices-jerusalem/,404,/commercial-property-prices-jerusalem/,1,/apartment-prices/
+/commercial-property-prices-haifa/,404,/commercial-property-prices-haifa/,1,/apartment-prices/
+/commercial-property-prices-beer-sheva/,404,/commercial-property-prices-beer-sheva/,1,/apartment-prices/
+/commercial-property-prices-ashdod/,404,/commercial-property-prices-ashdod/,1,/apartment-prices/
+/commercial-property-prices-petah-tikva/,404,/commercial-property-prices-petah-tikva/,1,/apartment-prices/
+/commercial-property-prices-netanya/,404,/commercial-property-prices-netanya/,1,/apartment-prices/
+/commercial-property-prices-herzliya/,404,/commercial-property-prices-herzliya/,1,/apartment-prices/
+/industrial-property-prices-holon-bat-yam/,404,/industrial-property-prices-holon-bat-yam/,1,/apartment-prices/
+/warehouse-prices-gush-dan/,404,/warehouse-prices-gush-dan/,1,/apartment-prices/
+/warehouse-prices-ashdod-port/,404,/warehouse-prices-ashdod-port/,1,/apartment-prices/
+/city/ירושלים/projects/,410,/city/ירושלים/projects/,1,/jerusalem-apartment-prices/
+/my-appointments/,302,/login/?redirect=/my-appointments/,1,/site-map/
+/residential-lease-agreement/,404,/residential-lease-agreement/,1,/real-estate-lawyer/
+/rainbow-sde-dov/,404,/rainbow-sde-dov/,1,/sde-dov/eshkol/
+/ashira-sde-dov/,404,/ashira-sde-dov/,1,/sde-dov/eshkol/
+/utopia-sde-dov/,404,/utopia-sde-dov/,1,/sde-dov/eshkol/
+/dimri-yama-sde-dov/,404,/dimri-yama-sde-dov/,1,/sde-dov/eshkol/
+/zohi-sde-dov/,404,/zohi-sde-dov/,1,/sde-dov/eshkol/
+/shikun-binui-sde-dov/,404,/shikun-binui-sde-dov/,1,/sde-dov/eshkol/
+/gindi-vogue-sde-dov/,404,/gindi-vogue-sde-dov/,1,/sde-dov/merkaz/
+/first-sde-dov/,404,/first-sde-dov/,1,/sde-dov/merkaz/
+/presale-apartment/,404,/presale-apartment/,1,/new-projects/north-tel-aviv-new-projects/
+/construction-input-index/,404,/construction-input-index/,1,/new-projects/north-tel-aviv-new-projects/
+/contractor-delay-compensation/,404,/contractor-delay-compensation/,1,/new-projects/north-tel-aviv-new-projects/
+/short-term-rentals-dubai/,404,/short-term-rentals-dubai/,1,/short-term-rentals-abroad/short-term-rentals-thailand/
+/short-term-rentals-greece/,404,/short-term-rentals-greece/,1,/short-term-rentals-abroad/short-term-rentals-portugal/
+/real-estate-tax-advisor/purchase-tax-calculator/,404,/real-estate-tax-advisor/purchase-tax-calculator/,1,/real-estate-lawyer/land-purchase-checklist/
+/pinui-binui/,404,/pinui-binui/,1,/urban-renewal/choosing-urban-renewal-developer/
+/tama-38/,404,/tama-38/,1,/urban-renewal/choosing-urban-renewal-developer/
+/investment/income-producing-properties/,301,/wp-content/uploads/2026/06/income-producing-properties.jpg,1,/commercial-real-estate/office-for-sale-tel-aviv/
+/commercial-real-estate/office-fit-out-cost/,404,/commercial-real-estate/office-fit-out-cost/,1,/commercial-real-estate/warehouse-prices-ashdod-port/
