@@ -1,0 +1,20 @@
+{
+  "id": 4958,
+  "vals": {
+    "_yoast_wpseo_metadesc": {
+      "exists": true,
+      "b64": "157XpNeo16HXnteZ150g15PXmdeo15Qg15HXotem157Xm9edPyDXqtee15XXoNeV16og15XXm9ee15Qg16nXldeo15XXqiwg15XXlNei157XldeTINei15XXnNeUINeR16rXldeaINeT16fXlCDXkdeb16rXldeR16og157Xqdec15UsINei150g15vXpNeq15XXqNeZINeV15XXkNeY16HXkNekINeV15fXmdeV15Ig15DXnNeZ15vXnS4g15HXnNeZINei157XnNeUINeV15HXnNeZINeb16jXmNeZ16Eg15DXqdeo15DXmS4=",
+      "sha": "20b22b5e268f67f7fa05be16cc6bea994ce436689a882e34314ca806e756a2d3"
+    },
+    "_yoast_wpseo_opengraph-description": {
+      "exists": false,
+      "b64": "",
+      "sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "_yoast_wpseo_twitter-description": {
+      "exists": false,
+      "b64": "",
+      "sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

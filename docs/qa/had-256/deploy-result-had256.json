@@ -1,0 +1,30 @@
+{
+  "state": "released",
+  "at_utc": "2026-10-05T21:37:21Z",
+  "base": "https://nad-lan.co.il",
+  "package": "40763157",
+  "owner": "2.0.2",
+  "engine": "1.1.4",
+  "page": "B",
+  "backup": "docs\\qa\\had-256\\live-backup\\20261005T213537Z",
+  "private": {
+    "dir": "/home/nadlvzld/domains/nad-lan.co.il/nl-private",
+    "exists": true,
+    "writable": true,
+    "parent_writable": true,
+    "inside_abspath": false,
+    "inside_docroot": false,
+    "open_basedir": "/home/nadlvzld/:/tmp/:/var/tmp/:/opt/alt/php85/usr/share/pear/:/dev/urandom:/usr/local/php85/lib/:/usr/local/php85/lib/:/usr/local/php74/lib/:/usr/local/php83/lib/:/usr/local/php84/lib/:/usr/local/lib/php/",
+    "defined_now": null,
+    "probe_written": true,
+    "probe_name": "had256-http-probe-bf02a375d978e2e6.txt",
+    "urls": [
+      "https://nad-lan.co.il/nl-private/had256-http-probe-bf02a375d978e2e6.txt",
+      "https://nad-lan.co.il/../nl-private/had256-http-probe-bf02a375d978e2e6.txt",
+      "https://nad-lan.co.il/wp-content/nl-private/had256-http-probe-bf02a375d978e2e6.txt",
+      "https://nad-lan.co.il/wp-content/uploads/nl-private/had256-http-probe-bf02a375d978e2e6.txt"
+    ]
+  },
+  "page_written": true,
+  "checks": "all OK"
+}
