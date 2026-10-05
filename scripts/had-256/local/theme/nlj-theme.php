@@ -71,6 +71,17 @@ add_action( 'init', function () {
 
 /* what the bench really runs, for THEME.md (127.0.0.1 only, as every nlj-test route) */
 add_action( 'rest_api_init', function () {
+	/* the page text of /post-listing/ for a copy variant: wp-content/nlj-page-<old|A|B>.html (docs/qa/had-256/page-4958) */
+	register_rest_route( 'nlj-test/v1', '/page', array( 'methods' => 'POST', 'permission_callback' => function () { return in_array( (string) ( $GLOBALS['nlj_real_ip'] ?? $_SERVER['REMOTE_ADDR'] ?? '' ), array( '127.0.0.1', '::1', '' ), true ); }, 'callback' => function ( WP_REST_Request $r ) {
+		$v  = preg_replace( '/[^A-Za-z]/', '', (string) $r->get_param( 'variant' ) );
+		$t  = (string) @file_get_contents( WP_CONTENT_DIR . '/nlj-page-' . $v . '.html' );
+		$pl = get_page_by_path( 'post-listing' );
+		if ( '' === $t || ! $pl ) { return new WP_Error( 'nlj_page', 'no such variant', array( 'status' => 404 ) ); }
+		kses_remove_filters();
+		wp_update_post( wp_slash( array( 'ID' => $pl->ID, 'post_content' => $t ) ) );
+		clean_post_cache( $pl->ID );
+		return array( 'ok' => true, 'variant' => $v, 'md5' => md5( (string) get_post_field( 'post_content', $pl->ID, 'raw' ) ) );
+	} ) );
 	register_rest_route( 'nlj-test/v1', '/theme', array( 'methods' => 'GET', 'permission_callback' => function () { return in_array( (string) ( $GLOBALS['nlj_real_ip'] ?? $_SERVER['REMOTE_ADDR'] ?? '' ), array( '127.0.0.1', '::1', '' ), true ); }, 'callback' => function () {
 		$t = wp_get_theme();
 		$snips = array();

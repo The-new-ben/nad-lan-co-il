@@ -174,6 +174,11 @@ function afterInstall(p) {
     fs.copyFileSync(p.theme.liveText, path.join(wc, 'nlj-post-listing.html'));
     fs.mkdirSync(path.join(wc, 'uploads', 'nadlan-skin'), { recursive: true });
     fs.copyFileSync(p.theme.skin, path.join(wc, 'uploads', 'nadlan-skin', 'skin-a.css'));
+    // the copy variants of page 4958 (docs/qa/had-256/page-4958): POST /nlj-test/v1/page {variant: old|A|B}
+    for (const [v, f] of [['old', 'old.html'], ['A', 'new-A.html'], ['B', 'new-B.html']]) {
+      const src = path.join(REPO, 'docs', 'qa', 'had-256', 'page-4958', f);
+      if (fs.existsSync(src)) { fs.copyFileSync(src, path.join(wc, 'nlj-page-' + v + '.html')); }
+    }
   }
   // PHP notices go to wp-content/debug.log, never to the page
   const cfg = path.join(p.site, 'wp-config.php');

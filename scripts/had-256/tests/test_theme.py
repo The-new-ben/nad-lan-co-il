@@ -20,12 +20,13 @@ import json
 import os
 import sys
 
-from bench import Browser, record, clear, QA, REPO
+from bench import Browser, record, clear, QA, REPO, bench
 from screens import visit
 from test_layout import PROBE as L14_PROBE
 
 V = 'theme'   # the bench (bench.PORTS['theme'] = NLJ_THEME_PORT, default 9405)
 TAG = os.environ.get('NLJ_THEME_TAG', '')   # e.g. "candidate-2.0.1" for another commit on another port: own rows, own folder
+PAGE_VARIANT = os.environ.get('NLJ_PAGE_VARIANT', '')   # old | A | B: the text of page 4958 the bench serves (empty: as seeded)
 RV = V + ('-' + TAG if TAG else '')
 WIDTHS = ['320', '390', '412', '1440']
 SHOT_W = {'390', '1440'}
@@ -54,6 +55,12 @@ async () => {
   window.scrollTo({top: 0, left: 0, behavior: 'instant'});   // a plain scrollTo is smooth on this site: start from a still page
   await settle();
   out.app = app ? {dir: app.getAttribute('dir'), lang: app.getAttribute('lang')} : null;
+  out.how = {plugin_box: Array.from(document.querySelectorAll('.nlpub-how')).filter(vis).length, plugin_box_in_html: document.querySelectorAll('.nlpub-how').length,
+             journey_box: Array.from(document.querySelectorAll('.nlj-aside--how')).filter(vis).length, any_how_h2: Array.from(document.querySelectorAll('h2')).filter(h => vis(h) && /איך זה עובד|מה קורה אחר כך|How it works|What comes next/.test(h.innerText)).map(h => h.innerText.trim())};
+  const sh = document.querySelector('.nlj-shell');
+  out.shell = sh ? {lang: sh.getAttribute('lang'), dir: sh.getAttribute('dir'), text: sh.innerText.trim().slice(0, 160)} : null;
+  out.title = document.title;
+  out.page_text = Array.from(document.querySelectorAll('main .entry-content > p, main .nlj-shell > p')).filter(vis).map(p => p.innerText.trim().slice(0, 140));
   if (bar && a11y && vis(bar) && vis(a11y)) {
     const b = (bar.querySelector('.nlcta-wa') || bar).getBoundingClientRect(), c = a11y.getBoundingClientRect();
     out.bar_a11y_overlap = Math.max(0, Math.min(b.right, c.right) - Math.max(b.left, c.left)) * Math.max(0, Math.min(b.bottom, c.bottom) - Math.max(b.top, c.top));
@@ -82,6 +89,14 @@ async () => {
         const ix = Math.max(0, Math.min(r.right, q.right) - Math.max(r.left, q.left)), iy = Math.max(0, Math.min(r.bottom, q.bottom) - Math.max(r.top, q.top));
         if (ix * iy > 0.5) out.rest_overlap.push({el: e.tagName.toLowerCase() + (e.id ? '#' + e.id : '') + ' "' + (e.innerText || e.value || e.getAttribute('aria-label') || e.getAttribute('placeholder') || '').trim().slice(0, 30) + '"', under: name, area: Math.round(ix * iy), share: Math.round(100 * ix * iy / Math.max(1, r.width * r.height)) + '%'});
       }
+    }
+    // the first field of the screen at rest (what a phone shows before any tap)
+    const ff = els.find(e => e.tagName === 'INPUT' && e.type !== 'checkbox' && e.type !== 'radio');
+    if (ff) {
+      const r = ff.getBoundingClientRect();
+      const under = [];
+      for (const [name, o] of overlays) { if (!o || !vis(o)) continue; const q = o.getBoundingClientRect(); const a = Math.max(0, Math.min(r.right, q.right) - Math.max(r.left, q.left)) * Math.max(0, Math.min(r.bottom, q.bottom) - Math.max(r.top, q.top)); if (a > 0.5) under.push(name + ' ' + Math.round(a) + 'px2'); }
+      out.first_field = {el: ff.id || ff.name, top: Math.round(r.top), bottom: Math.round(r.bottom), in_view: r.bottom <= innerHeight, under};
     }
     const order = els.map(e => ['fwd', e]).concat(els.slice().reverse().map(e => ['back', e]));
     for (const [dir, e] of order) {
@@ -142,6 +157,10 @@ async () => {
 
 
 def main(widths, langs):
+    if PAGE_VARIANT:
+        s, j, _ = bench(V, '/page', {'variant': PAGE_VARIANT})
+        assert s == 200, (s, j)
+        print('[page] variant', PAGE_VARIANT, j)
     br = Browser()
     allrows = {}
     try:
@@ -203,6 +222,24 @@ def main(widths, langs):
                 record({'id': 'T4', 'variant': RV, 'label': 'real-wp+theme+chrome', 'title': 'no overflow, 44 px targets, focus ring, no JS errors, app text 4.5:1 ' + t,
                         'status': 'pass' if not ovf and not small and not nof and not errs and not con else 'fail',
                         'evidence': {'overflow': ovf, 'under_44px': small, 'no_focus_ring': nof, 'js_errors': errs, 'app_contrast_under': con, 'app_text_nodes': sum(v['checked']['text'] for v in l14.values())}})
+                auth = [k for k in pg if k.startswith('auth-')]
+                ff = {k: pg[k].get('first_field') for k in auth}
+                ff_bad = {k: v for k, v in ff.items() if v and v.get('under')} if int(vp) < 768 else {}
+                record({'id': 'T4', 'variant': RV, 'label': 'real-wp+theme+chrome', 'title': 'first screen: the first field is not under the floating bar or the accessibility button (phones) ' + t,
+                        'status': 'pass' if not ff_bad else 'fail', 'evidence': {'page_variant': PAGE_VARIANT or 'seeded', 'first_field_at_rest': ff, 'under': ff_bad, 'applies': int(vp) < 768}})
+                how = {k: v.get('how') for k, v in pg.items()}
+                how_bad = {k: v for k, v in how.items() if v and (v['plugin_box'] or (k.startswith('auth-') and v['journey_box'] != 1))}
+                record({'id': 'T4', 'variant': RV, 'label': 'real-wp+theme+chrome', 'title': 'one "how it works" box (the journey\'s own on the visitor screens, no plugin box) ' + t,
+                        'status': 'pass' if not how_bad else 'fail', 'evidence': {'page_variant': PAGE_VARIANT or 'seeded', 'bad': how_bad, 'auth_screens': {k: how[k] for k in auth}}})
+                shells = {k: (v.get('shell'), v.get('h1'), v.get('title'), v.get('page_text')) for k, v in pg.items() if k in ('auth-signup', 'details-empty', 'published')}
+                lang_bad = {}
+                for k, v in pg.items():
+                    if lang == 'en' and not (v.get('shell') and v['shell'].get('lang') == 'en' and v['h1'] == ['List your property for sale or rent, free']):
+                        lang_bad[k] = (v.get('shell'), v.get('h1'))
+                    if lang == 'he' and v.get('shell'):
+                        lang_bad[k] = ('a shell on the Hebrew page', v.get('shell'))
+                record({'id': 'T4', 'variant': RV, 'label': 'real-wp+theme+chrome', 'title': 'the page around the journey speaks the journey\'s language (he: the page H1; en: an English shell, lang en) ' + t,
+                        'status': 'pass' if not lang_bad else 'fail', 'evidence': {'page_variant': PAGE_VARIANT or 'seeded', 'bad': lang_bad, 'samples': shells}})
                 record({'id': 'T4', 'variant': RV, 'label': 'real-wp+theme+chrome', 'title': 'the page text around the app 4.5:1 (H1, paragraph, how-it-works) ' + t,
                         'status': 'pass' if not pcon else 'fail',
                         'evidence': {'under': pcon, 'page_blocks': next(iter(pg.values()))['page_blocks'], 'site_chrome_under (info, site-wide)': ccon}})
