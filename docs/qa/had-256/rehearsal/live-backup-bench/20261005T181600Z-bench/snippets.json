@@ -1,0 +1,23 @@
+{
+  "owner": {
+    "id": 707,
+    "name": "x-owner-wizard",
+    "active": true,
+    "scope": "global",
+    "file": "x-owner-wizard-707.code.txt",
+    "sha256_raw": "f04dbbf8d99d6eaf89d2b8a272f5d8e529f91b6fe97030ca9b22930083a5f9d4",
+    "sha256_lf": "f04dbbf8d99d6eaf89d2b8a272f5d8e529f91b6fe97030ca9b22930083a5f9d4"
+  },
+  "engine": {
+    "id": 690,
+    "name": "x-broker-drop",
+    "active": true,
+    "scope": "global",
+    "file": "x-broker-drop-690.code.txt",
+    "sha256_raw": "e7736ef75fdf176ee759273af2c2a74f31a39215c7dd0a29cccc595bb68232b9",
+    "sha256_lf": "e7736ef75fdf176ee759273af2c2a74f31a39215c7dd0a29cccc595bb68232b9"
+  },
+  "read_at_utc": "20261005T181600Z",
+  "base": "http://127.0.0.1:9408",
+  "plugin": "1.72.372"
+}

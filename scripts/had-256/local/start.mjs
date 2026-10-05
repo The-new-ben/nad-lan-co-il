@@ -110,7 +110,8 @@ function plan() {
     if (!/^[0-9a-f]{7,40}$/.test(commit)) { throw new Error('usage: start.mjs theme|rehearsal <commit> [port]'); }
     const port = Number(args[2] || 9405);
     if (port >= 9401 && port <= 9404) { throw new Error('ports 9401-9404 are the pinned QA / builder benches; use 9405+'); }
-    const root = path.join(RUNTIME, (reh ? 'rehearsal-' : 'theme-') + commit);
+    // NLJ_BENCH_SUFFIX: a second bench of the same commit (its own site), e.g. one per page variant
+    const root = path.join(RUNTIME, (reh ? 'rehearsal-' : 'theme-') + commit + (process.env.NLJ_BENCH_SUFFIX ? '-' + process.env.NLJ_BENCH_SUFFIX.replace(/[^a-z0-9]/gi, '') : ''));
     const snap = path.join(root, 'snapshot');
     if (!fs.existsSync(path.join(snap, '.complete'))) {
       fs.rmSync(snap, { recursive: true, force: true });

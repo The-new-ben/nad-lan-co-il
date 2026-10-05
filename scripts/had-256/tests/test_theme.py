@@ -28,7 +28,7 @@ V = 'theme'   # the bench (bench.PORTS['theme'] = NLJ_THEME_PORT, default 9405)
 TAG = os.environ.get('NLJ_THEME_TAG', '')   # e.g. "candidate-2.0.1" for another commit on another port: own rows, own folder
 PAGE_VARIANT = os.environ.get('NLJ_PAGE_VARIANT', '')   # old | A | B: the text of page 4958 the bench serves (empty: as seeded)
 RV = V + ('-' + TAG if TAG else '')
-WIDTHS = ['320', '390', '412', '1440']
+WIDTHS = ['320', '360', '390', '412', '1440']
 SHOT_W = {'390', '1440'}
 OUT = QA / 'theme' / TAG if TAG else QA / 'theme'
 
