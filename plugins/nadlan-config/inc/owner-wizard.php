@@ -1,6 +1,6 @@
 <?php
 /**
- * nadlan-config · Owners publish on the same engine (x-owner-wizard) · v2.0.0 · 4.10.2026 (HAD-256)
+ * nadlan-config · Owners publish on the same engine (x-owner-wizard) · v2.0.1 · 5.10.2026 (HAD-256)
  *
  * Owner order 23.9.2026: "the old wizard moves to the same engine": /post-listing/ keeps its address and its
  * account, and everything after it is the broker engine (x-broker-drop): a Latin address
@@ -9,6 +9,8 @@
  * "My listings" on the same page: sold or let in one tap, a new price in two (reg. 19(c) spirit for owners too).
  * Brokers who reach this page are sent to their own free site (/brokers/#join) instead.
  *
+ * 2.0.1 (5.10.2026, the theme bench): a control the page scrolls UP to lands below the site's sticky header (.nlhp-top),
+ *   not under it (--nlj-head-room measured, the header cleared on focus). Nothing else changed.
  * 2.0.0 (HAD-256, owner-approved design v5 "NadLan Listing Journey", Maya's contract L01-L17):
  *   - The listing journey: account (open, sign in, a recovery reply that never says whether an account exists) ->
  *     a saved draft to continue -> property details -> photos -> preview -> publish -> My listings
@@ -38,7 +40,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { return; }
 if ( defined( 'NL_OWNER_VERSION' ) ) { return; }
-define( 'NL_OWNER_VERSION', '2.0.0' );
+define( 'NL_OWNER_VERSION', '2.0.1' );
 define( 'NL_OWNER_MAX_ACTIVE', 5 );
 define( 'NL_OWNER_MAX_DRAFTS', 10 );
 define( 'NL_OWNER_PUB_DAY', 8 );
@@ -1804,7 +1806,7 @@ function nl_owner_css() {
    the fields above a form button), the page keeps room for it below the last control, and a focused field, link or button is
    scrolled above it (WCAG 2.4.11), also when a phone keyboard shrinks the screen. --nlj-bar-room is measured by the app. */
 body:has(#nlj-app){--nlcta-band:1}
-html:has(#nlj-app){scroll-padding-bottom:var(--nlj-bar-room,112px);scroll-padding-top:24px}
+html:has(#nlj-app){scroll-padding-bottom:var(--nlj-bar-room,112px);scroll-padding-top:var(--nlj-head-room,24px)}
 .nlj{--paper:#f7f6f2;--surf:#fff;--ink:#14212b;--ink2:#3b4753;--mute:#6b7680;--line:#e3e1da;--sea:#2f6f86;--seah:#255c70;--deep:#1f4b5c;--sand:#eee9dd;--champ:#cfe3ea;--wa:#0f7a63;--field:#fbfaf7;--bad:#b3261e;--badg:#fbedec;--ok:#2e7d5b;--okg:#eaf4ef;
   font-family:Assistant,"Segoe UI",Arial,sans-serif;font-size:15px;line-height:1.5;color:var(--ink2);background:var(--paper);box-sizing:border-box;position:relative;max-width:none!important;margin-inline:0!important;width:100%}
 .nlj *,.nlj *::before,.nlj *::after{box-sizing:border-box}
@@ -3017,12 +3019,15 @@ root.addEventListener('click',function(e){
 
 /* ---------------- the site's floating bar never covers a control ---------------- */
 function barRect(){var b=document.getElementById('nlcta');if(!b){return null;}var cs=getComputedStyle(b);if(cs.display==='none'||cs.visibility==='hidden'){return null;}var a=b.querySelector('a')||b,r=a.getBoundingClientRect();return r.height?r:null;}
-function fitBar(){var r=barRect(),room=r?Math.max(0,Math.round(window.innerHeight-r.top+16)):0;document.documentElement.style.setProperty('--nlj-bar-room',room+'px');}
+/* the site's header (.nlhp-top) is sticky (HAD-256 theme bench, 5.10): a control the page scrolls UP to (Shift+Tab, an error
+   link) must land below it, not under it; --nlj-head-room is its measured bottom + 16 (24 px without a sticky header) */
+function headRect(){var h=document.querySelector('#nlhp-top,.nlhp-top,.nlpc-site-header');if(!h){return null;}var p=getComputedStyle(h).position;if(p!=='sticky'&&p!=='fixed'){return null;}var r=h.getBoundingClientRect();return r.height&&r.bottom>0?r:null;}
+function fitBar(){var r=barRect(),room=r?Math.max(0,Math.round(window.innerHeight-r.top+16)):0,h=headRect();document.documentElement.style.setProperty('--nlj-bar-room',room+'px');document.documentElement.style.setProperty('--nlj-head-room',(h?Math.round(h.bottom+16):24)+'px');}
 function clearBar(el){
  if(!el||!root.contains(el)||!el.getBoundingClientRect){return;}
- var r=barRect();if(!r){return;}
- var e=el.getBoundingClientRect();
- if(e.bottom>r.top-8&&e.top<r.bottom+8&&e.right>r.left-8&&e.left<r.right+8){window.scrollBy(0,Math.round(e.bottom-r.top+24));}
+ var r=barRect(),h=headRect(),e=el.getBoundingClientRect();
+ if(r&&e.bottom>r.top-8&&e.top<r.bottom+8&&e.right>r.left-8&&e.left<r.right+8){window.scrollBy(0,Math.round(e.bottom-r.top+24));return;}
+ if(h&&e.bottom>0&&e.top<h.bottom+8){window.scrollBy(0,Math.round(e.top-h.bottom-16));}
 }
 document.addEventListener('focusin',function(e){fitBar();clearBar(e.target);});
 window.addEventListener('resize',function(){fitBar();clearBar(document.activeElement);});
