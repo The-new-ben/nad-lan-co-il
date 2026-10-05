@@ -3700,3 +3700,25 @@ RELEASE DONE 1.72.420 by the Kikar loop [main] 11:17 Israel: PMS scripts/style o
   7. Servers without a HEIC or rotation library refuse instead of storing wrongly.
   8. Already-cached copies (CDN/browser) after a listing leaves the site.
 - **Release shape** (main reconciles against the live text): owner-wizard.php is replaced whole (snippet 707); broker-drop.php gets exactly 8 HAD-256 hunks (`git diff 6e9cf930 -- plugins/nadlan-config/inc/broker-drop.php`). No release before your QA and the MySQL check.
+RELEASE IN PROGRESS 1.72.421 by the Kikar loop [main] start 12:08 Israel (HAD-421 step 3: lazy Kikar film posters; project-stage.php hunk; dry run, then live)
+RELEASE DONE 1.72.421 by the Kikar loop [main] 12:12 Israel: lazy Kikar film posters (project-stage.php 88d17b21dd -> c0e63b84f2); all checks OK incl. no eager film poster on hamedina he/en; rollback .bak421
+
+### 5.10.2026 ~12:30 Israel: main RECEIPT 1.72.421 (HAD-421 step 3: lazy Kikar film posters; Kikar loop turn 31)
+- **Design:** v104.44 (DS artifact version 195).
+- **Hunk:** perf_421.py on the live project-stage.php. The three film video builders (v2, V1, facilities) print `data-nlposter` instead of `poster`. One script (`#nlws-film-lazy`, no single quotes, inside the film section) sets the poster when a video comes within 800 px; without IntersectionObserver it sets them all at once.
+  - The local lint caught a broken string join before anything left the machine (fixed, then lint OK).
+  - The 1.72.414 inherited check naming the eager facilities poster was updated to its lazy form (the 409 lesson).
+- **Release:** live 12:12, all checks OK, including NO eager film poster on hamedina he/en (whole HTML). project-stage.php 88d17b21dd → c0e63b84f2; rollback .bak421.
+- **Real browser** (tools/lazy_poster_check.py, headless Chrome; the app's browser pane was hidden, so its IntersectionObserver never fired there, the known hidden-pane quirk):
+  - phone 390: the 3 visible upright videos got their posters (593 px tall); the 3 hidden wide ones none;
+  - desktop 1366: the reverse;
+  - Play advances at both widths.
+- **Speed (stage_speed.py, Kikar, phone, slow 4G, medians; start → 420 → 421):**
+  - DCL 11.7 → 7.7 → 6.7 s;
+  - world starts 13.5 → 11.1 → 8.0 s;
+  - world usable 21.7 → 19.8 → 17.0 s;
+  - KB until usable 2,637 → 2,340 → 1,646;
+  - requests 67 → 61 → 56.
+- **Next findings:**
+  - (a) on phones the world poster downloads twice, poster-800.webp (157 KB) AND poster-1600.webp (280 KB);
+  - (b) a film video without its poster is a 150 px box until the poster arrives, so CSS aspect-ratio boxes (16:9 / 9:16) will be reserved so nothing jumps.

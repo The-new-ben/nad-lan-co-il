@@ -1,0 +1,307 @@
+{
+ "url": "https://nad-lan.co.il/projects/hamedina/",
+ "at": "2026-10-05T10:28:54Z",
+ "runs": 3,
+ "profiles": {
+  "slow4g": {
+   "median": {
+    "ttfb": 720,
+    "fcp": 3060,
+    "lcp": 3060,
+    "dcl": 6679,
+    "load": 6684,
+    "world_loading": 8032,
+    "world_ready": 16956,
+    "kb_to_ready": 1646,
+    "requests_to_ready": 56
+   },
+   "runs": [
+    {
+     "ttfb": 680,
+     "fcp": 3060,
+     "lcp": 3060,
+     "dcl": 6672,
+     "load": 6676,
+     "world_loading": 7962,
+     "world_ready": 16928,
+     "kb_to_ready": 1646,
+     "requests_to_ready": 55,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       12885
+      ],
+      [
+       "nadlan-config/assets/project-stage/hamedina/poster-1600.webp",
+       280,
+       12362
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       12253
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       4245
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       6786
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       7844
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 17.0
+    },
+    {
+     "ttfb": 720,
+     "fcp": 3036,
+     "lcp": 3036,
+     "dcl": 6796,
+     "load": 6800,
+     "world_loading": 8151,
+     "world_ready": 17228,
+     "kb_to_ready": 1646,
+     "requests_to_ready": 56,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       13076
+      ],
+      [
+       "nadlan-config/assets/project-stage/hamedina/poster-1600.webp",
+       280,
+       12548
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       12454
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       4300
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       6946
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       8038
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 17.3
+    },
+    {
+     "ttfb": 732,
+     "fcp": 3076,
+     "lcp": 3076,
+     "dcl": 6679,
+     "load": 6684,
+     "world_loading": 8032,
+     "world_ready": 16956,
+     "kb_to_ready": 1646,
+     "requests_to_ready": 57,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       12957
+      ],
+      [
+       "nadlan-config/assets/project-stage/hamedina/poster-1600.webp",
+       280,
+       12432
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       12353
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       4291
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       6848
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       7906
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 17.1
+    }
+   ]
+  },
+  "none": {
+   "median": {
+    "ttfb": 703,
+    "fcp": 1376,
+    "lcp": 1376,
+    "dcl": 1503,
+    "load": 1817,
+    "world_loading": 1869,
+    "world_ready": 3701,
+    "kb_to_ready": 1646,
+    "requests_to_ready": 55
+   },
+   "runs": [
+    {
+     "ttfb": 703,
+     "fcp": 1356,
+     "lcp": 1356,
+     "dcl": 1448,
+     "load": 1732,
+     "world_loading": 1791,
+     "world_ready": 3433,
+     "kb_to_ready": 1646,
+     "requests_to_ready": 56,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       1845
+      ],
+      [
+       "nadlan-config/assets/project-stage/hamedina/poster-1600.webp",
+       280,
+       1819
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       2109
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       787
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       1490
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       1770
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 3.5
+    },
+    {
+     "ttfb": 3221,
+     "fcp": 3932,
+     "lcp": 3932,
+     "dcl": 4064,
+     "load": 4391,
+     "world_loading": 4440,
+     "world_ready": 6497,
+     "kb_to_ready": 1646,
+     "requests_to_ready": 55,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       4504
+      ],
+      [
+       "nadlan-config/assets/project-stage/hamedina/poster-1600.webp",
+       280,
+       4458
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       4787
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       3257
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       4090
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       4417
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 6.5
+    },
+    {
+     "ttfb": 691,
+     "fcp": 1376,
+     "lcp": 1376,
+     "dcl": 1503,
+     "load": 1817,
+     "world_loading": 1869,
+     "world_ready": 3701,
+     "kb_to_ready": 1646,
+     "requests_to_ready": 55,
+     "biggest": [
+      [
+       "ugins/nadlan-config/assets/project-stage/hamedina/world.json",
+       378,
+       1935
+      ],
+      [
+       "nadlan-config/assets/project-stage/hamedina/poster-1600.webp",
+       280,
+       1895
+      ],
+      [
+       "s://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+       257,
+       2178
+      ],
+      [
+       "/nadlan-config/assets/project-stage/hamedina/poster-800.webp",
+       157,
+       731
+      ],
+      [
+       "gins/nadlan-config/assets/project-stage/hamedina/places.json",
+       90,
+       1541
+      ],
+      [
+       "nt/plugins/nadlan-config/assets/project-stage/world/world.js",
+       84,
+       1845
+      ]
+     ],
+     "stage_top": 753,
+     "wall_s": 3.7
+    }
+   ]
+  }
+ }
+}
