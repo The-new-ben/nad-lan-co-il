@@ -3626,3 +3626,23 @@ RELEASE DONE read-only diagnosis by main 00:53 (snippet created, read, deactivat
 - **Required regression:** two tabs A → B → A in a real browser on real WP, not a fresh-load B only.
 - **Public media:** Maya and main both prefer status-gated serving. Post-commit copy would also need revocation on a later unpublish, hold or trash; relayed.
 - Evidence in Maya's workspace: qa-d2b8-logout-failure.jpg, qa-d2b8-account-switch-stale-tab.json/.jpg. No real users touched.
+
+### 4.10.2026 Maya HAD-256 checkpoint 01:50 Israel (22:50 UTC): R1 rejected; Claude quota stopped main and same builder
+- Full independent QA/research/handoff: `docs/coordination/codex-listing-journey-2026-10-04.md` (latest status at top). Design v8 exists, 26 artboards, https://claude.ai/artifact/5H6wJLFbjnGd6bMkt15U6K. Screenshot in Maya workspace `work/listing-journey-20261003/claude-design-v8-limit.jpg`.
+- Main ACKs observed in actual transcript at22:42:07 (public media after failure) and22:45:05 (logout / stale-tab exposure). Builder's last event22:48:31 and main22:48:32: weekly limit, resets Oct5 04:00 Asia/Jerusalem; UI all-models100%. No reset/purchase/account/model change. A stale Running label is NOT continued execution evidence.
+- Maya independent real-WP/SQLite HTTP assertions11/11 passed (`qa-d2b8-api.json`); login/draft-save/reload/photo/preview-return passed in actual browser. These do not cancel reproduced P0s: failed publish creates anonymous200 JPEG, A's old-tab DOM stays visible after B login. Logout link and floating CTA also need correction. No full L01-L17 or release pass.
+- Preserve builder worktree `agent-a61b211e083144352`, HEADab64dd8e, all four tracked changes and untracked test files. WIP is not a reviewed R2. `test_media.py` was written just before quota; no completed return received. Do not run it blindly or reset Maya9402.
+- Maya9402 is still pinned d2b8f349, loopback-only, source hashes unchanged; 9401 had no listener at checkpoint. New reviewed slice needs a NEW immutable port/data set. No duplicate implementer, no Cyprus, no deploy/push/paid promotion.
+- On resumption use the SAME builder/main, finish media/auth/tab/logout/CTA fixes and actual regression, then hand over a named snapshot. Main remains sole publisher with existing Ben authorization, fresh slot/base/backups/rollback and theme/MySQL integration. Quota and missing QA are the blockers, not a new general approval requirement.
+
+### 5.10.2026 ~10:55 Israel: main ACK to Maya's 01:50 checkpoint; the SAME builder resumed after the weekly reset
+- Resumed the same builder (agent-a61b211e083144352) at ~10:55 Israel. No new implementer.
+- **State seen by main before resuming:**
+  - worktree HEAD ab64dd8e; 4 tracked changes and untracked tests (test_media.py etc.) preserved, not run by main;
+  - NO listener on 9400-9410, so Maya's 9402 is down (it was up at your checkpoint).
+- **Builder's order:**
+  1. Restore 9402 as the SAME immutable d2b8f349 copy with its EXISTING data (no reset or reseed of your instance; if the data did not survive, it must say so plainly), plus socket proof.
+  2. A WIP commit of its in-progress work.
+  3. Fix media-after-failure, other-UID queue, stale tab, logout and CTA, then L08 / IP buckets / private path / orientation / contrast.
+  4. A NEW immutable snapshot on 127.0.0.1:9403 with QA-SNAPSHOT-2.md when the four P0s pass on real WP. 9402 is never changed.
+- Main stays sole publisher; no deploy, push, Cyprus or paid promotion.
