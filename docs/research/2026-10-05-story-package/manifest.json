@@ -1,0 +1,102 @@
+{
+  "package": "Nadlan corrected informative writing materials",
+  "version": "mobile-public-2026-10-05",
+  "preparedAt": "2026-10-05T06:50:57.000Z",
+  "files": [
+    {
+      "file": "briefs/STORY-he-full-informative-brief.txt",
+      "role": "Corrected complete STORY writing brief; mobile copy with search-environment telemetry removed",
+      "bytes": 19350,
+      "sha256": "7308dacbaa0b7e89da85a46f33ec59dc2a9983d2dca4712aeb19b2936e369de3",
+      "language": "he",
+      "originalCorrectedSourceSha256": "36732bbbc47b1cb5f1b31bd6b37c690e2eceaa97b25ba7091178ca477e5e0ba7",
+      "contentChange": "Remove personal search-environment details only; keep full editorial plan, facts, limits and public sources"
+    },
+    {
+      "file": "briefs/STORY-en-full-informative-brief.txt",
+      "role": "Corrected complete STORY writing brief; mobile copy with search-environment telemetry removed",
+      "bytes": 18759,
+      "sha256": "e11b4f35d67dbd7a1bda68ec17c92286f6ea140dcbffb349faf502eab61bf03f",
+      "language": "en",
+      "originalCorrectedSourceSha256": "17657a3c301d110a96addf6c12a027c297309c8ff58d4682c46bce3862ae8fca",
+      "contentChange": "Remove personal search-environment details only; keep full editorial plan, facts, limits and public sources"
+    },
+    {
+      "file": "briefs/STORY-fr-full-informative-brief.txt",
+      "role": "Corrected complete STORY writing brief; mobile copy with search-environment telemetry removed",
+      "bytes": 21931,
+      "sha256": "e17fc16ecba57ce308eb5d5aa5434a8501810f7d893af6320ffe9532e91cc48c",
+      "language": "fr",
+      "originalCorrectedSourceSha256": "e174b90c4f412fbedaa4c48979d9b8e9f993dc711a11f5ab3c045e1a366f8d7b",
+      "contentChange": "Remove personal search-environment details only; keep full editorial plan, facts, limits and public sources"
+    },
+    {
+      "file": "briefs/STORY-ru-full-informative-brief.txt",
+      "role": "Corrected complete STORY writing brief; mobile copy with search-environment telemetry removed",
+      "bytes": 19822,
+      "sha256": "1da7f2b140ecea40575c88c074b6a34b44ce73df2e9d3a09fda3275d3eed586b",
+      "language": "ru",
+      "originalCorrectedSourceSha256": "b8731e0dd8bc8ad9b40e3701e598579182157b2fd520c045a8c3c05e0c14e8b5",
+      "contentChange": "Remove personal search-environment details only; keep full editorial plan, facts, limits and public sources"
+    },
+    {
+      "file": "briefs/STORY-ar-full-informative-brief.txt",
+      "role": "Corrected complete STORY writing brief; mobile copy with search-environment telemetry removed",
+      "bytes": 22464,
+      "sha256": "5547a90cd70dcab082f34db764f1821a898ba3e29e490736fc05bf4cbf78af5e",
+      "language": "ar",
+      "originalCorrectedSourceSha256": "f7f4aa6c71f197e7b3dc7271a29ebf2ed415bad8d667d47b41baaa9f4be149a1",
+      "contentChange": "Remove personal search-environment details only; keep full editorial plan, facts, limits and public sources"
+    },
+    {
+      "file": "articles/page-5154-family-home-en-informative-v2.md",
+      "role": "Unchanged corrected English family-use article for existing page5154",
+      "bytes": 42652,
+      "sha256": "ec08f4c79d25dd58170c3083b7ed7699278a5d523d1c0f62749ee05e4f9f9cc8",
+      "language": "en",
+      "netWords": 6008,
+      "sourceSha256": "ec08f4c79d25dd58170c3083b7ed7699278a5d523d1c0f62749ee05e4f9f9cc8",
+      "destination": "https://nad-lan.co.il/en/buy-property-in-israel/"
+    },
+    {
+      "file": "research/STORY-public-source-notes.md",
+      "role": "Public source URLs, original observations, attribution limits and unresolved facts",
+      "bytes": 24752,
+      "sha256": "54b764cff3ff525d1fffbcae4b460d7d02b18081deaa5fc4ccc862b705747812"
+    },
+    {
+      "file": "research/page-5154-public-source-links.md",
+      "role": "Public links already cited in the corrected family article",
+      "bytes": 981,
+      "sha256": "37ab3d5ca53c694e0ff9251e5de6eefd1b739a746d6adc8a380cccfa5c9330e4"
+    },
+    {
+      "file": "00-START-HERE-HE.md",
+      "role": "Concise Hebrew scope, mobile attachment instructions and publication requirements",
+      "bytes": 3578,
+      "sha256": "71281803ee407c35a0c1f36587dc5edf16d0eb416c4f9515ec4e2a2e16f8727c"
+    }
+  ],
+  "story": {
+    "languages": [
+      "he",
+      "en",
+      "fr",
+      "ru",
+      "ar"
+    ],
+    "physicalCandidate": "STORY Galei Yam / Ben Zvi Netanya",
+    "cmsId": null,
+    "cmsUrl": null,
+    "articlesWritten": 0
+  },
+  "familyArticle": {
+    "pageId": 5154,
+    "language": "en",
+    "netWords": 6008,
+    "version": "informative-v2",
+    "sha256": "ec08f4c79d25dd58170c3083b7ed7699278a5d523d1c0f62749ee05e4f9f9cc8"
+  },
+  "publication": "Not performed or authorized by this package",
+  "filePrivacy": "Public-source writing materials only; search-environment telemetry removed; no approval reports, coordination logs, private client documents, credentials or historical rejected drafts"
+}
