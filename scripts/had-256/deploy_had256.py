@@ -572,7 +572,7 @@ def main():
             raise SystemExit(f"FATAL: /{R.PAGE_PATH}/ is page {pg['id']}, not {R.PAGE_ID}")
         open(os.path.join(backup, "page-4958.html"), "wb").write(live_page)
         meta_plan = {}
-        if PAGE in ("A", "B") and hasattr(R, "META_KEYS"):
+        if PAGE in ("A", "B") and hasattr(R, "META_KEYS") and not (BENCH and "--bench-skip-meta" in ARGS):   # the flag replays 6.10's live run
             ym = ops({"ymeta": {"path": R.PAGE_PATH, "get": list(R.META_KEYS)}}, "yoast read")["ymeta"]
             json.dump({"id": ym["id"], "vals": ym["vals"]}, open(os.path.join(backup, "yoast-4958.json"), "w", encoding="utf-8"), indent=2)
             for k, v in ym["vals"].items():

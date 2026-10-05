@@ -1,32 +1,22 @@
 {
-  "state": "rolled back (--rollback)",
-  "at_utc": "2026-10-05T19:30:45Z",
+  "state": "dry: done",
+  "at_utc": "2026-10-05T21:34:04Z",
   "base": "http://127.0.0.1:9408",
   "package": "40763157",
   "owner": "2.0.2",
   "engine": "1.1.4",
-  "page": null,
-  "backup": "docs\\qa\\had-256\\live-backup\\20261005T192835Z-bench",
+  "page": "B",
+  "backup": "docs\\qa\\had-256\\live-backup\\20261005T213331Z-bench",
   "bench": true,
+  "lint": "ok",
   "private": {
     "dir": "/nl-private",
-    "exists": true,
-    "writable": true,
+    "exists": false,
+    "writable": false,
     "parent_writable": true,
     "inside_abspath": false,
     "inside_docroot": false,
     "open_basedir": "",
-    "defined_now": null,
-    "probe_written": true,
-    "probe_name": "had256-http-probe-a42bc344faf80a43.txt",
-    "urls": [
-      "http://127.0.0.1:9408/nl-private/had256-http-probe-a42bc344faf80a43.txt",
-      "http://127.0.0.1:9408/../nl-private/had256-http-probe-a42bc344faf80a43.txt",
-      "http://127.0.0.1:9408/wp-content/nl-private/had256-http-probe-a42bc344faf80a43.txt",
-      "http://127.0.0.1:9408/wp-content/uploads/nl-private/had256-http-probe-a42bc344faf80a43.txt"
-    ]
-  },
-  "page_written": true,
-  "checks": "all OK",
-  "rollback_checks_bad": []
+    "defined_now": null
+  }
 }
