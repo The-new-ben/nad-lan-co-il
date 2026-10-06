@@ -240,7 +240,7 @@ if ( ! function_exists( 'nadlan_hp_top' ) ) {
 	</picture>
 	<div class="nlhp-hero__body">
 		<p class="nlhp-hero__kicker">פורטל הנדל״ן של ישראל</p>
-		<h1>נדל״ן: פרויקטים חדשים, דירות למכירה ומחירי דירות</h1>
+		<h1>נדל״ן בישראל: מחירים, עסקאות וכל מה שבודקים לפני שקונים</h1><?php /* HAD-446: the head terms belong to /projects/ and /properties/ */ ?>
 		<p class="nlhp-hero__lead"><span class="nlhp-n"><?php echo esc_html( $n ); ?></span> פרויקטים של בנייה חדשה והתחדשות עירונית, דירות למכירה ולהשכרה, מחירי דירות מעסקאות שנמכרו, מחשבונים ומגזין נדל״ן.</p>
 		<form class="nlhp-search nlhv2-search" action="<?php echo esc_url( home_url( '/projects/' ) ); ?>" method="get" role="search">
 			<div class="nlhp-search__tabs nlhv2-tabs" role="tablist" aria-label="מה מחפשים">
@@ -748,7 +748,7 @@ if ( ! function_exists( 'nadlan_hp_band_portal' ) ) {
 		return '<section class="nlhp-seo" aria-label="על NadLan"><div><h2>נדל״ן בישראל, במקום אחד</h2><p>NadLan הוא פורטל נדל״ן ישראלי: <a href="' . $u( '/projects/' ) . '">' . number_format( (int) $c['projects'] ) . ' פרויקטים של בנייה חדשה והתחדשות עירונית</a>, '
 			. '<a href="' . $u( '/properties/?listing_type=sale' ) . '">דירות למכירה</a> ו<a href="' . $u( '/properties/?listing_type=rent' ) . '">דירות להשכרה</a> לפי עיר, <a href="' . $u( '/apartment-prices/' ) . '">מחירי דירות</a> מעסקאות שנמכרו לפי עיר, שכונה ורחוב, '
 			. '<a href="' . $u( '/mortgage-calculator/' ) . '">מחשבון משכנתא</a> ו<a href="' . $u( '/purchase-tax-calculator/' ) . '">מחשבון מס רכישה</a>, <a href="' . $u( '/guides/' ) . '">מגזין נדל״ן</a> ומאגר של ' . number_format( (int) $c['pros'] ) . ' <a href="' . $u( '/professionals/' ) . '">אנשי מקצוע</a>.</p></div>'
-			. ( '' !== $list ? '<div><h2>פרויקטים חדשים לפי עיר</h2><p>לכל פרויקט חדש יש עמוד משלו, עם הפרטים הידועים עליו: היזם, המיקום והשלב (תכנון, היתר, בנייה או אכלוס). הפרויקטים לפי עיר: ' . $list . '.</p></div>' : '' )
+			. ( '' !== $list ? '<div><h2>פרויקטים חדשים לפי עיר</h2><p>לכל פרויקט חדש יש עמוד משלו, עם הפרטים הידועים עליו: היזם, המיקום והשלב (תכנון, היתר, בנייה או אכלוס). כולם בקטלוג <a href="' . $u( '/projects/' ) . '">פרויקטים חדשים בישראל</a>. הפרויקטים לפי עיר: ' . $list . '.</p></div>' : '' )
 			. '</section>';
 	}
 }
@@ -844,8 +844,8 @@ add_filter( 'the_content', function ( $content ) {
 if ( ! function_exists( 'nadlan_hp_desc' ) ) {
 	function nadlan_hp_desc() {
 		$c = nadlan_hp_counts();
-		// HomePage v51: the true make-up (most of the catalogue is urban renewal), within 160 characters
-		return 'נדל״ן בישראל: ' . number_format( (int) $c['projects'] ) . ' פרויקטים של בנייה חדשה והתחדשות עירונית, דירות למכירה ולהשכרה, מחירי דירות לפי עיר, מחשבון משכנתא ואנשי מקצוע.';
+		// HAD-446 (6.10.2026): the portal's own words; "פרויקטים חדשים" and "דירות למכירה" are left to /projects/ and /properties/
+		return 'נדלן: מידע נדל״ן בישראל במקום אחד. מחירי דירות ועסקאות לפי עיר, מחשבונים ואנשי מקצוע, קטלוג של ' . number_format( (int) $c['projects'] ) . ' פרויקטים ולוח דירות.';
 	}
 }
 if ( ! function_exists( 'nadlan_hp_front_he' ) ) {
@@ -857,6 +857,10 @@ if ( ! function_exists( 'nadlan_hp_front_he' ) ) {
 foreach ( array( 'wpseo_metadesc', 'wpseo_opengraph_desc', 'wpseo_twitter_description' ) as $nadlan_hp_f ) {
 	add_filter( $nadlan_hp_f, function ( $d ) { return nadlan_hp_front_he() ? nadlan_hp_desc() : $d; }, 60 );
 }
+/* HAD-446: the shared card carried the old title (Yoast's stored one); now the page's own */
+foreach ( array( 'wpseo_opengraph_title', 'wpseo_twitter_title' ) as $nadlan_hp_f ) {
+	add_filter( $nadlan_hp_f, function ( $t ) { return ( nadlan_hp_front_he() && function_exists( 'nadlan_hp_seo_title' ) ) ? nadlan_hp_seo_title() : $t; }, 60 );
+}
 /* Yoast's WebPage piece carried "בחירת דירה מתוך הבניין", true for one project, not for the portal */
 add_filter( 'wpseo_schema_webpage', function ( $data ) {
 	if ( nadlan_hp_front_he() && is_array( $data ) ) { $data['description'] = nadlan_hp_desc(); }
@@ -867,7 +871,7 @@ add_filter( 'wpseo_schema_webpage', function ( $data ) {
    the tab already shows) and the honest description. */
 if ( ! function_exists( 'nadlan_revenue_home_seo_title' ) ) {
 	function nadlan_revenue_home_seo_title() {
-		return 'נדלן - דירות למכירה, פרויקטים חדשים ומחירי דירות בישראל';
+		return function_exists( 'nadlan_hp_seo_title' ) ? nadlan_hp_seo_title() : 'נדלן | מידע נדל״ן בישראל: מחירי דירות, עסקאות וכלים לקונים';
 	}
 }
 if ( ! function_exists( 'nadlan_revenue_home_seo_description' ) ) {
