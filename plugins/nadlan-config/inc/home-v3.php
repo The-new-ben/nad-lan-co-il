@@ -770,6 +770,7 @@ if ( ! function_exists( 'nadlan_hp_body' ) ) {
 		};
 		return nadlan_hp_band_film()
 			. nadlan_hp_band_projects()
+			. (string) apply_filters( 'nadlan_hp_after_projects', '' ) // HAD-445: the price list form (inc/pricelist-form.php)
 			. ( '' !== ( $nadlan_lb = nadlan_hp_band_lst() ) ? $nadlan_lb : nadlan_hp_band_listings( $cap( 'nadlan_hv2_band_listings' ) ) )
 			. nadlan_hp_band_prices()
 			. nadlan_hp_band_cities()

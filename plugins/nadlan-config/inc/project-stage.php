@@ -968,6 +968,8 @@ if ( ! function_exists( 'nadlan_ps_compose' ) ) {
 		// order stays title, lead, buttons, stage, rail, facts, view and map
 		$lead = substr( $html, $a, $lead_end - $a );
 		$page = '<div class="nlps-page' . ( ! empty( $ps['world'] ) ? ' nlps-page--world' : '' ) . '" dir="rtl" lang="he">' . $parts['hero'] . $lead . $parts['cta'] . ( $parts['prices'] ?? '' ) . $parts['stagebox'] . $parts['rail'] . $parts['facts'] . $parts['below'] . $parts['tour'] . $parts['deals'] . ( function_exists( 'nadlan_ps_world_film' ) ? nadlan_ps_world_film( $ps ) : '' ) . '</div>'; // v104.28: the film, after the deals, outside the post content
+		// HAD-445: the price list form right after the page top (inc/pricelist-form.php); outside the grid, so the grid's areas stay as they are
+		if ( false === strpos( $html, 'class="nlds nlplf' ) ) { $page .= (string) apply_filters( 'nadlan_ps_after_page', '', $ps ); }
 		$html = substr( $html, 0, $a ) . $page . substr( $html, $lead_end );
 		// one FAQPage schema, from the page's own visible questions and answers (the recipe, row 25): the first
 		// "שאלות נפוצות" section that really holds question and answer pairs
