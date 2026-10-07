@@ -1,0 +1,675 @@
+{
+ "generated": "7.10.2026",
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages/4730?_fields=id,link,title,content,yoast_head_json,modified_gmt (content.rendered), public, retrieved 2026-10-07 20:08:23 UTC (modified_gmt 2026-10-07T11:35:15, the AreaMap shortcode added by another session). Saved as source/hub-4730-rest.json. Page 4730 = https://nad-lan.co.il/sde-dov/. Not edited: the title, the H1, the URL, every H2/H3 except ONE (the H2 'הקרקע והמיקום: כ-1,500 דונם...' carries a wrong number: edit 2), the Yoast title and description, the AreaMap shortcode, the external 'מקורות תכנון רשמיים' list.",
+ "facts": "Source keys are defined in align-check.md section 3 (URL, what it says, date, when read); the audit ids A-01 to A-24 are in its section 4. Claims for the translations: claims.json (hub claims SDH-01 to SDH-26).",
+ "apply_rules": [
+  "Apply in the listed order. Every \"old\" matches content.rendered exactly once (matches_in_live) and still once after the earlier edits are applied (verified by script on the saved copy). No edit needs replace_all.",
+  "Every old string sits inside one paragraph, heading or table cell (cell edits carry their own <td dir=\"rtl\">...</td> because the same words appear elsewhere). Nothing crosses a line break (the rendered content uses CRLF).",
+  "All 33 old strings also match exactly once in the raw post content backed up at 14:35 Israel time today (docs/qa/had-460/city-backup/page-4730-20261007T143514.json, taken just before the AreaMap shortcode was added), checked by script. Re-check each one against the raw content right before applying.",
+  "Edits with \"optional\": true (the TEXT fix of a broken FAQ sentence and the six ADDED project-table cells) can be skipped without breaking any other edit. The STYLE edits only remove em dashes: they are outside a number audit but the Hebrew source must pass the same gate as the translations (check_translation.py --selftest).",
+  "No old or new string contains an HTML entity; ₪ is U+20AA; the hub writes מ\"ר and מע\"מ with an ASCII quote, as on the live page. Data only: nothing here was applied."
+ ],
+ "edits": [
+  {
+   "n": 1,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "פתיחה (שורת עדכון)",
+   "old": "<em>נבדק ועודכן: יוני 2026.</em>",
+   "new": "<em>נבדק ועודכן: אוקטובר 2026.</em>",
+   "source_keys": [
+    "THIS"
+   ],
+   "audit_verdict": "DATE",
+   "audit_ids": [
+    "A-01"
+   ],
+   "why": "The page is updated by these edits; the date line follows.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 2,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "כותרת H2: הקרקע והמיקום",
+   "old": "הקרקע והמיקום: כ-1,500 דונם על חוף צפון תל אביב",
+   "new": "הקרקע והמיקום: כ-1,300 דונם על חוף צפון תל אביב",
+   "source_keys": [
+    "TLVSD",
+    "NC2003",
+    "GIS528"
+   ],
+   "audit_verdict": "CONFLICT",
+   "audit_ids": [
+    "A-05"
+   ],
+   "why": "Audit A-05: the heading carries a wrong number. Plan TA/4444 covers about 1,300 dunam (municipality page; the district committee's approval, 12.3.2020); the plan polygon in the city GIS measures 1,304,428 m2. The 1,490-1,600 figures seen in some press and marketing pages have no official basis (align-check section 2). The only heading edit.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 3,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "הקרקע והמיקום",
+   "old": "הקרקע של רובע שדה דב משתרעת על שטח של כ-1,300 עד 1,500 דונם לאורך חוף הים בצפון תל אביב, מנמל תל אביב בדרום ועד גבול העיר בצפון, ומהים במערב ועד המשך רחוב אבן גבירול במזרח.",
+   "new": "הקרקע של רובע שדה דב משתרעת על שטח של כ-1,300 דונם לאורך חוף הים בצפון תל אביב: בין שכונת צוקי אביב ורחוב פרופס בצפון, שכונות נופי ים ותכנית ל' ורחוב לוי אשכול במזרח, שכונת כוכב הצפון, מתחם רדינג ורחוב ש\"י עגנון בדרום, וחוף הים והטיילת במערב.",
+   "source_keys": [
+    "TLVSD",
+    "NC2003",
+    "GIS528"
+   ],
+   "audit_verdict": "CONFLICT",
+   "audit_ids": [
+    "A-05",
+    "A-06"
+   ],
+   "why": "Audit A-05 (1,300 to 1,500 -> about 1,300) and A-06: the boundaries were wrong (the port of Tel Aviv lies south of the Yarkon, not at the district's edge; the continuation of Ibn Gabirol runs THROUGH the district). The municipality's own boundary description replaces them. The next sentence (a coastal front of about 2 km) stays: the coastal park is 2 km long (NC2502P).",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 4,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "תוכנית המתאר",
+   "old": "מתוכננים בו כ-500,000 מ\"ר מבני ציבור, כ-125,000 מ\"ר מלונאות וכ-365 דונם פארקים. נוסף לכך, התוכנית כוללת כ-2,400 יחידות דיור בר-השגה במחיר מופחת וכ-4,500 עד 6,900 יחידות דיור מיוחד, לרבות מעונות סטודנטים, דיור מוגן ודיור להשכרה.",
+   "new": "לפי התוכנית שאושרה ב-2020, מתוכננים בו כ-500,000 מ\"ר מבני ציבור, כ-125,000 מ\"ר מלונאות וכ-365 דונם פארקים וגנים ציבוריים. נוסף לכך, מתוך 16,000 הדירות כ-2,400 יועדו לדיור בר-השגה במחיר מופחת וכ-4,500 לדיור מיוחד, לרבות מעונות סטודנטים, דיור מוגן ודיור להשכרה.",
+   "source_keys": [
+    "NC2003"
+   ],
+   "audit_verdict": "CONFLICT",
+   "audit_ids": [
+    "A-08",
+    "A-09",
+    "A-10"
+   ],
+   "why": "Audit A-09/A-10: 500,000 / 125,000 / 365 / 2,400 / 4,500 are the approval figures of 12.3.2020 (consistent, now dated). '4,500 to 6,900 special units' misreads the source: 6,900 = 2,400 affordable + 4,500 special, not an upper bound.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 5,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "תוכנית המתאר (טבלה)",
+   "old": "<td dir=\"rtl\">כ-4,500 עד 6,900 יחידות דיור מיוחד</td>",
+   "new": "<td dir=\"rtl\">כ-4,500 יחידות דיור מיוחד</td>",
+   "source_keys": [
+    "NC2003"
+   ],
+   "audit_verdict": "CONFLICT",
+   "audit_ids": [
+    "A-10"
+   ],
+   "why": "Audit A-10, the table cell.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 6,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "שלושת המתחמים",
+   "old": "בפברואר ומרץ שווקו שמונה מכרזים לבנייה של 6,666 יחידות דיור,",
+   "new": "בפברואר ובמרץ 2025 נסגרו שמונה מכרזים לבנייה של 6,666 יחידות דיור,",
+   "source_keys": [
+    "BZ2503",
+    "NC2502T"
+   ],
+   "audit_verdict": "CONSISTENT+DATE",
+   "audit_ids": [
+    "A-12"
+   ],
+   "why": "Audit A-12: consistent (3,922 units in February + 2,744 in March 2025 = 6,666; 'eight tenders closed, including those of February'; 6,666 / 16,000 = 41.7%, so 'more than 40%' holds) but undated: the year is added.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 7,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "הפרויקטים בשיווק (טבלה)",
+   "old": "<td dir=\"rtl\">מגדל בן 39 עד 40 קומות ובנייני בוטיק, כ-480 יחידות דיור לפי שיווק וכ-459 יחידות דיור לפי היתר, קבלן אשטרום, אכלוס צפוי 2030</td>",
+   "new": "<td dir=\"rtl\">מגדל בן 39 עד 40 קומות ובנייני בוטיק, 459 יחידות דיור (במכרז הקרקע: 480), קבלן אשטרום, השלב האחרון צפוי להימסר ב-2030</td>",
+   "source_keys": [
+    "NC2601R",
+    "AMS",
+    "GL2608"
+   ],
+   "audit_verdict": "CONFLICT",
+   "audit_ids": [
+    "A-13",
+    "A-14",
+    "A-15"
+   ],
+   "why": "Audit A-14: the attributions were wrong. 480 is the land-tender figure; 459 is the developer's and the contractor's figure (no source calls it 'per permit', none calls 480 'per marketing'). 39 / 40 floors: the deal records say 39, the contractor (1.1.2026) says 40; kept as a range. 2030: the contractor expects the last stage about 4.5 years after January 2026.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 8,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "Rainbow Tel Aviv",
+   "old": "לפי פרסומי השיווק והמידע התכנוני, הפרויקט כולל מגדל בן 39 עד 40 קומות ובנייני בוטיק, כ-480 יחידות דיור לפי שיווק וכ-459 יחידות דיור לפי היתר, קבלן מבצע אשטרום ואכלוס צפוי בשנת 2030.",
+   "new": "הפרויקט כולל מגדל בן 39 עד 40 קומות ובנייני בוטיק, ובהם 459 דירות לפי היזם (במכרז הקרקע דובר על 480). הקבלן המבצע הוא אשטרום, שנבחר בינואר 2026, והדירות צפויות להימסר בשלבים, כשהשלב האחרון צפוי ב-2030.",
+   "source_keys": [
+    "NC2601R",
+    "AMS",
+    "GL2608"
+   ],
+   "audit_verdict": "CONFLICT",
+   "audit_ids": [
+    "A-13",
+    "A-14",
+    "A-15"
+   ],
+   "why": "Audit A-14, the same facts in the project paragraph.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 9,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "מחירים",
+   "old": "שייכים לרף הגבוה של שוק המגורים בישראל., מחירי דירות במתחם אשכול מוערכים בכ-70,000 עד 80,000 ₪ למ\"ר, מחיר ממוצע בפרויקט Rainbow Tel Aviv דווח סביב כ-82,000 ₪ למ\"ר, ודירת 100 מ\"ר עשויה להגיע לכ-8 מיליון ₪. בנוסף דווח כי מכרזי קרקע שיקפו מעל 3 מיליון ₪ קרקע ליחידה, וכן דווחו עסקאות יוקרה של 14 מיליון ₪ ומעלה.",
+   "new": "שייכים לרף הגבוה של שוק המגורים בישראל. לפי סקר דוחות היזמים מאפריל 2026, ממוצע כ-1,280 הדירות שנמכרו עד אז ברובע היה כ-83,000 ₪ למ\"ר, ודירת 4 חדרים נמכרה בממוצע בכ-9.45 מיליון ₪. ממוצעי המכירות של הפרויקטים במתחם אשכול ב-2025 נעו בין כ-63,400 לכ-82,600 ₪ למ\"ר כולל מע\"מ, וב-2026 רוב הפרויקטים ברובע מוכרים בכ-70,000 ₪ למ\"ר. ב-Rainbow Tel Aviv, ממוצע כל הדירות שנמכרו עד מרץ 2026 היה כ-81,800 ₪ למ\"ר. במחירים האלה דירת 100 מ\"ר עולה כ-7 עד 8.3 מיליון ₪. מחיר הקרקע במכרזים הגיע ב-2022 לכ-3.3 מיליון ₪ ליחידת דיור בממוצע, ובמכרזי פברואר 2025 ירד לכ-1.7 עד 2.2 מיליון ₪. בקצה היוקרה נרשמו עסקאות של 14 מיליון ₪ ומעלה, ובהן העסקה הגדולה שפורסמה ברובע: דירה של כ-390 מ\"ר בקומה 38, שנמכרה בדצמבר 2025 ביותר מ-42 מיליון ₪.",
+   "source_keys": [
+    "NC2604",
+    "ICE1904",
+    "ICE2105",
+    "ICE0606",
+    "BZ2605",
+    "ICE2502",
+    "BZ2502",
+    "NC2502T",
+    "GL2410",
+    "BZ2512",
+    "NC2604F",
+    "CALC"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "audit_ids": [
+    "A-16",
+    "A-17",
+    "A-18",
+    "A-19",
+    "A-20"
+   ],
+   "why": "Audit A-16 to A-20: 'Eshkol 70,000-80,000' has no source (the 2025 project averages in Eshkol are 63,400-82,600 incl. VAT; most projects about 70,000 in 2026); Rainbow 'about 82,000' is consistent (81,782 to 3.2026) and is aligned to the PriceGuide's 81,800 with its date; '100 m2 = 8M' was derived from the unsourced 80,000 and becomes the PriceGuide calculator's 7 to 8.3M (CALC 100 x 70,000-83,000); 'land over 3M per unit' was true only at the 2022 peak (3.3M) and fell to 1.7-2.2M in February 2025; '14M and up' is consistent (10.2024) and gets the record deal (12.2025). Also fixes the stray '., ' left by an earlier source-name removal. Same facts as the prices page.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 10,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "מחירים (טבלה)",
+   "old": "<td dir=\"rtl\">כ-70,000 עד 80,000 ₪ למ\"ר</td>",
+   "new": "<td dir=\"rtl\">ממוצעי הפרויקטים ב-2025: כ-63,400 עד כ-82,600 ₪ למ\"ר כולל מע\"מ; ב-2026 רוב הפרויקטים ברובע בכ-70,000 ₪ למ\"ר</td>",
+   "source_keys": [
+    "NC2604",
+    "ICE1904",
+    "ICE2105",
+    "ICE0606"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "audit_ids": [
+    "A-16"
+   ],
+   "why": "Audit A-16, the Eshkol row.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 11,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "מחירים (טבלה)",
+   "old": "<td dir=\"rtl\">ממוצע מדווח סביב כ-82,000 ₪ למ\"ר</td>",
+   "new": "<td dir=\"rtl\">כ-81,800 ₪ למ\"ר, ממוצע כל הדירות שנמכרו עד מרץ 2026</td>",
+   "source_keys": [
+    "BZ2605"
+   ],
+   "audit_verdict": "CONSISTENT+DATE",
+   "audit_ids": [
+    "A-17"
+   ],
+   "why": "Audit A-17: 81,782 to the end of Q1 2026; aligned to the PriceGuide row and dated.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 12,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "מחירים (טבלה)",
+   "old": "<td dir=\"rtl\">כ-8 מיליון ₪ לפי חישוב מחיר למ\"ר מדווח</td>",
+   "new": "<td dir=\"rtl\">כ-7 עד 8.3 מיליון ₪ לפי חישוב (100 מ\"ר כפול 70,000 עד 83,000 ₪ למ\"ר)</td>",
+   "source_keys": [
+    "ICE2105",
+    "ICE0606",
+    "NC2604",
+    "CALC"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "audit_ids": [
+    "A-18"
+   ],
+   "why": "Audit A-18: the 8M was 100 x the unsourced 80,000. The new cell shows the calculation, as the PriceGuide calculator does.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 13,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "מחירים (טבלה)",
+   "old": "<td dir=\"rtl\">מעל 3 מיליון ₪ קרקע ליחידה לפי דיווחים על מכרזים</td>",
+   "new": "<td dir=\"rtl\">כ-3.3 מיליון ₪ ליחידה בממוצע במכרזי 2022; כ-1.7 עד 2.2 מיליון ₪ ליחידה במכרזי פברואר 2025</td>",
+   "source_keys": [
+    "ICE2502",
+    "BZ2502",
+    "NC2502T"
+   ],
+   "audit_verdict": "STALE",
+   "audit_ids": [
+    "A-19"
+   ],
+   "why": "Audit A-19: 'over 3M' describes the 2021-2022 tenders only; the February 2025 results reflect 1.7-2.2M per unit.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 14,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "מחירים (טבלה)",
+   "old": "<td dir=\"rtl\">דווחו עסקאות של 14 מיליון ₪ ומעלה</td>",
+   "new": "<td dir=\"rtl\">עסקאות של 14 מיליון ₪ ומעלה; העסקה הגדולה שפורסמה: יותר מ-42 מיליון ₪ (דצמבר 2025)</td>",
+   "source_keys": [
+    "GL2410",
+    "BZ2512",
+    "NC2604F"
+   ],
+   "audit_verdict": "CONSISTENT+DATE",
+   "audit_ids": [
+    "A-20"
+   ],
+   "why": "Audit A-20: consistent; the record deal and its date are added.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 15,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "השקעה בשדה דב",
+   "old": "כאשר דירות נמכרות ברמות של כ-70,000 עד 80,000 ₪ למ\"ר במתחם אשכול, וכאשר מחיר ממוצע מדווח בפרויקט מסוים עומד סביב כ-82,000 ₪ למ\"ר,",
+   "new": "כאשר ב-2026 רוב הפרויקטים ברובע מוכרים בכ-70,000 ₪ למ\"ר, וכאשר ממוצע הדירות שנמכרו ברובע עד אפריל 2026 היה כ-83,000 ₪ למ\"ר,",
+   "source_keys": [
+    "ICE2105",
+    "ICE0606",
+    "NC2604"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "audit_ids": [
+    "A-16",
+    "A-17"
+   ],
+   "why": "Audit A-16/A-17 in the investment section.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 16,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "דיור בר-השגה ודיור מיוחד",
+   "old": "התוכנית כוללת כ-2,400 יחידות דיור בר-השגה במחיר מופחת וכ-4,500 עד 6,900 יחידות דיור מיוחד, הכוללות בין היתר מעונות סטודנטים, דיור מוגן ודיור להשכרה.",
+   "new": "לפי התוכנית שאושרה ב-2020, מתוך 16,000 הדירות כ-2,400 יועדו לדיור בר-השגה במחיר מופחת וכ-4,500 לדיור מיוחד, הכולל בין היתר מעונות סטודנטים, דיור מוגן ודיור להשכרה.",
+   "source_keys": [
+    "NC2003"
+   ],
+   "audit_verdict": "CONFLICT",
+   "audit_ids": [
+    "A-09",
+    "A-10"
+   ],
+   "why": "Audit A-09/A-10 in the affordable-housing section.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 17,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "שאלות נפוצות: איפה נמצא",
+   "old": "הוא משתרע לאורך חוף הים, מנמל תל אביב בדרום ועד גבול העיר בצפון, ומהים במערב ועד המשך רחוב אבן גבירול במזרח.",
+   "new": "הוא משתרע על כ-1,300 דונם לאורך חוף הים, בין שכונת צוקי אביב ורחוב פרופס בצפון, נופי ים, תכנית ל' ורחוב לוי אשכול במזרח, כוכב הצפון, מתחם רדינג ורחוב ש\"י עגנון בדרום, והים במערב.",
+   "source_keys": [
+    "TLVSD",
+    "NC2003",
+    "GIS528"
+   ],
+   "audit_verdict": "CONFLICT",
+   "audit_ids": [
+    "A-05",
+    "A-06"
+   ],
+   "why": "Audit A-05/A-06 in the FAQ answer (same facts as edit 3).",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 18,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "שאלות נפוצות: כמה עולה",
+   "old": ", מחירי דירות במתחם אשכול מוערכים בכ-70,000 עד 80,000 ₪ למ\"ר, מחיר ממוצע מדווח בפרויקט Rainbow Tel Aviv עומד סביב כ-82,000 ₪ למ\"ר, ודירת 100 מ\"ר עשויה להגיע לכ-8 מיליון ₪.",
+   "new": "לפי סקר דוחות היזמים מאפריל 2026, ממוצע הדירות שנמכרו ברובע היה כ-83,000 ₪ למ\"ר, ודירת 4 חדרים נמכרה בממוצע בכ-9.45 מיליון ₪. ב-2026 רוב הפרויקטים ברובע מוכרים בכ-70,000 ₪ למ\"ר, ובמחירים האלה דירת 100 מ\"ר עולה כ-7 עד 8.3 מיליון ₪.",
+   "source_keys": [
+    "NC2604",
+    "ICE2105",
+    "ICE0606",
+    "CALC"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "audit_ids": [
+    "A-16",
+    "A-17",
+    "A-18"
+   ],
+   "why": "Audit A-16 to A-18 in the FAQ answer (same facts as edit 9); also removes the stray leading comma.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 19,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "שאלות נפוצות: דיור בר-השגה",
+   "old": "כן. התוכנית כוללת כ-2,400 יחידות דיור בר-השגה במחיר מופחת, וכן כ-4,500 עד 6,900 יחידות דיור מיוחד כגון מעונות סטודנטים, דיור מוגן ודיור להשכרה.",
+   "new": "כן. לפי התוכנית שאושרה ב-2020, כ-2,400 מהדירות ברובע יועדו לדיור בר-השגה במחיר מופחת, וכ-4,500 לדיור מיוחד כגון מעונות סטודנטים, דיור מוגן ודיור להשכרה.",
+   "source_keys": [
+    "NC2003"
+   ],
+   "audit_verdict": "CONFLICT",
+   "audit_ids": [
+    "A-09",
+    "A-10"
+   ],
+   "why": "Audit A-10 in the FAQ answer.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 20,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "שאלות נפוצות: דמי ניהול",
+   "old": "בעלות הבעלות., גובה דמי הניהול בכל פרויקט. יש לבקש אומדן כתוב,",
+   "new": "בעלות הבעלות. גובה דמי הניהול בכל פרויקט לא פורסם בצורה אחידה, ולכן יש לבקש אומדן כתוב,",
+   "source_keys": [
+    "THIS"
+   ],
+   "audit_verdict": "TEXT",
+   "audit_ids": [
+    "A-21"
+   ],
+   "why": "Not a number: a broken sentence left by an earlier source-name removal ('., גובה דמי הניהול בכל פרויקט.'). No source publishes the management fees of the projects, so the sentence says so.",
+   "optional": true,
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 21,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "תכנון הרובע",
+   "old": "תכנית המתאר לרובע אושרה בשנת 2020, ומתחם אשכול בדרום קדם לה; תכניות מפורטות למרכז ולצפון קיבלו תוקף בשנים האחרונות — ועדיין יש לבדוק כל מגרש, מכרז ותשתית בנפרד.",
+   "new": "תכנית המתאר לרובע קיבלה תוקף באוגוסט 2020, התכנית המפורטת למתחם אשכול במאי 2021, ותכניות מרכז הרובע וצפון הרובע ב-2025. ועדיין יש לבדוק כל מגרש, מכרז ותשתית בנפרד.",
+   "source_keys": [
+    "GIS528",
+    "TLVSD"
+   ],
+   "audit_verdict": "CONFLICT",
+   "audit_ids": [
+    "A-22"
+   ],
+   "why": "Audit A-22: 'Eshkol preceded the master plan' conflicts with the dates: master plan in force 9.8.2020, Eshkol (TAMAL/3001) 20.5.2021, Centre (TA/1/4444) 13.2.2025, North (TA/2/4444) 8.6.2025 (city GIS). Also removes an em dash.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 22,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "תכנון הרובע (סגנון)",
+   "old": "אינם אותו שלב ואינם אותה תכנית — מרחק קצר על המפה",
+   "new": "אינם אותו שלב ואינם אותה תכנית, ומרחק קצר על המפה",
+   "source_keys": [
+    "THIS"
+   ],
+   "audit_verdict": "STYLE",
+   "why": "Not a number: em dash removed (language law; the same gate the translations pass).",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 23,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "תכנון הרובע (סגנון)",
+   "old": "עוד לפני שכל התכניות המפורטות הושלמו — כדי למנוע",
+   "new": "עוד לפני שכל התכניות המפורטות הושלמו, כדי למנוע",
+   "source_keys": [
+    "THIS"
+   ],
+   "audit_verdict": "STYLE",
+   "why": "Em dash removed.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 24,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "תכנון הרובע (סגנון)",
+   "old": "ולרשת הליכה — אך הקרבה לקו",
+   "new": "ולרשת הליכה, אך הקרבה לקו",
+   "source_keys": [
+    "THIS"
+   ],
+   "audit_verdict": "STYLE",
+   "why": "Em dash removed.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 25,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "תכנון הרובע (סגנון)",
+   "old": "שמות מסחריים משתנים — מספרי המגרש",
+   "new": "שמות מסחריים משתנים, ומספרי המגרש",
+   "source_keys": [
+    "THIS"
+   ],
+   "audit_verdict": "STYLE",
+   "why": "Em dash removed.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 26,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "תכנון הרובע (סגנון)",
+   "old": "מחפשים רצף מסמכים — מצגת,",
+   "new": "מחפשים רצף מסמכים: מצגת,",
+   "source_keys": [
+    "THIS"
+   ],
+   "audit_verdict": "STYLE",
+   "why": "Em dash removed.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 27,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "תכנון הרובע (גבול הדיוק)",
+   "old": "הנתונים נבדקו מול המקורות ב-18.8.2026 — במחלוקת, המסמך הרשמי גובר.",
+   "new": "הנתונים נבדקו מול המקורות ב-7.10.2026. במחלוקת, המסמך הרשמי גובר.",
+   "source_keys": [
+    "THIS"
+   ],
+   "audit_verdict": "DATE",
+   "audit_ids": [
+    "A-23"
+   ],
+   "why": "The checked-against-sources date follows this audit; em dash removed.",
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 28,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "הפרויקטים בשיווק (טבלה)",
+   "old": "<td dir=\"rtl\">מגדל יוקרה על אחת הקרקעות היקרות בישראל</td>",
+   "new": "<td dir=\"rtl\">מגדל יוקרה בן 45 קומות ושלושה בנייני בוטיק בני 9 קומות, 350 דירות, על אחת הקרקעות היקרות בישראל</td>",
+   "source_keys": [
+    "AMS",
+    "NC2507",
+    "NC2502T"
+   ],
+   "audit_verdict": "ADDED",
+   "why": "Optional: the FIRST card of the area map on the same page says the same.",
+   "optional": true,
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 29,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "הפרויקטים בשיווק (טבלה)",
+   "old": "<td dir=\"rtl\">פרויקט מגורים ברובע שדה דב עם תמהיל דירות ומעטפת שירותים</td>",
+   "new": "<td dir=\"rtl\">406 דירות בארבעה בניינים, ובהם מגדל בן 35 קומות, עם תמהיל דירות ומעטפת שירותים</td>",
+   "source_keys": [
+    "AMS"
+   ],
+   "audit_verdict": "ADDED",
+   "why": "Optional: ASHIRA, local committee agenda 23-0007 of 3.5.2023 (as the map card).",
+   "optional": true,
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 30,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "הפרויקטים בשיווק (טבלה)",
+   "old": "<td dir=\"rtl\">פרויקט של י.ח דמרי בתכנון אדריכל רני זיס ובעיצוב פנים Kelly Hoppen</td>",
+   "new": "<td dir=\"rtl\">458 דירות במגדל בן 40 קומות, מגדלון בן 16 קומות ושני בניינים בני 9 קומות, בתכנון אדריכל רני זיס ובעיצוב פנים Kelly Hoppen</td>",
+   "source_keys": [
+    "AMS"
+   ],
+   "audit_verdict": "ADDED",
+   "why": "Optional: DIMRI YAMA, the city's design decision for lot 107 (as the map card).",
+   "optional": true,
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 31,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "הפרויקטים בשיווק (טבלה)",
+   "old": "<td dir=\"rtl\">באוהאוס מודרני ובנייה נמוכה ביחס לסביבת הרובע</td>",
+   "new": "<td dir=\"rtl\">כ-230 דירות, באוהאוס מודרני ובנייה נמוכה ביחס לסביבת הרובע</td>",
+   "source_keys": [
+    "AMS",
+    "NC2604",
+    "ICE2105"
+   ],
+   "audit_verdict": "ADDED",
+   "why": "Optional: ZOHI's unit count (as the map card).",
+   "optional": true,
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 32,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "הפרויקטים בשיווק (טבלה)",
+   "old": "<td dir=\"rtl\">פרויקט מגורים של גינדי החזקות ברובע שדה דב</td>",
+   "new": "<td dir=\"rtl\">708 דירות בשני מגרשים במרכז הרובע, ובהם מגדל בן 45 קומות ושלושה מגדלים בני 20 קומות</td>",
+   "source_keys": [
+    "AMS",
+    "NC2502T"
+   ],
+   "audit_verdict": "ADDED",
+   "why": "Optional: GINDI VOGUE, the local committee's decisions of 21.1.2026 (382 + 326 = 708 units) and the February 2025 tender (two compounds, 708 units).",
+   "optional": true,
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  },
+  {
+   "n": 33,
+   "page_id": 4730,
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "field": "content",
+   "section": "הפרויקטים בשיווק (טבלה)",
+   "old": "<td dir=\"rtl\">פרויקט במתחם אשכול</td>",
+   "new": "<td dir=\"rtl\">337 דירות בארבעה בניינים סביב חצר משותפת, במתחם אשכול</td>",
+   "source_keys": [
+    "AMS"
+   ],
+   "audit_verdict": "ADDED",
+   "why": "Optional: UTOPIA, the city's design discussion for lot 103 (as the map card).",
+   "optional": true,
+   "matches_in_live": 1,
+   "matches_in_raw_backup": 1
+  }
+ ]
+}

@@ -13,7 +13,8 @@
   "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
-  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
+  "Tier 3 under the CEO rule (7.10.2026): listing-site rents left in the body. Apply AFTER tier 1 and tier 2 (both are live on this page), on the live content, in the listed order. ceo_action: replaced = the CBS value (table 4.9, Q2 2026) now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row, column or paragraph gone. Whole elements deleted with their tags (paragraph) carry the tags in 'old'."
  ],
  "claims_summary": {
   "claims": {
@@ -28,9 +29,10 @@
    "UNSOURCED": 50,
    "CONSISTENT": 10
   },
-  "edits": 13,
+  "edits": 20,
   "tier1": 13,
-  "tier2": 0
+  "tier2": 0,
+  "tier3": 7
  },
  "notes": "Not audited as claims (illustrations, not market statements): the 2,300,000 3-room spread illustration (p@43263, reworded in edit 2 as an explicit if-example; official 3-room neighbourhood medians run from 1,696,800 to 2,322,100), the 2,350,000 / 180,000 example (p@46854), the 2,200,000 / 2,550,000 seller example (p@47278), the 150,000-300,000 one-feature gap (p@47609), the yield example 2,000,000 / 5,000 / 60,000 / 3.0% (p@52670), the if-example 5,200 / 2,600,000 / 2.4% (p@53145), the 300-700 / 3,600-8,400 arithmetic (p@53451), the two dated deals repeated in p@55229, the 200,000-500,000 renewal premium (p@58144), renovation 100,000-300,000 and purchase costs 3%-12% in the checks table (rule-of-thumb magnitudes), the 'נניח' offer example (p@60916) and the 1,900,000 seller example (p@61316). The page names its listing and data sites (מדדירות, Realta, Dirobot) and shows its check date (עודכן ונבדק: 2026-06-06), so their rent, per-m2 and count figures are kept; the private-site city average 2,450,000 is replaced everywhere by the official all-apartments median. Unsure: the area table rows are categories (west and sea, centre, south, renewal areas, old interior buildings, new towers), not official neighbourhoods; only 'west' (North-West / South-West) and 'centre' (מרכז העיר) were compared, 'south' was not mapped to Ramat HaNasi, Amidar or Ramat Yosef. The common-size column of the rooms table (35-160 m2) is dropped with the table; sizes are not claims. Official quirks: the 5-room median rose 13% in a year (3,069,800 to 3,468,600) and the 5-room series has no median in 10-12.2024, 4-6.2025 and 10-12.2025; Ramat HaNasi shows 1,696,800 for 3 rooms but 3,003,900 for 4 rooms. Name mapping: 'דרום מערב העיר' = official 'דרום-מערב', 'צפון מערב העיר' = 'צפון-מערב'. Remaining SUSPECT lines, if any, are the individual deals dated March 2026 or the explicit illustrations above.",
  "claims": [
@@ -763,6 +765,169 @@
    "tier": 1,
    "n": 13,
    "raw_risk": []
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": ", ושכירות מבוקשת ממוצעת סביב 5,500 ₪. לפי אתר Realta, שהוא מקור מודעות שכירות, מחיר שכירות ממוצע בעיר הוצג סביב 5,760 ₪ לחודש, ודירות 3 חדרים תוארו כפופולריות במיוחד.",
+   "new": ". לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בבת ים ברבעון השני של 2026 (אפריל עד יוני) היה 4,407 ₪.",
+   "source_keys": [
+    "cbs_rent[בת ים].total.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Opening paragraph: asking-rent average 5,500 and a second ad site's average 5,760 replaced by the CBS average monthly rent in Bat Yam (4,407.4), Q2 2026. 'Three-room flats were described as especially popular' came from the same ad site and has no official figure; it goes. The sentence on the number of sale listings is not a rent figure and stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 14,
+   "raw_risk": [],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the private average rents (asking average 5,500; second source 5,760) and the remark that 3-room flats are popular with the CBS Bat Yam average 4,407 ₪, Q2 2026; the count of sale listings stays",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "לפי נתוני מדדירות, שהם נתוני אתר מתחרה דינמיים ולא מקור רשמי, הוצגו דוגמאות שכירות של כ-4,200 ₪ לדירות 2 חדרים, כ-4,600 ₪ לדירות 3 חדרים, כ-6,600 ₪ לדירות 4 חדרים וכ-8,950 ₪ לדירות 5 חדרים. לפי Realta, מקור מודעות שכירות, שכירות ממוצעת בעיר הוצגה סביב 5,760 ₪ לחודש.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בבת ים ברבעון השני של 2026 (אפריל עד יוני) היה 4,407 ₪ בממוצע לכלל הדירות, ובחלוקה לפי גודל: 3,692 ₪ לדירות של 1 עד 2 חדרים, 4,107 ₪ לדירות של 2.5 עד 3 חדרים, 5,249 ₪ לדירות של 3.5 עד 4 חדרים ו-7,110 ₪ לדירות של 4.5 חדרים ומעלה.",
+   "source_keys": [
+    "cbs_rent[בת ים].total.q2_2026",
+    "cbs_rent[בת ים].1-2.q2_2026",
+    "cbs_rent[בת ים].2.5-3.q2_2026",
+    "cbs_rent[בת ים].3.5-4.q2_2026",
+    "cbs_rent[בת ים].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent section: two ad-site sources (examples by rooms and an average of 5,760) replaced by the CBS average monthly rent in Bat Yam for all flats and by size group, Q2 2026 (4,407.4; 3,692.4; 4,107.4; 5,249.3; 7,110.1).",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 15,
+   "raw_risk": [],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the ad-site examples (2 rooms 4,200; 3 rooms 4,600; 4 rooms 6,600; 5 rooms 8,950) and the second source average 5,760 with the CBS Bat Yam averages for all flats and by size group, Q2 2026",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"><thead><tr><th dir=\"rtl\">סוג דירה</th><th dir=\"rtl\">שכירות חודשית לבדיקת שוק</th><th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th><th dir=\"rtl\">מה לבדוק מעבר למספר</th></tr></thead><tbody><tr><td dir=\"rtl\">2 חדרים</td><td dir=\"rtl\">3,800-4,800 ₪</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">ביקוש שוכרים, קומה, מעלית, מצב הדירה</td></tr><tr><td dir=\"rtl\">3 חדרים</td><td dir=\"rtl\">4,300-5,600 ₪</td><td dir=\"rtl\">1,823,700 ₪</td><td dir=\"rtl\">שטח אמיתי, קרבה לתחבורה, צורך בשיפוץ</td></tr><tr><td dir=\"rtl\">4 חדרים</td><td dir=\"rtl\">5,800-7,200 ₪</td><td dir=\"rtl\">2,692,600 ₪</td><td dir=\"rtl\">משפחות, חניה, ממ״ד, מוסדות חינוך</td></tr><tr><td dir=\"rtl\">5 חדרים</td><td dir=\"rtl\">7,200-9,500 ₪</td><td dir=\"rtl\">3,468,600 ₪</td><td dir=\"rtl\">דמי ניהול, גודל מרפסת, תחרות מדירות חדשות</td></tr></tbody></table>",
+   "new": "<table dir=\"rtl\"><thead dir=\"rtl\"><tr dir=\"rtl\"><th dir=\"rtl\">סוג דירה</th><th dir=\"rtl\">שכר דירה חודשי ממוצע, אפריל עד יוני 2026 (הלמ״ס)</th><th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th><th dir=\"rtl\">מה לבדוק מעבר למספר</th></tr></thead><tbody dir=\"rtl\"><tr dir=\"rtl\"><td dir=\"rtl\">2 חדרים</td><td dir=\"rtl\">3,692 ₪ (דירות של 1 עד 2 חדרים)</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">ביקוש שוכרים, קומה, מעלית, מצב הדירה</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">3 חדרים</td><td dir=\"rtl\">4,107 ₪ (דירות של 2.5 עד 3 חדרים)</td><td dir=\"rtl\">1,823,700 ₪</td><td dir=\"rtl\">שטח אמיתי, קרבה לתחבורה, צורך בשיפוץ</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">4 חדרים</td><td dir=\"rtl\">5,249 ₪ (דירות של 3.5 עד 4 חדרים)</td><td dir=\"rtl\">2,692,600 ₪</td><td dir=\"rtl\">משפחות, חניה, ממ״ד, מוסדות חינוך</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">5 חדרים</td><td dir=\"rtl\">7,110 ₪ (דירות של 4.5 חדרים ומעלה)</td><td dir=\"rtl\">3,468,600 ₪</td><td dir=\"rtl\">דמי ניהול, גודל מרפסת, תחרות מדירות חדשות</td></tr></tbody></table>",
+   "source_keys": [
+    "cbs_rent[בת ים].1-2.q2_2026",
+    "cbs_rent[בת ים].2.5-3.q2_2026",
+    "cbs_rent[בת ים].3.5-4.q2_2026",
+    "cbs_rent[בת ים].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent column of the price table (ranges from private data, no date) replaced by the CBS average monthly rent in Bat Yam, Q2 2026. The rows keep their room labels (the neighbouring column is the Tax Authority median by exact room count), so each cell names its CBS size group. Header names the CBS and the quarter; the other columns are unchanged.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 16,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">שכירות חודשית לבדיקת שוק</th>",
+   "raw_risk": [
+    "straight double quote",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the rent ranges (2 rooms 3,800-4,800; 3 rooms 4,300-5,600; 4 rooms 5,800-7,200; 5 rooms 7,200-9,500) with the CBS Bat Yam averages by size group, Q2 2026; each cell names its group because the sale-median column beside it is by exact room count",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "לדוגמה, דירה שנרכשת ב-2,000,000 ₪ ומושכרת ב-5,000 ₪ לחודש מייצרת 60,000 ₪ בשנה לפני הוצאות, כלומר כ-3.0% ברוטו.",
+   "new": "לדוגמה, דירה שנרכשת ב-2,000,000 ₪ ומושכרת ב-4,107 ₪ לחודש, שכר הדירה הממוצע של הלמ״ס לדירות של 2.5 עד 3 חדרים בבת ים ברבעון השני של 2026, מייצרת שכירות שנתית, ומחלקים אותה במחיר הקנייה כדי לקבל תשואה ברוטו, לפני הוצאות.",
+   "source_keys": [
+    "cbs_rent[בת ים].2.5-3.q2_2026",
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Worked example: the round rent 5,000 sat inside the page's own 3-4 room ad ranges; it becomes the CBS 2.5-3 rooms average (4,107.4). The annual rent (60,000) and the yield (3.0%) were derived from it and are removed, not recomputed (no new arithmetic). The purchase price 2,000,000 is the example's own and stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 17,
+   "raw_risk": [],
+   "kept_numbers": [
+    "2,000,000"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the example rent 5,000 with the CBS 2.5-3 rooms average for Bat Yam (4,107 ₪, Q2 2026); dropped the annual rent 60,000 and the yield 3.0% that depended on it (no new arithmetic)",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "אם דירה בת 3 חדרים יכולה להניב 5,200 ₪ בחודש, והמחיר המבוקש הוא 2,600,000 ₪, הקונה עשוי לטעון שהתשואה הגסה נמוכה מכ-2.4%.",
+   "new": "אם דירה בת 3 חדרים יכולה להניב 4,107 ₪ בחודש, שכר הדירה הממוצע של הלמ״ס לדירות של 2.5 עד 3 חדרים בבת ים ברבעון השני של 2026, והמחיר המבוקש הוא 2,600,000 ₪, הקונה עשוי לטעון שהתשואה הגסה נמוכה.",
+   "source_keys": [
+    "cbs_rent[בת ים].2.5-3.q2_2026",
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Second example: the rent 5,200 becomes the CBS 2.5-3 rooms average (4,107.4); the yield 'about 2.4%' came from 5,200 and is removed, the sentence keeps its point (the buyer may argue the gross yield is low).",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 18,
+   "raw_risk": [],
+   "kept_numbers": [
+    "2,600,000"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the example rent 5,200 with the CBS 2.5-3 rooms average for Bat Yam (4,107 ₪, Q2 2026); dropped the yield 2.4% that depended on it",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "פער של 300-700 ₪ בחודש יכול לשנות את התמונה השנתית ב-3,600-8,400 ₪.",
+   "new": "פער של כמה מאות שקלים בחודש יכול לשנות את התמונה השנתית באלפי שקלים.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "A typical asking-vs-closed gap of 300-700 per month (3,600-8,400 per year) has no official source; the numbers go and the arithmetic point stays in words.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 19,
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the unsourced monthly gap 300-700 and its annual 3,600-8,400; the sentence says it in words"
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "לפי נתוני מדדירות, שהם נתוני אתר מתחרה דינמיים לצורכי השוואה ולא מקור רשמי, שכירות מבוקשת ממוצעת הוצגה סביב 5,500 ₪. לפי Realta, מקור מודעות שכירות, שכירות ממוצעת הוצגה סביב 5,760 ₪.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בבת ים ברבעון השני של 2026 (אפריל עד יוני) היה 4,407 ₪ בממוצע לכלל הדירות, ובחלוקה לפי גודל: 3,692 ₪ לדירות של 1 עד 2 חדרים, 4,107 ₪ לדירות של 2.5 עד 3 חדרים, 5,249 ₪ לדירות של 3.5 עד 4 חדרים ו-7,110 ₪ לדירות של 4.5 חדרים ומעלה.",
+   "source_keys": [
+    "cbs_rent[בת ים].total.q2_2026",
+    "cbs_rent[בת ים].1-2.q2_2026",
+    "cbs_rent[בת ים].2.5-3.q2_2026",
+    "cbs_rent[בת ים].3.5-4.q2_2026",
+    "cbs_rent[בת ים].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ 'average rent in Bat Yam': two ad-site averages replaced by the CBS average (4,407.4) and the size-group averages, Q2 2026. The sentence that follows (separate 2, 3, 4 and 5 rooms in a practical check) now follows the breakdown.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 20,
+   "raw_risk": [],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the FAQ asking averages (5,500 and 5,760) with the CBS Bat Yam averages for all flats and by size group, Q2 2026",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
   }
  ],
  "live_recheck": {
@@ -772,5 +937,14 @@
   "price_list_on_page": true,
   "body_outside_list_identical_to_audited_copy": "yes",
   "dry_run": "13 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ },
+ "tier3_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 20:28:01",
+  "modified": "2026-10-07T14:37:07",
+  "result": "fetched 7.10.2026 with tier 1 and tier 2 live; every tier-3 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 7,
+  "replaced": 6,
+  "removed": 1,
+  "deleted": 0
  }
 }

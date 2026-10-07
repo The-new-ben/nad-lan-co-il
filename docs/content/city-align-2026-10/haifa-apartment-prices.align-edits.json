@@ -14,7 +14,8 @@
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
   "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
-  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note.",
+  "Tier 3 under the CEO rule (7.10.2026): listing-site rents left in the body. Apply AFTER tier 1 and tier 2 (both are live on this page), on the live content, in the listed order. ceo_action: replaced = the CBS value (table 4.9, Q2 2026) now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row, column or paragraph gone. Whole elements deleted with their tags (paragraph) carry the tags in 'old'."
  ],
  "claims_summary": {
   "claims": {
@@ -29,9 +30,10 @@
    "UNSOURCED": 88,
    "CONSISTENT": 9
   },
-  "edits": 25,
+  "edits": 26,
   "tier1": 19,
-  "tier2": 6
+  "tier2": 6,
+  "tier3": 1
  },
  "notes": "Not audited as claims (explicit examples and hypotheticals, kept): 5 rooms at 2,650,000 (p@46389, buyer question); two 3-room flats 150,000 apart (tr@52249); the rent if-example 1,250,000 / 3,820 / 2,700 / 5,000 (p@54787 after edit 11); the per-m2 if-examples 1,210,000 / 1,830,000 / 2,730,000 (p@58553, they reuse the old category averages as worked examples); listing 1,850,000 and if-deals 1,700,000-1,760,000 (p@60086); 1,650,000 + 250,000 and 1,950,000 to 2,050,000 (p@63975); 1,750,000 / 2,300,000 (p@67099); the Neve Shaanan 3-room buyer example 1,320,000 / 1,180,000-1,260,000 (p@68485, no official 3-room median for Neve Shaanan); the seller example's if-deals 1,700,000-1,820,000 (p@68809); the Givat Zemer 5-room owner example 2,900,000 / 2,650,000-2,850,000 (p@69145, no official median for Givat Zemer); the scenario table tr@69646..70248 that sums up these examples; 10% / 15% (p@72367). The remaining SUSPECT lines of check.py are all among these examples. Rent figures on this page are labelled only 'estimated' with no named source, so they are tier-2 edits (rent columns removed, check notes kept); the lead and the first table drop rent inside tier-1 edits. Sales counts (981 / 214 / 4,288 / 85,000) are kept: dated periods and 'published market data', not prices; unsure whether that counts as a named kind of source. Official quirks: 4 rooms has no 10-12.2025 median and 5 rooms none for 7-9.2025; the all-rooms median rose 10.1% in a year while 3/4/5 rooms were flat or fell (deal mix). Name mapping: page 'קריית חיים מזרחית' = official 'קרית חיים מזרחית'. Official medians exist also for יזרעאליה and נווה דוד, which the page does not discuss; not added. Kiryat Eliezer, Bat Galim, Denia and Hod HaCarmel, Givat Zemer are not in the city file: the city file keeps only 8 neighbourhoods; the official files DO hold 1-3.2026 medians for some of the others (checked 7.10.2026), so these rows say 'לא מוצג במחירון' (not shown in the page's list), never 'לא פורסם'.",
  "claims": [
@@ -1203,6 +1205,27 @@
    ],
    "ceo_action": "removed",
    "ceo_note": "removed the renovation cost range 150,000-400,000 (no official source); caution sentence kept"
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "אם דירה דומה מושכרת רק ב-2,700 ש\"ח, המחיר המבוקש צריך לקבל הסבר נוסף. אם היא מושכרת ב-5,000 ש\"ח, יש לבדוק",
+   "new": "אם דירה דומה מושכרת בסכום נמוך משמעותית מהממוצע, המחיר המבוקש צריך לקבל הסבר נוסף. אם היא מושכרת בסכום גבוה משמעותית ממנו, יש לבדוק",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Left over after tier 2: two invented comparison rents (2,700 'much lower', 5,000 'much higher') that sit around the CBS figure in the same example. They are not official and have no counterpart; the numbers go and the logic (a rent far below or far above the average needs an explanation) stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 26,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the two illustrative rents 2,700 and 5,000 from the example (the CBS averages 3,405 and 3,119 stay in the same paragraph); the two cases are stated in words"
   }
  ],
  "live_recheck": {
@@ -1221,5 +1244,14 @@
   "replaced": 3,
   "removed": 2,
   "deleted": 1
+ },
+ "tier3_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 20:28:04",
+  "modified": "2026-10-07T15:07:44",
+  "result": "fetched 7.10.2026 with tier 1 and tier 2 live; every tier-3 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 1,
+  "replaced": 0,
+  "removed": 1,
+  "deleted": 0
  }
 }

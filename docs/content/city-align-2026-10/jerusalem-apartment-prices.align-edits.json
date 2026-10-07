@@ -14,7 +14,8 @@
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
   "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
-  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note.",
+  "Tier 3 under the CEO rule (7.10.2026): listing-site rents left in the body. Apply AFTER tier 1 and tier 2 (both are live on this page), on the live content, in the listed order. ceo_action: replaced = the CBS value (table 4.9, Q2 2026) now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row, column or paragraph gone. Whole elements deleted with their tags (paragraph) carry the tags in 'old'."
  ],
  "claims_summary": {
   "claims": {
@@ -29,9 +30,10 @@
    "UNSOURCED": 79,
    "CONSISTENT": 6
   },
-  "edits": 17,
+  "edits": 22,
   "tier1": 14,
-  "tier2": 3
+  "tier2": 3,
+  "tier3": 5
  },
  "notes": "No figure in the body conflicted per room count: the 3/4/5-room working ranges are wide enough to hold the official medians. The real conflicts are the city average 2.9M (three places) against the official all-rooms median 2,717,100, and the neighbourhood table: 12 all-rooms averages over thousands of historical deals (e.g. Gila 1,215,394, Neve Yaakov 1,144,649) sit far below the official 1-3.2026 medians by rooms and would contradict the price list directly below the lead. The rooms table and the 3/4/5 FAQ answers are rewritten to the official medians so the body says the same thing as the list (verdict CONSISTENT on those edits). Not audited as claims (illustrations or method, not market statements): the per-m2 arithmetic examples 3,200,000/80 and 2,100,000/70 (p@58456), the 'example deal check' table 2.4M / 3.6M / 5.2M / 1.85M (tr@59069..59593), the offer / listing examples 2,720,000 / 2,850,000 / 3,150,000 / 3,300,000 (p@66081), the 15% size tolerance (tr@65038), months to delivery 12-48 / 3-9 (tr@61176), counts of comparables 3-6 / 5-10, flat sizes in m2, and the population row 1,078,424 (tr@44054, not a price). Rent, per-m2, listing counts, CBS and Bank of Israel figures are outside the official list and are kept where the page names the kind of source and dates it (6.6.2026 check date, May 2026, CBS 12.3.2026, BoI 25.5.2026). The 5,500-8,500 rent range in the lead is kept as a dated rent-check summary; it is consistent with the dated listing table further down (5,684-9,442). Name mapping: 'הר חומה' in the text = official 'חומת שמואל-הר חומה'; 'קריית היובל' = official 'קרית היובל'; 'קטמונים' kept as the official name (the rent table's 'קטמון א-ו' and 'קטמון הישנה' are left untouched). Official quirk: in Pisgat Zeev the 3-room median (1,754,200) is above the 4-room median (1,666,200) in 1-3.2026; shown as published. The 4-room city median fell 9.8% in a year (3,256,800 in 10-12.2025 to 2,882,400). The rooms table keeps the page's size column as a sixth column; it may need horizontal scroll on phones. Headings 'טווח עבודה למחיר דירה' and 'מדד שוק שנבדק | ערך עבודה' are kept (no number).",
  "claims": [
@@ -822,6 +824,128 @@
    "raw_risk": [
     "straight double quote"
    ]
+  },
+  {
+   "page_id": 4575,
+   "url": "https://nad-lan.co.il/jerusalem-apartment-prices/",
+   "field": "content",
+   "old": "בדיקות שכירות רבות מציבות דירות משפחתיות או מרכזיות נפוצות סביב 5,500-8,500 ש\"ח לחודש, ולפעמים יותר בדירות יוקרה, דירות גדולות או בניינים חדשים.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בירושלים ברבעון השני של 2026 (אפריל עד יוני) היה 6,180 ש\"ח לדירות של 3.5 עד 4 חדרים ו-7,748 ש\"ח לדירות של 4.5 חדרים ומעלה.",
+   "source_keys": [
+    "cbs_rent[ירושלים].3.5-4.q2_2026",
+    "cbs_rent[ירושלים].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Lead: 'family or central flats usually rent around 5,500-8,500' (listing checks) replaced by the CBS average monthly rent in Jerusalem for 3.5-4 rooms (6,179.6) and 4.5+ rooms (7,748.2), Q2 2026; the 4.5+ group already includes the large flats the old clause pointed at.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 18,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the listing-site family-flat rent range 5,500-8,500 (and \"more in luxury, large or new flats\") with the CBS Jerusalem averages for 3.5-4 and 4.5+ rooms, Q2 2026: 6,180 / 7,748 ש\"ח",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4575,
+   "url": "https://nad-lan.co.il/jerusalem-apartment-prices/",
+   "field": "content",
+   "old": " ושכירות מבוקשת ממוצעת סביב 7,100 ש\"ח. בדיקות שכירות אזוריות הראו פערים של אלפי שקלים בין שכונות, ולכן יש לבדוק",
+   "new": ". לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בירושלים ברבעון השני של 2026 (אפריל עד יוני) היה 5,347 ש\"ח בממוצע לכלל הדירות. השכירות משתנה בין שכונות, ולכן יש לבדוק",
+   "source_keys": [
+    "cbs_rent[ירושלים].total.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent and price per m2: the asking rent 7,100 (market indices) replaced by the CBS average monthly rent in Jerusalem (5,347.4), Q2 2026. The per-m2 price 39,700 is not a rent figure and stays (tier 1 left it). 'Gaps of thousands of shekels between neighbourhoods' had no official figure behind it; it becomes the hedged 'rent varies between neighbourhoods'.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 19,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the asking-rent average 7,100 with the CBS Jerusalem average 5,347 ש\"ח (Q2 2026); \"gaps of thousands between neighbourhoods\" became \"rent varies between neighbourhoods\"",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4575,
+   "url": "https://nad-lan.co.il/jerusalem-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מדד שוק שנבדק</th>\n<th dir=\"rtl\">ערך עבודה</th>\n<th dir=\"rtl\">איך להשתמש בו</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אוכלוסיית ירושלים בדפי שוק גלויים</td>\n<td dir=\"rtl\">כ-1,078,424 תושבים</td>\n<td dir=\"rtl\">עיר גדולה מאוד עם תתי שווקים רבים, ולכן אין להסתפק בממוצע עירוני.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">חציון מחיר העסקה בעיר, ינואר-מרץ 2026</td>\n<td dir=\"rtl\">2,717,100 ש\"ח, לפי נתוני רשות המסים</td>\n<td dir=\"rtl\">נקודת פתיחה בלבד, לא תשובה לדירה מסוימת.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מחיר ממוצע למ\"ר בדפי שוק</td>\n<td dir=\"rtl\">כ-39,726 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">מתאים לבדיקת סבירות, רק אחרי התאמה לשכונה ולסוג הדירה.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שכירות מבוקשת ממוצעת בדפי שוק</td>\n<td dir=\"rtl\">כ-7,100 ש\"ח לחודש</td>\n<td dir=\"rtl\">עוזר להשוות מחיר רכישה לדמי שכירות מקובלים, אך לא קובע שווי.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מדד שכירות חציוני שפורסם במאי 2026</td>\n<td dir=\"rtl\">כ-6,200 ש\"ח על בסיס 361 מודעות</td>\n<td dir=\"rtl\">משקף מודעות פעילות, לא בהכרח חוזים חתומים.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">היצע שכירות גלוי בדפי שוק</td>\n<td dir=\"rtl\">כ-3,150 מודעות</td>\n<td dir=\"rtl\">מאפשר לבדוק תחרות, זמן פרסום ופער בין דירות דומות.</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מדד שוק שנבדק</th>\n<th dir=\"rtl\">ערך עבודה</th>\n<th dir=\"rtl\">איך להשתמש בו</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אוכלוסיית ירושלים בדפי שוק גלויים</td>\n<td dir=\"rtl\">כ-1,078,424 תושבים</td>\n<td dir=\"rtl\">עיר גדולה מאוד עם תתי שווקים רבים, ולכן אין להסתפק בממוצע עירוני.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">חציון מחיר העסקה בעיר, ינואר-מרץ 2026</td>\n<td dir=\"rtl\">2,717,100 ש\"ח, לפי נתוני רשות המסים</td>\n<td dir=\"rtl\">נקודת פתיחה בלבד, לא תשובה לדירה מסוימת.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מחיר ממוצע למ\"ר בדפי שוק</td>\n<td dir=\"rtl\">כ-39,726 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">מתאים לבדיקת סבירות, רק אחרי התאמה לשכונה ולסוג הדירה.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שכר דירה חודשי ממוצע בירושלים, אפריל עד יוני 2026 (הלמ\"ס)</td>\n<td dir=\"rtl\">5,347 ש\"ח לחודש</td>\n<td dir=\"rtl\">עוזר להשוות מחיר רכישה לדמי שכירות מקובלים, אך לא קובע שווי.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">היצע שכירות גלוי בדפי שוק</td>\n<td dir=\"rtl\">כ-3,150 מודעות</td>\n<td dir=\"rtl\">מאפשר לבדוק תחרות, זמן פרסום ופער בין דירות דומות.</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "cbs_rent[ירושלים].total.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Snapshot table: the row 'asking rent average 7,100' becomes the CBS average monthly rent in Jerusalem (5,347.4), Q2 2026; the row 'median rent published in May 2026, 6,200 on 361 ads' is deleted (the CBS publishes no median rent). The rows on population, official sale median, price per m2 and the number of rent listings are not rent figures and stay word for word.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 20,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">ערך עבודה</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "in the market-snapshot table replaced the asking-rent average 7,100 with the CBS Jerusalem average 5,347 ש\"ח (Q2 2026) and deleted the ad-site median row 6,200 (361 ads); the other rows are untouched",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4575,
+   "url": "https://nad-lan.co.il/jerusalem-apartment-prices/",
+   "field": "content",
+   "old": "לפי דפי שכירות שנבדקו, חציון שכירות סביב מאי 2026 עמד על כ-6,200 ש\"ח לחודש על בסיס 361 מודעות פעילות, ובמקביל הופיעו דמי שכירות ממוצעים סביב 7,100 ש\"ח בדפי שוק רחבים יותר. אלה נתוני מודעות, ולכן יש להשוות אותם לחוזים בפועל כאשר ניתן.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בירושלים ברבעון השני של 2026 (אפריל עד יוני) היה 5,347 ש\"ח בממוצע לכלל הדירות, ובחלוקה לפי גודל: 3,800 ש\"ח לדירות של 1 עד 2 חדרים, 4,890 ש\"ח לדירות של 2.5 עד 3 חדרים, 6,180 ש\"ח לדירות של 3.5 עד 4 חדרים ו-7,748 ש\"ח לדירות של 4.5 חדרים ומעלה. השכירות בפועל משתנה לפי השכונה והדירה, ולכן יש להשוות אותה לחוזים בפועל כאשר ניתן.",
+   "source_keys": [
+    "cbs_rent[ירושלים].total.q2_2026",
+    "cbs_rent[ירושלים].1-2.q2_2026",
+    "cbs_rent[ירושלים].2.5-3.q2_2026",
+    "cbs_rent[ירושלים].3.5-4.q2_2026",
+    "cbs_rent[ירושלים].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent section: ad-site median (6,200 on 361 ads) and wider-market average (7,100) replaced by the CBS average monthly rent in Jerusalem for all flats (5,347.4) and by size group, Q2 2026. 'These are ad data, so compare to actual contracts' becomes 'rent varies by neighbourhood and flat, so compare to actual contracts'.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 21,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the ad-site median 6,200 (361 ads, May 2026) and the average 7,100 with the CBS Jerusalem averages for all flats and by size group, Q2 2026",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4575,
+   "url": "https://nad-lan.co.il/jerusalem-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שכונה או אזור</th>\n<th dir=\"rtl\">דמי שכירות חודשיים שהופיעו בבדיקות שוק</th>\n<th dir=\"rtl\">מה זה אומר לבדיקת מחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית היובל</td>\n<td dir=\"rtl\">כ-5,684 ש\"ח</td>\n<td dir=\"rtl\">מתאים לבדיקת דירות 3-4 חדרים, במיוחד ליד צירי תחבורה והתחדשות.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">גילה</td>\n<td dir=\"rtl\">כ-6,262 ש\"ח</td>\n<td dir=\"rtl\">שוק משפחתי רחב, עם הבדלים בין דירות ותיקות לדירות משודרגות.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נחלאות</td>\n<td dir=\"rtl\">כ-6,334 ש\"ח</td>\n<td dir=\"rtl\">שכירות יכולה להיות מושפעת מדירות קטנות, תיירות ומיקום מרכזי.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">ארנונה ותלפיות</td>\n<td dir=\"rtl\">כ-6,633 ש\"ח</td>\n<td dir=\"rtl\">צריך להפריד בין תלפיות, ארנונה, בנייה ותיקה ובנייה חדשה.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קטמון א-ו</td>\n<td dir=\"rtl\">כ-5,769 ש\"ח</td>\n<td dir=\"rtl\">הבדלים גדולים לפי רחוב, מצב דירה וקירבה לבקעה או למרכז.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז העיר</td>\n<td dir=\"rtl\">כ-6,785 ש\"ח</td>\n<td dir=\"rtl\">דירות קטנות עשויות להעלות מחיר למ\"ר, אך גם לחשוף לרעש ובלאי.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">פסגת זאב</td>\n<td dir=\"rtl\">כ-6,252 ש\"ח</td>\n<td dir=\"rtl\">שוק מגורים משפחתי עם חשיבות לרכבת קלה, חניה ומצב בניין.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בית הכרם</td>\n<td dir=\"rtl\">כ-7,131 ש\"ח</td>\n<td dir=\"rtl\">קרבה לרכבת קלה ולמוסדות חינוך יכולה לתמוך בביקוש יציב.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">ארמון הנציב</td>\n<td dir=\"rtl\">כ-6,574 ש\"ח</td>\n<td dir=\"rtl\">צריך לבדוק נוף, קומה, מעלית ויציאה מהשכונה.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קטמון הישנה</td>\n<td dir=\"rtl\">כ-8,337 ש\"ח</td>\n<td dir=\"rtl\">שכירות גבוהה יותר יכולה לשקף ביקוש למיקום, אופי בנייה ונדירות.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">טלביה</td>\n<td dir=\"rtl\">כ-8,725-9,442 ש\"ח</td>\n<td dir=\"rtl\">דירות יוקרתיות או חריגות מחייבות השוואה נפרדת, לא רק ממוצע.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רוממה</td>\n<td dir=\"rtl\">כ-12,714 ש\"ח במדגם מסוים</td>\n<td dir=\"rtl\">ייתכן שמדגם מושפע מדירות גדולות או חדשות, לכן צריך אימות נוסף.</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שכונה או אזור</th>\n<th dir=\"rtl\">מה זה אומר לבדיקת מחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית היובל</td>\n<td dir=\"rtl\">מתאים לבדיקת דירות 3-4 חדרים, במיוחד ליד צירי תחבורה והתחדשות.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">גילה</td>\n<td dir=\"rtl\">שוק משפחתי רחב, עם הבדלים בין דירות ותיקות לדירות משודרגות.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נחלאות</td>\n<td dir=\"rtl\">שכירות יכולה להיות מושפעת מדירות קטנות, תיירות ומיקום מרכזי.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">ארנונה ותלפיות</td>\n<td dir=\"rtl\">צריך להפריד בין תלפיות, ארנונה, בנייה ותיקה ובנייה חדשה.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קטמון א-ו</td>\n<td dir=\"rtl\">הבדלים גדולים לפי רחוב, מצב דירה וקירבה לבקעה או למרכז.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז העיר</td>\n<td dir=\"rtl\">דירות קטנות עשויות להעלות מחיר למ\"ר, אך גם לחשוף לרעש ובלאי.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">פסגת זאב</td>\n<td dir=\"rtl\">שוק מגורים משפחתי עם חשיבות לרכבת קלה, חניה ומצב בניין.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בית הכרם</td>\n<td dir=\"rtl\">קרבה לרכבת קלה ולמוסדות חינוך יכולה לתמוך בביקוש יציב.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">ארמון הנציב</td>\n<td dir=\"rtl\">צריך לבדוק נוף, קומה, מעלית ויציאה מהשכונה.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קטמון הישנה</td>\n<td dir=\"rtl\">יש לבדוק ביקוש למיקום, אופי בנייה ונדירות.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">טלביה</td>\n<td dir=\"rtl\">דירות יוקרתיות או חריגות מחייבות השוואה נפרדת, לא רק ממוצע.</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Neighbourhood rents from ad pages have no official counterpart (the CBS has no neighbourhood rent). The rent column goes. Romema ('the sample may be affected by large or new flats') only commented on the rent sample and has no content without it. Old Katamon's note ('higher rent can reflect demand for location, building character and rarity') was a level claim; it becomes the check 'verify demand for location, building character and rarity'. The other eleven notes are advice or hedged and stay word for word.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 22,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">דמי שכירות חודשיים שהופיעו בבדיקות שוק</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the neighbourhood rent column (12 values 5,684-12,714 ש\"ח) and the Romema row, whose note was only about the rent sample; the Old Katamon note \"higher rent can reflect...\" became a check; the other notes stay"
   }
  ],
  "live_recheck": {
@@ -840,5 +964,14 @@
   "replaced": 0,
   "removed": 3,
   "deleted": 0
+ },
+ "tier3_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 20:28:06",
+  "modified": "2026-10-07T15:07:56",
+  "result": "fetched 7.10.2026 with tier 1 and tier 2 live; every tier-3 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 5,
+  "replaced": 4,
+  "removed": 0,
+  "deleted": 1
  }
 }

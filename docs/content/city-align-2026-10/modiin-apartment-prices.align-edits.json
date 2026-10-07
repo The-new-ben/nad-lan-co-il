@@ -13,7 +13,8 @@
   "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
-  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
+  "Tier 3 under the CEO rule (7.10.2026): listing-site rents left in the body. Apply AFTER tier 1 and tier 2 (both are live on this page), on the live content, in the listed order. ceo_action: replaced = the CBS value (table 4.9, Q2 2026) now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row, column or paragraph gone. Whole elements deleted with their tags (paragraph) carry the tags in 'old'."
  ],
  "claims_summary": {
   "claims": {
@@ -28,9 +29,10 @@
    "UNSOURCED": 100,
    "CONSISTENT": 11
   },
-  "edits": 15,
+  "edits": 23,
   "tier1": 15,
-  "tier2": 0
+  "tier2": 0,
+  "tier3": 8
  },
  "notes": "The official list is not on this page yet; these edits assume it will be added. The page names dated sources for most figures (two portals and a data site read 5.6.2026, the municipal yearbook June 2026, Tax Authority deals of 2023 via a portal). Per the brief, every city-level 3/4/5-room figure was compared with the official median whatever its label: the asking 3-room 2,650,000 vs the official 2,039,500 (10-12.2025, the latest published 3-room quarter) is the clearest conflict; the 4-room asking 3,190,000 vs 2,559,800 and the city averages 2,701,971 / 3,350,000 vs 2,512,500 follow. 2023 neighbourhood deal averages are STALE. Named and dated non-sale figures are kept: per m2, rents, yield 2.9%, listing counts, the municipal yearbook neighbourhood averages (all rooms), the 2-room and 6+ asking prices (labelled as asking), and the five March 2026 deals. Not audited as claims: the if-example 'אם דירת 4 חדרים מוצעת ב-3.45 מיליון שקל' (p@10651), the financing illustration 'פער של 150,000 עד 300,000 שקל' (p@24899), sizes in m2, counts of comparables (5 עד 10). Remaining check.py SUSPECTs (6) are the individual deals of 3-12.3.2026 (tr@17595..18414 and their recap p@18638), which are dated single deals and stay as they are. Official quirks: no 3-room median was published for 1-3.2026 (nor 1-3.2025), so 3 rooms is shown for 10-12.2025 against 10-12.2024; the city medians fell sharply (4 rooms 2,748,200 in 10-12.2025 to 2,559,800 in 1-3.2026, -15.9% in a year; all rooms -18.5% in a year and about -15% in one quarter), worth a second look before publishing. Name mapping: 'כרמים' on the page = official 'הכרמים'; 'הנחלים', 'הפרחים', 'אבני חן', 'הנביאים', 'המגינים' match; 'משואה' (4 rooms 2,915,000) is not named on the page and is not added. Unsure: (a) the 2-room asking price 2,700,000 is kept as a dated asking figure although it sits above the official 3-room deal median; it could be dropped; (b) the neighbourhood table adds rows for הנביאים and המגינים with generic check notes written new; (c) the purchase/rent table loses its gross-yield column (derived from the old prices) instead of recomputing yields.",
  "claims": [
@@ -1132,6 +1134,182 @@
    "raw_risk": [
     "straight double quote"
    ]
+  },
+  {
+   "page_id": 4555,
+   "url": "https://nad-lan.co.il/modiin-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מדד מהיר</th>\n<th dir=\"rtl\">נתון שוק</th>\n<th dir=\"rtl\">מקור ותאריך</th>\n<th dir=\"rtl\">איך לקרוא את המספר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">חציון מחיר העסקה, כל הדירות</td>\n<td dir=\"rtl\">2,512,500 שקל</td>\n<td dir=\"rtl\">רשות המסים, ינואר-מרץ 2026</td>\n<td dir=\"rtl\">חציון עירוני, לא מחיר לשכונה או לדירה מסוימת</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מחיר למ\"ר</td>\n<td dir=\"rtl\">27,000 שקל למ\"ר</td>\n<td dir=\"rtl\">דירובוט, נקרא 5.6.2026</td>\n<td dir=\"rtl\">כלי עזר להשוואה בין שטחים שונים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שכר דירה ממוצע</td>\n<td dir=\"rtl\">7,600 שקל</td>\n<td dir=\"rtl\">אתר נתוני נדל\"ן, נקרא 5.6.2026</td>\n<td dir=\"rtl\">מתאים להבנת שוק שכירות כללי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שכר דירה מבוקש ממוצע</td>\n<td dir=\"rtl\">7,200 שקל</td>\n<td dir=\"rtl\">מדדירות, נקרא 5.6.2026</td>\n<td dir=\"rtl\">מבוסס על פרסומי שכירות ולא על כל חוזי השכירות בעיר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">תשואה עירונית ממוצעת</td>\n<td dir=\"rtl\">2.9%</td>\n<td dir=\"rtl\">מדדירות, נקרא 5.6.2026</td>\n<td dir=\"rtl\">מדד כללי בלבד, לא תחליף לחישוב לפי דירה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות למכירה</td>\n<td dir=\"rtl\">470 דירות</td>\n<td dir=\"rtl\">אתר נתוני נדל\"ן, נקרא 5.6.2026</td>\n<td dir=\"rtl\">תמונת היצע באתר מסוים בזמן בדיקה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בתים ודירות למכירה</td>\n<td dir=\"rtl\">1,112 נכסים</td>\n<td dir=\"rtl\">מדדירות, נקרא 5.6.2026</td>\n<td dir=\"rtl\">ספירה רחבה יותר, לכן אינה זהה לספירה של 470 הדירות</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מדד מהיר</th>\n<th dir=\"rtl\">נתון שוק</th>\n<th dir=\"rtl\">מקור ותאריך</th>\n<th dir=\"rtl\">איך לקרוא את המספר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">חציון מחיר העסקה, כל הדירות</td>\n<td dir=\"rtl\">2,512,500 שקל</td>\n<td dir=\"rtl\">רשות המסים, ינואר-מרץ 2026</td>\n<td dir=\"rtl\">חציון עירוני, לא מחיר לשכונה או לדירה מסוימת</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מחיר למ\"ר</td>\n<td dir=\"rtl\">27,000 שקל למ\"ר</td>\n<td dir=\"rtl\">דירובוט, נקרא 5.6.2026</td>\n<td dir=\"rtl\">כלי עזר להשוואה בין שטחים שונים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות למכירה</td>\n<td dir=\"rtl\">470 דירות</td>\n<td dir=\"rtl\">אתר נתוני נדל\"ן, נקרא 5.6.2026</td>\n<td dir=\"rtl\">תמונת היצע באתר מסוים בזמן בדיקה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בתים ודירות למכירה</td>\n<td dir=\"rtl\">1,112 נכסים</td>\n<td dir=\"rtl\">מדדירות, נקרא 5.6.2026</td>\n<td dir=\"rtl\">ספירה רחבה יותר, לכן אינה זהה לספירה של 470 הדירות</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Quick-index table: the rows 'average rent 7,600' (a real-estate data site), 'asking rent 7,200' and 'average city yield 2.9%' (a listing site). The CBS table 4.9 has no Modiin row (not in the big-city list) and no neighbourhood rents; the yield was computed from those rents. The three rows (figure, source and reading) go.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 16,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מקור ותאריך</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted three rows from the quick-index table: average rent 7,600, asking rent 7,200 and average city yield 2.9% (listing sites, read 5.6.2026); the sale median, price per m2 and listing-count rows are untouched"
+  },
+  {
+   "page_id": 4555,
+   "url": "https://nad-lan.co.il/modiin-apartment-prices/",
+   "field": "content",
+   "old": "הציג שכר דירה לפי חדרים: סביב 6,200 שקל לדירת 3 חדרים, 6,950 שקל לדירת 4 חדרים ו-8,500 שקל לדירת 5 חדרים, ובדירות 6 חדרים מחיר",
+   "new": "הציג בדירות 6 חדרים מחיר",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Paragraph before the sale-median table: rents by room count from a data site. The CBS table 4.9 has no Modiin row (not in the big-city list) and no neighbourhood rents; the rents go, the 6-room sale prices (not rent, left by tier 1) and the lead-in to the table stay.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 17,
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the rents by rooms (3: 6,200; 4: 6,950; 5: 8,500) from the sentence; the 6-room sale prices that follow stay"
+  },
+  {
+   "page_id": 4555,
+   "url": "https://nad-lan.co.il/modiin-apartment-prices/",
+   "field": "content",
+   "old": " לפי אתר נתוני נדל\"ן, שנקרא ביום 5.6.2026, שכר הדירה הממוצע בעיר עמד על 7,600 שקל. לפי מדדירות, שנקרא באותו יום, שכר הדירה המבוקש הממוצע עמד על 7,200 שקל והתשואה העירונית הממוצעת הוצגה כ-2.9%.",
+   "new": "",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent section: two sentences of listing-site figures (average rent 7,600; asking rent 7,200; yield 2.9%). The CBS table 4.9 has no Modiin row (not in the big-city list) and no neighbourhood rents; the yield was computed from those rents. The opening sentences (who uses the rent and why) stay.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 18,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the two sentences with the average rent 7,600, the asking rent 7,200 and the average city yield 2.9% (read 5.6.2026)"
+  },
+  {
+   "page_id": 4555,
+   "url": "https://nad-lan.co.il/modiin-apartment-prices/",
+   "field": "content",
+   "old": "בטבלת החדרים של האתר הראשון הוצגו נתוני שכירות נקודתיים: 6,200 שקל לדירת 3 חדרים, 6,950 שקל לדירת 4 חדרים ו-8,500 שקל לדירת 5 חדרים. המשמעות היא שדירה משפחתית",
+   "new": "דירה משפחתית",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "The sentence listed rents from a data site's table. The CBS table 4.9 has no Modiin row (not in the big-city list) and no neighbourhood rents. The conclusion that follows (a regular family flat is judged by purchase price and by its rentability, vacancy, tenant quality, fees, repairs, insurance, mortgage and tax) does not depend on the numbers and stays; its opening 'the meaning is that' goes with the sentence it referred to.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 19,
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the sentence with the rents by rooms (3: 6,200; 4: 6,950; 5: 8,500); \"the meaning is that a regular family flat\" became \"a regular family flat\""
+  },
+  {
+   "page_id": 4555,
+   "url": "https://nad-lan.co.il/modiin-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">חציון מחיר העסקה</th>\n<th dir=\"rtl\">שכר דירה חודשי לפי אתר נתוני נדל\"ן</th>\n<th dir=\"rtl\">שכר דירה שנתי</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">2,039,500 שקל (אוקטובר-דצמבר 2025)</td>\n<td dir=\"rtl\">6,200 שקל</td>\n<td dir=\"rtl\">74,400 שקל</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">2,559,800 שקל (ינואר-מרץ 2026)</td>\n<td dir=\"rtl\">6,950 שקל</td>\n<td dir=\"rtl\">83,400 שקל</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">3,648,800 שקל (ינואר-מרץ 2026)</td>\n<td dir=\"rtl\">8,500 שקל</td>\n<td dir=\"rtl\">102,000 שקל</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">ממוצע עירוני לפי מדדירות</td>\n<td dir=\"rtl\">לא מוצג כמחיר יחיד בטבלה זו</td>\n<td dir=\"rtl\">7,200 שקל מבוקש</td>\n<td dir=\"rtl\">86,400 שקל</td>\n</tr>\n</tbody>\n</table>",
+   "new": "",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent table: its two rent columns (monthly and annual, the annual being 12 times the monthly) and its city-average row are listing-site data. The CBS table 4.9 has no Modiin row (not in the big-city list) and no neighbourhood rents. What is left would repeat the sale medians that the rooms table above already shows (3 rooms 2,039,500, 4 rooms 2,559,800, 5 rooms 3,648,800 with their quarters), so the table goes whole.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 20,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">שכר דירה חודשי לפי אתר נתוני נדל\"ן</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the rent-by-rooms table (monthly rent 6,200 / 6,950 / 8,500, annual rent 74,400 / 83,400 / 102,000, asking average 7,200 and 86,400): listing-site rents and the annual figures derived from them"
+  },
+  {
+   "page_id": 4555,
+   "url": "https://nad-lan.co.il/modiin-apartment-prices/",
+   "field": "content",
+   "old": ", ואתר נתוני נדל\"ן אחר הציג באותו מועד שכר דירה סביב 6,950 שקל.",
+   "new": ".",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ 'what does a 4-room flat in Modiin cost': a rent of 6,950 from a data site. The CBS table 4.9 has no Modiin row (not in the big-city list) and no neighbourhood rents; the clause goes.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 21,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the 4-room rent 6,950 from the FAQ answer; the asking price per m2 and the advice stay"
+  },
+  {
+   "page_id": 4555,
+   "url": "https://nad-lan.co.il/modiin-apartment-prices/",
+   "field": "content",
+   "old": "אתר נתוני נדל\"ן, שנקרא ביום 5.6.2026, הציג שכר דירה ממוצע של 7,600 שקל. מדדירות, שנקרא באותו יום, הציג שכר דירה מבוקש ממוצע של 7,200 שקל. לפי הטבלה של האתר הראשון, דירת 3 חדרים הוצגה סביב 6,200 שקל, דירת 4 חדרים סביב 6,950 שקל ודירת 5 חדרים סביב 8,500 שקל.",
+   "new": "שכר הדירה במודיעין משתנה לפי מספר החדרים, השכונה ומצב הדירה, ולכן כדאי לבדוק מודעות ועסקאות שכירות של דירות דומות.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ 'what is the rent in Modiin': the answer consisted of listing-site figures. The CBS table 4.9 has no Modiin row (not in the big-city list) and no neighbourhood rents. The question is a heading and stays; the answer becomes a hedged statement that makes no level claim.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 22,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the FAQ rents (average 7,600; asking 7,200; by rooms 6,200 / 6,950 / 8,500); the answer says that rent varies by rooms, neighbourhood and condition and points to ads and rental deals of similar flats"
+  },
+  {
+   "page_id": 4555,
+   "url": "https://nad-lan.co.il/modiin-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">משתמש</th>\n<th dir=\"rtl\">השאלה המרכזית</th>\n<th dir=\"rtl\">נתון רלוונטי</th>\n<th dir=\"rtl\">פעולה מומלצת</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קונה למגורים</td>\n<td dir=\"rtl\">האם המחיר מתאים לדירה דומה באותה שכונה</td>\n<td dir=\"rtl\">עסקאות רשות המסים, מחיר למ\"ר, מצב הנכס</td>\n<td dir=\"rtl\">להשוות לדירות דומות בלבד ולבדוק עלויות שיפוץ ומימון</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מוכר</td>\n<td dir=\"rtl\">באיזה מחיר לפרסם בלי להרחיק קונים רציניים</td>\n<td dir=\"rtl\">מחירי ביקוש פעילים ומחירי סגירה אחרונים</td>\n<td dir=\"rtl\">לקבוע טווח מחיר ולא להסתמך על מודעה אחת גבוהה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">משקיע</td>\n<td dir=\"rtl\">האם שכר הדירה מצדיק את מחיר הקנייה</td>\n<td dir=\"rtl\">שכירות חודשית, תשואה גולמית, הוצאות וריקנות</td>\n<td dir=\"rtl\">לבנות חישוב נטו ולא רק תשואה ממוצעת של 2.9%</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בעל דירה קיימת</td>\n<td dir=\"rtl\">האם כדאי למכור, להשכיר או למחזר מימון</td>\n<td dir=\"rtl\">שווי נכס, שכירות צפויה, יתרת משכנתא</td>\n<td dir=\"rtl\">להשוות בין תזרים, מס, עלות מימון ושווי עדכני</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">יורשים או בני משפחה</td>\n<td dir=\"rtl\">מה טווח השווי לצורך החלטה פנימית</td>\n<td dir=\"rtl\">עסקאות דומות, שמאות, מצב משפטי</td>\n<td dir=\"rtl\">לא להסתפק בממוצע עירוני כאשר נדרשת חלוקה או מכירה</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">משתמש</th>\n<th dir=\"rtl\">השאלה המרכזית</th>\n<th dir=\"rtl\">נתון רלוונטי</th>\n<th dir=\"rtl\">פעולה מומלצת</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קונה למגורים</td>\n<td dir=\"rtl\">האם המחיר מתאים לדירה דומה באותה שכונה</td>\n<td dir=\"rtl\">עסקאות רשות המסים, מחיר למ\"ר, מצב הנכס</td>\n<td dir=\"rtl\">להשוות לדירות דומות בלבד ולבדוק עלויות שיפוץ ומימון</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מוכר</td>\n<td dir=\"rtl\">באיזה מחיר לפרסם בלי להרחיק קונים רציניים</td>\n<td dir=\"rtl\">מחירי ביקוש פעילים ומחירי סגירה אחרונים</td>\n<td dir=\"rtl\">לקבוע טווח מחיר ולא להסתמך על מודעה אחת גבוהה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">משקיע</td>\n<td dir=\"rtl\">האם שכר הדירה מצדיק את מחיר הקנייה</td>\n<td dir=\"rtl\">שכירות חודשית, תשואה גולמית, הוצאות וריקנות</td>\n<td dir=\"rtl\">לבנות חישוב נטו ולא רק תשואה ממוצעת</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בעל דירה קיימת</td>\n<td dir=\"rtl\">האם כדאי למכור, להשכיר או למחזר מימון</td>\n<td dir=\"rtl\">שווי נכס, שכירות צפויה, יתרת משכנתא</td>\n<td dir=\"rtl\">להשוות בין תזרים, מס, עלות מימון ושווי עדכני</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">יורשים או בני משפחה</td>\n<td dir=\"rtl\">מה טווח השווי לצורך החלטה פנימית</td>\n<td dir=\"rtl\">עסקאות דומות, שמאות, מצב משפטי</td>\n<td dir=\"rtl\">לא להסתפק בממוצע עירוני כאשר נדרשת חלוקה או מכירה</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Users table, investor row: 'build a net calculation and not only an average yield of 2.9%'. The 2.9% is a listing-site yield computed from asking rents. The CBS table 4.9 has no Modiin row (not in the big-city list) and no neighbourhood rents; the figure goes and the advice stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 23,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">פעולה מומלצת</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the listing-site yield 2.9% from the investor row of the users table; the advice to build a net calculation stays"
   }
  ],
  "live_recheck": {
@@ -1141,5 +1319,14 @@
   "price_list_on_page": true,
   "body_outside_list_identical_to_audited_copy": "yes, except the blank lines around the price list, which was inserted at 2026-10-07T13:47:10 (site time) after the audited copy",
   "dry_run": "15 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ },
+ "tier3_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 20:28:08",
+  "modified": "2026-10-07T14:37:42",
+  "result": "fetched 7.10.2026 with tier 1 and tier 2 live; every tier-3 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 8,
+  "replaced": 0,
+  "removed": 5,
+  "deleted": 3
  }
 }

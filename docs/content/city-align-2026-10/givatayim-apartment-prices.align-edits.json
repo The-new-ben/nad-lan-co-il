@@ -14,7 +14,8 @@
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
   "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
-  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note.",
+  "Tier 3 under the CEO rule (7.10.2026): listing-site rents left in the body. Apply AFTER tier 1 and tier 2 (both are live on this page), on the live content, in the listed order. ceo_action: replaced = the CBS value (table 4.9, Q2 2026) now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row, column or paragraph gone. Whole elements deleted with their tags (paragraph) carry the tags in 'old'."
  ],
  "claims_summary": {
   "claims": {
@@ -29,9 +30,10 @@
    "UNSOURCED": 92,
    "CONSISTENT": 10
   },
-  "edits": 16,
+  "edits": 23,
   "tier1": 15,
-  "tier2": 1
+  "tier2": 1,
+  "tier3": 7
  },
  "notes": "The 4-room level is the main conflict: every 4-room range on the page (3.1-3.6M lead and FAQ, 3,096,234-3,600,000 table, 3.32M calculator) sat well below the official median 4,158,900 (1-3.2026; the 8-quarter series runs 3.80-4.36M). The two 'city averages' 2,847,355 and 4,350,000 were each about 20% from the official all-deals median 3,635,300 and are replaced everywhere (lead, box, two-sources paragraph, indicator table, FAQ). 3- and 5-room ranges were consistent and are restated as medians where they sat in edited blocks; p@5777 (2.7-3.0 / 3.8-5.0 / 4.1-5.0M by segment) is consistent and kept. Shenkin, Givat Rambam and the four street averages are kept (market pages, page checked 6.6.2026; the official file has no median for them). Tel Ganim has full official medians (3=3,589,400, 4=4,614,700, 5=5,202,800) but its area-table row carries no number, so nothing was added there. Not audited as claims: the 5% / 10% / 15% buyer check (li@30071), 6-10 deal counts, m2 sizes. Edit 11 (renovation 150,000-500,000, no source) is tier 2. Remaining SUSPECT lines in check.py: the deals table and p@11234 (individual dated deals, 22.2-10.3.2026), the 3- and 4-room check notes in the new rooms table (lists of individual 2026 deal examples), and the 3.5-room rows, which the scan reads as '5 rooms' because of the '3.5' (a regex artefact: they are individual 3.5-room deals). Name mapping: page 'ארלוזורוב' = official 'ארלוזרוב'. The all-rooms median fell 12.7% year on year (4,164,300 to 3,635,300), largely a mix effect; the page does not quote that change. Also SUSPECT: the ערבי נחל row (tr@15201), an all-rooms street average that the scan pairs with the 5-room deal example in the same row.",
  "claims": [
@@ -1061,6 +1063,168 @@
    "raw_risk": [
     "straight double quote"
    ]
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "גם שכירות חציונית במודעות, סביב 6,000 ש\"ח לחודש, עוזרת לבדוק",
+   "new": "גם שכירות עוזרת לבדוק",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Lead: 'a median rent in the ads, around 6,000 a month'. The CBS table 4.9 has no Givatayim row (not in the big-city list) and no neighbourhood rents; the number goes and the sentence keeps its point (a rent check helps test the price).",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 17,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the listing median rent 6,000 from the lead"
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "שכירות חציונית סביב 6,000 ש\"ח, דירות 3 חדרים סביב 6,391 ש\"ח ומחיר למ\"ר סביב 31,856-42,000 ש\"ח הם נקודות בקרה,",
+   "new": "מחיר למ\"ר סביב 31,856-42,000 ש\"ח הוא נקודת בקרה,",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Control points: median rent 6,000, 3-room rent 6,391 and a price per m2. The CBS table 4.9 has no Givatayim row (not in the big-city list) and no neighbourhood rents; the two rents go, the price per m2 stays as the tier-1 text had it, and the sentence reads in the singular.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 18,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the median rent 6,000 and the 3-room rent 6,391 from the control points; the price per m2 (not a rent) stays"
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n  <thead dir=\"rtl\">\n    <tr dir=\"rtl\">\n      <th dir=\"rtl\">מדד שנבדק</th>\n      <th dir=\"rtl\">אינדיקציה מספרית</th>\n      <th dir=\"rtl\">איך להשתמש במספר</th>\n    </tr>\n  </thead>\n  <tbody dir=\"rtl\">\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">חציון מחיר העסקה בעיר, כל העסקאות, ינואר-מרץ 2026</td>\n      <td dir=\"rtl\">3,635,300 ש\"ח</td>\n      <td dir=\"rtl\">מתאים לפתיחת בדיקה בלבד, כי תמהיל הדירות הקטנות, הוותיקות, הגדולות והחדשות משפיע עליו.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">חציון מחיר העסקה לדירת 4 חדרים, ינואר-מרץ 2026</td>\n      <td dir=\"rtl\">4,158,900 ש\"ח</td>\n      <td dir=\"rtl\">נקודת ייחוס לדירת 4 חדרים, לפני התאמה לשטח, לקומה, לחניה ולרחוב.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">מחיר למ\"ר לפי מקור רחב</td>\n      <td dir=\"rtl\">כ-31,856 ש\"ח</td>\n      <td dir=\"rtl\">נקודת ייחוס כללית בלבד, לא מספר סגירה לדירה ספציפית.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">מחיר למ\"ר לפי מקור עסקאות אחר</td>\n      <td dir=\"rtl\">כ-42,000 ש\"ח</td>\n      <td dir=\"rtl\">מתאים לבדיקה זהירה כאשר הדירה קרובה לאזורי ביקוש או בעלת מאפיינים חזקים.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">שכירות חציונית</td>\n      <td dir=\"rtl\">כ-6,000 ש\"ח</td>\n      <td dir=\"rtl\">בדיקת סבירות לתמחור, במיוחד בדירות 2-4 חדרים.</td>\n    </tr>\n  </tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n  <thead dir=\"rtl\">\n  <tr dir=\"rtl\">\n  <th dir=\"rtl\">מדד שנבדק</th>\n  <th dir=\"rtl\">אינדיקציה מספרית</th>\n  <th dir=\"rtl\">איך להשתמש במספר</th>\n  </tr>\n  </thead>\n  <tbody dir=\"rtl\">\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">חציון מחיר העסקה בעיר, כל העסקאות, ינואר-מרץ 2026</td>\n  <td dir=\"rtl\">3,635,300 ש\"ח</td>\n  <td dir=\"rtl\">מתאים לפתיחת בדיקה בלבד, כי תמהיל הדירות הקטנות, הוותיקות, הגדולות והחדשות משפיע עליו.</td>\n  </tr>\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">חציון מחיר העסקה לדירת 4 חדרים, ינואר-מרץ 2026</td>\n  <td dir=\"rtl\">4,158,900 ש\"ח</td>\n  <td dir=\"rtl\">נקודת ייחוס לדירת 4 חדרים, לפני התאמה לשטח, לקומה, לחניה ולרחוב.</td>\n  </tr>\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">מחיר למ\"ר לפי מקור רחב</td>\n  <td dir=\"rtl\">כ-31,856 ש\"ח</td>\n  <td dir=\"rtl\">נקודת ייחוס כללית בלבד, לא מספר סגירה לדירה ספציפית.</td>\n  </tr>\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">מחיר למ\"ר לפי מקור עסקאות אחר</td>\n  <td dir=\"rtl\">כ-42,000 ש\"ח</td>\n  <td dir=\"rtl\">מתאים לבדיקה זהירה כאשר הדירה קרובה לאזורי ביקוש או בעלת מאפיינים חזקים.</td>\n  </tr>\n  </tbody>\n  </table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Fact table row 'median rent about 6,000, a sanity check for pricing, especially for 2-4 room flats'. The CBS table 4.9 has no Givatayim row (not in the big-city list) and no neighbourhood rents; the whole row (figure and note) goes.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 19,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">אינדיקציה מספרית</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "double space",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the row \"median rent about 6,000\" from the fact table; the four sale rows are untouched"
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n  <thead dir=\"rtl\">\n    <tr dir=\"rtl\">\n      <th dir=\"rtl\">אזור או רחוב</th>\n      <th dir=\"rtl\">אינדיקציית מחיר שנצפתה</th>\n      <th dir=\"rtl\">מחיר למ\"ר או מספר עסקאות</th>\n      <th dir=\"rtl\">מה לבדוק בפועל</th>\n    </tr>\n  </thead>\n  <tbody dir=\"rtl\">\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">בורוכוב</td>\n      <td dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026: 3,206,100 ש\"ח לדירת 3 חדרים, 4,356,800 ש\"ח לדירת 4 חדרים</td>\n      <td dir=\"rtl\">כ-43,839 ש\"ח למ\"ר</td>\n      <td dir=\"rtl\">ביקוש, שקט יחסי, רחוב ספציפי, חניה ומצב בניין.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">שינקין</td>\n      <td dir=\"rtl\">כ-3,440,270 ש\"ח</td>\n      <td dir=\"rtl\">כ-38,000 ש\"ח למ\"ר</td>\n      <td dir=\"rtl\">פער בין דירה ותיקה לדירה משופצת, וכן קרבה לצירים פעילים.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">ארלוזורוב</td>\n      <td dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026: 2,592,800 ש\"ח לדירת 3 חדרים, 4,059,300 ש\"ח לדירת 4 חדרים, 5,442,200 ש\"ח לדירת 5 חדרים</td>\n      <td dir=\"rtl\">כ-35,000 ש\"ח למ\"ר</td>\n      <td dir=\"rtl\">קומה, רעש, נגישות, בניין עם או בלי מעלית.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">גבעת רמב\"ם</td>\n      <td dir=\"rtl\">כ-3,100,000 ש\"ח</td>\n      <td dir=\"rtl\">כ-34,000 ש\"ח למ\"ר</td>\n      <td dir=\"rtl\">תכנון פנימי, חניה, חזית עורפית או קדמית והיצע דומה בסביבה.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">הל\"ה</td>\n      <td dir=\"rtl\">טווח משתנה לפי בניין</td>\n      <td dir=\"rtl\">נדרש אימות רחובי</td>\n      <td dir=\"rtl\">להשוות לעסקאות קרובות בלבד ולא לממוצע עירוני רחב.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">פועלי הרכבת</td>\n      <td dir=\"rtl\">טווח תלוי דירה</td>\n      <td dir=\"rtl\">נדרש סינון לפי שטח</td>\n      <td dir=\"rtl\">לבדוק נגישות, תכנון, חניה ומרחק מצירים ראשיים.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">תל גנים</td>\n      <td dir=\"rtl\">טווח רחב</td>\n      <td dir=\"rtl\">מושפע מאוד מסוג הבניין</td>\n      <td dir=\"rtl\">להפריד בין דירות ותיקות, דירות אחרי שיפוץ ודירות עם פוטנציאל תכנוני.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">סיטי</td>\n      <td dir=\"rtl\">שכירות יקרה סביב 10,450 ש\"ח באזור יקר</td>\n      <td dir=\"rtl\">מחייב בדיקת תמהיל דירות</td>\n      <td dir=\"rtl\">לא להסיק משכירות גבוהה בלבד על מחיר דירה בלי עסקאות סגורות.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">קריית יוסף</td>\n      <td dir=\"rtl\">דוגמה: 3 חדרים ב-2.42 מיליון ש\"ח</td>\n      <td dir=\"rtl\">65 מ\"ר בעסקה שנצפתה</td>\n      <td dir=\"rtl\">להשוות לדירות דומות בשטח, לא לדירות 4 חדרים בעיר.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">קק\"ל</td>\n      <td dir=\"rtl\">ממוצע רחוב סביב 3,992,666 ש\"ח</td>\n      <td dir=\"rtl\">12 עסקאות שנצפו</td>\n      <td dir=\"rtl\">לבדוק אם העסקאות כוללות דירות גדולות או בניינים חדשים יותר.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">ערבי נחל</td>\n      <td dir=\"rtl\">ממוצע רחוב סביב 3,871,875 ש\"ח</td>\n      <td dir=\"rtl\">16 עסקאות שנצפו</td>\n      <td dir=\"rtl\">דוגמה נוספת הציגה 5 חדרים, 127 מ\"ר, סביב 5.00 מיליון ש\"ח.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">כצנלסון</td>\n      <td dir=\"rtl\">ממוצע רחוב סביב 2,091,121 ש\"ח</td>\n      <td dir=\"rtl\">33 עסקאות שנצפו</td>\n      <td dir=\"rtl\">להיזהר מממוצע רחוב אם הוא כולל דירות קטנות, ישנות או עסקאות חריגות.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">ההסתדרות</td>\n      <td dir=\"rtl\">ממוצע רחוב סביב 4,247,761 ש\"ח</td>\n      <td dir=\"rtl\">21 עסקאות שנצפו</td>\n      <td dir=\"rtl\">לבדוק אם התמהיל כולל דירות גדולות, חדשות או פרויקטים מיוחדים.</td>\n    </tr>\n  </tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n  <thead dir=\"rtl\">\n  <tr dir=\"rtl\">\n  <th dir=\"rtl\">אזור או רחוב</th>\n  <th dir=\"rtl\">אינדיקציית מחיר שנצפתה</th>\n  <th dir=\"rtl\">מחיר למ\"ר או מספר עסקאות</th>\n  <th dir=\"rtl\">מה לבדוק בפועל</th>\n  </tr>\n  </thead>\n  <tbody dir=\"rtl\">\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">בורוכוב</td>\n  <td dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026: 3,206,100 ש\"ח לדירת 3 חדרים, 4,356,800 ש\"ח לדירת 4 חדרים</td>\n  <td dir=\"rtl\">כ-43,839 ש\"ח למ\"ר</td>\n  <td dir=\"rtl\">ביקוש, שקט יחסי, רחוב ספציפי, חניה ומצב בניין.</td>\n  </tr>\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">שינקין</td>\n  <td dir=\"rtl\">כ-3,440,270 ש\"ח</td>\n  <td dir=\"rtl\">כ-38,000 ש\"ח למ\"ר</td>\n  <td dir=\"rtl\">פער בין דירה ותיקה לדירה משופצת, וכן קרבה לצירים פעילים.</td>\n  </tr>\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">ארלוזורוב</td>\n  <td dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026: 2,592,800 ש\"ח לדירת 3 חדרים, 4,059,300 ש\"ח לדירת 4 חדרים, 5,442,200 ש\"ח לדירת 5 חדרים</td>\n  <td dir=\"rtl\">כ-35,000 ש\"ח למ\"ר</td>\n  <td dir=\"rtl\">קומה, רעש, נגישות, בניין עם או בלי מעלית.</td>\n  </tr>\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">גבעת רמב\"ם</td>\n  <td dir=\"rtl\">כ-3,100,000 ש\"ח</td>\n  <td dir=\"rtl\">כ-34,000 ש\"ח למ\"ר</td>\n  <td dir=\"rtl\">תכנון פנימי, חניה, חזית עורפית או קדמית והיצע דומה בסביבה.</td>\n  </tr>\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">הל\"ה</td>\n  <td dir=\"rtl\">טווח משתנה לפי בניין</td>\n  <td dir=\"rtl\">נדרש אימות רחובי</td>\n  <td dir=\"rtl\">להשוות לעסקאות קרובות בלבד ולא לממוצע עירוני רחב.</td>\n  </tr>\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">פועלי הרכבת</td>\n  <td dir=\"rtl\">טווח תלוי דירה</td>\n  <td dir=\"rtl\">נדרש סינון לפי שטח</td>\n  <td dir=\"rtl\">לבדוק נגישות, תכנון, חניה ומרחק מצירים ראשיים.</td>\n  </tr>\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">תל גנים</td>\n  <td dir=\"rtl\">טווח רחב</td>\n  <td dir=\"rtl\">מושפע מאוד מסוג הבניין</td>\n  <td dir=\"rtl\">להפריד בין דירות ותיקות, דירות אחרי שיפוץ ודירות עם פוטנציאל תכנוני.</td>\n  </tr>\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">קריית יוסף</td>\n  <td dir=\"rtl\">דוגמה: 3 חדרים ב-2.42 מיליון ש\"ח</td>\n  <td dir=\"rtl\">65 מ\"ר בעסקה שנצפתה</td>\n  <td dir=\"rtl\">להשוות לדירות דומות בשטח, לא לדירות 4 חדרים בעיר.</td>\n  </tr>\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">קק\"ל</td>\n  <td dir=\"rtl\">ממוצע רחוב סביב 3,992,666 ש\"ח</td>\n  <td dir=\"rtl\">12 עסקאות שנצפו</td>\n  <td dir=\"rtl\">לבדוק אם העסקאות כוללות דירות גדולות או בניינים חדשים יותר.</td>\n  </tr>\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">ערבי נחל</td>\n  <td dir=\"rtl\">ממוצע רחוב סביב 3,871,875 ש\"ח</td>\n  <td dir=\"rtl\">16 עסקאות שנצפו</td>\n  <td dir=\"rtl\">דוגמה נוספת הציגה 5 חדרים, 127 מ\"ר, סביב 5.00 מיליון ש\"ח.</td>\n  </tr>\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">כצנלסון</td>\n  <td dir=\"rtl\">ממוצע רחוב סביב 2,091,121 ש\"ח</td>\n  <td dir=\"rtl\">33 עסקאות שנצפו</td>\n  <td dir=\"rtl\">להיזהר מממוצע רחוב אם הוא כולל דירות קטנות, ישנות או עסקאות חריגות.</td>\n  </tr>\n  <tr dir=\"rtl\">\n  <td dir=\"rtl\">ההסתדרות</td>\n  <td dir=\"rtl\">ממוצע רחוב סביב 4,247,761 ש\"ח</td>\n  <td dir=\"rtl\">21 עסקאות שנצפו</td>\n  <td dir=\"rtl\">לבדוק אם התמהיל כולל דירות גדולות, חדשות או פרויקטים מיוחדים.</td>\n  </tr>\n  </tbody>\n  </table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "The City row held no sale figure: its cells were a rent-level claim (expensive rent around 10,450), 'requires checking the flat mix' and 'do not infer from high rent alone'. The CBS table 4.9 has no Givatayim row (not in the big-city list) and no neighbourhood rents; no content without the number, so the row goes. The area is still named in the lead and in the comparison table.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 20,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">אינדיקציית מחיר שנצפתה</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "double space",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the \"City\" row (\"expensive rent around 10,450 in an expensive area\") from the area table; the other twelve rows are untouched"
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": " לפי דף שכירות ייעודי שנבדק ביוני 2026, שכירות חציונית בעיר עמדה סביב 6,000 ש\"ח, עם 293 מודעות פעילות. דירות 3 חדרים הופיעו סביב 6,391 ש\"ח בממוצע, בעוד בדפי שוק אחרים הוצגו אינדיקציות של כ-5,580 ש\"ח ל-2 חדרים, כ-6,150 ש\"ח ל-3 חדרים, כ-7,500 ש\"ח ל-4 חדרים וכ-10,350 ש\"ח ל-5 חדרים.",
+   "new": "",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent paragraph: the opening sentence (rent is a good sanity check, especially for 2-4 room flats) stays; the two sentences of private rent figures go. The CBS table 4.9 has no Givatayim row (not in the big-city list) and no neighbourhood rents.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 21,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the two sentences with the city median 6,000 (293 ads), the 3-room average 6,391 and the indications 5,580 / 6,150 / 7,500 / 10,350"
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n  <thead dir=\"rtl\">\n    <tr dir=\"rtl\">\n      <th dir=\"rtl\">סוג בדיקת שכירות</th>\n      <th dir=\"rtl\">אינדיקציה שנצפתה</th>\n      <th dir=\"rtl\">שימוש בבדיקת מחיר</th>\n    </tr>\n  </thead>\n  <tbody dir=\"rtl\">\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">שכירות חציונית בעיר</td>\n      <td dir=\"rtl\">כ-6,000 ש\"ח</td>\n      <td dir=\"rtl\">בדיקת בסיס לרמת ביקוש כללית בגבעתיים.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">מודעות שכירות פעילות</td>\n      <td dir=\"rtl\">כ-293 מודעות</td>\n      <td dir=\"rtl\">מסייע להבין היצע, אך מודעה אינה חוזה חתום.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">2 חדרים</td>\n      <td dir=\"rtl\">כ-5,580 ש\"ח</td>\n      <td dir=\"rtl\">מתאים לבדיקת דירות קטנות, בעיקר ליחידים וזוגות.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">3 חדרים</td>\n      <td dir=\"rtl\">כ-6,150-6,391 ש\"ח</td>\n      <td dir=\"rtl\">אינדיקציה מרכזית לדירות משפחתיות קטנות ולביקוש עירוני יציב.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">4 חדרים</td>\n      <td dir=\"rtl\">כ-7,500 ש\"ח</td>\n      <td dir=\"rtl\">בודק אם מחיר מכירה של 3.5-4.2 מיליון ש\"ח נשען על שוק שכירות סביר.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">5 חדרים</td>\n      <td dir=\"rtl\">כ-10,350 ש\"ח</td>\n      <td dir=\"rtl\">רלוונטי לדירות גדולות, אך תלוי מאוד בחניה, מרפסת, ממ\"ד ומפרט.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">אזור שינקין בשכירות</td>\n      <td dir=\"rtl\">כ-5,393 ש\"ח כאזור זול יחסית בדף שנבדק</td>\n      <td dir=\"rtl\">דורש בדיקה לפי סוג הדירה ולא לפי שם האזור בלבד.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">אזור סיטי בשכירות</td>\n      <td dir=\"rtl\">כ-10,450 ש\"ח כאזור יקר</td>\n      <td dir=\"rtl\">יכול להעיד על תמהיל דירות גדול או חדש יותר, לא רק על מיקום.</td>\n    </tr>\n  </tbody>\n</table>",
+   "new": "",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "A whole table of private rent figures (city, rooms, two areas) with notes that comment on them. The CBS table 4.9 has no Givatayim row (not in the big-city list) and no neighbourhood rents; no content without the numbers.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 22,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">סוג בדיקת שכירות</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "double space",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the rent table (city median 6,000; 293 ads; 2-5 rooms 5,580-10,350; Shenkin 5,393; City 10,450): private ad data, no official counterpart"
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": ", ובמקביל כאזור שכירות זול יחסית בדף שכירות מסוים סביב 5,393 ש\"ח. המשמעות היא שצריך",
+   "new": ". לכן צריך",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ 'is Shenkin cheap or expensive': The CBS table 4.9 has no Givatayim row (not in the big-city list) and no neighbourhood rents. The rent clause goes; 'the meaning is that one must check' becomes 'so one must check', since the contrast it rested on is gone.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 23,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the Shenkin area rent 5,393 (\"relatively cheap rent\") from the FAQ answer; the advice to check flat type and comparable deals stays"
   }
  ],
  "live_recheck": {
@@ -1079,5 +1243,14 @@
   "replaced": 0,
   "removed": 1,
   "deleted": 0
+ },
+ "tier3_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 20:28:03",
+  "modified": "2026-10-07T15:07:41",
+  "result": "fetched 7.10.2026 with tier 1 and tier 2 live; every tier-3 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 7,
+  "replaced": 0,
+  "removed": 3,
+  "deleted": 4
  }
 }

@@ -1,0 +1,808 @@
+[
+ {
+  "claim_id": "G-01",
+  "page": "both",
+  "topic": "convention",
+  "claim": "The Israeli room count includes the living room: '4 rooms' = a living room and 3 bedrooms; a '1-room' unit is a studio.",
+  "numbers": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "date": "",
+  "source": "convention",
+  "conflict": "",
+  "write_as": "Explain once for a foreign reader; never convert to bedrooms in a table."
+ },
+ {
+  "claim_id": "G-02",
+  "page": "both",
+  "topic": "convention",
+  "claim": "A dunam (the Israeli land unit) is 1,000 m2.",
+  "numbers": [
+   "1",
+   "1,000"
+  ],
+  "date": "",
+  "source": "convention",
+  "conflict": "",
+  "write_as": "Allowed once, to explain the unit. No other conversions (no sq ft, no acres, no hectares, no dollars or euros)."
+ },
+ {
+  "claim_id": "G-03",
+  "page": "both",
+  "topic": "convention",
+  "claim": "Quarters: 'the first quarter of 2026' = January to March 2026 (Q1, 1-3.2026).",
+  "numbers": [
+   "1",
+   "3",
+   "1-3"
+  ],
+  "date": "",
+  "source": "convention",
+  "conflict": "",
+  "write_as": "'Q1 2026' or 'the first quarter of 2026'. Keep the year."
+ },
+ {
+  "claim_id": "SD-01",
+  "page": "both",
+  "topic": "plan",
+  "claim": "The Sde Dov quarter (rova), on the site of the former airfield in north-west Tel Aviv-Yafo, is planned for about 16,000 apartments ('16 thousand') in three compounds: Eshkol (south-east), the Centre and the North.",
+  "numbers": [
+   "16,000",
+   "16",
+   "3"
+  ],
+  "date": "plan approved 2020; municipal page read 7.10.2026",
+  "source": "TLVSD; NC2003",
+  "conflict": "",
+  "write_as": "'about 16,000 apartments planned'. Never a delivery date for the whole quarter."
+ },
+ {
+  "claim_id": "SD-02",
+  "page": "both",
+  "topic": "prices",
+  "claim": "A survey of the developers' annual reports published in April 2026: about 1,280 apartments sold in the quarter so far; their average price about ₪83,000 per m2; a 4-room apartment sold for about ₪9.45 million on average.",
+  "numbers": [
+   "1,280",
+   "83,000",
+   "9.45",
+   "9,450,000",
+   "4",
+   "2026",
+   "4.2026"
+  ],
+  "date": "15.4.2026 (published 4.2026)",
+  "source": "NC2604; ICE1904",
+  "conflict": "An older page figure 'about 81,000' and an average 'about 7 million per deal' have no source: never use them.",
+  "write_as": "'about ₪83,000 per m2' (an average of sold units, not an asking price)."
+ },
+ {
+  "claim_id": "SD-03",
+  "page": "both",
+  "topic": "prices",
+  "claim": "In 2026 most projects in the quarter sell at about ₪70,000 per m2.",
+  "numbers": [
+   "70,000",
+   "2026",
+   "5.2026",
+   "6.2026"
+  ],
+  "date": "21.5.2026; 6.6.2026",
+  "source": "ICE2105; ICE0606",
+  "conflict": "",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SD-04",
+  "page": "both",
+  "topic": "prices",
+  "claim": "Per the developers' 2025 reports, the sales averages of the projects in the Eshkol compound ranged from about ₪63,400 to about ₪82,600 per m2, VAT included.",
+  "numbers": [
+   "63,400",
+   "82,600",
+   "2025"
+  ],
+  "date": "2025 reports",
+  "source": "NC2604; ICE1904",
+  "conflict": "",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SD-05",
+  "page": "both",
+  "topic": "deals",
+  "claim": "The largest deal published in the quarter: an apartment of about 390 m2 with a balcony of about 200 m2 on floor 38 of a tower in the Central compound, sold in December 2025 for more than ₪42 million.",
+  "numbers": [
+   "390",
+   "200",
+   "38",
+   "42",
+   "42,000,000",
+   "2025",
+   "12.2025"
+  ],
+  "date": "18.12.2025; 13.4.2026",
+  "source": "BZ2512; NC2604F",
+  "conflict": "'43.75 million for 508 m2' had no source: never use it.",
+  "write_as": "'more than ₪42 million'."
+ },
+ {
+  "claim_id": "SDH-01",
+  "page": "sde-dov-hub",
+  "topic": "history",
+  "claim": "Sde Dov (Dov Hoz airport) was inaugurated on 23 September 1938, with the Tel Aviv - Haifa - Beirut air line; it closed on 1 July 2019 and its evacuation was completed early in 2020.",
+  "numbers": [
+   "23",
+   "1938",
+   "23.9.1938",
+   "1",
+   "2019",
+   "1.7.2019",
+   "2020"
+  ],
+  "date": "",
+  "source": "HEWSD",
+  "conflict": "",
+  "write_as": "The city is Tel Aviv; the line name keeps the three cities."
+ },
+ {
+  "claim_id": "SDH-02",
+  "page": "sde-dov-hub",
+  "topic": "land",
+  "claim": "The quarter covers about 1,300 dunam along the sea in north Tel Aviv; its coastal front (the coastal park) is about 2 km long.",
+  "numbers": [
+   "1,300",
+   "2"
+  ],
+  "date": "12.3.2020; GIS read 7.10.2026; 10.2.2025",
+  "source": "TLVSD; NC2003; GIS528 (1,304,428 m2); NC2502P",
+  "conflict": "'1,500 dunam' (also 1,490 / 1,600 in some press and marketing) has no official basis: never use it.",
+  "write_as": "'about 1,300 dunam'. 'about 1.3 km2' is NOT allowed (a new number)."
+ },
+ {
+  "claim_id": "SDH-03",
+  "page": "sde-dov-hub",
+  "topic": "land",
+  "claim": "Boundaries: the Tzukei Aviv neighbourhood and Propes Street (north); Neve Yam, Program L (Tochnit Lamed) and Levi Eshkol Street (east); Kochav HaTzafon, the Reading compound and Shai Agnon Street (south); the beach and the promenade (west).",
+  "numbers": [],
+  "date": "",
+  "source": "TLVSD",
+  "conflict": "",
+  "write_as": "No distances. The port of Tel Aviv is NOT a boundary."
+ },
+ {
+  "claim_id": "SDH-04",
+  "page": "sde-dov-hub",
+  "topic": "plan",
+  "claim": "The master plan describes a mixed-use quarter of about 16,000 apartments for about 40,000 residents; it came into force in August 2020.",
+  "numbers": [
+   "16,000",
+   "40,000",
+   "2020",
+   "8.2020"
+  ],
+  "date": "9.8.2020",
+  "source": "TLVSD; GIS528",
+  "conflict": "",
+  "write_as": "'about 40,000 residents' (41,000 appears in some press: never use it)."
+ },
+ {
+  "claim_id": "SDH-05",
+  "page": "sde-dov-hub",
+  "topic": "plan",
+  "claim": "Per the plan approved in 2020: about 500,000 m2 of public buildings, about 125,000 m2 of hotels and about 365 dunam of parks and public gardens; of the 16,000 apartments about 2,400 are for affordable housing at a reduced price and about 4,500 for special housing (student dormitories, assisted living, rental housing).",
+  "numbers": [
+   "500,000",
+   "125,000",
+   "365",
+   "2,400",
+   "4,500",
+   "16,000",
+   "2020"
+  ],
+  "date": "12.3.2020",
+  "source": "NC2003",
+  "conflict": "'4,500 to 6,900 special-housing units' misreads the source (6,900 = 2,400 + 4,500): never write 6,900.",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDH-06",
+  "page": "sde-dov-hub",
+  "topic": "plan",
+  "claim": "The three compounds: Eshkol (TAMAL/3001) about 4,800 apartments, about 45,000 m2 of commerce, about 145,000 m2 of employment; the Centre about 7,100 apartments (7,128 in the approved plan), about 60,000 m2 of commerce, about 155,000 m2 of employment and about 800 hotel rooms; the North about 4,000 apartments, about 20,000 m2 of commerce, about 30,000 m2 of employment and about 1,150 hotel rooms. No separate hotel figure for Eshkol.",
+  "numbers": [
+   "4,800",
+   "45,000",
+   "145,000",
+   "7,100",
+   "7,128",
+   "60,000",
+   "155,000",
+   "800",
+   "4,000",
+   "20,000",
+   "30,000",
+   "1,150",
+   "3"
+  ],
+  "date": "municipal page read 7.10.2026; 3.2.2025",
+  "source": "TLVSD; NC2502",
+  "conflict": "",
+  "write_as": "The Eshkol hotel cell stays without a number."
+ },
+ {
+  "claim_id": "SDH-07",
+  "page": "sde-dov-hub",
+  "topic": "plan",
+  "claim": "Dates in force: the master plan August 2020; the Eshkol detailed plan May 2021; the Centre and North detailed plans 2025.",
+  "numbers": [
+   "2020",
+   "8.2020",
+   "2021",
+   "5.2021",
+   "2025"
+  ],
+  "date": "9.8.2020; 20.5.2021; 13.2.2025; 8.6.2025",
+  "source": "GIS528; TLVSD",
+  "conflict": "'Eshkol preceded the master plan' is wrong: never write it.",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDH-08",
+  "page": "sde-dov-hub",
+  "topic": "tenders",
+  "claim": "In February and March 2025, eight land tenders closed for 6,666 apartments, more than 40% of the apartments planned in the quarter.",
+  "numbers": [
+   "2025",
+   "2.2025",
+   "3.2025",
+   "8",
+   "6,666",
+   "40",
+   "16,000"
+  ],
+  "date": "19.2.2025; 26.3.2025",
+  "source": "BZ2503; NC2502T (3,922 + 2,744 = 6,666; 6,666 / 16,000 = 41.7%)",
+  "conflict": "",
+  "write_as": "'eight tenders' in words or 8; never 41.7% (not in the Hebrew)."
+ },
+ {
+  "claim_id": "SDH-09",
+  "page": "sde-dov-hub",
+  "topic": "projects",
+  "claim": "Rainbow Tel Aviv (Israel Canada, Eshkol compound): a tower of 39 to 40 floors and boutique buildings; 459 apartments per the developer (the land tender spoke of 480); the main contractor Ashtrom was chosen in January 2026; delivery in stages, the last stage expected in 2030.",
+  "numbers": [
+   "39",
+   "40",
+   "459",
+   "480",
+   "2026",
+   "1.2026",
+   "2030"
+  ],
+  "date": "1.1.2026",
+  "source": "NC2601R; AMS; GL2608",
+  "conflict": "'480 per marketing / 459 per permit' were wrong attributions: never use them.",
+  "write_as": "2030 is the expected last stage, not a contractual date."
+ },
+ {
+  "claim_id": "SDH-10",
+  "page": "sde-dov-hub",
+  "topic": "projects",
+  "claim": "Project facts (as the area map cards): FIRST, a 45-floor tower and three boutique buildings of 9 floors, 350 apartments; ASHIRA, 406 apartments in four buildings including a 35-floor tower; DIMRI YAMA, 458 apartments in a 40-floor tower, a 16-floor mid-rise (towerlet) and two 9-floor buildings; ZOHI, about 230 apartments; GINDI VOGUE, 708 apartments on two lots in the Centre, including a 45-floor tower and three 20-floor towers; UTOPIA, 337 apartments in four buildings around a shared courtyard in Eshkol.",
+  "numbers": [
+   "45",
+   "3",
+   "9",
+   "350",
+   "406",
+   "4",
+   "35",
+   "458",
+   "40",
+   "16",
+   "2",
+   "230",
+   "708",
+   "20",
+   "337"
+  ],
+  "date": "",
+  "source": "AMS; NC2507; NC2502T; NC2604; ICE2105",
+  "conflict": "",
+  "write_as": "Only if the Hebrew row carries it (the six table cells are optional edits)."
+ },
+ {
+  "claim_id": "SDH-11",
+  "page": "sde-dov-hub",
+  "topic": "prices",
+  "claim": "Rainbow Tel Aviv: the average of all apartments sold up to March 2026 was about ₪81,800 per m2.",
+  "numbers": [
+   "81,800",
+   "2026",
+   "3.2026"
+  ],
+  "date": "29.5.2026 (to the end of Q1 2026: 81,782)",
+  "source": "BZ2605",
+  "conflict": "'about 82,000' was the rounded, undated form: use 81,800 with its date.",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDH-12",
+  "page": "sde-dov-hub",
+  "topic": "prices",
+  "claim": "At these prices (about ₪70,000 to ₪83,000 per m2) a 100 m2 apartment costs about ₪7 to ₪8.3 million (a calculation, as the price calculator on the prices page).",
+  "numbers": [
+   "100",
+   "7",
+   "8.3",
+   "7,000,000",
+   "8,300,000",
+   "70,000",
+   "83,000"
+  ],
+  "date": "",
+  "source": "CALC from SD-02 and SD-03",
+  "conflict": "'a 100 m2 apartment about 8 million' was 100 x an unsourced 80,000: never use it.",
+  "write_as": "Say it is a calculation."
+ },
+ {
+  "claim_id": "SDH-13",
+  "page": "sde-dov-hub",
+  "topic": "land",
+  "claim": "Land prices in the tenders: about ₪3.3 million per apartment on average in the 2022 tenders (development costs included); about ₪1.7 to ₪2.2 million per apartment in the February 2025 tenders.",
+  "numbers": [
+   "2022",
+   "3.3",
+   "3,300,000",
+   "2025",
+   "2.2025",
+   "1.7",
+   "2.2",
+   "1,700,000",
+   "2,200,000"
+  ],
+  "date": "19.2.2025",
+  "source": "ICE2502; BZ2502; NC2502T",
+  "conflict": "'over 3 million per unit' without a year: never use it.",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDH-14",
+  "page": "sde-dov-hub",
+  "topic": "deals",
+  "claim": "Luxury deals of ₪14 million and more have been published in the quarter (since 10.2024).",
+  "numbers": [
+   "14",
+   "14,000,000"
+  ],
+  "date": "28.10.2024",
+  "source": "GL2410",
+  "conflict": "",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDH-15",
+  "page": "sde-dov-hub",
+  "topic": "planning",
+  "claim": "Public participation: five meetings during the master plan; four topic meetings for the detailed plans (traffic and transport; building and urban design; building and programme; housing).",
+  "numbers": [
+   "5",
+   "4"
+  ],
+  "date": "",
+  "source": "TLVSP",
+  "conflict": "",
+  "write_as": "Words or digits."
+ },
+ {
+  "claim_id": "SDH-16",
+  "page": "sde-dov-hub",
+  "topic": "planning",
+  "claim": "'In a new neighbourhood you buy the apartment and also the first ten years of the neighbourhood being built around it' (the page's own line).",
+  "numbers": [
+   "10"
+  ],
+  "date": "",
+  "source": "Hebrew source (editorial)",
+  "conflict": "",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDH-17",
+  "page": "sde-dov-hub",
+  "topic": "page",
+  "claim": "The page was checked and updated in October 2026 (7.10.2026).",
+  "numbers": [
+   "2026",
+   "10.2026",
+   "7.10.2026"
+  ],
+  "date": "",
+  "source": "THIS",
+  "conflict": "",
+  "write_as": "Only in the Hebrew page; the translations carry no date line."
+ },
+ {
+  "claim_id": "SDP-01",
+  "page": "sde-dov-prices",
+  "topic": "deals",
+  "claim": "In December 2025 three apartments on floors 38, 39 and 43 of a tower facing the sea sold for about ₪107,700 to ₪119,200 per m2 of built area (balconies not counted).",
+  "numbers": [
+   "3",
+   "38",
+   "39",
+   "43",
+   "107,700",
+   "119,200",
+   "2025",
+   "12.2025"
+  ],
+  "date": "18.12.2025",
+  "source": "BZ2512 (CALC on the built area)",
+  "conflict": "",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDP-02",
+  "page": "sde-dov-prices",
+  "topic": "deals",
+  "claim": "March 2026: two deals for 5-room apartments of 132 m2 on floor 9 in one project, ₪7.16 to ₪7.57 million, about ₪54,200 to ₪57,300 per m2 ('deals of 54,000-57,000 per m2').",
+  "numbers": [
+   "5",
+   "132",
+   "9",
+   "2",
+   "7.16",
+   "7.57",
+   "7,160,000",
+   "7,570,000",
+   "54,200",
+   "57,300",
+   "54,000",
+   "57,000",
+   "2026",
+   "3.2026"
+  ],
+  "date": "3.5.2026 (deals of 3.2026)",
+  "source": "ICE0305",
+  "conflict": "",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDP-03",
+  "page": "sde-dov-prices",
+  "topic": "prices",
+  "claim": "The range of deals in the April 2026 survey: about ₪60,200 to ₪138,000 per m2.",
+  "numbers": [
+   "60,200",
+   "138,000",
+   "2026",
+   "4.2026"
+  ],
+  "date": "15.4.2026",
+  "source": "NC2604",
+  "conflict": "",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDP-04",
+  "page": "sde-dov-prices",
+  "topic": "prices",
+  "claim": "Tel Aviv-Yafo: the median of deals in the two years to October 2025 (October 2023 to October 2025) was ₪52,856 per m2.",
+  "numbers": [
+   "52,856",
+   "2023",
+   "2025",
+   "10.2023",
+   "10.2025",
+   "2"
+  ],
+  "date": "10.2023-10.2025",
+  "source": "TA (Tax Authority deals; the site's Tel Aviv card)",
+  "conflict": "",
+  "write_as": "A median of deals, not an average."
+ },
+ {
+  "claim_id": "SDP-05",
+  "page": "sde-dov-prices",
+  "topic": "prices",
+  "claim": "In one project in the quarter the average rose from about ₪64,700 per m2 in the first quarter of 2026 to about ₪81,600 per m2 in the eight deals after it (VAT included).",
+  "numbers": [
+   "64,700",
+   "81,600",
+   "1",
+   "2026",
+   "8",
+   "1-3"
+  ],
+  "date": "6.6.2026",
+  "source": "BZ2606",
+  "conflict": "",
+  "write_as": "'eight deals' (a small sample)."
+ },
+ {
+  "claim_id": "SDP-06",
+  "page": "sde-dov-prices",
+  "topic": "prices",
+  "claim": "In June 2026 one developer valued its unsold apartments at about ₪73,200 per m2 incl. VAT, below its 2025 deals average of about ₪82,500.",
+  "numbers": [
+   "73,200",
+   "82,500",
+   "2025",
+   "2026",
+   "6.2026"
+  ],
+  "date": "6.6.2026",
+  "source": "BZ2606; GL2609",
+  "conflict": "",
+  "write_as": "An estimate, not a deal."
+ },
+ {
+  "claim_id": "SDP-07",
+  "page": "sde-dov-prices",
+  "topic": "prices",
+  "claim": "The official (list) prices in the projects: ₪75,000 to ₪85,000 per m2 before financing benefits.",
+  "numbers": [
+   "75,000",
+   "85,000",
+   "2026",
+   "6.2026"
+  ],
+  "date": "6.6.2026",
+  "source": "BZ2606",
+  "conflict": "",
+  "write_as": "List prices before financing benefits, not deals."
+ },
+ {
+  "claim_id": "SDP-08",
+  "page": "sde-dov-prices",
+  "topic": "prices",
+  "claim": "Per one developer in the quarter (December 2025), selected apartments sold at ₪90,000 to ₪100,000 per m2.",
+  "numbers": [
+   "90,000",
+   "100,000",
+   "2025",
+   "12.2025"
+  ],
+  "date": "11.12.2025",
+  "source": "ICE2512",
+  "conflict": "",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDP-09",
+  "page": "sde-dov-prices",
+  "topic": "rooms",
+  "claim": "2 rooms: recent deals in one Eshkol project ₪2.8 to ₪3.1 million (May 2026); in its presale ₪2.4 to ₪2.7 million. Another 2-room deal: 54 m2, floor 9, ₪3.665 million, about ₪67,900 per m2 (2026).",
+  "numbers": [
+   "2",
+   "2.8",
+   "3.1",
+   "2,800,000",
+   "3,100,000",
+   "2.4",
+   "2.7",
+   "2,400,000",
+   "2,700,000",
+   "54",
+   "9",
+   "3.665",
+   "3,665,000",
+   "67,900",
+   "2026",
+   "5.2026"
+  ],
+  "date": "21.5.2026; 3.5.2026",
+  "source": "ICE2105; ICE0305",
+  "conflict": "",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDP-10",
+  "page": "sde-dov-prices",
+  "topic": "rooms",
+  "claim": "3 rooms of 82-83 m2: recent deals in the same Eshkol project ₪4.6 to ₪4.8 million (May 2026).",
+  "numbers": [
+   "3",
+   "82",
+   "83",
+   "4.6",
+   "4.8",
+   "4,600,000",
+   "4,800,000",
+   "2026",
+   "5.2026"
+  ],
+  "date": "21.5.2026",
+  "source": "ICE2105",
+  "conflict": "",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDP-11",
+  "page": "sde-dov-prices",
+  "topic": "rooms",
+  "claim": "4-5 rooms of 104-126 m2 on floors 10-13, four deals: ₪6.49 to ₪7.73 million, about ₪61,300 to ₪62,800 per m2 (2026).",
+  "numbers": [
+   "4",
+   "5",
+   "104",
+   "126",
+   "10",
+   "13",
+   "6.49",
+   "7.73",
+   "6,490,000",
+   "7,730,000",
+   "61,300",
+   "62,800",
+   "2026"
+  ],
+  "date": "3.5.2026",
+  "source": "ICE0305",
+  "conflict": "",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDP-12",
+  "page": "sde-dov-prices",
+  "topic": "rooms",
+  "claim": "5 rooms of 139.7 m2 on floor 18 (of 20), on one project's price list: ₪11.954 million, about ₪85,600 per m2 (October 2025); in round words 'up to ₪11.95 million on one price list'.",
+  "numbers": [
+   "5",
+   "139.7",
+   "18",
+   "11.954",
+   "11,954,000",
+   "11.95",
+   "11,950,000",
+   "85,600",
+   "2025",
+   "10.2025"
+  ],
+  "date": "26.10.2025",
+  "source": "ICE2510",
+  "conflict": "",
+  "write_as": "A price-list (asking) price, not a deal."
+ },
+ {
+  "claim_id": "SDP-13",
+  "page": "sde-dov-prices",
+  "topic": "rooms",
+  "claim": "Summaries of the published deals and price lists: 2-room apartments sold in 2026 for about ₪2.8 to ₪3.7 million; 5-room apartments of 126-132 m2 sold in 2026 for about ₪7.2 to ₪7.7 million; 5 rooms in deals and price lists from about ₪7.2 to about ₪12 million; 4 and 5 rooms about ₪6.5 to ₪12 million.",
+  "numbers": [
+   "2",
+   "4",
+   "5",
+   "2.8",
+   "3.7",
+   "2,800,000",
+   "3,700,000",
+   "126",
+   "132",
+   "7.2",
+   "7.7",
+   "7,200,000",
+   "7,700,000",
+   "12",
+   "12,000,000",
+   "6.5",
+   "6,500,000",
+   "2026"
+  ],
+  "date": "",
+  "source": "ICE2105; ICE0305; ICE2510; NC2604",
+  "conflict": "",
+  "write_as": "Ranges as written in the Hebrew; no new averages."
+ },
+ {
+  "claim_id": "SDP-14",
+  "page": "sde-dov-prices",
+  "topic": "deals",
+  "claim": "A 1-room apartment of 32 m2 on floor 4 of one of the towers sold in July 2023 for ₪3.1 million.",
+  "numbers": [
+   "1",
+   "32",
+   "4",
+   "3.1",
+   "3,100,000",
+   "2023",
+   "7.2023"
+  ],
+  "date": "29.11.2023 (deal of 7.2023)",
+  "source": "GL2311",
+  "conflict": "'2.3 million for 32 m2' had no source: never use it.",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDP-15",
+  "page": "sde-dov-prices",
+  "topic": "projects",
+  "claim": "FIRST (Hagag Group, Central compound): by July 2025, about 94 apartments plus 8 more agreements were marketed for about ₪853 million, about ₪8.4 million per apartment on average; its 2025 average about ₪75,500 per m2.",
+  "numbers": [
+   "94",
+   "8",
+   "853",
+   "853,000,000",
+   "8.4",
+   "8,400,000",
+   "75,500",
+   "2025",
+   "7.2025"
+  ],
+  "date": "17.7.2025; 18.12.2025; 15.4.2026",
+  "source": "NC2507; BZ2512; NC2604",
+  "conflict": "",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDP-16",
+  "page": "sde-dov-prices",
+  "topic": "prices",
+  "claim": "Eshkol: in one project the recent deals were at ₪60,000 to ₪62,000 per m2 (May 2026); the Centre and the North have no separate published average.",
+  "numbers": [
+   "60,000",
+   "62,000",
+   "2026",
+   "5.2026"
+  ],
+  "date": "21.5.2026",
+  "source": "ICE2105",
+  "conflict": "",
+  "write_as": "'no separate average published'."
+ },
+ {
+  "claim_id": "SDP-17",
+  "page": "sde-dov-prices",
+  "topic": "compare",
+  "claim": "Ramat Aviv: recent deals average about ₪55,000 per m2 (June 2026); Ramat Aviv Gimel about ₪51,000 to ₪53,000 per m2 (August 2026). Park Tzameret: depends on the tower and the floor (no figure).",
+  "numbers": [
+   "55,000",
+   "51,000",
+   "53,000",
+   "2026",
+   "6.2026",
+   "8.2026"
+  ],
+  "date": "6.6.2026; 2.8.2026",
+  "source": "ICE0606; BZ2608",
+  "conflict": "'Park Tzameret 90,000-120,000' had no source: never use it.",
+  "write_as": ""
+ },
+ {
+  "claim_id": "SDP-18",
+  "page": "sde-dov-prices",
+  "topic": "forecast",
+  "claim": "In March 2025 the developer Yigal Dimri estimated that in a decade or two prices in the quarter could reach ₪150,000 per m2: a very optimistic forecast against today's average of about ₪83,000.",
+  "numbers": [
+   "150,000",
+   "2025",
+   "3.2025",
+   "10",
+   "20"
+  ],
+  "date": "3.3.2025",
+  "source": "NC2503",
+  "conflict": "",
+  "write_as": "A forecast; 'a decade or two'."
+ },
+ {
+  "claim_id": "SDP-19",
+  "page": "sde-dov-prices",
+  "topic": "method",
+  "claim": "Counts in the page's own words: four main price factors; three markets (small apartments, family apartments, premium); at least ten parameters for comparing two apartments.",
+  "numbers": [
+   "4",
+   "3",
+   "10"
+  ],
+  "date": "",
+  "source": "Hebrew source (editorial)",
+  "conflict": "",
+  "write_as": "Words or digits."
+ }
+]

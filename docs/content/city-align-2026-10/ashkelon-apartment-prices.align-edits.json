@@ -13,7 +13,8 @@
   "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
-  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
+  "Tier 3 under the CEO rule (7.10.2026): listing-site rents left in the body. Apply AFTER tier 1 and tier 2 (both are live on this page), on the live content, in the listed order. ceo_action: replaced = the CBS value (table 4.9, Q2 2026) now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row, column or paragraph gone. Whole elements deleted with their tags (paragraph) carry the tags in 'old'."
  ],
  "claims_summary": {
   "claims": {
@@ -28,9 +29,10 @@
    "UNSOURCED": 81,
    "CONSISTENT": 2
   },
-  "edits": 11,
+  "edits": 23,
   "tier1": 11,
-  "tier2": 0
+  "tier2": 0,
+  "tier3": 12
  },
  "notes": "Not audited as claims (illustrations, not market statements): 4,700 / 3,200 rent example (p@52732), the 1.32M / 1.82M / 2.6M if-examples (p@55258), 1,560,000 'a flat sold in some street' (p@56345 first sentence), 2.2M new-flat example (p@62294), 1.75M / 1.58-1.65M if-example (p@62980 first sentence). Rent and listing figures are outside the official list and are kept where the page dates its check (6.6.2026) and names the kind of source. The 3-room median fell 20.6% in one quarter (1,142,100 in 10-12.2025 to 918,100 in 1-3.2026); the FAQ shows both quarters.",
  "claims": [
@@ -710,6 +712,301 @@
    "raw_risk": [
     "straight double quote"
    ]
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "בשכירות, נקודת האמצע העירונית במודעות עומדת סביב 3,500 ש\"ח בחודש, ובדירות גדולות או חדשות השכירות גבוהה יותר.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע באשקלון ברבעון השני של 2026 (אפריל עד יוני) היה 2,740 ש\"ח לדירות של 1 עד 2 חדרים, 3,261 ש\"ח לדירות של 2.5 עד 3 חדרים, 4,031 ש\"ח לדירות של 3.5 עד 4 חדרים ו-4,906 ש\"ח לדירות של 4.5 חדרים ומעלה.",
+   "source_keys": [
+    "cbs_rent[אשקלון].total.q2_2026",
+    "cbs_rent[אשקלון].1-2.q2_2026",
+    "cbs_rent[אשקלון].2.5-3.q2_2026",
+    "cbs_rent[אשקלון].3.5-4.q2_2026",
+    "cbs_rent[אשקלון].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Lead: the listing midpoint 3,500 (and the unsourced 'bigger or newer flats rent higher') replaced by the CBS average monthly rent in Ashkelon by size group, Q2 2026 (table 4.9: 2,739.9; 3,260.8; 4,031.3; 4,905.7); the size groups themselves show the rise with size.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 12,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the listing-site city rent midpoint 3,500 with the CBS Ashkelon averages by size group, Q2 2026: 2,740 / 3,261 / 4,031 / 4,906 ש\"ח",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "לצד שכירות מבוקשת ממוצעת סביב 3,500 ש\"ח בחודש במקור אחד, ומדיאן שכירות סביב 3,500 ש\"ח לפי מדגם אחר של 279 מודעות פעילות. נתון נוסף מאותו מדגם שכירות מצביע על ממוצע של כ-4,130 ש\"ח, כך שהפער בין ממוצע למדיאן מלמד על משקל של דירות גדולות, חדשות או יקרות יותר שמושכות את הממוצע כלפי מעלה.",
+   "new": "ולפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בעיר ברבעון השני של 2026 (אפריל עד יוני) היה 3,698 ש\"ח.",
+   "source_keys": [
+    "cbs_rent[אשקלון].total.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Body: asking-rent average and median (3,500), the 279-ad sample, its average (4,130) and the remark built on the gap between them replaced by the CBS average monthly rent in Ashkelon (3,697.9), Q2 2026. The sentence that follows ('so a buyer should not settle for one city number') stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 13,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the private rent figures (average 3,500, median 3,500 from 279 ads, average 4,130) and the median-vs-average remark with the CBS Ashkelon average 3,698 ש\"ח, Q2 2026",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "<p dir=\"rtl\">הפערים ניכרים גם בשכירות. מדגם מודעות עדכני הציג מדיאן שכירות של כ-3,209 ש\"ח בברנע, כ-4,233 ש\"ח באפרידר, כ-4,980 ש\"ח באגמים, כ-5,053 ש\"ח במרינה וכ-5,287 ש\"ח בעיר היין. באזורים אחרים נראו מדיאנים נמוכים יותר, למשל כ-2,300 ש\"ח בש\"י עגנון, כ-2,731 ש\"ח בבן גוריון, כ-2,858 ש\"ח בז'בוטינסקי וכ-2,918 ש\"ח בנווה ים. אלה אינם מחירי חוזים חתומים, אלא נתוני מודעות משתנים, אך הם מסמנים את מדרג הביקוש היחסי.</p>",
+   "new": "",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "A whole paragraph of neighbourhood rent medians from a private ad sample. The CBS publishes rent for the city and its size groups only, so there is nothing to replace them with and the paragraph has no content without the numbers. The paragraph before and after it do not refer to it.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 14,
+   "raw_risk": [
+    "straight double quote",
+    "apostrophe",
+    "contains tags"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the paragraph with 9 neighbourhood rent medians (Barnea 3,209, Afridar 4,233, Agamim 4,980, Marina 5,053, Ir HaYayin 5,287, S.Y. Agnon 2,300, Ben Gurion 2,731, Jabotinsky 2,858, Neve Yam 2,918): the CBS publishes no neighbourhood rent"
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "בצד השכירות, מדדי מודעות מאפשרים לראות את יחס הביקוש. לדוגמה, מדיאן שכירות של כ-5,287 ש\"ח בעיר היין, כ-5,053 ש\"ח במרינה וכ-4,980 ש\"ח באגמים עשוי להעיד על ביקוש לדירות חדשות או איכותיות, אך הוא לא מוכיח לבדו ששווי המכירה גבוה באותו שיעור. לשווי מכירה נכנסים גם",
+   "new": "לשווי מכירה נכנסים",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Neighbourhood rent medians (5,287, 5,053, 4,980) and the inference 'may indicate demand for new flats' have no official counterpart; deleted. The last sentence (land price, building age, project supply, delivery date, legal status, payment terms) is general and stays, with its 'also' dropped so it reads on its own.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 15,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the two sentences with neighbourhood rent medians (Ir HaYayin 5,287, Marina 5,053, Agamim 4,980) and the demand reading drawn from them; the sentence on what enters a sale value stays"
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">אזור או שכונה</th>\n<th dir=\"rtl\">מדיאן שכירות שנצפה</th>\n<th dir=\"rtl\">סיגנל מחיר</th>\n<th dir=\"rtl\">מה לבדוק לפני השוואה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרינה</td>\n<td dir=\"rtl\">כ-5,053 ש\"ח</td>\n<td dir=\"rtl\">פרמיית ים, נוף ודירות מיוחדות</td>\n<td dir=\"rtl\">קו לים, נוף חסום או פתוח, חניה, תחזוקה ודמי ועד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">ברנע</td>\n<td dir=\"rtl\">כ-3,209 ש\"ח</td>\n<td dir=\"rtl\">ביקוש משפחתי, אזור צפוני מבוקש</td>\n<td dir=\"rtl\">רחוב, גיל בניין, ממ\"ד, מעלית וקרבה לשירותים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">גני ברנע</td>\n<td dir=\"rtl\">כ-4,643 ש\"ח</td>\n<td dir=\"rtl\">דירות משפחתיות ושכונה מבוקשת</td>\n<td dir=\"rtl\">שטח דירה, חניה, קומה ומצב הבניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אפרידר</td>\n<td dir=\"rtl\">כ-4,233 ש\"ח</td>\n<td dir=\"rtl\">מיקום ותיק עם ביקוש יציב</td>\n<td dir=\"rtl\">בניין ותיק מול מחודש, זכויות ושיפוץ</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אגמים</td>\n<td dir=\"rtl\">כ-4,980 ש\"ח</td>\n<td dir=\"rtl\">דירות חדשות יחסית, משפחות ומפרט מודרני</td>\n<td dir=\"rtl\">מועד בנייה, תחרות מפרויקטים סמוכים ומחיר חניה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">עיר היין</td>\n<td dir=\"rtl\">כ-5,287 ש\"ח</td>\n<td dir=\"rtl\">שוק חדש יותר עם ציפיות מחיר</td>\n<td dir=\"rtl\">מסירה, הצמדות, פיתוח סביבתי והיצע עתידי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">הסיטי</td>\n<td dir=\"rtl\">כ-5,500 ש\"ח</td>\n<td dir=\"rtl\">נגישות עירונית ודירות במיקומים מרכזיים</td>\n<td dir=\"rtl\">רעש, חניה, תכנון סביבתי ומצב הנכס</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה ים</td>\n<td dir=\"rtl\">כ-2,918 ש\"ח</td>\n<td dir=\"rtl\">אפשרות למחיר נוח יותר בחלק מהנכסים</td>\n<td dir=\"rtl\">מצב דירה, קרבה אמיתית לים ואיכות הבניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בן גוריון</td>\n<td dir=\"rtl\">כ-2,731 ש\"ח</td>\n<td dir=\"rtl\">שוק נגיש יותר לשוכרים וקונים מסוימים</td>\n<td dir=\"rtl\">עסקאות קרובות, תחזוקה, מעלית וזכויות</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">אזור או שכונה</th>\n<th dir=\"rtl\">מה לבדוק לפני השוואה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרינה</td>\n<td dir=\"rtl\">קו לים, נוף חסום או פתוח, חניה, תחזוקה ודמי ועד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">ברנע</td>\n<td dir=\"rtl\">רחוב, גיל בניין, ממ\"ד, מעלית וקרבה לשירותים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">גני ברנע</td>\n<td dir=\"rtl\">שטח דירה, חניה, קומה ומצב הבניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אפרידר</td>\n<td dir=\"rtl\">בניין ותיק מול מחודש, זכויות ושיפוץ</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אגמים</td>\n<td dir=\"rtl\">מועד בנייה, תחרות מפרויקטים סמוכים ומחיר חניה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">עיר היין</td>\n<td dir=\"rtl\">מסירה, הצמדות, פיתוח סביבתי והיצע עתידי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">הסיטי</td>\n<td dir=\"rtl\">רעש, חניה, תכנון סביבתי ומצב הנכס</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה ים</td>\n<td dir=\"rtl\">מצב דירה, קרבה אמיתית לים ואיכות הבניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בן גוריון</td>\n<td dir=\"rtl\">עסקאות קרובות, תחזוקה, מעלית וזכויות</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Neighbourhood rent medians from private ads have no official counterpart (the CBS has no neighbourhood rent). The 'price signal' column (sea premium, accessible market, expectation of price...) read the rent level into each area and is a level claim without an official figure; it goes with the rent. The areas and the what-to-check advice stay word for word.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 16,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מדיאן שכירות שנצפה</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the neighbourhood rent column (9 values 2,731-5,500) and the price-signal column that restated the rent level; area and what-to-check columns stay"
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "דירה שמושכרת ב-4,700 ש\"ח בחודש עשויה להצדיק מחיר גבוה יותר מדירה שמושכרת ב-3,200 ש\"ח,",
+   "new": "דירה שמושכרת בשכר גבוה יותר עשויה להצדיק מחיר גבוה יותר מדירה שמושכרת בשכר נמוך יותר,",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Two illustrative rents (4,700 vs 3,200) were in the range of the listing-site data on the page; the CBS has no single counterpart, so the numbers are removed and the point (a stable higher rent can justify a higher price) is kept.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 17,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the two illustrative rents 4,700 and 3,200; the comparison stays in words"
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "לפי מדגם עדכני של 279 מודעות, מדיאן השכירות באשקלון היה סביב 3,500 ש\"ח, הממוצע סביב 4,130 ש\"ח, ודירת 3 חדרים הראתה מדיאן של כ-3,629 ש\"ח לעומת מדיאן ארצי של כ-4,400 ש\"ח.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע באשקלון ברבעון השני של 2026 (אפריל עד יוני) היה 3,698 ש\"ח לכלל הדירות ו-3,261 ש\"ח לדירות של 2.5 עד 3 חדרים, לעומת 5,086 ו-4,466 ש\"ח בהתאמה בממוצע הארצי.",
+   "source_keys": [
+    "cbs_rent[אשקלון].total.q2_2026",
+    "cbs_rent[אשקלון].2.5-3.q2_2026",
+    "cbs_rent[סך הכל].total.q2_2026",
+    "cbs_rent[סך הכל].2.5-3.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Listing sample of 279 ads (median 3,500; average 4,130; 3 rooms 3,629; national median 4,400) replaced by the CBS average rent for all flats and for 2.5-3 rooms in Ashkelon and in Israel, Q2 2026. The sentence that follows ('the gap can attract buyers looking for a lower entry price') now rests on an official gap.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 18,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the 279-ad sample (median 3,500, average 4,130, 3 rooms 3,629, national median 4,400) with the CBS averages: Ashkelon 3,698 / 3,261 (2.5-3 rooms) against 5,086 / 4,466 nationally, Q2 2026",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "מקור מודעות אחר הציג 293 מודעות שכירות, ממוצע של כ-4,108 ש\"ח, מדיאן 3,500 ש\"ח ועדכון מיום 4 ביוני 2026. מקורות כאלה טובים",
+   "new": "מקורות מודעות שכירות טובים",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "A second listing-site sample (293 ads, average 4,108, median 3,500) with no official counterpart: the figures go, the general remark that ad sources help see direction (and their limits, in the next sentences) stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 19,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the second listing source (293 ads, average 4,108, median 3,500, 4.6.2026); the general remark on listing sources stays"
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מספר חדרים</th>\n<th dir=\"rtl\">מדיאן שכירות במדגם מודעות</th>\n<th dir=\"rtl\">מספר מודעות במדגם</th>\n<th dir=\"rtl\">נתון השוואה נוסף</th>\n<th dir=\"rtl\">איך להשתמש במחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">1 חדר</td>\n<td dir=\"rtl\">2,479 ש\"ח</td>\n<td dir=\"rtl\">26 מודעות</td>\n<td dir=\"rtl\">טווח שוק קטן ורגיש</td>\n<td dir=\"rtl\">מתאים לזיהוי ביקוש לדירות קטנות, לא לתמחור דירות משפחתיות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">2,963 ש\"ח</td>\n<td dir=\"rtl\">74 מודעות</td>\n<td dir=\"rtl\">מקור נוסף הציג 2.30 אלף ש\"ח</td>\n<td dir=\"rtl\">בדוק האם הדירה מחולקת, משופצת, עם מעלית או קרובה לים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">3,629 ש\"ח</td>\n<td dir=\"rtl\">74 מודעות</td>\n<td dir=\"rtl\">מדיאן ארצי להשוואה: 4,400 ש\"ח</td>\n<td dir=\"rtl\">קטגוריה טובה לחיבור בין מחיר מכירה לבין ביקוש שכירות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">4,709 ש\"ח</td>\n<td dir=\"rtl\">57 מודעות</td>\n<td dir=\"rtl\">מקור נוסף הציג 4.20 אלף ש\"ח</td>\n<td dir=\"rtl\">בדוק חניה, ממ\"ד, מרפסת ואזור חינוך</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">7,127 ש\"ח</td>\n<td dir=\"rtl\">34 מודעות</td>\n<td dir=\"rtl\">מקור נוסף הציג 5.50 אלף ש\"ח</td>\n<td dir=\"rtl\">פערים גדולים בין דירה רגילה, חדשה, גן, פנטהאוז או מרינה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">6 חדרים</td>\n<td dir=\"rtl\">18,000 ש\"ח</td>\n<td dir=\"rtl\">מודעה 1</td>\n<td dir=\"rtl\">נתון חריג במדגם קטן</td>\n<td dir=\"rtl\">אין להסיק ממנו על כלל הדירות הגדולות בעיר</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מספר חדרים</th>\n<th dir=\"rtl\">שכר דירה חודשי ממוצע באשקלון, אפריל עד יוני 2026 (הלמ\"ס)</th>\n<th dir=\"rtl\">ממוצע ארצי באותה קבוצה (הלמ\"ס)</th>\n<th dir=\"rtl\">איך להשתמש במחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">1 עד 2 חדרים</td>\n<td dir=\"rtl\">2,740 ש\"ח</td>\n<td dir=\"rtl\">3,760 ש\"ח</td>\n<td dir=\"rtl\">מתאים לזיהוי ביקוש לדירות קטנות, לא לתמחור דירות משפחתיות; בדוק האם הדירה מחולקת, משופצת, עם מעלית או קרובה לים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2.5 עד 3 חדרים</td>\n<td dir=\"rtl\">3,261 ש\"ח</td>\n<td dir=\"rtl\">4,466 ש\"ח</td>\n<td dir=\"rtl\">קטגוריה טובה לחיבור בין מחיר מכירה לבין ביקוש שכירות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3.5 עד 4 חדרים</td>\n<td dir=\"rtl\">4,031 ש\"ח</td>\n<td dir=\"rtl\">5,454 ש\"ח</td>\n<td dir=\"rtl\">בדוק חניה, ממ\"ד, מרפסת ואזור חינוך</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4.5 חדרים ומעלה</td>\n<td dir=\"rtl\">4,906 ש\"ח</td>\n<td dir=\"rtl\">7,137 ש\"ח</td>\n<td dir=\"rtl\">פערים גדולים בין דירה רגילה, חדשה, גן, פנטהאוז או מרינה</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "cbs_rent[אשקלון].total.q2_2026",
+    "cbs_rent[אשקלון].1-2.q2_2026",
+    "cbs_rent[אשקלון].2.5-3.q2_2026",
+    "cbs_rent[אשקלון].3.5-4.q2_2026",
+    "cbs_rent[אשקלון].4.5+.q2_2026",
+    "cbs_rent[סך הכל].1-2.q2_2026",
+    "cbs_rent[סך הכל].2.5-3.q2_2026",
+    "cbs_rent[סך הכל].3.5-4.q2_2026",
+    "cbs_rent[סך הכל].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent table (6 rows from an ad sample: 2,479; 2,963; 3,629; 4,709; 7,127; 18,000 with ad counts and 'another source' 2.30 / 4.20 / 5.50 thousand) rebuilt on the CBS average monthly rent in Ashkelon by size group, Q2 2026, with the national CBS average of the same group beside it (it replaces the old national median 4,400). Columns deleted: ad counts and the second private source. Rows regrouped to the CBS groups (1 and 2 rooms merged); the 6-room row was one ad (18,000), dropped. Usage notes stay word for word (the merged pair joined).",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 20,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מדיאן שכירות במדגם מודעות</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "rebuilt the rent-by-rooms table on the CBS Ashkelon size groups (2,740 / 3,261 / 4,031 / 4,906 ש\"ח, Q2 2026) with the national CBS average for each group; ad counts, the second-source column and the one-ad 6-room row (18,000) deleted",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "ומושכרת באזור ב-3,600 ש\"ח, זה נותן מסגרת. אם דירת 4 חדרים מוצעת ב-1.82 מיליון ש\"ח והמדיאן האזורי לדירות דומות הוא 4,700 ש\"ח, צריך לבדוק האם המחיר משקף יתרון מובהק או ציפייה גבוהה. אם דירת 5 חדרים מבוקשת ב-2.6 מיליון ש\"ח, אבל השכירות הריאלית קרובה ל-5,500 ש\"ח ולא ל-7,100 ש\"ח, מחיר הקנייה צריך להיבחן בזהירות.",
+   "new": "ומושכרת באזור בכ-3,261 ש\"ח, הממוצע של הלמ\"ס לדירות של 2.5 עד 3 חדרים ברבעון השני של 2026, זה נותן מסגרת. אם דירת 4 חדרים מוצעת ב-1.82 מיליון ש\"ח והשכירות האזורית לדירות דומות קרובה ל-4,031 ש\"ח, הממוצע של הלמ\"ס לדירות של 3.5 עד 4 חדרים, צריך לבדוק האם המחיר משקף יתרון מובהק או ציפייה גבוהה. אם דירת 5 חדרים מבוקשת ב-2.6 מיליון ש\"ח, אבל השכירות הריאלית קרובה ל-4,906 ש\"ח, הממוצע של הלמ\"ס לדירות של 4.5 חדרים ומעלה, ולא לסכום גבוה בהרבה, מחיר הקנייה צריך להיבחן בזהירות.",
+   "source_keys": [
+    "cbs_rent[אשקלון].2.5-3.q2_2026",
+    "cbs_rent[אשקלון].3.5-4.q2_2026",
+    "cbs_rent[אשקלון].4.5+.q2_2026",
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Worked examples built on ad-site rents (3,600; regional median 4,700; 5,500 against 7,100) now use the CBS Ashkelon size-group averages of Q2 2026. The hypothetical sale prices (1.32, 1.82, 2.6 million) were already on the page and are untouched; the 7,100 'asked rent' becomes 'a much higher sum'.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 21,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "kept_numbers": [
+    "1.32",
+    "1.82",
+    "2.6"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the example rents 3,600 / 4,700 / 5,500 / 7,100 with the CBS Ashkelon averages for 2.5-3, 3.5-4 and 4.5+ rooms (3,261 / 4,031 / 4,906 ש\"ח, Q2 2026); the hypothetical sale prices stay",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "בעיר היין נראו נתוני שכירות סביב 5,287 ש\"ח במדיאן, ובאגמים סביב 4,980 ש\"ח. אלה מספרים שמאותתים על ביקוש, אך גם על כך שהקונה צריך",
+   "new": "בשווקים כאלה הקונה צריך",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Neighbourhood rents from ads, no official counterpart: removed. The remaining point (check how much new supply is coming) is advice and stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 22,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the neighbourhood rents (Ir HaYayin 5,287, Agamim 4,980); the advice to check the supply still to come stays"
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "מדיאן שכירות עירוני שנצפה עמד סביב 3,500 ש\"ח בחודש, עם ממוצעים סביב 4,108-4,130 ש\"ח במדגמים שונים. לפי חדרים, נראו מדיאנים של כ-2,963 ש\"ח לדירת 2 חדרים, כ-3,629 ש\"ח לדירת 3 חדרים, כ-4,709 ש\"ח לדירת 4 חדרים וכ-7,127 ש\"ח לדירת 5 חדרים במדגם מודעות מסוים.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע באשקלון ברבעון השני של 2026 (אפריל עד יוני) היה 3,698 ש\"ח בממוצע לכלל הדירות, ובחלוקה לפי גודל: 2,740 ש\"ח לדירות של 1 עד 2 חדרים, 3,261 ש\"ח לדירות של 2.5 עד 3 חדרים, 4,031 ש\"ח לדירות של 3.5 עד 4 חדרים ו-4,906 ש\"ח לדירות של 4.5 חדרים ומעלה.",
+   "source_keys": [
+    "cbs_rent[אשקלון].total.q2_2026",
+    "cbs_rent[אשקלון].1-2.q2_2026",
+    "cbs_rent[אשקלון].2.5-3.q2_2026",
+    "cbs_rent[אשקלון].3.5-4.q2_2026",
+    "cbs_rent[אשקלון].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ 'how much rent in Ashkelon': ad-sample medians and averages replaced by the CBS average rent in Ashkelon for all flats (3,697.9) and by size group, Q2 2026.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 23,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the FAQ rents (city median 3,500, averages 4,108-4,130, by rooms 2,963 / 3,629 / 4,709 / 7,127) with the CBS Ashkelon averages for all flats and by size group, Q2 2026",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
   }
  ],
  "live_recheck": {
@@ -719,5 +1016,14 @@
   "price_list_on_page": true,
   "body_outside_list_identical_to_audited_copy": "yes",
   "dry_run": "11 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ },
+ "tier3_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 20:28:00",
+  "modified": "2026-10-07T14:37:04",
+  "result": "fetched 7.10.2026 with tier 1 and tier 2 live; every tier-3 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 12,
+  "replaced": 6,
+  "removed": 3,
+  "deleted": 3
  }
 }

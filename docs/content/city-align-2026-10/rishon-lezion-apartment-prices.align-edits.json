@@ -14,7 +14,8 @@
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
   "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
-  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note.",
+  "Tier 3 under the CEO rule (7.10.2026): listing-site rents left in the body. Apply AFTER tier 1 and tier 2 (both are live on this page), on the live content, in the listed order. ceo_action: replaced = the CBS value (table 4.9, Q2 2026) now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row, column or paragraph gone. Whole elements deleted with their tags (paragraph) carry the tags in 'old'."
  ],
  "claims_summary": {
   "claims": {
@@ -29,9 +30,10 @@
    "UNSOURCED": 47,
    "CONSISTENT": 12
   },
-  "edits": 9,
+  "edits": 15,
   "tier1": 7,
-  "tier2": 2
+  "tier2": 2,
+  "tier3": 6
  },
  "notes": "No conflicts on this page: the 3/4/5-room working ranges of the rooms table and of the FAQ all contain the official medians (1,936,700 / 2,392,600 / 3,631,900, 1-3.2026). They are kept word for word; the official median is added next to them (table column, FAQ first sentence). Not audited as claims (illustrations, not market statements): the 2,300,000 cost example (p@7295), the 2,700,000 budget example (p@9571), the buyer / seller / owner if-examples 2,420,000 / 2,550,000 / 2,400,000-2,480,000, 2,650,000 / 2,950,000, 150,000 / 180,000 (p@10058, p@10336, p@10594), the 8,000 / 4,500 rent example (p@17742), the six-step example table with its 'דוגמה מספרית' column (tr@26035..26925: 2,380,000-2,620,000 deals, 2,550,000-2,890,000 asking, 5,600-6,300 rent, 80,000 + 35,000 costs, 2,470,000 offer vs 2,650,000), the seller example 2,850,000 / 2,550,000-2,680,000 (p@27132), the 12% and 10% / 15% negotiation examples (p@27539, p@30137). Rent figures are kept: the page names samples ('לפי מדגם', 'בחלק מהמדגמים') and shows its check date 6.6.2026, but it never says the samples are listings; if a stricter reading is wanted, the rent table header 'שכירות חודשית לדוגמה' is the weakest point. Renovation-cost ranges (p@13670, tr@22065) are tier 2. Official quirks: Remez 5 rooms 4,153,600 is above the city 5-room median and Rambam 5 rooms is 2,497,900 (small samples). Qualitative text NOT edited but at odds with the official neighbourhood medians: the lead (p@4322) and the neighbourhood table (tr@11550..13426) present Ramat Eliyahu as 'נמוך עד בינוני' and Nahalat Yehuda among the older central areas, while the official 4-room medians are Ramat Eliyahu 2,295,000, Remez 2,140,200, Rambam 2,086,400, Abramovitz 1,941,000 and Nahalat Yehuda 3,460,700. The JSON-LD script and the closing disclaimer ('טווחי בדיקה') are outside the audit and unchanged. The official neighbourhood list in the city file holds exactly 8 names (it may be capped), so the text does not say that Neve Yam or Nobel have no published median; it says they are not in the table.",
  "claims": [
@@ -478,6 +480,153 @@
    "raw_risk": [
     "straight double quote"
    ]
+  },
+  {
+   "page_id": 4581,
+   "url": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "field": "content",
+   "old": "חציון שכירות סביב 5,000 ש\"ח לחודש, ממוצעים סביב 5,787 עד 6,131 ש\"ח לפי מדגם ושיטת חישוב, ורמות גבוהות יותר בשכונות מערביות, חדשות או קרובות יותר לצירי ביקוש.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בראשון לציון ברבעון השני של 2026 (אפריל עד יוני) היה 5,273 ש\"ח בממוצע לכלל הדירות, ובחלוקה לפי גודל: 3,732 ש\"ח לדירות של 1 עד 2 חדרים, 4,702 ש\"ח לדירות של 2.5 עד 3 חדרים, 5,555 ש\"ח לדירות של 3.5 עד 4 חדרים ו-7,498 ש\"ח לדירות של 4.5 חדרים ומעלה.",
+   "source_keys": [
+    "cbs_rent[ראשון לציון].total.q2_2026",
+    "cbs_rent[ראשון לציון].1-2.q2_2026",
+    "cbs_rent[ראשון לציון].2.5-3.q2_2026",
+    "cbs_rent[ראשון לציון].3.5-4.q2_2026",
+    "cbs_rent[ראשון לציון].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Lead: 'median rent about 5,000, averages 5,787 to 6,131 by sample and method, higher in western, new or demand-axis neighbourhoods' replaced by the CBS average monthly rent in Rishon LeZion for all flats (5,272.9, against the listing averages 5,787-6,131) and by size group (3,732.3; 4,701.8; 5,554.7; 7,497.7), Q2 2026. The western-neighbourhood clause was a neighbourhood level claim without an official figure and goes.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 10,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the lead rents (median 5,000; averages 5,787-6,131 the CEO flagged; higher in western neighbourhoods) with the CBS Rishon LeZion averages for all flats (5,273) and by size group, Q2 2026",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4581,
+   "url": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "field": "content",
+   "old": "בראשון לציון חציון שכירות סביב 5,000 ש\"ח בחלק מהמדגמים, וממוצעים סביב 5,787 עד 6,131 ש\"ח בחישובים אחרים. הפער בין חציון לממוצע נובע בין היתר מדירות גדולות, שכונות מערביות ודירות חדשות שמעלות את הממוצע.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בראשון לציון ברבעון השני של 2026 (אפריל עד יוני) היה 5,273 ש\"ח בממוצע לכלל הדירות ו-7,498 ש\"ח לדירות של 4.5 חדרים ומעלה, ומכאן שדירות גדולות מעלות את הממוצע.",
+   "source_keys": [
+    "cbs_rent[ראשון לציון].total.q2_2026",
+    "cbs_rent[ראשון לציון].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Body: median/average gap (5,000 against 5,787-6,131) and its explanation replaced by the CBS average for all flats (5,272.9) and for 4.5+ rooms (7,497.7), Q2 2026; the explanation 'large flats lift the average' now stands on the two official figures. 'Western neighbourhoods and new flats' (no figure) goes.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 11,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the median 5,000, the averages 5,787-6,131 and the remark on large/western/new flats with the CBS Rishon LeZion averages 5,273 (all flats) and 7,498 (4.5+ rooms), Q2 2026",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4581,
+   "url": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שכונה או אזור</th>\n<th dir=\"rtl\">שכירות חודשית לדוגמה</th>\n<th dir=\"rtl\">מה המספר יכול לרמוז</th>\n<th dir=\"rtl\">זהירות בבדיקה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רמב\"ם</td>\n<td dir=\"rtl\">כ-5,514 ש\"ח</td>\n<td dir=\"rtl\">ביקוש למרכז ותיק ונגיש</td>\n<td dir=\"rtl\">השוואה לפי גודל ומצב דירה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אברמוביץ</td>\n<td dir=\"rtl\">כ-5,728 ש\"ח</td>\n<td dir=\"rtl\">שכירות יציבה באזור מרכזי</td>\n<td dir=\"rtl\">בדיקת חניה ורעש</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה חוף</td>\n<td dir=\"rtl\">כ-7,481 ש\"ח</td>\n<td dir=\"rtl\">פרמיה למערב העיר ולדירות איכותיות</td>\n<td dir=\"rtl\">להשוות לדירות באותו שטח</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רמז</td>\n<td dir=\"rtl\">כ-5,263 ש\"ח</td>\n<td dir=\"rtl\">שוק ביניים עם ביקוש משפחתי</td>\n<td dir=\"rtl\">גיל בניין ומצב תחזוקה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה דקלים</td>\n<td dir=\"rtl\">כ-3,900 ש\"ח</td>\n<td dir=\"rtl\">ייתכן מדגם קטן או דירות קטנות יותר</td>\n<td dir=\"rtl\">לא להסיק משכירות אחת בלבד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קצנלסון</td>\n<td dir=\"rtl\">כ-4,906 ש\"ח</td>\n<td dir=\"rtl\">מחיר שכירות מתון יחסית</td>\n<td dir=\"rtl\">בדיקת סוג נכס ורמת שיפוץ</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שיכוני המזרח</td>\n<td dir=\"rtl\">כ-5,140 ש\"ח</td>\n<td dir=\"rtl\">ביקוש לדירות במחיר נגיש יותר</td>\n<td dir=\"rtl\">פער בין בניינים ותיקים לחדשים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה ים</td>\n<td dir=\"rtl\">כ-7,220 ש\"ח</td>\n<td dir=\"rtl\">רמת שכירות גבוהה יחסית</td>\n<td dir=\"rtl\">בדיקת קומה, מרפסת ונוף</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נחלת יהודה</td>\n<td dir=\"rtl\">כ-5,025 ש\"ח</td>\n<td dir=\"rtl\">שכירות ביניים בהתאם למיקום</td>\n<td dir=\"rtl\">להפריד בין בנייה ישנה לחדשה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרום ראשון</td>\n<td dir=\"rtl\">כ-6,450 ש\"ח</td>\n<td dir=\"rtl\">ביקוש לדירות גדולות ומשפחתיות</td>\n<td dir=\"rtl\">השוואה לפי שטח וחניה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רמת אליהו</td>\n<td dir=\"rtl\">כ-4,100 ש\"ח</td>\n<td dir=\"rtl\">שכירות נמוכה יותר ביחס למערב העיר</td>\n<td dir=\"rtl\">תכניות התחדשות ומצב בניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שער הים</td>\n<td dir=\"rtl\">כ-8,950 ש\"ח</td>\n<td dir=\"rtl\">פרמיה לדירות חדשות, גדולות או מערביות</td>\n<td dir=\"rtl\">לא לערבב עם דירות קטנות במרכז</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נרקיסים</td>\n<td dir=\"rtl\">כ-4,400 ש\"ח</td>\n<td dir=\"rtl\">ייתכן פער בין שלבי אכלוס וסוגי דירות</td>\n<td dir=\"rtl\">לבדוק מדגם עדכני וגודל דירה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית גנים</td>\n<td dir=\"rtl\">כ-5,200 ש\"ח</td>\n<td dir=\"rtl\">ביקוש משפחתי יציב</td>\n<td dir=\"rtl\">מצב דירה ומרחק משירותים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית חתני פרס נובל</td>\n<td dir=\"rtl\">כ-8,200 ש\"ח</td>\n<td dir=\"rtl\">שכירות גבוהה לדירות גדולות ומבוקשות</td>\n<td dir=\"rtl\">להצליב עם עסקאות מכירה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית כרמים</td>\n<td dir=\"rtl\">כ-8,000 ש\"ח</td>\n<td dir=\"rtl\">רמת ביקוש גבוהה יחסית</td>\n<td dir=\"rtl\">בדיקת סטנדרט בנייה ותחזוקה</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שכונה או אזור</th>\n<th dir=\"rtl\">זהירות בבדיקה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רמב\"ם</td>\n<td dir=\"rtl\">השוואה לפי גודל ומצב דירה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אברמוביץ</td>\n<td dir=\"rtl\">בדיקת חניה ורעש</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה חוף</td>\n<td dir=\"rtl\">להשוות לדירות באותו שטח</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רמז</td>\n<td dir=\"rtl\">גיל בניין ומצב תחזוקה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה דקלים</td>\n<td dir=\"rtl\">לא להסיק מנתון בודד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קצנלסון</td>\n<td dir=\"rtl\">בדיקת סוג נכס ורמת שיפוץ</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שיכוני המזרח</td>\n<td dir=\"rtl\">פער בין בניינים ותיקים לחדשים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה ים</td>\n<td dir=\"rtl\">בדיקת קומה, מרפסת ונוף</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נחלת יהודה</td>\n<td dir=\"rtl\">להפריד בין בנייה ישנה לחדשה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרום ראשון</td>\n<td dir=\"rtl\">השוואה לפי שטח וחניה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רמת אליהו</td>\n<td dir=\"rtl\">תכניות התחדשות ומצב בניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שער הים</td>\n<td dir=\"rtl\">לא לערבב עם דירות קטנות במרכז</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נרקיסים</td>\n<td dir=\"rtl\">לבדוק גודל דירה ושלב אכלוס</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית גנים</td>\n<td dir=\"rtl\">מצב דירה ומרחק משירותים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית חתני פרס נובל</td>\n<td dir=\"rtl\">להצליב עם עסקאות מכירה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית כרמים</td>\n<td dir=\"rtl\">בדיקת סטנדרט בנייה ותחזוקה</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Neighbourhood example rents have no official counterpart (the CBS has no neighbourhood rent). The rent column goes, and so does the column that read each number ('premium for the west', 'moderate rent', 'relatively high rent'): without the number every cell of it is a rent-level claim without an official figure. The caution column (what to check) stays word for word except two cells that pointed at a rent sample: Neve Dekalim 'do not conclude from one rent alone' -> 'do not conclude from a single figure', Narkissim 'check a recent sample and flat size' -> 'check flat size and occupancy stage'.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 12,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">שכירות חודשית לדוגמה</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the neighbourhood rent column (16 values 3,900-8,950 ש\"ח) and the \"what the number may hint\" column (premium, moderate, relatively high...); the caution column stays, two cautions that pointed at a rent sample were reworded"
+  },
+  {
+   "page_id": 4581,
+   "url": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "field": "content",
+   "old": "דירה שמושכרת ב-8,000 ש\"ח אך נמכרת במחיר המשקף פרמיה חריגה עדיין דורשת בדיקת עסקאות סגורות. לעומת זאת, דירה שמושכרת ב-4,500 ש\"ח אך נמכרת במחיר נמוך יחסית",
+   "new": "דירה שמושכרת בשכר גבוה אך נמכרת במחיר המשקף פרמיה חריגה עדיין דורשת בדיקת עסקאות סגורות. לעומת זאת, דירה שמושכרת בשכר נמוך אך נמכרת במחיר נמוך יחסית",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Two invented comparison rents (8,000 'high', 4,500 'low') that sit inside the listing-site range on the page; the CBS has no single counterpart (the flat's size is not given). The numbers go, the logic (a high rent with a premium price still needs closed-deal checks; a low rent with a low price can suit a renovator) stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 13,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the two illustrative rents 8,000 and 4,500; the two cases are stated in words"
+  },
+  {
+   "page_id": 4581,
+   "url": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שלב</th>\n<th dir=\"rtl\">פעולה</th>\n<th dir=\"rtl\">דוגמה מספרית</th>\n<th dir=\"rtl\">תוצאה רצויה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">1</td>\n<td dir=\"rtl\">הגדרת נכס דומה</td>\n<td dir=\"rtl\">4 חדרים, 98 מ\"ר, קומה 5, חניה ומרפסת</td>\n<td dir=\"rtl\">מסגרת השוואה נכונה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2</td>\n<td dir=\"rtl\">בדיקת עסקאות</td>\n<td dir=\"rtl\">8 עסקאות בטווח 2,380,000 עד 2,620,000 ש\"ח</td>\n<td dir=\"rtl\">טווח שווי מבוסס</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3</td>\n<td dir=\"rtl\">בדיקת מודעות פעילות</td>\n<td dir=\"rtl\">12 דירות מבוקשות בטווח 2,550,000 עד 2,890,000 ש\"ח</td>\n<td dir=\"rtl\">הבנת מחיר פתיחה בשוק</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4</td>\n<td dir=\"rtl\">בדיקת שכירות</td>\n<td dir=\"rtl\">שכירות צפויה 5,600 עד 6,300 ש\"ח</td>\n<td dir=\"rtl\">בדיקת ביקוש ותמיכת מחיר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5</td>\n<td dir=\"rtl\">בדיקת עלויות נלוות</td>\n<td dir=\"rtl\">80,000 ש\"ח שיפוץ ועוד 35,000 ש\"ח עלויות עסקה</td>\n<td dir=\"rtl\">תקציב מלא ולא מחיר דירה בלבד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">6</td>\n<td dir=\"rtl\">קביעת הצעה</td>\n<td dir=\"rtl\">הצעה ראשונה 2,470,000 ש\"ח מול מחיר מבוקש 2,650,000 ש\"ח</td>\n<td dir=\"rtl\">משא ומתן עם עוגן נתונים</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שלב</th>\n<th dir=\"rtl\">פעולה</th>\n<th dir=\"rtl\">דוגמה מספרית</th>\n<th dir=\"rtl\">תוצאה רצויה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">1</td>\n<td dir=\"rtl\">הגדרת נכס דומה</td>\n<td dir=\"rtl\">4 חדרים, 98 מ\"ר, קומה 5, חניה ומרפסת</td>\n<td dir=\"rtl\">מסגרת השוואה נכונה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2</td>\n<td dir=\"rtl\">בדיקת עסקאות</td>\n<td dir=\"rtl\">8 עסקאות בטווח 2,380,000 עד 2,620,000 ש\"ח</td>\n<td dir=\"rtl\">טווח שווי מבוסס</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3</td>\n<td dir=\"rtl\">בדיקת מודעות פעילות</td>\n<td dir=\"rtl\">12 דירות מבוקשות בטווח 2,550,000 עד 2,890,000 ש\"ח</td>\n<td dir=\"rtl\">הבנת מחיר פתיחה בשוק</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4</td>\n<td dir=\"rtl\">בדיקת שכירות</td>\n<td dir=\"rtl\">שכירות צפויה 5,555 ש\"ח, הממוצע של הלמ\"ס לדירות של 3.5 עד 4 חדרים באפריל עד יוני 2026</td>\n<td dir=\"rtl\">בדיקת ביקוש ותמיכת מחיר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5</td>\n<td dir=\"rtl\">בדיקת עלויות נלוות</td>\n<td dir=\"rtl\">80,000 ש\"ח שיפוץ ועוד 35,000 ש\"ח עלויות עסקה</td>\n<td dir=\"rtl\">תקציב מלא ולא מחיר דירה בלבד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">6</td>\n<td dir=\"rtl\">קביעת הצעה</td>\n<td dir=\"rtl\">הצעה ראשונה 2,470,000 ש\"ח מול מחיר מבוקש 2,650,000 ש\"ח</td>\n<td dir=\"rtl\">משא ומתן עם עוגן נתונים</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "cbs_rent[ראשון לציון].3.5-4.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Step 4 of the worked example (4-room flat, 98 m2): 'expected rent 5,600 to 6,300' replaced by the CBS average monthly rent for 3.5-4 rooms in Rishon LeZion (5,554.7), Q2 2026. The other steps (deals range, active listings, renovation and transaction costs, first offer) are not rent figures and stay.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 14,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">דוגמה מספרית</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "in the worked-example table replaced the expected rent 5,600-6,300 for the 4-room flat with the CBS Rishon LeZion average for 3.5-4 rooms (5,555 ש\"ח, Q2 2026); the other steps are untouched",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4581,
+   "url": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "field": "content",
+   "old": "חציון שכירות יכול להיות סביב 5,000 ש\"ח לחודש, וממוצעים שונים נעים סביב 5,787 עד 6,131 ש\"ח לפי מדגם ושיטת חישוב. בשכונות מערביות או בדירות גדולות וחדשות, שכירות חודשית יכולה להגיע גם לכ-7,000 עד 9,000 ש\"ח.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בראשון לציון ברבעון השני של 2026 (אפריל עד יוני) היה 5,273 ש\"ח בממוצע לכלל הדירות, ובחלוקה לפי גודל: 3,732 ש\"ח לדירות של 1 עד 2 חדרים, 4,702 ש\"ח לדירות של 2.5 עד 3 חדרים, 5,555 ש\"ח לדירות של 3.5 עד 4 חדרים ו-7,498 ש\"ח לדירות של 4.5 חדרים ומעלה.",
+   "source_keys": [
+    "cbs_rent[ראשון לציון].total.q2_2026",
+    "cbs_rent[ראשון לציון].1-2.q2_2026",
+    "cbs_rent[ראשון לציון].2.5-3.q2_2026",
+    "cbs_rent[ראשון לציון].3.5-4.q2_2026",
+    "cbs_rent[ראשון לציון].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ 'how much rent in Rishon LeZion': sample median and averages and the 7,000-9,000 'western or large and new flats' range replaced by the CBS averages for all flats (5,272.9) and by size group, Q2 2026.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 15,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the FAQ rents (median 5,000; averages 5,787-6,131; 7,000-9,000 in western or large flats) with the CBS Rishon LeZion averages for all flats and by size group, Q2 2026",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
   }
  ],
  "live_recheck": {
@@ -496,5 +645,14 @@
   "replaced": 0,
   "removed": 2,
   "deleted": 0
+ },
+ "tier3_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 20:28:12",
+  "modified": "2026-10-07T15:08:16",
+  "result": "fetched 7.10.2026 with tier 1 and tier 2 live; every tier-3 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 6,
+  "replaced": 4,
+  "removed": 1,
+  "deleted": 1
  }
 }

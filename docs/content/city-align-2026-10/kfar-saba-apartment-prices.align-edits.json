@@ -13,7 +13,8 @@
   "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
-  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
+  "Tier 3 under the CEO rule (7.10.2026): listing-site rents left in the body. Apply AFTER tier 1 and tier 2 (both are live on this page), on the live content, in the listed order. ceo_action: replaced = the CBS value (table 4.9, Q2 2026) now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row, column or paragraph gone. Whole elements deleted with their tags (paragraph) carry the tags in 'old'."
  ],
  "claims_summary": {
   "claims": {
@@ -28,9 +29,10 @@
    "UNSOURCED": 90,
    "CONSISTENT": 21
   },
-  "edits": 16,
+  "edits": 21,
   "tier1": 16,
-  "tier2": 0
+  "tier2": 0,
+  "tier3": 5
  },
  "notes": "The official list is not on the page yet; new text cites the medians directly. Latest official: 3 and 4 rooms and all deals 10-12.2025 (the last published), 5 rooms 1-3.2026; tables mark the quarter in each cell, as the brief prescribes. Official quirk: the 3-room median fell 21.3% year on year (2,466,800 in 10-12.2024 to 1,941,300 in 10-12.2025), but the fall happened in one step (1,993,600 already in 1-3.2025) and the last four quarters are flat; the ranges paragraph shows the previous quarter (1,960,100) for that reason. The official 3-room median sits below the page's own May 2026 deals (2.1M for 63 m2, 2.55M for 74 m2) and below the 1-3.2026 centre neighbourhood median (2,106,700); worth a second look at the source series before publishing. Name mapping: 'כפר סבא הירוקה' = official 'הירוקה כ\"ס 80' (the neighbourhood's planning name, fairly sure); 'מרכז העיר דרום' and 'מרכז העיר צפון' merged into one row for the official 'מרכז'; 'הראשונים' = official 'ראשונים' (the row covers Tkuma and HaRishonim, the cell says the median is HaRishonim's). Kept: rents (market sources and a market sample, page checked 5.6.2026), the dated May 2026 deals table and the per-m2 figures drawn from it, the dated deal examples in the FAQ, and the consistent second-hand 4-room 2.83M. Not audited as claims (hypotheticals and illustrations): the 3,000,000 / 3,300,000 / 3,700,000 / 700,000 example (p@5866), the 900,000 per-m2 arithmetic (p@8836), the 2,750,000 'if an area average' example (p@12096), the 80,000-300,000 renovation range (li@21555), the 2,900,000 / 3,050,000 / 250,000 example (p@21840), sizes, ages and deal counts. The h3 'ממוצע עירוני' heading is kept (no number); its card now opens with the median and calls it a median.",
  "claims": [
@@ -937,6 +939,126 @@
    "raw_risk": [
     "straight double quote"
    ]
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "בשכירות, הממוצע החודשי עומד סביב 7,200 עד 7,350 ש\"ח לפי מקורות שוק שנבדקו ביוני 2026.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בכפר סבא ברבעון השני של 2026 (אפריל עד יוני) היה 6,146 ש\"ח.",
+   "source_keys": [
+    "cbs_rent[כפר סבא].total.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Lead: 'the monthly average rent is around 7,200 to 7,350 according to market sources checked in June 2026' replaced by the CBS average monthly rent in Kfar Saba (6,145.8), Q2 2026.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 17,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the market-source average rent 7,200-7,350 with the CBS Kfar Saba average 6,146 ש\"ח (Q2 2026)",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "השכירות החודשית הממוצעת נעה סביב 7,200 עד 7,350 ש\"ח. אלה מספרים טובים לפתיחת בדיקה",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בכפר סבא ברבעון השני של 2026 (אפריל עד יוני) היה 6,146 ש\"ח. אלה מספרים טובים לפתיחת בדיקה",
+   "source_keys": [
+    "cbs_rent[כפר סבא].total.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Same figure as in the lead (7,200 to 7,350, market sources) replaced by the CBS average monthly rent in Kfar Saba (6,145.8), Q2 2026; the sale medians in the paragraph are the Tax Authority figures and stay.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 18,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the average rent 7,200-7,350 with the CBS Kfar Saba average 6,146 ש\"ח (Q2 2026)",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "אם דירת 4 חדרים מושכרת סביב 6,750 עד 6,800 ש\"ח לחודש, ודירת 5 חדרים סביב 8,100 עד 9,100 ש\"ח, ניתן להבין את עומק הביקוש המשפחתי בעיר.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בכפר סבא ברבעון השני של 2026 (אפריל עד יוני) היה 6,042 ש\"ח לדירות של 3.5 עד 4 חדרים ו-7,796 ש\"ח לדירות של 4.5 חדרים ומעלה, ומכאן ניתן להבין את עומק הביקוש המשפחתי בעיר.",
+   "source_keys": [
+    "cbs_rent[כפר סבא].3.5-4.q2_2026",
+    "cbs_rent[כפר סבא].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent section: 4-room and 5-room asking rents replaced by the CBS average monthly rent in Kfar Saba for 3.5-4 rooms (6,041.6) and 4.5+ rooms (7,795.9), Q2 2026.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 19,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the family-flat rents (4 rooms 6,750-6,800; 5 rooms 8,100-9,100) with the CBS Kfar Saba averages for 3.5-4 and 4.5+ rooms, Q2 2026: 6,042 / 7,796 ש\"ח",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">שכירות שוק</th>\n<th dir=\"rtl\">חציון מחיר העסקה</th>\n<th dir=\"rtl\">קריאת נתון</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">4,000 עד 4,500 ש\"ח</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">שוכרים יחידים וזוגות, תלות גבוהה במיקום.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">5,550 עד 5,800 ש\"ח</td>\n<td dir=\"rtl\">1,941,300 ש\"ח (אוקטובר-דצמבר 2025)</td>\n<td dir=\"rtl\">מתאים לבדיקת כניסה לשוק או דירה קומפקטית.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">6,750 עד 6,800 ש\"ח</td>\n<td dir=\"rtl\">2,817,000 ש\"ח (אוקטובר-דצמבר 2025)</td>\n<td dir=\"rtl\">פלח מרכזי למשפחות, השוואות רבות יחסית.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">8,100 עד 9,100 ש\"ח</td>\n<td dir=\"rtl\">3,544,700 ש\"ח (ינואר-מרץ 2026)</td>\n<td dir=\"rtl\">שוק משפחתי, רגיש לאזורי חינוך ולחניה.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בית פרטי</td>\n<td dir=\"rtl\">כ-13,500 ש\"ח במדגם שוק</td>\n<td dir=\"rtl\">לא פורסם, טווח רחב מאוד</td>\n<td dir=\"rtl\">לא להשוות לדירות רגילות ללא התאמות.</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">שכר דירה חודשי ממוצע, אפריל עד יוני 2026 (הלמ\"ס)</th>\n<th dir=\"rtl\">חציון מחיר העסקה</th>\n<th dir=\"rtl\">קריאת נתון</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">שוכרים יחידים וזוגות, תלות גבוהה במיקום.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">4,771 ש\"ח (דירות של 2.5 עד 3 חדרים)</td>\n<td dir=\"rtl\">1,941,300 ש\"ח (אוקטובר-דצמבר 2025)</td>\n<td dir=\"rtl\">מתאים לבדיקת כניסה לשוק או דירה קומפקטית.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">6,042 ש\"ח (דירות של 3.5 עד 4 חדרים)</td>\n<td dir=\"rtl\">2,817,000 ש\"ח (אוקטובר-דצמבר 2025)</td>\n<td dir=\"rtl\">פלח מרכזי למשפחות, השוואות רבות יחסית.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">7,796 ש\"ח (דירות של 4.5 חדרים ומעלה)</td>\n<td dir=\"rtl\">3,544,700 ש\"ח (ינואר-מרץ 2026)</td>\n<td dir=\"rtl\">שוק משפחתי, רגיש לאזורי חינוך ולחניה.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בית פרטי</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">לא פורסם, טווח רחב מאוד</td>\n<td dir=\"rtl\">לא להשוות לדירות רגילות ללא התאמות.</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "cbs_rent[כפר סבא].2.5-3.q2_2026",
+    "cbs_rent[כפר סבא].3.5-4.q2_2026",
+    "cbs_rent[כפר סבא].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent column of the table replaced by the CBS average monthly rent in Kfar Saba by size group, Q2 2026; the rows keep their room labels (the next column is the Tax Authority median by exact room count) so each cell names its group. The CBS table has no 1-2 rooms cell for Kfar Saba (dash) and no private-house category: those two cells read 'לא פורסם', the same wording the table already uses for the missing sale median. Header names the CBS and the quarter.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 20,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">שכירות שוק</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the market rents (2 rooms 4,000-4,500; 3 rooms 5,550-5,800; 4 rooms 6,750-6,800; 5 rooms 8,100-9,100; private house 13,500) with the CBS Kfar Saba averages (4,771 / 6,042 / 7,796 ש\"ח, Q2 2026); the 2-room and private-house cells say \"לא פורסם\" (the CBS has no such figure)",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "השכירות החודשית הממוצעת נעה סביב 7,200 עד 7,350 ש\"ח. לפי סוג דירה, דירות 2 חדרים יכולות לנוע סביב 4,000 עד 4,500 ש\"ח, דירות 3 חדרים סביב 5,550 עד 5,800 ש\"ח, דירות 4 חדרים סביב 6,750 עד 6,800 ש\"ח, ודירות 5 חדרים סביב 8,100 עד 9,100 ש\"ח.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בכפר סבא ברבעון השני של 2026 (אפריל עד יוני) היה 6,146 ש\"ח בממוצע לכלל הדירות, ובחלוקה לפי גודל: 4,771 ש\"ח לדירות של 2.5 עד 3 חדרים, 6,042 ש\"ח לדירות של 3.5 עד 4 חדרים ו-7,796 ש\"ח לדירות של 4.5 חדרים ומעלה. לדירות של 1 עד 2 חדרים לא פורסם ממוצע.",
+   "source_keys": [
+    "cbs_rent[כפר סבא].total.q2_2026",
+    "cbs_rent[כפר סבא].2.5-3.q2_2026",
+    "cbs_rent[כפר סבא].3.5-4.q2_2026",
+    "cbs_rent[כפר סבא].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ 'what is the average rent in Kfar Saba': market-source average and per-room ranges replaced by the CBS averages for all flats (6,145.8) and for 2.5-3, 3.5-4 and 4.5+ rooms, Q2 2026. The CBS table has no 1-2 rooms cell for Kfar Saba, so the answer says so instead of keeping the 4,000-4,500 asking range.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 21,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the FAQ rents (average 7,200-7,350; by rooms 4,000-9,100) with the CBS Kfar Saba averages for all flats and by size group, Q2 2026; states that no 1-2 rooms average was published",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
   }
  ],
  "live_recheck": {
@@ -946,5 +1068,14 @@
   "price_list_on_page": true,
   "body_outside_list_identical_to_audited_copy": "yes, except the blank lines around the price list, which was inserted at 2026-10-07T13:47:06 (site time) after the audited copy",
   "dry_run": "16 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ },
+ "tier3_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 20:28:07",
+  "modified": "2026-10-07T14:37:36",
+  "result": "fetched 7.10.2026 with tier 1 and tier 2 live; every tier-3 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 5,
+  "replaced": 5,
+  "removed": 0,
+  "deleted": 0
  }
 }

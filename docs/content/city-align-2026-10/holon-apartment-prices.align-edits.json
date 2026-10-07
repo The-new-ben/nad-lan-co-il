@@ -14,7 +14,8 @@
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
   "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
-  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note.",
+  "Tier 3 under the CEO rule (7.10.2026): listing-site rents left in the body. Apply AFTER tier 1 and tier 2 (both are live on this page), on the live content, in the listed order. ceo_action: replaced = the CBS value (table 4.9, Q2 2026) now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row, column or paragraph gone. Whole elements deleted with their tags (paragraph) carry the tags in 'old'."
  ],
  "claims_summary": {
   "claims": {
@@ -29,9 +30,10 @@
    "UNSOURCED": 112,
    "CONSISTENT": 42
   },
-  "edits": 20,
+  "edits": 25,
   "tier1": 13,
-  "tier2": 7
+  "tier2": 7,
+  "tier3": 5
  },
  "notes": "Most per-room figures on this page are consistent with the official medians (3-5 rooms); the conflicts are the 2,400,000 city average repeated four times (lead, p@6560, the named platform in p@17787, FAQ) against the official all-rooms median 2,219,400. Not audited as claims (illustrations, not market statements): the 3%-7% asking-vs-closing condition (p@11323), the yield example 1,950,000 / 4,500-5,000 / 2.8%-3.1% and the 2,300,000 / 4,700 if-example (p@14845), the 3,100,000 / 2,600,000 / 500,000 new-vs-used if-example (p@20502), the seller example 2,250,000-2,400,000 / 2,690,000 / 2,290,000 (p@25473), the 150,000 gap example (p@25868), the 7%-12% if-example (p@27647). Remaining SUSPECT after the edits: tr@18704 (נס ציונה 3, March 2026, 2.5 rooms, 1,680,000) is an individual dated deal with an address. Portal names (מדדירות, Dirobot) stay only where old text kept word for word attributes kept figures (the rooms-table header, the FAQ 3-room answer, the Dirobot sentence); no new text names a portal. Name mapping: the page's 'קריית שרת' is matched to the official 'קרית שרת מערב' (part of it) and the cell names it; 'קריית עבודה' = 'קרית עבודה'; 'רסקו א׳' = 'רסקו א'. The official neighbourhood list holds 8 names (may be capped), so Tel Giborim, Jessy Cohen and Shikun Vatikim are pointed to street deals without saying no median exists. Rent, per-m2 and yield figures are kept where the page names the source (מדדירות, Realta, Scoutr, Dirobot) and shows its check date 6.6.2026; the yields of rows 3-5 are the page's own estimates (tier 2 candidates if a stricter reading is wanted). Seven tier-2 edits remove rule-of-thumb figures with no source (renovation 80,000-300,000 twice, 50,000-250,000 offer effect, 5%-12% floor premium, 8%-20% new-flat premium twice) and fix the 10 m2 example whose 350,000 top does not follow from 25,000-29,000 per m2. The JSON-LD script and the closing disclaimer are outside the audit and unchanged.",
  "claims": [
@@ -1056,6 +1058,125 @@
    "raw_risk": [],
    "ceo_action": "removed",
    "ceo_note": "removed the 8%-20% new-flat premium (no official source); hedged sentence kept"
+  },
+  {
+   "page_id": 4585,
+   "url": "https://nad-lan.co.il/holon-apartment-prices/",
+   "field": "content",
+   "old": ", ושכירות מבוקשת ממוצעת סביב 5,150 ₪. באותו מקור מופיעות דוגמאות שכירות לפי חדרים: 2 חדרים סביב 4,100 ₪, 3 חדרים סביב 4,500 ₪, 4 חדרים סביב 5,800 ₪ ו-5 חדרים סביב 8,200 ₪. אלה נתוני השוואה של מודעות ושוק פרטי,",
+   "new": ". לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בחולון ברבעון השני של 2026 (אפריל עד יוני) היה 4,945 ₪ בממוצע לכלל הדירות, ובחלוקה לפי גודל: 3,557 ₪ לדירות של 1 עד 2 חדרים, 4,321 ₪ לדירות של 2.5 עד 3 חדרים, 5,434 ₪ לדירות של 3.5 עד 4 חדרים ו-6,981 ₪ לדירות של 4.5 חדרים ומעלה. נתוני המודעות הם נתוני השוואה של שוק פרטי,",
+   "source_keys": [
+    "cbs_rent[חולון].total.q2_2026",
+    "cbs_rent[חולון].1-2.q2_2026",
+    "cbs_rent[חולון].2.5-3.q2_2026",
+    "cbs_rent[חולון].3.5-4.q2_2026",
+    "cbs_rent[חולון].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Opening: asking-rent average 5,150 and the per-room examples from an ad site replaced by the CBS average monthly rent in Holon (4,944.5) and by size group (3,556.8; 4,320.9; 5,433.5; 6,981.2), Q2 2026. The sentence on the number of listings is not a rent figure and stays; 'these are comparison data of listings and a private market' becomes 'the listing data are comparison data of a private market'.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 21,
+   "raw_risk": [],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the private asking rent 5,150 and the examples by rooms (4,100 / 4,500 / 5,800 / 8,200) with the CBS Holon averages for all flats and by size group, Q2 2026; the count of sale listings stays",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4585,
+   "url": "https://nad-lan.co.il/holon-apartment-prices/",
+   "field": "content",
+   "old": "והשכירות הסבירה שלה היא 4,500-5,000 ₪, מתקבלת תשואה ברוטו שנתית סביב 2.8%-3.1% לפני הוצאות, תקופות ריקות, תיקונים, מס ושונות. אם דירה דומה מוצעת ב-2,300,000 ₪ ושכירותה עדיין סביב 4,700 ₪,",
+   "new": "והשכירות הסבירה שלה קרובה ל-4,321 ₪, הממוצע של הלמ״ס לדירות של 2.5 עד 3 חדרים בחולון ברבעון השני של 2026, מתקבלת תשואה ברוטו שנתית שמחשבים מהשכירות השנתית ומהמחיר, לפני הוצאות, תקופות ריקות, תיקונים, מס ושונות. אם דירה דומה מוצעת ב-2,300,000 ₪ ושכירותה עדיין קרובה לממוצע הזה,",
+   "source_keys": [
+    "cbs_rent[חולון].2.5-3.q2_2026",
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Worked example: the 'reasonable rent' 4,500-5,000 and the 4,700 come from the ad-site rents; they become the CBS 2.5-3 rooms average (4,320.9). The yield '2.8%-3.1%' was derived from the rent range and is removed, not recomputed. The sale prices 1,950,000 and 2,300,000 are the example's own and stay.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 22,
+   "raw_risk": [],
+   "kept_numbers": [
+    "1,950,000",
+    "2,300,000"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the example rents 4,500-5,000 and 4,700 with the CBS 2.5-3 rooms average for Holon (4,321 ₪, Q2 2026); dropped the computed yield 2.8%-3.1% (no new arithmetic)",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4585,
+   "url": "https://nad-lan.co.il/holon-apartment-prices/",
+   "field": "content",
+   "old": "<p dir=\"rtl\">מקורות פרטיים מציגים טווחים שונים לשכירות בחולון. מדדירות מציג שכירות מבוקשת ממוצעת סביב 5,150 ₪, Realta מציג ממוצע סביב 5,721 ₪ וחציון סביב 5,200 ₪, ו-Scoutr מציג היצע שכירות פעיל גדול עם מחיר שכירות ממוצע סביב 5,563 ₪. הפערים נובעים מתמהיל דירות שונה, מועד מדידה, מודעות פעילות, גודל דירות, שכונות ורמת גמר. לכן עדיף לעבוד עם טווח ולא עם מספר יחיד.</p>",
+   "new": "",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "The paragraph only compared three private rent sources (5,150, 5,721 with median 5,200, 5,563) and advised working with a range. With the CBS figure on the page there is nothing left to reconcile; no official counterpart for the three source figures.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 23,
+   "raw_risk": [
+    "straight double quote",
+    "contains tags"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the paragraph that set three private rent sources against each other (5,150; 5,721 and median 5,200; 5,563)"
+  },
+  {
+   "page_id": 4585,
+   "url": "https://nad-lan.co.il/holon-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead>\n<tr>\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">שכירות מבוקשת לפי נקודת ייחוס פרטית</th>\n<th dir=\"rtl\">טווח שכירות בדיקה</th>\n<th dir=\"rtl\">מחיר קנייה משוער</th>\n<th dir=\"rtl\">תשואה ברוטו משוערת</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">כ-4,500 ₪</td>\n<td dir=\"rtl\">4,200-5,200 ₪</td>\n<td dir=\"rtl\">1,750,000-2,250,000 ₪</td>\n<td dir=\"rtl\">2.4%-3.6%</td>\n</tr>\n<tr>\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">כ-5,800 ₪</td>\n<td dir=\"rtl\">5,200-6,400 ₪</td>\n<td dir=\"rtl\">2,150,000-2,750,000 ₪</td>\n<td dir=\"rtl\">2.3%-3.6%</td>\n</tr>\n<tr>\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">כ-8,200 ₪</td>\n<td dir=\"rtl\">6,800-8,800 ₪</td>\n<td dir=\"rtl\">2,850,000-3,700,000 ₪</td>\n<td dir=\"rtl\">2.2%-3.7%</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">שכר דירה חודשי ממוצע, אפריל עד יוני 2026 (הלמ״ס)</th>\n<th dir=\"rtl\">מחיר קנייה משוער</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">4,321 ₪ (דירות של 2.5 עד 3 חדרים)</td>\n<td dir=\"rtl\">1,750,000-2,250,000 ₪</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">5,434 ₪ (דירות של 3.5 עד 4 חדרים)</td>\n<td dir=\"rtl\">2,150,000-2,750,000 ₪</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">6,981 ₪ (דירות של 4.5 חדרים ומעלה)</td>\n<td dir=\"rtl\">2,850,000-3,700,000 ₪</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "cbs_rent[חולון].2.5-3.q2_2026",
+    "cbs_rent[חולון].3.5-4.q2_2026",
+    "cbs_rent[חולון].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Table of rent, purchase price and gross yield by rooms: the asking-rent column becomes the CBS average rent in Holon by size group, Q2 2026 (each cell names its group because the purchase-price column is by exact room count). Deleted: the private rent-range column and the gross-yield column, which were computed from the private rents and cannot be recomputed without new arithmetic. The estimated purchase prices stay (tier 1 found them consistent with the official medians).",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 24,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">טווח שכירות בדיקה</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the private asking rent (4,500 / 5,800 / 8,200) with the CBS Holon averages by size group, Q2 2026 (4,321 / 5,434 / 6,981 ₪); deleted the private rent-range column (4,200-8,800) and the gross-yield column (2.2%-3.7%) built on it; the purchase-price column stays",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4585,
+   "url": "https://nad-lan.co.il/holon-apartment-prices/",
+   "field": "content",
+   "old": "שכירות ממוצעת פרטית מוצגת סביב 5,150-5,721 ₪, וחציון סביב 5,200 ₪. מול מחיר קנייה של 2,000,000-2,700,000 ₪ מתקבלת לרוב תשואה ברוטו מתונה, לפני הוצאות ומסים.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בחולון ברבעון השני של 2026 (אפריל עד יוני) היה 4,945 ₪ בממוצע לכלל הדירות.",
+   "source_keys": [
+    "cbs_rent[חולון].total.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ 'does rent in Holon justify the purchase prices': private average (5,150-5,721) and median (5,200) replaced by the CBS average rent (4,944.5), Q2 2026. 'Usually a moderate gross yield' against a price band was a level claim built on the private rents with no official yield figure; it is deleted.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 25,
+   "raw_risk": [],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the FAQ private average 5,150-5,721 and median 5,200 with the CBS Holon average 4,945 ₪ (Q2 2026); deleted the unsourced \"moderate gross yield\" claim against 2,000,000-2,700,000",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
   }
  ],
  "live_recheck": {
@@ -1074,5 +1195,14 @@
   "replaced": 0,
   "removed": 7,
   "deleted": 0
+ },
+ "tier3_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 20:28:06",
+  "modified": "2026-10-07T15:07:53",
+  "result": "fetched 7.10.2026 with tier 1 and tier 2 live; every tier-3 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 5,
+  "replaced": 4,
+  "removed": 0,
+  "deleted": 1
  }
 }

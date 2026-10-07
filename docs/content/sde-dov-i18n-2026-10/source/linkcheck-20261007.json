@@ -1,0 +1,710 @@
+{
+ "checked_utc": "2026-10-07 20:23:24",
+ "no_redirect_follow": true,
+ "results": {
+  "/sde-dov/": {
+   "status": 200,
+   "location": ""
+  },
+  "/sde-dov/prices/": {
+   "status": 200,
+   "location": ""
+  },
+  "/real-estate-lawyer/": {
+   "status": 200,
+   "location": ""
+  },
+  "/sde-dov/eshkol/": {
+   "status": 200,
+   "location": ""
+  },
+  "/sde-dov/merkaz/": {
+   "status": 200,
+   "location": ""
+  },
+  "/sde-dov/tzafon/": {
+   "status": 200,
+   "location": ""
+  },
+  "/sde-dov/hotels/": {
+   "status": 200,
+   "location": ""
+  },
+  "/sde-dov/parks/": {
+   "status": 200,
+   "location": ""
+  },
+  "/sde-dov/marina/": {
+   "status": 200,
+   "location": ""
+  },
+  "/sde-dov/transport/": {
+   "status": 200,
+   "location": ""
+  },
+  "/sde-dov/institutions/": {
+   "status": 200,
+   "location": ""
+  },
+  "/sde-dov/employment/": {
+   "status": 200,
+   "location": ""
+  },
+  "/purchase-tax-calculator/": {
+   "status": 200,
+   "location": ""
+  },
+  "/mortgage-calculator/": {
+   "status": 200,
+   "location": ""
+  },
+  "/investment-apartment/": {
+   "status": 200,
+   "location": ""
+  },
+  "/new-projects/": {
+   "status": 200,
+   "location": ""
+  },
+  "/tel-aviv-plans/": {
+   "status": 200,
+   "location": ""
+  },
+  "/north-tel-aviv/": {
+   "status": 200,
+   "location": ""
+  },
+  "/north-tel-aviv/rova-4/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ramat-aviv/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/sde-dov/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/sde-dov/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/sde-dov/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/sde-dov/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/sde-dov/prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/sde-dov/prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/sde-dov/prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/sde-dov/prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/real-estate-lawyer/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/real-estate-lawyer/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/real-estate-lawyer/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/real-estate-lawyer/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/sde-dov/eshkol/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/sde-dov/eshkol/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/sde-dov/eshkol/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/sde-dov/eshkol/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/sde-dov/merkaz/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/sde-dov/merkaz/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/sde-dov/merkaz/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/sde-dov/merkaz/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/sde-dov/tzafon/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/sde-dov/tzafon/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/sde-dov/tzafon/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/sde-dov/tzafon/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/sde-dov/hotels/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/sde-dov/hotels/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/sde-dov/hotels/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/sde-dov/hotels/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/sde-dov/parks/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/sde-dov/parks/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/sde-dov/parks/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/sde-dov/parks/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/sde-dov/marina/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/sde-dov/marina/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/sde-dov/marina/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/sde-dov/marina/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/sde-dov/transport/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/sde-dov/transport/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/sde-dov/transport/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/sde-dov/transport/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/sde-dov/institutions/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/sde-dov/institutions/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/sde-dov/institutions/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/sde-dov/institutions/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/sde-dov/employment/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/sde-dov/employment/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/sde-dov/employment/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/sde-dov/employment/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/purchase-tax-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/purchase-tax-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/purchase-tax-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/purchase-tax-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/mortgage-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/mortgage-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/mortgage-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/mortgage-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/investment-apartment/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/investment-apartment/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/investment-apartment/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/investment-apartment/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/new-projects/": {
+   "status": 200,
+   "location": ""
+  },
+  "/fr/new-projects/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ru/new-projects/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ar/new-projects/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/tel-aviv-plans/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/tel-aviv-plans/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/tel-aviv-plans/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/tel-aviv-plans/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/north-tel-aviv/": {
+   "status": 200,
+   "location": ""
+  },
+  "/fr/north-tel-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/north-tel-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/north-tel-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/north-tel-aviv/rova-4/": {
+   "status": 200,
+   "location": ""
+  },
+  "/fr/north-tel-aviv/rova-4/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/north-tel-aviv/rova-4/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/north-tel-aviv/rova-4/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/ramat-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/ramat-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/ramat-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/ramat-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/projects/rainbow-tel-aviv/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/rainbow-tel-aviv-en/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/rainbow-tel-aviv-fr/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/rainbow-tel-aviv-ru/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/rainbow-tel-aviv-ar/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/first-sde-dov/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/first-sde-dov-en/": {
+   "status": 404,
+   "location": ""
+  },
+  "/projects/first-sde-dov-fr/": {
+   "status": 404,
+   "location": ""
+  },
+  "/projects/first-sde-dov-ru/": {
+   "status": 404,
+   "location": ""
+  },
+  "/projects/first-sde-dov-ar/": {
+   "status": 404,
+   "location": ""
+  },
+  "/projects/ashira-sde-dov/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/ashira-sde-dov-en/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/ashira-sde-dov-fr/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/ashira-sde-dov-ru/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/ashira-sde-dov-ar/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/dimri-yama-sde-dov/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/dimri-yama-sde-dov-en/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/dimri-yama-sde-dov-fr/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/dimri-yama-sde-dov-ru/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/dimri-yama-sde-dov-ar/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/zohi-sde-dov/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/zohi-sde-dov-en/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/zohi-sde-dov-fr/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/zohi-sde-dov-ru/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/zohi-sde-dov-ar/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/gindi-vogue-sde-dov/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/gindi-vogue-sde-dov-en/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/gindi-vogue-sde-dov-fr/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/gindi-vogue-sde-dov-ru/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/gindi-vogue-sde-dov-ar/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/utopia-sde-dov/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/utopia-sde-dov-en/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/utopia-sde-dov-fr/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/utopia-sde-dov-ru/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/utopia-sde-dov-ar/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/shikun-binui-sde-dov/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/shikun-binui-sde-dov-en/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/shikun-binui-sde-dov-fr/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/shikun-binui-sde-dov-ru/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/shikun-binui-sde-dov-ar/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/migdalei-hayam-sde-dov/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/migdalei-hayam-sde-dov-en/": {
+   "status": 404,
+   "location": ""
+  },
+  "/projects/migdalei-hayam-sde-dov-fr/": {
+   "status": 404,
+   "location": ""
+  },
+  "/projects/migdalei-hayam-sde-dov-ru/": {
+   "status": 404,
+   "location": ""
+  },
+  "/projects/migdalei-hayam-sde-dov-ar/": {
+   "status": 404,
+   "location": ""
+  },
+  "/projects/hamedina/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/hamedina-en/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/hamedina-fr/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/hamedina-ru/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/hamedina-ar/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/buy-property-in-israel/": {
+   "status": 200,
+   "location": ""
+  },
+  "/fr/buy-property-in-israel/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/buy-property-in-israel/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/buy-property-in-israel/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/brokers/": {
+   "status": 200,
+   "location": ""
+  },
+  "/fr/brokers/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ru/brokers/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ar/brokers/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/guides/": {
+   "status": 200,
+   "location": ""
+  },
+  "/fr/guides/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ru/guides/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ar/guides/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/developer-deals/": {
+   "status": 200,
+   "location": ""
+  },
+  "/fr/developer-deals/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/developer-deals/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/developer-deals/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/property-value-estimator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/property-value-estimator/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ru/property-value-estimator/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ar/property-value-estimator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/": {
+   "status": 200,
+   "location": ""
+  },
+  "/fr/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ru/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ar/": {
+   "status": 200,
+   "location": ""
+  },
+  "/israel-purchase-tax-foreign-residents/": {
+   "status": 200,
+   "location": ""
+  },
+  "/israel-mortgage-non-residents/": {
+   "status": 200,
+   "location": ""
+  }
+ }
+}

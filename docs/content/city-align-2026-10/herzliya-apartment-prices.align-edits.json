@@ -14,7 +14,8 @@
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
   "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
-  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note.",
+  "Tier 3 under the CEO rule (7.10.2026): listing-site rents left in the body. Apply AFTER tier 1 and tier 2 (both are live on this page), on the live content, in the listed order. ceo_action: replaced = the CBS value (table 4.9, Q2 2026) now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row, column or paragraph gone. Whole elements deleted with their tags (paragraph) carry the tags in 'old'."
  ],
  "claims_summary": {
   "claims": {
@@ -29,9 +30,10 @@
    "UNSOURCED": 81,
    "CONSISTENT": 42
   },
-  "edits": 16,
+  "edits": 17,
   "tier1": 8,
-  "tier2": 8
+  "tier2": 8,
+  "tier3": 1
  },
  "notes": "The page shows no check date anywhere (only the Ahad Ha'am deal is dated, 19.11.2025), so no undated rent or per-m2 figure qualifies for keep: they are rephrased without numbers in tier 2. Applying tier 1 alone still leaves those rent and per-m2 figures in place. Not audited as claims (illustrations, not market statements): the 3.95M asking / 3.75M closing example (p@42385), the 2.55M 3-room and 4.4M 5-room if-examples (p@44663), the 150-300 thousand renovation cost in the rooms-table note, the 8,000 rent / 3.8M example (p@54532), the 200,000-400,000 gap (p@59544), the 3.8M / 3.45M / 350,000 / 250,000 new-vs-second-hand example (p@62227), 'פי 2' (p@63813), sizes in m2, counts of deals and months. Remaining SUSPECTs are those hypotheticals (p@42385, p@44663, p@62227) and the individual dated Ahad Ha'am deal (3.98M, 19.11.2025). The lead (above the price list), the 'by the data checked' paragraph and the 3/4/5-room FAQ answers keep their working ranges: each holds the official median (3: 2.5-3.0/3.1M vs 2,793,600; 4: 3.1-3.8M vs 3,272,800; 5: 4.0-5.0M vs 4,251,200). Official quirk: the 4 and 5-room medians fell 9.1% and 8.9% year on year; the 4-room series has no 10-12.2025 value and the 5-room median dropped from 4,730,400 (10-12.2025) to 4,251,200. Official neighbourhoods: only 'מרכז העיר' (3/4/5) and 'וייצמן' (4 rooms); 'וייצמן' is not one of the page's areas and was not mapped to 'הרצליה הצעירה' or any other row; it appears only in the sentence after the neighbourhood table.",
  "claims": [
@@ -891,6 +893,27 @@
    "ceo_action": "replaced",
    "ceo_note": "replaced the undated per-room rent list with the CBS Herzliya size-group averages, Q2 2026: 4,444 / 5,606 / 7,041 / 9,461 ש\"ח",
    "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "לכן שכירות של כ-8,000 ש\"ח אינה אומרת אוטומטית שמחיר",
+   "new": "לכן שכירות של דירה אחת אינה אומרת אוטומטית שמחיר",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Left over after tier 2: 'a rent of about 8,000 does not automatically mean that a price of about 3.8 million is right'. 8,000 is a listing-site level, not the CBS 6,775 (all flats) or any size group, and the flat's size is not stated, so there is no CBS counterpart; the number goes and the point stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 17,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the illustrative rent 8,000 (it matches neither the CBS city average 6,775 nor any CBS size group); the sentence says it in words"
   }
  ],
  "live_recheck": {
@@ -908,6 +931,15 @@
   "edits": 8,
   "replaced": 4,
   "removed": 4,
+  "deleted": 0
+ },
+ "tier3_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 20:28:04",
+  "modified": "2026-10-07T15:07:47",
+  "result": "fetched 7.10.2026 with tier 1 and tier 2 live; every tier-3 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 1,
+  "replaced": 0,
+  "removed": 1,
   "deleted": 0
  }
 }

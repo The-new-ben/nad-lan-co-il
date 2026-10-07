@@ -14,7 +14,8 @@
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
   "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
-  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note.",
+  "Tier 3 under the CEO rule (7.10.2026): listing-site rents left in the body. Apply AFTER tier 1 and tier 2 (both are live on this page), on the live content, in the listed order. ceo_action: replaced = the CBS value (table 4.9, Q2 2026) now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row, column or paragraph gone. Whole elements deleted with their tags (paragraph) carry the tags in 'old'."
  ],
  "claims_summary": {
   "claims": {
@@ -29,9 +30,10 @@
    "UNSOURCED": 44,
    "CONSISTENT": 24
   },
-  "edits": 20,
+  "edits": 24,
   "tier1": 17,
-  "tier2": 3
+  "tier2": 3,
+  "tier3": 4
  },
  "notes": "Every city-level 3/4/5-room figure on this page (second-hand and new ranges, the 3.0-4.6M 'regular flats' range, the 3.9-4.5M 5-room range) holds the official 1-3.2026 medians. The conflicts are the city average 3,520,000-3,657,246 (metrics table and FAQ) against the official all-rooms median 3,149,300, and the STALE 2023 neighbourhood sample averages (table + three FAQ answers). The rooms table and the 3/4/5 FAQ answers are restated with the official medians (verdict CONSISTENT on those edits); the FAQ answers keep the page's own consistent second-hand / new ranges after the median. The new-vs-second-hand table (tr@55388..55778) is consistent and kept. Not audited as claims: the if-example 'מי שרואה דירת 4 חדרים ... במחיר של 3,490,000 ש\"ח' (p@45775, a hypothetical; it matches the dated Asirei Zion 11 deal), sizes in m2, months to delivery 12-36 / 30-180 days (tr@55997), counts of comparables (5-10, 10-20, 8-12), floors 3-5. Rent, per-m2 and the three dated May 2026 deals are kept (market data pages, page checked 5.6.2026). Unsure: (a) the two undated single-address rows (אסירי ציון 19, שדרות הנשיאים 42) are removed as tier 2; they could also be kept under the page check date; (b) the Mitcham 1200 check note is trimmed ('לרוב עם רף מחיר גבוה יותר' dropped) because its official 5-room median (4,225,600) is close to the city's (4,245,600); (c) the official neighbourhood 'שרת' (4 rooms 3,210,500, 5 rooms 4,014,000) is not added to the table because the page never names it and its natural name is not certain. Official quirk: the city 3-room median is published only for every other quarter (4-6.2024, 10-12.2024, 4-6.2025 and 10-12.2025 are empty), so it rests on few deals; the year-on-year change (+0.5%) compares 1-3.2026 with 1-3.2025 as published.",
  "claims": [
@@ -901,6 +903,98 @@
    ],
    "ceo_action": "deleted",
    "ceo_note": "deleted the two undated single-address price rows (אסירי ציון 19, שדרות הנשיאים 42); the three dated May 2026 deals stay"
+  },
+  {
+   "page_id": 4558,
+   "url": "https://nad-lan.co.il/hod-hasharon-apartment-prices/",
+   "field": "content",
+   "old": "בדפי נתוני שוק שנבדקו הופיעו דמי שכירות ממוצעים סביב 7,500-9,100 ש\"ח לדירות 4-5 חדרים, עם חריגים למעלה ולמטה לפי גודל, גיל ומיקום.",
+   "new": "שכר הדירה משתנה לפי גודל הדירה, גיל הבניין והמיקום.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "The paragraph is the only text under its own heading ('common monthly rent'), so it is rewritten rather than deleted. The CBS table 4.9 has no Hod HaSharon row (not in the big-city list) and no neighbourhood rents; the figure goes and what the sentence could still say without it (rent varies by size, age and location) stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 21,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the market-page average rent 7,500-9,100 for 4-5 rooms; the paragraph under the heading now says only that rent varies by size, building age and location"
+  },
+  {
+   "page_id": 4558,
+   "url": "https://nad-lan.co.il/hod-hasharon-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מדד בדיקה</th>\n<th dir=\"rtl\">טווח או נתון שנצפה</th>\n<th dir=\"rtl\">איך להשתמש בו</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">חציון מחיר העסקה בעיר, ינואר-מרץ 2026</td>\n<td dir=\"rtl\">3,149,300 ש\"ח, לפי נתוני רשות המסים</td>\n<td dir=\"rtl\">נקודת ייחוס עירונית בלבד, לא מחיר לדירה מסוימת</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מחיר למ\"ר ממוצע שנצפה</td>\n<td dir=\"rtl\">כ-30,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">מתאים להשוואה ראשונית בין דירות בגדלים שונים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שכירות ממוצעת שנצפתה</td>\n<td dir=\"rtl\">כ-7,900-8,500 ש\"ח לחודש</td>\n<td dir=\"rtl\">מסייעת להבין ביקוש, אך אינה מחליפה בדיקת מחיר קנייה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות 4 חדרים יד שנייה</td>\n<td dir=\"rtl\">כ-3,180,000-3,242,000 ש\"ח</td>\n<td dir=\"rtl\">אחד הסגמנטים המרכזיים להשוואה משפחתית</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות 5 חדרים יד שנייה</td>\n<td dir=\"rtl\">כ-3,961,000-4,380,000 ש\"ח</td>\n<td dir=\"rtl\">רגישות גבוהה לשכונה, מרפסת, חניה, קומה וגיל בניין</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מדד בדיקה</th>\n<th dir=\"rtl\">טווח או נתון שנצפה</th>\n<th dir=\"rtl\">איך להשתמש בו</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">חציון מחיר העסקה בעיר, ינואר-מרץ 2026</td>\n<td dir=\"rtl\">3,149,300 ש\"ח, לפי נתוני רשות המסים</td>\n<td dir=\"rtl\">נקודת ייחוס עירונית בלבד, לא מחיר לדירה מסוימת</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מחיר למ\"ר ממוצע שנצפה</td>\n<td dir=\"rtl\">כ-30,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">מתאים להשוואה ראשונית בין דירות בגדלים שונים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות 4 חדרים יד שנייה</td>\n<td dir=\"rtl\">כ-3,180,000-3,242,000 ש\"ח</td>\n<td dir=\"rtl\">אחד הסגמנטים המרכזיים להשוואה משפחתית</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות 5 חדרים יד שנייה</td>\n<td dir=\"rtl\">כ-3,961,000-4,380,000 ש\"ח</td>\n<td dir=\"rtl\">רגישות גבוהה לשכונה, מרפסת, חניה, קומה וגיל בניין</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Fact table row 'average observed rent 7,900-8,500 a month, helps understand demand but does not replace a price check'. The CBS table 4.9 has no Hod HaSharon row (not in the big-city list) and no neighbourhood rents; the whole row (figure and note) goes.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 22,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">טווח או נתון שנצפה</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the row \"average observed rent about 7,900-8,500\" from the fact table; the other rows are untouched"
+  },
+  {
+   "page_id": 4558,
+   "url": "https://nad-lan.co.il/hod-hasharon-apartment-prices/",
+   "field": "content",
+   "old": "בהוד השרון הופיעו בדפי נתוני שוק שנבדקו דמי שכירות ממוצעים סביב 8,500 ש\"ח לחודש, לצד טווחים שונים לפי מספר חדרים. דירת 3 חדרים יכולה להופיע סביב 4,500-5,900 ש\"ח, דירת 4 חדרים סביב 7,537-8,400 ש\"ח, ודירת 5 חדרים סביב 8,905-9,850 ש\"ח. הפער נובע מגודל, מיקום, גיל הבניין, מרפסת, חניה, ממ\"ד ורמת גימור.",
+   "new": "השכירות בהוד השרון משתנה לפי מספר חדרים, גודל, מיקום, גיל הבניין, מרפסת, חניה, ממ\"ד ורמת גימור.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent paragraph: private average and per-room ranges. The CBS table 4.9 has no Hod HaSharon row (not in the big-city list) and no neighbourhood rents; the figures go. The closing sentence (the gap comes from size, location, building age, balcony, parking, safe room and finish) becomes the plain statement that rent depends on those factors.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 23,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the market-page average 8,500 and the ranges by rooms (3: 4,500-5,900; 4: 7,537-8,400; 5: 8,905-9,850); the sentence now lists what rent depends on"
+  },
+  {
+   "page_id": 4558,
+   "url": "https://nad-lan.co.il/hod-hasharon-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מספר חדרים</th>\n<th dir=\"rtl\">דמי שכירות חודשיים שנצפו</th>\n<th dir=\"rtl\">מה לבדוק מעבר למחיר</th>\n<th dir=\"rtl\">קשר למחיר דירה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">1-2 חדרים</td>\n<td dir=\"rtl\">כ-4,094-6,000 ש\"ח</td>\n<td dir=\"rtl\">שטח אמיתי, כניסה נפרדת, חניה, מצב תחזוקה</td>\n<td dir=\"rtl\">יכול להצביע על ביקוש, אך השוואת מכירה חייבת להיות לפי עסקאות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">כ-4,500-5,900 ש\"ח</td>\n<td dir=\"rtl\">קומה, מעלית, קרבה למרכז, שיפוץ פנימי</td>\n<td dir=\"rtl\">מתאים לבדיקת דירות קטנות וזוגות צעירים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">כ-7,537-8,400 ש\"ח</td>\n<td dir=\"rtl\">ממ\"ד, חניה, מרפסת, מחסן, מוסדות חינוך</td>\n<td dir=\"rtl\">אחד הסגמנטים המשפחתיים המרכזיים בעיר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">כ-8,905-9,850 ש\"ח</td>\n<td dir=\"rtl\">תכנון פנימי, סוויטת הורים, 2 חניות, בניין חדש</td>\n<td dir=\"rtl\">שכירות גבוהה לא תמיד מצדיקה מחיר קנייה גבוה ללא עסקאות תומכות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">6 חדרים</td>\n<td dir=\"rtl\">כ-10,373 ש\"ח</td>\n<td dir=\"rtl\">שטח, דופלקס, מרפסות, מעלית, פרטיות</td>\n<td dir=\"rtl\">נדרש מדגם דומה כי מספר העסקאות מצומצם יותר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">6 חדרים ומעלה</td>\n<td dir=\"rtl\">כ-12,125 ש\"ח</td>\n<td dir=\"rtl\">נכס מיוחד, מיקום, חניות, רמת גימור</td>\n<td dir=\"rtl\">השוואה לממוצע עירוני עלולה להטעות</td>\n</tr>\n</tbody>\n</table>",
+   "new": "",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "A whole table of private rent ranges by rooms with two advice columns that comment on those ranges ('rent can indicate demand', 'high rent does not always justify a high price'). The CBS table 4.9 has no Hod HaSharon row (not in the big-city list) and no neighbourhood rents; no content without the numbers. The paragraph that follows the table does not refer to it.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 24,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">דמי שכירות חודשיים שנצפו</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the rent-by-rooms table (1-2 rooms 4,094-6,000; 3: 4,500-5,900; 4: 7,537-8,400; 5: 8,905-9,850; 6: 10,373; 6+: 12,125) with its notes: private market pages, no official counterpart"
   }
  ],
  "live_recheck": {
@@ -919,5 +1013,14 @@
   "replaced": 0,
   "removed": 2,
   "deleted": 1
+ },
+ "tier3_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 20:28:05",
+  "modified": "2026-10-07T15:07:50",
+  "result": "fetched 7.10.2026 with tier 1 and tier 2 live; every tier-3 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 4,
+  "replaced": 0,
+  "removed": 2,
+  "deleted": 2
  }
 }

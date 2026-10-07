@@ -1,0 +1,794 @@
+{
+ "key": "sde-dov",
+ "updated": "2026-10-07",
+ "page": "https://nad-lan.co.il/sde-dov/",
+ "research": "docs/design/area-map-3d/sde-dov-sources.json (sources and retrieval time for every item)",
+ "kicker": "Emplacement",
+ "title": "Le quartier de Sde Dov sur la carte : les projets, la plage et les environs",
+ "lead": "Sur le littoral nord de Tel Aviv, du secteur Eshkol au sud jusqu’à l’extrémité nord du quartier : les projets en commercialisation et en construction, les futures stations de la ligne verte, les plages et les parcs, ainsi que les écoles et les jardins d’enfants alentour.",
+ "caption": "Carte indicative. Limites du quartier d’après le plan du quartier de Sde Dov ; emplacements d’après OpenStreetMap et la municipalité de Tel Aviv-Jaffa ; projets d’après leurs parcelles, mis à jour le 7 octobre 2026.",
+ "view": {
+  "center": [
+   34.7845,
+   32.11
+  ],
+  "zoom": 14.45,
+  "pitch": 55,
+  "bearing": -24,
+  "phone": {
+   "center": [
+    34.7844,
+    32.1114
+   ],
+   "zoom": 13.55,
+   "pitch": 52
+  }
+ },
+ "facts": {},
+ "boundary": [
+  [
+   34.78652,
+   32.12353
+  ],
+  [
+   34.7881,
+   32.12348
+  ],
+  [
+   34.78916,
+   32.12336
+  ],
+  [
+   34.78894,
+   32.12334
+  ],
+  [
+   34.78879,
+   32.1232
+  ],
+  [
+   34.78778,
+   32.12057
+  ],
+  [
+   34.78538,
+   32.11656
+  ],
+  [
+   34.78509,
+   32.11596
+  ],
+  [
+   34.78493,
+   32.11516
+  ],
+  [
+   34.78488,
+   32.11124
+  ],
+  [
+   34.78549,
+   32.10877
+  ],
+  [
+   34.7869,
+   32.10863
+  ],
+  [
+   34.78748,
+   32.10945
+  ],
+  [
+   34.78901,
+   32.10925
+  ],
+  [
+   34.78856,
+   32.10893
+  ],
+  [
+   34.78854,
+   32.10884
+  ],
+  [
+   34.78892,
+   32.10878
+  ],
+  [
+   34.78879,
+   32.10824
+  ],
+  [
+   34.78864,
+   32.10826
+  ],
+  [
+   34.78862,
+   32.10817
+  ],
+  [
+   34.78854,
+   32.10818
+  ],
+  [
+   34.78849,
+   32.10774
+  ],
+  [
+   34.78854,
+   32.10773
+  ],
+  [
+   34.78843,
+   32.10744
+  ],
+  [
+   34.78865,
+   32.10742
+  ],
+  [
+   34.7886,
+   32.1071
+  ],
+  [
+   34.78842,
+   32.10712
+  ],
+  [
+   34.78841,
+   32.10703
+  ],
+  [
+   34.78853,
+   32.10701
+  ],
+  [
+   34.78848,
+   32.10674
+  ],
+  [
+   34.78833,
+   32.10676
+  ],
+  [
+   34.7883,
+   32.10609
+  ],
+  [
+   34.78843,
+   32.10528
+  ],
+  [
+   34.78818,
+   32.10538
+  ],
+  [
+   34.78817,
+   32.10534
+  ],
+  [
+   34.78829,
+   32.10482
+  ],
+  [
+   34.78863,
+   32.1048
+  ],
+  [
+   34.78848,
+   32.10394
+  ],
+  [
+   34.78898,
+   32.1039
+  ],
+  [
+   34.78901,
+   32.10378
+  ],
+  [
+   34.78886,
+   32.103
+  ],
+  [
+   34.78889,
+   32.10282
+  ],
+  [
+   34.78886,
+   32.10264
+  ],
+  [
+   34.78877,
+   32.10262
+  ],
+  [
+   34.78679,
+   32.10276
+  ],
+  [
+   34.78677,
+   32.10265
+  ],
+  [
+   34.78607,
+   32.10256
+  ],
+  [
+   34.78609,
+   32.10268
+  ],
+  [
+   34.78486,
+   32.10253
+  ],
+  [
+   34.78479,
+   32.10217
+  ],
+  [
+   34.78447,
+   32.10221
+  ],
+  [
+   34.78451,
+   32.10248
+  ],
+  [
+   34.78424,
+   32.10245
+  ],
+  [
+   34.78421,
+   32.10228
+  ],
+  [
+   34.78389,
+   32.10229
+  ],
+  [
+   34.78387,
+   32.10221
+  ],
+  [
+   34.78381,
+   32.10222
+  ],
+  [
+   34.78382,
+   32.10241
+  ],
+  [
+   34.78367,
+   32.10241
+  ],
+  [
+   34.7836,
+   32.10254
+  ],
+  [
+   34.78396,
+   32.1042
+  ],
+  [
+   34.7816,
+   32.10458
+  ],
+  [
+   34.78145,
+   32.10468
+  ],
+  [
+   34.78183,
+   32.10618
+  ],
+  [
+   34.77763,
+   32.10721
+  ],
+  [
+   34.77812,
+   32.10929
+  ],
+  [
+   34.77785,
+   32.10929
+  ],
+  [
+   34.77823,
+   32.11023
+  ],
+  [
+   34.77933,
+   32.11206
+  ],
+  [
+   34.78043,
+   32.11471
+  ],
+  [
+   34.78091,
+   32.11564
+  ],
+  [
+   34.78096,
+   32.11585
+  ],
+  [
+   34.78091,
+   32.11639
+  ],
+  [
+   34.78128,
+   32.11673
+  ],
+  [
+   34.78143,
+   32.11696
+  ],
+  [
+   34.78149,
+   32.11727
+  ],
+  [
+   34.78146,
+   32.11771
+  ],
+  [
+   34.78157,
+   32.11818
+  ],
+  [
+   34.78193,
+   32.11854
+  ],
+  [
+   34.78188,
+   32.11863
+  ],
+  [
+   34.78202,
+   32.11871
+  ],
+  [
+   34.7821,
+   32.11891
+  ],
+  [
+   34.78223,
+   32.11938
+  ],
+  [
+   34.78231,
+   32.12012
+  ],
+  [
+   34.78287,
+   32.12115
+  ],
+  [
+   34.78281,
+   32.12128
+  ],
+  [
+   34.78295,
+   32.12162
+  ],
+  [
+   34.78318,
+   32.12193
+  ],
+  [
+   34.78324,
+   32.12209
+  ],
+  [
+   34.78339,
+   32.12215
+  ],
+  [
+   34.78402,
+   32.12337
+  ],
+  [
+   34.78408,
+   32.12337
+  ],
+  [
+   34.78405,
+   32.12361
+  ],
+  [
+   34.78652,
+   32.12353
+  ]
+ ],
+ "projects": [
+  {
+   "id": "rainbow-tel-aviv",
+   "name": "Rainbow",
+   "fact": "Une tour de 39 étages et des immeubles boutique de 9 étages · 459 appartements",
+   "dev": "Israel Canada",
+   "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv-fr/",
+   "lat": 32.103173,
+   "lng": 34.784446,
+   "hero": false
+  },
+  {
+   "id": "dimri-yama-sde-dov",
+   "name": "DIMRI YAMA",
+   "fact": "Une tour de 40 étages, une tour moyenne de 16 étages et deux immeubles de 9 étages · 458 appartements",
+   "dev": "Y.H. Dimri",
+   "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov-fr/",
+   "lat": 32.104437,
+   "lng": 34.784467,
+   "hero": false
+  },
+  {
+   "id": "ashira-sde-dov",
+   "name": "ASHIRA",
+   "fact": "Une tour de 35 étages et 3 autres immeubles · 406 appartements",
+   "dev": "Avisror Moshe & Sons",
+   "url": "https://nad-lan.co.il/projects/ashira-sde-dov-fr/",
+   "lat": 32.105646,
+   "lng": 34.787676,
+   "hero": false
+  },
+  {
+   "id": "utopia-sde-dov",
+   "name": "UTOPIA",
+   "fact": "4 immeubles autour d’une cour commune · 337 appartements",
+   "dev": "Nahmias Group",
+   "url": "https://nad-lan.co.il/projects/utopia-sde-dov-fr/",
+   "lat": 32.106063,
+   "lng": 34.784731,
+   "hero": false
+  },
+  {
+   "id": "zohi-sde-dov",
+   "name": "ZOHI",
+   "fact": "230 appartements",
+   "dev": "Levinstein, Mivne et Allied",
+   "url": "https://nad-lan.co.il/projects/zohi-sde-dov-fr/",
+   "lat": 32.102845,
+   "lng": 34.785476,
+   "hero": false
+  },
+  {
+   "id": "shikun-binui-sde-dov",
+   "name": "Shikun & Binui",
+   "fact": "324 appartements en location longue durée · une tour de 38 étages et deux immeubles de 8 étages",
+   "dev": null,
+   "url": "https://nad-lan.co.il/projects/shikun-binui-sde-dov-fr/",
+   "lat": 32.10337,
+   "lng": 34.785624,
+   "hero": false
+  },
+  {
+   "id": "gindi-vogue-sde-dov",
+   "name": "GINDI VOGUE",
+   "fact": "Une tour de 45 étages et 3 tours de 20 étages · 708 appartements",
+   "dev": "Gindi Holdings",
+   "url": "https://nad-lan.co.il/projects/gindi-vogue-sde-dov-fr/",
+   "lat": 32.110647,
+   "lng": 34.78359,
+   "hero": false
+  },
+  {
+   "id": "first-sde-dov",
+   "name": "FIRST",
+   "fact": "Une tour de 45 étages et 3 immeubles boutique de 9 étages · 350 appartements",
+   "dev": "Hagag Group",
+   "url": "https://nad-lan.co.il/projects/first-sde-dov/",
+   "lat": 32.114133,
+   "lng": 34.784402,
+   "hero": false
+  },
+  {
+   "id": "migdalei-hayam-sde-dov",
+   "name": "Mediterranean Towers",
+   "fact": "Résidence seniors · jusqu’à 300 logements",
+   "dev": null,
+   "url": "https://nad-lan.co.il/projects/migdalei-hayam-sde-dov/",
+   "lat": 32.123294,
+   "lng": 34.786808,
+   "hero": false
+  }
+ ],
+ "renewal": [],
+ "places": [
+  [
+   "edu",
+   "École",
+   "École Aran",
+   "25 rue Yehuda Burla",
+   32.108128,
+   34.79026,
+   137
+  ],
+  [
+   "edu",
+   "École",
+   "École Kochav HaTzafon",
+   "19 rue Abba Kovner",
+   32.101471,
+   34.78638,
+   124
+  ],
+  [
+   "edu",
+   "École",
+   "École Nofei Yam",
+   "3 rue Isaac Bashevis Singer",
+   32.113632,
+   34.785355,
+   43
+  ],
+  [
+   "edu",
+   "École",
+   "Ironi Kaf Dalet Amos Oz",
+   "2 rue Marc Chagall",
+   32.118073,
+   34.786807,
+   42
+  ],
+  [
+   "edu",
+   "Jardin d’enfants",
+   "16 rue Abba Kovner",
+   null,
+   32.100904,
+   34.78581,
+   170
+  ],
+  [
+   "edu",
+   "Jardin d’enfants",
+   "2 rue Yehuda Burla",
+   null,
+   32.104549,
+   34.791217,
+   222
+  ],
+  [
+   "edu",
+   "Jardin d’enfants",
+   "1 rue Yehuda Amichai",
+   null,
+   32.109609,
+   34.785618,
+   32
+  ],
+  [
+   "edu",
+   "Jardin d’enfants",
+   "1 rue Isaac Bashevis Singer",
+   null,
+   32.113359,
+   34.785725,
+   78
+  ],
+  [
+   "edu",
+   "Jardin d’enfants",
+   "7 rue Isaac Bashevis Singer",
+   null,
+   32.114576,
+   34.78549,
+   54
+  ],
+  [
+   "parks",
+   "Plage",
+   "Plage des chiens nord",
+   null,
+   32.114463,
+   34.779705,
+   57
+  ],
+  [
+   "parks",
+   "Plage",
+   "Plage de Tel Baruch",
+   null,
+   32.122026,
+   34.782466,
+   61
+  ],
+  [
+   "parks",
+   "Promenade",
+   "Promenade de l’embouchure du Yarkon",
+   null,
+   32.099861,
+   34.778018,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin à la mémoire des Kaf Gimel Yordei HaSira",
+   null,
+   32.109149,
+   34.791089,
+   196
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Jilber",
+   null,
+   32.107037,
+   34.789548,
+   89
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Kochav HaTzafon",
+   null,
+   32.102028,
+   34.785529,
+   64
+  ],
+  [
+   "parks",
+   "Parc",
+   "Lamed HaYeruka",
+   null,
+   32.105695,
+   34.789384,
+   95
+  ],
+  [
+   "parks",
+   "Parc",
+   "Parc côtier Reading",
+   null,
+   32.105735,
+   34.777017,
+   173
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "Shufersal Express",
+   "9 rue Bonei HaIr",
+   32.101043,
+   34.783365,
+   137
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "Shufersal Express",
+   "27 rue Meir Yaari",
+   32.100442,
+   34.787817,
+   248
+  ],
+  [
+   "transit",
+   "Future station de la ligne verte",
+   "Einstein",
+   null,
+   32.113182,
+   34.783603,
+   null
+  ],
+  [
+   "transit",
+   "Future station de la ligne verte",
+   "Zohara Levitov",
+   null,
+   32.10783,
+   34.78206,
+   null
+  ],
+  [
+   "transit",
+   "Future station de la ligne verte",
+   "Levi Eshkol",
+   null,
+   32.112019,
+   34.785827,
+   91
+  ],
+  [
+   "transit",
+   "Future station de la ligne verte",
+   "Nofei Yam",
+   null,
+   32.117908,
+   34.785919,
+   null
+  ],
+  [
+   "transit",
+   "Future station de la ligne verte",
+   "Propes",
+   null,
+   32.123054,
+   34.788458,
+   null
+  ],
+  [
+   "transit",
+   "Future station de la ligne verte",
+   "Reading",
+   null,
+   32.099404,
+   34.782236,
+   null
+  ]
+ ],
+ "ui": {
+  "lang": "fr",
+  "dir": "ltr",
+  "colon": " : ",
+  "chips_label": "Afficher sur la carte",
+  "wait": "Chargement de la carte",
+  "reset": "Revenir à la vue d’ensemble",
+  "close": "Fermer",
+  "list": "Tous les projets et lieux de la carte",
+  "fail": "La carte n’est pas disponible pour le moment. Voici les lieux qu’elle présente :",
+  "osm": "© OpenStreetMap contributors",
+  "chips": {
+   "projects": "Projets",
+   "renewal": "Renouvellement urbain",
+   "edu": "Écoles et jardins d’enfants",
+   "parks": "Parcs",
+   "shop": "Commerces",
+   "transit": "Transports"
+  },
+  "js": {
+   "proj": "Projet",
+   "ren": "Renouvellement urbain",
+   "before": "Avant",
+   "after": "Après",
+   "newb": "Dans le nouvel immeuble",
+   "dev": "Promoteur : ",
+   "stage": "Étape : ",
+   "to_p": "Voir la page du projet",
+   "to_c": "Voir la page de l’ensemble",
+   "edge": "En bordure du quartier",
+   "key": "Limites du quartier, approximatives",
+   "lrt": "ligne verte",
+   "cats": {
+    "projects": "Projet",
+    "renewal": "Renouvellement urbain",
+    "edu": "Écoles et jardins d’enfants",
+    "parks": "Parcs",
+    "shop": "Commerces",
+    "transit": "Transports"
+   },
+   "loc": {
+    "CooperativeGesturesHandler.WindowsHelpText": "Pour zoomer : Ctrl et la molette de la souris",
+    "CooperativeGesturesHandler.MacHelpText": "Pour zoomer : ⌘ et la molette de la souris",
+    "CooperativeGesturesHandler.MobileHelpText": "Deux doigts pour déplacer la carte",
+    "NavigationControl.ZoomIn": "Zoom avant",
+    "NavigationControl.ZoomOut": "Zoom arrière",
+    "NavigationControl.ResetBearing": "Revenir au nord",
+    "AttributionControl.ToggleAttribution": "Crédits",
+    "Map.Title": "Carte",
+    "Marker.Title": "Repère",
+    "Popup.Close": "Fermer"
+   }
+  },
+  "plural": {
+   "École": "Écoles",
+   "Jardin d’enfants": "Jardins d’enfants",
+   "Parc": "Parcs",
+   "Pharmacie": "Pharmacies",
+   "Café": "Cafés",
+   "Supermarché": "Supermarchés",
+   "Gare routière": "Gares routières",
+   "Station du métro léger": "Stations du métro léger",
+   "Gare ferroviaire": "Gares ferroviaires",
+   "Plage": "Plages",
+   "Promenade": "Promenades",
+   "Future station de la ligne verte": "Futures stations de la ligne verte"
+  }
+ }
+}

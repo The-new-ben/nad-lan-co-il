@@ -14,7 +14,8 @@
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
   "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
-  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note.",
+  "Tier 3 under the CEO rule (7.10.2026): listing-site rents left in the body. Apply AFTER tier 1 and tier 2 (both are live on this page), on the live content, in the listed order. ceo_action: replaced = the CBS value (table 4.9, Q2 2026) now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row, column or paragraph gone. Whole elements deleted with their tags (paragraph) carry the tags in 'old'."
  ],
  "claims_summary": {
   "claims": {
@@ -29,9 +30,10 @@
    "UNSOURCED": 147,
    "CONSISTENT": 10
   },
-  "edits": 27,
+  "edits": 37,
   "tier1": 25,
-  "tier2": 2
+  "tier2": 2,
+  "tier3": 10
  },
  "notes": "Not audited as claims (illustrations, not market statements): the per-m2 if-example 18,200 / 16,700 (p@63458, 'אם דירת 3 חדרים מוצעת לפי'), the buyer if-example 1,670,000 price / 120,000 renovation / 3,900 vs 6,250 rent (p@69868, no room count), sizes 90 / 55 m2 (p@60898), '6-10 עסקאות' and '5 שכבות' (counts of steps). Rent and listing figures (end of May 2026 listing data, the June 2026 asking data, the asking-rent source with its 6.1% yield) are kept because the page dates them or shows its check date (עודכן ונבדק: 2026-06-06) and names the kind of source; the rent/yield of the 'old contractor or aggregation' source, which the page itself calls old and does not date, is removed in tier 2 (edits 14-15). The neighbourhood, street and property-type averages came from an unnamed 'broad deal database' covering all years and all property types; they are replaced by official neighbourhood medians where the official file has them (8 neighbourhoods; Hadekel, Urim, Ganim A, Ganim B, Neve Midbar, the hotels area and the new industrial zone have none and are named without numbers). The 2023 street table has no official counterpart, so it now shows the official city medians for the last five quarters (edit 17). Official quirk: a sharp dip in 4-6.2025 (3 rooms 1,181,600, 4 rooms 1,337,400; no 5-room median that quarter) between 1,505,800 / 1,781,400 a quarter earlier and the recovery to 1,516,100 / 1,719,300 in 1-3.2026; the quarterly table shows it as published. Name mapping: 'ערבה' in the rent text = official 'הערבה'; all other names match the official file exactly. Remaining SUSPECT lines, if any, are listed by check.py.",
  "claims": [
@@ -1422,6 +1424,209 @@
    "tier": 1,
    "n": 27,
    "raw_risk": []
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "הצביעו על מאות נכסים מוצעים למכירה, ועל שכר דירה מבוקש שמתחיל סביב 3,100 ₪ בדירות 2 חדרים ומגיע גם לכ-8,850 ₪ בדירות 5 חדרים.",
+   "new": "הצביעו על מאות נכסים מוצעים למכירה.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Lead: asking rents from supply data (3,100 to 8,850). The CBS table 4.9 has no Eilat row (not in the big-city list) and no neighbourhood rents, so the clause goes and the supply remark stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 28,
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the asking rents 3,100 (2 rooms) to 8,850 (5 rooms) from the lead"
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "נתוני מודעות שכירות עדכניים מסוף מאי 2026 הצביעו על 188 מודעות, שכר דירה ממוצע של 4,486 ₪, חציון של 3,585 ₪ ומחיר נמוך במיוחד של 530 ₪ במודעה חריגה. מקור אחר הציג שכר דירה מבוקש ממוצע של 3,500 ₪ ותשואה ממוצעת של 6.1%, עם שכר דירה של כ-3,100 ₪ לדירות 2 חדרים, 3,900 ₪ לדירות 3 חדרים, 6,250 ₪ לדירות 4 חדרים ו-8,850 ₪ לדירות 5 חדרים. הפערים בין מקורות השכירות נובעים מסוגי נכסים, מודעות פעילות, מיקום, ריהוט, עונתיות, דירות נופש ודירות רגילות.",
+   "new": "השכירות משתנה לפי סוג הנכס, מיקום, ריהוט, עונתיות, דירות נופש ודירות רגילות.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "The paragraph consisted of private rent figures: an ad sample (188 ads; 4,486; 3,585; 530) and a second source (3,500; yield 6.1%; by rooms). The CBS table 4.9 has no Eilat row (not in the big-city list) and no neighbourhood rents. The opening sentence stays; the closing sentence (why sources differ) becomes the plain remark that rent varies by property type, location, furnishing, season, holiday flats and regular flats.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 29,
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed all rent figures from the paragraph (188 ads, average 4,486, median 3,585, minimum 530; second source average 3,500, yield 6.1%, 3,100 / 3,900 / 6,250 / 8,850); the remark that rent differs by property type, location, furnishing and season stays in general form"
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "לכן שכר דירה ממוצע של 4,486 ₪ וחציון של 3,585 ₪ אינם עונים לבד על השאלה כמה שווה דירה. הם מסייעים",
+   "new": "לכן שכר דירה ממוצע או חציוני אינו עונה לבד על השאלה כמה שווה דירה. הוא מסייע",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "The CBS table 4.9 has no Eilat row (not in the big-city list) and no neighbourhood rents; the two private figures go and the sentence reads in the singular.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 30,
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the average 4,486 and the median 3,585 from the caution paragraph"
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "<p dir=\"rtl\">מקור מודעות שכירות עדכני מסוף מאי 2026 הציג 188 מודעות באילת, עדכון יומי ממקורות לוח שונים, ממוצע של 4,486 ₪, חציון של 3,585 ₪ ומחיר מינימום חריג של 530 ₪. באותו מקור נמצאו דוגמאות שכונתיות: שחמון עם 35 מודעות וממוצע 7,087 ₪, נווה מדבר ויעלים עם 25 מודעות וממוצע 3,245 ₪, ערבה עם 18 מודעות וממוצע 3,392 ₪, צאלים עם 10 מודעות וממוצע 4,045 ₪, הדקל עם 5 מודעות וממוצע 3,690 ₪, אזור תעשיה חדש עם 4 מודעות וממוצע 3,753 ₪, גנים ב עם 2 מודעות וממוצע 3,300 ₪, בנה ביתך ואמדר עם 32 מודעות וממוצע 3,944 ₪, אופיר עם 19 מודעות וממוצע 4,045 ₪, מרכז העיר עם 18 מודעות וממוצע 3,817 ₪, אורים עם 10 מודעות וממוצע 4,100 ₪, גנים א עם 4 מודעות וממוצע 6,575 ₪, מצפה ים עם 3 מודעות וממוצע 6,600 ₪, והמלונות עם מודעה אחת סביב 6,500 ₪.</p>",
+   "new": "",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "A whole paragraph of private rent figures (188 ads, city average and median, 14 areas). The CBS table 4.9 has no Eilat row (not in the big-city list) and no neighbourhood rents; the paragraph has no content without the numbers.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 31,
+   "raw_risk": [
+    "straight double quote",
+    "contains tags"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the paragraph with the Eilat average 4,486, median 3,585, minimum 530 and 14 area averages (Shahamon 7,087 ... the hotels 6,500) from a private ad source"
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"><thead dir=\"rtl\"><tr dir=\"rtl\"><th dir=\"rtl\">חתך שכירות</th><th dir=\"rtl\">מספר מודעות</th><th dir=\"rtl\">שכר דירה ממוצע</th><th dir=\"rtl\">שימוש נכון בנתון</th></tr></thead><tbody dir=\"rtl\"><tr dir=\"rtl\"><td dir=\"rtl\">כלל אילת</td><td dir=\"rtl\">188</td><td dir=\"rtl\">4,486 ₪, חציון 3,585 ₪</td><td dir=\"rtl\">נקודת בדיקה לשוק שכירות ארוך טווח</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">שחמון</td><td dir=\"rtl\">35</td><td dir=\"rtl\">7,087 ₪</td><td dir=\"rtl\">ייתכן תמהיל דירות גדולות או איכותיות יותר</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">נווה מדבר ויעלים</td><td dir=\"rtl\">25</td><td dir=\"rtl\">3,245 ₪</td><td dir=\"rtl\">בודקים מול מספר חדרים ומצב שיפוץ</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">ערבה</td><td dir=\"rtl\">18</td><td dir=\"rtl\">3,392 ₪</td><td dir=\"rtl\">שכונה ותיקה, מחיר רגיש למצב הדירה</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">צאלים</td><td dir=\"rtl\">10</td><td dir=\"rtl\">4,045 ₪</td><td dir=\"rtl\">השוואה לפי רחוב וגודל דירה</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">הדקל</td><td dir=\"rtl\">5</td><td dir=\"rtl\">3,690 ₪</td><td dir=\"rtl\">מדגם קטן, לא לקבוע שווי רק לפיו</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">בנה ביתך ואמדר</td><td dir=\"rtl\">32</td><td dir=\"rtl\">3,944 ₪</td><td dir=\"rtl\">בודקים האם מדובר בדירה, יחידה או נכס מיוחד</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">אופיר</td><td dir=\"rtl\">19</td><td dir=\"rtl\">4,045 ₪</td><td dir=\"rtl\">נתון עזר להשוואת דירות קטנות ובינוניות</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">מרכז העיר</td><td dir=\"rtl\">18</td><td dir=\"rtl\">3,817 ₪</td><td dir=\"rtl\">מיקום נוח, אך תמהיל שימושים מגוון</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">גנים א</td><td dir=\"rtl\">4</td><td dir=\"rtl\">6,575 ₪</td><td dir=\"rtl\">מדגם קטן מאוד, כל מודעה משפיעה</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">מצפה ים</td><td dir=\"rtl\">3</td><td dir=\"rtl\">6,600 ₪</td><td dir=\"rtl\">ייתכן רכיב נוף או איכות נכס</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">המלונות</td><td dir=\"rtl\">1</td><td dir=\"rtl\">6,500 ₪</td><td dir=\"rtl\">לא מספיק לקביעת שווי אזורי</td></tr></tbody></table>",
+   "new": "",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "A whole table of private rent figures (the city and 12 areas, 1-35 ads each) with notes that only comment on the rent level or the sample size. The CBS table 4.9 has no Eilat row (not in the big-city list) and no neighbourhood rents; no content without the numbers.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 32,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">שימוש נכון בנתון</th>",
+   "raw_risk": [
+    "straight double quote",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the table of the Eilat average and 12 area averages with ad counts (4,486 / 3,585; Shahamon 7,087 ... the hotels 6,500): private ad data, no official counterpart"
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "מקור נוסף הציג שכר דירה לפי חדרים: 2 חדרים סביב 3,100 ₪, 3 חדרים סביב 3,900 ₪, 4 חדרים סביב 6,250 ₪, ו-5 חדרים סביב 8,850 ₪. ",
+   "new": "",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "The CBS table 4.9 has no Eilat row (not in the big-city list) and no neighbourhood rents. The sentence only listed the private rents; the next sentences (do not pick one number by convenience; check date, property type, source, actual vs estimated rent, fit of the sample) stay.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 33,
+   "raw_risk": [],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the sentence with the second-source rents by rooms (3,100 / 3,900 / 6,250 / 8,850); the advice on reconciling different rent sources stays"
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"><thead dir=\"rtl\"><tr dir=\"rtl\"><th dir=\"rtl\">מספר חדרים</th><th dir=\"rtl\">שכר דירה לפי מקור ביקוש עדכני</th><th dir=\"rtl\">מסר לקונה</th></tr></thead><tbody dir=\"rtl\"><tr dir=\"rtl\"><td dir=\"rtl\">2 חדרים</td><td dir=\"rtl\">3,100 ₪</td><td dir=\"rtl\">יש לבדוק אם הדירה מרוהטת, משופצת ובאזור ביקוש</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">3 חדרים</td><td dir=\"rtl\">3,900 ₪</td><td dir=\"rtl\">כדאי לבדוק מודעות פעילות ועסקאות שכירות בפועל</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">4 חדרים</td><td dir=\"rtl\">6,250 ₪</td><td dir=\"rtl\">דירות משפחתיות שונות מאוד לפי שכונה ומפרט</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">5 חדרים</td><td dir=\"rtl\">8,850 ₪</td><td dir=\"rtl\">מדגם שונה יכול לשנות את התמונה לחלוטין</td></tr></tbody></table>",
+   "new": "",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent by rooms from a private demand source. The CBS table 4.9 has no Eilat row (not in the big-city list) and no neighbourhood rents. The messages beside the numbers ('different sample can change the picture completely', 'check active ads') refer to that sample and have no content without it.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 34,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">שכר דירה לפי מקור ביקוש עדכני</th>",
+   "raw_risk": [
+    "straight double quote",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the table of rent by rooms (2 rooms 3,100; 3 rooms 3,900; 4 rooms 6,250; 5 rooms 8,850) with its messages to the buyer: private source, no official counterpart"
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "אם דמי השכירות הצפויים הם 3,900 ₪ בלבד ולא 6,250 ₪, החישוב משתנה שוב.",
+   "new": "אם דמי השכירות הצפויים נמוכים מהמצופה, החישוב משתנה שוב.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Two private rent figures (3,900 and 6,250) used as an example. The CBS table 4.9 has no Eilat row (not in the big-city list) and no neighbourhood rents; the numbers go and the point (a lower expected rent changes the calculation) stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 35,
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the two illustrative rents 3,900 and 6,250"
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "תשואה ממוצעת של 6.1% במקור אחד יכולה להיראות אטרקטיבית,",
+   "new": "תשואה שמוצגת במקור אחד יכולה להיראות אטרקטיבית,",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "A yield of 6.1% from one private source, computed from the private rents. The CBS table 4.9 has no Eilat row (not in the big-city list) and no neighbourhood rents; the number goes and the caution that follows stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 36,
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the private-source yield 6.1% (built on private rents)"
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "נתוני שכירות שונים הציגו ממוצע כללי של 4,486 ₪ וחציון 3,585 ₪, ובמקור אחר שכר דירה לפי חדרים של 3,100 ₪ לדירת 2 חדרים, 3,900 ₪ לדירת 3 חדרים, 6,250 ₪ לדירת 4 חדרים ו-8,850 ₪ לדירת 5 חדרים. ",
+   "new": "",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ 'does the rent in Eilat justify a high purchase price': the sentence only listed private rent figures. The CBS table 4.9 has no Eilat row (not in the big-city list) and no neighbourhood rents. The answer keeps 'sometimes yes and sometimes no' and the list of what to calculate (net income, vacant months, renovation, maintenance, tax, financing, management fees).",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 37,
+   "raw_risk": [],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the FAQ sentence with the average 4,486, the median 3,585 and the rents by rooms (3,100 / 3,900 / 6,250 / 8,850)"
   }
  ],
  "live_recheck": {
@@ -1440,5 +1645,14 @@
   "replaced": 0,
   "removed": 0,
   "deleted": 2
+ },
+ "tier3_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 20:28:03",
+  "modified": "2026-10-07T15:07:38",
+  "result": "fetched 7.10.2026 with tier 1 and tier 2 live; every tier-3 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 10,
+  "replaced": 0,
+  "removed": 5,
+  "deleted": 5
  }
 }

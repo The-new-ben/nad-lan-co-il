@@ -1,0 +1,536 @@
+[
+ {
+  "lang": "en",
+  "size": "390x844",
+  "price_default": {
+   "big": "₪7-8.3 million",
+   "pm": "about ₪70,000-83,000 per m²",
+   "tx": "about ₪326,000",
+   "tt": "about ₪7.98 million"
+  },
+  "price_sea": {
+   "big": "₪9-11 million",
+   "pm": "about ₪90,000-110,000 per m²",
+   "tx": "about ₪514,000",
+   "tt": "about ₪10.51 million",
+   "why": "According to one of the quarter’s developers, selected apartments sold at ₪90,000-100,000 per m². In the three largest deals, on floors 38-43 of one of the towers in December 2025, the price was about ₪107,700 to about ₪119,200 per m² of built area, without the balconies.",
+   "chart": [
+    "Your choice",
+    "90,000",
+    "110,000",
+    "Sde Dov average",
+    "83,000",
+    "Tel Aviv-Yafo, median",
+    "52,856"
+   ],
+   "wa": "Hello, I checked the Sde Dov price guide: High floor or facing the sea, 100 m², estimate ₪9-11 million. I would like more details (nad-lan.co.il)"
+  },
+  "price_edges": [],
+  "price_hebrew": [],
+  "price_rows_visible": 39,
+  "idle": "idle",
+  "map": {
+   "state": "ready",
+   "dir": "ltr",
+   "lang": "en",
+   "pins": 9,
+   "chips": [
+    "Projects 9",
+    "Schools and kindergartens 9",
+    "Parks 8",
+    "Shopping 2",
+    "Transport 6"
+   ]
+  },
+  "basemap_labels": {
+   "count": 22,
+   "hebrew": [],
+   "sample": [
+    "Propes",
+    "Nofei Yam",
+    "Levi Eshkol",
+    "Zohara Levitov",
+    "Einstein",
+    "Reading Beach Park",
+    "Lamed HaYeruka",
+    "Kaf Gimel Yordei HaSira Memorial Garden",
+    "Tel Baruch Beach",
+    "Northern Dog Beach",
+    "Isaac Bashevis Singer 7",
+    "Yehuda Amichai 1"
+   ]
+  },
+  "card_project": {
+   "open": true,
+   "text": "Project Rainbow A 39-floor tower and 9-floor boutique buildings · 459 apartments Israel Canada To the project page",
+   "href": "https://nad-lan.co.il/projects/rainbow-tel-aviv-en/",
+   "inside": true
+  },
+  "map_edges": [
+   {
+    "tag": "BUTTON",
+    "cls": "nlam__chip",
+    "l": 390,
+    "r": -100,
+    "text": "Parks\n8"
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__sw",
+    "l": 405,
+    "r": -27,
+    "text": ""
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__n",
+    "l": 468,
+    "r": -85,
+    "text": "8"
+   },
+   {
+    "tag": "BUTTON",
+    "cls": "nlam__chip",
+    "l": 498,
+    "r": -235,
+    "text": "Shopping\n2"
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__sw",
+    "l": 513,
+    "r": -135,
+    "text": ""
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__n",
+    "l": 603,
+    "r": -220,
+    "text": "2"
+   },
+   {
+    "tag": "BUTTON",
+    "cls": "nlam__chip",
+    "l": 633,
+    "r": -370,
+    "text": "Transport\n6"
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__sw",
+    "l": 648,
+    "r": -270,
+    "text": ""
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__n",
+    "l": 738,
+    "r": -355,
+    "text": "6"
+   }
+  ],
+  "map_hebrew": [],
+  "scroll_overflow": 0,
+  "page_errors": [],
+  "console_errors": []
+ },
+ {
+  "lang": "ar",
+  "size": "390x844",
+  "price_default": {
+   "big": "7-8.3 مليون ₪",
+   "pm": "نحو 70,000-83,000 ₪ للمتر",
+   "tx": "نحو 326,000 ₪",
+   "tt": "نحو 7.98 مليون ₪"
+  },
+  "price_sea": {
+   "big": "9-11 مليون ₪",
+   "pm": "نحو 90,000-110,000 ₪ للمتر",
+   "tx": "نحو 514,000 ₪",
+   "tt": "نحو 10.51 مليون ₪",
+   "why": "بحسب أحد المطوّرين في الحي، بيعت شقق مختارة بسعر 90,000-100,000 ₪ للمتر. وفي أكبر ثلاث صفقات، في الطوابق 38-43 من أحد الأبراج في كانون الأول 2025، بلغ السعر من نحو 107,700 إلى نحو 119,200 ₪ للمتر من المساحة المبنية، من دون الشرفات.",
+   "chart": [
+    "اختياركم",
+    "90,000",
+    "110,000",
+    "متوسط سديه دوف",
+    "83,000",
+    "تل أبيب يافا، القيمة الوسيطة",
+    "52,856"
+   ],
+   "wa": "مرحباً، اطّلعت على دليل أسعار سديه دوف: طابق مرتفع أو مقابل البحر، 100 م²، تقدير 9-11 مليون ₪. أرغب في مزيد من التفاصيل (nad-lan.co.il)"
+  },
+  "price_edges": [],
+  "price_hebrew": [],
+  "price_rows_visible": 39,
+  "idle": "idle",
+  "map": {
+   "state": "ready",
+   "dir": "rtl",
+   "lang": "ar",
+   "pins": 9,
+   "chips": [
+    "المشاريع 9",
+    "مدارس وروضات 9",
+    "حدائق 8",
+    "التسوّق 2",
+    "المواصلات 6"
+   ]
+  },
+  "basemap_labels": {
+   "count": 22,
+   "hebrew": [],
+   "sample": [
+    "بروبس",
+    "نوفي يام",
+    "ليفي أشكول",
+    "زوهرا ليفيتوف",
+    "أينشتاين",
+    "حديقة ريدينغ الساحلية",
+    "لامد هيروكا",
+    "حديقة تخليداً لذكرى كاف غيمل يورديه هسيرا",
+    "شاطئ تل باروخ",
+    "شاطئ الكلاب الشمالي",
+    "إسحاق باشيفيس سينغر 7",
+    "يهودا عميحاي 1"
+   ]
+  },
+  "card_project": {
+   "open": true,
+   "text": "مشروع Rainbow برج من 39 طابقاً ومبانٍ بوتيك من 9 طوابق · 459 شقة Israel Canada إلى صفحة المشروع",
+   "href": "https://nad-lan.co.il/projects/rainbow-tel-aviv-ar/",
+   "inside": true
+  },
+  "map_edges": [
+   {
+    "tag": "BUTTON",
+    "cls": "nlam__chip",
+    "l": -34,
+    "r": 322,
+    "text": "حدائق\n8"
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__n",
+    "l": -19,
+    "r": 401,
+    "text": "8"
+   },
+   {
+    "tag": "BUTTON",
+    "cls": "nlam__chip",
+    "l": -152,
+    "r": 432,
+    "text": "التسوّق\n2"
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__sw",
+    "l": -69,
+    "r": 447,
+    "text": ""
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__n",
+    "l": -137,
+    "r": 520,
+    "text": "2"
+   },
+   {
+    "tag": "BUTTON",
+    "cls": "nlam__chip",
+    "l": -292,
+    "r": 550,
+    "text": "المواصلات\n6"
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__sw",
+    "l": -187,
+    "r": 565,
+    "text": ""
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__n",
+    "l": -277,
+    "r": 660,
+    "text": "6"
+   }
+  ],
+  "map_hebrew": [],
+  "scroll_overflow": 0,
+  "page_errors": [],
+  "console_errors": []
+ },
+ {
+  "lang": "fr",
+  "size": "390x844",
+  "price_default": {
+   "big": "7-8,3 M₪",
+   "pm": "environ 70 000-83 000 ₪/m²",
+   "tx": "environ 326 000 ₪",
+   "tt": "environ 7,98 M₪"
+  },
+  "price_sea": {
+   "big": "9-11 M₪",
+   "pm": "environ 90 000-110 000 ₪/m²",
+   "tx": "environ 514 000 ₪",
+   "tt": "environ 10,51 M₪",
+   "why": "Selon l’un des promoteurs du quartier, certains appartements se sont vendus 90 000-100 000 ₪/m². Lors des trois plus grosses ventes, aux étages 38-43 de l’une des tours en décembre 2025, le prix était d’environ 107 700 à environ 119 200 ₪/m² de surface bâtie, hors balcons.",
+   "chart": [
+    "Votre choix",
+    "90 000",
+    "110 000",
+    "Moyenne Sde Dov",
+    "83 000",
+    "Tel Aviv-Jaffa, médiane",
+    "52 856"
+   ],
+   "wa": "Bonjour, j’ai consulté les repères de prix de Sde Dov : Étage élevé ou face à la mer, 100 m², estimation 9-11 M₪. Je souhaite plus de détails (nad-lan.co.il)"
+  },
+  "price_edges": [],
+  "price_hebrew": [],
+  "price_rows_visible": 39,
+  "idle": "idle",
+  "map": {
+   "state": "ready",
+   "dir": "ltr",
+   "lang": "fr",
+   "pins": 9,
+   "chips": [
+    "Projets 9",
+    "Écoles et jardins d’enfants 9",
+    "Parcs 8",
+    "Commerces 2",
+    "Transports 6"
+   ]
+  },
+  "basemap_labels": {
+   "count": 22,
+   "hebrew": [],
+   "sample": [
+    "Propes",
+    "Nofei Yam",
+    "Levi Eshkol",
+    "Zohara Levitov",
+    "Einstein",
+    "Parc côtier Reading",
+    "Lamed HaYeruka",
+    "Jardin à la mémoire des Kaf Gimel Yordei HaSira",
+    "Plage de Tel Baruch",
+    "Plage des chiens nord",
+    "7 rue Isaac Bashevis Singer",
+    "1 rue Yehuda Amichai"
+   ]
+  },
+  "card_project": {
+   "open": true,
+   "text": "Projet Rainbow Une tour de 39 étages et des immeubles boutique de 9 étages · 459 appartements Israel Canada Voir la page du projet",
+   "href": "https://nad-lan.co.il/projects/rainbow-tel-aviv-fr/",
+   "inside": true
+  },
+  "map_edges": [
+   {
+    "tag": "BUTTON",
+    "cls": "nlam__chip",
+    "l": 379,
+    "r": -88,
+    "text": "Parcs\n8"
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__sw",
+    "l": 394,
+    "r": -16,
+    "text": ""
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__n",
+    "l": 456,
+    "r": -73,
+    "text": "8"
+   },
+   {
+    "tag": "BUTTON",
+    "cls": "nlam__chip",
+    "l": 486,
+    "r": -237,
+    "text": "Commerces\n2"
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__sw",
+    "l": 501,
+    "r": -123,
+    "text": ""
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__n",
+    "l": 605,
+    "r": -222,
+    "text": "2"
+   },
+   {
+    "tag": "BUTTON",
+    "cls": "nlam__chip",
+    "l": 635,
+    "r": -379,
+    "text": "Transports\n6"
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__sw",
+    "l": 650,
+    "r": -272,
+    "text": ""
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__n",
+    "l": 747,
+    "r": -364,
+    "text": "6"
+   }
+  ],
+  "map_hebrew": [],
+  "scroll_overflow": 0,
+  "page_errors": [],
+  "console_errors": []
+ },
+ {
+  "lang": "ru",
+  "size": "390x844",
+  "price_default": {
+   "big": "7-8,3 млн ₪",
+   "pm": "около 70 000-83 000 ₪ за м²",
+   "tx": "около 326 000 ₪",
+   "tt": "около 7,98 млн ₪"
+  },
+  "price_sea": {
+   "big": "9-11 млн ₪",
+   "pm": "около 90 000-110 000 ₪ за м²",
+   "tx": "около 514 000 ₪",
+   "tt": "около 10,51 млн ₪",
+   "why": "По словам одного из застройщиков района, отдельные квартиры продавались по 90 000-100 000 ₪ за м². В трёх крупнейших сделках, на этажах 38-43 одной из башен в декабре 2025 года, цена составила примерно от 107 700 до примерно 119 200 ₪ за м² застроенной площади, без балконов.",
+   "chart": [
+    "Ваш выбор",
+    "90 000",
+    "110 000",
+    "Сде-Дов, ср.",
+    "83 000",
+    "Тель-Авив-Яффо, медиана",
+    "52 856"
+   ],
+   "wa": "Здравствуйте, смотрю обзор цен по району Сде-Дов: Высокий этаж или вид на море, 100 м², оценка 9-11 млн ₪. Хотелось бы узнать подробнее (nad-lan.co.il)"
+  },
+  "price_edges": [],
+  "price_hebrew": [],
+  "price_rows_visible": 39,
+  "idle": "idle",
+  "map": {
+   "state": "ready",
+   "dir": "ltr",
+   "lang": "ru",
+   "pins": 9,
+   "chips": [
+    "Проекты 9",
+    "Школы и детсады 9",
+    "Парки 8",
+    "Магазины 2",
+    "Транспорт 6"
+   ]
+  },
+  "basemap_labels": {
+   "count": 22,
+   "hebrew": [],
+   "sample": [
+    "Пропес",
+    "Нофей Ям",
+    "Леви Эшколь",
+    "Зохара Левитов",
+    "Эйнштейн",
+    "Прибрежный парк Рединг",
+    "Ламед ха-Йерука",
+    "Сад памяти Каф-Гимель Йордей ха-Сира",
+    "Пляж Тель-Барух",
+    "Северный пляж для собак",
+    "Исаак Башевис-Зингер 7",
+    "Иегуда Амихай 1"
+   ]
+  },
+  "card_project": {
+   "open": true,
+   "text": "Проект Rainbow Башня в 39 этажей и бутик-дома в 9 этажей · 459 квартир Israel Canada На страницу проекта",
+   "href": "https://nad-lan.co.il/projects/rainbow-tel-aviv-ru/",
+   "inside": true
+  },
+  "map_edges": [
+   {
+    "tag": "BUTTON",
+    "cls": "nlam__chip",
+    "l": 355,
+    "r": -76,
+    "text": "Парки\n8"
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__n",
+    "l": 443,
+    "r": -61,
+    "text": "8"
+   },
+   {
+    "tag": "BUTTON",
+    "cls": "nlam__chip",
+    "l": 474,
+    "r": -220,
+    "text": "Магазины\n2"
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__sw",
+    "l": 489,
+    "r": -111,
+    "text": ""
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__n",
+    "l": 588,
+    "r": -205,
+    "text": "2"
+   },
+   {
+    "tag": "BUTTON",
+    "cls": "nlam__chip",
+    "l": 618,
+    "r": -366,
+    "text": "Транспорт\n6"
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__sw",
+    "l": 633,
+    "r": -255,
+    "text": ""
+   },
+   {
+    "tag": "SPAN",
+    "cls": "nlam__n",
+    "l": 734,
+    "r": -351,
+    "text": "6"
+   }
+  ],
+  "map_hebrew": [],
+  "scroll_overflow": 0,
+  "page_errors": [],
+  "console_errors": []
+ }
+]

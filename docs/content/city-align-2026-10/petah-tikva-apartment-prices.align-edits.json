@@ -14,7 +14,8 @@
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
   "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
-  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note.",
+  "Tier 3 under the CEO rule (7.10.2026): listing-site rents left in the body. Apply AFTER tier 1 and tier 2 (both are live on this page), on the live content, in the listed order. ceo_action: replaced = the CBS value (table 4.9, Q2 2026) now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row, column or paragraph gone. Whole elements deleted with their tags (paragraph) carry the tags in 'old'."
  ],
  "claims_summary": {
   "claims": {
@@ -29,9 +30,10 @@
    "UNSOURCED": 111,
    "CONSISTENT": 19
   },
-  "edits": 13,
+  "edits": 19,
   "tier1": 8,
-  "tier2": 5
+  "tier2": 5,
+  "tier3": 6
  },
  "notes": "Not audited as claims (illustrations and method numbers, not market statements): the 8-12 m2 / one-vs-two parking example (p@46975), the 10 m2 x 28,000 = 280,000 arithmetic example (p@56855), the comparison counts 10-15 / 4-8 deals (p@57112), the steps table working numbers including 'פער סביר יכול להיות 5%-15%' between comparables (tr@62678..63791), the 100,000-300,000 negotiation illustration (p@64623) and the 10-20 listings / 6-10 deals counts (p@67326). Per-m2 figures are kept only where the page ties them to its own dated public market check ('בדיקת שוק גלויה מ-6 ביוני 2026', usage note p@42858, and rows marked 'בהקשרים שנבדקו' / 'לפי הקשר שוק' / 'בדיקות שוק הצביעו'); the kind of source is generic, so this keep is borderline and can be revisited. The neighbourhood per-m2 table (12 of 14 rows unlabelled) is replaced by official neighbourhood medians. The Mahane Yehuda per-m2 range 20,000-24,000 comes from the same check whose 3-room range (1.5-1.9M) sits below the official 1,951,200; it is kept as labelled but is the weakest kept figure. Name mapping: page 'כפר גנים א'' / 'כפר גנים ב'' = official 'כפר גנים א' / 'כפר גנים ב'. The official 'הדר המושבות החדשה' is NOT mapped to the page's 'אם המושבות החדשה' (different names; shown as 'לא מוצג במחירון'); the official 'נווה עוז הירוקה' appears only in the 5-room FAQ. The remaining SUSPECT on p@42022 is a floor/ceiling span (1.5M for small old flats up to 4.2M for 5 rooms, new flats and demanded areas) that holds the official 5-room median 3,322,600; it is a heuristic false positive, kept as CONSISTENT. Official quirk: none sharp; 4 rooms moved 2,565,500 (10-12.2025) to 2,444,100 (1-3.2026).",
  "claims": [
@@ -899,6 +901,148 @@
    "raw_risk": [],
    "ceo_action": "removed",
    "ceo_note": "removed the 2%-4% and 8%-12% asking-to-deal gaps (no official source); sentence kept"
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "בדיקת שכירות סביב 5,000-8,000 ש\"ח בחלק גדול מהשכונות עוזרת לבחון היגיון כלכלי בסיסי, אבל",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בפתח תקווה ברבעון השני של 2026 (אפריל עד יוני) היה 5,138 ש\"ח, ובדיקת שכירות עוזרת לבחון היגיון כלכלי בסיסי, אבל",
+   "source_keys": [
+    "cbs_rent[פתח תקוה].total.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Lead: 'a rent check around 5,000-8,000 in a large part of the neighbourhoods' replaced by the CBS average monthly rent in Petah Tikva (5,138.4), Q2 2026; the clause that a rent check helps basic economic sense but does not replace comparable closed deals is unchanged.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 14,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the rent range 5,000-8,000 \"in most neighbourhoods\" with the CBS Petah Tikva average 5,138 ש\"ח (Q2 2026)",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "בדפי שוק שנבדקו נראו דמי שכירות ממוצעים לדוגמא סביב 4,383 ש\"ח בעמישב, 5,098 ש\"ח במרכז, 6,681 ש\"ח בכפר גנים א', 8,209 ש\"ח באם המושבות החדשה ו-9,875 ש\"ח בנווה גן. אלו מספרי הקשר, לא שומה.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בפתח תקווה ברבעון השני של 2026 (אפריל עד יוני) היה 5,138 ש\"ח בממוצע לכלל הדירות, ובחלוקה לפי גודל: 3,388 ש\"ח לדירות של 1 עד 2 חדרים, 4,203 ש\"ח לדירות של 2.5 עד 3 חדרים, 5,311 ש\"ח לדירות של 3.5 עד 4 חדרים ו-7,099 ש\"ח לדירות של 4.5 חדרים ומעלה. אלו מספרי הקשר, לא שומה.",
+   "source_keys": [
+    "cbs_rent[פתח תקוה].total.q2_2026",
+    "cbs_rent[פתח תקוה].1-2.q2_2026",
+    "cbs_rent[פתח תקוה].2.5-3.q2_2026",
+    "cbs_rent[פתח תקוה].3.5-4.q2_2026",
+    "cbs_rent[פתח תקוה].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Neighbourhood example rents from market pages have no official counterpart (the CBS has no neighbourhood rent). The paragraph sits under its own heading, so it is replaced rather than deleted: the CBS average monthly rent in Petah Tikva for all flats (5,138.4) and by size group, Q2 2026. 'These are context numbers, not a valuation' stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 15,
+   "raw_risk": [
+    "straight double quote",
+    "apostrophe"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the five neighbourhood example rents (Amishav 4,383; centre 5,098; Kfar Ganim A 6,681; Em HaMoshavot 8,209; Neve Gan 9,875) with the CBS Petah Tikva averages for all flats and by size group, Q2 2026",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">פרמטר</th>\n<th dir=\"rtl\">טווח או נתון עבודה</th>\n<th dir=\"rtl\">מה לבדוק לפני שימוש במספר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">החלטת קנייה נפוצה</td>\n<td dir=\"rtl\">כ-1.7-3.4 מיליון ש\"ח</td>\n<td dir=\"rtl\">מספר חדרים, שטח רשום, חניה, מעלית, ממ\"ד וגיל בניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז ותיק</td>\n<td dir=\"rtl\">כ-25,000-26,000 ש\"ח למ\"ר בהקשרים שנבדקו</td>\n<td dir=\"rtl\">מצב בניין, קומה, חידוש עתידי ורעש רחוב</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אזורים מבוקשים יותר</td>\n<td dir=\"rtl\">כ-28,000-32,000 ש\"ח למ\"ר בחלק מהבדיקות</td>\n<td dir=\"rtl\">האם העסקאות דומות בגודל, גיל ואיכות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שכירות בדירות משפחתיות</td>\n<td dir=\"rtl\">כ-5,500-8,700 ש\"ח בחלק ניכר מהשכונות</td>\n<td dir=\"rtl\">ריהוט, חניה, מעלית, ממ\"ד, מרפסת וקרבה לרכבת קלה או צירי תנועה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">פער דירה חדשה מול יד שנייה</td>\n<td dir=\"rtl\">משתנה לפי פרויקט, מפרט ומועד מסירה</td>\n<td dir=\"rtl\">מפרט, הצמדה, מסירה, מדד תשומות, חניה ומחסן</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">פרמטר</th>\n<th dir=\"rtl\">טווח או נתון עבודה</th>\n<th dir=\"rtl\">מה לבדוק לפני שימוש במספר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">החלטת קנייה נפוצה</td>\n<td dir=\"rtl\">כ-1.7-3.4 מיליון ש\"ח</td>\n<td dir=\"rtl\">מספר חדרים, שטח רשום, חניה, מעלית, ממ\"ד וגיל בניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז ותיק</td>\n<td dir=\"rtl\">כ-25,000-26,000 ש\"ח למ\"ר בהקשרים שנבדקו</td>\n<td dir=\"rtl\">מצב בניין, קומה, חידוש עתידי ורעש רחוב</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אזורים מבוקשים יותר</td>\n<td dir=\"rtl\">כ-28,000-32,000 ש\"ח למ\"ר בחלק מהבדיקות</td>\n<td dir=\"rtl\">האם העסקאות דומות בגודל, גיל ואיכות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שכר דירה חודשי ממוצע בדירות משפחתיות, אפריל עד יוני 2026 (הלמ\"ס)</td>\n<td dir=\"rtl\">5,311 ש\"ח לדירות של 3.5 עד 4 חדרים ו-7,099 ש\"ח לדירות של 4.5 חדרים ומעלה</td>\n<td dir=\"rtl\">ריהוט, חניה, מעלית, ממ\"ד, מרפסת וקרבה לרכבת קלה או צירי תנועה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">פער דירה חדשה מול יד שנייה</td>\n<td dir=\"rtl\">משתנה לפי פרויקט, מפרט ומועד מסירה</td>\n<td dir=\"rtl\">מפרט, הצמדה, מסירה, מדד תשומות, חניה ומחסן</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "cbs_rent[פתח תקוה].3.5-4.q2_2026",
+    "cbs_rent[פתח תקוה].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Quick-facts table: the row 'rent in family flats, about 5,500-8,700 in a large part of the neighbourhoods' becomes the CBS average monthly rent in Petah Tikva for 3.5-4 rooms (5,311.1) and 4.5+ rooms (7,099.0), Q2 2026; the usage note stays; all other rows are untouched.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 16,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">טווח או נתון עבודה</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "in the quick-facts table replaced the family-flat rent range 5,500-8,700 with the CBS Petah Tikva averages for 3.5-4 and 4.5+ rooms (5,311 / 7,099 ש\"ח, Q2 2026); the other rows are untouched",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": " בדפי שכירות שנבדקו נראו 184-233 מודעות פעילות במדגמים שונים, ולכן כדאי להתייחס למספרים כמדד שוק משתנה.",
+   "new": "",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "The sentence gives the size of the listing samples behind the neighbourhood rents and tells the reader to treat those numbers as a changing market measure. With the neighbourhood rents removed it has no object; deleted.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 17,
+   "raw_risk": [],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the sentence on the 184-233 active rent ads in the samples (the neighbourhood rents it qualified are gone)"
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שכונה או אזור</th>\n<th dir=\"rtl\">שכירות חודשית לדוגמה</th>\n<th dir=\"rtl\">קריאת מחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז העיר</td>\n<td dir=\"rtl\">כ-5,098 ש\"ח</td>\n<td dir=\"rtl\">מתאים לבדיקת דירות ותיקות, קטנות ובינוניות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">המרכז השקט</td>\n<td dir=\"rtl\">כ-5,785 ש\"ח</td>\n<td dir=\"rtl\">פרמיה על רחוב שקט, נגישות ומצב דירה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כפר גנים א'</td>\n<td dir=\"rtl\">כ-6,681 ש\"ח</td>\n<td dir=\"rtl\">בדיקה מול דירות 4 חדרים ומשפחתיות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אם המושבות החדשה</td>\n<td dir=\"rtl\">כ-8,209 ש\"ח</td>\n<td dir=\"rtl\">רלוונטי לדירות חדשות יחסית ולמשפחות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רמת ורבר</td>\n<td dir=\"rtl\">כ-7,182 ש\"ח</td>\n<td dir=\"rtl\">ייתכן עירוב בין דירות ותיקות ומשופצות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">עין גנים</td>\n<td dir=\"rtl\">כ-6,380 ש\"ח</td>\n<td dir=\"rtl\">בודקים פער בין מצב הדירה למחיר המבוקש</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה גן</td>\n<td dir=\"rtl\">כ-9,875 ש\"ח</td>\n<td dir=\"rtl\">שכירות גבוהה יחסית דורשת השוואה לנכסים גדולים ומאובזרים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כפר גנים ג'</td>\n<td dir=\"rtl\">כ-8,722 ש\"ח</td>\n<td dir=\"rtl\">מתאים לדירות משפחתיות גדולות ומבוקשות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שיפר</td>\n<td dir=\"rtl\">כ-6,813 ש\"ח</td>\n<td dir=\"rtl\">נדרש אימות לפי סוג הבניין והרחוב</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כפר גנים ב'</td>\n<td dir=\"rtl\">כ-7,336 ש\"ח</td>\n<td dir=\"rtl\">פער לפי גודל דירה וחניה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מחנה יהודה</td>\n<td dir=\"rtl\">כ-5,627 ש\"ח</td>\n<td dir=\"rtl\">משמש להשוואת דירות ותיקות וקטנות יותר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">עמישב</td>\n<td dir=\"rtl\">כ-4,383 ש\"ח</td>\n<td dir=\"rtl\">שכירות נמוכה יותר משקפת גם רמת ביקוש ומלאי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קרול</td>\n<td dir=\"rtl\">כ-5,660 ש\"ח</td>\n<td dir=\"rtl\">משווים לפי קרבה למרכז ולתחבורה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בר יהודה</td>\n<td dir=\"rtl\">כ-5,500 ש\"ח</td>\n<td dir=\"rtl\">בדיקה נקודתית לפי בניין וקומה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אחדות</td>\n<td dir=\"rtl\">כ-4,775 ש\"ח</td>\n<td dir=\"rtl\">מתאים לבדיקת דירות ותיקות במחיר נגיש יותר</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שכונה או אזור</th>\n<th dir=\"rtl\">קריאת מחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז העיר</td>\n<td dir=\"rtl\">מתאים לבדיקת דירות ותיקות, קטנות ובינוניות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">המרכז השקט</td>\n<td dir=\"rtl\">יש לבדוק רחוב שקט, נגישות ומצב דירה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כפר גנים א'</td>\n<td dir=\"rtl\">בדיקה מול דירות 4 חדרים ומשפחתיות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אם המושבות החדשה</td>\n<td dir=\"rtl\">רלוונטי לדירות חדשות יחסית ולמשפחות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רמת ורבר</td>\n<td dir=\"rtl\">ייתכן עירוב בין דירות ותיקות ומשופצות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">עין גנים</td>\n<td dir=\"rtl\">בודקים פער בין מצב הדירה למחיר המבוקש</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה גן</td>\n<td dir=\"rtl\">דורש השוואה לנכסים גדולים ומאובזרים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כפר גנים ג'</td>\n<td dir=\"rtl\">מתאים לדירות משפחתיות גדולות ומבוקשות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שיפר</td>\n<td dir=\"rtl\">נדרש אימות לפי סוג הבניין והרחוב</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כפר גנים ב'</td>\n<td dir=\"rtl\">פער לפי גודל דירה וחניה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מחנה יהודה</td>\n<td dir=\"rtl\">משמש להשוואת דירות ותיקות וקטנות יותר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">עמישב</td>\n<td dir=\"rtl\">יש לבדוק רמת ביקוש ומלאי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קרול</td>\n<td dir=\"rtl\">משווים לפי קרבה למרכז ולתחבורה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בר יהודה</td>\n<td dir=\"rtl\">בדיקה נקודתית לפי בניין וקומה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אחדות</td>\n<td dir=\"rtl\">מתאים לבדיקת דירות ותיקות</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Neighbourhood example rents from market pages have no official counterpart. The rent column goes. Four notes depended on the rent level and are rewritten as checks without a level claim: HaMerkaz HaShaket ('premium for a quiet street...' -> check street, access, condition), Neve Gan ('relatively high rent requires comparison...' -> requires comparison...), Amishav ('lower rent also reflects demand and stock' -> check demand and stock), Achdut ('...at a more accessible price' -> '...'). The other eleven notes are advice and stay word for word.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 18,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">שכירות חודשית לדוגמה</th>",
+   "raw_risk": [
+    "straight double quote",
+    "apostrophe",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the neighbourhood rent column (15 values 4,383-9,875 ש\"ח); four notes that read a rent level into the area (\"premium\", \"relatively high rent\", \"lower rent reflects demand\", \"more accessible price\") became checks; the other eleven notes stay"
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "בבדיקות שכירות נראתה דוגמה סביב 8,209 ש\"ח לחודש, נתון שמחזק את הצורך להשוות לדירות דומות באותו אזור.",
+   "new": "כדאי להשוות לדירות דומות באותו אזור.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ: a neighbourhood example rent (8,209) with no official counterpart is removed; the advice it supported stays on its own.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 19,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the Em HaMoshavot example rent 8,209; the advice to compare with similar flats in the same area stays"
   }
  ],
  "live_recheck": {
@@ -917,5 +1061,14 @@
   "replaced": 0,
   "removed": 5,
   "deleted": 0
+ },
+ "tier3_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 20:28:09",
+  "modified": "2026-10-07T15:08:05",
+  "result": "fetched 7.10.2026 with tier 1 and tier 2 live; every tier-3 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 6,
+  "replaced": 3,
+  "removed": 1,
+  "deleted": 2
  }
 }

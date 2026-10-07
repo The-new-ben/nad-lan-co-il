@@ -13,7 +13,8 @@
   "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
-  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
+  "Tier 3 under the CEO rule (7.10.2026): listing-site rents left in the body. Apply AFTER tier 1 and tier 2 (both are live on this page), on the live content, in the listed order. ceo_action: replaced = the CBS value (table 4.9, Q2 2026) now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row, column or paragraph gone. Whole elements deleted with their tags (paragraph) carry the tags in 'old'."
  ],
  "claims_summary": {
   "claims": {
@@ -28,9 +29,10 @@
    "UNSOURCED": 59,
    "CONSISTENT": 14
   },
-  "edits": 16,
+  "edits": 24,
   "tier1": 16,
-  "tier2": 0
+  "tier2": 0,
+  "tier3": 8
  },
  "notes": "Not audited as claims (illustrations, not market statements): renovation cost 150,000-300,000 (p@44754 and the checks table), sizes 88 / 115 / 75 / 138 / 192 m2, the yield if-example 2,200,000 / 5,300 / 2.9% / 2,500,000 (p@54038, no room count), the per-m2 arithmetic on the three dated deals (p@57708, 'אם דירת 3 חדרים של 75 מ\"ר נמכרה ב-1,750,000'), the FAQ yield example 2,190,000 / 5,300 / 63,600 / 2.9% (p@65640, 'לדוגמה'), the 3,264-deal count (p@54848), the 39-day selling time and the CBS release number. Kept as consistent with no edit: the opening of p@42050 (city averages 2,000,000 / 2,055,148 and a 4-room asking 2.19M are all within tolerance). Remaining SUSPECT lines: p@42050 is a false positive of the heuristic (2,000,000 is the all-rooms city average, consistent with 2,030,100; the '4 rooms' in that sentence belongs to the 2.19M asking figure, consistent with 2,130,200); all the others are the individual deals dated 15.3.2026 (Dov Gaponov 3 rooms 75 m2 1,750,000; Uzi Hitman 5 rooms 192 m2 3,800,000) in the deals table, in the per-m2 if-examples of p@57708 and in the 3-room FAQ; they are single dated deals, not market levels. Unsure: all three deals carry the same date, 15.3.2026, which is also the date of the CBS release cited in p@58125; it may be a reading date rather than the deal date, so the FAQ names the street without a date. Official quirk: the all-apartments median rose 12.7% in a year (1,801,100 to 2,030,100) while 3 rooms +0.3%, 4 rooms +6.2% and 5 rooms -5.8%, a mix effect; the new text uses the all-apartments median only as the level, not its change. Rova V's 3-room median (1,613,900) is slightly above the city's (1,603,300), so the FAQ 'are Rova G and Rova V cheaper' now answers with both room counts. Names map exactly (רובע ג, רובע ו); Rova Yod-Gimel, Tet-Vav and Yod-Zayin have no official median and stay qualitative.",
  "claims": [
@@ -926,6 +928,203 @@
    "raw_risk": [
     "straight double quote"
    ]
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "בשכירות, דירת 2 חדרים באשדוד מוצגת סביב 3,500 ש\"ח לחודש, 3 חדרים סביב 4,474-4,500 ש\"ח, 4 חדרים סביב 5,300 ש\"ח ו-5 חדרים סביב 7,650 ש\"ח.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע באשדוד ברבעון השני של 2026 (אפריל עד יוני) היה 3,119 ש\"ח לדירות של 1 עד 2 חדרים, 3,906 ש\"ח לדירות של 2.5 עד 3 חדרים, 4,855 ש\"ח לדירות של 3.5 עד 4 חדרים ו-6,239 ש\"ח לדירות של 4.5 חדרים ומעלה.",
+   "source_keys": [
+    "cbs_rent[אשדוד].1-2.q2_2026",
+    "cbs_rent[אשדוד].2.5-3.q2_2026",
+    "cbs_rent[אשדוד].3.5-4.q2_2026",
+    "cbs_rent[אשדוד].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Lead: rents by room count from listing pages (3,500, 4,474-4,500, 5,300, 7,650) replaced by the CBS average monthly rent in Ashdod by size group, Q2 2026 (table 4.9: 1-2 rooms 3,119.3; 2.5-3 3,905.7; 3.5-4 4,855.4; 4.5+ 6,238.5, rounded half up). The next sentence ('these are opening numbers, not a valuation') still reads correctly.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 17,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the listing-site rents by rooms (2: 3,500; 3: 4,474-4,500; 4: 5,300; 5: 7,650) with the CBS average rent in Ashdod by size group, Q2 2026: 3,119 / 3,906 / 4,855 / 6,239 ש\"ח",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "ובדפי נתונים פרטיים הוצגה בהם שכירות סביב 4,000-4,200 ש\"ח, אך",
+   "new": "אך",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent for districts C and F (4,000-4,200) came from private data pages; the CBS publishes no district rent, so the number goes. The sale medians in the same sentence are the Tax Authority figures and stay.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 18,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the district rent 4,000-4,200 (listing pages; the CBS publishes no district rent); the sentence now ends on the official sale medians"
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead>\n<tr>\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">שכירות חודשית נפוצה</th>\n<th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th>\n<th dir=\"rtl\">הערת שימוש</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">כ-3,500 ש\"ח</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">מתאים לבדיקת מחיר בדירות קטנות, במיוחד באזורים עם ביקוש שכירות</td>\n</tr>\n<tr>\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">כ-4,474-4,500 ש\"ח</td>\n<td dir=\"rtl\">1,603,300 ש\"ח</td>\n<td dir=\"rtl\">קטגוריה נפוצה להשוואה, אך מצב הדירה והרובע משנים מאוד את השכירות</td>\n</tr>\n<tr>\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">כ-5,300 ש\"ח</td>\n<td dir=\"rtl\">2,130,200 ש\"ח</td>\n<td dir=\"rtl\">בדיקה שימושית למשפחות ולמשפרי דיור, לא רק למשקיעים</td>\n</tr>\n<tr>\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">כ-7,650 ש\"ח</td>\n<td dir=\"rtl\">2,784,800 ש\"ח</td>\n<td dir=\"rtl\">בדירות גדולות יש שונות גבוהה לפי רובע, חניה, מרפסת ושטח אמיתי</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">שכר דירה חודשי ממוצע, אפריל עד יוני 2026 (הלמ\"ס)</th>\n<th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th>\n<th dir=\"rtl\">הערת שימוש</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">3,119 ש\"ח (דירות של 1 עד 2 חדרים)</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">מתאים לבדיקת מחיר בדירות קטנות, במיוחד באזורים עם ביקוש שכירות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">3,906 ש\"ח (דירות של 2.5 עד 3 חדרים)</td>\n<td dir=\"rtl\">1,603,300 ש\"ח</td>\n<td dir=\"rtl\">קטגוריה נפוצה להשוואה, אך מצב הדירה והרובע משנים מאוד את השכירות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">4,855 ש\"ח (דירות של 3.5 עד 4 חדרים)</td>\n<td dir=\"rtl\">2,130,200 ש\"ח</td>\n<td dir=\"rtl\">בדיקה שימושית למשפחות ולמשפרי דיור, לא רק למשקיעים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">6,239 ש\"ח (דירות של 4.5 חדרים ומעלה)</td>\n<td dir=\"rtl\">2,784,800 ש\"ח</td>\n<td dir=\"rtl\">בדירות גדולות יש שונות גבוהה לפי רובע, חניה, מרפסת ושטח אמיתי</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "cbs_rent[אשדוד].1-2.q2_2026",
+    "cbs_rent[אשדוד].2.5-3.q2_2026",
+    "cbs_rent[אשדוד].3.5-4.q2_2026",
+    "cbs_rent[אשדוד].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent column of the price table replaced by the CBS average monthly rent in Ashdod, Q2 2026. The rows keep their room labels (the neighbouring column is the Tax Authority median by exact room count), so every rent cell names its CBS size group (2 rooms = 1-2, 3 = 2.5-3, 4 = 3.5-4, 5 = 4.5+). Header says CBS and the quarter; usage notes unchanged.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 19,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">שכירות חודשית נפוצה</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the rent column (2 rooms 3,500; 3 rooms 4,474-4,500; 4 rooms 5,300; 5 rooms 7,650) with the CBS Ashdod averages by size group, Q2 2026; each cell names its group because the sale-median column beside it is by exact room count",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "מקור פרטי לשכירות הציג שכירות חציונית באשדוד סביב 3,925 ש\"ח לחודש על בסיס 250 מודעות פעילות, לצד דירת 3 חדרים סביב 4,474 ש\"ח וממוצע ארצי סביב 4,400 ש\"ח.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע באשדוד ברבעון השני של 2026 (אפריל עד יוני) היה 4,455 ש\"ח, לעומת 5,086 ש\"ח בממוצע הארצי.",
+   "source_keys": [
+    "cbs_rent[אשדוד].total.q2_2026",
+    "cbs_rent[סך הכל].total.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Private-source city rent median (3,925, 250 listings), 3-room figure (4,474) and national figure (4,400) replaced by the CBS average rent in Ashdod (4,454.6) and in all of Israel (5,085.5), Q2 2026. The following sentence (such data helps spot a flat priced away from the market, not a substitute for live listings and contracts) stays word for word.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 20,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the private rent median 3,925 (250 listings), 3-room 4,474 and national 4,400 with the CBS Ashdod average 4,455 and the CBS national average 5,086 ש\"ח, Q2 2026",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "והשכירות הצפויה היא 5,300 ש\"ח, התשואה הגולמית היא כ-2.9% לפני הוצאות, תקופות ריקות, תחזוקה ומס.",
+   "new": "והשכירות הצפויה היא כ-4,855 ש\"ח, הממוצע של הלמ\"ס לדירות של 3.5 עד 4 חדרים ברבעון השני של 2026, התשואה הגולמית היא השכירות השנתית חלקי המחיר, לפני הוצאות, תקופות ריקות, תחזוקה ומס.",
+   "source_keys": [
+    "cbs_rent[אשדוד].3.5-4.q2_2026",
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Worked example: the 5,300 rent was the listing-site 4-room figure; it becomes the CBS 3.5-4 rooms average (4,855.4). The result '2.9%' depended on 5,300 and is removed, not recomputed (no new arithmetic); the sentence keeps the method and the two sale prices (hypothetical, already on the page).",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 21,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "kept_numbers": [
+    "2,200,000"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the example rent 5,300 with the CBS average for 3.5-4 rooms in Ashdod (4,855, Q2 2026) and dropped the computed yield 2.9% (no new arithmetic); the formula stays",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "בדפי נתונים פרטיים הוצגה ברובעים האלה שכירות סביב 4,000-4,200 ש\"ח. ",
+   "new": "",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ: same district rent figure as in the body (4,000-4,200 from private pages); the CBS publishes no district rent, so the sentence is removed. 'These are direction-only data' now refers to the official sale medians above it.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 22,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the sentence with the district rent 4,000-4,200 (listing pages; no official district rent)"
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "דירת 2 חדרים מוצגת סביב 3,500 ש\"ח לחודש, דירת 3 חדרים סביב 4,474-4,500 ש\"ח, דירת 4 חדרים סביב 5,300 ש\"ח ודירת 5 חדרים סביב 7,650 ש\"ח. שכירות חציונית עירונית הוצגה סביב 3,925 ש\"ח, אך השונות בין רובעים ודירות גבוהה.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע באשדוד ברבעון השני של 2026 (אפריל עד יוני) היה 4,455 ש\"ח בממוצע לכלל הדירות בעיר, ובחלוקה לפי גודל: 3,119 ש\"ח לדירות של 1 עד 2 חדרים, 3,906 ש\"ח לדירות של 2.5 עד 3 חדרים, 4,855 ש\"ח לדירות של 3.5 עד 4 חדרים ו-6,239 ש\"ח לדירות של 4.5 חדרים ומעלה. בפועל השכירות משתנה לפי הרובע והדירה.",
+   "source_keys": [
+    "cbs_rent[אשדוד].total.q2_2026",
+    "cbs_rent[אשדוד].1-2.q2_2026",
+    "cbs_rent[אשדוד].2.5-3.q2_2026",
+    "cbs_rent[אשדוד].3.5-4.q2_2026",
+    "cbs_rent[אשדוד].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ 'how much rent in Ashdod': the listing-site list and the city median 3,925 replaced by the CBS size-group averages and the city average (4,454.6), Q2 2026. 'The variance between districts and flats is high' was a level claim without an official figure; it becomes the hedged 'in practice rent varies by district and flat'.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 23,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the FAQ rents by rooms (3,500 / 4,474-4,500 / 5,300 / 7,650) and the city median 3,925 with the CBS Ashdod averages by size group and for all flats, Q2 2026",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "לדוגמה, דירה שעולה 2,190,000 ש\"ח ומושכרת ב-5,300 ש\"ח לחודש נותנת שכירות שנתית של 63,600 ש\"ח ותשואה גולמית של כ-2.9%.",
+   "new": "לדוגמה, דירה שעולה 2,190,000 ש\"ח ומושכרת ב-4,855 ש\"ח לחודש, שכר הדירה הממוצע של הלשכה המרכזית לסטטיסטיקה לדירות של 3.5 עד 4 חדרים באשדוד ברבעון השני של 2026, נותנת תשואה גולמית לפי אותה נוסחה.",
+   "source_keys": [
+    "cbs_rent[אשדוד].3.5-4.q2_2026",
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ worked example: rent 5,300 (the listing-site 4-room figure) becomes the CBS 3.5-4 rooms average (4,855.4); annual rent 63,600 and yield 2.9% were derived from it and are removed rather than recomputed.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 24,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "kept_numbers": [
+    "2,190,000"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the example rent 5,300 with the CBS 3.5-4 rooms average for Ashdod (4,855, Q2 2026); dropped the annual rent 63,600 and the yield 2.9% that depended on it (no new arithmetic)",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
   }
  ],
  "live_recheck": {
@@ -935,5 +1134,14 @@
   "price_list_on_page": true,
   "body_outside_list_identical_to_audited_copy": "yes",
   "dry_run": "16 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ },
+ "tier3_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 20:28:00",
+  "modified": "2026-10-07T14:37:01",
+  "result": "fetched 7.10.2026 with tier 1 and tier 2 live; every tier-3 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 8,
+  "replaced": 6,
+  "removed": 2,
+  "deleted": 0
  }
 }

@@ -14,7 +14,8 @@
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
   "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
-  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note.",
+  "Tier 3 under the CEO rule (7.10.2026): listing-site rents left in the body. Apply AFTER tier 1 and tier 2 (both are live on this page), on the live content, in the listed order. ceo_action: replaced = the CBS value (table 4.9, Q2 2026) now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row, column or paragraph gone. Whole elements deleted with their tags (paragraph) carry the tags in 'old'."
  ],
  "claims_summary": {
   "claims": {
@@ -29,9 +30,10 @@
    "UNSOURCED": 55,
    "CONSISTENT": 10
   },
-  "edits": 12,
+  "edits": 18,
   "tier1": 11,
-  "tier2": 1
+  "tier2": 1,
+  "tier3": 6
  },
  "notes": "Not audited as claims (illustrations or structure, not market statements): the 'gap of more than 1,000,000' between extremes (p@44992), the m2 assumptions 55/80/110/130 (p@47279), the if-example 2,850,000 / 105 m2 / 27,143 per m2 / 2,600,000 / 250,000 (p@47596), the 700 rent gap example (p@56011), the if-example 2,900,000 vs 2,650,000-2,750,000 (FAQ p@72247), step counts (5-8 deals, 3-6 listings), days on market (60/90/120). The 3/4/5-room working ranges of the rooms table and the FAQ contain the official medians (3 rooms: 10-12.2025 is the latest published quarter) and are kept; only the 2-room, 6+-room and garden/roof cells lose their numbers, the rows stay. Rent figures are kept: the page names listing pages and dates its check (6.6.2026; 226 listings 16.4.2026). Remaining SUSPECT lines after the edits are the explicit if-example (p@47596, 2,850,000 for 4 rooms) and the single dated Smilansky 26 deal (1,900,000, 18.11.2024). The official file also lists neighbourhoods the page does not name (מע\"ר - מרכז עירוני ר, אבו שדיד, רמת אפרים, מכנס, פרדס הגדוד); they are not added. Name mapping: page 'מרכז העיר' = official 'מרכז העיר' (not the separate 'מע\"ר - מרכז עירוני ר'), 'קריית נורדאו' and 'קריית השרון' exact. Official quirk: Kiryat Nordau 5 rooms 3,882,100 is above the city 5-room median; not quoted.",
  "claims": [
@@ -664,6 +666,156 @@
    "raw_risk": [
     "straight double quote"
    ]
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "בבדיקות שכירות, דירות משפחתיות נפוצות נעות פעמים רבות סביב 5,000 עד 8,000 ש\"ח לחודש, אך גם כאן יש פערים חדים לפי גודל,",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בנתניה ברבעון השני של 2026 (אפריל עד יוני) היה 5,273 ש\"ח לדירות של 3.5 עד 4 חדרים ו-6,695 ש\"ח לדירות של 4.5 חדרים ומעלה, ובפועל השכירות משתנה לפי גודל,",
+   "source_keys": [
+    "cbs_rent[נתניה].3.5-4.q2_2026",
+    "cbs_rent[נתניה].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Lead: 'family flats usually rent around 5,000 to 8,000' (rental checks) replaced by the CBS average monthly rent in Netanya for 3.5-4 rooms (5,272.9) and 4.5+ rooms (6,695.1), Q2 2026. 'Sharp gaps by size, coastline, parking...' was a level claim without a figure; it becomes the hedged 'in practice rent varies by size, coastline, parking...' (the rest of the sentence is unchanged).",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 13,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the family-flat rent range 5,000-8,000 with the CBS Netanya averages for 3.5-4 and 4.5+ rooms, Q2 2026: 5,273 / 6,695 ש\"ח; \"sharp gaps\" became \"rent varies\"",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "שכירות של דירות משפחתיות נבדקת לעיתים סביב 5,000 עד 8,000 ש\"ח לחודש. השכירות מסייעת",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בנתניה ברבעון השני של 2026 (אפריל עד יוני) היה 5,273 ש\"ח לדירות של 3.5 עד 4 חדרים ו-6,695 ש\"ח לדירות של 4.5 חדרים ומעלה. השכירות מסייעת",
+   "source_keys": [
+    "cbs_rent[נתניה].3.5-4.q2_2026",
+    "cbs_rent[נתניה].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Section on rent and price per m2: the same 5,000-8,000 range as in the lead, replaced by the CBS averages for 3.5-4 and 4.5+ rooms, Q2 2026. The next sentence ('rent helps check economic sense but does not replace comparable sales') stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 14,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the family-flat rent range 5,000-8,000 with the CBS Netanya averages for 3.5-4 and 4.5+ rooms (5,273 / 6,695 ש\"ח, Q2 2026)",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שאלה מהירה</th>\n<th dir=\"rtl\">טווח עבודה או נתון</th>\n<th dir=\"rtl\">איך להשתמש במספר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כמה עולה דירה רגילה בנתניה</td>\n<td dir=\"rtl\">כ-1,500,000 עד 3,500,000 ש\"ח בחלק גדול מהבדיקות</td>\n<td dir=\"rtl\">נקודת פתיחה בלבד, לפני שכונה, שטח ומפרט</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כמה עולה דירה יקרה יותר ליד הים</td>\n<td dir=\"rtl\">לעיתים גבוה בהרבה מחציון מחיר העסקה בעיר, ובנכסים חריגים גם יותר</td>\n<td dir=\"rtl\">בודקים נוף אמיתי, מרחק מהים, קומה ודמי ניהול</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מה טווח שכירות נפוץ לדירת משפחה</td>\n<td dir=\"rtl\">כ-5,000 עד 8,000 ש\"ח לחודש</td>\n<td dir=\"rtl\">משמש לבדיקת סבירות, לא לקביעת שווי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מה מקור רשמי לפעילות מכר</td>\n<td dir=\"rtl\">הלמ\"ס, הודעה לתקשורת 077/2026, 12 במרץ 2026</td>\n<td dir=\"rtl\">בודקים נזילות שוק והיקף מכירות, לא מחיר דירה ספציפית</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מה לבדוק לפני הצעה</td>\n<td dir=\"rtl\">5 עד 8 עסקאות דומות, 3 עד 6 מודעות פעילות וסטייה בין מבוקש לסגירה</td>\n<td dir=\"rtl\">מייצר טווח הצעה מציאותי ולא מספר יחיד</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שאלה מהירה</th>\n<th dir=\"rtl\">טווח עבודה או נתון</th>\n<th dir=\"rtl\">איך להשתמש במספר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כמה עולה דירה רגילה בנתניה</td>\n<td dir=\"rtl\">כ-1,500,000 עד 3,500,000 ש\"ח בחלק גדול מהבדיקות</td>\n<td dir=\"rtl\">נקודת פתיחה בלבד, לפני שכונה, שטח ומפרט</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כמה עולה דירה יקרה יותר ליד הים</td>\n<td dir=\"rtl\">לעיתים גבוה בהרבה מחציון מחיר העסקה בעיר, ובנכסים חריגים גם יותר</td>\n<td dir=\"rtl\">בודקים נוף אמיתי, מרחק מהים, קומה ודמי ניהול</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מה שכר הדירה הממוצע לדירת משפחה, אפריל עד יוני 2026 (הלמ\"ס)</td>\n<td dir=\"rtl\">5,273 ש\"ח לדירות של 3.5 עד 4 חדרים ו-6,695 ש\"ח לדירות של 4.5 חדרים ומעלה</td>\n<td dir=\"rtl\">משמש לבדיקת סבירות, לא לקביעת שווי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מה מקור רשמי לפעילות מכר</td>\n<td dir=\"rtl\">הלמ\"ס, הודעה לתקשורת 077/2026, 12 במרץ 2026</td>\n<td dir=\"rtl\">בודקים נזילות שוק והיקף מכירות, לא מחיר דירה ספציפית</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מה לבדוק לפני הצעה</td>\n<td dir=\"rtl\">5 עד 8 עסקאות דומות, 3 עד 6 מודעות פעילות וסטייה בין מבוקש לסגירה</td>\n<td dir=\"rtl\">מייצר טווח הצעה מציאותי ולא מספר יחיד</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "cbs_rent[נתניה].3.5-4.q2_2026",
+    "cbs_rent[נתניה].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Quick-facts table: the row 'common rent range for a family flat, about 5,000 to 8,000 a month' becomes the CBS average monthly rent in Netanya for 3.5-4 and 4.5+ rooms, Q2 2026 (the question and the usage note are reworded only as far as the figure requires); all other rows are untouched.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 15,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">שאלה מהירה</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "in the quick-facts table replaced the family-flat rent range 5,000-8,000 with the CBS Netanya averages for 3.5-4 and 4.5+ rooms (5,273 / 6,695 ש\"ח, Q2 2026); the other rows are untouched",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "לפי דפי שכירות גלויים שנבדקו, נראו מאות מודעות פעילות, ובדף שכירות אחד הופיעו 226 מודעות מעודכנות ל-16 באפריל 2026. בדיקות רחבות יותר הציגו שכירות ממוצעת סביב 6,265 ש\"ח וחציון סביב 5,300 ש\"ח. אלה נתוני מודעות ושוק, לא חוזי שכירות רשמיים לכל דירה.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בנתניה ברבעון השני של 2026 (אפריל עד יוני) היה 4,816 ש\"ח בממוצע לכלל הדירות, ובחלוקה לפי גודל: 3,084 ש\"ח לדירות של 1 עד 2 חדרים, 4,116 ש\"ח לדירות של 2.5 עד 3 חדרים, 5,273 ש\"ח לדירות של 3.5 עד 4 חדרים ו-6,695 ש\"ח לדירות של 4.5 חדרים ומעלה. אלה ממוצעים עירוניים, לא שכירות של דירה מסוימת.",
+   "source_keys": [
+    "cbs_rent[נתניה].total.q2_2026",
+    "cbs_rent[נתניה].1-2.q2_2026",
+    "cbs_rent[נתניה].2.5-3.q2_2026",
+    "cbs_rent[נתניה].3.5-4.q2_2026",
+    "cbs_rent[נתניה].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent section: ad-page counts, a market-page average (6,265) and median (5,300) replaced by the CBS average monthly rent in Netanya for all flats (4,815.5) and by size group, Q2 2026. 'These are ad and market data, not official rental contracts' no longer applies; the closing sentence now says the figures are city averages, not the rent of a specific flat.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 16,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the ad counts (hundreds; 226 ads on 16.4.2026) and the market-page average 6,265 and median 5,300 with the CBS Netanya averages for all flats and by size group, Q2 2026",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג בדיקת שכירות</th>\n<th dir=\"rtl\">נתון שוק גלוי שנבדק</th>\n<th dir=\"rtl\">טווח עבודה</th>\n<th dir=\"rtl\">איך להשתמש במחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מודעות שכירות כלליות</td>\n<td dir=\"rtl\">226 מודעות בדף שנבדק, עדכון 16 באפריל 2026</td>\n<td dir=\"rtl\">שוק פעיל עם שונות גבוהה</td>\n<td dir=\"rtl\">בודקים היצע מתחרה לפי שכונה וגודל</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שכירות ממוצעת בדף שוק</td>\n<td dir=\"rtl\">כ-6,265 ש\"ח לחודש</td>\n<td dir=\"rtl\">ממוצע עירוני רחב</td>\n<td dir=\"rtl\">משמש רק לסינון ראשוני</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">חציון שכירות בדף שוק</td>\n<td dir=\"rtl\">כ-5,300 ש\"ח לחודש</td>\n<td dir=\"rtl\">מספר קרוב יותר לדירה רגילה</td>\n<td dir=\"rtl\">טוב להשוואה מול דירות משפחתיות רגילות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירת 1 חדר במרכז צפון</td>\n<td dir=\"rtl\">דוגמה סביב 3,800 ש\"ח</td>\n<td dir=\"rtl\">כ-3,200 עד 4,300 ש\"ח</td>\n<td dir=\"rtl\">בודקים מצב, ריהוט, מרחק מהים ותחבורה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירת 3 חדרים</td>\n<td dir=\"rtl\">שונות לפי מרכז, קריות ותיקות וקריית השרון</td>\n<td dir=\"rtl\">כ-4,500 עד 6,300 ש\"ח</td>\n<td dir=\"rtl\">משווים רק דירות דומות בגודל ובבניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירת 4 חדרים</td>\n<td dir=\"rtl\">דירות משפחתיות נפוצות</td>\n<td dir=\"rtl\">כ-5,500 עד 7,500 ש\"ח</td>\n<td dir=\"rtl\">מפרידים בין בניין ישן לבניין עם חניה וממ\"ד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4.5 חדרים במרכז דרום</td>\n<td dir=\"rtl\">דוגמה סביב 6,000 ש\"ח</td>\n<td dir=\"rtl\">כ-5,500 עד 6,700 ש\"ח</td>\n<td dir=\"rtl\">בודקים קומה, חניה, מעלית ושיפוץ</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים בסי פארק</td>\n<td dir=\"rtl\">דוגמה סביב 8,000 ש\"ח</td>\n<td dir=\"rtl\">כ-7,000 עד 9,500 ש\"ח</td>\n<td dir=\"rtl\">בודקים דמי ניהול, חניה, מרפסת וגודל אמיתי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירה ליד הים או עם נוף</td>\n<td dir=\"rtl\">שונות גבוהה מאוד</td>\n<td dir=\"rtl\">תוספת אפשרית של מאות עד אלפי ש\"ח בחודש</td>\n<td dir=\"rtl\">מבודדים את מרכיב הנוף מהמרכיבים האחרים</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג בדיקת שכירות</th>\n<th dir=\"rtl\">שכר דירה חודשי ממוצע, אפריל עד יוני 2026 (הלמ\"ס)</th>\n<th dir=\"rtl\">איך להשתמש במחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כלל הדירות בעיר</td>\n<td dir=\"rtl\">4,816 ש\"ח לחודש</td>\n<td dir=\"rtl\">משמש רק לסינון ראשוני</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">1 עד 2 חדרים</td>\n<td dir=\"rtl\">3,084 ש\"ח</td>\n<td dir=\"rtl\">בודקים מצב, ריהוט, מרחק מהים ותחבורה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2.5 עד 3 חדרים</td>\n<td dir=\"rtl\">4,116 ש\"ח</td>\n<td dir=\"rtl\">משווים רק דירות דומות בגודל ובבניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3.5 עד 4 חדרים</td>\n<td dir=\"rtl\">5,273 ש\"ח</td>\n<td dir=\"rtl\">מפרידים בין בניין ישן לבניין עם חניה וממ\"ד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4.5 חדרים ומעלה</td>\n<td dir=\"rtl\">6,695 ש\"ח</td>\n<td dir=\"rtl\">בודקים קומה, חניה, מעלית ושיפוץ; בודקים דמי ניהול, חניה, מרפסת וגודל אמיתי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירה ליד הים או עם נוף</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">מבודדים את מרכיב הנוף מהמרכיבים האחרים</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "cbs_rent[נתניה].total.q2_2026",
+    "cbs_rent[נתניה].1-2.q2_2026",
+    "cbs_rent[נתניה].2.5-3.q2_2026",
+    "cbs_rent[נתניה].3.5-4.q2_2026",
+    "cbs_rent[נתניה].4.5+.q2_2026"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent-check table (4 columns, 10 rows): the 226-ad row, the market-page average (6,265) and median (5,300), the example rents (3,800; 6,000; 8,000), the 'working range' column (3,200-9,500) and the 'hundreds to thousands per month' sea-view premium are all private or unsourced. Rebuilt on the CBS average monthly rent in Netanya for all flats and by size group, Q2 2026. The usage notes stay word for word (the 4.5+ row joins the two notes of the old 4.5-room and 5-room rows); the sea-view row keeps its advice and shows 'לא פורסם' because the CBS has no such figure.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 17,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">סוג בדיקת שכירות</th>",
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "rebuilt the rent-check table on the CBS Netanya averages (all flats 4,816; 1-2: 3,084; 2.5-3: 4,116; 3.5-4: 5,273; 4.5+: 6,695 ש\"ח, Q2 2026); the ad-count row, the market-page median row, the \"working range\" column (3,200-9,500) and the unsourced sea-view premium range were deleted; the sea-view row now reads \"לא פורסם\"",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "פער של 700 ש\"ח לחודש בשכירות יכול לשקף",
+   "new": "פער משמעותי בשכירות יכול לשקף",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "An illustrative gap of 700 a month has no official source; the number goes and the point (a gap can reflect upkeep, location, size or a different tenant pool) stays.",
+   "matches_in_live": 1,
+   "tier": 3,
+   "n": 18,
+   "raw_risk": [
+    "straight double quote"
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the illustrative rent gap 700 ש\"ח a month"
   }
  ],
  "live_recheck": {
@@ -680,6 +832,15 @@
   "result": "re-fetched 7.10.2026 after tier 1 went live (tier-1 'new' texts present); every tier-2 'old' matches exactly once in the live content.rendered, in the order listed",
   "edits": 1,
   "replaced": 0,
+  "removed": 1,
+  "deleted": 0
+ },
+ "tier3_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 20:28:09",
+  "modified": "2026-10-07T15:08:02",
+  "result": "fetched 7.10.2026 with tier 1 and tier 2 live; every tier-3 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 6,
+  "replaced": 5,
   "removed": 1,
   "deleted": 0
  }
