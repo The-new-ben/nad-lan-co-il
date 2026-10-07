@@ -1,0 +1,1167 @@
+{
+ "generated": "7.10.2026",
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages/4758?_fields=id,link,title,content,yoast_head_json (content.rendered), public, retrieved 7.10.2026 10:02:45 UTC. Page 4758 = https://nad-lan.co.il/sde-dov/prices/. Title, H1, URL, headings and Yoast fields are not edited (no number in them is wrong; the FAQ h3 150,000 is sourced).",
+ "facts": "scripts/project-stage/price_guide/sde-dov-prices.json (sources block) + the extra keys listed in docs/content/sde-dov-prices-2026-10/align-check.md; audit: docs/qa/had-460/sde-dov-prices-audit.md",
+ "apply_rules": [
+  "Apply in the listed order. Every \"old\" matches content.rendered exactly once (matches_in_live), and still once after the earlier edits are applied, except the entries with \"replace_all\": true, which match exactly \"expect_matches\" times and replace every match with the same text (verified by script).",
+  "The old strings were taken from content.rendered. Each one sits inside one paragraph, list item or table cell (cell edits include the cell's own <td>...</td>, because the same text appears elsewhere in running prose), except edit with \"spans_tags\": true (the whole rooms <table> element). If that one does not match the raw content (raw newlines between tags may differ from the rendered ones), locate in the raw the <table> element that contains \"<th>סוג דירה</th>\" and replace that whole element with \"new\".",
+  "No old or new string contains an HTML entity; \"״\" is U+05F4 and \"׳\" U+05F3, as on the live page.",
+  "Re-fetch the page and re-check each \"old\" right before applying; another session may have edited it since. Data only: nothing here was applied."
+ ],
+ "edits": [
+  {
+   "n": 1,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "בתחילת 2026 המחיר הממוצע למ״ר ברובע עמד סביב 81,000 ש״ח, כאשר טווחי הפריסייל נעים בדרך כלל בין 70,000 ל-100,000 ש״ח למ״ר.",
+   "new": "לפי סקר דוחות היזמים מאפריל 2026, הממוצע של כ-1,280 הדירות שנמכרו עד אז ברובע היה כ-83,000 ש״ח למ״ר, וב-2026 רוב הפרויקטים ברובע מוכרים בכ-70,000 ש״ח למ״ר.",
+   "source_keys": [
+    "NC2604",
+    "ICE1904",
+    "ICE2105",
+    "ICE0606"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #1 and #2: the average is about 83,000 (survey of 4.2026), not 81,000; the 70,000-100,000 presale range is replaced by the 2026 level of most projects.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 2,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "דירות עם נוף לים משווקות סביב 90,000 ש״ח למ״ר ולעיתים עד 100,000 ש״ח למ״ר, בעוד שבמקרים חריגים, בעיקר בבנייני בוטיק או במיקומים מסוימים, נרשמו מחירי פתיחה נמוכים יותר.",
+   "new": "דירות מול הים ובקומות הגבוהות נמכרות במחיר גבוה בהרבה: בדצמבר 2025 נמכרו שלוש דירות בקומות 38, 39 ו-43 של מגדל ברובע בכ-107,700 עד 119,200 ש״ח למ״ר בשטח הבנוי. מנגד, במרץ 2026 נרשמו ברובע גם עסקאות של 54,000-57,000 ש״ח למ״ר.",
+   "source_keys": [
+    "BZ2512",
+    "ICE0305"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #3, #4 (sea view 90K / up to 100K) and the boutique opening-price line (no source): replaced by the dated top-floor deals and the March 2026 low deals.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 3,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "המחיר הממוצע הצפוי לעסקה ברובע עומד סביב 7 מיליון ש״ח, אך הפער",
+   "new": "דירת 4 חדרים נמכרה ברובע בממוצע בכ-9.45 מיליון ש״ח, לפי אותו סקר, אך הפער",
+   "source_keys": [
+    "NC2604"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #5: the 7M expected average has no source; the only published average per room count is 4 rooms, about 9.45M.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 4,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "הנתון המרכזי לתחילת 2026 הוא מחיר ממוצע של כ-81,000 ש״ח למ״ר. זהו ממוצע גבוה ביחס לתל אביב כולה,",
+   "new": "הנתון המרכזי הוא ממוצע של כ-83,000 ש״ח למ״ר בדירות שנמכרו ברובע, לפי סקר דוחות היזמים מאפריל 2026. זהו ממוצע גבוה ביחס לתל אביב כולה, שבה חציון העסקאות בשנתיים שעד אוקטובר 2025 עמד על 52,856 ש״ח למ״ר,",
+   "source_keys": [
+    "NC2604",
+    "TA"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #1; the city comparison uses the site's own Tel Aviv figure (also in the PriceGuide).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 5,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "טווח הפריסייל הרחב, 70,000 עד 100,000 ש״ח למ״ר, מלמד",
+   "new": "טווח העסקאות הרחב באותו סקר, מכ-60,200 ועד 138,000 ש״ח למ״ר, מלמד",
+   "source_keys": [
+    "NC2604"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #2: the published range of deals is 60,200-138,000.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 6,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "דוגמה בולטת לכך היא חברה אחת שבה הממוצע עלה מכ-64,700 ש״ח למ״ר לכ-81,600 ש״ח למ״ר לאחר גל מכירות.",
+   "new": "דוגמה בולטת לכך היא פרויקט אחד ברובע, שבו הממוצע עלה מכ-64,700 ש״ח למ״ר ברבעון הראשון של 2026 לכ-81,600 ש״ח למ״ר בשמונה העסקאות שאחריו.",
+   "source_keys": [
+    "BZ2606"
+   ],
+   "audit_verdict": "CONSISTENT+DATE",
+   "why": "Audit #7 (consistent): the numbers stay; the period and the size of the sample are added.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 7,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "לצד הנתון הממוצע, קיימים גם טווחי הערכות של חברות בנייה שנעים סביב 64,000 עד 75,000 ש״ח למ״ר.",
+   "new": "לצד הנתון הממוצע, יש גם הערכות של החברות עצמן: ביוני 2026 העריך יזם אחד ברובע את הדירות שטרם נמכרו בפרויקט שלו בכ-73,200 ש״ח למ״ר כולל מע״מ, פחות מממוצע העסקאות שלו ב-2025, כ-82,500 ש״ח.",
+   "source_keys": [
+    "BZ2606"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #8: no source for a 64,000-75,000 range of company estimates; the one published estimate is used.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 8,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>מחיר ממוצע למ״ר בתחילת 2026</td>",
+   "new": "<td>ממוצע הדירות שנמכרו ברובע, סקר אפריל 2026</td>",
+   "source_keys": [
+    "NC2604"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Table 1, row 1 label.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 9,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>כ-81,000 ש״ח למ״ר</td>",
+   "new": "<td>כ-83,000 ש״ח למ״ר</td>",
+   "source_keys": [
+    "NC2604",
+    "ICE1904"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Table 1, row 1 value (audit #1).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 10,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>טווח פריסייל כללי</td>",
+   "new": "<td>רוב הפרויקטים ב-2026</td>",
+   "source_keys": [
+    "ICE2105",
+    "ICE0606",
+    "BZ2606"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Table 1, row 2 label.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 11,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>70,000 עד 100,000 ש״ח למ״ר</td>",
+   "new": "<td>כ-70,000 ש״ח למ״ר ברוב הפרויקטים; מחיר רשמי של 75,000-85,000 לפני הטבות מימון</td>",
+   "source_keys": [
+    "ICE2105",
+    "ICE0606",
+    "BZ2606"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #2. The same cell appears twice (table 1 row 2 and the sea-premium table row 1); one replacement for both.",
+   "matches_in_live": 2,
+   "expect_matches": 2,
+   "replace_all": true
+  },
+  {
+   "n": 12,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>דירות עם נוף לים</td>",
+   "new": "<td>קומות 38-43 במגדל מול הים</td>",
+   "source_keys": [
+    "BZ2512"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Table 1, row 3 label.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 13,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>עד 100,000 ש״ח למ״ר</td>",
+   "new": "<td>כ-107,700-119,200 ש״ח למ״ר בשטח הבנוי (דצמבר 2025)</td>",
+   "source_keys": [
+    "BZ2512"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #4: published deals went above 100,000.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 14,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>מחיר שיווק לדירות נוף לים</td>",
+   "new": "<td>דירות נבחרות בפרויקט אחד, לפי היזם</td>",
+   "source_keys": [
+    "ICE2512"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Table 1, row 4 label.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 15,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>כ-90,000 ש״ח למ״ר</td>",
+   "new": "<td>90,000-100,000 ש״ח למ״ר (דצמבר 2025)</td>",
+   "source_keys": [
+    "ICE2512"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #3: no source for sea-view marketing at about 90,000; the developer's own 90,000-100,000 for select units.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 16,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>בניין בוטיק מסוים</td>",
+   "new": "<td>העסקאות הזולות שפורסמו</td>",
+   "source_keys": [
+    "ICE0305"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Table 1, row 5 label.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 17,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>החל מכ-53,500 ש״ח למ״ר</td>",
+   "new": "<td>54,000-57,000 ש״ח למ״ר (מרץ 2026)</td>",
+   "source_keys": [
+    "ICE0305"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #9: no source for 53,500. The same cell appears twice (table 1 row 5, sea-premium table row 4); one replacement for both.",
+   "matches_in_live": 2,
+   "expect_matches": 2,
+   "replace_all": true
+  },
+  {
+   "n": 18,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>הערכת חברות בנייה</td>",
+   "new": "<td>הערכת יזם לדירות שטרם נמכרו</td>",
+   "source_keys": [
+    "BZ2606"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Table 1, row 6 label.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 19,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>64,000 עד 75,000 ש״ח למ״ר</td>",
+   "new": "<td>כ-73,200 ש״ח למ״ר כולל מע״מ (יוני 2026)</td>",
+   "source_keys": [
+    "BZ2606"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #8.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 20,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>טווח הערכה שאינו בהכרח מחיר העסקה הסופי לקונה</td>",
+   "new": "<td>הערכה שאינה בהכרח מחיר העסקה הסופי לקונה</td>",
+   "source_keys": [
+    "BZ2606"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Wording follows the single figure.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 21,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>מחיר עסקה ממוצע צפוי</td>",
+   "new": "<td>דירת 4 חדרים, ממוצע ברובע</td>",
+   "source_keys": [
+    "NC2604"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #5. The label appears twice (table 1 row 7 and the extremes table row 3); one replacement for both.",
+   "matches_in_live": 2,
+   "expect_matches": 2,
+   "replace_all": true
+  },
+  {
+   "n": 22,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>כ-7 מיליון ש״ח, כ-75,000 ש״ח למ״ר</td>",
+   "new": "<td>כ-9.45 מיליון ש״ח (סקר אפריל 2026)</td>",
+   "source_keys": [
+    "NC2604"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #5, #6.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 23,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "דירת 2 חדרים סביב 3.81 מיליון ש״ח יכולה למשוך משקיע",
+   "new": "דירת 2 חדרים, שנמכרה ב-2026 בכ-2.8 עד 3.7 מיליון ש״ח, יכולה למשוך משקיע",
+   "source_keys": [
+    "ICE2105",
+    "ICE0305"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #10: 3.81M has no Sde Dov source; the 2026 two-room deals are 2.8-3.1M and 3.665M.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 24,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "דירת 5 חדרים סביב 11.61 מיליון ש״ח פונה לקהל אחר לגמרי",
+   "new": "דירת 5 חדרים, שנמכרה ב-2026 בכ-7.2 עד 7.7 מיליון ש״ח והגיעה במחירון של פרויקט אחד ל-11.95 מיליון ש״ח, פונה לקהל אחר לגמרי",
+   "source_keys": [
+    "ICE0305",
+    "ICE2510"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #14: 11.61M has no source; two 132 m2 deals 7.157-7.565M (3.2026) and a 139.7 m2 list price 11.954M (10.2025). 7.727M (126 m2) is in the ICE0305 deals too.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 25,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "בדירות 2 חדרים קיים נתון שטח ממוצע של כ-46.8 מ״ר ומחיר ממוצע של כ-3.81 מיליון ש״ח. המשמעות היא מחיר גלום של כ-81,410 ש״ח למ״ר, קרוב מאוד לממוצע הכללי של תחילת 2026. בדירות 3, 4 ו-5 חדרים נמסרו מחירים ממוצעים, אך ללא שטח ממוצע רשמי באותו בסיס נתונים. לכן הטבלה מציגה את המחיר הממוצע ואת המשמעות הכלכלית, בלי להמציא שטח שלא נמסר.",
+   "new": "ממוצע לפי מספר חדרים פורסם בסקר דוחות היזמים מאפריל 2026 רק לדירות 4 חדרים: כ-9.45 מיליון ש״ח. לשאר הגדלים הטבלה מציגה עסקאות ומחירונים שפורסמו, כל אחד עם המועד שלו, בלי להמציא ממוצע שלא פורסם.",
+   "source_keys": [
+    "NC2604",
+    "ICE0305",
+    "ICE2105",
+    "ICE2510"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #10, #11, #12, #14: the rooms averages (46.8 m2, 3.81M, 81,410, 6.86M, 11.61M) have no source.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 26,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<table>\n<thead>\n<tr>\n<th>סוג דירה</th>\n<th>שטח ממוצע</th>\n<th>מחיר ממוצע</th>\n<th>מחיר למ״ר</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>2 חדרים</td>\n<td>כ-46.8 מ״ר</td>\n<td>כ-3.81 מיליון ש״ח</td>\n<td>כ-81,410 ש״ח למ״ר</td>\n</tr>\n<tr>\n<td>3 חדרים</td>\n<td>לא נמסר נתון שטח ממוצע אחיד</td>\n<td>כ-6.86 מיליון ש״ח</td>\n<td>לא ניתן לחשב ללא שטח ממוצע אחיד</td>\n</tr>\n<tr>\n<td>4 חדרים</td>\n<td>לא נמסר נתון שטח ממוצע אחיד</td>\n<td>כ-9.45 מיליון ש״ח</td>\n<td>לא ניתן לחשב ללא שטח ממוצע אחיד</td>\n</tr>\n<tr>\n<td>5 חדרים</td>\n<td>לא נמסר נתון שטח ממוצע אחיד</td>\n<td>כ-11.61 מיליון ש״ח</td>\n<td>לא ניתן לחשב ללא שטח ממוצע אחיד</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table>\n<thead>\n<tr>\n<th>סוג דירה</th>\n<th>מה פורסם</th>\n<th>מחיר</th>\n<th>מחיר למ״ר</th>\n<th>מועד</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>2 חדרים</td>\n<td>עסקאות אחרונות בפרויקט אחד במתחם אשכול</td>\n<td>2.8-3.1 מיליון ש״ח</td>\n<td>לא פורסם</td>\n<td>מאי 2026</td>\n</tr>\n<tr>\n<td>2 חדרים</td>\n<td>54 מ״ר, קומה 9, עסקה</td>\n<td>3.665 מיליון ש״ח</td>\n<td>כ-67,900 ש״ח</td>\n<td>2026</td>\n</tr>\n<tr>\n<td>3 חדרים</td>\n<td>82-83 מ״ר, עסקאות אחרונות באותו פרויקט באשכול</td>\n<td>4.6-4.8 מיליון ש״ח</td>\n<td>לא פורסם</td>\n<td>מאי 2026</td>\n</tr>\n<tr>\n<td>4 חדרים</td>\n<td>ממוצע הדירות שנמכרו ברובע</td>\n<td>כ-9.45 מיליון ש״ח</td>\n<td>לא פורסם</td>\n<td>סקר אפריל 2026</td>\n</tr>\n<tr>\n<td>4-5 חדרים</td>\n<td>104-126 מ״ר, קומות 10-13, ארבע עסקאות</td>\n<td>6.49-7.73 מיליון ש״ח</td>\n<td>61,300-62,800 ש״ח</td>\n<td>2026</td>\n</tr>\n<tr>\n<td>5 חדרים</td>\n<td>132 מ״ר, קומה 9, שתי עסקאות</td>\n<td>7.16-7.57 מיליון ש״ח</td>\n<td>54,200-57,300 ש״ח</td>\n<td>מרץ 2026</td>\n</tr>\n<tr>\n<td>5 חדרים</td>\n<td>139.7 מ״ר, קומה 18, מחירון של פרויקט אחד</td>\n<td>11.954 מיליון ש״ח</td>\n<td>כ-85,600 ש״ח</td>\n<td>אוקטובר 2025</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "NC2604",
+    "ICE0305",
+    "ICE2105",
+    "ICE2510"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "The rooms table rebuilt only from sourced rows, each with its date. The old table spans tags (the whole <table> element); see apply_rules.",
+   "matches_in_live": 1,
+   "spans_tags": true
+  },
+  {
+   "n": 27,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "מחיר ממוצע של כ-11.61 מיליון ש״ח מחייב בדיקה רחבה יותר",
+   "new": "שמחירה בעסקאות ובמחירונים שפורסמו נע בין כ-7.2 לכ-12 מיליון ש״ח, נדרשת בדיקה רחבה יותר",
+   "source_keys": [
+    "ICE0305",
+    "ICE2510"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #14.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 28,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "העסקה הזולה ביותר שנרשמה עומדת סביב 2.3 מיליון ש״ח לדירת 32 מ״ר.",
+   "new": "דירות 2 חדרים נמכרו ב-2026 בכ-2.8 עד 3.1 מיליון ש״ח בפרויקט אחד באשכול, ובמכירה המוקדמת שלו גם ב-2.4 עד 2.7 מיליון ש״ח.",
+   "source_keys": [
+    "ICE2105"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #15: the only published 32 m2 deal was 3.1M (7.2023), not 2.3M.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 29,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "לעומתה, עסקת שיא של כ-43.75 מיליון ש״ח לדירת 508 מ״ר במתחם אשכול מייצגת קצה אחר לגמרי של השוק.",
+   "new": "לעומתן, העסקה הגדולה שפורסמה ברובע, דירה של כ-390 מ״ר ומרפסת של כ-200 מ״ר בקומה 38 של מגדל במתחם המרכזי, שנמכרה בדצמבר 2025 ביותר מ-42 מיליון ש״ח, מייצגת קצה אחר לגמרי של השוק.",
+   "source_keys": [
+    "BZ2512",
+    "NC2604F",
+    "ICE1904"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #16: two sources call the 42M+ floor-38 deal the largest so far; it is in a Central-compound project (ICE1904 lists that developer in the Central compound).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 30,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "מתוכן, כ-11,000 דירות נמצאות בתהליכי הקמה.",
+   "new": "עד אפריל 2026 נמכרו מתוכן כ-1,280 דירות.",
+   "source_keys": [
+    "NC2604"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "No source for 11,000 under construction.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 31,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "מתחם אשכול מופיע בנתוני השוק כמתחם שבו נרשמו עסקאות בולטות, לרבות עסקת שיא של כ-43.75 מיליון ש״ח לדירת 508 מ״ר ועסקת שפל של כ-2.3 מיליון ש״ח לדירת 32 מ״ר.",
+   "new": "במתחם אשכול משווקים היום רוב הפרויקטים של הרובע, והמחירים בו מגוונים: לפי דוחות 2025, ממוצעי הפרויקטים בו נעו מכ-63,400 ועד כ-82,600 ש״ח למ״ר, כולל מע״מ.",
+   "source_keys": [
+    "ICE1904",
+    "NC2604",
+    "ICE2105",
+    "GL2609"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #15, #16. Eshkol projects in the survey: Dimri Yama 82,600, Rainbow 81,700, זוהי תל אביב 63,400 (all in Eshkol per ICE2105 / GL2609); FIRST (75,520) is in the Central compound.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 32,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "פרויקט FIRST של קבוצת חג׳ג׳ מציג גם הוא תמונת ביקוש חזקה: שווקו בו כ-94 ועוד 8 דירות בכ-853 מיליון ש״ח, במחיר ממוצע של כ-8.4 מיליון ש״ח לדירה.",
+   "new": "במתחם המרכזי, פרויקט FIRST של קבוצת חג׳ג׳ מציג תמונת ביקוש חזקה: עד יולי 2025 שווקו בו כ-94 ועוד 8 דירות בכ-853 מיליון ש״ח, במחיר ממוצע של כ-8.4 מיליון ש״ח לדירה, והממוצע למ״ר בו ב-2025 היה כ-75,500 ש״ח.",
+   "source_keys": [
+    "NC2507",
+    "BZ2512",
+    "NC2604",
+    "ICE1904"
+   ],
+   "audit_verdict": "CONSISTENT+DATE",
+   "why": "Audit #17 (consistent): date added, the project placed in the Central compound, its 2025 average added.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 33,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>עסקת שיא כ-43.75 מיליון ש״ח לדירת 508 מ״ר; עסקת שפל כ-2.3 מיליון ש״ח לדירת 32 מ״ר</td>",
+   "new": "<td>ממוצעי 2025 בפרויקטים: כ-63,400 עד כ-82,600 ש״ח למ״ר; בפרויקט אחד עסקאות אחרונות ב-60,000-62,000 (מאי 2026)</td>",
+   "source_keys": [
+    "NC2604",
+    "ICE2105"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Compounds table, Eshkol row (audit #15, #16).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 34,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "כאשר מחיר השיווק לדירות נוף לים עומד סביב 90,000 ש״ח למ״ר, ודירות עם נוף לים יכולות להגיע עד 100,000 ש״ח למ״ר, ניתן לראות",
+   "new": "כאשר יזם אחד ברובע סיפר בדצמבר 2025 שדירות נבחרות נמכרו ב-90,000-100,000 ש״ח למ״ר, ובאותו חודש נמכרו דירות בקומות 38-43 של מגדל מול הים בכ-107,700 עד 119,200 ש״ח למ״ר בשטח הבנוי, ניתן לראות",
+   "source_keys": [
+    "ICE2512",
+    "BZ2512"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #3, #4.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 35,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>דירת נוף לים</td>",
+   "new": "<td>דירות נבחרות, לפי יזם ברובע</td>",
+   "source_keys": [
+    "ICE2512"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Sea-premium table, row 2 label.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 36,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>כ-90,000 ש״ח למ״ר בשיווק</td>",
+   "new": "<td>90,000-100,000 ש״ח למ״ר (דצמבר 2025)</td>",
+   "source_keys": [
+    "ICE2512"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #3.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 37,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>דירה עם נוף לים במיקום חזק</td>",
+   "new": "<td>קומות 38-43 במגדל מול הים</td>",
+   "source_keys": [
+    "BZ2512"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Sea-premium table, row 3 label.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 38,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>עד כ-100,000 ש״ח למ״ר</td>",
+   "new": "<td>כ-107,700-119,200 ש״ח למ״ר בשטח הבנוי (דצמבר 2025)</td>",
+   "source_keys": [
+    "BZ2512"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #4.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 39,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>תמחור קרוב לחלק העליון של טווח הפריסייל</td>",
+   "new": "<td>מחיר מעל הרמה הנפוצה ברובע</td>",
+   "source_keys": [
+    "BZ2512",
+    "NC2604"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "The old line assumed a 100,000 ceiling.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 40,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>דירת בוטיק מסוימת</td>",
+   "new": "<td>העסקאות הזולות שפורסמו ב-2026</td>",
+   "source_keys": [
+    "ICE0305"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Sea-premium table, row 4 label (audit #9).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 41,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "לכן, כאשר משווים בין דירה במחיר של 81,000 ש״ח למ״ר לבין",
+   "new": "לכן, כאשר משווים בין דירה במחיר הממוצע של הרובע, כ-83,000 ש״ח למ״ר, לבין",
+   "source_keys": [
+    "NC2604"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #1 (the 90,000 or 100,000 that follow are the developer's 90,000-100,000, ICE2512).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 42,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "מצד אחד, העסקה הזולה ביותר שנמסרה עומדת סביב 2.3 מיליון ש״ח לדירת 32 מ״ר. מצד שני, עסקת שיא של כ-43.75 מיליון ש״ח לדירת 508 מ״ר במתחם אשכול מציבה את הרובע בשורת שווקי היוקרה היקרים ביותר בתל אביב. שתי העסקאות נכונות לאותו רובע, אך הן אינן מייצגות את אותה כוונת רכישה.",
+   "new": "מצד אחד, דירות 2 חדרים נמכרו ב-2026 בכ-2.8 עד 3.1 מיליון ש״ח, ודירת חדר של 32 מ״ר בקומה 4 של אחד המגדלים נמכרה עוד ביולי 2023 ב-3.1 מיליון ש״ח. מצד שני, דירה של כ-390 מ״ר ומרפסת של כ-200 מ״ר בקומה 38 של מגדל במתחם המרכזי נמכרה בדצמבר 2025 ביותר מ-42 מיליון ש״ח, העסקה הגדולה שפורסמה ברובע, והיא מציבה את הרובע בשורת שווקי היוקרה היקרים ביותר בתל אביב. שני הקצוות נכונים לאותו רובע, אך הם אינם מייצגים את אותה כוונת רכישה.",
+   "source_keys": [
+    "ICE2105",
+    "GL2311",
+    "BZ2512",
+    "NC2604F"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #15, #16.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 43,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "דירה של 508 מ״ר במחיר של כ-43.75 מיליון ש״ח אינה מוצר שוק רגיל.",
+   "new": "דירה של כ-390 מ״ר במחיר של יותר מ-42 מיליון ש״ח אינה מוצר שוק רגיל.",
+   "source_keys": [
+    "BZ2512"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #16.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 44,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>עסקת שפל ידועה</td>",
+   "new": "<td>דירת חדר, קומה 4 (יולי 2023)</td>",
+   "source_keys": [
+    "GL2311"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Extremes table, row 1 label (audit #15).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 45,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>כ-2.3 מיליון ש״ח</td>",
+   "new": "<td>3.1 מיליון ש״ח</td>",
+   "source_keys": [
+    "GL2311"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #15: the published 32 m2 deal.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 46,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>רצפת כניסה לרובע, בעיקר בדירות קטנות מאוד</td>",
+   "new": "<td>דירה קטנה מאוד: מחיר כולל נמוך, מחיר גבוה למ״ר</td>",
+   "source_keys": [
+    "GL2311"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "3.1M / 32 m2 = about 96,900 per m2, so it is not the price floor.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 47,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>דירת 2 חדרים ממוצעת</td>",
+   "new": "<td>דירת 2 חדרים בפרויקט אחד באשכול (מאי 2026)</td>",
+   "source_keys": [
+    "ICE2105"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Extremes table, row 2 label (audit #10).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 48,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>כ-3.81 מיליון ש״ח</td>",
+   "new": "<td>2.8-3.1 מיליון ש״ח</td>",
+   "source_keys": [
+    "ICE2105"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #10. Unique once the rooms table is replaced (edit above).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 49,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>כ-46.8 מ״ר</td>",
+   "new": "<td>לא פורסם</td>",
+   "source_keys": [
+    "ICE2105"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #10. Unique once the rooms table is replaced.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 50,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>מוצר כניסה רחב יותר, סביב הממוצע למ״ר של הרובע</td>",
+   "new": "<td>מוצר הכניסה הנפוץ לרובע</td>",
+   "source_keys": [
+    "ICE2105"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "The old line relied on the unsourced 81,410.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 51,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>כ-7 מיליון ש״ח</td>",
+   "new": "<td>כ-9.45 מיליון ש״ח</td>",
+   "source_keys": [
+    "NC2604"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #5 (row label changed above).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 52,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>לפי מחיר של כ-75,000 ש״ח למ״ר בממוצע צפוי</td>",
+   "new": "<td>לא פורסם שטח ממוצע (סקר אפריל 2026)</td>",
+   "source_keys": [
+    "NC2604"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #6.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 53,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>עסקת שיא ידועה</td>",
+   "new": "<td>העסקה הגדולה שפורסמה, קומה 38 (דצמבר 2025)</td>",
+   "source_keys": [
+    "BZ2512",
+    "NC2604F"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Extremes table, row 4 label (audit #16).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 54,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>כ-43.75 מיליון ש״ח</td>",
+   "new": "<td>יותר מ-42 מיליון ש״ח</td>",
+   "source_keys": [
+    "BZ2512"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #16.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 55,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>508 מ״ר</td>",
+   "new": "<td>כ-390 מ״ר ומרפסת של כ-200 מ״ר</td>",
+   "source_keys": [
+    "BZ2512"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #16.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 56,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "ממוצע מחיר למ״ר בתל אביב נע בטווח כללי של כ-55,000 עד 60,000 ש״ח. ברמת אביב הטווח הכללי עומד סביב 55,000 עד 70,000 ש״ח למ״ר. פארק צמרת, כשוק מגדלים יוקרתי ומבוסס, נעה סביב 90,000 עד 120,000 ש״ח למ״ר. מול אלה, שדה דב מציג ממוצע של כ-81,000 ש״ח למ״ר בתחילת 2026, וטווח פריסייל של 70,000 עד 100,000 ש״ח למ״ר.",
+   "new": "בתל אביב כולה, חציון העסקאות בשנתיים שעד אוקטובר 2025 עמד על 52,856 ש״ח למ״ר. ברמת אביב, העסקאות האחרונות משקפות ממוצע של כ-55,000 ש״ח למ״ר (יוני 2026), וברמת אביב ג׳ כ-51,000 עד 53,000 ש״ח למ״ר (אוגוסט 2026). פארק צמרת הוא שוק מגדלים יוקרתי ומבוסס. מול אלה, ממוצע הדירות שנמכרו בשדה דב הוא כ-83,000 ש״ח למ״ר (סקר אפריל 2026), וב-2026 רוב הפרויקטים ברובע מוכרים בכ-70,000 ש״ח למ״ר.",
+   "source_keys": [
+    "TA",
+    "ICE0606",
+    "BZ2608",
+    "NC2604",
+    "ICE2105"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #19, #20, #21, #1, #2. Park Tzameret keeps its description without a number (no source found).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 57,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>ממוצע כ-81,000 ש״ח למ״ר; פריסייל 70,000 עד 100,000 ש״ח למ״ר</td>",
+   "new": "<td>ממוצע הדירות שנמכרו כ-83,000 ש״ח למ״ר (אפריל 2026); רוב הפרויקטים כ-70,000 (2026)</td>",
+   "source_keys": [
+    "NC2604",
+    "ICE2105",
+    "ICE0606"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Comparison table, Sde Dov row.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 58,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>תל אביב, ממוצע עירוני</td>",
+   "new": "<td>תל אביב, חציון עירוני</td>",
+   "source_keys": [
+    "TA"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "The site's Tel Aviv figure is a median.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 59,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>כ-55,000 עד 60,000 ש״ח למ״ר</td>",
+   "new": "<td>52,856 ש״ח למ״ר (אוקטובר 2023 עד אוקטובר 2025)</td>",
+   "source_keys": [
+    "TA"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #19.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 60,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>כ-55,000 עד 70,000 ש״ח למ״ר</td>",
+   "new": "<td>כ-55,000 ש״ח למ״ר בממוצע (יוני 2026); ברמת אביב ג׳ כ-51,000-53,000 (אוגוסט 2026)</td>",
+   "source_keys": [
+    "ICE0606",
+    "BZ2608"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #20.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 61,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>כ-90,000 עד 120,000 ש״ח למ״ר</td>",
+   "new": "<td>תלוי במגדל ובקומה</td>",
+   "source_keys": [],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #21: no dated source found; the number is removed.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 62,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>דירות הפרימיום בשדה דב מתקרבות לחלק התחתון של טווח זה</td>",
+   "new": "<td>דירות הפרימיום בשדה דב מתחרות בשוק מגדלים בנוי ומוכר</td>",
+   "source_keys": [],
+   "audit_verdict": "UNSOURCED",
+   "why": "The old line referred to the removed range.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 63,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "ברובע שדה דב, שבו טווח הפריסייל נע בין 70,000 ל-100,000 ש״ח למ״ר, הפריסייל",
+   "new": "ברובע שדה דב, שבו רוב הפרויקטים מוכרים ב-2026 בכ-70,000 ש״ח למ״ר והמחיר הרשמי לפני הטבות מימון הוא 75,000-85,000 ש״ח, הפריסייל",
+   "source_keys": [
+    "ICE2105",
+    "ICE0606",
+    "BZ2606"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #2.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 64,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "כאשר חברה אחת מציגה עלייה מממוצע של כ-64,700 ש״ח למ״ר לכ-81,600 ש״ח למ״ר לאחר גל מכירות,",
+   "new": "כאשר בפרויקט אחד הממוצע עלה מכ-64,700 ש״ח למ״ר ברבעון הראשון של 2026 לכ-81,600 ש״ח למ״ר בעסקאות שאחריו,",
+   "source_keys": [
+    "BZ2606"
+   ],
+   "audit_verdict": "CONSISTENT+DATE",
+   "why": "Audit #7 (consistent): date added, as in the body above.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 65,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "קונה שרוכש דירה ב-7 מיליון ש״ח בפריסייל",
+   "new": "קונה שרוכש בפריסייל דירת 4 חדרים במחיר הממוצע ברובע, כ-9.45 מיליון ש״ח,",
+   "source_keys": [
+    "NC2604"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #5: the 7M example is replaced by the published 4-room average.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 66,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>מחיר ממוצע של כ-7 מיליון ש״ח יוצר דרישת הון גבוהה</td>",
+   "new": "<td>דירת 4 חדרים בממוצע של כ-9.45 מיליון ש״ח יוצרת דרישת הון גבוהה</td>",
+   "source_keys": [
+    "NC2604"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #5.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 67,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "בדירה שמחירה 7 מיליון ש״ח, 9.45 מיליון ש״ח או 11.61 מיליון ש״ח, פערי מס",
+   "new": "בדירה שמחירה כ-6.5 עד 12 מיליון ש״ח, הטווח של דירות 4 ו-5 חדרים בעסקאות ובמחירונים שפורסמו, פערי מס",
+   "source_keys": [
+    "ICE0305",
+    "ICE2510",
+    "NC2604"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #5, #14 (6.487M lowest 4-room deal, 11.954M 5-room list price).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 68,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "מצד שני, היקף של כ-11,000 דירות בתהליכי הקמה אינו היצע קטן.",
+   "new": "מצד שני, עד אפריל 2026 נמכרו רק כ-1,280 מהדירות, כך שהיצע גדול עוד יגיע לשוק.",
+   "source_keys": [
+    "NC2604"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "No source for 11,000 under construction.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 69,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "הערכת היזם יגאל דמרי שלפיה המחירים יכולים להגיע בעתיד ל-150,000 ש״ח למ״ר היא הערכה אופטימית מאוד ביחס למחירי תחילת 2026. אם המחיר הממוצע בתחילת 2026 עומד סביב 81,000 ש״ח למ״ר,",
+   "new": "הערכת היזם יגאל דמרי ממרץ 2025, שלפיה בעוד עשור או שניים המחירים ברובע יכולים להגיע ל-150,000 ש״ח למ״ר, היא הערכה אופטימית מאוד ביחס למחירים היום. כשממוצע הדירות שנמכרו ברובע עומד על כ-83,000 ש״ח למ״ר, לפי סקר אפריל 2026,",
+   "source_keys": [
+    "NC2503",
+    "NC2604"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #18 (date and horizon added) and #1.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 70,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "שבו דירות 4 ו-5 חדרים סביב 9.45 עד 11.61 מיליון ש״ח ייבחנו",
+   "new": "שבו דירות 4 ו-5 חדרים, שנמכרו ומוצעות בכ-6.5 עד 12 מיליון ש״ח, ייבחנו",
+   "source_keys": [
+    "ICE0305",
+    "ICE2510",
+    "NC2604"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #14.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 71,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "כמו הממוצע שעלה מפרויקט FIRST לפי נתוני השיווק של כ-94 ועוד 8 דירות",
+   "new": "כמו הממוצע שעלה מפרויקט FIRST לפי נתוני השיווק עד יולי 2025, כ-94 ועוד 8 דירות",
+   "source_keys": [
+    "NC2507",
+    "BZ2512"
+   ],
+   "audit_verdict": "CONSISTENT+DATE",
+   "why": "Audit #17 (consistent): date added.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 72,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "<td>האם המחיר קרוב ל-81,000 ש״ח למ״ר או חורג משמעותית?</td>",
+   "new": "<td>האם המחיר קרוב לרמה הנפוצה ב-2026, כ-70,000 ש״ח למ״ר, או לממוצע של כ-83,000, או חורג מהם משמעותית?</td>",
+   "source_keys": [
+    "ICE2105",
+    "ICE0606",
+    "NC2604"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit #1, #2.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 73,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "כמו דירת 32 מ״ר במחיר של כ-2.3 מיליון ש״ח או דירת 2 חדרים ממוצעת סביב 3.81 מיליון ש״ח,",
+   "new": "כמו דירת 2 חדרים שנמכרה ב-2026 בכ-2.8 עד 3.7 מיליון ש״ח,",
+   "source_keys": [
+    "ICE2105",
+    "ICE0305"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit #10, #15.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 74,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "מחיר עסקה ממוצע צפוי בשדה דב עומד סביב 7 מיליון ש״ח, לפי מחיר של כ-75,000 ש״ח למ״ר. בפועל, דירת 2 חדרים ממוצעת עומדת סביב 3.81 מיליון ש״ח, דירת 3 חדרים סביב 6.86 מיליון ש״ח, דירת 4 חדרים סביב 9.45 מיליון ש״ח ודירת 5 חדרים סביב 11.61 מיליון ש״ח.",
+   "new": "לפי סקר דוחות היזמים מאפריל 2026, דירת 4 חדרים נמכרה ברובע בממוצע בכ-9.45 מיליון ש״ח, והמחיר הממוצע היה כ-83,000 ש״ח למ״ר. בעסקאות שפורסמו ב-2026 נמכרו דירות 2 חדרים בכ-2.8 עד 3.7 מיליון ש״ח, דירות 3 חדרים של 82-83 מ״ר בכ-4.6 עד 4.8 מיליון ש״ח ודירות 5 חדרים של 126-132 מ״ר בכ-7.2 עד 7.7 מיליון ש״ח.",
+   "source_keys": [
+    "NC2604",
+    "ICE2105",
+    "ICE0305"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "FAQ 1 = the body (audit #5, #6, #10, #12, #13, #14).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 75,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "בתחילת 2026 המחיר הממוצע למ״ר ברובע עמד סביב 81,000 ש״ח. טווח הפריסייל נע בדרך כלל בין 70,000 ל-100,000 ש״ח למ״ר. דירות עם נוף לים משווקות סביב 90,000 ש״ח למ״ר ויכולות להגיע עד כ-100,000 ש״ח למ״ר.",
+   "new": "ממוצע הדירות שנמכרו ברובע היה כ-83,000 ש״ח למ״ר, לפי סקר דוחות היזמים מאפריל 2026. ב-2026 רוב הפרויקטים מוכרים בכ-70,000 ש״ח למ״ר, ונרשמו גם עסקאות של 54,000-57,000 ש״ח למ״ר. בדירות נבחרות המחיר מגיע ל-90,000-100,000 ש״ח למ״ר, ובדצמבר 2025 נמכרו דירות בקומות 38-43 של מגדל מול הים בכ-107,700 עד 119,200 ש״ח למ״ר בשטח הבנוי.",
+   "source_keys": [
+    "NC2604",
+    "ICE2105",
+    "ICE0606",
+    "ICE0305",
+    "ICE2512",
+    "BZ2512"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "FAQ 2 = the body (audit #1-#4).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 76,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "לפי טווחי השוק הכלליים, רמת אביב נעה סביב 55,000 עד 70,000 ש״ח למ״ר, בעוד ששדה דב מציגה ממוצע של כ-81,000 ש״ח למ״ר בתחילת 2026.",
+   "new": "לפי העסקאות האחרונות, ברמת אביב הממוצע הוא כ-55,000 ש״ח למ״ר (יוני 2026), בעוד שבשדה דב ממוצע הדירות שנמכרו היה כ-83,000 ש״ח למ״ר (סקר אפריל 2026), ורוב הפרויקטים מוכרים ב-2026 בכ-70,000 ש״ח למ״ר.",
+   "source_keys": [
+    "ICE0606",
+    "NC2604",
+    "ICE2105"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "FAQ 3 = the body (audit #20, #1).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 77,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "קיימת הערכת יזם שלפיה המחירים יכולים להגיע בעתיד ל-150,000 ש״ח למ״ר.",
+   "new": "יזם אחד ברובע העריך במרץ 2025 שבעוד עשור או שניים המחירים יכולים להגיע ל-150,000 ש״ח למ״ר.",
+   "source_keys": [
+    "NC2503"
+   ],
+   "audit_verdict": "CONSISTENT+DATE",
+   "why": "FAQ 6 = the body (audit #18).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 78,
+   "page_id": 4758,
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "field": "content",
+   "old": "עודכן יוני 2026.",
+   "new": "עודכן אוקטובר 2026.",
+   "source_keys": [],
+   "audit_verdict": "DATE",
+   "why": "The update line follows the edits (and the PriceGuide, 7.10.2026).",
+   "matches_in_live": 1
+  }
+ ]
+}

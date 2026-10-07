@@ -25,7 +25,7 @@ rep("    import price_436 as PX  # noqa: E402 (1.72.436: PriceGuide v2.3, the ro
 rep('php_lint(PHPNEW[_rel], _rel + " (live text + the 1.72.436 price-guide city hunk)")',
     'php_lint(PHPNEW[_rel], _rel + " (live text + the 1.72.437 area-map hunk)")')
 rep('print("RELEASE 1.72.436 LIVE: PriceGuide v2.3, the rooms variant for the city price pages")',
-    'print("RELEASE 1.72.437 LIVE: AreaMap v1, the 3D neighbourhood map door")')
+    'print("RELEASE 1.72.437 LIVE: AreaMap v1 (the 3D neighbourhood map door) + PriceGuide v2.4 (the narrow-phone fit)")')
 # 1.72.436 patched the language dictionary too; 1.72.437 patches only inc/project-stage.php (a rollback restores what it wrote)
 rep("PHP_RELS = ['inc/project-stage.php', 'i18n/lang-pages.json']", "PHP_RELS = ['inc/project-stage.php']")
 # after 1.72.436 insert_city_guides.py put the price list on the three test cities: the inherited rows now expect it
@@ -33,9 +33,15 @@ for _c in ("tel-aviv", "jerusalem", "haifa"):
     rep(f"('/{_c}-apartment-prices/', [], ['id=\"nlpg\"', '[nadlan_price_guide'])",
         f"('/{_c}-apartment-prices/', ['id=\"nlpg\"', 'nlpg--rooms'], ['[nadlan_price_guide'])")
 # H Infinity has no stage block: its price list sits in the article (insert_city_guides.py --project), after the lead paragraph
+rep("('/projects/h-infinity-somail-tel-aviv/', [], ['id=\"nlpg\"', 'id=\"nlpg-js\"'])",
+    "('/projects/h-infinity-somail-tel-aviv/', ['id=\"nlpg\"', 'id=\"nlpg-js\"'], [])")
 rep("('/projects/h-infinity-somail-tel-aviv/', [], ['id=\"nlpg\"'])",
     "('/projects/h-infinity-somail-tel-aviv/', ['id=\"nlpg\"', 'כמה עולה דירה במגדל אינפיניטי'], ['[nadlan_price_guide'])")
-rows = [("/projects/hamedina/", ['id="nlpg"'], ['id="nlam"']), ("/north-tel-aviv/rova-4/", ['id="nlpg"'], ['[nadlan_area_map'])]
+rows = [("/projects/hamedina/", ['id="nlpg"', '.nlpg .nlpg__wa.nlds-btn.nlds-btn--primary{'], ['id="nlam"']),
+        ("/north-tel-aviv/rova-4/", ['id="nlpg"'], ['[nadlan_area_map']),
+        # PriceGuide v2.4: the calculator track capped, the WhatsApp line wraps, a zero tax reads "0 ₪ (פטור)" (Haifa 4 rooms, 1.6M)
+        ("/haifa-apartment-prices/", ['nlpg--rooms', 'grid-template-columns:minmax(0,1fr) !important;gap:14px', '0 ₪ (פטור)'], ['[nadlan_price_guide']),
+        ("/projects/h-infinity-somail-tel-aviv/", ['id="nlpg"', 'nlcp-projctx'], ['[nadlan_price_guide'])]
 OLD = "# 1.72.436 (PriceGuide v2.3): the rooms variant is served, the city pages unchanged until the shortcode\n"
 rep(OLD, "# 1.72.437 (AreaMap v1): the door only\nCHECKS += " + repr(rows) + "\n" + OLD)
 for x, y in (("1.72.436", "1.72.437"), (".bak436", ".bak437"), ("PS436", "PS437"), ("ps436", "ps437"), ("deploy436", "deploy437"),

@@ -1,0 +1,68 @@
+{
+ "/herzliya-apartment-prices/": {
+  "ttfb_s": 0.709,
+  "html_bytes": 241955,
+  "phone_load_ms": 1222,
+  "phone_dcl_ms": 1132
+ },
+ "/netanya-apartment-prices/": {
+  "ttfb_s": 0.662,
+  "html_bytes": 237248,
+  "phone_load_ms": 1277,
+  "phone_dcl_ms": 1171
+ },
+ "/ramat-gan-apartment-prices/": {
+  "ttfb_s": 0.692,
+  "html_bytes": 229020,
+  "phone_load_ms": 1882,
+  "phone_dcl_ms": 1874
+ },
+ "/bat-yam-apartment-prices/": {
+  "ttfb_s": 0.648,
+  "html_bytes": 228425,
+  "phone_load_ms": 1313,
+  "phone_dcl_ms": 1223
+ },
+ "/hod-hasharon-apartment-prices/": {
+  "ttfb_s": 0.632,
+  "html_bytes": 227116,
+  "phone_load_ms": 1242,
+  "phone_dcl_ms": 1148
+ },
+ "/ashdod-apartment-prices/": {
+  "ttfb_s": 0.646,
+  "html_bytes": 231027,
+  "phone_load_ms": 1296,
+  "phone_dcl_ms": 1185
+ },
+ "/petah-tikva-apartment-prices/": {
+  "ttfb_s": 0.658,
+  "html_bytes": 229845,
+  "phone_load_ms": 1313,
+  "phone_dcl_ms": 1219
+ },
+ "/ashkelon-apartment-prices/": {
+  "ttfb_s": 0.634,
+  "html_bytes": 233495,
+  "phone_load_ms": 1335,
+  "phone_dcl_ms": 1228
+ },
+ "/eilat-apartment-prices/": {
+  "ttfb_s": 0.659,
+  "html_bytes": 242733,
+  "phone_load_ms": 1251,
+  "phone_dcl_ms": 1154
+ },
+ "/kiryat-ono-apartment-prices/": {
+  "ttfb_s": 0.655,
+  "html_bytes": 229286,
+  "phone_load_ms": 1282,
+  "phone_dcl_ms": 1176
+ },
+ "/sde-dov/prices/": {
+  "ttfb_s": 0.642,
+  "html_bytes": 238306,
+  "phone_load_ms": 1345,
+  "phone_dcl_ms": 1237
+ }
+}

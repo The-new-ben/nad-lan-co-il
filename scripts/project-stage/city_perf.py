@@ -14,7 +14,10 @@ from playwright.sync_api import sync_playwright
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUTDIR = os.path.join(os.path.dirname(os.path.dirname(HERE)), "docs", "qa", "had-460", "city-perf")
-name, pages = sys.argv[1], sys.argv[2:]
+# --vs <name>: compare with <name>.json instead of before.json (each wave keeps its own baseline)
+VS = sys.argv[sys.argv.index("--vs") + 1] if "--vs" in sys.argv else "before"
+args = [a for i, a in enumerate(sys.argv[1:], 1) if a != "--vs" and (i < 2 or sys.argv[i - 1] != "--vs")]
+name, pages = args[0], args[1:]
 out = {}
 for p in pages:
     ttfb, size = [], 0
@@ -39,8 +42,12 @@ with sync_playwright() as pw:
         out[p]["phone_dcl_ms"] = min(x["dcl"] for x in loads)
     b.close()
 json.dump(out, open(os.path.join(OUTDIR, name + ".json"), "w"), indent=1)
-before = json.load(open(os.path.join(OUTDIR, "before.json")))
+before = json.load(open(os.path.join(OUTDIR, VS + ".json"))) if os.path.exists(os.path.join(OUTDIR, VS + ".json")) else {}
+# the CEO's stop rule for the waves: first byte +0.15 s or phone load +0.3 s on any page
+stop = [p for p, v in out.items() if before.get(p) and (v["ttfb_s"] - before[p]["ttfb_s"] > 0.15 or v["phone_load_ms"] - before[p]["phone_load_ms"] > 300)]
 for p, v in out.items():
     w = before.get(p, {})
     print(f"{p}: first byte {w.get('ttfb_s', '-')} -> {v['ttfb_s']} s | phone load {w.get('phone_load_ms', '-')} -> {v['phone_load_ms']} ms"
           f" | DOM ready {w.get('phone_dcl_ms', '-')} -> {v['phone_dcl_ms']} ms | html {v['html_bytes']:,} bytes")
+if before:
+    print("STOP RULE HIT:" if stop else "stop rule: clear", stop)

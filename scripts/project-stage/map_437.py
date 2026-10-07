@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Release 1.72.437: AreaMap v1 (design system 219; HAD-460; Ben 7.10.2026: "map the compound in 3D ... the businesses around
+"""Release 1.72.437: AreaMap v1 (design system 219) + PriceGuide v2.4 (design system 220, the narrow-phone fit; HAD-460; Ben 7.10.2026: "map the compound in 3D ... the businesses around
 iconic pages"). A separate helper block, next to the price guide's, opens the shortcode [nadlan_area_map key="rova-4"]: the
 server-rendered section (heading, filters, placeholder, the list of every place) with its CSS and script; MapLibre, the RTL plugin
 and the tiles load only when the section nears the screen. Data: area_map/rova-4.json (sources in docs/design/area-map-3d).
@@ -14,11 +14,18 @@ sys.path.insert(0, os.path.join(HERE, "area_map"))
 sys.path.insert(0, HERE)
 import render_map as RM  # noqa: E402
 import price_430 as P0  # noqa: E402
+sys.path.insert(0, os.path.join(HERE, "price_guide"))
+import pg_helper  # noqa: E402
 
 RELS = ["inc/project-stage.php"]
 FILES = {}
 KEYS = ("rova-4",)
 MARK = "AreaMap v1 (design system 219"
+# PriceGuide v2.4 (design system 220): the narrow-phone fit of the calculator, the same keys and cities as 1.72.436
+pg_helper.KEYS = ("hamedina", "rova-4", "rainbow-tel-aviv", "duo-tel-aviv", "dimri-yama-sde-dov", "ashira-sde-dov", "h-infinity-somail-tel-aviv")
+pg_helper.CITIES = ("tel-aviv-apartment-prices", "jerusalem-apartment-prices", "haifa-apartment-prices")
+PG_HELPER, _LANGS = pg_helper.helper()
+_PG_START = "if ( ! function_exists( 'nadlan_pg_render' ) ) {\n"
 
 
 def _helper():
@@ -58,6 +65,10 @@ HELPER = _helper()
 def apply(rel, txt):
     if MARK in txt:
         raise SystemExit("map_437: already applied")
-    if txt.count(P0._FILM_T) != 1 or "PriceGuide v2.3 (design system" not in txt:
+    if txt.count(P0._FILM_T) != 1 or txt.count(_PG_START) != 1 or "PriceGuide v2.3 (design system" not in txt:
         raise SystemExit("map_437: the 1.72.436 text is not there")
-    return txt.replace(P0._FILM_T, HELPER + P0._FILM_T)
+    if "PriceGuide v2.4 (design system" not in PG_HELPER:
+        raise SystemExit("map_437: pg_helper does not build v2.4")
+    a, b = txt.find(_PG_START), txt.find(P0._FILM_T)
+    # the price block is regenerated whole (v2.4); the map block goes BEFORE it, outside the span a later price release replaces
+    return txt[:a] + HELPER + PG_HELPER + txt[b:]

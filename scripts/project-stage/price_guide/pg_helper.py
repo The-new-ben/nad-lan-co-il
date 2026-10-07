@@ -61,7 +61,7 @@ def helper():
         if any(x in h for x in every):
             raise SystemExit("pg_helper: a nowdoc label appears inside a payload")
     php = ["if ( ! function_exists( 'nadlan_pg_render' ) ) {\n",
-           "\t/** PriceGuide v2.3 (design system 7.10.2026, HAD-460): the price list and the price calculator. Built by\n",
+           "\t/** PriceGuide v2.4 (design system 7.10.2026, HAD-460): the price list and the price calculator. Built by\n",
            "\t *  scripts/project-stage/price_guide/pg_helper.py from <key>.json and <key>.<lang>.json (every number has its source there).\n",
            "\t *  Sections: " + ", ".join(f"{k}/{l}" for k, l in sorted(P)) + ". */\n",
            "\tfunction nadlan_pg_html( $key, $lang ) {\n",

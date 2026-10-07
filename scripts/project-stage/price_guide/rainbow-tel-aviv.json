@@ -12,7 +12,8 @@
   "GL2410": "https://en.globes.co.il/en/article-1001492500 (Globes English 28.10.2024): 134 m2 + 14 m2 balcony facing the sea, 14M, 'NIS 96,000 per square meter', a record in the project at the time",
   "GOVL": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210022.json (official medians, neighbourhood 'תכנית ל', Q1 2026, file 20.8.2026, read 7.10.2026): 3 rooms 5,346,100; 4 rooms 8,425,800; all 6,059,900; Tel Aviv: https://data.nadlan.gov.il/api/pages/settlement/buy/5000.json 3 rooms 4,225,800, 4 rooms 5,229,800",
   "ICE0305": "https://www.ice.co.il/realestate/news/article/1111582 (ice 3.5.2026): Sde Dov 2025 ~1,280 units sold, average ~83K ILS/m2, 4 rooms average ~9.45M, range 60.2K (2 rooms 40 m2) to 138K (5 rooms 141 m2); March 2026 two deals 132 m2 5 rooms floor 9 at 7.157M and 7.565M; recent deals 104-126 m2 floors 10-13 at 6.487-7.727M",
-  "ICE2105": "https://www.ice.co.il/realestate/news/article/1112481 (ice 21.5.2026): most Sde Dov projects around 70K ILS/m2; a project east of Rainbow 60-62K; in Program L a new project's low floors 52-57K and most recent sales 70-72K",
+  "ICE2105": "https://www.ice.co.il/realestate/news/article/1112481 (ice 21.5.2026, re-read 7.10.2026 09:46 UTC): most Sde Dov projects around 70K ILS/m2, some sell at 60K; a project in Eshkol east of Rainbow ('זוהי תל אביב'): recent deals 60-62K; Program L (east of the quarter), a new project: low floors 52-57K, 4 rooms 101 m2 about 5.8M. The article's 'most recent sales 70-72K' belong to a project in 'הגוש הגדול' (not Sde Dov, not Program L) and are not used (correction 7.10.2026, HAD-460)",
+  "ICE0606": "https://www.ice.co.il/realestate/news/article/1114418 (ice 6.6.2026, read 7.10.2026 about 09:50 UTC): in Sde Dov a new apartment in a new project is around 70-71K ILS/m2",
   "TA": "the site's Tel Aviv-Yafo card: Tax Authority deals 10.2023-10.2025, 2,432 deals, median 52,856 ILS/m2 (nlcp card on every Tel Aviv project page)",
   "FIX1280": "7.10.2026 correction: ice 3.5.2026 says \"in 2025 ~1,280 sold\", the original survey (Merkaz HaNadlan 15.4.2026, nadlancenter.co.il/article/14303) and ice 19.4.2026 say \"sold so far\": the page now gives no time frame"
  },
@@ -252,9 +253,9 @@
      "src": "ICE0305"
     },
     {
-     "what": "פרויקט חדש בתכנית ל",
-     "sub": "בקומות הנמוכות: 52,000-57,000 ₪ למ״ר",
-     "m2": "70,000-72,000",
+     "what": "פרויקט חדש בתכנית ל, ממזרח לרובע",
+     "sub": "בקומות הנמוכות. 4 חדרים, 101 מ״ר: כ-5.8 מיליון ₪",
+     "m2": "52,000-57,000",
      "price": "",
      "kind": "deal",
      "date": "5.2026",
@@ -308,9 +309,9 @@
     "id": "area",
     "label": "פרויקט אחר ברובע",
     "lo": 60000,
-    "hi": 72000,
-    "why": "רוב העסקאות של 2026 בפרויקטים אחרים ברובע שדה דב ובתכנית ל.",
-    "src": "ICE2105 ICE0305"
+    "hi": 71000,
+    "why": "ב-2026 רוב הפרויקטים ברובע מוכרים בכ-70,000-71,000 ₪ למ״ר, ובחלקם העסקאות האחרונות היו 60,000-63,000 ₪.",
+    "src": "ICE2105 ICE0606 ICE0305"
    }
   ],
   "deals_plot": [

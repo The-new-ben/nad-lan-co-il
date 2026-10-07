@@ -112,7 +112,8 @@ def html(d, wa='{{WA}}', sfx=''):
     r = default_result(d, u)
     NA = '<span class="nlpg__na" aria-label="' + E(u["na"]) + '">·</span>'
     upd = d.get('updated_shown') or d['updated_he']
-    out = ['<section class="nlds nlpg" id="nlpg' + sfx + '" aria-labelledby="nlpg-t' + sfx + '" dir="' + u["dir"] + '" lang="' + u["lang"] + '">',
+    og = int(d.get('open_groups', 1))  # v2.5: a long list keeps the groups from this index behind the button on wide screens too
+    out = ['<section class="nlds nlpg' + (' nlpg--fold' if 'open_groups' in d else '') + '" id="nlpg' + sfx + '" aria-labelledby="nlpg-t' + sfx + '" dir="' + u["dir"] + '" lang="' + u["lang"] + '">',
            '<div class="nlpg__in">',
            '<header class="nlpg__head"><p class="nlds-kicker">' + E(u["kicker"]) + ' ' + num(upd) + '</p>',
            '<h2 class="nlpg__title" id="nlpg-t' + sfx + '">' + E(d['title']) + '</h2>',
@@ -123,7 +124,7 @@ def html(d, wa='{{WA}}', sfx=''):
     out.append('<table class="nlpg__table"><caption class="nlpg__cap">' + E(u["cap"]) + '</caption><thead><tr>' +
                ''.join('<th scope="col">' + E(h) + '</th>' for h in u["th"]) + '</tr></thead>')
     for gi, g in enumerate(d['groups']):
-        out.append('<tbody class="nlpg__grp' + (' nlpg__grp--more' if gi else '') + '"><tr class="nlpg__gh"><th colspan="5" scope="colgroup">' +
+        out.append('<tbody class="nlpg__grp' + (' nlpg__grp--more' if gi >= og else '') + '"><tr class="nlpg__gh"><th colspan="5" scope="colgroup">' +
                    E(g['name']) + '</th></tr>')
         for row in g['rows']:
             out.append('<tr><th scope="row"><b>' + rich(row['what']) + '</b>' + ('<span>' + rich(row['sub']) + '</span>' if row['sub'] else '') + '</th>'
@@ -132,7 +133,7 @@ def html(d, wa='{{WA}}', sfx=''):
                        '<td data-l="' + E(u["dl"][2]) + '"><span class="nlpg__k nlpg__k--' + E(row['kind']) + '">' + E(d['kinds'][row['kind']]) + '</span></td>'
                        '<td data-l="' + E(u["dl"][3]) + '">' + num(row['date']) + '</td></tr>')
         out.append('</tbody>')
-    more = sum(len(g['rows']) for g in d['groups'][1:])
+    more = sum(len(g['rows']) for g in d['groups'][og:])
     allr = sum(len(g['rows']) for g in d['groups'])
     out.append('</table><button class="nlpg__more" type="button" aria-expanded="false">'
                '<span class="nlpg__mt">' + E(u["more_t"]) + ' <span class="nlds-num">(' + str(more) + ')</span></span>'
@@ -213,7 +214,7 @@ CSS = r"""
 .nlpg__more:hover{border-color:var(--pg-sea) !important;background:var(--pg-paper) !important}
 .nlpg.is-open .nlpg__more{display:none !important}
 .nlpg__mp{display:none !important}
-.nlpg__calc{display:grid !important;gap:14px !important;background:var(--pg-paper) !important;border:1px solid var(--pg-line) !important;border-radius:var(--nlds-radius-16,16px) !important;padding:clamp(16px,2vw,22px) !important;box-shadow:var(--nlds-shadow-price-card,0 8px 24px rgba(17,17,15,.07),0 2px 6px rgba(17,17,15,.04)) !important;margin:0 !important}
+.nlpg__calc{display:grid !important;grid-template-columns:minmax(0,1fr) !important;gap:14px !important;background:var(--pg-paper) !important;border:1px solid var(--pg-line) !important;border-radius:var(--nlds-radius-16,16px) !important;padding:clamp(16px,2vw,22px) !important;box-shadow:var(--nlds-shadow-price-card,0 8px 24px rgba(17,17,15,.07),0 2px 6px rgba(17,17,15,.04)) !important;margin:0 !important}
 .nlpg__ct{font-family:var(--pg-serif) !important;font-weight:600 !important;font-size:19px !important;line-height:1.3 !important;color:var(--pg-ink) !important;margin:0 !important}
 .nlpg__f{display:grid !important;gap:7px !important;border:0 !important;margin:0 !important;padding:0 !important;min-width:0 !important}
 .nlpg__f legend,.nlpg__f>label{font-size:13.5px !important;font-weight:700 !important;color:var(--pg-ink2) !important;padding:0 !important;margin:0 0 7px !important}
@@ -237,9 +238,10 @@ CSS = r"""
 .nlpg__rows{display:grid !important;gap:2px !important;margin:6px 0 0 !important;padding:8px 0 0 !important;border-top:1px solid var(--pg-line) !important}
 .nlpg__rows div{display:flex !important;justify-content:space-between !important;gap:12px !important;font-size:14.5px !important}
 .nlpg__rows dt{color:var(--pg-ink2) !important;font-weight:400 !important;margin:0 !important}
-.nlpg__rows dd{margin:0 !important;font-weight:700 !important;color:var(--pg-ink) !important}
+.nlpg__rows dd{margin:0 !important;font-weight:700 !important;color:var(--pg-ink) !important;white-space:nowrap !important;text-align:end !important}
 .nlpg__why{font-size:12.5px !important;line-height:1.5 !important;color:var(--pg-ink2) !important;margin:6px 0 0 !important}
-.nlpg__wa{display:flex !important;align-items:center !important;justify-content:center !important;width:100% !important;min-height:52px !important;margin:0 !important;padding:10px 22px !important;border-radius:999px !important;background:var(--pg-sea) !important;border:1px solid var(--pg-sea) !important;color:var(--nlds-on-sea,#fff) !important;font:700 16.5px/1.2 var(--pg-sans) !important;text-decoration:none !important;text-align:center !important}
+.nlpg__wa{display:flex !important;align-items:center !important;justify-content:center !important;width:100% !important;min-height:52px !important;margin:0 !important;padding:10px 22px !important;border-radius:999px !important;background:var(--pg-sea) !important;border:1px solid var(--pg-sea) !important;color:var(--nlds-on-sea,#fff) !important;font:700 16.5px/1.2 var(--pg-sans) !important;text-decoration:none !important;text-align:center !important;white-space:normal !important;text-wrap:balance !important}
+.nlpg__wa.nlds-btn.nlds-btn--primary{white-space:normal !important;text-wrap-mode:wrap !important;text-wrap-style:balance !important}
 .nlpg__wa:hover{background:var(--pg-seah) !important;border-color:var(--pg-seah) !important}
 .nlpg__wa:focus-visible{outline:2px solid var(--pg-sea) !important;outline-offset:3px !important}
 .nlpg__links{display:flex !important;flex-wrap:wrap !important;gap:6px 18px !important;margin:0 !important;font-size:14.5px !important}
@@ -266,6 +268,9 @@ CSS = r"""
  .nlpg__table td::before{content:attr(data-l) !important;display:block !important;font-size:11.5px !important;font-weight:700 !important;color:var(--pg-ink2) !important}
  .nlpg__gh th{display:block !important;padding:14px 0 4px !important}
  .nlpg__seg label>span{min-height:44px !important}
+ .nlpg__seg--2,.nlpg--rooms .nlpg__seg{flex-wrap:nowrap !important}
+ .nlpg__seg--2 label,.nlpg--rooms .nlpg__seg label{flex:1 1 0 !important;min-width:0 !important}
+ .nlpg__seg--2 label>span,.nlpg--rooms .nlpg__seg label>span{width:100% !important;justify-content:center !important;padding-inline:6px !important;text-align:center !important}
  .nlpg__in{border-radius:var(--nlds-radius-16,16px) !important;padding:16px !important}
  .nlpg:not(.is-open) .nlpg__table{display:none !important}
  .nlpg__mt{display:none !important}
@@ -274,6 +279,7 @@ CSS = r"""
  .nlpg__chart text{font-size:12.5px !important}
 }
 @container nlpg (min-width:861px){.nlpg:not(.is-open) .nlpg__grp--more{display:table-row-group !important}.nlpg__more{display:none !important}}
+@container nlpg (min-width:861px){.nlpg--fold:not(.is-open) .nlpg__grp--more{display:none !important}.nlpg--fold:not(.is-open) .nlpg__more{display:inline-block !important}}
 @media (prefers-reduced-motion:reduce){.nlpg__seg label>span{transition:none !important}}
 """
 
@@ -332,6 +338,10 @@ function one(root){var f=root.querySelector('.nlpg__calc');if(!f||f.__nlpg)retur
 var all=document.querySelectorAll('.nlpg');for(var i=0;i<all.length;i++){try{one(all[i])}catch(e){}}})();
 """
 
+
+# .nlpg__wa.nlds-btn.nlds-btn--primary (0,4,0 after scope) outranks nlds.css ":root body .nlds .nlds-btn" (0,3,1), which keeps
+# buttons on one line: the WhatsApp line must wrap in a narrow calculator (7.10.2026, 360px phones). No braces in CSS comments:
+# scope() reads the text between } and { as a selector.
 
 def scope(css):
     """Every rule that starts at a component class gets the root class in front (.nlpg .nlpg__big): the theme's

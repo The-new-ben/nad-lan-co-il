@@ -86,7 +86,7 @@ def html(d, wa="{{WA}}", sfx=""):
                '<p class="nlpg__pm" data-pg="pm">דירת ' + first + ' חדרים ב' + E(city) + ', ' + num(rooms[first].get("quarter") or q) + '</p>'
                '<p class="nlpg__cmp" data-pg="cmp" hidden></p>'
                '<svg class="nlpg__chart" data-pg="ch" viewBox="0 0 340 138" direction="ltr" role="img" focusable="false"><title>חציון מחיר העסקה לפי רבעון</title></svg>'
-               '<dl class="nlpg__rows"><div><dt data-pg="txl">מס רכישה על החציון</dt><dd data-pg="tx">כ-' + num('{:,}'.format(int(round(t0 / 1000) * 1000))) + ' ₪</dd></div>'
+               '<dl class="nlpg__rows"><div><dt data-pg="txl">מס רכישה על החציון</dt><dd data-pg="tx">' + ('0 ₪ (פטור)' if t0 < 500 else 'כ-' + num('{:,}'.format(int(round(t0 / 1000) * 1000))) + ' ₪') + '</dd></div>'
                '<div><dt>סה״כ עם מס רכישה</dt><dd data-pg="tt">כ-' + num(m(x0 + t0)) + ' מיליון ₪</dd></div></dl></div>')
     if wa:
         out.append('<a class="nlds-btn nlds-btn--primary nlpg__wa" data-pg="wa" target="_blank" rel="noopener" data-nlps-ev="pg-wa" href="https://wa.me/' +
@@ -139,7 +139,7 @@ function one(root){var f=root.querySelector('.nlpg__calc');if(!f||f.__nlpgr)retu
   q('p').innerHTML=isl(mil(med))+' מיליון ₪';q('pm').innerHTML='דירת '+r+' חדרים ב'+C.city+', '+isl(C.rooms[r].qt||C.quarter);
   var c=q('cmp');if(p){var d=(p-med)/med*100;c.hidden=false;c.innerHTML=Math.abs(d)<1?'המחיר שראיתם כמעט זהה לחציון':'המחיר שראיתם '+(d>0?'גבוה':'נמוך')+' ב-'+isl(Math.abs(d).toFixed(0)+'%')+' מהחציון'}else{c.hidden=true}
   var base=p||med,t=tax(base,val('nlpg-t')==='more'?C.tax2:C.tax1);
-  q('txl').textContent=p?'מס רכישה על המחיר שראיתם':'מס רכישה על החציון';q('tx').innerHTML='כ-'+isl(nf(Math.round(t/1000)*1000))+' ₪';q('tt').innerHTML='כ-'+isl(mil(base+t))+' מיליון ₪';
+  q('txl').textContent=p?'מס רכישה על המחיר שראיתם':'מס רכישה על החציון';q('tx').innerHTML=t<500?'0 ₪ (פטור)':'כ-'+isl(nf(Math.round(t/1000)*1000))+' ₪';q('tt').innerHTML='כ-'+isl(mil(base+t))+' מיליון ₪';
   draw(r);
   var w=q('wa');if(w&&C.wa){w.href='https://wa.me/'+C.wa+'?text='+encodeURIComponent('שלום, בדקתי במחירון של '+C.city+': דירת '+r+' חדרים'+(p?', מחיר במודעה '+nf(p)+' ₪':'')+'. אשמח לפרטים נוספים (nad-lan.co.il)')}}
  f.addEventListener('input',run);f.addEventListener('change',run);f.addEventListener('submit',function(e){e.preventDefault()});

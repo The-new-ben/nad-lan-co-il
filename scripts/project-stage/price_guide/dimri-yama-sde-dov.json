@@ -6,7 +6,8 @@
  "sources": {
   "GOVL": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210022.json (official medians, neighbourhood 'תכנית ל', Q1 2026, file Last-Modified 20.8.2026, read 7.10.2026 08:41 UTC): 3 rooms 5,346,100; 4 rooms 8,425,800; 5 rooms null; all 6,059,900; Tel Aviv: https://data.nadlan.gov.il/api/pages/settlement/buy/5000.json 3 rooms 4,225,800, 4 rooms 5,229,800. The project's own official neighbourhood 'אזור שדה דב' (65210724) has no medians at all.",
   "ICE0305": "https://www.ice.co.il/realestate/news/article/1111582 (ice 3.5.2026): quoting a recent report: about 1,280 units sold in Sde Dov, average about 83K ILS/m2, 4 rooms about 9.45M (ice says 'in 2025'; the original survey, Merkaz HaNadlan 15.4.2026, says 'so far')",
-  "ICE2105": "https://www.ice.co.il/realestate/news/article/1112481 (ice 21.5.2026): most Sde Dov projects around 70K ILS/m2, some sell at 60K; a new project in Program L: low floors 52-57K, most recent sales 70-72K",
+  "ICE2105": "https://www.ice.co.il/realestate/news/article/1112481 (ice 21.5.2026, re-read 7.10.2026 09:46 UTC): most Sde Dov projects around 70K ILS/m2, some sell at 60K; a project in Eshkol east of Rainbow ('זוהי תל אביב'): recent deals 60-62K; Program L (east of the quarter), a new project: low floors 52-57K, 4 rooms 101 m2 about 5.8M. The article's 'most recent sales 70-72K' belong to a project in 'הגוש הגדול' (not Sde Dov, not Program L) and are not used (correction 7.10.2026, HAD-460)",
+  "ICE0606": "https://www.ice.co.il/realestate/news/article/1114418 (ice 6.6.2026, read 7.10.2026 about 09:50 UTC): in Sde Dov a new apartment in a new project is around 70-71K ILS/m2",
   "BZ2606": "https://www.bizportal.co.il/realestates/news/article/20033505 (Bizportal 6.6.2026): Sde Dov official prices about 75-85K ILS/m2; financing offers worth an implied 6%-8% discount; Dimri: 2025 deals average about 82.5K ILS/m2, unsold stock valued by the company at about 73.2K ILS/m2 incl. VAT, Q1 2026 9 units of which 4 to the controlling shareholder's family",
   "GL2609": "https://www.globes.co.il/news/article.aspx?did=1001554092 (Globes 2.9.2026, after the Q2 2026 reports): Dimri Yama: Q1 2026 9 units (4 to the controlling shareholder's family, close to 6M each), Q2 none and one cancellation, 40 sold in all (about 9% of 458); all sold so far about 67K ILS/m2 before VAT and net of the financing component; the company expects about 62K for the unsold stock (headline: a cut of about 7%). Ashira: Q2 2026 3 units, Q1 1, 2025 31; average 64.5K ILS/m2 in 2025, 72K in Q2 2026 (VAT not stated). Rainbow (neighbour in Eshkol): Q2 2026 average 80.5K ILS/m2",
   "TA": "the site's Tel Aviv-Yafo card: Tax Authority deals 10.2023-10.2025, 2,432 deals, median 52,856 ILS/m2 (nlcp card on every Tel Aviv project page)",
@@ -190,9 +191,9 @@
      "src": "GL2609"
     },
     {
-     "what": "פרויקט חדש בתכנית ל",
-     "sub": "בקומות הנמוכות: 52,000-57,000 ₪ למ״ר",
-     "m2": "70,000-72,000",
+     "what": "פרויקט חדש בתכנית ל, ממזרח לרובע",
+     "sub": "בקומות הנמוכות. 4 חדרים, 101 מ״ר: כ-5.8 מיליון ₪",
+     "m2": "52,000-57,000",
      "price": "",
      "kind": "deal",
      "date": "5.2026",
@@ -244,9 +245,9 @@
     "id": "area",
     "label": "פרויקט אחר ברובע",
     "lo": 60000,
-    "hi": 72000,
-    "why": "רוב העסקאות של 2026 בפרויקטים אחרים ברובע שדה דב ובתכנית ל.",
-    "src": "ICE2105 ICE0305"
+    "hi": 71000,
+    "why": "ב-2026 רוב הפרויקטים ברובע מוכרים בכ-70,000-71,000 ₪ למ״ר, ובחלקם העסקאות האחרונות היו 60,000-63,000 ₪.",
+    "src": "ICE2105 ICE0606 ICE0305"
    }
   ],
   "deals_plot": [],
