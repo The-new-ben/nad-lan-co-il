@@ -109,8 +109,14 @@ add_action( 'admin_init', function () {
 /* Front-page title + description per homepage-spec. A filter in versioned code,
    NOT a live snippet - the one-shot snippet approach took the site down on
    2026-07-02 and is banned. */
+/* HAD-446 (6.10.2026): "פרויקטים חדשים" and "דירות למכירה" left the home's title; /projects/ and /properties/ own them now */
+if ( ! function_exists( 'nadlan_hp_seo_title' ) ) {
+	function nadlan_hp_seo_title() {
+		return 'נדלן | מידע נדל״ן בישראל: מחירי דירות, עסקאות וכלים לקונים';
+	}
+}
 add_filter( 'wpseo_title', function ( $title ) {
-	return is_front_page() ? 'נדלן - דירות למכירה, פרויקטים חדשים ומחירי דירות בישראל' : $title;
+	return is_front_page() ? nadlan_hp_seo_title() : $title;
 }, 20 );
 add_filter( 'wpseo_metadesc', function ( $desc ) {
 	return is_front_page() ? 'דירות למכירה ולהשכרה, פרויקטים חדשים עם בחירת דירה מתוך הבניין, מחירי עסקאות אמיתיים, מחשבונים ובעלי מקצוע מאומתים. הכל במקום אחד - נדלן.' : $desc;
@@ -119,7 +125,7 @@ add_filter( 'wpseo_metadesc', function ( $desc ) {
    install (Yoast serves the page's stored custom title). pre_get_document_title
    at a late priority wins over every generator for the actual tag. */
 add_filter( 'pre_get_document_title', function ( $title ) {
-	return is_front_page() ? 'נדלן - דירות למכירה, פרויקטים חדשים ומחירי דירות בישראל' : $title;
+	return is_front_page() ? nadlan_hp_seo_title() : $title;
 }, 9999 );
 
 /* Top cities by real inventory (cached). [ ['name','projects','properties'], ... ] */
