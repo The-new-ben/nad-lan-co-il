@@ -49,6 +49,10 @@ for slug in ARGS:
     _df = os.path.join(HERE, "price_guide", "cities", slug + ".json")
     _df = _df if os.path.exists(_df) else os.path.join(HERE, "price_guide", slug + ".json")
     _title = json.load(io.open(_df, encoding="utf-8"))["title"]
+    if slug == "apartment-prices":  # the Israel page shows the national variant, whose title is national.TITLE
+        sys.path.insert(0, os.path.join(HERE, "price_guide"))
+        import national
+        _title = national.TITLE
     _live = urllib.request.urlopen(urllib.request.Request(lst[0]["link"] + "?nlh2=%d" % time.time(), headers={"User-Agent": "Mozilla/5.0 NadLan-h2"}), timeout=90).read().decode("utf-8", "replace")
     _dups = city_h2.dup_h2(_live, _title)
     if _dups:

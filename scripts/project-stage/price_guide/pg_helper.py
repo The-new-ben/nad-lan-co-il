@@ -19,6 +19,7 @@ KEYS = ("hamedina", "rova-4")
 
 
 CITIES = ()  # page slugs whose price list comes from cities/<slug>.json (the rooms variant); a release names them
+NATIONAL = ""  # "apartment-prices": the Israel page gets the national table (national.py, no city calculator); a release sets it
 
 
 def payloads():
@@ -37,6 +38,15 @@ def payloads():
             d.setdefault("tax_single", tax["tax_single"])  # the site's brackets (/purchase-tax-calculator/), one source
             d.setdefault("tax_more", tax["tax_more"])
             out[(slug, "he")] = RM.html(d, "{{WA}}")
+    if NATIONAL:
+        import glob
+        import national as NT
+        if NATIONAL in CITIES:
+            raise SystemExit("pg_helper: the national page is in CITIES too (it must not get a city calculator)")
+        dn = json.load(io.open(os.path.join(HERE, "cities", NATIONAL + ".json"), encoding="utf-8"))
+        cs = [json.load(io.open(f, encoding="utf-8")) for f in sorted(glob.glob(os.path.join(HERE, "cities", "*.json")))]
+        cs = [c for c in cs if c.get("slug") != NATIONAL and c.get("page")]
+        out[(NATIONAL, "he")] = NT.html(dn, cs, "{{WA}}")
     return out
 
 
@@ -47,6 +57,10 @@ def assets():
         import rooms as RM
         css += "\n" + RM.CSS_R.strip()
         js += "\n" + RM.JS_R.strip()
+    if NATIONAL:
+        import national as NT
+        css += "\n" + NT.CSS_N.strip()
+        js += "\n" + NT.JS_N.strip()
     return css, js
 
 

@@ -1,0 +1,1158 @@
+{
+ "desktop-1440": {
+  "default": {
+   "vw": 1440,
+   "scrollW": 1440,
+   "pageOverflow": false,
+   "section": {
+    "left": 100,
+    "right": 1340,
+    "width": 1240,
+    "height": 1774
+   },
+   "card": {
+    "left": 132,
+    "right": 1308
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 23,
+   "order": [
+    "תל אביב יפו",
+    "גבעתיים",
+    "רמת השרון",
+    "רמת גן",
+    "רעננה"
+   ],
+   "status": "מהעיר היקרה לזולה, לפי חציון דירת 4 חדרים",
+   "ariaSort": [
+    null,
+    null,
+    "descending",
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "inline"
+  },
+  "2-change": {
+   "vw": 1440,
+   "scrollW": 1440,
+   "pageOverflow": false,
+   "section": {
+    "left": 100,
+    "right": 1340,
+    "width": 1240,
+    "height": 1774
+   },
+   "card": {
+    "left": 132,
+    "right": 1308
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 23,
+   "order": [
+    "תל אביב יפו",
+    "אשדוד",
+    "בת ים",
+    "רמת גן",
+    "באר שבע"
+   ],
+   "status": "מהעלייה הגדולה לירידה הגדולה, דירת 4 חדרים לעומת לפני שנה",
+   "ariaSort": [
+    null,
+    null,
+    "other",
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "inline"
+  },
+  "3-name": {
+   "vw": 1440,
+   "scrollW": 1440,
+   "pageOverflow": false,
+   "section": {
+    "left": 100,
+    "right": 1340,
+    "width": 1240,
+    "height": 1774
+   },
+   "card": {
+    "left": 132,
+    "right": 1308
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 23,
+   "order": [
+    "אילת",
+    "אשדוד",
+    "אשקלון",
+    "באר שבע",
+    "בני ברק"
+   ],
+   "status": "לפי שם העיר, מא׳ עד ת׳",
+   "ariaSort": [
+    "ascending",
+    null,
+    null,
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "inline"
+  },
+  "4-name-reversed": {
+   "vw": 1440,
+   "scrollW": 1440,
+   "pageOverflow": false,
+   "section": {
+    "left": 100,
+    "right": 1340,
+    "width": 1240,
+    "height": 1774
+   },
+   "card": {
+    "left": 132,
+    "right": 1308
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 23,
+   "order": [
+    "תל אביב יפו",
+    "רעננה",
+    "רמת השרון",
+    "רמת גן",
+    "רחובות"
+   ],
+   "status": "לפי שם העיר, מת׳ עד א׳",
+   "ariaSort": [
+    "descending",
+    null,
+    null,
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "inline"
+  },
+  "5-price-again": {
+   "vw": 1440,
+   "scrollW": 1440,
+   "pageOverflow": false,
+   "section": {
+    "left": 100,
+    "right": 1340,
+    "width": 1240,
+    "height": 1774
+   },
+   "card": {
+    "left": 132,
+    "right": 1308
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 23,
+   "order": [
+    "תל אביב יפו",
+    "גבעתיים",
+    "רמת השרון",
+    "רמת גן",
+    "רעננה"
+   ],
+   "status": "מהעיר היקרה לזולה, לפי חציון דירת 4 חדרים",
+   "ariaSort": [
+    null,
+    null,
+    "descending",
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "inline"
+  },
+  "links": [
+   [
+    "תל אביב יפו",
+    "https://nad-lan.co.il/tel-aviv-apartment-prices/"
+   ],
+   [
+    "גבעתיים",
+    "https://nad-lan.co.il/givatayim-apartment-prices/"
+   ],
+   [
+    "רמת השרון",
+    "https://nad-lan.co.il/ramat-hasharon-apartment-prices/"
+   ],
+   [
+    "רמת גן",
+    "https://nad-lan.co.il/ramat-gan-apartment-prices/"
+   ],
+   [
+    "רעננה",
+    "https://nad-lan.co.il/raanana-apartment-prices/"
+   ],
+   [
+    "הרצליה",
+    "https://nad-lan.co.il/herzliya-apartment-prices/"
+   ],
+   [
+    "הוד השרון",
+    "https://nad-lan.co.il/hod-hasharon-apartment-prices/"
+   ],
+   [
+    "קריית אונו",
+    "https://nad-lan.co.il/kiryat-ono-apartment-prices/"
+   ],
+   [
+    "ירושלים",
+    "https://nad-lan.co.il/jerusalem-apartment-prices/"
+   ],
+   [
+    "כפר סבא",
+    "https://nad-lan.co.il/kfar-saba-apartment-prices/"
+   ],
+   [
+    "בת ים",
+    "https://nad-lan.co.il/bat-yam-apartment-prices/"
+   ],
+   [
+    "נתניה",
+    "https://nad-lan.co.il/netanya-apartment-prices/"
+   ],
+   [
+    "מודיעין מכבים רעות",
+    "https://nad-lan.co.il/modiin-apartment-prices/"
+   ],
+   [
+    "בני ברק",
+    "https://nad-lan.co.il/bnei-brak-apartment-prices/"
+   ],
+   [
+    "פתח תקווה",
+    "https://nad-lan.co.il/petah-tikva-apartment-prices/"
+   ],
+   [
+    "חולון",
+    "https://nad-lan.co.il/holon-apartment-prices/"
+   ],
+   [
+    "ראשון לציון",
+    "https://nad-lan.co.il/rishon-lezion-apartment-prices/"
+   ],
+   [
+    "רחובות",
+    "https://nad-lan.co.il/rehovot-apartment-prices/"
+   ],
+   [
+    "אשדוד",
+    "https://nad-lan.co.il/ashdod-apartment-prices/"
+   ],
+   [
+    "אילת",
+    "https://nad-lan.co.il/eilat-apartment-prices/"
+   ],
+   [
+    "חיפה",
+    "https://nad-lan.co.il/haifa-apartment-prices/"
+   ],
+   [
+    "אשקלון",
+    "https://nad-lan.co.il/ashkelon-apartment-prices/"
+   ],
+   [
+    "באר שבע",
+    "https://nad-lan.co.il/beer-sheva-apartment-prices/"
+   ]
+  ]
+ },
+ "tablet-768": {
+  "default": {
+   "vw": 768,
+   "scrollW": 768,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 768,
+    "width": 768,
+    "height": 2251
+   },
+   "card": {
+    "left": 23,
+    "right": 745
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 23,
+   "order": [
+    "תל אביב יפו",
+    "גבעתיים",
+    "רמת השרון",
+    "רמת גן",
+    "רעננה"
+   ],
+   "status": "מהעיר היקרה לזולה, לפי חציון דירת 4 חדרים",
+   "ariaSort": [
+    null,
+    null,
+    "descending",
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "2-change": {
+   "vw": 768,
+   "scrollW": 768,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 768,
+    "width": 768,
+    "height": 2251
+   },
+   "card": {
+    "left": 23,
+    "right": 745
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 23,
+   "order": [
+    "תל אביב יפו",
+    "אשדוד",
+    "בת ים",
+    "רמת גן",
+    "באר שבע"
+   ],
+   "status": "מהעלייה הגדולה לירידה הגדולה, דירת 4 חדרים לעומת לפני שנה",
+   "ariaSort": [
+    null,
+    null,
+    "other",
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "3-name": {
+   "vw": 768,
+   "scrollW": 768,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 768,
+    "width": 768,
+    "height": 2251
+   },
+   "card": {
+    "left": 23,
+    "right": 745
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 23,
+   "order": [
+    "אילת",
+    "אשדוד",
+    "אשקלון",
+    "באר שבע",
+    "בני ברק"
+   ],
+   "status": "לפי שם העיר, מא׳ עד ת׳",
+   "ariaSort": [
+    "ascending",
+    null,
+    null,
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "4-name-reversed": {
+   "vw": 768,
+   "scrollW": 768,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 768,
+    "width": 768,
+    "height": 2251
+   },
+   "card": {
+    "left": 23,
+    "right": 745
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 23,
+   "order": [
+    "תל אביב יפו",
+    "רעננה",
+    "רמת השרון",
+    "רמת גן",
+    "רחובות"
+   ],
+   "status": "לפי שם העיר, מת׳ עד א׳",
+   "ariaSort": [
+    "descending",
+    null,
+    null,
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "5-price-again": {
+   "vw": 768,
+   "scrollW": 768,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 768,
+    "width": 768,
+    "height": 2251
+   },
+   "card": {
+    "left": 23,
+    "right": 745
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 23,
+   "order": [
+    "תל אביב יפו",
+    "גבעתיים",
+    "רמת השרון",
+    "רמת גן",
+    "רעננה"
+   ],
+   "status": "מהעיר היקרה לזולה, לפי חציון דירת 4 חדרים",
+   "ariaSort": [
+    null,
+    null,
+    "descending",
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "links": [
+   [
+    "תל אביב יפו",
+    "https://nad-lan.co.il/tel-aviv-apartment-prices/"
+   ],
+   [
+    "גבעתיים",
+    "https://nad-lan.co.il/givatayim-apartment-prices/"
+   ],
+   [
+    "רמת השרון",
+    "https://nad-lan.co.il/ramat-hasharon-apartment-prices/"
+   ],
+   [
+    "רמת גן",
+    "https://nad-lan.co.il/ramat-gan-apartment-prices/"
+   ],
+   [
+    "רעננה",
+    "https://nad-lan.co.il/raanana-apartment-prices/"
+   ],
+   [
+    "הרצליה",
+    "https://nad-lan.co.il/herzliya-apartment-prices/"
+   ],
+   [
+    "הוד השרון",
+    "https://nad-lan.co.il/hod-hasharon-apartment-prices/"
+   ],
+   [
+    "קריית אונו",
+    "https://nad-lan.co.il/kiryat-ono-apartment-prices/"
+   ],
+   [
+    "ירושלים",
+    "https://nad-lan.co.il/jerusalem-apartment-prices/"
+   ],
+   [
+    "כפר סבא",
+    "https://nad-lan.co.il/kfar-saba-apartment-prices/"
+   ],
+   [
+    "בת ים",
+    "https://nad-lan.co.il/bat-yam-apartment-prices/"
+   ],
+   [
+    "נתניה",
+    "https://nad-lan.co.il/netanya-apartment-prices/"
+   ],
+   [
+    "מודיעין מכבים רעות",
+    "https://nad-lan.co.il/modiin-apartment-prices/"
+   ],
+   [
+    "בני ברק",
+    "https://nad-lan.co.il/bnei-brak-apartment-prices/"
+   ],
+   [
+    "פתח תקווה",
+    "https://nad-lan.co.il/petah-tikva-apartment-prices/"
+   ],
+   [
+    "חולון",
+    "https://nad-lan.co.il/holon-apartment-prices/"
+   ],
+   [
+    "ראשון לציון",
+    "https://nad-lan.co.il/rishon-lezion-apartment-prices/"
+   ],
+   [
+    "רחובות",
+    "https://nad-lan.co.il/rehovot-apartment-prices/"
+   ],
+   [
+    "אשדוד",
+    "https://nad-lan.co.il/ashdod-apartment-prices/"
+   ],
+   [
+    "אילת",
+    "https://nad-lan.co.il/eilat-apartment-prices/"
+   ],
+   [
+    "חיפה",
+    "https://nad-lan.co.il/haifa-apartment-prices/"
+   ],
+   [
+    "אשקלון",
+    "https://nad-lan.co.il/ashkelon-apartment-prices/"
+   ],
+   [
+    "באר שבע",
+    "https://nad-lan.co.il/beer-sheva-apartment-prices/"
+   ]
+  ]
+ },
+ "phone-390": {
+  "default": {
+   "vw": 390,
+   "scrollW": 390,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 390,
+    "width": 390,
+    "height": 2318
+   },
+   "card": {
+    "left": 16,
+    "right": 374
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 8,
+   "order": [
+    "תל אביב יפו",
+    "גבעתיים",
+    "רמת השרון",
+    "רמת גן",
+    "רעננה"
+   ],
+   "status": "מהעיר היקרה לזולה, לפי חציון דירת 4 חדרים",
+   "ariaSort": [
+    null,
+    null,
+    "descending",
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "2-change": {
+   "vw": 390,
+   "scrollW": 390,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 390,
+    "width": 390,
+    "height": 2351
+   },
+   "card": {
+    "left": 16,
+    "right": 374
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 8,
+   "order": [
+    "תל אביב יפו",
+    "אשדוד",
+    "בת ים",
+    "רמת גן",
+    "באר שבע"
+   ],
+   "status": "מהעלייה הגדולה לירידה הגדולה, דירת 4 חדרים לעומת לפני שנה",
+   "ariaSort": [
+    null,
+    null,
+    "other",
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "3-name": {
+   "vw": 390,
+   "scrollW": 390,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 390,
+    "width": 390,
+    "height": 2335
+   },
+   "card": {
+    "left": 16,
+    "right": 374
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 8,
+   "order": [
+    "אילת",
+    "אשדוד",
+    "אשקלון",
+    "באר שבע",
+    "בני ברק"
+   ],
+   "status": "לפי שם העיר, מא׳ עד ת׳",
+   "ariaSort": [
+    "ascending",
+    null,
+    null,
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "4-name-reversed": {
+   "vw": 390,
+   "scrollW": 390,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 390,
+    "width": 390,
+    "height": 2318
+   },
+   "card": {
+    "left": 16,
+    "right": 374
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 8,
+   "order": [
+    "תל אביב יפו",
+    "רעננה",
+    "רמת השרון",
+    "רמת גן",
+    "רחובות"
+   ],
+   "status": "לפי שם העיר, מת׳ עד א׳",
+   "ariaSort": [
+    "descending",
+    null,
+    null,
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "5-price-again": {
+   "vw": 390,
+   "scrollW": 390,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 390,
+    "width": 390,
+    "height": 2318
+   },
+   "card": {
+    "left": 16,
+    "right": 374
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 8,
+   "order": [
+    "תל אביב יפו",
+    "גבעתיים",
+    "רמת השרון",
+    "רמת גן",
+    "רעננה"
+   ],
+   "status": "מהעיר היקרה לזולה, לפי חציון דירת 4 חדרים",
+   "ariaSort": [
+    null,
+    null,
+    "descending",
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "6-all-cities-open": {
+   "vw": 390,
+   "scrollW": 390,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 390,
+    "width": 390,
+    "height": 4272
+   },
+   "card": {
+    "left": 16,
+    "right": 374
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 23,
+   "order": [
+    "תל אביב יפו",
+    "גבעתיים",
+    "רמת השרון",
+    "רמת גן",
+    "רעננה"
+   ],
+   "status": "מהעיר היקרה לזולה, לפי חציון דירת 4 חדרים",
+   "ariaSort": [
+    null,
+    null,
+    "descending",
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "6-focus": "ירושלים",
+  "links": [
+   [
+    "תל אביב יפו",
+    "https://nad-lan.co.il/tel-aviv-apartment-prices/"
+   ],
+   [
+    "גבעתיים",
+    "https://nad-lan.co.il/givatayim-apartment-prices/"
+   ],
+   [
+    "רמת השרון",
+    "https://nad-lan.co.il/ramat-hasharon-apartment-prices/"
+   ],
+   [
+    "רמת גן",
+    "https://nad-lan.co.il/ramat-gan-apartment-prices/"
+   ],
+   [
+    "רעננה",
+    "https://nad-lan.co.il/raanana-apartment-prices/"
+   ],
+   [
+    "הרצליה",
+    "https://nad-lan.co.il/herzliya-apartment-prices/"
+   ],
+   [
+    "הוד השרון",
+    "https://nad-lan.co.il/hod-hasharon-apartment-prices/"
+   ],
+   [
+    "קריית אונו",
+    "https://nad-lan.co.il/kiryat-ono-apartment-prices/"
+   ],
+   [
+    "ירושלים",
+    "https://nad-lan.co.il/jerusalem-apartment-prices/"
+   ],
+   [
+    "כפר סבא",
+    "https://nad-lan.co.il/kfar-saba-apartment-prices/"
+   ],
+   [
+    "בת ים",
+    "https://nad-lan.co.il/bat-yam-apartment-prices/"
+   ],
+   [
+    "נתניה",
+    "https://nad-lan.co.il/netanya-apartment-prices/"
+   ],
+   [
+    "מודיעין מכבים רעות",
+    "https://nad-lan.co.il/modiin-apartment-prices/"
+   ],
+   [
+    "בני ברק",
+    "https://nad-lan.co.il/bnei-brak-apartment-prices/"
+   ],
+   [
+    "פתח תקווה",
+    "https://nad-lan.co.il/petah-tikva-apartment-prices/"
+   ],
+   [
+    "חולון",
+    "https://nad-lan.co.il/holon-apartment-prices/"
+   ],
+   [
+    "ראשון לציון",
+    "https://nad-lan.co.il/rishon-lezion-apartment-prices/"
+   ],
+   [
+    "רחובות",
+    "https://nad-lan.co.il/rehovot-apartment-prices/"
+   ],
+   [
+    "אשדוד",
+    "https://nad-lan.co.il/ashdod-apartment-prices/"
+   ],
+   [
+    "אילת",
+    "https://nad-lan.co.il/eilat-apartment-prices/"
+   ],
+   [
+    "חיפה",
+    "https://nad-lan.co.il/haifa-apartment-prices/"
+   ],
+   [
+    "אשקלון",
+    "https://nad-lan.co.il/ashkelon-apartment-prices/"
+   ],
+   [
+    "באר שבע",
+    "https://nad-lan.co.il/beer-sheva-apartment-prices/"
+   ]
+  ]
+ },
+ "phone-360": {
+  "default": {
+   "vw": 360,
+   "scrollW": 360,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 360,
+    "width": 360,
+    "height": 2394
+   },
+   "card": {
+    "left": 16,
+    "right": 344
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 8,
+   "order": [
+    "תל אביב יפו",
+    "גבעתיים",
+    "רמת השרון",
+    "רמת גן",
+    "רעננה"
+   ],
+   "status": "מהעיר היקרה לזולה, לפי חציון דירת 4 חדרים",
+   "ariaSort": [
+    null,
+    null,
+    "descending",
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "2-change": {
+   "vw": 360,
+   "scrollW": 360,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 360,
+    "width": 360,
+    "height": 2447
+   },
+   "card": {
+    "left": 16,
+    "right": 344
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 8,
+   "order": [
+    "תל אביב יפו",
+    "אשדוד",
+    "בת ים",
+    "רמת גן",
+    "באר שבע"
+   ],
+   "status": "מהעלייה הגדולה לירידה הגדולה, דירת 4 חדרים לעומת לפני שנה",
+   "ariaSort": [
+    null,
+    null,
+    "other",
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "3-name": {
+   "vw": 360,
+   "scrollW": 360,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 360,
+    "width": 360,
+    "height": 2411
+   },
+   "card": {
+    "left": 16,
+    "right": 344
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 8,
+   "order": [
+    "אילת",
+    "אשדוד",
+    "אשקלון",
+    "באר שבע",
+    "בני ברק"
+   ],
+   "status": "לפי שם העיר, מא׳ עד ת׳",
+   "ariaSort": [
+    "ascending",
+    null,
+    null,
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "4-name-reversed": {
+   "vw": 360,
+   "scrollW": 360,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 360,
+    "width": 360,
+    "height": 2394
+   },
+   "card": {
+    "left": 16,
+    "right": 344
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 8,
+   "order": [
+    "תל אביב יפו",
+    "רעננה",
+    "רמת השרון",
+    "רמת גן",
+    "רחובות"
+   ],
+   "status": "לפי שם העיר, מת׳ עד א׳",
+   "ariaSort": [
+    "descending",
+    null,
+    null,
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "5-price-again": {
+   "vw": 360,
+   "scrollW": 360,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 360,
+    "width": 360,
+    "height": 2394
+   },
+   "card": {
+    "left": 16,
+    "right": 344
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 8,
+   "order": [
+    "תל אביב יפו",
+    "גבעתיים",
+    "רמת השרון",
+    "רמת גן",
+    "רעננה"
+   ],
+   "status": "מהעיר היקרה לזולה, לפי חציון דירת 4 חדרים",
+   "ariaSort": [
+    null,
+    null,
+    "descending",
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "6-all-cities-open": {
+   "vw": 360,
+   "scrollW": 360,
+   "pageOverflow": false,
+   "section": {
+    "left": 0,
+    "right": 360,
+    "width": 360,
+    "height": 4348
+   },
+   "card": {
+    "left": 16,
+    "right": 344
+   },
+   "outside": 0,
+   "outsideSample": [],
+   "visibleRows": 23,
+   "order": [
+    "תל אביב יפו",
+    "גבעתיים",
+    "רמת השרון",
+    "רמת גן",
+    "רעננה"
+   ],
+   "status": "מהעיר היקרה לזולה, לפי חציון דירת 4 חדרים",
+   "ariaSort": [
+    null,
+    null,
+    "descending",
+    null,
+    null
+   ],
+   "fonts": "loaded",
+   "chgDisplay": "block"
+  },
+  "6-focus": "ירושלים",
+  "links": [
+   [
+    "תל אביב יפו",
+    "https://nad-lan.co.il/tel-aviv-apartment-prices/"
+   ],
+   [
+    "גבעתיים",
+    "https://nad-lan.co.il/givatayim-apartment-prices/"
+   ],
+   [
+    "רמת השרון",
+    "https://nad-lan.co.il/ramat-hasharon-apartment-prices/"
+   ],
+   [
+    "רמת גן",
+    "https://nad-lan.co.il/ramat-gan-apartment-prices/"
+   ],
+   [
+    "רעננה",
+    "https://nad-lan.co.il/raanana-apartment-prices/"
+   ],
+   [
+    "הרצליה",
+    "https://nad-lan.co.il/herzliya-apartment-prices/"
+   ],
+   [
+    "הוד השרון",
+    "https://nad-lan.co.il/hod-hasharon-apartment-prices/"
+   ],
+   [
+    "קריית אונו",
+    "https://nad-lan.co.il/kiryat-ono-apartment-prices/"
+   ],
+   [
+    "ירושלים",
+    "https://nad-lan.co.il/jerusalem-apartment-prices/"
+   ],
+   [
+    "כפר סבא",
+    "https://nad-lan.co.il/kfar-saba-apartment-prices/"
+   ],
+   [
+    "בת ים",
+    "https://nad-lan.co.il/bat-yam-apartment-prices/"
+   ],
+   [
+    "נתניה",
+    "https://nad-lan.co.il/netanya-apartment-prices/"
+   ],
+   [
+    "מודיעין מכבים רעות",
+    "https://nad-lan.co.il/modiin-apartment-prices/"
+   ],
+   [
+    "בני ברק",
+    "https://nad-lan.co.il/bnei-brak-apartment-prices/"
+   ],
+   [
+    "פתח תקווה",
+    "https://nad-lan.co.il/petah-tikva-apartment-prices/"
+   ],
+   [
+    "חולון",
+    "https://nad-lan.co.il/holon-apartment-prices/"
+   ],
+   [
+    "ראשון לציון",
+    "https://nad-lan.co.il/rishon-lezion-apartment-prices/"
+   ],
+   [
+    "רחובות",
+    "https://nad-lan.co.il/rehovot-apartment-prices/"
+   ],
+   [
+    "אשדוד",
+    "https://nad-lan.co.il/ashdod-apartment-prices/"
+   ],
+   [
+    "אילת",
+    "https://nad-lan.co.il/eilat-apartment-prices/"
+   ],
+   [
+    "חיפה",
+    "https://nad-lan.co.il/haifa-apartment-prices/"
+   ],
+   [
+    "אשקלון",
+    "https://nad-lan.co.il/ashkelon-apartment-prices/"
+   ],
+   [
+    "באר שבע",
+    "https://nad-lan.co.il/beer-sheva-apartment-prices/"
+   ]
+  ]
+ }
+}

@@ -50,15 +50,24 @@ if _city:
     _city.setdefault('tax_single', d['calc']['tax_single']); _city.setdefault('tax_more', d['calc']['tax_more'])
     EXTRA += ('<p class="pgx-note" style="margin-top:36px">City page (rooms variant): the official medians by rooms, the trend by quarter, a check of the price seen in an ad against the median, the purchase tax. Tel Aviv, real data.</p><div style="max-width:1240px;margin:0 auto">' +
               RM.html(_city, '972525101555', '-ta') + '</div><div style="width:390px;margin:24px auto;border:10px solid #14212b;border-radius:30px;padding:10px 0">' + RM.html(_city, '972525101555', '-tap') + '</div>')
+import glob as _glob
+import national as NT  # the national variant (the Israel page), design system 223
+_dn = os.path.join(HERE, 'cities', 'apartment-prices.json')
+if os.path.exists(_dn):
+    _cs = [json.load(io.open(f, encoding='utf-8')) for f in sorted(_glob.glob(os.path.join(HERE, 'cities', '*.json')))]
+    _cs = [c for c in _cs if c.get('slug') != 'apartment-prices' and c.get('page')]
+    _dnd = json.load(io.open(_dn, encoding='utf-8'))
+    EXTRA += ('<p class="pgx-note" style="margin-top:36px">The Israel page (national variant, v2.6): the medians of every city with a price page, 3/4/5 rooms, the yearly change and the quarter, sortable, linked to each city page; no single-city calculator (the CEO, 7.10.2026). The change in the Israel row is computed and footnoted.</p><div style="max-width:1240px;margin:0 auto">' +
+              NT.html(_dnd, _cs, '972525101555', '-il') + '</div><div style="width:390px;margin:24px auto;border:10px solid #14212b;border-radius:30px;padding:10px 0">' + NT.html(_dnd, _cs, '972525101555', '-ilp') + '</div>')
 doc = ('<!-- @dsCard group="Cards" height=4600 width=1280 subtitle="מחירון ומחשבון מחיר לעמוד פרויקט: עסקאות, מחירים מבוקשים והערכות עם תאריך, '
        'ואומדן לפי שטח, קומה וסוג דירה" -->\n<!doctype html>\n<html lang="he" dir="rtl"><head><meta charset="utf-8">'
        '<meta name="viewport" content="width=device-width, initial-scale=1"><title>PriceGuide</title>'
        '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@500;600;700&amp;family=Assistant:wght@300;400;600;700&amp;display=swap">'
-       '<style>' + pgx + render.CSS + RM.CSS_R + '</style></head><body><div class="pgx">'
+       '<style>' + pgx + render.CSS + RM.CSS_R + NT.CSS_N + '</style></head><body><div class="pgx">'
        '<p class="pgx-note">במחשב: המחירון יושב מיד אחרי פסקת הפתיחה והכפתורים, ולפני הבמה. מימין הטבלה, משמאל המחשבון.</p>' + ctx +
        render.html(d, '972525101555') + after +
        '<p class="pgx-note" style="margin-top:32px">בטלפון: אותו סדר. המחשבון לפני הטבלה, והטבלה בכרטיסים.</p><div class="pgx-phone">' +
-       render.html(d, '972525101555', '-ph') + '</div>' + EXTRA + '</div><script>' + render.JS + RM.JS_R + '</script></body></html>\n')
+       render.html(d, '972525101555', '-ph') + '</div>' + EXTRA + '</div><script>' + render.JS + RM.JS_R + NT.JS_N + '</script></body></html>\n')
 io.open(os.path.join(comp, 'preview.html'), 'w', encoding='utf-8', newline='\n').write(doc)
 
 readme = """# PriceGuide
@@ -85,6 +94,7 @@ One price list and one price calculator for a project page: what the published d
 - **Languages (v2):** the interface words live in a table (`render.UI_HE`), and each language file overrides them in `ui` (with `lang`, `dir`, `loc`, `grp`, `dec`), so en/fr/ru/ar pages get the section in their language, LTR or RTL, with their own number separators. The numbers in `calc` are identical in every language.
 - **Regular project pages (v2.1):** Rainbow and DUO get the section from their own data files (the key is the page slug without a language ending). Their grid gains the same `prices` row after the first fold: `"hero stage rail" "lead stage rail" "cta stage rail" "prices prices prices" "below below below" ...` on wide screens. `calc.floors` sets the slider and the chart (Rainbow 39, DUO 50), and `calc.y0`/`y1` the chart's price range. A price list can link to its neighbour with `see` lines (Kikar to Rova 4 and back).
 - **City pages, the rooms variant (v2.3, `rooms.py`):** data from the official medians (deals reported to the Tax Authority) per city, by rooms and quarter (`cities/<page>.json`). Tiles for 3/4/5 rooms with the change against the same quarter last year; a table (the latest quarter, a year ago, the change, Israel) and the neighbourhoods; a calculator that checks the price seen in an ad against the median ("17% above the median"), with an 8-quarter trend line and the purchase tax. A row whose latest figure comes from another quarter shows that quarter. Heading in the calculator: "מחשבון מחיר דירה ב{עיר}" (the CEO's terms: no "מחשבון קניית דירה", no "מחשבון משכנתא"). Placed with the shortcode after the page's first real paragraph.
+- **National variant (v2.6, national.py):** for /apartment-prices/: the Israel medians on top, then a table of every city with a price page (3/4/5 rooms with the yearly change, the quarter, a link to the city page), sortable by price / change / name; phones get cards (8, then "לכל הערים"). No calculator (a single-city calculator on the Israel page was ruled out). The "כל הארץ" row's change is computed from two official medians and footnoted as such. pg_helper.NATIONAL turns it on; it may not be in CITIES.
 - **Fold mode (v2.5):** a data file with `"open_groups": N` keeps groups N.. behind the "למחירון המלא" button on wide screens too (the section gets `nlpg--fold`; one extra rule inside `@container nlpg (min-width:861px)`). First user: the Sde Dov list (39 rows), ~2,035px folded on a 1440px screen instead of ~5,100px. Lists without the key are unchanged.
 - **Titles (v2.5, the CEO's rule 7.10.2026):** a city list's title is "מחירון ומחשבון: מחיר דירה ב{עיר} לפי חדרים" and may not open with the same 4 words as any H2 already on its page (scripts/project-stage/city_h2.py; insert_city_guides.py stops on a twin). Jerusalem had "כמה עולה דירה בירושלים לפי הנתונים שנבדקו" next to the list's "כמה עולה דירה בירושלים ב-2026". Cities roll out in waves of 10 with a before/after load measurement and a stop rule (first byte +0.15 s or phone load +0.3 s).
 - **Narrow phones (v2.4, 7.10.2026, measured on live 1.72.436 at 360/375/390 px):** the calculator's single grid track is capped (`minmax(0,1fr)`); the WhatsApp line wraps in two balanced lines (`.nlpg__wa.nlds-btn.nlds-btn--primary` outranks nlds.css `:root body .nlds .nlds-btn` nowrap); in the city variant and the tax pair the choices share one row as a segmented control; the totals never break before ₪; a zero purchase tax reads "0 ₪ (פטור)". Before: up to 35 calculator items outside the card at 360 px; after: none.

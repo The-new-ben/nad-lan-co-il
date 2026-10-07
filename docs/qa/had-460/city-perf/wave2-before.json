@@ -1,0 +1,68 @@
+{
+ "/beer-sheva-apartment-prices/": {
+  "ttfb_s": 0.621,
+  "html_bytes": 228714,
+  "phone_load_ms": 1255,
+  "phone_dcl_ms": 1154
+ },
+ "/bnei-brak-apartment-prices/": {
+  "ttfb_s": 0.637,
+  "html_bytes": 235143,
+  "phone_load_ms": 1224,
+  "phone_dcl_ms": 1133
+ },
+ "/givatayim-apartment-prices/": {
+  "ttfb_s": 0.628,
+  "html_bytes": 231726,
+  "phone_load_ms": 1244,
+  "phone_dcl_ms": 1160
+ },
+ "/holon-apartment-prices/": {
+  "ttfb_s": 0.637,
+  "html_bytes": 228739,
+  "phone_load_ms": 1229,
+  "phone_dcl_ms": 1135
+ },
+ "/kfar-saba-apartment-prices/": {
+  "ttfb_s": 0.624,
+  "html_bytes": 226570,
+  "phone_load_ms": 1288,
+  "phone_dcl_ms": 1201
+ },
+ "/modiin-apartment-prices/": {
+  "ttfb_s": 0.629,
+  "html_bytes": 225268,
+  "phone_load_ms": 1474,
+  "phone_dcl_ms": 1353
+ },
+ "/raanana-apartment-prices/": {
+  "ttfb_s": 0.627,
+  "html_bytes": 237287,
+  "phone_load_ms": 1301,
+  "phone_dcl_ms": 1199
+ },
+ "/ramat-hasharon-apartment-prices/": {
+  "ttfb_s": 0.639,
+  "html_bytes": 233287,
+  "phone_load_ms": 1263,
+  "phone_dcl_ms": 1162
+ },
+ "/rehovot-apartment-prices/": {
+  "ttfb_s": 0.626,
+  "html_bytes": 231203,
+  "phone_load_ms": 1208,
+  "phone_dcl_ms": 1121
+ },
+ "/rishon-lezion-apartment-prices/": {
+  "ttfb_s": 0.647,
+  "html_bytes": 230429,
+  "phone_load_ms": 1245,
+  "phone_dcl_ms": 1146
+ },
+ "/apartment-prices/": {
+  "ttfb_s": 0.628,
+  "html_bytes": 196242,
+  "phone_load_ms": 1221,
+  "phone_dcl_ms": 1127
+ }
+}
