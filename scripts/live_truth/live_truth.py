@@ -116,7 +116,19 @@ if bad:
     raise SystemExit(f"FATAL: {bad} files missing or mismatched")
 
 # the snippets, through the Code Snippets REST API (read only)
-s, sn, _ = req("GET", "/wp-json/code-snippets/v1/snippets?per_page=500", None, timeout=120); must(s, sn, "snippets")
+sn, page_no = [], 1
+while True:
+    s, chunk, _ = req("GET", f"/wp-json/code-snippets/v1/snippets?per_page=100&page={page_no}", None, timeout=120)
+    if s == 400 and page_no > 1:
+        break  # past the last page
+    must(s, chunk, "snippets")
+    if not chunk:
+        break
+    sn += chunk
+    if len(chunk) < 100:
+        break
+    page_no += 1
+print(f"[snippets] {len(sn)} read")
 os.makedirs(os.path.join(OUT, "snippets"), exist_ok=True)
 man = []
 for x in sn:
