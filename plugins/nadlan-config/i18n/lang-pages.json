@@ -599,6 +599,20 @@
    "ar": "كم يبلغ سعر شقة في {1}؟"
   },
   {
+   "re": "^המחירים סביב הפרויקט ב(.+)$",
+   "en": "Prices around the project in {1}",
+   "fr": "Les prix autour du projet à {1}",
+   "ru": "Цены вокруг проекта в городе {1}",
+   "ar": "الأسعار حول المشروع في {1}"
+  },
+  {
+   "re": "^מחירי דירות ב(.+)$",
+   "en": "Apartment prices in {1}",
+   "fr": "Prix des appartements à {1}",
+   "ru": "Цены на квартиры в городе {1}",
+   "ar": "أسعار الشقق في {1}"
+  },
+  {
    "re": "^עסקאות שדווחו לרשות המסים, ([\\d.]+) עד ([\\d.]+?)\\. חציון של דירות בבתי קומות\\. מ[־-]?(\\d{4}) עד (\\d{4}): ([+\\-−]?\\d+%) במחיר למ[״\"]ר בעיר\\.$",
    "en": "Deals reported to the Tax Authority, {1} to {2}. The median of apartments in multi-storey buildings. {3} to {4}: {5} in the city's price per m².",
    "fr": "Transactions déclarées à l'administration fiscale, de {1} à {2}. Médiane des appartements en immeubles collectifs. De {3} à {4} : {5} sur le prix au m² de la ville.",

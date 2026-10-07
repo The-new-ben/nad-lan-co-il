@@ -1,0 +1,258 @@
+{
+ "slug": "kiryat-ono-apartment-prices",
+ "mode": "rooms",
+ "page": "https://nad-lan.co.il/kiryat-ono-apartment-prices/",
+ "city_he": "קריית אונו",
+ "settlement_code": 2620,
+ "settlement_name_official": "קריית אונו",
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "data_quarter": "1-3.2026",
+ "file_date": "2026-08-20",
+ "file_date_he": "20.8.2026",
+ "title": "כמה עולה דירה בקריית אונו ב-2026",
+ "answer": "ברבעון הראשון של 2026, חציון מחיר העסקה בקריית אונו היה 2,635,400 ₪ לדירת 3 חדרים, 3,197,900 ₪ לדירת 4 חדרים ו-3,533,500 ₪ לדירת 5 חדרים. לעומת הרבעון הראשון של 2025, החציון ירד ב-4.7% לדירת 3 חדרים, ירד ב-3.1% לדירת 4 חדרים וירד ב-6% לדירת 5 חדרים. בכל הארץ, חציון מחיר העסקה לדירת 4 חדרים ברבעון הראשון של 2026 היה 2,072,000 ₪.",
+ "rooms": {
+  "3": {
+   "latest": 2635400,
+   "quarter": "1-3.2026",
+   "year_ago": 2765900,
+   "change_pct": -4.7,
+   "quarters": [
+    [
+     "4-6.2024",
+     null
+    ],
+    [
+     "7-9.2024",
+     2682400
+    ],
+    [
+     "10-12.2024",
+     null
+    ],
+    [
+     "1-3.2025",
+     2765900
+    ],
+    [
+     "4-6.2025",
+     null
+    ],
+    [
+     "7-9.2025",
+     2611500
+    ],
+    [
+     "10-12.2025",
+     null
+    ],
+    [
+     "1-3.2026",
+     2635400
+    ]
+   ]
+  },
+  "4": {
+   "latest": 3197900,
+   "quarter": "1-3.2026",
+   "year_ago": 3299400,
+   "change_pct": -3.1,
+   "quarters": [
+    [
+     "4-6.2024",
+     null
+    ],
+    [
+     "7-9.2024",
+     3194900
+    ],
+    [
+     "10-12.2024",
+     3248100
+    ],
+    [
+     "1-3.2025",
+     3299400
+    ],
+    [
+     "4-6.2025",
+     3295900
+    ],
+    [
+     "7-9.2025",
+     3401600
+    ],
+    [
+     "10-12.2025",
+     null
+    ],
+    [
+     "1-3.2026",
+     3197900
+    ]
+   ]
+  },
+  "5": {
+   "latest": 3533500,
+   "quarter": "1-3.2026",
+   "year_ago": 3758000,
+   "change_pct": -6.0,
+   "quarters": [
+    [
+     "4-6.2024",
+     3553400
+    ],
+    [
+     "7-9.2024",
+     3528000
+    ],
+    [
+     "10-12.2024",
+     3698100
+    ],
+    [
+     "1-3.2025",
+     3758000
+    ],
+    [
+     "4-6.2025",
+     null
+    ],
+    [
+     "7-9.2025",
+     3782400
+    ],
+    [
+     "10-12.2025",
+     null
+    ],
+    [
+     "1-3.2026",
+     3533500
+    ]
+   ]
+  },
+  "all": {
+   "latest": 3175100,
+   "quarter": "1-3.2026",
+   "year_ago": 3395400,
+   "change_pct": -6.5,
+   "quarters": [
+    [
+     "4-6.2024",
+     3146400
+    ],
+    [
+     "7-9.2024",
+     3355300
+    ],
+    [
+     "10-12.2024",
+     3268300
+    ],
+    [
+     "1-3.2025",
+     3395400
+    ],
+    [
+     "4-6.2025",
+     3204100
+    ],
+    [
+     "7-9.2025",
+     3303700
+    ],
+    [
+     "10-12.2025",
+     3129200
+    ],
+    [
+     "1-3.2026",
+     3175100
+    ]
+   ]
+  }
+ },
+ "israel": {
+  "quarter": "1-3.2026",
+  "3": 1647500,
+  "4": 2072000,
+  "5": 2920600,
+  "all": 2058800
+ },
+ "israel_latest": {
+  "quarter": "4-6.2026",
+  "3": 1677400,
+  "4": 2028800,
+  "5": 2822700,
+  "all": 2130500
+ },
+ "neighbourhoods": [
+  {
+   "name": "קיראון",
+   "id": 65209756,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 3024700,
+    "5": 3489100
+   },
+   "quarters_with_data": 18
+  },
+  {
+   "name": "שיכון רסקו",
+   "id": 65210535,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 2768900,
+    "4": 3400500,
+    "5": null
+   },
+   "quarters_with_data": 9
+  },
+  {
+   "name": "גני אילן",
+   "id": 65209645,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 2655200,
+    "4": null,
+    "5": 3048100
+   },
+   "quarters_with_data": 7
+  }
+ ],
+ "neighbourhoods_note": "Official neighbourhood medians for the city's data quarter (null = not published for that quarter). The official files give no deal counts, so neighbourhoods are ranked by quarters_with_data: how many of the 32 values (3/4/5/all rooms x the last 8 quarters) carry an official median. Only neighbourhoods with at least one 3/4/5-room median in the data quarter are kept. Names exactly as in the official files.",
+ "notes": "rooms.<k>.latest is the newest published median for that room count and rooms.<k>.quarter is its quarter (it can be older than data_quarter when the newer quarter was not published). year_ago = the same quarter one year earlier; change_pct = (latest - year_ago) / year_ago. quarters = the 8 quarters ending at data_quarter, oldest first, null where not published. israel = the Israel medians for data_quarter (same-quarter comparison); israel_latest = the newest Israel quarter in the same file. Full apartment prices in ILS, not per m2.",
+ "src_line": "חציון מחיר העסקה, לפי מספר החדרים, בעסקאות שדווחו לרשות המסים ברבעון הראשון של 2026 (1-3.2026). עודכן 7.10.2026.",
+ "sources": [
+  {
+   "what": "official settlement summary file (median deal price by rooms per quarter; city series and Israel series)",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/2620.json",
+   "retrieved_utc": "2026-10-07 08:43:35",
+   "last_modified": "Thu, 20 Aug 2026 10:31:47 GMT",
+   "name_in_file": "קריית אונו",
+   "id_in_file": 2620,
+   "version": "20-08-2026"
+  },
+  {
+   "what": "official neighbourhood summary file: קיראון",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209756.json",
+   "retrieved_utc": "2026-10-07 08:44:51",
+   "last_modified": "Thu, 20 Aug 2026 10:29:56 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: שיכון רסקו",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210535.json",
+   "retrieved_utc": "2026-10-07 08:44:58",
+   "last_modified": "Thu, 20 Aug 2026 10:30:31 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: גני אילן",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209645.json",
+   "retrieved_utc": "2026-10-07 08:44:46",
+   "last_modified": "Thu, 20 Aug 2026 10:29:53 GMT"
+  }
+ ]
+}

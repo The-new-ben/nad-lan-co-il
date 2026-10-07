@@ -281,7 +281,8 @@ JS = r"""
 (function(){var NS='http://www.w3.org/2000/svg';
 function tax(p,br){var a=0,prev=0;for(var i=0;i<br.length;i++){var cap=br[i][0],r=br[i][1],top=cap===null?p:Math.min(p,cap);if(top>prev)a+=(top-prev)*r;if(cap===null||p<=cap)break;prev=cap}return a}
 function el(t,a,txt){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e}
-function one(root){var f=root.querySelector('.nlpg__calc');if(!f||f.__nlpg)return;f.__nlpg=1;var C;try{C=JSON.parse(f.getAttribute('data-cfg'))}catch(e){return}
+function one(root){var f=root.querySelector('.nlpg__calc');if(!f||f.__nlpg)return;var C;try{C=JSON.parse(f.getAttribute('data-cfg'))}catch(e){return}
+ if(!C||!C.modes)return;f.__nlpg=1;
  var T=C.t||{},LOC=C.loc||'he-IL';
  var nf=function(n){return new Intl.NumberFormat(LOC,{maximumFractionDigits:0}).format(Math.round(n/100)*100)};
  var nfk=function(n){return new Intl.NumberFormat(LOC).format(Math.round(n/1000)*1000)};
@@ -328,7 +329,7 @@ function one(root){var f=root.querySelector('.nlpg__calc');if(!f||f.__nlpg)retur
  f.addEventListener('input',run);f.addEventListener('change',run);f.addEventListener('submit',function(e){e.preventDefault()});
  var mb=root.querySelector('.nlpg__more');if(mb)mb.addEventListener('click',function(){root.classList.add('is-open');mb.setAttribute('aria-expanded','true');var g=root.querySelector('.nlpg__grp--more .nlpg__gh th');if(g){g.setAttribute('tabindex','-1');g.focus({preventScroll:true})}});
  run()}
-var all=document.querySelectorAll('.nlpg');for(var i=0;i<all.length;i++)one(all[i])})();
+var all=document.querySelectorAll('.nlpg');for(var i=0;i<all.length;i++){try{one(all[i])}catch(e){}}})();
 """
 
 

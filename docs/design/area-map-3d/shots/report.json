@@ -1,0 +1,137 @@
+[
+ {
+  "name": "desktop-1366",
+  "page_errors": [],
+  "console_errors": [],
+  "failed_requests": [],
+  "idle": "idle",
+  "load_s": 4.7,
+  "map": {
+   "zoom": 15,
+   "pitch": 55,
+   "bearing": -18,
+   "cooperative": true,
+   "layers": [
+    "nlam-3d",
+    "nlam-edge",
+    "nlam-places",
+    "nlam-renewal",
+    "nlam-proj-halo"
+   ],
+   "buildings_rendered": 200,
+   "places_rendered": 50,
+   "renewal_rendered": 15,
+   "pins": 6,
+   "pins_compact": [
+    "פארק בבלי"
+   ],
+   "fonts": {
+    "serif": true,
+    "sans": true
+   },
+   "h2_font": "\"Noto Serif Hebrew\", \"David Libre\", Georgia, serif",
+   "attribution": "OpenFreeMap © OpenMapTiles Data from OpenStreetMap"
+  },
+  "renewal_point": {
+   "x": 870.6148410444399,
+   "y": 658.0251135217718,
+   "inside": true
+  },
+  "renewal_card": {
+   "open": true,
+   "text": "התחדשות עירונית ליסין 27 לפני 4 קומות, 12 דירות ← אחרי 7 קומות, 21 דירות יזם: יעז יזמות שלב: היתר בנייה, 7.2026",
+   "left": 926,
+   "right": 1256,
+   "top": 286,
+   "bottom": 515,
+   "vw": 1366,
+   "vh": 900,
+   "inside": true
+  },
+  "project_pin_compact": false,
+  "project_card": {
+   "open": true,
+   "text": "פרויקט מגדלי כיכר המדינה 3 מגדלים בני 40, 40 ו-37 קומות · 453 דירות לעמוד הפרויקט",
+   "left": 926,
+   "right": 1256,
+   "top": 286,
+   "bottom": 472,
+   "vw": 1366,
+   "vh": 900,
+   "inside": true
+  },
+  "after_reset": {
+   "zoom": 15,
+   "card_hidden": true
+  }
+ },
+ {
+  "name": "phone-390",
+  "page_errors": [],
+  "console_errors": [],
+  "failed_requests": [],
+  "idle": "idle",
+  "load_s": 3.8,
+  "map": {
+   "zoom": 14.2,
+   "pitch": 55,
+   "bearing": -18,
+   "cooperative": true,
+   "layers": [
+    "nlam-3d",
+    "nlam-edge",
+    "nlam-places",
+    "nlam-renewal",
+    "nlam-proj-halo"
+   ],
+   "buildings_rendered": 148,
+   "places_rendered": 40,
+   "renewal_rendered": 15,
+   "pins": 6,
+   "pins_compact": [
+    "DUO",
+    "H Infinity",
+    "מגדלי YOO",
+    "פארק בבלי"
+   ],
+   "fonts": {
+    "serif": true,
+    "sans": true
+   },
+   "h2_font": "\"Noto Serif Hebrew\", \"David Libre\", Georgia, serif",
+   "attribution": "OpenFreeMap © OpenMapTiles Data from OpenStreetMap"
+  },
+  "renewal_point": {
+   "x": 250.45211164474745,
+   "y": 609.4035514644182,
+   "inside": true
+  },
+  "renewal_card": {
+   "open": true,
+   "text": "התחדשות עירונית זלוציסטי 4 לפני 4 קומות, 12 דירות ← אחרי 8 קומות, 22 דירות שלב: נהרס, 2.2026",
+   "left": 27,
+   "right": 363,
+   "top": 553,
+   "bottom": 748,
+   "vw": 390,
+   "vh": 844,
+   "inside": true
+  },
+  "project_pin_compact": true,
+  "project_card": {
+   "open": true,
+   "text": "פרויקט DUO 2 מגדלים בני 54 קומות · 668 דירות אפריקה ישראל מגורים לעמוד הפרויקט",
+   "left": 27,
+   "right": 363,
+   "top": 542,
+   "bottom": 748,
+   "vw": 390,
+   "vh": 844,
+   "inside": true
+  },
+  "after_reset": {
+   "zoom": 14.2,
+   "card_hidden": true
+  }
+ }
+]

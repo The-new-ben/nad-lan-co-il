@@ -1,0 +1,302 @@
+{
+ "slug": "ashira-sde-dov",
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "note": "PriceGuide data for /projects/ashira-sde-dov/ (7.10.2026). Every number has its source here and in docs/research/2026-10-07-project-prices-2/README.md; the page shows dates only (no source names, no buyer names). The developer's averages (64.5K in 2025, 72K in Q2 2026) were published without saying whether they include VAT; the page says so. The two published floor deals are both in the 16-floor mid-rise (floors 7 and 15), none in the tower, so there is no floor model: area-style modes. calc.floors 35 = the tower in the design plan (live facts row). The official neighbourhood 'אזור שדה דב' has no medians; the medians are of the adjacent 'תכנית ל' (centroid 163 m from the tower point; Levi Eshkol St. is in its street list).",
+ "sources": {
+  "GOVL": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210022.json (official medians, neighbourhood 'תכנית ל', Q1 2026, file Last-Modified 20.8.2026, read 7.10.2026 08:41 UTC): 3 rooms 5,346,100; 4 rooms 8,425,800; 5 rooms null; all 6,059,900; Tel Aviv: https://data.nadlan.gov.il/api/pages/settlement/buy/5000.json 3 rooms 4,225,800, 4 rooms 5,229,800. The project's own official neighbourhood 'אזור שדה דב' (65210724) has no medians at all.",
+  "ICE0305": "https://www.ice.co.il/realestate/news/article/1111582 (ice 3.5.2026): quoting a recent report: about 1,280 units sold in Sde Dov, average about 83K ILS/m2, 4 rooms about 9.45M (ice says 'in 2025'; the original survey, Merkaz HaNadlan 15.4.2026, says 'so far')",
+  "ICE2105": "https://www.ice.co.il/realestate/news/article/1112481 (ice 21.5.2026): most Sde Dov projects around 70K ILS/m2, some sell at 60K; a new project in Program L: low floors 52-57K, most recent sales 70-72K",
+  "BZ2606": "https://www.bizportal.co.il/realestates/news/article/20033505 (Bizportal 6.6.2026): Sde Dov official prices about 75-85K ILS/m2; financing offers worth an implied 6%-8% discount; Dimri: 2025 deals average about 82.5K ILS/m2, unsold stock valued by the company at about 73.2K ILS/m2 incl. VAT, Q1 2026 9 units of which 4 to the controlling shareholder's family",
+  "GL2609": "https://www.globes.co.il/news/article.aspx?did=1001554092 (Globes 2.9.2026, after the Q2 2026 reports): Dimri Yama: Q1 2026 9 units (4 to the controlling shareholder's family, close to 6M each), Q2 none and one cancellation, 40 sold in all (about 9% of 458); all sold so far about 67K ILS/m2 before VAT and net of the financing component; the company expects about 62K for the unsold stock (headline: a cut of about 7%). Ashira: Q2 2026 3 units, Q1 1, 2025 31; average 64.5K ILS/m2 in 2025, 72K in Q2 2026 (VAT not stated). Rainbow (neighbour in Eshkol): Q2 2026 average 80.5K ILS/m2",
+  "TA": "the site's Tel Aviv-Yafo card: Tax Authority deals 10.2023-10.2025, 2,432 deals, median 52,856 ILS/m2 (nlcp card on every Tel Aviv project page)",
+  "BZ2607": "https://www.bizportal.co.il/realestates/news/article/20037368 (Bizportal 30.7.2026, the IPO prospectus): 125 of 406 units sold in Ashira, 13 of them to the controlling shareholders and people close to them; expected gross profit about 332M",
+  "BZ2408": "https://www.bizportal.co.il/realestates/news/article/832602 (Bizportal 11.8.2024; same deal: Merkaz HaNadlan 12.8.2024 https://www.nadlancenter.co.il/article/10411 and Walla 11.8.2024 https://nadlan.walla.co.il/item/3683816): penthouse of 141 m2 + about 95 m2 balcony, half of floor 15 in the mid-rise facing north-west, 19.5M, 103K ILS/m2 with the balcony counted at half",
+  "GL2403": "https://www.globes.co.il/news/article.aspx?did=1001473597 (Globes 13.3.2024): mini penthouse on floor 7 of the mid-rise, 100 m2, 3.5 rooms, 34 m2 balcony, 8M, 'about 68,400 ILS/m2 including the balcony' (buyer named in the press, never here); presale from 3.9M",
+  "WL2403": "https://nadlan.walla.co.il/item/3647895 (Walla 3.3.2024, the developer's launch notice): 2 rooms from 49 m2 from 3.9M; 3 rooms from 5.4M; 4 rooms from 7.4M; 5 rooms from 9M; a floor-15 penthouse of 160 m2 + 67 m2 at 25M",
+  "ICE2512": "https://www.ice.co.il/realestate/news/article/1094815 (ice 11.12.2025, interview with the developer's marketing VP): 'המחיר למ\"ר באשירה מתחיל סביב 70 אלף שקל, ומגיע ל-90-100 אלף שקל. בסכומים האלה מכרנו כמה דירות'; 'מכרנו בערך 140'"
+ },
+ "title": "כמה עולה דירה באשירה שדה דב",
+ "calc_title": "מחשבון מחיר דירה באשירה שדה דב",
+ "answer": "באשירה שדה דב נמכרו ב-2025 31 דירות במחיר ממוצע של כ-64,500 ₪ למ״ר, וברבעון השני של 2026 הממוצע עלה לכ-72,000 ₪ למ״ר, לפי דוחות היזם. עד 7.2026 נמכרו 125 מתוך 406 הדירות, והפנטהאוז בקומה 15 של המגדלון נמכר ב-8.2024 ב-19.5 מיליון ₪. בשכונה הסמוכה, תכנית ל, חציון העסקאות ברבעון הראשון של 2026 היה 5.35 מיליון ₪ לדירת 3 חדרים ו-8.43 מיליון ₪ לדירת 4 חדרים.",
+ "tiles": [
+  {
+   "big": "כ-72,000 ₪",
+   "small": "למ״ר, ממוצע 3 הדירות שנמכרו ברבעון השני",
+   "date": "4-6.2026",
+   "src": "GL2609"
+  },
+  {
+   "big": "כ-64,500 ₪",
+   "small": "למ״ר, ממוצע 31 הדירות שנמכרו ב-2025",
+   "date": "2025",
+   "src": "GL2609"
+  },
+  {
+   "big": "125 מתוך 406",
+   "small": "דירות נמכרו בפרויקט, לפי דוחות היזם",
+   "date": "7.2026",
+   "src": "BZ2607"
+  }
+ ],
+ "groups": [
+  {
+   "name": "באשירה שדה דב",
+   "rows": [
+    {
+     "what": "3 דירות ברבעון השני",
+     "sub": "ממוצע העסקאות. לא פורסם אם כולל מע״מ",
+     "m2": "כ-72,000",
+     "price": "",
+     "kind": "deal",
+     "date": "4-6.2026",
+     "src": "GL2609"
+    },
+    {
+     "what": "31 דירות ב-2025",
+     "sub": "ממוצע העסקאות. לא פורסם אם כולל מע״מ",
+     "m2": "כ-64,500",
+     "price": "",
+     "kind": "deal",
+     "date": "2025",
+     "src": "GL2609"
+    },
+    {
+     "what": "פנטהאוז, 141 מ״ר ומרפסת 95 מ״ר",
+     "sub": "חצי קומה 15 במגדלון של 16 קומות. המרפסת מחושבת בחצי",
+     "m2": "כ-103,000",
+     "price": "19.5 מיליון",
+     "kind": "deal",
+     "date": "8.2024",
+     "src": "BZ2408"
+    },
+    {
+     "what": "מיני פנטהאוז, 3.5 חדרים, 100 מ״ר",
+     "sub": "קומה 7 במגדלון, מרפסת 34 מ״ר. המחיר למ״ר כולל את המרפסת",
+     "m2": "כ-68,400",
+     "price": "8 מיליון",
+     "kind": "deal",
+     "date": "3.2024",
+     "src": "GL2403"
+    },
+    {
+     "what": "המחירים בפרויקט, לפי היזם",
+     "sub": "מכ-70,000 ₪ למ״ר, ובדירות נבחרות 90,000-100,000 ₪",
+     "m2": "70,000-100,000",
+     "price": "",
+     "kind": "mkt",
+     "date": "12.2025",
+     "src": "ICE2512"
+    },
+    {
+     "what": "דירת 2 חדרים, מ-49 מ״ר",
+     "sub": "בתחילת השיווק. 3 חדרים מ-5.4 מיליון ₪, 4 חדרים מ-7.4 מיליון ₪",
+     "m2": "",
+     "price": "מ-3.9 מיליון",
+     "kind": "mkt",
+     "date": "3.2024",
+     "src": "WL2403"
+    }
+   ]
+  },
+  {
+   "name": "חציון העסקאות בתכנית ל, השכונה הסמוכה, רבעון ראשון 2026",
+   "rows": [
+    {
+     "what": "3 חדרים",
+     "sub": "בכל תל אביב יפו: 4.23 מיליון",
+     "m2": "",
+     "price": "5.35 מיליון",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVL"
+    },
+    {
+     "what": "4 חדרים",
+     "sub": "בכל תל אביב יפו: 5.23 מיליון",
+     "m2": "",
+     "price": "8.43 מיליון",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVL"
+    },
+    {
+     "what": "כל הדירות",
+     "sub": "כל מספרי החדרים",
+     "m2": "",
+     "price": "6.06 מיליון",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVL"
+    }
+   ]
+  },
+  {
+   "name": "ברובע שדה דב ובסביבה",
+   "rows": [
+    {
+     "what": "רוב הפרויקטים ברובע",
+     "sub": "יש פרויקטים שמוכרים גם בכ-60,000 ₪ למ״ר",
+     "m2": "כ-70,000",
+     "price": "",
+     "kind": "est",
+     "date": "5.2026",
+     "src": "ICE2105"
+    },
+    {
+     "what": "המחיר הרשמי בפרויקטים ברובע",
+     "sub": "לפני הטבות מימון",
+     "m2": "75,000-85,000",
+     "price": "",
+     "kind": "mkt",
+     "date": "6.2026",
+     "src": "BZ2606"
+    },
+    {
+     "what": "ממוצע העסקאות ברובע",
+     "sub": "כ-1,280 דירות שנמכרו ברובע",
+     "m2": "כ-83,000",
+     "price": "",
+     "kind": "deal",
+     "date": "2025",
+     "src": "ICE0305"
+    },
+    {
+     "what": "דירת 4 חדרים ברובע, ממוצע",
+     "sub": "",
+     "m2": "",
+     "price": "כ-9.45 מיליון",
+     "kind": "deal",
+     "date": "2025",
+     "src": "ICE0305"
+    },
+    {
+     "what": "הפרויקט השכן במתחם אשכול",
+     "sub": "ממוצע העסקאות ברבעון השני",
+     "m2": "כ-80,500",
+     "price": "",
+     "kind": "deal",
+     "date": "4-6.2026",
+     "src": "GL2609"
+    },
+    {
+     "what": "פרויקט חדש בתכנית ל",
+     "sub": "בקומות הנמוכות: 52,000-57,000 ₪ למ״ר",
+     "m2": "70,000-72,000",
+     "price": "",
+     "kind": "deal",
+     "date": "5.2026",
+     "src": "ICE2105"
+    }
+   ]
+  },
+  {
+   "name": "להשוואה",
+   "rows": [
+    {
+     "what": "תל אביב יפו, כל העיר",
+     "sub": "חציון של 2,432 עסקאות",
+     "m2": "52,856",
+     "price": "",
+     "kind": "deal",
+     "date": "10.2023-10.2025",
+     "src": "TA"
+    }
+   ]
+  }
+ ],
+ "kinds": {
+  "deal": "עסקה",
+  "ask": "מחיר מבוקש",
+  "est": "הערכה",
+  "mkt": "מחיר שיווק",
+  "med": "חציון עסקאות"
+ },
+ "calc": {
+  "modes": [
+   {
+    "id": "project",
+    "label": "באשירה",
+    "lo": 64500,
+    "hi": 72000,
+    "why": "בין ממוצע 31 הדירות שנמכרו ב-2025, כ-64,500 ₪ למ״ר, לבין ממוצע הרבעון השני של 2026, כ-72,000 ₪. לא פורסם אם הממוצעים כוללים מע״מ.",
+    "src": "GL2609"
+   },
+   {
+    "id": "premium",
+    "label": "דירה גבוהה או פנטהאוז",
+    "lo": 90000,
+    "hi": 103000,
+    "why": "לפי היזם, דירות נבחרות נמכרו ב-90,000-100,000 ₪ למ״ר, והפנטהאוז בקומה 15 של המגדלון נמכר ב-2024 בכ-103,000 ₪ למ״ר.",
+    "src": "ICE2512 BZ2408"
+   },
+   {
+    "id": "area",
+    "label": "פרויקט אחר ברובע",
+    "lo": 60000,
+    "hi": 72000,
+    "why": "רוב העסקאות של 2026 בפרויקטים אחרים ברובע שדה דב ובתכנית ל.",
+    "src": "ICE2105 ICE0305"
+   }
+  ],
+  "deals_plot": [],
+  "avg_line": 64500,
+  "ta_median": 52856,
+  "y0": 60000,
+  "y1": 110000,
+  "tax_single": [
+   [
+    1978745,
+    0
+   ],
+   [
+    2347040,
+    0.035
+   ],
+   [
+    6055070,
+    0.05
+   ],
+   [
+    20183565,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ],
+  "tax_more": [
+   [
+    6055070,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ],
+  "tax_src": "the site's /purchase-tax-calculator/ brackets (2026, frozen to 15.1.2028); copied from hamedina.json",
+  "gap": "ממוצעי היזם פורסמו בלי לציין אם הם כוללים מע״מ. ברובע שדה דב, בחלק מהפרויקטים הטבות המימון מגלמות הנחה של 6%-8% מהמחיר הרשום.",
+  "gap_src": "GL2609 BZ2606",
+  "floors": 35
+ },
+ "ui": {
+  "more_t": "לכל המחירון: השכונה, הרובע ולהשוואה",
+  "chart": "המחיר למ״ר באפשרות שבחרתם, מול ממוצע הפרויקט ותל אביב יפו",
+  "js": {
+   "avg": "ממוצע 2025, כ-{n}",
+   "tw": "אשירה, ממוצע 2025",
+   "aria_t": "אומדן של {lo} עד {hi} ₪ למ״ר בקומה {f}, מול ממוצע הפרויקט, כ-{avg} ₪",
+   "aria_a": "{m}: {lo} עד {hi} ₪ למ״ר, מול ממוצע הפרויקט כ-{avg} ₪ ותל אביב יפו {ta} ₪",
+   "wa": "שלום, בדקתי במחירון של אשירה שדה דב: {m}, {a} מ״ר{f}, אומדן {r} מיליון ₪. אשמח לפרטים נוספים (nad-lan.co.il)"
+  }
+ },
+ "src_line": "המחירון מבוסס על דוחות היזם כפי שפורסמו, על עסקאות שפורסמו, על חציון העסקאות הרשמי לפי שכונה ועל מחירים שפורסמו ברובע. מחיר שיווק והערכה מסומנים בנפרד ואינם מחיר סגירה. עודכן 7.10.2026.",
+ "see": [
+  {
+   "text": "מחירי דירות בשדה דב ←",
+   "href": "https://nad-lan.co.il/sde-dov/prices/"
+  }
+ ]
+}

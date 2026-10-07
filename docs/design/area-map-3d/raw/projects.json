@@ -1,0 +1,1317 @@
+{
+ "retrieved": "2026-10-07T08:34:49Z",
+ "catalogue_url": "https://nad-lan.co.il/wp-json/nadlan/v1/project-map",
+ "pages": {
+  "https://nad-lan.co.il/projects/hamedina/": {
+   "retrieved": "2026-10-07T08:34:51Z",
+   "jsonld_geo": [
+    [
+     "32.086758",
+     "34.789776"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "מגדלי כיכר המדינה תל אביב: מחירים, עסקאות, מפה ותלת ממד"
+  },
+  "https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/": {
+   "retrieved": "2026-10-07T08:34:51Z",
+   "jsonld_geo": [
+    [
+     "32.087284",
+     "34.78272"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "H Infinity מתחם סומייל תל אביב | קבוצת חג'ג' | נדלן"
+  },
+  "https://nad-lan.co.il/projects/toha2-tel-aviv/": {
+   "retrieved": "2026-10-07T08:34:52Z",
+   "jsonld_geo": [
+    [
+     "32.073479",
+     "34.795307"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "ToHa2 תל אביב - משרדים להשכרה תל אביב"
+  },
+  "https://nad-lan.co.il/projects/duo-tel-aviv/": {
+   "retrieved": "2026-10-07T08:34:53Z",
+   "jsonld_geo": [
+    [
+     "32.085698",
+     "34.782856"
+    ]
+   ],
+   "stage_latlng": [
+    [
+     "32.085658",
+     "34.783027"
+    ]
+   ],
+   "title": "DUO תל אביב - מגדלי דואו, אבן גבירול | מחירים ודירות | נדלן"
+  },
+  "https://nad-lan.co.il/projects/yoo-tel-aviv/": {
+   "retrieved": "2026-10-07T08:34:54Z",
+   "jsonld_geo": [
+    [
+     "32.090497",
+     "34.7963"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "מגדלי YOO פארק צמרת - מגה יוקרה בעיצוב פיליפ סטארק, תל אביב-יפו - מחירים, דירות ובחירה מהבניין | נדלן"
+  },
+  "https://nad-lan.co.il/projects/meier-on-rothschild/": {
+   "retrieved": "2026-10-07T08:34:54Z",
+   "jsonld_geo": [
+    [
+     "32.063153",
+     "34.773626"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "מגדל מאייר על רוטשילד - מגדל יוקרה אייקוני של קבוצת חג׳ג׳, תל אביב-יפו - מחירים, דירות ובחירה מהבניין | נדלן"
+  },
+  "https://nad-lan.co.il/projects/akirov-towers/": {
+   "retrieved": "2026-10-07T08:34:55Z",
+   "jsonld_geo": [
+    [
+     "32.090711",
+     "34.793055"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "מגדלי אקירוב פארק צמרת - פרויקט יוקרה של אלרוב, תל אביב-יפו - מחירים, דירות ובחירה מהבניין | נדלן"
+  },
+  "https://nad-lan.co.il/projects/park-bavli/": {
+   "retrieved": "2026-10-07T08:34:56Z",
+   "jsonld_geo": [
+    [
+     "32.092292",
+     "34.798255"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "פארק בבלי - פרויקט יוקרה של קבוצת תשובה בתל אביב - מחירים, דירות ובחירה מהבניין | נדלן"
+  },
+  "https://nad-lan.co.il/projects/shikun-binui-sde-dov/": {
+   "retrieved": "2026-10-07T08:34:56Z",
+   "jsonld_geo": [
+    [
+     "32.103371",
+     "34.785624"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "שיכון ובינוי שדה דב - דיור להשכרה (מגרש 109) - נדלן"
+  },
+  "https://nad-lan.co.il/projects/utopia-sde-dov/": {
+   "retrieved": "2026-10-07T08:34:57Z",
+   "jsonld_geo": [],
+   "stage_latlng": [],
+   "title": "UTOPIA שדה דב תל אביב - מחירים, דירות ובחירה מהבניין"
+  },
+  "https://nad-lan.co.il/projects/zohi-sde-dov/": {
+   "retrieved": "2026-10-07T08:34:58Z",
+   "jsonld_geo": [
+    [
+     "32.102851",
+     "34.785483"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "ZOHI זוהי שדה דב - לוינשטין מבנה אלייד, תל אביב יפו - מחירים, דירות ובחירה מהבניין | נדלן"
+  },
+  "https://nad-lan.co.il/projects/dimri-yama-sde-dov/": {
+   "retrieved": "2026-10-07T08:34:58Z",
+   "jsonld_geo": [
+    [
+     "32.104441",
+     "34.784472"
+    ]
+   ],
+   "stage_latlng": [
+    [
+     "32.104333",
+     "34.784114"
+    ]
+   ],
+   "title": "דמרי ימה שדה דב (DIMRI YAMA) | י.ח דמרי | מחירים ודירות | נדלן"
+  },
+  "https://nad-lan.co.il/projects/ashira-sde-dov/": {
+   "retrieved": "2026-10-07T08:34:59Z",
+   "jsonld_geo": [
+    [
+     "32.105643",
+     "34.787673"
+    ]
+   ],
+   "stage_latlng": [
+    [
+     "32.105479",
+     "34.787466"
+    ]
+   ],
+   "title": "פרויקט אשירה שדה דב (ASHIRA) של אביסרור | מחירים ודירות | נדלן"
+  },
+  "https://nad-lan.co.il/projects/rainbow-tel-aviv/": {
+   "retrieved": "2026-10-07T08:35:00Z",
+   "jsonld_geo": [
+    [
+     "32.103168",
+     "34.784441"
+    ]
+   ],
+   "stage_latlng": [
+    [
+     "32.10354",
+     "34.78466"
+    ]
+   ],
+   "title": "ריינבו תל אביב Rainbow - ישראל קנדה, שדה דב | מחירים ודירות | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91/": {
+   "retrieved": "2026-10-07T08:35:01Z",
+   "jsonld_geo": [
+    [
+     "32.084522",
+     "34.783965"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "ארלוזורוב, תל אביב יפו: התחדשות עירונית, 248 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%94%d7%93%d7%92%d7%a0%d7%99%d7%9d-11-15/": {
+   "retrieved": "2026-10-07T08:35:01Z",
+   "jsonld_geo": [
+    [
+     "32.06787",
+     "34.807053"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "הדגנים 11-15, גבעתים: התחדשות עירונית, 71 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%90%d7%a0%d7%a6%d7%95-%d7%a1%d7%99%d7%a8%d7%a0%d7%99-38-42/": {
+   "retrieved": "2026-10-07T08:35:02Z",
+   "jsonld_geo": [
+    [
+     "32.069963",
+     "34.806414"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "אנצו סירני 38-42, גבעתים: התחדשות עירונית, 55 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%a8%d7%92-1506-%d7%90-%d7%9e%d7%aa%d7%97%d7%9d-%d7%94%d7%a8%d7%90%d7%a9%d7%95%d7%a0%d7%99%d7%9d-%d7%94%d7%9e%d7%a2%d7%99%d7%9f-%d7%99%d7%94%d7%95%d7%93%d7%94/": {
+   "retrieved": "2026-10-07T08:35:03Z",
+   "jsonld_geo": [
+    [
+     "32.081971",
+     "34.803335"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "רג/1506/א-מתחם הראשונים-המעין-יהודה, רמת גן: התחדשות עירונית, 120 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%90%d7%91%d7%90-%d7%94%d7%9c%d7%9c-6365/": {
+   "retrieved": "2026-10-07T08:35:04Z",
+   "jsonld_geo": [
+    [
+     "32.089614",
+     "34.809075"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "אבא הלל 63,65, רמת גן: התחדשות עירונית, 133 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%94%d7%aa%d7%97%d7%93%d7%a9%d7%95%d7%aa-%d7%93%d7%a8%d7%9a-%d7%94%d7%a9%d7%9c%d7%95%d7%9d-117-105/": {
+   "retrieved": "2026-10-07T08:35:05Z",
+   "jsonld_geo": [
+    [
+     "32.060602",
+     "34.806883"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "התחדשות דרך השלום 117-105, תל אביב יפו: התחדשות עירונית, 490 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%92%d7%a0%d7%a1%d7%99%d7%9f-%d7%95%d7%99%d7%a6%d7%9e%d7%9f-%d7%a8%d7%9e%d7%91%d7%9d/": {
+   "retrieved": "2026-10-07T08:35:05Z",
+   "jsonld_geo": [
+    [
+     "32.070885",
+     "34.808171"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "גנסין-ויצמן-רמב\"ם, גבעתים: התחדשות עירונית, 150 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%96%d7%91%d7%95%d7%98%d7%99%d7%a0%d7%a1%d7%a7%d7%99-39-41-%d7%9e%d7%a7%d7%93%d7%95%d7%a0%d7%9c%d7%93/": {
+   "retrieved": "2026-10-07T08:35:06Z",
+   "jsonld_geo": [
+    [
+     "32.084281",
+     "34.807888"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "מתחם זבוטינסקי 39-41 , מקדונלד, רמת גן: התחדשות עירונית, 110 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%a2%d7%9c%d7%99%d7%99%d7%aa-%d7%94%d7%a0%d7%95%d7%a2%d7%a8-%d7%a6%d7%a4%d7%95%d7%9f/": {
+   "retrieved": "2026-10-07T08:35:07Z",
+   "jsonld_geo": [
+    [
+     "32.077849",
+     "34.802716"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "עליית הנוער צפון, גבעתים: התחדשות עירונית, 370 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%94%d7%a8%d7%99%d7%9e%d7%95%d7%9f-%d7%a4%d7%a0%d7%99-%d7%94%d7%92%d7%91%d7%a2%d7%94/": {
+   "retrieved": "2026-10-07T08:35:07Z",
+   "jsonld_geo": [
+    [
+     "32.088086",
+     "34.809702"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "הרימון - פני הגבעה, רמת גן: התחדשות עירונית, 78 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%a9%d7%9e%d7%a2%d7%95%d7%a0%d7%99-29-27-%d7%aa%d7%9c-%d7%90%d7%91%d7%99%d7%91/": {
+   "retrieved": "2026-10-07T08:35:08Z",
+   "jsonld_geo": [
+    [
+     "32.108204",
+     "34.792742"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "שמעוני 29-27 תל אביב: התחדשות עירונית, 233 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%a8%d7%91%d7%99%d7%9f/": {
+   "retrieved": "2026-10-07T08:35:09Z",
+   "jsonld_geo": [
+    [
+     "32.066804",
+     "34.807222"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "מתחם רבין, גבעתים: התחדשות עירונית, 464 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%a2%d7%9c%d7%99%d7%99%d7%aa-%d7%94%d7%a0%d7%95%d7%a2%d7%a8-%d7%94%d7%a4%d7%95%d7%a2%d7%9c-%d7%94%d7%a6%d7%a2%d7%99%d7%a8/": {
+   "retrieved": "2026-10-07T08:35:09Z",
+   "jsonld_geo": [
+    [
+     "32.076354",
+     "34.802957"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "עליית הנוער- הפועל הצעיר, גבעתים: התחדשות עירונית, 260 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91-%d7%a9%d7%9e%d7%97%d7%94-%d7%94%d7%9e%d7%aa%d7%9e%d7%99%d7%93/": {
+   "retrieved": "2026-10-07T08:35:10Z",
+   "jsonld_geo": [
+    [
+     "32.080905",
+     "34.805754"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "מתחם ארלוזורוב שמחה המתמיד, רמת גן: התחדשות עירונית, 1,103 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%99%d7%93%d7%a2-%d7%a2%d7%9d/": {
+   "retrieved": "2026-10-07T08:35:11Z",
+   "jsonld_geo": [
+    [
+     "32.08952",
+     "34.802119"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "ידע עם, רמת גן: התחדשות עירונית, 132 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%aa%d7%90-%d7%9e%d7%a7-5069-%d7%93%d7%a8%d7%9a-%d7%94%d7%a9%d7%9c%d7%95%d7%9d-77-85/": {
+   "retrieved": "2026-10-07T08:35:11Z",
+   "jsonld_geo": [
+    [
+     "32.064668",
+     "34.803625"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "תא/ מק/ 5069 - דרך השלום 77-85, תל אביב יפו: התחדשות עירונית, 480 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%93%d7%a8%d7%9a-%d7%94%d7%a9%d7%9c%d7%95%d7%9d-71-75/": {
+   "retrieved": "2026-10-07T08:35:12Z",
+   "jsonld_geo": [
+    [
+     "32.065611",
+     "34.803407"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "דרך השלום 71-75, תל אביב יפו: התחדשות עירונית, 250 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%92%d7%91-599-%d7%9e%d7%aa%d7%97%d7%9d-%d7%a6%d7%99%d7%a4%d7%95%d7%a8%d7%9f/": {
+   "retrieved": "2026-10-07T08:35:13Z",
+   "jsonld_geo": [
+    [
+     "32.074192",
+     "34.801577"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "גב/599 - מתחם ציפורן, גבעתים: התחדשות עירונית, 222 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%92%d7%91-661-%d7%92%d7%95%d7%9c%d7%95%d7%9e%d7%91-2-28/": {
+   "retrieved": "2026-10-07T08:35:13Z",
+   "jsonld_geo": [
+    [
+     "32.068899",
+     "34.809717"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "גב/661 - גולומב 2-28, גבעתים: התחדשות עירונית, 214 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%94%d7%9e%d7%90%d7%91%d7%a7-4-10/": {
+   "retrieved": "2026-10-07T08:35:14Z",
+   "jsonld_geo": [
+    [
+     "32.065812",
+     "34.808401"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "המאבק 4-10, גבעתים: התחדשות עירונית, 96 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%93%d7%a4%d7%a0%d7%94/": {
+   "retrieved": "2026-10-07T08:35:15Z",
+   "jsonld_geo": [
+    [
+     "32.080866",
+     "34.793167"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "דפנה, תל אביב יפו: התחדשות עירונית, 1,434 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%a2%d7%9e%d7%99%d7%a0%d7%93%d7%91/": {
+   "retrieved": "2026-10-07T08:35:15Z",
+   "jsonld_geo": [
+    [
+     "32.064452",
+     "34.793898"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "עמינדב, תל אביב יפו: התחדשות עירונית, 136 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%93%d7%a8%d7%9a-%d7%94%d7%a9%d7%9c%d7%95%d7%9d-8789/": {
+   "retrieved": "2026-10-07T08:35:16Z",
+   "jsonld_geo": [
+    [
+     "32.063559",
+     "34.804078"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "דרך השלום 87,89, תל אביב יפו: התחדשות עירונית, 172 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%94%d7%93%d7%a7%d7%9c%d7%99%d7%9d-%d7%90%d7%91%d7%90-%d7%94%d7%9c%d7%9c/": {
+   "retrieved": "2026-10-07T08:35:17Z",
+   "jsonld_geo": [
+    [
+     "32.088814",
+     "34.808901"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "הדקלים אבא הלל, רמת גן: התחדשות עירונית, 100 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%94%d7%98%d7%99%d7%99%d7%a1%d7%99%d7%9d-6810/": {
+   "retrieved": "2026-10-07T08:35:18Z",
+   "jsonld_geo": [
+    [
+     "32.060916",
+     "34.803959"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "הטייסים 6,8,10, תל אביב יפו: התחדשות עירונית, 260 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%97%d7%a9%d7%9e%d7%95%d7%a0%d7%90%d7%99%d7%9d-%d7%91%d7%a2%d7%96/": {
+   "retrieved": "2026-10-07T08:35:18Z",
+   "jsonld_geo": [
+    [
+     "32.079999",
+     "34.808809"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "חשמונאים בעז, רמת גן: התחדשות עירונית, 107 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%99%d7%9c%d7%93%d7%99-%d7%98%d7%94%d7%a8%d7%9f/": {
+   "retrieved": "2026-10-07T08:35:19Z",
+   "jsonld_geo": [
+    [
+     "32.065459",
+     "34.806163"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "ילדי טהרן, גבעתים: התחדשות עירונית, 103 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91-%d7%94%d7%9e%d7%aa%d7%9e%d7%99%d7%93/": {
+   "retrieved": "2026-10-07T08:35:20Z",
+   "jsonld_geo": [
+    [
+     "32.083081",
+     "34.806102"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "מתחם ארלוזורוב המתמיד, רמת גן: התחדשות עירונית, 384 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%91%d7%99%d7%90%d7%9c%d7%99%d7%a7-%d7%91%d7%a0%d7%99%d7%9e%d7%99%d7%9f/": {
+   "retrieved": "2026-10-07T08:35:20Z",
+   "jsonld_geo": [
+    [
+     "32.086749",
+     "34.80678"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "ביאליק – בנימין, רמת גן: התחדשות עירונית, 170 יח״ד | נדלן"
+  },
+  "https://nad-lan.co.il/projects/%d7%a2%d7%a8%d7%91%d7%99-%d7%a0%d7%97%d7%9c/": {
+   "retrieved": "2026-10-07T08:35:21Z",
+   "jsonld_geo": [
+    [
+     "32.079249",
+     "34.800469"
+    ]
+   ],
+   "stage_latlng": [],
+   "title": "ערבי נחל, גבעתים: התחדשות עירונית, 530 יח״ד | נדלן"
+  }
+ },
+ "catalogue": [
+  {
+   "id": 8113,
+   "lat": 32.086758,
+   "lng": 34.789776,
+   "title": "מגדלי כיכר המדינה, תל אביב",
+   "url": "https://nad-lan.co.il/projects/hamedina/",
+   "city": "תל אביב יפו",
+   "conf": "",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 453,
+   "psqm": 65000,
+   "status": "construction"
+  },
+  {
+   "id": 6548,
+   "lat": 32.087284,
+   "lng": 34.78272,
+   "title": "H Infinity - מגדל אינפיניטי של קבוצת חג'ג' במתחם סומייל, תל אביב",
+   "url": "https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/",
+   "city": "תל אביב יפו",
+   "conf": "address-approx",
+   "featured": false,
+   "poster": "https://nad-lan.co.il/wp-content/uploads/2026/08/h-infinity-poster.svg",
+   "img": "https://nad-lan.co.il/wp-content/uploads/2026/08/h-infinity-poster.svg",
+   "units": 278,
+   "psqm": 0,
+   "status": "construction"
+  },
+  {
+   "id": 6213,
+   "lat": 32.073479,
+   "lng": 34.795307,
+   "title": "ToHa2 תל אביב - משרדים להשכרה מגדל תוהא תל אביב",
+   "url": "https://nad-lan.co.il/projects/toha2-tel-aviv/",
+   "city": "תל אביב יפו",
+   "conf": "compound-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 0,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 4893,
+   "lat": 32.085698,
+   "lng": 34.782856,
+   "title": "מגדלי DUO תל אביב - פרוייקט דואו אבן גבירול תל אביב",
+   "url": "https://nad-lan.co.il/projects/duo-tel-aviv/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": true,
+   "poster": "https://nad-lan.co.il/wp-content/uploads/2026/07/nadlan-poster-duo-model.jpg",
+   "img": "https://nad-lan.co.il/wp-content/uploads/2026/07/duo-tel-aviv-plate-v2.webp",
+   "units": 668,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 4890,
+   "lat": 32.090497,
+   "lng": 34.7963,
+   "title": "מגדלי YOO פארק צמרת - מגה יוקרה בעיצוב פיליפ סטארק",
+   "url": "https://nad-lan.co.il/projects/yoo-tel-aviv/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "https://nad-lan.co.il/wp-content/uploads/2026/07/yoo-tel-aviv-plate.webp",
+   "img": "",
+   "units": 300,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 4889,
+   "lat": 32.063153,
+   "lng": 34.773626,
+   "title": "מגדל מאייר על רוטשילד - מגדל יוקרה אייקוני של קבוצת חג׳ג׳",
+   "url": "https://nad-lan.co.il/projects/meier-on-rothschild/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "https://nad-lan.co.il/wp-content/uploads/2026/07/meier-on-rothschild-plate.webp",
+   "img": "",
+   "units": 0,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 4882,
+   "lat": 32.090711,
+   "lng": 34.793055,
+   "title": "מגדלי אקירוב פארק צמרת - פרויקט יוקרה של אלרוב",
+   "url": "https://nad-lan.co.il/projects/akirov-towers/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "https://nad-lan.co.il/wp-content/uploads/2026/07/akirov-park-tzameret-plate.webp",
+   "img": "",
+   "units": 350,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 4879,
+   "lat": 32.092292,
+   "lng": 34.798255,
+   "title": "פארק בבלי - פרויקט יוקרה של קבוצת תשובה בתל אביב",
+   "url": "https://nad-lan.co.il/projects/park-bavli/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "https://nad-lan.co.il/wp-content/uploads/2026/07/park-bavli-tel-aviv-plate.webp",
+   "img": "",
+   "units": 800,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 4750,
+   "lat": 32.103371,
+   "lng": 34.785624,
+   "title": "שיכון ובינוי שדה דב - דיור להשכרה (מגרש 109)",
+   "url": "https://nad-lan.co.il/projects/shikun-binui-sde-dov/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "https://nad-lan.co.il/wp-content/uploads/2026/07/shikun-binui-sde-dov-plate.webp",
+   "img": "",
+   "units": 324,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 4749,
+   "lat": 32.106063,
+   "lng": 34.784732,
+   "title": "UTOPIA שדה דב - קבוצת נחמיאס",
+   "url": "https://nad-lan.co.il/projects/utopia-sde-dov/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-exterior-v1.webp",
+   "img": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/showroom-engine/projects/utopia-sde-dov/utopia-concept-exterior-v1.webp",
+   "units": 337,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 4747,
+   "lat": 32.102851,
+   "lng": 34.785483,
+   "title": "ZOHI זוהי שדה דב - לוינשטין מבנה אלייד",
+   "url": "https://nad-lan.co.il/projects/zohi-sde-dov/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "https://nad-lan.co.il/wp-content/uploads/2026/07/zohi-tel-aviv-plate.webp",
+   "img": "",
+   "units": 230,
+   "psqm": 90000,
+   "status": "marketing"
+  },
+  {
+   "id": 4745,
+   "lat": 32.104441,
+   "lng": 34.784472,
+   "title": "DIMRI YAMA שדה דב - י.ח דמרי",
+   "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": true,
+   "poster": "https://nad-lan.co.il/wp-content/uploads/2026/07/nadlan-poster-dimri-model.jpg",
+   "img": "https://nad-lan.co.il/wp-content/uploads/2026/07/dimri-yama-sde-dov-plate-v3.webp",
+   "units": 458,
+   "psqm": 75000,
+   "status": "marketing"
+  },
+  {
+   "id": 4744,
+   "lat": 32.105643,
+   "lng": 34.787673,
+   "title": "ASHIRA - פרויקט אשירה שדה דב תל אביב מחיר",
+   "url": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": true,
+   "poster": "https://nad-lan.co.il/wp-content/uploads/2026/07/nadlan-poster-ashira-model.jpg",
+   "img": "https://nad-lan.co.il/wp-content/uploads/2026/07/ashira-sde-dov-plate-v3.webp",
+   "units": 406,
+   "psqm": 75000,
+   "status": "marketing"
+  },
+  {
+   "id": 4464,
+   "lat": 32.103168,
+   "lng": 34.784441,
+   "title": "Rainbow Tel Aviv - ריינבו תל אביב",
+   "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": true,
+   "poster": "https://nad-lan.co.il/wp-content/uploads/2026/07/nadlan-poster-rainbow-model.jpg",
+   "img": "https://nad-lan.co.il/wp-content/uploads/2026/07/rainbow-tel-aviv-plate-v3.webp",
+   "units": 480,
+   "psqm": 81782,
+   "status": "construction"
+  },
+  {
+   "id": 3554,
+   "lat": 32.084522,
+   "lng": 34.783965,
+   "title": "ארלוזורוב",
+   "url": "https://nad-lan.co.il/projects/%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91/",
+   "city": "תל אביב יפו",
+   "conf": "compound-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 248,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 3552,
+   "lat": 32.0853,
+   "lng": 34.781806,
+   "title": "הדר יוסף",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%93%d7%a8-%d7%99%d7%95%d7%a1%d7%a3/",
+   "city": "תל אביב יפו",
+   "conf": "city",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 1544,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 3413,
+   "lat": 32.06787,
+   "lng": 34.807053,
+   "title": "הדגנים 11-15",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%93%d7%92%d7%a0%d7%99%d7%9d-11-15/",
+   "city": "גבעתים",
+   "conf": "compound-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 71,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 3401,
+   "lat": 32.069963,
+   "lng": 34.806414,
+   "title": "אנצו סירני 38-42",
+   "url": "https://nad-lan.co.il/projects/%d7%90%d7%a0%d7%a6%d7%95-%d7%a1%d7%99%d7%a8%d7%a0%d7%99-38-42/",
+   "city": "גבעתים",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 55,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 3278,
+   "lat": 32.081971,
+   "lng": 34.803335,
+   "title": "רג/1506/א-מתחם הראשונים-המעין-יהודה",
+   "url": "https://nad-lan.co.il/projects/%d7%a8%d7%92-1506-%d7%90-%d7%9e%d7%aa%d7%97%d7%9d-%d7%94%d7%a8%d7%90%d7%a9%d7%95%d7%a0%d7%99%d7%9d-%d7%94%d7%9e%d7%a2%d7%99%d7%9f-%d7%99%d7%94%d7%95%d7%93%d7%94/",
+   "city": "רמת גן",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 120,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 3270,
+   "lat": 32.089614,
+   "lng": 34.809075,
+   "title": "אבא הלל 63,65",
+   "url": "https://nad-lan.co.il/projects/%d7%90%d7%91%d7%90-%d7%94%d7%9c%d7%9c-6365/",
+   "city": "רמת גן",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 133,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 3268,
+   "lat": 32.060602,
+   "lng": 34.806883,
+   "title": "התחדשות דרך השלום 117-105",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%aa%d7%97%d7%93%d7%a9%d7%95%d7%aa-%d7%93%d7%a8%d7%9a-%d7%94%d7%a9%d7%9c%d7%95%d7%9d-117-105/",
+   "city": "תל אביב יפו",
+   "conf": "compound-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 490,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 3212,
+   "lat": 32.070885,
+   "lng": 34.808171,
+   "title": "גנסין-ויצמן-רמב\"ם",
+   "url": "https://nad-lan.co.il/projects/%d7%92%d7%a0%d7%a1%d7%99%d7%9f-%d7%95%d7%99%d7%a6%d7%9e%d7%9f-%d7%a8%d7%9e%d7%91%d7%9d/",
+   "city": "גבעתים",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 150,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 3137,
+   "lat": 32.084281,
+   "lng": 34.807888,
+   "title": "מתחם זבוטינסקי 39-41 , מקדונלד",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%96%d7%91%d7%95%d7%98%d7%99%d7%a0%d7%a1%d7%a7%d7%99-39-41-%d7%9e%d7%a7%d7%93%d7%95%d7%a0%d7%9c%d7%93/",
+   "city": "רמת גן",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 110,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 3054,
+   "lat": 32.077849,
+   "lng": 34.802716,
+   "title": "עליית הנוער צפון",
+   "url": "https://nad-lan.co.il/projects/%d7%a2%d7%9c%d7%99%d7%99%d7%aa-%d7%94%d7%a0%d7%95%d7%a2%d7%a8-%d7%a6%d7%a4%d7%95%d7%9f/",
+   "city": "גבעתים",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 370,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 3032,
+   "lat": 32.088086,
+   "lng": 34.809702,
+   "title": "הרימון - פני הגבעה",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%a8%d7%99%d7%9e%d7%95%d7%9f-%d7%a4%d7%a0%d7%99-%d7%94%d7%92%d7%91%d7%a2%d7%94/",
+   "city": "רמת גן",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 78,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 3030,
+   "lat": 32.108204,
+   "lng": 34.792742,
+   "title": "שמעוני 29-27 תל אביב",
+   "url": "https://nad-lan.co.il/projects/%d7%a9%d7%9e%d7%a2%d7%95%d7%a0%d7%99-29-27-%d7%aa%d7%9c-%d7%90%d7%91%d7%99%d7%91/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 233,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 2580,
+   "lat": 32.066804,
+   "lng": 34.807222,
+   "title": "מתחם רבין",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%a8%d7%91%d7%99%d7%9f/",
+   "city": "גבעתים",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 464,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 2567,
+   "lat": 32.076354,
+   "lng": 34.802957,
+   "title": "עליית הנוער- הפועל הצעיר",
+   "url": "https://nad-lan.co.il/projects/%d7%a2%d7%9c%d7%99%d7%99%d7%aa-%d7%94%d7%a0%d7%95%d7%a2%d7%a8-%d7%94%d7%a4%d7%95%d7%a2%d7%9c-%d7%94%d7%a6%d7%a2%d7%99%d7%a8/",
+   "city": "גבעתים",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 260,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 2563,
+   "lat": 32.080905,
+   "lng": 34.805754,
+   "title": "מתחם ארלוזורוב שמחה המתמיד",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91-%d7%a9%d7%9e%d7%97%d7%94-%d7%94%d7%9e%d7%aa%d7%9e%d7%99%d7%93/",
+   "city": "רמת גן",
+   "conf": "compound-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 1103,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 2454,
+   "lat": 32.08952,
+   "lng": 34.802119,
+   "title": "ידע עם",
+   "url": "https://nad-lan.co.il/projects/%d7%99%d7%93%d7%a2-%d7%a2%d7%9d/",
+   "city": "רמת גן",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 132,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 2441,
+   "lat": 32.064668,
+   "lng": 34.803625,
+   "title": "תא/ מק/ 5069 - דרך השלום 77-85",
+   "url": "https://nad-lan.co.il/projects/%d7%aa%d7%90-%d7%9e%d7%a7-5069-%d7%93%d7%a8%d7%9a-%d7%94%d7%a9%d7%9c%d7%95%d7%9d-77-85/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 480,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1946,
+   "lat": 32.065611,
+   "lng": 34.803407,
+   "title": "דרך השלום 71-75",
+   "url": "https://nad-lan.co.il/projects/%d7%93%d7%a8%d7%9a-%d7%94%d7%a9%d7%9c%d7%95%d7%9d-71-75/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 250,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1929,
+   "lat": 32.074192,
+   "lng": 34.801577,
+   "title": "גב/599 - מתחם ציפורן",
+   "url": "https://nad-lan.co.il/projects/%d7%92%d7%91-599-%d7%9e%d7%aa%d7%97%d7%9d-%d7%a6%d7%99%d7%a4%d7%95%d7%a8%d7%9f/",
+   "city": "גבעתים",
+   "conf": "compound-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 222,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1928,
+   "lat": 32.068899,
+   "lng": 34.809717,
+   "title": "גב/661 - גולומב 2-28",
+   "url": "https://nad-lan.co.il/projects/%d7%92%d7%91-661-%d7%92%d7%95%d7%9c%d7%95%d7%9e%d7%91-2-28/",
+   "city": "גבעתים",
+   "conf": "compound-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 214,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1923,
+   "lat": 32.065812,
+   "lng": 34.808401,
+   "title": "המאבק 4-10",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%9e%d7%90%d7%91%d7%a7-4-10/",
+   "city": "גבעתים",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 96,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1691,
+   "lat": 32.0853,
+   "lng": 34.781806,
+   "title": "עמק ברכה",
+   "url": "https://nad-lan.co.il/projects/%d7%a2%d7%9e%d7%a7-%d7%91%d7%a8%d7%9b%d7%94/",
+   "city": "תל אביב יפו",
+   "conf": "city",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 112,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1675,
+   "lat": 32.080866,
+   "lng": 34.793167,
+   "title": "דפנה",
+   "url": "https://nad-lan.co.il/projects/%d7%93%d7%a4%d7%a0%d7%94/",
+   "city": "תל אביב יפו",
+   "conf": "compound-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 1434,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1628,
+   "lat": 32.0853,
+   "lng": 34.781806,
+   "title": "החרש והאומן",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%97%d7%a8%d7%a9-%d7%95%d7%94%d7%90%d7%95%d7%9e%d7%9f/",
+   "city": "תל אביב יפו",
+   "conf": "city",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 142,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1625,
+   "lat": 32.0853,
+   "lng": 34.781806,
+   "title": "נווה שרת - בית אל",
+   "url": "https://nad-lan.co.il/projects/%d7%a0%d7%95%d7%95%d7%94-%d7%a9%d7%a8%d7%aa-%d7%91%d7%99%d7%aa-%d7%90%d7%9c/",
+   "city": "תל אביב יפו",
+   "conf": "city",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 1047,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1595,
+   "lat": 32.0853,
+   "lng": 34.781806,
+   "title": "חסן עראפה",
+   "url": "https://nad-lan.co.il/projects/%d7%97%d7%a1%d7%9f-%d7%a2%d7%a8%d7%90%d7%a4%d7%94/",
+   "city": "תל אביב יפו",
+   "conf": "city",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 792,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1564,
+   "lat": 32.0853,
+   "lng": 34.781806,
+   "title": "בבלי",
+   "url": "https://nad-lan.co.il/projects/%d7%91%d7%91%d7%9c%d7%99/",
+   "city": "תל אביב יפו",
+   "conf": "city",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 299,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1505,
+   "lat": 32.064452,
+   "lng": 34.793898,
+   "title": "עמינדב",
+   "url": "https://nad-lan.co.il/projects/%d7%a2%d7%9e%d7%99%d7%a0%d7%93%d7%91/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 136,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1439,
+   "lat": 32.063559,
+   "lng": 34.804078,
+   "title": "דרך השלום 87,89",
+   "url": "https://nad-lan.co.il/projects/%d7%93%d7%a8%d7%9a-%d7%94%d7%a9%d7%9c%d7%95%d7%9d-8789/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 172,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1302,
+   "lat": 32.0853,
+   "lng": 34.781806,
+   "title": "קהילת ורשה 73,77,79",
+   "url": "https://nad-lan.co.il/projects/%d7%a7%d7%94%d7%99%d7%9c%d7%aa-%d7%95%d7%a8%d7%a9%d7%94-737779/",
+   "city": "תל אביב יפו",
+   "conf": "city",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 72,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1278,
+   "lat": 32.088814,
+   "lng": 34.808901,
+   "title": "הדקלים אבא הלל",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%93%d7%a7%d7%9c%d7%99%d7%9d-%d7%90%d7%91%d7%90-%d7%94%d7%9c%d7%9c/",
+   "city": "רמת גן",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 100,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1229,
+   "lat": 32.060916,
+   "lng": 34.803959,
+   "title": "הטייסים 6,8,10",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%98%d7%99%d7%99%d7%a1%d7%99%d7%9d-6810/",
+   "city": "תל אביב יפו",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 260,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1198,
+   "lat": 32.0853,
+   "lng": 34.781806,
+   "title": "כפר שלם",
+   "url": "https://nad-lan.co.il/projects/%d7%9b%d7%a4%d7%a8-%d7%a9%d7%9c%d7%9d/",
+   "city": "תל אביב יפו",
+   "conf": "city",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 294,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1188,
+   "lat": 32.079999,
+   "lng": 34.808809,
+   "title": "חשמונאים בעז",
+   "url": "https://nad-lan.co.il/projects/%d7%97%d7%a9%d7%9e%d7%95%d7%a0%d7%90%d7%99%d7%9d-%d7%91%d7%a2%d7%96/",
+   "city": "רמת גן",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 107,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1181,
+   "lat": 32.0853,
+   "lng": 34.781806,
+   "title": "הרכבת",
+   "url": "https://nad-lan.co.il/projects/%d7%94%d7%a8%d7%9b%d7%91%d7%aa/",
+   "city": "תל אביב יפו",
+   "conf": "city",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 137,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1175,
+   "lat": 32.065459,
+   "lng": 34.806163,
+   "title": "ילדי טהרן",
+   "url": "https://nad-lan.co.il/projects/%d7%99%d7%9c%d7%93%d7%99-%d7%98%d7%94%d7%a8%d7%9f/",
+   "city": "גבעתים",
+   "conf": "compound-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 103,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1094,
+   "lat": 32.0853,
+   "lng": 34.781806,
+   "title": "קהילת ורשה (2)",
+   "url": "https://nad-lan.co.il/projects/%d7%a7%d7%94%d7%99%d7%9c%d7%aa-%d7%95%d7%a8%d7%a9%d7%94-2/",
+   "city": "תל אביב יפו",
+   "conf": "city",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 240,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1086,
+   "lat": 32.083081,
+   "lng": 34.806102,
+   "title": "מתחם ארלוזורוב המתמיד",
+   "url": "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91-%d7%94%d7%9e%d7%aa%d7%9e%d7%99%d7%93/",
+   "city": "רמת גן",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 384,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1083,
+   "lat": 32.086749,
+   "lng": 34.80678,
+   "title": "ביאליק – בנימין",
+   "url": "https://nad-lan.co.il/projects/%d7%91%d7%99%d7%90%d7%9c%d7%99%d7%a7-%d7%91%d7%a0%d7%99%d7%9e%d7%99%d7%9f/",
+   "city": "רמת גן",
+   "conf": "parcel-centroid-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 170,
+   "psqm": 0,
+   "status": ""
+  },
+  {
+   "id": 1052,
+   "lat": 32.079249,
+   "lng": 34.800469,
+   "title": "ערבי נחל",
+   "url": "https://nad-lan.co.il/projects/%d7%a2%d7%a8%d7%91%d7%99-%d7%a0%d7%97%d7%9c/",
+   "city": "גבעתים",
+   "conf": "compound-verified",
+   "featured": false,
+   "poster": "",
+   "img": "",
+   "units": 530,
+   "psqm": 0,
+   "status": ""
+  }
+ ]
+}

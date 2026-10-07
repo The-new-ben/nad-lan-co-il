@@ -1,0 +1,343 @@
+{
+ "slug": "jerusalem-apartment-prices",
+ "mode": "rooms",
+ "page": "https://nad-lan.co.il/jerusalem-apartment-prices/",
+ "city_he": "ירושלים",
+ "settlement_code": 3000,
+ "settlement_name_official": "ירושלים",
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "data_quarter": "1-3.2026",
+ "file_date": "2026-08-20",
+ "file_date_he": "20.8.2026",
+ "title": "כמה עולה דירה בירושלים ב-2026",
+ "answer": "ברבעון הראשון של 2026, חציון מחיר העסקה בירושלים היה 2,376,700 ₪ לדירת 3 חדרים, 2,882,400 ₪ לדירת 4 חדרים ו-3,934,400 ₪ לדירת 5 חדרים. לעומת הרבעון הראשון של 2025, החציון עלה ב-3% לדירת 3 חדרים, ירד ב-9.8% לדירת 4 חדרים וירד ב-7% לדירת 5 חדרים. בכל הארץ, חציון מחיר העסקה לדירת 4 חדרים ברבעון הראשון של 2026 היה 2,072,000 ₪.",
+ "rooms": {
+  "3": {
+   "latest": 2376700,
+   "quarter": "1-3.2026",
+   "year_ago": 2308400,
+   "change_pct": 3.0,
+   "quarters": [
+    [
+     "4-6.2024",
+     2371800
+    ],
+    [
+     "7-9.2024",
+     2156400
+    ],
+    [
+     "10-12.2024",
+     2284900
+    ],
+    [
+     "1-3.2025",
+     2308400
+    ],
+    [
+     "4-6.2025",
+     2496200
+    ],
+    [
+     "7-9.2025",
+     2561100
+    ],
+    [
+     "10-12.2025",
+     2598000
+    ],
+    [
+     "1-3.2026",
+     2376700
+    ]
+   ]
+  },
+  "4": {
+   "latest": 2882400,
+   "quarter": "1-3.2026",
+   "year_ago": 3195500,
+   "change_pct": -9.8,
+   "quarters": [
+    [
+     "4-6.2024",
+     3206700
+    ],
+    [
+     "7-9.2024",
+     2731500
+    ],
+    [
+     "10-12.2024",
+     3017500
+    ],
+    [
+     "1-3.2025",
+     3195500
+    ],
+    [
+     "4-6.2025",
+     3267100
+    ],
+    [
+     "7-9.2025",
+     3169800
+    ],
+    [
+     "10-12.2025",
+     3256800
+    ],
+    [
+     "1-3.2026",
+     2882400
+    ]
+   ]
+  },
+  "5": {
+   "latest": 3934400,
+   "quarter": "1-3.2026",
+   "year_ago": 4229500,
+   "change_pct": -7.0,
+   "quarters": [
+    [
+     "4-6.2024",
+     4232900
+    ],
+    [
+     "7-9.2024",
+     3909700
+    ],
+    [
+     "10-12.2024",
+     4079400
+    ],
+    [
+     "1-3.2025",
+     4229500
+    ],
+    [
+     "4-6.2025",
+     4159400
+    ],
+    [
+     "7-9.2025",
+     4228600
+    ],
+    [
+     "10-12.2025",
+     4341600
+    ],
+    [
+     "1-3.2026",
+     3934400
+    ]
+   ]
+  },
+  "all": {
+   "latest": 2717100,
+   "quarter": "1-3.2026",
+   "year_ago": 2752000,
+   "change_pct": -1.3,
+   "quarters": [
+    [
+     "4-6.2024",
+     null
+    ],
+    [
+     "7-9.2024",
+     null
+    ],
+    [
+     "10-12.2024",
+     2633900
+    ],
+    [
+     "1-3.2025",
+     2752000
+    ],
+    [
+     "4-6.2025",
+     2800000
+    ],
+    [
+     "7-9.2025",
+     2825500
+    ],
+    [
+     "10-12.2025",
+     2896900
+    ],
+    [
+     "1-3.2026",
+     2717100
+    ]
+   ]
+  }
+ },
+ "israel": {
+  "quarter": "1-3.2026",
+  "3": 1647500,
+  "4": 2072000,
+  "5": 2920600,
+  "all": 2058800
+ },
+ "israel_latest": {
+  "quarter": "4-6.2026",
+  "3": 1677400,
+  "4": 2028800,
+  "5": 2822700,
+  "all": 2130500
+ },
+ "neighbourhoods": [
+  {
+   "name": "קרית היובל",
+   "id": 65209780,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 2323100,
+    "4": 3514800,
+    "5": 4279700
+   },
+   "quarters_with_data": 25
+  },
+  {
+   "name": "פסגת זאב",
+   "id": 65209641,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 1754200,
+    "4": 1666200,
+    "5": 2826000
+   },
+   "quarters_with_data": 22
+  },
+  {
+   "name": "גילה",
+   "id": 65209832,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 1929200,
+    "4": 2470800,
+    "5": 3336600
+   },
+   "quarters_with_data": 20
+  },
+  {
+   "name": "קטמונים",
+   "id": 65209774,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 2719100,
+    "4": 4109700,
+    "5": 5662200
+   },
+   "quarters_with_data": 20
+  },
+  {
+   "name": "בית הכרם",
+   "id": 65209775,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 4109100,
+    "5": 5088200
+   },
+   "quarters_with_data": 17
+  },
+  {
+   "name": "נווה יעקב",
+   "id": 65209694,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 2083400,
+    "4": 2637800,
+    "5": 3182300
+   },
+   "quarters_with_data": 16
+  },
+  {
+   "name": "רמות",
+   "id": 65209745,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 2553100,
+    "4": 3368600,
+    "5": 4144300
+   },
+   "quarters_with_data": 16
+  },
+  {
+   "name": "חומת שמואל-הר חומה",
+   "id": 65210031,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 2201700,
+    "4": 2568100,
+    "5": 3350000
+   },
+   "quarters_with_data": 15
+  }
+ ],
+ "neighbourhoods_note": "Official neighbourhood medians for the city's data quarter (null = not published for that quarter). The official files give no deal counts, so neighbourhoods are ranked by quarters_with_data: how many of the 32 values (3/4/5/all rooms x the last 8 quarters) carry an official median. Only neighbourhoods with at least one 3/4/5-room median in the data quarter are kept. Names exactly as in the official files.",
+ "notes": "rooms.<k>.latest is the newest published median for that room count and rooms.<k>.quarter is its quarter (it can be older than data_quarter when the newer quarter was not published). year_ago = the same quarter one year earlier; change_pct = (latest - year_ago) / year_ago. quarters = the 8 quarters ending at data_quarter, oldest first, null where not published. israel = the Israel medians for data_quarter (same-quarter comparison); israel_latest = the newest Israel quarter in the same file. Full apartment prices in ILS, not per m2.",
+ "src_line": "חציון מחיר העסקה, לפי מספר החדרים, בעסקאות שדווחו לרשות המסים ברבעון הראשון של 2026 (1-3.2026). עודכן 7.10.2026.",
+ "sources": [
+  {
+   "what": "official settlement summary file (median deal price by rooms per quarter; city series and Israel series)",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/3000.json",
+   "retrieved_utc": "2026-10-07 08:43:32",
+   "last_modified": "Thu, 20 Aug 2026 10:31:48 GMT",
+   "name_in_file": "ירושלים",
+   "id_in_file": 3000,
+   "version": "20-08-2026"
+  },
+  {
+   "what": "official neighbourhood summary file: קרית היובל",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209780.json",
+   "retrieved_utc": "2026-10-07 08:45:38",
+   "last_modified": "Thu, 20 Aug 2026 10:29:56 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: פסגת זאב",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209641.json",
+   "retrieved_utc": "2026-10-07 08:45:16",
+   "last_modified": "Thu, 20 Aug 2026 10:29:53 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: גילה",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209832.json",
+   "retrieved_utc": "2026-10-07 08:45:50",
+   "last_modified": "Thu, 20 Aug 2026 10:29:58 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: קטמונים",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209774.json",
+   "retrieved_utc": "2026-10-07 08:45:31",
+   "last_modified": "Thu, 20 Aug 2026 10:29:56 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: בית הכרם",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209775.json",
+   "retrieved_utc": "2026-10-07 08:45:32",
+   "last_modified": "Thu, 20 Aug 2026 10:29:56 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: נווה יעקב",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209694.json",
+   "retrieved_utc": "2026-10-07 08:45:24",
+   "last_modified": "Thu, 20 Aug 2026 10:29:54 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: רמות",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209745.json",
+   "retrieved_utc": "2026-10-07 08:45:42",
+   "last_modified": "Thu, 20 Aug 2026 10:29:55 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: חומת שמואל-הר חומה",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210031.json",
+   "retrieved_utc": "2026-10-07 08:47:35",
+   "last_modified": "Thu, 20 Aug 2026 10:30:18 GMT"
+  }
+ ]
+}

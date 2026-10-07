@@ -1,0 +1,20 @@
+{
+ "/tel-aviv-apartment-prices/": {
+  "ttfb_s": 0.621,
+  "html_bytes": 0,
+  "phone_load_ms": 1375,
+  "phone_dcl_ms": 1165
+ },
+ "/jerusalem-apartment-prices/": {
+  "ttfb_s": 0.619,
+  "html_bytes": 0,
+  "phone_load_ms": 2281,
+  "phone_dcl_ms": 2189
+ },
+ "/haifa-apartment-prices/": {
+  "ttfb_s": 0.631,
+  "html_bytes": 0,
+  "phone_load_ms": 1293,
+  "phone_dcl_ms": 1195
+ }
+}

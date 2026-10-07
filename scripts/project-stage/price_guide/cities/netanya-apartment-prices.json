@@ -1,0 +1,343 @@
+{
+ "slug": "netanya-apartment-prices",
+ "mode": "rooms",
+ "page": "https://nad-lan.co.il/netanya-apartment-prices/",
+ "city_he": "נתניה",
+ "settlement_code": 7400,
+ "settlement_name_official": "נתניה",
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "data_quarter": "1-3.2026",
+ "file_date": "2026-08-20",
+ "file_date_he": "20.8.2026",
+ "title": "כמה עולה דירה בנתניה ב-2026",
+ "answer": "ברבעון הראשון של 2026, חציון מחיר העסקה בנתניה היה 2,676,100 ₪ לדירת 4 חדרים ו-3,365,300 ₪ לדירת 5 חדרים, וברבעון הרביעי של 2025 (הנתון האחרון שפורסם) 1,791,300 ₪ לדירת 3 חדרים. לעומת אותו רבעון שנה קודם לכן, החציון ירד ב-11.6% לדירת 3 חדרים, עלה ב-1.8% לדירת 4 חדרים וירד ב-2.2% לדירת 5 חדרים. בכל הארץ, חציון מחיר העסקה לדירת 4 חדרים ברבעון הראשון של 2026 היה 2,072,000 ₪.",
+ "rooms": {
+  "3": {
+   "latest": 1791300,
+   "quarter": "10-12.2025",
+   "year_ago": 2026400,
+   "change_pct": -11.6,
+   "quarters": [
+    [
+     "4-6.2024",
+     1758500
+    ],
+    [
+     "7-9.2024",
+     1894900
+    ],
+    [
+     "10-12.2024",
+     2026400
+    ],
+    [
+     "1-3.2025",
+     1818000
+    ],
+    [
+     "4-6.2025",
+     1693000
+    ],
+    [
+     "7-9.2025",
+     1757400
+    ],
+    [
+     "10-12.2025",
+     1791300
+    ],
+    [
+     "1-3.2026",
+     null
+    ]
+   ]
+  },
+  "4": {
+   "latest": 2676100,
+   "quarter": "1-3.2026",
+   "year_ago": 2628000,
+   "change_pct": 1.8,
+   "quarters": [
+    [
+     "4-6.2024",
+     2752800
+    ],
+    [
+     "7-9.2024",
+     2726600
+    ],
+    [
+     "10-12.2024",
+     2673300
+    ],
+    [
+     "1-3.2025",
+     2628000
+    ],
+    [
+     "4-6.2025",
+     null
+    ],
+    [
+     "7-9.2025",
+     2578900
+    ],
+    [
+     "10-12.2025",
+     2554900
+    ],
+    [
+     "1-3.2026",
+     2676100
+    ]
+   ]
+  },
+  "5": {
+   "latest": 3365300,
+   "quarter": "1-3.2026",
+   "year_ago": 3442500,
+   "change_pct": -2.2,
+   "quarters": [
+    [
+     "4-6.2024",
+     3351900
+    ],
+    [
+     "7-9.2024",
+     3378000
+    ],
+    [
+     "10-12.2024",
+     3385200
+    ],
+    [
+     "1-3.2025",
+     3442500
+    ],
+    [
+     "4-6.2025",
+     3298900
+    ],
+    [
+     "7-9.2025",
+     3301900
+    ],
+    [
+     "10-12.2025",
+     3379300
+    ],
+    [
+     "1-3.2026",
+     3365300
+    ]
+   ]
+  },
+  "all": {
+   "latest": 2629800,
+   "quarter": "1-3.2026",
+   "year_ago": 2429700,
+   "change_pct": 8.2,
+   "quarters": [
+    [
+     "4-6.2024",
+     2765100
+    ],
+    [
+     "7-9.2024",
+     2645700
+    ],
+    [
+     "10-12.2024",
+     2658100
+    ],
+    [
+     "1-3.2025",
+     2429700
+    ],
+    [
+     "4-6.2025",
+     2327800
+    ],
+    [
+     "7-9.2025",
+     2409300
+    ],
+    [
+     "10-12.2025",
+     2343800
+    ],
+    [
+     "1-3.2026",
+     2629800
+    ]
+   ]
+  }
+ },
+ "israel": {
+  "quarter": "1-3.2026",
+  "3": 1647500,
+  "4": 2072000,
+  "5": 2920600,
+  "all": 2058800
+ },
+ "israel_latest": {
+  "quarter": "4-6.2026",
+  "3": 1677400,
+  "4": 2028800,
+  "5": 2822700,
+  "all": 2130500
+ },
+ "neighbourhoods": [
+  {
+   "name": "מע\"ר - מרכז עירוני ר",
+   "id": 65210243,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 2755500,
+    "5": 3461200
+   },
+   "quarters_with_data": 22
+  },
+  {
+   "name": "מרכז העיר",
+   "id": 65209717,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 1766600,
+    "4": 2422800,
+    "5": 3520100
+   },
+   "quarters_with_data": 18
+  },
+  {
+   "name": "קריית נורדאו",
+   "id": 65209705,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 1494300,
+    "4": 1967300,
+    "5": 3882100
+   },
+   "quarters_with_data": 17
+  },
+  {
+   "name": "אבו שדיד",
+   "id": 65210245,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 2319400,
+    "4": 2318500,
+    "5": 3025500
+   },
+   "quarters_with_data": 14
+  },
+  {
+   "name": "קריית השרון",
+   "id": 65209683,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 2463300,
+    "5": 3286100
+   },
+   "quarters_with_data": 13
+  },
+  {
+   "name": "רמת אפרים",
+   "id": 65209736,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 2601200,
+    "5": null
+   },
+   "quarters_with_data": 12
+  },
+  {
+   "name": "מכנס",
+   "id": 65210752,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 2132700,
+    "5": null
+   },
+   "quarters_with_data": 11
+  },
+  {
+   "name": "פרדס הגדוד",
+   "id": 65209724,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": null,
+    "5": 3322700
+   },
+   "quarters_with_data": 8
+  }
+ ],
+ "neighbourhoods_note": "Official neighbourhood medians for the city's data quarter (null = not published for that quarter). The official files give no deal counts, so neighbourhoods are ranked by quarters_with_data: how many of the 32 values (3/4/5/all rooms x the last 8 quarters) carry an official median. Only neighbourhoods with at least one 3/4/5-room median in the data quarter are kept. Names exactly as in the official files.",
+ "notes": "rooms.<k>.latest is the newest published median for that room count and rooms.<k>.quarter is its quarter (it can be older than data_quarter when the newer quarter was not published). year_ago = the same quarter one year earlier; change_pct = (latest - year_ago) / year_ago. quarters = the 8 quarters ending at data_quarter, oldest first, null where not published. israel = the Israel medians for data_quarter (same-quarter comparison); israel_latest = the newest Israel quarter in the same file. Full apartment prices in ILS, not per m2.",
+ "src_line": "חציון מחיר העסקה, לפי מספר החדרים, בעסקאות שדווחו לרשות המסים ברבעון הראשון של 2026 (1-3.2026). כשלא פורסם נתון לרבעון הזה, מוצג הנתון האחרון שפורסם, עם הרבעון שלו. עודכן 7.10.2026.",
+ "sources": [
+  {
+   "what": "official settlement summary file (median deal price by rooms per quarter; city series and Israel series)",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/7400.json",
+   "retrieved_utc": "2026-10-07 08:43:38",
+   "last_modified": "Thu, 20 Aug 2026 10:32:24 GMT",
+   "name_in_file": "נתניה",
+   "id_in_file": 7400,
+   "version": "20-08-2026"
+  },
+  {
+   "what": "official neighbourhood summary file: מע\"ר - מרכז עירוני ר",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210243.json",
+   "retrieved_utc": "2026-10-07 08:55:36",
+   "last_modified": "Thu, 20 Aug 2026 10:30:24 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: מרכז העיר",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209717.json",
+   "retrieved_utc": "2026-10-07 08:55:03",
+   "last_modified": "Thu, 20 Aug 2026 10:29:55 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: קריית נורדאו",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209705.json",
+   "retrieved_utc": "2026-10-07 08:55:00",
+   "last_modified": "Thu, 20 Aug 2026 10:29:55 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: אבו שדיד",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210245.json",
+   "retrieved_utc": "2026-10-07 08:55:39",
+   "last_modified": "Thu, 20 Aug 2026 10:30:24 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: קריית השרון",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209683.json",
+   "retrieved_utc": "2026-10-07 08:55:13",
+   "last_modified": "Thu, 20 Aug 2026 10:29:54 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: רמת אפרים",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209736.json",
+   "retrieved_utc": "2026-10-07 08:54:58",
+   "last_modified": "Thu, 20 Aug 2026 10:29:55 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: מכנס",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210752.json",
+   "retrieved_utc": "2026-10-07 08:55:44",
+   "last_modified": "Thu, 20 Aug 2026 10:30:36 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: פרדס הגדוד",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209724.json",
+   "retrieved_utc": "2026-10-07 08:55:06",
+   "last_modified": "Thu, 20 Aug 2026 10:29:55 GMT"
+  }
+ ]
+}

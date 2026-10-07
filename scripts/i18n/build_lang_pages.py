@@ -163,6 +163,10 @@ EXACT = [
 # {1}.. = the captures; a capture that is a known name goes through NAMES
 PATTERNS = [
     (r"^כמה עולה דירה ב(.+)\?$", "What does an apartment cost in {1}?", "Combien coûte un appartement à {1} ?", "Сколько стоит квартира в городе {1}?", "كم يبلغ سعر شقة في {1}؟"),
+    # HAD-460 (7.10.2026): the area-prices card's H2 no longer asks the city question (it competed with the city price pages),
+    # and the card links to the city's price page (snippet 661)
+    (r"^המחירים סביב הפרויקט ב(.+)$", "Prices around the project in {1}", "Les prix autour du projet à {1}", "Цены вокруг проекта в городе {1}", "الأسعار حول المشروع في {1}"),
+    (r"^מחירי דירות ב(.+)$", "Apartment prices in {1}", "Prix des appartements à {1}", "Цены на квартиры в городе {1}", "أسعار الشقق في {1}"),
     (r"^עסקאות שדווחו לרשות המסים, ([\d.]+) עד ([\d.]+?)\. חציון של דירות בבתי קומות\. מ[־-]?(\d{4}) עד (\d{4}): ([+\-−]?\d+%) במחיר למ[״\"]ר בעיר\.$",
      "Deals reported to the Tax Authority, {1} to {2}. The median of apartments in multi-storey buildings. {3} to {4}: {5} in the city's price per m².",
      "Transactions déclarées à l'administration fiscale, de {1} à {2}. Médiane des appartements en immeubles collectifs. De {3} à {4} : {5} sur le prix au m² de la ville.",

@@ -1,0 +1,343 @@
+{
+ "slug": "rishon-lezion-apartment-prices",
+ "mode": "rooms",
+ "page": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+ "city_he": "ראשון לציון",
+ "settlement_code": 8300,
+ "settlement_name_official": "ראשון לציון",
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "data_quarter": "1-3.2026",
+ "file_date": "2026-08-20",
+ "file_date_he": "20.8.2026",
+ "title": "כמה עולה דירה בראשון לציון ב-2026",
+ "answer": "ברבעון הראשון של 2026, חציון מחיר העסקה בראשון לציון היה 1,936,700 ₪ לדירת 3 חדרים, 2,392,600 ₪ לדירת 4 חדרים ו-3,631,900 ₪ לדירת 5 חדרים. לעומת הרבעון הראשון של 2025, החציון ירד ב-1.3% לדירת 3 חדרים, עלה ב-0.9% לדירת 4 חדרים ועלה ב-2% לדירת 5 חדרים. בכל הארץ, חציון מחיר העסקה לדירת 4 חדרים ברבעון הראשון של 2026 היה 2,072,000 ₪.",
+ "rooms": {
+  "3": {
+   "latest": 1936700,
+   "quarter": "1-3.2026",
+   "year_ago": 1962700,
+   "change_pct": -1.3,
+   "quarters": [
+    [
+     "4-6.2024",
+     1972800
+    ],
+    [
+     "7-9.2024",
+     1922600
+    ],
+    [
+     "10-12.2024",
+     1943900
+    ],
+    [
+     "1-3.2025",
+     1962700
+    ],
+    [
+     "4-6.2025",
+     null
+    ],
+    [
+     "7-9.2025",
+     1852500
+    ],
+    [
+     "10-12.2025",
+     1878100
+    ],
+    [
+     "1-3.2026",
+     1936700
+    ]
+   ]
+  },
+  "4": {
+   "latest": 2392600,
+   "quarter": "1-3.2026",
+   "year_ago": 2371200,
+   "change_pct": 0.9,
+   "quarters": [
+    [
+     "4-6.2024",
+     2592600
+    ],
+    [
+     "7-9.2024",
+     2333000
+    ],
+    [
+     "10-12.2024",
+     2312000
+    ],
+    [
+     "1-3.2025",
+     2371200
+    ],
+    [
+     "4-6.2025",
+     2341500
+    ],
+    [
+     "7-9.2025",
+     2406600
+    ],
+    [
+     "10-12.2025",
+     2395700
+    ],
+    [
+     "1-3.2026",
+     2392600
+    ]
+   ]
+  },
+  "5": {
+   "latest": 3631900,
+   "quarter": "1-3.2026",
+   "year_ago": 3560600,
+   "change_pct": 2.0,
+   "quarters": [
+    [
+     "4-6.2024",
+     3459600
+    ],
+    [
+     "7-9.2024",
+     3573100
+    ],
+    [
+     "10-12.2024",
+     3526700
+    ],
+    [
+     "1-3.2025",
+     3560600
+    ],
+    [
+     "4-6.2025",
+     3497200
+    ],
+    [
+     "7-9.2025",
+     3463600
+    ],
+    [
+     "10-12.2025",
+     3755200
+    ],
+    [
+     "1-3.2026",
+     3631900
+    ]
+   ]
+  },
+  "all": {
+   "latest": 2064800,
+   "quarter": "1-3.2026",
+   "year_ago": 1998800,
+   "change_pct": 3.3,
+   "quarters": [
+    [
+     "4-6.2024",
+     null
+    ],
+    [
+     "7-9.2024",
+     2056200
+    ],
+    [
+     "10-12.2024",
+     2058900
+    ],
+    [
+     "1-3.2025",
+     1998800
+    ],
+    [
+     "4-6.2025",
+     2020000
+    ],
+    [
+     "7-9.2025",
+     1974100
+    ],
+    [
+     "10-12.2025",
+     1960300
+    ],
+    [
+     "1-3.2026",
+     2064800
+    ]
+   ]
+  }
+ },
+ "israel": {
+  "quarter": "1-3.2026",
+  "3": 1647500,
+  "4": 2072000,
+  "5": 2920600,
+  "all": 2058800
+ },
+ "israel_latest": {
+  "quarter": "4-6.2026",
+  "3": 1677400,
+  "4": 2028800,
+  "5": 2822700,
+  "all": 2130500
+ },
+ "neighbourhoods": [
+  {
+   "name": "רמז",
+   "id": 65209934,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 1802600,
+    "4": 2140200,
+    "5": 4153600
+   },
+   "quarters_with_data": 19
+  },
+  {
+   "name": "רמב\"ם",
+   "id": 65209892,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 1876800,
+    "4": 2086400,
+    "5": 2497900
+   },
+   "quarters_with_data": 17
+  },
+  {
+   "name": "נחלת יהודה",
+   "id": 65209911,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 2354400,
+    "4": 3460700,
+    "5": 3610600
+   },
+   "quarters_with_data": 11
+  },
+  {
+   "name": "ראשונים",
+   "id": 65209890,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 2927300,
+    "5": 3900100
+   },
+   "quarters_with_data": 11
+  },
+  {
+   "name": "אברמוביץ",
+   "id": 65209897,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 1941000,
+    "5": null
+   },
+   "quarters_with_data": 10
+  },
+  {
+   "name": "כצנלסון",
+   "id": 65209900,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 1820600,
+    "4": 1940200,
+    "5": null
+   },
+   "quarters_with_data": 8
+  },
+  {
+   "name": "קריית ראשון",
+   "id": 65209888,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 1825000,
+    "4": 2413000,
+    "5": null
+   },
+   "quarters_with_data": 8
+  },
+  {
+   "name": "רמת אליהו",
+   "id": 65209935,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 1901900,
+    "4": 2295000,
+    "5": null
+   },
+   "quarters_with_data": 8
+  }
+ ],
+ "neighbourhoods_note": "Official neighbourhood medians for the city's data quarter (null = not published for that quarter). The official files give no deal counts, so neighbourhoods are ranked by quarters_with_data: how many of the 32 values (3/4/5/all rooms x the last 8 quarters) carry an official median. Only neighbourhoods with at least one 3/4/5-room median in the data quarter are kept. Names exactly as in the official files.",
+ "notes": "rooms.<k>.latest is the newest published median for that room count and rooms.<k>.quarter is its quarter (it can be older than data_quarter when the newer quarter was not published). year_ago = the same quarter one year earlier; change_pct = (latest - year_ago) / year_ago. quarters = the 8 quarters ending at data_quarter, oldest first, null where not published. israel = the Israel medians for data_quarter (same-quarter comparison); israel_latest = the newest Israel quarter in the same file. Full apartment prices in ILS, not per m2.",
+ "src_line": "חציון מחיר העסקה, לפי מספר החדרים, בעסקאות שדווחו לרשות המסים ברבעון הראשון של 2026 (1-3.2026). עודכן 7.10.2026.",
+ "sources": [
+  {
+   "what": "official settlement summary file (median deal price by rooms per quarter; city series and Israel series)",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/8300.json",
+   "retrieved_utc": "2026-10-07 08:43:46",
+   "last_modified": "Thu, 20 Aug 2026 10:32:26 GMT",
+   "name_in_file": "ראשון לציון",
+   "id_in_file": 8300,
+   "version": "20-08-2026"
+  },
+  {
+   "what": "official neighbourhood summary file: רמז",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209934.json",
+   "retrieved_utc": "2026-10-07 08:57:08",
+   "last_modified": "Thu, 20 Aug 2026 10:30:01 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: רמב\"ם",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209892.json",
+   "retrieved_utc": "2026-10-07 08:57:07",
+   "last_modified": "Thu, 20 Aug 2026 10:30:00 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: נחלת יהודה",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209911.json",
+   "retrieved_utc": "2026-10-07 08:56:50",
+   "last_modified": "Thu, 20 Aug 2026 10:30:00 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: ראשונים",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209890.json",
+   "retrieved_utc": "2026-10-07 08:57:04",
+   "last_modified": "Thu, 20 Aug 2026 10:29:59 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: אברמוביץ",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209897.json",
+   "retrieved_utc": "2026-10-07 08:56:31",
+   "last_modified": "Thu, 20 Aug 2026 10:30:00 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: כצנלסון",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209900.json",
+   "retrieved_utc": "2026-10-07 08:56:35",
+   "last_modified": "Thu, 20 Aug 2026 10:30:00 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: קריית ראשון",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209888.json",
+   "retrieved_utc": "2026-10-07 08:57:01",
+   "last_modified": "Thu, 20 Aug 2026 10:29:59 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: רמת אליהו",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209935.json",
+   "retrieved_utc": "2026-10-07 08:57:09",
+   "last_modified": "Thu, 20 Aug 2026 10:30:01 GMT"
+  }
+ ]
+}

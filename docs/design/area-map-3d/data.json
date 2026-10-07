@@ -1,0 +1,2382 @@
+{
+ "key": "rova-4",
+ "updated": "2026-10-07",
+ "page": "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+ "view": {
+  "center": [
+   34.789776,
+   32.086758
+  ],
+  "zoom": 15,
+  "pitch": 55,
+  "bearing": -18,
+  "phone": {
+   "center": [
+    34.79,
+    32.0868
+   ],
+   "zoom": 14.2,
+   "pitch": 55
+  }
+ },
+ "counts": {
+  "projects": 6,
+  "renewal": 15,
+  "edu": 11,
+  "parks": 19,
+  "shop": 43,
+  "transit": 4
+ },
+ "sources": {
+  "osm": {
+   "name": "OpenStreetMap contributors",
+   "licence": "ODbL 1.0",
+   "url": "https://www.openstreetmap.org/copyright"
+  },
+  "overpass": {
+   "endpoint": "https://z.overpass-api.de/api/interpreter",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  "nominatim": {
+   "endpoint": "https://nominatim.openstreetmap.org/search",
+   "policy": "1 request per second, cached"
+  },
+  "catalogue": {
+   "url": "https://nad-lan.co.il/wp-json/nadlan/v1/project-map",
+   "retrieved": "2026-10-07T08:34:49Z"
+  },
+  "facts": [
+   "docs/content/rova-4-2026-10/facts.md",
+   "docs/research/2026-10-07-kikar-prices/press-facts.md"
+  ]
+ },
+ "boundary": {
+  "type": "Feature",
+  "properties": {
+   "label": "גבולות הרובע, בקירוב",
+   "method": "No OSM boundary relation for Rova 4 in the box (relations seen: 0). Line built from the OSM geometry of the four boundary lines named in facts.md R1: אבן גבירול (west), נתיבי איילון (east), נחל הירקון (north), שדרות שאול המלך (south); carriageways averaged, corners where the lines meet (extended straight where a street stops short).",
+   "nodes_used": {
+    "west_nodes": 294,
+    "south_nodes": 64,
+    "east_nodes": 221,
+    "north_nodes": 53
+   },
+   "corners": {
+    "sw": [
+     32.075535,
+     34.781681
+    ],
+    "nw": [
+     32.096324,
+     34.78371
+    ],
+    "ne": [
+     32.099889,
+     34.802693
+    ],
+    "se": [
+     32.078028,
+     34.795694
+    ]
+   },
+   "source": "OpenStreetMap (Overpass API); boundary text: he.wikipedia רובעי תל אביב-יפו (facts.md R1)",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  "geometry": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      34.781681,
+      32.075535
+     ],
+     [
+      34.781681,
+      32.075535
+     ],
+     [
+      34.781457,
+      32.076253
+     ],
+     [
+      34.781571,
+      32.076309
+     ],
+     [
+      34.781295,
+      32.077244
+     ],
+     [
+      34.781311,
+      32.077682
+     ],
+     [
+      34.781254,
+      32.078455
+     ],
+     [
+      34.781205,
+      32.078809
+     ],
+     [
+      34.781281,
+      32.079495
+     ],
+     [
+      34.781352,
+      32.080361
+     ],
+     [
+      34.781346,
+      32.080925
+     ],
+     [
+      34.781326,
+      32.081442
+     ],
+     [
+      34.781316,
+      32.081959
+     ],
+     [
+      34.781362,
+      32.08315
+     ],
+     [
+      34.781583,
+      32.084007
+     ],
+     [
+      34.781629,
+      32.084496
+     ],
+     [
+      34.781789,
+      32.085139
+     ],
+     [
+      34.781837,
+      32.085365
+     ],
+     [
+      34.782059,
+      32.086264
+     ],
+     [
+      34.782084,
+      32.086919
+     ],
+     [
+      34.78222,
+      32.087196
+     ],
+     [
+      34.782338,
+      32.088088
+     ],
+     [
+      34.782305,
+      32.088316
+     ],
+     [
+      34.782568,
+      32.089375
+     ],
+     [
+      34.782635,
+      32.089774
+     ],
+     [
+      34.782845,
+      32.090686
+     ],
+     [
+      34.782815,
+      32.090848
+     ],
+     [
+      34.782967,
+      32.091714
+     ],
+     [
+      34.783487,
+      32.094033
+     ],
+     [
+      34.783545,
+      32.094768
+     ],
+     [
+      34.783701,
+      32.09532
+     ],
+     [
+      34.783746,
+      32.095576
+     ],
+     [
+      34.78371,
+      32.096324
+     ],
+     [
+      34.783837,
+      32.09633
+     ],
+     [
+      34.78715,
+      32.096525
+     ],
+     [
+      34.788393,
+      32.09673
+     ],
+     [
+      34.792436,
+      32.0974
+     ],
+     [
+      34.796484,
+      32.098454
+     ],
+     [
+      34.799829,
+      32.100148
+     ],
+     [
+      34.800395,
+      32.100181
+     ],
+     [
+      34.800918,
+      32.100097
+     ],
+     [
+      34.801662,
+      32.099891
+     ],
+     [
+      34.802693,
+      32.099889
+     ],
+     [
+      34.802416,
+      32.098816
+     ],
+     [
+      34.801889,
+      32.097433
+     ],
+     [
+      34.801841,
+      32.096433
+     ],
+     [
+      34.801293,
+      32.094922
+     ],
+     [
+      34.801836,
+      32.094077
+     ],
+     [
+      34.801673,
+      32.093166
+     ],
+     [
+      34.800726,
+      32.092553
+     ],
+     [
+      34.801499,
+      32.092295
+     ],
+     [
+      34.801277,
+      32.091357
+     ],
+     [
+      34.800172,
+      32.090184
+     ],
+     [
+      34.800268,
+      32.089837
+     ],
+     [
+      34.800106,
+      32.089096
+     ],
+     [
+      34.799661,
+      32.08861
+     ],
+     [
+      34.80033,
+      32.087967
+     ],
+     [
+      34.799628,
+      32.087399
+     ],
+     [
+      34.798567,
+      32.08629
+     ],
+     [
+      34.798518,
+      32.085585
+     ],
+     [
+      34.798044,
+      32.084974
+     ],
+     [
+      34.798357,
+      32.084405
+     ],
+     [
+      34.798156,
+      32.083893
+     ],
+     [
+      34.797726,
+      32.082962
+     ],
+     [
+      34.797703,
+      32.082522
+     ],
+     [
+      34.7981,
+      32.081968
+     ],
+     [
+      34.79801,
+      32.081443
+     ],
+     [
+      34.797711,
+      32.080798
+     ],
+     [
+      34.797555,
+      32.080166
+     ],
+     [
+      34.79717,
+      32.079591
+     ],
+     [
+      34.796773,
+      32.079062
+     ],
+     [
+      34.79629,
+      32.078486
+     ],
+     [
+      34.795694,
+      32.078028
+     ],
+     [
+      34.792753,
+      32.078028
+     ],
+     [
+      34.792221,
+      32.077976
+     ],
+     [
+      34.79148,
+      32.077851
+     ],
+     [
+      34.79103,
+      32.077703
+     ],
+     [
+      34.790307,
+      32.077492
+     ],
+     [
+      34.789319,
+      32.077206
+     ],
+     [
+      34.788775,
+      32.076974
+     ],
+     [
+      34.787312,
+      32.076401
+     ],
+     [
+      34.786853,
+      32.0763
+     ],
+     [
+      34.786012,
+      32.076015
+     ],
+     [
+      34.785491,
+      32.075874
+     ],
+     [
+      34.785005,
+      32.07575
+     ],
+     [
+      34.784443,
+      32.075658
+     ],
+     [
+      34.783583,
+      32.075544
+     ],
+     [
+      34.783381,
+      32.075599
+     ],
+     [
+      34.782774,
+      32.075515
+     ],
+     [
+      34.781876,
+      32.075525
+     ],
+     [
+      34.781681,
+      32.075535
+     ]
+    ]
+   ]
+  }
+ },
+ "projects": [
+  {
+   "id": "hamedina",
+   "name": "מגדלי כיכר המדינה",
+   "title": "מגדלי כיכר המדינה תל אביב: מחירים, עסקאות, מפה ותלת ממד",
+   "fact": "3 מגדלים בני 40, 40 ו-37 קומות · 453 דירות",
+   "developer": null,
+   "url": "https://nad-lan.co.il/projects/hamedina/",
+   "lat": 32.086758,
+   "lng": 34.789776,
+   "hero": true,
+   "source": "nad-lan.co.il project page",
+   "source_url": "https://nad-lan.co.il/projects/hamedina/",
+   "position_from": "page JSON-LD geo (same as the catalogue)",
+   "alt_position": null,
+   "retrieved": "2026-10-07T08:34:51Z"
+  },
+  {
+   "id": "duo-tel-aviv",
+   "name": "DUO",
+   "title": "DUO תל אביב - מגדלי דואו, אבן גבירול | מחירים ודירות | נדלן",
+   "fact": "2 מגדלים בני 54 קומות · 668 דירות",
+   "developer": "אפריקה ישראל מגורים",
+   "url": "https://nad-lan.co.il/projects/duo-tel-aviv/",
+   "lat": 32.085658,
+   "lng": 34.783027,
+   "hero": false,
+   "source": "nad-lan.co.il project page",
+   "source_url": "https://nad-lan.co.il/projects/duo-tel-aviv/",
+   "position_from": "stage lat/lng printed in the page HTML",
+   "alt_position": {
+    "jsonld_geo": [
+     32.085698,
+     34.782856
+    ]
+   },
+   "retrieved": "2026-10-07T08:34:53Z"
+  },
+  {
+   "id": "h-infinity-somail-tel-aviv",
+   "name": "H Infinity",
+   "title": "H Infinity מתחם סומייל תל אביב | קבוצת חג'ג' | נדלן",
+   "fact": "מגדל מגורים ובניין בוטיק · כ-278 דירות",
+   "developer": "קבוצת חג'ג'",
+   "url": "https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/",
+   "lat": 32.087284,
+   "lng": 34.78272,
+   "hero": false,
+   "source": "nad-lan.co.il project page",
+   "source_url": "https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/",
+   "position_from": "page JSON-LD geo (same as the catalogue)",
+   "alt_position": null,
+   "retrieved": "2026-10-07T08:34:51Z"
+  },
+  {
+   "id": "yoo-tel-aviv",
+   "name": "מגדלי YOO",
+   "title": "מגדלי YOO פארק צמרת - מגה יוקרה בעיצוב פיליפ סטארק, תל אביב-יפו - מחירים, דירות ובחירה מהבניין | נדלן",
+   "fact": "2 מגדלים בני 37 ו-41 קומות · כ-300 דירות",
+   "developer": "קבוצת חבס",
+   "url": "https://nad-lan.co.il/projects/yoo-tel-aviv/",
+   "lat": 32.090497,
+   "lng": 34.7963,
+   "hero": false,
+   "source": "nad-lan.co.il project page",
+   "source_url": "https://nad-lan.co.il/projects/yoo-tel-aviv/",
+   "position_from": "page JSON-LD geo (same as the catalogue)",
+   "alt_position": null,
+   "retrieved": "2026-10-07T08:34:54Z"
+  },
+  {
+   "id": "akirov-towers",
+   "name": "מגדלי אקירוב",
+   "title": "מגדלי אקירוב פארק צמרת - פרויקט יוקרה של אלרוב, תל אביב-יפו - מחירים, דירות ובחירה מהבניין | נדלן",
+   "fact": "3 מגדלים בני 32 קומות · כ-350 דירות",
+   "developer": "אלרוב",
+   "url": "https://nad-lan.co.il/projects/akirov-towers/",
+   "lat": 32.090711,
+   "lng": 34.793055,
+   "hero": false,
+   "source": "nad-lan.co.il project page",
+   "source_url": "https://nad-lan.co.il/projects/akirov-towers/",
+   "position_from": "page JSON-LD geo (same as the catalogue)",
+   "alt_position": null,
+   "retrieved": "2026-10-07T08:34:55Z"
+  },
+  {
+   "id": "park-bavli",
+   "name": "פארק בבלי",
+   "title": "פארק בבלי - פרויקט יוקרה של קבוצת תשובה בתל אביב - מחירים, דירות ובחירה מהבניין | נדלן",
+   "fact": "4 מגדלים בני 46 קומות · כ-800 דירות",
+   "developer": "קבוצת תשובה ואלעד מגורים",
+   "url": "https://nad-lan.co.il/projects/park-bavli/",
+   "lat": 32.092292,
+   "lng": 34.798255,
+   "hero": false,
+   "source": "nad-lan.co.il project page",
+   "source_url": "https://nad-lan.co.il/projects/park-bavli/",
+   "position_from": "page JSON-LD geo (same as the catalogue)",
+   "alt_position": null,
+   "retrieved": "2026-10-07T08:34:56Z"
+  }
+ ],
+ "renewal": [
+  {
+   "id": "zlotisti-4",
+   "address": "זלוציסטי 4",
+   "before": "4 קומות, 12 דירות",
+   "after": "8 קומות, 22 דירות",
+   "developer": null,
+   "stage": "נהרס, 2.2026",
+   "facts": [
+    "R41",
+    "U1"
+   ],
+   "sources": [
+    "https://www.ice.co.il/realestate/news/article/1110810",
+    "https://www.bizportal.co.il/realestates/news/article/20044073"
+   ],
+   "source_date": "28.4.2026; 5.10.2026",
+   "lat": 32.083462,
+   "lng": 34.79316,
+   "geocode": [
+    {
+     "query": "זלוציסטי 4, תל אביב-יפו",
+     "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%96%D7%9C%D7%95%D7%A6%D7%99%D7%A1%D7%98%D7%99+4%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+     "retrieved": "2026-10-07T08:28:55Z",
+     "lat": 32.083462,
+     "lng": 34.79316,
+     "osm": "node/2079071542",
+     "osm_display_name": "4, זלוציסטי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6492903, ישראל",
+     "addresstype": "place"
+    }
+   ],
+   "position_from": "OSM Nominatim",
+   "url": null
+  },
+  {
+   "id": "remez-27",
+   "address": "רמז 27",
+   "before": "4 קומות, 14 דירות",
+   "after": "9 קומות, 24 דירות",
+   "developer": null,
+   "stage": "נהרס, 2.2026",
+   "facts": [
+    "R42",
+    "U2"
+   ],
+   "sources": [
+    "https://www.ice.co.il/realestate/news/article/1110810",
+    "https://www.bizportal.co.il/realestates/news/article/20044073"
+   ],
+   "source_date": "28.4.2026; 5.10.2026",
+   "lat": 32.089241,
+   "lng": 34.786249,
+   "geocode": [
+    {
+     "query": "דוד רמז 27, תל אביב-יפו",
+     "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%93%D7%95%D7%93+%D7%A8%D7%9E%D7%96+27%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+     "retrieved": "2026-10-07T08:28:56Z",
+     "lat": 32.089241,
+     "lng": 34.786249,
+     "osm": "node/2079027632",
+     "osm_display_name": "27, דוד רמז, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+     "addresstype": "place"
+    }
+   ],
+   "position_from": "OSM Nominatim",
+   "url": null
+  },
+  {
+   "id": "jabotinsky-152",
+   "address": "ז'בוטינסקי 152",
+   "before": "4 קומות, 20 דירות",
+   "after": "8 קומות, 38 דירות",
+   "developer": "בית וגג",
+   "stage": "סיום צפוי ברבעון האחרון של 2028",
+   "facts": [
+    "R43",
+    "U3"
+   ],
+   "sources": [
+    "https://www.bizportal.co.il/realestates/news/article/20030456"
+   ],
+   "source_date": "16.4.2026",
+   "lat": 32.085748,
+   "lng": 34.793979,
+   "geocode": [
+    {
+     "query": "ז'בוטינסקי 152, תל אביב-יפו",
+     "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%96%27%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99+152%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+     "retrieved": "2026-10-07T08:28:58Z",
+     "lat": 32.085748,
+     "lng": 34.793979,
+     "osm": "node/2078993963",
+     "osm_display_name": "152, ז'בוטינסקי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+     "addresstype": "place"
+    }
+   ],
+   "position_from": "OSM Nominatim",
+   "url": null
+  },
+  {
+   "id": "beeri-36-56",
+   "address": "בארי 36 עד 56, הצד הזוגי",
+   "before": "11 בניינים, כ-190 דירות",
+   "after": "עד כ-500 דירות, לפי הערכת החברה",
+   "developer": "אדם שוסטר",
+   "stage": "נבחרה במכרז הדיירים, 3.2026",
+   "facts": [
+    "R44",
+    "U4"
+   ],
+   "sources": [
+    "https://www.nadlancenter.co.il/article/14246",
+    "https://www.bizportal.co.il/realestates/news/article/20044073"
+   ],
+   "source_date": "31.3.2026; 5.10.2026",
+   "lat": 32.082169,
+   "lng": 34.79074,
+   "geocode": [
+    {
+     "query": "בארי 36, תל אביב-יפו",
+     "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%91%D7%90%D7%A8%D7%99+36%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+     "retrieved": "2026-10-07T08:29:00Z",
+     "lat": 32.082293,
+     "lng": 34.789806,
+     "osm": "node/2079041196",
+     "osm_display_name": "36, בארי, תל־אביב–יפו, הצפון החדש - החלק הדרומי, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6492903, ישראל",
+     "addresstype": "place"
+    },
+    {
+     "query": "בארי 56, תל אביב-יפו",
+     "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%91%D7%90%D7%A8%D7%99+56%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+     "retrieved": "2026-10-07T08:29:01Z",
+     "lat": 32.082046,
+     "lng": 34.791674,
+     "osm": "node/2079194783",
+     "osm_display_name": "56, בארי, תל־אביב–יפו, הצפון החדש - החלק הדרומי, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6492903, ישראל",
+     "addresstype": "place"
+    }
+   ],
+   "position_from": "OSM Nominatim (midpoint of 2 addresses)",
+   "url": null
+  },
+  {
+   "id": "jabotinsky-135-137",
+   "address": "ז'בוטינסקי 135 עד 137",
+   "before": "32 דירות",
+   "after": "9 קומות, 68 דירות",
+   "developer": "אפריקה התחדשות ובית וגג",
+   "stage": "נחתם חוזה ביצוע, 8.2024",
+   "facts": [
+    "R45",
+    "U5"
+   ],
+   "sources": [
+    "https://www.nadlancenter.co.il/article/10453"
+   ],
+   "source_date": "18.8.2024",
+   "lat": 32.086678,
+   "lng": 34.792064,
+   "geocode": [
+    {
+     "query": "ז'בוטינסקי 135, תל אביב-יפו",
+     "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%96%27%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99+135%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+     "retrieved": "2026-10-07T08:29:03Z",
+     "lat": 32.086709,
+     "lng": 34.791985,
+     "osm": "node/2078986611",
+     "osm_display_name": "135, ז'בוטינסקי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+     "addresstype": "place"
+    },
+    {
+     "query": "ז'בוטינסקי 137, תל אביב-יפו",
+     "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%96%27%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99+137%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+     "retrieved": "2026-10-07T08:29:04Z",
+     "lat": 32.0866467,
+     "lng": 34.7921429,
+     "osm": "way/149367031",
+     "osm_display_name": "137, ז'בוטינסקי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+     "addresstype": "building"
+    }
+   ],
+   "position_from": "OSM Nominatim (midpoint of 2 addresses)",
+   "url": null
+  },
+  {
+   "id": "jabotinsky-133",
+   "address": "ז'בוטינסקי 133",
+   "before": "16 דירות",
+   "after": "9 קומות, 33 דירות",
+   "developer": "בית וגג",
+   "stage": "הבניין הישן נהרס, 11.2025",
+   "facts": [
+    "R46",
+    "U6"
+   ],
+   "sources": [
+    "https://www.nadlancenter.co.il/article/13382"
+   ],
+   "source_date": "3.12.2025",
+   "lat": 32.08672,
+   "lng": 34.791724,
+   "geocode": [
+    {
+     "query": "ז'בוטינסקי 133, תל אביב-יפו",
+     "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%96%27%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99+133%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+     "retrieved": "2026-10-07T08:29:06Z",
+     "lat": 32.08672,
+     "lng": 34.791724,
+     "osm": "node/2078986280",
+     "osm_display_name": "133, ז'בוטינסקי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+     "addresstype": "place"
+    }
+   ],
+   "position_from": "OSM Nominatim",
+   "url": null
+  },
+  {
+   "id": "remez-44",
+   "address": "רמז 44",
+   "before": null,
+   "after": "7 קומות, 25 דירות",
+   "developer": "אנשי העיר",
+   "stage": "היתר בנייה, 9.12.2025",
+   "facts": [
+    "R47",
+    "U7"
+   ],
+   "sources": [
+    "https://www.nadlancenter.co.il/article/13436"
+   ],
+   "source_date": "10.12.2025",
+   "lat": 32.090195,
+   "lng": 34.786758,
+   "geocode": [
+    {
+     "query": "דוד רמז 44, תל אביב-יפו",
+     "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%93%D7%95%D7%93+%D7%A8%D7%9E%D7%96+44%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+     "retrieved": "2026-10-07T08:29:08Z",
+     "lat": 32.090195,
+     "lng": 34.786758,
+     "osm": "node/2079183328",
+     "osm_display_name": "44, דוד רמז, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+     "addresstype": "place"
+    }
+   ],
+   "position_from": "OSM Nominatim",
+   "url": null
+  },
+  {
+   "id": "remez-42",
+   "address": "רמז 42",
+   "before": null,
+   "after": "20 דירות",
+   "developer": "אנשי העיר",
+   "stage": "בקשה להיתר",
+   "facts": [
+    "R47",
+    "U8"
+   ],
+   "sources": [
+    "https://www.nadlancenter.co.il/article/13436"
+   ],
+   "source_date": "10.12.2025",
+   "lat": 32.089978,
+   "lng": 34.786731,
+   "geocode": [
+    {
+     "query": "דוד רמז 42, תל אביב-יפו",
+     "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%93%D7%95%D7%93+%D7%A8%D7%9E%D7%96+42%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+     "retrieved": "2026-10-07T08:29:09Z",
+     "lat": 32.089978,
+     "lng": 34.786731,
+     "osm": "node/2079182457",
+     "osm_display_name": "42, דוד רמז, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+     "addresstype": "place"
+    }
+   ],
+   "position_from": "OSM Nominatim",
+   "url": null
+  },
+  {
+   "id": "remez-25",
+   "address": "רמז 25",
+   "before": null,
+   "after": "26 דירות",
+   "developer": "אנשי העיר",
+   "stage": "הדיירים פונו",
+   "facts": [
+    "R47",
+    "U8"
+   ],
+   "sources": [
+    "https://www.nadlancenter.co.il/article/13436"
+   ],
+   "source_date": "10.12.2025",
+   "lat": 32.090427,
+   "lng": 34.786879,
+   "geocode": [
+    {
+     "query": "דוד רמז 25, תל אביב-יפו",
+     "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%93%D7%95%D7%93+%D7%A8%D7%9E%D7%96+25%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+     "retrieved": "2026-10-07T08:29:14Z",
+     "lat": 32.090427,
+     "lng": 34.786879,
+     "osm": "node/2079022075",
+     "osm_display_name": "25, דוד רמז, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+     "addresstype": "place"
+    }
+   ],
+   "position_from": "OSM Nominatim",
+   "url": null
+  },
+  {
+   "id": "lissin-27",
+   "address": "ליסין 27",
+   "before": "4 קומות, 12 דירות",
+   "after": "7 קומות, 21 דירות",
+   "developer": "יעז יזמות",
+   "stage": "היתר בנייה, 7.2026",
+   "facts": [
+    "R48",
+    "U9"
+   ],
+   "sources": [
+    "https://www.nadlancenter.co.il/article/15116"
+   ],
+   "source_date": "5.8.2026",
+   "lat": 32.085498,
+   "lng": 34.793797,
+   "geocode": [
+    {
+     "query": "ליסין 27, תל אביב-יפו",
+     "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%9C%D7%99%D7%A1%D7%99%D7%9F+27%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+     "retrieved": "2026-10-07T08:29:16Z",
+     "lat": 32.0854985,
+     "lng": 34.793797,
+     "osm": "way/149367201",
+     "osm_display_name": "27, ליסין, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+     "addresstype": "building"
+    }
+   ],
+   "position_from": "OSM Nominatim",
+   "url": null
+  },
+  {
+   "id": "sharet-30",
+   "address": "שרת 30",
+   "before": "4 קומות, 11 דירות",
+   "after": "8 קומות, 24 דירות",
+   "developer": "יעז יזמות",
+   "stage": "היתר בנייה, 7.2026",
+   "facts": [
+    "R49",
+    "U10"
+   ],
+   "sources": [
+    "https://www.nadlancenter.co.il/article/15116"
+   ],
+   "source_date": "5.8.2026",
+   "lat": 32.086872,
+   "lng": 34.7877,
+   "geocode": [
+    {
+     "query": "משה שרת 30, תל אביב-יפו",
+     "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%9E%D7%A9%D7%94+%D7%A9%D7%A8%D7%AA+30%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+     "retrieved": "2026-10-07T08:29:18Z",
+     "lat": 32.086872,
+     "lng": 34.7877,
+     "osm": "node/2079036017",
+     "osm_display_name": "30, משה שרת, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+     "addresstype": "place"
+    }
+   ],
+   "position_from": "OSM Nominatim",
+   "url": null
+  },
+  {
+   "id": "zichron-yaakov-16",
+   "address": "זכרון יעקב 16",
+   "before": "3 קומות על עמודים, 12 דירות",
+   "after": "7 קומות, 26 דירות",
+   "developer": "קבוצת לוינשטיין",
+   "stage": "ההריסה החלה 24.11.2024, אכלוס צפוי במחצית השנייה של 2028",
+   "facts": [
+    "R50",
+    "U11"
+   ],
+   "sources": [
+    "https://www.ice.co.il/realestate/news/article/1039645"
+   ],
+   "source_date": "25.11.2024",
+   "lat": 32.0839,
+   "lng": 34.791056,
+   "geocode": [
+    {
+     "query": "זכרון יעקב 16, תל אביב-יפו",
+     "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%96%D7%9B%D7%A8%D7%95%D7%9F+%D7%99%D7%A2%D7%A7%D7%91+16%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+     "retrieved": "2026-10-07T08:29:19Z",
+     "lat": 32.0839,
+     "lng": 34.791056,
+     "osm": "node/2078994835",
+     "osm_display_name": "16, זכרון יעקב, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6492903, ישראל",
+     "addresstype": "place"
+    }
+   ],
+   "position_from": "OSM Nominatim",
+   "url": null
+  },
+  {
+   "id": "henkin-3",
+   "address": "חנקין 3",
+   "before": null,
+   "after": null,
+   "developer": "נוגה",
+   "stage": "פרויקט הריסה ובנייה",
+   "facts": [
+    "R51",
+    "U12",
+    "D1"
+   ],
+   "sources": [
+    "https://www.ice.co.il/realestate/news/article/1110810",
+    "https://www.bizportal.co.il/realestates/news/article/20044073"
+   ],
+   "source_date": "28.4.2026; 5.10.2026",
+   "lat": 32.089057,
+   "lng": 34.78913,
+   "geocode": [
+    {
+     "query": "חנקין 3, תל אביב-יפו",
+     "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%97%D7%A0%D7%A7%D7%99%D7%9F+3%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+     "retrieved": "2026-10-07T08:29:21Z",
+     "lat": 32.089057,
+     "lng": 34.78913,
+     "osm": "node/2079033932",
+     "osm_display_name": "3, חנקין, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+     "addresstype": "place"
+    }
+   ],
+   "position_from": "OSM Nominatim",
+   "url": null
+  },
+  {
+   "id": "page-arlozorov",
+   "address": "מתחם ארלוזורוב",
+   "before": "57 דירות",
+   "after": "248 דירות",
+   "developer": null,
+   "stage": "תכנית מאושרת לפני מימוש, 2023",
+   "note": "תכנית 507-0634923 · המיקום בקירוב",
+   "facts": [],
+   "sources": [
+    "https://nad-lan.co.il/projects/%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91/",
+    "https://data.gov.il (מאגר התחדשות עירונית, via the page)"
+   ],
+   "source_date": "page read 7.10.2026",
+   "url": "https://nad-lan.co.il/projects/%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91/",
+   "lat": 32.084522,
+   "lng": 34.783965,
+   "position_from": "page JSON-LD geo; precision not stated, shown as approximate",
+   "retrieved": "2026-10-07T08:35:01Z"
+  },
+  {
+   "id": "page-dafna",
+   "address": "מתחם דפנה",
+   "before": null,
+   "after": null,
+   "developer": null,
+   "stage": "תכנית מאושרת במימוש, 2015",
+   "note": "תכנית תא/3885 · המיקום בקירוב",
+   "facts": [],
+   "sources": [
+    "https://nad-lan.co.il/projects/%d7%93%d7%a4%d7%a0%d7%94/",
+    "https://data.gov.il (מאגר התחדשות עירונית, via the page)"
+   ],
+   "source_date": "page read 7.10.2026",
+   "url": "https://nad-lan.co.il/projects/%d7%93%d7%a4%d7%a0%d7%94/",
+   "lat": 32.080866,
+   "lng": 34.793167,
+   "position_from": "page JSON-LD geo; precision not stated, shown as approximate",
+   "retrieved": "2026-10-07T08:35:15Z"
+  }
+ ],
+ "places": [
+  {
+   "id": "osm-way-1560569019",
+   "cat": "edu",
+   "type": "בית ספר",
+   "name": "בי\"ס יהודה המכבי",
+   "lat": 32.092354,
+   "lng": 34.784721,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/1560569019",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-1182815868",
+   "cat": "edu",
+   "type": "בית ספר",
+   "name": "בית הספר מירון",
+   "lat": 32.095506,
+   "lng": 34.789077,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/1182815868",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-167780827",
+   "cat": "edu",
+   "type": "בית ספר",
+   "name": "בית ספר היובל",
+   "lat": 32.081162,
+   "lng": 34.784987,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/167780827",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-140917803",
+   "cat": "edu",
+   "type": "בית ספר",
+   "name": "בית ספר עירוני ד'",
+   "lat": 32.09303,
+   "lng": 34.790944,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/140917803",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-405360284",
+   "cat": "edu",
+   "type": "בית ספר",
+   "name": "הגימנסיה העברית הרצליה",
+   "lat": 32.086799,
+   "lng": 34.785213,
+   "addr": "ז'בוטינסקי 106",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/405360284",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-206773123",
+   "cat": "edu",
+   "type": "בית ספר",
+   "name": "התיכון החדש ע\"ש יצחק רבין",
+   "lat": 32.089814,
+   "lng": 34.794635,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/206773123",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-1183060171",
+   "cat": "edu",
+   "type": "בית ספר",
+   "name": "עירוני ד' סניף",
+   "lat": 32.095587,
+   "lng": 34.791848,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/1183060171",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-1183060379",
+   "cat": "edu",
+   "type": "בית ספר",
+   "name": "עירוני י\"א",
+   "lat": 32.093156,
+   "lng": 34.787607,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/1183060379",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-683470518",
+   "cat": "edu",
+   "type": "גן ילדים",
+   "name": "גן אורי",
+   "lat": 32.0817,
+   "lng": 34.784569,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/683470518",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-10784983315",
+   "cat": "edu",
+   "type": "גן ילדים",
+   "name": "גן ילדים על שם שרה ברוורמן-קניוק",
+   "lat": 32.079776,
+   "lng": 34.792357,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/10784983315",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-727986714",
+   "cat": "edu",
+   "type": "גן ילדים",
+   "name": "צהרוני \"ניצני יובל\"",
+   "lat": 32.095259,
+   "lng": 34.784743,
+   "addr": "בני דן 6",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/727986714",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-733464835",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גינת אורי",
+   "lat": 32.081783,
+   "lng": 34.78493,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/733464835",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-30146258",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גינת דובנוב",
+   "lat": 32.077765,
+   "lng": 34.784435,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/30146258",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-149384939",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן א.ל. זיסו",
+   "lat": 32.083625,
+   "lng": 34.78357,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/149384939",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-370074338",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן אברהם",
+   "lat": 32.087265,
+   "lng": 34.791885,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/370074338",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-30826885",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן אברמוביץ'",
+   "lat": 32.09434,
+   "lng": 34.796569,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/30826885",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-26301651",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן אריסון",
+   "lat": 32.080921,
+   "lng": 34.787532,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/26301651",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-203219827",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן גורדון",
+   "lat": 32.083058,
+   "lng": 34.789785,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/203219827",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-91599859",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן גרמניס",
+   "lat": 32.084859,
+   "lng": 34.787499,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/91599859",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-30879066",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן הגת",
+   "lat": 32.084789,
+   "lng": 34.791569,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/30879066",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-362314995",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן ההסתדרות",
+   "lat": 32.08533,
+   "lng": 34.783776,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/362314995",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-157509492",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן וולובלסקי קרני",
+   "lat": 32.081507,
+   "lng": 34.794807,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/157509492",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-623856901",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן זאב",
+   "lat": 32.08054,
+   "lng": 34.786236,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/623856901",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-34748041",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן זינגר",
+   "lat": 32.095458,
+   "lng": 34.793674,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/34748041",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-31539863",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן משה כהן",
+   "lat": 32.08923,
+   "lng": 34.79079,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/31539863",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-30828437",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן נורי",
+   "lat": 32.091141,
+   "lng": 34.786812,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/30828437",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-26301668",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן סוטין",
+   "lat": 32.082412,
+   "lng": 34.78616,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/26301668",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-30879232",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן פולק",
+   "lat": 32.089197,
+   "lng": 34.789754,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/30879232",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-35148082",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן פייבל",
+   "lat": 32.084579,
+   "lng": 34.793649,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/35148082",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-relation-8662271",
+   "cat": "parks",
+   "type": "פארק",
+   "name": "שדרות דוד המלך",
+   "lat": 32.079909,
+   "lng": 34.784934,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/relation/8662271",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-9483154691",
+   "cat": "shop",
+   "type": "בית מרקחת",
+   "name": "גוד פארם",
+   "lat": 32.081367,
+   "lng": 34.781538,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/9483154691",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-10110475398",
+   "cat": "shop",
+   "type": "בית מרקחת",
+   "name": "גוד פארם",
+   "lat": 32.083848,
+   "lng": 34.789365,
+   "addr": "ויצמן 24",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/10110475398",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-10923421862",
+   "cat": "shop",
+   "type": "בית מרקחת",
+   "name": "גוד פארם",
+   "lat": 32.091219,
+   "lng": 34.783092,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/10923421862",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-1309308409",
+   "cat": "shop",
+   "type": "בית מרקחת",
+   "name": "סופר-פארם",
+   "lat": 32.08891,
+   "lng": 34.797499,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/1309308409",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-2078959857",
+   "cat": "shop",
+   "type": "בית מרקחת",
+   "name": "סופר-פארם",
+   "lat": 32.086634,
+   "lng": 34.782259,
+   "addr": "אבן גבירול",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/2078959857",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-8443459383",
+   "cat": "shop",
+   "type": "בית מרקחת",
+   "name": "סופר-פארם",
+   "lat": 32.079376,
+   "lng": 34.781681,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/8443459383",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-11513852130",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "Cafe Chablis",
+   "lat": 32.077374,
+   "lng": 34.781522,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/11513852130",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-4161854778",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "Cafe Henrietta",
+   "lat": 32.082941,
+   "lng": 34.791636,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/4161854778",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-4161854779",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "Cake Art",
+   "lat": 32.082899,
+   "lng": 34.791857,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/4161854779",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-13899276701",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "Jera",
+   "lat": 32.078115,
+   "lng": 34.781493,
+   "addr": "אבן גבירול 54א",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/13899276701",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-1207157419",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "Uno",
+   "lat": 32.07748,
+   "lng": 34.789076,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/1207157419",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-1309308446",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "restaurant poisson Ada",
+   "lat": 32.088969,
+   "lng": 34.797202,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/1309308446",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-6564590385",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "אספרסו בר",
+   "lat": 32.093963,
+   "lng": 34.790791,
+   "addr": "יהודה המכבי 55",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/6564590385",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-11169886012",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "ארומה",
+   "lat": 32.081603,
+   "lng": 34.789293,
+   "addr": "ויצמן 14",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/11169886012",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-10784964980",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "ארקפה",
+   "lat": 32.07829,
+   "lng": 34.788636,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/10784964980",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-11088954278",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "בית לחם",
+   "lat": 32.083419,
+   "lng": 34.789333,
+   "addr": "ויצמן 20",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/11088954278",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-9312382294",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "ג'ונו",
+   "lat": 32.093637,
+   "lng": 34.78505,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/9312382294",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-4973245325",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "דידו קפה",
+   "lat": 32.091097,
+   "lng": 34.787385,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/4973245325",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-6227660300",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "דלל",
+   "lat": 32.08726,
+   "lng": 34.786339,
+   "addr": "ז'בוטינסקי 110",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/6227660300",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-1717768353",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "זוריק",
+   "lat": 32.093712,
+   "lng": 34.785083,
+   "addr": "יהודה המכבי 4",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/1717768353",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-10825033512",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "לוצ'ה",
+   "lat": 32.083033,
+   "lng": 34.789275,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/10825033512",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-11088945317",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "לחם ארז",
+   "lat": 32.085838,
+   "lng": 34.788497,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/11088945317",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-9312382295",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "לנדוור",
+   "lat": 32.091995,
+   "lng": 34.785319,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/9312382295",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-11163232373",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "מיצלי",
+   "lat": 32.083969,
+   "lng": 34.789408,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/11163232373",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-9350046743",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "מתוקה",
+   "lat": 32.084953,
+   "lng": 34.785356,
+   "addr": "ארלוזורוב 97",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/9350046743",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-2488604312",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "ספסל",
+   "lat": 32.078368,
+   "lng": 34.783253,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/2488604312",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-11169880831",
+   "cat": "shop",
+   "type": "בית קפה",
+   "name": "רולדין",
+   "lat": 32.081659,
+   "lng": 34.78975,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/11169880831",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-1643304645",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "7to7",
+   "lat": 32.081194,
+   "lng": 34.781488,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/1643304645",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-3458644340",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "AM:PM",
+   "lat": 32.088325,
+   "lng": 34.782565,
+   "addr": "אבן גבירול 136",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/3458644340",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-7011476318",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "AM:PM",
+   "lat": 32.077912,
+   "lng": 34.790886,
+   "addr": "שאול המלך 41",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/7011476318",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-14179976773",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "Carrefour City",
+   "lat": 32.079336,
+   "lng": 34.795043,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/14179976773",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-1791415676",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "Carrefour Market",
+   "lat": 32.081466,
+   "lng": 34.785508,
+   "addr": "לסר אורי 12",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/1791415676",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-11176622421",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "City Market",
+   "lat": 32.087741,
+   "lng": 34.790891,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/11176622421",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-11163200118",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "ויקטורי",
+   "lat": 32.084928,
+   "lng": 34.789193,
+   "addr": "ויצמן 53",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/11163200118",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-777400968",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "טיב טעם",
+   "lat": 32.07987,
+   "lng": 34.781519,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/777400968",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-6286327186",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "טיב טעם",
+   "lat": 32.094022,
+   "lng": 34.791834,
+   "addr": "יהודה המכבי 69",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/6286327186",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-10923438502",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "טיב טעם",
+   "lat": 32.090769,
+   "lng": 34.783052,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/10923438502",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-10765295517",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "טיב טעם בעיר",
+   "lat": 32.083134,
+   "lng": 34.792771,
+   "addr": "ארלוזורוב 149",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/10765295517",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-1309308441",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "טיפ טוב",
+   "lat": 32.094277,
+   "lng": 34.798408,
+   "addr": "בבלי 17",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/1309308441",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-3461420325",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "מגה בעיר",
+   "lat": 32.090748,
+   "lng": 34.789028,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/3461420325",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-6401692655",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "מינימרקט לינוי",
+   "lat": 32.081427,
+   "lng": 34.783497,
+   "addr": "גליצנשטיין 2",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/6401692655",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-5245475874",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "ניו מרקט",
+   "lat": 32.084006,
+   "lng": 34.788999,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/5245475874",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-11174881987",
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "שופרסל שלי",
+   "lat": 32.081676,
+   "lng": 34.790171,
+   "addr": "ויצמן 14",
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/11174881987",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-way-30797420",
+   "cat": "transit",
+   "type": "מסוף אוטובוסים",
+   "name": "מסוף 2000",
+   "lat": 32.082917,
+   "lng": 34.796116,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/30797420",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-11124786622",
+   "cat": "transit",
+   "type": "תחנת הרכבת הקלה",
+   "name": "ארלוזורוב",
+   "lat": 32.081565,
+   "lng": 34.796508,
+   "addr": null,
+   "edge_m": null,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/11124786622",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-11124793538",
+   "cat": "transit",
+   "type": "תחנת הרכבת הקלה",
+   "name": "שאול המלך",
+   "lat": 32.076918,
+   "lng": 34.792155,
+   "addr": null,
+   "edge_m": 114,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/11124793538",
+   "retrieved": "2026-10-07T08:33:46Z"
+  },
+  {
+   "id": "osm-node-2930618402",
+   "cat": "transit",
+   "type": "תחנת רכבת",
+   "name": "תל אביב סבידור מרכז",
+   "lat": 32.084244,
+   "lng": 34.798312,
+   "addr": null,
+   "edge_m": 2,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/2930618402",
+   "retrieved": "2026-10-07T08:33:46Z"
+  }
+ ],
+ "not_placed": {
+  "renewal": [
+   {
+    "id": "remez-22",
+    "address": "רמז 22",
+    "before": null,
+    "after": "32 דירות",
+    "developer": "אנשי העיר",
+    "stage": "אישור ועדה",
+    "facts": [
+     "R47",
+     "U8"
+    ],
+    "sources": [
+     "https://www.nadlancenter.co.il/article/13436"
+    ],
+    "source_date": "10.12.2025",
+    "why_unplaced": "Nominatim matched the street only, no house number",
+    "nominatim_tried": [
+     "דוד רמז 22, תל אביב-יפו",
+     "רמז 22, תל אביב-יפו"
+    ]
+   }
+  ],
+  "projects": [
+   {
+    "url": "https://nad-lan.co.il/projects/toha2-tel-aviv/",
+    "title": "ToHa2 תל אביב - משרדים להשכרה מגדל תוהא תל אביב",
+    "why": "outside the quarter line",
+    "lat": 32.073479,
+    "lng": 34.795307
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/meier-on-rothschild/",
+    "title": "מגדל מאייר על רוטשילד - מגדל יוקרה אייקוני של קבוצת חג׳ג׳",
+    "why": "outside the quarter line",
+    "lat": 32.063153,
+    "lng": 34.773626
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/shikun-binui-sde-dov/",
+    "title": "שיכון ובינוי שדה דב - דיור להשכרה (מגרש 109)",
+    "why": "outside the quarter line",
+    "lat": 32.103371,
+    "lng": 34.785624
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/utopia-sde-dov/",
+    "title": "UTOPIA שדה דב - קבוצת נחמיאס",
+    "why": "outside the quarter line",
+    "lat": 32.106063,
+    "lng": 34.784732
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/zohi-sde-dov/",
+    "title": "ZOHI זוהי שדה דב - לוינשטין מבנה אלייד",
+    "why": "outside the quarter line",
+    "lat": 32.102851,
+    "lng": 34.785483
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/",
+    "title": "DIMRI YAMA שדה דב - י.ח דמרי",
+    "why": "outside the quarter line",
+    "lat": 32.104441,
+    "lng": 34.784472
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+    "title": "ASHIRA - פרויקט אשירה שדה דב תל אביב מחיר",
+    "why": "outside the quarter line",
+    "lat": 32.105643,
+    "lng": 34.787673
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+    "title": "Rainbow Tel Aviv - ריינבו תל אביב",
+    "why": "outside the quarter line",
+    "lat": 32.103168,
+    "lng": 34.784441
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%94%d7%93%d7%a8-%d7%99%d7%95%d7%a1%d7%a3/",
+    "title": "הדר יוסף",
+    "why": "catalogue city-centre fallback position, no real coordinate"
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%94%d7%93%d7%92%d7%a0%d7%99%d7%9d-11-15/",
+    "title": "הדגנים 11-15",
+    "why": "outside the quarter line",
+    "lat": 32.06787,
+    "lng": 34.807053
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%90%d7%a0%d7%a6%d7%95-%d7%a1%d7%99%d7%a8%d7%a0%d7%99-38-42/",
+    "title": "אנצו סירני 38-42",
+    "why": "outside the quarter line",
+    "lat": 32.069963,
+    "lng": 34.806414
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%a8%d7%92-1506-%d7%90-%d7%9e%d7%aa%d7%97%d7%9d-%d7%94%d7%a8%d7%90%d7%a9%d7%95%d7%a0%d7%99%d7%9d-%d7%94%d7%9e%d7%a2%d7%99%d7%9f-%d7%99%d7%94%d7%95%d7%93%d7%94/",
+    "title": "רג/1506/א-מתחם הראשונים-המעין-יהודה",
+    "why": "outside the quarter line",
+    "lat": 32.081971,
+    "lng": 34.803335
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%90%d7%91%d7%90-%d7%94%d7%9c%d7%9c-6365/",
+    "title": "אבא הלל 63,65",
+    "why": "outside the quarter line",
+    "lat": 32.089614,
+    "lng": 34.809075
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%94%d7%aa%d7%97%d7%93%d7%a9%d7%95%d7%aa-%d7%93%d7%a8%d7%9a-%d7%94%d7%a9%d7%9c%d7%95%d7%9d-117-105/",
+    "title": "התחדשות דרך השלום 117-105",
+    "why": "outside the quarter line",
+    "lat": 32.060602,
+    "lng": 34.806883
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%92%d7%a0%d7%a1%d7%99%d7%9f-%d7%95%d7%99%d7%a6%d7%9e%d7%9f-%d7%a8%d7%9e%d7%91%d7%9d/",
+    "title": "גנסין-ויצמן-רמב\"ם",
+    "why": "outside the quarter line",
+    "lat": 32.070885,
+    "lng": 34.808171
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%96%d7%91%d7%95%d7%98%d7%99%d7%a0%d7%a1%d7%a7%d7%99-39-41-%d7%9e%d7%a7%d7%93%d7%95%d7%a0%d7%9c%d7%93/",
+    "title": "מתחם זבוטינסקי 39-41 , מקדונלד",
+    "why": "outside the quarter line",
+    "lat": 32.084281,
+    "lng": 34.807888
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%a2%d7%9c%d7%99%d7%99%d7%aa-%d7%94%d7%a0%d7%95%d7%a2%d7%a8-%d7%a6%d7%a4%d7%95%d7%9f/",
+    "title": "עליית הנוער צפון",
+    "why": "outside the quarter line",
+    "lat": 32.077849,
+    "lng": 34.802716
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%94%d7%a8%d7%99%d7%9e%d7%95%d7%9f-%d7%a4%d7%a0%d7%99-%d7%94%d7%92%d7%91%d7%a2%d7%94/",
+    "title": "הרימון - פני הגבעה",
+    "why": "outside the quarter line",
+    "lat": 32.088086,
+    "lng": 34.809702
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%a9%d7%9e%d7%a2%d7%95%d7%a0%d7%99-29-27-%d7%aa%d7%9c-%d7%90%d7%91%d7%99%d7%91/",
+    "title": "שמעוני 29-27 תל אביב",
+    "why": "outside the quarter line",
+    "lat": 32.108204,
+    "lng": 34.792742
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%a8%d7%91%d7%99%d7%9f/",
+    "title": "מתחם רבין",
+    "why": "outside the quarter line",
+    "lat": 32.066804,
+    "lng": 34.807222
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%a2%d7%9c%d7%99%d7%99%d7%aa-%d7%94%d7%a0%d7%95%d7%a2%d7%a8-%d7%94%d7%a4%d7%95%d7%a2%d7%9c-%d7%94%d7%a6%d7%a2%d7%99%d7%a8/",
+    "title": "עליית הנוער- הפועל הצעיר",
+    "why": "outside the quarter line",
+    "lat": 32.076354,
+    "lng": 34.802957
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91-%d7%a9%d7%9e%d7%97%d7%94-%d7%94%d7%9e%d7%aa%d7%9e%d7%99%d7%93/",
+    "title": "מתחם ארלוזורוב שמחה המתמיד",
+    "why": "outside the quarter line",
+    "lat": 32.080905,
+    "lng": 34.805754
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%99%d7%93%d7%a2-%d7%a2%d7%9d/",
+    "title": "ידע עם",
+    "why": "outside the quarter line",
+    "lat": 32.08952,
+    "lng": 34.802119
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%aa%d7%90-%d7%9e%d7%a7-5069-%d7%93%d7%a8%d7%9a-%d7%94%d7%a9%d7%9c%d7%95%d7%9d-77-85/",
+    "title": "תא/ מק/ 5069 - דרך השלום 77-85",
+    "why": "outside the quarter line",
+    "lat": 32.064668,
+    "lng": 34.803625
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%93%d7%a8%d7%9a-%d7%94%d7%a9%d7%9c%d7%95%d7%9d-71-75/",
+    "title": "דרך השלום 71-75",
+    "why": "outside the quarter line",
+    "lat": 32.065611,
+    "lng": 34.803407
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%92%d7%91-599-%d7%9e%d7%aa%d7%97%d7%9d-%d7%a6%d7%99%d7%a4%d7%95%d7%a8%d7%9f/",
+    "title": "גב/599 - מתחם ציפורן",
+    "why": "outside the quarter line",
+    "lat": 32.074192,
+    "lng": 34.801577
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%92%d7%91-661-%d7%92%d7%95%d7%9c%d7%95%d7%9e%d7%91-2-28/",
+    "title": "גב/661 - גולומב 2-28",
+    "why": "outside the quarter line",
+    "lat": 32.068899,
+    "lng": 34.809717
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%94%d7%9e%d7%90%d7%91%d7%a7-4-10/",
+    "title": "המאבק 4-10",
+    "why": "outside the quarter line",
+    "lat": 32.065812,
+    "lng": 34.808401
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%a2%d7%9e%d7%a7-%d7%91%d7%a8%d7%9b%d7%94/",
+    "title": "עמק ברכה",
+    "why": "catalogue city-centre fallback position, no real coordinate"
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%94%d7%97%d7%a8%d7%a9-%d7%95%d7%94%d7%90%d7%95%d7%9e%d7%9f/",
+    "title": "החרש והאומן",
+    "why": "catalogue city-centre fallback position, no real coordinate"
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%a0%d7%95%d7%95%d7%94-%d7%a9%d7%a8%d7%aa-%d7%91%d7%99%d7%aa-%d7%90%d7%9c/",
+    "title": "נווה שרת - בית אל",
+    "why": "catalogue city-centre fallback position, no real coordinate"
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%97%d7%a1%d7%9f-%d7%a2%d7%a8%d7%90%d7%a4%d7%94/",
+    "title": "חסן עראפה",
+    "why": "catalogue city-centre fallback position, no real coordinate"
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%91%d7%91%d7%9c%d7%99/",
+    "title": "בבלי",
+    "why": "catalogue city-centre fallback position, no real coordinate"
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%a2%d7%9e%d7%99%d7%a0%d7%93%d7%91/",
+    "title": "עמינדב",
+    "why": "outside the quarter line",
+    "lat": 32.064452,
+    "lng": 34.793898
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%93%d7%a8%d7%9a-%d7%94%d7%a9%d7%9c%d7%95%d7%9d-8789/",
+    "title": "דרך השלום 87,89",
+    "why": "outside the quarter line",
+    "lat": 32.063559,
+    "lng": 34.804078
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%a7%d7%94%d7%99%d7%9c%d7%aa-%d7%95%d7%a8%d7%a9%d7%94-737779/",
+    "title": "קהילת ורשה 73,77,79",
+    "why": "catalogue city-centre fallback position, no real coordinate"
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%94%d7%93%d7%a7%d7%9c%d7%99%d7%9d-%d7%90%d7%91%d7%90-%d7%94%d7%9c%d7%9c/",
+    "title": "הדקלים אבא הלל",
+    "why": "outside the quarter line",
+    "lat": 32.088814,
+    "lng": 34.808901
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%94%d7%98%d7%99%d7%99%d7%a1%d7%99%d7%9d-6810/",
+    "title": "הטייסים 6,8,10",
+    "why": "outside the quarter line",
+    "lat": 32.060916,
+    "lng": 34.803959
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%9b%d7%a4%d7%a8-%d7%a9%d7%9c%d7%9d/",
+    "title": "כפר שלם",
+    "why": "catalogue city-centre fallback position, no real coordinate"
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%97%d7%a9%d7%9e%d7%95%d7%a0%d7%90%d7%99%d7%9d-%d7%91%d7%a2%d7%96/",
+    "title": "חשמונאים בעז",
+    "why": "outside the quarter line",
+    "lat": 32.079999,
+    "lng": 34.808809
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%94%d7%a8%d7%9b%d7%91%d7%aa/",
+    "title": "הרכבת",
+    "why": "catalogue city-centre fallback position, no real coordinate"
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%99%d7%9c%d7%93%d7%99-%d7%98%d7%94%d7%a8%d7%9f/",
+    "title": "ילדי טהרן",
+    "why": "outside the quarter line",
+    "lat": 32.065459,
+    "lng": 34.806163
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%a7%d7%94%d7%99%d7%9c%d7%aa-%d7%95%d7%a8%d7%a9%d7%94-2/",
+    "title": "קהילת ורשה (2)",
+    "why": "catalogue city-centre fallback position, no real coordinate"
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%9e%d7%aa%d7%97%d7%9d-%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91-%d7%94%d7%9e%d7%aa%d7%9e%d7%99%d7%93/",
+    "title": "מתחם ארלוזורוב המתמיד",
+    "why": "outside the quarter line",
+    "lat": 32.083081,
+    "lng": 34.806102
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%91%d7%99%d7%90%d7%9c%d7%99%d7%a7-%d7%91%d7%a0%d7%99%d7%9e%d7%99%d7%9f/",
+    "title": "ביאליק – בנימין",
+    "why": "outside the quarter line",
+    "lat": 32.086749,
+    "lng": 34.80678
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%a2%d7%a8%d7%91%d7%99-%d7%a0%d7%97%d7%9c/",
+    "title": "ערבי נחל",
+    "why": "outside the quarter line",
+    "lat": 32.079249,
+    "lng": 34.800469
+   }
+  ],
+  "places_dropped": {
+   "unnamed": 109,
+   "outside": 157,
+   "duplicate": 0,
+   "other": 0,
+   "stop_position": 11
+  }
+ }
+}

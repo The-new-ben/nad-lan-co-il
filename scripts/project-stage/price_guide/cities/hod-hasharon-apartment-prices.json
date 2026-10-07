@@ -1,0 +1,292 @@
+{
+ "slug": "hod-hasharon-apartment-prices",
+ "mode": "rooms",
+ "page": "https://nad-lan.co.il/hod-hasharon-apartment-prices/",
+ "city_he": "הוד השרון",
+ "settlement_code": 9700,
+ "settlement_name_official": "הוד השרון",
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "data_quarter": "1-3.2026",
+ "file_date": "2026-08-20",
+ "file_date_he": "20.8.2026",
+ "title": "כמה עולה דירה בהוד השרון ב-2026",
+ "answer": "ברבעון הראשון של 2026, חציון מחיר העסקה בהוד השרון היה 2,647,000 ₪ לדירת 3 חדרים, 3,264,800 ₪ לדירת 4 חדרים ו-4,245,600 ₪ לדירת 5 חדרים. לעומת הרבעון הראשון של 2025, החציון עלה ב-0.5% לדירת 3 חדרים, ירד ב-2.2% לדירת 4 חדרים וירד ב-3.7% לדירת 5 חדרים. בכל הארץ, חציון מחיר העסקה לדירת 4 חדרים ברבעון הראשון של 2026 היה 2,072,000 ₪.",
+ "rooms": {
+  "3": {
+   "latest": 2647000,
+   "quarter": "1-3.2026",
+   "year_ago": 2633900,
+   "change_pct": 0.5,
+   "quarters": [
+    [
+     "4-6.2024",
+     null
+    ],
+    [
+     "7-9.2024",
+     2774700
+    ],
+    [
+     "10-12.2024",
+     null
+    ],
+    [
+     "1-3.2025",
+     2633900
+    ],
+    [
+     "4-6.2025",
+     null
+    ],
+    [
+     "7-9.2025",
+     2950700
+    ],
+    [
+     "10-12.2025",
+     null
+    ],
+    [
+     "1-3.2026",
+     2647000
+    ]
+   ]
+  },
+  "4": {
+   "latest": 3264800,
+   "quarter": "1-3.2026",
+   "year_ago": 3338700,
+   "change_pct": -2.2,
+   "quarters": [
+    [
+     "4-6.2024",
+     3249400
+    ],
+    [
+     "7-9.2024",
+     3240200
+    ],
+    [
+     "10-12.2024",
+     3271000
+    ],
+    [
+     "1-3.2025",
+     3338700
+    ],
+    [
+     "4-6.2025",
+     3306200
+    ],
+    [
+     "7-9.2025",
+     3422600
+    ],
+    [
+     "10-12.2025",
+     3262700
+    ],
+    [
+     "1-3.2026",
+     3264800
+    ]
+   ]
+  },
+  "5": {
+   "latest": 4245600,
+   "quarter": "1-3.2026",
+   "year_ago": 4409000,
+   "change_pct": -3.7,
+   "quarters": [
+    [
+     "4-6.2024",
+     4228500
+    ],
+    [
+     "7-9.2024",
+     4259600
+    ],
+    [
+     "10-12.2024",
+     4413900
+    ],
+    [
+     "1-3.2025",
+     4409000
+    ],
+    [
+     "4-6.2025",
+     4247400
+    ],
+    [
+     "7-9.2025",
+     4340000
+    ],
+    [
+     "10-12.2025",
+     4511800
+    ],
+    [
+     "1-3.2026",
+     4245600
+    ]
+   ]
+  },
+  "all": {
+   "latest": 3149300,
+   "quarter": "1-3.2026",
+   "year_ago": 3111700,
+   "change_pct": 1.2,
+   "quarters": [
+    [
+     "4-6.2024",
+     3037600
+    ],
+    [
+     "7-9.2024",
+     3084200
+    ],
+    [
+     "10-12.2024",
+     3157100
+    ],
+    [
+     "1-3.2025",
+     3111700
+    ],
+    [
+     "4-6.2025",
+     null
+    ],
+    [
+     "7-9.2025",
+     3336400
+    ],
+    [
+     "10-12.2025",
+     3247000
+    ],
+    [
+     "1-3.2026",
+     3149300
+    ]
+   ]
+  }
+ },
+ "israel": {
+  "quarter": "1-3.2026",
+  "3": 1647500,
+  "4": 2072000,
+  "5": 2920600,
+  "all": 2058800
+ },
+ "israel_latest": {
+  "quarter": "4-6.2026",
+  "3": 1677400,
+  "4": 2028800,
+  "5": 2822700,
+  "all": 2130500
+ },
+ "neighbourhoods": [
+  {
+   "name": "מגדיאל",
+   "id": 65210568,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 2735000,
+    "4": 3048600,
+    "5": 3733800
+   },
+   "quarters_with_data": 14
+  },
+  {
+   "name": "שרת",
+   "id": 65210571,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 3210500,
+    "5": 4014000
+   },
+   "quarters_with_data": 8
+  },
+  {
+   "name": "הדר",
+   "id": 65210573,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 3151300,
+    "5": null
+   },
+   "quarters_with_data": 7
+  },
+  {
+   "name": "מתחם 1200",
+   "id": 65210567,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": null,
+    "5": 4225600
+   },
+   "quarters_with_data": 5
+  },
+  {
+   "name": "מתחם 200",
+   "id": 65210569,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 3351500,
+    "5": null
+   },
+   "quarters_with_data": 4
+  }
+ ],
+ "neighbourhoods_note": "Official neighbourhood medians for the city's data quarter (null = not published for that quarter). The official files give no deal counts, so neighbourhoods are ranked by quarters_with_data: how many of the 32 values (3/4/5/all rooms x the last 8 quarters) carry an official median. Only neighbourhoods with at least one 3/4/5-room median in the data quarter are kept. Names exactly as in the official files.",
+ "notes": "rooms.<k>.latest is the newest published median for that room count and rooms.<k>.quarter is its quarter (it can be older than data_quarter when the newer quarter was not published). year_ago = the same quarter one year earlier; change_pct = (latest - year_ago) / year_ago. quarters = the 8 quarters ending at data_quarter, oldest first, null where not published. israel = the Israel medians for data_quarter (same-quarter comparison); israel_latest = the newest Israel quarter in the same file. Full apartment prices in ILS, not per m2.",
+ "src_line": "חציון מחיר העסקה, לפי מספר החדרים, בעסקאות שדווחו לרשות המסים ברבעון הראשון של 2026 (1-3.2026). עודכן 7.10.2026.",
+ "sources": [
+  {
+   "what": "official settlement summary file (median deal price by rooms per quarter; city series and Israel series)",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/9700.json",
+   "retrieved_utc": "2026-10-07 08:43:29",
+   "last_modified": "Thu, 20 Aug 2026 10:32:29 GMT",
+   "name_in_file": "הוד השרון",
+   "id_in_file": 9700,
+   "version": "20-08-2026"
+  },
+  {
+   "what": "official neighbourhood summary file: מגדיאל",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210568.json",
+   "retrieved_utc": "2026-10-07 08:59:46",
+   "last_modified": "Thu, 20 Aug 2026 10:30:32 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: שרת",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210571.json",
+   "retrieved_utc": "2026-10-07 08:59:50",
+   "last_modified": "Thu, 20 Aug 2026 10:30:32 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: הדר",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210573.json",
+   "retrieved_utc": "2026-10-07 08:59:52",
+   "last_modified": "Thu, 20 Aug 2026 10:30:32 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: מתחם 1200",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210567.json",
+   "retrieved_utc": "2026-10-07 08:59:44",
+   "last_modified": "Thu, 20 Aug 2026 10:30:32 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: מתחם 200",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210569.json",
+   "retrieved_utc": "2026-10-07 08:59:47",
+   "last_modified": "Thu, 20 Aug 2026 10:30:32 GMT"
+  }
+ ]
+}

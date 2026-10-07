@@ -18,6 +18,9 @@ LANGS = ("he", "en", "fr", "ru", "ar")
 KEYS = ("hamedina", "rova-4")
 
 
+CITIES = ()  # page slugs whose price list comes from cities/<slug>.json (the rooms variant); a release names them
+
+
 def payloads():
     out = {}
     for key in KEYS:
@@ -26,7 +29,25 @@ def payloads():
             if os.path.exists(fn):
                 d = json.load(io.open(fn, encoding="utf-8"))
                 out[(key, lang)] = PG.html(d, "{{WA}}")
+    if CITIES:
+        import rooms as RM
+        tax = json.load(io.open(os.path.join(HERE, "hamedina.json"), encoding="utf-8"))["calc"]
+        for slug in CITIES:
+            d = json.load(io.open(os.path.join(HERE, "cities", slug + ".json"), encoding="utf-8"))
+            d.setdefault("tax_single", tax["tax_single"])  # the site's brackets (/purchase-tax-calculator/), one source
+            d.setdefault("tax_more", tax["tax_more"])
+            out[(slug, "he")] = RM.html(d, "{{WA}}")
     return out
+
+
+def assets():
+    """The shared CSS and script: the base component, plus the rooms variant when a city is in the build."""
+    css, js = PG.CSS.strip(), PG.JS.strip()
+    if CITIES:
+        import rooms as RM
+        css += "\n" + RM.CSS_R.strip()
+        js += "\n" + RM.JS_R.strip()
+    return css, js
 
 
 def helper():
@@ -35,11 +56,12 @@ def helper():
         raise SystemExit("pg_helper: the Kikar Hebrew data is missing")
     lab = {k: "NLPG_" + re.sub(r"[^A-Z0-9]", "_", (k[0] + "_" + k[1]).upper()) for k in P}
     every = list(lab.values()) + ["NLPG_CSS", "NLPG_JS"]
-    for h in list(P.values()) + [PG.CSS, PG.JS]:
+    CSS_ALL, JS_ALL = assets()
+    for h in list(P.values()) + [CSS_ALL, JS_ALL]:
         if any(x in h for x in every):
             raise SystemExit("pg_helper: a nowdoc label appears inside a payload")
     php = ["if ( ! function_exists( 'nadlan_pg_render' ) ) {\n",
-           "\t/** PriceGuide v2.1 (design system 7.10.2026, HAD-460): the price list and the price calculator. Built by\n",
+           "\t/** PriceGuide v2.3 (design system 7.10.2026, HAD-460): the price list and the price calculator. Built by\n",
            "\t *  scripts/project-stage/price_guide/pg_helper.py from <key>.json and <key>.<lang>.json (every number has its source there).\n",
            "\t *  Sections: " + ", ".join(f"{k}/{l}" for k, l in sorted(P)) + ". */\n",
            "\tfunction nadlan_pg_html( $key, $lang ) {\n",
@@ -58,8 +80,8 @@ def helper():
             "\t\t$html = str_replace( '{{WA}}', $wa, $html );\n",
             "\t\tif ( $assets ) { return $html; }\n",
             "\t\t$assets = true;\n",
-            "\t\t$css = <<<'NLPG_CSS'\n" + PG.CSS.strip() + "\nNLPG_CSS;\n",
-            "\t\t$js  = <<<'NLPG_JS'\n" + PG.JS.strip() + "\nNLPG_JS;\n",
+            "\t\t$css = <<<'NLPG_CSS'\n" + CSS_ALL + "\nNLPG_CSS;\n",
+            "\t\t$js  = <<<'NLPG_JS'\n" + JS_ALL + "\nNLPG_JS;\n",
             "\t\treturn '<style id=\"nlpg-css\">' . $css . '</style>' . $html . '<script id=\"nlpg-js\">' . $js . '</script>';\n",
             "\t}\n",
             "\tfunction nadlan_pg_render( $ps, $wa ) {\n",

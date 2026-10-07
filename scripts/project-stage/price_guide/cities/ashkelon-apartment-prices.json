@@ -1,0 +1,343 @@
+{
+ "slug": "ashkelon-apartment-prices",
+ "mode": "rooms",
+ "page": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+ "city_he": "אשקלון",
+ "settlement_code": 7100,
+ "settlement_name_official": "אשקלון",
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "data_quarter": "1-3.2026",
+ "file_date": "2026-08-20",
+ "file_date_he": "20.8.2026",
+ "title": "כמה עולה דירה באשקלון ב-2026",
+ "answer": "ברבעון הראשון של 2026, חציון מחיר העסקה באשקלון היה 918,100 ₪ לדירת 3 חדרים, 1,405,800 ₪ לדירת 4 חדרים ו-1,891,000 ₪ לדירת 5 חדרים. לעומת הרבעון הראשון של 2025, החציון ירד ב-20.6% לדירת 3 חדרים, ירד ב-12% לדירת 4 חדרים וירד ב-11.7% לדירת 5 חדרים. בכל הארץ, חציון מחיר העסקה לדירת 4 חדרים ברבעון הראשון של 2026 היה 2,072,000 ₪.",
+ "rooms": {
+  "3": {
+   "latest": 918100,
+   "quarter": "1-3.2026",
+   "year_ago": 1156700,
+   "change_pct": -20.6,
+   "quarters": [
+    [
+     "4-6.2024",
+     1124500
+    ],
+    [
+     "7-9.2024",
+     1217300
+    ],
+    [
+     "10-12.2024",
+     1226000
+    ],
+    [
+     "1-3.2025",
+     1156700
+    ],
+    [
+     "4-6.2025",
+     1134400
+    ],
+    [
+     "7-9.2025",
+     1145200
+    ],
+    [
+     "10-12.2025",
+     1142100
+    ],
+    [
+     "1-3.2026",
+     918100
+    ]
+   ]
+  },
+  "4": {
+   "latest": 1405800,
+   "quarter": "1-3.2026",
+   "year_ago": 1597300,
+   "change_pct": -12.0,
+   "quarters": [
+    [
+     "4-6.2024",
+     1637500
+    ],
+    [
+     "7-9.2024",
+     1519500
+    ],
+    [
+     "10-12.2024",
+     1625500
+    ],
+    [
+     "1-3.2025",
+     1597300
+    ],
+    [
+     "4-6.2025",
+     1497600
+    ],
+    [
+     "7-9.2025",
+     1544000
+    ],
+    [
+     "10-12.2025",
+     1547100
+    ],
+    [
+     "1-3.2026",
+     1405800
+    ]
+   ]
+  },
+  "5": {
+   "latest": 1891000,
+   "quarter": "1-3.2026",
+   "year_ago": 2142600,
+   "change_pct": -11.7,
+   "quarters": [
+    [
+     "4-6.2024",
+     2142800
+    ],
+    [
+     "7-9.2024",
+     2080000
+    ],
+    [
+     "10-12.2024",
+     1988800
+    ],
+    [
+     "1-3.2025",
+     2142600
+    ],
+    [
+     "4-6.2025",
+     2062600
+    ],
+    [
+     "7-9.2025",
+     2104600
+    ],
+    [
+     "10-12.2025",
+     2148800
+    ],
+    [
+     "1-3.2026",
+     1891000
+    ]
+   ]
+  },
+  "all": {
+   "latest": 1390700,
+   "quarter": "1-3.2026",
+   "year_ago": 1510400,
+   "change_pct": -7.9,
+   "quarters": [
+    [
+     "4-6.2024",
+     1570200
+    ],
+    [
+     "7-9.2024",
+     1506500
+    ],
+    [
+     "10-12.2024",
+     1488100
+    ],
+    [
+     "1-3.2025",
+     1510400
+    ],
+    [
+     "4-6.2025",
+     1459500
+    ],
+    [
+     "7-9.2025",
+     1520200
+    ],
+    [
+     "10-12.2025",
+     1532600
+    ],
+    [
+     "1-3.2026",
+     1390700
+    ]
+   ]
+  }
+ },
+ "israel": {
+  "quarter": "1-3.2026",
+  "3": 1647500,
+  "4": 2072000,
+  "5": 2920600,
+  "all": 2058800
+ },
+ "israel_latest": {
+  "quarter": "4-6.2026",
+  "3": 1677400,
+  "4": 2028800,
+  "5": 2822700,
+  "all": 2130500
+ },
+ "neighbourhoods": [
+  {
+   "name": "אפרידר",
+   "id": 65209811,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 1413800,
+    "4": 1506400,
+    "5": 2577000
+   },
+   "quarters_with_data": 19
+  },
+  {
+   "name": "גבעת ציון",
+   "id": 65209850,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 1565000,
+    "5": 2047700
+   },
+   "quarters_with_data": 17
+  },
+  {
+   "name": "האגמים",
+   "id": 65210134,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 1667700,
+    "5": 1805000
+   },
+   "quarters_with_data": 13
+  },
+  {
+   "name": "בן גוריון",
+   "id": 65210132,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 961600,
+    "4": 1055300,
+    "5": null
+   },
+   "quarters_with_data": 11
+  },
+  {
+   "name": "גני ברנע",
+   "id": 65210080,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 1455100,
+    "5": 1758900
+   },
+   "quarters_with_data": 10
+  },
+  {
+   "name": "רמת כרמים",
+   "id": 65209873,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 1778300,
+    "5": 2102600
+   },
+   "quarters_with_data": 10
+  },
+  {
+   "name": "נווה הדרים",
+   "id": 65209749,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 1299600,
+    "4": 1560400,
+    "5": null
+   },
+   "quarters_with_data": 9
+  },
+  {
+   "name": "גולדה",
+   "id": 65209857,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 1114000,
+    "4": 1227500,
+    "5": null
+   },
+   "quarters_with_data": 8
+  }
+ ],
+ "neighbourhoods_note": "Official neighbourhood medians for the city's data quarter (null = not published for that quarter). The official files give no deal counts, so neighbourhoods are ranked by quarters_with_data: how many of the 32 values (3/4/5/all rooms x the last 8 quarters) carry an official median. Only neighbourhoods with at least one 3/4/5-room median in the data quarter are kept. Names exactly as in the official files.",
+ "notes": "rooms.<k>.latest is the newest published median for that room count and rooms.<k>.quarter is its quarter (it can be older than data_quarter when the newer quarter was not published). year_ago = the same quarter one year earlier; change_pct = (latest - year_ago) / year_ago. quarters = the 8 quarters ending at data_quarter, oldest first, null where not published. israel = the Israel medians for data_quarter (same-quarter comparison); israel_latest = the newest Israel quarter in the same file. Full apartment prices in ILS, not per m2.",
+ "src_line": "חציון מחיר העסקה, לפי מספר החדרים, בעסקאות שדווחו לרשות המסים ברבעון הראשון של 2026 (1-3.2026). עודכן 7.10.2026.",
+ "sources": [
+  {
+   "what": "official settlement summary file (median deal price by rooms per quarter; city series and Israel series)",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/7100.json",
+   "retrieved_utc": "2026-10-07 08:43:18",
+   "last_modified": "Thu, 20 Aug 2026 10:32:23 GMT",
+   "name_in_file": "אשקלון",
+   "id_in_file": 7100,
+   "version": "20-08-2026"
+  },
+  {
+   "what": "official neighbourhood summary file: אפרידר",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209811.json",
+   "retrieved_utc": "2026-10-07 08:54:13",
+   "last_modified": "Thu, 20 Aug 2026 10:29:57 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: גבעת ציון",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209850.json",
+   "retrieved_utc": "2026-10-07 08:54:24",
+   "last_modified": "Thu, 20 Aug 2026 10:29:58 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: האגמים",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210134.json",
+   "retrieved_utc": "2026-10-07 08:54:39",
+   "last_modified": "Thu, 20 Aug 2026 10:30:21 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: בן גוריון",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210132.json",
+   "retrieved_utc": "2026-10-07 08:54:35",
+   "last_modified": "Thu, 20 Aug 2026 10:30:21 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: גני ברנע",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210080.json",
+   "retrieved_utc": "2026-10-07 08:54:46",
+   "last_modified": "Thu, 20 Aug 2026 10:30:19 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: רמת כרמים",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209873.json",
+   "retrieved_utc": "2026-10-07 08:54:30",
+   "last_modified": "Thu, 20 Aug 2026 10:29:59 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: נווה הדרים",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209749.json",
+   "retrieved_utc": "2026-10-07 08:54:09",
+   "last_modified": "Thu, 20 Aug 2026 10:29:56 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: גולדה",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209857.json",
+   "retrieved_utc": "2026-10-07 08:54:28",
+   "last_modified": "Thu, 20 Aug 2026 10:29:58 GMT"
+  }
+ ]
+}

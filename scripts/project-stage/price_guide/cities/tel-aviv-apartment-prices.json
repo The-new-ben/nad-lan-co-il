@@ -1,0 +1,343 @@
+{
+ "slug": "tel-aviv-apartment-prices",
+ "mode": "rooms",
+ "page": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+ "city_he": "תל אביב יפו",
+ "settlement_code": 5000,
+ "settlement_name_official": "תל אביב -יפו",
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "data_quarter": "1-3.2026",
+ "file_date": "2026-08-20",
+ "file_date_he": "20.8.2026",
+ "title": "כמה עולה דירה בתל אביב ב-2026",
+ "answer": "ברבעון הראשון של 2026, חציון מחיר העסקה בתל אביב יפו היה 4,225,800 ₪ לדירת 3 חדרים, 5,229,800 ₪ לדירת 4 חדרים ו-7,497,700 ₪ לדירת 5 חדרים. לעומת הרבעון הראשון של 2025, החציון עלה ב-14.1% לדירת 3 חדרים, עלה ב-10.7% לדירת 4 חדרים ועלה ב-6.5% לדירת 5 חדרים. בכל הארץ, חציון מחיר העסקה לדירת 4 חדרים ברבעון הראשון של 2026 היה 2,072,000 ₪.",
+ "rooms": {
+  "3": {
+   "latest": 4225800,
+   "quarter": "1-3.2026",
+   "year_ago": 3704300,
+   "change_pct": 14.1,
+   "quarters": [
+    [
+     "4-6.2024",
+     3939600
+    ],
+    [
+     "7-9.2024",
+     3638300
+    ],
+    [
+     "10-12.2024",
+     3476000
+    ],
+    [
+     "1-3.2025",
+     3704300
+    ],
+    [
+     "4-6.2025",
+     3824000
+    ],
+    [
+     "7-9.2025",
+     3616800
+    ],
+    [
+     "10-12.2025",
+     3825400
+    ],
+    [
+     "1-3.2026",
+     4225800
+    ]
+   ]
+  },
+  "4": {
+   "latest": 5229800,
+   "quarter": "1-3.2026",
+   "year_ago": 4723800,
+   "change_pct": 10.7,
+   "quarters": [
+    [
+     "4-6.2024",
+     4371300
+    ],
+    [
+     "7-9.2024",
+     null
+    ],
+    [
+     "10-12.2024",
+     4866700
+    ],
+    [
+     "1-3.2025",
+     4723800
+    ],
+    [
+     "4-6.2025",
+     5119100
+    ],
+    [
+     "7-9.2025",
+     5046700
+    ],
+    [
+     "10-12.2025",
+     5070900
+    ],
+    [
+     "1-3.2026",
+     5229800
+    ]
+   ]
+  },
+  "5": {
+   "latest": 7497700,
+   "quarter": "1-3.2026",
+   "year_ago": 7042600,
+   "change_pct": 6.5,
+   "quarters": [
+    [
+     "4-6.2024",
+     5978500
+    ],
+    [
+     "7-9.2024",
+     5806100
+    ],
+    [
+     "10-12.2024",
+     6203000
+    ],
+    [
+     "1-3.2025",
+     7042600
+    ],
+    [
+     "4-6.2025",
+     6752800
+    ],
+    [
+     "7-9.2025",
+     7019300
+    ],
+    [
+     "10-12.2025",
+     6500900
+    ],
+    [
+     "1-3.2026",
+     7497700
+    ]
+   ]
+  },
+  "all": {
+   "latest": 3679000,
+   "quarter": "10-12.2025",
+   "year_ago": 3583200,
+   "change_pct": 2.7,
+   "quarters": [
+    [
+     "4-6.2024",
+     3782800
+    ],
+    [
+     "7-9.2024",
+     3506000
+    ],
+    [
+     "10-12.2024",
+     3583200
+    ],
+    [
+     "1-3.2025",
+     3653500
+    ],
+    [
+     "4-6.2025",
+     null
+    ],
+    [
+     "7-9.2025",
+     3383400
+    ],
+    [
+     "10-12.2025",
+     3679000
+    ],
+    [
+     "1-3.2026",
+     null
+    ]
+   ]
+  }
+ },
+ "israel": {
+  "quarter": "1-3.2026",
+  "3": 1647500,
+  "4": 2072000,
+  "5": 2920600,
+  "all": 2058800
+ },
+ "israel_latest": {
+  "quarter": "4-6.2026",
+  "3": 1677400,
+  "4": 2028800,
+  "5": 2822700,
+  "all": 2130500
+ },
+ "neighbourhoods": [
+  {
+   "name": "הצפון החדש סביבת כי",
+   "id": 65209991,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 4943500,
+    "4": 6835800,
+    "5": 8455800
+   },
+   "quarters_with_data": 24
+  },
+  {
+   "name": "לב העיר",
+   "id": 65209994,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 4738800,
+    "4": 6467500,
+    "5": null
+   },
+   "quarters_with_data": 19
+  },
+  {
+   "name": "תכנית ל",
+   "id": 65210022,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 5346100,
+    "4": 8425800,
+    "5": null
+   },
+   "quarters_with_data": 19
+  },
+  {
+   "name": "הצפון החדש החלק הדר",
+   "id": 65209993,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 4562000,
+    "4": 6910000,
+    "5": null
+   },
+   "quarters_with_data": 17
+  },
+  {
+   "name": "הצפון החדש החלק הצפ",
+   "id": 65209989,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 4434900,
+    "4": 6042800,
+    "5": 7704000
+   },
+   "quarters_with_data": 17
+  },
+  {
+   "name": "הצפון הישן-החלק הצפ",
+   "id": 65209990,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 4879800,
+    "4": 6542100,
+    "5": null
+   },
+   "quarters_with_data": 16
+  },
+  {
+   "name": "יד אליהו",
+   "id": 65210057,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 3160100,
+    "4": 3774500,
+    "5": null
+   },
+   "quarters_with_data": 15
+  },
+  {
+   "name": "נווה אביבים וסביבת",
+   "id": 65210018,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 5370100,
+    "5": 6365100
+   },
+   "quarters_with_data": 15
+  }
+ ],
+ "neighbourhoods_note": "Official neighbourhood medians for the city's data quarter (null = not published for that quarter). The official files give no deal counts, so neighbourhoods are ranked by quarters_with_data: how many of the 32 values (3/4/5/all rooms x the last 8 quarters) carry an official median. Only neighbourhoods with at least one 3/4/5-room median in the data quarter are kept. Names exactly as in the official files.",
+ "notes": "rooms.<k>.latest is the newest published median for that room count and rooms.<k>.quarter is its quarter (it can be older than data_quarter when the newer quarter was not published). year_ago = the same quarter one year earlier; change_pct = (latest - year_ago) / year_ago. quarters = the 8 quarters ending at data_quarter, oldest first, null where not published. israel = the Israel medians for data_quarter (same-quarter comparison); israel_latest = the newest Israel quarter in the same file. Full apartment prices in ILS, not per m2.",
+ "src_line": "חציון מחיר העסקה, לפי מספר החדרים, בעסקאות שדווחו לרשות המסים ברבעון הראשון של 2026 (1-3.2026). עודכן 7.10.2026.",
+ "sources": [
+  {
+   "what": "official settlement summary file (median deal price by rooms per quarter; city series and Israel series)",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/5000.json",
+   "retrieved_utc": "2026-10-07 08:43:47",
+   "last_modified": "Thu, 20 Aug 2026 10:32:18 GMT",
+   "name_in_file": "תל אביב -יפו",
+   "id_in_file": 5000,
+   "version": "20-08-2026"
+  },
+  {
+   "what": "official neighbourhood summary file: הצפון החדש סביבת כי",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209991.json",
+   "retrieved_utc": "2026-10-07 08:49:36",
+   "last_modified": "Thu, 20 Aug 2026 10:30:17 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: לב העיר",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209994.json",
+   "retrieved_utc": "2026-10-07 08:49:39",
+   "last_modified": "Thu, 20 Aug 2026 10:30:17 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: תכנית ל",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210022.json",
+   "retrieved_utc": "2026-10-07 08:49:18",
+   "last_modified": "Thu, 20 Aug 2026 10:30:18 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: הצפון החדש החלק הדר",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209993.json",
+   "retrieved_utc": "2026-10-07 08:49:38",
+   "last_modified": "Thu, 20 Aug 2026 10:30:17 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: הצפון החדש החלק הצפ",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209989.json",
+   "retrieved_utc": "2026-10-07 08:49:33",
+   "last_modified": "Thu, 20 Aug 2026 10:30:17 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: הצפון הישן-החלק הצפ",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209990.json",
+   "retrieved_utc": "2026-10-07 08:49:34",
+   "last_modified": "Thu, 20 Aug 2026 10:30:17 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: יד אליהו",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210057.json",
+   "retrieved_utc": "2026-10-07 08:49:56",
+   "last_modified": "Thu, 20 Aug 2026 10:30:18 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: נווה אביבים וסביבת",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210018.json",
+   "retrieved_utc": "2026-10-07 08:49:13",
+   "last_modified": "Thu, 20 Aug 2026 10:30:17 GMT"
+  }
+ ]
+}

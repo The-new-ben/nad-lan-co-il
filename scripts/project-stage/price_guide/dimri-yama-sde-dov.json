@@ -1,0 +1,312 @@
+{
+ "slug": "dimri-yama-sde-dov",
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "note": "PriceGuide data for /projects/dimri-yama-sde-dov/ (7.10.2026). Every number has its source here and in docs/research/2026-10-07-project-prices-2/README.md; the page shows dates only (no source names, no buyer names). The developer's per-m2 averages are shown incl. VAT; before-VAT figures (Calcalist, Globes) are converted with 18% VAT and the before-VAT figure is shown in the row. Only two floors are published (11 and 13, the four 77 m2 related-party units, building not stated), so there is no floor model: the calculator uses area-style modes. calc.floors 40 = the tower in the design plan (5.2023), as the live facts row; the developer says 39 (the same tower without its technical floor). The official neighbourhood 'אזור שדה דב' has no medians; the medians are of the adjacent 'תכנית ל' (centroid 379 m from the tower point), as on the Rainbow page.",
+ "sources": {
+  "GOVL": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210022.json (official medians, neighbourhood 'תכנית ל', Q1 2026, file Last-Modified 20.8.2026, read 7.10.2026 08:41 UTC): 3 rooms 5,346,100; 4 rooms 8,425,800; 5 rooms null; all 6,059,900; Tel Aviv: https://data.nadlan.gov.il/api/pages/settlement/buy/5000.json 3 rooms 4,225,800, 4 rooms 5,229,800. The project's own official neighbourhood 'אזור שדה דב' (65210724) has no medians at all.",
+  "ICE0305": "https://www.ice.co.il/realestate/news/article/1111582 (ice 3.5.2026): quoting a recent report: about 1,280 units sold in Sde Dov, average about 83K ILS/m2, 4 rooms about 9.45M (ice says 'in 2025'; the original survey, Merkaz HaNadlan 15.4.2026, says 'so far')",
+  "ICE2105": "https://www.ice.co.il/realestate/news/article/1112481 (ice 21.5.2026): most Sde Dov projects around 70K ILS/m2, some sell at 60K; a new project in Program L: low floors 52-57K, most recent sales 70-72K",
+  "BZ2606": "https://www.bizportal.co.il/realestates/news/article/20033505 (Bizportal 6.6.2026): Sde Dov official prices about 75-85K ILS/m2; financing offers worth an implied 6%-8% discount; Dimri: 2025 deals average about 82.5K ILS/m2, unsold stock valued by the company at about 73.2K ILS/m2 incl. VAT, Q1 2026 9 units of which 4 to the controlling shareholder's family",
+  "GL2609": "https://www.globes.co.il/news/article.aspx?did=1001554092 (Globes 2.9.2026, after the Q2 2026 reports): Dimri Yama: Q1 2026 9 units (4 to the controlling shareholder's family, close to 6M each), Q2 none and one cancellation, 40 sold in all (about 9% of 458); all sold so far about 67K ILS/m2 before VAT and net of the financing component; the company expects about 62K for the unsold stock (headline: a cut of about 7%). Ashira: Q2 2026 3 units, Q1 1, 2025 31; average 64.5K ILS/m2 in 2025, 72K in Q2 2026 (VAT not stated). Rainbow (neighbour in Eshkol): Q2 2026 average 80.5K ILS/m2",
+  "TA": "the site's Tel Aviv-Yafo card: Tax Authority deals 10.2023-10.2025, 2,432 deals, median 52,856 ILS/m2 (nlcp card on every Tel Aviv project page)",
+  "NC2604": "https://www.nadlancenter.co.il/article/14303 (Merkaz HaNadlan 15.4.2026, the 2025 annual reports as summarised by Psagot Sigma; same figures in ice 19.4.2026 https://www.ice.co.il/realestate/news/article/1109996): Dimri Yama average 82,600 ILS/m2 incl. VAT, the highest in Sde Dov; 7% of 458 units marketed at the balance date, 8% at the report",
+  "CAL2603": "https://www.calcalist.co.il/real-estate/article/r1awsthjzl (Calcalist 29.3.2026, read with WebFetch; curl gets 403): 2025: 32 units 'במחיר ממוצע של 72 אלף שקל למ\"ר, לא כולל מע\"מ'; 2026 to date: 5 more units 'במחיר ממוצע של 64 אלף שקלים למ\"ר', 8.5% below 2025",
+  "CAL2605": "https://www.calcalist.co.il/real-estate/article/rkc1lyrggl (Calcalist 28.5.2026, read with WebFetch): 4 of the 9 Q1 2026 units, 77 m2 each, floors 11 and 13, about 5.9M incl. VAT each, about 77K ILS/m2 incl. VAT (about 66K before VAT); buyers related to the company (never named here); 41 sold in all at that date",
+  "BZ2603": "https://www.bizportal.co.il/realestates/news/article/20029678 (Bizportal 29.3.2026): 37 units sold up to the 2025 report, average about 82.5K ILS/m2",
+  "ICE2507": "https://www.ice.co.il/realestate/news/article/1072489 (ice 2.7.2025): a 'quiet sale' to the company's clients at 70K ILS/m2, below the planned marketing price",
+  "NC2512": "https://www.nadlancenter.co.il/article/13548 (Merkaz HaNadlan 26.12.2025): public marketing starts; 2 rooms of 56.5 m2 from 3.75M; 458 units, towers of 39 and 16 floors and two 8-9 floor buildings"
+ },
+ "title": "כמה עולה דירה בדמרי ימה שדה דב",
+ "calc_title": "מחשבון מחיר דירה בדמרי ימה",
+ "answer": "בדמרי ימה שדה דב נמכרו ב-2025 32 דירות במחיר ממוצע של כ-82,500 ₪ למ״ר כולל מע״מ, לפי דוחות היזם. בחמש העסקאות של תחילת 2026 הממוצע היה כ-75,500 ₪ למ״ר כולל מע״מ, ועד 6.2026 נמכרו 40 מתוך 458 הדירות. בשכונה הסמוכה, תכנית ל, חציון העסקאות ברבעון הראשון של 2026 היה 5.35 מיליון ₪ לדירת 3 חדרים ו-8.43 מיליון ₪ לדירת 4 חדרים.",
+ "tiles": [
+  {
+   "big": "כ-82,500 ₪",
+   "small": "למ״ר כולל מע״מ, ממוצע 32 הדירות שנמכרו ב-2025",
+   "date": "2025",
+   "src": "BZ2606 NC2604 CAL2603"
+  },
+  {
+   "big": "כ-75,500 ₪",
+   "small": "למ״ר כולל מע״מ, ממוצע 5 דירות בתחילת 2026",
+   "date": "1-3.2026",
+   "src": "CAL2603"
+  },
+  {
+   "big": "כ-73,200 ₪",
+   "small": "למ״ר כולל מע״מ, הערכת היזם לדירות שטרם נמכרו",
+   "date": "6.2026",
+   "src": "BZ2606 GL2609"
+  }
+ ],
+ "groups": [
+  {
+   "name": "בדמרי ימה שדה דב",
+   "rows": [
+    {
+     "what": "ממוצע 2025",
+     "sub": "32 דירות, כולל מע״מ",
+     "m2": "כ-82,500",
+     "price": "",
+     "kind": "deal",
+     "date": "2025",
+     "src": "BZ2606 NC2604 CAL2603"
+    },
+    {
+     "what": "5 דירות בתחילת 2026",
+     "sub": "כולל מע״מ. לפני מע״מ: כ-64,000 ₪ למ״ר",
+     "m2": "כ-75,500",
+     "price": "",
+     "kind": "deal",
+     "date": "1-3.2026",
+     "src": "CAL2603"
+    },
+    {
+     "what": "4 דירות של 77 מ״ר, קומות 11 ו-13",
+     "sub": "רוכשים קשורים לחברה, כולל מע״מ, המחיר לכל דירה",
+     "m2": "כ-77,000",
+     "price": "כ-5.9 מיליון",
+     "kind": "deal",
+     "date": "1-3.2026",
+     "src": "CAL2605"
+    },
+    {
+     "what": "ממוצע כל הדירות שנמכרו",
+     "sub": "40 דירות, לפני מע״מ ובניכוי רכיב המימון",
+     "m2": "כ-67,000",
+     "price": "",
+     "kind": "deal",
+     "date": "6.2026",
+     "src": "GL2609"
+    },
+    {
+     "what": "הערכת היזם לדירות שטרם נמכרו",
+     "sub": "כולל מע״מ. לפני מע״מ: כ-62,000 ₪ למ״ר",
+     "m2": "כ-73,200",
+     "price": "",
+     "kind": "est",
+     "date": "6.2026",
+     "src": "BZ2606 GL2609"
+    },
+    {
+     "what": "דירת 2 חדרים, 56.5 מ״ר",
+     "sub": "מחיר הפתיחה בשיווק לציבור",
+     "m2": "",
+     "price": "מ-3.75 מיליון",
+     "kind": "mkt",
+     "date": "12.2025",
+     "src": "NC2512"
+    },
+    {
+     "what": "מכירה ראשונה ללקוחות היזם",
+     "sub": "לפני השיווק לציבור",
+     "m2": "כ-70,000",
+     "price": "",
+     "kind": "mkt",
+     "date": "7.2025",
+     "src": "ICE2507"
+    }
+   ]
+  },
+  {
+   "name": "חציון העסקאות בתכנית ל, השכונה הסמוכה, רבעון ראשון 2026",
+   "rows": [
+    {
+     "what": "3 חדרים",
+     "sub": "בכל תל אביב יפו: 4.23 מיליון",
+     "m2": "",
+     "price": "5.35 מיליון",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVL"
+    },
+    {
+     "what": "4 חדרים",
+     "sub": "בכל תל אביב יפו: 5.23 מיליון",
+     "m2": "",
+     "price": "8.43 מיליון",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVL"
+    },
+    {
+     "what": "כל הדירות",
+     "sub": "כל מספרי החדרים",
+     "m2": "",
+     "price": "6.06 מיליון",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVL"
+    }
+   ]
+  },
+  {
+   "name": "ברובע שדה דב ובסביבה",
+   "rows": [
+    {
+     "what": "רוב הפרויקטים ברובע",
+     "sub": "יש פרויקטים שמוכרים גם בכ-60,000 ₪ למ״ר",
+     "m2": "כ-70,000",
+     "price": "",
+     "kind": "est",
+     "date": "5.2026",
+     "src": "ICE2105"
+    },
+    {
+     "what": "המחיר הרשמי בפרויקטים ברובע",
+     "sub": "לפני הטבות מימון",
+     "m2": "75,000-85,000",
+     "price": "",
+     "kind": "mkt",
+     "date": "6.2026",
+     "src": "BZ2606"
+    },
+    {
+     "what": "ממוצע העסקאות ברובע",
+     "sub": "כ-1,280 דירות שנמכרו ברובע",
+     "m2": "כ-83,000",
+     "price": "",
+     "kind": "deal",
+     "date": "2025",
+     "src": "ICE0305"
+    },
+    {
+     "what": "דירת 4 חדרים ברובע, ממוצע",
+     "sub": "",
+     "m2": "",
+     "price": "כ-9.45 מיליון",
+     "kind": "deal",
+     "date": "2025",
+     "src": "ICE0305"
+    },
+    {
+     "what": "הפרויקט השכן במתחם אשכול",
+     "sub": "ממוצע העסקאות ברבעון השני",
+     "m2": "כ-80,500",
+     "price": "",
+     "kind": "deal",
+     "date": "4-6.2026",
+     "src": "GL2609"
+    },
+    {
+     "what": "פרויקט חדש בתכנית ל",
+     "sub": "בקומות הנמוכות: 52,000-57,000 ₪ למ״ר",
+     "m2": "70,000-72,000",
+     "price": "",
+     "kind": "deal",
+     "date": "5.2026",
+     "src": "ICE2105"
+    }
+   ]
+  },
+  {
+   "name": "להשוואה",
+   "rows": [
+    {
+     "what": "תל אביב יפו, כל העיר",
+     "sub": "חציון של 2,432 עסקאות",
+     "m2": "52,856",
+     "price": "",
+     "kind": "deal",
+     "date": "10.2023-10.2025",
+     "src": "TA"
+    }
+   ]
+  }
+ ],
+ "kinds": {
+  "deal": "עסקה",
+  "ask": "מחיר מבוקש",
+  "est": "הערכה",
+  "mkt": "מחיר שיווק",
+  "med": "חציון עסקאות"
+ },
+ "calc": {
+  "modes": [
+   {
+    "id": "project",
+    "label": "בדמרי ימה",
+    "lo": 73200,
+    "hi": 82500,
+    "why": "בין הערכת היזם לדירות שטרם נמכרו, כ-73,200 ₪ למ״ר, לבין ממוצע העסקאות של 2025, כ-82,500 ₪, כולל מע״מ. בתחילת 2026 הממוצע היה כ-75,500 ₪.",
+    "src": "BZ2606 GL2609 (73.2K incl. VAT = 62K before VAT x 1.18) and BZ2606 NC2604 (2025 average); CAL2603 (2026)"
+   },
+   {
+    "id": "list",
+    "label": "מחיר רשמי ברובע",
+    "lo": 75000,
+    "hi": 85000,
+    "why": "המחיר הרשמי בפרויקטים ברובע שדה דב, לפני הטבות המימון.",
+    "src": "BZ2606"
+   },
+   {
+    "id": "area",
+    "label": "פרויקט אחר ברובע",
+    "lo": 60000,
+    "hi": 72000,
+    "why": "רוב העסקאות של 2026 בפרויקטים אחרים ברובע שדה דב ובתכנית ל.",
+    "src": "ICE2105 ICE0305"
+   }
+  ],
+  "deals_plot": [],
+  "avg_line": 82500,
+  "ta_median": 52856,
+  "y0": 60000,
+  "y1": 90000,
+  "tax_single": [
+   [
+    1978745,
+    0
+   ],
+   [
+    2347040,
+    0.035
+   ],
+   [
+    6055070,
+    0.05
+   ],
+   [
+    20183565,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ],
+  "tax_more": [
+   [
+    6055070,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ],
+  "tax_src": "the site's /purchase-tax-calculator/ brackets (2026, frozen to 15.1.2028); copied from hamedina.json",
+  "gap": "המחירים במחשבון כוללים מע״מ. ב-2026 היזם הוריד את ההערכה שלו למחיר הדירות שטרם נמכרו, וברובע שדה דב הטבות המימון מגלמות בחלק מהפרויקטים הנחה של 6%-8% מהמחיר הרשום.",
+  "gap_src": "GL2609 BZ2606",
+  "floors": 40
+ },
+ "ui": {
+  "more_t": "לכל המחירון: השכונה, הרובע ולהשוואה",
+  "chart": "המחיר למ״ר באפשרות שבחרתם, מול ממוצע הפרויקט ותל אביב יפו",
+  "js": {
+   "avg": "ממוצע 2025, כ-{n}",
+   "tw": "דמרי ימה, ממוצע 2025",
+   "aria_t": "אומדן של {lo} עד {hi} ₪ למ״ר בקומה {f}, מול ממוצע הפרויקט, כ-{avg} ₪",
+   "aria_a": "{m}: {lo} עד {hi} ₪ למ״ר, מול ממוצע הפרויקט כ-{avg} ₪ ותל אביב יפו {ta} ₪",
+   "wa": "שלום, בדקתי במחירון של דמרי ימה שדה דב: {m}, {a} מ״ר{f}, אומדן {r} מיליון ₪. אשמח לפרטים נוספים (nad-lan.co.il)"
+  }
+ },
+ "src_line": "המחירון מבוסס על דוחות היזם כפי שפורסמו, על עסקאות שפורסמו, על חציון העסקאות הרשמי לפי שכונה ועל מחירים שפורסמו ברובע. ממוצעי היזם מוצגים כולל מע״מ. מחיר שיווק והערכה מסומנים בנפרד ואינם מחיר סגירה. עודכן 7.10.2026.",
+ "see": [
+  {
+   "text": "מחירי דירות בשדה דב ←",
+   "href": "https://nad-lan.co.il/sde-dov/prices/"
+  }
+ ]
+}

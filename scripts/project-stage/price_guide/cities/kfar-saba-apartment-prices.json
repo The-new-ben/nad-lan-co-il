@@ -1,0 +1,258 @@
+{
+ "slug": "kfar-saba-apartment-prices",
+ "mode": "rooms",
+ "page": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+ "city_he": "כפר סבא",
+ "settlement_code": 6900,
+ "settlement_name_official": "כפר סבא",
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "data_quarter": "1-3.2026",
+ "file_date": "2026-08-20",
+ "file_date_he": "20.8.2026",
+ "title": "כמה עולה דירה בכפר סבא ב-2026",
+ "answer": "ברבעון הראשון של 2026, חציון מחיר העסקה בכפר סבא היה 3,544,700 ₪ לדירת 5 חדרים, וברבעון הרביעי של 2025 (הנתון האחרון שפורסם) 1,941,300 ₪ לדירת 3 חדרים ו-2,817,000 ₪ לדירת 4 חדרים. לעומת אותו רבעון שנה קודם לכן, החציון ירד ב-21.3% לדירת 3 חדרים, ירד ב-6.1% לדירת 4 חדרים וירד ב-4.3% לדירת 5 חדרים. בכל הארץ, חציון מחיר העסקה לדירת 4 חדרים ברבעון הרביעי של 2025 היה 2,114,000 ₪.",
+ "rooms": {
+  "3": {
+   "latest": 1941300,
+   "quarter": "10-12.2025",
+   "year_ago": 2466800,
+   "change_pct": -21.3,
+   "quarters": [
+    [
+     "4-6.2024",
+     2641100
+    ],
+    [
+     "7-9.2024",
+     2356500
+    ],
+    [
+     "10-12.2024",
+     2466800
+    ],
+    [
+     "1-3.2025",
+     1993600
+    ],
+    [
+     "4-6.2025",
+     1978600
+    ],
+    [
+     "7-9.2025",
+     1960100
+    ],
+    [
+     "10-12.2025",
+     1941300
+    ],
+    [
+     "1-3.2026",
+     null
+    ]
+   ]
+  },
+  "4": {
+   "latest": 2817000,
+   "quarter": "10-12.2025",
+   "year_ago": 3001300,
+   "change_pct": -6.1,
+   "quarters": [
+    [
+     "4-6.2024",
+     2981800
+    ],
+    [
+     "7-9.2024",
+     3113400
+    ],
+    [
+     "10-12.2024",
+     3001300
+    ],
+    [
+     "1-3.2025",
+     2904800
+    ],
+    [
+     "4-6.2025",
+     2835600
+    ],
+    [
+     "7-9.2025",
+     2690700
+    ],
+    [
+     "10-12.2025",
+     2817000
+    ],
+    [
+     "1-3.2026",
+     null
+    ]
+   ]
+  },
+  "5": {
+   "latest": 3544700,
+   "quarter": "1-3.2026",
+   "year_ago": 3705300,
+   "change_pct": -4.3,
+   "quarters": [
+    [
+     "4-6.2024",
+     3878400
+    ],
+    [
+     "7-9.2024",
+     3781400
+    ],
+    [
+     "10-12.2024",
+     3824500
+    ],
+    [
+     "1-3.2025",
+     3705300
+    ],
+    [
+     "4-6.2025",
+     3973600
+    ],
+    [
+     "7-9.2025",
+     3828700
+    ],
+    [
+     "10-12.2025",
+     3721300
+    ],
+    [
+     "1-3.2026",
+     3544700
+    ]
+   ]
+  },
+  "all": {
+   "latest": 2415900,
+   "quarter": "10-12.2025",
+   "year_ago": 2301700,
+   "change_pct": 5.0,
+   "quarters": [
+    [
+     "4-6.2024",
+     2624500
+    ],
+    [
+     "7-9.2024",
+     2693300
+    ],
+    [
+     "10-12.2024",
+     2301700
+    ],
+    [
+     "1-3.2025",
+     null
+    ],
+    [
+     "4-6.2025",
+     2474500
+    ],
+    [
+     "7-9.2025",
+     2350400
+    ],
+    [
+     "10-12.2025",
+     2415900
+    ],
+    [
+     "1-3.2026",
+     null
+    ]
+   ]
+  }
+ },
+ "israel": {
+  "quarter": "1-3.2026",
+  "3": 1647500,
+  "4": 2072000,
+  "5": 2920600,
+  "all": 2058800
+ },
+ "israel_latest": {
+  "quarter": "4-6.2026",
+  "3": 1677400,
+  "4": 2028800,
+  "5": 2822700,
+  "all": 2130500
+ },
+ "neighbourhoods": [
+  {
+   "name": "מרכז",
+   "id": 65209720,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 2106700,
+    "4": 3090200,
+    "5": 3501900
+   },
+   "quarters_with_data": 15
+  },
+  {
+   "name": "ראשונים",
+   "id": 65209948,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 2396100,
+    "5": null
+   },
+   "quarters_with_data": 7
+  },
+  {
+   "name": "הירוקה כ\"ס 80",
+   "id": 65209712,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 3418700,
+    "5": null
+   },
+   "quarters_with_data": 6
+  }
+ ],
+ "neighbourhoods_note": "Official neighbourhood medians for the city's data quarter (null = not published for that quarter). The official files give no deal counts, so neighbourhoods are ranked by quarters_with_data: how many of the 32 values (3/4/5/all rooms x the last 8 quarters) carry an official median. Only neighbourhoods with at least one 3/4/5-room median in the data quarter are kept. Names exactly as in the official files.",
+ "notes": "rooms.<k>.latest is the newest published median for that room count and rooms.<k>.quarter is its quarter (it can be older than data_quarter when the newer quarter was not published). year_ago = the same quarter one year earlier; change_pct = (latest - year_ago) / year_ago. quarters = the 8 quarters ending at data_quarter, oldest first, null where not published. israel = the Israel medians for data_quarter (same-quarter comparison); israel_latest = the newest Israel quarter in the same file. Full apartment prices in ILS, not per m2.",
+ "src_line": "חציון מחיר העסקה, לפי מספר החדרים, בעסקאות שדווחו לרשות המסים ברבעון הראשון של 2026 (1-3.2026). כשלא פורסם נתון לרבעון הזה, מוצג הנתון האחרון שפורסם, עם הרבעון שלו. עודכן 7.10.2026.",
+ "sources": [
+  {
+   "what": "official settlement summary file (median deal price by rooms per quarter; city series and Israel series)",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/6900.json",
+   "retrieved_utc": "2026-10-07 08:43:33",
+   "last_modified": "Thu, 20 Aug 2026 10:32:22 GMT",
+   "name_in_file": "כפר סבא",
+   "id_in_file": 6900,
+   "version": "20-08-2026"
+  },
+  {
+   "what": "official neighbourhood summary file: מרכז",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209720.json",
+   "retrieved_utc": "2026-10-07 08:52:44",
+   "last_modified": "Thu, 20 Aug 2026 10:29:55 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: ראשונים",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209948.json",
+   "retrieved_utc": "2026-10-07 08:52:58",
+   "last_modified": "Thu, 20 Aug 2026 10:30:01 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: הירוקה כ\"ס 80",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209712.json",
+   "retrieved_utc": "2026-10-07 08:52:39",
+   "last_modified": "Thu, 20 Aug 2026 10:29:55 GMT"
+  }
+ ]
+}

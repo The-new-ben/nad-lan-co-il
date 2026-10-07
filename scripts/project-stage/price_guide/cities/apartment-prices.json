@@ -1,0 +1,979 @@
+{
+ "slug": "apartment-prices",
+ "mode": "rooms",
+ "page": "https://nad-lan.co.il/apartment-prices/",
+ "city_he": "ישראל",
+ "settlement_code": null,
+ "settlement_name_official": null,
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "data_quarter": "4-6.2026",
+ "file_date": "2026-08-20",
+ "file_date_he": "20.8.2026",
+ "title": "כמה עולה דירה בישראל ב-2026",
+ "answer": "ברבעון השני של 2026, חציון מחיר העסקה בישראל היה 1,677,400 ₪ לדירת 3 חדרים, 2,028,800 ₪ לדירת 4 חדרים ו-2,822,700 ₪ לדירת 5 חדרים. לעומת הרבעון השני של 2025, החציון עלה ב-5.4% לדירת 3 חדרים, ירד ב-4% לדירת 4 חדרים וירד ב-2.8% לדירת 5 חדרים. בערים שבמחירון, חציון מחיר העסקה לדירת 4 חדרים ברבעון הראשון של 2026 נע בין 1,203,200 ₪ בבאר שבע ל-5,229,800 ₪ בתל אביב יפו.",
+ "rooms": {
+  "3": {
+   "latest": 1677400,
+   "quarter": "4-6.2026",
+   "year_ago": 1591800,
+   "change_pct": 5.4,
+   "quarters": [
+    [
+     "7-9.2024",
+     1625000
+    ],
+    [
+     "10-12.2024",
+     1647000
+    ],
+    [
+     "1-3.2025",
+     1584100
+    ],
+    [
+     "4-6.2025",
+     1591800
+    ],
+    [
+     "7-9.2025",
+     1634900
+    ],
+    [
+     "10-12.2025",
+     1599300
+    ],
+    [
+     "1-3.2026",
+     1647500
+    ],
+    [
+     "4-6.2026",
+     1677400
+    ]
+   ]
+  },
+  "4": {
+   "latest": 2028800,
+   "quarter": "4-6.2026",
+   "year_ago": 2113300,
+   "change_pct": -4.0,
+   "quarters": [
+    [
+     "7-9.2024",
+     2101600
+    ],
+    [
+     "10-12.2024",
+     2154500
+    ],
+    [
+     "1-3.2025",
+     2178100
+    ],
+    [
+     "4-6.2025",
+     2113300
+    ],
+    [
+     "7-9.2025",
+     2058100
+    ],
+    [
+     "10-12.2025",
+     2114000
+    ],
+    [
+     "1-3.2026",
+     2072000
+    ],
+    [
+     "4-6.2026",
+     2028800
+    ]
+   ]
+  },
+  "5": {
+   "latest": 2822700,
+   "quarter": "4-6.2026",
+   "year_ago": 2902700,
+   "change_pct": -2.8,
+   "quarters": [
+    [
+     "7-9.2024",
+     2944600
+    ],
+    [
+     "10-12.2024",
+     2946300
+    ],
+    [
+     "1-3.2025",
+     2921800
+    ],
+    [
+     "4-6.2025",
+     2902700
+    ],
+    [
+     "7-9.2025",
+     2853800
+    ],
+    [
+     "10-12.2025",
+     2951400
+    ],
+    [
+     "1-3.2026",
+     2920600
+    ],
+    [
+     "4-6.2026",
+     2822700
+    ]
+   ]
+  },
+  "all": {
+   "latest": 2130500,
+   "quarter": "4-6.2026",
+   "year_ago": 1931100,
+   "change_pct": 10.3,
+   "quarters": [
+    [
+     "7-9.2024",
+     1979400
+    ],
+    [
+     "10-12.2024",
+     2015200
+    ],
+    [
+     "1-3.2025",
+     1989400
+    ],
+    [
+     "4-6.2025",
+     1931100
+    ],
+    [
+     "7-9.2025",
+     1938500
+    ],
+    [
+     "10-12.2025",
+     2010400
+    ],
+    [
+     "1-3.2026",
+     2058800
+    ],
+    [
+     "4-6.2026",
+     2130500
+    ]
+   ]
+  }
+ },
+ "israel": {
+  "quarter": "4-6.2026",
+  "3": 1677400,
+  "4": 2028800,
+  "5": 2822700,
+  "all": 2130500
+ },
+ "neighbourhoods": [],
+ "cities": [
+  {
+   "slug": "ashdod-apartment-prices",
+   "page": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "city_he": "אשדוד",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 1603300,
+     "quarter": "1-3.2026",
+     "change_pct": 0.3
+    },
+    "4": {
+     "latest": 2130200,
+     "quarter": "1-3.2026",
+     "change_pct": 6.2
+    },
+    "5": {
+     "latest": 2784800,
+     "quarter": "1-3.2026",
+     "change_pct": -5.8
+    },
+    "all": {
+     "latest": 2030100,
+     "quarter": "1-3.2026",
+     "change_pct": 12.7
+    }
+   }
+  },
+  {
+   "slug": "ashkelon-apartment-prices",
+   "page": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "city_he": "אשקלון",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 918100,
+     "quarter": "1-3.2026",
+     "change_pct": -20.6
+    },
+    "4": {
+     "latest": 1405800,
+     "quarter": "1-3.2026",
+     "change_pct": -12.0
+    },
+    "5": {
+     "latest": 1891000,
+     "quarter": "1-3.2026",
+     "change_pct": -11.7
+    },
+    "all": {
+     "latest": 1390700,
+     "quarter": "1-3.2026",
+     "change_pct": -7.9
+    }
+   }
+  },
+  {
+   "slug": "bat-yam-apartment-prices",
+   "page": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "city_he": "בת ים",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 1823700,
+     "quarter": "1-3.2026",
+     "change_pct": -1.1
+    },
+    "4": {
+     "latest": 2692600,
+     "quarter": "1-3.2026",
+     "change_pct": 4.3
+    },
+    "5": {
+     "latest": 3468600,
+     "quarter": "1-3.2026",
+     "change_pct": 13.0
+    },
+    "all": {
+     "latest": 1901500,
+     "quarter": "1-3.2026",
+     "change_pct": -0.5
+    }
+   }
+  },
+  {
+   "slug": "beer-sheva-apartment-prices",
+   "page": "https://nad-lan.co.il/beer-sheva-apartment-prices/",
+   "city_he": "באר שבע",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 808800,
+     "quarter": "1-3.2026",
+     "change_pct": -0.6
+    },
+    "4": {
+     "latest": 1203200,
+     "quarter": "1-3.2026",
+     "change_pct": 1.8
+    },
+    "5": {
+     "latest": 1766500,
+     "quarter": "7-9.2025",
+     "change_pct": -4.3
+    },
+    "all": {
+     "latest": 1153400,
+     "quarter": "1-3.2026",
+     "change_pct": 2.1
+    }
+   }
+  },
+  {
+   "slug": "bnei-brak-apartment-prices",
+   "page": "https://nad-lan.co.il/bnei-brak-apartment-prices/",
+   "city_he": "בני ברק",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 2028000,
+     "quarter": "1-3.2026",
+     "change_pct": -0.2
+    },
+    "4": {
+     "latest": 2491200,
+     "quarter": "1-3.2026",
+     "change_pct": -2.5
+    },
+    "5": {
+     "latest": 3034100,
+     "quarter": "1-3.2026",
+     "change_pct": -4.3
+    },
+    "all": {
+     "latest": 2288600,
+     "quarter": "1-3.2026",
+     "change_pct": 3.8
+    }
+   }
+  },
+  {
+   "slug": "eilat-apartment-prices",
+   "page": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "city_he": "אילת",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 1516100,
+     "quarter": "1-3.2026",
+     "change_pct": 0.7
+    },
+    "4": {
+     "latest": 1719300,
+     "quarter": "1-3.2026",
+     "change_pct": -3.5
+    },
+    "5": {
+     "latest": 2587900,
+     "quarter": "1-3.2026",
+     "change_pct": 3.3
+    },
+    "all": {
+     "latest": 1624100,
+     "quarter": "1-3.2026",
+     "change_pct": 2.8
+    }
+   }
+  },
+  {
+   "slug": "givatayim-apartment-prices",
+   "page": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "city_he": "גבעתיים",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 2815300,
+     "quarter": "1-3.2026",
+     "change_pct": -8.9
+    },
+    "4": {
+     "latest": 4158900,
+     "quarter": "1-3.2026",
+     "change_pct": -4.7
+    },
+    "5": {
+     "latest": 4960000,
+     "quarter": "1-3.2026",
+     "change_pct": -1.7
+    },
+    "all": {
+     "latest": 3635300,
+     "quarter": "1-3.2026",
+     "change_pct": -12.7
+    }
+   }
+  },
+  {
+   "slug": "haifa-apartment-prices",
+   "page": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "city_he": "חיפה",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 1135100,
+     "quarter": "1-3.2026",
+     "change_pct": 0.5
+    },
+    "4": {
+     "latest": 1597500,
+     "quarter": "1-3.2026",
+     "change_pct": -10.7
+    },
+    "5": {
+     "latest": 2638000,
+     "quarter": "1-3.2026",
+     "change_pct": -8.8
+    },
+    "all": {
+     "latest": 1406400,
+     "quarter": "1-3.2026",
+     "change_pct": 10.1
+    }
+   }
+  },
+  {
+   "slug": "herzliya-apartment-prices",
+   "page": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "city_he": "הרצליה",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 2793600,
+     "quarter": "1-3.2026",
+     "change_pct": 0.6
+    },
+    "4": {
+     "latest": 3272800,
+     "quarter": "1-3.2026",
+     "change_pct": -9.1
+    },
+    "5": {
+     "latest": 4251200,
+     "quarter": "1-3.2026",
+     "change_pct": -8.9
+    },
+    "all": {
+     "latest": 3202200,
+     "quarter": "1-3.2026",
+     "change_pct": 3.3
+    }
+   }
+  },
+  {
+   "slug": "hod-hasharon-apartment-prices",
+   "page": "https://nad-lan.co.il/hod-hasharon-apartment-prices/",
+   "city_he": "הוד השרון",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 2647000,
+     "quarter": "1-3.2026",
+     "change_pct": 0.5
+    },
+    "4": {
+     "latest": 3264800,
+     "quarter": "1-3.2026",
+     "change_pct": -2.2
+    },
+    "5": {
+     "latest": 4245600,
+     "quarter": "1-3.2026",
+     "change_pct": -3.7
+    },
+    "all": {
+     "latest": 3149300,
+     "quarter": "1-3.2026",
+     "change_pct": 1.2
+    }
+   }
+  },
+  {
+   "slug": "holon-apartment-prices",
+   "page": "https://nad-lan.co.il/holon-apartment-prices/",
+   "city_he": "חולון",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 1918700,
+     "quarter": "1-3.2026",
+     "change_pct": 1.0
+    },
+    "4": {
+     "latest": 2428500,
+     "quarter": "1-3.2026",
+     "change_pct": -5.8
+    },
+    "5": {
+     "latest": 3142700,
+     "quarter": "1-3.2026",
+     "change_pct": -5.6
+    },
+    "all": {
+     "latest": 2219400,
+     "quarter": "1-3.2026",
+     "change_pct": 4.0
+    }
+   }
+  },
+  {
+   "slug": "jerusalem-apartment-prices",
+   "page": "https://nad-lan.co.il/jerusalem-apartment-prices/",
+   "city_he": "ירושלים",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 2376700,
+     "quarter": "1-3.2026",
+     "change_pct": 3.0
+    },
+    "4": {
+     "latest": 2882400,
+     "quarter": "1-3.2026",
+     "change_pct": -9.8
+    },
+    "5": {
+     "latest": 3934400,
+     "quarter": "1-3.2026",
+     "change_pct": -7.0
+    },
+    "all": {
+     "latest": 2717100,
+     "quarter": "1-3.2026",
+     "change_pct": -1.3
+    }
+   }
+  },
+  {
+   "slug": "kfar-saba-apartment-prices",
+   "page": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "city_he": "כפר סבא",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 1941300,
+     "quarter": "10-12.2025",
+     "change_pct": -21.3
+    },
+    "4": {
+     "latest": 2817000,
+     "quarter": "10-12.2025",
+     "change_pct": -6.1
+    },
+    "5": {
+     "latest": 3544700,
+     "quarter": "1-3.2026",
+     "change_pct": -4.3
+    },
+    "all": {
+     "latest": 2415900,
+     "quarter": "10-12.2025",
+     "change_pct": 5.0
+    }
+   }
+  },
+  {
+   "slug": "kiryat-ono-apartment-prices",
+   "page": "https://nad-lan.co.il/kiryat-ono-apartment-prices/",
+   "city_he": "קריית אונו",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 2635400,
+     "quarter": "1-3.2026",
+     "change_pct": -4.7
+    },
+    "4": {
+     "latest": 3197900,
+     "quarter": "1-3.2026",
+     "change_pct": -3.1
+    },
+    "5": {
+     "latest": 3533500,
+     "quarter": "1-3.2026",
+     "change_pct": -6.0
+    },
+    "all": {
+     "latest": 3175100,
+     "quarter": "1-3.2026",
+     "change_pct": -6.5
+    }
+   }
+  },
+  {
+   "slug": "modiin-apartment-prices",
+   "page": "https://nad-lan.co.il/modiin-apartment-prices/",
+   "city_he": "מודיעין מכבים רעות",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 2039500,
+     "quarter": "10-12.2025",
+     "change_pct": -15.5
+    },
+    "4": {
+     "latest": 2559800,
+     "quarter": "1-3.2026",
+     "change_pct": -15.9
+    },
+    "5": {
+     "latest": 3648800,
+     "quarter": "1-3.2026",
+     "change_pct": -4.8
+    },
+    "all": {
+     "latest": 2512500,
+     "quarter": "1-3.2026",
+     "change_pct": -18.5
+    }
+   }
+  },
+  {
+   "slug": "netanya-apartment-prices",
+   "page": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "city_he": "נתניה",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 1791300,
+     "quarter": "10-12.2025",
+     "change_pct": -11.6
+    },
+    "4": {
+     "latest": 2676100,
+     "quarter": "1-3.2026",
+     "change_pct": 1.8
+    },
+    "5": {
+     "latest": 3365300,
+     "quarter": "1-3.2026",
+     "change_pct": -2.2
+    },
+    "all": {
+     "latest": 2629800,
+     "quarter": "1-3.2026",
+     "change_pct": 8.2
+    }
+   }
+  },
+  {
+   "slug": "petah-tikva-apartment-prices",
+   "page": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "city_he": "פתח תקווה",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 2057000,
+     "quarter": "1-3.2026",
+     "change_pct": 4.3
+    },
+    "4": {
+     "latest": 2444100,
+     "quarter": "1-3.2026",
+     "change_pct": -2.2
+    },
+    "5": {
+     "latest": 3322600,
+     "quarter": "1-3.2026",
+     "change_pct": -0.1
+    },
+    "all": {
+     "latest": 2441100,
+     "quarter": "1-3.2026",
+     "change_pct": 2.7
+    }
+   }
+  },
+  {
+   "slug": "raanana-apartment-prices",
+   "page": "https://nad-lan.co.il/raanana-apartment-prices/",
+   "city_he": "רעננה",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 2814000,
+     "quarter": "1-3.2026",
+     "change_pct": -0.8
+    },
+    "4": {
+     "latest": 3289900,
+     "quarter": "1-3.2026",
+     "change_pct": -0.8
+    },
+    "5": {
+     "latest": 4199400,
+     "quarter": "1-3.2026",
+     "change_pct": 0.2
+    },
+    "all": {
+     "latest": 3567200,
+     "quarter": "1-3.2026",
+     "change_pct": 8.6
+    }
+   }
+  },
+  {
+   "slug": "ramat-gan-apartment-prices",
+   "page": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
+   "city_he": "רמת גן",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 2701700,
+     "quarter": "1-3.2026",
+     "change_pct": -2.8
+    },
+    "4": {
+     "latest": 3330400,
+     "quarter": "1-3.2026",
+     "change_pct": 3.5
+    },
+    "5": {
+     "latest": 4636200,
+     "quarter": "1-3.2026",
+     "change_pct": 4.8
+    },
+    "all": {
+     "latest": 3122300,
+     "quarter": "1-3.2026",
+     "change_pct": 12.8
+    }
+   }
+  },
+  {
+   "slug": "ramat-hasharon-apartment-prices",
+   "page": "https://nad-lan.co.il/ramat-hasharon-apartment-prices/",
+   "city_he": "רמת השרון",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 3544800,
+     "quarter": "1-3.2026",
+     "change_pct": 16.4
+    },
+    "4": {
+     "latest": 3809600,
+     "quarter": "1-3.2026",
+     "change_pct": -10.7
+    },
+    "5": {
+     "latest": 4663600,
+     "quarter": "1-3.2026",
+     "change_pct": -2.4
+    },
+    "all": {
+     "latest": 4212500,
+     "quarter": "1-3.2026",
+     "change_pct": 12.4
+    }
+   }
+  },
+  {
+   "slug": "rehovot-apartment-prices",
+   "page": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "city_he": "רחובות",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 1921100,
+     "quarter": "1-3.2026",
+     "change_pct": null
+    },
+    "4": {
+     "latest": 2345500,
+     "quarter": "1-3.2026",
+     "change_pct": -6.9
+    },
+    "5": {
+     "latest": 3290000,
+     "quarter": "1-3.2026",
+     "change_pct": 3.6
+    },
+    "all": {
+     "latest": 2421900,
+     "quarter": "1-3.2026",
+     "change_pct": 5.9
+    }
+   }
+  },
+  {
+   "slug": "rishon-lezion-apartment-prices",
+   "page": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "city_he": "ראשון לציון",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 1936700,
+     "quarter": "1-3.2026",
+     "change_pct": -1.3
+    },
+    "4": {
+     "latest": 2392600,
+     "quarter": "1-3.2026",
+     "change_pct": 0.9
+    },
+    "5": {
+     "latest": 3631900,
+     "quarter": "1-3.2026",
+     "change_pct": 2.0
+    },
+    "all": {
+     "latest": 2064800,
+     "quarter": "1-3.2026",
+     "change_pct": 3.3
+    }
+   }
+  },
+  {
+   "slug": "tel-aviv-apartment-prices",
+   "page": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+   "city_he": "תל אביב יפו",
+   "data_quarter": "1-3.2026",
+   "rooms": {
+    "3": {
+     "latest": 4225800,
+     "quarter": "1-3.2026",
+     "change_pct": 14.1
+    },
+    "4": {
+     "latest": 5229800,
+     "quarter": "1-3.2026",
+     "change_pct": 10.7
+    },
+    "5": {
+     "latest": 7497700,
+     "quarter": "1-3.2026",
+     "change_pct": 6.5
+    },
+    "all": {
+     "latest": 3679000,
+     "quarter": "10-12.2025",
+     "change_pct": 2.7
+    }
+   }
+  }
+ ],
+ "notes": "Israel series (countryPrice) is identical in all 23 settlement files. The cities' newest official quarter is 1-3.2026; the Israel series in the same files already carries 4-6.2026. The cities range in the answer uses 1-3.2026 only (same quarter).",
+ "src_line": "חציון מחיר העסקה, לפי מספר החדרים, בעסקאות שדווחו לרשות המסים בכל הארץ ברבעון השני של 2026 (4-6.2026). נתוני הערים מהרבעון הראשון של 2026 (1-3.2026). עודכן 7.10.2026.",
+ "sources": [
+  {
+   "what": "Israel series (countryPrice), identical in all 23 settlement files; read from the Tel Aviv-Yafo file",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/5000.json",
+   "retrieved_utc": "2026-10-07 08:43:47",
+   "last_modified": "Thu, 20 Aug 2026 10:32:18 GMT"
+  },
+  {
+   "what": "city series: אשדוד",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/70.json",
+   "retrieved_utc": "2026-10-07 08:43:16",
+   "last_modified": "Thu, 20 Aug 2026 10:32:23 GMT"
+  },
+  {
+   "what": "city series: אשקלון",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/7100.json",
+   "retrieved_utc": "2026-10-07 08:43:18",
+   "last_modified": "Thu, 20 Aug 2026 10:32:23 GMT"
+  },
+  {
+   "what": "city series: בת ים",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/6200.json",
+   "retrieved_utc": "2026-10-07 08:43:19",
+   "last_modified": "Thu, 20 Aug 2026 10:32:21 GMT"
+  },
+  {
+   "what": "city series: באר שבע",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/9000.json",
+   "retrieved_utc": "2026-10-07 08:43:20",
+   "last_modified": "Thu, 20 Aug 2026 10:32:28 GMT"
+  },
+  {
+   "what": "city series: בני ברק",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/6100.json",
+   "retrieved_utc": "2026-10-07 08:43:22",
+   "last_modified": "Thu, 20 Aug 2026 10:32:20 GMT"
+  },
+  {
+   "what": "city series: אילת",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/2600.json",
+   "retrieved_utc": "2026-10-07 08:43:23",
+   "last_modified": "Thu, 20 Aug 2026 10:31:47 GMT"
+  },
+  {
+   "what": "city series: גבעתיים",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/6300.json",
+   "retrieved_utc": "2026-10-07 08:43:24",
+   "last_modified": "Thu, 20 Aug 2026 10:32:21 GMT"
+  },
+  {
+   "what": "city series: חיפה",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/4000.json",
+   "retrieved_utc": "2026-10-07 08:43:26",
+   "last_modified": "Thu, 20 Aug 2026 10:32:00 GMT"
+  },
+  {
+   "what": "city series: הרצליה",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/6400.json",
+   "retrieved_utc": "2026-10-07 08:43:27",
+   "last_modified": "Thu, 20 Aug 2026 10:32:21 GMT"
+  },
+  {
+   "what": "city series: הוד השרון",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/9700.json",
+   "retrieved_utc": "2026-10-07 08:43:29",
+   "last_modified": "Thu, 20 Aug 2026 10:32:29 GMT"
+  },
+  {
+   "what": "city series: חולון",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/6600.json",
+   "retrieved_utc": "2026-10-07 08:43:30",
+   "last_modified": "Thu, 20 Aug 2026 10:32:21 GMT"
+  },
+  {
+   "what": "city series: ירושלים",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/3000.json",
+   "retrieved_utc": "2026-10-07 08:43:32",
+   "last_modified": "Thu, 20 Aug 2026 10:31:48 GMT"
+  },
+  {
+   "what": "city series: כפר סבא",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/6900.json",
+   "retrieved_utc": "2026-10-07 08:43:33",
+   "last_modified": "Thu, 20 Aug 2026 10:32:22 GMT"
+  },
+  {
+   "what": "city series: קריית אונו",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/2620.json",
+   "retrieved_utc": "2026-10-07 08:43:35",
+   "last_modified": "Thu, 20 Aug 2026 10:31:47 GMT"
+  },
+  {
+   "what": "city series: מודיעין מכבים רעות",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/1200.json",
+   "retrieved_utc": "2026-10-07 08:43:36",
+   "last_modified": "Thu, 20 Aug 2026 10:31:39 GMT"
+  },
+  {
+   "what": "city series: נתניה",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/7400.json",
+   "retrieved_utc": "2026-10-07 08:43:38",
+   "last_modified": "Thu, 20 Aug 2026 10:32:24 GMT"
+  },
+  {
+   "what": "city series: פתח תקווה",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/7900.json",
+   "retrieved_utc": "2026-10-07 08:43:39",
+   "last_modified": "Thu, 20 Aug 2026 10:32:25 GMT"
+  },
+  {
+   "what": "city series: רעננה",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/8700.json",
+   "retrieved_utc": "2026-10-07 08:43:40",
+   "last_modified": "Thu, 20 Aug 2026 10:32:28 GMT"
+  },
+  {
+   "what": "city series: רמת גן",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/8600.json",
+   "retrieved_utc": "2026-10-07 08:43:42",
+   "last_modified": "Thu, 20 Aug 2026 10:32:27 GMT"
+  },
+  {
+   "what": "city series: רמת השרון",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/2650.json",
+   "retrieved_utc": "2026-10-07 08:43:43",
+   "last_modified": "Thu, 20 Aug 2026 10:31:47 GMT"
+  },
+  {
+   "what": "city series: רחובות",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/8400.json",
+   "retrieved_utc": "2026-10-07 08:43:45",
+   "last_modified": "Thu, 20 Aug 2026 10:32:27 GMT"
+  },
+  {
+   "what": "city series: ראשון לציון",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/8300.json",
+   "retrieved_utc": "2026-10-07 08:43:46",
+   "last_modified": "Thu, 20 Aug 2026 10:32:26 GMT"
+  },
+  {
+   "what": "city series: תל אביב יפו",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/5000.json",
+   "retrieved_utc": "2026-10-07 08:43:47",
+   "last_modified": "Thu, 20 Aug 2026 10:32:18 GMT"
+  }
+ ]
+}

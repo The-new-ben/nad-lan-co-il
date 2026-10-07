@@ -1,0 +1,1486 @@
+{
+ "zlotisti-4": {
+  "attempts": [
+   {
+    "q": "זלוציסטי 4, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%96%D7%9C%D7%95%D7%A6%D7%99%D7%A1%D7%98%D7%99+4%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:28:55Z",
+    "results": [
+     {
+      "place_id": 209798643,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2079071542,
+      "lat": "32.0834620",
+      "lon": "34.7931600",
+      "class": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "4, זלוציסטי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6492903, ישראל",
+      "address": {
+       "house_number": "4",
+       "road": "זלוציסטי",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "6492903",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0834120",
+       "32.0835120",
+       "34.7931100",
+       "34.7932100"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": 0,
+  "results": [
+   {
+    "place_id": 209798643,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2079071542,
+    "lat": "32.0834620",
+    "lon": "34.7931600",
+    "class": "place",
+    "type": "house",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "place",
+    "name": "",
+    "display_name": "4, זלוציסטי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6492903, ישראל",
+    "address": {
+     "house_number": "4",
+     "road": "זלוציסטי",
+     "residential": "תל־אביב–יפו",
+     "suburb": "הצפון החדש",
+     "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "6492903",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0834120",
+     "32.0835120",
+     "34.7931100",
+     "34.7932100"
+    ]
+   }
+  ]
+ },
+ "remez-27": {
+  "attempts": [
+   {
+    "q": "דוד רמז 27, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%93%D7%95%D7%93+%D7%A8%D7%9E%D7%96+27%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:28:56Z",
+    "results": [
+     {
+      "place_id": 208896740,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2079027632,
+      "lat": "32.0892410",
+      "lon": "34.7862490",
+      "class": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "27, דוד רמז, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+      "address": {
+       "house_number": "27",
+       "road": "דוד רמז",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "6296802",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0891910",
+       "32.0892910",
+       "34.7861990",
+       "34.7862990"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": 0,
+  "results": [
+   {
+    "place_id": 208896740,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2079027632,
+    "lat": "32.0892410",
+    "lon": "34.7862490",
+    "class": "place",
+    "type": "house",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "place",
+    "name": "",
+    "display_name": "27, דוד רמז, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+    "address": {
+     "house_number": "27",
+     "road": "דוד רמז",
+     "residential": "תל־אביב–יפו",
+     "suburb": "הצפון החדש",
+     "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "6296802",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0891910",
+     "32.0892910",
+     "34.7861990",
+     "34.7862990"
+    ]
+   }
+  ]
+ },
+ "jabotinsky-152": {
+  "attempts": [
+   {
+    "q": "ז'בוטינסקי 152, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%96%27%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99+152%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:28:58Z",
+    "results": [
+     {
+      "place_id": 207901907,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2078993963,
+      "lat": "32.0857480",
+      "lon": "34.7939790",
+      "class": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "152, ז'בוטינסקי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+      "address": {
+       "house_number": "152",
+       "road": "ז'בוטינסקי",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "5268101",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0856980",
+       "32.0857980",
+       "34.7939290",
+       "34.7940290"
+      ]
+     },
+     {
+      "place_id": 208596141,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2078993967,
+      "lat": "32.0857090",
+      "lon": "34.7941500",
+      "class": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "152א, ז'בוטינסקי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+      "address": {
+       "house_number": "152א",
+       "road": "ז'בוטינסקי",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "5268101",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0856590",
+       "32.0857590",
+       "34.7941000",
+       "34.7942000"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": 0,
+  "results": [
+   {
+    "place_id": 207901907,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2078993963,
+    "lat": "32.0857480",
+    "lon": "34.7939790",
+    "class": "place",
+    "type": "house",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "place",
+    "name": "",
+    "display_name": "152, ז'בוטינסקי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+    "address": {
+     "house_number": "152",
+     "road": "ז'בוטינסקי",
+     "residential": "תל־אביב–יפו",
+     "suburb": "הצפון החדש",
+     "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "5268101",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0856980",
+     "32.0857980",
+     "34.7939290",
+     "34.7940290"
+    ]
+   },
+   {
+    "place_id": 208596141,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2078993967,
+    "lat": "32.0857090",
+    "lon": "34.7941500",
+    "class": "place",
+    "type": "house",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "place",
+    "name": "",
+    "display_name": "152א, ז'בוטינסקי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+    "address": {
+     "house_number": "152א",
+     "road": "ז'בוטינסקי",
+     "residential": "תל־אביב–יפו",
+     "suburb": "הצפון החדש",
+     "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "5268101",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0856590",
+     "32.0857590",
+     "34.7941000",
+     "34.7942000"
+    ]
+   }
+  ]
+ },
+ "beeri-36": {
+  "attempts": [
+   {
+    "q": "בארי 36, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%91%D7%90%D7%A8%D7%99+36%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:29:00Z",
+    "results": [
+     {
+      "place_id": 209793964,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2079041196,
+      "lat": "32.0822930",
+      "lon": "34.7898060",
+      "class": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "36, בארי, תל־אביב–יפו, הצפון החדש - החלק הדרומי, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6492903, ישראל",
+      "address": {
+       "house_number": "36",
+       "road": "בארי",
+       "residential": "תל־אביב–יפו",
+       "neighbourhood": "הצפון החדש - החלק הדרומי",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "6492903",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0822430",
+       "32.0823430",
+       "34.7897560",
+       "34.7898560"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": 0,
+  "results": [
+   {
+    "place_id": 209793964,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2079041196,
+    "lat": "32.0822930",
+    "lon": "34.7898060",
+    "class": "place",
+    "type": "house",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "place",
+    "name": "",
+    "display_name": "36, בארי, תל־אביב–יפו, הצפון החדש - החלק הדרומי, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6492903, ישראל",
+    "address": {
+     "house_number": "36",
+     "road": "בארי",
+     "residential": "תל־אביב–יפו",
+     "neighbourhood": "הצפון החדש - החלק הדרומי",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "6492903",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0822430",
+     "32.0823430",
+     "34.7897560",
+     "34.7898560"
+    ]
+   }
+  ]
+ },
+ "beeri-56": {
+  "attempts": [
+   {
+    "q": "בארי 56, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%91%D7%90%D7%A8%D7%99+56%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:29:01Z",
+    "results": [
+     {
+      "place_id": 210633496,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2079194783,
+      "lat": "32.0820460",
+      "lon": "34.7916740",
+      "class": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "56, בארי, תל־אביב–יפו, הצפון החדש - החלק הדרומי, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6492903, ישראל",
+      "address": {
+       "house_number": "56",
+       "road": "בארי",
+       "residential": "תל־אביב–יפו",
+       "neighbourhood": "הצפון החדש - החלק הדרומי",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "6492903",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0819960",
+       "32.0820960",
+       "34.7916240",
+       "34.7917240"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": 0,
+  "results": [
+   {
+    "place_id": 210633496,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2079194783,
+    "lat": "32.0820460",
+    "lon": "34.7916740",
+    "class": "place",
+    "type": "house",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "place",
+    "name": "",
+    "display_name": "56, בארי, תל־אביב–יפו, הצפון החדש - החלק הדרומי, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6492903, ישראל",
+    "address": {
+     "house_number": "56",
+     "road": "בארי",
+     "residential": "תל־אביב–יפו",
+     "neighbourhood": "הצפון החדש - החלק הדרומי",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "6492903",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0819960",
+     "32.0820960",
+     "34.7916240",
+     "34.7917240"
+    ]
+   }
+  ]
+ },
+ "jabotinsky-135": {
+  "attempts": [
+   {
+    "q": "ז'בוטינסקי 135, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%96%27%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99+135%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:29:03Z",
+    "results": [
+     {
+      "place_id": 210085626,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2078986611,
+      "lat": "32.0867090",
+      "lon": "34.7919850",
+      "class": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "135, ז'בוטינסקי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+      "address": {
+       "house_number": "135",
+       "road": "ז'בוטינסקי",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "5268101",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0866590",
+       "32.0867590",
+       "34.7919350",
+       "34.7920350"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": 0,
+  "results": [
+   {
+    "place_id": 210085626,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2078986611,
+    "lat": "32.0867090",
+    "lon": "34.7919850",
+    "class": "place",
+    "type": "house",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "place",
+    "name": "",
+    "display_name": "135, ז'בוטינסקי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+    "address": {
+     "house_number": "135",
+     "road": "ז'בוטינסקי",
+     "residential": "תל־אביב–יפו",
+     "suburb": "הצפון החדש",
+     "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "5268101",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0866590",
+     "32.0867590",
+     "34.7919350",
+     "34.7920350"
+    ]
+   }
+  ]
+ },
+ "jabotinsky-137": {
+  "attempts": [
+   {
+    "q": "ז'בוטינסקי 137, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%96%27%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99+137%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:29:04Z",
+    "results": [
+     {
+      "place_id": 209786001,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 149367031,
+      "lat": "32.0866467",
+      "lon": "34.7921429",
+      "class": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "137, ז'בוטינסקי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+      "address": {
+       "house_number": "137",
+       "road": "ז'בוטינסקי",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "5268101",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0865210",
+       "32.0867723",
+       "34.7920396",
+       "34.7922462"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": 0,
+  "results": [
+   {
+    "place_id": 209786001,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 149367031,
+    "lat": "32.0866467",
+    "lon": "34.7921429",
+    "class": "building",
+    "type": "yes",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "building",
+    "name": "",
+    "display_name": "137, ז'בוטינסקי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+    "address": {
+     "house_number": "137",
+     "road": "ז'בוטינסקי",
+     "residential": "תל־אביב–יפו",
+     "suburb": "הצפון החדש",
+     "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "5268101",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0865210",
+     "32.0867723",
+     "34.7920396",
+     "34.7922462"
+    ]
+   }
+  ]
+ },
+ "jabotinsky-133": {
+  "attempts": [
+   {
+    "q": "ז'בוטינסקי 133, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%96%27%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99+133%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:29:06Z",
+    "results": [
+     {
+      "place_id": 210324473,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2078986280,
+      "lat": "32.0867200",
+      "lon": "34.7917240",
+      "class": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "133, ז'בוטינסקי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+      "address": {
+       "house_number": "133",
+       "road": "ז'בוטינסקי",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "5268101",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0866700",
+       "32.0867700",
+       "34.7916740",
+       "34.7917740"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": 0,
+  "results": [
+   {
+    "place_id": 210324473,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2078986280,
+    "lat": "32.0867200",
+    "lon": "34.7917240",
+    "class": "place",
+    "type": "house",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "place",
+    "name": "",
+    "display_name": "133, ז'בוטינסקי, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+    "address": {
+     "house_number": "133",
+     "road": "ז'בוטינסקי",
+     "residential": "תל־אביב–יפו",
+     "suburb": "הצפון החדש",
+     "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "5268101",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0866700",
+     "32.0867700",
+     "34.7916740",
+     "34.7917740"
+    ]
+   }
+  ]
+ },
+ "remez-44": {
+  "attempts": [
+   {
+    "q": "דוד רמז 44, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%93%D7%95%D7%93+%D7%A8%D7%9E%D7%96+44%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:29:08Z",
+    "results": [
+     {
+      "place_id": 210411546,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2079183328,
+      "lat": "32.0901950",
+      "lon": "34.7867580",
+      "class": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "44, דוד רמז, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+      "address": {
+       "house_number": "44",
+       "road": "דוד רמז",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "6296802",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0901450",
+       "32.0902450",
+       "34.7867080",
+       "34.7868080"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": 0,
+  "results": [
+   {
+    "place_id": 210411546,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2079183328,
+    "lat": "32.0901950",
+    "lon": "34.7867580",
+    "class": "place",
+    "type": "house",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "place",
+    "name": "",
+    "display_name": "44, דוד רמז, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+    "address": {
+     "house_number": "44",
+     "road": "דוד רמז",
+     "residential": "תל־אביב–יפו",
+     "suburb": "הצפון החדש",
+     "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "6296802",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0901450",
+     "32.0902450",
+     "34.7867080",
+     "34.7868080"
+    ]
+   }
+  ]
+ },
+ "remez-42": {
+  "attempts": [
+   {
+    "q": "דוד רמז 42, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%93%D7%95%D7%93+%D7%A8%D7%9E%D7%96+42%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:29:09Z",
+    "results": [
+     {
+      "place_id": 210970763,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2079182457,
+      "lat": "32.0899780",
+      "lon": "34.7867310",
+      "class": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "42, דוד רמז, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+      "address": {
+       "house_number": "42",
+       "road": "דוד רמז",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "6296802",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0899280",
+       "32.0900280",
+       "34.7866810",
+       "34.7867810"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": 0,
+  "results": [
+   {
+    "place_id": 210970763,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2079182457,
+    "lat": "32.0899780",
+    "lon": "34.7867310",
+    "class": "place",
+    "type": "house",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "place",
+    "name": "",
+    "display_name": "42, דוד רמז, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+    "address": {
+     "house_number": "42",
+     "road": "דוד רמז",
+     "residential": "תל־אביב–יפו",
+     "suburb": "הצפון החדש",
+     "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "6296802",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0899280",
+     "32.0900280",
+     "34.7866810",
+     "34.7867810"
+    ]
+   }
+  ]
+ },
+ "remez-22": {
+  "attempts": [
+   {
+    "q": "דוד רמז 22, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%93%D7%95%D7%93+%D7%A8%D7%9E%D7%96+22%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:29:11Z",
+    "results": [
+     {
+      "place_id": 210783128,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 26038814,
+      "lat": "32.0891640",
+      "lon": "34.7864356",
+      "class": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.053408333714808846,
+      "addresstype": "road",
+      "name": "דוד רמז",
+      "display_name": "דוד רמז, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+      "address": {
+       "road": "דוד רמז",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "6296802",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0874639",
+       "32.0908664",
+       "34.7861948",
+       "34.7866063"
+      ]
+     }
+    ]
+   },
+   {
+    "q": "רמז 22, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%A8%D7%9E%D7%96+22%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:29:13Z",
+    "results": [
+     {
+      "place_id": 210106962,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 26038814,
+      "lat": "32.0891640",
+      "lon": "34.7864356",
+      "class": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.053408333714808846,
+      "addresstype": "road",
+      "name": "דוד רמז",
+      "display_name": "דוד רמז, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+      "address": {
+       "road": "דוד רמז",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "6296802",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0874639",
+       "32.0908664",
+       "34.7861948",
+       "34.7866063"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": null,
+  "results": []
+ },
+ "remez-25": {
+  "attempts": [
+   {
+    "q": "דוד רמז 25, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%93%D7%95%D7%93+%D7%A8%D7%9E%D7%96+25%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:29:14Z",
+    "results": [
+     {
+      "place_id": 210621970,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2079022075,
+      "lat": "32.0904270",
+      "lon": "34.7868790",
+      "class": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "25, דוד רמז, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+      "address": {
+       "house_number": "25",
+       "road": "דוד רמז",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "6296802",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0903770",
+       "32.0904770",
+       "34.7868290",
+       "34.7869290"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": 0,
+  "results": [
+   {
+    "place_id": 210621970,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2079022075,
+    "lat": "32.0904270",
+    "lon": "34.7868790",
+    "class": "place",
+    "type": "house",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "place",
+    "name": "",
+    "display_name": "25, דוד רמז, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+    "address": {
+     "house_number": "25",
+     "road": "דוד רמז",
+     "residential": "תל־אביב–יפו",
+     "suburb": "הצפון החדש",
+     "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "6296802",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0903770",
+     "32.0904770",
+     "34.7868290",
+     "34.7869290"
+    ]
+   }
+  ]
+ },
+ "lissin-27": {
+  "attempts": [
+   {
+    "q": "ליסין 27, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%9C%D7%99%D7%A1%D7%99%D7%9F+27%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:29:16Z",
+    "results": [
+     {
+      "place_id": 210712013,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 149367201,
+      "lat": "32.0854985",
+      "lon": "34.7937970",
+      "class": "building",
+      "type": "apartments",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "27, ליסין, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+      "address": {
+       "house_number": "27",
+       "road": "ליסין",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "5268101",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0853876",
+       "32.0856093",
+       "34.7936742",
+       "34.7939198"
+      ]
+     },
+     {
+      "place_id": 210778732,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2079026957,
+      "lat": "32.0853910",
+      "lon": "34.7938170",
+      "class": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "27, ליסין, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+      "address": {
+       "house_number": "27",
+       "road": "ליסין",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "5268101",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0853410",
+       "32.0854410",
+       "34.7937670",
+       "34.7938670"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": 0,
+  "results": [
+   {
+    "place_id": 210712013,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 149367201,
+    "lat": "32.0854985",
+    "lon": "34.7937970",
+    "class": "building",
+    "type": "apartments",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "building",
+    "name": "",
+    "display_name": "27, ליסין, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+    "address": {
+     "house_number": "27",
+     "road": "ליסין",
+     "residential": "תל־אביב–יפו",
+     "suburb": "הצפון החדש",
+     "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "5268101",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0853876",
+     "32.0856093",
+     "34.7936742",
+     "34.7939198"
+    ]
+   },
+   {
+    "place_id": 210778732,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2079026957,
+    "lat": "32.0853910",
+    "lon": "34.7938170",
+    "class": "place",
+    "type": "house",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "place",
+    "name": "",
+    "display_name": "27, ליסין, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 5268101, ישראל",
+    "address": {
+     "house_number": "27",
+     "road": "ליסין",
+     "residential": "תל־אביב–יפו",
+     "suburb": "הצפון החדש",
+     "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "5268101",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0853410",
+     "32.0854410",
+     "34.7937670",
+     "34.7938670"
+    ]
+   }
+  ]
+ },
+ "sharet-30": {
+  "attempts": [
+   {
+    "q": "משה שרת 30, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%9E%D7%A9%D7%94+%D7%A9%D7%A8%D7%AA+30%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:29:18Z",
+    "results": [
+     {
+      "place_id": 210466813,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2079036017,
+      "lat": "32.0868720",
+      "lon": "34.7877000",
+      "class": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "30, משה שרת, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+      "address": {
+       "house_number": "30",
+       "road": "משה שרת",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "6296802",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0868220",
+       "32.0869220",
+       "34.7876500",
+       "34.7877500"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": 0,
+  "results": [
+   {
+    "place_id": 210466813,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2079036017,
+    "lat": "32.0868720",
+    "lon": "34.7877000",
+    "class": "place",
+    "type": "house",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "place",
+    "name": "",
+    "display_name": "30, משה שרת, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+    "address": {
+     "house_number": "30",
+     "road": "משה שרת",
+     "residential": "תל־אביב–יפו",
+     "suburb": "הצפון החדש",
+     "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "6296802",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0868220",
+     "32.0869220",
+     "34.7876500",
+     "34.7877500"
+    ]
+   }
+  ]
+ },
+ "zichron-yaakov-16": {
+  "attempts": [
+   {
+    "q": "זכרון יעקב 16, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%96%D7%9B%D7%A8%D7%95%D7%9F+%D7%99%D7%A2%D7%A7%D7%91+16%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:29:19Z",
+    "results": [
+     {
+      "place_id": 209792905,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2078994835,
+      "lat": "32.0839000",
+      "lon": "34.7910560",
+      "class": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "16, זכרון יעקב, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6492903, ישראל",
+      "address": {
+       "house_number": "16",
+       "road": "זכרון יעקב",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "6492903",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0838500",
+       "32.0839500",
+       "34.7910060",
+       "34.7911060"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": 0,
+  "results": [
+   {
+    "place_id": 209792905,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2078994835,
+    "lat": "32.0839000",
+    "lon": "34.7910560",
+    "class": "place",
+    "type": "house",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "place",
+    "name": "",
+    "display_name": "16, זכרון יעקב, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6492903, ישראל",
+    "address": {
+     "house_number": "16",
+     "road": "זכרון יעקב",
+     "residential": "תל־אביב–יפו",
+     "suburb": "הצפון החדש",
+     "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "6492903",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0838500",
+     "32.0839500",
+     "34.7910060",
+     "34.7911060"
+    ]
+   }
+  ]
+ },
+ "henkin-3": {
+  "attempts": [
+   {
+    "q": "חנקין 3, תל אביב-יפו",
+    "url": "https://nominatim.openstreetmap.org/search?format=json&q=%D7%97%D7%A0%D7%A7%D7%99%D7%9F+3%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95&countrycodes=il&addressdetails=1&limit=3&accept-language=he",
+    "retrieved": "2026-10-07T08:29:21Z",
+    "results": [
+     {
+      "place_id": 210880927,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2079033932,
+      "lat": "32.0890570",
+      "lon": "34.7891300",
+      "class": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 7.500038147550191e-05,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "3, חנקין, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+      "address": {
+       "house_number": "3",
+       "road": "חנקין",
+       "residential": "תל־אביב–יפו",
+       "suburb": "הצפון החדש",
+       "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+       "city": "תל־אביב–יפו",
+       "state_district": "נפת תל אביב",
+       "state": "מחוז תל אביב",
+       "ISO3166-2-lvl4": "IL-TA",
+       "postcode": "6296802",
+       "country": "ישראל",
+       "country_code": "il"
+      },
+      "boundingbox": [
+       "32.0890070",
+       "32.0891070",
+       "34.7890800",
+       "34.7891800"
+      ]
+     }
+    ]
+   }
+  ],
+  "chosen_attempt": 0,
+  "results": [
+   {
+    "place_id": 210880927,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 2079033932,
+    "lat": "32.0890570",
+    "lon": "34.7891300",
+    "class": "place",
+    "type": "house",
+    "place_rank": 30,
+    "importance": 7.500038147550191e-05,
+    "addresstype": "place",
+    "name": "",
+    "display_name": "3, חנקין, תל־אביב–יפו, הצפון החדש, הצפון החדש - סביבת ככר המדינה, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6296802, ישראל",
+    "address": {
+     "house_number": "3",
+     "road": "חנקין",
+     "residential": "תל־אביב–יפו",
+     "suburb": "הצפון החדש",
+     "neighbourhood": "הצפון החדש - סביבת ככר המדינה",
+     "city": "תל־אביב–יפו",
+     "state_district": "נפת תל אביב",
+     "state": "מחוז תל אביב",
+     "ISO3166-2-lvl4": "IL-TA",
+     "postcode": "6296802",
+     "country": "ישראל",
+     "country_code": "il"
+    },
+    "boundingbox": [
+     "32.0890070",
+     "32.0891070",
+     "34.7890800",
+     "34.7891800"
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,349 @@
+{
+ "slug": "h-infinity-somail-tel-aviv",
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "note": "PriceGuide data for /projects/h-infinity-somail-tel-aviv/ (7.10.2026). Every number has its source here and in docs/research/2026-10-07-project-prices-2/README.md; the page shows dates only (no source names, no buyer names). The developer's report states its sale prices are BEFORE VAT; the page shows them with 18% VAT (67,337 x 1.18 = 79,458, about 79,500) and the Q1 2026 contract as 17,420,000 / 194 = 89,794 (incl. VAT, about 89,800). The developer's areas look weighted (194 m2 in the report vs 182 m2 reported to the Tax Authority for the same contract), so the developer's per-m2 is lower than the Tax Authority per-m2. Only two deals with a floor are published (9 and 43), so there is no floor model: area-style modes; deals_plot keeps the two for a later floor mode. calc.floors 53 = the tower in the 9.12.2024 change permit (developer site: 52).",
+ "sources": {
+  "HGQ2": "https://www.hagag-group.co.il/Uploads/2026/09/OGy0Rl8MjoKHAq.pdf (the developer's Q2 2026 report, file Last-Modified 1.9.2026, read 7.10.2026, text-extracted with pypdf): 'כלל מחירי המכירה שיפורטו בטבלאות שלהלן אינם כוללים מע\"מ'; Somail 124, developer-model contracts: 2025 14 contracts, 2,406 m2, 67,337 ILS/m2; Q1 2026 1 contract, 194 m2, 76,271; Q2 2026 none; cumulative 50 contracts, 6,926 m2, 58,933; 45% marketed; 61 units (7,462 m2) not contracted; table b: to 30.6.2026 1 unit 17,420K incl. VAT; from 1.1.2026 to the report incl. join requests and options 12 units, 91,702K incl. VAT, 7.6M average incl. VAT",
+  "GEN2504": "https://en.globes.co.il/en/article-french-investors-buy-2-tel-aviv-apartments-for-nis-275m-1001507757 (Globes English 14.4.2025): floor 43, sea view, 180 m2 + 22 m2 balcony, NIS 16.5M, 'including the balconies' NIS 86,300/m2; floor 9, 150 m2 + 29 m2 balcony, NIS 11M, NIS 66,800/m2 (buyers never named here); deal date 23.1.2025 per the Madlan rows in docs/research/2026-09-28-h-infinity/facts.md",
+  "MADLAN": "https://www.madlan.co.il/projects/H-Infinit (Tax Authority deals as shown by Madlan, read 28.9.2026 by docs/research/2026-09-28-h-infinity/facts.md section 6.3; not re-read 7.10.2026, the portal has a bot check): 12 deals in 2025-2026, 72,111 to 95,714 ILS/m2 on the reported area",
+  "GL2608": "https://www.globes.co.il/news/article.aspx?did=1001552079 (Globes 12.8.2026): a campaign for about 30 apartments of 2-5 rooms 'במחיר התחלתי של 60 אלף שקל למ\"ר', estimated as a 10%-15% discount depending on size; 52 floors, 278 units, over 200 marketed",
+  "GL2609H": "https://www.globes.co.il/news/article.aspx?did=1001553998 (Globes 1.9.2026): no sale in Q2 2026, one in Q1; the campaign: 1M at signing, the rest three years from occupancy",
+  "HGSITE": "https://www.hagag-group.co.il/projects/ResidentProjects/h_infinity (the developer's page, read 7.10.2026): 'החל מ- 65,000 ₪ למ\"ר בלבד. 15% בלבד במעמד החתימה והיתרה באכלוס. ללא הצמדה למדד'",
+  "INFLAND": "https://infinity-hagag.co.il/infinity-tower/ (the developer's landing page): 'דירות יוקרה 2-6 חד׳ עם מרפסות נוף החל מ-5.82 מיליון ₪' (read 28.9.2026 per facts.md and shown on the live page; the domain did not resolve on 7.10.2026)",
+  "HG25": "https://www.hagag-group.co.il/Uploads/2026/04/rln33jws7WiMM6.pdf (the developer's 2025 annual report, via facts.md): change permit 9.12.2024, a residential tower of 53 floors and a 6+1 floor low building, about 278 units",
+  "GOVK": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209991.json (official medians, neighbourhood 'הצפון החדש - סביבת כיכר המדינה', Q1 2026, file Last-Modified 20.8.2026, read 7.10.2026; its street list holds שלמה אבן גבירול, ארלוזורוב and בן-סרוק; centroid 511 m from the lot): 3 rooms 4,943,500; 4 rooms 6,835,800; 5 rooms 8,455,800; Tel Aviv: https://data.nadlan.gov.il/api/pages/settlement/buy/5000.json 4,225,800 / 5,229,800 / 7,497,700",
+  "AFIQ2": "https://res.afi-g.com/about/Documents/2026/Q2-2026.pdf (the neighbouring DUO's developer, Q2 2026 report, via docs/research/2026-10-07-project-prices/README.md): 71K ILS/m2 before VAT in contracts of 1-6.2026, x 1.18 = about 83,800 incl. VAT",
+  "ICE2204": "https://www.ice.co.il/realestate/news/article/1110182 (ice 22.4.2026): recent purchases in the neighbouring DUO 80-85K ILS/m2, the upper end on high floors",
+  "BZ2610": "https://www.bizportal.co.il/realestates/news/article/20044073 (Bizportal 5.10.2026, via docs/research/2026-10-07-kikar-prices/press-facts.md): new projects around Kikar HaMedina 63-68K now (peak 70-75K); 2026 deals in existing buildings 59-76K; penthouses and garden apartments 80-110K",
+  "ICE28": "https://www.ice.co.il/realestate/news/article/1110810 (ice 28.4.2026, via press-facts.md): most units sold in new projects around the square in the last year at 63-66K ILS/m2",
+  "TA": "the site's Tel Aviv-Yafo card: Tax Authority deals 10.2023-10.2025, 2,432 deals, median 52,856 ILS/m2 (nlcp card on every Tel Aviv project page)"
+ },
+ "title": "כמה עולה דירה במגדל אינפיניטי תל אביב",
+ "calc_title": "מחשבון מחיר דירה במגדל אינפיניטי",
+ "answer": "בחוזים שנחתמו במגדל אינפיניטי ב-2025 המחיר הממוצע היה כ-79,500 ₪ למ״ר כולל מע״מ, כ-67,300 ₪ לפני מע״מ, לפי דוחות היזם. מתחילת 2026 נחתמו הסכמים ל-12 דירות, כולל בקשות הצטרפות ואופציות, בממוצע של כ-7.6 מיליון ₪ לדירה, ובמבצע של 8.2026 המחיר ההתחלתי הוא 60,000 ₪ למ״ר. בשכונה שמסביב, חציון העסקאות ברבעון הראשון של 2026 היה 4.94 מיליון ₪ לדירת 3 חדרים ו-6.84 מיליון ₪ לדירת 4 חדרים.",
+ "tiles": [
+  {
+   "big": "כ-79,500 ₪",
+   "small": "למ״ר כולל מע״מ, ממוצע החוזים של 2025 בפרויקט",
+   "date": "2025",
+   "src": "HGQ2"
+  },
+  {
+   "big": "כ-7.6 מיליון ₪",
+   "small": "ממוצע לדירה ב-12 ההסכמים של 2026, כולל מע״מ",
+   "date": "1-8.2026",
+   "src": "HGQ2"
+  },
+  {
+   "big": "מ-60,000 ₪",
+   "small": "למ״ר, המחיר ההתחלתי במבצע של 2026",
+   "date": "8.2026",
+   "src": "GL2608"
+  }
+ ],
+ "groups": [
+  {
+   "name": "במגדל אינפיניטי",
+   "rows": [
+    {
+     "what": "חוזים שנחתמו ב-2025",
+     "sub": "14 חוזים, כולל מע״מ. לפני מע״מ: כ-67,300 ₪ למ״ר",
+     "m2": "כ-79,500",
+     "price": "",
+     "kind": "deal",
+     "date": "2025",
+     "src": "HGQ2"
+    },
+    {
+     "what": "חוזה אחד ברבעון הראשון",
+     "sub": "194 מ״ר לפי היזם, כולל מע״מ. לפני מע״מ: כ-76,300 ₪ למ״ר",
+     "m2": "כ-89,800",
+     "price": "כ-17.42 מיליון",
+     "kind": "deal",
+     "date": "1-3.2026",
+     "src": "HGQ2"
+    },
+    {
+     "what": "12 דירות מתחילת 2026",
+     "sub": "כולל בקשות הצטרפות ואופציות, כולל מע״מ",
+     "m2": "",
+     "price": "כ-7.6 מיליון",
+     "kind": "deal",
+     "date": "1-8.2026",
+     "src": "HGQ2"
+    },
+    {
+     "what": "180 מ״ר, קומה 43, מול הים",
+     "sub": "ומרפסת 22 מ״ר. המחיר למ״ר כולל את המרפסת",
+     "m2": "כ-86,300",
+     "price": "16.5 מיליון",
+     "kind": "deal",
+     "date": "1.2025",
+     "src": "GEN2504"
+    },
+    {
+     "what": "150 מ״ר, קומה 9",
+     "sub": "ומרפסת 29 מ״ר. המחיר למ״ר כולל את המרפסת",
+     "m2": "כ-66,800",
+     "price": "11 מיליון",
+     "kind": "deal",
+     "date": "1.2025",
+     "src": "GEN2504"
+    },
+    {
+     "what": "עסקאות 2025-2026 שדווחו לרשות המסים",
+     "sub": "12 עסקאות, לפי השטח המדווח",
+     "m2": "72,100-95,700",
+     "price": "",
+     "kind": "deal",
+     "date": "2025-2026",
+     "src": "MADLAN"
+    },
+    {
+     "what": "המחיר ההתחלתי במבצע של 2026",
+     "sub": "כ-30 דירות של 2-5 חדרים. ההנחה מוערכת ב-10%-15%",
+     "m2": "מ-60,000",
+     "price": "",
+     "kind": "mkt",
+     "date": "8.2026",
+     "src": "GL2608"
+    },
+    {
+     "what": "המחיר ההתחלתי באתר היזם",
+     "sub": "15% בחתימה והיתרה באכלוס",
+     "m2": "מ-65,000",
+     "price": "",
+     "kind": "mkt",
+     "date": "10.2026",
+     "src": "HGSITE"
+    },
+    {
+     "what": "דירה בפרויקט, 2-6 חדרים",
+     "sub": "מחיר הפתיחה בדף השיווק",
+     "m2": "",
+     "price": "מ-5.82 מיליון",
+     "kind": "mkt",
+     "date": "9.2026",
+     "src": "INFLAND"
+    }
+   ]
+  },
+  {
+   "name": "חציון העסקאות בשכונה סביב כיכר המדינה, רבעון ראשון 2026",
+   "rows": [
+    {
+     "what": "3 חדרים",
+     "sub": "בכל תל אביב יפו: 4.23 מיליון",
+     "m2": "",
+     "price": "4.94 מיליון",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVK"
+    },
+    {
+     "what": "4 חדרים",
+     "sub": "בכל תל אביב יפו: 5.23 מיליון",
+     "m2": "",
+     "price": "6.84 מיליון",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVK"
+    },
+    {
+     "what": "5 חדרים",
+     "sub": "בכל תל אביב יפו: 7.50 מיליון",
+     "m2": "",
+     "price": "8.46 מיליון",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVK"
+    }
+   ]
+  },
+  {
+   "name": "בסביבה, רובע 4",
+   "rows": [
+    {
+     "what": "הפרויקט השכן במתחם סומייל",
+     "sub": "ממוצע החוזים, כולל מע״מ",
+     "m2": "כ-83,800",
+     "price": "",
+     "kind": "deal",
+     "date": "1-6.2026",
+     "src": "AFIQ2"
+    },
+    {
+     "what": "עסקאות אחרות בפרויקט השכן",
+     "sub": "המחיר הגבוה בקומות הגבוהות",
+     "m2": "80,000-85,000",
+     "price": "",
+     "kind": "deal",
+     "date": "4.2026",
+     "src": "ICE2204"
+    },
+    {
+     "what": "בניינים חדשים, פרויקטים ששווקו לאחרונה",
+     "sub": "בשיא: 70,000-75,000 ₪ למ״ר",
+     "m2": "63,000-68,000",
+     "price": "",
+     "kind": "mkt",
+     "date": "10.2026",
+     "src": "BZ2610"
+    },
+    {
+     "what": "רוב הדירות שנמכרו בפרויקטים חדשים",
+     "sub": "בשנה האחרונה, סביב כיכר המדינה",
+     "m2": "63,000-66,000",
+     "price": "",
+     "kind": "deal",
+     "date": "4.2026",
+     "src": "ICE28"
+    },
+    {
+     "what": "3-4 חדרים בבניינים קיימים",
+     "sub": "ארבע עסקאות, 70-110 מ״ר",
+     "m2": "59,000-76,000",
+     "price": "4.75-8.4 מיליון",
+     "kind": "deal",
+     "date": "2026",
+     "src": "BZ2610 ICE28"
+    },
+    {
+     "what": "פנטהאוזים ודירות גן",
+     "sub": "דירות גדולות עם שטח חוץ",
+     "m2": "80,000-110,000",
+     "price": "",
+     "kind": "deal",
+     "date": "10.2026",
+     "src": "BZ2610"
+    }
+   ]
+  },
+  {
+   "name": "להשוואה",
+   "rows": [
+    {
+     "what": "תל אביב יפו, כל העיר",
+     "sub": "חציון של 2,432 עסקאות",
+     "m2": "52,856",
+     "price": "",
+     "kind": "deal",
+     "date": "10.2023-10.2025",
+     "src": "TA"
+    }
+   ]
+  }
+ ],
+ "kinds": {
+  "deal": "עסקה",
+  "ask": "מחיר מבוקש",
+  "est": "הערכה",
+  "mkt": "מחיר שיווק",
+  "med": "חציון עסקאות"
+ },
+ "calc": {
+  "modes": [
+   {
+    "id": "tower",
+    "label": "במגדל",
+    "lo": 79500,
+    "hi": 89800,
+    "why": "בין ממוצע החוזים של 2025, כ-79,500 ₪ למ״ר, לבין החוזה של תחילת 2026, כ-89,800 ₪, כולל מע״מ. בעסקאות של 2025-2026 שדווחו לרשות המסים המחיר היה 72,100-95,700 ₪ למ״ר.",
+    "src": "HGQ2 (67,337 x 1.18; 17,420,000 / 194); MADLAN in why only"
+   },
+   {
+    "id": "offer",
+    "label": "המחיר ההתחלתי בשיווק",
+    "lo": 60000,
+    "hi": 65000,
+    "why": "המחיר ההתחלתי שפרסם היזם ב-2026: 60,000 ₪ למ״ר במבצע של 8.2026 ו-65,000 ₪ למ״ר באתר היזם. זה המחיר של הדירות הזולות, לא ממוצע.",
+    "src": "GL2608 HGSITE"
+   },
+   {
+    "id": "neighbour",
+    "label": "הפרויקט השכן במתחם",
+    "lo": 80000,
+    "hi": 85000,
+    "why": "עסקאות 2026 בפרויקט השכן במתחם סומייל, והגבוה בקומות הגבוהות.",
+    "src": "ICE2204"
+   },
+   {
+    "id": "new",
+    "label": "בניין חדש בסביבה",
+    "lo": 63000,
+    "hi": 68000,
+    "why": "המחירים בפרויקטים חדשים ששווקו לאחרונה סביב כיכר המדינה, באותה שכונה.",
+    "src": "BZ2610"
+   }
+  ],
+  "deals_plot": [
+   [
+    9,
+    66800
+   ],
+   [
+    43,
+    86300
+   ]
+  ],
+  "avg_line": 79500,
+  "ta_median": 52856,
+  "y0": 55000,
+  "y1": 100000,
+  "tax_single": [
+   [
+    1978745,
+    0
+   ],
+   [
+    2347040,
+    0.035
+   ],
+   [
+    6055070,
+    0.05
+   ],
+   [
+    20183565,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ],
+  "tax_more": [
+   [
+    6055070,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ],
+  "tax_src": "the site's /purchase-tax-calculator/ brackets (2026, frozen to 15.1.2028); copied from hamedina.json",
+  "gap": "המחירים במחשבון כוללים מע״מ. ממוצעי היזם אינם מגלמים את תנאי התשלום, ובמבצע של 2026 ההנחה מוערכת ב-10%-15%, לפי גודל הדירה.",
+  "gap_src": "HGQ2 GL2608",
+  "floors": 53
+ },
+ "ui": {
+  "more_t": "לכל המחירון: השכונה, הסביבה ולהשוואה",
+  "chart": "המחיר למ״ר באפשרות שבחרתם, מול ממוצע הפרויקט ותל אביב יפו",
+  "js": {
+   "avg": "ממוצע 2025 כולל מע״מ, כ-{n}",
+   "tw": "מגדל אינפיניטי, ממוצע 2025",
+   "aria_t": "אומדן של {lo} עד {hi} ₪ למ״ר בקומה {f}, מול ממוצע הפרויקט, כ-{avg} ₪",
+   "aria_a": "{m}: {lo} עד {hi} ₪ למ״ר, מול ממוצע הפרויקט כ-{avg} ₪ ותל אביב יפו {ta} ₪",
+   "wa": "שלום, בדקתי במחירון של מגדל אינפיניטי תל אביב: {m}, {a} מ״ר{f}, אומדן {r} מיליון ₪. אשמח לפרטים נוספים (nad-lan.co.il)"
+  }
+ },
+ "src_line": "המחירון מבוסס על דוחות היזם, על עסקאות שדווחו לרשות המסים ופורסמו, על חציון העסקאות הרשמי לפי שכונה ועל מחירים שפורסמו בסביבה. ממוצעי היזם מוצגים כולל מע״מ. מחיר שיווק מסומן בנפרד ואינו מחיר סגירה. עודכן 7.10.2026.",
+ "see": [
+  {
+   "text": "מחירי הדירות ברובע 4, השכונה של מגדל אינפיניטי ←",
+   "href": "https://nad-lan.co.il/north-tel-aviv/rova-4/"
+  }
+ ]
+}

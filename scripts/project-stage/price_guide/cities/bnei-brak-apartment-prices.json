@@ -1,0 +1,343 @@
+{
+ "slug": "bnei-brak-apartment-prices",
+ "mode": "rooms",
+ "page": "https://nad-lan.co.il/bnei-brak-apartment-prices/",
+ "city_he": "בני ברק",
+ "settlement_code": 6100,
+ "settlement_name_official": "בני ברק",
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "data_quarter": "1-3.2026",
+ "file_date": "2026-08-20",
+ "file_date_he": "20.8.2026",
+ "title": "כמה עולה דירה בבני ברק ב-2026",
+ "answer": "ברבעון הראשון של 2026, חציון מחיר העסקה בבני ברק היה 2,028,000 ₪ לדירת 3 חדרים, 2,491,200 ₪ לדירת 4 חדרים ו-3,034,100 ₪ לדירת 5 חדרים. לעומת הרבעון הראשון של 2025, החציון ירד ב-0.2% לדירת 3 חדרים, ירד ב-2.5% לדירת 4 חדרים וירד ב-4.3% לדירת 5 חדרים. בכל הארץ, חציון מחיר העסקה לדירת 4 חדרים ברבעון הראשון של 2026 היה 2,072,000 ₪.",
+ "rooms": {
+  "3": {
+   "latest": 2028000,
+   "quarter": "1-3.2026",
+   "year_ago": 2031600,
+   "change_pct": -0.2,
+   "quarters": [
+    [
+     "4-6.2024",
+     1882000
+    ],
+    [
+     "7-9.2024",
+     1970100
+    ],
+    [
+     "10-12.2024",
+     1999100
+    ],
+    [
+     "1-3.2025",
+     2031600
+    ],
+    [
+     "4-6.2025",
+     2061300
+    ],
+    [
+     "7-9.2025",
+     2091900
+    ],
+    [
+     "10-12.2025",
+     2052600
+    ],
+    [
+     "1-3.2026",
+     2028000
+    ]
+   ]
+  },
+  "4": {
+   "latest": 2491200,
+   "quarter": "1-3.2026",
+   "year_ago": 2554600,
+   "change_pct": -2.5,
+   "quarters": [
+    [
+     "4-6.2024",
+     2555900
+    ],
+    [
+     "7-9.2024",
+     2571600
+    ],
+    [
+     "10-12.2024",
+     2613400
+    ],
+    [
+     "1-3.2025",
+     2554600
+    ],
+    [
+     "4-6.2025",
+     2636600
+    ],
+    [
+     "7-9.2025",
+     2592300
+    ],
+    [
+     "10-12.2025",
+     2521400
+    ],
+    [
+     "1-3.2026",
+     2491200
+    ]
+   ]
+  },
+  "5": {
+   "latest": 3034100,
+   "quarter": "1-3.2026",
+   "year_ago": 3170600,
+   "change_pct": -4.3,
+   "quarters": [
+    [
+     "4-6.2024",
+     3115800
+    ],
+    [
+     "7-9.2024",
+     3140300
+    ],
+    [
+     "10-12.2024",
+     3003900
+    ],
+    [
+     "1-3.2025",
+     3170600
+    ],
+    [
+     "4-6.2025",
+     3125100
+    ],
+    [
+     "7-9.2025",
+     3098000
+    ],
+    [
+     "10-12.2025",
+     3402400
+    ],
+    [
+     "1-3.2026",
+     3034100
+    ]
+   ]
+  },
+  "all": {
+   "latest": 2288600,
+   "quarter": "1-3.2026",
+   "year_ago": 2204500,
+   "change_pct": 3.8,
+   "quarters": [
+    [
+     "4-6.2024",
+     2246300
+    ],
+    [
+     "7-9.2024",
+     2313400
+    ],
+    [
+     "10-12.2024",
+     2353700
+    ],
+    [
+     "1-3.2025",
+     2204500
+    ],
+    [
+     "4-6.2025",
+     2315100
+    ],
+    [
+     "7-9.2025",
+     2274300
+    ],
+    [
+     "10-12.2025",
+     2242600
+    ],
+    [
+     "1-3.2026",
+     2288600
+    ]
+   ]
+  }
+ },
+ "israel": {
+  "quarter": "1-3.2026",
+  "3": 1647500,
+  "4": 2072000,
+  "5": 2920600,
+  "all": 2058800
+ },
+ "israel_latest": {
+  "quarter": "4-6.2026",
+  "3": 1677400,
+  "4": 2028800,
+  "5": 2822700,
+  "all": 2130500
+ },
+ "neighbourhoods": [
+  {
+   "name": "פרדס כץ",
+   "id": 65209708,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 1861100,
+    "4": 2458000,
+    "5": null
+   },
+   "quarters_with_data": 23
+  },
+  {
+   "name": "רמת אלחנן",
+   "id": 65209769,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 2222400,
+    "4": 2778100,
+    "5": null
+   },
+   "quarters_with_data": 12
+  },
+  {
+   "name": "אזור תעשיה",
+   "id": 65210565,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 2330200,
+    "5": 2812000
+   },
+   "quarters_with_data": 11
+  },
+  {
+   "name": "הר שלום",
+   "id": 65209765,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 2023300,
+    "4": 2795700,
+    "5": null
+   },
+   "quarters_with_data": 9
+  },
+  {
+   "name": "אהרונוביץ- סוקולוב",
+   "id": 65209757,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 2043600,
+    "4": null,
+    "5": null
+   },
+   "quarters_with_data": 8
+  },
+  {
+   "name": "נוה אחיעזר",
+   "id": 65209642,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 1985500,
+    "4": null,
+    "5": null
+   },
+   "quarters_with_data": 7
+  },
+  {
+   "name": "נחלת שמעון",
+   "id": 65210566,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": null,
+    "4": 2486900,
+    "5": null
+   },
+   "quarters_with_data": 7
+  },
+  {
+   "name": "קרית הרצוג",
+   "id": 65209706,
+   "quarter": "1-3.2026",
+   "rooms": {
+    "3": 1859100,
+    "4": null,
+    "5": null
+   },
+   "quarters_with_data": 6
+  }
+ ],
+ "neighbourhoods_note": "Official neighbourhood medians for the city's data quarter (null = not published for that quarter). The official files give no deal counts, so neighbourhoods are ranked by quarters_with_data: how many of the 32 values (3/4/5/all rooms x the last 8 quarters) carry an official median. Only neighbourhoods with at least one 3/4/5-room median in the data quarter are kept. Names exactly as in the official files.",
+ "notes": "rooms.<k>.latest is the newest published median for that room count and rooms.<k>.quarter is its quarter (it can be older than data_quarter when the newer quarter was not published). year_ago = the same quarter one year earlier; change_pct = (latest - year_ago) / year_ago. quarters = the 8 quarters ending at data_quarter, oldest first, null where not published. israel = the Israel medians for data_quarter (same-quarter comparison); israel_latest = the newest Israel quarter in the same file. Full apartment prices in ILS, not per m2.",
+ "src_line": "חציון מחיר העסקה, לפי מספר החדרים, בעסקאות שדווחו לרשות המסים ברבעון הראשון של 2026 (1-3.2026). עודכן 7.10.2026.",
+ "sources": [
+  {
+   "what": "official settlement summary file (median deal price by rooms per quarter; city series and Israel series)",
+   "url": "https://data.nadlan.gov.il/api/pages/settlement/buy/6100.json",
+   "retrieved_utc": "2026-10-07 08:43:22",
+   "last_modified": "Thu, 20 Aug 2026 10:32:20 GMT",
+   "name_in_file": "בני ברק",
+   "id_in_file": 6100,
+   "version": "20-08-2026"
+  },
+  {
+   "what": "official neighbourhood summary file: פרדס כץ",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209708.json",
+   "retrieved_utc": "2026-10-07 08:50:45",
+   "last_modified": "Thu, 20 Aug 2026 10:29:55 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: רמת אלחנן",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209769.json",
+   "retrieved_utc": "2026-10-07 08:50:57",
+   "last_modified": "Thu, 20 Aug 2026 10:29:56 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: אזור תעשיה",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210565.json",
+   "retrieved_utc": "2026-10-07 08:51:05",
+   "last_modified": "Thu, 20 Aug 2026 10:30:32 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: הר שלום",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209765.json",
+   "retrieved_utc": "2026-10-07 08:50:54",
+   "last_modified": "Thu, 20 Aug 2026 10:29:56 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: אהרונוביץ- סוקולוב",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209757.json",
+   "retrieved_utc": "2026-10-07 08:50:49",
+   "last_modified": "Thu, 20 Aug 2026 10:29:56 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: נוה אחיעזר",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209642.json",
+   "retrieved_utc": "2026-10-07 08:50:43",
+   "last_modified": "Thu, 20 Aug 2026 10:29:53 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: נחלת שמעון",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210566.json",
+   "retrieved_utc": "2026-10-07 08:51:06",
+   "last_modified": "Thu, 20 Aug 2026 10:30:32 GMT"
+  },
+  {
+   "what": "official neighbourhood summary file: קרית הרצוג",
+   "url": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209706.json",
+   "retrieved_utc": "2026-10-07 08:50:44",
+   "last_modified": "Thu, 20 Aug 2026 10:29:55 GMT"
+  }
+ ]
+}

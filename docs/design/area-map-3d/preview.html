@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>רובע 4 מלמעלה</title>
+<meta name="description" content="תצוגת עיצוב: מפת רובע 4 סביב כיכר המדינה, עם הפרויקטים, ההתחדשות העירונית והחיים בשכונה. לא באתר החי.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Noto+Serif+Hebrew:wght@600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.24.0/maplibre-gl.css" rel="stylesheet">
+<style>
+  :root {
+    --sa-paper: #f7f6f2; --sa-surf: #ffffff; --sa-ink: #14212b; --sa-ink2: #3b4753; --sa-mute: #6b7680;
+    --sa-line: #e3e1da; --sa-sea: #2f6f86; --sa-seah: #255c70; --sa-deep: #1f4b5c; --sa-sand: #eee9dd;
+    --nl-champagne: #cfe3ea;
+    /* place colours: validated categorical set (dataviz validator, --pairs all, on sa-paper), each also carries an icon */
+    --c-edu: #4a3aa7; --c-parks: #1baf7a; --c-shop: #eb6834; --c-transit: #2a78d6; --c-renewal: #3b4753; --c-project: #1f4b5c;
+    --serif: "Noto Serif Hebrew", "David Libre", Georgia, serif;
+    --sans: "Assistant", "Segoe UI", Arial, sans-serif;
+    --gutter: clamp(16px, 3vw, 32px);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--sa-paper); color: var(--sa-ink2); font-family: var(--sans); }
+  body { -webkit-text-size-adjust: 100%; }
+
+  .nlam { max-width: 1240px; margin: 0 auto; padding: 34px var(--gutter) 40px; }
+  .nlam-kicker { margin: 0 0 6px; color: var(--sa-sea); font-weight: 700; font-size: 14px; letter-spacing: .02em; }
+  .nlam h2 { margin: 0 0 10px; font-family: var(--serif); font-weight: 600; color: var(--sa-ink);
+    font-size: clamp(24px, 3.2vw, 34px); line-height: 1.25; letter-spacing: -.005em; text-wrap: balance; }
+  .nlam-lead { margin: 0 0 20px; max-width: 64ch; font-size: clamp(16px, 1.6vw, 18px); line-height: 1.6; color: var(--sa-ink2); }
+
+  /* filters */
+  .nlam-chips { display: flex; gap: 8px; margin: 0 0 12px; padding: 2px 0 6px; overflow-x: auto; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch; }
+  .nlam-chips::-webkit-scrollbar { display: none; }
+  .nlam-chip { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px;
+    border: 1px solid var(--sa-line); border-radius: 999px; background: var(--sa-surf); color: var(--sa-ink2);
+    font: 600 15px/1 var(--sans); cursor: pointer; transition: border-color .2s, background-color .2s, color .2s; }
+  .nlam-chip:hover { border-color: var(--sa-sea); }
+  .nlam-chip[aria-pressed="true"] { background: var(--sa-sea); border-color: var(--sa-sea); color: #fff; }
+  .nlam-chip:focus-visible, .nlam-btn:focus-visible, .nlam-card a:focus-visible, .nlam-x:focus-visible,
+  .nlam-pin:focus-visible { outline: 2px solid var(--sa-sea); outline-offset: 2px; }
+  .nlam-sw { width: 12px; height: 12px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 2px #fff; flex: 0 0 auto; }
+  .nlam-sw--sq { border-radius: 3px; }
+  .nlam-sw--pill { width: 18px; border-radius: 999px; }
+  .nlam-n { font-weight: 400; opacity: .8; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; }
+
+  /* frame */
+  .nlam-frame { position: relative; height: 70vh; min-height: 460px; max-height: 760px; border-radius: 22px; overflow: hidden;
+    border: 1px solid var(--sa-line); background: var(--sa-sand); isolation: isolate; }
+  #nlam-map { position: absolute; inset: 0; }
+  .nlam-btn { position: absolute; z-index: 3; top: 14px; left: 14px; display: inline-flex; align-items: center; gap: 8px;
+    min-height: 40px; padding: 0 16px; border: 1px solid var(--sa-line); border-radius: 999px; background: rgba(255,255,255,.96);
+    color: var(--sa-deep); font: 600 15px/1 var(--sans); cursor: pointer; box-shadow: 0 1px 2px rgba(20,33,43,.04);
+    transition: background-color .2s, border-color .2s; }
+  .nlam-key { position: absolute; z-index: 2; right: 12px; bottom: 30px; display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 11px; border-radius: 999px; background: rgba(255,255,255,.92); border: 1px solid var(--sa-line);
+    font-size: 13px; font-weight: 600; color: var(--sa-deep); pointer-events: none; }
+  .nlam-key i { width: 22px; height: 0; border-top: 2px dashed var(--sa-deep); }
+  .nlam-btn:hover { background: var(--sa-sand); border-color: var(--sa-sea); }
+  .nlam-btn svg { width: 17px; height: 17px; }
+
+  /* project pins */
+  .nlam-pin { display: flex; flex-direction: column; align-items: center; border: 0; padding: 0; background: none; cursor: pointer;
+    font-family: var(--sans); }
+  .nlam-pin-label { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px;
+    background: var(--sa-deep); color: #fff; font-weight: 700; font-size: 14px; line-height: 1; white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(20,33,43,.18); transition: transform .2s, background-color .2s; }
+  .nlam-pin-stem { width: 2px; height: 16px; background: var(--sa-deep); }
+  .nlam-pin-foot { width: 10px; height: 10px; border-radius: 50%; background: #fff; border: 3px solid var(--sa-deep); margin-top: -2px; }
+  .nlam-pin--hero .nlam-pin-label { background: var(--sa-sea); font-family: var(--serif); font-weight: 600; font-size: 16px; padding: 9px 15px; }
+  .nlam-pin--hero .nlam-pin-stem { background: var(--sa-sea); height: 22px; }
+  .nlam-pin--hero .nlam-pin-foot { border-color: var(--sa-sea); }
+  .nlam-pin:hover .nlam-pin-label, .nlam-pin.is-on .nlam-pin-label { transform: translateY(-2px); background: var(--sa-seah); }
+  .nlam-pin bdi { unicode-bidi: isolate; }
+  .nlam-pin.is-compact .nlam-pin-label { display: none; }
+  .nlam-pin.is-compact .nlam-pin-stem { height: 6px; }
+  .nlam-pin.is-compact .nlam-pin-foot { width: 16px; height: 16px; border-width: 4px; }
+  .nlam-pin-foot { position: relative; }
+  .nlam-pin.is-compact .nlam-pin-foot::after { content: ""; position: absolute; inset: -12px; border-radius: 50%; }
+
+  /* card */
+  .nlam-card { position: absolute; z-index: 4; top: 14px; right: 14px; width: 330px; max-height: calc(100% - 28px); overflow: auto;
+    background: var(--sa-surf); border: 1px solid var(--sa-line); border-radius: 16px; padding: 18px 20px 18px;
+    box-shadow: 0 14px 34px rgba(20,33,43,.1); }
+  .nlam-card[hidden] { display: none; }
+  .nlam-x { position: absolute; top: 10px; left: 10px; width: 36px; height: 36px; display: grid; place-items: center;
+    border: 0; border-radius: 999px; background: transparent; color: var(--sa-ink2); cursor: pointer; }
+  .nlam-x:hover { background: var(--sa-sand); }
+  .nlam-x svg { width: 18px; height: 18px; }
+  .nlam-card-k { margin: 0 0 6px; display: flex; align-items: center; gap: 8px; color: var(--sa-sea); font-weight: 700; font-size: 13.5px; }
+  .nlam-card h3 { margin: 0 34px 8px 0; font-family: var(--serif); font-weight: 600; font-size: 21px; line-height: 1.3; color: var(--sa-ink); }
+  .nlam-card p { margin: 0 0 6px; font-size: 15.5px; line-height: 1.5; color: var(--sa-ink2); }
+  .nlam-ba { display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; gap: 8px; margin: 10px 0 10px; }
+  .nlam-ba > div { background: var(--sa-paper); border: 1px solid var(--sa-line); border-radius: 12px; padding: 9px 11px; }
+  .nlam-ba b { display: block; font-size: 12.5px; color: var(--sa-ink2); font-weight: 600; margin-bottom: 3px; }
+  .nlam-ba > div > span { display: block; font-size: 15px; line-height: 1.35; color: var(--sa-ink); font-weight: 600; }
+  .nlam-ba i { align-self: center; font-style: normal; color: var(--sa-sea); font-weight: 700; }
+  .nlam-meta { font-size: 14px !important; color: var(--sa-ink2) !important; }
+  .nlam-cta { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; min-height: 44px; padding: 0 20px;
+    border-radius: 999px; background: var(--sa-sea); color: #fff; font-weight: 700; font-size: 15.5px; text-decoration: none;
+    transition: background-color .2s; }
+  .nlam-cta:hover { background: var(--sa-seah); }
+  .nlam-num { direction: ltr; unicode-bidi: isolate; }
+
+  .nlam-caption { margin: 12px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--sa-ink2); }
+  .nlam-caption bdi { unicode-bidi: isolate; }
+  .nlam-list { margin-top: 14px; border-top: 1px solid var(--sa-line); padding-top: 10px; }
+  .nlam-list summary { cursor: pointer; color: var(--sa-sea); font-weight: 700; font-size: 15px; min-height: 40px; display: flex; align-items: center; }
+  .nlam-list h4 { margin: 14px 0 6px; font-family: var(--serif); font-weight: 600; color: var(--sa-ink); font-size: 17px; }
+  .nlam-list ul { margin: 0; padding: 0 18px 0 0; }
+  .nlam-list li { margin: 0 0 6px; line-height: 1.5; font-size: 15px; }
+  .nlam-list a { color: var(--sa-sea); }
+
+  /* MapLibre chrome in the house style */
+  .maplibregl-ctrl-group { border-radius: 14px !important; box-shadow: 0 1px 2px rgba(20,33,43,.06) !important; border: 1px solid var(--sa-line); }
+  .maplibregl-ctrl-group button { width: 38px !important; height: 38px !important; }
+  .maplibregl-ctrl-attrib { font-family: var(--sans); font-size: 11.5px; background: rgba(255,255,255,.88) !important; }
+  .maplibregl-ctrl-attrib a { color: var(--sa-ink2); }
+  .maplibregl-cooperative-gesture-screen { font-family: var(--sans); font-weight: 600; font-size: 18px !important;
+    background: rgba(20,33,43,.55) !important; }
+  .maplibregl-ctrl-bottom-left { bottom: 6px; }
+
+  @media (max-width: 640px) {
+    .nlam { padding: 26px 16px 32px; }
+    .nlam-frame { height: 60vh; height: 60svh; min-height: 380px; border-radius: 16px; }
+    .nlam-card { top: auto; bottom: 30px; right: 10px; left: 10px; width: auto; max-height: 64%; padding: 16px 16px 16px; }
+    .nlam-card h3 { font-size: 19px; }
+    .nlam-pin-label { font-size: 13px; padding: 6px 10px; }
+    .nlam-pin--hero .nlam-pin-label { font-size: 14.5px; padding: 8px 12px; }
+    .nlam-btn { top: 10px; left: 10px; min-height: 36px; padding: 0 12px; font-size: 13.5px; gap: 6px; }
+    .nlam-btn svg { width: 15px; height: 15px; }
+    .maplibregl-ctrl-bottom-left { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nlam-pin-label, .nlam-chip, .nlam-btn, .nlam-cta { transition: none; }
+  }
+</style>
+</head>
+<body>
+<section class="nlam" id="nlam-rova-4" aria-labelledby="nlam-h">
+  <p class="nlam-kicker">המיקום</p>
+  <h2 id="nlam-h">כיכר המדינה והרובע שסביבה</h2>
+  <p class="nlam-lead">בין אבן גבירול לנתיבי איילון, ובין הירקון לשדרות שאול המלך: מגדלי המגורים סביב הכיכר, הבניינים שעוברים התחדשות עירונית, ובתי הספר, הפארקים, בתי הקפה והרכבת הקלה של רובע 4.</p>
+
+  <div class="nlam-chips" role="group" aria-label="מה מוצג">
+    <button type="button" class="nlam-chip" data-cat="projects" aria-pressed="true"><span class="nlam-sw nlam-sw--pill" style="--c:var(--c-project)"></span>פרויקטים <span class="nlam-n"></span></button>
+    <button type="button" class="nlam-chip" data-cat="renewal" aria-pressed="true"><span class="nlam-sw nlam-sw--sq" style="--c:var(--c-renewal)"></span>התחדשות עירונית <span class="nlam-n"></span></button>
+    <button type="button" class="nlam-chip" data-cat="edu" aria-pressed="true"><span class="nlam-sw" style="--c:var(--c-edu)"></span>בתי ספר וגנים <span class="nlam-n"></span></button>
+    <button type="button" class="nlam-chip" data-cat="parks" aria-pressed="true"><span class="nlam-sw" style="--c:var(--c-parks)"></span>פארקים <span class="nlam-n"></span></button>
+    <button type="button" class="nlam-chip" data-cat="shop" aria-pressed="true"><span class="nlam-sw" style="--c:var(--c-shop)"></span>קניות <span class="nlam-n"></span></button>
+    <button type="button" class="nlam-chip" data-cat="transit" aria-pressed="true"><span class="nlam-sw" style="--c:var(--c-transit)"></span>תחבורה <span class="nlam-n"></span></button>
+  </div>
+
+  <div class="nlam-frame">
+    <div id="nlam-map" role="region" aria-label="מפת רובע 4 סביב כיכר המדינה"></div>
+    <button type="button" class="nlam-btn" id="nlam-reset">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+      חזרה למבט הכללי
+    </button>
+    <div class="nlam-key" aria-hidden="true"><i></i>גבולות הרובע, בקירוב</div>
+    <div class="nlam-card" id="nlam-card" role="dialog" aria-modal="false" aria-labelledby="nlam-card-h" hidden>
+      <button type="button" class="nlam-x" id="nlam-x" aria-label="סגירה">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div id="nlam-card-body"></div>
+    </div>
+  </div>
+
+  <p class="nlam-caption">מפה להמחשה. מיקומים לפי <bdi>OpenStreetMap</bdi>; פרויקטי התחדשות לפי פרסומים, עודכן 7.10.2026.</p>
+
+  <details class="nlam-list">
+    <summary>כל הפרויקטים והכתובות שבמפה</summary>
+    <div id="nlam-list-body"></div>
+  </details>
+</section>
+
+<script id="nlam-data" type="application/json">{"key":"rova-4","updated":"2026-10-07","view":{"center":[34.789776,32.086758],"zoom":15,"pitch":55,"bearing":-18,"phone":{"center":[34.79,32.0868],"zoom":14.2,"pitch":55}},"counts":{"projects":6,"renewal":15,"edu":11,"parks":19,"shop":43,"transit":4},"boundary":{"type":"Feature","properties":{"label":"גבולות הרובע, בקירוב","method":"No OSM boundary relation for Rova 4 in the box (relations seen: 0). Line built from the OSM geometry of the four boundary lines named in facts.md R1: אבן גבירול (west), נתיבי איילון (east), נחל הירקון (north), שדרות שאול המלך (south); carriageways averaged, corners where the lines meet (extended straight where a street stops short).","nodes_used":{"west_nodes":294,"south_nodes":64,"east_nodes":221,"north_nodes":53},"corners":{"sw":[32.075535,34.781681],"nw":[32.096324,34.78371],"ne":[32.099889,34.802693],"se":[32.078028,34.795694]},"source":"OpenStreetMap (Overpass API); boundary text: he.wikipedia רובעי תל אביב-יפו (facts.md R1)","retrieved":"2026-10-07T08:33:46Z"},"geometry":{"type":"Polygon","coordinates":[[[34.781681,32.075535],[34.781681,32.075535],[34.781457,32.076253],[34.781571,32.076309],[34.781295,32.077244],[34.781311,32.077682],[34.781254,32.078455],[34.781205,32.078809],[34.781281,32.079495],[34.781352,32.080361],[34.781346,32.080925],[34.781326,32.081442],[34.781316,32.081959],[34.781362,32.08315],[34.781583,32.084007],[34.781629,32.084496],[34.781789,32.085139],[34.781837,32.085365],[34.782059,32.086264],[34.782084,32.086919],[34.78222,32.087196],[34.782338,32.088088],[34.782305,32.088316],[34.782568,32.089375],[34.782635,32.089774],[34.782845,32.090686],[34.782815,32.090848],[34.782967,32.091714],[34.783487,32.094033],[34.783545,32.094768],[34.783701,32.09532],[34.783746,32.095576],[34.78371,32.096324],[34.783837,32.09633],[34.78715,32.096525],[34.788393,32.09673],[34.792436,32.0974],[34.796484,32.098454],[34.799829,32.100148],[34.800395,32.100181],[34.800918,32.100097],[34.801662,32.099891],[34.802693,32.099889],[34.802416,32.098816],[34.801889,32.097433],[34.801841,32.096433],[34.801293,32.094922],[34.801836,32.094077],[34.801673,32.093166],[34.800726,32.092553],[34.801499,32.092295],[34.801277,32.091357],[34.800172,32.090184],[34.800268,32.089837],[34.800106,32.089096],[34.799661,32.08861],[34.80033,32.087967],[34.799628,32.087399],[34.798567,32.08629],[34.798518,32.085585],[34.798044,32.084974],[34.798357,32.084405],[34.798156,32.083893],[34.797726,32.082962],[34.797703,32.082522],[34.7981,32.081968],[34.79801,32.081443],[34.797711,32.080798],[34.797555,32.080166],[34.79717,32.079591],[34.796773,32.079062],[34.79629,32.078486],[34.795694,32.078028],[34.792753,32.078028],[34.792221,32.077976],[34.79148,32.077851],[34.79103,32.077703],[34.790307,32.077492],[34.789319,32.077206],[34.788775,32.076974],[34.787312,32.076401],[34.786853,32.0763],[34.786012,32.076015],[34.785491,32.075874],[34.785005,32.07575],[34.784443,32.075658],[34.783583,32.075544],[34.783381,32.075599],[34.782774,32.075515],[34.781876,32.075525],[34.781681,32.075535]]]}},"places":[{"id":"osm-way-1560569019","cat":"edu","type":"בית ספר","name":"בי\"ס יהודה המכבי","lat":32.092354,"lng":34.784721,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/1560569019","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-1182815868","cat":"edu","type":"בית ספר","name":"בית הספר מירון","lat":32.095506,"lng":34.789077,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/1182815868","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-167780827","cat":"edu","type":"בית ספר","name":"בית ספר היובל","lat":32.081162,"lng":34.784987,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/167780827","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-140917803","cat":"edu","type":"בית ספר","name":"בית ספר עירוני ד'","lat":32.09303,"lng":34.790944,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/140917803","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-405360284","cat":"edu","type":"בית ספר","name":"הגימנסיה העברית הרצליה","lat":32.086799,"lng":34.785213,"addr":"ז'בוטינסקי 106","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/405360284","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-206773123","cat":"edu","type":"בית ספר","name":"התיכון החדש ע\"ש יצחק רבין","lat":32.089814,"lng":34.794635,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/206773123","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-1183060171","cat":"edu","type":"בית ספר","name":"עירוני ד' סניף","lat":32.095587,"lng":34.791848,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/1183060171","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-1183060379","cat":"edu","type":"בית ספר","name":"עירוני י\"א","lat":32.093156,"lng":34.787607,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/1183060379","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-683470518","cat":"edu","type":"גן ילדים","name":"גן אורי","lat":32.0817,"lng":34.784569,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/683470518","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-10784983315","cat":"edu","type":"גן ילדים","name":"גן ילדים על שם שרה ברוורמן-קניוק","lat":32.079776,"lng":34.792357,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/10784983315","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-727986714","cat":"edu","type":"גן ילדים","name":"צהרוני \"ניצני יובל\"","lat":32.095259,"lng":34.784743,"addr":"בני דן 6","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/727986714","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-733464835","cat":"parks","type":"פארק","name":"גינת אורי","lat":32.081783,"lng":34.78493,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/733464835","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-30146258","cat":"parks","type":"פארק","name":"גינת דובנוב","lat":32.077765,"lng":34.784435,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/30146258","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-149384939","cat":"parks","type":"פארק","name":"גן א.ל. זיסו","lat":32.083625,"lng":34.78357,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/149384939","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-370074338","cat":"parks","type":"פארק","name":"גן אברהם","lat":32.087265,"lng":34.791885,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/370074338","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-30826885","cat":"parks","type":"פארק","name":"גן אברמוביץ'","lat":32.09434,"lng":34.796569,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/30826885","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-26301651","cat":"parks","type":"פארק","name":"גן אריסון","lat":32.080921,"lng":34.787532,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/26301651","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-203219827","cat":"parks","type":"פארק","name":"גן גורדון","lat":32.083058,"lng":34.789785,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/203219827","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-91599859","cat":"parks","type":"פארק","name":"גן גרמניס","lat":32.084859,"lng":34.787499,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/91599859","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-30879066","cat":"parks","type":"פארק","name":"גן הגת","lat":32.084789,"lng":34.791569,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/30879066","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-362314995","cat":"parks","type":"פארק","name":"גן ההסתדרות","lat":32.08533,"lng":34.783776,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/362314995","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-157509492","cat":"parks","type":"פארק","name":"גן וולובלסקי קרני","lat":32.081507,"lng":34.794807,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/157509492","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-623856901","cat":"parks","type":"פארק","name":"גן זאב","lat":32.08054,"lng":34.786236,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/623856901","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-34748041","cat":"parks","type":"פארק","name":"גן זינגר","lat":32.095458,"lng":34.793674,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/34748041","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-31539863","cat":"parks","type":"פארק","name":"גן משה כהן","lat":32.08923,"lng":34.79079,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/31539863","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-30828437","cat":"parks","type":"פארק","name":"גן נורי","lat":32.091141,"lng":34.786812,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/30828437","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-26301668","cat":"parks","type":"פארק","name":"גן סוטין","lat":32.082412,"lng":34.78616,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/26301668","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-30879232","cat":"parks","type":"פארק","name":"גן פולק","lat":32.089197,"lng":34.789754,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/30879232","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-35148082","cat":"parks","type":"פארק","name":"גן פייבל","lat":32.084579,"lng":34.793649,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/35148082","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-relation-8662271","cat":"parks","type":"פארק","name":"שדרות דוד המלך","lat":32.079909,"lng":34.784934,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/relation/8662271","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-9483154691","cat":"shop","type":"בית מרקחת","name":"גוד פארם","lat":32.081367,"lng":34.781538,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/9483154691","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-10110475398","cat":"shop","type":"בית מרקחת","name":"גוד פארם","lat":32.083848,"lng":34.789365,"addr":"ויצמן 24","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/10110475398","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-10923421862","cat":"shop","type":"בית מרקחת","name":"גוד פארם","lat":32.091219,"lng":34.783092,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/10923421862","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-1309308409","cat":"shop","type":"בית מרקחת","name":"סופר-פארם","lat":32.08891,"lng":34.797499,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/1309308409","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-2078959857","cat":"shop","type":"בית מרקחת","name":"סופר-פארם","lat":32.086634,"lng":34.782259,"addr":"אבן גבירול","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/2078959857","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-8443459383","cat":"shop","type":"בית מרקחת","name":"סופר-פארם","lat":32.079376,"lng":34.781681,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/8443459383","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-11513852130","cat":"shop","type":"בית קפה","name":"Cafe Chablis","lat":32.077374,"lng":34.781522,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/11513852130","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-4161854778","cat":"shop","type":"בית קפה","name":"Cafe Henrietta","lat":32.082941,"lng":34.791636,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/4161854778","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-4161854779","cat":"shop","type":"בית קפה","name":"Cake Art","lat":32.082899,"lng":34.791857,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/4161854779","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-13899276701","cat":"shop","type":"בית קפה","name":"Jera","lat":32.078115,"lng":34.781493,"addr":"אבן גבירול 54א","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/13899276701","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-1207157419","cat":"shop","type":"בית קפה","name":"Uno","lat":32.07748,"lng":34.789076,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/1207157419","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-1309308446","cat":"shop","type":"בית קפה","name":"restaurant poisson Ada","lat":32.088969,"lng":34.797202,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/1309308446","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-6564590385","cat":"shop","type":"בית קפה","name":"אספרסו בר","lat":32.093963,"lng":34.790791,"addr":"יהודה המכבי 55","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/6564590385","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-11169886012","cat":"shop","type":"בית קפה","name":"ארומה","lat":32.081603,"lng":34.789293,"addr":"ויצמן 14","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/11169886012","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-10784964980","cat":"shop","type":"בית קפה","name":"ארקפה","lat":32.07829,"lng":34.788636,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/10784964980","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-11088954278","cat":"shop","type":"בית קפה","name":"בית לחם","lat":32.083419,"lng":34.789333,"addr":"ויצמן 20","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/11088954278","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-9312382294","cat":"shop","type":"בית קפה","name":"ג'ונו","lat":32.093637,"lng":34.78505,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/9312382294","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-4973245325","cat":"shop","type":"בית קפה","name":"דידו קפה","lat":32.091097,"lng":34.787385,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/4973245325","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-6227660300","cat":"shop","type":"בית קפה","name":"דלל","lat":32.08726,"lng":34.786339,"addr":"ז'בוטינסקי 110","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/6227660300","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-1717768353","cat":"shop","type":"בית קפה","name":"זוריק","lat":32.093712,"lng":34.785083,"addr":"יהודה המכבי 4","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/1717768353","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-10825033512","cat":"shop","type":"בית קפה","name":"לוצ'ה","lat":32.083033,"lng":34.789275,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/10825033512","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-11088945317","cat":"shop","type":"בית קפה","name":"לחם ארז","lat":32.085838,"lng":34.788497,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/11088945317","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-9312382295","cat":"shop","type":"בית קפה","name":"לנדוור","lat":32.091995,"lng":34.785319,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/9312382295","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-11163232373","cat":"shop","type":"בית קפה","name":"מיצלי","lat":32.083969,"lng":34.789408,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/11163232373","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-9350046743","cat":"shop","type":"בית קפה","name":"מתוקה","lat":32.084953,"lng":34.785356,"addr":"ארלוזורוב 97","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/9350046743","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-2488604312","cat":"shop","type":"בית קפה","name":"ספסל","lat":32.078368,"lng":34.783253,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/2488604312","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-11169880831","cat":"shop","type":"בית קפה","name":"רולדין","lat":32.081659,"lng":34.78975,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/11169880831","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-1643304645","cat":"shop","type":"סופרמרקט","name":"7to7","lat":32.081194,"lng":34.781488,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/1643304645","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-3458644340","cat":"shop","type":"סופרמרקט","name":"AM:PM","lat":32.088325,"lng":34.782565,"addr":"אבן גבירול 136","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/3458644340","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-7011476318","cat":"shop","type":"סופרמרקט","name":"AM:PM","lat":32.077912,"lng":34.790886,"addr":"שאול המלך 41","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/7011476318","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-14179976773","cat":"shop","type":"סופרמרקט","name":"Carrefour City","lat":32.079336,"lng":34.795043,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/14179976773","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-1791415676","cat":"shop","type":"סופרמרקט","name":"Carrefour Market","lat":32.081466,"lng":34.785508,"addr":"לסר אורי 12","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/1791415676","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-11176622421","cat":"shop","type":"סופרמרקט","name":"City Market","lat":32.087741,"lng":34.790891,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/11176622421","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-11163200118","cat":"shop","type":"סופרמרקט","name":"ויקטורי","lat":32.084928,"lng":34.789193,"addr":"ויצמן 53","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/11163200118","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-777400968","cat":"shop","type":"סופרמרקט","name":"טיב טעם","lat":32.07987,"lng":34.781519,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/777400968","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-6286327186","cat":"shop","type":"סופרמרקט","name":"טיב טעם","lat":32.094022,"lng":34.791834,"addr":"יהודה המכבי 69","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/6286327186","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-10923438502","cat":"shop","type":"סופרמרקט","name":"טיב טעם","lat":32.090769,"lng":34.783052,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/10923438502","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-10765295517","cat":"shop","type":"סופרמרקט","name":"טיב טעם בעיר","lat":32.083134,"lng":34.792771,"addr":"ארלוזורוב 149","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/10765295517","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-1309308441","cat":"shop","type":"סופרמרקט","name":"טיפ טוב","lat":32.094277,"lng":34.798408,"addr":"בבלי 17","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/1309308441","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-3461420325","cat":"shop","type":"סופרמרקט","name":"מגה בעיר","lat":32.090748,"lng":34.789028,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/3461420325","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-6401692655","cat":"shop","type":"סופרמרקט","name":"מינימרקט לינוי","lat":32.081427,"lng":34.783497,"addr":"גליצנשטיין 2","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/6401692655","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-5245475874","cat":"shop","type":"סופרמרקט","name":"ניו מרקט","lat":32.084006,"lng":34.788999,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/5245475874","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-11174881987","cat":"shop","type":"סופרמרקט","name":"שופרסל שלי","lat":32.081676,"lng":34.790171,"addr":"ויצמן 14","edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/11174881987","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-way-30797420","cat":"transit","type":"מסוף אוטובוסים","name":"מסוף 2000","lat":32.082917,"lng":34.796116,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/way/30797420","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-11124786622","cat":"transit","type":"תחנת הרכבת הקלה","name":"ארלוזורוב","lat":32.081565,"lng":34.796508,"addr":null,"edge_m":null,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/11124786622","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-11124793538","cat":"transit","type":"תחנת הרכבת הקלה","name":"שאול המלך","lat":32.076918,"lng":34.792155,"addr":null,"edge_m":114,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/11124793538","retrieved":"2026-10-07T08:33:46Z"},{"id":"osm-node-2930618402","cat":"transit","type":"תחנת רכבת","name":"תל אביב סבידור מרכז","lat":32.084244,"lng":34.798312,"addr":null,"edge_m":2,"source":"OpenStreetMap (Overpass API)","source_url":"https://www.openstreetmap.org/node/2930618402","retrieved":"2026-10-07T08:33:46Z"}],"projects":[{"id":"hamedina","name":"מגדלי כיכר המדינה","fact":"3 מגדלים בני 40, 40 ו-37 קומות · 453 דירות","developer":null,"url":"https://nad-lan.co.il/projects/hamedina/","lat":32.086758,"lng":34.789776,"hero":true,"source":"nad-lan.co.il project page","source_url":"https://nad-lan.co.il/projects/hamedina/","position_from":"page JSON-LD geo (same as the catalogue)","retrieved":"2026-10-07T08:34:51Z"},{"id":"duo-tel-aviv","name":"DUO","fact":"2 מגדלים בני 54 קומות · 668 דירות","developer":"אפריקה ישראל מגורים","url":"https://nad-lan.co.il/projects/duo-tel-aviv/","lat":32.085658,"lng":34.783027,"hero":false,"source":"nad-lan.co.il project page","source_url":"https://nad-lan.co.il/projects/duo-tel-aviv/","position_from":"stage lat/lng printed in the page HTML","retrieved":"2026-10-07T08:34:53Z"},{"id":"h-infinity-somail-tel-aviv","name":"H Infinity","fact":"מגדל מגורים ובניין בוטיק · כ-278 דירות","developer":"קבוצת חג'ג'","url":"https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/","lat":32.087284,"lng":34.78272,"hero":false,"source":"nad-lan.co.il project page","source_url":"https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/","position_from":"page JSON-LD geo (same as the catalogue)","retrieved":"2026-10-07T08:34:51Z"},{"id":"yoo-tel-aviv","name":"מגדלי YOO","fact":"2 מגדלים בני 37 ו-41 קומות · כ-300 דירות","developer":"קבוצת חבס","url":"https://nad-lan.co.il/projects/yoo-tel-aviv/","lat":32.090497,"lng":34.7963,"hero":false,"source":"nad-lan.co.il project page","source_url":"https://nad-lan.co.il/projects/yoo-tel-aviv/","position_from":"page JSON-LD geo (same as the catalogue)","retrieved":"2026-10-07T08:34:54Z"},{"id":"akirov-towers","name":"מגדלי אקירוב","fact":"3 מגדלים בני 32 קומות · כ-350 דירות","developer":"אלרוב","url":"https://nad-lan.co.il/projects/akirov-towers/","lat":32.090711,"lng":34.793055,"hero":false,"source":"nad-lan.co.il project page","source_url":"https://nad-lan.co.il/projects/akirov-towers/","position_from":"page JSON-LD geo (same as the catalogue)","retrieved":"2026-10-07T08:34:55Z"},{"id":"park-bavli","name":"פארק בבלי","fact":"4 מגדלים בני 46 קומות · כ-800 דירות","developer":"קבוצת תשובה ואלעד מגורים","url":"https://nad-lan.co.il/projects/park-bavli/","lat":32.092292,"lng":34.798255,"hero":false,"source":"nad-lan.co.il project page","source_url":"https://nad-lan.co.il/projects/park-bavli/","position_from":"page JSON-LD geo (same as the catalogue)","retrieved":"2026-10-07T08:34:56Z"}],"renewal":[{"id":"zlotisti-4","address":"זלוציסטי 4","before":"4 קומות, 12 דירות","after":"8 קומות, 22 דירות","developer":null,"stage":"נהרס, 2.2026","source_date":"28.4.2026; 5.10.2026","lat":32.083462,"lng":34.79316,"position_from":"OSM Nominatim","url":null},{"id":"remez-27","address":"רמז 27","before":"4 קומות, 14 דירות","after":"9 קומות, 24 דירות","developer":null,"stage":"נהרס, 2.2026","source_date":"28.4.2026; 5.10.2026","lat":32.089241,"lng":34.786249,"position_from":"OSM Nominatim","url":null},{"id":"jabotinsky-152","address":"ז'בוטינסקי 152","before":"4 קומות, 20 דירות","after":"8 קומות, 38 דירות","developer":"בית וגג","stage":"סיום צפוי ברבעון האחרון של 2028","source_date":"16.4.2026","lat":32.085748,"lng":34.793979,"position_from":"OSM Nominatim","url":null},{"id":"beeri-36-56","address":"בארי 36 עד 56, הצד הזוגי","before":"11 בניינים, כ-190 דירות","after":"עד כ-500 דירות, לפי הערכת החברה","developer":"אדם שוסטר","stage":"נבחרה במכרז הדיירים, 3.2026","source_date":"31.3.2026; 5.10.2026","lat":32.082169,"lng":34.79074,"position_from":"OSM Nominatim (midpoint of 2 addresses)","url":null},{"id":"jabotinsky-135-137","address":"ז'בוטינסקי 135 עד 137","before":"32 דירות","after":"9 קומות, 68 דירות","developer":"אפריקה התחדשות ובית וגג","stage":"נחתם חוזה ביצוע, 8.2024","source_date":"18.8.2024","lat":32.086678,"lng":34.792064,"position_from":"OSM Nominatim (midpoint of 2 addresses)","url":null},{"id":"jabotinsky-133","address":"ז'בוטינסקי 133","before":"16 דירות","after":"9 קומות, 33 דירות","developer":"בית וגג","stage":"הבניין הישן נהרס, 11.2025","source_date":"3.12.2025","lat":32.08672,"lng":34.791724,"position_from":"OSM Nominatim","url":null},{"id":"remez-44","address":"רמז 44","before":null,"after":"7 קומות, 25 דירות","developer":"אנשי העיר","stage":"היתר בנייה, 9.12.2025","source_date":"10.12.2025","lat":32.090195,"lng":34.786758,"position_from":"OSM Nominatim","url":null},{"id":"remez-42","address":"רמז 42","before":null,"after":"20 דירות","developer":"אנשי העיר","stage":"בקשה להיתר","source_date":"10.12.2025","lat":32.089978,"lng":34.786731,"position_from":"OSM Nominatim","url":null},{"id":"remez-25","address":"רמז 25","before":null,"after":"26 דירות","developer":"אנשי העיר","stage":"הדיירים פונו","source_date":"10.12.2025","lat":32.090427,"lng":34.786879,"position_from":"OSM Nominatim","url":null},{"id":"lissin-27","address":"ליסין 27","before":"4 קומות, 12 דירות","after":"7 קומות, 21 דירות","developer":"יעז יזמות","stage":"היתר בנייה, 7.2026","source_date":"5.8.2026","lat":32.085498,"lng":34.793797,"position_from":"OSM Nominatim","url":null},{"id":"sharet-30","address":"שרת 30","before":"4 קומות, 11 דירות","after":"8 קומות, 24 דירות","developer":"יעז יזמות","stage":"היתר בנייה, 7.2026","source_date":"5.8.2026","lat":32.086872,"lng":34.7877,"position_from":"OSM Nominatim","url":null},{"id":"zichron-yaakov-16","address":"זכרון יעקב 16","before":"3 קומות על עמודים, 12 דירות","after":"7 קומות, 26 דירות","developer":"קבוצת לוינשטיין","stage":"ההריסה החלה 24.11.2024, אכלוס צפוי במחצית השנייה של 2028","source_date":"25.11.2024","lat":32.0839,"lng":34.791056,"position_from":"OSM Nominatim","url":null},{"id":"henkin-3","address":"חנקין 3","before":null,"after":null,"developer":"נוגה","stage":"פרויקט הריסה ובנייה","source_date":"28.4.2026; 5.10.2026","lat":32.089057,"lng":34.78913,"position_from":"OSM Nominatim","url":null},{"id":"page-arlozorov","address":"מתחם ארלוזורוב","before":"57 דירות","after":"248 דירות","developer":null,"stage":"תכנית מאושרת לפני מימוש, 2023","note":"תכנית 507-0634923 · המיקום בקירוב","source_date":"page read 7.10.2026","url":"https://nad-lan.co.il/projects/%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91/","lat":32.084522,"lng":34.783965,"position_from":"page JSON-LD geo; precision not stated, shown as approximate","retrieved":"2026-10-07T08:35:01Z"},{"id":"page-dafna","address":"מתחם דפנה","before":null,"after":null,"developer":null,"stage":"תכנית מאושרת במימוש, 2015","note":"תכנית תא/3885 · המיקום בקירוב","source_date":"page read 7.10.2026","url":"https://nad-lan.co.il/projects/%d7%93%d7%a4%d7%a0%d7%94/","lat":32.080866,"lng":34.793167,"position_from":"page JSON-LD geo; precision not stated, shown as approximate","retrieved":"2026-10-07T08:35:15Z"}]}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.24.0/maplibre-gl.js"></script>
+<script>
+(function () {
+  "use strict";
+  var DATA = JSON.parse(document.getElementById("nlam-data").textContent || "{}");
+  var phone = window.matchMedia("(max-width: 640px)").matches;
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var css = getComputedStyle(document.documentElement);
+  function v(n) { return css.getPropertyValue(n).trim(); }
+  var COL = { edu: v("--c-edu"), parks: v("--c-parks"), shop: v("--c-shop"), transit: v("--c-transit"), renewal: v("--c-renewal") };
+  var CAT_HE = { projects: "פרויקט", renewal: "התחדשות עירונית", edu: "בתי ספר וגנים", parks: "פארקים", shop: "קניות", transit: "תחבורה" };
+  var FONT = ["Noto Sans Regular"];
+  var on = { projects: true, renewal: true, edu: true, parks: true, shop: true, transit: true };
+
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  // isolate every run of digits (and Latin names) left to right inside Hebrew lines
+  function num(s) { return esc(s).replace(/([A-Za-z0-9][A-Za-z0-9.,:'\- ]*[A-Za-z0-9]|[0-9])/g, '<span class="nlam-num">$1</span>'); }
+
+  // counts on the chips
+  var counts = DATA.counts || {};
+  document.querySelectorAll(".nlam-chip").forEach(function (b) {
+    var n = counts[b.dataset.cat];
+    b.querySelector(".nlam-n").textContent = n ? String(n) : "";
+  });
+
+  if (!window.maplibregl) { return; }
+  maplibregl.setRTLTextPlugin("https://cdn.jsdelivr.net/npm/@mapbox/mapbox-gl-rtl-text@0.3.0/dist/mapbox-gl-rtl-text.js", true);
+
+  var view = DATA.view || { center: [34.789776, 32.086758], zoom: 15, pitch: 55, bearing: -18 };
+  var ph = view.phone || {};
+  var HOME = phone
+    ? { center: ph.center || view.center, zoom: ph.zoom || 13.9, pitch: ph.pitch || view.pitch, bearing: view.bearing }
+    : { center: view.center, zoom: view.zoom, pitch: view.pitch, bearing: view.bearing };
+
+  var map = new maplibregl.Map({
+    container: "nlam-map",
+    style: "https://tiles.openfreemap.org/styles/positron",
+    center: HOME.center, zoom: HOME.zoom, pitch: HOME.pitch, bearing: HOME.bearing,
+    minZoom: 12.8, maxZoom: 18.5, maxPitch: 70,
+    maxBounds: [[34.735, 32.045], [34.845, 32.13]],
+    cooperativeGestures: true,
+    attributionControl: { compact: false },
+    dragRotate: true, touchPitch: true,
+    locale: {
+      "CooperativeGesturesHandler.WindowsHelpText": "להגדלה ולהקטנה: Ctrl וגלגלת העכבר",
+      "CooperativeGesturesHandler.MacHelpText": "להגדלה ולהקטנה: ⌘ וגלגלת העכבר",
+      "CooperativeGesturesHandler.MobileHelpText": "שתי אצבעות להזזת המפה",
+      "NavigationControl.ZoomIn": "הגדלה", "NavigationControl.ZoomOut": "הקטנה",
+      "NavigationControl.ResetBearing": "חזרה לצפון", "AttributionControl.ToggleAttribution": "קרדיט",
+      "Map.Title": "מפת רובע 4", "Marker.Title": "סימון", "Popup.Close": "סגירה"
+    }
+  });
+  if (!phone) map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "bottom-left");
+  window.__nlam = map; // for the screenshot script
+
+  /* ---------------- house palette over the OpenFreeMap positron style ---------------- */
+  function restyle() {
+    var st = map.getStyle();
+    st.layers.forEach(function (l) {
+      var id = l.id;
+      try {
+        if (l.type === "background") map.setPaintProperty(id, "background-color", "#f3f1ea");
+        else if (id === "water") map.setPaintProperty(id, "fill-color", "#c9dfe6");
+        else if (id === "waterway") map.setPaintProperty(id, "line-color", "#b9d4dd");
+        else if (id === "park") { map.setPaintProperty(id, "fill-color", "#dfe7d6"); map.setPaintProperty(id, "fill-opacity", 0.9); }
+        else if (id === "landcover_wood") map.setPaintProperty(id, "fill-color", "#d9e3cf");
+        else if (id === "landuse_residential") map.setPaintProperty(id, "fill-color", "#efede5");
+        else if (id === "building") { map.setPaintProperty(id, "fill-color", "#e9e5da"); map.setLayerZoomRange(id, 0, 13.4); }
+        else if (/^(boundary_|airport|highway-shield|road_shield|label_country|label_state)/.test(id)) map.setLayoutProperty(id, "visibility", "none");
+        else if (/highway_(major|motorway)_(inner|subtle)$/.test(id) || id === "highway_minor") map.setPaintProperty(id, "line-color", "#ffffff");
+        else if (/casing$/.test(id) && l.type === "line") map.setPaintProperty(id, "line-color", "#dcd8cc");
+        if (l.type === "symbol" && l.layout && l.layout["text-field"] && !/shield/.test(id)) {
+          map.setLayoutProperty(id, "text-field", ["coalesce", ["get", "name:he"], ["get", "name"]]);
+          map.setPaintProperty(id, "text-color", "#5a6670");
+          map.setPaintProperty(id, "text-halo-color", "rgba(247,246,242,.95)");
+        }
+      } catch (e) { /* a layer the style does not carry: skip */ }
+    });
+    var firstLabel = (st.layers.find(function (l) { return l.type === "symbol"; }) || {}).id;
+    map.addLayer({
+      id: "nlam-3d", type: "fill-extrusion", source: "openmaptiles", "source-layer": "building", minzoom: 13,
+      filter: ["!=", ["get", "hide_3d"], true],
+      paint: {
+        "fill-extrusion-color": ["interpolate", ["linear"], ["coalesce", ["get", "render_height"], 0],
+          0, "#fbfaf7", 30, "#f1ede4", 90, "#e6e0d3", 160, "#dcd5c6"],
+        "fill-extrusion-height": ["interpolate", ["linear"], ["zoom"], 13, 0, 13.6, ["coalesce", ["get", "render_height"], 0]],
+        "fill-extrusion-base": ["interpolate", ["linear"], ["zoom"], 13, 0, 13.6, ["coalesce", ["get", "render_min_height"], 0]],
+        "fill-extrusion-opacity": 0.94,
+        "fill-extrusion-vertical-gradient": true
+      }
+    }, firstLabel);
+    return firstLabel;
+  }
+
+  /* ---------------- marker icons drawn once (line icons, white on the category colour) ---------------- */
+  var GLYPH = {
+    edu: "M3 9.5l9-4 9 4-9 4-9-4z M7 11.5v3.5c0 1.6 2.3 3 5 3s5-1.4 5-3v-3.5",
+    parks: "M12 3.5a4.6 4.6 0 0 0-4.5 4.1A3.8 3.8 0 0 0 8 15.3h8a3.8 3.8 0 0 0 .5-7.7A4.6 4.6 0 0 0 12 3.5z M12 15.3v5.2",
+    shop: "M5.5 8.5h13l-1 11.5h-11l-1-11.5z M9 8.5V7a3 3 0 0 1 6 0v1.5",
+    transit: "M7.5 4h9a2 2 0 0 1 2 2v8.5a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z M5.5 10.5h13 M9 16.5l-2 3.5 M15 16.5l2 3.5",
+    renewal: "M5 20.5V9.5l7-4 7 4v11 M9.5 20.5v-5h5v5 M3.5 20.5h17"
+  };
+  function icon(cat, square) {
+    var S = 30, R = 2, c = document.createElement("canvas");
+    c.width = c.height = S * R;
+    var g = c.getContext("2d");
+    g.scale(R, R);
+    g.fillStyle = COL[cat];
+    g.strokeStyle = "#ffffff";
+    g.lineWidth = 2;
+    g.beginPath();
+    if (square) { g.roundRect ? g.roundRect(2, 2, S - 4, S - 4, 7) : g.rect(2, 2, S - 4, S - 4); }
+    else { g.arc(S / 2, S / 2, S / 2 - 2, 0, Math.PI * 2); }
+    g.fill(); g.stroke();
+    g.save();
+    g.translate(S / 2 - 8.4, S / 2 - 8.4);
+    g.scale(0.7, 0.7);
+    g.lineWidth = 2.1; g.lineCap = "round"; g.lineJoin = "round";
+    g.stroke(new Path2D(GLYPH[cat]));
+    g.restore();
+    return g.getImageData(0, 0, S * R, S * R);
+  }
+
+  /* ---------------- data as GeoJSON ---------------- */
+  function fc(list, extra) {
+    return { type: "FeatureCollection", features: list.map(function (p, i) {
+      var props = Object.assign({ i: i }, extra ? extra(p) : {});
+      return { type: "Feature", id: i, properties: props, geometry: { type: "Point", coordinates: [p.lng, p.lat] } };
+    }) };
+  }
+  var places = DATA.places || [], renewal = DATA.renewal || [], projects = DATA.projects || [];
+
+  function mask(ring) {
+    return { type: "Feature", properties: {}, geometry: { type: "Polygon",
+      coordinates: [[[34.6, 31.95], [34.95, 31.95], [34.95, 32.25], [34.6, 32.25], [34.6, 31.95]], ring.slice().reverse()] } };
+  }
+
+  map.on("style.load", function () {
+    var firstLabel = restyle();
+    ["edu", "parks", "shop", "transit"].forEach(function (k) { map.addImage("nlam-" + k, icon(k, false), { pixelRatio: 2 }); });
+    map.addImage("nlam-renewal", icon("renewal", true), { pixelRatio: 2 });
+
+    // the quarter: soft veil outside, a fine dashed line on the edge, its name along the line
+    if (DATA.boundary) {
+      var ring = DATA.boundary.geometry.coordinates[0];
+      map.addSource("nlam-veil", { type: "geojson", data: mask(ring) });
+      map.addLayer({ id: "nlam-veil", type: "fill", source: "nlam-veil",
+        paint: { "fill-color": "#f7f6f2", "fill-opacity": 0.42 } }, "nlam-3d");
+      map.addSource("nlam-edge", { type: "geojson", data: DATA.boundary });
+      map.addLayer({ id: "nlam-edge-glow", type: "line", source: "nlam-edge",
+        paint: { "line-color": "#ffffff", "line-width": 6, "line-opacity": 0.8 } });
+      map.addLayer({ id: "nlam-edge", type: "line", source: "nlam-edge",
+        paint: { "line-color": "#1f4b5c", "line-width": 1.6, "line-dasharray": [3, 2], "line-opacity": 0.85 } });
+      map.addLayer({ id: "nlam-edge-label", type: "symbol", source: "nlam-edge",
+        layout: { "symbol-placement": "line", "text-field": "גבולות הרובע, בקירוב", "text-font": FONT,
+          "text-size": 12.5, "symbol-spacing": 520, "text-offset": [0, -0.9], "text-keep-upright": true },
+        paint: { "text-color": "#1f4b5c", "text-halo-color": "rgba(255,255,255,.95)", "text-halo-width": 1.6 } });
+    }
+
+    // ground halo under each project
+    map.addSource("nlam-proj", { type: "geojson", data: fc(projects, function (p) { return { hero: p.hero ? 1 : 0 }; }) });
+    map.addLayer({ id: "nlam-proj-halo", type: "circle", source: "nlam-proj",
+      paint: {
+        "circle-pitch-alignment": "map", "circle-pitch-scale": "map",
+        "circle-radius": ["interpolate", ["exponential", 2], ["zoom"], 13, ["case", ["==", ["get", "hero"], 1], 9, 5],
+          18, ["case", ["==", ["get", "hero"], 1], 290, 160]],
+        "circle-color": "#2f6f86", "circle-opacity": 0.13,
+        "circle-stroke-color": "#2f6f86", "circle-stroke-width": 1.2, "circle-stroke-opacity": 0.5
+      } }, "nlam-3d");
+
+    // the chosen pin gets a sea ring while its card is open
+    map.addSource("nlam-sel", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
+    map.addLayer({ id: "nlam-sel", type: "circle", source: "nlam-sel",
+      paint: { "circle-radius": 19, "circle-color": "rgba(47,111,134,.16)", "circle-stroke-color": "#2f6f86",
+        "circle-stroke-width": 2.5 } });
+
+    // daily life
+    map.addSource("nlam-places", { type: "geojson", data: fc(places, function (p) { return { cat: p.cat, name: p.name }; }) });
+    map.addLayer({ id: "nlam-places", type: "symbol", source: "nlam-places",
+      layout: {
+        "icon-image": ["concat", "nlam-", ["get", "cat"]],
+        "icon-size": ["interpolate", ["linear"], ["zoom"], 13, 0.56, 15, 0.72, 17, 0.95],
+        "icon-allow-overlap": false, "icon-padding": 1,
+        "symbol-sort-key": ["match", ["get", "cat"], "transit", 1, "edu", 2, "parks", 3, 4],
+        "text-field": ["step", ["zoom"], "", 16.3, ["get", "name"]],
+        "text-font": FONT, "text-size": 12, "text-offset": [0, 1.35], "text-anchor": "top",
+        "text-optional": true, "text-max-width": 9
+      },
+      paint: { "text-color": "#3b4753", "text-halo-color": "rgba(255,255,255,.95)", "text-halo-width": 1.5 } });
+
+    // urban renewal: always drawn
+    map.addSource("nlam-renewal", { type: "geojson", data: fc(renewal) });
+    map.addLayer({ id: "nlam-renewal", type: "symbol", source: "nlam-renewal",
+      layout: {
+        "icon-image": "nlam-renewal", "icon-allow-overlap": true, "icon-ignore-placement": true,
+        "icon-size": ["interpolate", ["linear"], ["zoom"], 13, 0.6, 15, 0.82, 17, 1.05],
+        "text-field": ["step", ["zoom"], "", 16.6, ["get", "address"]],
+        "text-font": FONT, "text-size": 12, "text-offset": [0, 1.4], "text-anchor": "top", "text-optional": true
+      },
+      paint: { "text-color": "#14212b", "text-halo-color": "rgba(255,255,255,.95)", "text-halo-width": 1.5 } });
+    map.getSource("nlam-renewal").setData(fc(renewal, function (r) { return { address: r.address }; }));
+
+    ["nlam-places", "nlam-renewal"].forEach(function (id) {
+      map.on("click", id, function (e) {
+        var f = e.features && e.features[0];
+        if (!f) return;
+        if (id === "nlam-renewal") openRenewal(renewal[f.properties.i]);
+        else openPlace(places[f.properties.i]);
+      });
+      map.on("mouseenter", id, function () { map.getCanvas().style.cursor = "pointer"; });
+      map.on("mouseleave", id, function () { map.getCanvas().style.cursor = ""; });
+    });
+    applyFilters();
+  });
+
+  /* ---------------- project pins (HTML, so they use the house fonts) ---------------- */
+  var pinEls = [];
+  projects.forEach(function (p) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "nlam-pin" + (p.hero ? " nlam-pin--hero" : "");
+    b.setAttribute("aria-label", p.name);
+    b.innerHTML = '<span class="nlam-pin-label"><bdi>' + esc(p.name) + '</bdi></span><span class="nlam-pin-stem"></span><span class="nlam-pin-foot"></span>';
+    b.addEventListener("click", function (ev) { ev.stopPropagation(); openProject(p, b); });
+    var m = new maplibregl.Marker({ element: b, anchor: "bottom" }).setLngLat([p.lng, p.lat]).addTo(map);
+    pinEls.push({ el: b, marker: m, p: p, label: b.querySelector(".nlam-pin-label") });
+  });
+
+  // labels never sit on top of each other: a pin whose label would collide shows its dot only
+  function measure() { pinEls.forEach(function (x) {
+    x.el.classList.remove("is-compact"); x.w = x.label.offsetWidth || 90; x.h = x.label.offsetHeight || 28; }); }
+  var queued = false;
+  function declutter() {
+    queued = false;
+    var placed = [], cv = map.getCanvas(), W = cv.clientWidth, H = cv.clientHeight;
+    // the reset button is a no-label zone too
+    var rb = document.getElementById("nlam-reset"), fr = cv.getBoundingClientRect(), bb = rb.getBoundingClientRect();
+    placed.push({ l: bb.left - fr.left - 4, r: bb.right - fr.left + 4, t: bb.top - fr.top - 4, b: bb.bottom - fr.top + 4 });
+    var order = pinEls.slice().sort(function (a, b) {
+      return (b.el.classList.contains("is-on") - a.el.classList.contains("is-on")) || (b.p.hero - a.p.hero); });
+    order.forEach(function (x) {
+      if (!x.w) return;
+      var pt = map.project([x.p.lng, x.p.lat]);
+      var lift = x.p.hero ? 34 : 28;
+      var r = { l: pt.x - x.w / 2 - 4, r: pt.x + x.w / 2 + 4, t: pt.y - lift - x.h - 4, b: pt.y - lift + 4 };
+      var off = r.l < 2 || r.r > W - 2 || r.t < 2;
+      var sel = x.el.classList.contains("is-on");
+      var hit = !sel && (off || placed.some(function (q) { return !(r.r < q.l || r.l > q.r || r.b < q.t || r.t > q.b); }));
+      x.el.classList.toggle("is-compact", hit);
+      x.el.style.zIndex = sel ? 5 : hit ? 1 : (x.p.hero ? 4 : 3);
+      if (!hit) placed.push(r);
+    });
+  }
+  function queue() { if (!queued) { queued = true; requestAnimationFrame(declutter); } }
+  map.on("move", queue);
+  map.on("resize", queue);
+  map.once("load", function () { measure(); declutter(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { measure(); declutter(); });
+
+  /* ---------------- card ---------------- */
+  var card = document.getElementById("nlam-card"), body = document.getElementById("nlam-card-body");
+  var lastFocus = null;
+  function mark(lngLat) {
+    var src = map.getSource("nlam-sel");
+    if (src) src.setData({ type: "FeatureCollection", features: lngLat ? [{ type: "Feature", properties: {},
+      geometry: { type: "Point", coordinates: lngLat } }] : [] });
+  }
+  function show(html, lngLat, opener) {
+    mark(opener ? null : lngLat);
+    pinEls.forEach(function (x) { x.el.classList.remove("is-on"); });
+    if (opener) opener.classList.add("is-on");
+    queue();
+    lastFocus = opener || null;
+    body.innerHTML = html;
+    card.hidden = false;
+    var off = phone ? [0, -Math.round(card.offsetHeight / 2) + 10] : [-150, 40];
+    map.easeTo({ center: lngLat, offset: off, duration: still ? 0 : 650 });
+    document.getElementById("nlam-x").focus({ preventScroll: true });
+  }
+  function hide() {
+    card.hidden = true;
+    mark(null);
+    pinEls.forEach(function (x) { x.el.classList.remove("is-on"); });
+    queue();
+    if (lastFocus) lastFocus.focus({ preventScroll: true });
+  }
+  document.getElementById("nlam-x").addEventListener("click", hide);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !card.hidden) hide(); });
+
+  function kicker(label, color, square) {
+    return '<p class="nlam-card-k"><span class="nlam-sw' + (square ? " nlam-sw--sq" : "") + '" style="--c:' + color + '"></span>' + esc(label) + "</p>";
+  }
+  function openProject(p, el) {
+    var h = kicker("פרויקט", "var(--c-project)", false) +
+      '<h3 id="nlam-card-h"><bdi>' + esc(p.name) + "</bdi></h3>" +
+      "<p>" + num(p.fact) + "</p>" +
+      (p.developer ? '<p class="nlam-meta">' + num(p.developer) + "</p>" : "") +
+      '<a class="nlam-cta" href="' + esc(p.url) + '" target="_top">לעמוד הפרויקט</a>';
+    show(h, [p.lng, p.lat], el);
+  }
+  function openRenewal(r) {
+    var ba = "";
+    if (r.before && r.after) {
+      ba = '<div class="nlam-ba"><div><b>לפני</b><span>' + num(r.before) + '</span></div><i aria-hidden="true">←</i><div><b>אחרי</b><span>' + num(r.after) + "</span></div></div>";
+    } else if (r.after) {
+      ba = '<div class="nlam-ba" style="grid-template-columns:1fr"><div><b>בבניין החדש</b><span>' + num(r.after) + "</span></div></div>";
+    }
+    var h = kicker("התחדשות עירונית", "var(--c-renewal)", true) +
+      '<h3 id="nlam-card-h">' + num(r.address) + "</h3>" + ba +
+      (r.developer ? '<p class="nlam-meta">יזם: ' + num(r.developer) + "</p>" : "") +
+      (r.stage ? '<p class="nlam-meta">שלב: ' + num(r.stage) + "</p>" : "") +
+      (r.note ? '<p class="nlam-meta">' + num(r.note) + "</p>" : "") +
+      (r.url ? '<a class="nlam-cta" href="' + esc(r.url) + '" target="_top">לעמוד המתחם</a>' : "");
+    show(h, [r.lng, r.lat], null);
+  }
+  var FACT = { "ארלוזורוב": "הקו האדום פועל מאז אוגוסט 2023" }; // facts.md R31
+  function openPlace(p) {
+    var line = p.type + (p.addr ? " · " + p.addr : "");
+    var extra = (p.cat === "transit" && FACT[p.name] && p.type === "תחנת הרכבת הקלה") ? FACT[p.name] : "";
+    var edge = p.edge_m && p.edge_m > 20 ? "על גבול הרובע" : "";
+    var h = kicker(CAT_HE[p.cat], "var(--c-" + p.cat + ")", false) +
+      '<h3 id="nlam-card-h"><bdi>' + esc(p.name) + "</bdi></h3>" +
+      "<p>" + num(line) + "</p>" +
+      (extra ? '<p class="nlam-meta">' + num(extra) + "</p>" : "") +
+      (edge ? '<p class="nlam-meta">' + edge + "</p>" : "");
+    show(h, [p.lng, p.lat], null);
+  }
+
+  /* ---------------- filters + reset ---------------- */
+  function applyFilters() {
+    if (map.getLayer("nlam-places")) {
+      var cats = ["edu", "parks", "shop", "transit"].filter(function (k) { return on[k]; });
+      map.setFilter("nlam-places", ["in", ["get", "cat"], ["literal", cats]]);
+    }
+    if (map.getLayer("nlam-renewal")) map.setLayoutProperty("nlam-renewal", "visibility", on.renewal ? "visible" : "none");
+    if (map.getLayer("nlam-proj-halo")) map.setLayoutProperty("nlam-proj-halo", "visibility", on.projects ? "visible" : "none");
+    pinEls.forEach(function (x) { x.el.style.display = on.projects ? "" : "none"; });
+  }
+  document.querySelectorAll(".nlam-chip").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var k = b.dataset.cat;
+      on[k] = !on[k];
+      b.setAttribute("aria-pressed", on[k] ? "true" : "false");
+      applyFilters();
+    });
+  });
+  document.getElementById("nlam-reset").addEventListener("click", function () {
+    if (!card.hidden) hide();
+    map.easeTo(Object.assign({ duration: still ? 0 : 900 }, HOME));
+  });
+  map.on("click", function (e) {
+    var t = e.originalEvent && e.originalEvent.target;
+    if (t && t.closest && t.closest(".nlam-pin")) return;
+    var hit = map.queryRenderedFeatures(e.point, { layers: ["nlam-places", "nlam-renewal"].filter(function (l) { return map.getLayer(l); }) });
+    if (!hit.length && !card.hidden) hide();
+  });
+
+  /* ---------------- list under the map (also the reading order for screen readers) ---------------- */
+  var lb = document.getElementById("nlam-list-body");
+  var html = "<h4>פרויקטים</h4><ul>" + projects.map(function (p) {
+    return '<li><a href="' + esc(p.url) + '"><bdi>' + esc(p.name) + "</bdi></a>: " + num(p.fact) + "</li>";
+  }).join("") + "</ul><h4>התחדשות עירונית</h4><ul>" + renewal.map(function (r) {
+    var parts = [];
+    if (r.before) parts.push("לפני: " + num(r.before));
+    if (r.after) parts.push("אחרי: " + num(r.after));
+    if (r.developer) parts.push(num(r.developer));
+    if (r.stage) parts.push(num(r.stage));
+    var name = r.url ? '<a href="' + esc(r.url) + '">' + num(r.address) + "</a>" : num(r.address);
+    return "<li>" + name + (parts.length ? ": " + parts.join(" · ") : "") + "</li>";
+  }).join("") + "</ul>";
+  lb.innerHTML = html;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+{
+ "checks": [
+  {
+   "check": "no cdnjs / openfreemap / jsdelivr request before scrolling",
+   "pass": true,
+   "info": []
+  },
+  {
+   "check": "first section waits with the calm placeholder and inactive filters",
+   "pass": true,
+   "info": {
+    "state": "wait",
+    "frame_h": 630,
+    "pins": 0,
+    "pins_visible": 0,
+    "renewal_rendered": -1,
+    "chips_disabled": 6,
+    "wait_text": "המפה נטענת"
+   }
+  },
+  {
+   "check": "after scrolling the library, the style and tiles load",
+   "pass": true,
+   "info": {
+    "state": "ready",
+    "idle": "idle",
+    "first": [
+     {
+      "t": 3.76,
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.24.0/maplibre-gl.css"
+     },
+     {
+      "t": 3.76,
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.24.0/maplibre-gl.js"
+     },
+     {
+      "t": 3.94,
+      "url": "https://tiles.openfreemap.org/styles/positron"
+     },
+     {
+      "t": 4.74,
+      "url": "https://tiles.openfreemap.org/planet"
+     }
+    ],
+    "count": 21
+   }
+  },
+  {
+   "check": "pins appear: 6 project pins and renewal pins on the map",
+   "pass": true,
+   "info": {
+    "state": "ready",
+    "frame_h": 630,
+    "pins": 6,
+    "pins_visible": 6,
+    "renewal_rendered": 15,
+    "chips_disabled": 0,
+    "wait_text": "המפה נטענת"
+   }
+  },
+  {
+   "check": "no layout jump: the frame keeps its height",
+   "pass": true,
+   "info": {
+    "before": 630,
+    "after": 630
+   }
+  },
+  {
+   "check": "the second section has not started yet (far below)",
+   "pass": true,
+   "info": null
+  },
+  {
+   "check": "a project pin opens its card with the link to the project page",
+   "pass": true,
+   "info": {
+    "open": true,
+    "text": "פרויקט מגדלי כיכר המדינה 3 מגדלים בני 40, 40 ו-37 קומות · 453 דירות לעמוד הפרויקט",
+    "inside": true
+   }
+  },
+  {
+   "check": "the 390px instance loads too (two instances, no clash)",
+   "pass": true,
+   "info": {
+    "state": "ready",
+    "frame_h": 540,
+    "pins": 6,
+    "pins_visible": 6,
+    "renewal_rendered": 15,
+    "chips_disabled": 0,
+    "wait_text": "המפה נטענת"
+   }
+  },
+  {
+   "check": "a renewal pin opens its card (390px frame)",
+   "pass": true,
+   "info": {
+    "open": true,
+    "text": "התחדשות עירונית זלוציסטי 4 לפני 4 קומות, 12 דירות ← אחרי 8 קומות, 22 דירות שלב: נהרס, 2.2026",
+    "inside": true
+   }
+  },
+  {
+   "check": "no duplicate ids on the page",
+   "pass": true,
+   "info": []
+  },
+  {
+   "check": "cdnjs blocked: the list of places shows instead of the map",
+   "pass": true,
+   "info": {
+    "state": "fail",
+    "list": {
+     "open": true,
+     "frame": "none",
+     "items": 21,
+     "note": "block"
+    },
+    "errors": []
+   }
+  },
+  {
+   "check": "zero page errors and console errors",
+   "pass": true,
+   "info": {
+    "page": [],
+    "console": []
+   }
+  }
+ ],
+ "page_errors": [],
+ "console_errors": [],
+ "scroll_at_s": 3.59,
+ "first_heavy_request": {
+  "t": 3.76,
+  "url": "https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.24.0/maplibre-gl.css"
+ },
+ "heavy_requests": 37
+}
