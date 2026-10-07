@@ -1,0 +1,901 @@
+{
+ "generated": "7.10.2026",
+ "page": {
+  "id": 4573,
+  "slug": "petah-tikva-apartment-prices",
+  "link": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+  "modified": "2026-10-07T13:31:16"
+ },
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages?slug=petah-tikva-apartment-prices&_fields=id,link,title,content,modified (content.rendered), public, retrieved 2026-10-07 10:34:36 UTC, 68,411 characters. The price-list section (<section id=\"nlpg\">, the [nadlan_price_guide] shortcode), <script> and <style> are outside the audit.",
+ "facts": "scripts/project-stage/price_guide/cities/petah-tikva-apartment-prices.json (official medians from data.nadlan.gov.il; source_keys are JSON paths in that file: rooms.<k>.latest, rooms.<k>.year_ago, rooms.<k>.change_pct, rooms.<k>.quarters[<q>], israel.<k>, neighbourhoods[<name>].rooms.<k>; 'page' = a number kept from the page's own text)",
+ "apply_rules": [
+  "Apply in the listed order on the RAW content (context=edit). Every \"old\" matches content.rendered exactly once at its turn (matches_in_live), except \"replace_all\" entries, which match exactly \"expect_matches\" times.",
+  "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
+  "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
+  "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+ ],
+ "claims_summary": {
+  "claims": {
+   "CONFLICT": 3,
+   "STALE": 0,
+   "UNSOURCED": 35,
+   "CONSISTENT": 10
+  },
+  "figures": {
+   "CONFLICT": 6,
+   "STALE": 0,
+   "UNSOURCED": 111,
+   "CONSISTENT": 19
+  },
+  "edits": 13,
+  "tier1": 8,
+  "tier2": 5
+ },
+ "notes": "Not audited as claims (illustrations and method numbers, not market statements): the 8-12 m2 / one-vs-two parking example (p@46975), the 10 m2 x 28,000 = 280,000 arithmetic example (p@56855), the comparison counts 10-15 / 4-8 deals (p@57112), the steps table working numbers including 'פער סביר יכול להיות 5%-15%' between comparables (tr@62678..63791), the 100,000-300,000 negotiation illustration (p@64623) and the 10-20 listings / 6-10 deals counts (p@67326). Per-m2 figures are kept only where the page ties them to its own dated public market check ('בדיקת שוק גלויה מ-6 ביוני 2026', usage note p@42858, and rows marked 'בהקשרים שנבדקו' / 'לפי הקשר שוק' / 'בדיקות שוק הצביעו'); the kind of source is generic, so this keep is borderline and can be revisited. The neighbourhood per-m2 table (12 of 14 rows unlabelled) is replaced by official neighbourhood medians. The Mahane Yehuda per-m2 range 20,000-24,000 comes from the same check whose 3-room range (1.5-1.9M) sits below the official 1,951,200; it is kept as labelled but is the weakest kept figure. Name mapping: page 'כפר גנים א'' / 'כפר גנים ב'' = official 'כפר גנים א' / 'כפר גנים ב'. The official 'הדר המושבות החדשה' is NOT mapped to the page's 'אם המושבות החדשה' (different names; shown as 'לא מוצג במחירון'); the official 'נווה עוז הירוקה' appears only in the 5-room FAQ. The remaining SUSPECT on p@42022 is a floor/ceiling span (1.5M for small old flats up to 4.2M for 5 rooms, new flats and demanded areas) that holds the official 5-room median 3,322,600; it is a heuristic false positive, kept as CONSISTENT. Official quirk: none sharp; 4 rooms moved 2,565,500 (10-12.2025) to 2,444,100 (1-3.2026).",
+ "claims": [
+  {
+   "id": 1,
+   "where": "p@4371",
+   "quote": "הפער בין דירות ... יכול להגיע ... ואף ליותר מ-1,000,000 ש\"ח",
+   "measure": "other",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "CONSISTENT",
+   "action": "keep (official 3-room 2,057,000 vs 5-room 3,322,600)",
+   "note": ""
+  },
+  {
+   "id": 2,
+   "where": "p@4371",
+   "quote": "בדיקת שכירות סביב 5,000-8,000 ש\"ח בחלק גדול מהשכונות",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample on the page, 184-233 active listings; market check dated 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 3,
+   "where": "p@42022",
+   "quote": "טווח העבודה ... מכ-1.5 מיליון ש\"ח ... ועד כ-4.2 מיליון ש\"ח בדירות 5 חדרים",
+   "measure": "sale",
+   "rooms": "all",
+   "figures": 2,
+   "official": "3=2,057,000 4=2,444,100 5=3,322,600 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "keep (floor and ceiling hold the official 3, 4, 5-room medians)",
+   "note": ""
+  },
+  {
+   "id": 4,
+   "where": "p@42331",
+   "quote": "דמי שכירות ממוצעים לדוגמא 4,383 בעמישב ... 9,875 בנווה גן",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 5,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market pages checked, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 5,
+   "where": "tr@43339",
+   "quote": "החלטת קנייה נפוצה | כ-1.7-3.4 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "all",
+   "figures": 2,
+   "official": "3=2,057,000 4=2,444,100 5=3,322,600 all=2,441,100",
+   "verdict": "CONSISTENT",
+   "action": "keep",
+   "note": ""
+  },
+  {
+   "id": 6,
+   "where": "tr@43507",
+   "quote": "מרכז ותיק | כ-25,000-26,000 ש\"ח למ\"ר בהקשרים שנבדקו",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (usage note above the table: public market check of 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 7,
+   "where": "tr@43674",
+   "quote": "אזורים מבוקשים יותר | כ-28,000-32,000 ש\"ח למ\"ר בחלק מהבדיקות",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (same dated market check)",
+   "note": ""
+  },
+  {
+   "id": 8,
+   "where": "tr@43847",
+   "quote": "שכירות בדירות משפחתיות | כ-5,500-8,700 ש\"ח",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (same dated market check; matches the rent listing table)",
+   "note": ""
+  },
+  {
+   "id": 9,
+   "where": "tr@44047",
+   "quote": "פער דירה חדשה מול יד שנייה | לעיתים כ-8%-22%",
+   "measure": "sale_new_used",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 1",
+   "note": "tier 2"
+  },
+  {
+   "id": 10,
+   "where": "tr@44920",
+   "quote": "2 חדרים | כ-1.25-1.75 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 11,
+   "where": "tr@45113",
+   "quote": "2.5 חדרים | כ-1.45-1.95 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "2.5",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 12,
+   "where": "tr@45298",
+   "quote": "3 חדרים | כ-1.55-2.25 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "2,057,000 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 2",
+   "note": "restated as the median in the rebuilt table"
+  },
+  {
+   "id": 13,
+   "where": "tr@45298",
+   "quote": "במחנה יהודה ואחדות נראו הקשרים סביב 1.5-2.1 מיליון ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "3",
+   "figures": 2,
+   "official": "Mahane Yehuda 3 rooms 1,951,200 (inside); Achdut: no official median",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 14,
+   "where": "tr@45491",
+   "quote": "3.5 חדרים | כ-1.85-2.45 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3.5",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 15,
+   "where": "tr@45689",
+   "quote": "4 חדרים | כ-2.15-3.15 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "2,444,100 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 2",
+   "note": "restated as the median"
+  },
+  {
+   "id": 16,
+   "where": "tr@45876",
+   "quote": "5 חדרים | כ-2.65-4.20 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "3,322,600 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 2",
+   "note": "restated as the median"
+  },
+  {
+   "id": 17,
+   "where": "tr@45876",
+   "quote": "באחדות נראו הקשרים סביב 2.2-2.85 מיליון ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "5",
+   "figures": 2,
+   "official": "Achdut: no official median",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 18,
+   "where": "tr@46092",
+   "quote": "דירת גן | כ-2.75-4.80 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "garden",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 19,
+   "where": "tr@46295",
+   "quote": "פנטהאוז או דירת גג | כ-3.80-6.50 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "penthouse",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 20,
+   "where": "p@46515",
+   "quote": "דירת 4 חדרים של 86 מ\"ר עם 2 חניות שנמכרה ב-2.46 מיליון ש\"ח ברחוב זכרון יעקב",
+   "measure": "deal",
+   "rooms": "4",
+   "figures": 1,
+   "official": "city 4 rooms 2,444,100 (1-3.2026)",
+   "verdict": "UNSOURCED",
+   "action": "keep (one specific deal, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 21,
+   "where": "tr@47980..50609",
+   "quote": "טבלת טווח מחיר למ\"ר לפי שכונה (14 שורות)",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 28,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 4",
+   "note": "12 rows with no source marker; the two rows marked 'בהקשרים שנבדקו' repeat figures kept in the parameter and deals tables"
+  },
+  {
+   "id": 22,
+   "where": "tr@49811",
+   "quote": "מחנה יהודה | דירות 3 חדרים נבדקו סביב 1.5-1.9 מיליון ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "3",
+   "figures": 2,
+   "official": "Mahane Yehuda 3 rooms 1,951,200 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 23,
+   "where": "tr@50036",
+   "quote": "אחדות | דירות 3 חדרים סביב 1.6-2.1 מיליון ש\"ח בהקשר שוק",
+   "measure": "sale_nb",
+   "rooms": "3",
+   "figures": 2,
+   "official": "Achdut: no official median",
+   "verdict": "UNSOURCED",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 24,
+   "where": "p@51244",
+   "quote": "בדפי שכירות שנבדקו נראו 184-233 מודעות פעילות",
+   "measure": "count",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 25,
+   "where": "tr@51881..53795",
+   "quote": "טבלת שכירות חודשית לדוגמה לפי שכונה (15 שורות)",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 15,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample of 184-233 active listings, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 26,
+   "where": "tr@55038",
+   "quote": "רחוב זכרון יעקב, 4 חדרים | 86 מ\"ר ... 2.46 מיליון ש\"ח",
+   "measure": "deal",
+   "rooms": "4",
+   "figures": 1,
+   "official": "city 4 rooms 2,444,100",
+   "verdict": "UNSOURCED",
+   "action": "keep (one specific deal, page checked 6.6.2026; row kept word for word in edit 6)",
+   "note": ""
+  },
+  {
+   "id": 27,
+   "where": "tr@55277",
+   "quote": "מחנה יהודה, דירות 3 חדרים | כ-1.5-1.9 מיליון ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "3",
+   "figures": 2,
+   "official": "Mahane Yehuda 3 rooms 1,951,200 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 28,
+   "where": "tr@55489",
+   "quote": "מחנה יהודה, מחיר למ\"ר | כ-20,000-24,000 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (labelled as checked; row kept word for word in edit 6)",
+   "note": ""
+  },
+  {
+   "id": 29,
+   "where": "tr@55697",
+   "quote": "אחדות, דירות 3 חדרים | 70-80 מ\"ר סביב 1.6-2.1 מיליון ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "3",
+   "figures": 2,
+   "official": "Achdut: no official median",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 30,
+   "where": "tr@55922",
+   "quote": "אחדות, דירות 5 חדרים | כ-2.2-2.85 מיליון ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "5",
+   "figures": 2,
+   "official": "Achdut: no official median",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 31,
+   "where": "tr@56132",
+   "quote": "נפח עסקאות 5 חדרים באחדות | עלייה של כ-15% ברבעון 1 של 2026",
+   "measure": "count",
+   "rooms": "5",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": "no named source; the official list publishes no deal counts"
+  },
+  {
+   "id": 32,
+   "where": "tr@56388",
+   "quote": "מרכז העיר לפי הקשר שוק | כ-25,000-26,000 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (labelled market context, same figure as the parameter table; row kept word for word in edit 6)",
+   "note": ""
+  },
+  {
+   "id": 33,
+   "where": "tr@56597",
+   "quote": "אזורים סמוכים וחזקים יותר | כ-28,000-32,000 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (same figure as the parameter table; row kept word for word in edit 6)",
+   "note": ""
+  },
+  {
+   "id": 34,
+   "where": "tr@58477",
+   "quote": "דירת יד שנייה משופצת | כ-5%-12% מעל דירה לא משופצת דומה",
+   "measure": "sale_new_used",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 7",
+   "note": "tier 2"
+  },
+  {
+   "id": 35,
+   "where": "tr@58690",
+   "quote": "דירה חדשה לאחר אכלוס | כ-8%-18% מעל יד שנייה דומה",
+   "measure": "sale_new_used",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": "tier 2"
+  },
+  {
+   "id": 36,
+   "where": "tr@58913",
+   "quote": "דירה על הנייר | כ-10%-22% לפי פרויקט ומועד",
+   "measure": "sale_new_used",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 9",
+   "note": "tier 2"
+  },
+  {
+   "id": 37,
+   "where": "p@64920",
+   "quote": "FAQ ממוצע: טווח רחב של כ-1.5-4.2 מיליון ש\"ח ברוב הדירות הרגילות",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 2,
+   "official": "2,441,100 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "keep (dated market check 6.6.2026; official all-rooms median 2,441,100 inside)",
+   "note": ""
+  },
+  {
+   "id": 38,
+   "where": "p@65222",
+   "quote": "FAQ מ\"ר: 25,000-26,000 במרכז, 28,000-32,000 באזורים מבוקשים",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (labelled as observed in the page's dated market check)",
+   "note": ""
+  },
+  {
+   "id": 39,
+   "where": "p@65537",
+   "quote": "FAQ: דירת 3 חדרים נע סביב 1.55-2.25 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "2,057,000",
+   "verdict": "CONSISTENT",
+   "action": "edit 10",
+   "note": "restated as the median"
+  },
+  {
+   "id": 40,
+   "where": "p@65537",
+   "quote": "FAQ: במחנה יהודה נראו דוגמאות סביב 1.5-1.9 מיליון ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "3",
+   "figures": 2,
+   "official": "Mahane Yehuda 1,951,200",
+   "verdict": "CONFLICT",
+   "action": "edit 10",
+   "note": ""
+  },
+  {
+   "id": 41,
+   "where": "p@65537",
+   "quote": "FAQ: באחדות דירות 70-80 מ\"ר סביב 1.6-2.1 מיליון ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "3",
+   "figures": 2,
+   "official": "Achdut: no official median",
+   "verdict": "UNSOURCED",
+   "action": "edit 10",
+   "note": ""
+  },
+  {
+   "id": 42,
+   "where": "p@65837",
+   "quote": "FAQ: דירות 4 חדרים נבדקות לרוב סביב 2.15-3.15 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "2,444,100",
+   "verdict": "CONSISTENT",
+   "action": "edit 11",
+   "note": "restated as the median"
+  },
+  {
+   "id": 43,
+   "where": "p@65837",
+   "quote": "FAQ: 4 חדרים ברחוב זכרון יעקב ... נמכרה ב-2.46 מיליון ש\"ח",
+   "measure": "deal",
+   "rooms": "4",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (one specific deal, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 44,
+   "where": "p@66136",
+   "quote": "FAQ: דירות 5 חדרים ... כ-2.65-4.20 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "3,322,600",
+   "verdict": "CONSISTENT",
+   "action": "edit 12",
+   "note": "restated as the median"
+  },
+  {
+   "id": 45,
+   "where": "p@66136",
+   "quote": "FAQ: באחדות נראו הקשרים סביב 2.2-2.85 מיליון ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "5",
+   "figures": 2,
+   "official": "Achdut: no official median",
+   "verdict": "UNSOURCED",
+   "action": "edit 12",
+   "note": ""
+  },
+  {
+   "id": 46,
+   "where": "p@66744",
+   "quote": "FAQ: שכירות באם המושבות החדשה סביב 8,209 ש\"ח לחודש",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (rent listing check, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 47,
+   "where": "p@67043",
+   "quote": "FAQ: מרכז העיר סביב 25,000-26,000 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (labelled 'בדיקות שוק הצביעו', page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 48,
+   "where": "p@67326",
+   "quote": "FAQ: הפער ממחיר מבוקש 2%-4% או 8%-12%",
+   "measure": "other",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 13",
+   "note": "tier 2"
+  }
+ ],
+ "edits": [
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "לעיתים כ-8%-22%",
+   "new": "משתנה לפי פרויקט, מפרט ומועד מסירה",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "A new-vs-second-hand premium of 8%-22% with no named source (an estimate, not something a listing check measures); rephrased without the number. Tier 2.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 1,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">שטח אופייני לבדיקה</th>\n<th dir=\"rtl\">טווח מחיר עבודה</th>\n<th dir=\"rtl\">דגשים שמשנים מחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">45-60 מ\"ר</td>\n<td dir=\"rtl\">כ-1.25-1.75 מיליון ש\"ח</td>\n<td dir=\"rtl\">קומה, מעלית, קרבה לתחבורה, מצב פנימי ופוטנציאל התחדשות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2.5 חדרים</td>\n<td dir=\"rtl\">55-70 מ\"ר</td>\n<td dir=\"rtl\">כ-1.45-1.95 מיליון ש\"ח</td>\n<td dir=\"rtl\">חלוקה פנימית, מרפסת, בניין ותיק ורישום שטחים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">65-85 מ\"ר</td>\n<td dir=\"rtl\">כ-1.55-2.25 מיליון ש\"ח</td>\n<td dir=\"rtl\">במחנה יהודה ואחדות נראו הקשרים סביב 1.5-2.1 מיליון ש\"ח</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3.5 חדרים</td>\n<td dir=\"rtl\">75-90 מ\"ר</td>\n<td dir=\"rtl\">כ-1.85-2.45 מיליון ש\"ח</td>\n<td dir=\"rtl\">מתאימה להשוואה מול 4 חדרים קטנה, לא מול דירה משפחתית מלאה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">85-110 מ\"ר</td>\n<td dir=\"rtl\">כ-2.15-3.15 מיליון ש\"ח</td>\n<td dir=\"rtl\">חניה, ממ\"ד, מרפסת, מעלית ושכונה יוצרים פער גדול</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">110-140 מ\"ר</td>\n<td dir=\"rtl\">כ-2.65-4.20 מיליון ש\"ח</td>\n<td dir=\"rtl\">באחדות נראו הקשרים סביב 2.2-2.85 מיליון ש\"ח, ובשכונות חזקות הטווח גבוה יותר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירת גן</td>\n<td dir=\"rtl\">90-140 מ\"ר בנוי ועוד חצר</td>\n<td dir=\"rtl\">כ-2.75-4.80 מיליון ש\"ח</td>\n<td dir=\"rtl\">גודל חצר, פרטיות, כיווני אוויר, הצמדות ודמי ניהול</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">פנטהאוז או דירת גג</td>\n<td dir=\"rtl\">120-180 מ\"ר ועוד מרפסות</td>\n<td dir=\"rtl\">כ-3.80-6.50 מיליון ש\"ח</td>\n<td dir=\"rtl\">נוף, גודל מרפסות, חניות, פרטיות ומפרט</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th>\n<th dir=\"rtl\">ינואר-מרץ 2025</th>\n<th dir=\"rtl\">שינוי בשנה</th>\n<th dir=\"rtl\">דגשים שמשנים מחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">2,057,000 ש\"ח</td>\n<td dir=\"rtl\">1,971,600 ש\"ח</td>\n<td dir=\"rtl\">עלייה של 4.3%</td>\n<td dir=\"rtl\">קומה, מעלית, מצב פנימי ופוטנציאל התחדשות; במחנה יהודה ובעין גנים החציון נמוך יותר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">2,444,100 ש\"ח</td>\n<td dir=\"rtl\">2,500,000 ש\"ח</td>\n<td dir=\"rtl\">ירידה של 2.2%</td>\n<td dir=\"rtl\">חניה, ממ\"ד, מרפסת, מעלית ושכונה יוצרים פער גדול</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">3,322,600 ש\"ח</td>\n<td dir=\"rtl\">3,326,300 ש\"ח</td>\n<td dir=\"rtl\">ירידה של 0.1%</td>\n<td dir=\"rtl\">שכונה, שטח, קומה, חניות, ממ\"ד ומרפסת; בשכונות חזקות המחיר גבוה יותר</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago",
+    "rooms.3.change_pct",
+    "rooms.4.latest",
+    "rooms.4.year_ago",
+    "rooms.4.change_pct",
+    "rooms.5.latest",
+    "rooms.5.year_ago",
+    "rooms.5.change_pct",
+    "neighbourhoods[מחנה יהודה].rooms.3",
+    "neighbourhoods[עין גנים].rooms.3"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rooms table of 'working ranges': the 3, 4 and 5-room ranges hold the official medians (consistent) but the 2, 2.5, 3.5-room, garden and penthouse rows and the Achdut neighbourhood ranges in the notes column have no named source. Replaced by the official medians with the year-earlier quarter; the 4-room note is kept word for word, the 3 and 5-room notes are rewritten without numbers (Mahane Yehuda 1,951,200 and Ein Ganim 1,890,700 are below the city 3-room median). The typical-size column leaves with the old rows.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">טווח מחיר עבודה</th>",
+   "n": 2,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "טבלת חדרים טובה נותנת תשובה מהירה לשאלה כמה עולה דירה בפתח תקווה, אבל היא עדיין אינה מספיקה להצעה רצינית.",
+   "new": "המחירון הרשמי מפרסם חציון לדירות 3, 4 ו-5 חדרים; דירות 2 חדרים, דירות עם חצי חדר, דירות גן ופנטהאוזים כדאי לבדוק מול עסקאות דומות ברחוב ובשכונה. החציון נותן תשובה מהירה לשאלה כמה עולה דירה בפתח תקווה, אבל הוא עדיין אינו מספיק להצעה רצינית.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Follows edit 2: the 2, 2.5, 3.5-room, garden and penthouse rows left the table.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 3,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שכונה או אזור</th>\n<th dir=\"rtl\">סוג מלאי נפוץ</th>\n<th dir=\"rtl\">טווח מחיר למ\"ר לבדיקה</th>\n<th dir=\"rtl\">איך לקרוא את האזור</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז העיר</td>\n<td dir=\"rtl\">בניינים ותיקים, מסחר, כיסי התחדשות</td>\n<td dir=\"rtl\">כ-25,000-26,000 ש\"ח למ\"ר בהקשרים שנבדקו</td>\n<td dir=\"rtl\">בודקים רחוב, רעש, קומה, מעלית וסיכוי להתחדשות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">המרכז השקט</td>\n<td dir=\"rtl\">דירות ותיקות ומשופצות</td>\n<td dir=\"rtl\">כ-26,000-30,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">לעיתים פרמיה על רחובות שקטים ונגישות טובה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כפר גנים א'</td>\n<td dir=\"rtl\">דירות משפחתיות ובניינים מגוונים</td>\n<td dir=\"rtl\">כ-28,000-32,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">השוואה פנימית לפי רחוב וגיל בניין קריטית</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כפר גנים ב'</td>\n<td dir=\"rtl\">דירות משפחתיות, חלקן גדולות</td>\n<td dir=\"rtl\">כ-28,000-33,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">חניה, מחסן ומרפסת משפיעים מאוד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כפר גנים ג'</td>\n<td dir=\"rtl\">מלאי מבוקש, דירות גדולות יותר</td>\n<td dir=\"rtl\">כ-30,000-35,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">פער גדול בין דירה רגילה לדירה משודרגת</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אם המושבות החדשה</td>\n<td dir=\"rtl\">בניינים חדשים יחסית, משפחות, מגדלים</td>\n<td dir=\"rtl\">כ-30,000-36,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">קרבה לצירים, קומה, נוף ודמי ניהול משנים מחיר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה גן</td>\n<td dir=\"rtl\">דירות גדולות וחדשות יחסית</td>\n<td dir=\"rtl\">כ-31,000-37,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">מחיר גבוה יותר צריך להיבדק מול עסקאות קרובות מאוד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רמת ורבר</td>\n<td dir=\"rtl\">ותיק לצד התחדשות</td>\n<td dir=\"rtl\">כ-25,000-31,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">פוטנציאל עתידי אינו מחיר סגירה מובטח</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">עין גנים</td>\n<td dir=\"rtl\">מלאי ותיק, דירות בינוניות</td>\n<td dir=\"rtl\">כ-24,000-30,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">מצב בניין ורחוב קובעים יותר מהממוצע</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מחנה יהודה</td>\n<td dir=\"rtl\">דירות ותיקות ועסקאות קטנות יחסית</td>\n<td dir=\"rtl\">כ-20,000-24,000 ש\"ח למ\"ר בהקשרים שנבדקו</td>\n<td dir=\"rtl\">דירות 3 חדרים נבדקו סביב 1.5-1.9 מיליון ש\"ח</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אחדות</td>\n<td dir=\"rtl\">מלאי ותיק ומשפחתי</td>\n<td dir=\"rtl\">כ-21,000-27,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">דירות 3 חדרים סביב 1.6-2.1 מיליון ש\"ח בהקשר שוק</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">עמישב</td>\n<td dir=\"rtl\">דירות ותיקות, מחירים נגישים יותר</td>\n<td dir=\"rtl\">כ-20,000-26,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">בודקים מצב פיזי, הצמדות וחידוש סביבתי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קרול</td>\n<td dir=\"rtl\">דירות ותיקות, קרבה למרכז</td>\n<td dir=\"rtl\">כ-23,000-29,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">פערים לפי רחוב, קומה ושיפוץ</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">סגולה ורמת סיב</td>\n<td dir=\"rtl\">מגורים לצד תעסוקה, מסחר וצירים</td>\n<td dir=\"rtl\">כ-24,000-31,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">בודקים רעש, נגישות, שימושים מעורבים ותוכניות עתידיות</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שכונה או אזור</th>\n<th dir=\"rtl\">סוג מלאי נפוץ</th>\n<th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th>\n<th dir=\"rtl\">איך לקרוא את האזור</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז העיר</td>\n<td dir=\"rtl\">בניינים ותיקים, מסחר, כיסי התחדשות</td>\n<td dir=\"rtl\">3 חדרים 1,885,500 ש\"ח, 4 חדרים 2,338,000 ש\"ח, 5 חדרים 2,960,100 ש\"ח</td>\n<td dir=\"rtl\">בודקים רחוב, רעש, קומה, מעלית וסיכוי להתחדשות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">המרכז השקט</td>\n<td dir=\"rtl\">דירות ותיקות ומשופצות</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">לעיתים פרמיה על רחובות שקטים ונגישות טובה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כפר גנים א'</td>\n<td dir=\"rtl\">דירות משפחתיות ובניינים מגוונים</td>\n<td dir=\"rtl\">4 חדרים 2,490,000 ש\"ח, 5 חדרים 3,155,200 ש\"ח</td>\n<td dir=\"rtl\">השוואה פנימית לפי רחוב וגיל בניין קריטית</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כפר גנים ב'</td>\n<td dir=\"rtl\">דירות משפחתיות, חלקן גדולות</td>\n<td dir=\"rtl\">3 חדרים 2,212,400 ש\"ח</td>\n<td dir=\"rtl\">חניה, מחסן ומרפסת משפיעים מאוד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כפר גנים ג'</td>\n<td dir=\"rtl\">מלאי מבוקש, דירות גדולות יותר</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">פער גדול בין דירה רגילה לדירה משודרגת</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אם המושבות החדשה</td>\n<td dir=\"rtl\">בניינים חדשים יחסית, משפחות, מגדלים</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">קרבה לצירים, קומה, נוף ודמי ניהול משנים מחיר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה גן</td>\n<td dir=\"rtl\">דירות גדולות וחדשות יחסית</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">מחיר גבוה יותר צריך להיבדק מול עסקאות קרובות מאוד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רמת ורבר</td>\n<td dir=\"rtl\">ותיק לצד התחדשות</td>\n<td dir=\"rtl\">3 חדרים 2,435,200 ש\"ח, 4 חדרים 2,489,300 ש\"ח</td>\n<td dir=\"rtl\">פוטנציאל עתידי אינו מחיר סגירה מובטח</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">עין גנים</td>\n<td dir=\"rtl\">מלאי ותיק, דירות בינוניות</td>\n<td dir=\"rtl\">3 חדרים 1,890,700 ש\"ח, 4 חדרים 2,153,800 ש\"ח</td>\n<td dir=\"rtl\">מצב בניין ורחוב קובעים יותר מהממוצע</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מחנה יהודה</td>\n<td dir=\"rtl\">דירות ותיקות ועסקאות קטנות יחסית</td>\n<td dir=\"rtl\">3 חדרים 1,951,200 ש\"ח, 4 חדרים 2,291,100 ש\"ח</td>\n<td dir=\"rtl\">משווים לדירות ותיקות דומות בגודל, בקומה ובמצב</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אחדות</td>\n<td dir=\"rtl\">מלאי ותיק ומשפחתי</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">משווים לעסקאות דומות ברחוב ובבניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">עמישב</td>\n<td dir=\"rtl\">דירות ותיקות, מחירים נגישים יותר</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">בודקים מצב פיזי, הצמדות וחידוש סביבתי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קרול</td>\n<td dir=\"rtl\">דירות ותיקות, קרבה למרכז</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">פערים לפי רחוב, קומה ושיפוץ</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">סגולה ורמת סיב</td>\n<td dir=\"rtl\">מגורים לצד תעסוקה, מסחר וצירים</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">בודקים רעש, נגישות, שימושים מעורבים ותוכניות עתידיות</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "neighbourhoods[מרכז העיר].rooms.3",
+    "neighbourhoods[מרכז העיר].rooms.4",
+    "neighbourhoods[מרכז העיר].rooms.5",
+    "neighbourhoods[כפר גנים א].rooms.4",
+    "neighbourhoods[כפר גנים א].rooms.5",
+    "neighbourhoods[כפר גנים ב].rooms.3",
+    "neighbourhoods[רמת ורבר].rooms.3",
+    "neighbourhoods[רמת ורבר].rooms.4",
+    "neighbourhoods[עין גנים].rooms.3",
+    "neighbourhoods[עין גנים].rooms.4",
+    "neighbourhoods[מחנה יהודה].rooms.3",
+    "neighbourhoods[מחנה יהודה].rooms.4"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Neighbourhood table: 14 per-m2 ranges, 12 of them with no source marker at all, plus two 3-room sale ranges: Mahane Yehuda 1.5-1.9M vs the official neighbourhood median 1,951,200 (conflict) and Achdut 1.6-2.1M (no official median). The per-m2 column becomes the official neighbourhood medians by rooms, 1-3.2026 ('לא מוצג במחירון' for the 8 page areas not in the city file: the city file keeps only 8 neighbourhoods; the official files DO hold 1-3.2026 medians for some of the others (checked 7.10.2026), so these rows say 'לא מוצג במחירון' (not shown in the page's list), never 'לא פורסם'). Inventory and how-to-read columns kept word for word except the two cells that held the sale ranges.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">טווח מחיר למ\"ר לבדיקה</th>",
+   "n": 4,
+   "raw_risk": [
+    "straight double quote",
+    "apostrophe",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "המחיר בשכונה מבוקשת אינו אוטומטי לכל דירה.",
+   "new": "החציון בטבלה הוא לפי נתוני רשות המסים לרבעון הראשון של 2026; בשכונות שאינן מופיעות במחירון, משווים לעסקאות סגורות דומות ברחוב ובבניין. גם המחיר בשכונה מבוקשת אינו אוטומטי לכל דירה.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Follows edit 4: names the source and quarter of the neighbourhood medians and explains 'לא פורסם'.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 5,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">נתון או דוגמה</th>\n<th dir=\"rtl\">מספר שנבדק</th>\n<th dir=\"rtl\">מה לומדים ממנו</th>\n<th dir=\"rtl\">מה לא להסיק ממנו</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רחוב זכרון יעקב, 4 חדרים</td>\n<td dir=\"rtl\">86 מ\"ר, קומה 2 מתוך 7, 2 חניות, 2.46 מיליון ש\"ח</td>\n<td dir=\"rtl\">דוגמה טובה לכיול דירת 4 חדרים דומה</td>\n<td dir=\"rtl\">לא ממוצע עירוני לכל דירות 4 חדרים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מחנה יהודה, דירות 3 חדרים</td>\n<td dir=\"rtl\">כ-1.5-1.9 מיליון ש\"ח</td>\n<td dir=\"rtl\">מספק טווח עבודה לדירות ותיקות יותר</td>\n<td dir=\"rtl\">לא מתאים לכפר גנים או אם המושבות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מחנה יהודה, מחיר למ\"ר</td>\n<td dir=\"rtl\">כ-20,000-24,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">מדד לאזור נגיש יותר במחיר</td>\n<td dir=\"rtl\">לא כולל בהכרח דירות משודרגות או חדשות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אחדות, דירות 3 חדרים</td>\n<td dir=\"rtl\">70-80 מ\"ר סביב 1.6-2.1 מיליון ש\"ח</td>\n<td dir=\"rtl\">מסייע בהשוואת דירות קטנות ובינוניות</td>\n<td dir=\"rtl\">לא קובע מחיר לדירה עם זכויות מיוחדות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אחדות, דירות 5 חדרים</td>\n<td dir=\"rtl\">כ-2.2-2.85 מיליון ש\"ח</td>\n<td dir=\"rtl\">טווח למשפחתיות באזור נגיש יותר</td>\n<td dir=\"rtl\">לא משקף דירות חדשות בשכונות יקרות יותר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נפח עסקאות 5 חדרים באחדות</td>\n<td dir=\"rtl\">עלייה של כ-15% ברבעון 1 של 2026 מול רבעון 4 של 2025</td>\n<td dir=\"rtl\">סימן לפעילות שוק, לא בהכרח עליית מחיר</td>\n<td dir=\"rtl\">לא מספיק לקבוע מגמת מחיר בלי עסקאות נוספות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז העיר לפי הקשר שוק</td>\n<td dir=\"rtl\">כ-25,000-26,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">מסגרת לבדיקה של בניינים ותיקים</td>\n<td dir=\"rtl\">לא מתאים לדירה חדשה עם מפרט גבוה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אזורים סמוכים וחזקים יותר</td>\n<td dir=\"rtl\">כ-28,000-32,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">עוזר לזהות פרמיית שכונה ואיכות</td>\n<td dir=\"rtl\">לא כל רחוב באזור שווה אותו דבר</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">נתון או דוגמה</th>\n<th dir=\"rtl\">מספר שנבדק</th>\n<th dir=\"rtl\">מה לומדים ממנו</th>\n<th dir=\"rtl\">מה לא להסיק ממנו</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רחוב זכרון יעקב, 4 חדרים</td>\n<td dir=\"rtl\">86 מ\"ר, קומה 2 מתוך 7, 2 חניות, 2.46 מיליון ש\"ח</td>\n<td dir=\"rtl\">דוגמה טובה לכיול דירת 4 חדרים דומה</td>\n<td dir=\"rtl\">לא ממוצע עירוני לכל דירות 4 חדרים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">פתח תקווה, דירות 4 חדרים</td>\n<td dir=\"rtl\">2,444,100 ש\"ח, חציון מחיר העסקה ינואר-מרץ 2026</td>\n<td dir=\"rtl\">נקודת ייחוס עירונית לדירת 4 חדרים</td>\n<td dir=\"rtl\">לא מחיר סגירה לדירה מסוימת</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מחנה יהודה, דירות 3 חדרים</td>\n<td dir=\"rtl\">1,951,200 ש\"ח, חציון מחיר העסקה ינואר-מרץ 2026</td>\n<td dir=\"rtl\">נקודת ייחוס לדירות ותיקות יותר</td>\n<td dir=\"rtl\">לא מתאים לכפר גנים או אם המושבות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מחנה יהודה, מחיר למ\"ר</td>\n<td dir=\"rtl\">כ-20,000-24,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">מדד לאזור נגיש יותר במחיר</td>\n<td dir=\"rtl\">לא כולל בהכרח דירות משודרגות או חדשות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז העיר לפי הקשר שוק</td>\n<td dir=\"rtl\">כ-25,000-26,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">מסגרת לבדיקה של בניינים ותיקים</td>\n<td dir=\"rtl\">לא מתאים לדירה חדשה עם מפרט גבוה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אזורים סמוכים וחזקים יותר</td>\n<td dir=\"rtl\">כ-28,000-32,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">עוזר לזהות פרמיית שכונה ואיכות</td>\n<td dir=\"rtl\">לא כל רחוב באזור שווה אותו דבר</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "rooms.4.latest",
+    "neighbourhoods[מחנה יהודה].rooms.3",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Deals table: Mahane Yehuda 3 rooms 1.5-1.9M conflicts with the official neighbourhood median 1,951,200; the two Achdut ranges (3 and 5 rooms) and the '+15% deal volume' row have no named source and no official counterpart. Replaced by the official figures (city 4-room median beside the Zichron Yaakov deal, Mahane Yehuda 3-room median); the dated deal and the three per-m2 rows the page labels as checked are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מספר שנבדק</th>",
+   "n": 6,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "כ-5%-12% מעל דירה לא משופצת דומה",
+   "new": "מעל דירה לא משופצת דומה, לפי איכות השיפוץ",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Renovation premium 5%-12% with no source; rephrased without the number. Tier 2.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 7,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "כ-8%-18% מעל יד שנייה דומה",
+   "new": "מעל יד שנייה דומה, לפי מפרט, מיקום וגיל הבניין",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "New-flat premium 8%-18% with no source; rephrased without the number. Tier 2.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 8,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "כ-10%-22% לפי פרויקט ומועד",
+   "new": "לפי פרויקט, מפרט ומועד מסירה",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Off-plan premium 10%-22% with no source; rephrased without the number. Tier 2.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 9,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "טווח עבודה לדירת 3 חדרים נע סביב 1.55-2.25 מיליון ש\"ח, כאשר במחנה יהודה נראו דוגמאות סביב 1.5-1.9 מיליון ש\"ח, ובאחדות דירות 70-80 מ\"ר סביב 1.6-2.1 מיליון ש\"ח.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 3 חדרים בפתח תקווה ברבעון הראשון של 2026 היה 2,057,000 ש\"ח, לעומת 1,971,600 ש\"ח שנה קודם לכן. בשכונות ותיקות החציון נמוך יותר: 1,951,200 ש\"ח במחנה יהודה ו-1,890,700 ש\"ח בעין גנים.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago",
+    "neighbourhoods[מחנה יהודה].rooms.3",
+    "neighbourhoods[עין גנים].rooms.3"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ 3 rooms: Mahane Yehuda 1.5-1.9M vs the official neighbourhood median 1,951,200; Achdut 1.6-2.1M has no official median; the city range 1.55-2.25M was consistent and is restated as the median (same figures as the rooms table).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 10,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "דירות 4 חדרים נבדקות לרוב סביב 2.15-3.15 מיליון ש\"ח, אך דירה חדשה, דירה עם מרפסת גדולה, חניה כפולה או מיקום חזק יכולה לעלות יותר.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 4 חדרים בפתח תקווה ברבעון הראשון של 2026 היה 2,444,100 ש\"ח, לעומת 2,500,000 ש\"ח שנה קודם לכן. דירה חדשה, דירה עם מרפסת גדולה, חניה כפולה או מיקום חזק יכולה לעלות יותר.",
+   "source_keys": [
+    "rooms.4.latest",
+    "rooms.4.year_ago"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "FAQ 4 rooms: the range 2.15-3.15M holds the official 2,444,100 but came from the replaced rooms table; restated as the median so the FAQ matches the body. The Zichron Yaakov deal sentence after it is kept.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 11,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "דירות 5 חדרים נעות בטווח עבודה רחב של כ-2.65-4.20 מיליון ש\"ח, לפי שכונה, שטח, קומה, חניות, ממ\"ד ומרפסת. באחדות נראו הקשרים סביב 2.2-2.85 מיליון ש\"ח, בעוד שבכפר גנים, אם המושבות ונווה גן דירות משפחתיות יכולות להיבדק בטווח גבוה יותר.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 5 חדרים בפתח תקווה ברבעון הראשון של 2026 היה 3,322,600 ש\"ח, לעומת 3,326,300 ש\"ח שנה קודם לכן. המחיר משתנה לפי שכונה, שטח, קומה, חניות, ממ\"ד ומרפסת: באותו רבעון החציון לדירת 5 חדרים היה 2,960,100 ש\"ח במרכז העיר, 3,155,200 ש\"ח בכפר גנים א' ו-3,790,800 ש\"ח בנווה עוז הירוקה.",
+   "source_keys": [
+    "rooms.5.latest",
+    "rooms.5.year_ago",
+    "neighbourhoods[מרכז העיר].rooms.5",
+    "neighbourhoods[כפר גנים א].rooms.5",
+    "neighbourhoods[נווה עוז הירוקה].rooms.5"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ 5 rooms: the city range 2.65-4.20M was consistent; the Achdut 2.2-2.85M range has no source or official median, and the claim that Kfar Ganim is checked in a higher range does not hold for Kfar Ganim A 5 rooms (3,155,200, below the city 3,322,600). Rewritten with the official city and neighbourhood medians.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 12,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4573,
+   "url": "https://nad-lan.co.il/petah-tikva-apartment-prices/",
+   "field": "content",
+   "old": "במקרים מסוימים הפער יהיה 2%-4%, ובמקרים אחרים 8%-12% או יותר, בעיקר כאשר המודעה יקרה ביחס לעסקאות.",
+   "new": "במקרים מסוימים הפער קטן, ובמקרים אחרים גדול בהרבה, בעיקר כאשר המודעה יקרה ביחס לעסקאות.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Asking-to-deal gaps of 2%-4% and 8%-12% with no source; rephrased without the numbers. Tier 2.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 13,
+   "raw_risk": []
+  }
+ ],
+ "live_recheck": {
+  "retrieved_utc": "2026-10-07 11:18:58",
+  "modified": "2026-10-07T13:31:16",
+  "audited_copy_modified": "2026-10-07T13:31:16",
+  "price_list_on_page": true,
+  "body_outside_list_identical_to_audited_copy": "yes",
+  "dry_run": "13 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ }
+}

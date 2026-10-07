@@ -1,0 +1,950 @@
+{
+ "generated": "7.10.2026",
+ "page": {
+  "id": 4562,
+  "slug": "kfar-saba-apartment-prices",
+  "link": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+  "modified": "2026-10-07T12:07:33"
+ },
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages?slug=kfar-saba-apartment-prices&_fields=id,link,title,content,modified (content.rendered), public, retrieved 2026-10-07 10:34:33 UTC, 29,397 characters. The price-list section (<section id=\"nlpg\">, the [nadlan_price_guide] shortcode), <script> and <style> are outside the audit.",
+ "facts": "scripts/project-stage/price_guide/cities/kfar-saba-apartment-prices.json (official medians from data.nadlan.gov.il; source_keys are JSON paths in that file: rooms.<k>.latest, rooms.<k>.year_ago, rooms.<k>.change_pct, rooms.<k>.quarters[<q>], israel.<k>, neighbourhoods[<name>].rooms.<k>; 'page' = a number kept from the page's own text)",
+ "apply_rules": [
+  "Apply in the listed order on the RAW content (context=edit). Every \"old\" matches content.rendered exactly once at its turn (matches_in_live), except \"replace_all\" entries, which match exactly \"expect_matches\" times.",
+  "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
+  "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
+  "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+ ],
+ "claims_summary": {
+  "claims": {
+   "CONFLICT": 11,
+   "STALE": 2,
+   "UNSOURCED": 23,
+   "CONSISTENT": 11
+  },
+  "figures": {
+   "CONFLICT": 20,
+   "STALE": 3,
+   "UNSOURCED": 90,
+   "CONSISTENT": 21
+  },
+  "edits": 16,
+  "tier1": 16,
+  "tier2": 0
+ },
+ "notes": "The official list is not on the page yet; new text cites the medians directly. Latest official: 3 and 4 rooms and all deals 10-12.2025 (the last published), 5 rooms 1-3.2026; tables mark the quarter in each cell, as the brief prescribes. Official quirk: the 3-room median fell 21.3% year on year (2,466,800 in 10-12.2024 to 1,941,300 in 10-12.2025), but the fall happened in one step (1,993,600 already in 1-3.2025) and the last four quarters are flat; the ranges paragraph shows the previous quarter (1,960,100) for that reason. The official 3-room median sits below the page's own May 2026 deals (2.1M for 63 m2, 2.55M for 74 m2) and below the 1-3.2026 centre neighbourhood median (2,106,700); worth a second look at the source series before publishing. Name mapping: 'כפר סבא הירוקה' = official 'הירוקה כ\"ס 80' (the neighbourhood's planning name, fairly sure); 'מרכז העיר דרום' and 'מרכז העיר צפון' merged into one row for the official 'מרכז'; 'הראשונים' = official 'ראשונים' (the row covers Tkuma and HaRishonim, the cell says the median is HaRishonim's). Kept: rents (market sources and a market sample, page checked 5.6.2026), the dated May 2026 deals table and the per-m2 figures drawn from it, the dated deal examples in the FAQ, and the consistent second-hand 4-room 2.83M. Not audited as claims (hypotheticals and illustrations): the 3,000,000 / 3,300,000 / 3,700,000 / 700,000 example (p@5866), the 900,000 per-m2 arithmetic (p@8836), the 2,750,000 'if an area average' example (p@12096), the 80,000-300,000 renovation range (li@21555), the 2,900,000 / 3,050,000 / 250,000 example (p@21840), sizes, ages and deal counts. The h3 'ממוצע עירוני' heading is kept (no number); its card now opens with the median and calls it a median.",
+ "claims": [
+  {
+   "id": 1,
+   "where": "p@4293",
+   "quote": "סביב 2.8 מיליון ש\"ח כממוצע עירוני לפי אתר נתוני נדל\"ן שנקרא ביוני 2026",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "all deals 2,415,900 (10-12.2025)",
+   "verdict": "CONFLICT",
+   "action": "edit 1",
+   "note": ""
+  },
+  {
+   "id": 2,
+   "where": "p@4293",
+   "quote": "סביב 7,200 עד 7,350 ש\"ח שכירות חודשית ממוצעת לפי מקורות שוק",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market sources, read June 2026; kept word for word inside edit 1)",
+   "note": ""
+  },
+  {
+   "id": 3,
+   "where": "p@4293",
+   "quote": "דירות 4 חדרים רבות שנעות סביב 2.55 עד 3.7 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "2,817,000 (10-12.2025)",
+   "verdict": "CONSISTENT",
+   "action": "edit 1",
+   "note": "restated as the median"
+  },
+  {
+   "id": 4,
+   "where": "p@5163",
+   "quote": "מחיר ממוצע סביב 2,810,000 ש\"ח ... ממוצע קרוב של כ-2,850,000 ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 2,
+   "official": "all deals 2,415,900 (10-12.2025)",
+   "verdict": "CONFLICT",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 5,
+   "where": "p@5163",
+   "quote": "השכירות החודשית הממוצעת נעה סביב 7,200 עד 7,350 ש\"ח",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market sources, page checked 5.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 6,
+   "where": "p@5477",
+   "quote": "דירת 3 חדרים ... כ-2.1 עד 3.0 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "1,941,300 (10-12.2025, last published)",
+   "verdict": "CONFLICT",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 7,
+   "where": "p@5477",
+   "quote": "דירת 4 חדרים ... סביב 2.55 עד 3.7 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "2,817,000 (10-12.2025)",
+   "verdict": "CONSISTENT",
+   "action": "edit 3",
+   "note": "restated as the median"
+  },
+  {
+   "id": 8,
+   "where": "p@5477",
+   "quote": "ודירת 5 חדרים ... סביב 3.5 עד 4.5 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "3,544,700 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 3",
+   "note": "restated as the median"
+  },
+  {
+   "id": 9,
+   "where": "p@6301",
+   "quote": "כ-2.8 עד 2.85 מיליון ש\"ח לדירה, לפי מקורות שוק שנבדקו ביוני 2026",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 2,
+   "official": "all deals 2,415,900",
+   "verdict": "CONFLICT",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 10,
+   "where": "p@6483",
+   "quote": "שכירות 7,200 עד 7,350; 4 חדרים 6,750 עד 6,800; 5 חדרים 8,100 עד 9,100",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market sources, page checked 5.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 11,
+   "where": "tr@7386",
+   "quote": "2 חדרים | כ-1.45 עד 2.21 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 12,
+   "where": "tr@7584",
+   "quote": "3 חדרים | כ-2.03 עד 3.0 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "1,941,300 (10-12.2025)",
+   "verdict": "CONFLICT",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 13,
+   "where": "tr@7785",
+   "quote": "4 חדרים | כ-2.55 עד 3.7 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "2,817,000 (10-12.2025)",
+   "verdict": "CONSISTENT",
+   "action": "edit 6",
+   "note": "restated as the median"
+  },
+  {
+   "id": 14,
+   "where": "tr@7985",
+   "quote": "5 חדרים | כ-3.5 עד 4.5 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "3,544,700 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 6",
+   "note": "restated as the median"
+  },
+  {
+   "id": 15,
+   "where": "tr@8188",
+   "quote": "6 חדרים ומעלה | כ-4.14 עד 6.1 מיליון ש\"ח ומעלה",
+   "measure": "sale",
+   "rooms": "6",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 16,
+   "where": "tr@8602",
+   "quote": "פנטהאוז | מכ-4.0 מיליון ש\"ח בפרויקטים מסוימים",
+   "measure": "sale",
+   "rooms": "penthouse",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 17,
+   "where": "tr@7386..8602",
+   "quote": "עמודת שכירות חודשית בטבלת החדרים (7 שורות)",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 12,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": "column leaves with the rebuilt table; 2-5 room rents stay in the rent table, garden 8,700 and penthouse 8,950 (market sample) are dropped"
+  },
+  {
+   "id": 18,
+   "where": "p@8836",
+   "quote": "דירות 4 חדרים של 89-102 מ\"ר, מחירים למ\"ר סביב 28,061 עד 37,303 ש\"ח",
+   "measure": "per_m2",
+   "rooms": "4",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (from the dated May 2026 deals table on the page)",
+   "note": ""
+  },
+  {
+   "id": 19,
+   "where": "tr@10240",
+   "quote": "כפר סבא הירוקה | ממוצעים סביב 4,000,000 ש\"ח בחלק מנתוני 2023",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "הירוקה כ\"ס 80, 4 rooms 3,418,700 (1-3.2026)",
+   "verdict": "STALE",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 20,
+   "where": "tr@10482",
+   "quote": "הזמר העברי | כ-3,550,000 ש\"ח בממוצע עסקאות מסוים",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "no official median",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 21,
+   "where": "tr@10706",
+   "quote": "מרכז העיר דרום | כ-118 עסקאות, ממוצע כ-2,790,000 ש\"ח בנתוני 2023",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 2,
+   "official": "מרכז 3=2,106,700 4=3,090,200 5=3,501,900 (1-3.2026)",
+   "verdict": "STALE",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 22,
+   "where": "tr@10956",
+   "quote": "מרכז העיר צפון | כ-19 עסקאות, ממוצע כ-2,500,000 ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 2,
+   "official": "מרכז (see above)",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 23,
+   "where": "tr@11179",
+   "quote": "תקומה והראשונים | כ-68 עסקאות, ממוצע כ-2,772,500 ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 2,
+   "official": "ראשונים 4 rooms 2,396,100",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 24,
+   "where": "tr@11402",
+   "quote": "הדרים | כ-19 עסקאות, ממוצע כ-2,750,000 ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 2,
+   "official": "no official median",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 25,
+   "where": "tr@11625",
+   "quote": "קריית ספיר | כ-13 עסקאות, ממוצע כ-2,760,000 ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 2,
+   "official": "no official median",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 26,
+   "where": "p@12964",
+   "quote": "דירת 4 חדרים מושכרת סביב 6,750 עד 6,800, 5 חדרים 8,100 עד 9,100",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market sources, page checked 5.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 27,
+   "where": "tr@13927",
+   "quote": "2 חדרים | מחיר קנייה 1.45 עד 2.21 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 10",
+   "note": ""
+  },
+  {
+   "id": 28,
+   "where": "tr@14116",
+   "quote": "3 חדרים | מחיר קנייה 2.03 עד 3.0 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "1,941,300 (10-12.2025)",
+   "verdict": "CONFLICT",
+   "action": "edit 10",
+   "note": ""
+  },
+  {
+   "id": 29,
+   "where": "tr@14305",
+   "quote": "4 חדרים | מחיר קנייה 2.55 עד 3.7 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "2,817,000",
+   "verdict": "CONSISTENT",
+   "action": "edit 10",
+   "note": "restated as the median"
+  },
+  {
+   "id": 30,
+   "where": "tr@14491",
+   "quote": "5 חדרים | מחיר קנייה 3.5 עד 4.5 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "3,544,700",
+   "verdict": "CONSISTENT",
+   "action": "edit 10",
+   "note": "restated as the median"
+  },
+  {
+   "id": 31,
+   "where": "tr@13927..14675",
+   "quote": "עמודת שכירות שוק (5 שורות, כולל בית פרטי 13,500 במדגם שוק)",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 9,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market sample, page checked 5.6.2026; kept word for word in edit 10)",
+   "note": ""
+  },
+  {
+   "id": 32,
+   "where": "tr@15986..17316",
+   "quote": "טבלת עסקאות מאי 2026 (8 עסקאות: מחיר ומחיר למ\"ר)",
+   "measure": "deal",
+   "rooms": "",
+   "figures": 16,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual dated deals, 3-25.5.2026)",
+   "note": ""
+  },
+  {
+   "id": 33,
+   "where": "p@17534",
+   "quote": "דירת 4 חדרים נסגרה לפי כ-28,061 ש\"ח למ\"ר, ואחרת לפי כ-37,303",
+   "measure": "per_m2",
+   "rooms": "4",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (from the dated deals table)",
+   "note": ""
+  },
+  {
+   "id": 34,
+   "where": "p@18206",
+   "quote": "דירות חדשות: 3 חדרים כ-2.5 עד 3.0 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "1,941,300",
+   "verdict": "CONFLICT",
+   "action": "edit 11",
+   "note": "new flats"
+  },
+  {
+   "id": 35,
+   "where": "p@18206",
+   "quote": "דירות חדשות: 4 חדרים כ-3.1 עד 3.7 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "2,817,000",
+   "verdict": "CONFLICT",
+   "action": "edit 11",
+   "note": "new flats"
+  },
+  {
+   "id": 36,
+   "where": "p@18206",
+   "quote": "דירות חדשות: 5 חדרים כ-3.5 עד 4.5 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "3,544,700",
+   "verdict": "CONSISTENT",
+   "action": "edit 11",
+   "note": "new flats; dropped inside the rewrite"
+  },
+  {
+   "id": 37,
+   "where": "p@18206",
+   "quote": "פנטהאוזים יכולים להתחיל סביב 4.0 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "penthouse",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 11",
+   "note": ""
+  },
+  {
+   "id": 38,
+   "where": "p@18484",
+   "quote": "דירת 4 חדרים יד שנייה סביב 2.83 מיליון ש\"ח בממוצע מסוים",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,817,000 (10-12.2025)",
+   "verdict": "CONSISTENT",
+   "action": "keep",
+   "note": "second-hand"
+  },
+  {
+   "id": 39,
+   "where": "p@18484",
+   "quote": "דירת 5 חדרים יד שנייה סביב 3.75 מיליון ש\"ח בממוצע מסוים",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "3,544,700 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 12",
+   "note": "second-hand, +5.8%"
+  },
+  {
+   "id": 40,
+   "where": "p@25712",
+   "quote": "FAQ: המחיר הממוצע נע סביב 2.8 עד 2.85 מיליון ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 2,
+   "official": "all deals 2,415,900",
+   "verdict": "CONFLICT",
+   "action": "edit 13",
+   "note": ""
+  },
+  {
+   "id": 41,
+   "where": "p@25990",
+   "quote": "FAQ: דירות 3 חדרים כ-2.03 עד 3.0 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "1,941,300",
+   "verdict": "CONFLICT",
+   "action": "edit 14",
+   "note": ""
+  },
+  {
+   "id": 42,
+   "where": "p@25990",
+   "quote": "FAQ: עסקאות במאי 2026: 2,100,000 (63 מ\"ר) ו-2,550,000 (74 מ\"ר)",
+   "measure": "deal",
+   "rooms": "3",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual dated deals; word for word inside edit 14)",
+   "note": ""
+  },
+  {
+   "id": 43,
+   "where": "p@26285",
+   "quote": "FAQ: דירות 4 חדרים רבות נעות סביב 2.55 עד 3.7 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "2,817,000",
+   "verdict": "CONSISTENT",
+   "action": "edit 15",
+   "note": "restated as the median"
+  },
+  {
+   "id": 44,
+   "where": "p@26285",
+   "quote": "FAQ: עסקאות 2,750,000, 3,000,000, 3,300,000, 3,320,000 (89-102 מ\"ר)",
+   "measure": "deal",
+   "rooms": "4",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual deals of May 2026, dated in the deals table)",
+   "note": ""
+  },
+  {
+   "id": 45,
+   "where": "p@26540",
+   "quote": "FAQ: דירות 5 חדרים נעות לרוב סביב 3.5 עד 4.5 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "3,544,700",
+   "verdict": "CONSISTENT",
+   "action": "edit 16",
+   "note": "restated as the median"
+  },
+  {
+   "id": 46,
+   "where": "p@26540",
+   "quote": "FAQ: עסקאות 5 חדרים סביב 3,850,000 עד 3,900,000 ש\"ח",
+   "measure": "deal",
+   "rooms": "5",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (two May 2026 deals; date added inside edit 16)",
+   "note": ""
+  },
+  {
+   "id": 47,
+   "where": "p@26815",
+   "quote": "FAQ שכירות: ממוצע 7,200-7,350; לפי חדרים 4,000-9,100",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 10,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market sources, page checked 5.6.2026)",
+   "note": ""
+  }
+ ],
+ "edits": [
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "מחירי דירות בכפר סבא נעים לפי מספר חדרים, שכונה, גיל בניין, מצב הדירה ורמת הביקוש ברחוב הספציפי, אבל בדיקת השוק מתחילה בטווחי עבודה ברורים: סביב 2.8 מיליון ש\"ח כממוצע עירוני לפי אתר נתוני נדל\"ן שנקרא ביוני 2026, סביב 7,200 עד 7,350 ש\"ח שכירות חודשית ממוצעת לפי מקורות שוק, ודירות 4 חדרים רבות שנעות סביב 2.55 עד 3.7 מיליון ש\"ח לפי נתוני שוק, עסקאות ולוחות.",
+   "new": "מחירי דירות בכפר סבא נעים לפי מספר חדרים, שכונה, גיל בניין, מצב הדירה ורמת הביקוש ברחוב הספציפי, אבל בדיקת השוק מתחילה בנתונים ברורים: לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 5 חדרים ברבעון הראשון של 2026 היה 3,544,700 ש\"ח, וברבעון הרביעי של 2025 (הנתון האחרון שפורסם לדירות 3 ו-4 חדרים) 1,941,300 ש\"ח לדירת 3 חדרים ו-2,817,000 ש\"ח לדירת 4 חדרים. בשכירות, הממוצע החודשי עומד סביב 7,200 עד 7,350 ש\"ח לפי מקורות שוק שנבדקו ביוני 2026.",
+   "source_keys": [
+    "rooms.5.latest",
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Lead: a city average of about 2.8M (a real-estate data site read in June 2026) vs the official all-deals median 2,415,900 (10-12.2025). The 4-room range 2.55-3.7M was consistent; the lead now gives the official medians by rooms. The rent average 7,200-7,350 (market sources, page checked 5.6.2026) is kept.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 1,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "בבדיקה עירונית רחבה, מחיר ממוצע של דירה בכפר סבא נמצא סביב 2,810,000 ש\"ח באתר נתוני נדל\"ן אחד, כאשר מקורות נוספים הציגו ממוצע קרוב של כ-2,850,000 ש\"ח.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה בכלל העסקאות בכפר סבא ברבעון הרביעי של 2025 היה 2,415,900 ש\"ח, לעומת 2,301,700 ש\"ח באותו רבעון שנה קודם לכן.",
+   "source_keys": [
+    "rooms.all.latest",
+    "rooms.all.year_ago"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "City averages 2,810,000 and 2,850,000 vs the official all-deals median 2,415,900 (10-12.2025).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 2,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "דירת 3 חדרים יכולה להופיע בטווח רחב של כ-2.1 עד 3.0 מיליון ש\"ח, דירת 4 חדרים יכולה לנוע סביב 2.55 עד 3.7 מיליון ש\"ח, ודירת 5 חדרים יכולה לנוע סביב 3.5 עד 4.5 מיליון ש\"ח. בדירות חדשות, בדירות גן, בפנטהאוזים או בבניינים עם מפרט גבוה, הטווח יכול להיפתח כלפי מעלה.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 3 חדרים ברבעון הרביעי של 2025 היה 1,941,300 ש\"ח, לעומת 1,960,100 ש\"ח ברבעון השלישי של 2025; לדירת 4 חדרים החציון באותו רבעון היה 2,817,000 ש\"ח, ולדירת 5 חדרים 3,544,700 ש\"ח ברבעון הראשון של 2026. בדירות חדשות, בדירות גן, בפנטהאוזים או בבניינים עם מפרט גבוה, המחיר יכול להיות גבוה יותר.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.quarters[7-9.2025]",
+    "rooms.4.latest",
+    "rooms.5.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "3 rooms 2.1-3.0M vs the official 1,941,300 (10-12.2025, the last published for 3 rooms). The 4-room (2.55-3.7M) and 5-room (3.5-4.5M) ranges were consistent and are restated as medians; the previous quarter shows the 3-room level is stable.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 3,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "כ-2.8 עד 2.85 מיליון ש\"ח לדירה, לפי מקורות שוק שנבדקו ביוני 2026. זהו עוגן ראשוני, לא מחיר יעד.",
+   "new": "2,415,900 ש\"ח: חציון מחיר העסקה בכלל העסקאות ברבעון הרביעי של 2025, לפי נתוני רשות המסים. החציון הוא עוגן ראשוני, לא מחיר יעד.",
+   "source_keys": [
+    "rooms.all.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "City average card 2.8-2.85M vs the official all-deals median 2,415,900 (10-12.2025).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 4,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "הטבלה הבאה מרכזת טווחי עבודה לפי מספר חדרים. הנתונים משלבים ממוצעים ממקורות שוק, נתוני לוחות ודוגמאות עסקאות.",
+   "new": "הטבלה הבאה מציגה את חציון מחיר העסקה בכפר סבא לפי מספר חדרים, לפי נתוני רשות המסים, לצד החציון באותו רבעון שנה קודם לכן. בדירות 3 ו-4 חדרים מוצג הרבעון הרביעי של 2025, הנתון האחרון שפורסם.",
+   "source_keys": [
+    "data_quarter",
+    "rooms.3.quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "The intro announced working ranges from mixed market sources; the table becomes the official medians (edit 6).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 5,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">טווח קנייה שימושי</th>\n<th dir=\"rtl\">שכירות חודשית</th>\n<th dir=\"rtl\">הערת בדיקה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">כ-1.45 עד 2.21 מיליון ש\"ח</td>\n<td dir=\"rtl\">כ-4,000 עד 4,500 ש\"ח</td>\n<td dir=\"rtl\">רגישות גבוהה למיקום, גודל אמיתי, מעלית וחניה.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">כ-2.03 עד 3.0 מיליון ש\"ח</td>\n<td dir=\"rtl\">כ-5,550 עד 5,800 ש\"ח</td>\n<td dir=\"rtl\">מתאים לזוגות, משפרי דיור ראשונים ומשקיעים זהירים.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">כ-2.55 עד 3.7 מיליון ש\"ח</td>\n<td dir=\"rtl\">כ-6,750 עד 6,800 ש\"ח</td>\n<td dir=\"rtl\">פלח מרכזי בכפר סבא, ולכן יש הרבה השוואות זמינות.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">כ-3.5 עד 4.5 מיליון ש\"ח</td>\n<td dir=\"rtl\">כ-8,100 עד 9,100 ש\"ח</td>\n<td dir=\"rtl\">בדיקה לפי שכונה, חניה כפולה, ממ\"ד, מרפסת וגודל סלון.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">6 חדרים ומעלה</td>\n<td dir=\"rtl\">כ-4.14 עד 6.1 מיליון ש\"ח ומעלה</td>\n<td dir=\"rtl\">כ-9,600 ש\"ח ומעלה</td>\n<td dir=\"rtl\">שוק דק יותר, ולכן עסקה אחת חריגה יכולה להטעות.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירת גן</td>\n<td dir=\"rtl\">משתנה מאוד לפי חצר, פרטיות ומפרט</td>\n<td dir=\"rtl\">כ-8,700 ש\"ח במדגם שוק</td>\n<td dir=\"rtl\">יש לבדוק שטח בנוי מול שטח מוצמד וזכויות בפועל.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">פנטהאוז</td>\n<td dir=\"rtl\">מכ-4.0 מיליון ש\"ח בפרויקטים מסוימים ומעלה</td>\n<td dir=\"rtl\">כ-8,950 ש\"ח במדגם שוק</td>\n<td dir=\"rtl\">מחיר נקבע לפי מרפסת, נוף, פרטיות, קומה ומפרט.</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th>\n<th dir=\"rtl\">ינואר-מרץ 2025</th>\n<th dir=\"rtl\">שינוי בשנה</th>\n<th dir=\"rtl\">הערת בדיקה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">1,941,300 ש\"ח (אוקטובר-דצמבר 2025)</td>\n<td dir=\"rtl\">2,466,800 ש\"ח (אוקטובר-דצמבר 2024)</td>\n<td dir=\"rtl\">ירידה של 21.3%</td>\n<td dir=\"rtl\">מתאים לזוגות, משפרי דיור ראשונים ומשקיעים זהירים.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">2,817,000 ש\"ח (אוקטובר-דצמבר 2025)</td>\n<td dir=\"rtl\">3,001,300 ש\"ח (אוקטובר-דצמבר 2024)</td>\n<td dir=\"rtl\">ירידה של 6.1%</td>\n<td dir=\"rtl\">פלח מרכזי בכפר סבא, ולכן יש הרבה השוואות זמינות.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">3,544,700 ש\"ח</td>\n<td dir=\"rtl\">3,705,300 ש\"ח</td>\n<td dir=\"rtl\">ירידה של 4.3%</td>\n<td dir=\"rtl\">בדיקה לפי שכונה, חניה כפולה, ממ\"ד, מרפסת וגודל סלון.</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago",
+    "rooms.3.change_pct",
+    "rooms.4.latest",
+    "rooms.4.year_ago",
+    "rooms.4.change_pct",
+    "rooms.5.latest",
+    "rooms.5.year_ago",
+    "rooms.5.change_pct"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Rooms table: 3 rooms 2.03-3.0M vs the official 1,941,300 (10-12.2025); the 2-room, 6+-room, garden and penthouse rows have no official counterpart. Replaced by the official medians with the same quarter a year earlier (3 and 4 rooms: 10-12.2025 vs 10-12.2024; 5 rooms: 1-3.2026 vs 1-3.2025). The rent column leaves; the same rents stay in the rent table further down. Check notes of rows 3-5 kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">טווח קנייה שימושי</th>",
+   "n": 6,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "טבלת חדרים אינה מחליפה בדיקת מ\"ר.",
+   "new": "המחירון הרשמי מפרסם חציון לדירות 3, 4 ו-5 חדרים; דירות 2 חדרים, דירות 6 חדרים ומעלה, דירות גן ופנטהאוזים כדאי לבדוק מול עסקאות דומות ברחוב ובשכונה. גם החציון אינו מחליף בדיקת מ\"ר.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Follows edit 6: the 2-room, 6+-room, garden and penthouse rows left the table.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 7,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">אזור</th>\n<th dir=\"rtl\">נתון שוק שנבדק</th>\n<th dir=\"rtl\">מה משפיע על המחיר</th>\n<th dir=\"rtl\">איך לקרוא את המספר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כפר סבא הירוקה</td>\n<td dir=\"rtl\">ממוצעים סביב 4,000,000 ש\"ח בחלק מנתוני 2023</td>\n<td dir=\"rtl\">בנייה חדשה יותר, משפחות, חניה, ממ\"ד וסביבה ירוקה.</td>\n<td dir=\"rtl\">לא להשוות ישירות לדירה ותיקה במרכז.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">הזמר העברי</td>\n<td dir=\"rtl\">כ-3,550,000 ש\"ח בממוצע עסקאות מסוים</td>\n<td dir=\"rtl\">שכונה מבוקשת, דירות משפחתיות, תכנון מודרני.</td>\n<td dir=\"rtl\">צריך לבדוק קומה, מרפסת וחניה בפועל.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז העיר דרום</td>\n<td dir=\"rtl\">כ-118 עסקאות, ממוצע כ-2,790,000 ש\"ח בנתוני 2023</td>\n<td dir=\"rtl\">מיקום עירוני, היצע מגוון, בניינים בגילים שונים.</td>\n<td dir=\"rtl\">ממוצע רחב מדי לדירה אחת, חובה לבדוק רחוב.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז העיר צפון</td>\n<td dir=\"rtl\">כ-19 עסקאות, ממוצע כ-2,500,000 ש\"ח</td>\n<td dir=\"rtl\">קרבה לשירותים, בנייה ותיקה ומוצר מגוון.</td>\n<td dir=\"rtl\">השוואה לפי מצב בניין ומעלית קריטית.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">תקומה והראשונים</td>\n<td dir=\"rtl\">כ-68 עסקאות, ממוצע כ-2,772,500 ש\"ח</td>\n<td dir=\"rtl\">נגישות, בנייה מעורבת, ביקוש משפחתי.</td>\n<td dir=\"rtl\">לבדוק פער בין בניין מחודש לבניין ותיק.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">הדרים</td>\n<td dir=\"rtl\">כ-19 עסקאות, ממוצע כ-2,750,000 ש\"ח</td>\n<td dir=\"rtl\">אזור מוכר, היצע משפחתי, קרבה לשירותים.</td>\n<td dir=\"rtl\">מתאים להשוואת 4 חדרים ו-5 חדרים רק עם התאמות.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית ספיר</td>\n<td dir=\"rtl\">כ-13 עסקאות, ממוצע כ-2,760,000 ש\"ח</td>\n<td dir=\"rtl\">מיקום, תמהיל דירות וגיל בניינים.</td>\n<td dir=\"rtl\">מדגם קטן יחסית, אין להסיק ממוצע קשיח.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">יוספטל</td>\n<td dir=\"rtl\">נתון ממוצע נמוך במיוחד בחלק מהמקורות</td>\n<td dir=\"rtl\">תמהיל נכסים, מוצר שונה, עסקאות שאינן מייצגות את כל העיר.</td>\n<td dir=\"rtl\">להיזהר מהסקה ישירה, לבדוק כל נכס לגופו.</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">אזור</th>\n<th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th>\n<th dir=\"rtl\">מה משפיע על המחיר</th>\n<th dir=\"rtl\">איך לקרוא את המספר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כפר סבא הירוקה</td>\n<td dir=\"rtl\">4 חדרים 3,418,700 ש\"ח</td>\n<td dir=\"rtl\">בנייה חדשה יותר, משפחות, חניה, ממ\"ד וסביבה ירוקה.</td>\n<td dir=\"rtl\">לא להשוות ישירות לדירה ותיקה במרכז.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">הזמר העברי</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">שכונה מבוקשת, דירות משפחתיות, תכנון מודרני.</td>\n<td dir=\"rtl\">צריך לבדוק קומה, מרפסת וחניה בפועל.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז העיר</td>\n<td dir=\"rtl\">3 חדרים 2,106,700 ש\"ח, 4 חדרים 3,090,200 ש\"ח, 5 חדרים 3,501,900 ש\"ח</td>\n<td dir=\"rtl\">מיקום עירוני, קרבה לשירותים, היצע מגוון ובניינים בגילים שונים.</td>\n<td dir=\"rtl\">חציון רחב מדי לדירה אחת, חובה לבדוק רחוב, מצב בניין ומעלית.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">תקומה והראשונים</td>\n<td dir=\"rtl\">בהראשונים, 4 חדרים 2,396,100 ש\"ח</td>\n<td dir=\"rtl\">נגישות, בנייה מעורבת, ביקוש משפחתי.</td>\n<td dir=\"rtl\">לבדוק פער בין בניין מחודש לבניין ותיק.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">הדרים</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">אזור מוכר, היצע משפחתי, קרבה לשירותים.</td>\n<td dir=\"rtl\">מתאים להשוואת 4 חדרים ו-5 חדרים רק עם התאמות.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית ספיר</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">מיקום, תמהיל דירות וגיל בניינים.</td>\n<td dir=\"rtl\">מדגם קטן יחסית, אין להסיק ממוצע קשיח.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">יוספטל</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">תמהיל נכסים, מוצר שונה, עסקאות שאינן מייצגות את כל העיר.</td>\n<td dir=\"rtl\">להיזהר מהסקה ישירה, לבדוק כל נכס לגופו.</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "neighbourhoods[הירוקה כ\"ס 80].rooms.4",
+    "neighbourhoods[מרכז].rooms.3",
+    "neighbourhoods[מרכז].rooms.4",
+    "neighbourhoods[מרכז].rooms.5",
+    "neighbourhoods[ראשונים].rooms.4"
+   ],
+   "audit_verdict": "STALE",
+   "verdict": "STALE",
+   "why": "Neighbourhood table: all-rooms deal averages from 2023 data (Kfar Saba HaYeruka about 4,000,000, city centre south 2,790,000) and undated averages (HaZemer HaIvri, centre north, Tkuma and HaRishonim, Hadarim, Kiryat Sapir) presented as the current level. Replaced by the official neighbourhood medians by rooms, 1-3.2026 ('לא פורסם' where the official file has none); the two centre rows are merged into one because the official file has one 'מרכז'. Reading columns kept, merged for the centre.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">נתון שוק שנבדק</th>",
+   "n": 8,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "הטעות הנפוצה היא לקחת ממוצע שכונתי ולהחיל אותו על כל דירה.",
+   "new": "החציון השכונתי בטבלה הוא לפי נתוני רשות המסים לרבעון הראשון של 2026; בשכונות שבהן לא פורסם חציון, משווים לעסקאות סגורות דומות ברחוב ובבניין. הטעות הנפוצה היא לקחת ממוצע או חציון שכונתי ולהחיל אותו על כל דירה.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Follows edit 8: names the source and quarter of the neighbourhood medians and explains 'לא פורסם'.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 9,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">שכירות שוק</th>\n<th dir=\"rtl\">מחיר קנייה אופייני</th>\n<th dir=\"rtl\">קריאת נתון</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">4,000 עד 4,500 ש\"ח</td>\n<td dir=\"rtl\">1.45 עד 2.21 מיליון ש\"ח</td>\n<td dir=\"rtl\">שוכרים יחידים וזוגות, תלות גבוהה במיקום.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">5,550 עד 5,800 ש\"ח</td>\n<td dir=\"rtl\">2.03 עד 3.0 מיליון ש\"ח</td>\n<td dir=\"rtl\">מתאים לבדיקת כניסה לשוק או דירה קומפקטית.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">6,750 עד 6,800 ש\"ח</td>\n<td dir=\"rtl\">2.55 עד 3.7 מיליון ש\"ח</td>\n<td dir=\"rtl\">פלח מרכזי למשפחות, השוואות רבות יחסית.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">8,100 עד 9,100 ש\"ח</td>\n<td dir=\"rtl\">3.5 עד 4.5 מיליון ש\"ח</td>\n<td dir=\"rtl\">שוק משפחתי, רגיש לאזורי חינוך ולחניה.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בית פרטי</td>\n<td dir=\"rtl\">כ-13,500 ש\"ח במדגם שוק</td>\n<td dir=\"rtl\">טווח רחב מאוד</td>\n<td dir=\"rtl\">לא להשוות לדירות רגילות ללא התאמות.</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">שכירות שוק</th>\n<th dir=\"rtl\">חציון מחיר העסקה</th>\n<th dir=\"rtl\">קריאת נתון</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">4,000 עד 4,500 ש\"ח</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">שוכרים יחידים וזוגות, תלות גבוהה במיקום.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">5,550 עד 5,800 ש\"ח</td>\n<td dir=\"rtl\">1,941,300 ש\"ח (אוקטובר-דצמבר 2025)</td>\n<td dir=\"rtl\">מתאים לבדיקת כניסה לשוק או דירה קומפקטית.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">6,750 עד 6,800 ש\"ח</td>\n<td dir=\"rtl\">2,817,000 ש\"ח (אוקטובר-דצמבר 2025)</td>\n<td dir=\"rtl\">פלח מרכזי למשפחות, השוואות רבות יחסית.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">8,100 עד 9,100 ש\"ח</td>\n<td dir=\"rtl\">3,544,700 ש\"ח (ינואר-מרץ 2026)</td>\n<td dir=\"rtl\">שוק משפחתי, רגיש לאזורי חינוך ולחניה.</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בית פרטי</td>\n<td dir=\"rtl\">כ-13,500 ש\"ח במדגם שוק</td>\n<td dir=\"rtl\">לא פורסם, טווח רחב מאוד</td>\n<td dir=\"rtl\">לא להשוות לדירות רגילות ללא התאמות.</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Rent table: the purchase column repeats the rooms-table ranges (3 rooms 2.03-3.0M vs the official 1,941,300; 2 rooms with no official figure). The purchase cells become the official medians with their quarter; no yield or new number is computed; the rent column (market sample, page checked 5.6.2026) is kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מחיר קנייה אופייני</th>",
+   "n": 10,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "בדירות חדשות בכפר סבא נראו טווחים של כ-2.5 עד 3.0 מיליון ש\"ח לדירות 3 חדרים, כ-3.1 עד 3.7 מיליון ש\"ח לדירות 4 חדרים, וכ-3.5 עד 4.5 מיליון ש\"ח לדירות 5 חדרים. פנטהאוזים יכולים להתחיל סביב 4.0 מיליון ש\"ח ולהמשיך גבוה יותר, בהתאם למרפסת, קומה, נוף, מפרט ונדירות.",
+   "new": "בדירות חדשות בכפר סבא המחיר נקבע לפי הפרויקט, המפרט, הקומה ומועד המסירה, ודירה חדשה בפרויקט מבוקש יכולה להיות גבוהה מחציון מחיר העסקה העירוני. פנטהאוזים יקרים יותר, בהתאם למרפסת, קומה, נוף, מפרט ונדירות.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "New flats: 3 rooms 2.5-3.0M and 4 rooms 3.1-3.7M exclude the official medians 1,941,300 and 2,817,000 (10-12.2025); the 5-room range was consistent; the 'from 4.0M' penthouse floor has no source. The official list has no new-flat split, so the paragraph is rephrased without numbers.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 11,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "דירת 5 חדרים יד שנייה יכולה להופיע סביב 3.75 מיליון ש\"ח בממוצע מסוים, אך השוואה טובה תבדוק אם מדובר בבניין בן 8 שנים, 18 שנים או 45 שנים.",
+   "new": "בדירות 5 חדרים, חציון מחיר העסקה ברבעון הראשון של 2026 היה 3,544,700 ש\"ח לפי נתוני רשות המסים, אך השוואה טובה תבדוק אם מדובר בבניין בן 8 שנים, 18 שנים או 45 שנים.",
+   "source_keys": [
+    "rooms.5.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Second-hand 5 rooms 'about 3.75M in a certain average' vs the official 3,544,700 (1-3.2026), outside 5%.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 12,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "לפי מקורות שוק שנבדקו ביוני 2026, המחיר הממוצע נע סביב 2.8 עד 2.85 מיליון ש\"ח.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה בכלל העסקאות בכפר סבא ברבעון הרביעי של 2025 היה 2,415,900 ש\"ח.",
+   "source_keys": [
+    "rooms.all.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ average 2.8-2.85M vs the official all-deals median 2,415,900 (10-12.2025).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 13,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "דירות 3 חדרים מופיעות בטווחי עבודה של כ-2.03 עד 3.0 מיליון ש\"ח, כאשר דוגמאות עסקאות במאי 2026 כללו 2,100,000 ש\"ח לדירה של 63 מ\"ר ו-2,550,000 ש\"ח לדירה של 74 מ\"ר.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 3 חדרים בכפר סבא ברבעון הרביעי של 2025 (הנתון האחרון שפורסם) היה 1,941,300 ש\"ח. דוגמאות עסקאות במאי 2026 כללו 2,100,000 ש\"ח לדירה של 63 מ\"ר ו-2,550,000 ש\"ח לדירה של 74 מ\"ר.",
+   "source_keys": [
+    "rooms.3.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ 3 rooms: the working range 2.03-3.0M vs the official 1,941,300 (10-12.2025); the two dated May 2026 deals are kept.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 14,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "דירות 4 חדרים רבות נעות סביב 2.55 עד 3.7 מיליון ש\"ח.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 4 חדרים בכפר סבא ברבעון הרביעי של 2025 (הנתון האחרון שפורסם) היה 2,817,000 ש\"ח, לעומת 3,001,300 ש\"ח באותו רבעון שנה קודם לכן.",
+   "source_keys": [
+    "rooms.4.latest",
+    "rooms.4.year_ago"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "FAQ 4 rooms: 2.55-3.7M holds the official 2,817,000 but no longer appears in the body (lead, ranges paragraph and tables were rebuilt); restated as the median. The dated deals sentence after it is kept.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 15,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4562,
+   "url": "https://nad-lan.co.il/kfar-saba-apartment-prices/",
+   "field": "content",
+   "old": "דירות 5 חדרים נעות לרוב סביב 3.5 עד 4.5 מיליון ש\"ח, עם שונות לפי שכונה, גודל, בניין ומפרט. בדוגמאות עסקאות נראו דירות 5 חדרים סביב 3,850,000 עד 3,900,000 ש\"ח, אך דירות חדשות או נדירות יכולות להיות יקרות יותר.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 5 חדרים בכפר סבא ברבעון הראשון של 2026 היה 3,544,700 ש\"ח, לעומת 3,705,300 ש\"ח שנה קודם לכן, עם שונות לפי שכונה, גודל, בניין ומפרט. בדוגמאות עסקאות ממאי 2026 נראו דירות 5 חדרים סביב 3,850,000 עד 3,900,000 ש\"ח, אך דירות חדשות או נדירות יכולות להיות יקרות יותר.",
+   "source_keys": [
+    "rooms.5.latest",
+    "rooms.5.year_ago",
+    "page"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "FAQ 5 rooms: 3.5-4.5M holds the official 3,544,700 but no longer appears in the body; restated as the median. The two deal examples (Antokolsky 1 and HaAyit 12, both May 2026 in the deals table) are kept and now dated in the sentence.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 16,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  }
+ ],
+ "live_recheck": {
+  "retrieved_utc": "2026-10-07 11:18:45",
+  "modified": "2026-10-07T13:47:06",
+  "audited_copy_modified": "2026-10-07T12:07:33",
+  "price_list_on_page": true,
+  "body_outside_list_identical_to_audited_copy": "yes, except the blank lines around the price list, which was inserted at 2026-10-07T13:47:06 (site time) after the audited copy",
+  "dry_run": "16 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ }
+}

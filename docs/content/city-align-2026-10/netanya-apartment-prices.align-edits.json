@@ -1,0 +1,674 @@
+{
+ "generated": "7.10.2026",
+ "page": {
+  "id": 4577,
+  "slug": "netanya-apartment-prices",
+  "link": "https://nad-lan.co.il/netanya-apartment-prices/",
+  "modified": "2026-10-07T13:30:54"
+ },
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages?slug=netanya-apartment-prices&_fields=id,link,title,content,modified (content.rendered), public, retrieved 2026-10-07 10:34:35 UTC, 73,351 characters. The price-list section (<section id=\"nlpg\">, the [nadlan_price_guide] shortcode), <script> and <style> are outside the audit.",
+ "facts": "scripts/project-stage/price_guide/cities/netanya-apartment-prices.json (official medians from data.nadlan.gov.il; source_keys are JSON paths in that file: rooms.<k>.latest, rooms.<k>.year_ago, rooms.<k>.change_pct, rooms.<k>.quarters[<q>], israel.<k>, neighbourhoods[<name>].rooms.<k>; 'page' = a number kept from the page's own text)",
+ "apply_rules": [
+  "Apply in the listed order on the RAW content (context=edit). Every \"old\" matches content.rendered exactly once at its turn (matches_in_live), except \"replace_all\" entries, which match exactly \"expect_matches\" times.",
+  "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
+  "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
+  "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+ ],
+ "claims_summary": {
+  "claims": {
+   "CONFLICT": 2,
+   "STALE": 0,
+   "UNSOURCED": 21,
+   "CONSISTENT": 10
+  },
+  "figures": {
+   "CONFLICT": 2,
+   "STALE": 0,
+   "UNSOURCED": 55,
+   "CONSISTENT": 10
+  },
+  "edits": 12,
+  "tier1": 11,
+  "tier2": 1
+ },
+ "notes": "Not audited as claims (illustrations or structure, not market statements): the 'gap of more than 1,000,000' between extremes (p@44992), the m2 assumptions 55/80/110/130 (p@47279), the if-example 2,850,000 / 105 m2 / 27,143 per m2 / 2,600,000 / 250,000 (p@47596), the 700 rent gap example (p@56011), the if-example 2,900,000 vs 2,650,000-2,750,000 (FAQ p@72247), step counts (5-8 deals, 3-6 listings), days on market (60/90/120). The 3/4/5-room working ranges of the rooms table and the FAQ contain the official medians (3 rooms: 10-12.2025 is the latest published quarter) and are kept; only the 2-room, 6+-room and garden/roof cells lose their numbers, the rows stay. Rent figures are kept: the page names listing pages and dates its check (6.6.2026; 226 listings 16.4.2026). Remaining SUSPECT lines after the edits are the explicit if-example (p@47596, 2,850,000 for 4 rooms) and the single dated Smilansky 26 deal (1,900,000, 18.11.2024). The official file also lists neighbourhoods the page does not name (מע\"ר - מרכז עירוני ר, אבו שדיד, רמת אפרים, מכנס, פרדס הגדוד); they are not added. Name mapping: page 'מרכז העיר' = official 'מרכז העיר' (not the separate 'מע\"ר - מרכז עירוני ר'), 'קריית נורדאו' and 'קריית השרון' exact. Official quirk: Kiryat Nordau 5 rooms 3,882,100 is above the city 5-room median; not quoted.",
+ "claims": [
+  {
+   "id": 1,
+   "where": "p@4366",
+   "quote": "חלק גדול מהחלטות הקנייה והמכירה בנתניה סביב 1,500,000 עד 3,500,000 ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 2,629,800 (1-3.2026); 3/4/5 medians 1,791,300 / 2,676,100 / 3,365,300 inside",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent)",
+   "note": ""
+  },
+  {
+   "id": 2,
+   "where": "p@4366",
+   "quote": "דירות משפחתיות נפוצות ... סביב 5,000 עד 8,000 ש\"ח לחודש",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (rent listing pages, page checked 6.6.2026, p@42050)",
+   "note": ""
+  },
+  {
+   "id": 3,
+   "where": "p@42531",
+   "quote": "דירות רגילות נבדקות סביב 1.5 עד 3.5 מיליון ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 2,629,800 (1-3.2026); 3/4/5 medians 1,791,300 / 2,676,100 / 3,365,300 inside",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent)",
+   "note": ""
+  },
+  {
+   "id": 4,
+   "where": "p@42783",
+   "quote": "שכירות של דירות משפחתיות ... סביב 5,000 עד 8,000 ש\"ח לחודש",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (rent listing pages, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 5,
+   "where": "tr@43379",
+   "quote": "כמה עולה דירה רגילה | כ-1,500,000 עד 3,500,000 ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 2,629,800 (1-3.2026); 3/4/5 medians 1,791,300 / 2,676,100 / 3,365,300 inside",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent)",
+   "note": ""
+  },
+  {
+   "id": 6,
+   "where": "tr@43572",
+   "quote": "דירה יקרה יותר ליד הים | לעיתים מעל 4,000,000 ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": "no room count, no source; no official sea-front figure"
+  },
+  {
+   "id": 7,
+   "where": "tr@43776",
+   "quote": "שכירות נפוצה לדירת משפחה | כ-5,000 עד 8,000 ש\"ח לחודש",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (rent listing pages, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 8,
+   "where": "tr@45674",
+   "quote": "2 חדרים | כ-1,100,000 עד 1,850,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 3",
+   "note": "no official 2-room series"
+  },
+  {
+   "id": 9,
+   "where": "tr@45932",
+   "quote": "3 חדרים | כ-1,450,000 עד 2,350,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,791,300 (10-12.2025, latest published)",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent)",
+   "note": ""
+  },
+  {
+   "id": 10,
+   "where": "tr@46183",
+   "quote": "4 חדרים | כ-1,950,000 עד 3,250,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,676,100 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent)",
+   "note": ""
+  },
+  {
+   "id": 11,
+   "where": "tr@46436",
+   "quote": "5 חדרים | כ-2,450,000 עד 4,200,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "3,365,300 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent)",
+   "note": ""
+  },
+  {
+   "id": 12,
+   "where": "tr@46691",
+   "quote": "6 חדרים ומעלה | כ-3,400,000 עד 6,500,000 ש\"ח ומעלה",
+   "measure": "sale",
+   "rooms": "6",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 4",
+   "note": "no official 6+-room series"
+  },
+  {
+   "id": 13,
+   "where": "tr@46965",
+   "quote": "דירת גן או גג | תוספת 10% עד 30% לעומת דירה רגילה",
+   "measure": "other",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 5",
+   "note": "tier 2"
+  },
+  {
+   "id": 14,
+   "where": "tr@49041..52425",
+   "quote": "טבלת טווחי מחיר עבודה לפי שכונה (14 שורות, כל סוגי הדירות)",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 14,
+   "official": "קריית נורדאו 4r 1,967,300; מרכז העיר 4r 2,422,800; קריית השרון 4r 2,463,300 (1-3.2026)",
+   "verdict": "UNSOURCED",
+   "action": "edit 7",
+   "note": "no room count; the three neighbourhoods with official medians are given in edit 6"
+  },
+  {
+   "id": 15,
+   "where": "p@53106",
+   "quote": "226 מודעות (16.4.2026); שכירות ממוצעת 6,265, חציון 5,300",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data, dated 16.4.2026 / page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 16,
+   "where": "tr@54188..55777",
+   "quote": "טבלת שכירות (9 שורות): 226 מודעות, 6,265, 5,300, 1 חדר 3,800, 3 חדרים 4,500-6,300, 4 חדרים 5,500-7,500, 5 חדרים בסי פארק 8,000",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 11,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 17,
+   "where": "p@56722",
+   "quote": "סמילנסקי 26: 3 חדרים, 73 מ\"ר, 1,900,000 ש\"ח, 18 בנובמבר 2024, כ-26,027 ש\"ח למ\"ר",
+   "measure": "deal",
+   "rooms": "3",
+   "figures": 2,
+   "official": "3 rooms 1,791,300 (10-12.2025), not compared (single deal)",
+   "verdict": "UNSOURCED",
+   "action": "keep (one specific dated deal, 18.11.2024, not presented as the level)",
+   "note": ""
+  },
+  {
+   "id": 18,
+   "where": "tr@57313",
+   "quote": "עסקת סמילנסקי 26 | 1,900,000 ש\"ח, 18 בנובמבר 2024 | כ-26,027 ש\"ח למ\"ר",
+   "measure": "deal",
+   "rooms": "3",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (one specific dated deal)",
+   "note": ""
+  },
+  {
+   "id": 19,
+   "where": "tr@57581",
+   "quote": "דף נתונים גלוי הציג כ-76,674 עסקאות בנתניה",
+   "measure": "count",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (a count, not a price; labelled historic depth, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 20,
+   "where": "tr@57814",
+   "quote": "ממוצע עירוני בדף שוק | כ-1,582,219 ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 2,629,800 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 9",
+   "note": "label in edit 8"
+  },
+  {
+   "id": 21,
+   "where": "tr@58033",
+   "quote": "גלי הים בדף שוק | ממוצע דירות סביב 2,643,946 ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 10",
+   "note": "all rooms, no period; no official median for Gali HaYam"
+  },
+  {
+   "id": 22,
+   "where": "tr@58257",
+   "quote": "נאות גולדה בדף שוק | ממוצע סביב 869,886 ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 11",
+   "note": "all rooms, no period; no official median for Neot Golda"
+  },
+  {
+   "id": 23,
+   "where": "tr@58472",
+   "quote": "הלמ\"ס 077/2026: נובמבר 2025 עד ינואר 2026 נמכרו 234 דירות חדשות ו-421 יד שנייה",
+   "measure": "count",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (CBS release 077/2026, dated)",
+   "note": ""
+  },
+  {
+   "id": 24,
+   "where": "tr@58755",
+   "quote": "הלמ\"ס: כ-24,120 דירות נמכרו בארץ, 37.6% חדשות ו-62.4% יד שנייה",
+   "measure": "count",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (CBS release 077/2026, national)",
+   "note": ""
+  },
+  {
+   "id": 25,
+   "where": "tr@58985",
+   "quote": "בנק ישראל, 25 במאי 2026: הריבית ירדה ב-0.25 ל-3.75%",
+   "measure": "macro",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (dated Bank of Israel decision, 25.5.2026)",
+   "note": ""
+  },
+  {
+   "id": 26,
+   "where": "tr@59227",
+   "quote": "הודעת בנק ישראל: עלייה של 0.3% בפברואר עד מרץ, ירידה שנתית של 1.2%",
+   "measure": "macro",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (Bank of Israel announcement, May 2026; national)",
+   "note": ""
+  },
+  {
+   "id": 27,
+   "where": "p@61416",
+   "quote": "הלמ\"ס נובמבר 2025 עד ינואר 2026: 234 חדשות ו-421 יד שנייה",
+   "measure": "count",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (CBS, dated period)",
+   "note": ""
+  },
+  {
+   "id": 28,
+   "where": "p@69608",
+   "quote": "FAQ ממוצע: רבות מההחלטות סביב 1,500,000 עד 3,500,000 ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 2,629,800 (1-3.2026); 3/4/5 medians 1,791,300 / 2,676,100 / 3,365,300 inside",
+   "verdict": "CONSISTENT",
+   "action": "edit 12",
+   "note": "kept word for word inside the FAQ rewrite"
+  },
+  {
+   "id": 29,
+   "where": "p@69608",
+   "quote": "FAQ ממוצע: 'דפי נתוני שוק הציגו גם ממוצעים עירוניים נמוכים יותר'",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 2,629,800 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 12",
+   "note": "no digit; points at the 1,582,219 market-page average"
+  },
+  {
+   "id": 30,
+   "where": "p@70001",
+   "quote": "FAQ למ\"ר: בדוגמת סמילנסקי 26 כ-26,027 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (one specific deal, dated 18.11.2024 in the body)",
+   "note": ""
+  },
+  {
+   "id": 31,
+   "where": "p@70343",
+   "quote": "FAQ 3 חדרים: כ-1,450,000 עד 2,350,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,791,300 (10-12.2025)",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent)",
+   "note": ""
+  },
+  {
+   "id": 32,
+   "where": "p@70651",
+   "quote": "FAQ 4 חדרים: כ-1,950,000 עד 3,250,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,676,100 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent)",
+   "note": ""
+  },
+  {
+   "id": 33,
+   "where": "p@70967",
+   "quote": "FAQ 5 חדרים: כ-2,450,000 עד 4,200,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "3,365,300 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent)",
+   "note": ""
+  }
+ ],
+ "edits": [
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "המספרים בעמוד זה הם טווחי עבודה שנבנו לפי בדיקת נתוני שוק גלויים מ-6 ביוני 2026, דפי עסקאות, דפי שכירות, דפי מחירון גלויים ומידע רשמי.",
+   "new": "חציוני מחיר העסקה במחירון הרשמי בעמוד לקוחים מנתוני רשות המסים, וטווחי העבודה בעמוד נבנו לפי בדיקת נתוני שוק גלויים מ-6 ביוני 2026, דפי עסקאות, דפי שכירות, דפי מחירון גלויים ומידע רשמי.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "The note under the official list said every number on the page is a working range; the list itself is official medians. Reworded so the medians and the working ranges are told apart; the 6.6.2026 check date (the dating of the kept rent figures) stays.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 1,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "לעיתים מעל 4,000,000 ש\"ח, ובנכסים חריגים גם יותר",
+   "new": "לעיתים גבוה בהרבה מחציון מחיר העסקה בעיר, ובנכסים חריגים גם יותר",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Sea-side flats 'sometimes above 4,000,000' with no room count, no named source and no period; rephrased without the number (the official list has no sea-front figure).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 2,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "כ-1,100,000 עד 1,850,000 ש\"ח",
+   "new": "אין חציון רשמי לדירות 2 חדרים; משווים לעסקאות דומות ברחוב ובשכונה",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "2-room working range with no named source; the official list covers 3, 4 and 5 rooms only. The row stays (area, places, checks).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 3,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "כ-3,400,000 עד 6,500,000 ש\"ח ומעלה",
+   "new": "אין חציון רשמי לדירות 6 חדרים ומעלה; משווים לעסקאות דומות ברחוב ובשכונה",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "6+-room working range with no named source; no official series. The row stays (area, places, checks).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 4,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "תוספת אפשרית של 10% עד 30% לעומת דירה רגילה דומה",
+   "new": "לרוב גבוה מדירה רגילה דומה; בודקים מול עסקאות של דירות גן או גג באותו אזור",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "A 10%-30% garden/roof premium with no source or period; rephrased without the percentages.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 5,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "בבדיקת נתוני שוק גלויים מ-6 ביוני 2026 הופיעו פערים גדולים בין אזורים. דפי נתונים מסוימים הציגו למשל את גלי הים סביב ממוצע דירות גבוה בהרבה מאזורים ותיקים, בעוד שנאות גולדה הופיעה ברמות מחיר נמוכות יותר. מספרים אלה הם הקשר שוק בלבד, מפני שממוצע שכונתי יכול להיות מושפע מעסקאות מעטות, דירות קטנות, דירות גדולות או תמהיל בניינים שונה.",
+   "new": "גם בנתוני רשות המסים בולטים פערים גדולים בין אזורים. לפי הנתונים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 4 חדרים היה 1,967,300 ש\"ח בקריית נורדאו, 2,422,800 ש\"ח במרכז העיר ו-2,463,300 ש\"ח בקריית השרון. בבדיקת נתוני שוק גלויים מ-6 ביוני 2026 הופיע גם אזור גלי הים כיקר בהרבה מאזורים ותיקים, ושכונת נאות גולדה ברמות מחיר נמוכות יותר. גם חציון שכונתי יכול להיות מושפע מעסקאות מעטות, דירות קטנות, דירות גדולות או תמהיל בניינים שונה, ולכן הוא נקודת ייחוס ולא מחיר לדירה מסוימת.",
+   "source_keys": [
+    "neighbourhoods[קריית נורדאו].rooms.4",
+    "neighbourhoods[מרכז העיר].rooms.4",
+    "neighbourhoods[קריית השרון].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Intro of the neighbourhood table; the table's working-range price column leaves (edit 7). The official 4-room neighbourhood medians (1-3.2026) for the three page neighbourhoods that have one are given here; Gali HaYam and Neot Golda stay qualitative.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 6,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">אזור או שכונה</th>\n<th dir=\"rtl\">אופי מלאי הדירות</th>\n<th dir=\"rtl\">טווח מחיר עבודה לדירות נפוצות</th>\n<th dir=\"rtl\">גורם שמעלה מחיר</th>\n<th dir=\"rtl\">גורם שמוריד או מצריך זהירות</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">עיר ימים</td>\n<td dir=\"rtl\">מגדלים, דירות משפחתיות, קרבה לים ולשירותים</td>\n<td dir=\"rtl\">כ-2,900,000 עד 5,500,000 ש\"ח</td>\n<td dir=\"rtl\">קומה גבוהה, נוף, חניה כפולה, בניין חדש</td>\n<td dir=\"rtl\">דמי ניהול, עומס חניה, היצע מתחרה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">פולג</td>\n<td dir=\"rtl\">שכונה מבוססת, בנייה מגוונת, ביקוש משפחתי</td>\n<td dir=\"rtl\">כ-2,400,000 עד 4,300,000 ש\"ח</td>\n<td dir=\"rtl\">רחוב שקט, ממ\"ד, מעלית, שיפוץ איכותי</td>\n<td dir=\"rtl\">בניינים ותיקים, צורך בשיפוץ, שטח קטן</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רמת פולג</td>\n<td dir=\"rtl\">דירות משפחה, קרבה לדרום העיר ולצירים</td>\n<td dir=\"rtl\">כ-2,350,000 עד 4,000,000 ש\"ח</td>\n<td dir=\"rtl\">נגישות, חניה, דירה מרווחת</td>\n<td dir=\"rtl\">פער בין רחובות ובין בניינים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אגמים</td>\n<td dir=\"rtl\">שכונה חדשה יחסית, משפחות, דירות 4 ו-5 חדרים</td>\n<td dir=\"rtl\">כ-2,300,000 עד 4,100,000 ש\"ח</td>\n<td dir=\"rtl\">בניין חדש, מרפסת, חניה, תכנון מודרני</td>\n<td dir=\"rtl\">דמי ועד, היצע חדש, עומסי תחבורה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית השרון</td>\n<td dir=\"rtl\">שכונת משפחות רחבה, דירות 3 עד 5 חדרים</td>\n<td dir=\"rtl\">כ-1,900,000 עד 3,500,000 ש\"ח</td>\n<td dir=\"rtl\">קרבה למוסדות חינוך, חניה וממ\"ד</td>\n<td dir=\"rtl\">פער בין בניינים, גיל בנייה ומפרט</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז העיר</td>\n<td dir=\"rtl\">מלאי ותיק, דירות קטנות ובינוניות, קרבה למסחר</td>\n<td dir=\"rtl\">כ-1,250,000 עד 2,600,000 ש\"ח</td>\n<td dir=\"rtl\">קרבה לחוף, שיפוץ, מעלית, נגישות</td>\n<td dir=\"rtl\">בניינים ישנים, היעדר חניה, מצב תחזוקה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית נורדאו</td>\n<td dir=\"rtl\">מלאי ותיק לצד התחדשות עירונית מתוכננת או מקודמת</td>\n<td dir=\"rtl\">כ-1,450,000 עד 2,750,000 ש\"ח</td>\n<td dir=\"rtl\">תוכנית מאושרת, בניין מסודר, דירה משופצת</td>\n<td dir=\"rtl\">אי ודאות תכנונית, מצב בניין, זמן מימוש</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נאות הרצל</td>\n<td dir=\"rtl\">אזור ותיק, נקודות מחיר מגוונות</td>\n<td dir=\"rtl\">כ-1,300,000 עד 2,500,000 ש\"ח</td>\n<td dir=\"rtl\">שיפוץ, קומה נוחה, נגישות לשירותים</td>\n<td dir=\"rtl\">בניין ישן, חניה חסרה, תמהיל רחוב</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">גלי הים</td>\n<td dir=\"rtl\">אזור יקר יותר לפי דפי נתוני שוק מסוימים</td>\n<td dir=\"rtl\">כ-2,600,000 עד 4,800,000 ש\"ח</td>\n<td dir=\"rtl\">קרבה לים, איכות בנייה, שטח גדול</td>\n<td dir=\"rtl\">מספר עסקאות נמוך עלול לעוות ממוצע</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נוף הטיילת</td>\n<td dir=\"rtl\">דירות עם פרמיית חוף ונוף</td>\n<td dir=\"rtl\">כ-3,000,000 עד 6,000,000 ש\"ח ומעלה</td>\n<td dir=\"rtl\">נוף פתוח לים, קומה, מרפסת, חניה</td>\n<td dir=\"rtl\">תחזוקת מגדל, רוחות, דמי ניהול</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">סי פארק</td>\n<td dir=\"rtl\">מלאי מודרני, דירות גדולות יחסית, ביקוש למשפחות</td>\n<td dir=\"rtl\">כ-2,700,000 עד 5,000,000 ש\"ח</td>\n<td dir=\"rtl\">בניין חדש, מפרט, חניה, מרפסת</td>\n<td dir=\"rtl\">היצע מתחרה ודמי ניהול</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">South Beach</td>\n<td dir=\"rtl\">אזור חופי עם דירות יקרות יותר ונוף כגורם מחיר</td>\n<td dir=\"rtl\">כ-3,200,000 עד 6,500,000 ש\"ח ומעלה</td>\n<td dir=\"rtl\">קו חוף, קומה, נוף, דירה מיוחדת</td>\n<td dir=\"rtl\">השוואה קשה בגלל ייחודיות נכסים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נאות גולדה</td>\n<td dir=\"rtl\">מלאי זול יותר בחלק מדפי הנתונים</td>\n<td dir=\"rtl\">כ-900,000 עד 1,900,000 ש\"ח</td>\n<td dir=\"rtl\">דירה משופצת, רישום תקין, נגישות</td>\n<td dir=\"rtl\">שטח קטן, מצב בניין, סחירות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אזורים ותיקים סביב סמילנסקי והרצל</td>\n<td dir=\"rtl\">דירות ישנות, קרבה למרכז ולחוף, תמהיל רחובות משתנה</td>\n<td dir=\"rtl\">כ-1,300,000 עד 2,700,000 ש\"ח</td>\n<td dir=\"rtl\">קרבה לים, מעלית, שיפוץ, תוכנית התחדשות</td>\n<td dir=\"rtl\">בניין ישן, חניה חסרה, צורך בשיפוץ עמוק</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">אזור או שכונה</th>\n<th dir=\"rtl\">אופי מלאי הדירות</th>\n<th dir=\"rtl\">גורם שמעלה מחיר</th>\n<th dir=\"rtl\">גורם שמוריד או מצריך זהירות</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">עיר ימים</td>\n<td dir=\"rtl\">מגדלים, דירות משפחתיות, קרבה לים ולשירותים</td>\n<td dir=\"rtl\">קומה גבוהה, נוף, חניה כפולה, בניין חדש</td>\n<td dir=\"rtl\">דמי ניהול, עומס חניה, היצע מתחרה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">פולג</td>\n<td dir=\"rtl\">שכונה מבוססת, בנייה מגוונת, ביקוש משפחתי</td>\n<td dir=\"rtl\">רחוב שקט, ממ\"ד, מעלית, שיפוץ איכותי</td>\n<td dir=\"rtl\">בניינים ותיקים, צורך בשיפוץ, שטח קטן</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רמת פולג</td>\n<td dir=\"rtl\">דירות משפחה, קרבה לדרום העיר ולצירים</td>\n<td dir=\"rtl\">נגישות, חניה, דירה מרווחת</td>\n<td dir=\"rtl\">פער בין רחובות ובין בניינים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אגמים</td>\n<td dir=\"rtl\">שכונה חדשה יחסית, משפחות, דירות 4 ו-5 חדרים</td>\n<td dir=\"rtl\">בניין חדש, מרפסת, חניה, תכנון מודרני</td>\n<td dir=\"rtl\">דמי ועד, היצע חדש, עומסי תחבורה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית השרון</td>\n<td dir=\"rtl\">שכונת משפחות רחבה, דירות 3 עד 5 חדרים</td>\n<td dir=\"rtl\">קרבה למוסדות חינוך, חניה וממ\"ד</td>\n<td dir=\"rtl\">פער בין בניינים, גיל בנייה ומפרט</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז העיר</td>\n<td dir=\"rtl\">מלאי ותיק, דירות קטנות ובינוניות, קרבה למסחר</td>\n<td dir=\"rtl\">קרבה לחוף, שיפוץ, מעלית, נגישות</td>\n<td dir=\"rtl\">בניינים ישנים, היעדר חניה, מצב תחזוקה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית נורדאו</td>\n<td dir=\"rtl\">מלאי ותיק לצד התחדשות עירונית מתוכננת או מקודמת</td>\n<td dir=\"rtl\">תוכנית מאושרת, בניין מסודר, דירה משופצת</td>\n<td dir=\"rtl\">אי ודאות תכנונית, מצב בניין, זמן מימוש</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נאות הרצל</td>\n<td dir=\"rtl\">אזור ותיק, נקודות מחיר מגוונות</td>\n<td dir=\"rtl\">שיפוץ, קומה נוחה, נגישות לשירותים</td>\n<td dir=\"rtl\">בניין ישן, חניה חסרה, תמהיל רחוב</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">גלי הים</td>\n<td dir=\"rtl\">אזור יקר יותר לפי דפי נתוני שוק מסוימים</td>\n<td dir=\"rtl\">קרבה לים, איכות בנייה, שטח גדול</td>\n<td dir=\"rtl\">מספר עסקאות נמוך עלול לעוות ממוצע</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נוף הטיילת</td>\n<td dir=\"rtl\">דירות עם פרמיית חוף ונוף</td>\n<td dir=\"rtl\">נוף פתוח לים, קומה, מרפסת, חניה</td>\n<td dir=\"rtl\">תחזוקת מגדל, רוחות, דמי ניהול</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">סי פארק</td>\n<td dir=\"rtl\">מלאי מודרני, דירות גדולות יחסית, ביקוש למשפחות</td>\n<td dir=\"rtl\">בניין חדש, מפרט, חניה, מרפסת</td>\n<td dir=\"rtl\">היצע מתחרה ודמי ניהול</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">South Beach</td>\n<td dir=\"rtl\">אזור חופי עם דירות יקרות יותר ונוף כגורם מחיר</td>\n<td dir=\"rtl\">קו חוף, קומה, נוף, דירה מיוחדת</td>\n<td dir=\"rtl\">השוואה קשה בגלל ייחודיות נכסים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נאות גולדה</td>\n<td dir=\"rtl\">מלאי זול יותר בחלק מדפי הנתונים</td>\n<td dir=\"rtl\">דירה משופצת, רישום תקין, נגישות</td>\n<td dir=\"rtl\">שטח קטן, מצב בניין, סחירות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אזורים ותיקים סביב סמילנסקי והרצל</td>\n<td dir=\"rtl\">דירות ישנות, קרבה למרכז ולחוף, תמהיל רחובות משתנה</td>\n<td dir=\"rtl\">קרבה לים, מעלית, שיפוץ, תוכנית התחדשות</td>\n<td dir=\"rtl\">בניין ישן, חניה חסרה, צורך בשיפוץ עמוק</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "neighbourhoods[קריית נורדאו].rooms.4",
+    "neighbourhoods[מרכז העיר].rooms.4",
+    "neighbourhoods[קריית השרון].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Neighbourhood table: 14 all-rooms 'working ranges for common flats' with no named source and no room count (11 of the 14 neighbourhoods have no official median). The price column is removed; every row and the other four columns stay word for word. Official neighbourhood medians are in edit 6 and in the official list.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">טווח מחיר עבודה לדירות נפוצות</th>",
+   "n": 7,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "ממוצע עירוני בדף שוק",
+   "new": "חציון עירוני לפי רשות המסים",
+   "source_keys": [
+    "rooms.all.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Row label of the city average 1,582,219 (edit 9).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 8,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "כ-1,582,219 ש\"ח לפי דף נתונים גלוי",
+   "new": "2,629,800 ש\"ח בכל סוגי הדירות, ינואר-מרץ 2026",
+   "source_keys": [
+    "rooms.all.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "City average 1,582,219 from an unnamed market page (with 76,674 deals: an all-history average) vs the official all-rooms median 2,629,800 (1-3.2026), the figure the official list shows for 'כל הדירות'.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 9,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "ממוצע דירות סביב 2,643,946 ש\"ח",
+   "new": "ממוצע דירות גבוה בהרבה מאזורים ותיקים",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Gali HaYam all-rooms average from an unnamed market page, no period; Gali HaYam has no official median. Rephrased without the number.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 10,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "ממוצע סביב 869,886 ש\"ח",
+   "new": "ממוצע נמוך יותר מרוב אזורי העיר",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Neot Golda all-rooms average from an unnamed market page, no period; no official median. Rephrased without the number.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 11,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4577,
+   "url": "https://nad-lan.co.il/netanya-apartment-prices/",
+   "field": "content",
+   "old": "כטווח עבודה רחב, רבות מהחלטות הקנייה והמכירה בנתניה נעות סביב 1,500,000 עד 3,500,000 ש\"ח. עם זאת, ממוצע עירוני אינו מספיק מפני שעיר ימים, נוף הטיילת, סי פארק, קריית השרון, מרכז העיר וקריית נורדאו מציגות רמות מחיר שונות. דפי נתוני שוק גלויים שנבדקו הציגו גם ממוצעים עירוניים נמוכים יותר, אך יש לראות בהם הקשר רחב ולא שווי לדירה מסוימת.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה בנתניה בכל סוגי הדירות היה 2,629,800 ש\"ח, ולדירת 4 חדרים 2,676,100 ש\"ח. כטווח עבודה רחב, רבות מהחלטות הקנייה והמכירה בנתניה נעות סביב 1,500,000 עד 3,500,000 ש\"ח. עם זאת, מספר עירוני אחד אינו מספיק, מפני שעיר ימים, נוף הטיילת, סי פארק, קריית השרון, מרכז העיר וקריית נורדאו מציגות רמות מחיר שונות, ולכן יש לראות בו הקשר רחב ולא שווי לדירה מסוימת.",
+   "source_keys": [
+    "rooms.all.latest",
+    "rooms.4.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ on the city average pointed at 'lower city averages' of market pages (the 1,582,219 of edit 9); answered with the official all-rooms median 2,629,800 and the 4-room median (1-3.2026). The consistent 1.5-3.5M working range stays.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 12,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  }
+ ],
+ "live_recheck": {
+  "retrieved_utc": "2026-10-07 11:18:57",
+  "modified": "2026-10-07T13:30:54",
+  "audited_copy_modified": "2026-10-07T13:30:54",
+  "price_list_on_page": true,
+  "body_outside_list_identical_to_audited_copy": "yes",
+  "dry_run": "12 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ }
+}

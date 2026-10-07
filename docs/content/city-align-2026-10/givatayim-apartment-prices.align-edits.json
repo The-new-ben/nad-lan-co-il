@@ -1,0 +1,1071 @@
+{
+ "generated": "7.10.2026",
+ "page": {
+  "id": 4571,
+  "slug": "givatayim-apartment-prices",
+  "link": "https://nad-lan.co.il/givatayim-apartment-prices/",
+  "modified": "2026-10-07T12:07:24"
+ },
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages?slug=givatayim-apartment-prices&_fields=id,link,title,content,modified (content.rendered), public, retrieved 2026-10-07 10:34:29 UTC, 33,965 characters. The price-list section (<section id=\"nlpg\">, the [nadlan_price_guide] shortcode), <script> and <style> are outside the audit.",
+ "facts": "scripts/project-stage/price_guide/cities/givatayim-apartment-prices.json (official medians from data.nadlan.gov.il; source_keys are JSON paths in that file: rooms.<k>.latest, rooms.<k>.year_ago, rooms.<k>.change_pct, rooms.<k>.quarters[<q>], israel.<k>, neighbourhoods[<name>].rooms.<k>; 'page' = a number kept from the page's own text)",
+ "apply_rules": [
+  "Apply in the listed order on the RAW content (context=edit). Every \"old\" matches content.rendered exactly once at its turn (matches_in_live), except \"replace_all\" entries, which match exactly \"expect_matches\" times.",
+  "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
+  "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
+  "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+ ],
+ "claims_summary": {
+  "claims": {
+   "CONFLICT": 13,
+   "STALE": 0,
+   "UNSOURCED": 34,
+   "CONSISTENT": 10
+  },
+  "figures": {
+   "CONFLICT": 17,
+   "STALE": 0,
+   "UNSOURCED": 92,
+   "CONSISTENT": 10
+  },
+  "edits": 16,
+  "tier1": 15,
+  "tier2": 1
+ },
+ "notes": "The 4-room level is the main conflict: every 4-room range on the page (3.1-3.6M lead and FAQ, 3,096,234-3,600,000 table, 3.32M calculator) sat well below the official median 4,158,900 (1-3.2026; the 8-quarter series runs 3.80-4.36M). The two 'city averages' 2,847,355 and 4,350,000 were each about 20% from the official all-deals median 3,635,300 and are replaced everywhere (lead, box, two-sources paragraph, indicator table, FAQ). 3- and 5-room ranges were consistent and are restated as medians where they sat in edited blocks; p@5777 (2.7-3.0 / 3.8-5.0 / 4.1-5.0M by segment) is consistent and kept. Shenkin, Givat Rambam and the four street averages are kept (market pages, page checked 6.6.2026; the official file has no median for them). Tel Ganim has full official medians (3=3,589,400, 4=4,614,700, 5=5,202,800) but its area-table row carries no number, so nothing was added there. Not audited as claims: the 5% / 10% / 15% buyer check (li@30071), 6-10 deal counts, m2 sizes. Edit 11 (renovation 150,000-500,000, no source) is tier 2. Remaining SUSPECT lines in check.py: the deals table and p@11234 (individual dated deals, 22.2-10.3.2026), the 3- and 4-room check notes in the new rooms table (lists of individual 2026 deal examples), and the 3.5-room rows, which the scan reads as '5 rooms' because of the '3.5' (a regex artefact: they are individual 3.5-room deals). Name mapping: page 'ארלוזורוב' = official 'ארלוזרוב'. The all-rooms median fell 12.7% year on year (4,164,300 to 3,635,300), largely a mix effect; the page does not quote that change. Also SUSPECT: the ערבי נחל row (tr@15201), an all-rooms street average that the scan pairs with the 5-room deal example in the same row.",
+ "claims": [
+  {
+   "id": 1,
+   "where": "p@4196",
+   "quote": "ממוצעים עירוניים נעים בערך בין 2.85 מיליון ש\"ח ל-4.35 מיליון ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 2,
+   "official": "rooms.all 3,635,300 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 1",
+   "note": "two sources' averages shown as a range; each about 20% off the median"
+  },
+  {
+   "id": 2,
+   "where": "p@4196",
+   "quote": "דירות 3 חדרים נעות לרוב סביב 2.4-2.9 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "2,815,300 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 1",
+   "note": "restated as the median"
+  },
+  {
+   "id": 3,
+   "where": "p@4196",
+   "quote": "דירות 4 חדרים סביב 3.1-3.6 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "4,158,900 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 1",
+   "note": ""
+  },
+  {
+   "id": 4,
+   "where": "p@4196",
+   "quote": "דירות 5 חדרים יכולות לעבור 4.3 מיליון ש\"ח ואף יותר",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "4,960,000 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 1",
+   "note": "restated as the median"
+  },
+  {
+   "id": 5,
+   "where": "p@4196",
+   "quote": "שכירות סביב 6,000-6,500 ש\"ח לדירה טיפוסית",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 1",
+   "note": "6,000 kept as the June 2026 listing median (p@16100); 6,500 appears nowhere else and is dropped"
+  },
+  {
+   "id": 6,
+   "where": "p@5049",
+   "quote": "ממוצעים עירוניים של כ-2.85-4.35 מיליון ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 2,
+   "official": "rooms.all 3,635,300",
+   "verdict": "CONFLICT",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 7,
+   "where": "p@5300",
+   "quote": "שכירות חציונית סביב 6,000 ש\"ח, דירות 3 חדרים סביב 6,391 ש\"ח",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (dedicated rent page checked June 2026, p@16100)",
+   "note": ""
+  },
+  {
+   "id": 8,
+   "where": "p@5300",
+   "quote": "מחיר למ\"ר סביב 31,856-42,000 ש\"ח",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market pages checked 5.6.2026, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 9,
+   "where": "p@5777",
+   "quote": "דירת 3 חדרים ותיקה באזור מרכזי סביב 2.7-3.0 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "2,815,300",
+   "verdict": "CONSISTENT",
+   "action": "keep (contains the official median)",
+   "note": ""
+  },
+  {
+   "id": 10,
+   "where": "p@5777",
+   "quote": "דירת 4 חדרים גדולה, משופצת או חדשה יותר 3.8-5.0 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "4,158,900",
+   "verdict": "CONSISTENT",
+   "action": "keep (contains the official median)",
+   "note": ""
+  },
+  {
+   "id": 11,
+   "where": "p@5777",
+   "quote": "בדירות 5 חדרים עסקאות סביב 4.1-5.0 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "4,960,000",
+   "verdict": "CONSISTENT",
+   "action": "keep (contains the official median)",
+   "note": ""
+  },
+  {
+   "id": 12,
+   "where": "p@6216",
+   "quote": "ממוצע עירוני של כ-2,847,355 ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "rooms.all 3,635,300 (-21.7%)",
+   "verdict": "CONFLICT",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 13,
+   "where": "p@6216",
+   "quote": "מקור אחר: מחיר ממוצע של כ-4,350,000 ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "rooms.all 3,635,300 (+19.7%)",
+   "verdict": "CONFLICT",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 14,
+   "where": "p@6216",
+   "quote": "מחיר למ\"ר של כ-31,856 ש\"ח ... כ-42,000 ש\"ח",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market pages checked 5.6.2026, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 15,
+   "where": "p@6628",
+   "quote": "1,237 עסקאות במקור אחד, 1,070 במקור אחר, 3,675 בדף רחב יותר",
+   "measure": "count",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (deal counts, not prices; market pages checked 5.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 16,
+   "where": "tr@7462",
+   "quote": "ממוצע עירוני נמוך יותר שנצפה | כ-2,847,355 ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "rooms.all 3,635,300",
+   "verdict": "CONFLICT",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 17,
+   "where": "tr@7682",
+   "quote": "ממוצע עירוני גבוה יותר שנצפה | כ-4,350,000 ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "rooms.all 3,635,300",
+   "verdict": "CONFLICT",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 18,
+   "where": "tr@7889..8082",
+   "quote": "מחיר למ\"ר: כ-31,856 / כ-42,000 ש\"ח",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market pages checked 5.6.2026; carried into the table of edit 4)",
+   "note": ""
+  },
+  {
+   "id": 19,
+   "where": "tr@8302",
+   "quote": "דוגמת 4 חדרים במחשבון שוק | כ-3.32 מיליון ש\"ח | טווח 3.05-3.59 מיליון, כ-318 עסקאות",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "4,158,900 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 20,
+   "where": "tr@8523",
+   "quote": "שכירות חציונית | כ-6,000 ש\"ח",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (rent page checked June 2026; carried into the table of edit 4)",
+   "note": ""
+  },
+  {
+   "id": 21,
+   "where": "tr@9707",
+   "quote": "2 חדרים | כ-1,833,563 ש\"ח (563 עסקאות באחד מדפי השוק)",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market page checked 5.6.2026; moved into the check note by edit 6)",
+   "note": ""
+  },
+  {
+   "id": 22,
+   "where": "tr@10000",
+   "quote": "3 חדרים | כ-2,401,393-2,900,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "2,815,300",
+   "verdict": "CONSISTENT",
+   "action": "edit 6",
+   "note": "restated as the median"
+  },
+  {
+   "id": 23,
+   "where": "tr@10000",
+   "quote": "3 חדרים | דוגמאות 2026: 2.42, 2.70, 2.717, 3.00 מיליון ש\"ח",
+   "measure": "deal",
+   "rooms": "3",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual 2026 deals; kept in the note of edit 6)",
+   "note": ""
+  },
+  {
+   "id": 24,
+   "where": "tr@10294",
+   "quote": "3.5 חדרים | כ-2,870,000-3,010,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "3.5",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (range of the dated 2026 deals in the deals table; moved into the note by edit 6)",
+   "note": "no official 3.5-room series"
+  },
+  {
+   "id": 25,
+   "where": "tr@10608",
+   "quote": "4 חדרים | כ-3,096,234-3,600,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "4,158,900 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 26,
+   "where": "tr@10608",
+   "quote": "4 חדרים | דוגמאות שוק 3.15, 3.20, 3.50, 3.85, 4.10, 5.03 מיליון ש\"ח",
+   "measure": "deal",
+   "rooms": "4",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual deal examples; kept in the note of edit 6)",
+   "note": "3.15 / 3.85 / 4.10 / 5.03 are dated in the deals table; 3.20 and 3.50 only by the market-page check"
+  },
+  {
+   "id": 27,
+   "where": "tr@10915",
+   "quote": "5 חדרים | כ-4,150,000-5,030,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "4,960,000",
+   "verdict": "CONSISTENT",
+   "action": "edit 6",
+   "note": "restated as the median"
+  },
+  {
+   "id": 28,
+   "where": "tr@9707..10915",
+   "quote": "עמודת מחיר למ\"ר שנצפה (33,223 / 32,070+ / 30,000-36,000 / 31,704-42,000 / 32,829+)",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 7,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market pages checked 5.6.2026; carried into the table of edit 6)",
+   "note": ""
+  },
+  {
+   "id": 29,
+   "where": "p@11234",
+   "quote": "ז'בוטינסקי 4 חדרים 95 מ\"ר סביב 3.15 מיליון; המאבק 4 חדרים 117 מ\"ר סביב 5.03 מיליון",
+   "measure": "deal",
+   "rooms": "4",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual deals, dated 24.2.2026 and 26.2.2026 in the deals table)",
+   "note": ""
+  },
+  {
+   "id": 30,
+   "where": "tr@12683",
+   "quote": "בורוכוב | כ-3,950,000 ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "בורוכוב 3=3,206,100 4=4,356,800",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": "all-rooms indication"
+  },
+  {
+   "id": 31,
+   "where": "tr@12901",
+   "quote": "שינקין | כ-3,440,270 ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market pages, page checked 6.6.2026; no official median for Shenkin)",
+   "note": ""
+  },
+  {
+   "id": 32,
+   "where": "tr@13128",
+   "quote": "ארלוזורוב | כ-3,200,000 ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "ארלוזרוב 3=2,592,800 4=4,059,300 5=5,442,200",
+   "verdict": "UNSOURCED",
+   "action": "edit 9",
+   "note": ""
+  },
+  {
+   "id": 33,
+   "where": "tr@13343",
+   "quote": "גבעת רמב\"ם | כ-3,100,000 ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market pages, page checked 6.6.2026; no official median for Givat Rambam)",
+   "note": ""
+  },
+  {
+   "id": 34,
+   "where": "tr@12683..13343",
+   "quote": "מחיר למ\"ר באזורים: 43,839 / 38,000 / 35,000 / 34,000",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market pages, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 35,
+   "where": "tr@14258",
+   "quote": "סיטי | שכירות יקרה סביב 10,450 ש\"ח",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (rent page checked June 2026, tr@18322)",
+   "note": ""
+  },
+  {
+   "id": 36,
+   "where": "tr@14514",
+   "quote": "קריית יוסף | 3 חדרים ב-2.42 מיליון ש\"ח, 65 מ\"ר",
+   "measure": "deal",
+   "rooms": "3",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (one observed 2026 deal)",
+   "note": ""
+  },
+  {
+   "id": 37,
+   "where": "tr@14757..15490",
+   "quote": "ממוצעי רחוב: קק\"ל 3,992,666 (12), ערבי נחל 3,871,875 (16), כצנלסון 2,091,121 (33), ההסתדרות 4,247,761 (21)",
+   "measure": "sale_street",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (street averages of observed deals from market pages, page checked 6.6.2026; no official street series)",
+   "note": ""
+  },
+  {
+   "id": 38,
+   "where": "tr@14997",
+   "quote": "ערבי נחל: 5 חדרים, 127 מ\"ר, סביב 5.00 מיליון ש\"ח",
+   "measure": "deal",
+   "rooms": "5",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (one observed deal; close to the 5-room median 4,960,000)",
+   "note": ""
+  },
+  {
+   "id": 39,
+   "where": "p@16100",
+   "quote": "שכירות חציונית 6,000 (293 מודעות, יוני 2026); 3 חדרים 6,391; 5,580 / 6,150 / 7,500 / 10,350",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (dedicated rent page checked June 2026 + market pages)",
+   "note": ""
+  },
+  {
+   "id": 40,
+   "where": "tr@17018..18322",
+   "quote": "טבלת שכירות: 6,000; 293 מודעות; 5,580; 6,150-6,391; 7,500; 10,350; שינקין 5,393; סיטי 10,450",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 9,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (rent pages checked June 2026)",
+   "note": ""
+  },
+  {
+   "id": 41,
+   "where": "tr@17735",
+   "quote": "4 חדרים: בודק אם מחיר מכירה של 3.5-4.2 מיליון ש\"ח נשען על שוק שכירות",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "4,158,900",
+   "verdict": "CONSISTENT",
+   "action": "keep (contains the official median)",
+   "note": ""
+  },
+  {
+   "id": 42,
+   "where": "p@19276",
+   "quote": "עסקאות רבות סביב 2.7-3.15 מיליון ש\"ח לדירות 3-4 חדרים קטנות ובינוניות",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "4,158,900 (the 3-room part is consistent with 2,815,300)",
+   "verdict": "CONFLICT",
+   "action": "edit 10",
+   "note": ""
+  },
+  {
+   "id": 43,
+   "where": "p@19276",
+   "quote": "עסקאות סביב 3.85-5.03 מיליון ש\"ח לדירות גדולות",
+   "measure": "deal",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (summary of the dated Feb-Mar 2026 deals in the table)",
+   "note": ""
+  },
+  {
+   "id": 44,
+   "where": "tr@19884..22365",
+   "quote": "טבלת עסקאות (10 עסקאות מתוארכות, 22.2-10.3.2026)",
+   "measure": "deal",
+   "rooms": "",
+   "figures": 10,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual dated deals)",
+   "note": ""
+  },
+  {
+   "id": 45,
+   "where": "tr@25091",
+   "quote": "שיפוץ | ייתכן צורך ב-150,000-500,000 ש\"ח",
+   "measure": "other",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 11",
+   "note": "tier 2"
+  },
+  {
+   "id": 46,
+   "where": "p@30684",
+   "quote": "FAQ: ממוצעים שונים, בערך בין 2.85 מיליון ל-4.35 מיליון ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 2,
+   "official": "rooms.all 3,635,300",
+   "verdict": "CONFLICT",
+   "action": "edit 12",
+   "note": ""
+  },
+  {
+   "id": 47,
+   "where": "p@30966",
+   "quote": "FAQ: 31,856 עד 42,000 ש\"ח למ\"ר; בורוכוב 43,839; שינקין 38,000",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market pages checked 5.6.2026, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 48,
+   "where": "p@31262",
+   "quote": "FAQ: דירות 3 חדרים נעו סביב 2.4-2.9 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "2,815,300",
+   "verdict": "CONSISTENT",
+   "action": "edit 13",
+   "note": "restated as the median"
+  },
+  {
+   "id": 49,
+   "where": "p@31262",
+   "quote": "FAQ: דוגמאות 2.42 / 2.70 / 2.717 מיליון ש\"ח",
+   "measure": "deal",
+   "rooms": "3",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual observed deals; kept in edit 13)",
+   "note": ""
+  },
+  {
+   "id": 50,
+   "where": "p@31554",
+   "quote": "FAQ: דירת 4 חדרים סביב 3.1-3.6 מיליון ש\"ח כטווח עבודה בסיסי",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "4,158,900 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 14",
+   "note": ""
+  },
+  {
+   "id": 51,
+   "where": "p@31554",
+   "quote": "FAQ: עסקאות הגיעו גם ל-3.85, 4.10 ואף 5.03 מיליון ש\"ח",
+   "measure": "deal",
+   "rooms": "4",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 14",
+   "note": "dropped from the FAQ; the same deals stay in the dated deals table"
+  },
+  {
+   "id": 52,
+   "where": "p@31856",
+   "quote": "FAQ: אינדיקציה ממוצעת של כ-4,290,568 ש\"ח לדירות 5 חדרים",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "4,960,000 (1-3.2026, -13.5%)",
+   "verdict": "CONFLICT",
+   "action": "edit 15",
+   "note": ""
+  },
+  {
+   "id": 53,
+   "where": "p@31856",
+   "quote": "FAQ: דוגמאות עסקאות סביב 4.15-5.03 מיליון ש\"ח לדירות של 112-159 מ\"ר",
+   "measure": "deal",
+   "rooms": "5",
+   "figures": 1,
+   "official": "4,960,000",
+   "verdict": "CONSISTENT",
+   "action": "keep (contains the official 5-room median)",
+   "note": ""
+  },
+  {
+   "id": 54,
+   "where": "p@32127",
+   "quote": "FAQ: בורוכוב, אינדיקציה סביב 3.95 מיליון ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "בורוכוב 3=3,206,100 4=4,356,800",
+   "verdict": "UNSOURCED",
+   "action": "edit 16",
+   "note": ""
+  },
+  {
+   "id": 55,
+   "where": "p@32127",
+   "quote": "FAQ: בורוכוב כ-43,839 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market pages; kept in edit 16)",
+   "note": ""
+  },
+  {
+   "id": 56,
+   "where": "p@32378",
+   "quote": "FAQ: שינקין כ-3.44 מיליון ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market page, page checked 6.6.2026; no official median for Shenkin)",
+   "note": ""
+  },
+  {
+   "id": 57,
+   "where": "p@32378",
+   "quote": "FAQ: שינקין כ-38,000 ש\"ח למ\"ר; שכירות סביב 5,393 ש\"ח",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (market pages checked 5.6.2026, page checked 6.6.2026)",
+   "note": "one per-m2 and one rent figure"
+  }
+ ],
+ "edits": [
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "בדיקת נתוני שוק גלויים מ-5 ביוני 2026 מציגה פער גדול בין מקורות שונים, ולכן טווח העבודה הסביר רחב: ממוצעים עירוניים נעים בערך בין 2.85 מיליון ש\"ח ל-4.35 מיליון ש\"ח, לפי תמהיל העסקאות, גודל הדירות והאזורים שנכללו. אינדיקציות לדירות 3 חדרים נעות לרוב סביב 2.4-2.9 מיליון ש\"ח, דירות 4 חדרים סביב 3.1-3.6 מיליון ש\"ח, ודירות 5 חדרים יכולות לעבור 4.3 מיליון ש\"ח ואף יותר. גם שכירות סביב 6,000-6,500 ש\"ח לדירה טיפוסית עוזרת לבדוק אם מחיר הדירה הגיוני, אבל גבעתיים אינה שוק אחד: בורוכוב, שינקין, ארלוזורוב, גבעת רמב\"ם, הל\"ה, פועלי הרכבת, תל גנים, סיטי, קריית יוסף וכיסים חדשים או יקרים מתנהגים אחרת. מחיר מבוקש אינו מחיר סגירה, וממוצע עירוני אחד עלול להטעות.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה היה 2,815,300 ש\"ח לדירת 3 חדרים, 4,158,900 ש\"ח לדירת 4 חדרים ו-4,960,000 ש\"ח לדירת 5 חדרים. גם שכירות חציונית במודעות, סביב 6,000 ש\"ח לחודש, עוזרת לבדוק אם מחיר הדירה הגיוני, אבל גבעתיים אינה שוק אחד: בורוכוב, שינקין, ארלוזורוב, גבעת רמב\"ם, הל\"ה, פועלי הרכבת, תל גנים, סיטי, קריית יוסף וכיסים חדשים או יקרים מתנהגים אחרת. מחיר מבוקש אינו מחיר סגירה, והחציון העירוני הוא נקודת ייחוס ולא מחיר לדירה מסוימת.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Lead: the 4-room working range 3.1-3.6M excludes the official median 4,158,900 (1-3.2026), and the 'city averages 2.85-4.35M' are two sources' averages (2,847,355 and 4,350,000), each about 20% from the official all-deals median 3,635,300. The 3-room 2.4-2.9M range and the 5-room floor 4.3M were consistent. All restated as the official medians. Rent: the 6,000 listing median (dedicated rent page, June 2026, same page) is kept and labelled; the untraceable 6,500 top is dropped.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 1,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "בדפי נתוני שוק שנבדקו הופיעו ממוצעים עירוניים של כ-2.85-4.35 מיליון ש\"ח. הטווח הרחב נובע מהבדלי שטח, גיל בניין, חניה, ממ\"ד, קומה, מעלית, רחוב ואזור.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה בגבעתיים בכל העסקאות היה 3,635,300 ש\"ח. המחיר של דירה מסוימת יכול להיות רחוק ממנו בגלל הבדלי שטח, גיל בניין, חניה, ממ\"ד, קומה, מעלית, רחוב ואזור.",
+   "source_keys": [
+    "rooms.all.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Box under 'טווח עבודה למחיר': the two city averages 2.85M and 4.35M are each about 20% from the official all-deals median 3,635,300.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 2,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "הנתונים שנבדקו מציגים כמה שכבות. בדפי נתוני שוק גלויים הופיע ממוצע עירוני של כ-2,847,355 ש\"ח ומחיר למ\"ר של כ-31,856 ש\"ח, לצד מקור אחר שהציג מחיר ממוצע של כ-4,350,000 ש\"ח ומחיר למ\"ר של כ-42,000 ש\"ח. הפער אינו בהכרח סתירה: מקור אחד יכול לכלול יותר עסקאות קטנות וישנות, ומקור אחר יכול לתת משקל גבוה יותר לדירות גדולות, חדשות או יקרות יותר. לכן מחירון דירות בגבעתיים צריך להיות טווח עבודה ולא שומה.",
+   "new": "הנתונים שנבדקו מציגים כמה שכבות. לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה בגבעתיים בכל העסקאות היה 3,635,300 ש\"ח. בדפי נתוני שוק גלויים הופיע מחיר למ\"ר של כ-31,856 ש\"ח, ובמקור אחר כ-42,000 ש\"ח למ\"ר. הפער אינו בהכרח סתירה: מקור אחד יכול לכלול יותר עסקאות קטנות וישנות, ומקור אחר יכול לתת משקל גבוה יותר לדירות גדולות, חדשות או יקרות יותר. לכן החציון הוא נקודת ייחוס ולא שומה.",
+   "source_keys": [
+    "rooms.all.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "City averages 2,847,355 (-21.7%) and 4,350,000 (+19.7%) vs the official all-deals median 3,635,300 (1-3.2026). Replaced by the median; the two per-m2 figures (market pages checked 5.6.2026) are kept.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 3,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n  <thead dir=\"rtl\">\n    <tr dir=\"rtl\">\n      <th dir=\"rtl\">מדד שנבדק</th>\n      <th dir=\"rtl\">אינדיקציה מספרית</th>\n      <th dir=\"rtl\">איך להשתמש במספר</th>\n    </tr>\n  </thead>\n  <tbody dir=\"rtl\">\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">ממוצע עירוני נמוך יותר שנצפה</td>\n      <td dir=\"rtl\">כ-2,847,355 ש\"ח</td>\n      <td dir=\"rtl\">מתאים לפתיחת בדיקה, בעיקר כאשר התמהיל כולל הרבה דירות קטנות או ותיקות.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">ממוצע עירוני גבוה יותר שנצפה</td>\n      <td dir=\"rtl\">כ-4,350,000 ש\"ח</td>\n      <td dir=\"rtl\">יכול לשקף תמהיל יקר יותר, דירות גדולות או אזורים מבוקשים.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">מחיר למ\"ר לפי מקור רחב</td>\n      <td dir=\"rtl\">כ-31,856 ש\"ח</td>\n      <td dir=\"rtl\">נקודת ייחוס כללית בלבד, לא מספר סגירה לדירה ספציפית.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">מחיר למ\"ר לפי מקור עסקאות אחר</td>\n      <td dir=\"rtl\">כ-42,000 ש\"ח</td>\n      <td dir=\"rtl\">מתאים לבדיקה זהירה כאשר הדירה קרובה לאזורי ביקוש או בעלת מאפיינים חזקים.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">דוגמת 4 חדרים במחשבון שוק</td>\n      <td dir=\"rtl\">כ-3.32 מיליון ש\"ח</td>\n      <td dir=\"rtl\">טווח מוצג סביב 3.05-3.59 מיליון ש\"ח, לפי כ-318 עסקאות ורמת דמיון מוגבלת.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">שכירות חציונית</td>\n      <td dir=\"rtl\">כ-6,000 ש\"ח</td>\n      <td dir=\"rtl\">בדיקת סבירות לתמחור, במיוחד בדירות 2-4 חדרים.</td>\n    </tr>\n  </tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n  <thead dir=\"rtl\">\n    <tr dir=\"rtl\">\n      <th dir=\"rtl\">מדד שנבדק</th>\n      <th dir=\"rtl\">אינדיקציה מספרית</th>\n      <th dir=\"rtl\">איך להשתמש במספר</th>\n    </tr>\n  </thead>\n  <tbody dir=\"rtl\">\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">חציון מחיר העסקה בעיר, כל העסקאות, ינואר-מרץ 2026</td>\n      <td dir=\"rtl\">3,635,300 ש\"ח</td>\n      <td dir=\"rtl\">מתאים לפתיחת בדיקה בלבד, כי תמהיל הדירות הקטנות, הוותיקות, הגדולות והחדשות משפיע עליו.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">חציון מחיר העסקה לדירת 4 חדרים, ינואר-מרץ 2026</td>\n      <td dir=\"rtl\">4,158,900 ש\"ח</td>\n      <td dir=\"rtl\">נקודת ייחוס לדירת 4 חדרים, לפני התאמה לשטח, לקומה, לחניה ולרחוב.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">מחיר למ\"ר לפי מקור רחב</td>\n      <td dir=\"rtl\">כ-31,856 ש\"ח</td>\n      <td dir=\"rtl\">נקודת ייחוס כללית בלבד, לא מספר סגירה לדירה ספציפית.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">מחיר למ\"ר לפי מקור עסקאות אחר</td>\n      <td dir=\"rtl\">כ-42,000 ש\"ח</td>\n      <td dir=\"rtl\">מתאים לבדיקה זהירה כאשר הדירה קרובה לאזורי ביקוש או בעלת מאפיינים חזקים.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">שכירות חציונית</td>\n      <td dir=\"rtl\">כ-6,000 ש\"ח</td>\n      <td dir=\"rtl\">בדיקת סבירות לתמחור, במיוחד בדירות 2-4 חדרים.</td>\n    </tr>\n  </tbody>\n</table>",
+   "source_keys": [
+    "rooms.all.latest",
+    "rooms.4.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Indicator table: the two city-average rows (2,847,355 and 4,350,000) conflict with the official all-deals median 3,635,300, and the '4 rooms in a market calculator' row (3.32M, shown range 3.05-3.59M) conflicts with the official 4-room median 4,158,900. Those three rows become the two official medians; the per-m2 rows and the rent-median row are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">אינדיקציה מספרית</th>",
+   "n": 4,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "double space",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "בטבלה הבאה מופיעים טווחי עבודה על בסיס דפי נתוני שוק גלויים שנבדקו ב-5 ביוני 2026. הם נועדו לסייע לקונה, מוכר או בעל נכס להתחיל בדיקת שוק, ולא להחליף בדיקת עסקאות רשמיות או הערכת שווי מקצועית. כאשר המחיר המבוקש רחוק מהטווח, אין פירוש הדבר שהוא שגוי, אבל צריך להסביר את הפער באמצעות נתונים: רחוב, בניין, מצב, חניה, מרפסת, התחדשות עירונית או עסקה חריגה.",
+   "new": "בטבלה הבאה מופיע חציון מחיר העסקה לפי מספר חדרים, לפי נתוני רשות המסים לרבעון הראשון של 2026, לצד שטח אופייני ומחיר למ\"ר מדפי נתוני שוק גלויים שנבדקו ב-5 ביוני 2026. המחירון הרשמי מפרסם חציון לדירות 3, 4 ו-5 חדרים; דירות 2 חדרים ודירות 3.5 חדרים כדאי לבדוק מול עסקאות דומות ברחוב ובשכונה. הנתונים נועדו לסייע לקונה, מוכר או בעל נכס להתחיל בדיקת שוק, ולא להחליף בדיקת עסקאות או הערכת שווי מקצועית. כאשר המחיר המבוקש רחוק מהחציון, אין פירוש הדבר שהוא שגוי, אבל צריך להסביר את הפער באמצעות נתונים: רחוב, בניין, מצב, חניה, מרפסת, התחדשות עירונית או עסקה חריגה.",
+   "source_keys": [
+    "data_quarter",
+    "page"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Follows edit 6: the table now leads with the official medians.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "kept_numbers": [
+    "3.5"
+   ],
+   "n": 5,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n  <thead dir=\"rtl\">\n    <tr dir=\"rtl\">\n      <th dir=\"rtl\">סוג דירה</th>\n      <th dir=\"rtl\">אינדיקציית מחיר</th>\n      <th dir=\"rtl\">שטח אופייני שנצפה</th>\n      <th dir=\"rtl\">מחיר למ\"ר שנצפה</th>\n      <th dir=\"rtl\">הערת בדיקה</th>\n    </tr>\n  </thead>\n  <tbody dir=\"rtl\">\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">2 חדרים</td>\n      <td dir=\"rtl\">כ-1,833,563 ש\"ח</td>\n      <td dir=\"rtl\">כ-56 מ\"ר</td>\n      <td dir=\"rtl\">כ-33,223 ש\"ח למ\"ר</td>\n      <td dir=\"rtl\">נבדקו 563 עסקאות באחד מדפי השוק. בדירות קטנות יש רגישות גבוהה לקומה, מעלית ומצב הבניין.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">3 חדרים</td>\n      <td dir=\"rtl\">כ-2,401,393-2,900,000 ש\"ח</td>\n      <td dir=\"rtl\">כ-65-83 מ\"ר</td>\n      <td dir=\"rtl\">כ-32,070 ש\"ח למ\"ר ומעלה</td>\n      <td dir=\"rtl\">בדוגמאות 2026 הופיעו עסקאות סביב 2.42, 2.70, 2.717 ו-3.00 מיליון ש\"ח.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">3.5 חדרים</td>\n      <td dir=\"rtl\">כ-2,870,000-3,010,000 ש\"ח</td>\n      <td dir=\"rtl\">כ-80-93 מ\"ר</td>\n      <td dir=\"rtl\">כ-30,000-36,000 ש\"ח למ\"ר לפי עסקה</td>\n      <td dir=\"rtl\">דירות 3.5 חדרים דורשות בדיקת תכנון: חצי חדר שימושי, מרפסת, חניה ויכולת השבחה.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">4 חדרים</td>\n      <td dir=\"rtl\">כ-3,096,234-3,600,000 ש\"ח</td>\n      <td dir=\"rtl\">כ-88-117 מ\"ר</td>\n      <td dir=\"rtl\">כ-31,704-42,000 ש\"ח למ\"ר</td>\n      <td dir=\"rtl\">דוגמאות שוק הציגו 3.15, 3.20, 3.50, 3.85, 4.10 ו-5.03 מיליון ש\"ח לפי רחוב וגודל.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">5 חדרים</td>\n      <td dir=\"rtl\">כ-4,150,000-5,030,000 ש\"ח</td>\n      <td dir=\"rtl\">כ-112-159 מ\"ר</td>\n      <td dir=\"rtl\">כ-32,829 ש\"ח למ\"ר ומעלה</td>\n      <td dir=\"rtl\">טווח המחירים מושפע מאוד מדירות חדשות, חניה כפולה, מרפסת, נוף ותכנון משפחתי.</td>\n    </tr>\n  </tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n  <thead dir=\"rtl\">\n    <tr dir=\"rtl\">\n      <th dir=\"rtl\">סוג דירה</th>\n      <th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th>\n      <th dir=\"rtl\">שטח אופייני שנצפה</th>\n      <th dir=\"rtl\">מחיר למ\"ר שנצפה</th>\n      <th dir=\"rtl\">הערת בדיקה</th>\n    </tr>\n  </thead>\n  <tbody dir=\"rtl\">\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">2 חדרים</td>\n      <td dir=\"rtl\">לא פורסם</td>\n      <td dir=\"rtl\">כ-56 מ\"ר</td>\n      <td dir=\"rtl\">כ-33,223 ש\"ח למ\"ר</td>\n      <td dir=\"rtl\">נבדקו 563 עסקאות באחד מדפי השוק, במחיר ממוצע של כ-1,833,563 ש\"ח. בדירות קטנות יש רגישות גבוהה לקומה, מעלית ומצב הבניין.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">3 חדרים</td>\n      <td dir=\"rtl\">2,815,300 ש\"ח</td>\n      <td dir=\"rtl\">כ-65-83 מ\"ר</td>\n      <td dir=\"rtl\">כ-32,070 ש\"ח למ\"ר ומעלה</td>\n      <td dir=\"rtl\">בדוגמאות 2026 הופיעו עסקאות סביב 2.42, 2.70, 2.717 ו-3.00 מיליון ש\"ח.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">3.5 חדרים</td>\n      <td dir=\"rtl\">לא פורסם</td>\n      <td dir=\"rtl\">כ-80-93 מ\"ר</td>\n      <td dir=\"rtl\">כ-30,000-36,000 ש\"ח למ\"ר לפי עסקה</td>\n      <td dir=\"rtl\">עסקאות 2026 שנצפו: כ-2,870,000-3,010,000 ש\"ח. דירות 3.5 חדרים דורשות בדיקת תכנון: חצי חדר שימושי, מרפסת, חניה ויכולת השבחה.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">4 חדרים</td>\n      <td dir=\"rtl\">4,158,900 ש\"ח</td>\n      <td dir=\"rtl\">כ-88-117 מ\"ר</td>\n      <td dir=\"rtl\">כ-31,704-42,000 ש\"ח למ\"ר</td>\n      <td dir=\"rtl\">דוגמאות שוק הציגו 3.15, 3.20, 3.50, 3.85, 4.10 ו-5.03 מיליון ש\"ח לפי רחוב וגודל.</td>\n    </tr>\n    <tr dir=\"rtl\">\n      <td dir=\"rtl\">5 חדרים</td>\n      <td dir=\"rtl\">4,960,000 ש\"ח</td>\n      <td dir=\"rtl\">כ-112-159 מ\"ר</td>\n      <td dir=\"rtl\">כ-32,829 ש\"ח למ\"ר ומעלה</td>\n      <td dir=\"rtl\">טווח המחירים מושפע מאוד מדירות חדשות, חניה כפולה, מרפסת, נוף ותכנון משפחתי.</td>\n    </tr>\n  </tbody>\n</table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Rooms table: the 4-room indication 3,096,234-3,600,000 excludes the official median 4,158,900 (1-3.2026); the 3-room (2,401,393-2,900,000) and 5-room (4,150,000-5,030,000) indications were consistent. The indication column becomes the official median ('לא פורסם' for 2 and 3.5 rooms). The 2-room market average (563 deals, market page checked 5.6.2026) and the 3.5-room range of dated 2026 deals move into the check note; size, per-m2 and the other notes are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">אינדיקציית מחיר</th>",
+   "n": 6,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "double space",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "בטבלת האזורים מופיעים נתונים שהוזכרו בדפי שוק גלויים לצד דוגמאות רחוב.",
+   "new": "בטבלת האזורים מופיעים חציוני מחיר העסקה לפי נתוני רשות המסים לרבעון הראשון של 2026 בבורוכוב ובארלוזורוב, לצד נתונים שהוזכרו בדפי שוק גלויים ודוגמאות רחוב.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Follows edits 8 and 9: two rows of the area table now carry official neighbourhood medians.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 7,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "כ-3,950,000 ש\"ח",
+   "new": "חציון מחיר העסקה, ינואר-מרץ 2026: 3,206,100 ש\"ח לדירת 3 חדרים, 4,356,800 ש\"ח לדירת 4 חדרים",
+   "source_keys": [
+    "neighbourhoods[בורוכוב].rooms.3",
+    "neighbourhoods[בורוכוב].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Area table, Borochov: an all-rooms 'observed indication' of 3,950,000 with no room count; replaced by the official Borochov medians by rooms (1-3.2026). The per-m2 cell (market pages) is kept.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 8,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "כ-3,200,000 ש\"ח",
+   "new": "חציון מחיר העסקה, ינואר-מרץ 2026: 2,592,800 ש\"ח לדירת 3 חדרים, 4,059,300 ש\"ח לדירת 4 חדרים, 5,442,200 ש\"ח לדירת 5 חדרים",
+   "source_keys": [
+    "neighbourhoods[ארלוזרוב].rooms.3",
+    "neighbourhoods[ארלוזרוב].rooms.4",
+    "neighbourhoods[ארלוזרוב].rooms.5"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Area table, Arlozorov: an all-rooms indication of 3,200,000; replaced by the official Arlozorov medians by rooms (1-3.2026).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 9,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "בדוגמאות עסקאות שנצפו בפברואר ומרץ 2026 הופיעו עסקאות רבות סביב 2.7-3.15 מיליון ש\"ח לדירות 3-4 חדרים קטנות ובינוניות, לצד עסקאות סביב 3.85-5.03 מיליון ש\"ח לדירות גדולות יותר או בעלות מאפיינים חזקים. לכן מחיר למ\"ר הוא כלי עזר, אך הוא חייב להיות מלווה במספר החדרים ובתכנון הדירה.",
+   "new": "בדוגמאות עסקאות שנצפו בפברואר ומרץ 2026 הופיעו עסקאות סביב 2.7-3.15 מיליון ש\"ח לדירות 3 ו-3.5 חדרים ולדירת 4 חדרים קומפקטית, לצד עסקאות סביב 3.85-5.03 מיליון ש\"ח לדירות גדולות יותר או בעלות מאפיינים חזקים. לכן מחיר למ\"ר הוא כלי עזר, אך הוא חייב להיות מלווה במספר החדרים ובתכנון הדירה. לשם השוואה, לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 4 חדרים בגבעתיים היה 4,158,900 ש\"ח.",
+   "source_keys": [
+    "rooms.4.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "'Many deals around 2.7-3.15M for small and medium 3-4 room flats' reads as a 4-room level far below the official 4,158,900. The sentence now says which deals of the table fall in that band (3 and 3.5 rooms and one compact 4-room flat) and gives the official 4-room median.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "kept_numbers": [
+    "3.5"
+   ],
+   "n": 10,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "ייתכן צורך ב-150,000-500,000 ש\"ח",
+   "new": "ייתכן צורך בשיפוץ משמעותי",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Renovation cost range with no source and no date; rephrased without the number.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 11,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "בדיקת נתוני שוק גלויים מ-5 ביוני 2026 הציגה ממוצעים שונים, בערך בין 2.85 מיליון ש\"ח ל-4.35 מיליון ש\"ח. הפער נובע מתמהיל שונה של עסקאות, שטחים, אזורים וסוגי דירות. לכן הממוצע מתאים רק כנקודת פתיחה, ולא כמחיר לדירה מסוימת.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה בגבעתיים בכל העסקאות היה 3,635,300 ש\"ח, ולדירת 4 חדרים 4,158,900 ש\"ח. החציון מושפע מתמהיל העסקאות, השטחים, האזורים וסוגי הדירות, ולכן הוא מתאים רק כנקודת פתיחה, ולא כמחיר לדירה מסוימת.",
+   "source_keys": [
+    "rooms.all.latest",
+    "rooms.4.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ average: the two city averages 2.85M and 4.35M vs the official all-deals median 3,635,300 (1-3.2026).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 12,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "אינדיקציות שוק לדירות 3 חדרים בגבעתיים נעו סביב 2.4-2.9 מיליון ש\"ח, עם דוגמאות כמו 2.42 מיליון ש\"ח לדירה של 65 מ\"ר, 2.70 מיליון ש\"ח לדירה של 80 מ\"ר ו-2.717 מיליון ש\"ח לדירה של 83 מ\"ר. הטווח משתנה לפי רחוב, קומה, מצב וחניה.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 3 חדרים בגבעתיים ברבעון הראשון של 2026 היה 2,815,300 ש\"ח, לעומת 3,091,900 ש\"ח שנה קודם לכן. בעסקאות שנצפו הופיעו דוגמאות כמו 2.42 מיליון ש\"ח לדירה של 65 מ\"ר, 2.70 מיליון ש\"ח לדירה של 80 מ\"ר ו-2.717 מיליון ש\"ח לדירה של 83 מ\"ר. המחיר משתנה לפי רחוב, קומה, מצב וחניה.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago",
+    "page"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "FAQ 3 rooms: 2.4-2.9M was consistent with the official 2,815,300; restated as the median like the body. Deal examples kept.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 13,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "דירת 4 חדרים בגבעתיים יכולה להופיע סביב 3.1-3.6 מיליון ש\"ח כטווח עבודה בסיסי, אך עסקאות מסוימות הגיעו גם ל-3.85, 4.10 ואף 5.03 מיליון ש\"ח כאשר השטח, הרחוב או מאפייני הבניין חזקים יותר. דירת 4 חדרים של 88 מ\"ר אינה דומה לדירת 117 מ\"ר.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 4 חדרים בגבעתיים ברבעון הראשון של 2026 היה 4,158,900 ש\"ח, לעומת 4,362,200 ש\"ח שנה קודם לכן. מחיר של דירה מסוימת יכול להיות רחוק מהחציון לפי השטח, הרחוב ומאפייני הבניין: דירת 4 חדרים של 88 מ\"ר אינה דומה לדירת 117 מ\"ר.",
+   "source_keys": [
+    "rooms.4.latest",
+    "rooms.4.year_ago"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ 4 rooms: the 3.1-3.6M 'basic working range' vs the official 4,158,900 (1-3.2026). The deal examples (3.85 / 4.10 / 5.03M) are dropped here; they stay in the dated deals table.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 14,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "בדפי שוק שנבדקו הופיעה אינדיקציה ממוצעת של כ-4,290,568 ש\"ח לדירות 5 חדרים, עם שטח ממוצע סביב 130 מ\"ר.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 5 חדרים בגבעתיים ברבעון הראשון של 2026 היה 4,960,000 ש\"ח, לעומת 5,044,100 ש\"ח שנה קודם לכן.",
+   "source_keys": [
+    "rooms.5.latest",
+    "rooms.5.year_ago"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ 5 rooms: the market-page average 4,290,568 is 13.5% below the official 4,960,000 (1-3.2026). The 4.15-5.03M deal sentence that follows is consistent and stays.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 15,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4571,
+   "url": "https://nad-lan.co.il/givatayim-apartment-prices/",
+   "field": "content",
+   "old": "בורוכוב הופיעה כאחד האזורים החזקים בבדיקת השוק, עם אינדיקציה סביב 3.95 מיליון ש\"ח וכ-43,839 ש\"ח למ\"ר.",
+   "new": "בורוכוב הופיעה כאחד האזורים החזקים בבדיקת השוק, עם כ-43,839 ש\"ח למ\"ר בדפי השוק שנבדקו. לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה בבורוכוב היה 3,206,100 ש\"ח לדירת 3 חדרים ו-4,356,800 ש\"ח לדירת 4 חדרים, מעל החציון העירוני לאותם סוגי דירות.",
+   "source_keys": [
+    "neighbourhoods[בורוכוב].rooms.3",
+    "neighbourhoods[בורוכוב].rooms.4",
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ Borochov: the all-rooms 3.95M indication becomes the official Borochov medians by rooms, as in the area table (edit 8). Both medians are above the city medians (2,815,300 and 4,158,900).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 16,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  }
+ ],
+ "live_recheck": {
+  "retrieved_utc": "2026-10-07 11:18:23",
+  "modified": "2026-10-07T13:46:57",
+  "audited_copy_modified": "2026-10-07T12:07:24",
+  "price_list_on_page": true,
+  "body_outside_list_identical_to_audited_copy": "yes, except the blank lines around the price list, which was inserted at 2026-10-07T13:46:57 (site time) after the audited copy",
+  "dry_run": "16 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ }
+}

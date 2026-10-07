@@ -1,0 +1,634 @@
+{
+ "checked_utc": "2026-10-07 10:59:38",
+ "no_redirect_follow": true,
+ "results": {
+  "/ramat-aviv/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/ramat-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/ramat-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/ramat-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/ramat-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/sde-dov/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/sde-dov/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/sde-dov/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/sde-dov/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/sde-dov/": {
+   "status": 404,
+   "location": ""
+  },
+  "/north-tel-aviv/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/north-tel-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/north-tel-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/north-tel-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/north-tel-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/north-tel-aviv/old-north/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/north-tel-aviv/old-north/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/north-tel-aviv/old-north/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/north-tel-aviv/old-north/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/north-tel-aviv/old-north/": {
+   "status": 404,
+   "location": ""
+  },
+  "/north-tel-aviv/rova-4/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/north-tel-aviv/rova-4/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/north-tel-aviv/rova-4/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/north-tel-aviv/rova-4/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/north-tel-aviv/rova-4/": {
+   "status": 404,
+   "location": ""
+  },
+  "/north-tel-aviv/bavli/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/north-tel-aviv/bavli/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/north-tel-aviv/bavli/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/north-tel-aviv/bavli/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/north-tel-aviv/bavli/": {
+   "status": 404,
+   "location": ""
+  },
+  "/north-tel-aviv/miriam-hahashmonait/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/north-tel-aviv/miriam-hahashmonait/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/north-tel-aviv/miriam-hahashmonait/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/north-tel-aviv/miriam-hahashmonait/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/north-tel-aviv/miriam-hahashmonait/": {
+   "status": 404,
+   "location": ""
+  },
+  "/north-tel-aviv/shchunat-lamed/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/north-tel-aviv/shchunat-lamed/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/north-tel-aviv/shchunat-lamed/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/north-tel-aviv/shchunat-lamed/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/north-tel-aviv/shchunat-lamed/": {
+   "status": 404,
+   "location": ""
+  },
+  "/luxury-tel-aviv/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/luxury-tel-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/luxury-tel-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/luxury-tel-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/luxury-tel-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ramat-aviv/einstein/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/ramat-aviv/einstein/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/ramat-aviv/einstein/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/ramat-aviv/einstein/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/ramat-aviv/einstein/": {
+   "status": 404,
+   "location": ""
+  },
+  "/purchase-tax-calculator/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/purchase-tax-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/purchase-tax-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/purchase-tax-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/purchase-tax-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/mortgage-calculator/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/mortgage-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/mortgage-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/mortgage-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/mortgage-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/real-estate-lawyer/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/real-estate-lawyer/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/real-estate-lawyer/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/real-estate-lawyer/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/real-estate-lawyer/": {
+   "status": 404,
+   "location": ""
+  },
+  "/herzliya-projects/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/herzliya-projects/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/herzliya-projects/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/herzliya-projects/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/herzliya-projects/": {
+   "status": 404,
+   "location": ""
+  },
+  "/apartment-purchase-cost-calculator/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/apartment-purchase-cost-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/apartment-purchase-cost-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/apartment-purchase-cost-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/apartment-purchase-cost-calculator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/tel-aviv-apartment-prices/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/tel-aviv-apartment-prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/tel-aviv-apartment-prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/tel-aviv-apartment-prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/tel-aviv-apartment-prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/urban-renewal/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/urban-renewal/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/urban-renewal/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/urban-renewal/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/urban-renewal/": {
+   "status": 404,
+   "location": ""
+  },
+  "/sde-dov/prices/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/sde-dov/prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/sde-dov/prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/sde-dov/prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/sde-dov/prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/new-projects/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/new-projects/": {
+   "status": 200,
+   "location": ""
+  },
+  "/fr/new-projects/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ru/new-projects/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ar/new-projects/": {
+   "status": 200,
+   "location": ""
+  },
+  "/guides/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/guides/": {
+   "status": 200,
+   "location": ""
+  },
+  "/fr/guides/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ru/guides/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ar/guides/": {
+   "status": 200,
+   "location": ""
+  },
+  "/brokers/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/brokers/": {
+   "status": 200,
+   "location": ""
+  },
+  "/fr/brokers/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ru/brokers/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ar/brokers/": {
+   "status": 404,
+   "location": ""
+  },
+  "/developer-deals/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/developer-deals/": {
+   "status": 200,
+   "location": ""
+  },
+  "/fr/developer-deals/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/developer-deals/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/developer-deals/": {
+   "status": 404,
+   "location": ""
+  },
+  "/buy-property-in-israel/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/buy-property-in-israel/": {
+   "status": 200,
+   "location": ""
+  },
+  "/fr/buy-property-in-israel/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/buy-property-in-israel/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/buy-property-in-israel/": {
+   "status": 404,
+   "location": ""
+  },
+  "/new-projects/north-tel-aviv-new-projects/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/new-projects/north-tel-aviv-new-projects/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/new-projects/north-tel-aviv-new-projects/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/new-projects/north-tel-aviv-new-projects/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/new-projects/north-tel-aviv-new-projects/": {
+   "status": 404,
+   "location": ""
+  },
+  "/apartment-prices/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/apartment-prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/apartment-prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ru/apartment-prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/ar/apartment-prices/": {
+   "status": 404,
+   "location": ""
+  },
+  "/property-value-estimator/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/property-value-estimator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/fr/property-value-estimator/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ru/property-value-estimator/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ar/property-value-estimator/": {
+   "status": 404,
+   "location": ""
+  },
+  "/projects/hamedina/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/hamedina-en/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/hamedina-fr/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/hamedina-ru/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/hamedina-ar/": {
+   "status": 200,
+   "location": ""
+  },
+  "/israel-purchase-tax-foreign-residents/": {
+   "status": 200,
+   "location": ""
+  },
+  "/israel-mortgage-non-residents/": {
+   "status": 200,
+   "location": ""
+  },
+  "/buy-property-israel-foreign-buyers/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/einstein-tower/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/einstein-tower-en/": {
+   "status": 404,
+   "location": ""
+  },
+  "/projects/einstein-tower-fr/": {
+   "status": 404,
+   "location": ""
+  },
+  "/projects/einstein-tower-ru/": {
+   "status": 404,
+   "location": ""
+  },
+  "/projects/einstein-tower-ar/": {
+   "status": 404,
+   "location": ""
+  },
+  "/projects/rainbow-tel-aviv-en/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/rainbow-tel-aviv-fr/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/rainbow-tel-aviv-ru/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/rainbow-tel-aviv-ar/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/duo-tel-aviv-en/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/duo-tel-aviv-fr/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/duo-tel-aviv-ru/": {
+   "status": 200,
+   "location": ""
+  },
+  "/projects/duo-tel-aviv-ar/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/": {
+   "status": 200,
+   "location": ""
+  },
+  "/fr/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ru/": {
+   "status": 200,
+   "location": ""
+  },
+  "/ar/": {
+   "status": 200,
+   "location": ""
+  },
+  "/en/tel-aviv/": {
+   "status": 404,
+   "location": ""
+  },
+  "/en/sde-dov-tour/": {
+   "status": 301,
+   "location": "https://nad-lan.co.il/wp-content/uploads/2026/07/sde-dov-tour.html"
+  }
+ }
+}

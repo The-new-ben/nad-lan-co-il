@@ -1,0 +1,939 @@
+{
+ "generated": "7.10.2026",
+ "page": {
+  "id": 4587,
+  "slug": "ashdod-apartment-prices",
+  "link": "https://nad-lan.co.il/ashdod-apartment-prices/",
+  "modified": "2026-10-07T13:31:12"
+ },
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages?slug=ashdod-apartment-prices&_fields=id,link,title,content,modified (content.rendered), public, retrieved 2026-10-07 10:34:25 UTC, 67,337 characters. The price-list section (<section id=\"nlpg\">, the [nadlan_price_guide] shortcode), <script> and <style> are outside the audit.",
+ "facts": "scripts/project-stage/price_guide/cities/ashdod-apartment-prices.json (official medians from data.nadlan.gov.il; source_keys are JSON paths in that file: rooms.<k>.latest, rooms.<k>.year_ago, rooms.<k>.change_pct, rooms.<k>.quarters[<q>], israel.<k>, neighbourhoods[<name>].rooms.<k>; 'page' = a number kept from the page's own text)",
+ "apply_rules": [
+  "Apply in the listed order on the RAW content (context=edit). Every \"old\" matches content.rendered exactly once at its turn (matches_in_live), except \"replace_all\" entries, which match exactly \"expect_matches\" times.",
+  "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
+  "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
+  "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+ ],
+ "claims_summary": {
+  "claims": {
+   "CONFLICT": 5,
+   "STALE": 0,
+   "UNSOURCED": 28,
+   "CONSISTENT": 13
+  },
+  "figures": {
+   "CONFLICT": 5,
+   "STALE": 0,
+   "UNSOURCED": 59,
+   "CONSISTENT": 14
+  },
+  "edits": 16,
+  "tier1": 16,
+  "tier2": 0
+ },
+ "notes": "Not audited as claims (illustrations, not market statements): renovation cost 150,000-300,000 (p@44754 and the checks table), sizes 88 / 115 / 75 / 138 / 192 m2, the yield if-example 2,200,000 / 5,300 / 2.9% / 2,500,000 (p@54038, no room count), the per-m2 arithmetic on the three dated deals (p@57708, 'אם דירת 3 חדרים של 75 מ\"ר נמכרה ב-1,750,000'), the FAQ yield example 2,190,000 / 5,300 / 63,600 / 2.9% (p@65640, 'לדוגמה'), the 3,264-deal count (p@54848), the 39-day selling time and the CBS release number. Kept as consistent with no edit: the opening of p@42050 (city averages 2,000,000 / 2,055,148 and a 4-room asking 2.19M are all within tolerance). Remaining SUSPECT lines: p@42050 is a false positive of the heuristic (2,000,000 is the all-rooms city average, consistent with 2,030,100; the '4 rooms' in that sentence belongs to the 2.19M asking figure, consistent with 2,130,200); all the others are the individual deals dated 15.3.2026 (Dov Gaponov 3 rooms 75 m2 1,750,000; Uzi Hitman 5 rooms 192 m2 3,800,000) in the deals table, in the per-m2 if-examples of p@57708 and in the 3-room FAQ; they are single dated deals, not market levels. Unsure: all three deals carry the same date, 15.3.2026, which is also the date of the CBS release cited in p@58125; it may be a reading date rather than the deal date, so the FAQ names the street without a date. Official quirk: the all-apartments median rose 12.7% in a year (1,801,100 to 2,030,100) while 3 rooms +0.3%, 4 rooms +6.2% and 5 rooms -5.8%, a mix effect; the new text uses the all-apartments median only as the level, not its change. Rova V's 3-room median (1,613,900) is slightly above the city's (1,603,300), so the FAQ 'are Rova G and Rova V cheaper' now answers with both room counts. Names map exactly (רובע ג, רובע ו); Rova Yod-Gimel, Tet-Vav and Yod-Zayin have no official median and stay qualitative.",
+ "claims": [
+  {
+   "id": 1,
+   "where": "p@4292",
+   "quote": "דירת 2 חדרים סביב 1.33-1.39 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 1",
+   "note": "no official 2-room series, no source; dropped"
+  },
+  {
+   "id": 2,
+   "where": "p@4292",
+   "quote": "דירת 3 חדרים סביב 1.66-1.68 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,603,300 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 1",
+   "note": ""
+  },
+  {
+   "id": 3,
+   "where": "p@4292",
+   "quote": "דירת 4 חדרים סביב 2.05-2.19 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,130,200 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 1",
+   "note": "restated as the median"
+  },
+  {
+   "id": 4,
+   "where": "p@4292",
+   "quote": "דירת 5 חדרים סביב 2.78-2.89 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "2,784,800 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 1",
+   "note": "restated as the median"
+  },
+  {
+   "id": 5,
+   "where": "p@4292",
+   "quote": "דירות 6 חדרים ומעלה סביב 3.74-4.49 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "6",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 1",
+   "note": ""
+  },
+  {
+   "id": 6,
+   "where": "p@4292",
+   "quote": "מחיר ממוצע עירוני בדפי נתונים פרטיים סביב 2.0-2.06 מיליון ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "2,030,100 (all apartments, 1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 1",
+   "note": "restated as the official median"
+  },
+  {
+   "id": 7,
+   "where": "p@4292",
+   "quote": "מחיר למ\"ר כ-21,000-26,800 ש\"ח",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (private data pages, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 8,
+   "where": "p@4292",
+   "quote": "שכירות 3,500 / 4,474-4,500 / 5,300 / 7,650 ש\"ח לפי חדרים",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (private rent source on 250 active listings, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 9,
+   "where": "p@42050",
+   "quote": "ממוצע עירוני סביב 2,000,000 ש\"ח, מקור אחר סביב 2,055,148 ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 2,
+   "official": "2,030,100",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent with 2,030,100)",
+   "note": ""
+  },
+  {
+   "id": 10,
+   "where": "p@42050",
+   "quote": "טבלאות ביקוש: דירת 4 חדרים סביב 2.19 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,130,200",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent, +2.8%)",
+   "note": ""
+  },
+  {
+   "id": 11,
+   "where": "tr@46717",
+   "quote": "2 חדרים | כ-1.33-1.39 מיליון | כ-26,226 למ\"ר",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 3",
+   "note": "per-m2 figure stays in the per-m2 FAQ as an asking figure"
+  },
+  {
+   "id": 12,
+   "where": "tr@46931",
+   "quote": "3 חדרים | כ-1.66-1.68 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,603,300",
+   "verdict": "CONFLICT",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 13,
+   "where": "tr@46931",
+   "quote": "3 חדרים | כ-19,765 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "3",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 3",
+   "note": "column removed"
+  },
+  {
+   "id": 14,
+   "where": "tr@47134",
+   "quote": "4 חדרים | כ-2.05-2.19 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,130,200",
+   "verdict": "CONSISTENT",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 15,
+   "where": "tr@47134",
+   "quote": "4 חדרים | כ-18,250 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "4",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 3",
+   "note": "column removed; the figure stays in the per-m2 FAQ"
+  },
+  {
+   "id": 16,
+   "where": "tr@47336",
+   "quote": "5 חדרים | כ-2.78-2.89 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "2,784,800 (within rounding of the floor)",
+   "verdict": "CONSISTENT",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 17,
+   "where": "tr@47336",
+   "quote": "5 חדרים | כ-18,063 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "5",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 3",
+   "note": "column removed"
+  },
+  {
+   "id": 18,
+   "where": "tr@47536",
+   "quote": "6 חדרים ומעלה | כ-3.74-4.49 מיליון | כ-15,754 למ\"ר",
+   "measure": "sale",
+   "rooms": "6",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 19,
+   "where": "p@47809",
+   "quote": "מחיר של 3.74 מיליון ש\"ח ומחיר של 4.49 מיליון ש\"ח (6 חדרים ומעלה)",
+   "measure": "sale",
+   "rooms": "6",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 20,
+   "where": "p@48982",
+   "quote": "רובע ו ורובע ג: ממוצעים סביב 1.59-1.69 מיליון ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "Rova V 3 rooms 1,613,900; Rova G 3 rooms 1,506,400",
+   "verdict": "UNSOURCED",
+   "action": "edit 5",
+   "note": ""
+  },
+  {
+   "id": 21,
+   "where": "p@48982",
+   "quote": "רובע ו ורובע ג: שכירות סביב 4,000-4,200 ש\"ח",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (private data pages, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 22,
+   "where": "tr@50730",
+   "quote": "רובע ו | בדוגמה פרטית: 1,689,478 ש\"ח, 22,822 ש\"ח למ\"ר",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 2,
+   "official": "Rova V 3/4: 1,613,900 / 1,924,700",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 23,
+   "where": "tr@50976",
+   "quote": "רובע ג | בדוגמה פרטית: 1,592,084 ש\"ח, 21,472 ש\"ח למ\"ר",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 2,
+   "official": "Rova G 3 rooms 1,506,400",
+   "verdict": "UNSOURCED",
+   "action": "edit 7",
+   "note": ""
+  },
+  {
+   "id": 24,
+   "where": "tr@52789..53452",
+   "quote": "טבלת שכירות: 3,500 / 4,474-4,500 / 5,300 / 7,650 ש\"ח",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (private rent source on 250 active listings, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 25,
+   "where": "tr@52789",
+   "quote": "טבלת שכירות: מחיר קנייה 2 חדרים כ-1.33-1.39 מיליון",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 9",
+   "note": ""
+  },
+  {
+   "id": 26,
+   "where": "tr@53013",
+   "quote": "טבלת שכירות: מחיר קנייה 3 חדרים כ-1.66-1.68 מיליון",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,603,300",
+   "verdict": "CONFLICT",
+   "action": "edit 9",
+   "note": ""
+  },
+  {
+   "id": 27,
+   "where": "tr@53240",
+   "quote": "טבלת שכירות: מחיר קנייה 4 חדרים כ-2.05-2.19 מיליון",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,130,200",
+   "verdict": "CONSISTENT",
+   "action": "edit 9",
+   "note": ""
+  },
+  {
+   "id": 28,
+   "where": "tr@53452",
+   "quote": "טבלת שכירות: מחיר קנייה 5 חדרים כ-2.78-2.89 מיליון",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "2,784,800",
+   "verdict": "CONSISTENT",
+   "action": "edit 9",
+   "note": ""
+  },
+  {
+   "id": 29,
+   "where": "tr@52789..53452",
+   "quote": "תשואה גולמית 3.0%-3.2% / 3.2% / 2.9%-3.1% / 3.2%-3.3%",
+   "measure": "yield",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 9",
+   "note": "derived from the old purchase ranges; column removed, no new yield computed"
+  },
+  {
+   "id": 30,
+   "where": "p@53693",
+   "quote": "שכירות חציונית 3,925 (250 מודעות), 3 חדרים 4,474, ממוצע ארצי 4,400",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample of 250 active listings, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 31,
+   "where": "tr@55475..55936",
+   "quote": "3 עסקאות 15.3.2026: 1,750,000 / 2,700,000 / 3,800,000 ש\"ח",
+   "measure": "deal",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual dated deals, 15.3.2026)",
+   "note": ""
+  },
+  {
+   "id": 32,
+   "where": "tr@56181..57493",
+   "quote": "ממוצעי רחוב: גור דב 1,604,604 ... רוגוזין 1,850,076 (7 שורות)",
+   "measure": "sale_street",
+   "rooms": "",
+   "figures": 7,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 10",
+   "note": "no period, 'private sources'"
+  },
+  {
+   "id": 33,
+   "where": "p@58695",
+   "quote": "פרויקטים חדשים: 2 חדרים 800,000-950,000 ש\"ח",
+   "measure": "sale_new_used",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 11",
+   "note": ""
+  },
+  {
+   "id": 34,
+   "where": "p@58695",
+   "quote": "פרויקטים חדשים: 3 חדרים 1.45-1.65 מיליון ש\"ח",
+   "measure": "sale_new_used",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,603,300",
+   "verdict": "CONSISTENT",
+   "action": "edit 11",
+   "note": ""
+  },
+  {
+   "id": 35,
+   "where": "p@58695",
+   "quote": "פרויקטים חדשים: 4 חדרים 1.5-2.2 מיליון ש\"ח",
+   "measure": "sale_new_used",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,130,200",
+   "verdict": "CONSISTENT",
+   "action": "edit 11",
+   "note": ""
+  },
+  {
+   "id": 36,
+   "where": "p@58695",
+   "quote": "פרויקטים חדשים: 5 חדרים 2.1-2.6 מיליון ש\"ח",
+   "measure": "sale_new_used",
+   "rooms": "5",
+   "figures": 1,
+   "official": "2,784,800",
+   "verdict": "CONFLICT",
+   "action": "edit 11",
+   "note": ""
+  },
+  {
+   "id": 37,
+   "where": "p@58695",
+   "quote": "פרויקטים חדשים: פנטהאוזים 2.5-4.3 מיליון ש\"ח",
+   "measure": "sale_new_used",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 11",
+   "note": ""
+  },
+  {
+   "id": 38,
+   "where": "p@58695",
+   "quote": "דירות חדשות: 17,000-18,000 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 11",
+   "note": ""
+  },
+  {
+   "id": 39,
+   "where": "p@63494",
+   "quote": "FAQ: דירת 4 חדרים סביב 2.05-2.19 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,130,200",
+   "verdict": "CONSISTENT",
+   "action": "edit 12",
+   "note": ""
+  },
+  {
+   "id": 40,
+   "where": "p@63829",
+   "quote": "FAQ: דירת 3 חדרים סביב 1.66-1.68 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,603,300",
+   "verdict": "CONFLICT",
+   "action": "edit 13",
+   "note": ""
+  },
+  {
+   "id": 41,
+   "where": "p@63829",
+   "quote": "FAQ: דירת 3 חדרים 75 מ\"ר במחיר 1,750,000 ש\"ח",
+   "measure": "deal",
+   "rooms": "3",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual deal, dated 15.3.2026 in the deals table)",
+   "note": ""
+  },
+  {
+   "id": 42,
+   "where": "p@64107",
+   "quote": "FAQ: מחיר ממוצע סביב 2,000,000-2,055,148 ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "2,030,100",
+   "verdict": "CONSISTENT",
+   "action": "edit 14",
+   "note": ""
+  },
+  {
+   "id": 43,
+   "where": "p@64398",
+   "quote": "FAQ: 21,000-26,800 למ\"ר; 26,226 (2 חד'); 18,250 (4 חד')",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (private data pages and asking data, page checked 6.6.2026; reference reworded in edit 15)",
+   "note": ""
+  },
+  {
+   "id": 44,
+   "where": "p@65051",
+   "quote": "FAQ: רובע ג סביב 1,592,084, רובע ו סביב 1,689,478 ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 2,
+   "official": "Rova G 3 rooms 1,506,400; Rova V 3/4 rooms 1,613,900 / 1,924,700",
+   "verdict": "UNSOURCED",
+   "action": "edit 16",
+   "note": ""
+  },
+  {
+   "id": 45,
+   "where": "p@65051",
+   "quote": "FAQ: שכירות סביב 4,000-4,200 ש\"ח",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (private data pages, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 46,
+   "where": "p@65347",
+   "quote": "FAQ שכירות: 3,500 / 4,474-4,500 / 5,300 / 7,650; חציונית 3,925",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 5,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample of 250 active listings, page checked 6.6.2026)",
+   "note": ""
+  }
+ ],
+ "edits": [
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "מחירי דירות באשדוד נעים בדרך כלל סביב 1.33-1.39 מיליון ש\"ח לדירת 2 חדרים, סביב 1.66-1.68 מיליון ש\"ח לדירת 3 חדרים, סביב 2.05-2.19 מיליון ש\"ח לדירת 4 חדרים, סביב 2.78-2.89 מיליון ש\"ח לדירת 5 חדרים, וסביב 3.74-4.49 מיליון ש\"ח לדירות 6 חדרים ומעלה, כאשר דירות גדולות, קרבה לים, מרינה, קומה גבוהה, ממ\"ד, חניה, מעלית ובנייה חדשה משנים את המחיר בפועל. מחיר ממוצע עירוני בדפי נתונים פרטיים נע סביב 2.0-2.06 מיליון ש\"ח, ומחיר למ\"ר מוצג בטווח רחב של כ-21,000-26,800 ש\"ח למ\"ר, בהתאם לשיטת המדידה, סוג הדירות והתקופה.",
+   "new": "מחירי דירות באשדוד, לפי נתוני רשות המסים לרבעון הראשון של 2026: חציון מחיר העסקה היה 1,603,300 ש\"ח לדירת 3 חדרים, 2,130,200 ש\"ח לדירת 4 חדרים ו-2,784,800 ש\"ח לדירת 5 חדרים, ו-2,030,100 ש\"ח לכל הדירות. דירות 2 חדרים ודירות 6 חדרים ומעלה כדאי לבדוק מול עסקאות דומות ברחוב וברובע, ודירות גדולות, קרבה לים, מרינה, קומה גבוהה, ממ\"ד, חניה, מעלית ובנייה חדשה משנים את המחיר בפועל. בדפי נתונים פרטיים המחיר למ\"ר מוצג בטווח רחב של כ-21,000-26,800 ש\"ח למ\"ר, בהתאם לשיטת המדידה, סוג הדירות והתקופה.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest",
+    "rooms.all.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Lead above the list: the 3-room range 1.66-1.68M excludes the official median 1,603,300 (1-3.2026); the 4- and 5-room ranges and the 2.0-2.06M city average were consistent and are restated as the medians. The undated 2-room and 6+-room ranges are dropped; the per-m2 range (private data pages, page checked 6.6.2026) and the rent sentence that follows are kept.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 1,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "עם זאת, באשדוד הטבלה צריכה להיקרא כטווח ולא כמחיר קשיח.",
+   "new": "הטבלה הבאה מציגה את חציון מחיר העסקה באשדוד לפי מספר חדרים, לפי נתוני רשות המסים לרבעון הראשון של 2026, לצד החציון באותו רבעון שנה קודם לכן. עם זאת, החציון הוא נקודת אמצע ולא מחיר קשיח.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Introduces the replaced rooms table (edit 3), which no longer shows ranges.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 2,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead>\n<tr>\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">מחיר פתיחה נפוץ לפי נתוני ביקוש ועסקאות</th>\n<th dir=\"rtl\">מחיר למ\"ר משוער לפי נתוני ביקוש</th>\n<th dir=\"rtl\">מה בודקים לפני שמסיקים שווי</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">כ-1.33-1.39 מיליון ש\"ח</td>\n<td dir=\"rtl\">כ-26,226 ש\"ח למ\"ר בדירות ביקוש קטנות</td>\n<td dir=\"rtl\">שטח אמיתי, קומה, מעלית, קרבה לים, התאמה לשכירות, מצב שיפוץ</td>\n</tr>\n<tr>\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">כ-1.66-1.68 מיליון ש\"ח</td>\n<td dir=\"rtl\">כ-19,765 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">רובע, בניין ישן מול מחודש, ממ\"ד, חניה, קירבה לתחבורה ומוסדות חינוך</td>\n</tr>\n<tr>\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">כ-2.05-2.19 מיליון ש\"ח</td>\n<td dir=\"rtl\">כ-18,250 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">שטח סביב 100-115 מ\"ר, מרפסת, חניה, מעלית, ביקוש משפחתי וזמן מכירה</td>\n</tr>\n<tr>\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">כ-2.78-2.89 מיליון ש\"ח</td>\n<td dir=\"rtl\">כ-18,063 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">רובע יג, טו, יז או אזור חוף, גודל מרפסת, מחסן, חניות ורמת בניין</td>\n</tr>\n<tr>\n<td dir=\"rtl\">6 חדרים ומעלה</td>\n<td dir=\"rtl\">כ-3.74-4.49 מיליון ש\"ח</td>\n<td dir=\"rtl\">כ-15,754 ש\"ח למ\"ר בדירות גדולות לפי חלק ממקורות הביקוש</td>\n<td dir=\"rtl\">ייחודיות הנכס, דירת גן, פנטהאוז, נוף, מספר חניות, מיעוט נכסים דומים להשוואה</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead>\n<tr>\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th>\n<th dir=\"rtl\">ינואר-מרץ 2025</th>\n<th dir=\"rtl\">שינוי בשנה</th>\n<th dir=\"rtl\">מה בודקים לפני שמסיקים שווי</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">1,603,300 ש\"ח</td>\n<td dir=\"rtl\">1,598,300 ש\"ח</td>\n<td dir=\"rtl\">עלייה של 0.3%</td>\n<td dir=\"rtl\">רובע, בניין ישן מול מחודש, ממ\"ד, חניה, קירבה לתחבורה ומוסדות חינוך</td>\n</tr>\n<tr>\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">2,130,200 ש\"ח</td>\n<td dir=\"rtl\">2,006,000 ש\"ח</td>\n<td dir=\"rtl\">עלייה של 6.2%</td>\n<td dir=\"rtl\">שטח סביב 100-115 מ\"ר, מרפסת, חניה, מעלית, ביקוש משפחתי וזמן מכירה</td>\n</tr>\n<tr>\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">2,784,800 ש\"ח</td>\n<td dir=\"rtl\">2,955,900 ש\"ח</td>\n<td dir=\"rtl\">ירידה של 5.8%</td>\n<td dir=\"rtl\">רובע יג, טו, יז או אזור חוף, גודל מרפסת, מחסן, חניות ורמת בניין</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago",
+    "rooms.3.change_pct",
+    "rooms.4.latest",
+    "rooms.4.year_ago",
+    "rooms.4.change_pct",
+    "rooms.5.latest",
+    "rooms.5.year_ago",
+    "rooms.5.change_pct"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Rooms table: the 3-room 'common opening price' 1.66-1.68M contradicts the official median 1,603,300; the 2-room and 6+-room rows have no official series and no dated source, and the per-m2 column is asking data. Replaced by the official medians with the year-earlier quarter; the check notes of rows 3-5 are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מחיר פתיחה נפוץ לפי נתוני ביקוש ועסקאות</th>",
+   "n": 3,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "הפער בין נתונים שונים בדירות 6 חדרים ומעלה ממחיש את הבעיה בהסתמכות על ממוצע יחיד. דירות גדולות יכולות לכלול דירות גג, פנטהאוזים, דירות גן ודירות רגילות שהורחבו או תוכננו מחדש. לכן מחיר של 3.74 מיליון ש\"ח ומחיר של 4.49 מיליון ש\"ח יכולים שניהם להיות רלוונטיים, אך לנכסים שונים.",
+   "new": "המחירון הרשמי מפרסם חציון לדירות 3, 4 ו-5 חדרים; דירות 2 חדרים ודירות 6 חדרים ומעלה כדאי לבדוק מול עסקאות דומות ברחוב וברובע. בדירות 6 חדרים ומעלה בולטת הבעיה בהסתמכות על ממוצע יחיד. דירות גדולות יכולות לכלול דירות גג, פנטהאוזים, דירות גן ודירות רגילות שהורחבו או תוכננו מחדש. לכן שני מחירים רחוקים זה מזה יכולים שניהם להיות רלוונטיים, אך לנכסים שונים.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Follows edit 3: the 6+-room figures 3.74M / 4.49M (no source, no date) leave with the table row; the sentence on 2 / 6+ rooms is added.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 4,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "ברובע ו וברובע ג, למשל, הוצגו בדפי נתונים פרטיים מחירים ממוצעים סביב 1.59-1.69 מיליון ש\"ח ושכירות סביב 4,000-4,200 ש\"ח, אך נתון כזה אינו אומר שכל דירה ברובע נמכרת סביב אותו מספר. דירה משופצת, קומה גבוהה, חניה ומעלית יכולות לסטות משמעותית מהממוצע.",
+   "new": "ברובע ו וברובע ג, למשל, חציון מחיר העסקה לדירת 3 חדרים ברבעון הראשון של 2026 היה 1,613,900 ש\"ח ו-1,506,400 ש\"ח בהתאמה, לפי נתוני רשות המסים, ובדפי נתונים פרטיים הוצגה בהם שכירות סביב 4,000-4,200 ש\"ח, אך נתון כזה אינו אומר שכל דירה ברובע נמכרת סביב אותו מספר. דירה משופצת, קומה גבוהה, חניה ומעלית יכולות לסטות משמעותית מהחציון.",
+   "source_keys": [
+    "neighbourhoods[רובע ו].rooms.3",
+    "neighbourhoods[רובע ג].rooms.3",
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "All-rooms neighbourhood averages 1.59-1.69M from private data pages with no period; replaced by the official 3-room medians of Rova V and Rova G. The rent 4,000-4,200 (private data pages, page checked 6.6.2026) is kept.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 5,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "בדוגמה פרטית: סביב 1,689,478 ש\"ח וסביב 22,822 ש\"ח למ\"ר",
+   "new": "חציון מחיר העסקה, ינואר-מרץ 2026: 1,613,900 ש\"ח לדירת 3 חדרים ו-1,924,700 ש\"ח לדירת 4 חדרים",
+   "source_keys": [
+    "neighbourhoods[רובע ו].rooms.3",
+    "neighbourhoods[רובע ו].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Table cell: a 'private example' all-rooms average and per-m2 for Rova V, no period; replaced by the official medians.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 6,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "בדוגמה פרטית: סביב 1,592,084 ש\"ח וסביב 21,472 ש\"ח למ\"ר",
+   "new": "חציון מחיר העסקה, ינואר-מרץ 2026: 1,506,400 ש\"ח לדירת 3 חדרים",
+   "source_keys": [
+    "neighbourhoods[רובע ג].rooms.3"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Table cell: a 'private example' all-rooms average and per-m2 for Rova G, no period; replaced by the official 3-room median.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 7,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "אין להעתיק את הממוצע לכל דירה ברובע.",
+   "new": "אין להעתיק את החציון לכל דירה ברובע.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Follows edits 5-7: the Rova V / Rova G figure is now an official median, not an average.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 8,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead>\n<tr>\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">שכירות חודשית נפוצה</th>\n<th dir=\"rtl\">מחיר קנייה נפוץ</th>\n<th dir=\"rtl\">תשואה גולמית משוערת</th>\n<th dir=\"rtl\">הערת שימוש</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">כ-3,500 ש\"ח</td>\n<td dir=\"rtl\">כ-1.33-1.39 מיליון ש\"ח</td>\n<td dir=\"rtl\">כ-3.0%-3.2%</td>\n<td dir=\"rtl\">מתאים לבדיקת מחיר בדירות קטנות, במיוחד באזורים עם ביקוש שכירות</td>\n</tr>\n<tr>\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">כ-4,474-4,500 ש\"ח</td>\n<td dir=\"rtl\">כ-1.66-1.68 מיליון ש\"ח</td>\n<td dir=\"rtl\">כ-3.2%</td>\n<td dir=\"rtl\">קטגוריה נפוצה להשוואה, אך מצב הדירה והרובע משנים מאוד את השכירות</td>\n</tr>\n<tr>\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">כ-5,300 ש\"ח</td>\n<td dir=\"rtl\">כ-2.05-2.19 מיליון ש\"ח</td>\n<td dir=\"rtl\">כ-2.9%-3.1%</td>\n<td dir=\"rtl\">בדיקה שימושית למשפחות ולמשפרי דיור, לא רק למשקיעים</td>\n</tr>\n<tr>\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">כ-7,650 ש\"ח</td>\n<td dir=\"rtl\">כ-2.78-2.89 מיליון ש\"ח</td>\n<td dir=\"rtl\">כ-3.2%-3.3%</td>\n<td dir=\"rtl\">בדירות גדולות יש שונות גבוהה לפי רובע, חניה, מרפסת ושטח אמיתי</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead>\n<tr>\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">שכירות חודשית נפוצה</th>\n<th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th>\n<th dir=\"rtl\">הערת שימוש</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">כ-3,500 ש\"ח</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">מתאים לבדיקת מחיר בדירות קטנות, במיוחד באזורים עם ביקוש שכירות</td>\n</tr>\n<tr>\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">כ-4,474-4,500 ש\"ח</td>\n<td dir=\"rtl\">1,603,300 ש\"ח</td>\n<td dir=\"rtl\">קטגוריה נפוצה להשוואה, אך מצב הדירה והרובע משנים מאוד את השכירות</td>\n</tr>\n<tr>\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">כ-5,300 ש\"ח</td>\n<td dir=\"rtl\">2,130,200 ש\"ח</td>\n<td dir=\"rtl\">בדיקה שימושית למשפחות ולמשפרי דיור, לא רק למשקיעים</td>\n</tr>\n<tr>\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">כ-7,650 ש\"ח</td>\n<td dir=\"rtl\">2,784,800 ש\"ח</td>\n<td dir=\"rtl\">בדירות גדולות יש שונות גבוהה לפי רובע, חניה, מרפסת ושטח אמיתי</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Rent table: the purchase-price column repeats the old ranges (3 rooms 1.66-1.68M in conflict with 1,603,300) and the gross-yield column is derived from them. Purchase prices replaced by the official medians, the yield column removed (no new arithmetic); the rents and the usage notes are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">תשואה גולמית משוערת</th>",
+   "n": 9,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead>\n<tr>\n<th dir=\"rtl\">דוגמת עסקה או רחוב</th>\n<th dir=\"rtl\">נתון שהוצג במקורות פרטיים</th>\n<th dir=\"rtl\">מה אפשר ללמוד</th>\n<th dir=\"rtl\">מה חייבים לבדוק</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td dir=\"rtl\">דב גאפונוב 6</td>\n<td dir=\"rtl\">15.3.2026, 3 חדרים, 75 מ\"ר, 1,750,000 ש\"ח</td>\n<td dir=\"rtl\">כיוון מחיר לדירת 3 חדרים בגודל בינוני</td>\n<td dir=\"rtl\">קומה, בניין, חניה, מצב דירה, הצמדה, מועד העסקה ורישום</td>\n</tr>\n<tr>\n<td dir=\"rtl\">שבט אשר 4</td>\n<td dir=\"rtl\">15.3.2026, 5 חדרים, 138 מ\"ר, 2,700,000 ש\"ח</td>\n<td dir=\"rtl\">דוגמה לדירת 5 חדרים שאינה בקצה הגבוה של השוק</td>\n<td dir=\"rtl\">רובע, שנת בנייה, מרפסת, חניות, שיפוץ ונוף</td>\n</tr>\n<tr>\n<td dir=\"rtl\">עוזי חיטמן 6</td>\n<td dir=\"rtl\">15.3.2026, 5 חדרים, 192 מ\"ר, 3,800,000 ש\"ח</td>\n<td dir=\"rtl\">שטח גדול יכול להעלות מחיר מוחלט משמעותית</td>\n<td dir=\"rtl\">האם מדובר בדירה מיוחדת, דירת גן, קומה גבוהה או נכס עם הצמדות</td>\n</tr>\n<tr>\n<td dir=\"rtl\">גור דב</td>\n<td dir=\"rtl\">43 עסקאות, מחיר ממוצע כ-1,604,604 ש\"ח</td>\n<td dir=\"rtl\">רחוב עם נפח עסקאות שמאפשר השוואה ראשונית</td>\n<td dir=\"rtl\">פיזור עסקאות לפי חדרים, שטח, קומה ושנת בנייה</td>\n</tr>\n<tr>\n<td dir=\"rtl\">המעפילים</td>\n<td dir=\"rtl\">37 עסקאות, מחיר ממוצע כ-1,433,945 ש\"ח</td>\n<td dir=\"rtl\">מחיר ממוצע נמוך יותר ביחס לחלק מהרחובות בדוגמה</td>\n<td dir=\"rtl\">תמהיל דירות ישנות, קטנות או בניינים שונים</td>\n</tr>\n<tr>\n<td dir=\"rtl\">קרן היסוד</td>\n<td dir=\"rtl\">34 עסקאות, מחיר ממוצע כ-1,616,676 ש\"ח</td>\n<td dir=\"rtl\">כיוון בדיקה לעסקאות חוזרות באזור ותיק</td>\n<td dir=\"rtl\">האם העסקאות משקפות דירות דומות לדירה הנבדקת</td>\n</tr>\n<tr>\n<td dir=\"rtl\">שפירא אברהם</td>\n<td dir=\"rtl\">32 עסקאות, מחיר ממוצע כ-1,862,812 ש\"ח</td>\n<td dir=\"rtl\">ייתכן מחיר גבוה יותר בגלל תמהיל או איכות נכסים</td>\n<td dir=\"rtl\">להשוות לדירות באותו שטח ולא רק למחיר ממוצע</td>\n</tr>\n<tr>\n<td dir=\"rtl\">הדקל</td>\n<td dir=\"rtl\">30 עסקאות, מחיר ממוצע כ-2,640,666 ש\"ח</td>\n<td dir=\"rtl\">רחוב שבו ממוצע הדוגמאות גבוה משמעותית</td>\n<td dir=\"rtl\">לבדוק האם מדובר בדירות גדולות, בנייה חדשה או מיקום עדיף</td>\n</tr>\n<tr>\n<td dir=\"rtl\">שבי ציון</td>\n<td dir=\"rtl\">27 עסקאות, מחיר ממוצע כ-1,443,259 ש\"ח</td>\n<td dir=\"rtl\">דוגמה למחיר ממוצע נגיש יותר</td>\n<td dir=\"rtl\">מצב בניינים, שטחים, קומות ועסקאות חריגות</td>\n</tr>\n<tr>\n<td dir=\"rtl\">רוגוזין</td>\n<td dir=\"rtl\">25 עסקאות, מחיר ממוצע כ-1,850,076 ש\"ח</td>\n<td dir=\"rtl\">רחוב מרכזי להשוואה נקודתית</td>\n<td dir=\"rtl\">רעש, מסחר, תחבורה, קומה, מעלית וחניה</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead>\n<tr>\n<th dir=\"rtl\">דוגמת עסקה או רחוב</th>\n<th dir=\"rtl\">נתון שהוצג במקורות פרטיים</th>\n<th dir=\"rtl\">מה אפשר ללמוד</th>\n<th dir=\"rtl\">מה חייבים לבדוק</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td dir=\"rtl\">דב גאפונוב 6</td>\n<td dir=\"rtl\">15.3.2026, 3 חדרים, 75 מ\"ר, 1,750,000 ש\"ח</td>\n<td dir=\"rtl\">כיוון מחיר לדירת 3 חדרים בגודל בינוני</td>\n<td dir=\"rtl\">קומה, בניין, חניה, מצב דירה, הצמדה, מועד העסקה ורישום</td>\n</tr>\n<tr>\n<td dir=\"rtl\">שבט אשר 4</td>\n<td dir=\"rtl\">15.3.2026, 5 חדרים, 138 מ\"ר, 2,700,000 ש\"ח</td>\n<td dir=\"rtl\">דוגמה לדירת 5 חדרים שאינה בקצה הגבוה של השוק</td>\n<td dir=\"rtl\">רובע, שנת בנייה, מרפסת, חניות, שיפוץ ונוף</td>\n</tr>\n<tr>\n<td dir=\"rtl\">עוזי חיטמן 6</td>\n<td dir=\"rtl\">15.3.2026, 5 חדרים, 192 מ\"ר, 3,800,000 ש\"ח</td>\n<td dir=\"rtl\">שטח גדול יכול להעלות מחיר מוחלט משמעותית</td>\n<td dir=\"rtl\">האם מדובר בדירה מיוחדת, דירת גן, קומה גבוהה או נכס עם הצמדות</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Deals table: the seven street averages (43-25 deals per street) have no period and no named source and are removed; the three individual deals dated 15.3.2026 are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">נתון שהוצג במקורות פרטיים</th>",
+   "n": 10,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "בפרויקטים חדשים מוצגים לעיתים טווחים שיווקיים כמו 2 חדרים סביב 800,000-950,000 ש\"ח, 3 חדרים סביב 1.45-1.65 מיליון ש\"ח, 4 חדרים סביב 1.5-2.2 מיליון ש\"ח, 5 חדרים סביב 2.1-2.6 מיליון ש\"ח ופנטהאוזים סביב 2.5-4.3 מיליון ש\"ח. בנוסף הוצגו טווחים כלליים של 17,000-18,000 ש\"ח למ\"ר בדירות חדשות. צריך להתייחס בזהירות למספרים כאלה,",
+   "new": "בפרויקטים חדשים מוצגים לעיתים טווחים שיווקיים לפי מספר חדרים ומחיר למ\"ר, וכדאי להשוות אותם לחציון מחיר העסקה בעיר: לפי נתוני רשות המסים לרבעון הראשון של 2026, 1,603,300 ש\"ח לדירת 3 חדרים, 2,130,200 ש\"ח לדירת 4 חדרים ו-2,784,800 ש\"ח לדירת 5 חדרים. צריך להתייחס בזהירות לטווחים שיווקיים,",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "New-project marketing ranges: 5 rooms 2.1-2.6M is below the official median 2,784,800; the 2-room, penthouse and 17,000-18,000 per-m2 ranges have no source or date (3 and 4 rooms were consistent). Replaced by the official city medians to compare against.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 11,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "דירת 4 חדרים באשדוד מוצגת בדרך כלל סביב 2.05-2.19 מיליון ש\"ח לפי מקורות פרטיים שונים, אך הטווח בפועל רחב.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 4 חדרים באשדוד ברבעון הראשון של 2026 היה 2,130,200 ש\"ח, לעומת 2,006,000 ש\"ח שנה קודם לכן, אך הטווח בפועל רחב.",
+   "source_keys": [
+    "rooms.4.latest",
+    "rooms.4.year_ago"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "FAQ 4 rooms: 2.05-2.19M was consistent with 2,130,200; rewritten from the same facts as the body.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 12,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "דירת 3 חדרים באשדוד מוצגת סביב 1.66-1.68 מיליון ש\"ח, כאשר יש דוגמאות עסקאות כמו דירת 3 חדרים בשטח 75 מ\"ר במחיר 1,750,000 ש\"ח.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 3 חדרים באשדוד ברבעון הראשון של 2026 היה 1,603,300 ש\"ח. דירה מסוימת יכולה להימכר מעליו או מתחתיו: דירת 3 חדרים בשטח 75 מ\"ר ברחוב דב גאפונוב, למשל, נמכרה ב-1,750,000 ש\"ח.",
+   "source_keys": [
+    "rooms.3.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ 3 rooms: 1.66-1.68M vs the official 1,603,300; the individual deal (dated 15.3.2026 in the deals table) is kept as an example.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 13,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "מקורות פרטיים מציגים מחיר ממוצע סביב 2,000,000-2,055,148 ש\"ח, אך ממוצע עירוני הוא נתון גס.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לכל הדירות באשדוד ברבעון הראשון של 2026 היה 2,030,100 ש\"ח, אך נתון עירוני כולל הוא נתון גס.",
+   "source_keys": [
+    "rooms.all.latest"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "FAQ city average: 2,000,000-2,055,148 was consistent with the official all-apartments median 2,030,100; rewritten from the same facts.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 14,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "מקורות שונים מציגים מחיר למ\"ר סביב 21,000 ש\"ח ועד 26,800 ש\"ח, ובטבלאות חדרים אפשר לראות גם כ-26,226 ש\"ח למ\"ר בדירות 2 חדרים וכ-18,250 ש\"ח למ\"ר בדירות 4 חדרים.",
+   "new": "דפי נתונים פרטיים שונים מציגים מחיר למ\"ר סביב 21,000 ש\"ח ועד 26,800 ש\"ח, ובנתוני ביקוש לפי חדרים הוצגו גם כ-26,226 ש\"ח למ\"ר בדירות 2 חדרים וכ-18,250 ש\"ח למ\"ר בדירות 4 חדרים.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "FAQ per m2: the answer pointed at the per-m2 column of the rooms table, removed in edit 3; the asking figures are kept and labelled.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 15,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4587,
+   "url": "https://nad-lan.co.il/ashdod-apartment-prices/",
+   "field": "content",
+   "old": "בדוגמאות פרטיות הוצג רובע ג סביב 1,592,084 ש\"ח ורובע ו סביב 1,689,478 ש\"ח, עם שכירות סביב 4,000-4,200 ש\"ח.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 3 חדרים היה 1,506,400 ש\"ח ברובע ג ו-1,613,900 ש\"ח ברובע ו, לעומת 1,603,300 ש\"ח בכל העיר. בדירות 4 חדרים, החציון ברובע ו היה 1,924,700 ש\"ח, לעומת 2,130,200 ש\"ח בכל העיר. בדפי נתונים פרטיים הוצגה ברובעים האלה שכירות סביב 4,000-4,200 ש\"ח.",
+   "source_keys": [
+    "neighbourhoods[רובע ג].rooms.3",
+    "neighbourhoods[רובע ו].rooms.3",
+    "neighbourhoods[רובע ו].rooms.4",
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ Rova G / Rova V: 'private examples' of all-rooms averages, no period; replaced by the official medians next to the city medians. The rent range is kept.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 16,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  }
+ ],
+ "live_recheck": {
+  "retrieved_utc": "2026-10-07 11:18:08",
+  "modified": "2026-10-07T13:31:12",
+  "audited_copy_modified": "2026-10-07T13:31:12",
+  "price_list_on_page": true,
+  "body_outside_list_identical_to_audited_copy": "yes",
+  "dry_run": "16 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ }
+}

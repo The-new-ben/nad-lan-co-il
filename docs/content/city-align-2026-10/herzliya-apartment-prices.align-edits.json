@@ -1,0 +1,874 @@
+{
+ "generated": "7.10.2026",
+ "page": {
+  "id": 154,
+  "slug": "herzliya-apartment-prices",
+  "link": "https://nad-lan.co.il/herzliya-apartment-prices/",
+  "modified": "2026-10-07T13:30:50"
+ },
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages?slug=herzliya-apartment-prices&_fields=id,link,title,content,modified (content.rendered), public, retrieved 2026-10-07 10:34:31 UTC, 73,336 characters. The price-list section (<section id=\"nlpg\">, the [nadlan_price_guide] shortcode), <script> and <style> are outside the audit.",
+ "facts": "scripts/project-stage/price_guide/cities/herzliya-apartment-prices.json (official medians from data.nadlan.gov.il; source_keys are JSON paths in that file: rooms.<k>.latest, rooms.<k>.year_ago, rooms.<k>.change_pct, rooms.<k>.quarters[<q>], israel.<k>, neighbourhoods[<name>].rooms.<k>; 'page' = a number kept from the page's own text)",
+ "apply_rules": [
+  "Apply in the listed order on the RAW content (context=edit). Every \"old\" matches content.rendered exactly once at its turn (matches_in_live), except \"replace_all\" entries, which match exactly \"expect_matches\" times.",
+  "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
+  "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
+  "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+ ],
+ "claims_summary": {
+  "claims": {
+   "CONFLICT": 3,
+   "STALE": 0,
+   "UNSOURCED": 17,
+   "CONSISTENT": 21
+  },
+  "figures": {
+   "CONFLICT": 7,
+   "STALE": 0,
+   "UNSOURCED": 81,
+   "CONSISTENT": 42
+  },
+  "edits": 16,
+  "tier1": 8,
+  "tier2": 8
+ },
+ "notes": "The page shows no check date anywhere (only the Ahad Ha'am deal is dated, 19.11.2025), so no undated rent or per-m2 figure qualifies for keep: they are rephrased without numbers in tier 2. Applying tier 1 alone still leaves those rent and per-m2 figures in place. Not audited as claims (illustrations, not market statements): the 3.95M asking / 3.75M closing example (p@42385), the 2.55M 3-room and 4.4M 5-room if-examples (p@44663), the 150-300 thousand renovation cost in the rooms-table note, the 8,000 rent / 3.8M example (p@54532), the 200,000-400,000 gap (p@59544), the 3.8M / 3.45M / 350,000 / 250,000 new-vs-second-hand example (p@62227), 'פי 2' (p@63813), sizes in m2, counts of deals and months. Remaining SUSPECTs are those hypotheticals (p@42385, p@44663, p@62227) and the individual dated Ahad Ha'am deal (3.98M, 19.11.2025). The lead (above the price list), the 'by the data checked' paragraph and the 3/4/5-room FAQ answers keep their working ranges: each holds the official median (3: 2.5-3.0/3.1M vs 2,793,600; 4: 3.1-3.8M vs 3,272,800; 5: 4.0-5.0M vs 4,251,200). Official quirk: the 4 and 5-room medians fell 9.1% and 8.9% year on year; the 4-room series has no 10-12.2025 value and the 5-room median dropped from 4,730,400 (10-12.2025) to 4,251,200. Official neighbourhoods: only 'מרכז העיר' (3/4/5) and 'וייצמן' (4 rooms); 'וייצמן' is not one of the page's areas and was not mapped to 'הרצליה הצעירה' or any other row; it appears only in the sentence after the neighbourhood table.",
+ "claims": [
+  {
+   "id": 1,
+   "where": "p@4135",
+   "quote": "כ-2.5-3.0 מיליון ש\"ח לדירת 3 חדרים רגילה",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "2,793,600 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "keep",
+   "note": ""
+  },
+  {
+   "id": 2,
+   "where": "p@4135",
+   "quote": "כ-3.1-3.8 מיליון ש\"ח לדירת 4 חדרים",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "3,272,800 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "keep",
+   "note": ""
+  },
+  {
+   "id": 3,
+   "where": "p@4135",
+   "quote": "וכ-4.0-5.0 מיליון ש\"ח לדירת 5 חדרים",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "4,251,200 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "keep",
+   "note": ""
+  },
+  {
+   "id": 4,
+   "where": "p@4135",
+   "quote": "הפער בין שתי דירות באותו מספר חדרים ... ליותר ממיליון ש\"ח",
+   "measure": "other",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 1",
+   "note": "tier 2; written as a word, no digits"
+  },
+  {
+   "id": 5,
+   "where": "p@40348",
+   "quote": "דירת 2 חדרים רגילה עשויה להופיע סביב כ-2.0-2.5 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 6,
+   "where": "p@40348",
+   "quote": "דירת 3 חדרים סביב כ-2.5-3.1 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "2,793,600",
+   "verdict": "CONSISTENT",
+   "action": "keep (word for word inside edit 2)",
+   "note": ""
+  },
+  {
+   "id": 7,
+   "where": "p@40348",
+   "quote": "דירת 4 חדרים סביב כ-3.1-3.8 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "3,272,800",
+   "verdict": "CONSISTENT",
+   "action": "keep (word for word inside edit 2)",
+   "note": ""
+  },
+  {
+   "id": 8,
+   "where": "p@40348",
+   "quote": "ודירת 5 חדרים סביב כ-4.0-5.0 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "4,251,200",
+   "verdict": "CONSISTENT",
+   "action": "keep (word for word inside edit 2)",
+   "note": ""
+  },
+  {
+   "id": 9,
+   "where": "p@40348",
+   "quote": "באזורים פרימיום ... הטווח יכול לעבור גם 6 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "premium",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 10,
+   "where": "p@40813",
+   "quote": "עמודי מידע עירוניים הראו ממוצעי רכישה סביב כ-4.0-4.24 מיליון ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 2,
+   "official": "all deals 3,202,200 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 11,
+   "where": "p@40813",
+   "quote": "נתוני דירות חדשות: דירות 3 חדרים סביב כ-2.78 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "2,793,600",
+   "verdict": "CONSISTENT",
+   "action": "edit 3",
+   "note": "new flats"
+  },
+  {
+   "id": 12,
+   "where": "p@40813",
+   "quote": "נתוני דירות חדשות: דירות 4 חדרים סביב כ-3.49-3.55 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "3,272,800",
+   "verdict": "CONFLICT",
+   "action": "edit 3",
+   "note": "new flats"
+  },
+  {
+   "id": 13,
+   "where": "p@40813",
+   "quote": "נתוני דירות חדשות: דירות 5 חדרים סביב כ-3.95-4.45 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "4,251,200",
+   "verdict": "CONSISTENT",
+   "action": "edit 3",
+   "note": "new flats"
+  },
+  {
+   "id": 14,
+   "where": "p@40813",
+   "quote": "עמודי עסקאות נקודתיים: דירות 4 חדרים סביב כ-3.05-3.98 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "3,272,800",
+   "verdict": "CONSISTENT",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 15,
+   "where": "p@41665",
+   "quote": "הערת שימוש: טווח של 3.2-3.6 מיליון ש\"ח לדירת 4 חדרים יכול להיות סביר בשכונה אחת",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "3,272,800",
+   "verdict": "CONSISTENT",
+   "action": "keep",
+   "note": ""
+  },
+  {
+   "id": 16,
+   "where": "p@41990",
+   "quote": "ממוצע עירוני של כ-34,000-38,000 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 4",
+   "note": "tier 2; no date on the page"
+  },
+  {
+   "id": 17,
+   "where": "tr@43392",
+   "quote": "2 חדרים | כ-2.0-2.5 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 18,
+   "where": "tr@43625",
+   "quote": "3 חדרים | כ-2.5-3.1 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "2,793,600",
+   "verdict": "CONSISTENT",
+   "action": "edit 6",
+   "note": "restated as the median"
+  },
+  {
+   "id": 19,
+   "where": "tr@43874",
+   "quote": "4 חדרים | כ-3.1-3.8 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "3,272,800",
+   "verdict": "CONSISTENT",
+   "action": "edit 6",
+   "note": "restated as the median"
+  },
+  {
+   "id": 20,
+   "where": "tr@44107",
+   "quote": "5 חדרים | כ-4.0-5.0 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "4,251,200",
+   "verdict": "CONSISTENT",
+   "action": "edit 6",
+   "note": "restated as the median"
+  },
+  {
+   "id": 21,
+   "where": "tr@44355",
+   "quote": "6 חדרים ומעלה | כ-5.5-8.0 מיליון ש\"ח ומעלה",
+   "measure": "sale",
+   "rooms": "6",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 22,
+   "where": "tr@43392..44355",
+   "quote": "עמודת שכירות חודשית אופיינית (5 שורות)",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 9,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": "no date; the column leaves with the rebuilt table"
+  },
+  {
+   "id": 23,
+   "where": "tr@47163",
+   "quote": "מרכז העיר | כ-2.5-3.7 מיליון ש\"ח לדירות 3-4 חדרים",
+   "measure": "sale_nb",
+   "rooms": "3-4",
+   "figures": 2,
+   "official": "centre 3=2,928,500 4=3,360,900",
+   "verdict": "CONSISTENT",
+   "action": "edit 8",
+   "note": "official centre medians given in edit 9"
+  },
+  {
+   "id": 24,
+   "where": "tr@47404..48846",
+   "quote": "טווחי עבודה לפי אזור: הרצליה הצעירה עד הרצליה פיתוח (7 שורות)",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 13,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": "no official median for these areas"
+  },
+  {
+   "id": 25,
+   "where": "p@50463",
+   "quote": "אם דירת 3 חדרים מושכרת סביב כ-6,500-6,800 ... 4 חדרים כ-7,500-8,500",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 10",
+   "note": "tier 2; asserts the rent level"
+  },
+  {
+   "id": 26,
+   "where": "p@50875",
+   "quote": "שכירות חציונית כ-7,200, ממוצע כ-7,661, 3 חדרים כ-6,686; 2-5 חדרים 5,500-12,200",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 7,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 11",
+   "note": "tier 2"
+  },
+  {
+   "id": 27,
+   "where": "tr@51501..54269",
+   "quote": "טבלת שכירות חודשית שנבדקה (12 שורות)",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 19,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 12",
+   "note": "tier 2"
+  },
+  {
+   "id": 28,
+   "where": "tr@52280",
+   "quote": "3 חדרים | שכירות כזו יכולה לתמוך במחיר סביב כ-2.5-3.1 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "2,793,600",
+   "verdict": "CONSISTENT",
+   "action": "edit 12",
+   "note": "restated as the median inside the tier-2 rent table"
+  },
+  {
+   "id": 29,
+   "where": "p@55574",
+   "quote": "כאשר מופיע מחיר למ\"ר סביב כ-34,000-38,000 ש\"ח",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 13",
+   "note": "tier 2"
+  },
+  {
+   "id": 30,
+   "where": "tr@56188",
+   "quote": "ממוצע רכישה עירוני | כ-4.0-4.24 מיליון ש\"ח | ... סביב 4 מיליון ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 3,
+   "official": "all deals 3,202,200",
+   "verdict": "CONFLICT",
+   "action": "edit 14",
+   "note": ""
+  },
+  {
+   "id": 31,
+   "where": "tr@56414",
+   "quote": "מחיר למ\"ר עירוני | כ-34,000-38,000 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 14",
+   "note": ""
+  },
+  {
+   "id": 32,
+   "where": "tr@56668",
+   "quote": "דירת 3 חדרים | כ-2.52-2.78 מיליון ש\"ח בחלק מהנתונים",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "2,793,600",
+   "verdict": "CONSISTENT",
+   "action": "edit 14",
+   "note": "edge: median 0.5% above the top; restated as the median"
+  },
+  {
+   "id": 33,
+   "where": "tr@56947",
+   "quote": "דירת 4 חדרים | כ-3.05-3.98 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "3,272,800",
+   "verdict": "CONSISTENT",
+   "action": "edit 14",
+   "note": "restated as the median"
+  },
+  {
+   "id": 34,
+   "where": "tr@57218",
+   "quote": "דירת 5 חדרים | כ-3.95-4.45 מיליון ש\"ח, עם חריגים מעל 5 מיליון",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 3,
+   "official": "4,251,200",
+   "verdict": "CONSISTENT",
+   "action": "edit 14",
+   "note": "restated as the median"
+  },
+  {
+   "id": 35,
+   "where": "tr@57505",
+   "quote": "עסקה ברחוב אחד העם | 4 חדרים, כ-109 מ\"ר, כ-3.98 מיליון ש\"ח, 19.11.2025",
+   "measure": "deal",
+   "rooms": "4",
+   "figures": 1,
+   "official": "city 4 rooms 3,272,800",
+   "verdict": "UNSOURCED",
+   "action": "keep (one dated deal; row kept word for word in edit 14)",
+   "note": ""
+  },
+  {
+   "id": 36,
+   "where": "tr@57832",
+   "quote": "דוגמאות רחוב: כ-1.77, 2.78, 3.60 ו-3.98 מיליון ש\"ח",
+   "measure": "sale_street",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 14",
+   "note": "no room count, no date"
+  },
+  {
+   "id": 37,
+   "where": "p@68746",
+   "quote": "FAQ: דירת 3 חדרים סביב כ-2.5-3.1 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "2,793,600",
+   "verdict": "CONSISTENT",
+   "action": "keep (same range as the body, p@40348)",
+   "note": ""
+  },
+  {
+   "id": 38,
+   "where": "p@69092",
+   "quote": "FAQ: דירת 4 חדרים סביב כ-3.1-3.8 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "3,272,800",
+   "verdict": "CONSISTENT",
+   "action": "keep (same range as the body)",
+   "note": ""
+  },
+  {
+   "id": 39,
+   "where": "p@69458",
+   "quote": "FAQ: דירת 5 חדרים סביב כ-4.0-5.0 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "4,251,200",
+   "verdict": "CONSISTENT",
+   "action": "keep (same range as the body)",
+   "note": ""
+  },
+  {
+   "id": 40,
+   "where": "p@69809",
+   "quote": "FAQ: מחיר למ\"ר סביב כ-34,000-38,000 ש\"ח",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 15",
+   "note": "tier 2"
+  },
+  {
+   "id": 41,
+   "where": "p@70648",
+   "quote": "FAQ שכירות: 2 חדרים 5,000-5,500 ... 5 חדרים 9,000-12,200",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 8,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 16",
+   "note": "tier 2"
+  }
+ ],
+ "edits": [
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "אין להרצליה מחיר אחד: מרכז העיר, הרצליה הצעירה, הרצליה ב', הירוקה, גליל ים, נוה עמל, נוף ים, המרינה והרצליה פיתוח מתנהגים כשווקים שונים, ולעיתים הפער בין שתי דירות באותו מספר חדרים מגיע למאות אלפי שקלים ואף ליותר ממיליון ש\"ח.",
+   "new": "אין להרצליה מחיר אחד: מרכז העיר, הרצליה הצעירה, הרצליה ב', הירוקה, גליל ים, נוה עמל, נוף ים, המרינה והרצליה פיתוח מתנהגים כשווקים שונים, ולעיתים הפער בין שתי דירות באותו מספר חדרים מגיע למאות אלפי שקלים ואף יותר.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "A spread of more than a million shekels between two flats with the same room count, with no source or date; the number is dropped, the sentence stays. Tier 2.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 1,
+   "raw_risk": [
+    "straight double quote",
+    "apostrophe"
+   ]
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "דירת 2 חדרים רגילה עשויה להופיע סביב כ-2.0-2.5 מיליון ש\"ח, דירת 3 חדרים סביב כ-2.5-3.1 מיליון ש\"ח, דירת 4 חדרים סביב כ-3.1-3.8 מיליון ש\"ח, ודירת 5 חדרים סביב כ-4.0-5.0 מיליון ש\"ח. בדירות חדשות, בדירות גדולות במיוחד, בפרויקטים מבוקשים, בקרבה לים או באזורים פרימיום כמו המרינה והרצליה פיתוח, הטווח יכול לעבור גם 6 מיליון ש\"ח, ולעיתים הרבה מעבר לכך.",
+   "new": "דירת 3 חדרים עשויה להופיע סביב כ-2.5-3.1 מיליון ש\"ח, דירת 4 חדרים סביב כ-3.1-3.8 מיליון ש\"ח, ודירת 5 חדרים סביב כ-4.0-5.0 מיליון ש\"ח. בדירות חדשות, בדירות גדולות במיוחד, בפרויקטים מבוקשים, בקרבה לים או באזורים פרימיום כמו המרינה והרצליה פיתוח, המחיר יכול להיות גבוה בהרבה.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "The 2-room range 2.0-2.5M and the 'beyond 6M' premium ceiling have no named source and no date; dropped. The 3, 4 and 5-room ranges hold the official medians (2,793,600 / 3,272,800 / 4,251,200) and are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 2,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "המספרים מתיישבים עם כמה אינדיקציות שוק שנבדקו: עמודי מידע עירוניים הראו ממוצעי רכישה סביב כ-4.0-4.24 מיליון ש\"ח, נתוני דירות חדשות הראו דירות 3 חדרים סביב כ-2.78 מיליון ש\"ח, דירות 4 חדרים סביב כ-3.49-3.55 מיליון ש\"ח ודירות 5 חדרים סביב כ-3.95-4.45 מיליון ש\"ח, ואילו עמודי עסקאות נקודתיים הציגו דירות 4 חדרים סביב כ-3.05-3.98 מיליון ש\"ח, בהתאם לשטח, רחוב, גיל בניין ואזור.",
+   "new": "המספרים מתיישבים עם נתוני רשות המסים לרבעון הראשון של 2026: חציון מחיר העסקה היה 2,793,600 ש\"ח לדירת 3 חדרים, 3,272,800 ש\"ח לדירת 4 חדרים ו-4,251,200 ש\"ח לדירת 5 חדרים, וחציון כלל העסקאות בעיר היה 3,202,200 ש\"ח. לעומת הרבעון הראשון של 2025, החציון לדירת 4 חדרים ירד ב-9.1% ולדירת 5 חדרים ב-8.9%, ולכן כדאי להשוות לעסקאות עדכניות, בהתאם לשטח, רחוב, גיל בניין ואזור.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest",
+    "rooms.all.latest",
+    "rooms.4.change_pct",
+    "rooms.5.change_pct"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "A city 'purchase average' of 4.0-4.24M vs the official all-deals median 3,202,200, and new 4-room flats at 3.49-3.55M vs the official 4-room median 3,272,800 (1-3.2026). The new 3 and 5-room figures and the 4-room deal range were consistent. Rewritten with the official medians and the year-on-year drop of the 4 and 5-room medians.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 3,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "זו הסיבה שממוצע עירוני של כ-34,000-38,000 ש\"ח למ\"ר יכול לתת כיוון, אך אינו מחליף בדיקה של 5-10 עסקאות דומות לפי רחוב, שטח, קומה ומועד מכירה.",
+   "new": "זו הסיבה שממוצע עירוני למ\"ר יכול לתת כיוון, אך אינו מחליף בדיקה של 5-10 עסקאות דומות לפי רחוב, שטח, קומה ומועד מכירה.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "City per-m2 average 34,000-38,000 with no source and no date (the page shows no check date); number dropped. Tier 2.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 4,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "הטבלה הבאה מרכזת טווחי עבודה לדירות בהרצליה לפי מספר חדרים. היא מיועדת לסינון ראשוני: להבין אם דירה מסוימת נמצאת באזור השוק, מתומחרת באגרסיביות, או מחייבת בדיקה עמוקה יותר של עסקאות דומות. שכירות חודשית מופיעה כאן כבדיקת היגיון נוספת, לא כנוסחת שווי אוטומטית.",
+   "new": "הטבלה הבאה מציגה את חציון מחיר העסקה בהרצליה לפי מספר חדרים, לפי נתוני רשות המסים לרבעון הראשון של 2026, לצד החציון באותו רבעון שנה קודם לכן. היא מיועדת לסינון ראשוני: להבין אם דירה מסוימת נמצאת באזור השוק, מתומחרת באגרסיביות, או מחייבת בדיקה עמוקה יותר של עסקאות דומות.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "The intro announced working ranges and a rent column; the table becomes the official medians (edit 6) and the undated rent column leaves.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 5,
+   "raw_risk": []
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"> <thead dir=\"rtl\"> <tr dir=\"rtl\"> <th dir=\"rtl\">סוג דירה</th> <th dir=\"rtl\">טווח מחיר עבודה</th> <th dir=\"rtl\">שכירות חודשית אופיינית</th> <th dir=\"rtl\">מה לבדוק לפני הסתמכות</th> </tr> </thead> <tbody dir=\"rtl\"> <tr dir=\"rtl\"> <td dir=\"rtl\">2 חדרים</td> <td dir=\"rtl\">כ-2.0-2.5 מיליון ש\"ח</td> <td dir=\"rtl\">כ-5,000-5,500 ש\"ח</td> <td dir=\"rtl\">שטח קטן מול שטח יעיל, קומה, חניה, מעלית, ביקוש לשוכרים, האם הדירה עורפית או על ציר רועש.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">3 חדרים</td> <td dir=\"rtl\">כ-2.5-3.1 מיליון ש\"ח</td> <td dir=\"rtl\">כ-6,500-6,800 ש\"ח</td> <td dir=\"rtl\">האם מדובר בדירת זוג צעיר רגילה, דירה משופצת, דירה עם ממ\"ד, או דירה ישנה שדורשת שיפוץ של 150-300 אלף ש\"ח.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">4 חדרים</td> <td dir=\"rtl\">כ-3.1-3.8 מיליון ש\"ח</td> <td dir=\"rtl\">כ-7,500-8,500 ש\"ח</td> <td dir=\"rtl\">שטח של כ-85 מ\"ר לעומת כ-105 מ\"ר, מרפסת, חניה, מעלית, גיל הבניין, קרבה לבתי ספר ולתחבורה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">5 חדרים</td> <td dir=\"rtl\">כ-4.0-5.0 מיליון ש\"ח</td> <td dir=\"rtl\">כ-9,000-12,200 ש\"ח</td> <td dir=\"rtl\">האם זו דירת משפחה רגילה או דירה חדשה, איכות הפרויקט, מספר חניות, מחסן, כיווני אוויר, מרפסת וגודל סלון.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">6 חדרים ומעלה</td> <td dir=\"rtl\">כ-5.5-8.0 מיליון ש\"ח ומעלה</td> <td dir=\"rtl\">כ-12,000 ש\"ח ומעלה, עם חריגים גבוהים באזורי פרימיום</td> <td dir=\"rtl\">שטח חריג, פנטהאוז, דירת גן, נוף, קרבה לים, רמת גמר, ועד בית, נדירות העסקה ומספר עסקאות דומות בפועל.</td> </tr> </tbody> </table>",
+   "new": "<table dir=\"rtl\"> <thead dir=\"rtl\"> <tr dir=\"rtl\"> <th dir=\"rtl\">סוג דירה</th> <th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th> <th dir=\"rtl\">ינואר-מרץ 2025</th> <th dir=\"rtl\">שינוי בשנה</th> <th dir=\"rtl\">מה לבדוק לפני הסתמכות</th> </tr> </thead> <tbody dir=\"rtl\"> <tr dir=\"rtl\"> <td dir=\"rtl\">3 חדרים</td> <td dir=\"rtl\">2,793,600 ש\"ח</td> <td dir=\"rtl\">2,776,600 ש\"ח</td> <td dir=\"rtl\">עלייה של 0.6%</td> <td dir=\"rtl\">האם מדובר בדירת זוג צעיר רגילה, דירה משופצת, דירה עם ממ\"ד, או דירה ישנה שדורשת שיפוץ של 150-300 אלף ש\"ח.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">4 חדרים</td> <td dir=\"rtl\">3,272,800 ש\"ח</td> <td dir=\"rtl\">3,602,100 ש\"ח</td> <td dir=\"rtl\">ירידה של 9.1%</td> <td dir=\"rtl\">שטח של כ-85 מ\"ר לעומת כ-105 מ\"ר, מרפסת, חניה, מעלית, גיל הבניין, קרבה לבתי ספר ולתחבורה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">5 חדרים</td> <td dir=\"rtl\">4,251,200 ש\"ח</td> <td dir=\"rtl\">4,668,900 ש\"ח</td> <td dir=\"rtl\">ירידה של 8.9%</td> <td dir=\"rtl\">האם זו דירת משפחה רגילה או דירה חדשה, איכות הפרויקט, מספר חניות, מחסן, כיווני אוויר, מרפסת וגודל סלון.</td> </tr> </tbody> </table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago",
+    "rooms.3.change_pct",
+    "rooms.4.latest",
+    "rooms.4.year_ago",
+    "rooms.4.change_pct",
+    "rooms.5.latest",
+    "rooms.5.year_ago",
+    "rooms.5.change_pct"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rooms table of working ranges: the 3, 4 and 5-room ranges hold the official medians, but the 2-room and 6+-room rows and the whole rent column have no source and no date. Replaced by the official medians with the year-earlier quarter; the check notes of rows 3-5 are kept word for word. The same rents stay (as figures) only where tier 2 is not applied.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">טווח מחיר עבודה</th>",
+   "n": 6,
+   "raw_risk": [
+    "straight double quote",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "הטבלה מראה מדוע מספר חדרים לבדו אינו מספיק.",
+   "new": "המחירון הרשמי מפרסם חציון לדירות 3, 4 ו-5 חדרים; דירות 2 חדרים ודירות 6 חדרים ומעלה כדאי לבדוק מול עסקאות דומות ברחוב ובשכונה. וגם בתוך אותו מספר חדרים, החציון לבדו אינו מספיק.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Follows edit 6: the 2-room and 6+-room rows left the table.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 7,
+   "raw_risk": []
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"> <thead dir=\"rtl\"> <tr dir=\"rtl\"> <th dir=\"rtl\">אזור בהרצליה</th> <th dir=\"rtl\">כיוון מחיר יחסי</th> <th dir=\"rtl\">טווח עבודה נפוץ לדירות רגילות</th> <th dir=\"rtl\">מה משנה את המחיר באזור</th> </tr> </thead> <tbody dir=\"rtl\"> <tr dir=\"rtl\"> <td dir=\"rtl\">מרכז העיר</td> <td dir=\"rtl\">בינוני עד גבוה</td> <td dir=\"rtl\">כ-2.5-3.7 מיליון ש\"ח לדירות 3-4 חדרים, לפי מצב ושטח</td> <td dir=\"rtl\">קרבה למסחר, תחבורה, רעש, חניה, מעלית, מצב בניין ופוטנציאל התחדשות.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה הצעירה</td> <td dir=\"rtl\">גבוה</td> <td dir=\"rtl\">כ-2.8-4.2 מיליון ש\"ח לדירות משפחתיות נפוצות</td> <td dir=\"rtl\">ביקוש משפחות, סביבת בתי ספר, חניה, מרפסת, ממ\"ד, רחוב שקט וגיל הבניין.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה ב' והירוקה</td> <td dir=\"rtl\">גבוה עד גבוה מאוד</td> <td dir=\"rtl\">כ-3.2-5.0 מיליון ש\"ח לדירות 4-5 חדרים, עם חריגים</td> <td dir=\"rtl\">סביבה ירוקה, איכות בנייה, דירות גדולות, קומה, מעלית, חניה כפולה ומחסן.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">גליל ים</td> <td dir=\"rtl\">גבוה</td> <td dir=\"rtl\">כ-3.0-4.8 מיליון ש\"ח בדירות חדשות או חדשות יחסית</td> <td dir=\"rtl\">פרמיית בנייה חדשה, תכנון שכונתי, מרפסת, ממ\"ד, חניה, ועד בית ואיכות הפרויקט.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">נוה עמל ונוה אמירים</td> <td dir=\"rtl\">בינוני עד גבוה</td> <td dir=\"rtl\">כ-2.4-3.6 מיליון ש\"ח לדירות 3-4 חדרים, לפי רחוב ומצב</td> <td dir=\"rtl\">שיפוץ, בניין ותיק מול חדש, נגישות, חניה, שטח רשום והאם קיימת היתכנות תכנונית.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">נוף ים</td> <td dir=\"rtl\">גבוה עד פרימיום</td> <td dir=\"rtl\">כ-3.2-5.5 מיליון ש\"ח ומעלה, לפי קרבה לים וסוג נכס</td> <td dir=\"rtl\">קרבה לים, נדירות, נוף, גודל דירה, זכויות, חניה ורמת הבנייה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">המרינה</td> <td dir=\"rtl\">פרימיום</td> <td dir=\"rtl\">כ-4.5-8.0 מיליון ש\"ח ומעלה בדירות ייחודיות</td> <td dir=\"rtl\">נוף לים או למרינה, קומה, מרפסת, חניה, שירותי בניין, דמי ניהול ונדירות עסקה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה פיתוח</td> <td dir=\"rtl\">פרימיום גבוה</td> <td dir=\"rtl\">כ-5.0 מיליון ש\"ח ומעלה בדירות רבות, עם עסקאות יוקרה גבוהות משמעותית</td> <td dir=\"rtl\">קרבה לים, מגרש, בנייה יוקרתית, רחוב, פרטיות, שטח, נוף, רמת גמר ותמהיל נכסים ייחודי.</td> </tr> </tbody> </table>",
+   "new": "<table dir=\"rtl\"> <thead dir=\"rtl\"> <tr dir=\"rtl\"> <th dir=\"rtl\">אזור בהרצליה</th> <th dir=\"rtl\">כיוון מחיר יחסי</th> <th dir=\"rtl\">מה משנה את המחיר באזור</th> </tr> </thead> <tbody dir=\"rtl\"> <tr dir=\"rtl\"> <td dir=\"rtl\">מרכז העיר</td> <td dir=\"rtl\">בינוני עד גבוה</td> <td dir=\"rtl\">קרבה למסחר, תחבורה, רעש, חניה, מעלית, מצב בניין ופוטנציאל התחדשות.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה הצעירה</td> <td dir=\"rtl\">גבוה</td> <td dir=\"rtl\">ביקוש משפחות, סביבת בתי ספר, חניה, מרפסת, ממ\"ד, רחוב שקט וגיל הבניין.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה ב' והירוקה</td> <td dir=\"rtl\">גבוה עד גבוה מאוד</td> <td dir=\"rtl\">סביבה ירוקה, איכות בנייה, דירות גדולות, קומה, מעלית, חניה כפולה ומחסן.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">גליל ים</td> <td dir=\"rtl\">גבוה</td> <td dir=\"rtl\">פרמיית בנייה חדשה, תכנון שכונתי, מרפסת, ממ\"ד, חניה, ועד בית ואיכות הפרויקט.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">נוה עמל ונוה אמירים</td> <td dir=\"rtl\">בינוני עד גבוה</td> <td dir=\"rtl\">שיפוץ, בניין ותיק מול חדש, נגישות, חניה, שטח רשום והאם קיימת היתכנות תכנונית.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">נוף ים</td> <td dir=\"rtl\">גבוה עד פרימיום</td> <td dir=\"rtl\">קרבה לים, נדירות, נוף, גודל דירה, זכויות, חניה ורמת הבנייה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">המרינה</td> <td dir=\"rtl\">פרימיום</td> <td dir=\"rtl\">נוף לים או למרינה, קומה, מרפסת, חניה, שירותי בניין, דמי ניהול ונדירות עסקה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה פיתוח</td> <td dir=\"rtl\">פרימיום גבוה</td> <td dir=\"rtl\">קרבה לים, מגרש, בנייה יוקרתית, רחוב, פרטיות, שטח, נוף, רמת גמר ותמהיל נכסים ייחודי.</td> </tr> </tbody> </table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Neighbourhood working ranges (8 rows) with no source and no date; the official file has a median only for the city centre (and Weizmann, not on the page). The range column leaves; the relative-price and what-changes-the-price columns are kept word for word; the official centre and Weizmann medians are given right after the table (edit 9).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">טווח עבודה נפוץ לדירות רגילות</th>",
+   "n": 8,
+   "raw_risk": [
+    "straight double quote",
+    "apostrophe",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "הטבלה אינה מחליפה בדיקה של עסקאות סגורות, אך היא מסבירה מדוע דירה שנראית יקרה לפי ממוצע עירוני יכולה להיות סבירה באזור מסוים, ומדוע דירה שנראית זולה עלולה לשקף חסרון ממשי כמו קומה נמוכה, בניין ללא מעלית, היעדר חניה, צורך בשיפוץ או מיקום פחות מבוקש בתוך אותה שכונה.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה במרכז העיר היה 2,928,500 ש\"ח לדירת 3 חדרים, 3,360,900 ש\"ח לדירת 4 חדרים ו-4,045,400 ש\"ח לדירת 5 חדרים, ובשכונת וייצמן 3,518,800 ש\"ח לדירת 4 חדרים. בשאר האזורים לא פורסם חציון לרבעון, ולכן משווים לעסקאות סגורות דומות ברחוב ובבניין. הטבלה אינה מחליפה בדיקה של עסקאות סגורות, אך היא מסבירה מדוע דירה שנראית יקרה לפי ממוצע עירוני יכולה להיות סבירה באזור מסוים, ומדוע דירה שנראית זולה עלולה לשקף חסרון ממשי כמו קומה נמוכה, בניין ללא מעלית, היעדר חניה, צורך בשיפוץ או מיקום פחות מבוקש בתוך אותה שכונה.",
+   "source_keys": [
+    "neighbourhoods[מרכז העיר].rooms.3",
+    "neighbourhoods[מרכז העיר].rooms.4",
+    "neighbourhoods[מרכז העיר].rooms.5",
+    "neighbourhoods[וייצמן].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Follows edit 8: the unsourced neighbourhood ranges are replaced by the official neighbourhood medians where published (1-3.2026). The original sentence is kept after the new ones.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 9,
+   "raw_risk": []
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "אם דירת 3 חדרים מושכרת סביב כ-6,500-6,800 ש\"ח בחודש ודירת 4 חדרים סביב כ-7,500-8,500 ש\"ח בחודש, אפשר להשתמש בשכירות כדי לבדוק אם מחיר מכירה נראה סביר ביחס לביקוש למגורים באזור.",
+   "new": "כאשר יודעים בכמה מושכרות דירות דומות באותו אזור, אפשר להשתמש בשכירות כדי לבדוק אם מחיר מכירה נראה סביר ביחס לביקוש למגורים באזור.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent levels for 3 and 4 rooms with no source and no date; rephrased without the numbers. Tier 2.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 10,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "נתוני שכירות שנבדקו הצביעו על שכירות חציונית בהרצליה סביב כ-7,200 ש\"ח בחודש, ממוצע סביב כ-7,661 ש\"ח, ודירות 3 חדרים סביב כ-6,686 ש\"ח. בטבלאות שכירות אחרות הופיעו דירות 2 חדרים סביב כ-5,500 ש\"ח, 3 חדרים סביב כ-6,800 ש\"ח, 4 חדרים סביב כ-8,500 ש\"ח ו-5 חדרים סביב כ-12,200 ש\"ח. הפער בין חציון, ממוצע ודירות יוקרה מסביר מדוע צריך לקרוא את השכירות לפי אזור ולא רק לפי עיר.",
+   "new": "בנתוני שכירות שנבדקו, הממוצע העירוני גבוה מהחציון, ודירות 5 חדרים ודירות באזורי יוקרה מושכרות בסכומים גבוהים בהרבה מדירות קטנות. הפער בין חציון, ממוצע ודירות יוקרה מסביר מדוע צריך לקרוא את השכירות לפי אזור ולא רק לפי עיר.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent median, average and per-room rents from unnamed 'rent data' and 'other rent tables', undated; rephrased without the numbers, keeping what they showed (average above median, large and luxury flats far above small ones). Tier 2.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 11,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"> <thead dir=\"rtl\"> <tr dir=\"rtl\"> <th dir=\"rtl\">אזור או סוג דירה</th> <th dir=\"rtl\">שכירות חודשית שנבדקה</th> <th dir=\"rtl\">מה זה אומר על מחיר הדירה</th> <th dir=\"rtl\">בדיקה לפני הסתמכות</th> </tr> </thead> <tbody dir=\"rtl\"> <tr dir=\"rtl\"> <td dir=\"rtl\">ממוצע עירוני בהרצליה</td> <td dir=\"rtl\">כ-7,600-7,700 ש\"ח</td> <td dir=\"rtl\">נותן מדד כללי לביקוש, אך מושפע מדירות גדולות, אזורי פרימיום ודירות יוקרה.</td> <td dir=\"rtl\">להשוות לחציון, לאזור ולמספר החדרים, ולא להסתמך על ממוצע יחיד.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">חציון עירוני בהרצליה</td> <td dir=\"rtl\">כ-7,200 ש\"ח</td> <td dir=\"rtl\">יכול לשקף טוב יותר את דירת השוק הרגילה לעומת ממוצע שמושפע מעסקאות יקרות.</td> <td dir=\"rtl\">לבדוק האם הדירה דומה למדגם: שטח, קומה, ריהוט, מצב ושכונה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">2 חדרים</td> <td dir=\"rtl\">כ-5,000-5,500 ש\"ח</td> <td dir=\"rtl\">מתאים לבדיקת דירות קטנות, שוכרים יחידים, זוגות צעירים ומשקיעים.</td> <td dir=\"rtl\">לוודא שאין שטח קטן במיוחד, חוסר חניה, רעש או בניין בעייתי.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">3 חדרים</td> <td dir=\"rtl\">כ-6,500-6,800 ש\"ח</td> <td dir=\"rtl\">שכירות כזו יכולה לתמוך במחיר סביב כ-2.5-3.1 מיליון ש\"ח, בכפוף לאזור ולמצב הדירה.</td> <td dir=\"rtl\">להשוות לדירות דומות באותו אזור, לא לכל דירות 3 החדרים בעיר.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">4 חדרים</td> <td dir=\"rtl\">כ-7,500-8,500 ש\"ח</td> <td dir=\"rtl\">מתאים לשוק משפחות, ולכן המחיר מושפע גם מבתי ספר, מעלית, חניה, ממ\"ד ומרפסת.</td> <td dir=\"rtl\">לבדוק אם השכירות משקפת דירה משופצת או דירה רגילה שדורשת השקעה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">5 חדרים</td> <td dir=\"rtl\">כ-9,000-12,200 ש\"ח</td> <td dir=\"rtl\">פער רחב שמושפע מאוד מגודל, איכות פרויקט, קומה, חניות, מרפסת ואזור.</td> <td dir=\"rtl\">להפריד בין דירת משפחה רגילה לבין דירה חדשה או דירה באזור פרימיום.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">נוה ישראל</td> <td dir=\"rtl\">כ-4,600-4,700 ש\"ח</td> <td dir=\"rtl\">עשוי להצביע על רמת מחיר נמוכה יותר ביחס לאזורים מבוקשים יותר בעיר.</td> <td dir=\"rtl\">לבדוק סוג דירות במדגם, גיל בניין, שטח ומצב תחזוקה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה הצעירה</td> <td dir=\"rtl\">כ-7,500-7,600 ש\"ח</td> <td dir=\"rtl\">משקף ביקוש חזק יחסית של משפחות ושוכרים המחפשים אזור מגורים מבוסס.</td> <td dir=\"rtl\">להשוות רק לדירות באותו גודל וברמת בניין דומה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">נוף ים</td> <td dir=\"rtl\">כ-9,300 ש\"ח</td> <td dir=\"rtl\">קרבה לים יכולה להעלות גם שכירות וגם מחיר מכירה, אך אינה זהה בכל רחוב.</td> <td dir=\"rtl\">לבדוק מרחק אמיתי מהים, נוף, חניה, קומה ואיכות הבניין.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה ב'</td> <td dir=\"rtl\">כ-10,000 ש\"ח</td> <td dir=\"rtl\">יכול לתמוך במחירי דירות גבוהים יותר, בעיקר בדירות משפחה איכותיות.</td> <td dir=\"rtl\">לבדוק אם מדובר בדירה רגילה, דירה גדולה, דירת גן או נכס חריג.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">המרינה</td> <td dir=\"rtl\">כ-11,300 ש\"ח</td> <td dir=\"rtl\">שוק פרימיום עם השפעה של נוף, בניין, שירותים ודמי ניהול.</td> <td dir=\"rtl\">להפריד בין דירות קטנות, דירות נופש, דירות מגורים ודירות יוקרה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה פיתוח</td> <td dir=\"rtl\">כ-20,900 ש\"ח</td> <td dir=\"rtl\">תת שוק יוקרתי שאינו מייצג את מחיר הדירה הרגילה בהרצליה.</td> <td dir=\"rtl\">לא להשתמש בנתון הזה להערכת דירה במרכז העיר, בנוה עמל או בגליל ים.</td> </tr> </tbody> </table>",
+   "new": "<table dir=\"rtl\"> <thead dir=\"rtl\"> <tr dir=\"rtl\"> <th dir=\"rtl\">אזור או סוג דירה</th> <th dir=\"rtl\">מה השכירות אומרת על מחיר הדירה</th> <th dir=\"rtl\">בדיקה לפני הסתמכות</th> </tr> </thead> <tbody dir=\"rtl\"> <tr dir=\"rtl\"> <td dir=\"rtl\">ממוצע עירוני בהרצליה</td> <td dir=\"rtl\">נותן מדד כללי לביקוש, אך מושפע מדירות גדולות, אזורי פרימיום ודירות יוקרה.</td> <td dir=\"rtl\">להשוות לחציון, לאזור ולמספר החדרים, ולא להסתמך על ממוצע יחיד.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">חציון עירוני בהרצליה</td> <td dir=\"rtl\">יכול לשקף טוב יותר את דירת השוק הרגילה לעומת ממוצע שמושפע מעסקאות יקרות.</td> <td dir=\"rtl\">לבדוק האם הדירה דומה למדגם: שטח, קומה, ריהוט, מצב ושכונה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">2 חדרים</td> <td dir=\"rtl\">מתאים לבדיקת דירות קטנות, שוכרים יחידים, זוגות צעירים ומשקיעים.</td> <td dir=\"rtl\">לוודא שאין שטח קטן במיוחד, חוסר חניה, רעש או בניין בעייתי.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">3 חדרים</td> <td dir=\"rtl\">עוזר לבדוק אם המחיר המבוקש סביר ביחס לחציון מחיר העסקה לדירת 3 חדרים, 2,793,600 ש\"ח ברבעון הראשון של 2026, בכפוף לאזור ולמצב הדירה.</td> <td dir=\"rtl\">להשוות לדירות דומות באותו אזור, לא לכל דירות 3 החדרים בעיר.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">4 חדרים</td> <td dir=\"rtl\">מתאים לשוק משפחות, ולכן המחיר מושפע גם מבתי ספר, מעלית, חניה, ממ\"ד ומרפסת.</td> <td dir=\"rtl\">לבדוק אם השכירות משקפת דירה משופצת או דירה רגילה שדורשת השקעה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">5 חדרים</td> <td dir=\"rtl\">פער רחב שמושפע מאוד מגודל, איכות פרויקט, קומה, חניות, מרפסת ואזור.</td> <td dir=\"rtl\">להפריד בין דירת משפחה רגילה לבין דירה חדשה או דירה באזור פרימיום.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">נוה ישראל</td> <td dir=\"rtl\">שכירות נמוכה יחסית עשויה להצביע על רמת מחיר נמוכה יותר ביחס לאזורים מבוקשים יותר בעיר.</td> <td dir=\"rtl\">לבדוק סוג דירות במדגם, גיל בניין, שטח ומצב תחזוקה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה הצעירה</td> <td dir=\"rtl\">משקף ביקוש חזק יחסית של משפחות ושוכרים המחפשים אזור מגורים מבוסס.</td> <td dir=\"rtl\">להשוות רק לדירות באותו גודל וברמת בניין דומה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">נוף ים</td> <td dir=\"rtl\">קרבה לים יכולה להעלות גם שכירות וגם מחיר מכירה, אך אינה זהה בכל רחוב.</td> <td dir=\"rtl\">לבדוק מרחק אמיתי מהים, נוף, חניה, קומה ואיכות הבניין.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה ב'</td> <td dir=\"rtl\">שכירות גבוהה יחסית יכולה לתמוך במחירי דירות גבוהים יותר, בעיקר בדירות משפחה איכותיות.</td> <td dir=\"rtl\">לבדוק אם מדובר בדירה רגילה, דירה גדולה, דירת גן או נכס חריג.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">המרינה</td> <td dir=\"rtl\">שוק פרימיום עם השפעה של נוף, בניין, שירותים ודמי ניהול.</td> <td dir=\"rtl\">להפריד בין דירות קטנות, דירות נופש, דירות מגורים ודירות יוקרה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה פיתוח</td> <td dir=\"rtl\">תת שוק יוקרתי שאינו מייצג את מחיר הדירה הרגילה בהרצליה.</td> <td dir=\"rtl\">לא להשתמש בשכירות של האזור הזה להערכת דירה במרכז העיר, בנוה עמל או בגליל ים.</td> </tr> </tbody> </table>",
+   "source_keys": [
+    "rooms.3.latest"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent table (12 rows) with no source name and no date; the rent column leaves, the reading and check columns stay word for word except where they pointed at the removed figure. The 3-room row's sale range 2.5-3.1M (consistent) becomes the official 3-room median. Tier 2.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">שכירות חודשית שנבדקה</th>",
+   "n": 12,
+   "raw_risk": [
+    "straight double quote",
+    "apostrophe",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "כאשר מופיע מחיר למ\"ר סביב כ-34,000-38,000 ש\"ח, צריך לשאול האם הוא מתאים לדירה הנבדקת או רק משקף ערבוב של אזורים וסוגי נכסים.",
+   "new": "כאשר מופיע מחיר למ\"ר עירוני, צריך לשאול האם הוא מתאים לדירה הנבדקת או רק משקף ערבוב של אזורים וסוגי נכסים.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Repeats the undated city per-m2 34,000-38,000; number dropped. Tier 2.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 13,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"> <thead dir=\"rtl\"> <tr dir=\"rtl\"> <th dir=\"rtl\">דוגמה או נתון לבדיקה</th> <th dir=\"rtl\">מספרים שנבדקו</th> <th dir=\"rtl\">איך לקרוא את הנתון</th> <th dir=\"rtl\">מה לא להסיק ממנו לבד</th> </tr> </thead> <tbody dir=\"rtl\"> <tr dir=\"rtl\"> <td dir=\"rtl\">ממוצע רכישה עירוני</td> <td dir=\"rtl\">כ-4.0-4.24 מיליון ש\"ח</td> <td dir=\"rtl\">נותן תמונת גובה כללית של השוק בהרצליה.</td> <td dir=\"rtl\">לא אומר שכל דירת 4 חדרים שווה סביב 4 מיליון ש\"ח.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">מחיר למ\"ר עירוני</td> <td dir=\"rtl\">כ-34,000-38,000 ש\"ח למ\"ר</td> <td dir=\"rtl\">יכול לעזור בהשוואה ראשונית בין דירות בגודל שונה.</td> <td dir=\"rtl\">לא מתאים אוטומטית לדירות יוקרה, דירות קטנות מאוד או דירות לשיפוץ.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">דירת 3 חדרים</td> <td dir=\"rtl\">כ-2.52-2.78 מיליון ש\"ח בחלק מהנתונים</td> <td dir=\"rtl\">טווח שמתאים לבדיקת דירות קטנות ובינוניות, לפי אזור ומצב.</td> <td dir=\"rtl\">לא כל דירת 3 חדרים בהרצליה נמצאת בטווח הזה, במיוחד ליד הים או בבנייה חדשה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">דירת 4 חדרים</td> <td dir=\"rtl\">כ-3.05-3.98 מיליון ש\"ח בדוגמאות ונתונים נקודתיים</td> <td dir=\"rtl\">זהו טווח שבו שונות השטח, הקומה והבניין משפיעה מאוד.</td> <td dir=\"rtl\">לא ניתן להשוות דירת 86 מ\"ר לדירת 109 מ\"ר רק לפי מספר חדרים.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">דירת 5 חדרים</td> <td dir=\"rtl\">כ-3.95-4.45 מיליון ש\"ח בחלק מהנתונים, עם חריגים מעל 5 מיליון ש\"ח</td> <td dir=\"rtl\">מתאים לשוק משפחות, במיוחד בדירות עם ממ\"ד, חניה ומרפסת.</td> <td dir=\"rtl\">לא מבדיל לבד בין דירה חדשה, דירת יד שנייה ודירת פרימיום.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">עסקה לדוגמה ברחוב אחד העם</td> <td dir=\"rtl\">4 חדרים, כ-109 מ\"ר, סביב כ-3.98 מיליון ש\"ח, תאריך 19.11.2025</td> <td dir=\"rtl\">עסקה כזו יכולה לשמש עוגן אם הדירה הנבדקת דומה בשטח, ברחוב, בבניין ובמועד.</td> <td dir=\"rtl\">לא נכון להחיל אותה על דירה קטנה יותר, אזור אחר או בניין שונה מהותית.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">דוגמאות רחוב ממקורות לוחות ועסקאות</td> <td dir=\"rtl\">כ-1.77 מיליון ש\"ח, כ-2.78 מיליון ש\"ח, כ-3.60 מיליון ש\"ח וכ-3.98 מיליון ש\"ח</td> <td dir=\"rtl\">הפערים מראים שהכתובת, סוג הנכס והמאפיינים חשובים יותר מממוצע אחד.</td> <td dir=\"rtl\">לא להשתמש בדוגמה בודדת כדי לקבוע מחיר הצעה או מחיר פרסום.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">פער בין מחיר מבוקש למחיר סגירה</td> <td dir=\"rtl\">יכול לנוע מעשרות אלפי ש\"ח ועד מאות אלפי ש\"ח</td> <td dir=\"rtl\">הפער תלוי בתחרות, זמן על המדף, תמחור פתיחה, מצב הדירה וכוח המיקוח.</td> <td dir=\"rtl\">לא כל מוכר יוריד מחיר, ולא כל מחיר מבוקש מנופח.</td> </tr> </tbody> </table>",
+   "new": "<table dir=\"rtl\"> <thead dir=\"rtl\"> <tr dir=\"rtl\"> <th dir=\"rtl\">דוגמה או נתון לבדיקה</th> <th dir=\"rtl\">מספרים שנבדקו</th> <th dir=\"rtl\">איך לקרוא את הנתון</th> <th dir=\"rtl\">מה לא להסיק ממנו לבד</th> </tr> </thead> <tbody dir=\"rtl\"> <tr dir=\"rtl\"> <td dir=\"rtl\">חציון מחיר העסקה בעיר</td> <td dir=\"rtl\">3,202,200 ש\"ח, כלל העסקאות בינואר-מרץ 2026</td> <td dir=\"rtl\">נותן תמונת גובה כללית של השוק בהרצליה.</td> <td dir=\"rtl\">לא מחיר לדירה מסוימת; תמהיל החדרים והאזורים ברבעון משנה אותו.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">דירת 3 חדרים</td> <td dir=\"rtl\">2,793,600 ש\"ח, חציון מחיר העסקה ינואר-מרץ 2026</td> <td dir=\"rtl\">נקודת ייחוס לבדיקת דירות קטנות ובינוניות, לפי אזור ומצב.</td> <td dir=\"rtl\">לא כל דירת 3 חדרים בהרצליה קרובה לחציון, במיוחד ליד הים או בבנייה חדשה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">דירת 4 חדרים</td> <td dir=\"rtl\">3,272,800 ש\"ח, חציון מחיר העסקה ינואר-מרץ 2026</td> <td dir=\"rtl\">סביב החציון, שונות השטח, הקומה והבניין משפיעה מאוד.</td> <td dir=\"rtl\">לא ניתן להשוות דירת 86 מ\"ר לדירת 109 מ\"ר רק לפי מספר חדרים.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">דירת 5 חדרים</td> <td dir=\"rtl\">4,251,200 ש\"ח, חציון מחיר העסקה ינואר-מרץ 2026</td> <td dir=\"rtl\">מתאים לשוק משפחות, במיוחד בדירות עם ממ\"ד, חניה ומרפסת.</td> <td dir=\"rtl\">לא מבדיל לבד בין דירה חדשה, דירת יד שנייה ודירת פרימיום.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">עסקה לדוגמה ברחוב אחד העם</td> <td dir=\"rtl\">4 חדרים, כ-109 מ\"ר, סביב כ-3.98 מיליון ש\"ח, תאריך 19.11.2025</td> <td dir=\"rtl\">עסקה כזו יכולה לשמש עוגן אם הדירה הנבדקת דומה בשטח, ברחוב, בבניין ובמועד.</td> <td dir=\"rtl\">לא נכון להחיל אותה על דירה קטנה יותר, אזור אחר או בניין שונה מהותית.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">פער בין מחיר מבוקש למחיר סגירה</td> <td dir=\"rtl\">יכול לנוע מעשרות אלפי ש\"ח ועד מאות אלפי ש\"ח</td> <td dir=\"rtl\">הפער תלוי בתחרות, זמן על המדף, תמחור פתיחה, מצב הדירה וכוח המיקוח.</td> <td dir=\"rtl\">לא כל מוכר יוריד מחיר, ולא כל מחיר מבוקש מנופח.</td> </tr> </tbody> </table>",
+   "source_keys": [
+    "rooms.all.latest",
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Deals table: the city 'purchase average' 4.0-4.24M (and 'not every 4-room flat is worth about 4M') conflicts with the official all-deals median 3,202,200; the per-m2 row and the four street examples (1.77M to 3.98M, no room count, no date) have no dated source. Rebuilt with the official city and 3/4/5-room medians (the 3/4/5 ranges were consistent, the 3-room top 2.78M sits just under the median 2,793,600); the dated Ahad Ha'am deal and the asking-vs-closing row are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מספרים שנבדקו</th>",
+   "n": 14,
+   "raw_risk": [
+    "straight double quote",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "מחיר למ\"ר בהרצליה יכול לנוע סביב כ-34,000-38,000 ש\"ח למ\"ר כאינדיקציה עירונית רחבה, אבל אין להשתמש במספר הזה לבד.",
+   "new": "מחיר למ\"ר בהרצליה משתנה מאוד לפי אזור, גודל וסוג נכס, ולכן אין מספר עירוני אחד שאפשר להשתמש בו לבד.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ per-m2: the undated 34,000-38,000 range; rephrased without the number. Tier 2.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 15,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 154,
+   "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
+   "field": "content",
+   "old": "דירות 2 חדרים יכולות לנוע סביב כ-5,000-5,500 ש\"ח, דירות 3 חדרים סביב כ-6,500-6,800 ש\"ח, דירות 4 חדרים סביב כ-7,500-8,500 ש\"ח ודירות 5 חדרים סביב כ-9,000-12,200 ש\"ח.",
+   "new": "דירות גדולות ודירות במצב טוב מושכרות בדרך כלל ביותר, ולכן משווים לחוזים של דירות דומות באותו אזור.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ rent by rooms with no source and no date; rephrased without the numbers. Tier 2.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 16,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  }
+ ],
+ "live_recheck": {
+  "retrieved_utc": "2026-10-07 11:18:36",
+  "modified": "2026-10-07T13:30:50",
+  "audited_copy_modified": "2026-10-07T13:30:50",
+  "price_list_on_page": true,
+  "body_outside_list_identical_to_audited_copy": "yes",
+  "dry_run": "16 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ }
+}

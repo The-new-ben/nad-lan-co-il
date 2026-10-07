@@ -1,0 +1,1368 @@
+{
+ "key": "sde-dov",
+ "updated": "2026-10-07",
+ "page": "https://nad-lan.co.il/sde-dov/",
+ "data_file": "scripts/project-stage/area_map/sde-dov.json",
+ "built_by": "a scratchpad build (build_sde_dov.py) from public GETs of 7.10.2026; raw answers kept in the session scratchpad, not in the repo",
+ "view": {
+  "center": [
+   34.7845,
+   32.11
+  ],
+  "zoom": 14.45,
+  "pitch": 55,
+  "bearing": -24,
+  "phone": {
+   "center": [
+    34.7844,
+    32.1114
+   ],
+   "zoom": 13.55,
+   "pitch": 52
+  }
+ },
+ "counts": {
+  "projects": 9,
+  "renewal": 0,
+  "edu": 9,
+  "parks": 8,
+  "shop": 2,
+  "transit": 6
+ },
+ "sources": {
+  "osm": {
+   "name": "OpenStreetMap contributors",
+   "licence": "ODbL 1.0",
+   "url": "https://www.openstreetmap.org/copyright"
+  },
+  "overpass": {
+   "endpoint": "https://overpass-api.de/api/interpreter",
+   "retrieved": "2026-10-07T10:10:02Z",
+   "query": "[out:json][timeout:150][bbox:32.094,34.766,32.130,34.800];\n(\n  nwr[\"amenity\"~\"^(school|kindergarten|cafe|pharmacy|bus_station)$\"];\n  nwr[\"shop\"=\"supermarket\"];\n  nwr[\"leisure\"~\"^(park|nature_reserve|marina)$\"];\n  nwr[\"natural\"=\"beach\"];\n  nwr[\"leisure\"=\"beach_resort\"];\n  nwr[\"railway\"~\"^(station|halt|stop|tram_stop)$\"];\n  nwr[\"public_transport\"=\"station\"];\n  nwr[\"construction:railway\"];\n  nwr[\"railway\"~\"^(construction|proposed)$\"][\"name\"];\n  nwr[\"construction\"~\"light_rail|station\"][\"name\"];\n  nwr[\"power\"=\"plant\"];\n  nwr[\"man_made\"=\"chimney\"][\"name\"];\n  way[\"highway\"~\"^(footway|pedestrian|path|cycleway)$\"][\"name\"~\"טיילת|Promenade|promenade\"];\n  way[\"waterway\"=\"river\"][\"name\"~\"ירקון\"];\n  nwr[\"place\"~\"^(neighbourhood|quarter|locality)$\"];\n  nwr[\"tourism\"~\"^(attraction|viewpoint)$\"][\"name\"];\n)->.x;\n.x out center tags;\n"
+  },
+  "tel_aviv_gis": {
+   "base": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer",
+   "layers_used": {
+    "528": "תוכניות בניין עיר (the line)",
+    "837": "מגרשי ייעודי קרקע - מפורט (project lots)",
+    "511": "שכונות (checked, not used for the line)",
+    "764": "הקו הירוק - תחנות",
+    "769": "בתי ספר תשפז",
+    "768": "גני ילדים תשפז",
+    "551": "שטחים ירוקים וגנים ציבוריים"
+   }
+  },
+  "hub_page": {
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "status": 200,
+   "retrieved": "2026-10-07T10:04:10Z",
+   "says": "title \"שדה דב: פרויקטים ודירות למכירה ברובע החדש | המדריך המלא\"; H2 \"שלושת המתחמים: אשכול, מרכז הרובע, צפון הרובע\"; H3 project list Rainbow, FIRST, ASHIRA, DIMRI YAMA, ZOHI, GINDI VOGUE, UTOPIA; text \"חיבור לקו הירוק של הרכבת הקלה\""
+  },
+  "catalogue": {
+   "url": "https://nad-lan.co.il/wp-json/nadlan/v1/project-map",
+   "status": 200,
+   "retrieved": "2026-10-07T10:04:12Z",
+   "items_total": 962,
+   "items_in_box": 15
+  }
+ },
+ "boundary": {
+  "type": "Feature",
+  "properties": {
+   "label": "גבולות הרובע, בקירוב",
+   "method": "The municipal polygon of plan 4444 \"רובע שדה דב\" (in force, GIS layer 528, oid_taba 4523), Douglas-Peucker 4 m, 94 of 894 vertices kept. It holds the three compounds named in the same layer: תמ\"ל3001 \"שדה דב- אשכול\" (oid 4524), 1/4444 \"מרכז רובע שדה דב\" (oid 4526) and 2/4444 \"צפון רובע שדה דב\" (oid 4609); every project lot lies inside it. The municipal NEIGHBOURHOOD polygon \"אזור שדה דב\" (layer 511, oid_shchuna 23, 1342519 m²) was checked and NOT used: it leaves out the whole Eshkol compound (Rainbow, Dimri Yama, Ashira, UTOPIA, ZOHI, lot 109 lie 150 to 430 m outside it) and adds the beach strip and the Reading area.",
+   "plan": {
+    "oid_taba": 4523,
+    "id_taba": 6598,
+    "taba": "4444                ",
+    "shem_taba": "רובע שדה דב",
+    "t_status": "בתוקף",
+    "url_iplan": "https://mavat.iplan.gov.il/SV4/1/5000402863/310",
+    "Shape_Area": 1304427.6089077867
+   },
+   "plan_in_force_ms": 1596931200000,
+   "plan_in_force_date": "2020-08-09 (tr_matan_tokef, epoch ms, UTC)",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/528/query?where=oid_taba%3D4523&outFields=oid_taba%2Cid_taba%2Ctaba%2Cshem_taba%2Ct_status%2Ctr_matan_tokef%2Curl_documents%2Curl_iplan%2CShape_Area&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:08:09Z",
+   "neighbourhood_checked": {
+    "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/511/query?where=1%3D1&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+    "retrieved": "2026-10-07T10:06:56Z",
+    "name": "אזור שדה דב"
+   }
+  },
+  "geometry": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      34.78652,
+      32.12353
+     ],
+     [
+      34.7881,
+      32.12348
+     ],
+     [
+      34.78916,
+      32.12336
+     ],
+     [
+      34.78894,
+      32.12334
+     ],
+     [
+      34.78879,
+      32.1232
+     ],
+     [
+      34.78778,
+      32.12057
+     ],
+     [
+      34.78538,
+      32.11656
+     ],
+     [
+      34.78509,
+      32.11596
+     ],
+     [
+      34.78493,
+      32.11516
+     ],
+     [
+      34.78488,
+      32.11124
+     ],
+     [
+      34.78549,
+      32.10877
+     ],
+     [
+      34.7869,
+      32.10863
+     ],
+     [
+      34.78748,
+      32.10945
+     ],
+     [
+      34.78901,
+      32.10925
+     ],
+     [
+      34.78856,
+      32.10893
+     ],
+     [
+      34.78854,
+      32.10884
+     ],
+     [
+      34.78892,
+      32.10878
+     ],
+     [
+      34.78879,
+      32.10824
+     ],
+     [
+      34.78864,
+      32.10826
+     ],
+     [
+      34.78862,
+      32.10817
+     ],
+     [
+      34.78854,
+      32.10818
+     ],
+     [
+      34.78849,
+      32.10774
+     ],
+     [
+      34.78854,
+      32.10773
+     ],
+     [
+      34.78843,
+      32.10744
+     ],
+     [
+      34.78865,
+      32.10742
+     ],
+     [
+      34.7886,
+      32.1071
+     ],
+     [
+      34.78842,
+      32.10712
+     ],
+     [
+      34.78841,
+      32.10703
+     ],
+     [
+      34.78853,
+      32.10701
+     ],
+     [
+      34.78848,
+      32.10674
+     ],
+     [
+      34.78833,
+      32.10676
+     ],
+     [
+      34.7883,
+      32.10609
+     ],
+     [
+      34.78843,
+      32.10528
+     ],
+     [
+      34.78818,
+      32.10538
+     ],
+     [
+      34.78817,
+      32.10534
+     ],
+     [
+      34.78829,
+      32.10482
+     ],
+     [
+      34.78863,
+      32.1048
+     ],
+     [
+      34.78848,
+      32.10394
+     ],
+     [
+      34.78898,
+      32.1039
+     ],
+     [
+      34.78901,
+      32.10378
+     ],
+     [
+      34.78886,
+      32.103
+     ],
+     [
+      34.78889,
+      32.10282
+     ],
+     [
+      34.78886,
+      32.10264
+     ],
+     [
+      34.78877,
+      32.10262
+     ],
+     [
+      34.78679,
+      32.10276
+     ],
+     [
+      34.78677,
+      32.10265
+     ],
+     [
+      34.78607,
+      32.10256
+     ],
+     [
+      34.78609,
+      32.10268
+     ],
+     [
+      34.78486,
+      32.10253
+     ],
+     [
+      34.78479,
+      32.10217
+     ],
+     [
+      34.78447,
+      32.10221
+     ],
+     [
+      34.78451,
+      32.10248
+     ],
+     [
+      34.78424,
+      32.10245
+     ],
+     [
+      34.78421,
+      32.10228
+     ],
+     [
+      34.78389,
+      32.10229
+     ],
+     [
+      34.78387,
+      32.10221
+     ],
+     [
+      34.78381,
+      32.10222
+     ],
+     [
+      34.78382,
+      32.10241
+     ],
+     [
+      34.78367,
+      32.10241
+     ],
+     [
+      34.7836,
+      32.10254
+     ],
+     [
+      34.78396,
+      32.1042
+     ],
+     [
+      34.7816,
+      32.10458
+     ],
+     [
+      34.78145,
+      32.10468
+     ],
+     [
+      34.78183,
+      32.10618
+     ],
+     [
+      34.77763,
+      32.10721
+     ],
+     [
+      34.77812,
+      32.10929
+     ],
+     [
+      34.77785,
+      32.10929
+     ],
+     [
+      34.77823,
+      32.11023
+     ],
+     [
+      34.77933,
+      32.11206
+     ],
+     [
+      34.78043,
+      32.11471
+     ],
+     [
+      34.78091,
+      32.11564
+     ],
+     [
+      34.78096,
+      32.11585
+     ],
+     [
+      34.78091,
+      32.11639
+     ],
+     [
+      34.78128,
+      32.11673
+     ],
+     [
+      34.78143,
+      32.11696
+     ],
+     [
+      34.78149,
+      32.11727
+     ],
+     [
+      34.78146,
+      32.11771
+     ],
+     [
+      34.78157,
+      32.11818
+     ],
+     [
+      34.78193,
+      32.11854
+     ],
+     [
+      34.78188,
+      32.11863
+     ],
+     [
+      34.78202,
+      32.11871
+     ],
+     [
+      34.7821,
+      32.11891
+     ],
+     [
+      34.78223,
+      32.11938
+     ],
+     [
+      34.78231,
+      32.12012
+     ],
+     [
+      34.78287,
+      32.12115
+     ],
+     [
+      34.78281,
+      32.12128
+     ],
+     [
+      34.78295,
+      32.12162
+     ],
+     [
+      34.78318,
+      32.12193
+     ],
+     [
+      34.78324,
+      32.12209
+     ],
+     [
+      34.78339,
+      32.12215
+     ],
+     [
+      34.78402,
+      32.12337
+     ],
+     [
+      34.78408,
+      32.12337
+     ],
+     [
+      34.78405,
+      32.12361
+     ],
+     [
+      34.78652,
+      32.12353
+     ]
+    ]
+   ]
+  }
+ },
+ "projects": [
+  {
+   "id": "rainbow-tel-aviv",
+   "name": "ריינבו",
+   "fact": "מגדל בן 39 קומות ובנייני בוטיק בני 9 קומות · 459 דירות",
+   "developer": "ישראל קנדה",
+   "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+   "url_status": 200,
+   "url_checked": "2026-10-07T10:04:35Z",
+   "lat": 32.103173,
+   "lng": 34.784446,
+   "position_from": "municipal lot polygon(s), GIS layer 837, area-weighted centroid",
+   "page_position": [
+    32.103168,
+    34.784441
+   ],
+   "page_position_delta_m": 0.7,
+   "lot": "111/3001",
+   "sources": [
+    {
+     "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/837/query?where=st_mispar_migrash_betaba%3D%27111%27+AND+st_taba+LIKE+%27%253001%25%27&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+     "retrieved": "2026-10-07T10:06:29Z",
+     "kind": "OFFICIAL: Tel Aviv-Yafo GIS layer 837 (מגרשי ייעודי קרקע)",
+     "says": "ריינבו: lot 111 in plan תמ\"ל3001, land use \"מגורים ומסחר\", 1 polygon part(s), 8669 m² in all; pin = area-weighted centroid 32.103173, 34.784446 (computed here)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+     "says": "JSON-LD geo 32.103168, 34.784441; text: \"ריינבו תל אביב (Rainbow Tel Aviv) הוא פרויקט המגורים של ישראל קנדה במגרש 111 ברובע שדה דב ... מגדל בן 39 קומות ובנייני בוטיק בני 9 קומות סביב חצר פנימית, 459 דירות לפי היזם\". NOTE: the same page's JSON-LD says numberOfAccommodationUnits 480 (the tender figure), the text says 459.",
+     "retrieved": "2026-10-07T10:11:45Z",
+     "kind": "our project page (HTTP 200)"
+    },
+    {
+     "url": "https://www.mako.co.il/finances-real-estate/Article-806ffd84d60a091027.htm",
+     "says": "\"חברת ישראל־קנדה זכתה במגרש 111 ששטחו כ־8.6 דונמים, והיא משווקת עליו את פרויקט ריינבו שבמסגרתו ייבנו 480 דירות\"",
+     "retrieved": "2026-10-07T10:13:52Z",
+     "kind": "PRESS"
+    },
+    {
+     "url": "https://www.globes.co.il/news/article.aspx?did=1001553606",
+     "says": "275 of 459 units sold (developer reports). Reused from scripts/project-stage/price_guide/rainbow-tel-aviv.json (GL2608), read 7.10.2026 07:00-08:10 UTC by the price research (docs/research/2026-10-07-project-prices/README.md); not re-read here",
+     "retrieved": "2026-10-07 (07:00-08:10 UTC, earlier research)",
+     "kind": "PRESS (reused)"
+    },
+    {
+     "url": "https://www.globes.co.il/news/article.aspx?did=1001463064",
+     "says": "Tax Authority deals: \"tower floor 13 of 39\", \"boutique building floor 8 of 9\". Reused from rainbow-tel-aviv.json (GL2311)",
+     "retrieved": "2026-10-07 (07:00-08:10 UTC, earlier research)",
+     "kind": "PRESS (reused)"
+    }
+   ]
+  },
+  {
+   "id": "dimri-yama-sde-dov",
+   "name": "דמרי ימה",
+   "fact": "מגדל בן 40 קומות, מגדלון בן 16 ושני בניינים בני 9 · 458 דירות",
+   "developer": "י.ח. דמרי",
+   "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/",
+   "url_status": 200,
+   "url_checked": "2026-10-07T10:04:22Z",
+   "lat": 32.104437,
+   "lng": 34.784467,
+   "position_from": "municipal lot polygon(s), GIS layer 837, area-weighted centroid",
+   "page_position": [
+    32.104441,
+    34.784472
+   ],
+   "page_position_delta_m": 0.7,
+   "lot": "107/3001",
+   "sources": [
+    {
+     "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/837/query?where=st_mispar_migrash_betaba%3D%27107%27+AND+st_taba+LIKE+%27%253001%25%27&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+     "retrieved": "2026-10-07T10:06:31Z",
+     "kind": "OFFICIAL: Tel Aviv-Yafo GIS layer 837 (מגרשי ייעודי קרקע)",
+     "says": "דמרי ימה: lot 107 in plan תמ\"ל3001, land use \"מגורים, מסחר ותיירות\", 1 polygon part(s), 7589 m² in all; pin = area-weighted centroid 32.104437, 34.784467 (computed here)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/",
+     "says": "JSON-LD geo 32.104441, 34.784472; facts box: \"מגרש 107, כ-700 מ׳ מהים\", \"מגדל של 40 קומות\", \"מגדלון של 16 ושני מבנים של 9\", 458 units",
+     "retrieved": "2026-10-07T10:11:47Z",
+     "kind": "our project page (HTTP 200)"
+    },
+    {
+     "url": "https://www.nadlancenter.co.il/article/10309",
+     "says": "\"לרכישת מלוא הזכויות במקרקעין, הידועים כמגרש 107 בשכונת אשכול. התכנון המוצע בשטח כולל 458 דירות\" (Y.H. Dimri, 25.7.2024)",
+     "retrieved": "2026-10-07T10:14:03Z",
+     "kind": "PRESS"
+    },
+    {
+     "url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91%20%D7%9E%D7%92%D7%A8%D7%A9%20107%20%D7%90%D7%A9%D7%9B%D7%95%D7%9C.pdf",
+     "says": "p.6: \"במגרש 107 מתוכננים מגדל בן40, מגדלון בן16 קומות ושני מבנים מרקמיים בני9 קומות\" (design decision, lot 107 Eshkol)",
+     "retrieved": "2026-10-07T10:18:29Z",
+     "kind": "OFFICIAL: Tel Aviv-Yafo local committee"
+    }
+   ]
+  },
+  {
+   "id": "ashira-sde-dov",
+   "name": "אשירה",
+   "fact": "מגדל בן 35 קומות ועוד 3 בניינים · 406 דירות",
+   "developer": "אביסרור משה ובניו",
+   "url": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+   "url_status": 200,
+   "url_checked": "2026-10-07T10:04:21Z",
+   "lat": 32.105646,
+   "lng": 34.787676,
+   "position_from": "municipal lot polygon(s), GIS layer 837, area-weighted centroid",
+   "page_position": [
+    32.105643,
+    34.787673
+   ],
+   "page_position_delta_m": 0.5,
+   "lot": "101/3001",
+   "sources": [
+    {
+     "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/837/query?where=st_mispar_migrash_betaba%3D%27101%27+AND+st_taba+LIKE+%27%253001%25%27&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+     "retrieved": "2026-10-07T10:06:33Z",
+     "kind": "OFFICIAL: Tel Aviv-Yafo GIS layer 837 (מגרשי ייעודי קרקע)",
+     "says": "אשירה: lot 101 in plan תמ\"ל3001, land use \"מגורים ומסחר\", 1 polygon part(s), 7426 m² in all; pin = area-weighted centroid 32.105646, 34.787676 (computed here)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+     "says": "JSON-LD geo 32.105643, 34.787673; \"אביסרור משה ובניו במגרש 101 בשכונת אשכול ... 406 דירות בארבעה בניינים, מגדל של 35 קומות\"",
+     "retrieved": "2026-10-07T10:11:48Z",
+     "kind": "our project page (HTTP 200)"
+    },
+    {
+     "url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A1%D7%93%D7%A8%20%D7%99%D7%95%D7%9D%2023-0007%20%D7%9E%D7%99%D7%95%D7%9D%203-5-2023.pdf",
+     "says": "agenda 23-0007 of 3.5.2023, item 13 \"מגרש 101 אשכול\": p.174 \"יזם אביסרור משה ובניו עבודות בנין ופיתוח בע\"מ\"; p.178 \"4 מבנים ... מגדל בן 35 קומות\"; p.180 \"סה\"כ 406 יח\"ד\". (The mid-rise is 15 floors on p.178 and 16 with the ground floor elsewhere; the two low buildings are 9 with ground and technical floors, our page says 8: so the card names only the 35-floor tower and \"3 more buildings\".)",
+     "retrieved": "2026-10-07T10:18:11Z",
+     "kind": "OFFICIAL: Tel Aviv-Yafo local committee"
+    }
+   ]
+  },
+  {
+   "id": "utopia-sde-dov",
+   "name": "UTOPIA",
+   "fact": "4 בניינים סביב חצר משותפת · 337 דירות",
+   "developer": "קבוצת נחמיאס",
+   "url": "https://nad-lan.co.il/projects/utopia-sde-dov/",
+   "url_status": 200,
+   "url_checked": "2026-10-07T10:04:38Z",
+   "lat": 32.106063,
+   "lng": 34.784731,
+   "position_from": "municipal lot polygon(s), GIS layer 837, area-weighted centroid",
+   "page_position": null,
+   "page_position_delta_m": null,
+   "lot": "103/3001",
+   "sources": [
+    {
+     "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/837/query?where=st_mispar_migrash_betaba%3D%27103%27+AND+st_taba+LIKE+%27%253001%25%27&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+     "retrieved": "2026-10-07T10:06:35Z",
+     "kind": "OFFICIAL: Tel Aviv-Yafo GIS layer 837 (מגרשי ייעודי קרקע)",
+     "says": "UTOPIA: lot 103 in plan תמ\"ל3001, land use \"מגורים ומסחר\", 2 polygon part(s), 5213 m² in all; pin = area-weighted centroid 32.106063, 34.784731 (computed here)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/utopia-sde-dov/",
+     "says": "no JSON-LD geo on the page (the catalogue point 32.106063, 34.784732 is 0.1 m from the lot centroid); text: \"פרויקט מגורים מתוכנן של קבוצת נחמיאס במגרש 103 במתחם אשכול\", \"337 דירות\"",
+     "retrieved": "2026-10-07T10:11:50Z",
+     "kind": "our project page (HTTP 200)"
+    },
+    {
+     "url": "https://www.nadlancenter.co.il/article/11221",
+     "says": "\"קלוד נחמיאס, באמצעות חברת נוף עירוני יזמות, השלים את רכישת המגרש (103) בחלק הדרום מזרחי ברובע שדה דב\"",
+     "retrieved": "2026-10-07T10:13:41Z",
+     "kind": "PRESS"
+    },
+    {
+     "url": "https://www.nadlancenter.co.il/article/13109",
+     "says": "\"קבוצת נחמיאס החלה בעבודות הבניה בפרויקט \"אוטופיה\" ... כ-5 דונמים במרכז מתחם אשכול ... 337 יחידות דיור\"",
+     "retrieved": "2026-10-07T10:13:44Z",
+     "kind": "PRESS"
+    },
+    {
+     "url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%9E%D7%92%D7%A8%D7%A9%20103%20%D7%93%D7%99%D7%95%D7%9F%20%D7%91%D7%A2%D7%99%D7%A6%D7%95%D7%91.pdf",
+     "says": "p.6 \"יזם קבוצת נחמיאס יזום והשקעות בע\"מ\"; \"4 מבנים ... המבנים מגדירים במרכז המגרש חצר משותפת\"; p.9 \"סה\"כ 337 יח\"ד\"",
+     "retrieved": "2026-10-07T10:22:06Z",
+     "kind": "OFFICIAL: Tel Aviv-Yafo design discussion, lot 103"
+    }
+   ]
+  },
+  {
+   "id": "zohi-sde-dov",
+   "name": "זוהי",
+   "fact": "230 דירות",
+   "developer": "לוינשטין, מבנה ואלייד",
+   "url": "https://nad-lan.co.il/projects/zohi-sde-dov/",
+   "url_status": 200,
+   "url_checked": "2026-10-07T10:04:40Z",
+   "lat": 32.102845,
+   "lng": 34.785476,
+   "position_from": "municipal lot polygon(s), GIS layer 837, area-weighted centroid",
+   "page_position": [
+    32.102851,
+    34.785483
+   ],
+   "page_position_delta_m": 1.0,
+   "lot": "110/3001",
+   "sources": [
+    {
+     "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/837/query?where=st_mispar_migrash_betaba%3D%27110%27+AND+st_taba+LIKE+%27%253001%25%27&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+     "retrieved": "2026-10-07T10:06:38Z",
+     "kind": "OFFICIAL: Tel Aviv-Yafo GIS layer 837 (מגרשי ייעודי קרקע)",
+     "says": "זוהי: lot 110 in plan תמ\"ל3001, land use \"מגורים ומסחר\", 2 polygon part(s), 4659 m² in all; pin = area-weighted centroid 32.102845, 34.785476 (computed here)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/zohi-sde-dov/",
+     "says": "JSON-LD geo 32.102851, 34.785483, streetAddress \"מגרש 110, מתחם אשכול, רובע שדה דב\"; facts box \"יזם: לוינשטין, מבנה ואלייד נדלן\", \"יחידות דיור 230\"",
+     "retrieved": "2026-10-07T10:11:52Z",
+     "kind": "our project page (HTTP 200)"
+    },
+    {
+     "url": "https://www.globes.co.il/news/article.aspx?did=1001487655",
+     "says": "27.8.2024: design plans for lots 110 and 409; \"למגרש בבעלות אלייד, לוינשטין ומבנה\"; title \"230 יח\"ד ובית ספר\" (lot 409 is the city's school lot). The building mix changed between 2024 and the 1.2026 launch, so the card gives the unit count only.",
+     "retrieved": "2026-10-07T10:14:01Z",
+     "kind": "PRESS"
+    }
+   ]
+  },
+  {
+   "id": "shikun-binui-sde-dov",
+   "name": "שיכון ובינוי",
+   "fact": "324 דירות להשכרה ארוכת טווח · מגדל בן 38 קומות ושני בניינים בני 8",
+   "developer": null,
+   "url": "https://nad-lan.co.il/projects/shikun-binui-sde-dov/",
+   "url_status": 200,
+   "url_checked": "2026-10-07T10:04:37Z",
+   "lat": 32.10337,
+   "lng": 34.785624,
+   "position_from": "municipal lot polygon(s), GIS layer 837, area-weighted centroid",
+   "page_position": [
+    32.103371,
+    34.785624
+   ],
+   "page_position_delta_m": 0.1,
+   "lot": "109/3001",
+   "sources": [
+    {
+     "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/837/query?where=st_mispar_migrash_betaba%3D%27109%27+AND+st_taba+LIKE+%27%253001%25%27&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+     "retrieved": "2026-10-07T10:06:36Z",
+     "kind": "OFFICIAL: Tel Aviv-Yafo GIS layer 837 (מגרשי ייעודי קרקע)",
+     "says": "שיכון ובינוי: lot 109 in plan תמ\"ל3001, land use \"מגורים ומסחר\", 1 polygon part(s), 5230 m² in all; pin = area-weighted centroid 32.103370, 34.785624 (computed here)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/shikun-binui-sde-dov/",
+     "says": "JSON-LD geo 32.103371, 34.785624, streetAddress \"מגרש 109, מתחם אשכול\"; \"324 יחידות דיור להשכרה, במגדל בן 38 קומות ושני מבנים בני 8 קומות\"",
+     "retrieved": "2026-10-07T10:11:54Z",
+     "kind": "our project page (HTTP 200)"
+    },
+    {
+     "url": "https://mayafiles.tase.co.il/rhtm/1728001-1729000/H1728325.htm",
+     "says": "Shikun & Binui filing: \"ביחס לפרויקט שדה דב א' (מגרש 109) ... קיים היתר בנייה מלא לפרויקט\"",
+     "retrieved": "2026-10-07T10:14:05Z",
+     "kind": "OFFICIAL: TASE filing"
+    },
+    {
+     "url": "https://www.globes.co.il/news/article.aspx?did=1001528922",
+     "says": "\"היתר בנייה ראשון ל־324 דירות להשכרה ארוכת-טווח ... מגדל בן 38 קומות ועוד שני בניינים בני שמונה קומות\"",
+     "retrieved": "2026-10-07T10:19:00Z",
+     "kind": "PRESS"
+    }
+   ]
+  },
+  {
+   "id": "gindi-vogue-sde-dov",
+   "name": "GINDI VOGUE",
+   "fact": "מגדל בן 45 קומות ו-3 מגדלים בני 20 · 708 דירות",
+   "developer": "גינדי החזקות",
+   "url": "https://nad-lan.co.il/projects/gindi-vogue-sde-dov/",
+   "url_status": 200,
+   "url_checked": "2026-10-07T10:04:30Z",
+   "lat": 32.110647,
+   "lng": 34.78359,
+   "position_from": "municipal lot polygon(s), GIS layer 837, area-weighted centroid",
+   "page_position": [
+    32.110644,
+    34.783587
+   ],
+   "page_position_delta_m": 0.4,
+   "lot": "2206/4444 + 2255/4444",
+   "sources": [
+    {
+     "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/837/query?where=st_mispar_migrash_betaba%3D%272206%27+AND+st_taba+LIKE+%27%254444%25%27&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+     "retrieved": "2026-10-07T10:06:40Z",
+     "kind": "OFFICIAL: Tel Aviv-Yafo GIS layer 837 (מגרשי ייעודי קרקע)",
+     "says": "GINDI VOGUE: lot 2206 in plan 1/4444, land use \"מגורים ותעסוקה\", 2 polygon part(s), 8502 m² in all; pin = area-weighted centroid 32.110647, 34.783590 (computed here)"
+    },
+    {
+     "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/837/query?where=st_mispar_migrash_betaba%3D%272255%27+AND+st_taba+LIKE+%27%254444%25%27&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+     "retrieved": "2026-10-07T10:06:41Z",
+     "kind": "OFFICIAL: Tel Aviv-Yafo GIS layer 837 (מגרשי ייעודי קרקע)",
+     "says": "GINDI VOGUE (second lot, no pin): lot 2255 in plan 1/4444, land use \"מגורים ותעסוקה\", 4 polygon part(s), 5865 m² in all; pin = area-weighted centroid 32.112378, 34.784063 (computed here); 197 m from the pin"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/gindi-vogue-sde-dov/",
+     "says": "JSON-LD geo 32.110644, 34.783587, streetAddress \"מגרש 2206, מרכז רובע שדה דב\"; facts box \"יזם: גינדי החזקות\", \"יחידות דיור 708\"",
+     "retrieved": "2026-10-07T10:11:56Z",
+     "kind": "our project page (HTTP 200)"
+    },
+    {
+     "url": "https://www.tel-aviv.gov.il/Residents/Development/DocLib/%D7%A4%D7%A8%D7%95%D7%98%D7%95%D7%A7%D7%95%D7%9C%20%D7%94%D7%97%D7%9C%D7%98%D7%95%D7%AA%2026-0001%20%D7%9E%D7%AA%D7%90%D7%A8%D7%99%D7%9A%2021-01-2026.pdf",
+     "says": "decisions 11 and 12 of 21.1.2026: lot 2255 p.115 \"יזם: גינדי ישראל 2010\", \"מגדל מס' 1 בן45 קומות, מגדל מס2 בן20 קומות, מבנה מרקמי מס8 בן5 קומות ומבנה מרקמי מס9 בן7 קומות\", p.117 total 382 units; lot 2206 p.128 \"יזם: גינדי ישראל 2010\", p.130 \"שני מגדלי מגורים בני 20 קומות ושלושה מבנים מרקמיים בני9 קומות\", p.131 total 326 units (382 + 326 = 708)",
+     "retrieved": "2026-10-07T10:17:50Z",
+     "kind": "OFFICIAL: Tel Aviv-Yafo local committee"
+    }
+   ]
+  },
+  {
+   "id": "first-sde-dov",
+   "name": "FIRST",
+   "fact": "מגדל בן 45 קומות ו-3 בנייני בוטיק בני 9 · 350 דירות",
+   "developer": "קבוצת חג'ג'",
+   "url": "https://nad-lan.co.il/projects/first-sde-dov/",
+   "url_status": 200,
+   "url_checked": "2026-10-07T10:04:28Z",
+   "lat": 32.114133,
+   "lng": 34.784402,
+   "position_from": "municipal lot polygon(s), GIS layer 837, area-weighted centroid",
+   "page_position": [
+    32.114141,
+    34.784411
+   ],
+   "page_position_delta_m": 1.3,
+   "lot": "2270/4444",
+   "sources": [
+    {
+     "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/837/query?where=st_mispar_migrash_betaba%3D%272270%27+AND+st_taba+LIKE+%27%254444%25%27&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+     "retrieved": "2026-10-07T10:06:43Z",
+     "kind": "OFFICIAL: Tel Aviv-Yafo GIS layer 837 (מגרשי ייעודי קרקע)",
+     "says": "FIRST: lot 2270 in plan 1/4444, land use \"מגורים ותעסוקה\", 2 polygon part(s), 4926 m² in all; pin = area-weighted centroid 32.114133, 34.784402 (computed here)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/first-sde-dov/",
+     "says": "JSON-LD geo 32.114141, 34.784411 (1.3 m from the lot 2270 centroid); \"מגדל בן 45 קומות לצד שלושה בנייני בוטיק בני 9 קומות ... 350 יחידות דיור\"; facts box \"יזם: קבוצת חג'ג'\"",
+     "retrieved": "2026-10-07T10:11:58Z",
+     "kind": "our project page (HTTP 200)"
+    },
+    {
+     "url": "https://www.nadlancenter.co.il/article/12512",
+     "says": "\"קבוצת חג'ג' ... זכתה בתחילת השנה במכרז רמ\"י בשדה דב להקמת 350 יחידות ... שלושה בנייני בוטיק בגובה 9 קומות, ומגדל יוקרה בגובה 45 קומות\"; \"פרוייקט FIRST\"",
+     "retrieved": "2026-10-07T10:13:50Z",
+     "kind": "PRESS"
+    },
+    {
+     "url": "docs/data/location-audit-2026-08-05.csv (row first-sde-dov)",
+     "says": "internal audit of 5.8.2026: \"פרוטוקול ועדת המשנה העירונית מזהה את קבוצת חג׳ג׳ כיזם תכנית העיצוב למגרש 2270 בתא/1/4444\"; that protocol was NOT re-found today. GIS layer 528 holds the design plan \"תעא/4444/1/(2270) מגרש 2270, מרכז הרובע שדה דב\" (approved 4.3.2026; no documents online). Lot 2270 = 4,926 m², matches a 350-unit lot. UNCERTAIN LINK, see the report.",
+     "retrieved": "2026-08-05 (audit); GIS re-read 2026-10-07T10:06:43Z",
+     "kind": "INTERNAL + OFFICIAL"
+    }
+   ]
+  },
+  {
+   "id": "migdalei-hayam-sde-dov",
+   "name": "מגדלי הים התיכון",
+   "fact": "דיור מוגן · עד 300 יחידות דיור",
+   "developer": null,
+   "url": "https://nad-lan.co.il/projects/migdalei-hayam-sde-dov/",
+   "url_status": 200,
+   "url_checked": "2026-10-07T10:04:33Z",
+   "lat": 32.123294,
+   "lng": 34.786808,
+   "position_from": "municipal lot polygon(s), GIS layer 837, area-weighted centroid",
+   "page_position": [
+    32.123298,
+    34.786813
+   ],
+   "page_position_delta_m": 0.6,
+   "lot": "150/4444",
+   "sources": [
+    {
+     "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/837/query?where=st_mispar_migrash_betaba%3D%27150%27+AND+st_taba+LIKE+%27%254444%25%27&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+     "retrieved": "2026-10-07T10:06:45Z",
+     "kind": "OFFICIAL: Tel Aviv-Yafo GIS layer 837 (מגרשי ייעודי קרקע)",
+     "says": "מגדלי הים התיכון: lot 150 in plan 2/4444, land use \"דיור מיוחד\", 2 polygon part(s), 4663 m² in all; pin = area-weighted centroid 32.123294, 34.786808 (computed here)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/migdalei-hayam-sde-dov/",
+     "says": "JSON-LD geo 32.123298, 34.786813 (0.6 m from the lot 150 centroid), streetAddress \"המתחם הצפוני, רובע שדה דב\"; facts box: status \"בתכנון\", 300 units",
+     "retrieved": "2026-10-07T10:12:00Z",
+     "kind": "our project page (HTTP 200)"
+    },
+    {
+     "url": "https://www.funder.co.il/article/181884",
+     "says": "\"זכתה החברה במכרז של רמ\"י להקמת פרויקט דיור מוגן במתחם הצפוני והיוקרתי של שדה דב שיכלול עד 300 יחידות דיור\"",
+     "retrieved": "2026-10-07T10:13:59Z",
+     "kind": "PRESS"
+    },
+    {
+     "url": "https://www.bizportal.co.il/realestates/news/article/20035517",
+     "says": "9.7.2026: \"מקדמת את שלבי התכנון של פרויקט שדה דב\"",
+     "retrieved": "2026-10-07T10:13:57Z",
+     "kind": "PRESS"
+    },
+    {
+     "url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/837/query?where=t_yeud_karka+LIKE+%27%25%D7%93%D7%99%D7%95%D7%A8+%D7%9E%D7%99%D7%95%D7%97%D7%93%25%27+AND+st_taba+LIKE+%27%254444%25%27&outFields=st_mispar_migrash_betaba%2Cst_taba%2Ct_yeud_karka%2Cms_shetach&returnGeometry=true&outSR=4326&f=json",
+     "retrieved": "2026-10-07T10:19:06Z",
+     "kind": "OFFICIAL: GIS layer 837",
+     "says": "all \"דיור מיוחד\" (special housing) lots in the 4444 plans: lot 150 in 2/4444 (צפון רובע שדה דב, 4,663 m²) and lot 2104 in 1/4444 (the centre). The tender was for the NORTH compound, so lot 150 is the only match (identification by elimination)."
+    }
+   ]
+  }
+ ],
+ "renewal": [],
+ "renewal_note": "No renewal rows: the district is new construction on the former airfield; the nearest renewal compounds in our catalogue (שמעוני 27-29, ברזיל, איינשטיין 19, טאגור) are 365 to 850 m outside the line.",
+ "places": [
+  {
+   "cat": "edu",
+   "type": "בית ספר",
+   "name": "בית הספר ארן",
+   "addr": "יהודה בורלא 25",
+   "lat": 32.108128,
+   "lng": 34.79026,
+   "edge_m": 137,
+   "inside_line": false,
+   "dist_to_line_m": 137,
+   "source": "Tel Aviv-Yafo GIS layer 769 \"בתי ספר תשפז\" (schools 2026-27)",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/769/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:20:11Z",
+   "says": "shem_mosad \"ארן\", יסודי, grades 1-6, ממלכתי, בורלא יהודה 25, status \"פעיל\""
+  },
+  {
+   "cat": "edu",
+   "type": "בית ספר",
+   "name": "בית הספר כוכב הצפון",
+   "addr": "אבא קובנר 19",
+   "lat": 32.101471,
+   "lng": 34.78638,
+   "edge_m": 124,
+   "inside_line": false,
+   "dist_to_line_m": 124,
+   "source": "Tel Aviv-Yafo GIS layer 769 \"בתי ספר תשפז\" (schools 2026-27)",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/769/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:20:11Z",
+   "says": "shem_mosad \"כוכב הצפון\", יסודי, grades 1-6, ממלכתי, קובנר אבא 19, status \"פעיל\""
+  },
+  {
+   "cat": "edu",
+   "type": "בית ספר",
+   "name": "בית הספר נופי ים",
+   "addr": "יצחק בשביס זינגר 3",
+   "lat": 32.113632,
+   "lng": 34.785355,
+   "edge_m": 43,
+   "inside_line": false,
+   "dist_to_line_m": 43,
+   "source": "Tel Aviv-Yafo GIS layer 769 \"בתי ספר תשפז\" (schools 2026-27)",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/769/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:20:11Z",
+   "says": "shem_mosad \"נופי ים\", יסודי, grades 1-6, ממלכתי, זינגר בשביס יצחק 3, status \"פעיל\""
+  },
+  {
+   "cat": "edu",
+   "type": "בית ספר",
+   "name": "עירוני כ\"ד עמוס עוז",
+   "addr": "מארק שאגאל 2",
+   "lat": 32.118073,
+   "lng": 34.786807,
+   "edge_m": 42,
+   "inside_line": false,
+   "dist_to_line_m": 42,
+   "source": "Tel Aviv-Yafo GIS layer 769 \"בתי ספר תשפז\" (schools 2026-27)",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/769/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:20:11Z",
+   "says": "shem_mosad \"עירוני כ\"ד - עמוס עוז חט\"ב\", על יסודי, grades 7-11, ממלכתי, שאגאל מארק 2, status \"פעיל\""
+  },
+  {
+   "cat": "edu",
+   "type": "גן ילדים",
+   "name": "אבא קובנר 16",
+   "addr": null,
+   "lat": 32.100904,
+   "lng": 34.78581,
+   "edge_m": 170,
+   "inside_line": false,
+   "dist_to_line_m": 170,
+   "source": "Tel Aviv-Yafo GIS layer 768 \"גני ילדים תשפז\" (kindergartens 2026-27)",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/768/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:20:16Z",
+   "says": "8 kindergarten(s) at קובנר אבא 16: רתם-בננה (פעיל), רתם-תות (פעיל), רתם-הדרים (פעיל), רתם-שקמים (פעיל), רתם-חופש (פעיל), רתם-חירות (פעיל), רתם-דובדבן (פעיל), רתם-דובשנית (פעיל)",
+   "note": "pin name = the street address (the municipal kindergarten names are internal codes)"
+  },
+  {
+   "cat": "edu",
+   "type": "גן ילדים",
+   "name": "יהודה בורלא 2",
+   "addr": null,
+   "lat": 32.104549,
+   "lng": 34.791217,
+   "edge_m": 222,
+   "inside_line": false,
+   "dist_to_line_m": 222,
+   "source": "Tel Aviv-Yafo GIS layer 768 \"גני ילדים תשפז\" (kindergartens 2026-27)",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/768/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:20:16Z",
+   "says": "4 kindergarten(s) at בורלא יהודה 2: לא-קרן (פעיל), לא-תו (פעיל), לא-סול (פעיל), רק-כחל (פעיל)",
+   "note": "pin name = the street address (the municipal kindergarten names are internal codes)"
+  },
+  {
+   "cat": "edu",
+   "type": "גן ילדים",
+   "name": "יהודה עמיחי 1",
+   "addr": null,
+   "lat": 32.109609,
+   "lng": 34.785618,
+   "edge_m": 32,
+   "inside_line": false,
+   "dist_to_line_m": 32,
+   "source": "Tel Aviv-Yafo GIS layer 768 \"גני ילדים תשפז\" (kindergartens 2026-27)",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/768/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:20:16Z",
+   "says": "5 kindergarten(s) at עמיחי יהודה 1: טח-אשכול-אדמונית (פעיל), טח-אשכול-אוכמנית (פעיל), טח-אשכול-מנטה (פעיל), טח-אשכול-אגמון (פעיל), טח-אשכול-תות יער (פעיל)",
+   "note": "pin name = the street address (the municipal kindergarten names are internal codes)"
+  },
+  {
+   "cat": "edu",
+   "type": "גן ילדים",
+   "name": "יצחק בשביס זינגר 1",
+   "addr": null,
+   "lat": 32.113359,
+   "lng": 34.785725,
+   "edge_m": 78,
+   "inside_line": false,
+   "dist_to_line_m": 78,
+   "source": "Tel Aviv-Yafo GIS layer 768 \"גני ילדים תשפז\" (kindergartens 2026-27)",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/768/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:20:16Z",
+   "says": "1 kindergarten(s) at זינגר בשביס יצחק 1: קנה-נוף (פעיל)",
+   "note": "pin name = the street address (the municipal kindergarten names are internal codes)"
+  },
+  {
+   "cat": "edu",
+   "type": "גן ילדים",
+   "name": "יצחק בשביס זינגר 7",
+   "addr": null,
+   "lat": 32.114576,
+   "lng": 34.78549,
+   "edge_m": 54,
+   "inside_line": false,
+   "dist_to_line_m": 54,
+   "source": "Tel Aviv-Yafo GIS layer 768 \"גני ילדים תשפז\" (kindergartens 2026-27)",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/768/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:20:16Z",
+   "says": "5 kindergarten(s) at זינגר בשביס יצחק 7: רסב-אשכול-רקיע (פעיל), רסב-אשכול-שחק (פעיל), רסב-אשכול-שמים (פעיל), רסב-אשכול-זריחה (פעיל), רסב-אשכול-סהר (פעיל)",
+   "note": "pin name = the street address (the municipal kindergarten names are internal codes)"
+  },
+  {
+   "cat": "parks",
+   "type": "חוף ים",
+   "name": "חוף הכלבים הצפוני",
+   "addr": null,
+   "lat": 32.114463,
+   "lng": 34.779705,
+   "edge_m": 57,
+   "inside_line": false,
+   "dist_to_line_m": 57,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/91625157",
+   "retrieved": "2026-10-07T10:10:02Z",
+   "says": "{\"name\": \"חוף הכלבים הצפוני\", \"name:en\": \"The Northen Dogs Beach\", \"name:he\": \"חוף הכלבים הצפוני\", \"natural\": \"beach\"}"
+  },
+  {
+   "cat": "parks",
+   "type": "חוף ים",
+   "name": "חוף תל ברוך",
+   "addr": null,
+   "lat": 32.122026,
+   "lng": 34.782466,
+   "edge_m": 61,
+   "inside_line": false,
+   "dist_to_line_m": 61,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/710261378",
+   "retrieved": "2026-10-07T10:10:02Z",
+   "says": "{\"name\": \"חוף תל ברוך\", \"name:en\": \"Tel Baruch Beach\", \"name:he\": \"חוף תל ברוך\", \"natural\": \"beach\"}"
+  },
+  {
+   "cat": "parks",
+   "type": "טיילת",
+   "name": "טיילת שפך הירקון",
+   "addr": null,
+   "lat": 32.099861,
+   "lng": 34.778018,
+   "edge_m": null,
+   "inside_line": false,
+   "dist_to_line_m": 600,
+   "source": "Tel Aviv-Yafo GIS layer 551 \"שטחים ירוקים וגנים ציבוריים\"",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/551/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.772%2C+%22ymin%22%3A+32.098%2C+%22xmax%22%3A+34.795%2C+%22ymax%22%3A+32.128%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&returnCentroid=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:23:10Z",
+   "says": "shem_gan \"טיילת שפך הירקון\", label \"גן\", 10.75 dunam; pin = centroid of the polygon (computed here)",
+   "note": "kept beyond 250 m because the brief asks for the Yarkon estuary"
+  },
+  {
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גינה לזכר כ\"ג יורדי הסירה",
+   "addr": null,
+   "lat": 32.109149,
+   "lng": 34.791089,
+   "edge_m": 196,
+   "inside_line": false,
+   "dist_to_line_m": 196,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/251561023",
+   "retrieved": "2026-10-07T10:10:02Z",
+   "says": "{\"leisure\": \"park\", \"name\": \"גינה לזכר כ\\\"ג יורדי הסירה\", \"name:he\": \"גינה לזכר כ\\\"ג יורדי הסירה\"}"
+  },
+  {
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן ז'ילבר",
+   "addr": null,
+   "lat": 32.107037,
+   "lng": 34.789548,
+   "edge_m": 89,
+   "inside_line": false,
+   "dist_to_line_m": 89,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/99661624",
+   "retrieved": "2026-10-07T10:10:02Z",
+   "says": "{\"leisure\": \"park\", \"name\": \"גן ז'ילבר\", \"name:en\": \"Jilber Garden\", \"name:he\": \"גן ז'ילבר\"}"
+  },
+  {
+   "cat": "parks",
+   "type": "פארק",
+   "name": "גן כוכב הצפון",
+   "addr": null,
+   "lat": 32.102028,
+   "lng": 34.785529,
+   "edge_m": 64,
+   "inside_line": false,
+   "dist_to_line_m": 64,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/98520934",
+   "retrieved": "2026-10-07T10:10:02Z",
+   "says": "{\"leisure\": \"park\", \"name\": \"גן כוכב הצפון\", \"name:en\": \"Northern Star Park\", \"name:he\": \"גן כוכב הצפון\"}"
+  },
+  {
+   "cat": "parks",
+   "type": "פארק",
+   "name": "למד הירוקה",
+   "addr": null,
+   "lat": 32.105695,
+   "lng": 34.789384,
+   "edge_m": 95,
+   "inside_line": false,
+   "dist_to_line_m": 95,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/99661603",
+   "retrieved": "2026-10-07T10:10:02Z",
+   "says": "{\"leisure\": \"park\", \"name\": \"למד הירוקה\", \"name:en\": \"Lamed Hayeruka\", \"name:he\": \"למד הירוקה\"}"
+  },
+  {
+   "cat": "parks",
+   "type": "פארק",
+   "name": "פארק חופי רידינג",
+   "addr": null,
+   "lat": 32.105735,
+   "lng": 34.777017,
+   "edge_m": 173,
+   "inside_line": false,
+   "dist_to_line_m": 173,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/way/103189606",
+   "retrieved": "2026-10-07T10:10:02Z",
+   "says": "{\"leisure\": \"park\", \"name\": \"פארק חופי רידינג\", \"name:en\": \"Reading Beach Park\", \"name:he\": \"פארק חופי רידינג\"}"
+  },
+  {
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "שופרסל אקספרס",
+   "addr": "בוני העיר 9",
+   "lat": 32.101043,
+   "lng": 34.783365,
+   "edge_m": 137,
+   "inside_line": false,
+   "dist_to_line_m": 137,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/2079222859",
+   "retrieved": "2026-10-07T10:10:02Z",
+   "says": "{\"name\": \"שופרסל אקספרס\", \"name:en\": \"Shufersal Express\", \"name:he\": \"שופרסל אקספרס\", \"shop\": \"supermarket\"}"
+  },
+  {
+   "cat": "shop",
+   "type": "סופרמרקט",
+   "name": "שופרסל אקספרס",
+   "addr": "מאיר יערי 27",
+   "lat": 32.100442,
+   "lng": 34.787817,
+   "edge_m": 248,
+   "inside_line": false,
+   "dist_to_line_m": 248,
+   "source": "OpenStreetMap (Overpass API)",
+   "source_url": "https://www.openstreetmap.org/node/11818013491",
+   "retrieved": "2026-10-07T10:10:02Z",
+   "says": "{\"name\": \"Shufersal Express\", \"name:he\": \"שופרסל אקספרס\", \"operator\": \"יוסי דאלי\", \"shop\": \"supermarket\"}"
+  },
+  {
+   "cat": "transit",
+   "type": "תחנה עתידית של הקו הירוק",
+   "name": "איינשטיין",
+   "addr": null,
+   "lat": 32.113182,
+   "lng": 34.783603,
+   "edge_m": null,
+   "inside_line": true,
+   "dist_to_line_m": 0,
+   "source": "Tel Aviv-Yafo GIS layer 764 \"הקו הירוק - תחנות\"",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/764/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:20:01Z",
+   "says": "station \"איינשטיין\" (Einstein), line ירוק, type עילית. Not yet running: OpenStreetMap tags the Green Line track through the district railway=construction, construction=light_rail, opening_date=2030-07-01 (way 1391027677, Overpass 2026-10-07T10:10:02Z)"
+  },
+  {
+   "cat": "transit",
+   "type": "תחנה עתידית של הקו הירוק",
+   "name": "זהרה לביטוב",
+   "addr": null,
+   "lat": 32.10783,
+   "lng": 34.78206,
+   "edge_m": null,
+   "inside_line": true,
+   "dist_to_line_m": 0,
+   "source": "Tel Aviv-Yafo GIS layer 764 \"הקו הירוק - תחנות\"",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/764/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:20:01Z",
+   "says": "station \"זהרה לביטוב\" (Dov), line ירוק, type עילית. Not yet running: OpenStreetMap tags the Green Line track through the district railway=construction, construction=light_rail, opening_date=2030-07-01 (way 1391027677, Overpass 2026-10-07T10:10:02Z)"
+  },
+  {
+   "cat": "transit",
+   "type": "תחנה עתידית של הקו הירוק",
+   "name": "לוי אשכול",
+   "addr": null,
+   "lat": 32.112019,
+   "lng": 34.785827,
+   "edge_m": 91,
+   "inside_line": false,
+   "dist_to_line_m": 91,
+   "source": "Tel Aviv-Yafo GIS layer 764 \"הקו הירוק - תחנות\"",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/764/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:20:01Z",
+   "says": "station \"לוי אשכול\" (Levi Eshkol), line ירוק, type עילית. Not yet running: OpenStreetMap tags the Green Line track through the district railway=construction, construction=light_rail, opening_date=2030-07-01 (way 1391027677, Overpass 2026-10-07T10:10:02Z)"
+  },
+  {
+   "cat": "transit",
+   "type": "תחנה עתידית של הקו הירוק",
+   "name": "נופי ים",
+   "addr": null,
+   "lat": 32.117908,
+   "lng": 34.785919,
+   "edge_m": null,
+   "inside_line": true,
+   "dist_to_line_m": 0,
+   "source": "Tel Aviv-Yafo GIS layer 764 \"הקו הירוק - תחנות\"",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/764/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:20:01Z",
+   "says": "station \"נופי ים\" (HaGush HaGadol), line ירוק, type עילית. Not yet running: OpenStreetMap tags the Green Line track through the district railway=construction, construction=light_rail, opening_date=2030-07-01 (way 1391027677, Overpass 2026-10-07T10:10:02Z)"
+  },
+  {
+   "cat": "transit",
+   "type": "תחנה עתידית של הקו הירוק",
+   "name": "פרופס",
+   "addr": null,
+   "lat": 32.123054,
+   "lng": 34.788458,
+   "edge_m": null,
+   "inside_line": true,
+   "dist_to_line_m": 0,
+   "source": "Tel Aviv-Yafo GIS layer 764 \"הקו הירוק - תחנות\"",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/764/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:20:01Z",
+   "says": "station \"פרופס\" (Propes), line ירוק, type עילית. Not yet running: OpenStreetMap tags the Green Line track through the district railway=construction, construction=light_rail, opening_date=2030-07-01 (way 1391027677, Overpass 2026-10-07T10:10:02Z)"
+  },
+  {
+   "cat": "transit",
+   "type": "תחנה עתידית של הקו הירוק",
+   "name": "רידינג",
+   "addr": null,
+   "lat": 32.099404,
+   "lng": 34.782236,
+   "edge_m": null,
+   "inside_line": false,
+   "dist_to_line_m": 346,
+   "source": "Tel Aviv-Yafo GIS layer 764 \"הקו הירוק - תחנות\"",
+   "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/764/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json",
+   "retrieved": "2026-10-07T10:20:01Z",
+   "says": "station \"רידינג\" (Reading), line ירוק, type עילית. Not yet running: OpenStreetMap tags the Green Line track through the district railway=construction, construction=light_rail, opening_date=2030-07-01 (way 1391027677, Overpass 2026-10-07T10:10:02Z)",
+   "note": "kept beyond 250 m because the brief asks for the Reading station"
+  }
+ ],
+ "not_placed": {
+  "projects": [
+   {
+    "url": "https://nad-lan.co.il/projects/ashdar-einstein/",
+    "title": "אשדר איינשטיין נווה אביבים - פרויקט בוטיק",
+    "lat": 32.11345,
+    "lng": 34.798809,
+    "why": "outside the Sde Dov line (1032 m)"
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/einstein-19/",
+    "title": "איינשטיין 19 רמת אביב - פינוי בינוי של אזורים",
+    "lat": 32.1133,
+    "lng": 34.793685,
+    "why": "outside the Sde Dov line (628 m)"
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/einstein-tower/",
+    "title": "EINSTEIN TOWER רמת אביב - פרויקט מגורים של קבוצת חג׳ג׳",
+    "lat": 32.111736,
+    "lng": 34.788433,
+    "why": "outside the Sde Dov line (264 m)"
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%a9%d7%9e%d7%a2%d7%95%d7%a0%d7%99-29-27-%d7%aa%d7%9c-%d7%90%d7%91%d7%99%d7%91/",
+    "title": "שמעוני 29-27 תל אביב",
+    "lat": 32.108204,
+    "lng": 34.792742,
+    "why": "outside the Sde Dov line (365 m)"
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%91%d7%a8%d7%96%d7%99%d7%9c/",
+    "title": "ברזיל",
+    "lat": 32.110732,
+    "lng": 34.794462,
+    "why": "outside the Sde Dov line (538 m)"
+   },
+   {
+    "url": "https://nad-lan.co.il/projects/%d7%98%d7%90%d7%92%d7%95%d7%a8/",
+    "title": "טאגור",
+    "lat": 32.113723,
+    "lng": 34.796397,
+    "why": "outside the Sde Dov line (853 m)"
+   }
+  ],
+  "projects_without_our_page": [
+   {
+    "what": "Shikun & Binui, a separate 511-unit Sde Dov project (\"שדה דב ב'\", lot 106)",
+    "seen_in": "docs/content/wave1/shikun-binui-sde-dov-content-package-2026-08-05/00-source-ledger.md (TASE filing H1728325 names lot 106)",
+    "why": "no page on nad-lan.co.il, and the AreaMap card always links to a project page; not researched further"
+   },
+   {
+    "what": "Dan Nadlan and Electra, 437 homes, design plan approved",
+    "seen_in": "search result https://www.nadlancenter.co.il/article/14609 (title only, not opened)",
+    "why": "no page on nad-lan.co.il; lot not verified"
+   },
+   {
+    "what": "Achim Israel, lot 2103 in the district centre",
+    "seen_in": "search result https://www.nadlancenter.co.il/article/14709 (title only, not opened)",
+    "why": "no page on nad-lan.co.il; not verified"
+   }
+  ],
+  "landmarks": [
+   {
+    "name": "תחנת רידינג",
+    "lat": 32.105083,
+    "lng": 34.779056,
+    "dist_to_line_m": 190,
+    "source_url": "https://www.openstreetmap.org/way/97714590",
+    "retrieved": "2026-10-07T10:10:02Z",
+    "why": "the component has four place filters only (schools, parks, shopping, transport); a power station fits none, so it is left out rather than mislabelled"
+   }
+  ],
+  "places_dropped": [
+   {
+    "cat": "edu",
+    "name": "kindergarten at בורלא יהודה 25",
+    "dist_m": 137,
+    "why": "same point as a school pin (kept the school)",
+    "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/768/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json"
+   },
+   {
+    "cat": "transit",
+    "name": "אזורי חן",
+    "dist_m": 405,
+    "why": "more than 250 m outside the line",
+    "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/764/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json"
+   },
+   {
+    "cat": "transit",
+    "name": "נמיר",
+    "dist_m": 496,
+    "why": "more than 250 m outside the line",
+    "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/764/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json"
+   },
+   {
+    "cat": "transit",
+    "name": "בורודצקי",
+    "dist_m": 849,
+    "why": "more than 250 m outside the line",
+    "source_url": "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/764/query?where=1%3D1&geometry=%7B%22xmin%22%3A+34.766%2C+%22ymin%22%3A+32.094%2C+%22xmax%22%3A+34.8%2C+%22ymax%22%3A+32.13%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=json"
+   }
+  ]
+ }
+}

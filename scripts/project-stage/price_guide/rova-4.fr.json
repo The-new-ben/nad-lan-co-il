@@ -438,7 +438,7 @@
    "f40": "Étage 40",
    "axis": "₪/m² selon l’étage",
    "you": "Votre choix",
-   "tw": "Tours Kikar HaMedina, moyenne",
+   "tw": "Moyenne Kikar HaMedina",
    "ta": "Tel Aviv-Jaffa, médiane",
    "aria_t": "Estimation de {lo} à {hi} ₪/m² à l’étage {f}, face à la moyenne des ventes dans les tours, environ {avg} ₪",
    "aria_a": "{m} : de {lo} à {hi} ₪/m², face à la moyenne des tours, environ {avg} ₪, et à Tel Aviv-Jaffa, {ta} ₪",

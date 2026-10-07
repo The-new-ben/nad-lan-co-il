@@ -1,0 +1,372 @@
+{
+ "generated": "7.10.2026",
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages/4866?_fields=id,link,title,content,yoast_head_json,modified_gmt (content.rendered), public, retrieved 2026-10-07 10:39:51 UTC (modified_gmt 2026-10-07T08:18:10). Saved as source/hub-4866-rest.json. Page 4866 = https://nad-lan.co.il/north-tel-aviv/. Title, H1, URL, every H2/H3 and the Yoast title and description are not edited (none of them carries a number).",
+ "facts": "Source keys are defined in align-check.md section 3 (URL, what it says, date, when read); the audit ids A-1 to A-13 are in its section 4. Claims for the translations: claims.json (hub claims H-01 to H-11).",
+ "apply_rules": [
+  "Apply in the listed order. Every \"old\" matches content.rendered exactly once (matches_in_live) and still once after the earlier edits are applied (verified by script on the saved copy). No edit here needs replace_all.",
+  "Every old string sits inside one paragraph, list item or table cell (cell edits carry their own <td>...</td> because the same words appear elsewhere), except edit 22, which is inside the Article JSON-LD <script> at the top of the content (in_jsonld: true).",
+  "Edits with \"optional\": true (11-16 enrich the prices table with official or dated numbers; 22 is the JSON-LD date) can be skipped without breaking any other edit: none of them overlaps another old string.",
+  "No old or new string contains an HTML entity; \"״\" is U+05F4 and \"׳\" U+05F3, as on the live page.",
+  "The raw post content has <!-- wp:html --> block markers; all 22 old strings also match exactly once in the raw content backed up at 08:18 UTC today (docs/qa/had-460/align-backup/page-4866-20261007T111809.json, checked by script). Re-check each one against the raw content right before applying: another session edited this page today. Data only: nothing here was applied."
+ ],
+ "edits": [
+  {
+   "n": 1,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "cards (פרויקט דגל)",
+   "old": "<p>EINSTEIN TOWER ברחוב איינשטיין, כ-515 דירות, מגדלים עד 30 קומות.</p>",
+   "new": "<p>פרויקטי קבוצת חג׳ג׳ ברחוב איינשטיין: 515 דירות בשישה בנייני מגורים, ובהם EINSTEIN TOWER.</p>",
+   "source_keys": [
+    "NC2601",
+    "DOS"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit A-2/A-3: 515 units belong to Hagag's whole Einstein complex (six residential buildings, 20.1.2026), not to EINSTEIN TOWER alone (215 units); 'towers up to 30 floors' conflicts with the 28-floor tower of the 2025 annual report and the 9.7.2026 permit, so no floor count is given in the card.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 2,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "מהו צפון תל אביב והשכונות",
+   "old": "בשנים האחרונות היא הפכה לזירה פעילה של התחדשות עירונית, ובשכונה מקודמים כ-40 פרויקטי תמ״א 38. הנתון הזה ממחיש את המעבר ההדרגתי של השכונה מבנייה ותיקה לשילוב בין שימור האופי השקט לבין חידוש מלאי הדירות.",
+   "new": "בשנים האחרונות היא הפכה לזירה פעילה של התחדשות עירונית. ברחוב יהודה הנשיא, למשל, אושרה ב-2023 תוכנית שבה חמישה בניינים ובהם 80 דירות יפנו את מקומם לשלושה בניינים של עד 14 קומות עם 195 דירות. פרויקטים כאלה ממחישים את המעבר ההדרגתי של השכונה מבנייה ותיקה לשילוב בין שימור האופי השקט לבין חידוש מלאי הדירות.",
+   "source_keys": [
+    "NC2308",
+    "NC2501",
+    "ICE2501"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit A-10: 'about 40 projects' is the count for Neot Afeka B (12-13.1.2025), not Neve Avivim. Replaced by one dated, sourced Neve Avivim plan (Yehuda HaNasi 14-22, 2.8.2023).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 3,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "הפרויקטים החדשים וההתחדשות",
+   "old": "פרויקט EINSTEIN TOWER של קבוצת חג׳ג׳ הוא הדוגמה הבולטת ביותר לשינוי בקנה המידה של הבנייה באזור. הפרויקט כולל כ-515 דירות בשני מגדלים בני 30 ו-28 קומות ושני בניינים בני 14 קומות, לצד 13,500 מ״ר מסחר. התכנון האדריכלי הוא של משה צור, והשווי המוערך של הפרויקט עומד על כ-4 מיליארד ש״ח. מדובר בפרויקט שמחבר מגורים, מסחר, גובה, תחבורה ותדמית חדשה לרחוב איינשטיין, ולכן השפעתו חורגת מהדירות עצמן.",
+   "new": "הפרויקטים של קבוצת חג׳ג׳ ברחוב איינשטיין הם הדוגמה הבולטת ביותר לשינוי בקנה המידה של הבנייה באזור. לפי נתוני החברה מינואר 2026, הם כוללים שישה בנייני מגורים ובהם 515 דירות, מרכז מסחרי של כ-11,400 מ״ר, מבנה ציבור של כ-3,950 מ״ר וחניון תת-קרקעי של 957 חניות, והשווי הכולל שלהם מוערך בכ-4 מיליארד ש״ח. EINSTEIN TOWER, אחד הפרויקטים במתחם, כולל 215 דירות במגדל בן 28 קומות ובשני בניינים בני 13 קומות מעל בסיס מסחרי, והחברה מעריכה את סיומו ברבעון השלישי של 2030. התכנון האדריכלי הוא של משה צור. מדובר במתחם שמחבר מגורים, מסחר, גובה, תחבורה ותדמית חדשה לרחוב איינשטיין, ולכן השפעתו חורגת מהדירות עצמן.",
+   "source_keys": [
+    "NC2601",
+    "DOS",
+    "NC2410",
+    "NC2403"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit A-2, A-3, A-4, A-5, A-6: 515 units and the ~4 billion value are the whole complex (consistent with 20.1.2026); 'two towers of 30 and 28 floors and two buildings of 14' mixes two projects and two dates (15.10.2024 says 4 buildings of 14; 27.3.2024 says 30 and 33-floor towers); 13,500 m2 of commerce (10.2024) is superseded by 11,400 m2 (1.2026). EINSTEIN TOWER itself: 215 units, a 28-floor tower and two 13-floor buildings (2025 annual report, permit 9.7.2026). Architect: consistent.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 4,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "הפרויקטים החדשים וההתחדשות",
+   "old": "לצידו, פרויקט אשדר איינשטיין כולל שלושה בניינים בני 8 קומות וכ-45 דירות.",
+   "new": "לצידם, פרויקט אשדר איינשטיין, ששיווקו נפתח ב-2021, כולל שלושה בניינים בני 8 קומות וכ-45 דירות.",
+   "source_keys": [
+    "ICE2107"
+   ],
+   "audit_verdict": "CONSISTENT+DATE",
+   "why": "Audit A-7, A-8: 3 buildings of 8 floors and 45 apartments are consistent (8.7.2021); the year the marketing opened is added so the reader can date it. 'לצידו' becomes 'לצידם' because edit 3 now speaks of Hagag's projects in the plural.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 5,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "הפרויקטים החדשים וההתחדשות (טבלה)",
+   "old": "<td>EINSTEIN TOWER</td>",
+   "new": "<td>מתחם חג׳ג׳ באיינשטיין, ובו EINSTEIN TOWER</td>",
+   "source_keys": [
+    "NC2601",
+    "DOS"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Row label: the numbers in the row are the complex's, so the label names the complex.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 6,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "הפרויקטים החדשים וההתחדשות (טבלה)",
+   "old": "<td>כ-515 דירות, שני מגדלים בני 30 ו-28 קומות, שני בניינים בני 14 קומות, כ-13,500 מ״ר מסחר</td>",
+   "new": "<td>במתחם כולו 515 דירות בשישה בנייני מגורים ומרכז מסחרי של כ-11,400 מ״ר; ב-EINSTEIN TOWER עצמו 215 דירות, מגדל בן 28 קומות ושני בניינים בני 13 קומות</td>",
+   "source_keys": [
+    "NC2601",
+    "DOS"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Same as edit 3, in the table cell.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 7,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "הפרויקטים החדשים וההתחדשות (טבלה)",
+   "old": "<td>כ-40 פרויקטי תמ״א 38 מקודמים בשכונה</td>",
+   "new": "<td>התחדשות עירונית פעילה; ביהודה הנשיא אושרה ב-2023 תוכנית ל-195 דירות במקום 80</td>",
+   "source_keys": [
+    "NC2308",
+    "NC2501"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Same as edit 2, in the table cell.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 8,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "מחירים לפי שכונה",
+   "old": "הנתון שסופק לגבי בנייה חדשה ברמת אביב ג׳ מצביע על טווח של כ-60,000 עד 95,000 ש״ח למ״ר. זהו טווח רחב, והוא משקף הבדלים במיקום, קומה, נוף, מפרט, חניה, מרפסת, מוניטין היזם ומועד המסירה.",
+   "new": "ברבעון הראשון של 2026, חציון העסקאות לדירת 4 חדרים היה 5,370,100 ש״ח בנווה אביבים וסביבתה, 6,549,400 ש״ח בבבלי ו-8,425,800 ש״ח בשכונת ל׳, לעומת 5,229,800 ש״ח בכל תל אביב יפו. במחיר למ״ר, באמצע 2026 נסגרו העסקאות ברמת אביב סביב 55,000 ש״ח בממוצע, ברמת אביב ג׳ בכ-51,000 עד 53,000 ש״ח, ובפרויקטים החדשים בשדה דב המחיר עומד סביב 70,000 ש״ח. הפערים האלה משקפים הבדלים במיקום, קומה, נוף, מפרט, חניה, מרפסת, מוניטין היזם ומועד המסירה.",
+   "source_keys": [
+    "GOVN",
+    "ICE0606",
+    "BZ2608",
+    "ICE2105"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit A-11: no source for 'new construction in Ramat Aviv Gimel 60,000-95,000' ('הנתון שסופק' = a figure someone supplied). Replaced by the official Q1 2026 medians (Tax Authority deals) and three dated per-m2 levels.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 9,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "מחירים לפי שכונה (טבלה)",
+   "old": "<td>בנייה חדשה בכ-60,000 עד 95,000 ש״ח למ״ר</td>",
+   "new": "<td>כ-51,000 עד 53,000 ש״ח למ״ר בממוצע (אוגוסט 2026)</td>",
+   "source_keys": [
+    "BZ2608"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "why": "Audit A-11, the table cell.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 10,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "מחירים לפי שכונה (טבלה)",
+   "old": "<td>שכונה ותיקה משנות ה-60 וה-70, כ-40 פרויקטי תמ״א 38 מקודמים</td>",
+   "new": "<td>שכונה ותיקה משנות ה-60 וה-70, עם פרויקטים פעילים של התחדשות עירונית</td>",
+   "source_keys": [
+    "HEWNA",
+    "NC2308",
+    "NC2501"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit A-10 (the 40); the decades stay (consistent, A-9).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 11,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "מחירים לפי שכונה (טבלה)",
+   "old": "<td>גבוהה, משתנה לפי רחוב ומצב הבניין</td>",
+   "new": "<td>סביב 55,000 ש״ח למ״ר בממוצע בעסקאות האחרונות ברמת אביב (יוני 2026), משתנה לפי רחוב ומצב הבניין</td>",
+   "source_keys": [
+    "ICE0606"
+   ],
+   "audit_verdict": "ADDED",
+   "why": "Optional: the row had no number; the dated Ramat Aviv average is added.",
+   "optional": true,
+   "matches_in_live": 1
+  },
+  {
+   "n": 12,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "מחירים לפי שכונה (טבלה)",
+   "old": "<td>גבוהה, עם פרמיה לדירות מחודשות או בבניינים מתקדמים תכנונית</td>",
+   "new": "<td>חציון 4 חדרים 5,370,100 ש״ח (רבעון ראשון 2026), עם פרמיה לדירות מחודשות או בבניינים מתקדמים תכנונית</td>",
+   "source_keys": [
+    "GOVN"
+   ],
+   "audit_verdict": "ADDED",
+   "why": "Optional: official median added.",
+   "optional": true,
+   "matches_in_live": 1
+  },
+  {
+   "n": 13,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "מחירים לפי שכונה (טבלה)",
+   "old": "<td>גבוהה עד גבוהה מאוד, לפי קרבה לחוף ולפרויקטים חדשים</td>",
+   "new": "<td>חציון 4 חדרים 8,425,800 ש״ח (רבעון ראשון 2026), לפי קרבה לחוף ולפרויקטים חדשים</td>",
+   "source_keys": [
+    "GOVN"
+   ],
+   "audit_verdict": "ADDED",
+   "why": "Optional: official median of the 'תכנית ל' statistical area (Shikun Lamed) added.",
+   "optional": true,
+   "matches_in_live": 1
+  },
+  {
+   "n": 14,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "מחירים לפי שכונה (טבלה)",
+   "old": "<td>גבוהה מאוד, ובשוק היוקרה מעל הממוצע האזורי</td>",
+   "new": "<td>חציון 4 חדרים 6,549,400 ש״ח (רבעון ראשון 2026), ובשוק היוקרה מעל הממוצע האזורי</td>",
+   "source_keys": [
+    "GOVN"
+   ],
+   "audit_verdict": "ADDED",
+   "why": "Optional: official median added.",
+   "optional": true,
+   "matches_in_live": 1
+  },
+  {
+   "n": 15,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "מחירים לפי שכונה (טבלה)",
+   "old": "<td>שוק פרויקטלי חדש, תלוי שלב, מיקום ותכנון</td>",
+   "new": "<td>סביב 70,000 ש״ח למ״ר ברוב הפרויקטים החדשים (2026), תלוי שלב, מיקום ותכנון</td>",
+   "source_keys": [
+    "ICE2105",
+    "ICE0606"
+   ],
+   "audit_verdict": "ADDED",
+   "why": "Optional: the 2026 level of most Sde Dov projects added.",
+   "optional": true,
+   "matches_in_live": 1
+  },
+  {
+   "n": 16,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "מחירים לפי שכונה (טבלה)",
+   "old": "<td>גבוהה, עם שונות גדולה לפי רחוב, בניין ומרחק מהים</td>",
+   "new": "<td>חציון 4 חדרים 6,542,100 ש״ח בחלק הצפוני (רבעון ראשון 2026), עם שונות גדולה לפי רחוב, בניין ומרחק מהים</td>",
+   "source_keys": [
+    "GOVN"
+   ],
+   "audit_verdict": "ADDED",
+   "why": "Optional: official median of 'הצפון הישן, החלק הצפוני' added.",
+   "optional": true,
+   "matches_in_live": 1
+  },
+  {
+   "n": 17,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "השוואת שכונות (טבלה)",
+   "old": "<td>כ-40 פרויקטי תמ״א 38 מקודמים</td>",
+   "new": "<td>שכונה ירוקה ושקטה עם פרויקטים פעילים של התחדשות עירונית</td>",
+   "source_keys": [
+    "NC2308",
+    "NC2501"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit A-10, the comparison table's 'main advantage' cell.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 18,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "זווית משפטית ומיסויית",
+   "old": "בפרויקט כמו EINSTEIN TOWER, הכולל גם מסחר בהיקף משמעותי של כ-13,500 מ״ר, יש חשיבות מיוחדת",
+   "new": "בפרויקט כמו EINSTEIN TOWER, שנבנה מעל בסיס מסחרי ובמתחם שמתוכנן בו מרכז מסחרי של כ-11,400 מ״ר, יש חשיבות מיוחדת",
+   "source_keys": [
+    "DOS",
+    "NC2601"
+   ],
+   "audit_verdict": "STALE",
+   "why": "Audit A-5: 13,500 m2 (10.2024) is superseded by 11,400 m2 for the complex (1.2026).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 19,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "שאלות נפוצות",
+   "old": "בשנים האחרונות מקודמים בה כ-40 פרויקטי תמ״א 38, ולכן היא משלבת שוק ותיק עם פוטנציאל חידוש משמעותי.",
+   "new": "בשנים האחרונות מתקדמים בה פרויקטים של התחדשות עירונית, כמו התוכנית שאושרה ב-2023 ברחוב יהודה הנשיא ל-195 דירות במקום 80, ולכן היא משלבת שוק ותיק עם פוטנציאל חידוש משמעותי.",
+   "source_keys": [
+    "NC2308",
+    "NC2501"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit A-10 in the FAQ answer (same facts as edit 2).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 20,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "שאלות נפוצות",
+   "old": "פרויקט EINSTEIN TOWER כולל כ-515 דירות, שני מגדלים בני 30 ו-28 קומות, שני בניינים בני 14 קומות וכ-13,500 מ״ר מסחר. לצידו מקודמים פרויקטים נוספים, בהם אשדר איינשטיין, אזורים ושיכון ובינוי.",
+   "new": "בפרויקטים של קבוצת חג׳ג׳ ברחוב מתוכננות 515 דירות בשישה בנייני מגורים ומרכז מסחרי של כ-11,400 מ״ר, ובהם EINSTEIN TOWER, עם 215 דירות במגדל בן 28 קומות ובשני בניינים בני 13 קומות. לצידם פועלים ברחוב גם אשדר, עם פרויקט אשדר איינשטיין, וכן אזורים ושיכון ובינוי.",
+   "source_keys": [
+    "NC2601",
+    "DOS",
+    "ICE2107"
+   ],
+   "audit_verdict": "CONFLICT",
+   "why": "Audit A-2, A-3, A-4, A-5 in the FAQ answer (same facts as edit 3).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 21,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "הערת עדכון",
+   "old": "עודכן יוני 2026.",
+   "new": "עודכן אוקטובר 2026.",
+   "source_keys": [
+    "THIS"
+   ],
+   "audit_verdict": "DATE",
+   "why": "The page is updated by these edits; the footer date follows.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 22,
+   "page_id": 4866,
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "field": "content",
+   "section": "JSON-LD (not visible)",
+   "old": "\"dateModified\":\"2026-06-15\"",
+   "new": "\"dateModified\":\"2026-10-07\"",
+   "source_keys": [
+    "THIS"
+   ],
+   "audit_verdict": "DATE",
+   "why": "Inside the Article JSON-LD at the top of the content: set it to the actual apply date (2026-10-07 assumed).",
+   "optional": true,
+   "in_jsonld": true,
+   "matches_in_live": 1
+  }
+ ]
+}

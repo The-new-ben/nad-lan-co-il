@@ -1,0 +1,536 @@
+{
+ "generated": "7.10.2026",
+ "page": {
+  "id": 7151,
+  "slug": "apartment-prices",
+  "link": "https://nad-lan.co.il/apartment-prices/",
+  "modified": "2026-08-19T00:42:32"
+ },
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages?slug=apartment-prices&_fields=id,link,title,content,modified (content.rendered), public, retrieved 2026-10-07 10:34:25 UTC, 10,032 characters. The price-list section (<section id=\"nlpg\">, the [nadlan_price_guide] shortcode), <script> and <style> are outside the audit.",
+ "facts": "scripts/project-stage/price_guide/cities/apartment-prices.json (official medians from data.nadlan.gov.il; source_keys are JSON paths in that file: rooms.<k>.latest, rooms.<k>.year_ago, rooms.<k>.change_pct, rooms.<k>.quarters[<q>], israel.<k>, neighbourhoods[<name>].rooms.<k>; 'page' = a number kept from the page's own text)",
+ "apply_rules": [
+  "Apply in the listed order on the RAW content (context=edit). Every \"old\" matches content.rendered exactly once at its turn (matches_in_live), except \"replace_all\" entries, which match exactly \"expect_matches\" times.",
+  "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
+  "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
+  "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+ ],
+ "claims_summary": {
+  "claims": {
+   "CONFLICT": 4,
+   "STALE": 0,
+   "UNSOURCED": 1,
+   "CONSISTENT": 9
+  },
+  "figures": {
+   "CONFLICT": 4,
+   "STALE": 0,
+   "UNSOURCED": 1,
+   "CONSISTENT": 9
+  },
+  "edits": 17,
+  "tier1": 17,
+  "tier2": 0
+ },
+ "notes": "Audited on the copy retrieved 10:34 UTC, before the national price list was added (it was on the page by 11:17 UTC; the text outside it is unchanged). All 14 city cards are restated as the official 3-room median so the cards share one measure and match the city lists; 9 of them were already consistent with it. Cards without a chip (Jerusalem, Haifa, Holon, Bat Yam, Rehovot, Ashdod, Beer Sheva, Eilat, house towns, luxury pages) are left as they are. The em dash in the lead sentence before 'טווחי עבודה' is outside the edited strings.",
+ "claims": [
+  {
+   "id": 1,
+   "where": "span.chip",
+   "quote": "tel-aviv: מ-45 אלף למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 1,
+   "official": "per m2, no source on the hub; 3 rooms 4,225,800 (1-3.2026)",
+   "verdict": "UNSOURCED",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 2,
+   "where": "span.chip",
+   "quote": "ramat-gan: ממוצע ~3.2 מיליון",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 3,122,300; 3 rooms 2,701,700 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 3,
+   "where": "span.chip",
+   "quote": "givatayim: 3 חד' 2.4–2.9 מיליון",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "3 rooms 2,815,300 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 5",
+   "note": ""
+  },
+  {
+   "id": 4,
+   "where": "span.chip",
+   "quote": "bnei-brak: 3 חד' 1.8–2.15 מיליון",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "3 rooms 2,028,000 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 5,
+   "where": "span.chip",
+   "quote": "petah-tikva: 3 חד' מ-1.55 מיליון",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "3 rooms 2,057,000 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 7",
+   "note": ""
+  },
+  {
+   "id": 6,
+   "where": "span.chip",
+   "quote": "rishon-lezion: 3 חד' מ-1.65 מיליון",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "3 rooms 1,936,700 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 7,
+   "where": "span.chip",
+   "quote": "kiryat-ono: ממוצע ~3.4 מיליון",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 3,175,100 (1-3.2026), 7% below the stated average; 3 rooms 2,635,400",
+   "verdict": "CONFLICT",
+   "action": "edit 9",
+   "note": ""
+  },
+  {
+   "id": 8,
+   "where": "span.chip",
+   "quote": "herzliya: 3 חד' מ-2.5 מיליון",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "3 rooms 2,793,600 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 10",
+   "note": ""
+  },
+  {
+   "id": 9,
+   "where": "span.chip",
+   "quote": "raanana: 3 חד' ~2.8 מיליון",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "3 rooms 2,814,000 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 11",
+   "note": ""
+  },
+  {
+   "id": 10,
+   "where": "span.chip",
+   "quote": "kfar-saba: 3 חד' 2–3 מיליון",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "3 rooms 1,941,300 (10-12.2025, the latest published), below the 2M floor",
+   "verdict": "CONFLICT",
+   "action": "edit 12",
+   "note": ""
+  },
+  {
+   "id": 11,
+   "where": "span.chip",
+   "quote": "hod-hasharon: 3 חד' מ-2.25 מיליון",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "3 rooms 2,647,000 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 13",
+   "note": ""
+  },
+  {
+   "id": 12,
+   "where": "span.chip",
+   "quote": "netanya: 3 חד' מ-1.45 מיליון",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "3 rooms 1,791,300 (10-12.2025, the latest published)",
+   "verdict": "CONSISTENT",
+   "action": "edit 14",
+   "note": ""
+  },
+  {
+   "id": 13,
+   "where": "span.chip",
+   "quote": "modiin: 3 חד' ~2.65 מיליון",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "3 rooms 2,039,500 (10-12.2025, the latest published)",
+   "verdict": "CONFLICT",
+   "action": "edit 15",
+   "note": ""
+  },
+  {
+   "id": 14,
+   "where": "span.chip",
+   "quote": "ashkelon: 3 חד' מ-1.0 מיליון",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "3 rooms 918,100 (1-3.2026), below the 1.0M floor",
+   "verdict": "CONFLICT",
+   "action": "edit 16",
+   "note": ""
+  }
+ ],
+ "edits": [
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "טווחי עבודה לפי מספר חדרים, מחיר למ\"ר ושכירות, יחד עם הבדיקות שחשוב לעשות לפני שמסתמכים על מספר כלשהו. המספרים בכרטיסים לקוחים מהסקירה המלאה של כל עיר.",
+   "new": "חציון מחיר העסקה לפי מספר חדרים, מחיר למ\"ר ושכירות, יחד עם הבדיקות שחשוב לעשות לפני שמסתמכים על מספר כלשהו. המספר בכל כרטיס הוא חציון מחיר העסקה לדירת 3 חדרים מהמחירון של אותה עיר.",
+   "source_keys": [
+    "cities[ashkelon-apartment-prices].rooms.3.latest"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "The lead called the card numbers working ranges copied from each review; they become the official 3-room medians (edits 3-16).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 1,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "הטווחים הם מספרי עבודה שנאספו ממקורות פומביים ומתעדכנים מעת לעת",
+   "new": "המספר בכל כרטיס הוא חציון מחיר העסקה לדירת 3 חדרים בעיר, לפי נתוני רשות המסים לרבעון הראשון של 2026 (בכפר סבא, בנתניה ובמודיעין: הרבעון הרביעי של 2025, הנתון האחרון שפורסם לדירות 3 חדרים). המספרים מתעדכנים מעת לעת",
+   "source_keys": [
+    "cities[kfar-saba-apartment-prices].rooms.3.quarter",
+    "cities[netanya-apartment-prices].rooms.3.quarter",
+    "cities[modiin-apartment-prices].rooms.3.quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "The notice described the cards as working numbers from public sources; it now says what the number is and from which quarter.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 2,
+   "raw_risk": []
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "מ-45 אלף למ\"ר",
+   "new": "חציון 3 חד' 4.23 מיליון",
+   "source_keys": [
+    "cities[tel-aviv-apartment-prices].rooms.3.latest"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Card figure vs the official 3-room median: per m2, no source on the hub; 3 rooms 4,225,800 (1-3.2026).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 3,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "ממוצע ~3.2 מיליון",
+   "new": "חציון 3 חד' 2.7 מיליון",
+   "source_keys": [
+    "cities[ramat-gan-apartment-prices].rooms.3.latest"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "Card figure vs the official 3-room median: all rooms 3,122,300; 3 rooms 2,701,700 (1-3.2026). Restated as the median so every card shows the same measure.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 4,
+   "raw_risk": []
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "3 חד' 2.4–2.9 מיליון",
+   "new": "חציון 3 חד' 2.82 מיליון",
+   "source_keys": [
+    "cities[givatayim-apartment-prices].rooms.3.latest"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "Card figure vs the official 3-room median: 3 rooms 2,815,300 (1-3.2026). Restated as the median so every card shows the same measure.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 5,
+   "raw_risk": [
+    "apostrophe",
+    "en dash"
+   ]
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "3 חד' 1.8–2.15 מיליון",
+   "new": "חציון 3 חד' 2.03 מיליון",
+   "source_keys": [
+    "cities[bnei-brak-apartment-prices].rooms.3.latest"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "Card figure vs the official 3-room median: 3 rooms 2,028,000 (1-3.2026). Restated as the median so every card shows the same measure.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 6,
+   "raw_risk": [
+    "apostrophe",
+    "en dash"
+   ]
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "3 חד' מ-1.55 מיליון",
+   "new": "חציון 3 חד' 2.06 מיליון",
+   "source_keys": [
+    "cities[petah-tikva-apartment-prices].rooms.3.latest"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "Card figure vs the official 3-room median: 3 rooms 2,057,000 (1-3.2026). Restated as the median so every card shows the same measure.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 7,
+   "raw_risk": [
+    "apostrophe"
+   ]
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "3 חד' מ-1.65 מיליון",
+   "new": "חציון 3 חד' 1.94 מיליון",
+   "source_keys": [
+    "cities[rishon-lezion-apartment-prices].rooms.3.latest"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "Card figure vs the official 3-room median: 3 rooms 1,936,700 (1-3.2026). Restated as the median so every card shows the same measure.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 8,
+   "raw_risk": [
+    "apostrophe"
+   ]
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "ממוצע ~3.4 מיליון",
+   "new": "חציון 3 חד' 2.64 מיליון",
+   "source_keys": [
+    "cities[kiryat-ono-apartment-prices].rooms.3.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Card figure vs the official 3-room median: all rooms 3,175,100 (1-3.2026), 7% below the stated average; 3 rooms 2,635,400.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 9,
+   "raw_risk": []
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "3 חד' מ-2.5 מיליון",
+   "new": "חציון 3 חד' 2.79 מיליון",
+   "source_keys": [
+    "cities[herzliya-apartment-prices].rooms.3.latest"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "Card figure vs the official 3-room median: 3 rooms 2,793,600 (1-3.2026). Restated as the median so every card shows the same measure.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 10,
+   "raw_risk": [
+    "apostrophe"
+   ]
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "3 חד' ~2.8 מיליון",
+   "new": "חציון 3 חד' 2.81 מיליון",
+   "source_keys": [
+    "cities[raanana-apartment-prices].rooms.3.latest"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "Card figure vs the official 3-room median: 3 rooms 2,814,000 (1-3.2026). Restated as the median so every card shows the same measure.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 11,
+   "raw_risk": [
+    "apostrophe"
+   ]
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "3 חד' 2–3 מיליון",
+   "new": "חציון 3 חד' 1.94 מיליון",
+   "source_keys": [
+    "cities[kfar-saba-apartment-prices].rooms.3.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Card figure vs the official 3-room median: 3 rooms 1,941,300 (10-12.2025, the latest published), below the 2M floor.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 12,
+   "raw_risk": [
+    "apostrophe",
+    "en dash"
+   ]
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "3 חד' מ-2.25 מיליון",
+   "new": "חציון 3 חד' 2.65 מיליון",
+   "source_keys": [
+    "cities[hod-hasharon-apartment-prices].rooms.3.latest"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "Card figure vs the official 3-room median: 3 rooms 2,647,000 (1-3.2026). Restated as the median so every card shows the same measure.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 13,
+   "raw_risk": [
+    "apostrophe"
+   ]
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "3 חד' מ-1.45 מיליון",
+   "new": "חציון 3 חד' 1.79 מיליון",
+   "source_keys": [
+    "cities[netanya-apartment-prices].rooms.3.latest"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "Card figure vs the official 3-room median: 3 rooms 1,791,300 (10-12.2025, the latest published). Restated as the median so every card shows the same measure.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 14,
+   "raw_risk": [
+    "apostrophe"
+   ]
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "3 חד' ~2.65 מיליון",
+   "new": "חציון 3 חד' 2.04 מיליון",
+   "source_keys": [
+    "cities[modiin-apartment-prices].rooms.3.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Card figure vs the official 3-room median: 3 rooms 2,039,500 (10-12.2025, the latest published).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 15,
+   "raw_risk": [
+    "apostrophe"
+   ]
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "3 חד' מ-1.0 מיליון",
+   "new": "חציון 3 חד' 918 אלף",
+   "source_keys": [
+    "cities[ashkelon-apartment-prices].rooms.3.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Card figure vs the official 3-room median: 3 rooms 918,100 (1-3.2026), below the 1.0M floor.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 16,
+   "raw_risk": [
+    "apostrophe"
+   ]
+  },
+  {
+   "page_id": 7151,
+   "url": "https://nad-lan.co.il/apartment-prices/",
+   "field": "content",
+   "old": "המחירון מבוסס על סקירות שוק פומביות ומתעדכן. הטווחים אינם ייעוץ ואינם שומה;",
+   "new": "המחירון מבוסס על נתוני העסקאות של רשות המסים ועל סקירות השוק של כל עיר, ומתעדכן. המספרים אינם ייעוץ ואינם שומה;",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Footer: the card numbers are now official medians, not ranges.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 17,
+   "raw_risk": []
+  }
+ ],
+ "live_recheck": {
+  "retrieved_utc": "2026-10-07 11:18:07",
+  "modified": "2026-10-07T13:47:31",
+  "audited_copy_modified": "2026-08-19T00:42:32",
+  "price_list_on_page": true,
+  "body_outside_list_identical_to_audited_copy": "yes, except the blank lines around the price list, which was inserted at 2026-10-07T13:47:31 (site time) after the audited copy",
+  "dry_run": "17 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ }
+}

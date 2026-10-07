@@ -3,7 +3,7 @@
 right after the page's first real paragraph (the first <p> after the H1 with at least 80 characters of text that is not the
 "updated" line), never before it (Ben 7.10). Titles, H1s, descriptions and URLs are not touched (the CEO's terms, HAD-446).
 Needs the plugin release that carries the city's data (pg_helper.CITIES). Backup before, read-back after, per page.
-python insert_city_guides.py <slug> [<slug> ...] [--dry] [--project] [--move]      python insert_city_guides.py --rollback <backup.json>"""
+python insert_city_guides.py <slug> [<slug> ...] [--dry] [--project] [--move] [--map]      python insert_city_guides.py --rollback <backup.json>"""
 import html
 import io
 import json
@@ -34,7 +34,8 @@ for slug in ARGS:
     by_id = None
     if "=" in slug:
         by_id, slug = slug.split("=", 1)
-    short = '[nadlan_price_guide key="%s"]' % slug
+    # --map: the AreaMap door instead of the price list (area_map/<key>.json), same placement and H2 rules
+    short = ('[nadlan_area_map key="%s"]' if "--map" in sys.argv else '[nadlan_price_guide key="%s"]') % slug
     if by_id:
         s, one, _ = req("GET", f"/wp-json/wp/v2/{BASE}/{int(by_id)}?_fields=id,link")
         lst = [one] if s == 200 else []
@@ -46,7 +47,7 @@ for slug in ARGS:
     # the CEO's rule (7.10): the list's title may not share its first 4 words with an H2 already on the live page
     import city_h2
     import urllib.request
-    _df = os.path.join(HERE, "price_guide", "cities", slug + ".json")
+    _df = os.path.join(HERE, "area_map" if "--map" in sys.argv else os.path.join("price_guide", "cities"), slug + ".json")
     _df = _df if os.path.exists(_df) else os.path.join(HERE, "price_guide", slug + ".json")
     _title = json.load(io.open(_df, encoding="utf-8"))["title"]
     if slug == "apartment-prices":  # the Israel page shows the national variant, whose title is national.TITLE

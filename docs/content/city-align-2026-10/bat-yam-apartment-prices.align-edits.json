@@ -1,0 +1,776 @@
+{
+ "generated": "7.10.2026",
+ "page": {
+  "id": 4583,
+  "slug": "bat-yam-apartment-prices",
+  "link": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+  "modified": "2026-10-07T13:31:03"
+ },
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages?slug=bat-yam-apartment-prices&_fields=id,link,title,content,modified (content.rendered), public, retrieved 2026-10-07 10:34:27 UTC, 66,118 characters. The price-list section (<section id=\"nlpg\">, the [nadlan_price_guide] shortcode), <script> and <style> are outside the audit.",
+ "facts": "scripts/project-stage/price_guide/cities/bat-yam-apartment-prices.json (official medians from data.nadlan.gov.il; source_keys are JSON paths in that file: rooms.<k>.latest, rooms.<k>.year_ago, rooms.<k>.change_pct, rooms.<k>.quarters[<q>], israel.<k>, neighbourhoods[<name>].rooms.<k>; 'page' = a number kept from the page's own text)",
+ "apply_rules": [
+  "Apply in the listed order on the RAW content (context=edit). Every \"old\" matches content.rendered exactly once at its turn (matches_in_live), except \"replace_all\" entries, which match exactly \"expect_matches\" times.",
+  "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
+  "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
+  "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+ ],
+ "claims_summary": {
+  "claims": {
+   "CONFLICT": 6,
+   "STALE": 0,
+   "UNSOURCED": 22,
+   "CONSISTENT": 10
+  },
+  "figures": {
+   "CONFLICT": 7,
+   "STALE": 0,
+   "UNSOURCED": 50,
+   "CONSISTENT": 10
+  },
+  "edits": 13,
+  "tier1": 13,
+  "tier2": 0
+ },
+ "notes": "Not audited as claims (illustrations, not market statements): the 2,300,000 3-room spread illustration (p@43263, reworded in edit 2 as an explicit if-example; official 3-room neighbourhood medians run from 1,696,800 to 2,322,100), the 2,350,000 / 180,000 example (p@46854), the 2,200,000 / 2,550,000 seller example (p@47278), the 150,000-300,000 one-feature gap (p@47609), the yield example 2,000,000 / 5,000 / 60,000 / 3.0% (p@52670), the if-example 5,200 / 2,600,000 / 2.4% (p@53145), the 300-700 / 3,600-8,400 arithmetic (p@53451), the two dated deals repeated in p@55229, the 200,000-500,000 renewal premium (p@58144), renovation 100,000-300,000 and purchase costs 3%-12% in the checks table (rule-of-thumb magnitudes), the 'נניח' offer example (p@60916) and the 1,900,000 seller example (p@61316). The page names its listing and data sites (מדדירות, Realta, Dirobot) and shows its check date (עודכן ונבדק: 2026-06-06), so their rent, per-m2 and count figures are kept; the private-site city average 2,450,000 is replaced everywhere by the official all-apartments median. Unsure: the area table rows are categories (west and sea, centre, south, renewal areas, old interior buildings, new towers), not official neighbourhoods; only 'west' (North-West / South-West) and 'centre' (מרכז העיר) were compared, 'south' was not mapped to Ramat HaNasi, Amidar or Ramat Yosef. The common-size column of the rooms table (35-160 m2) is dropped with the table; sizes are not claims. Official quirks: the 5-room median rose 13% in a year (3,069,800 to 3,468,600) and the 5-room series has no median in 10-12.2024, 4-6.2025 and 10-12.2025; Ramat HaNasi shows 1,696,800 for 3 rooms but 3,003,900 for 4 rooms. Name mapping: 'דרום מערב העיר' = official 'דרום-מערב', 'צפון מערב העיר' = 'צפון-מערב'. Remaining SUSPECT lines, if any, are the individual deals dated March 2026 or the explicit illustrations above.",
+ "claims": [
+  {
+   "id": 1,
+   "where": "p@4373",
+   "quote": "דירות קטנות וישנות סביב 1,450,000-1,900,000 ₪",
+   "measure": "sale",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 1",
+   "note": "no room count, no source; dropped"
+  },
+  {
+   "id": 2,
+   "where": "p@4373",
+   "quote": "דירות 3 חדרים רבות סביב 1,800,000-2,450,000 ₪",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,823,700 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 1",
+   "note": "restated as the median"
+  },
+  {
+   "id": 3,
+   "where": "p@4373",
+   "quote": "דירות 4 חדרים סביב 2,250,000-3,200,000 ₪",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,692,600 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 1",
+   "note": "restated as the median"
+  },
+  {
+   "id": 4,
+   "where": "p@4373",
+   "quote": "דירות גדולות, חדשות או קרובות לים 3,500,000-5,500,000 ₪",
+   "measure": "sale",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 1",
+   "note": "no room count, no source; dropped"
+  },
+  {
+   "id": 5,
+   "where": "p@4373",
+   "quote": "מחיר ממוצע באתרי נתונים פרטיים סביב 2,450,000 ₪",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "1,901,500 (all apartments, 1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 1",
+   "note": ""
+  },
+  {
+   "id": 6,
+   "where": "p@4373",
+   "quote": "מחיר למ״ר סביב 29,000 ₪",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (private data site, named Dirobot in p@53743, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 7,
+   "where": "p@41875",
+   "quote": "מדדירות: 2,675 דירות למכירה, שכירות מבוקשת 5,500 ₪; Realta: 5,760 ₪",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (named listing sources, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 8,
+   "where": "p@43650",
+   "quote": "למ״ס 15.3.2026: -0.1% / -0.9% ארצי; מחוז ת״א +0.7% / -2.8%",
+   "measure": "macro",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (dated CBS release, 15.3.2026)",
+   "note": ""
+  },
+  {
+   "id": 9,
+   "where": "p@44056",
+   "quote": "בנק ישראל 25.5.2026: -0.25 נקודה ל-3.75%; 85,000 דירות חדשות במלאי",
+   "measure": "macro",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (dated Bank of Israel release, 25.5.2026)",
+   "note": ""
+  },
+  {
+   "id": 10,
+   "where": "tr@45415",
+   "quote": "1-2 חדרים | 1,250,000-1,850,000 ₪",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 11,
+   "where": "tr@45645",
+   "quote": "2.5-3 חדרים | 1,650,000-2,450,000 ₪",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,823,700",
+   "verdict": "CONSISTENT",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 12,
+   "where": "tr@45882",
+   "quote": "3.5-4 חדרים | 2,150,000-3,250,000 ₪",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,692,600",
+   "verdict": "CONSISTENT",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 13,
+   "where": "tr@46109",
+   "quote": "4.5-5 חדרים | 2,850,000-4,400,000 ₪",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "3,468,600",
+   "verdict": "CONSISTENT",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 14,
+   "where": "tr@46343",
+   "quote": "דירת גן או גג | 3,200,000-5,800,000 ₪",
+   "measure": "other",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 15,
+   "where": "tr@46591",
+   "quote": "דירה חדשה או כמעט חדשה | 2,700,000-6,500,000 ₪",
+   "measure": "sale_new_used",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 16,
+   "where": "tr@48371",
+   "quote": "מערב העיר וקרבה לים | 2,250,000-4,800,000 ₪ (3-4 חדרים)",
+   "measure": "sale_nb",
+   "rooms": "3-4",
+   "figures": 1,
+   "official": "North-West 3/4: 1,906,800 / 3,010,600; South-West 3/4: 2,014,800 / 2,928,200",
+   "verdict": "CONFLICT",
+   "action": "edit 7",
+   "note": "the 3-room medians fall below the floor"
+  },
+  {
+   "id": 17,
+   "where": "tr@48593",
+   "quote": "מרכז בת ים | 1,800,000-2,900,000 ₪ (3-4 חדרים)",
+   "measure": "sale_nb",
+   "rooms": "3-4",
+   "figures": 1,
+   "official": "city centre 3/4: 1,757,100 / 2,591,300",
+   "verdict": "CONFLICT",
+   "action": "edit 7",
+   "note": "3-room median 1.4% below the floor tolerance"
+  },
+  {
+   "id": 18,
+   "where": "tr@48797",
+   "quote": "דרום בת ים | 1,750,000-3,100,000 ₪",
+   "measure": "sale_nb",
+   "rooms": "3-4",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 7",
+   "note": "no official area of that name; not mapped"
+  },
+  {
+   "id": 19,
+   "where": "tr@49006..49473",
+   "quote": "התחדשות / בניינים ותיקים פנימיים / חדשות ומגדלים: 1.5-6.5 מיליון",
+   "measure": "other",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 7",
+   "note": ""
+  },
+  {
+   "id": 20,
+   "where": "p@50953",
+   "quote": "מדדירות: 4,200 / 4,600 / 6,600 / 8,950 ₪ לפי חדרים; Realta 5,760 ₪",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 5,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (named listing sources, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 21,
+   "where": "tr@51672..52244",
+   "quote": "טבלת שכירות: 3,800-4,800 / 4,300-5,600 / 5,800-7,200 / 7,200-9,500 ₪",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (checking ranges around the named listing figures of p@50953, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 22,
+   "where": "tr@51672",
+   "quote": "טבלת שכירות: מחיר קנייה 2 חדרים 1,300,000-1,850,000 ₪",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 23,
+   "where": "tr@51864",
+   "quote": "טבלת שכירות: מחיר קנייה 3 חדרים 1,650,000-2,450,000 ₪",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,823,700",
+   "verdict": "CONSISTENT",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 24,
+   "where": "tr@52056",
+   "quote": "טבלת שכירות: מחיר קנייה 4 חדרים 2,150,000-3,250,000 ₪",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,692,600",
+   "verdict": "CONSISTENT",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 25,
+   "where": "tr@52244",
+   "quote": "טבלת שכירות: מחיר קנייה 5 חדרים 2,850,000-4,400,000 ₪",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "3,468,600",
+   "verdict": "CONSISTENT",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 26,
+   "where": "tr@51672..52441",
+   "quote": "יחס שנתי גס 2.5%-4.0% ... 1.8%-3.8%",
+   "measure": "yield",
+   "rooms": "",
+   "figures": 5,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": "derived from the checking ranges; column removed, no new yield computed"
+  },
+  {
+   "id": 27,
+   "where": "tr@52441",
+   "quote": "דירה חדשה קרובה לים | 7,500-13,000 ₪ | 3,500,000-6,500,000 ₪",
+   "measure": "sale_new_used",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": "row removed with its unsourced rent"
+  },
+  {
+   "id": 28,
+   "where": "p@53743",
+   "quote": "Dirobot: מחיר ממוצע סביב 2,450,000 ₪",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "1,901,500",
+   "verdict": "CONFLICT",
+   "action": "edit 9",
+   "note": ""
+  },
+  {
+   "id": 29,
+   "where": "p@53743",
+   "quote": "Dirobot: מחיר למ״ר סביב 29,000 ₪",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (named private site, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 30,
+   "where": "tr@54317..54758",
+   "quote": "3 עסקאות מרץ 2026: 1,470,000 / 2,800,000 / 2,350,000 ₪ (ו-למ״ר מחושב)",
+   "measure": "deal",
+   "rooms": "",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual deals dated March 2026)",
+   "note": ""
+  },
+  {
+   "id": 31,
+   "where": "tr@54970",
+   "quote": "דירה ממוצעת לפי אתר נתונים פרטי | כ-2,450,000 ₪ | כ-29,000 ₪ למ״ר",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 2,
+   "official": "1,901,500",
+   "verdict": "CONFLICT",
+   "action": "edit 10",
+   "note": ""
+  },
+  {
+   "id": 32,
+   "where": "p@56302",
+   "quote": "למ״ס 15.3.2026: דירות חדשות -0.1%, -0.4% בניכוי תמיכה",
+   "measure": "macro",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (dated CBS release, 15.3.2026)",
+   "note": ""
+  },
+  {
+   "id": 33,
+   "where": "p@62414",
+   "quote": "FAQ: מחיר ממוצע סביב 2,450,000 ₪",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "1,901,500",
+   "verdict": "CONFLICT",
+   "action": "edit 11",
+   "note": ""
+  },
+  {
+   "id": 34,
+   "where": "p@62414",
+   "quote": "FAQ: מחיר למ״ר סביב 29,000 ₪",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (private data sites, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 35,
+   "where": "p@62414",
+   "quote": "FAQ: דירות קטנות 1,250,000-1,850,000; חדשות או גדולות 4,000,000-6,500,000 ₪",
+   "measure": "sale",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 11",
+   "note": ""
+  },
+  {
+   "id": 36,
+   "where": "p@62740",
+   "quote": "FAQ: דירת 3 חדרים 1,650,000-2,450,000 ₪",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,823,700",
+   "verdict": "CONSISTENT",
+   "action": "edit 12",
+   "note": ""
+  },
+  {
+   "id": 37,
+   "where": "p@63011",
+   "quote": "FAQ: דירות 4 חדרים 2,150,000-3,250,000 ₪",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,692,600",
+   "verdict": "CONSISTENT",
+   "action": "edit 13",
+   "note": ""
+  },
+  {
+   "id": 38,
+   "where": "p@63266",
+   "quote": "FAQ שכירות: מדדירות 5,500 ₪; Realta 5,760 ₪",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (named listing sources, page checked 6.6.2026)",
+   "note": ""
+  }
+ ],
+ "edits": [
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "מחירי דירות בבת ים נעים כיום בטווח רחב: דירות קטנות וישנות יכולות להופיע סביב 1,450,000-1,900,000 ₪, דירות 3 חדרים רבות נעות סביב 1,800,000-2,450,000 ₪, דירות 4 חדרים סביב 2,250,000-3,200,000 ₪, ודירות גדולות, חדשות או קרובות לים יכולות להגיע גם ל-3,500,000-5,500,000 ₪ ואף יותר. מחיר ממוצע שמוצג באתרי נתונים פרטיים עומד סביב 2,450,000 ₪, ומחיר למ״ר מוצג לעיתים סביב 29,000 ₪, אך אלה נתונים סטטיסטיים בלבד, לא שומה ולא מחיר מחייב.",
+   "new": "מחירי דירות בבת ים, לפי נתוני רשות המסים לרבעון הראשון של 2026: חציון מחיר העסקה היה 1,823,700 ₪ לדירת 3 חדרים, 2,692,600 ₪ לדירת 4 חדרים ו-3,468,600 ₪ לדירת 5 חדרים, ו-1,901,500 ₪ לכל הדירות. דירות קטנות וישנות יכולות להופיע במחירים נמוכים יותר, ודירות גדולות, חדשות או קרובות לים יכולות להגיע לסכומים גבוהים בהרבה. באתרי נתונים פרטיים מחיר למ״ר מוצג לעיתים סביב 29,000 ₪, אך זה נתון סטטיסטי בלבד, לא שומה ולא מחיר מחייב.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest",
+    "rooms.all.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Lead above the list: the 'average shown on private data sites' 2,450,000 is far from the official all-apartments median 1,901,500 (1-3.2026). The 3- and 4-room ranges were consistent and are restated as the medians; the undated small-flat and large/new-flat ranges are dropped; the per-m2 figure (private data sites, named in the recent-deals section, page checked 6.6.2026) is kept.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 1,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "לכן מחיר של 2,300,000 ₪ לדירת 3 חדרים יכול להיות גבוה באזור אחד, סביר באזור שני ונמוך באזור שלישי, בהתאם לגודל, בניין, קומה, חניה, נוף ועסקאות אחרונות.",
+   "new": "לכן אם דירת 3 חדרים מוצעת ב-2,300,000 ₪, המחיר יכול להיות גבוה באזור אחד וסביר באזור אחר, בהתאם לגודל, בניין, קומה, חניה, נוף ועסקאות אחרונות: לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 3 חדרים היה 1,823,700 ₪ בכל העיר ו-2,322,100 ₪ ברמת יוסף.",
+   "source_keys": [
+    "rooms.3.latest",
+    "neighbourhoods[רמת יוסף].rooms.3",
+    "page"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Illustration of spread ('2.3M for 3 rooms can be high in one area, reasonable in a second and low in a third'): no official 3-room median is above 2,322,100 (Ramat Yosef), so 'low' is dropped and the example is made an explicit if-example next to the city and Ramat Yosef medians. Not counted as a claim.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 2,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "טבלת החדרים היא נקודת הכניסה למחירון. היא לא מיועדת לקבוע מחיר סופי, אלא לסנן דירות, להבין האם מודעה נמצאת מעל או מתחת לשוק, ולהכין שאלות לבדיקה. בבת ים יש משקל גדול לשטח בפועל: דירת 3 חדרים של 62 מ״ר ודירת 3 חדרים של 82 מ״ר לא שייכות לאותו טווח מעשי, גם אם שתיהן מופיעות באותה קטגוריית חדרים.",
+   "new": "הטבלה הבאה מציגה את חציון מחיר העסקה בבת ים לפי מספר חדרים, לפי נתוני רשות המסים לרבעון הראשון של 2026, לצד החציון באותו רבעון שנה קודם לכן. היא נקודת הכניסה למחירון, ולא מיועדת לקבוע מחיר סופי, אלא לסנן דירות, להבין האם מודעה נמצאת מעל או מתחת לשוק, ולהכין שאלות לבדיקה. בבת ים יש משקל גדול לשטח בפועל: דירת 3 חדרים של 62 מ״ר ודירת 3 חדרים של 82 מ״ר לא שייכות לאותו טווח מעשי, גם אם שתיהן מופיעות באותה קטגוריית חדרים. המחירון הרשמי מפרסם חציון לדירות 3, 4 ו-5 חדרים; דירות קטנות של עד 2 חדרים, דירות גן או גג ודירות חדשות כדאי לבדוק מול עסקאות דומות ברחוב ובשכונה.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Introduces the replaced rooms table (edit 4); the small-flat, garden/roof and new-flat rows leave it.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 3,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"><thead><tr><th dir=\"rtl\">סוג דירה</th><th dir=\"rtl\">טווח מחיר בדיקה</th><th dir=\"rtl\">שטח נפוץ לבדיקה</th><th dir=\"rtl\">מה מעלה מחיר</th><th dir=\"rtl\">מה מוריד מחיר</th></tr></thead><tbody><tr><td dir=\"rtl\">1-2 חדרים</td><td dir=\"rtl\">1,250,000-1,850,000 ₪</td><td dir=\"rtl\">35-55 מ״ר</td><td dir=\"rtl\">קרבה לים, שיפוץ מלא, מעלית, ביקוש שכירות</td><td dir=\"rtl\">בניין ישן, קומה נמוכה, ללא חניה, שטח קטן במיוחד</td></tr><tr><td dir=\"rtl\">2.5-3 חדרים</td><td dir=\"rtl\">1,650,000-2,450,000 ₪</td><td dir=\"rtl\">55-85 מ״ר</td><td dir=\"rtl\">מרפסת, ממ״ד, מעלית, אזור מרכזי או מערבי</td><td dir=\"rtl\">צורך בשיפוץ, בניין ללא מעלית, חריגות או רישום לא ברור</td></tr><tr><td dir=\"rtl\">3.5-4 חדרים</td><td dir=\"rtl\">2,150,000-3,250,000 ₪</td><td dir=\"rtl\">80-110 מ״ר</td><td dir=\"rtl\">חניה, מחסן, בניין חדש יחסית, קומה גבוהה</td><td dir=\"rtl\">תכנון פנימי מיושן, חשיפה לרעש, תחזוקה חלשה</td></tr><tr><td dir=\"rtl\">4.5-5 חדרים</td><td dir=\"rtl\">2,850,000-4,400,000 ₪</td><td dir=\"rtl\">105-140 מ״ר</td><td dir=\"rtl\">מגדל חדש, נוף לים, 2 חניות, מרפסת גדולה</td><td dir=\"rtl\">דמי ניהול גבוהים, מרחק משירותים, היצע גדול באזור</td></tr><tr><td dir=\"rtl\">דירת גן או גג</td><td dir=\"rtl\">3,200,000-5,800,000 ₪</td><td dir=\"rtl\">90-160 מ״ר בנוי ועוד שטח חוץ</td><td dir=\"rtl\">חצר שימושית, גג פרטי, פרטיות, חניה ומחסן</td><td dir=\"rtl\">שטח חוץ לא מוצמד, בעיות הצמדה, תחזוקה יקרה</td></tr><tr><td dir=\"rtl\">דירה חדשה או כמעט חדשה</td><td dir=\"rtl\">2,700,000-6,500,000 ₪</td><td dir=\"rtl\">75-150 מ״ר</td><td dir=\"rtl\">ממ״ד, מרפסת, תקן חדש, חניה, לובי, מעליות</td><td dir=\"rtl\">מועד מסירה רחוק, הצמדה למדד, מלאי מתחרה, דמי ניהול</td></tr></tbody></table>",
+   "new": "<table dir=\"rtl\"><thead><tr><th dir=\"rtl\">סוג דירה</th><th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th><th dir=\"rtl\">ינואר-מרץ 2025</th><th dir=\"rtl\">שינוי בשנה</th><th dir=\"rtl\">מה מעלה מחיר</th><th dir=\"rtl\">מה מוריד מחיר</th></tr></thead><tbody><tr><td dir=\"rtl\">3 חדרים</td><td dir=\"rtl\">1,823,700 ₪</td><td dir=\"rtl\">1,844,800 ₪</td><td dir=\"rtl\">ירידה של 1.1%</td><td dir=\"rtl\">מרפסת, ממ״ד, מעלית, אזור מרכזי או מערבי</td><td dir=\"rtl\">צורך בשיפוץ, בניין ללא מעלית, חריגות או רישום לא ברור</td></tr><tr><td dir=\"rtl\">4 חדרים</td><td dir=\"rtl\">2,692,600 ₪</td><td dir=\"rtl\">2,582,700 ₪</td><td dir=\"rtl\">עלייה של 4.3%</td><td dir=\"rtl\">חניה, מחסן, בניין חדש יחסית, קומה גבוהה</td><td dir=\"rtl\">תכנון פנימי מיושן, חשיפה לרעש, תחזוקה חלשה</td></tr><tr><td dir=\"rtl\">5 חדרים</td><td dir=\"rtl\">3,468,600 ₪</td><td dir=\"rtl\">3,069,800 ₪</td><td dir=\"rtl\">עלייה של 13%</td><td dir=\"rtl\">מגדל חדש, נוף לים, 2 חניות, מרפסת גדולה</td><td dir=\"rtl\">דמי ניהול גבוהים, מרחק משירותים, היצע גדול באזור</td></tr></tbody></table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago",
+    "rooms.3.change_pct",
+    "rooms.4.latest",
+    "rooms.4.year_ago",
+    "rooms.4.change_pct",
+    "rooms.5.latest",
+    "rooms.5.year_ago",
+    "rooms.5.change_pct"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rooms table: the 'checking ranges' for 2.5-3, 3.5-4 and 4.5-5 rooms contained the official medians (consistent), but the 1-2 room, garden/roof and new-flat ranges have no source or date. Replaced by the official 3/4/5-room medians with the year-earlier quarter; the 'raises / lowers the price' notes of those rows are kept word for word (the common-size column is dropped).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">טווח מחיר בדיקה</th>",
+   "n": 4,
+   "raw_risk": [
+    "straight double quote",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "מוכר צריך להשתמש בטווחי המחיר בצורה הפוכה:",
+   "new": "מוכר צריך להשתמש בנתוני המחיר בצורה הפוכה:",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Follows edit 4: the table no longer shows price ranges.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 5,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "לכן השוואה בין 2 דירות באותה שכונה חייבת לרדת לרמת רחוב, בניין וקומה.",
+   "new": "לכן השוואה בין 2 דירות באותה שכונה חייבת לרדת לרמת רחוב, בניין וקומה. כנקודת פתיחה, לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 3 חדרים היה 2,322,100 ₪ ברמת יוסף, 2,014,800 ₪ בדרום מערב העיר, 1,757,100 ₪ במרכז העיר ו-1,696,800 ₪ ברמת הנשיא, ולדירת 4 חדרים 3,010,600 ₪ בצפון מערב העיר ו-2,591,300 ₪ במרכז העיר.",
+   "source_keys": [
+    "neighbourhoods[רמת יוסף].rooms.3",
+    "neighbourhoods[דרום-מערב].rooms.3",
+    "neighbourhoods[מרכז העיר].rooms.3",
+    "neighbourhoods[רמת הנשיא].rooms.3",
+    "neighbourhoods[צפון-מערב].rooms.4",
+    "neighbourhoods[מרכז העיר].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "The area table's 3-4 room ranges (edit 7) leave; official neighbourhood medians are given in the paragraph that introduces it.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 6,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"><thead><tr><th dir=\"rtl\">אזור בדיקה</th><th dir=\"rtl\">טווח מחיר אופייני לדירות 3-4 חדרים</th><th dir=\"rtl\">מאפייני ביקוש</th><th dir=\"rtl\">שאלות שצריך לשאול</th></tr></thead><tbody><tr><td dir=\"rtl\">מערב העיר וקרבה לים</td><td dir=\"rtl\">2,250,000-4,800,000 ₪</td><td dir=\"rtl\">ביקוש לנוף, הליכה לטיילת, דירות חדשות או משופצות</td><td dir=\"rtl\">האם יש נוף פתוח, קו בנייה עתידי, חניה ודמי ניהול?</td></tr><tr><td dir=\"rtl\">מרכז בת ים</td><td dir=\"rtl\">1,800,000-2,900,000 ₪</td><td dir=\"rtl\">נגישות לשירותים, תחבורה, מסחר ושכירות יציבה</td><td dir=\"rtl\">מה מצב הבניין, האם יש מעלית, ומה איכות הרחוב?</td></tr><tr><td dir=\"rtl\">דרום בת ים</td><td dir=\"rtl\">1,750,000-3,100,000 ₪</td><td dir=\"rtl\">דירות משפחתיות, קרבה לצירים, פוטנציאל התחדשות</td><td dir=\"rtl\">האם יש תוכניות מאושרות או רק דיבורים על התחדשות?</td></tr><tr><td dir=\"rtl\">אזורי התחדשות עירונית</td><td dir=\"rtl\">1,900,000-3,600,000 ₪</td><td dir=\"rtl\">ציפייה לשדרוג עתידי, עניין מצד קונים וספקולציה במחיר</td><td dir=\"rtl\">באיזה שלב נמצא הפרויקט: רעיון, חתימות, תב״ע, היתר או ביצוע?</td></tr><tr><td dir=\"rtl\">בניינים ותיקים פנימיים</td><td dir=\"rtl\">1,500,000-2,500,000 ₪</td><td dir=\"rtl\">מחיר כניסה נמוך יותר, ביקוש לשכירות, אפשרות שיפוץ</td><td dir=\"rtl\">האם יש בעיות תחזוקה, רטיבות, הצמדות או חריגות בנייה?</td></tr><tr><td dir=\"rtl\">דירות חדשות ומגדלים</td><td dir=\"rtl\">2,900,000-6,500,000 ₪</td><td dir=\"rtl\">ממ״ד, מרפסת, חניה, מעליות, סטנדרט חדש</td><td dir=\"rtl\">מה כלול במחיר, מה מועד המסירה, ומה גובה ההצמדות?</td></tr></tbody></table>",
+   "new": "<table dir=\"rtl\"><thead><tr><th dir=\"rtl\">אזור בדיקה</th><th dir=\"rtl\">מאפייני ביקוש</th><th dir=\"rtl\">שאלות שצריך לשאול</th></tr></thead><tbody><tr><td dir=\"rtl\">מערב העיר וקרבה לים</td><td dir=\"rtl\">ביקוש לנוף, הליכה לטיילת, דירות חדשות או משופצות</td><td dir=\"rtl\">האם יש נוף פתוח, קו בנייה עתידי, חניה ודמי ניהול?</td></tr><tr><td dir=\"rtl\">מרכז בת ים</td><td dir=\"rtl\">נגישות לשירותים, תחבורה, מסחר ושכירות יציבה</td><td dir=\"rtl\">מה מצב הבניין, האם יש מעלית, ומה איכות הרחוב?</td></tr><tr><td dir=\"rtl\">דרום בת ים</td><td dir=\"rtl\">דירות משפחתיות, קרבה לצירים, פוטנציאל התחדשות</td><td dir=\"rtl\">האם יש תוכניות מאושרות או רק דיבורים על התחדשות?</td></tr><tr><td dir=\"rtl\">אזורי התחדשות עירונית</td><td dir=\"rtl\">ציפייה לשדרוג עתידי, עניין מצד קונים וספקולציה במחיר</td><td dir=\"rtl\">באיזה שלב נמצא הפרויקט: רעיון, חתימות, תב״ע, היתר או ביצוע?</td></tr><tr><td dir=\"rtl\">בניינים ותיקים פנימיים</td><td dir=\"rtl\">מחיר כניסה נמוך יותר, ביקוש לשכירות, אפשרות שיפוץ</td><td dir=\"rtl\">האם יש בעיות תחזוקה, רטיבות, הצמדות או חריגות בנייה?</td></tr><tr><td dir=\"rtl\">דירות חדשות ומגדלים</td><td dir=\"rtl\">ממ״ד, מרפסת, חניה, מעליות, סטנדרט חדש</td><td dir=\"rtl\">מה כלול במחיר, מה מועד המסירה, ומה גובה ההצמדות?</td></tr></tbody></table>",
+   "source_keys": [
+    "neighbourhoods[צפון-מערב].rooms.3",
+    "neighbourhoods[דרום-מערב].rooms.3",
+    "neighbourhoods[מרכז העיר].rooms.3"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Area table: the 3-4 room ranges of the west (from 2.25M) and the centre (from 1.8M) exclude the official 3-room medians of North-West 1,906,800, South-West 2,014,800 and the city centre 1,757,100; the other four rows (south, renewal areas, old interior buildings, new towers) have no source, no date and no official counterpart. The price column is removed; areas, demand notes and questions are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">טווח מחיר אופייני לדירות 3-4 חדרים</th>",
+   "n": 7,
+   "raw_risk": [
+    "straight double quote",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"><thead><tr><th dir=\"rtl\">סוג דירה</th><th dir=\"rtl\">שכירות חודשית לבדיקת שוק</th><th dir=\"rtl\">מחיר קנייה אפשרי לבדיקה</th><th dir=\"rtl\">יחס שנתי גס לפני הוצאות</th><th dir=\"rtl\">מה לבדוק מעבר למספר</th></tr></thead><tbody><tr><td dir=\"rtl\">2 חדרים</td><td dir=\"rtl\">3,800-4,800 ₪</td><td dir=\"rtl\">1,300,000-1,850,000 ₪</td><td dir=\"rtl\">כ-2.5%-4.0%</td><td dir=\"rtl\">ביקוש שוכרים, קומה, מעלית, מצב הדירה</td></tr><tr><td dir=\"rtl\">3 חדרים</td><td dir=\"rtl\">4,300-5,600 ₪</td><td dir=\"rtl\">1,650,000-2,450,000 ₪</td><td dir=\"rtl\">כ-2.4%-4.1%</td><td dir=\"rtl\">שטח אמיתי, קרבה לתחבורה, צורך בשיפוץ</td></tr><tr><td dir=\"rtl\">4 חדרים</td><td dir=\"rtl\">5,800-7,200 ₪</td><td dir=\"rtl\">2,150,000-3,250,000 ₪</td><td dir=\"rtl\">כ-2.1%-4.0%</td><td dir=\"rtl\">משפחות, חניה, ממ״ד, מוסדות חינוך</td></tr><tr><td dir=\"rtl\">5 חדרים</td><td dir=\"rtl\">7,200-9,500 ₪</td><td dir=\"rtl\">2,850,000-4,400,000 ₪</td><td dir=\"rtl\">כ-2.0%-4.0%</td><td dir=\"rtl\">דמי ניהול, גודל מרפסת, תחרות מדירות חדשות</td></tr><tr><td dir=\"rtl\">דירה חדשה קרובה לים</td><td dir=\"rtl\">7,500-13,000 ₪</td><td dir=\"rtl\">3,500,000-6,500,000 ₪</td><td dir=\"rtl\">כ-1.8%-3.8%</td><td dir=\"rtl\">פרמיית נוף, דמי ניהול, ביקוש עונתי או משפחתי</td></tr></tbody></table>",
+   "new": "<table dir=\"rtl\"><thead><tr><th dir=\"rtl\">סוג דירה</th><th dir=\"rtl\">שכירות חודשית לבדיקת שוק</th><th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th><th dir=\"rtl\">מה לבדוק מעבר למספר</th></tr></thead><tbody><tr><td dir=\"rtl\">2 חדרים</td><td dir=\"rtl\">3,800-4,800 ₪</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">ביקוש שוכרים, קומה, מעלית, מצב הדירה</td></tr><tr><td dir=\"rtl\">3 חדרים</td><td dir=\"rtl\">4,300-5,600 ₪</td><td dir=\"rtl\">1,823,700 ₪</td><td dir=\"rtl\">שטח אמיתי, קרבה לתחבורה, צורך בשיפוץ</td></tr><tr><td dir=\"rtl\">4 חדרים</td><td dir=\"rtl\">5,800-7,200 ₪</td><td dir=\"rtl\">2,692,600 ₪</td><td dir=\"rtl\">משפחות, חניה, ממ״ד, מוסדות חינוך</td></tr><tr><td dir=\"rtl\">5 חדרים</td><td dir=\"rtl\">7,200-9,500 ₪</td><td dir=\"rtl\">3,468,600 ₪</td><td dir=\"rtl\">דמי ניהול, גודל מרפסת, תחרות מדירות חדשות</td></tr></tbody></table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest",
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent table: the purchase column repeats the checking ranges (3-5 rooms consistent, 2 rooms and new flats near the sea unsourced) and the gross-ratio column is derived from them. Purchase prices replaced by the official medians, the ratio column and the unsourced 'new flat near the sea' row removed (no new arithmetic); the 2-5 room rent ranges and notes are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">יחס שנתי גס לפני הוצאות</th>",
+   "n": 8,
+   "raw_risk": [
+    "straight double quote",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "אתר Dirobot, שהוא אתר נתוני עסקאות ולא מקור רשמי, הציג לבת ים מחיר ממוצע סביב 2,450,000 ₪, מחיר למ״ר סביב 29,000 ₪ וכ-2,425 עסקאות. המספרים האלה יכולים לעזור בהשוואה ראשונית, אך המקור הרשמי לבדיקה הוא אתר הנדל״ן הממשלתי או נתוני רשות המסים לעסקאות בפועל.",
+   "new": "אתר Dirobot, שהוא אתר נתוני עסקאות ולא מקור רשמי, הציג לבת ים מחיר למ״ר סביב 29,000 ₪ וכ-2,425 עסקאות. נתוני אתרים כאלה יכולים לעזור בהשוואה ראשונית, אך המקור הרשמי לבדיקה הוא אתר הנדל״ן הממשלתי או נתוני רשות המסים לעסקאות בפועל: לפי נתוני רשות המסים, חציון מחיר העסקה לכל הדירות בבת ים ברבעון הראשון של 2026 היה 1,901,500 ₪.",
+   "source_keys": [
+    "rooms.all.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "A private site's city average 2,450,000 vs the official all-apartments median 1,901,500; the named site's per-m2 figure and deal count are kept (page checked 6.6.2026).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 9,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"><thead><tr><th dir=\"rtl\">דוגמת עסקה לבדיקה</th><th dir=\"rtl\">חודש ושנה</th><th dir=\"rtl\">שטח</th><th dir=\"rtl\">מחיר עסקה</th><th dir=\"rtl\">מחיר למ״ר מחושב</th><th dir=\"rtl\">איך להשתמש בזה</th></tr></thead><tbody><tr><td dir=\"rtl\">האורגים 2</td><td dir=\"rtl\">מרץ 2026</td><td dir=\"rtl\">58 מ״ר</td><td dir=\"rtl\">1,470,000 ₪</td><td dir=\"rtl\">כ-25,345 ₪ למ״ר</td><td dir=\"rtl\">בדיקת דירות קטנות בלבד, לא השוואה לדירת 4 חדרים</td></tr><tr><td dir=\"rtl\">טבנקין 27</td><td dir=\"rtl\">מרץ 2026</td><td dir=\"rtl\">118 מ״ר</td><td dir=\"rtl\">2,800,000 ₪</td><td dir=\"rtl\">כ-23,729 ₪ למ״ר</td><td dir=\"rtl\">בדיקה לדירה גדולה יותר, תוך בדיקת קומה, מצב וחניה</td></tr><tr><td dir=\"rtl\">הרב מימון 21</td><td dir=\"rtl\">מרץ 2026</td><td dir=\"rtl\">97 מ״ר</td><td dir=\"rtl\">2,350,000 ₪</td><td dir=\"rtl\">כ-24,227 ₪ למ״ר</td><td dir=\"rtl\">השוואה לדירות 3.5-4 חדרים דומות באזור</td></tr><tr><td dir=\"rtl\">דירה ממוצעת לפי אתר נתונים פרטי</td><td dir=\"rtl\">נתון דינמי</td><td dir=\"rtl\">לא אחיד</td><td dir=\"rtl\">כ-2,450,000 ₪</td><td dir=\"rtl\">כ-29,000 ₪ למ״ר</td><td dir=\"rtl\">אינדיקציה עירונית בלבד, לא מחיר לדירה מסוימת</td></tr></tbody></table>",
+   "new": "<table dir=\"rtl\"><thead><tr><th dir=\"rtl\">דוגמת עסקה לבדיקה</th><th dir=\"rtl\">חודש ושנה</th><th dir=\"rtl\">שטח</th><th dir=\"rtl\">מחיר עסקה</th><th dir=\"rtl\">מחיר למ״ר מחושב</th><th dir=\"rtl\">איך להשתמש בזה</th></tr></thead><tbody><tr><td dir=\"rtl\">האורגים 2</td><td dir=\"rtl\">מרץ 2026</td><td dir=\"rtl\">58 מ״ר</td><td dir=\"rtl\">1,470,000 ₪</td><td dir=\"rtl\">כ-25,345 ₪ למ״ר</td><td dir=\"rtl\">בדיקת דירות קטנות בלבד, לא השוואה לדירת 4 חדרים</td></tr><tr><td dir=\"rtl\">טבנקין 27</td><td dir=\"rtl\">מרץ 2026</td><td dir=\"rtl\">118 מ״ר</td><td dir=\"rtl\">2,800,000 ₪</td><td dir=\"rtl\">כ-23,729 ₪ למ״ר</td><td dir=\"rtl\">בדיקה לדירה גדולה יותר, תוך בדיקת קומה, מצב וחניה</td></tr><tr><td dir=\"rtl\">הרב מימון 21</td><td dir=\"rtl\">מרץ 2026</td><td dir=\"rtl\">97 מ״ר</td><td dir=\"rtl\">2,350,000 ₪</td><td dir=\"rtl\">כ-24,227 ₪ למ״ר</td><td dir=\"rtl\">השוואה לדירות 3.5-4 חדרים דומות באזור</td></tr></tbody></table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Deals table: the last row puts the private site's 2,450,000 city average next to real deals (official all-apartments median 1,901,500); the row is removed. The three deals dated March 2026 are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מחיר למ״ר מחושב</th>",
+   "n": 10,
+   "raw_risk": [
+    "straight double quote",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "אתרי נתונים פרטיים מציגים לעיתים מחיר ממוצע סביב 2,450,000 ₪ ומחיר למ״ר סביב 29,000 ₪, אך זהו נתון סטטיסטי בלבד. בפועל דירות קטנות וישנות יכולות להופיע סביב 1,250,000-1,850,000 ₪, ודירות חדשות, גדולות או קרובות לים יכולות להגיע ל-4,000,000-6,500,000 ₪ ואף יותר.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לכל הדירות בבת ים ברבעון הראשון של 2026 היה 1,901,500 ₪, ולפי מספר חדרים: 1,823,700 ₪ לדירת 3 חדרים, 2,692,600 ₪ לדירת 4 חדרים ו-3,468,600 ₪ לדירת 5 חדרים. אתרי נתונים פרטיים מציגים לעיתים מחיר למ״ר סביב 29,000 ₪, אך זהו נתון סטטיסטי בלבד. דירות קטנות וישנות יכולות להופיע במחירים נמוכים יותר, ודירות חדשות, גדולות או קרובות לים יכולות להגיע לסכומים גבוהים בהרבה.",
+   "source_keys": [
+    "rooms.all.latest",
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ average flat: 2,450,000 vs the official all-apartments median 1,901,500; the small-flat and new/large-flat ranges have no source and are rephrased without numbers; the per-m2 figure of private data sites is kept.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 11,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "דירת 3 חדרים בבת ים נעה בדרך כלל סביב 1,650,000-2,450,000 ₪, אך דירה משופצת, עם מעלית, חניה, מרפסת או מיקום מערבי יכולה לחרוג למעלה.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 3 חדרים בבת ים ברבעון הראשון של 2026 היה 1,823,700 ₪, לעומת 1,844,800 ₪ שנה קודם לכן. דירה משופצת, עם מעלית, חניה, מרפסת או מיקום מערבי יכולה לחרוג למעלה.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "FAQ 3 rooms: 1,650,000-2,450,000 contained the official 1,823,700; rewritten from the same facts as the body.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 12,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4583,
+   "url": "https://nad-lan.co.il/bat-yam-apartment-prices/",
+   "field": "content",
+   "old": "דירות 4 חדרים רבות נמצאות בטווח בדיקה של 2,150,000-3,250,000 ₪.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 4 חדרים בבת ים ברבעון הראשון של 2026 היה 2,692,600 ₪, לעומת 2,582,700 ₪ שנה קודם לכן.",
+   "source_keys": [
+    "rooms.4.latest",
+    "rooms.4.year_ago"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "FAQ 4 rooms: 2,150,000-3,250,000 contained the official 2,692,600; rewritten from the same facts as the body.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 13,
+   "raw_risk": []
+  }
+ ],
+ "live_recheck": {
+  "retrieved_utc": "2026-10-07 11:18:09",
+  "modified": "2026-10-07T13:31:03",
+  "audited_copy_modified": "2026-10-07T13:31:03",
+  "price_list_on_page": true,
+  "body_outside_list_identical_to_audited_copy": "yes",
+  "dry_run": "13 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ }
+}

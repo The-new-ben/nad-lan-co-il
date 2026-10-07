@@ -1,0 +1,1430 @@
+{
+ "generated": "7.10.2026",
+ "page": {
+  "id": 4597,
+  "slug": "eilat-apartment-prices",
+  "link": "https://nad-lan.co.il/eilat-apartment-prices/",
+  "modified": "2026-10-07T13:31:25"
+ },
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages?slug=eilat-apartment-prices&_fields=id,link,title,content,modified (content.rendered), public, retrieved 2026-10-07 10:34:29 UTC, 76,190 characters. The price-list section (<section id=\"nlpg\">, the [nadlan_price_guide] shortcode), <script> and <style> are outside the audit.",
+ "facts": "scripts/project-stage/price_guide/cities/eilat-apartment-prices.json (official medians from data.nadlan.gov.il; source_keys are JSON paths in that file: rooms.<k>.latest, rooms.<k>.year_ago, rooms.<k>.change_pct, rooms.<k>.quarters[<q>], israel.<k>, neighbourhoods[<name>].rooms.<k>; 'page' = a number kept from the page's own text)",
+ "apply_rules": [
+  "Apply in the listed order on the RAW content (context=edit). Every \"old\" matches content.rendered exactly once at its turn (matches_in_live), except \"replace_all\" entries, which match exactly \"expect_matches\" times.",
+  "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
+  "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
+  "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+ ],
+ "claims_summary": {
+  "claims": {
+   "CONFLICT": 14,
+   "STALE": 6,
+   "UNSOURCED": 41,
+   "CONSISTENT": 8
+  },
+  "figures": {
+   "CONFLICT": 18,
+   "STALE": 36,
+   "UNSOURCED": 147,
+   "CONSISTENT": 10
+  },
+  "edits": 27,
+  "tier1": 25,
+  "tier2": 2
+ },
+ "notes": "Not audited as claims (illustrations, not market statements): the per-m2 if-example 18,200 / 16,700 (p@63458, 'אם דירת 3 חדרים מוצעת לפי'), the buyer if-example 1,670,000 price / 120,000 renovation / 3,900 vs 6,250 rent (p@69868, no room count), sizes 90 / 55 m2 (p@60898), '6-10 עסקאות' and '5 שכבות' (counts of steps). Rent and listing figures (end of May 2026 listing data, the June 2026 asking data, the asking-rent source with its 6.1% yield) are kept because the page dates them or shows its check date (עודכן ונבדק: 2026-06-06) and names the kind of source; the rent/yield of the 'old contractor or aggregation' source, which the page itself calls old and does not date, is removed in tier 2 (edits 14-15). The neighbourhood, street and property-type averages came from an unnamed 'broad deal database' covering all years and all property types; they are replaced by official neighbourhood medians where the official file has them (8 neighbourhoods; Hadekel, Urim, Ganim A, Ganim B, Neve Midbar, the hotels area and the new industrial zone have none and are named without numbers). The 2023 street table has no official counterpart, so it now shows the official city medians for the last five quarters (edit 17). Official quirk: a sharp dip in 4-6.2025 (3 rooms 1,181,600, 4 rooms 1,337,400; no 5-room median that quarter) between 1,505,800 / 1,781,400 a quarter earlier and the recovery to 1,516,100 / 1,719,300 in 1-3.2026; the quarterly table shows it as published. Name mapping: 'ערבה' in the rent text = official 'הערבה'; all other names match the official file exactly. Remaining SUSPECT lines, if any, are listed by check.py.",
+ "claims": [
+  {
+   "id": 1,
+   "where": "p@4299",
+   "quote": "דירת 2 חדרים סביב 800,000-1,050,000 ₪",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 1",
+   "note": "no official 2-room series, no source; dropped"
+  },
+  {
+   "id": 2,
+   "where": "p@4299",
+   "quote": "דירת 3 חדרים סביב 1,100,000-1,450,000 ₪",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,516,100 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 1",
+   "note": ""
+  },
+  {
+   "id": 3,
+   "where": "p@4299",
+   "quote": "דירת 4 חדרים סביב 1,450,000-1,900,000 ₪",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "1,719,300 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 1",
+   "note": "restated as the median"
+  },
+  {
+   "id": 4,
+   "where": "p@4299",
+   "quote": "דירת 5 חדרים סביב 2,100,000-2,700,000 ₪",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "2,587,900 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 1",
+   "note": "restated as the median"
+  },
+  {
+   "id": 5,
+   "where": "p@4299",
+   "quote": "ממוצע עסקאות היסטורי סביב 1.12 מיליון ₪",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "1,624,100 (all apartments, 1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 1",
+   "note": ""
+  },
+  {
+   "id": 6,
+   "where": "p@4299",
+   "quote": "ממוצעי עסקאות שנתיים של כ-1.65-1.92 מיליון ₪ בשנים האחרונות",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "1,624,100 (1-3.2026)",
+   "verdict": "STALE",
+   "action": "edit 1",
+   "note": "2021-2025 annual averages, all property types"
+  },
+  {
+   "id": 7,
+   "where": "p@4299",
+   "quote": "שכר דירה שמתחיל סביב 3,100 ₪ (2 חד') ומגיע לכ-8,850 ₪ (5 חד')",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data checked 6.6.2026, dated in the sentence)",
+   "note": ""
+  },
+  {
+   "id": 8,
+   "where": "p@42485",
+   "quote": "דירות 2 חדרים הוצגו סביב 860,000 ₪ בממוצע ביקוש",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data, June 2026, dated in the sentence)",
+   "note": ""
+  },
+  {
+   "id": 9,
+   "where": "p@42485",
+   "quote": "דירות 3 חדרים סביב 1,365,000 ₪ (ממוצע ביקוש)",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,516,100 (-10%)",
+   "verdict": "CONFLICT",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 10,
+   "where": "p@42485",
+   "quote": "דירות 4 חדרים סביב 1,670,000 ₪ (ממוצע ביקוש)",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "1,719,300 (-2.9%)",
+   "verdict": "CONSISTENT",
+   "action": "edit 2",
+   "note": "replaced by the median in the same rewrite"
+  },
+  {
+   "id": 11,
+   "where": "p@42485",
+   "quote": "דירות 5 חדרים סביב 2,450,000 ₪ (ממוצע ביקוש)",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "2,587,900 (-5.3%)",
+   "verdict": "CONFLICT",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 12,
+   "where": "p@42485",
+   "quote": "דירות 6 חדרים ומעלה סביב 3,025,000 ₪ (ממוצע ביקוש)",
+   "measure": "sale",
+   "rooms": "6",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data, June 2026, dated in the sentence)",
+   "note": ""
+  },
+  {
+   "id": 13,
+   "where": "p@42485",
+   "quote": "מחיר למ\"ר בביקוש: 17,200 / 18,200 / 16,700 / 14,848 / 12,900 ₪",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 5,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data, June 2026, same paragraph)",
+   "note": ""
+  },
+  {
+   "id": 14,
+   "where": "p@42949",
+   "quote": "24,567 עסקאות, מחיר ממוצע של 1,119,463 ₪",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "1,624,100 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 3",
+   "note": "all-history average, every property type"
+  },
+  {
+   "id": 15,
+   "where": "p@42949",
+   "quote": "2025: 909 עסקאות במחיר ממוצע של 1,695,617 ₪",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "1,624,100 (1-3.2026)",
+   "verdict": "STALE",
+   "action": "edit 3",
+   "note": "a 2025 mean of all property types presented as the recent level"
+  },
+  {
+   "id": 16,
+   "where": "p@42949",
+   "quote": "2024-2021: 1,864,420 / 1,650,005 / 1,921,145 / 1,884,283 ₪",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 4,
+   "official": "",
+   "verdict": "STALE",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 17,
+   "where": "p@43529",
+   "quote": "188 מודעות, ממוצע 4,486, חציון 3,585, מינימום 530 ₪ (סוף מאי 2026)",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data dated end of May 2026)",
+   "note": ""
+  },
+  {
+   "id": 18,
+   "where": "p@43529",
+   "quote": "שכר דירה מבוקש ממוצע 3,500; לפי חדרים 3,100 / 3,900 / 6,250 / 8,850 ₪",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 5,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (asking-rent source, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 19,
+   "where": "p@43529",
+   "quote": "תשואה ממוצעת של 6.1%",
+   "measure": "yield",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (same asking-rent source, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 20,
+   "where": "p@44768",
+   "quote": "בשחמון 7,506 עסקאות במחיר ממוצע של 1,233,971 ₪",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "Shahamon 3/4/5: 1,432,700 / 1,678,300 / 2,269,800",
+   "verdict": "UNSOURCED",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 21,
+   "where": "p@45189",
+   "quote": "מרכז העיר 1,782,675 ₪; המלונות 4,296,592 ₪ (ממוצעים)",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 2,
+   "official": "city centre 3 rooms 1,640,200",
+   "verdict": "UNSOURCED",
+   "action": "edit 5",
+   "note": "also the derived 'above 1.7M / 4M' wording"
+  },
+  {
+   "id": 22,
+   "where": "p@45618",
+   "quote": "מצפה ים 1,147,722; גנים א 1,748,264; גנים ב 2,963,280; נווה מדבר 1,933,492",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 4,
+   "official": "Mitzpe Yam 4 rooms 1,384,300",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 23,
+   "where": "tr@47827",
+   "quote": "2 חדרים | 800,000-1,050,000 | 860,000 | 17,200 למ\"ר",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": "asking average and per-m2 stay in p@42485"
+  },
+  {
+   "id": 24,
+   "where": "tr@48033",
+   "quote": "3 חדרים | 1,100,000-1,450,000 ₪",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,516,100",
+   "verdict": "CONFLICT",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 25,
+   "where": "tr@48033",
+   "quote": "3 חדרים | ממוצע ביקוש 1,365,000 ₪",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,516,100",
+   "verdict": "CONFLICT",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 26,
+   "where": "tr@48033",
+   "quote": "3 חדרים | 18,200 ₪ למ\"ר",
+   "measure": "per_m2",
+   "rooms": "3",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": "column removed; the figure stays in p@42485"
+  },
+  {
+   "id": 27,
+   "where": "tr@48251",
+   "quote": "4 חדרים | 1,450,000-1,900,000 ₪",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "1,719,300",
+   "verdict": "CONSISTENT",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 28,
+   "where": "tr@48251",
+   "quote": "4 חדרים | ממוצע ביקוש 1,670,000 ₪",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "1,719,300 (-2.9%)",
+   "verdict": "CONSISTENT",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 29,
+   "where": "tr@48251",
+   "quote": "4 חדרים | 16,700 ₪ למ\"ר",
+   "measure": "per_m2",
+   "rooms": "4",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 30,
+   "where": "tr@48460",
+   "quote": "5 חדרים | 2,100,000-2,700,000 ₪",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "2,587,900",
+   "verdict": "CONSISTENT",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 31,
+   "where": "tr@48460",
+   "quote": "5 חדרים | ממוצע ביקוש 2,450,000 ₪",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "2,587,900 (-5.3%)",
+   "verdict": "CONFLICT",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 32,
+   "where": "tr@48460",
+   "quote": "5 חדרים | 14,848 ₪ למ\"ר",
+   "measure": "per_m2",
+   "rooms": "5",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 33,
+   "where": "tr@48675",
+   "quote": "6 חדרים ומעלה | 2,700,000 ומעלה | 3,025,000 | 12,900 למ\"ר",
+   "measure": "sale",
+   "rooms": "6",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 34,
+   "where": "p@49248",
+   "quote": "22,694 עסקאות בדירות במחיר ממוצע של 1,016,692 ₪",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "1,624,100 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 9",
+   "note": ""
+  },
+  {
+   "id": 35,
+   "where": "p@49248",
+   "quote": "בניין 2,010,951; קרקע 5,082,600; קוטג' 1,335,097; דירת גן 1,303,740; וילה 2,215,116; דירת גג 1,753,809",
+   "measure": "other",
+   "rooms": "",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 9",
+   "note": ""
+  },
+  {
+   "id": 36,
+   "where": "tr@49876",
+   "quote": "דירה | 22,694 | 1,016,692 ₪",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "1,624,100",
+   "verdict": "CONFLICT",
+   "action": "edit 10",
+   "note": ""
+  },
+  {
+   "id": 37,
+   "where": "tr@50020..50775",
+   "quote": "טבלת ממוצעים לפי סוג נכס (6 שורות: בניין עד דירת גג)",
+   "measure": "other",
+   "rooms": "",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 10",
+   "note": ""
+  },
+  {
+   "id": 38,
+   "where": "p@51366",
+   "quote": "אזור עם מחיר ממוצע של 4,296,592 ₪",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 11",
+   "note": ""
+  },
+  {
+   "id": 39,
+   "where": "tr@51894..54060",
+   "quote": "טבלת ממוצעי עסקאות לפי שכונה (15 שורות)",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 15,
+   "official": "8 official neighbourhoods, 1-3.2026",
+   "verdict": "UNSOURCED",
+   "action": "edit 12",
+   "note": ""
+  },
+  {
+   "id": 40,
+   "where": "p@54593",
+   "quote": "עסקאות רחוב 2023: עין נטפים 1,569,950 ... משעול הגאונים 642,222 ₪",
+   "measure": "sale_street",
+   "rooms": "",
+   "figures": 10,
+   "official": "",
+   "verdict": "STALE",
+   "action": "edit 13",
+   "note": ""
+  },
+  {
+   "id": 41,
+   "where": "p@55564",
+   "quote": "שכר דירה ממוצע 4,486 ₪, חציון 3,585 ₪",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data dated end of May 2026, p@43529)",
+   "note": ""
+  },
+  {
+   "id": 42,
+   "where": "p@55942",
+   "quote": "188 מודעות; ממוצע 4,486, חציון 3,585, מינימום 530; ממוצעי שכירות ל-14 שכונות",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 17,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data dated end of May 2026)",
+   "note": ""
+  },
+  {
+   "id": 43,
+   "where": "tr@56875..58481",
+   "quote": "טבלת שכירות לפי שכונה (12 שורות + כלל העיר)",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 14,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data dated end of May 2026, previous paragraph)",
+   "note": ""
+  },
+  {
+   "id": 44,
+   "where": "p@58633",
+   "quote": "מקור נוסף: 3,100 / 3,900 / 6,250 / 8,850 ₪ לפי חדרים",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (asking-rent source, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 45,
+   "where": "p@58633",
+   "quote": "מקור ישן: שכירות 1,341 / 1,998 / 2,321 / 3,096 ₪",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 14",
+   "note": "the page calls the source old; no date"
+  },
+  {
+   "id": 46,
+   "where": "p@58633",
+   "quote": "מקור ישן: תשואה 5.1% / 4.6% / 3.7% / 3.4%",
+   "measure": "yield",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 14",
+   "note": ""
+  },
+  {
+   "id": 47,
+   "where": "tr@59403..59931",
+   "quote": "טבלת שכירות: עמודת מקור ביקוש עדכני 3,100-8,850 ₪",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (asking-rent source, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 48,
+   "where": "tr@59403..59931",
+   "quote": "טבלת שכירות: עמודת מקור ישן 1,341-3,096 ₪",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 15",
+   "note": ""
+  },
+  {
+   "id": 49,
+   "where": "tr@59403..59931",
+   "quote": "טבלת שכירות: תשואות 5.1% / 4.6% / 3.7% / 3.4%",
+   "measure": "yield",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 15",
+   "note": ""
+  },
+  {
+   "id": 50,
+   "where": "p@61168",
+   "quote": "מדגם רחוב: עין נטפים 1,569,950 ... אילות 1,008,636 ₪",
+   "measure": "sale_street",
+   "rooms": "",
+   "figures": 10,
+   "official": "",
+   "verdict": "STALE",
+   "action": "edit 16",
+   "note": "the 2023 street sample repeated without its date"
+  },
+  {
+   "id": 51,
+   "where": "tr@61988..63303",
+   "quote": "טבלת ממוצעי רחוב בדוגמה (10 שורות)",
+   "measure": "sale_street",
+   "rooms": "",
+   "figures": 10,
+   "official": "",
+   "verdict": "STALE",
+   "action": "edit 17",
+   "note": ""
+  },
+  {
+   "id": 52,
+   "where": "p@64238",
+   "quote": "ריבית 3.75% (25.5.2026); מחירי דיור +0.3% חודשי, -1.2% שנתי",
+   "measure": "macro",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (dated Bank of Israel decision, 25.5.2026)",
+   "note": ""
+  },
+  {
+   "id": 53,
+   "where": "p@65253",
+   "quote": "ממוצע עסקאות רחב בשחמון 1,233,971 ₪",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "Shahamon 4/5: 1,678,300 / 2,269,800",
+   "verdict": "UNSOURCED",
+   "action": "edit 18",
+   "note": ""
+  },
+  {
+   "id": 54,
+   "where": "p@65253",
+   "quote": "דירות 4 חדרים בממוצעי ביקוש סביב 1,670,000 ₪",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "1,719,300 (-2.9%)",
+   "verdict": "CONSISTENT",
+   "action": "edit 18",
+   "note": ""
+  },
+  {
+   "id": 55,
+   "where": "p@65253",
+   "quote": "דירות 5 חדרים סביב 2,450,000 ₪",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "2,587,900 (-5.3%)",
+   "verdict": "CONFLICT",
+   "action": "edit 18",
+   "note": ""
+  },
+  {
+   "id": 56,
+   "where": "p@65605",
+   "quote": "גנים א 229 עסקאות 1,748,264 ₪; גנים ב 102 עסקאות 2,963,280 ₪",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 19",
+   "note": ""
+  },
+  {
+   "id": 57,
+   "where": "p@65992",
+   "quote": "מחיר ממוצע של 4,296,592 ₪ באזור המלונות",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 20",
+   "note": ""
+  },
+  {
+   "id": 58,
+   "where": "tr@69062",
+   "quote": "ריבית של 3.75% משפיעה על כוח הקנייה",
+   "measure": "macro",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (Bank of Israel, 25.5.2026, dated in p@64238)",
+   "note": ""
+  },
+  {
+   "id": 59,
+   "where": "p@70193",
+   "quote": "תשואה ממוצעת של 6.1% במקור אחד",
+   "measure": "yield",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (asking-rent source of p@43529, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 60,
+   "where": "p@71011",
+   "quote": "FAQ: טווח עבודה לדירת 2 חדרים 800,000-1,050,000 ₪",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 21",
+   "note": ""
+  },
+  {
+   "id": 61,
+   "where": "p@71011",
+   "quote": "FAQ: ממוצע ביקוש 860,000 ₪, 17,200 ₪ למ\"ר (2 חדרים)",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data, June 2026; the date is added in the same rewrite)",
+   "note": ""
+  },
+  {
+   "id": 62,
+   "where": "p@71340",
+   "quote": "FAQ: דירת 3 חדרים 1,100,000-1,450,000, ממוצע ביקוש 1,365,000, 18,200 למ\"ר",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 3,
+   "official": "1,516,100",
+   "verdict": "CONFLICT",
+   "action": "edit 22",
+   "note": ""
+  },
+  {
+   "id": 63,
+   "where": "p@71634",
+   "quote": "FAQ: דירת 4 חדרים 1,450,000-1,900,000, ממוצע ביקוש 1,670,000, 16,700 למ\"ר",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 3,
+   "official": "1,719,300",
+   "verdict": "CONSISTENT",
+   "action": "edit 23",
+   "note": "per-m2 asking figure dropped from the answer; it stays in p@42485"
+  },
+  {
+   "id": 64,
+   "where": "p@71905",
+   "quote": "FAQ: דירת 5 חדרים 2,100,000-2,700,000, ממוצע ביקוש 2,450,000, 14,848 למ\"ר",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 3,
+   "official": "2,587,900",
+   "verdict": "CONFLICT",
+   "action": "edit 24",
+   "note": "range consistent, asking average in conflict"
+  },
+  {
+   "id": 65,
+   "where": "p@72184",
+   "quote": "FAQ: המלונות 4,296,592; גנים ב 2,963,280; נווה מדבר 1,933,492 ₪",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 25",
+   "note": ""
+  },
+  {
+   "id": 66,
+   "where": "p@72532",
+   "quote": "FAQ: שחמון 1,233,971; הערבה 587,881; אורים 587,593; אופיר 613,913; הדקל 707,600",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 5,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 26",
+   "note": ""
+  },
+  {
+   "id": 67,
+   "where": "p@72917",
+   "quote": "FAQ שכירות: 4,486 / 3,585; לפי חדרים 3,100 / 3,900 / 6,250 / 8,850 ₪",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data end of May 2026 and asking-rent source, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 68,
+   "where": "p@73725",
+   "quote": "FAQ: דירות 3 חדרים בממוצע ביקוש סביב 1,365,000 ₪",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,516,100",
+   "verdict": "CONFLICT",
+   "action": "edit 27",
+   "note": ""
+  },
+  {
+   "id": 69,
+   "where": "p@74413",
+   "quote": "FAQ: ריבית 3.75% (25.5.2026)",
+   "measure": "macro",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (dated Bank of Israel decision)",
+   "note": ""
+  }
+ ],
+ "edits": [
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "מחירי דירות באילת נעים בטווח רחב במיוחד: דירת 2 חדרים נעה לרוב סביב 800,000-1,050,000 ₪, דירת 3 חדרים סביב 1,100,000-1,450,000 ₪, דירת 4 חדרים סביב 1,450,000-1,900,000 ₪, דירת 5 חדרים סביב 2,100,000-2,700,000 ₪, ונכסים גדולים, דירות עם נוף לים, דירות באזור המלונות, גנים ב, גנים א, מצפה ים או בתים צמודי קרקע יכולים להגיע לסכומים גבוהים בהרבה. נתוני שוק פרטיים שנבדקו ב-6 ביוני 2026 הצביעו על מאות נכסים מוצעים למכירה, ממוצע עסקאות היסטורי סביב 1.12 מיליון ₪, ממוצעי עסקאות שנתיים של כ-1.65-1.92 מיליון ₪ בשנים האחרונות, ושכר דירה שמתחיל סביב 3,100 ₪ בדירות 2 חדרים ומגיע גם לכ-8,850 ₪ בדירות 5 חדרים לפי נתוני היצע מסוימים.",
+   "new": "מחירי דירות באילת, לפי נתוני רשות המסים לרבעון הראשון של 2026: חציון מחיר העסקה היה 1,516,100 ₪ לדירת 3 חדרים, 1,719,300 ₪ לדירת 4 חדרים ו-2,587,900 ₪ לדירת 5 חדרים. נכסים גדולים, דירות עם נוף לים, דירות באזור המלונות, גנים ב, גנים א, מצפה ים או בתים צמודי קרקע יכולים להגיע לסכומים גבוהים בהרבה. נתוני היצע שנבדקו ב-6 ביוני 2026 הצביעו על מאות נכסים מוצעים למכירה, ועל שכר דירה מבוקש שמתחיל סביב 3,100 ₪ בדירות 2 חדרים ומגיע גם לכ-8,850 ₪ בדירות 5 חדרים.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Lead above the list: the 3-room working range 1.1-1.45M excludes the official median 1,516,100 (1-3.2026); the 4- and 5-room ranges were consistent and are restated as the medians. The undated 2-room range, the all-history deal average (1.12M, far from the all-apartments median 1,624,100) and the 2021-2025 annual averages (1.65-1.92M) are dropped. The asking rent 3,100-8,850 (listing data checked 6.6.2026) is kept.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 1,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "על בסיס נתוני ההיצע שנבדקו ביוני 2026, דירות 2 חדרים הוצגו סביב 860,000 ₪ בממוצע ביקוש, דירות 3 חדרים סביב 1,365,000 ₪, דירות 4 חדרים סביב 1,670,000 ₪, דירות 5 חדרים סביב 2,450,000 ₪, ודירות 6 חדרים ומעלה סביב 3,025,000 ₪.",
+   "new": "בנתוני ההיצע שנבדקו ביוני 2026, דירות 2 חדרים הוצגו סביב 860,000 ₪ בממוצע ביקוש ודירות 6 חדרים ומעלה סביב 3,025,000 ₪. לדירות 3, 4 ו-5 חדרים יש נתון חזק יותר, חציון מחיר העסקה לפי נתוני רשות המסים: ברבעון הראשון של 2026 הוא היה 1,516,100 ₪ לדירת 3 חדרים, 1,719,300 ₪ לדירת 4 חדרים ו-2,587,900 ₪ לדירת 5 חדרים.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Asking averages by rooms: 3 rooms 1,365,000 (-10%) and 5 rooms 2,450,000 (-5.3%) are outside tolerance of the official medians 1,516,100 and 2,587,900; 4 rooms 1,670,000 was consistent. The 3/4/5 asking averages give way to the medians; the 2-room and 6+-room asking averages (listing data, June 2026) are kept, and so is the per-m2 sentence that follows.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 2,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "בצד העסקאות, מקור נתונים רחב על אילת הציג 24,567 עסקאות, מחיר ממוצע של 1,119,463 ₪ ושטח ממוצע של 120 מ\"ר. בשנים האחרונות נרשמו ממוצעים גבוהים יותר: 909 עסקאות בשנת 2025 במחיר ממוצע של 1,695,617 ₪ ובשטח ממוצע של 96 מ\"ר, 1,193 עסקאות בשנת 2024 במחיר ממוצע של 1,864,420 ₪ ובשטח ממוצע של 134 מ\"ר, 891 עסקאות בשנת 2023 במחיר ממוצע של 1,650,005 ₪, 1,353 עסקאות בשנת 2022 במחיר ממוצע של 1,921,145 ₪, ו-1,421 עסקאות בשנת 2021 במחיר ממוצע של 1,884,283 ₪. הפער בין ממוצע היסטורי רחב לבין ממוצעים שנתיים עדכניים ממחיש למה חייבים לבדוק את תקופת העסקה, סוג הנכס, השכונה והשטח.",
+   "new": "בצד העסקאות, לפי נתוני רשות המסים, חציון מחיר העסקה לכל הדירות באילת היה 1,624,100 ₪ ברבעון הראשון של 2026, לעומת 1,580,000 ₪ ברבעון הראשון של 2025, עלייה של 2.8%. ממוצע של כל העסקאות לאורך שנים מערבב תקופות, סוגי נכסים ושטחים שונים, ולכן חייבים לבדוק את תקופת העסקה, סוג הנכס, השכונה והשטח.",
+   "source_keys": [
+    "rooms.all.latest",
+    "rooms.all.year_ago",
+    "rooms.all.change_pct"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "An all-history average of 24,567 deals of every property type (1,119,463) is far from the official all-apartments median 1,624,100; the 2021-2025 annual averages are older periods presented as the recent level (STALE). Replaced by the official all-apartments median with the year-earlier quarter.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 3,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "לפי מקור עסקאות רחב, בשחמון נרשמו 7,506 עסקאות במחיר ממוצע של 1,233,971 ₪.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה בשחמון היה 1,432,700 ₪ לדירת 3 חדרים, 1,678,300 ₪ לדירת 4 חדרים ו-2,269,800 ₪ לדירת 5 חדרים.",
+   "source_keys": [
+    "neighbourhoods[שחמון].rooms.3",
+    "neighbourhoods[שחמון].rooms.4",
+    "neighbourhoods[שחמון].rooms.5"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "All-rooms, all-history neighbourhood average from an unnamed 'broad deal source' with no period; replaced by the official Shahamon medians.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 4,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "מרכז העיר הציג 803 עסקאות במחיר ממוצע של 1,782,675 ₪, ואזור המלונות הציג 241 עסקאות במחיר ממוצע של 4,296,592 ₪. המספרים האלה אינם אומרים שכל דירה במרכז אילת שווה מעל 1.7 מיליון ₪ או שכל נכס באזור המלונות שווה מעל 4 מיליון ₪, אלא שהרכב העסקאות שונה:",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 3 חדרים במרכז העיר היה 1,640,200 ₪, מעל החציון העירוני לדירת 3 חדרים. באזור המלונות העסקאות מעטות ומגוונות, ומחיר ממוצע גבוה שם אינו אומר שכל נכס באזור שווה סכום כזה, אלא שהרכב העסקאות שונה:",
+   "source_keys": [
+    "neighbourhoods[מרכז העיר].rooms.3",
+    "rooms.3.latest"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "All-rooms neighbourhood averages (city centre 1,782,675, hotels area 4,296,592) with no period or named source; the city centre gets its official 3-room median, the hotels area (no official median) is described without a number.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 5,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "מצפה ים הציגה 853 עסקאות במחיר ממוצע של 1,147,722 ₪, גנים א 229 עסקאות במחיר ממוצע של 1,748,264 ₪, גנים ב 102 עסקאות במחיר ממוצע של 2,963,280 ₪, ונווה מדבר 69 עסקאות במחיר ממוצע של 1,933,492 ₪.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 4 חדרים במצפה ים היה 1,384,300 ₪. בגנים א, בגנים ב ובנווה מדבר העסקאות מעטות יותר.",
+   "source_keys": [
+    "neighbourhoods[מצפה ים].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "All-rooms neighbourhood averages with no period or named source; Mitzpe Yam gets its official 4-room median, Ganim A, Ganim B and Neve Midbar have no official median and are described without numbers.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 6,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "טבלת חדרים נותנת נקודת התחלה נוחה, אך באילת היא עלולה להטעות כאשר לא בודקים שטח, מיקום, נוף, קומה וסוג בניין.",
+   "new": "הטבלה הבאה מציגה את חציון מחיר העסקה באילת לפי מספר חדרים, לפי נתוני רשות המסים לרבעון הראשון של 2026, לצד החציון באותו רבעון שנה קודם לכן. המחירון הרשמי מפרסם חציון לדירות 3, 4 ו-5 חדרים; דירות 2 חדרים ודירות 6 חדרים ומעלה כדאי לבדוק מול עסקאות דומות ברחוב ובשכונה. טבלת חדרים נותנת נקודת התחלה נוחה, אך באילת היא עלולה להטעות כאשר לא בודקים שטח, מיקום, נוף, קומה וסוג בניין.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Introduces the replaced rooms table (edit 8); the 2-room and 6+-room rows leave it.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 7,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"><thead dir=\"rtl\"><tr dir=\"rtl\"><th dir=\"rtl\">קטגוריה</th><th dir=\"rtl\">טווח עבודה לקונה או מוכר</th><th dir=\"rtl\">ממוצע ביקוש שנמצא</th><th dir=\"rtl\">מחיר למ\"ר שנמצא</th><th dir=\"rtl\">איך לקרוא את הנתון</th></tr></thead><tbody dir=\"rtl\"><tr dir=\"rtl\"><td dir=\"rtl\">2 חדרים</td><td dir=\"rtl\">800,000-1,050,000 ₪</td><td dir=\"rtl\">860,000 ₪</td><td dir=\"rtl\">17,200 ₪ למ\"ר</td><td dir=\"rtl\">רגיש מאוד למיקום, שיפוץ, ריהוט ואפשרות השכרה</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">3 חדרים</td><td dir=\"rtl\">1,100,000-1,450,000 ₪</td><td dir=\"rtl\">1,365,000 ₪</td><td dir=\"rtl\">18,200 ₪ למ\"ר</td><td dir=\"rtl\">קטגוריית השוואה מרכזית לזוגות, משקיעים ומשפחות קטנות</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">4 חדרים</td><td dir=\"rtl\">1,450,000-1,900,000 ₪</td><td dir=\"rtl\">1,670,000 ₪</td><td dir=\"rtl\">16,700 ₪ למ\"ר</td><td dir=\"rtl\">מתאימה להשוואה לפי שכונה, חניה, מעלית וממ\"ד</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">5 חדרים</td><td dir=\"rtl\">2,100,000-2,700,000 ₪</td><td dir=\"rtl\">2,450,000 ₪</td><td dir=\"rtl\">14,848 ₪ למ\"ר</td><td dir=\"rtl\">הפערים גדלים לפי נוף, שטח, מרפסת, קומה וגיל בניין</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">6 חדרים ומעלה</td><td dir=\"rtl\">2,700,000 ₪ ומעלה</td><td dir=\"rtl\">3,025,000 ₪</td><td dir=\"rtl\">12,900 ₪ למ\"ר</td><td dir=\"rtl\">צריך להשוות לנכסים גדולים דומים, לא לדירות רגילות</td></tr></tbody></table>",
+   "new": "<table dir=\"rtl\"><thead dir=\"rtl\"><tr dir=\"rtl\"><th dir=\"rtl\">סוג נכס</th><th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th><th dir=\"rtl\">ינואר-מרץ 2025</th><th dir=\"rtl\">שינוי בשנה</th><th dir=\"rtl\">איך לקרוא את הנתון</th></tr></thead><tbody dir=\"rtl\"><tr dir=\"rtl\"><td dir=\"rtl\">3 חדרים</td><td dir=\"rtl\">1,516,100 ₪</td><td dir=\"rtl\">1,505,800 ₪</td><td dir=\"rtl\">עלייה של 0.7%</td><td dir=\"rtl\">קטגוריית השוואה מרכזית לזוגות, משקיעים ומשפחות קטנות</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">4 חדרים</td><td dir=\"rtl\">1,719,300 ₪</td><td dir=\"rtl\">1,781,400 ₪</td><td dir=\"rtl\">ירידה של 3.5%</td><td dir=\"rtl\">מתאימה להשוואה לפי שכונה, חניה, מעלית וממ\"ד</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">5 חדרים</td><td dir=\"rtl\">2,587,900 ₪</td><td dir=\"rtl\">2,506,300 ₪</td><td dir=\"rtl\">עלייה של 3.3%</td><td dir=\"rtl\">הפערים גדלים לפי נוף, שטח, מרפסת, קומה וגיל בניין</td></tr></tbody></table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago",
+    "rooms.3.change_pct",
+    "rooms.4.latest",
+    "rooms.4.year_ago",
+    "rooms.4.change_pct",
+    "rooms.5.latest",
+    "rooms.5.year_ago",
+    "rooms.5.change_pct"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Rooms table: the 3-room working range and the 3- and 5-room asking averages (1,365,000 / 2,450,000) contradict the official medians; the 2-room and 6+-room rows have no official series and the per-m2 column is asking data (it stays in the paragraph after the price list). Replaced by the official medians with the year-earlier quarter; the notes of rows 3-5 are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">טווח עבודה לקונה או מוכר</th>",
+   "n": 8,
+   "raw_risk": [
+    "straight double quote",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "לפי פילוח סוגי נכסים במאגר עסקאות רחב, דירות היו הרוב המוחלט: 22,694 עסקאות בדירות במחיר ממוצע של 1,016,692 ₪. לצד זה הופיעו 902 עסקאות בבניין במחיר ממוצע של 2,010,951 ₪, 253 עסקאות קרקע במחיר ממוצע של 5,082,600 ₪, 52 עסקאות קוטג' דו משפחתי במחיר ממוצע של 1,335,097 ₪, 33 עסקאות דירת גן במחיר ממוצע של 1,303,740 ₪, 30 עסקאות וילה במחיר ממוצע של 2,215,116 ₪, ו-11 עסקאות דירת גג במחיר ממוצע של 1,753,809 ₪.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לכל הדירות באילת ברבעון הראשון של 2026 היה 1,624,100 ₪. בניין, קרקע, קוטג' דו משפחתי, דירת גן, וילה ודירת גג מתומחרים אחרת, ולכל סוג נכס כזה צריך מדגם עסקאות משלו ולא השוואה לחציון של דירה רגילה.",
+   "source_keys": [
+    "rooms.all.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "All-history average for apartments (1,016,692) is far from the official all-apartments median 1,624,100; the averages for buildings, land, cottages, garden flats, villas and penthouses have no period or named source and no official counterpart.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 9,
+   "raw_risk": [
+    "apostrophe"
+   ]
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"><thead dir=\"rtl\"><tr dir=\"rtl\"><th dir=\"rtl\">סוג נכס</th><th dir=\"rtl\">מספר עסקאות שנמצא</th><th dir=\"rtl\">מחיר ממוצע שנמצא</th><th dir=\"rtl\">משמעות לשווי</th></tr></thead><tbody dir=\"rtl\"><tr dir=\"rtl\"><td dir=\"rtl\">דירה</td><td dir=\"rtl\">22,694</td><td dir=\"rtl\">1,016,692 ₪</td><td dir=\"rtl\">בסיס ההשוואה הרחב ביותר בעיר</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">בניין</td><td dir=\"rtl\">902</td><td dir=\"rtl\">2,010,951 ₪</td><td dir=\"rtl\">דורש בדיקת זכויות, יחידות, שימושים והכנסות</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">קרקע</td><td dir=\"rtl\">253</td><td dir=\"rtl\">5,082,600 ₪</td><td dir=\"rtl\">תמחור תכנוני, לא תמחור דירה רגילה</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">קוטג' דו משפחתי</td><td dir=\"rtl\">52</td><td dir=\"rtl\">1,335,097 ₪</td><td dir=\"rtl\">מושפע מחצר, הצמדות, שטח בנוי וזכויות</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">דירת גן</td><td dir=\"rtl\">33</td><td dir=\"rtl\">1,303,740 ₪</td><td dir=\"rtl\">פרמיה או הפחתה לפי פרטיות, גישה וחצר בפועל</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">וילה</td><td dir=\"rtl\">30</td><td dir=\"rtl\">2,215,116 ₪</td><td dir=\"rtl\">צריך מדגם צמודי קרקע בלבד</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">דירת גג</td><td dir=\"rtl\">11</td><td dir=\"rtl\">1,753,809 ₪</td><td dir=\"rtl\">מספר עסקאות קטן, כל עסקה חריגה משפיעה</td></tr></tbody></table>",
+   "new": "<table dir=\"rtl\"><thead dir=\"rtl\"><tr dir=\"rtl\"><th dir=\"rtl\">סוג נכס</th><th dir=\"rtl\">משמעות לשווי</th></tr></thead><tbody dir=\"rtl\"><tr dir=\"rtl\"><td dir=\"rtl\">דירה</td><td dir=\"rtl\">בסיס ההשוואה הרחב ביותר בעיר</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">בניין</td><td dir=\"rtl\">דורש בדיקת זכויות, יחידות, שימושים והכנסות</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">קרקע</td><td dir=\"rtl\">תמחור תכנוני, לא תמחור דירה רגילה</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">קוטג' דו משפחתי</td><td dir=\"rtl\">מושפע מחצר, הצמדות, שטח בנוי וזכויות</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">דירת גן</td><td dir=\"rtl\">פרמיה או הפחתה לפי פרטיות, גישה וחצר בפועל</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">וילה</td><td dir=\"rtl\">צריך מדגם צמודי קרקע בלבד</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">דירת גג</td><td dir=\"rtl\">מספר עסקאות קטן, כל עסקה חריגה משפיעה</td></tr></tbody></table>",
+   "source_keys": [
+    "rooms.all.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Property-type table: the apartment average 1,016,692 conflicts with the official all-apartments median; the other averages and the deal counts have no period or named source. The table keeps the property types and the page's own 'meaning for value' notes, word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מספר עסקאות שנמצא</th>",
+   "n": 10,
+   "raw_risk": [
+    "straight double quote",
+    "apostrophe",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "השוואת שכונות באילת צריכה להתחיל ממספר העסקאות, מחיר ממוצע, סוג הנכסים ומידת הדמיון לנכס הנבדק. שכונה עם 7,506 עסקאות מספקת מדגם רחב יותר משכונה עם 69 עסקאות. אזור עם מחיר ממוצע של 4,296,592 ₪ אינו בהכרח מתאים להשוואה לדירת מגורים רגילה, אם חלק מהעסקאות כוללות נכסים מיוחדים או נכסים עם שימוש תיירותי.",
+   "new": "השוואת שכונות באילת צריכה להתחיל ממספר החדרים, סוג הנכסים ומידת הדמיון לנכס הנבדק. שכונה עם עסקאות רבות מספקת מדגם רחב יותר משכונה עם עסקאות בודדות, ואזור שבו המחיר הממוצע גבוה מאוד, כמו אזור המלונות, אינו בהכרח מתאים להשוואה לדירת מגורים רגילה, אם חלק מהעסקאות כוללות נכסים מיוחדים או נכסים עם שימוש תיירותי. הטבלה הבאה מציגה את חציון מחיר העסקה לפי שכונה ומספר חדרים, לפי נתוני רשות המסים לרבעון הראשון של 2026; בשכונות שאינן בטבלה, כמו הדקל, אורים, גנים א, גנים ב ונווה מדבר, בודקים מול עסקאות דומות ברחוב.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Deal counts (7,506 / 69) and the hotels-area average 4,296,592 with no period or named source; rephrased without numbers and turned into the introduction of the official neighbourhood table (edit 12).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 11,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"><thead dir=\"rtl\"><tr dir=\"rtl\"><th dir=\"rtl\">שכונה או אזור</th><th dir=\"rtl\">עסקאות שנמצאו</th><th dir=\"rtl\">מחיר ממוצע שנמצא</th><th dir=\"rtl\">אות מחיר מרכזי</th></tr></thead><tbody dir=\"rtl\"><tr dir=\"rtl\"><td dir=\"rtl\">שחמון</td><td dir=\"rtl\">7,506</td><td dir=\"rtl\">1,233,971 ₪</td><td dir=\"rtl\">עוגן מרכזי לדירות משפחתיות ושוק מגורים פעיל</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">בנה ביתך</td><td dir=\"rtl\">2,610</td><td dir=\"rtl\">903,257 ₪</td><td dir=\"rtl\">תמהיל מגוון, דורש בדיקה לפי סוג נכס ושטח</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">הערבה</td><td dir=\"rtl\">2,082</td><td dir=\"rtl\">587,881 ₪</td><td dir=\"rtl\">שכונה ותיקה עם רגישות גבוהה לשיפוץ ולבניין</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">צאלים</td><td dir=\"rtl\">2,049</td><td dir=\"rtl\">763,664 ₪</td><td dir=\"rtl\">מחירי כניסה נמוכים יחסית בחלק מהמלאי</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">הדקל</td><td dir=\"rtl\">1,602</td><td dir=\"rtl\">707,600 ₪</td><td dir=\"rtl\">השוואה לפי רחוב ומצב בניין קריטית</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">אורים</td><td dir=\"rtl\">1,484</td><td dir=\"rtl\">587,593 ₪</td><td dir=\"rtl\">פער גדול בין דירות בסיסיות לדירות משופצות</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">אופיר</td><td dir=\"rtl\">1,307</td><td dir=\"rtl\">613,913 ₪</td><td dir=\"rtl\">מתאים לבדיקה של דירות קטנות ובינוניות</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">יעלים</td><td dir=\"rtl\">1,093</td><td dir=\"rtl\">688,126 ₪</td><td dir=\"rtl\">שכונה ותיקה, השכרה ומצב פיזי משפיעים מאוד</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">מצפה ים</td><td dir=\"rtl\">853</td><td dir=\"rtl\">1,147,722 ₪</td><td dir=\"rtl\">יתרון מיקום ונוף עשוי להשפיע על מחיר</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">מרכז העיר</td><td dir=\"rtl\">803</td><td dir=\"rtl\">1,782,675 ₪</td><td dir=\"rtl\">תמהיל שימושים ונגישות, לא השוואה פשוטה</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">אזור תעשיה חדש</td><td dir=\"rtl\">333</td><td dir=\"rtl\">1,732,549 ₪</td><td dir=\"rtl\">צריך להבין האם הנכס מגורים, מסחרי או מעורב</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">המלונות</td><td dir=\"rtl\">241</td><td dir=\"rtl\">4,296,592 ₪</td><td dir=\"rtl\">אזור חריג עם השפעת תיירות ונכסים מיוחדים</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">גנים א</td><td dir=\"rtl\">229</td><td dir=\"rtl\">1,748,264 ₪</td><td dir=\"rtl\">מדגם בינוני, צריך לבדוק דירה מול דירה</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">גנים ב</td><td dir=\"rtl\">102</td><td dir=\"rtl\">2,963,280 ₪</td><td dir=\"rtl\">מחירים גבוהים יחסית, רגישות לנכסים חריגים</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">נווה מדבר</td><td dir=\"rtl\">69</td><td dir=\"rtl\">1,933,492 ₪</td><td dir=\"rtl\">מדגם קטן, דרושה בדיקת עסקאות קרובות</td></tr></tbody></table>",
+   "new": "<table dir=\"rtl\"><thead dir=\"rtl\"><tr dir=\"rtl\"><th dir=\"rtl\">שכונה</th><th dir=\"rtl\">3 חדרים</th><th dir=\"rtl\">4 חדרים</th><th dir=\"rtl\">5 חדרים</th><th dir=\"rtl\">אות מחיר מרכזי</th></tr></thead><tbody dir=\"rtl\"><tr dir=\"rtl\"><td dir=\"rtl\">שחמון</td><td dir=\"rtl\">1,432,700 ₪</td><td dir=\"rtl\">1,678,300 ₪</td><td dir=\"rtl\">2,269,800 ₪</td><td dir=\"rtl\">עוגן מרכזי לדירות משפחתיות ושוק מגורים פעיל</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">בנה ביתך</td><td dir=\"rtl\">1,287,800 ₪</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">תמהיל מגוון, דורש בדיקה לפי סוג נכס ושטח</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">מרכז העיר</td><td dir=\"rtl\">1,640,200 ₪</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">תמהיל שימושים ונגישות, לא השוואה פשוטה</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">צאלים</td><td dir=\"rtl\">986,500 ₪</td><td dir=\"rtl\">1,471,500 ₪</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">מחירי כניסה נמוכים יחסית בחלק מהמלאי</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">הערבה</td><td dir=\"rtl\">893,300 ₪</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">שכונה ותיקה עם רגישות גבוהה לשיפוץ ולבניין</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">אופיר</td><td dir=\"rtl\">999,400 ₪</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">מתאים לבדיקה של דירות קטנות ובינוניות</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">יעלים</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">1,054,100 ₪</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">שכונה ותיקה, השכרה ומצב פיזי משפיעים מאוד</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">מצפה ים</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">1,384,300 ₪</td><td dir=\"rtl\">לא פורסם</td><td dir=\"rtl\">יתרון מיקום ונוף עשוי להשפיע על מחיר</td></tr></tbody></table>",
+   "source_keys": [
+    "neighbourhoods[שחמון].rooms.3",
+    "neighbourhoods[שחמון].rooms.4",
+    "neighbourhoods[שחמון].rooms.5",
+    "neighbourhoods[בנה ביתך].rooms.3",
+    "neighbourhoods[מרכז העיר].rooms.3",
+    "neighbourhoods[צאלים].rooms.3",
+    "neighbourhoods[צאלים].rooms.4",
+    "neighbourhoods[הערבה].rooms.3",
+    "neighbourhoods[אופיר].rooms.3",
+    "neighbourhoods[יעלים].rooms.4",
+    "neighbourhoods[מצפה ים].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Neighbourhood table: 15 all-rooms, all-history averages with deal counts from an unnamed source and no period; replaced by the official neighbourhood medians by rooms, 1-3.2026 ('לא פורסם' where the official file has no median). The page's own notes are kept word for word for the 8 neighbourhoods in the official list.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">עסקאות שנמצאו</th>",
+   "n": 12,
+   "raw_risk": [
+    "straight double quote",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "מתוך דוגמאות עסקאות רחוב לשנת 2023 נמצאו 20 עסקאות בעין נטפים במחיר ממוצע של 1,569,950 ₪, 16 עסקאות במשעול התלמוד במחיר ממוצע של 589,812 ₪, 15 עסקאות בשדרות ששת הימים במחיר ממוצע של 1,305,666 ₪, 12 עסקאות בלוס אנג'לס במחיר ממוצע של 959,000 ₪, 12 עסקאות בדרך יותם במחיר ממוצע של 1,227,750 ₪, 11 עסקאות בצין במחיר ממוצע של 833,909 ₪, 11 עסקאות במלכת שבא במחיר ממוצע של 670,545 ₪, 11 עסקאות באילות במחיר ממוצע של 1,008,636 ₪, 11 עסקאות בחטיבת הנגב במחיר ממוצע של 1,553,000 ₪, ו-9 עסקאות במשעול הגאונים במחיר ממוצע של 642,222 ₪.",
+   "new": "דוגמאות עסקאות רחוב משנת 2023 הראו פער גדול בין רחובות כמו עין נטפים, חטיבת הנגב, שדרות ששת הימים ודרך יותם, שבהם המחיר הממוצע היה גבוה יותר, לבין משעול התלמוד, מלכת שבא, משעול הגאונים וצין, שבהם הוא היה נמוך בהרבה. גם בין השכונות הפער גדול: לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 3 חדרים היה 893,300 ₪ בהערבה ו-1,640,200 ₪ במרכז העיר.",
+   "source_keys": [
+    "neighbourhoods[הערבה].rooms.3",
+    "neighbourhoods[מרכז העיר].rooms.3"
+   ],
+   "audit_verdict": "STALE",
+   "verdict": "STALE",
+   "why": "Street averages from 2023 deal examples (10 streets, all rooms) shown as the street level; the 2023 contrast is kept in words and the current gap is shown with two official neighbourhood medians.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 13,
+   "raw_risk": [
+    "apostrophe"
+   ]
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "מולו, מקור ישן או אגרגטיבי יותר בהקשר דירות חדשות וקבלן הציג נתוני שכירות נמוכים יותר: 2 חדרים 1,341 ₪ ותשואה 5.1%, 3 חדרים 1,998 ₪ ותשואה 4.6%, 4 חדרים 2,321 ₪ ותשואה 3.7%, ו-5 חדרים 3,096 ₪ ותשואה 3.4%.",
+   "new": "מולו, מקור ישן או אגרגטיבי יותר בהקשר דירות חדשות וקבלן, בלי תאריך עדכון, הציג נתוני שכירות ותשואה נמוכים בהרבה.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent 1,341-3,096 and yields 3.4-5.1% from a source the page itself calls old, with no date; rephrased without the numbers.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 14,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"><thead dir=\"rtl\"><tr dir=\"rtl\"><th dir=\"rtl\">מספר חדרים</th><th dir=\"rtl\">שכר דירה לפי מקור ביקוש עדכני</th><th dir=\"rtl\">שכר דירה לפי מקור קבלן או אגרגציה ישן יותר</th><th dir=\"rtl\">מסר לקונה</th></tr></thead><tbody dir=\"rtl\"><tr dir=\"rtl\"><td dir=\"rtl\">2 חדרים</td><td dir=\"rtl\">3,100 ₪</td><td dir=\"rtl\">1,341 ₪, תשואה 5.1%</td><td dir=\"rtl\">יש לבדוק אם הדירה מרוהטת, משופצת ובאזור ביקוש</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">3 חדרים</td><td dir=\"rtl\">3,900 ₪</td><td dir=\"rtl\">1,998 ₪, תשואה 4.6%</td><td dir=\"rtl\">פער המקורות מחייב בדיקת מודעות פעילות ועסקאות שכירות בפועל</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">4 חדרים</td><td dir=\"rtl\">6,250 ₪</td><td dir=\"rtl\">2,321 ₪, תשואה 3.7%</td><td dir=\"rtl\">דירות משפחתיות שונות מאוד לפי שכונה ומפרט</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">5 חדרים</td><td dir=\"rtl\">8,850 ₪</td><td dir=\"rtl\">3,096 ₪, תשואה 3.4%</td><td dir=\"rtl\">מדגם שונה יכול לשנות את התמונה לחלוטין</td></tr></tbody></table>",
+   "new": "<table dir=\"rtl\"><thead dir=\"rtl\"><tr dir=\"rtl\"><th dir=\"rtl\">מספר חדרים</th><th dir=\"rtl\">שכר דירה לפי מקור ביקוש עדכני</th><th dir=\"rtl\">מסר לקונה</th></tr></thead><tbody dir=\"rtl\"><tr dir=\"rtl\"><td dir=\"rtl\">2 חדרים</td><td dir=\"rtl\">3,100 ₪</td><td dir=\"rtl\">יש לבדוק אם הדירה מרוהטת, משופצת ובאזור ביקוש</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">3 חדרים</td><td dir=\"rtl\">3,900 ₪</td><td dir=\"rtl\">פער המקורות מחייב בדיקת מודעות פעילות ועסקאות שכירות בפועל</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">4 חדרים</td><td dir=\"rtl\">6,250 ₪</td><td dir=\"rtl\">דירות משפחתיות שונות מאוד לפי שכונה ומפרט</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">5 חדרים</td><td dir=\"rtl\">8,850 ₪</td><td dir=\"rtl\">מדגם שונה יכול לשנות את התמונה לחלוטין</td></tr></tbody></table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent table: the column of the undated old source (rents and yields) is removed; the current asking-rent column (page checked 6.6.2026) and the buyer notes are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">שכר דירה לפי מקור קבלן או אגרגציה ישן יותר</th>",
+   "n": 15,
+   "raw_risk": [
+    "straight double quote",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "באילת, מדגם רחוב יכול להראות טווחים גדולים גם בתוך אותה עיר. לדוגמה, עין נטפים עם 20 עסקאות וממוצע 1,569,950 ₪, שדרות ששת הימים עם 15 עסקאות וממוצע 1,305,666 ₪, חטיבת הנגב עם 11 עסקאות וממוצע 1,553,000 ₪, ודרך יותם עם 12 עסקאות וממוצע 1,227,750 ₪ מצביעים על אזורים שבהם המחיר הממוצע גבוה יותר. מנגד, משעול התלמוד עם 16 עסקאות וממוצע 589,812 ₪, מלכת שבא עם 11 עסקאות וממוצע 670,545 ₪, משעול הגאונים עם 9 עסקאות וממוצע 642,222 ₪, צין עם 11 עסקאות וממוצע 833,909 ₪, לוס אנג'לס עם 12 עסקאות וממוצע 959,000 ₪ ואילות עם 11 עסקאות וממוצע 1,008,636 ₪ מציגים רמות מחיר שונות לגמרי.",
+   "new": "באילת, מדגם רחוב יכול להראות טווחים גדולים גם בתוך אותה עיר, ולכן עסקה ישנה ברחוב מסוים היא רק נקודת התחלה. גם החציון העירוני משתנה מרבעון לרבעון, ולכן משווים לעסקאות מאותה תקופה. הטבלה הבאה מציגה את חציון מחיר העסקה באילת לפי מספר חדרים, מינואר-מרץ 2025 ועד ינואר-מרץ 2026, לפי נתוני רשות המסים.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "STALE",
+   "verdict": "STALE",
+   "why": "The same 2023 street averages repeated without a date as the level of each street; rephrased without numbers and turned into the introduction of the quarterly table (edit 17).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 16,
+   "raw_risk": [
+    "apostrophe"
+   ]
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\"><thead dir=\"rtl\"><tr dir=\"rtl\"><th dir=\"rtl\">רחוב או אזור עסקה</th><th dir=\"rtl\">מספר עסקאות בדוגמה</th><th dir=\"rtl\">מחיר ממוצע בדוגמה</th><th dir=\"rtl\">מה לבדוק לפני שימוש בנתון</th></tr></thead><tbody dir=\"rtl\"><tr dir=\"rtl\"><td dir=\"rtl\">עין נטפים</td><td dir=\"rtl\">20</td><td dir=\"rtl\">1,569,950 ₪</td><td dir=\"rtl\">שטח הדירות, קומה, שיפוץ ונוף</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">משעול התלמוד</td><td dir=\"rtl\">16</td><td dir=\"rtl\">589,812 ₪</td><td dir=\"rtl\">האם מדובר בדירות קטנות או בניינים ותיקים</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">שדרות ששת הימים</td><td dir=\"rtl\">15</td><td dir=\"rtl\">1,305,666 ₪</td><td dir=\"rtl\">תמהיל נכסים וציר תחבורתי</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">לוס אנג'לס</td><td dir=\"rtl\">12</td><td dir=\"rtl\">959,000 ₪</td><td dir=\"rtl\">השוואה לפי מספר חדרים מדויק</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">דרך יותם</td><td dir=\"rtl\">12</td><td dir=\"rtl\">1,227,750 ₪</td><td dir=\"rtl\">קרבה למרכז, שירותים ומאפייני בניין</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">צין</td><td dir=\"rtl\">11</td><td dir=\"rtl\">833,909 ₪</td><td dir=\"rtl\">מצב שיפוץ ומאפייני קומה</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">מלכת שבא</td><td dir=\"rtl\">11</td><td dir=\"rtl\">670,545 ₪</td><td dir=\"rtl\">מדגם ודמיון לנכס הספציפי</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">אילות</td><td dir=\"rtl\">11</td><td dir=\"rtl\">1,008,636 ₪</td><td dir=\"rtl\">האם העסקאות דירות רגילות או נכסים מיוחדים</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">חטיבת הנגב</td><td dir=\"rtl\">11</td><td dir=\"rtl\">1,553,000 ₪</td><td dir=\"rtl\">מיקום בתוך הרחוב, חניה ונגישות</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">משעול הגאונים</td><td dir=\"rtl\">9</td><td dir=\"rtl\">642,222 ₪</td><td dir=\"rtl\">מספר עסקאות קטן יחסית</td></tr></tbody></table>",
+   "new": "<table dir=\"rtl\"><thead dir=\"rtl\"><tr dir=\"rtl\"><th dir=\"rtl\">רבעון</th><th dir=\"rtl\">3 חדרים</th><th dir=\"rtl\">4 חדרים</th><th dir=\"rtl\">5 חדרים</th></tr></thead><tbody dir=\"rtl\"><tr dir=\"rtl\"><td dir=\"rtl\">ינואר-מרץ 2025</td><td dir=\"rtl\">1,505,800 ₪</td><td dir=\"rtl\">1,781,400 ₪</td><td dir=\"rtl\">2,506,300 ₪</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">אפריל-יוני 2025</td><td dir=\"rtl\">1,181,600 ₪</td><td dir=\"rtl\">1,337,400 ₪</td><td dir=\"rtl\">לא פורסם</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">יולי-ספטמבר 2025</td><td dir=\"rtl\">1,253,600 ₪</td><td dir=\"rtl\">1,633,800 ₪</td><td dir=\"rtl\">2,277,700 ₪</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">אוקטובר-דצמבר 2025</td><td dir=\"rtl\">1,434,300 ₪</td><td dir=\"rtl\">1,623,100 ₪</td><td dir=\"rtl\">2,432,400 ₪</td></tr><tr dir=\"rtl\"><td dir=\"rtl\">ינואר-מרץ 2026</td><td dir=\"rtl\">1,516,100 ₪</td><td dir=\"rtl\">1,719,300 ₪</td><td dir=\"rtl\">2,587,900 ₪</td></tr></tbody></table>",
+   "source_keys": [
+    "rooms.3.quarters[1-3.2025]",
+    "rooms.3.quarters[4-6.2025]",
+    "rooms.3.quarters[7-9.2025]",
+    "rooms.3.quarters[10-12.2025]",
+    "rooms.3.quarters[1-3.2026]",
+    "rooms.4.quarters[1-3.2025]",
+    "rooms.4.quarters[4-6.2025]",
+    "rooms.4.quarters[7-9.2025]",
+    "rooms.4.quarters[10-12.2025]",
+    "rooms.4.quarters[1-3.2026]",
+    "rooms.5.quarters[1-3.2025]",
+    "rooms.5.quarters[7-9.2025]",
+    "rooms.5.quarters[10-12.2025]",
+    "rooms.5.quarters[1-3.2026]"
+   ],
+   "audit_verdict": "STALE",
+   "verdict": "STALE",
+   "why": "Street table: 2023 street averages (10 rows, all rooms) presented as street levels. No official street data exists, so the table now shows the official city medians by rooms for the last five quarters, which serves the section's point (deal period matters).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">רחוב או אזור עסקה</th>",
+   "n": 17,
+   "raw_risk": [
+    "straight double quote",
+    "apostrophe",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "כאשר ממוצע עסקאות רחב בשחמון עומד על 1,233,971 ₪, ומנגד דירות 4 חדרים בממוצעי ביקוש סביב 1,670,000 ₪ ודירות 5 חדרים סביב 2,450,000 ₪, הפער עשוי לשקף תמהיל שונה של שטחים, בנייה חדשה, קומות, נוף ומפרט.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה בשחמון היה 1,678,300 ₪ לדירת 4 חדרים ו-2,269,800 ₪ לדירת 5 חדרים. כאשר מודעה בשחמון מבקשת סכום גבוה בהרבה, הפער עשוי לשקף תמהיל שונה של שטחים, בנייה חדשה, קומות, נוף ומפרט.",
+   "source_keys": [
+    "neighbourhoods[שחמון].rooms.4",
+    "neighbourhoods[שחמון].rooms.5"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Shahamon all-history average 1,233,971 (unsourced) set against city asking averages 1,670,000 (4 rooms, consistent) and 2,450,000 (5 rooms, outside tolerance of 2,587,900); replaced by the official Shahamon 4- and 5-room medians.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 18,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "גנים א הציגה 229 עסקאות במחיר ממוצע של 1,748,264 ₪, וגנים ב 102 עסקאות במחיר ממוצע של 2,963,280 ₪. זהו פער משמעותי משכונות ותיקות כמו אורים, הערבה או אופיר, אך מספר העסקאות קטן בהרבה משחמון.",
+   "new": "הפער בינן לבין שכונות ותיקות כמו אורים, הערבה או אופיר משמעותי, אך מספר העסקאות בהן קטן בהרבה משחמון.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Ganim A / Ganim B all-rooms averages with no period or named source and no official median; rephrased without numbers.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 19,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "מחיר ממוצע של 4,296,592 ₪ באזור המלונות אינו מתאים להשוואה אוטומטית לדירת 3 חדרים בשכונה רגילה.",
+   "new": "מחיר ממוצע גבוה באזור המלונות אינו מתאים להשוואה אוטומטית לדירת 3 חדרים בשכונה רגילה.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Hotels-area average 4,296,592 with no period or named source; the number is dropped.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 20,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "טווח עבודה סביר לדירת 2 חדרים באילת הוא לרוב סביב 800,000-1,050,000 ₪, כאשר מקור ביקוש שנבדק הציג ממוצע סביב 860,000 ₪ ומחיר למ\"ר סביב 17,200 ₪.",
+   "new": "המחירון הרשמי מפרסם חציון לדירות 3, 4 ו-5 חדרים, ולכן דירת 2 חדרים באילת כדאי לבדוק מול עסקאות דומות ברחוב ובשכונה. בנתוני ההיצע שנבדקו ביוני 2026 הופיע ממוצע ביקוש סביב 860,000 ₪ לדירת 2 חדרים ומחיר למ\"ר סביב 17,200 ₪.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ 2 rooms: the 'working range' 800,000-1,050,000 has no source; the asking average and asking per-m2 (listing data, June 2026) are kept.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 21,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "דירת 3 חדרים באילת נעה בדרך כלל סביב 1,100,000-1,450,000 ₪, ובנתוני ביקוש מסוימים הופיע ממוצע של 1,365,000 ₪ ומחיר למ\"ר של 18,200 ₪.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 3 חדרים באילת ברבעון הראשון של 2026 היה 1,516,100 ₪, לעומת 1,505,800 ₪ שנה קודם לכן.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ 3 rooms: 1.1-1.45M and the 1,365,000 asking average vs the official 1,516,100.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 22,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "דירת 4 חדרים באילת נעה לרוב סביב 1,450,000-1,900,000 ₪. ממוצע ביקוש שנמצא עמד על 1,670,000 ₪ ומחיר למ\"ר של 16,700 ₪.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 4 חדרים באילת ברבעון הראשון של 2026 היה 1,719,300 ₪, לעומת 1,781,400 ₪ שנה קודם לכן.",
+   "source_keys": [
+    "rooms.4.latest",
+    "rooms.4.year_ago"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "FAQ 4 rooms: the range and the asking average were consistent with 1,719,300; the answer is rewritten from the same facts as the body.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 23,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "דירת 5 חדרים באילת נעה לרוב סביב 2,100,000-2,700,000 ₪, ובחלק מנתוני הביקוש הופיע ממוצע של 2,450,000 ₪ ומחיר למ\"ר של 14,848 ₪.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 5 חדרים באילת ברבעון הראשון של 2026 היה 2,587,900 ₪, לעומת 2,506,300 ₪ שנה קודם לכן.",
+   "source_keys": [
+    "rooms.5.latest",
+    "rooms.5.year_ago"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ 5 rooms: the 2,450,000 asking average is outside tolerance of the official 2,587,900 (the 2.1-2.7M range itself was consistent).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 24,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "לפי נתוני עסקאות רחבים, אזור המלונות הציג ממוצע גבוה מאוד של 4,296,592 ₪, גנים ב הציגה 2,963,280 ₪, ונווה מדבר 1,933,492 ₪.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 3 חדרים היה 1,640,200 ₪ במרכז העיר ו-1,432,700 ₪ בשחמון, ולדירת 4 חדרים 1,678,300 ₪ בשחמון. אזור המלונות, גנים ב ונווה מדבר מציגים ממוצעים גבוהים מאוד.",
+   "source_keys": [
+    "neighbourhoods[מרכז העיר].rooms.3",
+    "neighbourhoods[שחמון].rooms.3",
+    "neighbourhoods[שחמון].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ priciest neighbourhood: all-rooms averages (4,296,592 / 2,963,280 / 1,933,492) with no period or named source; replaced by official neighbourhood medians, the three areas without an official median are named without numbers.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 25,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "נתון רחב הציג בשחמון 7,506 עסקאות במחיר ממוצע של 1,233,971 ₪. לעומת זאת, הערבה הציגה 587,881 ₪, אורים 587,593 ₪, אופיר 613,913 ₪ והדקל 707,600 ₪, אך כל דירה צריכה להיבדק לגופה.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 3 חדרים היה 1,432,700 ₪ בשחמון, לעומת 986,500 ₪ בצאלים, 999,400 ₪ באופיר ו-893,300 ₪ בהערבה, אך כל דירה צריכה להיבדק לגופה.",
+   "source_keys": [
+    "neighbourhoods[שחמון].rooms.3",
+    "neighbourhoods[צאלים].rooms.3",
+    "neighbourhoods[אופיר].rooms.3",
+    "neighbourhoods[הערבה].rooms.3"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ Shahamon vs older neighbourhoods: all-rooms, all-history averages (Shahamon 1,233,971; Arava, Urim, Ofir, Hadekel) without period or named source; replaced by official 3-room medians (Urim and Hadekel have none).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 26,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4597,
+   "url": "https://nad-lan.co.il/eilat-apartment-prices/",
+   "field": "content",
+   "old": "באילת נמצאו למשל דירות 3 חדרים בממוצע ביקוש סביב 1,365,000 ₪, אך עסקאות לפי רחוב ושנה יכולות להראות מספרים אחרים לגמרי.",
+   "new": "באילת, למשל, חציון מחיר העסקה לדירת 3 חדרים ברבעון הראשון של 2026 היה 1,516,100 ₪ לפי נתוני רשות המסים, אך מודעות ועסקאות לפי רחוב ושנה יכולות להראות מספרים אחרים לגמרי.",
+   "source_keys": [
+    "rooms.3.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ asking vs deal: the 3-room asking average 1,365,000 vs the official median 1,516,100.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 27,
+   "raw_risk": []
+  }
+ ],
+ "live_recheck": {
+  "retrieved_utc": "2026-10-07 11:18:23",
+  "modified": "2026-10-07T13:31:25",
+  "audited_copy_modified": "2026-10-07T13:31:25",
+  "price_list_on_page": true,
+  "body_outside_list_identical_to_audited_copy": "yes",
+  "dry_run": "27 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ }
+}

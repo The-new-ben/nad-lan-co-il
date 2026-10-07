@@ -1,0 +1,1013 @@
+{
+ "generated": "7.10.2026",
+ "page": {
+  "id": 4591,
+  "slug": "rehovot-apartment-prices",
+  "link": "https://nad-lan.co.il/rehovot-apartment-prices/",
+  "modified": "2026-08-19T00:40:30"
+ },
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages?slug=rehovot-apartment-prices&_fields=id,link,title,content,modified (content.rendered), public, retrieved 2026-10-07 10:34:39 UTC, 31,739 characters. The price-list section (<section id=\"nlpg\">, the [nadlan_price_guide] shortcode), <script> and <style> are outside the audit.",
+ "facts": "scripts/project-stage/price_guide/cities/rehovot-apartment-prices.json (official medians from data.nadlan.gov.il; source_keys are JSON paths in that file: rooms.<k>.latest, rooms.<k>.year_ago, rooms.<k>.change_pct, rooms.<k>.quarters[<q>], israel.<k>, neighbourhoods[<name>].rooms.<k>; 'page' = a number kept from the page's own text)",
+ "apply_rules": [
+  "Apply in the listed order on the RAW content (context=edit). Every \"old\" matches content.rendered exactly once at its turn (matches_in_live), except \"replace_all\" entries, which match exactly \"expect_matches\" times.",
+  "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
+  "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
+  "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+ ],
+ "claims_summary": {
+  "claims": {
+   "CONFLICT": 13,
+   "STALE": 8,
+   "UNSOURCED": 23,
+   "CONSISTENT": 5
+  },
+  "figures": {
+   "CONFLICT": 17,
+   "STALE": 36,
+   "UNSOURCED": 74,
+   "CONSISTENT": 5
+  },
+  "edits": 19,
+  "tier1": 19,
+  "tier2": 0
+ },
+ "notes": "The official price list is not on this page yet; these edits assume it will be added near the top, as on the other city pages. Not audited as claims (illustrations or structure): the if-example 'a regular 4-room flat asked at about 2.5M while similar deals closed at 2.2-2.4M' (p@26287; it is an explicit 'לדוגמה, אם' and the closed range contains the official median), '3-5 rooms' (p@8310), 10 m2 (p@18083), step counts (5-8 deals, 10-15 listings), the CBS release 081/2026 and the 25.5.2026 rate decision named without figures (p@27055). No SUSPECT line remains after the edits; the if-example p@26287 (2.5M for 4 rooms) passes the scan only because 2.5 rounds an official figure, and it stays as an explicit hypothetical. Official quirks: 3 rooms has no 1-3.2025 median (year_ago empty, so the rooms table shows 'לא פורסם' and the FAQ shows the previous quarter instead), and the 3-room series swings hard (2,123,000 in 4-6.2025, 1,621,600 in 10-12.2025, 1,921,100 in 1-3.2026); Neve Alon 3 rooms (2,539,700) is above Neve Alon 4 rooms (2,356,000), shown as published in the table but not quoted in the text. Name mapping: page 'שעריים', 'נווה אלון', 'סלע', 'רחובות החדשה', 'מתחם התחנה המרכזית', 'קרית משה' = official names exactly. The official 'אייזנבר\\ אהרוני' and 'בנימין\\ נורדאו' (truncated names with a backslash) are not on the page and were not added. The kept per-m2 range 23,000-28,500 is labelled 'asking' because the page built it from asking prices (the old table's per-m2 column).",
+ "claims": [
+  {
+   "id": 1,
+   "where": "p@4303",
+   "quote": "דירת 2 חדרים כ-1.49 מיליון ₪ (מחירי ביקוש)",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 1",
+   "note": "no official 2-room series; dropped"
+  },
+  {
+   "id": 2,
+   "where": "p@4303",
+   "quote": "דירת 3 חדרים כ-1.95 מיליון ₪",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,921,100 (1-3.2026), +1.5%",
+   "verdict": "CONSISTENT",
+   "action": "edit 1",
+   "note": "restated as the median"
+  },
+  {
+   "id": 3,
+   "where": "p@4303",
+   "quote": "דירת 4 חדרים כ-2.50 מיליון ₪",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,345,500 (1-3.2026), +6.6%",
+   "verdict": "CONFLICT",
+   "action": "edit 1",
+   "note": ""
+  },
+  {
+   "id": 4,
+   "where": "p@4303",
+   "quote": "דירת 5 חדרים כ-3.19 מיליון ₪",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "3,290,000 (1-3.2026), -3.0%",
+   "verdict": "CONSISTENT",
+   "action": "edit 1",
+   "note": "restated as the median"
+  },
+  {
+   "id": 5,
+   "where": "p@4303",
+   "quote": "דירות 6 חדרים ומעלה כ-4.88 מיליון ₪",
+   "measure": "sale",
+   "rooms": "6",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 1",
+   "note": "no official series; dropped"
+  },
+  {
+   "id": 6,
+   "where": "p@4303",
+   "quote": "ממוצע בעיר בין כ-1.55 מיליון (מאגר רב-שנתי) לכ-2.55 מיליון (מאגר עדכני)",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 2,
+   "official": "all rooms 2,421,900 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 1",
+   "note": "1.55M is a multi-year average; 2.55M is +5.3%"
+  },
+  {
+   "id": 7,
+   "where": "p@4303",
+   "quote": "מחיר למ״ר בדירות רגילות סביב 23,000-28,500 ₪",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (asking data, page checked 6.6.2026; relabelled as asking inside edit 1)",
+   "note": ""
+  },
+  {
+   "id": 8,
+   "where": "p@4303",
+   "quote": "שכירות 2/3/4/5 חדרים 3,300 / 4,900 / 5,700 / 7,950; חציון 4,500, ממוצע 4,987",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample, 97 listings, 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 9,
+   "where": "p@5257",
+   "quote": "מאגר פרטי: מחיר דירה ממוצע 1,549,879 ₪ (41,822 עסקאות לאורך השנים)",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 2,421,900 (1-3.2026)",
+   "verdict": "STALE",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 10,
+   "where": "p@5257",
+   "quote": "41,822 עסקאות ו-34 שכונות במאגר פרטי",
+   "measure": "count",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (count, labelled historic depth of a private database)",
+   "note": ""
+  },
+  {
+   "id": 11,
+   "where": "p@5587",
+   "quote": "מאגרים עדכניים: מחיר ממוצע סביב 2,550,000 ₪ (והפער מול 1.55 מיליון)",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 2,421,900 (1-3.2026), +5.3%",
+   "verdict": "CONFLICT",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 12,
+   "where": "p@5587",
+   "quote": "מחיר למ״ר סביב 25,000 ₪; 1,737 עסקאות במאגר אחד",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (recent listing/deal databases, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 13,
+   "where": "p@7692",
+   "quote": "ממוצעי שכונה במאגר פרטי: שעריים 1,343,842 ... מכון ויצמן 3,490,123 (7 אזורים)",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 7,
+   "official": "4 rooms: שעריים 2,012,000; סלע 2,342,400; נווה אלון 2,356,000; רחובות החדשה 2,557,200 (1-3.2026)",
+   "verdict": "STALE",
+   "action": "edit 4",
+   "note": "multi-year all-rooms averages"
+  },
+  {
+   "id": 14,
+   "where": "tr@9507",
+   "quote": "2 חדרים | 1,485,000 | 28,558 למ״ר | חדשה 1,780,000",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 15,
+   "where": "tr@9728",
+   "quote": "3 חדרים | מחיר ביקוש 1,950,000 ₪",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,921,100 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 16,
+   "where": "tr@9728",
+   "quote": "3 חדרים | 24,375 ₪ למ״ר משוער",
+   "measure": "per_m2",
+   "rooms": "3",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": "column removed"
+  },
+  {
+   "id": 17,
+   "where": "tr@9728",
+   "quote": "3 חדרים | דירה חדשה ממוצעת 2,380,000 ₪",
+   "measure": "sale_new_used",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,921,100 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 18,
+   "where": "tr@9944",
+   "quote": "4 חדרים | מחיר ביקוש 2,500,000 ₪",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,345,500 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 19,
+   "where": "tr@9944",
+   "quote": "4 חדרים | 23,364 ₪ למ״ר משוער",
+   "measure": "per_m2",
+   "rooms": "4",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 20,
+   "where": "tr@9944",
+   "quote": "4 חדרים | דירה חדשה ממוצעת 3,110,000 ₪",
+   "measure": "sale_new_used",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,345,500 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 21,
+   "where": "tr@10157",
+   "quote": "5 חדרים | מחיר ביקוש 3,190,000 ₪",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "3,290,000 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 22,
+   "where": "tr@10157",
+   "quote": "5 חדרים | 24,167 ₪ למ״ר משוער",
+   "measure": "per_m2",
+   "rooms": "5",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 23,
+   "where": "tr@10157",
+   "quote": "5 חדרים | דירה חדשה ממוצעת 3,560,000 ₪",
+   "measure": "sale_new_used",
+   "rooms": "5",
+   "figures": 1,
+   "official": "3,290,000 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 24,
+   "where": "tr@10380",
+   "quote": "6 חדרים ומעלה | 4,880,000 | 19,520 למ״ר",
+   "measure": "sale",
+   "rooms": "6",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 25,
+   "where": "p@10976",
+   "quote": "מחיר של 2.5 מיליון ₪ לדירת 4 חדרים",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,345,500 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 8",
+   "note": "echoes the table's asking anchor"
+  },
+  {
+   "id": 26,
+   "where": "tr@12299..14282",
+   "quote": "טבלת שכונות: מספר עסקאות וממוצע במאגר פרטי (13 שורות)",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 13,
+   "official": "",
+   "verdict": "STALE",
+   "action": "edit 10",
+   "note": "multi-year all-rooms averages; deal counts leave with them"
+  },
+  {
+   "id": 27,
+   "where": "tr@15834..16611",
+   "quote": "טבלת שכירות: 3,300 / 4,900 (חציון 4,814) / 5,700 / 7,950; ממוצע מבוקש 5,425; חציון 4,500 וממוצע 4,987",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 8,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data, 97 listings dated 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 28,
+   "where": "p@16847",
+   "quote": "97 מודעות נכון ל-6 ביוני 2026: חציון 4,500, ממוצע 4,987, 3 חדרים 4,814, ארצי 4,400, אבני חן 1,920, רחובות הצעירה 10,200",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample, dated 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 29,
+   "where": "p@17256",
+   "quote": "ריבית בנק ישראל 3.75%, החלטה מ-25 במאי 2026",
+   "measure": "macro",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (dated Bank of Israel decision)",
+   "note": ""
+  },
+  {
+   "id": 30,
+   "where": "tr@18617..20314",
+   "quote": "טבלת עסקאות (10 עסקאות, 25.2-19.3.2026) עם מחיר למ״ר",
+   "measure": "deal",
+   "rooms": "",
+   "figures": 10,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual dated deals)",
+   "note": ""
+  },
+  {
+   "id": 31,
+   "where": "p@20521",
+   "quote": "מחיר למ״ר בעסקאות: 18,966 / 29,688 (3 חדרים); 22,300 / 25,000 / 25,814 / 26,667 (4 חדרים)",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (computed from the dated deals in the table)",
+   "note": ""
+  },
+  {
+   "id": 32,
+   "where": "p@20888",
+   "quote": "2023: כרמל 5 עסקאות ממוצע 2,486,400; הר הצופים 3 עסקאות 2,866,666; 5 עסקאות בודדות",
+   "measure": "sale_street",
+   "rooms": "",
+   "figures": 7,
+   "official": "",
+   "verdict": "STALE",
+   "action": "edit 11",
+   "note": "2023, unnamed annual source"
+  },
+  {
+   "id": 33,
+   "where": "tr@22149..22933",
+   "quote": "טבלת דירות קבלן לפי אזור: 1.7-2.2 ... 2.4-3.3 מיליון (6 שורות)",
+   "measure": "sale_new_used",
+   "rooms": "",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 12",
+   "note": "'estimated', no room count, no source"
+  },
+  {
+   "id": 34,
+   "where": "p@23109",
+   "quote": "אומדן דירות חדשות: 3 חדרים 2,380,000, 4 חדרים 3,110,000, 5 חדרים 3,560,000",
+   "measure": "sale_new_used",
+   "rooms": "",
+   "figures": 3,
+   "official": "3/4/5 rooms 1,921,100 / 2,345,500 / 3,290,000 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 13",
+   "note": ""
+  },
+  {
+   "id": 35,
+   "where": "p@23109",
+   "quote": "אומדן דירה חדשה 2 חדרים 1,780,000",
+   "measure": "sale_new_used",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 13",
+   "note": ""
+  },
+  {
+   "id": 36,
+   "where": "p@23109",
+   "quote": "מחיר ביקוש כללי סביב 2,500,000 ₪ לדירת 4 חדרים",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "2,345,500 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 13",
+   "note": ""
+  },
+  {
+   "id": 37,
+   "where": "p@23568",
+   "quote": "מאגר פרטי: רחובות המדע 3,555,117, אחוזת הנשיא 2,212,740, פארק תמר 3,877,475",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "STALE",
+   "action": "edit 14",
+   "note": "multi-year all-rooms averages; no official median for these areas"
+  },
+  {
+   "id": 38,
+   "where": "p@27388",
+   "quote": "FAQ 4 חדרים: ביקוש סביב 2,500,000 ₪; דירה חדשה סביב 3,110,000 ₪",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "2,345,500 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 15",
+   "note": ""
+  },
+  {
+   "id": 39,
+   "where": "p@27388",
+   "quote": "FAQ 4 חדרים: מחיר למ״ר סביב 23,364 ₪",
+   "measure": "per_m2",
+   "rooms": "4",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 15",
+   "note": ""
+  },
+  {
+   "id": 40,
+   "where": "p@27728",
+   "quote": "FAQ 3 חדרים: ביקוש סביב 1,950,000 ₪",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,921,100 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 16",
+   "note": ""
+  },
+  {
+   "id": 41,
+   "where": "p@27728",
+   "quote": "FAQ 3 חדרים: מחיר למ״ר סביב 24,375 ₪",
+   "measure": "per_m2",
+   "rooms": "3",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 16",
+   "note": ""
+  },
+  {
+   "id": 42,
+   "where": "p@27728",
+   "quote": "FAQ 3 חדרים: דירה חדשה נאמדת סביב 2,380,000 ₪",
+   "measure": "sale_new_used",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,921,100 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 16",
+   "note": ""
+  },
+  {
+   "id": 43,
+   "where": "p@28018",
+   "quote": "FAQ ממוצע: היסטורי 1,549,879 (41,822 עסקאות)",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 2,421,900 (1-3.2026)",
+   "verdict": "STALE",
+   "action": "edit 17",
+   "note": ""
+  },
+  {
+   "id": 44,
+   "where": "p@28018",
+   "quote": "FAQ ממוצע: מאגר עדכני סביב 2,550,000 ₪",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 2,421,900 (1-3.2026), +5.3%",
+   "verdict": "CONFLICT",
+   "action": "edit 17",
+   "note": ""
+  },
+  {
+   "id": 45,
+   "where": "p@28018",
+   "quote": "FAQ: מחיר למ״ר סביב 25,000 ₪",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 17",
+   "note": "kept inside the rewrite (recent listing/deal database)"
+  },
+  {
+   "id": 46,
+   "where": "p@28338",
+   "quote": "FAQ: רחובות המדע 3,555,117, פארק תמר 3,877,475, אחוזת הנשיא 2,212,740",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "STALE",
+   "action": "edit 18",
+   "note": ""
+  },
+  {
+   "id": 47,
+   "where": "p@28676",
+   "quote": "FAQ: שעריים, נווה אלון, היובל ואושיות 'נמוכים יותר במאגרים היסטוריים'",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 1,
+   "official": "4 rooms: שעריים 2,012,000; נווה אלון 2,356,000; city 2,345,500 (1-3.2026)",
+   "verdict": "STALE",
+   "action": "edit 19",
+   "note": "no digit; points at the historic database averages"
+  },
+  {
+   "id": 48,
+   "where": "p@29038",
+   "quote": "FAQ שכירות: 3,300 / 4,900 / 5,700 / 7,950; חציון 4,500, ממוצע 4,987",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample, 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 49,
+   "where": "p@29716",
+   "quote": "FAQ למ״ר: 18,966 / 22,300 / 25,000 / 26,667 / 29,688",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 5,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (computed from the dated deals in the table)",
+   "note": ""
+  }
+ ],
+ "edits": [
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "מחירי דירות ברחובות נעים כיום סביב כ-1.49 מיליון ₪ לדירת 2 חדרים, כ-1.95 מיליון ₪ לדירת 3 חדרים, כ-2.50 מיליון ₪ לדירת 4 חדרים, כ-3.19 מיליון ₪ לדירת 5 חדרים וכ-4.88 מיליון ₪ לדירות 6 חדרים ומעלה לפי מחירי ביקוש עדכניים, כאשר אומדן כללי של מחיר ממוצע בעיר נע בין כ-1.55 מיליון ₪ במאגר פרטי רחב הכולל שנים רבות לבין כ-2.55 מיליון ₪ במאגר עסקאות עדכני יותר. מחיר למ״ר בדירות רגילות נע לרוב סביב 23,000-28,500 ₪, עם חריגות כלפי מעלה באזורים חדשים, סביב פארק המדע, רחובות המדע, אחוזת הנשיא וצפון העיר. בשכירות, דירת 2 חדרים מבוקשת סביב 3,300 ₪, 3 חדרים סביב 4,900 ₪, 4 חדרים סביב 5,700 ₪ ו-5 חדרים סביב 7,950 ₪, בעוד חציון שכירות במודעות פעילות נמדד סביב 4,500 ₪ וממוצע סביב 4,987 ₪. לכן בדיקת שווי ברחובות צריכה להתחיל במספר חדרים, שכונה, גיל בניין, מעלית, חניה, ממ״ד, קרבה למכון ויצמן, פארק המדע, תחנת רכבת וצירי יציאה, ורק אחר כך לעבור להשוואת עסקאות סגורות.",
+   "new": "מחירי דירות ברחובות, לפי נתוני רשות המסים לרבעון הראשון של 2026: חציון מחיר העסקה היה 1,921,100 ₪ לדירת 3 חדרים, 2,345,500 ₪ לדירת 4 חדרים ו-3,290,000 ₪ לדירת 5 חדרים, ו-2,421,900 ₪ בכל סוגי הדירות. דירות 6 חדרים ומעלה, דירות חדשות ודירות באזורים מבוקשים יכולות להיות יקרות יותר. המחיר המבוקש למ״ר במודעות נע לרוב בין 23,000 ל-28,500 ₪, עם חריגות כלפי מעלה באזורים חדשים, סביב פארק המדע, רחובות המדע, אחוזת הנשיא וצפון העיר. בשכירות, דירת 2 חדרים מבוקשת סביב 3,300 ₪, 3 חדרים סביב 4,900 ₪, 4 חדרים סביב 5,700 ₪ ו-5 חדרים סביב 7,950 ₪, בעוד חציון שכירות במודעות פעילות נמדד סביב 4,500 ₪ וממוצע סביב 4,987 ₪. לכן בדיקת שווי ברחובות צריכה להתחיל במספר חדרים, שכונה, גיל בניין, מעלית, חניה, ממ״ד, קרבה למכון ויצמן, פארק המדע, תחנת רכבת וצירי יציאה, ורק אחר כך לעבור להשוואת עסקאות סגורות.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest",
+    "rooms.all.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Lead (answer paragraph): the 4-room asking anchor 2.50M is 6.6% above the official median 2,345,500 (1-3.2026); the city 'average' 1.55M (a multi-year private database) and 2.55M (+5.3%) are replaced by the official all-rooms median 2,421,900. 3 rooms 1.95M and 5 rooms 3.19M were consistent and are restated as medians; the 2-room and 6+-room asking anchors (no official series) are dropped. The per-m2 range is kept and labelled as asking; the rent sentence (97 listings, 6.6.2026) is kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 1,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "רחובות היא עיר שבה מחיר דירה ממוצע לא מספר את כל הסיפור. לפי מאגר פרטי רחב שנסמך על היסטוריית עסקאות, נספרו בעיר 41,822 עסקאות לאורך השנים, מחיר דירה ממוצע של 1,549,879 ₪ ו-34 שכונות או אזורי משנה. הנתון הזה נותן עומק היסטורי, אך הוא אינו שומה, אינו מחליף בדיקה משפטית או שמאית, והוא עשוי להשתנות עם עדכון המאגר.",
+   "new": "רחובות היא עיר שבה מחיר דירה ממוצע לא מספר את כל הסיפור. לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה ברחובות בכל סוגי הדירות היה 2,421,900 ₪, לעומת 2,287,600 ₪ ברבעון הראשון של 2025. מאגר פרטי רחב שנסמך על היסטוריית עסקאות מונה בעיר 41,822 עסקאות לאורך השנים ו-34 שכונות או אזורי משנה. הנתון הזה נותן עומק היסטורי, אך הוא אינו שומה, אינו מחליף בדיקה משפטית או שמאית, והוא עשוי להשתנות עם עדכון המאגר.",
+   "source_keys": [
+    "rooms.all.latest",
+    "rooms.all.year_ago",
+    "page"
+   ],
+   "audit_verdict": "STALE",
+   "verdict": "STALE",
+   "why": "The 1,549,879 'average flat price' is a multi-year average of a private database (41,822 deals over the years) far below the official all-rooms median 2,421,900 (1-3.2026). Replaced by the official median and its year-earlier quarter; the deal count stays as historic depth.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 2,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "בצד השני, מאגרים עדכניים יותר של מודעות ועסקאות מציגים תמונה גבוהה יותר: מחיר ממוצע סביב 2,550,000 ₪, מחיר למ״ר סביב 25,000 ₪ ו-1,737 עסקאות במאגר אחד. הפער בין 1.55 מיליון ₪ לבין 2.55 מיליון ₪ אינו בהכרח סתירה. הוא יכול לנבוע משנים שונות, סוגי נכסים שונים, דירות ישנות מול חדשות, דירות קטנות מול גדולות, סינון חריגים, עסקאות לעומת מודעות, והאם נכללו בתים פרטיים, פנטהאוזים ודירות יוקרה.",
+   "new": "בצד השני, מאגרים עדכניים יותר של מודעות ועסקאות מציגים מחיר למ״ר סביב 25,000 ₪ ו-1,737 עסקאות במאגר אחד. ממוצעים של מאגרים שונים יכולים להיות רחוקים זה מזה בלי שתהיה ביניהם סתירה: הפער יכול לנבוע משנים שונות, סוגי נכסים שונים, דירות ישנות מול חדשות, דירות קטנות מול גדולות, סינון חריגים, עסקאות לעומת מודעות, והאם נכללו בתים פרטיים, פנטהאוזים ודירות יוקרה. לכן נקודת הייחוס בעמוד הזה היא חציון מחיר העסקה לפי נתוני רשות המסים.",
+   "source_keys": [
+    "rooms.all.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Average 2,550,000 of an unnamed recent database is 5.3% above the official all-rooms median 2,421,900 and is set against the multi-year 1.55M; both averages leave. The per-m2 figure (25,000) and the deal count (1,737) stay as listing/database context.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 3,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "דוגמה לפערים ניתן לראות במאגר עסקאות פרטי רחב: שעריים מופיעה עם 3,962 עסקאות ומחיר ממוצע של 1,343,842 ₪, נווה אלון עם 3,690 עסקאות וממוצע 1,297,737 ₪, רחובות החדשה עם 2,346 עסקאות וממוצע 1,687,128 ₪, אחוזת הנשיא עם 1,424 עסקאות וממוצע 2,212,740 ₪, רחובות המדע עם 900 עסקאות וממוצע 3,555,117 ₪, פארק תמר עם 86 עסקאות וממוצע 3,877,475 ₪ ומכון ויצמן עם 65 עסקאות וממוצע 3,490,123 ₪. מספר העסקאות בכל אזור חשוב לא פחות מהמחיר, כי מחיר שמבוסס על 65 עסקאות רגיש יותר להרכב הנכסים מאשר מחיר שמבוסס על אלפי עסקאות.",
+   "new": "דוגמה לפערים ניתן לראות בנתוני רשות המסים לרבעון הראשון של 2026: חציון מחיר העסקה לדירת 4 חדרים היה 2,012,000 ₪ בשעריים, 2,342,400 ₪ בסלע, 2,356,000 ₪ בנווה אלון ו-2,557,200 ₪ ברחובות החדשה. מספר העסקאות בכל אזור חשוב לא פחות מהמחיר, כי חציון שמבוסס על עסקאות מעטות רגיש יותר להרכב הנכסים מאשר חציון שמבוסס על עסקאות רבות.",
+   "source_keys": [
+    "neighbourhoods[שעריים].rooms.4",
+    "neighbourhoods[סלע].rooms.4",
+    "neighbourhoods[נווה אלון].rooms.4",
+    "neighbourhoods[רחובות החדשה].rooms.4"
+   ],
+   "audit_verdict": "STALE",
+   "verdict": "STALE",
+   "why": "Seven all-rooms neighbourhood averages of the multi-year private database (e.g. Shaarayim 1,343,842, Neve Alon 1,297,737) presented as today's gaps; the official 4-room medians (1-3.2026) are far higher. Replaced by official medians for four page neighbourhoods.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 4,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "הטבלה הבאה נותנת נקודת פתיחה לפי מחירי ביקוש שפורסמו בעיר ולפי אומדני דירות חדשות. היא אינה מחליפה עסקאות סגורות, משום שבין מחיר ביקוש למחיר סגירה יכולים להיות פערים של עשרות אלפי שקלים ואף יותר, בעיקר כאשר הדירה עומדת זמן רב בשוק או כאשר יש בעיה תכנונית, משפטית או תחזוקתית.",
+   "new": "הטבלה הבאה מציגה את חציון מחיר העסקה ברחובות לפי מספר חדרים, לפי נתוני רשות המסים לרבעון הראשון של 2026, לצד החציון באותו רבעון שנה קודם לכן. החציון אינו מחליף בדיקה של עסקאות דומות: בין מחיר ביקוש למחיר סגירה, ובין דירה לדירה, יכולים להיות פערים של עשרות אלפי שקלים ואף יותר, בעיקר כאשר הדירה עומדת זמן רב בשוק או כאשר יש בעיה תכנונית, משפטית או תחזוקתית.",
+   "source_keys": [
+    "rooms.4.latest",
+    "rooms.4.year_ago"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "The intro announced asking prices and new-flat estimates; the table is replaced by official medians (edit 6).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 5,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג נכס</th>\n<th dir=\"rtl\">מחיר ביקוש ממוצע משוער</th>\n<th dir=\"rtl\">מחיר למ״ר משוער</th>\n<th dir=\"rtl\">דירה חדשה ממוצעת</th>\n<th dir=\"rtl\">מה לבדוק לפני שימוש במחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">1,485,000 ₪</td>\n<td dir=\"rtl\">28,558 ₪ למ״ר</td>\n<td dir=\"rtl\">1,780,000 ₪</td>\n<td dir=\"rtl\">גודל בפועל, בניין ישן מול חדש, קומה, מעלית ושוק שכירות קטן</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">1,950,000 ₪</td>\n<td dir=\"rtl\">24,375 ₪ למ״ר</td>\n<td dir=\"rtl\">2,380,000 ₪</td>\n<td dir=\"rtl\">התאמה לזוגות צעירים, מרחק לרכבת, מצב פנים הדירה וממ״ד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">2,500,000 ₪</td>\n<td dir=\"rtl\">23,364 ₪ למ״ר</td>\n<td dir=\"rtl\">3,110,000 ₪</td>\n<td dir=\"rtl\">חניה, מעלית, מרפסת, בית ספר, דמי ועד ועסקאות דומות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">3,190,000 ₪</td>\n<td dir=\"rtl\">24,167 ₪ למ״ר</td>\n<td dir=\"rtl\">3,560,000 ₪</td>\n<td dir=\"rtl\">קומה, נוף, מספר חניות, מחסן, שטח מרפסת ובניינים חדשים סמוכים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">6 חדרים ומעלה</td>\n<td dir=\"rtl\">4,880,000 ₪</td>\n<td dir=\"rtl\">19,520 ₪ למ״ר</td>\n<td dir=\"rtl\">משתנה לפי פרויקט</td>\n<td dir=\"rtl\">האם מדובר בדירת גן, פנטהאוז, בית פרטי או דירה גדולה רגילה</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג נכס</th>\n<th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th>\n<th dir=\"rtl\">ינואר-מרץ 2025</th>\n<th dir=\"rtl\">שינוי בשנה</th>\n<th dir=\"rtl\">מה לבדוק לפני שימוש במחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">1,921,100 ₪</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">התאמה לזוגות צעירים, מרחק לרכבת, מצב פנים הדירה וממ״ד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">2,345,500 ₪</td>\n<td dir=\"rtl\">2,518,800 ₪</td>\n<td dir=\"rtl\">ירידה של 6.9%</td>\n<td dir=\"rtl\">חניה, מעלית, מרפסת, בית ספר, דמי ועד ועסקאות דומות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">3,290,000 ₪</td>\n<td dir=\"rtl\">3,174,200 ₪</td>\n<td dir=\"rtl\">עלייה של 3.6%</td>\n<td dir=\"rtl\">קומה, נוף, מספר חניות, מחסן, שטח מרפסת ובניינים חדשים סמוכים</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.4.year_ago",
+    "rooms.4.change_pct",
+    "rooms.5.latest",
+    "rooms.5.year_ago",
+    "rooms.5.change_pct"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Rooms table: the 4-room asking anchor 2,500,000 and the new-flat 'averages' 2,380,000 / 3,110,000 / 3,560,000 contradict the official medians; the 2-room and 6+-room rows and the per-m2 column are asking-based estimates with no named source. Replaced by the official medians with the year-earlier quarter (no 3-room median was published for 1-3.2025: 'לא פורסם'); the check notes of rows 3-5 are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מחיר ביקוש ממוצע משוער</th>",
+   "n": 6,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "מחיר למ״ר גבוה בדירות 2 חדרים אינו מפתיע.",
+   "new": "המחירון הרשמי מפרסם חציון לדירות 3, 4 ו-5 חדרים; דירות 2 חדרים ודירות 6 חדרים ומעלה כדאי לבדוק מול עסקאות דומות ברחוב ובשכונה. מחיר למ״ר גבוה בדירות 2 חדרים אינו מפתיע.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Follows edit 6: the 2-room and 6+-room rows and the per-m2 column left the table.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 7,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "מחיר של 2.5 מיליון ₪ לדירת 4 חדרים אינו אומר שהעלות הכוללת היא 2.5 מיליון ₪ בלבד.",
+   "new": "גם חציון מחיר העסקה לדירת 4 חדרים, 2,345,500 ₪ ברבעון הראשון של 2026, אינו העלות הכוללת של הקנייה.",
+   "source_keys": [
+    "rooms.4.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Uses the old 4-room asking anchor 2.5M as the price of a 4-room flat; the official median is 2,345,500.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 8,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "לכן מחיר ממוצע של שכונה הוא התחלה טובה, אך לא נקודת סיום.",
+   "new": "לכן חציון המחיר של שכונה הוא התחלה טובה, אך לא נקודת סיום. הטבלה הבאה מציגה את חציון מחיר העסקה לפי שכונה ומספר חדרים, לפי נתוני רשות המסים לרבעון הראשון של 2026; בשכונות שאינן מופיעות במחירון, כמו רחובות המדע, אחוזת הנשיא, פארק תמר, מכון ויצמן, היובל ואושיות, משווים לעסקאות דומות ברחוב ובסביבה.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Follows edit 10: the neighbourhood table now shows official medians by rooms.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 9,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">אזור או שכונה</th>\n<th dir=\"rtl\">מספר עסקאות במאגר פרטי</th>\n<th dir=\"rtl\">מחיר ממוצע במאגר</th>\n<th dir=\"rtl\">קריאת מחיר זהירה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שעריים</td>\n<td dir=\"rtl\">3,962</td>\n<td dir=\"rtl\">1,343,842 ₪</td>\n<td dir=\"rtl\">אזור ותיק עם היצע מגוון, יש לבדוק גיל בניין ורחוב ספציפי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה אלון</td>\n<td dir=\"rtl\">3,690</td>\n<td dir=\"rtl\">1,297,737 ₪</td>\n<td dir=\"rtl\">ריבוי עסקאות נותן בסיס השוואה, אך סוגי הנכסים אינם אחידים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">סלע</td>\n<td dir=\"rtl\">2,598</td>\n<td dir=\"rtl\">1,707,500 ₪</td>\n<td dir=\"rtl\">יש לבדוק האם ההשוואה היא לדירות דומות בגודל ובשנת בנייה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רחובות החדשה</td>\n<td dir=\"rtl\">2,346</td>\n<td dir=\"rtl\">1,687,128 ₪</td>\n<td dir=\"rtl\">בנייה חדשה יחסית בחלקים מהאזור, פערים לפי פרויקט ומפרט</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מתחם התחנה המרכזית</td>\n<td dir=\"rtl\">2,324</td>\n<td dir=\"rtl\">1,495,409 ₪</td>\n<td dir=\"rtl\">נגישות עירונית טובה, אך יש לבדוק רעש, חניה ותכנון עתידי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">היובל</td>\n<td dir=\"rtl\">2,080</td>\n<td dir=\"rtl\">1,180,649 ₪</td>\n<td dir=\"rtl\">מחיר ממוצע נמוך יחסית במאגר, דרושה בדיקת סוגי נכסים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רחובות ההולנדית</td>\n<td dir=\"rtl\">2,010</td>\n<td dir=\"rtl\">1,571,909 ₪</td>\n<td dir=\"rtl\">שכונה עם ביקוש משפחתי, יש לבדוק מיקום פנימי וחניה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אחוזת הנשיא</td>\n<td dir=\"rtl\">1,424</td>\n<td dir=\"rtl\">2,212,740 ₪</td>\n<td dir=\"rtl\">אזור יקר יותר, מושפע מדירות גדולות ובנייה איכותית</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אושיות</td>\n<td dir=\"rtl\">1,322</td>\n<td dir=\"rtl\">762,675 ₪</td>\n<td dir=\"rtl\">נתון היסטורי נמוך, יש לבדוק עסקאות עדכניות ולא להסתמך עליו לבדו</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רחובות המדע</td>\n<td dir=\"rtl\">900</td>\n<td dir=\"rtl\">3,555,117 ₪</td>\n<td dir=\"rtl\">קרבה לפארק המדע ולתעסוקה, נכסים יקרים יותר ומיעוט יחסי של השוואות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">פארק תמר</td>\n<td dir=\"rtl\">86</td>\n<td dir=\"rtl\">3,877,475 ₪</td>\n<td dir=\"rtl\">מספר עסקאות קטן, ממוצע רגיש מאוד להרכב הנכסים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מכון ויצמן</td>\n<td dir=\"rtl\">65</td>\n<td dir=\"rtl\">3,490,123 ₪</td>\n<td dir=\"rtl\">אזור ייחודי, לא להשוות אוטומטית לדירה רגילה בשכונה ותיקה</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שכונה</th>\n<th dir=\"rtl\">3 חדרים</th>\n<th dir=\"rtl\">4 חדרים</th>\n<th dir=\"rtl\">5 חדרים</th>\n<th dir=\"rtl\">קריאת מחיר זהירה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שעריים</td>\n<td dir=\"rtl\">1,933,100 ₪</td>\n<td dir=\"rtl\">2,012,000 ₪</td>\n<td dir=\"rtl\">3,204,300 ₪</td>\n<td dir=\"rtl\">אזור ותיק עם היצע מגוון, יש לבדוק גיל בניין ורחוב ספציפי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה אלון</td>\n<td dir=\"rtl\">2,539,700 ₪</td>\n<td dir=\"rtl\">2,356,000 ₪</td>\n<td dir=\"rtl\">3,783,900 ₪</td>\n<td dir=\"rtl\">סוגי הנכסים אינם אחידים, יש להשוות לדירות דומות בגודל ובשנת בנייה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">סלע</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">2,342,400 ₪</td>\n<td dir=\"rtl\">3,255,900 ₪</td>\n<td dir=\"rtl\">יש לבדוק האם ההשוואה היא לדירות דומות בגודל ובשנת בנייה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רחובות החדשה</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">2,557,200 ₪</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">בנייה חדשה יחסית בחלקים מהאזור, פערים לפי פרויקט ומפרט</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מתחם התחנה המרכזית</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">3,389,400 ₪</td>\n<td dir=\"rtl\">נגישות עירונית טובה, אך יש לבדוק רעש, חניה ותכנון עתידי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קרית משה</td>\n<td dir=\"rtl\">2,238,200 ₪</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">2,762,400 ₪</td>\n<td dir=\"rtl\">סוג פרויקט, התחדשות, נגישות ומפרט</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "neighbourhoods[שעריים].rooms.3",
+    "neighbourhoods[שעריים].rooms.4",
+    "neighbourhoods[שעריים].rooms.5",
+    "neighbourhoods[נווה אלון].rooms.3",
+    "neighbourhoods[נווה אלון].rooms.4",
+    "neighbourhoods[נווה אלון].rooms.5",
+    "neighbourhoods[סלע].rooms.4",
+    "neighbourhoods[סלע].rooms.5",
+    "neighbourhoods[רחובות החדשה].rooms.4",
+    "neighbourhoods[מתחם התחנה המרכזית].rooms.5",
+    "neighbourhoods[קרית משה].rooms.3",
+    "neighbourhoods[קרית משה].rooms.5"
+   ],
+   "audit_verdict": "STALE",
+   "verdict": "STALE",
+   "why": "Neighbourhood table: 13 all-rooms averages and deal counts of a multi-year private database (e.g. Oshiyot 762,675 'historic', Shaarayim 1,343,842) presented as neighbourhood levels. Replaced by the official medians by rooms, 1-3.2026, for the six page neighbourhoods that have one ('לא פורסם' where the official file has no median). Check notes reused from the old rows (Neve Alon's note shortened, Kiryat Moshe's taken from the new-build table row).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מחיר ממוצע במאגר</th>",
+   "n": 10,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "גם נתונים שנתיים לפי רחובות ממחישים תנודתיות. בשנת 2023 הופיעו לדוגמה ברחוב כרמל 5 עסקאות במחיר ממוצע של 2,486,400 ₪, בהר הצופים 3 עסקאות בממוצע 2,866,666 ₪, בהרב מלצר עסקה אחת ב-1,566,000 ₪, בביאלר קלמן עסקה אחת ב-2,878,000 ₪, בגורדון עסקה אחת ב-1,325,000 ₪, בפרופ' אומן ישראל עסקה אחת ב-3,420,000 ₪ ובהרצל עסקה אחת ב-2,400,000 ₪. כאשר יש עסקה אחת בלבד, היא מספרת על הנכס שנמכר, לא על כל הרחוב.",
+   "new": "גם נתונים לפי רחובות ממחישים תנודתיות: באותו רחוב יכולות להיסגר עסקאות במחירים רחוקים זה מזה, ולכן כאשר יש עסקה אחת בלבד, היא מספרת על הנכס שנמכר, לא על כל הרחוב.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "STALE",
+   "verdict": "STALE",
+   "why": "2023 street averages (Carmel 5 deals 2,486,400; Har HaTsofim 3 deals 2,866,666) and five single 2023 deals from an unnamed annual source, older than the official data; rephrased without the numbers (the dated March 2026 deals table stays above).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 11,
+   "raw_risk": [
+    "apostrophe"
+   ]
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">אזור דירות קבלן</th>\n<th dir=\"rtl\">טווח מחיר משוער</th>\n<th dir=\"rtl\">מה משפיע על הטווח</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קרית משה, מרמורק, דניה</td>\n<td dir=\"rtl\">1.7-2.2 מיליון ₪</td>\n<td dir=\"rtl\">סוג פרויקט, התחדשות, נגישות ומפרט</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">חצרות המושבה, שעריים</td>\n<td dir=\"rtl\">1.8-2.3 מיליון ₪</td>\n<td dir=\"rtl\">בנייה חדשה בתוך מרקם ותיק, חניה וסביבה קרובה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">צפון מערב, אבן גבירול, רחובות הצעירה</td>\n<td dir=\"rtl\">2.0-2.5 מיליון ₪</td>\n<td dir=\"rtl\">ביקוש משפחתי, נגישות וגיל שכונה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אושיות, רחובות החדשה</td>\n<td dir=\"rtl\">2.2-2.8 מיליון ₪</td>\n<td dir=\"rtl\">פערים בין חלקים ותיקים לבין פרויקטים חדשים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">צפון מזרח, מרכז</td>\n<td dir=\"rtl\">2.3-3.0 מיליון ₪</td>\n<td dir=\"rtl\">מיקום, מוסדות ציבור, תחבורה ורמת גמר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">פארק המדע, היובל</td>\n<td dir=\"rtl\">2.4-3.3 מיליון ₪</td>\n<td dir=\"rtl\">קרבה לתעסוקה, רכבת, ביקוש שכירות ודירות חדשות</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">אזור דירות קבלן</th>\n<th dir=\"rtl\">מה משפיע על המחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קרית משה, מרמורק, דניה</td>\n<td dir=\"rtl\">סוג פרויקט, התחדשות, נגישות ומפרט</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">חצרות המושבה, שעריים</td>\n<td dir=\"rtl\">בנייה חדשה בתוך מרקם ותיק, חניה וסביבה קרובה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">צפון מערב, אבן גבירול, רחובות הצעירה</td>\n<td dir=\"rtl\">ביקוש משפחתי, נגישות וגיל שכונה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אושיות, רחובות החדשה</td>\n<td dir=\"rtl\">פערים בין חלקים ותיקים לבין פרויקטים חדשים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">צפון מזרח, מרכז</td>\n<td dir=\"rtl\">מיקום, מוסדות ציבור, תחבורה ורמת גמר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">פארק המדע, היובל</td>\n<td dir=\"rtl\">קרבה לתעסוקה, רכבת, ביקוש שכירות ודירות חדשות</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "New-build table: six 'estimated' price ranges by area (1.7-2.2M ... 2.4-3.3M) with no room count, no named source and no period; the official list does not split new and second-hand. The range column is removed; rows and notes stay ('הטווח' -> 'המחיר' in the header).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">טווח מחיר משוער</th>",
+   "n": 12,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "לפי אומדן דירות חדשות, דירת 2 חדרים חדשה ברחובות עומדת סביב 1,780,000 ₪, דירת 3 חדרים סביב 2,380,000 ₪, דירת 4 חדרים סביב 3,110,000 ₪ ודירת 5 חדרים סביב 3,560,000 ₪. מי שמשווה את הנתונים למחירי ביקוש כלליים יראה פרמיה משמעותית במיוחד בדירות 4 חדרים, שבהן מחיר ביקוש כללי סביב 2,500,000 ₪ מול דירת קבלן סביב 3,110,000 ₪. הפרמיה עשויה להיות מוצדקת כאשר מדובר במיקום חזק, מפרט מלא, שתי חניות או פרויקט איכותי, אך היא דורשת בדיקה כלכלית ומשפטית.",
+   "new": "המחירון הרשמי אינו מפריד בין דירות חדשות לדירות יד שנייה. לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 4 חדרים בעיר היה 2,345,500 ₪, ודירת קבלן חדשה באותו גודל מתומחרת לרוב מעליו, לפי המיקום והמפרט. הפרמיה עשויה להיות מוצדקת כאשר מדובר במיקום חזק, מפרט מלא, שתי חניות או פרויקט איכותי, אך היא דורשת בדיקה כלכלית ומשפטית.",
+   "source_keys": [
+    "rooms.4.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "New-flat 'estimates' 2,380,000 / 3,110,000 / 3,560,000 for 3/4/5 rooms are far above the official medians, and the 4-room asking anchor 2,500,000 is 6.6% above 2,345,500; no source or period. Rephrased around the official 4-room median.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 13,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "ברחובות המדע נרשם במאגר פרטי ממוצע של 3,555,117 ₪, באחוזת הנשיא 2,212,740 ₪ ובפארק תמר 3,877,475 ₪, אך צריך לשים לב למספר העסקאות ולהרכב הנכסים.",
+   "new": "ברחובות המדע, באחוזת הנשיא ובפארק תמר הופיעו במאגר פרטי היסטורי ממוצעים גבוהים מהממוצע העירוני באותו מאגר, אך המחירון שבעמוד אינו מציג להם חציון, וצריך לשים לב למספר העסקאות ולהרכב הנכסים.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "STALE",
+   "verdict": "STALE",
+   "why": "All-rooms averages of the multi-year private database; no official median for these areas. Rephrased without the numbers.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 14,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "נקודת פתיחה סבירה לדירת 4 חדרים ברחובות היא סביב 2,500,000 ₪ במחירי ביקוש, עם מחיר למ״ר סביב 23,364 ₪. דירה חדשה יכולה להגיע סביב 3,110,000 ₪ בממוצע.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 4 חדרים ברחובות ברבעון הראשון של 2026 היה 2,345,500 ₪, לעומת 2,518,800 ₪ שנה קודם לכן.",
+   "source_keys": [
+    "rooms.4.latest",
+    "rooms.4.year_ago"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ 4 rooms: asking 2,500,000 and new 3,110,000 vs the official 2,345,500 (1-3.2026); the asking per-m2 23,364 leaves with the table column.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 15,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "דירת 3 חדרים מוצעת סביב 1,950,000 ₪ בממוצע ביקוש, עם מחיר למ״ר סביב 24,375 ₪. דירה חדשה בת 3 חדרים נאמדת סביב 2,380,000 ₪.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 3 חדרים ברחובות ברבעון הראשון של 2026 היה 1,921,100 ₪. ברבעון הרביעי של 2025 הוא היה 1,621,600 ₪, ולכן כדאי להשוות גם לעסקאות מהרבעונים הקודמים.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.quarters[10-12.2025]"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ 3 rooms: the asking 1,950,000 was consistent, but the new-flat 2,380,000 contradicts the official 1,921,100; no year-earlier median exists for 3 rooms, so the previous quarter (1,621,600, a sharp swing) is shown.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 16,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "יש כמה מספרים אפשריים. מאגר פרטי רחב מציג מחיר ממוצע היסטורי של 1,549,879 ₪ על בסיס 41,822 עסקאות לאורך השנים. מאגר עדכני אחר מציג מחיר ממוצע סביב 2,550,000 ₪ ומחיר למ״ר סביב 25,000 ₪. הפער נובע מתמהיל נתונים, שנים, סוגי נכסים וסינון עסקאות.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה ברחובות בכל סוגי הדירות היה 2,421,900 ₪. מאגרים פרטיים מציגים ממוצעים אחרים, למשל ממוצע היסטורי על בסיס 41,822 עסקאות לאורך השנים, והפער נובע מתמהיל נתונים, שנים, סוגי נכסים וסינון עסקאות. מאגר עדכני של מודעות ועסקאות מציג מחיר למ״ר סביב 25,000 ₪.",
+   "source_keys": [
+    "rooms.all.latest",
+    "page"
+   ],
+   "audit_verdict": "STALE",
+   "verdict": "STALE",
+   "why": "FAQ average: the multi-year 1,549,879 and the 2,550,000 of another database vs the official all-rooms median 2,421,900 (1-3.2026). The per-m2 25,000 and the 41,822 deal count stay as context.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 17,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "אזורים כמו רחובות המדע, פארק תמר, מכון ויצמן ואחוזת הנשיא מציגים במאגרים פרטיים מחירים ממוצעים גבוהים יותר, למשל 3,555,117 ₪ ברחובות המדע, 3,877,475 ₪ בפארק תמר ו-2,212,740 ₪ באחוזת הנשיא. עם זאת, מספר העסקאות בחלק מהאזורים קטן יחסית, ולכן חובה לבדוק נכסים דומים.",
+   "new": "אזורים כמו רחובות המדע, פארק תמר, מכון ויצמן ואחוזת הנשיא מציגים במאגרים פרטיים היסטוריים מחירים ממוצעים גבוהים יותר, אך המחירון שבעמוד אינו מציג להם חציון, ומספר העסקאות בחלק מהם קטן יחסית. בין השכונות שבמחירון, חציון מחיר העסקה לדירת 4 חדרים ברחובות החדשה היה 2,557,200 ₪ ברבעון הראשון של 2026, לפי נתוני רשות המסים. בכל מקרה חובה לבדוק נכסים דומים.",
+   "source_keys": [
+    "neighbourhoods[רחובות החדשה].rooms.4",
+    "page"
+   ],
+   "audit_verdict": "STALE",
+   "verdict": "STALE",
+   "why": "FAQ: 3,555,117 / 3,877,475 / 2,212,740 are multi-year private-database averages; no official median for these areas. Rephrased without them; the official 4-room median of Rehovot HaHadasha is given.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 18,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4591,
+   "url": "https://nad-lan.co.il/rehovot-apartment-prices/",
+   "field": "content",
+   "old": "אזורים ותיקים כמו שעריים, נווה אלון, היובל ואושיות כוללים נתונים ממוצעים נמוכים יותר במאגרים היסטוריים.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 4 חדרים בשעריים היה 2,012,000 ₪, מתחת לחציון העירוני של 2,345,500 ₪, אך בנווה אלון הוא היה 2,356,000 ₪, כמעט כמו החציון העירוני.",
+   "source_keys": [
+    "neighbourhoods[שעריים].rooms.4",
+    "rooms.4.latest",
+    "neighbourhoods[נווה אלון].rooms.4"
+   ],
+   "audit_verdict": "STALE",
+   "verdict": "STALE",
+   "why": "FAQ: 'lower averages in historic databases' for Shaarayim, Neve Alon, HaYovel, Oshiyot; the official 4-room medians show Shaarayim below the city median but Neve Alon at the city level.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 19,
+   "raw_risk": []
+  }
+ ],
+ "live_recheck": {
+  "retrieved_utc": "2026-10-07 11:19:17",
+  "modified": "2026-10-07T13:47:23",
+  "audited_copy_modified": "2026-08-19T00:40:30",
+  "price_list_on_page": true,
+  "body_outside_list_identical_to_audited_copy": "yes, except the blank lines around the price list, which was inserted at 2026-10-07T13:47:23 (site time) after the audited copy",
+  "dry_run": "19 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ }
+}

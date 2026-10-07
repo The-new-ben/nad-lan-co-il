@@ -27,6 +27,17 @@ amx = """
 body{margin:0;background:#f7f6f2}
 """
 
+# v1.1 (7.10.2026): a language version (LTR, from rova-4.en.json "ui") and the second instance, Sde Dov, whose empty layer
+# (urban renewal: none inside the district) gets no filter and no list heading
+EXTRA = ''
+if os.path.exists(os.path.join(HERE, 'rova-4.en.json')):
+    EXTRA += ('<p class="amx-note" style="margin-top:32px">v1.1: גרסת שפה. אותו רכיב מקובץ rova-4.en.json: ממשק באנגלית, כיוון משמאל לימין, '
+              'הכרטיס משמאל וכפתור הסגירה מימין, שמות הרחובות במפה בשפת העמוד כשיש להם שם כזה.</p>' +
+              render_map.html(render_map.load('rova-4.en'), '-en'))
+if os.path.exists(os.path.join(HERE, 'sde-dov.json')):
+    EXTRA += ('<p class="amx-note" style="margin-top:32px">v1.1: מופע שני, שדה דב. 9 פרויקטים על המגרשים הרשמיים. אין מתחמי התחדשות עירונית בתוך '
+              'קו התוכנית, ולכן אין כפתור "התחדשות עירונית" ואין כותרת ריקה ברשימה. אסור להציג אפס.</p>' +
+              render_map.html(render_map.load('sde-dov'), '-sd'))
 doc = ('<!-- @dsCard group="Maps" height=3600 width=1280 subtitle="מפת רובע לעמוד אזור ולעמוד פרויקט: הפרויקטים באתר, ההתחדשות '
        'העירונית ומה שיש בשכונה, נטענת רק כשמגיעים אליה" -->\n<!doctype html>\n<html lang="he" dir="rtl"><head><meta charset="utf-8">'
        '<meta name="viewport" content="width=device-width, initial-scale=1"><title>AreaMap</title>'
@@ -38,7 +49,7 @@ doc = ('<!-- @dsCard group="Maps" height=3600 width=1280 subtitle="מפת רוב
        render_map.html(d, '-d') +
        '<div class="amx-gap"><div>המשך העמוד: כיכר המדינה והמגדלים, התחדשות עירונית, תחבורה</div></div>'
        '<p class="amx-note" style="margin-top:32px">בטלפון (מסגרת של 390 פיקסלים): אותו סקשן, הכרטיס נפתח מלמטה, וגלילה באצבע אחת ממשיכה בעמוד.</p>'
-       '<div class="amx-phone">' + render_map.html(d, '-ph') + '</div></div>'
+       '<div class="amx-phone">' + render_map.html(d, '-ph') + '</div>' + EXTRA + '</div>'
        '<script>' + render_map.JS + '</script></body></html>\n')
 io.open(OUT, 'w', encoding='utf-8', newline='\n').write(doc)
 print('wrote', OUT, len(doc.encode('utf-8')), 'bytes')

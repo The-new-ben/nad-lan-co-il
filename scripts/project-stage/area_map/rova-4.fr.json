@@ -1,0 +1,1400 @@
+{
+ "key": "rova-4",
+ "updated": "2026-10-07",
+ "page": "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+ "research": "docs/design/area-map-3d/data.json (sources and retrieval time for every item)",
+ "kicker": "Emplacement",
+ "title": "Rova 4 sur la carte : les projets, le renouvellement urbain et la vie de quartier",
+ "lead": "Entre la rue Ibn Gabirol et l’autoroute Ayalon, du Yarkon au boulevard Shaul HaMelech : les tours résidentielles autour de la place Kikar HaMedina, les immeubles en renouvellement urbain, et les écoles, les parcs, les cafés et le métro léger de Rova 4.",
+ "caption": "Carte indicative. Emplacements d’après OpenStreetMap ; projets de renouvellement urbain d’après les publications, mis à jour le 7 octobre 2026.",
+ "view": {
+  "center": [
+   34.789776,
+   32.086758
+  ],
+  "zoom": 15,
+  "pitch": 55,
+  "bearing": -18,
+  "phone": {
+   "center": [
+    34.79,
+    32.0868
+   ],
+   "zoom": 14.2,
+   "pitch": 55
+  }
+ },
+ "facts": {
+  "Arlozorov": "La ligne rouge circule ici depuis août 2023"
+ },
+ "boundary": [
+  [
+   34.78168,
+   32.07554
+  ],
+  [
+   34.78168,
+   32.07554
+  ],
+  [
+   34.78146,
+   32.07625
+  ],
+  [
+   34.78157,
+   32.07631
+  ],
+  [
+   34.7813,
+   32.07724
+  ],
+  [
+   34.78131,
+   32.07768
+  ],
+  [
+   34.78125,
+   32.07845
+  ],
+  [
+   34.7812,
+   32.07881
+  ],
+  [
+   34.78128,
+   32.0795
+  ],
+  [
+   34.78135,
+   32.08036
+  ],
+  [
+   34.78135,
+   32.08093
+  ],
+  [
+   34.78133,
+   32.08144
+  ],
+  [
+   34.78132,
+   32.08196
+  ],
+  [
+   34.78136,
+   32.08315
+  ],
+  [
+   34.78158,
+   32.08401
+  ],
+  [
+   34.78163,
+   32.0845
+  ],
+  [
+   34.78179,
+   32.08514
+  ],
+  [
+   34.78184,
+   32.08537
+  ],
+  [
+   34.78206,
+   32.08626
+  ],
+  [
+   34.78208,
+   32.08692
+  ],
+  [
+   34.78222,
+   32.0872
+  ],
+  [
+   34.78234,
+   32.08809
+  ],
+  [
+   34.78231,
+   32.08832
+  ],
+  [
+   34.78257,
+   32.08937
+  ],
+  [
+   34.78263,
+   32.08977
+  ],
+  [
+   34.78285,
+   32.09069
+  ],
+  [
+   34.78281,
+   32.09085
+  ],
+  [
+   34.78297,
+   32.09171
+  ],
+  [
+   34.78349,
+   32.09403
+  ],
+  [
+   34.78354,
+   32.09477
+  ],
+  [
+   34.7837,
+   32.09532
+  ],
+  [
+   34.78375,
+   32.09558
+  ],
+  [
+   34.78371,
+   32.09632
+  ],
+  [
+   34.78384,
+   32.09633
+  ],
+  [
+   34.78715,
+   32.09652
+  ],
+  [
+   34.78839,
+   32.09673
+  ],
+  [
+   34.79244,
+   32.0974
+  ],
+  [
+   34.79648,
+   32.09845
+  ],
+  [
+   34.79983,
+   32.10015
+  ],
+  [
+   34.8004,
+   32.10018
+  ],
+  [
+   34.80092,
+   32.1001
+  ],
+  [
+   34.80166,
+   32.09989
+  ],
+  [
+   34.80269,
+   32.09989
+  ],
+  [
+   34.80242,
+   32.09882
+  ],
+  [
+   34.80189,
+   32.09743
+  ],
+  [
+   34.80184,
+   32.09643
+  ],
+  [
+   34.80129,
+   32.09492
+  ],
+  [
+   34.80184,
+   32.09408
+  ],
+  [
+   34.80167,
+   32.09317
+  ],
+  [
+   34.80073,
+   32.09255
+  ],
+  [
+   34.8015,
+   32.0923
+  ],
+  [
+   34.80128,
+   32.09136
+  ],
+  [
+   34.80017,
+   32.09018
+  ],
+  [
+   34.80027,
+   32.08984
+  ],
+  [
+   34.80011,
+   32.0891
+  ],
+  [
+   34.79966,
+   32.08861
+  ],
+  [
+   34.80033,
+   32.08797
+  ],
+  [
+   34.79963,
+   32.0874
+  ],
+  [
+   34.79857,
+   32.08629
+  ],
+  [
+   34.79852,
+   32.08559
+  ],
+  [
+   34.79804,
+   32.08497
+  ],
+  [
+   34.79836,
+   32.0844
+  ],
+  [
+   34.79816,
+   32.08389
+  ],
+  [
+   34.79773,
+   32.08296
+  ],
+  [
+   34.7977,
+   32.08252
+  ],
+  [
+   34.7981,
+   32.08197
+  ],
+  [
+   34.79801,
+   32.08144
+  ],
+  [
+   34.79771,
+   32.0808
+  ],
+  [
+   34.79756,
+   32.08017
+  ],
+  [
+   34.79717,
+   32.07959
+  ],
+  [
+   34.79677,
+   32.07906
+  ],
+  [
+   34.79629,
+   32.07849
+  ],
+  [
+   34.79569,
+   32.07803
+  ],
+  [
+   34.79275,
+   32.07803
+  ],
+  [
+   34.79222,
+   32.07798
+  ],
+  [
+   34.79148,
+   32.07785
+  ],
+  [
+   34.79103,
+   32.0777
+  ],
+  [
+   34.79031,
+   32.07749
+  ],
+  [
+   34.78932,
+   32.07721
+  ],
+  [
+   34.78878,
+   32.07697
+  ],
+  [
+   34.78731,
+   32.0764
+  ],
+  [
+   34.78685,
+   32.0763
+  ],
+  [
+   34.78601,
+   32.07601
+  ],
+  [
+   34.78549,
+   32.07587
+  ],
+  [
+   34.785,
+   32.07575
+  ],
+  [
+   34.78444,
+   32.07566
+  ],
+  [
+   34.78358,
+   32.07554
+  ],
+  [
+   34.78338,
+   32.0756
+  ],
+  [
+   34.78277,
+   32.07552
+  ],
+  [
+   34.78188,
+   32.07552
+  ],
+  [
+   34.78168,
+   32.07554
+  ]
+ ],
+ "projects": [
+  {
+   "id": "hamedina",
+   "name": "Tours Kikar HaMedina",
+   "fact": "3 tours de 40, 40 et 37 étages · 453 appartements",
+   "dev": null,
+   "url": "https://nad-lan.co.il/projects/hamedina-fr/",
+   "lat": 32.086758,
+   "lng": 34.789776,
+   "hero": true
+  },
+  {
+   "id": "duo-tel-aviv",
+   "name": "DUO",
+   "fact": "2 tours de 54 étages · 668 appartements",
+   "dev": "Africa Israel Residences",
+   "url": "https://nad-lan.co.il/projects/duo-tel-aviv-fr/",
+   "lat": 32.085658,
+   "lng": 34.783027,
+   "hero": false
+  },
+  {
+   "id": "h-infinity-somail-tel-aviv",
+   "name": "H Infinity",
+   "fact": "Une tour résidentielle et un immeuble boutique · environ 278 appartements",
+   "dev": "Hagag Group",
+   "url": "https://nad-lan.co.il/projects/h-infinity-somail-tel-aviv/",
+   "lat": 32.087284,
+   "lng": 34.78272,
+   "hero": false
+  },
+  {
+   "id": "yoo-tel-aviv",
+   "name": "YOO Tel Aviv",
+   "fact": "2 tours de 37 et 41 étages · environ 300 appartements",
+   "dev": "Habas Group",
+   "url": "https://nad-lan.co.il/projects/yoo-tel-aviv-fr/",
+   "lat": 32.090497,
+   "lng": 34.7963,
+   "hero": false
+  },
+  {
+   "id": "akirov-towers",
+   "name": "Tours Akirov",
+   "fact": "3 tours de 32 étages · environ 350 appartements",
+   "dev": "Alrov",
+   "url": "https://nad-lan.co.il/projects/akirov-towers/",
+   "lat": 32.090711,
+   "lng": 34.793055,
+   "hero": false
+  },
+  {
+   "id": "park-bavli",
+   "name": "Park Bavli",
+   "fact": "4 tours de 46 étages · environ 800 appartements",
+   "dev": "Tshuva Group et Elad Residences",
+   "url": "https://nad-lan.co.il/projects/park-bavli-fr/",
+   "lat": 32.092292,
+   "lng": 34.798255,
+   "hero": false
+  }
+ ],
+ "renewal": [
+  {
+   "id": "zlotisti-4",
+   "address": "4 rue Zlotisti",
+   "before": "4 étages, 12 appartements",
+   "after": "8 étages, 22 appartements",
+   "dev": null,
+   "stage": "Démoli, 2.2026",
+   "note": null,
+   "url": null,
+   "lat": 32.083462,
+   "lng": 34.79316
+  },
+  {
+   "id": "remez-27",
+   "address": "27 rue Remez",
+   "before": "4 étages, 14 appartements",
+   "after": "9 étages, 24 appartements",
+   "dev": null,
+   "stage": "Démoli, 2.2026",
+   "note": null,
+   "url": null,
+   "lat": 32.089241,
+   "lng": 34.786249
+  },
+  {
+   "id": "jabotinsky-152",
+   "address": "152 rue Jabotinsky",
+   "before": "4 étages, 20 appartements",
+   "after": "8 étages, 38 appartements",
+   "dev": "Bayit VeGag",
+   "stage": "Achèvement prévu au dernier trimestre 2028",
+   "note": null,
+   "url": null,
+   "lat": 32.085748,
+   "lng": 34.793979
+  },
+  {
+   "id": "beeri-36-56",
+   "address": "36 à 56 rue Be’eri, côté pair",
+   "before": "11 immeubles, environ 190 appartements",
+   "after": "Jusqu’à environ 500 appartements, selon l’estimation de la société",
+   "dev": "Adam Shuster",
+   "stage": "Retenue par l’appel d’offres des résidents, 3.2026",
+   "note": null,
+   "url": null,
+   "lat": 32.082169,
+   "lng": 34.79074
+  },
+  {
+   "id": "jabotinsky-135-137",
+   "address": "135 à 137 rue Jabotinsky",
+   "before": "32 appartements",
+   "after": "9 étages, 68 appartements",
+   "dev": "Africa Renewal et Bayit VeGag",
+   "stage": "Contrat de construction signé, 8.2024",
+   "note": null,
+   "url": null,
+   "lat": 32.086678,
+   "lng": 34.792064
+  },
+  {
+   "id": "jabotinsky-133",
+   "address": "133 rue Jabotinsky",
+   "before": "16 appartements",
+   "after": "9 étages, 33 appartements",
+   "dev": "Bayit VeGag",
+   "stage": "Ancien immeuble démoli, 11.2025",
+   "note": null,
+   "url": null,
+   "lat": 32.08672,
+   "lng": 34.791724
+  },
+  {
+   "id": "remez-44",
+   "address": "44 rue Remez",
+   "before": null,
+   "after": "7 étages, 25 appartements",
+   "dev": "Anshei HaIr",
+   "stage": "Permis de construire, 9.12.2025",
+   "note": null,
+   "url": null,
+   "lat": 32.090195,
+   "lng": 34.786758
+  },
+  {
+   "id": "remez-42",
+   "address": "42 rue Remez",
+   "before": null,
+   "after": "20 appartements",
+   "dev": "Anshei HaIr",
+   "stage": "Demande de permis déposée",
+   "note": null,
+   "url": null,
+   "lat": 32.089978,
+   "lng": 34.786731
+  },
+  {
+   "id": "remez-25",
+   "address": "25 rue Remez",
+   "before": null,
+   "after": "26 appartements",
+   "dev": "Anshei HaIr",
+   "stage": "Les résidents ont été relogés",
+   "note": null,
+   "url": null,
+   "lat": 32.090427,
+   "lng": 34.786879
+  },
+  {
+   "id": "lissin-27",
+   "address": "27 rue Lissin",
+   "before": "4 étages, 12 appartements",
+   "after": "7 étages, 21 appartements",
+   "dev": "Yaaz Development",
+   "stage": "Permis de construire, 7.2026",
+   "note": null,
+   "url": null,
+   "lat": 32.085498,
+   "lng": 34.793797
+  },
+  {
+   "id": "sharet-30",
+   "address": "30 rue Sharett",
+   "before": "4 étages, 11 appartements",
+   "after": "8 étages, 24 appartements",
+   "dev": "Yaaz Development",
+   "stage": "Permis de construire, 7.2026",
+   "note": null,
+   "url": null,
+   "lat": 32.086872,
+   "lng": 34.7877
+  },
+  {
+   "id": "zichron-yaakov-16",
+   "address": "16 rue Zichron Yaakov",
+   "before": "3 étages sur pilotis, 12 appartements",
+   "after": "7 étages, 26 appartements",
+   "dev": "Levinstein Group",
+   "stage": "Démolition commencée le 24.11.2024, livraison prévue au second semestre 2028",
+   "note": null,
+   "url": null,
+   "lat": 32.0839,
+   "lng": 34.791056
+  },
+  {
+   "id": "henkin-3",
+   "address": "3 rue Hankin",
+   "before": null,
+   "after": null,
+   "dev": "Noga",
+   "stage": "Projet de démolition-reconstruction",
+   "note": null,
+   "url": null,
+   "lat": 32.089057,
+   "lng": 34.78913
+  },
+  {
+   "id": "page-arlozorov",
+   "address": "Ensemble Arlozorov",
+   "before": "57 appartements",
+   "after": "248 appartements",
+   "dev": null,
+   "stage": "Plan approuvé, pas encore engagé, 2023",
+   "note": "Plan 507-0634923 · emplacement approximatif",
+   "url": "https://nad-lan.co.il/projects/%d7%90%d7%a8%d7%9c%d7%95%d7%96%d7%95%d7%a8%d7%95%d7%91/",
+   "lat": 32.084522,
+   "lng": 34.783965
+  },
+  {
+   "id": "page-dafna",
+   "address": "Ensemble Dafna",
+   "before": null,
+   "after": null,
+   "dev": null,
+   "stage": "Plan approuvé, en cours de réalisation, 2015",
+   "note": "Plan TA/3885 · emplacement approximatif",
+   "url": "https://nad-lan.co.il/projects/%d7%93%d7%a4%d7%a0%d7%94/",
+   "lat": 32.080866,
+   "lng": 34.793167
+  }
+ ],
+ "places": [
+  [
+   "edu",
+   "École",
+   "École Yehuda HaMaccabi",
+   null,
+   32.092354,
+   34.784721,
+   null
+  ],
+  [
+   "edu",
+   "École",
+   "École Miron",
+   null,
+   32.095506,
+   34.789077,
+   null
+  ],
+  [
+   "edu",
+   "École",
+   "École HaYovel",
+   null,
+   32.081162,
+   34.784987,
+   null
+  ],
+  [
+   "edu",
+   "École",
+   "Lycée Ironi Dalet",
+   null,
+   32.09303,
+   34.790944,
+   null
+  ],
+  [
+   "edu",
+   "École",
+   "Gymnase hébraïque Herzliya",
+   "106 rue Jabotinsky",
+   32.086799,
+   34.785213,
+   null
+  ],
+  [
+   "edu",
+   "École",
+   "Nouveau lycée Yitzhak Rabin",
+   null,
+   32.089814,
+   34.794635,
+   null
+  ],
+  [
+   "edu",
+   "École",
+   "Ironi Dalet, annexe",
+   null,
+   32.095587,
+   34.791848,
+   null
+  ],
+  [
+   "edu",
+   "École",
+   "Ironi Yud Alef",
+   null,
+   32.093156,
+   34.787607,
+   null
+  ],
+  [
+   "edu",
+   "Jardin d’enfants",
+   "Gan Uri",
+   null,
+   32.0817,
+   34.784569,
+   null
+  ],
+  [
+   "edu",
+   "Jardin d’enfants",
+   "Jardin d’enfants Sarah Braverman-Kaniuk",
+   null,
+   32.079776,
+   34.792357,
+   null
+  ],
+  [
+   "edu",
+   "Jardin d’enfants",
+   "Garderie Nitzanei Yuval",
+   "6 rue Bnei Dan",
+   32.095259,
+   34.784743,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Uri",
+   null,
+   32.081783,
+   34.78493,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Dubnov",
+   null,
+   32.077765,
+   34.784435,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin A.L. Zisu",
+   null,
+   32.083625,
+   34.78357,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Avraham",
+   null,
+   32.087265,
+   34.791885,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Abramovitch",
+   null,
+   32.09434,
+   34.796569,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Arison",
+   null,
+   32.080921,
+   34.787532,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Gordon",
+   null,
+   32.083058,
+   34.789785,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Germanis",
+   null,
+   32.084859,
+   34.787499,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin HaGat",
+   null,
+   32.084789,
+   34.791569,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin de la Histadrout",
+   null,
+   32.08533,
+   34.783776,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Volovelski Karni",
+   null,
+   32.081507,
+   34.794807,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Zeev",
+   null,
+   32.08054,
+   34.786236,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Zinger",
+   null,
+   32.095458,
+   34.793674,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Moshe Cohen",
+   null,
+   32.08923,
+   34.79079,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Nuri",
+   null,
+   32.091141,
+   34.786812,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Soutine",
+   null,
+   32.082412,
+   34.78616,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Polak",
+   null,
+   32.089197,
+   34.789754,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Jardin Feivel",
+   null,
+   32.084579,
+   34.793649,
+   null
+  ],
+  [
+   "parks",
+   "Parc",
+   "Boulevard David HaMelech",
+   null,
+   32.079909,
+   34.784934,
+   null
+  ],
+  [
+   "shop",
+   "Pharmacie",
+   "GOOD PHARM",
+   null,
+   32.081367,
+   34.781538,
+   null
+  ],
+  [
+   "shop",
+   "Pharmacie",
+   "GOOD PHARM",
+   "24 rue Weizmann",
+   32.083848,
+   34.789365,
+   null
+  ],
+  [
+   "shop",
+   "Pharmacie",
+   "GOOD PHARM",
+   null,
+   32.091219,
+   34.783092,
+   null
+  ],
+  [
+   "shop",
+   "Pharmacie",
+   "Super-Pharm",
+   null,
+   32.08891,
+   34.797499,
+   null
+  ],
+  [
+   "shop",
+   "Pharmacie",
+   "Super-Pharm",
+   "rue Ibn Gabirol",
+   32.086634,
+   34.782259,
+   null
+  ],
+  [
+   "shop",
+   "Pharmacie",
+   "Super-Pharm",
+   null,
+   32.079376,
+   34.781681,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Cafe Chablis",
+   null,
+   32.077374,
+   34.781522,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Cafe Henrietta",
+   null,
+   32.082941,
+   34.791636,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Cake Art",
+   null,
+   32.082899,
+   34.791857,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Jera",
+   "54A rue Ibn Gabirol",
+   32.078115,
+   34.781493,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Uno",
+   null,
+   32.07748,
+   34.789076,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "restaurant poisson Ada",
+   null,
+   32.088969,
+   34.797202,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Espresso Bar",
+   "55 rue Yehuda HaMaccabi",
+   32.093963,
+   34.790791,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Aroma",
+   "14 rue Weizmann",
+   32.081603,
+   34.789293,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Arcaffe",
+   null,
+   32.07829,
+   34.788636,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Beit Lechem",
+   "20 rue Weizmann",
+   32.083419,
+   34.789333,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Juno",
+   null,
+   32.093637,
+   34.78505,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Didoo Cafe",
+   null,
+   32.091097,
+   34.787385,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Dallal",
+   "110 rue Jabotinsky",
+   32.08726,
+   34.786339,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Zorik",
+   "4 rue Yehuda HaMaccabi",
+   32.093712,
+   34.785083,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Lucha",
+   null,
+   32.083033,
+   34.789275,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Lechem Erez",
+   null,
+   32.085838,
+   34.788497,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Landwer",
+   null,
+   32.091995,
+   34.785319,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Mitzli",
+   null,
+   32.083969,
+   34.789408,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Metuka",
+   "97 rue Arlozorov",
+   32.084953,
+   34.785356,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Safsal",
+   null,
+   32.078368,
+   34.783253,
+   null
+  ],
+  [
+   "shop",
+   "Café",
+   "Roladin",
+   null,
+   32.081659,
+   34.78975,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "7to7",
+   null,
+   32.081194,
+   34.781488,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "AM:PM",
+   "136 rue Ibn Gabirol",
+   32.088325,
+   34.782565,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "AM:PM",
+   "41 boulevard Shaul HaMelech",
+   32.077912,
+   34.790886,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "Carrefour City",
+   null,
+   32.079336,
+   34.795043,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "Carrefour Market",
+   "12 rue Lasser Uri",
+   32.081466,
+   34.785508,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "City Market",
+   null,
+   32.087741,
+   34.790891,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "Victory",
+   "53 rue Weizmann",
+   32.084928,
+   34.789193,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "Tiv Taam",
+   null,
+   32.07987,
+   34.781519,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "Tiv Taam",
+   "69 rue Yehuda HaMaccabi",
+   32.094022,
+   34.791834,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "Tiv Taam",
+   null,
+   32.090769,
+   34.783052,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "Tiv Taam in the City",
+   "149 rue Arlozorov",
+   32.083134,
+   34.792771,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "Tip Tov",
+   "17 rue Bavli",
+   32.094277,
+   34.798408,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "Mega BaIr",
+   null,
+   32.090748,
+   34.789028,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "Minimarket Linoy",
+   "2 rue Glitzenstein",
+   32.081427,
+   34.783497,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "New Market",
+   null,
+   32.084006,
+   34.788999,
+   null
+  ],
+  [
+   "shop",
+   "Supermarché",
+   "Shufersal Sheli",
+   "14 rue Weizmann",
+   32.081676,
+   34.790171,
+   null
+  ],
+  [
+   "transit",
+   "Gare routière",
+   "Terminal 2000",
+   null,
+   32.082917,
+   34.796116,
+   null
+  ],
+  [
+   "transit",
+   "Station du métro léger",
+   "Arlozorov",
+   null,
+   32.081565,
+   34.796508,
+   null
+  ],
+  [
+   "transit",
+   "Station du métro léger",
+   "Shaul HaMelech",
+   null,
+   32.076918,
+   34.792155,
+   114
+  ],
+  [
+   "transit",
+   "Gare ferroviaire",
+   "Tel Aviv Savidor Center",
+   null,
+   32.084244,
+   34.798312,
+   2
+  ]
+ ],
+ "ui": {
+  "lang": "fr",
+  "dir": "ltr",
+  "colon": " : ",
+  "chips_label": "Afficher sur la carte",
+  "wait": "Chargement de la carte",
+  "reset": "Revenir à la vue d’ensemble",
+  "close": "Fermer",
+  "list": "Tous les projets et lieux de la carte",
+  "fail": "La carte n’est pas disponible pour le moment. Voici les lieux qu’elle présente :",
+  "osm": "© OpenStreetMap contributors",
+  "chips": {
+   "projects": "Projets",
+   "renewal": "Renouvellement urbain",
+   "edu": "Écoles et jardins d’enfants",
+   "parks": "Parcs",
+   "shop": "Commerces",
+   "transit": "Transports"
+  },
+  "js": {
+   "proj": "Projet",
+   "ren": "Renouvellement urbain",
+   "before": "Avant",
+   "after": "Après",
+   "newb": "Dans le nouvel immeuble",
+   "dev": "Promoteur : ",
+   "stage": "Étape : ",
+   "to_p": "Voir la page du projet",
+   "to_c": "Voir la page de l’ensemble",
+   "edge": "En bordure du quartier",
+   "key": "Limites du quartier, approximatives",
+   "lrt": "métro léger",
+   "cats": {
+    "projects": "Projet",
+    "renewal": "Renouvellement urbain",
+    "edu": "Écoles et jardins d’enfants",
+    "parks": "Parcs",
+    "shop": "Commerces",
+    "transit": "Transports"
+   },
+   "loc": {
+    "CooperativeGesturesHandler.WindowsHelpText": "Pour zoomer : Ctrl et la molette de la souris",
+    "CooperativeGesturesHandler.MacHelpText": "Pour zoomer : ⌘ et la molette de la souris",
+    "CooperativeGesturesHandler.MobileHelpText": "Deux doigts pour déplacer la carte",
+    "NavigationControl.ZoomIn": "Zoom avant",
+    "NavigationControl.ZoomOut": "Zoom arrière",
+    "NavigationControl.ResetBearing": "Revenir au nord",
+    "AttributionControl.ToggleAttribution": "Crédits",
+    "Map.Title": "Carte",
+    "Marker.Title": "Repère",
+    "Popup.Close": "Fermer"
+   }
+  },
+  "plural": {
+   "École": "Écoles",
+   "Jardin d’enfants": "Jardins d’enfants",
+   "Parc": "Parcs",
+   "Pharmacie": "Pharmacies",
+   "Café": "Cafés",
+   "Supermarché": "Supermarchés",
+   "Gare routière": "Gares routières",
+   "Station du métro léger": "Stations du métro léger",
+   "Gare ferroviaire": "Gares ferroviaires"
+  }
+ }
+}

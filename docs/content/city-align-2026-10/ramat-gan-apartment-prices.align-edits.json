@@ -1,0 +1,767 @@
+{
+ "generated": "7.10.2026",
+ "page": {
+  "id": 4570,
+  "slug": "ramat-gan-apartment-prices",
+  "link": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
+  "modified": "2026-10-07T13:30:59"
+ },
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages?slug=ramat-gan-apartment-prices&_fields=id,link,title,content,modified (content.rendered), public, retrieved 2026-10-07 10:34:37 UTC, 69,155 characters. The price-list section (<section id=\"nlpg\">, the [nadlan_price_guide] shortcode), <script> and <style> are outside the audit.",
+ "facts": "scripts/project-stage/price_guide/cities/ramat-gan-apartment-prices.json (official medians from data.nadlan.gov.il; source_keys are JSON paths in that file: rooms.<k>.latest, rooms.<k>.year_ago, rooms.<k>.change_pct, rooms.<k>.quarters[<q>], israel.<k>, neighbourhoods[<name>].rooms.<k>; 'page' = a number kept from the page's own text)",
+ "apply_rules": [
+  "Apply in the listed order on the RAW content (context=edit). Every \"old\" matches content.rendered exactly once at its turn (matches_in_live), except \"replace_all\" entries, which match exactly \"expect_matches\" times.",
+  "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
+  "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
+  "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+ ],
+ "claims_summary": {
+  "claims": {
+   "CONFLICT": 0,
+   "STALE": 0,
+   "UNSOURCED": 31,
+   "CONSISTENT": 10
+  },
+  "figures": {
+   "CONFLICT": 0,
+   "STALE": 0,
+   "UNSOURCED": 91,
+   "CONSISTENT": 10
+  },
+  "edits": 12,
+  "tier1": 5,
+  "tier2": 7
+ },
+ "notes": "Not audited as claims (illustrations or structure): the 3,450,000 / 2,900,000 illustration (p@43467), m2 definitions (p@42678, p@45343), the if-example 2,850,000-3,050,000 vs 3,250,000 (p@65332), step counts (6-12 deals, 10-20 listings), 90 days, 12-48 months. The city 'average about 3,200,000' (dated market data, 5.6.2026) is within 2.5% of the official all-rooms median 3,122,300 and is kept; the 3/4/5-room working ranges contain the official medians and are kept; only the 1-room, 2-room and 6+-room cells lose their numbers, the rows stay. Rent figures are kept (listing data, June 2026, 520 listings). Tier 2 = seven edits of 'other' figures with no named source (19.5% district share, renovation 150,000-500,000 twice, second-hand discount 5%-20%, per-m2 30,000-38,000 / 40,000-55,000, 3%-8% negotiation gap). The 9 remaining SUSPECT lines after the edits are all individual deals dated March 2026 in the deals table: Smadar 3 5,306,190 (8.3.2026; in p@47648 and its table row), Masada 27 4,150,000, Moshe Dayan 26 2,560,000, Uziel 93 2,950,000, Gershom 11 3,150,000, Sderot Yerushalayim 97 2,900,000, Tarpab 14 3,018,000 (table row and FAQ p@66281). Name mapping: page 'נחלת גנים', 'חרוזים', 'יד לבנים', 'מתחם נגבה' = official names exactly; the page's 'מרכז העיר' was NOT mapped to the official 'מרכז העיר א' (a sub-area), so it is not quoted.",
+ "claims": [
+  {
+   "id": 1,
+   "where": "p@4318",
+   "quote": "בדיקת נתוני שוק גלויים מ-5 ביוני 2026: ממוצע סביב 3,200,000 ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 3,122,300 (1-3.2026), +2.5%",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent, dated 5.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 2,
+   "where": "p@4318",
+   "quote": "מחיר ממוצע סביב 36,000 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (public market data, dated 5.6.2026 in the sentence)",
+   "note": ""
+  },
+  {
+   "id": 3,
+   "where": "p@41493",
+   "quote": "שכירות חציונית 6,000, ממוצעת 6,411; 2 חדרים 4,896, 3 חדרים 6,486, 4 חדרים 7,736",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 5,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data, June 2026, 520 listings, p@52482)",
+   "note": ""
+  },
+  {
+   "id": 4,
+   "where": "p@42110",
+   "quote": "ממוצע כללי סביב 3,200,000 ש\"ח (5.6.2026)",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 3,122,300 (1-3.2026), +2.5%",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent, dated)",
+   "note": ""
+  },
+  {
+   "id": 5,
+   "where": "p@42110",
+   "quote": "מחיר ממוצע סביב 36,000 ש\"ח למ\"ר (5.6.2026)",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (public market data, dated 5.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 6,
+   "where": "p@42110",
+   "quote": "שכירות סביב 6,000-6,500 ש\"ח בחציון או בממוצע",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data, June 2026)",
+   "note": ""
+  },
+  {
+   "id": 7,
+   "where": "p@43101",
+   "quote": "3,787 דירות ובתים למכירה; 2,418 עסקאות בדף עסקאות",
+   "measure": "count",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (counts, not prices; market pages, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 8,
+   "where": "tr@43937",
+   "quote": "מחיר ממוצע כללי | כ-3,200,000 ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 3,122,300 (1-3.2026), +2.5%",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent)",
+   "note": ""
+  },
+  {
+   "id": 9,
+   "where": "tr@44102",
+   "quote": "מחיר ממוצע למ\"ר | כ-36,000 ש\"ח",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (public market data, 5.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 10,
+   "where": "tr@44266..44427",
+   "quote": "שכירות חציונית כ-6,000; שכירות ממוצעת כ-6,411",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data, June 2026)",
+   "note": ""
+  },
+  {
+   "id": 11,
+   "where": "tr@44584..44909",
+   "quote": "520 מודעות שכירות; 3,787 נכסים למכירה; 2,418 עסקאות",
+   "measure": "count",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (counts, not prices; page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 12,
+   "where": "tr@45077",
+   "quote": "חלק מחוז תל אביב במלאי הדירות בישראל | 19.5%",
+   "measure": "other",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 1",
+   "note": "no named source; tier 2"
+  },
+  {
+   "id": 13,
+   "where": "tr@46130",
+   "quote": "1 חדר | כ-1,300,000 עד 2,000,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "1",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": "no official 1-room series"
+  },
+  {
+   "id": 14,
+   "where": "tr@46380",
+   "quote": "2 חדרים | כ-1,790,000 עד 2,500,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 3",
+   "note": "no official 2-room series"
+  },
+  {
+   "id": 15,
+   "where": "tr@46628",
+   "quote": "3 חדרים | כ-2,300,000 עד 3,200,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "2,701,700 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent)",
+   "note": ""
+  },
+  {
+   "id": 16,
+   "where": "tr@46870",
+   "quote": "4 חדרים | כ-2,560,000 עד 4,100,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "3,330,400 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent)",
+   "note": ""
+  },
+  {
+   "id": 17,
+   "where": "tr@47128",
+   "quote": "5 חדרים | כ-3,900,000 עד 6,000,000 ש\"ח ומעלה",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "4,636,200 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent)",
+   "note": ""
+  },
+  {
+   "id": 18,
+   "where": "tr@47381",
+   "quote": "6 חדרים ומעלה | כ-5,500,000 ש\"ח ומעלה",
+   "measure": "sale",
+   "rooms": "6",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 4",
+   "note": "no official 6+-room series"
+  },
+  {
+   "id": 19,
+   "where": "tr@46130..47381",
+   "quote": "עמודת שכירות שוק: 3,368 / 4,896 / 6,486 / 7,736 / 10,209 / 12,279",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data, June 2026)",
+   "note": ""
+  },
+  {
+   "id": 20,
+   "where": "p@47648",
+   "quote": "עסקאות: המעגל 37 1,790,000 (19.3.2026), גרשום 7 2,580,000 (15.3.2026), שד' ירושלים 97 2,900,000 (8.3.2026), סמדר 3 5,306,190",
+   "measure": "deal",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual dated deals, March 2026)",
+   "note": "Smadar 3 is dated 8.3.2026 in the deals table"
+  },
+  {
+   "id": 21,
+   "where": "tr@49125..51674",
+   "quote": "טבלת שכירות לפי אזור (13 שורות)",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 13,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (observed listings, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 22,
+   "where": "p@51897",
+   "quote": "ממוצעי רחוב: רפאל איתן 3,741,942 ... תל חי 3,374,473 (9 רחובות)",
+   "measure": "sale_street",
+   "rooms": "",
+   "figures": 9,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 5",
+   "note": "unnamed market pages, no period, no room count"
+  },
+  {
+   "id": 23,
+   "where": "p@52482",
+   "quote": "שכירות מיוני 2026: חציון 6,000, ממוצע 6,411, 520 מודעות; ארצי 4,400",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data, dated June 2026)",
+   "note": ""
+  },
+  {
+   "id": 24,
+   "where": "tr@53111..53967",
+   "quote": "טבלת שכירות לפי חדרים (6 שורות)",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data, June 2026)",
+   "note": ""
+  },
+  {
+   "id": 25,
+   "where": "tr@55192..57322",
+   "quote": "טבלת עסקאות (10 עסקאות, 1.3-19.3.2026)",
+   "measure": "deal",
+   "rooms": "",
+   "figures": 10,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual dated deals, March 2026)",
+   "note": ""
+  },
+  {
+   "id": 26,
+   "where": "p@58225",
+   "quote": "שיפוץ של 150,000-500,000 ש\"ח",
+   "measure": "other",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": "tier 2"
+  },
+  {
+   "id": 27,
+   "where": "tr@58867",
+   "quote": "מחיר כולל יד שנייה | לעיתים נמוך ב-5%-20%",
+   "measure": "sale_new_used",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 7",
+   "note": "tier 2"
+  },
+  {
+   "id": 28,
+   "where": "tr@59084",
+   "quote": "מחיר למ\"ר | יד שנייה 30,000-38,000 | חדשה 40,000-55,000 ומעלה",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 8",
+   "note": "also edit 9; tier 2"
+  },
+  {
+   "id": 29,
+   "where": "tr@59353",
+   "quote": "שיפוץ | עלול לדרוש 150,000-500,000 ש\"ח",
+   "measure": "other",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 10",
+   "note": "tier 2"
+  },
+  {
+   "id": 30,
+   "where": "p@65692",
+   "quote": "FAQ ממוצע: סביב 3,200,000 ש\"ח (5.6.2026)",
+   "measure": "sale_avg",
+   "rooms": "",
+   "figures": 1,
+   "official": "all rooms 3,122,300 (1-3.2026), +2.5%",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent, dated)",
+   "note": ""
+  },
+  {
+   "id": 31,
+   "where": "p@65992",
+   "quote": "FAQ: מחיר ממוצע סביב 36,000 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (public market data, dated 5.6.2026 in the body)",
+   "note": ""
+  },
+  {
+   "id": 32,
+   "where": "p@66281",
+   "quote": "FAQ 3 חדרים: כ-2,300,000 עד 3,200,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "2,701,700 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent)",
+   "note": ""
+  },
+  {
+   "id": 33,
+   "where": "p@66281",
+   "quote": "FAQ 3 חדרים: עסקאות 2,580,000 (75 מ\"ר) ו-3,018,000 (92 מ\"ר)",
+   "measure": "deal",
+   "rooms": "3",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual deals dated in the deals table, March 2026)",
+   "note": ""
+  },
+  {
+   "id": 34,
+   "where": "p@66542",
+   "quote": "FAQ 4 חדרים: כ-2,560,000 עד 4,100,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "3,330,400 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 11",
+   "note": "range kept inside the rewrite"
+  },
+  {
+   "id": 35,
+   "where": "p@66542",
+   "quote": "FAQ 4 חדרים: במקרים יקרים גם מעל 5,000,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "3,330,400 (1-3.2026)",
+   "verdict": "UNSOURCED",
+   "action": "edit 11",
+   "note": "a tail statement, now tied to the dated Smadar 3 deal"
+  },
+  {
+   "id": 36,
+   "where": "p@66542",
+   "quote": "FAQ 4 חדרים: עסקאות 2,560,000 / 2,900,000 / 3,150,000 / 5,306,190",
+   "measure": "deal",
+   "rooms": "4",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (individual deals dated in the deals table)",
+   "note": ""
+  },
+  {
+   "id": 37,
+   "where": "p@66849",
+   "quote": "FAQ 5 חדרים: סביב 3,900,000-6,000,000 ש\"ח ומעלה",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "4,636,200 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "keep (consistent)",
+   "note": ""
+  },
+  {
+   "id": 38,
+   "where": "p@67140",
+   "quote": "FAQ שכירות: 9,090 ברמת חן, 10,775 ברמת אפעל, 11,890 בקריניצי",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (observed listings, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 39,
+   "where": "p@67431",
+   "quote": "FAQ שכירות באזור הבורסה סביב 6,793",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (observed listings, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 40,
+   "where": "p@67733",
+   "quote": "FAQ: פער של 3%-8% בין מחיר מבוקש למחיר סביר",
+   "measure": "other",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 12",
+   "note": "tier 2"
+  },
+  {
+   "id": 41,
+   "where": "p@68429",
+   "quote": "FAQ: שכירות בעיר סביב 6,000-6,411",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data, June 2026)",
+   "note": ""
+  }
+ ],
+ "edits": [
+  {
+   "page_id": 4570,
+   "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
+   "field": "content",
+   "old": "19.5%",
+   "new": "נתח ניכר מהמלאי הארצי",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "A 19.5% share of the Tel Aviv district in the national housing stock with no named source or period; rephrased without the number.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 1,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4570,
+   "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
+   "field": "content",
+   "old": "כ-1,300,000 עד 2,000,000 ש\"ח",
+   "new": "אין חציון רשמי לדירות חדר אחד; משווים לעסקאות דומות ברחוב ובשכונה",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "1-room working range with no named source; the official list covers 3, 4 and 5 rooms only. The row stays (area, rent, checks).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 2,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4570,
+   "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
+   "field": "content",
+   "old": "כ-1,790,000 עד 2,500,000 ש\"ח",
+   "new": "אין חציון רשמי לדירות 2 חדרים; משווים לעסקאות דומות ברחוב ובשכונה",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "2-room working range with no named source (its floor is one dated deal, HaMaagal 37); no official 2-room series. The row stays.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 3,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4570,
+   "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
+   "field": "content",
+   "old": "כ-5,500,000 ש\"ח ומעלה",
+   "new": "אין חציון רשמי לדירות 6 חדרים ומעלה; משווים לעסקאות דומות ברחוב ובשכונה",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "6+-room floor with no named source; no official 6+-room series. The row stays.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 4,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4570,
+   "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
+   "field": "content",
+   "old": "במחירי מכירה לפי רחובות, דפי שוק שנבדקו הציגו לדוגמה 192 עסקאות ברחוב רפאל איתן עם ממוצע 3,741,942 ש\"ח, 46 עסקאות בהרואה עם ממוצע 2,276,934 ש\"ח, 41 עסקאות בהטייסים עם ממוצע 4,022,487 ש\"ח, 38 עסקאות בז'בוטינסקי עם ממוצע 3,131,447 ש\"ח, 27 עסקאות בקריניצי עם ממוצע 2,318,185 ש\"ח, 22 עסקאות באבא הלל עם ממוצע 2,353,174 ש\"ח, 21 עסקאות בעוזיאל עם ממוצע 2,510,619 ש\"ח, 20 עסקאות בהרצל עם ממוצע 2,243,300 ש\"ח ו-19 עסקאות בתל חי עם ממוצע 3,374,473 ש\"ח. רחוב ממוצע אינו מספיק: צריך להבין אילו דירות יצרו את הממוצע.",
+   "new": "במחירי מכירה לפי שכונה, לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 4 חדרים היה 3,014,100 ש\"ח במתחם נגבה, 3,133,700 ש\"ח בנחלת גנים, 3,231,300 ש\"ח ביד לבנים ו-3,991,600 ש\"ח בחרוזים. גם ממוצע של רחוב אינו מספיק: צריך להבין אילו דירות יצרו אותו, ולהשוות לעסקאות דומות באותו רחוב.",
+   "source_keys": [
+    "neighbourhoods[מתחם נגבה].rooms.4",
+    "neighbourhoods[נחלת גנים].rooms.4",
+    "neighbourhoods[יד לבנים].rooms.4",
+    "neighbourhoods[חרוזים].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Nine street averages (192/46/41/38/27/22/21/20/19 deals) from unnamed market pages, no period, no room count, mixed property types; replaced by official 4-room neighbourhood medians (1-3.2026) for four neighbourhoods the page names.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 5,
+   "raw_risk": [
+    "straight double quote",
+    "apostrophe"
+   ]
+  },
+  {
+   "page_id": 4570,
+   "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
+   "field": "content",
+   "old": "דירת יד שנייה יכולה להיות זולה יותר במחיר הכולל, אך לדרוש שיפוץ של 150,000-500,000 ש\"ח ולעיתים גם התאמות תשתית.",
+   "new": "דירת יד שנייה יכולה להיות זולה יותר במחיר הכולל, אך לדרוש שיפוץ יקר ולעיתים גם התאמות תשתית, ואת עלות השיפוץ כדאי לתמחר מראש לפי הצעות מחיר.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Renovation cost 150,000-500,000 with no source or period; rephrased without the number.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 6,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4570,
+   "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
+   "field": "content",
+   "old": "לעיתים נמוך ב-5%-20%",
+   "new": "לעיתים נמוך יותר מדירה חדשה דומה",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Second-hand discount 5%-20% with no source or period; rephrased without the percentages.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 7,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4570,
+   "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
+   "field": "content",
+   "old": "עשוי להיות סביב 30,000-38,000 ש\"ח באזורים רבים",
+   "new": "לרוב נמוך יותר מדירה חדשה באותו אזור",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Second-hand per-m2 range 30,000-38,000 with no source or period (the dated city figure of 36,000 per m2 stays elsewhere); rephrased.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 8,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4570,
+   "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
+   "field": "content",
+   "old": "עשוי להגיע ל-40,000-55,000 ש\"ח ומעלה בפרויקטים חזקים",
+   "new": "עשוי להיות גבוה בהרבה בפרויקטים חזקים",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "New-flat per-m2 range 40,000-55,000 with no source or period; rephrased without the numbers.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 9,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4570,
+   "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
+   "field": "content",
+   "old": "עלול לדרוש 150,000-500,000 ש\"ח",
+   "new": "עלול לדרוש השקעה משמעותית",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Renovation cost 150,000-500,000 (table) with no source; rephrased without the number.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 10,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4570,
+   "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
+   "field": "content",
+   "old": "בדיקת עבודה לדירות 4 חדרים מצביעה על טווח רחב של כ-2,560,000 עד 4,100,000 ש\"ח, ובמקרים יקרים יותר גם מעל 5,000,000 ש\"ח.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 4 חדרים ברמת גן ברבעון הראשון של 2026 היה 3,330,400 ש\"ח, ובדיקת עבודה מצביעה על טווח רחב של כ-2,560,000 עד 4,100,000 ש\"ח. בדירות יקרות במיוחד המחיר עובר לעיתים גם את 5,000,000 ש\"ח, כמו בעסקה ברחוב סמדר 3 במרץ 2026.",
+   "source_keys": [
+    "rooms.4.latest",
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ 4 rooms: the working range is consistent with the official median 3,330,400 (1-3.2026), which now leads the answer; the undated 'above 5,000,000 in expensive cases' is tied to the one dated deal that supports it (Smadar 3, 8.3.2026, 5,306,190).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 11,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4570,
+   "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
+   "field": "content",
+   "old": "לעיתים פער של 3%-8% בין מחיר מבוקש למחיר סביר יכול להיות תוצאה של משא ומתן, ולעיתים הפער גדול יותר.",
+   "new": "לעיתים פער של כמה אחוזים בין מחיר מבוקש למחיר סביר הוא תוצאה של משא ומתן, ולעיתים הפער גדול יותר.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Asking-to-closing gap 3%-8% with no source or period; rephrased without the percentages.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 12,
+   "raw_risk": []
+  }
+ ],
+ "live_recheck": {
+  "retrieved_utc": "2026-10-07 11:19:08",
+  "modified": "2026-10-07T13:30:59",
+  "audited_copy_modified": "2026-10-07T13:30:59",
+  "price_list_on_page": true,
+  "body_outside_list_identical_to_audited_copy": "yes",
+  "dry_run": "12 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ }
+}

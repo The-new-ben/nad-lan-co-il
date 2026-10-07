@@ -1,0 +1,735 @@
+{
+ "retrieved_utc": "2026-10-07 11:28:14",
+ "pages": {
+  "/ar/brokers/": {
+   "status": 404,
+   "title": [],
+   "h1": [],
+   "h2": []
+  },
+  "/ar/buy-property-in-israel/": {
+   "status": 404,
+   "title": [],
+   "h1": [],
+   "h2": []
+  },
+  "/ar/developer-deals/": {
+   "status": 404,
+   "title": [],
+   "h1": [],
+   "h2": []
+  },
+  "/ar/guides/": {
+   "status": 200,
+   "title": [
+    "أدلة المشتري | NadLan"
+   ],
+   "h1": [
+    "أدلة المشتري"
+   ],
+   "h2": []
+  },
+  "/ar/new-projects/": {
+   "status": 200,
+   "title": [
+    "مشاريع سكنية جديدة في إسرائيل: دليل المشتري"
+   ],
+   "h1": [
+    "مشاريع سكنية جديدة في إسرائيل: الدليل الكامل للمشتري"
+   ],
+   "h2": [
+    "المشاريع الرائدة في الكتالوج",
+    "كيف تبحث عن شقق جديدة للبيع في إسرائيل",
+    "ما معنى شراء شقة على المخطط أو شقة قيد الإنشاء",
+    "قاموس المشتري: مصطلحات عقارية إسرائيلية لا تترجم حرفيا",
+    "اختيار المدينة والحي والقطعة",
+    "التكلفة الحقيقية للشقة الجديدة حتى أغسطس 2026",
+    "شراء غير المقيمين والشراء عن بعد",
+    "مصدر الأموال والبنوك والامتثال",
+    "فحص المطور والمقاول والأرض والرخصة",
+    "المرافقة المالية وضمان أموال المشتري وفق Chok HaMecher",
+    "العقد والمواصفات: ما يلزم البائع وما يبقى إعلانا",
+    "جدول الدفعات وMadad والرهن العقاري",
+    "كيف تفحص المشروع كما يفحص مسافر خبير فندقا",
+    "50 سؤالا للمقاول أو المطور قبل شراء شقة جديدة",
+    "مسار شراء شقة من المقاول في 12 خطوة",
+    "تغييرات المشتري والترقيات والأرصدة",
+    "الإشغال والتسليم وفحص الشقة الجديدة",
+    "فترات Bedek والضمان وإدارة العيوب",
+    "تأخر تسليم شقة من المقاول والتعويض",
+    "شقة جديدة من المقاول أم شقة مستعملة",
+    "أنواع الوحدات والمشاريع",
+    "ما قبل البيع أم أثناء البناء أم إشغال فوري",
+    "شراء شقة جديدة للاستثمار",
+    "إشارات خطر تستوجب التوقف",
+    "كيف تبني مقارنة نهائية بين ثلاثة مشاريع",
+    "التسجيل بعد الاستلام: المفاتيح ليست نهاية الصفقة",
+    "اختبار القرار في 10 نقاط",
+    "أسئلة شائعة عن مشاريع سكنية جديدة في إسرائيل",
+    "المصادر الرسمية وتاريخ التحديث وإخلاء المسؤولية"
+   ]
+  },
+  "/brokers/": {
+   "status": 200,
+   "title": [
+    "אתר למתווך נדל״ן בחינם | עמוד לכל נכס בעברית ובאנגלית"
+   ],
+   "h1": [
+    "מתווכי נדל״ן"
+   ],
+   "h2": [
+    "מתווכים בתל אביב יפו 50",
+    "מתווכים בירושלים 30",
+    "מתווכים בהרצליה 15",
+    "מתווכים באילת 10",
+    "מתווכים בכפר שמריהו 5",
+    "מתווכים בסביון 5",
+    "מתווכים בקיסריה 5",
+    "אתר למתווכים ולמשרדי תיווך, בחינם",
+    "מה מקבלים",
+    "איך מעלים נכס",
+    "מה כתוב בעמוד, ומה לא",
+    "עומד בתקנות האתיקה החדשות",
+    "המסלולים",
+    "למה עמוד משלכם, ולא רק מודעה בלוח",
+    "קונים שמחפשים בשפה אחרת",
+    "מה לכתוב בהודעה, כדי שהעמוד ייצא מלא",
+    "חמישה כללים לצילום נכס בטלפון",
+    "מתווך נדל״ן בישראל: מה החוק אומר, בקצרה",
+    "שאלות נפוצות",
+    "פותחים אתר, בחינם"
+   ]
+  },
+  "/developer-deals/": {
+   "status": 200,
+   "title": [
+    "מבצעי קבלנים 2026: 20/80, 10/90, מכרזי דירות וההנחות שבאמת שוות כסף - נדלן"
+   ],
+   "h1": [
+    "מבצעי קבלנים 2026: 20/80, 10/90, מכרזי דירות וההנחות שבאמת שוות כסף"
+   ],
+   "h2": [
+    "למה הקבלנים מעדיפים לתת כמעט הכול, חוץ מהנחה ברורה?",
+    "מחיר כלכלי של דירה מקבלן: הנוסחה שהשלט במשרד המכירות לא יציג",
+    "20/80, 10/90 ו-15/85: אותו רעיון, רמות סיכון שונות",
+    "הלוואת קבלן: היזם משלם את הריבית, החוב נשאר שלכם",
+    "פטור ממדד תשומות הבנייה: ההטבה המשעממת שיכולה להיות שווה הרבה כסף",
+    "מפת המבצעים הגדולה: פרויקטים, מחירים ותנאים שפורסמו ב-2025 וב-2026",
+    "המכרז של פרשקובסקי: eBay לדירות, אבל בלי לראות את ההצעות",
+    "גינדי VOGUE בשדה דב: כשהמבצע באמת נוגע במחיר",
+    "אזורים 10-0: מיליון שקל היום, מיליון שקל בעוד עשר שנים",
+    "LOV לוד: להתחיל לשלם אחרי שנכנסים",
+    "היזם משלם לכם שכירות: גינדי גליל ים ו-YTOWN",
+    "טרייד אין של אב-גד: למכור דירה כמו שמחליפים מכונית",
+    "משכנתה בריבית 0.99%: אביב מליסרון והאותיות שמאחורי המספר",
+    "אאורה \"דירה בביטחון\": ביטוח מחיר או סיסמה?",
+    "Rent-to-Own במבשרת ציון: שכירות שהיא גם אופציה",
+    "פטור מדמי ניהול, ריהוט ומטבח מתנה: מתי זה כסף ומתי זה קונפטי?",
+    "פסיליטיז: הבריכה ניתנת במתנה, חשבון התחזוקה נשאר לגור איתכם",
+    "מהו Value for Money בדירה חדשה?",
+    "השוואה משונה אבל שימושית: מבצע דירה מול מבצעים מעולמות אחרים",
+    "מי צריך לבחור איזה מבצע?",
+    "מתי מבצע הוא סימן ללחץ בפרויקט?",
+    "ביטולי העסקאות: החשבון של 2023 מגיע ב-2026",
+    "12 הבדיקות שצריך לעשות לפני שנכנסים למשרד המכירות",
+    "איך מנהלים מו\"מ עם יזם ב-2026?",
+    "ישראל מול העולם: המבצעים שונים, הבעיה דומה",
+    "דירוג המבצעים: מה הכי טוב, מה תלוי ומה מסוכן?",
+    "טבלת התאמה סופית",
+    "שאלות נפוצות על מבצעי קבלנים 2026",
+    "השורה התחתונה: אל תקנו את המבצע, קנו את הדירה במחיר הכלכלי הנכון"
+   ]
+  },
+  "/en/brokers/": {
+   "status": 200,
+   "title": [
+    "Broker Minisites | Your Real Estate Site Inside nad-lan"
+   ],
+   "h1": [
+    "Minisites for Real Estate Brokers and Agencies"
+   ],
+   "h2": [
+    "What is included",
+    "Why it works",
+    "Plans",
+    "How it works",
+    "Open your site, free"
+   ]
+  },
+  "/en/buy-property-in-israel/": {
+   "status": 200,
+   "title": [
+    "Buying Property in Israel from Abroad: A Family Home Guide"
+   ],
+   "h1": [
+    "Buying a Family Home in Israel from Abroad"
+   ],
+   "h2": [
+    "Contents",
+    "What the home must do for your family",
+    "Agree the family decision and use plan",
+    "Choose the location around actual routines",
+    "New construction versus an existing apartment",
+    "What photographs, plans, video and illustrative 3D can tell you",
+    "Build a cost and funding plan that survives absence",
+    "Appoint independent help and define document questions",
+    "A staged shortlist and go/hold/decline decision",
+    "Ownership while living abroad",
+    "Buyer FAQs",
+    "Your next practical step"
+   ]
+  },
+  "/en/developer-deals/": {
+   "status": 200,
+   "title": [
+    "Israel Developer Deals 2026: 20/80, 10/90, Apartment Auctions and Discounts That Actually Save Money | NadLan"
+   ],
+   "h1": [
+    "Israel Developer Deals 2026: 20/80, 10/90, Apartment Auctions and Discounts That Actually Save Money"
+   ],
+   "h2": [
+    "What Foreign Buyers Are Really Searching For",
+    "Why Developers Prefer Almost Every Incentive Except a Clear Price Cut",
+    "The Real Economic Price of an Israeli New-Build Apartment",
+    "20/80, 10/90, 15/85 and 5/95: One Idea, Different Levels of Risk",
+    "Developer Loans: The Developer Pays the Interest, but the Debt May Be Yours",
+    "The Construction Input Index: An Unglamorous Benefit That Can Save Real Money",
+    "The 2026 Developer Deal Map: Projects, Prices and Published Terms",
+    "Prashkovsky's Apartment Auction: eBay for Homes, Except You Cannot See the Other Bids",
+    "Gindi VOGUE in Sde Dov: When the Promotion Actually Changes the Price",
+    "Azorim 10-0: NIS 1 Million Today, NIS 1 Million Ten Years Later",
+    "LOV Lod: Begin Paying After You Move In",
+    "When the Developer Pays Your Rent: Gindi Glil Yam and YTOWN",
+    "Av-Gad Trade-In: Selling an Apartment the Way You Exchange a Car",
+    "A 0.99% Mortgage: The Number Behind the Headline",
+    "Aura's “Apartment with Confidence”: Price Insurance or Marketing Language?",
+    "Rent-to-Own in Mevaseret Zion: Renting as an Option to Buy",
+    "Purchase Tax for Foreign Buyers: The Cost the Payment Plan Does Not Postpone",
+    "Israel's Major Developer Campaigns: The 2025 to 2026 Map",
+    "The Prashkovsky Apartment Auction: Israeli Real Estate Meets Sealed-Bid Psychology",
+    "Gindi VOGUE in Sde Dov: When the Promotion Actually Changes the Price",
+    "Azorim 10-0: NIS 1 Million Today, NIS 1 Million in Ten Years",
+    "LOV Lod: Begin Paying After You Move In",
+    "The Developer Pays Your Rent: Gindi Glil Yam and YTOWN",
+    "Av-Gad Trade-In: Exchanging an Israeli Apartment Like a Car, Except the Numbers Are Larger",
+    "Aviv Melisron and the 0.99% Mortgage Headline",
+    "Aura Price Protection: Insurance Against a Falling Market?",
+    "Rent-to-Own in Mevaseret Zion: A Home with a Trial Period",
+    "Free Management Fees, Furniture and a Complimentary Kitchen: Money or Confetti?",
+    "Amenities: The Pool Is Included, the Operating Bill Moves In With You",
+    "What Does Value for Money Mean in an Israeli New Development?",
+    "Which Israeli City Gives a Foreign Buyer the Best Value?",
+    "Strange but Useful Comparisons",
+    "Which Buyer Should Choose Which Promotion?",
+    "When Is a Promotion a Sign of Pressure in the Project?",
+    "Deal Cancellations: The Bill for 2023 Is Arriving in 2026",
+    "Buying an Apartment in Israel from Abroad: The Due-Diligence Sequence",
+    "The 2026 Developer Deal Map: Projects, Prices and Published Terms",
+    "Prashkovsky’s Apartment Auction: eBay for Homes, Except You Cannot See the Other Bids",
+    "Gindi VOGUE in Sde Dov: When the Promotion Actually Changes the Price",
+    "Azorim 10-0: NIS 1 Million Today, NIS 1 Million Ten Years Later",
+    "LOV Lod: Begin Paying After You Move In",
+    "When the Developer Pays Your Rent: Gindi Glil Yam and YTOWN",
+    "Av-Gad Trade-In: Selling an Apartment the Way You Exchange a Car",
+    "A 0.99% Mortgage: The Number Behind the Headline",
+    "Aura’s Price Protection: Insurance or Marketing Language?",
+    "Rent-to-Own in Mevaseret Zion: Renting as an Option to Buy",
+    "Free Management Fees, Furniture and a Complimentary Kitchen: Money or Confetti?",
+    "Amenities: The Pool Is Included, the Operating Bill Moves In With You",
+    "What Does Value for Money Mean in an Israeli New Development?",
+    "Which Israeli City Gives a Foreign Buyer the Best Value?",
+    "Strange but Useful Comparisons",
+    "Which Buyer Should Choose Which Promotion?",
+    "When Is a Promotion a Sign of Pressure in the Project?",
+    "Deal Cancellations: The Bill for 2023 Is Arriving in 2026",
+    "Buying an Apartment in Israel from Abroad: The Due-Diligence Sequence",
+    "Fifteen Checks Before an Overseas Buyer Enters the Sales Office",
+    "How to Negotiate with an Israeli Developer in 2026",
+    "Israel Compared with Developer Incentives Abroad",
+    "Ranking Israeli Developer Incentives",
+    "Final Buyer-Fit Table",
+    "Frequently Asked Questions",
+    "The Bottom Line: Do Not Buy the Promotion",
+    "Furniture, Kitchens and Turnkey Apartments: Useful for Foreign Buyers, but Only at Personal Value",
+    "Amenities: The Pool Is Included, the Operating Bill Moves In With You",
+    "What Does Value for Money Mean in an Israeli New Development?",
+    "Which Israeli City Gives a Foreign Buyer the Best Value?",
+    "Strange Comparisons That Make Developer Deals Easier to Understand",
+    "Which Campaign Suits Which Foreign Buyer?",
+    "When a Campaign Signals Pressure in the Project",
+    "Cancellations: The Bill from the Early Payment-Plan Boom Is Arriving",
+    "Buying an Apartment in Israel from Abroad: The Due-Diligence Sequence",
+    "Fifteen Checks Before an Overseas Buyer Enters the Sales Office",
+    "How to Negotiate with an Israeli Developer in 2026",
+    "Israel Versus Other Markets: Different Incentives, the Same Problem",
+    "Ranking Israeli Developer Incentives",
+    "Final Buyer-Matching Table",
+    "Fifteen Checks Before an Overseas Buyer Enters the Sales Office",
+    "How to Negotiate with an Israeli Developer in 2026",
+    "Israel Compared with Developer Incentives Abroad",
+    "Final Ranking: Which Incentives Are Strongest?",
+    "Final Buyer-Fit Table",
+    "Frequently Asked Questions",
+    "The Bottom Line: Do Not Buy the Promotion",
+    "Frequently Asked Questions About Israel Developer Deals in 2026",
+    "The Bottom Line: Do Not Buy the Promotion, Buy the Right Apartment at the Right Economic Price"
+   ]
+  },
+  "/en/guides/": {
+   "status": 200,
+   "title": [
+    "Buyer guides | NadLan"
+   ],
+   "h1": [
+    "Buyer guides"
+   ],
+   "h2": []
+  },
+  "/en/new-projects/": {
+   "status": 200,
+   "title": [
+    "New-Build Projects in Israel: Foreign Buyer Guide"
+   ],
+   "h1": [
+    "New-Build Projects in Israel: The Complete Foreign Buyer Guide"
+   ],
+   "h2": [
+    "The leading projects in the catalog",
+    "How to search for new-build projects in Israel",
+    "What counts as a new-build, pre-sale or off-plan apartment",
+    "Israeli property language that foreign buyers must decode",
+    "Location due diligence: city, neighborhood, plot and walking route",
+    "The real cost of a new-build apartment, as of August 2026",
+    "Buying remotely: lawyer, power of attorney and document control",
+    "Source of funds, banking and anti-money-laundering preparation",
+    "Investigating the developer, contractor, land and permit",
+    "Closed project finance and statutory buyer-payment protection",
+    "The contract, specification and the gap between advertising and obligation",
+    "Payment schedules, the Construction Input Index, mortgages and FX",
+    "How to inspect a new-build like an experienced hotel guest",
+    "50 questions to ask the developer before buying",
+    "The purchase process in 12 controlled steps",
+    "Buyer changes, upgrades and credits",
+    "Occupancy approval, handover and snagging inspection",
+    "Defect periods, warranty and repair management",
+    "Delayed delivery and compensation",
+    "New-build or resale apartment",
+    "Apartment and project types",
+    "Pre-sale, active construction or immediate occupancy",
+    "Buying a new-build as an investment",
+    "Red flags that justify stopping the process",
+    "A final 10-step decision test",
+    "Frequently Asked Questions About New-Build Projects in Israel",
+    "Official sources, update date and disclosures"
+   ]
+  },
+  "/fr/brokers/": {
+   "status": 200,
+   "title": [
+    "Mini-site pour agents immobiliers en Israël | nad-lan"
+   ],
+   "h1": [
+    "Mini-site pour agents immobiliers et agences"
+   ],
+   "h2": [
+    "Ce qui est inclus",
+    "Les formules",
+    "Comment ça marche",
+    "Ouvrez votre site, gratuitement"
+   ]
+  },
+  "/fr/buy-property-in-israel/": {
+   "status": 404,
+   "title": [],
+   "h1": [],
+   "h2": []
+  },
+  "/fr/developer-deals/": {
+   "status": 404,
+   "title": [],
+   "h1": [],
+   "h2": []
+  },
+  "/fr/guides/": {
+   "status": 200,
+   "title": [
+    "Guides acheteur | NadLan"
+   ],
+   "h1": [
+    "Guides acheteur"
+   ],
+   "h2": []
+  },
+  "/fr/new-projects/": {
+   "status": 200,
+   "title": [
+    "Immobilier neuf en Israël : guide d'achat complet | NadLan"
+   ],
+   "h1": [
+    "Immobilier neuf en Israël : le guide complet pour acheter un appartement neuf"
+   ],
+   "h2": [
+    "Les projets phares du catalogue",
+    "Comment chercher un programme immobilier neuf en Israël",
+    "Qu'est-ce qu'un appartement neuf en Israël et à qui convient-il",
+    "Acheter sur plan en Israël",
+    "Choisir la ville, le quartier et la parcelle",
+    "Prix d'un appartement neuf en Israël, à jour en août 2026",
+    "Vérifier le promoteur, le vendeur, l'entrepreneur et le terrain",
+    "Accompagnement bancaire et protection des paiements",
+    "Contrat de vente et cahier des charges",
+    "Calendrier de paiement, indice de la construction et crédit",
+    "Audit détaillé de l'appartement, de l'immeuble et des équipements",
+    "50 questions à poser au promoteur avant d'acheter",
+    "Le parcours d'achat, de la recherche à l'inscription",
+    "Acheter depuis la France, comme non-résident ou avant une alyah",
+    "Modifications, améliorations et crédits",
+    "Autorisation d'occupation, livraison et inspection technique",
+    "Retard de livraison et indemnisation",
+    "Inscription des droits après la remise des clés",
+    "Appartement neuf ou ancien",
+    "Types de logements et moments de commercialisation",
+    "Appartement neuf comme investissement",
+    "Signaux d'alerte",
+    "Décider en dix étapes",
+    "Questions fréquentes sur l'immobilier neuf en Israël",
+    "Sources officielles, mise à jour et transparence"
+   ]
+  },
+  "/guides/": {
+   "status": 200,
+   "title": [
+    "מדריכי הרוכש - נדלן"
+   ],
+   "h1": [
+    "מדריכי הרוכש"
+   ],
+   "h2": []
+  },
+  "/new-projects/": {
+   "status": 200,
+   "title": [
+    "המדריך המלא לקנייה מקבלן ובדיקת פרויקט חדש | נדלן"
+   ],
+   "h1": [
+    "המדריך המלא לקנייה מקבלן: כך בודקים פרויקט חדש לפני שחותמים"
+   ],
+   "h2": [
+    "איזו דירה אתם מחפשים?",
+    "רוצים לראות מלאי אמיתי? אלו הפרויקטים המובילים במאגר",
+    "איך מחפשים פרויקטים חדשים בלי ללכת לאיבוד",
+    "מהו פרויקט חדש ולמי קנייה מקבלן מתאימה",
+    "שלבי פרויקט חדש ומה פירוש לקנות על הנייר",
+    "איך בוחרים עיר, שכונה ומגרש בתוך שכונה חדשה",
+    "מחיר דירה בפרויקט חדש והעלות הכוללת, נכון לאוגוסט 2026",
+    "בדיקת היזם, הקבלן, הקרקע וההיתר",
+    "ליווי בנקאי, ערבות חוק מכר והגנת הכסף",
+    "חוזה המכר, המפרט והפער בין פרסום להתחייבות",
+    "לוח תשלומים, מדד תשומות הבנייה ומשכנתה",
+    "בדיקת עומק של הדירה, הבניין והמתקנים",
+    "50 שאלות לקבלן לפני שקונים דירה חדשה",
+    "תהליך רכישת דירה מקבלן, משלב החיפוש עד המפתח",
+    "שינויי דיירים, שדרוגים וזיכויים",
+    "אישור אכלוס, מסירת דירה ובדק בית",
+    "איחור במסירת דירה והפיצוי לפי מועד החוזה",
+    "דירה חדשה לעומת דירה יד שנייה",
+    "סוגי דירות, פריסייל ומועדי אכלוס",
+    "קנייה מישראל ומחו\"ל, בלי לבלבל בין שיטות משפט ומונחים",
+    "פרויקט חדש להשקעה",
+    "דגלים אדומים בפרויקטים חדשים",
+    "החלטה על פרויקט חדש בעשרה צעדים",
+    "שאלות נפוצות על פרויקטים חדשים",
+    "מקורות, עדכון וגילוי נאות"
+   ]
+  },
+  "/north-tel-aviv/": {
+   "status": 200,
+   "title": [
+    "צפון תל אביב - שכונות, פרויקטים ומחירים | נדל״ן חכם"
+   ],
+   "h1": [
+    "צפון תל אביב - מדריך האזור, השכונות, הפרויקטים והמחירים"
+   ],
+   "h2": [
+    "פתיחה",
+    "מהו צפון תל אביב והשכונות",
+    "אופי האזור ואיכות החיים",
+    "מוסדות עוגן",
+    "הפרויקטים החדשים וההתחדשות",
+    "מחירים לפי שכונה",
+    "השוואת שכונות",
+    "תחבורה ונגישות",
+    "למי מתאים האזור",
+    "זווית משפטית ומיסויית",
+    "שאלות נפוצות",
+    "משקיעים מחו״ל"
+   ]
+  },
+  "/north-tel-aviv/rova-4/": {
+   "status": 200,
+   "title": [
+    "רובע 4 תל אביב: גבולות, רחובות, תוכנית ומחירי דירות"
+   ],
+   "h1": [
+    "רובע 4 בתל אביב: הצפון החדש, הגבולות, התוכנית ומחירי הדירות"
+   ],
+   "h2": [
+    "כמה עולה דירה ברובע 4",
+    "רובע 4 על המפה: הפרויקטים, ההתחדשות והשכונה",
+    "איפה נמצא רובע 4: הגבולות והרחובות",
+    "השכונות של רובע 4",
+    "תוכנית רובע 4 (תא/3729/א) בשפה פשוטה",
+    "מחירי דירות ברובע 4 ב-2026",
+    "כיכר המדינה והמגדלים",
+    "התחדשות עירונית ברובע 4: הפרויקטים",
+    "תחבורה ברובע 4",
+    "רובע 4 או הצפון הישן?",
+    "למי מתאים לגור ברובע 4",
+    "שאלות נפוצות"
+   ]
+  },
+  "/projects/hamedina-ar/": {
+   "status": 200,
+   "title": [
+    "Kikar Hamedina Towers, Tel Aviv: Prices, Deals & 3D Map"
+   ],
+   "h1": [
+    "Kikar Hamedina Towers, Tel Aviv"
+   ],
+   "h2": [
+    "كم يبلغ سعر شقة في أبراج كيكار همدينا؟",
+    "جولة افتراضية في أبراج كيكار همدينا: الأبراج والطوابق والإطلالة",
+    "كل شيء على خريطة واحدة: الأسعار والمحيط والخطط المستقبلية",
+    "فيلم كيكار همدينا",
+    "الأسعار حول المشروع في تل أبيب يافا",
+    "أبراج كيكار همدينا: كل المعطيات",
+    "أي برج وأي طابق وأي اتجاه تختارون في أبراج كيكار همدينا؟",
+    "الشقق: المساحات والشرفات والمواصفات",
+    "بركة وسبا ونادٍ رياضي ومواقف: الحياة اليومية في أبراج كيكار همدينا",
+    "أسعار الشقق في أبراج كيكار همدينا",
+    "كم يكلّف الشراء: ضريبة الشراء والقرض السكني",
+    "كيف تشترون شقة في أبراج كيكار همدينا",
+    "شقق للبيع وللإيجار في أبراج كيكار همدينا",
+    "متى تُسلَّم أبراج كيكار همدينا للسكن؟",
+    "من قسائم 1942 إلى هيكل 2026",
+    "حديقة كيكار همدينا: نحو 40 دونماً وبركة بيئية ومدرسة جديدة",
+    "كيكار همدينا في تل أبيب: متاجر فاخرة ومقاهٍ وحياة حول الساحة",
+    "كيكار همدينا على الخريطة: القطار الخفيف والمدارس والخدمات سيراً على الأقدام",
+    "أسئلة شائعة",
+    "السعر: أين يقف المشروع مقارنة بالمنطقة",
+    "التمويل والاستشارة والتصميم في مكان واحد",
+    "كل ما يحيط بالمشروع",
+    "مكالمة فيديو مع مستشار من ندلان"
+   ]
+  },
+  "/projects/hamedina-en/": {
+   "status": 200,
+   "title": [
+    "Kikar Hamedina Towers Tel Aviv: Prices, Deals, Map & 3D"
+   ],
+   "h1": [
+    "Kikar Hamedina Towers, Tel Aviv"
+   ],
+   "h2": [
+    "How much does an apartment cost at Kikar Hamedina Towers?",
+    "Virtual tour of Kikar Hamedina Towers: the towers, the floors and the view",
+    "Everything on one map: prices, surroundings, future plans",
+    "The Kikar Hamedina film",
+    "Prices around the project in Tel Aviv-Yafo",
+    "Kikar Hamedina Towers: the key facts",
+    "Which tower, floor and direction to choose at Kikar Hamedina Towers",
+    "The apartments: sizes, balconies and specification",
+    "Pool, spa, gym and parking: daily life in Kikar Hamedina Towers",
+    "Apartment prices in Kikar Hamedina Towers",
+    "What it costs to buy: Israeli purchase tax and mortgages",
+    "How to buy an apartment in Kikar Hamedina Towers, from Israel or from abroad",
+    "Kikar Hamedina Towers apartments for sale and for rent",
+    "When will Kikar Hamedina Towers be ready?",
+    "From the plots of 1942 to the frame of 2026",
+    "Kikar Hamedina Park: about 40 dunam, an ecological pond and a new school",
+    "Kikar Hamedina, Tel Aviv: luxury shops, cafés and life around the square",
+    "Kikar Hamedina on the map: light rail, schools and services within walking distance",
+    "Frequently asked questions",
+    "Price: where the project stands against its area",
+    "Financing, advice and design, all in one place",
+    "Everything around the project",
+    "A video call with a NadLan advisor"
+   ]
+  },
+  "/projects/hamedina-fr/": {
+   "status": 200,
+   "title": [
+    "Tours Kikar Hamedina à Tel Aviv : appartements, prix et 3D"
+   ],
+   "h1": [
+    "Tours Kikar Hamedina, Tel Aviv"
+   ],
+   "h2": [
+    "Combien coûte un appartement dans les tours Kikar Hamedina ?",
+    "Visite virtuelle des Tours Kikar Hamedina : les tours, les étages et la vue",
+    "Tout sur une seule carte: prix, environnement, plans futurs",
+    "Le film de Kikar Hamedina",
+    "Les prix autour du projet à Tel Aviv-Jaffa",
+    "Tours Kikar Hamedina : toutes les données",
+    "Quelle tour, quel étage et quelle orientation choisir ?",
+    "Les appartements : surfaces, balcons et prestations",
+    "Piscine, spa, salle de sport et parking : le quotidien aux tours Kikar Hamedina",
+    "Prix des appartements dans les tours Kikar Hamedina",
+    "Combien coûte l’achat : taxe d’acquisition et prêt immobilier en Israël",
+    "Acheter un appartement aux tours Kikar Hamedina depuis la France ou la Belgique",
+    "Appartements à vendre et à louer dans les tours Kikar Hamedina",
+    "Quand les tours Kikar Hamedina seront-elles livrées ?",
+    "Des parcelles de 1942 au gros œuvre de 2026",
+    "Le parc de Kikar Hamedina : 4 hectares, un étang écologique et une nouvelle école",
+    "Kikar Hamedina à Tel Aviv : boutiques de luxe, cafés et quartier chic",
+    "Kikar Hamedina sur la carte : tramway, écoles et services à pied",
+    "Questions fréquentes",
+    "Prix : où se situe le projet par rapport au quartier",
+    "Financement, conseil et design, tout au même endroit",
+    "Tout autour du projet",
+    "Un appel vidéo avec un conseiller NadLan"
+   ]
+  },
+  "/projects/hamedina-ru/": {
+   "status": 200,
+   "title": [
+    "Башни Кикар ха-Медина, Тель-Авив: цены, сделки, карта и 3D"
+   ],
+   "h1": [
+    "Башни Кикар ха-Медина, Тель-Авив"
+   ],
+   "h2": [
+    "Сколько стоит квартира в башнях Кикар ха-Медина?",
+    "Виртуальная прогулка: Башни Кикар ха-Медина, этажи и вид из окон",
+    "Все на одной карте: цены, окружение, будущие проекты",
+    "Фильм о Кикар ха-Медина",
+    "Цены вокруг проекта в городе Тель-Авив-Яффо",
+    "Башни Кикар ха-Медина: все данные",
+    "Какую башню, этаж и сторону света выбрать?",
+    "Квартиры: площади, балконы и отделка",
+    "Бассейн, спа, тренажёрный зал и парковка: быт в башнях Кикар ха-Медина",
+    "Цены на квартиры в башнях Кикар ха-Медина",
+    "Сколько стоит покупка: налог на покупку и ипотека в Израиле",
+    "Как купить квартиру в башнях Кикар ха-Медина, в том числе из-за границы",
+    "Квартиры на продажу и в аренду в башнях Кикар ха-Медина",
+    "Когда сдадут башни Кикар ха-Медина?",
+    "От участков 1942 года до каркаса 2026 года",
+    "Парк Кикар ха-Медина: около 40 дунамов, экологический пруд и новая школа",
+    "Кикар ха-Медина в Тель-Авиве: бутики, кафе и жизнь вокруг площади",
+    "Кикар ха-Медина на карте: легкорельсовый транспорт, школы и всё в шаговой доступности",
+    "Частые вопросы",
+    "Цена: как проект соотносится с районом",
+    "Финансирование, консультации и дизайн в одном месте",
+    "Всё вокруг проекта",
+    "Видеозвонок с консультантом NadLan"
+   ]
+  },
+  "/projects/hamedina/": {
+   "status": 200,
+   "title": [
+    "מגדלי כיכר המדינה תל אביב: מחירים, עסקאות, מפה ותלת ממד"
+   ],
+   "h1": [
+    "מגדלי כיכר המדינה, תל אביב Kikar Hamedina Towers"
+   ],
+   "h2": [
+    "כמה עולה דירה במגדלי כיכר המדינה",
+    "סיור וירטואלי במגדלי כיכר המדינה: המגדלים, הקומות והנוף",
+    "הכל על מפה אחת: מחירים, סביבה, תוכניות עתידיות",
+    "דירות שנמכרו במגדלי כיכר המדינה, לפי קומה",
+    "הסרט של כיכר המדינה",
+    "המחירים סביב הפרויקט בתל אביב יפו",
+    "מגדלי כיכר המדינה: כל העובדות",
+    "איזה מגדל, איזו קומה ואיזה כיוון לבחור במגדלי כיכר המדינה?",
+    "הדירות במגדלי כיכר המדינה: גדלים, מרפסות ומפרט",
+    "בריכה, ספא, חדר כושר וחניה: החיים במגדלי כיכר המדינה",
+    "מחירי הדירות במגדלי כיכר המדינה",
+    "כמה עולה לקנות דירה במגדלי כיכר המדינה: מס רכישה ומשכנתא",
+    "איך קונים דירה במגדלי כיכר המדינה",
+    "מגדלי כיכר המדינה למכירה ולהשכרה",
+    "מתי מגדלי כיכר המדינה יאוכלסו?",
+    "מהמגרשים של 1942 ועד השלד של 2026",
+    "פארק כיכר המדינה: כ-40 דונם, אגם אקולוגי ובית ספר חדש",
+    "כיכר המדינה תל אביב: חנויות, בתי קפה וחיים סביב הכיכר",
+    "כיכר המדינה על המפה: רכבת קלה, בתי ספר ושירותים במרחק הליכה",
+    "שאלות נפוצות",
+    "מחיר: איפה הפרויקט עומד מול הסביבה",
+    "מימון, ייעוץ ועיצוב - הכל במקום אחד",
+    "כל מה שסביב הפרויקט",
+    "שיחת וידאו עם נציג נדל״ן"
+   ]
+  },
+  "/ru/brokers/": {
+   "status": 200,
+   "title": [
+    "Мини-сайт для риелторов в Израиле | nad-lan"
+   ],
+   "h1": [
+    "Мини-сайт для риелторов и агентств недвижимости"
+   ],
+   "h2": [
+    "Что входит",
+    "Тарифы",
+    "Как это работает",
+    "Откройте свой сайт бесплатно"
+   ]
+  },
+  "/ru/buy-property-in-israel/": {
+   "status": 404,
+   "title": [],
+   "h1": [],
+   "h2": []
+  },
+  "/ru/developer-deals/": {
+   "status": 404,
+   "title": [],
+   "h1": [],
+   "h2": []
+  },
+  "/ru/guides/": {
+   "status": 200,
+   "title": [
+    "Гиды покупателя | NadLan"
+   ],
+   "h1": [
+    "Гиды покупателя"
+   ],
+   "h2": []
+  },
+  "/ru/new-projects/": {
+   "status": 200,
+   "title": [
+    "Новостройки в Израиле: полное руководство | nad-lan"
+   ],
+   "h1": [
+    "Новостройки в Израиле: как выбрать квартиру от застройщика"
+   ],
+   "h2": [
+    "Ведущие проекты каталога",
+    "Как искать новостройки в Израиле и не потеряться в рекламе",
+    "Что в Израиле называют новым проектом и кому подходит покупка у застройщика",
+    "Покупка на стадии строительства, «на котловане» и по плану",
+    "Как выбрать город, район и конкретный участок",
+    "Цена квартиры в новостройке и полная стоимость, по состоянию на август 2026 года",
+    "Проверка девелопера, подрядчика, земли и разрешения",
+    "Банковское сопровождение и защита денег покупателя",
+    "Договор, техническая спецификация и разница между рекламой и обязательством",
+    "График платежей, строительный индекс и ипотека",
+    "Покупка новостройки в Израиле нерезидентом и без репатриации",
+    "Глубокая проверка квартиры, здания и удобств",
+    "50 вопросов застройщику перед покупкой квартиры",
+    "Пошаговая покупка квартиры у застройщика",
+    "Изменения покупателя, улучшения и зачёты",
+    "Разрешение на заселение, передача и инженерная приёмка",
+    "Задержка передачи и компенсация",
+    "Новая квартира или вторичный рынок",
+    "Виды квартир, пресейл и сроки заселения",
+    "Новостройка как инвестиция",
+    "Красные флаги в новом проекте",
+    "Решение о покупке в десяти действиях",
+    "Частые вопросы о новостройках в Израиле",
+    "Официальные источники, дата обновления и раскрытие"
+   ]
+  }
+ }
+}

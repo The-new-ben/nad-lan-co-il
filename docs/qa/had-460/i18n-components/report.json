@@ -1,0 +1,902 @@
+[
+ {
+  "lang": "fr",
+  "size": "1440",
+  "price": {
+   "big": "8-11 M₪",
+   "pm": "environ 80 000-110 000 ₪/m²",
+   "tx": "environ 474 000 ₪",
+   "tt": "environ 9,97 M₪",
+   "wa": "Bonjour, j’ai consulté les repères de prix de Rova 4 à Tel Aviv : Penthouse ou rez-de-jardin, 100 m², estimation 8-11 M₪. Je souhaite plus de détails (nad-lan.co.il)",
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "idle": "idle",
+  "map": {
+   "state": "ready",
+   "dir": "ltr",
+   "lang": "fr",
+   "pins": 6,
+   "renewal_rendered": 15,
+   "reset": {
+    "l": 925,
+    "r": 15,
+    "t": 15,
+    "b": 575,
+    "w": 236
+   },
+   "key": {
+    "l": 13,
+    "r": 913,
+    "t": 569,
+    "b": 31,
+    "w": 250
+   },
+   "nav": {
+    "l": 1125,
+    "r": 11,
+    "t": 487,
+    "b": 27,
+    "w": 40
+   },
+   "attrib": {
+    "l": 891,
+    "r": 1,
+    "t": 613,
+    "b": 1,
+    "w": 284
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "labels": {
+   "count": 154,
+   "sample": [
+    "Tiv Taam",
+    "Juno",
+    "Jardin Zinger",
+    "Garderie Nitzanei Yuval",
+    "Ironi Yud Alef",
+    "Ironi Dalet, annexe",
+    "Lycée Ironi Dalet",
+    "École Miron",
+    "École Yehuda HaMaccabi",
+    "Tip Tov",
+    "Jardin Abramovitch",
+    "AM:PM"
+   ]
+  },
+  "card_project": {
+   "open": true,
+   "text": "Projet Tours Kikar HaMedina 3 tours de 40, 40 et 37 étages · 453 appartements Voir la page du projet",
+   "side": "left",
+   "inside": true,
+   "x_side": "right",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "card_renewal": {
+   "open": true,
+   "text": "Renouvellement urbain 4 rue Zlotisti Avant 4 étages, 12 appartements ← Après 8 étages, 22 appartements Étape : Démoli, 2.2026",
+   "side": "left",
+   "inside": true,
+   "x_side": "right",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "scroll_overflow": 0,
+  "page_errors": [],
+  "console_errors": []
+ },
+ {
+  "lang": "fr",
+  "size": "390",
+  "price": {
+   "big": "8-11 M₪",
+   "pm": "environ 80 000-110 000 ₪/m²",
+   "tx": "environ 474 000 ₪",
+   "tt": "environ 9,97 M₪",
+   "wa": "Bonjour, j’ai consulté les repères de prix de Rova 4 à Tel Aviv : Penthouse ou rez-de-jardin, 100 m², estimation 8-11 M₪. Je souhaite plus de détails (nad-lan.co.il)",
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "idle": "idle",
+  "map": {
+   "state": "ready",
+   "dir": "ltr",
+   "lang": "fr",
+   "pins": 6,
+   "renewal_rendered": 15,
+   "reset": {
+    "l": 141,
+    "r": 11,
+    "t": 11,
+    "b": 459,
+    "w": 206
+   },
+   "key": {
+    "l": 13,
+    "r": 95,
+    "t": 446,
+    "b": 31,
+    "w": 250
+   },
+   "nav": null,
+   "attrib": {
+    "l": 73,
+    "r": 1,
+    "t": 489,
+    "b": 1,
+    "w": 284
+   },
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "labels": {
+   "count": 55,
+   "sample": [
+    "AM:PM",
+    "Super-Pharm",
+    "Terminal 2000",
+    "New Market",
+    "Mega BaIr",
+    "Tiv Taam in the City",
+    "Metuka",
+    "Lechem Erez",
+    "Dallal",
+    "Cafe Henrietta",
+    "GOOD PHARM",
+    "Jardin Feivel"
+   ]
+  },
+  "card_project": {
+   "open": true,
+   "text": "Projet Tours Kikar HaMedina 3 tours de 40, 40 et 37 étages · 453 appartements Voir la page du projet",
+   "side": "right",
+   "inside": true,
+   "x_side": "right",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "card_renewal": {
+   "open": true,
+   "text": "Renouvellement urbain 4 rue Zlotisti Avant 4 étages, 12 appartements ← Après 8 étages, 22 appartements Étape : Démoli, 2.2026",
+   "side": "right",
+   "inside": true,
+   "x_side": "right",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "scroll_overflow": 0,
+  "page_errors": [],
+  "console_errors": []
+ },
+ {
+  "lang": "ar",
+  "size": "1440",
+  "price": {
+   "big": "8-11 مليون ₪",
+   "pm": "نحو 80,000-110,000 ₪ للمتر",
+   "tx": "نحو 474,000 ₪",
+   "tt": "نحو 9.97 مليون ₪",
+   "wa": "مرحباً، اطّلعت على دليل أسعار روفاع 4 في تل أبيب: بنتهاوس أو شقة حديقة، 100 م²، تقدير 8-11 مليون ₪. أرغب في مزيد من التفاصيل (nad-lan.co.il)",
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "idle": "idle",
+  "map": {
+   "state": "ready",
+   "dir": "rtl",
+   "lang": "ar",
+   "pins": 6,
+   "renewal_rendered": 15,
+   "reset": {
+    "l": 15,
+    "r": 956,
+    "t": 15,
+    "b": 575,
+    "w": 205
+   },
+   "key": {
+    "l": 1010,
+    "r": 13,
+    "t": 569,
+    "b": 31,
+    "w": 153
+   },
+   "nav": {
+    "l": 11,
+    "r": 1125,
+    "t": 497,
+    "b": 17,
+    "w": 40
+   },
+   "attrib": {
+    "l": 891,
+    "r": 1,
+    "t": 613,
+    "b": 1,
+    "w": 284
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "labels": {
+   "count": 157,
+   "sample": [
+    "Tiv Taam",
+    "جونو",
+    "حديقة زينغر",
+    "نادي ما بعد المدرسة نيتسانيه يوفال",
+    "عيروني يود ألف",
+    "عيروني دالت، فرع",
+    "مدرسة عيروني دالت",
+    "مدرسة ميرون",
+    "مدرسة يهودا همكابي",
+    "تيب طوف",
+    "حديقة أبراموفيتش",
+    "AM:PM"
+   ]
+  },
+  "card_project": {
+   "open": true,
+   "text": "مشروع Kikar HaMedina Towers 3 أبراج من 40 و40 و37 طابقاً · 453 شقة إلى صفحة المشروع",
+   "side": "right",
+   "inside": true,
+   "x_side": "left",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "card_renewal": {
+   "open": true,
+   "text": "التجديد الحضري زلوتسيستي 4 قبل 4 طوابق، 12 شقة ← بعد 8 طوابق، 22 شقة المرحلة: هُدم، 2.2026",
+   "side": "right",
+   "inside": true,
+   "x_side": "left",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "scroll_overflow": 0,
+  "page_errors": [],
+  "console_errors": []
+ },
+ {
+  "lang": "ar",
+  "size": "390",
+  "price": {
+   "big": "8-11 مليون ₪",
+   "pm": "نحو 80,000-110,000 ₪ للمتر",
+   "tx": "نحو 474,000 ₪",
+   "tt": "نحو 9.97 مليون ₪",
+   "wa": "مرحباً، اطّلعت على دليل أسعار روفاع 4 في تل أبيب: بنتهاوس أو شقة حديقة، 100 م²، تقدير 8-11 مليون ₪. أرغب في مزيد من التفاصيل (nad-lan.co.il)",
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "idle": "idle",
+  "map": {
+   "state": "ready",
+   "dir": "rtl",
+   "lang": "ar",
+   "pins": 6,
+   "renewal_rendered": 15,
+   "reset": {
+    "l": 11,
+    "r": 169,
+    "t": 11,
+    "b": 459,
+    "w": 178
+   },
+   "key": {
+    "l": 192,
+    "r": 13,
+    "t": 446,
+    "b": 31,
+    "w": 153
+   },
+   "nav": null,
+   "attrib": {
+    "l": 73,
+    "r": 1,
+    "t": 489,
+    "b": 1,
+    "w": 284
+   },
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "labels": {
+   "count": 55,
+   "sample": [
+    "AM:PM",
+    "سوبير فارم",
+    "محطة 2000",
+    "نيو ماركت",
+    "Mega BaIr",
+    "Tiv Taam in the City",
+    "متوكا",
+    "ليحم إيريز",
+    "دلال",
+    "Cafe Henrietta",
+    "GOOD PHARM",
+    "حديقة فايفل"
+   ]
+  },
+  "card_project": {
+   "open": true,
+   "text": "مشروع Kikar HaMedina Towers 3 أبراج من 40 و40 و37 طابقاً · 453 شقة إلى صفحة المشروع",
+   "side": "right",
+   "inside": true,
+   "x_side": "left",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": true,
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "card_renewal": {
+   "open": true,
+   "text": "التجديد الحضري زلوتسيستي 4 قبل 4 طوابق، 12 شقة ← بعد 8 طوابق، 22 شقة المرحلة: هُدم، 2.2026",
+   "side": "right",
+   "inside": true,
+   "x_side": "left",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": true,
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "scroll_overflow": 0,
+  "page_errors": [],
+  "console_errors": []
+ },
+ {
+  "lang": "he",
+  "size": "1440",
+  "price": {
+   "big": "8-11 מיליון ₪",
+   "pm": "כ-80,000-110,000 ₪ למ״ר",
+   "tx": "כ-474,000 ₪",
+   "tt": "כ-9.97 מיליון ₪",
+   "wa": "שלום, בדקתי במחירון של רובע 4 בתל אביב: פנטהאוז או דירת גן, 100 מ״ר, אומדן 8-11 מיליון ₪. אשמח לפרטים נוספים (nad-lan.co.il)",
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "idle": "idle",
+  "map": {
+   "state": "ready",
+   "dir": "rtl",
+   "lang": "he",
+   "pins": 6,
+   "renewal_rendered": 15,
+   "reset": {
+    "l": 15,
+    "r": 999,
+    "t": 15,
+    "b": 575,
+    "w": 162
+   },
+   "key": {
+    "l": 1003,
+    "r": 13,
+    "t": 569,
+    "b": 31,
+    "w": 160
+   },
+   "nav": {
+    "l": 11,
+    "r": 1125,
+    "t": 497,
+    "b": 17,
+    "w": 40
+   },
+   "attrib": {
+    "l": 891,
+    "r": 1,
+    "t": 613,
+    "b": 1,
+    "w": 284
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "labels": {
+   "count": 173,
+   "sample": [
+    "טיב טעם",
+    "ג'ונו",
+    "גן זינגר",
+    "צהרוני \"ניצני יובל\"",
+    "עירוני י\"א",
+    "עירוני ד' סניף",
+    "בית ספר עירוני ד'",
+    "בית הספר מירון",
+    "בי\"ס יהודה המכבי",
+    "טיפ טוב",
+    "גן אברמוביץ'",
+    "AM:PM"
+   ]
+  },
+  "card_project": {
+   "open": true,
+   "text": "פרויקט מגדלי כיכר המדינה 3 מגדלים בני 40, 40 ו-37 קומות · 453 דירות לעמוד הפרויקט",
+   "side": "right",
+   "inside": true,
+   "x_side": "left",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "card_renewal": {
+   "open": true,
+   "text": "התחדשות עירונית זלוציסטי 4 לפני 4 קומות, 12 דירות ← אחרי 8 קומות, 22 דירות שלב: נהרס, 2.2026",
+   "side": "right",
+   "inside": true,
+   "x_side": "left",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "scroll_overflow": 0,
+  "page_errors": [],
+  "console_errors": []
+ },
+ {
+  "lang": "he",
+  "size": "390",
+  "price": {
+   "big": "8-11 מיליון ₪",
+   "pm": "כ-80,000-110,000 ₪ למ״ר",
+   "tx": "כ-474,000 ₪",
+   "tt": "כ-9.97 מיליון ₪",
+   "wa": "שלום, בדקתי במחירון של רובע 4 בתל אביב: פנטהאוז או דירת גן, 100 מ״ר, אומדן 8-11 מיליון ₪. אשמח לפרטים נוספים (nad-lan.co.il)",
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "idle": "idle",
+  "map": {
+   "state": "ready",
+   "dir": "rtl",
+   "lang": "he",
+   "pins": 6,
+   "renewal_rendered": 15,
+   "reset": {
+    "l": 11,
+    "r": 208,
+    "t": 11,
+    "b": 459,
+    "w": 139
+   },
+   "key": {
+    "l": 185,
+    "r": 13,
+    "t": 446,
+    "b": 31,
+    "w": 160
+   },
+   "nav": null,
+   "attrib": {
+    "l": 73,
+    "r": 1,
+    "t": 489,
+    "b": 1,
+    "w": 284
+   },
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "labels": {
+   "count": 55,
+   "sample": [
+    "AM:PM",
+    "סופר-פארם",
+    "מסוף 2000",
+    "ניו מרקט",
+    "מגה בעיר",
+    "טיב טעם בעיר",
+    "מתוקה",
+    "לחם ארז",
+    "דלל",
+    "Cafe Henrietta",
+    "גוד פארם",
+    "גן פייבל"
+   ]
+  },
+  "card_project": {
+   "open": true,
+   "text": "פרויקט מגדלי כיכר המדינה 3 מגדלים בני 40, 40 ו-37 קומות · 453 דירות לעמוד הפרויקט",
+   "side": "right",
+   "inside": true,
+   "x_side": "left",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": true,
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "card_renewal": {
+   "open": true,
+   "text": "התחדשות עירונית זלוציסטי 4 לפני 4 קומות, 12 דירות ← אחרי 8 קומות, 22 דירות שלב: נהרס, 2.2026",
+   "side": "right",
+   "inside": true,
+   "x_side": "left",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": true,
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "scroll_overflow": 0,
+  "page_errors": [],
+  "console_errors": []
+ },
+ {
+  "lang": "en",
+  "size": "1440",
+  "price": {
+   "big": "₪8-11 million",
+   "pm": "about ₪80,000-110,000 per m²",
+   "tx": "about ₪474,000",
+   "tt": "about ₪9.97 million",
+   "wa": "Hello, I checked the Rova 4 Tel Aviv price guide: Penthouse or garden apartment, 100 m², estimate ₪8-11 million. I would like more details (nad-lan.co.il)",
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "idle": "idle",
+  "map": {
+   "state": "ready",
+   "dir": "ltr",
+   "lang": "en",
+   "pins": 6,
+   "renewal_rendered": 15,
+   "reset": {
+    "l": 993,
+    "r": 15,
+    "t": 15,
+    "b": 575,
+    "w": 168
+   },
+   "key": {
+    "l": 13,
+    "r": 937,
+    "t": 569,
+    "b": 31,
+    "w": 226
+   },
+   "nav": {
+    "l": 1125,
+    "r": 11,
+    "t": 487,
+    "b": 27,
+    "w": 40
+   },
+   "attrib": {
+    "l": 891,
+    "r": 1,
+    "t": 613,
+    "b": 1,
+    "w": 284
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "labels": {
+   "count": 154,
+   "sample": [
+    "Tiv Taam",
+    "Juno",
+    "Zinger Garden",
+    "Nitzanei Yuval after-school club",
+    "Ironi Yud Alef",
+    "Ironi Dalet, branch campus",
+    "Ironi Dalet High School",
+    "Miron School",
+    "Yehuda HaMaccabi School",
+    "Tip Tov",
+    "Abramovich Garden",
+    "AM:PM"
+   ]
+  },
+  "card_project": {
+   "open": true,
+   "text": "Project Kikar HaMedina Towers 3 towers of 40, 40 and 37 floors · 453 apartments To the project page",
+   "side": "left",
+   "inside": true,
+   "x_side": "right",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "card_renewal": {
+   "open": true,
+   "text": "Urban renewal Zlotisti 4 Before 4 floors, 12 apartments ← After 8 floors, 22 apartments Stage: Demolished, 2.2026",
+   "side": "left",
+   "inside": true,
+   "x_side": "right",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "scroll_overflow": 0,
+  "page_errors": [],
+  "console_errors": []
+ },
+ {
+  "lang": "en",
+  "size": "390",
+  "price": {
+   "big": "₪8-11 million",
+   "pm": "about ₪80,000-110,000 per m²",
+   "tx": "about ₪474,000",
+   "tt": "about ₪9.97 million",
+   "wa": "Hello, I checked the Rova 4 Tel Aviv price guide: Penthouse or garden apartment, 100 m², estimate ₪8-11 million. I would like more details (nad-lan.co.il)",
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "idle": "idle",
+  "map": {
+   "state": "ready",
+   "dir": "ltr",
+   "lang": "en",
+   "pins": 6,
+   "renewal_rendered": 15,
+   "reset": {
+    "l": 202,
+    "r": 11,
+    "t": 11,
+    "b": 459,
+    "w": 145
+   },
+   "key": {
+    "l": 13,
+    "r": 119,
+    "t": 446,
+    "b": 31,
+    "w": 226
+   },
+   "nav": null,
+   "attrib": {
+    "l": 73,
+    "r": 1,
+    "t": 489,
+    "b": 1,
+    "w": 284
+   },
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "labels": {
+   "count": 54,
+   "sample": [
+    "AM:PM",
+    "Super-Pharm",
+    "Terminal 2000",
+    "New Market",
+    "Mega BaIr",
+    "Tiv Taam in the City",
+    "Metuka",
+    "Lechem Erez",
+    "Dallal",
+    "Cafe Henrietta",
+    "GOOD PHARM",
+    "Feivel Garden"
+   ]
+  },
+  "card_project": {
+   "open": true,
+   "text": "Project Kikar HaMedina Towers 3 towers of 40, 40 and 37 floors · 453 apartments To the project page",
+   "side": "right",
+   "inside": true,
+   "x_side": "right",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "card_renewal": {
+   "open": true,
+   "text": "Urban renewal Zlotisti 4 Before 4 floors, 12 apartments ← After 8 floors, 22 apartments Stage: Demolished, 2.2026",
+   "side": "right",
+   "inside": true,
+   "x_side": "right",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "scroll_overflow": 0,
+  "page_errors": [],
+  "console_errors": []
+ },
+ {
+  "lang": "ru",
+  "size": "1440",
+  "price": {
+   "big": "8-11 млн ₪",
+   "pm": "около 80 000-110 000 ₪ за м²",
+   "tx": "около 474 000 ₪",
+   "tt": "около 9,97 млн ₪",
+   "wa": "Здравствуйте, смотрю обзор цен по району Рова 4 в Тель-Авиве: Пентхаус или квартира с садом, 100 м², оценка 8-11 млн ₪. Хотелось бы узнать подробнее (nad-lan.co.il)",
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "idle": "idle",
+  "map": {
+   "state": "ready",
+   "dir": "ltr",
+   "lang": "ru",
+   "pins": 6,
+   "renewal_rendered": 15,
+   "reset": {
+    "l": 996,
+    "r": 15,
+    "t": 15,
+    "b": 575,
+    "w": 165
+   },
+   "key": {
+    "l": 13,
+    "r": 901,
+    "t": 569,
+    "b": 31,
+    "w": 262
+   },
+   "nav": {
+    "l": 1125,
+    "r": 11,
+    "t": 487,
+    "b": 27,
+    "w": 40
+   },
+   "attrib": {
+    "l": 891,
+    "r": 1,
+    "t": 613,
+    "b": 1,
+    "w": 284
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "labels": {
+   "count": 151,
+   "sample": [
+    "Тив Таам",
+    "Джуно",
+    "Сад Зингер",
+    "Продлёнка «Ницаней Юваль»",
+    "Ирони Юд-Алеф",
+    "Ирони Далет, филиал",
+    "Школа Ирони Далет",
+    "Школа Мирон",
+    "Школа Иегуда ха-Маккаби",
+    "Тип Тов",
+    "Сад Абрамович",
+    "AM:PM"
+   ]
+  },
+  "card_project": {
+   "open": true,
+   "text": "Проект Башни Кикар ха-Медина 3 башни в 40, 40 и 37 этажей · 453 квартиры На страницу проекта",
+   "side": "left",
+   "inside": true,
+   "x_side": "right",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "card_renewal": {
+   "open": true,
+   "text": "Городское обновление Злоцисти 4 До 4 этажа, 12 квартир ← После 8 этажей, 22 квартиры Этап: Снесён, 2.2026",
+   "side": "left",
+   "inside": true,
+   "x_side": "right",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "scroll_overflow": 0,
+  "page_errors": [],
+  "console_errors": []
+ },
+ {
+  "lang": "ru",
+  "size": "390",
+  "price": {
+   "big": "8-11 млн ₪",
+   "pm": "около 80 000-110 000 ₪ за м²",
+   "tx": "около 474 000 ₪",
+   "tt": "около 9,97 млн ₪",
+   "wa": "Здравствуйте, смотрю обзор цен по району Рова 4 в Тель-Авиве: Пентхаус или квартира с садом, 100 м², оценка 8-11 млн ₪. Хотелось бы узнать подробнее (nad-lan.co.il)",
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "idle": "idle",
+  "map": {
+   "state": "ready",
+   "dir": "ltr",
+   "lang": "ru",
+   "pins": 6,
+   "renewal_rendered": 15,
+   "reset": {
+    "l": 204,
+    "r": 11,
+    "t": 11,
+    "b": 459,
+    "w": 143
+   },
+   "key": {
+    "l": 13,
+    "r": 83,
+    "t": 446,
+    "b": 31,
+    "w": 262
+   },
+   "nav": null,
+   "attrib": {
+    "l": 73,
+    "r": 1,
+    "t": 489,
+    "b": 1,
+    "w": 284
+   },
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "labels": {
+   "count": 54,
+   "sample": [
+    "AM:PM",
+    "Супер-Фарм",
+    "Терминал 2000",
+    "Нью Маркет",
+    "Мега ба-Ир",
+    "Тив Таам ба-Ир",
+    "Метука",
+    "Лехем Эрез",
+    "Далал",
+    "Cafe Henrietta",
+    "GOOD PHARM",
+    "Сад Фейвел"
+   ]
+  },
+  "card_project": {
+   "open": true,
+   "text": "Проект Башни Кикар ха-Медина 3 башни в 40, 40 и 37 этажей · 453 квартиры На страницу проекта",
+   "side": "right",
+   "inside": true,
+   "x_side": "right",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "card_renewal": {
+   "open": true,
+   "text": "Городское обновление Злоцисти 4 До 4 этажа, 12 квартир ← После 8 этажей, 22 квартиры Этап: Снесён, 2.2026",
+   "side": "right",
+   "inside": true,
+   "x_side": "right",
+   "x_overlaps_kicker": true,
+   "x_overlaps_title": false,
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "scroll_overflow": 0,
+  "page_errors": [],
+  "console_errors": []
+ }
+]

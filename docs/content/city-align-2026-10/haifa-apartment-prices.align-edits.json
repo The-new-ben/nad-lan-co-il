@@ -1,0 +1,1192 @@
+{
+ "generated": "7.10.2026",
+ "page": {
+  "id": 4579,
+  "slug": "haifa-apartment-prices",
+  "link": "https://nad-lan.co.il/haifa-apartment-prices/",
+  "modified": "2026-10-07T12:43:59"
+ },
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages?slug=haifa-apartment-prices&_fields=id,link,title,content,modified (content.rendered), public, retrieved 2026-10-07 10:34:30 UTC, 74,823 characters. The price-list section (<section id=\"nlpg\">, the [nadlan_price_guide] shortcode), <script> and <style> are outside the audit.",
+ "facts": "scripts/project-stage/price_guide/cities/haifa-apartment-prices.json (official medians from data.nadlan.gov.il; source_keys are JSON paths in that file: rooms.<k>.latest, rooms.<k>.year_ago, rooms.<k>.change_pct, rooms.<k>.quarters[<q>], israel.<k>, neighbourhoods[<name>].rooms.<k>; 'page' = a number kept from the page's own text)",
+ "apply_rules": [
+  "Apply in the listed order on the RAW content (context=edit). Every \"old\" matches content.rendered exactly once at its turn (matches_in_live), except \"replace_all\" entries, which match exactly \"expect_matches\" times.",
+  "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
+  "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
+  "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+ ],
+ "claims_summary": {
+  "claims": {
+   "CONFLICT": 12,
+   "STALE": 0,
+   "UNSOURCED": 31,
+   "CONSISTENT": 6
+  },
+  "figures": {
+   "CONFLICT": 17,
+   "STALE": 0,
+   "UNSOURCED": 88,
+   "CONSISTENT": 9
+  },
+  "edits": 25,
+  "tier1": 19,
+  "tier2": 6
+ },
+ "notes": "Not audited as claims (explicit examples and hypotheticals, kept): 5 rooms at 2,650,000 (p@46389, buyer question); two 3-room flats 150,000 apart (tr@52249); the rent if-example 1,250,000 / 3,820 / 2,700 / 5,000 (p@54787 after edit 11); the per-m2 if-examples 1,210,000 / 1,830,000 / 2,730,000 (p@58553, they reuse the old category averages as worked examples); listing 1,850,000 and if-deals 1,700,000-1,760,000 (p@60086); 1,650,000 + 250,000 and 1,950,000 to 2,050,000 (p@63975); 1,750,000 / 2,300,000 (p@67099); the Neve Shaanan 3-room buyer example 1,320,000 / 1,180,000-1,260,000 (p@68485, no official 3-room median for Neve Shaanan); the seller example's if-deals 1,700,000-1,820,000 (p@68809); the Givat Zemer 5-room owner example 2,900,000 / 2,650,000-2,850,000 (p@69145, no official median for Givat Zemer); the scenario table tr@69646..70248 that sums up these examples; 10% / 15% (p@72367). The remaining SUSPECT lines of check.py are all among these examples. Rent figures on this page are labelled only 'estimated' with no named source, so they are tier-2 edits (rent columns removed, check notes kept); the lead and the first table drop rent inside tier-1 edits. Sales counts (981 / 214 / 4,288 / 85,000) are kept: dated periods and 'published market data', not prices; unsure whether that counts as a named kind of source. Official quirks: 4 rooms has no 10-12.2025 median and 5 rooms none for 7-9.2025; the all-rooms median rose 10.1% in a year while 3/4/5 rooms were flat or fell (deal mix). Name mapping: page 'קריית חיים מזרחית' = official 'קרית חיים מזרחית'. Official medians exist also for יזרעאליה and נווה דוד, which the page does not discuss; not added. Kiryat Eliezer, Bat Galim, Denia and Hod HaCarmel, Givat Zemer are not in the city file: the city file keeps only 8 neighbourhoods; the official files DO hold 1-3.2026 medians for some of the others (checked 7.10.2026), so these rows say 'לא מוצג במחירון' (not shown in the page's list), never 'לא פורסם'.",
+ "claims": [
+  {
+   "id": 1,
+   "where": "p@4341",
+   "quote": "דירות רגילות רבות בחיפה נעות סביב 950,000 עד 2,650,000 ש\"ח לפי מספר חדרים",
+   "measure": "sale",
+   "rooms": "3-5",
+   "figures": 2,
+   "official": "3: 1,135,100 / 4: 1,597,500 / 5: 2,638,000 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 1",
+   "note": "restated as the medians inside the same rewrite"
+  },
+  {
+   "id": 2,
+   "where": "p@4341",
+   "quote": "דירות חדשות, גדולות, יוקרתיות... יכולות להגיע גם ל-3,300,000 ש\"ח ואף יותר",
+   "measure": "sale",
+   "rooms": "6+",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 1",
+   "note": ""
+  },
+  {
+   "id": 3,
+   "where": "p@4341",
+   "quote": "חציון שכירות סביב 3,400 ש\"ח וממוצע סביב 3,867 ש\"ח",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 1",
+   "note": "no named source anywhere on the page for rent"
+  },
+  {
+   "id": 4,
+   "where": "tr@42329",
+   "quote": "דירות 2 חדרים | כ-950,000 ש\"ח בממוצע מבוקש",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 5,
+   "where": "tr@42507",
+   "quote": "דירות 3 חדרים | כ-1,250,000 ש\"ח בממוצע מבוקש",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,135,100 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 6,
+   "where": "tr@42687",
+   "quote": "דירות 4 חדרים | כ-1,750,000 ש\"ח בממוצע מבוקש",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "1,597,500 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 7,
+   "where": "tr@42855",
+   "quote": "דירות 5 חדרים | כ-2,650,000 ש\"ח בממוצע מבוקש",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "2,638,000 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 8,
+   "where": "tr@43025",
+   "quote": "דירות 6 חדרים ומעלה | כ-3,300,000 ש\"ח בממוצע מבוקש",
+   "measure": "sale",
+   "rooms": "6+",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 9,
+   "where": "tr@43201..43348",
+   "quote": "שכירות חציונית כ-3,400 / שכירות ממוצעת כ-3,867",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": ""
+  },
+  {
+   "id": 10,
+   "where": "p@43789",
+   "quote": "ממוצע של כ-1,560,586 ש\"ח",
+   "measure": "sale_avg",
+   "rooms": "all",
+   "figures": 1,
+   "official": "all rooms 1,406,400 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 11,
+   "where": "p@43789",
+   "quote": "מחיר ממוצע סביב 19,400 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 4",
+   "note": ""
+  },
+  {
+   "id": 12,
+   "where": "tr@45206",
+   "quote": "1 עד 2 חדרים | 950,000 עד 980,000 | 16,964 עד 20,780 למ\"ר",
+   "measure": "sale",
+   "rooms": "1-2",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 13,
+   "where": "tr@45447",
+   "quote": "3 חדרים | כ-1,210,000 עד 1,250,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "1,135,100",
+   "verdict": "CONFLICT",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 14,
+   "where": "tr@45447",
+   "quote": "3 חדרים | כ-16,667 עד 18,400 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "3",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 15,
+   "where": "tr@45678",
+   "quote": "4 חדרים | כ-1,750,000 עד 1,830,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "1,597,500",
+   "verdict": "CONFLICT",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 16,
+   "where": "tr@45678",
+   "quote": "4 חדרים | כ-17,500 עד 19,150 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "4",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 17,
+   "where": "tr@45907",
+   "quote": "5 חדרים | כ-2,650,000 עד 2,730,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "2,638,000 (within the 1% floor tolerance)",
+   "verdict": "CONSISTENT",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 18,
+   "where": "tr@45907",
+   "quote": "5 חדרים | כ-19,630 עד 21,500 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "5",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 19,
+   "where": "tr@46135",
+   "quote": "6 חדרים ומעלה | 3,300,000 עד 3,400,000 | 17,368 עד 21,000 למ\"ר",
+   "measure": "sale",
+   "rooms": "6+",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": ""
+  },
+  {
+   "id": 20,
+   "where": "tr@46905",
+   "quote": "בדיקת דירת 2 חדרים | האם המחיר קרוב ל-950,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 7",
+   "note": ""
+  },
+  {
+   "id": 21,
+   "where": "tr@47121",
+   "quote": "בדיקת דירת 3 חדרים | האם 1,250,000 ש\"ח משקפים עסקאות סגורות",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,135,100",
+   "verdict": "CONFLICT",
+   "action": "edit 7",
+   "note": "question form, but it uses the removed asking average as the reference level"
+  },
+  {
+   "id": 22,
+   "where": "tr@47308",
+   "quote": "בדיקת דירת 4 חדרים | האם 1,750,000 ש\"ח כולל יתרונות משפחתיים",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "1,597,500",
+   "verdict": "CONFLICT",
+   "action": "edit 7",
+   "note": ""
+  },
+  {
+   "id": 23,
+   "where": "tr@47506",
+   "quote": "בדיקת דירת 5 חדרים | האם 2,650,000 ש\"ח הוא מחיר שוק",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "2,638,000",
+   "verdict": "CONSISTENT",
+   "action": "edit 7",
+   "note": ""
+  },
+  {
+   "id": 24,
+   "where": "tr@47708",
+   "quote": "בדיקת דירה גדולה | האם 3,300,000 ש\"ח מתאים לנכס",
+   "measure": "sale",
+   "rooms": "6+",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 7",
+   "note": ""
+  },
+  {
+   "id": 25,
+   "where": "tr@49215..50823",
+   "quote": "טבלת 'מחיר ממוצע שנצפה בעסקאות' לפי שכונה (10 שורות, כל החדרים)",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 10,
+   "official": "official medians by rooms for 6 of the 10 areas",
+   "verdict": "UNSOURCED",
+   "action": "edit 9",
+   "note": "e.g. Hadar 549,379 vs official Hadar 3 rooms 1,066,400; Merkaz HaCarmel 1,662,150 vs 3 rooms 1,769,300"
+  },
+  {
+   "id": 26,
+   "where": "tr@53843..54615",
+   "quote": "טבלת שכירות חודשית משוערת לפי חדרים (6 שורות, 2,187-10,400)",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 10",
+   "note": ""
+  },
+  {
+   "id": 27,
+   "where": "p@54787",
+   "quote": "שכירות חציונית סביב 3,400 ש\"ח וממוצעת סביב 3,867 ש\"ח",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 11",
+   "note": ""
+  },
+  {
+   "id": 28,
+   "where": "tr@55367..56233",
+   "quote": "טבלת שכירות חודשית משוערת לפי שכונה (7 שורות, 2,348-3,015)",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 7,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 12",
+   "note": ""
+  },
+  {
+   "id": 29,
+   "where": "tr@57623..58342",
+   "quote": "טבלת רחובות: חסן שוקרי 116 עסקאות 767,534 ... דרך יד לבנים 930,573",
+   "measure": "sale_street",
+   "rooms": "",
+   "figures": 5,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 14",
+   "note": "deal counts 116/105/93/88/68 with no period or source; mixed room counts"
+  },
+  {
+   "id": 30,
+   "where": "tr@59223",
+   "quote": "1 עד 2 חדרים | 980,000 | 20,780 למ\"ר | 996 עסקאות",
+   "measure": "sale",
+   "rooms": "1-2",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 16",
+   "note": ""
+  },
+  {
+   "id": 31,
+   "where": "tr@59392",
+   "quote": "3 חדרים | כ-1,210,000 ש\"ח מחיר ממוצע משוער",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "1,135,100",
+   "verdict": "CONFLICT",
+   "action": "edit 16",
+   "note": ""
+  },
+  {
+   "id": 32,
+   "where": "tr@59560",
+   "quote": "4 חדרים | כ-1,830,000 ש\"ח מחיר ממוצע משוער",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "1,597,500",
+   "verdict": "CONFLICT",
+   "action": "edit 16",
+   "note": ""
+  },
+  {
+   "id": 33,
+   "where": "tr@59728",
+   "quote": "5 חדרים | כ-2,730,000 ש\"ח מחיר ממוצע משוער",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "2,638,000 (+3.5%)",
+   "verdict": "CONSISTENT",
+   "action": "edit 16",
+   "note": ""
+  },
+  {
+   "id": 34,
+   "where": "tr@59392..59728",
+   "quote": "מחיר למ\"ר משוער 18,400 / 19,150 / 21,500",
+   "measure": "per_m2",
+   "rooms": "3-5",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 16",
+   "note": ""
+  },
+  {
+   "id": 35,
+   "where": "tr@59392..59728",
+   "quote": "מספר עסקאות בדוגמה 1,921 / 1,240 / 674",
+   "measure": "count",
+   "rooms": "3-5",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 16",
+   "note": ""
+  },
+  {
+   "id": 36,
+   "where": "tr@59895",
+   "quote": "6 חדרים ומעלה | 3,400,000 | 21,000 למ\"ר | 126 עסקאות",
+   "measure": "sale",
+   "rooms": "6+",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 16",
+   "note": ""
+  },
+  {
+   "id": 37,
+   "where": "p@60991",
+   "quote": "981 מכירות יד שנייה (+19.2%), 214 חדשות (-33.7%), 4,288 לא מכורות, דצמבר 2025 עד פברואר 2026",
+   "measure": "count",
+   "rooms": "",
+   "figures": 5,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (published market data, dated period 12.2025-2.2026; sales counts, not prices)",
+   "note": ""
+  },
+  {
+   "id": 38,
+   "where": "tr@61650..62365",
+   "quote": "טבלת חדש מול יד שנייה: 981 / 214 / 4,288 / כ-85,000 ארצי במרץ 2026",
+   "measure": "count",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (same dated published data as p@60991; national stock dated March 2026)",
+   "note": ""
+  },
+  {
+   "id": 39,
+   "where": "p@62601",
+   "quote": "שיפוץ של 150,000 עד 400,000 ש\"ח",
+   "measure": "other",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 17",
+   "note": ""
+  },
+  {
+   "id": 40,
+   "where": "p@68809",
+   "quote": "דירת 4 חדרים באחוזה, מודעות דומות סביב 1,850,000 עד 1,950,000 ש\"ח",
+   "measure": "sale_nb",
+   "rooms": "4",
+   "figures": 2,
+   "official": "Ahuza 4 rooms 2,410,400 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 18",
+   "note": "a seller example, but it names a real neighbourhood with an official median far above it"
+  },
+  {
+   "id": 41,
+   "where": "p@70991",
+   "quote": "FAQ: טווח העבודה ... 950,000 עד 2,650,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "3-5",
+   "figures": 2,
+   "official": "1,135,100 / 1,597,500 / 2,638,000",
+   "verdict": "CONSISTENT",
+   "action": "edit 19",
+   "note": ""
+  },
+  {
+   "id": 42,
+   "where": "p@70991",
+   "quote": "FAQ: יכולות להגיע לכ-3,300,000 ש\"ח ואף יותר",
+   "measure": "sale",
+   "rooms": "6+",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 19",
+   "note": ""
+  },
+  {
+   "id": 43,
+   "where": "p@71274",
+   "quote": "FAQ: דירת 3 חדרים סביב 1,210,000 עד 1,250,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "1,135,100",
+   "verdict": "CONFLICT",
+   "action": "edit 20",
+   "note": ""
+  },
+  {
+   "id": 44,
+   "where": "p@71274",
+   "quote": "FAQ: מחיר למ\"ר סביב 16,667 עד 18,400 ש\"ח",
+   "measure": "per_m2",
+   "rooms": "3",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 20",
+   "note": ""
+  },
+  {
+   "id": 45,
+   "where": "p@71539",
+   "quote": "FAQ: דירת 4 חדרים סביב 1,750,000 עד 1,830,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "1,597,500",
+   "verdict": "CONFLICT",
+   "action": "edit 21",
+   "note": ""
+  },
+  {
+   "id": 46,
+   "where": "p@71754",
+   "quote": "FAQ: דניה והוד הכרמל סביב 3,394,095, גבעת זמר סביב 2,725,356",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 22",
+   "note": ""
+  },
+  {
+   "id": 47,
+   "where": "p@72046",
+   "quote": "FAQ: הדר סביב 549,379, קריית אליעזר סביב 668,339",
+   "measure": "sale_nb",
+   "rooms": "",
+   "figures": 2,
+   "official": "Hadar 3 rooms 1,066,400",
+   "verdict": "UNSOURCED",
+   "action": "edit 23",
+   "note": ""
+  },
+  {
+   "id": 48,
+   "where": "p@72665",
+   "quote": "FAQ: חציון שכירות 3,400, ממוצע 3,867",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 24",
+   "note": ""
+  },
+  {
+   "id": 49,
+   "where": "p@72938",
+   "quote": "FAQ: שיפוץ של 150,000 עד 400,000 ש\"ח",
+   "measure": "other",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 25",
+   "note": ""
+  }
+ ],
+ "edits": [
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "בטווח עבודה מעשי, דירות רגילות רבות בחיפה נעות סביב 950,000 עד 2,650,000 ש\"ח לפי מספר חדרים, מצב הנכס והאזור, כאשר דירות חדשות, גדולות, יוקרתיות או כאלה שנמצאות בכרמל, בדניה, בגבעת זמר ובמוקדים מבוקשים יכולות להגיע גם ל-3,300,000 ש\"ח ואף יותר. בדיקת שכירות מוסיפה נקודת ביקורת: חציון שכירות סביב 3,400 ש\"ח וממוצע סביב 3,867 ש\"ח עוזרים להבין אם מחיר דירה מבוקש נשען על שוק אמיתי או על ציפייה גבוהה מדי.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה בחיפה היה 1,135,100 ש\"ח לדירת 3 חדרים, 1,597,500 ש\"ח לדירת 4 חדרים ו-2,638,000 ש\"ח לדירת 5 חדרים. דירות חדשות, גדולות, יוקרתיות או כאלה שנמצאות בכרמל, בדניה, בגבעת זמר ובמוקדים מבוקשים יכולות להגיע למחירים גבוהים יותר, ודירה מסוימת יכולה להיות רחוקה מהחציון בגלל מספר החדרים, מצב הנכס והאזור. בדיקת שכירות מוסיפה נקודת ביקורת: השוואה לשכירות של דירות דומות באותו אזור עוזרת להבין אם מחיר דירה מבוקש נשען על שוק אמיתי או על ציפייה גבוהה מדי.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Lead above the list: the 950,000-2,650,000 working range for regular flats was consistent with the official 3/4/5-room medians and is restated as the medians; the 3,300,000 luxury ceiling and the rent median 3,400 / average 3,867 have no named source on the page (rent figures are only 'estimated') and are dropped.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 1,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מדד בדיקה</th>\n<th dir=\"rtl\">טווח או נתון עבודה</th>\n<th dir=\"rtl\">איך להשתמש בו</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות 2 חדרים</td>\n<td dir=\"rtl\">כ-950,000 ש\"ח בממוצע מבוקש</td>\n<td dir=\"rtl\">מתאים לבדיקת דירות קטנות, נכסים ותיקים ואזורים זולים יחסית</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות 3 חדרים</td>\n<td dir=\"rtl\">כ-1,250,000 ש\"ח בממוצע מבוקש</td>\n<td dir=\"rtl\">נקודת ייחוס נפוצה לקונים ראשונים ולמשפרי דיור בתקציב מוגבל</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות 4 חדרים</td>\n<td dir=\"rtl\">כ-1,750,000 ש\"ח בממוצע מבוקש</td>\n<td dir=\"rtl\">מתאים להשוואת דירות משפחתיות רגילות בין שכונות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות 5 חדרים</td>\n<td dir=\"rtl\">כ-2,650,000 ש\"ח בממוצע מבוקש</td>\n<td dir=\"rtl\">דורש בדיקה חזקה של שטח, חניה, מעלית, ממ\"ד ומיקום</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות 6 חדרים ומעלה</td>\n<td dir=\"rtl\">כ-3,300,000 ש\"ח בממוצע מבוקש</td>\n<td dir=\"rtl\">מושפע מאוד מיוקרה, נוף, בנייה חדשה ואיכות הבניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שכירות חציונית</td>\n<td dir=\"rtl\">כ-3,400 ש\"ח</td>\n<td dir=\"rtl\">בדיקת סבירות למחיר דירה ביחס לשוק השכירות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שכירות ממוצעת</td>\n<td dir=\"rtl\">כ-3,867 ש\"ח</td>\n<td dir=\"rtl\">נקודת השוואה רחבה יותר, רגישה לדירות גדולות ויקרות</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מדד בדיקה</th>\n<th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th>\n<th dir=\"rtl\">איך להשתמש בו</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות 3 חדרים</td>\n<td dir=\"rtl\">1,135,100 ש\"ח</td>\n<td dir=\"rtl\">נקודת ייחוס נפוצה לקונים ראשונים ולמשפרי דיור בתקציב מוגבל</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות 4 חדרים</td>\n<td dir=\"rtl\">1,597,500 ש\"ח</td>\n<td dir=\"rtl\">מתאים להשוואת דירות משפחתיות רגילות בין שכונות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירות 5 חדרים</td>\n<td dir=\"rtl\">2,638,000 ש\"ח</td>\n<td dir=\"rtl\">דורש בדיקה חזקה של שטח, חניה, מעלית, ממ\"ד ומיקום</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Check-measures table: 'average asking' 1,250,000 (3 rooms) and 1,750,000 (4 rooms) are 10% and 9.5% above the official medians 1,135,100 and 1,597,500 (1-3.2026); 5 rooms 2,650,000 was consistent; the 2-room, 6+-room and two rent rows have no named source. Replaced by the official medians for 3/4/5 rooms; the 'how to use it' notes are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">טווח או נתון עבודה</th>",
+   "n": 2,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "המספרים בעמוד הם טווחי עבודה והצלבות נתונים, לא שמאות.",
+   "new": "המחירון הרשמי מפרסם חציון לדירות 3, 4 ו-5 חדרים; דירות 2 חדרים ודירות 6 חדרים ומעלה כדאי לבדוק מול עסקאות דומות ברחוב ובשכונה. החציון הוא נקודת ייחוס, לא שמאות.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Follows edit 2: the numbers are no longer 'working ranges'; the 2 and 6+-room rows left the table.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 3,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "נתון כמו ממוצע של כ-1,560,586 ש\"ח או מחיר ממוצע סביב 19,400 ש\"ח למ\"ר יכול לעזור לפתוח בדיקה, אבל לא לסגור מחיר לדירה ספציפית. דירה ברחוב מבוקש בכרמל עם נוף, מעלית וחניה עשויה להתרחק מאוד מהממוצע, ודירה ישנה בקומה גבוהה ללא מעלית עשויה להיות זולה משמעותית גם אם מספר החדרים דומה.",
+   "new": "נתון כמו חציון מחיר העסקה לכל הדירות בעיר, 1,406,400 ש\"ח ברבעון הראשון של 2026 לפי נתוני רשות המסים, יכול לעזור לפתוח בדיקה, אבל לא לסגור מחיר לדירה ספציפית. דירה ברחוב מבוקש בכרמל עם נוף, מעלית וחניה עשויה להתרחק מאוד מהחציון, ודירה ישנה בקומה גבוהה ללא מעלית עשויה להיות זולה משמעותית גם אם מספר החדרים דומה.",
+   "source_keys": [
+    "rooms.all.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "City average 1,560,586 is 11% above the official all-rooms median 1,406,400 (1-3.2026); the 19,400 per-m2 average has no source. Replaced by the official all-rooms median; 'מהממוצע' in the next sentence becomes 'מהחציון'.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 4,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "לכן הטבלה מתאימה כנקודת התחלה, ולא כתחליף להשוואה לפי רחוב וסוג בניין.",
+   "new": "לכן הטבלה הבאה, שמציגה את חציון מחיר העסקה לפי נתוני רשות המסים לרבעון הראשון של 2026 לצד אותו רבעון שנה קודם לכן, מתאימה כנקודת התחלה, ולא כתחליף להשוואה לפי רחוב וסוג בניין.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Introduces the official rooms table of edit 6 and names its source and quarter.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 5,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מספר חדרים</th>\n<th dir=\"rtl\">מחיר מבוקש ממוצע משוער</th>\n<th dir=\"rtl\">מחיר משוער למ\"ר</th>\n<th dir=\"rtl\">פרשנות לקונה או מוכר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">1 עד 2 חדרים</td>\n<td dir=\"rtl\">כ-950,000 עד 980,000 ש\"ח</td>\n<td dir=\"rtl\">כ-16,964 עד 20,780 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">מתאים לדירות קטנות, סטודנטים, דירות ותיקות ונכסים עם רגישות גבוהה למצב הבניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">כ-1,210,000 עד 1,250,000 ש\"ח</td>\n<td dir=\"rtl\">כ-16,667 עד 18,400 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">קטגוריה מרכזית להשוואה בין הדר, נווה שאנן, קריות חיפה ואזורים ותיקים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">כ-1,750,000 עד 1,830,000 ש\"ח</td>\n<td dir=\"rtl\">כ-17,500 עד 19,150 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">שוק משפחתי רחב, מושפע מאוד ממעלית, חניה, ממ\"ד, מרפסת ומוסדות חינוך</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">כ-2,650,000 עד 2,730,000 ש\"ח</td>\n<td dir=\"rtl\">כ-19,630 עד 21,500 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">פער גדול בין דירות רגילות, דירות חדשות ודירות באזורי כרמל מבוקשים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">6 חדרים ומעלה</td>\n<td dir=\"rtl\">כ-3,300,000 עד 3,400,000 ש\"ח</td>\n<td dir=\"rtl\">כ-17,368 עד 21,000 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">קטגוריה שבה שטח, יוקרה, נוף, חניה כפולה ואופי הבניין משנים את המחיר</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מספר חדרים</th>\n<th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th>\n<th dir=\"rtl\">ינואר-מרץ 2025</th>\n<th dir=\"rtl\">שינוי בשנה</th>\n<th dir=\"rtl\">פרשנות לקונה או מוכר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">1,135,100 ש\"ח</td>\n<td dir=\"rtl\">1,129,000 ש\"ח</td>\n<td dir=\"rtl\">עלייה של 0.5%</td>\n<td dir=\"rtl\">קטגוריה מרכזית להשוואה בין הדר, נווה שאנן, קריות חיפה ואזורים ותיקים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">1,597,500 ש\"ח</td>\n<td dir=\"rtl\">1,789,500 ש\"ח</td>\n<td dir=\"rtl\">ירידה של 10.7%</td>\n<td dir=\"rtl\">שוק משפחתי רחב, מושפע מאוד ממעלית, חניה, ממ\"ד, מרפסת ומוסדות חינוך</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">2,638,000 ש\"ח</td>\n<td dir=\"rtl\">2,891,000 ש\"ח</td>\n<td dir=\"rtl\">ירידה של 8.8%</td>\n<td dir=\"rtl\">פער גדול בין דירות רגילות, דירות חדשות ודירות באזורי כרמל מבוקשים</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago",
+    "rooms.3.change_pct",
+    "rooms.4.latest",
+    "rooms.4.year_ago",
+    "rooms.4.change_pct",
+    "rooms.5.latest",
+    "rooms.5.year_ago",
+    "rooms.5.change_pct"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Rooms table: 3 rooms 1,210,000-1,250,000 and 4 rooms 1,750,000-1,830,000 exclude the official medians 1,135,100 and 1,597,500; 5 rooms 2,650,000-2,730,000 was consistent with 2,638,000; the 1-2-room and 6+-room rows and the 'estimated' per-m2 column have no source. Replaced by the official medians with the year-earlier quarter; notes of rows 3-5 kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מחיר מבוקש ממוצע משוער</th>",
+   "n": 6,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג בדיקה</th>\n<th dir=\"rtl\">שאלה מעשית</th>\n<th dir=\"rtl\">מה עלול לשנות את המחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בדיקת דירת 2 חדרים</td>\n<td dir=\"rtl\">האם המחיר קרוב ל-950,000 ש\"ח בגלל מיקום או בגלל מצב הנכס?</td>\n<td dir=\"rtl\">קומה ללא מעלית, בניין ישן, קרבה למוסד לימודים, ביקוש לשכירות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בדיקת דירת 3 חדרים</td>\n<td dir=\"rtl\">האם 1,250,000 ש\"ח משקפים עסקאות סגורות באזור?</td>\n<td dir=\"rtl\">רחוב, שטח רשום, שיפוץ, חניה, נגישות לתחבורה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בדיקת דירת 4 חדרים</td>\n<td dir=\"rtl\">האם 1,750,000 ש\"ח כולל יתרונות משפחתיים אמיתיים?</td>\n<td dir=\"rtl\">ממ\"ד, מרפסת, מעלית, חניה, מוסדות חינוך, רעש וכבישים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בדיקת דירת 5 חדרים</td>\n<td dir=\"rtl\">האם 2,650,000 ש\"ח הוא מחיר שוק או מחיר פתיחה למו\"מ?</td>\n<td dir=\"rtl\">פרויקט חדש, נוף, גודל סלון, מספר חניות, איכות תחזוקה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בדיקת דירה גדולה</td>\n<td dir=\"rtl\">האם 3,300,000 ש\"ח מתאים לנכס או נשען על דירות יוקרה אחרות?</td>\n<td dir=\"rtl\">דניה, כרמל, גבעת זמר, פנטהאוז, גג, נוף, זכויות נוספות</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג בדיקה</th>\n<th dir=\"rtl\">שאלה מעשית</th>\n<th dir=\"rtl\">מה עלול לשנות את המחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בדיקת דירת 2 חדרים</td>\n<td dir=\"rtl\">האם המחיר נובע ממיקום או ממצב הנכס?</td>\n<td dir=\"rtl\">קומה ללא מעלית, בניין ישן, קרבה למוסד לימודים, ביקוש לשכירות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בדיקת דירת 3 חדרים</td>\n<td dir=\"rtl\">האם המחיר משקף עסקאות סגורות באזור? חציון מחיר העסקה בעיר ברבעון הראשון של 2026: 1,135,100 ש\"ח</td>\n<td dir=\"rtl\">רחוב, שטח רשום, שיפוץ, חניה, נגישות לתחבורה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בדיקת דירת 4 חדרים</td>\n<td dir=\"rtl\">האם המחיר כולל יתרונות משפחתיים אמיתיים? חציון מחיר העסקה בעיר ברבעון הראשון של 2026: 1,597,500 ש\"ח</td>\n<td dir=\"rtl\">ממ\"ד, מרפסת, מעלית, חניה, מוסדות חינוך, רעש וכבישים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בדיקת דירת 5 חדרים</td>\n<td dir=\"rtl\">האם המחיר הוא מחיר שוק או מחיר פתיחה למו\"מ? חציון מחיר העסקה בעיר ברבעון הראשון של 2026: 2,638,000 ש\"ח</td>\n<td dir=\"rtl\">פרויקט חדש, נוף, גודל סלון, מספר חניות, איכות תחזוקה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בדיקת דירה גדולה</td>\n<td dir=\"rtl\">האם המחיר מתאים לנכס או נשען על דירות יוקרה אחרות?</td>\n<td dir=\"rtl\">דניה, כרמל, גבעת זמר, פנטהאוז, גג, נוף, זכויות נוספות</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "The questions treat the old asking averages as the reference level (1,250,000 for 3 rooms, 1,750,000 for 4 rooms vs official 1,135,100 / 1,597,500; 950,000 for 2 rooms and 3,300,000 for large flats unsourced). Questions keep their sense without the old figures and show the official city median for 3/4/5 rooms; the third column is kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">שאלה מעשית</th>",
+   "n": 7,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "השאלה הנכונה היא כמה עולה דירה דומה באזור דומה.",
+   "new": "השאלה הנכונה היא כמה עולה דירה דומה באזור דומה. הטבלה הבאה מציגה את חציון מחיר העסקה לפי שכונה ומספר חדרים, לפי נתוני רשות המסים לרבעון הראשון של 2026. בשכונות שאינן מופיעות במחירון שבעמוד, כדאי לבדוק עסקאות דומות ברחוב עצמו.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Introduces the official neighbourhood table of edit 9.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 8,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">אזור או שכונה</th>\n<th dir=\"rtl\">מחיר ממוצע שנצפה בעסקאות או נתוני שוק</th>\n<th dir=\"rtl\">מה מאפיין את המחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">הדר</td>\n<td dir=\"rtl\">כ-549,379 ש\"ח בדוגמאות עסקאות שכונתיות</td>\n<td dir=\"rtl\">רמת מחיר נמוכה יחסית, שונות גבוהה בין רחובות ומצב בניינים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה שאנן</td>\n<td dir=\"rtl\">כ-893,557 ש\"ח בדוגמאות עסקאות</td>\n<td dir=\"rtl\">ביקוש מעורב של משפחות, סטודנטים ומשקיעים, תלוי רחוב ומדרג בניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית חיים מזרחית</td>\n<td dir=\"rtl\">כ-928,636 ש\"ח בדוגמאות עסקאות</td>\n<td dir=\"rtl\">שוק נפרד יחסית מלב הכרמל, רגיש לשטח, מצב ותשתיות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית אליעזר</td>\n<td dir=\"rtl\">כ-668,339 ש\"ח בדוגמאות עסקאות</td>\n<td dir=\"rtl\">מחיר נגיש יחסית, עם השפעות של התחדשות, תחבורה ומרחק מהים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז הכרמל</td>\n<td dir=\"rtl\">כ-1,662,150 ש\"ח בדוגמאות עסקאות</td>\n<td dir=\"rtl\">ביקוש חזק יותר, קרבה לשירותים עירוניים ואופי בנייה איכותי יותר בחלק מהרחובות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אחוזה</td>\n<td dir=\"rtl\">כ-1,617,963 ש\"ח בדוגמאות עסקאות</td>\n<td dir=\"rtl\">אזור מבוקש למשפחות, מושפע ממוסדות חינוך, נגישות ונוף</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כרמל מערבי</td>\n<td dir=\"rtl\">כ-1,246,192 ש\"ח בדוגמאות עסקאות</td>\n<td dir=\"rtl\">טווח רחב לפי קרבה לים, מצב בניין וקומה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בת גלים</td>\n<td dir=\"rtl\">כ-905,695 ש\"ח בדוגמאות עסקאות</td>\n<td dir=\"rtl\">שילוב של חוף, תחבורה, רפואה ודירות ותיקות, עם שונות פנימית גבוהה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דניה והוד הכרמל</td>\n<td dir=\"rtl\">כ-3,394,095 ש\"ח בדוגמאות עסקאות</td>\n<td dir=\"rtl\">פלח יוקרתי, דירות גדולות, בתים ונכסים עם יתרונות מיקום ונוף</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">גבעת זמר</td>\n<td dir=\"rtl\">כ-2,725,356 ש\"ח בדוגמאות עסקאות</td>\n<td dir=\"rtl\">אזור חדש יחסית, מחירים גבוהים יותר, דירות משפחתיות מודרניות</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">אזור או שכונה</th>\n<th dir=\"rtl\">3 חדרים</th>\n<th dir=\"rtl\">4 חדרים</th>\n<th dir=\"rtl\">5 חדרים</th>\n<th dir=\"rtl\">מה מאפיין את המחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">הדר</td>\n<td dir=\"rtl\">1,066,400 ש\"ח</td>\n<td dir=\"rtl\">1,548,300 ש\"ח</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">רמת מחיר נמוכה יחסית, שונות גבוהה בין רחובות ומצב בניינים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה שאנן</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">1,562,600 ש\"ח</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">ביקוש מעורב של משפחות, סטודנטים ומשקיעים, תלוי רחוב ומדרג בניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית חיים מזרחית</td>\n<td dir=\"rtl\">1,308,300 ש\"ח</td>\n<td dir=\"rtl\">1,554,400 ש\"ח</td>\n<td dir=\"rtl\">1,596,500 ש\"ח</td>\n<td dir=\"rtl\">שוק נפרד יחסית מלב הכרמל, רגיש לשטח, מצב ותשתיות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית אליעזר</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">מחיר נגיש יחסית, עם השפעות של התחדשות, תחבורה ומרחק מהים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">מרכז הכרמל</td>\n<td dir=\"rtl\">1,769,300 ש\"ח</td>\n<td dir=\"rtl\">2,882,800 ש\"ח</td>\n<td dir=\"rtl\">3,385,000 ש\"ח</td>\n<td dir=\"rtl\">ביקוש חזק יותר, קרבה לשירותים עירוניים ואופי בנייה איכותי יותר בחלק מהרחובות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אחוזה</td>\n<td dir=\"rtl\">2,315,600 ש\"ח</td>\n<td dir=\"rtl\">2,410,400 ש\"ח</td>\n<td dir=\"rtl\">3,618,300 ש\"ח</td>\n<td dir=\"rtl\">אזור מבוקש למשפחות, מושפע ממוסדות חינוך, נגישות ונוף</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כרמל מערבי</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">2,051,000 ש\"ח</td>\n<td dir=\"rtl\">3,105,900 ש\"ח</td>\n<td dir=\"rtl\">טווח רחב לפי קרבה לים, מצב בניין וקומה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בת גלים</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">שילוב של חוף, תחבורה, רפואה ודירות ותיקות, עם שונות פנימית גבוהה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דניה והוד הכרמל</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">פלח יוקרתי, דירות גדולות, בתים ונכסים עם יתרונות מיקום ונוף</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">גבעת זמר</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">לא מוצג במחירון</td>\n<td dir=\"rtl\">אזור חדש יחסית, מחירים גבוהים יותר, דירות משפחתיות מודרניות</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "neighbourhoods[הדר].rooms.3",
+    "neighbourhoods[הדר].rooms.4",
+    "neighbourhoods[נווה שאנן].rooms.4",
+    "neighbourhoods[קרית חיים מזרחית].rooms.3",
+    "neighbourhoods[קרית חיים מזרחית].rooms.4",
+    "neighbourhoods[קרית חיים מזרחית].rooms.5",
+    "neighbourhoods[מרכז הכרמל].rooms.3",
+    "neighbourhoods[מרכז הכרמל].rooms.4",
+    "neighbourhoods[מרכז הכרמל].rooms.5",
+    "neighbourhoods[אחוזה].rooms.3",
+    "neighbourhoods[אחוזה].rooms.4",
+    "neighbourhoods[אחוזה].rooms.5",
+    "neighbourhoods[כרמל מערבי].rooms.4",
+    "neighbourhoods[כרמל מערבי].rooms.5"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Neighbourhood table: all-rooms 'averages seen in deal examples or market data', no period, no room count, no named source (Hadar 549,379 is half the official Hadar 3-room median 1,066,400). Replaced by the official neighbourhood medians by rooms, 1-3.2026, 'לא פורסם' where a listed neighbourhood has no median; Kiryat Eliezer, Bat Galim, Denia and Hod HaCarmel, Givat Zemer: the city file keeps only 8 neighbourhoods; the official files DO hold 1-3.2026 medians for some of the others (checked 7.10.2026), so these rows say 'לא מוצג במחירון' (not shown in the page's list), never 'לא פורסם'; the description column is kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מחיר ממוצע שנצפה בעסקאות או נתוני שוק</th>",
+   "n": 9,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מספר חדרים</th>\n<th dir=\"rtl\">שכירות חודשית משוערת</th>\n<th dir=\"rtl\">שימוש בבדיקת מחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">1 חדר</td>\n<td dir=\"rtl\">כ-2,187 ש\"ח</td>\n<td dir=\"rtl\">מתאים להשוואת דירות קטנות ויחידות דיור, עם רגישות גבוהה למיקום</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">כ-2,966 ש\"ח</td>\n<td dir=\"rtl\">נקודת ביקורת לדירות קטנות בהדר, בת גלים ואזורים סמוכים למוסדות לימוד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">כ-3,820 ש\"ח</td>\n<td dir=\"rtl\">שימושי במיוחד לדירות רגילות בשוק הרחב של חיפה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">כ-5,412 ש\"ח</td>\n<td dir=\"rtl\">עוזר לבדוק אם דירת משפחה מתומחרת גבוה מדי ביחס לשימוש בה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">כ-7,022 ש\"ח</td>\n<td dir=\"rtl\">מושפע מאוד משכונות יקרות, דירות חדשות ומפרט גבוה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">6 חדרים</td>\n<td dir=\"rtl\">כ-10,400 ש\"ח</td>\n<td dir=\"rtl\">מתאים לבדיקה זהירה של נכסים גדולים, יוקרתיים או חריגים</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מספר חדרים</th>\n<th dir=\"rtl\">שימוש בבדיקת מחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">1 חדר</td>\n<td dir=\"rtl\">מתאים להשוואת דירות קטנות ויחידות דיור, עם רגישות גבוהה למיקום</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">נקודת ביקורת לדירות קטנות בהדר, בת גלים ואזורים סמוכים למוסדות לימוד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">שימושי במיוחד לדירות רגילות בשוק הרחב של חיפה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">עוזר לבדוק אם דירת משפחה מתומחרת גבוה מדי ביחס לשימוש בה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">מושפע מאוד משכונות יקרות, דירות חדשות ומפרט גבוה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">6 חדרים</td>\n<td dir=\"rtl\">מתאים לבדיקה זהירה של נכסים גדולים, יוקרתיים או חריגים</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent by rooms: 'estimated monthly rent' 2,187-10,400 with no named source (the page names no listing sample or index for rent). The rent column is removed; the usage notes stay word for word.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">שימוש בבדיקת מחיר</th>",
+   "n": 10,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "בחיפה, שכירות חציונית סביב 3,400 ש\"ח וממוצעת סביב 3,867 ש\"ח יוצרת נקודת ייחוס כללית.",
+   "new": "בחיפה, שכירות של דירות דומות באותו אזור יוצרת נקודת ייחוס כללית.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent median 3,400 / average 3,867 with no named source; the hypothetical that follows stays.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 11,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שכונה או אזור</th>\n<th dir=\"rtl\">שכירות חודשית משוערת</th>\n<th dir=\"rtl\">מה לבדוק מול מחיר הדירה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה יוסף</td>\n<td dir=\"rtl\">כ-2,348 ש\"ח</td>\n<td dir=\"rtl\">האם מחיר הקנייה משקף אזור נגיש יותר או רק ציפייה עתידית</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">חליסה</td>\n<td dir=\"rtl\">כ-2,500 ש\"ח</td>\n<td dir=\"rtl\">בדיקת מצב בניין, ביקוש לשוכרים ופערים בין רחובות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">עבאס</td>\n<td dir=\"rtl\">כ-2,661 ש\"ח</td>\n<td dir=\"rtl\">בדיקת נגישות, תחבורה ותנאי הדירה בפועל</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">הדר הכרמל</td>\n<td dir=\"rtl\">כ-2,709 ש\"ח</td>\n<td dir=\"rtl\">השוואת דירות משופצות מול דירות ישנות ללא מעלית</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה פז</td>\n<td dir=\"rtl\">כ-2,773 ש\"ח</td>\n<td dir=\"rtl\">בדיקת קהל שוכרים, תחזוקת הבניין וגודל הדירה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">הדר עליון</td>\n<td dir=\"rtl\">כ-2,811 ש\"ח</td>\n<td dir=\"rtl\">הצלבה עם עסקאות מכירה כדי לזהות מחיר חריג</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית אליהו</td>\n<td dir=\"rtl\">כ-3,015 ש\"ח</td>\n<td dir=\"rtl\">בדיקת השפעת תחבורה, קרבה לחוף ותכניות התחדשות</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שכונה או אזור</th>\n<th dir=\"rtl\">מה לבדוק מול מחיר הדירה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה יוסף</td>\n<td dir=\"rtl\">האם מחיר הקנייה משקף אזור נגיש יותר או רק ציפייה עתידית</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">חליסה</td>\n<td dir=\"rtl\">בדיקת מצב בניין, ביקוש לשוכרים ופערים בין רחובות</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">עבאס</td>\n<td dir=\"rtl\">בדיקת נגישות, תחבורה ותנאי הדירה בפועל</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">הדר הכרמל</td>\n<td dir=\"rtl\">השוואת דירות משופצות מול דירות ישנות ללא מעלית</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה פז</td>\n<td dir=\"rtl\">בדיקת קהל שוכרים, תחזוקת הבניין וגודל הדירה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">הדר עליון</td>\n<td dir=\"rtl\">הצלבה עם עסקאות מכירה כדי לזהות מחיר חריג</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">קריית אליהו</td>\n<td dir=\"rtl\">בדיקת השפעת תחבורה, קרבה לחוף ותכניות התחדשות</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rent by neighbourhood: 'estimated monthly rent' 2,348-3,015 with no named source. The rent column is removed; the check notes stay.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מה לבדוק מול מחיר הדירה</th>",
+   "n": 12,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "עסקה מ-2023 לא משקפת בהכרח מחיר ב-2026, ועסקה מדירה חדשה לא משקפת בהכרח בניין ותיק.",
+   "new": "עסקה מ-2023 לא משקפת בהכרח מחיר ב-2026, ועסקה מדירה חדשה לא משקפת בהכרח בניין ותיק. כדי לראות את כיוון השוק, הטבלה הבאה מציגה את חציון מחיר העסקה בחיפה לפי מספר חדרים בחמשת הרבעונים האחרונים שפורסמו, לפי נתוני רשות המסים.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Introduces the official quarterly table of edit 14.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 13,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">דוגמת רחוב או אזור</th>\n<th dir=\"rtl\">מספר עסקאות שנצפה</th>\n<th dir=\"rtl\">מחיר ממוצע משוער</th>\n<th dir=\"rtl\">מה לומדים מזה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">חסן שוקרי</td>\n<td dir=\"rtl\">116 עסקאות</td>\n<td dir=\"rtl\">כ-767,534 ש\"ח</td>\n<td dir=\"rtl\">נתון שימושי לדירות זולות יחסית, אך דורש בדיקת שטח ומצב</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שלמה המלך</td>\n<td dir=\"rtl\">105 עסקאות</td>\n<td dir=\"rtl\">כ-1,432,190 ש\"ח</td>\n<td dir=\"rtl\">מצביע על רמת מחיר ביניים, תלוי מאוד בנכס הספציפי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אמציה המלך</td>\n<td dir=\"rtl\">93 עסקאות</td>\n<td dir=\"rtl\">כ-2,323,838 ש\"ח</td>\n<td dir=\"rtl\">רלוונטי להשוואת נכסים יקרים יותר או גדולים יותר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אלמוג</td>\n<td dir=\"rtl\">88 עסקאות</td>\n<td dir=\"rtl\">כ-2,383,693 ש\"ח</td>\n<td dir=\"rtl\">צריך לבדוק קרבה לים, נוף, בנייה ומפרט</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דרך יד לבנים</td>\n<td dir=\"rtl\">68 עסקאות</td>\n<td dir=\"rtl\">כ-930,573 ש\"ח</td>\n<td dir=\"rtl\">דוגמה לשוק שבו מיקום ומצב הבניין יכולים לשנות מחיר במהירות</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">רבעון</th>\n<th dir=\"rtl\">3 חדרים</th>\n<th dir=\"rtl\">4 חדרים</th>\n<th dir=\"rtl\">5 חדרים</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">ינואר-מרץ 2025</td>\n<td dir=\"rtl\">1,129,000 ש\"ח</td>\n<td dir=\"rtl\">1,789,500 ש\"ח</td>\n<td dir=\"rtl\">2,891,000 ש\"ח</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אפריל-יוני 2025</td>\n<td dir=\"rtl\">1,162,900 ש\"ח</td>\n<td dir=\"rtl\">1,707,300 ש\"ח</td>\n<td dir=\"rtl\">2,920,000 ש\"ח</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">יולי-ספטמבר 2025</td>\n<td dir=\"rtl\">1,148,500 ש\"ח</td>\n<td dir=\"rtl\">1,468,400 ש\"ח</td>\n<td dir=\"rtl\">לא פורסם</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אוקטובר-דצמבר 2025</td>\n<td dir=\"rtl\">1,182,900 ש\"ח</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">2,958,300 ש\"ח</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">ינואר-מרץ 2026</td>\n<td dir=\"rtl\">1,135,100 ש\"ח</td>\n<td dir=\"rtl\">1,597,500 ש\"ח</td>\n<td dir=\"rtl\">2,638,000 ש\"ח</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "rooms.3.quarters[1-3.2025]",
+    "rooms.4.quarters[1-3.2025]",
+    "rooms.5.quarters[1-3.2025]",
+    "rooms.3.quarters[4-6.2025]",
+    "rooms.4.quarters[4-6.2025]",
+    "rooms.5.quarters[4-6.2025]",
+    "rooms.3.quarters[7-9.2025]",
+    "rooms.4.quarters[7-9.2025]",
+    "rooms.3.quarters[10-12.2025]",
+    "rooms.5.quarters[10-12.2025]",
+    "rooms.3.quarters[1-3.2026]",
+    "rooms.4.quarters[1-3.2026]",
+    "rooms.5.quarters[1-3.2026]"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Street table: five street averages (767,534-2,383,693) with deal counts but no period, no room count and no named source. Replaced by the official city medians by rooms for the last five published quarters ('לא פורסם' where the official series has no value: 4 rooms 10-12.2025, 5 rooms 7-9.2025).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מספר עסקאות שנצפה</th>",
+   "n": 14,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "אבל גם מחיר למ\"ר אינו מספר קסם: דירה קטנה ומשופצת יכולה להציג מחיר למ\"ר גבוה יותר מדירה גדולה וישנה.",
+   "new": "אבל גם מחיר למ\"ר אינו מספר קסם: דירה קטנה ומשופצת יכולה להציג מחיר למ\"ר גבוה יותר מדירה גדולה וישנה. כדי למקם את חיפה מול שאר ישראל, הטבלה הבאה משווה את חציון מחיר העסקה בעיר לחציון הארצי של אותו רבעון, לפי נתוני רשות המסים לרבעון הראשון של 2026.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Introduces the official Haifa vs Israel table of edit 16.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 15,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">קטגוריה</th>\n<th dir=\"rtl\">מחיר ממוצע משוער</th>\n<th dir=\"rtl\">שטח ממוצע משוער</th>\n<th dir=\"rtl\">מחיר למ\"ר משוער</th>\n<th dir=\"rtl\">מספר עסקאות בדוגמה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">1 עד 2 חדרים</td>\n<td dir=\"rtl\">כ-980,000 ש\"ח</td>\n<td dir=\"rtl\">כ-48 מ\"ר</td>\n<td dir=\"rtl\">כ-20,780 ש\"ח</td>\n<td dir=\"rtl\">996</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">כ-1,210,000 ש\"ח</td>\n<td dir=\"rtl\">כ-66 מ\"ר</td>\n<td dir=\"rtl\">כ-18,400 ש\"ח</td>\n<td dir=\"rtl\">1,921</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">כ-1,830,000 ש\"ח</td>\n<td dir=\"rtl\">כ-95 מ\"ר</td>\n<td dir=\"rtl\">כ-19,150 ש\"ח</td>\n<td dir=\"rtl\">1,240</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">כ-2,730,000 ש\"ח</td>\n<td dir=\"rtl\">כ-127 מ\"ר</td>\n<td dir=\"rtl\">כ-21,500 ש\"ח</td>\n<td dir=\"rtl\">674</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">6 חדרים ומעלה</td>\n<td dir=\"rtl\">כ-3,400,000 ש\"ח</td>\n<td dir=\"rtl\">כ-160 מ\"ר</td>\n<td dir=\"rtl\">כ-21,000 ש\"ח</td>\n<td dir=\"rtl\">126</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">קטגוריה</th>\n<th dir=\"rtl\">חציון מחיר העסקה בחיפה, ינואר-מרץ 2026</th>\n<th dir=\"rtl\">חציון ארצי, ינואר-מרץ 2026</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">1,135,100 ש\"ח</td>\n<td dir=\"rtl\">1,647,500 ש\"ח</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">1,597,500 ש\"ח</td>\n<td dir=\"rtl\">2,072,000 ש\"ח</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">2,638,000 ש\"ח</td>\n<td dir=\"rtl\">2,920,600 ש\"ח</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">כל הדירות</td>\n<td dir=\"rtl\">1,406,400 ש\"ח</td>\n<td dir=\"rtl\">2,058,800 ש\"ח</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest",
+    "rooms.all.latest",
+    "israel.3",
+    "israel.4",
+    "israel.5",
+    "israel.all"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Category table: 'estimated average' 1,210,000 (3 rooms, +6.6%) and 1,830,000 (4 rooms, +14.6%) vs official 1,135,100 / 1,597,500; 5 rooms 2,730,000 consistent; 1-2 and 6+ rows, per-m2 and deal counts of an unnamed sample unsourced. Replaced by the official Haifa medians next to the Israel medians, 1-3.2026.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מספר עסקאות בדוגמה</th>",
+   "n": 16,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "בדירת יד שנייה, המחיר יכול להיראות נמוך יותר, אך שיפוץ של 150,000 עד 400,000 ש\"ח עשוי לשנות את ההשוואה מול דירה חדשה.",
+   "new": "בדירת יד שנייה, המחיר יכול להיראות נמוך יותר, אך עלות שיפוץ נדרש עשויה לשנות את ההשוואה מול דירה חדשה.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Renovation cost range 150,000-400,000 with no source.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 17,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "דוגמה למוכר: דירת 4 חדרים באחוזה נמצאת בבניין מטופח, עם מעלית וחניה, ומודעות דומות מוצגות סביב 1,850,000 עד 1,950,000 ש\"ח.",
+   "new": "דוגמה למוכר: דירת 4 חדרים נמצאת בבניין מטופח, עם מעלית וחניה, ומודעות דומות באותו רחוב מוצגות סביב 1,850,000 עד 1,950,000 ש\"ח.",
+   "source_keys": [
+    "neighbourhoods[אחוזה].rooms.4",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "The seller example puts Ahuza 4-room listings at 1,850,000-1,950,000 and deals at 1,700,000-1,820,000, while the official Ahuza 4-room median is 2,410,400 (1-3.2026) and now shows in the neighbourhood table. The example keeps its numbers but no longer names Ahuza (a street-level illustration).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 18,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "טווח העבודה הרחב לדירות רגילות בחיפה נע סביב 950,000 עד 2,650,000 ש\"ח לפי מספר חדרים, שכונה, מצב הנכס ושטח. דירות גדולות, חדשות או יוקרתיות בכרמל, דניה, גבעת זמר ואזורים מבוקשים יכולות להגיע לכ-3,300,000 ש\"ח ואף יותר.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה בחיפה היה 1,406,400 ש\"ח לכל הדירות, 1,135,100 ש\"ח לדירת 3 חדרים, 1,597,500 ש\"ח לדירת 4 חדרים ו-2,638,000 ש\"ח לדירת 5 חדרים. המחיר בפועל משתנה לפי מספר חדרים, שכונה, מצב הנכס ושטח, ודירות גדולות, חדשות או יוקרתיות בכרמל, דניה, גבעת זמר ואזורים מבוקשים יכולות להגיע למחירים גבוהים יותר.",
+   "source_keys": [
+    "rooms.all.latest",
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ 'average': the 950,000-2,650,000 range was consistent; the 3,300,000 ceiling has no source. Rewritten from the same official medians as the lead (the median is not called an average).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 19,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "דירת 3 חדרים בחיפה נמצאת סביב 1,210,000 עד 1,250,000 ש\"ח בטווחי עבודה כלליים, עם מחיר למ\"ר סביב 16,667 עד 18,400 ש\"ח. בפועל, דירת 3 חדרים בהדר, נווה שאנן, בת גלים או אחוזה יכולה לקבל תמחור שונה מאוד.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 3 חדרים בחיפה ברבעון הראשון של 2026 היה 1,135,100 ש\"ח, לעומת 1,129,000 ש\"ח שנה קודם לכן. בפועל, דירת 3 חדרים בהדר, נווה שאנן, בת גלים או אחוזה יכולה לקבל תמחור שונה מאוד: באותו רבעון החציון לדירת 3 חדרים היה 1,066,400 ש\"ח בהדר ו-2,315,600 ש\"ח באחוזה.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago",
+    "neighbourhoods[הדר].rooms.3",
+    "neighbourhoods[אחוזה].rooms.3"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ 3 rooms: 1,210,000-1,250,000 excludes the official 1,135,100; per-m2 16,667-18,400 unsourced. Rewritten with the official city median, the year-earlier quarter and two official neighbourhood medians named in the same answer.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 20,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "דירת 4 חדרים בחיפה נעה סביב 1,750,000 עד 1,830,000 ש\"ח בטווחים כלליים.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 4 חדרים בחיפה ברבעון הראשון של 2026 היה 1,597,500 ש\"ח, לעומת 1,789,500 ש\"ח שנה קודם לכן.",
+   "source_keys": [
+    "rooms.4.latest",
+    "rooms.4.year_ago"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ 4 rooms: 1,750,000-1,830,000 excludes the official 1,597,500.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 21,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "בדוגמאות שנבדקו, דניה והוד הכרמל הגיעו סביב 3,394,095 ש\"ח וגבעת זמר סביב 2,725,356 ש\"ח, אך כל נכס דורש בדיקה עצמאית.",
+   "new": "לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 4 חדרים היה 2,882,800 ש\"ח במרכז הכרמל ו-2,410,400 ש\"ח באחוזה, לעומת 1,597,500 ש\"ח בעיר כולה, אך כל נכס דורש בדיקה עצמאית.",
+   "source_keys": [
+    "neighbourhoods[מרכז הכרמל].rooms.4",
+    "neighbourhoods[אחוזה].rooms.4",
+    "rooms.4.latest"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ expensive areas: all-rooms 'examples checked' for Denia/Hod HaCarmel and Givat Zemer, no period or source (no official median for them). Replaced by the official 4-room medians of two areas the same answer names.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 22,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "לדוגמה, בהדר הופיעו נתונים סביב 549,379 ש\"ח ובקריית אליעזר סביב 668,339 ש\"ח בדוגמאות עסקאות, אך מצב הבניין והרחוב יכולים לשנות את התמונה.",
+   "new": "לדוגמה, לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 3 חדרים בהדר היה 1,066,400 ש\"ח, לעומת 1,135,100 ש\"ח בעיר כולה, אך מצב הבניין והרחוב יכולים לשנות את התמונה.",
+   "source_keys": [
+    "neighbourhoods[הדר].rooms.3",
+    "rooms.3.latest"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ cheaper areas: all-rooms 'deal examples' 549,379 (Hadar) and 668,339 (Kiryat Eliezer), no period or source. Replaced by the official Hadar 3-room median (Kiryat Eliezer has none).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 23,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "חציון שכירות סביב 3,400 ש\"ח וממוצע סביב 3,867 ש\"ח יכולים לעזור לבדוק סבירות, אבל מחיר הדירה נקבע גם לפי מיקום, שטח, מצב, זכויות וביקוש קונים.",
+   "new": "שכירות של דירות דומות באותו אזור יכולה לעזור לבדוק סבירות, אבל מחיר הדירה נקבע גם לפי מיקום, שטח, מצב, זכויות וביקוש קונים.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ rent: median 3,400 / average 3,867 with no named source (same as edit 11).",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 24,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4579,
+   "url": "https://nad-lan.co.il/haifa-apartment-prices/",
+   "field": "content",
+   "old": "דירת יד שנייה יכולה להיות זולה יותר במחיר החוזה, אך שיפוץ של 150,000 עד 400,000 ש\"ח עשוי לשנות את הכדאיות.",
+   "new": "דירת יד שנייה יכולה להיות זולה יותר במחיר החוזה, אך עלות שיפוץ נדרש עשויה לשנות את הכדאיות.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "FAQ renovation cost range 150,000-400,000 with no source (same as edit 17).",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 25,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  }
+ ],
+ "live_recheck": {
+  "retrieved_utc": "2026-10-07 11:18:36",
+  "modified": "2026-10-07T12:43:59",
+  "audited_copy_modified": "2026-10-07T12:43:59",
+  "price_list_on_page": true,
+  "body_outside_list_identical_to_audited_copy": "yes",
+  "dry_run": "25 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ }
+}

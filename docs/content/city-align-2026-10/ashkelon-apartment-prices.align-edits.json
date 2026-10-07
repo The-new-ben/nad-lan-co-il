@@ -1,0 +1,723 @@
+{
+ "generated": "7.10.2026",
+ "page": {
+  "id": 4593,
+  "slug": "ashkelon-apartment-prices",
+  "link": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+  "modified": "2026-10-07T13:31:21"
+ },
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages?slug=ashkelon-apartment-prices&_fields=id,link,title,content,modified (content.rendered), public, retrieved 2026-10-07 10:34:26 UTC, 69,517 characters. The price-list section (<section id=\"nlpg\">, the [nadlan_price_guide] shortcode), <script> and <style> are outside the audit.",
+ "facts": "scripts/project-stage/price_guide/cities/ashkelon-apartment-prices.json (official medians from data.nadlan.gov.il; source_keys are JSON paths in that file: rooms.<k>.latest, rooms.<k>.year_ago, rooms.<k>.change_pct, rooms.<k>.quarters[<q>], israel.<k>, neighbourhoods[<name>].rooms.<k>; 'page' = a number kept from the page's own text)",
+ "apply_rules": [
+  "Apply in the listed order on the RAW content (context=edit). Every \"old\" matches content.rendered exactly once at its turn (matches_in_live), except \"replace_all\" entries, which match exactly \"expect_matches\" times.",
+  "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
+  "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
+  "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+ ],
+ "claims_summary": {
+  "claims": {
+   "CONFLICT": 11,
+   "STALE": 0,
+   "UNSOURCED": 23,
+   "CONSISTENT": 2
+  },
+  "figures": {
+   "CONFLICT": 16,
+   "STALE": 0,
+   "UNSOURCED": 81,
+   "CONSISTENT": 2
+  },
+  "edits": 11,
+  "tier1": 11,
+  "tier2": 0
+ },
+ "notes": "Not audited as claims (illustrations, not market statements): 4,700 / 3,200 rent example (p@52732), the 1.32M / 1.82M / 2.6M if-examples (p@55258), 1,560,000 'a flat sold in some street' (p@56345 first sentence), 2.2M new-flat example (p@62294), 1.75M / 1.58-1.65M if-example (p@62980 first sentence). Rent and listing figures are outside the official list and are kept where the page dates its check (6.6.2026) and names the kind of source. The 3-room median fell 20.6% in one quarter (1,142,100 in 10-12.2025 to 918,100 in 1-3.2026); the FAQ shows both quarters.",
+ "claims": [
+  {
+   "id": 1,
+   "where": "p@4300",
+   "quote": "דירת 2 חדרים ... סביב 850,000-1,050,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 1",
+   "note": "no official 2-room series, no source; dropped"
+  },
+  {
+   "id": 2,
+   "where": "p@4300",
+   "quote": "דירת 3 חדרים סביב 1.0-1.35 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "918,100 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 1",
+   "note": ""
+  },
+  {
+   "id": 3,
+   "where": "p@4300",
+   "quote": "דירת 4 חדרים סביב 1.45-1.85 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "1,405,800 (1-3.2026)",
+   "verdict": "CONFLICT",
+   "action": "edit 1",
+   "note": ""
+  },
+  {
+   "id": 4,
+   "where": "p@4300",
+   "quote": "דירת 5 חדרים סביב 1.9-2.5 מיליון ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "1,891,000 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 1",
+   "note": "restated as the median inside the same rewrite"
+  },
+  {
+   "id": 5,
+   "where": "p@4300",
+   "quote": "בשכירות, נקודת האמצע העירונית סביב 3,500 ש\"ח",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (dated listing source on the page, 4.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 6,
+   "where": "p@4300",
+   "quote": "טווחים של כ-2,300 ש\"ח ... ועד כ-5,000-5,800 ש\"ח",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 1",
+   "note": "5,800 appears nowhere else on the page; dropped"
+  },
+  {
+   "id": 7,
+   "where": "p@4300",
+   "quote": "בערכי ביקוש של כ-10,900-17,400 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing data, page checked 6.6.2026; relabelled as asking)",
+   "note": ""
+  },
+  {
+   "id": 8,
+   "where": "p@42581",
+   "quote": "3,097 דירות ובתים למכירה; שכירות ממוצעת 3,500; מדיאן 3,500 (279 מודעות); ממוצע 4,130",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 9,
+   "where": "p@44652",
+   "quote": "מדיאן שכירות 3,209 בברנע ... 2,918 בנווה ים",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 9,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 10,
+   "where": "tr@47027",
+   "quote": "2 חדרים | 850,000-1,050,000 | כ-870,000 | כ-17,400 למ\"ר",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 11,
+   "where": "tr@47256",
+   "quote": "3 חדרים | 1,000,000-1,350,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "918,100",
+   "verdict": "CONFLICT",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 12,
+   "where": "tr@47256",
+   "quote": "3 חדרים | עוגן ביקוש כ-1,200,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 1,
+   "official": "918,100",
+   "verdict": "CONFLICT",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 13,
+   "where": "tr@47256",
+   "quote": "3 חדרים | כ-15,789 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "3",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 3",
+   "note": "column removed; the figure stays in the per-m2 FAQ as an asking anchor"
+  },
+  {
+   "id": 14,
+   "where": "tr@47498",
+   "quote": "4 חדרים | 1,450,000-1,850,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "1,405,800",
+   "verdict": "CONFLICT",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 15,
+   "where": "tr@47498",
+   "quote": "4 חדרים | עוגן ביקוש כ-1,690,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "1,405,800",
+   "verdict": "CONFLICT",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 16,
+   "where": "tr@47498",
+   "quote": "4 חדרים | כ-15,089 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "4",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 17,
+   "where": "tr@47744",
+   "quote": "5 חדרים | 1,900,000-2,500,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "1,891,000 (within rounding of the floor)",
+   "verdict": "CONSISTENT",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 18,
+   "where": "tr@47744",
+   "quote": "5 חדרים | עוגן ביקוש כ-2,200,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 1,
+   "official": "1,891,000",
+   "verdict": "CONFLICT",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 19,
+   "where": "tr@47744",
+   "quote": "5 חדרים | כ-15,068 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "5",
+   "figures": 1,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 20,
+   "where": "tr@47972",
+   "quote": "6 חדרים ומעלה | 2,800,000-3,800,000 | כ-3,500,000 | כ-10,938 למ\"ר",
+   "measure": "sale",
+   "rooms": "6",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 3",
+   "note": ""
+  },
+  {
+   "id": 21,
+   "where": "p@49901",
+   "quote": "מדיאן שכירות 5,287 בעיר היין, 5,053 במרינה, 4,980 באגמים",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 22,
+   "where": "tr@50476..51981",
+   "quote": "טבלת מדיאן שכירות לפי שכונה (9 שורות)",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 9,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 23,
+   "where": "p@52732",
+   "quote": "מדגם 279 מודעות: מדיאן 3,500, ממוצע 4,130, 3 חדרים 3,629 מול 4,400 ארצי",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 24,
+   "where": "p@53236",
+   "quote": "293 מודעות, ממוצע 4,108, מדיאן 3,500, עדכון 4 ביוני 2026",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (dated: 4.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 25,
+   "where": "tr@53928..55034",
+   "quote": "טבלת מדיאן שכירות לפי חדרים (6 שורות + מקור נוסף)",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 10,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 26,
+   "where": "p@56345",
+   "quote": "באפרידר דירת 4 חדרים 100 מ\"ר נמכרה ב-1,560,000 ש\"ח, 10 באפריל 2025",
+   "measure": "deal",
+   "rooms": "4",
+   "figures": 2,
+   "official": "Afridar 4 rooms 1,506,400 (1-3.2026)",
+   "verdict": "UNSOURCED",
+   "action": "edit 5",
+   "note": "'example in the style of market data', no named source"
+  },
+  {
+   "id": 27,
+   "where": "p@56794",
+   "quote": "רחוב עלי 74 עסקאות 1,147,202 ... יוספטל 934,416",
+   "measure": "sale_street",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": "no source, no period, mixed property types"
+  },
+  {
+   "id": 28,
+   "where": "tr@57411..58028",
+   "quote": "טבלת ממוצעי רחוב (4 שורות)",
+   "measure": "sale_street",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 7",
+   "note": ""
+  },
+  {
+   "id": 29,
+   "where": "tr@58218",
+   "quote": "אפרידר, דירת 4 חדרים | 1,560,000 | 15,600 למ\"ר | 10/04/2025",
+   "measure": "deal",
+   "rooms": "4",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 7",
+   "note": ""
+  },
+  {
+   "id": 30,
+   "where": "p@58847",
+   "quote": "ריבית 3.75% (מאי 2026); מחירים +0.3% חודשי, -1.2% שנתי",
+   "measure": "macro",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (dated Bank of Israel decision, May 2026)",
+   "note": ""
+  },
+  {
+   "id": 31,
+   "where": "p@62980",
+   "quote": "דירה מבוקשת ב-1.69 מיליון, קרובה לעוגן העירוני לדירת 4 חדרים",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 1,
+   "official": "1,405,800",
+   "verdict": "CONFLICT",
+   "action": "edit 8",
+   "note": ""
+  },
+  {
+   "id": 32,
+   "where": "p@65597",
+   "quote": "FAQ: דירת 3 חדרים 1.0-1.35 מיליון, עוגן 1.2 מיליון, 15,789 למ\"ר",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 3,
+   "official": "918,100",
+   "verdict": "CONFLICT",
+   "action": "edit 9",
+   "note": ""
+  },
+  {
+   "id": 33,
+   "where": "p@65927",
+   "quote": "FAQ: דירת 4 חדרים 1.45-1.85 מיליון, עוגן 1.69 מיליון, 15,089 למ\"ר",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 3,
+   "official": "1,405,800",
+   "verdict": "CONFLICT",
+   "action": "edit 10",
+   "note": ""
+  },
+  {
+   "id": 34,
+   "where": "p@66223",
+   "quote": "FAQ: דירת 5 חדרים 1.9-2.5 מיליון, עוגן 2.2 מיליון",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "1,891,000",
+   "verdict": "CONFLICT",
+   "action": "edit 11",
+   "note": "range consistent, anchor in conflict"
+  },
+  {
+   "id": 35,
+   "where": "p@67123",
+   "quote": "FAQ שכירות: מדיאן 3,500, ממוצעים 4,108-4,130, לפי חדרים 2,963-7,127",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 6,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (listing sample, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 36,
+   "where": "p@67733",
+   "quote": "FAQ: עוגני ביקוש 17,400 / 15,789 / 15,089 / 15,068 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 4,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (labelled asking anchors, page checked 6.6.2026)",
+   "note": ""
+  }
+ ],
+ "edits": [
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "מחירי דירות באשקלון נעים כיום בטווח עבודה רחב: דירת 2 חדרים מופיעה לא פעם סביב 850,000-1,050,000 ש\"ח, דירת 3 חדרים סביב 1.0-1.35 מיליון ש\"ח לפי הקשר של מחירי ביקוש ועסקאות, דירת 4 חדרים סביב 1.45-1.85 מיליון ש\"ח, דירת 5 חדרים סביב 1.9-2.5 מיליון ש\"ח, ודירות 6 חדרים, דירות חדשות, דירות גדולות, דירות עם נוף לים או נכסים באזורי פרמיה כמו מרינה, ברנע, אפרידר, אגמים ועיר היין יכולים להיות גבוהים יותר. בשכירות, נקודת האמצע העירונית סביב 3,500 ש\"ח בחודש, עם טווחים של כ-2,300 ש\"ח לדירות קטנות או אזורים זולים יותר ועד כ-5,000-5,800 ש\"ח ואף יותר בדירות גדולות או חדשות. מחיר למ\"ר באשקלון יכול לנוע בערכי ביקוש של כ-10,900-17,400 ש\"ח למ\"ר לפי גודל וסוג נכס, ולכן אין מחיר אחד לעיר: צריך לפצל לפי חדרים, שכונה, קומה, חניה, ממ\"ד, מעלית, קרבה לים, גיל בניין ועסקאות אמת. כל המספרים בעמוד הם טווחי עבודה לבדיקת מחיר, לא שומה ולא הערכת שווי מחייבת.",
+   "new": "מחירי דירות באשקלון, לפי נתוני רשות המסים לרבעון הראשון של 2026: חציון מחיר העסקה היה 918,100 ש\"ח לדירת 3 חדרים, 1,405,800 ש\"ח לדירת 4 חדרים ו-1,891,000 ש\"ח לדירת 5 חדרים. דירות 6 חדרים, דירות חדשות, דירות גדולות, דירות עם נוף לים או נכסים באזורי פרמיה כמו מרינה, ברנע, אפרידר, אגמים ועיר היין יכולים להיות גבוהים יותר. בשכירות, נקודת האמצע העירונית במודעות עומדת סביב 3,500 ש\"ח בחודש, ובדירות גדולות או חדשות השכירות גבוהה יותר. המחיר המבוקש למ\"ר במודעות נע בערך בין 10,900 ל-17,400 ש\"ח לפי גודל וסוג הנכס, ולכן אין מחיר אחד לעיר: צריך לפצל לפי חדרים, שכונה, קומה, חניה, ממ\"ד, מעלית, קרבה לים, גיל בניין ועסקאות אמת. החציון הוא נקודת ייחוס ולא שומה: דירה מסוימת יכולה להיות רחוקה ממנו בגלל הקומה, המצב, החניה והשכונה.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Lead above the list: 3 rooms 1.0-1.35M and 4 rooms 1.45-1.85M exclude the official medians 918,100 and 1,405,800 (1-3.2026); 5 rooms 1.9-2.5M was consistent and is restated as the median. The undated 2-room range and the untraceable rent range 2,300 / 5,000-5,800 are dropped; the 3,500 rent midpoint (dated listing source, 4.6.2026, same page) and the asking per-m2 range (listing data, page checked 6.6.2026) are kept and labelled as listing figures.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 1,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "הטבלה הבאה נותנת טווחי עבודה למחירי דירות באשקלון לפי מספר חדרים. היא משלבת דפוסי ביקוש, נתוני מודעות, דוגמאות עסקאות והיגיון שוק מקומי. הטווחים אינם מחליפים בדיקה פרטנית,",
+   "new": "הטבלה הבאה מציגה את חציון מחיר העסקה באשקלון לפי מספר חדרים, לפי נתוני רשות המסים לרבעון הראשון של 2026, לצד החציון באותו רבעון שנה קודם לכן. החציון אינו מחליף בדיקה פרטנית,",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "The intro announced working ranges built from asking patterns; the table is replaced by official medians (edit 3).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 2,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג נכס</th>\n<th dir=\"rtl\">טווח מחיר עבודה</th>\n<th dir=\"rtl\">עוגן ביקוש שנצפה</th>\n<th dir=\"rtl\">מחיר למ\"ר שנצפה במודעות</th>\n<th dir=\"rtl\">הערת בדיקה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">850,000-1,050,000 ש\"ח</td>\n<td dir=\"rtl\">כ-870,000 ש\"ח</td>\n<td dir=\"rtl\">כ-17,400 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">רגיש מאוד לשטח, מעלית, מצב פנים וקרבה לים או למרכז</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">1,000,000-1,350,000 ש\"ח</td>\n<td dir=\"rtl\">כ-1,200,000 ש\"ח</td>\n<td dir=\"rtl\">כ-15,789 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">קטגוריה נפוצה להשוואה, אך יש פער בין ותיק, משופץ וחדש יחסית</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">1,450,000-1,850,000 ש\"ח</td>\n<td dir=\"rtl\">כ-1,690,000 ש\"ח</td>\n<td dir=\"rtl\">כ-15,089 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">קטגוריית משפחות מרכזית, מושפעת מחניה, ממ\"ד, מרפסת ובית ספר קרוב</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">1,900,000-2,500,000 ש\"ח</td>\n<td dir=\"rtl\">כ-2,200,000 ש\"ח</td>\n<td dir=\"rtl\">כ-15,068 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">טווח רחב במיוחד באגמים, עיר היין, ברנע ומרינה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">6 חדרים ומעלה</td>\n<td dir=\"rtl\">2,800,000-3,800,000 ש\"ח ומעלה</td>\n<td dir=\"rtl\">כ-3,500,000 ש\"ח</td>\n<td dir=\"rtl\">כ-10,938 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">כולל דירות גדולות, פנטהאוזים, דירות גן ובתים, לכן מחיר למ\"ר עשוי להיראות נמוך יותר</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג נכס</th>\n<th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th>\n<th dir=\"rtl\">ינואר-מרץ 2025</th>\n<th dir=\"rtl\">שינוי בשנה</th>\n<th dir=\"rtl\">הערת בדיקה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">918,100 ש\"ח</td>\n<td dir=\"rtl\">1,156,700 ש\"ח</td>\n<td dir=\"rtl\">ירידה של 20.6%</td>\n<td dir=\"rtl\">קטגוריה נפוצה להשוואה, אך יש פער בין ותיק, משופץ וחדש יחסית</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">1,405,800 ש\"ח</td>\n<td dir=\"rtl\">1,597,300 ש\"ח</td>\n<td dir=\"rtl\">ירידה של 12%</td>\n<td dir=\"rtl\">קטגוריית משפחות מרכזית, מושפעת מחניה, ממ\"ד, מרפסת ובית ספר קרוב</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">1,891,000 ש\"ח</td>\n<td dir=\"rtl\">2,142,600 ש\"ח</td>\n<td dir=\"rtl\">ירידה של 11.7%</td>\n<td dir=\"rtl\">טווח רחב במיוחד באגמים, עיר היין, ברנע ומרינה</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago",
+    "rooms.3.change_pct",
+    "rooms.4.latest",
+    "rooms.4.year_ago",
+    "rooms.4.change_pct",
+    "rooms.5.latest",
+    "rooms.5.year_ago",
+    "rooms.5.change_pct"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Rooms table: the 3- and 4-room working ranges and every asking anchor (1.2M, 1.69M, 2.2M) contradict the official medians; the 2-room and 6+-room rows and the per-m2 column have no named or dated source. Replaced by the official medians with the year-earlier quarter; the check notes of rows 3-5 are kept word for word.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">עוגן ביקוש שנצפה</th>",
+   "n": 3,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "בטבלת המחירים בולטת תופעה רגילה: ככל שהדירה גדולה יותר, מחיר כולל עולה, אך מחיר למ\"ר יכול לרדת.",
+   "new": "המחירון הרשמי מפרסם חציון לדירות 3, 4 ו-5 חדרים; דירות 2 חדרים ודירות 6 חדרים ומעלה כדאי לבדוק מול עסקאות דומות ברחוב ובשכונה. בשוק של אשקלון בולטת גם תופעה רגילה: ככל שהדירה גדולה יותר, המחיר הכולל עולה, אך המחיר למ\"ר יכול לרדת.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Follows edit 3: the per-m2 column and the 2 / 6+ rows left the table.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 4,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "דוגמה בסגנון נתוני שוק הציגה באפרידר דירת 4 חדרים בשטח 100 מ\"ר שנמכרה ב-1,560,000 ש\"ח, כלומר כ-15,600 ש\"ח למ\"ר, בתאריך 10 באפריל 2025.",
+   "new": "באפרידר, למשל, חציון מחיר העסקה לדירת 4 חדרים ברבעון הראשון של 2026 היה 1,506,400 ש\"ח, לפי נתוני רשות המסים.",
+   "source_keys": [
+    "neighbourhoods[אפרידר].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "An 'example in the style of market data' from April 2025 with no named source; replaced by the official Afridar 4-room median (1-3.2026).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 5,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "גם טבלאות רחוב מועילות כמדד. למשל, נראו נתוני עסקאות רחוב שבהם רחוב עלי כלל 74 עסקאות עם ממוצע של 1,147,202 ש\"ח, שדרות שפירא כללו 46 עסקאות עם ממוצע של 931,043 ש\"ח, שדרות קדש כללו 44 עסקאות עם ממוצע של 2,216,931 ש\"ח, ויוספטל כלל 30 עסקאות עם ממוצע של 934,416 ש\"ח.",
+   "new": "גם בדיקה לפי שכונה ולפי רחוב מועילה כמדד. לפי נתוני רשות המסים לרבעון הראשון של 2026, חציון מחיר העסקה לדירת 4 חדרים היה 1,055,300 ש\"ח בשכונת בן גוריון, 1,506,400 ש\"ח באפרידר ו-1,667,700 ש\"ח בשכונת האגמים.",
+   "source_keys": [
+    "neighbourhoods[בן גוריון].rooms.4",
+    "neighbourhoods[אפרידר].rooms.4",
+    "neighbourhoods[האגמים].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Street averages (74/46/44/30 deals) with no source, no period and no room count; replaced by official neighbourhood medians.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 6,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מקור השוואה</th>\n<th dir=\"rtl\">מספר עסקאות או דוגמה</th>\n<th dir=\"rtl\">מחיר ממוצע או עסקה</th>\n<th dir=\"rtl\">מחיר למ\"ר אם ידוע</th>\n<th dir=\"rtl\">מה לאמת</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רחוב עלי</td>\n<td dir=\"rtl\">74 עסקאות</td>\n<td dir=\"rtl\">1,147,202 ש\"ח</td>\n<td dir=\"rtl\">לא אחיד</td>\n<td dir=\"rtl\">שטחים, שנים, סוגי נכסים ופיזור מחירים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שדרות שפירא</td>\n<td dir=\"rtl\">46 עסקאות</td>\n<td dir=\"rtl\">931,043 ש\"ח</td>\n<td dir=\"rtl\">לא אחיד</td>\n<td dir=\"rtl\">האם העסקאות דומות לדירה הנבדקת או כוללות נכסים ישנים יותר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">שדרות קדש</td>\n<td dir=\"rtl\">44 עסקאות</td>\n<td dir=\"rtl\">2,216,931 ש\"ח</td>\n<td dir=\"rtl\">לא אחיד</td>\n<td dir=\"rtl\">סוגי דירות, דירות גדולות, בתים או נכסים מיוחדים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">יוספטל</td>\n<td dir=\"rtl\">30 עסקאות</td>\n<td dir=\"rtl\">934,416 ש\"ח</td>\n<td dir=\"rtl\">לא אחיד</td>\n<td dir=\"rtl\">מצב בניין, קומה, מעלית, שיפוץ ורישום</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אפרידר, דירת 4 חדרים</td>\n<td dir=\"rtl\">דוגמת עסקה אחת</td>\n<td dir=\"rtl\">1,560,000 ש\"ח</td>\n<td dir=\"rtl\">15,600 ש\"ח למ\"ר</td>\n<td dir=\"rtl\">שטח 100 מ\"ר, תאריך 10/04/2025 ומאפייני הנכס</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שכונה</th>\n<th dir=\"rtl\">3 חדרים</th>\n<th dir=\"rtl\">4 חדרים</th>\n<th dir=\"rtl\">5 חדרים</th>\n<th dir=\"rtl\">מה לאמת</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אפרידר</td>\n<td dir=\"rtl\">1,413,800 ש\"ח</td>\n<td dir=\"rtl\">1,506,400 ש\"ח</td>\n<td dir=\"rtl\">2,577,000 ש\"ח</td>\n<td dir=\"rtl\">מצב בניין, קומה, מעלית, שיפוץ ורישום</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נווה הדרים</td>\n<td dir=\"rtl\">1,299,600 ש\"ח</td>\n<td dir=\"rtl\">1,560,400 ש\"ח</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">שטחים, שנים, סוגי נכסים ופיזור מחירים</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">בן גוריון</td>\n<td dir=\"rtl\">961,600 ש\"ח</td>\n<td dir=\"rtl\">1,055,300 ש\"ח</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">האם העסקאות דומות לדירה הנבדקת או כוללות נכסים ישנים יותר</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">גני ברנע</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">1,455,100 ש\"ח</td>\n<td dir=\"rtl\">1,758,900 ש\"ח</td>\n<td dir=\"rtl\">שטח דירה, חניה, קומה ומצב הבניין</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">האגמים</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">1,667,700 ש\"ח</td>\n<td dir=\"rtl\">1,805,000 ש\"ח</td>\n<td dir=\"rtl\">סוגי דירות, דירות גדולות, בתים או נכסים מיוחדים</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "neighbourhoods[אפרידר].rooms.3",
+    "neighbourhoods[אפרידר].rooms.4",
+    "neighbourhoods[אפרידר].rooms.5",
+    "neighbourhoods[נווה הדרים].rooms.3",
+    "neighbourhoods[נווה הדרים].rooms.4",
+    "neighbourhoods[בן גוריון].rooms.3",
+    "neighbourhoods[בן גוריון].rooms.4",
+    "neighbourhoods[גני ברנע].rooms.4",
+    "neighbourhoods[גני ברנע].rooms.5",
+    "neighbourhoods[האגמים].rooms.4",
+    "neighbourhoods[האגמים].rooms.5"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Street table (four street averages + the April 2025 Afridar example) without source or period; replaced by the official neighbourhood medians, 1-3.2026 ('לא פורסם' where the official file has no median). Check notes reused from the old rows.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">מקור השוואה</th>",
+   "n": 7,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "בצד הקונה, אם דירה מבוקשת ב-1.69 מיליון ש\"ח, קרובה לעוגן העירוני לדירת 4 חדרים, אך אין לה חניה או ממ\"ד, ייתכן שנדרש תיקון מחיר.",
+   "new": "בצד הקונה, אם דירת 4 חדרים מבוקשת ב-1.69 מיליון ש\"ח, מעל חציון מחיר העסקה העירוני לדירת 4 חדרים ברבעון הראשון של 2026 (1,405,800 ש\"ח), ואין לה חניה או ממ\"ד, ייתכן שנדרש תיקון מחיר.",
+   "source_keys": [
+    "rooms.4.latest",
+    "page"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "Calls 1.69M the city anchor for 4 rooms; the official median is 1,405,800.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 8,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "דירת 3 חדרים באשקלון נעה לרוב סביב 1.0-1.35 מיליון ש\"ח כטווח עבודה, כאשר עוגני ביקוש מסוימים מצביעים סביב 1.2 מיליון ש\"ח וכ-15,789 ש\"ח למ\"ר.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 3 חדרים באשקלון ברבעון הראשון של 2026 היה 918,100 ש\"ח. ברבעון הרביעי של 2025 הוא היה 1,142,100 ש\"ח, ולכן כדאי להשוות גם לעסקאות מהרבעונים הקודמים.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.quarters[10-12.2025]"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ 3 rooms: 1.0-1.35M and the 1.2M anchor vs the official 918,100; the sharp one-quarter drop is shown with the previous quarter.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 9,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "דירת 4 חדרים באשקלון נעה בדרך כלל סביב 1.45-1.85 מיליון ש\"ח, עם עוגן ביקוש שנצפה סביב 1.69 מיליון ש\"ח וכ-15,089 ש\"ח למ\"ר.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 4 חדרים באשקלון ברבעון הראשון של 2026 היה 1,405,800 ש\"ח, לעומת 1,597,300 ש\"ח שנה קודם לכן.",
+   "source_keys": [
+    "rooms.4.latest",
+    "rooms.4.year_ago"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ 4 rooms: 1.45-1.85M and the 1.69M anchor vs the official 1,405,800.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 10,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4593,
+   "url": "https://nad-lan.co.il/ashkelon-apartment-prices/",
+   "field": "content",
+   "old": "דירת 5 חדרים באשקלון נעה לרוב סביב 1.9-2.5 מיליון ש\"ח, כאשר עוגן ביקוש שנצפה עמד סביב 2.2 מיליון ש\"ח.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 5 חדרים באשקלון ברבעון הראשון של 2026 היה 1,891,000 ש\"ח, לעומת 2,142,600 ש\"ח שנה קודם לכן.",
+   "source_keys": [
+    "rooms.5.latest",
+    "rooms.5.year_ago"
+   ],
+   "audit_verdict": "CONFLICT",
+   "verdict": "CONFLICT",
+   "why": "FAQ 5 rooms: the 2.2M anchor vs the official 1,891,000 (the 1.9-2.5M range itself was consistent).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 11,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  }
+ ],
+ "live_recheck": {
+  "retrieved_utc": "2026-10-07 11:18:08",
+  "modified": "2026-10-07T13:31:21",
+  "audited_copy_modified": "2026-10-07T13:31:21",
+  "price_list_on_page": true,
+  "body_outside_list_identical_to_audited_copy": "yes",
+  "dry_run": "11 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ }
+}

@@ -1,0 +1,1540 @@
+{
+ "page": "rova-4",
+ "language": "en",
+ "target_url": "https://nad-lan.co.il/en/north-tel-aviv/rova-4/",
+ "hebrew_url": "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+ "h1": "Rova 4, Tel Aviv's New North: Boundaries, the Plan and Apartment Prices",
+ "faq_h2": "Frequently asked questions",
+ "words_target": 4930,
+ "words_total_range": [
+  4190,
+  5916
+ ],
+ "hebrew_words": 4112,
+ "h2_count": 10,
+ "outline": [
+  {
+   "id": "r4-lead",
+   "part": 1,
+   "hebrew_h2": null,
+   "h2": null,
+   "hebrew_words": 154,
+   "hebrew_table_words": 0,
+   "words": 180,
+   "must_use": [
+    "R4-01",
+    "R4-04",
+    "R4-17",
+    "R4-53",
+    "R4-55",
+    "R4-60"
+   ],
+   "note": "The lead: the H1, then the lead paragraph (<p class=\"lede\">) and the 'in numbers' paragraph, no H2. The site inserts its price list and its area map right after these two paragraphs: do not write them, and do not mention them as technology."
+  },
+  {
+   "id": "r4-where",
+   "part": 1,
+   "hebrew_h2": "איפה נמצא רובע 4: הגבולות והרחובות",
+   "h2": "Where Rova 4 is: boundaries and main streets",
+   "hebrew_words": 456,
+   "hebrew_table_words": 204,
+   "words": 550,
+   "must_use": [
+    "R4-02",
+    "R4-06",
+    "R4-07",
+    "R4-08",
+    "R4-09",
+    "R4-10",
+    "R4-19"
+   ]
+  },
+  {
+   "id": "r4-areas",
+   "part": 1,
+   "hebrew_h2": "השכונות של רובע 4",
+   "h2": "The neighborhoods of Rova 4",
+   "hebrew_words": 244,
+   "hebrew_table_words": 130,
+   "words": 290,
+   "must_use": [
+    "R4-11",
+    "R4-52",
+    "R4-53",
+    "R4-54",
+    "R4-10"
+   ]
+  },
+  {
+   "id": "r4-plan",
+   "part": 1,
+   "hebrew_h2": "תוכנית רובע 4 (תא/3729/א) בשפה פשוטה",
+   "h2": "The Rova 4 plan (TA/3729/A) in plain English",
+   "hebrew_words": 778,
+   "hebrew_table_words": 119,
+   "words": 930,
+   "must_use": [
+    "R4-17",
+    "R4-07",
+    "R4-13",
+    "R4-09",
+    "R4-14",
+    "R4-15",
+    "R4-16",
+    "R4-18",
+    "R4-19",
+    "R4-20",
+    "R4-21",
+    "R4-22"
+   ]
+  },
+  {
+   "id": "r4-prices",
+   "part": 2,
+   "hebrew_h2": "מחירי דירות ברובע 4 ב-2026",
+   "h2": "Apartment prices in Rova 4 in 2026",
+   "hebrew_words": 1100,
+   "hebrew_table_words": 581,
+   "words": 1320,
+   "must_use": [
+    "R4-52",
+    "R4-53",
+    "R4-54",
+    "R4-55",
+    "R4-56",
+    "R4-57",
+    "R4-58",
+    "R4-59",
+    "R4-64",
+    "R4-67",
+    "R4-60",
+    "R4-61",
+    "R4-62",
+    "R4-63",
+    "R4-65",
+    "R4-87",
+    "R4-68",
+    "R4-69",
+    "R4-70",
+    "R4-71",
+    "R4-72",
+    "R4-73",
+    "R4-74",
+    "R4-75",
+    "R4-76",
+    "R4-77",
+    "R4-78",
+    "R4-79",
+    "R4-81",
+    "R4-80",
+    "R4-82",
+    "R4-65b",
+    "R4-66",
+    "R4-84"
+   ]
+  },
+  {
+   "id": "r4-kikar",
+   "part": 3,
+   "hebrew_h2": "כיכר המדינה והמגדלים",
+   "h2": "Kikar HaMedina and the towers",
+   "hebrew_words": 108,
+   "hebrew_table_words": 0,
+   "words": 130,
+   "must_use": [
+    "R4-34",
+    "R4-36"
+   ]
+  },
+  {
+   "id": "r4-renewal",
+   "part": 3,
+   "hebrew_h2": "התחדשות עירונית ברובע 4: הפרויקטים",
+   "h2": "Urban renewal in Rova 4: the projects",
+   "hebrew_words": 430,
+   "hebrew_table_words": 219,
+   "words": 520,
+   "must_use": [
+    "R4-39",
+    "R4-14",
+    "R4-41",
+    "R4-44",
+    "R4-45",
+    "R4-43",
+    "R4-46",
+    "R4-50",
+    "R4-47",
+    "R4-42",
+    "R4-49",
+    "R4-40"
+   ]
+  },
+  {
+   "id": "r4-transport",
+   "part": 3,
+   "hebrew_h2": "תחבורה ברובע 4",
+   "h2": "Getting around Rova 4: light rail and main roads",
+   "hebrew_words": 90,
+   "hebrew_table_words": 0,
+   "words": 110,
+   "must_use": [
+    "R4-31"
+   ]
+  },
+  {
+   "id": "r4-vs3",
+   "part": 3,
+   "hebrew_h2": "רובע 4 או הצפון הישן?",
+   "h2": "Rova 4 or the Old North?",
+   "hebrew_words": 145,
+   "hebrew_table_words": 88,
+   "words": 170,
+   "must_use": [
+    "R4-11b",
+    "R4-06",
+    "R4-07",
+    "R4-02"
+   ]
+  },
+  {
+   "id": "r4-fit",
+   "part": 3,
+   "hebrew_h2": "למי מתאים לגור ברובע 4",
+   "h2": "Who Rova 4 suits",
+   "hebrew_words": 187,
+   "hebrew_table_words": 0,
+   "words": 220,
+   "must_use": [
+    "R4-52",
+    "R4-53",
+    "R4-54",
+    "R4-60",
+    "R4-63",
+    "R4-31",
+    "R4-34",
+    "R4-93"
+   ]
+  },
+  {
+   "id": "r4-faq",
+   "part": 3,
+   "hebrew_h2": "שאלות נפוצות",
+   "h2": "Frequently asked questions",
+   "hebrew_words": 420,
+   "hebrew_table_words": 0,
+   "words": 500,
+   "must_use": [
+    "R4-01",
+    "R4-17",
+    "R4-07",
+    "R4-11b",
+    "R4-52",
+    "R4-53",
+    "R4-54",
+    "R4-55",
+    "R4-60",
+    "R4-63",
+    "R4-16"
+   ],
+   "faq_questions": [
+    "Where is Rova 4 in Tel Aviv?",
+    "What is the Rova 4 plan?",
+    "What is Tel Aviv's quarters plan?",
+    "Which streets are in Rova 4?",
+    "How much does an apartment in Rova 4 cost?",
+    "Where is Rova 3, and how is it different from Rova 4?",
+    "Are Kikar HaMedina and Bavli in Rova 4?",
+    "Will I have to pay a betterment levy in Rova 4?"
+   ]
+  }
+ ],
+ "names": "North Tel Aviv (צפון תל אביב). The New North (הצפון החדש) = Rova 4, Tel Aviv's 4th quarter: write \"Rova 4 (the New North)\" at first mention, then \"Rova 4\" or \"the New North\". The Old North (הצפון הישן) = Rova 3. Kikar HaMedina Towers (מגדלי כיכר המדינה); the square: Kikar HaMedina (once: \"State Square\"). Ramat Aviv, Ramat Aviv Gimel, Green Ramat Aviv, Neve Avivim, Shikun Lamed (שכונת ל׳; in the official data \"Tochnit Lamed\"), Bavli, Sde Dov, Yarkon Park, Tel Aviv University, Ramat Aviv Mall, Einstein Street, Ibn Gabirol, Namir Road, the Ayalon highway, Herzliya, Givat Amal B, Park Tzameret, He Be'Iyar Street, Weizmann, Jabotinsky, Arlozorov, Pinkas, Yehuda HaMaccabi, Shaul HaMelech Boulevard, David HaMelech, Dubnov, Bnei Dan, Be'eri, Henrietta Szold, Ichilov (Tel Aviv Sourasky Medical Center), Tel Aviv Center (Savidor) station, Habima, Rabin Square. Plans: TAMA 38 (the national plan for strengthening buildings, explained once), pinui-binui (evacuation and rebuilding), TA/3729/A. Companies as they write themselves: Hagag Group, Ashdar, Azorim, Shikun & Binui, Bayit VeGag, Africa Israel Renewal (the Hebrew says \"אפריקה התחדשות\"), Adam Shuster, Anshei HaIr, Yaaz, Levinstein Group, Noga. Architect: Moshe Tzur. Tel Aviv-Yafo for the city as a municipality. Rooms: the Israeli count (\"4 rooms\").",
+ "keywords_monthly": [
+  [
+   "tel aviv real estate",
+   480
+  ],
+  [
+   "tel aviv apartments for sale",
+   390
+  ],
+  [
+   "buy apartment in tel aviv",
+   390
+  ],
+  [
+   "ramat aviv",
+   390
+  ],
+  [
+   "sde dov",
+   320
+  ],
+  [
+   "tel aviv neighborhoods",
+   140
+  ],
+  [
+   "old north tel aviv",
+   70
+  ],
+  [
+   "kikar hamedina",
+   70
+  ],
+  [
+   "hamedina square",
+   50
+  ],
+  [
+   "luxury apartments tel aviv",
+   50
+  ],
+  [
+   "north tel aviv",
+   40
+  ],
+  [
+   "kikar hamedina tel aviv",
+   40
+  ],
+  [
+   "tama 38",
+   40
+  ],
+  [
+   "neve avivim",
+   20
+  ],
+  [
+   "bavli tel aviv",
+   20
+  ],
+  [
+   "best neighborhoods in tel aviv",
+   20
+  ],
+  [
+   "tel aviv real estate prices",
+   20
+  ],
+  [
+   "new north tel aviv",
+   "no volume data; Google shows related searches for it"
+  ],
+  [
+   "rova 4 tel aviv / tel aviv district 4",
+   "no volume data"
+  ]
+ ],
+ "serp": "Google (Israel, English) for \"new north tel aviv\": AI overview SHOWN (\"the urban area east of Ibn Gabirol developed after 1948\"); related searches: new north tel aviv for sale / price / for rent / apartments for sale, Old North Tel Aviv, Tel Aviv neighborhoods map, North Star Tel Aviv. People also ask (US, \"north tel aviv neighborhoods real estate\"): What is the most desirable neighborhood to live in Tel Aviv? Can foreigners buy property in Tel Aviv? What are the richest neighborhoods in Tel Aviv? What is the best place for Americans to live in Israel?",
+ "audience": "International buyers (US, UK, Canada, Australia, South Africa) and English-speaking Israelis and olim. They compare in shekels, often buy from abroad, and need Israeli terms decoded once (rooms, TAMA 38, pinui-binui, purchase tax, a median deal price).",
+ "culture": "US spelling (neighborhood) because that is how the searches are typed. Decode the Israeli room count and TAMA 38 once. Warm, confident and factual: a premium real-estate guide, not a warning leaflet. Where the Hebrew speaks to Israeli families, keep it, and add the foreign buyer's angle in words (no new numbers): managing from abroad, a lawyer with a power of attorney, buying does not give residency.",
+ "typography": "Dates as 23 May 2018 or May 2018, or keep the Hebrew style 23.5.2018 in tables; ₪ before the number (₪6,835,800); ranges with \"to\"; no em dash (—) and no en dash (–).",
+ "units": "m² and ₪ only. No square feet, acres, dollars or euros. A dunam may be explained once (1 dunam = 1,000 m²).",
+ "banned": "interface · demo · model (as 3D) · hotspot · overlay · engine · layer · tile · prototype · simulation · technology · \"the system\" · \"the platform\" · digital experience · 3D · Atlas · coming soon · \"free advice\" (only the site's floating bar says it) · any source or media name (Wikipedia, Globes, Calcalist, TheMarker, Ynet, Maariv, Bizportal, Madlan, Yad2) · delve · nestled · boasts · a testament to · red flag · beware · it is important to note · in conclusion",
+ "in_hebrew_marker": "(in Hebrew)",
+ "internal_links": [
+  {
+   "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+   "maps_from": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/north-tel-aviv/bavli/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/north-tel-aviv/",
+   "maps_from": "https://nad-lan.co.il/north-tel-aviv/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/north-tel-aviv/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/israel-purchase-tax-foreign-residents/",
+   "maps_from": "https://nad-lan.co.il/purchase-tax-calculator/",
+   "target_language": "en",
+   "status": 200,
+   "role": "mirror (same-topic page in this language)"
+  },
+  {
+   "url": "https://nad-lan.co.il/apartment-purchase-cost-calculator/",
+   "maps_from": "https://nad-lan.co.il/apartment-purchase-cost-calculator/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/apartment-purchase-cost-calculator/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+   "maps_from": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/tel-aviv-apartment-prices/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/hamedina-en/",
+   "maps_from": "https://nad-lan.co.il/projects/hamedina/",
+   "target_language": "en",
+   "status": 200,
+   "role": "mirror (same-topic page in this language)"
+  },
+  {
+   "url": "https://nad-lan.co.il/urban-renewal/",
+   "maps_from": "https://nad-lan.co.il/urban-renewal/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/urban-renewal/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+   "maps_from": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/north-tel-aviv/old-north/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/en/new-projects/",
+   "anchor_suggestion": "new projects in Israel",
+   "target_language": "en",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  },
+  {
+   "url": "https://nad-lan.co.il/en/buy-property-in-israel/",
+   "anchor_suggestion": "buying a home in Israel from abroad",
+   "target_language": "en",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv-en/",
+   "anchor_suggestion": "Rainbow in Sde Dov",
+   "target_language": "en",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  },
+  {
+   "url": "https://nad-lan.co.il/en/brokers/",
+   "anchor_suggestion": "licensed real estate brokers",
+   "target_language": "en",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  }
+ ],
+ "avoid_headings_first_4_words": [
+  "20 80 10 90",
+  "50 questions to ask",
+  "a 0 99 mortgage",
+  "a final 10 step",
+  "a staged shortlist and",
+  "a video call with",
+  "agree the family decision",
+  "amenities the pool is",
+  "apartment and project types",
+  "apartment prices in kikar",
+  "appoint independent help and",
+  "aura price protection insurance",
+  "aura s apartment with",
+  "aura s price protection",
+  "av gad trade in",
+  "aviv melisron and the",
+  "azorim 10 0 nis",
+  "broker minisites your real",
+  "build a cost and",
+  "buyer changes upgrades and",
+  "buyer faqs",
+  "buyer guides",
+  "buyer guides nadlan",
+  "buying a family home",
+  "buying a new build",
+  "buying an apartment in",
+  "buying property in israel",
+  "buying remotely lawyer power",
+  "cancellations the bill from",
+  "choose the location around",
+  "closed project finance and",
+  "contents",
+  "deal cancellations the bill",
+  "defect periods warranty and",
+  "delayed delivery and compensation",
+  "developer loans the developer",
+  "everything around the project",
+  "everything on one map",
+  "fifteen checks before an",
+  "final buyer fit table",
+  "final buyer matching table",
+  "final ranking which incentives",
+  "financing advice and design",
+  "free management fees furniture",
+  "frequently asked questions",
+  "frequently asked questions about",
+  "from the plots of",
+  "furniture kitchens and turnkey",
+  "gindi vogue in sde",
+  "how it works",
+  "how much does an",
+  "how to buy an",
+  "how to inspect a",
+  "how to negotiate with",
+  "how to search for",
+  "investigating the developer contractor",
+  "israel compared with developer",
+  "israel developer deals 2026",
+  "israel s major developer",
+  "israel versus other markets",
+  "israeli property language that",
+  "kikar hamedina on the",
+  "kikar hamedina park about",
+  "kikar hamedina tel aviv",
+  "kikar hamedina towers apartments",
+  "kikar hamedina towers tel",
+  "kikar hamedina towers the",
+  "location due diligence city",
+  "lov lod begin paying",
+  "minisites for real estate",
+  "new build or resale",
+  "new build projects in",
+  "new construction versus an",
+  "occupancy approval handover and",
+  "official sources update date",
+  "open your site free",
+  "ownership while living abroad",
+  "payment schedules the construction",
+  "plans",
+  "pool spa gym and",
+  "prashkovsky s apartment auction",
+  "pre sale active construction",
+  "price where the project",
+  "prices around the project",
+  "purchase tax for foreign",
+  "ranking israeli developer incentives",
+  "red flags that justify",
+  "rent to own in",
+  "source of funds banking",
+  "strange but useful comparisons",
+  "strange comparisons that make",
+  "the 2026 developer deal",
+  "the apartments sizes balconies",
+  "the bottom line do",
+  "the construction input index",
+  "the contract specification and",
+  "the developer pays your",
+  "the kikar hamedina film",
+  "the leading projects in",
+  "the prashkovsky apartment auction",
+  "the purchase process in",
+  "the real cost of",
+  "the real economic price",
+  "virtual tour of kikar",
+  "what counts as a",
+  "what does value for",
+  "what foreign buyers are",
+  "what is included",
+  "what it costs to",
+  "what photographs plans video",
+  "what the home must",
+  "when a campaign signals",
+  "when is a promotion",
+  "when the developer pays",
+  "when will kikar hamedina",
+  "which buyer should choose",
+  "which campaign suits which",
+  "which israeli city gives",
+  "which tower floor and",
+  "why developers prefer almost",
+  "why it works",
+  "your next practical step"
+ ],
+ "not_published": [
+  "the 5-room median of the southern part in Q1 2026",
+  "the floor of the Remez 27 penthouses",
+  "the developers of Remez 27 and Zlotzisti 4",
+  "the 'before' state of Remez 44, 22, 25 and 42 and of Henkin 3",
+  "rents and yields in Rova 4",
+  "school catchment areas"
+ ],
+ "seo_request": "SEO title in English, at most 60 characters, containing \"North Tel Aviv\" (hub) / \"Rova 4\" and \"New North\" (Rova 4). Description in English, at most 155 characters.",
+ "claims": [
+  {
+   "claim_id": "G-01",
+   "topic": "convention",
+   "claim": "The Israeli room count includes the living room: '4 rooms' = a living room and 3 bedrooms; '2.5 rooms' has a half room.",
+   "numbers": [
+    "2",
+    "3",
+    "4",
+    "5",
+    "2.5"
+   ],
+   "write_as": "Explain once for a foreign reader; never convert to bedrooms in a table."
+  },
+  {
+   "claim_id": "G-02",
+   "topic": "convention",
+   "claim": "A dunam (the Israeli land unit) is 1,000 m2.",
+   "numbers": [
+    "1",
+    "1,000"
+   ],
+   "write_as": "Allowed once, to explain the unit. No other conversions (no sq ft, no acres, no hectares, no dollars or euros)."
+  },
+  {
+   "claim_id": "G-03",
+   "topic": "convention",
+   "claim": "Quarters: 'the first quarter of 2026' = January to March 2026 (Q1, 1-3.2026); 'the fourth / last quarter' = Q4.",
+   "numbers": [
+    "1",
+    "3",
+    "4",
+    "1-3"
+   ],
+   "write_as": "'Q1 2026' or 'the first quarter of 2026'. Keep the year."
+  },
+  {
+   "claim_id": "R4-01",
+   "topic": "where",
+   "claim": "Rova 4 = the New North (הצפון החדש), Tel Aviv's 4th quarter: between Ibn Gabirol Street (west) and the Ayalon highway (east), the Yarkon stream (north) and Shaul HaMelech Boulevard (south); Kikar HaMedina at its centre; Bavli, Givat Amal B and Park Tzameret inside it.",
+   "numbers": [
+    "4"
+   ]
+  },
+  {
+   "claim_id": "R4-02",
+   "topic": "where",
+   "claim": "Tel Aviv-Yafo is divided into nine quarters numbered north to south; Rova 4 is one of the four quarters of the city centre; Ibn Gabirol separates it from Rova 3 (west) and Shaul HaMelech from Rova 6, the business district (south). The quarters north of the Yarkon are 1 and 2; the Old North is Rova 3. The municipality calls Rova 4 'the New North'.",
+   "numbers": [
+    "9",
+    "4",
+    "3",
+    "6",
+    "1",
+    "2"
+   ]
+  },
+  {
+   "claim_id": "R4-04",
+   "topic": "where",
+   "claim": "About 51,500 people lived in Rova 4 in 2022 (municipal data).",
+   "numbers": [
+    "51,500",
+    "2022"
+   ],
+   "date": "2022",
+   "conflict": "Other counts 50,829 / 42,746: never used."
+  },
+  {
+   "claim_id": "R4-06",
+   "topic": "where",
+   "claim": "Rova 4 was built mostly after 1948 and until the 1980s, so its streets are wider and its plots about 50% larger than in the Old North; residential towers since the 1980s; planning designates the eastern strip by the Ayalon for high towers.",
+   "numbers": [
+    "1948",
+    "80",
+    "1980",
+    "50"
+   ]
+  },
+  {
+   "claim_id": "R4-07",
+   "topic": "plan",
+   "claim": "The plan area is about 2,825 dunam; the plan allows about 5,100 additional apartments, assuming only about half (50%) of the buildings are realised.",
+   "numbers": [
+    "2,825",
+    "5,100",
+    "50"
+   ],
+   "date": "4.6.2018"
+  },
+  {
+   "claim_id": "R4-08",
+   "topic": "where",
+   "claim": "Inside Rova 4: Kikar HaMedina, the Ichilov medical centre, the Tel Aviv Museum compound (the Performing Arts Center, Beit Ariela, the courthouse), Tel Aviv Center railway station with the 2000 terminal (מסוף 2000). Habima and Rabin Square are in Rova 3, not in Rova 4.",
+   "numbers": [
+    "2000",
+    "3",
+    "4"
+   ],
+   "write_as": "'the 2000 Terminal' is a name."
+  },
+  {
+   "claim_id": "R4-09",
+   "topic": "plan",
+   "claim": "New buildings by street type (floors include the ground floor, plus partial roof floors): main streets Pinkas, Namir Road, Jabotinsky, Weizmann: 8 + 1; Arlozorov: 7 + 1 under the quarter plan, while the Arlozorov plan allows up to 10 floors east of Ibn Gabirol; a street that is not a main street: 6 + 2; the UNESCO declared area (David HaMelech, Dubnov, Shaul HaMelech): 6 + 1; the low-rise areas: 4 + 1.",
+   "numbers": [
+    "8",
+    "1",
+    "7",
+    "10",
+    "6",
+    "2",
+    "4"
+   ]
+  },
+  {
+   "claim_id": "R4-10",
+   "topic": "plan",
+   "claim": "Planning designates the eastern strip for towers of about 40 floors and more (Park Tzameret).",
+   "numbers": [
+    "40"
+   ]
+  },
+  {
+   "claim_id": "R4-11",
+   "topic": "neighbourhoods",
+   "claim": "In the official deal data the area between Ibn Gabirol and Namir Road is three neighbourhoods all called the New North: the northern part, the Kikar HaMedina area and the southern part; east of Namir to the Ayalon: Bavli, Givat Amal B, Park Tzameret.",
+   "numbers": [
+    "3"
+   ]
+  },
+  {
+   "claim_id": "R4-13",
+   "topic": "plan",
+   "claim": "Rights are volumetric: coverage between building lines times the number of floors, plus the ground floor and setback roof floors. A plot within 25 m of a main street counts as facing it; on a plot of 750 m2 or more coverage may not exceed 50%; the number of apartments derives from a coefficient of 90 m2 per apartment. The plan covers ten blocks (gush); check by block and parcel.",
+   "numbers": [
+    "25",
+    "750",
+    "50",
+    "90",
+    "10"
+   ]
+  },
+  {
+   "claim_id": "R4-14",
+   "topic": "renewal",
+   "claim": "Around the square an old 4-floor building typically becomes a boutique building of 8 or 9 floors (7 to 9 in the renewal section) with almost twice the apartments.",
+   "numbers": [
+    "4",
+    "8",
+    "9",
+    "7",
+    "2"
+   ],
+   "date": "5.10.2026"
+  },
+  {
+   "claim_id": "R4-15",
+   "topic": "plan",
+   "claim": "Additions to an existing building: a building of up to 4 floors on a main street (Pinkas, Arlozorov, Namir, Jabotinsky, Shaul HaMelech): up to 230% of the roof area, up to 3 more floors and closing the pilotis floor; other streets: up to 165% and 2 floors and closing the pilotis; a ground-attached condominium of up to 2 floors: up to 165% and 2 floors; 2 floors over pilotis in the housing-estate area: up to 40 m2 per apartment and up to 65% of the roof area.",
+   "numbers": [
+    "4",
+    "230",
+    "3",
+    "165",
+    "2",
+    "40",
+    "65"
+   ],
+   "date": "4.6.2018"
+  },
+  {
+   "claim_id": "R4-16",
+   "topic": "plan",
+   "claim": "Betterment levy: additions under TAMA 38 were exempt; the plan's rights can be levied by the local committee at half (50%) of the increase in value, valued as of the approval date 23.5.2018; professionals estimated hundreds of thousands of shekels per apartment; an appeal within 45 days of receiving the assessment; buyers should agree in the contract who pays.",
+   "numbers": [
+    "38",
+    "50",
+    "23.5.2018",
+    "45"
+   ],
+   "write_as": "'hundreds of thousands of shekels' stays in words."
+  },
+  {
+   "claim_id": "R4-17",
+   "topic": "plan",
+   "claim": "Plan TA/3729/A (תא/3729/א), a district committee plan for the residential buildings of the quarter (without plots on Ibn Gabirol): deposit published 14.11.2012, approved by the district committee 23.5.2018, published for validity 30.5.2018 ('in force since May 2018'). Before it each building was checked under TAMA 38 and old plans; it replaced older plans on rights, balconies, roof apartments and roof exits.",
+   "numbers": [
+    "3729",
+    "14.11.2012",
+    "23.5.2018",
+    "30.5.2018",
+    "2012",
+    "2018",
+    "5.2018",
+    "38"
+   ],
+   "conflict": "'28.5.2018' in one source: never used."
+  },
+  {
+   "claim_id": "R4-18",
+   "topic": "plan",
+   "claim": "In 2019 the rear building line in the housing-estate strip between Bnei Dan and Yehuda HaMaccabi was amended to 4.5 m instead of 5 m.",
+   "numbers": [
+    "2019",
+    "4.5",
+    "5"
+   ]
+  },
+  {
+   "claim_id": "R4-19",
+   "topic": "plan",
+   "claim": "The Arlozorov plan (TA/4474) came into force in 2024: a mixed-use street with commerce and employment on the ground and mezzanine floors, up to 10 floors in all east of Ibn Gabirol, about 600 more apartments along the street; the Purple Line is planned along it.",
+   "numbers": [
+    "4474",
+    "2024",
+    "10",
+    "600"
+   ]
+  },
+  {
+   "claim_id": "R4-20",
+   "topic": "plan",
+   "claim": "On 4.12.2024 the local committee decided to promote a plan adding commerce on the ground floors of Yehuda HaMaccabi, Pinkas, Jabotinsky, Weizmann and Shaul HaMelech (five streets); per the municipality the quarter lacks about 20,000 m2 of commerce against about 18,000 additional apartments from the quarter plan and other plans; the same decision recommended no building permits for three years on residential plots on Jabotinsky, Pinkas, Yehuda HaMaccabi and Weizmann (four streets), with exceptions.",
+   "numbers": [
+    "4.12.2024",
+    "2024",
+    "5",
+    "20,000",
+    "18,000",
+    "3",
+    "4"
+   ],
+   "write_as": "Tell buyers to check the current status of the restriction."
+  },
+  {
+   "claim_id": "R4-21",
+   "topic": "plan",
+   "claim": "On 18.5.2026 a further amendment, TA/3729B (תא/3729ב), was published for validity; it changes the rules for the low-rise areas.",
+   "numbers": [
+    "18.5.2026",
+    "2026",
+    "3729"
+   ]
+  },
+  {
+   "claim_id": "R4-22",
+   "topic": "buying",
+   "claim": "Before choosing an apartment ask four questions (the street and what the plan allows; the permit restriction on main streets; the renewal agreement's stage, the difference between signature, committee decision and permit, three different stages; who pays the betterment levy).",
+   "numbers": [
+    "4",
+    "3"
+   ]
+  },
+  {
+   "claim_id": "R4-52",
+   "topic": "prices",
+   "claim": "Official median deal price, first quarter of 2026: the New North, northern part: 3 rooms ₪4,434,900; 4 rooms ₪6,042,800; 5 rooms ₪7,704,000.",
+   "numbers": [
+    "4,434,900",
+    "6,042,800",
+    "7,704,000",
+    "2026",
+    "3",
+    "4",
+    "5",
+    "1"
+   ],
+   "date": "1-3.2026",
+   "write_as": "Full numbers. A median is a whole-apartment price."
+  },
+  {
+   "claim_id": "R4-53",
+   "topic": "prices",
+   "claim": "Median, first quarter of 2026: the New North, Kikar HaMedina area: 3 rooms ₪4,943,500; 4 rooms ₪6,835,800; 5 rooms ₪8,455,800.",
+   "numbers": [
+    "4,943,500",
+    "6,835,800",
+    "8,455,800",
+    "2026",
+    "3",
+    "4",
+    "5",
+    "1"
+   ],
+   "date": "1-3.2026"
+  },
+  {
+   "claim_id": "R4-54",
+   "topic": "prices",
+   "claim": "Median, first quarter of 2026: the New North, southern part: 3 rooms ₪4,562,000; 4 rooms ₪6,910,000; 5 rooms: no median published.",
+   "numbers": [
+    "4,562,000",
+    "6,910,000",
+    "2026",
+    "3",
+    "4",
+    "5",
+    "1"
+   ],
+   "date": "1-3.2026",
+   "write_as": "'not published' for the empty cell."
+  },
+  {
+   "claim_id": "R4-55",
+   "topic": "prices",
+   "claim": "Median, first quarter of 2026, all Tel Aviv-Yafo: 3 rooms ₪4,225,800; 4 rooms ₪5,229,800; 5 rooms ₪7,497,700.",
+   "numbers": [
+    "4,225,800",
+    "5,229,800",
+    "7,497,700",
+    "2026",
+    "3",
+    "4",
+    "5",
+    "1"
+   ],
+   "date": "1-3.2026"
+  },
+  {
+   "claim_id": "R4-56",
+   "topic": "prices",
+   "claim": "Gap above the city, Q1 2026 (computed): 4 rooms: Kikar area +30.7%, southern part +32.1%, northern part +15.5%; 3 rooms: from +4.9% (northern part) to +17.0% (Kikar area).",
+   "numbers": [
+    "30.7",
+    "32.1",
+    "15.5",
+    "4.9",
+    "17.0",
+    "4",
+    "3"
+   ]
+  },
+  {
+   "claim_id": "R4-57",
+   "topic": "prices",
+   "claim": "4-room median in the first quarter of each year (northern part / Kikar area / southern part / Tel Aviv-Yafo): 2023: 6,281,300 / 6,573,800 / 7,020,100 / 4,638,500; 2024: 6,001,300 / not published / 6,293,100 / 4,697,600; 2025: 5,681,700 / 6,698,300 / 6,777,900 / 4,723,800; 2026: 6,042,800 / 6,835,800 / 6,910,000 / 5,229,800.",
+   "numbers": [
+    "6,281,300",
+    "6,573,800",
+    "7,020,100",
+    "4,638,500",
+    "6,001,300",
+    "6,293,100",
+    "4,697,600",
+    "5,681,700",
+    "6,698,300",
+    "6,777,900",
+    "4,723,800",
+    "6,042,800",
+    "6,835,800",
+    "6,910,000",
+    "5,229,800",
+    "2023",
+    "2024",
+    "2025",
+    "2026",
+    "4",
+    "1"
+   ]
+  },
+  {
+   "claim_id": "R4-58",
+   "topic": "prices",
+   "claim": "3-room median in the first quarter of each year (northern / Kikar / southern / Tel Aviv-Yafo): 2023: 4,434,300 / 5,100,300 / 4,759,300 / 3,293,800; 2024: 4,310,100 / 5,120,300 / 5,192,200 / 3,672,700; 2025: 4,993,800 / not published / 4,878,400 / 3,704,300; 2026: 4,434,900 / 4,943,500 / 4,562,000 / 4,225,800.",
+   "numbers": [
+    "4,434,300",
+    "5,100,300",
+    "4,759,300",
+    "3,293,800",
+    "4,310,100",
+    "5,120,300",
+    "5,192,200",
+    "3,672,700",
+    "4,993,800",
+    "4,878,400",
+    "3,704,300",
+    "4,434,900",
+    "4,943,500",
+    "4,562,000",
+    "4,225,800",
+    "2023",
+    "2024",
+    "2025",
+    "2026",
+    "3",
+    "1"
+   ]
+  },
+  {
+   "claim_id": "R4-59",
+   "topic": "prices",
+   "claim": "Over these three years (Q1 2023 to Q1 2026) the 4-room median rose 12.7% in Tel Aviv, while in the three New North neighbourhoods it moved between -3.8% and +4.0%; for 3 rooms: +28.3% in the city, -3.1% in the Kikar area. One quarter's median depends on what sold in it: read the trend.",
+   "numbers": [
+    "12.7",
+    "3.8",
+    "4.0",
+    "28.3",
+    "3.1",
+    "3",
+    "4",
+    "2023",
+    "2026",
+    "1"
+   ]
+  },
+  {
+   "claim_id": "R4-64",
+   "topic": "prices",
+   "claim": "Professionals in the quarter estimate prices at 10% to 15% below the peak; appraisers about 11%; premium apartments were barely hit.",
+   "numbers": [
+    "10",
+    "15",
+    "11"
+   ],
+   "date": "5.10.2026"
+  },
+  {
+   "claim_id": "R4-67",
+   "topic": "prices",
+   "claim": "The official house price index published on 15.9.2026: Tel Aviv district -0.9% over the year.",
+   "numbers": [
+    "15.9.2026",
+    "0.9"
+   ]
+  },
+  {
+   "claim_id": "R4-60",
+   "topic": "prices",
+   "claim": "New buildings around the square: ₪63,000 to ₪68,000 per m2 in recently marketed projects (marketing price, 10.2026), after ₪70,000 to ₪75,000 per m2 at the peak.",
+   "numbers": [
+    "63,000",
+    "68,000",
+    "70,000",
+    "75,000",
+    "10.2026"
+   ],
+   "date": "5.10.2026",
+   "write_as": "These are marketing prices, not deals."
+  },
+  {
+   "claim_id": "R4-61",
+   "topic": "prices",
+   "claim": "Most apartments sold in the new projects around the square in the past year: ₪63,000 to ₪66,000 per m2 (deals, 4.2026).",
+   "numbers": [
+    "63,000",
+    "66,000",
+    "4.2026"
+   ]
+  },
+  {
+   "claim_id": "R4-62",
+   "topic": "prices",
+   "claim": "2-to-4-room deals published in 2026 (the table below): ₪59,200 to ₪76,400 per m2.",
+   "numbers": [
+    "2",
+    "4",
+    "59,200",
+    "76,400",
+    "2026"
+   ]
+  },
+  {
+   "claim_id": "R4-63",
+   "topic": "prices",
+   "claim": "Penthouses, garden apartments and large apartments: ₪80,000 to ₪110,000 per m2 (deals, 10.2026); this segment barely fell.",
+   "numbers": [
+    "80,000",
+    "110,000",
+    "10.2026"
+   ]
+  },
+  {
+   "claim_id": "R4-65",
+   "topic": "prices",
+   "claim": "2-room apartments of 40 to 54 m2: ₪2,500,000 to ₪3,700,000 per apartment (deals, 4.2026).",
+   "numbers": [
+    "2",
+    "40",
+    "54",
+    "2,500,000",
+    "3,700,000",
+    "2.5",
+    "3.7",
+    "4.2026"
+   ]
+  },
+  {
+   "claim_id": "R4-87",
+   "topic": "prices",
+   "claim": "In a penthouse or garden apartment the price per m2 is usually on the built area only; a large balcony or roof counts at a much lower rate in a valuation, so a deal of about ₪93,600 per m2 for a penthouse with a 156 m2 roof is not the price of an ordinary apartment in the same building. On the ground floor, David Yellin 9 and Mosinzon 17 closed at about ₪76,400 and ₪70,300 per m2.",
+   "numbers": [
+    "93,600",
+    "156",
+    "9",
+    "17",
+    "76,400",
+    "70,300"
+   ]
+  },
+  {
+   "claim_id": "R4-68",
+   "topic": "deals",
+   "claim": "Deal: Henkin 3, penthouse, 5 rooms, 188 m2 + 26 m2 balcony + 156 m2 roof, floor 7, ₪17,600,000 (about ₪93,600 per m2), 3.2026.",
+   "numbers": [
+    "3",
+    "5",
+    "188",
+    "26",
+    "156",
+    "7",
+    "17,600,000",
+    "93,600",
+    "3.2026",
+    "17.6"
+   ]
+  },
+  {
+   "claim_id": "R4-69",
+   "topic": "deals",
+   "claim": "Deal: Jabotinsky 133, penthouse with a pool, about 280 m2 + roof about 113 m2 + balcony about 28 m2, floor 8, ₪22,000,000 (about ₪78,600 per m2 of interior), published 12.2025.",
+   "numbers": [
+    "133",
+    "280",
+    "113",
+    "28",
+    "8",
+    "22,000,000",
+    "78,600",
+    "12.2025",
+    "22"
+   ]
+  },
+  {
+   "claim_id": "R4-70",
+   "topic": "deals",
+   "claim": "Deal: Remez 27, two penthouses, 277 m2 together, floor not published, ₪22,850,000 (about ₪82,500 per m2), published 10.2026.",
+   "numbers": [
+    "27",
+    "2",
+    "277",
+    "22,850,000",
+    "82,500",
+    "10.2026",
+    "22.85"
+   ]
+  },
+  {
+   "claim_id": "R4-71",
+   "topic": "deals",
+   "claim": "Deal: Jabotinsky 105, garden apartment, 5 rooms, 156 m2 + garden about 170 m2, ground floor, about ₪11,000,000 (about ₪70,500 per built m2), 8.2026 per the company.",
+   "numbers": [
+    "105",
+    "5",
+    "156",
+    "170",
+    "11,000,000",
+    "70,500",
+    "8.2026",
+    "11"
+   ]
+  },
+  {
+   "claim_id": "R4-72",
+   "topic": "deals",
+   "claim": "Deal: David Yellin 9, 4 rooms, 110 m2, ground floor, ₪8,400,000 (about ₪76,400 per m2), published 4.2026.",
+   "numbers": [
+    "9",
+    "4",
+    "110",
+    "8,400,000",
+    "76,400",
+    "4.2026",
+    "8.4"
+   ]
+  },
+  {
+   "claim_id": "R4-73",
+   "topic": "deals",
+   "claim": "Deal: Mosinzon 17, 4 rooms, 102 m2, ground floor, ₪7,170,000 (about ₪70,300 per m2), published 4.2026.",
+   "numbers": [
+    "17",
+    "4",
+    "102",
+    "7,170,000",
+    "70,300",
+    "4.2026",
+    "7.17"
+   ]
+  },
+  {
+   "claim_id": "R4-74",
+   "topic": "deals",
+   "claim": "Deal: Shlomzion HaMalka, 4 rooms, 103 m2, floor 1 of 7, ₪6,100,000 (about ₪59,200 per m2), 5.2026.",
+   "numbers": [
+    "4",
+    "103",
+    "1",
+    "7",
+    "6,100,000",
+    "59,200",
+    "5.2026",
+    "6.1"
+   ]
+  },
+  {
+   "claim_id": "R4-75",
+   "topic": "deals",
+   "claim": "Deal: Epstein 7, 3 rooms, 70 m2, floor 6, ₪4,880,000 (about ₪69,700 per m2), published 4.2026.",
+   "numbers": [
+    "7",
+    "3",
+    "70",
+    "6",
+    "4,880,000",
+    "69,700",
+    "4.2026",
+    "4.88"
+   ]
+  },
+  {
+   "claim_id": "R4-76",
+   "topic": "deals",
+   "claim": "Deal: Weizmann 50, 3 rooms, 75 m2, floor 2, ₪4,750,000 (about ₪63,300 per m2), published 4.2026.",
+   "numbers": [
+    "50",
+    "3",
+    "75",
+    "2",
+    "4,750,000",
+    "63,300",
+    "4.2026",
+    "4.75"
+   ]
+  },
+  {
+   "claim_id": "R4-77",
+   "topic": "deals",
+   "claim": "Deal: Ben Saruk 21, 2 rooms, 46 m2, ground floor, ₪3,180,000 (about ₪69,100 per m2), published 4.2026.",
+   "numbers": [
+    "21",
+    "2",
+    "46",
+    "3,180,000",
+    "69,100",
+    "4.2026",
+    "3.18"
+   ],
+   "write_as": "Where the deal month was not published the publication month is shown."
+  },
+  {
+   "claim_id": "R4-78",
+   "topic": "asking",
+   "claim": "Asking: He Be'Iyar 18, 5 rooms, new from the developer, 161 m2, floor 12, ₪14,500,000 (about ₪90,000 per m2), 10.2026.",
+   "numbers": [
+    "18",
+    "5",
+    "161",
+    "12",
+    "14,500,000",
+    "90,000",
+    "10.2026",
+    "14.5"
+   ]
+  },
+  {
+   "claim_id": "R4-79",
+   "topic": "asking",
+   "claim": "Asking: He Be'Iyar 2, 4 rooms, new from the developer, 142 m2, floor 23, ₪11,250,000 (about ₪79,200 per m2), 10.2026.",
+   "numbers": [
+    "2",
+    "4",
+    "142",
+    "23",
+    "11,250,000",
+    "79,200",
+    "10.2026",
+    "11.25"
+   ]
+  },
+  {
+   "claim_id": "R4-81",
+   "topic": "asking",
+   "claim": "Asking: Moshe Sharett Street, 4 rooms, 125 m2, floor 3, ₪6,500,000 after a ₪100,000 cut (₪52,000 per m2), 10.2026.",
+   "numbers": [
+    "4",
+    "125",
+    "3",
+    "6,500,000",
+    "100,000",
+    "52,000",
+    "10.2026",
+    "6.5"
+   ]
+  },
+  {
+   "claim_id": "R4-80",
+   "topic": "asking",
+   "claim": "Asking: He Be'Iyar 16, 4 rooms in an old building, 107 m2, floor 4, ₪4,590,000 (about ₪42,900 per m2), 10.2026. On the same street a new high-floor apartment asks about ₪90,000 per m2.",
+   "numbers": [
+    "16",
+    "4",
+    "107",
+    "4,590,000",
+    "42,900",
+    "10.2026",
+    "90,000",
+    "4.59"
+   ]
+  },
+  {
+   "claim_id": "R4-82",
+   "topic": "asking",
+   "claim": "Asking: David Yellin 10, 2.5 rooms facing the park, 84 m2, floor 1, ₪4,400,000 after a ₪90,000 cut (about ₪52,400 per m2), 10.2026.",
+   "numbers": [
+    "10",
+    "2.5",
+    "84",
+    "1",
+    "4,400,000",
+    "90,000",
+    "52,400",
+    "10.2026",
+    "4.4"
+   ]
+  },
+  {
+   "claim_id": "R4-65b",
+   "topic": "asking",
+   "claim": "In expensive apartments the closing price is usually 5% to 10% below the asking price.",
+   "numbers": [
+    "5",
+    "10"
+   ],
+   "date": "5.10.2026"
+  },
+  {
+   "claim_id": "R4-66",
+   "topic": "asking",
+   "claim": "About 500 apartments are offered for sale in the neighbourhood; developers offer 10% at signing and the rest toward occupancy, and an exemption from index linkage; there is room to negotiate.",
+   "numbers": [
+    "500",
+    "10"
+   ],
+   "date": "5.10.2026"
+  },
+  {
+   "claim_id": "R4-84",
+   "topic": "costs",
+   "claim": "Purchase tax example on the Q1 2026 4-room median of the Kikar area, ₪6,835,800: about ₪260,750 for a single (only) apartment; about ₪562,479 for an additional apartment (brackets of 16.1.2025, frozen to 15.1.2028).",
+   "numbers": [
+    "6,835,800",
+    "260,750",
+    "562,479",
+    "4",
+    "1",
+    "2026"
+   ]
+  },
+  {
+   "claim_id": "R4-34",
+   "topic": "kikar",
+   "claim": "Kikar HaMedina spans about 78 dunam; at its centre three residential towers are being built, two of 40 floors and one of 37, with 453 apartments; alongside them a public park of about 40 dunam and a school of 18 classes plus 6 special-education classes. The ring street, He Be'Iyar, is the quarter's main shopping street.",
+   "numbers": [
+    "78",
+    "3",
+    "2",
+    "40",
+    "37",
+    "453",
+    "18",
+    "6"
+   ],
+   "date": "5.10.2026; 25.9.2025",
+   "write_as": "The towers have no developer: never call their owners 'the developer'."
+  },
+  {
+   "claim_id": "R4-36",
+   "topic": "kikar",
+   "claim": "Per published estimates, the towers' occupancy permit is expected at the end of 2026 and handover will be gradual in the first quarter of 2027; many owners are expected to wait half a year to two years after occupancy before selling, so supply from the towers will come gradually.",
+   "numbers": [
+    "2026",
+    "2027",
+    "1",
+    "2",
+    "6",
+    "0.5"
+   ],
+   "date": "5.10.2026",
+   "write_as": "'half a year' may be written '6 months'. Estimates, never a promise."
+  },
+  {
+   "claim_id": "R4-39",
+   "topic": "renewal",
+   "claim": "In 2022 almost 40% of the apartments whose construction began in Tel Aviv-Yafo that year were in Rova 4, and so was 33% of the residential construction-start area.",
+   "numbers": [
+    "2022",
+    "40",
+    "33"
+   ]
+  },
+  {
+   "claim_id": "R4-41",
+   "topic": "renewal",
+   "claim": "In the published projects the old residents receive an apartment larger by about 18 to 22 m2, in some also a balcony, a safe room (mamad), storage and parking.",
+   "numbers": [
+    "18",
+    "22"
+   ]
+  },
+  {
+   "claim_id": "R4-44",
+   "topic": "renewal",
+   "claim": "Be'eri 36 to 56 (even side): 11 buildings, about 190 apartments, up to about 500 apartments by the company's estimate; Adam Shuster won the tenants' tender, 3.2026. The Be'eri compound is 13 dunam between Weizmann and Henrietta Szold, north of Ichilov: the largest renewal project in the quarter.",
+   "numbers": [
+    "36",
+    "56",
+    "11",
+    "190",
+    "500",
+    "3.2026",
+    "13"
+   ]
+  },
+  {
+   "claim_id": "R4-45",
+   "topic": "renewal",
+   "claim": "Jabotinsky 135 to 137: 32 apartments -> 9 floors, 68 apartments; Africa Renewal and Bayit VeGag; execution contract signed, 8.2024.",
+   "numbers": [
+    "135",
+    "137",
+    "32",
+    "9",
+    "68",
+    "8.2024"
+   ]
+  },
+  {
+   "claim_id": "R4-43",
+   "topic": "renewal",
+   "claim": "Jabotinsky 152: 4 floors, 20 apartments -> 8 floors, 38 apartments; Bayit VeGag; completion expected in the last quarter of 2028.",
+   "numbers": [
+    "152",
+    "4",
+    "20",
+    "8",
+    "38",
+    "2028"
+   ]
+  },
+  {
+   "claim_id": "R4-46",
+   "topic": "renewal",
+   "claim": "Jabotinsky 133: 16 apartments -> 9 floors, 33 apartments; Bayit VeGag; the old building was demolished, 11.2025.",
+   "numbers": [
+    "133",
+    "16",
+    "9",
+    "33",
+    "11.2025"
+   ]
+  },
+  {
+   "claim_id": "R4-50",
+   "topic": "renewal",
+   "claim": "Zichron Yaakov 16: 3 floors on pillars, 12 apartments -> 7 floors, 26 apartments; Levinstein Group; demolition began 24.11.2024; occupancy expected in the second half of 2028.",
+   "numbers": [
+    "16",
+    "3",
+    "12",
+    "7",
+    "26",
+    "24.11.2024",
+    "2028",
+    "2"
+   ]
+  },
+  {
+   "claim_id": "R4-47",
+   "topic": "renewal",
+   "claim": "Remez 44: 7 floors, 25 apartments; Anshei HaIr; building permit 9.12.2025; works expected to start 18 to 24 months after the permit. Remez 22, 25 and 42: 32, 26 and 20 apartments (committee approval; residents moved out; permit request).",
+   "numbers": [
+    "44",
+    "7",
+    "25",
+    "9.12.2025",
+    "18",
+    "24",
+    "22",
+    "42",
+    "32",
+    "26",
+    "20"
+   ]
+  },
+  {
+   "claim_id": "R4-42",
+   "topic": "renewal",
+   "claim": "Remez 27: 4 floors, 14 apartments -> 9 floors, 24 apartments; demolished 2.2026. Zlotzisti 4: 4 floors, 12 apartments -> 8 floors, 22 apartments; demolished 2.2026. Developers not published.",
+   "numbers": [
+    "27",
+    "4",
+    "14",
+    "9",
+    "24",
+    "2.2026",
+    "12",
+    "8",
+    "22"
+   ]
+  },
+  {
+   "claim_id": "R4-49",
+   "topic": "renewal",
+   "claim": "Sharett 30: 4 floors, 11 apartments -> 8 floors, 24 apartments; Lisin 27: 4 floors, 12 apartments -> 7 floors, 21 apartments; both Yaaz Development, building permits 7.2026. Henkin 3: Noga, under construction, the penthouse sold in 3.2026.",
+   "numbers": [
+    "30",
+    "4",
+    "11",
+    "8",
+    "24",
+    "27",
+    "12",
+    "7",
+    "21",
+    "7.2026",
+    "3",
+    "3.2026"
+   ]
+  },
+  {
+   "claim_id": "R4-40",
+   "topic": "renewal",
+   "claim": "Many other developers work in the quarter (Rothstein, Carasso, Netanel Group, Rogovin, Yoshpe, Ram-Mograbi-Arditi). Concentrated construction gives buyers choice and is one reason new-build prices per m2 fell from the peak. An apartment in an old building with an approved project is usually priced on its future potential."
+  },
+  {
+   "claim_id": "R4-31",
+   "topic": "transport",
+   "claim": "The Red Line has run since August 2023, with an Arlozorov station by Tel Aviv Center station; the Purple Line is planned along Arlozorov, to Ichilov, ending at Tel Aviv Center, opening planned for June 2028; the Green Line is planned in a tunnel under Ibn Gabirol, on the quarter's western edge, full operation planned for 2030.",
+   "numbers": [
+    "2023",
+    "8.2023",
+    "2028",
+    "6.2028",
+    "2030"
+   ],
+   "write_as": "Separate a running line from a planned one."
+  },
+  {
+   "claim_id": "R4-11b",
+   "topic": "rova-3",
+   "claim": "Rova 3 is the Old North: from the sea to Ibn Gabirol and from the Yarkon to Bograshov, Ben Zion Boulevard and Marmorek; built mainly in the 1930s and 1940s under the Geddes plan; most of the White City (UNESCO) is there; its quarter plan (approved early 2018) allows about 8,000 additional apartments, with preservation limits.",
+   "numbers": [
+    "3",
+    "30",
+    "40",
+    "1930",
+    "1940",
+    "8,000",
+    "2018"
+   ]
+  },
+  {
+   "claim_id": "R4-93",
+   "topic": "fit",
+   "claim": "Works around the square: on many streets several building sites run at once, some expected to last until 2028.",
+   "numbers": [
+    "2028"
+   ]
+  }
+ ],
+ "sources_note": "Sources stay in the repo (claims.json source field, align-check.md, rova-4 facts.md); never in the text."
+}

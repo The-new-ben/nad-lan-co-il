@@ -1,0 +1,150 @@
+[
+ {
+  "page": "hub",
+  "lang": "en",
+  "words_target": 4930,
+  "range": [
+   4190,
+   5916
+  ],
+  "hebrew_words": 4108,
+  "parts": 2,
+  "msg_sizes": [
+   35586,
+   18921
+  ],
+  "claims": 14,
+  "links": 18,
+  "dupes": []
+ },
+ {
+  "page": "hub",
+  "lang": "fr",
+  "words_target": 5340,
+  "range": [
+   4539,
+   6408
+  ],
+  "hebrew_words": 4108,
+  "parts": 2,
+  "msg_sizes": [
+   33197,
+   18921
+  ],
+  "claims": 14,
+  "links": 18,
+  "dupes": []
+ },
+ {
+  "page": "hub",
+  "lang": "ru",
+  "words_target": 4110,
+  "range": [
+   3493,
+   4932
+  ],
+  "hebrew_words": 4108,
+  "parts": 2,
+  "msg_sizes": [
+   32891,
+   18921
+  ],
+  "claims": 14,
+  "links": 18,
+  "dupes": []
+ },
+ {
+  "page": "hub",
+  "lang": "ar",
+  "words_target": 4110,
+  "range": [
+   3493,
+   4932
+  ],
+  "hebrew_words": 4108,
+  "parts": 2,
+  "msg_sizes": [
+   31854,
+   18921
+  ],
+  "claims": 14,
+  "links": 16,
+  "dupes": []
+ },
+ {
+  "page": "rova-4",
+  "lang": "en",
+  "words_target": 4930,
+  "range": [
+   4190,
+   5916
+  ],
+  "hebrew_words": 4112,
+  "parts": 3,
+  "msg_sizes": [
+   37998,
+   18565,
+   19719
+  ],
+  "claims": 72,
+  "links": 12,
+  "dupes": []
+ },
+ {
+  "page": "rova-4",
+  "lang": "fr",
+  "words_target": 5350,
+  "range": [
+   4547,
+   6420
+  ],
+  "hebrew_words": 4112,
+  "parts": 3,
+  "msg_sizes": [
+   35626,
+   18565,
+   19719
+  ],
+  "claims": 72,
+  "links": 12,
+  "dupes": []
+ },
+ {
+  "page": "rova-4",
+  "lang": "ru",
+  "words_target": 4110,
+  "range": [
+   3493,
+   4932
+  ],
+  "hebrew_words": 4112,
+  "parts": 3,
+  "msg_sizes": [
+   35315,
+   18565,
+   19719
+  ],
+  "claims": 72,
+  "links": 12,
+  "dupes": []
+ },
+ {
+  "page": "rova-4",
+  "lang": "ar",
+  "words_target": 4110,
+  "range": [
+   3493,
+   4932
+  ],
+  "hebrew_words": 4112,
+  "parts": 3,
+  "msg_sizes": [
+   34410,
+   18565,
+   19719
+  ],
+  "claims": 72,
+  "links": 10,
+  "dupes": []
+ }
+]

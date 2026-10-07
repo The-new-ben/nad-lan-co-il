@@ -1,0 +1,737 @@
+{
+ "page": "hub",
+ "language": "en",
+ "target_url": "https://nad-lan.co.il/en/north-tel-aviv/",
+ "hebrew_url": "https://nad-lan.co.il/north-tel-aviv/",
+ "h1": "North Tel Aviv: Neighborhoods, New Projects and Apartment Prices",
+ "faq_h2": "Frequently asked questions",
+ "words_target": 4930,
+ "words_total_range": [
+  4190,
+  5916
+ ],
+ "hebrew_words": 4108,
+ "h2_count": 12,
+ "outline": [
+  {
+   "id": "hub-opening",
+   "part": 1,
+   "hebrew_h2": "פתיחה",
+   "h2": "North Tel Aviv at a glance",
+   "hebrew_words": 346,
+   "hebrew_table_words": 0,
+   "words": 420,
+   "must_use": [
+    "H-01",
+    "H-04",
+    "H-09"
+   ],
+   "note": "The opening: <h2>, two paragraphs, then <p class=\"nl-cta\"> with the two links of the Hebrew, then <ul class=\"nl-cards\"> with the three cards as <li><b>title</b> text</li>, then <p class=\"nl-note\">, then the bridging paragraph. Write a real H2 (the Hebrew one is just 'Opening')."
+  },
+  {
+   "id": "hub-areas",
+   "part": 1,
+   "hebrew_h2": "מהו צפון תל אביב והשכונות",
+   "h2": "What North Tel Aviv includes: the neighborhoods",
+   "hebrew_words": 530,
+   "hebrew_table_words": 0,
+   "words": 640,
+   "must_use": [
+    "H-02",
+    "H-03",
+    "H-01",
+    "H-09"
+   ]
+  },
+  {
+   "id": "hub-life",
+   "part": 1,
+   "hebrew_h2": "אופי האזור ואיכות החיים",
+   "h2": "Character and quality of life in North Tel Aviv",
+   "hebrew_words": 285,
+   "hebrew_table_words": 0,
+   "words": 340,
+   "must_use": [
+    "H-11"
+   ]
+  },
+  {
+   "id": "hub-anchors",
+   "part": 1,
+   "hebrew_h2": "מוסדות עוגן",
+   "h2": "The anchors: Tel Aviv University, Ramat Aviv Mall and Yarkon Park",
+   "hebrew_words": 380,
+   "hebrew_table_words": 0,
+   "words": 460,
+   "must_use": [],
+   "h3": [
+    "Tel Aviv University",
+    "Ramat Aviv Mall",
+    "Yarkon Park"
+   ]
+  },
+  {
+   "id": "hub-projects",
+   "part": 1,
+   "hebrew_h2": "הפרויקטים החדשים וההתחדשות",
+   "h2": "New projects and urban renewal in North Tel Aviv",
+   "hebrew_words": 474,
+   "hebrew_table_words": 176,
+   "words": 570,
+   "must_use": [
+    "H-04",
+    "H-05",
+    "H-06",
+    "H-03",
+    "H-01",
+    "H-09"
+   ]
+  },
+  {
+   "id": "hub-prices",
+   "part": 2,
+   "hebrew_h2": "מחירים לפי שכונה",
+   "h2": "Apartment prices by neighborhood",
+   "hebrew_words": 505,
+   "hebrew_table_words": 258,
+   "words": 610,
+   "must_use": [
+    "H-07",
+    "H-08",
+    "H-02",
+    "H-01"
+   ]
+  },
+  {
+   "id": "hub-compare",
+   "part": 2,
+   "hebrew_h2": "השוואת שכונות",
+   "h2": "Comparing the neighborhoods",
+   "hebrew_words": 305,
+   "hebrew_table_words": 172,
+   "words": 370,
+   "must_use": [
+    "H-01"
+   ]
+  },
+  {
+   "id": "hub-transport",
+   "part": 2,
+   "hebrew_h2": "תחבורה ונגישות",
+   "h2": "Transport and access",
+   "hebrew_words": 206,
+   "hebrew_table_words": 0,
+   "words": 250,
+   "must_use": [
+    "H-11",
+    "H-01"
+   ]
+  },
+  {
+   "id": "hub-fit",
+   "part": 2,
+   "hebrew_h2": "למי מתאים האזור",
+   "h2": "Who North Tel Aviv suits",
+   "hebrew_words": 272,
+   "hebrew_table_words": 0,
+   "words": 330,
+   "must_use": []
+  },
+  {
+   "id": "hub-legal",
+   "part": 2,
+   "hebrew_h2": "זווית משפטית ומיסויית",
+   "h2": "Legal and tax points before you buy",
+   "hebrew_words": 339,
+   "hebrew_table_words": 0,
+   "words": 410,
+   "must_use": [
+    "H-04",
+    "H-05",
+    "H-09"
+   ]
+  },
+  {
+   "id": "hub-faq",
+   "part": 2,
+   "hebrew_h2": "שאלות נפוצות",
+   "h2": "Frequently asked questions",
+   "hebrew_words": 326,
+   "hebrew_table_words": 0,
+   "words": 390,
+   "must_use": [
+    "H-02",
+    "H-03",
+    "H-04",
+    "H-05",
+    "H-06",
+    "H-01"
+   ],
+   "faq_questions": [
+    "Is North Tel Aviv better for living or for investment?",
+    "What is the difference between Ramat Aviv and Neve Avivim?",
+    "Why is Einstein Street a focus of new building?",
+    "Will the Sde Dov quarter bring prices down in North Tel Aviv?",
+    "What should you check before buying in a new project in North Tel Aviv?"
+   ]
+  },
+  {
+   "id": "hub-abroad",
+   "part": 2,
+   "hebrew_h2": "משקיעים מחו״ל",
+   "h2": "Buying in North Tel Aviv from abroad",
+   "hebrew_words": 140,
+   "hebrew_table_words": 0,
+   "words": 170,
+   "must_use": []
+  }
+ ],
+ "names": "North Tel Aviv (צפון תל אביב). The New North (הצפון החדש) = Rova 4, Tel Aviv's 4th quarter: write \"Rova 4 (the New North)\" at first mention, then \"Rova 4\" or \"the New North\". The Old North (הצפון הישן) = Rova 3. Kikar HaMedina Towers (מגדלי כיכר המדינה); the square: Kikar HaMedina (once: \"State Square\"). Ramat Aviv, Ramat Aviv Gimel, Green Ramat Aviv, Neve Avivim, Shikun Lamed (שכונת ל׳; in the official data \"Tochnit Lamed\"), Bavli, Sde Dov, Yarkon Park, Tel Aviv University, Ramat Aviv Mall, Einstein Street, Ibn Gabirol, Namir Road, the Ayalon highway, Herzliya, Givat Amal B, Park Tzameret, He Be'Iyar Street, Weizmann, Jabotinsky, Arlozorov, Pinkas, Yehuda HaMaccabi, Shaul HaMelech Boulevard, David HaMelech, Dubnov, Bnei Dan, Be'eri, Henrietta Szold, Ichilov (Tel Aviv Sourasky Medical Center), Tel Aviv Center (Savidor) station, Habima, Rabin Square. Plans: TAMA 38 (the national plan for strengthening buildings, explained once), pinui-binui (evacuation and rebuilding), TA/3729/A. Companies as they write themselves: Hagag Group, Ashdar, Azorim, Shikun & Binui, Bayit VeGag, Africa Israel Renewal (the Hebrew says \"אפריקה התחדשות\"), Adam Shuster, Anshei HaIr, Yaaz, Levinstein Group, Noga. Architect: Moshe Tzur. Tel Aviv-Yafo for the city as a municipality. Rooms: the Israeli count (\"4 rooms\").",
+ "keywords_monthly": [
+  [
+   "tel aviv real estate",
+   480
+  ],
+  [
+   "tel aviv apartments for sale",
+   390
+  ],
+  [
+   "buy apartment in tel aviv",
+   390
+  ],
+  [
+   "ramat aviv",
+   390
+  ],
+  [
+   "sde dov",
+   320
+  ],
+  [
+   "tel aviv neighborhoods",
+   140
+  ],
+  [
+   "old north tel aviv",
+   70
+  ],
+  [
+   "kikar hamedina",
+   70
+  ],
+  [
+   "hamedina square",
+   50
+  ],
+  [
+   "luxury apartments tel aviv",
+   50
+  ],
+  [
+   "north tel aviv",
+   40
+  ],
+  [
+   "kikar hamedina tel aviv",
+   40
+  ],
+  [
+   "tama 38",
+   40
+  ],
+  [
+   "neve avivim",
+   20
+  ],
+  [
+   "bavli tel aviv",
+   20
+  ],
+  [
+   "best neighborhoods in tel aviv",
+   20
+  ],
+  [
+   "tel aviv real estate prices",
+   20
+  ],
+  [
+   "new north tel aviv",
+   "no volume data; Google shows related searches for it"
+  ],
+  [
+   "rova 4 tel aviv / tel aviv district 4",
+   "no volume data"
+  ]
+ ],
+ "serp": "Google (Israel, English) for \"new north tel aviv\": AI overview SHOWN (\"the urban area east of Ibn Gabirol developed after 1948\"); related searches: new north tel aviv for sale / price / for rent / apartments for sale, Old North Tel Aviv, Tel Aviv neighborhoods map, North Star Tel Aviv. People also ask (US, \"north tel aviv neighborhoods real estate\"): What is the most desirable neighborhood to live in Tel Aviv? Can foreigners buy property in Tel Aviv? What are the richest neighborhoods in Tel Aviv? What is the best place for Americans to live in Israel?",
+ "audience": "International buyers (US, UK, Canada, Australia, South Africa) and English-speaking Israelis and olim. They compare in shekels, often buy from abroad, and need Israeli terms decoded once (rooms, TAMA 38, pinui-binui, purchase tax, a median deal price).",
+ "culture": "US spelling (neighborhood) because that is how the searches are typed. Decode the Israeli room count and TAMA 38 once. Warm, confident and factual: a premium real-estate guide, not a warning leaflet. Where the Hebrew speaks to Israeli families, keep it, and add the foreign buyer's angle in words (no new numbers): managing from abroad, a lawyer with a power of attorney, buying does not give residency.",
+ "typography": "Dates as 23 May 2018 or May 2018, or keep the Hebrew style 23.5.2018 in tables; ₪ before the number (₪6,835,800); ranges with \"to\"; no em dash (—) and no en dash (–).",
+ "units": "m² and ₪ only. No square feet, acres, dollars or euros. A dunam may be explained once (1 dunam = 1,000 m²).",
+ "banned": "interface · demo · model (as 3D) · hotspot · overlay · engine · layer · tile · prototype · simulation · technology · \"the system\" · \"the platform\" · digital experience · 3D · Atlas · coming soon · \"free advice\" (only the site's floating bar says it) · any source or media name (Wikipedia, Globes, Calcalist, TheMarker, Ynet, Maariv, Bizportal, Madlan, Yad2) · delve · nestled · boasts · a testament to · red flag · beware · it is important to note · in conclusion",
+ "in_hebrew_marker": "(in Hebrew)",
+ "internal_links": [
+  {
+   "url": "https://nad-lan.co.il/ramat-aviv/",
+   "maps_from": "https://nad-lan.co.il/ramat-aviv/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/ramat-aviv/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "maps_from": "https://nad-lan.co.il/sde-dov/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/sde-dov/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+   "maps_from": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/north-tel-aviv/old-north/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+   "maps_from": "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/north-tel-aviv/rova-4/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+   "maps_from": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/north-tel-aviv/bavli/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "maps_from": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/north-tel-aviv/miriam-hahashmonait/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/north-tel-aviv/shchunat-lamed/",
+   "maps_from": "https://nad-lan.co.il/north-tel-aviv/shchunat-lamed/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/north-tel-aviv/shchunat-lamed/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/luxury-tel-aviv/",
+   "maps_from": "https://nad-lan.co.il/luxury-tel-aviv/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/luxury-tel-aviv/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/ramat-aviv/einstein/",
+   "maps_from": "https://nad-lan.co.il/ramat-aviv/einstein/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/ramat-aviv/einstein/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/israel-purchase-tax-foreign-residents/",
+   "maps_from": "https://nad-lan.co.il/purchase-tax-calculator/",
+   "target_language": "en",
+   "status": 200,
+   "role": "mirror (same-topic page in this language)"
+  },
+  {
+   "url": "https://nad-lan.co.il/israel-mortgage-non-residents/",
+   "maps_from": "https://nad-lan.co.il/mortgage-calculator/",
+   "target_language": "en",
+   "status": 200,
+   "role": "mirror (same-topic page in this language)"
+  },
+  {
+   "url": "https://nad-lan.co.il/real-estate-lawyer/",
+   "maps_from": "https://nad-lan.co.il/real-estate-lawyer/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/real-estate-lawyer/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/herzliya-projects/",
+   "maps_from": "https://nad-lan.co.il/herzliya-projects/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/en/herzliya-projects/",
+   "language_version_status": 404,
+   "role": "mirror (no en version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/en/new-projects/",
+   "anchor_suggestion": "new projects in Israel",
+   "target_language": "en",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  },
+  {
+   "url": "https://nad-lan.co.il/en/buy-property-in-israel/",
+   "anchor_suggestion": "buying a home in Israel from abroad",
+   "target_language": "en",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/hamedina-en/",
+   "anchor_suggestion": "Kikar HaMedina Towers",
+   "target_language": "en",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv-en/",
+   "anchor_suggestion": "Rainbow in Sde Dov",
+   "target_language": "en",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  },
+  {
+   "url": "https://nad-lan.co.il/en/brokers/",
+   "anchor_suggestion": "licensed real estate brokers",
+   "target_language": "en",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  }
+ ],
+ "avoid_headings_first_4_words": [
+  "20 80 10 90",
+  "50 questions to ask",
+  "a 0 99 mortgage",
+  "a final 10 step",
+  "a staged shortlist and",
+  "a video call with",
+  "agree the family decision",
+  "amenities the pool is",
+  "apartment and project types",
+  "apartment prices in kikar",
+  "appoint independent help and",
+  "aura price protection insurance",
+  "aura s apartment with",
+  "aura s price protection",
+  "av gad trade in",
+  "aviv melisron and the",
+  "azorim 10 0 nis",
+  "broker minisites your real",
+  "build a cost and",
+  "buyer changes upgrades and",
+  "buyer faqs",
+  "buyer guides",
+  "buyer guides nadlan",
+  "buying a family home",
+  "buying a new build",
+  "buying an apartment in",
+  "buying property in israel",
+  "buying remotely lawyer power",
+  "cancellations the bill from",
+  "choose the location around",
+  "closed project finance and",
+  "contents",
+  "deal cancellations the bill",
+  "defect periods warranty and",
+  "delayed delivery and compensation",
+  "developer loans the developer",
+  "everything around the project",
+  "everything on one map",
+  "fifteen checks before an",
+  "final buyer fit table",
+  "final buyer matching table",
+  "final ranking which incentives",
+  "financing advice and design",
+  "free management fees furniture",
+  "frequently asked questions",
+  "frequently asked questions about",
+  "from the plots of",
+  "furniture kitchens and turnkey",
+  "gindi vogue in sde",
+  "how it works",
+  "how much does an",
+  "how to buy an",
+  "how to inspect a",
+  "how to negotiate with",
+  "how to search for",
+  "investigating the developer contractor",
+  "israel compared with developer",
+  "israel developer deals 2026",
+  "israel s major developer",
+  "israel versus other markets",
+  "israeli property language that",
+  "kikar hamedina on the",
+  "kikar hamedina park about",
+  "kikar hamedina tel aviv",
+  "kikar hamedina towers apartments",
+  "kikar hamedina towers tel",
+  "kikar hamedina towers the",
+  "location due diligence city",
+  "lov lod begin paying",
+  "minisites for real estate",
+  "new build or resale",
+  "new build projects in",
+  "new construction versus an",
+  "occupancy approval handover and",
+  "official sources update date",
+  "open your site free",
+  "ownership while living abroad",
+  "payment schedules the construction",
+  "plans",
+  "pool spa gym and",
+  "prashkovsky s apartment auction",
+  "pre sale active construction",
+  "price where the project",
+  "prices around the project",
+  "purchase tax for foreign",
+  "ranking israeli developer incentives",
+  "red flags that justify",
+  "rent to own in",
+  "source of funds banking",
+  "strange but useful comparisons",
+  "strange comparisons that make",
+  "the 2026 developer deal",
+  "the apartments sizes balconies",
+  "the bottom line do",
+  "the construction input index",
+  "the contract specification and",
+  "the developer pays your",
+  "the kikar hamedina film",
+  "the leading projects in",
+  "the prashkovsky apartment auction",
+  "the purchase process in",
+  "the real cost of",
+  "the real economic price",
+  "virtual tour of kikar",
+  "what counts as a",
+  "what does value for",
+  "what foreign buyers are",
+  "what is included",
+  "what it costs to",
+  "what photographs plans video",
+  "what the home must",
+  "when a campaign signals",
+  "when is a promotion",
+  "when the developer pays",
+  "when will kikar hamedina",
+  "which buyer should choose",
+  "which campaign suits which",
+  "which israeli city gives",
+  "which tower floor and",
+  "why developers prefer almost",
+  "why it works",
+  "your next practical step"
+ ],
+ "not_published": [
+  "rents and rental yields in each neighborhood",
+  "management fees of specific buildings",
+  "a delivery date for the Sde Dov quarter",
+  "per-m2 prices for neighborhoods other than those given"
+ ],
+ "seo_request": "SEO title in English, at most 60 characters, containing \"North Tel Aviv\" (hub) / \"Rova 4\" and \"New North\" (Rova 4). Description in English, at most 155 characters.",
+ "claims": [
+  {
+   "claim_id": "G-01",
+   "topic": "convention",
+   "claim": "The Israeli room count includes the living room: '4 rooms' = a living room and 3 bedrooms; '2.5 rooms' has a half room.",
+   "numbers": [
+    "2",
+    "3",
+    "4",
+    "5",
+    "2.5"
+   ],
+   "write_as": "Explain once for a foreign reader; never convert to bedrooms in a table."
+  },
+  {
+   "claim_id": "G-02",
+   "topic": "convention",
+   "claim": "A dunam (the Israeli land unit) is 1,000 m2.",
+   "numbers": [
+    "1",
+    "1,000"
+   ],
+   "write_as": "Allowed once, to explain the unit. No other conversions (no sq ft, no acres, no hectares, no dollars or euros)."
+  },
+  {
+   "claim_id": "G-03",
+   "topic": "convention",
+   "claim": "Quarters: 'the first quarter of 2026' = January to March 2026 (Q1, 1-3.2026); 'the fourth / last quarter' = Q4.",
+   "numbers": [
+    "1",
+    "3",
+    "4",
+    "1-3"
+   ],
+   "write_as": "'Q1 2026' or 'the first quarter of 2026'. Keep the year."
+  },
+  {
+   "claim_id": "H-01",
+   "topic": "sde-dov",
+   "claim": "The Sde Dov quarter, on the site of the former airfield in the north-west of the city, is planned for about 16,000 apartments, with mixed uses, public buildings, parks, commerce, hotels and transport.",
+   "numbers": [
+    "16,000"
+   ],
+   "date": "municipality page (read 5.8.2026); survey 15.4.2026",
+   "write_as": "'about 16,000 apartments planned'. Never a delivery date for the quarter."
+  },
+  {
+   "claim_id": "H-02",
+   "topic": "neve-avivim",
+   "claim": "Neve Avivim: its first houses were built in the mid-1960s and most of the neighbourhood in the 1970s ('built in the 1960s and 1970s').",
+   "numbers": [
+    "60",
+    "70",
+    "1960",
+    "1970"
+   ],
+   "write_as": "'built in the 1960s and 1970s'."
+  },
+  {
+   "claim_id": "H-03",
+   "topic": "neve-avivim",
+   "claim": "Urban renewal example in Neve Avivim: on Yehuda HaNasi Street a plan approved in 2023 replaces five buildings with 80 apartments by three buildings of up to 14 floors with 195 apartments.",
+   "numbers": [
+    "2023",
+    "5",
+    "80",
+    "3",
+    "14",
+    "195"
+   ],
+   "date": "2.8.2023",
+   "conflict": "The old page said 'about 40 TAMA 38 projects in Neve Avivim': that count belongs to Neot Afeka B (NC2501). Never write it for Neve Avivim.",
+   "write_as": "One example, dated 2023."
+  },
+  {
+   "claim_id": "H-04",
+   "topic": "einstein",
+   "claim": "Hagag Group's projects on Einstein Street (Ramat Aviv), per the company's January 2026 figures: six residential buildings with 515 apartments, a shopping centre of about 11,400 m2, a public building of about 3,950 m2 and an underground car park of 957 spaces; total value estimated at about ₪4 billion. Architect: Moshe Tzur.",
+   "numbers": [
+    "2026",
+    "1.2026",
+    "6",
+    "515",
+    "11,400",
+    "3,950",
+    "957",
+    "4"
+   ],
+   "date": "20.1.2026",
+   "conflict": "An October 2024 report gave 'a 30-floor and a 28-floor tower, 4 buildings of 14 floors, 13,500 m2 of commerce'; a March 2024 report gave other floor counts. Use only the January 2026 figures.",
+   "write_as": "515 is the WHOLE complex, never EINSTEIN TOWER alone."
+  },
+  {
+   "claim_id": "H-05",
+   "topic": "einstein",
+   "claim": "EINSTEIN TOWER, one of the projects in Hagag's Einstein complex: 215 apartments in a 28-floor tower and two 13-floor buildings above a commercial base; the company estimates completion in the third quarter of 2030.",
+   "numbers": [
+    "215",
+    "28",
+    "2",
+    "13",
+    "3",
+    "2030"
+   ],
+   "date": "annual report 31.12.2025; permit 9.7.2026",
+   "write_as": "Completion is the company's estimate, not a contractual date."
+  },
+  {
+   "claim_id": "H-06",
+   "topic": "einstein",
+   "claim": "Ashdar Einstein, on Einstein Street: marketing opened in 2021; three 8-floor buildings with about 45 apartments.",
+   "numbers": [
+    "2021",
+    "3",
+    "8",
+    "45"
+   ],
+   "date": "8.7.2021"
+  },
+  {
+   "claim_id": "H-07",
+   "topic": "prices",
+   "claim": "Official median deal prices (Tax Authority deals), 4 rooms, first quarter of 2026: Neve Avivim and surroundings ₪5,370,100; Bavli ₪6,549,400; Shikun Lamed (official name 'Tochnit Lamed') ₪8,425,800; the Old North, northern part ₪6,542,100; all of Tel Aviv-Yafo ₪5,229,800.",
+   "numbers": [
+    "5,370,100",
+    "6,549,400",
+    "8,425,800",
+    "6,542,100",
+    "5,229,800",
+    "4",
+    "1",
+    "2026"
+   ],
+   "date": "1-3.2026 (files of 20.8.2026)",
+   "write_as": "Full numbers, never rounded to millions. A median is a whole-apartment price, not per m2."
+  },
+  {
+   "claim_id": "H-08",
+   "topic": "prices",
+   "claim": "Prices per m2 in mid-2026: recent deals in Ramat Aviv averaged around ₪55,000 (June 2026); Ramat Aviv Gimel about ₪51,000 to ₪53,000 on average (August 2026); most new projects in Sde Dov around ₪70,000 (2026).",
+   "numbers": [
+    "55,000",
+    "51,000",
+    "53,000",
+    "70,000",
+    "2026",
+    "6.2026",
+    "8.2026"
+   ],
+   "date": "6.6.2026; 2.8.2026; 21.5-6.6.2026",
+   "conflict": "The old page's '60,000-95,000 for new construction in Ramat Aviv Gimel' had no source: never use it."
+  },
+  {
+   "claim_id": "H-09",
+   "topic": "names",
+   "claim": "Names that carry numbers: TAMA 38 (the national plan for strengthening buildings, תמ״א 38); Rova 3 = the Old North (west of Ibn Gabirol); Rova 4 = the New North and Kikar HaMedina.",
+   "numbers": [
+    "38",
+    "3",
+    "4"
+   ],
+   "write_as": "'TAMA 38' with a short gloss once."
+  },
+  {
+   "claim_id": "H-10",
+   "topic": "page",
+   "claim": "The page was updated in October 2026.",
+   "numbers": [
+    "10.2026",
+    "2026"
+   ],
+   "write_as": "Only if a date line is written; the disclaimer itself is added by the site."
+  },
+  {
+   "claim_id": "H-11",
+   "topic": "transport",
+   "claim": "The Green Line of the light rail is planned along Ibn Gabirol, with an Einstein station in the north (future).",
+   "write_as": "Future tense; no opening date in the hub."
+  }
+ ],
+ "sources_note": "Sources stay in the repo (claims.json source field, align-check.md, rova-4 facts.md); never in the text."
+}

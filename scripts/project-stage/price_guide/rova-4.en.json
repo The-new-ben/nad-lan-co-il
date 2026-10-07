@@ -447,7 +447,7 @@
    "f40": "Floor 40",
    "axis": "₪ per m² by floor",
    "you": "Your choice",
-   "tw": "Kikar HaMedina Towers, average",
+   "tw": "Kikar HaMedina average",
    "ta": "Tel Aviv-Yafo, median",
    "aria_t": "Estimate of ₪{lo} to ₪{hi} per m² on floor {f}, against the towers’ average deal of about ₪{avg}",
    "aria_a": "{m}: ₪{lo} to ₪{hi} per m², against the towers’ average of about ₪{avg} and Tel Aviv-Yafo at ₪{ta}",

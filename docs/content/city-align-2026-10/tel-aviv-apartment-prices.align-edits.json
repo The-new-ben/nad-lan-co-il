@@ -1,0 +1,266 @@
+{
+ "generated": "7.10.2026",
+ "page": {
+  "id": 135,
+  "slug": "tel-aviv-apartment-prices",
+  "link": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+  "modified": "2026-10-07T12:54:59"
+ },
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages?slug=tel-aviv-apartment-prices&_fields=id,link,title,content,modified (content.rendered), public, retrieved 2026-10-07 10:34:40 UTC, 55,376 characters. The price-list section (<section id=\"nlpg\">, the [nadlan_price_guide] shortcode), <script> and <style> are outside the audit.",
+ "facts": "scripts/project-stage/price_guide/cities/tel-aviv-apartment-prices.json (official medians from data.nadlan.gov.il; source_keys are JSON paths in that file: rooms.<k>.latest, rooms.<k>.year_ago, rooms.<k>.change_pct, rooms.<k>.quarters[<q>], israel.<k>, neighbourhoods[<name>].rooms.<k>; 'page' = a number kept from the page's own text)",
+ "apply_rules": [
+  "Apply in the listed order on the RAW content (context=edit). Every \"old\" matches content.rendered exactly once at its turn (matches_in_live), except \"replace_all\" entries, which match exactly \"expect_matches\" times.",
+  "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
+  "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
+  "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+ ],
+ "claims_summary": {
+  "claims": {
+   "CONFLICT": 0,
+   "STALE": 0,
+   "UNSOURCED": 5,
+   "CONSISTENT": 0
+  },
+  "figures": {
+   "CONFLICT": 0,
+   "STALE": 0,
+   "UNSOURCED": 10,
+   "CONSISTENT": 0
+  },
+  "edits": 8,
+  "tier1": 8,
+  "tier2": 0
+ },
+ "notes": "The Tel Aviv body has no other price, rent or percent figure; it is a method guide. The only figures are the per-m2 table. Official neighbourhood names are truncated in the file ('הצפון הישן-החלק הצפ', 'הצפון החדש החלק הצפ'); the text uses the natural names. Rows 4-5 (Neve Tzedek and seafront, luxury towers) have no official neighbourhood median in the city file, so they get a check instruction without a number. The H2 'טווחי מחיר למ\"ר בתל אביב' carries no number and is kept.",
+ "claims": [
+  {
+   "id": 1,
+   "where": "tr@43482",
+   "quote": "דרום ומזרח מתחדשים | כ-45,000 עד 65,000 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 3",
+   "note": "no named source, no date; the official data has no per-m2 figure"
+  },
+  {
+   "id": 2,
+   "where": "tr@43623",
+   "quote": "מרכז העיר ולב העיר | כ-60,000 עד 90,000 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 4",
+   "note": "no named source, no date; the official data has no per-m2 figure"
+  },
+  {
+   "id": 3,
+   "where": "tr@43761",
+   "quote": "הצפון הישן והחדש | כ-65,000 עד 105,000 ש\"ח למ\"ר",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 5",
+   "note": "no named source, no date; the official data has no per-m2 figure"
+  },
+  {
+   "id": 4,
+   "where": "tr@43897",
+   "quote": "נווה צדק וקו חוף | כ-80,000 עד 140,000 ש\"ח למ\"ר ומעלה",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": "no named source, no date; the official data has no per-m2 figure"
+  },
+  {
+   "id": 5,
+   "where": "tr@44039",
+   "quote": "מגדלי יוקרה ופנטהאוזים | כ-100,000 עד 200,000 ש\"ח למ\"ר ומעלה",
+   "measure": "per_m2",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 7",
+   "note": "no named source, no date; the official data has no per-m2 figure"
+  }
+ ],
+ "edits": [
+  {
+   "page_id": 135,
+   "url": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+   "field": "content",
+   "old": "לכן כל טווח צריך להיבדק מול עסקאות דומות ועדכניות.",
+   "new": "לכן כל טווח צריך להיבדק מול עסקאות דומות ועדכניות. בטבלה שלהלן מופיעה לכל סוג אזור דוגמה של חציון מחיר העסקה, לפי נתוני רשות המסים לרבעון הראשון של 2026.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Introduces the official neighbourhood medians that replace the per-m2 ranges (edits 2-7).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 1,
+   "raw_risk": []
+  },
+  {
+   "page_id": 135,
+   "url": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+   "field": "content",
+   "old": "<th>טווח פתיחה לבדיקה</th>",
+   "new": "<th>חציון מחיר העסקה, ינואר-מרץ 2026</th>",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Column header of the per-m2 ranges, which have no source and no date.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 2,
+   "raw_risk": [
+    "contains tags"
+   ]
+  },
+  {
+   "page_id": 135,
+   "url": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+   "field": "content",
+   "old": "<td>כ-45,000 עד 65,000 ש\"ח למ\"ר</td>",
+   "new": "<td>ביד אליהו: 3,160,100 ש\"ח לדירת 3 חדרים ו-3,774,500 ש\"ח לדירת 4 חדרים</td>",
+   "source_keys": [
+    "neighbourhoods[יד אליהו].rooms.3",
+    "neighbourhoods[יד אליהו].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Per-m2 'opening range' with no named source and no date (the intro cites 'market pages, listings, deals and professional publications'); replaced by official neighbourhood medians for 1-3.2026 where the official file has one, else by a check instruction without a number.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 3,
+   "raw_risk": [
+    "straight double quote",
+    "contains tags"
+   ]
+  },
+  {
+   "page_id": 135,
+   "url": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+   "field": "content",
+   "old": "<td>כ-60,000 עד 90,000 ש\"ח למ\"ר</td>",
+   "new": "<td>בלב העיר: 4,738,800 ש\"ח לדירת 3 חדרים ו-6,467,500 ש\"ח לדירת 4 חדרים</td>",
+   "source_keys": [
+    "neighbourhoods[לב העיר].rooms.3",
+    "neighbourhoods[לב העיר].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Per-m2 'opening range' with no named source and no date (the intro cites 'market pages, listings, deals and professional publications'); replaced by official neighbourhood medians for 1-3.2026 where the official file has one, else by a check instruction without a number.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 4,
+   "raw_risk": [
+    "straight double quote",
+    "contains tags"
+   ]
+  },
+  {
+   "page_id": 135,
+   "url": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+   "field": "content",
+   "old": "<td>כ-65,000 עד 105,000 ש\"ח למ\"ר</td>",
+   "new": "<td>בצפון הישן, בחלקו הצפוני: 4,879,800 ש\"ח לדירת 3 חדרים ו-6,542,100 ש\"ח לדירת 4 חדרים. בצפון החדש, בחלקו הצפוני: 4,434,900 ש\"ח לדירת 3 חדרים ו-6,042,800 ש\"ח לדירת 4 חדרים</td>",
+   "source_keys": [
+    "neighbourhoods[הצפון הישן-החלק הצפ].rooms.3",
+    "neighbourhoods[הצפון הישן-החלק הצפ].rooms.4",
+    "neighbourhoods[הצפון החדש החלק הצפ].rooms.3",
+    "neighbourhoods[הצפון החדש החלק הצפ].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Per-m2 'opening range' with no named source and no date (the intro cites 'market pages, listings, deals and professional publications'); replaced by official neighbourhood medians for 1-3.2026 where the official file has one, else by a check instruction without a number.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 5,
+   "raw_risk": [
+    "straight double quote",
+    "contains tags"
+   ]
+  },
+  {
+   "page_id": 135,
+   "url": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+   "field": "content",
+   "old": "<td>כ-80,000 עד 140,000 ש\"ח למ\"ר ומעלה</td>",
+   "new": "<td>המחירון שבעמוד אינו מציג חציון נפרד לאזור זה; בודקים עסקאות באותו רחוב ובאותו סוג בניין</td>",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Per-m2 'opening range' with no named source and no date (the intro cites 'market pages, listings, deals and professional publications'); replaced by official neighbourhood medians for 1-3.2026 where the official file has one, else by a check instruction without a number.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 6,
+   "raw_risk": [
+    "straight double quote",
+    "contains tags"
+   ]
+  },
+  {
+   "page_id": 135,
+   "url": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+   "field": "content",
+   "old": "<td>כ-100,000 עד 200,000 ש\"ח למ\"ר ומעלה</td>",
+   "new": "<td>המחירון שבעמוד אינו מציג חציון נפרד לסוג נכס זה; בודקים עסקאות באותו פרויקט ובקומות דומות</td>",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Per-m2 'opening range' with no named source and no date (the intro cites 'market pages, listings, deals and professional publications'); replaced by official neighbourhood medians for 1-3.2026 where the official file has one, else by a check instruction without a number.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 7,
+   "raw_risk": [
+    "straight double quote",
+    "contains tags"
+   ]
+  },
+  {
+   "page_id": 135,
+   "url": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+   "field": "content",
+   "old": "דירה אחת יכולה להיות מתחת לטווח בגלל צורך בשיפוץ, בניין בעייתי או זכויות מורכבות. דירה אחרת יכולה להיות מעל הטווח בגלל",
+   "new": "דירה אחת יכולה להיות מתחת לחציון בגלל צורך בשיפוץ, בניין בעייתי או זכויות מורכבות. דירה אחרת יכולה להיות מעל החציון בגלל",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Follows the table change: 'range' becomes 'median'.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 8,
+   "raw_risk": []
+  }
+ ],
+ "live_recheck": {
+  "retrieved_utc": "2026-10-07 11:19:32",
+  "modified": "2026-10-07T12:54:59",
+  "audited_copy_modified": "2026-10-07T12:54:59",
+  "price_list_on_page": true,
+  "body_outside_list_identical_to_audited_copy": "yes",
+  "dry_run": "8 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ }
+}

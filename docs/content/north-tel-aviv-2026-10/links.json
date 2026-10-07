@@ -1,0 +1,1161 @@
+{
+ "checked_utc": "2026-10-07 10:59:38",
+ "method": "GET without following redirects, UA 'nad-lan.co.il i18n link check (HAD-460)', one request per 0.4 s; every URL below answered 200. The language versions /<lang>/<path>/ of the Hebrew targets answered 404 (none exists yet), so those links stay Hebrew.",
+ "pages": {
+  "hub": {
+   "he": [
+    {
+     "url": "https://nad-lan.co.il/ramat-aviv/",
+     "anchor_he": "מדריך רמת אביב",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/sde-dov/",
+     "anchor_he": "רובע שדה דב",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "anchor_he": "הצפון הישן",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+     "anchor_he": "רובע 4",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "anchor_he": "שכונת בבלי",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+     "anchor_he": "מרים החשמונאית",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/shchunat-lamed/",
+     "anchor_he": "שכונת ל׳",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/luxury-tel-aviv/",
+     "anchor_he": "דירות יוקרה",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/ramat-aviv/einstein/",
+     "anchor_he": "רחוב איינשטיין",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "anchor_he": "מחשבון מס רכישה",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/mortgage-calculator/",
+     "anchor_he": "מחשבון משכנתא",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/real-estate-lawyer/",
+     "anchor_he": "עורך דין מקרקעין",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/herzliya-projects/",
+     "anchor_he": "הרצליה",
+     "status": 200,
+     "role": "source"
+    }
+   ],
+   "en": [
+    {
+     "url": "https://nad-lan.co.il/ramat-aviv/",
+     "maps_from": "https://nad-lan.co.il/ramat-aviv/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/ramat-aviv/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/sde-dov/",
+     "maps_from": "https://nad-lan.co.il/sde-dov/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/sde-dov/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/north-tel-aviv/old-north/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/north-tel-aviv/rova-4/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/north-tel-aviv/bavli/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/north-tel-aviv/miriam-hahashmonait/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/shchunat-lamed/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/shchunat-lamed/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/north-tel-aviv/shchunat-lamed/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/luxury-tel-aviv/",
+     "maps_from": "https://nad-lan.co.il/luxury-tel-aviv/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/luxury-tel-aviv/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/ramat-aviv/einstein/",
+     "maps_from": "https://nad-lan.co.il/ramat-aviv/einstein/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/ramat-aviv/einstein/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/israel-purchase-tax-foreign-residents/",
+     "maps_from": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "target_language": "en",
+     "status": 200,
+     "role": "mirror (same-topic page in this language)"
+    },
+    {
+     "url": "https://nad-lan.co.il/israel-mortgage-non-residents/",
+     "maps_from": "https://nad-lan.co.il/mortgage-calculator/",
+     "target_language": "en",
+     "status": 200,
+     "role": "mirror (same-topic page in this language)"
+    },
+    {
+     "url": "https://nad-lan.co.il/real-estate-lawyer/",
+     "maps_from": "https://nad-lan.co.il/real-estate-lawyer/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/real-estate-lawyer/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/herzliya-projects/",
+     "maps_from": "https://nad-lan.co.il/herzliya-projects/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/herzliya-projects/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/en/new-projects/",
+     "anchor_suggestion": "new projects in Israel",
+     "target_language": "en",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/en/buy-property-in-israel/",
+     "anchor_suggestion": "buying a home in Israel from abroad",
+     "target_language": "en",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/hamedina-en/",
+     "anchor_suggestion": "Kikar HaMedina Towers",
+     "target_language": "en",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv-en/",
+     "anchor_suggestion": "Rainbow in Sde Dov",
+     "target_language": "en",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/en/brokers/",
+     "anchor_suggestion": "licensed real estate brokers",
+     "target_language": "en",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    }
+   ],
+   "fr": [
+    {
+     "url": "https://nad-lan.co.il/ramat-aviv/",
+     "maps_from": "https://nad-lan.co.il/ramat-aviv/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/ramat-aviv/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/sde-dov/",
+     "maps_from": "https://nad-lan.co.il/sde-dov/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/sde-dov/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/north-tel-aviv/old-north/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/north-tel-aviv/rova-4/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/north-tel-aviv/bavli/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/north-tel-aviv/miriam-hahashmonait/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/shchunat-lamed/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/shchunat-lamed/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/north-tel-aviv/shchunat-lamed/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/luxury-tel-aviv/",
+     "maps_from": "https://nad-lan.co.il/luxury-tel-aviv/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/luxury-tel-aviv/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/ramat-aviv/einstein/",
+     "maps_from": "https://nad-lan.co.il/ramat-aviv/einstein/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/ramat-aviv/einstein/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "maps_from": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/purchase-tax-calculator/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/mortgage-calculator/",
+     "maps_from": "https://nad-lan.co.il/mortgage-calculator/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/mortgage-calculator/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/real-estate-lawyer/",
+     "maps_from": "https://nad-lan.co.il/real-estate-lawyer/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/real-estate-lawyer/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/herzliya-projects/",
+     "maps_from": "https://nad-lan.co.il/herzliya-projects/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/herzliya-projects/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/fr/new-projects/",
+     "anchor_suggestion": "programmes neufs en Israël",
+     "target_language": "fr",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/hamedina-fr/",
+     "anchor_suggestion": "les tours Kikar HaMedina",
+     "target_language": "fr",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv-fr/",
+     "anchor_suggestion": "Rainbow à Sde Dov",
+     "target_language": "fr",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/fr/brokers/",
+     "anchor_suggestion": "agents immobiliers agréés",
+     "target_language": "fr",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/fr/property-value-estimator/",
+     "anchor_suggestion": "estimer la valeur d'un appartement",
+     "target_language": "fr",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    }
+   ],
+   "ru": [
+    {
+     "url": "https://nad-lan.co.il/ramat-aviv/",
+     "maps_from": "https://nad-lan.co.il/ramat-aviv/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/ramat-aviv/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/sde-dov/",
+     "maps_from": "https://nad-lan.co.il/sde-dov/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/sde-dov/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/north-tel-aviv/old-north/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/north-tel-aviv/rova-4/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/north-tel-aviv/bavli/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/north-tel-aviv/miriam-hahashmonait/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/shchunat-lamed/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/shchunat-lamed/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/north-tel-aviv/shchunat-lamed/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/luxury-tel-aviv/",
+     "maps_from": "https://nad-lan.co.il/luxury-tel-aviv/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/luxury-tel-aviv/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/ramat-aviv/einstein/",
+     "maps_from": "https://nad-lan.co.il/ramat-aviv/einstein/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/ramat-aviv/einstein/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "maps_from": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/purchase-tax-calculator/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/mortgage-calculator/",
+     "maps_from": "https://nad-lan.co.il/mortgage-calculator/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/mortgage-calculator/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/real-estate-lawyer/",
+     "maps_from": "https://nad-lan.co.il/real-estate-lawyer/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/real-estate-lawyer/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/herzliya-projects/",
+     "maps_from": "https://nad-lan.co.il/herzliya-projects/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/herzliya-projects/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/ru/new-projects/",
+     "anchor_suggestion": "новостройки в Израиле",
+     "target_language": "ru",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/hamedina-ru/",
+     "anchor_suggestion": "башни Кикар ха-Медина",
+     "target_language": "ru",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv-ru/",
+     "anchor_suggestion": "Rainbow в Сде-Дов",
+     "target_language": "ru",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/ru/brokers/",
+     "anchor_suggestion": "лицензированные маклеры",
+     "target_language": "ru",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/ru/property-value-estimator/",
+     "anchor_suggestion": "оценка стоимости квартиры",
+     "target_language": "ru",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    }
+   ],
+   "ar": [
+    {
+     "url": "https://nad-lan.co.il/ramat-aviv/",
+     "maps_from": "https://nad-lan.co.il/ramat-aviv/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/ramat-aviv/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/sde-dov/",
+     "maps_from": "https://nad-lan.co.il/sde-dov/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/sde-dov/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/north-tel-aviv/old-north/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/north-tel-aviv/rova-4/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/north-tel-aviv/bavli/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/north-tel-aviv/miriam-hahashmonait/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/shchunat-lamed/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/shchunat-lamed/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/north-tel-aviv/shchunat-lamed/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/luxury-tel-aviv/",
+     "maps_from": "https://nad-lan.co.il/luxury-tel-aviv/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/luxury-tel-aviv/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/ramat-aviv/einstein/",
+     "maps_from": "https://nad-lan.co.il/ramat-aviv/einstein/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/ramat-aviv/einstein/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "maps_from": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/purchase-tax-calculator/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/mortgage-calculator/",
+     "maps_from": "https://nad-lan.co.il/mortgage-calculator/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/mortgage-calculator/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/real-estate-lawyer/",
+     "maps_from": "https://nad-lan.co.il/real-estate-lawyer/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/real-estate-lawyer/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/herzliya-projects/",
+     "maps_from": "https://nad-lan.co.il/herzliya-projects/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/herzliya-projects/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/ar/new-projects/",
+     "anchor_suggestion": "مشاريع جديدة",
+     "target_language": "ar",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/hamedina-ar/",
+     "anchor_suggestion": "أبراج كيكار همدينا",
+     "target_language": "ar",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv-ar/",
+     "anchor_suggestion": "مشروع Rainbow في سدي دوف",
+     "target_language": "ar",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    }
+   ]
+  },
+  "rova-4": {
+   "he": [
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "anchor_he": "שכונת בבלי",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/",
+     "anchor_he": "צפון תל אביב",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "anchor_he": "מחשבון מס רכישה",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/apartment-purchase-cost-calculator/",
+     "anchor_he": "מחשבון עלויות רכישת דירה",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+     "anchor_he": "מחירי דירות בתל אביב",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/hamedina/",
+     "anchor_he": "מגדלי כיכר המדינה",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/urban-renewal/",
+     "anchor_he": "התחדשות עירונית",
+     "status": 200,
+     "role": "source"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "anchor_he": "הצפון הישן",
+     "status": 200,
+     "role": "source"
+    }
+   ],
+   "en": [
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/north-tel-aviv/bavli/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/north-tel-aviv/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/israel-purchase-tax-foreign-residents/",
+     "maps_from": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "target_language": "en",
+     "status": 200,
+     "role": "mirror (same-topic page in this language)"
+    },
+    {
+     "url": "https://nad-lan.co.il/apartment-purchase-cost-calculator/",
+     "maps_from": "https://nad-lan.co.il/apartment-purchase-cost-calculator/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/apartment-purchase-cost-calculator/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+     "maps_from": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/tel-aviv-apartment-prices/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/hamedina-en/",
+     "maps_from": "https://nad-lan.co.il/projects/hamedina/",
+     "target_language": "en",
+     "status": 200,
+     "role": "mirror (same-topic page in this language)"
+    },
+    {
+     "url": "https://nad-lan.co.il/urban-renewal/",
+     "maps_from": "https://nad-lan.co.il/urban-renewal/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/urban-renewal/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/en/north-tel-aviv/old-north/",
+     "language_version_status": 404,
+     "role": "mirror (no en version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/en/new-projects/",
+     "anchor_suggestion": "new projects in Israel",
+     "target_language": "en",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/en/buy-property-in-israel/",
+     "anchor_suggestion": "buying a home in Israel from abroad",
+     "target_language": "en",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv-en/",
+     "anchor_suggestion": "Rainbow in Sde Dov",
+     "target_language": "en",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/en/brokers/",
+     "anchor_suggestion": "licensed real estate brokers",
+     "target_language": "en",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    }
+   ],
+   "fr": [
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/north-tel-aviv/bavli/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/north-tel-aviv/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "maps_from": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/purchase-tax-calculator/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/apartment-purchase-cost-calculator/",
+     "maps_from": "https://nad-lan.co.il/apartment-purchase-cost-calculator/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/apartment-purchase-cost-calculator/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+     "maps_from": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/tel-aviv-apartment-prices/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/hamedina-fr/",
+     "maps_from": "https://nad-lan.co.il/projects/hamedina/",
+     "target_language": "fr",
+     "status": 200,
+     "role": "mirror (same-topic page in this language)"
+    },
+    {
+     "url": "https://nad-lan.co.il/urban-renewal/",
+     "maps_from": "https://nad-lan.co.il/urban-renewal/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/urban-renewal/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/fr/north-tel-aviv/old-north/",
+     "language_version_status": 404,
+     "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/fr/new-projects/",
+     "anchor_suggestion": "programmes neufs en Israël",
+     "target_language": "fr",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv-fr/",
+     "anchor_suggestion": "Rainbow à Sde Dov",
+     "target_language": "fr",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/fr/brokers/",
+     "anchor_suggestion": "agents immobiliers agréés",
+     "target_language": "fr",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/fr/property-value-estimator/",
+     "anchor_suggestion": "estimer la valeur d'un appartement",
+     "target_language": "fr",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    }
+   ],
+   "ru": [
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/north-tel-aviv/bavli/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/north-tel-aviv/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "maps_from": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/purchase-tax-calculator/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/apartment-purchase-cost-calculator/",
+     "maps_from": "https://nad-lan.co.il/apartment-purchase-cost-calculator/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/apartment-purchase-cost-calculator/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+     "maps_from": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/tel-aviv-apartment-prices/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/hamedina-ru/",
+     "maps_from": "https://nad-lan.co.il/projects/hamedina/",
+     "target_language": "ru",
+     "status": 200,
+     "role": "mirror (same-topic page in this language)"
+    },
+    {
+     "url": "https://nad-lan.co.il/urban-renewal/",
+     "maps_from": "https://nad-lan.co.il/urban-renewal/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/urban-renewal/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ru/north-tel-aviv/old-north/",
+     "language_version_status": 404,
+     "role": "mirror (no ru version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/ru/new-projects/",
+     "anchor_suggestion": "новостройки в Израиле",
+     "target_language": "ru",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv-ru/",
+     "anchor_suggestion": "Rainbow в Сде-Дов",
+     "target_language": "ru",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/ru/brokers/",
+     "anchor_suggestion": "лицензированные маклеры",
+     "target_language": "ru",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/ru/property-value-estimator/",
+     "anchor_suggestion": "оценка стоимости квартиры",
+     "target_language": "ru",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    }
+   ],
+   "ar": [
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/north-tel-aviv/bavli/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/north-tel-aviv/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "maps_from": "https://nad-lan.co.il/purchase-tax-calculator/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/purchase-tax-calculator/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/apartment-purchase-cost-calculator/",
+     "maps_from": "https://nad-lan.co.il/apartment-purchase-cost-calculator/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/apartment-purchase-cost-calculator/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+     "maps_from": "https://nad-lan.co.il/tel-aviv-apartment-prices/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/tel-aviv-apartment-prices/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/hamedina-ar/",
+     "maps_from": "https://nad-lan.co.il/projects/hamedina/",
+     "target_language": "ar",
+     "status": 200,
+     "role": "mirror (same-topic page in this language)"
+    },
+    {
+     "url": "https://nad-lan.co.il/urban-renewal/",
+     "maps_from": "https://nad-lan.co.il/urban-renewal/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/urban-renewal/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "maps_from": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+     "target_language": "he",
+     "status": 200,
+     "language_version": "https://nad-lan.co.il/ar/north-tel-aviv/old-north/",
+     "language_version_status": 404,
+     "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+    },
+    {
+     "url": "https://nad-lan.co.il/ar/new-projects/",
+     "anchor_suggestion": "مشاريع جديدة",
+     "target_language": "ar",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    },
+    {
+     "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv-ar/",
+     "anchor_suggestion": "مشروع Rainbow في سدي دوف",
+     "target_language": "ar",
+     "status": 200,
+     "role": "optional extra (at most 3 in the article)"
+    }
+   ]
+  }
+ },
+ "swap_after_publish": {
+  "rule": "When /<lang>/north-tel-aviv/ and /<lang>/north-tel-aviv/rova-4/ are both live, point the hub <-> Rova 4 links of that language to each other (and add them here).",
+  "hub": {
+   "en": [
+    "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+    "https://nad-lan.co.il/en/north-tel-aviv/rova-4/"
+   ],
+   "fr": [
+    "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+    "https://nad-lan.co.il/fr/north-tel-aviv/rova-4/"
+   ],
+   "ru": [
+    "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+    "https://nad-lan.co.il/ru/north-tel-aviv/rova-4/"
+   ],
+   "ar": [
+    "https://nad-lan.co.il/north-tel-aviv/rova-4/",
+    "https://nad-lan.co.il/ar/north-tel-aviv/rova-4/"
+   ]
+  },
+  "rova-4": {
+   "en": [
+    "https://nad-lan.co.il/north-tel-aviv/",
+    "https://nad-lan.co.il/en/north-tel-aviv/"
+   ],
+   "fr": [
+    "https://nad-lan.co.il/north-tel-aviv/",
+    "https://nad-lan.co.il/fr/north-tel-aviv/"
+   ],
+   "ru": [
+    "https://nad-lan.co.il/north-tel-aviv/",
+    "https://nad-lan.co.il/ru/north-tel-aviv/"
+   ],
+   "ar": [
+    "https://nad-lan.co.il/north-tel-aviv/",
+    "https://nad-lan.co.il/ar/north-tel-aviv/"
+   ]
+  }
+ }
+}

@@ -1,0 +1,486 @@
+{
+ "generated": "7.10.2026",
+ "page": {
+  "id": 4581,
+  "slug": "rishon-lezion-apartment-prices",
+  "link": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+  "modified": "2026-10-07T12:07:55"
+ },
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages?slug=rishon-lezion-apartment-prices&_fields=id,link,title,content,modified (content.rendered), public, retrieved 2026-10-07 10:34:39 UTC, 31,954 characters. The price-list section (<section id=\"nlpg\">, the [nadlan_price_guide] shortcode), <script> and <style> are outside the audit.",
+ "facts": "scripts/project-stage/price_guide/cities/rishon-lezion-apartment-prices.json (official medians from data.nadlan.gov.il; source_keys are JSON paths in that file: rooms.<k>.latest, rooms.<k>.year_ago, rooms.<k>.change_pct, rooms.<k>.quarters[<q>], israel.<k>, neighbourhoods[<name>].rooms.<k>; 'page' = a number kept from the page's own text)",
+ "apply_rules": [
+  "Apply in the listed order on the RAW content (context=edit). Every \"old\" matches content.rendered exactly once at its turn (matches_in_live), except \"replace_all\" entries, which match exactly \"expect_matches\" times.",
+  "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
+  "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
+  "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+ ],
+ "claims_summary": {
+  "claims": {
+   "CONFLICT": 0,
+   "STALE": 0,
+   "UNSOURCED": 14,
+   "CONSISTENT": 6
+  },
+  "figures": {
+   "CONFLICT": 0,
+   "STALE": 0,
+   "UNSOURCED": 47,
+   "CONSISTENT": 12
+  },
+  "edits": 9,
+  "tier1": 7,
+  "tier2": 2
+ },
+ "notes": "No conflicts on this page: the 3/4/5-room working ranges of the rooms table and of the FAQ all contain the official medians (1,936,700 / 2,392,600 / 3,631,900, 1-3.2026). They are kept word for word; the official median is added next to them (table column, FAQ first sentence). Not audited as claims (illustrations, not market statements): the 2,300,000 cost example (p@7295), the 2,700,000 budget example (p@9571), the buyer / seller / owner if-examples 2,420,000 / 2,550,000 / 2,400,000-2,480,000, 2,650,000 / 2,950,000, 150,000 / 180,000 (p@10058, p@10336, p@10594), the 8,000 / 4,500 rent example (p@17742), the six-step example table with its 'דוגמה מספרית' column (tr@26035..26925: 2,380,000-2,620,000 deals, 2,550,000-2,890,000 asking, 5,600-6,300 rent, 80,000 + 35,000 costs, 2,470,000 offer vs 2,650,000), the seller example 2,850,000 / 2,550,000-2,680,000 (p@27132), the 12% and 10% / 15% negotiation examples (p@27539, p@30137). Rent figures are kept: the page names samples ('לפי מדגם', 'בחלק מהמדגמים') and shows its check date 6.6.2026, but it never says the samples are listings; if a stricter reading is wanted, the rent table header 'שכירות חודשית לדוגמה' is the weakest point. Renovation-cost ranges (p@13670, tr@22065) are tier 2. Official quirks: Remez 5 rooms 4,153,600 is above the city 5-room median and Rambam 5 rooms is 2,497,900 (small samples). Qualitative text NOT edited but at odds with the official neighbourhood medians: the lead (p@4322) and the neighbourhood table (tr@11550..13426) present Ramat Eliyahu as 'נמוך עד בינוני' and Nahalat Yehuda among the older central areas, while the official 4-room medians are Ramat Eliyahu 2,295,000, Remez 2,140,200, Rambam 2,086,400, Abramovitz 1,941,000 and Nahalat Yehuda 3,460,700. The JSON-LD script and the closing disclaimer ('טווחי בדיקה') are outside the audit and unchanged. The official neighbourhood list in the city file holds exactly 8 names (it may be capped), so the text does not say that Neve Yam or Nobel have no published median; it says they are not in the table.",
+ "claims": [
+  {
+   "id": 1,
+   "where": "p@4322",
+   "quote": "חציון שכירות סביב 5,000 ש\"ח, ממוצעים סביב 5,787 עד 6,131 ש\"ח לפי מדגם ושיטת חישוב",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (rent sample named in the sentence, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 2,
+   "where": "tr@8356",
+   "quote": "2 חדרים | 1,350,000 עד 1,850,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "2",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": "no official 2-room series, no source; row leaves the table"
+  },
+  {
+   "id": 3,
+   "where": "tr@8578",
+   "quote": "3 חדרים | 1,650,000 עד 2,250,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "1,936,700 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 2",
+   "note": "kept word for word next to the official median"
+  },
+  {
+   "id": 4,
+   "where": "tr@8810",
+   "quote": "4 חדרים | 2,150,000 עד 3,050,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "2,392,600 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 2",
+   "note": "kept word for word next to the official median"
+  },
+  {
+   "id": 5,
+   "where": "tr@9047",
+   "quote": "5 חדרים | 2,750,000 עד 4,100,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "3,631,900 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 2",
+   "note": "kept word for word next to the official median"
+  },
+  {
+   "id": 6,
+   "where": "tr@9295",
+   "quote": "6 חדרים ופנטהאוזים | 3,900,000 עד 6,500,000 ש\"ח ומעלה",
+   "measure": "sale",
+   "rooms": "6",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 2",
+   "note": "no official 6-room series, no source; row leaves the table"
+  },
+  {
+   "id": 7,
+   "where": "p@13670",
+   "quote": "צורך בשיפוץ של 100,000 עד 250,000 ש\"ח",
+   "measure": "other",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 3",
+   "note": "renovation cost, no source (tier 2)"
+  },
+  {
+   "id": 8,
+   "where": "p@14310",
+   "quote": "חציון שכירות סביב 5,000 ש\"ח בחלק מהמדגמים, וממוצעים סביב 5,787 עד 6,131 ש\"ח",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 3,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (rent samples named in the sentence, page checked 6.6.2026)",
+   "note": ""
+  },
+  {
+   "id": 9,
+   "where": "tr@14961..17554",
+   "quote": "טבלת שכירות חודשית לדוגמה לפי שכונה (16 שורות, 3,900 עד 8,950 ש\"ח)",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 16,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (rent samples named in the section text, page checked 6.6.2026)",
+   "note": "the header says 'לדוגמה' and the section says 'בחלק מהמדגמים'; weakest kept source on the page"
+  },
+  {
+   "id": 10,
+   "where": "tr@18972",
+   "quote": "דירה במרכז ותיק | 3 | 72 מ\"ר | 1,850,000 ש\"ח | 25,694 ש\"ח",
+   "measure": "deal",
+   "rooms": "3",
+   "figures": 2,
+   "official": "city 3 rooms 1,936,700 (1-3.2026); no official 'old centre' area",
+   "verdict": "UNSOURCED",
+   "action": "edit 5",
+   "note": "undated example deal, no source"
+  },
+  {
+   "id": 11,
+   "where": "tr@19198",
+   "quote": "דירה ברמז | 4 | 96 מ\"ר | 2,520,000 ש\"ח | 26,250 ש\"ח",
+   "measure": "deal",
+   "rooms": "4",
+   "figures": 2,
+   "official": "Remez 4 rooms 2,140,200 (1-3.2026)",
+   "verdict": "UNSOURCED",
+   "action": "edit 5",
+   "note": "undated example deal, no source; 18% above the official neighbourhood median"
+  },
+  {
+   "id": 12,
+   "where": "tr@19405",
+   "quote": "דירה בנחלת יהודה | 4 | 104 מ\"ר | 2,780,000 ש\"ח | 26,731 ש\"ח",
+   "measure": "deal",
+   "rooms": "4",
+   "figures": 2,
+   "official": "Nahalat Yehuda 4 rooms 3,460,700 (1-3.2026)",
+   "verdict": "UNSOURCED",
+   "action": "edit 5",
+   "note": "undated example deal, no source; 20% below the official neighbourhood median"
+  },
+  {
+   "id": 13,
+   "where": "tr@19631",
+   "quote": "דירה בנווה ים | 5 | 124 מ\"ר | 3,650,000 ש\"ח | 29,435 ש\"ח",
+   "measure": "deal",
+   "rooms": "5",
+   "figures": 2,
+   "official": "no official Neve Yam median; city 5 rooms 3,631,900",
+   "verdict": "UNSOURCED",
+   "action": "edit 5",
+   "note": "undated example deal, no source"
+  },
+  {
+   "id": 14,
+   "where": "tr@19842",
+   "quote": "דירה בקריית חתני פרס נובל | 5 | 132 מ\"ר | 4,050,000 ש\"ח | 30,682 ש\"ח",
+   "measure": "deal",
+   "rooms": "5",
+   "figures": 2,
+   "official": "no official Nobel median; city 5 rooms 3,631,900",
+   "verdict": "UNSOURCED",
+   "action": "edit 5",
+   "note": "undated example deal, no source"
+  },
+  {
+   "id": 15,
+   "where": "tr@20078",
+   "quote": "דירה ברמת אליהו | 3 | 68 מ\"ר | 1,560,000 ש\"ח | 22,941 ש\"ח",
+   "measure": "deal",
+   "rooms": "3",
+   "figures": 2,
+   "official": "Ramat Eliyahu 3 rooms 1,901,900 (1-3.2026)",
+   "verdict": "UNSOURCED",
+   "action": "edit 5",
+   "note": "undated example deal, no source; 18% below the official neighbourhood median"
+  },
+  {
+   "id": 16,
+   "where": "tr@22065",
+   "quote": "שיפוץ | לעיתים 80,000 עד 300,000 ש\"ח",
+   "measure": "other",
+   "rooms": "",
+   "figures": 2,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "edit 6",
+   "note": "renovation cost, no source (tier 2)"
+  },
+  {
+   "id": 17,
+   "where": "p@28502",
+   "quote": "FAQ: דירת 3 חדרים בטווח עבודה של כ-1,650,000 עד 2,250,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "3",
+   "figures": 2,
+   "official": "1,936,700 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 7",
+   "note": "range kept, median added"
+  },
+  {
+   "id": 18,
+   "where": "p@28787",
+   "quote": "FAQ: דירת 4 חדרים בטווח של כ-2,150,000 עד 3,050,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "4",
+   "figures": 2,
+   "official": "2,392,600 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 8",
+   "note": "range kept, median added"
+  },
+  {
+   "id": 19,
+   "where": "p@29047",
+   "quote": "FAQ: דירת 5 חדרים סביב 2,750,000 עד 4,100,000 ש\"ח",
+   "measure": "sale",
+   "rooms": "5",
+   "figures": 2,
+   "official": "3,631,900 (1-3.2026)",
+   "verdict": "CONSISTENT",
+   "action": "edit 9",
+   "note": "range kept, median added"
+  },
+  {
+   "id": 20,
+   "where": "p@29860",
+   "quote": "FAQ שכירות: חציון 5,000, ממוצעים 5,787 עד 6,131, במערב 7,000 עד 9,000 ש\"ח",
+   "measure": "rent",
+   "rooms": "",
+   "figures": 5,
+   "official": "",
+   "verdict": "UNSOURCED",
+   "action": "keep (same rent samples as the body, page checked 6.6.2026)",
+   "note": ""
+  }
+ ],
+ "edits": [
+  {
+   "page_id": 4581,
+   "url": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "field": "content",
+   "old": "לכן הטבלה הבאה נועדה לתת מסגרת עבודה ולא תחליף לשומת מקרקעין או לבדיקה פרטנית.",
+   "new": "לכן הטבלה הבאה מציגה את חציון מחיר העסקה בראשון לציון לפי נתוני רשות המסים לרבעון הראשון של 2026, ולצידו טווח עבודה לבדיקה, שבתוכו נמצא החציון בכל אחד מסוגי הדירות. היא נועדה לתת מסגרת עבודה ולא תחליף לשומת מקרקעין או לבדיקה פרטנית. המחירון הרשמי מפרסם חציון לדירות 3, 4 ו-5 חדרים; דירות 2 חדרים, דירות 6 חדרים ופנטהאוזים כדאי לבדוק מול עסקאות דומות ברחוב ובשכונה.",
+   "source_keys": [
+    "rooms.3.latest",
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Intro of the rooms table: announces the official median column added in edit 2 and says why the 2-room and 6+-room rows left the table.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 1,
+   "raw_risk": []
+  },
+  {
+   "page_id": 4581,
+   "url": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">שטח נפוץ לבדיקה</th>\n<th dir=\"rtl\">טווח מחיר עבודה</th>\n<th dir=\"rtl\">שכונות שבהן הפערים בולטים</th>\n<th dir=\"rtl\">בדיקה משלימה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">45 עד 60 מ\"ר</td>\n<td dir=\"rtl\">1,350,000 עד 1,850,000 ש\"ח</td>\n<td dir=\"rtl\">מרכז ותיק, רמת אליהו, רמז</td>\n<td dir=\"rtl\">מצב בניין, חניה, פוטנציאל השכרה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">60 עד 80 מ\"ר</td>\n<td dir=\"rtl\">1,650,000 עד 2,250,000 ש\"ח</td>\n<td dir=\"rtl\">רמב\"ם, אברמוביץ, שיכוני המזרח, נחלת יהודה</td>\n<td dir=\"rtl\">שיפוץ, מעלית, קומה, מרפסת</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">85 עד 110 מ\"ר</td>\n<td dir=\"rtl\">2,150,000 עד 3,050,000 ש\"ח</td>\n<td dir=\"rtl\">רמז, נחלת יהודה, קריית גנים, נרקיסים</td>\n<td dir=\"rtl\">ממ\"ד, חניה, גיל בניין, תכנון פנימי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">110 עד 135 מ\"ר</td>\n<td dir=\"rtl\">2,750,000 עד 4,100,000 ש\"ח</td>\n<td dir=\"rtl\">נווה חוף, נווה ים, קריית חתני פרס נובל, קריית כרמים</td>\n<td dir=\"rtl\">קומה, נוף, חניות, מחסן, מרפסת</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">6 חדרים ופנטהאוזים</td>\n<td dir=\"rtl\">135 עד 180 מ\"ר ומעלה</td>\n<td dir=\"rtl\">3,900,000 עד 6,500,000 ש\"ח ומעלה</td>\n<td dir=\"rtl\">מערב העיר, שער הים, שכונות חדשות</td>\n<td dir=\"rtl\">פרטיות, נוף, שטחי חוץ, סטנדרט בנייה</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">סוג דירה</th>\n<th dir=\"rtl\">שטח נפוץ לבדיקה</th>\n<th dir=\"rtl\">חציון מחיר העסקה, ינואר-מרץ 2026</th>\n<th dir=\"rtl\">טווח מחיר עבודה</th>\n<th dir=\"rtl\">שכונות שבהן הפערים בולטים</th>\n<th dir=\"rtl\">בדיקה משלימה</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">60 עד 80 מ\"ר</td>\n<td dir=\"rtl\">1,936,700 ש\"ח</td>\n<td dir=\"rtl\">1,650,000 עד 2,250,000 ש\"ח</td>\n<td dir=\"rtl\">רמב\"ם, אברמוביץ, שיכוני המזרח, נחלת יהודה</td>\n<td dir=\"rtl\">שיפוץ, מעלית, קומה, מרפסת</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">85 עד 110 מ\"ר</td>\n<td dir=\"rtl\">2,392,600 ש\"ח</td>\n<td dir=\"rtl\">2,150,000 עד 3,050,000 ש\"ח</td>\n<td dir=\"rtl\">רמז, נחלת יהודה, קריית גנים, נרקיסים</td>\n<td dir=\"rtl\">ממ\"ד, חניה, גיל בניין, תכנון פנימי</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">110 עד 135 מ\"ר</td>\n<td dir=\"rtl\">3,631,900 ש\"ח</td>\n<td dir=\"rtl\">2,750,000 עד 4,100,000 ש\"ח</td>\n<td dir=\"rtl\">נווה חוף, נווה ים, קריית חתני פרס נובל, קריית כרמים</td>\n<td dir=\"rtl\">קומה, נוף, חניות, מחסן, מרפסת</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.4.latest",
+    "rooms.5.latest",
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Rooms table: the 3-, 4- and 5-room working ranges contain the official medians (1,936,700 / 2,392,600 / 3,631,900, 1-3.2026) and are kept word for word next to a new official median column. The 2-room row (1.35-1.85M) and the 6-room / penthouse row (3.9-6.5M) have no source and no official counterpart: they leave the table (edit 1 says how to check those sizes).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">טווח מחיר עבודה</th>",
+   "n": 2,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4581,
+   "url": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "field": "content",
+   "old": "צורך בשיפוץ של 100,000 עד 250,000 ש\"ח או סיכון תכנוני שדורש בדיקה.",
+   "new": "צורך בשיפוץ יסודי או סיכון תכנוני שדורש בדיקה.",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "A renovation-cost range with no source; rephrased without the number.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 3,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4581,
+   "url": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "field": "content",
+   "old": "מחיר למ\"ר עוזר לנרמל את ההשוואה, אך גם הוא עלול להטעות אם משווים דירה קטנה לדירה גדולה, דירה עם גג לדירה רגילה, או דירה חדשה לדירה ישנה.",
+   "new": "מחיר למ\"ר עוזר לנרמל את ההשוואה, אך גם הוא עלול להטעות אם משווים דירה קטנה לדירה גדולה, דירה עם גג לדירה רגילה, או דירה חדשה לדירה ישנה. כנקודת ייחוס, הטבלה הבאה מציגה את חציון מחיר העסקה בכמה שכונות בעיר, לפי נתוני רשות המסים לרבעון הראשון של 2026. בשכונות שאינן בטבלה, כמו נווה ים וקריית חתני פרס נובל, ההשוואה נשענת על עסקאות דומות ברחוב ובשכונה.",
+   "source_keys": [
+    "data_quarter"
+   ],
+   "audit_verdict": "WORDING",
+   "verdict": "WORDING",
+   "why": "Lead-in for edit 5: the table now shows official neighbourhood medians instead of undated example deals.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 4,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4581,
+   "url": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "field": "content",
+   "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">דוגמת עסקה לבדיקה</th>\n<th dir=\"rtl\">חדרים</th>\n<th dir=\"rtl\">שטח</th>\n<th dir=\"rtl\">מחיר עסקה</th>\n<th dir=\"rtl\">מחיר למ\"ר בקירוב</th>\n<th dir=\"rtl\">איך לקרוא את הנתון</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירה במרכז ותיק</td>\n<td dir=\"rtl\">3</td>\n<td dir=\"rtl\">72 מ\"ר</td>\n<td dir=\"rtl\">1,850,000 ש\"ח</td>\n<td dir=\"rtl\">25,694 ש\"ח</td>\n<td dir=\"rtl\">מתאימה להשוואת דירות 3 חדרים ותיקות בלבד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירה ברמז</td>\n<td dir=\"rtl\">4</td>\n<td dir=\"rtl\">96 מ\"ר</td>\n<td dir=\"rtl\">2,520,000 ש\"ח</td>\n<td dir=\"rtl\">26,250 ש\"ח</td>\n<td dir=\"rtl\">יש לבדוק מעלית, חניה ומרפסת</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירה בנחלת יהודה</td>\n<td dir=\"rtl\">4</td>\n<td dir=\"rtl\">104 מ\"ר</td>\n<td dir=\"rtl\">2,780,000 ש\"ח</td>\n<td dir=\"rtl\">26,731 ש\"ח</td>\n<td dir=\"rtl\">מתאימה להשוואה מול בניינים דומים באזור</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירה בנווה ים</td>\n<td dir=\"rtl\">5</td>\n<td dir=\"rtl\">124 מ\"ר</td>\n<td dir=\"rtl\">3,650,000 ש\"ח</td>\n<td dir=\"rtl\">29,435 ש\"ח</td>\n<td dir=\"rtl\">פרמיה אפשרית למיקום ולמפרט</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירה בקריית חתני פרס נובל</td>\n<td dir=\"rtl\">5</td>\n<td dir=\"rtl\">132 מ\"ר</td>\n<td dir=\"rtl\">4,050,000 ש\"ח</td>\n<td dir=\"rtl\">30,682 ש\"ח</td>\n<td dir=\"rtl\">דורשת השוואה לדירות מערביות גדולות בלבד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">דירה ברמת אליהו</td>\n<td dir=\"rtl\">3</td>\n<td dir=\"rtl\">68 מ\"ר</td>\n<td dir=\"rtl\">1,560,000 ש\"ח</td>\n<td dir=\"rtl\">22,941 ש\"ח</td>\n<td dir=\"rtl\">יש לבדוק מצב בניין ותכניות התחדשות</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">שכונה</th>\n<th dir=\"rtl\">3 חדרים</th>\n<th dir=\"rtl\">4 חדרים</th>\n<th dir=\"rtl\">5 חדרים</th>\n<th dir=\"rtl\">איך לקרוא את הנתון</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רמב\"ם</td>\n<td dir=\"rtl\">1,876,800 ש\"ח</td>\n<td dir=\"rtl\">2,086,400 ש\"ח</td>\n<td dir=\"rtl\">2,497,900 ש\"ח</td>\n<td dir=\"rtl\">מצב בניין, חניה, רעש, שיפוץ</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רמז</td>\n<td dir=\"rtl\">1,802,600 ש\"ח</td>\n<td dir=\"rtl\">2,140,200 ש\"ח</td>\n<td dir=\"rtl\">4,153,600 ש\"ח</td>\n<td dir=\"rtl\">יש לבדוק מעלית, חניה ומרפסת</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">אברמוביץ</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">1,941,000 ש\"ח</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">חניה, עומס, קומות נמוכות, שיפוץ</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">נחלת יהודה</td>\n<td dir=\"rtl\">2,354,400 ש\"ח</td>\n<td dir=\"rtl\">3,460,700 ש\"ח</td>\n<td dir=\"rtl\">3,610,600 ש\"ח</td>\n<td dir=\"rtl\">מתאימה להשוואה מול בניינים דומים באזור</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">רמת אליהו</td>\n<td dir=\"rtl\">1,901,900 ש\"ח</td>\n<td dir=\"rtl\">2,295,000 ש\"ח</td>\n<td dir=\"rtl\">לא פורסם</td>\n<td dir=\"rtl\">יש לבדוק מצב בניין ותכניות התחדשות</td>\n</tr>\n</tbody>\n</table>",
+   "source_keys": [
+    "neighbourhoods[רמב\"ם].rooms.3",
+    "neighbourhoods[רמב\"ם].rooms.4",
+    "neighbourhoods[רמב\"ם].rooms.5",
+    "neighbourhoods[רמז].rooms.3",
+    "neighbourhoods[רמז].rooms.4",
+    "neighbourhoods[רמז].rooms.5",
+    "neighbourhoods[אברמוביץ].rooms.4",
+    "neighbourhoods[נחלת יהודה].rooms.3",
+    "neighbourhoods[נחלת יהודה].rooms.4",
+    "neighbourhoods[נחלת יהודה].rooms.5",
+    "neighbourhoods[רמת אליהו].rooms.3",
+    "neighbourhoods[רמת אליהו].rooms.4"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Six undated 'example deals' with no source, under the heading 'recent deals' (Remez 4 rooms 2.52M vs official 2,140,200; Nahalat Yehuda 4 rooms 2.78M vs 3,460,700; Ramat Eliyahu 3 rooms 1.56M vs 1,901,900) plus per-m2 values derived from them. Replaced by the official neighbourhood medians, 1-3.2026 ('לא פורסם' where the official file has no median). Check notes reused word for word from the old rows and from the neighbourhood table (Rambam, Abramovitz).",
+   "matches_in_live": 1,
+   "tier": 1,
+   "spans_tags": true,
+   "anchor": "<th dir=\"rtl\">דוגמת עסקה לבדיקה</th>",
+   "n": 5,
+   "raw_risk": [
+    "straight double quote",
+    "line break",
+    "whole table: apply via anchor"
+   ]
+  },
+  {
+   "page_id": 4581,
+   "url": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "field": "content",
+   "old": "לעיתים 80,000 עד 300,000 ש\"ח",
+   "new": "תלוי בהיקף העבודה ובמצב הדירה",
+   "source_keys": [
+    "page"
+   ],
+   "audit_verdict": "UNSOURCED",
+   "verdict": "UNSOURCED",
+   "why": "Renovation-cost range in a table cell with no source; rephrased without the number.",
+   "matches_in_live": 1,
+   "tier": 2,
+   "n": 6,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4581,
+   "url": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "field": "content",
+   "old": "דירת 3 חדרים בראשון לציון יכולה לנוע בטווח עבודה של כ-1,650,000 עד 2,250,000 ש\"ח, בהתאם לשכונה, שטח, מצב הדירה, קומה, מעלית וחניה.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 3 חדרים בראשון לציון ברבעון הראשון של 2026 היה 1,936,700 ש\"ח, לעומת 1,962,700 ש\"ח שנה קודם לכן. בפועל, דירת 3 חדרים יכולה לנוע בטווח עבודה של כ-1,650,000 עד 2,250,000 ש\"ח, בהתאם לשכונה, שטח, מצב הדירה, קומה, מעלית וחניה.",
+   "source_keys": [
+    "rooms.3.latest",
+    "rooms.3.year_ago",
+    "page"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "FAQ 3 rooms: the working range contains the official median 1,936,700; the answer now leads with the median, like the table.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 7,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4581,
+   "url": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "field": "content",
+   "old": "דירת 4 חדרים נבדקת לרוב בטווח של כ-2,150,000 עד 3,050,000 ש\"ח.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 4 חדרים בראשון לציון ברבעון הראשון של 2026 היה 2,392,600 ש\"ח, לעומת 2,371,200 ש\"ח שנה קודם לכן. בפועל, דירת 4 חדרים נבדקת לרוב בטווח של כ-2,150,000 עד 3,050,000 ש\"ח.",
+   "source_keys": [
+    "rooms.4.latest",
+    "rooms.4.year_ago",
+    "page"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "FAQ 4 rooms: the working range contains the official median 2,392,600; the answer now leads with the median.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 8,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  },
+  {
+   "page_id": 4581,
+   "url": "https://nad-lan.co.il/rishon-lezion-apartment-prices/",
+   "field": "content",
+   "old": "דירת 5 חדרים יכולה לנוע סביב 2,750,000 עד 4,100,000 ש\"ח, ובמקרים של דירה גדולה, חדשה, מערבית, עם חניה כפולה, מחסן ונוף, גם מעבר לכך.",
+   "new": "לפי נתוני רשות המסים, חציון מחיר העסקה לדירת 5 חדרים בראשון לציון ברבעון הראשון של 2026 היה 3,631,900 ש\"ח, לעומת 3,560,600 ש\"ח שנה קודם לכן. בפועל, דירת 5 חדרים יכולה לנוע סביב 2,750,000 עד 4,100,000 ש\"ח, ובמקרים של דירה גדולה, חדשה, מערבית, עם חניה כפולה, מחסן ונוף, גם מעבר לכך.",
+   "source_keys": [
+    "rooms.5.latest",
+    "rooms.5.year_ago",
+    "page"
+   ],
+   "audit_verdict": "CONSISTENT",
+   "verdict": "CONSISTENT",
+   "why": "FAQ 5 rooms: the working range contains the official median 3,631,900; the answer now leads with the median.",
+   "matches_in_live": 1,
+   "tier": 1,
+   "n": 9,
+   "raw_risk": [
+    "straight double quote"
+   ]
+  }
+ ],
+ "live_recheck": {
+  "retrieved_utc": "2026-10-07 11:19:25",
+  "modified": "2026-10-07T13:47:27",
+  "audited_copy_modified": "2026-10-07T12:07:55",
+  "price_list_on_page": true,
+  "body_outside_list_identical_to_audited_copy": "yes, except the blank lines around the price list, which was inserted at 2026-10-07T13:47:27 (site time) after the audited copy",
+  "dry_run": "9 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ }
+}

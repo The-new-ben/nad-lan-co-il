@@ -9,7 +9,9 @@ One source for the design system preview and for the plugin's server-rendered se
 The script loads nothing heavy up front: MapLibre GL JS 5.24.0 (cdnjs, SRI), the RTL text plugin and the tiles are
 requested only when the section comes within 300px of the screen. Several instances can share one page (sfx).
 Data: area_map/<key>.json (made by make_data.py from docs/design/area-map-3d/data.json, where every item keeps its
-source and retrieval time)."""
+source and retrieval time); a language version is <key>.<lang>.json with a "ui" object (v1.1, see ui()). v1.1 also drops
+the filter and the list heading of a layer that has no places. CSS: the LTR mirror is a separate [dir="ltr"] block, so
+the Hebrew rules are untouched."""
 import html as _h
 import io
 import json
@@ -44,6 +46,27 @@ UI = {
     },
 }
 
+
+
+def ui(d):
+    """v1.1 (7.10.2026, HAD-460): the interface words and the section's language. Hebrew (UI, CHIPS, PLURAL, rtl) unless the
+    data file carries "ui": {"lang", "dir", "colon", any UI key, "chips": {cat: label}, "plural": {type: plural},
+    "js": {...; "cats" and "loc" merge key by key; "lrt" = the words in a light-rail stop's type}}. Without "ui" the
+    section is byte-identical to v1."""
+    o = d.get("ui") or {}
+    u = {"lang": "he", "dir": "rtl", "colon": ": "}
+    u.update({k: v for k, v in UI.items() if k != "js"})
+    u.update({k: v for k, v in o.items() if k not in ("js", "chips", "plural")})
+    js = dict(UI["js"])
+    for k, v in (o.get("js") or {}).items():
+        js[k] = dict(js[k], **v) if isinstance(js.get(k), dict) else v
+    u["js"] = js
+    lab = o.get("chips") or {}
+    u["chips"] = [(k, lab.get(k, label), shape) for k, label, shape in CHIPS]
+    u["plural"] = dict(PLURAL, **(o.get("plural") or {}))
+    return u
+
+
 ICO_RESET = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" '
              'stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>')
 ICO_X = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" '
@@ -70,37 +93,47 @@ def bounds(ring, pad=0.035):
     return [[round(min(xs) - pad, 4), round(min(ys) - pad, 4)], [round(max(xs) + pad, 4), round(max(ys) + pad, 4)]]
 
 
-def cfg(d):
+def cfg(d, u=None):
+    u = u or ui(d)
     pr = [{"n": p["name"], "f": p["fact"], "d": p.get("dev"), "u": p["url"], "y": p["lat"], "x": p["lng"],
            "h": 1 if p.get("hero") else 0} for p in d["projects"]]
     rn = [{"a": r["address"], "b": r.get("before"), "f": r.get("after"), "d": r.get("dev"), "s": r.get("stage"),
            "o": r.get("note"), "u": r.get("url"), "y": r["lat"], "x": r["lng"]} for r in d["renewal"]]
-    t = dict(UI["js"])
+    t = dict(u["js"])
     t["loc"] = dict(t["loc"], **{"Map.Title": d["title"]})
     return {"v": d["view"], "mb": bounds(d["boundary"]), "b": d["boundary"], "pr": pr, "rn": rn, "pl": d["places"],
             "fx": d.get("facts", {}), "t": t}
 
 
-def _list(d):
-    out = ['<h3 class="nlam__lh">פרויקטים</h3><ul class="nlam__ul">']
-    for p in d["projects"]:
-        out.append('<li><a href="' + E(p["url"]) + '"><bdi>' + E(p["name"]) + '</bdi></a>: ' + rich(p["fact"]) + '</li>')
-    out.append('</ul><h3 class="nlam__lh">התחדשות עירונית</h3><ul class="nlam__ul">')
-    for r in d["renewal"]:
-        parts = []
-        if r.get("before"):
-            parts.append("לפני: " + rich(r["before"]))
-        if r.get("after"):
-            parts.append("אחרי: " + rich(r["after"]))
-        for k in ("dev", "stage"):
-            if r.get(k):
-                parts.append(rich(r[k]))
-        name = rich(r["address"])
-        if r.get("url"):
-            name = '<a href="' + E(r["url"]) + '">' + name + '</a>'
-        out.append('<li>' + name + (': ' + ' · '.join(parts) if parts else '') + '</li>')
-    out.append('</ul>')
-    for cat, label, _ in CHIPS[2:]:
+def _list(d, u=None):
+    u = u or ui(d)
+    T = lambda s: _h.escape(str(s), quote=False)
+    lab = {k: label for k, label, _ in u["chips"]}
+    col = u["colon"]
+    out = []
+    if d["projects"]:  # v1.1: a layer without places prints no heading (Sde Dov has no renewal pins)
+        out.append('<h3 class="nlam__lh">' + E(lab["projects"]) + '</h3><ul class="nlam__ul">')
+        for p in d["projects"]:
+            out.append('<li><a href="' + E(p["url"]) + '"><bdi>' + E(p["name"]) + '</bdi></a>' + T(col) + rich(p["fact"]) + '</li>')
+        out.append('</ul>')
+    if d["renewal"]:
+        out.append('<h3 class="nlam__lh">' + E(lab["renewal"]) + '</h3><ul class="nlam__ul">')
+        for r in d["renewal"]:
+            parts = []
+            if r.get("before"):
+                parts.append(T(u["js"]["before"] + col) + rich(r["before"]))
+            if r.get("after"):
+                parts.append(T(u["js"]["after"] + col) + rich(r["after"]))
+            for k in ("dev", "stage"):
+                if r.get(k):
+                    parts.append(rich(r[k]))
+            name = rich(r["address"])
+            if r.get("url"):
+                name = '<a href="' + E(r["url"]) + '">' + name + '</a>'
+            out.append('<li>' + name + (T(col) + ' · '.join(parts) if parts else '') + '</li>')
+        out.append('</ul>')
+    PL = u["plural"]
+    for cat, label, _ in u["chips"][2:]:
         rows = [p for p in d["places"] if p[0] == cat]
         if not rows:
             continue
@@ -115,7 +148,7 @@ def _list(d):
                 if p[1] == ty and p[2] not in names:
                     names.append(p[2])
             many = {n: sum(1 for p in rows if p[1] == ty and p[2] == n) for n in names}
-            out.append('<p class="nlam__lp"><b>' + E(PLURAL.get(ty, ty)) + ':</b> ' + ', '.join(
+            out.append('<p class="nlam__lp"><b>' + E(PL.get(ty, ty) + u["colon"].rstrip()) + '</b> ' + ', '.join(
                 '<bdi>' + E(n) + '</bdi>' + (' <span class="nlam__num">(' + str(many[n]) + ')</span>' if many[n] > 1 else '')
                 for n in names) + '</p>')
     return ''.join(out)
@@ -123,32 +156,36 @@ def _list(d):
 
 def html(d, sfx=''):
     rid = 'nlam' + sfx
+    u = ui(d)
     c = counts(d)
-    data = json.dumps(cfg(d), ensure_ascii=False, separators=(',', ':'))
-    out = ['<section class="nlds nlam" id="' + rid + '" data-state="wait" aria-labelledby="' + rid + '-t" dir="rtl" lang="he" '
+    data = json.dumps(cfg(d, u), ensure_ascii=False, separators=(',', ':'))
+    out = ['<section class="nlds nlam" id="' + rid + '" data-state="wait" aria-labelledby="' + rid + '-t" dir="' + E(u["dir"]) +
+           '" lang="' + E(u["lang"]) + '" '
            'data-cfg="' + E(data) + '">',
            '<header class="nlam__head"><p class="nlam__kicker">' + E(d["kicker"]) + '</p>',
            '<h2 class="nlam__title" id="' + rid + '-t">' + rich(d["title"]) + '</h2>',
            '<p class="nlam__lead">' + rich(d["lead"]) + '</p></header>',
-           '<div class="nlam__chips" role="group" aria-label="' + E(UI["chips_label"]) + '">']
-    for k, label, shape in CHIPS:
+           '<div class="nlam__chips" role="group" aria-label="' + E(u["chips_label"]) + '">']
+    for k, label, shape in u["chips"]:
+        if not c[k]:  # v1.1: no filter for an empty layer (a visible "0" is not allowed on the site)
+            continue
         out.append('<button type="button" class="nlam__chip" data-cat="' + k + '" aria-pressed="true" disabled>'
                    '<span class="nlam__sw' + (' nlam__sw--' + shape if shape else '') + '" style="--c:var(--am-' + k + ')"></span>' +
                    E(label) + ' <span class="nlam__n">' + str(c[k]) + '</span></button>')
     out.append('</div>')
     out.append('<div class="nlam__frame">'
                '<div class="nlam__map" role="region" aria-label="' + E(d["title"]) + '"></div>'
-               '<div class="nlam__wait" aria-hidden="true">' + ICO_MAP + '<span>' + E(UI["wait"]) + '</span></div>'
-               '<button type="button" class="nlam__reset">' + ICO_RESET + E(UI["reset"]) + '</button>'
-               '<div class="nlam__key" aria-hidden="true"><i></i>' + E(UI["js"]["key"]) + '</div>'
+               '<div class="nlam__wait" aria-hidden="true">' + ICO_MAP + '<span>' + E(u["wait"]) + '</span></div>'
+               '<button type="button" class="nlam__reset">' + ICO_RESET + E(u["reset"]) + '</button>'
+               '<div class="nlam__key" aria-hidden="true"><i></i>' + E(u["js"]["key"]) + '</div>'
                '<div class="nlam__card" role="dialog" aria-modal="false" aria-labelledby="' + rid + '-ch" hidden>'
-               '<button type="button" class="nlam__x" aria-label="' + E(UI["close"]) + '">' + ICO_X + '</button>'
+               '<button type="button" class="nlam__x" aria-label="' + E(u["close"]) + '">' + ICO_X + '</button>'
                '<div class="nlam__cb"></div></div></div>')
     cap = rich(d["caption"]).replace('OpenStreetMap', '<bdi>OpenStreetMap</bdi>', 1)
     out.append('<p class="nlam__cap">' + cap + ' <a class="nlam__osm" href="https://www.openstreetmap.org/copyright" '
-               'rel="noopener" target="_blank"><bdi>' + E(UI["osm"]) + '</bdi></a></p>')
-    out.append('<p class="nlam__failnote">' + E(UI["fail"]) + '</p>')
-    out.append('<details class="nlam__list"><summary>' + E(UI["list"]) + '</summary>' + _list(d) + '</details>')
+               'rel="noopener" target="_blank"><bdi>' + E(u["osm"]) + '</bdi></a></p>')
+    out.append('<p class="nlam__failnote">' + E(u["fail"]) + '</p>')
+    out.append('<details class="nlam__list"><summary>' + E(u["list"]) + '</summary>' + _list(d, u) + '</details>')
     out.append('</section>')
     return ''.join(out)
 
@@ -202,7 +239,7 @@ CSS = r"""
 .nlam__x:hover{background:var(--am-sand) !important}
 .nlam__x svg{width:18px !important;height:18px !important}
 .nlam__ck{display:flex !important;align-items:center !important;gap:8px !important;margin:0 0 6px !important;color:var(--am-sea) !important;font:700 13.5px/1.3 var(--am-sans) !important}
-.nlam__ct{margin:0 34px 8px 0 !important;padding:0 !important;border:0 !important;font-family:var(--am-serif) !important;font-weight:600 !important;font-size:21px !important;line-height:1.3 !important;color:var(--am-ink) !important}
+.nlam__ct{margin:0 0 8px !important;margin-inline-end:34px !important;padding:0 !important;border:0 !important;font-family:var(--am-serif) !important;font-weight:600 !important;font-size:21px !important;line-height:1.3 !important;color:var(--am-ink) !important}
 .nlam__ct::before,.nlam__ct::after{content:none !important;display:none !important}
 .nlam__card p{margin:0 0 6px !important;font-size:15.5px !important;line-height:1.5 !important;color:var(--am-ink2) !important}
 .nlam__card p.nlam__cm{font-size:14px !important}
@@ -251,6 +288,15 @@ CSS = r"""
  .nlam__reset svg{width:15px !important;height:15px !important}
  .nlam .maplibregl-ctrl-bottom-left{display:none !important}
 }
+.nlam[dir="ltr"] .nlam__reset{left:auto !important;right:14px !important}
+.nlam[dir="ltr"] .nlam__key{right:auto !important;left:12px !important}
+.nlam[dir="ltr"] .nlam__card{right:auto !important;left:14px !important}
+.nlam[dir="ltr"] .nlam__x{left:auto !important;right:10px !important}
+.nlam[dir="ltr"] .nlam__ba i{transform:scaleX(-1) !important}
+@container nlam (max-width:640px){
+ .nlam[dir="ltr"] .nlam__reset{right:10px !important}
+ .nlam[dir="ltr"] .nlam__card{left:10px !important;right:10px !important}
+}
 @media (prefers-reduced-motion:reduce){.nlam__pl,.nlam__chip{transition:none !important}}
 """
 
@@ -287,6 +333,8 @@ function icon(cat,sq){var S=30,R=2,c=document.createElement('canvas');c.width=c.
  g.stroke(new Path2D(GLYPH[cat]));g.restore();return g.getImageData(0,0,S*R,S*R)}
 function fc(list,f){return{type:'FeatureCollection',features:list.map(function(p,i){return{type:'Feature',id:i,properties:f(p,i),geometry:{type:'Point',coordinates:[p.x,p.y]}}})}}
 function one(root){if(root.__nlam)return;var C;try{C=JSON.parse(root.getAttribute('data-cfg'))}catch(e){return}if(!C||!C.v)return;root.__nlam=1;
+ var LTR=root.getAttribute('dir')==='ltr',LN=(root.getAttribute('lang')||'he').slice(0,2),
+  NAME=LN==='he'?['coalesce',['get','name:he'],['get','name']]:['coalesce',['get','name:'+LN],['get','name:en'],['get','name']];
  var T=C.t,q=function(s){return root.querySelector(s)},mapEl=q('.nlam__map'),card=q('.nlam__card'),cb=q('.nlam__cb'),
   xb=q('.nlam__x'),reset=q('.nlam__reset'),fr=q('.nlam__frame'),list=q('.nlam__list'),chips=root.querySelectorAll('.nlam__chip'),
   on={projects:1,renewal:1,edu:1,parks:1,shop:1,transit:1},map=null,started=false,pins=[],last=null,HOME=null,
@@ -307,7 +355,7 @@ function one(root){if(root.__nlam)return;var C;try{C=JSON.parse(root.getAttribut
    else if(/^(boundary_|airport|highway-shield|road_shield|label_country|label_state)/.test(id))map.setLayoutProperty(id,'visibility','none');
    else if(/highway_(major|motorway)_(inner|subtle)$/.test(id)||id==='highway_minor')map.setPaintProperty(id,'line-color','#ffffff');
    else if(/casing$/.test(id)&&l.type==='line')map.setPaintProperty(id,'line-color','#dcd8cc');
-   if(l.type==='symbol'&&l.layout&&l.layout['text-field']&&!/shield/.test(id)){map.setLayoutProperty(id,'text-field',['coalesce',['get','name:he'],['get','name']]);
+   if(l.type==='symbol'&&l.layout&&l.layout['text-field']&&!/shield/.test(id)){map.setLayoutProperty(id,'text-field',NAME);
     map.setPaintProperty(id,'text-color','#5a6670');map.setPaintProperty(id,'text-halo-color','rgba(247,246,242,.95)')}}catch(e){}});
   var first=(L.filter(function(l){return l.type==='symbol'})[0]||{}).id;var h=['coalesce',['get','render_height'],0],b=['coalesce',['get','render_min_height'],0];
   map.addLayer({id:'nlam-3d',type:'fill-extrusion',source:'openmaptiles','source-layer':'building',minzoom:13,filter:['!=',['get','hide_3d'],true],
@@ -352,7 +400,7 @@ function one(root){if(root.__nlam)return;var C;try{C=JSON.parse(root.getAttribut
   try{map=new ml.Map({container:mapEl,style:STYLE,center:HOME.center,zoom:HOME.zoom,pitch:HOME.pitch,bearing:HOME.bearing,minZoom:12.8,maxZoom:18.5,maxPitch:70,
    maxBounds:C.mb,cooperativeGestures:true,attributionControl:{compact:false},locale:T.loc})}catch(e){return fail(e)}
   root.__nlamMap=map;
-  if(!narrow)map.addControl(new ml.NavigationControl({visualizePitch:true}),'bottom-left');
+  if(!narrow)map.addControl(new ml.NavigationControl({visualizePitch:true}),LTR?'bottom-right':'bottom-left');
   var styled=false,timer=setTimeout(function(){if(!styled)fail('style timeout')},20000);
   map.on('error',function(e){var er=e&&e.error;if(!styled&&er&&(er.status||/fetch|network|ajax|load/i.test(er.message||''))){clearTimeout(timer);fail(er)}});
   map.on('style.load',function(){if(styled||!map)return;styled=true;clearTimeout(timer);
@@ -374,7 +422,7 @@ function one(root){if(root.__nlam)return;var C;try{C=JSON.parse(root.getAttribut
    x.el.classList.toggle('is-compact',hit);x.el.style.zIndex=sel?5:hit?1:(x.p.h?4:3);if(!hit)placed.push(r)})}
  function mark(ll){var s=map&&map.getSource('nlam-sel');if(s)s.setData({type:'FeatureCollection',features:ll?[{type:'Feature',properties:{},geometry:{type:'Point',coordinates:ll}}]:[]})}
  function show(h,ll,opener,kb){pins.forEach(function(x){x.el.classList.remove('is-on')});if(opener)opener.classList.add('is-on');mark(opener?null:ll);last=opener||null;
-  cb.innerHTML=h;card.hidden=false;queue();var narrow=fr.clientWidth<640,off=narrow?[0,-Math.round(card.offsetHeight/2)+10]:[-150,40];
+  cb.innerHTML=h;card.hidden=false;queue();var narrow=fr.clientWidth<640,off=narrow?[0,-Math.round(card.offsetHeight/2)+10]:[LTR?150:-150,40];
   map.easeTo({center:ll,offset:off,duration:still?0:650});if(kb)try{xb.focus({preventScroll:true})}catch(e){}}
  function hide(){card.hidden=true;mark(null);pins.forEach(function(x){x.el.classList.remove('is-on')});queue();if(last)try{last.focus({preventScroll:true})}catch(e){}}
  xb.addEventListener('click',hide);document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!card.hidden)hide()});
@@ -387,7 +435,7 @@ function one(root){if(root.__nlam)return;var C;try{C=JSON.parse(root.getAttribut
   else if(r.f)ba='<div class="nlam__ba nlam__ba--one"><div><b>'+esc(T.newb)+'</b><span>'+num(r.f)+'</span></div></div>';
   show(kick(T.ren,'var(--am-renewal)',1)+title(num(r.a))+ba+(r.d?'<p class="nlam__cm">'+esc(T.dev)+num(r.d)+'</p>':'')+(r.s?'<p class="nlam__cm">'+esc(T.stage)+num(r.s)+'</p>':'')+
    (r.o?'<p class="nlam__cm">'+num(r.o)+'</p>':'')+(r.u?'<a class="nlam__cta" href="'+esc(r.u)+'">'+esc(T.to_c)+'</a>':''),[r.x,r.y],null)}
- function openPlace(p){var line=p.t+(p.a?' · '+p.a:''),extra=(p.c==='transit'&&C.fx&&C.fx[p.n]&&p.t.indexOf('הקלה')>-1)?C.fx[p.n]:'';
+ function openPlace(p){var line=p.t+(p.a?' · '+p.a:''),extra=(p.c==='transit'&&C.fx&&C.fx[p.n]&&p.t.indexOf(T.lrt||'הקלה')>-1)?C.fx[p.n]:'';
   show(kick(T.cats[p.c],'var(--am-'+p.c+')')+title('<bdi>'+esc(p.n)+'</bdi>')+'<p>'+num(line)+'</p>'+(extra?'<p class="nlam__cm">'+num(extra)+'</p>':'')+
    (p.e&&p.e>20?'<p class="nlam__cm">'+esc(T.edge)+'</p>':''),[p.x,p.y],null)}
  function filters(){if(!map||!map.getLayer('nlam-places'))return;var cats=['edu','parks','shop','transit'].filter(function(k){return on[k]});
