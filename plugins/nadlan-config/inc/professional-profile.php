@@ -286,12 +286,14 @@ if ( ! function_exists( 'nadlan_prof_render' ) ) {
 		</div>
 	</header>
 
+	<?php if ( ! $demo ) : /* a sample profile's years, projects and reply time are seeded figures, never shown (HAD-396) */ ?>
 	<div class="nlpp-stats">
 		<?php /* years_active holds a founding year on some cards ("1963+ שנות ניסיון" was printed) */ if ( $years > 1800 && $years <= (int) gmdate( 'Y' ) ) : ?><div><b><?php echo (int) $years; ?></b><span>פעילה מאז</span></div><?php elseif ( $years > 0 && $years < 120 ) : ?><div><b><?php echo (int) $years; ?>+</b><span>שנות ניסיון</span></div><?php endif; ?>
 		<?php if ( $projects_n ) : ?><div><b><?php echo number_format( $projects_n ); ?></b><span>פרויקטים</span></div><?php endif; ?>
 		<?php if ( $g( 'classification' ) && 'pinkas_hakablanim' !== (string) $g( 'source' ) ) : /* a register contractor's classification stands in the header (v43) */ ?><div><b><?php echo esc_html( $g( 'classification' ) ); ?></b><span>סיווג רשמי</span></div><?php endif; ?>
 		<?php if ( $g( 'response_time' ) ) : ?><div><b><?php echo esc_html( $g( 'response_time' ) ); ?></b><span>זמן מענה ממוצע</span></div><?php endif; ?>
 	</div>
+	<?php endif; ?>
 
 	<?php if ( $g( 'bio' ) ) : ?><p class="nlpp-bio"><?php echo esc_html( $g( 'bio' ) ); ?></p><?php endif; ?>
 

@@ -403,29 +403,6 @@
   #contactBtn:hover{transform:translateY(-1px);filter:brightness(1.06)}
   #contactBtn svg{width:20px;height:20px;fill:#fff}
   .legalRow{font-size:11px;font-weight:300;color:rgba(243,236,221,.35);text-align:center}
-  /* UnitDesignRequest v102: the unit this design belongs to, the real send, its failure and its receipt */
-  #ctxLine{margin:12px 20px 0;padding:9px 12px;border-radius:14px;background:rgba(216,180,106,.08);border:1px solid rgba(216,180,106,.3)}
-  #ctxLine b{font-size:14px;font-weight:700;color:var(--gold-hi)}
-  #ctxLine em{font-style:normal;font-size:11px;font-weight:600;padding:3px 8px;border-radius:7px;background:rgba(243,236,221,.1);color:var(--txt-dim);margin-inline-start:6px;white-space:nowrap}
-  #ctxLine small{display:block;font-size:11.5px;font-weight:300;color:var(--txt-dim);margin-top:2px}
-  #demoRibbon.is-ctx{color:var(--gold-hi);background:rgba(216,180,106,.1);border-color:rgba(216,180,106,.5)}
-  #sendCard{border-radius:18px;border:1px solid rgba(243,236,221,.12);background:rgba(243,236,221,.04);padding:13px 15px;display:flex;flex-direction:column;gap:8px}
-  #sendCard .srow{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;font-weight:300}
-  #sendCard .srow b{font-weight:600;color:var(--paper);text-align:end}
-  .sendConsent{display:flex;gap:10px;align-items:flex-start;font-size:13px;font-weight:300;color:var(--txt);cursor:pointer;min-height:44px}
-  .sendConsent input{width:22px;height:22px;flex:none;accent-color:var(--gold);margin:2px 0 0}
-  .sendConsent.err span{color:#f0a0a0}
-  #sendErr{border-radius:14px;padding:12px 14px;background:rgba(190,60,60,.14);border:1px solid rgba(240,138,138,.5);font-size:13.5px;color:#ffe3e3;display:flex;flex-direction:column;gap:8px}
-  #sendErr[hidden]{display:none}
-  #sendErr b{color:#fff;font-weight:700}
-  #sendRetry{align-self:flex-start;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(255,220,220,.7);font-weight:700;color:#fff}
-  #sendBtn[disabled]{opacity:.6;cursor:progress}
-  #okTl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--txt-dim)}
-  #okTl[hidden],#docBtn[hidden]{display:none}
-  #okTl li{display:flex;gap:9px;align-items:center}
-  #okTl li:before{content:"";width:12px;height:12px;border-radius:99px;border:2px solid rgba(243,236,221,.3);flex:none}
-  #okTl li.on{color:var(--txt);font-weight:600}#okTl li.on:before{background:var(--ok);border-color:var(--ok)}
-  #docBtn{text-decoration:none}
   #confetti{position:fixed;inset:0;z-index:47;pointer-events:none;overflow:hidden;display:none}
   #confetti.on{display:block}
   #confetti i{position:absolute;top:-3vh;width:9px;height:14px;border-radius:2px;opacity:.95;
@@ -531,7 +508,6 @@
       <div id="flowTitle">הבית, <b>בטעם שלכם</b></div>
       <button id="flowClose" aria-label="חזרה לעיצוב">✕</button>
     </div>
-    <div id="ctxLine" hidden></div>
     <div id="demoRibbon">הדגמה · אין תשלום באתר</div>
     <div id="flowBar" aria-hidden="true">
       <div class="fs done" data-fs="0"><span class="d">✓</span><span class="t">עיצוב</span></div>
@@ -589,23 +565,13 @@
         <button class="fcta" id="payBtn">אישור הזמנה (הדגמה) ✓</button>
         <button class="fghost" id="backToDetails">‹ חזרה לפרטים</button>
       </section>
-      <section class="fstep" data-step="send">
-        <div class="fsec"><h3>מה נשלח</h3><div id="sendCard"></div></div>
-        <label class="sendConsent" id="fConsent"><input type="checkbox" id="sendConsent"><span>מסכים/ה שנדלן תעביר את הבקשה ליזם ולאנשי המקצוע שאבחר</span></label>
-        <div id="sendErr" role="alert" hidden><b id="sendErrT"></b><span id="sendErrP"></span><button type="button" id="sendRetry"></button></div>
-        <button class="fcta" id="sendBtn">שליחת הבקשה ✓</button>
-        <button class="fghost" id="backToDetails2">‹ חזרה לפרטים</button>
-        <div class="legalRow">שום דבר לא נשלח עד הלחיצה · העיצוב נשמר בדפדפן הזה</div>
-      </section>
       <section class="fstep" data-step="done">
         <div id="okWrap">
           <div id="okMark"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
-          <h3 id="okTitle">הבקשה <b>מוכנה</b></h3>
+          <h3>הבקשה <b>בדרך ליזם</b></h3>
           <div id="okRef"></div>
-          <p id="okText">זו הדגמה: שום דבר לא נשלח ולא חויב. בקשה אמיתית נשלחת כשפותחים את העיצוב מעמוד של פרויקט ודירה.</p>
+          <p>ריכזנו את הבחירות, הריהוט וההערות שלכם למסמך בקשה אחד. זו הדגמה — לא בוצע שום חיוב.</p>
         </div>
-        <ol id="okTl" hidden><li class="on">הבקשה התקבלה במערכת</li><li>תיאום מול היזם</li><li>הצעה מרוכזת אליכם</li></ol>
-        <a class="fcta" id="docBtn" href="#" target="_blank" rel="noopener" hidden>צפייה במסמך הבקשה</a>
         <details id="rfpBox">
           <summary><span>מסמך הבקשה המלא (JSON)</span><span>›</span></summary>
           <pre id="rfpJson"></pre>
@@ -616,7 +582,7 @@
           <span>שליחת הסיכום בוואטסאפ</span>
         </a>
         <button class="fghost" id="backHome">חזרה לדירה</button>
-        <div class="legalRow" id="okLegal">הדגמה בלבד · לא בוצע חיוב · הפרטים נשמרים רק בדפדפן שלכם</div>
+        <div class="legalRow">הדגמה בלבד · לא בוצע חיוב · הפרטים נשמרים רק בדפדפן שלכם</div>
       </section>
     </div>
   </div>
@@ -643,24 +609,6 @@
 (async () => {
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const Q=new URLSearchParams(location.search);
-/* UnitDesignRequest (design system v102, 29.9.2026, HAD-346 Batch 2): opened from a project page, the designer knows the
-   project and the unit (?project=&unit=, from the stage's card). Their design is kept for that unit only, the request goes
-   to the server for real, and every state says what really happened. Without a unit this stays the Sde Dov demonstration. */
-const CTX=(()=>{
-  const p=(Q.get('project')||'').toLowerCase().replace(/[^a-z0-9-]/g,'').slice(0,80);
-  const u=(Q.get('unit')||'').replace(/[^A-Za-z0-9_-]/g,'').slice(0,40);
-  if(!p||!u)return null;
-  const clean=v=>String(v||'').replace(/[<>]/g,'').replace(/\s+/g,' ').trim();
-  return {project:p,unit:u,name:clean(Q.get('pn')).slice(0,60),label:clean(Q.get('ul')).slice(0,90)};})();
-/* the generic example flat of this designer: its geometry is the revision every design here is drawn on */
-const GEOM_REV='sdedov-sample-2026-07';
-/* an id like 13-e inside Hebrew text keeps its order (a left-to-right isolate) */
-const ISO=v=>'\u2066'+v+'\u2069';
-function ctxLabel(){
-  if(!CTX)return '';
-  const m=CTX.unit.match(/^(?:[A-Za-z][A-Za-z0-9]{0,2}-)?(\d{1,3})-([nesw])$/);
-  const side={n:'צפון',e:'מזרח',s:'דרום',w:'מערב'};
-  return [CTX.name,CTX.label||(m?'קומה '+m[1]+' · '+side[m[2]]:'')].filter(Boolean).join(' · ');}
 const RM_PARAM=Q.get('rm');
 const REDUCED=RM_PARAM==='1'||(RM_PARAM!=='0'&&matchMedia('(prefers-reduced-motion: reduce)').matches);
 if(REDUCED)document.body.classList.add('rm');
@@ -1826,7 +1774,7 @@ let flowStep=null,orderRef=null,payload=null;
 const flowEl=$('#flow');
 function setFlowStep(name){
   flowStep=name;
-  const stage=name==='done'?4:(name==='send'||name==='contact'?3:FLOW_STEPS.indexOf(name)+1);
+  const stage=name==='done'?4:(name==='contact'?3:FLOW_STEPS.indexOf(name)+1);
   $$('#flowBar .fs').forEach(el=>{const i=+el.dataset.fs;
     el.classList.toggle('done',i<stage);
     el.classList.toggle('act',i===stage&&stage<4);});
@@ -1845,8 +1793,7 @@ flowEl.addEventListener('click',e=>{if(e.target===flowEl)closeFlow();});
 $('#styleBtn').addEventListener('click',()=>openFlow('summary'));
 $('#toDetails').addEventListener('click',()=>setFlowStep('details'));
 $('#backToSummary').addEventListener('click',()=>{buildSummary();setFlowStep('summary');});
-$('#toPay').addEventListener('click',()=>{if(validateDetails()){if(CTX){buildSend();setFlowStep('send');}else if(PAY_DEMO)setFlowStep('pay');else{buildContact();setFlowStep('contact');}}});
-$('#backToDetails2').addEventListener('click',()=>setFlowStep('details'));
+$('#toPay').addEventListener('click',()=>{if(validateDetails()){if(PAY_DEMO)setFlowStep('pay');else{buildContact();setFlowStep('contact');}}});
 $('#backToDetails').addEventListener('click',()=>setFlowStep('details'));
 $('#backHome').addEventListener('click',closeFlow);
 
@@ -1985,18 +1932,13 @@ function buildPayload(){
     contact:{...contact},
     payment:{simulated:true,line:T.orderLine,amountILS:2500,charged:false}};}
 function buildWa(){
-  const lines=[CTX?'היי נד״לן! סיימתי לעצב את הדירה:':T.waLead];
-  if(CTX)lines.push('• '+ctxLabel()+' ('+ISO(CTX.unit)+', דירה לדוגמה)');
-  lines.push(...[T.waRef+': '+orderRef,
+  const lines=[T.waLead,T.waRef+': '+orderRef,
     ...CATS.map(c=>'• '+OPTS[c].label+': '+OPTS[c].items[choices[c]].n),
-    '• '+T.moodLabel+': '+T.moodNames[mood]]);
+    '• '+T.moodLabel+': '+T.moodNames[mood]];
   if(furniture.length)lines.push('• '+T.waFurn+': '+furniture.map(furnLabel).join(', '));
   const ids=Object.keys(notes);
-  if(ids.length){lines.push('• '+T.waNotes+' ('+ids.length+'):');
-    ids.slice(0,6).forEach(id=>lines.push('  - '+noteLabelOf(id)+': '+notes[id]));
-    // WhatsApp is a summary: the request document carries every note
-    if(ids.length>6)lines.push('  ועוד '+(ids.length-6)+(sent&&sent.receipt?' הערות במסמך הבקשה':' הערות, כולן שמורות בעיצוב'));}
-  if(sent&&sent.receipt&&sent.receipt.url)lines.push('מסמך הבקשה: '+sent.receipt.url);
+  if(ids.length){lines.push('• '+T.waNotes+':');
+    ids.slice(0,6).forEach(id=>lines.push('  - '+noteLabelOf(id)+': '+notes[id]));}
   if(contact.name)lines.push('— '+contact.name+(contact.phone?', '+contact.phone:''));
   lines.push(T.waTail);
   $('#waBtn').href='https://wa.me/972525101555?text='+encodeURIComponent(lines.join('\n'));}
@@ -2007,90 +1949,6 @@ $('#copyRfp').addEventListener('click',async()=>{
     try{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);
       ta.select();document.execCommand('copy');ta.remove();toast(T.copied);}
     catch(__){toast(T.copyFailed);}}});
-/* ---- UnitDesignRequest v102: the real request (a unit is open) ---- */
-let sent=null; // {clientRef, design, leadId, leadKey, receipt, busy}
-function mkRef(){const a=new Uint8Array(12);crypto.getRandomValues(a);return 'd'+[...a].map(x=>x.toString(16).padStart(2,'0')).join('');}
-function designDoc(){
-  // frozen at the press: a later change in the studio never changes a request already made
-  return JSON.parse(JSON.stringify({schema:'nadlan-unit-design',v:1,project:CTX.project,unit_id:CTX.unit,geometry_revision:GEOM_REV,source:'designer-3d',
-    layers:{space3d:{units:'m',origin:'centre',rot:'rad',items:furniture.map(f=>({id:f.id,kind:f.kind,label:furnLabel(f),room:T.roomNames[rectRoom(f.x,f.z)]||'',x:+f.x.toFixed(3),z:+f.z.toFixed(3),ry:+Math.atan2(Math.sin(f.ry),Math.cos(f.ry)).toFixed(4)}))}},
-    notes:Object.keys(notes).map(id=>({target:{kind:ELEMENTS[id]?'element':'item',id},label:noteLabelOf(id),text:notes[id]})),
-    choices:CATS.map(c=>({cat:c,label:OPTS[c].label,pick:OPTS[c].items[choices[c]].n})),mood}));}
-function buildSend(){
-  const card=$('#sendCard');card.innerHTML='';
-  const rows=[['דירה',ctxLabel()+' ('+ISO(CTX.unit)+')'],['תוכנית','דירת דוגמה להמחשה'],['בחירות עיצוב',String(CATS.length)],
-    ['ריהוט',furniture.length?furniture.length+(furniture.length===1?' פריט':' פריטים'):'ללא'],['הערות ובקשות',Object.keys(notes).length?'כל '+Object.keys(notes).length:'ללא'],
-    ['לחזור אל',contact.name+' · '+contact.phone]];
-  rows.forEach(([k,v])=>{const r=document.createElement('div');r.className='srow';const a=document.createElement('span');a.textContent=k;const b=document.createElement('b');b.textContent=v;r.append(a,b);card.appendChild(r);});
-  if(!(sent&&sent.busy))sendUi(sent&&sent.fail?'fail':'idle');}
-function sendUi(state,stage,code){
-  const btn=$('#sendBtn'),err=$('#sendErr');
-  btn.disabled=state==='busy';btn.textContent=state==='busy'?'שולחים…':'שליחת הבקשה ✓';
-  if(state!=='fail'){err.hidden=true;return;}
-  const n=Object.keys(sent.design.notes||{}).length;
-  if(code==='unit_unknown'){$('#sendErrT').textContent='הדירה לא נמצאה בפרויקט.';$('#sendErrP').textContent='העיצוב וההערות שמורים. חזרו לעמוד הפרויקט ובחרו את הדירה מחדש.';$('#sendRetry').hidden=true;}
-  else if(stage==='doc'){$('#sendErrT').textContent='הפנייה התקבלה, אבל מסמך הבקשה לא נוצר.';$('#sendErrP').textContent='לא ניצור פנייה נוספת. אפשר ליצור רק את המסמך שוב.';$('#sendRetry').hidden=false;$('#sendRetry').textContent='ליצור את המסמך שוב';}
-  else{$('#sendErrT').textContent='השליחה לא הושלמה.';$('#sendErrP').textContent='העיצוב, הריהוט וכל '+n+' ההערות שמורים כאן. אפשר לנסות שוב, והבקשה לא תישלח פעמיים.';$('#sendRetry').hidden=false;$('#sendRetry').textContent='לנסות שוב';}
-  err.hidden=false;}
-async function post(path,body){
-  const r=await fetch('/wp-json/nadlan/v1/'+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-  let d=null;try{d=await r.json();}catch(_){}
-  return {ok:r.ok&&!!d&&!!d.ok,d:d||{},status:r.status};}
-async function doSend(){
-  if(!CTX||(sent&&sent.busy))return;
-  if(!$('#sendConsent').checked){$('#fConsent').classList.add('err');return;}
-  $('#fConsent').classList.remove('err');
-  if(!sent||sent.receipt)sent={clientRef:mkRef(),design:designDoc(),leadId:0,leadKey:'',receipt:null,busy:false,fail:false};
-  const mine=sent;mine.busy=true;mine.fail=false;sendUi('busy');
-  let stage='lead',code='';
-  try{
-    if(!mine.leadId){
-      const L=await post('lead',{name:contact.name,phone:contact.phone,email:contact.email,source:'apartment-designer',goal:'design-request',
-        project_slug:CTX.project,unit:CTX.unit,consent:1,consent_text:$('#fConsent span').textContent,
-        message:'בקשה מהסטודיו: '+ctxLabel()+' ('+CTX.unit+') · '+mine.design.notes.length+' הערות · '+mine.design.layers.space3d.items.length+' פריטי ריהוט'});
-      if(!L.ok){code=L.d.code||'';throw 0;}
-      mine.leadId=L.d.lead_id||0;mine.leadKey=L.d.lead_key||'';
-    }
-    stage='doc';
-    const D=await post('rfp',{project:CTX.project,unit:CTX.unit,lang:'he',name:contact.name,lead_id:mine.leadId,lead_key:mine.leadKey,client_ref:mine.clientRef,design:mine.design});
-    if(!D.ok){code=D.d.code||'';throw 0;}
-    if(sent!==mine)return; // an older request's late answer: not this screen's
-    mine.receipt=D.d;mine.busy=false;completeReal();
-  }catch(_){
-    if(sent!==mine)return;
-    mine.busy=false;mine.fail=true;sendUi('fail',stage,code);}}
-$('#sendBtn').addEventListener('click',doSend);
-$('#sendRetry').addEventListener('click',doSend);
-$('#sendConsent').addEventListener('change',()=>$('#fConsent').classList.remove('err'));
-function completeReal(){
-  const rc=sent.receipt;
-  orderRef=rc.ref||'';
-  payload={request:rc,design:sent.design};
-  $('#okTitle').innerHTML='הבקשה <b>התקבלה</b>';
-  $('#okRef').textContent='מס׳ בקשה: '+orderRef;
-  $('#okText').textContent='המסמך כולל את הדירה, הבחירות, הריהוט וכל '+(rc.notes||0)+' ההערות. צוות נדלן יחזור אליכם בוואטסאפ.';
-  $('#okTl').hidden=false;
-  $('#docBtn').href=rc.url;$('#docBtn').hidden=false;
-  $('#okLegal').textContent='לא בוצע שום חיוב · הבקשה אינה הזמנה ואינה התחייבות';
-  $('#rfpJson').textContent=JSON.stringify(payload,null,2);
-  buildWa();
-  setFlowStep('done');
-  confettiBurst();}
-if(CTX){
-  T.flowTitles.send='שליחה — <b>ללא התחייבות</b>';
-  T.flowTitles.done='הבקשה <b>התקבלה</b>';
-  $('#demoRibbon').textContent='בקשה ללא התחייבות · לא נדרש תשלום';$('#demoRibbon').classList.add('is-ctx');
-  const fs3=$('#flowBar .fs[data-fs="3"] .t');if(fs3)fs3.textContent='שליחה';
-  $('#toPay').textContent='המשך לשליחה ›';
-  const st=$('#styleBtn span');if(st)st.textContent='סיכום ושליחה';
-  const cl=$('#ctxLine');cl.hidden=false;
-  const b=document.createElement('b');b.textContent=ctxLabel();const em=document.createElement('em');em.textContent='דירה לדוגמה';
-  const sm=document.createElement('small');sm.textContent='העיצוב נשמר לדירה הזו בלבד. דירת הדוגמה בעיצוב היא להמחשה ואינה החלוקה של דירה '+ISO(CTX.unit)+'.';
-  cl.append(b,em,sm);
-  const bs=$('#brand .s');if(bs)bs.textContent=ctxLabel()+' · דירה לדוגמה';
-}else{
-  T.flowTitles.done='הבקשה <b>מוכנה</b>';
-}
 function confettiBurst(){
   if(REDUCED)return;
   const host=$('#confetti');host.innerHTML='';host.classList.add('on');
@@ -2106,27 +1964,22 @@ function confettiBurst(){
   setTimeout(()=>{host.classList.remove('on');host.innerHTML='';},3400);}
 
 /* ============================ V2: storage (autosave, v1 migration) ============================ */
-const LS_KEY=CTX?('nadlan-apt-designer-v3:'+CTX.project+':'+CTX.unit+':'+GEOM_REV):'nadlan-apt-designer-v2',LS_KEY_V1='nadlan-apt-style-v1';
-let saveTm=null,saveFailed=false;
+const LS_KEY='nadlan-apt-designer-v2',LS_KEY_V1='nadlan-apt-style-v1';
+let saveTm=null;
 function scheduleSave(){clearTimeout(saveTm);saveTm=setTimeout(saveState,400);}
-/* a note being typed is kept when the page goes away */
-addEventListener('pagehide',()=>{clearTimeout(saveTm);saveState();});
 function saveState(){
-  try{localStorage.setItem(LS_KEY,JSON.stringify({v:CTX?3:2,unit:CTX?{project:CTX.project,unit:CTX.unit,rev:GEOM_REV}:undefined,choices,mood,
+  try{localStorage.setItem(LS_KEY,JSON.stringify({v:2,choices,mood,
     notes:Object.fromEntries(Object.entries(notes).filter(([id])=>ELEMENTS[id])),
-    furniture:furniture.map(f=>({k:f.kind,x:+f.x.toFixed(3),z:+f.z.toFixed(3),ry:+Math.atan2(Math.sin(f.ry),Math.cos(f.ry)).toFixed(4),
+    furniture:furniture.map(f=>({k:f.kind,x:+f.x.toFixed(3),z:+f.z.toFixed(3),ry:+f.ry.toFixed(3),
       note:notes[f.id]||undefined})),
-    contact}));saveFailed=false;}
-  catch(_){if(!saveFailed)toast('השמירה בדפדפן נכשלה. העיצוב עדיין פתוח כאן; שלחו את הבקשה כדי לשמור אותו.',5200);saveFailed=true;}}
+    contact}));}catch(_){}}
 let restored=false;
 (function restoreState(){
   try{
     let d=null;
     const raw=localStorage.getItem(LS_KEY);
-    if(raw){
-      // a draft that cannot be read is set aside, never deleted
-      try{d=JSON.parse(raw);}catch(_){try{localStorage.setItem(LS_KEY+':unreadable:'+Date.now(),raw);}catch(__){}setTimeout(()=>toast('טיוטה קודמת שלא נקראה נשמרה בצד ולא נמחקה',5200),2400);return;}}
-    else if(!CTX){const r1=localStorage.getItem(LS_KEY_V1);if(r1)d=JSON.parse(r1);}
+    if(raw)d=JSON.parse(raw);
+    else{const r1=localStorage.getItem(LS_KEY_V1);if(r1)d=JSON.parse(r1);}
     if(!d)return;
     if(d.choices)CATS.forEach(c=>{const v=d.choices[c];
       if(Number.isInteger(v)&&v>=0&&v<OPTS[c].items.length&&v!==choices[c]){applyChoice(c,v,true);changed.add(c);restored=true;}});

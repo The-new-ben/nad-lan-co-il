@@ -40,10 +40,10 @@
         if (d && d.matches && d.matches.length) {
           var m = d.matches[0];
           state.compound = m.title + (m.plan_number ? ", תכנית " + m.plan_number : "") + (m.project_status ? ", סטטוס: " + m.project_status : "") + (m.project_type ? ", מסלול: " + m.project_type : "");
-          out.textContent = t("found", "נמצא מתחם מוכרז קרוב: ") + m.title + t("found2", ". הנתונים יצורפו לניתוח.");
+          out.textContent = t("found", "נמצא מתחם התחדשות קרוב: ") + m.title + t("found2", ". הנתונים יצורפו לניתוח.");
         } else {
           state.compound = "";
-          out.textContent = t("notfound", "לא נמצא מתחם מוכרז תואם. זה לא אומר שאין פוטנציאל - מסלול בניין בודד לא מופיע במאגר.");
+          out.textContent = t("notfound", "לא נמצא מתחם תואם במאגר. זה לא אומר שאין פוטנציאל: מסלול בניין בודד לא מופיע במאגר.");
         }
       }).catch(function () { out.textContent = ""; });
   });

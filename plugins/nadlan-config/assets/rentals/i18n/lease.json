@@ -1,0 +1,78 @@
+{
+"version": "2026-10-03.1",
+"note": "One template for the app (rm-lease.js) and the server (inc/rentals/lease.php). Hebrew is authoritative; English is a translation. 'when' flags: cpi, option, pets, nopets, deposit, cheque, note, guarantors, bank, furnished, parking, storage. Placeholders {{x}} are filled by both renderers the same way.",
+"title": { "he": "הסכם שכירות למגורים (שכירות בלתי מוגנת)", "en": "Residential Lease Agreement (unprotected tenancy)" },
+"intro": {
+"he": "שנערך ונחתם ביום {{date}} בין {{landlord}}{{landlord_id}} (\"המשכיר\") לבין {{tenants}} (\"השוכר\"; אם השוכרים יותר מאחד, הם אחראים יחד ולחוד).",
+"en": "Made and signed on {{date}} between {{landlord}}{{landlord_id}} (the \"Landlord\") and {{tenants}} (the \"Tenant\"; if more than one, jointly and severally liable)."
+},
+"sections": [
+{ "id": "recitals", "h": { "he": "הואיל", "en": "Whereas" }, "p": [
+{ "he": "המשכיר הוא בעל הזכויות בדירה ב{{address}}, {{city}}, {{unit_label}}{{floor_txt}}{{rooms_txt}} (\"הדירה\"){{extras}}.", "en": "The Landlord holds the rights in the apartment at {{address}}, {{city}}, {{unit_label}}{{floor_txt}}{{rooms_txt}} (the \"Apartment\"){{extras}}." },
+{ "he": "השוכר מבקש לשכור את הדירה למגורים, והצדדים מסכימים לכך לפי חוק השכירות והשאילה, התשל\"א-1971, ובכלל זה הפרק על שכירות דירה למגורים.", "en": "The Tenant wishes to rent the Apartment as a residence, and the parties agree under the Rental and Borrowing Law, 5731-1971, including its chapter on residential leases." }
+] },
+{ "id": "general", "h": { "he": "1. מבוא", "en": "1. Preamble" }, "p": [
+{ "he": "המבוא והנספחים הם חלק מההסכם. הנוסח העברי הוא הקובע; תרגום לשפה אחרת נועד לנוחות בלבד.", "en": "The preamble and the annexes are part of this agreement. The Hebrew text governs; a translation is for convenience only." }
+] },
+{ "id": "lease", "h": { "he": "2. השכירות", "en": "2. The lease" }, "p": [
+{ "he": "המשכיר משכיר לשוכר את הדירה למגורים בלבד. השכירות אינה מוגנת: חוק הגנת הדייר אינו חל עליה, ולא שולמו ולא ישולמו דמי מפתח.", "en": "The Landlord leases the Apartment to the Tenant as a residence only. The tenancy is unprotected: the Tenant's Protection Law does not apply, and no key money was or will be paid." }
+] },
+{ "id": "term", "h": { "he": "3. תקופת השכירות", "en": "3. Term" }, "p": [
+{ "he": "תקופת השכירות מתחילה ביום {{start}} ומסתיימת ביום {{end}}.", "en": "The term starts on {{start}} and ends on {{end}}." }
+] },
+{ "id": "option", "when": "option", "h": { "he": "4. אופציה להארכה", "en": "4. Option to extend" }, "p": [
+{ "he": "לשוכר אופציה להאריך את השכירות בתנאי ההסכם. השוכר יודיע על מימוש האופציה בכתב עד יום {{option_until}}, ולא פחות מ-60 יום לפני תום התקופה. המשכיר יודיע לשוכר 90 יום לפחות לפני תום התקופה אם אינו מתכוון להאריך, כמתחייב בחוק.", "en": "The Tenant has an option to extend the lease on these terms. The Tenant gives written notice of exercising the option by {{option_until}}, and no less than 60 days before the term ends. The Landlord gives the Tenant at least 90 days' notice before the term ends if he does not intend to extend, as the law requires." }
+] },
+{ "id": "rent", "h": { "he": "5. דמי השכירות", "en": "5. Rent" }, "p": [
+{ "he": "דמי השכירות הם {{rent}} לחודש, ישולמו מראש עד ה-{{pay_day}} בכל חודש, ב{{method}}, לחשבון או לאמצעי שהמשכיר יודיע עליו בכתב.", "en": "Rent is {{rent}} a month, paid in advance by the {{pay_day}} of each month, by {{method}}, to the account or means the Landlord states in writing." },
+{ "he": "דמי השימוש ששילם המשכיר לכל שירות ניהול, ובכלל זה לנדלן, חלים על המשכיר בלבד ולא יועברו לשוכר.", "en": "Fees the Landlord pays for any management service, including NadLan, are the Landlord's alone and are not passed on to the Tenant." }
+] },
+{ "id": "linkage", "when": "cpi", "h": { "he": "6. הצמדה למדד", "en": "6. CPI linkage" }, "p": [
+{ "he": "דמי השכירות צמודים למדד המחירים לצרכן שמפרסמת הלשכה המרכזית לסטטיסטיקה, בשיעור של {{link_pct}}% משינוי המדד. מדד הבסיס הוא המדד הידוע ביום {{link_base}}, והסכום יעודכן כל {{link_every}} חודשים לפי המדד הידוע ביום העדכון.{{link_floor}}", "en": "Rent is linked to the Consumer Price Index published by the Central Bureau of Statistics, at {{link_pct}}% of the change. The base index is the index known on {{link_base}}, and the amount is updated every {{link_every}} months by the index known on the update date.{{link_floor}}" }
+] },
+{ "id": "charges", "h": { "he": "7. תשלומים שוטפים", "en": "7. Running costs" }, "p": [
+{ "he": "בתקופת השכירות השוכר ישלם את הארנונה, המים, החשמל, הגז ותשלומי ועד הבית לאחזקה שוטפת, ויעביר את החשבונות על שמו כשאפשר.", "en": "During the term the Tenant pays municipal tax (arnona), water, electricity, gas and building-committee fees for ongoing maintenance, and moves the accounts to his name where possible." },
+{ "he": "המשכיר ישא בביטוח המבנה, ברכישה ובשדרוג של מערכות קבועות בדירה ובתשלומים שהוא חב לצדדים שלישיים, ובכלל זה דמי תיווך שחב, כמתחייב בסעיף 25ט(ב) לחוק.", "en": "The Landlord bears building insurance, the purchase and upgrade of fixed systems in the Apartment and payments he owes third parties, including any brokerage fee he owes, as section 25ט(ב) of the law requires." }
+] },
+{ "id": "delivery", "h": { "he": "8. מסירת הדירה ומצבה", "en": "8. Delivery and condition" }, "p": [
+{ "he": "המשכיר ימסור את הדירה ביום {{start}} כשהיא ראויה למגורים: עם ניקוז, חשמל ותאורה, אור ואוורור טבעיים עם פתחים שנסגרים, מים ראויים לשתייה, שירותים נפרדים מחדרי המגורים, ובלי סיכון בלתי סביר לבטיחות או לבריאות.", "en": "The Landlord delivers the Apartment on {{start}} fit for habitation: with drainage, electricity and lighting, natural light and ventilation through closable openings, drinking water, a toilet separate from the living rooms, and no unreasonable risk to safety or health." },
+{ "he": "מצב הדירה ותכולתה יתועדו בפרוטוקול מסירה עם תמונות, שיצורף להסכם.", "en": "The Apartment's condition and contents are recorded in a move-in report with photos, attached to this agreement." }
+] },
+{ "id": "repairs", "h": { "he": "9. תיקונים", "en": "9. Repairs" }, "p": [
+{ "he": "השוכר ידווח למשכיר על כל פגם בהקדם, גם דרך הקישור האישי לדירה. המשכיר יתקן פגם שאינו נובע משימוש בלתי סביר תוך 30 יום מקבלת ההודעה, ופגם שמונע מגורים סבירים תוך 3 ימים, לפי סעיף 25ח(ב) לחוק.", "en": "The Tenant reports any defect promptly, including through the Apartment's personal link. The Landlord repairs a defect not caused by unreasonable use within 30 days of the notice, and a defect that prevents reasonable living within 3 days, under section 25ח(ב) of the law." },
+{ "he": "השוכר אחראי לנזק שנגרם משימוש בלתי סביר בדירה.", "en": "The Tenant is liable for damage caused by unreasonable use of the Apartment." }
+] },
+{ "id": "use", "h": { "he": "10. השימוש בדירה", "en": "10. Use" }, "p": [
+{ "he": "השוכר ישתמש בדירה למגורים בלבד, ישמור עליה ועל הרכוש המשותף, לא יבצע בה שינוי מבני ולא יעביר אותה לאחר או ישכיר אותה בשכירות משנה, אלא בהסכמת המשכיר בכתב.", "en": "The Tenant uses the Apartment as a residence only, takes care of it and of the common property, and makes no structural change and does not assign or sublet it, except with the Landlord's written consent." }
+] },
+{ "id": "pets", "when": "pets", "h": { "he": "11. בעלי חיים", "en": "11. Pets" }, "p": [
+{ "he": "מותר לגדל בדירה בעלי חיים ביתיים, ובלבד שלא יגרמו נזק או מטרד; נזק שייגרם יתוקן על חשבון השוכר.", "en": "Household pets are allowed, provided they cause no damage or nuisance; any damage they cause is repaired at the Tenant's expense." }
+] },
+{ "id": "nopets", "when": "nopets", "h": { "he": "11. בעלי חיים", "en": "11. Pets" }, "p": [
+{ "he": "גידול בעלי חיים בדירה טעון הסכמת המשכיר בכתב.", "en": "Keeping pets in the Apartment requires the Landlord's written consent." }
+] },
+{ "id": "securities", "h": { "he": "12. ביטחונות", "en": "12. Securities" }, "p": [
+{ "he": "להבטחת התחייבויותיו ימסור השוכר במעמד החתימה: {{securities}}.", "en": "To secure his obligations the Tenant provides on signing: {{securities}}." },
+{ "he": "סך הביטחונות לא יעלה על הנמוך מבין שלושה חודשי שכירות לבין שליש מדמי השכירות לכל התקופה (סעיף 25י(ב) לחוק). המשכיר רשאי לממש אותם רק לדמי שכירות שלא שולמו, לתיקון נזק שאינו משימוש סביר, לתשלומים שחלים על השוכר ולא שולמו, או אם השוכר לא פינה את הדירה במועד, ורק לאחר הודעה בכתב ושהות סבירה לתקן.", "en": "Total securities do not exceed the lower of three months' rent or one third of the rent for the whole term (section 25י(ב) of the law). The Landlord may realise them only for unpaid rent, repair of damage beyond reasonable use, unpaid charges the Tenant owes, or failure to vacate on time, and only after written notice and a reasonable time to cure." },
+{ "he": "הביטחונות יוחזרו לשוכר תוך 60 יום מיום החזרת הדירה, בניכוי סכומים שמומשו כדין (סעיף 25י(ה) לחוק).", "en": "Securities are returned to the Tenant within 60 days of the Apartment's return, less amounts lawfully realised (section 25י(ה) of the law)." }
+] },
+{ "id": "insurance", "h": { "he": "13. ביטוח", "en": "13. Insurance" }, "p": [
+{ "he": "המשכיר יבטח את מבנה הדירה. מומלץ שהשוכר יבטח את תכולתו ואת אחריותו כלפי צד שלישי.", "en": "The Landlord insures the building of the Apartment. The Tenant is advised to insure his contents and third-party liability." }
+] },
+{ "id": "end", "h": { "he": "14. סיום השכירות", "en": "14. End of the lease" }, "p": [
+{ "he": "בתום התקופה יפנה השוכר את הדירה ויחזיר אותה במצב שבו קיבל אותה, למעט בלאי סביר, עם קריאת מונים ופרוטוקול יציאה משותף.", "en": "At the end of the term the Tenant vacates and returns the Apartment in the condition received, except reasonable wear, with meter readings and a joint move-out report." }
+] },
+{ "id": "notices", "h": { "he": "15. הודעות", "en": "15. Notices" }, "p": [
+{ "he": "הודעה לפי ההסכם תינתן בכתב, ובכלל זה בדואר אלקטרוני, בהודעת וואטסאפ למספרים שבהסכם או דרך הקישור האישי לדירה, ותיחשב כמתקבלת עם אישור המסירה.", "en": "A notice under this agreement is given in writing, including by email, by WhatsApp to the numbers in this agreement or through the Apartment's personal link, and is deemed received on delivery confirmation." }
+] },
+{ "id": "law", "h": { "he": "16. כללי", "en": "16. General" }, "p": [
+{ "he": "אין בהסכם כדי לגרוע מהוראות הפרק על שכירות דירה למגורים בחוק, אלא לטובת השוכר (סעיף 25טו לחוק). שינוי בהסכם יהיה בכתב בלבד. חתימה אלקטרונית על ההסכם דינה כחתימה ידנית.", "en": "Nothing here derogates from the law's chapter on residential leases, except in the Tenant's favour (section 25טו of the law). Changes are made in writing only. An electronic signature on this agreement is as valid as a handwritten one." }
+] }
+],
+"signatures": { "he": "ולראיה באו הצדדים על החתום:", "en": "In witness whereof the parties have signed:" },
+"footer": { "he": "תבנית כללית לפי חוק השכירות והשאילה. לפני חתימה כדאי לעבור עליה עם עורך דין.", "en": "A general template under the Rental and Borrowing Law. Before signing, it is worth reviewing with a lawyer." },
+"words": {
+"he": { "floor": ", קומה {{n}}", "rooms": ", {{n}} חדרים", "furnished": ", מרוהטת", "parking": ", עם חניה", "storage": ", עם מחסן", "id": ", ת\"ז/דרכון {{id}}", "floor_clause": " דמי השכירות לא ירדו מתחת לסכום הבסיס.", "and": " ו", "cheque": "צ'ק ביטחון על סך {{n}}", "note": "שטר חוב על סך {{n}}", "deposit": "פיקדון על סך {{n}}", "guarantors": "ערבות של ערבים", "bank": "ערבות בנקאית", "none": "אין" },
+"en": { "floor": ", floor {{n}}", "rooms": ", {{n}} rooms", "furnished": ", furnished", "parking": ", with parking", "storage": ", with a storage room", "id": ", ID/passport {{id}}", "floor_clause": " Rent never falls below the base amount.", "and": " and ", "cheque": "a security cheque of {{n}}", "note": "a promissory note of {{n}}", "deposit": "a deposit of {{n}}", "guarantors": "guarantors' guarantee", "bank": "a bank guarantee", "none": "none" }
+}
+}

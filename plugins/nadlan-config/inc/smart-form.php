@@ -28,7 +28,8 @@ if ( ! function_exists( 'nadlan_sf_configs' ) ) {
 				'goal'   => 'auction-seller',
 				'kicker' => 'מכירה בהצעות',
 				'title'  => 'בואו נכיר את הדירה שלכם',
-				'sub'    => 'שמונה שאלות קצרות, בלי טפסים אפורים. בסוף נחזור אליכם עם הצעד הבא.',
+				// {n} = the questions the counter shows (these steps + name + phone), filled in nadlan_sf_render (HAD-396)
+				'sub'    => '{n} שאלות קצרות, בלי טפסים אפורים. בסוף נחזור אליכם עם הצעד הבא.',
 				'share'  => 'מוכרים דירה? ככה מקבלים הצעות אמיתיות מקונים, בחינם:',
 				'steps'  => array(
 					array( 'k' => 'city', 'q' => 'באיזו עיר הדירה?', 't' => 'text', 'ph' => 'תל אביב, חיפה, באר שבע...' ),
@@ -44,7 +45,7 @@ if ( ! function_exists( 'nadlan_sf_configs' ) ) {
 				'goal'   => 'renewal-form',
 				'kicker' => 'התחדשות עירונית',
 				'title'  => 'בדקו איפה הבניין שלכם עומד',
-				'sub'    => 'שש שאלות קצרות, ותקבלו כיוון ראשוני. חינם ובלי התחייבות.',
+				'sub'    => '{n} שאלות קצרות, ותקבלו כיוון ראשוני. חינם ובלי התחייבות.',
 				'share'  => 'גרים בבניין ישן? ככה בודקים בחינם אם מגיעה לכם התחדשות עירונית:',
 				'steps'  => array(
 					array( 'k' => 'city', 'q' => 'באיזו עיר הבניין?', 't' => 'text', 'ph' => 'רמת גן, חולון, ירושלים...' ),
@@ -58,7 +59,7 @@ if ( ! function_exists( 'nadlan_sf_configs' ) ) {
 				'goal'   => 'buyer-profile',
 				'kicker' => 'קונים דירה',
 				'title'  => 'ספרו לנו מה אתם מחפשים',
-				'sub'    => 'שש שאלות, ונכוון אתכם לפרויקטים ולדירות שבאמת מתאימים.',
+				'sub'    => '{n} שאלות, ונכוון אתכם לפרויקטים ולדירות שבאמת מתאימים.',
 				'share'  => 'מחפשים דירה? הטופס הזה חוסך שבועות של חיפוש:',
 				'steps'  => array(
 					array( 'k' => 'city', 'q' => 'איפה אתם רוצים לגור?', 't' => 'text', 'ph' => 'עיר או אזור' ),
@@ -88,7 +89,7 @@ if ( ! function_exists( 'nadlan_sf_render' ) ) {
 	data-rest="<?php echo esc_url( rest_url( 'nadlan/v1/lead' ) ); ?>">
 	<p class="nlsf-kicker"><?php echo esc_html( $c['kicker'] ); ?></p>
 	<h2 class="nlsf-title"><?php echo esc_html( $c['title'] ); ?></h2>
-	<p class="nlsf-sub"><?php echo esc_html( $c['sub'] ); ?></p>
+	<p class="nlsf-sub"><?php echo esc_html( str_replace( '{n}', (string) ( count( (array) $c['steps'] ) + 2 ), $c['sub'] ) ); ?></p>
 	<div class="nlsf-card">
 		<div class="nlsf-progress"><i></i></div>
 		<div class="nlsf-stage"></div>
@@ -138,7 +139,8 @@ textarea.nlsf-input{min-height:90px;resize:vertical}
 		var steps=[];try{steps=JSON.parse(root.dataset.steps)}catch(e){return}
 		steps=steps.concat([{k:"name",q:"איך קוראים לכם?",t:"text",ph:"שם מלא"},{k:"phone",q:"ומה הטלפון לחזרה?",t:"tel",ph:"050-0000000"}]);
 		var stage=root.querySelector(".nlsf-stage"),bar=root.querySelector(".nlsf-progress i");
-		var answers={},idx=0;
+		// acted: focus moves only after the visitor's own action (a first-render focus scrolled the page to the form, HAD-393)
+		var answers={},idx=0,acted=false;
 		function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML}
 		function render(){
 			bar.style.width=Math.round(idx/steps.length*100)+"%";
@@ -157,12 +159,12 @@ textarea.nlsf-input{min-height:90px;resize:vertical}
 				+'<span class="nlsf-hint">Enter ↵</span></div></div>';
 			stage.innerHTML=html;
 			var input=stage.querySelector(".nlsf-input");
-			if(input){input.focus();if(answers[s.k])input.value=answers[s.k];}
+			if(input){if(answers[s.k])input.value=answers[s.k];if(acted)input.focus({preventScroll:true});}
 			stage.querySelectorAll(".nlsf-chip").forEach(function(ch){ch.addEventListener("click",function(){answers[s.k]=ch.textContent;go(1)})});
 			var next=stage.querySelector(".nlsf-next");
 			if(next){next.addEventListener("click",function(){
 				var v=input?input.value.trim():"";
-				if(!v&&!s.opt){input.style.borderColor="#C2563A";input.focus();return}
+				if(!v&&!s.opt){input.style.borderColor="#C2563A";input.focus({preventScroll:true});return}
 				if(s.k==="phone"&&v.replace(/\D/g,"").length<9){input.style.borderColor="#C2563A";return}
 				answers[s.k]=v;go(1);
 			});}
@@ -173,6 +175,7 @@ textarea.nlsf-input{min-height:90px;resize:vertical}
 			if(skip){skip.addEventListener("click",function(){answers[s.k]="";go(1)})}
 		}
 		function go(d){
+			acted=true;
 			var q=stage.querySelector(".nlsf-q");
 			if(q){q.classList.add("out");setTimeout(function(){idx+=d;render()},200)}else{idx+=d;render()}
 		}

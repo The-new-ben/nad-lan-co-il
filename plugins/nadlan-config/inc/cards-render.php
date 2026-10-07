@@ -39,9 +39,9 @@ if ( ! function_exists( 'nadlan_card_fact_rows' ) ) {
 			// a private person from a public register who has not taken over the profile: the city, never a home address
 			$rows['כתובת']             = ( function_exists( 'nadlan_pc_is_private' ) && nadlan_pc_is_private( $id ) ) ? '' : $g( 'address' );
 			// years_active holds a count of years on some cards and a founding year on others ("ותק 1963" was printed)
-			$ya = (int) $g( 'years_active' );
+			$ya = $g( 'is_demo' ) ? 0 : (int) $g( 'years_active' ); // a sample profile's seeded figures are not facts (HAD-396)
 			if ( $ya > 1800 && $ya <= (int) gmdate( 'Y' ) ) { $rows['פעילה מאז'] = (string) $ya; } elseif ( $ya > 0 && $ya < 120 ) { $rows['ותק (שנים)'] = (string) $ya; }
-			$rows['פרויקטים']          = (int) $g( 'project_count' ) ?: '';
+			$rows['פרויקטים']          = $g( 'is_demo' ) ? '' : ( (int) $g( 'project_count' ) ?: '' );
 		} elseif ( $type === 'nadlan_project' ) {
 			// Design audit 2026-07-02 (D3): NEVER leak raw machine enums like
 			// "new_build" to buyers - map every known value, hide unknown slugs.

@@ -10,7 +10,7 @@
  * results shareable (the URL hash records the selection). Benchmarks:
  * Apartment List's quiz flow, 1.5%->4.3% conversion via simplified journeys.
  *
- * Data: real meta only - price_min/max, city, completion_year,
+ * Data: real meta only - price_min/max, city, completion_year (never for urban-renewal compounds, where it is the plan's year),
  * project_3d_units (rooms), project_facilities (canonical keys), lat/lng,
  * project_model_glb. A criterion a project has no data for earns nothing:
  * the percentage stays honest.
@@ -88,7 +88,8 @@ if ( ! function_exists( 'nadlan_matcher_dataset' ) ) {
 			}
 			$pmin = (float) get_post_meta( $id, 'price_min', true );
 			$pmax = (float) get_post_meta( $id, 'price_max', true );
-			$year = (int) get_post_meta( $id, 'completion_year', true );
+			// an urban-renewal compound's completion_year is its plan's validity year, not a delivery date: it never feeds "מסירה" (HAD-396)
+			$year = 'urban_renewal' === (string) get_post_meta( $id, 'source', true ) ? 0 : (int) get_post_meta( $id, 'completion_year', true );
 			$lat  = (float) get_post_meta( $id, 'lat', true );
 			$lng  = (float) get_post_meta( $id, 'lng', true );
 			$glb  = '' !== (string) get_post_meta( $id, 'project_model_glb', true );

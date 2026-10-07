@@ -31,6 +31,35 @@ if ( ! function_exists( 'nadlan_rm_on' ) ) {
 	function nadlan_rm_on() { return get_option( 'nadlan_feature_rentals', '1' ) === '1'; }
 }
 
+/* ---------- v2 (HAD-383, 1.10.2026): the full product, he + en ----------
+   inc/rentals/*.php (store, rest, portal, lease, legacy, page) and
+   assets/rentals/rm-*.js. Switch back to v1 with option nadlan_rentals_v2 = '0'.
+   Companions load with @include_once (deploy rule 9: never require_once). */
+if ( ! defined( 'NLRM_DIR_ASSETS' ) ) { define( 'NLRM_DIR_ASSETS', plugin_dir_path( dirname( __FILE__ ) ) . 'assets/rentals/' ); }
+if ( ! defined( 'NLRM_URL_ASSETS' ) ) { define( 'NLRM_URL_ASSETS', plugins_url( 'assets/rentals/', dirname( __FILE__ ) ) ); }
+if ( ! defined( 'NLRM_PRIVACY_VERSION' ) ) { define( 'NLRM_PRIVACY_VERSION', '2026-10-01' ); }
+if ( ! function_exists( 'nadlan_rm_v2' ) ) {
+	/* nadlan_rentals_v2: 'admin' (default on the first release: only administrators, and the pilot
+	   landlords listed in nadlan_rentals_v2_pilot (user ids), see v2; everyone else keeps v1, so v2 is
+	   tested on the live server first), '1' (everyone), '0' (v1 for all). */
+	function nadlan_rm_v2() {
+		if ( ! function_exists( 'nlrm_render_page' ) ) { return false; }
+		$mode = (string) get_option( 'nadlan_rentals_v2', 'admin' );
+		if ( '1' === $mode ) { return true; }
+		if ( 'admin' === $mode ) {
+			if ( current_user_can( 'manage_options' ) ) { return true; }
+			/* a personal link (?l=1#t=...): the link page itself; the token decides what it may see */
+			if ( isset( $_GET['l'] ) && ! is_user_logged_in() && did_action( 'template_redirect' ) ) { return true; } // phpcs:ignore
+			$uid = get_current_user_id();
+			return $uid > 0 && in_array( $uid, array_map( 'intval', (array) get_option( 'nadlan_rentals_v2_pilot', array() ) ), true );
+		}
+		return false;
+	}
+}
+foreach ( array( 'store', 'money', 'billing', 'rest', 'portal', 'lease', 'legacy', 'page' ) as $nlrm_part ) {
+	@include_once __DIR__ . '/rentals/' . $nlrm_part . '.php'; // phpcs:ignore
+}
+
 /* ---------- CPT ---------- */
 add_action( 'init', function () {
 	register_post_type( 'nadlan_rentalprop', array(
@@ -415,6 +444,11 @@ add_filter( 'query_vars', function ( $v ) { $v[] = 'nadlan_my_rentals'; return $
 add_action( 'template_redirect', function () {
 	if ( ! get_query_var( 'nadlan_my_rentals' ) ) { return; }
 	if ( ! nadlan_rm_on() ) { wp_safe_redirect( home_url( '/' ) ); exit; }
+	if ( nadlan_rm_v2() ) {
+		nlrm_maybe_install();
+		nlrm_render_page( is_user_logged_in() ? 'app' : 'landing', nlrm_lang() );
+		exit;
+	}
 	$lang = function_exists( 'nadlan_ur_req_lang' ) ? nadlan_ur_req_lang() : 'he';
 	if ( 'ru' === $lang ) { $lang = 'en'; }
 	$has = is_user_logged_in() && nadlan_rm_my_props();
@@ -471,7 +505,8 @@ if ( ! function_exists( 'nadlan_rm_render' ) ) {
 			nocache_headers();
 			header( 'X-Robots-Tag: noindex, nofollow' );
 		}
-		get_header();
+		/* one H1: the block theme's compat header prints the site name as an h1 (directory.php demotes it) */
+		if ( function_exists( 'nadlan_dir_header_single_h1' ) ) { nadlan_dir_header_single_h1(); } else { get_header(); }
 		?>
 <div class="nlrm" dir="<?php echo $en ? 'ltr' : 'rtl'; ?>" lang="<?php echo esc_attr( $lang ); ?>">
 	<style>
@@ -560,6 +595,14 @@ if ( ! function_exists( 'nadlan_rm_render' ) ) {
 		<?php nadlan_rm_mount( 'demo', $lang ); ?>
 	</section>
 	<div class="nlrm-honest"><?php echo $en ? 'Full honesty: the system tracks and reminds - it does not collect money or process payments. Rent keeps flowing as usual (bank transfer or checks). Tax reminders are reminders only - binding numbers are verified with the Israel Tax Authority.' : 'הגינות מלאה: המערכת עוקבת ומזכירה - היא לא גובה כסף ולא מבצעת סליקה. שכר הדירה ממשיך לעבור כרגיל (העברה בנקאית או צ\'קים). תזכורות המס הן תזכורות בלבד - את המספרים המחייבים בודקים מול רשות המסים.'; ?></div>
+	<?php
+	/* the public guide (HAD-383): what visitors see today, each chapter labelled with what is open to every landlord and what is an administrators-only preview */
+	$nlrm_gf = NLRM_DIR_ASSETS . 'guide/' . ( $en ? 'en' : 'he' ) . '.html';
+	if ( is_readable( $nlrm_gf ) ) {
+		echo '<link rel="stylesheet" href="' . esc_url( NLRM_URL_ASSETS . 'guide/guide.css?ver=' . rawurlencode( defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '1' ) ) . '">' . "\n";
+		echo wp_kses_post( (string) file_get_contents( $nlrm_gf ) ); // phpcs:ignore
+	}
+	?>
 	<?php if ( is_user_logged_in() ) : ?>
 	<section class="nlrm-new" id="nlrm-new">
 		<h2 style="margin:0 0 10px;font-size:1.15rem"><?php echo $en ? 'Add your first property' : 'הוספת הנכס הראשון'; ?></h2>
@@ -629,5 +672,6 @@ if ( ! function_exists( 'nadlan_rm_render' ) ) {
 /* healthcheck visibility */
 add_filter( 'nadlan_config_healthcheck', function ( $out ) {
 	$out['rentals'] = nadlan_rm_on();
+	$out['rentals_v2'] = function_exists( 'nadlan_rm_v2' ) && nadlan_rm_v2() ? ( defined( 'NLRM_DB_VERSION' ) ? NLRM_DB_VERSION : '1' ) : false;
 	return $out;
 } );

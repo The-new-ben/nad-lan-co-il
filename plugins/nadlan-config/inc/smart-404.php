@@ -126,3 +126,14 @@ add_action( 'template_redirect', function () {
 	get_footer();
 	exit;
 }, 6 );
+
+/* Junk parameter URLs (pms_action / pms_user) were indexed and even ranking on
+ * Sde Dov money queries (owner GO 25.8.2026): keep crawlers off the params.
+ * The rules are injected INSIDE the default UA group so the file stays valid. */
+add_filter( 'robots_txt', function ( $output ) {
+	$rules = "Disallow: /*?pms_action=\nDisallow: /*?pms_user=\n";
+	if ( false !== strpos( $output, "Allow: /\n" ) ) {
+		return str_replace( "Allow: /\n", "Allow: /\n" . $rules, $output );
+	}
+	return $output . "\nUser-agent: *\n" . $rules;
+}, 20 );

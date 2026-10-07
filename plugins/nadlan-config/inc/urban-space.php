@@ -5,7 +5,8 @@
  * The building's project room: per-apartment consent tracked and painted on
  * the 3D standard model, the 10-stage bureaucratic ladder, an updates feed
  * (send-gated, deliverability-last), invite-by-token membership, and the
- * /my-renewal/ surface. Documents live in urban-docs.php.
+ * /my-renewal/ surface. Documents are tracked per apartment as four checkboxes; no file is stored in a room (urban-docs.php
+ * does not exist, HAD-396).
  *
  * PRODUCT v2 (owner order): /my-renewal/ is no longer a login wall.
  * Anonymous visitors get a real, INDEXABLE product landing (HE + EN via
@@ -164,49 +165,50 @@ if ( ! function_exists( 'nadlan_ur_doc_keys_lang' ) ) {
 	}
 }
 
-/* Per-stage playbook: label + what happens + typical duration + next actions.
+/* Per-stage playbook: label + what happens + duration + next actions. A duration shows only with a source: today only
+   "היתר בנייה" (the authority's 2025 report, p. 87: 4.0 years on average from plan approval to the first permit, HAD-396).
    HE labels mirror nadlan_ur_ladder_labels() (urban-tools.php) - keep in sync. */
 if ( ! function_exists( 'nadlan_ur_stage_meta' ) ) {
 	function nadlan_ur_stage_meta( $lang = 'he' ) {
 		if ( 'ru' === $lang ) {
 			return array(
-				array( 'label' => 'Первая организация', 'desc' => 'Первое собрание жильцов, письменный протокол и полный список собственников квартир.', 'duration' => '1-3 месяца', 'actions' => array( 'Провести первое собрание жильцов', 'Собрать контакты всех собственников', 'Проверить дом в официальном реестре объявленных комплексов' ) ),
-				array( 'label' => 'Выбор комитета', 'desc' => '3-5 соседей с письменным мандатом вести процесс от имени дома.', 'duration' => '1-2 месяца', 'actions' => array( 'Проголосовать за комитет жильцов', 'Подписать письмо о назначении', 'Открыть единый канал обновлений для всех соседей' ) ),
-				array( 'label' => 'Сбор подписей', 'desc' => 'Подписание собственниками принципиального согласия, с полной прозрачностью для всего дома.', 'duration' => '6-18 месяцев', 'actions' => array( 'Обновлять статус каждой квартиры на модели', 'Решать вопросы наследства и недостающих документов', 'Следить за юридическими порогами: 66% / 67% / 80%' ) ),
-				array( 'label' => 'Выбор специалистов', 'desc' => 'Адвокат и оценщик, работающие на ЖИЛЬЦОВ - оплачивает застройщик, выбираете вы.', 'duration' => '2-4 месяца', 'actions' => array( 'Собрать предложения опытных адвокатов стороны жильцов', 'Выбрать оценщика от имени жильцов', 'Подписать соглашения о гонораре' ) ),
-				array( 'label' => 'Выбор застройщика', 'desc' => 'Тендер застройщиков: опыт, финансовая устойчивость и гарантии.', 'duration' => '4-8 месяцев', 'actions' => array( 'Подготовить документ требований жильцов', 'Сравнить предложения застройщиков', 'Проверить банковские гарантии по закону о продаже' ) ),
-				array( 'label' => 'Утверждение плана', 'desc' => 'План проходит комиссии по планированию - самая большая переменная во всём графике.', 'duration' => '2-5 лет', 'actions' => array( 'Сопровождать процесс планирования в комиссии', 'Информировать соседей о каждом решении', 'Поддерживать связь с городской администрацией обновления' ) ),
-				array( 'label' => 'Разрешение на строительство', 'desc' => 'Финальная техническая спецификация и процесс выбора квартир.', 'duration' => '1-2 года', 'actions' => array( 'Подписать финальное приложение спецификации', 'Провести выбор квартир по согласованной формуле', 'Подготовить договоры аренды для переезда' ) ),
-				array( 'label' => 'Переезд', 'desc' => 'Дом освобождается - аренду оплачивает застройщик до передачи ключей.', 'duration' => '1-3 месяца', 'actions' => array( 'Подписать договоры аренды', 'Согласовать переезды', 'Передать ключи застройщику' ) ),
-				array( 'label' => 'Строительство', 'desc' => 'Само строительство - надзорный инженер стороны жильцов отчитывается комитету.', 'duration' => '2-4 года', 'actions' => array( 'Изучать периодические отчёты надзора', 'Согласованные визиты жильцов на площадку', 'Следить за графиком по договору' ) ),
-				array( 'label' => 'Передача и регистрация', 'desc' => 'Разрешение на заселение, передача квартир, гарантийный год и регистрация в Табу.', 'duration' => '6-18 месяцев', 'actions' => array( 'Протокол передачи для каждой квартиры', 'Отслеживать исправления гарантийного года', 'Зарегистрировать кондоминиум в земельном реестре' ) ),
+				array( 'label' => 'Первая организация', 'desc' => 'Первое собрание жильцов, письменный протокол и полный список собственников квартир.', 'duration' => '', 'actions' => array( 'Провести первое собрание жильцов', 'Собрать контакты всех собственников', 'Проверить дом в официальном реестре комплексов обновления' ) ),
+				array( 'label' => 'Выбор комитета', 'desc' => '3-5 соседей с письменным мандатом вести процесс от имени дома.', 'duration' => '', 'actions' => array( 'Проголосовать за комитет жильцов', 'Подписать письмо о назначении', 'Открыть единый канал обновлений для всех соседей' ) ),
+				array( 'label' => 'Сбор подписей', 'desc' => 'Подписание собственниками принципиального согласия, с полной прозрачностью для всего дома.', 'duration' => '', 'actions' => array( 'Обновлять статус каждой квартиры на модели', 'Решать вопросы наследства и недостающих документов', 'Следить за особым большинством: две трети квартир в комплексе, три пятых в каждом доме и более половины общего имущества' ) ),
+				array( 'label' => 'Выбор специалистов', 'desc' => 'Адвокат и оценщик, работающие на ЖИЛЬЦОВ - оплачивает застройщик, выбираете вы.', 'duration' => '', 'actions' => array( 'Собрать предложения опытных адвокатов стороны жильцов', 'Выбрать оценщика от имени жильцов', 'Подписать соглашения о гонораре' ) ),
+				array( 'label' => 'Выбор застройщика', 'desc' => 'Тендер застройщиков: опыт, финансовая устойчивость и гарантии.', 'duration' => '', 'actions' => array( 'Подготовить документ требований жильцов', 'Сравнить предложения застройщиков', 'Проверить банковские гарантии по закону о продаже' ) ),
+				array( 'label' => 'Утверждение плана', 'desc' => 'План проходит комиссии по планированию - самая большая переменная во всём графике.', 'duration' => '', 'actions' => array( 'Сопровождать процесс планирования в комиссии', 'Информировать соседей о каждом решении', 'Поддерживать связь с городской администрацией обновления' ) ),
+				array( 'label' => 'Разрешение на строительство', 'desc' => 'Финальная техническая спецификация и процесс выбора квартир.', 'duration' => '4 года в среднем от утверждения плана (пинуй-бинуй, 2025)', 'actions' => array( 'Подписать финальное приложение спецификации', 'Провести выбор квартир по согласованной формуле', 'Подготовить договоры аренды для переезда' ) ),
+				array( 'label' => 'Переезд', 'desc' => 'Дом освобождается - аренду оплачивает застройщик до передачи ключей.', 'duration' => '', 'actions' => array( 'Подписать договоры аренды', 'Согласовать переезды', 'Передать ключи застройщику' ) ),
+				array( 'label' => 'Строительство', 'desc' => 'Само строительство - надзорный инженер стороны жильцов отчитывается комитету.', 'duration' => '', 'actions' => array( 'Изучать периодические отчёты надзора', 'Согласованные визиты жильцов на площадку', 'Следить за графиком по договору' ) ),
+				array( 'label' => 'Передача и регистрация', 'desc' => 'Разрешение на заселение, передача квартир, гарантийный год и регистрация в Табу.', 'duration' => '', 'actions' => array( 'Протокол передачи для каждой квартиры', 'Отслеживать исправления гарантийного года', 'Зарегистрировать кондоминиум в земельном реестре' ) ),
 			);
 		}
 		if ( 'en' === $lang ) {
 			return array(
-				array( 'label' => 'First organizing', 'desc' => 'A first residents assembly, a written protocol and a full map of the apartment owners.', 'duration' => '1-3 months', 'actions' => array( 'Hold a first residents assembly', 'Collect contact details for every apartment owner', 'Check the building against the official declared-compounds registry' ) ),
-				array( 'label' => 'Electing a committee', 'desc' => '3-5 neighbors elected with a written mandate to run the process on behalf of the building.', 'duration' => '1-2 months', 'actions' => array( 'Vote on a residents committee', 'Sign a written appointment letter', 'Open a single updates channel for all neighbors' ) ),
-				array( 'label' => 'Collecting signatures', 'desc' => 'Signing the owners on an agreement in principle, with full transparency to the whole building.', 'duration' => '6-18 months', 'actions' => array( 'Update the status of every apartment on the model', 'Handle apartments with inheritance or missing papers', 'Track the legal thresholds: 66% / 67% / 80%' ) ),
-				array( 'label' => 'Hiring professionals', 'desc' => 'A lawyer and an appraiser who work for the RESIDENTS - paid by the developer, chosen by you.', 'duration' => '2-4 months', 'actions' => array( 'Collect offers from experienced tenants-side lawyers', 'Choose an appraiser on behalf of the residents', 'Sign fee agreements' ) ),
-				array( 'label' => 'Choosing a developer', 'desc' => 'A developer tender: track record, financial strength and guarantees.', 'duration' => '4-8 months', 'actions' => array( 'Prepare the residents requirements document', 'Compare developer offers side by side', 'Verify sale-law guarantees and securities' ) ),
-				array( 'label' => 'Planning approval', 'desc' => 'The plan moves through the planning committees - the biggest variable in the whole timeline.', 'duration' => '2-5 years', 'actions' => array( 'Follow the planning process with the committee', 'Update neighbors on every decision', 'Stay in touch with the municipal renewal administration' ) ),
-				array( 'label' => 'Building permit', 'desc' => 'Final technical specification and the apartment-selection process.', 'duration' => '1-2 years', 'actions' => array( 'Sign the final specification annex', 'Run the apartment selection by the agreed formula', 'Prepare rental agreements for the move-out' ) ),
-				array( 'label' => 'Moving out', 'desc' => 'The building is vacated - rent is paid by the developer until delivery.', 'duration' => '1-3 months', 'actions' => array( 'Sign rental agreements', 'Coordinate the moves', 'Hand keys to the developer' ) ),
-				array( 'label' => 'Construction', 'desc' => 'The construction itself - the residents-side supervisor reports to the committee.', 'duration' => '2-4 years', 'actions' => array( 'Review periodic supervision reports', 'Coordinate resident site visits', 'Track the schedule against the agreement' ) ),
-				array( 'label' => 'Delivery and registration', 'desc' => 'Occupancy permit, apartment handover, the warranty year and Tabu registration.', 'duration' => '6-18 months', 'actions' => array( 'Run a handover protocol for every apartment', 'Track warranty-year fixes', 'Register the shared building in the land registry' ) ),
+				array( 'label' => 'First organizing', 'desc' => 'A first residents assembly, a written protocol and a full map of the apartment owners.', 'duration' => '', 'actions' => array( 'Hold a first residents assembly', 'Collect contact details for every apartment owner', 'Check the building against the official renewal-compounds registry' ) ),
+				array( 'label' => 'Electing a committee', 'desc' => '3-5 neighbors elected with a written mandate to run the process on behalf of the building.', 'duration' => '', 'actions' => array( 'Vote on a residents committee', 'Sign a written appointment letter', 'Open a single updates channel for all neighbors' ) ),
+				array( 'label' => 'Collecting signatures', 'desc' => 'Signing the owners on an agreement in principle, with full transparency to the whole building.', 'duration' => '', 'actions' => array( 'Update the status of every apartment on the model', 'Handle apartments with inheritance or missing papers', 'Track the special majority: two thirds of the apartments in the cluster, three fifths in each building and over half of the common property' ) ),
+				array( 'label' => 'Hiring professionals', 'desc' => 'A lawyer and an appraiser who work for the RESIDENTS - paid by the developer, chosen by you.', 'duration' => '', 'actions' => array( 'Collect offers from experienced tenants-side lawyers', 'Choose an appraiser on behalf of the residents', 'Sign fee agreements' ) ),
+				array( 'label' => 'Choosing a developer', 'desc' => 'A developer tender: track record, financial strength and guarantees.', 'duration' => '', 'actions' => array( 'Prepare the residents requirements document', 'Compare developer offers side by side', 'Verify sale-law guarantees and securities' ) ),
+				array( 'label' => 'Planning approval', 'desc' => 'The plan moves through the planning committees - the biggest variable in the whole timeline.', 'duration' => '', 'actions' => array( 'Follow the planning process with the committee', 'Update neighbors on every decision', 'Stay in touch with the municipal renewal administration' ) ),
+				array( 'label' => 'Building permit', 'desc' => 'Final technical specification and the apartment-selection process.', 'duration' => '4 years on average from plan approval (pinui-binui, 2025)', 'actions' => array( 'Sign the final specification annex', 'Run the apartment selection by the agreed formula', 'Prepare rental agreements for the move-out' ) ),
+				array( 'label' => 'Moving out', 'desc' => 'The building is vacated - rent is paid by the developer until delivery.', 'duration' => '', 'actions' => array( 'Sign rental agreements', 'Coordinate the moves', 'Hand keys to the developer' ) ),
+				array( 'label' => 'Construction', 'desc' => 'The construction itself - the residents-side supervisor reports to the committee.', 'duration' => '', 'actions' => array( 'Review periodic supervision reports', 'Coordinate resident site visits', 'Track the schedule against the agreement' ) ),
+				array( 'label' => 'Delivery and registration', 'desc' => 'Occupancy permit, apartment handover, the warranty year and Tabu registration.', 'duration' => '', 'actions' => array( 'Run a handover protocol for every apartment', 'Track warranty-year fixes', 'Register the shared building in the land registry' ) ),
 			);
 		}
 		return array(
-			array( 'label' => 'התארגנות ראשונית', 'desc' => 'אסיפת דיירים ראשונה, פרוטוקול כתוב ומיפוי מלא של בעלי הדירות.', 'duration' => '1-3 חודשים', 'actions' => array( 'כינוס אסיפת דיירים ראשונה', 'איסוף פרטי קשר של כל בעלי הדירות', 'בדיקת הבניין מול מאגר המתחמים המוכרזים' ) ),
-			array( 'label' => 'בחירת נציגות', 'desc' => 'בחירת 3-5 שכנים עם מנדט כתוב לנהל את התהליך בשם הבניין.', 'duration' => 'חודש-חודשיים', 'actions' => array( 'הצבעה על נציגות דיירים', 'חתימה על כתב מינוי', 'פתיחת ערוץ עדכונים אחד לכל השכנים' ) ),
-			array( 'label' => 'החתמות', 'desc' => 'החתמת בעלי הדירות על הסכמה עקרונית, בשקיפות מלאה לכל הבניין.', 'duration' => '6-18 חודשים', 'actions' => array( 'עדכון סטטוס לכל דירה על המודל', 'טיפול בדירות עם ירושה או מסמכים חסרים', 'מעקב אחרי הרפים בחוק: 66% / 67% / 80%' ) ),
-			array( 'label' => 'בחירת אנשי מקצוע', 'desc' => 'עורך דין ושמאי שעובדים בשביל הדיירים - בשכר היזם, לפי בחירתכם.', 'duration' => '2-4 חודשים', 'actions' => array( 'קבלת הצעות מעורכי דין מלווים מנוסים', 'בחירת שמאי מטעם הדיירים', 'חתימה על הסכמי שכר טרחה' ) ),
-			array( 'label' => 'בחירת יזם', 'desc' => 'מכרז יזמים: ניסיון מוכח, איתנות פיננסית ובטוחות.', 'duration' => '4-8 חודשים', 'actions' => array( 'הכנת מסמך דרישות הדיירים', 'השוואת הצעות יזמים זו מול זו', 'בדיקת ערבויות חוק מכר ובטוחות' ) ),
-			array( 'label' => 'תב"ע ותכנון', 'desc' => 'התוכנית עוברת בוועדות התכנון - המשתנה הגדול ביותר בלוח הזמנים.', 'duration' => '2-5 שנים', 'actions' => array( 'ליווי הליך התכנון מול הוועדה', 'עדכון השכנים בכל החלטה', 'קשר שוטף עם מנהלת ההתחדשות העירונית' ) ),
-			array( 'label' => 'היתר בנייה', 'desc' => 'מפרט טכני סופי והליך בחירת דירות התמורה.', 'duration' => 'שנה-שנתיים', 'actions' => array( 'חתימה על נספח המפרט הסופי', 'הליך בחירת דירות לפי הנוסחה שנקבעה', 'היערכות להסכמי שכירות לפינוי' ) ),
-			array( 'label' => 'פינוי', 'desc' => 'פינוי הבניין - שכר הדירה במימון היזם עד המסירה.', 'duration' => '1-3 חודשים', 'actions' => array( 'חתימה על הסכמי שכירות', 'תיאום הובלות', 'מסירת מפתחות ליזם' ) ),
-			array( 'label' => 'בנייה', 'desc' => 'הבנייה עצמה - המפקח מטעם הדיירים מדווח לנציגות.', 'duration' => '2-4 שנים', 'actions' => array( 'מעבר על דוחות פיקוח תקופתיים', 'ביקורי דיירים מתואמים באתר', 'מעקב לוח הזמנים מול ההסכם' ) ),
-			array( 'label' => 'מסירה ורישום', 'desc' => 'טופס 4, מסירת הדירות, שנת הבדק ורישום בטאבו.', 'duration' => '6-18 חודשים', 'actions' => array( 'פרוטוקול מסירה לכל דירה', 'מעקב תיקוני שנת בדק', 'רישום הבית המשותף בטאבו' ) ),
+			array( 'label' => 'התארגנות ראשונית', 'desc' => 'אסיפת דיירים ראשונה, פרוטוקול כתוב ומיפוי מלא של בעלי הדירות.', 'duration' => '', 'actions' => array( 'כינוס אסיפת דיירים ראשונה', 'איסוף פרטי קשר של כל בעלי הדירות', 'בדיקת הבניין מול מאגר מתחמי ההתחדשות' ) ),
+			array( 'label' => 'בחירת נציגות', 'desc' => 'בחירת 3-5 שכנים עם מנדט כתוב לנהל את התהליך בשם הבניין.', 'duration' => '', 'actions' => array( 'הצבעה על נציגות דיירים', 'חתימה על כתב מינוי', 'פתיחת ערוץ עדכונים אחד לכל השכנים' ) ),
+			array( 'label' => 'החתמות', 'desc' => 'החתמת בעלי הדירות על הסכמה עקרונית, בשקיפות מלאה לכל הבניין.', 'duration' => '', 'actions' => array( 'עדכון סטטוס לכל דירה על המודל', 'טיפול בדירות עם ירושה או מסמכים חסרים', 'מעקב אחרי הרוב המיוחס: שני שלישים מהדירות במקבץ, שלוש חמישיות בכל בניין ויותר ממחצית הרכוש המשותף' ) ),
+			array( 'label' => 'בחירת אנשי מקצוע', 'desc' => 'עורך דין ושמאי שעובדים בשביל הדיירים - בשכר היזם, לפי בחירתכם.', 'duration' => '', 'actions' => array( 'קבלת הצעות מעורכי דין מלווים מנוסים', 'בחירת שמאי מטעם הדיירים', 'חתימה על הסכמי שכר טרחה' ) ),
+			array( 'label' => 'בחירת יזם', 'desc' => 'מכרז יזמים: ניסיון מוכח, איתנות פיננסית ובטוחות.', 'duration' => '', 'actions' => array( 'הכנת מסמך דרישות הדיירים', 'השוואת הצעות יזמים זו מול זו', 'בדיקת ערבויות חוק מכר ובטוחות' ) ),
+			array( 'label' => 'תב"ע ותכנון', 'desc' => 'התוכנית עוברת בוועדות התכנון - המשתנה הגדול ביותר בלוח הזמנים.', 'duration' => '', 'actions' => array( 'ליווי הליך התכנון מול הוועדה', 'עדכון השכנים בכל החלטה', 'קשר שוטף עם מנהלת ההתחדשות העירונית' ) ),
+			array( 'label' => 'היתר בנייה', 'desc' => 'מפרט טכני סופי והליך בחירת דירות התמורה.', 'duration' => '4 שנים בממוצע מאישור התוכנית (פינוי בינוי, 2025)', 'actions' => array( 'חתימה על נספח המפרט הסופי', 'הליך בחירת דירות לפי הנוסחה שנקבעה', 'היערכות להסכמי שכירות לפינוי' ) ),
+			array( 'label' => 'פינוי', 'desc' => 'פינוי הבניין - שכר הדירה במימון היזם עד המסירה.', 'duration' => '', 'actions' => array( 'חתימה על הסכמי שכירות', 'תיאום הובלות', 'מסירת מפתחות ליזם' ) ),
+			array( 'label' => 'בנייה', 'desc' => 'הבנייה עצמה - המפקח מטעם הדיירים מדווח לנציגות.', 'duration' => '', 'actions' => array( 'מעבר על דוחות פיקוח תקופתיים', 'ביקורי דיירים מתואמים באתר', 'מעקב לוח הזמנים מול ההסכם' ) ),
+			array( 'label' => 'מסירה ורישום', 'desc' => 'טופס 4, מסירת הדירות, שנת הבדק ורישום בטאבו.', 'duration' => '', 'actions' => array( 'פרוטוקול מסירה לכל דירה', 'מעקב תיקוני שנת בדק', 'רישום הבית המשותף בטאבו' ) ),
 		);
 	}
 }
@@ -222,17 +224,17 @@ if ( ! function_exists( 'nadlan_ur_space_strings' ) ) {
 				'map_title' => 'На карте', 'updates' => 'Обновления для соседей', 'upd_ph' => 'Что нового в проекте?',
 				'upd_send' => 'Опубликовать', 'upd_none' => 'Обновлений пока нет.', 'inv_title' => 'Пригласить соседей',
 				'inv_note' => 'Каждый, кто откроет ссылку, присоединится к комнате в режиме чтения. Поделитесь ею в WhatsApp-группе дома.',
-				'inv_btn' => 'Создать ссылку-приглашение', 'history' => 'История этапов', 'typical' => 'Типичная длительность',
-				'avg_note' => 'средние по стране, не обещание', 'next_actions' => 'Следующие шаги', 'reached_at' => 'Достигнут',
+				'inv_btn' => 'Создать ссылку-приглашение', 'history' => 'История этапов', 'typical' => 'Длительность',
+				'avg_note' => 'отчёт Управления по обновлению городов за 2025 год, среднее, не обещание', 'next_actions' => 'Следующие шаги', 'reached_at' => 'Достигнут',
 				'set_stage' => 'Отметить как текущий этап', 'td_map' => 'Учесть каждую квартиру (ноль «ещё не связались»)',
-				'td_66' => '66% подписей - продвижение комплекса пинуй-бинуй', 'td_67' => '67% подписей - можно судиться с отказником',
-				'td_80' => '80% подписей - особое большинство для отдельного дома', 'td_docs' => 'Полный пакет документов для каждой квартиры',
+				'td_66' => 'Подписи двух третей квартир комплекса (проверьте также три пятых в каждом доме и более половины общего имущества)',
+				'td_docs' => 'Полный пакет документов для каждой квартиры',
 				'td_pros' => 'Выбраны адвокат и оценщик стороны жильцов', 'td_dev' => 'Застройщик выбран на тендере',
 				'todo_title' => 'Список задач дома', 'now_actions' => 'Сейчас, на текущем этапе',
 				'todo_note' => 'Формируется автоматически из данных комнаты. Не является юридической консультацией.',
 				'docs_title' => 'Сводка документов', 'docs_hint' => 'Документы обновляются по каждой квартире нажатием на неё на модели.',
-				'docs_of' => 'Документы', 'floor' => 'Этаж', 'save' => 'Сохранить', 'compounds' => 'Объявленные комплексы в городе',
-				'map_approx' => 'Примерное положение на уровне города', 'demo_badge' => 'Демо-данные',
+				'docs_of' => 'Документы', 'floor' => 'Этаж', 'save' => 'Сохранить', 'compounds' => 'Комплексы обновления в городе',
+				'map_approx' => 'Примерное положение на уровне города', 'demo_badge' => 'Данные для примера',
 				'track_pinui_binui' => 'Пинуй-бинуй', 'track_tama38_1' => 'Укрепление (ТАМА 38/1)', 'track_tama38_2' => 'Снос и строительство', 'track_unclear' => 'Трек ещё не выбран',
 			);
 		}
@@ -244,16 +246,16 @@ if ( ! function_exists( 'nadlan_ur_space_strings' ) ) {
 				'map_title' => 'On the map', 'updates' => 'Updates for the neighbors', 'upd_ph' => 'What is new in the project?',
 				'upd_send' => 'Post update', 'upd_none' => 'No updates yet.', 'inv_title' => 'Invite the neighbors',
 				'inv_note' => 'Anyone opening the link joins the room in read-only mode. Share it in the building WhatsApp group.',
-				'inv_btn' => 'Create invite link', 'history' => 'Stage history', 'typical' => 'Typical duration',
-				'avg_note' => 'national averages, not a promise', 'next_actions' => 'Next actions', 'reached_at' => 'Reached on',
+				'inv_btn' => 'Create invite link', 'history' => 'Stage history', 'typical' => 'Duration',
+				'avg_note' => 'the Urban Renewal Authority report for 2025, an average, not a promise', 'next_actions' => 'Next actions', 'reached_at' => 'Reached on',
 				'set_stage' => 'Set as current stage', 'td_map' => 'Map every apartment (no "not yet reached")',
-				'td_66' => '66% signed - advancing a pinui-binui compound', 'td_67' => '67% signed - suing a refusing owner is possible',
-				'td_80' => '80% signed - special majority for a single building', 'td_docs' => 'Full document file for every apartment',
+				'td_66' => 'Signatures from two thirds of the apartments (also check three fifths in each building and over half of the common property)',
+				'td_docs' => 'Full document file for every apartment',
 				'td_pros' => 'Residents-side lawyer and appraiser chosen', 'td_dev' => 'Developer chosen in a tender',
 				'todo_title' => 'Building to-do list', 'now_actions' => 'Now, at the current stage',
 				'todo_note' => 'Derived automatically from the room data. Not legal advice.',
 				'docs_title' => 'Documents rollup', 'docs_hint' => 'Update documents per apartment by tapping it on the model.',
-				'docs_of' => 'Documents', 'floor' => 'Floor', 'save' => 'Save', 'compounds' => 'Declared compounds in the city',
+				'docs_of' => 'Documents', 'floor' => 'Floor', 'save' => 'Save', 'compounds' => 'Renewal compounds in the city',
 				'map_approx' => 'Approximate city location', 'demo_badge' => 'Sample data',
 				'track_pinui_binui' => 'Pinui-Binui', 'track_tama38_1' => 'Reinforcement (TAMA 38/1)', 'track_tama38_2' => 'Demolish and rebuild', 'track_unclear' => 'Track not decided yet',
 			);
@@ -265,16 +267,16 @@ if ( ! function_exists( 'nadlan_ur_space_strings' ) ) {
 			'map_title' => 'על המפה', 'updates' => 'עדכונים לשכנים', 'upd_ph' => 'מה חדש בפרויקט?',
 			'upd_send' => 'פרסום עדכון', 'upd_none' => 'אין עדכונים עדיין.', 'inv_title' => 'הזמנת השכנים',
 			'inv_note' => 'כל מי שנכנס עם הקישור מצטרף לחדר לקריאה בלבד. שתפו אותו בקבוצת הוואטסאפ של הבניין.',
-			'inv_btn' => 'יצירת קישור הזמנה', 'history' => 'היסטוריית שלבים', 'typical' => 'משך אופייני',
-			'avg_note' => 'ממוצעים ארציים, לא הבטחה', 'next_actions' => 'הצעדים הבאים', 'reached_at' => 'הושג בתאריך',
+			'inv_btn' => 'יצירת קישור הזמנה', 'history' => 'היסטוריית שלבים', 'typical' => 'משך',
+			'avg_note' => 'דוח הרשות להתחדשות עירונית לשנת 2025, ממוצע ולא הבטחה', 'next_actions' => 'הצעדים הבאים', 'reached_at' => 'הושג בתאריך',
 			'set_stage' => 'קביעה כשלב הנוכחי', 'td_map' => 'מיפוי כל הדירות (אפס "טרם הושג קשר")',
-			'td_66' => '66% חתימות - קידום מתחם פינוי בינוי', 'td_67' => '67% חתימות - אפשר לתבוע דייר סרבן',
-			'td_80' => '80% חתימות - רוב מיוחס לבניין בודד', 'td_docs' => 'תיק מסמכים מלא לכל דירה',
+			'td_66' => 'חתימות של שני שלישים מהדירות (בדקו גם שלוש חמישיות בכל בניין ויותר ממחצית הרכוש המשותף)',
+			'td_docs' => 'תיק מסמכים מלא לכל דירה',
 			'td_pros' => 'נבחרו עורך דין ושמאי מטעם הדיירים', 'td_dev' => 'נבחר יזם במכרז',
 			'todo_title' => 'רשימת המשימות של הבניין', 'now_actions' => 'עכשיו, בשלב הנוכחי',
 			'todo_note' => 'נגזר אוטומטית מנתוני החדר. אין לראות בכך ייעוץ משפטי.',
 			'docs_title' => 'תמונת המסמכים', 'docs_hint' => 'מעדכנים מסמכים לכל דירה בהקשה עליה במודל.',
-			'docs_of' => 'מסמכים', 'floor' => 'קומה', 'save' => 'שמירה', 'compounds' => 'מתחמים מוכרזים בעיר',
+			'docs_of' => 'מסמכים', 'floor' => 'קומה', 'save' => 'שמירה', 'compounds' => 'מתחמי התחדשות בעיר',
 			'map_approx' => 'מיקום משוער ברמת העיר', 'demo_badge' => 'נתוני דוגמה',
 			'track_pinui_binui' => 'פינוי בינוי', 'track_tama38_1' => 'חיזוק (תמ"א 38/1)', 'track_tama38_2' => 'הריסה ובנייה', 'track_unclear' => 'המסלול טרם הוכרע',
 		);
@@ -323,7 +325,8 @@ if ( ! function_exists( 'nadlan_ur_space_payload' ) ) {
 		$meta = nadlan_ur_stage_meta( $lang );
 		return array(
 			'id'        => (int) $id,
-			'title'     => get_the_title( $id ),
+			// the raw title: get_the_title() prefixes a private post with "פרטי:", and the demo room is private (HAD-396)
+			'title'     => html_entity_decode( (string) get_post_field( 'post_title', $id ), ENT_QUOTES, 'UTF-8' ),
 			'address'   => (string) get_post_meta( $id, 'address', true ),
 			'city'      => $city,
 			'floors'    => (int) get_post_meta( $id, 'floors', true ),
@@ -558,6 +561,23 @@ if ( ! function_exists( 'nadlan_ur_queue_notice' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_ur_page_header' ) ) {
+	/** HAD-408: get_header() on this block theme prints only WP's theme-compat header (the site name as a bare second <h1>,
+	 *  no logo, no menu). Same pattern as the directory, the archives and the 404: the compat site name becomes a hidden <p>,
+	 *  then the theme's header template part (swapped for the site header by home-v3.php) is printed. */
+	function nadlan_ur_page_header() {
+		if ( function_exists( 'nadlan_dir_header_single_h1' ) ) { nadlan_dir_header_single_h1(); } else { get_header(); }
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'header' ); }
+	}
+}
+if ( ! function_exists( 'nadlan_ur_page_footer' ) ) {
+	/** HAD-408: get_footer() is a noop without footer.php; the theme's footer template part is printed first. */
+	function nadlan_ur_page_footer() {
+		if ( function_exists( 'block_template_part' ) ) { block_template_part( 'footer' ); }
+		get_footer();
+	}
+}
+
 /* ---------- /my-renewal/ route ---------- */
 add_action( 'init', function () {
 	add_rewrite_rule( '^my-renewal/?$', 'index.php?nadlan_my_renewal=1', 'top' );
@@ -712,6 +732,7 @@ if ( ! function_exists( 'nadlan_ur_space_css' ) ) {
 .nlurl-cta--go{background:#C2563A;color:#FAF7F1;box-shadow:0 14px 30px -12px rgba(194,86,58,.55)}
 .nlurl-cta--alt{background:#fff;color:#1B1A17;border:1.5px solid #9C7A3C}
 .nlurl-cta:hover{filter:brightness(1.05)}
+.nlurd a.nlurl-cta--go{color:#FAF7F1!important}.nlurd a.nlurl-cta--alt{color:#1B1A17!important} /* HAD-409: the skin's body.nl-skin-a a (sea blue) made the main button 1.25:1 on its terracotta */
 .nlurl-badges{color:#8E877A;font:600 12px Heebo;margin:14px 0 0}
 .nlurl-badges b{color:#51483A}
 .nlurl-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:34px 0}
@@ -723,6 +744,7 @@ if ( ! function_exists( 'nadlan_ur_space_css' ) ) {
 .nlurl-demo{background:#14130F;border-radius:22px;padding:22px 20px 26px;margin:10px 0 34px}
 .nlurl-demo-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
 .nlurl-demo-head h2{color:#FAF7F1;margin:0;font-size:1.35rem}
+.nlurd .nlurl-demo-head h2{color:#FAF7F1!important} /* HAD-409: (0,2,1) beats the skin's body.nl-skin-a h2 (0,1,2) !important on this dark block */
 .nlurl-demo-head .lbl{background:rgba(233,217,168,.14);border:1px solid rgba(233,217,168,.4);color:#E9D9A8;font:600 12px Heebo;border-radius:999px;padding:7px 13px}
 .nlurl-demo-inner{background:#FAF7F1;border-radius:16px;padding:16px}
 .nlurl-2col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 34px}
@@ -787,7 +809,7 @@ if ( ! function_exists( 'nadlan_ur_render_landing' ) ) {
 			'h1'     => 'Your building\'s renewal project room',
 			'sub'    => 'One private place where the whole building sees the same truth: every apartment\'s consent painted on a 3D model of the building, the 10 stages of the process, the documents and the updates. Free for residents and committees.',
 			'cta_go' => $logged_in ? 'Open a room for your building' : 'Open a room for your building',
-			'cta_alt' => 'Free feasibility check (5 minutes)',
+			'cta_alt' => 'Free compound check',
 			'badges' => 'Free for residents and committees · Hebrew and English · Private, never shown in search',
 			'steps_t' => 'Start here',
 			'steps' => array(
@@ -795,8 +817,8 @@ if ( ! function_exists( 'nadlan_ur_render_landing' ) ) {
 				array( 'Open the project room', 'One click seeds a 3D model of your building with every apartment on it. Mark who signed, who is in process, who is missing papers.' ),
 				array( 'Invite the neighbors', 'Share one link in the building WhatsApp group. Everyone sees the same progress bar, the same documents, the same updates - no more rumor management.' ),
 			),
-			'demo_t' => 'A live example - a project that reached the finish line',
-			'demo_lbl' => 'Live demo · sample data',
+			'demo_t' => 'A live example: a project that reached the finish line',
+			'demo_lbl' => 'Sample room · sample data',
 			'old_t' => 'Today, without a system',
 			'old' => array( 'Consent counts living in one neighbor\'s Excel', 'Paper signatures nobody can audit', 'The same questions again and again in the WhatsApp group', 'Documents scattered across email inboxes' ),
 			'new_t' => 'With the project room',
@@ -804,7 +826,7 @@ if ( ! function_exists( 'nadlan_ur_render_landing' ) ) {
 			'feats_t' => 'What is inside',
 			'feats' => array(
 				array( '3D consent map', 'Every apartment is a dot on the building model, colored by status.' ),
-				array( '10-stage progress bar', 'From first assembly to keys, with typical durations and next actions per stage.' ),
+				array( '10-stage progress bar', 'From first assembly to keys, with the next actions for every stage.' ),
 				array( 'Auto to-do list', 'Derived live from your data: thresholds reached, documents missing, next moves.' ),
 				array( 'Documents per apartment', 'ID, Tabu extract, signed agreement, power of attorney - tracked per unit.' ),
 				array( 'Updates feed', 'The committee posts once; every neighbor sees it.' ),
@@ -813,11 +835,11 @@ if ( ! function_exists( 'nadlan_ur_render_landing' ) ) {
 			'faq_t' => 'Questions owners ask',
 			'faq' => array(
 				array( 'Is it really free?', 'Yes. The project room is free for residents and committees. Nadlan makes its money from the professionals marketplace, not from homeowners.' ),
-				array( 'Who can see our building\'s room?', 'Only people you invite with the link. Rooms are private, never listed in search engines, and documents are stored privately with membership-checked access.' ),
+				array( 'Who can see our building\'s room?', 'Only people you invite with the link. Rooms are private and never listed in search engines. In the room you mark which documents each apartment has; the files themselves are not stored in the room.' ),
 				array( 'We have neighbors who do not read Hebrew.', 'The whole room works in English too - switch with one link. Perfect for olim and foreign owners.' ),
 				array( 'Is the AI analysis legal advice?', 'No. It is a first orientation only. Before signing anything, consult a lawyer who represents the residents - by law the developer pays for one you choose.' ),
 			),
-			'privacy' => 'Privacy: rooms are private and carry a no-index header. Documents are stored with random names, private status and membership-checked download. Nothing about your building appears in search.',
+			'privacy' => 'Privacy: rooms are private, blocked from search engines and open only to the people you invite. In the room you mark which documents each apartment has; the files themselves are not stored in it. Nothing about your building appears in search.',
 			'guide' => 'New to urban renewal? Read the full Hebrew guide',
 			'lang_link' => '<a href="' . esc_url( $he_url ) . '">עברית</a>',
 			'create_t' => 'Open the room for your building',
@@ -826,7 +848,7 @@ if ( ! function_exists( 'nadlan_ur_render_landing' ) ) {
 			'h1'     => 'חדר הפרויקט של הבניין שלכם',
 			'sub'    => 'מקום פרטי אחד שבו כל הבניין רואה את אותה תמונה: ההסכמה של כל דירה צבועה על מודל תלת-ממדי של הבניין, עשרת שלבי התהליך, המסמכים והעדכונים. חינם לדיירים ולנציגות.',
 			'cta_go' => 'פתיחת חדר לבניין שלכם',
-			'cta_alt' => 'בדיקת כדאיות חינם (5 דקות)',
+			'cta_alt' => 'בדיקת מתחם חינם',
 			'badges' => 'חינם לדיירים ולנציגות · עברית ואנגלית · פרטי ולא מופיע בחיפוש',
 			'steps_t' => 'מתחילים כאן',
 			'steps' => array(
@@ -834,8 +856,8 @@ if ( ! function_exists( 'nadlan_ur_render_landing' ) ) {
 				array( 'פותחים חדר פרויקט', 'בלחיצה אחת נבנה מודל תלת-ממדי של הבניין עם כל הדירות עליו. מסמנים מי חתם, מי בתהליך, למי חסרים מסמכים.' ),
 				array( 'מזמינים את השכנים', 'משתפים קישור אחד בקבוצת הוואטסאפ של הבניין. כולם רואים את אותו סרגל התקדמות, אותם מסמכים, אותם עדכונים - בלי ניהול שמועות.' ),
 			),
-			'demo_t' => 'דוגמה חיה - פרויקט שהגיע עד הסוף',
-			'demo_lbl' => 'הדגמה חיה · נתוני דוגמה',
+			'demo_t' => 'דוגמה חיה: פרויקט שהגיע עד הסוף',
+			'demo_lbl' => 'חדר לדוגמה · נתוני דוגמה',
 			'old_t' => 'היום, בלי מערכת',
 			'old' => array( 'ספירת ההסכמות חיה באקסל של שכן אחד', 'חתימות על נייר שאי אפשר לעקוב אחריהן', 'אותן שאלות שוב ושוב בקבוצת הוואטסאפ', 'מסמכים מפוזרים בין תיבות מייל' ),
 			'new_t' => 'עם חדר הפרויקט',
@@ -843,7 +865,7 @@ if ( ! function_exists( 'nadlan_ur_render_landing' ) ) {
 			'feats_t' => 'מה יש בפנים',
 			'feats' => array(
 				array( 'מפת הסכמות תלת-ממדית', 'כל דירה היא נקודה על מודל הבניין, צבועה לפי סטטוס.' ),
-				array( 'סרגל 10 השלבים', 'מהאסיפה הראשונה עד המפתח, עם משכים אופייניים וצעדים באים לכל שלב.' ),
+				array( 'סרגל 10 השלבים', 'מהאסיפה הראשונה עד המפתח, עם הצעדים הבאים לכל שלב.' ),
 				array( 'רשימת משימות אוטומטית', 'נגזרת חיה מהנתונים שלכם: רפים שהושגו, מסמכים חסרים, המהלכים הבאים.' ),
 				array( 'מסמכים לכל דירה', 'תעודת זהות, נסח טאבו, הסכם חתום וייפוי כוח - במעקב פר דירה.' ),
 				array( 'ערוץ עדכונים', 'הנציגות מפרסמת פעם אחת; כל שכן רואה.' ),
@@ -852,11 +874,11 @@ if ( ! function_exists( 'nadlan_ur_render_landing' ) ) {
 			'faq_t' => 'שאלות שבעלי דירות שואלים',
 			'faq' => array(
 				array( 'זה באמת חינם?', 'כן. חדר הפרויקט חינמי לדיירים ולנציגות. נדלן מרוויחה ממאגר אנשי המקצוע, לא מבעלי הדירות.' ),
-				array( 'מי יכול לראות את החדר של הבניין שלנו?', 'רק מי שהזמנתם עם הקישור. החדרים פרטיים, לא מופיעים במנועי חיפוש, והמסמכים נשמרים באחסון פרטי עם בדיקת חברות בכל גישה.' ),
+				array( 'מי יכול לראות את החדר של הבניין שלנו?', 'רק מי שהזמנתם עם הקישור. החדרים פרטיים ולא מופיעים במנועי חיפוש. בחדר מסמנים אילו מסמכים יש לכל דירה; הקבצים עצמם לא נשמרים בחדר.' ),
 				array( 'יש לנו שכנים שלא קוראים עברית.', 'כל החדר עובד גם באנגלית - מחליפים בקישור אחד. מתאים לעולים ולבעלי דירות מחו"ל.' ),
 				array( 'הניתוח של ה-AI הוא ייעוץ משפטי?', 'לא. זו התמצאות ראשונית בלבד. לפני כל חתימה מתייעצים עם עורך דין מטעם הדיירים - על פי חוק היזם משלם על עורך דין שאתם בוחרים.' ),
 			),
-			'privacy' => 'פרטיות: החדרים פרטיים ונושאים כותרת no-index. מסמכים נשמרים בשמות אקראיים, בסטטוס פרטי ועם בדיקת חברות בכל הורדה. שום דבר על הבניין שלכם לא מופיע בחיפוש.',
+			'privacy' => 'פרטיות: החדרים פרטיים, חסומים למנועי חיפוש ופתוחים רק למי שהוזמן. בחדר מסמנים אילו מסמכים יש לכל דירה; הקבצים עצמם לא נשמרים בו. שום דבר על הבניין שלכם לא מופיע בחיפוש.',
 			'guide' => 'חדשים בהתחדשות עירונית? התחילו מהמדריך המלא',
 			'lang_link' => '<a href="' . esc_url( $en_url ) . '">English</a>',
 			'create_t' => 'פתיחת החדר לבניין שלכם',
@@ -864,7 +886,7 @@ if ( ! function_exists( 'nadlan_ur_render_landing' ) ) {
 
 		$cta_go_href = $logged_in ? '#nlurd-new' : wp_login_url( $self );
 		$wizard = home_url( '/urban-renewal/check/' . ( $en ? '?lang=en' : '' ) );
-		get_header();
+		nadlan_ur_page_header(); // HAD-408: the site's real header, one h1
 		nadlan_ur_space_css();
 		?>
 <div class="nlurd" dir="<?php echo $en ? 'ltr' : 'rtl'; ?>" lang="<?php echo esc_attr( $lang ); ?>">
@@ -970,7 +992,7 @@ if ( ! function_exists( 'nadlan_ur_render_landing' ) ) {
 </script>
 		<?php endif; ?>
 		<?php
-		get_footer();
+		nadlan_ur_page_footer();
 	}
 }
 
@@ -990,7 +1012,7 @@ if ( ! function_exists( 'nadlan_ur_render_dashboard' ) ) {
 		$lang_names = array( 'he' => 'עברית', 'en' => 'English', 'ru' => 'Русский' );
 		nocache_headers();
 		header( 'X-Robots-Tag: noindex, nofollow' );
-		get_header();
+		nadlan_ur_page_header(); // HAD-408
 		nadlan_ur_space_css();
 		?>
 <div class="nlurd" dir="<?php echo $he ? 'rtl' : 'ltr'; ?>" lang="<?php echo esc_attr( $lang ); ?>">
@@ -1012,7 +1034,7 @@ if ( ! function_exists( 'nadlan_ur_render_dashboard' ) ) {
 	<?php nadlan_ur_space_app_mount( 'live', $sel, $lang ); ?>
 </div>
 		<?php
-		get_footer();
+		nadlan_ur_page_footer();
 	}
 }
 

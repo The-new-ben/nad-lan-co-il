@@ -39,80 +39,6 @@ document.addEventListener('click', (e) => {
   else if (ev === 'slot') ga('pro_slot_click', { source: 'project-rail' });
 });
 
-/* ApartmentExperience-1 (v101): the docked floor card, the + / − buttons and the wheel hint, for every stage (one place) */
-function pickCss() {
-  if (document.getElementById('nlps-v101')) return;
-  const st = document.createElement('style');
-  st.id = 'nlps-v101';
-  st.textContent = ''
-    + '.rbs-cardhost{--rbs-paper:#F7F6F2;--rbs-ink:#14212B;--rbs-sea:#2F6F86;--rbs-deep:#1F4B5C;--rbs-sand:#EEE9DD;--rbs-line:#E3E1DA;'
-    + 'margin:10px 0 0;font-family:Assistant,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--rbs-ink)}'
-    + '.rbs-cardhost:not(:has(.rbs-label.is-on)){display:none}'
-    + ':root body .rbs-cardhost .rbs-label--docked{position:relative;left:auto;top:auto;transform:none!important;width:auto;max-width:none;'
-    + 'display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:8px;row-gap:0;align-items:center;'
-    + 'padding:10px 14px 12px;border-radius:14px;box-shadow:0 2px 10px rgba(20,33,43,.07);will-change:auto}'
-    // desktop: the floor and its facts on one line, the four actions in one band under it (about 120px, so the card sits
-    // inside the first screen under the stage: at 1440x900 the stage ends at ~736px)
-    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-top{grid-column:1/-1;align-items:center}'
-    + ':root body .rbs-cardhost .rbs-label--docked .rbs-label-title{font-size:20px!important;line-height:1.2!important}'
-    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-line,:root body .rbs-cardhost .rbs-label--docked>.rbs-label-facing,:root body .rbs-cardhost .rbs-label--docked>.rbs-label-more{grid-column:1/-1;margin:2px 0 0!important;font-size:13.5px!important;line-height:1.35!important;max-width:none!important}'
-    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-line{grid-column:1/3;grid-row:2}:root body .rbs-cardhost .rbs-label--docked>.rbs-label-facing{grid-column:4/5;grid-row:2;text-align:end}:root body .rbs-cardhost .rbs-label--docked>.rbs-label-more{display:none!important}'
-    // a project with several towers names the tower on the same line (DUO, Dimri Yama, Ashira)
-    + ':root body .rbs-cardhost .rbs-label--docked>.dus-label-kick{grid-column:3/4;grid-row:2;margin:2px 0 0!important;font-size:13.5px!important;line-height:1.35!important;text-align:end}'
-    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-top{grid-row:1}:root body .rbs-cardhost .rbs-label--docked>.rbs-label-acts{grid-row:3}:root body .rbs-cardhost .rbs-label--docked>.rbs-label-cta{grid-row:3}'
-    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-acts{grid-column:1/4;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0 0}'
-    + ':root body .rbs-cardhost .rbs-label--docked .rbs-act{grid-column:auto;min-height:44px;margin:0!important;padding:4px 10px;font-size:14px!important;line-height:1.2!important}'
-    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-cta{grid-column:4;align-self:end;min-height:44px;margin:10px 0 0!important;padding:6px 12px;line-height:1.2!important}'
-    + ':root body .rbs-cardhost .rbs-label--docked.is-min{display:flex;width:auto;max-width:none;padding:8px 14px;cursor:pointer}'
-    // v101.1 (Codex QA): the fold and close buttons are 44px targets (the old card measured 22-28px)
-    + ':root body .rbs-cardhost .rbs-label--docked .rbs-label-min,:root body .rbs-cardhost .rbs-label--docked .rbs-label-close{width:44px;height:44px;min-width:44px;min-height:44px;margin:-6px 0;display:inline-grid;place-items:center;font-size:20px;line-height:1}'
-    // phones: a short block right under the stage (title, one line, three actions in a row, the main button)
-    + '@media (max-width:640px){:root body .rbs-cardhost .rbs-label--docked{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:6px;padding:8px 12px 10px}'
-    + ':root body .rbs-cardhost .rbs-label--docked .rbs-label-title{font-size:19px!important}'
-    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-more{display:none!important}'
-    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-line,:root body .rbs-cardhost .rbs-label--docked>.rbs-label-facing,:root body .rbs-cardhost .rbs-label--docked>.dus-label-kick{grid-column:1/-1;grid-row:auto;text-align:start;font-size:13px!important}'
-    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-top,:root body .rbs-cardhost .rbs-label--docked>.rbs-label-acts,:root body .rbs-cardhost .rbs-label--docked>.rbs-label-cta{grid-row:auto}'
-    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-acts{grid-column:1/-1;gap:6px;margin-top:8px}'
-    + ':root body .rbs-cardhost .rbs-label--docked .rbs-act{padding:2px 6px;font-size:13px!important}'
-    + ':root body .rbs-cardhost .rbs-label--docked>.rbs-label-cta{grid-column:1/-1;margin-top:6px!important;white-space:normal}}'
-    + '.rbs-zoom{position:absolute;inset-inline-end:12px;top:50%;transform:translateY(-50%);z-index:4;display:flex;flex-direction:column;gap:6px}'
-    + '.rbs-zoom button{width:44px;height:44px;border-radius:12px;border:1px solid rgba(20,33,43,.14);background:rgba(250,247,241,.94);color:#14212B;'
-    + 'font:600 22px/1 Assistant,system-ui,sans-serif;cursor:pointer;box-shadow:0 2px 8px rgba(20,33,43,.10);padding:0}'
-    + '.rbs-zoom button:hover{background:#fff}.rbs-zoom button:focus-visible{outline:2px solid #2F6F86;outline-offset:2px}'
-    + '.rbs-zhint{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;padding:10px 16px;border-radius:12px;background:rgba(20,33,43,.82);'
-    + 'color:#fff;font:600 15px/1.3 Assistant,system-ui,sans-serif;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none}'
-    + '.rbs-zhint.is-on{opacity:1}'
-    // the stage's own stylesheet loads after this one and gives its UI layer's children pointer events: the hint must never take
-    // the wheel (it sat over the model's centre and swallowed Ctrl + wheel)
-    + '.rbs .rbs-ui .rbs-zhint{pointer-events:none!important}.rbs .rbs-ui .rbs-zoom{pointer-events:auto}'
-    + '@media (hover:none){.rbs-zhint{display:none}}'
-    // ApartmentMapLanding (v101.2): the unit line over the real map, then the map, then its controls
-    + ':root body .nlps-mapsum{display:grid;grid-template-columns:22px minmax(0,1fr) auto;column-gap:10px;row-gap:2px;align-items:center;margin:0 0 10px;'
-    + 'padding:8px 10px 8px 12px;background:#F7F2E8;border:1px solid #E2DCD0;border-radius:12px;font-family:Heebo,Assistant,system-ui,sans-serif;color:#14212B}'
-    + '.nlps-mapsum[hidden]{display:none!important}'
-    + ':root body .nlps-mapsum>i{grid-column:1;grid-row:1/3;line-height:0;align-self:center}'
-    + ':root body .nlps-mapsum>.nlps-mapsum-t{grid-column:2;grid-row:1;font:700 15px/1.35 Heebo,system-ui,sans-serif!important;color:#14212B!important}'
-    + ':root body .nlps-mapsum em{display:inline-block;margin-inline-start:8px;padding:3px 7px;border-radius:6px;background:#EDE5D6;color:#6B6558;'
-    + 'font:600 11.5px/1 Heebo,system-ui,sans-serif;font-style:normal;white-space:nowrap;vertical-align:2px}'
-    + ':root body .nlps-mapsum>small{grid-column:2;grid-row:2;display:block;font:500 12.5px/1.4 Heebo,system-ui,sans-serif!important;color:#6B6558!important}'
-    + ':root body .nlps-mapsum>button{grid-column:3;grid-row:1/3;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid #CFC7B8;background:#fff;'
-    + 'color:#1F4B5C;font:700 13.5px/1 Heebo,system-ui,sans-serif;white-space:nowrap;cursor:pointer}'
-    + ':root body .nlps-mapsum>button:hover{background:#FBF8F2}:root body .nlps-mapsum>button:focus-visible{outline:2px solid #2F6F86;outline-offset:2px}'
-    // phones: the stage's notice under the open card (the lifted pill sat on it at the stage's foot)
-    + '.nlps-pick-cap{display:none}'
-    + '@media (max-width:640px){:root body .rbs-cardhost>.nlps-pick-cap{display:block;margin:6px 4px 0!important;font:400 11.5px/1.45 Heebo,Assistant,system-ui,sans-serif!important;color:#6B6558!important;max-width:none!important}'
-    + 'body:has(#nlps-pick .rbs-label.is-on) #nlps .rbs-caption{display:none!important}}'
-    // the controls now follow the map: a breath between the canvas and the first row
-    + ':root body #nlpjx-map>#nlpjx-unimap+.nlam-bar,:root body #nlpjx-map>#nlpjx-unimap+.nlam-range,:root body #nlpjx-map>#nlpjx-unimap+.nlpjx-maplayers{margin-top:12px}'
-    + '#nlps-pick .rbs-label[tabindex]:focus{outline:none}#nlps-pick .rbs-label[tabindex]:focus-visible{outline:2px solid #2F6F86;outline-offset:2px}'
-    // phones: the floor and direction take the whole first line; the legend and the button share the second
-    + '@media (max-width:480px){:root body .nlps-mapsum{grid-template-columns:18px minmax(0,1fr) auto;row-gap:6px;padding:8px 8px 8px 10px}'
-    + ':root body .nlps-mapsum>i{grid-row:1}:root body .nlps-mapsum>.nlps-mapsum-t{grid-column:2/4}'
-    + ':root body .nlps-mapsum>small{grid-column:1/3;grid-row:2}:root body .nlps-mapsum>button{grid-row:2;padding:0 14px}}'
-    + '@media (prefers-reduced-motion:reduce){.rbs-zhint{transition:none}}';
-  document.head.appendChild(st);
-}
-
 if (root) boot();
 
 async function boot() {
@@ -138,17 +64,9 @@ async function boot() {
   const units = Array.isArray(cfg.units) && cfg.units.length
     ? { sides: cfg.units.map((u) => ({ id: String(u[0]), bearing: Number(u[1]) })), half: 180 / cfg.units.length, label: 'דירה לדוגמה', chip: 'לדוגמה' }
     : null;
-  // ApartmentExperience-1 (design system v101, 29.9.2026): the floor card's place in the page, right under the stage and above
-  // the steps: the building stays whole and in place, and the page scrolls on past it to the view and the map
-  const pickHost = document.createElement('div');
-  pickHost.className = 'rbs-cardhost';
-  pickHost.id = 'nlps-pick';
-  root.insertAdjacentElement('afterend', pickHost);
-  pickCss();
   try {
     const mod = await import(cfg.stage);
     window.__nlpsStage = mod[cfg.mount](stageEl, {
-      cardHost: pickHost,
       preset: 'sunset',
       poster: cfg.poster || null, // versioned, so a new poster is never hidden behind a cached one
       bearingOffset: Number(cfg.bearingOffset) || 0,
@@ -175,15 +93,6 @@ async function boot() {
   } catch (e) {
     console.warn('[project stage]', e);
     return; // the stage module shows its own poster; the page and its map stay as they are
-  }
-  // ApartmentMapLanding (v101.2): on phones, while the card is open, the stage's notice sits at the card's foot (next to the
-  // picked unit), where the lifted pill never goes; the stage keeps it whenever the card is closed. The stage's own words.
-  const stageCap = root.querySelector('.rbs-caption');
-  if (stageCap && stageCap.textContent.trim()) {
-    const pc = document.createElement('p');
-    pc.className = 'nlps-pick-cap';
-    pc.textContent = stageCap.textContent.trim();
-    pickHost.appendChild(pc);
   }
   const title = document.getElementById('nlps-view-t');
   const cap = document.getElementById('nlps-view-cap');
@@ -350,8 +259,6 @@ async function boot() {
     const d = e.detail || {};
     if (d.floor == null || d.bearing == null) return;
     last = d;
-    // ConsultSheet (v101): the site pill's message offers this floor and direction (inc/cta-sheet.php reads it; nothing is sent)
-    window.__nlpsPick = { floor: d.floor, facing: facingWords(d.bearing), unit: d.unit || '', example: !!units, name: String(cfg.name || '') };
     ga('stage_facing', { floor: d.floor, facing: facingWords(d.bearing), project: cfg.name, unit: d.unit || '', toward: d.toward || '' });
     if (hint) hint.hidden = true;
     setTitle(d);
@@ -508,107 +415,19 @@ async function boot() {
   /* the view and the map, right under the stage */
   const below = document.querySelector('.nlps-below');
   const smooth = () => (matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
-  /* ApartmentMapLanding (design system v101.2, Codex's integrated QA 29.9): on a stage page the map section reads unit line →
-     the real map → its controls → the list, and "הנוף והמפה" lands where the whole original cone is in view, clear of the
-     wide pill and the accessibility button. The map, the cone (showBeam) and the engine are not touched: only the controls
-     move, under the map host, so the WebGL canvas never leaves the page. */
-  const mapSec = document.getElementById('nlpjx-map');
-  const mapHost = mapSec && (mapSec.querySelector(':scope > #nlpjx-unimap') || mapSec.querySelector(':scope > #nlpjx-leaflet'));
-  let mapSum = null;
-  if (mapSec && mapHost) {
-    mapSum = document.createElement('div');
-    mapSum.className = 'nlps-mapsum';
-    mapSum.hidden = true;
-    mapSum.innerHTML = '<i aria-hidden="true"><svg viewBox="0 0 62 74" width="18" height="22"><path d="M31 74 L0 7 A78 78 0 0 1 62 7 Z" fill="#C2563A" fill-opacity=".38" stroke="#C2563A" stroke-opacity=".7"/></svg></i>'
-      + '<b class="nlps-mapsum-t"></b><small>האלומה במפה: הכיוון מהדירה</small>'
-      + '<button type="button" data-nlps-back>חזרה לבניין <span aria-hidden="true">↑</span></button>';
-    // the same order every time the map's own script adds its bars (idempotent: nothing moves when all is in place)
-    const arrange = () => {
-      if (mapSum.nextElementSibling !== mapHost) mapHost.before(mapSum);
-      let ref = mapHost;
-      ['.nlam-bar', '.nlam-range', '.nlpjx-maplayers'].forEach((q) => {
-        const el = mapSec.querySelector(':scope > ' + q);
-        if (!el) return;
-        if (ref.nextElementSibling !== el) ref.after(el);
-        ref = el;
-      });
-    };
-    arrange();
-    new MutationObserver(arrange).observe(mapSec, { childList: true });
-  }
-  // the unit line: the card's own floor and direction, the example tag, updated with every pick
-  const setMapSum = (d) => {
-    if (!mapSum || !d || d.floor == null) return;
-    const words = d.toward ? 'לכיוון ' + d.toward : (d.bearing != null ? facingWords(d.bearing) : '');
-    const t = mapSum.querySelector('.nlps-mapsum-t');
-    t.textContent = 'קומה ' + d.floor + (words ? ' · ' + words : '');
-    if (units) { const em = document.createElement('em'); em.textContent = 'דירה לדוגמה'; t.appendChild(em); }
-    mapSum.hidden = false;
-  };
-  window.addEventListener('nl:facing', (e) => setMapSum(e.detail || {}));
-  if (last) setMapSum(last);
-  // the sticky header's bottom and the top of the fixed controls at the foot of the screen (the pill at rest, the accessibility
-  // button), both measured at the moment of the press
-  const headBottom = () => {
-    let el = document.elementFromPoint(Math.round(innerWidth / 2), 2);
-    while (el && el !== document.body) {
-      const p = getComputedStyle(el).position;
-      if (p === 'fixed' || p === 'sticky') return Math.max(0, el.getBoundingClientRect().bottom);
-      el = el.parentElement;
-    }
-    return 0;
-  };
-  const shown = (el) => !!el && el.getClientRects().length > 0 && getComputedStyle(el).visibility !== 'hidden'; // fixed elements have no offsetParent
-  const footTop = () => {
-    let t = innerHeight;
-    const box = document.getElementById('nlcta');
-    if (shown(box)) {
-      const rest = Number(box.getAttribute('data-rest')); // set by inc/conversion-cta.php: the pill's top, from the screen's foot, at rest
-      t = Math.min(t, rest > 0 ? innerHeight - rest : box.getBoundingClientRect().top);
-    }
-    const a11y = document.getElementById('nla11y');
-    if (shown(a11y)) t = Math.min(t, a11y.getBoundingClientRect().top);
-    return t - 8;
-  };
   const toBelow = () => {
     if (!below) return;
-    let top = below.getBoundingClientRect().top + window.scrollY - 84; // under the sticky header: the view and the map from their top
-    if (mapHost) {
-      // the whole map must sit between the header and the controls at the foot; when it does not (phones), the unit line goes
-      // right under the header and the real map follows it
-      const head = headBottom(), foot = footTop();
-      const c = mapHost.getBoundingClientRect(), cTop = c.top + window.scrollY - top, cBot = c.bottom + window.scrollY - top;
-      if (cTop < head + 4 || cBot > foot) top = (mapSum && !mapSum.hidden ? mapSum : mapHost).getBoundingClientRect().top + window.scrollY - head - 8;
-    }
+    const top = below.getBoundingClientRect().top + window.scrollY - 84; // under the sticky header
     window.scrollTo({ top, behavior: smooth() });
   };
-  // back to the building: the stage under the header, the same unit still in the card, the focus on the card
-  document.addEventListener('click', (e) => {
-    const b = e.target && e.target.closest ? e.target.closest('[data-nlps-back]') : null;
-    if (!b) return;
-    ga('map_back', { project: cfg.name, unit: (window.__nlpsPick && window.__nlpsPick.unit) || '' });
-    const lab = document.querySelector('#nlps-pick .rbs-label.is-on');
-    if (lab) { if (!lab.hasAttribute('tabindex')) lab.setAttribute('tabindex', '-1'); lab.focus({ preventScroll: true }); }
-    window.scrollTo({ top: root.getBoundingClientRect().top + window.scrollY - headBottom() - 8, behavior: smooth() });
-  });
   const DESIGNER = '/tour/designer/';
-  /* UnitDesignRequest (design system v102): the designer opens for THIS unit (project, unit id and the card's words), so the
-     design is kept for it and the request names it; with no unit picked it stays the demonstration */
-  const designerUrl = () => {
-    const pk = window.__nlpsPick;
-    const slug = ((location.pathname.match(/\/projects\/([^/]+)/) || [])[1] || '').replace(/-(en|fr|ru|ar)$/, '');
-    if (!pk || !pk.unit || !slug) return DESIGNER;
-    const kick = document.querySelector('#nlps-pick .dus-label-kick');
-    const ul = 'קומה ' + pk.floor + (pk.facing ? ' · ' + pk.facing : '') + (kick && kick.textContent.trim() ? ' · ' + kick.textContent.trim() : '');
-    return DESIGNER + '?project=' + encodeURIComponent(slug) + '&unit=' + encodeURIComponent(pk.unit) + '&pn=' + encodeURIComponent(String(cfg.name || '')) + '&ul=' + encodeURIComponent(ul);
-  };
   /* the floor card's actions (design system ProjectStage version 33) */
   window.addEventListener('nl:floor-action', (e) => {
     const d = e.detail || {};
     ga('floor_action', { action: d.action || '', floor: d.floor, project: cfg.name });
     if (d.action === 'inside') openTourAt(d.floor, d.unit ? String(d.unit).split('-').pop() : 'w', null);
     else if (d.action === 'view') toBelow();
-    else if (d.action === 'design') location.href = designerUrl();
+    else if (d.action === 'design') location.href = DESIGNER;
   });
   /* the button says which floor's pictures open, when they are not the picked floor's */
   const insideLabel = (f) => {
@@ -627,13 +446,12 @@ async function boot() {
     const k = b.getAttribute('data-nlps-step');
     ga('stage_step', { step: k, project: cfg.name });
     if (k === 'floor') { root.scrollIntoView({ behavior: smooth(), block: 'center' }); return; }
-    if (k === 'design') { location.href = designerUrl(); return; }
+    if (k === 'design') { location.href = DESIGNER; return; }
     if (k === 'inside') { openTourAt(selFloor() || 25, selSide() || 'w', b); return; }
     if (k === 'view') {
       // nothing picked yet: floor 25's sea-side example apartment first, so the view and the beam have something to show
-      // (the landing is measured after that pick, once the unit line above the map has its height)
-      if (!selFloor() && stage && stage.selectUnit) Promise.resolve(stage.ready).then(() => { stage.selectUnit('25-' + seaSide, 'user'); requestAnimationFrame(toBelow); }).catch(() => toBelow());
-      else toBelow();
+      if (!selFloor() && stage && stage.selectUnit) Promise.resolve(stage.ready).then(() => { stage.selectUnit('25-' + seaSide, 'user'); }).catch(() => {});
+      toBelow();
     }
   });
 

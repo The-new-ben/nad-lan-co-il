@@ -1,0 +1,1 @@
+add_action( 'template_redirect', function () { if ( ! headers_sent() ) { header( 'X-NL-QV: ' . var_export( get_query_var( 'nadlan_advertiser_center' ), true ) . '|' . ( is_home() ? 'home' : 'nothome' ) . '|' . implode( ',', array_keys( array_filter( array( 'ac' => has_action( 'template_redirect' ) ) ) ) ) ); } }, 6 );

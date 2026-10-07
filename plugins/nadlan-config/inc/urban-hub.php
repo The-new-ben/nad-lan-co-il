@@ -7,7 +7,7 @@
  *  1. GET /nadlan/v1/renewal-lookup - public compound lookup over the ~938
  *     gov.il urban-renewal compounds already imported as nadlan_project stubs
  *     (source=urban_renewal meta, import.php). Rate limited 30/hr/IP.
- *  2. [nadlan_ur_lookup] - the "is my building in a declared compound?"
+ *  2. [nadlan_ur_lookup] - the "is my building in a renewal compound?"
  *     teaser embedded on the pillar. Works logged-out, honest miss copy.
  *  3. nadlan_ur_interlinks() - the hub URL map used by the spoke grid.
  *
@@ -28,6 +28,15 @@ if ( ! function_exists( 'nadlan_ur_interlinks' ) ) {
 			'glossary'    => home_url( '/glossary/' ),
 			'pros'        => home_url( '/professionals/' ),
 		) );
+	}
+}
+
+if ( ! function_exists( 'nadlan_ur_source_pulled' ) ) {
+	/** The day the compounds were last pulled from data.gov.il (D.M.YYYY). There is no scheduled refresh, so the copy names
+	 *  this date instead of "the data updates from the registry" (HAD-396). 13.7.2026 = the last import run: 893 of the 947
+	 *  compounds were modified and 10 created that day (public REST, checked 3.10.2026). A future sync sets the option. */
+	function nadlan_ur_source_pulled() {
+		return (string) apply_filters( 'nadlan_ur_source_pulled', get_option( 'nadlan_ur_source_pulled', '13.7.2026' ) );
 	}
 }
 
@@ -79,6 +88,7 @@ add_action( 'rest_api_init', function () {
 					'plan_number'    => (string) get_post_meta( $p->ID, 'plan_number', true ),
 					'project_status' => (string) get_post_meta( $p->ID, 'project_status', true ),
 					'project_type'   => (string) get_post_meta( $p->ID, 'project_type', true ),
+					'renewal_track'  => (string) get_post_meta( $p->ID, 'renewal_track', true ),
 					'units_existing' => (int) get_post_meta( $p->ID, 'units_existing', true ),
 					'units_added'    => (int) get_post_meta( $p->ID, 'units_added', true ),
 				);
@@ -92,15 +102,15 @@ add_shortcode( 'nadlan_ur_lookup', function () {
 	$rest = esc_url( rest_url( 'nadlan/v1/renewal-lookup' ) );
 	ob_start(); ?>
 <div class="nlur-lookup" dir="rtl">
-	<h3 class="nlur-lookup__t">האם הבניין שלכם במתחם התחדשות מוכרז?</h3>
-	<p class="nlur-lookup__s">בדיקה מול מאגר המתחמים הרשמי של הרשות הממשלתית להתחדשות עירונית (data.gov.il).</p>
+	<h3 class="nlur-lookup__t">האם הבניין שלכם במתחם התחדשות עירונית?</h3>
+	<p class="nlur-lookup__s">בדיקה מול מאגר המתחמים הרשמי של הרשות הממשלתית להתחדשות עירונית (data.gov.il), כפי שנמשך ב-<?php echo esc_html( nadlan_ur_source_pulled() ); ?>.</p>
 	<form class="nlur-lookup__f" onsubmit="return false">
 		<input type="text" id="nlur-city" placeholder="עיר" autocomplete="address-level2">
 		<input type="text" id="nlur-q" placeholder="שם רחוב או מתחם (לא חובה)">
 		<button type="button" id="nlur-go">בדיקה</button>
 	</form>
 	<div class="nlur-lookup__r" id="nlur-res" aria-live="polite"></div>
-	<p class="nlur-lookup__n">המאגר כולל מתחמים מוכרזים בלבד. אם הבניין לא נמצא, ייתכן שעדיין יש פוטנציאל במסלול בניין בודד - זה לא אומר שאין אפשרות.</p>
+	<p class="nlur-lookup__n">המאגר כולל מתחמים מוכרזים וגם מתחמים שטרם הוכרזו. אם הבניין לא נמצא, ייתכן שעדיין יש פוטנציאל במסלול בניין בודד, וזה לא אומר שאין אפשרות.</p>
 </div>
 <style>
 .nlur-lookup{background:#F3EEE3;border:1px solid #E2DCD0;border-radius:16px;padding:22px;margin:26px 0}
@@ -126,10 +136,14 @@ add_shortcode( 'nadlan_ur_lookup', function () {
 		r.textContent="בודקים מול המאגר...";
 		fetch("<?php echo $rest; // phpcs:ignore ?>?city="+encodeURIComponent(c)+"&q="+encodeURIComponent(q))
 			.then(function(x){return x.json()}).then(function(d){
-				if(!d||!d.matches||!d.matches.length){r.innerHTML='<div class="nlur-hit">לא נמצא מתחם מוכרז תואם במאגר. זה לא אומר שאין פוטנציאל - מסלול בניין בודד לא מופיע במאגר המתחמים.</div>';return}
+				if(!d||!d.matches||!d.matches.length){r.innerHTML='<div class="nlur-hit">לא נמצא מתחם תואם במאגר. זה לא אומר שאין פוטנציאל: מסלול בניין בודד לא מופיע במאגר המתחמים.</div>';return}
+				// "מוכרז" only for the two declared tracks of the registry (HAD-396)
+				var TR={misui:"מוכרז במסלול מיסוי",rashuyot:"מוכרז במסלול רשויות",terem_huchraz:"טרם הוכרז"};
+				// the registry's text is escaped before it reaches innerHTML (main's code review, 3.10)
+				var E=function(s){var d=document.createElement("div");d.textContent=s==null?"":String(s);return d.innerHTML};
 				r.innerHTML=d.matches.map(function(m){
 					var t=m.project_type==="pinui_binui"?"פינוי בינוי":(m.project_type==="tama38"?"תמא 38":"התחדשות");
-					return '<div class="nlur-hit"><b>'+m.title+'</b> · '+m.city+' · <i>'+t+'</i>'+(m.plan_number?' · תכנית '+m.plan_number:'')+(m.project_status?' · '+m.project_status:'')+(m.units_existing?' · '+m.units_existing+' יח׳ קיימות'+(m.units_added?" + "+m.units_added+" תוספת":""):'')+' · <a href="'+m.url+'">לעמוד המתחם</a></div>';
+					return '<div class="nlur-hit"><b>'+E(m.title)+'</b> · '+E(m.city)+' · <i>'+t+'</i>'+(TR[m.renewal_track]?' · '+TR[m.renewal_track]:'')+(m.plan_number?' · תכנית '+E(m.plan_number):'')+(m.project_status?' · '+E(m.project_status):'')+(m.units_existing?' · '+(+m.units_existing)+' יח׳ קיימות'+(m.units_added?" + "+(+m.units_added)+" תוספת":""):'')+' · <a href="'+E(m.url)+'">לעמוד המתחם</a></div>';
 				}).join("");
 			}).catch(function(){r.textContent="שגיאה זמנית, נסו שוב"});
 	});

@@ -368,11 +368,6 @@ export function mountDimriStage(container, options = {}) {
   const caption = el('p', 'rbs-caption', ui);
   caption.textContent = T.caption + ' ' + T.geo;
   const label = el('div', 'rbs-label', ui, { 'aria-live': 'polite' });
-  // ApartmentExperience-1 (design system v101, 29.9.2026): the card lives in the page's flow under the stage (opts.cardHost),
-  // never on the building; the scene no longer steps aside or draws smaller for it (the owner: the card must not hide, move
-  // or shrink the building). Without a host (an older bridge) the card behaves as StageCard v94.
-  const docked = !!(opts.cardHost && opts.cardHost.appendChild);
-  if (docked) { opts.cardHost.appendChild(label); label.classList.add('rbs-label--docked'); }
   const labelKick = el('p', 'dus-label-kick', label);
   const labelTop = el('div', 'rbs-label-top', label);
   const labelTitle = el('p', 'rbs-label-title', labelTop);
@@ -397,22 +392,6 @@ export function mountDimriStage(container, options = {}) {
   const labelCta = el('button', 'rbs-label-cta', label, { type: 'button' });
   labelCta.textContent = T.cta;
   const facingChip = el('div', 'rbs-facing', ui, { 'aria-hidden': 'true' });
-  // v101: + / − on the stage and a short hint when the wheel passes over it (the wheel scrolls the page)
-  const zoomEl = el('div', 'rbs-zoom', ui, { role: 'group', 'aria-label': T.zoom || 'זום על הדגם' });
-  const zoomIn = el('button', 'rbs-zoom-in', zoomEl, { type: 'button', 'aria-label': T.zoomIn || 'להתקרב' });
-  zoomIn.textContent = '+';
-  const zoomOut = el('button', 'rbs-zoom-out', zoomEl, { type: 'button', 'aria-label': T.zoomOut || 'להתרחק' });
-  zoomOut.textContent = '−';
-  const zhint = el('div', 'rbs-zhint', ui, { 'aria-hidden': 'true' });
-  zhint.textContent = T.zoomHint || (/Mac|iPhone|iPad/.test(navigator.platform || '') ? '⌘ + גלגלת: זום על הדגם' : 'Ctrl + גלגלת: זום על הדגם');
-  let zhintAt = 0, zhintT = 0;
-  const zoomHint = () => {
-    const now = performance.now();
-    if (now - zhintAt < 6000) return;
-    zhintAt = now;
-    zhint.classList.add('is-on');
-    clearTimeout(zhintT); zhintT = setTimeout(() => zhint.classList.remove('is-on'), 1600);
-  };
   /* the quarter (design system QuarterPins): a pin per project and place, and one card */
   const Q = opts.quarter && (Array.isArray(opts.quarter.projects) || Array.isArray(opts.quarter.places)) ? opts.quarter : null;
   const qpins = [];
@@ -496,7 +475,7 @@ export function mountDimriStage(container, options = {}) {
       opts.cityData = cityData || null;
       if (disposed) return;
       engine = createEngine({
-        root, docked, zoomIn, zoomOut, zoomHint, ui, marks, canvasWrap, label, labelKick, labelTitle, labelLine, labelFacing, labelMore, actBtns, labelCta, labelClose, labelMin, labelTop, leader, hint, facingChip, qpins, qcard, fpins,
+        root, ui, marks, canvasWrap, label, labelKick, labelTitle, labelLine, labelFacing, labelMore, actBtns, labelCta, labelClose, labelMin, labelTop, leader, hint, facingChip, qpins, qcard, fpins,
         opts, T, reduced, phone, coarse, preset: currentPreset,
         onReady: markReady,
         onContextLost: () => { root.classList.remove('rbs--live', 'rbs--settled'); },
@@ -594,7 +573,7 @@ export function mountDimriStage(container, options = {}) {
 /* ------------------------------------------------------------------------------------------ */
 
 function createEngine(ctx) {
-  const { root, docked, zoomIn, zoomOut, zoomHint, marks, canvasWrap, label, labelKick, labelTitle, labelLine, labelFacing, labelMore, actBtns, labelCta, labelClose, labelMin, labelTop, leader, hint, facingChip, opts, T: TX, reduced, phone } = ctx;
+  const { root, marks, canvasWrap, label, labelKick, labelTitle, labelLine, labelFacing, labelMore, actBtns, labelCta, labelClose, labelMin, labelTop, leader, hint, facingChip, opts, T: TX, reduced, phone } = ctx;
   const T = TX;
   const qpins = ctx.qpins || [], qcard = ctx.qcard || null, fpins = ctx.fpins || [];
   let facMode = false; // the legend's "מתקנים בפרויקט" chip: the facility pins on, the quarter's pins off
@@ -942,26 +921,11 @@ function createEngine(ctx) {
   on(controls, 'end', () => { lastInteract = performance.now(); root.classList.remove('rbs--grabbing'); });
   on(controls, 'change', () => { needsRender = true; });
 
-  // ApartmentExperience-1 (v101): the wheel always scrolls the page. A click on a floor used to open a 4-second window in
-  // which the wheel zoomed the model instead, renewed by every tick (the scroll trap, reproduced 29.9 at 1440: four ticks
-  // after a pick, 0 px of page scroll). The model zooms with Ctrl/⌘ + wheel or a trackpad pinch (the browser sends it with
-  // ctrlKey), a pinch on a phone, or the + / − buttons.
   on(root, 'wheel', (e) => {
-    if (opts.wheel === 'always' || e.ctrlKey || e.metaKey) { lastInteract = performance.now(); return; }
-    e.stopPropagation(); // the orbit controls never see it: the page scrolls
-    zoomHint();
+    if (opts.wheel !== 'always' && performance.now() > engagedUntil) { e.stopPropagation(); return; }
+    engagedUntil = performance.now() + 4000;
+    lastInteract = performance.now();
   }, { capture: true, passive: true });
-  const zoomBy = (k) => {
-    if (glide) return;
-    if (phase === 'intro') endIntro();
-    const off = camera.position.clone().sub(controls.target);
-    off.setLength(Math.min(controls.maxDistance, Math.max(controls.minDistance, off.length() * k)));
-    camera.position.copy(controls.target).add(off);
-    controls.update();
-    lastInteract = performance.now(); needsRender = true; kick();
-  };
-  on(zoomIn, 'click', (e) => { e.stopPropagation(); zoomBy(0.8); });
-  on(zoomOut, 'click', (e) => { e.stopPropagation(); zoomBy(1.25); });
   on(root, 'pointerleave', () => {
     engagedUntil = 0; pointer.inside = false;
     if (!pointer.down) { setHover(null); setPreview(-1); }
@@ -1422,7 +1386,7 @@ function createEngine(ctx) {
   // drag the card by its title bar (mouse and pen; on a phone it stays at the foot and folds instead)
   let drag = null;
   on(labelTop, 'pointerdown', (e) => {
-    if (docked || e.pointerType === 'touch' || e.button !== 0 || e.target.closest('button')) return;
+    if (e.pointerType === 'touch' || e.button !== 0 || e.target.closest('button')) return;
     e.stopPropagation(); // the stage never sees a drag of the card as a tap on the model
     const r = label.getBoundingClientRect(), rr = root.getBoundingClientRect();
     drag = { id: e.pointerId, dx: e.clientX - r.left, dy: e.clientY - r.top, ox: rr.left, oy: rr.top, moved: false };
@@ -1644,15 +1608,6 @@ function createEngine(ctx) {
   }
   function placeLabel() {
     if (!selected) return;
-    if (docked) {
-      // v101: the card is in the page under the stage; the floor keeps its ring and the facing chip, the building stays whole
-      if (!label.classList.contains('is-on')) label.classList.add('is-on');
-      leaderLine.setAttribute('visibility', 'hidden');
-      leaderDot.setAttribute('visibility', 'hidden');
-      shift.tx = 0; shift.ty = 0; shift.tk = 1;
-      placeChip(arrowTip());
-      return;
-    }
     const TW = selected.tower;
     const narrow = stageW < 600;
     if (!labelBox.w) { labelBox.w = label.offsetWidth || 244; labelBox.h = label.offsetHeight || 140; }
@@ -2078,7 +2033,7 @@ function createEngine(ctx) {
 
     if (glide) stepGlide(adt);
     // StageCard v94: the scene eases aside from the card (and back when it folds, closes or is dragged away)
-    if (!selected || cardMin || cardUser || docked) { shift.tx = 0; shift.ty = 0; shift.tk = 1; }
+    if (!selected || cardMin || cardUser) { shift.tx = 0; shift.ty = 0; shift.tk = 1; }
     if (shift.x !== shift.tx || shift.y !== shift.ty || shift.k !== shift.tk) {
       const k = Math.min(1, adt * 6);
       shift.x = Math.abs(shift.tx - shift.x) < 0.5 ? shift.tx : shift.x + (shift.tx - shift.x) * k;

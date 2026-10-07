@@ -153,9 +153,9 @@
 		var c = counts(), pct = S.consents.pct, r = docsRollup();
 		var items = [
 			{ txt: t("td_map"), done: !c.unreached },
-			{ txt: t("td_66"), done: pct >= 66 },
-			{ txt: t("td_67"), done: pct >= 67 },
-			{ txt: t("td_80"), done: pct >= 80 },
+			/* the count condition of the statutory special majority, an exact fraction: two thirds (50 apartments: 34, not 33). The
+			   building conditions (three fifths, over half of the common property) are in the line's own text (HAD-396) */
+			{ txt: t("td_66"), done: S.consents.total > 0 && S.consents.yes * 3 >= S.consents.total * 2 },
 			{ txt: t("td_docs"), done: r.total > 0 && r.done === r.total },
 			{ txt: t("td_pros"), done: S.stage >= 3 },
 			{ txt: t("td_dev"), done: S.stage >= 5 }
@@ -220,7 +220,8 @@
 				map.flyTo({ center: lnglat, zoom: precise ? 15.4 : 12.4, essential: true });
 			}
 			/* try a precise forward geocode of the address; degrade to centroid honestly */
-			if (S.address && S.city) {
+			/* the public sample room never geocodes its made-up address: the pin stays at the city, marked approximate (HAD-396) */
+			if (S.address && S.city && !S.is_demo) {
 				fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/" + encodeURIComponent(S.address + ", " + S.city + ", Israel") + ".json?access_token=" + token + "&country=il&limit=1&language=he")
 					.then(function (r) { return r.json(); })
 					.then(function (g) {

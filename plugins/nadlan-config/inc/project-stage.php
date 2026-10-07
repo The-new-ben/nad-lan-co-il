@@ -75,17 +75,19 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 				// example apartments (the owner, 25.9.2026: "דירות לדוגמה עם כיוון, ועם תווית ברורה שהן לדוגמה"): one per side of
 				// each tower floor, four in all, within the developer's "3 to 5 apartments per floor" (Bizportal 19.7.2023)
 				'units'          => array( array( 'n', 0 ), array( 'e', 90 ), array( 's', 180 ), array( 'w', 270 ) ),
-				// ProjectFilm v79 (28.9.2026): the project's film, 49 s, from scripts/project-video (every line's source in
-				// data/rainbow-tel-aviv.json); media ids 8106-8109
+				// ProjectFilm v80 (5.10.2026, Ben: "everything is approved"): the film loop's v1 film, Hebrew here and English on the
+				// language pages (film_en); 720p web copies, byte-checked (docs/qa/film-v1-projects/media.json)
 				'film'           => array(
-					'wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/09/rainbow-tel-aviv-film-wide.mp4', 'tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/09/rainbow-tel-aviv-film-tall.mp4',
-					'poster_wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/09/rainbow-tel-aviv-film-wide-poster.jpg', 'poster_tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/09/rainbow-tel-aviv-film-tall-poster.jpg',
-					'secs' => 49, 'date' => '2026-09-28', 'date_he' => '28.9.2026',
-					// ApartmentExperience-1 (v101, 29.9.2026): these files have no sound track (MP4 boxes: a video handler only,
-					// checked 29.9); the narrated cut (scripts/project-video/out/*_narrated_web.mp4) goes in 'voice' once uploaded and
-					// switches on with the option nadlan_film_voice_on = '1', after the owner approves the voice
-					'audio' => false,
-					'desc' => 'סרטון של 49 שניות על Rainbow תל אביב של ישראל קנדה ברובע שדה דב: המיקום, המגדל בן 39 הקומות ובנייני הבוטיק, 459 הדירות, המחירים והמכירות שדווחו, המתקנים והנוף המשוער מהקומות. הדמיה להמחשה.',
+					'wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/rainbow-tel-aviv-film-v1-he-16x9-1.mp4', 'tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/rainbow-tel-aviv-film-v1-he-9x16-1.mp4',
+					'poster_wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/rainbow-tel-aviv-film-v1-he-16x9-poster.jpg', 'poster_tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/rainbow-tel-aviv-film-v1-he-9x16-poster.jpg',
+					'secs' => 54, 'date' => '2026-10-05', 'date_he' => '5.10.2026', 'lang' => 'he',
+					'desc' => 'סרטון של 54 שניות על Rainbow תל אביב ברובע שדה דב: המיקום, המגדל ובנייני הבוטיק, הדירות, מועדון הדיירים, שלב הבנייה והנוף המשוער מהקומות. הדמיה להמחשה.',
+				),
+				'film_en'        => array(
+					'wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/rainbow-tel-aviv-film-v1-en-16x9-1.mp4', 'tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/rainbow-tel-aviv-film-v1-en-9x16-1.mp4',
+					'poster_wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/rainbow-tel-aviv-film-v1-en-16x9-poster.jpg', 'poster_tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/rainbow-tel-aviv-film-v1-en-9x16-poster.jpg',
+					'secs' => 54, 'date' => '2026-10-05', 'date_he' => '5.10.2026', 'lang' => 'en', 'name' => 'Rainbow Tel Aviv',
+					'desc' => 'A 54-second film on Rainbow Tel Aviv in the Sde Dov quarter: the location, the tower and the boutique buildings, the apartments, the residents\' club, the construction stage and the estimated view from the floors. Illustrative visualisation.',
 				),
 				// the floor card's line where no sold apartment is known: what the developer said about that height (Bizportal
 				// 19.7.2023: two-room apartments "עד קומה 25 בערך"), and above it the project's range
@@ -123,6 +125,20 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 			// proposal docs/research/2026-09-28-stages/duo-config-proposal.php.txt). The H1 carries the searched names (GSC 90 days:
 			// "duo tel aviv", "duo תל אביב", "דואו", "מגדלי duo"); Ibn Gabirol and Arlozorov are in the line under it.
 			'duo-tel-aviv' => array(
+				// ProjectFilm v80 (5.10.2026, Ben: "everything is approved"): the film loop's v1 film, Hebrew here and English on the
+				// language pages (film_en); 720p web copies, byte-checked (docs/qa/film-v1-projects/media.json)
+				'film'           => array(
+					'wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/duo-tel-aviv-film-v1-he-16x9-1.mp4', 'tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/duo-tel-aviv-film-v1-he-9x16-1.mp4',
+					'poster_wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/duo-tel-aviv-film-v1-he-16x9-poster.jpg', 'poster_tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/duo-tel-aviv-film-v1-he-9x16-poster.jpg',
+					'secs' => 54, 'date' => '2026-10-05', 'date_he' => '5.10.2026', 'lang' => 'he',
+					'desc' => 'סרטון של 54 שניות על DUO תל אביב במתחם סומייל: המיקום, שני המגדלים, הדירות, המסחר, שלב הבנייה לפי דוח החברה והנוף המשוער מהקומות. הדמיה להמחשה.',
+				),
+				'film_en'        => array(
+					'wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/duo-tel-aviv-film-v1-en-16x9-1.mp4', 'tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/duo-tel-aviv-film-v1-en-9x16-1.mp4',
+					'poster_wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/duo-tel-aviv-film-v1-en-16x9-poster.jpg', 'poster_tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/duo-tel-aviv-film-v1-en-9x16-poster.jpg',
+					'secs' => 54, 'date' => '2026-10-05', 'date_he' => '5.10.2026', 'lang' => 'en', 'name' => 'DUO Tel Aviv',
+					'desc' => 'A 54-second film on DUO Tel Aviv in the Somail compound: the location, the two towers, the apartments, the retail, the construction stage per the company report and the estimated view from the floors. Illustrative visualisation.',
+				),
 				'dir'            => 'duo',
 				'mount'          => 'mountDuoStage',
 				'basket_hint'    => 'לעזרה: בחוזים שנחתמו בינואר עד יוני 2026 המחיר הממוצע היה כ-71,000 ₪ למ״ר לפני מע״מ, וכ-11 מיליון ₪ לדירה כולל מע״מ, לפי דוח החברה לרבעון השני של 2026. המחיר של דירה מסוימת מהנציג.', // BasketOne v86: shown as a hint, never multiplied into a price
@@ -208,6 +224,20 @@ if ( ! function_exists( 'nadlan_ps_config' ) ) {
 			// StageSdeDov v82 (28.9.2026): Dimri Yama (lot 107) and Ashira (lot 101) on their official lots; the configs are the
 			// prototypes' proposals (docs/research/2026-09-28-stages/dimri-config-proposal.php.txt, ashira-config-proposal.php.txt)
 			'dimri-yama-sde-dov' => array(
+				// ProjectFilm v80 (5.10.2026, Ben: "everything is approved"): the film loop's v1 film, Hebrew here and English on the
+				// language pages (film_en); 720p web copies, byte-checked (docs/qa/film-v1-projects/media.json)
+				'film'           => array(
+					'wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/dimri-yama-sde-dov-film-v1-he-16x9-1.mp4', 'tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/dimri-yama-sde-dov-film-v1-he-9x16-1.mp4',
+					'poster_wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/dimri-yama-sde-dov-film-v1-he-16x9-poster.jpg', 'poster_tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/dimri-yama-sde-dov-film-v1-he-9x16-poster.jpg',
+					'secs' => 47, 'date' => '2026-10-05', 'date_he' => '5.10.2026', 'lang' => 'he',
+					'desc' => 'סרטון של 47 שניות על דמרי ימה שדה דב במתחם אשכול: המיקום, המגדל, הדירות וחדרי המלון לפי היזם, שלב השיווק והנוף המשוער מהקומות. הדמיה להמחשה.',
+				),
+				'film_en'        => array(
+					'wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/dimri-yama-sde-dov-film-v1-en-16x9-1.mp4', 'tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/dimri-yama-sde-dov-film-v1-en-9x16-1.mp4',
+					'poster_wide' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/dimri-yama-sde-dov-film-v1-en-16x9-poster.jpg', 'poster_tall' => 'https://nad-lan.co.il/wp-content/uploads/2026/10/dimri-yama-sde-dov-film-v1-en-9x16-poster.jpg',
+					'secs' => 47, 'date' => '2026-10-05', 'date_he' => '5.10.2026', 'lang' => 'en', 'name' => 'Dimri Yama Sde Dov',
+					'desc' => 'A 47-second film on Dimri Yama Sde Dov in the Eshkol compound: the location, the tower, the apartments and hotel rooms per the developer, the marketing stage and the estimated view from the floors. Illustrative visualisation.',
+				),
 				'dir'            => 'dimri',
 				'mount'          => 'mountDimriStage',
 				'basket_hint'    => 'לעזרה: מחיר הפתיחה שפורסם בפרויקט הוא מ-3.75 מיליון ₪. המחיר של דירה מסוימת מהנציג.', // BasketOne v86: shown as a hint, never multiplied into a price
@@ -507,48 +537,6 @@ if ( ! function_exists( 'nadlan_ps_poster_set' ) ) {
 	}
 }
 
-if ( ! function_exists( 'nadlan_ps_unit_resolve' ) ) {
-	/**
-	 * UnitDesignRequest (design system v102, 29.9.2026): a stage's example apartment, resolved on the server so a request
-	 * never stands for a unit that does not exist. The ids are the stages' own: '<floor>-<side>' on a one-tower stage (Rainbow)
-	 * and '<tower>-<floor>-<side>' where there are several (DUO, Dimri Yama, Ashira). The floors per tower are the stages'
-	 * (stage.js TOWER.floors / FLOORS / TOWERS[].floors); the sides and their bearings are the config's 'units'. Case is kept
-	 * (N-25-w stays N-25-w). Returns null for anything outside that space: no nearest unit is guessed.
-	 */
-	function nadlan_ps_unit_resolve( $slug, $unit_id ) {
-		$slug = preg_replace( '/-(en|fr|ru|ar)$/', '', (string) $slug );
-		$all  = function_exists( 'nadlan_ps_config' ) ? nadlan_ps_config() : array();
-		if ( ! isset( $all[ $slug ] ) || empty( $all[ $slug ]['units'] ) ) { return null; }
-		$space = array(
-			'rainbow' => array( '' => 39 ),
-			'duo'     => array( 'N' => 50, 'S' => 50 ),
-			'dimri'   => array( 'A' => 38, 'C' => 15 ),
-			'ashira'  => array( 'S1' => 34, 'N2' => 15 ),
-		);
-		$dir = (string) ( $all[ $slug ]['dir'] ?? '' );
-		if ( ! isset( $space[ $dir ] ) ) { return null; }
-		if ( ! preg_match( '/^(?:([A-Za-z][A-Za-z0-9]{0,2})-)?([0-9]{1,3})-([a-z])$/', (string) $unit_id, $m ) ) { return null; }
-		$tower = strtoupper( (string) $m[1] );
-		$floor = (int) $m[2];
-		$side  = $m[3];
-		if ( ! isset( $space[ $dir ][ $tower ] ) || $floor < 1 || $floor > $space[ $dir ][ $tower ] ) { return null; }
-		$bearing = null;
-		foreach ( (array) $all[ $slug ]['units'] as $u ) {
-			if ( is_array( $u ) && isset( $u[0] ) && $u[0] === $side ) { $bearing = (float) $u[1]; }
-		}
-		if ( null === $bearing ) { return null; }
-		return array(
-			'id'      => ( '' !== $tower ? $tower . '-' : '' ) . $floor . '-' . $side,
-			'label'   => ( '' !== $tower ? $tower . ' · ' : '' ) . $floor . '-' . $side,
-			'floor'   => $floor,
-			'tower'   => $tower,
-			'side'    => $side,
-			'bearing' => $bearing,
-			'example' => true,
-		);
-	}
-}
-
 if ( ! function_exists( 'nadlan_ps_current' ) ) {
 	function nadlan_ps_current() {
 		static $memo = false;
@@ -575,7 +563,9 @@ if ( ! function_exists( 'nadlan_ps_current' ) ) {
 		if ( ! file_exists( $file ) || ( $world && ! is_readable( dirname( __DIR__ ) . '/assets/project-stage/' . $all[ $slug ]['dir'] . '/world.json' ) ) ) { return $memo; }
 		$memo = array_merge( $all[ $slug ], array( 'id' => $id, 'slug' => $slug, 'lang' => $lang ) );
 		if ( 'he' !== $lang ) {
+			$fe = $memo['film_en'] ?? null; // ProjectFilm v80: a project with an English film shows it on its language pages
 			unset( $memo['film'], $memo['deals'], $memo['deals_sum'], $memo['basket_hint'] );
+			if ( ! empty( $fe['wide'] ) ) { $memo['film'] = $fe; }
 			$memo['rail'] = array();
 		}
 		return $memo;
@@ -755,7 +745,7 @@ if ( ! function_exists( 'nadlan_ps_parts' ) ) {
 				// VideoCall v73: a video call with NadLan's team, booked in the scheduler's band at the page's end
 				. ( function_exists( 'nadlan_sched_on' ) && nadlan_sched_on() && '1' !== get_post_meta( $id, 'nadlan_sched_off', true ) ? '<a class="nlds-btn nlds-btn--secondary nlps-hero__video" href="#nlsch" data-nlps-ev="hero-video"><span>שיחת וידאו עם נציג</span></a>' : '' )
 				// ProjectFilm v79: the film opens in a dialog (printed in the footer); nothing loads until it is pressed
-				. ( ! empty( $ps['film']['wide'] ) ? '<a class="nlds-btn nlds-btn--secondary nlps-hero__film" href="#nlfilm" data-nlps-ev="hero-film" aria-haspopup="dialog"><span class="nlps-film__pl" aria-hidden="true"></span><span>סרטון הפרויקט <small>· ' . (int) $ps['film']['secs'] . ' שניות' . ( nadlan_ps_film_media( $ps['film'] )['audio'] ? '' : ' · ללא קול' ) . '</small></span></a>' : '' )
+				. ( ! empty( $ps['film']['wide'] ) ? '<a class="nlds-btn nlds-btn--secondary nlps-hero__film" href="#nlfilm" data-nlps-ev="hero-film" aria-haspopup="dialog"><span class="nlps-film__pl" aria-hidden="true"></span><span>' . esc_html( nadlan_ps_film_t( $ps )['btn'] ) . ' <small>· ' . (int) $ps['film']['secs'] . ' ' . esc_html( nadlan_ps_film_t( $ps )['secs'] ) . '</small></span></a>' : '' )
 				. '</div></div>';
 		}
 		$rail = '';
@@ -977,7 +967,7 @@ if ( ! function_exists( 'nadlan_ps_compose' ) ) {
 		// one grid (design system version 14): the text column, the stage and the rail share the first fold; the source
 		// order stays title, lead, buttons, stage, rail, facts, view and map
 		$lead = substr( $html, $a, $lead_end - $a );
-		$page = '<div class="nlps-page' . ( ! empty( $ps['world'] ) ? ' nlps-page--world' : '' ) . '" dir="rtl" lang="he">' . $parts['hero'] . $lead . $parts['cta'] . $parts['stagebox'] . $parts['rail'] . $parts['facts'] . $parts['below'] . $parts['tour'] . $parts['deals'] . ( function_exists( 'nadlan_ps_world_film' ) ? nadlan_ps_world_film( $ps ) : '' ) . '</div>'; // v104.28: the film, after the deals, outside the post content
+		$page = '<div class="nlps-page' . ( ! empty( $ps['world'] ) ? ' nlps-page--world' : '' ) . '" dir="rtl" lang="he">' . $parts['hero'] . $lead . $parts['cta'] . ( $parts['prices'] ?? '' ) . $parts['stagebox'] . $parts['rail'] . $parts['facts'] . $parts['below'] . $parts['tour'] . $parts['deals'] . ( function_exists( 'nadlan_ps_world_film' ) ? nadlan_ps_world_film( $ps ) : '' ) . '</div>'; // v104.28: the film, after the deals, outside the post content
 		$html = substr( $html, 0, $a ) . $page . substr( $html, $lead_end );
 		// one FAQPage schema, from the page's own visible questions and answers (the recipe, row 25): the first
 		// "שאלות נפוצות" section that really holds question and answer pairs
@@ -1125,7 +1115,7 @@ if ( ! function_exists( 'nadlan_ps_world_parts' ) ) {
 			// P9c (v104.2): which tower, floors and side have an example apartment; its manifest loads only on the press
 			'examples' => ! empty( $pw['examples'] ) && is_readable( dirname( __DIR__ ) . '/' . $base . 'tour/examples.json' )
 				? array( 'url' => plugins_url( $base . 'tour/examples.json', dirname( __FILE__ ) ) . $v, 'list' => array_values( (array) $pw['examples'] ) ) : null,
-			'poster' => array( 'src' => $m['jpg'], 'srcset' => $m['tall'] . ' ' . $m['tw'] . 'w, ' . $m['wide'] . ' ' . $m['w'] . 'w', 'sizes' => '(max-width:700px) 100vw, 70vw', 'alt' => $alt ),
+			'poster' => array( 'src' => $m['jpg'], 'srcset' => $m['tall'] . ' ' . $m['tw'] . 'w, ' . $m['wide'] . ' ' . $m['w'] . 'w', 'sizes' => '(max-width:700px) 228px, 70vw' /* v104.45 (HAD-421): phones pick the 800 file the page's picture already loaded */, 'alt' => $alt ),
 		);
 		$hero = '';
 		$cta  = '';
@@ -1177,7 +1167,8 @@ if ( ! function_exists( 'nadlan_ps_world_parts' ) ) {
 		}
 		// one map on the page (the recipe, row 18): the area map, right under the world; the view from a floor is in the world itself
 		$below = '' !== $map ? '<div class="nlps-below nlps-below--solo">' . $map . '</div>' : '';
-		return array( 'hero' => $hero, 'cta' => $cta, 'stagebox' => $stagebox, 'rail' => $rail, 'facts' => $facts, 'below' => $below, 'tour' => '', 'deals' => $he ? nadlan_ps_deals( $ps ) : '' );
+		return array( 'hero' => $hero, 'cta' => $cta, 'prices' => ( $he && function_exists( 'nadlan_pg_render' ) ) ? nadlan_pg_render( $ps, $wa ) : '', // PriceGuide v1
+			'stagebox' => $stagebox, 'rail' => $rail, 'facts' => $facts, 'below' => $below, 'tour' => '', 'deals' => $he ? nadlan_ps_deals( $ps ) : '' );
 	}
 }
 if ( ! function_exists( 'nadlan_ps_world_head' ) ) {
@@ -1186,6 +1177,14 @@ if ( ! function_exists( 'nadlan_ps_world_head' ) ) {
 		$m = nadlan_ps_world_media( $ps );
 		echo '<link rel="preload" as="image" type="image/webp" href="' . esc_url( $m['tall'] ) . '" media="(max-width:700px)" fetchpriority="high">' . "\n";
 		echo '<link rel="preload" as="image" type="image/webp" href="' . esc_url( $m['wide'] ) . '" media="(min-width:701px)" fetchpriority="high">' . "\n";
+		// v104.47 (HAD-421): the world's three biggest files start at once, at low priority, so the network is never idle while
+		// the page paints; mount() still runs on intent and finds them in the cache (the same URLs as the stage's data-cfg)
+		$v    = '?ver=' . nadlan_ps_ver();
+		$base = 'assets/project-stage/' . $ps['dir'] . '/';
+		$pw   = (array) $ps['world'];
+		echo '<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" crossorigin fetchpriority="low">' . "\n";
+		echo '<link rel="modulepreload" href="' . esc_url( plugins_url( 'assets/project-stage/world/world.js', dirname( __FILE__ ) ) . $v ) . '" fetchpriority="low">' . "\n";
+		echo '<link rel="preload" as="fetch" href="' . esc_url( plugins_url( $base . (string) ( $pw['data'] ?? 'world.json' ), dirname( __FILE__ ) ) . $v ) . '" crossorigin fetchpriority="low">' . "\n";
 	}
 }
 if ( ! function_exists( 'nadlan_ps_world_script' ) ) {
@@ -1214,7 +1213,10 @@ function mount() {
 }
 if (root && host && c.world) {
   const later = () => ('requestIdleCallback' in window ? requestIdleCallback(mount, { timeout: 2000 }) : setTimeout(mount, 200));
-  if (document.readyState === 'complete') later(); else addEventListener('load', later, { once: true });
+  // v104.51 (HAD-421, A/B): ?nlwboot=early mounts once the document is parsed (this module runs before DOMContentLoaded)
+  // instead of after window load; without the switch the default below is unchanged until the A/B is measured
+  if (/[?&]nlwboot=early(&|$)/.test(location.search)) { if ('requestIdleCallback' in window) requestIdleCallback(mount, { timeout: 600 }); else setTimeout(mount, 0); }
+  else if (document.readyState === 'complete') later(); else addEventListener('load', later, { once: true });
   document.addEventListener('click', (e) => {
     const a = e.target && e.target.closest ? e.target.closest('[data-nlps-ev="hero-world"],[data-nlps-ev="hero-sale"]') : null;
     if (!a) return;
@@ -1283,7 +1285,7 @@ add_action( 'wp_head', function () {
 	echo '<style id="nadlan-ps-world-css">'
 		// the first fold: the text column and the world side by side (no rail column: the world needs the width); the
 		// professionals' square goes to the end of the page top
-		. ':root body .nlps-page.nlps-page--world{grid-template-columns:minmax(300px,380px) minmax(0,1fr);grid-template-areas:"hero stage" "lead stage" "cta stage" "below below" "facts facts" "deals deals" "rail rail"}'
+		. ':root body .nlps-page.nlps-page--world{grid-template-columns:minmax(300px,380px) minmax(0,1fr);grid-template-areas:"hero stage" "lead stage" "cta stage" "prices prices" "below below" "facts facts" "deals deals" "rail rail"}'
 		. ':root body .nlps-page--world>.nlps-rail{grid-template-columns:repeat(auto-fill,minmax(240px,320px));margin-top:6px!important}'
 		. ':root body .nlps-page--world .nlps-stage--world{height:clamp(560px,calc(100svh - 190px),760px)}'
 		. ':root body .nlps-stage--world .nlps-ssr-pic{position:absolute;inset:0;display:block}'
@@ -1291,7 +1293,7 @@ add_action( 'wp_head', function () {
 		. ':root body .nlps-stage--world .nlw:not(.nlw--full){background:transparent}'
 		. ':root body .nlps-page--world .nlds .nlps-hint{margin:10px 0 0}'
 		. ':root body .nlps-page--world #nlps-t,:root body section.nlws{scroll-margin-top:120px}'
-		. '@media(max-width:1099px){:root body .nlps-page.nlps-page--world{grid-template-columns:minmax(0,1fr);grid-template-areas:"hero" "lead" "cta" "stage" "below" "facts" "deals" "rail"}:root body .nlps-page--world .nlps-stage--world{height:68svh;min-height:440px}}'
+		. '@media(max-width:1099px){:root body .nlps-page.nlps-page--world{grid-template-columns:minmax(0,1fr);grid-template-areas:"hero" "lead" "cta" "stage" "prices" "below" "facts" "deals" "rail"}:root body .nlps-page--world .nlps-stage--world{height:68svh;min-height:440px}}'
 		. '@media(max-width:600px){:root body .nlps-page--world .nlps-stage--world{height:72svh;min-height:460px}}'
 		// PhoneFirstScreen (design system v104.1, P9a): on phones a landing lane (50px + the grid's gap) between the page top's
 		// buttons and the world. The WhatsApp bar (50px, 10px clear on each side of it) parks there while the world's tab bar passes
@@ -1544,10 +1546,6 @@ add_action( 'wp_head', function () {
 		. ':root body .nlps-page>.nlps-below{grid-area:below;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:stretch;margin-top:10px!important}'
 		. '.nlps-below--solo{grid-template-columns:minmax(0,1fr)!important}'
 		. '.nlps-below>#nlpjx-map{margin:0!important;min-width:0;max-width:none!important}'
-		// ApartmentExperience-1 (v101.1, Codex's measurement 29.9: the map with the beam sat ~1,900px under the stage on a phone,
-		// behind the floor view and its lists): in one column the area map comes first and the view from the floor follows;
-		// side by side on a desktop as before. The page's order stays stage, then the view and the map.
-		. '@media(max-width:1099px){:root body .nlps-page>.nlps-below>#nlpjx-map{order:-1}}'
 		. '.nlps-stage{position:relative;width:100%;height:clamp(520px,calc(100svh - 240px),700px);border-radius:16px;overflow:hidden;background:var(--nlds-sa-paper,#F7F6F2);border:1px solid var(--nlds-sa-line,#E3E1DA);margin:0}'
 		. '.nlps-stage__mount{position:absolute;inset:0}'
 		. ':root body .nlps-stage .nlps-ssr-poster{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover;object-position:44% 50%;display:block;border:0;margin:0!important;border-radius:0!important;box-shadow:none!important}'
@@ -1562,12 +1560,191 @@ add_action( 'wp_head', function () {
 		. ':root body .nlps-rail .nlds .nlbslot{min-height:0!important}'
 		. '@media(max-width:1279px){:root body .nlps-page{grid-template-columns:minmax(280px,360px) minmax(0,1fr);grid-template-areas:"hero stage" "lead stage" "cta stage" "below below" "facts facts" "tour tour" "deals deals" "rail rail"}:root body .nlps-page>.nlps-rail{grid-template-columns:repeat(2,minmax(0,300px));margin-top:6px!important}}'
 		. '@media(max-width:1099px){:root body .nlps-page{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"hero" "lead" "cta" "stage" "below" "facts" "tour" "deals" "rail";column-gap:0}:root body .nlps-page>.nlps-below{grid-template-columns:minmax(0,1fr)}:root body .nlps-page>.nlps-rail{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nlps-stage{height:62svh;min-height:380px}}'
-		// ApartmentExperience-1 (v101, 29.9.2026): on a phone the stage keeps one fixed height (60svh, was 70svh) so the floor
-		// card, now in the page under the stage, opens inside the first screen; the building never moves for the card
-		. '@media(max-width:600px){.nlps-stage{height:60svh;min-height:340px}:root body .nlps-page{padding:0 12px!important;row-gap:12px}:root body .nlps-page>.nlps-rail{gap:12px}:root body .nlps-page>.nl-lead>p{font-size:16px!important}}'
+		. '@media(max-width:600px){.nlps-stage{height:70svh;min-height:360px}:root body .nlps-page{padding:0 12px!important;row-gap:12px}:root body .nlps-page>.nlps-rail{gap:12px}:root body .nlps-page>.nl-lead>p{font-size:16px!important}}'
 		. ':root body .bottom-line[data-nl-lead]{display:none!important}' // StageDuo v81: the article's bottom line is the paragraph above
 		. '</style>' . "\n";
 }, 999 );
+
+if ( ! function_exists( 'nadlan_pg_render' ) ) {
+	/** PriceGuide v1 (design system 7.10.2026, HAD-433): the price list and the price calculator, right after the opening
+	 *  paragraph and the buttons. Kikar HaMedina in Hebrew only for now. The markup comes from
+	 *  scripts/project-stage/price_guide/render.py with hamedina.json (every number has its source there). */
+	function nadlan_pg_render( $ps, $wa ) {
+		static $done = false;
+		if ( $done || 'hamedina' !== (string) ( $ps['slug'] ?? '' ) ) { return ''; }
+		$done = true;
+		$wa   = preg_replace( '/\D/', '', (string) $wa );
+		$html = <<<'NLPG_HTML'
+<section class="nlds nlpg" id="nlpg" aria-labelledby="nlpg-t" dir="rtl" lang="he"><div class="nlpg__in"><header class="nlpg__head"><p class="nlds-kicker">מחירון · עודכן <span class="nlds-num">7.10.2026</span></p><h2 class="nlpg__title" id="nlpg-t">כמה עולה דירה במגדלי כיכר המדינה</h2><p class="nlpg__answer">דירה במגדלי כיכר המדינה נמכרת בממוצע בכ-<span class="nlds-num">65,000</span> ₪ למ״ר, לפי ההערכות שפורסמו באוקטובר <span class="nlds-num">2026.</span> בקומות <span class="nlds-num">38-39</span> נרשמו עסקאות של <span class="nlds-num">9.58</span> עד <span class="nlds-num">10.63</span> מיליון ₪ לדירת <span class="nlds-num">4</span> חדרים בשטח <span class="nlds-num">140</span> מ״ר, כ-<span class="nlds-num">68,000</span> עד <span class="nlds-num">76,000</span> ₪ למ״ר. בשכונה שסביב הכיכר, חציון העסקאות ברבעון הראשון של <span class="nlds-num">2026</span> היה <span class="nlds-num">4.94</span> מיליון ₪ לדירת <span class="nlds-num">3</span> חדרים, <span class="nlds-num">6.84</span> מיליון ל-<span class="nlds-num">4</span> חדרים ו-<span class="nlds-num">8.46</span> מיליון ל-<span class="nlds-num">5</span> חדרים. בבניינים החדשים סביב הכיכר המחיר ירד מ-<span class="nlds-num">70,000-75,000</span> ₪ למ״ר בשיא ל-<span class="nlds-num">63,000-68,000</span> ₪.</p></header><ul class="nlpg__tiles"><li><b>כ-<span class="nlds-num">65,000</span> ₪</b><span>למ״ר, ממוצע העסקאות במגדלים לפי ההערכות</span><i><span class="nlds-num">10.2026</span></i></li><li><b><span class="nlds-num">9.58-10.63</span> מיליון ₪</b><span><span class="nlds-num">3</span> עסקאות, <span class="nlds-num">4</span> חדרים, <span class="nlds-num">140</span> מ״ר, קומות <span class="nlds-num">38-39</span></span><i><span class="nlds-num">4-12.2024</span></i></li><li><b><span class="nlds-num">63,000-68,000</span> ₪</b><span>למ״ר בבניינים החדשים סביב הכיכר</span><i><span class="nlds-num">10.2026</span></i></li></ul><div class="nlpg__grid"><div class="nlpg__list"><table class="nlpg__table"><caption class="nlpg__cap">המחירון</caption><thead><tr><th scope="col">הנכס</th><th scope="col">₪ למ״ר</th><th scope="col">מחיר הדירה, ₪</th><th scope="col">הנתון</th><th scope="col">מועד</th></tr></thead><tbody class="nlpg__grp"><tr class="nlpg__gh"><th colspan="5" scope="colgroup">במגדלי כיכר המדינה</th></tr><tr><th scope="row"><b>ממוצע העסקאות במגדלים</b><span>כ-<span class="nlds-num">10</span> עד <span class="nlds-num">20</span> דירות או זכויות נמכרו עד היום, לפי ההערכות</span></th><td data-l="₪ למ״ר">כ-<span class="nlds-num">65,000</span></td><td data-l="מחיר"><span class="nlpg__na" aria-label="לא פורסם">·</span></td><td data-l="הנתון"><span class="nlpg__k nlpg__k--est">הערכה</span></td><td data-l="מועד"><span class="nlds-num">10.2026</span></td></tr><tr><th scope="row"><b><span class="nlds-num">4</span> חדרים, <span class="nlds-num">140</span> מ״ר, קומות <span class="nlds-num">38-39</span></b><span>שלוש עסקאות</span></th><td data-l="₪ למ״ר"><span class="nlds-num">68,400-75,900</span></td><td data-l="מחיר"><span class="nlds-num">9.58-10.63</span> מיליון</td><td data-l="הנתון"><span class="nlpg__k nlpg__k--deal">עסקה</span></td><td data-l="מועד"><span class="nlds-num">4-12.2024</span></td></tr><tr><th scope="row"><b>העסקאות היקרות במגדלים</b><span>בחלק מהעסקאות</span></th><td data-l="₪ למ״ר">מעל <span class="nlds-num">80,000</span></td><td data-l="מחיר"><span class="nlpg__na" aria-label="לא פורסם">·</span></td><td data-l="הנתון"><span class="nlpg__k nlpg__k--deal">עסקה</span></td><td data-l="מועד"><span class="nlds-num">10.2026</span></td></tr><tr><th scope="row"><b>זכויות לדירת <span class="nlds-num">148</span> מ״ר, קומה נמוכה</b><span>מודעה</span></th><td data-l="₪ למ״ר">כ-<span class="nlds-num">42,600</span></td><td data-l="מחיר">כ-<span class="nlds-num">6.3</span> מיליון</td><td data-l="הנתון"><span class="nlpg__k nlpg__k--ask">מחיר מבוקש</span></td><td data-l="מועד"><span class="nlds-num">4.2025</span></td></tr><tr><th scope="row"><b>דירה בקומה <span class="nlds-num">12</span></b><span>מודעה</span></th><td data-l="₪ למ״ר"><span class="nlpg__na" aria-label="לא פורסם">·</span></td><td data-l="מחיר"><span class="nlds-num">10.3</span> מיליון</td><td data-l="הנתון"><span class="nlpg__k nlpg__k--ask">מחיר מבוקש</span></td><td data-l="מועד"><span class="nlds-num">4.2025</span></td></tr><tr><th scope="row"><b>פנטהאוז בקומה <span class="nlds-num">39</span></b><span>מודעה</span></th><td data-l="₪ למ״ר"><span class="nlpg__na" aria-label="לא פורסם">·</span></td><td data-l="מחיר"><span class="nlds-num">43</span> מיליון</td><td data-l="הנתון"><span class="nlpg__k nlpg__k--ask">מחיר מבוקש</span></td><td data-l="מועד"><span class="nlds-num">4.2025</span></td></tr></tbody><tbody class="nlpg__grp nlpg__grp--more"><tr class="nlpg__gh"><th colspan="5" scope="colgroup">חציון העסקאות בשכונה, רבעון ראשון 2026</th></tr><tr><th scope="row"><b><span class="nlds-num">3</span> חדרים</b><span>בכל תל אביב יפו: <span class="nlds-num">4.23</span> מיליון</span></th><td data-l="₪ למ״ר"><span class="nlpg__na" aria-label="לא פורסם">·</span></td><td data-l="מחיר"><span class="nlds-num">4.94</span> מיליון</td><td data-l="הנתון"><span class="nlpg__k nlpg__k--med">חציון עסקאות</span></td><td data-l="מועד"><span class="nlds-num">1-3.2026</span></td></tr><tr><th scope="row"><b><span class="nlds-num">4</span> חדרים</b><span>בכל תל אביב יפו: <span class="nlds-num">5.23</span> מיליון</span></th><td data-l="₪ למ״ר"><span class="nlpg__na" aria-label="לא פורסם">·</span></td><td data-l="מחיר"><span class="nlds-num">6.84</span> מיליון</td><td data-l="הנתון"><span class="nlpg__k nlpg__k--med">חציון עסקאות</span></td><td data-l="מועד"><span class="nlds-num">1-3.2026</span></td></tr><tr><th scope="row"><b><span class="nlds-num">5</span> חדרים</b><span>בכל תל אביב יפו: <span class="nlds-num">7.50</span> מיליון</span></th><td data-l="₪ למ״ר"><span class="nlpg__na" aria-label="לא פורסם">·</span></td><td data-l="מחיר"><span class="nlds-num">8.46</span> מיליון</td><td data-l="הנתון"><span class="nlpg__k nlpg__k--med">חציון עסקאות</span></td><td data-l="מועד"><span class="nlds-num">1-3.2026</span></td></tr></tbody><tbody class="nlpg__grp nlpg__grp--more"><tr class="nlpg__gh"><th colspan="5" scope="colgroup">סביב הכיכר, רובע 4</th></tr><tr><th scope="row"><b>בניינים חדשים, פרויקטים ששווקו לאחרונה</b><span>בשיא: <span class="nlds-num">70,000-75,000</span> ₪ למ״ר</span></th><td data-l="₪ למ״ר"><span class="nlds-num">63,000-68,000</span></td><td data-l="מחיר"><span class="nlpg__na" aria-label="לא פורסם">·</span></td><td data-l="הנתון"><span class="nlpg__k nlpg__k--mkt">מחיר שיווק</span></td><td data-l="מועד"><span class="nlds-num">10.2026</span></td></tr><tr><th scope="row"><b>פנטהאוזים ודירות גן</b><span>דירות גדולות עם שטח חוץ</span></th><td data-l="₪ למ״ר"><span class="nlds-num">80,000-110,000</span></td><td data-l="מחיר"><span class="nlpg__na" aria-label="לא פורסם">·</span></td><td data-l="הנתון"><span class="nlpg__k nlpg__k--deal">עסקה</span></td><td data-l="מועד"><span class="nlds-num">10.2026</span></td></tr><tr><th scope="row"><b><span class="nlds-num">3-4</span> חדרים בבניינים קיימים</b><span>ארבע עסקאות, <span class="nlds-num">70-110</span> מ״ר</span></th><td data-l="₪ למ״ר"><span class="nlds-num">59,000-76,000</span></td><td data-l="מחיר"><span class="nlds-num">4.75-8.4</span> מיליון</td><td data-l="הנתון"><span class="nlpg__k nlpg__k--deal">עסקה</span></td><td data-l="מועד"><span class="nlds-num">2026</span></td></tr><tr><th scope="row"><b>דירות חדשות למכירה בטבעת הכיכר</b><span><span class="nlds-num">142-161</span> מ״ר, קומות <span class="nlds-num">12</span> ו-<span class="nlds-num">23</span></span></th><td data-l="₪ למ״ר"><span class="nlds-num">79,000-90,000</span></td><td data-l="מחיר"><span class="nlds-num">11.25-14.5</span> מיליון</td><td data-l="הנתון"><span class="nlpg__k nlpg__k--ask">מחיר מבוקש</span></td><td data-l="מועד"><span class="nlds-num">10.2026</span></td></tr><tr><th scope="row"><b>דירה בבניין ותיק בטבעת הכיכר</b><span><span class="nlds-num">107</span> מ״ר, כנראה לשיפוץ</span></th><td data-l="₪ למ״ר">כ-<span class="nlds-num">43,000</span></td><td data-l="מחיר"><span class="nlds-num">4.59</span> מיליון</td><td data-l="הנתון"><span class="nlpg__k nlpg__k--ask">מחיר מבוקש</span></td><td data-l="מועד"><span class="nlds-num">10.2026</span></td></tr></tbody><tbody class="nlpg__grp nlpg__grp--more"><tr class="nlpg__gh"><th colspan="5" scope="colgroup">להשוואה</th></tr><tr><th scope="row"><b>תל אביב יפו, כל העיר</b><span>חציון של <span class="nlds-num">2,432</span> עסקאות</span></th><td data-l="₪ למ״ר"><span class="nlds-num">52,856</span></td><td data-l="מחיר"><span class="nlpg__na" aria-label="לא פורסם">·</span></td><td data-l="הנתון"><span class="nlpg__k nlpg__k--deal">עסקה</span></td><td data-l="מועד"><span class="nlds-num">10.2023-10.2025</span></td></tr></tbody></table><button class="nlpg__more" type="button" aria-expanded="false"><span class="nlpg__mt">לכל המחירון: סביב הכיכר ולהשוואה <span class="nlds-num">(9)</span></span><span class="nlpg__mp">למחירון המלא <span class="nlds-num">(15)</span></span></button></div><form class="nlpg__calc" data-cfg="{&quot;modes&quot;:[{&quot;id&quot;:&quot;tower&quot;,&quot;label&quot;:&quot;במגדלים&quot;,&quot;floor&quot;:true,&quot;lo_floor1&quot;:58000,&quot;hi_floor39&quot;:72000,&quot;band&quot;:0.07,&quot;why&quot;:&quot;אומדן לפי הקומה: בין כ-58,000 ₪ למ״ר בקומות הנמוכות לכ-72,000 ₪ בקומות 38-39, סביב הממוצע של כ-65,000 ₪. העסקאות שפורסמו בקומות 38-39: 68,400-75,900 ₪ למ״ר.&quot;},{&quot;id&quot;:&quot;new&quot;,&quot;label&quot;:&quot;בניין חדש בסביבה&quot;,&quot;lo&quot;:63000,&quot;hi&quot;:68000,&quot;why&quot;:&quot;המחירים בפרויקטים חדשים סביב הכיכר ששווקו לאחרונה.&quot;},{&quot;id&quot;:&quot;resale&quot;,&quot;label&quot;:&quot;דירה קיימת בסביבה&quot;,&quot;lo&quot;:59000,&quot;hi&quot;:76000,&quot;why&quot;:&quot;עסקאות 2026 בדירות 3-4 חדרים בבניינים קיימים סביב הכיכר.&quot;},{&quot;id&quot;:&quot;premium&quot;,&quot;label&quot;:&quot;פנטהאוז או דירת גן&quot;,&quot;lo&quot;:80000,&quot;hi&quot;:110000,&quot;why&quot;:&quot;דירות גדולות, פנטהאוזים ודירות גן עם שטח חוץ סביב הכיכר.&quot;}],&quot;deals&quot;:[[38,68400],[39,68500],[38,75900]],&quot;avg&quot;:65000,&quot;ta&quot;:52856,&quot;tax1&quot;:[[1978745,0],[2347040,0.035],[6055070,0.05],[20183565,0.08],[null,0.1]],&quot;tax2&quot;:[[6055070,0.08],[null,0.1]],&quot;wa&quot;:&quot;{{WA}}&quot;}" novalidate><h3 class="nlpg__ct">מחשבון מחיר דירה בכיכר המדינה</h3><fieldset class="nlpg__f"><legend>איפה הדירה</legend><div class="nlpg__seg"><label><input type="radio" name="nlpg-m" value="tower" checked><span>במגדלים</span></label><label><input type="radio" name="nlpg-m" value="new"><span>בניין חדש בסביבה</span></label><label><input type="radio" name="nlpg-m" value="resale"><span>דירה קיימת בסביבה</span></label><label><input type="radio" name="nlpg-m" value="premium"><span>פנטהאוז או דירת גן</span></label></div></fieldset><div class="nlpg__f"><label for="nlpg-a">שטח הדירה</label><div class="nlpg__rng"><input type="range" id="nlpg-a" data-pg="a" min="50" max="300" step="5" value="140"><output data-pg="ao" for="nlpg-a"><span class="nlds-num">140</span> מ״ר</output></div></div><div class="nlpg__f" data-pg="fl"><label for="nlpg-fs">קומה</label><div class="nlpg__rng"><input type="range" id="nlpg-fs" data-pg="fs" min="1" max="40" step="1" value="20"><output data-pg="fo" for="nlpg-fs">קומה <span class="nlds-num">20</span></output></div></div><fieldset class="nlpg__f"><legend>מס רכישה</legend><div class="nlpg__seg nlpg__seg--2"><label><input type="radio" name="nlpg-t" value="single" checked><span>דירה יחידה</span></label><label><input type="radio" name="nlpg-t" value="more"><span>דירה נוספת</span></label></div></fieldset><div class="nlpg__out" aria-live="polite" aria-atomic="true"><p class="nlpg__ol">אומדן מחיר</p><p class="nlpg__big" data-pg="p"><span class="nlds-num">8.46-9.74</span> מיליון ₪</p><p class="nlpg__pm" data-pg="pm">כ-<span class="nlds-num">60,400-69,600</span> ₪ למ״ר</p><svg class="nlpg__chart" data-pg="ch" viewBox="0 0 340 138" direction="ltr" role="img" focusable="false"><title>המחיר למ״ר לפי הקומה במגדלים, עם העסקאות שפורסמו</title></svg><dl class="nlpg__rows"><div><dt>מס רכישה</dt><dd data-pg="tx">כ-<span class="nlds-num">442,000</span> ₪</dd></div><div><dt>סה״כ עם מס רכישה</dt><dd data-pg="tt">כ-<span class="nlds-num">9.54</span> מיליון ₪</dd></div></dl><p class="nlpg__why" data-pg="why">אומדן לפי הקומה: בין כ-<span class="nlds-num">58,000</span> ₪ למ״ר בקומות הנמוכות לכ-<span class="nlds-num">72,000</span> ₪ בקומות <span class="nlds-num">38-39,</span> סביב הממוצע של כ-<span class="nlds-num">65,000</span> ₪. העסקאות שפורסמו בקומות <span class="nlds-num">38-39</span>: <span class="nlds-num">68,400-75,900</span> ₪ למ״ר.</p></div><a class="nlds-btn nlds-btn--primary nlpg__wa" data-pg="wa" target="_blank" rel="noopener" data-nlps-ev="pg-wa" href="https://wa.me/{{WA}}?text=">לקבלת פרטים נוספים בוואטסאפ</a><p class="nlpg__links"><a href="https://nad-lan.co.il/apartment-purchase-cost-calculator/">לכל עלויות הקנייה ←</a><a href="https://nad-lan.co.il/mortgage-calculator/">לחישוב המשכנתא ←</a></p><p class="nlpg__fine">אומדן לא מחייב, לפי העסקאות והמחירים שפורסמו עד <span class="nlds-num">7.10.2026</span>. במודעות של דירות יקרות, המחיר המבוקש גבוה בדרך כלל ב-<span class="nlds-num">5</span>%-<span class="nlds-num">10</span>% מהמחיר שנסגר בפועל. המחיר נקבע מול המוכר.</p></form></div><p class="nlpg__src">המחירון מבוסס על עסקאות שדווחו לרשות המסים ופורסמו, על הערכות של שמאים ואנשי מקצוע באזור ועל מודעות למכירה. מחיר מבוקש מסומן בנפרד ואינו מחיר סגירה. עודכן <span class="nlds-num">7.10.2026.</span></p></div></section>
+NLPG_HTML;
+		$css  = <<<'NLPG_CSS'
+.nlpg{--pg-sea:var(--nlds-sa-sea,#2f6f86);--pg-seah:var(--nlds-sa-seah,#255c70);--pg-ink:var(--nlds-sa-ink,#14212b);--pg-ink2:var(--nlds-sa-ink2,#3b4753);--pg-line:var(--nlds-sa-line,#e3e1da);--pg-paper:var(--nlds-sa-paper,#f7f6f2);--pg-sand:var(--nlds-sa-sand,#eee9dd);--pg-surf:var(--nlds-sa-surf,#fff);--pg-deep:var(--nlds-sa-deep,#1f4b5c);--pg-serif:var(--nlds-font-serif,"Noto Serif Hebrew","David Libre",Georgia,serif);--pg-sans:var(--nlds-font-sans,Assistant,"Segoe UI",Arial,sans-serif);display:block !important;container-type:inline-size !important;container-name:nlpg !important;margin:clamp(18px,3vw,34px) auto 0 !important;max-width:var(--nlds-container,1240px) !important;padding:0 clamp(16px,3vw,32px) !important;box-sizing:border-box !important;font-family:var(--pg-sans) !important;color:var(--pg-ink) !important}
+.nlpg *,.nlpg *::before,.nlpg *::after{box-sizing:border-box !important}
+.nlps-page>.nlpg{grid-area:prices !important;margin:6px 0 0 !important;padding:0 !important;max-width:none !important;width:auto !important}
+.nlpg .nlds-num{font-size:inherit !important;font-weight:inherit !important;color:inherit !important;direction:ltr !important;unicode-bidi:isolate !important;display:inline-block !important;font-variant-numeric:tabular-nums lining-nums !important}
+.nlpg .nlpg__in{display:grid !important;gap:var(--nlds-space-18,18px) !important;background:var(--pg-surf) !important;border:1px solid var(--pg-line) !important;border-radius:var(--nlds-radius-22,22px) !important;padding:clamp(18px,3vw,34px) !important}
+.nlpg .nlpg__head{display:grid !important;gap:8px !important}
+.nlpg .nlpg__title{font-family:var(--pg-serif) !important;font-weight:600 !important;font-size:clamp(23px,1.2rem + 1.1vw,31px) !important;line-height:1.22 !important;letter-spacing:-.005em !important;color:var(--pg-ink) !important;margin:0 !important;text-wrap:balance !important}
+.nlpg .nlpg__answer{font-size:clamp(15.5px,1rem + .15vw,17px) !important;line-height:1.7 !important;color:var(--pg-ink2) !important;margin:0 !important;max-width:78ch !important}
+.nlpg .nlpg__tiles{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:var(--nlds-space-12,12px) !important;margin:0 !important;padding:0 !important;list-style:none !important}
+.nlpg .nlpg__tiles li{display:grid !important;gap:3px !important;align-content:start !important;padding:14px 16px !important;background:var(--pg-paper) !important;border:1px solid var(--pg-line) !important;border-radius:var(--nlds-radius-14,14px) !important;margin:0 !important}
+.nlpg .nlpg__tiles b{font-family:var(--pg-serif) !important;font-size:clamp(20px,1rem + .9vw,25px) !important;font-weight:600 !important;line-height:1.2 !important;color:var(--pg-ink) !important}
+.nlpg .nlpg__tiles li>span{font-size:13.5px !important;line-height:1.45 !important;color:var(--pg-ink2) !important}
+.nlpg .nlpg__tiles i{font-style:normal !important;font-size:12.5px !important;color:var(--pg-ink2) !important}
+.nlpg .nlpg__grid{display:grid !important;grid-template-columns:minmax(0,1.25fr) minmax(300px,1fr) !important;gap:clamp(16px,2.4vw,28px) !important;align-items:start !important}
+.nlpg .nlpg__list{display:grid !important;gap:10px !important;min-width:0 !important}
+.nlpg .nlpg__table{width:100% !important;border-collapse:collapse !important;font-size:14.5px !important;line-height:1.45 !important;margin:0 !important;background:transparent !important}
+.nlpg .nlpg__cap{caption-side:top !important;text-align:start !important;font-family:var(--pg-serif) !important;font-weight:600 !important;font-size:19px !important;color:var(--pg-ink) !important;padding:0 0 6px !important}
+.nlpg .nlpg__table thead th{text-align:start !important;font-size:12px !important;font-weight:700 !important;letter-spacing:.03em !important;color:var(--pg-ink2) !important;padding:8px !important;border-bottom:1px solid var(--pg-line) !important;white-space:nowrap !important;background:transparent !important}
+.nlpg .nlpg__table td,.nlpg .nlpg__table tbody th{padding:10px 8px !important;border-bottom:1px solid var(--pg-line) !important;vertical-align:middle !important;color:var(--pg-ink) !important;text-align:start !important;background:transparent !important;font-weight:400 !important}
+.nlpg .nlpg__table tbody th b{display:block !important;font-weight:600 !important;font-size:14.5px !important;color:var(--pg-ink) !important}
+.nlpg .nlpg__table tbody th>span{display:block !important;font-size:12.5px !important;color:var(--pg-ink2) !important;margin-top:1px !important}
+.nlpg .nlpg__table td{white-space:nowrap !important;font-variant-numeric:tabular-nums !important}
+.nlpg .nlpg__gh th{padding:16px 8px 6px !important;font-family:var(--pg-serif) !important;font-weight:600 !important;font-size:15.5px !important;color:var(--pg-deep) !important;border-bottom:1px solid var(--pg-line) !important;background:transparent !important}
+.nlpg .nlpg__grp:first-of-type .nlpg__gh th{padding-top:8px !important}
+.nlpg .nlpg__na{color:var(--pg-ink2) !important}
+.nlpg .nlpg__k{display:inline-block !important;font-size:12px !important;font-weight:600 !important;line-height:1 !important;padding:5px 9px !important;border-radius:999px !important;border:1px solid var(--pg-line) !important;color:var(--pg-ink2) !important;background:var(--pg-surf) !important;white-space:nowrap !important}
+.nlpg .nlpg__k--deal{background:#e6f0f3 !important;border-color:#c8dde4 !important;color:var(--pg-deep) !important}
+.nlpg .nlpg__k--ask{background:var(--pg-sand) !important;border-color:#ddd5c3 !important;color:#4a4232 !important}
+.nlpg .nlpg__k--med{background:#eef3ee !important;border-color:#cfdccf !important;color:#2c4a35 !important}
+.nlpg .nlpg__k--est,.nlpg .nlpg__k--mkt{background:var(--pg-paper) !important;border-style:dashed !important;color:var(--pg-ink2) !important}
+.nlpg:not(.is-open) .nlpg__grp--more{display:none !important}
+.nlpg .nlpg__more{justify-self:start !important;font:600 14.5px/1.2 var(--pg-sans) !important;color:var(--pg-sea) !important;background:transparent !important;border:1px solid var(--pg-line) !important;border-radius:999px !important;padding:10px 16px !important;min-height:44px !important;cursor:pointer !important}
+.nlpg .nlpg__more:hover{border-color:var(--pg-sea) !important;background:var(--pg-paper) !important}
+.nlpg.is-open .nlpg__more{display:none !important}
+.nlpg .nlpg__mp{display:none !important}
+.nlpg .nlpg__calc{display:grid !important;gap:14px !important;background:var(--pg-paper) !important;border:1px solid var(--pg-line) !important;border-radius:var(--nlds-radius-16,16px) !important;padding:clamp(16px,2vw,22px) !important;box-shadow:var(--nlds-shadow-price-card,0 8px 24px rgba(17,17,15,.07),0 2px 6px rgba(17,17,15,.04)) !important;margin:0 !important}
+.nlpg .nlpg__ct{font-family:var(--pg-serif) !important;font-weight:600 !important;font-size:19px !important;line-height:1.3 !important;color:var(--pg-ink) !important;margin:0 !important}
+.nlpg .nlpg__f{display:grid !important;gap:7px !important;border:0 !important;margin:0 !important;padding:0 !important;min-width:0 !important}
+.nlpg .nlpg__f legend,.nlpg .nlpg__f>label{font-size:13.5px !important;font-weight:700 !important;color:var(--pg-ink2) !important;padding:0 !important;margin:0 0 7px !important}
+.nlpg .nlpg__seg{display:flex !important;flex-wrap:wrap !important;gap:6px !important}
+.nlpg .nlpg__seg label{position:relative !important;margin:0 !important;cursor:pointer !important}
+.nlpg .nlpg__seg input{position:absolute !important;opacity:0 !important;inset:0 !important;margin:0 !important;cursor:pointer !important}
+.nlpg .nlpg__seg label>span{display:inline-flex !important;align-items:center !important;min-height:40px !important;padding:8px 14px !important;border-radius:999px !important;border:1px solid var(--pg-line) !important;background:var(--pg-surf) !important;font-size:14.5px !important;font-weight:600 !important;color:var(--pg-ink) !important;transition:background .2s,border-color .2s,color .2s !important}
+.nlpg .nlpg__seg label:hover>span{border-color:var(--pg-sea) !important}
+.nlpg .nlpg__seg input:checked+span{background:var(--pg-sea) !important;border-color:var(--pg-sea) !important;color:var(--nlds-on-sea,#fff) !important}
+.nlpg .nlpg__seg input:focus-visible+span{outline:2px solid var(--pg-sea) !important;outline-offset:3px !important}
+.nlpg .nlpg__rng{display:flex !important;align-items:center !important;gap:12px !important}
+.nlpg .nlpg__rng input[type=range]{flex:1 1 auto !important;min-width:0 !important;height:44px !important;margin:0 !important;accent-color:var(--pg-sea) !important;background:transparent !important;cursor:pointer !important}
+.nlpg .nlpg__rng output{flex:0 0 auto !important;min-width:86px !important;text-align:center !important;font-weight:700 !important;font-size:15px !important;color:var(--pg-ink) !important;background:var(--pg-surf) !important;border:1px solid var(--pg-line) !important;border-radius:10px !important;padding:7px 10px !important}
+.nlpg .nlpg__f[hidden]{display:none !important}
+.nlpg .nlpg__out{display:grid !important;gap:4px !important;background:var(--pg-surf) !important;border:1px solid var(--pg-line) !important;border-radius:14px !important;padding:14px 16px !important}
+.nlpg .nlpg__ol{font-size:12.5px !important;font-weight:700 !important;letter-spacing:.04em !important;color:var(--pg-sea) !important;margin:0 !important}
+.nlpg .nlpg__big{font-family:var(--pg-serif) !important;font-weight:600 !important;font-size:clamp(25px,1.1rem + 1.3vw,32px) !important;line-height:1.15 !important;color:var(--pg-ink) !important;margin:0 !important}
+.nlpg .nlpg__pm{font-size:14.5px !important;color:var(--pg-ink2) !important;margin:0 0 4px !important}
+.nlpg .nlpg__chart{direction:ltr !important;display:block !important;width:100% !important;height:auto !important;max-width:100% !important;margin:4px 0 2px !important;overflow:visible !important}
+.nlpg .nlpg__chart text{font-family:var(--pg-sans) !important;font-size:10.5px !important;fill:var(--pg-ink2) !important}
+.nlpg .nlpg__rows{display:grid !important;gap:2px !important;margin:6px 0 0 !important;padding:8px 0 0 !important;border-top:1px solid var(--pg-line) !important}
+.nlpg .nlpg__rows div{display:flex !important;justify-content:space-between !important;gap:12px !important;font-size:14.5px !important}
+.nlpg .nlpg__rows dt{color:var(--pg-ink2) !important;font-weight:400 !important;margin:0 !important}
+.nlpg .nlpg__rows dd{margin:0 !important;font-weight:700 !important;color:var(--pg-ink) !important}
+.nlpg .nlpg__why{font-size:12.5px !important;line-height:1.5 !important;color:var(--pg-ink2) !important;margin:6px 0 0 !important}
+.nlpg .nlpg__wa{display:flex !important;align-items:center !important;justify-content:center !important;width:100% !important;min-height:52px !important;margin:0 !important;padding:10px 22px !important;border-radius:999px !important;background:var(--pg-sea) !important;border:1px solid var(--pg-sea) !important;color:var(--nlds-on-sea,#fff) !important;font:700 16.5px/1.2 var(--pg-sans) !important;text-decoration:none !important;text-align:center !important}
+.nlpg .nlpg__wa:hover{background:var(--pg-seah) !important;border-color:var(--pg-seah) !important}
+.nlpg .nlpg__wa:focus-visible{outline:2px solid var(--pg-sea) !important;outline-offset:3px !important}
+.nlpg .nlpg__links{display:flex !important;flex-wrap:wrap !important;gap:6px 18px !important;margin:0 !important;font-size:14.5px !important}
+.nlpg .nlpg__links a{color:var(--pg-sea) !important;font-weight:600 !important;text-decoration:underline !important;text-decoration-color:var(--nlds-link-underline,rgba(47,111,134,.4)) !important;text-underline-offset:3px !important;min-height:44px !important;display:inline-flex !important;align-items:center !important}
+.nlpg .nlpg__fine{font-size:12.5px !important;line-height:1.55 !important;color:var(--pg-ink2) !important;margin:0 !important}
+.nlpg .nlpg__src{font-size:12.5px !important;line-height:1.55 !important;color:var(--pg-ink2) !important;margin:0 !important;max-width:90ch !important}
+@container nlpg (max-width:860px){
+ .nlpg .nlpg__grid{grid-template-columns:minmax(0,1fr) !important}
+ .nlpg .nlpg__calc{order:-1 !important}
+}
+@container nlpg (max-width:620px){
+ .nlpg .nlpg__tiles{grid-template-columns:minmax(0,1fr) !important}
+ .nlpg .nlpg__tiles li{grid-template-columns:auto 1fr !important;column-gap:12px !important;align-items:baseline !important;padding:11px 14px !important}
+ .nlpg .nlpg__tiles li>span{grid-column:1/-1 !important}
+ .nlpg .nlpg__tiles li i{grid-row:1 !important;grid-column:2 !important;justify-self:end !important}
+ .nlpg .nlpg__table thead{display:none !important}
+ .nlpg .nlpg__table,.nlpg .nlpg__table tbody,.nlpg .nlpg__table tr{display:block !important;width:100% !important}
+ .nlpg .nlpg__table tbody tr:not(.nlpg__gh){display:grid !important;grid-template-columns:1fr 1fr !important;gap:4px 12px !important;padding:12px 0 !important;border-bottom:1px solid var(--pg-line) !important}
+ .nlpg .nlpg__table tbody tr:not(.nlpg__gh) th{grid-column:1/-1 !important;padding:0 !important;border:0 !important}
+ .nlpg .nlpg__table td{display:block !important;padding:0 !important;border:0 !important;white-space:normal !important}
+ .nlpg .nlpg__table td::before{content:attr(data-l) !important;display:block !important;font-size:11.5px !important;font-weight:700 !important;color:var(--pg-ink2) !important}
+ .nlpg .nlpg__gh th{display:block !important;padding:14px 0 4px !important}
+ .nlpg .nlpg__seg label>span{min-height:44px !important}
+ .nlpg .nlpg__in{border-radius:var(--nlds-radius-16,16px) !important;padding:16px !important}
+ .nlpg:not(.is-open) .nlpg__table{display:none !important}
+ .nlpg .nlpg__mt{display:none !important}
+ .nlpg .nlpg__mp{display:inline !important}
+ .nlpg .nlpg__more{justify-self:stretch !important}
+ .nlpg .nlpg__chart text{font-size:12.5px !important}
+}
+@container nlpg (min-width:861px){.nlpg:not(.is-open) .nlpg__grp--more{display:table-row-group !important}.nlpg .nlpg__more{display:none !important}}
+@media (prefers-reduced-motion:reduce){.nlpg .nlpg__seg label>span{transition:none !important}}
+NLPG_CSS;
+		$js   = <<<'NLPG_JS'
+(function(){var NS='http://www.w3.org/2000/svg';
+var nf=function(n){return new Intl.NumberFormat('he-IL',{maximumFractionDigits:0}).format(Math.round(n/100)*100)};
+var mil=function(n){return (n/1e6).toFixed(2).replace(/\.?0+$/,'')};
+var isl=function(s){return '<span class="nlds-num">'+s+'</span>'};
+function tax(p,br){var a=0,prev=0;for(var i=0;i<br.length;i++){var cap=br[i][0],r=br[i][1],top=cap===null?p:Math.min(p,cap);if(top>prev)a+=(top-prev)*r;if(cap===null||p<=cap)break;prev=cap}return a}
+function el(t,a,txt){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e}
+function one(root){var f=root.querySelector('.nlpg__calc');if(!f||f.__nlpg)return;f.__nlpg=1;var C;try{C=JSON.parse(f.getAttribute('data-cfg'))}catch(e){return}
+ var q=function(k){return f.querySelector('[data-pg="'+k+'"]')};
+ var val=function(n){var x=f.querySelector('input[name^="'+n+'"]:checked');return x?x.value:''};
+ var mode=function(){var id=val('nlpg-m');for(var i=0;i<C.modes.length;i++)if(C.modes[i].id===id)return C.modes[i];return C.modes[0]};
+ function draw(m,lo,hi,floor){var s=q('ch');if(!s)return;while(s.lastChild&&s.lastChild.nodeName!=='title')s.removeChild(s.lastChild);
+  var L=44,R=330,T=12,B=112;
+  if(m.floor){var y0=50000,y1=82000,X=function(fl){return L+(fl-1)*(R-L)/39},Y=function(v){return B-(v-y0)*(B-T)/(y1-y0)};
+   var up=[],dn=[];for(var fl=1;fl<=40;fl++){var p=m.lo_floor1+(fl-1)*(m.hi_floor39-m.lo_floor1)/38;up.push(X(fl)+','+Y(p*(1+m.band)));dn.unshift(X(fl)+','+Y(p*(1-m.band)))}
+   [[60000,'60,000'],[70000,'70,000'],[80000,'80,000']].forEach(function(g){s.appendChild(el('line',{x1:L,x2:R,y1:Y(g[0]),y2:Y(g[0]),stroke:'#e3e1da','stroke-width':1}));s.appendChild(el('text',{x:L-6,y:Y(g[0])+3.5,'text-anchor':'end'},g[1]))});
+   s.appendChild(el('polygon',{points:up.concat(dn).join(' '),fill:'rgba(47,111,134,.14)'}));
+   s.appendChild(el('line',{x1:L,x2:R,y1:Y(C.avg),y2:Y(C.avg),stroke:'#1f4b5c','stroke-width':1.2,'stroke-dasharray':'4 3'}));
+   s.appendChild(el('text',{x:L+4,y:Y(C.avg)-5,'text-anchor':'start'},'ממוצע העסקאות, כ-65,000'));
+   var fx=X(floor),pm=(lo+hi)/2;s.appendChild(el('line',{x1:fx,x2:fx,y1:T-4,y2:B,stroke:'#2f6f86','stroke-width':1.5}));
+   s.appendChild(el('circle',{cx:fx,cy:Y(pm),r:5.5,fill:'#2f6f86',stroke:'#fff','stroke-width':2}));
+   C.deals.forEach(function(d){s.appendChild(el('circle',{cx:X(d[0]),cy:Y(d[1]),r:4,fill:'#fff',stroke:'#14212b','stroke-width':1.6}))});
+   s.appendChild(el('text',{x:X(36.6),y:Y(77600),'text-anchor':'end'},'עסקאות שפורסמו'));
+   s.appendChild(el('text',{x:L,y:B+16,'text-anchor':'start'},'קומה 1'));s.appendChild(el('text',{x:R,y:B+16,'text-anchor':'end'},'קומה 40'));
+   s.appendChild(el('text',{x:(L+R)/2,y:B+16,'text-anchor':'middle'},'₪ למ״ר לפי הקומה'));
+   s.setAttribute('aria-label','אומדן של '+nf(lo)+' עד '+nf(hi)+' ₪ למ״ר בקומה '+floor+', מול ממוצע העסקאות במגדלים, כ-65,000 ₪');
+  }else{var x0=40000,x1=115000,X2=function(v){return L+(v-x0)*(R-L)/(x1-x0)};
+   [['הבחירה שלכם',m.lo,m.hi,1],['מגדלי כיכר המדינה, ממוצע',C.avg,C.avg,0],['תל אביב יפו, חציון',C.ta,C.ta,0]].forEach(function(r,i){var y=24+i*36;
+    s.appendChild(el('text',{x:R,y:y-9,'text-anchor':'end'},r[0]));
+    s.appendChild(el('line',{x1:X2(x0),x2:X2(x1),y1:y,y2:y,stroke:'#e3e1da','stroke-width':6,'stroke-linecap':'round'}));
+    if(r[3]){s.appendChild(el('line',{x1:X2(r[1]),x2:X2(r[2]),y1:y,y2:y,stroke:'#2f6f86','stroke-width':8,'stroke-linecap':'round'}));
+     s.appendChild(el('text',{x:X2(r[1]),y:y+17,'text-anchor':'middle'},nf(r[1])));s.appendChild(el('text',{x:X2(r[2]),y:y+17,'text-anchor':'middle'},nf(r[2])))}
+    else{s.appendChild(el('circle',{cx:X2(r[1]),cy:y,r:5.5,fill:'#1f4b5c',stroke:'#fff','stroke-width':2}));s.appendChild(el('text',{x:X2(r[1]),y:y+17,'text-anchor':'middle'},nf(r[1])))}});
+   s.setAttribute('aria-label',m.label+': '+nf(m.lo)+' עד '+nf(m.hi)+' ₪ למ״ר, מול ממוצע המגדלים כ-65,000 ₪ ותל אביב יפו 52,856 ₪');
+  }}
+ function run(){var m=mode(),a=+q('a').value,fl=+q('fs').value,lo,hi;
+  q('fl').hidden=!m.floor;q('ao').innerHTML=isl(a)+' מ״ר';q('fo').innerHTML='קומה '+isl(fl);
+  if(m.floor){var p=m.lo_floor1+(fl-1)*(m.hi_floor39-m.lo_floor1)/38;lo=p*(1-m.band);hi=p*(1+m.band)}else{lo=m.lo;hi=m.hi}
+  var mid=(lo+hi)/2*a,t=tax(mid,val('nlpg-t')==='more'?C.tax2:C.tax1);
+  q('p').innerHTML=isl(mil(lo*a)+'-'+mil(hi*a))+' מיליון ₪';q('pm').innerHTML='כ-'+isl(nf(lo)+'-'+nf(hi))+' ₪ למ״ר';
+  q('tx').innerHTML='כ-'+isl(new Intl.NumberFormat('he-IL').format(Math.round(t/1000)*1000))+' ₪';q('tt').innerHTML='כ-'+isl(mil(mid+t))+' מיליון ₪';
+  q('why').textContent=m.why;draw(m,lo,hi,fl);
+  var w=q('wa');if(w&&C.wa){var tx='שלום, בדקתי במחירון של מגדלי כיכר המדינה: '+m.label+', '+a+' מ״ר'+(m.floor?', קומה '+fl:'')+', אומדן '+mil(lo*a)+'-'+mil(hi*a)+' מיליון ₪. אשמח לפרטים נוספים (nad-lan.co.il)';w.href='https://wa.me/'+C.wa+'?text='+encodeURIComponent(tx)}}
+ f.addEventListener('input',run);f.addEventListener('change',run);f.addEventListener('submit',function(e){e.preventDefault()});
+ var mb=root.querySelector('.nlpg__more');if(mb)mb.addEventListener('click',function(){root.classList.add('is-open');mb.setAttribute('aria-expanded','true');var g=root.querySelector('.nlpg__grp--more .nlpg__gh th');if(g){g.setAttribute('tabindex','-1');g.focus({preventScroll:true})}});
+ run()}
+var all=document.querySelectorAll('.nlpg');for(var i=0;i<all.length;i++)one(all[i])})();
+NLPG_JS;
+		if ( '' === $wa ) {
+			$html = (string) preg_replace( '#<a class="nlds-btn nlds-btn--primary nlpg__wa"[^>]*>.*?</a>#s', '', $html );
+			$html = str_replace( '&quot;wa&quot;:&quot;{{WA}}&quot;', '&quot;wa&quot;:&quot;&quot;', $html );
+		}
+		return '<style id="nlpg-css">' . $css . '</style>' . str_replace( '{{WA}}', $wa, $html ) . '<script id="nlpg-js">' . $js . '</script>';
+	}
+}
+
+if ( ! function_exists( 'nadlan_ps_film_t' ) ) {
+	/** ProjectFilm v80 (5.10.2026): the film's button and player strings in the page's language (he, en, fr, ru, ar); the language
+	 *  pages show the English film, and fr/ru/ar say so. */
+	function nadlan_ps_film_t( $ps ) {
+		$l = (string) ( $ps['lang'] ?? 'he' );
+		$T = array(
+			'he' => array( 'btn' => 'סרטון הפרויקט', 'secs' => 'שניות', 'upd' => 'עודכן', 'note' => 'הדמיה להמחשה. כל נתון עם המקור שלו.', 'close' => 'סגירה', 'dir' => 'rtl' ),
+			'en' => array( 'btn' => 'Project film', 'secs' => 'seconds', 'upd' => 'updated', 'note' => 'Illustrative visualisation. Every figure has its source.', 'close' => 'Close', 'dir' => 'ltr' ),
+			'fr' => array( 'btn' => 'Film du projet', 'secs' => 'secondes', 'upd' => 'mis à jour le', 'note' => 'Visualisation illustrative. Film en anglais.', 'close' => 'Fermer', 'dir' => 'ltr' ),
+			'ru' => array( 'btn' => 'Фильм о проекте', 'secs' => 'сек.', 'upd' => 'обновлено', 'note' => 'Иллюстративная визуализация. Фильм на английском языке.', 'close' => 'Закрыть', 'dir' => 'ltr' ),
+			'ar' => array( 'btn' => 'فيلم المشروع', 'secs' => 'ثانية', 'upd' => 'آخر تحديث', 'note' => 'تصور توضيحي. الفيلم باللغة الإنجليزية.', 'close' => 'إغلاق', 'dir' => 'rtl' ),
+		);
+		if ( ! isset( $T[ $l ] ) ) { $l = 'he'; }
+		return $T[ $l ] + array( 'lang' => $l );
+	}
+}
 
 /* ProjectFilm v79 (design system, 28.9.2026): the project's film in a dialog, and a VideoObject for search. The button is in
    the hero's button row; the dialog loads the wide film on screens over 700 px and the upright one on phones, only when the
@@ -1578,9 +1755,9 @@ add_action( 'wp_head', function () {
 	$f = $ps['film'];
 	$ld = array(
 		'@context' => 'https://schema.org', '@type' => 'VideoObject',
-		'name' => $ps['name'] . ': סרטון הפרויקט', 'description' => (string) $f['desc'],
+		'name' => (string) ( 'he' === nadlan_ps_film_t( $ps )['lang'] ? $ps['name'] : ( $f['name'] ?? $ps['name'] ) ) . ': ' . nadlan_ps_film_t( $ps )['btn'], 'description' => (string) $f['desc'],
 		'thumbnailUrl' => array( $f['poster_wide'], $f['poster_tall'] ), 'uploadDate' => $f['date'] . 'T09:00:00+03:00',
-		'duration' => 'PT' . (int) $f['secs'] . 'S', 'contentUrl' => $f['wide'], 'inLanguage' => 'he',
+		'duration' => 'PT' . (int) $f['secs'] . 'S', 'contentUrl' => $f['wide'], 'inLanguage' => (string) ( $f['lang'] ?? 'he' ),
 		'publisher' => array( '@type' => 'Organization', 'name' => 'נדל״ן', 'url' => home_url( '/' ) ),
 	);
 	echo '<script type="application/ld+json" id="nadlan-ps-film">' . wp_json_encode( $ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
@@ -1597,43 +1774,24 @@ add_action( 'wp_head', function () {
 		. '.nlfilm-bar b{color:#1B1A17;font-weight:700}'
 		. '.nlfilm-x{position:absolute;top:-56px;inset-inline-end:0;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:rgba(250,247,241,.95);color:#1B1A17;font:700 20px/44px Heebo,sans-serif;cursor:pointer;padding:0}'
 		. '@media(max-width:700px){dialog.nlfilm{width:min(420px,calc(100vw - 24px))}.nlfilm-bar{font-size:13px}}'
-		. '.nlfilm.is-silent .nlfilm-v::-webkit-media-controls-mute-button,.nlfilm.is-silent .nlfilm-v::-webkit-media-controls-volume-slider,.nlfilm.is-silent .nlfilm-v::-webkit-media-controls-volume-control-container{display:none!important}'
-		. '.nlfilm-play{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;border:0;background:rgba(250,247,241,.95);box-shadow:0 12px 30px rgba(0,0,0,.4);cursor:pointer;z-index:2}'
-		. '.nlfilm-play::before{content:"";position:absolute;left:34px;top:26px;border-style:solid;border-width:16px 0 16px 26px;border-color:transparent transparent transparent #1F4B5C}'
-		. '.nlfilm-play[hidden],.nlfilm-err[hidden]{display:none}'
-		. '.nlfilm-err{position:absolute;inset-inline:16px;top:16px;margin:0;padding:12px 14px;border-radius:12px;background:#FAF7F1;color:#14212B;font:600 14px/1.4 Heebo,sans-serif;z-index:2}'
-		. '.nlfilm-err button{margin-inline-start:8px;min-height:40px;padding:0 14px;border:0;border-radius:999px;background:#1F4B5C;color:#fff;font:700 14px/1 Heebo,sans-serif;cursor:pointer}'
 		. '</style>' . "\n";
 }, 998 );
-if ( ! function_exists( 'nadlan_ps_film_media' ) ) {
-	/** ApartmentExperience-1 (v101): the film's files and whether they have sound: the narrated cut only when uploaded and switched on. */
-	function nadlan_ps_film_media( $f ) {
-		$voice = ! empty( $f['voice']['wide'] ) && ! empty( $f['voice']['tall'] ) && '1' === (string) get_option( 'nadlan_film_voice_on', '0' );
-		return array( 'wide' => $voice ? $f['voice']['wide'] : $f['wide'], 'tall' => $voice ? $f['voice']['tall'] : $f['tall'], 'audio' => $voice || ! empty( $f['audio'] ) );
-	}
-}
 add_action( 'wp_footer', function () {
 	$ps = nadlan_ps_current();
 	if ( ! $ps || empty( $ps['film']['wide'] ) ) { return; }
 	$f = $ps['film'];
-	$fm = nadlan_ps_film_media( $f );
-	echo '<dialog id="nlfilm" class="nlfilm' . ( $fm['audio'] ? '' : ' is-silent' ) . '" dir="rtl" lang="he" aria-label="' . esc_attr( 'סרטון הפרויקט: ' . $ps['name'] ) . '"'
-		. ' data-wide="' . esc_url( $fm['wide'] ) . '" data-tall="' . esc_url( $fm['tall'] ) . '" data-pw="' . esc_url( $f['poster_wide'] ) . '" data-pt="' . esc_url( $f['poster_tall'] ) . '">'
-		. '<button type="button" class="nlfilm-x" aria-label="סגירה">&#10005;</button><div class="nlfilm-box">'
+	$ft = nadlan_ps_film_t( $ps ); // ProjectFilm v80: the player in the page's language
+	$fn = 'he' === $ft['lang'] ? $ps['name'] : (string) ( $f['name'] ?? $ps['name'] );
+	echo '<dialog id="nlfilm" class="nlfilm" dir="' . esc_attr( $ft['dir'] ) . '" lang="' . esc_attr( $ft['lang'] ) . '" aria-label="' . esc_attr( $ft['btn'] . ': ' . $fn ) . '"'
+		. ' data-wide="' . esc_url( $f['wide'] ) . '" data-tall="' . esc_url( $f['tall'] ) . '" data-pw="' . esc_url( $f['poster_wide'] ) . '" data-pt="' . esc_url( $f['poster_tall'] ) . '">'
+		. '<button type="button" class="nlfilm-x" aria-label="' . esc_attr( $ft['close'] ) . '">&#10005;</button><div class="nlfilm-box">'
 		. '<video class="nlfilm-v" controls playsinline preload="none"></video>'
-		. '<div class="nlfilm-bar"><span><b>' . esc_html( $ps['name'] ) . '</b> · סרטון הפרויקט · ' . (int) $f['secs'] . ' שניות · ' . ( $fm['audio'] ? 'עם קריינות בעברית' : 'ללא קול' ) . ' · עודכן ' . esc_html( $f['date_he'] ) . '</span><span>הדמיה להמחשה. כל נתון עם המקור שלו.</span></div>'
+		. '<div class="nlfilm-bar"><span><b>' . esc_html( $fn ) . '</b> · ' . esc_html( $ft['btn'] ) . ' · ' . (int) $f['secs'] . ' ' . esc_html( $ft['secs'] ) . ' · ' . esc_html( $ft['upd'] ) . ' ' . esc_html( $f['date_he'] ) . '</span><span>' . esc_html( $ft['note'] ) . '</span></div>'
 		. '</div></dialog>'
 		. '<script id="nadlan-ps-film-js">(function(){var d=document.getElementById("nlfilm");if(!d||!d.showModal)return;var v=d.querySelector("video");'
-		// v101: the browser may refuse to start the film (no click behind it, as with the #nlfilm link): a play button shows instead
-		// of nothing; a file that fails to load says so, with a retry
-		. 'var bx=d.querySelector(".nlfilm-box"),pb=document.createElement("button");pb.type="button";pb.className="nlfilm-play";pb.setAttribute("aria-label","הפעלת הסרטון");pb.hidden=true;bx.appendChild(pb);'
-		. 'var er=document.createElement("p");er.className="nlfilm-err";er.hidden=true;er.innerHTML="הסרטון לא נטען. <button type=button class=nlfilm-retry>לנסות שוב</button>";bx.appendChild(er);'
-		. 'function tryPlay(){pb.hidden=true;var p=v.play();if(p&&p.catch)p.catch(function(){if(!v.error)pb.hidden=false;});}'
-		. 'pb.addEventListener("click",tryPlay);v.addEventListener("error",function(){er.hidden=false;pb.hidden=true;});'
-		. 'er.querySelector("button").addEventListener("click",function(){er.hidden=true;v.load();tryPlay();});'
 		. 'function open(e){if(e)e.preventDefault();var tall=window.matchMedia("(max-width:700px)").matches;var src=d.getAttribute(tall?"data-tall":"data-wide");'
 		. 'if(v.getAttribute("src")!==src){v.setAttribute("poster",d.getAttribute(tall?"data-pt":"data-pw"));v.setAttribute("src",src);}'
-		. 'd.showModal();tryPlay();}'
+		. 'd.showModal();var p=v.play();if(p&&p.catch)p.catch(function(){});}'
 		. 'document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("[data-nlps-ev=hero-film]"):null;if(a)open(e);});'
 		. 'd.querySelector(".nlfilm-x").addEventListener("click",function(){d.close();});'
 		. 'd.addEventListener("click",function(e){if(e.target===d)d.close();});'
@@ -1661,19 +1819,195 @@ if ( ! function_exists( 'nadlan_ps_world_film' ) ) {
 		$k = 'he' === $lang ? 'he' : 'en';
 		$u = 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-';
 		$v = function ( $f, $cls ) use ( $u, $k ) {
-			return '<video class="nlws-film__v nlws-film__v--' . $cls . '" controls playsinline preload="none" poster="' . esc_url( $u . $k . '-' . $f . '-preview-poster.jpg' ) . '">'
-				. '<source src="' . esc_url( $u . $k . '-' . $f . '-preview.mp4' ) . '" type="video/mp4"></video>';
+			return '<video class="nlws-film__v nlws-film__v--' . $cls . '" controls playsinline preload="none" data-nlposter="' . esc_url( $u . $k . '-' . $f . '-preview-poster.jpg' ) . '">'
+				. '<source src="' . esc_url( $u . $k . '-' . $f . '-preview.mp4' ) . '" type="video/mp4">'
+				. '<track kind="captions" srclang="' . $k . '" label="' . ( 'he' === $k ? 'עברית' : 'English' ) . '" src="' . esc_url( rest_url( 'nadlan/v1/film-cc/v1-' . $k ) ) . '"></video>'; // v104.42
 		};
 		return '<section class="nlws-film" id="nlws-film" dir="' . $t[3] . '" lang="' . esc_attr( $lang ) . '" aria-labelledby="nlws-film-h">'
 			. '<h2 id="nlws-film-h">' . esc_html( $t[0] ) . '</h2><p class="nlws-film__p">' . esc_html( $t[1] ) . '</p>'
-			. '<figure class="nlws-film__fig">' . $v( '16x9', 'wide' ) . $v( '9x16', 'tall' ) . '<figcaption>' . esc_html( $t[2] ) . '</figcaption></figure></section>'
+			. nadlan_ps_world_film_v2( $k, $t[2] ) // v104.40: the narrated v2 film leads (Ben, 3.10 evening)
+			. '<h3 class="nlws-film__v1h">' . esc_html( array( 'he' => 'הגרסה הראשונה', 'en' => 'The first version', 'fr' => 'La première version', 'ru' => 'Первая версия', 'ar' => 'النسخة الأولى' )[ $lang ] ?? 'הגרסה הראשונה' ) . '</h3>'
+			. '<figure class="nlws-film__fig">' . $v( '16x9', 'wide' ) . $v( '9x16', 'tall' ) . '<figcaption>' . esc_html( $t[2] ) . '</figcaption></figure>'
+			. nadlan_ps_world_facilities_clip( $lang, $k ) . '</section>' // v104.36: the facilities clip, labelled before play (option B)
 			. '<style id="nlws-film-css">:root body .nlps-page>.nlws-film{grid-column:1/-1;width:100%;box-sizing:border-box}.nlws-film{max-width:1100px;margin:40px auto 8px;padding:0 16px}.nlws-film h2{margin:0 0 6px}'
 			. '.nlws-film__p{margin:0 0 14px;max-width:62ch;color:#4A5560}.nlws-film__fig{margin:0}'
 			. '.nlws-film__v{display:block;width:100%;height:auto;border-radius:16px;background:#14130F}'
-			. '.nlws-film__v--tall{display:none;max-width:420px;margin:0 auto}'
+			. '.nlws-film__v--tall{display:none;max-width:420px;margin:0 auto}.nlws-film__v--wide{aspect-ratio:auto 16/9}.nlws-film__v--tall{aspect-ratio:auto 9/16}'
 			. '@media(max-width:700px){.nlws-film__v--wide{display:none}.nlws-film__v--tall{display:block}}'
-			. '.nlws-film figcaption{margin-top:8px;font-size:13px;color:#6B6558}</style>';
+			. '.nlws-film figcaption{margin-top:8px;font-size:13px;color:#6B6558}</style>'
+			. '<script id="nlws-film-lazy">(function(){var vs=document.querySelectorAll("video[data-nlposter]");if(!vs.length)return;var set=function(v){if(!v.getAttribute("poster")){v.setAttribute("poster",v.getAttribute("data-nlposter"));}};if(!("IntersectionObserver" in window)){for(var i=0;i<vs.length;i++){set(vs[i]);}return;}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){set(e.target);io.unobserve(e.target);}});},{rootMargin:"800px 0px"});for(var j=0;j<vs.length;j++){io.observe(vs[j]);}})();</script>'; // v104.44 lazy posters (HAD-421)
 	}
+}
+
+if ( ! function_exists( 'nadlan_ps_world_facilities_clip' ) ) {
+	/** KikarHamedinaWorld v104.36 (3.10.2026, the film, option B; Maya's film-safe-slice verdict): the 19.7 s facilities clip
+	 *  (pool, gym, spa, car park; our own rooms, no map layer; music only) under the film. The label is above the player, so it
+	 *  is read before play. Facilities posters only; preload none, no autoplay. The URLs are the uploaded files, byte-checked. */
+	function nadlan_ps_world_facilities_clip( $lang, $k ) {
+		$F = array(
+			'he' => array( 'המתקנים בבניין: בריכה, חדר כושר, ספא וחניון', 'הדמיית מתקנים להמחשה: לא צילום ולא מפרט רשמי, ואינה סיור מלא בפרויקט.' ),
+			'en' => array( "The building's facilities: pool, gym, spa and car park", 'An illustrative visualisation of the facilities: not footage, not an official specification, and not a full tour of the project.' ),
+			'fr' => array( "Les équipements de l'immeuble : piscine, salle de sport, spa et parking", "Une visualisation illustrative des équipements : ni un tournage, ni une spécification officielle, ni une visite complète du projet. Libellés en anglais." ),
+			'ru' => array( 'Удобства в здании: бассейн, спортзал, спа и паркинг', 'Иллюстративная визуализация удобств: не съёмка, не официальная спецификация и не полный тур по проекту. Подписи на английском.' ),
+			'ar' => array( 'مرافق المبنى: المسبح، النادي الرياضي، السبا وموقف السيارات', 'تصوّر توضيحي للمرافق: ليس تصويرًا حقيقيًا ولا مواصفات رسمية، وليس جولة كاملة في المشروع. التسميات بالإنجليزية.' ),
+		);
+		$f = isset( $F[ $lang ] ) ? $F[ $lang ] : $F['he'];
+		$src = array(
+			'he' => array( '16x9' => array( 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-he-16x9-1.mp4', 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-he-16x9-poster.jpg' ), '9x16' => array( 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-he-9x16-1.mp4', 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-he-9x16-poster.jpg' ) ),
+			'en' => array( '16x9' => array( 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-en-16x9-1.mp4', 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-en-16x9-poster.jpg' ), '9x16' => array( 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-en-9x16-1.mp4', 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-facilities-en-9x16-poster.jpg' ) ),
+		);
+		$s = $src[ 'he' === $k ? 'he' : 'en' ];
+		$v = function ( $fmt, $cls ) use ( $s ) {
+			return '<video class="nlws-film__v nlws-film__v--' . $cls . '" controls playsinline preload="none" data-nlposter="' . esc_url( $s[ $fmt ][1] ) . '">'
+				. '<source src="' . esc_url( $s[ $fmt ][0] ) . '" type="video/mp4"></video>';
+		};
+		return '<div class="nlws-film__fac" id="nlws-facilities"><h3>' . esc_html( $f[0] ) . '</h3><p class="nlws-film__lbl">' . esc_html( $f[1] ) . '</p>'
+			. '<figure class="nlws-film__fig">' . $v( '16x9', 'wide' ) . $v( '9x16', 'tall' ) . '</figure></div>'
+			. '<style id="nlws-fac-css">.nlws-film__fac{margin-top:28px}.nlws-film__fac h3{margin:0 0 6px;font-size:20px}'
+			. '.nlws-film__lbl{margin:0 0 12px;max-width:62ch;font-size:14px;color:#4A4740;background:#F3EEE3;border-radius:10px;padding:8px 12px}'
+			. '.nlws-film__fac .nlws-film__v--tall{max-width:360px}</style>';
+	}
+}
+
+if ( ! function_exists( 'nadlan_ps_world_film_v2' ) ) {
+	/** KikarHamedinaWorld v104.40 (3.10.2026 evening, Ben: "upload everything, with the narration too"; nothing about credit on the
+	 *  page): the narrated v2 film leads the film section. Hebrew on he, English elsewhere; preload none, no autoplay; the film's own
+	 *  title-card poster. The wide film over 700 px, the upright one on phones (the same pattern as V1). */
+	function nadlan_ps_world_film_v2( $k, $cap ) {
+		$s = array( 'he' => array( '16x9' => array( 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-he-16x9-1.mp4', 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-he-16x9-poster.jpg' ), '9x16' => array( 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-he-9x16-1.mp4', 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-he-9x16-poster.jpg' ) ),
+			'en' => array( '16x9' => array( 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-en-16x9-1.mp4', 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-en-16x9-poster.jpg' ), '9x16' => array( 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-en-9x16-1.mp4', 'https://nad-lan.co.il/wp-content/uploads/2026/10/kikar-hamedina-film-v2-en-9x16-poster.jpg' ) ) );
+		$cl = 'he' === $k ? 'he' : 'en';
+		$f = $s[ $cl ];
+		// v104.41: captions in the narration's language, off by default (the player's CC button)
+		$cc = '<track kind="captions" srclang="' . $cl . '" label="' . ( 'he' === $cl ? 'עברית' : 'English' ) . '" src="' . esc_url( rest_url( 'nadlan/v1/film-cc/' . $cl ) ) . '">';
+		$v = function ( $fmt, $cls ) use ( $f, $cc ) {
+			return '<video class="nlws-film__v nlws-film__v--' . $cls . '" controls playsinline preload="none" data-nlposter="' . esc_url( $f[ $fmt ][1] ) . '">'
+				. '<source src="' . esc_url( $f[ $fmt ][0] ) . '" type="video/mp4">' . $cc . '</video>';
+		};
+		return '<figure class="nlws-film__fig nlws-film__v2" id="nlws-film-v2">' . $v( '16x9', 'wide' ) . $v( '9x16', 'tall' ) . '<figcaption>' . esc_html( $cap ) . '</figcaption></figure>'
+			. '<style id="nlws-v2-css">.nlws-film__v2{margin:0 0 26px}.nlws-film__v1h{margin:8px 0;font-size:18px}.nlws-film video::cue{font-family:Heebo,Arial,sans-serif;color:#FAF7F1;background:rgba(27,26,23,.82)}</style>';
+	}
+}
+
+if ( ! function_exists( 'nadlan_ps_film_cc_route' ) ) {
+	/** v104.41 (3.10.2026 night): the narrated film's captions as text/vtt. The uploads folder serves .vtt as
+	 *  application/octet-stream, which a browser may refuse for a <track>; this route serves the same media file
+	 *  (he 8172, en 8173) with the caption type. Public and read-only, like the file itself. */
+	function nadlan_ps_film_cc_route() {
+		register_rest_route( 'nadlan/v1', '/film-cc/(?P<lang>he|en|v1-he|v1-en)', array(
+			'methods'             => 'GET',
+			'permission_callback' => '__return_true',
+			'callback'            => function ( $r ) {
+				$id = array( 'he' => 8172, 'en' => 8173, 'v1-he' => 8174, 'v1-en' => 8175 )[ (string) $r['lang'] ] ?? 0;
+				$p  = $id ? get_attached_file( $id ) : '';
+				$t  = ( $p && is_readable( $p ) ) ? (string) file_get_contents( $p ) : '';
+				if ( 0 !== strpos( $t, 'WEBVTT' ) ) {
+					return new WP_Error( 'nadlan_film_cc', 'not found', array( 'status' => 404 ) );
+				}
+				header( 'Content-Type: text/vtt; charset=utf-8' );
+				header( 'Cache-Control: public, max-age=86400' );
+				echo $t; // a caption file from the media library, served as it is
+				exit;
+			},
+		) );
+	}
+	add_action( 'rest_api_init', 'nadlan_ps_film_cc_route' );
+}
+
+if ( ! function_exists( 'nadlan_pms_off' ) ) {
+	/** HAD-421 (5.10.2026, phone speed): Paid Member Subscriptions prints Stripe (js.stripe.com, about 250 KB) and three more
+	 *  scripts plus its stylesheet on every page. Our own templates hold no PMS form, so they drop them: project pages and the
+	 *  catalogue, listings and their archive, the brokers directory and the broker sites under it. A page whose content carries
+	 *  a PMS shortcode keeps them. Dequeued, never deregistered, so a script that depends on one still pulls it in. */
+	function nadlan_pms_off() {
+		if ( is_admin() ) { return; }
+		$types = array( 'nadlan_project', 'nadlan_property', 'nadlan_professional' );
+		$ours  = is_singular( $types ) || is_post_type_archive( $types ) || is_page( 'brokers' );
+		if ( ! $ours && is_page() ) {
+			$dir  = get_page_by_path( 'brokers' );
+			$ours = $dir && (int) wp_get_post_parent_id( get_queried_object_id() ) === (int) $dir->ID;
+		}
+		if ( ! $ours ) { return; }
+		$p = get_post( get_queried_object_id() );
+		if ( $p instanceof WP_Post && false !== strpos( (string) $p->post_content, '[pms-' ) ) { return; }
+		foreach ( array( 'pms-stripe-js', 'pms-stripe-script', 'pms-front-end', 'pms-frontend-discount-code-js' ) as $h ) { wp_dequeue_script( $h ); }
+		wp_dequeue_style( 'pms-style-front-end' );
+	}
+	add_action( 'wp_enqueue_scripts', 'nadlan_pms_off', 9999 );
+	add_action( 'wp_print_footer_scripts', 'nadlan_pms_off', 1 );
+}
+
+if ( ! function_exists( 'nadlan_dash_off' ) ) {
+	/** HAD-421 (5.10.2026): dashicons (36 KB) loads for every visitor, yet no dashicons class is used on our templates. Visitors
+	 *  who are not signed in no longer get it on project pages, listings and the broker pages (the same templates as
+	 *  nadlan_pms_off). Signed-in users keep it for the admin bar; a style that depends on it still pulls it in. */
+	function nadlan_dash_off() {
+		if ( is_admin() ) { return; }
+		$types = array( 'nadlan_project', 'nadlan_property', 'nadlan_professional' );
+		$ours  = is_singular( $types ) || is_post_type_archive( $types ) || is_page( 'brokers' );
+		if ( ! $ours && is_page() ) {
+			$dir  = get_page_by_path( 'brokers' );
+			$ours = $dir && (int) wp_get_post_parent_id( get_queried_object_id() ) === (int) $dir->ID;
+		}
+		if ( ! $ours ) { return; }
+		wp_dequeue_style( 'pms_block_themes_front_end_stylesheet' ); // the PMS stylesheet nadlan_pms_off missed
+		if ( ! is_user_logged_in() ) {
+			// wp-jquery-ui-dialog depends on dashicons and pulled it back in (the first 1.72.423 run rolled back); no jQuery UI
+			// dialog script is on these pages, so its stylesheet styles nothing here
+			wp_dequeue_style( 'wp-jquery-ui-dialog' );
+			wp_dequeue_style( 'dashicons' );
+		}
+	}
+	add_action( 'wp_enqueue_scripts', 'nadlan_dash_off', 9999 );
+	add_action( 'wp_print_styles', 'nadlan_dash_off', 1 );         // a style enqueued after wp_enqueue_scripts (the 2nd run's lesson)
+	add_action( 'wp_print_footer_scripts', 'nadlan_dash_off', 1 ); // a late style printed in the footer
+}
+
+if ( ! function_exists( 'nadlan_leaflet_css_async' ) ) {
+	/** HAD-421 (5.10.2026): on a project page the area map is far below the stage, yet leaflet.css (unpkg.com, a third origin)
+	 *  blocked the first paint behind a new connection. Here it loads without blocking (media print, switched to all on load),
+	 *  with a noscript copy. Other templates keep the plain tag. */
+	function nadlan_leaflet_css_async( $tag, $handle, $href, $media ) {
+		if ( 'leaflet' !== $handle || is_admin() || ! is_singular( 'nadlan_project' ) || false !== strpos( $tag, 'onload=' ) ) { return $tag; }
+		$async = str_replace( "media='" . $media . "'", "media='print' onload=\"this.media='all'\"", $tag );
+		if ( $async === $tag ) { return $tag; }
+		return $async . '<noscript>' . trim( $tag ) . '</noscript>' . "\n";
+	}
+	add_filter( 'style_loader_tag', 'nadlan_leaflet_css_async', 10, 4 );
+}
+
+if ( ! function_exists( 'nadlan_leaflet_off' ) ) {
+	/** HAD-421 (5.10.2026): a project page with a Mapbox token renders the Mapbox area map; the Leaflet fallback element is
+	 *  printed only without a token (project-experience.php), yet Leaflet js + css loaded anyway as a dependency of
+	 *  nadlan-pjx-js. With a token, the dependency is dropped and Leaflet is not loaded; the inline code is guarded by window.L. */
+	function nadlan_leaflet_off() {
+		if ( is_admin() || ! is_singular( 'nadlan_project' ) ) { return; }
+		if ( ! function_exists( 'nadlan_mapbox_token' ) || '' === (string) nadlan_mapbox_token() ) { return; }
+		$ws = wp_scripts();
+		if ( isset( $ws->registered['nadlan-pjx-js'] ) ) {
+			$ws->registered['nadlan-pjx-js']->deps = array_values( array_diff( (array) $ws->registered['nadlan-pjx-js']->deps, array( 'leaflet' ) ) );
+		}
+		wp_dequeue_script( 'leaflet' );
+		wp_dequeue_style( 'leaflet' );
+	}
+	add_action( 'wp_enqueue_scripts', 'nadlan_leaflet_off', 9999 );
+}
+
+if ( ! function_exists( 'nadlan_theme_css_once' ) ) {
+	/** HAD-421 (5.10.2026): the parent theme printed style.min.css early and the child theme printed the identical style.css
+	 *  later in the head (the same 287 rules). The later copy wins every rule, so the earlier handle keeps its place for its
+	 *  dependents but prints no file. Only when the child's copy is really on the page. */
+	function nadlan_theme_css_once() {
+		if ( is_admin() ) { return; }
+		$ws = wp_styles();
+		if ( ! isset( $ws->registered['nadlan-revenue-style'], $ws->registered['nlpc-parent-style'] ) ) { return; }
+		if ( ! wp_style_is( 'nlpc-parent-style', 'enqueued' ) ) { return; }
+		$early = (string) $ws->registered['nadlan-revenue-style']->src;
+		$late  = (string) $ws->registered['nlpc-parent-style']->src;
+		if ( false === strpos( $early, '/themes/nadlan-revenue/style.min.css' ) || false === strpos( $late, '/themes/nadlan-revenue/style.css' ) ) { return; }
+		$ws->registered['nadlan-revenue-style']->src = false;
+	}
+	add_action( 'wp_print_styles', 'nadlan_theme_css_once', 1 );
 }
 
 if ( ! function_exists( 'nadlan_ps_langs_on' ) ) {

@@ -113,11 +113,12 @@ add_action( 'rest_api_init', function () {
 			$pasted   = mb_substr( sanitize_textarea_field( (string) $req->get_param( 'text' ) ), 0, 6000 );
 
 			$facts = "עיר: {$city}. קומות: {$floors}. דירות: {$units}. שנת בנייה משוערת: {$year}. הסכמות שנאספו: {$consents} מתוך {$units}.";
-			if ( $compound ) { $facts .= "\nנתוני מתחם מוכרז מהמאגר הרשמי: " . $compound; }
+			if ( $compound ) { $facts .= "\nנתוני מתחם התחדשות מהמאגר הרשמי: " . $compound; }
 			if ( $pasted ) { $facts .= "\nטקסט שהבעלים הדביקו ממסמכים (מקור: המשתמש, לא אומת):\n" . $pasted; }
-			$ctx = 'רפים חוקיים (2024): 66% מבעלי הדירות לקידום מתחם פינוי בינוי; 67% לתביעת דייר סרבן; בבניין בודד רוב מיוחס של 80% מהדירות ו-75% מהרכוש המשותף. ' .
+			// HAD-396: only what the statute and the authority's 2025 report state (read directly 3.10.2026); no unsourced threshold or duration
+			$ctx = 'רוב מיוחס בפינוי בינוי (חוק פינוי ובינוי, סעיף 1, נוסח עדכני ל-18.9.2023): בעלים של שני שלישים לפחות מהדירות במקבץ, וגם שלוש חמישיות לפחות מהדירות בכל בית משותף במקבץ (בבית של 4 או 5 דירות: 3 דירות לפחות ויותר משני בעלי דירות), וגם יותר ממחצית הרכוש המשותף בכל בית. ספירת חתימות לבדה לא מוכיחה שהרוב הושג. הרוב הנדרש לבניין בודד שלא במתחם לא נמסר כאן: אל תציין אחוז עבורו, והפנה לעורך דין הדיירים. ' .
 				'מסלולים: פינוי בינוי (מתחם, הריסה); תמא 38/1 (חיזוק ללא פינוי); תמא 38/2 (הריסת בניין בודד); מסגרות עירוניות מחליפות את התמא בהדרגה. ' .
-				'ממוצע משך פרויקט: קרוב לעשור. בעלי מקצוע לדיירים: עורך דין, שמאי, מפקח, מארגן.';
+				'לפי דוח הרשות לשנת 2025: מאישור תוכנית פינוי בינוי ועד היתר הבנייה הראשון עוברות בממוצע 4 שנים. בעלי מקצוע לדיירים: עורך דין, שמאי, מפקח, מארגן.';
 
 			$system = 'אתה יועץ ראשוני להתחדשות עירונית באתר נדלן. ענה אך ורק על סמך ההקשר והעובדות שסופקו. ' .
 				'אסור להמציא רפים, סכומים או לוחות זמנים. אסור מקף ארוך - רק מקף רגיל. ' .
@@ -159,7 +160,7 @@ if ( ! function_exists( 'nadlan_ur_wizard_strings' ) ) {
 	function nadlan_ur_wizard_strings( $lang ) {
 		if ( 'en' === $lang ) {
 			return array(
-				'gate_t' => 'A renewal check for your building', 'gate_p' => 'The check is free and saves your data for the project room. One-field signup:',
+				'gate_t' => 'A renewal check for your building', 'gate_p' => 'The check is free and saves your data for the project room. Sign up with 3 fields:',
 				'gate_name' => 'Name', 'gate_email' => 'Email', 'gate_phone' => 'Phone', 'gate_go' => 'Start', 'gate_busy' => 'Signing you up...', 'gate_err' => 'Error, try again',
 				'steps' => array( 'Address', 'The building', 'Documents', 'First analysis', 'Your building in 3D' ),
 				's1_t' => 'Where is the building?', 'city' => 'City', 'street' => 'Street and number', 's1_go' => 'Check the compounds registry and continue',
@@ -173,7 +174,7 @@ if ( ! function_exists( 'nadlan_ur_wizard_strings' ) ) {
 			);
 		}
 		return array(
-			'gate_t' => 'בדיקת התחדשות לבניין שלכם', 'gate_p' => 'הבדיקה חינמית ושומרת את הנתונים שלכם לחדר הפרויקט. הרשמה בשדה אחד:',
+			'gate_t' => 'בדיקת התחדשות לבניין שלכם', 'gate_p' => 'הבדיקה חינמית ושומרת את הנתונים שלכם לחדר הפרויקט. הרשמה ב-3 שדות:',
 			'gate_name' => 'שם', 'gate_email' => 'אימייל', 'gate_phone' => 'טלפון', 'gate_go' => 'מתחילים', 'gate_busy' => 'רושמים...', 'gate_err' => 'שגיאה, נסו שוב',
 			'steps' => array( 'כתובת', 'הבניין', 'מסמכים', 'ניתוח ראשוני', 'הבניין בתלת ממד' ),
 			's1_t' => 'איפה הבניין?', 'city' => 'עיר', 'street' => 'רחוב ומספר', 's1_go' => 'בדיקה מול מאגר המתחמים והמשך',
@@ -191,8 +192,8 @@ if ( ! function_exists( 'nadlan_ur_wizard_js_i18n' ) ) {
 	function nadlan_ur_wizard_js_i18n( $lang ) {
 		if ( 'en' === $lang ) {
 			return array(
-				'checking' => 'Checking the compounds registry...', 'found' => 'A declared compound was found nearby: ', 'found2' => '. Its data will be attached to the analysis.',
-				'notfound' => 'No matching declared compound was found. That does not mean there is no potential - the single-building track does not appear in the registry.',
+				'checking' => 'Checking the compounds registry...', 'found' => 'A renewal compound was found nearby: ', 'found2' => '. Its data will be attached to the analysis.',
+				'notfound' => 'No matching compound was found in the registry. That does not mean there is no potential: the single-building track does not appear in the registry.',
 				'uploading' => 'Uploading...', 'uploaded' => 'The file was saved to the building file (private link). Remember: the analysis reads the text you paste below.', 'upfail' => 'The upload failed',
 				'analyzing' => 'Analyzing the data...', 'unavailable' => 'The analysis is unavailable right now. The tools and the guide on the renewal page are always open.', 'failed' => 'The analysis failed, try again.',
 				'track' => 'The likely track: ', 'consents' => 'Consents', 'steps' => 'Next steps', 'pros' => 'Relevant professionals',
@@ -201,8 +202,8 @@ if ( ! function_exists( 'nadlan_ur_wizard_js_i18n' ) ) {
 			);
 		}
 		return array(
-			'checking' => 'בודקים מול מאגר המתחמים...', 'found' => 'נמצא מתחם מוכרז קרוב: ', 'found2' => '. הנתונים יצורפו לניתוח.',
-			'notfound' => 'לא נמצא מתחם מוכרז תואם. זה לא אומר שאין פוטנציאל - מסלול בניין בודד לא מופיע במאגר.',
+			'checking' => 'בודקים מול מאגר המתחמים...', 'found' => 'נמצא מתחם התחדשות קרוב: ', 'found2' => '. הנתונים יצורפו לניתוח.',
+			'notfound' => 'לא נמצא מתחם תואם במאגר. זה לא אומר שאין פוטנציאל: מסלול בניין בודד לא מופיע במאגר.',
 			'uploading' => 'מעלים...', 'uploaded' => 'הקובץ נשמר לתיק הבניין (קישור חסוי). זכרו: הניתוח קורא את הטקסט שתדביקו למטה.', 'upfail' => 'ההעלאה נכשלה',
 			'analyzing' => 'מנתחים את הנתונים...', 'unavailable' => 'הניתוח אינו זמין כרגע. הכלים והמדריך בעמוד ההתחדשות פתוחים תמיד.', 'failed' => 'הניתוח נכשל, נסו שוב.',
 			'track' => 'המסלול המסתמן: ', 'consents' => 'הסכמות', 'steps' => 'הצעדים הבאים', 'pros' => 'אנשי מקצוע רלוונטיים',

@@ -591,9 +591,9 @@ if ( ! function_exists( 'nadlan_dir_profile_header' ) ) {
 		if ( ! $broker ) { nadlan_dir_enqueue_professional_quote_script(); }
 
 		// no reviews = no line: "טרם התקבלו חוות דעת" announced missing information on nearly every card (honesty law, HAD-249)
-		$pf_demo = get_post_meta( $id, 'reviews_verified', true ) ? '' : ' <span class="nlpf-demo">נתוני דוגמה</span>';
-		$stars = ( $reviews > 0 && $rating > 0 )
-			? '<span class="nlpf-stars">' . str_repeat( '★', (int) round( $rating ) ) . str_repeat( '☆', max( 0, 5 - (int) round( $rating ) ) ) . '</span> <b>' . number_format( $rating, 1 ) . '</b> <span class="nlpf-rev">(' . $reviews . ' חוות דעת)</span>' . $pf_demo
+		// stars only from real, verified reviews, as on the network's cards: a seeded rating is not shown even with a "נתוני דוגמה" tag (HAD-396)
+		$stars = ( $reviews > 0 && $rating > 0 && get_post_meta( $id, 'reviews_verified', true ) )
+			? '<span class="nlpf-stars">' . str_repeat( '★', (int) round( $rating ) ) . str_repeat( '☆', max( 0, 5 - (int) round( $rating ) ) ) . '</span> <b>' . number_format( $rating, 1 ) . '</b> <span class="nlpf-rev">(' . $reviews . ' חוות דעת)</span>'
 			: '';
 
 		ob_start(); ?>

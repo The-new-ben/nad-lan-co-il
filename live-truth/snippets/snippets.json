@@ -1,0 +1,1656 @@
+[
+ {
+  "id": 1,
+  "name": "Make upload filenames lowercase",
+  "active": false,
+  "scope": "global",
+  "file": "1-make-upload-filenames-lowercase.php",
+  "md5": "2980f0b3dcb00b244bd408314795add0",
+  "modified": "2026-07-01 19:08:28",
+  "committed": true
+ },
+ {
+  "id": 2,
+  "name": "Disable admin bar",
+  "active": false,
+  "scope": "front-end",
+  "file": "2-disable-admin-bar.php",
+  "md5": "dd559d8dad0d6a031d5a6dd2af971dd9",
+  "modified": "2026-07-01 19:08:28",
+  "committed": true
+ },
+ {
+  "id": 3,
+  "name": "Allow smilies",
+  "active": false,
+  "scope": "global",
+  "file": "3-allow-smilies.php",
+  "md5": "b4156eccc9be6c87677f555cfe84d66f",
+  "modified": "2026-07-01 19:08:28",
+  "committed": true
+ },
+ {
+  "id": 4,
+  "name": "Current year",
+  "active": false,
+  "scope": "content",
+  "file": "4-current-year.php",
+  "md5": "0c04f4b41b27807bc671c9bd676f9f86",
+  "modified": "2026-07-01 19:08:28",
+  "committed": true
+ },
+ {
+  "id": 5,
+  "name": "nadlan agent deploy 1.69.69 (one-shot)",
+  "active": false,
+  "scope": "single-use",
+  "file": "5-nadlan-agent-deploy-1-69-69-one-shot.php",
+  "md5": "915f76be6beaa8168acf2a91387d220b",
+  "modified": "2026-07-01 20:05:08",
+  "committed": true
+ },
+ {
+  "id": 6,
+  "name": "nadlan agent deploy route",
+  "active": false,
+  "scope": "global",
+  "file": "6-nadlan-agent-deploy-route.php",
+  "md5": "08b6ae1ec173a24e71ba4ce93dfcdf36",
+  "modified": "2026-07-01 20:07:05",
+  "committed": true
+ },
+ {
+  "id": 7,
+  "name": "nadlan diag (read-only)",
+  "active": false,
+  "scope": "global",
+  "file": "7-nadlan-diag-read-only.php",
+  "md5": "85570b161c59c1f4e72451a81d8a1eb3",
+  "modified": "2026-07-01 20:35:19",
+  "committed": true
+ },
+ {
+  "id": 8,
+  "name": "nadlan autoupdate off (one-shot)",
+  "active": false,
+  "scope": "global",
+  "file": "8-nadlan-autoupdate-off-one-shot.php",
+  "md5": "bd8a7f63947bdd7a4b65ccae4826f659",
+  "modified": "2026-07-01 20:36:36",
+  "committed": true
+ },
+ {
+  "id": 9,
+  "name": "nadlan deploy 1.69.70 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "9-nadlan-deploy-1-69-70-temp.php",
+  "md5": "46320efbb53b76af764541f358097990",
+  "modified": "2026-07-01 21:40:04",
+  "committed": true
+ },
+ {
+  "id": 10,
+  "name": "nadlan deploy 1.69.70 v2 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "10-nadlan-deploy-1-69-70-v2-temp.php",
+  "md5": "324181530ba11dbd541b726019e19e7a",
+  "modified": "2026-07-01 21:40:56",
+  "committed": true
+ },
+ {
+  "id": 11,
+  "name": "nadlan deploy 1.69.71 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "11-nadlan-deploy-1-69-71-temp.php",
+  "md5": "0311bf6b65f1d445a04df2406c71095c",
+  "modified": "2026-07-01 21:43:08",
+  "committed": true
+ },
+ {
+  "id": 12,
+  "name": "nadlan deploy 1.69.72 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "12-nadlan-deploy-1-69-72-temp.php",
+  "md5": "9e90f5199445748c99221a0a2ebc5d0b",
+  "modified": "2026-07-01 21:50:05",
+  "committed": true
+ },
+ {
+  "id": 13,
+  "name": "nadlan deploy 1.69.73 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "13-nadlan-deploy-1-69-73-temp.php",
+  "md5": "055767144208a4a12f0970ed98d00a70",
+  "modified": "2026-07-01 21:52:57",
+  "committed": true
+ },
+ {
+  "id": 14,
+  "name": "nadlan deploy 1.69.74 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "14-nadlan-deploy-1-69-74-temp.php",
+  "md5": "d4faa6588e483251c07d2470c6f19cf7",
+  "modified": "2026-07-02 02:50:51",
+  "committed": true
+ },
+ {
+  "id": 15,
+  "name": "nadlan enable registration (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "15-nadlan-enable-registration-temp.php",
+  "md5": "2acb36c96438133868cf25bc164d174a",
+  "modified": "2026-07-02 05:36:36",
+  "committed": true
+ },
+ {
+  "id": 16,
+  "name": "nadlan deploy 1.69.75 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "16-nadlan-deploy-1-69-75-temp.php",
+  "md5": "697bb641854a5dff2d8b6d7cc2571ab3",
+  "modified": "2026-07-02 05:40:55",
+  "committed": true
+ },
+ {
+  "id": 17,
+  "name": "nadlan contact options (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "17-nadlan-contact-options-temp.php",
+  "md5": "60b2261aa6c89d045372c5fbebb4b382",
+  "modified": "2026-07-02 05:47:31",
+  "committed": true
+ },
+ {
+  "id": 18,
+  "name": "nadlan deploy 1.69.76 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "18-nadlan-deploy-1-69-76-temp.php",
+  "md5": "256b01124caba2d63b786112aad2a59a",
+  "modified": "2026-07-02 05:49:27",
+  "committed": true
+ },
+ {
+  "id": 19,
+  "name": "nadlan deploy 1.69.77 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "19-nadlan-deploy-1-69-77-temp.php",
+  "md5": "997d68fb3498c2ec9a63bd4df9ff6195",
+  "modified": "2026-07-02 06:26:12",
+  "committed": true
+ },
+ {
+  "id": 20,
+  "name": "nadlan deploy 1.69.78 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "20-nadlan-deploy-1-69-78-temp.php",
+  "md5": "4aaf6d5b8f9e04dafbb3326bd7db6962",
+  "modified": "2026-07-02 06:31:33",
+  "committed": true
+ },
+ {
+  "id": 21,
+  "name": "nadlan fab off (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "21-nadlan-fab-off-temp.php",
+  "md5": "207d4064a11a07b7457faf1fdfc8d61a",
+  "modified": "2026-07-02 06:58:29",
+  "committed": true
+ },
+ {
+  "id": 22,
+  "name": "nadlan deploy 1.69.79 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "22-nadlan-deploy-1-69-79-temp.php",
+  "md5": "5e3e8535320990300d19ab25411c6163",
+  "modified": "2026-07-02 07:00:29",
+  "committed": true
+ },
+ {
+  "id": 23,
+  "name": "nadlan deploy 1.69.80 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "23-nadlan-deploy-1-69-80-temp.php",
+  "md5": "78a385cbbd7b821a184fc1cdd24348a4",
+  "modified": "2026-07-02 07:16:32",
+  "committed": true
+ },
+ {
+  "id": 24,
+  "name": "nadlan deploy 1.69.81 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "24-nadlan-deploy-1-69-81-temp.php",
+  "md5": "e29341db2b6e9ac07fe963318b82db85",
+  "modified": "2026-07-02 07:19:17",
+  "committed": true
+ },
+ {
+  "id": 25,
+  "name": "nadlan yoast brand (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "25-nadlan-yoast-brand-temp.php",
+  "md5": "24ee3e280f1cea2e7b34090dd88ea3eb",
+  "modified": "2026-07-02 07:20:20",
+  "committed": true
+ },
+ {
+  "id": 26,
+  "name": "nadlan deploy 1.69.82 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "26-nadlan-deploy-1-69-82-temp.php",
+  "md5": "49a71a98fc65d31f30b6d002bc5673e9",
+  "modified": "2026-07-02 07:34:01",
+  "committed": true
+ },
+ {
+  "id": 27,
+  "name": "nadlan deploy 1.69.83 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "27-nadlan-deploy-1-69-83-temp.php",
+  "md5": "df90b6e852cd66122aac9dc328a7c45a",
+  "modified": "2026-07-02 07:42:52",
+  "committed": true
+ },
+ {
+  "id": 28,
+  "name": "nadlan deploy 1.69.84 (temp)",
+  "active": false,
+  "scope": "global",
+  "file": "28-nadlan-deploy-1-69-84-temp.php",
+  "md5": "3bd89e426631464b49372147db205e12",
+  "modified": "2026-07-02 08:14:33",
+  "committed": true
+ },
+ {
+  "id": 66,
+  "name": "nadlan deploy 1.71.8",
+  "active": false,
+  "scope": "global",
+  "file": "66-nadlan-deploy-1-71-8.php",
+  "md5": "70d797ab2f3cdf6c0e159e36e37e3c2d",
+  "modified": "2026-07-05 07:49:33",
+  "committed": true
+ },
+ {
+  "id": 84,
+  "name": "nl-dep19",
+  "active": false,
+  "scope": "global",
+  "file": "84-nl-dep19.php",
+  "md5": "3ef143f060340c50f4122c167537907b",
+  "modified": "2026-07-06 07:59:37",
+  "committed": true
+ },
+ {
+  "id": 85,
+  "name": "nl-purge19",
+  "active": false,
+  "scope": "global",
+  "file": "85-nl-purge19.php",
+  "md5": "32d643b8ce47badd5660152afbeb72a8",
+  "modified": "2026-07-06 08:00:15",
+  "committed": true
+ },
+ {
+  "id": 86,
+  "name": "nl-dep20",
+  "active": false,
+  "scope": "global",
+  "file": "86-nl-dep20.php",
+  "md5": "536deb5f5c7f6836a4dd290160853a11",
+  "modified": "2026-07-06 08:06:15",
+  "committed": true
+ },
+ {
+  "id": 87,
+  "name": "nl-purge20",
+  "active": false,
+  "scope": "global",
+  "file": "87-nl-purge20.php",
+  "md5": "32d643b8ce47badd5660152afbeb72a8",
+  "modified": "2026-07-06 08:57:07",
+  "committed": true
+ },
+ {
+  "id": 88,
+  "name": "nl-dep21",
+  "active": false,
+  "scope": "global",
+  "file": "88-nl-dep21.php",
+  "md5": "07b542c5836374212fa4a4d0568c5ddd",
+  "modified": "2026-07-06 09:11:44",
+  "committed": true
+ },
+ {
+  "id": 89,
+  "name": "nl-dep22",
+  "active": false,
+  "scope": "global",
+  "file": "89-nl-dep22.php",
+  "md5": "ece375b266a53c3f8c3159266a18b357",
+  "modified": "2026-07-06 09:20:56",
+  "committed": true
+ },
+ {
+  "id": 90,
+  "name": "nl-dep23",
+  "active": false,
+  "scope": "global",
+  "file": "90-nl-dep23.php",
+  "md5": "88da3e5d5c92a9d152fddf2673862d9f",
+  "modified": "2026-07-06 09:24:35",
+  "committed": true
+ },
+ {
+  "id": 91,
+  "name": "nl-dep24",
+  "active": false,
+  "scope": "global",
+  "file": "91-nl-dep24.php",
+  "md5": "075e2e025ce9b4e82087236c5bcae070",
+  "modified": "2026-07-06 09:51:00",
+  "committed": true
+ },
+ {
+  "id": 92,
+  "name": "nl-jpegize",
+  "active": false,
+  "scope": "global",
+  "file": "92-nl-jpegize.php",
+  "md5": "bdc118ad063035825a7e9944dc66d07a",
+  "modified": "2026-07-06 09:51:37",
+  "committed": true
+ },
+ {
+  "id": 93,
+  "name": "nl-dep25",
+  "active": false,
+  "scope": "global",
+  "file": "93-nl-dep25.php",
+  "md5": "7d1568569931ae40e16e65b0bffd9a89",
+  "modified": "2026-07-06 09:53:32",
+  "committed": true
+ },
+ {
+  "id": 94,
+  "name": "nl-purgedt",
+  "active": false,
+  "scope": "global",
+  "file": "94-nl-purgedt.php",
+  "md5": "aec6db8ace3dc0aa019a7e7c854e56a9",
+  "modified": "2026-07-06 09:53:39",
+  "committed": true
+ },
+ {
+  "id": 95,
+  "name": "nl-dep26",
+  "active": false,
+  "scope": "global",
+  "file": "95-nl-dep26.php",
+  "md5": "e32ebceabb9108bf8c4093d3d4501f28",
+  "modified": "2026-07-06 10:03:56",
+  "committed": true
+ },
+ {
+  "id": 96,
+  "name": "nl-dep27",
+  "active": false,
+  "scope": "global",
+  "file": "96-nl-dep27.php",
+  "md5": "9798201fe68e987494455dc3b6e15433",
+  "modified": "2026-07-06 10:20:02",
+  "committed": true
+ },
+ {
+  "id": 97,
+  "name": "nl-dep28",
+  "active": false,
+  "scope": "global",
+  "file": "97-nl-dep28.php",
+  "md5": "b8ad6707a26b20b154f04f34703720bf",
+  "modified": "2026-07-06 10:52:05",
+  "committed": true
+ },
+ {
+  "id": 98,
+  "name": "nl-geoingest",
+  "active": false,
+  "scope": "global",
+  "file": "98-nl-geoingest.php",
+  "md5": "cf87311c43e2c5e8d8627d977f3441eb",
+  "modified": "2026-07-06 10:55:33",
+  "committed": true
+ },
+ {
+  "id": 99,
+  "name": "nl-dep29",
+  "active": false,
+  "scope": "global",
+  "file": "99-nl-dep29.php",
+  "md5": "a20cf3b85c08a37f80dcc2293153fe47",
+  "modified": "2026-07-06 10:58:52",
+  "committed": true
+ },
+ {
+  "id": 100,
+  "name": "nl-purgepm",
+  "active": false,
+  "scope": "global",
+  "file": "100-nl-purgepm.php",
+  "md5": "393da1f9697272d84db38bb2419c0f45",
+  "modified": "2026-07-06 10:59:43",
+  "committed": true
+ },
+ {
+  "id": 101,
+  "name": "nl-hubmeta",
+  "active": false,
+  "scope": "global",
+  "file": "101-nl-hubmeta.php",
+  "md5": "bc65d14cd61996baad2607594f9ad2d2",
+  "modified": "2026-07-06 11:03:32",
+  "committed": true
+ },
+ {
+  "id": 102,
+  "name": "nl-dep30",
+  "active": false,
+  "scope": "global",
+  "file": "102-nl-dep30.php",
+  "md5": "2b3bf03ffe58c9e6dc29e5a8de677ad6",
+  "modified": "2026-07-06 11:09:20",
+  "committed": true
+ },
+ {
+  "id": 103,
+  "name": "nl-dep31",
+  "active": false,
+  "scope": "global",
+  "file": "103-nl-dep31.php",
+  "md5": "0e0d0f7f596595ea8ea69b668ff230e8",
+  "modified": "2026-07-06 11:48:41",
+  "committed": true
+ },
+ {
+  "id": 104,
+  "name": "nl-purgepm2",
+  "active": false,
+  "scope": "global",
+  "file": "104-nl-purgepm2.php",
+  "md5": "d5a8e6a8867ad867f0817768b8b9b7e8",
+  "modified": "2026-07-06 11:48:50",
+  "committed": true
+ },
+ {
+  "id": 105,
+  "name": "nl-setfeat",
+  "active": false,
+  "scope": "global",
+  "file": "105-nl-setfeat.php",
+  "md5": "75c6831bd254cca00026c58856b0af6c",
+  "modified": "2026-07-06 11:49:40",
+  "committed": true
+ },
+ {
+  "id": 106,
+  "name": "nl-keytest",
+  "active": false,
+  "scope": "global",
+  "file": "106-nl-keytest.php",
+  "md5": "e01e402d15f42eedfbf43c698b3fcc66",
+  "modified": "2026-07-06 11:58:36",
+  "committed": true
+ },
+ {
+  "id": 107,
+  "name": "nl-frmeta",
+  "active": false,
+  "scope": "global",
+  "file": "107-nl-frmeta.php",
+  "md5": "1c5da2033ea7d2911b2a9cdbfb65390a",
+  "modified": "2026-07-06 12:01:09",
+  "committed": true
+ },
+ {
+  "id": 108,
+  "name": "nl-dep32",
+  "active": false,
+  "scope": "global",
+  "file": "108-nl-dep32.php",
+  "md5": "51daa08c7d50d5cd5b673118bcf6f922",
+  "modified": "2026-07-06 12:04:29",
+  "committed": true
+ },
+ {
+  "id": 109,
+  "name": "nl-regstate",
+  "active": false,
+  "scope": "global",
+  "file": "109-nl-regstate.php",
+  "md5": "095bdf6a7f4ff47ee516b680deceb298",
+  "modified": "2026-07-06 12:22:58",
+  "committed": true
+ },
+ {
+  "id": 110,
+  "name": "nl-dep33",
+  "active": false,
+  "scope": "global",
+  "file": "110-nl-dep33.php",
+  "md5": "8acb28c85e4de84f71999d9db6fcc977",
+  "modified": "2026-07-06 12:28:17",
+  "committed": true
+ },
+ {
+  "id": 111,
+  "name": "nl-dep33b",
+  "active": false,
+  "scope": "global",
+  "file": "111-nl-dep33b.php",
+  "md5": "8acb28c85e4de84f71999d9db6fcc977",
+  "modified": "2026-07-06 12:28:49",
+  "committed": true
+ },
+ {
+  "id": 112,
+  "name": "nl-gihunt",
+  "active": false,
+  "scope": "global",
+  "file": "112-nl-gihunt.php",
+  "md5": "6cff0aa5686e37ba6a13022d5abbce4d",
+  "modified": "2026-07-06 12:40:05",
+  "committed": true
+ },
+ {
+  "id": 113,
+  "name": "nl-gihunt2",
+  "active": false,
+  "scope": "global",
+  "file": "113-nl-gihunt2.php",
+  "md5": "6cff0aa5686e37ba6a13022d5abbce4d",
+  "modified": "2026-07-06 12:40:27",
+  "committed": true
+ },
+ {
+  "id": 114,
+  "name": "nl-gihunt3",
+  "active": false,
+  "scope": "global",
+  "file": "114-nl-gihunt3.php",
+  "md5": "b702916c126ee7358b642ed65256221c",
+  "modified": "2026-07-06 12:41:00",
+  "committed": true
+ },
+ {
+  "id": 115,
+  "name": "nl-gishape",
+  "active": false,
+  "scope": "global",
+  "file": "115-nl-gishape.php",
+  "md5": "53fc5725c2abf128d0ea7b4dc0706044",
+  "modified": "2026-07-06 12:41:32",
+  "committed": true
+ },
+ {
+  "id": 116,
+  "name": "nl-gigw",
+  "active": false,
+  "scope": "global",
+  "file": "116-nl-gigw.php",
+  "md5": "95ebf5be522fab3d51a7e5205adfc8ec",
+  "modified": "2026-07-06 12:42:09",
+  "committed": true
+ },
+ {
+  "id": 117,
+  "name": "nl-wcstate",
+  "active": false,
+  "scope": "global",
+  "file": "117-nl-wcstate.php",
+  "md5": "b723c6ae04ab02034c111756697727a6",
+  "modified": "2026-07-06 12:42:51",
+  "committed": true
+ },
+ {
+  "id": 118,
+  "name": "nl-dep34",
+  "active": false,
+  "scope": "global",
+  "file": "118-nl-dep34.php",
+  "md5": "81194e561370ba09ff64a5c6a917114b",
+  "modified": "2026-07-06 12:57:52",
+  "committed": true
+ },
+ {
+  "id": 119,
+  "name": "nl-cronchk",
+  "active": false,
+  "scope": "global",
+  "file": "119-nl-cronchk.php",
+  "md5": "27cc17e71fd89d65a324ba6e667d1fa0",
+  "modified": "2026-07-06 12:58:09",
+  "committed": true
+ },
+ {
+  "id": 120,
+  "name": "nl-flushrw",
+  "active": false,
+  "scope": "global",
+  "file": "120-nl-flushrw.php",
+  "md5": "c425c903feba6d0c00cf2a4a40be598a",
+  "modified": "2026-07-06 13:15:52",
+  "committed": true
+ },
+ {
+  "id": 121,
+  "name": "nl-coupon",
+  "active": false,
+  "scope": "global",
+  "file": "121-nl-coupon.php",
+  "md5": "34a7f497804ebaf51a0a7e705b2d18e7",
+  "modified": "2026-07-06 13:18:25",
+  "committed": true
+ },
+ {
+  "id": 122,
+  "name": "nl-dep35",
+  "active": false,
+  "scope": "global",
+  "file": "122-nl-dep35.php",
+  "md5": "c95067ab4a41e5071e6d1a89888e2012",
+  "modified": "2026-07-06 13:21:30",
+  "committed": true
+ },
+ {
+  "id": 123,
+  "name": "nl-dep36",
+  "active": false,
+  "scope": "global",
+  "file": "123-nl-dep36.php",
+  "md5": "ca4f35e330921a5da720ef29c027ca9b",
+  "modified": "2026-07-06 14:30:40",
+  "committed": true
+ },
+ {
+  "id": 124,
+  "name": "nl-duosib",
+  "active": false,
+  "scope": "global",
+  "file": "124-nl-duosib.php",
+  "md5": "5f608f15874434bc1ae7b6ba7b4e784c",
+  "modified": "2026-07-06 14:45:05",
+  "committed": true
+ },
+ {
+  "id": 125,
+  "name": "nl-dep37",
+  "active": false,
+  "scope": "global",
+  "file": "125-nl-dep37.php",
+  "md5": "efb7755074da0a26541657b47b82659d",
+  "modified": "2026-07-06 15:26:00",
+  "committed": true
+ },
+ {
+  "id": 126,
+  "name": "nl-dep38",
+  "active": false,
+  "scope": "global",
+  "file": "126-nl-dep38.php",
+  "md5": "90b787058162c2998623a47b7667b62b",
+  "modified": "2026-07-06 15:58:01",
+  "committed": true
+ },
+ {
+  "id": 127,
+  "name": "nl-dep39",
+  "active": false,
+  "scope": "global",
+  "file": "127-nl-dep39.php",
+  "md5": "41edff5e04b808626b46120b6ff9bac6",
+  "modified": "2026-07-06 16:17:11",
+  "committed": true
+ },
+ {
+  "id": 128,
+  "name": "nl-encboot",
+  "active": false,
+  "scope": "global",
+  "file": "128-nl-encboot.php",
+  "md5": "942c497e57d1e87ee72647e7ea77d38b",
+  "modified": "2026-07-06 16:19:31",
+  "committed": true
+ },
+ {
+  "id": 129,
+  "name": "nl-encdiag",
+  "active": false,
+  "scope": "global",
+  "file": "129-nl-encdiag.php",
+  "md5": "3bf28fc038d2cf5c7cbb9f2edcb9e0dc",
+  "modified": "2026-07-06 16:20:11",
+  "committed": true
+ },
+ {
+  "id": 156,
+  "name": "dep60",
+  "active": false,
+  "scope": "global",
+  "file": "156-dep60.php",
+  "md5": "cf5c53a643383133c1d06367c897abda",
+  "modified": "2026-07-07 07:23:12",
+  "committed": true
+ },
+ {
+  "id": 157,
+  "name": "dep61",
+  "active": false,
+  "scope": "global",
+  "file": "157-dep61.php",
+  "md5": "99d89d9043a00343c52748f4cb8f400e",
+  "modified": "2026-07-07 07:30:41",
+  "committed": true
+ },
+ {
+  "id": 158,
+  "name": "dbg-rw",
+  "active": false,
+  "scope": "global",
+  "file": "158-dbg-rw.php",
+  "md5": "603b114bd4e7754995954ce3ac540be2",
+  "modified": "2026-07-07 07:32:56",
+  "committed": true
+ },
+ {
+  "id": 159,
+  "name": "dbg-qv",
+  "active": false,
+  "scope": "global",
+  "file": "159-dbg-qv.php",
+  "md5": "3126ab9ef9ecd7e678066bbac91b6b60",
+  "modified": "2026-07-07 07:34:38",
+  "committed": true
+ },
+ {
+  "id": 160,
+  "name": "dbg-rw2",
+  "active": false,
+  "scope": "global",
+  "file": "160-dbg-rw2.php",
+  "md5": "f94131e17bfa22332529145ecf59df59",
+  "modified": "2026-07-07 07:35:19",
+  "committed": true
+ },
+ {
+  "id": 161,
+  "name": "dep62",
+  "active": false,
+  "scope": "global",
+  "file": "161-dep62.php",
+  "md5": "e73b737aca617594d30f574ce99f909b",
+  "modified": "2026-07-07 08:03:46",
+  "committed": true
+ },
+ {
+  "id": 162,
+  "name": "dep63",
+  "active": false,
+  "scope": "global",
+  "file": "162-dep63.php",
+  "md5": "b37eaa6ac5a32480044186d1088effe0",
+  "modified": "2026-07-07 08:10:12",
+  "committed": true
+ },
+ {
+  "id": 163,
+  "name": "dep64",
+  "active": false,
+  "scope": "global",
+  "file": "163-dep64.php",
+  "md5": "98446809bf248c219c228a93705913dd",
+  "modified": "2026-07-07 08:14:04",
+  "committed": true
+ },
+ {
+  "id": 164,
+  "name": "dep65",
+  "active": false,
+  "scope": "global",
+  "file": "164-dep65.php",
+  "md5": "522b840412506be332534614cda316ca",
+  "modified": "2026-07-07 08:43:04",
+  "committed": true
+ },
+ {
+  "id": 165,
+  "name": "dbg-pm",
+  "active": false,
+  "scope": "global",
+  "file": "165-dbg-pm.php",
+  "md5": "910304a4f3d5931870b772ebb893670e",
+  "modified": "2026-07-07 08:45:22",
+  "committed": true
+ },
+ {
+  "id": 166,
+  "name": "dbg-dom",
+  "active": false,
+  "scope": "global",
+  "file": "166-dbg-dom.php",
+  "md5": "f39aa5d5b1e26f32ea4e126509ea5270",
+  "modified": "2026-07-07 08:46:01",
+  "committed": true
+ },
+ {
+  "id": 167,
+  "name": "dep66",
+  "active": false,
+  "scope": "global",
+  "file": "167-dep66.php",
+  "md5": "afc80634720f7b7c42fcf2550a6a9fc7",
+  "modified": "2026-07-07 08:47:59",
+  "committed": true
+ },
+ {
+  "id": 168,
+  "name": "dep67",
+  "active": false,
+  "scope": "global",
+  "file": "168-dep67.php",
+  "md5": "dff61597c009a32aab4474d7a48a4364",
+  "modified": "2026-07-07 08:57:27",
+  "committed": true
+ },
+ {
+  "id": 169,
+  "name": "dep68",
+  "active": false,
+  "scope": "global",
+  "file": "169-dep68.php",
+  "md5": "63dec68469995764b71ef6042f87f706",
+  "modified": "2026-07-07 09:01:23",
+  "committed": true
+ },
+ {
+  "id": 170,
+  "name": "dep69",
+  "active": false,
+  "scope": "global",
+  "file": "170-dep69.php",
+  "md5": "93608084f911b0f43c9668f96776a6c3",
+  "modified": "2026-07-07 09:08:53",
+  "committed": true
+ },
+ {
+  "id": 171,
+  "name": "dbg-ps",
+  "active": false,
+  "scope": "global",
+  "file": "171-dbg-ps.php",
+  "md5": "2d57774c1f27c5b561cc04b41cd75e47",
+  "modified": "2026-07-07 09:21:25",
+  "committed": true
+ },
+ {
+  "id": 172,
+  "name": "dbg-ps2",
+  "active": false,
+  "scope": "global",
+  "file": "172-dbg-ps2.php",
+  "md5": "42202886a4fde76d1aaf0953ed604974",
+  "modified": "2026-07-07 09:21:48",
+  "committed": true
+ },
+ {
+  "id": 173,
+  "name": "dep70",
+  "active": false,
+  "scope": "global",
+  "file": "173-dep70.php",
+  "md5": "21fcec35d8af605ce27c581685cd81ab",
+  "modified": "2026-07-07 09:25:15",
+  "committed": true
+ },
+ {
+  "id": 174,
+  "name": "dep71",
+  "active": false,
+  "scope": "global",
+  "file": "174-dep71.php",
+  "md5": "5dcdbc6cb1b670c71d04864d9c118a53",
+  "modified": "2026-07-07 09:55:59",
+  "committed": true
+ },
+ {
+  "id": 175,
+  "name": "dbg-brain",
+  "active": false,
+  "scope": "global",
+  "file": "175-dbg-brain.php",
+  "md5": "071c213802ba98ed9107825f545a1065",
+  "modified": "2026-07-07 10:11:03",
+  "committed": true
+ },
+ {
+  "id": 176,
+  "name": "dep72",
+  "active": false,
+  "scope": "global",
+  "file": "176-dep72.php",
+  "md5": "73577859761a3ca193008e3f077d4e99",
+  "modified": "2026-07-07 10:15:07",
+  "committed": true
+ },
+ {
+  "id": 177,
+  "name": "dep73",
+  "active": false,
+  "scope": "global",
+  "file": "177-dep73.php",
+  "md5": "682af0c2deeb08b19bec67a9d3a1345d",
+  "modified": "2026-07-07 10:56:15",
+  "committed": true
+ },
+ {
+  "id": 178,
+  "name": "dep74",
+  "active": false,
+  "scope": "global",
+  "file": "178-dep74.php",
+  "md5": "23a857306b8f10f513f304ebb8af67c9",
+  "modified": "2026-07-07 11:01:40",
+  "committed": true
+ },
+ {
+  "id": 179,
+  "name": "dep75",
+  "active": false,
+  "scope": "global",
+  "file": "179-dep75.php",
+  "md5": "2240b8485d8c678d8392d4437e70efca",
+  "modified": "2026-07-07 11:10:28",
+  "committed": true
+ },
+ {
+  "id": 180,
+  "name": "dep76",
+  "active": false,
+  "scope": "global",
+  "file": "180-dep76.php",
+  "md5": "6742619da6fef1cfd2e9da14267dea24",
+  "modified": "2026-07-07 20:19:27",
+  "committed": true
+ },
+ {
+  "id": 230,
+  "name": "agent-deploy-1.72.111",
+  "active": false,
+  "scope": "global",
+  "file": "230-agent-deploy-1-72-111.php",
+  "md5": "994e8f3f1b817fd92e11e2486aaa162c",
+  "modified": "2026-07-13 16:00:58",
+  "committed": true
+ },
+ {
+  "id": 231,
+  "name": "agent-deploy-1.72.112",
+  "active": false,
+  "scope": "global",
+  "file": "231-agent-deploy-1-72-112.php",
+  "md5": "f442315a0c38ef3ab9325cce9f18b592",
+  "modified": "2026-07-13 16:06:24",
+  "committed": true
+ },
+ {
+  "id": 232,
+  "name": "agent-deploy-1.72.113",
+  "active": false,
+  "scope": "global",
+  "file": "232-agent-deploy-1-72-113.php",
+  "md5": "721ecc172d9e7c7375360d2eb7d6fafa",
+  "modified": "2026-07-13 16:41:46",
+  "committed": true
+ },
+ {
+  "id": 233,
+  "name": "agent-deploy-1.72.114",
+  "active": false,
+  "scope": "global",
+  "file": "233-agent-deploy-1-72-114.php",
+  "md5": "1c50f6a560bfadfeb788eaaa0f2ccc00",
+  "modified": "2026-07-13 16:43:42",
+  "committed": true
+ },
+ {
+  "id": 234,
+  "name": "agent-deploy-1.72.115",
+  "active": false,
+  "scope": "global",
+  "file": "234-agent-deploy-1-72-115.php",
+  "md5": "d03d7d1c3decd399f0178143aabffd55",
+  "modified": "2026-07-13 19:52:54",
+  "committed": true
+ },
+ {
+  "id": 235,
+  "name": "agent-deploy-1.72.116",
+  "active": false,
+  "scope": "global",
+  "file": "235-agent-deploy-1-72-116.php",
+  "md5": "6c83bef929019c2e8dd8e70d467a2efc",
+  "modified": "2026-07-13 20:03:28",
+  "committed": true
+ },
+ {
+  "id": 236,
+  "name": "agentfix-reimport",
+  "active": false,
+  "scope": "global",
+  "file": "236-agentfix-reimport.php",
+  "md5": "fe7c1ad799cb756ba84060bd6d78a895",
+  "modified": "2026-07-13 20:04:08",
+  "committed": true
+ },
+ {
+  "id": 237,
+  "name": "agentfix-reimport2",
+  "active": false,
+  "scope": "global",
+  "file": "237-agentfix-reimport2.php",
+  "md5": "97bf2f41a3f31b935681dc34a83d8621",
+  "modified": "2026-07-13 20:13:52",
+  "committed": true
+ },
+ {
+  "id": 238,
+  "name": "agent-deploy-1.72.117",
+  "active": false,
+  "scope": "global",
+  "file": "238-agent-deploy-1-72-117.php",
+  "md5": "01cbd8b502783bce8150e18141703cbf",
+  "modified": "2026-07-13 20:39:06",
+  "committed": true
+ },
+ {
+  "id": 239,
+  "name": "agentfix-poidiag",
+  "active": false,
+  "scope": "global",
+  "file": "239-agentfix-poidiag.php",
+  "md5": "bd0a8740178c26d45610c4d7555ca93a",
+  "modified": "2026-07-13 20:40:24",
+  "committed": true
+ },
+ {
+  "id": 240,
+  "name": "agent-deploy-1.72.118",
+  "active": false,
+  "scope": "global",
+  "file": "240-agent-deploy-1-72-118.php",
+  "md5": "12a995cfcb3732a4e34666d0647bd735",
+  "modified": "2026-07-14 17:31:51",
+  "committed": true
+ },
+ {
+  "id": 241,
+  "name": "agent-deploy-1.72.119",
+  "active": false,
+  "scope": "global",
+  "file": "241-agent-deploy-1-72-119.php",
+  "md5": "63f4b47391f449f472d9eee696b6627f",
+  "modified": "2026-07-14 19:04:51",
+  "committed": true
+ },
+ {
+  "id": 449,
+  "name": "x-einstein-private-stage-direct-route-6885-32",
+  "active": true,
+  "scope": "global",
+  "file": "449-x-einstein-private-stage-direct-route-6885-32.php",
+  "md5": "42be28307d9625587c12f60041f1257a",
+  "modified": "2026-08-14 12:28:33",
+  "committed": true
+ },
+ {
+  "id": 450,
+  "name": "x-einstein-flagship-20260814T124439Z-4527b2",
+  "active": true,
+  "scope": "global",
+  "file": "450-x-einstein-flagship-20260814t124439z-4527b2.php",
+  "md5": "b2c95ba97abb4fa4354f3e8e5c9da3d2",
+  "modified": "2026-08-14 13:49:27",
+  "committed": false,
+  "why": "contains an embedded one-time token (admin-gated route); code kept out of git"
+ },
+ {
+  "id": 457,
+  "name": "x-einstein-live-recovery-172207-00e2008dea28",
+  "active": true,
+  "scope": "global",
+  "file": "457-x-einstein-live-recovery-172207-00e2008dea28.php",
+  "md5": "cac02dea4463e124e03736677b3c3406",
+  "modified": "2026-08-15 03:49:08",
+  "committed": false,
+  "why": "contains an embedded one-time token (admin-gated route); code kept out of git"
+ },
+ {
+  "id": 458,
+  "name": "x-einstein-live-recovery-172207-0bce1d35be32",
+  "active": true,
+  "scope": "global",
+  "file": "458-x-einstein-live-recovery-172207-0bce1d35be32.php",
+  "md5": "2bd706c7502962465ef88dcece4c585a",
+  "modified": "2026-08-15 03:50:23",
+  "committed": false,
+  "why": "contains an embedded one-time token (admin-gated route); code kept out of git"
+ },
+ {
+  "id": 459,
+  "name": "x-einstein-live-recovery-172207-2904138b706c",
+  "active": true,
+  "scope": "global",
+  "file": "459-x-einstein-live-recovery-172207-2904138b706c.php",
+  "md5": "65110ec0c37e9988727c4a6833d2d0de",
+  "modified": "2026-08-15 03:50:52",
+  "committed": false,
+  "why": "contains an embedded one-time token (admin-gated route); code kept out of git"
+ },
+ {
+  "id": 565,
+  "name": "x-six8-assets-put",
+  "active": false,
+  "scope": "global",
+  "file": "565-x-six8-assets-put.php",
+  "md5": "1babc22c5c1f488ea04a2eda05612ee1",
+  "modified": "2026-08-20 12:58:00",
+  "committed": true
+ },
+ {
+  "id": 566,
+  "name": "x-six8-meta-fix",
+  "active": false,
+  "scope": "global",
+  "file": "566-x-six8-meta-fix.php",
+  "md5": "4f4309bafdf4731d6304fa6137908373",
+  "modified": "2026-08-20 12:59:33",
+  "committed": true
+ },
+ {
+  "id": 567,
+  "name": "x-six8-assets-put",
+  "active": false,
+  "scope": "global",
+  "file": "567-x-six8-assets-put.php",
+  "md5": "1babc22c5c1f488ea04a2eda05612ee1",
+  "modified": "2026-08-20 13:02:19",
+  "committed": true
+ },
+ {
+  "id": 568,
+  "name": "x-six8-r2-deploy",
+  "active": false,
+  "scope": "global",
+  "file": "568-x-six8-r2-deploy.php",
+  "md5": "b17b8e8155b6da2b9d74a9c82616d9b9",
+  "modified": "2026-08-20 14:02:51",
+  "committed": true
+ },
+ {
+  "id": 569,
+  "name": "x-six8-r3-deploy",
+  "active": false,
+  "scope": "global",
+  "file": "569-x-six8-r3-deploy.php",
+  "md5": "771914f90f9f57a0820a3a76ac7ce5e2",
+  "modified": "2026-08-20 14:15:38",
+  "committed": true
+ },
+ {
+  "id": 570,
+  "name": "x-six8-r4-deploy",
+  "active": false,
+  "scope": "global",
+  "file": "570-x-six8-r4-deploy.php",
+  "md5": "58d4bf0332715815b033b158ddd9e838",
+  "modified": "2026-08-20 14:30:35",
+  "committed": true
+ },
+ {
+  "id": 571,
+  "name": "x-six8-r5-board",
+  "active": false,
+  "scope": "global",
+  "file": "571-x-six8-r5-board.php",
+  "md5": "9fac69a699e56e572e1c182ac8183d6e",
+  "modified": "2026-08-20 15:13:15",
+  "committed": true
+ },
+ {
+  "id": 572,
+  "name": "x-six8-r6-sheet",
+  "active": false,
+  "scope": "global",
+  "file": "572-x-six8-r6-sheet.php",
+  "md5": "b21afe0dbf922e8193d3b8f495181054",
+  "modified": "2026-08-20 17:39:13",
+  "committed": true
+ },
+ {
+  "id": 573,
+  "name": "x-six8-r7-cap",
+  "active": false,
+  "scope": "global",
+  "file": "573-x-six8-r7-cap.php",
+  "md5": "26edf5b1455bd1fcbe26c80c12f35938",
+  "modified": "2026-08-20 17:47:10",
+  "committed": true
+ },
+ {
+  "id": 574,
+  "name": "x-six8-demo-put",
+  "active": false,
+  "scope": "global",
+  "file": "574-x-six8-demo-put.php",
+  "md5": "2212afcc3fb3f5b3bc42abec539751b7",
+  "modified": "2026-08-20 17:54:35",
+  "committed": true
+ },
+ {
+  "id": 575,
+  "name": "x-six8-demo-put",
+  "active": false,
+  "scope": "global",
+  "file": "575-x-six8-demo-put.php",
+  "md5": "2212afcc3fb3f5b3bc42abec539751b7",
+  "modified": "2026-08-20 17:56:59",
+  "committed": true
+ },
+ {
+  "id": 576,
+  "name": "x-six8-demo-put",
+  "active": false,
+  "scope": "global",
+  "file": "576-x-six8-demo-put.php",
+  "md5": "2212afcc3fb3f5b3bc42abec539751b7",
+  "modified": "2026-08-20 17:58:24",
+  "committed": true
+ },
+ {
+  "id": 577,
+  "name": "x-v5-175756",
+  "active": false,
+  "scope": "global",
+  "file": "577-x-v5-175756.php",
+  "md5": "81fcbcf8808964ad5103e5b3c3c97d39",
+  "modified": "2026-08-21 14:58:05",
+  "committed": true
+ },
+ {
+  "id": 578,
+  "name": "x-v5b-175923",
+  "active": false,
+  "scope": "global",
+  "file": "578-x-v5b-175923.php",
+  "md5": "158bb645e7fdca920356695330491e2e",
+  "modified": "2026-08-21 14:59:30",
+  "committed": true
+ },
+ {
+  "id": 579,
+  "name": "x-v5c-180213",
+  "active": false,
+  "scope": "global",
+  "file": "579-x-v5c-180213.php",
+  "md5": "22a6b9568cd70071ceea4115c6a7e48a",
+  "modified": "2026-08-21 15:02:19",
+  "committed": true
+ },
+ {
+  "id": 580,
+  "name": "x-v5d-180700",
+  "active": false,
+  "scope": "global",
+  "file": "580-x-v5d-180700.php",
+  "md5": "2d91d0c134ccf007bcb34805c5ef5b8a",
+  "modified": "2026-08-21 15:07:07",
+  "committed": true
+ },
+ {
+  "id": 581,
+  "name": "x-v5e-181122",
+  "active": false,
+  "scope": "global",
+  "file": "581-x-v5e-181122.php",
+  "md5": "6d01991ebe4b94a47cf750aa4a496ea2",
+  "modified": "2026-08-21 15:11:28",
+  "committed": true
+ },
+ {
+  "id": 582,
+  "name": "x-v6-184929",
+  "active": false,
+  "scope": "global",
+  "file": "582-x-v6-184929.php",
+  "md5": "c59966544b9fba907d26a540852ed875",
+  "modified": "2026-08-21 15:49:38",
+  "committed": true
+ },
+ {
+  "id": 583,
+  "name": "x-v6b-185216",
+  "active": false,
+  "scope": "global",
+  "file": "583-x-v6b-185216.php",
+  "md5": "deb62ae9b7094817e29db13e7b604e63",
+  "modified": "2026-08-21 15:52:22",
+  "committed": true
+ },
+ {
+  "id": 584,
+  "name": "x-v7ls-002039",
+  "active": false,
+  "scope": "global",
+  "file": "584-x-v7ls-002039.php",
+  "md5": "2540acbd1f5dfd491d4248cccba3fb44",
+  "modified": "2026-08-21 21:20:43",
+  "committed": true
+ },
+ {
+  "id": 585,
+  "name": "x-v7-003259",
+  "active": false,
+  "scope": "global",
+  "file": "585-x-v7-003259.php",
+  "md5": "d96bfdcfb8ddabbcaa7d4e08d0a38e37",
+  "modified": "2026-08-21 21:33:22",
+  "committed": true
+ },
+ {
+  "id": 586,
+  "name": "x-v7b-003619",
+  "active": false,
+  "scope": "global",
+  "file": "586-x-v7b-003619.php",
+  "md5": "639d19b77311fd9f2ac1dc5b59cf7b12",
+  "modified": "2026-08-21 21:36:25",
+  "committed": true
+ },
+ {
+  "id": 587,
+  "name": "x-v7c-003948",
+  "active": false,
+  "scope": "global",
+  "file": "587-x-v7c-003948.php",
+  "md5": "a63084bd4cc852f35a0dab77e00f73e5",
+  "modified": "2026-08-21 21:39:51",
+  "committed": true
+ },
+ {
+  "id": 588,
+  "name": "x-v8-101511",
+  "active": false,
+  "scope": "global",
+  "file": "588-x-v8-101511.php",
+  "md5": "2460b0db14fb65544a70343bd0cee925",
+  "modified": "2026-08-22 07:15:24",
+  "committed": true
+ },
+ {
+  "id": 589,
+  "name": "x-v8get-101621",
+  "active": false,
+  "scope": "global",
+  "file": "589-x-v8get-101621.php",
+  "md5": "ba15d5bff8abba43e3ed69e84067c389",
+  "modified": "2026-08-22 07:16:26",
+  "committed": true
+ },
+ {
+  "id": 590,
+  "name": "x-v7b-101827",
+  "active": false,
+  "scope": "global",
+  "file": "590-x-v7b-101827.php",
+  "md5": "5c57156f4aea4932ceec375294c5d43b",
+  "modified": "2026-08-22 07:18:33",
+  "committed": true
+ },
+ {
+  "id": 591,
+  "name": "x-v8c-101931",
+  "active": false,
+  "scope": "global",
+  "file": "591-x-v8c-101931.php",
+  "md5": "59b5e2377a287c1c20dbead6fdbfed55",
+  "modified": "2026-08-22 07:19:37",
+  "committed": true
+ },
+ {
+  "id": 592,
+  "name": "x-v8d-102607",
+  "active": false,
+  "scope": "global",
+  "file": "592-x-v8d-102607.php",
+  "md5": "4dde5e76e0f74faeba328a7a7debc100",
+  "modified": "2026-08-22 07:26:13",
+  "committed": true
+ },
+ {
+  "id": 593,
+  "name": "x-v9-110920",
+  "active": false,
+  "scope": "global",
+  "file": "593-x-v9-110920.php",
+  "md5": "6ff0f14b4c4d85ed5fc8f005282c9597",
+  "modified": "2026-08-22 08:09:29",
+  "committed": true
+ },
+ {
+  "id": 594,
+  "name": "x-v9b-111209",
+  "active": false,
+  "scope": "global",
+  "file": "594-x-v9b-111209.php",
+  "md5": "5afec6fc98d1882ebd4155241995e7f8",
+  "modified": "2026-08-22 08:12:15",
+  "committed": true
+ },
+ {
+  "id": 595,
+  "name": "x-artmeta-201940",
+  "active": false,
+  "scope": "global",
+  "file": "595-x-artmeta-201940.php",
+  "md5": "632e89ab74c3002e6dcbf55b807add64",
+  "modified": "2026-08-22 17:19:51",
+  "committed": true
+ },
+ {
+  "id": 596,
+  "name": "x-city-410-ec757f",
+  "active": true,
+  "scope": "global",
+  "file": "596-x-city-410-ec757f.php",
+  "md5": "cabc09244d67d267a142de93a18dd329",
+  "modified": "2026-08-25 15:36:24",
+  "committed": true
+ },
+ {
+  "id": 597,
+  "name": "x-city-410-0359c2",
+  "active": false,
+  "scope": "global",
+  "file": "597-x-city-410-0359c2.php",
+  "md5": "cc2e48ced4e9bd8b4df59d4560116617",
+  "modified": "2026-08-25 15:37:43",
+  "committed": true
+ },
+ {
+  "id": 598,
+  "name": "x-fix-68b8be",
+  "active": true,
+  "scope": "global",
+  "file": "598-x-fix-68b8be.php",
+  "md5": "b87de61d4980e1e3adff3d3820f07019",
+  "modified": "2026-08-25 19:12:47",
+  "committed": true
+ },
+ {
+  "id": 599,
+  "name": "x-r2b-e5a807",
+  "active": false,
+  "scope": "global",
+  "file": "599-x-r2b-e5a807.php",
+  "md5": "418cdecf1808e6eed5eb24e6ddcc3723",
+  "modified": "2026-08-25 19:15:13",
+  "committed": true
+ },
+ {
+  "id": 601,
+  "name": "x-aurelia-experience",
+  "active": true,
+  "scope": "global",
+  "file": "601-x-aurelia-experience.php",
+  "md5": "3121e72155d6119117a2c40c1ea46a85",
+  "modified": "2026-09-02 19:34:56",
+  "committed": true
+ },
+ {
+  "id": 603,
+  "name": "x-echo-city",
+  "active": false,
+  "scope": "global",
+  "file": "603-x-echo-city.php",
+  "md5": "74001223d2bb370cc6db99624d06bc4c",
+  "modified": "2026-08-30 13:13:25",
+  "committed": true
+ },
+ {
+  "id": 612,
+  "name": "x-ecopilot-presentation",
+  "active": false,
+  "scope": "global",
+  "file": "612-x-ecopilot-presentation.php",
+  "md5": "465e22123a7953ae4ab1fc8f0fffd744",
+  "modified": "2026-08-30 09:08:05",
+  "committed": true
+ },
+ {
+  "id": 618,
+  "name": "x-six8-home-plate-20260830",
+  "active": true,
+  "scope": "global",
+  "file": "618-x-six8-home-plate-20260830.php",
+  "md5": "f4e0e49422c1049b8a06f731c7b17496",
+  "modified": "2026-08-30 17:22:08",
+  "committed": true
+ },
+ {
+  "id": 638,
+  "name": "x-skin-a",
+  "active": true,
+  "scope": "global",
+  "file": "638-x-skin-a.php",
+  "md5": "6d895f541d602cc20f86d5b105d9f00e",
+  "modified": "2026-10-02 20:19:07",
+  "committed": true
+ },
+ {
+  "id": 661,
+  "name": "x-catalog-plus",
+  "active": true,
+  "scope": "global",
+  "file": "661-x-catalog-plus.php",
+  "md5": "763f1dfa2c66193c8f6e956b28bcda8b",
+  "modified": "2026-10-03 10:33:41",
+  "committed": true
+ },
+ {
+  "id": 682,
+  "name": "x-meital-yoast",
+  "active": false,
+  "scope": "global",
+  "file": "682-x-meital-yoast.php",
+  "md5": "d5fdc3c4e785d631c6cf9f6ea6d9eba6",
+  "modified": "2026-09-17 09:51:33",
+  "committed": true
+ },
+ {
+  "id": 683,
+  "name": "x-meital-yoast3",
+  "active": false,
+  "scope": "global",
+  "file": "683-x-meital-yoast3.php",
+  "md5": "ce800b98864693e2a559523e1f92f928",
+  "modified": "2026-09-17 15:07:43",
+  "committed": true
+ },
+ {
+  "id": 684,
+  "name": "nl-i18n-meta-rest",
+  "active": true,
+  "scope": "global",
+  "file": "684-nl-i18n-meta-rest.php",
+  "md5": "3cb26a39829fc833e636170bb238b5c7",
+  "modified": "2026-09-17 16:45:14",
+  "committed": true
+ },
+ {
+  "id": 685,
+  "name": "nl-i18n-hreflang-print",
+  "active": true,
+  "scope": "global",
+  "file": "685-nl-i18n-hreflang-print.php",
+  "md5": "17b70938ab4c44781242ffc924aaabf8",
+  "modified": "2026-09-17 17:14:18",
+  "committed": true
+ },
+ {
+  "id": 687,
+  "name": "x-broker-drop",
+  "active": true,
+  "scope": "global",
+  "file": "687-x-broker-drop.php",
+  "md5": "25d591722071e5566b76006f2a331ebf",
+  "modified": "2026-10-05 21:35:51",
+  "committed": true
+ },
+ {
+  "id": 699,
+  "name": "x-broker-join",
+  "active": true,
+  "scope": "global",
+  "file": "699-x-broker-join.php",
+  "md5": "42b4041bd237635c13e08dd9032c5c0e",
+  "modified": "2026-09-23 19:00:37",
+  "committed": true
+ },
+ {
+  "id": 707,
+  "name": "x-owner-wizard",
+  "active": true,
+  "scope": "global",
+  "file": "707-x-owner-wizard.php",
+  "md5": "2bfa5b2df54dc75661a8ae6ea9e3d827",
+  "modified": "2026-10-05 21:35:53",
+  "committed": true
+ }
+]

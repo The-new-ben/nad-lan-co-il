@@ -51,6 +51,7 @@ if ( ! function_exists( 'nadlan_reviews_recompute' ) ) {
 		update_post_meta( $target_id, 'reviews_count', $n );
 		delete_transient( 'nadlan_reviews_block_' . $target_id );
 		delete_transient( 'nadlan_reviews_block_1603_' . $target_id );
+		delete_transient( 'nadlan_reviews_block_396_' . $target_id ); // the key read since HAD-396
 	}
 }
 add_action( 'save_post_nadlan_review', function ( $post_id, $post ) {
@@ -207,7 +208,7 @@ if ( ! function_exists( 'nadlan_reviews_render' ) ) {
 	function nadlan_reviews_render( $target_id ) {
 		$target_id = (int) $target_id;
 		if ( ! $target_id ) { return ''; }
-		$ck = 'nadlan_reviews_block_1603_' . $target_id;
+		$ck = 'nadlan_reviews_block_396_' . $target_id; // 396: the summary needs real reviews (HAD-396)
 		$cache = get_transient( $ck );
 		if ( $cache !== false ) { return $cache; }
 		$avg = (float) get_post_meta( $target_id, 'rating', true );
@@ -217,6 +218,8 @@ if ( ! function_exists( 'nadlan_reviews_render' ) ) {
 			'posts_per_page' => 6,
 			'meta_query' => array( array( 'key' => 'target_id', 'value' => $target_id ) ),
 		) );
+		// seeded rating meta (the demo profiles carried 4.8 and 36) is not a review: no approved review, no stars and no schema (HAD-396)
+		if ( ! $reviews ) { $cnt = 0; }
 		$full = (int) round( $avg );
 		ob_start(); ?>
 <section class="nlrev" dir="rtl" id="nadlan-reviews">

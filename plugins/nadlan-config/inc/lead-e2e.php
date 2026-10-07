@@ -97,13 +97,7 @@ if ( ! function_exists( 'nadlan_lead_e2e_fingerprint_base' ) ) {
 	function nadlan_lead_e2e_fingerprint_base( $card_id, $fields ) {
 		$contact = strtolower( trim( (string) $fields['email'] ) ) . '|' . preg_replace( '/[^0-9+]/', '', (string) $fields['phone'] );
 		$name = strtolower( trim( (string) $fields['name'] ) );
-		/* UnitDesignRequest v102 (Codex LEAD-E2E-UNIT-CONTRACT): a request that names a project and a unit is that request;
-		   the same buyer asking about another unit is another lead, never the old one. Without them: exactly as before. */
-		$req = '';
-		if ( '' !== (string) ( $fields['project_slug'] ?? '' ) || '' !== (string) ( $fields['unit'] ?? '' ) ) {
-			$req = '|' . strtolower( (string) ( $fields['project_slug'] ?? '' ) ) . '|' . strtolower( (string) ( $fields['unit'] ?? '' ) );
-		}
-		return md5( (int) $card_id . '|' . $contact . '|' . $name . $req );
+		return md5( (int) $card_id . '|' . $contact . '|' . $name );
 	}
 }
 
