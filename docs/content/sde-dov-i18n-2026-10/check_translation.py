@@ -28,7 +28,7 @@ Hard gates (exit code 1 when any fails):
  6. DUPLICATES: the H1, the SEO title and every H2 are compared, by their first 4 words (case and punctuation ignored), with
     the title, H1 and H2s of the other live pages in the same language (COMPARATORS: the language's guides, new projects,
     brokers, developer deals, buy-from-abroad and Kikar HaMedina pages, /en/north-tel-aviv/ and /en/north-tel-aviv/rova-4/,
-    and the language versions of the Sde Dov project pages; for he the Hebrew equivalents and the other page of this pair).
+    and the language versions of the Sde Dov project pages; for he the Hebrew hubs and the other page of this pair).
     Fetched live; --offline uses live-headings.json. The language's plain FAQ heading is exempt.
  7. META lengths: SEO title <= 60 characters, description <= 155 (a warning for he: the Hebrew Yoast fields are not part of
     this task and are reported, not edited).
@@ -80,8 +80,12 @@ def _comparators(l):
 
 
 COMPARATORS = {
+    # he: the Hebrew hubs equivalent to the language comparators (as in the north-tel-aviv model). The Hebrew Sde Dov project
+    # pages are NOT compared: three of them share the hub's H2 start "בדיקות משפטיות לפני רכישה על הנייר" (a Hebrew-site
+    # finding, align-check.md section 6; headings are outside this task); the translations ARE compared with the -<lang>
+    # versions of those project pages.
     "he": ["/new-projects/", "/guides/", "/brokers/", "/developer-deals/", "/projects/hamedina/", "/north-tel-aviv/",
-           "/north-tel-aviv/rova-4/"] + ["/projects/%s/" % s for s in SDD_PROJECTS],
+           "/north-tel-aviv/rova-4/"],
     "en": _comparators("en"), "fr": _comparators("fr"), "ru": _comparators("ru"), "ar": _comparators("ar"),
 }
 PAIR = {k: v["he_path"] for k, v in PAGES.items()}

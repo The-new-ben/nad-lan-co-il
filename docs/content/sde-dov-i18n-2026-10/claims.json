@@ -57,7 +57,7 @@
   ],
   "date": "plan approved 2020; municipal page read 7.10.2026",
   "source": "TLVSD; NC2003",
-  "conflict": "",
+  "conflict": "'15,000-20,000 units' (an English guide) is not the plan: never use it.",
   "write_as": "'about 16,000 apartments planned'. Never a delivery date for the whole quarter."
  },
  {
@@ -145,7 +145,7 @@
   ],
   "date": "",
   "source": "HEWSD",
-  "conflict": "",
+  "conflict": "Some English sources say 30 June 2019 (the last day of flights): write 1 July 2019, as the Hebrew does.",
   "write_as": "The city is Tel Aviv; the line name keeps the three cities."
  },
  {
@@ -166,7 +166,7 @@
   "claim_id": "SDH-03",
   "page": "sde-dov-hub",
   "topic": "land",
-  "claim": "Boundaries: the Tzukei Aviv neighbourhood and Propes Street (north); Neve Yam, Program L (Tochnit Lamed) and Levi Eshkol Street (east); Kochav HaTzafon, the Reading compound and Shai Agnon Street (south); the beach and the promenade (west).",
+  "claim": "Boundaries: the Tzukei Aviv neighbourhood and Propes Street (north); Neve Yam, Plan L (Tochnit Lamed) and Levi Eshkol Street (east); Kochav HaTzafon, the Reading compound and Shai Agnon Street (south); the beach and the promenade (west).",
   "numbers": [],
   "date": "",
   "source": "TLVSD",
@@ -353,7 +353,7 @@
   "claim_id": "SDH-13",
   "page": "sde-dov-hub",
   "topic": "land",
-  "claim": "Land prices in the tenders: about ₪3.3 million per apartment on average in the 2022 tenders (development costs included); about ₪1.7 to ₪2.2 million per apartment in the February 2025 tenders.",
+  "claim": "Land prices in the tenders: about ₪3.3 million per apartment on average in the 2022 tenders (development costs included); about ₪1.7 to ₪2.2 million per apartment in the February 2025 tender for regular (for-sale) apartment buildings (the rental tenders of that month were far lower).",
   "numbers": [
    "2022",
    "3.3",

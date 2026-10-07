@@ -1,0 +1,1032 @@
+{
+ "page": "sde-dov-hub",
+ "language": "fr",
+ "target_url": "https://nad-lan.co.il/fr/sde-dov/",
+ "hebrew_url": "https://nad-lan.co.il/sde-dov/",
+ "h1": "Sde Dov à Tel Aviv : programmes neufs et appartements à vendre",
+ "faq_h2": "Questions fréquentes",
+ "marker": "<!-- NLAM -->",
+ "words_target": 7300,
+ "words_total_range": [
+  6205,
+  8760
+ ],
+ "hebrew_words": 5613,
+ "h2_count": 17,
+ "outline": [
+  {
+   "id": "hub-what",
+   "part": 1,
+   "hebrew_h2": "מה זה רובע שדה דב",
+   "h2": "Sde Dov, le nouveau quartier de Tel Aviv face à la mer",
+   "hebrew_words": 120,
+   "hebrew_table_words": 0,
+   "words": 160,
+   "must_use": [
+    "SD-01"
+   ],
+   "note": "The first section: the H1, then this H2, then the first paragraph, then the marker <!-- NLAM --> on its own line (the Hebrew section has one paragraph)."
+  },
+  {
+   "id": "hub-history",
+   "part": 1,
+   "hebrew_h2": "ההיסטוריה: משדה התעופה דב הוז לרובע החדש",
+   "h2": "Histoire : de l'aéroport Dov Hoz à un nouveau quartier",
+   "hebrew_words": 246,
+   "hebrew_table_words": 0,
+   "words": 320,
+   "must_use": [
+    "SDH-01"
+   ]
+  },
+  {
+   "id": "hub-land",
+   "part": 1,
+   "hebrew_h2": "הקרקע והמיקום: כ-1,300 דונם על חוף צפון תל אביב",
+   "h2": "Terrain et situation : environ 1 300 dounams sur le littoral nord",
+   "hebrew_words": 262,
+   "hebrew_table_words": 0,
+   "words": 340,
+   "must_use": [
+    "SDH-02",
+    "SDH-03"
+   ]
+  },
+  {
+   "id": "hub-plan",
+   "part": 1,
+   "hebrew_h2": "תוכנית המתאר: 16,000 דירות ל-40,000 תושבים",
+   "h2": "Le plan directeur : 16 000 logements pour 40 000 habitants",
+   "hebrew_words": 380,
+   "hebrew_table_words": 153,
+   "words": 490,
+   "must_use": [
+    "SDH-04",
+    "SDH-05",
+    "SD-01"
+   ]
+  },
+  {
+   "id": "hub-compounds",
+   "part": 1,
+   "hebrew_h2": "שלושת המתחמים: אשכול, מרכז הרובע, צפון הרובע",
+   "h2": "Trois secteurs : Eshkol, le Centre et le Nord",
+   "hebrew_words": 381,
+   "hebrew_table_words": 112,
+   "words": 500,
+   "must_use": [
+    "SDH-06",
+    "SDH-08",
+    "SD-01"
+   ]
+  },
+  {
+   "id": "hub-projects",
+   "part": 2,
+   "hebrew_h2": "הפרויקטים בשיווק ברובע",
+   "h2": "Les programmes en vente à Sde Dov",
+   "hebrew_words": 608,
+   "hebrew_table_words": 152,
+   "words": 790,
+   "must_use": [
+    "SDH-09",
+    "SDH-10"
+   ],
+   "h3": [
+    "Rainbow Tel Aviv",
+    "FIRST BY HAGAG",
+    "ASHIRA BY AVISROR",
+    "DIMRI YAMA",
+    "ZOHI",
+    "GINDI VOGUE",
+    "UTOPIA"
+   ]
+  },
+  {
+   "id": "hub-developers",
+   "part": 2,
+   "hebrew_h2": "היזמים: מי בונה בשדה דב",
+   "h2": "Les promoteurs qui construisent à Sde Dov",
+   "hebrew_words": 227,
+   "hebrew_table_words": 0,
+   "words": 300,
+   "must_use": []
+  },
+  {
+   "id": "hub-prices",
+   "part": 2,
+   "hebrew_h2": "מחירים: כמה עולה דירה בשדה דב",
+   "h2": "Prix : combien coûte un appartement à Sde Dov",
+   "hebrew_words": 581,
+   "hebrew_table_words": 173,
+   "words": 760,
+   "must_use": [
+    "SD-02",
+    "SD-03",
+    "SD-04",
+    "SDH-11",
+    "SDH-12",
+    "SDH-13",
+    "SDH-14",
+    "SD-05"
+   ]
+  },
+  {
+   "id": "hub-transport",
+   "part": 2,
+   "hebrew_h2": "תחבורה, פארקים, חופים ומבני ציבור",
+   "h2": "Transports, parcs, plages et équipements publics",
+   "hebrew_words": 265,
+   "hebrew_table_words": 0,
+   "words": 340,
+   "must_use": [
+    "SDH-05"
+   ]
+  },
+  {
+   "id": "hub-affordable",
+   "part": 3,
+   "hebrew_h2": "דיור בר-השגה ודיור מיוחד",
+   "h2": "Logement abordable et logement spécifique",
+   "hebrew_words": 223,
+   "hebrew_table_words": 0,
+   "words": 290,
+   "must_use": [
+    "SDH-05",
+    "SD-01"
+   ]
+  },
+  {
+   "id": "hub-invest",
+   "part": 3,
+   "hebrew_h2": "השקעה בשדה דב: יתרונות, סיכונים ומה לבדוק",
+   "h2": "Investir à Sde Dov : atouts, risques et points à vérifier",
+   "hebrew_words": 390,
+   "hebrew_table_words": 0,
+   "words": 510,
+   "must_use": [
+    "SD-02",
+    "SD-03",
+    "SDH-09"
+   ]
+  },
+  {
+   "id": "hub-legal",
+   "part": 3,
+   "hebrew_h2": "בדיקות משפטיות לפני רכישה על הנייר בשדה דב",
+   "h2": "Vérifications juridiques avant d'acheter sur plan",
+   "hebrew_words": 473,
+   "hebrew_table_words": 0,
+   "words": 610,
+   "must_use": []
+  },
+  {
+   "id": "hub-faq",
+   "part": 3,
+   "hebrew_h2": "שאלות נפוצות",
+   "h2": "Questions fréquentes",
+   "hebrew_words": 528,
+   "hebrew_table_words": 0,
+   "words": 690,
+   "must_use": [
+    "SDH-02",
+    "SDH-03",
+    "SD-01",
+    "SDH-04",
+    "SDH-09",
+    "SD-02",
+    "SD-03",
+    "SDH-12",
+    "SDH-06",
+    "SDH-05"
+   ],
+   "faq_questions": [
+    "Où se trouve le quartier de Sde Dov ?",
+    "Combien de logements sont prévus à Sde Dov ?",
+    "Quand les premiers habitants s'installeront-ils à Sde Dov ?",
+    "Combien coûte un appartement à Sde Dov ?",
+    "Qu'est-ce que le secteur Eshkol à Sde Dov ?",
+    "Quels sont les principaux promoteurs à Sde Dov ?",
+    "Faut-il investir à Sde Dov ?",
+    "Y a-t-il du logement abordable à Sde Dov ?",
+    "Que vérifier avant de signer pour un appartement à Sde Dov ?",
+    "Les charges de gestion seront-elles élevées à Sde Dov ?"
+   ]
+  },
+  {
+   "id": "hub-summary",
+   "part": 4,
+   "hebrew_h2": "סיכום קצר",
+   "h2": "Sde Dov en résumé",
+   "hebrew_words": 72,
+   "hebrew_table_words": 0,
+   "words": 90,
+   "must_use": [
+    "SD-01",
+    "SDH-04"
+   ]
+  },
+  {
+   "id": "hub-planning",
+   "part": 4,
+   "hebrew_h2": "תכנון הרובע: מהתכנית אל העיר החדשה",
+   "h2": "L'urbanisme du quartier : du plan à la ville nouvelle",
+   "hebrew_words": 740,
+   "hebrew_table_words": 0,
+   "words": 960,
+   "must_use": [
+    "SDH-07",
+    "SD-01",
+    "SDH-15",
+    "SDH-16"
+   ],
+   "h3": [
+    "Le plan construit un quartier, pas un ensemble de tours",
+    "Un parc littoral est un système, pas une pelouse",
+    "Les infrastructures avant les logements : le bon principe, difficile à coordonner",
+    "Transports publics, marche et vélo feront la qualité de vie",
+    "Comment vérifier un appartement dans un quartier en chantier",
+    "Ce qu'il faut vérifier dans les documents officiels",
+    "La concertation : comment les remarques des habitants entrent dans le plan"
+   ],
+   "note": "The Hebrew has a short quote line after the H3 on checking an apartment: keep it as a <p>. The official-sources list that closes the Hebrew chapter is NOT translated."
+  },
+  {
+   "id": "hub-guide",
+   "part": 4,
+   "hebrew_h2": "מדריך הרובע: מתחמים, נתונים ותשתיות",
+   "h2": "Guides du quartier : secteurs, données et infrastructures",
+   "hebrew_words": 47,
+   "hebrew_table_words": 0,
+   "words": 60,
+   "must_use": [],
+   "note": "A list of links, one <li> per Hebrew link, in the same order. Translate each anchor; a link to a Hebrew page carries IN_HEBREW."
+  },
+  {
+   "id": "hub-links",
+   "part": 4,
+   "hebrew_h2": "פרויקטים, כלים וליווי בשדה דב",
+   "h2": "Programmes, outils et accompagnement à Sde Dov",
+   "hebrew_words": 70,
+   "hebrew_table_words": 0,
+   "words": 90,
+   "must_use": [],
+   "note": "A list of links, one <li> per Hebrew link, in the same order. Translate each anchor; a link to a Hebrew page carries IN_HEBREW."
+  }
+ ],
+ "names": "Sde Dov (שדה דב) ; « le quartier de Sde Dov » (nom du site : Quartier de Sde Dov). L'aéroport Dov Hoz. Les secteurs : Eshkol (le secteur Eshkol), le Centre, le Nord. Programmes comme les promoteurs les écrivent : Rainbow Tel Aviv (Israel Canada), FIRST (Hagag Group), ASHIRA (Avisror Moshe & Fils), DIMRI YAMA (Y.H. Dimri ; architecte Rani Ziss, intérieurs Kelly Hoppen), ZOHI, GINDI VOGUE (Gindi Holdings), UTOPIA (groupe Nahmias), Mediterranean Towers (מגדלי הים התיכון, résidence seniors). Entreprise générale : Ashtrom. Lieux : Tzukei Aviv, rue Propes, Neve Yam, Plan L (forme du site pour תכנית ל׳), rue Levi Eshkol, Kochav HaTzafon, le site de Reading, rue Shai Agnon, le parc HaYarkon, Ibn Gabirol, Ramat Aviv, Park Tzameret, la ligne verte du tramway (métro léger). Institutions : l'Autorité foncière d'Israël, la commission de district de Tel Aviv, la commission locale de Tel Aviv-Jaffa, la municipalité de Tel Aviv-Jaffa. Lois : la loi sur la vente (appartements) et sa garantie bancaire (« garantie loi Sale »). Termes : taxe d'acquisition (mas rechisha), taxe de plus-value (hetel hashbaha), charges de gestion, vente sur plan (presale), compte d'accompagnement bancaire. « 4 pièces » israélien = 4 pièces français.",
+ "keywords_monthly": [
+  [
+   "sde dov (France)",
+   110
+  ],
+  [
+   "sde dov tel aviv (France)",
+   110
+  ],
+  [
+   "immobilier tel aviv",
+   140
+  ],
+  [
+   "appartement tel aviv",
+   140
+  ],
+  [
+   "acheter appartement tel aviv",
+   110
+  ],
+  [
+   "prix immobilier tel aviv",
+   50
+  ],
+  [
+   "programme neuf tel aviv",
+   10
+  ],
+  [
+   "immobilier israel (30.9)",
+   320
+  ],
+  [
+   "quartier sde dov / sde dov immobilier / appartement bord de mer tel aviv",
+   "no volume data"
+  ]
+ ],
+ "serp": "Google France, « sde dov tel aviv » (7.10.2026) : pas d'aperçu IA. Organique : un guide anglophone (Sde Dov, « la plus grande transformation urbaine »), un cabinet d'avocats (« environ 1 300 dounams »), un article de presse de 2022 (1 490 dounams, 41 000 habitants : PAS nos chiffres), des pages de promoteurs (FIRST, ASHIRA « la future Riviera de Tel Aviv »). Vidéos courtes d'agents francophones (« le Monaco de Tel Aviv »). Questions associées : Quel est le quartier le plus riche de Tel Aviv ? Quel est le prix moyen d'un logement à Tel Aviv ? Annonce payante : FIRST.",
+ "audience": "Acheteurs français et belges (alyah, pied-à-terre, investissement) et olim francophones déjà en Israël qui montent en gamme. Ils achètent souvent à distance et comparent en shekels.",
+ "culture": "Le vocabulaire du lecteur : quartier balnéaire, programme neuf, sur plan, front de mer, alyah, pied-à-terre. Expliquer une fois le compte israélien des pièces et la garantie de la loi sur la vente. Montrer qu'on peut tout préparer à distance (avocat avec procuration) sans ajouter de chiffre.",
+ "typography": "Espace insécable avant : ; ? ! et entre milliers (83 000 ₪ ; 9,45 millions de ₪) ; virgule décimale ; dates « 12 mars 2020 » ou 4.2026 dans les tableaux ; guillemets « » ; pas de tiret long (—) ni moyen (–).",
+ "units": "m² et ₪ seulement. Pas d'euros, pas d'hectares en plus du dounam (1 dounam = 1 000 m², une seule fois).",
+ "banned": "interface · démo · modèle (au sens 3D) · moteur · calque · prototype · simulation · technologie · « le système » · « la plateforme » · expérience digitale · 3D · Atlas · bientôt · « conseil gratuit » · tout nom de source ou de média (Wikipédia, Globes, Calcalist, Ynet, Psagot...) · il est important de noter · force est de constater · en conclusion · véritable écrin · niché",
+ "in_hebrew_marker": "(en hébreu)",
+ "internal_links": [
+  {
+   "url": "https://nad-lan.co.il/sde-dov/prices/",
+   "maps_from": "https://nad-lan.co.il/sde-dov/prices/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/sde-dov/prices/",
+   "language_version_status": 404,
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/sde-dov/eshkol/",
+   "maps_from": "https://nad-lan.co.il/sde-dov/eshkol/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/sde-dov/eshkol/",
+   "language_version_status": 404,
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/sde-dov/merkaz/",
+   "maps_from": "https://nad-lan.co.il/sde-dov/merkaz/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/sde-dov/merkaz/",
+   "language_version_status": 404,
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/sde-dov/tzafon/",
+   "maps_from": "https://nad-lan.co.il/sde-dov/tzafon/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/sde-dov/tzafon/",
+   "language_version_status": 404,
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/sde-dov/hotels/",
+   "maps_from": "https://nad-lan.co.il/sde-dov/hotels/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/sde-dov/hotels/",
+   "language_version_status": 404,
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/sde-dov/parks/",
+   "maps_from": "https://nad-lan.co.il/sde-dov/parks/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/sde-dov/parks/",
+   "language_version_status": 404,
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/sde-dov/marina/",
+   "maps_from": "https://nad-lan.co.il/sde-dov/marina/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/sde-dov/marina/",
+   "language_version_status": 404,
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/sde-dov/transport/",
+   "maps_from": "https://nad-lan.co.il/sde-dov/transport/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/sde-dov/transport/",
+   "language_version_status": 404,
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/sde-dov/institutions/",
+   "maps_from": "https://nad-lan.co.il/sde-dov/institutions/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/sde-dov/institutions/",
+   "language_version_status": 404,
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/sde-dov/employment/",
+   "maps_from": "https://nad-lan.co.il/sde-dov/employment/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/sde-dov/employment/",
+   "language_version_status": 404,
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv-fr/",
+   "maps_from": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+   "target_language": "fr",
+   "status": 200,
+   "role": "mirror (same-topic page in this language)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/first-sde-dov/",
+   "maps_from": "https://nad-lan.co.il/projects/first-sde-dov/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/projects/first-sde-dov/",
+   "language_version_status": "not checked",
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/ashira-sde-dov-fr/",
+   "maps_from": "https://nad-lan.co.il/projects/ashira-sde-dov/",
+   "target_language": "fr",
+   "status": 200,
+   "role": "mirror (same-topic page in this language)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov-fr/",
+   "maps_from": "https://nad-lan.co.il/projects/dimri-yama-sde-dov/",
+   "target_language": "fr",
+   "status": 200,
+   "role": "mirror (same-topic page in this language)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/zohi-sde-dov-fr/",
+   "maps_from": "https://nad-lan.co.il/projects/zohi-sde-dov/",
+   "target_language": "fr",
+   "status": 200,
+   "role": "mirror (same-topic page in this language)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/gindi-vogue-sde-dov-fr/",
+   "maps_from": "https://nad-lan.co.il/projects/gindi-vogue-sde-dov/",
+   "target_language": "fr",
+   "status": 200,
+   "role": "mirror (same-topic page in this language)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/utopia-sde-dov-fr/",
+   "maps_from": "https://nad-lan.co.il/projects/utopia-sde-dov/",
+   "target_language": "fr",
+   "status": 200,
+   "role": "mirror (same-topic page in this language)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/shikun-binui-sde-dov-fr/",
+   "maps_from": "https://nad-lan.co.il/projects/shikun-binui-sde-dov/",
+   "target_language": "fr",
+   "status": 200,
+   "role": "mirror (same-topic page in this language)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/migdalei-hayam-sde-dov/",
+   "maps_from": "https://nad-lan.co.il/projects/migdalei-hayam-sde-dov/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/projects/migdalei-hayam-sde-dov/",
+   "language_version_status": "not checked",
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/real-estate-lawyer/",
+   "maps_from": "https://nad-lan.co.il/real-estate-lawyer/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/real-estate-lawyer/",
+   "language_version_status": 404,
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/purchase-tax-calculator/",
+   "maps_from": "https://nad-lan.co.il/purchase-tax-calculator/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/purchase-tax-calculator/",
+   "language_version_status": 404,
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/mortgage-calculator/",
+   "maps_from": "https://nad-lan.co.il/mortgage-calculator/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/mortgage-calculator/",
+   "language_version_status": 404,
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/investment-apartment/",
+   "maps_from": "https://nad-lan.co.il/investment-apartment/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/fr/investment-apartment/",
+   "language_version_status": 404,
+   "role": "mirror (no fr version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/fr/new-projects/",
+   "maps_from": "https://nad-lan.co.il/new-projects/",
+   "target_language": "fr",
+   "status": 200,
+   "role": "mirror (same-topic page in this language)"
+  },
+  {
+   "url": "https://nad-lan.co.il/fr/brokers/",
+   "anchor_suggestion": "agents immobiliers agréés",
+   "target_language": "fr",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  },
+  {
+   "url": "https://nad-lan.co.il/fr/property-value-estimator/",
+   "anchor_suggestion": "estimer la valeur d'un appartement",
+   "target_language": "fr",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/hamedina-fr/",
+   "anchor_suggestion": "les tours Kikar HaMedina",
+   "target_language": "fr",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  }
+ ],
+ "avoid_headings_first_4_words": [
+  "50 questions à poser",
+  "accompagnement bancaire et protection",
+  "acheter dans le nord",
+  "acheter depuis la france",
+  "acheter sur plan en",
+  "acheter un appartement aux",
+  "aperçu ce qui fait",
+  "appartement neuf comme investissement",
+  "appartement neuf ou ancien",
+  "appartements à vendre et",
+  "appartements à vendre à",
+  "architecture et cahier des",
+  "ashira sde dov appartement",
+  "audit détaillé de l",
+  "autorisation d occupation livraison",
+  "cadre de vie et",
+  "calculateur du prix d",
+  "calendrier de paiement indice",
+  "ce qui est inclus",
+  "choisir la ville le",
+  "combien coûte l achat",
+  "combien coûte un appartement",
+  "comment chercher un programme",
+  "comment ça marche",
+  "comparer les quartiers du",
+  "contrat de vente et",
+  "des parcelles de 1942",
+  "dimri yama tel aviv",
+  "décider en dix étapes",
+  "découvrir utopia par bâtiment",
+  "emplacement et accessibilité sde",
+  "emplacement et environnement",
+  "fiche de données en",
+  "financement conseil et design",
+  "gindi vogue sde dov",
+  "guides acheteur",
+  "guides acheteur nadlan",
+  "immeubles et appartements",
+  "immobilier neuf en israël",
+  "immobilier nord de tel",
+  "inscription des droits après",
+  "installations et services ce",
+  "kikar hamedina et ses",
+  "kikar hamedina sur la",
+  "kikar hamedina à tel",
+  "l immobilier du nord",
+  "le film de kikar",
+  "le parc de kikar",
+  "le parcours d achat",
+  "le plan du rova",
+  "le promoteur",
+  "le promoteur israel canada",
+  "le quartier de sde",
+  "les appartements surfaces balcons",
+  "les bâtiments et les",
+  "les formules",
+  "les grands repères l",
+  "les immeubles et les",
+  "les prix autour du",
+  "les prix des appartements",
+  "les projets phares du",
+  "les quartiers du nord",
+  "les quartiers du rova",
+  "les étapes du projet",
+  "localisation et environnement",
+  "loyers et estimations",
+  "mini site pour agents",
+  "modifications améliorations et crédits",
+  "nord de tel aviv",
+  "ouvrez votre site gratuitement",
+  "où se trouve le",
+  "phase du projet permis",
+  "piscine spa salle de",
+  "points juridiques et fiscaux",
+  "pourquoi le modèle en",
+  "prix d un appartement",
+  "prix de l immobilier",
+  "prix des appartements dans",
+  "prix et estimations",
+  "prix où se situe",
+  "programmes neufs et rénovation",
+  "promoteur",
+  "qu est ce qu",
+  "quand les tours kikar",
+  "quelle tour quel étage",
+  "questions fréquentes",
+  "questions fréquentes sur l",
+  "questions fréquentes sur rainbow",
+  "rainbow tel aviv residence",
+  "retard de livraison et",
+  "rova 4 les prix",
+  "rova 4 nouveau nord",
+  "rova 4 ou vieux",
+  "rova 4 sur la",
+  "rova 4 à tel",
+  "rénovation urbaine dans le",
+  "se déplacer dans le",
+  "shikun binui sde dov",
+  "signaux d alerte",
+  "sources",
+  "sources officielles mise à",
+  "sources vérifiées",
+  "tours kikar hamedina tel",
+  "tours kikar hamedina toutes",
+  "tours kikar hamedina à",
+  "tout autour du projet",
+  "tout sur une seule",
+  "transports et accès tramway",
+  "types de logements et",
+  "un appel vidéo avec",
+  "utopia sde dov tel",
+  "visite virtuelle des tours",
+  "visite virtuelle les étages",
+  "vue d ensemble",
+  "vérifications recommandées avant d",
+  "vérifier le promoteur le",
+  "zohi sde dov tel",
+  "à qui ce projet",
+  "à qui cela convient",
+  "à qui convient le",
+  "à qui s adresse",
+  "étages 10 25 et",
+  "étapes du projet"
+ ],
+ "component_headings_in_this_language": [
+  "Le quartier de Sde Dov sur la carte : les projets, la plage et les environs",
+  "Les prix des appartements à Sde Dov, projet par projet",
+  "Calculateur du prix d’un appartement à Sde Dov"
+ ],
+ "not_published": [
+  "a delivery date for the whole quarter",
+  "the management fees of any project",
+  "rents and rental yields",
+  "prices per m2 per compound other than those given",
+  "the PFAS soil contamination reports (not in the Hebrew page: do not add)",
+  "a separate hotel figure for the Eshkol compound"
+ ],
+ "seo_request": "Titre SEO en français, 60 caractères au plus, avec « Sde Dov » et « Tel Aviv » (hub) / « Sde Dov » et « prix » (page des prix). Description en français, 155 caractères au plus.",
+ "claims": [
+  {
+   "claim_id": "G-01",
+   "topic": "convention",
+   "claim": "The Israeli room count includes the living room: '4 rooms' = a living room and 3 bedrooms; a '1-room' unit is a studio.",
+   "numbers": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "write_as": "Explain once for a foreign reader; never convert to bedrooms in a table."
+  },
+  {
+   "claim_id": "G-02",
+   "topic": "convention",
+   "claim": "A dunam (the Israeli land unit) is 1,000 m2.",
+   "numbers": [
+    "1",
+    "1,000"
+   ],
+   "write_as": "Allowed once, to explain the unit. No other conversions (no sq ft, no acres, no hectares, no dollars or euros)."
+  },
+  {
+   "claim_id": "G-03",
+   "topic": "convention",
+   "claim": "Quarters: 'the first quarter of 2026' = January to March 2026 (Q1, 1-3.2026).",
+   "numbers": [
+    "1",
+    "3",
+    "1-3"
+   ],
+   "write_as": "'Q1 2026' or 'the first quarter of 2026'. Keep the year."
+  },
+  {
+   "claim_id": "SD-01",
+   "topic": "plan",
+   "claim": "The Sde Dov quarter (rova), on the site of the former airfield in north-west Tel Aviv-Yafo, is planned for about 16,000 apartments ('16 thousand') in three compounds: Eshkol (south-east), the Centre and the North.",
+   "numbers": [
+    "16,000",
+    "16",
+    "3"
+   ],
+   "date": "plan approved 2020; municipal page read 7.10.2026",
+   "conflict": "'15,000-20,000 units' (an English guide) is not the plan: never use it.",
+   "write_as": "'about 16,000 apartments planned'. Never a delivery date for the whole quarter."
+  },
+  {
+   "claim_id": "SD-02",
+   "topic": "prices",
+   "claim": "A survey of the developers' annual reports published in April 2026: about 1,280 apartments sold in the quarter so far; their average price about ₪83,000 per m2; a 4-room apartment sold for about ₪9.45 million on average.",
+   "numbers": [
+    "1,280",
+    "83,000",
+    "9.45",
+    "9,450,000",
+    "4",
+    "2026",
+    "4.2026"
+   ],
+   "date": "15.4.2026 (published 4.2026)",
+   "conflict": "An older page figure 'about 81,000' and an average 'about 7 million per deal' have no source: never use them.",
+   "write_as": "'about ₪83,000 per m2' (an average of sold units, not an asking price)."
+  },
+  {
+   "claim_id": "SD-03",
+   "topic": "prices",
+   "claim": "In 2026 most projects in the quarter sell at about ₪70,000 per m2.",
+   "numbers": [
+    "70,000",
+    "2026",
+    "5.2026",
+    "6.2026"
+   ],
+   "date": "21.5.2026; 6.6.2026"
+  },
+  {
+   "claim_id": "SD-04",
+   "topic": "prices",
+   "claim": "Per the developers' 2025 reports, the sales averages of the projects in the Eshkol compound ranged from about ₪63,400 to about ₪82,600 per m2, VAT included.",
+   "numbers": [
+    "63,400",
+    "82,600",
+    "2025"
+   ],
+   "date": "2025 reports"
+  },
+  {
+   "claim_id": "SD-05",
+   "topic": "deals",
+   "claim": "The largest deal published in the quarter: an apartment of about 390 m2 with a balcony of about 200 m2 on floor 38 of a tower in the Central compound, sold in December 2025 for more than ₪42 million.",
+   "numbers": [
+    "390",
+    "200",
+    "38",
+    "42",
+    "42,000,000",
+    "2025",
+    "12.2025"
+   ],
+   "date": "18.12.2025; 13.4.2026",
+   "conflict": "'43.75 million for 508 m2' had no source: never use it.",
+   "write_as": "'more than ₪42 million'."
+  },
+  {
+   "claim_id": "SDH-01",
+   "topic": "history",
+   "claim": "Sde Dov (Dov Hoz airport) was inaugurated on 23 September 1938, with the Tel Aviv - Haifa - Beirut air line; it closed on 1 July 2019 and its evacuation was completed early in 2020.",
+   "numbers": [
+    "23",
+    "1938",
+    "23.9.1938",
+    "1",
+    "2019",
+    "1.7.2019",
+    "2020"
+   ],
+   "conflict": "Some English sources say 30 June 2019 (the last day of flights): write 1 July 2019, as the Hebrew does.",
+   "write_as": "The city is Tel Aviv; the line name keeps the three cities."
+  },
+  {
+   "claim_id": "SDH-02",
+   "topic": "land",
+   "claim": "The quarter covers about 1,300 dunam along the sea in north Tel Aviv; its coastal front (the coastal park) is about 2 km long.",
+   "numbers": [
+    "1,300",
+    "2"
+   ],
+   "date": "12.3.2020; GIS read 7.10.2026; 10.2.2025",
+   "conflict": "'1,500 dunam' (also 1,490 / 1,600 in some press and marketing) has no official basis: never use it.",
+   "write_as": "'about 1,300 dunam'. 'about 1.3 km2' is NOT allowed (a new number)."
+  },
+  {
+   "claim_id": "SDH-03",
+   "topic": "land",
+   "claim": "Boundaries: the Tzukei Aviv neighbourhood and Propes Street (north); Neve Yam, Plan L (Tochnit Lamed) and Levi Eshkol Street (east); Kochav HaTzafon, the Reading compound and Shai Agnon Street (south); the beach and the promenade (west).",
+   "write_as": "No distances. The port of Tel Aviv is NOT a boundary."
+  },
+  {
+   "claim_id": "SDH-04",
+   "topic": "plan",
+   "claim": "The master plan describes a mixed-use quarter of about 16,000 apartments for about 40,000 residents; it came into force in August 2020.",
+   "numbers": [
+    "16,000",
+    "40,000",
+    "2020",
+    "8.2020"
+   ],
+   "date": "9.8.2020",
+   "write_as": "'about 40,000 residents' (41,000 appears in some press: never use it)."
+  },
+  {
+   "claim_id": "SDH-05",
+   "topic": "plan",
+   "claim": "Per the plan approved in 2020: about 500,000 m2 of public buildings, about 125,000 m2 of hotels and about 365 dunam of parks and public gardens; of the 16,000 apartments about 2,400 are for affordable housing at a reduced price and about 4,500 for special housing (student dormitories, assisted living, rental housing).",
+   "numbers": [
+    "500,000",
+    "125,000",
+    "365",
+    "2,400",
+    "4,500",
+    "16,000",
+    "2020"
+   ],
+   "date": "12.3.2020",
+   "conflict": "'4,500 to 6,900 special-housing units' misreads the source (6,900 = 2,400 + 4,500): never write 6,900."
+  },
+  {
+   "claim_id": "SDH-06",
+   "topic": "plan",
+   "claim": "The three compounds: Eshkol (TAMAL/3001) about 4,800 apartments, about 45,000 m2 of commerce, about 145,000 m2 of employment; the Centre about 7,100 apartments (7,128 in the approved plan), about 60,000 m2 of commerce, about 155,000 m2 of employment and about 800 hotel rooms; the North about 4,000 apartments, about 20,000 m2 of commerce, about 30,000 m2 of employment and about 1,150 hotel rooms. No separate hotel figure for Eshkol.",
+   "numbers": [
+    "4,800",
+    "45,000",
+    "145,000",
+    "7,100",
+    "7,128",
+    "60,000",
+    "155,000",
+    "800",
+    "4,000",
+    "20,000",
+    "30,000",
+    "1,150",
+    "3"
+   ],
+   "date": "municipal page read 7.10.2026; 3.2.2025",
+   "write_as": "The Eshkol hotel cell stays without a number."
+  },
+  {
+   "claim_id": "SDH-07",
+   "topic": "plan",
+   "claim": "Dates in force: the master plan August 2020; the Eshkol detailed plan May 2021; the Centre and North detailed plans 2025.",
+   "numbers": [
+    "2020",
+    "8.2020",
+    "2021",
+    "5.2021",
+    "2025"
+   ],
+   "date": "9.8.2020; 20.5.2021; 13.2.2025; 8.6.2025",
+   "conflict": "'Eshkol preceded the master plan' is wrong: never write it."
+  },
+  {
+   "claim_id": "SDH-08",
+   "topic": "tenders",
+   "claim": "In February and March 2025, eight land tenders closed for 6,666 apartments, more than 40% of the apartments planned in the quarter.",
+   "numbers": [
+    "2025",
+    "2.2025",
+    "3.2025",
+    "8",
+    "6,666",
+    "40",
+    "16,000"
+   ],
+   "date": "19.2.2025; 26.3.2025",
+   "write_as": "'eight tenders' in words or 8; never 41.7% (not in the Hebrew)."
+  },
+  {
+   "claim_id": "SDH-09",
+   "topic": "projects",
+   "claim": "Rainbow Tel Aviv (Israel Canada, Eshkol compound): a tower of 39 to 40 floors and boutique buildings; 459 apartments per the developer (the land tender spoke of 480); the main contractor Ashtrom was chosen in January 2026; delivery in stages, the last stage expected in 2030.",
+   "numbers": [
+    "39",
+    "40",
+    "459",
+    "480",
+    "2026",
+    "1.2026",
+    "2030"
+   ],
+   "date": "1.1.2026",
+   "conflict": "'480 per marketing / 459 per permit' were wrong attributions: never use them.",
+   "write_as": "2030 is the expected last stage, not a contractual date."
+  },
+  {
+   "claim_id": "SDH-10",
+   "topic": "projects",
+   "claim": "Project facts (as the area map cards): FIRST, a 45-floor tower and three boutique buildings of 9 floors, 350 apartments; ASHIRA, 406 apartments in four buildings including a 35-floor tower; DIMRI YAMA, 458 apartments in a 40-floor tower, a 16-floor mid-rise (towerlet) and two 9-floor buildings; ZOHI, about 230 apartments; GINDI VOGUE, 708 apartments on two lots in the Centre, including a 45-floor tower and three 20-floor towers; UTOPIA, 337 apartments in four buildings around a shared courtyard in Eshkol.",
+   "numbers": [
+    "45",
+    "3",
+    "9",
+    "350",
+    "406",
+    "4",
+    "35",
+    "458",
+    "40",
+    "16",
+    "2",
+    "230",
+    "708",
+    "20",
+    "337"
+   ],
+   "write_as": "Only if the Hebrew row carries it (the six table cells are optional edits)."
+  },
+  {
+   "claim_id": "SDH-11",
+   "topic": "prices",
+   "claim": "Rainbow Tel Aviv: the average of all apartments sold up to March 2026 was about ₪81,800 per m2.",
+   "numbers": [
+    "81,800",
+    "2026",
+    "3.2026"
+   ],
+   "date": "29.5.2026 (to the end of Q1 2026: 81,782)",
+   "conflict": "'about 82,000' was the rounded, undated form: use 81,800 with its date."
+  },
+  {
+   "claim_id": "SDH-12",
+   "topic": "prices",
+   "claim": "At these prices (about ₪70,000 to ₪83,000 per m2) a 100 m2 apartment costs about ₪7 to ₪8.3 million (a calculation, as the price calculator on the prices page).",
+   "numbers": [
+    "100",
+    "7",
+    "8.3",
+    "7,000,000",
+    "8,300,000",
+    "70,000",
+    "83,000"
+   ],
+   "conflict": "'a 100 m2 apartment about 8 million' was 100 x an unsourced 80,000: never use it.",
+   "write_as": "Say it is a calculation."
+  },
+  {
+   "claim_id": "SDH-13",
+   "topic": "land",
+   "claim": "Land prices in the tenders: about ₪3.3 million per apartment on average in the 2022 tenders (development costs included); about ₪1.7 to ₪2.2 million per apartment in the February 2025 tender for regular (for-sale) apartment buildings (the rental tenders of that month were far lower).",
+   "numbers": [
+    "2022",
+    "3.3",
+    "3,300,000",
+    "2025",
+    "2.2025",
+    "1.7",
+    "2.2",
+    "1,700,000",
+    "2,200,000"
+   ],
+   "date": "19.2.2025",
+   "conflict": "'over 3 million per unit' without a year: never use it."
+  },
+  {
+   "claim_id": "SDH-14",
+   "topic": "deals",
+   "claim": "Luxury deals of ₪14 million and more have been published in the quarter (since 10.2024).",
+   "numbers": [
+    "14",
+    "14,000,000"
+   ],
+   "date": "28.10.2024"
+  },
+  {
+   "claim_id": "SDH-15",
+   "topic": "planning",
+   "claim": "Public participation: five meetings during the master plan; four topic meetings for the detailed plans (traffic and transport; building and urban design; building and programme; housing).",
+   "numbers": [
+    "5",
+    "4"
+   ],
+   "write_as": "Words or digits."
+  },
+  {
+   "claim_id": "SDH-16",
+   "topic": "planning",
+   "claim": "'In a new neighbourhood you buy the apartment and also the first ten years of the neighbourhood being built around it' (the page's own line).",
+   "numbers": [
+    "10"
+   ]
+  },
+  {
+   "claim_id": "SDH-17",
+   "topic": "page",
+   "claim": "The page was checked and updated in October 2026 (7.10.2026).",
+   "numbers": [
+    "2026",
+    "10.2026",
+    "7.10.2026"
+   ],
+   "write_as": "Only in the Hebrew page; the translations carry no date line."
+  }
+ ],
+ "sources_note": "Sources stay in the repo (claims.json source field, align-check.md, sde-dov-prices.json); never in the text."
+}

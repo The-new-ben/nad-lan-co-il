@@ -63,7 +63,7 @@ SECTIONS = {
         ("pr-gaps", "מה מסביר את פערי המחירים בתוך הרובע", 1, ["SDP-13", "SDP-12"]),
         ("pr-rooms", "מחירים לפי גודל דירה", 1,
          ["SD-02", "SDP-09", "SDP-10", "SDP-11", "SDP-02", "SDP-12", "SDP-13", "SD-05"]),
-        ("pr-compounds", "מחירים לפי מתחם", 1, ["SD-01", "SD-02", "SD-04", "SDP-15", "SDP-16"]),
+        ("pr-compounds", "מחירים לפי מתחם", 2, ["SD-01", "SD-02", "SD-04", "SDP-15", "SDP-16"]),
         ("pr-sea", "פרמיית קו ראשון לים ונוף", 2, ["SDP-08", "SDP-01", "SD-03", "SDP-07", "SDP-02", "SD-02"]),
         ("pr-records", "עסקאות שיא ועסקאות שפל", 2, ["SDP-09", "SDP-14", "SD-05", "SD-02"]),
         ("pr-compare", "השוואת מחירים מול שכונות יוקרה בתל אביב", 2, ["SDP-04", "SDP-17", "SD-02", "SD-03"]),
@@ -87,7 +87,7 @@ HUB_H3_PROJECTS = ["Rainbow Tel Aviv", "FIRST BY HAGAG", "ASHIRA BY AVISROR", "D
 L = {
     "en": {
         "h1": {"sde-dov-hub": "Sde Dov, Tel Aviv: New Projects and Apartments for Sale",
-               "sde-dov-prices": "Sde Dov Apartment Prices: Price per m², Deals and Comparisons"},
+               "sde-dov-prices": "Apartment Prices in Sde Dov, Tel Aviv: per m², Deals and Comparisons"},
         "h2": {"sde-dov-hub": ["What Sde Dov is: Tel Aviv's new seafront quarter",
                                "History: from Dov Hoz airfield to a new quarter",
                                "Land and location: about 1,300 dunam on the north Tel Aviv coast",
@@ -132,10 +132,10 @@ L = {
                  "the North (צפון הרובע). Projects as the developers write them: Rainbow Tel Aviv (Israel Canada), FIRST or "
                  "FIRST BY HAGAG (Hagag Group), ASHIRA (Avisror Moshe & Sons), DIMRI YAMA (Y.H. Dimri; architect Rani Ziss, "
                  "interiors Kelly Hoppen), ZOHI (Levinstein, Mivne and Allied), GINDI VOGUE (Gindi Holdings), UTOPIA (Nahmias "
-                 "Group). Developers: Israel Canada, Hagag Group, Avisror Moshe & Sons, Y.H. Dimri, Gindi Holdings, Shikun & "
+                 "Group), Mediterranean Towers (מגדלי הים התיכון, senior living). Developers: Israel Canada, Hagag Group, Avisror Moshe & Sons, Y.H. Dimri, Gindi Holdings, Shikun & "
                  "Binui, Mor Group, Nahmias Group, Levinstein Group, Allied, Mivne, Africa Israel, Electra. Contractor: Ashtrom. "
-                 "Places: Tzukei Aviv, Propes Street, Neve Yam, Program L (Tochnit Lamed), Levi Eshkol Street, Kochav HaTzafon, "
-                 "the Reading compound, Shai Agnon Street, Yarkon Park, Ibn Gabirol, Ramat Aviv, Ramat Aviv Gimel, Park Tzameret, "
+                 "Places: Tzukei Aviv, Propes Street, Neve Yam, Plan L (the site's form for תכנית ל׳), Levi Eshkol Street, Kochav "
+                 "HaTzafon, the Reading compound, Shai Agnon Street, Yarkon Park, Ibn Gabirol, Ramat Aviv, Ramat Aviv Gimel, Park Tzameret, "
                  "the Green Line of the light rail. Bodies: the Israel Land Authority, the Tel Aviv District Planning Committee, "
                  "the Tel Aviv-Yafo Local Planning Committee, the Tel Aviv-Yafo municipality. Laws: the Sale (Apartments) Law; "
                  "the Sale (Apartments) (Assurance of Investments of Purchasers of Apartments) Law, \"the Sale Law guarantee\". "
@@ -220,8 +220,8 @@ L = {
         "names": "Sde Dov (שדה דב) ; « le quartier de Sde Dov » (nom du site : Quartier de Sde Dov). L'aéroport Dov Hoz. Les "
                  "secteurs : Eshkol (le secteur Eshkol), le Centre, le Nord. Programmes comme les promoteurs les écrivent : "
                  "Rainbow Tel Aviv (Israel Canada), FIRST (Hagag Group), ASHIRA (Avisror Moshe & Fils), DIMRI YAMA (Y.H. Dimri ; "
-                 "architecte Rani Ziss, intérieurs Kelly Hoppen), ZOHI, GINDI VOGUE (Gindi Holdings), UTOPIA (groupe Nahmias). "
-                 "Entreprise générale : Ashtrom. Lieux : Tzukei Aviv, rue Propes, Neve Yam, le quartier Lamed (Tochnit Lamed), "
+                 "architecte Rani Ziss, intérieurs Kelly Hoppen), ZOHI, GINDI VOGUE (Gindi Holdings), UTOPIA (groupe Nahmias), Mediterranean Towers (מגדלי הים התיכון, résidence seniors). "
+                 "Entreprise générale : Ashtrom. Lieux : Tzukei Aviv, rue Propes, Neve Yam, Plan L (forme du site pour תכנית ל׳), "
                  "rue Levi Eshkol, Kochav HaTzafon, le site de Reading, rue Shai Agnon, le parc HaYarkon, Ibn Gabirol, Ramat Aviv, "
                  "Park Tzameret, la ligne verte du tramway (métro léger). Institutions : l'Autorité foncière d'Israël, la "
                  "commission de district de Tel Aviv, la commission locale de Tel Aviv-Jaffa, la municipalité de Tel Aviv-Jaffa. "
@@ -256,7 +256,7 @@ L = {
     },
     "ru": {
         "h1": {"sde-dov-hub": "Сде-Дов в Тель-Авиве: новые проекты и квартиры на продажу",
-               "sde-dov-prices": "Цены на квартиры в Сде-Дов: цена за м², сделки и сравнение"},
+               "sde-dov-prices": "Сде-Дов: цены на квартиры, цена за м², сделки и сравнение"},
         "h2": {"sde-dov-hub": ["Что такое Сде-Дов: новый приморский район Тель-Авива",
                                "История: от аэропорта Дов Хоз к новому району",
                                "Земля и расположение: около 1 300 дунамов на северном побережье",
@@ -298,8 +298,8 @@ L = {
         "names": "Сде-Дов (שדה דב); «район Сде-Дов» (название сайта: Район Сде-Дов). Аэропорт Дов Хоз. Комплексы: Эшколь "
                  "(квартал Эшколь, как на карте сайта), Центр района, Север района. Проекты латиницей, как их пишут застройщики: "
                  "Rainbow Tel Aviv (Israel Canada), FIRST (Hagag Group), ASHIRA (Avisror Moshe & Sons), DIMRI YAMA (Y.H. Dimri; "
-                 "архитектор Рани Зис, интерьеры Kelly Hoppen), ZOHI, GINDI VOGUE (Gindi Holdings), UTOPIA (Nahmias Group). "
-                 "Генподрядчик Ashtrom. Места: Цукей-Авив, улица Пропес, Неве-Ям, район Ламед (Тохнит Ламед), улица Леви Эшколь, "
+                 "архитектор Рани Зис, интерьеры Kelly Hoppen), ZOHI, GINDI VOGUE (Gindi Holdings), UTOPIA (Nahmias Group), Mediterranean Towers (מגדלי הים התיכון, резиденция для пожилых). "
+                 "Генподрядчик Ashtrom. Места: Цукей-Авив, улица Пропес, Неве-Ям, Тохнит Ламед (תכנית ל׳), улица Леви Эшколь, "
                  "Кохав ха-Цафон, комплекс Рединг, улица Шай Агнон, парк Яркон, Ибн Гвироль, Рамат-Авив (так ищут: «рамат авив», "
                  "880 в месяц), Рамат-Авив Гимель, Парк Цамерет, Зелёная линия легкорельсового трамвая. Органы: Земельное "
                  "управление Израиля (Рами), окружная комиссия Тель-Авива, местная комиссия Тель-Авива-Яффо, муниципалитет "
@@ -330,7 +330,7 @@ L = {
     },
     "ar": {
         "h1": {"sde-dov-hub": "Sde Dov, Tel Aviv: New Projects and Apartments for Sale",
-               "sde-dov-prices": "Sde Dov Apartment Prices: Price per m², Deals and Comparisons"},
+               "sde-dov-prices": "Apartment Prices in Sde Dov, Tel Aviv: per m², Deals and Comparisons"},
         "h2": {"sde-dov-hub": ["ما هو حي سديه دوف: الحي الساحلي الجديد في تل أبيب",
                                "التاريخ: من مطار دوف هوز إلى حي جديد",
                                "الأرض والموقع: نحو 1,300 دونم على الساحل الشمالي",
@@ -367,8 +367,8 @@ L = {
         "names": "سديه دوف (שדה דב)؛ «حي سديه دوف» (اسم الموقع: حي سديه دوف). مطار دوف هوز. المجمعات: أشكول (منطقة أشكول، كما "
                  "في خريطة الموقع)، مركز الحي، شمال الحي. المشاريع بأسمائها اللاتينية كما يكتبها المطوّرون: Rainbow Tel Aviv "
                  "(Israel Canada)، FIRST (Hagag Group)، ASHIRA (Avisror Moshe & Sons)، DIMRI YAMA (Y.H. Dimri؛ المهندس رني زيس، "
-                 "التصميم الداخلي Kelly Hoppen)، ZOHI، GINDI VOGUE (Gindi Holdings)، UTOPIA (Nahmias Group). المقاول الرئيسي "
-                 "Ashtrom. الأماكن: تسوكي أفيف، شارع بروبس، نافيه يام، حي لامد (Tochnit Lamed)، شارع ليفي أشكول، كوخاف هتسافون، "
+                 "التصميم الداخلي Kelly Hoppen)، ZOHI، GINDI VOGUE (Gindi Holdings)، UTOPIA (Nahmias Group)، Mediterranean Towers (מגדלי הים התיכון، سكن محمي لكبار السن). المقاول الرئيسي "
+                 "Ashtrom. الأماكن: تسوكي أفيف، شارع بروبس، نافيه يام، تخنيت لامد (תכנית ל׳)، شارع ليفي أشكول، كوخاف هتسافون، "
                  "مجمع ريدينغ، شارع شاي عجنون، حديقة اليركون، ابن جبيرول، رمات أفيف (هكذا يُبحث عنها)، بارك تسامرت، الخط "
                  "الأخضر للقطار الخفيف. الجهات: سلطة أراضي إسرائيل، اللجنة اللوائية في تل أبيب، اللجنة المحلية في تل أبيب يافا، "
                  "بلدية تل أبيب يافا. القوانين: قانون البيع (شقق) وكفالة قانون البيع. مصطلحات: ضريبة الشراء، ضريبة التحسين "
@@ -396,17 +396,17 @@ L = {
                "most 60 characters, the same rule as English. The description in Arabic, at most 155 characters.",
     },
 }
-# the components' own headings in each language (the AreaMap translations exist; the PriceGuide ones are expected forms):
+# the components' own headings in each language (scripts/project-stage/area_map/sde-dov.<lang>.json and
+# price_guide/sde-dov-prices.<lang>.json, built by the components session, docs/content/sde-dov-i18n-2026-10/components-check.md):
 # the article's H2s must not start like them
 COMPONENT_HEADINGS = {
     "en": ["The Sde Dov quarter on the map: the projects, the beach and the neighbourhood",
-           "Sde Dov apartment price list by project", "Sde Dov apartment price calculator",
-           "How much does an apartment cost in Sde Dov"],
+           "Sde Dov apartment prices, project by project", "Sde Dov apartment price calculator"],
     "fr": ["Le quartier de Sde Dov sur la carte : les projets, la plage et les environs",
-           "Grille des prix des appartements à Sde Dov par programme", "Calculateur du prix d'un appartement à Sde Dov"],
-    "ru": ["Район Сде-Дов на карте: проекты, пляж и окрестности", "Прейскурант квартир в Сде-Дов по проектам",
-           "Калькулятор цены квартиры в Сде-Дов"],
-    "ar": ["حي سديه دوف على الخريطة: المشاريع والشاطئ والمحيط", "قائمة أسعار الشقق في سديه دوف حسب المشروع",
+           "Les prix des appartements à Sde Dov, projet par projet", "Calculateur du prix d’un appartement à Sde Dov"],
+    "ru": ["Район Сде-Дов на карте: проекты, пляж и окрестности", "Цены на квартиры в районе Сде-Дов по проектам",
+           "Калькулятор цены квартиры в районе Сде-Дов"],
+    "ar": ["حي سديه دوف على الخريطة: المشاريع والشاطئ والمحيط", "أسعار الشقق في سديه دوف حسب المشروع",
            "حاسبة سعر الشقة في سديه دوف"],
 }
 

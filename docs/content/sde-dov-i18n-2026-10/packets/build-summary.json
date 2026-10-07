@@ -1,0 +1,166 @@
+[
+ {
+  "page": "sde-dov-hub",
+  "lang": "en",
+  "words_target": 6740,
+  "range": [
+   5729,
+   8088
+  ],
+  "hebrew_words": 5613,
+  "h2": 17,
+  "parts": 4,
+  "msg_sizes": [
+   38664,
+   16056,
+   15360,
+   10314
+  ],
+  "claims": 25,
+  "links": 28,
+  "dupes": []
+ },
+ {
+  "page": "sde-dov-hub",
+  "lang": "fr",
+  "words_target": 7300,
+  "range": [
+   6205,
+   8760
+  ],
+  "hebrew_words": 5613,
+  "h2": 17,
+  "parts": 4,
+  "msg_sizes": [
+   36036,
+   16056,
+   15360,
+   10314
+  ],
+  "claims": 25,
+  "links": 27,
+  "dupes": []
+ },
+ {
+  "page": "sde-dov-hub",
+  "lang": "ru",
+  "words_target": 5610,
+  "range": [
+   4768,
+   6732
+  ],
+  "hebrew_words": 5613,
+  "h2": 17,
+  "parts": 4,
+  "msg_sizes": [
+   35235,
+   16056,
+   15360,
+   10314
+  ],
+  "claims": 25,
+  "links": 27,
+  "dupes": []
+ },
+ {
+  "page": "sde-dov-hub",
+  "lang": "ar",
+  "words_target": 5610,
+  "range": [
+   4768,
+   6732
+  ],
+  "hebrew_words": 5613,
+  "h2": 17,
+  "parts": 4,
+  "msg_sizes": [
+   34145,
+   16056,
+   15360,
+   10314
+  ],
+  "claims": 25,
+  "links": 26,
+  "dupes": []
+ },
+ {
+  "page": "sde-dov-prices",
+  "lang": "en",
+  "words_target": 6020,
+  "range": [
+   5117,
+   7224
+  ],
+  "hebrew_words": 5020,
+  "h2": 16,
+  "parts": 3,
+  "msg_sizes": [
+   35378,
+   19641,
+   15429
+  ],
+  "claims": 27,
+  "links": 9,
+  "dupes": []
+ },
+ {
+  "page": "sde-dov-prices",
+  "lang": "fr",
+  "words_target": 6530,
+  "range": [
+   5550,
+   7836
+  ],
+  "hebrew_words": 5020,
+  "h2": 16,
+  "parts": 3,
+  "msg_sizes": [
+   32520,
+   19641,
+   15429
+  ],
+  "claims": 27,
+  "links": 6,
+  "dupes": []
+ },
+ {
+  "page": "sde-dov-prices",
+  "lang": "ru",
+  "words_target": 5020,
+  "range": [
+   4267,
+   6024
+  ],
+  "hebrew_words": 5020,
+  "h2": 16,
+  "parts": 3,
+  "msg_sizes": [
+   31883,
+   19641,
+   15429
+  ],
+  "claims": 27,
+  "links": 6,
+  "dupes": []
+ },
+ {
+  "page": "sde-dov-prices",
+  "lang": "ar",
+  "words_target": 5020,
+  "range": [
+   4267,
+   6024
+  ],
+  "hebrew_words": 5020,
+  "h2": 16,
+  "parts": 3,
+  "msg_sizes": [
+   30981,
+   19641,
+   15429
+  ],
+  "claims": 27,
+  "links": 5,
+  "dupes": []
+ }
+]

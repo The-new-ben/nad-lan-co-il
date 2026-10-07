@@ -38,6 +38,7 @@ c("G-03", "both", "convention", "Quarters: 'the first quarter of 2026' = January
 c("SD-01", "both", "plan", "The Sde Dov quarter (rova), on the site of the former airfield in north-west Tel Aviv-Yafo, is "
   "planned for about 16,000 apartments ('16 thousand') in three compounds: Eshkol (south-east), the Centre and the North.",
   nums=("16,000", 16, 3), date="plan approved 2020; municipal page read 7.10.2026", src="TLVSD; NC2003",
+  conflict="'15,000-20,000 units' (an English guide) is not the plan: never use it.",
   write="'about 16,000 apartments planned'. Never a delivery date for the whole quarter.")
 c("SD-02", "both", "prices", "A survey of the developers' annual reports published in April 2026: about 1,280 apartments sold "
   "in the quarter so far; their average price about ₪83,000 per m2; a 4-room apartment sold for about ₪9.45 million on "
@@ -58,13 +59,14 @@ c("SD-05", "both", "deals", "The largest deal published in the quarter: an apart
 c("SDH-01", "sde-dov-hub", "history", "Sde Dov (Dov Hoz airport) was inaugurated on 23 September 1938, with the Tel Aviv - "
   "Haifa - Beirut air line; it closed on 1 July 2019 and its evacuation was completed early in 2020.",
   nums=(23, 1938, "23.9.1938", 1, 2019, "1.7.2019", 2020), src="HEWSD",
+  conflict="Some English sources say 30 June 2019 (the last day of flights): write 1 July 2019, as the Hebrew does.",
   write="The city is Tel Aviv; the line name keeps the three cities.")
 c("SDH-02", "sde-dov-hub", "land", "The quarter covers about 1,300 dunam along the sea in north Tel Aviv; its coastal front "
   "(the coastal park) is about 2 km long.", nums=("1,300", 2), date="12.3.2020; GIS read 7.10.2026; 10.2.2025",
   src="TLVSD; NC2003; GIS528 (1,304,428 m2); NC2502P",
   conflict="'1,500 dunam' (also 1,490 / 1,600 in some press and marketing) has no official basis: never use it.",
   write="'about 1,300 dunam'. 'about 1.3 km2' is NOT allowed (a new number).")
-c("SDH-03", "sde-dov-hub", "land", "Boundaries: the Tzukei Aviv neighbourhood and Propes Street (north); Neve Yam, Program L "
+c("SDH-03", "sde-dov-hub", "land", "Boundaries: the Tzukei Aviv neighbourhood and Propes Street (north); Neve Yam, Plan L "
   "(Tochnit Lamed) and Levi Eshkol Street (east); Kochav HaTzafon, the Reading compound and Shai Agnon Street (south); the "
   "beach and the promenade (west).", src="TLVSD", write="No distances. The port of Tel Aviv is NOT a boundary.")
 c("SDH-04", "sde-dov-hub", "plan", "The master plan describes a mixed-use quarter of about 16,000 apartments for about 40,000 "
@@ -111,7 +113,8 @@ c("SDH-12", "sde-dov-hub", "prices", "At these prices (about ₪70,000 to ₪83,
   conflict="'a 100 m2 apartment about 8 million' was 100 x an unsourced 80,000: never use it.",
   write="Say it is a calculation.")
 c("SDH-13", "sde-dov-hub", "land", "Land prices in the tenders: about ₪3.3 million per apartment on average in the 2022 "
-  "tenders (development costs included); about ₪1.7 to ₪2.2 million per apartment in the February 2025 tenders.",
+  "tenders (development costs included); about ₪1.7 to ₪2.2 million per apartment in the February 2025 tender for regular "
+  "(for-sale) apartment buildings (the rental tenders of that month were far lower).",
   nums=(2022, "3.3", "3,300,000", 2025, "2.2025", "1.7", "2.2", "1,700,000", "2,200,000"), date="19.2.2025",
   src="ICE2502; BZ2502; NC2502T", conflict="'over 3 million per unit' without a year: never use it.")
 c("SDH-14", "sde-dov-hub", "deals", "Luxury deals of ₪14 million and more have been published in the quarter (since 10.2024).",

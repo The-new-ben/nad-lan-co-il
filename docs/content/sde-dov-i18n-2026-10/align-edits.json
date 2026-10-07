@@ -1,7 +1,7 @@
 {
  "generated": "7.10.2026",
  "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages/4730?_fields=id,link,title,content,yoast_head_json,modified_gmt (content.rendered), public, retrieved 2026-10-07 20:08:23 UTC (modified_gmt 2026-10-07T11:35:15, the AreaMap shortcode added by another session). Saved as source/hub-4730-rest.json. Page 4730 = https://nad-lan.co.il/sde-dov/. Not edited: the title, the H1, the URL, every H2/H3 except ONE (the H2 'הקרקע והמיקום: כ-1,500 דונם...' carries a wrong number: edit 2), the Yoast title and description, the AreaMap shortcode, the external 'מקורות תכנון רשמיים' list.",
- "facts": "Source keys are defined in align-check.md section 3 (URL, what it says, date, when read); the audit ids A-01 to A-24 are in its section 4. Claims for the translations: claims.json (hub claims SDH-01 to SDH-26).",
+ "facts": "Source keys are defined in align-check.md section 3 (URL, what it says, date, when read); the audit ids A-01 to A-24 are in its section 4. Claims for the translations: claims.json (hub claims SDH-01 to SDH-17, shared claims SD-01 to SD-05).",
  "apply_rules": [
   "Apply in the listed order. Every \"old\" matches content.rendered exactly once (matches_in_live) and still once after the earlier edits are applied (verified by script on the saved copy). No edit needs replace_all.",
   "Every old string sits inside one paragraph, heading or table cell (cell edits carry their own <td dir=\"rtl\">...</td> because the same words appear elsewhere). Nothing crosses a line break (the rendered content uses CRLF).",
@@ -185,7 +185,7 @@
    "field": "content",
    "section": "מחירים",
    "old": "שייכים לרף הגבוה של שוק המגורים בישראל., מחירי דירות במתחם אשכול מוערכים בכ-70,000 עד 80,000 ₪ למ\"ר, מחיר ממוצע בפרויקט Rainbow Tel Aviv דווח סביב כ-82,000 ₪ למ\"ר, ודירת 100 מ\"ר עשויה להגיע לכ-8 מיליון ₪. בנוסף דווח כי מכרזי קרקע שיקפו מעל 3 מיליון ₪ קרקע ליחידה, וכן דווחו עסקאות יוקרה של 14 מיליון ₪ ומעלה.",
-   "new": "שייכים לרף הגבוה של שוק המגורים בישראל. לפי סקר דוחות היזמים מאפריל 2026, ממוצע כ-1,280 הדירות שנמכרו עד אז ברובע היה כ-83,000 ₪ למ\"ר, ודירת 4 חדרים נמכרה בממוצע בכ-9.45 מיליון ₪. ממוצעי המכירות של הפרויקטים במתחם אשכול ב-2025 נעו בין כ-63,400 לכ-82,600 ₪ למ\"ר כולל מע\"מ, וב-2026 רוב הפרויקטים ברובע מוכרים בכ-70,000 ₪ למ\"ר. ב-Rainbow Tel Aviv, ממוצע כל הדירות שנמכרו עד מרץ 2026 היה כ-81,800 ₪ למ\"ר. במחירים האלה דירת 100 מ\"ר עולה כ-7 עד 8.3 מיליון ₪. מחיר הקרקע במכרזים הגיע ב-2022 לכ-3.3 מיליון ₪ ליחידת דיור בממוצע, ובמכרזי פברואר 2025 ירד לכ-1.7 עד 2.2 מיליון ₪. בקצה היוקרה נרשמו עסקאות של 14 מיליון ₪ ומעלה, ובהן העסקה הגדולה שפורסמה ברובע: דירה של כ-390 מ\"ר בקומה 38, שנמכרה בדצמבר 2025 ביותר מ-42 מיליון ₪.",
+   "new": "שייכים לרף הגבוה של שוק המגורים בישראל. לפי סקר דוחות היזמים מאפריל 2026, ממוצע כ-1,280 הדירות שנמכרו עד אז ברובע היה כ-83,000 ₪ למ\"ר, ודירת 4 חדרים נמכרה בממוצע בכ-9.45 מיליון ₪. ממוצעי המכירות של הפרויקטים במתחם אשכול ב-2025 נעו בין כ-63,400 לכ-82,600 ₪ למ\"ר כולל מע\"מ, וב-2026 רוב הפרויקטים ברובע מוכרים בכ-70,000 ₪ למ\"ר. ב-Rainbow Tel Aviv, ממוצע כל הדירות שנמכרו עד מרץ 2026 היה כ-81,800 ₪ למ\"ר. במחירים האלה דירת 100 מ\"ר עולה כ-7 עד 8.3 מיליון ₪. מחיר הקרקע במכרזים הגיע ב-2022 לכ-3.3 מיליון ₪ ליחידת דיור בממוצע, כולל הוצאות פיתוח, ובמכרז הבנייה הרוויה של פברואר 2025 ירד לכ-1.7 עד 2.2 מיליון ₪ ליחידה. בקצה היוקרה נרשמו עסקאות של 14 מיליון ₪ ומעלה, ובהן העסקה הגדולה שפורסמה ברובע: דירה של כ-390 מ\"ר בקומה 38, שנמכרה בדצמבר 2025 ביותר מ-42 מיליון ₪.",
    "source_keys": [
     "NC2604",
     "ICE1904",
@@ -282,7 +282,7 @@
    "field": "content",
    "section": "מחירים (טבלה)",
    "old": "<td dir=\"rtl\">מעל 3 מיליון ₪ קרקע ליחידה לפי דיווחים על מכרזים</td>",
-   "new": "<td dir=\"rtl\">כ-3.3 מיליון ₪ ליחידה בממוצע במכרזי 2022; כ-1.7 עד 2.2 מיליון ₪ ליחידה במכרזי פברואר 2025</td>",
+   "new": "<td dir=\"rtl\">כ-3.3 מיליון ₪ ליחידה בממוצע במכרזי 2022; כ-1.7 עד 2.2 מיליון ₪ ליחידה במכרז הבנייה הרוויה של פברואר 2025</td>",
    "source_keys": [
     "ICE2502",
     "BZ2502",

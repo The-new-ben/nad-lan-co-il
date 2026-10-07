@@ -1,0 +1,888 @@
+{
+ "page": "sde-dov-prices",
+ "language": "ar",
+ "target_url": "https://nad-lan.co.il/ar/sde-dov/prices/",
+ "hebrew_url": "https://nad-lan.co.il/sde-dov/prices/",
+ "h1": "Apartment Prices in Sde Dov, Tel Aviv: per m², Deals and Comparisons",
+ "faq_h2": "أسئلة شائعة",
+ "marker": "<!-- NLPG -->",
+ "words_target": 5020,
+ "words_total_range": [
+  4267,
+  6024
+ ],
+ "hebrew_words": 5020,
+ "h2_count": 16,
+ "outline": [
+  {
+   "id": "pr-lead",
+   "part": 1,
+   "hebrew_h2": "מחירי דירות בשדה דב: תמונת שוק עדכנית",
+   "h2": "الأسعار في سديه دوف اليوم: صورة السوق",
+   "hebrew_words": 144,
+   "hebrew_table_words": 0,
+   "words": 140,
+   "must_use": [
+    "SD-02",
+    "SD-03",
+    "SDP-01",
+    "SDP-02"
+   ],
+   "note": "The first section: the H1, then this H2, then the first paragraph, then the marker <!-- NLPG --> on its own line, then the rest of the section's paragraphs."
+  },
+  {
+   "id": "pr-m2",
+   "part": 1,
+   "hebrew_h2": "מחיר למ״ר ברובע שדה דב",
+   "h2": "سعر المتر المربع في سديه دوف",
+   "hebrew_words": 517,
+   "hebrew_table_words": 170,
+   "words": 520,
+   "must_use": [
+    "SD-02",
+    "SDP-04",
+    "SDP-03",
+    "SDP-05",
+    "SDP-06",
+    "SD-03",
+    "SDP-07",
+    "SDP-01",
+    "SDP-08",
+    "SDP-02"
+   ]
+  },
+  {
+   "id": "pr-gaps",
+   "part": 1,
+   "hebrew_h2": "מה מסביר את פערי המחירים בתוך הרובע",
+   "h2": "لماذا تختلف الأسعار داخل الحي",
+   "hebrew_words": 231,
+   "hebrew_table_words": 0,
+   "words": 230,
+   "must_use": [
+    "SDP-13",
+    "SDP-12"
+   ]
+  },
+  {
+   "id": "pr-rooms",
+   "part": 1,
+   "hebrew_h2": "מחירים לפי גודל דירה",
+   "h2": "الأسعار حسب حجم الشقة",
+   "hebrew_words": 437,
+   "hebrew_table_words": 143,
+   "words": 440,
+   "must_use": [
+    "SD-02",
+    "SDP-09",
+    "SDP-10",
+    "SDP-11",
+    "SDP-02",
+    "SDP-12",
+    "SDP-13",
+    "SD-05"
+   ]
+  },
+  {
+   "id": "pr-compounds",
+   "part": 2,
+   "hebrew_h2": "מחירים לפי מתחם",
+   "h2": "الأسعار حسب المجمع",
+   "hebrew_words": 408,
+   "hebrew_table_words": 110,
+   "words": 410,
+   "must_use": [
+    "SD-01",
+    "SD-02",
+    "SD-04",
+    "SDP-15",
+    "SDP-16"
+   ]
+  },
+  {
+   "id": "pr-sea",
+   "part": 2,
+   "hebrew_h2": "פרמיית קו ראשון לים ונוף",
+   "h2": "علاوة إطلالة البحر والخط الأول",
+   "hebrew_words": 343,
+   "hebrew_table_words": 103,
+   "words": 340,
+   "must_use": [
+    "SDP-08",
+    "SDP-01",
+    "SD-03",
+    "SDP-07",
+    "SDP-02",
+    "SD-02"
+   ]
+  },
+  {
+   "id": "pr-records",
+   "part": 2,
+   "hebrew_h2": "עסקאות שיא ועסקאות שפל",
+   "h2": "الصفقات القياسية والصفقات الأرخص",
+   "hebrew_words": 333,
+   "hebrew_table_words": 99,
+   "words": 330,
+   "must_use": [
+    "SDP-09",
+    "SDP-14",
+    "SD-05",
+    "SD-02"
+   ]
+  },
+  {
+   "id": "pr-compare",
+   "part": 2,
+   "hebrew_h2": "השוואת מחירים מול שכונות יוקרה בתל אביב",
+   "h2": "مقارنة سديه دوف بأحياء الفخامة في تل أبيب",
+   "hebrew_words": 343,
+   "hebrew_table_words": 129,
+   "words": 340,
+   "must_use": [
+    "SDP-04",
+    "SDP-17",
+    "SD-02",
+    "SD-03"
+   ]
+  },
+  {
+   "id": "pr-presale",
+   "part": 2,
+   "hebrew_h2": "דינמיקת פריסייל מול אכלוס",
+   "h2": "الشراء في مرحلة ما قبل البيع أو قرب الإسكان",
+   "hebrew_words": 325,
+   "hebrew_table_words": 95,
+   "words": 320,
+   "must_use": [
+    "SD-03",
+    "SDP-07",
+    "SDP-05",
+    "SD-01"
+   ]
+  },
+  {
+   "id": "pr-finance",
+   "part": 2,
+   "hebrew_h2": "מימון, לוח תשלומים וליווי בנקאי",
+   "h2": "التمويل وجدول الدفعات والمرافقة البنكية",
+   "hebrew_words": 308,
+   "hebrew_table_words": 97,
+   "words": 310,
+   "must_use": [
+    "SD-02"
+   ]
+  },
+  {
+   "id": "pr-legal",
+   "part": 3,
+   "hebrew_h2": "הזווית המשפטית והמיסויית",
+   "h2": "الجانب القانوني والضريبي",
+   "hebrew_words": 352,
+   "hebrew_table_words": 0,
+   "words": 350,
+   "must_use": [
+    "SDP-13"
+   ]
+  },
+  {
+   "id": "pr-forecast",
+   "part": 3,
+   "hebrew_h2": "תחזית והערכת שווי עתידי",
+   "h2": "التوقعات والقيمة المستقبلية",
+   "hebrew_words": 407,
+   "hebrew_table_words": 101,
+   "words": 410,
+   "must_use": [
+    "SD-01",
+    "SD-02",
+    "SDP-18",
+    "SDP-13",
+    "SDP-19"
+   ]
+  },
+  {
+   "id": "pr-offer",
+   "part": 3,
+   "hebrew_h2": "איך לקרוא הצעת מחיר בשדה דב",
+   "h2": "كيف تقرأ عرض سعر في سديه دوف",
+   "hebrew_words": 272,
+   "hebrew_table_words": 119,
+   "words": 270,
+   "must_use": [
+    "SDP-15",
+    "SDP-19",
+    "SD-03",
+    "SD-02",
+    "SDP-08"
+   ]
+  },
+  {
+   "id": "pr-investors",
+   "part": 3,
+   "hebrew_h2": "משמעות המחירים למשקיעים",
+   "h2": "ماذا تعني الأسعار للمستثمرين",
+   "hebrew_words": 177,
+   "hebrew_table_words": 0,
+   "words": 180,
+   "must_use": [
+    "SDP-13"
+   ]
+  },
+  {
+   "id": "pr-faq",
+   "part": 3,
+   "hebrew_h2": "שאלות נפוצות",
+   "h2": "أسئلة شائعة",
+   "hebrew_words": 350,
+   "hebrew_table_words": 0,
+   "words": 350,
+   "must_use": [
+    "SD-02",
+    "SDP-13",
+    "SDP-10",
+    "SD-03",
+    "SDP-02",
+    "SDP-08",
+    "SDP-01",
+    "SDP-17",
+    "SDP-18"
+   ],
+   "faq_questions": [
+    "كم سعر الشقة في سديه دوف؟",
+    "كم سعر المتر المربع في سديه دوف؟",
+    "هل سديه دوف أغلى من رمات أفيف؟",
+    "هل يستحق الشراء في مرحلة ما قبل البيع؟",
+    "ماذا يجب فحصه قانونياً قبل التوقيع؟",
+    "هل يمكن أن تصل الأسعار إلى 150,000 ₪ للمتر المربع؟"
+   ]
+  },
+  {
+   "id": "pr-abroad",
+   "part": 3,
+   "hebrew_h2": "משקיעים זרים ומילות חיפוש בינלאומיות",
+   "h2": "الشراء في سديه دوف من خارج البلاد",
+   "hebrew_words": 73,
+   "hebrew_table_words": 0,
+   "words": 70,
+   "must_use": [],
+   "note": "The Hebrew H2 says 'foreign investors and international search words': write a reader's heading (the suggested one). The multilingual keyword line under it is NOT translated."
+  }
+ ],
+ "names": "سديه دوف (שדה דב)؛ «حي سديه دوف» (اسم الموقع: حي سديه دوف). مطار دوف هوز. المجمعات: أشكول (منطقة أشكول، كما في خريطة الموقع)، مركز الحي، شمال الحي. المشاريع بأسمائها اللاتينية كما يكتبها المطوّرون: Rainbow Tel Aviv (Israel Canada)، FIRST (Hagag Group)، ASHIRA (Avisror Moshe & Sons)، DIMRI YAMA (Y.H. Dimri؛ المهندس رني زيس، التصميم الداخلي Kelly Hoppen)، ZOHI، GINDI VOGUE (Gindi Holdings)، UTOPIA (Nahmias Group)، Mediterranean Towers (מגדלי הים התיכון، سكن محمي لكبار السن). المقاول الرئيسي Ashtrom. الأماكن: تسوكي أفيف، شارع بروبس، نافيه يام، تخنيت لامد (תכנית ל׳)، شارع ليفي أشكول، كوخاف هتسافون، مجمع ريدينغ، شارع شاي عجنون، حديقة اليركون، ابن جبيرول، رمات أفيف (هكذا يُبحث عنها)، بارك تسامرت، الخط الأخضر للقطار الخفيف. الجهات: سلطة أراضي إسرائيل، اللجنة اللوائية في تل أبيب، اللجنة المحلية في تل أبيب يافا، بلدية تل أبيب يافا. القوانين: قانون البيع (شقق) وكفالة قانون البيع. مصطلحات: ضريبة الشراء، ضريبة التحسين (هيتل هشبحاه)، رسوم الإدارة، البيع على الخارطة (ما قبل البيع)، حساب المرافقة البنكية. الأماكن التي لا اسم عربياً لها في مصدرها تبقى بالإنجليزية: لا اسم مخترَع.",
+ "keywords_monthly": [
+  [
+   "تل أبيب",
+   140
+  ],
+  [
+   "شقق للبيع في اسرائيل",
+   10
+  ],
+  [
+   "رمات أفيف (7.10 morning)",
+   90
+  ],
+  [
+   "سدي دوف / سديه دوف / شقق للبيع في تل أبيب / اسعار الشقق في تل أبيب / مشاريع جديدة تل أبيب / عقارات تل أبيب",
+   "no volume data"
+  ]
+ ],
+ "serp": "Arabic-script searches for Sde Dov are close to none (Google Ads, Israel, 7.10.2026; the same finding as docs/research/2026-09-30-kikar-hamedina/serp-ar.md). The Arabic page serves readers who arrive by a link, the site's language switch or a shared WhatsApp message; titles stay in English (the owner's ruling of 28.9.2026).",
+ "audience": "قرّاء عرب، معظمهم في إسرائيل وكثير منهم عائلات ومستثمرون: سعر المتر، التمويل، مواعيد التسليم، المدارس والمواصلات.",
+ "culture": "عربية فصحى معاصرة واضحة، قريبة من لغة الصحافة الاقتصادية. شرح عدد الغرف الإسرائيلي مرة واحدة («4 غرف: صالون وثلاث غرف نوم»). كفالة قانون البيع تُشرح مرة واحدة. نبرة دافئة وواثقة.",
+ "typography": "أرقام غربية كما تكتبها الصحافة العربية في إسرائيل (83,000 ₪؛ 9.45 مليون ₪)؛ تواريخ 12.3.2020؛ أسماء الأشهر الشامية (آذار، نيسان...) عند ذكر الشهر بالكلمة؛ بلا شرطة طويلة (—) وبلا شرطة متوسطة (–).",
+ "units": "م² و₪ فقط. يمكن شرح الدونم مرة واحدة (1 دونم = 1,000 م²).",
+ "banned": "واجهة برمجية · عرض تجريبي · نموذج (بمعنى ثلاثي الأبعاد) · محرّك · طبقة · نموذج أولي · محاكاة · تكنولوجيا · «النظام» · «المنصة» · تجربة رقمية · ثلاثي الأبعاد · أطلس · قريباً · «استشارة مجانية» · أي اسم لمصدر أو وسيلة إعلام (ويكيبيديا، غلوبس، كالكاليست...) · تجدر الإشارة · في الختام · لا شك",
+ "in_hebrew_marker": "(بالعبرية)",
+ "internal_links": [
+  {
+   "url": "https://nad-lan.co.il/sde-dov/",
+   "maps_from": "https://nad-lan.co.il/sde-dov/",
+   "target_language": "he",
+   "status": 200,
+   "language_version": "https://nad-lan.co.il/ar/sde-dov/",
+   "language_version_status": 404,
+   "role": "mirror (no ar version yet: link the Hebrew page and say so)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv-ar/",
+   "anchor_suggestion": "Rainbow Tel Aviv",
+   "target_language": "ar",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/dimri-yama-sde-dov-ar/",
+   "anchor_suggestion": "DIMRI YAMA Sde Dov",
+   "target_language": "ar",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  },
+  {
+   "url": "https://nad-lan.co.il/projects/ashira-sde-dov-ar/",
+   "anchor_suggestion": "ASHIRA Sde Dov",
+   "target_language": "ar",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  },
+  {
+   "url": "https://nad-lan.co.il/ar/new-projects/",
+   "anchor_suggestion": "مشاريع جديدة",
+   "target_language": "ar",
+   "status": 200,
+   "role": "optional extra (at most 3 in the article)"
+  }
+ ],
+ "avoid_headings_first_4_words": [
+  "50 سؤالا للمقاول أو",
+  "ashira sde dov شقق",
+  "dimri yama تل أبيب",
+  "gindi vogue sde dov",
+  "kikar hamedina towers tel",
+  "north tel aviv neighborhoods",
+  "rainbow tel aviv سكن",
+  "rova 4 tel aviv",
+  "shikun binui sde dov",
+  "utopia sde dov تل",
+  "zohi sde dov تل",
+  "أبراج كيكار همدينا كل",
+  "أحياء روفاع 4",
+  "أحياء شمال تل أبيب",
+  "أدلة المشتري",
+  "أدلة المشتري nadlan",
+  "أسئلة شائعة",
+  "أسئلة شائعة حول rainbow",
+  "أسئلة شائعة عن مشاريع",
+  "أسعار الشقق في أبراج",
+  "أسعار الشقق في روفاع",
+  "أسعار الشقق في سديه",
+  "أسعار الشقق في شمال",
+  "أنواع الشقق ومزيج السكن",
+  "أنواع الوحدات والمشاريع",
+  "أي برج وأي طابق",
+  "أين يقع روفاع 4",
+  "إشارات خطر تستوجب التوقف",
+  "اختبار القرار في 10",
+  "اختيار المدينة والحي والقطعة",
+  "استعراض ما الذي يجعل",
+  "الأسعار حول المشروع في",
+  "الأسعار والتقديرات",
+  "الإشغال والتسليم وفحص الشقة",
+  "الإيجارات والتقديرات",
+  "التجديد الحضري في روفاع",
+  "التسجيل بعد الاستلام المفاتيح",
+  "التكلفة الحقيقية للشقة الجديدة",
+  "التمويل والاستشارة والتصميم في",
+  "السعر أين يقف المشروع",
+  "الشراء في شمال تل",
+  "الشقق المساحات والشرفات والمواصفات",
+  "الطوابق 10 25 و36،",
+  "العقد والمواصفات ما يلزم",
+  "العمارة والمواصفات بين برج",
+  "المباني والشقق",
+  "المرافق والخدمات ماذا يشمل",
+  "المرافقة المالية وضمان أموال",
+  "المشاريع الجديدة والتجديد الحضري",
+  "المشاريع الرائدة في الكتالوج",
+  "المصادر",
+  "المصادر التي فُحصت",
+  "المصادر الرسمية وتاريخ التحديث",
+  "المطور",
+  "المعالم الكبرى جامعة تل",
+  "المواصلات في روفاع 4",
+  "المواصلات وسهولة الوصول القطار",
+  "الموقع وإمكانية الوصول sde",
+  "الموقع والبيئة المحيطة",
+  "الموقع والمحيط",
+  "بركة وسبا ونادٍ رياضي",
+  "تأخر تسليم شقة من",
+  "تعرّفوا على utopia حسب",
+  "تغييرات المشتري والترقيات والأرصدة",
+  "جدول الدفعات وmadad والرهن",
+  "جوانب قانونية وضريبية قبل",
+  "جولة افتراضية الطوابق والإطلالة",
+  "جولة افتراضية في أبراج",
+  "حاسبة سعر الشقة في",
+  "حديقة كيكار همدينا نحو",
+  "حي سديه دوف على",
+  "روفاع 4 أم الشمال",
+  "روفاع 4 على الخريطة",
+  "ساحة كيكار همدينا وأبراجها",
+  "شراء شقة جديدة للاستثمار",
+  "شراء غير المقيمين والشراء",
+  "شركة التطوير israel canada",
+  "شقة جديدة من المقاول",
+  "شقق للبيع في rainbow",
+  "شقق للبيع وللإيجار في",
+  "شمال تل أبيب في",
+  "طابع المنطقة وجودة الحياة",
+  "فترات bedek والضمان وإدارة",
+  "فحص المطور والمقاول والأرض",
+  "فحوص موصى بها قبل",
+  "فيلم كيكار همدينا",
+  "قاموس المشتري مصطلحات عقارية",
+  "كل شيء على خريطة",
+  "كل ما يحيط بالمشروع",
+  "كم يبلغ سعر شقة",
+  "كم يكلّف الشراء ضريبة",
+  "كيف تبحث عن شقق",
+  "كيف تبني مقارنة نهائية",
+  "كيف تشترون شقة في",
+  "كيف تفحص المشروع كما",
+  "كيكار همدينا على الخريطة",
+  "كيكار همدينا في تل",
+  "لماذا يُعد النموذج الثلاثي",
+  "لمحة بيانات موجزة",
+  "لمن يناسب السكن في",
+  "لمن يناسب المشروع",
+  "لمن يناسب شمال تل",
+  "ما قبل البيع أم",
+  "ما معنى شراء شقة",
+  "متى تُسلَّم أبراج كيكار",
+  "مخطط روفاع 4 ta",
+  "مراحل المشروع",
+  "مرحلة المشروع والرخصة والمبيعات",
+  "مسار شراء شقة من",
+  "مشاريع سكنية جديدة في",
+  "مصدر الأموال والبنوك والامتثال",
+  "مقارنة بين أحياء شمال",
+  "مكالمة فيديو مع مستشار",
+  "من قسائم 1942 إلى",
+  "نظرة عامة"
+ ],
+ "component_headings_in_this_language": [
+  "حي سديه دوف على الخريطة: المشاريع والشاطئ والمحيط",
+  "أسعار الشقق في سديه دوف حسب المشروع",
+  "حاسبة سعر الشقة في سديه دوف"
+ ],
+ "not_published": [
+  "an official median per room count for Sde Dov itself (the official neighborhood file has none)",
+  "a separate average for the Centre or the North compound",
+  "Park Tzameret prices",
+  "the floor area of the 2-room deals of May 2026",
+  "an average floor area of 4-room apartments",
+  "rents and rental yields",
+  "the names of buyers"
+ ],
+ "seo_request": "The SEO title in ENGLISH (the owner's ruling of 28.9.2026: Arabic pages carry English titles, like the H1), at most 60 characters, the same rule as English. The description in Arabic, at most 155 characters.",
+ "claims": [
+  {
+   "claim_id": "G-01",
+   "topic": "convention",
+   "claim": "The Israeli room count includes the living room: '4 rooms' = a living room and 3 bedrooms; a '1-room' unit is a studio.",
+   "numbers": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "write_as": "Explain once for a foreign reader; never convert to bedrooms in a table."
+  },
+  {
+   "claim_id": "G-02",
+   "topic": "convention",
+   "claim": "A dunam (the Israeli land unit) is 1,000 m2.",
+   "numbers": [
+    "1",
+    "1,000"
+   ],
+   "write_as": "Allowed once, to explain the unit. No other conversions (no sq ft, no acres, no hectares, no dollars or euros)."
+  },
+  {
+   "claim_id": "G-03",
+   "topic": "convention",
+   "claim": "Quarters: 'the first quarter of 2026' = January to March 2026 (Q1, 1-3.2026).",
+   "numbers": [
+    "1",
+    "3",
+    "1-3"
+   ],
+   "write_as": "'Q1 2026' or 'the first quarter of 2026'. Keep the year."
+  },
+  {
+   "claim_id": "SD-01",
+   "topic": "plan",
+   "claim": "The Sde Dov quarter (rova), on the site of the former airfield in north-west Tel Aviv-Yafo, is planned for about 16,000 apartments ('16 thousand') in three compounds: Eshkol (south-east), the Centre and the North.",
+   "numbers": [
+    "16,000",
+    "16",
+    "3"
+   ],
+   "date": "plan approved 2020; municipal page read 7.10.2026",
+   "conflict": "'15,000-20,000 units' (an English guide) is not the plan: never use it.",
+   "write_as": "'about 16,000 apartments planned'. Never a delivery date for the whole quarter."
+  },
+  {
+   "claim_id": "SD-02",
+   "topic": "prices",
+   "claim": "A survey of the developers' annual reports published in April 2026: about 1,280 apartments sold in the quarter so far; their average price about ₪83,000 per m2; a 4-room apartment sold for about ₪9.45 million on average.",
+   "numbers": [
+    "1,280",
+    "83,000",
+    "9.45",
+    "9,450,000",
+    "4",
+    "2026",
+    "4.2026"
+   ],
+   "date": "15.4.2026 (published 4.2026)",
+   "conflict": "An older page figure 'about 81,000' and an average 'about 7 million per deal' have no source: never use them.",
+   "write_as": "'about ₪83,000 per m2' (an average of sold units, not an asking price)."
+  },
+  {
+   "claim_id": "SD-03",
+   "topic": "prices",
+   "claim": "In 2026 most projects in the quarter sell at about ₪70,000 per m2.",
+   "numbers": [
+    "70,000",
+    "2026",
+    "5.2026",
+    "6.2026"
+   ],
+   "date": "21.5.2026; 6.6.2026"
+  },
+  {
+   "claim_id": "SD-04",
+   "topic": "prices",
+   "claim": "Per the developers' 2025 reports, the sales averages of the projects in the Eshkol compound ranged from about ₪63,400 to about ₪82,600 per m2, VAT included.",
+   "numbers": [
+    "63,400",
+    "82,600",
+    "2025"
+   ],
+   "date": "2025 reports"
+  },
+  {
+   "claim_id": "SD-05",
+   "topic": "deals",
+   "claim": "The largest deal published in the quarter: an apartment of about 390 m2 with a balcony of about 200 m2 on floor 38 of a tower in the Central compound, sold in December 2025 for more than ₪42 million.",
+   "numbers": [
+    "390",
+    "200",
+    "38",
+    "42",
+    "42,000,000",
+    "2025",
+    "12.2025"
+   ],
+   "date": "18.12.2025; 13.4.2026",
+   "conflict": "'43.75 million for 508 m2' had no source: never use it.",
+   "write_as": "'more than ₪42 million'."
+  },
+  {
+   "claim_id": "SDP-01",
+   "topic": "deals",
+   "claim": "In December 2025 three apartments on floors 38, 39 and 43 of a tower facing the sea sold for about ₪107,700 to ₪119,200 per m2 of built area (balconies not counted).",
+   "numbers": [
+    "3",
+    "38",
+    "39",
+    "43",
+    "107,700",
+    "119,200",
+    "2025",
+    "12.2025"
+   ],
+   "date": "18.12.2025"
+  },
+  {
+   "claim_id": "SDP-02",
+   "topic": "deals",
+   "claim": "March 2026: two deals for 5-room apartments of 132 m2 on floor 9 in one project, ₪7.16 to ₪7.57 million, about ₪54,200 to ₪57,300 per m2 ('deals of 54,000-57,000 per m2').",
+   "numbers": [
+    "5",
+    "132",
+    "9",
+    "2",
+    "7.16",
+    "7.57",
+    "7,160,000",
+    "7,570,000",
+    "54,200",
+    "57,300",
+    "54,000",
+    "57,000",
+    "2026",
+    "3.2026"
+   ],
+   "date": "3.5.2026 (deals of 3.2026)"
+  },
+  {
+   "claim_id": "SDP-03",
+   "topic": "prices",
+   "claim": "The range of deals in the April 2026 survey: about ₪60,200 to ₪138,000 per m2.",
+   "numbers": [
+    "60,200",
+    "138,000",
+    "2026",
+    "4.2026"
+   ],
+   "date": "15.4.2026"
+  },
+  {
+   "claim_id": "SDP-04",
+   "topic": "prices",
+   "claim": "Tel Aviv-Yafo: the median of deals in the two years to October 2025 (October 2023 to October 2025) was ₪52,856 per m2.",
+   "numbers": [
+    "52,856",
+    "2023",
+    "2025",
+    "10.2023",
+    "10.2025",
+    "2"
+   ],
+   "date": "10.2023-10.2025",
+   "write_as": "A median of deals, not an average."
+  },
+  {
+   "claim_id": "SDP-05",
+   "topic": "prices",
+   "claim": "In one project in the quarter the average rose from about ₪64,700 per m2 in the first quarter of 2026 to about ₪81,600 per m2 in the eight deals after it (VAT included).",
+   "numbers": [
+    "64,700",
+    "81,600",
+    "1",
+    "2026",
+    "8",
+    "1-3"
+   ],
+   "date": "6.6.2026",
+   "write_as": "'eight deals' (a small sample)."
+  },
+  {
+   "claim_id": "SDP-06",
+   "topic": "prices",
+   "claim": "In June 2026 one developer valued its unsold apartments at about ₪73,200 per m2 incl. VAT, below its 2025 deals average of about ₪82,500.",
+   "numbers": [
+    "73,200",
+    "82,500",
+    "2025",
+    "2026",
+    "6.2026"
+   ],
+   "date": "6.6.2026",
+   "write_as": "An estimate, not a deal."
+  },
+  {
+   "claim_id": "SDP-07",
+   "topic": "prices",
+   "claim": "The official (list) prices in the projects: ₪75,000 to ₪85,000 per m2 before financing benefits.",
+   "numbers": [
+    "75,000",
+    "85,000",
+    "2026",
+    "6.2026"
+   ],
+   "date": "6.6.2026",
+   "write_as": "List prices before financing benefits, not deals."
+  },
+  {
+   "claim_id": "SDP-08",
+   "topic": "prices",
+   "claim": "Per one developer in the quarter (December 2025), selected apartments sold at ₪90,000 to ₪100,000 per m2.",
+   "numbers": [
+    "90,000",
+    "100,000",
+    "2025",
+    "12.2025"
+   ],
+   "date": "11.12.2025"
+  },
+  {
+   "claim_id": "SDP-09",
+   "topic": "rooms",
+   "claim": "2 rooms: recent deals in one Eshkol project ₪2.8 to ₪3.1 million (May 2026); in its presale ₪2.4 to ₪2.7 million. Another 2-room deal: 54 m2, floor 9, ₪3.665 million, about ₪67,900 per m2 (2026).",
+   "numbers": [
+    "2",
+    "2.8",
+    "3.1",
+    "2,800,000",
+    "3,100,000",
+    "2.4",
+    "2.7",
+    "2,400,000",
+    "2,700,000",
+    "54",
+    "9",
+    "3.665",
+    "3,665,000",
+    "67,900",
+    "2026",
+    "5.2026"
+   ],
+   "date": "21.5.2026; 3.5.2026"
+  },
+  {
+   "claim_id": "SDP-10",
+   "topic": "rooms",
+   "claim": "3 rooms of 82-83 m2: recent deals in the same Eshkol project ₪4.6 to ₪4.8 million (May 2026).",
+   "numbers": [
+    "3",
+    "82",
+    "83",
+    "4.6",
+    "4.8",
+    "4,600,000",
+    "4,800,000",
+    "2026",
+    "5.2026"
+   ],
+   "date": "21.5.2026"
+  },
+  {
+   "claim_id": "SDP-11",
+   "topic": "rooms",
+   "claim": "4-5 rooms of 104-126 m2 on floors 10-13, four deals: ₪6.49 to ₪7.73 million, about ₪61,300 to ₪62,800 per m2 (2026).",
+   "numbers": [
+    "4",
+    "5",
+    "104",
+    "126",
+    "10",
+    "13",
+    "6.49",
+    "7.73",
+    "6,490,000",
+    "7,730,000",
+    "61,300",
+    "62,800",
+    "2026"
+   ],
+   "date": "3.5.2026"
+  },
+  {
+   "claim_id": "SDP-12",
+   "topic": "rooms",
+   "claim": "5 rooms of 139.7 m2 on floor 18 (of 20), on one project's price list: ₪11.954 million, about ₪85,600 per m2 (October 2025); in round words 'up to ₪11.95 million on one price list'.",
+   "numbers": [
+    "5",
+    "139.7",
+    "18",
+    "11.954",
+    "11,954,000",
+    "11.95",
+    "11,950,000",
+    "85,600",
+    "2025",
+    "10.2025"
+   ],
+   "date": "26.10.2025",
+   "write_as": "A price-list (asking) price, not a deal."
+  },
+  {
+   "claim_id": "SDP-13",
+   "topic": "rooms",
+   "claim": "Summaries of the published deals and price lists: 2-room apartments sold in 2026 for about ₪2.8 to ₪3.7 million; 5-room apartments of 126-132 m2 sold in 2026 for about ₪7.2 to ₪7.7 million; 5 rooms in deals and price lists from about ₪7.2 to about ₪12 million; 4 and 5 rooms about ₪6.5 to ₪12 million.",
+   "numbers": [
+    "2",
+    "4",
+    "5",
+    "2.8",
+    "3.7",
+    "2,800,000",
+    "3,700,000",
+    "126",
+    "132",
+    "7.2",
+    "7.7",
+    "7,200,000",
+    "7,700,000",
+    "12",
+    "12,000,000",
+    "6.5",
+    "6,500,000",
+    "2026"
+   ],
+   "write_as": "Ranges as written in the Hebrew; no new averages."
+  },
+  {
+   "claim_id": "SDP-14",
+   "topic": "deals",
+   "claim": "A 1-room apartment of 32 m2 on floor 4 of one of the towers sold in July 2023 for ₪3.1 million.",
+   "numbers": [
+    "1",
+    "32",
+    "4",
+    "3.1",
+    "3,100,000",
+    "2023",
+    "7.2023"
+   ],
+   "date": "29.11.2023 (deal of 7.2023)",
+   "conflict": "'2.3 million for 32 m2' had no source: never use it."
+  },
+  {
+   "claim_id": "SDP-15",
+   "topic": "projects",
+   "claim": "FIRST (Hagag Group, Central compound): by July 2025, about 94 apartments plus 8 more agreements were marketed for about ₪853 million, about ₪8.4 million per apartment on average; its 2025 average about ₪75,500 per m2.",
+   "numbers": [
+    "94",
+    "8",
+    "853",
+    "853,000,000",
+    "8.4",
+    "8,400,000",
+    "75,500",
+    "2025",
+    "7.2025"
+   ],
+   "date": "17.7.2025; 18.12.2025; 15.4.2026"
+  },
+  {
+   "claim_id": "SDP-16",
+   "topic": "prices",
+   "claim": "Eshkol: in one project the recent deals were at ₪60,000 to ₪62,000 per m2 (May 2026); the Centre and the North have no separate published average.",
+   "numbers": [
+    "60,000",
+    "62,000",
+    "2026",
+    "5.2026"
+   ],
+   "date": "21.5.2026",
+   "write_as": "'no separate average published'."
+  },
+  {
+   "claim_id": "SDP-17",
+   "topic": "compare",
+   "claim": "Ramat Aviv: recent deals average about ₪55,000 per m2 (June 2026); Ramat Aviv Gimel about ₪51,000 to ₪53,000 per m2 (August 2026). Park Tzameret: depends on the tower and the floor (no figure).",
+   "numbers": [
+    "55,000",
+    "51,000",
+    "53,000",
+    "2026",
+    "6.2026",
+    "8.2026"
+   ],
+   "date": "6.6.2026; 2.8.2026",
+   "conflict": "'Park Tzameret 90,000-120,000' had no source: never use it."
+  },
+  {
+   "claim_id": "SDP-18",
+   "topic": "forecast",
+   "claim": "In March 2025 the developer Yigal Dimri estimated that in a decade or two prices in the quarter could reach ₪150,000 per m2: a very optimistic forecast against today's average of about ₪83,000.",
+   "numbers": [
+    "150,000",
+    "2025",
+    "3.2025",
+    "10",
+    "20"
+   ],
+   "date": "3.3.2025",
+   "write_as": "A forecast; 'a decade or two'."
+  },
+  {
+   "claim_id": "SDP-19",
+   "topic": "method",
+   "claim": "Counts in the page's own words: four main price factors; three markets (small apartments, family apartments, premium); at least ten parameters for comparing two apartments.",
+   "numbers": [
+    "4",
+    "3",
+    "10"
+   ],
+   "write_as": "Words or digits."
+  }
+ ],
+ "sources_note": "Sources stay in the repo (claims.json source field, align-check.md, sde-dov-prices.json); never in the text."
+}

@@ -6,12 +6,12 @@
  "h1": "Sde Dov, Tel Aviv: New Projects and Apartments for Sale",
  "faq_h2": "Frequently asked questions",
  "marker": "<!-- NLAM -->",
- "words_target": 6720,
+ "words_target": 6740,
  "words_total_range": [
-  5712,
-  8064
+  5729,
+  8088
  ],
- "hebrew_words": 5603,
+ "hebrew_words": 5613,
  "h2_count": 17,
  "outline": [
   {
@@ -82,7 +82,7 @@
   },
   {
    "id": "hub-projects",
-   "part": 1,
+   "part": 2,
    "hebrew_h2": "הפרויקטים בשיווק ברובע",
    "h2": "Projects on sale in Sde Dov",
    "hebrew_words": 608,
@@ -117,9 +117,9 @@
    "part": 2,
    "hebrew_h2": "מחירים: כמה עולה דירה בשדה דב",
    "h2": "Prices: how much an apartment in Sde Dov costs",
-   "hebrew_words": 571,
-   "hebrew_table_words": 170,
-   "words": 690,
+   "hebrew_words": 581,
+   "hebrew_table_words": 173,
+   "words": 700,
    "must_use": [
     "SD-02",
     "SD-03",
@@ -145,7 +145,7 @@
   },
   {
    "id": "hub-affordable",
-   "part": 2,
+   "part": 3,
    "hebrew_h2": "דיור בר-השגה ודיור מיוחד",
    "h2": "Affordable and special housing in Sde Dov",
    "hebrew_words": 223,
@@ -158,7 +158,7 @@
   },
   {
    "id": "hub-invest",
-   "part": 2,
+   "part": 3,
    "hebrew_h2": "השקעה בשדה דב: יתרונות, סיכונים ומה לבדוק",
    "h2": "Investing in Sde Dov: advantages, risks and what to check",
    "hebrew_words": 390,
@@ -172,7 +172,7 @@
   },
   {
    "id": "hub-legal",
-   "part": 2,
+   "part": 3,
    "hebrew_h2": "בדיקות משפטיות לפני רכישה על הנייר בשדה דב",
    "h2": "Legal checks before buying off plan in Sde Dov",
    "hebrew_words": 473,
@@ -215,7 +215,7 @@
   },
   {
    "id": "hub-summary",
-   "part": 3,
+   "part": 4,
    "hebrew_h2": "סיכום קצר",
    "h2": "Sde Dov in short",
    "hebrew_words": 72,
@@ -228,7 +228,7 @@
   },
   {
    "id": "hub-planning",
-   "part": 3,
+   "part": 4,
    "hebrew_h2": "תכנון הרובע: מהתכנית אל העיר החדשה",
    "h2": "Planning the quarter: from plan to new city district",
    "hebrew_words": 740,
@@ -253,7 +253,7 @@
   },
   {
    "id": "hub-guide",
-   "part": 3,
+   "part": 4,
    "hebrew_h2": "מדריך הרובע: מתחמים, נתונים ותשתיות",
    "h2": "Guides to the quarter: compounds, data and infrastructure",
    "hebrew_words": 47,
@@ -264,7 +264,7 @@
   },
   {
    "id": "hub-links",
-   "part": 3,
+   "part": 4,
    "hebrew_h2": "פרויקטים, כלים וליווי בשדה דב",
    "h2": "Projects, tools and professional support in Sde Dov",
    "hebrew_words": 70,
@@ -274,7 +274,7 @@
    "note": "A list of links, one <li> per Hebrew link, in the same order. Translate each anchor; a link to a Hebrew page carries IN_HEBREW."
   }
  ],
- "names": "Sde Dov (שדה דב); the quarter: \"the Sde Dov quarter\" (rova = quarter; the site's own name for it: \"Sde Dov quarter\"). Dov Hoz airport. The compounds: Eshkol (מתחם אשכול, the Eshkol compound), the Centre (מרכז הרובע), the North (צפון הרובע). Projects as the developers write them: Rainbow Tel Aviv (Israel Canada), FIRST or FIRST BY HAGAG (Hagag Group), ASHIRA (Avisror Moshe & Sons), DIMRI YAMA (Y.H. Dimri; architect Rani Ziss, interiors Kelly Hoppen), ZOHI (Levinstein, Mivne and Allied), GINDI VOGUE (Gindi Holdings), UTOPIA (Nahmias Group). Developers: Israel Canada, Hagag Group, Avisror Moshe & Sons, Y.H. Dimri, Gindi Holdings, Shikun & Binui, Mor Group, Nahmias Group, Levinstein Group, Allied, Mivne, Africa Israel, Electra. Contractor: Ashtrom. Places: Tzukei Aviv, Propes Street, Neve Yam, Program L (Tochnit Lamed), Levi Eshkol Street, Kochav HaTzafon, the Reading compound, Shai Agnon Street, Yarkon Park, Ibn Gabirol, Ramat Aviv, Ramat Aviv Gimel, Park Tzameret, the Green Line of the light rail. Bodies: the Israel Land Authority, the Tel Aviv District Planning Committee, the Tel Aviv-Yafo Local Planning Committee, the Tel Aviv-Yafo municipality. Laws: the Sale (Apartments) Law; the Sale (Apartments) (Assurance of Investments of Purchasers of Apartments) Law, \"the Sale Law guarantee\". Terms: purchase tax, betterment levy, management fees (building maintenance and services), bank supervision account (liva'i bank'ai), presale. Rooms: the Israeli count (\"4 rooms\"). Tel Aviv-Yafo for the municipality.",
+ "names": "Sde Dov (שדה דב); the quarter: \"the Sde Dov quarter\" (rova = quarter; the site's own name for it: \"Sde Dov quarter\"). Dov Hoz airport. The compounds: Eshkol (מתחם אשכול, the Eshkol compound), the Centre (מרכז הרובע), the North (צפון הרובע). Projects as the developers write them: Rainbow Tel Aviv (Israel Canada), FIRST or FIRST BY HAGAG (Hagag Group), ASHIRA (Avisror Moshe & Sons), DIMRI YAMA (Y.H. Dimri; architect Rani Ziss, interiors Kelly Hoppen), ZOHI (Levinstein, Mivne and Allied), GINDI VOGUE (Gindi Holdings), UTOPIA (Nahmias Group), Mediterranean Towers (מגדלי הים התיכון, senior living). Developers: Israel Canada, Hagag Group, Avisror Moshe & Sons, Y.H. Dimri, Gindi Holdings, Shikun & Binui, Mor Group, Nahmias Group, Levinstein Group, Allied, Mivne, Africa Israel, Electra. Contractor: Ashtrom. Places: Tzukei Aviv, Propes Street, Neve Yam, Plan L (the site's form for תכנית ל׳), Levi Eshkol Street, Kochav HaTzafon, the Reading compound, Shai Agnon Street, Yarkon Park, Ibn Gabirol, Ramat Aviv, Ramat Aviv Gimel, Park Tzameret, the Green Line of the light rail. Bodies: the Israel Land Authority, the Tel Aviv District Planning Committee, the Tel Aviv-Yafo Local Planning Committee, the Tel Aviv-Yafo municipality. Laws: the Sale (Apartments) Law; the Sale (Apartments) (Assurance of Investments of Purchasers of Apartments) Law, \"the Sale Law guarantee\". Terms: purchase tax, betterment levy, management fees (building maintenance and services), bank supervision account (liva'i bank'ai), presale. Rooms: the Israeli count (\"4 rooms\"). Tel Aviv-Yafo for the municipality.",
  "keywords_monthly": [
   [
    "sde dov (US)",
@@ -695,6 +695,7 @@
   "rova 4 tel aviv",
   "schools parks and daily",
   "sde dov apartment price",
+  "sde dov apartment prices",
   "shikun binui sde dov",
   "source of funds banking",
   "sources",
@@ -759,9 +760,8 @@
  ],
  "component_headings_in_this_language": [
   "The Sde Dov quarter on the map: the projects, the beach and the neighbourhood",
-  "Sde Dov apartment price list by project",
-  "Sde Dov apartment price calculator",
-  "How much does an apartment cost in Sde Dov"
+  "Sde Dov apartment prices, project by project",
+  "Sde Dov apartment price calculator"
  ],
  "not_published": [
   "a delivery date for the whole quarter",
@@ -817,6 +817,7 @@
     "3"
    ],
    "date": "plan approved 2020; municipal page read 7.10.2026",
+   "conflict": "'15,000-20,000 units' (an English guide) is not the plan: never use it.",
    "write_as": "'about 16,000 apartments planned'. Never a delivery date for the whole quarter."
   },
   {
@@ -889,6 +890,7 @@
     "1.7.2019",
     "2020"
    ],
+   "conflict": "Some English sources say 30 June 2019 (the last day of flights): write 1 July 2019, as the Hebrew does.",
    "write_as": "The city is Tel Aviv; the line name keeps the three cities."
   },
   {
@@ -906,7 +908,7 @@
   {
    "claim_id": "SDH-03",
    "topic": "land",
-   "claim": "Boundaries: the Tzukei Aviv neighbourhood and Propes Street (north); Neve Yam, Program L (Tochnit Lamed) and Levi Eshkol Street (east); Kochav HaTzafon, the Reading compound and Shai Agnon Street (south); the beach and the promenade (west).",
+   "claim": "Boundaries: the Tzukei Aviv neighbourhood and Propes Street (north); Neve Yam, Plan L (Tochnit Lamed) and Levi Eshkol Street (east); Kochav HaTzafon, the Reading compound and Shai Agnon Street (south); the beach and the promenade (west).",
    "write_as": "No distances. The port of Tel Aviv is NOT a boundary."
   },
   {
@@ -1061,7 +1063,7 @@
   {
    "claim_id": "SDH-13",
    "topic": "land",
-   "claim": "Land prices in the tenders: about ₪3.3 million per apartment on average in the 2022 tenders (development costs included); about ₪1.7 to ₪2.2 million per apartment in the February 2025 tenders.",
+   "claim": "Land prices in the tenders: about ₪3.3 million per apartment on average in the 2022 tenders (development costs included); about ₪1.7 to ₪2.2 million per apartment in the February 2025 tender for regular (for-sale) apartment buildings (the rental tenders of that month were far lower).",
    "numbers": [
     "2022",
     "3.3",
