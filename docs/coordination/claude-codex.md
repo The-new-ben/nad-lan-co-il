@@ -3926,3 +3926,8 @@ RELEASE ROLLED BACK 1.72.430 PriceGuide v1 by the Kikar loop [main] 10:32 Israel
 RELEASE IN PROGRESS 1.72.430 PriceGuide v1.1 (checks updated to the approved live state; data: official neighbourhood medians, deal floors) by the Kikar loop [main] start 10:34 Israel (machine clock), second attempt
 RELEASE DONE 1.72.430 PriceGuide v1.1 by the Kikar loop [main] 10:41 Israel (deploy record: released and verified; project-stage.php 4ffb281e67; all checks OK incl. the Kikar order and the 9 price-guide checks)
 RELEASE IN PROGRESS 1.72.431 PriceGuide v1.2 (its row in the world grid, number sizes) by the Kikar loop [main] start 10:41 Israel (machine clock)
+RELEASE DONE 1.72.431 PriceGuide v1.2 (the prices row in the world grid) by the Kikar loop [main] 10:47 Israel (deploy record: released and verified)
+RELEASE IN PROGRESS 1.72.432 PriceGuide v1.3 (rules scoped to the root class) by the Kikar loop [main] start 10:47 Israel (machine clock)
+RELEASE DONE 1.72.432 PriceGuide v1.3 (rules scoped to the root class) by the Kikar loop [main] 10:55 Israel (deploy record: released and verified)
+RELEASE IN PROGRESS live-truth READ-ONLY export (one temporary bridge, no writes) by the Kikar loop [main] start 10:55 Israel (machine clock), HAD-443
+RELEASE DONE live-truth READ-ONLY export by the Kikar loop [main] 10:57 Israel: 1,536 plugin files (105.6 MB, 1.72.432) + 165 snippets (16 active); bridge deleted, route 404

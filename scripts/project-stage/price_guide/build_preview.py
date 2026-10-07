@@ -66,6 +66,7 @@ One price list and one price calculator for a project page: what the published d
 - A fine line: an estimate, the date, the asking-to-closing gap (5%-10% in expensive apartments), the price is set with the seller. Under the section, the data line WITHOUT source names (Kikar law): deals reported to the Tax Authority as published, appraisers' estimates, ads; asking prices marked; the date.
 - Phone: one column; the calculator before the table; the table rows become cards with their labels; tiles one per row.
 - **Its place on a world page (v1.2):** the world page is a named grid; the section takes the area `prices`, a full row right after the first fold (the text column and the stage) and before the area map: `"hero stage" "lead stage" "cta stage" "prices prices" "below below" ...`, and on screens up to 1099px `"hero" "lead" "cta" "stage" "prices" "below" ...`. The phone's first screen (the landing lane, P9a) stays as it was. A child without an area falls to the end of the grid: that was 1.72.430's bug, measured live at 3,226 px.
+- **Every rule starts with the root class** (`.nlpg .nlpg__big`, specificity 0,2,0, v1.3): on phones the theme's `.entry-content p{font-size:16px!important}` (0,1,1) flattened the estimate (32 to 16px) and the fine print when the rules were lone classes. `render.scope()` adds the root to every rule, inside the container blocks too.
 - Sub-line rules are scoped with `>` (`.nlpg__tiles li>span`, `th>span`), so the number islands inside a tile or a label keep the tile's size (1.72.430 shrank them).
 
 **Honesty**
