@@ -1113,6 +1113,7 @@ if ( ! function_exists( 'nadlan_dir_project_page' ) ) {
 			<?php endforeach; ?>
 		</div>
 	</header>
+<?php do_action( 'nadlan_dir_projects_after_hero' ); // HAD-445: the price list form (inc/pricelist-form.php) ?>
 <?php echo function_exists( 'nadlan_drone_map_band' ) ? nadlan_drone_map_band() : ''; // phpcs:ignore ?>
 
 	<div class="nldir-body">
