@@ -3921,3 +3921,8 @@ RELEASE DONE HAD-256 x-owner-wizard 2.0.2 + x-broker-drop 1.1.4 + page B + Yoast
   - No account was created on live.
   - Mail is not proven (FluentSMTP is unconfigured), so the "forgot password" mail is not promised.
 - **Finding (logged in Linear):** on a phone, the floating "ייעוץ חינם" bar covers the sign-in button and the password row of the form, and the space between the lede and the form is large.
+RELEASE IN PROGRESS 1.72.430 PriceGuide v1 (the Kikar price list + calculator on /projects/hamedina/, HAD-433) by the Kikar loop [main] start 10:20 Israel (machine clock): dry run, then the release (Ben 7.10: work, publish, send links)
+RELEASE ROLLED BACK 1.72.430 PriceGuide v1 by the Kikar loop [main] 10:32 Israel (deploy record): the runner rolled itself back on two inherited checks of pages changed since 1.72.429 (/post-listing/ = HAD-256 page B; /urban-renewal/map/ = the CEO SEO titles of 6.10); every Kikar check passed; live back on 1.72.429
+RELEASE IN PROGRESS 1.72.430 PriceGuide v1.1 (checks updated to the approved live state; data: official neighbourhood medians, deal floors) by the Kikar loop [main] start 10:34 Israel (machine clock), second attempt
+RELEASE DONE 1.72.430 PriceGuide v1.1 by the Kikar loop [main] 10:41 Israel (deploy record: released and verified; project-stage.php 4ffb281e67; all checks OK incl. the Kikar order and the 9 price-guide checks)
+RELEASE IN PROGRESS 1.72.431 PriceGuide v1.2 (its row in the world grid, number sizes) by the Kikar loop [main] start 10:41 Israel (machine clock)
