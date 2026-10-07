@@ -316,11 +316,12 @@ function one(root){var f=root.querySelector('.nlpg__calc');if(!f||f.__nlpg)retur
    s.appendChild(el('text',{x:(L+R)/2,y:B+16,'text-anchor':'middle'},T.axis));
    s.setAttribute('aria-label',fill(T.aria_t,{lo:nf(lo),hi:nf(hi),f:floor,avg:nf(C.avg)}));
   }else{var x0=40000,x1=115000,X2=function(v){return L+(v-x0)*(R-L)/(x1-x0)};
-   [[T.you,m.lo,m.hi,1],[T.tw,C.avg,C.avg,0],[T.ta,C.ta,C.ta,0]].forEach(function(r,i){var y=24+i*36;
+   [[T.you,m.lo,m.hi,1],[T.tw,C.avg,C.avg,0],[T.ta,C.ta,C.ta,0]].forEach(function(r,i){var y=24+i*42;
     s.appendChild(el('text',{x:R,y:y-9,'text-anchor':'end'},r[0]));
     s.appendChild(el('line',{x1:X2(x0),x2:X2(x1),y1:y,y2:y,stroke:'#e3e1da','stroke-width':6,'stroke-linecap':'round'}));
     if(r[3]){s.appendChild(el('line',{x1:X2(r[1]),x2:X2(r[2]),y1:y,y2:y,stroke:'#2f6f86','stroke-width':8,'stroke-linecap':'round'}));
-     s.appendChild(el('text',{x:X2(r[1])-6,y:y+17,'text-anchor':'end'},nf(r[1])));s.appendChild(el('text',{x:X2(r[2])+6,y:y+17,'text-anchor':'start'},nf(r[2])))}
+     var hx=X2(r[2])+6,ha='start';if(hx>R-46){hx=R;ha='end'}
+     s.appendChild(el('text',{x:X2(r[1])-6,y:y+17,'text-anchor':'end'},nf(r[1])));s.appendChild(el('text',{x:hx,y:y+17,'text-anchor':ha},nf(r[2])))}
     else{s.appendChild(el('circle',{cx:X2(r[1]),cy:y,r:5.5,fill:'#1f4b5c',stroke:'#fff','stroke-width':2}));s.appendChild(el('text',{x:X2(r[1]),y:y+17,'text-anchor':'middle'},new Intl.NumberFormat(LOC).format(r[1])))}});
    s.setAttribute('aria-label',fill(T.aria_a,{m:m.label,lo:nf(m.lo),hi:nf(m.hi),avg:nf(C.avg),ta:nf(C.ta)}));
   }}
@@ -330,7 +331,7 @@ function one(root){var f=root.querySelector('.nlpg__calc');if(!f||f.__nlpg)retur
   var mid=(lo+hi)/2*a,t=tax(mid,val('nlpg-t')==='more'?C.tax2:C.tax1),rng=mil(lo*a)+'-'+mil(hi*a);
   q('p').innerHTML=put(T.u_mil,isl(rng));q('pm').innerHTML=put(T.approx,put(T.u_pm2,isl(nf(lo)+'-'+nf(hi))));
   q('tx').innerHTML=put(T.approx,put(T.u_ils,isl(nfk(t))));q('tt').innerHTML=put(T.approx,put(T.u_mil,isl(mil(mid+t))));
-  q('why').textContent=m.why;draw(m,lo,hi,fl);
+  q('why').innerHTML=esc(m.why).replace(/\d[\d,.]*(?:[-–]\d[\d,.]*)?/g,isl);draw(m,lo,hi,fl);
   var w=q('wa');if(w&&C.wa){w.href='https://wa.me/'+C.wa+'?text='+encodeURIComponent(fill(T.wa,{m:m.label,a:a,f:m.floor?fill(T.wa_f,{f:fl}):'',r:rng}))}}
  f.addEventListener('input',run);f.addEventListener('change',run);f.addEventListener('submit',function(e){e.preventDefault()});
  var mb=root.querySelector('.nlpg__more');if(mb)mb.addEventListener('click',function(){root.classList.add('is-open');mb.setAttribute('aria-expanded','true');var g=root.querySelector('.nlpg__grp--more .nlpg__gh th');if(g){g.setAttribute('tabindex','-1');g.focus({preventScroll:true})}});
