@@ -13,7 +13,8 @@
   "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
-  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
  ],
  "claims_summary": {
   "claims": {
@@ -702,17 +703,19 @@
    "url": "https://nad-lan.co.il/holon-apartment-prices/",
    "field": "content",
    "old": "פער של 10 מ״ר בלבד יכול לשנות מחיר ב-250,000-350,000 ₪ כאשר המחיר למ״ר נע סביב 25,000-29,000 ₪.",
-   "new": "פער של 10 מ״ר בלבד יכול לשנות מחיר ב-250,000 ₪ ויותר כאשר המחיר למ״ר נע סביב 25,000-29,000 ₪.",
+   "new": "פער של 10 מ״ר בלבד כבר משנה את המחיר, ולכן משווים דירות בשטח דומה.",
    "source_keys": [
     "page"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "10 m2 at 25,000-29,000 per m2 is 250,000-290,000; the 350,000 top does not follow from the page's own figures. Kept the floor.",
+   "why": "The 250,000-350,000 effect of 10 m2 and the 25,000-29,000 per m2 it rested on have no official source (the per-m2 range came from private data sites): both numbers are removed, the 10 m2 stays as the example size and the advice to compare flats of similar size stays. Tier 2 under the CEO rule.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 3,
-   "raw_risk": []
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed 250,000-350,000 and the per-m2 range 25,000-29,000 (no official source); the 10 m2 example and the advice stay"
   },
   {
    "page_id": 4585,
@@ -725,11 +728,13 @@
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "A 5%-12% premium with no source; rephrased without the number.",
+   "why": "A 5%-12% gap between a low floor and a flat with balcony, parking and access has no official source: the number is removed, the hedged sentence stays.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 4,
-   "raw_risk": []
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the 5%-12% floor / balcony gap (no official source); hedged sentence kept"
   },
   {
    "page_id": 4585,
@@ -886,17 +891,19 @@
    "url": "https://nad-lan.co.il/holon-apartment-prices/",
    "field": "content",
    "old": "פער של 8%-20% מעל דירת יד שנייה דומה יכול להיות סביר במקרים מסוימים, אך הוא לא אוטומטי.",
-   "new": "פער מעל דירת יד שנייה דומה יכול להיות סביר במקרים מסוימים, אך הוא לא אוטומטי.",
+   "new": "מחיר גבוה מדירת יד שנייה דומה יכול להיות סביר במקרים מסוימים, אך הוא לא אוטומטי.",
    "source_keys": [
     "page"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "An 8%-20% new-flat premium with no source; rephrased without the number.",
+   "why": "An 8%-20% new-flat premium has no official source: the number is removed, the sentence stays as a hedged caution.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 12,
-   "raw_risk": []
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the 8%-20% new-flat premium (no official source); hedged sentence kept"
   },
   {
    "page_id": 4585,
@@ -926,11 +933,13 @@
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "A renovation-cost range with no source; rephrased without the number.",
+   "why": "A renovation cost 80,000-300,000 in a table cell has no official source: the number is removed, the cell says a renovation may be needed.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 14,
-   "raw_risk": []
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the renovation cost 80,000-300,000 (no official source); cell kept as 'a renovation may be needed'"
   },
   {
    "page_id": 4585,
@@ -943,11 +952,13 @@
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "A 50,000-250,000 effect on the offer with no source; rephrased without the number.",
+   "why": "A 50,000-250,000 effect of the deals check on the offer has no official source: the number is removed, the cell stays.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 15,
-   "raw_risk": []
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the 50,000-250,000 effect on the offer (no official source); cell kept"
   },
   {
    "page_id": 4585,
@@ -960,11 +971,13 @@
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "A renovation-cost range with no source; rephrased without the number.",
+   "why": "A renovation cost 80,000-300,000 has no official source: the number is removed, the cell stays as advice.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 16,
-   "raw_risk": []
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the renovation cost 80,000-300,000 (no official source); cell kept as advice"
   },
   {
    "page_id": 4585,
@@ -1036,11 +1049,13 @@
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "The 8%-20% new-flat premium again, no source; rephrased without the number.",
+   "why": "The 8%-20% new-flat premium again, no official source: the number is removed, the hedged sentence stays.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 20,
-   "raw_risk": []
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the 8%-20% new-flat premium (no official source); hedged sentence kept"
   }
  ],
  "live_recheck": {
@@ -1050,5 +1065,14 @@
   "price_list_on_page": true,
   "body_outside_list_identical_to_audited_copy": "yes, except the blank lines around the price list, which was inserted at 2026-10-07T13:47:02 (site time) after the audited copy",
   "dry_run": "20 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ },
+ "tier2_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 11:42:18",
+  "modified": "2026-10-07T14:37:30",
+  "result": "re-fetched 7.10.2026 after tier 1 went live (tier-1 'new' texts present); every tier-2 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 7,
+  "replaced": 0,
+  "removed": 7,
+  "deleted": 0
  }
 }

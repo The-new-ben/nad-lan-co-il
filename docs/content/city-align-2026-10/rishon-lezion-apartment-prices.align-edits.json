@@ -13,7 +13,8 @@
   "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
-  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
  ],
  "claims_summary": {
   "claims": {
@@ -331,13 +332,15 @@
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "A renovation-cost range with no source; rephrased without the number.",
+   "why": "Renovation cost 100,000-250,000 has no official source: the number is removed, the sentence stays.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 3,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the renovation cost 100,000-250,000 (no official source); sentence kept"
   },
   {
    "page_id": 4581,
@@ -403,13 +406,15 @@
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Renovation-cost range in a table cell with no source; rephrased without the number.",
+   "why": "Renovation cost 80,000-300,000 in a table cell has no official source: the number is removed, the cell stays.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 6,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the renovation cost 80,000-300,000 (no official source); cell kept"
   },
   {
    "page_id": 4581,
@@ -482,5 +487,14 @@
   "price_list_on_page": true,
   "body_outside_list_identical_to_audited_copy": "yes, except the blank lines around the price list, which was inserted at 2026-10-07T13:47:27 (site time) after the audited copy",
   "dry_run": "9 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ },
+ "tier2_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 11:42:22",
+  "modified": "2026-10-07T14:38:02",
+  "result": "re-fetched 7.10.2026 after tier 1 went live (tier-1 'new' texts present); every tier-2 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 2,
+  "replaced": 0,
+  "removed": 2,
+  "deleted": 0
  }
 }

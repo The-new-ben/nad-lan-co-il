@@ -13,7 +13,8 @@
   "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
-  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
  ],
  "claims_summary": {
   "claims": {
@@ -837,13 +838,16 @@
    "url": "https://nad-lan.co.il/haifa-apartment-prices/",
    "field": "content",
    "old": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מספר חדרים</th>\n<th dir=\"rtl\">שכירות חודשית משוערת</th>\n<th dir=\"rtl\">שימוש בבדיקת מחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">1 חדר</td>\n<td dir=\"rtl\">כ-2,187 ש\"ח</td>\n<td dir=\"rtl\">מתאים להשוואת דירות קטנות ויחידות דיור, עם רגישות גבוהה למיקום</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">כ-2,966 ש\"ח</td>\n<td dir=\"rtl\">נקודת ביקורת לדירות קטנות בהדר, בת גלים ואזורים סמוכים למוסדות לימוד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">כ-3,820 ש\"ח</td>\n<td dir=\"rtl\">שימושי במיוחד לדירות רגילות בשוק הרחב של חיפה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">כ-5,412 ש\"ח</td>\n<td dir=\"rtl\">עוזר לבדוק אם דירת משפחה מתומחרת גבוה מדי ביחס לשימוש בה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">כ-7,022 ש\"ח</td>\n<td dir=\"rtl\">מושפע מאוד משכונות יקרות, דירות חדשות ומפרט גבוה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">6 חדרים</td>\n<td dir=\"rtl\">כ-10,400 ש\"ח</td>\n<td dir=\"rtl\">מתאים לבדיקה זהירה של נכסים גדולים, יוקרתיים או חריגים</td>\n</tr>\n</tbody>\n</table>",
-   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מספר חדרים</th>\n<th dir=\"rtl\">שימוש בבדיקת מחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">1 חדר</td>\n<td dir=\"rtl\">מתאים להשוואת דירות קטנות ויחידות דיור, עם רגישות גבוהה למיקום</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2 חדרים</td>\n<td dir=\"rtl\">נקודת ביקורת לדירות קטנות בהדר, בת גלים ואזורים סמוכים למוסדות לימוד</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3 חדרים</td>\n<td dir=\"rtl\">שימושי במיוחד לדירות רגילות בשוק הרחב של חיפה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4 חדרים</td>\n<td dir=\"rtl\">עוזר לבדוק אם דירת משפחה מתומחרת גבוה מדי ביחס לשימוש בה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">5 חדרים</td>\n<td dir=\"rtl\">מושפע מאוד משכונות יקרות, דירות חדשות ומפרט גבוה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">6 חדרים</td>\n<td dir=\"rtl\">מתאים לבדיקה זהירה של נכסים גדולים, יוקרתיים או חריגים</td>\n</tr>\n</tbody>\n</table>",
+   "new": "<table dir=\"rtl\">\n<thead dir=\"rtl\">\n<tr dir=\"rtl\">\n<th dir=\"rtl\">מספר חדרים</th>\n<th dir=\"rtl\">שכר דירה חודשי ממוצע, אפריל עד יוני 2026 (הלמ\"ס)</th>\n<th dir=\"rtl\">שימוש בבדיקת מחיר</th>\n</tr>\n</thead>\n<tbody dir=\"rtl\">\n<tr dir=\"rtl\">\n<td dir=\"rtl\">1 עד 2 חדרים</td>\n<td dir=\"rtl\">2,478 ש\"ח</td>\n<td dir=\"rtl\">מתאים להשוואת דירות קטנות ויחידות דיור, למשל בהדר, בת גלים ובאזורים סמוכים למוסדות לימוד, עם רגישות גבוהה למיקום</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">2.5 עד 3 חדרים</td>\n<td dir=\"rtl\">3,119 ש\"ח</td>\n<td dir=\"rtl\">שימושי במיוחד לדירות רגילות בשוק הרחב של חיפה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">3.5 עד 4 חדרים</td>\n<td dir=\"rtl\">4,061 ש\"ח</td>\n<td dir=\"rtl\">עוזר לבדוק אם דירת משפחה מתומחרת גבוה מדי ביחס לשימוש בה</td>\n</tr>\n<tr dir=\"rtl\">\n<td dir=\"rtl\">4.5 חדרים ומעלה</td>\n<td dir=\"rtl\">5,420 ש\"ח</td>\n<td dir=\"rtl\">מושפע מאוד משכונות יקרות, דירות חדשות ומפרט גבוה; בנכסים גדולים, יוקרתיים או חריגים כדאי לבדוק בזהירות</td>\n</tr>\n</tbody>\n</table>",
    "source_keys": [
-    "page"
+    "cbs_rent[חיפה].1-2.q2_2026",
+    "cbs_rent[חיפה].2.5-3.q2_2026",
+    "cbs_rent[חיפה].3.5-4.q2_2026",
+    "cbs_rent[חיפה].4.5+.q2_2026"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Rent by rooms: 'estimated monthly rent' 2,187-10,400 with no named source (the page names no listing sample or index for rent). The rent column is removed; the usage notes stay word for word.",
+   "why": "Rent by rooms: the unsourced 'estimated monthly rent' column (2,187-10,400) is replaced by the CBS average monthly rent in Haifa by size group, Q2 2026 (table 4.9: 1-2 rooms 2,477.9; 2.5-3 3,118.5; 3.5-4 4,060.6; 4.5+ 5,420.3, rounded to whole shekels). The six rows become the four CBS size groups (1 and 2 rooms merged, 5 and 6 merged); the usage notes stay word for word, the two merged pairs joined. Tier 2 under the CEO rule.",
    "matches_in_live": 1,
    "tier": 2,
    "spans_tags": true,
@@ -853,26 +857,37 @@
     "straight double quote",
     "line break",
     "whole table: apply via anchor"
-   ]
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the 6-row rent column with the CBS average rent for Haifa by size group (1-2, 2.5-3, 3.5-4, 4.5+ rooms), Q2 2026: 2,478 / 3,119 / 4,061 / 5,420 ש\"ח; rows regrouped to the CBS groups, usage notes kept",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
   },
   {
    "page_id": 4579,
    "url": "https://nad-lan.co.il/haifa-apartment-prices/",
    "field": "content",
-   "old": "בחיפה, שכירות חציונית סביב 3,400 ש\"ח וממוצעת סביב 3,867 ש\"ח יוצרת נקודת ייחוס כללית.",
-   "new": "בחיפה, שכירות של דירות דומות באותו אזור יוצרת נקודת ייחוס כללית.",
+   "old": "בחיפה, שכירות חציונית סביב 3,400 ש\"ח וממוצעת סביב 3,867 ש\"ח יוצרת נקודת ייחוס כללית. אם דירת 3 חדרים מוצעת במחיר של 1,250,000 ש\"ח ומושכרת סביב 3,820 ש\"ח, אפשר לבדוק האם היחס סביר ביחס לאזור.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בחיפה ברבעון השני של 2026 (אפריל עד יוני) היה 3,405 ש\"ח, והוא יוצר נקודת ייחוס כללית. אם דירת 3 חדרים מוצעת במחיר של 1,250,000 ש\"ח ומושכרת סביב 3,119 ש\"ח, הממוצע לדירות של 2.5 עד 3 חדרים באותו רבעון, אפשר לבדוק האם היחס סביר ביחס לאזור.",
    "source_keys": [
+    "cbs_rent[חיפה].total.q2_2026",
+    "cbs_rent[חיפה].2.5-3.q2_2026",
     "page"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Rent median 3,400 / average 3,867 with no named source; the hypothetical that follows stays.",
+   "why": "Unsourced rent median 3,400 / average 3,867 replaced by the CBS average rent in Haifa, Q2 2026 (3,405.4). The old sentence widened by the next one: its '3,820' was the removed table figure for 3 rooms; it becomes the CBS 2.5-3 rooms average (3,118.5). The hypothetical 1,250,000 offer stays as the page had it.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 11,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "kept_numbers": [
+    "1,250,000"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced rent 'median 3,400 / average 3,867' with the CBS average 3,405 ש\"ח (Haifa, Q2 2026); the example sentence's 3,820 rent became the CBS 2.5-3 rooms average 3,119",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
   },
   {
    "page_id": 4579,
@@ -885,7 +900,7 @@
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Rent by neighbourhood: 'estimated monthly rent' 2,348-3,015 with no named source. The rent column is removed; the check notes stay.",
+   "why": "Rent by neighbourhood (2,348-3,015): the CBS publishes no neighbourhood rent, so the rent column is deleted. The 'what to check' column is advice, makes no price-level claim and stays word for word. Tier 2 under the CEO rule.",
    "matches_in_live": 1,
    "tier": 2,
    "spans_tags": true,
@@ -895,7 +910,9 @@
     "straight double quote",
     "line break",
     "whole table: apply via anchor"
-   ]
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the neighbourhood rent column (no official neighbourhood rent exists); the 'what to check' notes stay"
   },
   {
    "page_id": 4579,
@@ -1009,13 +1026,15 @@
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Renovation cost range 150,000-400,000 with no source.",
+   "why": "Renovation cost 150,000-400,000 has no official source: the number is removed, the caution stays (advice, no price claim).",
    "matches_in_live": 1,
    "tier": 2,
    "n": 17,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the renovation cost range 150,000-400,000 (no official source); caution sentence kept"
   },
   {
    "page_id": 4579,
@@ -1147,19 +1166,22 @@
    "url": "https://nad-lan.co.il/haifa-apartment-prices/",
    "field": "content",
    "old": "חציון שכירות סביב 3,400 ש\"ח וממוצע סביב 3,867 ש\"ח יכולים לעזור לבדוק סבירות, אבל מחיר הדירה נקבע גם לפי מיקום, שטח, מצב, זכויות וביקוש קונים.",
-   "new": "שכירות של דירות דומות באותו אזור יכולה לעזור לבדוק סבירות, אבל מחיר הדירה נקבע גם לפי מיקום, שטח, מצב, זכויות וביקוש קונים.",
+   "new": "שכר הדירה הממוצע בחיפה, 3,405 ש\"ח בחודש ברבעון השני של 2026 לפי הלשכה המרכזית לסטטיסטיקה, יכול לעזור לבדוק סבירות, אבל מחיר הדירה נקבע גם לפי מיקום, שטח, מצב, זכויות וביקוש קונים.",
    "source_keys": [
-    "page"
+    "cbs_rent[חיפה].total.q2_2026"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "FAQ rent: median 3,400 / average 3,867 with no named source (same as edit 11).",
+   "why": "FAQ rent: median 3,400 / average 3,867 (no source) replaced by the CBS average rent in Haifa, Q2 2026 (3,405.4), same as edit 11.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 24,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced rent 'median 3,400 / average 3,867' with the CBS average 3,405 ש\"ח (Haifa, Q2 2026)",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
   },
   {
    "page_id": 4579,
@@ -1172,13 +1194,15 @@
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "FAQ renovation cost range 150,000-400,000 with no source (same as edit 17).",
+   "why": "FAQ renovation cost 150,000-400,000 has no official source: the number is removed, the caution stays (same as edit 17).",
    "matches_in_live": 1,
    "tier": 2,
    "n": 25,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the renovation cost range 150,000-400,000 (no official source); caution sentence kept"
   }
  ],
  "live_recheck": {
@@ -1188,5 +1212,14 @@
   "price_list_on_page": true,
   "body_outside_list_identical_to_audited_copy": "yes",
   "dry_run": "25 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ },
+ "tier2_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 11:42:16",
+  "modified": "2026-10-07T14:37:22",
+  "result": "re-fetched 7.10.2026 after tier 1 went live (tier-1 'new' texts present); every tier-2 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 6,
+  "replaced": 3,
+  "removed": 2,
+  "deleted": 1
  }
 }

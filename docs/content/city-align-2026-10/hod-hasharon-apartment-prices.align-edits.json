@@ -13,7 +13,8 @@
   "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
-  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
  ],
  "claims_summary": {
   "claims": {
@@ -669,19 +670,21 @@
    "url": "https://nad-lan.co.il/hod-hasharon-apartment-prices/",
    "field": "content",
    "old": "עם זאת, דירה ותיקה יכולה לדרוש שיפוץ של 150,000-400,000 ש\"ח, ולעיתים גם טיפול בצנרת, חשמל, איטום, מטבח ומיזוג.",
-   "new": "עם זאת, דירה ותיקה יכולה לדרוש שיפוץ בעלות של מאות אלפי ש\"ח, ולעיתים גם טיפול בצנרת, חשמל, איטום, מטבח ומיזוג.",
+   "new": "עם זאת, דירה ותיקה יכולה לדרוש שיפוץ, ולעיתים גם טיפול בצנרת, חשמל, איטום, מטבח ומיזוג.",
    "source_keys": [
     "page"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Renovation cost 150,000-400,000 with no source or date; kept in words.",
+   "why": "Renovation cost 150,000-400,000 has no official source or date: the number is removed ('hundreds of thousands' would still be a number), the sentence stays.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 10,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the renovation cost 150,000-400,000 (no official source); sentence kept"
   },
   {
    "page_id": 4558,
@@ -707,19 +710,21 @@
    "url": "https://nad-lan.co.il/hod-hasharon-apartment-prices/",
    "field": "content",
    "old": "יכול לשנות מחיר ב-150,000-400,000 ש\"ח",
-   "new": "יכול לשנות מחיר במאות אלפי ש\"ח",
+   "new": "יכול לשנות מחיר, לפי היקף העבודה",
    "source_keys": [
     "page"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Same undated renovation range in the factors table; kept in words.",
+   "why": "The same renovation range in the factors table: the number is removed, the cell stays.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 12,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the renovation cost 150,000-400,000 (no official source); cell kept"
   },
   {
    "page_id": 4558,
@@ -883,7 +888,7 @@
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Two single-address prices (אסירי ציון 19 about 3,450,000; שדרות הנשיאים 42 about 3,650,000) with no deal date and no area, labelled only 'observed public market figure'; the rows leave the table. The three dated deals (May 2026) stay word for word.",
+   "why": "Two single-address prices (אסירי ציון 19 about 3,450,000; שדרות הנשיאים 42 about 3,650,000) have no deal date, no area and no official source: the two rows are deleted. The three dated deals (May 2026) stay word for word.",
    "matches_in_live": 1,
    "tier": 2,
    "spans_tags": true,
@@ -893,7 +898,9 @@
     "straight double quote",
     "line break",
     "whole table: apply via anchor"
-   ]
+   ],
+   "ceo_action": "deleted",
+   "ceo_note": "deleted the two undated single-address price rows (אסירי ציון 19, שדרות הנשיאים 42); the three dated May 2026 deals stay"
   }
  ],
  "live_recheck": {
@@ -903,5 +910,14 @@
   "price_list_on_page": true,
   "body_outside_list_identical_to_audited_copy": "yes",
   "dry_run": "20 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ },
+ "tier2_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 11:42:17",
+  "modified": "2026-10-07T14:37:27",
+  "result": "re-fetched 7.10.2026 after tier 1 went live (tier-1 'new' texts present); every tier-2 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 3,
+  "replaced": 0,
+  "removed": 2,
+  "deleted": 1
  }
 }

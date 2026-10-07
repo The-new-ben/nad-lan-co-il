@@ -226,3 +226,6 @@ Other pages:
 io.open(os.path.join(D, "README.md"), "w", encoding="utf-8", newline="\n").write(md)
 print("README written", len(md), "chars")
 print(groups)
+# the tier-2 section (CEO rule, 7.10.2026) is generated from the JSON files and inserted before "## Files"
+import subprocess, sys
+subprocess.run([sys.executable, os.path.join(D, "tools", "gen_tier2_section.py")], check=False)

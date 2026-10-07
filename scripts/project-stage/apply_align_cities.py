@@ -60,7 +60,8 @@ tot = {"pages": 0, "edits": 0, "skipped": []}
 for f in files:
     slug = os.path.basename(f).split(".")[0]
     d = json.load(io.open(f, encoding="utf-8"))
-    edits = sorted([e for e in d["edits"] if int(e.get("tier", 1)) <= TIER], key=lambda e: int(e["n"]))
+    # --only: exactly this tier (tier 2 after tier 1 is live: the tier-1 "old" strings no longer exist)
+    edits = sorted([e for e in d["edits"] if (int(e.get("tier", 1)) == TIER if "--only" in ARGS else int(e.get("tier", 1)) <= TIER)], key=lambda e: int(e["n"]))
     if not edits:
         print(f"[{slug}] no tier<={TIER} edits"); continue
     pid = int(edits[0]["page_id"])

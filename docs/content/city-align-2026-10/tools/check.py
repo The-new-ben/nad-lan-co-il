@@ -28,8 +28,25 @@ def load_page(slug, live=False):
     return json.load(open(os.path.join(HERE, "pages", slug + ".json"), encoding="utf-8"))
 
 
+def cbs_official_numbers():
+    """CBS table 4.9 (average monthly rent, Q2 2026) rounded half up and with one decimal, plus the CBS dwelling share (tools/cbs_rent_2026_q2.json)"""
+    fn = os.path.join(HERE, "cbs_rent_2026_q2.json")
+    if not os.path.exists(fn):
+        return set()
+    from decimal import Decimal, ROUND_HALF_UP
+    J = json.load(open(fn, encoding="utf-8"))
+    out = set()
+    for r in J["rows"].values():
+        for v in [r["total"]] + list(r["groups"].values()):
+            if v is not None:
+                out.add(f"{int(Decimal(str(v)).quantize(Decimal('1'), rounding=ROUND_HALF_UP)):,}")
+                out.add(f"{v:,.1f}")
+    out.add(str(J["dwellings_share"]["tel_aviv_district_pct"]))
+    return out
+
+
 def official_numbers(d):
-    vals = set()
+    vals = cbs_official_numbers()
 
     def add(v):
         if v is None:
@@ -79,6 +96,13 @@ def resolve_key(d, key):
     neighbourhoods[name].rooms.4 | cities[slug].rooms.3.latest | page (a number kept from the page itself) | data_quarter"""
     if key in ("page", "data_quarter", "src_line") or key.startswith("page:"):
         return True
+    if key.startswith("cbs_rent[") or key.startswith("cbs_dwellings["):
+        J = json.load(open(os.path.join(HERE, "cbs_rent_2026_q2.json"), encoding="utf-8"))
+        m = re.fullmatch(r"cbs_rent\[(.+?)\]\.(total|1-2|2\.5-3|3\.5-4|4\.5\+)\.q2_2026", key)
+        if m and m.group(1) in J["rows"]:
+            r = J["rows"][m.group(1)]
+            return (r["total"] if m.group(2) == "total" else r["groups"].get(m.group(2))) is not None
+        return key == "cbs_dwellings[מחוז תל אביב].share_2025"
     m = re.fullmatch(r"rooms\.(3|4|5|all)\.(latest|year_ago|change_pct|quarter)", key)
     if m:
         return d["rooms"][m.group(1)].get(m.group(2)) is not None

@@ -13,7 +13,8 @@
   "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
-  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
  ],
  "claims_summary": {
   "claims": {
@@ -533,20 +534,22 @@
    "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
    "field": "content",
    "old": "אין להרצליה מחיר אחד: מרכז העיר, הרצליה הצעירה, הרצליה ב', הירוקה, גליל ים, נוה עמל, נוף ים, המרינה והרצליה פיתוח מתנהגים כשווקים שונים, ולעיתים הפער בין שתי דירות באותו מספר חדרים מגיע למאות אלפי שקלים ואף ליותר ממיליון ש\"ח.",
-   "new": "אין להרצליה מחיר אחד: מרכז העיר, הרצליה הצעירה, הרצליה ב', הירוקה, גליל ים, נוה עמל, נוף ים, המרינה והרצליה פיתוח מתנהגים כשווקים שונים, ולעיתים הפער בין שתי דירות באותו מספר חדרים מגיע למאות אלפי שקלים ואף יותר.",
+   "new": "אין להרצליה מחיר אחד: מרכז העיר, הרצליה הצעירה, הרצליה ב', הירוקה, גליל ים, נוה עמל, נוף ים, המרינה והרצליה פיתוח מתנהגים כשווקים שונים, ולכן גם דירות באותו מספר חדרים נמכרות במחירים שונים לפי האזור.",
    "source_keys": [
     "page"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "A spread of more than a million shekels between two flats with the same room count, with no source or date; the number is dropped, the sentence stays. Tier 2.",
+   "why": "A spread 'of hundreds of thousands and even more than a million' between two flats with the same room count has no official source: the amount is removed and the sentence says only what it can support, that prices differ by area. Tier 2 under the CEO rule.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 1,
    "raw_risk": [
     "straight double quote",
     "apostrophe"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed 'hundreds of thousands, even over a million' (no official source); the sentence now only says that same-size flats sell at different prices by area"
   },
   {
    "page_id": 154,
@@ -602,13 +605,15 @@
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "City per-m2 average 34,000-38,000 with no source and no date (the page shows no check date); number dropped. Tier 2.",
+   "why": "City per-m2 average 34,000-38,000 has no official source and no date on the page: the number is removed, the advice to check 5-10 similar deals stays.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 4,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the city per-m2 figure 34,000-38,000 (no official source); the advice stays"
   },
   {
    "page_id": 154,
@@ -723,51 +728,63 @@
    "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
    "field": "content",
    "old": "אם דירת 3 חדרים מושכרת סביב כ-6,500-6,800 ש\"ח בחודש ודירת 4 חדרים סביב כ-7,500-8,500 ש\"ח בחודש, אפשר להשתמש בשכירות כדי לבדוק אם מחיר מכירה נראה סביר ביחס לביקוש למגורים באזור.",
-   "new": "כאשר יודעים בכמה מושכרות דירות דומות באותו אזור, אפשר להשתמש בשכירות כדי לבדוק אם מחיר מכירה נראה סביר ביחס לביקוש למגורים באזור.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, שכר הדירה החודשי הממוצע בהרצליה ברבעון השני של 2026 (אפריל עד יוני) היה 6,775 ש\"ח. אפשר להשתמש בשכירות כדי לבדוק אם מחיר מכירה נראה סביר ביחס לביקוש למגורים באזור.",
    "source_keys": [
-    "page"
+    "cbs_rent[הרצליה].total.q2_2026"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Rent levels for 3 and 4 rooms with no source and no date; rephrased without the numbers. Tier 2.",
+   "why": "Undated rents for 3 rooms (6,500-6,800) and 4 rooms (7,500-8,500) replaced by the CBS average rent in Herzliya, Q2 2026 (all sizes 6,774.5; the size groups follow in edits 11, 12 and 16). Tier 2 under the CEO rule.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 10,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced rents 6,500-6,800 (3 rooms) and 7,500-8,500 (4 rooms) with the CBS average rent for Herzliya, Q2 2026: 6,775 ש\"ח",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
   },
   {
    "page_id": 154,
    "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
    "field": "content",
    "old": "נתוני שכירות שנבדקו הצביעו על שכירות חציונית בהרצליה סביב כ-7,200 ש\"ח בחודש, ממוצע סביב כ-7,661 ש\"ח, ודירות 3 חדרים סביב כ-6,686 ש\"ח. בטבלאות שכירות אחרות הופיעו דירות 2 חדרים סביב כ-5,500 ש\"ח, 3 חדרים סביב כ-6,800 ש\"ח, 4 חדרים סביב כ-8,500 ש\"ח ו-5 חדרים סביב כ-12,200 ש\"ח. הפער בין חציון, ממוצע ודירות יוקרה מסביר מדוע צריך לקרוא את השכירות לפי אזור ולא רק לפי עיר.",
-   "new": "בנתוני שכירות שנבדקו, הממוצע העירוני גבוה מהחציון, ודירות 5 חדרים ודירות באזורי יוקרה מושכרות בסכומים גבוהים בהרבה מדירות קטנות. הפער בין חציון, ממוצע ודירות יוקרה מסביר מדוע צריך לקרוא את השכירות לפי אזור ולא רק לפי עיר.",
+   "new": "לפי הלמ\"ס, ברבעון השני של 2026 שכר הדירה הממוצע בהרצליה נע מ-4,444 ש\"ח לדירות של 1 עד 2 חדרים ועד 9,461 ש\"ח לדירות של 4.5 חדרים ומעלה, והטבלה שלהלן מפרטת את כל קבוצות הגודל. הפער בין דירות קטנות לדירות גדולות מסביר מדוע צריך לקרוא את השכירות לפי גודל הדירה ולפי אזור ולא רק לפי עיר.",
    "source_keys": [
-    "page"
+    "cbs_rent[הרצליה].1-2.q2_2026",
+    "cbs_rent[הרצליה].4.5+.q2_2026"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Rent median, average and per-room rents from unnamed 'rent data' and 'other rent tables', undated; rephrased without the numbers, keeping what they showed (average above median, large and luxury flats far above small ones). Tier 2.",
+   "why": "Rent median 7,200 / average 7,661 / 3 rooms 6,686 and the undated per-room list (5,500, 6,800, 8,500, 12,200) replaced by the CBS range across Herzliya size groups, Q2 2026 (1-2 rooms 4,443.9 to 4,5+ rooms 9,460.5); the median is gone because the CBS publishes no median rent. Tier 2 under the CEO rule.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 11,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the unsourced rent median / average / per-room list with the CBS size-group range for Herzliya, Q2 2026: 4,444 (1-2 rooms) to 9,461 (4.5+ rooms); median dropped (the CBS publishes none)",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
   },
   {
    "page_id": 154,
    "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
    "field": "content",
    "old": "<table dir=\"rtl\"> <thead dir=\"rtl\"> <tr dir=\"rtl\"> <th dir=\"rtl\">אזור או סוג דירה</th> <th dir=\"rtl\">שכירות חודשית שנבדקה</th> <th dir=\"rtl\">מה זה אומר על מחיר הדירה</th> <th dir=\"rtl\">בדיקה לפני הסתמכות</th> </tr> </thead> <tbody dir=\"rtl\"> <tr dir=\"rtl\"> <td dir=\"rtl\">ממוצע עירוני בהרצליה</td> <td dir=\"rtl\">כ-7,600-7,700 ש\"ח</td> <td dir=\"rtl\">נותן מדד כללי לביקוש, אך מושפע מדירות גדולות, אזורי פרימיום ודירות יוקרה.</td> <td dir=\"rtl\">להשוות לחציון, לאזור ולמספר החדרים, ולא להסתמך על ממוצע יחיד.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">חציון עירוני בהרצליה</td> <td dir=\"rtl\">כ-7,200 ש\"ח</td> <td dir=\"rtl\">יכול לשקף טוב יותר את דירת השוק הרגילה לעומת ממוצע שמושפע מעסקאות יקרות.</td> <td dir=\"rtl\">לבדוק האם הדירה דומה למדגם: שטח, קומה, ריהוט, מצב ושכונה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">2 חדרים</td> <td dir=\"rtl\">כ-5,000-5,500 ש\"ח</td> <td dir=\"rtl\">מתאים לבדיקת דירות קטנות, שוכרים יחידים, זוגות צעירים ומשקיעים.</td> <td dir=\"rtl\">לוודא שאין שטח קטן במיוחד, חוסר חניה, רעש או בניין בעייתי.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">3 חדרים</td> <td dir=\"rtl\">כ-6,500-6,800 ש\"ח</td> <td dir=\"rtl\">שכירות כזו יכולה לתמוך במחיר סביב כ-2.5-3.1 מיליון ש\"ח, בכפוף לאזור ולמצב הדירה.</td> <td dir=\"rtl\">להשוות לדירות דומות באותו אזור, לא לכל דירות 3 החדרים בעיר.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">4 חדרים</td> <td dir=\"rtl\">כ-7,500-8,500 ש\"ח</td> <td dir=\"rtl\">מתאים לשוק משפחות, ולכן המחיר מושפע גם מבתי ספר, מעלית, חניה, ממ\"ד ומרפסת.</td> <td dir=\"rtl\">לבדוק אם השכירות משקפת דירה משופצת או דירה רגילה שדורשת השקעה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">5 חדרים</td> <td dir=\"rtl\">כ-9,000-12,200 ש\"ח</td> <td dir=\"rtl\">פער רחב שמושפע מאוד מגודל, איכות פרויקט, קומה, חניות, מרפסת ואזור.</td> <td dir=\"rtl\">להפריד בין דירת משפחה רגילה לבין דירה חדשה או דירה באזור פרימיום.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">נוה ישראל</td> <td dir=\"rtl\">כ-4,600-4,700 ש\"ח</td> <td dir=\"rtl\">עשוי להצביע על רמת מחיר נמוכה יותר ביחס לאזורים מבוקשים יותר בעיר.</td> <td dir=\"rtl\">לבדוק סוג דירות במדגם, גיל בניין, שטח ומצב תחזוקה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה הצעירה</td> <td dir=\"rtl\">כ-7,500-7,600 ש\"ח</td> <td dir=\"rtl\">משקף ביקוש חזק יחסית של משפחות ושוכרים המחפשים אזור מגורים מבוסס.</td> <td dir=\"rtl\">להשוות רק לדירות באותו גודל וברמת בניין דומה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">נוף ים</td> <td dir=\"rtl\">כ-9,300 ש\"ח</td> <td dir=\"rtl\">קרבה לים יכולה להעלות גם שכירות וגם מחיר מכירה, אך אינה זהה בכל רחוב.</td> <td dir=\"rtl\">לבדוק מרחק אמיתי מהים, נוף, חניה, קומה ואיכות הבניין.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה ב'</td> <td dir=\"rtl\">כ-10,000 ש\"ח</td> <td dir=\"rtl\">יכול לתמוך במחירי דירות גבוהים יותר, בעיקר בדירות משפחה איכותיות.</td> <td dir=\"rtl\">לבדוק אם מדובר בדירה רגילה, דירה גדולה, דירת גן או נכס חריג.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">המרינה</td> <td dir=\"rtl\">כ-11,300 ש\"ח</td> <td dir=\"rtl\">שוק פרימיום עם השפעה של נוף, בניין, שירותים ודמי ניהול.</td> <td dir=\"rtl\">להפריד בין דירות קטנות, דירות נופש, דירות מגורים ודירות יוקרה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה פיתוח</td> <td dir=\"rtl\">כ-20,900 ש\"ח</td> <td dir=\"rtl\">תת שוק יוקרתי שאינו מייצג את מחיר הדירה הרגילה בהרצליה.</td> <td dir=\"rtl\">לא להשתמש בנתון הזה להערכת דירה במרכז העיר, בנוה עמל או בגליל ים.</td> </tr> </tbody> </table>",
-   "new": "<table dir=\"rtl\"> <thead dir=\"rtl\"> <tr dir=\"rtl\"> <th dir=\"rtl\">אזור או סוג דירה</th> <th dir=\"rtl\">מה השכירות אומרת על מחיר הדירה</th> <th dir=\"rtl\">בדיקה לפני הסתמכות</th> </tr> </thead> <tbody dir=\"rtl\"> <tr dir=\"rtl\"> <td dir=\"rtl\">ממוצע עירוני בהרצליה</td> <td dir=\"rtl\">נותן מדד כללי לביקוש, אך מושפע מדירות גדולות, אזורי פרימיום ודירות יוקרה.</td> <td dir=\"rtl\">להשוות לחציון, לאזור ולמספר החדרים, ולא להסתמך על ממוצע יחיד.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">חציון עירוני בהרצליה</td> <td dir=\"rtl\">יכול לשקף טוב יותר את דירת השוק הרגילה לעומת ממוצע שמושפע מעסקאות יקרות.</td> <td dir=\"rtl\">לבדוק האם הדירה דומה למדגם: שטח, קומה, ריהוט, מצב ושכונה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">2 חדרים</td> <td dir=\"rtl\">מתאים לבדיקת דירות קטנות, שוכרים יחידים, זוגות צעירים ומשקיעים.</td> <td dir=\"rtl\">לוודא שאין שטח קטן במיוחד, חוסר חניה, רעש או בניין בעייתי.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">3 חדרים</td> <td dir=\"rtl\">עוזר לבדוק אם המחיר המבוקש סביר ביחס לחציון מחיר העסקה לדירת 3 חדרים, 2,793,600 ש\"ח ברבעון הראשון של 2026, בכפוף לאזור ולמצב הדירה.</td> <td dir=\"rtl\">להשוות לדירות דומות באותו אזור, לא לכל דירות 3 החדרים בעיר.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">4 חדרים</td> <td dir=\"rtl\">מתאים לשוק משפחות, ולכן המחיר מושפע גם מבתי ספר, מעלית, חניה, ממ\"ד ומרפסת.</td> <td dir=\"rtl\">לבדוק אם השכירות משקפת דירה משופצת או דירה רגילה שדורשת השקעה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">5 חדרים</td> <td dir=\"rtl\">פער רחב שמושפע מאוד מגודל, איכות פרויקט, קומה, חניות, מרפסת ואזור.</td> <td dir=\"rtl\">להפריד בין דירת משפחה רגילה לבין דירה חדשה או דירה באזור פרימיום.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">נוה ישראל</td> <td dir=\"rtl\">שכירות נמוכה יחסית עשויה להצביע על רמת מחיר נמוכה יותר ביחס לאזורים מבוקשים יותר בעיר.</td> <td dir=\"rtl\">לבדוק סוג דירות במדגם, גיל בניין, שטח ומצב תחזוקה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה הצעירה</td> <td dir=\"rtl\">משקף ביקוש חזק יחסית של משפחות ושוכרים המחפשים אזור מגורים מבוסס.</td> <td dir=\"rtl\">להשוות רק לדירות באותו גודל וברמת בניין דומה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">נוף ים</td> <td dir=\"rtl\">קרבה לים יכולה להעלות גם שכירות וגם מחיר מכירה, אך אינה זהה בכל רחוב.</td> <td dir=\"rtl\">לבדוק מרחק אמיתי מהים, נוף, חניה, קומה ואיכות הבניין.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה ב'</td> <td dir=\"rtl\">שכירות גבוהה יחסית יכולה לתמוך במחירי דירות גבוהים יותר, בעיקר בדירות משפחה איכותיות.</td> <td dir=\"rtl\">לבדוק אם מדובר בדירה רגילה, דירה גדולה, דירת גן או נכס חריג.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">המרינה</td> <td dir=\"rtl\">שוק פרימיום עם השפעה של נוף, בניין, שירותים ודמי ניהול.</td> <td dir=\"rtl\">להפריד בין דירות קטנות, דירות נופש, דירות מגורים ודירות יוקרה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">הרצליה פיתוח</td> <td dir=\"rtl\">תת שוק יוקרתי שאינו מייצג את מחיר הדירה הרגילה בהרצליה.</td> <td dir=\"rtl\">לא להשתמש בשכירות של האזור הזה להערכת דירה במרכז העיר, בנוה עמל או בגליל ים.</td> </tr> </tbody> </table>",
+   "new": "<table dir=\"rtl\"> <thead dir=\"rtl\"> <tr dir=\"rtl\"> <th dir=\"rtl\">אזור או סוג דירה</th> <th dir=\"rtl\">שכר דירה חודשי ממוצע, אפריל עד יוני 2026 (הלמ\"ס)</th> <th dir=\"rtl\">מה זה אומר על מחיר הדירה</th> <th dir=\"rtl\">בדיקה לפני הסתמכות</th> </tr> </thead> <tbody dir=\"rtl\"> <tr dir=\"rtl\"> <td dir=\"rtl\">ממוצע עירוני בהרצליה</td> <td dir=\"rtl\">6,775 ש\"ח</td> <td dir=\"rtl\">נותן מדד כללי לביקוש, אך מושפע מדירות גדולות, אזורי פרימיום ודירות יוקרה.</td> <td dir=\"rtl\">להשוות לאזור ולמספר החדרים, ולא להסתמך על ממוצע יחיד.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">1 עד 2 חדרים</td> <td dir=\"rtl\">4,444 ש\"ח</td> <td dir=\"rtl\">מתאים לבדיקת דירות קטנות, שוכרים יחידים, זוגות צעירים ומשקיעים.</td> <td dir=\"rtl\">לוודא שאין שטח קטן במיוחד, חוסר חניה, רעש או בניין בעייתי.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">2.5 עד 3 חדרים</td> <td dir=\"rtl\">5,606 ש\"ח</td> <td dir=\"rtl\">שכירות כזו, מול חציון מחיר העסקה לדירת 3 חדרים (2,793,600 ש\"ח ברבעון הראשון של 2026), מאפשרת לבדוק אם המחיר המבוקש סביר, בכפוף לאזור ולמצב הדירה.</td> <td dir=\"rtl\">להשוות לדירות דומות באותו אזור, לא לכל דירות 3 החדרים בעיר.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">3.5 עד 4 חדרים</td> <td dir=\"rtl\">7,041 ש\"ח</td> <td dir=\"rtl\">מתאים לשוק משפחות, ולכן המחיר מושפע גם מבתי ספר, מעלית, חניה, ממ\"ד ומרפסת.</td> <td dir=\"rtl\">לבדוק אם השכירות משקפת דירה משופצת או דירה רגילה שדורשת השקעה.</td> </tr> <tr dir=\"rtl\"> <td dir=\"rtl\">4.5 חדרים ומעלה</td> <td dir=\"rtl\">9,461 ש\"ח</td> <td dir=\"rtl\">פער רחב שמושפע מאוד מגודל, איכות פרויקט, קומה, חניות, מרפסת ואזור.</td> <td dir=\"rtl\">להפריד בין דירת משפחה רגילה לבין דירה חדשה או דירה באזור פרימיום.</td> </tr> </tbody> </table>",
    "source_keys": [
+    "cbs_rent[הרצליה].total.q2_2026",
+    "cbs_rent[הרצליה].1-2.q2_2026",
+    "cbs_rent[הרצליה].2.5-3.q2_2026",
+    "cbs_rent[הרצליה].3.5-4.q2_2026",
+    "cbs_rent[הרצליה].4.5+.q2_2026",
     "rooms.3.latest"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Rent table (12 rows) with no source name and no date; the rent column leaves, the reading and check columns stay word for word except where they pointed at the removed figure. The 3-room row's sale range 2.5-3.1M (consistent) becomes the official 3-room median. Tier 2.",
+   "why": "Rent table (12 rows, no source, no date) rebuilt on the CBS average rent in Herzliya, Q2 2026: city average 6,774.5 and the four size groups (1-2: 4,443.9; 2.5-3: 5,605.7; 3.5-4: 7,040.8; 4.5+: 9,460.5). Deleted: the median row (the CBS publishes no median rent) and the six neighbourhood rows (Neve Israel, Herzliya Hatzeira, Nof Yam, Herzliya B, Marina, Pituach: no official neighbourhood rent, and their readings were price-level claims). The 3-room reading keeps the official sale median 2,793,600 (1-3.2026). Tier 2 under the CEO rule.",
    "matches_in_live": 1,
    "tier": 2,
    "spans_tags": true,
@@ -777,7 +794,10 @@
     "straight double quote",
     "apostrophe",
     "whole table: apply via anchor"
-   ]
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "rebuilt the rent table on the CBS Herzliya figures (city 6,775; 1-2: 4,444; 2.5-3: 5,606; 3.5-4: 7,041; 4.5+: 9,461 ש\"ח, Q2 2026); median row and 6 neighbourhood rows deleted (no official source)",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
   },
   {
    "page_id": 154,
@@ -790,13 +810,15 @@
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Repeats the undated city per-m2 34,000-38,000; number dropped. Tier 2.",
+   "why": "City per-m2 range 34,000-38,000 repeated: the number is removed, the question the reader should ask stays.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 13,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the city per-m2 figure 34,000-38,000 (no official source); the advice stays"
   },
   {
    "page_id": 154,
@@ -829,38 +851,46 @@
    "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
    "field": "content",
    "old": "מחיר למ\"ר בהרצליה יכול לנוע סביב כ-34,000-38,000 ש\"ח למ\"ר כאינדיקציה עירונית רחבה, אבל אין להשתמש במספר הזה לבד.",
-   "new": "מחיר למ\"ר בהרצליה משתנה מאוד לפי אזור, גודל וסוג נכס, ולכן אין מספר עירוני אחד שאפשר להשתמש בו לבד.",
+   "new": "מחיר למ\"ר בהרצליה משתנה לפי אזור, גודל וסוג נכס, ולכן אין מספר עירוני אחד שאפשר להשתמש בו לבד.",
    "source_keys": [
     "page"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "FAQ per-m2: the undated 34,000-38,000 range; rephrased without the number. Tier 2.",
+   "why": "FAQ per-m2: the undated 34,000-38,000 range is removed; the answer says only that no single city figure should be used alone.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 15,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the city per-m2 range 34,000-38,000 (no official source); the answer now says no single city figure fits"
   },
   {
    "page_id": 154,
    "url": "https://nad-lan.co.il/herzliya-apartment-prices/",
    "field": "content",
    "old": "דירות 2 חדרים יכולות לנוע סביב כ-5,000-5,500 ש\"ח, דירות 3 חדרים סביב כ-6,500-6,800 ש\"ח, דירות 4 חדרים סביב כ-7,500-8,500 ש\"ח ודירות 5 חדרים סביב כ-9,000-12,200 ש\"ח.",
-   "new": "דירות גדולות ודירות במצב טוב מושכרות בדרך כלל ביותר, ולכן משווים לחוזים של דירות דומות באותו אזור.",
+   "new": "לפי הלשכה המרכזית לסטטיסטיקה, ברבעון השני של 2026 (אפריל עד יוני) שכר הדירה החודשי הממוצע בהרצליה היה 4,444 ש\"ח לדירות של 1 עד 2 חדרים, 5,606 ש\"ח לדירות של 2.5 עד 3 חדרים, 7,041 ש\"ח לדירות של 3.5 עד 4 חדרים ו-9,461 ש\"ח לדירות של 4.5 חדרים ומעלה.",
    "source_keys": [
-    "page"
+    "cbs_rent[הרצליה].1-2.q2_2026",
+    "cbs_rent[הרצליה].2.5-3.q2_2026",
+    "cbs_rent[הרצליה].3.5-4.q2_2026",
+    "cbs_rent[הרצליה].4.5+.q2_2026"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "FAQ rent by rooms with no source and no date; rephrased without the numbers. Tier 2.",
+   "why": "FAQ rent by rooms (5,000-12,200, no source, no date) replaced by the CBS average rent in Herzliya by size group, Q2 2026.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 16,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "replaced the undated per-room rent list with the CBS Herzliya size-group averages, Q2 2026: 4,444 / 5,606 / 7,041 / 9,461 ש\"ח",
+   "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price07a/a4_9_h.pdf"
   }
  ],
  "live_recheck": {
@@ -870,5 +900,14 @@
   "price_list_on_page": true,
   "body_outside_list_identical_to_audited_copy": "yes",
   "dry_run": "16 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ },
+ "tier2_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 11:42:16",
+  "modified": "2026-10-07T14:37:24",
+  "result": "re-fetched 7.10.2026 after tier 1 went live (tier-1 'new' texts present); every tier-2 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 8,
+  "replaced": 4,
+  "removed": 4,
+  "deleted": 0
  }
 }

@@ -13,7 +13,8 @@
   "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
-  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
  ],
  "claims_summary": {
   "claims": {
@@ -533,17 +534,23 @@
    "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
    "field": "content",
    "old": "19.5%",
-   "new": "נתח ניכר מהמלאי הארצי",
+   "new": "19.5%, לפי נתוני הלמ\"ס ליולי 2025",
    "source_keys": [
-    "page"
+    "cbs_dwellings[מחוז תל אביב].share_2025"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "A 19.5% share of the Tel Aviv district in the national housing stock with no named source or period; rephrased without the number.",
+   "why": "The share of the Tel Aviv district in Israel's dwellings is official: 19.5% in 2025 (CBS press release 021/2026 of 19.1.2026, dwelling register as of July 2025). The same value now carries its source and period. Tier 2 under the CEO rule.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 1,
-   "raw_risk": []
+   "raw_risk": [],
+   "kept_numbers": [
+    "19.5"
+   ],
+   "ceo_action": "replaced",
+   "ceo_note": "kept 19.5% and added its official source and period: CBS dwelling register, July 2025 (press release 021/2026, 19.1.2026)",
+   "source_url": "https://www.cbs.gov.il/he/mediarelease/DocLib/2026/021/04_26_021b.pdf"
   },
   {
    "page_id": 4570,
@@ -630,19 +637,21 @@
    "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
    "field": "content",
    "old": "דירת יד שנייה יכולה להיות זולה יותר במחיר הכולל, אך לדרוש שיפוץ של 150,000-500,000 ש\"ח ולעיתים גם התאמות תשתית.",
-   "new": "דירת יד שנייה יכולה להיות זולה יותר במחיר הכולל, אך לדרוש שיפוץ יקר ולעיתים גם התאמות תשתית, ואת עלות השיפוץ כדאי לתמחר מראש לפי הצעות מחיר.",
+   "new": "דירת יד שנייה יכולה להיות זולה יותר במחיר הכולל, אך לדרוש שיפוץ ולעיתים גם התאמות תשתית, ואת עלות השיפוץ כדאי לתמחר מראש לפי הצעות מחיר.",
    "source_keys": [
     "page"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Renovation cost 150,000-500,000 with no source or period; rephrased without the number.",
+   "why": "Renovation cost 150,000-500,000 has no official source: the number is removed, the advice to price the work from quotes stays.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 6,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the renovation cost 150,000-500,000 (no official source); advice to price it from quotes kept"
   },
   {
    "page_id": 4570,
@@ -655,68 +664,76 @@
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Second-hand discount 5%-20% with no source or period; rephrased without the percentages.",
+   "why": "A 5%-20% second-hand discount has no official source: the number is removed, the cell stays as a hedged 'sometimes lower'.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 7,
-   "raw_risk": []
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the 5%-20% second-hand discount (no official source); cell kept as a hedged 'sometimes lower'"
   },
   {
    "page_id": 4570,
    "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
    "field": "content",
    "old": "עשוי להיות סביב 30,000-38,000 ש\"ח באזורים רבים",
-   "new": "לרוב נמוך יותר מדירה חדשה באותו אזור",
+   "new": "בודקים מול עסקאות סגורות של דירות יד שנייה באותו אזור",
    "source_keys": [
     "page"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Second-hand per-m2 range 30,000-38,000 with no source or period (the dated city figure of 36,000 per m2 stays elsewhere); rephrased.",
+   "why": "Second-hand per-m2 range 30,000-38,000 has no official source: the number is removed and the cell becomes the check to run (a statement 'usually lower than new' would be a price-level claim without an official figure).",
    "matches_in_live": 1,
    "tier": 2,
    "n": 8,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the second-hand per-m2 range 30,000-38,000 (no official source); cell now says what to compare against"
   },
   {
    "page_id": 4570,
    "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
    "field": "content",
    "old": "עשוי להגיע ל-40,000-55,000 ש\"ח ומעלה בפרויקטים חזקים",
-   "new": "עשוי להיות גבוה בהרבה בפרויקטים חזקים",
+   "new": "בודקים מול עסקאות בפרויקטים חדשים דומים",
    "source_keys": [
     "page"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "New-flat per-m2 range 40,000-55,000 with no source or period; rephrased without the numbers.",
+   "why": "New-flat per-m2 range 40,000-55,000 has no official source: the number is removed and the cell becomes the check to run.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 9,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the new-flat per-m2 range 40,000-55,000 (no official source); cell now says what to compare against"
   },
   {
    "page_id": 4570,
    "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
    "field": "content",
    "old": "עלול לדרוש 150,000-500,000 ש\"ח",
-   "new": "עלול לדרוש השקעה משמעותית",
+   "new": "עלול לדרוש שיפוץ, לפי מצב הדירה",
    "source_keys": [
     "page"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Renovation cost 150,000-500,000 (table) with no source; rephrased without the number.",
+   "why": "Renovation cost 150,000-500,000 in a table cell has no official source: the number is removed, the cell says a renovation may be needed.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 10,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the renovation cost 150,000-500,000 (no official source); cell kept as 'may need a renovation'"
   },
   {
    "page_id": 4570,
@@ -743,17 +760,19 @@
    "url": "https://nad-lan.co.il/ramat-gan-apartment-prices/",
    "field": "content",
    "old": "לעיתים פער של 3%-8% בין מחיר מבוקש למחיר סביר יכול להיות תוצאה של משא ומתן, ולעיתים הפער גדול יותר.",
-   "new": "לעיתים פער של כמה אחוזים בין מחיר מבוקש למחיר סביר הוא תוצאה של משא ומתן, ולעיתים הפער גדול יותר.",
+   "new": "לעיתים פער בין מחיר מבוקש למחיר סביר יכול להיות תוצאה של משא ומתן, ולעיתים הפער גדול יותר.",
    "source_keys": [
     "page"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Asking-to-closing gap 3%-8% with no source or period; rephrased without the percentages.",
+   "why": "An asking-to-reasonable gap of 3%-8% has no official source: the number is removed, the sentence stays.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 12,
-   "raw_risk": []
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the 3%-8% asking-price gap (no official source); sentence kept"
   }
  ],
  "live_recheck": {
@@ -763,5 +782,14 @@
   "price_list_on_page": true,
   "body_outside_list_identical_to_audited_copy": "yes",
   "dry_run": "12 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ },
+ "tier2_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 11:42:21",
+  "modified": "2026-10-07T14:37:54",
+  "result": "re-fetched 7.10.2026 after tier 1 went live (tier-1 'new' texts present); every tier-2 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 7,
+  "replaced": 1,
+  "removed": 6,
+  "deleted": 0
  }
 }

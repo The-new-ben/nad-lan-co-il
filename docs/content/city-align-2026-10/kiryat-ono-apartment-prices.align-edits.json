@@ -13,7 +13,8 @@
   "Edits with \"spans_tags\": true replace a whole <table> element: if \"old\" does not match the raw content exactly (raw line breaks between tags can differ), locate the single <table> element that contains \"anchor\" and replace that element with \"new\".",
   "Every other old string sits inside one paragraph, list item or table cell and holds no HTML entity. The rendered content shows straight quotes (ש\"ח, מ\"ר) and no texturized characters, so raw and rendered text are expected to be identical inside a paragraph; re-check each old against the raw content right before applying.",
   "tier 1 = sale-price alignment with the official list (conflicts, stale and unsourced sale figures); tier 2 = rent or other figures with no dated source. Applying tier 1 alone is valid (tier 2 olds do not overlap tier 1 results).",
-  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied."
+  "All or nothing per page: if any old does not match, write nothing. Re-fetch the page first; another session may have edited it. Data only: nothing here was applied.",
+  "Tier 2 under the CEO rule (7.10.2026): apply AFTER tier 1 (tier 1 is already live on this page), on the live content, in the listed order. Each tier-2 edit carries ceo_action (replaced = an official dated value now stands there, with its source_url; removed = number gone, sentence or cell kept; deleted = sentence, row or column gone) and ceo_note."
  ],
  "claims_summary": {
   "claims": {
@@ -887,55 +888,61 @@
    "url": "https://nad-lan.co.il/kiryat-ono-apartment-prices/",
    "field": "content",
    "old": "יכול להגיע ל-100,000-300,000 ש\"ח ואף יותר",
-   "new": "יכול להגיע לעלות משמעותית",
+   "new": "ייתכן צורך בשיפוץ, ועלותו נקבעת לפי הצעות מחיר",
    "source_keys": [
     "page"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Renovation cost range 100,000-300,000 with no source.",
+   "why": "Renovation cost 100,000-300,000 has no official source: the number is removed, the cell says a renovation may be needed and that quotes set its cost.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 14,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed the renovation cost 100,000-300,000 (no official source); cell kept as 'quotes set the cost'"
   },
   {
    "page_id": 4560,
    "url": "https://nad-lan.co.il/kiryat-ono-apartment-prices/",
    "field": "content",
    "old": "שתי דירות באותו רחוב בקריית אונו יכולות להימכר בפער של 300,000 ש\"ח, 500,000 ש\"ח ואף יותר, בגלל הבדלים פנימיים.",
-   "new": "שתי דירות באותו רחוב בקריית אונו יכולות להימכר בפער של מאות אלפי ש\"ח ואף יותר, בגלל הבדלים פנימיים.",
+   "new": "שתי דירות באותו רחוב בקריית אונו יכולות להימכר במחירים שונים, בגלל הבדלים פנימיים.",
    "source_keys": [
     "page"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Price gaps of 300,000 / 500,000 inside one street, no source.",
+   "why": "Same-street gaps of 300,000 and 500,000 have no official source ('hundreds of thousands' would still be a number): the numbers are removed, the sentence stays.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 15,
    "raw_risk": [
     "straight double quote"
-   ]
+   ],
+   "ceo_action": "removed",
+   "ceo_note": "removed same-street gaps 300,000 / 500,000 (no official source); sentence kept"
   },
   {
    "page_id": 4560,
    "url": "https://nad-lan.co.il/kiryat-ono-apartment-prices/",
    "field": "content",
    "old": "פער אפשרי של 2-8 אחוזים ואף יותר",
-   "new": "פער אפשרי של כמה אחוזים ואף יותר",
+   "new": "ייתכן פער בין מחיר מבוקש למחיר סגירה",
    "source_keys": [
     "page"
    ],
    "audit_verdict": "UNSOURCED",
    "verdict": "UNSOURCED",
-   "why": "Asking-to-closing gap of 2-8% with no source; the FAQ already says 'כמה אחוזים'.",
+   "why": "An asking-to-closing gap of 2-8 percent has no official source: the number is removed, the cell stays.",
    "matches_in_live": 1,
    "tier": 2,
    "n": 16,
-   "raw_risk": []
+   "raw_risk": [],
+   "ceo_action": "removed",
+   "ceo_note": "removed the 2-8 percent asking-to-closing gap (no official source); cell kept"
   },
   {
    "page_id": 4560,
@@ -1008,5 +1015,14 @@
   "price_list_on_page": true,
   "body_outside_list_identical_to_audited_copy": "yes",
   "dry_run": "19 edits applied in order to the live content.rendered: errors 0 (every old matched exactly once, or expect_matches times; tier-1-only run also matched)"
+ },
+ "tier2_ceo_recheck": {
+  "retrieved_utc": "2026-10-07 11:42:19",
+  "modified": "2026-10-07T14:37:39",
+  "result": "re-fetched 7.10.2026 after tier 1 went live (tier-1 'new' texts present); every tier-2 'old' matches exactly once in the live content.rendered, in the order listed",
+  "edits": 3,
+  "replaced": 0,
+  "removed": 3,
+  "deleted": 0
  }
 }
