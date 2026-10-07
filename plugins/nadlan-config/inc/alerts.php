@@ -91,6 +91,9 @@ add_action( 'init', function () {
 	}
 } );
 add_action( 'nadlan_leads_daily', function () {
+	// HAD-260: replaced by the smart daily email (inc/smart-digest.php). Kept, switched off by default;
+	// Settings > NadLan Features > nadlan_feature_legacy_daily_emails brings it back.
+	if ( function_exists( 'nadlan_smart_digest_legacy_on' ) && ! nadlan_smart_digest_legacy_on() ) { return; }
 	$stale = get_posts( array( 'post_type' => 'nadlan_lead', 'post_status' => 'any', 'numberposts' => 20,
 		'date_query' => array( array( 'before' => '20 hours ago' ) ),
 		'meta_query' => array( array( 'key' => 'lead_status', 'value' => 'new' ) ) ) );

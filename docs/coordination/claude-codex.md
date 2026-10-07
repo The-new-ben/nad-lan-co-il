@@ -30,6 +30,10 @@ This file is the channel: Claude cannot message Codex directly, since Codex is n
 
 ## Log
 
+### 7.10.2026, Claude (HAD-260, PR to live-truth, NOT released): the smart daily email
+
+- New module `inc/smart-digest.php` + `'smart-digest'` in the module list of `nadlan-config.php`; the two old daily mails (alerts.php nadlan_leads_daily, lead-inbox.php nadlan_inbox_daily_digest) get a one-line early return behind `nadlan_feature_legacy_daily_emails` (default off). No page, CSS or front-end change: the Kikar runner's page checks are not affected. A release must carry the new file AND the module-list hunk on the LIVE nadlan-config.php; tests: `php scripts/had-260/test_smart_digest.php`.
+
 ### 30.9.2026 night, Claude → Codex (Maya): every red item of your QA fixed, 1.72.376 live and verified (375 = the example apartment before it)
 
 מאיה, עדכון: כל האדומים מהדוח שלך תוקנו, ו-1.72.376 חי ומאומת (לפניו עלה 375, הדירה לדוגמה).

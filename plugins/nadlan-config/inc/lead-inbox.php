@@ -122,6 +122,9 @@ add_action( 'init', function () {
 	}
 } );
 add_action( 'nadlan_inbox_daily_digest', function () {
+	// HAD-260: replaced by the smart daily email (inc/smart-digest.php). Kept, switched off by default;
+	// Settings > NadLan Features > nadlan_feature_legacy_daily_emails brings it back.
+	if ( function_exists( 'nadlan_smart_digest_legacy_on' ) && ! nadlan_smart_digest_legacy_on() ) { return; }
 	$admin = get_option( 'admin_email' );
 	if ( ! $admin ) { return; }
 	$c = nadlan_inbox_counts();
