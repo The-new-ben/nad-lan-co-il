@@ -1,0 +1,352 @@
+{
+ "slug": "hamedina",
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "updated_shown": "7 octobre 2026",
+ "note": "PriceGuide data for /projects/hamedina/ (HAD-433, Ben 7.10.2026). Every number has its source here; the page shows dates only (the Kikar no-source-names law). Asking prices are labelled as asking. Never add a number without a source row.",
+ "sources": {
+  "BZ2610": "https://www.bizportal.co.il/realestates/news/article/20044073 (Bizportal, Merav Arad, 5.10.2026)",
+  "CA2610": "https://www.calcalist.co.il/real-estate/article/r16w4i11sze (Calcalist, Dotan Levi, 5.10.2026), docs/research/2026-10-05-kikar-press-facts.md P10, P12",
+  "V3": "world.json model.plan.deals: three 140 m2 deals, floors 38-39, 4.2024-12.2024 (Globes 1001481134, live since 1.72.390)",
+  "BZ2504": "https://www.bizportal.co.il/realestates/news/article/20015974 (Bizportal 19.4.2025; restated in BZ2610 as 'about a year and a half ago')",
+  "TA": "the site's Tel Aviv-Yafo card: Tax Authority deals 10.2023-10.2025, 2,432 deals, median 52,856 ILS/m2 (nlcp card on every Tel Aviv project page)",
+  "GOVQ1": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209991.json (official medians, neighbourhood 'הצפון החדש - סביבת כיכר המדינה', Q1 2026, file 20.8.2026); Tel Aviv: .../settlement/buy/5000.json; docs/research/2026-10-07-kikar-prices/nadlan-gov-medians.csv",
+  "GL2509": "https://en.globes.co.il/en/article-1001522524 (Globes 25.9.2025): 9.58M floor 38 (4.2024), 9.59M floor 39 (5.2024), 10.63M floor 38 (12.2024), all 140 m2"
+ },
+ "answer": "Un appartement dans les tours Kikar Hamedina se vend en moyenne autour de 65\u202f000 ₪/m², selon les estimations publiées en octobre 2026. Aux étages 38-39, des ventes ont été enregistrées de 9,58 à 10,63 M₪ pour des 4 pièces de 140 m², soit environ 68\u202f000 à 76\u202f000 ₪/m². Dans le quartier qui entoure la place, la médiane des ventes au premier trimestre 2026 était de 4,94 M₪ pour un 3 pièces, 6,84 M₪ pour un 4 pièces et 8,46 M₪ pour un 5 pièces. Dans les immeubles neufs autour de la place, le prix est passé de 70\u202f000-75\u202f000 ₪/m² au plus haut à 63\u202f000-68\u202f000 ₪/m².",
+ "tiles": [
+  {
+   "big": "Environ 65\u202f000 ₪",
+   "small": "le m², moyenne des ventes dans les tours selon les estimations",
+   "date": "10.2026",
+   "src": "BZ2610 CA2610"
+  },
+  {
+   "big": "9,58-10,63 M₪",
+   "small": "3 ventes, 4 pièces, 140 m², étages 38-39",
+   "date": "4-12.2024",
+   "src": "V3"
+  },
+  {
+   "big": "63\u202f000-68\u202f000 ₪",
+   "small": "le m² dans les immeubles neufs autour de la place",
+   "date": "10.2026",
+   "src": "BZ2610"
+  }
+ ],
+ "groups": [
+  {
+   "name": "Dans les tours Kikar Hamedina",
+   "rows": [
+    {
+     "what": "Moyenne des ventes dans les tours",
+     "sub": "Environ 10 à 20 appartements ou droits vendus à ce jour, selon les estimations",
+     "m2": "env. 65\u202f000",
+     "price": "",
+     "kind": "est",
+     "date": "10.2026",
+     "src": "BZ2610 CA2610"
+    },
+    {
+     "what": "4 pièces, 140 m², étages 38-39",
+     "sub": "Trois ventes",
+     "m2": "68\u202f400-75\u202f900",
+     "price": "9,58-10,63 millions",
+     "kind": "deal",
+     "date": "4-12.2024",
+     "src": "V3 GL2509 BZ2610"
+    },
+    {
+     "what": "Ventes à prix élevé dans les tours",
+     "sub": "Une partie des ventes",
+     "m2": "plus de 80\u202f000",
+     "price": "",
+     "kind": "deal",
+     "date": "10.2026",
+     "src": "BZ2610 CA2610"
+    },
+    {
+     "what": "Droits sur un appartement de 148 m², étage bas",
+     "sub": "Annonce",
+     "m2": "env. 42\u202f600",
+     "price": "env. 6,3 millions",
+     "kind": "ask",
+     "date": "4.2025",
+     "src": "BZ2504 BZ2610"
+    },
+    {
+     "what": "Appartement, étage 12",
+     "sub": "Annonce",
+     "m2": "",
+     "price": "10,3 millions",
+     "kind": "ask",
+     "date": "4.2025",
+     "src": "BZ2504 BZ2610"
+    },
+    {
+     "what": "Penthouse, étage 39",
+     "sub": "Annonce",
+     "m2": "",
+     "price": "43 millions",
+     "kind": "ask",
+     "date": "4.2025",
+     "src": "BZ2504 BZ2610"
+    }
+   ]
+  },
+  {
+   "name": "Médiane des ventes dans le quartier, premier trimestre 2026",
+   "rows": [
+    {
+     "what": "3 pièces",
+     "sub": "Tout Tel Aviv-Jaffa\u00a0: 4,23 millions",
+     "m2": "",
+     "price": "4,94 millions",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVQ1"
+    },
+    {
+     "what": "4 pièces",
+     "sub": "Tout Tel Aviv-Jaffa\u00a0: 5,23 millions",
+     "m2": "",
+     "price": "6,84 millions",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVQ1"
+    },
+    {
+     "what": "5 pièces",
+     "sub": "Tout Tel Aviv-Jaffa\u00a0: 7,50 millions",
+     "m2": "",
+     "price": "8,46 millions",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVQ1"
+    }
+   ]
+  },
+  {
+   "name": "Autour de la place, district 4",
+   "rows": [
+    {
+     "what": "Immeubles neufs, programmes commercialisés récemment",
+     "sub": "Au plus haut\u00a0: 70\u202f000-75\u202f000 ₪/m²",
+     "m2": "63\u202f000-68\u202f000",
+     "price": "",
+     "kind": "mkt",
+     "date": "10.2026",
+     "src": "BZ2610"
+    },
+    {
+     "what": "Penthouses et rez-de-jardin",
+     "sub": "Grands appartements avec espace extérieur",
+     "m2": "80\u202f000-110\u202f000",
+     "price": "",
+     "kind": "deal",
+     "date": "10.2026",
+     "src": "BZ2610"
+    },
+    {
+     "what": "3-4 pièces dans l’ancien",
+     "sub": "Quatre ventes, 70-110 m²",
+     "m2": "59\u202f000-76\u202f000",
+     "price": "4,75-8,4 millions",
+     "kind": "deal",
+     "date": "2026",
+     "src": "BZ2610"
+    },
+    {
+     "what": "Appartements neufs à vendre sur l’anneau de la place",
+     "sub": "142-161 m², étages 12 et 23",
+     "m2": "79\u202f000-90\u202f000",
+     "price": "11,25-14,5 millions",
+     "kind": "ask",
+     "date": "10.2026",
+     "src": "BZ2610"
+    },
+    {
+     "what": "Appartement dans un immeuble ancien de l’anneau",
+     "sub": "107 m², sans doute à rénover",
+     "m2": "env. 43\u202f000",
+     "price": "4,59 millions",
+     "kind": "ask",
+     "date": "10.2026",
+     "src": "BZ2610"
+    }
+   ]
+  },
+  {
+   "name": "Pour comparaison",
+   "rows": [
+    {
+     "what": "Tel Aviv-Jaffa, toute la ville",
+     "sub": "Médiane de 2\u202f432 ventes",
+     "m2": "52\u202f856",
+     "price": "",
+     "kind": "deal",
+     "date": "10.2023-10.2025",
+     "src": "TA"
+    }
+   ]
+  }
+ ],
+ "kinds": {
+  "deal": "Vente",
+  "ask": "Prix demandé",
+  "est": "Estimation",
+  "mkt": "Prix de commercialisation",
+  "med": "Médiane des ventes"
+ },
+ "calc": {
+  "modes": [
+   {
+    "id": "tower",
+    "label": "Dans les tours",
+    "floor": true,
+    "lo_floor1": 58000,
+    "hi_floor39": 72000,
+    "band": 0.07,
+    "why": "Estimation selon l’étage\u00a0: d’environ 58\u202f000 ₪/m² aux étages bas à environ 72\u202f000 ₪ aux étages 38-39, autour de la moyenne d’environ 65\u202f000 ₪. Les ventes publiées aux étages 38-39 vont de 68\u202f400 à 75\u202f900 ₪/m².",
+    "src": "model anchored on V3 (avg of the three floor 38-39 deals ~71K) and the 65K average at mid floors (BZ2610, CA2610)"
+   },
+   {
+    "id": "new",
+    "label": "Immeuble neuf à proximité",
+    "lo": 63000,
+    "hi": 68000,
+    "why": "Les prix des programmes neufs commercialisés récemment autour de la place.",
+    "src": "BZ2610"
+   },
+   {
+    "id": "resale",
+    "label": "Logement ancien à proximité",
+    "lo": 59000,
+    "hi": 76000,
+    "why": "Ventes de 2026 de 3-4 pièces dans l’ancien autour de la place.",
+    "src": "BZ2610"
+   },
+   {
+    "id": "premium",
+    "label": "Penthouse ou rez-de-jardin",
+    "lo": 80000,
+    "hi": 110000,
+    "why": "Grands appartements, penthouses et rez-de-jardin avec espace extérieur autour de la place.",
+    "src": "BZ2610"
+   }
+  ],
+  "deals_plot": [
+   [
+    38,
+    68400
+   ],
+   [
+    39,
+    68500
+   ],
+   [
+    38,
+    75900
+   ]
+  ],
+  "avg_line": 65000,
+  "ta_median": 52856,
+  "tax_single": [
+   [
+    1978745,
+    0
+   ],
+   [
+    2347040,
+    0.035
+   ],
+   [
+    6055070,
+    0.05
+   ],
+   [
+    20183565,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ],
+  "tax_more": [
+   [
+    6055070,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ],
+  "tax_src": "the site's /purchase-tax-calculator/ brackets (2026, frozen to 15.1.2028); research agent re-checks against gov.il",
+  "gap": "Dans les annonces d’appartements haut de gamme, le prix demandé dépasse généralement de 5 à 10% le prix réellement conclu.",
+  "gap_src": "BZ2610"
+ },
+ "src_line": "Ces repères de prix reposent sur des ventes déclarées à l’administration fiscale et publiées, sur des estimations d’experts immobiliers et de professionnels du secteur, et sur des annonces de vente. Le prix demandé est signalé à part\u00a0: ce n’est pas un prix de vente conclu. Mis à jour le 7 octobre 2026.",
+ "title": "Combien coûte un appartement dans les tours Kikar Hamedina\u00a0?",
+ "calc_title": "Calculateur du prix d’un appartement à Kikar Hamedina",
+ "ui": {
+  "lang": "fr",
+  "dir": "ltr",
+  "loc": "fr-FR",
+  "grp": "\u202f",
+  "dec": ",",
+  "kicker": "Repères de prix · mis à jour le",
+  "cap": "Repères de prix",
+  "th": [
+   "Bien",
+   "₪/m²",
+   "Prix, ₪",
+   "Nature",
+   "Date"
+  ],
+  "dl": [
+   "₪/m²",
+   "Prix",
+   "Nature",
+   "Date"
+  ],
+  "na": "Non publié",
+  "more_t": "Tous les repères\u00a0: autour de la place et comparaison",
+  "more_p": "Tous les repères de prix",
+  "where": "Où se trouve l’appartement",
+  "area": "Surface de l’appartement",
+  "floor": "Étage",
+  "taxlg": "Taxe d’acquisition",
+  "single": "Logement unique",
+  "more": "Logement supplémentaire",
+  "out": "Estimation du prix",
+  "tax": "Taxe d’acquisition",
+  "total": "Total avec la taxe",
+  "wa": "Plus de détails sur WhatsApp",
+  "links": [],
+  "fine1": "Estimation indicative, d’après les ventes et les prix publiés jusqu’au",
+  "fine2": "Le prix se fixe avec le vendeur.",
+  "chart": "Prix au m² selon l’étage dans les tours, avec les ventes publiées",
+  "u_m2": "{n} m²",
+  "u_floor": "Étage {n}",
+  "u_mil": "{n} M₪",
+  "u_ils": "{n} ₪",
+  "u_pm2": "{n} ₪/m²",
+  "approx": "environ {n}",
+  "js": {
+   "avg": "Moyenne des ventes, environ {n}",
+   "deals": "Ventes publiées",
+   "f1": "Étage 1",
+   "f40": "Étage 40",
+   "axis": "₪/m² selon l’étage",
+   "you": "Votre choix",
+   "tw": "Moyenne des tours",
+   "ta": "Tel Aviv-Jaffa, médiane",
+   "aria_t": "Estimation de {lo} à {hi} ₪/m² à l’étage {f}, face à la moyenne des ventes dans les tours, environ {avg} ₪",
+   "aria_a": "{m}\u00a0: de {lo} à {hi} ₪/m², face à la moyenne des tours, environ {avg} ₪, et à Tel Aviv-Jaffa, {ta} ₪",
+   "wa": "Bonjour, j’ai consulté les repères de prix des tours Kikar Hamedina\u00a0: {m}, {a} m²{f}, estimation {r} M₪. Je souhaite plus de détails (nad-lan.co.il)",
+   "wa_f": ", étage {f}"
+  }
+ }
+}

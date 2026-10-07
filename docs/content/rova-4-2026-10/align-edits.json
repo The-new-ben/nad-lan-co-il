@@ -1,0 +1,637 @@
+{
+ "generated": "7.10.2026",
+ "source": "GET https://nad-lan.co.il/wp-json/wp/v2/pages/<id>?_fields=id,link,title,content,yoast_head_json (content.rendered), retrieved 7.10.2026 about 08:10 UTC. Page ids: 4884 old-north, 4885 bavli, 4883 miriam-hahashmonait.",
+ "facts": "docs/content/rova-4-2026-10/facts.md",
+ "apply_rules": [
+  "Apply in the listed order. Every \"old\" matches its live field exactly once, and still exactly once after the earlier edits are applied (verified by script).",
+  "Entries with \"link\": true point to https://nad-lan.co.il/north-tel-aviv/rova-4/, which returns 404 until that page is published. Apply them only after it is live.",
+  "field \"content\" = the post content as served in content.rendered; \"title\" = WP post title (rendered as the H1); \"yoast_title\" / \"yoast_description\" = Yoast fields.",
+  "Re-fetch each page and re-check each \"old\" right before applying; another session may have edited it since."
+ ],
+ "edits": [
+  {
+   "n": 1,
+   "page_id": 4884,
+   "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+   "field": "content",
+   "old": "לבין צירים מרכזיים כמו אבן גבירול וסביבת כיכר המדינה מן הצד השני.",
+   "new": "לבין רחוב אבן גבירול, הגבול המזרחי שלו, מן הצד השני.",
+   "fact_ids": [
+    "R1",
+    "R11"
+   ],
+   "why": "The Old North (Rova 3) ends at Ibn Gabirol. Kikar HaMedina is east of it, in Rova 4, so it is not part of the Old North span.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 2,
+   "page_id": 4884,
+   "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+   "field": "content",
+   "old": "בנייה חדשה ופרויקטים של התחדשות עירונית.</p>",
+   "new": "בנייה חדשה ופרויקטים של התחדשות עירונית. ממזרח לאבן גבירול מתחיל <a href=\"https://nad-lan.co.il/north-tel-aviv/rova-4/\">רובע 4</a>, הצפון החדש, ובו כיכר המדינה.</p>",
+   "fact_ids": [
+    "R1",
+    "R3",
+    "R6"
+   ],
+   "why": "One short sentence at the end of the boundaries paragraph: where the Old North stops, with a link to the Rova 4 page.",
+   "link": true,
+   "matches_in_live": 1
+  },
+  {
+   "n": 3,
+   "page_id": 4884,
+   "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+   "field": "content",
+   "old": "<p>גל פרויקטים, בהם מרים החשמונאית ומתחמים נוספים.</p>",
+   "new": "<p>גל פרויקטים באזור, ובסמוך, ברובע 4, גם מרים החשמונאית.</p>",
+   "fact_ids": [
+    "R13",
+    "R1"
+   ],
+   "why": "The card lists Miriam HaHashmonait as an Old North project; the street is in the official neighbourhood \"הצפון החדש\" (Rova 4), east of Ibn Gabirol.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 4,
+   "page_id": 4884,
+   "url": "https://nad-lan.co.il/north-tel-aviv/old-north/",
+   "field": "content",
+   "old": "רחוב מרים החשמונאית הוא אחד הדוגמאות הבולטות להתחדשות באזור הצפוני הוותיק של תל אביב.",
+   "new": "רחוב מרים החשמונאית, ברובע 4 הסמוך, הוא אחת הדוגמאות הבולטות להתחדשות בצפון תל אביב.",
+   "fact_ids": [
+    "R13",
+    "R1"
+   ],
+   "why": "In the Old North renewal section the street is presented as part of \"the old northern area\"; it is in Rova 4, the adjacent quarter. Also fixes the agreement (אחת הדוגמאות).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 5,
+   "page_id": 4885,
+   "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+   "field": "content",
+   "old": "<span class='eyebrow'>שכונה · הצפון הישן</span>",
+   "new": "<span class='eyebrow'>שכונה · הצפון החדש</span>",
+   "fact_ids": [
+    "R5",
+    "R3"
+   ],
+   "why": "Eyebrow labels Bavli as Old North. Bavli is in Rova 4, whose official name is הצפון החדש.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 6,
+   "page_id": 4885,
+   "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+   "field": "content",
+   "old": "היא ממוקמת על קו התפר שבין <a href=\"/north-tel-aviv/old-north/\">הצפון הישן</a>, פארק הירקון, נתיבי איילון ודרך נמיר,",
+   "new": "היא ממוקמת ברובע 4, הצפון החדש, בין פארק הירקון, נתיבי איילון ודרך נמיר,",
+   "fact_ids": [
+    "R5",
+    "R86",
+    "R1"
+   ],
+   "why": "Bavli does not border the Old North: the Old North ends at Ibn Gabirol and Bavli lies east of Namir, inside Rova 4. The page keeps four other links to the Old North page.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 7,
+   "page_id": 4885,
+   "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+   "field": "content",
+   "old": "בבלי נמצאת בצפון הוותיק של תל אביב, בין מרכז העיר לבין צפון תל אביב הרחב.",
+   "new": "בבלי נמצאת ברובע 4, הצפון החדש של תל אביב, בין מרכז העיר לבין צפון תל אביב הרחב.",
+   "fact_ids": [
+    "R5",
+    "R3"
+   ],
+   "why": "\"הצפון הוותיק\" places Bavli in the Old North; it is in Rova 4, הצפון החדש.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 8,
+   "page_id": 4885,
+   "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+   "field": "content",
+   "old": "הן מהצפון הישן הקלאסי שממערב ודרומה יותר,",
+   "new": "הן מהצפון הישן שממערב לאבן גבירול,",
+   "fact_ids": [
+    "R1",
+    "R11"
+   ],
+   "why": "\"The classic Old North\" implies Bavli is a non-classic part of it. The Old North is the quarter west of Ibn Gabirol.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 9,
+   "page_id": 4885,
+   "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+   "field": "content",
+   "old": "והן משכונות צפון העיר הרחוקות יותר.</p>",
+   "new": "והן משכונות צפון העיר הרחוקות יותר. על הרובע כולו, הרחובות, התוכנית ומחירי הדירות: <a href=\"https://nad-lan.co.il/north-tel-aviv/rova-4/\">רובע 4</a>.</p>",
+   "fact_ids": [
+    "R5"
+   ],
+   "why": "One short sentence at the end of the first \"מיקום וגבולות\" paragraph linking the quarter page.",
+   "link": true,
+   "matches_in_live": 1
+  },
+  {
+   "n": 10,
+   "page_id": 4885,
+   "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+   "field": "content",
+   "old": "כמו חלקים אחרים של <a href=\"/north-tel-aviv/old-north/\">הצפון הישן</a>",
+   "new": "כמו חלקים של <a href=\"/north-tel-aviv/old-north/\">הצפון הישן</a>",
+   "fact_ids": [
+    "R5"
+   ],
+   "why": "\"Other parts of the Old North\" says Bavli is part of it; dropping \"אחרים\" keeps the comparison and the link.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 11,
+   "page_id": 4885,
+   "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+   "field": "content",
+   "old": "בבלי שייכת מבחינה תודעתית ותכנונית למרחב של <a href=\"/north-tel-aviv/old-north/\">הצפון הישן</a>, אך היא שונה מחלקים אחרים שלו.",
+   "new": "בבלי שייכת מבחינה תכנונית ועירונית לרובע 4, הצפון החדש, ולא ל<a href=\"/north-tel-aviv/old-north/\">הצפון הישן</a>, והיא שונה מאוד מהחלקים שלו.",
+   "fact_ids": [
+    "R5",
+    "R3",
+    "R2"
+   ],
+   "why": "Wrong as written: in the municipal quarter division (also used for city outline plans) Bavli is in Rova 4, not in the Old North (Rova 3).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 12,
+   "page_id": 4885,
+   "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+   "field": "content",
+   "old": "<p>בבלי נמצאת במרחב של הצפון הוותיק של תל אביב, אך היא שונה מהאזורים הקלאסיים של <a href=\"/north-tel-aviv/old-north/\">הצפון הישן</a>.",
+   "new": "<p>לא. בבלי נמצאת ברובע 4, הצפון החדש של תל אביב, והיא שונה מהאזורים של <a href=\"/north-tel-aviv/old-north/\">הצפון הישן</a>, שממערב לאבן גבירול.",
+   "fact_ids": [
+    "R5",
+    "R1",
+    "R11"
+   ],
+   "why": "FAQ \"האם בבלי נחשבת חלק מהצפון הישן?\" was answered as if yes; the correct short answer is no.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 13,
+   "page_id": 4885,
+   "url": "https://nad-lan.co.il/north-tel-aviv/bavli/",
+   "field": "content",
+   "old": "שכונה שקטה בצפון הוותיק של תל אביב, סמוכה לפארק הירקון",
+   "new": "שכונה שקטה ברובע 4, הצפון החדש של תל אביב, סמוכה לפארק הירקון",
+   "fact_ids": [
+    "R5",
+    "R3"
+   ],
+   "why": "Same \"הצפון הוותיק\" label in the investors block.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 14,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "title",
+   "old": "מרים החשמונאית - התחדשות עירונית בצפון הישן",
+   "new": "מרים החשמונאית: התחדשות עירונית בצפון החדש",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "WP post title, rendered as the page H1. The street is in the official neighbourhood \"הצפון החדש\" (Rova 4). Search Console queries for this page are the street name only, so the change is SEO-safe. Colon instead of a spaced dash (language law).",
+   "matches_in_live": 1
+  },
+  {
+   "n": 15,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "yoast_title",
+   "old": "מרים החשמונאית - התחדשות עירונית בצפון הישן | נדל״ן חכם",
+   "new": "מרים החשמונאית: התחדשות עירונית בצפון החדש | נדל״ן חכם",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Yoast SEO title as served in yoast_head_json.title. If the Yoast title is the default %%title%% template, it follows the post title and needs no separate save.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 16,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "yoast_description",
+   "old": "ההתחדשות העירונית ברחוב מרים החשמונאית בצפון הישן:",
+   "new": "ההתחדשות העירונית ברחוב מרים החשמונאית בצפון החדש:",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Yoast meta description carries the same wrong quarter.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 17,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "\"headline\":\"מרים החשמונאית - התחדשות עירונית בצפון הישן\"",
+   "new": "\"headline\":\"מרים החשמונאית: התחדשות עירונית בצפון החדש\"",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Article JSON-LD headline inside the content must match the new title.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 18,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "<span class='eyebrow'>התחדשות · הצפון הישן</span>",
+   "new": "<span class='eyebrow'>התחדשות · הצפון החדש</span>",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Eyebrow label.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 19,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "רחוב מרים החשמונאית בצפון הישן של תל אביב הוא אחד הרחובות",
+   "new": "רחוב מרים החשמונאית בצפון החדש של תל אביב הוא אחד הרחובות",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Opening sentence places the street in the Old North.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 20,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "הרחוב נמצא באזור מבוקש מאוד בצפון הישן, בסביבה הקרובה",
+   "new": "הרחוב נמצא באזור מבוקש מאוד ברובע 4, הצפון החדש, בסביבה הקרובה",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Same, second sentence of the opening.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 21,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "<p>הצפון הישן היוקרתי, סמוך לפארק הירקון.</p>",
+   "new": "<p>הצפון החדש היוקרתי, סמוך לפארק הירקון.</p>",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "\"מיקום\" card.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 22,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "ממוקדי ההתחדשות העירונית בצפון הישן, עם תמהיל",
+   "new": "ממוקדי ההתחדשות העירונית בצפון החדש, עם תמהיל",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Hero note.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 23,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "<h2>רחוב מרים החשמונאית והצפון הישן</h2>",
+   "new": "<h2>רחוב מרים החשמונאית והצפון החדש</h2>",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Section heading; the section is about the street's quarter.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 24,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "רחוב מרים החשמונאית נמצא בחלקו הצפוני של <a href=\"/north-tel-aviv/old-north/\">הצפון הישן</a>, אזור שנחשב במשך שנים לאחד ממוקדי המגורים המבוקשים של תל אביב. הצפון הישן נהנה מקרבה לים, לפארק הירקון, לנמל תל אביב, לאזורי בילוי, לצירי תחבורה ולמרכזי מסחר שכונתיים.",
+   "new": "רחוב מרים החשמונאית נמצא בצפון החדש, רובע 4, ממזרח לרחוב אבן גבירול, אזור שנחשב במשך שנים לאחד ממוקדי המגורים המבוקשים של תל אביב. כמו <a href=\"/north-tel-aviv/old-north/\">הצפון הישן</a> שממערב לו, הוא נהנה מקרבה לפארק הירקון, לצירי תחבורה ולמרכזי מסחר שכונתיים.",
+   "fact_ids": [
+    "R13",
+    "R1",
+    "R11",
+    "R15"
+   ],
+   "why": "The street is not in \"the northern part of the Old North\". The next sentence then gave the street's area the Old North's sea and port; those two items are dropped and the Old North link is kept.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 25,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "דירה חדשה או מתחדשת בצפון הישן, במרחק קצר",
+   "new": "דירה חדשה או מתחדשת בצפון החדש, במרחק קצר",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Buyer paragraph.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 26,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "המתחם תורם לחיזוק המגורים בצפון הישן.",
+   "new": "המתחם תורם לחיזוק המגורים בצפון החדש.",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Shikun Poalei HaNamal section.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 27,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "שוק מגורי הפרימיום של הצפון הישן.",
+   "new": "שוק מגורי הפרימיום של הצפון החדש.",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Acro / Ken HaTor section.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 28,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "<td>מגורים משפחתיים בצפון הישן</td>",
+   "new": "<td>מגורים משפחתיים בצפון החדש</td>",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Apartment-mix table cell.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 29,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "יכולת לקדם פרויקט באזור מורכב כמו הצפון הישן.",
+   "new": "יכולת לקדם פרויקט באזור מורכב כמו הצפון החדש.",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Tenants-checks paragraph.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 30,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "הצפון הישן מציע קרבה לשירותים יומיומיים",
+   "new": "הצפון החדש מציע קרבה לשירותים יומיומיים",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Location paragraph describes the street's own area.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 31,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "<td>מרקם הצפון הישן</td>",
+   "new": "<td>מרקם הצפון החדש</td>",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Location table row label.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 32,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "מיקום בצפון הישן, קרבה לפארק הירקון, סוג הפרויקט",
+   "new": "מיקום בצפון החדש, קרבה לפארק הירקון, סוג הפרויקט",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Prices paragraph.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 33,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "<td>צפון ישן, בנייה חדשה וקרבה לפארק</td>",
+   "new": "<td>הצפון החדש, בנייה חדשה וקרבה לפארק</td>",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Price table, row \"דירה חדשה במרים החשמונאית\". The next row (\"דירה ישנה בצפון הישן\") is a comparison and stays.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 34,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "לעומת רחובות אחרים בצפון הישן?",
+   "new": "לעומת רחובות אחרים בצפון החדש?",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "FAQ question.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 35,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "הרחוב משלב מיקום יוקרתי בצפון הישן,",
+   "new": "הרחוב משלב מיקום יוקרתי בצפון החדש,",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "FAQ answer.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 36,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "המיקום בצפון הישן והאפשרות",
+   "new": "המיקום בצפון החדש והאפשרות",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Investors block.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 37,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "<td>Miriam HaHashmonait Old North Tel Aviv</td>",
+   "new": "<td>Miriam HaHashmonait New North Tel Aviv</td>",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Multilingual keyword table, English.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 38,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "<td>Apartment purchase in the Old North near Park Hayarkon</td>",
+   "new": "<td>Apartment purchase in the New North near Park Hayarkon</td>",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Multilingual keyword table, English intent.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 39,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "<td>Achat immobilier dans le nord ancien de Tel Aviv</td>",
+   "new": "<td>Achat immobilier dans le nouveau nord de Tel Aviv</td>",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Multilingual keyword table, French intent.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 40,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "<td>реновация старый север Тель-Авив</td>",
+   "new": "<td>реновация новый север Тель-Авив</td>",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Multilingual keyword table, Russian.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 41,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "<td>تجديد حضري شمال تل أبيب القديم</td>",
+   "new": "<td>تجديد حضري شمال تل أبيب الجديد</td>",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Multilingual keyword table, Arabic.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 42,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "<td>شراء شقة جديدة في شمال تل أبيب القديم</td>",
+   "new": "<td>شراء شقة جديدة في شمال تل أبيب الجديد</td>",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Multilingual keyword table, Arabic intent.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 43,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "מילות מפתח רב לשוניות: Miriam HaHashmonait Old North Tel Aviv / renouvellement urbain Tel Aviv nord / реновация старый север Тель-Авив / تجديد حضري شمال تل أبيب القديم.",
+   "new": "מילות מפתח רב לשוניות: Miriam HaHashmonait New North Tel Aviv / renouvellement urbain Tel Aviv nord / реновация новый север Тель-Авив / تجديد حضري شمال تل أبيب الجديد.",
+   "fact_ids": [
+    "R13",
+    "R3"
+   ],
+   "why": "Same keyword line in prose.",
+   "matches_in_live": 1
+  },
+  {
+   "n": 44,
+   "page_id": 4883,
+   "url": "https://nad-lan.co.il/north-tel-aviv/miriam-hahashmonait/",
+   "field": "content",
+   "old": "<li><a href=\"/north-tel-aviv/old-north/\">הצפון הישן</a> כמדריך שכונתי רחב יותר לרחובות, לאופי המגורים ולביקוש באזור.</li>",
+   "new": "<li><a href=\"https://nad-lan.co.il/north-tel-aviv/rova-4/\">רובע 4</a> כמדריך רחב יותר לרחובות, לתוכנית ולמחירי הדירות באזור.</li>\n<li><a href=\"/north-tel-aviv/old-north/\">הצפון הישן</a> כמדריך לרובע השכן, ממערב לאבן גבירול.</li>",
+   "fact_ids": [
+    "R13",
+    "R1",
+    "R11"
+   ],
+   "why": "The reading list presented the Old North guide as the broader guide for this street's area. The broader guide is the Rova 4 page; the Old North stays as the neighbouring quarter.",
+   "link": true,
+   "matches_in_live": 1
+  }
+ ]
+}
