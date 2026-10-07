@@ -35,7 +35,15 @@ pgx = """
 .pgx-phone{width:390px;max-width:100%;margin:36px auto 0;border:10px solid #14212b;border-radius:38px;overflow:hidden;background:#f7f6f2;padding:14px 0 24px}
 .pgx-phone .nlpg{padding:0 16px !important}
 """
-doc = ('<!-- @dsCard group="Cards" height=2600 width=1280 subtitle="מחירון ומחשבון מחיר לעמוד פרויקט: עסקאות, מחירים מבוקשים והערכות עם תאריך, '
+EXTRA = ''
+for fn, note, sfx in (('hamedina.en.json', 'English page (LTR): the same section from hamedina.en.json, the interface words in its "ui".', '-en'),
+                      ('rova-4.json', 'A neighbourhood page (Rova 4) through the shortcode: no floor field; the area chart compares the range with the towers and the city.', '-r4'),
+                      ('rainbow-tel-aviv.json', 'A regular project page (Rainbow, 39 floors): its own floor count and chart range (60,000-100,000), the developer average as the dashed line.', '-rb')):
+    fp = os.path.join(HERE, fn)
+    if os.path.exists(fp):
+        EXTRA += ('<p class="pgx-note" style="margin-top:36px">' + note + '</p><div style="max-width:1240px;margin:0 auto">' +
+                  render.html(json.load(io.open(fp, encoding='utf-8')), '972525101555', sfx) + '</div>')
+doc = ('<!-- @dsCard group="Cards" height=4600 width=1280 subtitle="מחירון ומחשבון מחיר לעמוד פרויקט: עסקאות, מחירים מבוקשים והערכות עם תאריך, '
        'ואומדן לפי שטח, קומה וסוג דירה" -->\n<!doctype html>\n<html lang="he" dir="rtl"><head><meta charset="utf-8">'
        '<meta name="viewport" content="width=device-width, initial-scale=1"><title>PriceGuide</title>'
        '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@500;600;700&amp;family=Assistant:wght@300;400;600;700&amp;display=swap">'
@@ -43,7 +51,7 @@ doc = ('<!-- @dsCard group="Cards" height=2600 width=1280 subtitle="מחירון
        '<p class="pgx-note">במחשב: המחירון יושב מיד אחרי פסקת הפתיחה והכפתורים, ולפני הבמה. מימין הטבלה, משמאל המחשבון.</p>' + ctx +
        render.html(d, '972525101555') + after +
        '<p class="pgx-note" style="margin-top:32px">בטלפון: אותו סדר. המחשבון לפני הטבלה, והטבלה בכרטיסים.</p><div class="pgx-phone">' +
-       render.html(d, '972525101555', '-ph') + '</div></div><script>' + render.JS + '</script></body></html>\n')
+       render.html(d, '972525101555', '-ph') + '</div>' + EXTRA + '</div><script>' + render.JS + '</script></body></html>\n')
 io.open(os.path.join(comp, 'preview.html'), 'w', encoding='utf-8', newline='\n').write(doc)
 
 readme = """# PriceGuide
@@ -67,6 +75,9 @@ One price list and one price calculator for a project page: what the published d
 - Phone: one column; the calculator before the table; the table rows become cards with their labels; tiles one per row.
 - **Its place on a world page (v1.2):** the world page is a named grid; the section takes the area `prices`, a full row right after the first fold (the text column and the stage) and before the area map: `"hero stage" "lead stage" "cta stage" "prices prices" "below below" ...`, and on screens up to 1099px `"hero" "lead" "cta" "stage" "prices" "below" ...`. The phone's first screen (the landing lane, P9a) stays as it was. A child without an area falls to the end of the grid: that was 1.72.430's bug, measured live at 3,226 px.
 - **Every rule starts with the root class** (`.nlpg .nlpg__big`, specificity 0,2,0, v1.3): on phones the theme's `.entry-content p{font-size:16px!important}` (0,1,1) flattened the estimate (32 to 16px) and the fine print when the rules were lone classes. `render.scope()` adds the root to every rule, inside the container blocks too.
+- **Languages (v2):** the interface words live in a table (`render.UI_HE`), and each language file overrides them in `ui` (with `lang`, `dir`, `loc`, `grp`, `dec`), so en/fr/ru/ar pages get the section in their language, LTR or RTL, with their own number separators. The numbers in `calc` are identical in every language.
+- **Regular project pages (v2.1):** Rainbow and DUO get the section from their own data files (the key is the page slug without a language ending). Their grid gains the same `prices` row after the first fold: `"hero stage rail" "lead stage rail" "cta stage rail" "prices prices prices" "below below below" ...` on wide screens. `calc.floors` sets the slider and the chart (Rainbow 39, DUO 50), and `calc.y0`/`y1` the chart's price range. A price list can link to its neighbour with `see` lines (Kikar to Rova 4 and back).
+- **Area pages (v2):** a page without floors (the first mode has no `floor`) hides the floor field, and its chart compares the chosen range with the towers' average and the city's median. A regular page opens the section with the shortcode `[nadlan_price_guide key="rova-4"]`; a project page gets it from the world grid's `prices` row.
 - Sub-line rules are scoped with `>` (`.nlpg__tiles li>span`, `th>span`), so the number islands inside a tile or a label keep the tile's size (1.72.430 shrank them).
 
 **Honesty**

@@ -1,0 +1,388 @@
+{
+ "slug": "rainbow-tel-aviv",
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "note": "PriceGuide data for /projects/rainbow-tel-aviv/ (7.10.2026). Every number has its source here and in docs/research/2026-10-07-project-prices/README.md; the page shows dates only (no source names). Developer averages are the company's reported averages as the press quoted them (incl. VAT per Bizportal 6.6.2026). Rainbow sits in the official neighbourhood 'אזור שדה דב' (id 65210724), which has no published medians; the medians are of the adjacent official neighbourhood 'תכנית ל' (id 65210022). Tower max floor 39 (stage.js floors: 39; design plan: 39 above the entrance + a technical floor). calc.y0/y1 are for the chart once render.py passes them to the script (today the script falls back to 50,000-82,000).",
+ "sources": {
+  "BZ2605": "https://www.bizportal.co.il/realestates/news/article/20033020 (Bizportal 29.5.2026): Q1 2026 4 units for ~22M incl. VAT (~5.5M each), 85,669 ILS/m2; cumulative average to end of Q1 2026 81,782 ILS/m2 (81,704 to end 2025); 275 of 459 sold",
+  "GL2608": "https://www.globes.co.il/news/article.aspx?did=1001553606 (Globes 27.8.2026): Q2 2026 3 units at 80.5K ILS/m2, Q1 83.2K, 2025 85.6K (59 units), 2024 83.2K (99 units); after the report 5 more units at 82.2K; 275 of 459 sold",
+  "BZ2606": "https://www.bizportal.co.il/realestates/news/article/20033505 (Bizportal 6.6.2026): Sde Dov official prices ~75-85K ILS/m2; financing offers worth an implied 6%-8% discount; Rainbow Q1 2026 ~85.7K ILS/m2 incl. VAT",
+  "GL2311": "https://www.globes.co.il/news/article.aspx?did=1001463064 (Globes 29.11.2023, Tax Authority data): tower floor 4 of 39, 1 room 32 m2, 3.1M (7.2023); floor 6 of 39, 3 rooms 60 m2 no parking, 4M (mid 10.2023); floor 13 of 39, 3 rooms 98 m2, over 8M (end 9.2023); boutique floor 8 of 9, 6 rooms 182 m2, ~21.7M (9.2023) and 202 m2, 20M (3.2023)",
+  "GL2407": "https://www.globes.co.il/news/article.aspx?did=1001483864 (Globes 9.7.2024): several apartments on one of the tower's highest floors, ~50M, to be merged to ~550 m2, 'about 90K ILS/m2' (shell level)",
+  "GL2410": "https://en.globes.co.il/en/article-1001492500 (Globes English 28.10.2024): 134 m2 + 14 m2 balcony facing the sea, 14M, 'NIS 96,000 per square meter', a record in the project at the time",
+  "GOVL": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65210022.json (official medians, neighbourhood 'תכנית ל', Q1 2026, file 20.8.2026, read 7.10.2026): 3 rooms 5,346,100; 4 rooms 8,425,800; all 6,059,900; Tel Aviv: https://data.nadlan.gov.il/api/pages/settlement/buy/5000.json 3 rooms 4,225,800, 4 rooms 5,229,800",
+  "ICE0305": "https://www.ice.co.il/realestate/news/article/1111582 (ice 3.5.2026): Sde Dov 2025 ~1,280 units sold, average ~83K ILS/m2, 4 rooms average ~9.45M, range 60.2K (2 rooms 40 m2) to 138K (5 rooms 141 m2); March 2026 two deals 132 m2 5 rooms floor 9 at 7.157M and 7.565M; recent deals 104-126 m2 floors 10-13 at 6.487-7.727M",
+  "ICE2105": "https://www.ice.co.il/realestate/news/article/1112481 (ice 21.5.2026): most Sde Dov projects around 70K ILS/m2; a project east of Rainbow 60-62K; in Program L a new project's low floors 52-57K and most recent sales 70-72K",
+  "TA": "the site's Tel Aviv-Yafo card: Tax Authority deals 10.2023-10.2025, 2,432 deals, median 52,856 ILS/m2 (nlcp card on every Tel Aviv project page)"
+ },
+ "title": "כמה עולה דירה בריינבו תל אביב",
+ "calc_title": "מחשבון מחיר דירה בריינבו",
+ "answer": "דירה בריינבו תל אביב נמכרה בממוצע בכ-81,800 ₪ למ״ר, לפי דוחות היזם על כל הדירות שנמכרו עד 3.2026. בשמונה העסקאות האחרונות, ב-4 עד 8.2026, הממוצע היה 80,500-82,200 ₪ למ״ר, ועד 6.2026 נמכרו 275 מתוך 459 הדירות. בשכונה הסמוכה, תכנית ל, חציון העסקאות ברבעון הראשון של 2026 היה 5.35 מיליון ₪ לדירת 3 חדרים ו-8.43 מיליון ₪ לדירת 4 חדרים.",
+ "tiles": [
+  {
+   "big": "כ-81,800 ₪",
+   "small": "למ״ר, ממוצע כל הדירות שנמכרו בפרויקט",
+   "date": "3.2026",
+   "src": "BZ2605"
+  },
+  {
+   "big": "80,500-82,200 ₪",
+   "small": "למ״ר, ממוצע שמונה העסקאות האחרונות בפרויקט",
+   "date": "4-8.2026",
+   "src": "GL2608"
+  },
+  {
+   "big": "כ-70,000 ₪",
+   "small": "למ״ר ברוב הפרויקטים ברובע שדה דב",
+   "date": "5.2026",
+   "src": "ICE2105"
+  }
+ ],
+ "groups": [
+  {
+   "name": "בריינבו תל אביב",
+   "rows": [
+    {
+     "what": "ממוצע כל הדירות שנמכרו",
+     "sub": "מתחילת השיווק, לפי דוחות היזם",
+     "m2": "כ-81,800",
+     "price": "",
+     "kind": "deal",
+     "date": "3.2026",
+     "src": "BZ2605"
+    },
+    {
+     "what": "5 דירות אחרי הרבעון השני",
+     "sub": "ממוצע העסקאות",
+     "m2": "כ-82,200",
+     "price": "",
+     "kind": "deal",
+     "date": "7-8.2026",
+     "src": "GL2608"
+    },
+    {
+     "what": "3 דירות ברבעון השני",
+     "sub": "ממוצע העסקאות",
+     "m2": "כ-80,500",
+     "price": "",
+     "kind": "deal",
+     "date": "4-6.2026",
+     "src": "GL2608"
+    },
+    {
+     "what": "4 דירות ברבעון הראשון",
+     "sub": "שני נתונים פורסמו לרבעון הזה",
+     "m2": "83,200-85,700",
+     "price": "כ-5.5 מיליון",
+     "kind": "deal",
+     "date": "1-3.2026",
+     "src": "BZ2605 BZ2606 GL2608"
+    },
+    {
+     "what": "59 דירות ב-2025",
+     "sub": "ממוצע השנה",
+     "m2": "כ-85,600",
+     "price": "",
+     "kind": "deal",
+     "date": "2025",
+     "src": "GL2608"
+    },
+    {
+     "what": "כמה דירות באחת הקומות הגבוהות",
+     "sub": "לאיחוד לדירה של כ-550 מ״ר",
+     "m2": "כ-90,000",
+     "price": "כ-50 מיליון",
+     "kind": "deal",
+     "date": "7.2024",
+     "src": "GL2407"
+    },
+    {
+     "what": "134 מ״ר ומרפסת 14 מ״ר, מול הים",
+     "sub": "המחיר הגבוה בפרויקט באותו מועד",
+     "m2": "כ-96,000",
+     "price": "14 מיליון",
+     "kind": "deal",
+     "date": "10.2024",
+     "src": "GL2410"
+    },
+    {
+     "what": "3 חדרים, 98 מ״ר, קומה 13 במגדל",
+     "sub": "",
+     "m2": "מעל 81,600",
+     "price": "יותר מ-8 מיליון",
+     "kind": "deal",
+     "date": "9.2023",
+     "src": "GL2311"
+    },
+    {
+     "what": "3 חדרים, 60 מ״ר, קומה 6 במגדל",
+     "sub": "ללא חניה",
+     "m2": "כ-66,700",
+     "price": "4 מיליון",
+     "kind": "deal",
+     "date": "10.2023",
+     "src": "GL2311"
+    },
+    {
+     "what": "חדר אחד, 32 מ״ר, קומה 4 במגדל",
+     "sub": "",
+     "m2": "כ-96,900",
+     "price": "3.1 מיליון",
+     "kind": "deal",
+     "date": "7.2023",
+     "src": "GL2311"
+    },
+    {
+     "what": "6 חדרים, 182 מ״ר, קומה 8 בבניין בוטיק",
+     "sub": "בניין של 9 קומות",
+     "m2": "כ-119,200",
+     "price": "כ-21.7 מיליון",
+     "kind": "deal",
+     "date": "9.2023",
+     "src": "GL2311"
+    },
+    {
+     "what": "6 חדרים, 202 מ״ר, באותה קומה",
+     "sub": "בניין בוטיק",
+     "m2": "כ-99,000",
+     "price": "20 מיליון",
+     "kind": "deal",
+     "date": "3.2023",
+     "src": "GL2311"
+    }
+   ]
+  },
+  {
+   "name": "חציון העסקאות בתכנית ל, השכונה הסמוכה, רבעון ראשון 2026",
+   "rows": [
+    {
+     "what": "3 חדרים",
+     "sub": "בכל תל אביב יפו: 4.23 מיליון",
+     "m2": "",
+     "price": "5.35 מיליון",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVL"
+    },
+    {
+     "what": "4 חדרים",
+     "sub": "בכל תל אביב יפו: 5.23 מיליון",
+     "m2": "",
+     "price": "8.43 מיליון",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVL"
+    },
+    {
+     "what": "כל הדירות",
+     "sub": "כל מספרי החדרים",
+     "m2": "",
+     "price": "6.06 מיליון",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVL"
+    }
+   ]
+  },
+  {
+   "name": "ברובע שדה דב ובסביבה",
+   "rows": [
+    {
+     "what": "רוב הפרויקטים ברובע",
+     "sub": "יש פרויקטים שמוכרים גם בכ-60,000 ₪ למ״ר",
+     "m2": "כ-70,000",
+     "price": "",
+     "kind": "est",
+     "date": "5.2026",
+     "src": "ICE2105"
+    },
+    {
+     "what": "המחיר הרשמי בפרויקטים ברובע",
+     "sub": "לפני הטבות מימון",
+     "m2": "75,000-85,000",
+     "price": "",
+     "kind": "mkt",
+     "date": "6.2026",
+     "src": "BZ2606"
+    },
+    {
+     "what": "ממוצע העסקאות ברובע ב-2025",
+     "sub": "כ-1,280 דירות נמכרו בשנה",
+     "m2": "כ-83,000",
+     "price": "",
+     "kind": "deal",
+     "date": "2025",
+     "src": "ICE0305"
+    },
+    {
+     "what": "דירת 4 חדרים ברובע, ממוצע 2025",
+     "sub": "",
+     "m2": "",
+     "price": "כ-9.45 מיליון",
+     "kind": "deal",
+     "date": "2025",
+     "src": "ICE0305"
+    },
+    {
+     "what": "הטווח של עסקאות 2025 ברובע",
+     "sub": "מדירת 2 חדרים, 40 מ״ר, עד דירת 5 חדרים, 141 מ״ר",
+     "m2": "60,200-138,000",
+     "price": "",
+     "kind": "deal",
+     "date": "2025",
+     "src": "ICE0305"
+    },
+    {
+     "what": "4-5 חדרים, 104-126 מ״ר, קומות 10-13",
+     "sub": "פרויקטים אחרים ברובע",
+     "m2": "61,300-62,800",
+     "price": "6.49-7.73 מיליון",
+     "kind": "deal",
+     "date": "2026",
+     "src": "ICE0305"
+    },
+    {
+     "what": "5 חדרים, 132 מ״ר, קומה 9",
+     "sub": "שתי עסקאות בפרויקט אחר ברובע",
+     "m2": "54,200-57,300",
+     "price": "7.16-7.57 מיליון",
+     "kind": "deal",
+     "date": "3.2026",
+     "src": "ICE0305"
+    },
+    {
+     "what": "פרויקט חדש בתכנית ל",
+     "sub": "בקומות הנמוכות: 52,000-57,000 ₪ למ״ר",
+     "m2": "70,000-72,000",
+     "price": "",
+     "kind": "deal",
+     "date": "5.2026",
+     "src": "ICE2105"
+    }
+   ]
+  },
+  {
+   "name": "להשוואה",
+   "rows": [
+    {
+     "what": "תל אביב יפו, כל העיר",
+     "sub": "חציון של 2,432 עסקאות",
+     "m2": "52,856",
+     "price": "",
+     "kind": "deal",
+     "date": "10.2023-10.2025",
+     "src": "TA"
+    }
+   ]
+  }
+ ],
+ "kinds": {
+  "deal": "עסקה",
+  "ask": "מחיר מבוקש",
+  "est": "הערכה",
+  "mkt": "מחיר שיווק",
+  "med": "חציון עסקאות"
+ },
+ "calc": {
+  "modes": [
+   {
+    "id": "tower",
+    "label": "במגדל",
+    "floor": true,
+    "lo_floor1": 72000,
+    "hi_floor39": 92000,
+    "band": 0.07,
+    "why": "אומדן לפי הקומה: בין כ-72,000 ₪ למ״ר בקומה הראשונה לכ-92,000 ₪ בקומות העליונות, סביב ממוצע הפרויקט של כ-81,800 ₪. העסקאות שפורסמו במגדל: כ-66,700 ₪ בקומה 6, מעל 81,600 ₪ בקומה 13 וכ-96,900 ₪ לדירת חדר קטנה בקומה 4.",
+    "src": "model anchored on the developer's cumulative average 81,782 (BZ2605) at mid floors, the recent 80.5-82.2K (GL2608), the tower deals of GL2311 (floors 4, 6, 13) and the high-floor ~90K (GL2407, shell level); see the README"
+   },
+   {
+    "id": "boutique",
+    "label": "דירה גדולה בבוטיק",
+    "lo": 99000,
+    "hi": 119200,
+    "why": "שתי עסקאות של דירות 6 חדרים, 182-202 מ״ר, בקומה 8 של אחד מבנייני הבוטיק, ב-2023.",
+    "src": "GL2311"
+   },
+   {
+    "id": "area",
+    "label": "פרויקט אחר ברובע",
+    "lo": 60000,
+    "hi": 72000,
+    "why": "רוב העסקאות של 2026 בפרויקטים אחרים ברובע שדה דב ובתכנית ל.",
+    "src": "ICE2105 ICE0305"
+   }
+  ],
+  "deals_plot": [
+   [
+    4,
+    96900
+   ],
+   [
+    6,
+    66700
+   ],
+   [
+    13,
+    81600
+   ]
+  ],
+  "avg_line": 81800,
+  "ta_median": 52856,
+  "y0": 60000,
+  "y1": 100000,
+  "tax_single": [
+   [
+    1978745,
+    0
+   ],
+   [
+    2347040,
+    0.035
+   ],
+   [
+    6055070,
+    0.05
+   ],
+   [
+    20183565,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ],
+  "tax_more": [
+   [
+    6055070,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ],
+  "tax_src": "the site's /purchase-tax-calculator/ brackets (2026, frozen to 15.1.2028); copied from hamedina.json",
+  "gap": "ברובע שדה דב, בחלק מהפרויקטים הטבות המימון מגלמות הנחה של 6%-8% מהמחיר הרשום.",
+  "gap_src": "BZ2606",
+  "floors": 39
+ },
+ "ui": {
+  "more_t": "לכל המחירון: השכונה, הרובע ולהשוואה",
+  "chart": "המחיר למ״ר לפי הקומה במגדל, עם העסקאות שפורסמו",
+  "js": {
+   "avg": "ממוצע הפרויקט, כ-{n}",
+   "tw": "ריינבו תל אביב, ממוצע",
+   "aria_t": "אומדן של {lo} עד {hi} ₪ למ״ר בקומה {f}, מול ממוצע הפרויקט, כ-{avg} ₪",
+   "aria_a": "{m}: {lo} עד {hi} ₪ למ״ר, מול ממוצע הפרויקט כ-{avg} ₪ ותל אביב יפו {ta} ₪",
+   "wa": "שלום, בדקתי במחירון של ריינבו תל אביב: {m}, {a} מ״ר{f}, אומדן {r} מיליון ₪. אשמח לפרטים נוספים (nad-lan.co.il)"
+  }
+ },
+ "src_line": "המחירון מבוסס על עסקאות שדווחו לרשות המסים ופורסמו, על דוחות היזם, על חציון העסקאות הרשמי לפי שכונה ועל מחירים שפורסמו ברובע. מחיר שיווק והערכה מסומנים בנפרד ואינם מחיר סגירה. עודכן 7.10.2026.",
+ "see": [
+  {
+   "text": "מחירי דירות בשדה דב ←",
+   "href": "https://nad-lan.co.il/sde-dov/prices/"
+  }
+ ]
+}

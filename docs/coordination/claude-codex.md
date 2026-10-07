@@ -3931,3 +3931,9 @@ RELEASE IN PROGRESS 1.72.432 PriceGuide v1.3 (rules scoped to the root class) by
 RELEASE DONE 1.72.432 PriceGuide v1.3 (rules scoped to the root class) by the Kikar loop [main] 10:55 Israel (deploy record: released and verified)
 RELEASE IN PROGRESS live-truth READ-ONLY export (one temporary bridge, no writes) by the Kikar loop [main] start 10:55 Israel (machine clock), HAD-443
 RELEASE DONE live-truth READ-ONLY export by the Kikar loop [main] 10:57 Israel: 1,536 plugin files (105.6 MB, 1.72.432) + 165 snippets (16 active); bridge deleted, route 404
+RELEASE IN PROGRESS 1.72.433 PriceGuide v2 (Kikar price guide in en/fr/ru/ar; the shortcode door; Rova 4 data) by the Kikar loop [main] start 11:08 Israel (machine clock)
+RELEASE DONE 1.72.433 PriceGuide v2 by the Kikar loop [main] 11:15 Israel (deploy record: released and verified)
+RELEASE DONE 1.72.433 PriceGuide v2 (five languages, the shortcode) by the Kikar loop [main] (deploy record: released and verified); page 8218 /north-tel-aviv/rova-4/ published; pages 4883/4884/4885 aligned to Rova 4 (44 edits, backups docs/qa/had-460/align-backup)
+RELEASE IN PROGRESS 1.72.434 PriceGuide v2.1 (Rainbow + DUO, regular grid row, Kikar and Rova 4 cross links) by the Kikar loop [main] start 11:17 Israel (machine clock)
+RELEASE ROLLED BACK 1.72.434 by the Kikar loop [main] (deploy record): an inherited Rainbow check quoted the old phone grid template; check updated (409 lesson)
+RELEASE IN PROGRESS 1.72.434 PriceGuide v2.1, second attempt, by the Kikar loop [main] start 11:30 Israel (machine clock)

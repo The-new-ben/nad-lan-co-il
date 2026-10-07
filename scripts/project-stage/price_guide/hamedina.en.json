@@ -1,0 +1,361 @@
+{
+ "slug": "hamedina",
+ "updated": "2026-10-07",
+ "updated_he": "7.10.2026",
+ "updated_shown": "7 October 2026",
+ "note": "PriceGuide data for /projects/hamedina/ (HAD-433, Ben 7.10.2026). Every number has its source here; the page shows dates only (the Kikar no-source-names law). Asking prices are labelled as asking. Never add a number without a source row.",
+ "sources": {
+  "BZ2610": "https://www.bizportal.co.il/realestates/news/article/20044073 (Bizportal, Merav Arad, 5.10.2026)",
+  "CA2610": "https://www.calcalist.co.il/real-estate/article/r16w4i11sze (Calcalist, Dotan Levi, 5.10.2026), docs/research/2026-10-05-kikar-press-facts.md P10, P12",
+  "V3": "world.json model.plan.deals: three 140 m2 deals, floors 38-39, 4.2024-12.2024 (Globes 1001481134, live since 1.72.390)",
+  "BZ2504": "https://www.bizportal.co.il/realestates/news/article/20015974 (Bizportal 19.4.2025; restated in BZ2610 as 'about a year and a half ago')",
+  "TA": "the site's Tel Aviv-Yafo card: Tax Authority deals 10.2023-10.2025, 2,432 deals, median 52,856 ILS/m2 (nlcp card on every Tel Aviv project page)",
+  "GOVQ1": "https://data.nadlan.gov.il/api/pages/neighborhood/buy/65209991.json (official medians, neighbourhood 'הצפון החדש - סביבת כיכר המדינה', Q1 2026, file 20.8.2026); Tel Aviv: .../settlement/buy/5000.json; docs/research/2026-10-07-kikar-prices/nadlan-gov-medians.csv",
+  "GL2509": "https://en.globes.co.il/en/article-1001522524 (Globes 25.9.2025): 9.58M floor 38 (4.2024), 9.59M floor 39 (5.2024), 10.63M floor 38 (12.2024), all 140 m2"
+ },
+ "answer": "An apartment in Kikar Hamedina Towers sells for about ₪65,000 per m² on average, according to estimates published in October 2026. On floors 38-39, deals were recorded at ₪9.58 million to ₪10.63 million for a 140 m² apartment with 4 rooms, about ₪68,000 to ₪76,000 per m². In the neighbourhood around the square, the median deal in the first quarter of 2026 was ₪4.94 million for 3 rooms, ₪6.84 million for 4 rooms and ₪8.46 million for 5 rooms. In the new buildings around the square, prices have fallen from a peak of ₪70,000-75,000 per m² to ₪63,000-68,000.",
+ "tiles": [
+  {
+   "big": "About ₪65,000",
+   "small": "per m², the towers’ average deal, according to estimates",
+   "date": "10.2026",
+   "src": "BZ2610 CA2610"
+  },
+  {
+   "big": "₪9.58-10.63 million",
+   "small": "3 deals, 4 rooms, 140 m², floors 38-39",
+   "date": "4-12.2024",
+   "src": "V3"
+  },
+  {
+   "big": "₪63,000-68,000",
+   "small": "per m² in the new buildings around the square",
+   "date": "10.2026",
+   "src": "BZ2610"
+  }
+ ],
+ "groups": [
+  {
+   "name": "In Kikar Hamedina Towers",
+   "rows": [
+    {
+     "what": "Average deal in the towers",
+     "sub": "About 10 to 20 apartments or rights sold to date, according to estimates",
+     "m2": "about 65,000",
+     "price": "",
+     "kind": "est",
+     "date": "10.2026",
+     "src": "BZ2610 CA2610"
+    },
+    {
+     "what": "4 rooms, 140 m², floors 38-39",
+     "sub": "Three deals",
+     "m2": "68,400-75,900",
+     "price": "9.58-10.63 million",
+     "kind": "deal",
+     "date": "4-12.2024",
+     "src": "V3 GL2509 BZ2610"
+    },
+    {
+     "what": "Higher-priced deals in the towers",
+     "sub": "In some of the deals",
+     "m2": "over 80,000",
+     "price": "",
+     "kind": "deal",
+     "date": "10.2026",
+     "src": "BZ2610 CA2610"
+    },
+    {
+     "what": "Rights to a 148 m² apartment, low floor",
+     "sub": "Listing",
+     "m2": "about 42,600",
+     "price": "about 6.3 million",
+     "kind": "ask",
+     "date": "4.2025",
+     "src": "BZ2504 BZ2610"
+    },
+    {
+     "what": "Apartment on floor 12",
+     "sub": "Listing",
+     "m2": "",
+     "price": "10.3 million",
+     "kind": "ask",
+     "date": "4.2025",
+     "src": "BZ2504 BZ2610"
+    },
+    {
+     "what": "Penthouse on floor 39",
+     "sub": "Listing",
+     "m2": "",
+     "price": "43 million",
+     "kind": "ask",
+     "date": "4.2025",
+     "src": "BZ2504 BZ2610"
+    }
+   ]
+  },
+  {
+   "name": "Median deals in the neighbourhood, first quarter of 2026",
+   "rows": [
+    {
+     "what": "3 rooms",
+     "sub": "All of Tel Aviv-Yafo: 4.23 million",
+     "m2": "",
+     "price": "4.94 million",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVQ1"
+    },
+    {
+     "what": "4 rooms",
+     "sub": "All of Tel Aviv-Yafo: 5.23 million",
+     "m2": "",
+     "price": "6.84 million",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVQ1"
+    },
+    {
+     "what": "5 rooms",
+     "sub": "All of Tel Aviv-Yafo: 7.50 million",
+     "m2": "",
+     "price": "8.46 million",
+     "kind": "med",
+     "date": "1-3.2026",
+     "src": "GOVQ1"
+    }
+   ]
+  },
+  {
+   "name": "Around the square, District 4",
+   "rows": [
+    {
+     "what": "New buildings, recently marketed projects",
+     "sub": "At the peak: ₪70,000-75,000 per m²",
+     "m2": "63,000-68,000",
+     "price": "",
+     "kind": "mkt",
+     "date": "10.2026",
+     "src": "BZ2610"
+    },
+    {
+     "what": "Penthouses and garden apartments",
+     "sub": "Large apartments with outdoor space",
+     "m2": "80,000-110,000",
+     "price": "",
+     "kind": "deal",
+     "date": "10.2026",
+     "src": "BZ2610"
+    },
+    {
+     "what": "3-4 rooms in existing buildings",
+     "sub": "Four deals, 70-110 m²",
+     "m2": "59,000-76,000",
+     "price": "4.75-8.4 million",
+     "kind": "deal",
+     "date": "2026",
+     "src": "BZ2610"
+    },
+    {
+     "what": "New apartments for sale on the square’s ring",
+     "sub": "142-161 m², floors 12 and 23",
+     "m2": "79,000-90,000",
+     "price": "11.25-14.5 million",
+     "kind": "ask",
+     "date": "10.2026",
+     "src": "BZ2610"
+    },
+    {
+     "what": "Apartment in an older building on the ring",
+     "sub": "107 m², probably needs renovation",
+     "m2": "about 43,000",
+     "price": "4.59 million",
+     "kind": "ask",
+     "date": "10.2026",
+     "src": "BZ2610"
+    }
+   ]
+  },
+  {
+   "name": "For comparison",
+   "rows": [
+    {
+     "what": "Tel Aviv-Yafo, the whole city",
+     "sub": "Median of 2,432 deals",
+     "m2": "52,856",
+     "price": "",
+     "kind": "deal",
+     "date": "10.2023-10.2025",
+     "src": "TA"
+    }
+   ]
+  }
+ ],
+ "kinds": {
+  "deal": "Deal",
+  "ask": "Asking price",
+  "est": "Estimate",
+  "mkt": "Marketed price",
+  "med": "Median deal"
+ },
+ "calc": {
+  "modes": [
+   {
+    "id": "tower",
+    "label": "In the towers",
+    "floor": true,
+    "lo_floor1": 58000,
+    "hi_floor39": 72000,
+    "band": 0.07,
+    "why": "An estimate by floor: from about ₪58,000 per m² on the low floors to about ₪72,000 on floors 38-39, around the average of about ₪65,000. Published deals on floors 38-39: ₪68,400-75,900 per m².",
+    "src": "model anchored on V3 (avg of the three floor 38-39 deals ~71K) and the 65K average at mid floors (BZ2610, CA2610)"
+   },
+   {
+    "id": "new",
+    "label": "New building nearby",
+    "lo": 63000,
+    "hi": 68000,
+    "why": "Prices in new projects around the square that were marketed recently.",
+    "src": "BZ2610"
+   },
+   {
+    "id": "resale",
+    "label": "Existing apartment nearby",
+    "lo": 59000,
+    "hi": 76000,
+    "why": "2026 deals for 3-4 room apartments in existing buildings around the square.",
+    "src": "BZ2610"
+   },
+   {
+    "id": "premium",
+    "label": "Penthouse or garden apartment",
+    "lo": 80000,
+    "hi": 110000,
+    "why": "Large apartments, penthouses and garden apartments with outdoor space around the square.",
+    "src": "BZ2610"
+   }
+  ],
+  "deals_plot": [
+   [
+    38,
+    68400
+   ],
+   [
+    39,
+    68500
+   ],
+   [
+    38,
+    75900
+   ]
+  ],
+  "avg_line": 65000,
+  "ta_median": 52856,
+  "tax_single": [
+   [
+    1978745,
+    0
+   ],
+   [
+    2347040,
+    0.035
+   ],
+   [
+    6055070,
+    0.05
+   ],
+   [
+    20183565,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ],
+  "tax_more": [
+   [
+    6055070,
+    0.08
+   ],
+   [
+    null,
+    0.1
+   ]
+  ],
+  "tax_src": "the site's /purchase-tax-calculator/ brackets (2026, frozen to 15.1.2028); research agent re-checks against gov.il",
+  "gap": "In listings for expensive apartments, the asking price is usually 5%-10% above the price actually agreed.",
+  "gap_src": "BZ2610"
+ },
+ "src_line": "This price guide draws on deals reported to the Tax Authority and published, on estimates by appraisers and property professionals in the area, and on listings for sale. Asking prices are marked separately and are not closing prices. Updated 7 October 2026.",
+ "title": "How much does an apartment cost at Kikar Hamedina Towers?",
+ "calc_title": "Kikar Hamedina apartment price calculator",
+ "ui": {
+  "lang": "en",
+  "dir": "ltr",
+  "loc": "en-GB",
+  "grp": ",",
+  "dec": ".",
+  "kicker": "Price guide · updated",
+  "cap": "The price guide",
+  "th": [
+   "Property",
+   "₪ per m²",
+   "Apartment price, ₪",
+   "Type",
+   "Date"
+  ],
+  "dl": [
+   "₪ per m²",
+   "Price",
+   "Type",
+   "Date"
+  ],
+  "na": "Not published",
+  "more_t": "The full price guide: around the square and for comparison",
+  "more_p": "The full price guide",
+  "where": "Where is the apartment",
+  "area": "Apartment area",
+  "floor": "Floor",
+  "taxlg": "Purchase tax",
+  "single": "Single apartment",
+  "more": "Additional apartment",
+  "out": "Price estimate",
+  "tax": "Purchase tax",
+  "total": "Total with tax",
+  "wa": "More details on WhatsApp",
+  "links": [
+   [
+    "Israel purchase tax for foreign residents →",
+    "https://nad-lan.co.il/israel-purchase-tax-foreign-residents/"
+   ],
+   [
+    "Israeli mortgages for non-residents →",
+    "https://nad-lan.co.il/israel-mortgage-non-residents/"
+   ]
+  ],
+  "fine1": "A non-binding estimate, based on the deals and prices published up to",
+  "fine2": "The price is agreed with the seller.",
+  "chart": "Price per m² by floor in the towers, with the published deals",
+  "u_m2": "{n} m²",
+  "u_floor": "Floor {n}",
+  "u_mil": "₪{n} million",
+  "u_ils": "₪{n}",
+  "u_pm2": "₪{n} per m²",
+  "approx": "about {n}",
+  "js": {
+   "avg": "Average deal, about {n}",
+   "deals": "Published deals",
+   "f1": "Floor 1",
+   "f40": "Floor 40",
+   "axis": "₪ per m² by floor",
+   "you": "Your choice",
+   "tw": "Towers’ average",
+   "ta": "Tel Aviv-Yafo, median",
+   "aria_t": "Estimate of ₪{lo} to ₪{hi} per m² on floor {f}, against the towers’ average deal of about ₪{avg}",
+   "aria_a": "{m}: ₪{lo} to ₪{hi} per m², against the towers’ average of about ₪{avg} and Tel Aviv-Yafo at ₪{ta}",
+   "wa": "Hello, I checked the Kikar Hamedina Towers price guide: {m}, {a} m²{f}, estimate ₪{r} million. I would like more details (nad-lan.co.il)",
+   "wa_f": ", floor {f}"
+  }
+ }
+}
