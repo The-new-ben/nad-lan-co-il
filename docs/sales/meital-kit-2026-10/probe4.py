@@ -1,0 +1,36 @@
+import sys, time
+from playwright.sync_api import sync_playwright
+slug, x, y = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
+with sync_playwright() as p:
+    b = p.chromium.launch(channel="chrome")
+    c = b.new_context(viewport={"width": 1440, "height": 900}, device_scale_factor=2, locale="he-IL")
+    pg = c.new_page()
+    pg.goto(f"https://nad-lan.co.il/projects/{slug}/?nlshot={int(time.time())}", wait_until="load", timeout=120000)
+    pg.wait_for_timeout(8000)
+    pg.evaluate("document.querySelector('button.rbs-open').click()"); pg.wait_for_timeout(6000)
+    pg.screenshot(path=f"shots/{slug}-d-tour.png")
+    pg.mouse.click(x, y); pg.wait_for_timeout(5000)
+    pg.screenshot(path=f"shots/{slug}-d-floor.png")
+    steps = pg.query_selector_all("button.nlps-step")
+    steps[1].click(); pg.wait_for_timeout(7000)
+    v = pg.query_selector("#nlps-view")
+    if v: v.screenshot(path=f"shots/{slug}-d-view2.png")
+    steps[2].click(); pg.wait_for_timeout(8000)
+    pg.screenshot(path=f"shots/{slug}-d-step3.png")
+    d = pg.get_by_text("פתחו את הדלת")
+    if d.count():
+        pg.mouse.click(720, 788); pg.wait_for_timeout(3000)
+        pg.wait_for_timeout(6000)
+        sk = pg.get_by_text("דילוג")
+        print("skip", sk.count())
+        if sk.count(): sk.first.click(force=True)
+        pg.wait_for_timeout(12000)
+        pg.screenshot(path=f"shots/{slug}-d-inside.png")
+        for i, room in enumerate(("מטבח", "מרפסת")):
+            bt = pg.locator("button", has_text=room)
+            if bt.count():
+                bt.first.click(force=True); pg.wait_for_timeout(6000)
+                pg.screenshot(path=f"shots/{slug}-d-inside-{i+1}.png")
+        r = pg.evaluate("""()=>{const o=[];document.querySelectorAll('button').forEach(e=>{if(!e.offsetParent)return;const t=(e.innerText||e.getAttribute('aria-label')||'').trim().replace(/\s+/g,' ');if(t)o.push(t.slice(0,30))});return o.slice(0,60)}""")
+        print(r)
+    b.close()

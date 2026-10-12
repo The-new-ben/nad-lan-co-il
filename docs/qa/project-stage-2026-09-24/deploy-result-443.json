@@ -1,0 +1,16 @@
+{
+  "released": "1.72.443",
+  "from": "1.72.442",
+  "live_before": {
+    "nadlan-config.php": "f2bdfc5ac552858515c32f05cdff4940"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-12 23:12:24",
+  "files": {
+    "inc/deal-sign.php": "9c908039f6c6e838cecfe03fbe2d67ec",
+    "nadlan-config.php": "4fb74446f016434247d64adc42d68687"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.443, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
