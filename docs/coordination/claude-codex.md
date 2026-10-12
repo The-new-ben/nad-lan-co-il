@@ -4260,3 +4260,7 @@ Private review-20261009T135029Z contains current19-file delta/manifest/rollback 
 RELEASE LOCK 1.72.443 (HAD-495 DealSign, a new module file inc/deal-sign.php) by Claude [nad-lan main session] 12.10.2026 ~23:40 Israel: dry run, then release. Do not start another runner until RELEASE DONE 1.72.443.
 
 RELEASE DONE 1.72.443 (HAD-495 DealSign) by Claude [nad-lan main session] 12.10.2026 ~23:59 Israel: released and verified (first run rolled back on a served-files check that cannot apply to PHP; fixed in make_deploy443). Lock released.
+
+RELEASE LOCK 1.72.444 (HAD-495 DealSign v2 + Rainbow rail without the broker square) by Claude [nad-lan main session] 13.10.2026 ~00:55 Israel. Do not start another runner until RELEASE DONE 1.72.444.
+
+RELEASE DONE 1.72.444 (HAD-495 DealSign v2 + Rainbow rail without the broker square) by Claude [nad-lan main session] 13.10.2026 Israel: released and verified. Lock released.

@@ -29,7 +29,7 @@ if ( ! function_exists( 'nadlan_sg_projects' ) ) {
 	function nadlan_sg_projects() {
 		return array(
 			'ashira'  => array( 'name' => 'אשירה שדה דב', 'dev' => 'אביסרור משה ובניו', 'asset' => 'פרויקט אשירה (ASHIRA), מגרש 101, מתחם אשכול, רובע שדה דב, תל אביב-יפו', 'url' => '/projects/ashira-sde-dov/' ),
-			'rainbow' => array( 'name' => 'ריינבו תל אביב', 'dev' => 'ישראל קנדה', 'asset' => 'פרויקט ריינבו (Rainbow Tel Aviv), רובע שדה דב, תל אביב-יפו', 'url' => '/projects/rainbow-tel-aviv/' ),
+			'rainbow' => array( 'name' => 'ריינבו תל אביב', 'dev' => 'ישראל קנדה', 'asset' => 'פרויקט ריינבו (Rainbow Tel Aviv), מגרש 111, רובע שדה דב, תל אביב-יפו', 'url' => '/projects/rainbow-tel-aviv/' ),
 			'dimri'   => array( 'name' => 'דמרי ימה שדה דב', 'dev' => 'י.ח. דמרי', 'asset' => 'פרויקט דמרי ימה (DIMRI YAMA), רובע שדה דב, תל אביב-יפו', 'url' => '/projects/dimri-yama-sde-dov/' ),
 		);
 	}
@@ -96,7 +96,7 @@ if ( ! function_exists( 'nadlan_sg_projects' ) ) {
 <h2>הסכם שיתוף פעולה והזמנת שירותי תיווך</h2>
 <p><b>בין:</b> {DEV}, ח.פ. {DEVNUM}, מכתובת {DEVADDR}, באמצעות מורשי החתימה שלה ("החברה");</p>
 <p><b>לבין:</b> {BNAME}, ת.ז. {BID}, מתווכת מקרקעין מורשית, רישיון מס׳ {BLIC}, הפועלת בשם {BOFFICE} ("המתווכת").</p>
-<p><b>הואיל</b> והחברה משווקת יחידות דיור ומסחר בפרויקט, ומפרסמת אותו באתר nad-lan.co.il בהזמנה נפרדת; <b>והואיל</b> והמתווכת מבקשת להציג לחברה לקוחות לרכישת יחידות בפרויקט, והחברה מעוניינת בכך לפי התנאים שלהלן; <b>לפיכך הוסכם בין הצדדים כדלקמן:</b></p>
+<p><b>הואיל</b> והחברה משווקת יחידות דיור ומסחר בפרויקט{ADV}; <b>והואיל</b> והמתווכת מבקשת להציג לחברה לקוחות לרכישת יחידות בפרויקט, והחברה מעוניינת בכך לפי התנאים שלהלן; <b>לפיכך הוסכם בין הצדדים כדלקמן:</b></p>
 <ol>
 <li><b>הגדרות.</b> "הפרויקט": {ASSET}, על כל יחידותיו. "לקוח": אדם שהמתווכת רשמה לפי סעיף 3, לרבות בן או בת זוגו, ותאגיד בשליטתו. "עסקה": חתימה על הסכם רכישה של יחידה בפרויקט בין החברה לבין לקוח. "יום עסקים": ראשון עד חמישי, למעט חג וערב חג.</li>
 <li><b>ההזמנה.</b> החברה מזמינה מהמתווכת שירותי תיווך להצגת לקוחות לרכישת יחידות בפרויקט. הסכם זה הוא הזמנה בכתב לפי סעיף 9 לחוק המתווכים במקרקעין, התשנ"ו-1996. ההזמנה אינה בלעדית: החברה רשאית לשווק את הפרויקט בעצמה ובאמצעות אחרים, בכפוף לזכויות המתווכת לגבי לקוחות רשומים.</li>
@@ -140,6 +140,7 @@ HTML;
 		return array(
 			'{DEV}' => $e( 'dev' ), '{DEVNUM}' => $e( 'devnum' ), '{DEVADDR}' => $e( 'devaddr' ), '{ASSET}' => $e( 'asset' ), '{PNAME}' => $e( 'pname' ),
 			'{BNAME}' => $e( 'bname' ), '{BID}' => $e( 'bid' ), '{BLIC}' => $e( 'blic' ), '{BOFFICE}' => $e( 'boffice' ), '{REGTO}' => $e( 'regto' ),
+			'{ADV}' => 'package' === ( $d['kind'] ?? 'package' ) ? ', ומפרסמת אותו באתר nad-lan.co.il בהזמנה נפרדת' : '',
 			'{RATE}' => $e( 'rate' ), '{PLAN}' => isset( $plans[ (string) ( $d['plan'] ?? '' ) ] ) ? $plans[ (string) $d['plan'] ] : '<i>יבחר בחתימה</i>',
 		);
 	}
@@ -166,6 +167,7 @@ HTML;
 		$ns = 'nadlan/v1';
 		$pub = '__return_true';
 		register_rest_route( $ns, '/sg/broker', array( 'methods' => 'POST', 'permission_callback' => function () { return current_user_can( 'manage_options' ); }, 'callback' => 'nadlan_sg_rest_broker' ) );
+		register_rest_route( $ns, '/sg/file', array( 'methods' => 'POST', 'permission_callback' => function () { return current_user_can( 'manage_options' ); }, 'callback' => 'nadlan_sg_rest_file' ) );
 		register_rest_route( $ns, '/sg/admin', array( 'methods' => 'GET', 'permission_callback' => function () { return current_user_can( 'manage_options' ); }, 'callback' => 'nadlan_sg_rest_admin' ) );
 		register_rest_route( $ns, '/sg/deal', array( 'methods' => 'POST', 'permission_callback' => $pub, 'callback' => 'nadlan_sg_rest_deal' ) );
 		register_rest_route( $ns, '/sg/sign', array( 'methods' => 'POST', 'permission_callback' => $pub, 'callback' => 'nadlan_sg_rest_sign' ) );
@@ -188,7 +190,7 @@ HTML;
 
 	/** Admin: everything, for the owner's ledger. */
 	function nadlan_sg_rest_admin() {
-		$out = array( 'deals' => array(), 'regs' => array() );
+		$out = array( 'deals' => array(), 'regs' => array(), 'files' => nadlan_sg_files() );
 		foreach ( get_posts( array( 'post_type' => 'nadlan_sgdeal', 'post_status' => 'any', 'numberposts' => 200, 'suppress_filters' => true ) ) as $p ) {
 			$d = nadlan_sg_deal( $p->ID ); unset( $d['doc_a'], $d['doc_b'] );
 			foreach ( array( 'bsig', 'dsig' ) as $k ) { if ( ! empty( $d[ $k ]['img'] ) ) { $d[ $k ]['img'] = '(png ' . strlen( $d[ $k ]['img'] ) . ')'; } }
@@ -226,8 +228,9 @@ HTML;
 		if ( ! $r->get_param( 'agree' ) ) { return nadlan_sg_err( 'יש לאשר את נוסח ההסכם.' ); }
 		$sig = nadlan_sg_sig( (string) $r->get_param( 'sig' ) );
 		if ( ! $sig ) { return nadlan_sg_err( 'חסרה חתימה.' ); }
+		$kind = 'package' === (string) $r->get_param( 'kind' ) ? 'package' : 'broker';
 		$d = array(
-			'v' => 1, 'office' => $office, 'project' => $pk, 'pname' => $pname, 'asset' => $asset, 'dev' => $dev, 'devnum' => '', 'devaddr' => '',
+			'v' => 2, 'kind' => $kind, 'office' => $office, 'project' => $pk, 'pname' => $pname, 'asset' => $asset, 'dev' => $dev, 'devnum' => '', 'devaddr' => '',
 			'regto' => $regto, 'rate' => $rate, 'bname' => $b['name'], 'bid' => $bid, 'blic' => $b['lic'], 'boffice' => $b['office'],
 			'token' => nadlan_sg_token(), 'status' => 'sent', 'created' => nadlan_sg_act(),
 		);
@@ -254,13 +257,14 @@ HTML;
 		if ( ! preg_match( '/^\d{8,9}$/', $f['devnum'] ) ) { return nadlan_sg_err( 'מספר החברה (ח.פ.) לא תקין.' ); }
 		if ( '' === $f['devaddr'] || '' === $f['name'] || '' === $f['role'] ) { return nadlan_sg_err( 'חסרים פרטים: כתובת החברה, שם החותם ותפקידו.' ); }
 		if ( ! is_email( $f['email'] ) ) { return nadlan_sg_err( 'כתובת המייל לא תקינה.' ); }
-		if ( ! in_array( $plan, array( '1', '3', '6' ), true ) ) { return nadlan_sg_err( 'בחרו מסלול פרסום.' ); }
-		if ( ! $r->get_param( 'agree_a' ) || ! $r->get_param( 'agree_b' ) ) { return nadlan_sg_err( 'יש לאשר את שני המסמכים.' ); }
+		$pkg = 'package' === ( $d['kind'] ?? 'package' );
+		if ( $pkg && ! in_array( $plan, array( '1', '3', '6' ), true ) ) { return nadlan_sg_err( 'בחרו מסלול פרסום.' ); }
+		if ( ! $r->get_param( 'agree_a' ) || ( $pkg && ! $r->get_param( 'agree_b' ) ) ) { return nadlan_sg_err( $pkg ? 'יש לאשר את שני המסמכים.' : 'יש לאשר את ההסכם.' ); }
 		$sig = nadlan_sg_sig( (string) $r->get_param( 'sig' ) );
 		if ( ! $sig ) { return nadlan_sg_err( 'חסרה חתימה.' ); }
-		$d['devnum'] = $f['devnum']; $d['devaddr'] = $f['devaddr']; $d['plan'] = $plan;
-		$d['doc_a'] = nadlan_sg_doc_a( $d ); $d['doc_b'] = nadlan_sg_doc_b( $d );
-		$d['dsig'] = nadlan_sg_act( array( 'name' => $f['name'], 'role' => $f['role'], 'email' => $f['email'], 'phone' => $f['phone'], 'img' => $sig, 'hash_a' => hash( 'sha256', $d['doc_a'] ), 'hash_b' => hash( 'sha256', $d['doc_b'] ) ) );
+		$d['devnum'] = $f['devnum']; $d['devaddr'] = $f['devaddr']; $d['plan'] = $pkg ? $plan : '';
+		$d['doc_a'] = nadlan_sg_doc_a( $d ); $d['doc_b'] = $pkg ? nadlan_sg_doc_b( $d ) : '';
+		$d['dsig'] = nadlan_sg_act( array( 'name' => $f['name'], 'role' => $f['role'], 'email' => $f['email'], 'phone' => $f['phone'], 'img' => $sig, 'hash_a' => hash( 'sha256', $d['doc_a'] ), 'hash_b' => $pkg ? hash( 'sha256', $d['doc_b'] ) : '' ) );
 		$d['status'] = 'signed';
 		update_post_meta( $id, '_nlsg', $d );
 		$copy = nadlan_sg_url( 'nlsg_sign', $d['token'] );
@@ -333,9 +337,105 @@ HTML;
 		return time() > (int) $g['deadline'] ? array( 'ok', 'סופי · מוגן עד ' . wp_date( 'd.m.Y', strtotime( '+12 months', (int) $g['created']['ts'] ), new DateTimeZone( 'Asia/Jerusalem' ) ) ) : array( 'wait', 'בבדיקה עד ' . nadlan_sg_il( $g['deadline'] ) );
 	}
 
+
+	/* ------------------------------------------------------------------ the broker's materials (1.72.444) */
+
+	function nadlan_sg_files() { $f = get_option( 'nadlan_sg_files', array() ); return is_array( $f ) ? $f : array(); }
+
+	/** The private folder of the materials: a random name under uploads, never linked; files are served by nadlan_sg_download(). */
+	function nadlan_sg_kitdir() {
+		$u = wp_upload_dir( null, false );
+		$k = (string) get_option( 'nadlan_sg_kitdir', '' );
+		if ( ! preg_match( '/^nlsg-[a-f0-9]{32}$/', $k ) ) { $k = 'nlsg-' . nadlan_sg_token(); update_option( 'nadlan_sg_kitdir', $k, false ); }
+		$dir = trailingslashit( $u['basedir'] ) . $k;
+		if ( ! is_dir( $dir ) ) { wp_mkdir_p( $dir ); @file_put_contents( $dir . '/index.html', '' ); }
+		return $dir;
+	}
+
+	/** Admin: put a file into a broker's materials (the same office and name replace it), or remove one. */
+	function nadlan_sg_rest_file( WP_REST_Request $r ) {
+		$files = nadlan_sg_files();
+		$rm = nadlan_sg_valid( (string) $r->get_param( 'remove' ) );
+		if ( $rm ) {
+			if ( isset( $files[ $rm ] ) ) { @unlink( nadlan_sg_kitdir() . '/' . $rm . '.' . strtolower( pathinfo( $files[ $rm ]['name'], PATHINFO_EXTENSION ) ) ); unset( $files[ $rm ] ); update_option( 'nadlan_sg_files', $files, false ); }
+			return array( 'ok' => true, 'removed' => $rm );
+		}
+		$office = nadlan_sg_valid( (string) $r->get_param( 'office' ) );
+		if ( ! nadlan_sg_broker( $office ) ) { return nadlan_sg_err( 'no such office', 404 ); }
+		$name = sanitize_file_name( (string) $r->get_param( 'name' ) );
+		$ext = strtolower( pathinfo( $name, PATHINFO_EXTENSION ) );
+		$types = array( 'pdf' => 'application/pdf', 'mp4' => 'video/mp4', 'jpg' => 'image/jpeg', 'png' => 'image/png', 'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' );
+		if ( ! isset( $types[ $ext ] ) ) { return nadlan_sg_err( 'file type' ); }
+		$raw = base64_decode( (string) $r->get_param( 'b64' ), true );
+		if ( false === $raw || strlen( $raw ) < 100 ) { return nadlan_sg_err( 'no data' ); }
+		$id = '';
+		foreach ( $files as $fid => $f ) { if ( ( $f['office'] ?? '' ) === $office && ( $f['name'] ?? '' ) === $name ) { $id = $fid; } }
+		if ( ! $id ) { $id = nadlan_sg_token(); }
+		if ( false === @file_put_contents( nadlan_sg_kitdir() . '/' . $id . '.' . $ext, $raw ) ) { return nadlan_sg_err( 'write failed', 500 ); }
+		$files[ $id ] = array( 'office' => $office, 'name' => $name, 'title' => nadlan_sg_txt( $r, 'title' ), 'desc' => nadlan_sg_txt( $r, 'desc', 500 ),
+			'group' => nadlan_sg_txt( $r, 'group', 80 ), 'order' => (int) $r->get_param( 'order' ), 'mime' => $types[ $ext ], 'size' => strlen( $raw ),
+			'md5' => md5( $raw ), 'at' => time(), 'dl' => (int) ( $files[ $id ]['dl'] ?? 0 ) );
+		update_option( 'nadlan_sg_files', $files, false );
+		return array( 'ok' => true, 'id' => $id, 'url' => nadlan_sg_url( 'nlsg_dl', $id ), 'md5' => md5( $raw ), 'size' => strlen( $raw ) );
+	}
+
+	/** One file, by its own link; byte ranges so a phone can play the video. */
+	function nadlan_sg_download( $id ) {
+		$id = nadlan_sg_valid( $id );
+		$files = nadlan_sg_files();
+		$f = $id && isset( $files[ $id ] ) ? $files[ $id ] : null;
+		$path = $f ? nadlan_sg_kitdir() . '/' . $id . '.' . strtolower( pathinfo( $f['name'], PATHINFO_EXTENSION ) ) : '';
+		if ( ! $f || ! is_readable( $path ) ) { status_header( 404 ); nocache_headers(); echo 'not found'; exit; }
+		$size = (int) filesize( $path ); $start = 0; $end = $size - 1; $part = false;
+		if ( isset( $_SERVER['HTTP_RANGE'] ) && preg_match( '/bytes=(\d*)-(\d*)/', (string) $_SERVER['HTTP_RANGE'], $m ) ) {
+			if ( '' !== $m[1] ) { $start = (int) $m[1]; if ( '' !== $m[2] ) { $end = min( (int) $m[2], $size - 1 ); } } elseif ( '' !== $m[2] ) { $start = max( 0, $size - (int) $m[2] ); }
+			if ( $start > $end || $start >= $size ) { status_header( 416 ); header( 'Content-Range: bytes */' . $size ); exit; }
+			$part = true;
+		}
+		if ( 0 === $start ) { $files[ $id ]['dl'] = (int) ( $f['dl'] ?? 0 ) + 1; $files[ $id ]['last'] = time(); update_option( 'nadlan_sg_files', $files, false ); }
+		while ( ob_get_level() ) { ob_end_clean(); }
+		status_header( $part ? 206 : 200 );
+		header( 'Content-Type: ' . $f['mime'] );
+		header( 'Accept-Ranges: bytes' );
+		header( 'Cache-Control: private, max-age=0, no-store' );
+		header( 'X-Content-Type-Options: nosniff' );
+		header( 'Referrer-Policy: no-referrer' );
+		header( 'Content-Disposition: ' . ( isset( $_GET['save'] ) ? 'attachment' : 'inline' ) . "; filename*=UTF-8''" . rawurlencode( $f['name'] ) );
+		if ( $part ) { header( 'Content-Range: bytes ' . $start . '-' . $end . '/' . $size ); }
+		header( 'Content-Length: ' . ( $end - $start + 1 ) );
+		$fp = fopen( $path, 'rb' ); fseek( $fp, $start ); $left = $end - $start + 1;
+		while ( $left > 0 && ! feof( $fp ) ) { $c = fread( $fp, (int) min( 65536, $left ) ); echo $c; $left -= strlen( $c ); flush(); } // phpcs:ignore
+		fclose( $fp );
+		exit;
+	}
+
+	/** The materials tab of the office. */
+	function nadlan_sg_kit_tab( $tok ) {
+		$mine = array_filter( nadlan_sg_files(), function ( $f ) use ( $tok ) { return ( $f['office'] ?? '' ) === $tok; } );
+		uasort( $mine, function ( $a, $b ) { return array( $a['order'] ?? 0, $a['title'] ?? '' ) <=> array( $b['order'] ?? 0, $b['title'] ?? '' ); } );
+		$h = '<section id="kit" class="tab on">';
+		if ( ! $mine ) { return $h . '<div class="card"><p class="muted">עוד אין חומרים.</p></div></section>'; }
+		$group = null;
+		foreach ( $mine as $id => $f ) {
+			if ( $f['group'] !== $group ) {
+				if ( null !== $group ) { $h .= '</div>'; }
+				$group = $f['group'];
+				$h .= '<div class="card"><h2>' . esc_html( $group ) . '</h2>';
+			}
+			$u = nadlan_sg_url( 'nlsg_dl', $id );
+			$mb = $f['size'] >= 1048576 ? number_format( $f['size'] / 1048576, 1 ) . ' MB' : max( 1, (int) round( $f['size'] / 1024 ) ) . ' KB';
+			$kind = 'video/mp4' === $f['mime'] ? 'סרטון' : ( 'application/pdf' === $f['mime'] ? 'PDF' : 'קובץ' );
+			$h .= '<div class="kit"><div class="kt"><b>' . esc_html( $f['title'] ) . '</b><small>' . esc_html( $kind . ' · ' . $mb ) . '</small></div><p>' . esc_html( $f['desc'] ) . '</p>'
+				. '<div class="ka"><a class="btn sm" href="' . esc_url( $u ) . '" target="_blank" rel="noopener">פתיחה</a><a class="btn sm ghost" href="' . esc_url( add_query_arg( 'save', '1', $u ) ) . '">הורדה</a>'
+				. '<a class="btn sm ghost" href="' . esc_url( 'https://wa.me/?text=' . rawurlencode( $f['title'] . "\n" . $u ) ) . '" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div>';
+		}
+		return $h . '</div></section>';
+	}
+
 	/* ------------------------------------------------------------------ pages */
 
 	add_action( 'template_redirect', function () {
+		if ( isset( $_GET['nlsg_dl'] ) ) { nadlan_sg_download( sanitize_text_field( wp_unslash( $_GET['nlsg_dl'] ) ) ); }
 		foreach ( array( 'nlsg_office', 'nlsg_sign', 'nlsg_rev' ) as $k ) {
 			if ( isset( $_GET[ $k ] ) ) {
 				$t = nadlan_sg_valid( sanitize_text_field( wp_unslash( $_GET[ $k ] ) ) );
@@ -394,15 +494,17 @@ HTML;
 			$rl .= '<tr><td><b>' . esc_html( $g['client'] ) . '</b> · ' . esc_html( $g['tail'] ) . '<br>' . esc_html( $g['pname'] ) . '</td><td>' . esc_html( $g['created']['il'] ) . '</td><td><span class="st ' . $cls . '">' . esc_html( $lab ) . '</span>' . ( ! empty( $g['opened'] ) ? '<br><small>נפתח אצל החברה ' . esc_html( $g['opened']['il'] ) . '</small>' : '' ) . '</td><td><a href="' . esc_url( $u ) . '" target="_blank" rel="noopener">קישור הבדיקה</a></td></tr>';
 		}
 		$h = nadlan_sg_head( $b['office'] . ' · מתווכת מורשית, רישיון ' . $b['lic'], 'המשרד של ' . $b['name'], 'הסכמי שיתוף עם יזמים ורישום לקוחות. כל פעולה נשמרת עם חותמת זמן.' );
-		$h .= '<main class="w"><nav class="tabs"><a href="#deals" class="on" data-tab="deals">הסכמים</a><a href="#regs" data-tab="regs">רישום לקוח</a></nav>';
-		$h .= '<section id="deals" class="tab on"><div class="card"><h2>הסכם חדש עם יזם</h2><form data-form="deal">'
+		$h .= '<main class="w"><nav class="tabs"><a href="#kit" class="on" data-tab="kit">החומרים</a><a href="#deals" data-tab="deals">הסכמים</a><a href="#regs" data-tab="regs">רישום לקוח</a></nav>';
+		$h .= nadlan_sg_kit_tab( $tok );
+		$h .= '<section id="deals" class="tab"><div class="card"><h2>הסכם חדש עם יזם</h2><form data-form="deal">'
 			. '<input type="hidden" name="office" value="' . esc_attr( $tok ) . '">'
 			. '<div class="f"><label>הפרויקט</label><select name="project" data-proj>' . $opts . '</select></div>'
 			. '<div class="other" hidden><div class="f"><label>שם הפרויקט</label><input name="pname"></div><div class="f"><label>מיקום הפרויקט (כפי שיופיע בהסכם)</label><input name="asset"></div></div>'
 			. '<div class="row"><div class="f"><label>שם החברה (היזם)</label><input name="dev" required data-dev></div><div class="f"><label>שכר התיווך, אחוז לפני מע״מ</label><input name="rate" inputmode="decimal" placeholder="למשל 1.5" required></div></div>'
 			. '<div class="f"><label>לאן נשלחים רישומי לקוחות (מייל או וואטסאפ של החברה)</label><input name="regto" required></div>'
+			. '<div class="f"><label>סוג ההסכם</label><div class="plans"><label><input type="radio" name="kind" value="broker" checked> הסכם תיווך: רישום לקוחות ושכר תיווך על עסקה</label><label><input type="radio" name="kind" value="package"> הסכם תיווך יחד עם הזמנת פרסום באתר (אולם התצוגה)</label></div></div>'
 			. '<div class="row"><div class="f"><label>השם המלא שלך</label><input name="signer" value="' . esc_attr( $b['name'] ) . '" required></div><div class="f"><label>תעודת זהות</label><input name="bid" inputmode="numeric" required></div></div>'
-			. '<details class="doc"><summary>נוסח ההסכם</summary><div class="docbody">' . nadlan_sg_doc_a( array( 'bname' => $b['name'], 'blic' => $b['lic'], 'boffice' => $b['office'], 'dev' => '', 'asset' => '', 'rate' => '', 'regto' => '', 'bid' => '' ) ) . '</div></details>'
+			. '<details class="doc"><summary>נוסח ההסכם</summary><div class="docbody">' . nadlan_sg_doc_a( array( 'kind' => 'broker', 'bname' => $b['name'], 'blic' => $b['lic'], 'boffice' => $b['office'], 'dev' => '', 'asset' => '', 'rate' => '', 'regto' => '', 'bid' => '' ) ) . '</div></details>'
 			. '<label class="chk"><input type="checkbox" name="agree" value="1" required> קראתי את נוסח ההסכם, ואני חותמת עליו בחתימה אלקטרונית מחייבת.</label>'
 			. nadlan_sg_sigpad( 'החתימה שלך' )
 			. '<button class="btn">חתימה והפקת קישור ליזם</button><div class="msg" data-msg></div></form></div>'
@@ -425,26 +527,27 @@ HTML;
 			$sigs .= '<div><img src="' . esc_attr( $d['dsig']['img'] ) . '" alt=""><b>' . esc_html( $d['dsig']['name'] ) . '</b><small>' . esc_html( $d['dsig']['role'] . ' · ' . $d['dev'] ) . '<br>נחתם ' . esc_html( $d['dsig']['il'] ) . '</small></div>';
 		}
 		$sigs .= '</div>';
-		$h = nadlan_sg_head( $d['pname'] . ' · ' . $d['bname'] . ', מתווכת מורשית, רישיון ' . $d['blic'], $signed ? 'ההסכם נחתם' : 'הסכם שיתוף פעולה לחתימה', $signed ? 'זה העותק החתום. שמרו את הקישור, או הדפיסו ושמרו כקובץ.' : 'שני מסמכים: ההסכם עם ' . esc_html( $d['bname'] ) . ' והזמנת הפרסום באתר. חתימה אחת, ועותק חתום לשני הצדדים.' );
+		$pkg = 'package' === ( $d['kind'] ?? 'package' );
+		$h = nadlan_sg_head( $d['pname'] . ' · ' . $d['bname'] . ', מתווכת מורשית, רישיון ' . $d['blic'], $signed ? 'ההסכם נחתם' : 'הסכם שיתוף פעולה לחתימה', $signed ? 'זה העותק החתום. שמרו את הקישור, או הדפיסו ושמרו כקובץ.' : ( $pkg ? 'שני מסמכים: ההסכם עם ' . esc_html( $d['bname'] ) . ' והזמנת הפרסום באתר. חתימה אחת, ועותק חתום לשני הצדדים.' : 'הסכם שיתוף הפעולה והזמנת שירותי התיווך עם ' . esc_html( $d['bname'] ) . '. עותק חתום לשני הצדדים.' ) );
 		$h .= '<main class="w">';
 		if ( $signed ) {
 			$h .= '<div class="card doc"><div class="docbody">' . $d['doc_a'] . '</div>' . $sigs . '<p class="ev">טביעת המסמך (SHA-256): ' . esc_html( $d['dsig']['hash_a'] ) . '</p></div>';
-			$h .= '<div class="card doc"><div class="docbody">' . $d['doc_b'] . '</div><div class="sigs"><div><img src="' . esc_attr( $d['dsig']['img'] ) . '" alt=""><b>' . esc_html( $d['dsig']['name'] ) . '</b><small>' . esc_html( $d['dsig']['role'] . ' · ' . $d['dev'] ) . '<br>נחתם ' . esc_html( $d['dsig']['il'] ) . '</small></div></div><p class="ev">טביעת המסמך (SHA-256): ' . esc_html( $d['dsig']['hash_b'] ) . '</p></div>';
+			if ( '' !== (string) ( $d['doc_b'] ?? '' ) ) $h .= '<div class="card doc"><div class="docbody">' . $d['doc_b'] . '</div><div class="sigs"><div><img src="' . esc_attr( $d['dsig']['img'] ) . '" alt=""><b>' . esc_html( $d['dsig']['name'] ) . '</b><small>' . esc_html( $d['dsig']['role'] . ' · ' . $d['dev'] ) . '<br>נחתם ' . esc_html( $d['dsig']['il'] ) . '</small></div></div><p class="ev">טביעת המסמך (SHA-256): ' . esc_html( $d['dsig']['hash_b'] ) . '</p></div>';
 			$h .= '<div class="card noprint"><button class="btn" type="button" onclick="window.print()">הדפסה או שמירה כקובץ</button></div></main>';
 			return $h;
 		}
-		$h .= '<div class="card doc"><div class="kick">מסמך 1 מתוך 2</div><div class="docbody">' . nadlan_sg_doc_a( $d ) . '</div>' . $sigs . '</div>';
-		$h .= '<div class="card doc"><div class="kick">מסמך 2 מתוך 2</div><div class="docbody">' . nadlan_sg_doc_b( $d ) . '</div></div>';
+		$h .= '<div class="card doc">' . ( $pkg ? '<div class="kick">מסמך 1 מתוך 2</div>' : '' ) . '<div class="docbody">' . nadlan_sg_doc_a( $d ) . '</div>' . $sigs . '</div>';
+		if ( $pkg ) { $h .= '<div class="card doc"><div class="kick">מסמך 2 מתוך 2</div><div class="docbody">' . nadlan_sg_doc_b( $d ) . '</div></div>'; }
 		$h .= '<div class="card"><h2>פרטי החברה והחתימה</h2><form data-form="sign"><input type="hidden" name="token" value="' . esc_attr( $d['token'] ) . '">'
 			. '<div class="row"><div class="f"><label>ח.פ.</label><input name="devnum" inputmode="numeric" required></div><div class="f"><label>כתובת החברה</label><input name="devaddr" required></div></div>'
 			. '<div class="row"><div class="f"><label>שם מורשה החתימה</label><input name="name" required></div><div class="f"><label>תפקיד</label><input name="role" required></div></div>'
 			. '<div class="row"><div class="f"><label>מייל לעותק החתום</label><input name="email" type="email" required></div><div class="f"><label>טלפון</label><input name="phone" inputmode="tel"></div></div>'
-			. '<div class="f"><label>מסלול הפרסום</label><div class="plans"><label><input type="radio" name="plan" value="1" required> חודש אחד · 3,990 ₪</label><label><input type="radio" name="plan" value="3"> 3 חודשים · 10,990 ₪</label><label><input type="radio" name="plan" value="6"> 6 חודשים · 19,990 ₪</label></div><small class="muted">כולל מע״מ, כפי שמפורסם באתר.</small></div>'
+			. ( $pkg ? '<div class="f"><label>מסלול הפרסום</label><div class="plans"><label><input type="radio" name="plan" value="1" required> חודש אחד · 3,990 ₪</label><label><input type="radio" name="plan" value="3"> 3 חודשים · 10,990 ₪</label><label><input type="radio" name="plan" value="6"> 6 חודשים · 19,990 ₪</label></div><small class="muted">כולל מע״מ, כפי שמפורסם באתר.</small></div>' : '' )
 			. '<label class="chk"><input type="checkbox" name="agree_a" value="1" required> קראתי את הסכם שיתוף הפעולה והזמנת שירותי התיווך, ואני מוסמך/ת לחתום עליו בשם החברה.</label>'
-			. '<label class="chk"><input type="checkbox" name="agree_b" value="1" required> קראתי את הזמנת הפרסום, ואני מוסמך/ת לחתום עליה בשם החברה.</label>'
+			. ( $pkg ? '<label class="chk"><input type="checkbox" name="agree_b" value="1" required> קראתי את הזמנת הפרסום, ואני מוסמך/ת לחתום עליה בשם החברה.</label>' : '' )
 			. nadlan_sg_sigpad( 'חתימת מורשה החתימה' )
 			. '<p class="muted">החתימה האלקטרונית מחייבת כחתימה בכתב. נשמרים המועד, כתובת הרשת וטביעת המסמך, ועותק חתום נשלח לשני הצדדים.</p>'
-			. '<button class="btn">חתימה על שני המסמכים</button><div class="msg" data-msg></div></form></div></main>';
+			. '<button class="btn">' . ( $pkg ? 'חתימה על שני המסמכים' : 'חתימה על ההסכם' ) . '</button><div class="msg" data-msg></div></form></div></main>';
 		return $h;
 	}
 
@@ -490,6 +593,7 @@ input,select{width:100%;font:inherit;padding:11px 12px;border:1px solid #D6CEBF;
 .pad{position:relative;border:1px dashed var(--gold);border-radius:12px;background:var(--paper)}.pad canvas{display:block;width:100%;height:150px;touch-action:none;cursor:crosshair}
 .pad .clr{position:absolute;left:8px;top:8px;font:inherit;font-size:13px;border:1px solid var(--hair);background:#fff;border-radius:99px;padding:3px 12px;cursor:pointer}.pad .hint{position:absolute;right:12px;bottom:8px;font-size:12px;color:var(--mute);pointer-events:none}
 .btn{display:inline-block;font:inherit;font-weight:500;background:var(--brown);color:#F7F1E6;border:0;border-radius:99px;padding:13px 26px;cursor:pointer;min-height:48px}.btn:disabled{opacity:.6}
+.kit{border-top:1px solid var(--hair);padding:14px 0 4px}.kit:first-of-type{border-top:0}.kt{display:flex;justify-content:space-between;gap:12px;align-items:baseline}.kt b{font-size:17px}.kit p{margin:4px 0 10px;color:var(--ink2);font-size:15px}.ka{display:flex;flex-wrap:wrap;gap:8px}.btn.sm{min-height:42px;padding:9px 18px;font-size:15px;text-decoration:none;display:inline-flex;align-items:center}.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--hair)}
 .msg{margin-top:12px;font-size:15px}.msg.err{color:var(--bad)}.msg.ok{color:var(--ok)}.msg a{color:var(--gold);font-weight:500;word-break:break-all}
 .doc .docbody{font-size:15px;color:var(--ink2)}.doc .docbody h2{font-size:21px;color:var(--ink)}.doc ol{padding-right:22px;margin:0}.doc li{margin:0 0 8px}.doc i{color:var(--gold);font-style:normal;border-bottom:1px dotted var(--gold)}
 details.doc{border:1px solid var(--hair);border-radius:12px;padding:10px 14px;margin:0 0 14px;background:var(--paper)}details.doc summary{cursor:pointer;font-weight:500}

@@ -1,0 +1,19 @@
+{
+  "released": "1.72.444",
+  "from": "1.72.443",
+  "live_before": {
+    "inc/deal-sign.php": "9c908039f6c6e838cecfe03fbe2d67ec",
+    "nadlan-config.php": "4fb74446f016434247d64adc42d68687",
+    "inc/project-stage.php": "cc2444873c42d7760de1e683bdc28166"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-13 00:09:03",
+  "files": {
+    "inc/deal-sign.php": "f86c19d25e7697d2e465d08635e0052a",
+    "nadlan-config.php": "7e29aec98b405f63c3313366725bd4d1",
+    "inc/project-stage.php": "e14dff932694412804eee838f0a7b87d"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.444, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
