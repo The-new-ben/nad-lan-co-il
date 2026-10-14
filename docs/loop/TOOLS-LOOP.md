@@ -40,6 +40,9 @@ Weekly usage was 58% on 14.10 with the reset on 19.10 01:00. Pace: at most one t
 only for research. At 80% weekly: stop building, report, wait for the reset (leads and live faults only).
 
 ## State (newest first)
+- 15.10 ~00:25: LOOP PAUSED BY BEN ("finish what you are doing, then stop until I tell you to loop again", to save usage).
+  Nothing in flight: 1.72.452 live and verified, lock released, all committed. Do NOT resume the loop, the CPI refresh or any
+  release until Ben says so. When he does: start with the indexation + delay phone tables, then the September CPI refresh.
 - 15.10 ~00:15: TURN 4 POLISH, LIVE 1.72.450-452 (HAD-533), found by looking at the live phone shot: (1) the answer figure was
   direction:ltr, so "1 מתוך 10" read backwards; now unicode-bidi:plaintext on .nli__fig / scenario / strip figures; (2) two theme
   rules with !important (inline nl-premium-ui <=600px: td padding 8px 0 + width 100%; skin-a font) stripped every Instruments
