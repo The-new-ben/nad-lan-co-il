@@ -1,0 +1,17 @@
+{
+  "released": "1.72.451",
+  "from": "1.72.450",
+  "live_before": {
+    "assets/instruments/core.css": "1d8a75d8fd09622c46fb3a0a1cf4e7a5",
+    "nadlan-config.php": "93393abc64a43f138dd6ab8aa5890936"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-14 23:52:49",
+  "files": {
+    "assets/instruments/core.css": "a8dbe808326b81db838464a28a75952a",
+    "nadlan-config.php": "77c9e3edeb6764a27ed43d4719bd2fa3"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.451, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

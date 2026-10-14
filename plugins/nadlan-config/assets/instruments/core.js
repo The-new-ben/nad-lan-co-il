@@ -136,8 +136,9 @@
       if (r.note) out.appendChild(el('p', 'nli__note', r.note));
       if (r.table) {
         var open = table.open;
-        table.innerHTML = '<summary>' + esc(r.table.title || 'הפירוט המלא') + '</summary><div class="nli__tw"><table><thead><tr>' + r.table.head.map(function (h) { return '<th scope="col">' + esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' +
-          r.table.rows.map(function (row) { return '<tr>' + row.map(function (c, i) { var n = r.table.num && r.table.num.indexOf(i) > -1; return '<td' + (n ? ' class="n"' : '') + '>' + esc(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>';
+        var ph = r.table.phoneHide || [];  // columns a phone does not need (their content is folded into another cell)
+        table.innerHTML = '<summary>' + esc(r.table.title || 'הפירוט המלא') + '</summary><div class="nli__tw"><table><thead><tr>' + r.table.head.map(function (h, i) { return '<th scope="col"' + (ph.indexOf(i) > -1 ? ' class="ph"' : '') + '>' + esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+          r.table.rows.map(function (row) { return '<tr>' + row.map(function (c, i) { var k = (r.table.num && r.table.num.indexOf(i) > -1 ? 'n' : '') + (ph.indexOf(i) > -1 ? ' ph' : ''); return '<td' + (k ? ' class="' + k.trim() + '"' : '') + '>' + esc(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>';
         table.open = open; table.hidden = false;
       } else { table.hidden = true; }
       formula.textContent = r.formula || '';

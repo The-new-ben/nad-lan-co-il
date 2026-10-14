@@ -1,4 +1,4 @@
-/* NadLan Instruments · warranty v1 (HAD-527 turn 4): the Sale (Apartments) Law clock. From the day the apartment was handed
+/* NadLan Instruments · warranty v1.2 (HAD-527 turn 4; 1.72.452: the status cell carries its end date, phones hide the two date columns): the Sale (Apartments) Law clock. From the day the apartment was handed
    over: every item of the law's schedule (bdek 1-7 years), the 3-year warranty after each bdek, the 20 years for structural
    defects, and the notice deadline for a defect visible at handover (one year, s.4א). Facts: docs/tools/warranty/facts.md.
    Pure logic in NLWX for unit checks. */
@@ -34,15 +34,18 @@
     compute: function (v) {
       if (!/^\d{4}-\d{2}-\d{2}$/.test(v.handed || '')) return { error: { field: 'handed', msg: 'בחרו את תאריך קבלת הדירה.' } };
       if (!/^\d{4}-\d{2}-\d{2}$/.test(v.asof || '') || v.asof < v.handed) return { error: { field: 'asof', msg: 'התאריך צריך להיות אחרי המסירה.' } };
-      var r = compute(v.handed, v.asof), ST = { bdek: 'בבדק', warranty: 'באחריות', over: 'הסתיים' };
+      var r = compute(v.handed, v.asof);
       var sub = r.next ? 'הקרוב להסתיים: ' + r.next.name + ' · ' + (r.next.st === 'bdek' ? 'הבדק' : 'האחריות') + ' עד ' + F.date(r.next.st === 'bdek' ? r.next.bdekEnd : r.next.warEnd) : 'כל תקופות הבדק והאחריות שבתוספת הסתיימו. ליקוי יסודי במבנה: עד ' + F.date(r.struct) + '.';
       return {
         answer: { label: 'סוגי ליקויים שעדיין בתקופת בדק', value: F.num(r.inBdek) + ' מתוך 10', tone: r.next && r.next.left < 120 ? 'survey' : 'ink', sub: sub + (r.next ? ' (<bdi>' + F.num(r.next.left) + '</bdi> ימים)' : '') },
         breakdown: [{ label: 'בבדק', value: r.inBdek, kind: 'open', shown: F.num(r.inBdek) }, { label: 'באחריות', value: r.inWar, kind: 'civic', shown: F.num(r.inWar) }, { label: 'הסתיים', value: 10 - r.inBdek - r.inWar, kind: 'sea', shown: F.num(10 - r.inBdek - r.inWar) }],
         lines: [{ label: 'הודעה על ליקוי שנראה כבר במסירה', value: 'עד ' + F.date(r.notice) }, { label: 'ליקוי יסודי (נשיאה ויציבות)', value: 'עד ' + F.date(r.struct) }, { label: 'בבדק / באחריות / הסתיים', value: r.inBdek + ' / ' + r.inWar + ' / ' + (10 - r.inBdek - r.inWar) }],
         note: 'בתקופת הבדק, ליקוי שמתגלה נחשב לליקוי של הקבלן, והקבלן חייב לתקן אותו תוך זמן סביר. בשלוש שנות האחריות שאחריה, הקבלן עדיין אחראי, אבל הקונה צריך להראות שהליקוי נובע מהבנייה. מודיעים לקבלן בכתב, תוך זמן סביר מגילוי הליקוי.',
-        table: { title: 'כל סוגי הליקויים לפי התוספת לחוק', head: ['הליקוי', 'בדק', 'הבדק עד', 'האחריות עד', 'מצב'], num: [1, 2, 3],
-          rows: r.rows.map(function (x) { return [x.name, x.years === 1 ? 'שנה' : x.years + ' שנים', F.date(x.bdekEnd), F.date(x.warEnd), ST[x.st] + (x.left ? ' · ' + F.num(x.left) + ' ימים' : '')]; }).concat([['ליקוי יסודי במבנה', '20 שנה', F.date(r.struct), '', v.asof <= r.struct ? 'בתוקף' : 'הסתיים']]) },
+        table: { title: 'כל סוגי הליקויים לפי התוספת לחוק', head: ['הליקוי ותקופת הבדק', 'המצב היום', 'הבדק עד', 'האחריות עד'], num: [2, 3], phoneHide: [2, 3],
+          rows: r.rows.map(function (x) { return [x.name + ' · ' + (x.years === 1 ? 'שנה' : x.years + ' שנים'),
+            x.st === 'bdek' ? 'בבדק עד ' + F.date(x.bdekEnd) + ' · ' + F.num(x.left) + ' ימים' : x.st === 'warranty' ? 'באחריות עד ' + F.date(x.warEnd) + ' · ' + F.num(x.left) + ' ימים' : 'האחריות הסתיימה ב־' + F.date(x.warEnd),
+            F.date(x.bdekEnd), F.date(x.warEnd)]; })
+            .concat([['ליקוי יסודי במבנה · 20 שנה', v.asof <= r.struct ? 'בתוקף עד ' + F.date(r.struct) + ' · ' + F.num(days(v.asof, r.struct)) + ' ימים' : 'הסתיים ב־' + F.date(r.struct), F.date(r.struct), '']]) },
         formula: 'תקופת בדק: מיום המסירה, לפי התוספת לחוק המכר (שנה עד 7 שנים). תקופת אחריות: 3 שנים מסוף תקופת הבדק. ליקוי יסודי: 20 שנה מהמסירה.',
         sources: [{ label: 'חוק המכר (דירות): סעיפים 4, 4א, 4ב והתוספת', url: 'https://he.wikisource.org/wiki/%D7%97%D7%95%D7%A7_%D7%94%D7%9E%D7%9B%D7%A8_(%D7%93%D7%99%D7%A8%D7%95%D7%AA)' }],
         text: 'שעון הבדק והאחריות: דירה שנמסרה ב־' + F.date(v.handed) + '. נכון ל־' + F.date(v.asof) + ': ' + r.inBdek + ' סוגי ליקויים בבדק, ' + r.inWar + ' באחריות. ' + sub + '.'

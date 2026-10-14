@@ -4282,3 +4282,15 @@ RELEASE DONE 1.72.448 (HAD-527 prime tool) by Claude [nad-lan main session] 15.1
 RELEASE LOCK 1.72.449 (HAD-527 turn 4: warranty tool) by Claude [nad-lan main session] 15.10.2026 ~02:05 Israel.
 
 RELEASE DONE 1.72.449 (HAD-527 warranty tool) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.450 (HAD-527/HAD-533 Instruments phone fixes: answer bidi, wrapping cells, warranty table) by Claude [nad-lan main session] 14.10.2026 ~23:40 Israel.
+
+RELEASE DONE 1.72.450 (HAD-527/HAD-533 Instruments phone fixes) by Claude [nad-lan main session] 14.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.451 (HAD-533 table cells wrap on phones) by Claude [nad-lan main session] 14.10.2026 ~23:50 Israel.
+
+RELEASE DONE 1.72.451 (HAD-533 table cells wrap) by Claude [nad-lan main session] 14.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.452 (HAD-533 Instruments cells on phones + warranty status cell) by Claude [nad-lan main session] 15.10.2026 ~00:05 Israel.
+
+RELEASE DONE 1.72.452 (HAD-533 Instruments cells on phones) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.

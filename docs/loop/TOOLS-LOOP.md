@@ -40,7 +40,15 @@ Weekly usage was 58% on 14.10 with the reset on 19.10 01:00. Pace: at most one t
 only for research. At 80% weekly: stop building, report, wait for the reset (leads and live faults only).
 
 ## State (newest first)
-- 15.10 ~02:30: TURN 4 DONE (HAD-533). LIVE 1.72.449: tool "warranty" (Sale Law bdek + warranty clock: 10 schedule items,
+- 15.10 ~00:15: TURN 4 POLISH, LIVE 1.72.450-452 (HAD-533), found by looking at the live phone shot: (1) the answer figure was
+  direction:ltr, so "1 מתוך 10" read backwards; now unicode-bidi:plaintext on .nli__fig / scenario / strip figures; (2) two theme
+  rules with !important (inline nl-premium-ui <=600px: td padding 8px 0 + width 100%; skin-a font) stripped every Instruments
+  cell on phones, and our own forced-table rule set nowrap; now core.css owns padding, fonts and borders with !important and text
+  cells wrap; (3) engine option table.phoneHide (columns a phone does not need); the warranty status cell carries its end date and
+  phones show two columns. Presses: docs/tools/press_warranty.py (phone + desktop, 0 errors, table 292/292). FOLLOW-UP for the next
+  turn: indexation schedule now scrolls 482 in 306 and delay 323 in 306 on phones -> give both a phoneHide or a folded cell.
+- 14.10 ~23:30 (machine clock; the "15.10" labels on the turn 2-4 lines below and on the 449 lock line were wrong, all of it
+  happened on the evening of 14.10): TURN 4 DONE (HAD-533). LIVE 1.72.449: tool "warranty" (Sale Law bdek + warranty clock: 10 schedule items,
   bdek end, warranty end = bdek + 3 years, 20 years structural, 1-year notice for defects visible at handover) on the EXISTING
   page 4474 /real-estate-lawyer/construction-defects-lawsuit/ after its first paragraph (place_tools.py 4474=warranty, all
   checks OK). Presses phone + desktop: 7/10 -> 1/10 after the handover date moved to 2020-01-10, 11 table rows, 0 errors.
