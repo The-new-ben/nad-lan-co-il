@@ -4278,3 +4278,7 @@ RELEASE DONE 1.72.447 (HAD-527 CPI tool) by Claude [nad-lan main session] 14.10.
 RELEASE LOCK 1.72.448 (HAD-527 turn 3: prime tool) by Claude [nad-lan main session] 15.10.2026 ~00:40 Israel.
 
 RELEASE DONE 1.72.448 (HAD-527 prime tool) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.449 (HAD-527 turn 4: warranty tool) by Claude [nad-lan main session] 15.10.2026 ~02:05 Israel.
+
+RELEASE DONE 1.72.449 (HAD-527 warranty tool) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.

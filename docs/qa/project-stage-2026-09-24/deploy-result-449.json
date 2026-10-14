@@ -1,0 +1,18 @@
+{
+  "released": "1.72.449",
+  "from": "1.72.448",
+  "live_before": {
+    "inc/instruments.php": "1709abe1f471db7a948c322a60c08947",
+    "nadlan-config.php": "5ee06e1a47ceea5c26ef0cbc03cf44d6"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-14 23:30:12",
+  "files": {
+    "inc/instruments.php": "8e323c3c92836c0f00107aeae404e392",
+    "assets/instruments/tools/warranty.js": "4969632947328f8a92d7e76b06b60dae",
+    "nadlan-config.php": "fd59e2ecc676fa6ee3f9aa1c252b2ab1"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.449, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

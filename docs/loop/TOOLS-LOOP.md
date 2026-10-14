@@ -40,6 +40,21 @@ Weekly usage was 58% on 14.10 with the reset on 19.10 01:00. Pace: at most one t
 only for research. At 80% weekly: stop building, report, wait for the reset (leads and live faults only).
 
 ## State (newest first)
+- 15.10 ~02:30: TURN 4 DONE (HAD-533). LIVE 1.72.449: tool "warranty" (Sale Law bdek + warranty clock: 10 schedule items,
+  bdek end, warranty end = bdek + 3 years, 20 years structural, 1-year notice for defects visible at handover) on the EXISTING
+  page 4474 /real-estate-lawyer/construction-defects-lawsuit/ after its first paragraph (place_tools.py 4474=warranty, all
+  checks OK). Presses phone + desktop: 7/10 -> 1/10 after the handover date moved to 2020-01-10, 11 table rows, 0 errors.
+  Facts docs/tools/warranty/facts.md (from the law text). 5 tools live. NEXT, in order: (a) after 15.10 18:30 the September
+  CPI: build_index_data.py + build_boi_data.py, release 450, rebuild docs/tools/cpi/page.html and update page 8403; (b) inbound
+  links into the tools from /new-projects/, the glossary, the rent pages and /home-inspection/; (c) next catalogue tool (Tabu
+  fees / cost of professionals / CPI-linked repayment schedule); (d) verify the next BoI decision date on boi.org.il.
+- 15.10 ~01:40: TURN 4 STARTED: warranty clock (שעון האחריות). Law facts extracted to docs/tools/warranty/facts.md (schedule of
+  10 bdek periods 1-7 years, structural 20 years, warranty 3 years after bdek, notice rules s.4א). NEXT STEPS: url_word_audit
+  (warranty, bedek, defects) and the existing defects/bedek pages (e.g. /real-estate-lawyer/construction-defects-lawsuit/) to
+  decide upgrade vs new page; tool 'warranty' (input delivery date -> per item: bdek end, warranty end, days left, status
+  colour; notice deadline for visible defects = delivery + 1 year); release 449; place; presses; document.
+  DECIDED: no URL owns 'warranty'; place the tool on the EXISTING /real-estate-lawyer/construction-defects-lawsuit/ (owns 'bedek'
+  intent) after its first paragraph, and add /home-inspection/ to the tool's related links (no new page, no cannibalisation).
 - 15.10 ~00:55: TURN 3 DONE (HAD-531). LIVE 1.72.448: tool "prime" on the EXISTING page 514
   /mortgage-calculator/mortgage-interest-rates/ (BoI official SDMX series MNT_RIB_BOI_D via tools/instruments/build_boi_data.py
   -> data/boi-rate.json: 3.25%, prime 4.75%, effective 3.9.2026); related links woven between all four tools. Runner pattern:

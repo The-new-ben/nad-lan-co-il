@@ -33,6 +33,12 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array( 'cbs-120010.json' ),
 				'related' => array( '/new-projects/construction-input-index/' => 'הצמדה למדד תשומות הבנייה', '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית בנק ישראל והפריים', '/mortgage-calculator/' => 'מחשבון משכנתא', '/apartment-prices/' => 'מחירון הדירות לפי עיר', '/new-projects/contractor-delay-compensation/' => 'פיצוי על איחור במסירה' ),
 			),
+			'warranty' => array(
+				'name' => 'שעון הבדק והאחריות של חוק המכר', 'cat' => 'UtilitiesApplication',
+				'desc' => 'מתאריך מסירת הדירה: לכל סוג ליקוי לפי התוספת לחוק המכר, מתי נגמרות תקופת הבדק ותקופת האחריות, וכמה ימים נשארו.',
+				'data' => array(),
+				'related' => array( '/home-inspection/' => 'בדק בית', '/new-projects/contractor-delay-compensation/' => 'פיצוי על איחור במסירה', '/new-projects/construction-input-index/' => 'הצמדה למדד תשומות הבנייה', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן' ),
+			),
 			'prime' => array(
 				'name' => 'מחשבון ריבית הפריים וההחזר החודשי', 'cat' => 'FinanceApplication',
 				'desc' => 'מראה את ריבית בנק ישראל והפריים היום, את ההחזר החודשי במסלול הפריים, וכמה הוא משתנה בכל שינוי של רבע אחוז בריבית.',
@@ -110,6 +116,9 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 			$c = $b['changes']; $l = end( $c );
 			return '<p>ריבית בנק ישראל: ' . esc_html( number_format( (float) $b['rate'], 2 ) ) . '%. ריבית הפריים: ' . esc_html( number_format( (float) $b['prime'], 2 ) ) . '% (ריבית בנק ישראל ועוד 1.5%). בתוקף מ־'
 				. esc_html( date_i18n( 'j.n.Y', strtotime( $l['from'] ) ) ) . ', לפי בנק ישראל, נכון ל־' . esc_html( date_i18n( 'j.n.Y', strtotime( $b['asof'] ) ) ) . '.</p>';
+		}
+		if ( 'warranty' === $id ) {
+			return '<p>לפי חוק המכר (דירות): תקופת הבדק מתחילה ביום מסירת הדירה ונמשכת בין שנה ל־7 שנים לפי סוג הליקוי (צנרת ואיטום 4 שנים, סדקים מעל 1.5 מ״מ 5 שנים, חיפויי חוץ 7 שנים), ואחריה 3 שנות אחריות. ליקוי יסודי בנשיאת המבנה: 20 שנה. ליקוי שנראה כבר במסירה: מודיעים לקבלן תוך שנה.</p>';
 		}
 		if ( 'delay' === $id ) {
 			return '<p>פיצוי על איחור במסירה לפי סעיף 5א לחוק המכר (דירות): בחוזה מ־7.7.2022, אחרי חודש חסד, דמי שכירות של דירה דומה בחודשים 2 עד 4, דמי שכירות כפול 1.25 בחודשים 5 עד 10, וכפול 1.5 מהחודש ה־11. בחוזה עד 6.7.2022, כשהאיחור עובר 60 ימים, דמי שכירות כפול 1.5 מהמועד שבחוזה ועד סוף החודש השמיני, ומהחודש התשיעי כפול 1.25.</p>';
