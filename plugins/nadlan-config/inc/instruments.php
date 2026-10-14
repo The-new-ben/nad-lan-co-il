@@ -1,0 +1,120 @@
+<?php
+/**
+ * NadLan Instruments (HAD-527, Ben 14.10.2026): the engine of the tools program. A page holds [nadlan_tool id="…"]; this
+ * module loads the engine (assets/instruments/core.css + core.js), the tool's own logic (assets/instruments/tools/<id>.js) and
+ * its official data (assets/instruments/data/*.json, built by tools/instruments/build_index_data.py), only on pages that use a
+ * tool, with the fonts of the design system "NadLan Instruments" (https://claude.ai/artifact/ATybPAavyDEkAzH7cdg1bB:
+ * Karantina, IBM Plex Sans Hebrew, IBM Plex Mono). Before the script runs, the shortcode prints a plain summary with the real
+ * numbers (for search engines and AI answers); the script replaces it with the live instrument. Every tool also prints its
+ * related tools (the organ: tools link each other and the guides), and the page gets SoftwareApplication JSON-LD.
+ */
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
+if ( ! function_exists( 'nadlan_nli_tools' ) ) {
+
+	/** The registry: id => name, description, data files, related links (path => label). */
+	function nadlan_nli_tools() {
+		return apply_filters( 'nadlan_nli_tools', array(
+			'indexation' => array(
+				'name' => 'מחשבון הצמדה למדד תשומות הבנייה', 'cat' => 'FinanceApplication',
+				'desc' => 'מחשב את תוספת ההצמדה של דירה מקבלן לפי לוח התשלומים, כללי חוק המכר (תיקון 9) והמדד הרשמי של הלשכה המרכזית לסטטיסטיקה.',
+				'data' => array( 'cbs-200010.json' ),
+				'related' => array( '/new-projects/contractor-delay-compensation/' => 'פיצוי על איחור במסירה', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/mortgage-calculator/' => 'מחשבון משכנתא', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/apartment-prices/' => 'מחירון הדירות לפי עיר' ),
+			),
+			'delay' => array(
+				'name' => 'מחשבון פיצוי על איחור במסירת דירה', 'cat' => 'FinanceApplication',
+				'desc' => 'מחשב את הפיצוי לפי סעיף 5א לחוק המכר (דירות), חודש אחרי חודש, לפי מועד החתימה, מועד המסירה בחוזה ודמי השכירות באזור.',
+				'data' => array(),
+				'related' => array( '/new-projects/construction-input-index/' => 'הצמדה למדד תשומות הבנייה', '/apartment-prices/' => 'מחירון הדירות לפי עיר', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/mortgage-calculator/' => 'מחשבון משכנתא' ),
+			),
+		) );
+	}
+
+	function nadlan_nli_url( $rel ) { return plugins_url( 'assets/instruments/' . $rel, dirname( __DIR__ ) . '/nadlan-config.php' ); } // the plugin root, not inc/
+	function nadlan_nli_ver() { return defined( 'NADLAN_CONFIG_VERSION' ) ? NADLAN_CONFIG_VERSION : '1'; }
+
+	/** The ids of the tools in a post's content. */
+	function nadlan_nli_ids_in( $content ) {
+		if ( false === strpos( (string) $content, '[nadlan_tool' ) ) { return array(); }
+		preg_match_all( '/\[nadlan_tool\s+id="([a-z0-9-]+)"/', $content, $m );
+		return array_values( array_intersect( array_unique( $m[1] ), array_keys( nadlan_nli_tools() ) ) );
+	}
+
+	function nadlan_nli_page_ids() {
+		static $ids = null;
+		if ( null !== $ids ) { return $ids; }
+		$ids = array();
+		if ( is_singular() ) { $p = get_post(); if ( $p ) { $ids = nadlan_nli_ids_in( $p->post_content ); } }
+		return $ids;
+	}
+
+	/** One official series as data for the summary. */
+	function nadlan_nli_series( $file ) {
+		$path = dirname( __DIR__ ) . '/assets/instruments/data/' . $file;
+		if ( ! is_readable( $path ) ) { return null; }
+		$d = json_decode( (string) file_get_contents( $path ), true );
+		return is_array( $d ) && ! empty( $d['months'] ) ? $d : null;
+	}
+
+	add_action( 'wp_enqueue_scripts', function () {
+		$ids = nadlan_nli_page_ids();
+		if ( ! $ids ) { return; }
+		$v = nadlan_nli_ver();
+		wp_enqueue_style( 'nadlan-nli-fonts', 'https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap', array(), null );
+		wp_enqueue_style( 'nadlan-nli', nadlan_nli_url( 'core.css' ), array(), $v );
+		wp_enqueue_script( 'nadlan-nli', nadlan_nli_url( 'core.js' ), array(), $v, true );
+		foreach ( $ids as $id ) { wp_enqueue_script( 'nadlan-nli-' . $id, nadlan_nli_url( 'tools/' . $id . '.js' ), array( 'nadlan-nli' ), $v, true ); }
+	}, 20 );
+
+	add_filter( 'script_loader_tag', function ( $tag, $handle ) {
+		return 0 === strpos( $handle, 'nadlan-nli' ) && false === strpos( $tag, ' defer' ) ? str_replace( ' src=', ' defer src=', $tag ) : $tag;
+	}, 10, 2 );
+
+	/** The summary printed before the script runs: the real numbers, for readers without JS, search engines and AI. */
+	function nadlan_nli_summary( $id ) {
+		if ( 'indexation' === $id ) {
+			$d = nadlan_nli_series( 'cbs-200010.json' );
+			if ( ! $d ) { return ''; }
+			$ks = array_keys( $d['months'] ); $l = end( $ks ); $p = $ks[ count( $ks ) - 2 ];
+			$y = ( (int) substr( $l, 0, 4 ) - 1 ) . substr( $l, 4 );
+			$m1 = $d['months'][ $l ] / $d['months'][ $p ] - 1; $m12 = isset( $d['months'][ $y ] ) ? $d['months'][ $l ] / $d['months'][ $y ] - 1 : null;
+			$lm = (int) substr( $l, 5 ) . '.' . substr( $l, 0, 4 );
+			return '<p>מדד מחירי תשומה בבנייה למגורים, הנתון האחרון שפרסמה הלשכה המרכזית לסטטיסטיקה: ' . esc_html( $lm ) . '. שינוי בחודש: ' . esc_html( number_format( $m1 * 100, 1 ) ) . '%'
+				. ( null !== $m12 ? '. שינוי ב־12 חודשים: ' . esc_html( number_format( $m12 * 100, 1 ) ) . '%' : '' ) . '. בחוזה מ־7.7.2022: 20% מהמחיר המשולמים בחתימה אינם צמודים, ומכל תשלום אחר מותר להצמיד עד מחצית, ורק עד מועד המסירה שבחוזה.</p>';
+		}
+		if ( 'delay' === $id ) {
+			return '<p>פיצוי על איחור במסירה לפי סעיף 5א לחוק המכר (דירות): בחוזה מ־7.7.2022, אחרי חודש חסד, דמי שכירות של דירה דומה בחודשים 2 עד 4, דמי שכירות כפול 1.25 בחודשים 5 עד 10, וכפול 1.5 מהחודש ה־11. בחוזה עד 6.7.2022, כשהאיחור עובר 60 ימים, דמי שכירות כפול 1.5 מהמועד שבחוזה ועד סוף החודש השמיני, ומהחודש התשיעי כפול 1.25.</p>';
+		}
+		return '';
+	}
+
+	add_shortcode( 'nadlan_tool', function ( $atts ) {
+		$a = shortcode_atts( array( 'id' => '' ), $atts );
+		$tools = nadlan_nli_tools();
+		$id = sanitize_key( $a['id'] );
+		if ( ! isset( $tools[ $id ] ) ) { return ''; }
+		$t = $tools[ $id ];
+		$data = implode( ',', array_map( function ( $f ) { return esc_url( nadlan_nli_url( 'data/' . $f ) . '?ver=' . nadlan_nli_ver() ); }, $t['data'] ) );
+		$h = '<section class="nli" dir="rtl" lang="he" aria-label="' . esc_attr( $t['name'] ) . '"><div class="nli-host" data-nli="' . esc_attr( $id ) . '"' . ( $data ? ' data-nli-data="' . $data . '"' : '' ) . '>'
+			. '<div class="nli__panel"><p class="nli__kicker">מחשבון</p><h2 class="nli__title">' . esc_html( $t['name'] ) . '</h2>' . nadlan_nli_summary( $id ) . '</div></div>';
+		if ( ! empty( $t['related'] ) ) {
+			$h .= '<nav class="nli__rel" aria-label="כלים קשורים"><span>כלים קשורים:</span>';
+			foreach ( $t['related'] as $path => $label ) { $h .= ' <a href="' . esc_url( home_url( $path ) ) . '">' . esc_html( $label ) . '</a>'; }
+			$h .= '</nav>';
+		}
+		return $h . '</section>';
+	} );
+
+	add_action( 'wp_head', function () {
+		$ids = nadlan_nli_page_ids();
+		if ( ! $ids ) { return; }
+		$tools = nadlan_nli_tools(); $out = array();
+		foreach ( $ids as $id ) {
+			$t = $tools[ $id ];
+			$out[] = array( '@type' => 'SoftwareApplication', 'name' => $t['name'], 'description' => $t['desc'], 'applicationCategory' => $t['cat'], 'operatingSystem' => 'Any',
+				'inLanguage' => 'he', 'url' => get_permalink(), 'isAccessibleForFree' => true, 'offers' => array( '@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'ILS' ),
+				'publisher' => array( '@type' => 'Organization', 'name' => 'nad-lan.co.il', 'url' => home_url( '/' ) ) );
+		}
+		echo '<script type="application/ld+json" id="nadlan-nli-ld">' . wp_json_encode( array( '@context' => 'https://schema.org', '@graph' => $out ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
+	}, 30 );
+}
