@@ -19,19 +19,25 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'name' => 'מחשבון הצמדה למדד תשומות הבנייה', 'cat' => 'FinanceApplication',
 				'desc' => 'מחשב את תוספת ההצמדה של דירה מקבלן לפי לוח התשלומים, כללי חוק המכר (תיקון 9) והמדד הרשמי של הלשכה המרכזית לסטטיסטיקה.',
 				'data' => array( 'cbs-200010.json' ),
-				'related' => array( '/new-projects/contractor-delay-compensation/' => 'פיצוי על איחור במסירה', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/mortgage-calculator/' => 'מחשבון משכנתא', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/apartment-prices/' => 'מחירון הדירות לפי עיר' ),
+				'related' => array( '/new-projects/contractor-delay-compensation/' => 'פיצוי על איחור במסירה', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/mortgage-calculator/' => 'מחשבון משכנתא', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/apartment-prices/' => 'מחירון הדירות לפי עיר' ),
 			),
 			'delay' => array(
 				'name' => 'מחשבון פיצוי על איחור במסירת דירה', 'cat' => 'FinanceApplication',
 				'desc' => 'מחשב את הפיצוי לפי סעיף 5א לחוק המכר (דירות), חודש אחרי חודש, לפי מועד החתימה, מועד המסירה בחוזה ודמי השכירות באזור.',
 				'data' => array(),
-				'related' => array( '/new-projects/construction-input-index/' => 'הצמדה למדד תשומות הבנייה', '/apartment-prices/' => 'מחירון הדירות לפי עיר', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/mortgage-calculator/' => 'מחשבון משכנתא' ),
+				'related' => array( '/new-projects/construction-input-index/' => 'הצמדה למדד תשומות הבנייה', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן', '/apartment-prices/' => 'מחירון הדירות לפי עיר', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/mortgage-calculator/' => 'מחשבון משכנתא' ),
 			),
 			'cpi' => array(
 				'name' => 'מחשבון הצמדה למדד המחירים לצרכן', 'cat' => 'FinanceApplication',
 				'desc' => 'מצמיד סכום, שכר דירה או חוב למדד המחירים לצרכן של הלשכה המרכזית לסטטיסטיקה, לפי המדד הידוע או המדד בגין, עם ריבית לפי הצורך.',
 				'data' => array( 'cbs-120010.json' ),
-				'related' => array( '/new-projects/construction-input-index/' => 'הצמדה למדד תשומות הבנייה', '/mortgage-calculator/' => 'מחשבון משכנתא', '/apartment-prices/' => 'מחירון הדירות לפי עיר', '/new-projects/contractor-delay-compensation/' => 'פיצוי על איחור במסירה' ),
+				'related' => array( '/new-projects/construction-input-index/' => 'הצמדה למדד תשומות הבנייה', '/mortgage-calculator/mortgage-interest-rates/' => 'ריבית בנק ישראל והפריים', '/mortgage-calculator/' => 'מחשבון משכנתא', '/apartment-prices/' => 'מחירון הדירות לפי עיר', '/new-projects/contractor-delay-compensation/' => 'פיצוי על איחור במסירה' ),
+			),
+			'prime' => array(
+				'name' => 'מחשבון ריבית הפריים וההחזר החודשי', 'cat' => 'FinanceApplication',
+				'desc' => 'מראה את ריבית בנק ישראל והפריים היום, את ההחזר החודשי במסלול הפריים, וכמה הוא משתנה בכל שינוי של רבע אחוז בריבית.',
+				'data' => array( 'boi-rate.json' ),
+				'related' => array( '/mortgage-calculator/' => 'מחשבון משכנתא', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן', '/apartment-purchase-cost-calculator/' => 'עלות רכישה כוללת', '/apartment-prices/' => 'מחירון הדירות לפי עיר' ),
 			),
 		) );
 	}
@@ -96,6 +102,14 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 			$m1 = $d['months'][ $l ] / $d['months'][ $p ] - 1; $m12 = isset( $d['months'][ $y ] ) ? $d['months'][ $l ] / $d['months'][ $y ] - 1 : null;
 			return '<p>מדד המחירים לצרכן, הנתון האחרון שפרסמה הלשכה המרכזית לסטטיסטיקה: ' . esc_html( (int) substr( $l, 5 ) . '.' . substr( $l, 0, 4 ) ) . ' (בסיס ' . esc_html( $d['base'] ) . '). שינוי בחודש: ' . esc_html( number_format( $m1 * 100, 1 ) ) . '%'
 				. ( null !== $m12 ? '. שינוי ב־12 חודשים: ' . esc_html( number_format( $m12 * 100, 1 ) ) . '%' : '' ) . '. המדד מתפרסם ב־15 בכל חודש, בשעה 18:30, עבור החודש הקודם.</p>';
+		}
+		if ( 'prime' === $id ) {
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/boi-rate.json';
+			$b = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $b ) || empty( $b['changes'] ) ) { return ''; }
+			$c = $b['changes']; $l = end( $c );
+			return '<p>ריבית בנק ישראל: ' . esc_html( number_format( (float) $b['rate'], 2 ) ) . '%. ריבית הפריים: ' . esc_html( number_format( (float) $b['prime'], 2 ) ) . '% (ריבית בנק ישראל ועוד 1.5%). בתוקף מ־'
+				. esc_html( date_i18n( 'j.n.Y', strtotime( $l['from'] ) ) ) . ', לפי בנק ישראל, נכון ל־' . esc_html( date_i18n( 'j.n.Y', strtotime( $b['asof'] ) ) ) . '.</p>';
 		}
 		if ( 'delay' === $id ) {
 			return '<p>פיצוי על איחור במסירה לפי סעיף 5א לחוק המכר (דירות): בחוזה מ־7.7.2022, אחרי חודש חסד, דמי שכירות של דירה דומה בחודשים 2 עד 4, דמי שכירות כפול 1.25 בחודשים 5 עד 10, וכפול 1.5 מהחודש ה־11. בחוזה עד 6.7.2022, כשהאיחור עובר 60 ימים, דמי שכירות כפול 1.5 מהמועד שבחוזה ועד סוף החודש השמיני, ומהחודש התשיעי כפול 1.25.</p>';

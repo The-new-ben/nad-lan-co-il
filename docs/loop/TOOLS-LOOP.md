@@ -40,6 +40,13 @@ Weekly usage was 58% on 14.10 with the reset on 19.10 01:00. Pace: at most one t
 only for research. At 80% weekly: stop building, report, wait for the reset (leads and live faults only).
 
 ## State (newest first)
+- 15.10 ~00:55: TURN 3 DONE (HAD-531). LIVE 1.72.448: tool "prime" on the EXISTING page 514
+  /mortgage-calculator/mortgage-interest-rates/ (BoI official SDMX series MNT_RIB_BOI_D via tools/instruments/build_boi_data.py
+  -> data/boi-rate.json: 3.25%, prime 4.75%, effective 3.9.2026); related links woven between all four tools. Runner pattern:
+  write make_deployNNN.py by hand from the last released deployNNN.py (never sed-derive a maker: it regenerated 447 by
+  mistake, restored from git). NEXT: (a) after 15.10 18:30 the September CPI: rebuild cbs JSON + boi JSON, release, rebuild
+  docs/tools/cpi/page.html and update page 8403; (b) next tool: warranty clock of the Sale Law (verify the periods on the
+  law's schedule first) or Tabu fees; (c) verify the next BoI decision date on boi.org.il before writing it anywhere.
 - 15.10 ~00:10: TURN 2 DONE (HAD-529). LIVE 1.72.447 + NEW PAGE https://nad-lan.co.il/cpi-calculator/ (page 8403, tool "cpi":
   sum by known/for index, CPI-linked rent with update rules and floor, interest + linkage). Data now aligned to the CBS
   calculator at every base boundary (build_index_data.py asks the CBS calculator with value 1,000,000): ₪120,573.65 vs CBS
