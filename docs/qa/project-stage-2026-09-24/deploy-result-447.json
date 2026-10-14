@@ -1,0 +1,26 @@
+{
+  "released": "1.72.447",
+  "from": "1.72.446",
+  "live_before": {
+    "inc/instruments.php": "c7df1123425b65cb468090456cf9a292",
+    "assets/instruments/core.css": "624698904dd021f79e7f795ad03d8c1b",
+    "assets/instruments/core.js": "37abd8003b759a05493f00e2dbc550f9",
+    "assets/instruments/data/cbs-200010.json": "e328440837ca0cb90fc58d3416ec4c8c",
+    "assets/instruments/data/cbs-120010.json": "b6e1f4fa9f28268bd3e683e9f3514007",
+    "nadlan-config.php": "76c8bd3b8a2742ae9085af261891cc1b"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-14 21:36:02",
+  "files": {
+    "inc/instruments.php": "60ac73ee61d6409de858f44e29923884",
+    "assets/instruments/core.css": "5949a8a75ceab87b854f3fde86506067",
+    "assets/instruments/core.js": "7334a764cfe5ca6d9e8c9e1076c42ffe",
+    "assets/instruments/tools/cpi.js": "43651e37e32a6624ea24b1a5a2e6bf06",
+    "assets/instruments/data/cbs-200010.json": "dafb2d43d7f44c156ac88ff278e2073a",
+    "assets/instruments/data/cbs-120010.json": "d72d8cae3061e64116872cd1c5c16d61",
+    "nadlan-config.php": "feb6cfe942a40dbd99833570488698a3"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.447, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

@@ -60,6 +60,24 @@ for sid, name in SERIES.items():
                 newest_base = old_base
         out[key] = round(r["currBase"]["value"] * factor, 4)
     months = dict(sorted(out.items()))
+    # align every base boundary to the CBS calculator's own chaining (its coefficient is rounded; ours came from averages)
+    ks = list(months)
+    bases = {f"{r['year']}-{r['month']:02d}": r["currBase"]["baseDesc"] for r in rows}
+    for i in range(1, len(ks)):
+        a, b = ks[i - 1], ks[i]
+        if bases[a] == bases[b]:
+            continue
+        def nxt(k):
+            y, m = int(k[:4]), int(k[5:]) + 1
+            return (y + (m > 12), (m - 1) % 12 + 1)
+        (ya, ma), (yb, mb) = nxt(a), nxt(b)
+        c = get(f"https://api.cbs.gov.il/index/data/calculator/{sid}?value=1000000&date={ma:02d}-20-{ya}&toDate={mb:02d}-20-{yb}&format=json&download=false")
+        r_cbs = float(c["answer"]["to_value"]) / 1000000
+        r_ours = months[b] / months[a]
+        f = r_ours / r_cbs
+        for k in ks[:i]:
+            months[k] = round(months[k] * f, 6)
+        print(f"   {sid} boundary {a}->{b}: ours {r_ours:.5f} cbs {r_cbs:.5f} scale {f:.6f}")
     last = list(months)[-1]
     # check two spans against the CBS linkage calculator
     checks = []

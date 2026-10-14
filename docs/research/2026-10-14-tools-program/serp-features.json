@@ -1,0 +1,1321 @@
+{
+ "מחשבון משכנתא": {
+  "types": [
+   "ai_overview",
+   "organic"
+  ],
+  "paa": [],
+  "aio": "אתה יכול לחשב את ההחזר החודשי ולתכנן תמהיל משכנתא באמצעות מחשבונים מקוונים של הבנקים והאתרים המובילים בישראל:\n\n- **[בנק הפועלים](https://www.bankhapoalim.co.il/mortgage/mortgage-calculator)** : מאפשר סימולציית עלויות ותמהילים לפי הנחיות בנק ישראל או סל מוצע.\n- **[בנק מזרחי-טפחות](https://www.mizrahi-tefahot.co.il/mortgages/calculator/)** : מספק סימולציה של סכום, החזר חודשי, ריבית ו-4 תמהילים שונים.\n- **לאומי למשכנתאות** : מציע חישוב סכום הלוואה, החזר חודשי לפי שפיצר/קרן שווה, ובדיקת השפעת מדד המחירים לצרכן.\n- **[משכנתאמן](https://mashcantaman.co.il/%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%9E%D",
+  "aio_refs": [
+   "https://www.bankhapoalim.co.il/mortgage/mortgage-calculator",
+   "https://www.mizrahi-tefahot.co.il/mortgages/calculator/",
+   "https://mashcantaman.co.il/%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%9E%D7%95%D7%A6%D7%9C%D7%A5-%D7%9C%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90/",
+   "https://mortgage.leumi.co.il/all-about-mortgage/category/calculator/mortgage-calculator",
+   "https://ufapi.bankleumi.co.il/mortgageCalculator/Calc",
+   "https://mashcantaman.co.il/%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90/"
+  ],
+  "related": [],
+  "top3": [
+   "https://barkursaal.it/travel/video/festival-hardware-kofisha-dolimi/",
+   "https://www.wayout.org.il/%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%A0%D7%99%D7%9D/",
+   "https://yesodotfinance.co.il/mortgagecalculator"
+  ]
+ },
+ "ריבית פריים": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "related_searches"
+  ],
+  "paa": [],
+  "aio": "ריבית הפריים בישראל עומדת נכון להיום על **4.75%** (ריבית בנק ישראל של 3.25% בתוספת מרווח קבוע של 1.5%).[[1]](https://www.boi.org.il/)[[2]](https://www.supermarker.themarker.com/Mortgage/PrimeInterestEffectsOnLoansAndMortgages.aspx)\n\n### נתונים מרכזיים\n\n- **ריבית בנק ישראל:** 3.25%\n- **מרווח הבנקים:** 1.5%\n- **ריבית הפריים:** 4.75%\n- **הצמדה:** אינה צמודה למדד המחירים לצרכן.[[1]](https://www.supermarker.themarker.com/Mortgage/PrimeInterestEffectsOnLoansAndMortgages.aspx)[[2]](https://www.boi.org.il/)\n\n### מה זה ריבית פריים?\n\n- ריבית בסיס שנקבעת על ידי הבנקים המסחריים בהתבסס על ריבית בנק ישראל ב",
+  "aio_refs": [
+   "https://www.boi.org.il/",
+   "https://www.supermarker.themarker.com/Mortgage/PrimeInterestEffectsOnLoansAndMortgages.aspx",
+   "https://he.wikipedia.org/wiki/%D7%A8%D7%99%D7%91%D7%99%D7%AA_%D7%A4%D7%A8%D7%99%D7%99%D7%9D",
+   "https://www.bankjerusalem.co.il/deposits-savings/prime/",
+   "https://www.bankhapoalim.co.il/interest-update",
+   "https://www.cal-online.co.il/ecredit/financial-terms/prime-rate/",
+   "https://www.boi.org.il/information/interestrates/primerates/"
+  ],
+  "related": [
+   "ריבית פריים בנק ישראל",
+   "ריבית פריים היום",
+   "ריבית פריים היסטוריה",
+   "ריבית פריים 2026",
+   "ריבית פריים גרף",
+   "תחזית ריבית פריים",
+   "ריבית בנק ישראל טבלה",
+   "טבלת ריבית פריים"
+  ],
+  "top3": [
+   "https://www.boi.org.il/",
+   "https://www.bankhapoalim.co.il/interest-update",
+   "https://www.supermarker.themarker.com/Mortgage/PrimeInterestEffectsOnLoansAndMortgages.aspx"
+  ]
+ },
+ "מדד המחירים לצרכן": {
+  "types": [
+   "top_stories",
+   "organic",
+   "people_also_ask",
+   "related_searches",
+   "knowledge_graph"
+  ],
+  "paa": [
+   "מהו מדד המחירים לצרכן למס?",
+   "האם מדד המחירים לצרכן עלה?",
+   "איך מחשבים הצמדה למדד?",
+   "מהו מדד המחירים לצרכן היום?"
+  ],
+  "aio": null,
+  "aio_refs": [],
+  "related": [
+   "מחשבון מדד המחירים לצרכן",
+   "מדד המחירים לצרכן בנק ישראל",
+   "מדד המחירים לצרכן לפי חודשים",
+   "הלשכה המרכזית לסטטיסטיקה מדד המחירים לצרכן",
+   "טבלת מדד המחירים לצרכן",
+   "מדד המחירים לצרכן שנתי",
+   "מדד המחירים לצרכן יוני 2026",
+   "מדד המחירים לצרכן מרץ 2026"
+  ],
+  "top3": [
+   "https://www.cbs.gov.il/he/subjects/Pages/%D7%9E%D7%93%D7%93-%D7%94%D7%9E%D7%97%D7%99%D7%A8%D7%99%D7%9D-%D7%9C%D7%A6%D7%A8%D7%9B%D7%9F.aspx",
+   "https://www.dekel.co.il/%D7%9E%D7%93%D7%93-%D7%94%D7%9E%D7%97%D7%99%D7%A8%D7%99%D7%9D-%D7%9C%D7%A6%D7%A8%D7%9B%D7%9F",
+   "https://www.leumi.co.il/he/economic-info/indices"
+  ]
+ },
+ "מדד תשומות הבנייה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "related_searches"
+  ],
+  "paa": [],
+  "aio": "מדד תשומות הבנייה למגורים עמד בחודש **אוגוסט 2026** על **144.11 נקודות** (ללא שינוי לעומת יולי 2026, שינוי של 0.0%).[[1]](https://www.bankleumi.co.il/Rates/Indices/Default.aspx?type=2&biz=1)[[2]](https://www.supermarker.themarker.com/Mortgage/ConstructionPriceIndex.aspx)\n\n### נתוני המדד בשנה האחרונה (2026)\n\n- **אוגוסט 2026:** 144.11 נקודות (0.0% / עלייה של 3.5% ב-12 החודשים האחרונים)\n- **יולי 2026:** 143.55 נקודות (-0.1%)\n- **יוני 2026:** 143.69 נקודות (0.2%)\n- **מאי 2026:** 143.42 נקודות (0.6%)\n- **אפריל 2026:** 142.58 נקודות (1.1%)\n- **מרץ 2026:** 141.06 נקודות (0.2%)\n- **פברואר 2026:** 140.",
+  "aio_refs": [
+   "https://www.bankleumi.co.il/Rates/Indices/Default.aspx?type=2&biz=1",
+   "https://www.supermarker.themarker.com/Mortgage/ConstructionPriceIndex.aspx",
+   "https://mashcantaman.co.il/%D7%9E%D7%93%D7%93-%D7%AA%D7%A9%D7%95%D7%9E%D7%95%D7%AA-%D7%94%D7%91%D7%A0%D7%99%D7%94/",
+   "https://www.dekel.co.il/%D7%9E%D7%93%D7%93-%D7%9E%D7%97%D7%99%D7%A8%D7%99-%D7%AA%D7%A9%D7%95%D7%9E%D7%94-%D7%91%D7%91%D7%A0%D7%99%D7%99%D7%94-%D7%9C%D7%9E%D7%92%D7%95%D7%A8%D7%99%D7%9D",
+   "https://he.wikipedia.org/wiki/%D7%9E%D7%93%D7%93_%D7%AA%D7%A9%D7%95%D7%9E%D7%95%D7%AA_%D7%94%D7%91%D7%A0%D7%99%D7%99%D7%94",
+   "https://www.hon.co.il/%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%9E%D7%93%D7%93-%D7%AA%D7%A9%D7%95%D7%9E%D7%95%D7%AA-%D7%94%D7%91%D7%A0%D7%99%D7%99%D7%94/"
+  ],
+  "related": [
+   "מחשבון מדד תשומות הבניה",
+   "הלשכה המרכזית לסטטיסטיקה מדד תשומות הבניה",
+   "פרסום מדד תשומות הבניה",
+   "מדד תשומות הבניה 2026",
+   "טבלת מדד תשומות הבניה",
+   "מדד תשומות הבניה 5 שנים",
+   "מדד תשומות הבנייה גרף",
+   "מדד תשומות הבנייה מרץ 2026"
+  ],
+  "top3": [
+   "https://www.dekel.co.il/%D7%9E%D7%93%D7%93-%D7%9E%D7%97%D7%99%D7%A8%D7%99-%D7%AA%D7%A9%D7%95%D7%9E%D7%94-%D7%91%D7%91%D7%A0%D7%99%D7%99%D7%94-%D7%9C%D7%9E%D7%92%D7%95%D7%A8%D7%99%D7%9D",
+   "https://mashcantaman.co.il/%D7%9E%D7%93%D7%93-%D7%AA%D7%A9%D7%95%D7%9E%D7%95%D7%AA-%D7%94%D7%91%D7%A0%D7%99%D7%94/",
+   "https://www.cbs.gov.il/he/subjects/Pages/%D7%9E%D7%93%D7%93-%D7%9E%D7%97%D7%99%D7%A8%D7%99-%D7%AA%D7%A9%D7%95%D7%9E%D7%94-%D7%91%D7%91%D7%A0%D7%99%D7%99%D7%94-%D7%9C%D7%9E%D7%92%D7%95%D7%A8%D7%99%D7%9D.aspx"
+  ]
+ },
+ "דירה בהנחה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_ask",
+   "images",
+   "related_searches"
+  ],
+  "paa": [
+   "מתי יתקיימו הגרלות דירה בהנחה בשנת 2026?",
+   "מי זכאי לדירה בהנחה?",
+   "איפה אני יכול למצוא את תוצאות הגרלת \"דירה בהנחה\"?",
+   "איך להירשם דירה בהנחה?"
+  ],
+  "aio": "להרשמה ובדיקת זכאות לתוכניות \"דירה בהנחה\" `של משרד הבינוי והשיכון ורשות מקרקעי ישראל` , ניתן להיכנס לאתר הרשמי [דירה בהנחה](https://dira.moch.gov.il/).[[1]](https://dira.moch.gov.il/)\n\n### פרטים מרכזיים על התוכנית:\n\n- **התוכניות הכלולות:** מחיר מטרה, מחיר מופחת, מחיר למשתכן ודירה להשכיר.\n- **עלות הנפקת אישור זכאות:** 200 ש\"ח (טיפול של עד 10 ימי עבודה).\n- **תנאי זכאות עיקריים:** חסרי דירה (שלא היו בעלי דירה ב-3 השנים האחרונות) או משפרי דיור בהתאם לכללים, ובעלי אישור זכאות בתוקף.\n- **עדיפות למשרתים:** הקצאה של עד 50% מהדירות בהגרלות למשרתי מילואים פעילים (מתוכם כסדר גודל של 25% ללוחמים).\n- **הנפ",
+  "aio_refs": [
+   "https://dira.moch.gov.il/",
+   "https://www.gov.il/he/departments/topics/dira",
+   "https://www.gov.il/he/service/request_for_eligibility_confirmation",
+   "https://alonim.co.il/%D7%93%D7%99%D7%A8%D7%94-%D7%91%D7%94%D7%A0%D7%97%D7%94/",
+   "https://www.facebook.com/M.Lamishtaken/",
+   "https://www.gov.il/he/service/register_for_discounted_housing_lottery"
+  ],
+  "related": [
+   "דירה בהנחה 2026",
+   "דירה בהנחה הגרלות",
+   "דירה בהנחה זכאות",
+   "דירה בהנחה אזור אישי",
+   "דירה בהנחה הרשמה",
+   "מתי ההגרלה של דירה בהנחה",
+   "דירה בהנחה טלפון",
+   "דירה בהנחה 2026 תוצאות"
+  ],
+  "top3": [
+   "https://dira.moch.gov.il/",
+   "https://www.gov.il/he/departments/topics/dira",
+   "https://www.facebook.com/M.Lamishtaken/?locale=he_IL"
+  ]
+ },
+ "מחיר למשתכן": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "related_searches",
+   "knowledge_graph"
+  ],
+  "paa": [],
+  "aio": "**\"דירה בהנחה\" (מחיר למשתכן ומסלולים נלווים)** היא `תוכנית הדגל של משרד הבינוי והשיכון ורשות מקרקעי ישראל שנועדה לסייע לחסרי דירה ומשפרי דיור לרכוש` דירה ראשונה בתנאים מועדפים.[[1]](https://www.gov.il/he/departments/topics/dira)[[2]](https://he.wikipedia.org/wiki/%D7%9E%D7%97%D7%99%D7%A8_%D7%9C%D7%9E%D7%A9%D7%AA%D7%9B%D7%9F)\n\n### המסלולים המרכזיים בתוכנית\n\n- **מחיר למשתכן** \n- **מחיר מופחת** \n- **מחיר מטרה** \n- **דירה להשכיר** (דיור בשכירות ארוכת טווח)[[1]](https://www.gov.il/he/departments/topics/dira)\n\n\n\n---\n\n### תנאי זכאות עיקריים\n\n- **חסרי דירה:** מי שלא הייתה בבעלותם דירה (או חלק העולה על",
+  "aio_refs": [
+   "https://www.gov.il/he/departments/topics/dira",
+   "https://he.wikipedia.org/wiki/%D7%9E%D7%97%D7%99%D7%A8_%D7%9C%D7%9E%D7%A9%D7%AA%D7%9B%D7%9F",
+   "https://www.gov.il/he/service/register_for_discounted_housing_lottery",
+   "https://shikun.milgam.co.il/",
+   "https://www.mizrahi-tefahot.co.il/mortgages/magazine/mishtaken/",
+   "https://www.gov.il/he/service/request_for_eligibility_confirmation",
+   "https://www.facebook.com/price.lamishtaken/",
+   "https://www.calcalist.co.il/real-estate/article/r1qu3phjfg"
+  ],
+  "related": [
+   "אישור זכאות מחיר למשתכן",
+   "מעוף מחיר למשתכן",
+   "אלונים מחיר למשתכן טלפון",
+   "מילגם מחיר למשתכן",
+   "הרשמה לזכאות מחיר למשתכן",
+   "אישור זכאות מחיר למשתכן אלונים",
+   "חידוש זכאות מחיר למשתכן מעוף",
+   "מתי נפתחות הגרלות מחיר למשתכן 2026"
+  ],
+  "top3": [
+   "https://alonim.co.il/%D7%93%D7%99%D7%A8%D7%94-%D7%91%D7%94%D7%A0%D7%97%D7%94/",
+   "https://dira.moch.gov.il/scripts/app/partials/shared/header.html",
+   "https://www.shikun-maof.co.il/online/"
+  ]
+ },
+ "נסח טאבו": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "images",
+   "people_also_search",
+   "related_searches"
+  ],
+  "paa": [],
+  "aio": "נסח טאבו הוא `מסמך משפטי רשמי המהווה את \"תעודת הזהות\" של נכס מקרקעין בישראל, ומשקף את מצב הזכויות הרשום עליו מפנקסי המקרקעין`.[[1]](https://doar.israelpost.co.il/content/tabu-service)[[2]](https://rafilaw.co.il/%D7%A0%D7%A1%D7%97-%D7%98%D7%90%D7%91%D7%95/)\n\n### מה כולל נסח הטאבו?\n\n- **פרטי זיהוי הנכס:** מספר גוש, חלקה, ותת-חלקה (בבית משותף).\n- **פרטי הבעלים:** שמות הבעלים או החוכרים הרשומים וחלקם היחסי בזכויות.\n- **נתונים פיזיים:** שטח הנכס והצמדות שונות (כמו חניה או מחסן).\n- **הגבלות ושעבודים:** משכנתאות, עיקולים, הערות אזהרה וזכויות צד ג'.[[1]](https://www.gov.il/he/service/land_registration",
+  "aio_refs": [
+   "https://doar.israelpost.co.il/content/tabu-service",
+   "https://rafilaw.co.il/%D7%A0%D7%A1%D7%97-%D7%98%D7%90%D7%91%D7%95/",
+   "https://www.gov.il/he/service/land_registration_extract",
+   "https://www.amitvered.co.il/%D7%A0%D7%A1%D7%97-%D7%98%D7%90%D7%91%D7%95/",
+   "https://weller-law-office.com/%D7%90%D7%99%D7%9A-%D7%A0%D7%A8%D7%90%D7%94-%D7%A0%D7%A1%D7%97-%D7%98%D7%90%D7%91%D7%95/",
+   "https://home.tabu.co.il/%D7%93%D7%A4%D7%99-%D7%9E%D7%95%D7%A6%D7%A8/%D7%A0%D7%A1%D7%97-%D7%98%D7%90%D7%91%D7%95-%D7%9C%D7%A4%D7%99-%D7%9B%D7%AA%D7%95%D7%91%D7%AA.aspx",
+   "https://home.tabu.co.il/%D7%93%D7%A4%D7%99-%D7%9E%D7%95%D7%A6%D7%A8/%D7%A0%D7%A1%D7%97-%D7%98%D7%90%D7%91%D7%95.aspx",
+   "https://mekarkein-online.justice.gov.il/voucher/main"
+  ],
+  "related": [
+   "נסח טאבו חינם לפי תעודת זהות",
+   "הפקת נסח טאבו",
+   "נסח טאבו gov",
+   "נסח טאבו חינם 15 שקלים",
+   "נסח טאבו רגיל",
+   "נסח טאבו לפי כתובת חינם",
+   "איתור נסח טאבו לפי כתובת",
+   "מה זה נסח טאבו מרוכז"
+  ],
+  "top3": [
+   "https://mazekal.co.il/%D7%A0%D7%A1%D7%97-%D7%98%D7%90%D7%91%D7%95/",
+   "https://asmachta.co.il/%D7%A0%D7%A1%D7%97-%D7%98%D7%90%D7%91%D7%95/",
+   "https://www.gov.il/he/service/guide-register-rights"
+  ]
+ },
+ "גוש חלקה לפי כתובת": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "video",
+   "related_searches"
+  ],
+  "paa": [],
+  "aio": "ניתן לאתר גוש וחלקה לפי כתובת `בקלות ובחינם דרך הכלים הממשלתיים הרשמיים`:\n\n- **אתר המרכז למיפוי ישראל (מפ\"י):** ניתן להשתמש ב[שירות איתור גוש, חלקה וכתובת](https://www.gov.il/apps/mapi/parcel_address/parcel_address.html) של המרכז למיפוי ישראל כדי להזין כתובת ולקבל את מספר הגוש והחלקה.[[1]](https://www.gov.il/apps/mapi/parcel_address/parcel_address.html)\n- **אתר המפות הממשלתי (Govmap):** נכנסים ל-[Govmap מפות ישראל](https://www.govmap.gov.il/?c=204000,595000&z=0) , פותחים את תפריט \"שכבות\" מימין, מסמנים את השכבות **\"גושים\"** ו**\"חלקות\"**, ומזינים את הכתובת בשורת החיפוש.[[1]](https://www.govmap.g",
+  "aio_refs": [
+   "https://www.gov.il/apps/mapi/parcel_address/parcel_address.html",
+   "https://www.govmap.gov.il/?c=204000,595000&z=0",
+   "https://www.midrag.co.il/Midragonim/Answer/22601",
+   "https://www.nadlancenter.co.il/article/3551",
+   "https://properteam-il.com/2018/09/12/%D7%90%D7%99%D7%AA%D7%95%D7%A8-%D7%92%D7%95%D7%A9-%D7%97%D7%9C%D7%A7%D7%94/",
+   "https://www.zilberman-law.co.il/mekarkin/%D7%90%D7%99%D7%AA%D7%95%D7%A8-%D7%92%D7%95%D7%A9-%D7%97%D7%9C%D7%A7%D7%94/"
+  ],
+  "related": [
+   "נתניה גוש חלקה",
+   "גוש 190 חלקה 40",
+   "גוש 5026 חלקה 27",
+   "איך למצוא תת חלקה בטאבו",
+   "אורתופוטו 2024",
+   "מפ",
+   "מפת המרכז",
+   "מיפוי אווירי"
+  ],
+  "top3": [
+   "https://www.lawforums.co.il/question/259061/",
+   "https://www.topocad.gov.il/",
+   "https://www.nadlanline.com/nadlanline_Calc_Gus_Helka.html"
+  ]
+ },
+ "מס רכישה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "related_searches",
+   "knowledge_graph"
+  ],
+  "paa": [],
+  "aio": "מס רכישה הוא מס ישראלי המשולם למדינה על ידי מי שרוכש זכות במקרקעין (כמו דירת מגורים, מגרש או נכס מסחרי) לפי שווי העסקה, כפי שמוסבר ב[מדריך מס רכישה של כל-זכות](https://www.kolzchut.org.il/he/%D7%9E%D7%A1_%D7%A8%D7%9B%D7%99%D7%A9%D7%94).[[1]](https://www.kolzchut.org.il/he/%D7%97%D7%99%D7%A9%D7%95%D7%91_%D7%9E%D7%A1_%D7%A8%D7%9B%D7%99%D7%A9%D7%94)[[2]](https://he.wikipedia.org/wiki/%D7%9E%D7%A1_%D7%A8%D7%9B%D7%99%D7%A9%D7%94)\n\n### מדרגות מס רכישה לשנת 2026\n\n- **דירת מגורים יחידה** (מעודכן לטווח ינואר 2025–ינואר 2028):\n\t- עד 1,978,745 ש\"ח: 0% (פטור ממס)\n\t- מעל 1,978,745 ש\"ח ועד 2,347,040 ש\"ח: 3.",
+  "aio_refs": [
+   "https://www.kolzchut.org.il/he/%D7%9E%D7%A1_%D7%A8%D7%9B%D7%99%D7%A9%D7%94",
+   "https://www.kolzchut.org.il/he/%D7%97%D7%99%D7%A9%D7%95%D7%91_%D7%9E%D7%A1_%D7%A8%D7%9B%D7%99%D7%A9%D7%94",
+   "https://he.wikipedia.org/wiki/%D7%9E%D7%A1_%D7%A8%D7%9B%D7%99%D7%A9%D7%94",
+   "https://www.gov.il/he/service/real_eatate_taxsimulator",
+   "https://www.nadlancenter.co.il/article/628",
+   "https://www.gov.il/he/pages/pa121026-2",
+   "https://www.misim.gov.il/svsimurechisha/startPage.aspx",
+   "https://www.yusim.co.il/expertise-areas/real-estate/when-to-pay-purchase-tax/"
+  ],
+  "related": [
+   "מחשבון מס רכישה דירה ראשונה",
+   "מחשבון מס רכישה דירה שניה",
+   "מחשבון מס רכישה מחול",
+   "סימולטור מס רכישה",
+   "בדיקת חוב מס רכישה",
+   "מדרגות מס רכישה דירה יחידה",
+   "מחשבון מס רכישה דירה שלישית",
+   "מחשבון מס רכישה מדלן"
+  ],
+  "top3": [
+   "https://www.nadlanmaster.co.il/%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%9E%D7%A1-%D7%A8%D7%9B%D7%99%D7%A9%D7%94/",
+   "https://secapp.taxes.gov.il/svStatusShuma/frmHovMasRchush.aspx?cur=2",
+   "https://www.bizportal.co.il/realestates/news/article/20038028"
+  ]
+ },
+ "מס שבח": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_search",
+   "people_also_ask",
+   "images",
+   "related_searches"
+  ],
+  "paa": [
+   "מתי זכאים לפטור ממס שבח?",
+   "מי חייב בתשלום מס שבח?",
+   "כיצד מחושב מס שבח?",
+   "מהו מחשבון פריסת מס שבח?"
+  ],
+  "aio": "מס שבח הוא `מס המוטל בישראל על הרווח הריאלי` (ההפרש בין מחיר המכירה למחיר הרכישה, בניכוי הוצאות והצמדה למדד) הנובע ממכירת זכות במקרקעין או מכירת מניות באיגוד מקרקעין.[[1]](https://www.kolzchut.org.il/he/%D7%9E%D7%A1_%D7%A9%D7%91%D7%97)[[2]](https://he.wikipedia.org/wiki/%D7%9E%D7%A1_%D7%A9%D7%91%D7%97_%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F)\n\n### שיעורי המס והחישוב\n\n- **שיעור המס הסטנדרטי:** עומד על **25%** מהרווח הריאלי נטו (ובפעולה באיגוד מקרקעין – 30%).\n- **שיטה ליניארית:** מס השבח מחושב באופן ליניארי החל משנת 2014 ואילך (רווח שנצבר עד סוף 2013 פטור ממס בדרך כלל).\n- **פריסת מס:** ניתן לפ",
+  "aio_refs": [
+   "https://www.kolzchut.org.il/he/%D7%9E%D7%A1_%D7%A9%D7%91%D7%97",
+   "https://he.wikipedia.org/wiki/%D7%9E%D7%A1_%D7%A9%D7%91%D7%97_%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F",
+   "https://www.kolzchut.org.il/he/%D7%97%D7%99%D7%A9%D7%95%D7%91_%D7%9E%D7%A1_%D7%A9%D7%91%D7%97",
+   "https://www.kolzchut.org.il/he/%D7%A9%D7%90%D7%9C%D7%95%D7%AA_%D7%95%D7%AA%D7%A9%D7%95%D7%91%D7%95%D7%AA_%D7%91%D7%A0%D7%95%D7%A9%D7%90_%D7%9E%D7%A1_%D7%A9%D7%91%D7%97",
+   "https://www.nadlancenter.co.il/article/413",
+   "https://www.gov.il/he/departments/topics/realty_taxation",
+   "https://www.kolzchut.org.il/he/%D7%AA%D7%A9%D7%9C%D7%95%D7%9D_%D7%9E%D7%A1_%D7%A9%D7%91%D7%97"
+  ],
+  "related": [
+   "מחשבון מס שבח",
+   "מס שבח טלפון",
+   "בדיקת תשלום מס שבח",
+   "מס שבח אזור אישי",
+   "מס שבח פטור",
+   "מחשבון מס שבח על מגרש",
+   "מס שבח שומה עצמית",
+   "מס שבח תשלום"
+  ],
+  "top3": [
+   "https://www.kolzchut.org.il/he/%D7%9E%D7%A1_%D7%A9%D7%91%D7%97",
+   "https://www.misim.gov.il/svtsvazmitnew/FrmHadrachaRashit.aspx",
+   "https://www.gov.il/he/departments/topics/realty_taxation"
+  ]
+ },
+ "היטל השבחה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "related_searches",
+   "knowledge_graph"
+  ],
+  "paa": [],
+  "aio": "**היטל השבחה** הוא `תשלום חובה שמשלם בעל מקרקעין או חוכר לדורות לוועדה המקומית לתכנון ולבנייה` , בעקבות עליית שווי הנכס כתוצאה מאישור תוכנית בניין עיר (תב\"ע), מתן הקלה או התרת שימוש חורג.[[1]](https://www.kolzchut.org.il/he/%D7%94%D7%99%D7%98%D7%9C_%D7%94%D7%A9%D7%91%D7%97%D7%94)[[2]](https://he.wikipedia.org/wiki/%D7%94%D7%99%D7%98%D7%9C_%D7%94%D7%A9%D7%91%D7%97%D7%94)[[3]](https://vaada.rng.org.il/%D7%94%D7%99%D7%98%D7%9C%D7%99-%D7%94%D7%A9%D7%91%D7%97%D7%94-%D7%95%D7%94%D7%A2%D7%91%D7%A8%D7%95%D7%AA-%D7%91%D7%98%D7%90%D7%91%D7%95/)\n\nהמידע המרכזי על היטל השבחה בישראל:\n\n### שיעור המס וחישוב\n\n",
+  "aio_refs": [
+   "https://www.kolzchut.org.il/he/%D7%94%D7%99%D7%98%D7%9C_%D7%94%D7%A9%D7%91%D7%97%D7%94",
+   "https://he.wikipedia.org/wiki/%D7%94%D7%99%D7%98%D7%9C_%D7%94%D7%A9%D7%91%D7%97%D7%94",
+   "https://vaada.rng.org.il/%D7%94%D7%99%D7%98%D7%9C%D7%99-%D7%94%D7%A9%D7%91%D7%97%D7%94-%D7%95%D7%94%D7%A2%D7%91%D7%A8%D7%95%D7%AA-%D7%91%D7%98%D7%90%D7%91%D7%95/",
+   "https://www.nadlancenter.co.il/article/398",
+   "https://www.kolzchut.org.il/he/%D7%97%D7%99%D7%A9%D7%95%D7%91_%D7%94%D7%99%D7%98%D7%9C_%D7%94%D7%A9%D7%91%D7%97%D7%94",
+   "https://lawdin.co.il/%D7%94%D7%99%D7%98%D7%9C-%D7%94%D7%A9%D7%91%D7%97%D7%94-%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C/",
+   "https://www.calcalist.co.il/real-estate/article/bkscy0jqze",
+   "https://www.sb-law.co.il/%D7%94%D7%99%D7%98%D7%9C-%D7%94%D7%A9%D7%91%D7%97%D7%94/"
+  ],
+  "related": [
+   "מחשבון היטל השבחה",
+   "היטל השבחה פטור",
+   "מתי משלמים היטל השבחה",
+   "מי משלם היטל השבחה",
+   "היטל השבחה חוק חדש",
+   "היטל השבחה עיריית ירושלים",
+   "מחשבון היטל השבחה חינם",
+   "חוק היטל השבחה"
+  ],
+  "top3": [
+   "https://he.wikipedia.org/wiki/%D7%94%D7%99%D7%98%D7%9C_%D7%94%D7%A9%D7%91%D7%97%D7%94",
+   "https://www.kolzchut.org.il/he/%D7%94%D7%99%D7%98%D7%9C_%D7%94%D7%A9%D7%91%D7%97%D7%94",
+   "https://vaada.rng.org.il/%D7%94%D7%99%D7%98%D7%9C%D7%99-%D7%94%D7%A9%D7%91%D7%97%D7%94-%D7%95%D7%94%D7%A2%D7%91%D7%A8%D7%95%D7%AA-%D7%91%D7%98%D7%90%D7%91%D7%95/"
+  ]
+ },
+ "ארנונה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_ask",
+   "related_searches",
+   "knowledge_graph"
+  ],
+  "paa": [
+   "איפה הארנונה הכי יקרה?",
+   "מהו החוק לגבי ארנונה?",
+   "איך מבצעים החלפת ארנונה?",
+   "איך נקבע גובה הארנונה?"
+  ],
+  "aio": "",
+  "aio_refs": [],
+  "related": [
+   "ארנונה תל אביב-יפו",
+   "ארנונה תשלום",
+   "ארנונה ירושלים",
+   "ארנונה טלפון",
+   "ארנונה מה זה",
+   "ארנונה הרצליה",
+   "ארנונה תל אביב יפו",
+   "ארנונה רמת גן"
+  ],
+  "top3": [
+   "https://he.wikipedia.org/wiki/%D7%90%D7%A8%D7%A0%D7%95%D7%A0%D7%94",
+   "https://www.tel-aviv.gov.il/Residents/Arnona/Pages/Arnona.aspx",
+   "https://www.beer-sheva.muni.il/Residents/Arnona/Pages/default.aspx"
+  ]
+ },
+ "חוזה שכירות": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_ask",
+   "related_searches"
+  ],
+  "paa": [
+   "מהי אופציית הארכת חוזה שכירות?",
+   "מי צריך לדווח על השכרת דירה?",
+   "מהי שכירות בלתי מוגנת?",
+   "מהם הדברים שחשוב לדעת לפני שמשכירים דירה?"
+  ],
+  "aio": "",
+  "aio_refs": [],
+  "related": [
+   "חוזה שכירות להורדה pdf",
+   "חוזה שכירות בלתי מוגנת להורדה חינם",
+   "חוזה שכירות להדפסה חינם",
+   "חוזה שכירות סטנדרטי קצר",
+   "חוזה שכירות בלתי מוגנת קצר להורדה",
+   "חוזה שכירות בלתי מוגנת עם ערבים להורדה",
+   "חוזה שכירות מומלץ",
+   "חוזה שכירות בלתי מוגנת קובץ word"
+  ],
+  "top3": [
+   "https://www.amidar.co.il/wps/wcm/connect/e6a8b278-ed7c-4735-85aa-7e24d89e869d/%D7%97%D7%95%D7%96%D7%94%2B%D7%A9%D7%9B%D7%99%D7%A8%D7%95%D7%AA%2B%D7%9C%D7%93%D7%95%D7%92%D7%9E%D7%90%2B.pdf?MOD=AJPERES&CVID=",
+   "https://www.hachvana.mod.gov.il/Soldiers/Documents/%D7%97%D7%95%D7%96%D7%94%20%D7%A9%D7%9B%D7%99%D7%A8%D7%95%D7%AA%20%D7%9C%D7%93%D7%95%D7%92%D7%9E%D7%90%20.pdf",
+   "https://www.kolzchut.org.il/he/%D7%94%D7%A9%D7%9B%D7%A8%D7%AA_%D7%93%D7%99%D7%A8%D7%94_-_%D7%9E%D7%99%D7%93%D7%A2_%D7%9C%D7%9E%D7%A9%D7%9B%D7%99%D7%A8"
+  ]
+ },
+ "פינוי בינוי": {
+  "types": [
+   "top_stories",
+   "local_pack",
+   "organic",
+   "video",
+   "related_searches",
+   "google_reviews",
+   "knowledge_graph"
+  ],
+  "paa": [],
+  "aio": null,
+  "aio_refs": [],
+  "related": [
+   "פינוי בינוי ירושלים",
+   "פינוי בינוי תל אביב-יפו"
+  ],
+  "top3": [
+   "https://bsh.co.il/%D7%AA%D7%9E%D7%90-38-%D7%90%D7%95-%D7%A4%D7%99%D7%A0%D7%95%D7%99-%D7%91%D7%99%D7%A0%D7%95%D7%99/",
+   "https://www.ynet.co.il/topics/%D7%A4%D7%99%D7%A0%D7%95%D7%99_%D7%91%D7%99%D7%A0%D7%95%D7%99/5",
+   "https://hiborim4u.co.il/%D7%94%D7%9B%D7%9C-%D7%A2%D7%9C-%D7%AA%D7%94%D7%9C%D7%99%D7%9A-%D7%A4%D7%99%D7%A0%D7%95%D7%99-%D7%91%D7%99%D7%A0%D7%95%D7%99-%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C/"
+  ]
+ },
+ "הערכת שווי דירה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "related_searches"
+  ],
+  "paa": [],
+  "aio": "הערכת שווי דירה `בישראל מתבצעת כיום באמצעות שני כלים עיקריים`: **מחשבונים דיגיטליים חינמיים** להערכה מהירה, או **שמאי מקרקעין מוסמך** לצורך מחייב, משפטי או בנקאי.[[1]](https://appraise.co.il/apartment-valuation/)\n\n### דרכים לביצוע הערכת שווי\n\n- **מחשבונים אינטרנטיים (אומדן ראשוני):** \n\t- [מחשבון הנדל\"ן yadata מבית יד2](https://yadata.yad2.co.il/property-valuation) – מספק הערכת שווי המבוססת על המאגר הגדול בשוק.\n\t- [מחירון דירות לוי יצחק](https://levi-itzhak.co.il/realestate/) – בוחן פרמטרים פיזיים של הנכס, קומה, מעלית, חניה וקרבה למוקדי עניין.\n\t- פלטפורמות נוספות כמו [Hoomy](https://www.hoomy.c",
+  "aio_refs": [
+   "https://appraise.co.il/apartment-valuation/",
+   "https://yadata.yad2.co.il/property-valuation",
+   "https://levi-itzhak.co.il/realestate/",
+   "https://www.hoomy.co.il/estimation",
+   "https://www.dirobot.co.il/calculator",
+   "https://www.madlan.co.il/propertyevaluation/",
+   "https://yadata.yad2.co.il/",
+   "https://www.barlev-nadlan.co.il/%D7%9E%D7%99%D7%93%D7%A2-%D7%9E%D7%A7%D7%99%D7%A3/%D7%90%D7%99%D7%9A-%D7%9E%D7%A2%D7%A8%D7%99%D7%9B%D7%99%D7%9D-%D7%A9%D7%95%D7%95%D7%99-%D7%93%D7%99%D7%A8%D7%94/"
+  ],
+  "related": [
+   "הערכת שווי דירה מדלן",
+   "הערכת שווי דירה בחינם",
+   "מחשבון עליית ערך דירה",
+   "יד 2 מחשבון דירה",
+   "הערכת שווי מגרש",
+   "שווי דירה לפי קומה",
+   "מחשבון שכר דירה",
+   "מחשבון מכירת דירה מחיר למשתכן"
+  ],
+  "top3": [
+   "https://bh-pk.co.il/%D7%94%D7%A2%D7%A8%D7%9B%D7%AA-%D7%A9%D7%95%D7%95%D7%99-%D7%A0%D7%9B%D7%A1-%D7%9C%D7%A4%D7%A0%D7%99-%D7%9E%D7%9B%D7%99%D7%A8%D7%94/",
+   "https://www.ey-group.co.il/%D7%94%D7%A2%D7%A8%D7%9B%D7%AA-%D7%A9%D7%95%D7%95%D7%99-%D7%A0%D7%9B%D7%A1/",
+   "https://www.ey-group.co.il/%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%94%D7%A2%D7%A8%D7%9B%D7%AA-%D7%A9%D7%95%D7%95%D7%99-%D7%93%D7%99%D7%A8%D7%94-2/"
+  ]
+ },
+ "חוק המכר דירות": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "related_searches"
+  ],
+  "paa": [],
+  "aio": "**חוק המכר (דירות), תשל״ג-1973** וחוק המלווה **חוק המכר (דירות) (הבטחת השקעות של רוכשי דירות), תשל״ה-1974** נועדו להגן על רוכשי דירות מקבלנים בישראל.[[1]](https://gelberglaw.co.il/sale-of-apartments-law/)\n\n### נקודות מרכזיות בחוק:\n\n- **הגנה על כספי הרוכשים (חוק הבטחת השקעות):** אסור לקבלן לקבל מהקונה מעל **7%** ממחיר הדירה על חשבון התשלום, אלא אם כן סיפק אחת מ-5 חלופות הבטחה (כגון ערבות בנקאית, ביטוח, משכנתה ראשונה או הערת אזהרה).[[1]](https://www.nevo.co.il/law_html/law00/70330.htm)\n- **מפרט ותקנים:** החובה לצרף מפרט טכני מחייב והוראות תחזוקה/שימוש לחוזה המכר. הוראות החוק הן קוגנטיות (אי אפשר",
+  "aio_refs": [
+   "https://gelberglaw.co.il/sale-of-apartments-law/",
+   "https://www.nevo.co.il/law_html/law00/70330.htm",
+   "https://www.nevo.co.il/law_html/law00/72490.htm",
+   "https://massad-group.com/%D7%97%D7%95%D7%A7-%D7%94%D7%9E%D7%9B%D7%A8-%D7%93%D7%99%D7%A8%D7%95%D7%AA-%D7%91%D7%93%D7%A7-%D7%95%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA/",
+   "https://www.kolzchut.org.il/he/%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA_%D7%A7%D7%91%D7%9C%D7%9F_%D7%9C%D7%9C%D7%99%D7%A7%D7%95%D7%99%D7%99%D7%9D_%D7%91%D7%93%D7%99%D7%A8%D7%94_%D7%97%D7%93%D7%A9%D7%94",
+   "https://www.nadlancenter.co.il/article/651"
+  ],
+  "related": [
+   "חוק המכר דירות הבטחת השקעות",
+   "חוק המכר דירות pdf",
+   "חוק המכר דירות תיקון 8",
+   "חוק המכר דירות תשל ג 1973",
+   "חוק המכר החדש",
+   "חוק המכר דירות לפני תיקון 9",
+   "חוק המכר דירות תשלומים",
+   "חוק המכר דירות נוסח ישן"
+  ],
+  "top3": [
+   "https://afikil.co.il/%D7%A0%D7%93%D7%9C%D7%9F-%D7%94%D7%9E%D7%99%D7%9C%D7%95%D7%9F-%D7%94%D7%A4%D7%99%D7%A0%D7%A0%D7%A1%D7%99/%D7%97%D7%95%D7%A7-%D7%94%D7%9E%D7%9B%D7%A8-%D7%93%D7%99%D7%A8%D7%95%D7%AA-%D7%94%D7%9E%D7%93%D7%A8%D7%99%D7%9A-%D7%94%D7%A9%D7%9C%D7%9D-%D7%9C%D7%A9%D7%A0%D7%AA-2026/",
+   "https://www.kolzchut.org.il/he/%D7%9E%D7%AA%D7%9F_%D7%91%D7%98%D7%95%D7%97%D7%95%D7%AA_%D7%9C%D7%A8%D7%95%D7%9B%D7%A9_%D7%93%D7%99%D7%A8%D7%94_%D7%9E%D7%A7%D7%91%D7%9C%D7%9F",
+   "https://www.apm.law/he/%D7%A2%D7%99%D7%A7%D7%A8%D7%99-%D7%AA%D7%99%D7%A7%D7%95%D7%9F-%D7%9E%D7%A1-9-%D7%9C%D7%97%D7%95%D7%A7-%D7%94%D7%9E%D7%9B%D7%A8-%D7%93%D7%99%D7%A8%D7%95%D7%AA/"
+  ]
+ },
+ "מרחב מוגן": {
+  "types": [
+   "local_pack",
+   "organic",
+   "related_searches",
+   "google_reviews",
+   "knowledge_graph"
+  ],
+  "paa": [],
+  "aio": null,
+  "aio_refs": [],
+  "related": [
+   "חניון מרחב מוגן",
+   "מרחב מוגן חופי תל אביב",
+   "מרחב מוגן רכבת השלום",
+   "מתחם התחנה מרחב מוגן",
+   "מקומות עם מרחב מוגן תל אביב",
+   "חניונים מרחב מוגן תל אביב",
+   "מרחב מוגן בנמל יפו",
+   "תל ברוך מרחב מוגן"
+  ],
+  "top3": [
+   "https://www.tel-aviv.gov.il/Residents/Construction/Pages/Sheltering.aspx",
+   "https://www.youtube.com/shorts/Uph3llQblRc",
+   "https://www.ggds.co.il/%D7%A4%D7%AA%D7%A8%D7%95%D7%A0%D7%95%D7%AA-%D7%9E%D7%99%D7%92%D7%95%D7%9F-%D7%9E%D7%9E%D7%93-%D7%A1%D7%95%D7%92%D7%99-%D7%9E%D7%A8%D7%97%D7%91-%D7%9E%D7%95%D7%92%D7%9F-%D7%A7%D7%99%D7%99%D7%9E/"
+  ]
+ },
+ "חוק הירושה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "related_searches"
+  ],
+  "paa": [],
+  "aio": "חוק הירושה בישראל (תשכ\"ה-1965) מסדיר את אופן העברת עזבונו של אדם לאחר מותו, בין אם הניח אחריו צוואה ובין אם לאו.[[1]](https://he.wikipedia.org/wiki/%D7%97%D7%95%D7%A7_%D7%94%D7%99%D7%A8%D7%95%D7%A9%D7%94)[[2]](https://yanivor.com/%D7%97%D7%95%D7%A7-%D7%94%D7%99%D7%A8%D7%95%D7%A9%D7%94/)\n\n### העיקרון הבסיסי\n\n- **סעיף 1 לחוק:** עם מותו של אדם, העזבון שלו עובר מיד ליורשיו.\n- **העזבון:** כולל את כל הנכסים, הזכויות והחובות שהותיר הנפטר (נדל\"ן, כספים, רכב, זכויות יוצרים וכדומה).[[1]](https://rotenberglaw.co.il/the-succession-law-1965)[[2]](https://yanivor.com/%D7%97%D7%95%D7%A7-%D7%94%D7%99%D7%A8%D7",
+  "aio_refs": [
+   "https://he.wikipedia.org/wiki/%D7%97%D7%95%D7%A7_%D7%94%D7%99%D7%A8%D7%95%D7%A9%D7%94",
+   "https://yanivor.com/%D7%97%D7%95%D7%A7-%D7%94%D7%99%D7%A8%D7%95%D7%A9%D7%94/",
+   "https://rotenberglaw.co.il/the-succession-law-1965",
+   "https://www.kolzchut.org.il/he/%D7%99%D7%A8%D7%95%D7%A9%D7%94_%D7%A9%D7%9C_%D7%91%D7%9F_%D7%96%D7%95%D7%92",
+   "https://www.kolzchut.org.il/he/%D7%99%D7%A8%D7%95%D7%A9%D7%94_%D7%A2%D7%9C_%D7%A4%D7%99_%D7%93%D7%99%D7%9F",
+   "https://www.gov.il/BlobFolder/legalinfo/laws-and-regulations-druze/he/20-0314.pdf",
+   "https://www.nevo.co.il/law_html/law00/72178.htm",
+   "https://www.kolzchut.org.il/he/%D7%97%D7%95%D7%A7_%D7%94%D7%99%D7%A8%D7%95%D7%A9%D7%94"
+  ],
+  "related": [
+   "חוק הירושה ללא צוואה",
+   "חוק הירושה החדש",
+   "חוק הירושה רכב",
+   "כל זכות צו ירושה",
+   "צו צוואה",
+   "פרסום צו ירושה",
+   "סוגי צוואות",
+   "איך עושים צוואה"
+  ],
+  "top3": [
+   "https://www.kolzchut.org.il/he/%D7%A6%D7%95%D7%95%D7%90%D7%95%D7%AA,_%D7%99%D7%A8%D7%95%D7%A9%D7%95%D7%AA_%D7%95%D7%A2%D7%96%D7%91%D7%95%D7%A0%D7%95%D7%AA",
+   "https://www.boazkraus.co.il/%D7%A2%D7%A1%D7%A7%D7%90%D7%95%D7%AA-%D7%90%D7%97%D7%A8%D7%95%D7%AA-%D7%91%D7%96%D7%9B%D7%95%D7%AA-%D7%94%D7%99%D7%95%D7%A8%D7%A9/",
+   "https://fs.knesset.gov.il/25/law/25_ls1_6674685.pdf"
+  ]
+ },
+ "דמי תיווך": {
+  "types": [
+   "ai_overview",
+   "organic"
+  ],
+  "paa": [],
+  "aio": "עמלת תיווך במכירת דירה בישראל היא בדרך כלל **1% עד 2% פלוס מע\"מ** מכל צד לעסקה, בהתאם למידע המופיע ב-[זכותון ללקוחות של מתווכי דירות ומקרקעין – כל-זכות](https://www.kolzchut.org.il/he/%D7%96%D7%9B%D7%95%D7%AA%D7%95%D7%9F_%D7%9C%D7%9C%D7%A7%D7%95%D7%97%D7%95%D7%AA_%D7%A9%D7%9C_%D7%9E%D7%AA%D7%95%D7%95%D7%9B%D7%99_%D7%93%D7%99%D7%A8%D7%95%D7%AA_%D7%95%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F).[[1]](https://elkayamlaw.co.il/%D7%A2%D7%9E%D7%9C%D7%AA-%D7%AA%D7%99%D7%95%D7%95%D7%9A-%D7%9E%D7%9B%D7%99%D7%A8%D7%AA-%D7%93%D7%99%D7%A8%D7%94/%D7%A0%D7%93%D7%9C%D7%9F-%D7%95%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%",
+  "aio_refs": [
+   "https://www.kolzchut.org.il/he/%D7%96%D7%9B%D7%95%D7%AA%D7%95%D7%9F_%D7%9C%D7%9C%D7%A7%D7%95%D7%97%D7%95%D7%AA_%D7%A9%D7%9C_%D7%9E%D7%AA%D7%95%D7%95%D7%9B%D7%99_%D7%93%D7%99%D7%A8%D7%95%D7%AA_%D7%95%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F",
+   "https://elkayamlaw.co.il/%D7%A2%D7%9E%D7%9C%D7%AA-%D7%AA%D7%99%D7%95%D7%95%D7%9A-%D7%9E%D7%9B%D7%99%D7%A8%D7%AA-%D7%93%D7%99%D7%A8%D7%94/%D7%A0%D7%93%D7%9C%D7%9F-%D7%95%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F/%D7%AA%D7%99%D7%95%D7%95%D7%9A/",
+   "https://www.midrag.co.il/Content/Tip/7543",
+   "https://www.kolzchut.org.il/he/%D7%90%D7%99%D7%A1%D7%95%D7%A8_%D7%A2%D7%9C_%D7%9E%D7%A9%D7%9B%D7%99%D7%A8_%D7%93%D7%99%D7%A8%D7%94_%D7%9C%D7%93%D7%A8%D7%95%D7%A9_%D7%9E%D7%A9%D7%95%D7%9B%D7%A8_%D7%93%D7%99%D7%A8%D7%94_%D7%9C%D7%A9%D7%9C%D7%9D_%D7%93%D7%9E%D7%99_%D7%AA%D7%99%D7%95%D7%95%D7%9A_%D7%9C%D7%9E%D7%AA%D7%95%D7%95%D7%9A_%D7%A9%D7%A4%D7%A2%D7%9C_%D7%9E%D7%98%D7%A2%D7%9D_%D7%9E%D7%A9%D7%9B%D7%99%D7%A8_%D7%94%D7%93%D7%99%D7%A8%D7%94",
+   "https://www.midrag.co.il/Expanel/Question/2654",
+   "https://www.gov.il/he/pages/realestate_brokerfees",
+   "https://shpak-law.com/%D7%93%D7%9E%D7%99-%D7%AA%D7%99%D7%95%D7%95%D7%9A-%D7%91%D7%9C%D7%99-%D7%94%D7%A1%D7%9B%D7%9D-%D7%AA%D7%99%D7%95%D7%95%D7%9A-%D7%97%D7%AA%D7%95%D7%9D/"
+  ],
+  "related": [],
+  "top3": [
+   "https://nadelani.com/%D7%97%D7%93%D7%A9%D7%95%D7%AA%20%D7%A0%D7%93%D7%9C%D7%A0%D7%99/dmei-tiuch-skhirut-2026",
+   "https://www.ke-law.co.il/post/%D7%9E%D7%AA%D7%99-%D7%9E%D7%A9%D7%9C%D7%9E%D7%99%D7%9D-%D7%93%D7%9E%D7%99-%D7%AA%D7%99%D7%95%D7%95%D7%9A-%D7%A2%D7%9C-%D7%A2%D7%A1%D7%A7%D7%AA-%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F",
+   "https://rwlaw.co.il/%D7%AA%D7%A9%D7%9C%D7%95%D7%9D-%D7%93%D7%9E%D7%99-%D7%AA%D7%99%D7%95%D7%95%D7%9A-%D7%9C%D7%90%D7%97%D7%A8-%D7%AA%D7%99%D7%A7%D7%95%D7%9F-%D7%97%D7%95%D7%A7-%D7%94%D7%A9%D7%9B%D7%99%D7%A8%D7%95%D7%AA/"
+  ]
+ },
+ "אגרות טאבו": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "related_searches"
+  ],
+  "paa": [],
+  "aio": "ניתן לשלם ולבצע פעולות שונות הקשורות לאגרות מקרקעין דרך [שירות התשלומים הממשלתי](https://www.gov.il/he/pages/payment_fees) של [הרשות לרישום והסדר זכויות מקרקעין](https://www.gov.il/he/departments/land_registration).[[1]](https://www.gov.il/he/pages/payment_fees)[[2]](https://www.gov.il/he/departments/land_registration)\n\n### פרטים חשובים על אגרות טאבו:\n\n- **אופן התשלום:** התשלום מתבצע באופן מקוון באמצעות כרטיס אשראי דרך [העתק אישור תשלום מערך הדיגיטל הלאומי](https://www.gov.il/he/pages/payments).\n- **מועד גביית האגרה:** החל מספטמבר 2025, אגרת רישום בשירות מקוון נגבית אך ורק במועד מתן התוקף לפעו",
+  "aio_refs": [
+   "https://www.gov.il/he/pages/payment_fees",
+   "https://www.gov.il/he/departments/land_registration",
+   "https://www.gov.il/he/pages/payments",
+   "https://www.gov.il/he/pages/new-pay",
+   "https://www.gov.il/he/pages/fees-2026",
+   "https://land-registration.lawx.co.il/ArticleDetail?slug=land-registry-fees-israel-comprehensive-guide",
+   "https://www.gurlaw.co.il/%D7%A7%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D-%D7%A9%D7%99%D7%9E%D7%95%D7%A9%D7%99%D7%99%D7%9D/"
+  ],
+  "related": [
+   "אגרת הזמנת שטר טאבו",
+   "תשלום אגרות טאבו",
+   "הזמנת תיק טאבו",
+   "תיק מוביל טאבו",
+   "טופס בקשה לקבלת העתקי מסמכים מתיק רישום",
+   "הזמנת שטר מהטאבו מקוון",
+   "טופס בקשה לקבלת מידע טאבו",
+   "טופס בקשה לעיון בתיק טאבו"
+  ],
+  "top3": [
+   "https://magdilim.co.il/020920251454/",
+   "https://www.gov.il/he/pages/legal-info-1",
+   "https://www.gov.il/he/collectors/news/?officeId=7f339ddd-6295-4025-8991-2c5a3ea2a76f&UnitId=&TopicId=a8ea3769-51f7-43ee-8234-0449e4166bac&SubTopicId=&TargetAudienceId=&subTargetAudienceId="
+  ]
+ },
+ "מחשבון תשואה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "related_searches"
+  ],
+  "paa": [],
+  "aio": "מחשבון תשואה משמש לחישוב רווחים מהשקעות בשוק ההון, נדל\"ן או חיסכון פנסיוני.[[1]](https://lazyinvestor.co.il/compound-interest-calculator/)[[2]](https://www.hon.co.il/%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%AA%D7%A9%D7%95%D7%90%D7%94/)[[3]](https://www.igemel-net.co.il/%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%AA%D7%A9%D7%95%D7%90%D7%94/)\n\n### סוגי מחשבוני תשואה עיקריים\n\n- **مחשבון ריבית דריבית (שוק ההון והשקעות פסיביות):** \n\t- **שדות קלט:** סכום השקעה התחלתי, הפקדה חודשית קבועה, מספר שנות השקעה ותשואה שנתית ממוצעת.\n\t- **תוצאה:** תחזית לערך הסופי של התיק, סך ההפקדות וסך הרווח הצבור.\n\t- **כלים מ",
+  "aio_refs": [
+   "https://lazyinvestor.co.il/compound-interest-calculator/",
+   "https://www.hon.co.il/%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%AA%D7%A9%D7%95%D7%90%D7%94/",
+   "https://www.igemel-net.co.il/%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%AA%D7%A9%D7%95%D7%90%D7%94/",
+   "https://www.adamvainshtein.co.il/calculator",
+   "https://www.clalbit.co.il/investmentschannels/",
+   "https://www.harel-group.co.il/long-term-savings/saving-and-investment/information/calculators/Pages/calculator-compare-saving-and-investment.aspx",
+   "https://www.menoramivt.co.il/yields-calculator/",
+   "https://www.migdal.co.il/macro/investment-tracks-yields"
+  ],
+  "related": [
+   "מחשבון תשואה נדלן",
+   "מחשבון תשואה מניות",
+   "מחשבון תשואה s&p",
+   "מחשבון ריבית דריבית",
+   "מחשבון תשואה דירה",
+   "מחשבון תשואה השקעה",
+   "מחשבון תשואה שכירות",
+   "מחשבון תשואה קרן השתלמות"
+  ],
+  "top3": [
+   "https://lazyinvestor.co.il/compound-interest-calculator/",
+   "https://www.adamvainshtein.co.il/calculator",
+   "https://www.hon.co.il/%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%AA%D7%A9%D7%95%D7%90%D7%94/"
+  ]
+ },
+ "ביטוח דירה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_search",
+   "related_searches"
+  ],
+  "paa": [],
+  "aio": "ניתן להשוות מחירים ולבחור פוליסה מתאימה באמצעות [מחשבון ביטוח דירה - רשות שוק ההון](https://dira.cma.gov.il/) או דרך אתר [ביטוח דירה - Wobi](https://www.wobi.co.il/%D7%91%D7%99%D7%98%D7%95%D7%97-%D7%93%D7%99%D7%A8%D7%94/).[[1]](https://dira.cma.gov.il/)[[2]](https://www.wobi.co.il/%D7%91%D7%99%D7%98%D7%95%D7%97-%D7%93%D7%99%D7%A8%D7%94/)\n\n### מרכיבים עיקריים בביטוח דירה\n\n- **ביטוח מבנה:** מכסה את שלד הדירה, הקירות, הרצפה, הצנרת, המערכות הסניטריות והמרפסות מפני נזקי אש, שריפה, פריצה, רעידות אדמה ונזקי מים.\n- **ביטוח תכולה:** מכסה את הרכוש הנמצא בתוך הדירה (רהיטים, מכשירי חשמל, בגדים, תכשיטים) מ",
+  "aio_refs": [
+   "https://dira.cma.gov.il/",
+   "https://www.wobi.co.il/%D7%91%D7%99%D7%98%D7%95%D7%97-%D7%93%D7%99%D7%A8%D7%94/",
+   "https://www.555.co.il/home-insurance/",
+   "https://www.9000000.co.il/apartment_insurance/",
+   "https://www.lbr.co.il/%D7%91%D7%99%D7%98%D7%95%D7%97-%D7%93%D7%99%D7%A8%D7%94/",
+   "https://www.clalbit.co.il/homeownersins/",
+   "https://www.harel-group.co.il/insurance/apartment",
+   "https://www.aig.co.il/home-insurance/"
+  ],
+  "related": [
+   "ביטוח דירה צד ג",
+   "זאפ השוואת מחירים ביטוח דירה",
+   "ביטוח דירה לשוכרים",
+   "ביטוח דירה מומלץ",
+   "ביטוח דירה הראל",
+   "ביטוח דירה כלל",
+   "הפעלת ביטוח דירה",
+   "ביטוח דירה טלפון"
+  ],
+  "top3": [
+   "https://www.clalbit.co.il/homeownersins/faq/buildinginsuranceforapartment/",
+   "https://www.harel-group.co.il/insurance/apartment/information/house-insurene-cost",
+   "https://bestie.co.il/home-insurance/"
+  ]
+ },
+ "משכנתא הפוכה": {
+  "types": [
+   "ai_overview",
+   "organic"
+  ],
+  "paa": [],
+  "aio": "משכנתא הפוכה היא הלוואה לגילאי 55–60 ומעלה המאפשרת לשעבד נכס בבעלות מלאה לטובת קבלת כסף נזיל לכל מטרה, מבלי למכור את הדירה או לעבור לשכירות . אפשר לקרוא סקירות מקיפות ומדריכים באתרים כמו [משכנתאמן](https://mashcantaman.co.il/%D7%98%D7%99%D7%A4%D7%99%D7%9D-%D7%9C%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90/%D7%9B%D7%9C-%D7%9E%D7%94-%D7%A9%D7%A6%D7%A8%D7%99%D7%9A-%D7%9C%D7%93%D7%A2%D7%AA-%D7%A2%D7%9C-%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90-%D7%94%D7%A4%D7%95%D7%9B%D7%94/) או [Ynet](https://www.ynet.co.il/economy/article/yokra14351161).[[1]](https://www.harel-group.co.il/mortgages/mortgage-60-plus/informati",
+  "aio_refs": [
+   "https://mashcantaman.co.il/%D7%98%D7%99%D7%A4%D7%99%D7%9D-%D7%9C%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90/%D7%9B%D7%9C-%D7%9E%D7%94-%D7%A9%D7%A6%D7%A8%D7%99%D7%9A-%D7%9C%D7%93%D7%A2%D7%AA-%D7%A2%D7%9C-%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90-%D7%94%D7%A4%D7%95%D7%9B%D7%94/",
+   "https://www.ynet.co.il/economy/article/yokra14351161",
+   "https://www.harel-group.co.il/mortgages/mortgage-60-plus/information/what-is-reversed-mortgage",
+   "https://www.bankjerusalem.co.il/mortgage/reverse-mortgage",
+   "https://www.mizrahi-tefahot.co.il/mortgages/magazine/reverse/",
+   "https://www.fnx.co.il/pension_retirement/reverse-mortgage/",
+   "https://www.menoramivt.co.il/product/reverse-mortgage",
+   "https://www.clalbit.co.il/loansandmortgage/faq/shouldyoutakeareversemortgage/"
+  ],
+  "related": [],
+  "top3": [
+   "https://goola-group.com/blog/rm-what-is-reverse-mortgage",
+   "https://akc.co.il/reverse-mortgage/",
+   "https://www.gomel-adv.co.il/%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90-%D7%94%D7%A4%D7%95%D7%9B%D7%94%E2%80%8B/"
+  ]
+ },
+ "עסקאות נדלן": {
+  "types": [
+   "organic",
+   "related_searches"
+  ],
+  "paa": [],
+  "aio": null,
+  "aio_refs": [],
+  "related": [
+   "עסקאות נדלן שבוצעו רשות המיסים",
+   "Govmap עסקאות נדלן",
+   "עסקאות נדלן לפי כתובת",
+   "עסקאות נדלן מדלן",
+   "היסטוריית עסקאות נדלן",
+   "דיווח עסקאות נדלן רשות המיסים",
+   "נדלן גוב",
+   "יד 2 עסקאות נדלן"
+  ],
+  "top3": [
+   "https://www.nadlan.gov.il/",
+   "https://www.gov.il/he/service/real_estate_information",
+   "https://www.over.org.il/projects/deals"
+  ]
+ },
+ "איחור במסירת דירה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "related_searches"
+  ],
+  "paa": [],
+  "aio": "איחור במסירת דירה מקבלן מזכה את הרוכש בפיצוי כספי על פי **חוק המכר (דירות)** , ללא צורך בהוכחת נזק.[[1]](https://www.felaw.co.il/%D7%90%D7%99%D7%97%D7%95%D7%A8-%D7%91%D7%9E%D7%A1%D7%99%D7%A8%D7%AA-%D7%93%D7%99%D7%A8%D7%94/)[[2]](https://journal.lawforum.org.il/sapir-reuveni/)\n\n### הזכויות והפיצוי לפי תיקון 9 לחוק המכר (לחוזים שנחתמו מ-7.7.2022 ואילך)\n\n- **תקופת חסד:** 30 ימי איחור ראשונים שאינם מזכים בפיצוי (אם האיחור עבר את 30 הימים, הפיצוי נסרט רטרואקטיבית מהחודש הראשון).[[1]](https://yonilevy.co.il/%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%A4%D7%99%D7%A6%D7%95%D7%99-%D7%9C%D7%90%D7%99%D7%97%",
+  "aio_refs": [
+   "https://www.felaw.co.il/%D7%90%D7%99%D7%97%D7%95%D7%A8-%D7%91%D7%9E%D7%A1%D7%99%D7%A8%D7%AA-%D7%93%D7%99%D7%A8%D7%94/",
+   "https://journal.lawforum.org.il/sapir-reuveni/",
+   "https://yonilevy.co.il/%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F-%D7%A4%D7%99%D7%A6%D7%95%D7%99-%D7%9C%D7%90%D7%99%D7%97%D7%95%D7%A8-%D7%9E%D7%A1%D7%99%D7%A8%D7%AA-%D7%93%D7%99%D7%A8%D7%94/",
+   "https://yonilevy.co.il/%D7%90%D7%99%D7%97%D7%95%D7%A8-%D7%91%D7%9E%D7%A1%D7%99%D7%A8%D7%AA-%D7%93%D7%99%D7%A8%D7%94-%D7%9E%D7%A7%D7%91%D7%9C%D7%9F/",
+   "https://www.gov.il/he/pages/9th-amendment",
+   "https://avocat-en-israel.com/he/compensation-calculator-for-late-delivery-of-an-apartment/",
+   "https://www.rodinlaw.co.il/%D7%90%D7%99%D7%97%D7%95%D7%A8-%D7%91%D7%9E%D7%A1%D7%99%D7%A8%D7%AA-%D7%93%D7%99%D7%A8%D7%94-%D7%91%D7%A2%D7%A7%D7%91%D7%95%D7%AA-%D7%9E%D7%9C%D7%97%D7%9E%D7%AA-%D7%97%D7%A8%D7%91%D7%95%D7%AA-%D7%91/",
+   "https://www.mako.co.il/news-law_guide/2025_q3/Article-f97e37e3aa84991026.htm"
+  ],
+  "related": [
+   "איחור במסירת דירה חרבות ברזל",
+   "חוק המכר דירות"
+  ],
+  "top3": [
+   "https://www.youtube.com/shorts/qMiNEtON0OQ",
+   "https://elkayamlaw.co.il/%D7%90%D7%99%D7%97%D7%95%D7%A8-%D7%91%D7%9E%D7%A1%D7%99%D7%A8%D7%AA-%D7%93%D7%99%D7%A8%D7%94-%D7%9E%D7%A7%D7%91%D7%9C%D7%9F/%D7%A0%D7%93%D7%9C%D7%9F-%D7%95%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F/",
+   "https://dsegev-law.co.il/nadlan-mekarkein/%D7%A4%D7%99%D7%A6%D7%95%D7%99-%D7%A2%D7%9C-%D7%90%D7%99%D7%97%D7%95%D7%A8-%D7%91%D7%9E%D7%A1%D7%99%D7%A8%D7%94/"
+  ]
+ },
+ "ערבות בנקאית שכירות": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_search",
+   "related_searches"
+  ],
+  "paa": [],
+  "aio": "",
+  "aio_refs": [],
+  "related": [
+   "ערבות בנקאית לאומי",
+   "ערבות בנקאית שכירות לאומי",
+   "איך עושים ערבות בנקאית לאומי",
+   "כתב ערבות לחוזה שכירות",
+   "נוסח ערבות בנקאית שכירות",
+   "ערבות דיגיטלית בנק לאומי",
+   "עלות ערבות בנקאית בנק לאומי",
+   "ערבות בנקאית בנק הפועלים"
+  ],
+  "top3": [
+   "https://eviction.co.il/collateral-and-guarantee/",
+   "https://www.leumi.co.il/he/leumi-digital/bank-guarantee",
+   "https://www.lawforums.co.il/question/47258/"
+  ]
+ },
+ "תקופת בדק": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_ask",
+   "related_searches"
+  ],
+  "paa": [
+   "מהי תקופת הבדק לכל זכות בדירה חדשה?",
+   "מהם עיקרי תיקון מס' 9 לחוק המכר (דירות)?",
+   "כמה זמן אורך בדק בית?",
+   "מהי האחריות של קבלן על רטיבות?"
+  ],
+  "aio": "**תקופת בדק** היא `פרק זמן הקבוע בחוק המכר (דירות), שבו הקבלן מחויב לתקן ליקויים בדירה חדשה (כגון אי-התאמות או תקלות בבנייה), בלי שהרוכש צריך להוכיח` שהבעיה באשמת הקבלן. נטל ההוכחה במקרה זה מוטל על הקבלן (הוא צריך להוכיח שהליקוי נגרם באשמת הדייר).[[1]](https://www.kolzchut.org.il/he/%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA_%D7%A7%D7%91%D7%9C%D7%9F_%D7%9C%D7%9C%D7%99%D7%A7%D7%95%D7%99%D7%99%D7%9D_%D7%91%D7%93%D7%99%D7%A8%D7%94_%D7%97%D7%93%D7%A9%D7%94)[[2]](https://www.gaya-engineer.co.il/%D7%AA%D7%A7%D7%95%D7%A4%D7%AA-%D7%91%D7%93%D7%A7-%D7%9C%D7%91%D7%99%D7%9F-%D7%AA%D7%A7%D7%95%D7%A4%D7%AA-%D7%9",
+  "aio_refs": [
+   "https://www.kolzchut.org.il/he/%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA_%D7%A7%D7%91%D7%9C%D7%9F_%D7%9C%D7%9C%D7%99%D7%A7%D7%95%D7%99%D7%99%D7%9D_%D7%91%D7%93%D7%99%D7%A8%D7%94_%D7%97%D7%93%D7%A9%D7%94",
+   "https://www.gaya-engineer.co.il/%D7%AA%D7%A7%D7%95%D7%A4%D7%AA-%D7%91%D7%93%D7%A7-%D7%9C%D7%91%D7%99%D7%9F-%D7%AA%D7%A7%D7%95%D7%A4%D7%AA-%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA/",
+   "https://massad-group.com/%D7%AA%D7%A7%D7%95%D7%A4%D7%AA-%D7%91%D7%93%D7%A7-%D7%95%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%97%D7%95%D7%A7-%D7%94%D7%9E%D7%9B%D7%A8-%D7%93%D7%99%D7%A8%D7%95%D7%AA/",
+   "https://pro-eng.co.il/blog/inspection-period-vs-warranty",
+   "https://aac-law.co.il/%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%A7%D7%91%D7%9C%D7%9F-%D7%9C%D7%99%D7%A7%D7%95%D7%99%D7%99-%D7%91%D7%A0%D7%99%D7%94/",
+   "https://www.civileng.co.il/%D7%A9%D7%A0%D7%AA-%D7%91%D7%93%D7%A7-%D7%95%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA",
+   "https://www.nevo.co.il/law_html/law00/72490.htm",
+   "https://www.midrag.co.il/Content/Tip/2674"
+  ],
+  "related": [
+   "חוק המכר דירות",
+   "תקופת בדק ואחריות",
+   "תקופת בדק חשמל",
+   "תקופת הבדק חוק המכר",
+   "חוק המכר אחריות קבלן",
+   "חוק המכר הבטחת השקעות",
+   "חוק המכר דירות pdf",
+   "חוק המכר החדש"
+  ],
+  "top3": [
+   "https://www.kolzchut.org.il/he/%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA_%D7%A7%D7%91%D7%9C%D7%9F_%D7%9C%D7%9C%D7%99%D7%A7%D7%95%D7%99%D7%99%D7%9D_%D7%91%D7%93%D7%99%D7%A8%D7%94_%D7%97%D7%93%D7%A9%D7%94",
+   "https://www.nevo.co.il/law_html/law00/72490.htm",
+   "https://massad-group.com/%D7%AA%D7%A7%D7%95%D7%A4%D7%AA-%D7%91%D7%93%D7%A7-%D7%95%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%97%D7%95%D7%A7-%D7%94%D7%9E%D7%9B%D7%A8-%D7%93%D7%99%D7%A8%D7%95%D7%AA/"
+  ]
+ },
+ "ליקויי בנייה": {
+  "types": [
+   "organic",
+   "local_pack",
+   "video"
+  ],
+  "paa": [],
+  "aio": null,
+  "aio_refs": [],
+  "related": [],
+  "top3": [
+   "https://he.wikipedia.org/wiki/%D7%9C%D7%99%D7%A7%D7%95%D7%99%D7%99_%D7%91%D7%A0%D7%99%D7%99%D7%94",
+   "https://sagivlaw.com/%D7%A2%D7%95%D7%A8%D7%9A-%D7%93%D7%99%D7%9F-%D7%9C%D7%99%D7%A7%D7%95%D7%99%D7%99-%D7%91%D7%A0%D7%99%D7%94/",
+   "https://www.hadas-bedek.co.il/%D7%9E%D7%99%D7%93%D7%A2-%D7%9E%D7%A7%D7%A6%D7%95%D7%A2%D7%99/%D7%9C%D7%99%D7%A7%D7%95%D7%99%D7%99-%D7%91%D7%A0%D7%99%D7%94-%D7%A0%D7%A4%D7%95%D7%A6%D7%99%D7%9D-%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C/"
+  ]
+ },
+ "שמאי מקרקעין מחיר": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_ask",
+   "related_searches"
+  ],
+  "paa": [
+   "כמה עולה שמאי משכנתא בבנק?",
+   "מהי רשימת השמאים בבנק דיסקונט?",
+   "כמה מרוויח שמאי מקרקעין בישראל?",
+   "כמה זמן אורך הערכת שמאי?"
+  ],
+  "aio": "הערכת שווי שוק לדירת מגורים בישראל עולה בממוצע בין **2,400 ל-3,500 ש\"ח** (לא כולל מע\"מ), כאשר הטווח הכללי לשירותי שמאי מקרקעין `נע בין 2,000 ל-6,000 ש\"ח בהתאם` לסוג הנכס ומורכבותו.[[1]](https://moshka.co.il/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%A9%D7%9E%D7%90%D7%99-%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F/)[[2]](https://www.appra.co.il/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%A9%D7%9E%D7%90%D7%99-%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F)\n\n### מחירון שמאי מקרקעין מעודכן (לפני מע\"מ)\n\n- **הערכת שווי שוק לדירת מגורים:** 2,400 – 3,500 ש\"ח\n- **הערכת שווי לבית צמוד קרקע / פרטי:** 3,500 – 5,500",
+  "aio_refs": [
+   "https://moshka.co.il/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%A9%D7%9E%D7%90%D7%99-%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F/",
+   "https://www.appra.co.il/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%A9%D7%9E%D7%90%D7%99-%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F",
+   "https://www.midrag.co.il/Content/Price/8151",
+   "https://www.pro.co.il/real-estate-appraisers/pricing",
+   "https://www.kolzchut.org.il/he/%D7%94%D7%A2%D7%A8%D7%9B%D7%AA_%D7%A9%D7%9E%D7%90%D7%99_%D7%9C%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90"
+  ],
+  "related": [
+   "כמה עולה שמאי לרכב",
+   "מחשבון שמאות דירה",
+   "עלות שמאי בנק הפועלים",
+   "שמאי מקרקעין לימודים",
+   "הערכת שמאי לדירה",
+   "עלות שמאי משכנתא",
+   "מדרג שמאי מקרקעין",
+   "דוח שמאי מקרקעין לדוגמא"
+  ],
+  "top3": [
+   "https://www.midrag.co.il/Content/Price/8151",
+   "https://www.pro.co.il/real-estate-appraisers/pricing",
+   "https://www.appra.co.il/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%A9%D7%9E%D7%90%D7%99-%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F"
+  ]
+ },
+ "עורך דין מקרקעין שכר טרחה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_ask",
+   "related_searches"
+  ],
+  "paa": [
+   "כמה עולה שכר טרחה של עורך דין עבור מכירת דירה?",
+   "מהי מגבלת שכר הטרחה של עורך דין קבלן?",
+   "מהי טבלת שכר הטרחה של עורך דין בביטוח לאומי?",
+   "מהו הסכם שכר טרחה לעורך דין?"
+  ],
+  "aio": "",
+  "aio_refs": [],
+  "related": [
+   "שכר טרחה עורך דין קניית דירה מקבלן",
+   "שכר טרחה עורך דין מכירת דירה יד שניה",
+   "איך מחשבים שכר טרחת עורך דין",
+   "תקנות שכר טרחה עורך דין",
+   "שכר טרחת עורך דין קבלן",
+   "שכר טרחה עורך דין אחוזים",
+   "שכר טרחה עורך דין נדלן",
+   "מחשבון שכר טרחה עורך דין ביטוח לאומי"
+  ],
+  "top3": [
+   "https://www.midrag.co.il/Content/Price/9637",
+   "https://www.kolzchut.org.il/he/%D7%94%D7%92%D7%91%D7%9C%D7%94_%D7%A2%D7%9C_%D7%92%D7%95%D7%91%D7%94_%D7%A9%D7%9B%D7%A8_%D7%94%D7%98%D7%A8%D7%97%D7%94_%D7%A9%D7%9E%D7%95%D7%AA%D7%A8_%D7%9C%D7%A7%D7%91%D7%9C%D7%9F_%D7%9C%D7%93%D7%A8%D7%95%D7%A9_%D7%9E%D7%94%D7%A7%D7%95%D7%A0%D7%94_%D7%9C%D7%A9%D7%9C%D7%9D_%D7%9C%D7%A2%D7%95%D7%A8%D7%9A_%D7%93%D7%99%D7%9F_%D7%9E%D7%98%D7%A2%D7%9E%D7%95_%D7%A2%D7%91%D7%95%D7%A8_%D7%A8%D7%99%D7%A9%D7%95%D7%9D_%D7%94%D7%96%D7%9B%D7%95%D7%99%D7%95%D7%AA_%D7%91%D7%93%D7%99%D7%A8%D7%94",
+   "https://nadlan-lawyer.co.il/lawyer-price/"
+  ]
+ },
+ "שינוי כתובת משרד הפנים": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "related_searches"
+  ],
+  "paa": [],
+  "aio": "ניתן לעדכן כתובת מגורים במרשם האוכלוסין של רשות האוכלוסין וההגירה באופן מקוון ללא עלות דרך [אתר רשות האוכלוסין וההגירה - בקשה לשינוי כתובת](https://www.gov.il/he/service/changing_address).[[1]](https://www.gov.il/he/service/changing_address)[[2]](https://www.facebook.com/israelgov/posts/%D7%A6%D7%A8%D7%99%D7%9B%D7%99%D7%9D-%D7%9C%D7%A9%D7%A0%D7%95%D7%AA-%D7%9B%D7%AA%D7%95%D7%91%D7%AA-%D7%9E%D7%92%D7%95%D7%A8%D7%99%D7%9D%D7%AA%D7%95%D7%9B%D7%9C%D7%95-%D7%9C%D7%A2%D7%A9%D7%95%D7%AA-%D7%96%D7%90%D7%AA-%D7%91%D7%90%D7%95%D7%A4%D7%9F-%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99-%D7%93%D7%A8%D7%9A-%D7",
+  "aio_refs": [
+   "https://www.gov.il/he/service/changing_address",
+   "https://www.facebook.com/israelgov/posts/%D7%A6%D7%A8%D7%99%D7%9B%D7%99%D7%9D-%D7%9C%D7%A9%D7%A0%D7%95%D7%AA-%D7%9B%D7%AA%D7%95%D7%91%D7%AA-%D7%9E%D7%92%D7%95%D7%A8%D7%99%D7%9D%D7%AA%D7%95%D7%9B%D7%9C%D7%95-%D7%9C%D7%A2%D7%A9%D7%95%D7%AA-%D7%96%D7%90%D7%AA-%D7%91%D7%90%D7%95%D7%A4%D7%9F-%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99-%D7%93%D7%A8%D7%9A-%D7%94%D7%90%D7%96%D7%95%D7%A8-%D7%94%D7%90%D7%99%D7%A9%D7%99-%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA%D7%99-m/1119291946906556/",
+   "https://www.kolzchut.org.il/he/%D7%A9%D7%99%D7%A0%D7%95%D7%99_%D7%9B%D7%AA%D7%95%D7%91%D7%AA_%D7%9E%D7%92%D7%95%D7%A8%D7%99%D7%9D_%D7%91%D7%9E%D7%A8%D7%A9%D7%9D_%D7%94%D7%90%D7%95%D7%9B%D7%9C%D7%95%D7%A1%D7%99%D7%9F",
+   "https://www.back2israel.co.il/8251-2/"
+  ],
+  "related": [
+   "שינוי כתובת משרד הפנים קביעת תור",
+   "שינוי כתובת משרד הפנים אונליין",
+   "שינוי כתובת מגורים",
+   "שינוי כתובת משרד הפנים טלפון",
+   "שינוי כתובת למשלוח דואר",
+   "שינוי כתובת משרד הפנים ללא עלות",
+   "שינוי כתובת משרד הפנים בחירות",
+   "שינוי כתובת בתעודת זהות"
+  ],
+  "top3": [
+   "https://www.gov.il/he/service/changing_address",
+   "https://govisit.gov.il/he/app/appointment/262/2107/info",
+   "https://www.facebook.com/PibaIsrael/videos/%D7%A9%D7%99%D7%A0%D7%95%D7%99-%D7%9B%D7%AA%D7%95%D7%91%D7%AA-%D7%A7%D7%9C-%D7%9E%D7%94%D7%99%D7%A8-%D7%91%D7%9C%D7%99-%D7%9C%D7%A6%D7%90%D7%AA-%D7%9E%D7%94%D7%91%D7%99%D7%AA%D7%A2%D7%91%D7%A8%D7%AA%D7%9D-%D7%93%D7%99%D7%A8%D7%94-%D7%90%D7%A4%D7%A9%D7%A8-%D7%9C%D7%A2%D7%93%D7%9B%D7%9F-%D7%9B%D7%AA%D7%95%D7%91%D7%AA-%D7%90%D7%95%D7%A0%D7%9C%D7%99%D7%99%D7%9F-%D7%91%D7%90%D7%AA%D7%A8-%D7%A8%D7%A9%D7%95%D7%AA-/1892424214703776/"
+  ]
+ },
+ "ועד בית כמה משלמים": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_ask",
+   "related_searches"
+  ],
+  "paa": [
+   "האם ועד בית מקבל שכר?",
+   "האם תשלום ועד בית מעלית הוא תשלום עבור דירה בקומה הראשונה?",
+   "כמה עולה חברת ניהול ועד בית?",
+   "האם דירה ריקה חייבת בתשלום דמי ועד בית?"
+  ],
+  "aio": "תשלום ועד הבית בישראל נע בממוצע בין **80 ל-400 שקלים לחודש לדירה** , אך הטווח משתנה משמעותית בהתאם לסוג הבניין והשירותים הניתנים בו:[[1]](https://vaadplus.co.il/blog/kama-oleh-nihul-vaad-bayit)\n\n- **בנינים ישנים ובסיסיים (ללא מעלית):** 70 – 150 שקלים לחודש.\n- **בניינים בינוניים (עם מעלית ותחזוקה בסיסית):** 150 – 350 שקלים לחודש.\n- **בניינים חדשים ומודרניים:** 500 – 900 שקלים לחודש.\n- **מגדלי מגורים ויוקרה (כולל שמירה, חדר כושר וחברת ניהול):** 1,000 – 2,000 שקלים ומעלה לחודש.[[1]](https://www.ivb.org.il/blog/how-much-do-you-pay-for-a-house-committee)[[2]](https://www.bizportal.co.il/realestates",
+  "aio_refs": [
+   "https://vaadplus.co.il/blog/kama-oleh-nihul-vaad-bayit",
+   "https://www.ivb.org.il/blog/how-much-do-you-pay-for-a-house-committee",
+   "https://www.bizportal.co.il/realestates/news/article/20024647",
+   "https://cleanton-management.co.il/%D7%9E%D7%93%D7%A8%D7%99%D7%9A-%D7%9E%D7%A7%D7%99%D7%A3-%D7%9C%D7%A0%D7%95%D7%A9%D7%90-%D7%93%D7%9E%D7%99-%D7%95%D7%A2%D7%93-%D7%91%D7%99%D7%AA/",
+   "https://www.kolzchut.org.il/he/%D7%AA%D7%A9%D7%9C%D7%95%D7%9E%D7%99_%D7%95%D7%A2%D7%93_%D7%91%D7%99%D7%AA",
+   "https://karins-law.co.il/%D7%90%D7%99%D7%9A-%D7%9E%D7%97%D7%A9%D7%91%D7%99%D7%9D-%D7%93%D7%9E%D7%99-%D7%95%D7%A2%D7%93-%D7%91%D7%99%D7%AA-%D7%9E%D7%99%D7%A1%D7%99-%D7%95%D7%A2%D7%93-%D7%91%D7%91%D7%99%D7%AA-%D7%9E%D7%A9/",
+   "https://weller-law-office.com/%D7%AA%D7%A9%D7%9C%D7%95%D7%9D-%D7%95%D7%A2%D7%93-%D7%91%D7%99%D7%AA-%D7%91%D7%91%D7%A0%D7%99%D7%99%D7%9F-%D7%9E%D7%A9%D7%95%D7%AA%D7%A3/",
+   "https://www.ivb.org.il/blog/calculating-house-committee-fees"
+  ],
+  "related": [
+   "פירוט הוצאות ועד בית",
+   "תשלום ועד בית חוקים",
+   "תשלום ועד בית לפי גודל דירה",
+   "האגודה לתרבות הדיור תשלום ועד בית",
+   "ועד בית שאלות",
+   "תביעה נגד ועד בית",
+   "ועד בית חיצוני מחיר",
+   "ועד בית לא משלם"
+  ],
+  "top3": [
+   "https://www.ynet.co.il/economy/article/4661132",
+   "https://www.build-app.co.il/%D7%9E%D7%94-%D7%A0%D7%97%D7%A9%D7%91-%D7%9E%D7%97%D7%99%D7%A8-%D7%A1%D7%91%D7%99%D7%A8-%D7%9C%D7%AA%D7%A9%D7%9C%D7%95%D7%9D-%D7%95%D7%A2%D7%93-%D7%91%D7%99%D7%AA/",
+   "https://www.midrag.co.il/Expanel/Question/2106"
+  ]
+ },
+ "צו ירושה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_ask",
+   "related_searches"
+  ],
+  "paa": [
+   "כיצד להוציא צו ירושה?",
+   "האם יש צו ירושה?",
+   "כיצד מתחלקת ירושה?",
+   "מהי בקשה לרישום צוואה?"
+  ],
+  "aio": "צו ירושה הוא צו משפטי המצהיר על זהות היורשים החוקיים של אדם שנפטר מבלי להשאיר צוואה, ועל חלקם היחסי בעיזבון (אינו מפרט חלוקה ספציפית של נכסים).[[1]](https://berko-law.co.il/%D7%9E%D7%94-%D7%96%D7%94-%D7%A6%D7%95-%D7%99%D7%A8%D7%95%D7%A9%D7%94/)[[2]](https://www.toledano.co.il/inheritance/)\n\n### פרטים ועלויות מרכזיות (לשנת 2026)\n\n- **אופן ההגשה:** ניתן להגיש את הבקשה באופן מקוון או ידני ל רשם לענייני ירושה או לבית הדין הרבני בהסכמה.[[1]](https://he-she-law.co.il/%D7%91%D7%A7%D7%A9%D7%94-%D7%9C%D7%A6%D7%95-%D7%99%D7%A8%D7%95%D7%A9%D7%94/)[[2]](https://berko-law.co.il/%D7%9E%D7%94-%D7%96%D7%94-%D",
+  "aio_refs": [
+   "https://berko-law.co.il/%D7%9E%D7%94-%D7%96%D7%94-%D7%A6%D7%95-%D7%99%D7%A8%D7%95%D7%A9%D7%94/",
+   "https://www.toledano.co.il/inheritance/",
+   "https://he-she-law.co.il/%D7%91%D7%A7%D7%A9%D7%94-%D7%9C%D7%A6%D7%95-%D7%99%D7%A8%D7%95%D7%A9%D7%94/",
+   "https://www.gov.il/he/service/application-for-inheritance-order",
+   "https://www.kolzchut.org.il/he/%D7%94%D7%92%D7%A9%D7%AA_%D7%91%D7%A7%D7%A9%D7%94_%D7%9E%D7%A7%D7%95%D7%95%D7%A0%D7%AA_%D7%9C%D7%A7%D7%91%D7%9C%D7%AA_%D7%A6%D7%95_%D7%99%D7%A8%D7%95%D7%A9%D7%94",
+   "https://www.gov.il/he/service/inheritance_digital_order"
+  ],
+  "related": [
+   "איתור צו ירושה לפי תעודת זהות",
+   "איתור בקשה לצו ירושה",
+   "העתק צו ירושה",
+   "תשלום אגרה צו ירושה מקוון",
+   "טופס בקשה לצו ירושה",
+   "צו ירושה סטטוס",
+   "הרשם לענייני ירושה",
+   "בקשה להעתק צו ירושה"
+  ],
+  "top3": [
+   "https://www.gov.il/he/service/inheritance_order",
+   "https://inheritance.justice.gov.il/",
+   "https://www.kolzchut.org.il/he/%D7%94%D7%92%D7%A9%D7%AA_%D7%91%D7%A7%D7%A9%D7%94_%D7%9E%D7%A7%D7%95%D7%95%D7%A0%D7%AA_%D7%9C%D7%A7%D7%91%D7%9C%D7%AA_%D7%A6%D7%95_%D7%99%D7%A8%D7%95%D7%A9%D7%94"
+  ]
+ },
+ "מחשבון הלוואה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_search",
+   "related_searches"
+  ],
+  "paa": [],
+  "aio": "ניתן לחשב ולתכנן את ההחזר החודשי באמצעות מחשבוני הלוואה דיגיטליים של הבנקים וחברות האשראי המובילות:\n\n- [מחשבון הלוואה - בנק הפועלים](https://www.bankhapoalim.co.il/loans/loan-calculator) – מאפשר חישוב לפי סכום, תקופה וריבית פריים משוערת.\n- [מחשבון הלוואה - דיסקונט](https://www.discountbank.co.il/private/loans/loans-calculator/) – להשוואה בין שיטות החזר שונות וחישוב ההחזר החודשי.\n- [מחשבון הלוואה - בנק ירושלים](https://www.bankjerusalem.co.il/loans/simulator_explanation) – מחשב קרן וריבית לסכומים של 5,000 עד 200,000 ש\"ח.\n- [מחשבון הלוואה - ישראכרט](https://www.isracard.co.il/tools/loan-calculat",
+  "aio_refs": [
+   "https://www.bankhapoalim.co.il/loans/loan-calculator",
+   "https://www.discountbank.co.il/private/loans/loans-calculator/",
+   "https://www.bankjerusalem.co.il/loans/simulator_explanation",
+   "https://www.isracard.co.il/tools/loan-calculator/private",
+   "https://www.leumi.co.il/he/economic-info/calculators"
+  ],
+  "related": [
+   "מחשבון הלוואה שפיצר",
+   "מחשבון הלוואה פריים",
+   "מחשבון הלוואה לאומי",
+   "מחשבון הלוואה פועלים",
+   "מחשבון ריבית הלוואה",
+   "מחשבון הלוואה דיסקונט",
+   "מחשבון הלוואה מזרחי טפחות",
+   "מחשבון הלוואה בלון"
+  ],
+  "top3": [
+   "https://www.supermarker.themarker.com/Calculators/Loan/LoanCalculator.aspx",
+   "https://www.discountbank.co.il/private/loans/loans-calculator/",
+   "https://www.bankjerusalem.co.il/loans/simulator_explanation"
+  ]
+ },
+ "מס רכישה דירה שנייה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_ask",
+   "related_searches"
+  ],
+  "paa": [
+   "האם דירה יחידה פטורה ממס רכישה?",
+   "מהו גובה הפטור ממס על השכרת דירה בשנת 2026?",
+   "כיצד מחושב מס רכישה?",
+   "מתי מועד תשלום מס רכישה?"
+  ],
+  "aio": "מס רכישה על דירה שניה (שאינה דירה יחידה) לשנת 2026 מחושב מן השקל הראשון ללא פטור , לפי מדרגות המס הבאות:[[1]](https://www.nadlancenter.co.il/article/3023)[[2]](https://www.wecheck.co.il/blog/%D7%9E%D7%A1-%D7%A8%D7%9B%D7%99%D7%A9%D7%94-%D7%93%D7%99%D7%A8%D7%94-%D7%A9%D7%A0%D7%99%D7%94/)\n\n- **8%** על חלק השווי שעד **6,055,070 ש״ח** \n- **10%** על חלק השווי שמעל **6,055,070 ש״ח** [[1]](https://www.nadlancenter.co.il/article/3023)\n\n### דגשים והקלות מרכזיות:\n\n- **משפרי דיור:** רוכשים שמוכרים את דירתם הישנה בתוך 18 חודשים מיום רכישת הדירה החדשה (או 12 חודשים מקבלת החזקה בדירה מקבלן) עשויים להיות זכאי",
+  "aio_refs": [
+   "https://www.nadlancenter.co.il/article/3023",
+   "https://www.wecheck.co.il/blog/%D7%9E%D7%A1-%D7%A8%D7%9B%D7%99%D7%A9%D7%94-%D7%93%D7%99%D7%A8%D7%94-%D7%A9%D7%A0%D7%99%D7%94/",
+   "https://elkayamlaw.co.il/%D7%90%D7%99%D7%9A-%D7%9C%D7%90-%D7%9C%D7%A9%D7%9C%D7%9D-%D7%9E%D7%A1-%D7%A8%D7%9B%D7%99%D7%A9%D7%94-%D7%A2%D7%9C-%D7%93%D7%99%D7%A8%D7%94-%D7%A9%D7%A0%D7%99%D7%99%D7%94/%D7%A0%D7%93%D7%9C%D7%9F-%D7%95%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F/%D7%9E%D7%A1-%D7%A8%D7%9B%D7%99%D7%A9%D7%94/",
+   "https://gelberglaw.co.il/second-apartment-purchase-tax/",
+   "https://www.amitvered.co.il/%D7%9E%D7%A1-%D7%A8%D7%9B%D7%99%D7%A9%D7%94/",
+   "https://www.gov.il/he/service/real_eatate_taxsimulator"
+  ],
+  "related": [
+   "מס רכישה דירה ראשונה",
+   "איך לא לשלם מס רכישה על דירה שניה",
+   "מחשבון מס רכישה דירה ראשונה",
+   "מס רכישה דירה יחידה",
+   "מחשבון מס רכישה דירה שניה",
+   "מס רכישה דירה שניה 2026",
+   "מתי משלמים מס רכישה על דירה שניה",
+   "מס רכישה דירה ראשונה 2026"
+  ],
+  "top3": [
+   "https://www.kolzchut.org.il/he/%D7%97%D7%99%D7%A9%D7%95%D7%91_%D7%9E%D7%A1_%D7%A8%D7%9B%D7%99%D7%A9%D7%94",
+   "https://www.misim.gov.il/svsimurechisha/startPage.aspx",
+   "https://elkayamlaw.co.il/%D7%90%D7%99%D7%9A-%D7%9C%D7%90-%D7%9C%D7%A9%D7%9C%D7%9D-%D7%9E%D7%A1-%D7%A8%D7%9B%D7%99%D7%A9%D7%94-%D7%A2%D7%9C-%D7%93%D7%99%D7%A8%D7%94-%D7%A9%D7%A0%D7%99%D7%99%D7%94/%D7%A0%D7%93%D7%9C%D7%9F-%D7%95%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99%D7%9F/%D7%9E%D7%A1-%D7%A8%D7%9B%D7%99%D7%A9%D7%94/"
+  ]
+ },
+ "תמא 38": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_ask",
+   "images",
+   "related_searches"
+  ],
+  "paa": [
+   "כמה זמן אורך לקבל היתר בנייה תמ\"א 38?",
+   "מהו פרויקט כיכר המדינה?",
+   "מהן זכויות הדייר בפרויקט פינוי-בינוי?",
+   "איפה אני יכול למצוא מפת תמא תל אביב?"
+  ],
+  "aio": "תמ\"א 38 (תוכנית מתאר ארצית לחיזוק מבנים קיימים בפני רעידות אדמה) היא `תוכנית ממשלתית שנועדה להגן על מבנים ישנים בישראל מפני רעידות אדמה ולעודד התחדשות עירונית`.[[1]](https://he.wikipedia.org/wiki/%D7%AA%D7%9E%22%D7%90_38)[[2]](https://www.nadlancenter.co.il/article/489)\n\n### עיקרי התוכנית\n\n- **מטרה:** הצלת חיי אדם וחיזוק מבנים שנבנו לפני 1 בינואר 1980 ואינם עומדים בתקן הישראלי לרעידות אדמה (ת\"י 413).\n- **תמריץ כלכלי:** המדינה מעניקה ליזמים זכויות בנייה נוספות בתמורה לחיזוק המבנה או בנייתו מחדש.[[1]](https://he.wikipedia.org/wiki/%D7%AA%D7%9E%22%D7%90_38)[[2]](https://prlaw.co.il/%D7%A2%D7%95%D",
+  "aio_refs": [
+   "https://he.wikipedia.org/wiki/%D7%AA%D7%9E%22%D7%90_38",
+   "https://www.nadlancenter.co.il/article/489",
+   "https://prlaw.co.il/%D7%A2%D7%95%D7%A8%D7%9A-%D7%93%D7%99%D7%9F-%D7%AA%D7%9E%D7%90-38/%D7%9E%D7%94-%D7%96%D7%94-%D7%AA%D7%9E%D7%90-38-%D7%A9%D7%90%D7%9C%D7%95%D7%AA-%D7%95%D7%AA%D7%A9%D7%95%D7%91%D7%95%D7%AA-%D7%A2%D7%9C-%D7%AA%D7%94%D7%9C%D7%99%D7%9A-%D7%AA%D7%9E%D7%90-38/",
+   "https://www.kolzchut.org.il/he/%D7%AA%D7%9E%22%D7%90_38",
+   "https://www.facebook.com/cramim.pt/videos/%D7%90%D7%96-%D7%9E%D7%94-%D7%94%D7%94%D7%91%D7%93%D7%9C-%D7%91%D7%99%D7%9F-%D7%AA%D7%9E%D7%90-38-%D7%97%D7%9C%D7%95%D7%A4%D7%AA-%D7%A9%D7%A7%D7%93-%D7%95%D7%9E%D7%A1%D7%9C%D7%95%D7%9C-%D7%A4%D7%99%D7%A0%D7%95%D7%99-%D7%91%D7%99%D7%A0%D7%95%D7%99%D7%91%D7%A9%D7%91%D7%99%D7%9C-%D7%96%D7%94-%D7%90%D7%A0%D7%97%D7%A0%D7%95-%D7%9B%D7%90%D7%9F%D7%AA%D7%9E%D7%90-38-%D7%A8%D7%9C%D7%95%D7%95/1986106692130508/"
+  ],
+  "related": [
+   "אבירם לב",
+   "נדלן רמת גן"
+  ],
+  "top3": [
+   "https://www.c14.co.il/article/1445345",
+   "https://terra.ltd/%D7%91%D7%9C%D7%95%D7%92/%D7%AA%D7%9E%D7%90-38-%D7%A2%D7%99%D7%A8%D7%99%D7%99%D7%AA-%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D/",
+   "https://www.facebook.com/groups/1325251610871946/"
+  ]
+ },
+ "מקלט ציבורי": {
+  "types": [
+   "local_pack",
+   "organic",
+   "related_searches",
+   "google_reviews",
+   "knowledge_graph"
+  ],
+  "paa": [],
+  "aio": null,
+  "aio_refs": [],
+  "related": [
+   "מקלט ציבורי קרוב אלי",
+   "מפת מקלטים ציבוריים",
+   "מקלט ציבורי תל אביב",
+   "איתור מקלט לפי כתובת",
+   "מקלטים ציבוריים ירושלים",
+   "מקלט ציבורי חיפה",
+   "פיקוד העורף מפת מקלטים",
+   "איתור מקלט עיריית תל אביב"
+  ],
+  "top3": [
+   "https://www.tel-aviv.gov.il/About/Pages/AccessibleShelters.aspx",
+   "https://www.jerusalem.muni.il/he/residents/security/spaces/list/",
+   "https://he.wikipedia.org/wiki/%D7%9E%D7%A7%D7%9C%D7%98_(%D7%9E%D7%99%D7%92%D7%95%D7%9F)"
+  ]
+ },
+ "הלוואה לכל מטרה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_search",
+   "people_also_ask",
+   "paid",
+   "related_searches"
+  ],
+  "paa": [
+   "איך אני יכול לקבל הלוואה מיידית לחשבון שלי?",
+   "האם ניתן לקבל הלוואה של 10,000 שקל?",
+   "איך אני יכול לקבל הלוואה ברגע בבנק מזרחי?",
+   "האם ניתן לקבל הלוואה של 100 אלף שקלים ללא ריבית?"
+  ],
+  "aio": "אפשר לקבל הלוואה לכל מטרה במגוון בנקים וחברות חוץ-בנקאיות בסכומים של עד 200,000–250,000 ש\"ח בתהליך דיגיטלי מהיר.[[1]](https://www.isracard.co.il/loans/non-bank-loan)[[2]](https://www.bankhapoalim.co.il/he/loans/loan-lead-campaign-2025)\n\n### אפשרויות בולטות להלוואה לכל מטרה\n\n- **בנק הפועלים** : הלוואה דיגיטלית לכל מטרה עד 250,000 ש\"ח בפריסה של עד 120 תשלומים, עם אפשרות לגרייס (דחיית קרן) של עד חצי שנה דרך [בנק הפועלים](https://www.bankhapoalim.co.il/loans/digital-loan-with-calculator).\n- **בנק ירושלים** : הלוואה אונליין ללקוחות כל הבנקים בסכום של 5,000 עד 200,000 ש\"ח לתקופה של עד 10 שנים ללא ער",
+  "aio_refs": [
+   "https://www.isracard.co.il/loans/non-bank-loan",
+   "https://www.bankhapoalim.co.il/he/loans/loan-lead-campaign-2025",
+   "https://www.bankhapoalim.co.il/loans/digital-loan-with-calculator",
+   "https://www.bankjerusalem.co.il/loans/all-purpose-loans",
+   "https://www.max.co.il/loans/calc",
+   "https://www.leumi.co.il/he/Articles/50592",
+   "https://www.mizrahi-tefahot.co.il/loans/privateloanslib/all-purpose-loan/"
+  ],
+  "related": [
+   "הלוואה לכל מטרה למסורבים",
+   "הלוואה לכל מטרה ישראכרט",
+   "הלוואה לכל מטרה מקס",
+   "הלוואה לכל מטרה חוץ בנקאית",
+   "הלוואה לכל מטרה 300000",
+   "הלוואה לכל מטרה ללא ריבית",
+   "הלוואה למסורבים",
+   "הלוואה לכל מטרה לאומי"
+  ],
+  "top3": [
+   "https://www.max.co.il/loans/calc",
+   "https://www.isracard.co.il/loans/non-bank-loan",
+   "https://www.bankjerusalem.co.il/loans/all-purpose-loans"
+  ]
+ },
+ "משכנתא לכל מטרה": {
+  "types": [
+   "ai_overview",
+   "organic"
+  ],
+  "paa": [],
+  "aio": "[משכנתא לכל מטרה - בנק הפועלים](https://www.bankhapoalim.co.il/mortgage/mortgage-for-any-purpose) היא הלוואה שניתנת כנגד שיעבוד של נכס נדל\"ן קיים שבבעלותכם, עבור מטרות שאינן רכישת דירה למגורים עצמי.[[1]](https://www.bankhapoalim.co.il/mortgage/mortgage-for-any-purpose)[[2]](https://mortgage.discountbank.co.il/get-mortgage/all-purpose)\n\n### מהי משכנתא לכל מטרה?\n\n- **הרעיון המרכזי:** שימוש בשווי הנכס הקיים שלכם כדי לקבל סכום כסף גדול בתנאי פריסה נוחים וארוכי טווח.\n- **מטרות נפוצות:** איחוד הלוואות ויקרות, שיפוץ הבית, סיוע לילדים ברכישת דירה, מימון טיפולים רפואיים או סגירת חובות.\n- **התנאים בבנקי",
+  "aio_refs": [
+   "https://www.bankhapoalim.co.il/mortgage/mortgage-for-any-purpose",
+   "https://mortgage.discountbank.co.il/get-mortgage/all-purpose",
+   "https://mortgage.leumi.co.il/all-about-mortgage/category/about/allpurpose",
+   "https://mortgage.mercantile.co.il/mortgage-types/all-purpose",
+   "https://www.supermarker.themarker.com/Mortgage/LearnAboutAllPurposeMortgage.aspx",
+   "https://www.harel-group.co.il/mortgages/mortgage/information/mortgage-for-any-purpose",
+   "https://www.menoramivt.co.il/product/mortgage-loan",
+   "https://www.mizrahi-tefahot.co.il/mortgages/updatemortgage/mortgage-loan-for-holiday/"
+  ],
+  "related": [],
+  "top3": [
+   "https://pln.co.il/%D7%94%D7%9C%D7%95%D7%95%D7%90%D7%95%D7%AA-%D7%9C%D7%9B%D7%9C-%D7%9E%D7%98%D7%A8%D7%94-%D7%9E%D7%94-%D7%A6%D7%A8%D7%99%D7%9A-%D7%9C%D7%93%D7%A2%D7%AA/",
+   "https://www.youtube.com/watch?v=cAxDdfsNZz0",
+   "https://mashkanta.5555.co.il/%D7%94%D7%9C%D7%95%D7%95%D7%90%D7%94-%D7%9C%D7%9B%D7%9C-%D7%9E%D7%98%D7%A8%D7%94"
+  ]
+ },
+ "בדק בית מחיר": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_ask",
+   "related_searches"
+  ],
+  "paa": [
+   "מהן ההמלצות לחברת בדק בית?",
+   "מה המחיר של ביקורת מבנים?",
+   "מהי המשכורת של מבצע בדק בית?",
+   "מהי עלות בניית בית פרטי?"
+  ],
+  "aio": "עלות בדק בית בישראל נעשתה בהתאם לסוג הנכס וגודלו, כאשר טווח המחירים הכללי נשען על המחירונים המעודכנים ב-[מידג'](https://www.midrag.co.il/Content/Price/7261) וב-[טופ שיפוצים](https://www.top-renovations.co.il/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%A9%D7%99%D7%A4%D7%95%D7%A6%D7%99%D7%9D/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%91%D7%93%D7%A7-%D7%91%D7%99%D7%AA):[[1]](https://www.midrag.co.il/Content/Price/7261)[[2]](https://www.top-renovations.co.il/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%A9%D7%99%D7%A4%D7%95%D7%A6%D7%99%D7%9D/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%91%D7%93%D7%A7-%D7%91%D7%",
+  "aio_refs": [
+   "https://www.midrag.co.il/Content/Price/7261",
+   "https://www.top-renovations.co.il/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%A9%D7%99%D7%A4%D7%95%D7%A6%D7%99%D7%9D/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%91%D7%93%D7%A7-%D7%91%D7%99%D7%AA",
+   "https://www.shahar-bedek.co.il/2025/04/21/how-much-does-a-home-inspection-cost/",
+   "https://www.pro.co.il/home-inspection/pricing",
+   "https://www.bedek-mivnim.co.il/%D7%9E%D7%99%D7%93%D7%A2-%D7%9E%D7%A7%D7%A6%D7%95%D7%A2%D7%99/item/32-%D7%91%D7%93%D7%A7-%D7%91%D7%99%D7%AA-%D7%9E%D7%97%D7%99%D7%A8.html",
+   "https://www.midrag.co.il/Content/SectorPriceList/78",
+   "https://www.midrag.co.il/Content/Tip/79",
+   "https://pro-eng.co.il/pricing"
+  ],
+  "related": [
+   "בדיקת מבנים בדק בית",
+   "מבט בדק בית",
+   "בר ואיתן בדק בית",
+   "פלס בדק בית ביקורות",
+   "אבישי לוי בדק בית",
+   "ארגמן בדק בית",
+   "הום בדק",
+   "בוני העמים מדרג"
+  ],
+  "top3": [
+   "https://stofmacher.co.il/%D7%9E%D7%90%D7%9E%D7%A8%D7%99%D7%9D/%D7%9B%D7%9E%D7%94-%D7%A2%D7%95%D7%9C%D7%94-%D7%91%D7%93%D7%A7-%D7%91%D7%99%D7%AA-%D7%9C%D7%93%D7%99%D7%A8%D7%94/",
+   "https://www.midrag.co.il/Content/PriceList/540007",
+   "https://www.hadas-bedek.co.il/"
+  ]
+ },
+ "הרשמה לדירה בהנחה": {
+  "types": [
+   "ai_overview",
+   "organic",
+   "people_also_ask",
+   "related_searches"
+  ],
+  "paa": [
+   "איפה אני יכול למצוא את תוצאות הגרלת \"דירה בהנחה\"?",
+   "איך אני יכול להאריך את הזכאות שלי לדירה בהנחה?",
+   "איפה אני יכול להיכנס לאתר ההגרלות של מחיר למשתכן?",
+   "איך אני יכול לבדוק אם אני זכאי למחיר למשתכן?"
+  ],
+  "aio": "ניתן להירשם לתוכניות \"דירה בהנחה\" דרך [אתר ההרשמה להגרלות \"דירה בהנחה\"](https://dira.moch.gov.il/) `של משרד הבינוי והשיכון ורשות מקרקעי ישראל`.[[1]](https://dira.moch.gov.il/)\n\n### תנאי קדם והנפקת אישור זכאות\n\n- **אישור זכאות:** כדי להירשם להגרלות, חובה להוציא מראש אישור זכאות דרך אתר משרד הבינוי והשיכון או דרך חברות ההרשמה המוסמכות (כמו מילגם או מעוף לדיור).\n- **עלות ההנפקה:** הנפקת אישור הזכאות או חידושו כרוכה בתשלום של 200 ₪ (או 50 ₪ לחידוש תקני לפי הנהלים).\n- **הסדרת מעמד:** לפי ההנחיות והעידכונים, נדרש עמידה בתנאי הסף (כולל חובת הסדרת מעמד צבאי לפי נתוני צה\"ל).\n- **עדיפות למילואים:** משרת",
+  "aio_refs": [
+   "https://dira.moch.gov.il/",
+   "https://www.gov.il/he/service/register_for_discounted_housing_lottery",
+   "https://www.kolzchut.org.il/he/%D7%94%D7%95%D7%A6%D7%90%D7%AA_%D7%90%D7%99%D7%A9%D7%95%D7%A8_%D7%96%D7%9B%D7%90%D7%95%D7%AA_%D7%9C%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA_%D7%93%D7%99%D7%A8%D7%94_%D7%91%D7%94%D7%A0%D7%97%D7%94_(%D7%9E%D7%97%D7%99%D7%A8_%D7%9C%D7%9E%D7%A9%D7%AA%D7%9B%D7%9F",
+   "https://shikun.milgam.co.il/",
+   "https://www.shikun-maof.co.il/dira/",
+   "https://www.gov.il/he/service/request_for_eligibility_confirmation",
+   "https://www.gov.il/he/pages/tenaey_zkaut",
+   "https://www.shikun-maof.co.il/online/"
+  ],
+  "related": [
+   "דירה בהנחה 2026",
+   "דירה בהנחה זכאות",
+   "מתי נפתחת ההרשמה לדירה בהנחה",
+   "אישור זכאות דירה בהנחה",
+   "מעוף דירה בהנחה",
+   "אלונים דירה בהנחה",
+   "דירה בהנחה הגרלות",
+   "מילגם דירה בהנחה"
+  ],
+  "top3": [
+   "https://dira.moch.gov.il/",
+   "https://www.gov.il/he/service/register_for_discounted_housing_lottery",
+   "https://www.shikun-maof.co.il/dira/"
+  ]
+ }
+}

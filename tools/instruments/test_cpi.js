@@ -1,0 +1,10 @@
+const fs = require('fs'), path = require('path'), vm = require('vm');
+const A = path.join(__dirname, '..', '..', 'plugins', 'nadlan-config', 'assets', 'instruments');
+const win = {}; vm.runInContext(fs.readFileSync(path.join(A, 'tools/cpi.js'), 'utf8'), vm.createContext({ window: win, Intl, Math, Date, JSON, console }));
+const m = JSON.parse(fs.readFileSync(path.join(A, 'data', 'cbs-120010.json'), 'utf8'));
+const L = win.NLCX.link(m, 100000, '2021-01-20', '2026-09-20', 'known', 0.02);
+console.log('known', L.ka, '->', L.kb, L.out.toFixed(2));
+const F = win.NLCX.link(m, 100000, '2021-01-20', '2026-08-20', 'for', 0.02);
+console.log('for', F.ka, '->', F.kb, F.out.toFixed(2));
+const R = win.NLCX.rent(m, 6500, '2024-09-01', '2026-10-14', '12', true, 0.02);
+console.log('rent', R.bk, R.rows.map(r => r.date + ':' + r.rent.toFixed(0)).join(' '), 'months', R.months, 'extra', R.extra.toFixed(0));

@@ -116,6 +116,7 @@
       var a = el('div', 'nli__answer');
       a.innerHTML = '<span class="nli__alab">' + esc(r.answer.label) + '</span><output class="nli__fig' + (r.answer.tone === 'survey' ? ' is-survey' : '') + '">' + esc(r.answer.value) + '</output>' + (r.answer.sub ? '<span class="nli__asub">' + r.answer.sub + '</span>' : '');
       out.appendChild(a);
+      if (r.breakdown) r.breakdown = r.breakdown.filter(function (b) { return b.value > 0.5; });
       if (r.breakdown && r.breakdown.length) {
         var tot = r.breakdown.reduce(function (s, b) { return s + Math.max(0, b.value); }, 0) || 1;
         var bw = el('div', ''); var bar = el('div', 'nli__bar'); bar.setAttribute('role', 'img');

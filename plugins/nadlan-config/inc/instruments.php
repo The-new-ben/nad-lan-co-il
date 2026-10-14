@@ -27,6 +27,12 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array(),
 				'related' => array( '/new-projects/construction-input-index/' => 'הצמדה למדד תשומות הבנייה', '/apartment-prices/' => 'מחירון הדירות לפי עיר', '/purchase-tax-calculator/' => 'מחשבון מס רכישה', '/mortgage-calculator/' => 'מחשבון משכנתא' ),
 			),
+			'cpi' => array(
+				'name' => 'מחשבון הצמדה למדד המחירים לצרכן', 'cat' => 'FinanceApplication',
+				'desc' => 'מצמיד סכום, שכר דירה או חוב למדד המחירים לצרכן של הלשכה המרכזית לסטטיסטיקה, לפי המדד הידוע או המדד בגין, עם ריבית לפי הצורך.',
+				'data' => array( 'cbs-120010.json' ),
+				'related' => array( '/new-projects/construction-input-index/' => 'הצמדה למדד תשומות הבנייה', '/mortgage-calculator/' => 'מחשבון משכנתא', '/apartment-prices/' => 'מחירון הדירות לפי עיר', '/new-projects/contractor-delay-compensation/' => 'פיצוי על איחור במסירה' ),
+			),
 		) );
 	}
 
@@ -81,6 +87,15 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 			$lm = (int) substr( $l, 5 ) . '.' . substr( $l, 0, 4 );
 			return '<p>מדד מחירי תשומה בבנייה למגורים, הנתון האחרון שפרסמה הלשכה המרכזית לסטטיסטיקה: ' . esc_html( $lm ) . '. שינוי בחודש: ' . esc_html( number_format( $m1 * 100, 1 ) ) . '%'
 				. ( null !== $m12 ? '. שינוי ב־12 חודשים: ' . esc_html( number_format( $m12 * 100, 1 ) ) . '%' : '' ) . '. בחוזה מ־7.7.2022: 20% מהמחיר המשולמים בחתימה אינם צמודים, ומכל תשלום אחר מותר להצמיד עד מחצית, ורק עד מועד המסירה שבחוזה.</p>';
+		}
+		if ( 'cpi' === $id ) {
+			$d = nadlan_nli_series( 'cbs-120010.json' );
+			if ( ! $d ) { return ''; }
+			$ks = array_keys( $d['months'] ); $l = end( $ks ); $p = $ks[ count( $ks ) - 2 ];
+			$y = ( (int) substr( $l, 0, 4 ) - 1 ) . substr( $l, 4 );
+			$m1 = $d['months'][ $l ] / $d['months'][ $p ] - 1; $m12 = isset( $d['months'][ $y ] ) ? $d['months'][ $l ] / $d['months'][ $y ] - 1 : null;
+			return '<p>מדד המחירים לצרכן, הנתון האחרון שפרסמה הלשכה המרכזית לסטטיסטיקה: ' . esc_html( (int) substr( $l, 5 ) . '.' . substr( $l, 0, 4 ) ) . ' (בסיס ' . esc_html( $d['base'] ) . '). שינוי בחודש: ' . esc_html( number_format( $m1 * 100, 1 ) ) . '%'
+				. ( null !== $m12 ? '. שינוי ב־12 חודשים: ' . esc_html( number_format( $m12 * 100, 1 ) ) . '%' : '' ) . '. המדד מתפרסם ב־15 בכל חודש, בשעה 18:30, עבור החודש הקודם.</p>';
 		}
 		if ( 'delay' === $id ) {
 			return '<p>פיצוי על איחור במסירה לפי סעיף 5א לחוק המכר (דירות): בחוזה מ־7.7.2022, אחרי חודש חסד, דמי שכירות של דירה דומה בחודשים 2 עד 4, דמי שכירות כפול 1.25 בחודשים 5 עד 10, וכפול 1.5 מהחודש ה־11. בחוזה עד 6.7.2022, כשהאיחור עובר 60 ימים, דמי שכירות כפול 1.5 מהמועד שבחוזה ועד סוף החודש השמיני, ומהחודש התשיעי כפול 1.25.</p>';

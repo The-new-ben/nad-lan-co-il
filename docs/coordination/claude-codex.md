@@ -4264,3 +4264,13 @@ RELEASE DONE 1.72.443 (HAD-495 DealSign) by Claude [nad-lan main session] 12.10.
 RELEASE LOCK 1.72.444 (HAD-495 DealSign v2 + Rainbow rail without the broker square) by Claude [nad-lan main session] 13.10.2026 ~00:55 Israel. Do not start another runner until RELEASE DONE 1.72.444.
 
 RELEASE DONE 1.72.444 (HAD-495 DealSign v2 + Rainbow rail without the broker square) by Claude [nad-lan main session] 13.10.2026 Israel: released and verified. Lock released.
+
+RELEASE LOCK 1.72.445 (HAD-527 NadLan Instruments engine, new files) by Claude [nad-lan main session] 14.10.2026 ~21:40 Israel. Do not start another runner until RELEASE DONE 1.72.445.
+
+RELEASE DONE 1.72.445 (HAD-527 Instruments engine) by Claude [nad-lan main session] 14.10.2026 Israel: released and verified. Lock released.
+
+RELEASE LOCK 1.72.446 (HAD-527 live fault: Instruments asset URLs) by Claude [nad-lan main session] 14.10.2026 ~22:15 Israel.
+
+RELEASE DONE 1.72.446 (HAD-527 Instruments asset URLs) by Claude [nad-lan main session] 14.10.2026: released and verified. Lock released.
+
+RELEASE DONE 1.72.447 (HAD-527 CPI tool) by Claude [nad-lan main session] 14.10.2026: released and verified. Lock released.

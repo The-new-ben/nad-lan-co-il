@@ -40,6 +40,17 @@ Weekly usage was 58% on 14.10 with the reset on 19.10 01:00. Pace: at most one t
 only for research. At 80% weekly: stop building, report, wait for the reset (leads and live faults only).
 
 ## State (newest first)
+- 15.10 ~00:10: TURN 2 DONE (HAD-529). LIVE 1.72.447 + NEW PAGE https://nad-lan.co.il/cpi-calculator/ (page 8403, tool "cpi":
+  sum by known/for index, CPI-linked rent with update rules and floor, interest + linkage). Data now aligned to the CBS
+  calculator at every base boundary (build_index_data.py asks the CBS calculator with value 1,000,000): ₪120,573.65 vs CBS
+  ₪120,573.75. Engine fixes shipped ([hidden] really hides, tables stay tables on phones, zero legend items drop). Page
+  builder docs/tools/cpi/build_page.py (all numbers from the data); publisher scripts/project-stage/create_tool_page.py
+  (slug free + same-title gate + live checks, draft on failure). Research landed: docs/research/2026-10-14-tools-program/
+  catalog.md (ranked backlog, 10 surprises, keyword volumes keywords.csv). NEXT, in order: (a) MONTHLY DATA: after the 15th
+  (next 15.10, the September index) rebuild the JSON + release, and rebuild docs/tools/cpi/page.html via build_page.py then
+  update page 8403 content; (b) links: add /cpi-calculator/ to the related lists of indexation and delay, link from the CPI
+  glossary entry and rent pages; (c) next tool from the catalogue: #1 warranty clock of the Sale Law (verify periods on the
+  primary source first), #2 Bank of Israel rate + prime impact (on the existing mortgage-rates page), #4 Tabu fees.
 - 14.10 ~22:40: TURN 1 DONE (HAD-528). LIVE 1.72.445-446: the Instruments engine (inc/instruments.php, assets/instruments/
   core.js + core.css, data/cbs-200010.json + cbs-120010.json chained to the latest base by tools/instruments/build_index_data.py,
   checked against the CBS calculator) + tools "indexation" (page 4436 /new-projects/construction-input-index/) and "delay"
