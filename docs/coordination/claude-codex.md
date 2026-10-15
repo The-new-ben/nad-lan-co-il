@@ -4306,3 +4306,7 @@ RELEASE DONE 1.72.454 (HAD-534 soil map + PFAS calculator) by Claude [nad-lan ma
 RELEASE LOCK 1.72.455 (HAD-534 questions-to-the-developer generator) by Claude [nad-lan main session] 15.10.2026 ~11:18 Israel.
 
 RELEASE DONE 1.72.455 (HAD-534 letter generator) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.456 (HAD-534 FAQPage JSON-LD) by Claude [nad-lan main session] 15.10.2026 ~11:44 Israel.
+
+RELEASE DONE 1.72.456 (HAD-534 FAQPage) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.

@@ -179,6 +179,16 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		return $h . '</section>';
 	} );
 
+	/** FAQPage from the page's own "שאלות נפוצות" section (h3 question, then its paragraphs), for search engines and AI answers. */
+	function nadlan_nli_faq( $html ) {
+		$html = preg_replace( '/<!--.*?-->/s', '', (string) $html );
+		if ( ! preg_match( '/<h2[^>]*>\s*(?:שאלות נפוצות|Frequently asked questions)\s*<\/h2>(.*?)(?=<h2|$)/su', $html, $m ) ) { return array(); }
+		preg_match_all( '/<h3[^>]*>(.*?)<\/h3>\s*((?:<p[^>]*>.*?<\/p>\s*)+)/su', $m[1], $qa, PREG_SET_ORDER );
+		$out = array();
+		foreach ( $qa as $x ) { $q = trim( wp_strip_all_tags( $x[1] ) ); $a = trim( preg_replace( '/\s+/u', ' ', wp_strip_all_tags( $x[2] ) ) ); if ( $q && $a ) { $out[] = array( '@type' => 'Question', 'name' => $q, 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $a ) ); } }
+		return count( $out ) >= 2 ? $out : array();
+	}
+
 	add_action( 'wp_head', function () {
 		$ids = nadlan_nli_page_ids();
 		if ( ! $ids ) { return; }
@@ -189,6 +199,8 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'inLanguage' => 'he', 'url' => get_permalink(), 'isAccessibleForFree' => true, 'offers' => array( '@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'ILS' ),
 				'publisher' => array( '@type' => 'Organization', 'name' => 'nad-lan.co.il', 'url' => home_url( '/' ) ) );
 		}
+		$p = get_post(); $faq = $p ? nadlan_nli_faq( $p->post_content ) : array();
+		if ( $faq ) { $out[] = array( '@type' => 'FAQPage', 'url' => get_permalink(), 'mainEntity' => $faq ); }
 		echo '<script type="application/ld+json" id="nadlan-nli-ld">' . wp_json_encode( array( '@context' => 'https://schema.org', '@graph' => $out ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
 	}, 30 );
 }

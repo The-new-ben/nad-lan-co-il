@@ -55,6 +55,12 @@ Weekly usage was 58% on 14.10 with the reset on 19.10 01:00. Pace: at most one t
 only for research. At 80% weekly: stop building, report, wait for the reset (leads and live faults only).
 
 ## State (newest first)
+- 15.10 ~12:05: LIVE 1.72.456: FAQPage JSON-LD built from each Instruments page's own "שאלות נפוצות" section
+  (nadlan_nli_faq): the soil page (5 Q) and /cpi-calculator/ (5 Q) now carry it, parsed valid live. DECISION: the English soil
+  page moves to after the weekly reset (19.10): it needs the engine + three tools bilingual and LTR styles (~4% of the week)
+  while the English phrases show no volume; weekly use ~74% with the stop at 80%. Until 18:30: idle (the loop resumes by a
+  one-shot at 18:40 for the September CPI refresh). After the reset: English page, 3D walk between our project models,
+  Kikar HaMedina tools (ask Ben first), project-page lines (Ben decides).
 - 15.10 ~11:35: HAD-534 (c) DONE: LIVE 1.72.455 = tool "soilask" (questions-to-the-developer letter, opens with what was
   published on the chosen plot; 7 questions in a full letter, 4 in a short WhatsApp message; copied/shared bare, no link of ours)
   placed on /sde-dov/contamination/ before "איך קוראים דו״ח של סקר קרקע" (insert_before_heading.py now places shortcodes too).
