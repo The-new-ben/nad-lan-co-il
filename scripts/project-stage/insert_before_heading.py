@@ -19,7 +19,9 @@ exec(compile(src[:src.index('s, h, _ = req("GET", "/wp-json/nadlan/v1/health")')
 req = ns["req"]
 pid, heading, snip_path = sys.argv[1], sys.argv[2], sys.argv[3]
 snip = io.open(snip_path, encoding="utf-8").read().strip()
-href = re.search(r'href="([^"]+)"', snip).group(1)
+mh, sc = re.search(r'href="([^"]+)"', snip), re.search(r'\[nadlan_tool id="([a-z0-9-]+)"\]', snip)
+href = mh.group(1) if mh else snip  # the raw marker: a link, or the shortcode itself
+live_mark = mh.group(1) if mh else 'data-nli="%s"' % sc.group(1)
 s, b, _ = req("GET", f"/wp-json/wp/v2/pages/{pid}?context=edit&_fields=content,link,modified")
 raw, link = b["content"]["raw"], b["link"]
 if href in raw:
@@ -32,7 +34,8 @@ blk = raw.rfind("<!-- wp:heading", 0, at)
 if blk != -1 and re.fullmatch(r"<!-- wp:heading[^>]*-->\s*", raw[blk:at]):
     at = blk  # keep the heading's block comment with its heading
 blocks = "<!-- wp:" in raw
-piece = ("<!-- wp:paragraph -->\n" + snip + "\n<!-- /wp:paragraph -->\n\n") if blocks else (snip + "\n\n")
+kind = "paragraph" if mh else "shortcode"
+piece = ("<!-- wp:%s -->\n" % kind + snip + "\n<!-- /wp:%s -->\n\n" % kind) if blocks else (snip + "\n\n")
 new = raw[:at] + piece + raw[at:]
 print(f"[plan] page {pid} {link}: insert {len(snip)} chars before '{heading}' (block markup: {blocks})")
 if "--dry" in sys.argv:
@@ -50,7 +53,7 @@ print("[read-back] OK")
 time.sleep(3)
 live = urllib.request.urlopen(urllib.request.Request(link + "?nlv=%d" % time.time(), headers={"User-Agent": "Mozilla/5.0"}), timeout=90).read().decode("utf-8", "replace")
 body = live[live.find("<body"):]
-checks = {"link once": body.count(href) >= 1, "one h1": body.count("<h1") == 1, "heading kept": heading in body}
+checks = {"marker on the live page": body.count(live_mark) >= 1, "one h1": body.count("<h1") == 1, "heading kept": heading in body}
 for k, v in checks.items():
     print("  ", "OK " if v else "BAD", k)
 if not all(checks.values()):

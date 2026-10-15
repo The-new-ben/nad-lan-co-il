@@ -128,3 +128,4 @@ html body .nli button.nls__3d[aria-pressed="true"]{background:#12202A;color:#FFF
 html body .nli button.nls__row{border:0;background:none;padding:0;margin:0;font:600 14px/20px var(--nli-mono);color:var(--nli-sea);text-decoration:underline;cursor:pointer;min-height:32px}
 .nls-pop .maplibregl-popup-content{direction:rtl;text-align:right;font:400 13px/19px "IBM Plex Sans Hebrew",system-ui,sans-serif;color:#12202A;padding:10px 12px}
 .nls-pop p{margin:0 0 4px}
+html body .nli pre.nli__doc{white-space:pre-wrap;word-break:normal;overflow-wrap:anywhere;font:400 15px/25px var(--nli-sans) !important;color:var(--nli-ink) !important;background:var(--nli-surface) !important;border:1px solid var(--nli-line);border-inline-start:3px solid var(--nli-sea);border-radius:var(--nli-r-s);padding:16px;margin:0;direction:rtl;text-align:right;max-height:none;overflow:visible}

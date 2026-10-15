@@ -55,6 +55,12 @@ Weekly usage was 58% on 14.10 with the reset on 19.10 01:00. Pace: at most one t
 only for research. At 80% weekly: stop building, report, wait for the reset (leads and live faults only).
 
 ## State (newest first)
+- 15.10 ~11:35: HAD-534 (c) DONE: LIVE 1.72.455 = tool "soilask" (questions-to-the-developer letter, opens with what was
+  published on the chosen plot; 7 questions in a full letter, 4 in a short WhatsApp message; copied/shared bare, no link of ours)
+  placed on /sde-dov/contamination/ before "איך קוראים דו״ח של סקר קרקע" (insert_before_heading.py now places shortcodes too).
+  Engine: r.doc (a generated document block) + r.bare (share text without our link). Presses docs/tools/press_soilask.py
+  phone + desktop, 0 errors. NEXT: (d) English page /en/sde-dov/contamination/ with the three tools speaking English (string
+  tables by the host lang); (f) CPI refresh after 18:30 today; (b) waits for Ben; (e) 3D walk between our project models.
 - 15.10 ~11:05: HAD-534 (a) DONE: the hub /sde-dov/ (4730) links the soil page with one measured line at the end of the
   section "בדיקות משפטיות לפני רכישה על הנייר בשדה דב", right before the FAQ (scripts/project-stage/insert_before_heading.py:
   backup docs/qa/had-534/page-backup/, read-back, live order check). NEXT: (c) questions-to-the-developer generator on the soil

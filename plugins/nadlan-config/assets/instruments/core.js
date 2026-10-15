@@ -134,6 +134,7 @@
         out.appendChild(sc);
       }
       if (r.note) out.appendChild(el('p', 'nli__note', r.note));
+      if (r.doc) { var doc = el('pre', 'nli__doc'); doc.textContent = r.doc; out.appendChild(doc); }  // a generated document (a letter): plain text, copied and shared as is
       if (r.table) {
         var open = table.open;
         var ph = r.table.phoneHide || [];  // columns a phone does not need (their content is folded into another cell)
@@ -144,7 +145,7 @@
       formula.textContent = r.formula || '';
       src.innerHTML = r.sources && r.sources.length ? 'מקורות: ' + r.sources.map(function (s) { return s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + '</a>' : esc(s.label); }).join(' · ') : '';
     }
-    function shareText() { return last && last.text ? last.text + '\n' + location.origin + location.pathname : location.href; }
+    function shareText() { return last && last.text ? last.text + (last.bare ? '' : '\n' + location.origin + location.pathname) : location.href; }  // bare: a letter goes out without our link
     var bc = el('button', 'is-primary', ICON.copy + '<span>העתקת התוצאה</span>'); bc.type = 'button';
     bc.addEventListener('click', function () { var tx = shareText(); var lab = bc.querySelector('span');
       var done = function () { lab.textContent = 'הועתק'; setTimeout(function () { lab.textContent = 'העתקת התוצאה'; }, 1600); };

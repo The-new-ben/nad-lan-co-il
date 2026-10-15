@@ -1,0 +1,22 @@
+{
+  "released": "1.72.455",
+  "from": "1.72.454",
+  "live_before": {
+    "inc/instruments.php": "54c306f126391ee15b29fa89bb2c5f61",
+    "assets/instruments/core.js": "0c20a976018c613cc7d8ebc78bc49617",
+    "assets/instruments/core.css": "dad2b0a473c916382fb2e2973054c44f",
+    "nadlan-config.php": "39e0a6b5d097dd59ba6b33e9673b7b0a"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-15 11:25:55",
+  "files": {
+    "inc/instruments.php": "fc2c72539cd2ee2f31b2dae30c8ee0b4",
+    "assets/instruments/core.js": "24cc38375181217b3b0e90abee4dd608",
+    "assets/instruments/core.css": "0ca13f4f4ba70123bcf938b68530a95d",
+    "assets/instruments/tools/soilask.js": "d03e2abab3289d29e5ab9f24698e5de0",
+    "nadlan-config.php": "a385b8e2433679e5837b6074ddc59c3e"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.455, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
