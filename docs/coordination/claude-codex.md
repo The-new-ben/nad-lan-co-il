@@ -4322,3 +4322,7 @@ RELEASE DONE 1.72.458 (HAD-534 plot card) by Claude [nad-lan main session] 15.10
 RELEASE LOCK 1.72.459 (HAD-534 green project buildings) by Claude [nad-lan main session] 15.10.2026 ~12:49 Israel.
 
 RELEASE DONE 1.72.459 (HAD-534 green buildings) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.460 (soil guard on every project page, Ben 15.10) by Claude [nad-lan main session] 15.10.2026 ~17:37 Israel.
+
+RELEASE DONE 1.72.460 (soil guard) by Claude [nad-lan main session] 15.10.2026: see deploy-result-460.json. Lock released.

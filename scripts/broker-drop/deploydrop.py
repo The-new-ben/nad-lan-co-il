@@ -286,6 +286,13 @@ def install_and_setup():
             with open(os.path.join(os.environ.get("NL_SCRATCH", "."), "drop_url.txt"), "w", encoding="utf-8") as fh:
                 fh.write(r["drop_url"] + chr(10))
 
+        if "--link" in ARGS:  # Ben 15.10.2026: Meital's CURRENT link, unchanged (a new one only if none is valid); saved privately
+            r = ops({"token_for": BROKER}, "link")
+            priv = os.path.join(REPO, "docs", "sales", "meital-kit-2026-10", "private", "drop-link.txt")
+            with open(priv, "w", encoding="utf-8") as fh:
+                fh.write(r["drop_url"] + chr(10))
+            print("CURRENT DROP LINK saved to", priv, "| ends with", r["drop_url"].rstrip("/")[-4:])
+
         if "--auto" in ARGS:
             val = ARGS[ARGS.index("--auto") + 1]
             ops({"meta": [{"id": BROKER, "set": {"nl_auto_publish": "1" if val == "1" else "0"}}]}, "auto")
@@ -298,7 +305,7 @@ def install_and_setup():
         print("bridge route after cleanup:", s3, "(want 404)")
 
 
-if "--verify" not in ARGS or any(a in ARGS for a in ("--setup", "--auto", "--install", "--rotate", "--meital-langs", "--pages", "--post-listing")):
+if "--verify" not in ARGS or any(a in ARGS for a in ("--setup", "--auto", "--install", "--rotate", "--meital-langs", "--pages", "--post-listing", "--link")):
     install_and_setup()
 
 # ---- verify ----

@@ -10,6 +10,8 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
+require_once __DIR__ . '/soil-guard.php';  // Ben 15.10.2026: nothing about the soil tests on any project page (the guard, not a note)
+
 if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 
 	/** The registry: id => name, description, data files, related links (path => label). */
