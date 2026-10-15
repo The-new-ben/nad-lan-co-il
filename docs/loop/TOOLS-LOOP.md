@@ -50,6 +50,10 @@ The resume point of the tools program. Every loop turn reads this file first, do
   anything about others.
 - Budget: Ben asked to keep the loop under control (weekly ~76% on 15.10 noon).
 
+## LATER, standing (always comes up again, Ben 15.10.2026)
+- HAD-542: move x-broker-drop / x-broker-join / x-owner-wizard from Code Snippets into the plugin, a release check that a
+  test broker link opens, old links valid until revoked, an admin page of broker links. Not now; raise it at every planning.
+
 ## One turn = one item, to the end
 1. Pick the top open item from docs/research/2026-10-14-tools-program/catalog.md (ranked backlog) unless a live fault or
    Ben's word comes first.

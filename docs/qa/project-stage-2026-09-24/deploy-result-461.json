@@ -1,0 +1,19 @@
+{
+  "released": "1.72.461",
+  "from": "1.72.460",
+  "live_before": {
+    "inc/instruments.php": "60c9bfd6a689f637ebbb5c21c11fc642",
+    "inc/health.php": "78e4429150a089dcf4418634044c4a31",
+    "nadlan-config.php": "47103e1fb69ae6396d1b89fddb7715d0"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-15 18:23:31",
+  "files": {
+    "inc/instruments.php": "2e285af426c2d70413ac23ebfe7e23de",
+    "inc/health.php": "09552e7a19b2bd6543de1b182888db15",
+    "nadlan-config.php": "9409ecd52b8d775c881688597022911e"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.461, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

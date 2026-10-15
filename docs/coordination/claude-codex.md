@@ -4326,3 +4326,7 @@ RELEASE DONE 1.72.459 (HAD-534 green buildings) by Claude [nad-lan main session]
 RELEASE LOCK 1.72.460 (soil guard on every project page, Ben 15.10) by Claude [nad-lan main session] 15.10.2026 ~17:37 Israel.
 
 RELEASE DONE 1.72.460 (soil guard) by Claude [nad-lan main session] 15.10.2026: see deploy-result-460.json. Lock released.
+
+RELEASE LOCK 1.72.461 (health tells the truth about Morning; no content guard) by Claude [nad-lan main session] 15.10.2026 ~18:15 Israel.
+
+RELEASE DONE 1.72.461 (Morning health truth) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.

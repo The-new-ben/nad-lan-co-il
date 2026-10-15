@@ -154,13 +154,33 @@ if ( ! function_exists( 'nadlan_health_probe_http' ) ) {
 	}
 }
 
+if ( ! function_exists( 'nadlan_health_probe_morning' ) ) {
+	/**
+	 * Morning (Green Invoice), 15.10.2026: the old probe read the API base URL, which answers 404 by design, so every check and
+	 * every agent reported "Morning is broken" while the checkout worked. Now: is Morning's server reachable (any answer below
+	 * 500), and how many Morning payment methods the checkout really offers.
+	 */
+	function nadlan_health_probe_morning( $url ) {
+		$p = nadlan_health_probe_http( 'greeninvoice', $url );
+		$code = isset( $p['code'] ) ? (int) $p['code'] : 0;
+		$reachable = $code > 0 && $code < 500;
+		$gw = 0;
+		if ( function_exists( 'WC' ) && WC() && method_exists( WC(), 'payment_gateways' ) ) {
+			foreach ( (array) WC()->payment_gateways()->payment_gateways() as $id => $g ) {
+				if ( 0 === strpos( (string) $id, 'greeninvoice' ) && isset( $g->enabled ) && 'yes' === $g->enabled ) { $gw++; }
+			}
+		}
+		return array( 'status' => $reachable ? 'ok' : 'fail', 'reachable' => $reachable, 'checkout_methods' => $gw, 'latency_ms' => isset( $p['latency_ms'] ) ? $p['latency_ms'] : null );
+	}
+}
+
 if ( ! function_exists( 'nadlan_health_dependency_report' ) ) {
 	function nadlan_health_dependency_report() {
 		$green_url = apply_filters( 'nadlan_health_greeninvoice_url', get_option( 'nadlan_gi_health_url', 'https://api.greeninvoice.co.il/api/v1' ) );
 		$openai_url = apply_filters( 'nadlan_health_openai_url', get_option( 'nadlan_openai_health_url', 'https://api.openai.com/v1/models' ) );
 		return array(
 			'db' => nadlan_health_probe_db(),
-			'greeninvoice' => nadlan_health_probe_http( 'greeninvoice', $green_url ),
+			'greeninvoice' => nadlan_health_probe_morning( $green_url ),
 			'openai' => nadlan_health_probe_http( 'openai', $openai_url ),
 		);
 	}
