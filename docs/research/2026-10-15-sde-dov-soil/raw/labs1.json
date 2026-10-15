@@ -1,0 +1,1055 @@
+{
+  "version": "0.1.20260917",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.4594 sec.",
+  "cost": 0.01296,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "10150639-2646-0399-0000-1f9ee4e61cff",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.4524 sec.",
+      "cost": 0.01296,
+      "result_count": 1,
+      "path": [
+        "v3",
+        "dataforseo_labs",
+        "google",
+        "keyword_suggestions",
+        "live"
+      ],
+      "data": {
+        "api": "dataforseo_labs",
+        "function": "keyword_suggestions",
+        "se_type": "google",
+        "keyword": "זיהום קרקע",
+        "location_code": 2376,
+        "language_code": "he",
+        "limit": 100,
+        "include_seed_keyword": true,
+        "order_by": [
+          "keyword_info.search_volume,desc"
+        ]
+      },
+      "result": [
+        {
+          "se_type": "google",
+          "seed_keyword": "זיהום קרקע",
+          "seed_keyword_data": {
+            "se_type": "google",
+            "keyword": "זיהום קרקע",
+            "location_code": 2376,
+            "language_code": "he",
+            "keyword_info": {
+              "se_type": "google",
+              "last_updated_time": "2026-09-16 08:36:09 +00:00",
+              "competition": 0.15,
+              "competition_level": "LOW",
+              "cpc": null,
+              "search_volume": 260,
+              "low_top_of_page_bid": 1.97,
+              "high_top_of_page_bid": 22.08,
+              "categories": [
+                10008
+              ],
+              "monthly_searches": [
+                {
+                  "year": 2026,
+                  "month": 8,
+                  "search_volume": 590
+                },
+                {
+                  "year": 2026,
+                  "month": 7,
+                  "search_volume": 40
+                },
+                {
+                  "year": 2026,
+                  "month": 6,
+                  "search_volume": 30
+                },
+                {
+                  "year": 2026,
+                  "month": 5,
+                  "search_volume": 260
+                },
+                {
+                  "year": 2026,
+                  "month": 4,
+                  "search_volume": 170
+                },
+                {
+                  "year": 2026,
+                  "month": 3,
+                  "search_volume": 140
+                },
+                {
+                  "year": 2026,
+                  "month": 2,
+                  "search_volume": 1300
+                },
+                {
+                  "year": 2026,
+                  "month": 1,
+                  "search_volume": 70
+                },
+                {
+                  "year": 2025,
+                  "month": 12,
+                  "search_volume": 50
+                },
+                {
+                  "year": 2025,
+                  "month": 11,
+                  "search_volume": 50
+                },
+                {
+                  "year": 2025,
+                  "month": 10,
+                  "search_volume": 50
+                },
+                {
+                  "year": 2025,
+                  "month": 9,
+                  "search_volume": 30
+                }
+              ],
+              "search_volume_trend": {
+                "monthly": 1375,
+                "quarterly": 1867,
+                "yearly": 1080
+              }
+            },
+            "keyword_info_normalized_with_bing": null,
+            "keyword_info_normalized_with_clickstream": null,
+            "clickstream_keyword_info": null,
+            "keyword_properties": {
+              "se_type": "google",
+              "core_keyword": null,
+              "synonym_clustering_algorithm": null,
+              "keyword_difficulty": 0,
+              "detected_language": "he",
+              "is_another_language": false,
+              "words_count": 2
+            },
+            "serp_info": {
+              "se_type": "google",
+              "check_url": "https://www.google.com/search?q=%D7%96%D7%99%D7%94%D7%95%D7%9D%20%D7%A7%D7%A8%D7%A7%D7%A2&hl=he&gl=IL&ie=UTF-8&uule=w+CAIQIFISCYvJpzIkSQAVEbosNRMgQmtq",
+              "serp_item_types": [
+                "ai_overview",
+                "organic",
+                "related_searches",
+                "knowledge_graph",
+                "images"
+              ],
+              "se_results_count": 115,
+              "last_updated_time": "2026-09-16 19:44:26 +00:00",
+              "previous_updated_time": "2026-07-17 08:27:36 +00:00"
+            },
+            "search_intent_info": {
+              "se_type": "google",
+              "main_intent": "informational",
+              "foreign_intent": null,
+              "last_updated_time": "2026-05-07 18:04:05 +00:00"
+            },
+            "avg_backlinks_info": {
+              "se_type": "google",
+              "backlinks": 1.2,
+              "dofollow": 1.1,
+              "referring_pages": 1.2,
+              "referring_domains": 1.1,
+              "referring_main_domains": 0.7,
+              "rank": 24.3,
+              "main_domain_rank": 362.3,
+              "last_updated_time": "2026-09-16 19:44:27 +00:00"
+            }
+          },
+          "location_code": 2376,
+          "language_code": "he",
+          "total_count": 8,
+          "items_count": 8,
+          "offset": 0,
+          "offset_token": "eyJDdXJyZW50T2Zmc2V0Ijo4LCJSZXF1ZXN0RGF0YSI6eyJrZXl3b3JkIjoi15bXmdeU15XXnSDXp9eo16fXoiIsImluY2x1ZGVfc2VlZF9rZXl3b3JkIjp0cnVlLCJmdWxsX21hdGNoIjpmYWxzZSwibG9hZF9zZXJwX2luZm8iOmZhbHNlLCJzZWFyY2hfYWZ0ZXJfdG9rZW4iOm51bGwsImlnbm9yZV9zeW5vbnltcyI6ZmFsc2UsImxhbmd1YWdlIjoiaGUiLCJzZWFyY2hfZW5naW5lIjoiZ29vZ2xlIiwibG9jYXRpb24iOjIzNzYsInVzZV9uZXdfY2F0ZWdvcmllcyI6dHJ1ZSwib3JkZXJfYnkiOnsib3JkZXJfZmllbGQiOiJrZXl3b3JkX2luZm8uc2VhcmNoX3ZvbHVtZSIsIm9yZGVyX3R5cGUiOiJEZXNjIiwibmV4dCI6bnVsbH0sImxpbWl0IjoxMDAsIm9mZnNldCI6MCwiYWlkIjoyNjQ2NzIsInVzZV9jYWNoZSI6dHJ1ZSwidGFza19pZCI6IjEwMTUwNjM5LTI2NDYtMDM5OS0wMDAwLTFmOWVlNGU2MWNmZiIsImZsYWdzIjpudWxsfSwiUmF3UXVlcnkiOm51bGwsIklkIjoiZWUzYTI1MjEtNTY0Yi00ODQwLWE2ZGYtZDRlNDMxNGU3ZjViIiwiU2VhcmNoQWZ0ZXJEYXRhIjpbMTAsImViYzlmNGQ1LWEyODQtZGIwMi1hZWE3LWZhYjAyNGExOTZhYSJdLCJFeGVjdXRvciI6LTkxODQ0MDU5NDA0NDQ1MTc2MzN9",
+          "items": [
+            {
+              "se_type": "google",
+              "keyword": "זיהום קרקע",
+              "location_code": 2376,
+              "language_code": "he",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2026-09-16 08:36:09 +00:00",
+                "competition": 0.15,
+                "competition_level": "LOW",
+                "cpc": null,
+                "search_volume": 260,
+                "low_top_of_page_bid": 1.97,
+                "high_top_of_page_bid": 22.08,
+                "categories": [
+                  10008
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2026,
+                    "month": 8,
+                    "search_volume": 590
+                  },
+                  {
+                    "year": 2026,
+                    "month": 7,
+                    "search_volume": 40
+                  },
+                  {
+                    "year": 2026,
+                    "month": 6,
+                    "search_volume": 30
+                  },
+                  {
+                    "year": 2026,
+                    "month": 5,
+                    "search_volume": 260
+                  },
+                  {
+                    "year": 2026,
+                    "month": 4,
+                    "search_volume": 170
+                  },
+                  {
+                    "year": 2026,
+                    "month": 3,
+                    "search_volume": 140
+                  },
+                  {
+                    "year": 2026,
+                    "month": 2,
+                    "search_volume": 1300
+                  },
+                  {
+                    "year": 2026,
+                    "month": 1,
+                    "search_volume": 70
+                  },
+                  {
+                    "year": 2025,
+                    "month": 12,
+                    "search_volume": 50
+                  },
+                  {
+                    "year": 2025,
+                    "month": 11,
+                    "search_volume": 50
+                  },
+                  {
+                    "year": 2025,
+                    "month": 10,
+                    "search_volume": 50
+                  },
+                  {
+                    "year": 2025,
+                    "month": 9,
+                    "search_volume": 30
+                  }
+                ],
+                "search_volume_trend": {
+                  "monthly": 1375,
+                  "quarterly": 1867,
+                  "yearly": 1080
+                }
+              },
+              "keyword_info_normalized_with_bing": null,
+              "keyword_info_normalized_with_clickstream": null,
+              "clickstream_keyword_info": null,
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": null,
+                "keyword_difficulty": 0,
+                "detected_language": "he",
+                "is_another_language": false,
+                "words_count": 2
+              },
+              "serp_info": null,
+              "avg_backlinks_info": {
+                "se_type": "google",
+                "backlinks": 1.2,
+                "dofollow": 1.1,
+                "referring_pages": 1.2,
+                "referring_domains": 1.1,
+                "referring_main_domains": 0.7,
+                "rank": 24.3,
+                "main_domain_rank": 362.3,
+                "last_updated_time": "2026-09-16 19:44:27 +00:00"
+              },
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "informational",
+                "foreign_intent": null,
+                "last_updated_time": "2026-05-07 18:04:05 +00:00"
+              }
+            },
+            {
+              "se_type": "google",
+              "keyword": "זיהום קרקע שדה דב",
+              "location_code": 2376,
+              "language_code": "he",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2026-09-15 10:37:03 +00:00",
+                "competition": 0.05,
+                "competition_level": "LOW",
+                "cpc": 5.46,
+                "search_volume": 50,
+                "low_top_of_page_bid": 0.05,
+                "high_top_of_page_bid": 3.46,
+                "categories": [
+                  10017,
+                  10145,
+                  12081
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2026,
+                    "month": 8,
+                    "search_volume": 90
+                  },
+                  {
+                    "year": 2026,
+                    "month": 7,
+                    "search_volume": 40
+                  },
+                  {
+                    "year": 2026,
+                    "month": 6,
+                    "search_volume": 30
+                  },
+                  {
+                    "year": 2026,
+                    "month": 5,
+                    "search_volume": 70
+                  },
+                  {
+                    "year": 2026,
+                    "month": 4,
+                    "search_volume": 40
+                  },
+                  {
+                    "year": 2026,
+                    "month": 3,
+                    "search_volume": 30
+                  },
+                  {
+                    "year": 2026,
+                    "month": 2,
+                    "search_volume": 260
+                  },
+                  {
+                    "year": 2026,
+                    "month": 1,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2025,
+                    "month": 12,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2025,
+                    "month": 11,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2025,
+                    "month": 10,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2025,
+                    "month": 9,
+                    "search_volume": 0
+                  }
+                ],
+                "search_volume_trend": {
+                  "monthly": 125,
+                  "quarterly": 200,
+                  "yearly": null
+                }
+              },
+              "keyword_info_normalized_with_bing": null,
+              "keyword_info_normalized_with_clickstream": null,
+              "clickstream_keyword_info": null,
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": "keyword_metrics",
+                "keyword_difficulty": null,
+                "detected_language": "he",
+                "is_another_language": false,
+                "words_count": 4
+              },
+              "serp_info": null,
+              "avg_backlinks_info": null,
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "informational",
+                "foreign_intent": null,
+                "last_updated_time": "2026-08-14 19:47:14 +00:00"
+              }
+            },
+            {
+              "se_type": "google",
+              "keyword": "זיהום קרקע ברמת השרון",
+              "location_code": 2376,
+              "language_code": "he",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2026-09-14 07:07:45 +00:00",
+                "competition": null,
+                "competition_level": null,
+                "cpc": null,
+                "search_volume": 10,
+                "low_top_of_page_bid": null,
+                "high_top_of_page_bid": null,
+                "categories": [
+                  10018,
+                  13414,
+                  13876
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2026,
+                    "month": 8,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2026,
+                    "month": 7,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2026,
+                    "month": 6,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2026,
+                    "month": 5,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2026,
+                    "month": 4,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2026,
+                    "month": 3,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2026,
+                    "month": 2,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 1,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2025,
+                    "month": 12,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2025,
+                    "month": 11,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2025,
+                    "month": 10,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2025,
+                    "month": 9,
+                    "search_volume": 0
+                  }
+                ],
+                "search_volume_trend": {
+                  "monthly": 0,
+                  "quarterly": 0,
+                  "yearly": 0
+                }
+              },
+              "keyword_info_normalized_with_bing": null,
+              "keyword_info_normalized_with_clickstream": null,
+              "clickstream_keyword_info": null,
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": null,
+                "keyword_difficulty": null,
+                "detected_language": "he",
+                "is_another_language": false,
+                "words_count": 4
+              },
+              "serp_info": null,
+              "avg_backlinks_info": null,
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "informational",
+                "foreign_intent": null,
+                "last_updated_time": "2026-04-30 02:32:33 +00:00"
+              }
+            },
+            {
+              "se_type": "google",
+              "keyword": "זיהום קרקע ויקיפדיה",
+              "location_code": 2376,
+              "language_code": "he",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2026-09-17 01:25:41 +00:00",
+                "competition": null,
+                "competition_level": null,
+                "cpc": null,
+                "search_volume": 10,
+                "low_top_of_page_bid": null,
+                "high_top_of_page_bid": null,
+                "categories": [
+                  10002,
+                  10028,
+                  11077
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2026,
+                    "month": 8,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2026,
+                    "month": 7,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2026,
+                    "month": 6,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2026,
+                    "month": 5,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 4,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2026,
+                    "month": 3,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2026,
+                    "month": 2,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2026,
+                    "month": 1,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2025,
+                    "month": 12,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2025,
+                    "month": 11,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2025,
+                    "month": 10,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2025,
+                    "month": 9,
+                    "search_volume": 0
+                  }
+                ],
+                "search_volume_trend": {
+                  "monthly": 0,
+                  "quarterly": 0,
+                  "yearly": 0
+                }
+              },
+              "keyword_info_normalized_with_bing": null,
+              "keyword_info_normalized_with_clickstream": null,
+              "clickstream_keyword_info": null,
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": null,
+                "keyword_difficulty": null,
+                "detected_language": "he",
+                "is_another_language": false,
+                "words_count": 3
+              },
+              "serp_info": null,
+              "avg_backlinks_info": null,
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "informational",
+                "foreign_intent": null,
+                "last_updated_time": "2026-04-30 01:59:40 +00:00"
+              }
+            },
+            {
+              "se_type": "google",
+              "keyword": "המשרד להגנת הסביבה זיהום קרקע",
+              "location_code": 2376,
+              "language_code": "he",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2026-09-12 07:53:28 +00:00",
+                "competition": 0.05,
+                "competition_level": "LOW",
+                "cpc": null,
+                "search_volume": 10,
+                "low_top_of_page_bid": null,
+                "high_top_of_page_bid": null,
+                "categories": [
+                  10018,
+                  13414,
+                  13508
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2026,
+                    "month": 8,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 7,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 6,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 5,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 4,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 3,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 2,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 1,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2025,
+                    "month": 12,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2025,
+                    "month": 11,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2025,
+                    "month": 10,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2025,
+                    "month": 9,
+                    "search_volume": 0
+                  }
+                ],
+                "search_volume_trend": {
+                  "monthly": 0,
+                  "quarterly": 0,
+                  "yearly": 0
+                }
+              },
+              "keyword_info_normalized_with_bing": null,
+              "keyword_info_normalized_with_clickstream": null,
+              "clickstream_keyword_info": null,
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": "text_processing",
+                "keyword_difficulty": null,
+                "detected_language": "he",
+                "is_another_language": false,
+                "words_count": 5
+              },
+              "serp_info": null,
+              "avg_backlinks_info": null,
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "informational",
+                "foreign_intent": null,
+                "last_updated_time": "2026-04-30 02:08:08 +00:00"
+              }
+            },
+            {
+              "se_type": "google",
+              "keyword": "זיהום קרקע המשרד להגנת הסביבה",
+              "location_code": 2376,
+              "language_code": "he",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2026-09-16 14:22:33 +00:00",
+                "competition": 0,
+                "competition_level": "LOW",
+                "cpc": null,
+                "search_volume": 10,
+                "low_top_of_page_bid": null,
+                "high_top_of_page_bid": null,
+                "categories": [
+                  10018,
+                  13414,
+                  13508
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2026,
+                    "month": 8,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 7,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 6,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 5,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 4,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 3,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 2,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 1,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2025,
+                    "month": 12,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2025,
+                    "month": 11,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2025,
+                    "month": 10,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2025,
+                    "month": 9,
+                    "search_volume": 10
+                  }
+                ],
+                "search_volume_trend": {
+                  "monthly": 0,
+                  "quarterly": 0,
+                  "yearly": 0
+                }
+              },
+              "keyword_info_normalized_with_bing": null,
+              "keyword_info_normalized_with_clickstream": null,
+              "clickstream_keyword_info": null,
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": "text_processing",
+                "keyword_difficulty": null,
+                "detected_language": "he",
+                "is_another_language": false,
+                "words_count": 5
+              },
+              "serp_info": null,
+              "avg_backlinks_info": null,
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "informational",
+                "foreign_intent": null,
+                "last_updated_time": "2026-05-06 06:45:05 +00:00"
+              }
+            },
+            {
+              "se_type": "google",
+              "keyword": "בדיקות זיהום קרקע",
+              "location_code": 2376,
+              "language_code": "he",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2026-09-14 00:53:21 +00:00",
+                "competition": 0.43,
+                "competition_level": "MEDIUM",
+                "cpc": 35.94,
+                "search_volume": 10,
+                "low_top_of_page_bid": null,
+                "high_top_of_page_bid": null,
+                "categories": [
+                  10004,
+                  11076,
+                  12356,
+                  13460
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2026,
+                    "month": 8,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 7,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 6,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 5,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2026,
+                    "month": 4,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 3,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 2,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 1,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2025,
+                    "month": 12,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2025,
+                    "month": 11,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2025,
+                    "month": 10,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2025,
+                    "month": 9,
+                    "search_volume": 10
+                  }
+                ],
+                "search_volume_trend": {
+                  "monthly": 0,
+                  "quarterly": 0,
+                  "yearly": 0
+                }
+              },
+              "keyword_info_normalized_with_bing": null,
+              "keyword_info_normalized_with_clickstream": null,
+              "clickstream_keyword_info": null,
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": null,
+                "keyword_difficulty": null,
+                "detected_language": "he",
+                "is_another_language": false,
+                "words_count": 3
+              },
+              "serp_info": null,
+              "avg_backlinks_info": null,
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "informational",
+                "foreign_intent": null,
+                "last_updated_time": "2026-05-03 14:05:56 +00:00"
+              }
+            },
+            {
+              "se_type": "google",
+              "keyword": "זיהום קרקע בישראל",
+              "location_code": 2376,
+              "language_code": "he",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2026-09-12 05:56:17 +00:00",
+                "competition": 0,
+                "competition_level": "LOW",
+                "cpc": null,
+                "search_volume": 10,
+                "low_top_of_page_bid": null,
+                "high_top_of_page_bid": null,
+                "categories": [
+                  10002,
+                  10028,
+                  11077
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2026,
+                    "month": 8,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 7,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 6,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 5,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 4,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 3,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 2,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2026,
+                    "month": 1,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2025,
+                    "month": 12,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2025,
+                    "month": 11,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2025,
+                    "month": 10,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2025,
+                    "month": 9,
+                    "search_volume": 10
+                  }
+                ],
+                "search_volume_trend": {
+                  "monthly": 0,
+                  "quarterly": 0,
+                  "yearly": 0
+                }
+              },
+              "keyword_info_normalized_with_bing": null,
+              "keyword_info_normalized_with_clickstream": null,
+              "clickstream_keyword_info": null,
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": null,
+                "keyword_difficulty": null,
+                "detected_language": "he",
+                "is_another_language": false,
+                "words_count": 3
+              },
+              "serp_info": null,
+              "avg_backlinks_info": null,
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "informational",
+                "foreign_intent": null,
+                "last_updated_time": "2026-04-30 02:31:20 +00:00"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

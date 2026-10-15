@@ -4294,3 +4294,7 @@ RELEASE DONE 1.72.451 (HAD-533 table cells wrap) by Claude [nad-lan main session
 RELEASE LOCK 1.72.452 (HAD-533 Instruments cells on phones + warranty status cell) by Claude [nad-lan main session] 15.10.2026 ~00:05 Israel.
 
 RELEASE DONE 1.72.452 (HAD-533 Instruments cells on phones) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.453 (HAD-533 indexation + delay phone tables) by Claude [nad-lan main session] 15.10.2026 ~09:58 Israel.
+
+RELEASE DONE 1.72.453 (HAD-533 phone tables) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.

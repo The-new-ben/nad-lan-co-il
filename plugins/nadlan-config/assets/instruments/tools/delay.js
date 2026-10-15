@@ -61,7 +61,7 @@
         breakdown: b.filter(function (x) { return x.value > 0; }).map(function (x) { return { label: 'שכר דירה ' + x.label, value: x.value, kind: x.kind }; }),
         lines: lines,
         note: note,
-        table: { title: 'הפירוט חודש אחרי חודש', head: ['חודש', 'מתאריך', 'עד תאריך', 'מכפיל', 'פיצוי'], num: [0, 3, 4],
+        table: { title: 'הפירוט חודש אחרי חודש', head: ['חודש', 'מתאריך', 'עד תאריך', 'מכפיל', 'פיצוי'], num: [0, 3, 4], phoneHide: [1],
           rows: r.months.map(function (m) { return [String(m.k), F.date(m.from), F.date(m.to), m.mult ? '×' + m.mult : 'חסד', F.ils(m.amt)]; }) },
         formula: r.newLaw ? 'חוזה מ־7.7.2022: חודש 1 חסד · חודשים 2 עד 4: שכר דירה · 5 עד 10: שכר דירה × 1.25 · מ־11: שכר דירה × 1.5. כל חודש או חלק ממנו.' : 'חוזה עד 6.7.2022: מעל 60 ימי איחור, מהמועד שבחוזה: חודשים 1 עד 8: שכר דירה × 1.5 · מ־9: שכר דירה × 1.25.',
         sources: [{ label: 'חוק המכר (דירות), סעיף 5א', url: 'https://he.wikisource.org/wiki/%D7%97%D7%95%D7%A7_%D7%94%D7%9E%D7%9B%D7%A8_(%D7%93%D7%99%D7%A8%D7%95%D7%AA)' }],

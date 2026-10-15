@@ -21,6 +21,21 @@ The resume point of the tools program. Every loop turn reads this file first, do
   palette: ground #F6F8F9, ink #12202A, sea #2F6F86, survey #C42550 for the one deciding number, land-use data colours;
   Karantina display, IBM Plex Sans Hebrew, IBM Plex Mono for figures). Every brief states palette + faces + why not default.
 
+## Ben 15.10.2026 ~09:30: LOOP RESUMED with a new lead mission (HAD-534)
+- Finish and correct what was started first (indexation + delay tables on phones).
+- SDE DOV SOIL (PFAS) mission, after TheMarker 14.10 (Mivne lot 303: PFOS ~600x the threshold, all 16 boreholes):
+  a SEPARATE page (proposed /sde-dov/contamination/, he first, en after) with a 3D map of the whole district built on the
+  buildings we already mapped (one organ with the hub, the project stages, the Kikar world module, findplace data):
+  layers = lots + developers, published samples (x threshold), suspected zone, old airfield footprint, projects. Tools high
+  on the page, one tap on a phone: check by address / project / lot, exceedance + unit converter, questions-to-the-developer
+  generator, remediation cost range. Article with timeline and sources ("according to the Ministry of Environmental
+  Protection publications"). Never say a project is clean without a source; promote projects outside the airfield footprint
+  and projects with published facts, gently, without hurting Sde Dov marketing. Claude Design first (NadLan Instruments).
+- After that: ask Ben about Kikar HaMedina practical guides + tools + interactive map. The general direction: practical
+  tools high on every page to pull traffic, then use it to put projects forward (sales). Always offer, think as a demanding
+  user. Some pages in English too. Content awareness before every page (no cannibalisation, no 301, distinct content).
+- Research running into docs/research/2026-10-15-sde-dov-soil/ (facts + samples + geo; SERP + keywords + inventory).
+
 ## One turn = one item, to the end
 1. Pick the top open item from docs/research/2026-10-14-tools-program/catalog.md (ranked backlog) unless a live fault or
    Ben's word comes first.
@@ -40,6 +55,14 @@ Weekly usage was 58% on 14.10 with the reset on 19.10 01:00. Pace: at most one t
 only for research. At 80% weekly: stop building, report, wait for the reset (leads and live faults only).
 
 ## State (newest first)
+- 15.10 ~10:15: LIVE 1.72.453 (HAD-533 closed out): indexation + delay tables fit a phone via table.phoneHide (the forecast
+  mark moved onto the addition cell). docs/tools/press_tables.py: all 5 tool tables box == content on 390px, 0 errors.
+  Research landed (SERP/keywords/inventory): docs/research/2026-10-15-sde-dov-soil/ (keywords.csv, serp.md, inventory.md,
+  tools-ideas.md): top phrases 40-70/month, AI overview on all, nobody has an interactive map / plot table / x-threshold
+  calculator; 9 listed plots incl. 107 (Dimri Yama), 103 (Utopia), 2206 (Gindi Vogue); HE pages of Dimri + Ashira lack the
+  PFAS section their 4 other languages have (parity gap, report). NEXT: the facts agent (samples.json, geo.md), then the
+  Claude Design board for /sde-dov/contamination/ (map + plot table + x-threshold calculator first, then the letter).
+- 15.10 ~09:35: LOOP RESUMED by Ben (new order above, HAD-534). Next turn: the indexation + delay phone tables (release 453).
 - 15.10 ~00:25: LOOP PAUSED BY BEN ("finish what you are doing, then stop until I tell you to loop again", to save usage).
   Nothing in flight: 1.72.452 live and verified, lock released, all committed. Do NOT resume the loop, the CPI refresh or any
   release until Ben says so. When he does: start with the indexation + delay phone tables, then the September CPI refresh.

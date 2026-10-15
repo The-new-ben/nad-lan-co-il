@@ -1,0 +1,592 @@
+{
+  "version": "0.1.20260917",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "5.4921 sec.",
+  "cost": 0.00215,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "10150640-2646-0139-0000-08e221c21ffc",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "5.3872 sec.",
+      "cost": 0.00215,
+      "result_count": 1,
+      "path": [
+        "v3",
+        "serp",
+        "google",
+        "organic",
+        "live",
+        "advanced"
+      ],
+      "data": {
+        "api": "serp",
+        "function": "live",
+        "se": "google",
+        "se_type": "organic",
+        "keyword": "pfas שדה דב",
+        "location_code": 2376,
+        "language_code": "he",
+        "device": "desktop",
+        "depth": 10,
+        "load_async_ai_overview": true,
+        "people_also_ask_click_depth": 1,
+        "os": "windows"
+      },
+      "result": [
+        {
+          "keyword": "pfas שדה דב",
+          "type": "organic",
+          "se_domain": "google.com",
+          "location_code": 2376,
+          "language_code": "he",
+          "check_url": "https://www.google.com/search?q=pfas%20%D7%A9%D7%93%D7%94%20%D7%93%D7%91&hl=he&gl=IL&ie=UTF-8&uule=w+CAIQIFISCYvJpzIkSQAVEbosNRMgQmtq",
+          "datetime": "2026-10-15 06:40:42 +00:00",
+          "spell": null,
+          "refinement_chips": null,
+          "item_types": [
+            "ai_overview",
+            "organic",
+            "video",
+            "people_also_ask",
+            "related_searches"
+          ],
+          "se_results_count": 122,
+          "pages_count": 1,
+          "items_count": 12,
+          "items": [
+            {
+              "type": "ai_overview",
+              "rank_group": 1,
+              "rank_absolute": 1,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]",
+              "asynchronous_ai_overview": false,
+              "markdown": "במתחם שדה דב בתל אביב התגלה זיהום חמור של כימיקלים מסוג PFAS (תרכובות פר- ופולי-פלואורואלקיליות, המכונות \"כימיקלים לנצח\") בקרקע ובמי התהום , מקורם בקצפי כיבוי אש ששימשו את שדה התעופה והבסיס הצבאי שפעלו במקום.[[1]](https://www.gov.il/BlobFolder/reports/sde_dov/he/news_files_2026_public-announcement.pdf)[[2]](https://infospot.co.il/n/PFAS2)[[3]](https://www.globes.co.il/news/article.aspx?did=1001549552)\n\n### עיקרי האירועים והממצאים:\n\n- **מקור הזיהום:** שימוש ממושך בקצפי כיבוי אש לאורך עשרות שנים עד לסגירת השדה בשנת 2019.[[1]](https://infospot.co.il/n/PFAS2)[[2]](https://www.gov.il/BlobFolder/reports/sde_dov/he/news_files_2026_public-announcement.pdf)\n- **חומרת הממצאים:** נמצאו חריגות קיצוניות במי התהום (פי 2,000 מהתקן) ובקרקע בשטח שבו מתוכננות כ-16,000 יחידות דיור ומלונות.[[1]](https://www.hakablan.co.il/%D7%97%D7%93%D7%A9%D7%95%D7%AA/%D7%96%D7%99%D7%94%D7%95%D7%9D-pfas-%D7%91%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%9E%D7%A2%D7%95%D7%A8%D7%A8-%D7%9E%D7%97%D7%9C%D7%95%D7%A7%D7%AA-%D7%9B%D6%BE16-%D7%90%D7%9C%D7%A3-%D7%93%D7%99%D7%A8/)[[2]](https://infospot.co.il/n/PFAS2)\n- **מחלוקת רגולטורית:** המשרד להגנת הסביבה שינה ועדכן את ערכי הסף לשיקום קרקעות המבוססים על תקנים בינלאומיים (כגון אוסטרליה), מהלך שעורר ביקורת מצד גורמים סביבתיים וארגונים כמו [אדם טבע ודין](https://adamteva.org.il/news_and_updates/%D7%94%D7%9E%D7%A9%D7%A8%D7%93-%D7%9C%D7%94%D7%92%D7%A0%D7%AA-%D7%94%D7%A1%D7%91%D7%99%D7%91%D7%94-%D7%A9%D7%99%D7%A0%D7%94-%D7%90%D7%AA-%D7%94%D7%94%D7%92%D7%93%D7%A8%D7%95%D7%AA-%D7%95%D7%9C%D7%A4/) ומומחים שטענו כי המטרה היא \"להכשיר\" את הקרקע לבנייה מהירה.[[1]](https://www.shomrim.news/hebrew/sde-dov-pfas)[[2]](https://adamteva.org.il/news_and_updates/%D7%94%D7%9E%D7%A9%D7%A8%D7%93-%D7%9C%D7%94%D7%92%D7%A0%D7%AA-%D7%94%D7%A1%D7%91%D7%99%D7%91%D7%94-%D7%A9%D7%99%D7%A0%D7%94-%D7%90%D7%AA-%D7%94%D7%94%D7%92%D7%93%D7%A8%D7%95%D7%AA-%D7%95%D7%9C%D7%A4/)[[3]](https://www.hakablan.co.il/%D7%97%D7%93%D7%A9%D7%95%D7%AA/%D7%96%D7%99%D7%94%D7%95%D7%9D-pfas-%D7%91%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%9E%D7%A2%D7%95%D7%A8%D7%A8-%D7%9E%D7%97%D7%9C%D7%95%D7%A7%D7%AA-%D7%9B%D6%BE16-%D7%90%D7%9C%D7%A3-%D7%93%D7%99%D7%A8/)\n- **עצירת עבודות:** ביולי 2026 שיגר המשרד להגנת הסביבה מכתב חריף למנכ\"ל עיריית תל אביב-יפו ודרש לעצור באופן מידי את עבודות החפירה והתשתית באתר בשל אי-עמידה בהנחיות ובטיחות הציבור.[[1]](https://www.globes.co.il/news/article.aspx?did=1001549552)\n- **מידע רשמי:** פרטים נוספים ומסמכים מקצועיים ניתן למצוא באתר [המשרד להגנת הסביבה - שדה דב](https://www.gov.il/he/pages/sde_dov) ובפרסום הרשמי של [רשות מקרקעי ישראל](https://www.gov.il/he/pages/sdedov_05022026).[[1]](https://www.gov.il/he/pages/sdedov_05022026)[[2]](https://www.gov.il/he/pages/sde_dov)",
+              "items": [
+                {
+                  "type": "ai_overview_element",
+                  "position": "left",
+                  "title": null,
+                  "text": "במתחם שדה דב בתל אביב התגלה זיהום חמור של כימיקלים מסוג PFAS (תרכובות פר- ופולי-פלואורואלקיליות, המכונות \"כימיקלים לנצח\") בקרקע ובמי התהום, מקורם בקצפי כיבוי אש ששימשו את שדה התעופה והבסיס הצבאי שפעלו במקום.",
+                  "markdown": "במתחם שדה דב בתל אביב התגלה זיהום חמור של כימיקלים מסוג PFAS (תרכובות פר- ופולי-פלואורואלקיליות, המכונות \"כימיקלים לנצח\") בקרקע ובמי התהום , מקורם בקצפי כיבוי אש ששימשו את שדה התעופה והבסיס הצבאי שפעלו במקום.[[1]](https://www.gov.il/BlobFolder/reports/sde_dov/he/news_files_2026_public-announcement.pdf)[[2]](https://infospot.co.il/n/PFAS2)[[3]](https://www.globes.co.il/news/article.aspx?did=1001549552)",
+                  "links": null,
+                  "images": null,
+                  "references": [
+                    {
+                      "type": "ai_overview_reference",
+                      "position": "left",
+                      "source": "Gov.il",
+                      "domain": "www.gov.il",
+                      "url": "https://www.gov.il/BlobFolder/reports/sde_dov/he/news_files_2026_public-announcement.pdf",
+                      "title": "מידע בדבר הימצאות תרכובות PFAS בשדה דב, תל אביב - Gov.il",
+                      "text": "03. פברואר. 2026. ט. \"ז שבט תשפ\"ו. מידע בדבר הימצאות תרכובות PFAS בשדה דב, תל אביב. בשטח שדה דב. )להלן. –. האתר(. ,. אושרו. תכנית."
+                    },
+                    {
+                      "type": "ai_overview_reference",
+                      "position": "left",
+                      "source": "infospot",
+                      "domain": "infospot.co.il",
+                      "url": "https://infospot.co.il/n/PFAS2",
+                      "title": "נמצאו מי תהום מזוהמים פי 2,000 מהתקן, במתחם שדה דב בתל אביב - infospot",
+                      "text": "info spot · חדשות · נמצאו מי תהום מזוהמים פי 2,000 מהתקן, במתחם שדה דב בתל אביב. נמצאו מי תהום מזוהמים פי 2,000 מהתקן, במתחם שדה ד..."
+                    },
+                    {
+                      "type": "ai_overview_reference",
+                      "position": "left",
+                      "source": "גלובס",
+                      "domain": "www.globes.co.il",
+                      "url": "https://www.globes.co.il/news/article.aspx?did=1001549552",
+                      "title": "המשרד להגנת הסביבה לעיריית ת\"א: עצרו את עבודות החפירה בשדה דב - גלובס",
+                      "text": "המשרד להגנת הסביבה לעיריית ת\"א: עצרו את עבודות החפירה בשדה דב. לטענת המשרד, עבודות החפירה בשדה דב אינן עומדות בהנחיות שנקבעו בעקבו..."
+                    }
+                  ]
+                },
+                {
+                  "type": "ai_overview_element",
+                  "position": "left",
+                  "title": "עיקרי האירועים והממצאים:",
+                  "text": "מקור הזיהום: שימוש ממושך בקצפי כיבוי אש לאורך עשרות שנים עד לסגירת השדה בשנת 2019. חומרת הממצאים: נמצאו חריגות קיצוניות במי התהום (פי 2,000 מהתקן) ובקרקע בשטח שבו מתוכננות כ-16,000 יחידות דיור ומלונות. מחלוקת רגולטורית: המשרד להגנת הסביבה שינה ועדכן את ערכי הסף לשיקום קרקעות המבוססים על תקנים בינלאומיים (כגון אוסטרליה), מהלך שעורר ביקורת מצד גורמים סביבתיים וארגונים כמו אדם טבע ודין ומומחים שטענו כי המטרה היא \"להכשיר\" את הקרקע לבנייה מהירה. עצירת עבודות: ביולי 2026 שיגר המשרד להגנת הסביבה מכתב חריף למנכ\"ל עיריית תל אביב-יפו ודרש לעצור באופן מידי את עבודות החפירה והתשתית באתר בשל אי-עמידה בהנחיות ובטיחות הציבור. מידע רשמי: פרטים נוספים ומסמכים מקצועיים ניתן למצוא באתר המשרד להגנת הסביבה - שדה דב ובפרסום הרשמי של רשות מקרקעי ישראל.",
+                  "markdown": "- **מקור הזיהום:** שימוש ממושך בקצפי כיבוי אש לאורך עשרות שנים עד לסגירת השדה בשנת 2019.[[1]](https://infospot.co.il/n/PFAS2)[[2]](https://www.gov.il/BlobFolder/reports/sde_dov/he/news_files_2026_public-announcement.pdf)\n- **חומרת הממצאים:** נמצאו חריגות קיצוניות במי התהום (פי 2,000 מהתקן) ובקרקע בשטח שבו מתוכננות כ-16,000 יחידות דיור ומלונות.[[1]](https://www.hakablan.co.il/%D7%97%D7%93%D7%A9%D7%95%D7%AA/%D7%96%D7%99%D7%94%D7%95%D7%9D-pfas-%D7%91%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%9E%D7%A2%D7%95%D7%A8%D7%A8-%D7%9E%D7%97%D7%9C%D7%95%D7%A7%D7%AA-%D7%9B%D6%BE16-%D7%90%D7%9C%D7%A3-%D7%93%D7%99%D7%A8/)[[2]](https://infospot.co.il/n/PFAS2)\n- **מחלוקת רגולטורית:** המשרד להגנת הסביבה שינה ועדכן את ערכי הסף לשיקום קרקעות המבוססים על תקנים בינלאומיים (כגון אוסטרליה), מהלך שעורר ביקורת מצד גורמים סביבתיים וארגונים כמו [אדם טבע ודין](https://adamteva.org.il/news_and_updates/%D7%94%D7%9E%D7%A9%D7%A8%D7%93-%D7%9C%D7%94%D7%92%D7%A0%D7%AA-%D7%94%D7%A1%D7%91%D7%99%D7%91%D7%94-%D7%A9%D7%99%D7%A0%D7%94-%D7%90%D7%AA-%D7%94%D7%94%D7%92%D7%93%D7%A8%D7%95%D7%AA-%D7%95%D7%9C%D7%A4/) ומומחים שטענו כי המטרה היא \"להכשיר\" את הקרקע לבנייה מהירה.[[1]](https://www.shomrim.news/hebrew/sde-dov-pfas)[[2]](https://adamteva.org.il/news_and_updates/%D7%94%D7%9E%D7%A9%D7%A8%D7%93-%D7%9C%D7%94%D7%92%D7%A0%D7%AA-%D7%94%D7%A1%D7%91%D7%99%D7%91%D7%94-%D7%A9%D7%99%D7%A0%D7%94-%D7%90%D7%AA-%D7%94%D7%94%D7%92%D7%93%D7%A8%D7%95%D7%AA-%D7%95%D7%9C%D7%A4/)[[3]](https://www.hakablan.co.il/%D7%97%D7%93%D7%A9%D7%95%D7%AA/%D7%96%D7%99%D7%94%D7%95%D7%9D-pfas-%D7%91%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%9E%D7%A2%D7%95%D7%A8%D7%A8-%D7%9E%D7%97%D7%9C%D7%95%D7%A7%D7%AA-%D7%9B%D6%BE16-%D7%90%D7%9C%D7%A3-%D7%93%D7%99%D7%A8/)\n- **עצירת עבודות:** ביולי 2026 שיגר המשרד להגנת הסביבה מכתב חריף למנכ\"ל עיריית תל אביב-יפו ודרש לעצור באופן מידי את עבודות החפירה והתשתית באתר בשל אי-עמידה בהנחיות ובטיחות הציבור.[[1]](https://www.globes.co.il/news/article.aspx?did=1001549552)\n- **מידע רשמי:** פרטים נוספים ומסמכים מקצועיים ניתן למצוא באתר [המשרד להגנת הסביבה - שדה דב](https://www.gov.il/he/pages/sde_dov) ובפרסום הרשמי של [רשות מקרקעי ישראל](https://www.gov.il/he/pages/sdedov_05022026).[[1]](https://www.gov.il/he/pages/sdedov_05022026)[[2]](https://www.gov.il/he/pages/sde_dov)",
+                  "links": [
+                    {
+                      "type": "link_element",
+                      "title": "אדם טבע ודין",
+                      "description": null,
+                      "url": "https://adamteva.org.il/news_and_updates/%D7%94%D7%9E%D7%A9%D7%A8%D7%93-%D7%9C%D7%94%D7%92%D7%A0%D7%AA-%D7%94%D7%A1%D7%91%D7%99%D7%91%D7%94-%D7%A9%D7%99%D7%A0%D7%94-%D7%90%D7%AA-%D7%94%D7%94%D7%92%D7%93%D7%A8%D7%95%D7%AA-%D7%95%D7%9C%D7%A4/",
+                      "domain": "adamteva.org.il"
+                    },
+                    {
+                      "type": "link_element",
+                      "title": "המשרד להגנת הסביבה - שדה דב",
+                      "description": null,
+                      "url": "https://www.gov.il/he/pages/sde_dov",
+                      "domain": "www.gov.il"
+                    },
+                    {
+                      "type": "link_element",
+                      "title": "רשות מקרקעי ישראל",
+                      "description": null,
+                      "url": "https://www.gov.il/he/pages/sdedov_05022026",
+                      "domain": "www.gov.il"
+                    }
+                  ],
+                  "images": null,
+                  "references": [
+                    {
+                      "type": "ai_overview_reference",
+                      "position": "left",
+                      "source": "ערוץ הקבלן",
+                      "domain": "www.hakablan.co.il",
+                      "url": "https://www.hakablan.co.il/%D7%97%D7%93%D7%A9%D7%95%D7%AA/%D7%96%D7%99%D7%94%D7%95%D7%9D-pfas-%D7%91%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%9E%D7%A2%D7%95%D7%A8%D7%A8-%D7%9E%D7%97%D7%9C%D7%95%D7%A7%D7%AA-%D7%9B%D6%BE16-%D7%90%D7%9C%D7%A3-%D7%93%D7%99%D7%A8/",
+                      "title": "זיהום PFAS בשדה דב מעורר מחלוקת: כ־16 אלף דירות מתוכננות על קרקע עם ...",
+                      "text": "זיהום PFAS בשדה דב מעורר מחלוקת: כ־16 אלף דירות מתוכננות על קרקע עם \"כימיקלים לנצח\". תאריך פרסום: 09.04.2026. תחקיר כלכליסט מעלה כ..."
+                    },
+                    {
+                      "type": "ai_overview_reference",
+                      "position": "left",
+                      "source": "שומרים",
+                      "domain": "www.shomrim.news",
+                      "url": "https://www.shomrim.news/hebrew/sde-dov-pfas",
+                      "title": "שומרים - זיהום הקרקע בשדה דב: \"חשד שמטרת השינוי של ערכי הסף היא להכשיר את השרץ\"",
+                      "text": "* Sde Dov (Tel Aviv): 16k housing units planned on former airport/military base. * Contamination: Soil/groundwater found with haza..."
+                    },
+                    {
+                      "type": "ai_overview_reference",
+                      "position": "left",
+                      "source": "אדם טבע ודין",
+                      "domain": "adamteva.org.il",
+                      "url": "https://adamteva.org.il/news_and_updates/%D7%94%D7%9E%D7%A9%D7%A8%D7%93-%D7%9C%D7%94%D7%92%D7%A0%D7%AA-%D7%94%D7%A1%D7%91%D7%99%D7%91%D7%94-%D7%A9%D7%99%D7%A0%D7%94-%D7%90%D7%AA-%D7%94%D7%94%D7%92%D7%93%D7%A8%D7%95%D7%AA-%D7%95%D7%9C%D7%A4/",
+                      "title": "המשרד להגנת הסביבה שינה את ההגדרות, ולפתע זיהום הקרקע בשדה דב \"נעלם\"",
+                      "text": "המשרד להגנת הסביבה שינה את ההגדרות, ולפתע זיהום הקרקע בשדה דב \"נעלם\". 26/03/2026. במתחם שדה דב, שבו מתוכננות אלפי יחידות דיור על ש..."
+                    },
+                    {
+                      "type": "ai_overview_reference",
+                      "position": "left",
+                      "source": "Gov.il",
+                      "domain": "www.gov.il",
+                      "url": "https://www.gov.il/he/pages/sdedov_05022026",
+                      "title": "המשרד להגנת הסביבה ורשות מקרקעי ישראל מעדכנים על ממצאי זיהום ראשוניים בתרכובות PFAS בקרקע ובממצאים במי התהום בשטח שדה דב, ומובילים שורת צעדים לניהול הסיכונים הסביבתיים והבריאותיים רשות מקרקעי ישראל",
+                      "text": "* אתר: שדה דב (תל אביב) * ממצאים: זיהום PFAS בקרקע ובמי התהום (מקור: קצפי כיבוי) * נתונים: חריגה מערכי סף למי שתייה במי התהום (202..."
+                    },
+                    {
+                      "type": "ai_overview_reference",
+                      "position": "left",
+                      "source": "Gov.il",
+                      "domain": "www.gov.il",
+                      "url": "https://www.gov.il/he/pages/sde_dov",
+                      "title": "דוח בחינת פוטנציאל זיהום קרקע ב-PFAS, רובע שדה דוב המשרד להגנת הסביבה",
+                      "text": "מידע בדבר הימצאות תרכובות PFAS בשדה דוב – המשרד להגנת הסביבה · דוח בחינת פוטנציאל זיהום קרקע ב-PFAS, רובע שדה דוב – אדמה אפיון ושי..."
+                    }
+                  ]
+                }
+              ],
+              "references": null,
+              "rectangle": null
+            },
+            {
+              "type": "organic",
+              "rank_group": 1,
+              "rank_absolute": 2,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]",
+              "domain": "www.themarker.com",
+              "title": "שדה דב הוא קצה הקרחון: \"שכונות מוקמות בשטחים מסוכנים, ולא ...",
+              "url": "https://www.themarker.com/realestate/2026-02-20/ty-article-magazine/.premium/0000019c-74b7-d631-a3de-7dbf0a140000",
+              "cache_url": null,
+              "related_search_url": null,
+              "breadcrumb": "https://www.themarker.com › נדל\"ן",
+              "website_name": "TheMarker",
+              "is_image": false,
+              "is_video": false,
+              "is_featured_snippet": false,
+              "is_malicious": false,
+              "is_web_story": false,
+              "checks": null,
+              "description": "20 בפבר׳ 2026 — זיהום PFAS שהתגלה בשדה דב חושף מחדל סביבתי רחב היקף. התרכובות האלה משמשות בקצף כיבוי ומוצרי צריכה, חודרות לקרקע ולמי התהום ועלולות לגרום לסרטן ...",
+              "pre_snippet": "20 בפבר׳ 2026",
+              "extended_snippet": null,
+              "images": null,
+              "amp_version": false,
+              "rating": null,
+              "price": null,
+              "highlighted": [
+                "זיהום PFAS שהתגלה בשדה דב חושף מחדל סביבתי רחב היקף"
+              ],
+              "links": null,
+              "faq": null,
+              "extended_people_also_search": null,
+              "about_this_result": null,
+              "related_result": null,
+              "timestamp": null,
+              "rectangle": null
+            },
+            {
+              "type": "organic",
+              "rank_group": 2,
+              "rank_absolute": 3,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/div[1]",
+              "domain": "www.calcalist.co.il",
+              "title": "הכימיקלים לנצח, המדיניות קצרת טווח",
+              "url": "https://www.calcalist.co.il/real-estate/article/h1vs4buibe",
+              "cache_url": null,
+              "related_search_url": null,
+              "breadcrumb": "https://www.calcalist.co.il › ... › מגזין נדל\\\"ן 2026",
+              "website_name": "calcalist",
+              "is_image": false,
+              "is_video": false,
+              "is_featured_snippet": false,
+              "is_malicious": false,
+              "is_web_story": false,
+              "checks": null,
+              "description": "30 במרץ 2026 — כך, זיהום ה־ PFAS בקרקע של שדה דב התגלה בה לאחר שיווקה ולאחר שהמשרד להגנת הסביבה כבר קבע שהיא נקייה וראויה לבנייה, מכיוון שאנשיו לא טרחו ...",
+              "pre_snippet": "30 במרץ 2026",
+              "extended_snippet": null,
+              "images": null,
+              "amp_version": false,
+              "rating": null,
+              "price": null,
+              "highlighted": [
+                "PFAS",
+                "שדה דב"
+              ],
+              "links": null,
+              "faq": null,
+              "extended_people_also_search": null,
+              "about_this_result": null,
+              "related_result": null,
+              "timestamp": "2026-03-30 00:00:00 +00:00",
+              "rectangle": null
+            },
+            {
+              "type": "organic",
+              "rank_group": 3,
+              "rank_absolute": 4,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[6]/div[1]/div[1]",
+              "domain": "www.gov.il",
+              "title": "המשרד להגנת הסביבה, בתיאום עם רשות מקרקעי ישראל, מפרסם ...",
+              "url": "https://www.gov.il/he/pages/guidelines-for-entrepreneurs",
+              "cache_url": null,
+              "related_search_url": null,
+              "breadcrumb": "https://www.gov.il › pages › guidelines-for-entrepreneurs",
+              "website_name": "Gov.il",
+              "is_image": false,
+              "is_video": false,
+              "is_featured_snippet": false,
+              "is_malicious": false,
+              "is_web_story": false,
+              "checks": null,
+              "description": "15 בפבר׳ 2026 — עקב גילוי תרכובות מסוג PFAS במתחם שדה דוב, המשרד להגנת הסביבה, בתיאום עם רשות מקרקעי ישראל (רמ\"י), מפרסם היום, 15 בפברואר, הנחיות מקצועיות ...",
+              "pre_snippet": "15 בפבר׳ 2026",
+              "extended_snippet": null,
+              "images": null,
+              "amp_version": false,
+              "rating": null,
+              "price": null,
+              "highlighted": [
+                "עקב גילוי תרכובות מסוג PFAS במתחם שדה דוב"
+              ],
+              "links": null,
+              "faq": null,
+              "extended_people_also_search": null,
+              "about_this_result": null,
+              "related_result": null,
+              "timestamp": null,
+              "rectangle": null
+            },
+            {
+              "type": "organic",
+              "rank_group": 4,
+              "rank_absolute": 5,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[8]/div[1]/div[1]",
+              "domain": "www.mako.co.il",
+              "title": "המדינה שיווקה אלפי דירות בשדה דב ורק עכשיו גילתה זיהום בקרקע",
+              "url": "https://www.mako.co.il/finances-real-estate/Article-b7f2e4d1c992c91026.htm",
+              "cache_url": null,
+              "related_search_url": null,
+              "breadcrumb": "https://www.mako.co.il › כסף › נדל\"ן",
+              "website_name": "mako",
+              "is_image": false,
+              "is_video": false,
+              "is_featured_snippet": false,
+              "is_malicious": false,
+              "is_web_story": false,
+              "checks": null,
+              "description": "4 בפבר׳ 2026 — בדיקות שנערכו לאחרונה בשטח שדה דב בתל אביב חשפו זיהום בתרכובות PFAS, חומרים מסוכנים שמקורם בקצפי כיבוי ששימשו בשדה התעופה לאורך עשרות שנים.",
+              "pre_snippet": "4 בפבר׳ 2026",
+              "extended_snippet": null,
+              "images": null,
+              "amp_version": false,
+              "rating": null,
+              "price": null,
+              "highlighted": [
+                "חשפו זיהום בתרכובות PFAS"
+              ],
+              "links": null,
+              "faq": null,
+              "extended_people_also_search": null,
+              "about_this_result": null,
+              "related_result": null,
+              "timestamp": null,
+              "rectangle": null
+            },
+            {
+              "type": "organic",
+              "rank_group": 5,
+              "rank_absolute": 6,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[10]/div[1]/div[1]",
+              "domain": "www.facebook.com",
+              "title": "המשרד להגנת הסביבה ורשות מקרקעי ישראל מעדכנים על ממצאי ...",
+              "url": "https://www.facebook.com/SvivaMinistry/posts/%D7%94%D7%9E%D7%A9%D7%A8%D7%93-%D7%9C%D7%94%D7%92%D7%A0%D7%AA-%D7%94%D7%A1%D7%91%D7%99%D7%91%D7%94-%D7%95%D7%A8%D7%A9%D7%95%D7%AA-%D7%9E%D7%A7%D7%A8%D7%A7%D7%A2%D7%99-%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%9E%D7%A2%D7%93%D7%9B%D7%A0%D7%99%D7%9D-%D7%A2%D7%9C-%D7%9E%D7%9E%D7%A6%D7%90%D7%99-%D7%96%D7%99%D7%94%D7%95%D7%9D-%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%99%D7%99%D7%9D-%D7%91%D7%AA%D7%A8%D7%9B%D7%95%D7%91%D7%95%D7%AA-p/1217284150577039/",
+              "cache_url": null,
+              "related_search_url": null,
+              "breadcrumb": "מעל 10 תגובות באמוג'י  ·  לפני 8 חודשים",
+              "website_name": "Facebook · המשרד להגנת הסביבה",
+              "is_image": false,
+              "is_video": false,
+              "is_featured_snippet": false,
+              "is_malicious": false,
+              "is_web_story": false,
+              "checks": null,
+              "description": "המשרד להגנת הסביבה ורשות מקרקעי ישראל מעדכנים על ממצאי זיהום ראשוניים בתרכובות PFAS בקרקע ובממצאים במי התהום בשטח שדה דב, ומובילים שורת צעדים",
+              "pre_snippet": null,
+              "extended_snippet": null,
+              "images": null,
+              "amp_version": false,
+              "rating": null,
+              "price": null,
+              "highlighted": [
+                "PFAS בקרקע ובממצאים במי התהום בשטח שדה דב"
+              ],
+              "links": null,
+              "faq": null,
+              "extended_people_also_search": null,
+              "about_this_result": null,
+              "related_result": null,
+              "timestamp": null,
+              "rectangle": null
+            },
+            {
+              "type": "video",
+              "rank_group": 1,
+              "rank_absolute": 7,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[12]/div[1]",
+              "items": [
+                {
+                  "type": "video_element",
+                  "source": "כלכליסט · צילום: אורי דוידוביץ",
+                  "title": "הפיילוט לטיהור הקרקע שישפיע על הבנייה בשדה דב",
+                  "timestamp": null,
+                  "url": "https://www.calcalist.co.il/local_news/article/r1epofodzg"
+                },
+                {
+                  "type": "video_element",
+                  "source": "Facebook · עידית סילמן - Idit Silman",
+                  "title": "בעקבות ממצאי זיהום PFAS בקרקע ובמי התהום: הגעתי הבוקר לשטח ...",
+                  "timestamp": null,
+                  "url": "https://www.facebook.com/silmanidit/videos/%D7%91%D7%A2%D7%A7%D7%91%D7%95%D7%AA-%D7%9E%D7%9E%D7%A6%D7%90%D7%99-%D7%96%D7%99%D7%94%D7%95%D7%9D-pfas-%D7%91%D7%A7%D7%A8%D7%A7%D7%A2-%D7%95%D7%91%D7%9E%D7%99-%D7%94%D7%AA%D7%94%D7%95%D7%9D-%D7%94%D7%92%D7%A2%D7%AA%D7%99-%D7%94%D7%91%D7%95%D7%A7%D7%A8-%D7%9C%D7%A9%D7%98%D7%97-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%99%D7%97%D7%93-%D7%A2%D7%9D-%D7%94%D7%A6%D7%95%D7%95%D7%AA%D7%99%D7%9D-/1228454269390252/"
+                },
+                {
+                  "type": "video_element",
+                  "source": "Instagram · עידית סילמן - Idit Silman",
+                  "title": "הגעתי הבוקר לשטח שדה דב יחד עם הצוותים המקצועיים של המשרד ...",
+                  "timestamp": null,
+                  "url": "https://www.instagram.com/reel/DUfjnIiDIxn/"
+                }
+              ],
+              "rectangle": null
+            },
+            {
+              "type": "organic",
+              "rank_group": 6,
+              "rank_absolute": 8,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[14]/div[1]/div[1]",
+              "domain": "infospot.co.il",
+              "title": "בעקבות הזיהום בשדה דב: עדכונים על PFAS מישראל, אירופה, וארה\"ב",
+              "url": "http://infospot.co.il/n/sde_dov_pfas",
+              "cache_url": null,
+              "related_search_url": null,
+              "breadcrumb": "http://infospot.co.il › sde_dov_pfas",
+              "website_name": "infospot",
+              "is_image": false,
+              "is_video": false,
+              "is_featured_snippet": false,
+              "is_malicious": false,
+              "is_web_story": false,
+              "checks": null,
+              "description": "22 בפבר׳ 2026 — המשרד להגנ\"ס פרסם הנחיות ליזמים בעקבות זיהום ה- PFAS שהתגלה במתחם שדה דב. גם מעבר לים זיהום PFAS הוא נושא מרכזי: באיחוד האירופי נכנסו לתוקף ...",
+              "pre_snippet": "22 בפבר׳ 2026",
+              "extended_snippet": null,
+              "images": null,
+              "amp_version": false,
+              "rating": null,
+              "price": null,
+              "highlighted": [
+                "PFAS",
+                "שדה דב"
+              ],
+              "links": null,
+              "faq": null,
+              "extended_people_also_search": null,
+              "about_this_result": null,
+              "related_result": null,
+              "timestamp": null,
+              "rectangle": null
+            },
+            {
+              "type": "organic",
+              "rank_group": 7,
+              "rank_absolute": 9,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[16]/div[1]/div[1]",
+              "domain": "magdilim.co.il",
+              "title": "ממצאי זיהום בקרקע בשטח שדה דב: \"היזמים שזכו במכרזי הקרקע ...",
+              "url": "https://magdilim.co.il/040220261442/",
+              "cache_url": null,
+              "related_search_url": null,
+              "breadcrumb": "https://magdilim.co.il › חדשות הנדל\"ן",
+              "website_name": "מגדילים התחדשות עירונית",
+              "is_image": false,
+              "is_video": false,
+              "is_featured_snippet": false,
+              "is_malicious": false,
+              "is_web_story": false,
+              "checks": null,
+              "description": "4 בפבר׳ 2026 — בעקבות הנחיית רשות המים, נערכו בשנים 2022-2025 חקירות מי תהום בשטח האתר, אשר מממצאיהם עלה כי קיימים ריכוזי PFAS החורגים מערכי הסף למי שתייה. \" ...",
+              "pre_snippet": "4 בפבר׳ 2026",
+              "extended_snippet": null,
+              "images": null,
+              "amp_version": false,
+              "rating": null,
+              "price": null,
+              "highlighted": [
+                "PFAS"
+              ],
+              "links": null,
+              "faq": null,
+              "extended_people_also_search": null,
+              "about_this_result": null,
+              "related_result": null,
+              "timestamp": null,
+              "rectangle": null
+            },
+            {
+              "type": "organic",
+              "rank_group": 8,
+              "rank_absolute": 10,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[18]/div[1]/div[1]",
+              "domain": "adamteva.org.il",
+              "title": "אדם טבע ודין נאבק כדי לשים סוף לזיהום ה-PFAS בישראל",
+              "url": "https://adamteva.org.il/ein_fit/",
+              "cache_url": null,
+              "related_search_url": null,
+              "breadcrumb": "https://adamteva.org.il › ein_fit",
+              "website_name": "אדם טבע ודין",
+              "is_image": false,
+              "is_video": false,
+              "is_featured_snippet": false,
+              "is_malicious": false,
+              "is_web_story": false,
+              "checks": null,
+              "description": "להפעיל לחץ משפטי ורגולטורי כדי לעצור את הזיהום במקור; לדרוש בדיקות מקיפות ושקיפות מלאה בכל אתר חשוד; לקדם אסדרה מחייבת שתמנע הישנות מקרים כמו שדה דב ...",
+              "pre_snippet": null,
+              "extended_snippet": null,
+              "images": null,
+              "amp_version": false,
+              "rating": null,
+              "price": null,
+              "highlighted": [
+                "שדה דב"
+              ],
+              "links": null,
+              "faq": null,
+              "extended_people_also_search": null,
+              "about_this_result": null,
+              "related_result": null,
+              "timestamp": null,
+              "rectangle": null
+            },
+            {
+              "type": "people_also_ask",
+              "rank_group": 1,
+              "rank_absolute": 11,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[20]/div[1]/div[1]/div[1]",
+              "items": [
+                {
+                  "type": "people_also_ask_element",
+                  "title": "מהן ההשפעות של זיהום הקרקע בשדה דב?",
+                  "seed_question": null,
+                  "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[20]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]",
+                  "expanded_element": [
+                    {
+                      "type": "people_also_ask_ai_overview_expanded_element",
+                      "items": null,
+                      "references": null,
+                      "asynchronous_ai_overview": true
+                    }
+                  ]
+                },
+                {
+                  "type": "people_also_ask_element",
+                  "title": "מהו הפרויקט בשדה דב?",
+                  "seed_question": "מהן ההשפעות של זיהום הקרקע בשדה דב?",
+                  "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[20]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]",
+                  "expanded_element": [
+                    {
+                      "type": "people_also_ask_ai_overview_expanded_element",
+                      "items": null,
+                      "references": null,
+                      "asynchronous_ai_overview": true
+                    }
+                  ]
+                }
+              ],
+              "rectangle": null
+            },
+            {
+              "type": "related_searches",
+              "rank_group": 1,
+              "rank_absolute": 12,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[2]",
+              "items": [
+                "שדה דב זיהום",
+                "שדה דב מפה",
+                "שדה דב פרויקטים",
+                "קרקע מזוהמת בשדה דב",
+                "זוהי שדה דב",
+                "קרקע שדה דב",
+                "שדה דב גלובס",
+                "זוהי שדה דב מחירים"
+              ],
+              "rectangle": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

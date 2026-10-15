@@ -1,0 +1,633 @@
+{
+  "version": "0.1.20260917",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "7.9113 sec.",
+  "cost": 0.002,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "10150650-2646-0139-0000-fd002af55bfc",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "7.7132 sec.",
+      "cost": 0.002,
+      "result_count": 1,
+      "path": [
+        "v3",
+        "serp",
+        "google",
+        "organic",
+        "live",
+        "advanced"
+      ],
+      "data": {
+        "api": "serp",
+        "function": "live",
+        "se": "google",
+        "se_type": "organic",
+        "keyword": "שדה דב",
+        "location_code": 2376,
+        "language_code": "he",
+        "device": "desktop",
+        "depth": 10,
+        "load_async_ai_overview": true,
+        "people_also_ask_click_depth": 1,
+        "os": "windows"
+      },
+      "result": [
+        {
+          "keyword": "שדה דב",
+          "type": "organic",
+          "se_domain": "google.com",
+          "location_code": 2376,
+          "language_code": "he",
+          "check_url": "https://www.google.com/search?q=%D7%A9%D7%93%D7%94%20%D7%93%D7%91&hl=he&gl=IL&ie=UTF-8&uule=w+CAIQIFISCYvJpzIkSQAVEbosNRMgQmtq",
+          "datetime": "2026-10-15 06:50:32 +00:00",
+          "spell": null,
+          "refinement_chips": null,
+          "item_types": [
+            "ai_overview",
+            "organic",
+            "local_pack",
+            "people_also_search",
+            "short_videos",
+            "video",
+            "related_searches"
+          ],
+          "se_results_count": 120,
+          "pages_count": 1,
+          "items_count": 14,
+          "items": [
+            {
+              "type": "ai_overview",
+              "rank_group": 1,
+              "rank_absolute": 1,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]",
+              "asynchronous_ai_overview": false,
+              "markdown": "**רובע שדה דב** `הוא פרויקט עירוני שאפתני המוקם בצפון` -מערב תל אביב, על השטח שבו פעל בעבר נמל התעופה דב הוז (שדה דב) שנסגר ביולי 2019.[[1]](https://he.wikipedia.org/wiki/%D7%A0%D7%9E%D7%9C_%D7%94%D7%AA%D7%A2%D7%95%D7%A4%D7%94_%D7%93%D7%91_%D7%94%D7%95%D7%96)[[2]](https://project-tlv.info/places/sde-dov/)\n\n### פרטים מרכזיים על הפרויקט:\n\n- **שטח והיקף:** משתרע על פני כ-1,500 דונם ומחולק לשלושה מתחמים עיקריים: אשכול (דרום), מרכזי וצפוני.\n- **בנייה ומגורים:** מתוכננות בו כ-16,000 יחידות דיור, לצד שטחי מסחר, תעסוקה, מלונאות ומבני ציבור.\n- **פארקים וסביבה:** כולל תכנון של כ-365 דונם של פארקים ושטחים ירוקים, טיילת ופארק חופי.\n- **תחבורה:** הרובע יתחבר להמשך רחוב אבן גבירול ולמערכת הקו הירוק של הרכבת הקלה.\n- **אכלוס:** האכלוס הראשון (במתחם אשכול) צפוי להתחיל סביב שנת 2029.[[1]](https://sdedov.co.il/)[[2]](https://sdedov.co.il/about/)[[3]](https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx)[[4]](https://project-tlv.info/places/sde-dov/)[[5]](https://www.youtube.com/shorts/du9V_H6oids)\n\nניתן למצוא מידע נוסף ועדכונים ב[אתר רובע שדה דב](https://sdedov.co.il/) או בעמוד הייעודי באתר [עיריית תל אביב-יפו](https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx).[[1]](https://sdedov.co.il/)[[2]](https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx)האם תרצה מידע על **פרויקטים ספציפיים למגורים** שקמים ברובע, או פרטים על **התקדמות הבנייה** באחד המתחמים?",
+              "items": [
+                {
+                  "type": "ai_overview_element",
+                  "position": "left",
+                  "title": null,
+                  "text": "רובע שדה דב הוא פרויקט עירוני שאפתני המוקם בצפון -מערב תל אביב, על השטח שבו פעל בעבר נמל התעופה דב הוז (שדה דב) שנסגר ביולי 2019.",
+                  "markdown": "**רובע שדה דב** `הוא פרויקט עירוני שאפתני המוקם בצפון` -מערב תל אביב, על השטח שבו פעל בעבר נמל התעופה דב הוז (שדה דב) שנסגר ביולי 2019.[[1]](https://he.wikipedia.org/wiki/%D7%A0%D7%9E%D7%9C_%D7%94%D7%AA%D7%A2%D7%95%D7%A4%D7%94_%D7%93%D7%91_%D7%94%D7%95%D7%96)[[2]](https://project-tlv.info/places/sde-dov/)",
+                  "links": null,
+                  "images": null,
+                  "references": [
+                    {
+                      "type": "ai_overview_reference",
+                      "position": "left",
+                      "source": "ויקיפדיה",
+                      "domain": "he.wikipedia.org",
+                      "url": "https://he.wikipedia.org/wiki/%D7%A0%D7%9E%D7%9C_%D7%94%D7%AA%D7%A2%D7%95%D7%A4%D7%94_%D7%93%D7%91_%D7%94%D7%95%D7%96",
+                      "title": "נמל התעופה דב הוז – ויקיפדיה",
+                      "text": "שדה דב (נמל התעופה דב הוז, IATA: SDV, ICAO: LLSD): שדה תעופה בציפון ת\"א, פעל 23.09.1938–01.07.2019 (81 שנה). שימש כבסיס כנף 15 של ..."
+                    },
+                    {
+                      "type": "ai_overview_reference",
+                      "position": "left",
+                      "source": "פרויקט תל אביב",
+                      "domain": "project-tlv.info",
+                      "url": "https://project-tlv.info/places/sde-dov/",
+                      "title": "פרויקט רובע שדה דב - פרויקט תל אביב Project TLV",
+                      "text": "רובע שדה דב, השוכן בצפון-מערב תל אביב, הוא פרויקט עירוני שאפתני הנמצא בשלבי הקמה. בעבר, שטח זה שימש כנמל תעופה פנים-ארצי \"שדה דב\","
+                    }
+                  ]
+                },
+                {
+                  "type": "ai_overview_element",
+                  "position": "left",
+                  "title": "פרטים מרכזיים על הפרויקט:",
+                  "text": "שטח והיקף: משתרע על פני כ-1,500 דונם ומחולק לשלושה מתחמים עיקריים: אשכול (דרום), מרכזי וצפוני. בנייה ומגורים: מתוכננות בו כ-16,000 יחידות דיור, לצד שטחי מסחר, תעסוקה, מלונאות ומבני ציבור. פארקים וסביבה: כולל תכנון של כ-365 דונם של פארקים ושטחים ירוקים, טיילת ופארק חופי. תחבורה: הרובע יתחבר להמשך רחוב אבן גבירול ולמערכת הקו הירוק של הרכבת הקלה. אכלוס: האכלוס הראשון (במתחם אשכול) צפוי להתחיל סביב שנת 2029.",
+                  "markdown": "- **שטח והיקף:** משתרע על פני כ-1,500 דונם ומחולק לשלושה מתחמים עיקריים: אשכול (דרום), מרכזי וצפוני.\n- **בנייה ומגורים:** מתוכננות בו כ-16,000 יחידות דיור, לצד שטחי מסחר, תעסוקה, מלונאות ומבני ציבור.\n- **פארקים וסביבה:** כולל תכנון של כ-365 דונם של פארקים ושטחים ירוקים, טיילת ופארק חופי.\n- **תחבורה:** הרובע יתחבר להמשך רחוב אבן גבירול ולמערכת הקו הירוק של הרכבת הקלה.\n- **אכלוס:** האכלוס הראשון (במתחם אשכול) צפוי להתחיל סביב שנת 2029.[[1]](https://sdedov.co.il/)[[2]](https://sdedov.co.il/about/)[[3]](https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx)[[4]](https://project-tlv.info/places/sde-dov/)[[5]](https://www.youtube.com/shorts/du9V_H6oids)",
+                  "links": null,
+                  "images": null,
+                  "references": [
+                    {
+                      "type": "ai_overview_reference",
+                      "position": "left",
+                      "source": "רובע שדה דב",
+                      "domain": "sdedov.co.il",
+                      "url": "https://sdedov.co.il/",
+                      "title": "רובע שדה דב - אתר המידע",
+                      "text": "רובע שדה דב מתוכנן כרובע עירוני שוקק חיים המשלב בנייני מגורים בהיקף כולל של כ-16,000 יחידות דיור, שטחי מסחר ותעסוקה, מבני ציבור ופ..."
+                    },
+                    {
+                      "type": "ai_overview_reference",
+                      "position": "left",
+                      "source": "רובע שדה דב",
+                      "domain": "sdedov.co.il",
+                      "url": "https://sdedov.co.il/about/",
+                      "title": "רובע שדה דב - סקירה כללית | אתר המידע",
+                      "text": "שטח: כ-1,500 דונם בצפון תל אביב. יח\"ד: כ-16,000 סה\"כ (כ-6,900 מכליל; כ-9,000 שווקו עד ספטמבר 2026). ייעודים: מבני ציבור (כ-500 אלף..."
+                    },
+                    {
+                      "type": "ai_overview_reference",
+                      "position": "left",
+                      "source": "עיריית תל אביב-יפו",
+                      "domain": "www.tel-aviv.gov.il",
+                      "url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+                      "title": "רובע שדה דב - עיריית תל אביב-יפו",
+                      "text": "מה מתוכנן ברובע שדה דב? הרובע מתוכנן כאזור מעורב שימושים המשלב בין שכונת מגורים, הכוללת 16,000 דירות, לבין רובע עסקים ובילוי, הכול..."
+                    },
+                    {
+                      "type": "ai_overview_reference",
+                      "position": "left",
+                      "source": "YouTube",
+                      "domain": "www.youtube.com",
+                      "url": "https://www.youtube.com/shorts/du9V_H6oids",
+                      "title": "איך שכונת שדה דב תראה ואיך הקו הירוק ישפיע עליה",
+                      "text": "רובע שדה דב החדש בתל אביב לא יהיה רק נקודת עניין מרכזית אלא צומת מרכזי של הקו הירוק של הרכבת הקלה. מהארכת רחוב אבן גבירול עד הרצלי..."
+                    }
+                  ]
+                },
+                {
+                  "type": "ai_overview_element",
+                  "position": "left",
+                  "title": null,
+                  "text": "ניתן למצוא מידע נוסף ועדכונים ב אתר רובע שדה דב או בעמוד הייעודי באתר עיריית תל אביב-יפו.",
+                  "markdown": "ניתן למצוא מידע נוסף ועדכונים ב[אתר רובע שדה דב](https://sdedov.co.il/) או בעמוד הייעודי באתר [עיריית תל אביב-יפו](https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx).[[1]](https://sdedov.co.il/)[[2]](https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx)",
+                  "links": [
+                    {
+                      "type": "link_element",
+                      "title": "אתר רובע שדה דב",
+                      "description": null,
+                      "url": "https://sdedov.co.il/",
+                      "domain": "sdedov.co.il"
+                    },
+                    {
+                      "type": "link_element",
+                      "title": "עיריית תל אביב-יפו",
+                      "description": null,
+                      "url": "https://www.tel-aviv.gov.il/Residents/Development/Pages/SdeDov.aspx",
+                      "domain": "www.tel-aviv.gov.il"
+                    }
+                  ],
+                  "images": null,
+                  "references": null
+                },
+                {
+                  "type": "ai_overview_element",
+                  "position": "left",
+                  "title": null,
+                  "text": "האם תרצה מידע על פרויקטים ספציפיים למגורים שקמים ברובע, או פרטים על התקדמות הבנייה באחד המתחמים?",
+                  "markdown": "האם תרצה מידע על **פרויקטים ספציפיים למגורים** שקמים ברובע, או פרטים על **התקדמות הבנייה** באחד המתחמים?",
+                  "links": null,
+                  "images": null,
+                  "references": null
+                }
+              ],
+              "references": null,
+              "rectangle": null
+            },
+            {
+              "type": "organic",
+              "rank_group": 1,
+              "rank_absolute": 2,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]",
+              "domain": "sdedov.co.il",
+              "title": "רובע שדה דב - אתר המידע",
+              "url": "https://sdedov.co.il/%D7%A8%D7%90%D7%A9%D7%99/",
+              "cache_url": null,
+              "related_search_url": null,
+              "breadcrumb": "https://sdedov.co.il › ראשי",
+              "website_name": "רובע שדה דב",
+              "is_image": false,
+              "is_video": false,
+              "is_featured_snippet": false,
+              "is_malicious": false,
+              "is_web_story": false,
+              "checks": null,
+              "description": "רובע שדה דב מתוכנן כרובע עירוני שוקק חיים המשלב בנייני מגורים, שטחי מסחר ותעסוקה, מבני ציבור ופארקים וכן תשתיות תחבורה ציבורית מתקדמות.",
+              "pre_snippet": null,
+              "extended_snippet": null,
+              "images": null,
+              "amp_version": false,
+              "rating": null,
+              "price": null,
+              "highlighted": [
+                "שדה דב"
+              ],
+              "links": null,
+              "faq": null,
+              "extended_people_also_search": null,
+              "about_this_result": null,
+              "related_result": null,
+              "timestamp": null,
+              "rectangle": null
+            },
+            {
+              "type": "organic",
+              "rank_group": 2,
+              "rank_absolute": 3,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/div[1]",
+              "domain": "www.bizportal.co.il",
+              "title": "שדה דב הוא אזור מגורים יוקרתי בצפון תל אביב",
+              "url": "https://www.bizportal.co.il/list/tags/28364",
+              "cache_url": null,
+              "related_search_url": null,
+              "breadcrumb": "https://www.bizportal.co.il › list › tags",
+              "website_name": "ביזפורטל",
+              "is_image": false,
+              "is_video": false,
+              "is_featured_snippet": false,
+              "is_malicious": false,
+              "is_web_story": false,
+              "checks": null,
+              "description": "שדה דב, שדה התעופה ההיסטורי בצפון תל אביב, שירת במשך עשורים את התעופה הפנים-ארצית והביטחונית. עם סגירתו נפתחה אחת מעתודות הקרקע היקרות והמדוברות ביותר במרכז ...",
+              "pre_snippet": null,
+              "extended_snippet": null,
+              "images": null,
+              "amp_version": false,
+              "rating": null,
+              "price": null,
+              "highlighted": [
+                "שדה התעופה ההיסטורי בצפון תל אביב"
+              ],
+              "links": null,
+              "faq": null,
+              "extended_people_also_search": null,
+              "about_this_result": null,
+              "related_result": null,
+              "timestamp": null,
+              "rectangle": null
+            },
+            {
+              "type": "local_pack",
+              "rank_group": 1,
+              "rank_absolute": 4,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[6]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]",
+              "title": "החוף הסודי",
+              "description": "הטיילת \n",
+              "domain": null,
+              "phone": null,
+              "booking_url": null,
+              "url": null,
+              "is_paid": false,
+              "rating": {
+                "rating_type": "Max5",
+                "value": 4.5,
+                "votes_count": 312,
+                "rating_max": 5
+              },
+              "cid": "7643019634981484769",
+              "rectangle": null
+            },
+            {
+              "type": "local_pack",
+              "rank_group": 2,
+              "rank_absolute": 5,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[6]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[3]/div[1]/div[1]",
+              "title": "שדה דב/שד' לוי אשכול",
+              "description": null,
+              "domain": null,
+              "phone": null,
+              "booking_url": null,
+              "url": null,
+              "is_paid": false,
+              "rating": {
+                "rating_type": "Max5",
+                "value": 5,
+                "votes_count": 1,
+                "rating_max": 5
+              },
+              "cid": "3446927662520762216",
+              "rectangle": null
+            },
+            {
+              "type": "organic",
+              "rank_group": 3,
+              "rank_absolute": 6,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[8]/div[1]/div[1]",
+              "domain": "www.madlan.co.il",
+              "title": "דירות למכירה בשדה דב מרכז, תל אביב יפו",
+              "url": "https://www.madlan.co.il/for-sale/%D7%A9%D7%9B%D7%95%D7%A0%D7%94-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%9E%D7%A8%D7%9B%D7%96-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%A4%D7%95-%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+              "cache_url": null,
+              "related_search_url": null,
+              "breadcrumb": "https://www.madlan.co.il › תל אביב יפו",
+              "website_name": "מדלן",
+              "is_image": false,
+              "is_video": false,
+              "is_featured_snippet": false,
+              "is_malicious": false,
+              "is_web_story": false,
+              "checks": null,
+              "description": "דירות למכירה בשדה דב מרכז, תל אביב יפו. היכנסו ללוח הנדל\"ן של מדלן, המתעדכן מידי יום לדירות חדשות ויד שניה למכירה בשדה דב מרכז, תל אביב יפו ובכל הישובים ...",
+              "pre_snippet": null,
+              "extended_snippet": null,
+              "images": null,
+              "amp_version": false,
+              "rating": null,
+              "price": null,
+              "highlighted": [
+                "דירות למכירה בשדה דב מרכז, תל אביב יפו"
+              ],
+              "links": null,
+              "faq": null,
+              "extended_people_also_search": null,
+              "about_this_result": null,
+              "related_result": null,
+              "timestamp": null,
+              "rectangle": null
+            },
+            {
+              "type": "people_also_search",
+              "rank_group": 1,
+              "rank_absolute": 7,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[9]",
+              "title": "חיפוש מוצרים ושירותים רלוונטיים",
+              "items": [
+                "דמרי שדה דב מחירים",
+                "גינדי שדה דב מחירים",
+                "אביסרור שדה דב מחירים",
+                "גינדי החזקות שדה דב",
+                "נחמיאס שדה דב",
+                "שיכון ובינוי שדה דב"
+              ],
+              "rectangle": null
+            },
+            {
+              "type": "short_videos",
+              "rank_group": 1,
+              "rank_absolute": 8,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[10]/div[1]",
+              "title": "סרטונים קצרים",
+              "items": [
+                {
+                  "type": "short_videos_element",
+                  "title": "איך שכונת שדה דב תראה ואיך הקו הירוק ישפיע עליה",
+                  "url": "https://www.youtube.com/shorts/du9V_H6oids",
+                  "domain": "google.com",
+                  "source": "מה בונים פה?"
+                },
+                {
+                  "type": "short_videos_element",
+                  "title": "רובע שדה דב הולך לשנות את פני הצפון של תל אביב  מה ...",
+                  "url": "https://www.facebook.com/SigalWeitzmanOfficial/videos/%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%94%D7%A2%D7%AA%D7%99%D7%93-%D7%A9%D7%9C-%D7%A6%D7%A4%D7%95%D7%9F-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%95%D7%A6%D7%90-%D7%9C%D7%93%D7%A8%D7%9A%D7%94%D7%A2%D7%99%D7%A8-%D7%9E%D7%AA%D7%97%D7%93%D7%A9%D7%AA-%D7%95%D7%94%D7%A4%D7%A2%D7%9D-%D7%9E%D7%93%D7%95%D7%91%D7%A8-%D7%91%D7%90%D7%97%D7%93-%D7%94%D7%9E%D7%99%D7%96%D7%9E%D7%99/1937108483505765/",
+                  "domain": "google.com",
+                  "source": "סיגל ויצמן Sigal Weitzman"
+                },
+                {
+                  "type": "short_videos_element",
+                  "title": "למה סגרו את שדה דב? הסיבה וההשפעה על תל אביב ונדלן",
+                  "url": "https://www.tiktok.com/@beyafo/video/7664502310462131464",
+                  "domain": "google.com",
+                  "source": "beyafo"
+                },
+                {
+                  "type": "short_videos_element",
+                  "title": "ניתנת הזכות לדירה קטנה על רבע דונם היסטורי! • פרויקט שדב דב נחשב ...",
+                  "url": "https://www.facebook.com/reef.nadlan/videos/%D7%A9%D7%93%D7%94-%D7%93%D7%91/828949734518382/",
+                  "domain": "google.com",
+                  "source": "ריף נדל\"ן - פרויקטים והשקעות בארץ ובחו\"ל"
+                }
+              ],
+              "rectangle": null
+            },
+            {
+              "type": "organic",
+              "rank_group": 4,
+              "rank_absolute": 9,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[12]/div[1]/div[1]",
+              "domain": "www.mako.co.il",
+              "title": "כמה תעלה דירה בפרויקט שדה דב?",
+              "url": "https://www.mako.co.il/finances-real-estate/Article-5e064b6fe71f591026.htm",
+              "cache_url": null,
+              "related_search_url": null,
+              "breadcrumb": "https://www.mako.co.il › כסף › נדל\"ן",
+              "website_name": "mako",
+              "is_image": true,
+              "is_video": false,
+              "is_featured_snippet": false,
+              "is_malicious": false,
+              "is_web_story": false,
+              "checks": [
+                "is_image"
+              ],
+              "description": "1 באפר׳ 2025 — שיווק כמות גדולה כל כך של קרקעות למגורים - לבניית יותר מ־6,500 יחידות דיור - ובאחד המקומות היוקרתיים ביותר בישראל כיום וגם בעתיד, הוא אירוע לא ...",
+              "pre_snippet": "1 באפר׳ 2025",
+              "extended_snippet": null,
+              "images": [
+                {
+                  "type": "images_element",
+                  "alt": "שדה דב מאת www.mako.co.il",
+                  "url": "https://www.mako.co.il/finances-real-estate/Article-5e064b6fe71f591026.htm",
+                  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpITIU8XGltAUkdLW1Cf9_y2lalNl5oxiu-vRCtS9HbHHxWcROzhcm&usqp=CAE&s"
+                }
+              ],
+              "amp_version": false,
+              "rating": null,
+              "price": null,
+              "highlighted": [
+                "לבניית יותר מ־6,500 יחידות דיור"
+              ],
+              "links": null,
+              "faq": null,
+              "extended_people_also_search": null,
+              "about_this_result": null,
+              "related_result": null,
+              "timestamp": null,
+              "rectangle": null
+            },
+            {
+              "type": "video",
+              "rank_group": 1,
+              "rank_absolute": 10,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[14]/div[1]",
+              "items": [
+                {
+                  "type": "video_element",
+                  "source": "YouTube · מה בונים פה?",
+                  "title": "פרויקט שדה דב - מבט כולל על פרויקט בתכנון עירוני מהמעלה הראשונה",
+                  "timestamp": null,
+                  "url": "https://www.youtube.com/watch?v=ezYStf9NrGo"
+                },
+                {
+                  "type": "video_element",
+                  "source": "YouTube · מה בונים פה?",
+                  "title": "איך שכונת שדה דב תראה ואיך הקו הירוק ישפיע עליה",
+                  "timestamp": "2026-06-12 00:00:00 +00:00",
+                  "url": "https://www.youtube.com/shorts/du9V_H6oids"
+                },
+                {
+                  "type": "video_element",
+                  "source": "Facebook · מסד עוז ניהול והנדסה - Massad Oz Management and Engineering",
+                  "title": "פיתוח רובע שדה דב בימים אלה נבנית בישראל עיר חדשה מסוג אחר. היא ...",
+                  "timestamp": null,
+                  "url": "https://www.facebook.com/Massadoz/videos/%D7%91%D7%99%D7%9F-%D7%A9%D7%93%D7%94-%D7%9C%D7%97%D7%9C%D7%95%D7%9D-%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%A8%D7%95%D7%91%D7%A2-%D7%A9%D7%93%D7%94-%D7%93%D7%91%D7%91%D7%99%D7%9E%D7%99%D7%9D-%D7%90%D7%9C%D7%94-%D7%A0%D7%91%D7%A0%D7%99%D7%AA-%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%A2%D7%99%D7%A8-%D7%97%D7%93%D7%A9%D7%94-%D7%9E%D7%A1%D7%95%D7%92-%D7%90%D7%97%D7%A8-%D7%94%D7%99%D7%90-%D7%90%D7%99%D7%A0%D7%94/2473133026502895/"
+                },
+                {
+                  "type": "video_element",
+                  "source": "Facebook · סיגל ויצמן Sigal Weitzman",
+                  "title": "רובע שדה דב הולך לשנות את פני הצפון של תל אביב  מה ...",
+                  "timestamp": null,
+                  "url": "https://www.facebook.com/SigalWeitzmanOfficial/videos/%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98-%D7%A9%D7%93%D7%94-%D7%93%D7%91-%D7%94%D7%A2%D7%AA%D7%99%D7%93-%D7%A9%D7%9C-%D7%A6%D7%A4%D7%95%D7%9F-%D7%AA%D7%9C-%D7%90%D7%91%D7%99%D7%91-%D7%99%D7%95%D7%A6%D7%90-%D7%9C%D7%93%D7%A8%D7%9A%D7%94%D7%A2%D7%99%D7%A8-%D7%9E%D7%AA%D7%97%D7%93%D7%A9%D7%AA-%D7%95%D7%94%D7%A4%D7%A2%D7%9D-%D7%9E%D7%93%D7%95%D7%91%D7%A8-%D7%91%D7%90%D7%97%D7%93-%D7%94%D7%9E%D7%99%D7%96%D7%9E%D7%99/1937108483505765/"
+                }
+              ],
+              "rectangle": null
+            },
+            {
+              "type": "organic",
+              "rank_group": 5,
+              "rank_absolute": 11,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[16]/div[1]/div[1]",
+              "domain": "www.adam-ma.co.il",
+              "title": "שדה דב",
+              "url": "https://www.adam-ma.co.il/projects/%D7%A9%D7%93%D7%94-%D7%93%D7%91/",
+              "cache_url": null,
+              "related_search_url": null,
+              "breadcrumb": "https://www.adam-ma.co.il › projects › שדה-דב",
+              "website_name": "אדמה מדעי הסביבה והגיאולוגיה",
+              "is_image": false,
+              "is_video": false,
+              "is_featured_snippet": false,
+              "is_malicious": false,
+              "is_web_story": false,
+              "checks": null,
+              "description": "מתחם שדה דב, המצוי בחלקה הצפון מערבי של העיר תל אביב, הוא השטח המשמעותי לפיתוח בתחומי העיר תל אביב, בנוסף על תוכנית 3700 בואכה הרצליה. רובע שדה דב המתוכנן משתרע ...",
+              "pre_snippet": null,
+              "extended_snippet": null,
+              "images": null,
+              "amp_version": false,
+              "rating": null,
+              "price": null,
+              "highlighted": [
+                "שדה דב"
+              ],
+              "links": null,
+              "faq": null,
+              "extended_people_also_search": null,
+              "about_this_result": null,
+              "related_result": null,
+              "timestamp": null,
+              "rectangle": null
+            },
+            {
+              "type": "organic",
+              "rank_group": 6,
+              "rank_absolute": 12,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[18]/div[1]/div[1]",
+              "domain": "www.facebook.com",
+              "title": "רובע שדה דב | Tel Aviv",
+              "url": "https://www.facebook.com/sdehdov/",
+              "cache_url": null,
+              "related_search_url": null,
+              "breadcrumb": "מעל 720 עוקבים",
+              "website_name": "Facebook · רובע שדה דב",
+              "is_image": false,
+              "is_video": false,
+              "is_featured_snippet": false,
+              "is_malicious": false,
+              "is_web_story": false,
+              "checks": null,
+              "description": "רובע שדה דב - רובע החוף החדש של תל אביב יכלול כ- 16,000 יחידות דיור, שטחי מסחר ותעסוקה, מבני ציבור ופארקים וכן תשתיות תחבורה ציבורית מתקדמות.",
+              "pre_snippet": null,
+              "extended_snippet": null,
+              "images": null,
+              "amp_version": false,
+              "rating": null,
+              "price": null,
+              "highlighted": [
+                "רובע החוף החדש של תל אביב"
+              ],
+              "links": null,
+              "faq": null,
+              "extended_people_also_search": null,
+              "about_this_result": null,
+              "related_result": null,
+              "timestamp": null,
+              "rectangle": null
+            },
+            {
+              "type": "organic",
+              "rank_group": 7,
+              "rank_absolute": 13,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[19]/div[1]/div[1]/div[1]",
+              "domain": "www.instagram.com",
+              "title": "פיתוח רובע שדה דב בימים אלה נבנית בישראל עיר חדשה מסוג אחר. היא ...",
+              "url": "https://www.instagram.com/reel/DSQFn7lEm1a/",
+              "cache_url": null,
+              "related_search_url": null,
+              "breadcrumb": "מעל 20 לייקים  ·  לפני 10 חודשים",
+              "website_name": "Instagram · massad_oz",
+              "is_image": false,
+              "is_video": true,
+              "is_featured_snippet": false,
+              "is_malicious": false,
+              "is_web_story": false,
+              "checks": [
+                "is_video"
+              ],
+              "description": "20 likes, 0 comments - massad_oz on December 14, 2025‎: \"בין שדה לחלום – פיתוח רובע שדה דב בימים אלה נבנית בישראל עיר חדשה מסוג אחר.",
+              "pre_snippet": null,
+              "extended_snippet": null,
+              "images": null,
+              "amp_version": false,
+              "rating": null,
+              "price": null,
+              "highlighted": [
+                "שדה",
+                "שדה דב"
+              ],
+              "links": null,
+              "faq": null,
+              "extended_people_also_search": null,
+              "about_this_result": null,
+              "related_result": null,
+              "timestamp": null,
+              "rectangle": null
+            },
+            {
+              "type": "related_searches",
+              "rank_group": 1,
+              "rank_absolute": 14,
+              "page": 1,
+              "position": "left",
+              "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[2]",
+              "items": [
+                "פרויקט שדה דב מחירים",
+                "גינדי שדה דב",
+                "מדלן שדה דב",
+                "שדה דב למכירה",
+                "שדה דב פרויקטים",
+                "שדה דב דירות",
+                "אוטופיה שדה דב מחירים",
+                "מתחם שדה דב"
+              ],
+              "rectangle": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

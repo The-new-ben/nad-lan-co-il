@@ -1,0 +1,2392 @@
+{
+  "version": "0.1.20260917",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "3.6871 sec.",
+  "cost": 0.09,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "10150639-2646-0368-0000-3a825c33d8e6",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "3.6701 sec.",
+      "cost": 0.09,
+      "result_count": 31,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_ads",
+        "keywords_for_keywords",
+        "live"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "keywords_for_keywords",
+        "se": "google_ads",
+        "keywords": [
+          "זיהום שדה דב",
+          "זיהום קרקע שדה דב",
+          "pfas שדה דב",
+          "שדה דב זיהום קרקע",
+          "זיהום קרקע",
+          "pfas",
+          "קרקע מזוהמת",
+          "סקר קרקע",
+          "קצף כיבוי",
+          "טיהור קרקע",
+          "זיהום מי תהום",
+          "שדה דב בריאות",
+          "שדה דב סכנה",
+          "חומרי pfas"
+        ],
+        "location_code": 2376,
+        "language_code": "iw",
+        "sort_by": "search_volume"
+      },
+      "result": [
+        {
+          "keyword": "pfas",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 11,
+          "search_volume": 880,
+          "low_top_of_page_bid": 2,
+          "high_top_of_page_bid": 5,
+          "cpc": 8.09,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 1000
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 1300
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 590
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": null
+          }
+        },
+        {
+          "keyword": "זיהום קרקע",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 8,
+          "search_volume": 260,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 170
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 140
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 50
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": null
+          }
+        },
+        {
+          "keyword": "סקר קרקע",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 49,
+          "search_volume": 90,
+          "low_top_of_page_bid": 4.15,
+          "high_top_of_page_bid": 19.88,
+          "cpc": 19.87,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 110
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": null
+          }
+        },
+        {
+          "keyword": "מטף קצף",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "HIGH",
+          "competition_index": 100,
+          "search_volume": 90,
+          "low_top_of_page_bid": 1.01,
+          "high_top_of_page_bid": 2.33,
+          "cpc": 0.71,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 140
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 210
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 40
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "זיהום שדה דב",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 5,
+          "search_volume": 70,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": 0.15,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 0
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": null
+          }
+        },
+        {
+          "keyword": "זיהום קרקע שדה דב",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 10,
+          "search_volume": 50,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": 0.06,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 0
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": null
+          }
+        },
+        {
+          "keyword": "קרקע מזוהמת",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 15,
+          "search_volume": 50,
+          "low_top_of_page_bid": 6.15,
+          "high_top_of_page_bid": 18.72,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 20
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": null
+          }
+        },
+        {
+          "keyword": "שדה דב זיהום קרקע",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 20,
+          "search_volume": 40,
+          "low_top_of_page_bid": 0.05,
+          "high_top_of_page_bid": 9.83,
+          "cpc": 11.64,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 170
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 0
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": null
+          }
+        },
+        {
+          "keyword": "סקר קרקע היסטורי",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 49,
+          "search_volume": 30,
+          "low_top_of_page_bid": 3.31,
+          "high_top_of_page_bid": 12.42,
+          "cpc": 25.45,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 20
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "pfas שדה דב",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 20,
+          "search_volume": 20,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": 3.01,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 0
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": null
+          }
+        },
+        {
+          "keyword": "זיהום מי תהום",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 0,
+          "search_volume": 20,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": null
+          }
+        },
+        {
+          "keyword": "סקר גז קרקע",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 21,
+          "search_volume": 20,
+          "low_top_of_page_bid": 9.14,
+          "high_top_of_page_bid": 18.48,
+          "cpc": 20.62,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 30
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "טיפול בקרקע מזוהמת",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 26,
+          "search_volume": 20,
+          "low_top_of_page_bid": 4.35,
+          "high_top_of_page_bid": 23.18,
+          "cpc": 22.12,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 20
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "קצף כיבוי אש",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 54,
+          "search_volume": 20,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "קצף כיבוי",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 66,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": null
+          }
+        },
+        {
+          "keyword": "טיהור קרקע",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 50,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": null
+          }
+        },
+        {
+          "keyword": "סקר גזי קרקע",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 29,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": 12.59,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "פינוי קרקע מזוהמת",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 14,
+          "search_volume": 10,
+          "low_top_of_page_bid": 1.06,
+          "high_top_of_page_bid": 16.1,
+          "cpc": 11.94,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "זיהום קרקע המשרד להגנת הסביבה",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 0,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "בדיקת קרקע מזוהמת",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 0,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "המשרד להגנת הסביבה זיהום קרקע",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 0
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "זיהום הקרקע",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "טיהור קרקע מזוהמת",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "HIGH",
+          "competition_index": 71,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "כיבוי אש בקצף",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "HIGH",
+          "competition_index": 86,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 0
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "מטף כיבוי קצף",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "HIGH",
+          "competition_index": 100,
+          "search_volume": 10,
+          "low_top_of_page_bid": 0.38,
+          "high_top_of_page_bid": 3.26,
+          "cpc": 2.18,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "מטפה קצף",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "HIGH",
+          "competition_index": 100,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": 0.09,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "מערכות כיבוי אש בקצף",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 0
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "ניקוי קרקע מזוהמת",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 0
+            }
+          ],
+          "keyword_annotations": {
+            "concepts": [
+              {
+                "name": "Non-Brands",
+                "concept_group": {
+                  "name": "לא מותגים",
+                  "type": "NON_BRAND"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "keyword": "שדה דב בריאות",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null,
+          "keyword_annotations": {
+            "concepts": null
+          }
+        },
+        {
+          "keyword": "שדה דב סכנה",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null,
+          "keyword_annotations": {
+            "concepts": null
+          }
+        },
+        {
+          "keyword": "חומרי pfas",
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null,
+          "keyword_annotations": {
+            "concepts": null
+          }
+        }
+      ]
+    }
+  ]
+}

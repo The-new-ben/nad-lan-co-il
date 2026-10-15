@@ -1,0 +1,2374 @@
+{
+  "version": "0.1.20260917",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "1.8994 sec.",
+  "cost": 0.09,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "10150639-2646-0367-0000-b22f18ee75b0",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "1.8133 sec.",
+      "cost": 0.09,
+      "result_count": 50,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_ads",
+        "search_volume",
+        "live"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "search_volume",
+        "se": "google_ads",
+        "keywords": [
+          "זיהום שדה דב",
+          "זיהום קרקע שדה דב",
+          "pfas שדה דב",
+          "מפת זיהום שדה דב",
+          "שדה דב מזוהם",
+          "שדה דב זיהום קרקע",
+          "זיהום קרקע תל אביב",
+          "בדיקת זיהום קרקע",
+          "סקר קרקע",
+          "סקר זיהום קרקע",
+          "pfas",
+          "pfos",
+          "קצף כיבוי זיהום",
+          "קצף כיבוי אש pfas",
+          "זיהום קרקע",
+          "קרקע מזוהמת",
+          "קרקעות מזוהמות",
+          "טיהור קרקע",
+          "שיקום קרקע מזוהמת",
+          "סקר היסטורי קרקע",
+          "המשרד להגנת הסביבה זיהום קרקע",
+          "חומרים פרפלואורים",
+          "כימיקלים לנצח",
+          "זיהום מי תהום",
+          "זיהום מי תהום תל אביב",
+          "שדה דב",
+          "שדה דב דירות",
+          "שדה דב פרויקטים",
+          "שכונת שדה דב",
+          "שדה דב בנייה",
+          "שדה דב מכרז",
+          "מגרשים שדה דב",
+          "נמל התעופה שדה דב",
+          "דירה על קרקע מזוהמת",
+          "ערכי סף זיהום קרקע",
+          "ערכי סף pfas",
+          "בדיקת קרקע לפני בנייה",
+          "זיהום קרקע דלק",
+          "טיהור קרקע שדה דב",
+          "זיהום קרקע צפון תל אביב",
+          "sde dov contamination",
+          "sde dov pfas",
+          "sde dov",
+          "sde dov airport",
+          "pfas israel",
+          "soil contamination israel",
+          "pfas soil contamination",
+          "tel aviv soil contamination",
+          "firefighting foam contamination",
+          "pfas contamination"
+        ],
+        "location_code": 2376,
+        "language_code": "iw",
+        "search_partners": false
+      },
+      "result": [
+        {
+          "keyword": "זיהום שדה דב",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 5,
+          "search_volume": 70,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": 0.15,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 0
+            }
+          ]
+        },
+        {
+          "keyword": "זיהום קרקע שדה דב",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 10,
+          "search_volume": 50,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": 0.06,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 0
+            }
+          ]
+        },
+        {
+          "keyword": "pfas שדה דב",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 20,
+          "search_volume": 20,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": 3.01,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 0
+            }
+          ]
+        },
+        {
+          "keyword": "מפת זיהום שדה דב",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "שדה דב מזוהם",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "שדה דב זיהום קרקע",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 20,
+          "search_volume": 40,
+          "low_top_of_page_bid": 0.05,
+          "high_top_of_page_bid": 9.83,
+          "cpc": 11.64,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 170
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 0
+            }
+          ]
+        },
+        {
+          "keyword": "זיהום קרקע תל אביב",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "בדיקת זיהום קרקע",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "סקר קרקע",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 49,
+          "search_volume": 90,
+          "low_top_of_page_bid": 4.15,
+          "high_top_of_page_bid": 19.88,
+          "cpc": 19.87,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 110
+            }
+          ]
+        },
+        {
+          "keyword": "סקר זיהום קרקע",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "pfas",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 11,
+          "search_volume": 880,
+          "low_top_of_page_bid": 2,
+          "high_top_of_page_bid": 5,
+          "cpc": 8.09,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 1000
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 1300
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 590
+            }
+          ]
+        },
+        {
+          "keyword": "pfos",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 2,
+          "search_volume": 30,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 30
+            }
+          ]
+        },
+        {
+          "keyword": "קצף כיבוי זיהום",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "קצף כיבוי אש pfas",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "זיהום קרקע",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 8,
+          "search_volume": 260,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 170
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 140
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 50
+            }
+          ]
+        },
+        {
+          "keyword": "קרקע מזוהמת",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 15,
+          "search_volume": 50,
+          "low_top_of_page_bid": 6.15,
+          "high_top_of_page_bid": 18.72,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 20
+            }
+          ]
+        },
+        {
+          "keyword": "קרקעות מזוהמות",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 15,
+          "search_volume": 50,
+          "low_top_of_page_bid": 6.15,
+          "high_top_of_page_bid": 18.72,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 20
+            }
+          ]
+        },
+        {
+          "keyword": "טיהור קרקע",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 50,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "שיקום קרקע מזוהמת",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 8,
+          "search_volume": 20,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": 4.66,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 40
+            }
+          ]
+        },
+        {
+          "keyword": "סקר היסטורי קרקע",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "המשרד להגנת הסביבה זיהום קרקע",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 0
+            }
+          ]
+        },
+        {
+          "keyword": "חומרים פרפלואורים",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "כימיקלים לנצח",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "זיהום מי תהום",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 0,
+          "search_volume": 20,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "זיהום מי תהום תל אביב",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "שדה דב",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 22,
+          "search_volume": 4400,
+          "low_top_of_page_bid": 0.68,
+          "high_top_of_page_bid": 9.89,
+          "cpc": 3.57,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 3600
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 4400
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 3600
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 4400
+            }
+          ]
+        },
+        {
+          "keyword": "שדה דב דירות",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 65,
+          "search_volume": 40,
+          "low_top_of_page_bid": 2.96,
+          "high_top_of_page_bid": 15.9,
+          "cpc": 19.58,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 70
+            }
+          ]
+        },
+        {
+          "keyword": "שדה דב פרויקטים",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "HIGH",
+          "competition_index": 73,
+          "search_volume": 390,
+          "low_top_of_page_bid": 3.29,
+          "high_top_of_page_bid": 19.38,
+          "cpc": 19.97,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 170
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 210
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 480
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 480
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 480
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 480
+            }
+          ]
+        },
+        {
+          "keyword": "שכונת שדה דב",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 32,
+          "search_volume": 40,
+          "low_top_of_page_bid": 1.06,
+          "high_top_of_page_bid": 4.41,
+          "cpc": 4.94,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 40
+            }
+          ]
+        },
+        {
+          "keyword": "שדה דב בנייה",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "שדה דב מכרז",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 0,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "מגרשים שדה דב",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "נמל התעופה שדה דב",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 4,
+          "search_volume": 140,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 140
+            }
+          ]
+        },
+        {
+          "keyword": "דירה על קרקע מזוהמת",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "ערכי סף זיהום קרקע",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "ערכי סף pfas",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "בדיקת קרקע לפני בנייה",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 18,
+          "search_volume": 40,
+          "low_top_of_page_bid": 1.29,
+          "high_top_of_page_bid": 8.09,
+          "cpc": 5.7,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 30
+            }
+          ]
+        },
+        {
+          "keyword": "זיהום קרקע דלק",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "טיהור קרקע שדה דב",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "זיהום קרקע צפון תל אביב",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "sde dov contamination",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "sde dov pfas",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "sde dov",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 20,
+          "search_volume": 390,
+          "low_top_of_page_bid": 2.2,
+          "high_top_of_page_bid": 11.07,
+          "cpc": 7.75,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 480
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 480
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 390
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 320
+            }
+          ]
+        },
+        {
+          "keyword": "sde dov airport",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 20,
+          "search_volume": 390,
+          "low_top_of_page_bid": 2.2,
+          "high_top_of_page_bid": 11.07,
+          "cpc": 7.75,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 480
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 480
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 390
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 320
+            }
+          ]
+        },
+        {
+          "keyword": "pfas israel",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 29,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 20
+            }
+          ]
+        },
+        {
+          "keyword": "soil contamination israel",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "pfas soil contamination",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 0
+            }
+          ]
+        },
+        {
+          "keyword": "tel aviv soil contamination",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "firefighting foam contamination",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "pfas contamination",
+          "spell": null,
+          "location_code": 2376,
+          "language_code": "iw",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 30,
+          "search_volume": 10,
+          "low_top_of_page_bid": 0.65,
+          "high_top_of_page_bid": 4.3,
+          "cpc": 2,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 9,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
