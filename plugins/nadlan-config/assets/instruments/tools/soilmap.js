@@ -32,7 +32,8 @@
     var d = dist(pt, [b.lng, b.lat]); if (!best || d < best.d) best = { d: d, plot: r.plot, x: x }; }); }); return best; }
   function stats(d) { var rep = d.records.filter(function (r) { return r.status === 'published_report'; }), top = rep.slice().sort(function (a, b) { return b.pfosX - a.pfosX; })[0];
     return { reports: rep.length, holes: rep.reduce(function (s, r) { return s + (r.holes || 0); }, 0), over: rep.reduce(function (s, r) { return s + (r.pfosHoles || 0); }, 0), onMap: d.records.reduce(function (s, r) { return s + r.bh.length; }, 0), top: top }; }
-  window.NLSX = { bin: bin, dist: dist, centroid: centroid, nearest: nearest, stats: stats };
+  function inside(pt, g) { var x = pt[0], y = pt[1], c = false, r = g[0]; for (var i = 0, j = r.length - 1; i < r.length; j = i++) { if (((r[i][1] > y) !== (r[j][1] > y)) && (x < (r[j][0] - r[i][0]) * (y - r[i][1]) / (r[j][1] - r[i][1]) + r[i][0])) c = !c; } return c; }
+  window.NLSX = { bin: bin, dist: dist, centroid: centroid, nearest: nearest, stats: stats, inside: inside };
   if (!window.NadLanInstruments) return;
   var NLI = window.NadLanInstruments, F = NLI.fmt, esc = NLI.esc;
   function xs(x) { return 'פי ' + (x >= 10 ? F.num(Math.round(x)) : F.num(x, 1)); }
@@ -53,8 +54,20 @@
       var d = data.soil, S = stats(d), recs = {}, byOid = {}, phone = window.matchMedia('(max-width: 760px)').matches;
       d.records.forEach(function (r) { recs[r.plot] = r; });
       d.plots.forEach(function (p) { byOid[p.oid] = p; });
+      var projByOid = {}; (d.projects || []).forEach(function (pr) { pr.oids.forEach(function (o) { projByOid[o] = pr; }); });
+      function greens() {  // Mission A (Ben 15.10): every project in marketing as a GREEN schematic building, from the published floor counts
+        var out = [];
+        (d.projects || []).forEach(function (pr) {
+          var lowH = 7;  // a low green base on the lot; only the main tower takes its published height (the rest of the build is in the card text)
+          pr.oids.forEach(function (o) { var q = byOid[o]; if (q) out.push({ type: 'Feature', properties: { h: lowH, kind: 'low' }, geometry: { type: 'Polygon', coordinates: q.g } }); });
+          if (pr.tower) { var c = pr.c, dy = 14 / 110574, dx = 14 / (111320 * Math.cos(c[1] * Math.PI / 180));
+            out.push({ type: 'Feature', properties: { h: pr.tower * 3.4, kind: 'tower' }, geometry: { type: 'Polygon', coordinates: [[[c[0] - dx, c[1] - dy], [c[0] + dx, c[1] - dy], [c[0] + dx, c[1] + dy], [c[0] - dx, c[1] + dy], [c[0] - dx, c[1] - dy]]] } }); }
+        });
+        return out;
+      }
       var order = d.records.slice().sort(function (a, b) { var k = ['published_report', 'findings_reported_no_report', 'developer_reported_no_exceedance', 'under_testing_per_developer'];
         return (k.indexOf(a.status) - k.indexOf(b.status)) || ((b.pfosX || 0) - (a.pfosX || 0)); });
+      var extra = []; (d.projects || []).forEach(function (pr) { var q = byOid[pr.oids[0]]; if (q && !q.ref && extra.indexOf(q.n) < 0) extra.push(q.n); });
       root.innerHTML = '<div class="nli__panel nls">'
         + '<p class="nli__kicker">מפה · שדה דב</p><h2 class="nli__title">מפת בדיקות הקרקע בשדה דב</h2>'
         + '<p class="nli__lede">כל מגרש שפורסם עליו דו"ח בדיקת קרקע, וכל קידוח במקומו. נוגעים במגרש או מקלידים את מספרו, ורואים את הערכים מול ערך הסף, את שלב הפרויקט במגרש, ואת הדו"ח עצמו.</p>'
@@ -62,10 +75,10 @@
         + '<div class="is-top"><span>הערך הגבוה (מגרש ' + esc(S.top.plot) + ')</span><strong>' + xs(S.top.pfosX) + '</strong></div></div>'
         + '<div class="nls__find"><label class="nls__q"><span>מספר מגרש</span><input type="search" inputmode="numeric" enterkeyhint="search" placeholder="למשל 303 או 2206" autocomplete="off"></label>'
         + '<div class="nls__chips" role="list">' + order.map(function (r) { return '<button type="button" role="listitem" data-p="' + esc(r.plot) + '" class="is-' + r.status.split('_')[0] + '">' + esc(r.plot)
-          + (r.phase && r.phase.mkt ? ' · פרויקט בשיווק' : (r.pfosX ? ' · ' + xs(r.pfosX) : '')) + '</button>'; }).join('') + '</div></div>'
+          + (r.phase && r.phase.mkt ? ' · פרויקט בשיווק' : (r.pfosX ? ' · ' + xs(r.pfosX) : '')) + '</button>'; }).join('') + extra.map(function (n) { return '<button type="button" role="listitem" data-p="' + esc(n) + '" class="is-proj">' + esc(n) + ' · פרויקט בשיווק</button>'; }).join('') + '</div></div>'
         + '<div class="nls__stage"><div class="nls__map" role="region" aria-label="מפת המגרשים והקידוחים בשדה דב"><p class="nls__wait">טוען את המפה…</p></div><div class="nls__card" aria-live="polite"></div></div>'
         + '<div class="nls__bar"><button type="button" class="nls__3d" aria-pressed="true">תלת ממד</button><ul class="nls__legend">' + BIN.map(function (b) { return '<li><b style="background:' + b[1] + '"></b>' + b[2] + '</li>'; }).join('')
-        + '<li><b class="is-list"></b>ברשימה, בלי דו"ח</li><li><b class="is-dev"></b>לפי היזם: בלי חריגות</li></ul></div>'
+        + '<li><b class="is-list"></b>ברשימה, בלי דו"ח</li><li><b class="is-dev"></b>לפי היזם: בלי חריגות</li><li><b class="is-green"></b>פרויקט בשיווק (המחשה)</li></ul></div>'
         + '<p class="nli__note">המפה מציגה רק מה שפורסם. מגרש בלי צבע הוא מגרש שלא פורסם עליו דו"ח דיגום במאגר, וזה לא אומר דבר על מצב הקרקע בו. הערכים: הריכוז הגבוה ביותר של PFOS בכל קידוח, מול ' + esc(d.thresholdsLabel) + ': PFOS '
         + F.num(d.thresholds.pfos, 1) + ' ננוגרם לק"ג, PFOA ' + F.num(d.thresholds.pfoa, 1) + '.</p>'
         + '<details class="nli__table" open><summary>כל המגרשים עם מידע שפורסם</summary><div class="nli__tw"><table><thead><tr><th scope="col">מגרש</th><th scope="col">המצב</th><th scope="col" class="ph">השלב במגרש</th><th scope="col">PFOS מול הסף</th></tr></thead><tbody>'
@@ -80,11 +93,15 @@
       }
       function plotCard(p) {
         var r = p.ref ? recs[p.ref] : null;
+        var pj = projByOid[p.oid] || (r ? r.oids.map(function (o) { return projByOid[o]; }).filter(Boolean)[0] : null);
+        if (!r && pj) {
+          return '<p class="nls__ct">מגרש ' + esc(p.n) + '<span> · ' + esc(p.use) + '</span></p><p class="nls__badge is-proj">פרויקט בשיווק</p>'
+            + '<p class="nls__proj">' + esc(pj.fact) + '</p><p class="nls__plan">הבניין הירוק במפה הוא המחשה לפי מספר הקומות שפורסם, לא תכנון מדויק.</p>' + ask(p.n, true);
+        }
         if (!r) {
-          var nb = nearest(centroid(p.g), d.records);
           return '<p class="nls__ct">מגרש ' + esc(p.n) + '<span> · ' + esc(p.use) + (p.m2 ? ' · ' + F.num(p.m2) + ' מ"ר' : '') + '</span></p><p class="nls__badge">לא פורסם דו"ח בדיקה</p>'
             + '<p class="nls__txt">על המגרש הזה לא פורסם דו"ח בדיקת קרקע במאגר המשרד להגנת הסביבה (נכון ל־' + esc(F.date(d.built)) + ').</p>'
-            + (nb ? '<dl class="nli__lines"><dt>הקידוח הקרוב עם ערך מעל הסף</dt><dd>' + F.num(Math.round(nb.d / 10) * 10) + ' מ\' · מגרש ' + esc(nb.plot) + '</dd></dl>' : '') + '<p class="nls__plan">תכנית ' + esc(p.plan) + '</p>' + ask(p.n, false);
+            + '<p class="nls__plan">תכנית ' + esc(p.plan) + '</p>' + ask(p.n, false);
         }
         var h = '<p class="nls__ct">מגרש ' + esc(r.plot) + '<span> · ' + esc(r.use || p.use) + '</span></p><p class="nls__badge is-' + r.status.split('_')[0] + '">' + esc(ST[r.status]) + '</p>';
         if (r.status === 'published_report') {
@@ -97,7 +114,7 @@
           if (r.bh.some(function (b) { return b.approx; })) h += '<p class="nls__plan">מיקומי הקידוחים במגרש הזה שוחזרו מהתרשים שבדו"ח, בדיוק של כ־2 מטרים.</p>';
         }
         if (NOTE[r.plot]) h += '<p class="nls__txt">' + esc(NOTE[r.plot]) + '</p>';
-        if (r.phase) h += '<p class="nls__proj"><b>' + (r.phase.mkt ? 'יש במגרש פרויקט בשיווק' : 'השלב במגרש') + ':</b> ' + esc(r.phase.mkt ? r.phase.stage.replace(/^פרויקט בשיווק( · )?/, '') || 'בשיווק' : r.phase.stage) + '</p>';
+        if (r.phase) h += '<p class="nls__proj"><b>' + (r.phase.mkt ? 'יש במגרש פרויקט בשיווק' : 'השלב במגרש') + ':</b> ' + esc(r.phase.mkt ? (pj ? pj.fact : '') + (r.phase.stage.replace(/^פרויקט בשיווק( · )?/, '') ? (pj ? ' · ' : '') + r.phase.stage.replace(/^פרויקט בשיווק( · )?/, '') : '') || 'בשיווק' : r.phase.stage) + '</p>';
         h += (r.src ? '<p class="nls__links"><a href="' + esc(r.src) + '" target="_blank" rel="noopener">הדו"ח במאגר המשרד להגנת הסביבה</a></p>' : '') + ask(r.plot, r.phase && r.phase.mkt);
         return h;
       }
@@ -114,6 +131,7 @@
         var all = d.plots.filter(function (p) { return p.n === n; }); return all[0] || null; }
       function find(q) { q = String(q || '').trim(); if (!q) return;
         var hit = q.replace(/\D/g, '');
+        if (!hit) { card.innerHTML = '<p class="nls__txt">מקלידים מספר מגרש, למשל 303 או 2206.</p>'; return; }
         var p = byPlot(hit); if (p) { select(p, true); mapEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
         else card.innerHTML = '<p class="nls__txt">לא מצאנו מגרש ' + esc(q) + ' בתכניות של רובע שדה דב (תמ"ל 3001, 1/4444, 2/4444).</p>'; }
       root.querySelector('.nls__chips').addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) find(b.getAttribute('data-p')); });
@@ -150,6 +168,10 @@
           var lay = map.getStyle().layers, firstSym = (lay.filter(function (l) { return l.type === 'symbol'; })[0] || {}).id;
           if (map.getSource('openmaptiles')) map.addLayer({ id: 'nls-3d', type: 'fill-extrusion', source: 'openmaptiles', 'source-layer': 'building', minzoom: 13.5,
             paint: { 'fill-extrusion-color': '#D9E1E7', 'fill-extrusion-height': ['coalesce', ['get', 'render_height'], 9], 'fill-extrusion-base': ['coalesce', ['get', 'render_min_height'], 0], 'fill-extrusion-opacity': 0.88 } }, firstSym);
+          map.addSource('nls-green', { type: 'geojson', data: { type: 'FeatureCollection', features: greens() } });
+          map.addLayer({ id: 'nls-green', type: 'fill-extrusion', source: 'nls-green', paint: { 'fill-extrusion-color': ['match', ['get', 'kind'], 'tower', '#3E8E5A', '#86C298'],
+            'fill-extrusion-height': ['get', 'h'], 'fill-extrusion-base': 0, 'fill-extrusion-opacity': 0.88 } });
+          map.on('click', 'nls-green', function (e) { var c = e.lngLat, hit = d.plots.filter(function (q) { return projByOid[q.oid] && inside([c.lng, c.lat], q.g); })[0]; if (hit) { select(hit, false); e.preventDefault(); } });
           map.addLayer({ id: 'nls-sel', type: 'line', source: 'nls-plots', filter: ['in', ['get', 'oid'], ['literal', []]], paint: { 'line-color': '#12202A', 'line-width': 3.2 } });
           map.addLayer({ id: 'nls-holes', type: 'circle', source: 'nls-holes', paint: { 'circle-color': xcol, 'circle-radius': ['interpolate', ['linear'], ['zoom'], 14, 3, 17, 7, 19, 11],
             'circle-stroke-color': '#FFFFFF', 'circle-stroke-width': 1.4, 'circle-pitch-alignment': 'map' } });
@@ -165,7 +187,7 @@
         });
         var b3 = root.querySelector('.nls__3d');
         b3.addEventListener('click', function () { var on = b3.getAttribute('aria-pressed') !== 'true'; b3.setAttribute('aria-pressed', on ? 'true' : 'false');
-          map.easeTo({ pitch: on ? (phone ? 40 : 52) : 0, bearing: on ? -28 : 0, duration: 700 }); if (map.getLayer('nls-3d')) map.setLayoutProperty('nls-3d', 'visibility', on ? 'visible' : 'none'); });
+          map.easeTo({ pitch: on ? (phone ? 40 : 52) : 0, bearing: on ? -28 : 0, duration: 700 }); ['nls-3d', 'nls-green'].forEach(function (l) { if (map.getLayer(l)) map.setLayoutProperty(l, 'visibility', on ? 'visible' : 'none'); }); });
       });
     }
   });

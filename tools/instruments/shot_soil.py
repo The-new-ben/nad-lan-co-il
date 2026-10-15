@@ -18,7 +18,7 @@ with sync_playwright() as p:
         c0 = h.locator(".nls__card").inner_text()[:80].replace("\n", " | ")
         h.locator(".nls__chips button", has_text="2206").first.click(); pg.wait_for_timeout(2500)
         c1 = h.locator(".nls__card").inner_text()[:80].replace("\n", " | ")
-        h.locator(".nls__q input").fill("דמרי"); h.locator(".nls__q input").press("Enter"); pg.wait_for_timeout(2500)
+        h.locator(".nls__chips button", has_text="101").first.click(); pg.wait_for_timeout(2500)
         c2 = h.locator(".nls__card").inner_text()[:80].replace("\n", " | ")
         h.locator(".nls__q input").fill("2227"); h.locator(".nls__q input").press("Enter"); pg.wait_for_timeout(2500)
         c3 = h.locator(".nls__card").inner_text()[:120].replace("\n", " | ")

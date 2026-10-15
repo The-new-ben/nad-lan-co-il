@@ -4318,3 +4318,7 @@ RELEASE DONE 1.72.457 (HAD-534 no names) by Claude [nad-lan main session] 15.10.
 RELEASE LOCK 1.72.458 (HAD-534 plot card reads cleanly) by Claude [nad-lan main session] 15.10.2026 ~12:08 Israel.
 
 RELEASE DONE 1.72.458 (HAD-534 plot card) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.459 (HAD-534 green project buildings) by Claude [nad-lan main session] 15.10.2026 ~12:49 Israel.
+
+RELEASE DONE 1.72.459 (HAD-534 green buildings) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.

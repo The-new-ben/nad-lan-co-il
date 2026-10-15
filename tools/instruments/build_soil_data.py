@@ -10,7 +10,9 @@ Run: python tools/instruments/build_soil_data.py
 import datetime
 import io
 import json
+import math
 import os
+import re
 import urllib.parse
 import urllib.request
 
@@ -21,16 +23,16 @@ LAYER = "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/837"
 TH = {"pfos": 6321.4, "pfoa": 1896.4, "pfhxs": 39824.6}
 # Ben 15.10.2026: the public file carries NO project or company names (the named research stays in docs/research/...). Per plot
 # only the phase: a project in marketing (our own catalogue) and the sourced stage (RMI tender, municipal permit request).
-PHASE = {
-    "107": {"mkt": True, "stage": "פרויקט בשיווק"},
-    "103": {"mkt": True, "stage": "פרויקט בשיווק"},
-    "106": {"mkt": True, "stage": "פרויקט בשיווק"},
-    "2206": {"mkt": True, "stage": "פרויקט בשיווק · הוגשה בקשה להיתר חפירה ודיפון (8.10.2026)"},
-    "2255": {"mkt": False, "stage": "הוגשה בקשה להיתר חפירה ודיפון (8.10.2026)"},
-    "2270": {"mkt": False, "stage": "נמכר במכרז רמ\"י (פברואר 2025)"},
-    "303": {"mkt": False, "stage": "נמכר במכרז רמ\"י (דצמבר 2024)"},
-    "301": {"mkt": False, "stage": "נמכר במכרז רמ\"י (דצמבר 2024)"},
+PHASE = {  # sourced stages that are not "a project in marketing" (RMI tenders, municipal permit requests)
+    "2206": "הוגשה בקשה להיתר חפירה ודיפון (8.10.2026)",
+    "2255": "הוגשה בקשה להיתר חפירה ודיפון (8.10.2026)",
+    "2270": "נמכר במכרז רמ\"י (פברואר 2025)",
+    "303": "נמכר במכרז רמ\"י (דצמבר 2024)",
+    "301": "נמכר במכרז רמ\"י (דצמבר 2024)",
 }
+# The projects in marketing come from our own project pages (lot + published facts), NAMELESS in the public file (Mission A:
+# green 3D buildings, schematic from the published floor counts).
+PROJ_SRC = os.path.join(ROOT, "docs", "design", "area-map-3d", "sde-dov-sources.json")
 
 
 def gis(params):
@@ -68,7 +70,38 @@ def main():
             continue
         plots.append({"oid": a["oid_migrash"], "n": str(a["st_mispar_migrash_betaba"] or "").strip(), "plan": (a["st_taba"] or "").strip(),
                       "use": (a["t_yeud_karka"] or "").strip(), "m2": round(a["ms_shetach_rashum"] or 0), "ref": by_oid.get(a["oid_migrash"]), "g": rnd(g)})
+    def cen(g):
+        xs = [c[0] for r in g for c in r]; ys = [c[1] for r in g for c in r]
+        return sum(xs) / len(xs), sum(ys) / len(ys)
+
+    def dist_m(a, b):
+        return math.hypot((a[0] - b[0]) * 111320 * math.cos(math.radians(a[1])), (a[1] - b[1]) * 110574)
+
+    projects, mkt_oids = [], set()
+    for pr in json.load(io.open(PROJ_SRC, encoding="utf-8"))["projects"]:
+        oids = []
+        for lot in [x.strip() for x in (pr.get("lot") or "").split("+") if x.strip()]:
+            n, plan = lot.split("/")
+            cand = [q for q in plots if q["n"] == n and plan in q["plan"].replace('תמ"ל', "")]
+            cand = [q for q in cand if dist_m(cen(q["g"]), (pr["lng"], pr["lat"])) < 400] or cand[:1]
+            oids += [q["oid"] for q in cand]
+        if not oids:
+            continue
+        f = pr.get("fact") or ""
+        tower = re.search(r"מגדל בן (\d+)", f); low = re.search(r"בני (\d+)", f)
+        big = max((q for q in plots if q["oid"] in oids), key=lambda q: q["m2"])
+        projects.append({"oids": oids, "fact": f, "tower": int(tower.group(1)) if tower else None, "low": int(low.group(1)) if low else None,
+                         "c": [round(v, 6) for v in cen(big["g"])]})
+        mkt_oids.update(oids)
     recs = []
+    def phase_of(s):
+        oids = set((s.get("municipal_gis") or {}).get("oid_migrash") or [])
+        mkt = bool(oids & mkt_oids)
+        st = PHASE.get(s["plot"])
+        if mkt:
+            return {"mkt": True, "stage": "פרויקט בשיווק" + (" · " + st if st and "היתר" in st else "")}
+        return {"mkt": False, "stage": st} if st else None
+
     for s in samples:
         bh = []
         for b in s.get("boreholes") or []:
@@ -79,7 +112,7 @@ def main():
         pf = s.get("pfos_max") if isinstance(s.get("pfos_max"), dict) else {}
         pa = s.get("pfoa_max") if isinstance(s.get("pfoa_max"), dict) else {}
         recs.append({"plot": s["plot"], "status": s["data_status"], "plan": s.get("plan"), "use": s.get("land_use_gis"),
-                     "phase": PHASE.get(s["plot"]), "oids": (s.get("municipal_gis") or {}).get("oid_migrash") or [],
+                     "phase": phase_of(s), "oids": (s.get("municipal_gis") or {}).get("oid_migrash") or [],
                      "dates": s.get("sampling_dates"), "holes": s.get("boreholes_executed"), "pfosMax": pf.get("value_ng_kg"),
                      "pfosDepth": pf.get("depth_m"), "pfosX": pf.get("multiple"), "pfosHoles": pf.get("boreholes_exceeding"),
                      "pfoaMax": pa.get("value_ng_kg"), "pfoaX": pa.get("multiple"), "pfoaHoles": pa.get("boreholes_exceeding"),
@@ -88,7 +121,7 @@ def main():
     out = {"key": "soil", "built": datetime.date.today().isoformat(), "thresholds": TH,
            "thresholdsLabel": "ערכי סף למגע ישיר עבור שדה דב, יוני 2026 (כפי שמצוטטים בדו\"חות)",
            "sourcesNote": "דו\"חות סקרי הקרקע של פרויקט אבן דרך במאגר המשרד להגנת הסביבה; שכבת המגרשים 837 של עיריית תל אביב",
-           "plots": plots, "records": recs}
+           "plots": plots, "records": recs, "projects": projects}
     io.open(OUT, "w", encoding="utf-8", newline="\n").write(json.dumps(out, ensure_ascii=False, separators=(",", ":")))
     print("plots", len(plots), "records", len(recs), "boreholes", sum(len(r["bh"]) for r in recs), "bytes", os.path.getsize(OUT))
     print("linked plots", sorted({p["ref"] for p in plots if p["ref"]}))

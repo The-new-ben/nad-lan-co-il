@@ -1,0 +1,21 @@
+{
+  "released": "1.72.459",
+  "from": "1.72.458",
+  "live_before": {
+    "assets/instruments/core.css": "b9aa23cf28ef2d754258d696b86d7105",
+    "assets/instruments/tools/soilmap.js": "8d89e50eee0952af8f29ea9e2fb4d066",
+    "assets/instruments/data/sde-dov-soil.json": "440f25906d0ae46a956b27b6644a27cb",
+    "nadlan-config.php": "15d4fa22d75cbadc65bb992635e78bbb"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-15 12:58:15",
+  "files": {
+    "assets/instruments/core.css": "ffc57ec5a32bce1456d3e3030c085a2b",
+    "assets/instruments/tools/soilmap.js": "a09461ae54b52486a419b7962d77311e",
+    "assets/instruments/data/sde-dov-soil.json": "af01fa5341422633637f3a9fbc4cb219",
+    "nadlan-config.php": "fcda525913e47a3437e7657b3be78f55"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.459, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

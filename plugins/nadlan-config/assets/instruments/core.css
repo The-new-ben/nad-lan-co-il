@@ -132,3 +132,5 @@ html body .nli pre.nli__doc{white-space:pre-wrap;word-break:normal;overflow-wrap
 .nls__proj{margin:0;font:400 14px/22px var(--nli-sans);color:var(--nli-ink);padding:10px 12px;background:#E5F0EA;border-inline-start:3px solid #4F9A5C;border-radius:var(--nli-r-s)}
 html body .nli a.nls__ask{display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:10px 14px;background:#12202A;color:#FFFFFF !important;border-radius:var(--nli-r-s);font:600 15px/20px var(--nli-sans);text-decoration:none !important}
 html body .nli a.nls__ask:hover{background:#2F6F86}
+.nls__legend b.is-green{border-radius:2px;background:#3E8E5A}.nls__badge.is-proj{background:#E5F0EA;color:#2E6B43}
+html body .nli .nls__chips button.is-proj{border-color:#3E8E5A;color:#2E6B43}

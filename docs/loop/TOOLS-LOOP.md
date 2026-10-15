@@ -69,6 +69,13 @@ Weekly usage was 58% on 14.10 with the reset on 19.10 01:00. Pace: at most one t
 only for research. At 80% weekly: stop building, report, wait for the reset (leads and live faults only).
 
 ## State (newest first)
+- 15.10 ~13:05: MISSION A v1 LIVE 1.72.459: the 9 projects in marketing (from docs/design/area-map-3d/sde-dov-sources.json,
+  lots matched to GIS 837 by number + plan + distance) stand on the soil map as GREEN schematic buildings (a 7 m base on the lot +
+  the main tower at its published floor count x 3.4 m), nameless project cards (published facts + "ask for details"), project
+  chips (111, 101, 110, 109, 150), phases derived from our pages (plot 106 corrected: Shikun's page is lot 109), the "nearest
+  exceedance" line removed, text search asks for a number. Presses docs/tools/press_soil3.py phone + desktop: 0 errors, no names.
+  NEXT v2: our real GLB models (Rainbow, Dimri, Ashira...) instead of the schematic boxes (three.js custom layer). Mission B
+  (environment) after the reset unless Ben orders it sooner. CPI refresh at 18:43 (one-shot).
 - 15.10 ~12:20: LIVE 1.72.457-458 + page 8406 rewritten (update_tool_page.py with a forbidden-words gate): no names anywhere
   on the soil page (checked in the rendered content and inside the live tools), plot phases + ask button, H1 "בדיקות הקרקע בשדה
   דב: ...", Yoast title/desc calmer, hub line on /sde-dov/ softened. Card fixes: PFOA below the threshold says so, sampling as a
