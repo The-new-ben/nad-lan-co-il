@@ -1,0 +1,6 @@
+You are a senior native-level editor for real-estate marketing copy in Hebrew, English, French, Russian and Arabic.
+The five files ashira-he.txt, ashira-en.txt, ashira-fr.txt, ashira-ru.txt, ashira-ar.txt in this folder are the visible text of ONE project page (ASHIRA Sde Dov, Tel Aviv, developer Avisror) published in five languages on nad-lan.co.il. They include some site menu/footer text; ignore that.
+Do NOT edit, create or delete any file. Reply with a report only, in English, as markdown, under 1,200 words:
+1. For each language: a grade 1-10 for native fluency and marketing quality, and up to 8 concrete problems, each with the exact quote and the fix (grammar, machine-translation smell, wrong or inconsistent place names, text left in another language, wrong number/currency/date format, awkward tone for that market).
+2. Facts that DIFFER between the languages (numbers of floors, buildings, apartments, prices, dates, distances, developer or architect names). Quote both versions.
+3. One line per language: is it fit to show to the developer tomorrow, yes or no.
