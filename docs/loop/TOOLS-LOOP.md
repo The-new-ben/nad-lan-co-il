@@ -69,6 +69,10 @@ Weekly usage was 58% on 14.10 with the reset on 19.10 01:00. Pace: at most one t
 only for research. At 80% weekly: stop building, report, wait for the reset (leads and live faults only).
 
 ## State (newest first)
+- 15.10 ~13:10: BUDGET STOP: weekly all-models usage 79% (the stop line is 80%). Building stopped; the 18:43 CPI one-shot
+  was cancelled. Until the reset (19.10 01:00): leads and live faults only, the September CPI refresh only on Ben's word
+  (best done in a FRESH small session: this one carries ~620k tokens of context, every turn is expensive). After the reset, in
+  order: CPI refresh, Mission A v2 (GLB models), Mission B (environment), English soil page, Kikar HaMedina tools (ask Ben).
 - 15.10 ~13:05: MISSION A v1 LIVE 1.72.459: the 9 projects in marketing (from docs/design/area-map-3d/sde-dov-sources.json,
   lots matched to GIS 837 by number + plan + distance) stand on the soil map as GREEN schematic buildings (a 7 m base on the lot +
   the main tower at its published floor count x 3.4 m), nameless project cards (published facts + "ask for details"), project
