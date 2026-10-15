@@ -1,0 +1,17 @@
+{
+  "released": "1.72.458",
+  "from": "1.72.457",
+  "live_before": {
+    "assets/instruments/tools/soilmap.js": "fa9d0c7a584c7a532cb2fef9b8f2aa9c",
+    "nadlan-config.php": "71567b3143c85b9506d90734313b1d69"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-15 12:15:52",
+  "files": {
+    "assets/instruments/tools/soilmap.js": "8d89e50eee0952af8f29ea9e2fb4d066",
+    "nadlan-config.php": "15d4fa22d75cbadc65bb992635e78bbb"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.458, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

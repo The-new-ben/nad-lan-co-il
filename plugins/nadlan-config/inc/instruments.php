@@ -40,7 +40,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'related' => array( '/home-inspection/' => 'בדק בית', '/new-projects/contractor-delay-compensation/' => 'פיצוי על איחור במסירה', '/new-projects/construction-input-index/' => 'הצמדה למדד תשומות הבנייה', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן' ),
 			),
 			'soilmap' => array(
-				'name' => 'מפת זיהום הקרקע בשדה דב', 'cat' => 'ReferenceApplication', 'kicker' => 'מפה · שדה דב',
+				'name' => 'מפת בדיקות הקרקע בשדה דב', 'cat' => 'ReferenceApplication', 'kicker' => 'מפה · שדה דב',
 				'desc' => 'מפה תלת־ממדית של מגרשי רובע שדה דב: לכל מגרש שפורסם עליו סקר קרקע, פי כמה ריכוז ה־PFOS מעל ערך הסף, באיזה עומק, כמה קידוחים חרגו, והדו"ח עצמו. בדיקה לפי מספר מגרש או פרויקט.',
 				'data' => array( 'sde-dov-soil.json' ),
 				'related' => array( '/sde-dov/' => 'המדריך לשדה דב', '/sde-dov/prices/' => 'מחירי הדירות בשדה דב', '/real-estate-lawyer/construction-defects-lawsuit/' => 'שעון הבדק והאחריות', '/new-projects/construction-input-index/' => 'הצמדה למדד תשומות הבנייה' ),
@@ -147,9 +147,9 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 			$holes = 0; $over = 0; foreach ( $rep as $r ) { $holes += (int) $r['holes']; $over += (int) $r['pfosHoles']; }
 			$th = $s['thresholds'];
 			$p = '<p>לפי דו"חות סקרי הקרקע שפורסמו במאגר המשרד להגנת הסביבה, נכון ל־' . esc_html( date_i18n( 'j.n.Y', strtotime( $s['built'] ) ) ) . ': ' . count( $rep ) . ' מגרשים בשדה דב עם דו"ח, ' . $over . ' מתוך ' . $holes
-				. ' קידוחים עם חריגת PFOS. השיא: מגרש ' . esc_html( $rep[0]['plot'] ) . ', פי ' . esc_html( number_format( $rep[0]['pfosX'] ) ) . ' מערך הסף למגע ישיר (PFOS ' . esc_html( number_format( $th['pfos'], 1 ) ) . ' ננוגרם לק"ג).</p>';
+				. ' קידוחים עם ערך PFOS מעל ערך הסף. הערך הגבוה: מגרש ' . esc_html( $rep[0]['plot'] ) . ', פי ' . esc_html( number_format( $rep[0]['pfosX'] ) ) . ' מערך הסף למגע ישיר (PFOS ' . esc_html( number_format( $th['pfos'], 1 ) ) . ' ננוגרם לק"ג).</p>';
 			if ( 'pfas' === $id ) { return $p; }
-			$p .= '<table><thead><tr><th>מגרש</th><th>שיא PFOS (ננוגרם לק"ג)</th><th>פי כמה מהסף</th><th>קידוחים עם חריגה</th></tr></thead><tbody>';
+			$p .= '<table><thead><tr><th>מגרש</th><th>שיא PFOS (ננוגרם לק"ג)</th><th>פי כמה מהסף</th><th>קידוחים מעל ערך הסף</th></tr></thead><tbody>';
 			foreach ( $rep as $r ) { $p .= '<tr><td>' . esc_html( $r['plot'] ) . '</td><td>' . esc_html( number_format( $r['pfosMax'] ) ) . '</td><td>' . esc_html( number_format( $r['pfosX'], $r['pfosX'] < 10 ? 1 : 0 ) ) . '</td><td>' . (int) $r['pfosHoles'] . ' מתוך ' . (int) $r['holes'] . '</td></tr>'; }
 			return $p . '</tbody></table>';
 		}

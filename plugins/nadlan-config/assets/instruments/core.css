@@ -129,3 +129,6 @@ html body .nli button.nls__row{border:0;background:none;padding:0;margin:0;font:
 .nls-pop .maplibregl-popup-content{direction:rtl;text-align:right;font:400 13px/19px "IBM Plex Sans Hebrew",system-ui,sans-serif;color:#12202A;padding:10px 12px}
 .nls-pop p{margin:0 0 4px}
 html body .nli pre.nli__doc{white-space:pre-wrap;word-break:normal;overflow-wrap:anywhere;font:400 15px/25px var(--nli-sans) !important;color:var(--nli-ink) !important;background:var(--nli-surface) !important;border:1px solid var(--nli-line);border-inline-start:3px solid var(--nli-sea);border-radius:var(--nli-r-s);padding:16px;margin:0;direction:rtl;text-align:right;max-height:none;overflow:visible}
+.nls__proj{margin:0;font:400 14px/22px var(--nli-sans);color:var(--nli-ink);padding:10px 12px;background:#E5F0EA;border-inline-start:3px solid #4F9A5C;border-radius:var(--nli-r-s)}
+html body .nli a.nls__ask{display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:10px 14px;background:#12202A;color:#FFFFFF !important;border-radius:var(--nli-r-s);font:600 15px/20px var(--nli-sans);text-decoration:none !important}
+html body .nli a.nls__ask:hover{background:#2F6F86}

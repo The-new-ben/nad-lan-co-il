@@ -4310,3 +4310,11 @@ RELEASE DONE 1.72.455 (HAD-534 letter generator) by Claude [nad-lan main session
 RELEASE LOCK 1.72.456 (HAD-534 FAQPage JSON-LD) by Claude [nad-lan main session] 15.10.2026 ~11:44 Israel.
 
 RELEASE DONE 1.72.456 (HAD-534 FAQPage) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.457 (HAD-534 soil page without names, phases, ask button) by Claude [nad-lan main session] 15.10.2026 ~11:59 Israel.
+
+RELEASE DONE 1.72.457 (HAD-534 no names) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.458 (HAD-534 plot card reads cleanly) by Claude [nad-lan main session] 15.10.2026 ~12:08 Israel.
+
+RELEASE DONE 1.72.458 (HAD-534 plot card) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.

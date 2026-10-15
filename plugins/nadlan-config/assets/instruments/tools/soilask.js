@@ -6,7 +6,7 @@
    data/sde-dov-soil.json. Pure logic in NLAX for unit checks. */
 (function () {
   'use strict';
-  var NAME = { '107': 'דמרי ים', '103': 'אוטופיה', '2206': 'גינדי ווג', '106': 'שיכון ובינוי שדה דב' };
+  var NAME = {};  // Ben 15.10.2026: no project or company names on the soil page; the letter names the plot only
   var ORDER = ['303', '301', '2270', '2206', '2255', '2701', '822', '103', '105', '107', '2207', '106', '2102', '2203'];
   function dmy(iso) { var p = String(iso || '').slice(0, 10).split('-'); return p.length === 3 ? (+p[2]) + '.' + (+p[1]) + '.' + p[0] : ''; }
   function xs(x) { return 'פי ' + (x >= 10 ? Math.round(x).toLocaleString('he-IL') : (Math.round(x * 10) / 10).toString()); }

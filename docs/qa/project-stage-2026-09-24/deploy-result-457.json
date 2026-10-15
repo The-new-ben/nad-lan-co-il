@@ -1,0 +1,25 @@
+{
+  "released": "1.72.457",
+  "from": "1.72.456",
+  "live_before": {
+    "inc/instruments.php": "50e34f2c9b45264a8213a84e7fe30497",
+    "assets/instruments/core.css": "0ca13f4f4ba70123bcf938b68530a95d",
+    "assets/instruments/tools/soilmap.js": "75350061080b03a379436ae965fb0a5a",
+    "assets/instruments/tools/soilask.js": "d03e2abab3289d29e5ab9f24698e5de0",
+    "assets/instruments/data/sde-dov-soil.json": "2c1128e49e548f395d5ae4fbd8afbd3b",
+    "nadlan-config.php": "b1f5272314f3550c815754d3400dd957"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-15 12:06:32",
+  "files": {
+    "inc/instruments.php": "7bfb0ba6c6b6ac20108865837e67ec00",
+    "assets/instruments/core.css": "b9aa23cf28ef2d754258d696b86d7105",
+    "assets/instruments/tools/soilmap.js": "fa9d0c7a584c7a532cb2fef9b8f2aa9c",
+    "assets/instruments/tools/soilask.js": "ecd75b65b1c35e0ba97037307d4d7da8",
+    "assets/instruments/data/sde-dov-soil.json": "440f25906d0ae46a956b27b6644a27cb",
+    "nadlan-config.php": "71567b3143c85b9506d90734313b1d69"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.457, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

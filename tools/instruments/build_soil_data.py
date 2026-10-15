@@ -19,9 +19,18 @@ SAMPLES = os.path.join(ROOT, "docs", "research", "2026-10-15-sde-dov-soil", "sam
 OUT = os.path.join(ROOT, "plugins", "nadlan-config", "assets", "instruments", "data", "sde-dov-soil.json")
 LAYER = "https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/837"
 TH = {"pfos": 6321.4, "pfoa": 1896.4, "pfhxs": 39824.6}
-# Our project pages that sit on a listed or reported plot (plot -> page). Only plots the research tied to a page.
-PAGES = {"107": "/projects/dimri-yama-sde-dov/", "103": "/projects/utopia-sde-dov/", "2206": "/projects/gindi-vogue-sde-dov/",
-         "106": "/projects/shikun-binui-sde-dov/"}
+# Ben 15.10.2026: the public file carries NO project or company names (the named research stays in docs/research/...). Per plot
+# only the phase: a project in marketing (our own catalogue) and the sourced stage (RMI tender, municipal permit request).
+PHASE = {
+    "107": {"mkt": True, "stage": "פרויקט בשיווק"},
+    "103": {"mkt": True, "stage": "פרויקט בשיווק"},
+    "106": {"mkt": True, "stage": "פרויקט בשיווק"},
+    "2206": {"mkt": True, "stage": "פרויקט בשיווק · הוגשה בקשה להיתר חפירה ודיפון (8.10.2026)"},
+    "2255": {"mkt": False, "stage": "הוגשה בקשה להיתר חפירה ודיפון (8.10.2026)"},
+    "2270": {"mkt": False, "stage": "נמכר במכרז רמ\"י (פברואר 2025)"},
+    "303": {"mkt": False, "stage": "נמכר במכרז רמ\"י (דצמבר 2024)"},
+    "301": {"mkt": False, "stage": "נמכר במכרז רמ\"י (דצמבר 2024)"},
+}
 
 
 def gis(params):
@@ -69,13 +78,13 @@ def main():
                        "pfoa": b.get("pfoa_max_ng_kg"), "n": b.get("samples"), "approx": b.get("coord_kind") == "digitized_from_figure"})
         pf = s.get("pfos_max") if isinstance(s.get("pfos_max"), dict) else {}
         pa = s.get("pfoa_max") if isinstance(s.get("pfoa_max"), dict) else {}
-        recs.append({"plot": s["plot"], "status": s["data_status"], "plan": s.get("plan"), "use": s.get("land_use_gis"), "dev": s.get("developer"),
-                     "devNote": s.get("developer_status"), "text": s.get("status_text"), "oids": (s.get("municipal_gis") or {}).get("oid_migrash") or [],
+        recs.append({"plot": s["plot"], "status": s["data_status"], "plan": s.get("plan"), "use": s.get("land_use_gis"),
+                     "phase": PHASE.get(s["plot"]), "oids": (s.get("municipal_gis") or {}).get("oid_migrash") or [],
                      "dates": s.get("sampling_dates"), "holes": s.get("boreholes_executed"), "pfosMax": pf.get("value_ng_kg"),
                      "pfosDepth": pf.get("depth_m"), "pfosX": pf.get("multiple"), "pfosHoles": pf.get("boreholes_exceeding"),
                      "pfoaMax": pa.get("value_ng_kg"), "pfoaX": pa.get("multiple"), "pfoaHoles": pa.get("boreholes_exceeding"),
-                     "report": s.get("report_date"), "published": s.get("published"),
-                     "src": s.get("source_url"), "page": PAGES.get(s["plot"]), "bh": bh})
+                     "report": s.get("report_date"),
+                     "src": s.get("source_url") if s["data_status"] == "published_report" else None, "bh": bh})  # only the official report
     out = {"key": "soil", "built": datetime.date.today().isoformat(), "thresholds": TH,
            "thresholdsLabel": "ערכי סף למגע ישיר עבור שדה דב, יוני 2026 (כפי שמצוטטים בדו\"חות)",
            "sourcesNote": "דו\"חות סקרי הקרקע של פרויקט אבן דרך במאגר המשרד להגנת הסביבה; שכבת המגרשים 837 של עיריית תל אביב",

@@ -36,6 +36,20 @@ The resume point of the tools program. Every loop turn reads this file first, do
   user. Some pages in English too. Content awareness before every page (no cannibalisation, no 301, distinct content).
 - Research running into docs/research/2026-10-15-sde-dov-soil/ (facts + samples + geo; SERP + keywords + inventory).
 
+## Ben 15.10.2026 ~12:00: the soil page rules + new missions (HAD-534)
+- RULE: no project or company names on the soil page (map, table, cards, letter, article, public data file). Per plot only
+  "a project in marketing" + its phase, and a one-tap "ask for details" button (WhatsApp 972525101555). Calm, precise wording
+  ("בדיקות הקרקע", values vs the threshold), never the alarming word. No negative word about any company: we court developers.
+  The named data stays internal: docs/research/2026-10-15-sde-dov-soil/ (samples.json, facts.md) for Ben's future use.
+- MISSION A (3D, green): on the soil map, every project in marketing in the district as a 3D building, GREEN (positive), with
+  the real form where we have it (our project GLB stages) or a schematic massing labelled as such; needs the plot of every
+  district project from our project data (not only the 14 plots).
+- MISSION B (environment): broaden the page with air and exposure aspects people look for: wind (IMS station data, wind rose,
+  sea breeze), air quality (Ministry monitoring stations), sun and sea exposure, groundwater; every number sourced.
+- MISSION C: promote projects that are clear by a source (official adoption) or outside the district, gently, without implying
+  anything about others.
+- Budget: Ben asked to keep the loop under control (weekly ~76% on 15.10 noon).
+
 ## One turn = one item, to the end
 1. Pick the top open item from docs/research/2026-10-14-tools-program/catalog.md (ranked backlog) unless a live fault or
    Ben's word comes first.
@@ -55,6 +69,10 @@ Weekly usage was 58% on 14.10 with the reset on 19.10 01:00. Pace: at most one t
 only for research. At 80% weekly: stop building, report, wait for the reset (leads and live faults only).
 
 ## State (newest first)
+- 15.10 ~12:20: LIVE 1.72.457-458 + page 8406 rewritten (update_tool_page.py with a forbidden-words gate): no names anywhere
+  on the soil page (checked in the rendered content and inside the live tools), plot phases + ask button, H1 "בדיקות הקרקע בשדה
+  דב: ...", Yoast title/desc calmer, hub line on /sde-dov/ softened. Card fixes: PFOA below the threshold says so, sampling as a
+  range, partial dates hidden. NEXT: Mission A (green 3D) or B (environment) by Ben's order; CPI refresh at 18:43 (one-shot).
 - 15.10 ~12:05: LIVE 1.72.456: FAQPage JSON-LD built from each Instruments page's own "שאלות נפוצות" section
   (nadlan_nli_faq): the soil page (5 Q) and /cpi-calculator/ (5 Q) now carry it, parsed valid live. DECISION: the English soil
   page moves to after the weekly reset (19.10): it needs the engine + three tools bilingual and LTR styles (~4% of the week)
