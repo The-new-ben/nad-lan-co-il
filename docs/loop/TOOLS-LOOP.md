@@ -55,6 +55,10 @@ Weekly usage was 58% on 14.10 with the reset on 19.10 01:00. Pace: at most one t
 only for research. At 80% weekly: stop building, report, wait for the reset (leads and live faults only).
 
 ## State (newest first)
+- 15.10 ~11:05: HAD-534 (a) DONE: the hub /sde-dov/ (4730) links the soil page with one measured line at the end of the
+  section "בדיקות משפטיות לפני רכישה על הנייר בשדה דב", right before the FAQ (scripts/project-stage/insert_before_heading.py:
+  backup docs/qa/had-534/page-backup/, read-back, live order check). NEXT: (c) questions-to-the-developer generator on the soil
+  page; (b) waits for Ben; (d) English page; (e) 3D walk; CPI refresh after 18:30.
 - 15.10 ~11:10: HAD-534 v1 LIVE: 1.72.454 (soilmap + pfas tools, data/sde-dov-soil.json from tools/instruments/build_soil_data.py:
   344 district plots from municipal GIS layer 837, 14 sourced plot records, 100 boreholes) + NEW PAGE https://nad-lan.co.il/sde-dov/contamination/
   (page 8406, child of /sde-dov/ 4730; create_tool_page.py now takes meta.parent + meta.tools). Engine: spec.custom (a tool
