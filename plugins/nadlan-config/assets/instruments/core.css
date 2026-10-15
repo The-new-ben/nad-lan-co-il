@@ -89,3 +89,42 @@ html body .nli .nli__rel a{color:var(--nli-sea) !important;text-decoration:under
 html body .nli :focus-visible{outline:2px solid var(--nli-focus);outline-offset:2px}
 @media (prefers-reduced-motion:no-preference){.nli__fig{transition:color .18s}}
 @media print{body *{visibility:hidden}.nli,.nli *{visibility:visible}.nli{position:absolute;inset:0 auto auto 0;width:100%}.nli__share,.nli__form,.nli__scen{display:none !important}.nli__table{display:block}.nli__table[open] summary{display:none}}
+/* soil map (HAD-534): the Sde Dov plots, boreholes and plot card. Survey shades only for the exceedance scale. */
+.nls__strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 14px;position:relative}
+.nls__strip div{border:1px solid var(--nli-line);border-radius:var(--nli-r-s);padding:10px 12px;background:var(--nli-surface)}
+.nls__strip span{display:block;font:500 12px/16px var(--nli-sans);color:var(--nli-mute)}
+.nls__strip strong{display:block;font:500 20px/26px var(--nli-mono);color:var(--nli-ink);unicode-bidi:plaintext;font-variant-numeric:tabular-nums}
+.nls__strip .is-top strong{color:var(--nli-survey)}
+@media (max-width:520px){.nls__strip{grid-template-columns:1fr 1fr}.nls__strip .is-top{grid-column:1/-1}}
+.nls__find{display:grid;gap:10px;margin:0 0 12px;position:relative}
+.nls__q{display:grid;gap:6px}.nls__q span{font:500 13px/18px var(--nli-sans);color:var(--nli-ink)}
+html body .nli .nls__q input{font:500 17px/24px var(--nli-sans);padding:11px 12px;border:1px solid var(--nli-line) !important;border-radius:var(--nli-r-s);background:var(--nli-surface) !important;color:var(--nli-ink);width:100%;box-sizing:border-box;margin:0;box-shadow:none !important;height:auto}
+.nls__chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+html body .nli .nls__chips button{flex:0 0 auto;min-height:40px;padding:8px 12px;border:1px solid var(--nli-line);border-radius:999px;background:var(--nli-surface);color:var(--nli-ink);font:500 14px/20px var(--nli-sans);cursor:pointer;margin:0;white-space:nowrap}
+html body .nli .nls__chips button.is-published{border-color:#8E1238;color:#8E1238}
+html body .nli .nls__chips button.is-findings{border:1px dashed #C42550;color:#A01D44}
+html body .nli .nls__chips button.is-developer{border-color:#2F6F86;color:#21566A}
+html body .nli .nls__chips button.is-under{border:1px dashed #7A8A94;color:#4E5E68}
+html body .nli .nls__chips button[aria-pressed="true"]{background:#12202A;border-color:#12202A;color:#FFFFFF}
+.nls__stage{display:grid;gap:12px;position:relative}
+@media (min-width:900px){.nls__stage{grid-template-columns:minmax(0,1fr) 340px}}
+.nls__map{height:440px;border:1px solid var(--nli-line);border-radius:var(--nli-r-s);overflow:hidden;background:#E9EEF1;position:relative}
+@media (min-width:900px){.nls__map{height:560px}}
+.nls__wait{margin:0;padding:16px;font:400 14px/20px var(--nli-sans);color:var(--nli-mute)}
+.nls__card{border:1px solid var(--nli-line);border-radius:var(--nli-r-s);padding:16px;background:var(--nli-ground);display:grid;gap:10px;align-content:start;min-width:0}
+.nls__ct{margin:0;font:600 20px/26px var(--nli-sans);color:var(--nli-ink)}.nls__ct span{font-weight:400;color:var(--nli-ink2);font-size:15px}
+.nls__badge{justify-self:start;margin:0;padding:4px 10px;border-radius:999px;font:500 13px/18px var(--nli-sans);background:#E6ECEF;color:var(--nli-ink2)}
+.nls__badge.is-published{background:#F7DDE4;color:#8E1238}.nls__badge.is-findings{background:#FBEFF3;color:#A01D44;border:1px dashed #C42550}
+.nls__badge.is-developer{background:#DDEBF0;color:#21566A}.nls__badge.is-under{background:#E9EDEF;color:#4E5E68;border:1px dashed #7A8A94}
+.nls__txt{margin:0;font:400 14px/22px var(--nli-sans);color:var(--nli-ink2)}
+.nls__plan{margin:0;font:400 12px/18px var(--nli-sans);color:var(--nli-mute)}
+.nls__links{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0}html body .nli .nls__links a{color:var(--nli-sea) !important;font:500 14px/20px var(--nli-sans)}
+.nls__bar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:12px 0}
+html body .nli button.nls__3d{min-height:40px;padding:8px 14px;border:1px solid #12202A;border-radius:var(--nli-r-s);background:var(--nli-surface);color:var(--nli-ink);font:500 14px/20px var(--nli-sans);cursor:pointer;margin:0}
+html body .nli button.nls__3d[aria-pressed="true"]{background:#12202A;color:#FFFFFF}
+.nls__legend{display:flex;flex-wrap:wrap;gap:6px 14px;list-style:none;margin:0;padding:0;font:400 13px/18px var(--nli-sans);color:var(--nli-ink2)}
+.nls__legend b{display:inline-block;width:12px;height:12px;border-radius:50%;margin-inline-end:6px;vertical-align:-1px}
+.nls__legend b.is-list{border-radius:2px;border:1.5px dashed #C42550;background:#F3D3DC}.nls__legend b.is-dev{border-radius:2px;border:1.5px solid #2F6F86;background:#D3E5EC}
+html body .nli button.nls__row{border:0;background:none;padding:0;margin:0;font:600 14px/20px var(--nli-mono);color:var(--nli-sea);text-decoration:underline;cursor:pointer;min-height:32px}
+.nls-pop .maplibregl-popup-content{direction:rtl;text-align:right;font:400 13px/19px "IBM Plex Sans Hebrew",system-ui,sans-serif;color:#12202A;padding:10px 12px}
+.nls-pop p{margin:0 0 4px}

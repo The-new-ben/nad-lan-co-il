@@ -39,6 +39,18 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 				'data' => array(),
 				'related' => array( '/home-inspection/' => 'בדק בית', '/new-projects/contractor-delay-compensation/' => 'פיצוי על איחור במסירה', '/new-projects/construction-input-index/' => 'הצמדה למדד תשומות הבנייה', '/cpi-calculator/' => 'הצמדה למדד המחירים לצרכן' ),
 			),
+			'soilmap' => array(
+				'name' => 'מפת זיהום הקרקע בשדה דב', 'cat' => 'ReferenceApplication', 'kicker' => 'מפה · שדה דב',
+				'desc' => 'מפה תלת־ממדית של מגרשי רובע שדה דב: לכל מגרש שפורסם עליו סקר קרקע, פי כמה ריכוז ה־PFOS מעל ערך הסף, באיזה עומק, כמה קידוחים חרגו, והדו"ח עצמו. בדיקה לפי מספר מגרש או פרויקט.',
+				'data' => array( 'sde-dov-soil.json' ),
+				'related' => array( '/sde-dov/' => 'המדריך לשדה דב', '/sde-dov/prices/' => 'מחירי הדירות בשדה דב', '/real-estate-lawyer/construction-defects-lawsuit/' => 'שעון הבדק והאחריות', '/new-projects/construction-input-index/' => 'הצמדה למדד תשומות הבנייה' ),
+			),
+			'pfas' => array(
+				'name' => 'מחשבון PFAS: פי כמה מעל ערך הסף', 'cat' => 'UtilitiesApplication', 'kicker' => 'מחשבון · קרקע',
+				'desc' => 'ממיר ריכוז של PFOS, PFOA או PFHxS מדו"ח סקר קרקע (ננוגרם, מיקרוגרם או מיליגרם לק"ג) לפי כמה הוא מעל ערך הסף למגע ישיר שמשמש בדו"חות של שדה דב, ומשווה לשיאים שפורסמו.',
+				'data' => array( 'sde-dov-soil.json' ),
+				'related' => array( '/sde-dov/' => 'המדריך לשדה דב', '/sde-dov/prices/' => 'מחירי הדירות בשדה דב' ),
+			),
 			'prime' => array(
 				'name' => 'מחשבון ריבית הפריים וההחזר החודשי', 'cat' => 'FinanceApplication',
 				'desc' => 'מראה את ריבית בנק ישראל והפריים היום, את ההחזר החודשי במסלול הפריים, וכמה הוא משתנה בכל שינוי של רבע אחוז בריבית.',
@@ -120,6 +132,21 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		if ( 'warranty' === $id ) {
 			return '<p>לפי חוק המכר (דירות): תקופת הבדק מתחילה ביום מסירת הדירה ונמשכת בין שנה ל־7 שנים לפי סוג הליקוי (צנרת ואיטום 4 שנים, סדקים מעל 1.5 מ״מ 5 שנים, חיפויי חוץ 7 שנים), ואחריה 3 שנות אחריות. ליקוי יסודי בנשיאת המבנה: 20 שנה. ליקוי שנראה כבר במסירה: מודיעים לקבלן תוך שנה.</p>';
 		}
+		if ( 'soilmap' === $id || 'pfas' === $id ) {
+			$path = dirname( __DIR__ ) . '/assets/instruments/data/sde-dov-soil.json';
+			$s = is_readable( $path ) ? json_decode( (string) file_get_contents( $path ), true ) : null;
+			if ( ! is_array( $s ) || empty( $s['records'] ) ) { return ''; }
+			$rep = array_values( array_filter( $s['records'], function ( $r ) { return 'published_report' === $r['status'] && ! empty( $r['pfosMax'] ); } ) );
+			usort( $rep, function ( $a, $b ) { return $b['pfosX'] <=> $a['pfosX']; } );
+			$holes = 0; $over = 0; foreach ( $rep as $r ) { $holes += (int) $r['holes']; $over += (int) $r['pfosHoles']; }
+			$th = $s['thresholds'];
+			$p = '<p>לפי דו"חות סקרי הקרקע שפורסמו במאגר המשרד להגנת הסביבה, נכון ל־' . esc_html( date_i18n( 'j.n.Y', strtotime( $s['built'] ) ) ) . ': ' . count( $rep ) . ' מגרשים בשדה דב עם דו"ח, ' . $over . ' מתוך ' . $holes
+				. ' קידוחים עם חריגת PFOS. השיא: מגרש ' . esc_html( $rep[0]['plot'] ) . ', פי ' . esc_html( number_format( $rep[0]['pfosX'] ) ) . ' מערך הסף למגע ישיר (PFOS ' . esc_html( number_format( $th['pfos'], 1 ) ) . ' ננוגרם לק"ג).</p>';
+			if ( 'pfas' === $id ) { return $p; }
+			$p .= '<table><thead><tr><th>מגרש</th><th>שיא PFOS (ננוגרם לק"ג)</th><th>פי כמה מהסף</th><th>קידוחים עם חריגה</th></tr></thead><tbody>';
+			foreach ( $rep as $r ) { $p .= '<tr><td>' . esc_html( $r['plot'] ) . '</td><td>' . esc_html( number_format( $r['pfosMax'] ) ) . '</td><td>' . esc_html( number_format( $r['pfosX'], $r['pfosX'] < 10 ? 1 : 0 ) ) . '</td><td>' . (int) $r['pfosHoles'] . ' מתוך ' . (int) $r['holes'] . '</td></tr>'; }
+			return $p . '</tbody></table>';
+		}
 		if ( 'delay' === $id ) {
 			return '<p>פיצוי על איחור במסירה לפי סעיף 5א לחוק המכר (דירות): בחוזה מ־7.7.2022, אחרי חודש חסד, דמי שכירות של דירה דומה בחודשים 2 עד 4, דמי שכירות כפול 1.25 בחודשים 5 עד 10, וכפול 1.5 מהחודש ה־11. בחוזה עד 6.7.2022, כשהאיחור עובר 60 ימים, דמי שכירות כפול 1.5 מהמועד שבחוזה ועד סוף החודש השמיני, ומהחודש התשיעי כפול 1.25.</p>';
 		}
@@ -134,7 +161,7 @@ if ( ! function_exists( 'nadlan_nli_tools' ) ) {
 		$t = $tools[ $id ];
 		$data = implode( ',', array_map( function ( $f ) { return esc_url( nadlan_nli_url( 'data/' . $f ) . '?ver=' . nadlan_nli_ver() ); }, $t['data'] ) );
 		$h = '<section class="nli" dir="rtl" lang="he" aria-label="' . esc_attr( $t['name'] ) . '"><div class="nli-host" data-nli="' . esc_attr( $id ) . '"' . ( $data ? ' data-nli-data="' . $data . '"' : '' ) . '>'
-			. '<div class="nli__panel"><p class="nli__kicker">מחשבון</p><h2 class="nli__title">' . esc_html( $t['name'] ) . '</h2>' . nadlan_nli_summary( $id ) . '</div></div>';
+			. '<div class="nli__panel"><p class="nli__kicker">' . esc_html( isset( $t['kicker'] ) ? $t['kicker'] : 'מחשבון' ) . '</p><h2 class="nli__title">' . esc_html( $t['name'] ) . '</h2>' . nadlan_nli_summary( $id ) . '</div></div>';
 		if ( ! empty( $t['related'] ) ) {
 			$h .= '<nav class="nli__rel" aria-label="כלים קשורים"><span>כלים קשורים:</span>';
 			foreach ( $t['related'] as $path => $label ) { $h .= ' <a href="' . esc_url( home_url( $path ) ) . '">' . esc_html( $label ) . '</a>'; }

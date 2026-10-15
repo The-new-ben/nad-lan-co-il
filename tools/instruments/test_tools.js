@@ -31,5 +31,15 @@ eq('new law, 4 months and 1 day', D({ signed: '2023-01-01', due: '2025-01-01', s
 eq('old law, 50 days: nothing', D({ signed: '2021-01-01', due: '2024-01-01', state: 'done', handed: '2024-02-20', rent: 8000 }).total, 0);
 eq('old law, 70 days: 3 months x1.5 from day 1', D({ signed: '2021-01-01', due: '2024-01-01', state: 'done', handed: '2024-03-11', rent: 8000 }).total, 3 * 1.5 * 8000);
 eq('old law, 10 months', D({ signed: '2021-01-01', due: '2024-01-01', state: 'done', handed: '2024-11-01', rent: 8000 }).total, 8000 * (8 * 1.5 + 2 * 1.25));
+// HAD-534: the soil map and the PFAS calculator, on the built data
+for (const f of ['tools/soilmap.js', 'tools/pfas.js']) vm.runInContext(fs.readFileSync(path.join(A, f), 'utf8'), ctx);
+const soil = JSON.parse(fs.readFileSync(path.join(A, 'data', 'sde-dov-soil.json'), 'utf8'));
+const S = win.NLSX.stats(soil);
+eq('soil: published reports', S.reports, 7, 0); eq('soil: boreholes executed in reports', S.holes, 101, 0); eq('soil: boreholes over the PFOS threshold', S.over, 60, 0);
+eq('soil: the peak is plot 303, x598', S.top.pfosX, 597.97, 0.01);
+eq('pfas: 3,780,000 ng/kg PFOS = x598', win.NLPF.compute(3780000, 'ng', 'pfos', soil.thresholds).x, 597.97, 0.01);
+eq('pfas: 3.78 mg/kg = the same', win.NLPF.compute(3.78, 'mg', 'pfos', soil.thresholds).x, 597.97, 0.01);
+eq('pfas: 1,896.4 ng/kg PFOA = x1', win.NLPF.compute(1896.4, 'ng', 'pfoa', soil.thresholds).x, 1, 0.0001);
+eq('soil: Tel Aviv 1 km check', win.NLSX.dist([34.78, 32.10], [34.78, 32.109]), 1000.8, 2);
 console.log(bad ? bad + ' FAILED' : 'ALL CHECKS PASS');
 process.exit(bad ? 1 : 0);

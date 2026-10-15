@@ -55,6 +55,17 @@ Weekly usage was 58% on 14.10 with the reset on 19.10 01:00. Pace: at most one t
 only for research. At 80% weekly: stop building, report, wait for the reset (leads and live faults only).
 
 ## State (newest first)
+- 15.10 ~11:10: HAD-534 v1 LIVE: 1.72.454 (soilmap + pfas tools, data/sde-dov-soil.json from tools/instruments/build_soil_data.py:
+  344 district plots from municipal GIS layer 837, 14 sourced plot records, 100 boreholes) + NEW PAGE https://nad-lan.co.il/sde-dov/contamination/
+  (page 8406, child of /sde-dov/ 4730; create_tool_page.py now takes meta.parent + meta.tools). Engine: spec.custom (a tool
+  draws its own surface). Map = MapLibre GL 4.7.1 + OpenFreeMap positron + OSM 3D buildings, plots coloured by PFOS x threshold,
+  dashed = on the nine-plot list without a report, sea = developer says no exceedance; search by plot number (all 344) or
+  project name; cards attribute every claim. Presses docs/tools/press_soil.py: phone + desktop, map draws, tool at y=460 under
+  the H1 + answer paragraph, 0 errors. Unit checks in test_tools.js (7 reports, 60/101 holes, x598). NEXT: (a) link the hub
+  /sde-dov/ to the new page (one line, one page); (b) Ben decides: a neutral line on Dimri Yama / Utopia / Gindi Vogue pages +
+  the HE parity gap (EN/FR/RU/AR of Dimri + Ashira carry a PFAS section, HE not); (c) questions-to-the-developer generator;
+  (d) English page /en/sde-dov/contamination/; (e) 3D walk between our project models (GLB) in the district; (f) CPI refresh
+  after 18:30 today.
 - 15.10 ~10:15: LIVE 1.72.453 (HAD-533 closed out): indexation + delay tables fit a phone via table.phoneHide (the forecast
   mark moved onto the addition cell). docs/tools/press_tables.py: all 5 tool tables box == content on 390px, 0 errors.
   Research landed (SERP/keywords/inventory): docs/research/2026-10-15-sde-dov-soil/ (keywords.csv, serp.md, inventory.md,

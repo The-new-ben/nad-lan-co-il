@@ -1,0 +1,24 @@
+{
+  "released": "1.72.454",
+  "from": "1.72.453",
+  "live_before": {
+    "inc/instruments.php": "8e323c3c92836c0f00107aeae404e392",
+    "assets/instruments/core.js": "8631074e7cef71febb735202c5040ac8",
+    "assets/instruments/core.css": "2f9a31c6ee2810772cc6d5a4b488b1bc",
+    "nadlan-config.php": "cc4a685b2a8ea7691b84627f609eef5a"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-15 10:41:20",
+  "files": {
+    "inc/instruments.php": "54c306f126391ee15b29fa89bb2c5f61",
+    "assets/instruments/core.js": "0c20a976018c613cc7d8ebc78bc49617",
+    "assets/instruments/core.css": "dad2b0a473c916382fb2e2973054c44f",
+    "assets/instruments/tools/soilmap.js": "75350061080b03a379436ae965fb0a5a",
+    "assets/instruments/tools/pfas.js": "f760993240b16937ef41ce5a60295333",
+    "assets/instruments/data/sde-dov-soil.json": "2c1128e49e548f395d5ae4fbd8afbd3b",
+    "nadlan-config.php": "39e0a6b5d097dd59ba6b33e9673b7b0a"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.454, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

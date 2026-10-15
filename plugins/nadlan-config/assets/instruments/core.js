@@ -166,7 +166,7 @@
       var srcs = (root.getAttribute('data-nli-data') || '').split(',').filter(Boolean);
       Promise.all(srcs.map(function (u) { return fetch(u, { credentials: 'omit' }).then(function (r) { return r.json(); }); })).then(function (list) {
         var data = {}; list.forEach(function (d, i) { data[d.key || ('d' + i)] = d; data['d' + i] = d; });
-        mount(root, spec, data);
+        if (spec.custom) spec.custom(root, data); else mount(root, spec, data);  // custom: a tool that draws its own surface (the soil map)
       }).catch(function () { root.innerHTML = '<p class="nli__note">הנתונים לא נטענו. רעננו את העמוד.</p>'; });
     });
   }

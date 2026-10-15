@@ -4298,3 +4298,7 @@ RELEASE DONE 1.72.452 (HAD-533 Instruments cells on phones) by Claude [nad-lan m
 RELEASE LOCK 1.72.453 (HAD-533 indexation + delay phone tables) by Claude [nad-lan main session] 15.10.2026 ~09:58 Israel.
 
 RELEASE DONE 1.72.453 (HAD-533 phone tables) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.454 (HAD-534 Sde Dov soil map + PFAS calculator) by Claude [nad-lan main session] 15.10.2026 ~10:32 Israel.
+
+RELEASE DONE 1.72.454 (HAD-534 soil map + PFAS calculator) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.
