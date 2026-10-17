@@ -13,14 +13,29 @@ before = open(os.path.join(HERE, "before-he-4744.html"), encoding="utf-8").read(
 after = open(os.path.join(HERE, "after-he-4744.html"), encoding="utf-8").read()
 rollback = "--rollback" in sys.argv
 s, d, _ = req("GET", "/wp-json/wp/v2/nadlan_project/4744?context=edit")
+N = lambda x: x.replace(chr(13) + chr(10), chr(10))  # WordPress stores CRLF; the reviewed files are LF (same text)
 cur = d["content"]["raw"]
-if cur != (after if rollback else before):
-    sys.exit("STOP: the live content is not what this runner expects (someone edited it). Nothing written.")
+NB = lambda x: [l for l in x.replace(chr(13), "").split(chr(10)) if l.strip()]
+# WordPress keeps mixed line endings; the reviewed files lost them on a Windows text-mode save. So: compare non-blank lines
+# with the reviewed snapshot, and build the target by applying the SAME reviewed edits to the live raw (whitespace preserved).
+if rollback:
+    if NB(cur) != NB(after): sys.exit("STOP: live is not the published repair. Nothing written.")
+    built = open(os.path.join(HERE, "live-raw-before-publish.html"), "rb").read().decode("utf-8")
+else:
+    if NB(cur) != NB(before): sys.exit("STOP: the live content is not what this runner expects (someone edited it). Nothing written.")
+    src2 = open(os.path.join(HERE, "patch_he2.py"), encoding="utf-8").read()
+    src2 = src2.replace('t = open(os.path.join(HERE, "before-he-4744.html"), encoding="utf-8").read()', "t = LIVE")
+    src2 = src2[:src2.index('open(os.path.join(HERE, "after-he-4744.html")')]
+    g = {"LIVE": cur, "__file__": os.path.join(HERE, "patch_he2.py")}
+    exec(compile(src2, "patch_he2", "exec"), g)
+    built = g["t"]
+    if NB(built) != NB(after): sys.exit("STOP: the edits applied to live do not reproduce the reviewed after-file. Nothing written.")
+    open(os.path.join(HERE, "live-raw-before-publish.html"), "wb").write(cur.encode("utf-8"))
 get = lambda: urllib.request.urlopen(urllib.request.Request("https://nad-lan.co.il/projects/ashira-sde-dov/?nlv=%d" % time.time(), headers={"User-Agent": "Mozilla/5.0 Chrome/128"}), timeout=90).read().decode("utf-8", "replace")
 import re
 inv = lambda h: (re.search(r"<title>(.*?)</title>", h, re.S).group(1).strip(), (re.search(r'rel="canonical" href="([^"]+)"', h) or [None, None])[1], h.count("<h1"))
 lb = get(); open(os.path.join(HERE, "live-before.html"), "w", encoding="utf-8").write(lb)
-target = before if rollback else after
+target = built
 s2, r2, _ = req("POST", "/wp-json/wp/v2/nadlan_project/4744", {"content": target})
 if s2 not in (200, 201):
     sys.exit(f"FAIL: POST status {s2}. Run with --rollback manually if anything changed.")
