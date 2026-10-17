@@ -81,7 +81,7 @@ def page(title, body):
 with sync_playwright() as p:
     b = p.chromium.launch(channel="chrome")
     pg = b.new_page()
-    for src, name, title in (("scripts.md", "playbook", "ספר המכירה · פגישת אשירה"), ("business.md", "business", "הקרקע העסקית · פגישת אשירה")):
+    for src, name, title in (("scripts.md", "playbook", "ספר המכירה · פגישת אשירה"), ("business.md", "business", "הקרקע העסקית · פגישת אשירה"), ("concept.md", "concept", "הקונספט העסקי · פגישת אשירה")):
         out = os.path.join(HERE, name + ".html")
         open(out, "w", encoding="utf-8").write(page(title, md(open(os.path.join(HERE, src), encoding="utf-8").read())))
         pg.goto("file:///" + out.replace("\\", "/")); pg.wait_for_timeout(1500)
