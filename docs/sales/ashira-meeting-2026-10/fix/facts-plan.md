@@ -13,3 +13,8 @@ Rule: no fact is changed until its current primary source is re-read and dated (
 | translation slips | "collagen tanning" x4; RU/AR "small tower" for מגדלון | wording | - | wording fix in the four foreign posts |
 | French map labels | "Prix a proximite", "Sante", "Cafes" | shared component, likely every French page | code | i18n string fix, separate release |
 | generic designer | "Design the apartment" goes to /tour/designer/ (general 4-room example) | not an Ashira plan | - | label it as a general designer; no Ashira-official interior claim |
+
+Maya primary source, 17.10.2026 10:27 UTC (rendered official TA municipality lot 101 page; receipt in
+C:/Users/777/Documents/Codex/2026-10-17/ashira-meeting-maya/primary-20261017/): approved 12.5.2024; buildings 35 / 16 / 8 / 8 floors;
+406 planned homes (202 / 204). Use dated municipal wording ("per the municipal plan approved 12.5.2024"); no invented "8 + roof".
+Gap: the source PDF itself not reviewed; the 5.2023 date on the stage/facts still to be traced.
