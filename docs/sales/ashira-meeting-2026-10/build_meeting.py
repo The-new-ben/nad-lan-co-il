@@ -146,9 +146,9 @@ def slides():
 <div class="kick">Speed</div>
 <h2>תופסים את הקונה לפני שהוא עובר לפרויקט אחר.</h2>
 <div class="route" style="margin-top:60px">
-<div class="st"><b>00:00</b><span>הקונה פונה</span><small>מתוך הדירה שבחר</small></div>
-<div class="st"><b>00:05</b><span>מענה מיידי</span><small>בשפה שלו, עם הדירה שבחר</small></div>
-<div class="st"><b>00:10</b><span>מסתובב בפרויקט</span><small>קומה, נוף, מתקנים, סביבה</small></div>
+<div class="st"><b>01</b><span>הקונה פונה</span><small>מתוך הדירה שבחר</small></div>
+<div class="st"><b>מהר</b><span>מענה</span><small>עם הדירה שבחר</small></div>
+<div class="st"><b>02</b><span>מסתובב בפרויקט</span><small>קומה, נוף, מתקנים, סביבה</small></div>
 <div class="st"><b>היום</b><span>שיחת וידאו</span><small>עם נציג, על אותה דירה</small></div>
 <div class="st"><b>השבוע</b><span>פגישה אצלכם</span><small>במשרד המכירות</small></div>
 </div>
