@@ -1,0 +1,18 @@
+root agent idle; waiting up to 1h30m0s for 1 background task(s)
+I have launched the interactive probe script (`probe3.py`) to inspect the 3D stage rendering and control interactions. Awaiting the task result.
+The probe task is currently executing in the background. I will await the completion notification.
+I have started `test_interactive.py` to examine the 3D tower and floor selection behavior. Awaiting completion.
+I have launched a search across the codebase to locate where the stage is mounted and what APIs or elements control it. Awaiting results.
+I have started `test_stage_api.py` to test the stage API methods. Awaiting completion.
+I have launched `test_journey_flow.py` to test the full flow (stage -> floor -> view -> map categories -> price -> WhatsApp). Awaiting completion.
+I have launched `test_view_active.py` to test activating unit 25-w and rendering the 3D floor view and map cone. Awaiting completion.
+I have launched the capture of `#nlpg` on the Hebrew page to compare with the English price block. Awaiting completion.
+I have re-run `test_cursor_and_record.py` to confirm that the Playwright video recording and ffmpeg pipeline work properly. Awaiting completion.
+I have launched `shoot_film.py` to record the screen journey across all scenes, encode the video segments with title/end cards, export the 6 key stills, and generate the final report. Awaiting completion.
+I have initiated the re-encoding of `journey-en.mp4` to adjust the pacing and lock the exact duration within the 60–90 second window. Awaiting completion.
+I have initiated the capture of an alternative still-06 showing the price section with the WhatsApp bar hovered. Awaiting completion.
+Reconstructed English buyer journey film created at [journey-en.mp4](file:///C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/ashira-meeting-2026-10/film/journey-en.mp4) (1600x900, H.264 MP4, 78.8 s, 14.6 MB, silent).
+Framed with branded 3 s title card (*"A real buyer journey, reconstructed"*) and 4 s end card in IBM Plex Sans on `#0E1B24`.
+Captures full journey with human pacing: landing headline, 3D stage rendering, floor 25 selection, 3D sea view, area map categories, and WhatsApp bar hover (unclicked).
+Exported 6 key stills (`still-01-hero.png` through `still-06-whatsapp.png`) and verified `#nlpg` calculator absence on English (`#nlpjx-price` present; `#nlpg` shot on Hebrew).
+Documented full step status, DOM selectors, file sizes, and verification audit in [REPORT.md](file:///C:/Users/777/nad-lan/nad-lan-co-il/docs/sales/ashira-meeting-2026-10/film/REPORT.md) within strict write scope.

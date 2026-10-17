@@ -1,0 +1,7 @@
+Film folder is empty. I'll probe the DOM of the English page first.
+root agent idle; waiting up to 1h30m0s for 2 background task(s)
+Waiting for the probe to finish.
+The probe is still running. I'll wait for it to finish.
+Waiting for the visual probe.
+error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 4h55m40s. (response may be truncated)
+AGY_ERROR: {"short_error":"RESOURCE_EXHAUSTED (code 429): Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 4h55m40s.","status":"RESOURCE_EXHAUSTED","error_code":429,"code_kind":"http","retryable":true,"error_id":"6bc9633f-dbb9-4cfd-a423-afea480629ca-49"}

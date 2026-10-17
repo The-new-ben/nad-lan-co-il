@@ -1,0 +1,378 @@
+{
+  "A": {
+    "d": {
+      "order": {
+        "h1": 204,
+        "lead": 316,
+        "ctas": 600,
+        "stage": 204,
+        "view": 2853,
+        "map": 2853,
+        "facts": 4189,
+        "article": 5629
+      },
+      "floor": {
+        "method": "stageApi",
+        "floor": 13,
+        "ok": true,
+        "card": ""
+      },
+      "tower": {
+        "hasTowerCalc": false,
+        "stageTowers": null
+      },
+      "directions": {
+        "method": "stageApi",
+        "bearing": 270,
+        "ok": null
+      },
+      "apartment": {
+        "dockedExists": false,
+        "dockedVisible": false,
+        "acts": [
+          "1\nבוחרים קומה",
+          "2\nהנוף והמפה",
+          "3\nמעצבים את הדירה",
+          "סל הדירה"
+        ]
+      },
+      "tour": {
+        "info": {
+          "hasStepInside": false,
+          "hasTourBtn": false,
+          "hasActInside": false
+        },
+        "action": {
+          "open": false,
+          "reason": "No tour button found in DOM"
+        }
+      },
+      "facilities": {
+        "clicked": true,
+        "card": {
+          "on": false,
+          "text": ""
+        }
+      },
+      "view": {
+        "ok": true,
+        "info": {
+          "hasView": true,
+          "hasMap": true,
+          "title": "בחרו קומה ודירה לדוגמה",
+          "mapboxLoaded": true
+        }
+      },
+      "map": {
+        "catClicked": "פארקים וספורט\n16",
+        "pinClicked": {
+          "clicked": true,
+          "cls": "mapboxgl-marker mapboxgl-marker-anchor-center"
+        }
+      },
+      "calc": {
+        "sliderMoved": true
+      },
+      "design": {
+        "stepClicked": true,
+        "loc": {
+          "scrollY": 0,
+          "hash": ""
+        }
+      },
+      "basket": {
+        "clicked": false,
+        "reason": "No basket button"
+      },
+      "video": {
+        "clicked": false,
+        "reason": "No video call button"
+      },
+      "whatsapp": {
+        "exists": false
+      }
+    },
+    "m": {
+      "order": {
+        "h1": 190,
+        "lead": 291,
+        "ctas": 565,
+        "stage": 675,
+        "view": 3373,
+        "map": 3670,
+        "facts": 5113,
+        "article": 7996
+      },
+      "floor": {
+        "method": "stageApi",
+        "floor": 13,
+        "ok": true,
+        "card": ""
+      },
+      "tower": {
+        "hasTowerCalc": false,
+        "stageTowers": null
+      },
+      "directions": {
+        "method": "stageApi",
+        "bearing": 270,
+        "ok": null
+      },
+      "apartment": {
+        "dockedExists": false,
+        "dockedVisible": false,
+        "acts": [
+          "1\nבוחרים קומה",
+          "2\nהנוף והמפה",
+          "3\nמעצבים את הדירה",
+          "סל הדירה"
+        ]
+      },
+      "tour": {
+        "info": {
+          "hasStepInside": false,
+          "hasTourBtn": false,
+          "hasActInside": false
+        },
+        "action": {
+          "open": false,
+          "reason": "No tour button found in DOM"
+        }
+      },
+      "facilities": {
+        "clicked": true,
+        "card": {
+          "on": false,
+          "text": ""
+        }
+      },
+      "view": {
+        "ok": true,
+        "info": {
+          "hasView": true,
+          "hasMap": true,
+          "title": "בחרו קומה ודירה לדוגמה",
+          "mapboxLoaded": true
+        }
+      },
+      "map": {
+        "catClicked": "פארקים וספורט\n16",
+        "pinClicked": {
+          "clicked": true,
+          "cls": "mapboxgl-marker mapboxgl-marker-anchor-center"
+        }
+      },
+      "calc": {
+        "sliderMoved": true
+      },
+      "design": {
+        "stepClicked": true,
+        "loc": {
+          "scrollY": 0,
+          "hash": ""
+        }
+      },
+      "basket": {
+        "clicked": false,
+        "reason": "No basket button"
+      },
+      "video": {
+        "clicked": false,
+        "reason": "No video call button"
+      },
+      "whatsapp": {
+        "exists": false
+      }
+    }
+  },
+  "B": {
+    "d": {
+      "order": {
+        "h1": 204,
+        "lead": 316,
+        "ctas": 600,
+        "stage": 204,
+        "view": 3262,
+        "map": 3262,
+        "facts": 4597,
+        "article": 16361
+      },
+      "floor": {
+        "method": "stageApi",
+        "floor": 13,
+        "ok": true,
+        "card": ""
+      },
+      "tower": {
+        "hasTowerCalc": true,
+        "stageTowers": null,
+        "clickedBoutique": true
+      },
+      "directions": {
+        "method": "stageApi",
+        "bearing": 270,
+        "ok": null
+      },
+      "apartment": {
+        "dockedExists": false,
+        "dockedVisible": false,
+        "acts": [
+          "1\nבוחרים קומה",
+          "2\nהנוף והמפה",
+          "3\nנכנסים לדירה",
+          "4\nמעצבים את הדירה",
+          "סל הדירה"
+        ]
+      },
+      "tour": {
+        "info": {
+          "hasStepInside": true,
+          "hasTourBtn": true,
+          "hasActInside": true
+        },
+        "action": {
+          "open": false,
+          "err": "ElementHandle.click: Timeout 3000ms exceeded.\nCall log:\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    5 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 500ms\n"
+        }
+      },
+      "facilities": {
+        "clicked": true,
+        "card": {
+          "on": false,
+          "text": ""
+        }
+      },
+      "view": {
+        "ok": true,
+        "info": {
+          "hasView": true,
+          "hasMap": true,
+          "title": "בחרו קומה ודירה לדוגמה",
+          "mapboxLoaded": true
+        }
+      },
+      "map": {
+        "catClicked": "פארקים וספורט\n4",
+        "pinClicked": {
+          "clicked": true,
+          "cls": "mapboxgl-marker mapboxgl-marker-anchor-center"
+        }
+      },
+      "calc": {
+        "sliderMoved": true
+      },
+      "design": {
+        "stepClicked": true,
+        "loc": {
+          "scrollY": 0,
+          "hash": ""
+        }
+      },
+      "basket": {
+        "clicked": false,
+        "reason": "No basket button"
+      },
+      "video": {
+        "clicked": false,
+        "reason": "No video call button"
+      },
+      "whatsapp": {
+        "exists": false
+      }
+    },
+    "m": {
+      "order": {
+        "h1": 190,
+        "lead": 291,
+        "ctas": 565,
+        "stage": 675,
+        "view": 3516,
+        "map": 3814,
+        "facts": 5257,
+        "article": 24265
+      },
+      "floor": {
+        "method": "stageApi",
+        "floor": 13,
+        "ok": true,
+        "card": ""
+      },
+      "tower": {
+        "hasTowerCalc": true,
+        "stageTowers": null,
+        "clickedBoutique": true
+      },
+      "directions": {
+        "method": "stageApi",
+        "bearing": 270,
+        "ok": null
+      },
+      "apartment": {
+        "dockedExists": false,
+        "dockedVisible": false,
+        "acts": [
+          "1\nבוחרים קומה",
+          "2\nהנוף והמפה",
+          "3\nנכנסים לדירה",
+          "4\nמעצבים את הדירה",
+          "סל הדירה"
+        ]
+      },
+      "tour": {
+        "info": {
+          "hasStepInside": true,
+          "hasTourBtn": true,
+          "hasActInside": true
+        },
+        "action": {
+          "open": false,
+          "err": "ElementHandle.click: Timeout 3000ms exceeded.\nCall log:\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    5 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 500ms\n"
+        }
+      },
+      "facilities": {
+        "clicked": true,
+        "card": {
+          "on": false,
+          "text": ""
+        }
+      },
+      "view": {
+        "ok": true,
+        "info": {
+          "hasView": true,
+          "hasMap": true,
+          "title": "בחרו קומה ודירה לדוגמה",
+          "mapboxLoaded": true
+        }
+      },
+      "map": {
+        "catClicked": "פארקים וספורט\n4",
+        "pinClicked": {
+          "clicked": true,
+          "cls": "mapboxgl-marker mapboxgl-marker-anchor-center"
+        }
+      },
+      "calc": {
+        "sliderMoved": true
+      },
+      "design": {
+        "stepClicked": true,
+        "loc": {
+          "scrollY": 0,
+          "hash": ""
+        }
+      },
+      "basket": {
+        "clicked": false,
+        "reason": "No basket button"
+      },
+      "video": {
+        "clicked": false,
+        "reason": "No video call button"
+      },
+      "whatsapp": {
+        "exists": false
+      }
+    }
+  }
+}

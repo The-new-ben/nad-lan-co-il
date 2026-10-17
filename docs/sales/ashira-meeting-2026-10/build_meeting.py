@@ -158,9 +158,9 @@ def slides():
 <div class="kick">What you get</div>
 <h2>מה היזם מקבל.</h2>
 <div class="cols">
-<div class="box"><h3>חלון ראווה רשמי</h3><p>הנתונים שלכם: מחירון, תוכניות, הדמיות וסרט. העמוד הכי מלא ברשת על הפרויקט, מדויק ומאושר על ידכם.</p></div>
-<div class="box"><h3>פניות ישר אליכם</h3><p>כל פנייה מגיעה לצוות המכירות בשפת הקונה, ואיתה מה הוא בדק: בניין, קומה, כיוון ודירה.</p></div>
-<div class="box"><h3>חדר יזם</h3><p>אזור משלכם בפלטפורמה: הפניות לפרויקט, התראות, וסיכום שבועי של מה הקונים שאלו.</p></div>
+<div class="box"><h3>חלון ראווה רשמי</h3><p>הנתונים שלכם: מחירון, תוכניות, הדמיות וסרט, מדויקים ומאושרים על ידכם.</p></div>
+<div class="box"><h3>פניות מסודרות</h3><p>אם נסכם על כך בפיילוט: פניות מהעמוד יגיעו לצוות המכירות, עם מה שהקונה בדק.</p></div>
+<div class="box"><h3>מרכז מפרסם וסטודיו</h3><p>אזור משלכם בפלטפורמה לעדכון פרטים ולהעלאת חומרים. בפיילוט נוסיף סיכום של מה הקונים שאלו.</p></div>
 <div class="box"><h3>עולם שדה דב</h3><p>מדריכים וכלים על הרובע (מרחקים, עלויות, שכירות) בעברית ובאנגלית, שמביאים קונים שמחפשים את האזור.</p></div>
 <div class="box"><h3>קונים מחו״ל</h3><p>חמש שפות, והקמפיינים בארץ ובחו״ל שאנחנו מתחילים עכשיו.</p></div>
 <div class="box"><h3>מתווכת מהשכונה</h3><p>הקונים של מיטל, והליווי שלה עד החתימה, לפי הסכם התיווך שלה.</p></div>
@@ -203,8 +203,8 @@ def slides():
 <div class="kick">Options</div>
 <h2>שלושה מסלולים. בוחרים מה שמתאים לכם.</h2>
 <div class="cols">
-<div class="box"><h3>פיילוט</h3><div class="price">3,990 <small>₪ לחודש</small></div><p>שלושה חודשים. חלון ראווה, פניות ישירות וחדר יזם.</p></div>
-<div class="box"><div class="tag">FOUNDERS</div><h3>חלון ראווה לשנה</h3><div class="price">2,490 <small>₪ לחודש</small></div><p>מחיר מייסדים במקום 3,990. נתונים רשמיים, סרט, מחירון, פניות ישירות וחדר יזם.</p></div>
+<div class="box"><h3>פיילוט</h3><div class="price">3,990 <small>₪ לחודש</small></div><p>שלושה חודשים. חלון ראווה עם הנתונים שלכם.</p></div>
+<div class="box"><div class="tag">FOUNDERS</div><h3>חלון ראווה לשנה</h3><div class="price">2,490 <small>₪ לחודש</small></div><p>מחיר מייסדים במקום 3,990. הנתונים שלכם, סרט ומחירון.</p></div>
 <div class="box"><h3>שותף שדה דב לשנה</h3><div class="price">6,900 <small>₪ לחודש</small></div><p>כל מה שבחלון הראווה, ועוד: עדיפות בפניות על הרובע, מקום ראשון במדריכים ובכלים של שדה דב, והקמפיינים לקונים מחו״ל.</p></div>
 </div>
 <div class="big">בכל מסלול שנתי: אחרי 90 יום אפשר לצאת בלי קנס. כל המחירים כוללים מע״מ.</div>
@@ -216,7 +216,7 @@ def slides():
 <div class="st" style="border-color:var(--mag)"><b>01</b><span>בוחרים מסלול</span><small>היום, בחדר</small></div>
 <div class="st" style="border-color:var(--blue2)"><b>02</b><span>שולחים לנו חומרים</span><small>מחירון, תוכניות, הדמיות</small></div>
 <div class="st" style="border-color:var(--mag)"><b>03</b><span>חתימה דיגיטלית</span><small>מהטלפון, בקישור</small></div>
-<div class="st" style="border-color:var(--blue2)"><b>04</b><span>עולים לאוויר</span><small>תוך 14 יום, עם חדר יזם</small></div>
+<div class="st" style="border-color:var(--blue2)"><b>04</b><span>מעדכנים את העמוד</span><small>תוך 14 יום מקבלת החומרים</small></div>
 </div>
 <div class="who" style="bottom:110px"><div><b>בן</b>nad-lan.co.il</div><div><b>מיטל קציר</b>052-363-1582 · נדל״ן על הים</div></div>
 </section>""")

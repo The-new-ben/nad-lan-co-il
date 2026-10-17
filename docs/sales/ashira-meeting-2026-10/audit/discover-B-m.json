@@ -1,0 +1,2667 @@
+{
+ "title": "ריינבו תל אביב Rainbow - ישראל קנדה, שדה דב | מחירים ודירות | נדלן",
+ "h1": [
+  {
+   "t": "ריינבו תל אביב\nRainbow Tel Aviv",
+   "y": 190,
+   "h": 57,
+   "x": 12,
+   "w": 366,
+   "v": true
+  }
+ ],
+ "lead": [
+  {
+   "t": "ריינבו תל אביב (Rainbow Tel Aviv) הוא פרויקט המגורים של ישראל קנדה במגרש 111 ברובע שדה דב, בצפון תל אביב, כ-700 מטר מהים: מגדל בן 39 קומות ובנייני בוטיק בני 9 קומות סביב חצר פנימית, 459 דירות לפי היזם. הפרויקט בבנייה, הקבלן המבצע הוא אשטרום, והאכלוס צפוי ב-2030 לפי אתר הפרויקט. לפי דוחות היזם, המחיר",
+   "y": 291,
+   "h": 252,
+   "x": 12,
+   "w": 366,
+   "v": true
+  }
+ ],
+ "sections": [
+  {
+   "id": "nl-project-page-title",
+   "y": 190,
+   "h": 57,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nlpg",
+   "y": 1648,
+   "h": 1847,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nlps-t",
+   "y": 674,
+   "h": 1,
+   "x": 378,
+   "w": 1
+  },
+  {
+   "id": "nlps",
+   "y": 675,
+   "h": 591,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nlps-stage",
+   "y": 676,
+   "h": 589,
+   "x": 13,
+   "w": 364
+  },
+  {
+   "id": "nlps-view",
+   "y": 3516,
+   "h": 281,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nlps-view-t",
+   "y": 3554,
+   "h": 28,
+   "x": 29,
+   "w": 332
+  },
+  {
+   "id": "nlps-view-map",
+   "y": 3594,
+   "h": 187,
+   "x": 29,
+   "w": 332
+  },
+  {
+   "id": "nlpjx-map",
+   "y": 3814,
+   "h": 1422,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nlps-tour",
+   "y": 5655,
+   "h": 562,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nlps-deals",
+   "y": 6239,
+   "h": 1692,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nlpjx-price",
+   "y": 24265,
+   "h": 1265,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nlpjx-finance",
+   "y": 25552,
+   "h": 209,
+   "x": 13,
+   "w": 364
+  },
+  {
+   "id": "nlpjx-world",
+   "y": 26338,
+   "h": 689,
+   "x": 13,
+   "w": 364
+  },
+  {
+   "id": "nlsch",
+   "y": 27251,
+   "h": 744,
+   "x": 12,
+   "w": 366
+  }
+ ],
+ "controls": [
+  {
+   "tag": "A",
+   "sec": "wp-skip-link",
+   "text": "לדלג לתוכן",
+   "attrs": {
+    "class": "skip-link screen-reader-text",
+    "id": "wp-skip-link",
+    "href": "#wp--skip-link--target"
+   },
+   "y": -1,
+   "h": 1,
+   "x": 390,
+   "w": 1,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlhp-nav",
+   "text": "×",
+   "attrs": {
+    "type": "button",
+    "class": "nlhp-sheet__close",
+    "data-nlhp-close": "",
+    "aria-label": "סגירת התפריט"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "SUMMARY",
+   "sec": "nlhp-nav",
+   "text": "פרויקטים חדשים",
+   "attrs": {
+    "class": "nlhp-nav__item"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "SUMMARY",
+   "sec": "nlhp-nav",
+   "text": "דירות למכירה",
+   "attrs": {
+    "class": "nlhp-nav__item"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "SUMMARY",
+   "sec": "nlhp-nav",
+   "text": "דירות להשכרה",
+   "attrs": {
+    "class": "nlhp-nav__item"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "SUMMARY",
+   "sec": "nlhp-nav",
+   "text": "מחירי דירות",
+   "attrs": {
+    "class": "nlhp-nav__item"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "SUMMARY",
+   "sec": "nlhp-nav",
+   "text": "סיורים וירטואליים",
+   "attrs": {
+    "class": "nlhp-nav__item"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "SUMMARY",
+   "sec": "nlhp-nav",
+   "text": "מגזין נדל״ן",
+   "attrs": {
+    "class": "nlhp-nav__item"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "SUMMARY",
+   "sec": "nlhp-nav",
+   "text": "אנשי מקצוע",
+   "attrs": {
+    "class": "nlhp-nav__item"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "SUMMARY",
+   "sec": "nlhp-top",
+   "text": "עברית",
+   "attrs": {},
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "A",
+   "sec": "nlhp-top",
+   "text": "חיפוש",
+   "attrs": {
+    "class": "nlhp-ico nlhp-ico--search",
+    "href": "#nlhp-hero",
+    "aria-label": "חיפוש"
+   },
+   "y": 6,
+   "h": 44,
+   "x": 196,
+   "w": 44,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlhp-top",
+   "text": "פתיחת התפריט",
+   "attrs": {
+    "type": "button",
+    "class": "nlhp-ico nlhp-ico--menu",
+    "aria-label": "פתיחת התפריט"
+   },
+   "y": 6,
+   "h": 44,
+   "x": 144,
+   "w": 44,
+   "v": true
+  },
+  {
+   "tag": "A",
+   "sec": "wp--skip-link--target",
+   "text": "לקבלת תוכניות ומחירים",
+   "attrs": {
+    "class": "nlds-btn nlds-btn--primary",
+    "data-nlps-ev": "hero-wa",
+    "href": "https://wa.me/972525101555?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A"
+   },
+   "y": 565,
+   "h": 44,
+   "x": 187,
+   "w": 191,
+   "v": true
+  },
+  {
+   "tag": "A",
+   "sec": "wp--skip-link--target",
+   "text": "לבחירת קומה",
+   "attrs": {
+    "class": "nlds-btn nlds-btn--secondary",
+    "href": "#nlps-t",
+    "data-nlps-ev": "hero-pick"
+   },
+   "y": 565,
+   "h": 44,
+   "x": 12,
+   "w": 165,
+   "v": true
+  },
+  {
+   "tag": "A",
+   "sec": "wp--skip-link--target",
+   "text": "שיחת וידאו עם נציג",
+   "attrs": {
+    "class": "nlds-btn nlds-btn--secondary nlps-hero__video",
+    "href": "#nlsch",
+    "data-nlps-ev": "hero-video"
+   },
+   "y": 619,
+   "h": 44,
+   "x": 218,
+   "w": 160,
+   "v": true
+  },
+  {
+   "tag": "A",
+   "sec": "wp--skip-link--target",
+   "text": "סרטון הפרויקט · 54 שניות",
+   "attrs": {
+    "class": "nlds-btn nlds-btn--secondary nlps-hero__film",
+    "href": "#nlfilm",
+    "data-nlps-ev": "hero-film"
+   },
+   "y": 619,
+   "h": 44,
+   "x": 12,
+   "w": 196,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpg",
+   "text": "למחירון המלא (24)",
+   "attrs": {
+    "class": "nlpg__more",
+    "type": "button"
+   },
+   "y": 3303,
+   "h": 44,
+   "x": 29,
+   "w": 332,
+   "v": true
+  },
+  {
+   "tag": "INPUT",
+   "sec": "nlpg",
+   "text": "tower",
+   "attrs": {
+    "type": "radio",
+    "name": "nlpg-m",
+    "value": "tower"
+   },
+   "y": 2310,
+   "h": 44,
+   "x": 277,
+   "w": 67,
+   "v": true
+  },
+  {
+   "tag": "INPUT",
+   "sec": "nlpg",
+   "text": "boutique",
+   "attrs": {
+    "type": "radio",
+    "name": "nlpg-m",
+    "value": "boutique"
+   },
+   "y": 2310,
+   "h": 44,
+   "x": 138,
+   "w": 133,
+   "v": true
+  },
+  {
+   "tag": "INPUT",
+   "sec": "nlpg",
+   "text": "area",
+   "attrs": {
+    "type": "radio",
+    "name": "nlpg-m",
+    "value": "area"
+   },
+   "y": 2360,
+   "h": 44,
+   "x": 212,
+   "w": 132,
+   "v": true
+  },
+  {
+   "tag": "INPUT",
+   "sec": "nlpg-a",
+   "text": "140",
+   "attrs": {
+    "type": "range",
+    "id": "nlpg-a",
+    "data-pg": "a",
+    "value": "140"
+   },
+   "y": 2453,
+   "h": 44,
+   "x": 144,
+   "w": 200,
+   "v": true
+  },
+  {
+   "tag": "INPUT",
+   "sec": "nlpg-fs",
+   "text": "19",
+   "attrs": {
+    "type": "range",
+    "id": "nlpg-fs",
+    "data-pg": "fs",
+    "value": "19"
+   },
+   "y": 2545,
+   "h": 44,
+   "x": 144,
+   "w": 200,
+   "v": true
+  },
+  {
+   "tag": "INPUT",
+   "sec": "nlpg",
+   "text": "single",
+   "attrs": {
+    "type": "radio",
+    "name": "nlpg-t",
+    "value": "single"
+   },
+   "y": 2630,
+   "h": 44,
+   "x": 198,
+   "w": 146,
+   "v": true
+  },
+  {
+   "tag": "INPUT",
+   "sec": "nlpg",
+   "text": "more",
+   "attrs": {
+    "type": "radio",
+    "name": "nlpg-t",
+    "value": "more"
+   },
+   "y": 2630,
+   "h": 44,
+   "x": 46,
+   "w": 146,
+   "v": true
+  },
+  {
+   "tag": "A",
+   "sec": "nlpg",
+   "text": "לקבלת פרטים נוספים בוואטסאפ",
+   "attrs": {
+    "class": "nlds-btn nlds-btn--primary nlpg__wa",
+    "data-pg": "wa",
+    "data-nlps-ev": "pg-wa",
+    "href": "https://wa.me/972525101555?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%91%D7%93%D7%A7%D7%AA%D7%99%20%D7%9"
+   },
+   "y": 3088,
+   "h": 52,
+   "x": 46,
+   "w": 298,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "שקיעה",
+   "attrs": {
+    "type": "button",
+    "role": "radio",
+    "data-preset": "sunset"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "צהריים",
+   "attrs": {
+    "type": "button",
+    "role": "radio",
+    "data-preset": "noon"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "לקפל את הכרטיס",
+   "attrs": {
+    "class": "rbs-label-min",
+    "type": "button",
+    "aria-label": "לקפל את הכרטיס"
+   },
+   "y": 679,
+   "h": 36,
+   "x": 58,
+   "w": 36,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "סגירה",
+   "attrs": {
+    "class": "rbs-label-close",
+    "type": "button",
+    "aria-label": "סגירה"
+   },
+   "y": 679,
+   "h": 36,
+   "x": 28,
+   "w": 36,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "",
+   "attrs": {
+    "class": "rbs-act rbs-act--go",
+    "type": "button",
+    "data-act": "inside"
+   },
+   "y": 735,
+   "h": 44,
+   "x": 187,
+   "w": 151,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "",
+   "attrs": {
+    "class": "rbs-act rbs-act--sec",
+    "type": "button",
+    "data-act": "view"
+   },
+   "y": 735,
+   "h": 44,
+   "x": 28,
+   "w": 151,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "",
+   "attrs": {
+    "class": "rbs-act rbs-act--sec",
+    "type": "button",
+    "data-act": "design"
+   },
+   "y": 787,
+   "h": 44,
+   "x": 187,
+   "w": 151,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "",
+   "attrs": {
+    "class": "rbs-label-cta",
+    "type": "button"
+   },
+   "y": 787,
+   "h": 44,
+   "x": 28,
+   "w": 151,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "+",
+   "attrs": {
+    "class": "rbs-zoom-in",
+    "type": "button",
+    "aria-label": "להתקרב"
+   },
+   "y": 680,
+   "h": 24,
+   "x": 354,
+   "w": 23,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "−",
+   "attrs": {
+    "class": "rbs-zoom-out",
+    "type": "button",
+    "aria-label": "להתרחק"
+   },
+   "y": 680,
+   "h": 24,
+   "x": 331,
+   "w": 23,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "דמרי ימה",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--project",
+    "type": "button",
+    "aria-label": "דמרי ימה"
+   },
+   "y": 676,
+   "h": 25,
+   "x": 13,
+   "w": 81,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "זוהי",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--project",
+    "type": "button",
+    "aria-label": "זוהי"
+   },
+   "y": 676,
+   "h": 25,
+   "x": 13,
+   "w": 54,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "שיכון ובינוי, מגרש 109",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--project",
+    "type": "button",
+    "aria-label": "שיכון ובינוי, מגרש 109"
+   },
+   "y": 676,
+   "h": 25,
+   "x": 13,
+   "w": 87,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "אוטופיה",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--project",
+    "type": "button",
+    "aria-label": "אוטופיה"
+   },
+   "y": 676,
+   "h": 25,
+   "x": 13,
+   "w": 75,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "אשירה",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--project",
+    "type": "button",
+    "aria-label": "אשירה"
+   },
+   "y": 676,
+   "h": 25,
+   "x": 13,
+   "w": 68,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "גינדי ווג",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--project",
+    "type": "button",
+    "aria-label": "גינדי ווג"
+   },
+   "y": 676,
+   "h": 25,
+   "x": 13,
+   "w": 74,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "מגדל איינשטיין",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--project",
+    "type": "button",
+    "aria-label": "מגדל איינשטיין"
+   },
+   "y": 676,
+   "h": 25,
+   "x": 13,
+   "w": 109,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "פירסט",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--project",
+    "type": "button",
+    "aria-label": "פירסט"
+   },
+   "y": 676,
+   "h": 25,
+   "x": 13,
+   "w": 67,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "תחנת רידינג, הרכבת הקלה",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--place rbs-qpin--rail",
+    "type": "button",
+    "aria-label": "תחנת רידינג, הרכבת הקלה"
+   },
+   "y": 676,
+   "h": 24,
+   "x": 13,
+   "w": 93,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "בית הספר כוכב הצפון",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--place rbs-qpin--school",
+    "type": "button",
+    "aria-label": "בית הספר כוכב הצפון"
+   },
+   "y": 676,
+   "h": 24,
+   "x": 13,
+   "w": 134,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "גן כוכב הצפון",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--place rbs-qpin--park",
+    "type": "button",
+    "aria-label": "גן כוכב הצפון"
+   },
+   "y": 676,
+   "h": 24,
+   "x": 13,
+   "w": 96,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "חוף רידינג",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--place rbs-qpin--beach",
+    "type": "button",
+    "aria-label": "חוף רידינג"
+   },
+   "y": 676,
+   "h": 24,
+   "x": 13,
+   "w": 83,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "שפך נחל הירקון",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--place rbs-qpin--nature",
+    "type": "button",
+    "aria-label": "שפך נחל הירקון"
+   },
+   "y": 676,
+   "h": 24,
+   "x": 13,
+   "w": 108,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "שתי בריכות על הגגות",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--facility",
+    "type": "button",
+    "aria-label": "שתי בריכות על הגגות"
+   },
+   "y": 676,
+   "h": 32,
+   "x": 13,
+   "w": 78,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "שתי בריכות על הגגות",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--facility",
+    "type": "button",
+    "aria-label": "שתי בריכות על הגגות"
+   },
+   "y": 676,
+   "h": 32,
+   "x": 13,
+   "w": 78,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "Rainbow Club, מועדון הדיירים",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--facility",
+    "type": "button",
+    "aria-label": "Rainbow Club, מועדון הדיירים"
+   },
+   "y": 676,
+   "h": 32,
+   "x": 13,
+   "w": 109,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "לובי בכל בניין",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--facility",
+    "type": "button",
+    "aria-label": "לובי בכל בניין"
+   },
+   "y": 676,
+   "h": 32,
+   "x": 13,
+   "w": 65,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "מסחר בקומת הקרקע",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--facility",
+    "type": "button",
+    "aria-label": "מסחר בקומת הקרקע"
+   },
+   "y": 676,
+   "h": 32,
+   "x": 13,
+   "w": 74,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "חניון תת־קרקעי",
+   "attrs": {
+    "class": "rbs-qpin rbs-qpin--facility",
+    "type": "button",
+    "aria-label": "חניון תת־קרקעי"
+   },
+   "y": 676,
+   "h": 32,
+   "x": 13,
+   "w": 67,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-stage",
+   "text": "סיור וירטואלי בפרויקט",
+   "attrs": {
+    "class": "rbs-open",
+    "type": "button"
+   },
+   "y": 1147,
+   "h": 46,
+   "x": 109,
+   "w": 171,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps",
+   "text": "✦ המתקנים בפרויקט 5",
+   "attrs": {
+    "type": "button",
+    "class": "nlps-facbtn",
+    "data-nlps-phase": "facilities"
+   },
+   "y": 688,
+   "h": 44,
+   "x": 177,
+   "w": 188,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "wp--skip-link--target",
+   "text": "1 בוחרים קומה",
+   "attrs": {
+    "type": "button",
+    "class": "nlps-step",
+    "data-nlps-step": "floor"
+   },
+   "y": 1276,
+   "h": 44,
+   "x": 199,
+   "w": 179,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "wp--skip-link--target",
+   "text": "2 הנוף והמפה",
+   "attrs": {
+    "type": "button",
+    "class": "nlps-step",
+    "data-nlps-step": "view"
+   },
+   "y": 1276,
+   "h": 44,
+   "x": 12,
+   "w": 179,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "wp--skip-link--target",
+   "text": "3 נכנסים לדירה",
+   "attrs": {
+    "type": "button",
+    "class": "nlps-step",
+    "data-nlps-step": "inside"
+   },
+   "y": 1328,
+   "h": 44,
+   "x": 199,
+   "w": 179,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "wp--skip-link--target",
+   "text": "4 מעצבים את הדירה",
+   "attrs": {
+    "type": "button",
+    "class": "nlps-step",
+    "data-nlps-step": "design"
+   },
+   "y": 1328,
+   "h": 44,
+   "x": 12,
+   "w": 179,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "wp--skip-link--target",
+   "text": "סל הדירה",
+   "attrs": {
+    "class": "nlps-step nlbk-step",
+    "type": "button"
+   },
+   "y": 1380,
+   "h": 44,
+   "x": 12,
+   "w": 366,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "wp--skip-link--target",
+   "text": "מתקנים בפרויקט 5",
+   "attrs": {
+    "type": "button",
+    "class": "qp-chip",
+    "data-nlps-phase": "facilities"
+   },
+   "y": 1434,
+   "h": 44,
+   "x": 235,
+   "w": 143,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "wp--skip-link--target",
+   "text": "קיים היום 808 בניינים",
+   "attrs": {
+    "type": "button",
+    "class": "qp-chip",
+    "data-nlps-phase": "today"
+   },
+   "y": 1434,
+   "h": 44,
+   "x": 74,
+   "w": 153,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "wp--skip-link--target",
+   "text": "בבנייה 2",
+   "attrs": {
+    "type": "button",
+    "class": "qp-chip",
+    "data-nlps-phase": "building"
+   },
+   "y": 1486,
+   "h": 44,
+   "x": 288,
+   "w": 90,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "wp--skip-link--target",
+   "text": "בשיווק 5",
+   "attrs": {
+    "type": "button",
+    "class": "qp-chip",
+    "data-nlps-phase": "selling"
+   },
+   "y": 1486,
+   "h": 44,
+   "x": 190,
+   "w": 90,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "wp--skip-link--target",
+   "text": "בשלב ההיתר 2",
+   "attrs": {
+    "type": "button",
+    "class": "qp-chip",
+    "data-nlps-phase": "permit"
+   },
+   "y": 1486,
+   "h": 44,
+   "x": 60,
+   "w": 122,
+   "v": true
+  },
+  {
+   "tag": "A",
+   "sec": "nlps-wa",
+   "text": "לקבלת תוכניות ומחירים",
+   "attrs": {
+    "class": "nlds-btn nlds-btn--primary",
+    "id": "nlps-wa",
+    "href": "https://wa.me/972525101555"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "A",
+   "sec": "nlps-tomap",
+   "text": "הכיוון על המפה",
+   "attrs": {
+    "class": "nlds-btn nlds-btn--secondary",
+    "id": "nlps-tomap",
+    "href": "#nlpjx-map"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-view-cta",
+   "text": "לסל הדירה0",
+   "attrs": {
+    "class": "nlds-btn nlds-btn--secondary nlbk-add",
+    "type": "button"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-view-cta",
+   "text": "חתך הקומה",
+   "attrs": {
+    "type": "button",
+    "class": "nlds-btn nlds-btn--secondary nlps-slice"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "חינוך 11",
+   "attrs": {
+    "type": "button",
+    "data-g": "education"
+   },
+   "y": 3937,
+   "h": 44,
+   "x": 252,
+   "w": 105,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "פארקים וספורט 4",
+   "attrs": {
+    "type": "button",
+    "data-g": "outdoors"
+   },
+   "y": 3937,
+   "h": 44,
+   "x": 92,
+   "w": 154,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "תחבורה 11",
+   "attrs": {
+    "type": "button",
+    "data-g": "transport"
+   },
+   "y": 3937,
+   "h": 44,
+   "x": -34,
+   "w": 120,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "קפה ומסעדות 9",
+   "attrs": {
+    "type": "button",
+    "data-g": "food"
+   },
+   "y": 3937,
+   "h": 44,
+   "x": -186,
+   "w": 146,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "קניות וסידורים 12",
+   "attrs": {
+    "type": "button",
+    "data-g": "essentials"
+   },
+   "y": 3937,
+   "h": 44,
+   "x": -346,
+   "w": 154,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "בריאות 0",
+   "attrs": {
+    "type": "button",
+    "data-g": "health"
+   },
+   "y": 3937,
+   "h": 44,
+   "x": -462,
+   "w": 110,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "קהילה ותרבות 0",
+   "attrs": {
+    "type": "button",
+    "data-g": "community"
+   },
+   "y": 3937,
+   "h": 44,
+   "x": -615,
+   "w": 147,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "5 דק׳",
+   "attrs": {
+    "type": "button"
+   },
+   "y": 3994,
+   "h": 40,
+   "x": 270,
+   "w": 56,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "10 דק׳",
+   "attrs": {
+    "type": "button"
+   },
+   "y": 3994,
+   "h": 40,
+   "x": 210,
+   "w": 58,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "15 דק׳",
+   "attrs": {
+    "type": "button"
+   },
+   "y": 3994,
+   "h": 40,
+   "x": 150,
+   "w": 58,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "הכל",
+   "attrs": {
+    "type": "button"
+   },
+   "y": 3994,
+   "h": 40,
+   "x": 92,
+   "w": 56,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "₪ מחירים בסביבה (6)",
+   "attrs": {
+    "type": "button",
+    "class": "is-on",
+    "data-layer": "comps"
+   },
+   "y": 4047,
+   "h": 44,
+   "x": 222,
+   "w": 135,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "◆ תוכניות עתידיות (12)",
+   "attrs": {
+    "type": "button",
+    "class": "is-on",
+    "data-layer": "plans"
+   },
+   "y": 4047,
+   "h": 44,
+   "x": 72,
+   "w": 144,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "תלת ממד",
+   "attrs": {
+    "type": "button",
+    "data-layer": "3d"
+   },
+   "y": 4097,
+   "h": 44,
+   "x": 282,
+   "w": 75,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "לוויין",
+   "attrs": {
+    "type": "button",
+    "data-layer": "sat"
+   },
+   "y": 4097,
+   "h": 44,
+   "x": 225,
+   "w": 50,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "Map marker",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4362,
+   "h": 20,
+   "x": 186,
+   "w": 20,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "₪90K",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4372,
+   "h": 25,
+   "x": 203,
+   "w": 50,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "₪75K",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4314,
+   "h": 25,
+   "x": 172,
+   "w": 50,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "₪75K",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4270,
+   "h": 25,
+   "x": 270,
+   "w": 50,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "₪54K",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4089,
+   "h": 25,
+   "x": 145,
+   "w": 50,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "₪75K",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 3962,
+   "h": 25,
+   "x": 170,
+   "w": 50,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "₪65K",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4956,
+   "h": 25,
+   "x": 335,
+   "w": 50,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "Map marker",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4940,
+   "h": 17,
+   "x": 135,
+   "w": 17,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "Map marker",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4262,
+   "h": 17,
+   "x": 191,
+   "w": 17,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "Map marker",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4262,
+   "h": 17,
+   "x": 191,
+   "w": 17,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "Map marker",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4262,
+   "h": 17,
+   "x": 191,
+   "w": 17,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "Map marker",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4262,
+   "h": 17,
+   "x": 191,
+   "w": 17,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "Map marker",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4232,
+   "h": 17,
+   "x": 122,
+   "w": 17,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "Map marker",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4232,
+   "h": 17,
+   "x": 122,
+   "w": 17,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "Map marker",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4232,
+   "h": 17,
+   "x": 122,
+   "w": 17,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "Map marker",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4364,
+   "h": 17,
+   "x": 189,
+   "w": 17,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "Map marker",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4364,
+   "h": 17,
+   "x": 189,
+   "w": 17,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "Map marker",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4364,
+   "h": 17,
+   "x": 189,
+   "w": 17,
+   "v": true
+  },
+  {
+   "tag": "DIV",
+   "sec": "nlpjx-unimap",
+   "text": "Map marker",
+   "attrs": {
+    "aria-label": "Map marker",
+    "role": "button",
+    "class": "mapboxgl-marker mapboxgl-marker-anchor-center"
+   },
+   "y": 4232,
+   "h": 17,
+   "x": 122,
+   "w": 17,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-unimap",
+   "text": "Zoom in",
+   "attrs": {
+    "class": "mapboxgl-ctrl-zoom-in",
+    "type": "button",
+    "aria-label": "Zoom in"
+   },
+   "y": 4162,
+   "h": 29,
+   "x": 317,
+   "w": 29,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-unimap",
+   "text": "Zoom out",
+   "attrs": {
+    "class": "mapboxgl-ctrl-zoom-out",
+    "type": "button",
+    "aria-label": "Zoom out"
+   },
+   "y": 4191,
+   "h": 29,
+   "x": 317,
+   "w": 29,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-unimap",
+   "text": "Reset bearing to north",
+   "attrs": {
+    "class": "mapboxgl-ctrl-compass",
+    "type": "button",
+    "aria-label": "Reset bearing to north"
+   },
+   "y": 4220,
+   "h": 29,
+   "x": 317,
+   "w": 29,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-unimap",
+   "text": "Toggle attribution",
+   "attrs": {
+    "class": "mapboxgl-ctrl-attrib-button",
+    "type": "button",
+    "aria-label": "Toggle attribution"
+   },
+   "y": 4556,
+   "h": 24,
+   "x": 322,
+   "w": 24,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "ש''י עגנון/ישראל גלילי תחבורה · ש''י עגנון 3 2 דק׳",
+   "attrs": {
+    "type": "button"
+   },
+   "y": 4658,
+   "h": 52,
+   "x": 33,
+   "w": 324,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "ש''י עגנון/אבן גבירול תחבורה · ש''י עגנון 4 3 דק׳",
+   "attrs": {
+    "type": "button"
+   },
+   "y": 4716,
+   "h": 52,
+   "x": 33,
+   "w": 324,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "כוכב הצפון פארקים וספורט · עגנון ש\"י 17 5 דק׳",
+   "attrs": {
+    "type": "button"
+   },
+   "y": 4773,
+   "h": 52,
+   "x": 33,
+   "w": 324,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "כדורסל 3X3 פארקים וספורט · שי עגנון 22 5 דק׳",
+   "attrs": {
+    "type": "button"
+   },
+   "y": 4831,
+   "h": 52,
+   "x": 33,
+   "w": 324,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "ש''י עגנון/שד' לוי אשכול תחבורה · ש''י עגנון 6 דק׳",
+   "attrs": {
+    "type": "button"
+   },
+   "y": 4889,
+   "h": 52,
+   "x": 33,
+   "w": 324,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "ויצו כוכב הצפון חינוך · אבא קובנר 16 6 דק׳",
+   "attrs": {
+    "type": "button"
+   },
+   "y": 4947,
+   "h": 52,
+   "x": 33,
+   "w": 324,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlpjx-map",
+   "text": "+ 29 עוד",
+   "attrs": {
+    "type": "button",
+    "class": "nlam-more"
+   },
+   "y": 5007,
+   "h": 44,
+   "x": 279,
+   "w": 78,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-tour",
+   "text": "להיכנס לדירה · 360°",
+   "attrs": {
+    "type": "button",
+    "class": "nlds-btn nlds-btn--primary nlat__go",
+    "data-nlps-tour": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/rainbow/tour/living-25w.",
+    "data-nlps-tour-small": "https://nad-lan.co.il/wp-content/plugins/nadlan-config/assets/project-stage/rainbow/tour/living-25w-",
+    "data-nlps-tour-title": "קומה 25 · לכיוון הים",
+    "data-nlps-tour-scenes": "[{\"id\":\"n\",\"dir\":\"n\",\"dirLabel\":\"\\u05e6\\u05e4\\u05d5\\u05df\",\"spot\":\"living\",\"spotLabel\":\"\\u05d1\\u05e1"
+   },
+   "y": 6105,
+   "h": 48,
+   "x": 33,
+   "w": 328,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-deals",
+   "text": "לקומה במגדל",
+   "attrs": {
+    "class": "nlpd__go",
+    "type": "button",
+    "data-nlps-floor": "13",
+    "aria-label": "קומה 13 במגדל, בבמה"
+   },
+   "y": 6900,
+   "h": 44,
+   "x": 43,
+   "w": 304,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-deals",
+   "text": "לקומה במגדל",
+   "attrs": {
+    "class": "nlpd__go",
+    "type": "button",
+    "data-nlps-floor": "6",
+    "aria-label": "קומה 6 במגדל, בבמה"
+   },
+   "y": 7587,
+   "h": 44,
+   "x": 43,
+   "w": 304,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlps-deals",
+   "text": "לקומה במגדל",
+   "attrs": {
+    "class": "nlpd__go",
+    "type": "button",
+    "data-nlps-floor": "4",
+    "aria-label": "קומה 4 במגדל, בבמה"
+   },
+   "y": 7794,
+   "h": 44,
+   "x": 43,
+   "w": 304,
+   "v": true
+  },
+  {
+   "tag": "A",
+   "sec": "nlpjx-price",
+   "text": "כל המחירים, המוסדות והתוכניות על מפת האזור ←",
+   "attrs": {
+    "href": "#nlpjx-map"
+   },
+   "y": 25399,
+   "h": 49,
+   "x": 104,
+   "w": 253,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "היום 17.10",
+   "attrs": {
+    "class": "nlsch-day is-off",
+    "type": "button"
+   },
+   "y": 27554,
+   "h": 61,
+   "x": 291,
+   "w": 64,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "מחר 18.10",
+   "attrs": {
+    "class": "nlsch-day is-on",
+    "type": "button"
+   },
+   "y": 27554,
+   "h": 61,
+   "x": 219,
+   "w": 64,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "יום ב 19.10",
+   "attrs": {
+    "class": "nlsch-day",
+    "type": "button"
+   },
+   "y": 27554,
+   "h": 61,
+   "x": 147,
+   "w": 64,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "יום ג 20.10",
+   "attrs": {
+    "class": "nlsch-day",
+    "type": "button"
+   },
+   "y": 27554,
+   "h": 61,
+   "x": 75,
+   "w": 64,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "יום ד 21.10",
+   "attrs": {
+    "class": "nlsch-day",
+    "type": "button"
+   },
+   "y": 27554,
+   "h": 61,
+   "x": 3,
+   "w": 64,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "יום ה 22.10",
+   "attrs": {
+    "class": "nlsch-day",
+    "type": "button"
+   },
+   "y": 27554,
+   "h": 61,
+   "x": -69,
+   "w": 64,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "יום ו 23.10",
+   "attrs": {
+    "class": "nlsch-day",
+    "type": "button"
+   },
+   "y": 27554,
+   "h": 61,
+   "x": -141,
+   "w": 64,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "שבת 24.10",
+   "attrs": {
+    "class": "nlsch-day is-off",
+    "type": "button"
+   },
+   "y": 27554,
+   "h": 61,
+   "x": -213,
+   "w": 64,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "יום א 25.10",
+   "attrs": {
+    "class": "nlsch-day",
+    "type": "button"
+   },
+   "y": 27554,
+   "h": 61,
+   "x": -285,
+   "w": 64,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "יום ב 26.10",
+   "attrs": {
+    "class": "nlsch-day",
+    "type": "button"
+   },
+   "y": 27554,
+   "h": 61,
+   "x": -357,
+   "w": 64,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "יום ג 27.10",
+   "attrs": {
+    "class": "nlsch-day",
+    "type": "button"
+   },
+   "y": 27554,
+   "h": 61,
+   "x": -429,
+   "w": 64,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "יום ד 28.10",
+   "attrs": {
+    "class": "nlsch-day",
+    "type": "button"
+   },
+   "y": 27554,
+   "h": 61,
+   "x": -501,
+   "w": 64,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "יום ה 29.10",
+   "attrs": {
+    "class": "nlsch-day",
+    "type": "button"
+   },
+   "y": 27554,
+   "h": 61,
+   "x": -573,
+   "w": 64,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "יום ו 30.10",
+   "attrs": {
+    "class": "nlsch-day",
+    "type": "button"
+   },
+   "y": 27554,
+   "h": 61,
+   "x": -645,
+   "w": 64,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "09:00",
+   "attrs": {
+    "class": "nlsch-time",
+    "type": "button"
+   },
+   "y": 27666,
+   "h": 38,
+   "x": 289,
+   "w": 66,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "09:45",
+   "attrs": {
+    "class": "nlsch-time",
+    "type": "button"
+   },
+   "y": 27666,
+   "h": 38,
+   "x": 215,
+   "w": 66,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "10:30",
+   "attrs": {
+    "class": "nlsch-time",
+    "type": "button"
+   },
+   "y": 27666,
+   "h": 38,
+   "x": 141,
+   "w": 66,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "11:15",
+   "attrs": {
+    "class": "nlsch-time",
+    "type": "button"
+   },
+   "y": 27666,
+   "h": 38,
+   "x": 69,
+   "w": 64,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "12:00",
+   "attrs": {
+    "class": "nlsch-time",
+    "type": "button"
+   },
+   "y": 27712,
+   "h": 38,
+   "x": 289,
+   "w": 66,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "12:45",
+   "attrs": {
+    "class": "nlsch-time",
+    "type": "button"
+   },
+   "y": 27712,
+   "h": 38,
+   "x": 216,
+   "w": 66,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "13:30",
+   "attrs": {
+    "class": "nlsch-time",
+    "type": "button"
+   },
+   "y": 27712,
+   "h": 38,
+   "x": 142,
+   "w": 66,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "14:15",
+   "attrs": {
+    "class": "nlsch-time",
+    "type": "button"
+   },
+   "y": 27712,
+   "h": 38,
+   "x": 69,
+   "w": 65,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "15:00",
+   "attrs": {
+    "class": "nlsch-time",
+    "type": "button"
+   },
+   "y": 27758,
+   "h": 38,
+   "x": 289,
+   "w": 66,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "15:45",
+   "attrs": {
+    "class": "nlsch-time",
+    "type": "button"
+   },
+   "y": 27758,
+   "h": 38,
+   "x": 216,
+   "w": 66,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "16:30",
+   "attrs": {
+    "class": "nlsch-time",
+    "type": "button"
+   },
+   "y": 27758,
+   "h": 38,
+   "x": 142,
+   "w": 66,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "17:15",
+   "attrs": {
+    "class": "nlsch-time",
+    "type": "button"
+   },
+   "y": 27758,
+   "h": 38,
+   "x": 69,
+   "w": 65,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "18:00",
+   "attrs": {
+    "class": "nlsch-time",
+    "type": "button"
+   },
+   "y": 27804,
+   "h": 38,
+   "x": 289,
+   "w": 66,
+   "v": true
+  },
+  {
+   "tag": "INPUT",
+   "sec": "nlsch-mount",
+   "text": "",
+   "attrs": {
+    "type": "text",
+    "name": "name"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "INPUT",
+   "sec": "nlsch-mount",
+   "text": "",
+   "attrs": {
+    "type": "tel",
+    "name": "phone"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "INPUT",
+   "sec": "nlsch-mount",
+   "text": "",
+   "attrs": {
+    "type": "email",
+    "name": "email"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "INPUT",
+   "sec": "nlsch-mount",
+   "text": "",
+   "attrs": {
+    "type": "text",
+    "name": "company"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlsch-mount",
+   "text": "שליחת הבקשה",
+   "attrs": {
+    "class": "nlsch-go",
+    "type": "submit"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "A",
+   "sec": "nlpc-contact",
+   "text": "צור קשר",
+   "attrs": {
+    "href": "#nlpc-contact"
+   },
+   "y": 29032,
+   "h": 44,
+   "x": 16,
+   "w": 358,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nlfilm",
+   "text": "✕",
+   "attrs": {
+    "type": "button",
+    "class": "nlfilm-x",
+    "aria-label": "סגירה"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nla11y-btn",
+   "text": "תפריט נגישות",
+   "attrs": {
+    "type": "button",
+    "id": "nla11y-btn",
+    "aria-label": "תפריט נגישות"
+   },
+   "y": 778,
+   "h": 52,
+   "x": 324,
+   "w": 52,
+   "v": true
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nla11y-x",
+   "text": "✕",
+   "attrs": {
+    "type": "button",
+    "id": "nla11y-x",
+    "aria-label": "סגירה"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nla11y-panel",
+   "text": "הגדלת טקסט",
+   "attrs": {
+    "type": "button",
+    "data-k": "fontup"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nla11y-panel",
+   "text": "ניגודיות גבוהה",
+   "attrs": {
+    "type": "button",
+    "data-k": "contrast"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nla11y-panel",
+   "text": "הדגשת קישורים",
+   "attrs": {
+    "type": "button",
+    "data-k": "links"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nla11y-panel",
+   "text": "גופן קריא",
+   "attrs": {
+    "type": "button",
+    "data-k": "readable"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nla11y-panel",
+   "text": "עצירת אנימציות",
+   "attrs": {
+    "type": "button",
+    "data-k": "stopmotion"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "BUTTON",
+   "sec": "nla11y-reset",
+   "text": "איפוס",
+   "attrs": {
+    "type": "button",
+    "id": "nla11y-reset"
+   },
+   "y": 0,
+   "h": 0,
+   "x": 0,
+   "w": 0,
+   "v": false
+  },
+  {
+   "tag": "A",
+   "sec": "nlcta",
+   "text": "ייעוץ חינם מענה בוואטסאפ",
+   "attrs": {
+    "class": "nlcta-wa",
+    "data-nl-whatsapp": "",
+    "href": "https://wa.me/972525101555?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D",
+    "aria-label": "וואטסאפ · ייעוץ חינם על הפרויקט"
+   },
+   "y": 505,
+   "h": 50,
+   "x": 12,
+   "w": 172,
+   "v": true
+  }
+ ],
+ "ids": [
+  {
+   "id": "wp--skip-link--target",
+   "tag": "MAIN",
+   "cls": "wp-block-group nlpc-main nlpc-single-project-main has-global-padding is-layout-c",
+   "y": 76,
+   "h": 27977,
+   "x": 0,
+   "w": 390
+  },
+  {
+   "id": "nlpg",
+   "tag": "SECTION",
+   "cls": "nlds nlpg",
+   "y": 1648,
+   "h": 1847,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nlps",
+   "tag": "SECTION",
+   "cls": "nlps-stage",
+   "y": 675,
+   "h": 591,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nlps-stage",
+   "tag": "DIV",
+   "cls": "nlps-stage__mount",
+   "y": 676,
+   "h": 589,
+   "x": 13,
+   "w": 364
+  },
+  {
+   "id": "nlps-view",
+   "tag": "DIV",
+   "cls": "nlps-view",
+   "y": 3516,
+   "h": 281,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nlps-view-map",
+   "tag": "DIV",
+   "cls": "nlps-view__map nlps-stand",
+   "y": 3594,
+   "h": 187,
+   "x": 29,
+   "w": 332
+  },
+  {
+   "id": "nlpjx-map",
+   "tag": "SECTION",
+   "cls": "nlpjx-sec",
+   "y": 3814,
+   "h": 1422,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nlpjx-unimap",
+   "tag": "DIV",
+   "cls": "mapboxgl-map",
+   "y": 4151,
+   "h": 440,
+   "x": 33,
+   "w": 324
+  },
+  {
+   "id": "nlps-tour",
+   "tag": "SECTION",
+   "cls": "nlat",
+   "y": 5655,
+   "h": 562,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nlps-deals",
+   "tag": "SECTION",
+   "cls": "nlpd",
+   "y": 6239,
+   "h": 1692,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nadlan-rainbow-seo-v1634-note",
+   "tag": "DIV",
+   "cls": "nadlan-guide__note",
+   "y": 11991,
+   "h": 116,
+   "x": 28,
+   "w": 334
+  },
+  {
+   "id": "nlpjx-price",
+   "tag": "SECTION",
+   "cls": "nlpjx-sec nlpjx-price",
+   "y": 24265,
+   "h": 1265,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nlpjx-finance",
+   "tag": "SECTION",
+   "cls": "nlpjx-sec",
+   "y": 25552,
+   "h": 209,
+   "x": 13,
+   "w": 364
+  },
+  {
+   "id": "nlpjx-world",
+   "tag": "SECTION",
+   "cls": "nlpjx-sec",
+   "y": 26338,
+   "h": 689,
+   "x": 13,
+   "w": 364
+  },
+  {
+   "id": "nlsch",
+   "tag": "SECTION",
+   "cls": "nlsch",
+   "y": 27251,
+   "h": 744,
+   "x": 12,
+   "w": 366
+  },
+  {
+   "id": "nlsch-mount",
+   "tag": "DIV",
+   "cls": "",
+   "y": 27509,
+   "h": 333,
+   "x": 35,
+   "w": 320
+  },
+  {
+   "id": "nlpc-contact",
+   "tag": "FOOTER",
+   "cls": "nlpc-site-footer",
+   "y": 28111,
+   "h": 1188,
+   "x": 0,
+   "w": 390
+  }
+ ],
+ "url": "https://nad-lan.co.il/projects/rainbow-tel-aviv/",
+ "width": 390,
+ "console": [
+  {
+   "type": "warning",
+   "text": "Hotjar not launching due to suspicious userAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36"
+  }
+ ],
+ "failed": [
+  {
+   "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe6ae1h1v9254165660za208zd9254165660xf1&_p=1792223562883&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&cid=537121164.1792223564&frm=0&ngs=1&pscdl=noapi&rcb=1&sr=390x844&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B155.0.8059.80%7CChromium",
+   "err": "net::ERR_ABORTED"
+  },
+  {
+   "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-G3QRV5646E&gtm=45Pe6ae1h1v9254165660za200zd9254165660xf1&_p=1792223562883&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&_eu=AEAAAAQ&ae=a&cid=537121164.1792223564&frm=0&ngs=1&pscdl=noapi&rcb=1&sr=390x844&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B155.0.8",
+   "err": "net::ERR_ABORTED"
+  }
+ ],
+ "bad_status": [],
+ "scrollHeight": 29495
+}

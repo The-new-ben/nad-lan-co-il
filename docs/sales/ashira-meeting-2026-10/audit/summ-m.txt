@@ -1,0 +1,72 @@
+============================== A-m פרויקט אשירה שדה דב (ASHIRA) של אביסרור | מחירים ודירות | נדלן H 26075
+H1 190 True פרויקט אשירה שדה דב
+Ashira Sde Dov
+LEAD 291 True אשירה (ASHIRA) הוא פרויקט מגורים של אביסרור משה ובניו במגרש 101 בשכונת אשכול שברובע שדה דב
+  ID     76 h24558 MAIN #wp--skip-link--target .wp-block-group nlpc-main nlpc-single-pro
+  ID    675 h  591 SECTION #nlps .nlps-stage
+  ID    676 h  589 DIV #nlps-stage .nlps-stage__mount
+  ID   1614 h 1737 SECTION #nlpg .nlds nlpg
+  ID   3373 h  281 DIV #nlps-view .nlps-view
+  ID   3450 h  187 DIV #nlps-view-map .nlps-view__map nlps-stand
+  ID   3670 h 1422 SECTION #nlpjx-map .nlpjx-sec
+  ID   4008 h  440 DIV #nlpjx-unimap .mapboxgl-map
+  ID   7996 h12826 SECTION #nlv2-ashira-info .nlv2-section
+  ID  20916 h 1265 SECTION #nlpjx-price .nlpjx-sec nlpjx-price
+  ID  22202 h  209 SECTION #nlpjx-finance .nlpjx-sec
+  ID  22989 h  689 SECTION #nlpjx-world .nlpjx-sec
+  ID  23832 h  744 SECTION #nlsch .nlsch
+  ID  24089 h  333 DIV #nlsch-mount .
+  ID  24691 h 1188 FOOTER #nlpc-contact .nlpc-site-footer
+SEC #wp-skip-link y-1 n1: לדלג לתוכן
+SEC #nlhp-top y6 n2: חיפוש | פתיחת התפריט
+SEC #nlcta y505 n1: ייעוץ חינם מענה בוואטס[data-nl-whatsapp=]
+SEC #wp--skip-link--target y565 n12: לקבלת תוכניות ומחירים[data-nlps-ev=hero-wa] | לבחירת קומה[data-nlps-ev=hero-pick] | שיחת וידאו עם נציג[data-nlps-ev=hero-video] | 1 בוחרים קומה[data-nlps-step=floor] | 2 הנוף והמפה[data-nlps-step=view] | 3 מעצבים את הדירה[data-nlps-step=design] | סל הדירה | מתקנים בפרויקט 7[data-nlps-phase=facilities] | קיים היום 375 בניינים[data-nlps-phase=today] | בבנייה 2[data-nlps-phase=building] | בשיווק 4[data-nlps-phase=selling] | בשלב ההיתר 2[data-nlps-phase=permit]
+SEC #nlps y688 n1: ✦ המתקנים בפרויקט 7[data-nlps-phase=facilities]
+SEC #nla11y-btn y778 n1: תפריט נגישות
+SEC #nlps-stage y1147 n1: סיור וירטואלי בפרויקט
+SEC #nlpg y2277 n7: project | premium | area | single | more | לקבלת פרטים נוספים בוו[data-pg=wa data-nlps-ev=pg-wa] | למחירון המלא (16)
+SEC #nlpg-a y2419 n1: 140[data-pg=a]
+SEC #nlpjx-map y3794 n22: חינוך 22[data-g=education] | פארקים וספורט 16[data-g=outdoors] | תחבורה 15[data-g=transport] | קפה ומסעדות 11[data-g=food] | קניות וסידורים 20[data-g=essentials] | בריאות 4[data-g=health] | קהילה ותרבות 2[data-g=community] | 5 דק׳ | 10 דק׳ | 15 דק׳ | הכל | ₪ מחירים בסביבה (6)[data-layer=comps] | ◆ תוכניות עתידיות (12)[data-layer=plans] | תלת ממד[data-layer=3d] | לוויין[data-layer=sat] | שדרות לוי אשכול/ש''י ע | אפטר תשע קפה ומסעדות · | שד' לוי אשכול/אפטר תחב | לחם הארץ קפה ומסעדות 4 | אפטר/יהודה בורלא תחבור | בראלי מול 0 1 פארקים ו | + 58 עוד
+SEC #nlpjx-unimap y3908 n23: ₪75K | Zoom in | ₪54K | Zoom out | Reset bearing to north | Map marker | Map marker | Map marker | Map marker | Map marker | Map marker | Map marker | Map marker | Map marker | ₪75K | ₪82K | Map marker | Map marker | Map marker | Map marker | ₪90K | Toggle attribution | ₪65K
+SEC #nlpjx-price y22050 n1: כל המחירים, המוסדות וה
+SEC #nlsch-mount y24134 n27: היום 17.10 | מחר 18.10 | יום ב 19.10 | יום ג 20.10 | יום ד 21.10 | יום ה 22.10 | יום ו 23.10 | שבת 24.10 | יום א 25.10 | יום ב 26.10 | יום ג 27.10 | יום ד 28.10 | יום ה 29.10 | יום ו 30.10 | 09:00 | 09:45 | 10:30 | 11:15 | 12:00 | 12:45 | 13:30 | 14:15 | 15:00 | 15:45 | 16:30 | 17:15 | 18:00
+SEC #nlpc-contact y25613 n1: צור קשר
+console: 1 failed: 2 bad: 0
+============================== B-m ריינבו תל אביב Rainbow - ישראל קנדה, שדה דב | מחירים ודירות | נדלן H 29495
+H1 190 True ריינבו תל אביב
+Rainbow Tel Aviv
+LEAD 291 True ריינבו תל אביב (Rainbow Tel Aviv) הוא פרויקט המגורים של ישראל קנדה במגרש 111 ברובע שדה דב,
+  ID     76 h27977 MAIN #wp--skip-link--target .wp-block-group nlpc-main nlpc-single-pro
+  ID    675 h  591 SECTION #nlps .nlps-stage
+  ID    676 h  589 DIV #nlps-stage .nlps-stage__mount
+  ID   1648 h 1847 SECTION #nlpg .nlds nlpg
+  ID   3516 h  281 DIV #nlps-view .nlps-view
+  ID   3594 h  187 DIV #nlps-view-map .nlps-view__map nlps-stand
+  ID   3814 h 1422 SECTION #nlpjx-map .nlpjx-sec
+  ID   4151 h  440 DIV #nlpjx-unimap .mapboxgl-map
+  ID   5655 h  562 SECTION #nlps-tour .nlat
+  ID   6239 h 1692 SECTION #nlps-deals .nlpd
+  ID  24265 h 1265 SECTION #nlpjx-price .nlpjx-sec nlpjx-price
+  ID  25552 h  209 SECTION #nlpjx-finance .nlpjx-sec
+  ID  26338 h  689 SECTION #nlpjx-world .nlpjx-sec
+  ID  27251 h  744 SECTION #nlsch .nlsch
+  ID  27509 h  333 DIV #nlsch-mount .
+  ID  28111 h 1188 FOOTER #nlpc-contact .nlpc-site-footer
+SEC #wp-skip-link y-1 n1: לדלג לתוכן
+SEC #nlhp-top y6 n2: חיפוש | פתיחת התפריט
+SEC #nlcta y505 n1: ייעוץ חינם מענה בוואטס[data-nl-whatsapp=]
+SEC #wp--skip-link--target y565 n14: לקבלת תוכניות ומחירים[data-nlps-ev=hero-wa] | לבחירת קומה[data-nlps-ev=hero-pick] | שיחת וידאו עם נציג[data-nlps-ev=hero-video] | סרטון הפרויקט · 54 שני[data-nlps-ev=hero-film] | 1 בוחרים קומה[data-nlps-step=floor] | 2 הנוף והמפה[data-nlps-step=view] | 3 נכנסים לדירה[data-nlps-step=inside] | 4 מעצבים את הדירה[data-nlps-step=design] | סל הדירה | מתקנים בפרויקט 5[data-nlps-phase=facilities] | קיים היום 808 בניינים[data-nlps-phase=today] | בבנייה 2[data-nlps-phase=building] | בשיווק 5[data-nlps-phase=selling] | בשלב ההיתר 2[data-nlps-phase=permit]
+SEC #nlps-stage y680 n3: + | − | סיור וירטואלי בפרויקט
+SEC #nlps y688 n1: ✦ המתקנים בפרויקט 5[data-nlps-phase=facilities]
+SEC #nla11y-btn y778 n1: תפריט נגישות
+SEC #nlpg y2310 n7: tower | boutique | area | single | more | לקבלת פרטים נוספים בוו[data-pg=wa data-nlps-ev=pg-wa] | למחירון המלא (24)
+SEC #nlpg-a y2453 n1: 140[data-pg=a]
+SEC #nlpg-fs y2545 n1: 19[data-pg=fs]
+SEC #nlpjx-map y3937 n22: חינוך 11[data-g=education] | פארקים וספורט 4[data-g=outdoors] | תחבורה 11[data-g=transport] | קפה ומסעדות 9[data-g=food] | קניות וסידורים 12[data-g=essentials] | בריאות 0[data-g=health] | קהילה ותרבות 0[data-g=community] | 5 דק׳ | 10 דק׳ | 15 דק׳ | הכל | ₪ מחירים בסביבה (6)[data-layer=comps] | ◆ תוכניות עתידיות (12)[data-layer=plans] | תלת ממד[data-layer=3d] | לוויין[data-layer=sat] | ש''י עגנון/ישראל גלילי | ש''י עגנון/אבן גבירול  | כוכב הצפון פארקים וספו | כדורסל 3X3 פארקים וספו | ש''י עגנון/שד' לוי אשכ | ויצו כוכב הצפון חינוך  | + 29 עוד
+SEC #nlpjx-unimap y3962 n23: ₪75K | ₪54K | Zoom in | Zoom out | Reset bearing to north | Map marker | Map marker | Map marker | Map marker | Map marker | Map marker | Map marker | Map marker | ₪75K | ₪75K | Map marker | Map marker | Map marker | Map marker | ₪90K | Toggle attribution | Map marker | ₪65K
+SEC #nlps-tour y6105 n1: להיכנס לדירה · 360°[data-nlps-tour=https://nad-lan.co.il/wp-content/plugins/nadl]
+SEC #nlps-deals y6900 n3: לקומה במגדל[data-nlps-floor=13] | לקומה במגדל[data-nlps-floor=6] | לקומה במגדל[data-nlps-floor=4]
+SEC #nlpjx-price y25399 n1: כל המחירים, המוסדות וה
+SEC #nlsch-mount y27554 n27: היום 17.10 | מחר 18.10 | יום ב 19.10 | יום ג 20.10 | יום ד 21.10 | יום ה 22.10 | יום ו 23.10 | שבת 24.10 | יום א 25.10 | יום ב 26.10 | יום ג 27.10 | יום ד 28.10 | יום ה 29.10 | יום ו 30.10 | 09:00 | 09:45 | 10:30 | 11:15 | 12:00 | 12:45 | 13:30 | 14:15 | 15:00 | 15:45 | 16:30 | 17:15 | 18:00
+SEC #nlpc-contact y29032 n1: צור קשר
+console: 1 failed: 2 bad: 0
