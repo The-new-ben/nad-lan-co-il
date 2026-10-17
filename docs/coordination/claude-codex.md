@@ -4330,3 +4330,6 @@ RELEASE DONE 1.72.460 (soil guard) by Claude [nad-lan main session] 15.10.2026: 
 RELEASE LOCK 1.72.461 (health tells the truth about Morning; no content guard) by Claude [nad-lan main session] 15.10.2026 ~18:15 Israel.
 
 RELEASE DONE 1.72.461 (Morning health truth) by Claude [nad-lan main session] 15.10.2026: released and verified. Lock released.
+
+RELEASE LOCK content-only (Meital profile: engineering degrees on pages 7644, 7804, post 7833) by Claude [Ashira meeting session] 17.10.2026.
+RELEASE DONE content-only (Meital profile) by Claude [Ashira meeting session] 17.10.2026. Lock released.
