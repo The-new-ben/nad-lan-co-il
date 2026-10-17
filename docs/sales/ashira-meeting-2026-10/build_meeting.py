@@ -101,7 +101,7 @@ def slides():
 <div class="st"><b>01</b><span>בוחר בניין</span><small>על דגם תלת ממד של הפרויקט</small></div>
 <div class="st"><b>02</b><span>קומה וכיוון</span><small>ים, עיר או פארק</small></div>
 <div class="st"><b>03</b><span>הנוף מהקומה</span><small>מה רואים מהחלון</small></div>
-<div class="st"><b>04</b><span>דירה לדוגמה</span><small>מסתובב בחדרים, בוחר סגנון</small></div>
+<div class="st"><b>04</b><span>דירה לדוגמה</span><small>בפרויקטים שיש בהם סיור פנים</small></div>
 <div class="st"><b>05</b><span>המתקנים</span><small>לובי, בריכה, חדר כושר</small></div>
 <div class="st"><b>06</b><span>הסביבה</span><small>בתי ספר, ים, תחבורה, קניות, מחירים</small></div>
 <div class="st"><b>07</b><span>פונה</span><small>וואטסאפ בלחיצה או שיחת וידאו</small></div>
@@ -205,7 +205,7 @@ def slides():
 <div class="cols">
 <div class="box"><h3>פיילוט</h3><div class="price">3,990 <small>₪ לחודש</small></div><p>שלושה חודשים. חלון ראווה עם הנתונים שלכם.</p></div>
 <div class="box"><div class="tag">FOUNDERS</div><h3>חלון ראווה לשנה</h3><div class="price">2,490 <small>₪ לחודש</small></div><p>מחיר מייסדים במקום 3,990. הנתונים שלכם, סרט ומחירון.</p></div>
-<div class="box"><h3>שותף שדה דב לשנה</h3><div class="price">6,900 <small>₪ לחודש</small></div><p>כל מה שבחלון הראווה, ועוד: עדיפות בפניות על הרובע, מקום ראשון במדריכים ובכלים של שדה דב, והקמפיינים לקונים מחו״ל.</p></div>
+<div class="box"><h3>שותף שדה דב לשנה</h3><div class="price">6,900 <small>₪ לחודש</small></div><p>כל מה שבחלון הראווה, ועוד: עדיפות בפניות על הרובע, הבלטה במדריכים ובכלים של שדה דב, והקמפיינים לקונים מחו״ל.</p></div>
 </div>
 <div class="big">בכל מסלול שנתי: אחרי 90 יום אפשר לצאת בלי קנס. כל המחירים כוללים מע״מ.</div>
 {foot(12)}</section>""")
