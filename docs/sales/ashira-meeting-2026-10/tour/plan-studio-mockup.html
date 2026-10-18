@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>סטודיו התוכנית · אשירה</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Hebrew:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* NadLan Plan Studio v1 (HAD-543 mockup, 18.10.2026). Identity: an architect's drafting sheet, NOT the old door/gold/purple.
+   Palette from construction drawings: drafting white, plan ink navy, blueprint blue for the selection, dimension red for
+   measurements. Faces: IBM Plex Sans Hebrew (text), IBM Plex Mono (dimensions, bearings, distances). */
+:root{--sheet:#F5F7F8;--grid:#DCE3E7;--ink:#0F2233;--ink2:#46596A;--blue:#1F5FA8;--blue2:#D7E6F6;--dim:#C8372D;--line:#B9C6CF;--card:#FFFFFF}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"IBM Plex Sans Hebrew",Arial,sans-serif;color:var(--ink);background:var(--sheet);
+ background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+.top{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:2px solid var(--ink);background:var(--sheet)}
+.top b{font-size:18px}.top small{font-family:"IBM Plex Mono",monospace;color:var(--ink2);font-size:12px;direction:ltr}
+.types{display:flex;gap:8px;padding:14px 24px;flex-wrap:wrap}
+.types button{font:inherit;border:2px solid var(--ink);background:var(--card);padding:8px 14px;cursor:pointer;min-height:44px}
+.types button[aria-pressed=true]{background:var(--ink);color:#fff}
+.types button span{font-family:"IBM Plex Mono",monospace;font-size:12px;opacity:.75;margin-right:6px}
+.wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:24px;padding:0 24px 24px}
+.sheet{background:var(--card);border:2px solid var(--ink);padding:16px;position:relative}
+.sheet h2,.panel h2{font-size:15px;letter-spacing:.06em;color:var(--ink2);font-weight:600;margin-bottom:8px}
+svg{width:100%;height:auto;display:block}
+.room{fill:#fff;stroke:var(--ink);stroke-width:5;cursor:pointer;transition:fill .15s}
+.room:hover{fill:var(--blue2)}.room.on{fill:var(--blue2);stroke:var(--blue);stroke-width:8}
+.wet{fill:#EEF2F4}.bal{fill:#F1F4F0}
+.lbl{font:600 34px "IBM Plex Sans Hebrew";fill:var(--ink);text-anchor:middle;pointer-events:none}
+.dm{direction:ltr;unicode-bidi:isolate;font:500 24px "IBM Plex Mono";fill:var(--dim);text-anchor:middle;pointer-events:none}
+.glaze{stroke:var(--blue);stroke-width:10}
+.north{font:600 26px "IBM Plex Mono";fill:var(--ink)}
+.cap{font-size:12px;color:var(--ink2);margin-top:10px;line-height:1.5}
+.panel{display:flex;flex-direction:column;gap:16px}
+.box{background:var(--card);border:2px solid var(--ink);padding:16px}
+.pano{position:relative;aspect-ratio:2/1;overflow:hidden;border:2px solid var(--ink);background:#0F2233}
+.pano img{width:100%;height:100%;object-fit:cover;display:block}
+.pano .tag{position:absolute;top:10px;right:10px;background:var(--ink);color:#fff;font:600 12px "IBM Plex Mono";padding:4px 8px}
+.pano .pin{position:absolute;transform:translate(50%,-50%);background:#fff;border:2px solid var(--ink);font-size:12px;padding:3px 7px;white-space:nowrap}
+.pano .pin i{direction:ltr;unicode-bidi:isolate;display:inline-block;font-style:normal;font-family:"IBM Plex Mono";color:var(--dim);margin-right:4px}
+.styles{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.styles button{font:inherit;font-size:14px;border:2px solid var(--ink);background:#fff;padding:6px 12px;min-height:40px;cursor:pointer}
+.styles button[aria-pressed=true]{border-color:var(--blue);background:var(--blue2)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink);margin-top:12px}
+.facts div{padding:10px 8px;border-left:1px solid var(--line)}
+.facts div:last-child{border-left:0}
+.facts b{display:block;direction:ltr;unicode-bidi:isolate;text-align:right;font-family:"IBM Plex Mono";font-size:20px}.facts span{font-size:12px;color:var(--ink2)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td{padding:8px 4px;border-bottom:1px solid var(--line)}
+td.n{font-family:"IBM Plex Mono";text-align:left;direction:ltr;white-space:nowrap}
+.cta{display:flex;gap:10px}
+.cta a{flex:1;text-align:center;text-decoration:none;font-weight:700;padding:12px;border:2px solid var(--ink);min-height:48px}
+.cta a.p{background:var(--ink);color:#fff}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}.facts{grid-template-columns:repeat(3,1fr)}}
+</style></head><body>
+<header class="top"><div><b>אשירה · מעצבים לפי התוכנית</b></div><small>BUILDING E · FLOOR 25 · WEST</small></header>
+<nav class="types" aria-label="סוג דירה">
+ <button aria-pressed="false">3 חדרים<span>E-3B</span></button>
+ <button aria-pressed="true">4 חדרים<span>E-4A</span></button>
+ <button aria-pressed="false">5 חדרים<span>E-5E</span></button>
+ <button aria-pressed="false">5 חדרים<span>E-5F</span></button>
+</nav>
+<main class="wrap">
+ <section class="sheet" aria-label="תוכנית הדירה">
+  <h2>התוכנית · לחצו על חדר</h2>
+  <svg viewBox="520 440 1360 1260" role="img" aria-label="תוכנית דירת 4 חדרים, ציור שלנו לפי התוכנית שפורסמה">
+   <path class="room bal" d="M630 860 L630 600 Q680 540 1055 525 L1055 860 Z"/><text class="lbl" x="860" y="720">מרפסת</text>
+   <rect class="room" x="1075" y="545" width="295" height="315"/><text class="lbl" x="1222" y="700">שינה</text><text class="dm" direction="ltr" x="1222" y="740">348×288</text>
+   <rect class="room" x="1495" y="560" width="320" height="320"/><text class="lbl" x="1655" y="710">שינה</text><text class="dm" direction="ltr" x="1655" y="750">373×313</text>
+   <rect class="room wet" x="1495" y="890" width="320" height="170"/><text class="lbl" x="1655" y="985">רחצה</text>
+   <rect class="room on" x="630" y="875" width="730" height="415"/><text class="lbl" x="930" y="1060">סלון ופינת אוכל</text><text class="dm" direction="ltr" x="930" y="1100">718×473</text>
+   <rect class="room" x="655" y="1295" width="545" height="65"/><text class="lbl" x="925" y="1338" style="font-size:26px">מטבח</text>
+   <rect class="room" x="655" y="1365" width="505" height="275"/><text class="lbl" x="905" y="1500">שינה הורים</text><text class="dm" direction="ltr" x="905" y="1540">513×270</text>
+   <rect class="room wet" x="1165" y="1465" width="165" height="175"/><text class="lbl" x="1247" y="1560" style="font-size:24px">רחצה</text>
+   <rect class="room wet" x="1340" y="1465" width="130" height="175"/><text class="lbl" x="1405" y="1560" style="font-size:22px">אורחים</text>
+   <line class="glaze" x1="630" y1="875" x2="630" y2="1640"/>
+   <text class="north" x="540" y="1180" direction="ltr">W</text><text class="north" x="575" y="1215" style="font-size:20px">הים</text>
+  </svg>
+  <p class="cap">ציור שלנו להמחשה, לפי תוכנית המכר שפורסמה באתר היזם (דגם E-4A). המידות בס״מ. התוכנית המחייבת היא תוכנית המכר החתומה.</p>
+ </section>
+ <section class="panel">
+  <div class="box">
+   <h2>סלון ופינת אוכל · 360°</h2>
+   <div class="pano"><img src="../../../../plugins/nadlan-config/assets/project-stage/ashira/tour/living-25w-warm-2k.jpg" alt="הדמיית הסלון בקומה 25 לכיוון הים"><span class="tag">FLOOR 25 · 281°</span>
+    <span class="pin" style="top:58%;right:44%">חוף רידינג<i>1.0 km</i></span>
+    <span class="pin" style="top:44%;right:28%">שפך הירקון<i>1.1 km</i></span>
+    <span class="pin" style="top:36%;right:60%">דמרי ימה<i>310 m</i></span></div>
+   <div class="styles" role="group" aria-label="סגנון">
+    <button aria-pressed="true">חם · עץ</button><button aria-pressed="false">בהיר</button><button aria-pressed="false">אבן</button><button aria-pressed="false">כמו במסירה</button>
+   </div>
+   <div class="facts"><div><b>718×473</b><span>מידות הסלון, ס״מ</span></div><div><b>281°</b><span>כיוון החלון, לים</span></div><div><b>~94 m</b><span>גובה העין, קומה 25</span></div></div>
+  </div>
+  <div class="box">
+   <h2>מה רואים מהחלון · מרחק בקו אווירי</h2>
+   <table><tr><td>חוף רידינג</td><td class="n">1.0 km · 16 min walk</td></tr><tr><td>שפך הירקון</td><td class="n">1.1 km · 18 min walk</td></tr>
+   <tr><td>אוטופיה (בהיתר)</td><td class="n">270 m</td></tr><tr><td>דמרי ימה (בשיווק)</td><td class="n">310 m</td></tr><tr><td>ריינבו (בבנייה)</td><td class="n">340 m</td></tr></table>
+   <p class="cap">המרחקים מחושבים מהבניין לפי המפה. זמן ההליכה הוא הערכה.</p>
+  </div>
+  <div class="cta"><a class="p" href="#">לקבלת התוכנית והמחיר בוואטסאפ</a><a href="#">שיחת וידאו על הדירה</a></div>
+ </section>
+</main>
+</body></html>
