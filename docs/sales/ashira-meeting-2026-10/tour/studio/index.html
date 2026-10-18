@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>סטודיו התוכנית · אשירה</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Hebrew:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* NadLan Plan Studio v2 (HAD-543, 18.10.2026). Identity: the architect's drafting sheet (drafting white, plan-ink navy,
+   blueprint blue = your selection, dimension red = every measurement). Faces: IBM Plex Sans Hebrew + IBM Plex Mono.
+   Not the old door/gold/purple screen, not the "Claude look" (no cream, no gold, no gradient hero). */
+:root{--sheet:#F5F7F8;--grid:#DFE6EA;--ink:#0F2233;--ink2:#46596A;--mute:#6C7E8C;--blue:#1F5FA8;--blue2:#D9E7F7;--dim:#B5302A;--line:#C3CFD7;--card:#fff;--ok:#1C7A4E}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--sheet)}
+body{font-family:"IBM Plex Sans Hebrew",Arial,sans-serif;color:var(--ink);line-height:1.45;
+ background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+.mono{font-family:"IBM Plex Mono",monospace;direction:ltr;unicode-bidi:isolate}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;border-bottom:2px solid var(--ink);background:var(--sheet);position:sticky;top:0;z-index:5}
+header h1{font-size:18px;font-weight:700}header .crumb{font-size:12px;color:var(--ink2)}
+.types{display:flex;gap:8px;flex-wrap:wrap;padding:12px 20px}
+.types button{border:2px solid var(--ink);background:var(--card);padding:6px 12px;min-height:44px;cursor:pointer;text-align:right}
+.types button b{display:block;font-size:15px}.types button small{font-family:"IBM Plex Mono";font-size:11px;color:var(--ink2)}
+.types button[aria-pressed=true]{background:var(--ink);color:#fff}.types button[aria-pressed=true] small{color:#C9D6E0}
+main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:20px;padding:0 20px 28px}
+.card{background:var(--card);border:2px solid var(--ink)}
+.card>h2{font-size:13px;letter-spacing:.06em;color:var(--ink2);font-weight:600;padding:12px 14px 0}
+.plan{padding:8px 10px 12px}.plan svg{width:100%;height:auto;display:block;touch-action:manipulation}
+.room{fill:#fff;stroke:var(--ink);stroke-width:6;cursor:pointer;transition:fill .12s}
+.room:hover,.room:focus{fill:#EDF3FA;outline:none}.room.on{fill:var(--blue2);stroke:var(--blue);stroke-width:10}
+.room.wet{fill:#EEF2F4}.room.bal{fill:#EEF3EE}
+.rl{font:600 30px "IBM Plex Sans Hebrew";fill:var(--ink);text-anchor:middle;pointer-events:none}
+.rd{font:500 22px "IBM Plex Mono";fill:var(--dim);text-anchor:middle;pointer-events:none;direction:ltr;unicode-bidi:isolate}
+.glz{stroke:var(--blue);stroke-width:12;stroke-linecap:square}
+.wedge{fill:rgba(31,95,168,.10);stroke:var(--blue);stroke-width:3;stroke-dasharray:10 8;pointer-events:none}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--ink2);padding:0 14px 12px}
+.legend i{display:inline-block;width:14px;height:10px;border:2px solid var(--ink);margin-left:6px;vertical-align:middle}
+.cap{font-size:12px;color:var(--ink2);padding:0 14px 14px}
+.viewer{position:relative;aspect-ratio:16/9;background:#0F2233;overflow:hidden;cursor:grab;touch-action:none}
+.viewer canvas{display:block;width:100%;height:100%}
+.vtag{position:absolute;top:10px;right:10px;display:flex;gap:6px;flex-wrap:wrap;z-index:2}
+.vtag span{background:var(--ink);color:#fff;font:600 12px "IBM Plex Mono";padding:4px 8px}
+.vtag span.warn{background:#fff;color:var(--dim);border:2px solid var(--dim)}
+.pin{position:absolute;transform:translate(50%,-100%);z-index:2;pointer-events:none;background:#fff;border:2px solid var(--ink);padding:3px 7px;font-size:12px;white-space:nowrap}
+.pin b{font-weight:600}.pin i{font-style:normal;font-family:"IBM Plex Mono";color:var(--dim);margin-right:5px}
+.pin:after{content:"";position:absolute;bottom:-9px;right:calc(50% - 1px);width:2px;height:8px;background:var(--ink)}
+.compass{position:absolute;bottom:10px;left:10px;z-index:2;background:#fff;border:2px solid var(--ink);font:600 13px "IBM Plex Mono";padding:4px 8px}
+.hint{position:absolute;bottom:10px;right:10px;z-index:2;background:rgba(15,34,51,.82);color:#fff;font-size:12px;padding:4px 8px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:12px 14px;border-top:2px solid var(--ink)}
+.bar .lab{font-size:12px;color:var(--ink2);margin-left:4px}
+.chip{border:2px solid var(--ink);background:#fff;padding:5px 11px;min-height:44px;cursor:pointer;font-size:14px}
+.chip[aria-pressed=true]{border-color:var(--blue);background:var(--blue2)}
+.chip:disabled{opacity:.4;cursor:not-allowed}
+.floor{display:flex;align-items:center;gap:10px;flex:1;min-width:220px}
+.floor input{flex:1;accent-color:var(--blue);min-height:44px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink)}
+.facts div{padding:10px 12px;border-left:1px solid var(--line)}.facts div:last-child{border-left:0}
+.facts b{display:block;font-family:"IBM Plex Mono";font-size:19px;direction:ltr;unicode-bidi:isolate;text-align:right}.facts span{font-size:12px;color:var(--ink2)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{font-size:12px;color:var(--ink2);text-align:right;font-weight:600;padding:8px 14px;border-bottom:2px solid var(--ink)}
+td{padding:8px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n{font-family:"IBM Plex Mono";white-space:nowrap;direction:ltr;text-align:left}
+td small{display:block;color:var(--mute);font-size:12px}
+.grp{display:inline-block;font-size:11px;border:1px solid var(--line);padding:0 6px;margin-left:6px;color:var(--ink2)}
+.fac{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:12px 14px}
+.fac button{border:2px solid var(--ink);background:#fff;min-height:44px;cursor:pointer;font-size:13px;padding:6px}
+.fac button[aria-pressed=true]{background:var(--blue2);border-color:var(--blue)}
+.cta{display:flex;gap:10px;margin-top:20px}
+.cta a{flex:1;text-align:center;text-decoration:none;font-weight:700;padding:13px 10px;border:2px solid var(--ink);min-height:50px;color:var(--ink);background:#fff}
+.cta a.p{background:var(--ink);color:#fff}
+.sum{font-size:13px;color:var(--ink2);padding:12px 14px;border-top:1px solid var(--line)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media(max-width:980px){main{grid-template-columns:1fr}.cols{grid-template-columns:1fr}.facts{grid-template-columns:repeat(2,1fr)}.fac{grid-template-columns:repeat(2,1fr)}
+ .viewer-card{order:-1}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<header><div><h1>אשירה · מעצבים לפי התוכנית</h1><div class="crumb" id="crumb"></div></div><div class="crumb mono">nad-lan.co.il</div></header>
+<nav class="types" id="types" aria-label="בחירת דגם דירה"></nav>
+<main>
+ <section class="card" aria-labelledby="ph">
+  <h2 id="ph">התוכנית · בחרו חדר</h2>
+  <div class="plan"><svg id="plan" role="group" aria-label="תוכנית הדירה"></svg></div>
+  <div class="legend"><span><i style="background:var(--blue2);border-color:var(--blue)"></i>החדר שבחרתם</span><span><i style="background:#EEF2F4"></i>חדרים רטובים</span><span><i style="background:#EEF3EE"></i>מרפסת</span><span><i style="background:rgba(31,95,168,.15);border-style:dashed;border-color:var(--blue)"></i>שדה הראייה</span></div>
+  <p class="cap" id="plancap"></p>
+ </section>
+ <section class="card viewer-card" aria-labelledby="vh">
+  <h2 id="vh">360° · גררו כדי להסתכל סביב</h2>
+  <div class="viewer" id="viewer" tabindex="0" aria-label="תמונת 360 של החדר. חצים ימינה ושמאלה מסובבים את המבט">
+   <div class="vtag" id="vtag"></div><div id="pins"></div><div class="compass mono" id="compass">281°</div><div class="hint">גררו · חצים במקלדת</div>
+  </div>
+  <div class="bar"><span class="lab">סגנון</span><div id="styles" style="display:flex;gap:8px;flex-wrap:wrap"></div></div>
+  <div class="bar"><div class="floor"><span class="lab">קומה</span><input type="range" id="floor" min="1" max="15" step="1" value="10" aria-label="קומה"><b class="mono" id="floorv">10</b></div></div>
+  <div class="facts" id="facts"></div>
+ </section>
+</main>
+<div style="padding:0 20px 28px">
+ <div class="cols">
+  <section class="card"><h2>מה רואים מהחלון · מרחק וזמן הליכה</h2><table><thead><tr><th>מקום</th><th style="text-align:left">מרחק</th></tr></thead><tbody id="see"></tbody></table><p class="cap" style="padding-top:10px">מרחק בקו אווירי מהמגרש, וזמן הליכה לפי מסלול, מנתוני העירייה ו-OpenStreetMap. ״נראה מהקומה״ לפי מודל הגבהים של הרובע.</p></section>
+  <section class="card"><h2>המתקנים בבניין · 360°</h2><div class="fac" id="fac"></div><p class="cap">הדמיה להמחשה של המתקנים שהיזם מפרסם. המיקום והעיצוב בפועל לפי המפרט החתום.</p>
+   <div class="sum" id="sum"></div></section>
+ </div>
+ <div class="cta"><a class="p" id="wa" href="#" target="_blank" rel="noopener">לקבלת התוכנית והמחיר בוואטסאפ</a><a href="#" id="call">שיחת וידאו על הדירה</a></div>
+ <p class="cap" style="padding:14px 0 0">כל התמונות הן הדמיה להמחשה בלבד, ציור ומודל שלנו לפי תוכנית המכר שפורסמה באתר היזם. הן אינן מצג או מפרט מחייב. nad-lan.co.il היא פלטפורמה עצמאית ואינה מטעם היזם.</p>
+</div>
+<p class="sr" aria-live="polite" id="live"></p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+const TOUR='../../../../../plugins/nadlan-config/assets/project-stage/ashira/tour/';
+const PLACES='../../../../../plugins/nadlan-config/assets/project-stage/ashira/places.json';
+/* the four published sale plans of building E (= N2, the 16-floor mid-rise). Our own redraw, centimetres ~ SVG units. */
+const TYPES={
+ 'E-4A':{rooms:4,label:'4 חדרים',corner:'צפון-מערב',face:281,wdir:180,floors:[1,15],vb:'500 470 1380 1220',glaze:[[630,875,630,1640]],rooms_:[
+  {id:'living',n:'סלון ופינת אוכל',d:'718×473',p:'M630 875H1360V1290H630Z',main:1},
+  {id:'balcony',n:'מרפסת',d:'',lx:860,ly:720,p:'M630 860V600Q690 535 1055 525V860Z',cls:'bal'},
+  {id:'kitchen',n:'מטבח',d:'683',p:'M655 1295H1200V1360H655Z'},
+  {id:'master',n:'שינה הורים',d:'513×270',p:'M655 1365H1160V1640H655Z'},
+  {id:'bed1',n:'שינה',d:'348×288',p:'M1075 545H1370V860H1075Z'},
+  {id:'bed2',n:'שינה',d:'373×313',p:'M1495 560H1815V880H1495Z'},
+  {id:'bath',n:'רחצה',d:'',p:'M1495 890H1815V1060H1495Z',cls:'wet'},
+  {id:'ens',n:'רחצה',d:'',p:'M1165 1465H1330V1640H1165Z',cls:'wet'},
+  {id:'wc',n:'אורחים',d:'',p:'M1340 1465H1470V1640H1340Z',cls:'wet'}]},
+ 'E-3B':{rooms:3,label:'3 חדרים',corner:'דרום-מזרח',face:101,wdir:75,floors:[1,15],vb:'600 540 1300 1110',glaze:[[640,1600,1400,1600]],rooms_:[
+  {id:'living',n:'סלון',d:'665×373',p:'M990 1270H1390V1580H990Z',main:1},
+  {id:'kitchen',n:'מטבח',d:'284',p:'M675 1260H930V1565H675Z'},
+  {id:'dining',n:'פינת אוכל',d:'',p:'M660 950H850V1250H660Z'},
+  {id:'balcony',n:'מרפסת',d:'',lx:1580,ly:1440,p:'M1410 1275L1745 1165Q1840 1440 1700 1595H1410Z',cls:'bal'},
+  {id:'master',n:'שינה הורים',d:'428×278',p:'M1085 700L1555 585L1615 855L1255 960Z'},
+  {id:'bed1',n:'שינה',d:'308×273',p:'M1300 965L1600 885L1700 1140L1385 1250Z'},
+  {id:'ens',n:'רחצה',d:'',p:'M865 790L1080 740L1110 895L890 950Z',cls:'wet'},
+  {id:'bath',n:'רחצה',d:'',p:'M890 975L1160 920L1230 1160L940 1160Z',cls:'wet'}]},
+ 'E-5E':{rooms:5,label:'5 חדרים',corner:'צפון-מערב, מרפסת עם ג׳קוזי',face:349,wdir:270,vb:'620 380 1160 1420',floors:[1,15],glaze:[[680,665,1145,665]],rooms_:[
+  {id:'living',n:'סלון ופינת אוכל',d:'573×493',p:'M680 680H1145V1030H680Z',main:1},
+  {id:'balcony',n:'מרפסת וג׳קוזי',d:'',lx:1100,ly:560,p:'M665 425H1555Q1725 480 1728 830H1690Q1660 690 1560 655H665Z',cls:'bal'},
+  {id:'kitchen',n:'מטבח',d:'333×273',p:'M680 1035H995V1205H680Z'},
+  {id:'master',n:'שינה הורים',d:'558×278',p:'M1440 690H1700V1000H1440Z'},
+  {id:'bed1',n:'שינה',d:'313×288',p:'M1155 685H1430V975H1155Z'},
+  {id:'bed2',n:'שינה',d:'313×283',p:'M1395 1210H1695V1475H1395Z'},
+  {id:'bed3',n:'שינה',d:'292×273',p:'M1435 1485H1695V1755H1435Z'},
+  {id:'wc',n:'אורחים',d:'',p:'M1155 985H1275V1130H1155Z',cls:'wet'},
+  {id:'ens',n:'רחצה',d:'',p:'M1530 1040H1700V1200H1530Z',cls:'wet'},
+  {id:'bath',n:'רחצה',d:'',p:'M1215 1590H1430V1755H1215Z',cls:'wet'}]},
+ 'E-5F':{rooms:5,label:'פנטהאוז 5 חדרים',corner:'פנטהאוז, מרפסת היקפית מערב וצפון',face:349,wdir:270,vb:'800 200 820 1690',floors:[16,16],glaze:[[1020,605,1410,605],[1008,700,1008,1840]],rooms_:[
+  {id:'living',n:'סלון ופינת אוכל',d:'583×858',p:'M1020 610H1410V1000H1020Z',main:1},
+  {id:'balcony',n:'מרפסת היקפית',d:'',lx:1180,ly:430,p:'M1445 225V600H1100Q1012 612 1005 700V1840Q900 1845 852 1700L836 420Q850 245 1000 225Z',cls:'bal'},
+  {id:'kitchen',n:'מטבח',d:'373',p:'M1025 1010H1290V1170H1025Z'},
+  {id:'bed1',n:'שינה',d:'388×268',p:'M1025 1215H1290V1355H1025Z'},
+  {id:'bed2',n:'שינה',d:'388×278',p:'M1025 1365H1290V1545H1025Z'},
+  {id:'bed3',n:'שינה',d:'333×408',p:'M1025 1585H1245V1840H1025Z'},
+  {id:'master',n:'שינה הורים',d:'478×288',p:'M1300 1585H1585V1840H1300Z'},
+  {id:'wc',n:'אורחים',d:'',p:'M1375 1130H1485V1250H1375Z',cls:'wet'},
+  {id:'bath',n:'רחצה',d:'',p:'M1375 1260H1485V1460H1375Z',cls:'wet'},
+  {id:'ens',n:'רחצה',d:'',p:'M1375 1470H1565V1580H1375Z',cls:'wet'}]}
+};
+const STYLES=[['warm','חם · עץ'],['light','בהיר'],['stone','אבן'],['base','כמו במסירה']];
+const FAC=[['lobby','לובי'],['pool','בריכה מקורה'],['spa','ספא וחדר מלח'],['gym','חדר כושר'],['club','לאונג׳ דיירים'],['cinema','קולנוע'],['kids','עולם הילדים']];
+const S={type:'E-4A',room:'living',style:'warm',floor:10,fac:null,places:[],yaw:0,pitch:0};
+const $=id=>document.getElementById(id);
+/* an image that exists wins; otherwise an honest fallback with a visible label */
+const cache={};
+function exists(u){if(u in cache)return cache[u];return cache[u]=fetch(u,{method:'HEAD'}).then(r=>r.ok).catch(()=>false)}
+async function pick(){
+ if(S.fac){const u=TOUR+'fac-'+S.fac+'-2k.jpg';return{u,tags:['מתקן לדוגמה','הדמיה'],warn:null}}
+ const t=S.type.toLowerCase().replace('-','');
+ const nearest=[5,10,15].reduce((a,b)=>Math.abs(b-S.floor)<Math.abs(a-S.floor)?b:a);
+ const own=TOUR+t+'-'+S.room+'-'+nearest+(S.style!=='warm'?'-'+S.style:'')+'-2k.jpg';
+ if(await exists(own))return{u:own,tags:[S.type,'קומה '+nearest],warn:null};
+ const tw={living:'living-25w',balcony:'balcony-25w'}[S.room]||'living-25w';
+ const sty=S.room==='living'&&S.style!=='base'?'-'+S.style:'';
+ let u=TOUR+tw+sty+'-2k.jpg'; if(!(await exists(u)))u=TOUR+tw+'-2k.jpg';
+ return{u,tags:['הדמיה'],warn:'תצוגה זמנית: סלון לדוגמה במגדל, קומה 25. הדמיית '+S.type+' בהכנה'};
+}
+/* three.js equirect viewer */
+const host=$('viewer');let R,SC,CAM,MESH,TEX;
+function initGL(){
+ R=new THREE.WebGLRenderer({antialias:true});R.setPixelRatio(Math.min(2,devicePixelRatio));host.prepend(R.domElement);
+ SC=new THREE.Scene();CAM=new THREE.PerspectiveCamera(75,16/9,.1,100);
+ const g=new THREE.SphereGeometry(10,64,32);g.scale(-1,1,1);MESH=new THREE.Mesh(g,new THREE.MeshBasicMaterial({color:0xffffff}));SC.add(MESH);
+ const rs=()=>{const w=host.clientWidth,h=host.clientHeight;R.setSize(w,h,false);CAM.aspect=w/h;CAM.updateProjectionMatrix();draw()};
+ new ResizeObserver(rs).observe(host);rs();
+ let drag=null;host.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY,S.yaw,S.pitch];host.setPointerCapture(e.pointerId);host.style.cursor='grabbing'});
+ host.addEventListener('pointermove',e=>{if(!drag)return;S.yaw=drag[2]-(e.clientX-drag[0])*.18;S.pitch=Math.max(-60,Math.min(60,drag[3]+(e.clientY-drag[1])*.15));draw()});
+ const up=()=>{drag=null;host.style.cursor='grab'};host.addEventListener('pointerup',up);host.addEventListener('pointercancel',up);
+ host.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){S.yaw-=10;draw()}if(e.key==='ArrowRight'){S.yaw+=10;draw()}});
+}
+function bearing(){return ((S.face()+S.yaw)%360+360)%360}
+S.face=()=>S.fac?0:(TYPES[S.type].face||281);
+function draw(){
+ if(!R)return;const y=THREE.MathUtils.degToRad(S.yaw),p=THREE.MathUtils.degToRad(S.pitch);
+ CAM.lookAt(Math.sin(y)*Math.cos(p),Math.sin(p),-Math.cos(y)*Math.cos(p));R.render(SC,CAM);
+ $('compass').textContent=S.fac?'360°':Math.round(bearing())+'°';pins();
+}
+async function load(){
+ const c=await pick();const vt=$('vtag');vt.innerHTML=c.tags.map(t=>'<span>'+t+'</span>').join('')+(c.warn?'<span class="warn">'+c.warn+'</span>':'');
+ new THREE.TextureLoader().load(c.u,t=>{if(TEX)TEX.dispose();TEX=t;t.encoding=THREE.sRGBEncoding;MESH.material.map=t;MESH.material.needsUpdate=true;draw()});
+}
+/* pins: the places in the window's field, projected at their true bearing (yaw 0 = the room's main window) */
+function pins(){
+ const box=$('pins');box.innerHTML='';if(S.fac||!S.places.length)return;
+ const w=host.clientWidth,h=host.clientHeight,fov=CAM.fov*CAM.aspect;
+ visible().slice(0,5).forEach((q,i)=>{let d=((q.bearing-S.face()-S.yaw+540)%360)-180;if(Math.abs(d)>fov/2-4)return;
+  const x=Math.max(90,Math.min(w-90,w/2+d/(fov/2)*(w/2))),y=h*(.36+.08*(i%3));const el=document.createElement('div');el.className='pin';el.style.right=(w-x)+'px';el.style.top=y+'px';
+  el.innerHTML='<b>'+q.name+'</b><i>'+fmt(q.dist)+'</i>';box.appendChild(el)});
+}
+function fmt(m){return m>=1000?(m/1000).toFixed(1)+' km':Math.round(m/10)*10+' m'}
+const KEEP={outdoors:'פארק וטבע',education:'חינוך',transport:'תחבורה',shopping:'קניות',beach:'ים',health:'בריאות',culture:'תרבות',food:'אוכל'};
+function sightKey(){return S.floor<=6?'10':S.floor<=12?'22':'32'}
+function visible(){
+ const f=S.face();return S.places.filter(q=>{const d=Math.abs(((q.bearing-f+540)%360)-180);return d<=70}).sort((a,b)=>(b.big||0)-(a.big||0)||a.dist-b.dist);
+}
+function seeTable(){
+ const per={},rows=visible().filter(q=>KEEP[q.g]||q.big).filter(q=>{const g=q.big?'big':q.g;per[g]=(per[g]||0)+1;return per[g]<=(g==='big'?4:2)}).slice(0,10);
+ $('see').innerHTML=rows.map(q=>'<tr><td>'+q.name+'<span class="grp">'+(KEEP[q.g]||'ציון דרך')+'</span>'+(q.sight&&q.sight[sightKey()]==='open'?'<small>נראה מהקומה</small>':'')+'</td><td class="n">'+fmt(q.dist)+(q.walk?' · '+q.walk+' min':'')+'</td></tr>').join('')||'<tr><td colspan="2">טוען…</td></tr>';
+}
+/* plan */
+function plan(){
+ const T=TYPES[S.type],svg=$('plan');if(T.pending){svg.setAttribute('viewBox','0 0 800 300');svg.innerHTML='<text x="400" y="150" class="rl">התוכנית בהכנה</text>';return}
+ svg.setAttribute('viewBox',T.vb);let h='';
+ T.rooms_.forEach(r=>{h+='<path class="room '+(r.cls||'')+(r.id===S.room&&!S.fac?' on':'')+'" d="'+r.p+'" tabindex="0" role="button" aria-pressed="'+(r.id===S.room)+'" aria-label="'+r.n+(r.d?' '+r.d+' סנטימטר':'')+'" data-r="'+r.id+'"/>';});
+ T.rooms_.forEach(r=>{const bb=r.lx?[r.lx,r.ly]:box(r.p);h+='<text class="rl" x="'+bb[0]+'" y="'+(bb[1]-4)+'">'+r.n+'</text>'+(r.d?'<text class="rd" direction="ltr" x="'+bb[0]+'" y="'+(bb[1]+28)+'">'+r.d+'</text>':'')});
+ T.glaze.forEach(g=>h+='<line class="glz" x1="'+g[0]+'" y1="'+g[1]+'" x2="'+g[2]+'" y2="'+g[3]+'"/>');
+ const m=T.rooms_.find(r=>r.id===S.room)||T.rooms_[0],c=box(m.p),a=((T.wdir!=null?T.wdir:180)+S.yaw)*Math.PI/180;
+ const L=520,s1=a-.6,s2=a+.6;h+='<path class="wedge" d="M'+c[0]+' '+c[1]+'L'+(c[0]+Math.cos(s1)*L)+' '+(c[1]+Math.sin(s1)*L)+'L'+(c[0]+Math.cos(s2)*L)+' '+(c[1]+Math.sin(s2)*L)+'Z"/>';
+ svg.innerHTML=h;
+ svg.querySelectorAll('.room').forEach(el=>{const go=()=>{S.room=el.dataset.r;S.fac=null;S.yaw=0;refresh();say(el.getAttribute('aria-label'))};el.addEventListener('click',go);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})});
+ $('plancap').textContent='ציור שלנו להמחשה, לפי תוכנית המכר של דגם '+S.type+' שפורסמה באתר היזם. בניין E (המגדלון, 16 קומות), פינת '+T.corner+'. מידות בס״מ. המחייב: תוכנית המכר החתומה.';
+}
+function box(d){const n=d.match(/-?\d+(\.\d+)?/g).map(Number);let xs=[],ys=[];for(let i=0;i<n.length-1;i+=2){xs.push(n[i]);ys.push(n[i+1])}
+ if(/V/.test(d)||/H/.test(d)){const all=n;return[(Math.min(...all.filter((v,i)=>i%2===0))+Math.max(...all.filter((v,i)=>i%2===0)))/2,(Math.min(...all.filter((v,i)=>i%2===1))+Math.max(...all.filter((v,i)=>i%2===1)))/2]}
+ return[(Math.min(...xs)+Math.max(...xs))/2,(Math.min(...ys)+Math.max(...ys))/2]}
+function types(){
+ $('types').innerHTML=Object.entries(TYPES).map(([k,t])=>'<button aria-pressed="'+(k===S.type)+'" data-t="'+k+'"><b>'+t.label+'</b><small>'+k+(t.pending?' · בהכנה':'')+'</small></button>').join('');
+ $('types').querySelectorAll('button').forEach(b=>b.onclick=()=>{S.type=b.dataset.t;S.room='living';S.fac=null;S.yaw=0;const f=TYPES[S.type].floors||[1,15],r=$('floor');r.min=f[0];r.max=f[1];S.floor=Math.max(f[0],Math.min(f[1],S.floor));r.value=S.floor;r.disabled=f[0]===f[1];$('floorv').textContent=S.floor;refresh()});
+}
+function styles(){$('styles').innerHTML=STYLES.map(([k,n])=>'<button class="chip" aria-pressed="'+(k===S.style)+'" data-s="'+k+'" '+(S.room!=='living'||S.fac?'disabled':'')+'>'+n+'</button>').join('');
+ $('styles').querySelectorAll('button').forEach(b=>b.onclick=()=>{S.style=b.dataset.s;refresh()})}
+function fac(){$('fac').innerHTML=FAC.map(([k,n])=>'<button aria-pressed="'+(S.fac===k)+'" data-f="'+k+'">'+n+'</button>').join('');
+ $('fac').querySelectorAll('button').forEach(b=>b.onclick=()=>{S.fac=S.fac===b.dataset.f?null:b.dataset.f;S.yaw=0;refresh()})}
+function facts(){const T=TYPES[S.type],r=(T.rooms_||[]).find(x=>x.id===S.room)||{};const eye=(S.floor*3.25+1.6).toFixed(0);
+ $('facts').innerHTML='<div><b>'+(r.d||'·')+'</b><span>מידות החדר, ס״מ</span></div><div><b>'+(S.fac?'·':Math.round(T.face||0)+'°')+'</b><span>כיוון החלון הראשי</span></div><div><b>~'+eye+' m</b><span>גובה העין, קומה '+S.floor+'</span></div><div><b>'+T.rooms+'</b><span>חדרים, דגם '+S.type+'</span></div>';
+ $('crumb').textContent='בניין E · קומה '+S.floor+' · '+(S.fac?'מתקן':(r.n||''))+' · '+STYLES.find(s=>s[0]===S.style)[1];
+ const msg='שלום, אני מתעניין/ת באשירה: דגם '+S.type+' ('+T.label+'), קומה '+S.floor+', סגנון '+STYLES.find(s=>s[0]===S.style)[1]+'. אשמח לתוכנית ולמחיר.';
+ $('wa').href='https://wa.me/?text='+encodeURIComponent(msg);$('sum').textContent='ההודעה שתישלח: '+msg;
+}
+function say(t){$('live').textContent=t}
+function refresh(){types();plan();styles();fac();facts();seeTable();load()}
+$('floor').addEventListener('input',e=>{S.floor=+e.target.value;$('floorv').textContent=S.floor;facts();seeTable();load()});
+initGL();
+fetch(PLACES).then(r=>r.json()).then(d=>{S.places=(d.places||[]).concat((d.landmarks||[]).map(l=>Object.assign({big:1,g:l.g||'landmark'},l)));seeTable();draw()}).catch(()=>{});
+refresh();
+})();
+</script>
+</body></html>
