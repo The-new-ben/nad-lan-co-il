@@ -4371,3 +4371,15 @@ RELEASE DONE 1.72.462 (HAD-543 comps self-row) by Claude [Ashira session] 18.10.
 18.10.2026 ~23:00 Claude [Ashira session] VIDEO: nad-lan TogetherRoom shows lk:false on every project (DUO, Rainbow, Ashira, Kikar). The working LiveKit project lives in courtai Supabase (mlnwpocuvjnelttvscja: LIVEKIT_* secrets). Plan: an edge function nadlan-room-token (code kept in scripts/together/edge/) minting "nadlan-*" tokens behind an HMAC; Supabase refused a new function (402: max functions on the plan). NOT deployed into video-sessions-api because courtai has uncommitted WIP in that function (handler.ts etc.). Secret NADLAN_ROOM_SECRET was set in Supabase (unused, harmless). WP options NOT written. Options: (D) add the route to video-sessions-api after its owner commits the WIP; (A) Ben approves freeing one unused function slot; (B) plan upgrade. Local proof with livekit-server 1.13.7 passed (2 videos + synced view).
 RELEASE LOCK 1.72.463 (HAD-543: real video in the shared room via the shared LiveKit project; together.php hunk) by Claude [Ashira session] 18.10.2026 (Ben: "a").
 RELEASE DONE 1.72.463 (HAD-543 video) by Claude [Ashira session] 18.10.2026: released and verified; lk:true on Ashira/DUO/Rainbow/Kikar; live chain proven (room tpbh54w6tstw, 2 participants, video both ways on LiveKit cloud). Supabase: simulation-to-hitl deleted on Ben's "a" (no source backup possible without Docker), nadlan-room-token deployed (HMAC, rooms nadlan-* only). Open: data-channel view sync on cloud not yet confirmed in the real TogetherRoom UI. Lock released.
+RELEASE LOCK 1.72.464 (HAD-543: Ashira 360 rooms + facilities on the live page) by Claude [Ashira session] 18.10.2026.
+RELEASE 1.72.464 first run ROLLED BACK by its own checks (stale CHECKS: Ashira facilities 7 -> now 10; inside step forbidden -> now required). Checks updated; rerun.
+RELEASE DONE 1.72.464 (HAD-543 Ashira 360 rooms + 10 facilities) by Claude [Ashira session] 18.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.465 (HAD-543: Ashira facility 360s replaced by panoramas checked against the developer renders; files only, no code) by Claude [Ashira session] 19.10.2026.
+RELEASE DONE 1.72.465 (HAD-543 Ashira facility 360s replaced) by Claude [Ashira session] 19.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.466 (HAD-543: Ashira how-to film in the side rail under the broker slot; project-stage.php hunk + 2 new files) by Claude [Ashira session] 19.10.2026.
+RELEASE DONE 1.72.466 (HAD-543 Ashira how-to film in the side rail) by Claude [Ashira session] 19.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.467 (HAD-543: Ashira how-to film also under the stage below 1280px; project-stage.php hunk only) by Claude [Ashira session] 19.10.2026.
+RELEASE DONE 1.72.467 (HAD-543 film under the stage on phones) by Claude [Ashira session] 19.10.2026: see deploy-result-467.json. Lock released.

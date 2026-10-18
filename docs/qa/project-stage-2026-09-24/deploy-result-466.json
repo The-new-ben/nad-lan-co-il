@@ -1,0 +1,19 @@
+{
+  "released": "1.72.466",
+  "from": "1.72.465",
+  "live_before": {
+    "nadlan-config.php": "f8aeeec25bf267e0015a68d53f79eef8",
+    "inc/project-stage.php": "b8dc35683ddad16b0af67b3a8efa1c58"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-19 00:54:25",
+  "files": {
+    "assets/project-stage/ashira/howto-he.jpg": "86e2e0909ad2fa3e6f91bec91f20e1fd",
+    "assets/project-stage/ashira/howto-he.mp4": "13d3b7738030a96987fbf5cf365e9d33",
+    "nadlan-config.php": "2314f8c37d0edefd0c4ddac19fe132e8",
+    "inc/project-stage.php": "20e42261d459093a99ff04467701ee03"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.466, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
