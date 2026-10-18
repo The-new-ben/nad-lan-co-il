@@ -24,10 +24,12 @@ r = subprocess.run(f'{NPX} supabase secrets set NADLAN_ROOM_SECRET="%NADLAN_ROOM
 print("[supabase] secret set:", r.returncode, (r.stdout + r.stderr).replace(shared, "***")[-200:].strip())
 if r.returncode != 0:
     sys.exit("FATAL: secret not set")
-r = subprocess.run(f"{NPX} supabase functions deploy nadlan-room-token --no-verify-jwt --project-ref {REF}", cwd=COURT, shell=True, capture_output=True, text=True)
-print("[supabase] deploy:", r.returncode, (r.stdout + r.stderr)[-300:].strip())
-if r.returncode != 0:
-    sys.exit("FATAL: deploy failed")
+if "--no-deploy" not in sys.argv:
+    r = subprocess.run(f"{NPX} supabase functions deploy nadlan-room-token --no-verify-jwt --project-ref {REF}", cwd=COURT, shell=True, capture_output=True, text=True)
+    print("[supabase] deploy:", r.returncode, (r.stdout + r.stderr)[-300:].strip())
+    if r.returncode != 0:
+        sys.exit("FATAL: deploy failed")
+time.sleep(20)  # the new secret reaches the running function
 
 TOKEN = secrets.token_hex(24)
 BRIDGE = r"""
