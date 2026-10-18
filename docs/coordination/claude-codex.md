@@ -4363,3 +4363,7 @@ Release gate: local patch + preview first; I publish only after Ben's direct wor
 
 RELEASE LOCK content-only (HAD-543 Ashira HE article post 4744, QA-accepted sha eca845eb) by Claude [Ashira session] 17.10.2026, on Ben direct word in session.
 RELEASE DONE content-only (HAD-543 Ashira HE article 4744) by Claude [Ashira session] 17.10.2026: PASS (status 200, CMS fetch-back equal, title/canonical/H1 unchanged, removed phrases gone). Backup: fix/live-raw-before-publish.html; manual rollback: apply_he.py --rollback. Lock released.
+RELEASE LOCK content-only (HAD-543 Ashira EN/FR/RU/AR wording: collagen, EN dissuasive line) by Claude [Ashira session] 18.10.2026, Ben in session.
+RELEASE DONE content-only (HAD-543 foreign wording) by Claude [Ashira session] 18.10.2026: FR/RU/AR PASS; EN content PASS (status 200, fetch-back equal, invariants) but one "collagen tanning" remains inside a JSON-LD FAQ text (not post content: schema meta) = follow-up. Backups fix/live-*.raw, manual rollback apply_foreign.py --rollback. Lock released.
+RELEASE LOCK 1.72.462 (HAD-543: no project lists itself among nearby comps; hunk on live project-experience.php) by Claude [Ashira session] 18.10.2026.
+RELEASE DONE 1.72.462 (HAD-543 comps self-row) by Claude [Ashira session] 18.10.2026: released and verified (deploy-result-462.json). Lock released.
