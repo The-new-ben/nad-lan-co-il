@@ -1,0 +1,21 @@
+{
+  "released": "1.72.470",
+  "from": "1.72.469",
+  "live_before": {
+    "nadlan-config.php": "036f7ea941c3fc932b64959096ea6c21",
+    "inc/project-stage.php": "4370f9cc6279634d603db7b55115a081"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-19 09:00:20",
+  "files": {
+    "assets/project-stage/ashira/film-call-en.jpg": "e9ee5f0426fa3b60d5fb81bcfcd63a5f",
+    "assets/project-stage/ashira/film-call-en.mp4": "2f052fd3fbb0ba5e37840b7319836912",
+    "assets/project-stage/ashira/film-showroom-en.jpg": "51fdb66fef3c0e073e0f1b6f5f9dce6b",
+    "assets/project-stage/ashira/film-showroom-en.mp4": "99af44311b8c6e9dc027777499568eee",
+    "nadlan-config.php": "9691f4ce8b24e3994efeb7688c584fca",
+    "inc/project-stage.php": "e66712b550f3855396ebb671dcdc3d38"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.470, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}

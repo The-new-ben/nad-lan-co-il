@@ -1,0 +1,27 @@
+{
+  "voice": "cedar",
+  "model": "gpt-4o-mini-tts-2025-12-15",
+  "instructions": "Warm, confident, premium real-estate guide. Calm medium pace, clear diction, a slight smile in the voice, gentle pauses before key features. No hype, no sing-song. Israeli place names pronounced naturally: Ashira, Sde Dov, Tel Baruch, Yarkon.",
+  "films": {
+    "showroom": [
+      ["intro", "Welcome to the Ashira showroom on NadLan. Everything you need to understand this project is on one page, and you can explore it from your phone or your computer."],
+      ["model", "Start with the 3D model of the compound. Turn it with one finger, and tap a building and a floor to choose where you would live."],
+      ["view", "Tap 'The view and the map' to see what you would see from that floor, which way it faces, and how many minutes it takes to walk to the beach, the park, schools and the train."],
+      ["inside", "Now step inside the example apartment in 360 degrees. Drag to look around, and switch between the four directions."],
+      ["furniture", "With one tap you can see the room furnished, or exactly as it is delivered, without furniture. You can also try other design styles."],
+      ["facilities", "Tap 'The facilities' to visit the indoor pool, the spa, the gym, the cinema and the kids' world, each one in 360 degrees."],
+      ["call", "Have a question? Message us on WhatsApp in one tap, or start a live video call with a representative, who can walk you through the project on your screen."],
+      ["end", "Ashira, on NadLan. All images are illustrations for orientation only."]
+    ],
+    "call": [
+      ["intro", "This is the shared viewing room: a live video call inside the project page itself. You see the representative, and you both see the same apartment at the same time."],
+      ["start", "On the project page, tap 'Video call with a representative'. The representative opens a room and sends you a link, on WhatsApp or by email."],
+      ["join", "Open the link, type your name, and choose who you are: a buyer, a partner, or a professional such as a lawyer or an engineer. There is no sign-up and no password."],
+      ["live", "Allow your camera and microphone, and you are in. You can mute yourself or turn off your camera at any time."],
+      ["follow", "When the representative taps 'Follow me', your screen follows theirs. They can show you the building, the floor, the view, and the inside of the apartment, while you talk."],
+      ["invite", "Want your partner or your lawyer to join? Tap 'Invite someone' and send the link. Everyone joins the same room, from anywhere in the world."],
+      ["notes", "Notes and pins you add during the call are saved, and after the call you receive a file with everything you looked at."],
+      ["end", "The call is not recorded. The shared viewing room, on NadLan. Narration by an AI voice."]
+    ]
+  }
+}

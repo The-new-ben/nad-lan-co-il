@@ -4383,3 +4383,14 @@ RELEASE DONE 1.72.466 (HAD-543 Ashira how-to film in the side rail) by Claude [A
 
 RELEASE LOCK 1.72.467 (HAD-543: Ashira how-to film also under the stage below 1280px; project-stage.php hunk only) by Claude [Ashira session] 19.10.2026.
 RELEASE DONE 1.72.467 (HAD-543 film under the stage on phones) by Claude [Ashira session] 19.10.2026: see deploy-result-467.json. Lock released.
+
+RELEASE LOCK 1.72.468 (HAD-543: Ashira floor-25 living room 360s in ChatGPT quality + direction labels fixed; files + project-stage.php hunk) by Claude [Ashira session] 19.10.2026.
+RELEASE DONE 1.72.468 (HAD-543 floor-25 living room ChatGPT quality, directions fixed, duplicate tour block removed) by Claude [Ashira session] 19.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.469 (HAD-543: Ashira rooms empty/furnished switch, floors 25+10 + balconies in ChatGPT quality; project-stage.php + tour.js + bridge.js hunks) by Claude [Ashira session] 19.10.2026.
+RELEASE DONE 1.72.469 (HAD-543 Ashira rooms with/without furniture, floors 25+10, balconies) by Claude [Ashira session] 19.10.2026: rolled back after the checks: /projects/ashira-sde-dov/?t469d=1. Lock released.
+RELEASE 1.72.469 first run ROLLED BACK by its own check (my needle looked for plain Hebrew inside a JSON attribute; false negative). Check fixed; rerun.
+RELEASE DONE 1.72.469 (rerun) released and verified. Lock released.
+
+RELEASE LOCK 1.72.470 (HAD-543: Ashira English narrated film gallery in the side card; project-stage.php hunk + 4 new files) by Claude [Ashira session] 19.10.2026.
+RELEASE DONE 1.72.470 (HAD-543 English film gallery) by Claude [Ashira session] 19.10.2026: released and verified. Lock released.
