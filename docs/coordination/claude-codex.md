@@ -4394,3 +4394,11 @@ RELEASE DONE 1.72.469 (rerun) released and verified. Lock released.
 
 RELEASE LOCK 1.72.470 (HAD-543: Ashira English narrated film gallery in the side card; project-stage.php hunk + 4 new files) by Claude [Ashira session] 19.10.2026.
 RELEASE DONE 1.72.470 (HAD-543 English film gallery) by Claude [Ashira session] 19.10.2026: released and verified. Lock released.
+
+RELEASE LOCK 1.72.471 (HAD-543: Ashira free walk on the page; 12 new files under assets/walk/ashira + project-stage.php hunk) by Claude [Ashira session] 19.10.2026, Ben "yes put the walk".
+RELEASE DONE 1.72.471 (HAD-543 Ashira free walk on the page) by Claude [Ashira session] 19.10.2026: . Lock released.
+Correction: the 1.72.471 run above stopped before any write (HTTP 502 on a drift read); nothing was released. Rerun now.
+RELEASE 1.72.471 rerun: released and verified. Lock released.
+
+RELEASE LOCK 1.72.472 (HAD-543: walk full-screen top bar; project-stage.php hunk only) by Claude [Ashira session] 19.10.2026.
+RELEASE DONE 1.72.472 (walk top bar) by Claude [Ashira session] 19.10.2026: released and verified. Lock released.

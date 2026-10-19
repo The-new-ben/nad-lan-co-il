@@ -1,0 +1,29 @@
+{
+  "released": "1.72.471",
+  "from": "1.72.470",
+  "live_before": {
+    "nadlan-config.php": "9691f4ce8b24e3994efeb7688c584fca",
+    "inc/project-stage.php": "e66712b550f3855396ebb671dcdc3d38"
+  },
+  "post_before": {},
+  "state": "released and verified",
+  "at": "2026-10-19 09:38:06",
+  "files": {
+    "assets/walk/ashira/index.html": "e6981a46f3a616cac57ae0e57e198d58",
+    "assets/walk/ashira/thumb.jpg": "64da66c073df0e3642273eb2de588592",
+    "assets/walk/ashira/tex/asphalt.jpg": "23c9592df244072bb8263bf4508bd680",
+    "assets/walk/ashira/tex/fac_ashira.jpg": "817ea9ec82f67893864862bfe04f7203",
+    "assets/walk/ashira/tex/fac_retail.jpg": "7b28539b4cd705fcae8ffb031ca5e697",
+    "assets/walk/ashira/tex/fac_tower.jpg": "7a889c9fa171c93563a265ac866516b6",
+    "assets/walk/ashira/tex/fac_white.jpg": "cfb89f4037f58e248d6176593b396314",
+    "assets/walk/ashira/tex/grass.jpg": "1d63cf7fc203ff7673bb4a77c1a06d28",
+    "assets/walk/ashira/tex/pave.jpg": "f8ee831acf96be810ff72f90340a44d7",
+    "assets/walk/ashira/tex/tree_ficus.png": "ecb81c73035fbd01d5f679d46488bdb2",
+    "assets/walk/ashira/tex/tree_olive.png": "7f35902173659cb9b25fcfa791f13080",
+    "assets/walk/ashira/tex/tree_palm.png": "e5dad7bcec2fbea7f7a0b5d3b2d38af3",
+    "nadlan-config.php": "4f6098a21583b5900681f933b6a4852f",
+    "inc/project-stage.php": "6375e91ebe5b3ddaa5ebe76e51aeed73"
+  },
+  "post_after": {},
+  "checks": "verify_pages (+ the v104.3 lines) + served_exact (world.js at ?ver=1.72.471, byte for byte) + verify_order + verify_home_order + verify_kh: OK"
+}
