@@ -1,0 +1,47 @@
+{
+ "model": "gpt-4o-mini-tts-2025-12-15",
+ "voice": "marin",
+ "instructions": "A warm, confident woman, a top Tel Aviv real-estate agent introducing a home she loves to an international client. Natural, unhurried, smiling, never salesy. Clear English, gentle pauses between sentences.",
+ "note": "TEMPORARY voice. The final film is voiced by Meital Katzir (her own recording, cloned with her consent). No price of the home anywhere (Ben 20.10).",
+ "scenes": [
+  [
+   "open",
+   "Some homes keep pace with Tel Aviv. This one also knows how to close the door on it."
+  ],
+  [
+   "morning",
+   "Morning in Kochav HaTzafon. You step out of a brand-new boutique building into one of the quietest, greenest neighbourhoods in north Tel Aviv."
+  ],
+  [
+   "centre",
+   "A minute's walk away is the neighbourhood centre: the deli, fresh bread, the nut shop, the supermarket, and coffee with friends who live around the corner."
+  ],
+  [
+   "bridge",
+   "And this is what changes everything. A new bridge for walking and cycling, a hundred and seventy metres long, is being built over Rokach Boulevard. When it opens in 2027, you walk straight from the neighbourhood into Yarkon Park, without crossing a single road."
+  ],
+  [
+   "park",
+   "Almost four thousand dunams of park: running paths along the river, cycling, tennis, the sports centre, and long Saturdays on the lawn."
+  ],
+  [
+   "home",
+   "Back home, almost two hundred square metres on the eleventh floor. Bespoke joinery, a designer kitchen, a master suite with an open view of the Tel Aviv skyline, and a children's suite that looks out to the sea."
+  ],
+  [
+   "terrace",
+   "Then the real living room: a seventy-four square metre sun terrace, open on three sides. Made for long evenings, a grill, and friends."
+  ],
+  [
+   "numbers",
+   "The numbers matter too. Homes in Kochav HaTzafon average around fifty thousand shekels per square metre, and new homes here reach ninety thousand and more. To the north, the Sde Dov quarter is adding sixteen thousand new homes. A Technion study of Yarkon Park found that homes closest to the park are worth more, and around the world, new park links have lifted nearby home values by five to twenty percent, and more."
+  ],
+  [
+   "close",
+   "A home with Tel Aviv on one side and the park on the other. For a private viewing, call Meital Katzir."
+  ]
+ ],
+ "say": {
+  "close": "A home with Tel Aviv on one side and the park on the other. For a private viewing, call Meytal Katzir."
+ }
+}

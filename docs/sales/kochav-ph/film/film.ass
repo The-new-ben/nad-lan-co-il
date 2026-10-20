@@ -1,0 +1,87 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Chap,Bahnschrift,40,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,9,0,1,0,2,7,110,110,92,1
+Style: Big,Bahnschrift,104,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,1,0,0,0,100,100,2,0,1,0,3,1,110,110,250,1
+Style: Sub,Bahnschrift,40,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,1,0,3,14,0,2,260,260,64,1
+Style: Tag,Segoe UI,22,&H00E6E6E6,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,1,0,1,0,1,9,60,60,46,1
+Style: Num,Bahnschrift,118,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,1,0,0,0,100,100,0,0,1,0,3,1,110,110,330,1
+Style: Lab,Segoe UI Semilight,38,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,0,0,1,0,2,1,112,110,270,1
+Style: Src,Segoe UI,22,&H00D0D0D0,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,1,0,1,0,1,1,114,110,236,1
+Style: End1,Bahnschrift,66,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,1,0,0,0,100,100,2,0,1,0,3,5,110,110,0,1
+Style: End2,Segoe UI Semilight,36,&H00FFFFFF,&H00FFFFFF,&H64000000,&H00000000,0,0,0,0,100,100,0,0,1,0,2,5,110,110,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.20,0:00:04.15,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:00:00.50,0:00:03.09,Sub,,0,0,0,,Some homes keep pace with Tel Aviv.
+Dialogue: 0,0:00:03.14,0:00:06.70,Sub,,0,0,0,,This one also knows how to close the door on it.
+Dialogue: 0,0:00:07.73,0:00:11.63,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  MORNING
+Dialogue: 0,0:00:07.63,0:00:13.18,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:00:07.93,0:00:09.77,Sub,,0,0,0,,Morning in Kochav HaTzafon.
+Dialogue: 0,0:00:09.82,0:00:17.73,Sub,,0,0,0,,You step out of a brand-new boutique building into one of the quietest, greenest neighbourhoods in north Tel Aviv.
+Dialogue: 0,0:00:18.76,0:00:22.66,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  THE NEIGHBOURHOOD CENTRE
+Dialogue: 0,0:00:18.66,0:00:22.21,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:00:22.51,0:00:25.46,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:00:25.76,0:00:27.51,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:00:27.81,0:00:29.56,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:00:18.96,0:00:21.95,Sub,,0,0,0,,A minute's walk away is the neighbourhood centre:
+Dialogue: 0,0:00:22.00,0:00:28.46,Sub,,0,0,0,,the deli, fresh bread, the nut shop, the supermarket, and coffee with friends who live around the corner.
+Dialogue: 0,0:00:29.83,0:00:33.73,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  THE BRIDGE TO YARKON PARK
+Dialogue: 0,0:00:29.73,0:00:34.28,Tag,,0,0,0,,{\fad(300,300)}Planned bridge · illustration
+Dialogue: 0,0:00:34.58,0:00:38.60,Tag,,0,0,0,,{\fad(300,300)}Planned bridge · 3D illustration
+Dialogue: 0,0:00:38.90,0:00:47.32,Tag,,0,0,0,,{\fad(300,300)}Planned bridge · illustration
+Dialogue: 0,0:00:30.03,0:00:32.29,Sub,,0,0,0,,And this is what changes everything.
+Dialogue: 0,0:00:32.34,0:00:39.34,Sub,,0,0,0,,A new bridge for walking and cycling, a hundred and seventy metres long, is being built over Rokach Boulevard.
+Dialogue: 0,0:00:39.39,0:00:46.58,Sub,,0,0,0,,When it opens in 2027, you walk straight from the neighbourhood into Yarkon Park, without crossing a single road.
+Dialogue: 0,0:00:47.60,0:00:51.50,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  YARKON PARK
+Dialogue: 0,0:00:47.50,0:00:50.65,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:00:50.95,0:00:53.90,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:00:54.20,0:00:57.85,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:00:47.80,0:00:50.26,Sub,,0,0,0,,Almost four thousand dunams of park:
+Dialogue: 0,0:00:50.31,0:00:57.10,Sub,,0,0,0,,running paths along the river, cycling, tennis, the sports centre, and long Saturdays on the lawn.
+Dialogue: 0,0:00:58.10,0:01:02.00,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  THE HOME
+Dialogue: 0,0:00:58.30,0:01:02.87,Sub,,0,0,0,,Back home, almost two hundred square metres on the eleventh floor.
+Dialogue: 0,0:01:02.92,0:01:12.95,Sub,,0,0,0,,Bespoke joinery, a designer kitchen, a master suite with an open view of the Tel Aviv skyline, and a children's suite that looks out to the sea.
+Dialogue: 0,0:01:13.97,0:01:17.87,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  THE TERRACE
+Dialogue: 0,0:01:17.77,0:01:25.42,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:01:14.17,0:01:16.20,Sub,,0,0,0,,Then the real living room:
+Dialogue: 0,0:01:16.25,0:01:21.07,Sub,,0,0,0,,a seventy-four square metre sun terrace, open on three sides.
+Dialogue: 0,0:01:21.12,0:01:24.67,Sub,,0,0,0,,Made for long evenings, a grill, and friends.
+Dialogue: 0,0:01:25.67,0:01:29.57,Chap,,0,0,0,,{\fad(400,500)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  THE NUMBERS
+Dialogue: 0,0:01:25.57,0:01:37.42,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:01:37.72,0:01:56.07,Tag,,0,0,0,,{\fad(300,300)}Illustration
+Dialogue: 0,0:01:25.87,0:01:27.41,Sub,,0,0,0,,The numbers matter too.
+Dialogue: 0,0:01:27.46,0:01:36.44,Sub,,0,0,0,,Homes in Kochav HaTzafon average around fifty thousand shekels per square metre, and new homes here reach ninety thousand and more.
+Dialogue: 0,0:01:36.49,0:01:41.34,Sub,,0,0,0,,To the north, the Sde Dov quarter is adding sixteen thousand new homes.
+Dialogue: 0,0:01:41.39,0:01:54.37,Sub,,0,0,0,,A Technion study of Yarkon Park found that homes closest to the park are worth more, and around the world, new park links have lifted nearby home values by five to twenty percent, and more.
+Dialogue: 0,0:01:56.24,0:02:01.59,Tag,,0,0,0,,{\fad(300,300)}Planned bridge · 3D illustration
+Dialogue: 0,0:01:56.54,0:02:00.93,Sub,,0,0,0,,A home with Tel Aviv on one side and the park on the other.
+Dialogue: 0,0:02:00.98,0:02:04.09,Sub,,0,0,0,,For a private viewing, call Meital Katzir.
+Dialogue: 0,0:00:00.60,0:00:05.60,Big,,0,0,0,,{\an1\pos(110,690)\fad(700,700)}KOCHAV HATZAFON
+Dialogue: 0,0:00:01.00,0:00:05.60,Lab,,0,0,0,,{\an7\pos(113,712)\fad(700,700)}{\c&H00BFB34F}━━{\c&H00FFFFFF}  A mini penthouse in north Tel Aviv, between the city and Yarkon Park
+Dialogue: 2,0:01:27.51,0:01:31.92,Num,,0,0,0,,{\an1\pos(110,700)\fad(350,300)}NIS 49–51K
+Dialogue: 2,0:01:27.66,0:01:31.92,Lab,,0,0,0,,{\an7\pos(113,722)\fad(350,300)}per m², the average home in Kochav HaTzafon
+Dialogue: 2,0:01:27.81,0:01:31.92,Src,,0,0,0,,{\an7\pos(115,778)\fad(350,300)}Bizportal, July 2026
+Dialogue: 2,0:01:32.02,0:01:36.44,Num,,0,0,0,,{\an1\pos(110,700)\fad(350,300)}NIS 90K+
+Dialogue: 2,0:01:32.17,0:01:36.44,Lab,,0,0,0,,{\an7\pos(113,722)\fad(350,300)}per m², new homes in the neighbourhood
+Dialogue: 2,0:01:32.32,0:01:36.44,Src,,0,0,0,,{\an7\pos(115,778)\fad(350,300)}Bizportal, July 2026
+Dialogue: 2,0:01:36.54,0:01:41.34,Num,,0,0,0,,{\an1\pos(110,700)\fad(350,300)}16,000
+Dialogue: 2,0:01:36.69,0:01:41.34,Lab,,0,0,0,,{\an7\pos(113,722)\fad(350,300)}new homes planned in the Sde Dov quarter, to the north
+Dialogue: 2,0:01:36.84,0:01:41.34,Src,,0,0,0,,{\an7\pos(115,778)\fad(350,300)}Approved plan, Tel Aviv District Committee
+Dialogue: 2,0:01:41.44,0:01:47.85,Num,,0,0,0,,{\an1\pos(110,700)\fad(350,300)}+$136
+Dialogue: 2,0:01:41.59,0:01:47.85,Lab,,0,0,0,,{\an7\pos(113,722)\fad(350,300)}per m² for homes within 100 m of Yarkon Park
+Dialogue: 2,0:01:41.74,0:01:47.85,Src,,0,0,0,,{\an7\pos(115,778)\fad(350,300)}Technion study, Shefer & Zakai, 2003
+Dialogue: 2,0:01:47.95,0:01:55.89,Num,,0,0,0,,{\an1\pos(110,700)\fad(350,300)}+5% to 20%+
+Dialogue: 2,0:01:48.10,0:01:55.89,Lab,,0,0,0,,{\an7\pos(113,722)\fad(350,300)}home values next to new city park links abroad
+Dialogue: 2,0:01:48.25,0:01:55.89,Src,,0,0,0,,{\an7\pos(115,778)\fad(350,300)}HR&A Advisors, 2014
+Dialogue: 0,0:01:26.17,0:01:55.74,Tag,,0,0,0,,{\fad(300,300)}Area data, not a valuation of this home
+Dialogue: 1,0:02:04.01,0:02:10.21,End1,,0,0,0,,{\fad(600,0)}{\pos(960,400)}Mini penthouse · Kochav HaTzafon
+Dialogue: 1,0:02:04.31,0:02:10.21,End2,,0,0,0,,{\fad(600,0)}{\pos(960,490)}5 rooms  ·  197 m²  ·  74 m² sun terrace  ·  3 exposures  ·  floor 11 of 12
+Dialogue: 1,0:02:04.61,0:02:10.21,End2,,0,0,0,,{\fad(600,0)}{\pos(960,600)}{\c&H00BFB34F}Private viewing{\c&H00FFFFFF}   Meital Katzir · Nadlan Al HaYam · +972 52-363-1582
+Dialogue: 1,0:02:04.91,0:02:10.21,End2,,0,0,0,,{\fad(600,0)}{\pos(960,680)}nad-lan.co.il

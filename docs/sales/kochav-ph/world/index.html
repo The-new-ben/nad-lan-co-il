@@ -393,7 +393,7 @@ const signTex = (lines, w = 1024, h = 300, bg = '#0F2233', fg = '#ffffff') => {
     const g = new THREE.Group(); g.position.set(q.x - q.nx * 5.2, 0, q.z - q.nz * 5.2); g.rotation.y = Math.atan2(-q.tx, -q.tz) + (q === path[3] ? 0 : Math.PI);
     const pole = new THREE.Mesh(new THREE.BoxGeometry(0.12, 2.6, 0.12), mat.steel); pole.position.y = 1.3;
     const board = new THREE.Mesh(new THREE.PlaneGeometry(3.4, 1.0), new THREE.MeshBasicMaterial({ map: st, toneMapped: false, side: THREE.DoubleSide })); board.position.y = 2.9;
-    g.add(pole, board); scene.add(g);
+    g.add(pole, board); g.userData.sign = 1; scene.add(g);
   }
   BR.push({ name: 'הגשר לפארק הירקון (מתוכנן)', path, hw: IN - 0.35, planned: true });
 }
@@ -726,7 +726,9 @@ $('start').hidden = false;
 $('start').onclick = () => { $('load').remove(); };
 refreshLabels(P.x, P.z); drawMap(); frame();
 // film camera: the page stops its own loop and renders one frame on each call (deterministic frames for a film)
-function cineOn() { CINE = true; document.body.classList.add('cine'); SHOW.clear(); refreshLabels(P.x, P.z); const L = document.getElementById('load'); if (L) L.remove(); }
+function cineOn() { CINE = true; document.body.classList.add('cine'); SHOW.clear(); refreshLabels(P.x, P.z); const L = document.getElementById('load'); if (L) L.remove();
+  for (const [k, sp] of labelCache) if (k.startsWith('lm:')) sp.visible = false; // the film carries its own titles
+  scene.traverse((o) => { if (o.userData && o.userData.sign) o.visible = false; }); }
 function cineFrame(px, py, pz, lx, ly, lz, fov, dt) {
   camera.fov = fov || 55; camera.updateProjectionMatrix();
   camera.position.set(px, py, pz); camera.lookAt(lx, ly, lz);
@@ -737,6 +739,15 @@ function cineFrame(px, py, pz, lx, ly, lz, fov, dt) {
   if (bloom.strength > 0) composer.render(); else renderer.render(scene, camera);
   return true;
 }
-window.__walk = { P, BR, ready: true, cineOn, cineFrame, LM, PL, setTarget, setTime, place(x, z, yaw, pitch) { P.on = null; P.x = x; P.z = z; if (yaw != null) P.yaw = yaw; if (pitch != null) P.pitch = pitch; bridges(x, z); }, fly(h) { P.fly = h; }, U, XC };
+function cineLabels(groups, x, z, r) { // film: the place labels of these groups within r metres of (x, z)
+  SHOW.clear(); for (const g of groups || []) SHOW.add(g);
+  for (const id of [...shown]) { const sp = labelCache.get(id); if (sp) scene.remove(sp); shown.delete(id); }
+  if (!groups || !groups.length) return 0;
+  const seen = new Set(); let n = 0;
+  for (const p of PL) { if (!SHOW.has(p.g) || p.generic || seen.has(p.name)) continue; const d = Math.hypot(p.gx - x, p.gz - z); if (d > (r || 60)) continue; seen.add(p.name);
+    const sp = labelSprite('c:' + p.id, p.name, (GROUP[p.g] || ['', ''])[0], (GROUP[p.g] || ['', '#0F2233'])[1]); sp.position.set(p.gx, 4 + (n % 3) * 3.2, p.gz); sp.scale.set(12, 3, 1); scene.add(sp); shown.add('c:' + p.id); labelCache.set('c:' + p.id, sp); n++; }
+  return n;
+}
+window.__walk = { P, BR, ready: true, cineOn, cineFrame, cineLabels, LM, PL, setTarget, setTime, place(x, z, yaw, pitch) { P.on = null; P.x = x; P.z = z; if (yaw != null) P.yaw = yaw; if (pitch != null) P.pitch = pitch; bridges(x, z); }, fly(h) { P.fly = h; }, U, XC };
 </script>
 </body></html>

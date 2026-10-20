@@ -14,7 +14,7 @@ norm = lambda s: s.replace("\r\n", "\n")
 md5 = lambda s: hashlib.md5(norm(s).encode("utf-8")).hexdigest()
 jobs = []
 for pid in (7634, 7812):
-    before = io.open(os.path.join(H, ("meital-%d.html" if "--over-meital" in sys.argv else "before-%d.html") % pid), encoding="utf-8").read()
+    before = io.open(os.path.join(H, ("meital-%d.html" if "--over-meital" in sys.argv else ("live-%d.html" if "--over-live" in sys.argv else "before-%d.html")) % pid), encoding="utf-8").read()
     after = io.open(os.path.join(H, "after-%d.html" % pid), encoding="utf-8").read()
     old, new = (after, before) if RB else (before, after)
     jobs.append({"id": pid, "want": md5(old), "content": norm(new)})

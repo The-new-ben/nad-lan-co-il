@@ -31,6 +31,8 @@ CSS = """<style id="nlx-kochav-add">
 .nlx .nlx-walk-b i{font-style:normal;justify-self:start;background:var(--nlx-paper);color:var(--nlx-deep);font-weight:700;font-size:15px;padding:11px 22px;border-radius:999px}
 .nlx .nlx-walk:hover .nlx-walk-b i{background:#fff}
 .nlx .nlx-walk-note{margin:10px 0 0;font-size:13px;color:var(--nlx-mute)}
+.nlx .nlx-film{margin-top:18px;border-radius:var(--nlx-r-lg);overflow:hidden;background:#000;box-shadow:var(--nlx-shadow)}
+.nlx .nlx-film video{display:block;width:100%;height:auto;aspect-ratio:16/9}
 @media (max-width:760px){.nlx .nlx-walk{grid-template-columns:1fr}.nlx .nlx-walk img{min-height:0;aspect-ratio:16/9}}
 .nlx .nlx-tbl{overflow-x:auto;margin-top:18px;border:1px solid var(--nlx-line);border-radius:var(--nlx-r);background:var(--nlx-surf)}
 .nlx .nlx-tbl table{width:100%;border-collapse:collapse;font-size:15px}
@@ -116,6 +118,26 @@ T = {
 }
 
 
+FILM = json.load(open(os.path.join(H, "media.json"))) if os.path.exists(os.path.join(H, "media.json")) else {}
+FTXT = {"he": ("סרט", "יום אחד בכוכב הצפון", "בוקר בשכונה, קפה במרכז המסחרי, הגשר החדש לפארק הירקון, הבית עצמו, ערב עם חברים במרפסת, והמספרים של האזור. באנגלית, עם כתוביות.",
+               "הבית צולם בדירה עצמה. הגשר, השכונה מלמעלה ותמונות האווירה הן הדמיות, ומסומנות בסרט.", "סרט"),
+        "en": ("Film", "A day in Kochav HaTzafon", "Morning in the neighbourhood, coffee at the local centre, the new bridge to Yarkon Park, the home itself, an evening with friends on the terrace, and the area's numbers.",
+               "The home was filmed in the apartment itself. The bridge, the aerial views and the lifestyle scenes are illustrations, and are marked in the film.", "Film")}
+
+
+FILM_DUR = "PT2M10S"
+
+
+def film_section(lang):
+    v = FILM.get("kochav-film-en.mp4"); p = FILM.get("kochav-film-en.jpg")
+    if not v: return ""
+    e, h2, lead, note, _ = FTXT[lang]; sfx = "-L07-" + lang
+    nl = chr(10)
+    return ('<section class="nlx-sec" id="film' + sfx + '">' + nl + '<div class="nlx-sec-head"><p class="nlx-eyebrow">' + e + '</p><h2 class="nlx-h2">' + h2 + '</h2><p class="nlx-lead">' + lead + '</p></div>' + nl
+            + '<div class="nlx-film"><video controls playsinline preload="metadata" width="1920" height="1080"' + (' poster="' + p['url'] + '"' if p else '') + '><source src="' + v['url'] + '" type="video/mp4"></video></div>' + nl
+            + '<p class="nlx-walk-note">' + note + '</p>' + nl + '</section>' + nl)
+
+
 def build(lang, raw):
     t = T[lang]; sfx = "-L07-" + lang
     out = raw
@@ -131,6 +153,10 @@ def build(lang, raw):
              '<p class="nlx-walk-note">' + nums(t["w_note"]) + '</p>\n' + JS + '\n</section>\n')
     i = out.index('<section class="nlx-sec" id="home' + sfx + '">')
     out = out[:i] + world + out[i:]
+    fs = film_section(lang)
+    if fs:
+        k0 = out.index('<section class="nlx-sec" id="world' + sfx + '">'); out = out[:k0] + fs + out[k0:]
+        out = out.replace('<a href="#world' + sfx + '">', '<a href="#film' + sfx + '">' + FTXT[lang][4] + '</a><a href="#world' + sfx + '">', 1)
     # 3. the value section after "planning"
     rows = ""
     for pct in (3, 5, 8, 12):
@@ -151,6 +177,10 @@ def build(lang, raw):
     data = json.loads(ld.group(2))
     faq = next(g for g in data["@graph"] if g.get("@type") == "FAQPage")
     faq["mainEntity"] = [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in t["faq"]] + faq["mainEntity"]
+    v = FILM.get("kochav-film-en.mp4"); pst = FILM.get("kochav-film-en.jpg")
+    if v and pst:
+        data["@graph"].append({"@type": "VideoObject", "name": "A day in Kochav HaTzafon: a mini penthouse between Tel Aviv and Yarkon Park",
+            "description": FTXT[lang][2], "thumbnailUrl": pst["url"], "contentUrl": v["url"], "uploadDate": "2026-10-20", "duration": FILM_DUR, "inLanguage": "en"})
     out = out[:ld.start()] + ld.group(1) + json.dumps(data, ensure_ascii=False) + ld.group(3) + out[ld.end():]
     # the added styles, once, beside the dossier's own
     s = out.index("</style>") + len("</style>")
